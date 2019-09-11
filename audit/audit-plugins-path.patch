@@ -1,0 +1,40 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: Adjust location of plugins built by audit-secondary
+Upsteam: never
+
+Adjust location of plugins built by audit-secondary.  These should never have
+been in /sbin plus some (for SUSE) require lib dependancies on /usr/lib
+
+--- audit-1.7.2/audisp/plugins/prelude/au-prelude.conf.orig	2008-04-23 11:56:11.946681000 +0200
++++ audit-1.7.2/audisp/plugins/prelude/au-prelude.conf	2008-04-23 11:56:22.789827000 +0200
+@@ -5,7 +5,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audisp-prelude
++path = /usr/sbin/audisp-prelude
+ type = always
+ #args =
+ format = string
+--- audit-1.7.2/audisp/plugins/remote/au-remote.conf.orig	2008-04-23 11:56:11.976660000 +0200
++++ audit-1.7.2/audisp/plugins/remote/au-remote.conf	2008-04-23 11:56:30.958657000 +0200
+@@ -5,7 +5,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audisp-remote
++path = /usr/sbin/audisp-remote
+ type = always
+ #args =
+ format = string
+--- audit-1.7.2/audisp/plugins/zos-remote/audispd-zos-remote.conf.orig	2008-04-23 11:56:11.993637000 +0200
++++ audit-1.7.2/audisp/plugins/zos-remote/audispd-zos-remote.conf	2008-04-23 11:56:40.533070000 +0200
+@@ -8,7 +8,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audispd-zos-remote
++path = /usr/sbin/audispd-zos-remote
+ type = always 
+ args = /etc/audisp/zos-remote.conf
+ format = string

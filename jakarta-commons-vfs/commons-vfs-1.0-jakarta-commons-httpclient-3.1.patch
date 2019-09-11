@@ -1,0 +1,36 @@
+--- vfs-1.0/sandbox/src/main/java/org/apache/commons/vfs/provider/webdav/WebdavConnectionManager.java.orig	2008-10-01 15:42:38.934425175 -0400
++++ vfs-1.0/sandbox/src/main/java/org/apache/commons/vfs/provider/webdav/WebdavConnectionManager.java	2008-10-01 15:51:31.938609532 -0400
+@@ -3,6 +3,7 @@
+ import org.apache.commons.httpclient.HostConfiguration;
+ import org.apache.commons.httpclient.HttpConnection;
+ import org.apache.commons.httpclient.HttpConnectionManager;
++import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
+@@ -24,7 +25,8 @@
+  */
+ public class WebdavConnectionManager implements HttpConnectionManager
+ {
+-    private static class ConnectionParameters
++
++    private static class ConnectionParameters extends HttpConnectionManagerParams
+     {
+         private boolean staleCheck;
+ 
+@@ -251,4 +253,15 @@
+             getLocalHttpConnection().close();
+         }
+     }
++
++    public void setParams(HttpConnectionManagerParams params) {
++        if (params == null) {
++            throw new IllegalArgumentException("Parameters may not be null");
++        }
++        this.params = (ConnectionParameters) params;
++    }
++
++    public HttpConnectionManagerParams getParams()  {
++        return this.params;
++    }
+ }

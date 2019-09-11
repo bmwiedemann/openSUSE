@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Jul 20 09:08:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Scope-Guard/Changes
+
+  0.21 Sun 19 Jul 22:14:54 2015
+      - remove useless use of UNIVERSAL::isa (#RT105948)
+        (Karen Etheridge)
+
+-------------------------------------------------------------------
+Mon Jan 17 18:16:45 UTC 2011 - coolo@novell.com
+
+- update to 0.20:
+   - raise exception if guards are created anonymously (void context)
+      (thanks Tim Bunce and Graham Knop)
+   - fix link in README (thanks Franck Joncourt)
+   - doc tweak
+   - add guard() and scope_guard() (thanks Tim Bunce)
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:00 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.03
+
+

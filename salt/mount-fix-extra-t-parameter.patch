@@ -1,0 +1,30 @@
+From 215d8d9c8f872b510a1c3fbb19ab4e91bc96bb64 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@gmail.com>
+Date: Thu, 28 Feb 2019 15:45:28 +0100
+Subject: [PATCH] mount: fix extra -t parameter
+
+If 'fstype' parameter is not set in Linux environments, salt will
+build a mount command with an empty -t value, making the command
+fail.
+---
+ salt/modules/mount.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/mount.py b/salt/modules/mount.py
+index 4ba370e5b3..e807b1729e 100644
+--- a/salt/modules/mount.py
++++ b/salt/modules/mount.py
+@@ -1218,7 +1218,8 @@ def mount(name, device, mkmnt=False, fstype='', opts='defaults', user=None, util
+         if fstype:
+             args += ' -v {0}'.format(fstype)
+     else:
+-        args += ' -t {0}'.format(fstype)
++        if fstype:
++            args += ' -t {0}'.format(fstype)
+     cmd = 'mount {0} {1} {2} '.format(args, device, name)
+     out = __salt__['cmd.run_all'](cmd, runas=user, python_shell=False)
+     if out['retcode']:
+-- 
+2.20.1
+
+

@@ -1,0 +1,60 @@
+From: Martin Herkt <lachs0r@srsfckn.biz>
+Date: Fri, 3 Nov 2017 11:58:14 +0100
+Subject: [PATCH 1/2] Use system third party libs
+
+---
+ CMakeLists.txt            |    6 ------
+ glslc/CMakeLists.txt      |    2 +-
+ libshaderc/CMakeLists.txt |    2 ++
+ 3 files changed, 3 insertions(+), 7 deletions(-)
+
+Index: shaderc-2019.0/CMakeLists.txt
+===================================================================
+--- shaderc-2019.0.orig/CMakeLists.txt
++++ shaderc-2019.0/CMakeLists.txt
+@@ -70,7 +70,6 @@ endif(MSVC)
+ 
+ # Configure subdirectories.
+ # We depend on these for later projects, so they should come first.
+-add_subdirectory(third_party)
+ 
+ if(SHADERC_ENABLE_SPVC)
+ add_subdirectory(libshaderc_spvc)
+@@ -81,11 +80,6 @@ add_subdirectory(libshaderc)
+ add_subdirectory(glslc)
+ add_subdirectory(examples)
+ 
+-add_custom_target(build-version
+-  ${PYTHON_EXECUTABLE}
+-  ${CMAKE_CURRENT_SOURCE_DIR}/utils/update_build_version.py
+-  ${shaderc_SOURCE_DIR} ${spirv-tools_SOURCE_DIR} ${glslang_SOURCE_DIR}
+-  COMMENT "Update build-version.inc in the Shaderc build directory (if necessary).")
+ 
+ function(define_pkg_config_file NAME LIBS)
+   add_custom_target(${NAME}-pkg-config ALL
+Index: shaderc-2019.0/glslc/CMakeLists.txt
+===================================================================
+--- shaderc-2019.0.orig/glslc/CMakeLists.txt
++++ shaderc-2019.0/glslc/CMakeLists.txt
+@@ -18,7 +18,7 @@ add_library(glslc STATIC
+ shaderc_default_compile_options(glslc)
+ target_include_directories(glslc PUBLIC ${glslang_SOURCE_DIR})
+ target_link_libraries(glslc PRIVATE glslang OSDependent OGLCompiler
+-  HLSL glslang SPIRV ${CMAKE_THREAD_LIBS_INIT})
++  HLSL glslang SPIRV SPVRemapper ${CMAKE_THREAD_LIBS_INIT})
+ target_link_libraries(glslc PRIVATE shaderc_util shaderc)
+ 
+ add_executable(glslc_exe src/main.cc)
+Index: shaderc-2019.0/libshaderc/CMakeLists.txt
+===================================================================
+--- shaderc-2019.0.orig/libshaderc/CMakeLists.txt
++++ shaderc-2019.0/libshaderc/CMakeLists.txt
+@@ -46,6 +46,8 @@ set(SHADERC_LIBS
+   shaderc_util
+   SPIRV # from glslang
+   SPIRV-Tools
++  SPVRemapper
++  HLSL
+ )
+ 
+ target_link_libraries(shaderc PRIVATE ${SHADERC_LIBS})

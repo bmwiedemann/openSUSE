@@ -1,0 +1,8 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("libpapi.* shlib-policy-name-error")
+addFilter("libpapi.* shlib-policy-missing-suffix")
+addFilter("libpapi.* shared-lib-calls-exit")
+addFilter("libpapi.* unstripped-binary-or-object")
+addFilter("papi-devel.* files-duplicate")

@@ -1,0 +1,11 @@
+--- fuji_green.c.orig	2006-03-01 03:46:47.000000000 +0200
++++ fuji_green.c	2011-03-22 21:26:43.871000023 +0200
+@@ -11,6 +11,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
++#include <netinet/in.h>
+ 
+ #define ushort UshORt
+ typedef unsigned char uchar;

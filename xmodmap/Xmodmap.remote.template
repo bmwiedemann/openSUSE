@@ -1,0 +1,29 @@
+!!
+!! Xmodmap.remote:	Map key san codes or key symbols of
+!!			a remote X workstation or terminal.
+!!
+!! Note: for remote terminals we do not know what scan codes
+!! are used for specific keys. Therefore we have to use
+!! the symbols as representative.  This may cause problems
+!! if the symbols for specific keys were swapped before.
+!! 
+!! If you need the exact scan codes for different terminals and
+!! their key board copy this file to
+!! Xmodmap.<full_qualified_domain_name_of_the_terminal> where
+!! the suffix is the full qualified name identical with the
+!! value of the DISPLAY variable without `:0', `:1', ...
+!!  e.g. Xmodmap.xterminal.uni-yx.de
+!!
+!! How to determine scan codes an there currently corresponding
+!! symbol see manual page of xev(1x) and xmodmap(1x).
+!!
+!!   Werner Fink,     <werner@suse.de>
+!!
+!! Backarrow key is symbol BackSpace
+!! Modifiers for backarrow key
+!!   Shift-BS is Symbol BackSpace
+!!   Alt-BS   is Symbol DeleteWord
+!! Remove key is Symbol Delete
+!!
+keysym BackSpace = BackSpace BackSpace 3270_DeleteWord
+

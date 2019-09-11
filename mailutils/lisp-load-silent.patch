@@ -1,0 +1,15 @@
+---
+ mh/etc/mailutils-mh.eli |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- mh/etc/mailutils-mh.eli
++++ mh/etc/mailutils-mh.eli	2018-05-30 10:14:00.665396617 +0000
+@@ -19,7 +19,7 @@
+ (setq mh-progs "BINDIR")
+ (setq mh-lib "MHLIBDIR")
+ (setq mh-lib-progs mh-progs)
+-(load "mh-e")
++(load "mh-e" nil t)
+ (setq mh-variant 'gnu-mh)
+ 
+ ;;;; End of mailutils-mh.el

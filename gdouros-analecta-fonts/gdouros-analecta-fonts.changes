@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Apr 10 16:00:42 UTC 2017 - aloisio@gmx.com
+
+- Update to version 5.17
+- Switched tarball to original (versioned) archive
+- Added README-SUSE as separate source
+- Updated homepage URL
+
+-------------------------------------------------------------------
+Sun Jan 17 13:18:08 UTC 2016 - aloisio@gmx.com
+
+- Update to version 5.00 
+  * updated pdf documentation
+  * updated README-SUSE file from the website
+
+-------------------------------------------------------------------
+Sun Jun 21 08:26:47 UTC 2015 - aloisio@gmx.com
+
+- updated to 4.02
+  * added hinted variant 
+- replaced README with a note from the website and
+  added official pdf description
+
+-------------------------------------------------------------------
+Tue Jan 21 13:10:12 UTC 2014 - pgajdos@suse.com
+
+- updated to 4.01
+  * no upstream changelog
+  * leaving README from 3.06 as upstream doesn't provide it anymore
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:02 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 18 11:49:28 UTC 2012 - pgajdos@suse.com
+
+- renamed analecta-fonts -> gdouros-analecta-fonts
+
+-------------------------------------------------------------------
+Wed Apr 18 10:19:42 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Permissive license
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:18 COT 2011 - bachinchi@gmail.com
+
+- Initial package for Analecta Font

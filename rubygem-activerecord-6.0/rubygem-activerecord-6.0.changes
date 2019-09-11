@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Sat Aug 17 20:51:27 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.0
+
+  *   Preserve user supplied joins order as much as possible.
+
+      Fixes #36761, #34328, #24281, #12953.
+
+      *Ryuta Kamizono*
+
+  *   Make the DATABASE_URL env variable only affect the primary connection. Add new env variables for multiple databases.
+
+      *John Crepezzi*, *Eileen Uchitelle*
+
+  *   Add a warning for enum elements with 'not_' prefix.
+
+          class Foo
+            enum status: [:sent, :not_sent]
+          end
+
+      *Edu Depetris*
+
+  *   Make currency symbols optional for money column type in PostgreSQL
+
+      *Joel Schneider*
+
+-------------------------------------------------------------------
+Mon Jul 22 21:32:20 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.0.rc2
+
+  *   Add database_exists? method to connection adapters to check if a database exists.
+
+      *Guilherme Mansur*
+
+  *   PostgreSQL: Fix GROUP BY with ORDER BY virtual count attribute.
+
+      Fixes #36022.
+
+      *Ryuta Kamizono*
+
+  *   Make ActiveRecord `ConnectionPool.connections` method thread-safe.
+
+      Fixes #36465.
+
+      *Jeff Doering*
+
+  *   Fix sqlite3 collation parsing when using decimal columns.
+
+      *Martin R. Schuster*
+
+  *   Fix invalid schema when primary key column has a comment.
+
+      Fixes #29966.
+
+      *Guilherme Goettems Schneider*
+
+  *   Fix table comment also being applied to the primary key column.
+
+      *Guilherme Goettems Schneider*
+
+  *   Fix merging left_joins to maintain its own `join_type` context.
+
+      Fixes #36103.
+
+      *Ryuta Kamizono*
+
+-------------------------------------------------------------------
+Sun Jun 30 09:33:29 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- disable 'disable_docs' option temporarily until we get an updated
+  gem2rpm and ruby-common package in our devel project.
+
+-------------------------------------------------------------------
+Sat May  4 23:50:44 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 6.0.0.rc1:
+  https://weblog.rubyonrails.org/2019/4/27/this-week-in-rails-rails-6-0-0-rc1-is-here-say-hi-at-railsconf/
+
+-------------------------------------------------------------------
+Thu Mar 14 03:49:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 6.0.0.beta3:
+  https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/
+  CVE-2019-5418 CVE-2019-5419 CVE-2019-5420
+
+-------------------------------------------------------------------
+Sat Jan 19 19:51:01 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- rb_build_ruby_abi needs to be rb_build_ruby_abis
+
+-------------------------------------------------------------------
+Sat Jan 19 00:15:01 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

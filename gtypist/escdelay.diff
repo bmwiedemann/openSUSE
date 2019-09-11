@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2015-09-23 11:59:16.636824539 +0200
+
+In modern ncurses, ESCDELAY is not an lvalue (also because the
+ESCDELAY "variable" is meant to be read-only).
+
+---
+ src/gtypist.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gtypist-2.9.5/src/gtypist.c
+===================================================================
+--- gtypist-2.9.5.orig/src/gtypist.c
++++ gtypist-2.9.5/src/gtypist.c
+@@ -2205,7 +2205,7 @@ int main( int argc, char **argv )
+ 
+   // Quick hack to get rid of the escape delays
+ #ifdef __NCURSES_H
+-  ESCDELAY = 1;
++  set_escdelay(1);
+ #endif
+ 
+   /* set up colour pairs if possible */

@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Jun  6 09:26:50 UTC 2019 - jmc <jcavalheiro@suse.com>
+
+- Add %license macro for LICENSE file 
+
+-------------------------------------------------------------------
+Sat Apr 13 18:00:08 UTC 2019 - jcavalheiro@suse.com
+
+- Fix ppc64le compile errors on SLE15-SP1
+  - Use go1.9 as newer versions break magefile on this arch
+- Refactor and cleanup spec file
+- Rename systemd service to prometheus-postgres_exporter
+
+-------------------------------------------------------------------
+Thu Mar 28 17:00:43 UTC 2019 - Johannes Renner <jrenner@suse.com>
+
+- Enable building postgres_exporter for additional architectures
+  (s390x, ppc64 and arm64)
+- Add:
+  * architectures.patch
+
+-------------------------------------------------------------------
+Wed Mar 27 11:29:45 UTC 2019 - Michael Calmer <mc@suse.com>
+
+- Upgrade to 0.4.7:
+  - Added a query for v9.1 pg_stat_activity.
+  - Add `--constantLabels` flag to allow applying fixed constant
+    labels to metrics.
+  - Support 'B' suffix in units.
+
+-------------------------------------------------------------------
+Wed Oct 31 09:22:06 UTC 2018 - moio@suse.com
+
+- Upgrade to 0.4.6:
+  - Fix 32 and 64mb unit sizes, were not supported in pg_settings
+  - Add commandline flag to disable default metrics
+  - Bugfix for pg_up (it would always be 0)
+  - pg_up is now refreshed based on database Ping() every scrape
+  - Adds the following environment variables for overriding defaults:
+    - `PG_EXPORTER_WEB_LISTEN_ADDRESS`
+    - `PG_EXPORTER_WEB_TELEMETRY_PATH`
+    - `PG_EXPORTER_EXTEND_QUERY_PATH`
+  - Add Content-Type to HTTP landing page
+  - Fix panic due to inconsistent label cardinality when using queries.yaml with queries which return extra columns
+  - Add metric for whether the user queries YAML file parsed correctly. This also includes the filename and SHA256 sum allowing tracking of updates
+  - Add pg_up metric to indicate whether the exporter was able to connect and Ping() the PG instance before a scrape
+  - Fix broken link in landing page for `/metrics`
+  - Add support for PostgreSQL 10
+  - Add support for the 16kB unit when decoding pg_settings
+  - Fix DSN logging
+  - Ignore functions that cannot be executed during replication recovery
+  - Add a `-version` flag finally
+  - Add confirmed_flush_lsn to pg_stat_replication
+  - use pg_settings to retrieve runtime variables. Adds >180 new metrics and descriptions
+ 
+-------------------------------------------------------------------
+Thu Jun 14 08:04:09 UTC 2018 - mc@suse.com
+
+- start service after postgresql
+
+-------------------------------------------------------------------
+Wed Jun 13 09:57:09 UTC 2018 - mc@suse.com
+
+- add systemd service and config file
+
+-------------------------------------------------------------------
+Wed Mar 29 10:03:24 UTC 2017 - moio@suse.com
+
+- Initial version

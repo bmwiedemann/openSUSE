@@ -1,0 +1,13 @@
+Index: xmlbeans-2.4.0/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java
+===================================================================
+--- xmlbeans-2.4.0.orig/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java	2008-06-10 15:42:28.000000000 +0200
++++ xmlbeans-2.4.0/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java	2012-05-17 10:54:39.193156561 +0200
+@@ -27,7 +27,7 @@
+ import net.sf.saxon.Configuration;
+ import net.sf.saxon.dom.NodeWrapper;
+ import net.sf.saxon.om.NodeInfo;
+-import net.sf.saxon.om.VirtualNode;
++import net.sf.saxon.tree.wrapper.VirtualNode;
+ import net.sf.saxon.om.Item;
+ import net.sf.saxon.value.Value;
+ import net.sf.saxon.sxpath.XPathEvaluator;

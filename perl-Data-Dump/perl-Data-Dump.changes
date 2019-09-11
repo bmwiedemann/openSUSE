@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Sun Jun 14 08:03:10 UTC 2015 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Data-Dump/Changes
+
+  2015-06-09  Gisle Aas <gisle@ActiveState.com>
+  
+     Release 1.23
+  
+     Avoid "Negative repeat count does nothing"-warnings from perl-5.22
+  
+     Typo fixes by David Steinbrunner
+
+-------------------------------------------------------------------
+Tue Jun  4 07:32:27 UTC 2013 - coolo@suse.com
+
+- updated to 1.22
+   Deal with class names containing '=' [RT#72415]
+
+   Filters now get access to $ctx->expr; the textual expression
+   denoting the current object.
+
+-------------------------------------------------------------------
+Wed Mar  7 10:05:16 UTC 2012 - andrea.turrini@gmail.com
+
+- fixed typos in perl-Data-Dump.spec description
+
+-------------------------------------------------------------------
+Thu Dec 22 19:03:09 UTC 2011 - coolo@suse.com
+
+- update to 1.21
+   Make dump($1) work when $1 was integer [RT#63883]
+   Dump floats without quoting
+   Add depth() method to FilterContext
+   Make dump($1) work [RT#63883]
+   Limit our temp listen socket to localhost [RT#63534]
+
+-------------------------------------------------------------------
+Thu Mar 03 21:08:10 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.19
+
+- changes from 1.18:
+  * don't downgrade is_utf8-strings with MIME::Base64 [RT#60103]
+  * deal with the perl-5.13 (?^:...) regex construct [RT#61552]
+
+- changes from 1.17:
+  * fix dump of "1\n" (the newline was lost) [RT#56595]
+  * start using the range operator to shorten list dumps; for instance
+    dump(1,2,3,4,5) now returns '(1 .. 5)'
+  * CODE references now dumped as 'sub { ... }'
+  * fix how multiline hash values are indented
+  * make indentation configurable
+
+- changes from 1.16:
+  * add support for filter callbacks
+    + filters can modify how selected objects are dumped
+  * various enhancements to how/when hash keys are quoted
+    + don't quote keywords
+    + don't quote words prefixed with "-"
+    + don't quote long identifier keys
+    + quote all hash keys if one needs quoting for better alignment
+  * use case-insensitive sorting for hash keys
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:04 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Apr  3 18:50:41 UTC 2010 - chris@computersalat.de
+
+- update to 1.15
+Fixed regexp that determines if hash keys are numeric [RT#48003]
+- Release 1.14
+  - Data::Dump::Trace enhancements:
+    - trace() function
+    - prototypes
+- Release 1.13
+  - Added the Data::Dump::Trace module
+- Release 1.12
+  - Documentation tweaks.
+- Release 1.11
+  - Documentation tweaks.
+- Release 1.10
+  - Add the functions quote(), dd() and ddx().
+  - Fix segfault when duming large repeated strings [RT#33520]
+  - Incorporated documentation improvements from Mark Stosberg
+  - Apply Data-Dump-1.08-ANDK-01.patch from CPAN.  Might do some
+    good on older perls I guess.
+- Release 1.08
+  - By popular demand; don't put underscore into dumped integers
+    to group thousands.
+- Release 1.07
+  - Remove unused code.
+  - Add some more tests.
+- spec mods
+  o HEADER, TAGS, deps, macros
+- added perl-macros
+
+-------------------------------------------------------------------
+Thu Jun 22 00:00:00 UTC 2006 - jfunk@funktronics.ca
+
+- Build under buildservice
+
+-------------------------------------------------------------------
+Fri Oct 28 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL10
+
+-------------------------------------------------------------------
+Mon Jun  6 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL93
+
+-------------------------------------------------------------------
+Sat Dec 18 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Update
+- Build for SL92
+
+-------------------------------------------------------------------
+Mon May 17 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Build for SL91
+
+-------------------------------------------------------------------
+Fri Nov  7 00:00:00 UTC 2003 - jfunk@funktronics.ca
+
+- Initial release
+

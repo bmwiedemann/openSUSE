@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Feb 11 11:10:08 UTC 2019 - sndirsch@suse.com
+
+- update to version 1.0.9:
+  * This release fixes a long standing bug in the bitmap editor
+    where operations would not work properly when NumLock was on.
+
+-------------------------------------------------------------------
+Tue Jan 20 18:47:23 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.0.8:
+  * Stop memory leak in XmuWriteBitmapDataToFile()
+  * Stop memory leaks from XtNewString(StripFilename(filename))
+  * autogen.sh: Honor NOCONFIGURE=1
+  * configure: Drop AM_MAINTAINER_MODE
+  * Use '& 7' instead '% 8' to silence clang analyzer warning
+  * Demacro modernization of NewSList to plug a memory leak during
+    error handling
+  * Silence -Wbad-function-cast
+  * Avoid shadow declarations
+  * assert to avoid a NULL dereference
+  * Print which option was in error along with usage message
+  * config: replace deprecated use of AC_OUTPUT with
+    AC_CONFIG_FILES
+  * Use table markup in preference to various low-level
+    constructions
+
+-------------------------------------------------------------------
+Thu Feb  6 11:01:32 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile 
+
+-------------------------------------------------------------------
+Mon May 20 21:19:50 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.7:
+  + Mark usage() functions as noreturn, as suggested by gcc.
+  + Fix genererate typo in bmtoa error messages.
+  + Combine usage messages into a single string.
+  + bitmap.man:  Fix some typos.
+  + Fix pixmap leak in error paths of BWGetUnzoomedPixmap.
+
+-------------------------------------------------------------------
+Sat Apr 14 19:47:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.6:
+  + Code clean-ups.
+  + Man page fixes
+  + Build system fixes
+- Add pkgconfig(xproto) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split bitmap from xorg-x11. Initial version: 1.0.5.
+

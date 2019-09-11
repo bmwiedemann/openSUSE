@@ -1,0 +1,46 @@
+diff -Nur FANN-2.2.0-Source/CMakeLists.txt FANN-2.2.0-Source-new/CMakeLists.txt
+--- FANN-2.2.0-Source/CMakeLists.txt	2012-01-24 06:31:40.000000000 +0100
++++ FANN-2.2.0-Source-new/CMakeLists.txt	2015-11-03 02:32:40.583341093 +0100
+@@ -16,7 +16,7 @@
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/cmake/fann.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/fann.pc @ONLY )
+ 
+-SET(PKGCONFIG_INSTALL_DIR /lib/pkgconfig)
++SET(PKGCONFIG_INSTALL_DIR /lib${LIB_SUFFIX}/pkgconfig)
+ 
+ ########### install files ###############
+ 
+diff -Nur FANN-2.2.0-Source/src/CMakeLists.txt FANN-2.2.0-Source-new/src/CMakeLists.txt
+--- FANN-2.2.0-Source/src/CMakeLists.txt	2012-01-24 06:31:40.000000000 +0100
++++ FANN-2.2.0-Source-new/src/CMakeLists.txt	2015-11-03 02:36:14.472334773 +0100
+@@ -11,6 +11,7 @@
+ ADD_LIBRARY(floatfann SHARED ${floatfann_LIB_SRCS})
+ 
+ SET_TARGET_PROPERTIES(floatfann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
++TARGET_LINK_LIBRARIES(floatfann m)
+ INSTALL(TARGETS floatfann DESTINATION ${LIB_INSTALL_DIR} )
+ 
+ 
+@@ -23,6 +24,7 @@
+ ADD_LIBRARY(doublefann SHARED ${doublefann_LIB_SRCS})
+ 
+ SET_TARGET_PROPERTIES(doublefann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
++TARGET_LINK_LIBRARIES(doublefann m)
+ INSTALL(TARGETS doublefann DESTINATION ${LIB_INSTALL_DIR} )
+ 
+ 
+@@ -35,6 +37,7 @@
+ ADD_LIBRARY(fixedfann SHARED ${fixedfann_LIB_SRCS})
+ 
+ SET_TARGET_PROPERTIES(fixedfann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
++TARGET_LINK_LIBRARIES(fixedfann m)
+ INSTALL(TARGETS fixedfann DESTINATION ${LIB_INSTALL_DIR} )
+ 
+ 
+@@ -47,5 +50,6 @@
+ ADD_LIBRARY(fann SHARED ${fann_LIB_SRCS})
+ 
+ SET_TARGET_PROPERTIES(fann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
++TARGET_LINK_LIBRARIES(fann m)
+ INSTALL(TARGETS fann DESTINATION ${LIB_INSTALL_DIR} )
+ 

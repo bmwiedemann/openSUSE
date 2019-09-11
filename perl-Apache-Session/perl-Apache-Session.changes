@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Tue Apr 14 09:27:20 UTC 2015 - coolo@suse.com
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-Apache-Session/CHANGES
+
+  1.93  2014-04-12
+    - even more test fixes
+  
+  1.92  2014-03-08
+    - more test fixes
+
+-------------------------------------------------------------------
+Mon Feb 24 06:08:02 UTC 2014 - coolo@suse.com
+
+- updated to 1.91
+  - Add a test for RT#50896
+  - 99mysql.t will work more correctly in some corner cases
+
+-------------------------------------------------------------------
+Mon Jun  3 11:27:29 UTC 2013 - coolo@suse.com
+
+- updated to 1.90
+  - Allow specifying table for Oracle
+  - Use Test::Database for tests
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:30 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:39 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:18 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Sep 23 14:10:44 CEST 2010 - anicka@suse.cz
+
+- update to 1.89
+  * require Digest::MD5
+  * all semaphore tests were removed
+  * Apache::Session::Store::File::materialize should not append
+    to $session->{serialized}
+  * Apache::Session::Store::File will flush after writing to file
+  * Apache::Session::Generate::MD5::validate will untaint data
+  * MIN_PERL_VERSION in Makefile.PL
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Sep 10 17:04:12 CEST 2008 - anicka@suse.cz
+
+- update to 1.87
+  * disabled 99semaphore.t. Help needed.
+  * correct number of tests in 99semaphore.t
+  * use Carp::confess in Apache::Session::Lock::Semaphore
+  * more info in die message in Apache::Session::Generate::MD5
+  * semaphore tests check for semctl availability
+  * Makefile.PL prints message if perl version < 5.006
+
+-------------------------------------------------------------------
+Tue Feb  5 14:41:43 CET 2008 - anicka@suse.cz
+
+- update to 1.86
+  * Default number of semaphores for *BSD is 8 
+    in Apache::Session::Lock::Semaphore
+
+-------------------------------------------------------------------
+Fri Jan  4 11:51:59 CET 2008 - anicka@suse.cz
+
+- update to 1.85
+  * mention Catalyst::Plugin::Session, Session
+  * Added Apache::Session::Lock::Semaphore::remove to remove 
+    semaphore
+  * pod.t included in MANIFEST
+  * test fixes
+
+-------------------------------------------------------------------
+Mon Oct  8 09:31:43 CEST 2007 - anicka@suse.cz
+
+- update to 1.84
+  * Added constant.pm to the list of prerequisites
+  * Jeffrey W. Baker, Casey West, Alexandr Ciornii, Oliver Maul 
+    agreed to change license of all files to Perl license
+    Alexandr Ciornii agrees to relicense to Artistic 2.0 in future 
+    if needed.
+  * 99flex.t will be skipped on *bsd or Solaris
+
+-------------------------------------------------------------------
+Mon Jun 11 09:37:58 CEST 2007 - anicka@suse.cz
+
+- update to 1.83 (upstream just raised the version number)
+
+-------------------------------------------------------------------
+Thu Feb 22 14:54:25 CET 2007 - anicka@suse.cz
+
+- update to 1.82
+  * Slightly faster test skip
+  * 99semaphore.t and 99flex.t check for cygserver on Cygwin
+  * 99flex.t skips less tests in some cases
+  * 99flex.t checks for Digest::MD5, MIME::Base64
+  * Warning in Apache::Session::Lock::Semaphore about cygserver
+  * Makefile.PL requires File::Temp
+  * changed order of use/chdir in tests
+
+-------------------------------------------------------------------
+Tue Jul 11 16:54:49 CEST 2006 - anicka@suse.cz
+
+- update to 1.81
+- minor release
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 15:11:40 CET 2006 - anicka@suse.cz
+
+- update to 1.80
+- fix neededforbuild 
+- disable all tests as we do not have Test::Deep yet
+
+-------------------------------------------------------------------
+Fri Oct 21 09:35:17 CEST 2005 - dmueller@suse.de
+
+- skip test that sometimes fails as nonroot 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:08:59 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Aug 13 18:26:33 CEST 2004 - mjancar@suse.cz
+
+- update to 1.6
+
+-------------------------------------------------------------------
+Tue Jun 15 18:51:37 CEST 2004 - ro@suse.de
+
+- updated requires
+
+-------------------------------------------------------------------
+Wed May 05 11:45:56 CEST 2004 - mjancar@suse.cz
+
+- update neededforbuild
+
+-------------------------------------------------------------------
+Fri Aug 22 13:57:01 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 21 15:02:33 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue Jun 17 15:07:13 CEST 2003 - mjancar@suse.cz
+
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:41:04 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Sat Dec 28 21:22:40 CET 2002 - prehak@suse.cz
+
+- reenabled test for all archs
+
+-------------------------------------------------------------------
+Wed Sep 11 23:57:05 CEST 2002 - prehak@suse.cz
+
+disabled make test for x86_64
+
+-------------------------------------------------------------------
+Fri Aug 23 16:29:15 CEST 2002 - prehak@suse.cz
+
+- disabled make test on ppc64
+
+-------------------------------------------------------------------
+Mon Jul 29 12:31:33 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Mon Jul 22 16:16:34 CEST 2002 - prehak@suse.cz
+
+- doesn't require any specific apache version,
+  simply require apache [#16775]
+  
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Wed Jun 26 17:54:01 CEST 2002 - prehak@suse.cz
+
+- correct permissions of eg directory
+
+-------------------------------------------------------------------
+Mon Dec 17 14:14:44 CET 2001 - cihlar@suse.cz
+
+- update to 1.54:
+  * Added mod_uniqueid and mod_usertrack generators
+  * Fixed validate function in Flex
+  * Move to Digest::MD5 instead of MD5
+- removed obsolete patch
+- added %clean
+
+-------------------------------------------------------------------
+Mon Nov  5 15:04:02 CET 2001 - poeml@suse.de
+
+- use apache-devel-packages macro in #neededforbuild
+  (expat.rpm is needed by apxs)
+
+-------------------------------------------------------------------
+Tue Aug 14 17:17:30 CEST 2001 - ro@suse.de
+
+- use Digest::MD5 instead of deprecated MD5
+
+-------------------------------------------------------------------
+Fri Feb 23 16:24:25 CET 2001 - ro@suse.de
+
+- changed neededforbuild <apache> to <apache apache-devel>
+
+-------------------------------------------------------------------
+Fri Nov 17 11:49:17 MET 2000 - rolf@suse.de
+
+- extracted from perlmod package
+

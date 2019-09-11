@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Tue Apr  2 11:44:31 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 4.9.3
+  4.5.0:
+  * Add support for Python 3.5 and 3.6.
+  * Drop support for Python 2.6, 3.2, and 3.3.
+  * Drop support for ‘setup.py test’. Use zope.testrunner instead.
+  4.6.0
+  * Add support for Python 3.7.
+  * Choice, SimpleVocabulary and SimpleTerm all gracefully handle 
+    using Unicode token values with non-ASCII characters by encoding 
+    them with the backslashreplace error handler.
+  * Add fields and interfaces representing Python’s numeric tower.
+  * More various enhancements.
+  4.6.1
+  * Fix the Field constructor to again allow MessageID values for 
+    the description.
+  4.6.2
+  * Fix checking a field’s constraint to set the field and value 
+    properties if the constraint raises a ValidationError.
+  4.7.0
+  * Give various classes some fields.
+  4.8.0
+  * Fix passing None as the description to a field constructor.
+  4.9.0
+  * Make NativeString and NativeStringLine distinct types.
+  * Fix Field.getDoc() when value_type or key_type is present. 
+  * Make DottedName accept leading underscores for each segment.
+  4.9.1
+  * Fix SimpleTerm token for non-ASCII bytes values.
+  4.9.2
+  * Make sure that the title for IObject.validate_invariants is a 
+    unicode string.
+  4.9.3
+  * Fixed a ReST error in getDoc() results when having “subfields” 
+    with titles.
+- drop *-doc subpackage, use multibuild instead
+
+-------------------------------------------------------------------
+Tue Dec  4 13:11:31 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 13 20:31:17 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Split docs and tests into separate -doc package since running
+  tests and sometimes building docs had become very messy.
+  Also see (gh#/zopefoundation/zope.proxy#18)
+
+-------------------------------------------------------------------
+Fri May 15 13:11:18 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.4.2:
+  * Fix description of min max field: max value is included,
+    not excluded.
+- additional changes from version 4.4.1:
+  * Added support for Python 3.4.
+- switch the source archive to tar.gz (zip not available)
+- remove unzip from BuildRequires
+- pass -q to test to avoid spamming the build log
+
+-------------------------------------------------------------------
+Fri Feb 28 20:02:35 UTC 2014 - os-dev@jacraig.com
+
+- Update to 4.4.0:
+  * Add an event on field properties to notify that a field has been updated.
+    This event enables definition of subscribers based on an event, a context
+    and a field. The event contains also the old value and the new value.
+    (also see package ``zope.schemaevent`` that define a field event handler)
+- Changes from 4.3.3:
+  * PEP 8 cleanup.
+  * Don't raise RequiredMissing if a field's defaultFactory returns the field's
+    missing_value.
+  * Updated ``boostrap.py`` to version 2.2.
+  * Add the ability to swallow ValueErrors when rendering a SimpleVocabulary,
+    allowing for cases where vocabulary items may be duplicated (e.g., due to
+    user input).
+  * It was a pain that ``ConstraintNotSatisfied`` did not tell the field name.
+
+-------------------------------------------------------------------
+Mon Jul 29 12:16:07 UTC 2013 - hpj@urpla.net
+
+- generate separate -doc package
+
+-------------------------------------------------------------------
+Wed Mar 20 10:50:22 UTC 2013 - speilicke@suse.com
+
+- Add (Build)Requires python-ordereddict for SLE_11 only
+
+-------------------------------------------------------------------
+Fri Mar 15 13:44:06 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

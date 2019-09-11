@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Tue May  3 19:09:24 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.6.1:
+  * handle unicode arguments under Windows
+- Changes for 1.6.0:
+  * get rid of "helpful" message about namespaces
+  * update user guide
+  * Enhancements:
+    + add --stop option to val
+    + add global option --no-doc-namespace
+  * Build:
+    + let the make install target succeed even if docs aren't 
+      built.
+- Cleanup spec file with spec-cleaner
+- Cleanup dependencies
+- Refresh xmlstarlet-xml_depyx.c.diff
+
+-------------------------------------------------------------------
+Mon Oct 13 08:52:37 UTC 2014 - toms@opensuse.org
+
+- SPEC file changes
+  - Added link from /usr/bin/xml to /usr/bin/xmlstarlet as other
+    distributions do the same
+  - Did the same for the manpage
+
+-------------------------------------------------------------------
+Mon Jul  8 06:42:44 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.5.0:
+  - Bugs:
+    - avoid segfault on pyx non-existant file
+    - fix unescaping of entities straddling 4K byte boundary (Bug #102)
+  - Enhancements:
+    - unescape hex entities (&#xXX;)
+    - give a helpful message if doc has default namespace and
+      nothing matched
+    - add "_" and "DEFAULT" as names for document's top-level
+      default namespace
+    - Adding a global quiet option
+    - ed: Allow omitting value argument to create empty element.
+    - use default attribute values in sel subcommand
+
+- changes from 1.4.2:
+  - pyx: avoid segfault on documents with multiple attributes (Bug
+    #3595212)
+
+-------------------------------------------------------------------
+Sun Dec 16 02:32:36 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.4.1:
+  * avoid segfault when attempting to edit the document node
+
+-------------------------------------------------------------------
+Thu Oct 18 11:08:49 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.4.0:
+  * ed subcommand:
+    - relative XPaths are now handled correctly (Bug #3527850)
+    - the last nodeset inserted by an edit operation can be
+      accessed as the XPath variable $prev (or $xstar:prev)
+    - add --var option to define XPath variables
+    - allow ed -u -x to insert nodesets instead of converting to
+      string
+    - remove hard limit for number of edit operations (Bug
+      #3488240)
+  * pyx now handles namespaces correctly
+
+-------------------------------------------------------------------
+Tue Feb 21 11:27:45 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.3.1:
+  * handle multiple values for --value-of properly (sf#2563866)
+  * substitute external entities (sf#3467320)
+  * pyx output needs space between attribute name and value (sf#3440797)
+
+-------------------------------------------------------------------
+Sun Oct 02 23:31:50 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.3.0:
+  * avoid ASCII CRs in UTF-16/32 text
+  * --value-of outputs concat values of all nodes (sf#2563866)
+  * encode special chars for ed -u -x
+  * allow use of exslt functions in ed -u -x
+  * add --var to select (allow --var <name>=<value> as well as --var <name>
+    <value> --break)
+  * work around libxml bug that passes bogus data to error handler (sf#3362217)
+
+-------------------------------------------------------------------
+Fri Jul 22 08:32:57 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.2.1:
+  * check for NULL nodeset result (Bugs #3323189, #3323196)
+  * "-" was being confused with --elif
+  * generated XSLT should also have automatic namespaces
+  * allow -N after other option (Bug #3325166)
+  * namespace values were being registered as prefixes
+  * avoid segfault when asked to move namespace nodes
+  * missing newline in ed --help message
+  * don't use XML_SAVE_WSNONSIG #if libxml < 2.7.8 (Bug #3310475)
+- dropped patch "xmlstarlet-backport_libxml2_2_7_8_XML_SAVE_WSNONSIG.patch",
+  was merged upstream
+
+-------------------------------------------------------------------
+Thu Jun  2 06:40:14 UTC 2011 - pascal.bleser@opensuse.org
+
+- add xmlstarlet-backport_libxml2_2_7_8_XML_SAVE_WSNONSIG.patch to fix builds
+  on distros that use libxml2 versions prior to 2.7.8 and which hence don't
+  support XML_SAVE_WSNONSIG
+
+-------------------------------------------------------------------
+Wed Jun 01 22:17:43 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.2.0:
+  * implement ed --update --expr
+  * use top-level namespace definitions from first input file, this should
+    remove the need to define namespaces on the command line with -N in most
+    cases
+  * select exits with 0 only if result is non-empty (SF#3155702)
+  * add -Q to select, like grep's -q
+  * add column number to error messages
+  * restore input context (lost in version 1.0.3) to error messages
+    (SF#3305659)
+  * print extra string information in error messages
+  * use entity definitions from dtd (SF#3305659)
+  * add --net option to c14n, ed, fo, and val (SF#1071398)
+  * remove --catalog from tr --help message since it isn't actually supported
+  * add --elif and --else to sel --help message
+
+-------------------------------------------------------------------
+Mon Apr  4 11:47:36 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.0:
+  * several select command improvements were made:
+    + --elif and --else options
+    + sorting on multiple fields
+    + correct (for English) lexical sorting
+    + inclusion of only needed namespaces by the output stylesheet
+  * library version information was added to --version output
+  * a directory argument for ls was added; the exit status indicates failure or
+    success instead of file count
+
+-------------------------------------------------------------------
+Mon Mar 14 00:53:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.6:
+  * the c14n command now outputs linefeeds only in Windows as well
+  * the --help text for ed now correctly describes the behavior of -P, -S,
+    --pf, and --ps
+  * some subcommands' --help options were outputting the printf format string
+    literally
+
+-------------------------------------------------------------------
+Thu Feb 17 09:02:37 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.5:
+  * fixes a bug in which stylesheets with CDATA nodes led to memory corruption
+  * the --help option now prints to stdout and exits with success
+
+- changes from 1.0.4:
+  * special XML characters in arguments are escaped (in particular, double
+    quotes can now be included in xpath expressions)
+  * non-zero exit code when an input file is not found
+  * XML ed with --pf/--ps options no longer reformats output
+  * exit with an error instead of segfaulting when trying to delete namespace
+    nodes
+
+- changes from 1.0.3:
+  * fixes several bugs
+  * when validating long documents, error messages will now give correct line
+    numbers past 65536 sf#1219072
+  * validation will not use an embedded DTD if not asked, sf#1167215
+  * the parameters to the --value option for update and the --output option for
+    select are now escaped (sf#3052978 and sf#1912978)
+  * c14n on documents with a DTD now respects default attributes (sf#1505579)
+
+- changes from 1.0.2:
+  * inplace editing now works
+  * libxml2 features are only used if libxml2 has been compiled to support them
+  * the -N option usage has been expanded
+
+-------------------------------------------------------------------
+Mon Dec 14 13:33:25 UTC 2009 - aj@suse.de
+
+- Reapply patches with fuzz=0
+
+-------------------------------------------------------------------
+Wed Oct 21 06:23:12 UTC 2009 - toms@suse.de
+
+- Downloaded .changes file from Factory
+- Fixed bnc#545280: missing call to fclose
+- Recompressed tar ball from gz to bz2
+- Used RPM macros in SPEC file
+- Fixed rpmlint warnings
+- Added rpmlintrc file
+- Fixed %patch command to work with openSUSE 11.2 (Factory)
+
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:24:07 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Apr  4 09:41:47 CEST 2005 - ke@suse.de
+
+- Update to version 1.0.1.
+
+-------------------------------------------------------------------
+Mon Jan 31 12:05:26 CET 2005 - ke@suse.de
+
+- Update to version 1.0.0:
+  * Fix various segfaults.
+
+-------------------------------------------------------------------
+Wed Dec  1 18:20:23 CET 2004 - pth@suse.de
+
+- Use xml2-config and xslt-config instead of hard coded paths
+  and libraries. This also gets rid of linking xmlstarlet statically.
+
+-------------------------------------------------------------------
+Thu Oct 14 01:35:02 CEST 2004 - ro@suse.de
+
+- add libgcrypt and libgpg-error
+
+-------------------------------------------------------------------
+Thu Oct  7 15:34:46 CEST 2004 - ke@suse.de
+
+- Update to version 0.9.5:
+  * Bugfixes.
+  * more examples and tests.
+  * Install HTML documentation.
+- Drop obsolete configure patch.
+
+-------------------------------------------------------------------
+Fri Jul 16 13:53:31 CEST 2004 - ke@suse.de
+
+- Update to version 0.9.1:
+  * Additional examples and tests.
+  * Fix c14n canonicalization bug.
+  * Update documentation.
+
+-------------------------------------------------------------------
+Mon Feb 16 16:35:22 CET 2004 - ke@suse.de
+
+- Update to version 0.8.1.
+
+-------------------------------------------------------------------
+Mon Sep  1 10:56:53 CEST 2003 - ke@suse.de
+
+- Make it build on ppc64 and x86_64: use
+  --with-libxml-libs-prefix=%_libdir,
+  --with-libxslt-libs-prefix=%_libdir, and
+  --with-libiconv-libs-prefix=%_libdir.
+
+-------------------------------------------------------------------
+Thu Aug 28 14:57:43 CEST 2003 - toms@suse.de
+
+- New package: xmlstarlet 0.5.1
+
+-------------------------------------------------------------------
+

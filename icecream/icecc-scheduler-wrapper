@@ -1,0 +1,10 @@
+#! /bin/sh
+
+params=""
+
+if test -n "$ICECREAM_NETNAME"; then
+    params="$params -n $ICECREAM_NETNAME"
+fi
+
+exec /usr/sbin/icecc-scheduler $params
+

@@ -1,0 +1,54 @@
+Index: acsccid-1.1.5/src/ccid_usb.c
+===================================================================
+--- acsccid-1.1.5.orig/src/ccid_usb.c
++++ acsccid-1.1.5/src/ccid_usb.c
+@@ -282,13 +282,48 @@ status_t OpenUSBByName(unsigned int read
+ 			return STATUS_UNSUCCESSFUL;
+ 		}
+ 
++		/* format usb:%04x/%04x:libhal:%s
++		 * with %s set to
++		 * /org/freedesktop/Hal/devices/usb_device_VID_PID_SERIAL_ifX
++		 * VID is VendorID
++		 * PID is ProductID
++		 * SERIAL is device serial number
++		 * X is the interface number
++		 */
++		if ((dirname = strstr(device, "libhal:")) != NULL)
++		{
++			const char *p;
++
++#define HAL_HEADER "usb_device_"
++
++			/* parse the hal string */
++			if (
++				/* search the last '/' char */
++				(p = strrchr(dirname, '/'))
++
++				/* if the string starts with "usb_device_" we continue */
++				&& (0 == strncmp(++p, HAL_HEADER, sizeof(HAL_HEADER)-1))
++				/* skip the HAL header */
++				&& (p += sizeof(HAL_HEADER)-1)
++
++				/* search the last '_' */
++				&& (p = strrchr(++p, '_'))
++				&& (0 == strncmp(++p, "if", 2))
++			   )
++			{
++				/* convert the interface number */
++				interface_number = atoi(p+2);
++			}
++			else
++				DEBUG_CRITICAL2("can't parse using libhal scheme: %s", device);
++		}
+ 		/* format usb:%04x/%04x:libudev:%d:%s
+ 		 * with %d set to
+ 		 * 01 (or whatever the interface number is)
+ 		 * and %s set to
+ 		 * /dev/bus/usb/008/004
+ 		 */
+-		if ((dirname = strstr(device, "libudev:")) != NULL)
++		else if ((dirname = strstr(device, "libudev:")) != NULL)
+ 		{
+ 			/* convert the interface number, bus and device ids */
+ 			if (sscanf(dirname + 8, "%d:/dev/bus/usb/%d/%d", &interface_number, &device_bus, &device_addr) == 3) {

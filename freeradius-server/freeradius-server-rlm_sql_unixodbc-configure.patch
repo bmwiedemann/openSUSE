@@ -1,0 +1,11 @@
+--- freeradius-server-3.0.11.orig/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure	2016-01-25 19:27:03.000000000 +0100
++++ freeradius-server-3.0.11/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure	2016-01-25 20:42:24.835741109 +0100
+@@ -1843,7 +1843,7 @@
+ fi
+ 
+ 
+-		smart_try_dir="$unixodbc_lib_dir /usr/local/unixodbc/lib"
++		smart_try_dir="$unixodbc_lib_dir"
+ 	ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'

@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Fri Feb 22 11:22:49 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 19.00
+  * Encryption strength for 7z archives was increased:
+    the size of random initialization vector was increased from
+    64-bit to 128-bit, and the pseudo-random number generator was
+    improved.
+  * The bug in 7zIn.c code was fixed.
+
+-------------------------------------------------------------------
+Sun Dec 30 10:13:52 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 18.06
+  * The speed for LZMA/LZMA2 compressing was increased by 3-10%,
+    and there are minor changes in compression ratio.
+  * Some bugs were fixed.
+  * The bug in 7-Zip 18.02-18.05 was fixed:
+    There was memory leak in multithreading xz decoder -
+    XzDecMt_Decode(), if xz stream contains only one block.
+  * The changes for MSVS compiler makefiles:
+    + the makefiles now use "PLATFORM" macroname with values
+      (x64, x86, arm64) instead of "CPU" macroname with values
+      (AMD64, ARM64).
+    + the makefiles by default now use static version of the
+      run-time library.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:47:46 UTC 2018 - aloisio@gmx.com
+
+- Fixed unpacking problem
+
+-------------------------------------------------------------------
+Tue May  1 11:19:07 UTC 2018 - aloisio@gmx.com
+
+- Update to version 18.05
+  * The speed for LZMA/LZMA2 compressing was increased
+    by 8% for fastest/fast compression levels and
+    by 3% for normal/maximum compression levels.
+  * The BUG was fixed in Lzma2Enc.c
+    Lzma2Enc_Encode2() function worked incorretly,
+      if (inStream == NULL) and the number of block threads is
+      more than 1.
+
+- Refreshed lzma-sdk-shlib.patch
+
+-------------------------------------------------------------------
+Sat Mar 10 18:55:18 UTC 2018 - aloisio@gmx.com
+
+- Update to version 18.03
+  * Asm\x86\LzmaDecOpt.asm: new optimized LZMA decoder written in
+    asm for x64 with about 30% higher speed than main version of
+    LZMA decoder written in C.
+  * The speed for single-thread LZMA/LZMA2 decoder written in C
+    was increased by 3%.
+
+- Refreshed lzma-sdk-shlib.patch
+
+-------------------------------------------------------------------
+Mon Jan 29 20:45:47 UTC 2018 - aloisio@gmx.com
+
+- Update to version 18.01
+  * Some changes in LZMA2/xz multithreading code for compressing.
+    Some bugs were fixed.
+
+-------------------------------------------------------------------
+Mon Jan  8 08:02:11 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 17.01
+  * Some bugs were fixed.
+- Replace lzma-sdk-16.04-sharedlib.patch with lzma-sdk-shlib.patch.
+
+-------------------------------------------------------------------
+Tue May 16 14:56:41 UTC 2017 - jengelh@inai.de
+
+- Trim/update description. Redo .pc file generation so that the
+  resulting file looks like other .pc files on openSUSE.
+
+-------------------------------------------------------------------
+Thu May 11 06:30:24 UTC 2017 - aloisio@gmx.com
+
+- Refreshed lzma-sdk-16.04-sharedlib.patch to add source to
+  the library to have extra functions and exported extra
+  symbols
+
+-------------------------------------------------------------------
+Fri Mar 17 09:25:07 UTC 2017 - aloisio@gmx.com
+
+- Initial package (version 16.04)
+

@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Jun  8 11:09:26 UTC 2014 - coolo@suse.com
+
+- updated to 0.18
+        - Upgrade to stable release.
+ 
+ 0.17_02  Wed Aug 28 22:35:02 CEST 2013
+        - Fixed getters for typemaps using %output_list annotation.
+ 
+ 0.17_01  Sat Aug 10 08:20:11 CEST 2013
+        - Added standard XS typemap for objects (disabled by default for
+          backwards compatibility).x
+        - Allow specifying XS typemap code in the XS++ typemap declaration.
+        - Generate accessors for member variables.
+        - Handle multiple function/method annotations (used by plugins).
+        - Updated plugin interface (should be backwards-compatible).
+ 
+ 0.1700   Sun Feb 10 12:00:00 CET 2013
+        - %alias feature for aliasing XS++ wrappers.
+ 
+ 0.1603   Fri Dec 28 12:03:09 CEST 2012
+        - Fix blead-perl warning about unescaped { in regexps.
+        - Use ExtUtils::Typemaps instead of ExtUtils::Typemap (which
+          had to be renamed).
+        - Somewhat improved examples.
+
+-------------------------------------------------------------------
+Sat Jun 04 23:35:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.1602:
+  * fixed code generation for package_static methods
+
+-------------------------------------------------------------------
+Sat Mar 12 12:01:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.1601:
+  * do not try to rebuld the grammar during CPAN installation
+-------------------------------------------------------------------
+Sat Mar 12 00:15:17 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.16:
+  * allow renaming destructors and fixed parsing of virtual ones
+
+-------------------------------------------------------------------
+Mon Dec 27 10:50:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.15)
+

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Fri May 25 21:05:57 UTC 2018 - christophe@krop.fr
+
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jan 23 22:42:17 UTC 2018 - jengelh@inai.de
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Mon Jan  8 13:32:58 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.12+git20161002 (changes since 0.8.5):
+  * Add several more effects.
+  * Pretty buttons with icons, tooltips on buttons with icons
+  * Add implode and explode effects, a qimageblits dependency to
+    get more effects.
+  * Use the qimageblitz library for more effects; it seems to be
+    able to use some cpu optimisation pure QImage isn't.
+  * Change button labels to icons.
+  * Replace the "mono" effect with histogram equalisation.
+  * Add a configuration option for contrast enhancement.
+  * UI tweaks for buttons.
+  * Better scaling of toolbar buttons
+  * Fix compiler and QML runtime warnings.
+  * Move effect processing into the capture thread. This fixes
+    unresponsiveness of the whole UI when using CPU-intensive
+    effects (like emboss or oil paint) with large resolution.
+  * Fix tabs.
+  * Add burst mode; Add Capture Group in settings with setting for
+    Timer timeout, Burst shot number of pictures and burst shot
+    delay.
+  * Image controls in the settings dialogue: Brightness, contrast,
+    saturation and hue.
+  * Fix sound files lookup.
+  * Port to Qt5/KF5.
+  * Fix DropShadows.
+  * qml: Use pointSize instead of pixelSize for fonts.
+  * config: Flip defaults for normalization and aspect ratio lock.
+  * Wait 3 frames before taking the photograph. Useful on laptops,
+    so the white screen can work like a flash.
+  * Don't group photo notifications.
+  * qml Button: Change cursor shape when hovered.
+  * Streamline notification buttons.
+  * Add an ability to open the photo by clicking on the preview.
+  * Use QDesktopServices instead of xdg-open directly for
+    "Open directory" button.
+  * Prevent previews being clicked when hidden.
+  * Update translations.
+- Add kamerka-suse-qimageblitz.patch.
+- Add a phonon backend requirement.
+
+-------------------------------------------------------------------
+Tue Dec 25 03:14:14 UTC 2012 - mlin@suse.com
+
+- Update to version 0.8.5
+  * Added few basic filters and mirroring support
+  * Added option for locking image preview proportions
+  * Fix initial window size being hardcoded to 640x480
+  * Coding convention fixes
+  * Added Portuguese translation, Traditional Chinese translation and
+    Dutch translation
+
+-------------------------------------------------------------------
+Mon May 14 14:51:45 UTC 2012 - mlin@suse.com
+
+- Use %{_kde4_sharedir}/config.kcfg instead of %{_kde4_configkcfgdir} for 
+  fix compilation on openSUSE <= 11.4
+
+-------------------------------------------------------------------
+Fri Apr 20 09:12:01 UTC 2012 - mlin@suse.com
+
+- initial import from 0.8.1

@@ -1,0 +1,36 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2017-07-21 11:27:24 +0200
+Subject: Disable update button and force exe path
+
+Update button is removed so that we don't end up with
+locally installed versions of youtube-dl and rely on
+the system one instead.
+
+Also the path for youtube-dl is hardcoded so that it
+can point to the system-installed executable.
+
+Index: youtube-dl-gui-0.4/youtube_dl_gui/mainframe.py
+===================================================================
+--- youtube-dl-gui-0.4.orig/youtube_dl_gui/mainframe.py
++++ youtube-dl-gui-0.4/youtube_dl_gui/mainframe.py
+@@ -226,7 +226,6 @@ class MainFrame(wx.Frame):
+         # label, event_handler
+         settings_menu_data = (
+             (self.OPTIONS_LABEL, self._on_options),
+-            (self.UPDATE_LABEL, self._on_update),
+             (self.VIEWLOG_LABEL, self._on_viewlog),
+             (self.ABOUT_LABEL, self._on_about)
+         )
+Index: youtube-dl-gui-0.4/youtube_dl_gui/optionsmanager.py
+===================================================================
+--- youtube-dl-gui-0.4.orig/youtube_dl_gui/optionsmanager.py
++++ youtube-dl-gui-0.4/youtube_dl_gui/optionsmanager.py
+@@ -276,7 +276,7 @@ class OptionsManager(object):
+             'username': '',
+             'password': '',
+             'video_password': '',
+-            'youtubedl_path': self.config_path,
++            'youtubedl_path': '__BINDIR__',
+             'cmd_args': '',
+             'enable_log': True,
+             'log_time': True,

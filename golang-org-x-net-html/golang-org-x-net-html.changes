@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Fri Jun  2 07:48:16 UTC 2017 - thipp@suse.de
+
+- Use full tarball and include %doc section
+
+-------------------------------------------------------------------
+Thu Jun  1 13:54:58 UTC 2017 - thipp@suse.de
+
+- Remove net/html/charset to avoid cyclic dependency 
+
+-------------------------------------------------------------------
+Fri Apr 28 18:42:32 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20170424.da118f7:
+  * x/net/html: Sync the html parser and atom with the current whatwg spec
+  * x/net/html/charset: Change NewReaderByName to NewReaderLabel.
+  * html/charset/testdata: update licensing info in README
+  * html: Use existing standard library interface internally.
+  * html: remove license references from benchmark test data
+  * html/charmap: update table with latest data
+  * html/charset: use x/text/encoding/htmlindex
+  * html/charset: handle unsupported code points for encoding
+  * html/charset: verify correct UTF-8 behavior
+  * html/charset: replace EUC-KR test
+
+-------------------------------------------------------------------
+Fri Apr 28 18:40:10 UTC 2017 - jmassaguerpla@suse.com
+
+- Only package and build golang.org/x/net/websocketto prevent problems with
+  build requirements of golang.org/x/net
+
+-------------------------------------------------------------------
+Tue Feb 28 11:02:10 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170227.906cda9:
+  * publicsuffix: update table to latest list from publicsuffix.org
+  * internal/netreflect: don't build on go1.9 or above
+  * lif: drop support for go1.5
+  * route: drop support for go1.5
+  * ipv4, ipv6, internal/netreflect, bpf: fix the x/net build
+  * http2/hpack: remove hpack's constant time string comparison
+  * http2: replace fixedBuffer with dataBuffer
+  * http2: Add opt-in option to Framer to allow DataFrame struct reuse
+  * http2/hpack: speedup Encoder.searchTable
+  * http2: add configurable knobs for the server's receive window
+
+-------------------------------------------------------------------
+Mon Feb 27 15:45:16 UTC 2017 - thipp@suse.de
+
+- Initial commit
+- Add _service
+- Add rpmlintrc

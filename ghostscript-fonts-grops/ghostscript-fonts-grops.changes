@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sat Dec 15 20:47:32 UTC 2018 - thomas.schraitle@suse.com
+
+No version change. Fix building issues:
+
+* Provide COPYING file.  
+  In version 9.26, the ghostscript package doesn't provide a
+  COPYING file anymore. So providing it.
+* Add missing %config macro for /etc/profile.d/* files 
+
+-------------------------------------------------------------------
+Fri Apr 27 07:03:13 UTC 2018 - i@marguerite.su
+
+- expand groff_version macro
+
+-------------------------------------------------------------------
+Fri Apr 27 06:47:46 UTC 2018 - i@marguerite.su
+
+- fix factory build
+
+-------------------------------------------------------------------
+Thu Dec 10 16:25:12 UTC 2015 - schwab@suse.de
+
+- Use %requires_eq
+
+-------------------------------------------------------------------
+Wed Oct 28 17:06:32 CET 2015 - tiwai@suse.de
+
+- dynamically create requires to groff with the version instead of
+  hardcoding in spec file
+
+-------------------------------------------------------------------
+Thu Feb 27 17:00:58 CET 2014 - tiwai@suse.de
+
+- add automatic installation for Polish locale (bnc#856842)
+
+-------------------------------------------------------------------
+Thu Jan  9 09:12:33 CET 2014 - tiwai@suse.de
+
+- add sh/csh profiles for setting $GROFF_FONT_PATH (bnc#856842)
+
+-------------------------------------------------------------------
+Wed Jan  8 08:22:49 CET 2014 - tiwai@suse.de
+
+- don't install to /usr/share/groff/current but to the symlinked
+  target directory
+
+-------------------------------------------------------------------
+Tue Jan  7 17:19:48 CET 2014 - tiwai@suse.de
+
+- add missing group tag
+- spec file cleanup via osc format_spec_file
+
+-------------------------------------------------------------------
+Fri Dec 27 13:47:07 UTC 2013 - giecrilj@stegny.2a.pl
+
+- Created from scratch (inspired by personal communication with Werner Lemberg)
+

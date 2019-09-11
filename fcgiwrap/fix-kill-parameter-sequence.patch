@@ -1,0 +1,27 @@
+From 4d9af71c4e18ca989835d6df20794bc8cbf66ea0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 6 Feb 2019 22:49:58 +0100
+Subject: [PATCH 2/2] fix kill() parameter sequence
+
+Fix from https://github.com/gnosek/fcgiwrap/pull/44,
+User decentsheep.
+---
+ fcgiwrap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 751c100..0fed56e 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -205,7 +205,7 @@ static void fcgi_finish(struct fcgi_context *fc, const char* msg)
+ 	if (fc->fd_stderr >= 0) close(fc->fd_stderr);
+ 
+ 	if (fc->cgi_pid)
+-		kill(SIGTERM, fc->cgi_pid);
++		kill(fc->cgi_pid, SIGTERM);
+ }
+ 
+ static const char * fcgi_pass_fd(struct fcgi_context *fc, int *fdp, FCGI_FILE *ffp, char *buf, size_t bufsize)
+-- 
+2.20.1
+

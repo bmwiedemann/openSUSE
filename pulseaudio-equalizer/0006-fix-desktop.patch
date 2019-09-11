@@ -1,0 +1,12 @@
+--- usr/share/applications/pulseaudio-equalizer.desktop	2011-08-18 14:07:30.000000000 -0500
++++ usr/share/applications/pulseaudio-equalizer.desktop.orig	2011-08-18 20:33:49.000000000 -0500
+@@ -5,7 +5,7 @@
+ GenericName=Equalizer
+ Comment=PulseAudio LADSPA interface using MBEQ Multiband EQ plugin
+ Exec=pulseaudio-equalizer-gtk
+-Icon=gnome-volume-control
++Icon=multimedia-volume-control
+ StartupNotify=true
+ Type=Application
+-Categories=AudioVideo;Audio;Mixer;GTK;
++Categories=AudioVideo;Mixer;GTK;

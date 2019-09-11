@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Thu Mar  9 17:07:47 UTC 2017 - sfalken@opensuse.org
+
+- Corrected improper source macro for COPYING file.
+
+-------------------------------------------------------------------
+Thu Mar  9 04:48:05 UTC 2017 - sfalken@opensuse.org
+
+- Changed how COPYING is installed.  The %doc macro is no longer
+  properly expanding ${RPM_SOURCE_DIR}, and isn't handling things
+  properly with having the COPYING file manually installed in
+  this package.   Clears builderror in openSUSE:Factory.
+
+-------------------------------------------------------------------
+Thu Mar  3 16:44:47 CET 2016 - jsmeix@suse.de
+
+- Since cups-filters version 1.6.0 the beh backend is provided
+  by the cups-filters RPM as /usr/lib/cups/backend/beh which is
+  a C re-write of the beh backend written in Perl that is still
+  provided here but now named /usr/lib/cups/backend/beh.pl
+  to avoid that cups-backends conflicts with cups-filters.
+
+-------------------------------------------------------------------
+Fri Mar 28 10:36:08 CET 2014 - jsmeix@suse.de
+
+- Added 'beh' the Backend Error Handler.
+  Since cups-filters version 1.0.42 foomatic-rip's upstream home
+  is moved from the foomatic-filters package to cups-filters and
+  foomatic-rip is provided in the cups-filters-foomatic-rip RPM.
+  The foomatic-filters package also contained 'beh' but that was
+  not moved into cups-filters.
+  Since hereby /usr/lib/cups/backend/beh is provided by both
+  cups-backends and foomatic-filters now cups-backends conflicts
+  with foomatic-filters.
+  As a result foomatic-filters is now obsolete and
+  for foomatic-rip cups-filters-foomatic-rip should be used and
+  for 'beh' cups-backends should be used.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:34 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Sep 18 00:09:29 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Apr  8 17:51:24 CEST 2010 - jsmeix@suse.de
+
+- Work with upstream compliant CUPS 1.4 on all platforms
+  which means to have a fixed "/usr/lib/cups/" directory
+  on all platforms (see Novell/Suse Bugzilla bnc#575544).
+- Removed the hal backend because HAL is deprecated
+  (see Novell/Suse Bugzilla bnc#593946).
+- Removed the hpnpf sources because those were "never" built
+  (at least not in any of our currently maintained
+   products SLES10, 11.0, 11.1, SLES11, and 11.2).
+
+-------------------------------------------------------------------
+Thu Aug 27 13:28:39 CEST 2009 - meissner@suse.de
+
+- fixed as-needed issue by using the right ordering
+  'hal.c -o hal -ldbus-1 -lhal' in the spec file
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed via 'export SUSE_ASNEEDED=0'
+  for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Thu May 28 12:58:50 CEST 2009 - jsmeix@suse.de
+
+- Removed the beh backend because it is now provided
+  in the upgraded foomatic-filters version 4.0.1 package.
+- Replaced the pipe backend source cups-pipe.pl perl script
+  with a new source cups-pipe.sh bash script which works
+  in much better compliance to CUPS and which also fixes
+  a bug that it did not get signals from the cupsd
+  so that it did not terminate pipe when removing jobs
+  (see Novell/Suse Bugzilla bnc#499735).
+
+-------------------------------------------------------------------
+Mon Jul 30 20:31:55 CEST 2007 - crivera@suse.de
+
+- Silence the hal backend.  This will allow current printers
+  that use the hal backend to work, but it will not report new
+  printers.  This is the first step toward removing the backend
+  completely. 
+
+-------------------------------------------------------------------
+Wed Mar 22 19:20:19 CET 2006 - lmuelle@suse.de
+
+- Update beh backend to the current version.
+- Add beh documentation derivated from http://www.linuxprinting.org/beh.html.
+- Move ncp backend to the ncpfs package.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 15:54:28 CET 2006 - kssingvo@suse.de
+
+- added backend error handler (beh) (bugzilla#132002)
+
+-------------------------------------------------------------------
+Tue Oct  4 10:23:29 CEST 2005 - jsrain@suse.cz
+
+- fixed the error handling in the pipe backend (#93480)
+
+-------------------------------------------------------------------
+Mon Sep 19 23:12:59 CEST 2005 - lmuelle@suse.de
+
+- Don't redirect stdout to stderr in the pipe backend.
+- Install the right files, [#117887].
+
+-------------------------------------------------------------------
+Tue Jul 26 12:47:55 CEST 2005 - kssingvo@suse.de
+
+- initial version
+

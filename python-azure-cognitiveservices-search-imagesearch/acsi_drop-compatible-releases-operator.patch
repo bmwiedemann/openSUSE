@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-search-imagesearch-1.0.0.orig/setup.py azure-cognitiveservices-search-imagesearch-1.0.0/setup.py
+--- azure-cognitiveservices-search-imagesearch-1.0.0.orig/setup.py	2018-05-02 19:33:56.000000000 +0200
++++ azure-cognitiveservices-search-imagesearch-1.0.0/setup.py	2018-09-03 11:58:55.337173357 +0200
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrest>=0.4.28,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

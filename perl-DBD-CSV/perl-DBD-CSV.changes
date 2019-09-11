@@ -1,0 +1,351 @@
+-------------------------------------------------------------------
+Thu Nov  8 15:28:32 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 0.54
+
+-------------------------------------------------------------------
+Wed Jul 25 09:08:20 UTC 2018 - coolo@suse.com
+
+- updated to 0.53
+0.53   - 2018-05-20, H.Merijn Brand
+    * No folder scanning during automated tests
+    * Fix col_names set to empty [] incorrectly skipping first row
+      (issue#6) (Ronald Schmidt)
+    * Small doc fix (Ronald Schmidt)
+    * Tested on FreeBSD
+
+0.52   - 2018-04-05, H.Merijn Brand
+    * Dot-in-inc (cpantesters) - I missed two
+
+0.51   - 2018-03-24, H.Merijn Brand
+    * Dot-in-inc (cpantesters)
+
+-------------------------------------------------------------------
+Sun Oct  8 08:14:15 UTC 2017 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.49	- 2016-05-12, H.Merijn Brand
+      * Simplified test-table-name generation
+      * Prefer quote_empty over quote_always for size (Text::CSV_XS => 1.18)
+      * Add CONTRIBUTING.md
+      * It's 2016
+      * Added docs to warn for reserved words (RT#106529)
+      * Minor spelling corrections (PRC Guillermo O. Freschi)
+      * Test with perl 5.24.0, DBI 1.636, SQL::Statement-1.410, and
+        Text::CSV_XS-1.23
+
+-------------------------------------------------------------------
+Fri Apr 17 09:20:55 UTC 2015 - coolo@suse.com
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.48	- 2015-02-11, H.Merijn Brand
+      * Update list of valid Text::CSV_XS attributes
+  
+  0.47	- 2015-02-11, H.Merijn Brand
+      * Updated copyright to 2015
+      * Make test-tablename unique for parallel testing
+      * Remove perl recommendation from META as it breaks cpan clients
+  
+  0.46	- 2014-11-08, H.Merijn Brand
+      * Column type CHAR should return 1
+  
+  0.45	- 2014-10-23, H.Merijn Brand
+      * Test unauthorized folder access (RT#99508). Requires DBD::File-0.43
+      * Fix DBI requirement phase (depend more on toolchain) (RT#99732)
+
+-------------------------------------------------------------------
+Fri Sep 19 12:15:51 UTC 2014 - coolo@suse.com
+
+- updated to 0.44
+     * Table names case sensitiveness not tested case-problematic FS's
+     * Fix defaults in doc (annocpan)
+     * Fix typo in SYNOPSIS (RT#97313)
+     * Workaround eof bug in Text::CSV_XS-1.10
+ 
+ 0.43   - 2014-06-30, H.Merijn Brand
+     * Updated copyright to 2014
+     * Unquote schema's in test for cygwin
+     * Extra guards in Makefile.PL for unmet requirements
+ 
+ 0.42   - 2013-08-14, H.Merijn Brand
+     * Optionally skip tests using File::Spec->tempdir () RT#87684
+     * And document the use of $TMPDIR in README
+     * Make the SYNOPSIS more reflect real-world usage
+     * Detect DBI::Test and use it if available
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:13 UTC 2013 - coolo@suse.com
+
+- updated to 0.41
+    * Use File::Spec->tmpdir () for universal existing folder
+      Note that huge $TMP folders may cause the test to run slow
+    * Use File::Spec::rel2abs () instead of abs_path and hoops
+    * Guard against parallel testing, which is unsupported
+    * Guard against streaming tests (they PASS on the DBI-devel)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:53 UTC 2013 - coolo@suse.com
+
+- updated to 0.40
+     * Fix version references in doc
+     * Fix tests for Windows
+ 
+     * Use f_file in docs. file is deprecated
+     * DBD::CSV's repository moved to github
+     * Add test for row-completeness
+     * Fix UTF-8 tests to better follow Text::CSV_XS auto-encoding
+     * Require more recent versions of low level modules that fixe
+       issues reported for DBD::CSV
+     * Development will also do mosts tests with DBI_SQL_NANO=1
+     * Added support for f_dir_search from DBD::File (in fact DBI was
+       changed to feature this for DBD::CSV :)
+     * Fix test relying on spell-error in DBI's error message
+     * Document csv_class (still undertested)
+
+-------------------------------------------------------------------
+Mon Jun 17 07:54:57 UTC 2013 - coolo@suse.com
+
+- updated to 0.38
+   * Fixed RT#80078, resulting in getline calls on undef (Benjamin Booth)
+   * Require latest DBI and SQL::Statement
+   * Updated copyright to 2013
+   * Fixes for DBI-1.623 (Jens Rehsack)
+   * Add line/record number and position in error messages
+   * Improved documentation (including mje's contribution)
+   * Tested under 5.16.0 (installed)
+
+-------------------------------------------------------------------
+Sat May 12 19:59:32 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.34:
+  * require 5.8.1, as DBI does
+  * tested against perl-5.16.0-RC0 + DBI-1.620
+
+-------------------------------------------------------------------
+Fri Nov 18 18:31:09 UTC 2011 - coolo@suse.com
+
+- update to 0.33
+    * NAME / DISTNAME in Makefile.PL
+    * TYPE should be numeric
+    * Added tests for return count of delete statements in do
+    * Upped copyright to 2011
+    * Added tests for return count of update statements (Peter Rabbitson)
+    * Try to catch (more) usernames on Windows as schema names
+    * More cross-checks for META data
+
+-------------------------------------------------------------------
+Wed Apr  6 07:55:36 UTC 2011 - coolo@novell.com
+
+- shorten description
+
+-------------------------------------------------------------------
+Fri Apr  1 07:52:28 UTC 2011 - coolo@novell.com
+
+- /pro is not FHS-compliant
+
+-------------------------------------------------------------------
+Thu Mar 31 09:11:46 UTC 2011 - coolo@novell.com
+
+- update to 0.31
+  * Require 5.8.1 (effectively already doing so by requiring DBI-1.614)
+  * Update tests to use warnings and done_testing ()
+    requires Test::More-0.90, which is also required for DBI
+  * Better diagnostics for empty files
+  * Allow late setting of attributes (RT#61168) - requires DBI-1.614
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 20 14:33:23 UTC 2010 - chris@computersalat.de
+
+- update to 0.30
+    * Text::CSV_XS now called with auto_diag
+    * Implement valid_attrs
+    * Next version will require DBI-1.612 or higher
+      This is a transition release
+- 0.29_03  H.Merijn Brand
+    * Remove leftover debug. Causes fails
+- 0.29_02  H.Merijn Brand
+    * More work to keep in sync with DBI development (Jens)
+    * Better diagnostics for missing modules
+    * More spell-check fixes
+    * Tests for ChopBlanks (now fixed in DBD::File)
+    * Tests changed to accept old and new DBI
+    * Statement handle attributes handled in new DBD::File
+- 0.29_01  H.Merijn Brand
+    * Prepare for DBD::File-0.39 (DBI-1.612+)
+      Should still work with older DBI versions
+    * Documentation updates (style, consistency, spell-checking)
+    * Test folder cleanup
+    * More tests for insert
+    * Tested RT#58039
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Wed Jun  2 14:24:58 UTC 2010 - chris@computersalat.de
+
+- update to 0.29
+  * Fix git URL in META.yml
+  * Add empty CLONE method to prevent warning when cloning threads
+  * Minimum perl 5.8.1
+  * Minimum Text::CSV_XS 0.71
+  * Support for f_encoding (requires DBI-1.611)
+  * Documentation updates
+
+-------------------------------------------------------------------
+Sun Apr  4 21:45:34 UTC 2010 - chris@computersalat.de
+
+- update to 0.28
+  * Remove t/00_minimumversion.t from distribution
+  * Dropped YAML spec to 1.0
+  * Sync up with SQL::Statement 1.25
+    NOTE: Internals of both modules changed. They will change again
+          for SQL::Statement 2.0
+- 0.27  H.Merijn Brand
+  * Upped copyright to 2010
+  * Doc-fix typo in link (Detlef Pilzecker)
+  * Doc-fix small typo's
+- 0.26  H.Merijn Brand
+  * Adjustments for windows (RT#50544)
+  * Mark all non-\w chars illegal in field and table names
+  * Fix field types after execute (RT#51090, vgdoqd)
+  * Fix for NULL joins. Requires SQL::Statement 1.23
+    (RT#43010, JBAZIK)
+- 0.25  H.Merijn Brand
+  * Raised minimum perl version to 5.005_03
+  * Requires Text::CSV_XS 0.43 (needs eof () method and
+    error_diag ()) (RT#33764)
+  * Code cleanup (perlcritic, style, layout)
+  * Implemented f_ext
+  * Implemented f_schema (in DBD::File)
+  * Split csv handles for input (no eol default) and
+    output (default "\r\n") (RT#33767)
+  * Updated info URL's
+  * Cleaned up tests
+  * Tests now use Test::More
+  * Cut down README. No need to be a duplicate module pod
+  * Added TODO to documentation
+  * Added examples/ from docs
+  * Add csv_null
+  * Add csv_* to pass to the parser
+  * Improved error handling and reporting
+  * Table names case sensitiveness
+  * Implemented raw_header (RT#44583)
+- 0.23  Jeff Zucker <jzuckerATcpan.org>
+  * fixed bug in automatic column generation, defining
+    col_names => [] will auto generate col1, col2, etc.
+    thanks for bug report, harleypig on AnnoCPAN
+  * added support for multi-character end-of-line separators
+    thanks for suggestion, harleypig on AnnoCPAN
+- cleanup spec
+  o sort TAGS
+  o update Url
+  o fix deps
+  o update description
+  o removed "rm -vf t/40bindparam*"
+  o macros
+- added perl-macros
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jul 31 22:30:16 CEST 2008 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:11:31 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jul 29 18:40:38 CEST 2005 - cthiel@suse.de
+
+- update to version 0.22
+
+-------------------------------------------------------------------
+Mon Aug  9 19:02:10 CEST 2004 - ro@suse.de
+
+- update to 0.21
+- t/40bindparam.t does still fail (but update is needed
+  because of the fileconflict with perl-DBI)
+
+-------------------------------------------------------------------
+Fri Aug 22 14:21:50 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 13:47:20 CEST 2003 - nashif@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Tue Jul  1 12:22:35 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Fri Jun 13 06:39:44 CEST 2003 - nashif@suse.de
+
+- Fixed file list
+
+-------------------------------------------------------------------
+Tue Dec  3 00:53:10 CET 2002 - ro@suse.de
+
+- repack tar archive with uids < 65536 
+
+-------------------------------------------------------------------
+Mon Jul  8 06:27:51 CEST 2002 - nashif@suse.de
+
+- Update to version 0.2002
+
+-------------------------------------------------------------------
+Tue Dec 11 14:15:59 CET 2001 - nashif@suse.de
+
+- Update to version 0.1029
+
+-------------------------------------------------------------------
+Thu Oct 11 18:23:08 CEST 2001 - nashif@suse.de
+
+- Update to version 0.1027
+- Fix bug#11747
+
+-------------------------------------------------------------------
+Fri Feb 23 06:18:00 MET 2001 - nashif@suse.de
+
+- Update to version 0.1025
+
+-------------------------------------------------------------------
+Wed Dec 13 01:09:34 MET 2000 - nashif@suse.de
+
+- Changed Requires to new long package names
+
+-------------------------------------------------------------------
+Wed Nov  8 14:52:44 MET 2000 - nashif@suse.de
+
+- Changed to long package name
+- Changed neededforbuild
+
+-------------------------------------------------------------------
+Tue Sep 26 15:08:11 MEST 2000 - nashif@suse.de
+
+- Initial Release (Version 0.1022)
+

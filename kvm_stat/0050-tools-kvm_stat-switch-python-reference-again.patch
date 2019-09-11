@@ -1,0 +1,25 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 14 Mar 2019 16:28:25 -0700
+Subject: [PATCH] tools/kvm_stat: switch python reference again
+
+This time, from /usr/bin/env python3 to be /usr/bin/python3
+
+[BR: BSC#1116822]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index ed6518bf2ab5..2a95389d2864 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # SPDX-License-Identifier: GPL-2.0-only
+ #
+ # top-like utility for displaying kvm statistics
+-- 
+2.19.1
+

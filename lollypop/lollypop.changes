@@ -1,0 +1,1178 @@
+-------------------------------------------------------------------
+Wed Aug 14 12:01:23 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.14:
+  * Update genres after removing track.
+- Changes from version 1.1.4.13:
+  * Fix version in meson.build.
+
+-------------------------------------------------------------------
+Mon Aug 12 07:51:19 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.12:
+  * Fix adding track to playlist (glgo#World/lollypop#1965).
+  * Fix crash after scan (glgo#World/lollypop#1963).
+
+-------------------------------------------------------------------
+Tue Aug 06 11:47:16 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.11:
+  * Fix an issue with sync code.
+- Changes from version 1.1.4.10:
+  * Fix crash in search (glgo#World/lollypop#1958).
+
+-------------------------------------------------------------------
+Thu Aug 01 21:01:20 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.9:
+  * Another Ubuntu fix (glgo#World/lollypop#1931).
+
+-------------------------------------------------------------------
+Wed Jul 31 08:13:36 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.8:
+  * Fix a crash on Ubuntu 18.04 (glgo#World/lollypop#1907).
+
+-------------------------------------------------------------------
+Mon Jul 29 07:59:11 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.7:
+  * Remove python-wikipedia dependency.
+
+-------------------------------------------------------------------
+Fri Jul 26 18:38:02 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.6:
+  * Fix an issue with beautifulsoup4.
+
+-------------------------------------------------------------------
+Fri Jul 19 06:26:27 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.5:
+  * Fix an issue with MTP sync (glgo#World/lollypop#1898).
+
+-------------------------------------------------------------------
+Wed Jul 17 19:22:29 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.4:
+  * Fix an issue with party submenu (glgo#World/lollypop#1896).
+
+-------------------------------------------------------------------
+Mon Jul 15 06:12:18 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.3:
+  * Fix an issue in "Decades" view.
+  * Fix a crash when scrolling the artist view
+    (glgo#World/lollypop#1887).
+
+-------------------------------------------------------------------
+Mon Jul 08 19:01:24 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.2:
+  * Fix a crash (glgo#World/lollypop#1885).
+
+-------------------------------------------------------------------
+Sun Jul 07 16:18:22 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.4.1:
+  * Fix a crash (glgo#World/lollypop#1884).
+- Changes from version 1.1.4:
+  * Fix some crashes (glgo#World/lollypop#1878,
+    glgo#World/lollypop#1880).
+  * Fix a shortcut issue (glgo#World/lollypop#1879).
+  * Fix display of compilations (glgo#World/lollypop#1875).
+
+-------------------------------------------------------------------
+Fri Jun 28 21:44:28 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.3.1:
+  * Fix wrong view displayed when sidebar is disabled
+    (glgo#World/lollypop#1872).
+
+-------------------------------------------------------------------
+Fri Jun 28 18:17:57 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.3:
+  * Bug fixes:
+    glgo#World/lollypop#1865, glgo#World/lollypop#1867,
+    glgo#World/lollypop#1868, glgo#World/lollypop#1869,
+    glgo#World/lollypop#1879, glgo#World/lollypop#1871.
+
+-------------------------------------------------------------------
+Sun Jun 23 15:07:52 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.1:
+  * Add support for reading synced lyrics from tags.
+  * Fix a crash on playlist update (glgo#World/lollypop#1864).
+  * Don't lose search results upon search mode switch
+    (glgo#World/lollypop#1859).
+  * Fix a case of playback stopping unexpectedly
+    (glgo#World/lollypop#1840).
+
+-------------------------------------------------------------------
+Thu Jun 20 18:04:20 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.0:
+  * New fullscreen mode.
+  * New MTP sync mode.
+  * New synced lyrics support.
+
+-------------------------------------------------------------------
+Tue May 28 05:31:01 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.12:
+  * Prevent view change upon song rate (glgo#World/lollypop#1826).
+  * Prevent scrollbar to be hidden by artist banner
+    (glgo#World/lollypop#1822).
+  * Fix a crash upon click on artist name
+    (glgo#World/lollypop#1821).
+  * Prevent application notifications to pop out of the window
+    (glgo#World/lollypop#1820).
+
+-------------------------------------------------------------------
+Mon May 20 05:46:29 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.11:
+  * Fix "Stop after" feature (glgo#World/lollypop#1814).
+  * Add resize options for album art (glgo#World/lollypop#1810).
+  * Allow per track cover again (glgo#World/lollypop#1356,
+    glgo#World/lollypop#1809).
+  * Locally save albums added from the web
+    (glgo#World/lollypop#1807).
+
+-------------------------------------------------------------------
+Sun May 12 07:07:26 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.10:
+  * Remove space shortcut to fix search with spaces
+    (glgo#World/lollypop#1804).
+  * Fix artist view with multi-disc albums
+    (glgo#World/lollypop#1801).
+  * Allow search by performer (glgo#World/lollypop#1802).
+  * Allow scrolling over FastScroll widget
+    (glgo#World/lollypop#1803).
+  * Show user what will happen on previous button clicked
+    (glgo#World/lollypop#1800).
+
+-------------------------------------------------------------------
+Tue May 07 17:21:03 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.9:
+  * Add option for stopping playback after track
+    (glgo#World/lollypop#1775).
+  * Improve warnings when network access is disabled
+    (glgo#World/lollypop#1793).
+  * Fix song switch when crossfading is enabled
+    (glgo#World/lollypop#1794).
+
+-------------------------------------------------------------------
+Sat May 04 13:19:07 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.8:
+  * Update icon.
+  * Fix short high CPU usage bursts (glgo#World/lollypop#1776).
+  * Use a fixed art size for miniplayer (glgo#World/lollypop#1790).
+  * Add remixers to artist lists (glgo#World/lollypop#1781).
+
+-------------------------------------------------------------------
+Mon Apr 22 17:25:11 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.7:
+  * Fix a crash when selecting albums (glgo#World/lollypop#1783).
+  * Fix a crash when browsing for radio station
+    (glgo#World/lollypop#1777).
+
+-------------------------------------------------------------------
+Tue Apr 16 05:38:56 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.6:
+  * Bug fixes.
+  * Workaround a pygobject memory leak (glgo#World/lollypop#1773).
+  * Enhanced MusicBrainz tags support.
+  * Remove lollypop-cli, not maintained and not working.
+
+-------------------------------------------------------------------
+Tue Apr 02 17:57:52 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.5:
+  * Fix a crash while scanning collection
+    (glgo#World/lollypop#1763).
+
+-------------------------------------------------------------------
+Mon Apr 01 17:24:02 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.4:
+  * New privacy settings.
+  * Fix a crash (glgo#World/lollypop#1761).
+  * Fix back arrow displayed in "All artists" view.
+    (glgo#World/lollypop#1756).
+
+-------------------------------------------------------------------
+Fri Mar 29 06:33:02 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.3:
+  * Fix a crash in Smart Playlists
+  * Add BPM support to Smart Playlists (glgo#World/lollypop#1750).
+  * Add auto playback (glgo#World/lollypop#1748).
+  * Force background color (glgo#World/lollypop#1754).
+  * Fix a crash during startup (glgo#World/lollypop#1751).
+
+-------------------------------------------------------------------
+Fri Mar 22 17:07:29 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.2:
+  * Fix a crossfading issue.
+- Changes from version 1.0.1:
+  * Force connect when network is available
+    (glgo#World/lollypop#1588).
+  * Fix a crash on empty collection (glgo#World/lollypop#1712).
+  * Do not empty collection if disk is removed.
+  * Fix search provider.
+
+-------------------------------------------------------------------
+Mon Mar 18 21:51:19 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0:
+  * Spotify/YouTube support is back.
+  * New application menu.
+  * Many bug fixes.
+- Add youtube-dl as recommended dependency.
+
+-------------------------------------------------------------------
+Thu Mar 14 09:02:04 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.925:
+  * Fix a crash in device manager (glgo#World/lollypop#1698).
+
+-------------------------------------------------------------------
+Sun Mar 03 17:57:47 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.924:
+  * Fix an issue with compilations.
+
+-------------------------------------------------------------------
+Wed Feb 27 18:10:56 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.923:
+  * Fix a crash when adding a track to a playlist
+    (glgo#World/lollypop#1684).
+  * Update icons using colors of the GNOME palette.
+  * Replace Ctrl+s with Ctrl+, for accessing settings
+    (glgo#World/lollypop#1623).
+
+-------------------------------------------------------------------
+Mon Feb 25 19:12:24 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.922:
+  * Enhanced adaptive mode.
+  * Reworked similar artists popover.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Feb 20 07:23:35 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- python3-Pillow is required rather than recommended since
+  version 0.9.920.
+
+-------------------------------------------------------------------
+Tue Feb 19 19:20:26 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.921:
+  * Fix an issue with HiDPI.
+  * Fix an issue with special chars.
+  * Allow year navigation from album.
+- Changes from version 0.9.920:
+  * Add an equalizer.
+  * New album view.
+  * New default sidebar.
+
+-------------------------------------------------------------------
+Tue Jan 29 19:57:41 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.916:
+  * Fix inotify code.
+  * Faster collection scanner.
+
+-------------------------------------------------------------------
+Sat Jan 26 13:14:00 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.915:
+  * Fix an issue with artist playback (glgo#World/lollypop#1611).
+  * Fix an issue with lyrics (glgo#World/lollypop#1606).
+  * Fix an issue in collection scanner.
+  * Fix an issue with collection history.
+
+-------------------------------------------------------------------
+Wed Jan 23 19:25:25 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.914:
+  * Fix a crash in radios (glgo#World/lollypop#1606).
+- Changes from version 0.9.913:
+  * Fix issues in collection scanner.
+  * Enhance mini-player (glgo#World/lollypop#1607).
+
+-------------------------------------------------------------------
+Fri Jan 18 17:23:04 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.912:
+  * Fix an issue with playlists (glgo#World/lollypop#1599).
+  * Add an error message for conversion failure when music is on
+    smb share (glgo#World/lollypop#1585).
+  * Increase size of album cover exported for MPRIS
+    (glgo#World/lollypop#1593).
+
+-------------------------------------------------------------------
+Wed Jan 16 20:14:36 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.911:
+  * Fix search provider issue (glgo#World/lollypop#1493).
+  * Escape playlists on sync (glgo#World/lollypop#1597).
+  * Scrobble on connect if a track is playing
+    (glgo#World/lollypop#1588).
+  * Fix a crash when object name is empty
+    (glgo#World/lollypop#1596).
+  * Fix radio restore state (glgo#World/lollypop#1595).
+  * Fix scroll volume down when window is not focused
+    (glgo#World/lollypop#1591).
+
+-------------------------------------------------------------------
+Tue Jan  8 18:38:12 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.910:
+  * Fix a small issue with adaptive mode.
+
+-------------------------------------------------------------------
+Thu Jan  3 15:40:38 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.909:
+  * Enhanced drag and drop.
+  * Bug fixes (glgo#World/lollypop#1576, glgo#World/lollypop#1583).
+
+-------------------------------------------------------------------
+Thu Dec 27 09:38:03 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.908:
+  * Fix an issue with artist view.
+  * Various bug fixes (glgo#World/lollypop#1576,
+    glgo#World/lollypop#1577, glgo#World/lollypop#1579,
+    glgo#World/lollypop#1580).
+
+-------------------------------------------------------------------
+Sat Dec 22 20:01:33 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.907:
+  * Fix some playback issues (glgo#World/lollypop#1574).
+  * Import loved tracks from playlists (glgo#World/lollypop#1573).
+  * Fix a crash (glgo#World/lollypop#1571).
+
+-------------------------------------------------------------------
+Wed Dec 19 20:00:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.906:
+  * Fix bug where cover was never shown.
+- Changes from version 0.9.905:
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Tue Dec 18 06:57:25 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.904:
+  * Fix a crash in information popover (glgo#World/lollypop#1564).
+  * Fix a crash upon new album image selection
+    (glgo#World/lollypop#1568).
+  * Make right-click on album more consistent
+    (glgo#World/lollypop#1566).
+  * Don't show an empty similar artists popover when there is no
+    similar artist (glgo#World/lollypop#1565).
+
+-------------------------------------------------------------------
+Sat Dec 15 15:14:57 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.903:
+  * Fix an issue with lyrics translation
+    (glgo#World/lollypop#1563).
+- Changes from version 0.9.902:
+  * Fix empty popover display after clicking "Show Lyrics"
+    (glgo#World/lollypop#1561).
+  * Clarify error message in lyrics view when module textblob is
+    not installed.
+- Add python-textblob as suggested dependency:
+  * It allows lollypop to translate lyrics in user language. Not a
+    new feature, it was actually introduced in 0.9.522.
+  * Note that module textblob is not available in Factory yet.
+
+-------------------------------------------------------------------
+Fri Dec 14 16:13:43 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.901:
+  * Fix a crash in information popover (glgo#World/lollypop#1560).
+- Changes from version 0.9.900:
+  * New navigation mode when sidebar is off.
+  * New smart playlists (glgo#World/lollypop#890).
+  * Faster album loading.
+  * Faster track loading.
+  * Better sync to device.
+  * Restore playback position on start.
+  * Better adaptive mode: radio support, toolbar buttons, search…
+  * Various bugfixes.
+
+-------------------------------------------------------------------
+Thu Nov  8 19:51:59 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.612:
+  * Fix an issue with lyrics (glgo#World/lollypop#1536).
+  * Fix an issue with kid3-cli (glgo#World/lollypop#1527).
+
+-------------------------------------------------------------------
+Sun Nov  4 13:13:12 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.611:
+  * Fix an issue with track management.
+
+-------------------------------------------------------------------
+Sun Oct 28 17:55:05 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.610:
+  * Fix broken MTP sync on GNOME 3.30 (glgo#World/lollypop#1522).
+  * Fix a crash about album discs (glgo#World/lollypop#1511).
+  * Fix broken radio view (glgo#World/lollypop#1529).
+- Remove useless runtime dependency on gobject-introspection.
+
+-------------------------------------------------------------------
+Thu Oct 25 17:29:32 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.609:
+  * Fix a "sqlite db locked" introduced in 0.9.608.
+- Changes from version 0.9.608:
+  * Fix an issue with multiple disc albums
+    (glgo#World/lollypop#1528).
+  * Fix hang while updating collection (glgo#World/lollypop#1517).
+  * Stop playback if writing to tags on current album
+    (glgo#World/lollypop#1527).
+
+-------------------------------------------------------------------
+Mon Oct 22 18:05:16 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.607:
+  * Fix playlists creation.
+  * Update translations.
+- Change from version 0.9.606:
+  * Fix a crash in radios.
+
+-------------------------------------------------------------------
+Fri Oct 19 17:52:44 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.605:
+  * Sort albums with full date (glgo#World/lollypop#1301).
+  * Faster album loading.
+  * Add a button to go from search to artist.
+  * Better Wikipedia search.
+  * Allow importing loved tracks (glgo#World/lollypop#1441).
+  * Enable/disable last.fm scrobbling from main window
+    (glgo#World/lollypop#1509).
+  * Fix some crashes (glgo#World/lollypop#1520,
+    glgo#World/lollypop#1517)
+  * Handle PART= comment in tags (glgo#World/lollypop#1515).
+  * Fix music stop after first enqueued song
+    (glgo#World/lollypop#1514).
+  * Fix genre and artist column widths (glgo#World/lollypop#1513).
+  * Reworked application icon.
+- Updated path to icons in file list: New svg icon added.
+
+-------------------------------------------------------------------
+Mon Oct  8 16:54:27 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.604:
+  * Fix genres in decade view.
+- Changes from version 0.9.603:
+  * Fix a crash in artist view.
+
+-------------------------------------------------------------------
+Sat Oct  6 17:26:44 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.602:
+  * Fix a freeze in playlists (glgo#World/lollypop#1507).
+  * Make build reproducible (glgo#World/lollypop#1502,
+    boo#1110032).
+  * Use Gio.Drive.is_removable() (glgo#World/lollypop#1498).
+  * Updated translations.
+- Drop lollypop-0.9.601-reproducible.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep 27 19:38:58 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add lollypop-0.9.601-reproducible.patch: Make build reproducible
+  (boo#1110032).
+
+-------------------------------------------------------------------
+Mon Sep 24 05:33:34 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.601:
+  * Fix stupid crash (glgo#World/lollypop#1501).
+- Drop lollypop-0.9.600-fix-crash-lyrics-view.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Sep 21 22:02:58 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.600:
+  * Reworked playlist management.
+  * Reworked sync to MTP.
+  * lollypop-portal is not needed anymore.
+  * Updated translations.
+  * Bugfixes:
+    + glgo#World/lollypop#1495
+    + glgo#World/lollypop#1494
+    + glgo#World/lollypop#1484
+    + glgo#World/lollypop#1457
+- Add lollypop-0.9.600-fix-crash-lyrics-view.patch: Fix crash
+  upon lyrics view closing, picked from upstream
+  (glgo#World/lollypop#1501).
+- Fix typo in recommended package name: python3-Pillow.
+- No longer recommend lollypop-portal.
+
+-------------------------------------------------------------------
+Thu Aug 23 17:35:38 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.522:
+  * Browse albums by years.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Jul 21 22:57:36 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.521:
+  * Fix an issue in party mode.
+
+-------------------------------------------------------------------
+Mon Jul 16 09:53:25 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.520:
+  * Set menu initial state. Fix glgo#World/lollypop#1467.
+  * Same fix for playback action.
+
+-------------------------------------------------------------------
+Mon Jul  9 05:42:20 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.519:
+  * Fix crash in TuneIn. Fix gl#World/lollypop#1465.
+  * Set default value to both. Fix gl#World/lollypop#1463.
+  * Show lyrics for current popover track.
+  * Make lyrics view more discoverable. Fix gl#World/lollypop#1451.
+  * Only show one artist in InfoPopover.
+  * Hide Next Popover when showing main menu.
+- Actually provide a -lang subpackage.
+
+-------------------------------------------------------------------
+Sun Jul 01 19:51:06 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.518:
+  * Restore next popover.
+- Update to version 0.9.517:
+  * Bug fixes.
+  * Remove party mode button.
+  * Disable appmenu.
+
+-------------------------------------------------------------------
+Mon Jun 25 09:18:03 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.516:
+  * Fix screenshot height
+  * Fix lyrics reader (from tags). Fix #1450
+  * Fix Alt+a shortcut  behaviour
+  * Allow users to discover sidebar options
+  * Some sensitivity tweaking
+
+-------------------------------------------------------------------
+Tue Jun 19 18:35:06 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.515:
+  * Fix Missing artists list. Fix #1443
+  * Crash when opening the playlist popup if the random playlist is
+    selected. Fix #1447
+  * Properly calculate height for every case. Fix #1445
+  * Save currently playing/queue as new playlist. Fix #1439
+  * Fix #1440
+  * Fix a crash when an album is missing an URI
+  * Fix typo
+  * Add ⮟ to fastscroll widget
+  * Gtk.FileChooserDialog only blocks key-press-event. Fix #1435
+  * Disable scroll event on combobox. #1435
+  * Add ⮝ to fastscroll widget. Fix #1434
+- Update git URL.
+
+-------------------------------------------------------------------
+Thu May 24 05:38:10 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.514:
+  * Fix search shortcut.
+- Update to version 0.9.513:
+  * Workaround a crash in Pango.
+  * Enable new encoders in MTP sync.
+  * Use Gtk.Gesture.
+
+-------------------------------------------------------------------
+Thu May 17 18:19:43 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.512:
+  * Fix a small issue with artist CellRender.
+- Update to version 0.9.511:
+  * Fix a bug showing unwanted empty widget.
+- Update to version 0.9.510:
+  * Fix inotify support.
+- Update to version 0.9.509:
+  * Fix fullscreen on multihead.
+  * Rework sidebar.
+
+-------------------------------------------------------------------
+Thu May  3 16:02:19 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.9.508:
+  * Do not empty ids. Fix glgo#gnumdk/lollypop#1414
+  * Add <Alt>a shortcut to show current track artist. Fix
+    glgo#gnumdk/lollypop#1413
+  * Add Alt-a shortcut
+  * Donation popup (beer, beer, beer)
+  * Simpler radio widget
+  * Handle external tracks as internal
+  * Updated translations
+- Add Recommends: python3-pillow: optional dependency.
+
+-------------------------------------------------------------------
+Sat Apr 28 08:50:41 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.507:
+  * Fix crash. Fix #1405.
+  * Spelling: Unplayed x2, USB.
+  * Update translations.
+  * Allow user to enable USB disk from UI. Fix #1403.
+
+-------------------------------------------------------------------
+Thu Apr 19 16:37:21 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.506:
+  * Create information store on init. Fix #1402.
+- Update to version 0.9.505:
+  * Rework all Shuffle code.
+  * Add some blur to lyrics view.
+  * Import playlists from disk.
+  * Allow exporting playlists to disk.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Apr 14 07:30:48 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.504:
+  * Fix indicator in playlists.
+  * Update translations
+- Update to version 0.9.503:
+  * Fix Enable network access ignored by lyrics and information
+    popover.
+- Update to version 0.9.502:
+  * Fix a crash.
+- Update to version 0.9.501:
+  * Bug fixes.
+- Update to 0.9.500:
+  * Rework information popover.
+  * New lyrics widget.
+- Use %license instead of %doc for license file (boo#1082318).
+- Add %check section.
+- Clean dependencies:
+  * Add python3-beautifulsoup4 as runtime dependency (needed by
+    new lyrics widget as well as existing artwork search
+    feature).
+  * Remove useless explicit dependencies:
+    + gettext-runtime: Already required by intltool.
+    + libxml2: Already required by itstool.
+    + ninja: Already required by meson.
+    + gstreamer: Already required by gstreamer-plugins-base.
+    + pkgconfig(gio-2.0): Already required by pkgconfig(gtk+-3.0).
+  * Remove fdupes (no duplicated files).
+  * Remove unneeded hicolor-icon-theme.
+  * Remove unneeded pkgconfig(gsettings-desktop-schemas).
+  * Remove git-core (useless without internet access during
+    build).
+  * Add desktop-files-utils as build dependency (used in %check
+    section), remove it from runtime requirements.
+
+-------------------------------------------------------------------
+Wed Mar 28 18:54:41 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.403:
+  * Workaround bgo#766284.
+  * Show notifications when window is not visible.
+  * Close notification on quit.
+  * Fix a crash when trying to love a None track id.
+- Update to version 0.9.402:
+  * Quit app on SIGTERM/SIGINT.
+  * Bugfixes.
+- Update to version 0.9.401:
+  * Fix an issue in Collection scanner.
+  * Add an option to disable compilations.
+
+-------------------------------------------------------------------
+Fri Mar  9 00:06:36 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.9.400:
+  * Fix meson build
+  * Rework generate_data.sh
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed Dec 27 13:20:01 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.306:
+  * Fix crash due to broken commit.
+  * Add support for audio/x-wavpack.
+  * Update GTK minimal version to 3.20.
+  * Update translations.
+- Changes from version 0.9.305:
+  * Allow jumping to artist from search view.
+  * Rework fullscreen layout.
+  * Choose startup view.
+- Update spec file:
+  * Change URL and Source fields: Lollypop has moved to GNOME's
+    infrastructure.
+  * Drop post(un) scriptlets: They are empty for Tumbleweed and
+    Leap 15 and this package does not build anymore with previous
+    versions of openSUSE.
+  * Drop glib2_gsettings_schema_requires (was needed for post(un)
+    macros).
+  * Drop conditionals for openSUSE Leap 42.3 and older.
+  * Ran spec-cleaner.
+- Add _service file.
+
+-------------------------------------------------------------------
+Mon Oct 16 08:32:43 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.303:
+  + Make lollypop-cli working again
+  + Do not remove tracks if collection does not exist
+- Drop lollypop-libexecdir-location.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sun Oct  8 00:14:27 UTC 2017 - jengelh@inai.de
+
+- Trim description.
+
+-------------------------------------------------------------------
+Sat Oct  7 11:45:40 UTC 2017 - kkirill@opensuse.org
+
+- Update to version 0.9.303:
+  + Another bug fix: sync code was broken
+
+- Changes from version 0.9.302:
+  + Fix important issue with flatpak package
+  + Fix radios
+
+-------------------------------------------------------------------
+Wed Oct  4 11:37:39 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.300:
+  + New "never played albums" section.
+  + Remove all youtube-dl play code.
+  + Bug fixes.
+- Rebase lollypop-libexecdir-location.patch.
+
+-------------------------------------------------------------------
+Tue Jul 11 08:59:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.244:
+  + Fix build issues which caused binary files to have
+    non-executable permissions.
+  + Drop rhythmbox2lollypop binary, and adapt its features into
+    lollypop-cli.
+- Update file list in keeping with rhythmbox2lollypop removal.
+- No longer need to manually set exec perms on binaries, this is
+  taken care of by the installer now.
+- Update BuildRequires:
+  + Explicitly require meson >= 0.40.0, as that is the least
+    supported version now.
+  + Explicitly require gettext-runtime >= 0.19.7 as building now
+    requires `msgfmt --xml` which is only supported from this
+    version (NB: gettext-runtime was being automatically pulled
+    in earlier).
+
+-------------------------------------------------------------------
+Thu Jul  6 19:45:44 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.243:
+  + Meson build
+  + Fix a GTK require issue.
+- Add lollypop-libexecdir-location.patch: Pick up libexecdir from
+  option passed to meson instead of harcoding $prefix/libexecdir
+  (we don't even use /usr/libexecdir).
+
+-------------------------------------------------------------------
+Mon Jul  3 15:34:52 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.241:
+  + Fix an important issue with Spotify API
+
+-------------------------------------------------------------------
+Fri Jun 16 06:12:45 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.240:
+  + Fix an issue with progressbar position on state restoration. 
+
+-------------------------------------------------------------------
+Sat Jun  3 15:43:36 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.239:
+  + Bug fixes, including for boo#1040253.
+
+-------------------------------------------------------------------
+Fri May 12 10:15:30 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.233:
+  + Fix an important crash.
+- Changes from version 0.9.232:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr 13 15:32:04 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.231:
+  + Respect gtk dark theme setting.
+  + Rework session management.
+  + Enhanced mime type detection.
+  + Allow lyrics for radios.
+- Add Recommends on easytag: used when one clicks on the "edit
+  tags" button in lollypop (boo#1033858).
+- lollypop-sp moved to %{_libexecdir}, adapt file-list
+  appropriately.
+
+-------------------------------------------------------------------
+Fri Mar 24 02:38:46 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.230:
+  + Bug fixes.
+  + Enhanced charts support.
+- Update file list for main package.
+
+-------------------------------------------------------------------
+Fri Feb  3 21:05:13 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.229:
+  + Do not show charts in collection (Disable/Enable charts to
+    fix it).
+- Changes from version 0.9.228:
+  + Fix an issue with MPRIS.
+  + Do not list web artists in sync dialog.
+  + Order tracks by name if no track number available.
+- Add Recommends on lollypop-portal (now in factory) and
+  kid3-cli (used to save tag changes to audio files).
+
+-------------------------------------------------------------------
+Tue Jan 17 07:54:48 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.227:
+  + Fix an issue with Itunes charts.
+  + Fix an issue with MPRIS.
+  + Fix an issue with fast scrolling.
+- Changes from version 0.9.226:
+  + Do not use Gio for http downloads!
+- Changes from version 0.9.225:
+  + Bug fixes.
+  + Show artists in sync view.
+
+-------------------------------------------------------------------
+Sat Jan  7 14:23:46 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.9.224:
+  + Allow user to manually rate songs/albums.
+  + Low quality image search fallback support when no Google API
+    key available.
+  + Playback fixes.
+  + New fast scroll widget!
+  + New loved album section.
+  + Original date tag support.
+  + FIX AN IMPORTANT MEMORY LEAK (on first collection scan).
+  + Enhanced lyrics support.
+  + Enhanced search widget.
+  + Itunes search provider.
+- Update file lists and %suse_update_desktop_file usage to change
+  in .desktop, icons and appdata file names.
+
+-------------------------------------------------------------------
+Thu Dec 15 15:40:36 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.223:
+  + Bypass gvfs-http (bgo#775600).
+  + Better search provider.
+  + Now (opt) depends on lollypop-portal (not release yet, and so
+    not in openSUSE so far):
+    https://github.com/gnumdk/lollypop-portal.
+- Changes from version 0.9.222:
+  + Enhanced popularity behaviour.
+  + Fix crash in playlist manager.
+
+-------------------------------------------------------------------
+Mon Nov 28 14:47:39 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.221:
+  + Fix a crash with radio playback.
+  + Small enhancements.
+- Changes from version 0.9.220:
+  + Fix crash in settings.
+  + Fix crash in artwork dialog.
+- Changes from version 0.9.219:
+  + Fix an issue with some MTP devices.
+  + Fix an issue with favorite tag editor.
+  + Fix an issue with loved playlist.
+
+-------------------------------------------------------------------
+Wed Nov 23 10:03:37 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.218:
+  + Fix an issue with search provider.
+  + Simpler playback menu.
+- Exclude from amain package and package the search provider
+  utility -- %{_datadir}/%{name}/lollypop-sp -- as part of the
+  gnome-shell-search-provider-lollypop, with exec attributes.
+
+-------------------------------------------------------------------
+Sun Nov 20 21:44:20 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.217:
+  + Lollypop search provider.
+  + Netease support for web playback.
+  + Bug fixes.
+- Split out a new package: gnome-shell-search-provider-lollypop
+  to provide the search provider for gnome-shell.
+- Add Group tags for all packages.
+
+-------------------------------------------------------------------
+Sun Nov 20 00:37:14 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.216:
+  + Fix issue with radios.
+- Changes from version 0.9.215:
+  + New filtering feature.
+  + Force GDK X11 backend (gh#gnumdk/lollypop#810).
+  + Bugfixes.
+
+-------------------------------------------------------------------
+Thu Nov 10 19:04:06 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.214:
+  + Allow using network share as collection.
+  + Allow disabling charts.
+  + Allow disabling network access.
+
+-------------------------------------------------------------------
+Sat Oct 15 17:36:45 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.211:
+  + Fix an issue on Ubuntu 16.10.
+  + Fix an issue with volume control.
+- Changes from versions 0.9.207 through 0.9.210:
+  + See release history at
+    https://github.com/gnumdk/lollypop/releases.
+- Bump up minimum required gtk3 version to 3.14 in keeping with
+  config.ac file.
+
+-------------------------------------------------------------------
+Thu Sep 29 03:11:14 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.206:
+  + Fix an issue with GTK 3.22.
+  + Do not search in youtube based on audio length.
+  + Add lollypop-cli command line helper.
+
+-------------------------------------------------------------------
+Fri Sep 23 21:17:36 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.205:
+  + Youtube support.
+  + MPRIS fixes.
+  + Read lyrics from tags.
+  + See https://github.com/gnumdk/lollypop/releases for full list
+    of changes.
+
+-------------------------------------------------------------------
+Sun Sep  4 08:13:13 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.9.113:
+  + Enhanced search engine
+  + MTP sync for albums
+  + Move stats to settings dialog
+  + Move artist artwork outside cache
+  + Fix Lastfm scrobbler
+  + Guess tracknumber from filename
+  + Fix issues with Unity
+  + Rework all code (may have introduced unwanted regressions)
+
+-------------------------------------------------------------------
+Fri Jul 15 19:00:22 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.112:
+  + Fix an issue with image downloader:
+    https://duckduckgo.com/i.js is not available anymore,
+    duckduckgo API is limited to instant search... Switch to
+    Google Custom Search (API key needed).
+- Changes from versions 0.9.108 through 0.9.111:
+  + See https://github.com/gnumdk/lollypop/releases.
+
+-------------------------------------------------------------------
+Sun Jun  5 11:07:00 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.107:
+  + Bug fixes release.
+- Changes from versions 0.9.106:
+  + Option to store covers in tags (needs kid3).
+  + Fix an issue in Fullscreen.
+  + Other bug fixes.
+- Changes from version 0.9.105:
+  + Fix an issue with sortorder.
+  + Fix an issue with HiDPI in MPRIS.
+  + Fix issues with artwork cache.
+  + Add support for shortcuts window.
+
+-------------------------------------------------------------------
+Sun May  8 15:50:30 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.104:
+  + Fix an issue with read only fs
+  + Add support for disc subtitle comment
+  + Fix an issue with overlay
+  + Remove arrow in list (bad with artist artwork, bad on
+    elementary, ...)
+- Changes from version 0.9.100 through 0.9.103:
+  + See release history:
+    https://github.com/gnumdk/lollypop/releases.
+
+-------------------------------------------------------------------
+Thu Apr 28 21:35:36 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.99:
+  + Add support for artist artwork
+  + Boost performance (one more time)
+  + Bugfixes in collection scanner
+  + Tunein search
+- Add Recommends on python3-wikipedia for openSUSE > 1320,;
+  enables the optional wikipedia feature (python3-wikipedia
+  recently introduced into Factory). N.A. for openSUSE <= 13.2 or
+  Leap 42.1.
+
+-------------------------------------------------------------------
+Wed Apr 27 04:33:40 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.98:
+  + Last.fm was not working for users without Gnome Online
+    Account.
+  + Various bug fixes.
+- Changes from version 0.9.97:
+  + Fix an issue in MTP sync.
+  + Fix an issue when showing artists for track.
+- Changes from version 0.9.96:
+  + Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Apr 12 22:12:29 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.95:
+  + Various bug fixes.
+  + Enable Gnome Shell 3.20 MPRIS controls.
+  + Move to GIO DBus on GNOME 3.20 (Thanks to Gnome Music code).
+  + Should work again on Elementary OS.
+- Delete unnecessary python cache files to avoid a ton of rpmlint
+  warnings.
+
+-------------------------------------------------------------------
+Wed Apr  6 21:34:28 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.94:
+  + Fix an issue with HiDPI.
+
+-------------------------------------------------------------------
+Wed Apr  6 00:18:22 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.93:
+  + Fix an issue with overlays.
+- Changes from version 0.9.92:
+  + Allow multiple artists per album.
+  + Faster album loading.
+  + New Popover for context view.
+  + Fixes for GNOME 3.20.
+  + Remove Wikia support (broken) .
+
+-------------------------------------------------------------------
+Thu Mar 24 00:29:36 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.91:
+  + Bug fixes.
+- Changes from version 0.9.90:
+  + Rewritten queue popover.
+  + New playlists/albums popover (You can manage tracks/albums
+    while browsing your collection).
+  + New overlay buttons.
+  + Drag & drop in playlists.
+  + Fast queuing.
+  + Multi playlists selection.
+  + Jump to current track button.
+  + Elementary OS support back.
+
+-------------------------------------------------------------------
+Wed Feb 17 00:52:29 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.86:
+  + Fix an issue with crossfading.
+  + Finally support artwork in notifications.
+  + Add a new "responsive design" mode (Ctrl + m for Mini player).
+  + Somes fixes in MTP sync.
+- Changes from versions 0.9.83 through 0.9.85:
+  + See upstream documentation of changes at
+    https://github.com/gnumdk/lollypop/releases.
+
+-------------------------------------------------------------------
+Wed Feb  3 17:43:04 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.9.82:
+  + Fix an important issue in collection scanner.
+  + Fix an issue with progress bar.
+- Changes from version 0.9.81:
+  + Fix an issue in MTP code.
+  + Update translations.
+  + Rework settings dialog.
+- Changes from version 0.9.80:
+  + Crossfading support.
+  + Allows user to merge views by selecting multiple items.
+  + Converts files to MP3 on MTP sync (Android Phones, ...).
+  + Fix an issue with headerbar.
+
+-------------------------------------------------------------------
+Thu Dec 24 05:47:58 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.9.75:
+  + Use Duckduckgo, Google API is dead.
+  +`Add a slider to select covers size.
+
+-------------------------------------------------------------------
+Sat Dec  5 11:01:42 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.9.74:
+  + Fix issue in scanner.
+- Changes from version 0.9.72:
+  + Handle artist sort order tag.
+  + Fix search dialog.
+  + Allow popover in search dialog (Gtk 3.18).
+- Changes from version 0.9.71:
+  + Fix issue in fullscreen.
+
+-------------------------------------------------------------------
+Sat Nov 28 15:02:17 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.9.70:
+  + Initial MPD support (unstable).
+  + Animation when loading radios.
+  + Stats in about dialog.
+  + Restore window position when hidden.
+  + Right click on albums.
+  + Fix MTP errors.
+
+-------------------------------------------------------------------
+Fri Nov 13 12:37:11 UTC 2015 - badshah400@gmail.com
+
+- Initial package.
+

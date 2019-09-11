@@ -1,0 +1,297 @@
+-------------------------------------------------------------------
+Wed Sep 19 14:30:11 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Mon Sep 17 20:48:13 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.11.2:
+  * Updated translations.
+  * Improved compatibility with Qt 5.11 (including bug #140)
+  * Fixed crash when clicking on "full syntax" (bug #134)
+  * Fixed Mag not always working with Hebrew / Strongs (bug #132)
+  * Fixed BibleTime startup on some versions of Windows (bug #119)
+  * Fixed Bookshelf Wizard buttons not being translated (bug #131)
+  * Fixed application icon directory to match the FreeDesktop standard
+  * Fixed bug which prevented installing of works (bug #124)
+
+-------------------------------------------------------------------
+Thu Dec  7 08:13:10 UTC 2017 - mpluskal@suse.com
+
+- Drop useless provides/obsoletes
+- Use cmake macros
+- Use source for url
+
+-------------------------------------------------------------------
+Tue Dec  5 21:30:36 UTC 2017 - cornelis@solcon.nl
+
+- Update to 2.11.1:
+  * Details: https://github.com/bibletime/bibletime/releases
+- Swith to Qt5
+- Cleanup spec file: remove line for other distros.
+
+-------------------------------------------------------------------
+Wed Feb  1 09:59:34 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Apr  8 12:09:48 UTC 2015 - dimstar@opensuse.org
+
+- No longer package bibletime.xpm: there are perfectly good icons
+  inside the tarball (even in scalable svg format).
+- Fix the installation location of the icon: ensure the real file
+  is located in /usr/share/icons/[..].
+
+-------------------------------------------------------------------
+Mon Jul  7 14:14:06 UTC 2014 - lars@linux-schulserver.de
+
+- udpate to 2.10.1:
+  * Implemented support for localized module config entries.
+  * Fixed an OSIS rendering bug.
+  * Fixed some HTML rendering issues.
+  * Fixed key chooser bug in book windows.
+  * Fixed double loading of some settings.
+  * Fixed Text Filter settings not being saved.
+  * Various install manager bug fixes.
+  * Various other minor fixes and optimizations.
+
+-------------------------------------------------------------------
+Tue Dec 31 14:59:44 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.10.0:
+  + Enhancements:
+  ++ Uses Sword library version 1.7.
+  ++ Added Find context menu for search within each window. Matching 
+     words are highlighted and navigated using next or previous buttons.
+  ++ Added support for HTTP, HTTPS, SFTP transports in BibleTime.
+  ++ Implemented saving of font family and size in HTML commentary editor.
+  + Bugs fixed:
+  ++ Fixed problem where certain alternate versification bibles did not 
+     display old testament.
+  ++ Fixed Windows Control Panel version was to be correct.
+  ++ Fixed search analysis save dialog filters.
+  ++ Fixed search analysis save asking for overwrite confirmation twice.
+  ++ Optimized and enhanced search analysis to output proper XHTML.
+  ++ Fixed widget ending up disabled after removing install source.
+  ++ Mag Window uses current module if no default cross reference is set.
+  ++ Fixed a bug in the HTML commentary editor which resulted in text 
+     formatting from the cursor to be applied to the whole selection.
+  ++ Allow comboxboxes on config dialog desk page to resize.
+  ++ Fixed some lexicons never working.
+  ++ Fixed high stack memory usage on indexing.
+  ++ Fixed unexpected exception with encrypted modules.
+  ++ Fixed application freeze during installation of works.
+
+-------------------------------------------------------------------
+Tue Jun  4 15:55:48 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.9.2:
+  + Fixed settings dialog tab contents not being translated
+  + Fix crash when closing window with tab
+  + Fix bug 14 - Headers displayed as plain text in some modules
+  + Fix problem with text not displaying when using QtWebKit 2.3
+  + added changes needed for Qt5
+  + Fix multi-arch path issue in FindCLucene.cmake
+- removed fix-movetoanchor-for-qt5.patch (upstream)
+
+-------------------------------------------------------------------
+Fri May  3 23:34:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added fix-movetoanchor-for-qt5.patch, fixes non visible text when
+  used with libQtWebkit 2.3
+
+-------------------------------------------------------------------
+Sat Dec 15 23:59:15 UTC 2012 - lars@linux-schulserver.de
+
+- specfile cleanup
+- fix license to be in SPDX format
+- fix build on Fedora and Mandriva
+
+-------------------------------------------------------------------
+Fri Dec 30 08:34:18 UTC 2011 - lars@linux-schulserver.de
+
+- update to 2.9.1:
+  + Fixed Portuguese translation not being included.
+  + Updated British translation.
+  + Updated handbooks.
+- Notable changes since the 2.8 series:
+  + Add close buttons to tabbed works windows.
+  + Hovering over works in the bookshelf views shows tooltips.
+  + Hovering over works in the bookshelf dock shows info in the mag view.
+  + Add toolbar icons to toggle visibility of docking windows.
+  + Switch off footnotes in display options.
+  + Bible windows can have parallel commentaries.
+
+-------------------------------------------------------------------
+Sat Sep 10 18:14:47 UTC 2011 - lars@linux-schulserver.de
+
+- update to 2.8.2:
+  + Fixed bookshelf manager install page taking long to open.
+  + Fix restoring from fullscreen to a maximized window.
+  + Fixed Personal Commentary texts being saved to wrong
+    references.
+  + Fixed an assert-crash caused by not catching indexing failures
+    properly.
+
+-------------------------------------------------------------------
+Sat Jan 29 19:29:24 UTC 2011 - lars@linux-schulserver.de
+
+- update to 2.8.1:
+  + Fixed a bug which caused many works to be incorrectly categorized
+  + Fixed a Bookshelf Manager crash caused by installation sources
+    which provide invalid data
+
+-------------------------------------------------------------------
+Sat Dec 18 18:49:32 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.8.0:
+  + Redesigned and refactored the bookshelf manager
+  + Implemented the Tip Of The Day dialog
+  + Made BibleTime handle missing default template gracefully
+  + Made the "Remove modules" confirmation dialog a bit prettier
+  + Fixed a crash triggered by an assertion in legacy code
+  + Fix main window toolbar key changer to save a modified entry 
+    in Personal Commentary
+
+-------------------------------------------------------------------
+Thu Oct 21 07:29:39 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.7.3:
+  + Backported "Fixed invalid bibletimerc creation; removed unused
+    CResMgr::init_tr()." by Jaak Ristioja
+  + Backported "Fix crash opening first window in manual arrangement 
+    mode." by Gary Holmlund.
+  + Backported "Fixed a bug that caused some users home directories 
+    to be deleted" by Jaak Ristioja.
+  + Backported "Save the "grouping" setting of the Bookshelf" 
+    by Gary Holmlund.
+
+-------------------------------------------------------------------
+Fri Jul  9 21:49:08 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.7:
+  + Fix bug #2969498 : Resize bug in magnification area
+  + Fix main window view menu so that shortcuts can be assigned 
+    to them.
+  + Modified retranslateUi to work correctly with the shortcut 
+    editor
+  + Add option to show toolbar on main window instead of 
+    text windows
+
+-------------------------------------------------------------------
+Sun Mar 28 21:25:12 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.6:
+  + Fixed an issue causing data loss when closing the main window, 
+    because open sub-windows were not properly queried for unsaved 
+    changes.
+  + Refactored the module unlocking GUI to provide more info on 
+    failures and made opening a locked module also initiate the 
+    unlocking procedure.
+  + Fixed a bug that some display/filter settings were not applied 
+    on startup 
+  + Add tabbed window arrangement mode
+  + Fix problems with manual arrangement mode
+  + Implemented a menu item and tool button for opening installed works
+  + Refactored a couple of other dialogs to use the new bookshelf model. 
+    This means they now also have search and grouping fields.
+  + Refactored search dialog module chooser dialog
+- removed all patches
+
+-------------------------------------------------------------------
+Sun Dec 20 19:08:44 UTC 2009 - lars@linux-schulserver.de
+
+- update to 2.5:
+  + improvements to the subwindow arrangement algorithms
+  ++ many bugfixes
+  ++ new window arrangement modes "Tile" and "Auto Tile"
+  + new module selection header in the text windows
+  + tons of bugfixes
+  + many improvements to the windows port
+  + improved debug mode of the application
+  + improvements to build system
+  + translation updates
+  + Christmas splash screen and display template
+
+-------------------------------------------------------------------
+Sun Dec 13 15:47:03 UTC 2009 - lars@linux-schulserver.de
+
+- update to 2.4:
+  + many, many bugfixes
+  + Improved search dialog
+  + Added "get list of install sources from server" functionality
+  + BibleTime can now open TEI modules
+  + Added new feature called "Change location". It is a shortcut 
+    (Ctrl-L) that changes the focus to the toolbar field for the 
+    bible reference or book location. 
+    This is like the Ctrl-L feature of FireFox.
+  + Add shortcut page to config settings dialog
+- fix build for fedora
+
+-------------------------------------------------------------------
+Thu Jul 23 15:01:08 CEST 2009 - lars@linux-schulserver.de
+
+- update to 2.0.1:
+  + Completed the port to QT. KDE is no longer required.
+  + Use default browser instead of just konqueror or firefox.
+  + Use docking windows instead of splitters for the left 
+    side windows.
+  + Add Czech translation
+  + Add Hungarian Handbook translation
+  + Fix drag/drop onto the display window
+  + Fix clicking of links in the Mag Window
+  + Fix problem causing Mag window to update when it should not
+- obsolete bibletime-i18n and bibletime-devel
+
+-------------------------------------------------------------------
+Thu Jul 23 12:13:43 CEST 2009 - lars@linux-schulserver.de
+
+- update to 1.7:
+  + tons of bugfixes
+  + Port to KDE4/QT4, reduced KDE dependency to a minimum
+  + Command line options have changed (--help is out of date)
+  + Configuration files have been moved to ~/.bibletime/
+  + i18n of UI strings is now handled by QT
+  + Massive code cleanups and internal refactoring
+  + New bookshelf manager
+  + New external communications interface DBUS (instead of DCOP)
+  + many Bookshelf improvements
+  + Corrections and enhancements to session management
+  + Search dialog now has a history for the modules to search in
+
+-------------------------------------------------------------------
+Thu Jul 23 10:36:01 CEST 2009 - lars@linux-schulserver.de
+
+- added virtual provides: sword-frontend
+
+-------------------------------------------------------------------
+Mon Dec 15 15:58:59 CET 2008 - lars@linux-schulserver.de
+
+- fix gcc 4.3.2 issues
+  (bibletime-1.6.5.1-stringcompare.patch)
+
+-------------------------------------------------------------------
+Thu Jun 12 17:33:12 CEST 2008 - lars@linux-schulserver.de
+
+- added 
+  Recommends:     sword-bible
+  Recommends:     sword-commentary
+
+-------------------------------------------------------------------
+Mon Jun  9 20:23:56 CEST 2008 - lars@linux-schulserver.de
+
+- update to 1.6.5.1:
+  + bugfix release to build with current gcc
+
+-------------------------------------------------------------------
+Mon May 19 18:28:29 CEST 2008 - lars@linux-schulserver.de
+
+- fix rpm groups
+
+-------------------------------------------------------------------
+Sun Dec 23 21:22:08 CET 2007 - lars@linux-schulserver.de
+
+- initial version 1.6.5
+

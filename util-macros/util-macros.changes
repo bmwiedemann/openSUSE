@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:30:29 UTC 2018 - sndirsch@suse.com
+
+- update to release 1.19.2
+  * Update check for manpage section numbers to not rely on Solaris version
+  * Rework CHANGELOG_CMD to touch/echo >&2 only as needed
+  * Rework INSTALL_CMD to touch/echo >&2 only as needed
+
+-------------------------------------------------------------------
+Wed Feb  1 13:24:35 UTC 2017 - sndirsch@suse.com
+
+- update to release 1.19.1
+  * XORG_MANPAGE_SECTIONS: limit SysV man page sections to Solaris 2.0-11
+  * Fix XORG_WITH_XMLTO to work with xmlto >= 0.0.27
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Tue Apr 29 13:12:41 UTC 2014 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Tue Apr 29 12:19:03 UTC 2014 - cfarrell@suse.com
+
+- license update: HPND
+  See COPYING
+
+-------------------------------------------------------------------
+Wed Apr 23 21:12:49 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Created package util-macros with initial version 1.19.0
+

@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+ 		<param name="scm">git</param>
+		<param name="url">https://github.com/KhronosGroup/SPIRV-Tools</param>
+		<param name="filename">spirv-tools</param>
+		<param name="revision">2c0111e6eba779cf30e8c7f5a733ea0762895ba0</param>
+		<param name="parent-tag">84aa4946edb7e9b50d9625e2288ecf3e0ddf9327</param>
+		<param name="versionformat">2019.4~git@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+	<!-- remove directory windows*/ because of vcredist -->
+</services>

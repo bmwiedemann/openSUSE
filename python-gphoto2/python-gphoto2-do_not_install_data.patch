@@ -1,0 +1,14 @@
+Index: gphoto2-1.7.0/setup.py
+===================================================================
+--- gphoto2-1.7.0.orig/setup.py
++++ gphoto2-1.7.0/setup.py
+@@ -308,9 +308,4 @@ setup(name = 'gphoto2',
+       ext_modules = ext_modules,
+       packages = ['gphoto2'],
+       package_dir = {'gphoto2' : mod_src_dir},
+-      data_files = [
+-          ('share/python-gphoto2/examples', examples),
+-          ('share/python-gphoto2', [
+-              'CHANGELOG.txt', 'LICENSE.txt', 'README.rst']),
+-          ],
+       )

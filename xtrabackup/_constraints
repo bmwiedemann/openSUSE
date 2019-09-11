@@ -1,0 +1,14 @@
+<constraints>
+  <overwrite>
+    <conditions/>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">6</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">8</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>
+

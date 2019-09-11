@@ -1,0 +1,38 @@
+diff --git a/src/load.h b/src/load.h
+index ac5d354..7dc1b4f 100644
+--- a/src/load.h
++++ b/src/load.h
+@@ -40,7 +40,8 @@
+ #define	_LOAD_H_
+ 
+ #define APPLE_VENDOR_ID		0x05AC
+-#define	ISIGHT_PRODUCT_ID	0x8300
++#define	ISIGHT_PRODUCT_ID1	0x8300
++#define	ISIGHT_PRODUCT_ID2	0x8501
+ 
+ #define	ift_debug(args...)	syslog(LOG_DEBUG, args)
+ #define	ift_message(args...)	syslog(LOG_INFO, args)
+diff --git a/src/udev.c b/src/udev.c
+index 004e773..94d43c2 100644
+--- a/src/udev.c
++++ b/src/udev.c
+@@ -109,11 +109,18 @@ main(int argc, char *argv[])
+ 
+ 
+ 	dev = find_usb_product(APPLE_VENDOR_ID,
+-			       ISIGHT_PRODUCT_ID);
++			       ISIGHT_PRODUCT_ID1);
++
++        /* If we can't open that device try another one. Older */
++	if (!dev){
++ 	        dev = find_usb_product(APPLE_VENDOR_ID,
++			               ISIGHT_PRODUCT_ID2);
++        }
+ 
+ 	if (!dev)
+ 		ift_error(_("No iSight found"));
+ 
++
+ 	if (load_firmware(dev, firmware) == -1)
+ 		ift_error(_("Failed to upload firmware to 0x%04X:0x%04X"),
+ 			  dev->descriptor.idVendor,

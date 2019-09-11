@@ -1,0 +1,12 @@
+--- ./macros.in.orig	2017-12-01 15:50:47.587969729 +0000
++++ ./macros.in	2017-12-01 15:50:53.813951691 +0000
+@@ -1039,7 +1039,8 @@ package or when debugging this package.\
+ 	--localstatedir=%{_localstatedir} \\\
+ 	--sharedstatedir=%{_sharedstatedir} \\\
+ 	--mandir=%{_mandir} \\\
+-	--infodir=%{_infodir}
++	--infodir=%{_infodir} \\\
++	--disable-dependency-tracking
+ 
+ #------------------------------------------------------------------------------
+ # Tested features of make

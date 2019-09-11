@@ -1,0 +1,49 @@
+# HG changeset patch
+# Parent  7cd948c83939479d1ba88a3161991cb561306f3f
+# use same lines naming as utempter (prevents problems with using different
+# formats in ?tmp? files)
+# --used to be called '-pts'
+
+diff --git a/openssh-7.7p1/loginrec.c b/openssh-7.7p1/loginrec.c
+--- openssh-7.7p1/loginrec.c
++++ openssh-7.7p1/loginrec.c
+@@ -541,17 +541,17 @@ getlast_entry(struct logininfo *li)
+ /*
+  * 'line' string utility functions
+  *
+  * These functions process the 'line' string into one of three forms:
+  *
+  * 1. The full filename (including '/dev')
+  * 2. The stripped name (excluding '/dev')
+  * 3. The abbreviated name (e.g. /dev/ttyp00 -> yp00
+- *                               /dev/pts/1  -> ts/1 )
++ *                               /dev/pts/1  -> /1 )
+  *
+  * Form 3 is used on some systems to identify a .tmp.? entry when
+  * attempting to remove it. Typically both addition and removal is
+  * performed by one application - say, sshd - so as long as the choice
+  * uniquely identifies a terminal it's ok.
+  */
+ 
+ 
+@@ -602,16 +602,20 @@ line_abbrevname(char *dst, const char *s
+ 	/* Always skip prefix if present */
+ 	if (strncmp(src, "/dev/", 5) == 0)
+ 		src += 5;
+ 
+ #ifdef WITH_ABBREV_NO_TTY
+ 	if (strncmp(src, "tty", 3) == 0)
+ 		src += 3;
+ #endif
++	if (strncmp(src, "pts/", 4) == 0) {
++		src += 3;
++		if (strlen(src) > 4) src++;
++	}
+ 
+ 	len = strlen(src);
+ 
+ 	if (len > 0) {
+ 		if (((int)len - dstsize) > 0)
+ 			src +=  ((int)len - dstsize);
+ 
+ 		/* note: _don't_ change this to strlcpy */

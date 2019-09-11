@@ -1,0 +1,222 @@
+-------------------------------------------------------------------
+Wed Jul 17 13:52:18 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Update translations.
+  * Use datadir and libdir when install gir files
+  * Change url project's website
+- remove patch:
+  * mate-menus-glib-2.48.patch: we don't support glib2.48 anymore
+- build require glib >= 2.50 and gio >= 2.50
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Update examples.
+  * Backports from gnome-menus.
+  * Use G_BEGIN/END_DECLS.
+  * Require gio-unix, drop python example.
+  * Drop python2 support.
+  * Switch to modern realpath().
+  * Drop Python support leftovers.
+  * Update translations.
+- Rebase mate-menus-glib-2.48.patch.
+- Drop the python2-mate-menus package and move examples to the
+  devel package.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Disable deprecation warnings for distcheck.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GLib 2.50.
+  * Update translations.
+- Add mate-menus-glib-2.48.patch: Restore GLib 2.48 support.
+- Rename python-mate-menus to python2-mate-menus for
+  openSUSE Leap 15.0 and newer.
+
+-------------------------------------------------------------------
+Wed Nov  8 17:56:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Make mate-applications-merged/ a symlink to
+    applications-merged/.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Add Changelog generation.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Move preferences-categories.menu from mate-control-center.
+    That file can be packaged separately in distros to let users
+    decide whether they want categories in preferences menu or not.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:45:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Use pkg-config to check for Python (requires Python 2.7).
+  * Some fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 03:17:47 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * No changes since version 1.9.90
+
+-------------------------------------------------------------------
+Mon Mar 23 16:06:21 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.90 (unstable)
+  * Translations update
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 11 17:06:21 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  + No changelog available
+
+-------------------------------------------------------------------
+Sun Oct 26 18:56:57 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + No changelog available
+
+-------------------------------------------------------------------
+Wed Mar  5 10:55:49 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Wed Feb 19 15:50:50 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90
+  + add a possibility to enable old gnome-2 preferences menu style
+    with categories
+
+-------------------------------------------------------------------
+Sun Jan 19 21:48:08 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1
+  + fix some make files for automake-1.13
+  + use yelp-tools instead of mate-doc-utils
+  + correct invest Icon name 
+  + back to libwnck 
+  + replace old gconf with gsettings schema 
+  + remove Invest_Applet.xml from po/POTFILES.in
+    It causes gettext to throw a fit and mateweather applet has a simular
+    file and it is also not in POTFILES.in
+  + fix make distcheck
+  + upate yahoo finance http adress 
+  + battstat applet: ready for upower-1.0 
+  + require pygobject 3 now that it was ported to gi
+    gobject introspection but this never reflected in configure.ac.
+  +  battstat applet: save panel space using an empty label instead of 
+     -:- when fully charged or unknown
+  + initial GTK3 support
+- Build with gobject instead of pygtk;
+- Build with libwnck support; add libwnck require
+
+-------------------------------------------------------------------
+Fri Sep 20 13:08 UTC 2013 - johann.luce@wanadoo.fr
+
+- Fix libraries group System/Libraries
+
+-------------------------------------------------------------------
+Wed Apr 10 17:00:40 UTC 2013 - p.drouand@gmail.com
+
+- Clean up specfile; remove useless *-%{release} past a "Requires" tag
+  & remove useless devel package dependency to main package
+
+-------------------------------------------------------------------
+Wed Apr  3 14:45:08 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + fix incorrect FSF addresses
+  + AC_CONFIG_HEADERS to please automake 1.13
+  + update translations
+
+-------------------------------------------------------------------
+Fri Feb 22 19:54:34 UTC 2013 - p.drouand@gmail.com
+
+- Remove Requires: mate-menus and add Requires: glib2-devel on devel
+  subpackage
+
+-------------------------------------------------------------------
+Fri Feb 22 18:30:55 UTC 2013 - p.drouand@gmail.com
+
+- Add branding subpackage and specific strings
+  It is needed to allow to build a external branding
+
+-------------------------------------------------------------------
+Wed Nov  7 21:34:46 UTC 2012 - nmo.marques@gmail.com
+
+- Split typelib and minor cleanups
+
+-------------------------------------------------------------------
+Thu Oct 11 14:38:15 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + no changelog available
+  + version bump
+
+-------------------------------------------------------------------
+Sat Sep  8 01:20:18 UTC 2012 - nmo.marques@gmail.com
+
+- copypac to X11:MATE
+  + minor cosmetic fixes
+
+-------------------------------------------------------------------
+Fri Aug  3 23:40:19 CST 2012 - hillwood@linuxfans.org
+
+- Update to version 1.4.0 
+
+-------------------------------------------------------------------
+Mon Jan  2 16:10:48 UTC 2012 - fisiu@opensuse.org
+
+- Initial package from version 1.2.0
+

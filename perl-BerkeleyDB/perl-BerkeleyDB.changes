@@ -1,0 +1,332 @@
+-------------------------------------------------------------------
+Tue Jul 23 05:03:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.63
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.63  21 July 2019
+  
+          * added 000preret.t 
+            Dump version info in "make test"
+            9e17580d74662b6a3186990dd3b1469df2829503
+
+-------------------------------------------------------------------
+Sun Jul 21 11:08:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.62
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.62  20 July 2019
+  
+          * default to /usr/local/BerkeleyDB
+            fcc0ad8adf310f7c8cc65788806439f2f8c39f90
+  
+          * __heap_exist prototype needed for db 5.2 or better
+            7fe4ad8d74190d7f41a816c79e5ccf044c02c7c9
+  
+          * t/joint.: Silence Valgrinf
+            https://rt.cpan.org/Ticket/Display.html?id=125605
+            40d03924570f8516efe4a05982f402e8ce569637
+  
+          * db_remove missing txn code
+            https://rt.cpan.org/Ticket/Display.html?id=124979
+            b91875a9f3f55bb779ad7a448c9fff0645d8a527
+  
+          * Fix test failure when TRACE is enabled
+            bb80b7d0fb83643ccddd8243d4c6b6ab637428df
+  
+          * Added BERKELEYDB_DEFINE_TRACE variable to allow TRACE to be enabled
+            from .travis file.
+            bd9ebf5aa149172afab55d6ba6f27d77cf08d91a
+  
+          * Add test with BERKELEYDB_DEFINE_TRACE set to .travis
+            000b1d8dffe542d6476fe78f218cc95534f1c1c3
+  
+          * my_db_strerror: Add missing dTHX declaration 
+            Merge pull request https://github.com/pmqs/BerkeleyDB/pull/2
+            4273345d8eff5f521788b3c5e71fb291bf46a646
+            80ca9b77968ab84aaf8b546f2933d135202e16e0
+  
+          * create .appveyor.yml 
+            4e7b034ddbe76a7c2dcd189e1e0c935c1559aa2c
+  
+          * sync dbinfo from DB_File
+            27b499fa9dbfca78adcc7a12ada43f0b05b6ece6
+
+-------------------------------------------------------------------
+Sun Mar 31 05:02:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.61  30 March 2019
+  
+          * Fix a couple of typos  
+            One's a copyright date out by 20 years.
+            The other one breaks builds with 5.2 ≤ BDB < 6.2.
+            Merge pull request #1 https://github.com/pmqs/BerkeleyDB/pull/1
+  
+  0.60  30 March 2019
+          * Moved source to github https://github.com/pmqs/BerkeleyDB
+  
+          * Add META_MERGE to Makefile.PL
+  
+          * Added meta-json.t & meta-yaml.t
+  
+  0.58  23 January 2018
+  
+          * please expose set_lg_filemode
+            [RT #124979]
+  
+  0.57  23 January 2018
+  
+          * Updates for BDB 6.3
+  
+  0.56  5 January 2016
+  
+          * Updates for BDB 6.2
+
+-------------------------------------------------------------------
+Tue Apr 14 12:20:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.55  30 March 2014
+  
+          * Error opening ErrFile with PerlIO_findFILE
+            [RT =#101883]
+  
+          * Minor updates for BDB 6.1
+
+-------------------------------------------------------------------
+Tue Nov 26 07:30:58 UTC 2013 - coolo@suse.com
+
+- updated to 0.54
+   * memory leak in CDS locking routines [RT #90134]
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:38 UTC 2013 - coolo@suse.com
+
+- updated to 0.53
+      * BerkeleyDB-0.52 fails to build on 5.18.1RC3
+        [RT #87771]
+      * typo fixes
+        [RT #86705]
+
+-------------------------------------------------------------------
+Sat Jun 15 02:36:04 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.52
+* Updates for BDB 6.0 - Added Blob support
+* Fix a memory leak in db_verify() method (libdb < 4.2))
+
+-------------------------------------------------------------------
+Mon Jun  3 11:38:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.51
+   * Rework FETCHSIZE
+     [RT #75691]
+
+-------------------------------------------------------------------
+Mon Dec 12 10:41:23 UTC 2011 - vcizek@suse.com
+
+- update to 0.50
+        * Updates for BDB 5.3
+
+-------------------------------------------------------------------
+Mon Aug  8 07:30:33 UTC 2011 - vcizek@novell.com
+
+- update to 0.49
+        * Documentation updated courtesy of Mike Caron
+        * croak if attempt to freeze berkeleydb object
+          [RT #69985]
+
+-------------------------------------------------------------------
+Wed Jun 22 07:50:43 UTC 2011 - vcizek@novell.com
+
+- update to 0.48
+        * Fixed test harness issue with Heap.t
+          RT #68818
+0.47  1st June 2011
+        * Add support for new Heap database format.
+        * Changes to build with BDB 5.2
+0.46  18th October 2010
+        * Fixed bug with db_pget when the DB_GET_BOTH flag is used.
+0.45  17th October 2010
+        * Fixed bug with c_pget when the DB_GET_BOTH flag is used.
+0.44  2nd August 2010
+        * Added support for db_exists and lock_detect.
+          Thanks to Alex Lovatt for the patch.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:44 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Aug  6 14:28:44 UTC 2010 - chris@computersalat.de
+
+- update to 0.43
+  * Changes to build with BDB 5.1
+    - Dropped support for Server option when creating an environment.
+  * Documantation updates.
+    RT# 59202
+  * Fixed compilation error with MS Visual Studio 2005
+    RT# 59924
+- recreated by cpanspec 1.78
+- removed unused checkbuild.sh from SRC
+
+-------------------------------------------------------------------
+Thu Mar 25 17:45:09 CET 2010 - anicka@suse.cz
+
+- update to 0.42
+ * Added $db->Env method to retrieve the environment object from a
+   database object.
+ * Get the tied interface to use truncate in the CLEAR method if
+   using a new enough version of Berkeley DB.
+
+-------------------------------------------------------------------
+Fri Jan 15 14:23:55 CET 2010 - anicka@suse.cz
+
+- update to 0.41
+ * Silence "UNIVERSAL->import is deprecated" in perl 5.11
+ * Added support for set_tx_max, log_set_config, set_lk_max_lockers,
+   set_lk_max_locks, set_lk_max_objects via the Env constructor.
+   Parameter names are TxMax, LogConfig, MaxLockers, MaxLocks &
+   MaxObjects respectively.
+   RT# 50456
+ * seq->seq->close doesn't compile on win32.
+   RT# 49474
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 16:14:29 CEST 2009 - anicka@suse.cz
+
+- update to 0.39
+  * Added support for BDB 4.8
+    - associate_foreign 
+    - set_bt_compress (no callbacks as yet).
+  * Also added interface to 
+    - ENV->stat_print
+    - ENV->txn_stat_print
+  * Oldest Perl supported is now 5.005
+  * Fixed issue db_stat when it returned a null pointer.
+    (#46312 rt.cpan.org)
+  * Fixed issue with DNM Filters & UTF8 support.
+    Patch supplied by Torsten Foertsch.
+
+-------------------------------------------------------------------
+Mon Feb 23 16:57:30 CET 2009 - anicka@suse.cz
+
+- update to 0.38
+ * Fixed typo in BerkleyDB.pod that broke t/pod.t
+ * Included CDS section to the pod.
+ * Various documentation patches from RT#42243
+
+-------------------------------------------------------------------
+Tue Jan 20 16:01:41 CET 2009 - anicka@suse.cz
+
+- update to 0.36
+  * Added support for $ENV->log_get_config and $ENV->log_set_config.
+
+-------------------------------------------------------------------
+Fri Nov 21 16:38:40 CET 2008 - ro@suse.de
+
+- update check-build.sh
+
+-------------------------------------------------------------------
+Mon Oct  6 14:26:45 CEST 2008 - anicka@suse.cz
+
+- update to 0.35
+  * Added a combination of independent patches from Claes Jakobsson
+    and Yuval Kogman (#38896 rt.cpan.org) to allow multi-key return
+    from a secondard database.
+  * Added support for sequences. Initial patch from  Claes Jakobsson.
+  * Get associate to use a transaction if one is specified.
+    #5855 from rt.cpan.org
+  * Finish transition of test harness to use Test::More
+
+-------------------------------------------------------------------
+Tue Jul  8 15:58:17 CEST 2008 - anicka@suse.cz
+
+- remove executable bits from documentation,
+  do not remove buildroot in %install, do testing in %check 
+
+-------------------------------------------------------------------
+Wed Apr  2 13:50:39 CEST 2008 - anicka@suse.cz
+
+- update to 0.34
+ * Updates to support building with Berkeley DB version 4.7
+ * Typo in #ifdef for ThreadCount support.
+ * Updated dbinfo
+
+-------------------------------------------------------------------
+Wed Jan 23 09:42:16 CET 2008 - anicka@suse.cz
+
+- update to 0.33
+ * Added failchk, set_isalive, lock_stat_print & mutex_stat_print.
+
+-------------------------------------------------------------------
+Wed Jul 25 15:01:42 CEST 2007 - anicka@suse.cz
+
+- update to 0.32
+        * Updates to support Berkeley DB 4.6
+        * Remove all global static data from BerkeleyDB.xs. 
+
+-------------------------------------------------------------------
+Thu Oct 19 17:03:51 CEST 2006 - anicka@suse.cz
+
+- update to 0.31
+  * Fixed DB_GET_BOTH. 
+
+-------------------------------------------------------------------
+Thu Sep 14 12:27:17 CEST 2006 - anicka@suse.cz
+
+- update to 0.30
+  * Fixed queue test harness for Berkeley DB 4.5 compliance
+  * Added $env->lsn_reset, $txn->set_timeout, 
+    $env->set_timeout & $env->get_timeout, $txn->set_tx_max, 
+    $txn->get_tx_max
+
+-------------------------------------------------------------------
+Thu Jul 13 14:00:14 CEST 2006 - anicka@suse.cz
+
+- update to 0.29
+  * added support for Berkeley DB 4.4
+  * many bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 15 15:03:47 CET 2005 - uli@suse.de
+
+- no test on ARM (unimplemented calls in QEMU)
+
+-------------------------------------------------------------------
+Tue Nov 23 23:54:05 CET 2004 - ro@suse.de
+
+- update to 0.26
+
+-------------------------------------------------------------------
+Mon Sep 20 17:23:05 CEST 2004 - ro@suse.de
+
+- check for recent kernel also on i386
+
+-------------------------------------------------------------------
+Mon Sep 20 00:44:29 CEST 2004 - ro@suse.de
+
+- require a recent kernel to build (check-build.sh)
+
+-------------------------------------------------------------------
+Wed Aug 25 16:45:47 CEST 2004 - choeger@suse.de
+
+- new package perl-BerkeleyDB, v0.25
+

@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Thu Nov 22 09:50:36 UTC 2018 - asmorodskyi@suse.com
+
+- Fix python-module compatibility with older distros 
+
+-------------------------------------------------------------------
+Fri Apr  6 14:11:01 CEST 2018 - mls@suse.de
+
+- remove rpmlint-Factory buildignore
+
+-------------------------------------------------------------------
+Tue Mar 20 13:59:45 UTC 2018 - tchvatal@suse.com
+
+- Switch really to singlespec thus allowing us to build without
+  python2-devel present in the distribution
+
+-------------------------------------------------------------------
+Wed Jan 31 14:45:33 CET 2018 - mls@suse.de
+
+- update to rpm-4.14.1
+
+-------------------------------------------------------------------
+Tue Dec 19 09:39:25 UTC 2017 - jengelh@inai.de
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Sat Oct 28 12:19:34 UTC 2017 - ngompa13@gmail.com
+
+- Add a comment to note that prep and build stages come from rpm.spec
+
+-------------------------------------------------------------------
+Mon Oct 16 13:49:18 UTC 2017 - ngompa13@gmail.com
+
+- Properly quote the conditional for Obsoletes+Provides
+
+-------------------------------------------------------------------
+Sun Oct 15 04:03:00 UTC 2017 - ngompa13@gmail.com
+
+- Unify rpm-python and python3-rpm into singlespec
+- Switch the build to use setuptools-based build, so that
+  the Python module is properly built with all its metadata
+
+-------------------------------------------------------------------
+Wed Nov 20 14:41:34 CET 2013 - mls@suse.de
+
+- adapt to python-3.3, which no longer looks at XXXmodule.so
+
+-------------------------------------------------------------------
+Fri Jul 12 15:36:43 CEST 2013 - mls@suse.de
+
+- update to rpm-4.11.1
+
+-------------------------------------------------------------------
+Wed Jan  2 14:25:20 UTC 2013 - dmueller@suse.com
+
+- Update to 4.10.2
+
+-------------------------------------------------------------------
+Mon Apr 23 11:16:26 CEST 2012 - mls@suse.de
+
+- modified capsule api diff to match rpm upstream
+
+-------------------------------------------------------------------
+Wed Apr 11 16:54:02 UTC 2012 - klaussfreire@gmail.com
+
+- Fix usage of deprecated AsVoidPtr Python/C API, 
+  replaced by Capsule API
+
+-------------------------------------------------------------------
+Tue Jan 17 10:28:42 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Don't rm -rf %{buildroot}
+  * Removed %clean section
+  * Removed authors from description
+
+-------------------------------------------------------------------
+Sun Dec 11 09:28:28 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Feb 23 14:01:41 CET 2011 - mls@suse.de
+
+- drop standard python directories from filelist [bnc#229189]
+
+-------------------------------------------------------------------
+Fri Oct 22 15:52:32 UTC 2010 - coolo@novell.com
+
+- adapt second spec file to changes done to rpm.spec
+
+-------------------------------------------------------------------
+Mon Oct 18 11:03:53 CEST 2010 - dmueller@suse.de
+
+- adapt buildrequires 
+
+-------------------------------------------------------------------
+Thu Feb 12 16:52:26 CET 2009 - ro@suse.de
+
+- adapt buildrequires 
+
+-------------------------------------------------------------------
+Wed Oct  8 11:24:22 CEST 2008 - cthiel@suse.de
+
+- added libelf-devel to BuildRequires to fix build
+
+-------------------------------------------------------------------
+Thu Sep 11 15:33:52 CEST 2008 - mls@suse.de
+
+- update to 4.4.2.3 to get rid of >50 patches
+
+-------------------------------------------------------------------
+Sat Aug 30 21:23:38 CEST 2008 - cthiel@suse.de
+
+- add libselinux-devel to BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug  7 16:05:51 CEST 2008 - dmueller@suse.de
+
+- fix build against python 2.6
+
+-------------------------------------------------------------------
+Thu Mar 27 14:47:18 CET 2008 - coolo@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Fri May 25 16:20:53 CEST 2007 - mls@suse.de
+
+- fix unicode queries
+
+-------------------------------------------------------------------
+Fri Mar 30 15:06:28 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel and zlib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct 18 22:59:02 CEST 2006 - mls@suse.de
+
+- use rpm.spec for building instead of duplication everything
+- delete superfluous .a and .la files [#202604]
+- create .pyc and .pyo files [#205711]
+
+-------------------------------------------------------------------
+Sun Oct 15 23:41:37 CEST 2006 - schwab@suse.de
+
+- Make sure config.rpath is present.
+
+-------------------------------------------------------------------
+Fri Sep 22 08:58:57 CEST 2006 - aj@suse.de
+
+- Fix for python2.5.
+
+-------------------------------------------------------------------
+Thu Sep 21 11:41:04 CEST 2006 - lnussel@suse.de
+
+- do not package beecrypt python bindings as libbeecrypt is not
+  packaged either
+- fix literal %{version} in Requires tag
+
+-------------------------------------------------------------------
+Thu Sep 21 10:58:42 CEST 2006 - lnussel@suse.de
+
+- fix build with python 2.5 by overriding autodetection
+
+-------------------------------------------------------------------
+Tue Sep 19 13:48:27 CEST 2006 - rguenther@suse.de
+
+- split from rpm package
+

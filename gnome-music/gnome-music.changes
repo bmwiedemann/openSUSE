@@ -1,0 +1,1082 @@
+-------------------------------------------------------------------
+Mon May  6 18:02:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Fix player scale starting on first song.
+  + About dialog movable.
+  + Keep the same app ID as in 3.30.
+
+-------------------------------------------------------------------
+Wed Apr 10 08:25:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + MPRIS fixes.
+  + Update help application icon.
+  + Fix scale update on first song.
+  + Bugs fixed:
+    - Crash with mouse back button.
+    - Repeat song not working.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:07:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:38:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Bugs fixed: Fix initial state graphics in dark mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 00:19:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Show an empty view when Tracker is unavailable.
+  + Bugs fixed:
+    - Play correct song while paused.
+    - Show a warning when Tracker is not available.
+    - Cannot cancel 'All' sources in search via button.
+    - Crashes when trying to play any song.
+    - Crash while tracks are being loaded.
+  + Updated translations.
+- Drop gnome-music-playlistview-Fix-playlist-renaming.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Jan  3 13:45:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Replace app menu with Primary menu.
+  + Add TheAudioDB for coverart lookup.
+
+-------------------------------------------------------------------
+Fri Dec 28 00:15:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patch:
+  + gnome-music-playlistview-Fix-playlist-renaming.patch:
+    playlistview: Fix playlist renaming.
+
+-------------------------------------------------------------------
+Wed Oct 24 09:55:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Delayed loading of remote cover art.
+  + Fix keyboard shortcuts.
+  + Flatpak fixes.
+  + Bugs fixed: glgo#GNOME/gnome-music#226,
+    glgo#GNOME/gnome-music#238.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 12:53:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Dark mode fixes.
+  + Add TheAudioDB support for coverart.
+  + Fix issues with repeatmode handling.
+  + Bugs fixed: glgo#GNOME/gnome-music!245,
+    glgo#GNOME/gnome-music!241, glgo#GNOME/gnome-music!247,
+    glgo#GNOME/gnome-music!246, glgo#GNOME/gnome-music!269,
+    glgo#GNOME/gnome-music!271, glgo#GNOME/gnome-music!274,
+    glgo#GNOME/gnome-music#220.
+  + Updated translations.
+- Add pkgconfig(grilo-plugins-0.3) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sat Sep  8 09:40:10 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Mon Sep  3 03:30:25 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Make static playlists more reliable.
+  + Populate views on demand (improves startup).
+  + Fix player toolbar song/artist order.
+  + Switch view navigation from <Ctrl> to <Alt>.
+  + Add tooltips in more places.
+  + Style treeview stars.
+  + Lots of cleanups and reliability fixes.
+  + Bugs fixed: glgo#GNOME/gnome-music!239,
+    glgo#GNOME/gnome-music!238, glgo#GNOME/gnome-music#198,
+    glgo#GNOME/gnome-music!237, glgo#GNOME/gnome-music!233,
+    glgo#GNOME/gnome-music!230, glgo#GNOME/gnome-music!232,
+    glgo#GNOME/gnome-music#203, glgo#GNOME/gnome-music#60,
+    glgo#GNOME/gnome-music#154, glgo#GNOME/gnome-music!227,
+    glgo#GNOME/gnome-music!229.
+  + Updated translations.
+- Drop glib2_gsettings_schema_requires macro: this is no longer
+  needed since RPM file triggers (RPM 4.13).
+- Enable tests run to increase QA of package.
+
+-------------------------------------------------------------------
+Fri Aug 17 12:31:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Finished moving the existing ui to use Gtk.Template.
+  + Added some minor transitions going to selection-mode.
+  + Add OARS tag.
+  + Reword application description.
+  + Bugs fixed: glgo#GNOME/gnome-music#174,
+    glgo#GNOME/gnome-music!177, glgo#GNOME/gnome-music!206,
+    glgo#GNOME/gnome-music!211, glgo#GNOME/gnome-music#212,
+    glgo#GNOME/gnome-music#183, glgo#GNOME/gnome-music#211,
+    glgo#GNOME/gnome-music#183, glgo#GNOME/gnome-music#208,
+    glgo#GNOME/gnome-music#213, glgo#GNOME/gnome-music!221,
+    glgo#GNOME/gnome-music!226.
+  + Updated translations.
+- Add pkgconfig(goa-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Aug  3 20:54:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Lots of widgets ported to use Gtk.Template.
+  + Added development app bundles to CI.
+  + Codebase wide cleanups and refactoring.
+  + Port sidebars away from libgd views.
+  + Bugs fixed: glgo#GNOME/gnome-music#197,
+    glgo#GNOME/gnome-music#37, glgo#GNOME/gnome-music#89,
+    glgo#GNOME/gnome-music#185, glgo#GNOME/gnome-music#200,
+    glgo#GNOME/gnome-music#199, glgo#GNOME/gnome-music#195.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 22 03:13:26 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.2.1:
+  + Update appdata.
+  + Use CSS styling instead of widget attributes.
+  + Merge emptystate views.
+  + Add optional suspend inhibition gsetting.
+  + Bugs fixed: glgo#GNOME/gnome-music#169,
+    glgo#GNOME/gnome-music#74, glgo#GNOME/gnome-music#140,
+    glgo#GNOME/gnome-music#160, glgo#GNOME/gnome-music#163,
+    glgo#GNOME/gnome-music#177, glgo#GNOME/gnome-music#130,
+    glgo#GNOME/gnome-music#144, glgo#GNOME/gnome-music#178,
+    glgo#GNOME/gnome-music#182, glgo#GNOME/gnome-music#188.
+- Add libdazzle-1.0 and libsoup-2.4 pkgconfig modules BuildRequires
+  to follow upstream changes.
+- Remove pkgconfig(gnome-desktop-3.0) BuildRequires: this is no
+  longer a requirement nor even used.
+
+-------------------------------------------------------------------
+Mon May  7 22:46:34 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.2.1:
+  + baseview: Do not reset init state.
+- Changes from version 3.28.2:
+  + Fix notification calls on startup.
+  + artistalbumswidget: Wait for last album to load
+    (glgo#GNOME/gnome-music#174).
+  + grilo: Fix audio check.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and suse_update_desktop_\
+  file: they are no longer required.
+
+-------------------------------------------------------------------
+Mon Apr  9 21:34:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Fix issue with untranslated UI elements
+    (glgo#GNOME/gnome-music#169).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 17 15:37:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.0.1:
+  + data: Remove domain from ui files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:26:05 UTC 2018 - fcrozat@suse.com
+
+- Add grilo-plugin-tracker as requires, otherwise gnome-music is
+  useless (bsc#1083659).
+- Add tracker as requires, tracker-miner-files is not enough as
+  a dependency (bsc#1084861).
+
+-------------------------------------------------------------------
+Mon Mar 12 15:25:14 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Albumartcache (glgo#GNOME/gnome-music#95):
+    - Do not close non-existing stream on error.
+    - Fix possible lookup loop.
+    - Do not send two signals on error.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 14:27:28 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92.1:
+  + Fix installation path of libgd.so.
+
+-------------------------------------------------------------------
+Mon Mar  5 18:46:57 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Port to Meson.
+  + Lots of fixes to the flatpak json.
+  + Fixes to playlists behaviour.
+  + Fix some shortcut logic.
+  + Fix issue with bluetooth headset input.
+  + Delayed loading of covers in albumsview to decrease startup
+    time.
+  + Lots of general cleanups.
+  + Update to latest libgd.
+- Add meson BuildRequires and replace configure/make/make_install
+  macros with meson/meson_build/meson_install.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:50 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  7 10:38:46 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Lots of cleanup/refactoring.
+  + Add album scrobbling.
+  + Dropped some more libgd use.
+  + Add context menu to interact with playlist items.
+  + Drag and drop reorder in playlists.
+  + Add album scrobbling.
+  + Rework notifications.
+  + Rework art cache.
+  + Last bits of HiDPI support.
+  + Avoid duplicate albums in albums view (boo#1115708).
+  + Bugs fixed: glgo#2, glgo#3, glgo#4, glgo#15) glgo#46, glgo#48,
+    glgo#50, glgo#55, glgo#65, glgo#81, glgo#106, glgo#121,
+    glgo#127, glgo#132, glgo#135, glgo#142.
+  + Updated translations.
+- Add pkgconfig(py3cairo) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Feb  7 03:27:04 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.4:
+  + Migrate from intltool to gettext (bgo#787272).
+  + Add appstream metadata to non-deprecated location (bgo#790869).
+  + Playlist ordering in views (bgo#772090).
+  + Fix style of GdTaggedEntry (bgo#791077).
+  + PEP-8 fixes & cleanups (bgo#791481).
+  + Update libgd.
+  + Fixes to navigating back (bgo#777238).
+  + Enable mouse button for navigating back (bgo#771934).
+  + Fix constructor deprecation warning (bgo#790127).
+  + Fix PyGObject deprecation warning (bgo#788701).
+  + Fix order in method call.
+  + Fix log decorator order.
+  + Use python3 style super() calls.
+  + DiscListBoxWidget update favourites.
+  + Add the ability to rename playlists.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed after migration to
+  gettext.
+
+-------------------------------------------------------------------
+Tue Feb  6 20:26:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2:
+  + Bugs fixed:
+    - Block spotify plugin (glgo#gnome-music#132).
+    - DiscListBoxWidget: Update favorites playlist (bgo#784998).
+    - Albumartcache: Fix order in method call.
+    - Flatpak: Update music repository URL (glgo#gnome-music#138).
+    - Misc flatpak fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  4 09:58:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 11:06:08 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  9 16:12:02 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-ugly Recommends: Recommend often used
+  codecs for music playback.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:00:48 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Wrong player.set_playlist call in albumwidget.py (bgo#786454).
+  + Problem scrolling albums on wayland (bgo#780548).
+  + Different icon in System Settings Sound pane (bgo#709073).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 22 08:34:10 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Bugs fixed: bgo#786541, bgo#786315.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  9 09:14:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Limit concurrent loading of coverart.
+  + Fixes to appdata.
+  + Use tracker:title-order for sorting.
+  + Bugs fixed: bgo#783466, bgo#785697.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 21 17:48:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Build: depend on libtracker-sparql-2.0.
+  + Add Flatpak manifest.
+  + Mark forgotten string for translation.
+  + Bugs fixed: bgo#776668, bgo#774500, bgo#781684, bgo#777346,
+    bgo#781754.
+- Replace pkgconfig(tracker-sparql-1.0) with
+  pkgconfig(tracker-sparql-2.0) BuildRequires following upstreams
+  changes.
+- Drop gnome-music-group-configs.patch: Fixed upstream.
+- Update desktop file name to new dbus conforming one.
+- Stop handling glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un) in
+  post(un), no longer needed as we have file-triggers taking care
+  of this for us now.
+
+-------------------------------------------------------------------
+Thu Jun 22 11:54:09 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-music-group-configs.patch: Fix sefault at launch with
+  updated python-cairo (bgo#774500, bgo#781326).
+
+-------------------------------------------------------------------
+Sun May 21 12:16:35 UTC 2017 - dimstar@opensuse.org
+
+- Require python3-gobject-Gdk: gnome-music is a GUI application and
+  we thus don't only require python3-Gobject, but also the GUI
+  toolkits.
+
+-------------------------------------------------------------------
+Wed May 10 16:36:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Bugs fixed: bgo#776668, bgo#781684.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 11:22:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1.1:
+  + Revert desktop file rename.
+  + In turn revert Flatpak manifest addition.
+- Changes from version 3.24.1:
+  + Add Flatpak manifest (bgo#779905).
+  + Fix crashers.
+  + Up Grilo requirements.
+  + bgo#780523: playlist dialog shows the playlist that is going to
+    be deleted.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:31:30 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:42:21 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Code cleanups.
+  + Local art retrieval added.
+  + AppData screenshots updated.
+  + Bugs fixed: bgo#776668, bgo#777041, bgo#779013, bgo#779052,
+    bgo#779584, bgo#779585.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  2 14:39:47 UTC 2017 - jengelh@inai.de
+
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Tue Feb 28 00:15:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Code cleanups.
+  + Bugs fixed: bgo#774470, bgo#774449.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 08:30:15 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Empty-state added for playlist dialog.
+  + Bugs fixed: bgo#772089, bgo#776680, bgo#777541, bgo#777219.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:11:07 UTC 2017 - zaitor@opensuse.org
+
+- Handle more duplicate files via fdupes macro.
+- Add gnome-music-rpmlintrc to supress rpmlint warning about a gir
+  file that there is no sense in having a devel package for.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:11:06 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.4:
+  + Revamp notifications and drop GdNotification.
+  + More cleanups.
+  + Bugs fixed: bgo#772975, bgo#776157, bgo#776673, bgo#776849,
+    bgo#777127, bgo#777216, bgo#777235.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 13 15:08:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.3:
+  + Start to use Grilo for storing metadata.
+  + Rework starring widget.
+  + DistListBox improvements.
+  + Stop walking directories for no reason.
+  + Finish move to tracker async calls.
+  + Bugs fixed: bgo#774754, bgo#772689, bgo#775759, bgo#775930.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 12:21:27 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Rely on Cairo for cover scaling.
+  + Smooth progressbar.
+  + Make more tracker calls async.
+  + General cleanups.
+  + Tackle long-standing issues with album separation.
+  + Bugs fixed: bgo#772263, bgo#772628, bgo#772698, bgo#773478,
+    bgo#773769, bgo#774260, bgo#774481.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 12 03:23:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.1:
+  + Rework art lookup.
+  + Add HiDPI support (90% done).
+  + Add mnemonics.
+  + Rework about dialog.
+  + Split up views & widgets.
+  + Rework the album widgets.
+  + Show multi-disc albums as such.
+  + Make playlist retrieval non-blocking.
+  + Add composer label & search.
+  + Bugs fixed: bgo#761185, bgo#771348, bgo#772403, bgo#719452,
+    bgo#773192, bgo#705094, bgo#750827, bgo#761891.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 11 01:50:21 UTC 2016 - firebird209@gmail.com
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 09:29:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Make some tracker playlist calls async.
+  + Bugs fixed: bgo#765476.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 17:34:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Update maintainers in doap.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 08:04:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Fix keyboard play/pause handling.
+  + Remove top separator in song lists.
+  + Do not remove static playlists on Delete keypress.
+  + Bugs fixed: bgo#771249, bgo#770178, bgo#754096.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 23 12:09:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + New keyboard shortcuts and a shortcuts window to go with it.
+  + Move to cleanup the codebase style (PEP-8) & use docstrings,
+    see README.
+  + Better sorting in albums and artists view.
+  + Playlist dialog enhanced with a 'new playlist' entry.
+  + Move to GtkFlowBox for albums view, a significant performance
+    improvement.
+  + Bugs fixed: bgo#761502, bgo#766115, bgo#746447, bgo#765609,
+    bgo#761625, bgo#747953, bgo#754700, bgo#742531, bgo#758637,
+    bgo#757833, bgo#769774, bgo#769772, bgo#744834, bgo#760164.
+  + Updated translations.
+- Add pkgconfig(pygobject-3.0) BuildRequires and version it, new
+  explicit dependency.
+
+-------------------------------------------------------------------
+Wed May 11 09:08:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Port to Gio GDBUS API (bgo#705069).
+  + Clarify jhbuild instructions in README (bgo#763618).
+  + Emit playback-status-changed after playlist ends (bgo#755089).
+  + Accept response on row-activated in Playlist Dialog
+    (bgo#744820).
+  + Bump Gtk+ minimum version to 3.19.3 (bgo#765598).
+  + Stop the player when destroying window (bgo#761961).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 14:36:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:54:07 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + bgo#762821: Update Grilo plugin ranks to 0.3 format.
+  + bgo#761941: Fix Pango critical warnings on searchbar.
+  + bgo#761890: Check if visible child is ArtistsAlbumsWidget on
+    search toggle.
+  + bgo#763304: Don't assume that nmm:MusicPieces will have a
+    nie:url in playlists.
+  + bgo#744821: Properly de/activate select button on
+    PlaylistDialog when navigating w/ arrow keys.
+  + bgo#744831: Fix crash while deleting multiple playlists.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  3 16:04:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.91:
+  + bgo#744829: No more duplicate playlists on the sidebar.
+  + bgo#762406: More Grilo 0.3 transition fixes.
+  + bgo#762265: No more notifications on track changes.
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Feb 16 10:12:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + bgo#761173: Update tracker queries to sparql 1.1 syntax.
+  + bgo#760170: Fix check button appearance on AlbumWidget.
+  + bgo#760170: Fix check buttons appearance in Songs and Playlist
+    view.
+  + bgo#736463: Reposition the scrollbar in the search window.
+  + bgo#760171: Resized songs list for better viewing in large
+    window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 12:24:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Let GtkApplication automatically load the app-menu.
+  + Refactor the way we connect menu actions.
+  + Add symbolic icon.
+  + Pass width/height during pixbuf loading.
+  + Scale the playlist name to match the mockups.
+  + Bugs fixed: bgo#734958, bgo#739924, bgo#751163, bgo#758942,
+    bgo#758942, bgo#759024, bgo#759587, bgo#759882, bgo#760033,
+    bgo#760033, bgo#760033, bgo#760033, bgo#760033, bgo#760033,
+    bgo#760381.
+  + Updated translations.
+- Add pkgconfig(tracker-sparql-1.0) BuildRequires: new dependency.
+- Replace pkgconfig(grilo-0.2) BuildRequires with
+  pkgconfig(grilo-0.3), following upstreams port to grilo-0.3.
+- Drop HighContrast theme cache handling from post/postun, as there
+  are no HighContrast icons left after the addition of the symbolic
+  icon.
+
+-------------------------------------------------------------------
+Mon Nov 16 09:47:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Bugs fixed: bgo#755601, bgo#756256, bgo#746446, bgo#756330,
+    bgo#757227.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 23 14:47:27 UTC 2015 - dimstar@opensuse.org
+
+- Add python3-requests Requires: this is a hard runtime dependency.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:02:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:56:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Bugs fixed: bgo#744827, bgo#754654, bgo#754702, bgo#754836,
+    bgo#754977.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:16:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Tags in search textbox are broken (bgo#738516).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 11:52:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Bugs fixed: bgo#744658, bgo#753488.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 10:41:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Several deprecations were removed.
+  + More performance improvements.
+  + Bugs fixed: bgo#705070, bgo#747233, bgo#752591, bgo#752592.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 10:41:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Bugs fixed: bgo#743362, bgo#744464, bgo#747749, bgo#748375,
+    bgo#749981.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 10:41:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Bug fix release.
+  + Performance improvements.
+  + Bugs fixed: bgo#749981, bgo#750686, bgo#749307, bgo#744658,
+    bgo#753488.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 06:42:34 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + bgo#747749: Cant't play favourite song in Album view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:31:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 16:09:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Bugs fixed: bgo#744657, bgo#745646, bgo#745647, bgo#745648,
+    bgo#745650.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 13:35:49 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Bugs fixed: bgo#705852, bgo#729377, bgo#729525, bgo#743310,
+    bgo#743883, bgo#743884, bgo#743901, bgo#744005, bgo#744655,
+    bgo#744807, bgo#744832.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 21:16:23 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + New smart playlist: Favourite tracks, all views updated to
+    allow making a track favourite.
+  + All Artists is not selected by default - improves performance.
+  + All smart playlists now retyurn max 50 items.
+  + Playlists menu now uses popover.
+  + Notification appears on loading operations.
+  + Favourite songs are now displayed on search view.
+  + GStreamer discoverer performance fixes from garnacho.
+  + Minor UI fixes.
+  + Bugs fixed: bgo#729377, bgo#729525, bgo#743310, bgo#744005.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 26 10:59:33 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Smart playlists - Most Played, Never Played, Recently Played.
+  + Chunked loading was removed - scrolling should be faster.
+  + Content is now hidden before fully loaded - notification on
+    the progress will land in master in next version.
+  + Playlists are remvoed after time out, removal can be undone.
+  + Dependency change: libmediaart-2.0.pc is now required.
+  + Replaygain tags are now supported.
+  + Overall performance fixes.
+  + Bugs fixed: bgo#729376, bgo#704257, bgo#742603, bgo#742451,
+    bgo#733686, bgo#726459, bgo#702519, bgo#742800, bgo#742123,
+    bgo#731613, bgo#774201, bgo#730269.
+  + Updated translations and help files.
+- Stop injecting libmediaart-2.0 to configure, fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 26 10:59:32 UTC 2015 - zaitor@opensuse.org
+
+- Replace pkgconfig(libmediaart-1.0) for pkgconfig(libmediaart-2.0)
+  BuildRequires and use sed to inject the bump into configure,
+  upstream reverted the change for now, but it will land soon.
+
+-------------------------------------------------------------------
+Mon Jan 26 10:58:32 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.2:
+  + Better thread handling while fetching album art.
+  + Some UI/UX goodies.
+  + Notification can now be disabled.
+  + 'The' (and translation) is not disregarded during sorting.
+  + MPRIS improvements.
+  + Bugs fixed:
+    - bgo#736925: Remove deprecation warnings from AlbumWidget.ui.
+    - bgo#737142: Remove remaining gtk deprecation warnings.
+    - bgo#737571: No covers loaded on libmediaart 0.6.0.
+    - bgo#736241: Prefer embedded album art over downloaded.
+    - bgo#732151: High CPU and sluggish performance.
+    - bgo#733473: Use "Alt + left arrow" to navigate back.
+    - bgo#738465: Have a dconf switch to disable notifications.
+    - bgo#731392: Nicer empty state.
+    - bgo#729378: Disregard "The" in titles.
+    - bgo#734513: play/pause is activated twice when pressing.
+      spacebar and play/pause button is active/selected.
+    - bgo#729309: Add support for MPRIS Playlists.
+    - bgo#740211: Add support for MPRIS TrackList.
+    - bgo#740212: Bump MPRIS support to 2.2.
+    - bgo#740330: Album view - music icons are badly rendered.
+    - bgo#740524: Missing license headers in playlists.py and
+      searchbar.py.
+    - bgo#731639: The pictures have different proportions,
+      influencing the effect of alignment.
+    - bgo#729459: under Artists, tracks in the same album are very
+      far apart from each other.
+    - bgo#740490: Music "forgets" search string, but search
+      results remain.
+  + Updated translations and help files.
+
+-------------------------------------------------------------------
+Mon Jan 26 10:57:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.14.3.1:
+  + Fixed an important bug on startup.
+  + Tags in search entries are now visible.
+  + Bugs fixed: bgo#743484.
+  + Updated translations.
+- Changes from version 3.14.3:
+  + Bugs fixed: bgo#740330, bgo#740524, bgo#731639, bgo#729459,
+    bgo#740490, bgo#731613, bgo#726459, bgo#733686, bgo#742123,
+    bgo#743042, bgo#729376.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 16:38:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Play/pause is activated twice when pressing spacebar and
+    play/pause button is active/selected (bgo#734513).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 18:25:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Bugs fixed:
+    - bgo#736925: Remove deprecation warnings from AlbumWidget.ui.
+    - bgo#737571: No covers loaded on libmediaart 0.6.0.
+    - bgo#736241: Prefer embedded album art over downloaded.
+    - bgo#733686: Gnome music will not launch.
+  + Updated translations.
+- Drop gnome-music-fix-missing-albumcovers.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Oct  5 19:00:44 UTC 2014 - zaitor@opensuse.org
+
+- Add gnome-music-fix-missing-albumcovers.patch: Fix missing
+  albumart with libmediaart 0.6 and newer (bgo#737571).
+
+-------------------------------------------------------------------
+Mon Sep 22 14:38:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 10:37:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Bugs fixed: Fix the icons in RTL with new GTK+ (bgo#735890).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 15:47:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Ported to GtkActionbBar - now requires GTK+ 3.12.
+  + Correct icon is displayed for playlist menu.
+  + Better search UI.
+  + HighContrast icons.
+  + Improved Back navigation.
+  + Notifications now behave correctly when paused and less
+    flicker.
+  + Bugs fixed: bgo#734786, bgo#734404, bgo#734122, bgo#734117,
+    bgo#732150, bgo#732951.
+  + Updated translations.
+- Build HighContrast icon cache in post/postun.
+
+-------------------------------------------------------------------
+Tue Jul 22 09:28:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Bump python3 requirement to 3.3 (due to str.casefold).
+  + bgo#733095: Seeking in track above 36 minutes leads to crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:43:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Playlists are now stored in Tracker.
+  + Back button now returns back to Search if available.
+  + Bugs fixed: bgo#707461, bgo#729311, bgo#728254, bgo#728255,
+    bgo#728330.
+- Changes from version 3.13.2:
+  + Improved search with source and match type selection.
+  + Remote sources support: Jamendo, Magnatune, UPnP/DLNA.
+  + Player bar now looks better when window is small.
+  + Bugs fixed: bgo#729100, bgo#729102, bgo#728255, bgo#725949,
+    bgo#728407, bgo#729521, bgo#706948, bgo#699807, bgo#730205,
+    bgo#726713.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 19:25:28 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Thumbnail fetching was reworked. Should be much faster now.
+  + New dependency: libmediaart.
+  + Updated playlist UI.
+  + Now requires GTK 3.10.
+  + Shuffle menu is now a popover.
+  + Load More button was removed.
+  + Bugs fixed: bgo#724627, bgo#726721, bgo#727444, bgo#727522,
+    bgo#728323, bgo#724112, bgo#702565, bgo#699832, bgo#729096.
+  + Updated help files.
+  + Updated translations.
+- Add pkgconfig(libmediaart-1.0) BuildRequires following upstream.
+
+-------------------------------------------------------------------
+Sat May 17 12:58:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2.1:
+  + Reverted a fix for bgo#725949 as it causes a string change.
+- Changes from version 3.12.2:
+  + Loggins is now less agressive.
+  + Several improvements for playlist UI.
+  + Audio files ouside XDG_MUSIC_DIR and XDG_DOWNLOADS_DIR are
+    ignored.
+  + Bugs fixed: bgo#728323, bgo#724112, bgo#729096, bgo#726459,
+    bgo#728255, bgo#725949, bgo#706948.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 09:09:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Bugs fixed: bgo#726721, bgo#727444, bgo#727522.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 18:23:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Fixed 'MediaVideo' object has no attribute 'get_artist'
+    (bgo#726721).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 16:30:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Improved and translated help.
+  + Space now plays/pauses the current song.
+  + Minor UI updates to playlists.
+  + Bugs fixed: bgo#707454, bgo#724627, bgo#725904.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 17:14:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.91:
+  + Initial help infrastructure.
+  + More info is printed if the track cannot be played.
+  + Last 10 played tracks are stored in shuffle history.
+  + Other minor improvements and bug fixes.
+  + Bugs fixed: bgo#707744, bgo#724228, bgo#707457, bgo#725355,
+    bgo#723942, bgo#724954, bgo#707376.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 23 15:00:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Initial playlists support.
+  + Filter-as-you-type.
+  + Misc fixes and improvements.
+  + Bugs fixed: bgo#700022, bgo#721297, bgo#723765, bgo#708154,
+    bgo#724027, bgo#724025, bgo#724016, bgo#721595, bgo#723750,
+    bgo#709234.
+  + Updated translations.
+- Drop gnome-music-without-gsd.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Feb 23 14:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Exit selection mode on pressing Esc.
+  + Pep8 compatibility.
+  + Broken AppData file was removed from sources.
+  + Bugs fixed: bgo#707590. bgo#708279, bgo#709033, bgo#707399,
+    bgo#705853, bgo#707633, bgo#709465.
+  + Updated translations.
+- Drop ppkgconfig(tracker-miner-0.16) and
+  pkgconfig(tracker-sparql-0.16) BuildRequires: tracker is only a
+  runtime dependency.
+
+-------------------------------------------------------------------
+Sun Feb 23 13:29:17 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.3:
+  + Bugs fixed: bgo#709234, bgo#721595, bgo#724016, bgo#723942,
+    bgo#708154, bgo#723765, bgo#721297, bgo#700022, bgo#707744.
+- Changes from version 3.10.2:
+  + Correctly use AlbumArtCache.get_media_title in notifications.
+  + Correctly use gettext call.
+  + Do not ship a broken AppData file.
+  + Updated translations.
+- Drop gnome-music-without-gsd.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov 28 18:16:07 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-music-without-gsd.patch: allow to launch gnome-music
+  without gnome-settings-daemon, so outside of a gnome session
+  (bnc#852362, bgo#709234).
+
+-------------------------------------------------------------------
+Mon Oct 14 13:13:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + bgo#708279: Two patches for buttons in the headerbar.
+  + bgo#709033: Album Cover art not displayed in the notifications.
+  + bgo#705853: Toggle selection mode on right click, cancel on
+    Esc.
+  + bgo#707633: Window size and maximize status are not saved on
+    shutdown and not loaded on start up.
+  + bgo#709386: Music progress slider (scale widget) bounces to 0
+    then back to chosen value.
+  + bgo#709465: Music progress slider (scale widget) bounces around
+    before zeroing when next song is played.
+  + Updated translations.
+- Drop gnome-music-notif-coverart.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 29 15:53:41 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-music-notif-coverart.patch: Fix cover art not being
+  shown in notifications (bnc#842992, bgo#709033).
+
+-------------------------------------------------------------------
+Tue Sep 24 19:10:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 18:58:49 UTC 2013 - cfarrell@suse.com
+
+- License update: SUSE-GPL-2.0-with-plugin-exception and LGPL-2.1+:
+  gnome-music has an exception to allow linking of non free
+  plugins.
+
+-------------------------------------------------------------------
+Sun Sep 22 11:05:12 UTC 2013 - dimstar@opensuse.org
+
+- Add python3-cairo Requires: gnomemusic/albumArtCache.py imports
+  cairo explicitly (bnc#841681).
+
+-------------------------------------------------------------------
+Mon Sep 16 16:48:49 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + Added AppData description.
+  + Icons are now RTL-compatible.
+  + Notifications appear during the playback.
+  + All views can be filtered via search button or Ctrl+F shortcut.
+  + URLs with no FileDataObject (*.cue) are now filtered.
+  + Fixed MPRIS commands: close, play, thumbnail display.
+  + Songs view now displays 'Unknown Album' for tracks with no
+    album set.
+  + Gnome Music notifies about startup.
+  + Bugs fixed: bgo#702377, bgo#703303, bgo#706576, bgo#707388,
+    bgo#707632, bgo#707824, bgo#707937, bgo#707938, bgo#708102,
+    bgo#708103, bgo#708116, bgo#708117, bgo#708159.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 20:05:56 UTC 2013 - kyoushuu@yahoo.com
+
+- Update to version 3.9.91:
+  + All songs will now be loaded in Songs view after switching to
+    it for the first time.
+  + First song in Songs view will play if Play is executed in MPRIS
+    and there is no current playlist.
+  + The URIs are now discovered asynchronously, to make loading
+    songs faster.
+  + An error icon will now show up when the file is deleted.
+  + The message when no music files are found is now more verbose,
+  + Bugs fixed: bgo#700776, bgo#705855, bgo#706019, bgo#706294,
+    bgo#706353, bgo#706457, bgo#706533, bgo#706800, bgo#706947.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 20:05:57 UTC 2013 - kyoushuu@yahoo.com
+
+- Initial package for version 3.9.90.
+

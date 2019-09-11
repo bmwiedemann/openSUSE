@@ -1,0 +1,5 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/openSUSE/post-build-checks.git</param>
+  <param name="changesrevision">78a6c62fee7bcbac6433f62dba77c48819e162f1</param></service>
+</servicedata>

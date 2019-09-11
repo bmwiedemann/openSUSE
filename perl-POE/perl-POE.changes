@@ -1,0 +1,465 @@
+-------------------------------------------------------------------
+Sun Jun  7 08:53:59 UTC 2015 - coolo@suse.com
+
+- updated to 1.367
+   see /usr/share/doc/packages/perl-POE/CHANGES
+
+  2015-06-03 10:10:18 -0400 v1_367
+  ================================
+  
+    commit 4f2ef10e7039f96659757f9e5097c45fc57cace1
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Wed Jun 3 10:10:18 2015 -0400
+    
+      Version bump for release.
+  
+    commit 208a5bf377f6b8c2064e927efd4bd331ab2016c2
+    Merge: e9377b1 6e0f41e
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Tue Jun 2 15:17:24 2015 -0400
+    
+      Merge pull request #22 from zhouzhen1/prchallenge
+  
+      Some trivial changes for the CPAN PR challenge.
+  
+    commit e9377b10c19c11ed1d3e5d34040b2dcf90227a51
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Tue Jun 2 14:37:40 2015 -0400
+    
+      rt.cpan.org 96039. Avoid close() on a FIFO until the reader is done.
+  
+      Cygwin seems to block on close() if a FIFO contains data. This test
+      deadlocks because it expects the ability to read from the FIFO
+      asynchronously later.
+  
+    commit 882a097209c2b6e02ccd31f3fb32c24bed73cdb6
+    Author: Sulev-Madis Silber (ketas) <madis555@hot.ee>
+    Date:   Tue Jun 2 13:58:57 2015 -0400
+    
+      rt.cpan.org 100499. Fix SuccessEvent values for AF_INET6.
+  
+      Applied ketas' micro patches, and updated an example in the docs.
+  
+    commit e60ea6c5b7c8ae1b50fefeed336393e18df9a474
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Tue Jun 2 09:08:59 2015 -0400
+    
+      rt.cpan.org 101227. Comment on an unused assertion.
+  
+    commit 3df9e01dbc658c46b254df59968eda2413f9c21b
+    Author: Slaven Rezić <srezic@cpan.org>
+    Date:   Tue Jun 2 08:18:28 2015 -0400
+    
+      rt.cpan.org 103842. Skip YAML line ending test on contemporary YAML.
+  
+    commit 6e0f41e8e671915de594d1c841b52e4042a5f04d
+    Author: zhouzhen1 <zhouzhen1@gmail.com>
+    Date:   Sun May 17 10:52:18 2015 +0800
+    
+      a couple of pod typo fix
+  
+    commit 13ad85f20a46adb5afd354c68f650878eee32a8b
+    Author: zhouzhen1 <zhouzhen1@gmail.com>
+    Date:   Sun May 17 10:51:09 2015 +0800
+    
+      add 'use strict' to POE/Queue.pm and POE/Resource.pm
+  
+    commit a888ad45a0eef04fa2aa476e60c54a13a54fd668
+    Merge: 4feeb50 d6ac082
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Mon Feb 23 15:09:52 2015 -0500
+    
+      Merge pull request #20 from nanis/nanis-fix-for-nmake
+  
+      Hard coded Unix-style directory separator causes problems on Windows
+      with nmake
+  
+    commit 2e4f77ac8a675453270bc7529ce9c8a4eb498a24
+    Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+    Date:   Sat Feb 21 15:45:21 2015 +0000
+    
+      Enable bind for IN6ADDR_ANY
+  
+    commit d6ac082351191b359d33b92e731748d56b8014dc
+    Author: A. Sinan Unur <nanis@cpan.org>
+    Date:   Fri Dec 19 13:57:00 2014 -0500
+    
+      Use File::Spec->catfile to compose certain paths
+  
+      Surrounding them with double quotes worked on Windows, but created
+      problems on other systems.
+  
+    commit 36a15cfb9bd929c60f86089bbdab8a883a835cc5
+    Author: A. Sinan Unur <nanis@cpan.org>
+    Date:   Fri Dec 19 13:41:38 2014 -0500
+    
+      Quote paths to fix errors with nmake on Windows
+  
+      C:\...\POE-1.366> nmake test
+  
+      "C:\opt\perl-5.20.1in\perl.exe" mylib/gen-tests.perl lib/POE.pm
+      Can't open perl script "mylib": Permission denied NMAKE : fatal error
+      U1077: 'C:\opt\perl-5.20.1in\perl.exe' : return code '0xd' Stop.
+  
+      This happens because perl ends up seeing mylib and /gen-tests.perl as
+      two separate thingies. It seemed to me that the most straightforward
+      solution which I do not think should effect any other platforms is to
+      quote the filename arguments. Hope this makes sense.
+  
+    commit ee3a45043e210fcbf51b6ba4c44b8cd618ca1a37
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Mon Dec 15 19:38:14 2014 -0500
+    
+      Make loop discovery O(M+N) instead of O(M*N) stat() operations.
+  
+    commit 61353ea4b552b4f4448daf60b06f0cb5f8fbc602
+    Author: Tobias Leich <email@froggs.de>
+    Date:   Wed Nov 5 10:54:21 2014 +0100
+    
+      fix typo ("Consier" => "Consider") 
+  
+  ================================
+
+-------------------------------------------------------------------
+Tue Apr 14 20:46:22 UTC 2015 - coolo@suse.com
+
+- updated to 1.366
+   see /usr/share/doc/packages/perl-POE/CHANGES
+
+  2014-11-03 13:39:18 -0500 v1_366
+  ================================
+  
+    commit 63e55125e55b4220984cc51dc3eb68ae1eb9cb21
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Mon Nov 3 13:39:18 2014 -0500
+    
+      Bump versions and dependencies for release.
+  
+    commit b800fb63188ac415b9f706428289d89b9d90e32f
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Fri Oct 31 12:23:41 2014 -0400
+    
+      Fall back to getprotobyname() if Socket doesn't export IPPROTO_TCP or
+      IPPROTO_UDP.
+  
+      CPAN testers were failing POE because Socket didn't provide these on
+      the full range of test machines. The common thread seems to be Perl
+      prior to 5.9. While quite old, there's no compelling reason not to
+      support it.
+  
+      This change also caches the protocol numbers at startup, rather than
+      looking them up every time. It should be slightly faster as a result.
+  
+    commit 90d04a311e463749dfeb10f3032866a723e7ca82
+    Author: Philip Gwyn <gwyn@cpan.org>
+    Date:   Fri Oct 31 11:12:11 2014 -0400
+    
+      [rt.cpan.org 91406] Use empty string instead of undef for __DIE__
+      handler.
+  
+      The rt.cpan.org bug alleges that the empty string is more compatible.
+      It doesn't seem to make a difference for contemporary versions of
+      Perl, so why not?
+  
+    commit c6f8e4f9dabbef51a75dbb043c01c92807fc604c
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Thu Oct 30 12:26:25 2014 -0400
+    
+      Trigger POE::Session _stop handlers when POE::Kernel->stop() is
+      called.
+  
+    commit ad6056b4bf5f928f87694fb274b7f30ae1534eb7
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Thu Oct 30 12:18:00 2014 -0400
+    
+      Remove Data::Dump. It's not used, but use() is FAILing tests.
+  
+    commit 4d3cc9fb8310050b4854a5f17ebb3821a870edae
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Thu Oct 2 16:12:42 2014 -0400
+    
+      Clarify the "now running in a different process" warning. 
+  
+  ================================
+  2014-10-01 19:38:47 -0400 v1_365
+  ================================
+  
+    commit ac32695a49330c0543eb985c7e7024f29b14ea28
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Wed Oct 1 19:38:47 2014 -0400
+    
+      Bump the version for release.
+  
+    commit 0ffe08ceb164a53003a28364b9a9e3012961ecbb
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Wed Oct 1 19:28:11 2014 -0400
+    
+      Expose exceptions thrown from SIGDIE handlers.
+  
+      This change causes both the error that triggered a SIGDIE and the
+      error within the SIGDIE handler to be rethrown together.
+  
+    commit 786a6080bf3df744ad91d0b108ea2e4143a59e07
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Wed Oct 1 19:22:25 2014 -0400
+    
+      Add a failing test case for reporting die() from within SIGDIE.
+  
+      Grinnz provided this test case on Freenode #perl. It shows that die()
+      within a SIGDIE handler is not reported. Instead, the original error
+      is thrown without any indication why it wasn't handled as intended.
+  
+    commit 2eacf6bb69ab0843ed02a842a58de676c1cde06e
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Mon Sep 29 08:58:50 2014 -0400
+    
+      SeekBack of 0 is fine on special files.
+  
+      Problem found by coworkers at Plixer International.
+  
+    commit 1092eff5dfde3ebc9db1f7e0948e332d794b38a7
+    Author: Rocco Caputo <rcaputo@cpan.org>
+    Date:   Fri Sep 12 13:57:31 2014 -0400
+    
+      Import carp() into POE::Filter::HTTPD.
+  
+      Passing a bogus parameter to POE::Filter::HTTPD->new() caused a
+      complaint that carp() wasn't defined, rather than the proper
+      complaint the carp() call was making.
+  
+      Thanks go to gbjk for passing on an anonymous report in IRC.
+  
+    commit 3155fff17f189be2674fb7870c8fc9d289392c37
+    Author: Brian Fraser <fraserbn@gmail.com>
+    Date:   Sun Jul 27 03:25:47 2014 +0200
+    
+      Workaround for systems without getprotobyn* (e.g. android) 
+  
+  ================================
+
+-------------------------------------------------------------------
+Wed Aug  6 12:58:36 UTC 2014 - coolo@suse.com
+
+- updated to 1.364, see CHANGES
+
+-------------------------------------------------------------------
+Mon Dec  9 11:18:15 UTC 2013 - coolo@suse.com
+
+- updated to 1.358, see CHANGES
+
+-------------------------------------------------------------------
+Fri Oct  4 09:14:03 UTC 2013 - coolo@suse.com
+
+- updated to 1.356, see CHANGES
+
+-------------------------------------------------------------------
+Sat Jul 27 11:59:04 UTC 2013 - coolo@suse.com
+
+- updated to 1.354, see CHANGES 
+
+-------------------------------------------------------------------
+Mon Oct 15 10:40:01 UTC 2012 - coolo@suse.com
+
+- buildrequire netcfg explicitly for the test suite
+
+-------------------------------------------------------------------
+Thu Dec 22 09:14:23 UTC 2011 - coolo@suse.de
+
+- updated to 1.350, see CHANGES
+
+-------------------------------------------------------------------
+Fri Nov 11 10:35:05 UTC 2011 - coolo@suse.com
+
+- use original source
+
+-------------------------------------------------------------------
+Sun Jul 31 07:26:20 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.312:
+  + fix getnameinfo() return values 
+  + Add stack traces to _data_handle_remove() failures
+  + Add note about Perl 5.6 issues with '>&' open mode
+    and other documentation enhancements
+  + Bump Term::Cap prereq to 1.10
+  + add proper checks for ipv6 stuff in Makefile.PL
+  + Rework Apocalypse's blocking(0) change to avoid code BLOCKs.
+  + Make transpose-chars work when cursor is at end of line
+  + Reinstate transposition regex which failed on 5.004_05
+  + remove obsolete code and comments pertaining perl-5.005
+  + add missing POE_DANTIC env check
+  + Make Time::HiRes a mandatory dependency
+- fixed source0 URL
+- added HTTP::Request, Socket::GetAddrInfo, Term::Cap and Term::Size 
+  to BuildRequires to run more tests
+- recommend HTTP::Request
+
+-------------------------------------------------------------------
+Tue Apr  5 11:14:53 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Fri Feb  4 13:24:46 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.299:
+  + Try Sucket6 if Socket doesn't provide IPv6 address families
+  + Work around the possibility that Socket::GetAddrInfo isn't loaded
+     when someone needs IPv6.
+  + Upgrade IPv6 support from Socket6 to Socket::GetAddrInfo
+  + delete $ENV{POE_ASSERT_USAGE} so that 11_assert_usage.t and 
+    13_assert_data.t can do their thing
+  + Add doc blurb about pty issues on linux
+  + Remove alias_resolve()'s warning if the resolution failed
+  + Added a guard to the signal pipe
+  + Allow call to POE::Kernel methods by class instead of by object
+  + Fix two typos in PoCo-(Client|Server)-TCP documentation
+  + Require a new POE::Test::Loops
+  + Mention that "use POE;" warrants has_forked() after forking
+  + Fix 'CleintInput' typo in poco-server-tcp's Pod
+  + Add user continuation parameters to sig() and sig_child()
+  + Continue to guarantee FIFO event ordering despite the rollback to
+    dumping them in a time-ordered queue. Detect minor time regressions,
+    and use the last time value plus a small number when needed.
+  + Fixed a mistake in the alias_list() example code in POE::Kernel
+    documentation, spotted by Paul G Webster
+  + Chris Benedict reported that nmap will crash Wheel::SocketFactory
+    based things. nmap disconnects before accept() can be called, so
+    accept() returns ECONNABORTED. Technically applications can handle
+    this themselves and not destroy the wheel, but the wheel maybe
+    shouldn't report harmless errors.
+  + Fix a method name typo in TRACE_REFCNT code
+  + Bugs fixed: cpan #61727, cpan #63242, cpan #59925
+- fix Recommends
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Sep 30 20:37:36 UTC 2010 - chris@computersalat.de
+
+- update to 1.293
+  o Add user continuation parameters to sig() and sig_child().
+  o Roll back most of the lexical FIFO event arrays. Going through a
+    POE::Queue for this will be a bit slower, but POE::XS::Queue::Array
+    may be fast enough.
+  o Continue to guarantee FIFO event ordering despite the rollback to
+    dumping them in a time-ordered queue. Detect minor time regressions,
+    and use the last time value plus a small number when needed. 
+  o Fixed a mistake in the alias_list() example code in POE::Kernel
+    documentation, spotted by Paul G Webster
+  o Chris Benedict reported that Mac OS X returns ESPIPE when accept() is
+    aborted, rather than ECONNABORTED everywhere else. Add ESPIPE to the
+    list of harmless accept() errors. 
+  o Chris Benedict reported that nmap will crash Wheel::SocketFactory
+    based things. nmap disconnects before accept() can be called, so
+    accept() returns ECONNABORTED. Technically applications can handle
+    this themselves and not destroy the wheel, but the wheel maybe
+    shouldn't report harmless errors. 
+  o Apply Hinrik's patch to increase test failure verbosity.
+- 2010-08-02T06:01:19.221768Z v1_292
+  o Resolve rt.cpan.org 59925, wherein sig_child() use would increase
+    some events' latency to at 1sec. First reported by Getty, then Avar
+    opened the ticket. Fixed with Hinrik's copious valuable assistance. 
+  o Fix a method name typo in TRACE_REFCNT code.
+- noarch pkg
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Tue Jul 27 10:05:00 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.291:
+  + Nick Perez pointed out that we don't absolutely need HighEvent, 
+    since put() returns the high-water status much more conveniently. 
+    Resolve his rt.cpan.org ticket 56432. 
+    Oh, and fix an unrelated test plan.
+  + Clarify the refcount_{inc,dec}rement() return values per Olivier
+    'dolmen' Mengué's feedback in rt.cpan.org #57314
+  + Remove some logic that stopped being used. Adjust idle-kernel checks
+    into a slightly more optimal order.
+  + Finish a sentence. Incomplete docs noted by Hinrik.
+  + Move non-alarms out of POE::Queue::Array.
+  + Reduce calls to get_item_count() by one per _data_ev_dispatch_due().
+    Reduce calls to get_next_priority() by approx. one per
+    _data_ev_dispatch_due(). Micro-optimize get_item_count().
+  + Fix tests related to recent POE::Resource::Events optimizations.
+  + At long last, apply Ton Hospel's micro-optimization for
+    get_next_priority().
+  + mall optimizations. Avoid _data_stat_add() calls when not needed.
+    Avoid redundant session refcounts when the source and destination are
+    the same. Breaks some pedantic tests, but we can fix those.
+
+-------------------------------------------------------------------
+Fri Apr  9 23:59:22 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.289:
+  + many test changes
+  + documentation fixes
+  + Avoid undefined value warnings when trying to tab-complete
+    nothingness.
+  + Tweak the @modules logic
+  + Remove any XS modules from @modules
+  + Fix loading of XS loops via POE.pm
+
+-------------------------------------------------------------------
+Sat Feb 20 12:27:57 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.287:
+  + Fix a sig_child() race condition in a MooseX::Workers test case
+  + Fix an infinite file rollover when open() succeeds but stat() fails.
+    Jay Hannah discovered a bug when he passed in a filename with
+    trailing whitespace. Two-parameter open() treats trailing whitespace
+    as insignificant, so it passed. On the other hand, trailing
+    whitespace is significant in stat(), so it always failed, triggering
+    an unrelenting stream of file rollover events. Switched to
+    three-parameter open(), which considers trailing whitespace as
+    significant. Now both open() and stat() agree the file doesn't exist.
+  + Removed dependency on Test::Exception
+  + Resolve rt.cpan.org #54319. In polling mode, the wheel wasn't
+    iterating get_one() for the entire input from get_one_start(). As a
+    result, only one log line was returned per PollInterval. This change
+    iterates through get_one() until all lines are returned.
+  + Restore _start & _stop return values. Mikko Ehto reported that 
+    _start and _stop don't return values as documented. He
+    also provided a testcase, which was very helpful. 
+  + fixed a bug in POE::Wheel::FollowTail 
+  + fixed spelling mistakes
+  + several doc changes
+
+-------------------------------------------------------------------
+Fri Jan  1 18:26:53 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.281
+
+-------------------------------------------------------------------
+Fri Nov  6 23:29:55 CET 2009 - dmueller@suse.de
+
+- update to 1.280
+
+-------------------------------------------------------------------
+Sun Aug 30 15:55:05 CEST 2009 - lars@linux-schulserver.de
+
+- update to 1.266;
+  + fixed and update many documentation
+  + fixed at least the following RT Bugs: RT #47852, RT #47853, RT #47854,
+    RT #47892, RT #47966, RT #47855, RT #48341, RT #48670, RT #48802
+  + many more work is done - please read
+    /usr/share/doc/packages/perl-POE/CHANGES
+- enable rt47966-sigchld test 
+- enable IO::Tty tests
+- enable POE::Test::Loops
+- follow perl packaging guidelines
+
+-------------------------------------------------------------------
+Thu Apr  9 14:56:19 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.004
+- removed "openSUSE Education" vendor tag
+- some minor spec file enhancements
+
+-------------------------------------------------------------------
+Sun Nov 30 06:26:26 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.003
+

@@ -1,0 +1,22 @@
+diff -Nurd xrootd-3.3.6.orig/src/XrdCl/XrdClXRootDTransport.cc xrootd-3.3.6/src/XrdCl/XrdClXRootDTransport.cc
+--- xrootd-3.3.6.orig/src/XrdCl/XrdClXRootDTransport.cc	2014-01-16 15:09:57.000000000 +0100
++++ xrootd-3.3.6/src/XrdCl/XrdClXRootDTransport.cc	2018-07-01 09:55:05.028126043 +0200
+@@ -1058,15 +1058,15 @@
+     if( hsData->url->GetUserName().length() )
+     {
+       ::strncpy( (char*)loginReq->username,
+-                 hsData->url->GetUserName().c_str(), 8 );
++                 hsData->url->GetUserName().c_str(), 7 );
+     }
+     else
+     {
+       char *name = new char[1024];
+       if( !XrdOucUtils::UserName( geteuid(), name, 1024 ) )
+-        ::strncpy( (char*)loginReq->username, name, 8 );
++        ::strncpy( (char*)loginReq->username, name, 7 );
+       else
+-        ::strncpy( (char*)loginReq->username, "????", 8 );
++        ::strncpy( (char*)loginReq->username, "????", 7 );
+       delete [] name;
+     }
+ 

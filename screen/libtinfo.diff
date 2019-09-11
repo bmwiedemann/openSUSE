@@ -1,0 +1,13 @@
+--- ./configure.ac.orig	2012-06-11 14:43:51.000000000 +0000
++++ ./configure.ac	2012-06-11 14:45:19.000000000 +0000
+@@ -668,8 +668,8 @@ tgetent((char *)0, (char *)0);
+ LIBS="-ltermcap $olibs"
+ AC_CHECKING(libtermcap)
+ AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
+-LIBS="-ltermlib $olibs"
+-AC_CHECKING(libtermlib)
++LIBS="-ltinfo $olibs"
++AC_CHECKING(libtinfo)
+ AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
+ LIBS="-lncursesw $olibs"
+ AC_CHECKING(libncursesw)

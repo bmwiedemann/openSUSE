@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Sat Aug  3 14:28:44 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.11.1:
+  * Include "stderr" in "str()" of raised
+    "subprocess.CalledProcessError".
+
+-------------------------------------------------------------------
+Sat Jun 15 15:48:14 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific i %files section
+
+- update to version 0.11:
+  * Add "quiet" argument to ".render()" and ".pipe()" methods of
+    "Graph", "Digraph", and "Source" objects, allowing to suppress
+    "stderr" of the layout subprocess (parity with stand-alone
+    "render()" and "pipe()" functions).
+  * The rendering process for "render()" methods and stand-alone
+    function is now started from the directory of the rendered dot
+    source file. This allows to render graph descriptions that use
+    relative paths inline (e.g. for referring to image files to be
+    included) by using paths relative to the source file
+    location. Previously, such relative paths would need to be given
+    relative to the directory from which "render()" was started, so
+    this change is backwards incompatible for code that relied on the
+    previous behaviour.
+  * Drop Python 3.4 support.
+
+-------------------------------------------------------------------
+Tue Apr 23 10:58:51 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add minimal needed versions to BuildRequires
+  Build fails with older python-pytest-mock versions so add the
+  needed checks to avoid that
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:43 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Nov 14 12:44:07 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.1:
+  * python 3.7 support
+  * Various fixes
+
+-------------------------------------------------------------------
+Sat Jan  6 17:29:25 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.8.2:
+  * Add nohtml() to support labels of the form '<...>' (disabling
+    their default treatment as HTML strings).
+  * Make default utf-8 encoding more visible.
+  * Set encoding = locale.getpreferredencoding() when encoding
+    argument/property is set to None explicitly (follow stdlib io.open
+    behaviour).
+
+-------------------------------------------------------------------
+Wed Nov 15 13:12:25 UTC 2017 - jengelh@inai.de
+
+- Replace imperatives in description.
+
+-------------------------------------------------------------------
+Wed Nov 15 12:53:33 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.8.1
+* please see long list of changes in
+    https://github.com/xflr6/graphviz/blob/d7149d507ea6c345ac20f5d6d7e14bc3f162114c/CHANGES
+
+-------------------------------------------------------------------
+Fri Apr 14 21:09:02 UTC 2017 - toddrme2178@gmail.com
+
+- Initial singlespec version
+

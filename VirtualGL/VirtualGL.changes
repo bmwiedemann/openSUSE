@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Tue Jun 19 09:43:27 UTC 2018 - tchvatal@suse.com
+
+- Do not provide the env files which change the preload order
+  bsc#1097210
+
+-------------------------------------------------------------------
+Mon Dec  4 12:53:39 UTC 2017 - tchvatal@suse.com
+
+- Disable ssl feature as we can tunnel via ssh and the openssl-1.1
+  is not compatible at all currently
+
+-------------------------------------------------------------------
+Mon Dec  4 08:56:50 UTC 2017 - tchvatal@suse.com
+
+- Version update 2.5.2:
+  * Various compat fixes all around
+- Remove merged gcc6_literal_suffixes.patch
+- Refresh VirtualGL-link-libs.patch and virtualgl-nodl.patch
+
+-------------------------------------------------------------------
+Wed Aug 24 14:05:22 UTC 2016 - tchvatal@suse.com
+
+- Fix bnc#993645 as-needed eating symbols needed by this lib
+  * virtualgl-nodl.patch
+- Use system xcb headers
+- Rename glxinfo2 to vglxinfo, sounds bit better and more descriptive
+
+-------------------------------------------------------------------
+Thu Jun 16 15:30:58 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.5 release
+  * See upstream changelog for details
+  * Mostly removal of compat for pre-VirtualGL namespace
+- Refresh patch VirtualGL-link-libs.patch
+
+-------------------------------------------------------------------
+Thu Jun 16 15:21:54 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new gcc6_literal_suffixes.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 09:24:19 UTC 2015 - tchvatal@suse.com
+
+- Add proper wxwidgets license string
+
+-------------------------------------------------------------------
+Fri Aug 28 13:07:12 UTC 2015 - tchvatal@suse.com
+
+- Update to 2.4.1:
+  * Various bugfixes not mentioned on changes
+  * Refresh VirtualGL-link-libs.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 09:28:04 UTC 2014 - tchvatal@suse.com
+
+- Version bump to beta1 of 2.4 (2.3.90)
+- Fix building with -Wl,-z,now and no-undefined
+  * VirtualGL-link-libs.patch
+
+-------------------------------------------------------------------
+Thu Aug 21 13:56:01 UTC 2014 - dvaleev@suse.com
+
+- Extend 64bit conditions to s390x ppc64 ppc64le aarch64 
+
+-------------------------------------------------------------------
+Tue Jul  1 07:50:50 UTC 2014 - tchvatal@suse.com
+
+- Mention baselibs.conf in spec file
+
+-------------------------------------------------------------------
+Tue Jul  1 07:40:00 UTC 2014 - tchvatal@suse.com
+
+- Update license to WXwindows
+
+-------------------------------------------------------------------
+Mon Feb 10 09:12:18 UTC 2014 - tchvatal@suse.com
+
+- Require 32b libturbojpeg0 on the 32bit binary.
+
+-------------------------------------------------------------------
+Sun Feb  9 11:09:30 UTC 2014 - tchvatal@suse.com
+
+- No need to have different name for glxspheres on 64 and 32b.
+
+-------------------------------------------------------------------
+Fri Feb  7 14:18:41 UTC 2014 - tchvatal@suse.com
+
+- Use baselibs.conf
+- Cleanup the spec to use suse macros
+- Sort out dependencies and use system shared libjpeg-turbo
+
+-------------------------------------------------------------------
+Wed Nov 27 00:00:00 UTC 2013 - arnaldo.coelho@gmail.com
+
+- Update to 2.3.3
+
+-------------------------------------------------------------------
+Mon Oct 29 00:00:00 UTC 2012 - arnaldo.coelho@gmail.com
+
+- Update to 2.3.2
+
+-------------------------------------------------------------------
+Thu Sep  6 00:00:00 UTC 2012 - arnaldo.coelho@gmail.com
+
+- Update to 2.3.1
+
+-------------------------------------------------------------------
+Fri Dec 30 00:00:00 UTC 2011 - bumblebee-project@hotmail.com
+
+- Update to 2.3
+
+-------------------------------------------------------------------
+Mon Jul 11 00:00:00 UTC 2011 - bumblebee-project@hotmail.com
+
+- Initial package
+

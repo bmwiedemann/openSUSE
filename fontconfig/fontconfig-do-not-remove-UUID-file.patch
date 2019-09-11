@@ -1,0 +1,82 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/merge_requests/8
+From 5f12f564f8748deaa603adb7a4b8f616b6390ad4 Mon Sep 17 00:00:00 2001
+From: Keith Packard <keithp@keithp.com>
+Date: Wed, 17 Oct 2018 21:15:47 -0700
+Subject: [PATCH] Do not remove UUID file when a scanned directory is empty
+
+Because FcDirCacheDeleteUUID does not reset the modification time on
+the directory, and because FcDirCacheRead unconditionally creates the
+UUID file each time it is run, any empty directory in the cache will
+get its timestamp changed each time the cache for that directory is
+read.
+
+Instead, just leave the UUID file around as it is harmless.
+
+The alternative would be to only create the UUID file after the cache
+has been created and the directory has been discovered to be
+non-empty, but that would delay the creation of the UUID file.
+
+Signed-off-by: Keith Packard <keithp@keithp.com>
+---
+ src/fcdir.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/fcdir.c b/src/fcdir.c
+index 93f220c..bfcdf95 100644
+--- a/src/fcdir.c
++++ b/src/fcdir.c
+@@ -421,13 +421,6 @@ FcDirCacheRead (const FcChar8 *dir, FcBool force, FcConfig *config)
+     /* Not using existing cache file, construct new cache */
+     if (!cache)
+ 	cache = FcDirCacheScan (dir, config);
+-    if (cache)
+-    {
+-	FcFontSet *fs = FcCacheSet (cache);
+-
+-	if (cache->dirs_count == 0 && (!fs || fs->nfont == 0))
+-	    FcDirCacheDeleteUUID (dir, config);
+-    }
+ 
+     return cache;
+ }
+-- 
+2.18.1
+
+diff --git a/test/run-test.sh b/test/run-test.sh
+index e76e39bd8c384f8354600d8c7b073a57f3012482..ed41456998ba599568e2ab0bf3cc990e9abcc525 100644
+--- a/test/run-test.sh
++++ b/test/run-test.sh
+@@ -239,19 +239,19 @@ fi
+ 
+ rm -rf $MyPWD/sysroot
+ 
+-dotest "deleting .uuid file on empty dir"
+-prep
+-cp $FONT1 $FONT2 $FONTDIR
+-$FCCACHE $FONTDIR
+-sleep 1
+-rm -f $FONTDIR/*pcf
+-$FCCACHE $FONTDIR
+-rmdir $FONTDIR > /dev/null 2>&1
+-if [ $? != 0 ]; then
+-  echo "*** Test failed: $TEST"
+-  echo "$FONTDIR isn't empty"
+-  ls -al $FONTDIR
+-  exit 1
+-fi
++# dotest "deleting .uuid file on empty dir"
++# prep
++# cp $FONT1 $FONT2 $FONTDIR
++# $FCCACHE $FONTDIR
++# sleep 1
++# rm -f $FONTDIR/*pcf
++# $FCCACHE $FONTDIR
++# rmdir $FONTDIR > /dev/null 2>&1
++# if [ $? != 0 ]; then
++#   echo "*** Test failed: $TEST"
++#   echo "$FONTDIR isn't empty"
++#   ls -al $FONTDIR
++#   exit 1
++# fi
+ 
+ rm -rf $FONTDIR $CACHEFILE $CACHEDIR $FONTCONFIG_FILE out

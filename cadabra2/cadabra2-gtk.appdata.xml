@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<component>
+  <id>cadabra2-gtk.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Cadabra 2</name>
+  <project_license>GPL-3.0+</project_license>
+  <summary>A computer algebra system for problems in field theory</summary>
+  <url type="homepage">http://cadabra.science/</url>
+  <description>
+    <p>Cadabra2 is a computer algebra system (CAS) designed specifically for
+the solution of problems encountered in field theory.</p>
+    <p>It has been designed specifically for the solution of problems encountered
+in quantum and classical field theory. It has extensive functionality
+for tensor computer algebra, tensor polynomial simplification
+including multi-term symmetries, fermions and anti-commuting
+variables, Clifford algebras and Fierz transformations, implicit
+coordinate dependence, multiple index types and many more. The input
+format is a subset of TeX.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image height="1440" width="1192">https://cadabra.science/static/images/screenshot.png</image>
+      <caption>Gamma matrix algebra in a Cadabra2 notebook</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>info@cadabra.science</update_contact>
+</component>

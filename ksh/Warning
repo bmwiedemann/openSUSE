@@ -1,0 +1,26 @@
+
+   GPL 1.0/2.0 versus CPL1.0 as well as versus EPL1.0
+   ==================================================
+
+According to http://www.gnu.org/licenses/license-list.html
+the current CPL-1.0 as well as EPL-1.0 is incompatible with
+the GPL.
+
+Therefore no developer should use the libraries provided
+by the ksh in any project under the GPL.
+
+For compiling use
+
+        -I/usr/include/ast
+
+on the gcc compiler command line.  For linking please
+add the line
+
+        -L/usr/lib/ast
+
+or
+
+        -L/usr/lib64/ast
+
+on 64bit architectures to the command line of the
+linker or gcc.

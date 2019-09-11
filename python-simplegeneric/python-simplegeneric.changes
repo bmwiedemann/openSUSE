@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:54:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Apr 25 21:49:49 UTC 2017 - toddrme2178@gmail.com
+
+- Fix URL.
+
+-------------------------------------------------------------------
+Mon Apr 24 20:39:20 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Update source URL.
+
+-------------------------------------------------------------------
+Thu Jan 17 10:07:38 UTC 2013 - cfarrell@suse.com
+
+- license update: ZPL-2.1
+  SPDX format
+
+-------------------------------------------------------------------
+Wed Jan 16 13:25:51 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

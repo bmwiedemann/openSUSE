@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Jan 12 01:56:57 UTC 2013 - jengelh@inai.de
+
+- Use standard %configure and enable parallel build
+- Directly place .pc file in its final location
+- Simplify BuildRequires list, kill %clean section and unused
+  changelog (it's in .changes, after all)
+
+-------------------------------------------------------------------
+Tue Feb  5 00:44:45 CET 2008 - wberrier@suse.de
+
+- Update ndesk-dbus from mchristensen's build service project
+ -move .pc file to usr/share and make noarch
+ -clean up filelist
+
+-------------------------------------------------------------------
+Fri Nov  9 00:43:52 CET 2007 - mchristensen@novell.com
+
+- initial packaging (update to 0.6.0 in build service)
+
+-------------------------------------------------------------------
+Thu May 31 00:43:24 CET 2007 - mauro@novell.com
+
+- Adding this pacakge to factory
+

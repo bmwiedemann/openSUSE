@@ -1,0 +1,408 @@
+From ae019ce73766ed38f74567459ae5cd74beb1c56f Mon Sep 17 00:00:00 2001
+From: Alex Lord <alord@isilon.com>
+Date: Thu, 23 Jul 2015 21:20:05 -0700
+Subject: [PATCH] Working on both 2.7 and 3.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Matěj Cepl <mcepl@cepl.eu>
+---
+ bzlib/bug.py           |  7 ++--
+ bzlib/bugzilla.py      | 16 +++++---
+ bzlib/command.py       | 90 +++++++++++++++++++++---------------------
+ bzlib/config.py        |  5 ++-
+ bzlib/test_bugzilla.py | 10 ++---
+ bzlib/ui.py            |  2 +-
+ 6 files changed, 69 insertions(+), 61 deletions(-)
+
+diff --git a/bzlib/bug.py b/bzlib/bug.py
+index 6586c16..ebcdba0 100644
+--- a/bzlib/bug.py
++++ b/bzlib/bug.py
+@@ -101,7 +101,7 @@ class Bug(object):
+                 kwargs[_in] = list(all_values - frozenset(kwargs[_not_in]))
+             del kwargs[_not_in]  # delete the _not_in
+ 
+-        unknowns = kwargs.viewkeys() - fields
++        unknowns = set(kwargs.keys()) - fields
+         if unknowns:
+             # unknown arguments
+             raise TypeError(
+@@ -252,14 +252,13 @@ class Bug(object):
+             'comment',
+             'version', 'priority',
+         ])
+-        unknowns = kwargs.viewkeys() - fields
++        unknowns = kwargs.keys() - fields
+         if unknowns:
+             # unknown arguments
+             raise TypeError('Invalid keyword arguments: {}.'.format(unknowns))
+ 
+         # filter out ``None``s
+-        kwargs = {k: v for k, v in kwargs.viewitems() if v is not None}
+-
++        kwargs = {k: v for k, v in kwargs.keys() if v is not None}
+         # format deadline (YYYY-MM-DD)
+         if 'deadline' in kwargs:
+             date = kwargs['deadline']
+diff --git a/bzlib/bugzilla.py b/bzlib/bugzilla.py
+index 14439bf..63822c2 100644
+--- a/bzlib/bugzilla.py
++++ b/bzlib/bugzilla.py
+@@ -15,8 +15,14 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import urlparse
+-import xmlrpclib
++try:
++    import urllib.parse as urlparse
++except ImportError:
++    import urlparse
++try:
++    import xmlrpclib
++except ImportError:
++    import xmlrpc.client as xmlrpclib
+ 
+ from . import bug
+ from . import config
+@@ -58,7 +64,7 @@ class Bugzilla(object):
+         required, but may be ``None``.
+         """
+         mandatory_args = set(['server', 'url', 'user', 'password'])
+-        mandatory_args -= kwargs.viewkeys()
++        mandatory_args -= set(kwargs.keys())
+         if mandatory_args:
+             raise TypeError('Mandatory args ({}) not supplied'.format(
+                 ', '.join("'{}'".format(arg) for arg in mandatory_args)))
+@@ -81,8 +87,8 @@ class Bugzilla(object):
+                 _server[k] = kwargs[k]
+ 
+         mandatory_kwargs = {'url'}
+-        if mandatory_kwargs - _server.viewkeys():
+-            missing_args = ', '.join(mandatory_kwargs - _server.viewkeys())
++        if mandatory_kwargs - set(_server.keys()):
++            missing_args = ', '.join(mandatory_kwargs - _server.items())
+             raise UserWarning("missing args: {}".format(missing_args))
+ 
+         return cls(**_server)
+diff --git a/bzlib/command.py b/bzlib/command.py
+index 59d591d..6c42e8a 100644
+--- a/bzlib/command.py
++++ b/bzlib/command.py
+@@ -184,7 +184,7 @@ class Config(Command):
+         if args.list:
+             for section in conf.sections():
+                 for option, value in conf.items(section):
+-                    print '{}={}'.format('.'.join((section, option)), value)
++                    print('{}={}'.format('.'.join((section, option)), value))
+         elif not args.name:
+             raise UserWarning('No configuration option given.')
+         else:
+@@ -209,10 +209,10 @@ class Config(Command):
+                     if conf.has_option(section, option) else None
+                 conf.set(section, option, args.value)
+                 conf.write()
+-                print '{}: {} => {}'.format(args.name, oldvalue, args.value)
++                print('{}: {} => {}'.format(args.name, oldvalue, args.value))
+             else:
+                 curvalue = conf.get(section, option)
+-                print '{}: {}'.format(args.name, curvalue)
++                print('{}: {}'.format(args.name, curvalue))
+ 
+ 
+ class Help(Command):
+@@ -227,12 +227,12 @@ class Help(Command):
+             self._parser.parse_args(['--help'])
+         else:
+             if self._args.subcommand in self._aliases:
+-                print "'{}': alias for {}".format(
++                print("'{}': alias for {}".format(
+                     self._args.subcommand,
+                     self._aliases[self._args.subcommand]
+-                )
++                ))
+             elif self._args.subcommand not in self._commands:
+-                print "unknown subcommand: '{}'".format(self._args.subcommand)
++                print("unknown subcommand: '{}'".format(self._args.subcommand))
+             else:
+                 self._parser.parse_args([self._args.subcommand, '--help'])
+ 
+@@ -288,12 +288,12 @@ class Block(BugzillaCommand):
+         else:
+             # show blocked bugs
+             for bug in bugs:
+-                print 'Bug {}:'.format(bug.bugno)
++                print('Bug {}:'.format(bug.bugno))
+                 if bug.data['blocks']:
+-                    print '  Blocked bugs: {}'.format(
+-                        ', '.join(map(str, bug.data['blocks'])))
++                    print('  Blocked bugs: {}'.format(
++                        ', '.join(map(str, bug.data['blocks']))))
+                 else:
+-                    print '  No blocked bugs'
++                    print('  No blocked bugs')
+ 
+ 
+ @with_add_remove('given users', 'CC List', metavar='USER')
+@@ -326,12 +326,12 @@ class CC(BugzillaCommand):
+         else:
+             # show CC List
+             for bug in bugs:
+-                print 'Bug {}:'.format(bug.bugno)
++                print('Bug {}:'.format(bug.bugno))
+                 if bug.data['cc']:
+-                    print '  CC List: {}'.format(
+-                        ', '.join(map(str, bug.data['cc'])))
++                    print('  CC List: {}'.format(
++                        ', '.join(map(str, bug.data['cc']))))
+                 else:
+-                    print '  0 users'
++                    print('  0 users')
+ 
+ 
+ @with_bugs
+@@ -390,7 +390,7 @@ class Comment(BugzillaCommand):
+                             and not (args.which and n not in args.which)
+                     )
+                 )
+-            print '\n'.join(map(cmtfmt, args.bugs))
++            print('\n'.join(map(cmtfmt, args.bugs)))
+ 
+ 
+ @with_set('given bugs', 'depdendencies', metavar='BUG', type=int)
+@@ -418,12 +418,12 @@ class Depend(BugzillaCommand):
+         else:
+             # show dependencies
+             for bug in bugs:
+-                print 'Bug {}:'.format(bug.bugno)
++                print('Bug {}:'.format(bug.bugno))
+                 if bug.data['depends_on']:
+-                    print '  Dependencies: {}'.format(
+-                        ', '.join(map(str, bug.data['depends_on'])))
++                    print('  Dependencies: {}'.format(
++                        ', '.join(map(str, bug.data['depends_on']))))
+                 else:
+-                    print '  No dependencies'
++                    print('  No dependencies')
+ 
+ 
+ @with_bugs
+@@ -438,7 +438,7 @@ class Desc(BugzillaCommand):
+                 bug,
+                 self.formatstring.format(**desc)
+             )
+-        print '\n'.join(_descfmt(bug) for bug in self._args.bugs)
++        print('\n'.join(_descfmt(bug) for bug in self._args.bugs))
+ 
+ 
+ @with_bugs
+@@ -446,7 +446,7 @@ class Dump(BugzillaCommand):
+     """Print internal representation of bug data."""
+     def __call__(self):
+         bugs = (self.bz.bug(x) for x in self._args.bugs)
+-        print '\n'.join(str((x.data, x.comments)) for x in bugs)
++        print('\n'.join(str((x.data, x.comments)) for x in bugs))
+ 
+ 
+ @with_bugs
+@@ -480,18 +480,18 @@ class Fields(BugzillaCommand):
+                 sorted(field['values'], None, keyfn),
+                 keyfn
+             )
+-            print field['name'], ':'
++            print("{} :".format(field['name']))
+             for key, group in groups:
+                 keyfn = lambda x: int(x.get('sortkey', -1))
+                 values = sorted(group, None, keyfn)
+                 if key:
+-                    print '  {}: {}'.format(
++                    print('  {}: {}'.format(
+                         ','.join(key),
+                         ','.join(map(lambda x: x['name'], values))
+-                    )
++                    ))
+                 else:
+                     value_names = (v.get('name') for v in values)
+-                    print '  ', ','.join(s for s in value_names if s)
++                    print('  ', ','.join(s for s in value_names if s))
+ 
+ 
+ def _format_history(history):
+@@ -518,10 +518,10 @@ class History(BugzillaCommand):
+                 _history[0][0] = h['who']
+                 _history[0][1] = h['when']
+                 history.extend(_history)
+-            print 'History of Bug {}:'.format(bug.bugno)
++            print('History of Bug {}:'.format(bug.bugno))
+             for line in _format_history(history):
+-                print '  ' + line
+-            print
++                print('  ' + line)
++            print()
+ 
+ 
+ @with_bugs
+@@ -531,12 +531,12 @@ class Info(BugzillaCommand):
+         args = self._args
+         fields = config.show_fields
+         for bug in map(self.bz.bug, args.bugs):
+-            print 'Bug {}:'.format(bug.bugno)
++            print('Bug {}:'.format(bug.bugno))
+             fields = config.show_fields & bug.data.viewkeys()
+             width = max(map(len, fields)) - min(map(len, fields)) + 2
+             for field in fields:
+-                print '  {:{}} {}'.format(field + ':', width, bug.data[field])
+-            print
++                print('  {:{}} {}'.format(field + ':', width, bug.data[field]))
++            print()
+ 
+ 
+ @with_bugs
+@@ -547,9 +547,9 @@ class List(BugzillaCommand):
+         lens = [len(str(x)) for x in args.bugs]
+         width = max(lens) - min(lens) + 2
+         for bug in map(self.bz.bug, args.bugs):
+-            print 'Bug {:{}} {}'.format(
++            print('Bug {:{}} {}'.format(
+                 str(bug.bugno) + ':', width, bug.data['summary']
+-            )
++            ))
+ 
+ 
+ class New(BugzillaCommand):
+@@ -672,9 +672,9 @@ class Products(BugzillaCommand):
+         products = self.bz.get_products()
+         width = max(map(lambda x: len(x['name']), products)) + 1
+         for product in products:
+-            print '{:{}} {}'.format(
++            print('{:{}} {}'.format(
+                 product['name'] + ':', width, product['description']
+-            )
++            ))
+ 
+ 
+ @with_bugs
+@@ -815,12 +815,12 @@ class Search(BugzillaCommand):
+         lens = [len(str(b.bugno)) for b in bugs]
+ 
+         for _bug in bugs:
+-            print 'Bug {:{}} {}'.format(
++            print('Bug {:{}} {}'.format(
+                 str(_bug.bugno) + ':', max(lens) - min(lens) + 2,
+                 _bug.data['summary']
+-            )
++            ))
+         n = len(bugs)
+-        print '=> {} bug{} matched criteria'.format(n, 's' if n else '')
++        print('=> {} bug{} matched criteria'.format(n, 's' if n else ''))
+ 
+ 
+ @with_bugs
+@@ -860,13 +860,13 @@ class Time(BugzillaCommand):
+                 # be absent from bug data.  first check that they're there.
+                 time_fields = ('deadline', 'estimated_time', 'remaining_time')
+                 if not all(x in bug.data for x in time_fields):
+-                    print 'User is not in the time-tracking group.'
++                    print('User is not in the time-tracking group.')
+                     return
+-                print 'Bug {}:'.format(bug.bugno)
+-                print '  Estimated time: {}'.format(bug.data['estimated_time'])
+-                print '  Remaining time: {}'.format(bug.data['remaining_time'])
+-                print '  Deadline:       {}'.format(bug.data['deadline'])
+-                print '  Time worked:    {}'.format(bug.actual_time())
++                print('Bug {}:'.format(bug.bugno))
++                print('  Estimated time: {}'.format(bug.data['estimated_time']))
++                print('  Remaining time: {}'.format(bug.data['remaining_time']))
++                print('  Deadline:       {}'.format(bug.data['deadline']))
++                print('  Time worked:    {}'.format(bug.actual_time()))
+ 
+ 
+ # the list got too long; metaprogram it ^_^
+@@ -874,5 +874,5 @@ commands = filter(
+     lambda x: type(x) == type                     # is a class \
+         and issubclass(x, Command)                # is a Command \
+         and x not in [Command, BugzillaCommand],  # not abstract
+-    locals().viewvalues()
++    locals().items()
+ )
+diff --git a/bzlib/config.py b/bzlib/config.py
+index f363eb7..6548075 100644
+--- a/bzlib/config.py
++++ b/bzlib/config.py
+@@ -14,7 +14,10 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import ConfigParser
++try:
++    import ConfigParser
++except ImportError:
++    import configparser as ConfigParser
+ import os.path
+ import re
+ 
+diff --git a/bzlib/test_bugzilla.py b/bzlib/test_bugzilla.py
+index d7238b5..7f6054e 100644
+--- a/bzlib/test_bugzilla.py
++++ b/bzlib/test_bugzilla.py
+@@ -41,7 +41,7 @@ class URLTestCase(unittest.TestCase):
+         with self.assertRaises(bugzilla.URLError) as cm:
+             bugzilla.Bugzilla('bogus://bugzilla.example.com/', 'u', 'p')
+         self.assertEqual(
+-            cm.exception.message,
++            str(cm.exception),
+             "URL scheme 'bogus' not supported."
+         )
+ 
+@@ -54,7 +54,7 @@ class URLTestCase(unittest.TestCase):
+             with self.assertRaises(bugzilla.URLError) as cm:
+                 bugzilla.Bugzilla(url, 'u', 'p')
+             self.assertEqual(
+-                cm.exception.message,
++                str(cm.exception),
+                 'URL {!r} is not valid.'.format(url)
+             )
+ 
+@@ -63,21 +63,21 @@ class URLTestCase(unittest.TestCase):
+         with self.assertRaises(bugzilla.URLError) as cm:
+             bugzilla.Bugzilla('http://bugzilla.example.com/;p', 'u', 'p')
+         self.assertEqual(
+-            cm.exception.message,
++            str(cm.exception),
+             'URL params, queries and fragments not supported.'
+         )
+         # query
+         with self.assertRaises(bugzilla.URLError) as cm:
+             bugzilla.Bugzilla('http://bugzilla.example.com/?q', 'u', 'p')
+         self.assertEqual(
+-            cm.exception.message,
++            str(cm.exception),
+             'URL params, queries and fragments not supported.'
+         )
+         # fragment
+         with self.assertRaises(bugzilla.URLError) as cm:
+             bugzilla.Bugzilla('http://bugzilla.example.com/#f', 'u', 'p')
+         self.assertEqual(
+-            cm.exception.message,
++            str(cm.exception),
+             'URL params, queries and fragments not supported.'
+         )
+ 
+diff --git a/bzlib/ui.py b/bzlib/ui.py
+index 87895f6..0ec0360 100644
+--- a/bzlib/ui.py
++++ b/bzlib/ui.py
+@@ -168,7 +168,7 @@ def filter_user(string, bugzilla=None, default=None):
+ 
+ class UI(object):
+     def show(self, msg):
+-        print msg
++        print(msg)
+ 
+     def bail(self, msg=None):
+         """Exit uncleanly with an optional message"""
+-- 
+2.17.0
+

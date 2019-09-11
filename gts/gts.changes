@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Wed May 27 09:38:23 UTC 2015 - aj@ajaissle.de
+
+- Uppercase rpm group
+
+-------------------------------------------------------------------
+Thu Nov  7 13:55:48 CET 2013 - pth@suse.de
+
+- Remove bogus requirement of gcc-c++ and libstdc++.  Use a macro for the
+- snapshot date.  modify the Description of the devel package.
+
+-------------------------------------------------------------------
+Tue Oct 29 18:16:50 UTC 2013 - cdenicolo@suse.com
+
+- license update:  LGPL-2.0+
+  license is LGPL-2.0 or later
+
+-------------------------------------------------------------------
+Fri Oct 25 15:59:22 UTC 2013 - mrdocs@opensuse.org
+
+- fix build on SLES
+
+-------------------------------------------------------------------
+Fri Oct 25 14:20:37 UTC 2013 - tchvatal@suse.com
+
+- Use snapshot with latest VCS version rather than release that
+  was from 2007.
+  * Fixes various build issues
+  * Provides manpages for most binaries
+
+-------------------------------------------------------------------
+Thu Oct 24 11:18:48 CEST 2013 - pth@suse.de
+
+- Clone package from KDE:KDE3.
+- Submit to Factory as it's needed for graphviz-smyrna.
+- Pass include direrctories in AM_CPPFLAGS instead of by
+  --includedir.
+- Add the gts headers to the devel package.
+- Add copyright to spec file.
+
+-------------------------------------------------------------------
+Thu Nov  4 20:09:36 UTC 2010 - malcolmlewis@opensuse.org
+
+- Fix broken Requires 
+
+-------------------------------------------------------------------
+Thu Nov  4 18:08:11 UTC 2010 - malcolmlewis@opensuse.org
+
+- Clean up spec file for OBS 
+
+-------------------------------------------------------------------
+Sun Sep 28 00:00:00 CDT 2008 - andrea@links2linux.de
+
+- complete spec rewrite
+
+-------------------------------------------------------------------
+Sat Jan 13 00:00:00 CST 2007 - dsbhayangkara@gmail.com
+
+- initial package.
+

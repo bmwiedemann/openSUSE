@@ -1,0 +1,13 @@
+Index: libzip-1.5.0/CMakeLists.txt
+===================================================================
+--- libzip-1.5.0.orig/CMakeLists.txt
++++ libzip-1.5.0/CMakeLists.txt
+@@ -229,7 +229,7 @@ ADD_SUBDIRECTORY(examples)
+ SET(prefix ${CMAKE_INSTALL_PREFIX})
+ SET(exec_prefix \${prefix})
+ SET(bindir \${exec_prefix}/${CMAKE_INSTALL_BINDIR})
+-SET(libdir \${exec_prefix}/${CMAKE_INSTALL_LIBDIR})
++SET(libdir ${CMAKE_INSTALL_LIBDIR})
+ SET(includedir \${prefix}/${CMAKE_INSTALL_INCLUDEDIR})
+ IF(BZIP2_FOUND)
+   SET(LIBS "${LIBS} -lbz2")

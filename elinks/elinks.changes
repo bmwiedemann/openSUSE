@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Tue Jul 23 20:49:14 CEST 2019 - sbrabec@suse.com
+
+- Update to 20190723 snapshot of version 0.13:
+  * no changes
+- Use pre-version tag, as the current snapshot is a pre-release.
+- Remove volatile URL from Source0.
+- Compile without strict aliasing to prevent breakage with new gcc.
+
+-------------------------------------------------------------------
+Mon Apr  1 09:31:50 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.13
+  * parse_header: document parameters and return value
+  * doxygen: Fix link to bookmark::url
+  * use draw_text for titles
+  * iconv: Bail out of the loop when an illegal sequence of bytes 
+    occur
+  * Add support for the CSS list-style-type property
+  * configure.in: use PKG_CONFIG
+  * Fixed problem of converting more than 256 chars
+  * mem_free_if where aplicable
+  * ssl: Make RAND_egd optional
+  * Better handling of content-disposition
+  * Compilation fix for OpenSSL-1.1
+  * display lua hooks errors
+  * brotli code updated
+  * Use blacklist to skip verification of certificates
+  * various code cleanup
+  * -VERS-SSL3.0 in gnutls to avoid SSL error.
+  * 1024: Verify server certificate hostname with OpenSSL (bsc#1082814)
+- Removed unneeded patches:
+  * elinks-0.12_pre5-compilation-fix.patch
+  * use_lua-5.1.patch
+  * build.with-openssl-1_1.patch
+- Renamed patch:
+  * build-with-ruby-1.9.patch -> build-with-new-ruby.patch
+
+-------------------------------------------------------------------
+Thu Dec 28 19:36:07 UTC 2017 - crrodriguez@opensuse.org
+
+- build.with-openssl-1_1.patch: fix build with openssl 1.1.
+
+-------------------------------------------------------------------
+Tue Jun 14 14:46:59 UTC 2016 - adam.majer@suse.de
+
+- Add %perl_requires to be certain that package rebuilds when
+  perl is updated. This is causing elinks not to be rebuilt with
+  factory and it can't find current libperl.so. See bnc#984661
+  for details.
+
+-------------------------------------------------------------------
+Tue Apr 26 09:51:59 UTC 2016 - sleep_walker@opensuse.org
+
+- disable JS support until someone fix it
+- refresh patches
+- fix indentation
+
+-------------------------------------------------------------------
+Mon Dec 24 22:07:46 UTC 2012 - tchvatal@suse.com
+
+- Version bump to 0.12_pre6.
+  * Remove upstream included js186 patches.
+  * Add new patch for ruby1.9 build.
+
+-------------------------------------------------------------------
+Sun Jun 10 17:19:18 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated License to GPL-2.0.
+- Added the following patches:
+  * elinks-0.12_pre5-js185-1-heartbeat.patch,
+    elinks-0.12_pre5-js185-2-up.patch,
+    elinks-0.12_pre5-js185-3-histback.patch: Support for new js-1.8.5
+  * elinks-0.12_pre5-compilation-fix.patch: Fix compilation with gc
+  * use_lua-5.1.patch: Support for lua-5.1
+- Added automake in BuildRequires in order to regenerate the build system
+  because of patches modifying configure.in.
+- Corrected gmp-devel build dependency to gpm-devel.
+- Removed guile-devel build dependency (wasn't used anyway and the support is
+  expiremental).
+- Removed python-devel build dependency since the support is expiremental.
+- Use ruby-devel only in openSUSE <= 12.1 since it fails with ruby 1.9 from
+  Factory.
+- Added the following build dependencies that can be used by the package:
+  gc-devel (for openSUSE > 11.4), js-devel (for openSUSE > 11.4), krb5-devel,
+  lua*-devel, pkg-config and tre-devel.
+- Make the package provide "web_browser", similar to other web browser
+  packages.
+- Removed build time references so build-compare can do its work.
+- Enabled the following build options: true-color and fastmem.
+- Install documentation only for the scripting languages that are compiled.
+
+-------------------------------------------------------------------
+Fri Jun 10 12:54:28 UTC 2011 - lijewski.stefan@gmail.com
+
+- fix sysconfdir to /etc/elinks 
+
+-------------------------------------------------------------------
+Tue Apr 26 13:12:57 UTC 2011 - puzel@novell.com
+
+- use spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Jan 27 17:55:54 UTC 2010 - puzel@novell.com
+
+- update to 0.12pre5 
+
+-------------------------------------------------------------------
+Wed Jan 27 17:45:25 UTC 2010 - puzel@novell.com
+
+- prepare for Contrib (disabled lua and js functionality for now) 
+
+-------------------------------------------------------------------
+Mon Sep 15 18:28:05 CEST 2008 - mrueckert@suse.de
+
+- update to 0.12pre1
+
+-------------------------------------------------------------------
+Wed Apr 18 21:14:44 CEST 2007 - mrueckert@suse.de
+
+- build with stack protector if possible
+
+-------------------------------------------------------------------
+Wed Apr 18 21:12:11 CEST 2007 - mrueckert@suse.de
+
+- fix building with javascript
+
+-------------------------------------------------------------------
+Wed Apr 18 16:07:48 CEST 2007 - mrueckert@suse.de
+
+- added javascript support
+
+-------------------------------------------------------------------
+Mon Apr 16 14:51:53 CEST 2007 - mrueckert@suse.de
+
+- update to version 0.11.3:
+  important bug and security fixes
+- remove the python patches
+
+-------------------------------------------------------------------
+Fri Dec  1 07:43:11 CET 2006 - mrueckert@suse.de
+
+- disable lua until i fixed the patch
+
+-------------------------------------------------------------------
+Mon Nov 20 14:20:13 CET 2006 - mrueckert@suse.de
+
+- update to version 0.11.2:
+  fixes CVE-2006-5925
+
+-------------------------------------------------------------------
+Fri Mar 10 22:00:48 CET 2006 - mrueckert@suse.de
+
+- update to version 0.11.1
+
+-------------------------------------------------------------------
+Fri Dec 23 04:18:07 CET 2005 - mrueckert@suse.de
+
+- update to version 0.11rc0
+
+-------------------------------------------------------------------
+Mon Sep 26 02:06:35 CEST 2005 - mrueckert@suse.de
+
+- Update to version 0.10.6
+

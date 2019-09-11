@@ -1,0 +1,54 @@
+## Path:    Network/FTP/Atftpd
+## Description: ATFTP Configuration
+## Type:    string
+## Default: "tftp"
+#
+#  daemon user (tftp)
+#
+ATFTPD_USER="tftp"
+
+## Type:    string
+## Default: "tftp"
+#
+#  daemon user (tftp)
+#
+ATFTPD_GROUP="tftp"
+
+## Type:    string
+## Default: ""
+##
+## INFO:
+## "--daemon, --user, --group, --logfile" can not be removed/replaced here as
+## atftp is started with them as default opts: "--daemon --user atftp --group atftp " 
+## and
+## logging to file is set as default: "--logfile /var/log/atftpd/atftp.log "
+#
+# atftpd options
+#
+ATFTPD_OPTIONS=""
+
+## Type:    yesno
+## Default: no
+#
+# Use inetd instead of daemon
+#
+ATFTPD_USE_INETD="no"
+
+## Type:    string
+## Default: "/srv/tftpboot"
+## was "/tftpboot" but
+## "/tftpboot" is not allowed anymore in FHS 2.2.
+#
+#  TFTP directory must be a world readable/writable directory.
+#  By default /srv/tftpboot is assumed.
+#
+ATFTPD_DIRECTORY="/srv/tftpboot"
+
+## Type:    string
+## Default: ""
+#
+#  Whitespace seperated list of IP addresses which ATFTPD binds to.
+#  One instance of the service is started on each IP address.
+#  By default atftpd will listen on all available IP addresses/interfaces.
+#
+ATFTPD_BIND_ADDRESSES=""

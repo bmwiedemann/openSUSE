@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Thu Jun  7 14:23:25 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  3 15:17:11 UTC 2016 - mpluskal@suse.com
+
+- Drop doc subpackage
+
+-------------------------------------------------------------------
+Sat Sep 10 07:14:44 UTC 2016 - mpluskal@suse.com
+
+- Update to version 18.32
+- Sync patches from fedora:
+  * dt-wformat-security.patch
+  * dt-default-source-define.patch
+  * dt-manpage.patch
+
+-------------------------------------------------------------------
+Tue Aug 30 18:10:35 UTC 2016 - mpluskal@suse.com
+
+- Correct license
+- Cleanup spec file with spec-cleaner
+- Disable building on 32 architectures for Factory as they fail
+
+-------------------------------------------------------------------
+Mon Feb 21 15:56:30 CET 2011 - hare@suse.de
+
+- Update to version 17.25
+
+-------------------------------------------------------------------
+Tue Oct 13 13:48:06 CEST 2009 - hare@suse.de
+
+- Initial rpm, based on dt version 16.20
+

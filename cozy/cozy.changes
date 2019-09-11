@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat Jan 12 23:06:42 UTC 2019 - suse@geigi.de
+
+- Update to 0.6.7:
+  * Fix: Cozy crashed on startup when prefering cover image files over embedded album art
+
+-------------------------------------------------------------------
+Sat Jan 12 21:35:42 UTC 2019 - suse@geigi.de
+
+- Update to 0.6.6:
+  * Fix: Cozy crashed on startup when prefering cover image files over embedded album art
+
+-------------------------------------------------------------------
+Mon Oct  8 09:00:42 UTC 2018 - suse@geigi.de
+
+- Update to 0.6.1b:
+  * Fixed a bug which prevented cozy from automatically playing the next chapter
+
+-------------------------------------------------------------------
+Sat Sep  8 17:52:42 UTC 2018 - suse@geigi.de
+
+- Update to 0.6.1:
+  * Improved artwork image quality
+  * The book overview now supports multiple disks in audiobooks
+  * The file not found window will only open when the file is on 
+    the internal drive
+  * Fixed a typo
+  * Support for elementaryOS 5.0
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Jul 12 18:51:36 UTC 2018 - avvissu@yandex.by
+
+- Drop pkgconfig(granite)
+
+-------------------------------------------------------------------
+Sat Jun 23 20:52:01 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

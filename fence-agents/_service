@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/ClusterLabs/fence-agents.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">fence-agents</param>
+    <param name="versionformat">4.4.0+git.%ct.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">fence-agents*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">fence-agents</param>
+  </service>
+</services>

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Feb  7 21:44:48 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.2.0
+  * Fix memory corruption in cue_scanner.l
+  * Use MAXINDEX instead of MAXTRACK when indexing INDEX entries
+  * Allow for 100 INDEX entries
+- Remove cmake.diff (applied upstream)
+
+-------------------------------------------------------------------
+Wed Jul  6 03:50:46 UTC 2016 - tom.mbrt@googlemail.com
+
+- update to new upstream release 2.1.0
+* Add FLAC token support
+* Clean up static vars in the parser to prevent double frees
+- Add cmake.diff
+
+-------------------------------------------------------------------
+Sun Oct  5 21:27:11 UTC 2014 - jengelh@inai.de
+
+- Use Source URLs; improve RPM group classification
+
+-------------------------------------------------------------------
+Sat Jan 21 11:58:50 UTC 2012 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

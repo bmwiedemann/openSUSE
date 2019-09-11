@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:45 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:33 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update mustache to version 2.3.0.
+  - Changed `EitherT` to `ExceptT` (deprecation)
+  - removed `getFile` from public API
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jul 27 14:08:12 UTC 2017 - psimons@suse.com
+
+- Update to version 2.2.3.
+
+-------------------------------------------------------------------
+Thu May 18 09:52:24 UTC 2017 - psimons@suse.com
+
+- Update to version 2.1.4 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Apr  4 11:04:06 UTC 2017 - psimons@suse.com
+
+- Update to version 2.1.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Nov 14 09:34:02 UTC 2016 - psimons@suse.com
+
+- Update to version 2.1.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 07:06:58 UTC 2016 - psimons@suse.com
+
+- Update to version 2.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:16:46 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.2 revision 0 with cabal2obs.

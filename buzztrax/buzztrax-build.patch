@@ -1,0 +1,180 @@
+Index: Makefile.src.am
+===================================================================
+--- Makefile.src.am.orig
++++ Makefile.src.am
+@@ -112,6 +112,7 @@ libbml_HEADERS = src/lib/bml/bml.h src/l
+ libbml_la_SOURCES = src/lib/bml/bml.c src/lib/bml/bmllog.c $(DLLWRAPPER_SRC)
+ libbml_la_CFLAGS = \
+   -I$(srcdir) -I$(top_srcdir)/src/lib \
++  -I$(top_srcdir)/src/lib/dllwrapper \
+   $(PTHREAD_CFLAGS) $(BML_CFLAGS)
+ libbml_la_CPPFLAGS = -DNATIVE_BML_DIR="\"$(pkglibdir)\""
+ libbml_la_LIBADD = $(LIBM) $(PTHREAD_LIBS) $(BML_LIBS) $(DLLWRAPPER_LIB)
+@@ -356,7 +357,7 @@ libbuzztrax_core_HEADERS = \
+   src/lib/core/wire.h
+ 
+ # -- songio plugins
+-songiodir = ${exec_prefix}/lib/buzztrax-songio
++songiodir = ${libdir}/buzztrax-songio
+ songio_LTLIBRARIES = libbtbsl.la
+ libbtbsl_la_LIBADD = \
+   libbuzztrax-core.la \
+@@ -760,7 +761,9 @@ BuzztraxIc-@BT_MAJORMINOR@.gir: $(G_IR_S
+ 
+ BUILT_GIRSOURCES = BuzztraxCore-@BT_MAJORMINOR@.gir BuzztraxIc-@BT_MAJORMINOR@.gir
+ 
+-girdir = $(datadir)/gir
++# We can't use $(GIRDIR) and $(TYPELIBDIR), since that might using a different
++# prefix
++girdir = $(datadir)/gir-1.0
+ gir_DATA = $(BUILT_GIRSOURCES)
+ 
+ typelibsdir = $(libdir)/girepository-1.0
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -5,7 +5,7 @@ AC_CANONICAL_TARGET([])
+ # we can't do -Werror, because
+ # - we use gnu make extensions
+ # - we override uninstallcheck var
+-AM_INIT_AUTOMAKE([-Wall 1.14 check-news std-options foreign tar-ustar subdir-objects])
++AM_INIT_AUTOMAKE([-Wall 1.13 check-news std-options foreign tar-ustar subdir-objects])
+ AC_CONFIG_SRCDIR([README.md])
+ AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR(m4)
+@@ -49,8 +49,15 @@ AC_DEFINE_UNQUOTED(GST_MAJORMINOR, "$GST
+ AC_SUBST(GST_MAJORMINOR)
+ 
+ dnl release year and date
+-BT_RELEASE_YEAR=`date +%Y`
+-BT_RELEASE_DATE=`date +%Y-%m-%d`
++DATE_STAMP=`head -n1 NEWS | sed 's/^[[^(]]*(\(.*\)).*$/\1/'`
++if test "$DATE_STAMP" == "XX.XXX.XXXX"; then
++  BT_RELEASE_YEAR=`date +%Y`
++  BT_RELEASE_DATE=`date +%Y-%m-%d`
++else
++  IFS="." read -r d m y <<< "$DATE_STAMP"
++  BT_RELEASE_YEAR="$y"
++  BT_RELEASE_DATE=`date -d "%d %m %y" +%Y-%m-%d`
++fi
+ 
+ AC_SUBST(BT_MAJOR_VERSION)
+ AC_SUBST(BT_MINOR_VERSION)
+@@ -62,6 +69,7 @@ AC_SUBST(BT_RELEASE_DATE)
+ 
+ AC_DEFINE_UNQUOTED(BT_VERSION, "$BT_VERSION", [library version as string])
+ AC_DEFINE_UNQUOTED(PACKAGE_VERSION_NUMBER, 900, [version as a number])
++AC_DEFINE_UNQUOTED(BT_RELEASE_YEAR, $BT_RELEASE_YEAR, [release year])
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+@@ -271,6 +279,9 @@ if test "$enable_dllwrapper" != "no"; th
+     enable_dllwrapper="yes"
+   fi
+ fi
++if test "$enable_dllwrapper" == "no"; then
++  CALLING_MODE=void
++fi
+ AC_MSG_RESULT($enable_dllwrapper)
+ if test "$enable_dllwrapper" = "yes"; then
+   AC_DEFINE(USE_DLLWRAPPER, 1, [Defined if emulation for buzzmachine dlls is enabled])
+@@ -530,17 +541,32 @@ AC_CHECK_DECL(sysi86,[
+ ])
+ 
+ dnl check for SSE intrisics
++have_sse_intrinsics=no
+ ARCH_CFLAGS=""
+-ARCH_CPPFLAGS=""
+ case "x${target_cpu}" in
+   xi?86|k?|xx86_64|xamd64)
+-    # seems to cause "CPU you selected does not support x86-64 instruction set" on some targets
+-    #ARCH_CFLAGS="-march=native"
+-    ARCH_CPPFLAGS="-D__SSE__ -D__MMX__"
+-    AC_CHECK_HEADERS([xmmintrin.h])
++    AC_CHECK_HEADERS([xmmintrin.h],
++      [
++        SAVED_CFLAGS="${CFLAGS}"
++        AC_MSG_CHECKING([for working sse intrinsics])
++        CFLAGS="-mmmx -msse"
++        AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++                          #include <xmmintrin.h>
++                          int main () {
++                              _mm_getcsr ();
++                          }]])], [
++                          AC_MSG_RESULT(yes)
++                          have_sse_intrinsics=yes],[
++                          AC_MSG_RESULT(no)])
++        CFLAGS="${SAVED_CFLAGS}"
++        ARCH_CFLAGS="-mmmx -msse"
++      ],[])
+     ;;
+ esac
+-
++if test $have_sse_intrinsics = yes ; then
++   AC_DEFINE(USE_X86_SSE, 1, [use x86 SSE compiler intrinsics])
++   ARCH_CFLAGS="-mmmx -msse"
++fi
+ 
+ dnl check for libraries
+ LT_LIB_M
+@@ -585,7 +611,7 @@ AC_ARG_ENABLE(Bsymbolic,
+ dnl Extra vars
+ BT_INCLUDEDIR='-I${includedir}'
+ dnl -Wl,--as-needed # can be put into CFLAGS to drop all unused libs
+-BT_CFLAGS="$ARCH_CFLAGS $ARCH_CPPFLAGS $DEBUG_CFLAGS $COVERAGE_CFLAGS $BT_DISABLE_DEPRECATED"
++BT_CFLAGS="$ARCH_CFLAGS $DEBUG_CFLAGS $COVERAGE_CFLAGS $BT_DISABLE_DEPRECATED"
+ BT_LIBDIR='-L${libdir}'
+ BT_LIBS="$COVERAGE_LIBS"
+ BT_LDFLAGS="$DEBUG_LDFLAGS"
+Index: src/lib/core/core.c
+===================================================================
+--- src/lib/core/core.c.orig
++++ src/lib/core/core.c
+@@ -32,14 +32,16 @@
+ 
+ #ifdef HAVE_SCHED_SETSCHEDULER
+ #include <sched.h>
+-#if HAVE_MLOCKALL
++#ifdef HAVE_MLOCKALL
+ #include <sys/mman.h>
+ #endif
+ #endif
+ 
+-#if HAVE_XMMINTRIN_H
++#ifdef USE_X86_SSE
++#ifdef HAVE_XMMINTRIN_H
+ #include <xmmintrin.h>
+ #endif
++#endif
+ 
+ /**
+  * bt_major_version:
+@@ -145,11 +147,13 @@ bt_init_post (void)
+ #endif
+ #endif
+ 
+-#if HAVE_XMMINTRIN_H
++#if USE_X86_SSE
+   // TODO(ensonic): we need to probe the CPU capabilities
+   // see http://www.mail-archive.com/linux-audio-dev@music.columbia.edu/msg19520.html
+   //   [linux-audio-dev] Channels and best practice
+   // _MM_FLUSH_ZERO_ON = FZ
++  // TODO(ensonic): wikipedia says we must do this for each thread:
++  // https://en.wikipedia.org/wiki/Denormal_number#Disabling_denormal_floats_at_the_code_level
+   _mm_setcsr (_mm_getcsr () | 0x8040);  // set DAZ and FZ bits
+ #endif
+ 
+Index: src/ui/edit/about-dialog.c
+===================================================================
+--- src/ui/edit/about-dialog.c.orig
++++ src/ui/edit/about-dialog.c
+@@ -68,7 +68,7 @@ bt_about_dialog_init_ui (const BtAboutDi
+       g_alloca (strlen (_("Copyright \xc2\xa9 2003-%d Buzztrax developer team"))
+       + 3);
+   sprintf (copyright, _("Copyright \xc2\xa9 2003-%d Buzztrax developer team"),
+-      2014);
++      BT_RELEASE_YEAR);
+ 
+   /* we can get logo via icon name, so this here is just for educational purpose
+      GdkPixbuf *logo;

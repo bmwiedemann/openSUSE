@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Oct 12 11:13:46 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Jun 29 08:55:56 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Fri Nov  4 08:27:16 UTC 2011 - aduffeck@suse.com
+
+- update to v0.0.3 which fixes Rails 3.1 compatibility
+
+-------------------------------------------------------------------
+Tue May 10 12:00:54 CEST 2011 - visnov@suse.cz
+
+- license is MIT 
+
+-------------------------------------------------------------------
+Fri Jan 28 08:49:23 UTC 2011 - aduffeck@novell.com
+
+- update to v0.0.2 
+
+-------------------------------------------------------------------
+Wed Jan 26 10:08:04 UTC 2011 - aduffeck@novell.com
+
+- initial version
+

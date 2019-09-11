@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8 (changes since 0.6):
+  * Free elements properly.
+  * Improve Makefile with adaptive and overridable variables.
+  * Fix compatibility with encryption plugins (e.g. OMEMO).
+
+-------------------------------------------------------------------
+Fri Dec 16 09:13:38 UTC 2016 - sor.alexei@meowr.ru
+
+- Rename the pidgin-xmpp-receipts to pidgin-plugin-xmpp-receipts.
+- Require Pidgin of the exact or greater version.
+
+-------------------------------------------------------------------
+Thu Jan 30 16:15:26 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

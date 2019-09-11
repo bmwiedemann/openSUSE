@@ -1,0 +1,585 @@
+-------------------------------------------------------------------
+Wed May 29 08:01:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use more of macros for building
+- Build gui config tool as well
+
+-------------------------------------------------------------------
+Sat Apr  6 11:32:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description, trim metadata duplication from
+  description, trim main description repetition in lesser
+  subpackages' description. Spruce up summaries. Fix SRPM group.
+- Add missing Requires inside baselibs.conf.
+- Remove insatisfiable Recommends. Add Provides/Conflicts
+  for the move of makehrtf.
+
+-------------------------------------------------------------------
+Thu Mar 21 20:24:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Packaging changes:
+  * Move makehrtf from the devel package to a separate package, as
+    it is the only part not under LGPL (or MIT).
+  * Move the remaining tools and data files to separate packages,
+    to get the License tag correct, and make the data files noarch.
+  * Use https in Url and Source tags.
+- Update to 1.19.1
+  * The changes from 1.19.0 include:
+    - Implemented capture support for the SoundIO backend.
+    - Fixed source buffer queues potentially not playing properly when
+      a queue entry completes.
+    - Fixed possible unexpected failures when generating auxiliary
+      effect slots.
+    - Fixed a crash with certain reverb or device settings.
+    - Fixed OpenSL capture.
+    - Improved output limiter response, better ensuring the sample
+      amplitude is clamped for output.
+  * The changes from 1.18.2 include:
+    - Implemented the ALC_SOFT_device_clock extension.
+    - Implemented the Pitch Shifter, Frequency Shifter, and Autowah
+      effects.
+    - Fixed compiling on FreeBSD systems that use freebsd-lib 9.1.
+    - Fixed compiling on NetBSD.
+    - Fixed the reverb effect's density scale and panning parameters.
+    - Fixed use of the WASAPI backend with certain games, which caused
+      odd COM initialization errors.
+    - Increased the number of virtual channels for decoding Ambisonics
+      to HRTF output.
+    - Changed 32-bit x86 builds to use SSE2 math by default for
+      performance. Build-time options are available to use just SSE1
+      or x87 instead.
+    - Replaced the 4-point Sinc resampler with a more efficient cubic
+      resampler.
+    - Renamed the MMDevAPI backend to WASAPI.
+    - Added support for 24-bit, dual-ear HRTF data sets. The built-in
+      data set has been updated to 24-bit.
+    - Added a 24- to 48-point band-limited Sinc resampler.
+    - Added an SDL2 playback backend. Disabled by default to avoid a
+      dependency on SDL2.
+    - Improved the performance and quality of the Chorus and Flanger
+      effects.
+    - Improved the efficiency of the band-limited Sinc resampler.
+    - Improved the Sinc resampler's transition band to avoid
+      over-attenuating higher frequencies.
+    - Improved the performance of some filter operations.
+    - Improved the efficiency of object ID lookups.
+    - Improved the efficienty of internal voice/source synchronization.
+    - Improved AL call error logging with contextualized messages.
+    - Removed the reverb effect's modulation stage. Due to the lack of
+      reference for its intended behavior and strength.
+
+-------------------------------------------------------------------
+Thu Feb  8 16:27:35 UTC 2018 - dmueller@suse.com
+
+- remove file that has conflicting license in %prep
+
+-------------------------------------------------------------------
+Sat Nov 11 16:40:43 UTC 2017 - aavindraa@gmail.com
+
+- Update to 1.18.2
+  * Fixed a crash with the JACK backend when using JACK1.
+  * FreeBSD: Fixed building with an older freebsd-lib.
+  * NetBSD: Fixed use of pthread_setnane_np
+  * NetBSD: OSS now links with libossaudio if found at build time
+  * Windows: Fixed resetting the FPU rounding mode after some calls
+  * Windows: Fixed use of SSE intrinsics when building with Clang
+- Changes for 1.18.1
+  * Fixed bug where resuming a source may not work
+  * Fixed PulseAudio playback when the configured stream length is
+    much less than the requested length.
+  * Fixed MMDevAPI capture with sample rates not matching the backing
+    device.
+  * Fixed int32 output for the Wave Writer.
+  * Fixed enumeration of OSS devices that are missing device files.
+  * Added correct retrieval of the executable's path on FreeBSD.
+  * Added a config option to specify the dithering depth.
+  * Added a 5.1 decoder preset that excludes front-center output.
+- Changes for 1.18.0
+  * Added a build option to embed the default HRTFs into the lib.
+  * New extensions (AL_EXT_STEREO_ANGLES, AL_EXT_SOURCE_RADIUS,
+    AL_SOFT_gain_clamp_ex, AL_SOFT_source_resampler,
+    AL_SOFT_source_spatialize, and ALC_SOFT_output_limiter)
+  * Implemented 3D processing for Reverb, Compressor, Equalizer, and
+    Ring Modulator.
+  * Implemented 2-channel UHJ output encoding (needs to be enabled
+    with a config option to be used)
+  * Implemented dual-band processing for high-quality ambisonic decoding.
+  * Implemented distance-compensation for surround sound output.
+  * Implemented near-field emulation and compensation with ambisonic
+    rendering. Currently only applies when using the high-quality ambisonic
+    decoder or ambisonic output, with appropriate config options.
+  * Implemented an output limiter to reduce the amount of distortion from
+    clipping.
+  * Implemented dithering for 8-bit and 16-bit output.
+  * Implemented a config option to select a preferred HRTF.
+  * Implemented a run-time check for NEON extensions using /proc/cpuinfo.
+  * Implemented experimental capture support for the OpenSL backend.
+  * Fixed building on compilers with NEON support but don't default
+    to having NEON enabled.
+  * Fixed starting a source while alcSuspendContext is in effect.
+  * Fixed detection of headsets as headphones, with MMDevAPI.
+  * Added support for AmbDec config files, for custom ambisonic decoder
+    configurations. Version 3 files only.
+  * Added backend-specific options to alsoft-config.
+  * Added first-, second-, and third-order ambisonic output formats. Currently
+    only works with backends that don't rely on channel labels, like JACK,
+    ALSA, and OSS.
+  * Added AmbDec presets to enable high-quality ambisonic decoding.
+  * Added an AmbDec preset for 3D7.1 speaker setups.
+  * Added documentation regarding Ambisonics, 3D7.1, AmbDec config files, and
+    the provided ambdec presets.
+  * Added the ability for MMDevAPI to open devices given a Device ID or GUID
+    string.
+  * Added an option to the example apps to open a specific device.
+  * Increased the maximum auxiliary send limit to 16 (up from 4). Requires
+    requesting them with the ALC_MAX_AUXILIARY_SENDS context creation
+    attribute.
+  * Increased the default auxiliary effect slot count to 64 (up from 4).
+  * Reduced the default period count to 3 (down from 4).
+  * Slightly improved automatic naming for enumerated HRTFs.
+  * Improved B-Format decoding with HRTF output.
+  * Improved internal property handling for better batching behavior.
+  * Improved performance of certain filter uses.
+  * Removed support AL_SOFT_buffer_samples and AL_SOFT_buffer_sub_data.
+    This is due to conflicts with AL_EXT_SOURCE_RADIUS.
+  * Windows: Fixed support for JACK
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 16 06:33:19 UTC 2016 - virtuousfox@gmail.com
+
+- Add missing dependency for JACK backend
+
+-------------------------------------------------------------------
+Thu Feb 11 18:28:22 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.17.2
+    * Implemented device enumeration for OSSv4.
+    * Fixed building on non-Windows systems without POSIX-2008.
+    * Fixed Dedicated Dialog and Dedicated LFE effect output.
+    * Added a build option to override the share install dir.
+    * Added a build option to static-link libgcc for MinGW.
+- Changes for 1.17.1
+    * Fixed building with JACK and without PulseAudio.
+    * Fixed building on FreeBSD.
+    * Fixed the ALSA backend's allow-resampler option.
+    * Fixed handling of inexact ALSA period counts.
+    * Altered device naming scheme on Windows backends to better 
+      match other drivers.
+    * Updated the CoreAudio backend to use the AudioComponent API. 
+      This clears up deprecation warnings for OSX 10.11, although 
+      requires OSX 10.6 or newer.
+- Changes for 1.17.0
+    * Implemented a JACK playback backend.
+    * Implemented the AL_EXT_BFORMAT and AL_EXT_MULAW_BFORMAT 
+      extensions.
+    * Implemented the ALC_SOFT_HRTF extension.
+    * Implemented C, SSE3, and SSE4.1 based 4- and 8-point Sinc 
+      resamplers.
+    * Implemented a C and SSE based band-limited Sinc resampler. 
+      This does 12- to 24-point Sinc resampling, and performs 
+      anti-aliasing.
+    * Implemented B-Format output support for the wave file writer.
+      This creates FuMa-style first-order Ambisonics wave files 
+      (AMB format).
+    * Implemented a stereo-mode config option for treating stereo 
+      modes as either speakers or headphones.
+    * Implemented per-device configuration options.
+    * Fixed handling of PulseAudio and MMDevAPI devices that have 
+      identical descriptions.
+    * Fixed a potential lockup when stopping playback of suspended 
+      PulseAudio devices.
+    * Fixed logging of Unicode characters on Windows.
+    * Fixed 5.1 surround sound channels. By default it will now
+      use the side channels for the surround output. A 
+      configuration using rear channels is still available.
+    * Fixed the QSA backend potentially altering the capture 
+      format.
+- Update project and download url
+- Dropped upstreamed fix-neon-build.patch
+- Refreshed openal-no-autospawn.diff
+
+-------------------------------------------------------------------
+Fri Oct  2 18:30:06 UTC 2015 - dmueller@suse.com
+
+- replace openal-soft-arm_neon-only-for-32bit.patch with
+  fix-neon-build.patch to fix the build instead of disabling neon
+
+-------------------------------------------------------------------
+Tue Sep 29 19:17:39 UTC 2015 - dmueller@suse.com
+
+- add openal-soft-arm_neon-only-for-32bit.patch to fix build
+  on aarch64
+
+-------------------------------------------------------------------
+Sun Sep 20 08:43:22 UTC 2015 - meissner@suse.com
+
+- baselibs for -devel too for building wine.
+
+-------------------------------------------------------------------
+Tue Apr 21 17:36:00 UTC 2015 - mpluskal@suse.com
+
+- Use %cmake_install macro
+- Add dependency on pkg-config
+- Remove missingok from ghost file, it should not be needed
+
+-------------------------------------------------------------------
+Fri Mar 13 13:20:56 UTC 2015 - lnussel@suse.de
+
+- remove conflicts with openal. That package doesn't exist since
+  11.1 and actually only the library conflicts.
+- add back ldconfig calls for libopenal0
+- mark alsoft.conf as %config(noreplace,missingok) to silence
+  rpmlint once the rpmlint bug is fixed.
+
+-------------------------------------------------------------------
+Sun Feb 15 17:09:58 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.16.0
+  * Implemented EFX Chorus, Flanger, Distortion, Equalizer, and Compressor
+    effects.
+  * Implemented high-pass and band-pass EFX filters.
+  * Implemented the high-pass filter for the EAXReverb effect.
+  * Implemented SSE2 and SSE4.1 linear resamplers.
+  * Implemented Neon-enhanced non-HRTF mixers.
+  * Implemented a QSA backend, for QNX.
+  * Implemented the ALC_SOFT_pause_device, AL_SOFT_deferred_updates,
+  * AL_SOFT_block_alignment, AL_SOFT_MSADPCM, and AL_SOFT_source_length
+   extensions.
+  * Fixed resetting mmdevapi backend devices.
+  * Fixed clamping when converting 32-bit float samples to integer.
+  * Fixed modulation range in the Modulator effect.
+  * Several fixes for the OpenSL playback backend.
+  * Fixed device specifier names that have Unicode characters on Windows.
+  * Added support for filenames and paths with Unicode (UTF-8) characters on
+    Windows.
+  * Added support for alsoft.conf config files found in XDG Base Directory
+  * Specification locations (XDG_CONFIG_DIRS and XDG_CONFIG_HOME, or their
+    defaults) on non-Windows systems.
+  * Added a GUI configuration utility (requires Qt 4.8).
+  * Added support for environment variable expansion in config options (not
+    keys or section names).
+  * Added an example that uses SDL2 and ffmpeg.
+  * Modified examples to use SDL_sound.
+  * Modified CMake config option names for better sorting.
+  * HRTF data sets specified in the hrtf_tables config option may now be
+    relative or absolute filenames.
+  * Made the default HRTF data set an external file, and added a data set for
+    48khz playback in addition to 44.1khz.
+  * Added support for C11 atomic methods.
+  * Improved support for some non-GNU build systems.
+- Add gcc-c++ requirement; new dependency
+- Use %cmake macro
+
+-------------------------------------------------------------------
+Tue May  7 08:01:27 UTC 2013 - lnussel@suse.de
+
+- version 1.15.1
+  * Fixed a regression with retrieving the source's AL_GAIN property.
+
+-------------------------------------------------------------------
+Mon Jan 14 10:16:23 UTC 2013 - lnussel@suse.de
+
+- install legacy provides for openal again. Some packages still rely
+  on it.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:31:06 UTC 2013 - reddwarf@opensuse.org
+
+- The devel package requires libopenal1, not openal-soft
+
+-------------------------------------------------------------------
+Mon Jan  7 20:38:56 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed SLES build 
+- Removed Requirements that are resolved automatically
+- Added missing openal-soft-devel Requirement libopenal1
+
+-------------------------------------------------------------------
+Fri Dec  7 14:06:32 UTC 2012 - lnussel@suse.de
+
+- update to new version 1.15
+  - Fixed device enumeration with the OSS backend.
+  - Reorganized internal mixing logic, so unneeded steps can potentially be skipped for better performance.
+  - Removed the lookup table for calculating the mixing pans. The panning is now calculated directly for better precision.
+  - Improved the panning of stereo source channels when using stereo output.
+  - Improved source filter quality on send paths.
+  - Added a config option to allow PulseAudio to move streams between devices.
+  - Currently disabled by default, as the device specifier does not properly update.
+  - The PulseAudio backend will now attempt to spawn a server by default.
+  - Added a workaround for a DirectSound bug relating to float32 output.
+  - Added SSE-based mixers, for HRTF and non-HRTF mixing.
+  - SSE can be detected at run-time, and be disabled as needed.
+  - Added support for the new AL_SOFT_source_latency extension.
+  - Currently, the PulseAudio, ALSA, and MMDevAPI backends provide proper latency information.
+  - Improved ALSA capture by avoiding an extra buffer when using sizes supported by the underlying device.
+  - Improved the makehrtf utility to support new options and input formats.
+  - Modified the CFLAGS declared in the pkg-config file so the "AL/" portion of the header includes can optionally be omitted.
+  - Added a couple example code programs to show how to apply reverb, and retrieve latency.
+  - The configuration sample is now installed into the share/openal/ directory instead of /etc/openal.
+  - Note, /etc/openal/alsoft.conf is still used to read the configuration like before.
+  - The configuration sample now gets installed by default.
+- undo upstream change to auto spawn pulseaudio (openal-no-autospawn.diff)
+
+-------------------------------------------------------------------
+Tue Nov 27 17:18:44 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-2.0+
+  See the c files in utils/ - looks like a GPL licensed utility is included
+  (as aggregate)
+
+-------------------------------------------------------------------
+Mon Nov 12 09:45:21 UTC 2012 - lnussel@suse.de
+
+- update to git snapshot close to 1.15
+- re-enable OSS support
+- also rename libopenal0-soft for consistency
+
+-------------------------------------------------------------------
+Mon Nov  5 20:16:03 UTC 2012 - reddwarf@opensuse.org
+
+- Remove support for old distributions
+- Remove Icon tag and icon file. It's not normal for openSUSE packages to use it
+- Remove Conflicts/Provides for rename from openal. Latest release of the old openal was in openSUSE 11.1.
+- Use pkgconfig() BuildRequires
+- Run spec-cleaner
+- Rename libopenal1-soft to libopenal1
+- Disable OSS support
+
+-------------------------------------------------------------------
+Sat Jul 21 17:28:22 UTC 2012 - dvaleev@suse.com
+
+- the used fpu control bits are x86 specific
+
+-------------------------------------------------------------------
+Tue Jun 26 06:50:08 UTC 2012 - lnussel@suse.de
+
+- new version 1.14
+    * Improved multi-threaded efficiency, relying less on a "big" mutex in favor of rw-locks and atomic operations where possible.
+    * Added support for HRTF-based mixing. Stereo output only. The default built-in data set only supports 44100hz playback. See the new hrtf.txt for more information.
+    * Added CMake options to cause a configuration error if the wanted backends aren't available.
+    * Modified backends so that only one is used at a time (for each playback and capture), to avoid device ownership conflicts.
+    * Fixed enumeration in certain backends to not list a default device, when the default device is enumerated normally anyway (eg, with DirectSound and PulseAudio).
+    * Improved device naming to more closely match the names given by the backends.
+    * Fixed handling of NaN values for float and double buffer samples.
+    * Added a new efx-presets.h header to define useful reverb presets for EFX.
+    * Added support for the ALC_EXT_DEDICATED extension.
+    * Fixed alc.h to include ALC_ENUMERATE_ALL_EXT enums, like other systems.
+    * Added support for the new AL_SOFT_buffer_samples, AL_SOFT_direct_channels, and ALC_SOFT_loopback extensions.
+    * Provided an env-var.txt to describe the available options set through environment variables.
+    * Fixed the source cone angle properties to work with the full 0-to-360 range as intended.
+    * An env var option is provided to restore the old buggy behavior for apps that need it.
+    * Added an example program that streams sound using ffmpeg.
+    * Added a utility to make HRTF data files from the KEMAR diffuse and compact data sets.
+- removed rpmlintrc in favor of a lecacy exception in rpmlint itself
+
+-------------------------------------------------------------------
+Mon Feb 21 07:05:50 UTC 2011 - lnussel@suse.de
+
+- new version 1.13
+    * Added support for the ring modulator EFX effect.
+    * Duplication of stereo sources (onto side- and rear-channels) in now enabled by default.
+      This can still be disabled via alsoft.conf.
+    * Support for the new AL_SOFT_loop_points and AL_SOFT_buffer_sub_data extensions.
+    * Added the ability to redirect log output to a file, by setting the ALSOFT_LOGFILE environment variable.
+    * Improved invalid parameter checks.
+    * Better checks against integer overflows when allocating buffer storage.
+    * Internal mixer support for 8-, 16-, and 32-bit input formats, improving memory consumption by not converting them all to 32-bit.
+    * Improved device-change handling with the PulseAudio backend.
+    * All available PulseAudio devices are now enumerated with ALC_ENUMERATE_ALL_EXT.
+    * PulseAudio devices again use the periods and period_size config options.
+    * Improved stability when PortAudio is enabled.
+      The library tends to cause a crash when it's unloaded and reloaded.
+    * Added a WaveOut backend for Windows.
+    * Added a cubic resampler to replace the cosine resampler.
+    * Increased the maximum number of source auxiliary sends to 4, and changed the default to 1.
+    * Massive internal changes to the mixer and buffer loading code, designed for future improvements for allowable input and output formats.
+
+-------------------------------------------------------------------
+Tue Mar 30 08:06:02 UTC 2010 - lnussel@suse.de
+
+- new version 1.12.854
+    * Fixed playback when the PulseAudio buffer is calculated to be more than 64KB.
+    * Restored compatibility with some older PulseAudio libs.
+    * Alternative buffer sizing for PulseAudio, specified using a new config option.
+    * Improved buffer size calculations, to prevent drastic latency changes when certain properties (such as ALC_FREQUENCY) are modified.
+    * Added capture support for the PortAudio backend.
+    * Support for PortAudio under Windows.
+    * Added support for the format extensions AL_EXT_MULAW, AL_EXT_MULAW_MCFORMATS, and AL_EXT_DOUBLE.
+    * Support for the new ALC_EXT_thread_local_context extension.
+    * Improved library load time by delaying backend device probing until needed.
+    * Updated alext.h to provide EFX tokens and function types.
+    * Unsupported effects and filters are no longer returned by alGetEnumValue.
+    * The Wave File Writer device now creates WAVEFORMATEXTENSIBLE files, to better handle multi-channel and float output.
+
+-------------------------------------------------------------------
+Mon Jan 18 08:10:58 UTC 2010 - lnussel@suse.de
+
+- new version 1.11.753
+    * Fixed compatibility with newer PulseAudio libs
+    * The PulseAudio backend will now be tried first, when available
+    * Fixed a crash with the echo effect
+    * Configurable resampler, supporting point, linear (default), and
+      cosine methods
+    * Improved reverb, which now supports the Modulation and Echo
+      properties
+    * The alsoft/.conf/.ini/rc drivers config option now allows unnamed
+      backends to remain available, by ending the device list with a
+      comma (,)
+    * PulseAudio playback will try to use an output frequency and
+      channel format that best matches the default sink If the sink
+      device is configured for 5.1 output at 48khz, for example, OpenAL
+      Soft will automatically use 5.1 output at 48khz, unless overridden
+      in the config file.
+    * Multi-channel sounds are now passed through the auxiliary sends
+      Although they are down-mixed to mono, losing channel separation.
+    * Fixed playback when creating a second context from a device
+    * Added a new config option to enable real-time priority when mixing
+      for certain backends (ALSA, OSS, Solaris, and DirectSound)
+    * Buffers now store 32-bit float sample data internally, to retain
+      32-bit sample accuracy
+    * Added a new head-dampening config option, for mono and stereo
+      playback This slightly filters sounds coming from behind, allowing
+      for some subtle differences between front and back sound sources.
+    * Added an option to allow spawning the PulseAudio server on demand
+    * Support for the new AL_EXT_source_distance_model extension
+
+-------------------------------------------------------------------
+Mon Jan  4 15:02:07 UTC 2010 - lnussel@suse.de
+
+- update to current git snapshot
+
+-------------------------------------------------------------------
+Fri Dec 18 16:59:34 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Nov  9 08:32:43 UTC 2009 - lnussel@suse.de
+
+- new version 1.10.622
+    * Fixed OSS and PulseAudio backends
+    * Support for disconnect notifications with PulseAudio when the
+      server connection dies
+    * Fixed surround sound channel ordering for PulseAudio playback
+    * Fixed 7.1 output
+    * Fixed potential crash when setting an AL_EFFECT_NULL effect on
+      an auxiliary effect slot
+    * Backend libraries are now loaded and released as needed
+      In particular, this allows for backends to be added and
+      removed at runtime when their corresponding libraries are
+      installed and uninstalled (provided support for those backends
+      was compiled in). An active backend will remain available as
+      long as its in use.
+    * Support for multiple contexts per device
+    * Fixed possible ghost references on buffers and auxiliary
+      slots, if they're attached to sources that are forcibly
+      deleted on context destruction
+- only actually pulseaudio if at least version 0.9.15
+
+-------------------------------------------------------------------
+Sun Nov  1 10:08:38 UTC 2009 - lnussel@suse.de
+
+- update to current git snapshot to fix problems with pulseaudio
+  (bnc#551022)
+- disable --as-needed for libopenal.so.0 compatibility library to
+  force linking against libopenal.so.1
+
+-------------------------------------------------------------------
+Thu Oct 29 11:04:51 UTC 2009 - lnussel@suse.de
+
+- new version 1.9.563
+  * Preliminary support for the new ALC_EXT_disconnect extension.
+  * Support for 32-bit float playback and capture on some backends
+  * Proper support for the ALC_FREQUENCY context attribute
+  * Fixed compatibility with newer PulseAudio libs.
+  * Fixed parsing of the speaker layout config string.
+  * Fixed buffer size issues with ALSA capture.
+  * Fixed a problem where the reported number of processed buffers could be wrong.
+  * Fixed possible crashes when specifying invalid device pointers.
+  * Removed the backend-specific period config options, and made it a global option instead.
+  * Deprecated the refresh config option for the new period_size option.
+  * Better cleanup of backends when the OpenAL lib is unloaded.
+
+-------------------------------------------------------------------
+Tue Jun  9 07:16:51 UTC 2009 - lnussel@suse.de
+
+- new version 1.8.466
+  * Support for two more effects: AL_EFFECT_EAXREVERB and AL_EFFECT_ECHO
+    Not all of the EAXREVERB properties will currently affect the output. More
+    should be supported in the future
+  * Improved reverb
+  * Added a PulseAudio backend
+  * Improved mixer efficiency a bit
+  * Improved ALSA playback
+  * Multiple auxiliary slots supported
+    Default is four, which can be modified with the config file
+  * Multiple auxiliary sends supported
+    Default is two per source, which cannot be increased without recompilation.
+    The amount can be decreased with the config file
+
+-------------------------------------------------------------------
+Wed May  6 16:09:16 CEST 2009 - lnussel@suse.de
+
+- new version 1.7.411
+  * New table-based panning algorithm, allowing the center channel to be included in the mix
+  * Speaker arrangements are now configurable
+  * Added a new PortAudio backend
+  * Some changes to the ALSA device list
+    Standard enumeration will now only list a single ALSA playback device (for "default"), and there should be no more name clashes preventing a device with the same name from being used
+  * Low-pass filters now affect multi-channel sources
+  * Corrections for 6.1 channel placements
+  * Multi-channel sources are now re-mixed when using a different output mode
+    This prevents source channels from being lost if there isn't a matching output channel (eg. 5.1 sources on stereo output)
+  * Multi-channel source gains are now correctly clamped to the source's min/max gains
+  * The air absorption calculation now uses the correct distance
+  * The source room rolloff factor can now be set up to 10
+  * Updated reverb code that better follows the reverb parameters
+- add pulseaudio backend from git head and enable by default
+
+-------------------------------------------------------------------
+Fri Apr 17 10:13:54 CEST 2009 - lnussel@suse.de
+
+- add shlib policy conform provides for libraries
+
+-------------------------------------------------------------------
+Fri Jan  9 13:33:32 CET 2009 - lnussel@suse.de
+
+- new version 1.6.372
+  * Channel volumes are now ramped from source position changes and when starting playback, to help prevent pops and clicks
+  * The AL_DOPPLER_FACTOR source property works
+  * Implemented a new Solaris backend for playback
+  * The openal-info example will now print EFX information
+  * More EFX compliance fixes
+  * Support for non-mmap ALSA capture
+  * A new low-pass filter, based on the I3DL2 specification
+  * The ALSOFT_CONF environment variable may be used to specify an additional configuration file
+  * A completely new reverb effect implementation
+  * Improved CPU use for the DirectSound backend
+
+-------------------------------------------------------------------
+Wed Aug 20 10:00:56 CEST 2008 - lnussel@suse.de
+
+- new version 1.5.304
+  * reduces buffer size to reduce latency
+  * installs pkg-config file
+  * better EFX compliance
+  * fixes doppler shift
+  * needs less memory in the mixer
+
+-------------------------------------------------------------------
+Thu Jul 17 11:33:26 CEST 2008 - lnussel@suse.de
+
+- backport patch to reduce buffer size from git
+- fix mandriva build
+
+-------------------------------------------------------------------
+Thu Jun  5 16:05:20 CEST 2008 - lnussel@suse.de
+
+- split package to have libraries in subpackages
+
+-------------------------------------------------------------------
+Thu Jun  5 14:39:24 CEST 2008 - lnussel@suse.de
+
+- new package version 1.4.272 based on b-s-a's and ickruis' work
+

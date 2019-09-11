@@ -1,0 +1,142 @@
+Index: VirtualBox-6.0.6/include/VBox/VBoxGL2D.h
+===================================================================
+--- VirtualBox-6.0.6.orig/include/VBox/VBoxGL2D.h
++++ VirtualBox-6.0.6/include/VBox/VBoxGL2D.h
+@@ -113,7 +113,7 @@ typedef GLvoid (APIENTRY *PFNVBOXVHWA_UN
+ /* GL_ARB_pixel_buffer_object*/
+ #ifndef Q_WS_MAC
+ /* apears to be defined on mac */
+-typedef ptrdiff_t GLsizeiptr;
++typedef long int GLsizeiptr;
+ #endif
+ 
+ #ifndef GL_READ_ONLY
+Index: VirtualBox-6.0.6/include/VBox/HostServices/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/include/VBox/HostServices/glext.h
++++ VirtualBox-6.0.6/include/VBox/HostServices/glext.h
+@@ -3395,7 +3395,10 @@ typedef char GLchar;			/* native charact
+ #ifndef GL_VERSION_1_5
+ /* GL types for handling large vertex buffer objects */
+ typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
+ #endif
+ 
+ #ifndef GL_ARB_vertex_buffer_object
+Index: VirtualBox-6.0.6/src/VBox/Additions/3D/mesa/mesa-17.3.9/include/GL/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/Additions/3D/mesa/mesa-17.3.9/include/GL/glext.h
++++ VirtualBox-6.0.6/src/VBox/Additions/3D/mesa/mesa-17.3.9/include/GL/glext.h
+@@ -465,7 +465,12 @@ GLAPI void APIENTRY glBlendEquation (GLe
+ #ifndef GL_VERSION_1_5
+ #define GL_VERSION_1_5 1
+ #include <stddef.h>
++#include <QtCore/qglobal.h>
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ typedef ptrdiff_t GLintptr;
+ #define GL_BUFFER_SIZE                    0x8764
+ #define GL_BUFFER_USAGE                   0x8765
+Index: VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glcorearb.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glcorearb.h
++++ VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glcorearb.h
+@@ -614,7 +614,11 @@ GLAPI void APIENTRY glBlendEquation (GLe
+ #ifndef GL_VERSION_1_5
+ #define GL_VERSION_1_5 1
+ #include <stddef.h>
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ typedef ptrdiff_t GLintptr;
+ #define GL_BUFFER_SIZE                    0x8764
+ #define GL_BUFFER_USAGE                   0x8765
+Index: VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glext.h
++++ VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-11.0.7/GL/glext.h
+@@ -465,7 +465,11 @@ GLAPI void APIENTRY glBlendEquation (GLe
+ #ifndef GL_VERSION_1_5
+ #define GL_VERSION_1_5 1
+ #include <stddef.h>
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ typedef ptrdiff_t GLintptr;
+ #define GL_BUFFER_SIZE                    0x8764
+ #define GL_BUFFER_USAGE                   0x8765
+Index: VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-7.2/GL/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/Additions/x11/x11include/mesa-7.2/GL/glext.h
++++ VirtualBox-6.0.6/src/VBox/Additions/x11/x11include/mesa-7.2/GL/glext.h
+@@ -3708,7 +3708,11 @@ typedef char GLchar;			/* native charact
+ #ifndef GL_VERSION_1_5
+ /* GL types for handling large vertex buffer objects */
+ typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ #endif
+ 
+ #ifndef GL_ARB_vertex_buffer_object
+Index: VirtualBox-6.0.6/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
++++ VirtualBox-6.0.6/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
+@@ -6194,7 +6194,11 @@ typedef char GLchar;
+ #ifndef GL_VERSION_1_5
+ /* GL types for handling large vertex buffer objects */
+ typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ #endif
+ 
+ #ifndef GL_ARB_vertex_buffer_object
+Index: VirtualBox-6.0.6/src/VBox/GuestHost/OpenGL/include/GL/glext.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/GuestHost/OpenGL/include/GL/glext.h
++++ VirtualBox-6.0.6/src/VBox/GuestHost/OpenGL/include/GL/glext.h
+@@ -3717,7 +3717,11 @@ typedef char GLchar;			/* native charact
+ #ifndef GL_VERSION_1_5
+ /* GL types for handling large vertex buffer objects */
+ typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ #endif
+ 
+ #ifndef GL_ARB_vertex_buffer_object
+Index: VirtualBox-6.0.6/src/VBox/GuestHost/OpenGL/include/chromium.h
+===================================================================
+--- VirtualBox-6.0.6.orig/src/VBox/GuestHost/OpenGL/include/chromium.h
++++ VirtualBox-6.0.6/src/VBox/GuestHost/OpenGL/include/chromium.h
+@@ -506,7 +506,11 @@ PROC WINAPI wglGetProcAddress_prox( LPCS
+ #ifndef GL_VERSION_1_5
+ 
+ typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
+ typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ 
+ /* prototype these functions for opengl_stub/getprocaddress.c */
+ extern void APIENTRY glGenQueries(GLsizei n, GLuint *ids);
+

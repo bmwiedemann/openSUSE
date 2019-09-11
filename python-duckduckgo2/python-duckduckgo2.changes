@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:47:29 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Mar  4 18:30:17 UTC 2018 - alarrosa@suse.com
+
+- Add patch to add support for python3 and make it use singlespec macros
+  to generate python2 and python3 packages.
+  * add-python3-support.patch
+
+-------------------------------------------------------------------
+Thu Nov 16 11:24:07 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-duckduckgo2 0.242

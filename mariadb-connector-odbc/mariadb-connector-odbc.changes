@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Tue May 21 14:28:53 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 3.1.1
+  * Added FORCETLS connection string option
+  * Added connection string option TLSVERSION
+  * Added option for reading section in my.cnf
+
+- Changes in version 3.1.0:
+  * The fix and the testcase Wrong Input/Output parameter type when
+    mapping SQLBindParam to SQLBindParameter 
+  * The fix and the testcase SQL_DESC_PARAMETER_TYPE is SQLSMALLINT,
+    but if application tried to read it into SQLSMALLINT buffer,
+    memory would be corrupted.
+
+- sample_odbc.ini - updated listing new connection options
+- refreshed patches: DSN_names.patch, missing_libs.patch, nosoname.patch,
+  package_name.patch
+- install_correct_path.patch: keep odbc library installed in correct
+  patch on 64bit systems
+- mysql_header_path.patch - mysql headers are now under mysql/ subdir
+- missing_includes.patch - dropped, not needed anymore
+
+-------------------------------------------------------------------
+Fri Aug 10 11:45:07 UTC 2018 - adam.majer@suse.de
+
+- Install license as %license instead of documentation
+
+-------------------------------------------------------------------
+Thu Feb 22 09:28:58 UTC 2018 - adam.majer@suse.de
+
+- New upsream version 3.0.3 (bsc#1104480, fate#324398)
+  * fixes core dump when procedure returned more than 1 result set
+  * result SQLStatistics were ordered using the wrong columns.
+  * fetch would fail if an unbound column contained NULL
+- libreoffice_fixes.patch: upstreamed
+
+-------------------------------------------------------------------
+Thu Jan  4 07:37:10 UTC 2018 - adam.majer@suse.de
+
+- libreoffice_fixes.patch: Fix crash with LibreOffice (bnc#938195)
+- add mariadb-connector-odbc-rpmlintrc to ignore some
+  rpmlint warnings
+
+-------------------------------------------------------------------
+Tue Dec 12 16:08:11 UTC 2017 - mpluskal@suse.com
+
+- Enable openssl support
+- Honor optflags when building
+
+-------------------------------------------------------------------
+Tue Dec 12 15:49:09 UTC 2017 - mvetter@suse.com
+
+- Remove 'Provides', it is not a drop in replacement
+  for MyODBC-unixODBC. Users will have to change .so file.
+  Obsoletes is enough.
+
+-------------------------------------------------------------------
+Mon Dec 11 11:07:25 UTC 2017 - adam.majer@suse.de
+
+- Provide upgrade path for users of MyODBC-unixODBC
+
+-------------------------------------------------------------------
+Sun Nov 19 07:36:34 UTC 2017 - mpluskal@suse.com
+
+- Use more cmake macros
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov 17 14:07:35 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 3.0.2
+  * first stable version of MariaDB Connector/ODBC 3.0
+  * fixed number of memory leaks
+- Refreshed patches:
+  * missing_includes.patch
+  * package_name.patch
+- Removed upstreamed patches:
+  * fix_bool_return_types.patch
+  * no_static_linking.patch
+- missing_libs.patch: Add missing -lpthread dependency
+- nosoname.patch: libmaodbc.so is an ODBC driver, not a normal
+  library. Remove soname generation.
+
+-------------------------------------------------------------------
+Thu Jul 13 12:21:40 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 2.0.15:
+  * fix crash in ODBC Driver SQLExecDirect()
+  * fix batch query with non-preparable statement crashed
+  * fix backslash at the end of string in one of statements in
+    multistatement query leads to error
+- Changes in version 2.0.14:
+  * SQLGetData now correctly handles UTF-16 surrogate pairs
+  * Execution of 'ANALYZE TABLE' statement used to invalidate
+    statement and connection handles
+  * SQLGetData would not return SQL_NO_DATA for BLOB/TEXT columns
+    if the buffer size is larger than the column data
+  * Min and Max value for time data type were processed incorrectly
+  * fixed Error in the SQLGetTypeInfo for WCHAR Types
+  * SQLBulkOperations/SQLSetPos SQL_ADD would fail if TIMESTAMP
+    column ignored
+
+-------------------------------------------------------------------
+Wed Mar 29 14:37:55 UTC 2017 - adam.majer@suse.de
+
+- Add sample_odbc.ini file to documentation directory. 
+
+-------------------------------------------------------------------
+Thu Mar 23 11:04:18 UTC 2017 - adam.majer@suse.de
+
+- Initial package of MariaDB Connector/ODBC 2.0.13
+- fix_bool_return_types.patch: use only supported data types
+- missing_includes.patch: missing headers added
+- no_static_linking.patch: dynamically link with the private
+  symbols library.
+- package_name.patch: set package name to SUSE package name
+  so we don't have to move files around after install or change
+  library names.
+

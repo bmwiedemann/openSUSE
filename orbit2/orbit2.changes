@@ -1,0 +1,521 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:55:25 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups, trim descriptions and ensure neutrality of it.
+
+-------------------------------------------------------------------
+Mon Mar  5 13:26:52 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Dec 16 23:43:35 UTC 2013 - uweigand@de.ibm.com
+
+- Disable parallel make due to directory creation race.
+
+-------------------------------------------------------------------
+Thu Mar  7 23:09:42 UTC 2013 - dimstar@opensuse.org
+
+- Add "#undef G_DISABLE_DEPRECATED" to the generated config.h, to
+  allow the usage of deprectaed glib symbols (e.g. g_thread_*).
+
+-------------------------------------------------------------------
+Fri Feb  1 12:02:50 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Dec 22 09:41:15 UTC 2011 - vuntz@opensuse.org
+
+- Explicitly list files we package.
+
+-------------------------------------------------------------------
+Tue Sep 28 17:40:29 CEST 2010 - lmedinas@opensuse.org
+
+- Update to version 2.14.19:
+  + fix free on error of uninitialized IOR components
+- Drop orbit2-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr 23 11:23:11 UTC 2010 - lzwang@novell.com
+
+- bnc#598867: Add orbit2-crash.patch to fix crasher with corrupted
+  ~/.gconfd/saved_state ...
+
+-------------------------------------------------------------------
+Tue Mar 30 14:12:01 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.14.18:
+  + add a g_warning
+  + fix FMR in forwarding code
+  + fix some problems with the preprocessor on Solaris
+  + add a CORBA_wstring_dup function
+
+-------------------------------------------------------------------
+Thu Dec 17 17:22:59 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+- Make doc subpackage a noarch package
+
+-------------------------------------------------------------------
+Sat Mar 28 00:47:04 CET 2009 - vuntz@novell.com
+
+- Remove all .la files.
+- Package explicitly /usr/lib/libname-server-2.a because there's no
+  dynamic library for it.
+
+-------------------------------------------------------------------
+Fri Mar  6 03:12:45 CET 2009 - vuntz@novell.com
+
+- Update to version 2.14.17:
+  + fix glib single includes
+  + various fixes for cross-compiling
+  + do fewer DNS lookups in linc
+  + fix compiler warnings
+  + threading fixes
+  + win32 portability fixes
+- Remove BuildRequires: indent, openssl-devel, popt-devel,
+  xmlcharent
+- Remove indent and popt-devel from Requires of devel package.
+- Remove AutoReqProv: it's default now.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Use parallel build.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sun Sep 21 10:05:18 EST 2008 - mboman@suse.de
+
+- Update to version 2.14.16:
+  + fix make check on Mac OS/X
+  + The ORBNetID option was not consistent in relation to
+    ORBIIOPIPName. This fix ensures that ORBIIOPIPName always
+    takes precedence.
+
+-------------------------------------------------------------------
+Wed Sep 17 00:09:54 CEST 2008 - vuntz@novell.com
+
+- Update to version 2.14.15:
+  + fix some leaks
+  + fix some of the changes in 2.14.14
+  + fix potential make loop
+
+-------------------------------------------------------------------
+Thu Aug 28 18:58:40 CEST 2008 - maw@suse.de
+
+- Update to version 2.14.14:
+  + Use ORBIT_SOCKETDIR to propagate the socket dir to children
+    wherever possible; this has two benefits: it speeds up ORBit2
+    launch and it and it allows root owned apps to talk to the
+    user's AT
+  + Various linc2 fixes.
+
+-------------------------------------------------------------------
+Fri Jul 18 17:56:57 CEST 2008 - jpr@suse.de
+
+- Drop orbit-abuild.patch, the warning is valid but causes no 
+  issues and will be fixed nicely upstream
+
+-------------------------------------------------------------------
+Fri Jun  6 21:30:45 CEST 2008 - maw@suse.de
+
+- Update to version 2.14.13:
+  + Robustness fixes
+  + Fixes for the poa test client
+  + Build fixes with single glib includes
+  + Locking fixes in linc
+  + Fixes for handling of local requests
+- Remove upstreamed patch: libbonobo-deadlock-fix.patch.
+
+-------------------------------------------------------------------
+Fri May 23 16:26:00 CEST 2008 - maw@suse.de
+
+- Add libbonobo-deadlock-fix.patch (bnc#393634 and bgo$534351)
+- s#%run_ldconfig#/sbin/ldconfig#.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Jan 30 23:37:31 CET 2008 - maw@suse.de
+
+- Update to version 2.14.12:
+  + Fix the build when using glib 2.15.
+
+-------------------------------------------------------------------
+Fri Jan 25 09:14:14 CST 2008 - maw@suse.de
+
+- Update to version 2.14.11:
+  + Various cleanups and fixes for win32
+  + Fix off by one in all method name lengths
+  + Fixes interoperability with other ORBs.
+
+-------------------------------------------------------------------
+Fri Nov 23 11:32:36 CST 2007 - maw@suse.de
+
+- Update to version 2.14.10:
+  + Bug fixes
+- Rename abuild.patch to orbit-abuild.patch.
+
+-------------------------------------------------------------------
+Mon Sep 17 17:06:31 CEST 2007 - gekker@suse.de
+
+- Update to version 2.14.9
+  * bug fixes
+    + Portability fix (Tor Lillqvist)
+    + Various fixes in GIOP and linc (Jules Colding)  
+
+-------------------------------------------------------------------
+Tue Jul 31 20:28:47 CEST 2007 - maw@suse.de
+
+- Update to 2.14.8:
+	* bug fixes
+		+ Fix GIOP timeouts and add unit tests (Jules Colding)
+		+ Code cleanups (Kjartan)
+		+ Fix pointer arithmetics (Roland Illig)
+		+ Fix crash with uninitialized exception (Vincent Untz)
+                + ORBLocalOnly mode in Solaris fixes (Brian Cameron)
+- Respin abuild.patch -- part of it has been upstreamed.
+
+-------------------------------------------------------------------
+Wed Mar 21 17:17:14 CST 2007 - maw@suse.de
+
+- Update to 2.14.7
+- Fix b.g.o 378454.
+
+-------------------------------------------------------------------
+Fri Feb 16 11:18:57 CST 2007 - maw@suse.de
+
+- Update to 2.14.6
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Fri Jan  5 16:26:44 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+- Splitted orbit2-doc from orbit2-devel.
+
+-------------------------------------------------------------------
+Fri Jan  5 16:26:22 CET 2007 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Tue Jan  2 17:52:13 CET 2007 - jhargadon@suse.de
+
+- Removed unneeded libtool files. (#223691) 
+
+-------------------------------------------------------------------
+Wed Sep 13 00:40:51 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.14.3
+- Patch to correct problem where DHCP hostname changes caused login
+  to block. 
+- Added gtk-doc documentation.
+- Modify ORBLocalOnly test for TCP/IP connections so that differences
+  in the port number does not cause the test to fail.  Since the port
+  number does not affect whether the IP address is local, this should
+  make the test work properly on platforms where the access ()
+  function fills in the port value that is being compared.  On
+  Solaris, this fixes a bug that causes Java a11y to break, from an
+  end-user perspective.
+- configure.in (CFLAGS): Fix #147556
+- acinclude.m4: Added AX_CFLAGS_GCC_OPTION
+
+-------------------------------------------------------------------
+Tue Sep 12 20:25:31 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.14.2
+- bug fixes
+     + Don't hang when the hostname changes
+     + Fix problems with a11y on Solaris
+     + Doc improvements
+     + Build fixes 
+
+-------------------------------------------------------------------
+Mon Jul 31 23:27:04 CEST 2006 - gekker@suse.de
+
+- Update to version 2.14.1
+- Remove upstreamed patch
+  * bug fixes
+     + Cleanups, leak fixes and fixes for reports
+       from the Coverity checker (Kjartan, Pascal)
+     + New function ORBit_get_giop_recv_limit().
+       Clients must be able to retrieve the
+       maximum allowed GIOP receive limit. (Jules Colding)
+     + Bug 323201: marshalling of void retval typecode generated
+       by "imodule service" crashes. (Gustavo Carneiro)
+     + emit per interface enum for index of xyz_imethods[].
+       (Kuang-Chun Cheng)
+     + Port to GOption (Christian Persch)
+     + Win32 fixes (Tor Lillqvist)
+     + Emit exception for bad URL in string_to_object
+       (Frank Rehberger)
+     + Fix C++ compatibility in generated code (Vladimir Panov)
+
+-------------------------------------------------------------------
+Fri Jul 21 22:30:08 CEST 2006 - gekker@suse.de
+
+- Update to version 2.14.0
+- Remove upstreamed patches
+  * bug fixes
+    + Fix build on Cygwin (Tor)
+    + Fix giop test compilation/crash (Tor)
+- update to ORBit2-2.13.3
+  * bug fixes
+    + Fix crash on null adaptor (Michael)
+    + Fix compiler warnings (Kjartan, Jens Granseuer)
+    + Improve configure stage on Win32 (Tor)
+- update to ORBit2-2.13.2
+  * bug fixes
+    + realloc should update length/tracking information
+      (Martin Blom)
+    + Fix memory management and crashew when shutting down
+      the ORB. (Anders Carlsson)
+    + Build/correctness fixes (Tor, Jules)
+- update to +ORBit2-2.13.1
+  * features
+    + More work on porting to Win32 (Tor)
+    + Implement forward binding (Fernando Herrera)
+    + Implement new ORB_init option ORBNetID (Jules Colding)
+  * bug fixes
+    + Build fix (James Henstridge)
+      + Memory management fixes (Anders Carlsson)
+      + Reset connection for forwarded objects (Anders)
+      + Don't use -export-dynamic (Mark)
+      + if we have failed on the unix socket, have IPv4 or
+        IPv6 connections enabled and are on localhost, then
+        don't connect on the corresponding port from the profiles
+        (Arvind Samtur)
+      + Fix a bunch of compiler warnings and make some code static
+        (Kjartan)
+      + Add threading libs to ORBIT_NAME (Michael)
+      + Check for netdb.h (Sandie Vanderme)
+      + Check for sys/sockio.h (James Andrewartha)
+  * Other
+      + Improve docs for users of ORBit2 (Jules Colding)
+
+-------------------------------------------------------------------
+Fri Jun  2 18:42:35 CEST 2006 - gekker@suse.de
+
+- Update patch to a better fix for (#178296)
+
+-------------------------------------------------------------------
+Wed May 24 22:57:20 CEST 2006 - gekker@suse.de
+
+- Fix race condition (#178296) -- mmeeks
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 22:52:28 CET 2006 - gekker@suse.de
+
+- Fix gnome-session-manager crash (b.g.o #322730) patch from mmeeks
+
+-------------------------------------------------------------------
+Tue Sep  6 15:47:46 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.12.4.
+
+-------------------------------------------------------------------
+Wed Aug 31 19:08:26 CEST 2005 - gekker@suse.de
+
+- Package linc-cleanup-sockets in base package (113508) 
+
+-------------------------------------------------------------------
+Thu Aug 18 18:37:14 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.3 
+
+-------------------------------------------------------------------
+Fri Aug 12 21:53:43 CEST 2005 - gekker@suse.de
+
+- Fix crash in gtk-file-chooser b.g.o(310270). 
+
+-------------------------------------------------------------------
+Fri Jun 17 00:12:41 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.2 
+
+-------------------------------------------------------------------
+Wed May 18 15:53:54 CEST 2005 - ro@suse.de
+
+- fix build with current pkgconfig 
+
+-------------------------------------------------------------------
+Thu Apr 28 12:14:26 CEST 2005 - ro@suse.de
+
+- dropped dependency to linc-devel in devel package 
+
+-------------------------------------------------------------------
+Thu Feb 10 21:18:03 CET 2005 - gekker@suse.de
+
+- Updated to version 2.12.1 
+
+-------------------------------------------------------------------
+Thu Nov 18 23:45:31 CET 2004 - gekker@suse.de
+
+- Updated to version 2.12.0 
+
+-------------------------------------------------------------------
+Wed Sep 29 11:48:31 CEST 2004 - mmichael@suse.de
+
+- Fix lockup
+
+-------------------------------------------------------------------
+Fri Sep 17 18:09:43 CEST 2004 - clahey@suse.de
+
+- Updated to version 2.10.5.
+
+-------------------------------------------------------------------
+Mon Jul  5 18:46:49 CEST 2004 - jody@suse.de
+
+- Updated to version 2.10.3 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Thu Apr 15 18:06:54 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.10.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Mon Feb 23 18:35:53 CET 2004 - sbrabec@suse.cz
+
+- Fixed AC_DEFUN underquoting.
+
+-------------------------------------------------------------------
+Thu Feb  5 15:08:02 CET 2004 - hhetter@suse.de
+
+- updated to version 2.8.3 [GNOME 2.4.2] 
+
+-------------------------------------------------------------------
+Sat Jan 10 16:02:43 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig and %defattr
+
+-------------------------------------------------------------------
+Mon Oct 27 15:39:25 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.8.2.
+
+-------------------------------------------------------------------
+Wed Oct 15 00:34:28 CEST 2003 - ro@suse.de
+ 
+- do full autoreconf
+
+-------------------------------------------------------------------
+Fri Sep 26 14:27:18 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.8.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Fri Aug 15 14:54:07 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.6.3.
+
+-------------------------------------------------------------------
+Tue Jul 15 12:57:39 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 12 15:35:51 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.6.2.
+- Fixed directory packaging.
+- Updated neededforbuild.
+
+-------------------------------------------------------------------
+Tue May 27 10:29:16 CEST 2003 - hhetter@suse.de
+
+- updated to version 2.6.1 
+
+-------------------------------------------------------------------
+Wed May 14 11:31:16 CEST 2003 - sbrabec@suse.cz
+
+- Sync -devel Requires with pkgconfig (bug #26872).
+
+-------------------------------------------------------------------
+Wed Jan 29 11:13:26 CET 2003 - hhetter@suse.de
+
+- updated to version 2.6.0 
+
+-------------------------------------------------------------------
+Thu Oct 24 13:03:27 CEST 2002 - sbrabec@suse.cz
+
+- Update to version 2.5.0.
+
+-------------------------------------------------------------------
+Fri Oct 18 16:58:09 CEST 2002 - sbrabec@suse.cz
+
+- Update to version 2.4.3.
+- Updated %files. Fixed orbit2/orbit2-devel splitting.
+
+-------------------------------------------------------------------
+Tue Aug 20 14:18:22 CEST 2002 - ro@suse.de
+
+- fixed requires line for devel package 
+
+-------------------------------------------------------------------
+Wed Aug 14 08:50:24 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.4.1 
+
+-------------------------------------------------------------------
+Fri Aug  9 14:09:00 CEST 2002 - hhetter@suse.de
+
+- add openssl to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jun  4 09:37:54 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.4.0, source frozen release 
+
+-------------------------------------------------------------------
+Mon May 13 11:22:02 CEST 2002 - meissner@suse.de
+
+- %_lib fixes
+
+-------------------------------------------------------------------
+Tue Apr  9 11:41:29 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.3.107 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Thu Jan 31 15:58:24 CET 2002 - hhetter@suse.de
+
+- updated to version 2.3.103 [gnome desktop alpha2] 
+         + big POA cleanup 
+         + unique id generator re-write 
+         + runtime debugging 
+         + idl compiler checks oneway's validity 
+         + union marshalling cleanup 
+         + allow multiple ORB:init calls 
+         + fix profile leaks 
+         + fix screwy idl compiler output 
+         + bomb out if alingment checks fail 
+
+-------------------------------------------------------------------
+Fri Jan 11 12:32:36 CET 2002 - hhetter@suse.de
+
+- updated to version 2.3.102:
+	* fixed and improved regression tests
+
+-------------------------------------------------------------------
+Wed Dec 12 17:40:07 CET 2001 - hhetter@suse.de
+
+- initial SuSE release for GNOME 2.0 platform
+ 
+

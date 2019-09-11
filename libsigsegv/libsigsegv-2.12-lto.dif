@@ -1,0 +1,201 @@
+---
+ configure |   42 +++++++++++++++++++++++++++---------------
+ 1 file changed, 27 insertions(+), 15 deletions(-)
+
+--- configure
++++ configure	2019-04-25 13:27:06.323370748 +0000
+@@ -12587,7 +12587,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, siginfo_t *sip, void *ucp)
+ {
+   void *fault_address = (void *) (sip->si_addr);
+@@ -12683,7 +12683,9 @@ else
+ 
+ 
+ #include <signal.h>
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ void sigsegv_handler (int sig, struct sigcontext sc)
+ {
+   void *fault_address = (void *) (sc.cr2);
+@@ -12718,7 +12720,9 @@ else
+ #if HAVE_SYS_SIGNAL_H
+ # include <sys/signal.h>
+ #endif
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #if HAVE_MMAP_DEVZERO
+@@ -12750,7 +12754,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, struct sigcontext sc)
+ {
+   void *fault_address = (void *) (sc.cr2);
+@@ -12915,7 +12919,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, unsigned int more)
+ {
+   void *fault_address = (void *) (((unsigned long *) &more) [21]);
+@@ -13013,7 +13017,9 @@ else
+ 
+ 
+ #include <signal.h>
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ #include "$srcdir/src/fault-linux-m68k-old.c"
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+@@ -13049,7 +13055,9 @@ else
+ #if HAVE_SYS_SIGNAL_H
+ # include <sys/signal.h>
+ #endif
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ #include "$srcdir/src/fault-linux-m68k-old.c"
+ #include <sys/types.h>
+ #include <sys/mman.h>
+@@ -13082,7 +13090,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (get_fault_addr (scp));
+@@ -13180,7 +13188,9 @@ else
+ 
+ 
+ #include <signal.h>
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ void sigsegv_handler (int sig, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (scp->regs->dar);
+@@ -13215,7 +13225,9 @@ else
+ #if HAVE_SYS_SIGNAL_H
+ # include <sys/signal.h>
+ #endif
++#ifndef _DEFAULT_SOURCE
+ #include <asm/sigcontext.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #if HAVE_MMAP_DEVZERO
+@@ -13247,7 +13259,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (scp->regs->dar);
+@@ -13413,7 +13425,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, siginfo_t *sip, void *ucp)
+ {
+   void *fault_address = (void *) (sip->si_ptr);
+@@ -13576,7 +13588,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp, void *addr)
+ {
+   void *fault_address = (void *) (addr);
+@@ -13741,7 +13753,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) ((unsigned long) scp->sc_badvaddr);
+@@ -13916,7 +13928,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (GET_CR21 (scp->sc_sl.sl_ss));
+@@ -14081,7 +14093,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (scp->sc_traparg_a0);
+@@ -14246,7 +14258,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (get_fault_addr (scp));
+@@ -14411,7 +14423,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (scp->sc_jmpbuf.jmp_context.o_vaddr);
+@@ -14577,7 +14589,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, siginfo_t *sip, ucontext_t *ucp)
+ {
+   void *fault_address = (void *) (get_fault_addr (sip, ucp));
+@@ -14741,7 +14753,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (get_fault_addr (scp));
+@@ -14907,7 +14919,7 @@ static int zero_fd;
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+ unsigned long page;
+-int handler_called = 0;
++volatile sig_atomic_t handler_called = 0;
+ void sigsegv_handler (int sig, int code, struct sigcontext *scp)
+ {
+   void *fault_address = (void *) (code);

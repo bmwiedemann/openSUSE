@@ -1,0 +1,362 @@
+-------------------------------------------------------------------
+Mon Mar 11 15:53:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 20:06:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Fix internationalization of move hints.
+  + Updates to user help.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:48:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Game rewritten in Vala.
+  + Switch to Meson build system.
+  + Add F10 accelerator to open menu.
+  + Several improvements to user help.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Stop handling glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un) in
+  post(un) and drop glib2_gsettings_schema_requires.
+- Add itstool and vala BuildRequires: New dependencies.
+- Drop update-desktop-files, yelp-tools and hicolor-icon-theme
+  BuildRequires and suse_update_desktop_file macro: No longer
+  needed.
+- Add fdupes BuildRequires and macro, remove duplicates.
+- Drop gnect and gnect-lang Obsoletes: No current openSUSE release
+  have ever shipped them.
+
+-------------------------------------------------------------------
+Sun Mar 11 10:08:24 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 18:45:39 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + bgo#793485: Play sounds using the default libcanberra-gtk3
+    context.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:34 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb  6 09:31:16 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Use gettext for translations.
+  + Allow double-buffering.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed as upstream
+  migrated to gettext.
+
+-------------------------------------------------------------------
+Sat Sep  9 16:04:36 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 11 10:17:59 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 16:51:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 22 16:23:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Simplify style-checker enabling code.
+  + Fix style-checker with new libgnome-games-support.
+  + Add Language headers to po files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May  7 08:47:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:12:47 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 29 10:58:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + New hires app icon.
+  + Updated translations.
+- Fix url to point to https://wiki.gnome.org/Apps/Four-in-a-row.
+
+-------------------------------------------------------------------
+Fri Nov  6 22:34:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 11 21:18:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:37:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 14 07:09:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fix dragging the window after clicking on the game view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 13 19:01:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Make sure keyboard shortcuts are unique.
+
+-------------------------------------------------------------------
+Tue May 12 18:38:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Add symbolic icon.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:45:00 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 09:10:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 08:57:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Removed New Game from the app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 19 16:05:03 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Code cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 12 11:15:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 10 06:32:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Start new piece in the middle, instead of the last column.
+  + Fix regression that allowed multiple windows with nonsense
+    behavior.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:24:14 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:18:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Update desktop icon so that it displays a real game position.
+  + Fix high contrast pieces sometimes appearing "stacked".
+  + Fix width of text buttons.
+  + Fix sensitivity of hint button.
+  + Fix internationalization of piece types.
+  + Remove binary data file used by the old AI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 06:55:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Use text buttons.
+  + Move undo to header bar.
+  + Use header bar in scores dialog.
+  + Window layout improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 17:32:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Add missing function prototypes.
+  + Make AI tests less likely to fail.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 21:49:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + New AI that should be much easier to beat.
+  + Improve internationalization of status messages.
+  + Use a header bar on the preferences dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul  2 17:10:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.3:
+  + Fix opponent in preferences dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 07:35:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Update translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:08:50 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix GTK+ build requirement.
+  + Update translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 17:34:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 08:18:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Disable Hint after Undo to start if the computer moves first.
+  + Distribute new file COPYING.faenza-themes.
+  + Help: scores page should not mention theme-specific colors.
+  + Updated translations.
+- Update License tag to GPL-2.0+ and GPL-3.0+ (GPL-2.0+ for the
+  source/program code, GPL-3.0+ for the themes).
+
+-------------------------------------------------------------------
+Tue Feb 18 09:49:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + New themes.
+  + All old themes, except for the high contrast themes, have been
+    removed.
+  + Removed the menu bar and status bar.
+  + Added a header bar.
+  + Undo, Hint, and New Game buttons added into the window.
+  + Use an application menu.
+  + The game now properly displays the winner in two-player games.
+  + Fullscreen mode has been removed, since it doesn't look very
+    good.
+  + It is no longer possible to request a hint twice in a row.
+  + It is no longer possible to start a computer vs. computer game.
+  + It is no longer possible to disable animations.
+  + Added tooltips to all buttons.
+  + Updated translations.
+- .desktop file got renamed to four-in-a-row from gnect.
+
+-------------------------------------------------------------------
+Mon Dec 16 22:06:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Update AppData.
+  + build: make *-validate optional.
+- Changes from version 3.11.1:
+  + Require intltool 0.50.
+  + Remove BugBuddy support.
+  + Update AppData.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 13 11:09:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 20:43:15 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:07:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Add appdata file.
+
+-------------------------------------------------------------------
+Tue Aug 20 19:16:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Rewritten user help in Mallard.
+  + Program name displays properly in GNOME Shell when not launched
+    by the shell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:32:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated trranslations.
+
+-------------------------------------------------------------------
+Mon Apr  8 17:20:46 UTC 2013 - dimstar@opensuse.org
+
+- Also obsolete -lang package.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:38:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:02:15 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Added high contrast icons.
+  + Renamed destktop file back to gnect.desktop.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 20:16:14 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.90: split-off from gnome-games.
+

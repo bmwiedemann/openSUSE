@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Wed Nov  5 11:28:37 UTC 2014 - dimstar@opensuse.org
+
+- Add pkgconfig(xext) BuildRequires: also needed after the removal
+  of xorg-x11-devel dependency.
+
+-------------------------------------------------------------------
+Sat Nov  1 04:15:24 UTC 2014 - crrodriguez@opensuse.org
+
+- Only imake and pkgconfig(x11) are required for build 
+  not xorg-x11-devel
+
+-------------------------------------------------------------------
+Mon Nov  8 15:00:30 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Fri Jul 28 12:42:53 CEST 2006 - lmichnovic@suse.cz
+
+- builds also with new X.org 7.x, detecting prefix in X.org
+- building with icecream
+- using RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 18 17:51:35 CEST 2005 - ro@suse.de
+
+- build with gcc-4 
+
+-------------------------------------------------------------------
+Fri May  7 15:01:47 CEST 2004 - hmacht@suse.de
+
+- building as non-root user
+
+-------------------------------------------------------------------
+Fri Apr 16 20:25:47 CEST 2004 - pmladek@suse.cz
+
+- fixed some compiler warnings
+
+-------------------------------------------------------------------
+Fri Aug 09 21:53:06 CEST 2002 - pmladek@suse.cz
+
+- added help option which will be used by less mouse support
+
+-------------------------------------------------------------------
+Fri May 31 12:13:18 CEST 2002 - pmladek@suse.cz
+
+- fixed for qt (kde) applications where TARGETS request must be
+  answered before the request on selected data
+
+-------------------------------------------------------------------
+Wed Oct 10 16:45:10 CEST 2001 - pmladek@suse.cz
+
+- renamed from xselect to xselection
+- bzippped sources
+- fixed copyright tag
+- added BuildRoot
+- cleaned up spec file
+
+-------------------------------------------------------------------
+Thu Mar  8 12:24:28 CET 2001 - uli@suse.de
+
+- added # neededforbuild xf86
+- added proper Group tag
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Oct 29 20:07:31 MET 1997 - kgw@suse.de
+
+- ready for autobuild
+
+-------------------------------------------------------------------
+Tue Dec 17 17:02:42 MET 1996 - maddin@suse.de
+
+first SuSE version

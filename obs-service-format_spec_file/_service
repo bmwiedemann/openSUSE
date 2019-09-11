@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/obs-service-format_spec_file.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">%ad</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">coolo@suse.com</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">bz2</param>
+    <param name="file">*.tar</param>
+  </service>
+
+</services>

@@ -1,0 +1,11 @@
+--- node.c
++++ node.c
+@@ -53,7 +53,7 @@
+ 
+ 	(void) snpf(buf ? buf : dbuf,
+ 		    buf ? bufl : sizeof(dbuf),
+-		    KA_T_FMT_X, kp);
++		    KA_T_FMT_X, (unsigned long)kp);
+ 	return(buf ? buf : dbuf);
+ }
+ 

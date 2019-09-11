@@ -1,0 +1,2 @@
+# False positive, dependency is there
+addFilter("no-dependency-on .*gstreamermm.*")

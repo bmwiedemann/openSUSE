@@ -1,0 +1,26 @@
+Name:                annotated-wl-pprint
+Version:             0.7.0
+x-revision: 1
+Cabal-Version:       >= 1.6
+Synopsis:            The Wadler/Leijen Pretty Printer, with annotation support
+Category:            Text
+Description:
+ This is a modified version of wl-pprint, which was based on Wadler's
+ paper "A Prettier  Printer".  See the haddocks for full info.  This
+ version allows the library user to annotate the text with semantic
+ information, which can later be rendered in a variety of ways.
+License:             BSD3
+License-file:        LICENSE
+Author:              Daan Leijen, David Raymond Christiansen
+Maintainer:          david@davidchristiansen.dk
+Homepage:            https://github.com/david-christiansen/annotated-wl-pprint
+Build-Type:          Simple
+Library
+        Build-Depends:       base >= 4.4 && < 5
+        Exposed-Modules:     Text.PrettyPrint.Annotated.Leijen
+        Extensions:          DeriveFunctor
+        Ghc-options:         -fwarn-incomplete-patterns
+Source-Repository head
+        type:        git
+        location:    https://github.com/david-christiansen/annotated-wl-pprint
+

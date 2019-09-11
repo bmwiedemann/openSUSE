@@ -1,0 +1,13 @@
+Index: xapian-bindings-1.4.4/php7/Makefile.am
+===================================================================
+--- xapian-bindings-1.4.4.orig/php7/Makefile.am
++++ xapian-bindings-1.4.4/php7/Makefile.am
+@@ -39,7 +39,7 @@ phpext_LTLIBRARIES = xapian.la
+ # This location is correct for Debian, but in general there doesn't seem
+ # to be a suitable location which is guaranteed to be in the include_path
+ # by default.
+-phpincdir = $(datadir)/php
++phpincdir = $(datadir)/php7
+ phpinc_DATA = php7/xapian.php
+ 
+ # Remove the .la file - xapian.la is never linked against (it's a module)

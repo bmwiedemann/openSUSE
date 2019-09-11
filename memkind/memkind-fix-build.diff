@@ -1,0 +1,12 @@
+Index: memkind-1.6.0/Makefile.am
+===================================================================
+--- memkind-1.6.0.orig/Makefile.am	2017-06-14 16:25:26.000000000 +0200
++++ memkind-1.6.0/Makefile.am	2017-11-17 15:34:48.000000000 +0100
+@@ -336,7 +336,6 @@ rpm: dist
+ 	$(MAKE) version="$(VERSION)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" \
+ 		-f memkind.spec.mk $@
+ 
+-all: static_lib
+ 
+ # the script merge memkind and jemalloc libraries into one static library.
+ define ar_prog

@@ -1,0 +1,26 @@
+diff --git a/Makefile.main b/Makefile.main
+index 19378789..bbfc552a 100644
+--- a/Makefile.main
++++ b/Makefile.main
+@@ -75,6 +75,7 @@ CPPFLAGS += -DDEBUG -DCCAN_LIST_DEBUG
+ endif
+ 
+ CFLAGS := -fno-strict-aliasing -pie -fpie -fno-pic -mbig-endian -m64
++CFLAGS += -Wno-address-of-packed-member
+ CFLAGS += -mcpu=power7
+ CFLAGS += -Wl,--oformat,elf64-powerpc
+ CFLAGS += $(call try-cflag,$(CC),-ffixed-r13)
+diff --git a/hdata/vpd.c b/hdata/vpd.c
+index 129b5062..ce17c1dc 100644
+--- a/hdata/vpd.c
++++ b/hdata/vpd.c
+@@ -388,8 +388,7 @@ static void vpd_vini_parse(struct dt_node *node,
+ 			} else {
+ 				dt_add_property_string(node, "description", "Unknown");
+ 				prlog(PR_WARNING,
+-				      "VPD: CCIN desc not available for: %s\n",
+-				      (char *)kw);
++				      "VPD: CCIN desc not available for: NULL\n");
+ 			}
+ 		}
+ 	}

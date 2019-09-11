@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Fri Mar 16 09:27:34 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.07:
+  + Disable XS version on cygwin as it shows bizarre behaviour
+    that breaks form when using Params::Util XS verwion.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:06:12 UTC 2012 - coolo@suse.com
+
+- updated to 1.06
+   - Remove the need for the sanexs.c file by generating into a temp
+     file instead.
+   - Restore compatibility with pre-5.8.8 Perls without a working
+     compiler available install time (RIBASUSHI)
+
+-------------------------------------------------------------------
+Sat Apr 30 15:18:28 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.04
+    - Fixed #67522 have_compiler returns
+
+-------------------------------------------------------------------
+Fri Apr  1 05:35:33 UTC 2011 - coolo@novell.com
+
+- update to 1.03
+    - Trying for a much more advanced can_xs() alternative to can_cc()
+      to deal with the situation where a host has a superficially
+      working compiler, but completely screwed up headers.
+    - Adding some fallback strategies to deal with cases where these
+      same machines don't support configure_requires.
+    - Adopt Chorny's eumm-upgrade style for the Makefile.PL.
+    - Allow the Makefile.PL to build it's own META.yml now.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:18 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Apr  4 17:57:21 UTC 2010 - chris@computersalat.de
+
+- spec mods
+  - fixed HEADER
+  - updated Url
+  - fixed perl-macros deps
+
+-------------------------------------------------------------------
+Sun Mar 21 17:57:30 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.01:
+  + Fixed can_cc() bug in Makefile.PL where it was checking an 
+    existence of PATH directory rather than executables. RT#55668 
+    (DGOLDEN, MIYAGAWA)
+- build parallel
+
+-------------------------------------------------------------------
+Thu Mar  4 10:38:55 UTC 2010 - coolo@novell.com
+
+- readd whitespace removed by autobuild
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:14 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 21 20:27:19 CEST 2009 - chris@computersalat.de
+
+- update to 1.00
+  o 1.00 Sun 31 May 2009
+	- Now all known XS bugs are worked out, I've removed
+	  the experimental flags and set that as the first 1+ release.
+	- Fixed XS implementation of _*LIKE and _INSTANCE
+	- Added test for a negative custom isa returning ('')
+	- Improving the 'clean' file list in a Makefile.PL
+  o 0.38 Tue 17 Feb 2009
+	- Fix _IDENTIFIER to return false for "foo\n" (ZEFRAM)
+	- Fix _CLASS to return false for "foo\n" (ZEFRAM)
+  o 0.37 Wed  4 Feb 2009
+	- Fix _HASH for bleadperl (patch from RAFL)
+	- Fix regex (more) for bleadperl (patch from RAFL)
+  o 0.36 Fri 30 Jan 2009
+	- Fixing the overload for _REGEX
+	- Adding the tests for _REGEX
+	- Reorganising the Makefile.PL
+	- Adding duplicate tests for when the XS version isn't compiled
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+
+-------------------------------------------------------------------
+Sun Nov 30 07:39:09 CET 2008 - lars@linux-schulserver.de
+
+- initial version 0.35
+

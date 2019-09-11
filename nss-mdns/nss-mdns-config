@@ -1,0 +1,233 @@
+#!/bin/sh
+# vim: set ts=2 sw=2 et:
+
+#
+# Copyright (c) 2012, Novell, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice,
+#    this list of conditions and the following disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+#  * Neither the name of the <ORGANIZATION> nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+#
+# (Licensed under the simplified BSD license)
+#
+# Authors: Vincent Untz <vuntz@opensuse.org>
+#
+
+NSSWITCH=/etc/nsswitch.conf
+
+usage() {
+  echo "nss-mdns-config [--enable|--disable] [-4|-6] [--no-backup]"
+}
+
+ENABLE=0
+DISABLE=0
+IPv4=0
+IPv6=0
+IPvALL=0
+BACKUP=1
+
+while test $# -gt 0; do
+  case "$1" in
+    --enable) ENABLE=1; shift;;
+    --disable) DISABLE=1; shift;;
+    -4) IPv4=1; shift;;
+    -6) IPv6=1; shift;;
+    --no-backup) BACKUP=0; shift;;
+    *) usage; exit 1;;
+  esac
+done
+
+if test "$ENABLE" -eq 1 -a "$DISABLE" -eq 1; then
+  usage
+  exit 1
+fi
+
+if test "$IPv4" -eq 1 -a "$IPv6" -eq 1; then
+  # Supporting -4 and -6 at the same time would make --enable more complex,
+  # since we'd like it to add both mdns4_minimal and mdns6_minimal. So just
+  # don't do it for now.
+  usage
+  exit 1
+fi
+
+if test "$IPv4" -ne 1 -a "$IPv6" -ne 1; then
+  IPv4=1
+  IPv6=1
+  IPvALL=1
+fi
+
+if test ! -f "$NSSWITCH"; then
+  if test "$ENABLE" -ne 1 -a "$DISABLE" -ne 1; then
+    echo "No $NSSWITCH file."
+  fi
+  exit 0
+fi
+
+HOSTS=$(grep -m1 "^\s*hosts:" "$NSSWITCH")
+
+if test $? -ne 0; then
+  echo "No hosts configuration in $NSSWITCH."
+  exit 0
+fi
+
+VALUE=$(echo $HOSTS | sed "s/^\s*hosts:\s*//g")
+
+if test "$ENABLE" -ne 1 -a "$DISABLE" -ne 1; then
+
+  IPv4_ENABLED=0
+  IPv6_ENABLED=0
+  ENABLED=0
+
+  for ITEM in $VALUE; do
+    if [ "$ITEM" = "mdns4_minimal" -o "$ITEM" = "mdns4" ]; then
+      IPv4_ENABLED=1
+    elif [ "$ITEM" = "mdns6_minimal" -o "$ITEM" = "mdns6" ]; then
+      IPv6_ENABLED=1
+    elif [ "$ITEM" = "mdns_minimal" -o "$ITEM" = "mdns" ]; then
+      ENABLED=1
+    fi
+  done
+
+  if test "$ENABLED" -eq 1; then
+    echo "Full support for nss-mdns is enabled."
+  elif test "$IPv4_ENABLED" -eq 1 -a "$IPv6_ENABLED" -eq 1; then
+    echo "Support for nss-mdns is enabled for IPv4 and IPv6."
+  elif test "$IPv4_ENABLED" -eq 1; then
+    echo "Support for nss-mdns is enabled for IPv4."
+  elif test "$IPv6_ENABLED" -eq 1; then
+    echo "Support for nss-mdns is enabled for IPv6."
+  else
+    echo "Support for nss-mdns is disabled."
+  fi
+
+elif test "$DISABLE" -eq 1; then
+
+  NEWVALUE=""
+  DROPACTION=0
+
+  for ITEM in $VALUE; do
+    if [ "$ITEM" = "mdns4_minimal" -o "$ITEM" = "mdns4" ] && [ "$IPv4" -eq 1 ]; then
+      DROPACTION=1
+    elif [ "$ITEM" = "mdns6_minimal" -o "$ITEM" = "mdns6" ] && [ "$IPv6" -eq 1 ]; then
+      DROPACTION=1
+    elif [ "$ITEM" = "mdns_minimal" -o "$ITEM" = "mdns" ]; then
+      if test "$IPvALL" -eq 1; then
+        DROPACTION=1
+      elif test "$IPv4" -eq 1; then
+        NEWVALUE="$NEWVALUE `echo $ITEM | sed 's:mdns:mdns6:'`"
+        DROPACTION=0
+      elif test "$IPv6" -eq 1; then
+        NEWVALUE="$NEWVALUE `echo $ITEM | sed 's:mdns:mdns4:'`"
+        DROPACTION=0
+      else
+        echo "Internal error when disabling $ITEM."
+        exit 1
+      fi
+    elif [ "${ITEM#[}" != "$ITEM" -a "$DROPACTION" -eq 1 ]; then
+      DROPACTION=0
+    else
+      NEWVALUE="$NEWVALUE $ITEM"
+      DROPACTION=0
+    fi
+  done
+
+  NEWVALUE=$(echo $NEWVALUE | sed "s/^\s*//;s/^\s*$//")
+
+  if test "$BACKUP" -eq 1; then
+    cp -a "$NSSWITCH" "${NSSWITCH}bak"
+  fi
+  sed -i "s/\(^\s*hosts:\s*\).*/\1$NEWVALUE/" "$NSSWITCH"
+
+elif test "$ENABLE" -eq 1; then
+
+  NEWVALUE=""
+  FOUND=0
+  FOUND_DNS=0
+  DROPACTION=0
+
+  for ITEM in $VALUE; do
+    if [ "$ITEM" = "mdns_minimal" -o "$ITEM" = "mdns4_minimal" -o "$ITEM" = "mdns6_minimal" ]; then
+      if test "$FOUND_DNS" -eq 1; then
+        # don't keep *_minimal after dns; it's not desired there
+        DROPACTION=1
+      else
+        if [ "$IPvALL" -eq 1 ] && [ "$ITEM" = "mdns4_minimal" -o "$ITEM" = "mdns6_minimal" ]; then
+          # no need to keep mdns[46]_minimal since we'll add mdns_minimal
+          DROPACTION=1
+        else
+          if [ "$ITEM" = "mdns_minimal" ]; then
+            FOUND=1
+          elif [ "$ITEM" = "mdns4_minimal" -a "$IPv4" -eq 1 ]; then
+            FOUND=1
+          elif [ "$ITEM" = "mdns6_minimal" -a "$IPv6" -eq 1 ]; then
+            FOUND=1
+          fi
+          # force the use of [NOTFOUND=return] after *_minimal
+          NEWVALUE="$NEWVALUE $ITEM [NOTFOUND=return]"
+          DROPACTION=1
+        fi
+      fi
+    elif [ "$ITEM" = "mdns" -o "$ITEM" = "mdns4" -o "$ITEM" = "mdns6" ]; then
+      # we simply don't use the non-minimal version in our setup, so drop it
+      DROPACTION=1
+    elif [ "$ITEM" = "dns" ]; then
+      FOUND_DNS=1
+      DROPACTION=0
+      if test "$FOUND" -ne 1; then
+        FOUND=1
+        if test "$IPvALL" -eq 1; then
+          NEWVALUE="$NEWVALUE mdns_minimal [NOTFOUND=return] $ITEM"
+        elif test "$IPv4" -eq 1; then
+          NEWVALUE="$NEWVALUE mdns4_minimal [NOTFOUND=return] $ITEM"
+        elif test "$IPv6" -eq 1; then
+          NEWVALUE="$NEWVALUE mdns6_minimal [NOTFOUND=return] $ITEM"
+        else
+          echo "Internal error when enabling."
+          exit 1
+        fi
+      else
+        NEWVALUE="$NEWVALUE $ITEM"
+      fi
+    elif [ "${ITEM#[}" != "$ITEM" -a "$DROPACTION" -eq 1 ]; then
+      DROPACTION=0
+    else
+      NEWVALUE="$NEWVALUE $ITEM"
+      DROPACTION=0
+    fi
+  done
+
+  if test "$FOUND_DNS" -ne 1; then
+    echo "No dns service for hosts configuration in $NSSWITCH."
+    exit 0
+  fi
+
+  NEWVALUE=$(echo $NEWVALUE | sed "s/^\s*//;s/^\s*$//")
+
+  if test "$BACKUP" -eq 1; then
+    cp -a "$NSSWITCH" "${NSSWITCH}bak"
+  fi
+  sed -i "s/\(^\s*hosts:\s*\).*/\1$NEWVALUE/" "$NSSWITCH"
+
+fi

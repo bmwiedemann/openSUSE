@@ -1,0 +1,33 @@
+bug boo#966124, boo#981024, and boo#1010330
+
+---
+ languages/english/english.3 |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- languages/english/english.3
++++ languages/english/english.3	2016-11-22 09:17:32.531592179 +0000
+@@ -10890,7 +10890,6 @@ mailcoach
+ maillol
+ maimonides
+ mainbrace
+-maintenence
+ Maintenon
+ maintopsail
+ mainz
+@@ -13419,7 +13418,6 @@ Parthenope
+ Parthenos
+ parthia
+ Parthian
+-particlar
+ partita
+ partlet
+ parturifacient
+@@ -18067,7 +18065,7 @@ varese
+ Varga
+ vargas
+ varia
+-variablity
++variability
+ varicella
+ varicellate
+ varicelloid

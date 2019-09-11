@@ -1,0 +1,30 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Wed Sep 12 09:30:59 2018 -0600
+Subject: common/functions: When checking for RPM package check '--whatprovides' (#134)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 4c2f2016511641b5becc3f03a769ab24dab6a4b2
+References: 
+
+This allows one to check a package by its capability as well.
+Package names are not affected: a package provides its own
+capability.
+
+Signed-off-by: Egbert Eich <eich@suse.com>---
+ common/etc/functions | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/common/etc/functions b/common/etc/functions
+index 2370e2a..a0cfd83 100644
+--- a/common/etc/functions
++++ b/common/etc/functions
+@@ -210,8 +210,8 @@ wwreqroot() {
+ wwpackage_check() {
+     for PACKAGE in "$@"; do
+         if [ -x /bin/rpm ]; then
+-            wwprint "Checking to see if RPM '$PACKAGE' is installed "
+-            if wwtest rpm -q $PACKAGE; then
++            wwprint "Checking to see if RPM or capability '$PACKAGE' is installed "
++            if wwtest rpm -q --whatprovides "$PACKAGE"; then
+                 return 0
+             fi
+         elif [ -x /bin/dpkg ] || [ -x /usr/bin/dpkg ]; then

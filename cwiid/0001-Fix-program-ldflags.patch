@@ -1,0 +1,25 @@
+From e446c634751297407529d72f54e8d0a74431801a Mon Sep 17 00:00:00 2001
+From: Martin Herkt <lachs0r@srsfckn.biz>
+Date: Mon, 4 Dec 2017 20:39:06 +0100
+Subject: [PATCH] Fix program ldflags
+
+---
+ wmdemo/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wmdemo/Makefile.in b/wmdemo/Makefile.in
+index 56aed58..1eccc02 100644
+--- a/wmdemo/Makefile.in
++++ b/wmdemo/Makefile.in
+@@ -8,7 +8,7 @@ SOURCES = wmdemo.c
+ 
+ CFLAGS += -I@top_builddir@/libcwiid
+ LDFLAGS += -L@top_builddir@/libcwiid
+-LDLIBS += -lcwiid
++LDLIBS += -lcwiid -lbluetooth
+ INST_DIR = @bindir@
+ 
+ include $(COMMON)/include/app.mak
+-- 
+2.15.0
+

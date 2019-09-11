@@ -1,0 +1,626 @@
+-------------------------------------------------------------------
+Fri Jul 13 04:25:11 UTC 2018 - bwiedemann@suse.com
+
+- Extend reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Dec  5 14:58:23 UTC 2017 - crrodriguez@opensuse.org
+
+- Replace xorg-x11-devel build dependency for individual
+  libraries.
+
+-------------------------------------------------------------------
+Sat May 27 19:22:06 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files (boo#1041090)
+  and to use gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Sun Jun 21 00:16:09 UTC 2015 - crrodriguez@opensuse.org
+
+- remove buggy glibc version check (dosemu-skip-glibc-test.patch) 
+- force GNU inline semantics for GCC5.
+
+-------------------------------------------------------------------
+Fri Feb 27 14:43:37 UTC 2015 - dimstar@opensuse.org
+
+- No longer apply dosemu-flex.patch on openSUSE Tumbleweed (> 13.2).
+
+-------------------------------------------------------------------
+Tue Nov 13 09:38:32 UTC 2012 - idonmez@suse.com
+
+- Add dosemu-flex.patch to compile with new flex: yyleng should be
+  size_t
+
+-------------------------------------------------------------------
+Fri Aug 31 09:51:46 UTC 2012 - idonmez@suse.com
+
+- Add dependency on bdftopcf for openSUSE > 12.2 
+
+-------------------------------------------------------------------
+Mon Mar 12 10:37:07 UTC 2012 - meissner@suse.com
+
+- updated to 1.4.0.1 current SVN state (r2065)
+
+-------------------------------------------------------------------
+Sat Mar 10 17:41:39 UTC 2012 - meissner@suse.com
+
+- force vm86 emulation mode as we have mmap_min_addr >0 and 
+  use of the vm86 syscall will not work. bnc#742752
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Sep 22 05:58:14 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- enable console mouse plugin. 
+
+-------------------------------------------------------------------
+Sat Oct 10 19:23:20 UTC 2009 - aj@suse.de
+
+- Fix build: own ru man directory.
+
+-------------------------------------------------------------------
+Mon Sep 21 20:13:21 CEST 2009 - crrodriguez@suse.de
+
+- use find_lang to tag localizd man pages correctly 
+
+-------------------------------------------------------------------
+Thu Jun 18 12:08:04 CEST 2009 - snwint@suse.de
+
+- David Binderman: fix loop bounds (bnc #512168)
+
+-------------------------------------------------------------------
+Fri Oct 17 08:52:44 CEST 2008 - olh@suse.de
+
+- add ExclusiveArch x86 x86_64
+
+-------------------------------------------------------------------
+Thu Oct  9 03:08:17 CEST 2008 - crrodriguez@suse.de
+
+- fix possible buffer overflow 
+
+-------------------------------------------------------------------
+Mon Apr 14 11:54:44 CEST 2008 - snwint@suse.de
+
+- updated to 1.4.0.1
+   * Bug fixes, especially pertaining to the CPU emulator that is used in the
+     x86-64 port (also in combination with Xen), and for DPMI on x86-64.
+   * Better LFN support.
+   * Optionally prompt if the keyboard layout can't be auto-detected.
+   * Some things previously done by the dosemu script are now done by the
+     dosemu.bin binary (X font locations, terminal warnings,
+     DOSDRIVE_D environment variable handling).
+   * Handle UTF-8 in window titles.
+   * Improved copy and paste of text to and from DOSEMU.
+   * Avoid problems with the dotless i as used in Turkish and some other
+     languages.
+   * Reduce lines of output in config.sys, autoexec.bat, blaster, and the
+     banner, so everything fits on 25 lines.
+
+-------------------------------------------------------------------
+Fri Dec 14 14:56:38 CET 2007 - snwint@suse.de
+
+- added missing open() arg
+
+-------------------------------------------------------------------
+Mon May 14 15:43:29 CEST 2007 - snwint@suse.de
+
+- updated to 1.4.0, new since 1.2.2:
+- Added a native 64-bit port for x86-64, which, by default, uses CPU emulation
+  for V86 mode, and runs DPMI code natively.
+- For a first time boot with FreeDOS, DOSEMU now boots without any user
+  interaction, and presents a welcome screen. 
+- "dosemu" starts xdosemu by default in X. Use "dosemu -t" to force terminal
+  mode.
+- Everyone, including root, needs to use "dosemu -s" to be able to use direct
+  hardware access. The -s switch automatically uses direct VGA graphics and
+  raw keyboard mode on the Linux console.
+- You can reboot the DOSEMU virtual machine using Ctrl-Alt-Del
+- The utility unix.com can now execute Linux commands within DOSEMU
+  interactively.
+- Run-time plugins are used to allow binary distribution without depending
+  on all libraries.
+- The -dumb switch quietens DOSEMU until the command is executed if a command
+  is given. So "dosemu -dumb dir" gives a directory listing and nothing else.
+- VGA Emulator: bitmap fonts are much quicker.
+- Fixed new errors and warnings with GCC 4.x.
+- The dosemu script is compatible with the minimal shell dash.
+- An automatic backtrace using GDB (output in ~/.dosemu/boot.log)
+  is attempted when DOSEMU crashes.
+- DOSEMU's stack is no longer marked executable which may improve security.
+- Clarified the copyrights and replaced some code with unclear origins.
+  The disclaimer acceptance has been weakened.
+- CPU emulation (SIMX86)
+  - The SIMX86 simulator is now a runtime option, activated via
+    $_cpuemu="vm86sim", or $_cpuemu="fullsim". Without the "sim"
+    JIT compilation (dynamic translation) is used.
+  - SIMX86 is automatically invoked if the vm86 is not supported by the
+    Linux kernel. This includes x86-64 systems, kernel configurations
+    for embedded use, and some virtualization systems.
+- DPMI
+  - Implemented DPMI uncommitted memory support.
+  - Support for the HX DOS Extender was added. It is now possible to run
+    some win32 console applications under dosemu, using that extender.
+  - The Blinker extender is now fully supported (all known versions).
+  - The PM API translator now uses the EMS page frame to save 64K
+    of conventional memory.
+  - Many DPMI and PM API translator fixes to support all commercial
+    Borland tools and other protected-mode programs, especially when
+    using Linux kernel 2.6.12 or newer.
+  - Most of the DPMI 1.0 API and functionality were added.
+  - Fixed IF flag virtualization for DPMI. This causes many DPMI applications
+    to work reliably without random crashes (such as Transport Tycoon,
+    Screamer, Vchess).
+  - Implemented LDT virtualization / direct LDT access for DPMI clients.
+  - Windows 3.1 now works natively, without any need for WINOS2 patches.
+  - Many other improvements to make Windows 3 in DOSEMU more stable and usable.
+  - Implemented debug breakpoints for DPMI.
+  - Customized SVGA drivers of Windows 3.11 can now be used instead
+    of the Trident drivers (refer to Section 9.2 of README.txt).
+- Memory management
+  - Improved the internal XMS driver.
+  - It is now possible to use an external XMS driver, such as himem.sys.
+  - Freed up 4K of UMB space.
+- File systems
+  - The default C: drive has changed from ~/dosemu/freedos to ~/.dosemu/drive_c
+    (similar to Wine). Drive Z: is now a read-only drive with all the DOSEMU
+    and FreeDOS support files.
+  - Added support for the Long File Name (int21/ah=71) interface on redirected
+    drives.
+  - The redirected drive file system code is much faster than before.
+  - You can now directly see and manipulate DOS file attributes on Lredir'ed
+    Linux-mounted (V)FAT partitions, when using recent 2.6 kernels.
+  - Lredir can now automatically find a new drive.
+- CDROM and floppies
+  - Added a $_cdrom option for runtime configuration of the CD-ROM device.
+  - Added an internal *CDEX style CD-ROM driver, activated using LREDIR, for
+    use with CD-ROMs that are mounted in Linux. The default autoexec.bat
+    uses this to set drive E: to a CD-ROM.
+  - It is now possible to point $_vbootfloppy, $_floppy_a etc. to directories
+    and boot from them.
+  - The floppy is much faster with 2.6 kernels.
+  - Added support for 2.88M floppies
+- Sound, mice, keyboards, printers, serial ports, I/O, and networking
+  - A new sound system is available. It is for now an optional run-time option,
+    $_sound=(2).
+  - Added some support for sound recording.
+  - Added the "INT 15h" PS/2 mouse interface.
+  - Much improved keyboard layout auto-detection
+  - The printer code now uses line buffering so that you do not have to
+    wait $_printer_timeout seconds before printing starts.
+  - Use $_lpt1, $_lpt2, and $_lpt3 for printer configuration.
+  - TTY locking can be disabled by $_ttylocks=""
+  - The reliability and performance of the serial ports emulation are much
+    improved.
+  - I/O ports are "fast" by default.
+  - IPX and Packet Driver code was seriously reworked.
+- Timers
+  - Added $_time_mode="linux" option to force the DOS clock to sync with
+    the Linux time.
+  - Improved real time clock support with a periodic IRQ generator.
+- Terminals
+  - UTF-8 terminals are supported if you use SLang 2 or a UTF-8
+    patched SLang 1 library. The supplied SLang library subset is no
+    longer necessary and no longer provided.
+  - $_term_char_set no longer exists;
+    $_external_char_set now defaults to the current locale.
+  - Even on non UTF-8 terminals many line drawing characters can now
+    be used, and on the Linux console almost the full CP437 character set.
+  - Many ctrl, alt, shift combinations with function keys, arrow keys, etc,
+    can now be used in xterm and friends.
+  - VGA hardware is emulated in terminal mode as well as in X mode.
+- Linux console
+  - VESA driver added which should be compatible with most BIOSes. This
+    is the default.
+  - Linear frame buffers now work.
+  - Improved behaviour in conjunction with frame buffer consoles.
+  - Improved PCI emulation on the console, with $_pci=(auto).
+- X Window System
+  - Added extra X fonts.
+  - The X aspect ratio is no longer set to 4:3 by default, but an integer
+    multiple of the real resolution.
+  - A graphical mouse cursor now works under X with mouse grab enabled.
+  - Added keyboard grab, hard-coded to Ctrl-Alt-k for now.
+  - Add $_X_title_show_appname.
+  - Implemented support for Unicode fonts for $_X_font, so you can for
+    instance use the univga font or
+    $_X_font="-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1"
+  - 16 bpp graphics programs now run in X with 24/32 bpp.
+- SDL support
+  New: makes it possible to run DOSEMU on all supported SDL back-ends.
+  It is almost as capable as the X plug-in, and provides a safer way
+  to get console graphics, using fbdev.
+- Removed mapself support, the old keyboard code, coopthreads, and comcom.
+
+-------------------------------------------------------------------
+Thu Mar 29 14:19:57 CEST 2007 - snwint@suse.de
+
+- added flex to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug  8 01:12:48 CEST 2006 - ro@suse.de
+
+- define HZ sysconf(_SC_CLK_TCK) if not defined 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 14 12:12:30 CEST 2005 - snwint@suse.de
+
+- adapted to slang 2.0
+
+-------------------------------------------------------------------
+Mon Aug  1 15:16:18 CEST 2005 - snwint@suse.de
+
+- fixed uninitialized var usage
+
+-------------------------------------------------------------------
+Mon Aug  1 14:14:19 CEST 2005 - matz@suse.de
+
+- Use a local label to fix the overflow in a PC16 relocation.
+
+-------------------------------------------------------------------
+Thu Jun  9 09:00:52 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Apr 12 16:37:25 CEST 2005 - snwint@suse.de
+
+- gcc4 fixes
+
+-------------------------------------------------------------------
+Tue Aug 24 12:28:59 CEST 2004 - snwint@suse.de
+
+- upgrade to dosemu 1.2.2
+
+-------------------------------------------------------------------
+Mon Mar  8 23:20:29 CET 2004 - ro@suse.de
+
+- added directories to filelist
+
+-------------------------------------------------------------------
+Mon Mar  8 16:06:48 CET 2004 - snwint@suse.de
+
+- upgrade to dosemu 1.2.1
+
+-------------------------------------------------------------------
+Mon Aug 25 18:01:36 CEST 2003 - snwint@suse.de
+
+- make it compile with latest gcc
+
+-------------------------------------------------------------------
+Mon Aug 18 10:28:50 CEST 2003 - snwint@suse.de
+
+- work around asm() constraint bug in gcc (#28655)
+
+-------------------------------------------------------------------
+Fri Jun 13 08:31:58 CEST 2003 - kukuk@suse.de
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Tue Jun  3 01:45:11 CEST 2003 - ro@suse.de
+
+- fix build with current includes 
+
+-------------------------------------------------------------------
+Tue Apr 22 14:16:17 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Feb 28 19:14:13 CET 2003 - ro@suse.de
+
+- fix some more warnings (ccopt.dif and strerror.dif)
+- fix bison usage (thanks to matz) 
+
+-------------------------------------------------------------------
+Fri Jan 24 13:36:18 CET 2003 - ro@suse.de
+
+- fix base-configure for gcc-3.3
+- fix multiline string issues
+
+-------------------------------------------------------------------
+Mon Dec  2 15:41:17 CET 2002 - ro@suse.de
+
+- include errno.h where needed
+- use system slang library (precompiled had references to errno) 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Sep 11 17:31:47 CEST 2002 - snwint@suse.de
+
+- make it work with Pentium 4
+
+-------------------------------------------------------------------
+Thu Aug  8 12:46:31 CEST 2002 - snwint@suse.de
+
+- removed Requires, PreReq, preinstall & post(un)install scripts
+- fixed file permissions
+
+-------------------------------------------------------------------
+Sat Jul 27 09:26:01 CEST 2002 - kukuk@suse.de
+
+- remove libz from neededforbuild
+
+-------------------------------------------------------------------
+Tue Jul  2 12:34:43 CEST 2002 - ro@suse.de
+
+- added groupadd 
+
+-------------------------------------------------------------------
+Tue Mar  5 01:01:47 CET 2002 - ro@suse.de
+
+- don't link bios.o and vesabios.o in twice 
+
+-------------------------------------------------------------------
+Mon Mar  4 19:46:52 CET 2002 - snwint@suse.de
+
+- replaced as86-style *.S files with gas-style files (taken from dosemu-1.1.2)
+  as the linker seemed to be unable to produce a workable binary
+
+-------------------------------------------------------------------
+Thu Feb 14 01:45:50 CET 2002 - ro@suse.de
+
+- fix bad owner 
+
+-------------------------------------------------------------------
+Mon Sep 17 13:07:46 CEST 2001 - snwint@suse.de
+
+- fixed invalid include in dosdebug manpage (#10689)
+
+-------------------------------------------------------------------
+Fri Aug 24 11:25:41 CEST 2001 - snwint@suse.de
+
+- fixed X11 shared memory extension usage
+- allow dosemu to be run with suid bits on (if someone wishes so)
+
+-------------------------------------------------------------------
+Thu Jul 19 17:24:35 CEST 2001 - snwint@suse.de
+
+- updated to new version
+
+-------------------------------------------------------------------
+Thu May 10 09:32:46 CEST 2001 - snwint@suse.de
+
+- mtools options have changed (#6509, #6728)
+
+-------------------------------------------------------------------
+Fri Mar 30 13:57:35 CEST 2001 - uli@suse.de
+
+- fixed to build
+
+-------------------------------------------------------------------
+Tue Mar 27 13:01:40 CEST 2001 - ro@suse.de
+
+- added xf86 to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jan 18 20:03:26 CET 2001 - snwint@suse.de
+
+- workaround in spec as $RPM_DOC_DIR still points to /usr/doc/packages
+
+-------------------------------------------------------------------
+Thu Nov 16 01:18:28 CET 2000 - ro@suse.de
+
+- fixed spec  
+
+-------------------------------------------------------------------
+Tue Jul 11 13:45:08 CEST 2000 - snwint@suse.de
+
+- updated to 1.0.1
+
+-------------------------------------------------------------------
+Wed Mar  8 11:25:05 CET 2000 - bs@suse.de
+
+- made %post more friendly.
+
+-------------------------------------------------------------------
+Tue Mar  7 15:08:19 CET 2000 - snwint@suse.de
+
+- version 1.0
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 20 15:33:02 MEST 1999 - snwint@suse.de
+
+- added "/var/lock" to dosemu.conf
+
+-------------------------------------------------------------------
+Sat Jul 10 16:57:46 MEST 1999 - snwint@suse.de
+
+- updated to 0.98.8
+
+-------------------------------------------------------------------
+Fri Jul  9 13:05:33 MEST 1999 - snwint@suse.de
+
+- added latest patchset from Hans, it should now be nearly a 98.8 release
+- fixed %post/%postun failing without X
+
+-------------------------------------------------------------------
+Sun Jun 27 18:09:33 MEST 1999 - snwint@suse.de
+
+- applied quite a few fixes
+- hdimage no longer used
+
+-------------------------------------------------------------------
+Fri Mar 26 15:39:22 MET 1999 - ke@suse.de
+
+- security fix (thanks to lermen).
+
+-------------------------------------------------------------------
+Tue Mar 23 12:56:44 MET 1999 - ke@suse.de
+
+- fix typo (thanks to lermen).
+
+-------------------------------------------------------------------
+Mon Mar 22 10:52:18 MET 1999 - ke@suse.de
+
+- Update to 0.98.6 (more serurity fixes...).
+
+-------------------------------------------------------------------
+Wed Feb 24 11:04:37 MET 1999 - ke@suse.de
+
+- fix bash quoting specials (thanks to lermen).
+
+-------------------------------------------------------------------
+Sat Jan 16 10:18:52 MET 1999 - bs@suse.de
+
+- Update to 0.98.5 - security.dif is not neccessary anymore, since dosemu
+  comes with recent slang.
+
+-------------------------------------------------------------------
+Fri Jan  8 15:26:58 MET 1999 - ke@suse.de
+
+- apply patch actually, sigh...
+
+-------------------------------------------------------------------
+Thu Jan  7 10:57:11 MET 1999 - ke@suse.de
+
+- Add security patch (provided by lermen).
+- neededforbuild: Add slang.
+
+-------------------------------------------------------------------
+Sat Dec 12 17:50:26 MET 1998 - bs@suse.de
+
+- Update to dosemu 0.98.4
+
+-------------------------------------------------------------------
+Thu Nov 26 13:04:17 MET 1998 - bs@suse.de
+
+- deleted double entry for %files
+
+-------------------------------------------------------------------
+Thu Nov 26 09:18:31 MET 1998 - ke@suse.de
+
+- remove "/" from inst scripts.
+
+-------------------------------------------------------------------
+Tue Nov 17 22:33:07 MET 1998 - bs@suse.de
+
+- Update to 0.98.3
+
+-------------------------------------------------------------------
+Tue Aug 18 11:50:49 MEST 1998 - ke@suse.de
+
+- mkdexe: add security patch (marc and werner).
+
+-------------------------------------------------------------------
+Thu Jul 23 14:25:59 MET DST 1998 - werner@suse.de
+
+- Use mktemp
+
+-------------------------------------------------------------------
+Thu Jul 16 20:13:02 MET DST 1998 - werner
+
+- change some shell scripts to avoid tmp exploits
+
+-------------------------------------------------------------------
+Wed Jul  8 09:43:56 MEST 1998 - ke@suse.de
+
+- add additional security patches (Alan Cox).
+- #neededforbuild: add libz.
+
+-------------------------------------------------------------------
+Wed Jun 24 17:00:31 MEST 1998 - ke@suse.de
+
+- add security patch (provided by Hans Lermen).
+
+----------------------------------------------------------------------
+Wed Oct  8 16:23:35 MEST 1997 - ro@suse.de
+- ready for abuild
+  packed fallout.dexe into fallout.tgz for rpm reasons :-)
+  removed /var/lob/dosemu/etc/keymap/README from spec-filelist
+  (was not in binlist anyway)
+
+----------------------------------------------------------------------
+Fri Jul  4 03:39:33 MEST 1997 - lermen@suse.de
+
+upgrade to final dosemu-0.66.7
+
+----------------------------------------------------------------------
+Mon Jun 16 02:24:05 MEST 1997 - lermen@suse.de
+
+upgrade to final dosemu-0.66.6
+added 'ttylocks { directory /var/lock }' to /etc/dosemu.conf
+
+----------------------------------------------------------------------
+Fri Jun  6 14:26:53 MEST 1997 - bs@suse.de
+
+- removed usr/X11R6/lib/X11/fonts/misc/fonts.dir
+
+
+----------------------------------------------------------------------
+Wed Jun 04 18:30:00 MEST 1997 - ro@suse.de
+
+comiled for binary package
+
+----------------------------------------------------------------------
+Sat May 31 21:18:21 MEST 1997 - lermen@suse.de
+
+upgrade to final dosemu-0.66.5
+
+----------------------------------------------------------------------
+Mon May 19 05:04:07 MEST 1997 - lermen@suse.de
+
+upgrade to (pre-) dosemu-0.66.5
+
+----------------------------------------------------------------------
+Thu Feb 13 17:56:57 MET 1997 - bs@suse.de
+
+added dosnet.README.
+
+----------------------------------------------------------------------
+Mon Feb 10 23:32:15 CET 1997 - bs@suse.de
+
+
+new version 0.64.4
+
+NEW: no more emumodule. All needed stuff is included in Kernel >= 2.0.28
+
+----------------------------------------------------------------------
+Mon Dec  9 12:21:59 CET 1996 - werner@suse.de
+
+added cleanup for /var/run in /sbin/init.d/dosemu.
+
+
+----------------------------------------------------------------------
+Sun Nov 17 13:52:52 MET 1996 - bs@suse.de
+
+new version 0.64.1.
+
+syscallmgr does not exist anymore.
+
+----------------------------------------------------------------------
+Wed Nov 13 03:31:55 MET 1996 - bs@suse.de
+
+recompiled for kernel 2.0.25. 
+
+----------------------------------------------------------------------
+Thu Oct  3 14:06:16 MET DST 1996 - bs@suse.de
+
+font placement fixed
+
+-------------------------------------------------------------------------
+Tue Sep 24 10:54:25 MET DST 1996 - bs@suse.de
+
+new version 0.64.0.2
+

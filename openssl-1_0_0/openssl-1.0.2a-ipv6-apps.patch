@@ -1,0 +1,418 @@
+Index: openssl-1.0.2p/apps/s_apps.h
+===================================================================
+--- openssl-1.0.2p.orig/apps/s_apps.h	2018-08-15 15:56:31.832169858 +0200
++++ openssl-1.0.2p/apps/s_apps.h	2018-08-15 16:04:47.219955276 +0200
+@@ -151,7 +151,7 @@ typedef fd_mask fd_set;
+ #define PORT_STR        "4433"
+ #define PROTOCOL        "tcp"
+ 
+-int do_server(int port, int type, int *ret,
++int do_server(char *port, int type, int *ret,
+               int (*cb) (int s, int stype, unsigned char *context),
+               unsigned char *context, int naccept);
+ #ifdef HEADER_X509_H
+@@ -166,11 +166,10 @@ int ssl_print_point_formats(BIO *out, SS
+ int ssl_print_curves(BIO *out, SSL *s, int noshared);
+ #endif
+ int ssl_print_tmp_key(BIO *out, SSL *s);
+-int init_client(int *sock, char *server, int port, int type);
++int init_client(int *sock, char *server, char *port, int type);
+ int should_retry(int i);
+ int extract_port(char *str, short *port_ptr);
+-int extract_host_port(char *str, char **host_ptr, unsigned char *ip,
+-                      short *p);
++int extract_host_port(char *str, char **host_ptr, char **port_ptr);
+ 
+ long MS_CALLBACK bio_dump_callback(BIO *bio, int cmd, const char *argp,
+                                    int argi, long argl, long ret);
+Index: openssl-1.0.2p/apps/s_client.c
+===================================================================
+--- openssl-1.0.2p.orig/apps/s_client.c	2018-08-15 15:56:31.832169858 +0200
++++ openssl-1.0.2p/apps/s_client.c	2018-08-15 16:04:47.219955276 +0200
+@@ -668,7 +668,7 @@ int MAIN(int argc, char **argv)
+     int cbuf_len, cbuf_off;
+     int sbuf_len, sbuf_off;
+     fd_set readfds, writefds;
+-    short port = PORT;
++    char *port_str = PORT_STR;
+     int full_log = 1;
+     char *host = SSL_HOST_NAME;
+     char *cert_file = NULL, *key_file = NULL, *chain_file = NULL;
+@@ -792,13 +792,11 @@ int MAIN(int argc, char **argv)
+         } else if (strcmp(*argv, "-port") == 0) {
+             if (--argc < 1)
+                 goto bad;
+-            port = atoi(*(++argv));
+-            if (port == 0)
+-                goto bad;
++            port_str = *(++argv);
+         } else if (strcmp(*argv, "-connect") == 0) {
+             if (--argc < 1)
+                 goto bad;
+-            if (!extract_host_port(*(++argv), &host, NULL, &port))
++            if (!extract_host_port(*(++argv), &host, &port_str))
+                 goto bad;
+         } else if (strcmp(*argv, "-verify") == 0) {
+             verify = SSL_VERIFY_PEER;
+@@ -1449,7 +1447,7 @@ int MAIN(int argc, char **argv)
+ 
+  re_start:
+ 
+-    if (init_client(&s, host, port, socket_type) == 0) {
++    if (init_client(&s, host, port_str, socket_type) == 0) {
+         BIO_printf(bio_err, "connect:errno=%d\n", get_last_socket_error());
+         SHUTDOWN(s);
+         goto end;
+Index: openssl-1.0.2p/apps/s_server.c
+===================================================================
+--- openssl-1.0.2p.orig/apps/s_server.c	2018-08-15 15:56:31.832169858 +0200
++++ openssl-1.0.2p/apps/s_server.c	2018-08-15 16:04:47.219955276 +0200
+@@ -1082,7 +1082,7 @@ int MAIN(int argc, char *argv[])
+ {
+     X509_VERIFY_PARAM *vpm = NULL;
+     int badarg = 0;
+-    short port = PORT;
++    char *port_str = PORT_STR;
+     char *CApath = NULL, *CAfile = NULL;
+     char *chCApath = NULL, *chCAfile = NULL;
+     char *vfyCApath = NULL, *vfyCAfile = NULL;
+@@ -1173,7 +1173,8 @@ int MAIN(int argc, char *argv[])
+         if ((strcmp(*argv, "-port") == 0) || (strcmp(*argv, "-accept") == 0)) {
+             if (--argc < 1)
+                 goto bad;
+-            if (!extract_port(*(++argv), &port))
++            port_str = *(++argv);
++            if (port_str == NULL || *port_str == '\0')
+                 goto bad;
+         } else if (strcmp(*argv, "-naccept") == 0) {
+             if (--argc < 1)
+@@ -2075,13 +2076,13 @@ int MAIN(int argc, char *argv[])
+     BIO_printf(bio_s_out, "ACCEPT\n");
+     (void)BIO_flush(bio_s_out);
+     if (rev)
+-        do_server(port, socket_type, &accept_socket, rev_body, context,
++        do_server(port_str, socket_type, &accept_socket, rev_body, context,
+                   naccept);
+     else if (www)
+-        do_server(port, socket_type, &accept_socket, www_body, context,
++        do_server(port_str, socket_type, &accept_socket, www_body, context,
+                   naccept);
+     else
+-        do_server(port, socket_type, &accept_socket, sv_body, context,
++        do_server(port_str, socket_type, &accept_socket, sv_body, context,
+                   naccept);
+     print_stats(bio_s_out, ctx);
+     ret = 0;
+Index: openssl-1.0.2p/apps/s_socket.c
+===================================================================
+--- openssl-1.0.2p.orig/apps/s_socket.c	2018-08-15 15:56:31.832169858 +0200
++++ openssl-1.0.2p/apps/s_socket.c	2018-08-15 16:14:36.336471136 +0200
+@@ -106,9 +106,7 @@ static struct hostent *GetHostByName(cha
+ static void ssl_sock_cleanup(void);
+ # endif
+ static int ssl_sock_init(void);
+-static int init_client_ip(int *sock, unsigned char ip[4], int port, int type);
+-static int init_server(int *sock, int port, int type);
+-static int init_server_long(int *sock, int port, char *ip, int type);
++static int init_server(int *sock, char *port, int type);
+ static int do_accept(int acc_sock, int *sock);
+ static int host_ip(char *str, unsigned char ip[4]);
+ 
+@@ -231,65 +229,66 @@ static int ssl_sock_init(void)
+     return (1);
+ }
+ 
+-int init_client(int *sock, char *host, int port, int type)
++int init_client(int *sock, char *host, char *port, int type)
+ {
+-    unsigned char ip[4];
+-
+-    memset(ip, '\0', sizeof(ip));
+-    if (!host_ip(host, &(ip[0])))
+-        return 0;
+-    return init_client_ip(sock, ip, port, type);
+-}
+-
+-static int init_client_ip(int *sock, unsigned char ip[4], int port, int type)
+-{
+-    unsigned long addr;
+-    struct sockaddr_in them;
+-    int s, i;
++    struct addrinfo *res, *res0, hints;
++    char *failed_call = NULL;
++    int s;
++    int e;
+ 
+     if (!ssl_sock_init())
+         return (0);
+ 
+-    memset((char *)&them, 0, sizeof(them));
+-    them.sin_family = AF_INET;
+-    them.sin_port = htons((unsigned short)port);
+-    addr = (unsigned long)
+-        ((unsigned long)ip[0] << 24L) |
+-        ((unsigned long)ip[1] << 16L) |
+-        ((unsigned long)ip[2] << 8L) | ((unsigned long)ip[3]);
+-    them.sin_addr.s_addr = htonl(addr);
+-
+-    if (type == SOCK_STREAM)
+-        s = socket(AF_INET, SOCK_STREAM, SOCKET_PROTOCOL);
+-    else                        /* ( type == SOCK_DGRAM) */
+-        s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+-
+-    if (s == INVALID_SOCKET) {
+-        perror("socket");
++    memset(&hints, '\0', sizeof(hints));
++    hints.ai_socktype = type;
++    hints.ai_flags = AI_ADDRCONFIG;
++
++    e = getaddrinfo(host, port, &hints, &res);
++    if (e) {
++        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));
++        if (e == EAI_SYSTEM)
++            perror("getaddrinfo");
+         return (0);
+     }
++
++    res0 = res;
++    while (res) {
++        s = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
++        if (s == INVALID_SOCKET) {
++            failed_call = "socket";
++            goto nextres;
++        }
+ # if defined(SO_KEEPALIVE) && !defined(OPENSSL_SYS_MPE)
+-    if (type == SOCK_STREAM) {
+-        i = 0;
+-        i = setsockopt(s, SOL_SOCKET, SO_KEEPALIVE, (char *)&i, sizeof(i));
+-        if (i < 0) {
+-            closesocket(s);
+-            perror("keepalive");
+-            return (0);
++        if (type == SOCK_STREAM) {
++            int i = 0;
++            i = setsockopt(s, SOL_SOCKET, SO_KEEPALIVE,
++                           (char *)&i, sizeof(i));
++            if (i < 0) {
++                failed_call = "keepalive";
++                goto nextres;
++            }
+         }
+-    }
+ # endif
+-
+-    if (connect(s, (struct sockaddr *)&them, sizeof(them)) == -1) {
+-        closesocket(s);
+-        perror("connect");
+-        return (0);
++        if (connect(s, (struct sockaddr *)res->ai_addr, res->ai_addrlen) == 0) {
++            freeaddrinfo(res0);
++            *sock = s;
++            return (1);
++        }
++        failed_call = "socket";
++ nextres:
++        if (s != INVALID_SOCKET)
++            close(s);
++        res = res->ai_next;
+     }
+-    *sock = s;
+-    return (1);
++    freeaddrinfo(res0);
++    closesocket(s);
++
++    perror(failed_call);
++    return (0);
+ }
++ 
+ 
+-int do_server(int port, int type, int *ret,
++int do_server(char *port, int type, int *ret,
+               int (*cb) (int s, int stype, unsigned char *context),
+               unsigned char *context, int naccept)
+ {
+@@ -324,64 +323,83 @@ int do_server(int port, int type, int *r
+     }
+ }
+ 
+-static int init_server_long(int *sock, int port, char *ip, int type)
++static int init_server(int *sock, char *port, int type)
+ {
+-    int ret = 0;
+-    struct sockaddr_in server;
+-    int s = -1;
++    struct addrinfo *res, *res0 = NULL, hints;
++    char *failed_call = NULL;
++    int s = INVALID_SOCKET;
++    int e;
+ 
+     if (!ssl_sock_init())
+         return (0);
+ 
+-    memset((char *)&server, 0, sizeof(server));
+-    server.sin_family = AF_INET;
+-    server.sin_port = htons((unsigned short)port);
+-    if (ip == NULL)
+-        server.sin_addr.s_addr = INADDR_ANY;
+-    else
+-/* Added for T3E, address-of fails on bit field (beckman@acl.lanl.gov) */
+-# ifndef BIT_FIELD_LIMITS
+-        memcpy(&server.sin_addr.s_addr, ip, 4);
+-# else
+-        memcpy(&server.sin_addr, ip, 4);
++    memset(&hints, '\0', sizeof(hints));
++    hints.ai_family = AF_INET6;
++ tryipv4:
++    hints.ai_socktype = type;
++    hints.ai_flags = AI_PASSIVE;
++
++    e = getaddrinfo(NULL, port, &hints, &res);
++    if (e) {
++        if (hints.ai_family == AF_INET) {
++            fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));
++            if (e == EAI_SYSTEM)
++                perror("getaddrinfo");
++            return (0);
++        } else
++            res = NULL;
++    }
++    res0 = res;
++    while (res) {
++        s = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
++        if (s == INVALID_SOCKET) {
++            failed_call = "socket";
++            goto nextres;
++        }
++        if (hints.ai_family == AF_INET6) {
++            int j = 0;
++            setsockopt(s, IPPROTO_IPV6, IPV6_V6ONLY, (void *)&j, sizeof j);
++        }
++# if defined SOL_SOCKET && defined SO_REUSEADDR
++        {
++            int j = 1;
++            setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (void *)&j, sizeof j);
++        }
+ # endif
+ 
+-    if (type == SOCK_STREAM)
+-        s = socket(AF_INET, SOCK_STREAM, SOCKET_PROTOCOL);
+-    else                        /* type == SOCK_DGRAM */
+-        s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
++        if (bind(s, (struct sockaddr *)res->ai_addr, res->ai_addrlen) == -1) {
++            failed_call = "bind";
++            goto nextres;
++        }
++        if (type == SOCK_STREAM && listen(s, 128) == -1) {
++            failed_call = "listen";
++            goto nextres;
++        }
+ 
+-    if (s == INVALID_SOCKET)
+-        goto err;
+-# if defined SOL_SOCKET && defined SO_REUSEADDR
+-    {
+-        int j = 1;
+-        setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (void *)&j, sizeof(j));
+-    }
+-# endif
+-    if (bind(s, (struct sockaddr *)&server, sizeof(server)) == -1) {
+-# ifndef OPENSSL_SYS_WINDOWS
+-        perror("bind");
+-# endif
+-        goto err;
+-    }
+-    /* Make it 128 for linux */
+-    if (type == SOCK_STREAM && listen(s, 128) == -1)
+-        goto err;
+-    *sock = s;
+-    ret = 1;
+- err:
+-    if ((ret == 0) && (s != -1)) {
+-        SHUTDOWN(s);
++        *sock = s;
++        return (1);
++
++ nextres:
++        if (s != INVALID_SOCKET)
++            close(s);
++        res = res->ai_next;
+     }
+-    return (ret);
+-}
++    if (res0)
++        freeaddrinfo(res0);
+ 
+-static int init_server(int *sock, int port, int type)
+-{
+-    return (init_server_long(sock, port, NULL, type));
++    if (s == INVALID_SOCKET) {
++        if (hints.ai_family == AF_INET6) {
++            hints.ai_family = AF_INET;
++            goto tryipv4;
++        }
++        perror("socket");
++        return (0);
++    }
++    perror(failed_call);
++    return (0);
+ }
+ 
++ 
+ static int do_accept(int acc_sock, int *sock)
+ {
+     int ret;
+@@ -422,29 +440,34 @@ static int do_accept(int acc_sock, int *
+     return 1;
+ }
+ 
+-int extract_host_port(char *str, char **host_ptr, unsigned char *ip,
+-                      short *port_ptr)
++int extract_host_port(char *str, char **host_ptr, char **port_ptr)
+ {
+-    char *h, *p;
++    char *h, *p, *x;
+ 
+-    h = str;
+-    p = strchr(str, ':');
++    x = h = str;
++    if (*h == '[') {
++        h++;
++        p = strchr(h, ']');
++        if (p == NULL) {
++            BIO_printf(bio_err, "no ending bracket for IPv6 address\n");
++            return (0);
++        }
++        *(p++) = '\0';
++        x = p;
++    }
++    p = strchr(x, ':');
+     if (p == NULL) {
+         BIO_printf(bio_err, "no port defined\n");
+         return (0);
+     }
+     *(p++) = '\0';
+ 
+-    if ((ip != NULL) && !host_ip(str, ip))
+-        goto err;
+     if (host_ptr != NULL)
+         *host_ptr = h;
++    if (port_ptr != NULL)
++        *port_ptr = p;
+ 
+-    if (!extract_port(p, port_ptr))
+-        goto err;
+     return (1);
+- err:
+-    return (0);
+ }
+ 
+ static int host_ip(char *str, unsigned char ip[4])
+@@ -540,7 +563,7 @@ static struct hostent *GetHostByName(cha
+         if (ret == NULL)
+             return (NULL);
+         /* else add to cache */
+-        if (strlen(name) < sizeof(ghbn_cache[0].name)) {
++        if (strlen(name) < sizeof ghbn_cache[0].name) {
+             strcpy(ghbn_cache[lowi].name, name);
+             memcpy((char *)&(ghbn_cache[lowi].ent), ret,
+                    sizeof(struct hostent));

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=System;Monitor;
+Encoding=UTF-8
+Terminal=true
+Exec=statgrab
+Type=Application
+StartupNotify=false
+Name=statgrab
+GenericName=System Statistics Grabber

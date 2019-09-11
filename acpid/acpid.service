@@ -1,0 +1,10 @@
+[Unit]
+Description=ACPI Event Daemon
+
+[Service]
+
+ExecStart=/usr/sbin/acpid -n -f
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+Description: Fix FTBFS due to missing #include
+Author: Juhani Numminen <juhaninumminen0@gmail.com>
+Bug: https://sourceforge.net/p/klatexformula/bugs/41/
+Bug-Debian: https://bugs.debian.org/907000
+Bug-Fedora: https://bugzilla.redhat.com/1604508
+Last-Update: 2018-08-24
+
+--- a/src/klftools/klfadvancedconfigeditor.cpp
++++ b/src/klftools/klfadvancedconfigeditor.cpp
+@@ -21,6 +21,7 @@
+  ***************************************************************************/
+ /* $Id: klfadvancedconfigeditor.cpp 866 2013-11-24 13:56:22Z phfaist $ */
+ 
++#include <QAction>
+ #include <QStandardItemModel>
+ #include <QStyledItemDelegate>
+ #include <QItemEditorFactory>
+

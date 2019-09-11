@@ -1,0 +1,96 @@
+PATCH-P0-FIX-SUSE: Tweak default configuration
+
+This patch adds log file locations and socket location as they should be in
+SuSE to the default configuration files.
+
+Maintainer: Michal Hrusecky <Michal.Hrusecky@opensuse.org>
+
+Index: support-files/my-huge.cnf.sh
+===================================================================
+--- support-files/my-huge.cnf.sh.orig
++++ support-files/my-huge.cnf.sh
+@@ -131,7 +131,15 @@ server-id	= 1
+ #innodb_flush_log_at_trx_commit = 1
+ #innodb_lock_wait_timeout = 50
+ 
++# The safe_mysqld script
++[safe_mysqld]
++log-error=/var/log/mysql/mysqld.log
++socket		= @MYSQL_UNIX_ADDR@
++
++!includedir /etc/mysql
++
+ [mysqldump]
++socket		= @MYSQL_UNIX_ADDR@
+ quick
+ max_allowed_packet = 16M
+ 
+Index: support-files/my-large.cnf.sh
+===================================================================
+--- support-files/my-large.cnf.sh.orig
++++ support-files/my-large.cnf.sh
+@@ -131,7 +131,15 @@ server-id	= 1
+ #innodb_flush_log_at_trx_commit = 1
+ #innodb_lock_wait_timeout = 50
+ 
++# The safe_mysqld script
++[safe_mysqld]
++log-error=/var/log/mysql/mysqld.log
++socket		= @MYSQL_UNIX_ADDR@
++
++!includedir /etc/mysql
++
+ [mysqldump]
++socket		= @MYSQL_UNIX_ADDR@
+ quick
+ max_allowed_packet = 16M
+ 
+Index: support-files/my-medium.cnf.sh
+===================================================================
+--- support-files/my-medium.cnf.sh.orig
++++ support-files/my-medium.cnf.sh
+@@ -26,6 +26,8 @@ socket		= @MYSQL_UNIX_ADDR@
+ [mysqld]
+ port		= @MYSQL_TCP_PORT@
+ socket		= @MYSQL_UNIX_ADDR@
++# Change following line if you want to store your database elsewhere
++datadir	= /var/lib/mysql
+ skip-external-locking
+ key_buffer_size = 16M
+ max_allowed_packet = 1M
+@@ -129,7 +131,15 @@ server-id	= 1
+ #innodb_flush_log_at_trx_commit = 1
+ #innodb_lock_wait_timeout = 50
+ 
++# The safe_mysqld script
++[safe_mysqld]
++log-error	= /var/log/mysql/mysqld.log
++socket		= @MYSQL_UNIX_ADDR@
++
++!includedir /etc/mysql
++
+ [mysqldump]
++socket		= @MYSQL_UNIX_ADDR@
+ quick
+ max_allowed_packet = 16M
+ 
+Index: support-files/my-small.cnf.sh
+===================================================================
+--- support-files/my-small.cnf.sh.orig
++++ support-files/my-small.cnf.sh
+@@ -65,7 +65,15 @@ server-id	= 1
+ #innodb_flush_log_at_trx_commit = 1
+ #innodb_lock_wait_timeout = 50
+ 
++# The safe_mysqld script
++[safe_mysqld]
++log-error	= /var/log/mysql/mysqld.log
++socket		= @MYSQL_UNIX_ADDR@
++
++!includedir /etc/mysql
++
+ [mysqldump]
++socket		= @MYSQL_UNIX_ADDR@
+ quick
+ max_allowed_packet = 16M
+ 

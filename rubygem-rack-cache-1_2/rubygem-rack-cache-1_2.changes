@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Wed Oct 22 01:08:05 CEST 2014 - ro@suse.de
+
+- regenerate with new gem2rpm 
+
+-------------------------------------------------------------------
+Tue Jul 31 13:27:23 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Fri Jun 29 11:45:06 UTC 2012 - coolo@suse.com
+
+- do not require a package name but a provides
+
+-------------------------------------------------------------------
+Tue Apr  3 09:50:40 UTC 2012 - coolo@suse.com
+
+- split off 1.2
+  * Fix a cookie leak vulnerability effecting large numbers of Rails 3.x installs:
+    https://github.com/rtomayko/rack-cache/pull/52
+  * Never 304 on PUT or POST requests.
+  * Misc bundler and test tooling fixes.
+
+-------------------------------------------------------------------
+Fri Mar 23 10:54:24 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Thu Oct 13 08:07:11 UTC 2011 - fcastelli@suse.com
+
+- Create initial package, version 1.1 (bnc#727772)
+

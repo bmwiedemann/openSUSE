@@ -1,0 +1,3 @@
+addFilter(".*suse-filelist-forbidden.*/usr/src/dicts/rus-ispell/old/README.orig")
+# see the comment in the spec file
+addFilter("no-binary")

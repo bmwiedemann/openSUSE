@@ -1,0 +1,104 @@
+From 09c9bd860de66ff7a09b29de3e13f8cb1ca17924 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:41 +0200
+Subject: [PATCH 14/43] tools/kvm_stat: add new interactive command 'o'
+
+Add new interactive command 'o' to toggle sorting by 'CurAvg/s' (default)
+and 'Total' columns.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 6667ae8f395099257afca0963838d2dc50a18da7)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat     | 17 ++++++++++++++++-
+ tools/kvm/kvm_stat/kvm_stat.txt |  2 ++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 8595906c3c60..0f74a0e1307e 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -851,6 +851,7 @@ DELAY_DEFAULT = 3.0
+ MAX_GUEST_NAME_LEN = 48
+ MAX_REGEX_LEN = 44
+ DEFAULT_REGEX = r'^[^\(]*$'
++SORT_DEFAULT = 0
+ 
+ 
+ class Tui(object):
+@@ -860,6 +861,7 @@ class Tui(object):
+         self.screen = None
+         self._delay_initial = 0.25
+         self._delay_regular = DELAY_DEFAULT
++        self._sorting = SORT_DEFAULT
+ 
+     def __enter__(self):
+         """Initialises curses for later use.  Based on curses.wrapper
+@@ -997,14 +999,23 @@ class Tui(object):
+         self.screen.clrtobot()
+         stats = self.stats.get()
+ 
+-        def sortkey(x):
++        def sortCurAvg(x):
++            # sort by current events if available
+             if stats[x][1]:
+                 return (-stats[x][1], -stats[x][0])
+             else:
+                 return (0, -stats[x][0])
++
++        def sortTotal(x):
++            # sort by totals
++            return (0, -stats[x][0])
+         total = 0.
+         for val in stats.values():
+             total += val[0]
++        if self._sorting == SORT_DEFAULT:
++            sortkey = sortCurAvg
++        else:
++            sortkey = sortTotal
+         for key in sorted(stats.keys(), key=sortkey):
+ 
+             if row >= self.screen.getmaxyx()[0]:
+@@ -1028,6 +1039,7 @@ class Tui(object):
+                '   f     filter by regular expression',
+                '   g     filter by guest name',
+                '   h     display interactive commands reference',
++               '   o     toggle sorting order (Total vs CurAvg/s)',
+                '   p     filter by PID',
+                '   q     quit',
+                '   r     reset stats',
+@@ -1218,6 +1230,8 @@ class Tui(object):
+                     sleeptime = self._delay_initial
+                 if char == 'h':
+                     self.show_help_interactive()
++                if char == 'o':
++                    self._sorting = not self._sorting
+                 if char == 'p':
+                     curses.curs_set(1)
+                     self.show_vm_selection_by_pid()
+@@ -1305,6 +1319,7 @@ Interactive Commands:
+    f     filter by regular expression
+    g     filter by guest name
+    h     display interactive commands reference
++   o     toggle sorting order (Total vs CurAvg/s)
+    p     filter by PID
+    q     quit
+    r     reset stats
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index cc019b09e0f5..e24ac464d341 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -37,6 +37,8 @@ INTERACTIVE COMMANDS
+ 
+ *h*::	display interactive commands reference
+ 
++*o*::   toggle sorting order (Total vs CurAvg/s)
++
+ *p*::	filter by PID
+ 
+ *q*::	quit
+-- 
+2.12.3
+

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <processors>8</processors>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <disk>
+      <size unit="G">60</size>
+    </disk>
+  </hardware>
+<!-- i586, armv6 and armv7 tend to run out of memory during builds -->
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>ppc</arch>
+    </conditions>
+    <hardware>
+      <processors>2</processors>
+      <physicalmemory>
+        <size unit="G">4</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">15</size>
+      </disk>
+    </hardware>
+  </overwrite>
+<!-- x86_64 to use physical memory to speed builds up -->
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">50</size>
+      </disk>
+    </hardware>
+  </overwrite>
+<!-- aarch64 is a time consuming build, try to use RAM -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">10</size>
+      </disk>
+    </hardware>
+  </overwrite>
+<!-- 25GB of disk as 60GB is unavailable (and unrequired) on s390x and ppc64 -->
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">25</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>

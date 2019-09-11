@@ -1,0 +1,46 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-testsuite-readline63-sigint.patch
+
+;; [testsuite] Fix false selftest.exp FAIL from system readline-6.3+ (Patrick Palka).
+;;=fedoratest
+
+gdb/users/ppalka/readline-7.0-update
+commit 379059215e823555a37a8dc7e02cef8fd86566e4
+https://sourceware.org/ml/gdb-patches/2015-07/msg00422.html
+Message-Id: <1436927724-4059-1-git-send-email-patrick@parcs.ath.cx>
+https://bugzilla.redhat.com/show_bug.cgi?id=1301175
+
+diff --git a/gdb/testsuite/gdb.gdb/selftest.exp b/gdb/testsuite/gdb.gdb/selftest.exp
+--- a/gdb/testsuite/gdb.gdb/selftest.exp
++++ b/gdb/testsuite/gdb.gdb/selftest.exp
+@@ -113,9 +113,25 @@ proc test_with_self { } {
+     }
+     
+     set description "send SIGINT signal to child process"
+-    gdb_test "signal SIGINT" \
+-	"Continuing with signal SIGINT.*" \
+-	"$description"
++    gdb_test_multiple "signal SIGINT" "$description" {
++	-re "^signal SIGINT\r\nContinuing with signal SIGINT.\r\nQuit\r\n" {
++	    pass "$description"
++	}
++    }
++
++    set description "send ^C to child process again"
++    send_gdb "\003"
++    gdb_expect {
++	-re "(Thread .*|Program) received signal SIGINT.*$gdb_prompt $" {
++	    pass "$description"
++	}
++	-re ".*$gdb_prompt $" {
++	    fail "$description"
++	}
++	timeout {
++	    fail "$description (timeout)"
++	}
++    }
+ 
+     # Switch back to the GDB thread if Guile support is linked in.
+     # "signal SIGINT" could also switch the current thread.

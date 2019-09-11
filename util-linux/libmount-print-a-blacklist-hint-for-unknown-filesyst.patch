@@ -1,0 +1,78 @@
+From 199ae08b4df09ec4ce9d82584664e61bcb7ab91a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Feb 2019 11:36:42 +0100
+Subject: [PATCH 1/2] libmount: print a blacklist hint for "unknown filesystem
+ type"
+
+SUSE blacklists kernel modules for some old, poorly maintained
+file systems by default for security reasons. Provide a hopefully
+helpful message to users if mounting a possibly blacklisted file
+system fails.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ libmount/src/context_mount.c | 41 ++++++++++++++++++++++++++++++++----
+ 1 file changed, 37 insertions(+), 4 deletions(-)
+
+diff --git a/libmount/src/context_mount.c b/libmount/src/context_mount.c
+index f914c9b..a48483f 100644
+--- a/libmount/src/context_mount.c
++++ b/libmount/src/context_mount.c
+@@ -1423,6 +1423,32 @@ done:
+ 	return rc;
+ }
+ 
++/*
++ * SUSE blacklists kernel modules for some old, poorly maintained
++ * file systems by default for security reasons.
++ * A set of blacklist files is maintained under /etc/modprobe.d,
++ * in the suse-module-tools package.
++ * Blacklisted file system modules will cause mount(2) to fail
++ * with -ENODEV.
++ * If this happens for one of the blacklisted file systems, provide
++ * a hint to the user where to look.
++ */
++static int is_maybe_blacklisted(const char *fstype)
++{
++	static const char *const fs_blacklist[] = {
++		"adfs", "affs", "bfs", "befs", "cramfs", "efs", "erofs",
++		"exofs", "freevxfs", "f2fs", "hfs", "hpfs",
++		"jfs", "minix", "nilfs2", "ntfs", "omfs", "qnx4", "qnx6",
++		"sysv", "ufs"
++	};
++	size_t i;
++
++	for (i = 0; i < sizeof(fs_blacklist)/sizeof(*fs_blacklist); i++)
++		if (!strcmp(fs_blacklist[i], fstype))
++			return 1;
++	return 0;
++}
++
+ int mnt_context_get_mount_excode(
+ 			struct libmnt_context *cxt,
+ 			int rc,
+@@ -1670,10 +1696,17 @@ int mnt_context_get_mount_excode(
+ 	case ENODEV:
+ 		if (!buf)
+ 			break;
+-		if (mnt_context_get_fstype(cxt))
+-			snprintf(buf, bufsz, _("unknown filesystem type '%s'"),
+-					mnt_context_get_fstype(cxt));
+-		else
++		if (mnt_context_get_fstype(cxt)) {
++			size_t n;
++
++			n = snprintf(buf, bufsz,
++				     _("unknown filesystem type '%s'"),
++				     mnt_context_get_fstype(cxt));
++			if (n < bufsz &&
++			    is_maybe_blacklisted(mnt_context_get_fstype(cxt)))
++				snprintf(buf + n, bufsz - n,
++					 " (hint: possibly blacklisted, see mount(8))");
++		} else
+ 			snprintf(buf, bufsz, _("unknown filesystem type"));
+ 		break;
+ 
+-- 
+2.19.2
+

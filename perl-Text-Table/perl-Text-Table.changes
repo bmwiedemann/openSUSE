@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Sat Aug  5 06:26:46 UTC 2017 - coolo@suse.com
+
+- updated to 1.133
+   see /usr/share/doc/packages/perl-Text-Table/Changes
+
+  1.133   2017-08-04
+      - Correct the URLs to the GitHub repositories.
+          - https://rt.cpan.org/Ticket/Display.html?id=122708
+          - Thanks to John Marino for the bug report.
+      - Fix https://rt.cpan.org/Ticket/Display.html?id=118853 (doc typo)
+          - Thanks to Rihards for the report.
+      - Fix https://rt.cpan.org/Ticket/Display.html?id=118851 (grammar error)
+          - Thanks to Rihards for the report.
+
+-------------------------------------------------------------------
+Tue Nov 29 07:22:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.132
+   see /usr/share/doc/packages/perl-Text-Table/Changes
+
+  1.132   2016-11-28
+      - Fix a syntax error in the POD.
+          - https://rt.cpan.org/Ticket/Display.html?id=118852
+          - Thanks to Rihards for the report.
+      - Convert to Dist-Zilla and Pod::Weaver
+          - See https://rt.cpan.org/Ticket/Display.html?id=118923
+          - Thanks to coolo from OpenSUSE.
+          - In the process, change the license in the META files to ISC.
+
+-------------------------------------------------------------------
+Wed Nov 23 14:48:32 UTC 2016 - coolo@suse.com
+
+- fix the license to ISC
+
+-------------------------------------------------------------------
+Sun Jul 31 05:58:41 UTC 2016 - coolo@suse.com
+
+- updated to 1.131
+   see /usr/share/doc/packages/perl-Text-Table/Changes
+
+  1.131   2016-07-29
+      - Merge pull-request from Zac Bentley to speed up boolean tests.
+          - https://github.com/shlomif/Text-Table/pull/4
+          - Closes https://github.com/shlomif/Text-Table/issues/3
+
+-------------------------------------------------------------------
+Mon Feb  9 06:13:02 UTC 2015 - coolo@suse.com
+
+- updated to 1.130
+    - Minimum perl version in 'requires' this time in META.yml (CPANTS).
+    - Change the META.yml license indicator to 'mit' - it is the ISC
+     license, which is MIT in effect. (CPANTS).
+
+-------------------------------------------------------------------
+Tue Mar  4 15:32:53 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.129:
+  * Add minimum perl version to META.yml (CPANTS).
+  * Typo fixes thanks to David Steinbrunner.
+  * Add t/style-trailing-space.t.
+  * Remove trailing space.
+  * Fix handling of regular expression aligners.
+  * Add examples/Text-Table-UTF8-example.pl
+
+-------------------------------------------------------------------
+Tue Mar  4 14:33:57 UTC 2014 - tchvatal@suse.com
+
+- Format with spec-cleaner and add required header license.
+- Fix license string.
+
+-------------------------------------------------------------------
+Fri Sep 02 18:32:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.124:
+  * fix handling whitespace in column separators when the callback-based rule
+    is invoked
+
+-------------------------------------------------------------------
+Sat Jun 04 23:28:46 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.122:
+  * fix RT#68631 - passing hashrefs as separators
+  * many refactorings
+
+-------------------------------------------------------------------
+Thu May 26 19:44:03 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.121: no user-visible changes
+
+-------------------------------------------------------------------
+Tue May 17 08:11:03 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.120
+  * add the callback ("sub { ... }")-based ->rule() method to render each
+    section in a rule differently
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:48 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:21 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Aug 30 22:11:56 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.116)
+

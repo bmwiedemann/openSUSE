@@ -1,0 +1,431 @@
+-------------------------------------------------------------------
+Fri Mar 15 12:32:27 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.32.0:
+  + Release GNOME Screenshot 3.32.0.
+
+-------------------------------------------------------------------
+Fri Mar 08 11:36:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0+47:
+  + Bump GTK+ requirement to 3.12.0
+  + Add <description> to pass git pre-receive hook
+  + Replace Bugzilla by Gitlab URL in DOAP file
+  + icon: app icon adjustments
+  + Add flatpak manifest to build from master
+  + dialog: call right function to get display
+  + build: Fix a copy-paste mistake
+  + screenshot-dialog: replace deprecated gdk_cursor_new
+  + area-selection: replace deprecated gdk_cursor_new
+  + Update icon name references to new name
+  + icon: update app icon
+  + build: post-release version bump to 3.31.0
+  + Clean up formatting. Remove extra whitespace, convert tabs to
+    spaces, fix indentation.
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
+Sat Sep 08 08:59:05 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Update URL in _service file.
+
+-------------------------------------------------------------------
+Fri Mar 30 19:57:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0+20180327.60e7720:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 22 21:33:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0+20180313.a35622c:
+  + Remove po/Makevars.
+  + Fix a grammar mistake in the man page.
+  + Drop build-api wrapper.
+  + Honor the mandir option.
+  + Updated translations.
+- Switch to git checkout via source services.
+- Drop update-desktop-files BuildRequires and no longer call
+  suse_update_desktop_file macro, not needed anymore.
+- Use autosetup macro.
+- Drop obsolete gnome-utils Conflicts, not needed anymore.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:21:43 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:29 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  2 20:26:05 UTC 2017 - luc14n0@linuxmail.org
+
+- Drop %glib2_gsettings_schema_* and %desktop_database_*
+  post/postun/requires macros: the functionality is covered by file
+  triggers now.
+- Drop libxml2-tools BuildRequires since it's not being used or
+  needed anymore.
+
+-------------------------------------------------------------------
+Wed Nov  1 09:50:22 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + bgo#787214: App menu placed below header bar when Application
+    Menu on the top panel of GNOME Shell is disabled.
+  + bgo#765941: Add backbutton after screenshot.
+  + bgo#783442: Cannot build gnome-screenshot with meson on FreeBSD
+    because of -D_POSIX_C_SOURCE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 29 17:02:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.0:
+  + Port to the Meson build system.
+  + Drop intltool.
+  + Use Unicode in translatable strings (bgo#774204).
+  + Show the correct application name (bgo#772006).
+  + Improve translator comments (bgo#782818).
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add libxml2-tools and pkgconfig(appstream-glib) BuildRequires:
+  New dependencies.
+- Drop intltool BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:57:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Avoid resizing preview too much (bgo#768087).
+  + Updated translations.
+- Drop gnome-screenshot-avoid-resizing-preview.patch: Fixed
+  upstream.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Mon Sep 19 16:36:52 UTC 2016 - zaitor@opensuse.org
+
+- Add gnome-screenshot-avoid-resizing-preview.patch:
+  screenshot-dialog: Avoid resizing the preview too much, save CPU
+  cycles (bgo#768087).
+
+-------------------------------------------------------------------
+Wed Jun 22 01:44:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix translations, broken by 3.20.0.
+
+-------------------------------------------------------------------
+Sun Jun 19 12:57:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Build system improvements.
+  + Appdata updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 12 14:23:14 UTC 2016 - fcrozat@suse.com
+
+- Update BuildRequires to pkgconfig(gtk+-3.0) >= 3.12 (bgo#761946).
+
+-------------------------------------------------------------------
+Wed Sep 23 06:56:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Fix border effects combo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 22 10:53:35 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata for openSUSE:42.
+
+-------------------------------------------------------------------
+Wed May 13 09:45:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix translation not getting applied.
+  + Fix schema translations.
+  + Updated translations.
+- Drop gnome-screenshot-fix-translations.patch: Fixed upstream.
+- Due to above fix, drop libtool BuildRequires and call to
+  autoreconf.
+
+-------------------------------------------------------------------
+Fri May  1 23:54:21 UTC 2015 - zaitor@opensuse.org
+
+- Add gnome-screenshot-fix-translations.patch: Fix translations,
+  patch from upstream git.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:18:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 21 10:53:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Make desktop actions work.
+  + Deprecation cleanup (bgo#742476).
+  + Improve filename generation (bgo#698740).
+  + Port area selection code to GNOME Shell (bgo#738972).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:23:16 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 20:06:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Fix launching from gnome-shell in interactive mode.
+  + Parse delay cmdline parameter correctly.
+  + Parse filename cmdline parameter correctly.
+  + Remove duplicate cmdline parsing.
+  + Add missing desktop file category.
+- Rebase gnome-screenshot-onlyshowin.patch.
+
+-------------------------------------------------------------------
+Thu Aug 21 19:01:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Don't use deprecated GTK+ API.
+  + Port commandline handling to GApplication.
+  + Make DBus activatable.
+  + Implement g_application_activate().
+  + Updated translations.
+- Rebase gnome-screenshot-onlyshowin.patch.
+
+-------------------------------------------------------------------
+Sun Jul 13 12:40:11 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-icon-theme BuildRequires and Requires: the icon theme
+  was merged and renamed to adwaita-icon-theme and it is GTKs
+  responsibility to ensure it is installed.
+
+-------------------------------------------------------------------
+Tue Mar 25 14:01:25 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 19:14:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Use GtkHeaderBar.
+  + Standardize Help/About/Quit in app menu.
+  + Support HiDpi scale factor when rendering preview.
+
+-------------------------------------------------------------------
+Tue Nov 19 18:24:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Add a --version option.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 14:10:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Initialize file type in interactive mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 16:37:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Add a GSetting option to specify default format.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 20 08:28:29 UTC 2013 - dimstar@opensuse.org
+
+- Do not mark gnome-screenshot.convert as directory; it is a
+  regular file. RPM 4.11 is stricter in verifying that things
+  actually make sense.
+
+-------------------------------------------------------------------
+Wed Jul 10 18:04:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Fix app menu and WM close button not showing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 18 17:18:52 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.3:
+  + Determine image format from extension.
+  + Update the manual page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 14 07:13:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Determine image format from extension (bgo#521751).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 22:03:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix keyboard focus in interactive dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  4 21:43:51 UTC 2013 - dimstar@opensuse.org
+
+- Drop the manually added applets-screenshooter icons: they are
+  part of gnome-icon-themes (and fix a file-conflict with
+  xfce4-screenshooter).
+- Add gnome-icon-theme BuildRequires and Requires: BuildRequire is
+  there to satisfy the brp checker verifying the validity of the
+  .desktop files, which references an icon from this set. Requires
+  is needed in order to have the icons installed finally.
+- Remove icon_chache_post/postun macros from post/postun scripts.
+- Add gnome-screenshot-onlyshowin.patch: Add OnlyShowIn=GNOME to
+  gnome-screenshot.desktop, in order to allow the brp check to
+  validate the fact that the icon lives in the gnome icon theme.
+
+-------------------------------------------------------------------
+Mon Mar 25 15:29:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 20:47:25 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:51:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Show interactive dialog again when the area selection is
+    cancelled.
+  + Don't crash when the selected area rectangle is 0x0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 14 16:21:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Use the new Shell DBus interface name.
+  + Add keywords to the desktop file.
+  + Don't call g_type_init(), depends on GLib 2.35.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 07:47:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:17:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 21:11:21 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 15:50:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 11:09:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Fix conflict between two label's mnemonics
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 18:42:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Add a way for ScreenshotFilenameBuilder to be used standalone
+  + Don't use g_strconcat() to build URIs
+  + Add API to change the "from..." text in
+    ScreenshotFilenameBuild.
+
+-------------------------------------------------------------------
+Thu Jun  7 20:17:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Add an application menu for interactive mode
+  + Add a --file commandline option
+  + Add an --include-pointer commandline option
+  + Don't warn if fallback X11 code path is hit
+  + Warn if --interactive is combined with --clipboard
+  + Rename "whole desktop" to "whole screen"
+  + Update quicklists for new fd.o spec
+  + Use GResource for UI files
+
+-------------------------------------------------------------------
+Tue Apr 17 06:30:51 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Fall back to $HOME when XDG_PICTURES_DIR fails.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:29:57 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 21:49:36 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:48:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + Use the new Shell API to include mouse pointer
+  + Make sure not to override the delay setting for non-interactive
+    mode
+
+-------------------------------------------------------------------
+Tue Feb  7 09:51:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Make non-interactive mode headless
+  + Update to the new shell Screenshot API
+  + Port to GApplication
+
+-------------------------------------------------------------------
+Tue Nov  1 20:25:47 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 3.3.1:
+  + First release after the split of gnome-utils.
+

@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Fri Feb 22 07:33:05 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in .spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Fri Jan  5 00:31:20 UTC 2018 - jengelh@inai.de
+
+- Drop /pkg/ subpart from includedir
+
+-------------------------------------------------------------------
+Wed Jan  3 14:07:18 UTC 2018 - tchvatal@suse.com
+
+- Remove defattr that is not really needed
+- Add condition around python bindings, they are really based on
+  swig code that would need to be rewritten to support python3
+
+-------------------------------------------------------------------
+Wed Nov 22 16:52:51 CET 2017 - ndas@suse.de
+
+- allow send_interface in dbus conf file for wicked.
+  [+ 0001-allow-send_interface-dbus.patch]
+ 
+-------------------------------------------------------------------
+Wed Nov 22 11:17:03 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.27
+  * teamd: escape some sensitive characters in ifname with
+    double quotation marks
+  * libteam: resynchronize ifinfo after lost RTNLGRP_LINK
+    notifications
+  * teamd: check port link_up when a port is added with
+    loadbalance runner
+
+-------------------------------------------------------------------
+Wed Nov 22 10:54:50 UTC 2017 - jengelh@inai.de
+
+- Do not suppress errors from useradd
+
+-------------------------------------------------------------------
+Wed Nov 22 11:26:44 CET 2017 - ndas@suse.de
+
+- sync with SLES changes(bsc#1055708)
+* Add check_if_psr_ops_were_initialized.patch:
+** Fix teamd segfault when link_watch initialization callbacks fail
+  (e.g. lw_psr_port_added() in case of activebackup runner) due to
+  an attempt to change hwaddr on an enslaved, link up port device.
+  Note: enslavement triggers initialization callbacks.
+* Add ignore_ebusy_for_team_hwaddr_set.patch:
+** Make PortAdd and PortRemove dbus methods work for all runners.
+  Ignore attempts to change hwaddr of an already enslaved devices.
+  (fate#318389,fate#317728,fate#316923)
+- Add start_teamd_from_usr_sbin.patch:
+* Modify service file to start teamd instance from /usr/sbin.
+
+-------------------------------------------------------------------
+Mon Nov 21 00:59:27 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.26
+  * dbus: don't do <deny send_interface="..." /> in template
+    dbus s. f.
+  * teamd: do correct l3/l4 tx hashing with vlans
+  * teamd: lacp: use original hwaddr as source address in lacpdus
+  * libteam: fix TEAM_OPTION_TYPE_BOOL type for big-endian
+    architectures
+  * teamd: handle vlan 0 packets
+  * misc: fix an out-of-bound write with zero-length
+    hardware address
+  * teamd: fix the issue that network blocks when issuing
+    `systemctl stop teamd`
+  * teamd: lacp: Do not unselect port if it changes state
+    to "expired"
+
+-------------------------------------------------------------------
+Thu Feb 11 11:51:38 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.22
+* teamd: Fix member port state change on master team admin UP.
+* teamd: add CAP_NET_RAW capability for LACP packet sockets
+* teamd: lacp: update actor state before sending LACP frames
+
+-------------------------------------------------------------------
+Wed Sep  9 16:01:10 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.18
+* teamd: lacp: change actor system value on team MAC change
+* Fix sending duplicate LACP frames at the start of establishing
+  a logical channel.
+* Fix teamd memory corruption issues seen by missing port unlink
+  in ifinfo_destroy()
+* libteam: Add check to disallow creating device names longer than
+  15 characters.
+
+-------------------------------------------------------------------
+Fri Jul 31 11:30:18 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.17
+* teamd: lw: nsna_ping: fix NA RX and ARP RX handling
+* libteam: ifinfo: fix rtnl dellink handling
+
+-------------------------------------------------------------------
+Sun Mar 29 12:36:28 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.16
+* teamdctl: show port link down count in state output
+* teamd: lw: count how many times has been the port down
+
+-------------------------------------------------------------------
+Thu Jan  8 23:03:55 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.15
+* Topology-aware failover with TIPC
+
+-------------------------------------------------------------------
+Mon Jul 21 11:43:26 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.11
+* add support for TIPC link watcher
+* teamd quits when the device is removed
+* teamd: add support for checking multiple ports IFLA_PHYS_PORT_ID
+
+-------------------------------------------------------------------
+Thu Aug  8 14:02:30 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.5
+* lacp: introduce multiple aggregator selection policies
+* lacp: allow to have multiple functions to find out which port
+  is better
+* lacp: introduce agg select policy based on per-port config
+  options
+* teamd: introduce simple SR-IOV support
+* lacp: do not set state disable if driver does not report speed
+  and duplex
+* teamd: add support for multicast group rejoin sending
+* utils: add bond2team conversion tool
+
+-------------------------------------------------------------------
+Thu Feb 28 23:14:35 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0 -
+  (no changes summary provided; this is the first tarball release)
+
+-------------------------------------------------------------------
+Wed Nov 14 23:47:08 UTC 2012 - jengelh@inai.de
+
+- Update to git snapshot 0+git368 [a62cd9309607c6d72d46ef68403a730a6367b827] -
+  no changes summary provided by upstream
+- Install systemd service file for teamd
+- Build and install python bindings
+
+-------------------------------------------------------------------
+Sat May 12 00:06:17 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

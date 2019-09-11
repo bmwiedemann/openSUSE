@@ -1,0 +1,5 @@
+#
+# Interface versions exposed by GIMP:
+#
+%gimp_api_version @GIMP_APIVER@
+%gimp_abi_version @GIMP_ABIVER@

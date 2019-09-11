@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/unittest-cpp/unittest-cpp.git</param>
+    <param name="scm">git</param>
+    <param name="version">2.0.0</param>
+    <param name="revision">v2.0.0</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

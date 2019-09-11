@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Thu Dec 15 13:52:07 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Dec  7 14:01:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Wed Dec  7 14:01:40 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Thu Oct 13 12:58:35 UTC 2010 - tabraham@novell.com
+
+- update to version 1.1.1 from 1.0.3
+  * Documented the USE_SELINUX and USE_APPEND_FL compile-time 
+    settings
+  * Updated the authorship, copyright, and licensing statements
+    to use the cut-down BSD license only (no public domain with
+     a license fallback anymore, which would be too cumbersome
+     with significant contributions by two authors
+  * Use ext2fs/ext2_fs.h instead of linux/ext2_fs.h to avoid
+    potential build problems with fresh kernel headers
+  * Clear append-only flag from user directory iff the directory
+    was actually created
+  * Replaced unsafe alloca(3) with malloc(3)
+  * Imported SELinux support from Sisyphus
+  * In SELinux support, save and restore file creation context
+  * No longer set the append-only flag on /tmp/.private
+
+-------------------------------------------------------------------
+Mon Feb  1 12:18:35 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jun 24 19:32:04 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 11:14:37 CEST 2008 - mc@suse.de
+
+- update to version 1.0.3
+  - Restricted list of global symbols exported by the PAM module
+    to standard set of six pam_sm_* functions.
+  - Changed Makefile to pass list of libraries to linker after regular
+    object files, to fix build with -Wl,--as-needed.
+  - Corrected specfile to make it build on x86_64.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:40:55 CET 2007 - ssommer@suse.de
+
+- fix build with newer kernel headers
+
+-------------------------------------------------------------------
+Wed Aug  9 17:06:53 CEST 2006 - mc@suse.de
+
+- version 1.0.2 branched from pam-modules 
+

@@ -1,0 +1,565 @@
+-------------------------------------------------------------------
+Mon Jan 28 14:25:21 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.4.5
+  * Debug logging refactored for more efficiency when disabled and for more 
+    functionality when in use. Specifically, the global LOG object can easily 
+    be used from any function/method, not just from codec main loop as it used 
+    to be.
+  * More debug logging added to BER family of codecs to ease encoding problems 
+    troubleshooting.
+  * Copyright notice extended to the year 2019
+  * Fixed defaulted constructed SEQUENCE component initialization.
+
+
+-------------------------------------------------------------------
+Fri Dec  7 11:40:47 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Aug  7 14:42:43 UTC 2018 - toddrme2178@gmail.com
+
+- update to 0.4.4
+  * Fixed native encoder type map to include all ASN.1 types
+    rather than just ambiguous ones
+  * Fixed crash in `.prettyPrint` of `Sequence` and `Set` occurring
+    at OPTIONAL components
+
+-------------------------------------------------------------------
+Sat May 26 23:00:34 UTC 2018 - michael@stroeder.com
+
+- update to version 0.4.3:
+
+  * Copyright notice extended to the year 2018
+  * Fixed GeneralizedTime.asDateTime to perform
+    milliseconds conversion correctly
+
+-------------------------------------------------------------------
+Sun Nov 26 21:22:26 UTC 2017 - arun@gmx.de
+
+- update to version 0.4.2:
+  * Fixed explicit tag splitting in chunked encoding mode at
+    OctetString and BitString encoders
+
+- changes from version 0.4.1:
+  * ANY DEFINED BY clause support implemented
+  * Encoders refactored to take either a value (as ASN.1 object) or a
+    Python value plus ASN.1 schema
+  * BitString decoder optimised for better performance when running on
+    constructed encoding
+  * Constructed types' .getComponentBy*() methods accept the `default`
+    parameter to return instead if schema object is to be returned
+  * Constructed types' .getComponentBy*() methods accept the
+    `instantiate` parameter to disable automatic inner component
+    instantiation
+  * The ASN.1 types' `__repr__` implementation reworked for better
+    readability at the cost of not being `eval`-compliant
+  * Most ASN.1 types' `__str__` magic methods (except for OctetString
+    and character types) reworked to call `.prettyPrint()` rather than
+    `.prettyPrint` calling `__str__` as it was before. The intention
+    is to eventually deprecate `.prettyPrint()` in favor of `str()`.
+    The other related change is that `str()` of enumerations and
+    boolean types will return string label instead of number.
+  * Fixed Choice.clear() to fully reset internal state of the object
+  * Sphinx documentation rearranged, simplified and reworded
+  * The `isValue` singleton is now the only way to indicate ASN.1
+    schema as opposed to ASN.1 schema instance. The legacy `None`
+    initializer support has been removed.
+  * Changed `Null` object initialization behaviour: previous default
+    value (`''`) is not set anymore. Thus `Null()` call produces a
+    ASN.1 schema object, while `Null('')` - value object.
+  * Migrated all docs and references from SourceForge
+  * Imports PEP8'ed
+  * Fixed ASN.1 encoder not to omit empty substrate produced for inner
+    component if the inner component belongs to the simple class (as
+    opposed to constructed class)
+  * Fixed CER/DER encoders to respect tagged CHOICE when ordering SET
+    components
+  * Fixed ASN.1 types not to interfere with the Pickle protocol
+  * Fixed Sequence/SequenceOf types decoding heuristics in schema-less
+    decoding mode
+
+-------------------------------------------------------------------
+Thu Oct 12 07:46:21 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.7
+  * Fixed ASN.1 time types pickling/deepcopy'ing
+
+-------------------------------------------------------------------
+Thu Sep 21 11:08:33 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.6
+
+  * End-of-octets encoding optimized at ASN.1 encoders
+  * The __getitem__/__setitem__ behavior of Set/Sequence and
+    SetOf/SequenceOf objects aligned with the canonical Mapping
+    and Sequence protocols in part
+  * Fixed crash in ASN.1 encoder when encoding an explicitly tagged
+    component of a Sequence
+
+-------------------------------------------------------------------
+Tue Sep 19 07:32:21 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.5
+  - Codecs signatures unified and pass the options kwargs through the
+    call chain
+  - Explicit tag encoding optimized to avoid unnecessary copying
+  - End-of-octets sentinel encoding optimized
+  - Refactored ASN.1 codecs properties to silently enforce proper
+    length and chunk size encoding modes
+  - Fixed DER encoder to always produce primitive encoding
+  - Fixed crash at SequenceOf native decoder
+  - Fixed Real.prettyPrint() to fail gracefully on overflow
+  - Fixed a couple of crashes when debug mode is enabled
+
+-------------------------------------------------------------------
+Thu Sep  7 09:24:51 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.4
+
+Revision 0.3.4, released 07-09-2017
+-----------------------------------
+
+- Fixed Native encoder to handle SEQUENCE/SET objects without
+  the componentType property
+- Added missing component-less SEQUENCE/SET objects dict duck-typing support
+- Fixed unnecessary duplicate tags detection at NamesType.tagMap
+- Fixed crash at SEQUENCE and SEQUENCE OF CER encoder when running
+  in schemaless mode
+- Fixed Character types instantiation from OctetString type -- double
+  unicode decoding may have scrambled the data
+
+Revision 0.3.3, released 27-08-2017
+-----------------------------------
+
+- Improved ASN.1 types instantiation performance
+- Improved BER/CER/DER decoder performance by not unconditionally casting
+  substrate into str/bytes.
+- Fixed exponential index size growth bug when building ambiguous
+  NamedTypes tree
+- Fixed constructed types decoding failure at BER codec if running
+  in schema-less mode
+- Fixed crash on prettyPrint'ing a SEQUENCE with no defined components
+- Fixed SetOf ordering at CER/DER encoder
+- Fixed crash on conditional binascii module import
+- Fix to TagSet hash value build
+
+-------------------------------------------------------------------
+Tue Aug 15 17:32:13 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.2
+
+Revision 0.3.2, released 04-08-2017
+-----------------------------------
+
+- Fixed SequenceOf/SetOf types initialization syntax to remain
+  backward compatible with pyasn1 0.2.*
+- Rectified thread safety issues by moving lazy, run-time computation
+  into object initializer.
+- Fixed .isValue property to return True for empty SetOf/SequenceOf
+  objects
+- Fixed GeneralizedTime/UTCTime CER/DER codecs to actually get invoked
+- Fixed DER/CER encoders handling optional SEQUENCE/SET fields containing
+  nested SEQUENCE/SET with optional fields.
+- Fixed crash in SequenceOf/SetOf pretty printing and decoding (in some
+  cases)
+- Fixed documentation markup issues.
+
+-------------------------------------------------------------------
+Sat Jul 29 21:01:20 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.3.1
+- do not ship doc/source/
+
+Revision 0.3.1, released 26-07-2017
+-----------------------------------
+
+- ASN.1 types __init__(), .clone() and .subtype() signatures
+  refactored into keyword arguments to simplify their signatures.
+- ASN.1 types initialization refactored to minimize the use of
+  relatively expensive isNoValue() call
+- Lazily pre-populate list of values of Sequence/Set/Choice types
+- NamedTypes comparison made more efficient
+- More efficient constraints computation and code clean up
+- The __getitem__() implementation of some ASN.1 types & tag object
+  refactored for better performance
+- BER/CER/DER value encoders refactored to produce either tuple of
+  bytes or octet-stream depending on what is more optimal
+- Reduced the frequency of expensive isinstance() calls
+- Tag-related classes optimized, refactored into properties and
+  documented.
+- The NamedValues implementation refactored to mimic Python dict, its use
+  in ASN.1 types refactored into properties and better documented.
+  WARNING: this change introduces a deviation from original API.
+- NamedType family of classes overhauled, optimized and documented.
+- The `componentType` attribute of constructed ASN.1 types turned
+  read-only on instances.
+- Sequence/Set DER/CER/DER decoder optimized to skip the case of
+  reordered components handling when not necessary.
+- Tags and constraints-related getter methods refactored into read-only
+  instance attributes.
+- The .hasValue() method refactored into .isValue property. All ASN.1
+  objects now support them, not just scalars.
+- The Real.{isInfinity, isPlusInfinity, isMinusInfinity} methods
+  refactored into properties and renamed into IsInf, IsPlusInf and isMinusInf
+- The end-of-octets type refactored to ensure it is a singleton. Codecs
+  changed to rely on that for better performance.
+- Codecs lookup made more efficient at BER/CER/DER decoder main loop by
+  assigning `typeId` to every ASN.1 type, not just ambiguous ones.
+- The .getComponent*() methods of constructed ASN.1 types changed
+  to lazily instantiate underlying type rather than return `None`.
+  This should simplify its API as initialization like `X[0][1] = 2` becomes
+  possible.
+  WARNING: this change introduces a deviation from the original API.
+- The .setComponent*() methods of SetOf/SequenceOf types changed not
+  to allow uninitialized "holes" inside the sequences of their components.
+  They now behave similarly to Python lists.
+  WARNING: this change introduces a deviation from the original API.
+- Default and optional components en/decoding of Constructed type
+  refactored towards better efficiency and more control.
+- OctetsString and Any decoder optimized to avoid creating ASN.1
+  objects for chunks of substrate. Instead they now join substrate
+  chunks together and create ASN.1 object from it just once.
+- The GeneralizedTime and UTCTime types now support to/from Python
+  datetime object conversion.
+- Unit tests added for the `compat` sub-package.
+- Fixed BitString named bits initialization bug.
+- Fixed non-functional tag cache (when running Python 2) at DER decoder.
+- Fixed chunked encoding restriction on DER encoder.
+- Fixed SET components ordering at DER encoder.
+- Fixed BIT STRING & OCTET STRING encoding to be always non-chunked (e.g.
+  primitive) at DER encoder
+- Fixed `compat.integer.from_bytes()` behaviour on empty input.
+
+-------------------------------------------------------------------
+Mon Jun 19 05:38:49 UTC 2017 - okurz@suse.com
+
+- Cleanup duplicates with fdupes
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Thu Mar 16 13:42:52 UTC 2017 - tbechtold@suse.com
+
+- Switch to singlespec approach
+
+-------------------------------------------------------------------
+Mon Mar  6 13:28:21 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.2.3
+
+Revision 0.2.3, released 25-02-2017
+-----------------------------------
+
+- Improved SEQUENCE/SET/CHOICE decoding performance by maintaining a single shared
+  NamedType object for all instances of SEQUENCE/SET object.
+- Improved INTEGER encoding/decoding by switching to Python's built-in
+  integer serialization functions.
+- Improved BitString performance by rebasing it onto Python int type and leveraging
+  fast Integer serialization functions.
+- BitString type usability improved in many ways: for example bitshifting and
+  numeric operation on BitString is now possible.
+- Minor ObjectIdentifier type performance optimization.
+- ASN.1 character types refactored to keep unicode contents internally
+  (rather than serialized octet stream) and duck-type it directly.
+- ASN.1 OctetString initialized from a Python object performs bytes()
+  on it when running on Python 3 (used to do str() which is probably
+  less logical).
+- Missing support for NoValue.__sizeof__ added.
+- Added checks to make sure SEQUENCE/SET components being assigned
+  match the prototypes.
+- Setter methods for constructed types consistently accept matchTags
+  and matchConstraints flags to control the strictness of inner
+  components compatibility verification. Previously, these checks
+  were tied to verifyConstraints flag, now they are all independent.
+- General documentation improvements here and there.
+- Fix to __reversed__() magic to make it returning an iterator.
+- Test suite simplified and unified.
+- The __all__ variable added to most of the Python modules.
+- The "test" directory renamed into "tests" not to collide with
+  the "test" module.
+
+-------------------------------------------------------------------
+Tue Feb  7 07:35:04 UTC 2017 - michael@stroeder.com
+
+- updated to upstream release 0.2.2 with security fixes
+- updated project and source URLs and list of doc files
+
+Revision 0.2.2, released 07-02-2017
+-----------------------------------
+
+- FIX TO A SECURITY WEAKNESS: define length only decoders could have successfully
+  processed indefinite length serialization.
+- FIX TO A SECURITY WEAKNESS: canonical decoders (CER/DER) may have successfully
+  consumed non-canonical variations of (otherwise valid) serialization.
+- Broken Enumerated subtyping fixed.
+
+Revision 0.2.1, released 05-02-2017
+-----------------------------------
+
+- FIX TO A SECURITY WEAKNESS: BER decoder improperly cached long tags.
+- New "native" codec implemented to transform pyasn1 types to Python built-in types and back.
+- Switched to new-style classes.
+- Sphinx documentation added.
+- BitString improvements:
+
+  * simple string of binary digits is now supported as initializer
+  * default str() yields string of binary digits (used to yield str(tuple())
+  * binValue and hexValue initializers added
+  * .asNumbers(), .asOctets() and asInteger() representation added
+
+- Components of constructed ASN.1 types can now be populated with
+  uninitialized ASN.1 objects by assigning either noValue sentinel or
+  setupComponent() function return in addition to now-legacy None sentinel.
+  This should improve code readability.
+- NoValue class improved to become a singleton and catch more kinds
+  of access to it.
+- Compatibility wrappers str2octs() and oct2strs() fixed to run over
+  iso-8859-1 encoding.
+- Integer changed to emit Real instance if division produces a float.
+- True division operation now supported by Integer type.
+- The __contains__(), __reverse__() methods implemented for container types
+- Iterator protocol support implemented for all container types.
+  Warning, warning, warning: this change may potentially affect backward
+  compatibility when:
+
+  * user class overrides __getitem__() without overriding __iter__()
+  * when user code iterates over SEQUENCE object to get its components (now keys will be yielded)
+
+- Almost complete Python list and dict protocols added to SequenceOf/SetOf and
+  Sequence/Set respectively
+- Fix to divmod operation implementation in Integer type.
+- Fix to IntegerDecoder's precomputed value map on Python 3.
+- Fix to base ASN.1 types to run in "unicode_literals" mode.
+- Fix to composite constraints "+" operands ordering (AbstractConstraintSet.__radd__)
+- Fix to constraints merge in .subtype() -- on merge existing constraints are
+  expanded to accommodate new constraints, not the other way round. When existing
+  constraints are wrapped in ConstraintsIntersection composite, additional
+  constraints being added on subtyping effectively further narrow the set of
+  allowed values, which aligns well with the notion of subtyping.
+- Fix to NamedTypes methods to handle .getTagMap() returning None
+- Fix to Set/Sequence.setDefaultComponents() to return self
+- Copyright notice added to non-trivial source code files.
+- Author's email changed, copyright extended to 2017
+
+-------------------------------------------------------------------
+Tue Oct  6 11:18:26 UTC 2015 - hpj@urpla.net
+
+- updated to upstream release 0.1.9
+  - Wheel distribution format now supported.
+  - Extensions added to text files, CVS attic flushed.
+  - Fix to make uninitilaized pyasn1 objects failing properly on hash().
+  - Fix to ObjectIdentifier initialization from unicode string.
+  - Fix to CER/DER Boolean decoder - fail on non single-octet payload.
+
+-------------------------------------------------------------------
+Sat Jul  4 20:42:15 UTC 2015 - michael@stroeder.com
+
+- updated to upstrean release 0.1.8 (fate#318838)
+  - ObjectIdentifier codec fixed to work properly with arc 0 and arc 2 values.
+  - Explicit limit on ObjectIdentifier arc value size removed.
+  - Unicode initializer support added to OctetString type and derivatives.
+  - New prettyPrintType() abstract method implemented to base pyasn1 types
+    to facilitate encoding errors analisys.
+  - The __str__() method implemented to Tag, TagSet and TagMap classes to
+    ease encoding errors troubleshooting.
+    easing encoding errors
+  - Fix to SEQUENCE and SET types to give them their private componentTypes
+    collection (which is a NamedTypes object) so that they won't collide in
+    a MT execution environment.
+  - Missing T61String,ISO646String character types and ObjectDescriptor useful
+    type added.
+  - Distribute is gone, switched to setuptools completely.
+  - Missing NamedValues.__repr__() added.
+  - The base.NoValue() class, that indicates uninitialized ASN.1 object,
+    made public.
+  - The base.NoValue() class instances now support __repr__() what makes
+    possible to perform repr() on uninitialized pyasn1 types objects.
+  - When comparing ASN.1 types, by-tag and/or by-constraints matching
+    can now be performed with the isSuperTypeOf()/isSameTypeWith() optional
+    flags.
+  - Constructed types now verify their consistency by invoking 
+    isSameTypeWith(matchTags=True, matchConstraints=False) and
+    isSuperTypeOf(matchTags=False, matchConstraints=True) for each of their
+    components rather than isSuperTypeOf() as it used to be. Constriants check 
+    could be enforced to isSameTypeWith() with the strictConstraints=True
+    constructed classes attribute.
+  - Constructed types can now be initialized with new .setComponents() method
+    which accepts both var-args and keyword-args. Default repr() modified to
+    reflect this change.
+  - NamedTypes() and NamedValues() made comparable.
+  - Test coverage extended to cover pyasn1 types __repr__() function.
+  - The abs(Integer()) & abs(Real()) operation now returns respective pyasn1 
+    type, not a Python type.
+  - More Python magic methods implementations added to Integer & Real classes
+    (e.g.  __pos__, __neg__, __round__, __floor__, __ceil__, __trunc__)
+  - The Integer.__invert__ Python magic method implemented.
+  - The OctetString.__int__() and .__float__() magic methods implemented.
+  - Handle the case of null writer at Debug printer.
+  - BitString encoder/decoder performance improved.
+  - Built-in debugging is now based on Python logging module.
+  - Fix to NamedType.__repr__() to work properly.
+  - Fixes to __repr__() implementation of many built-in ASN.1 types to take into
+    account all of their initializers such as tagSet, subtypeSpec etc.
+  - String typed float initializer to REAL type now supported.
+  - Float typed mantissa initializer to REAL type for base 2 added.
+  - Encoding bases 8 and 16 support for REAL type binary encoder added.
+  - More strict CER/DER encoders added for GeneralizedTime and UTCTime types.
+  - Asn1Item.hasValue() added to easily distinguish initalized ASN.1 objects
+    from uninitialized ones (e.g. pure types).
+  - Fix to REAL type binary decoder to handle different bases and scale factor.
+  - Fix to TagSet.repr() to include [obsolete] baseTag information.
+  - Fix to broken REAL type decoding handling.
+  - Fix to BitString and OctetString decoders dealing with constructed
+    encoding -- it used to be possible to embed other types in substrate.
+  - Fix to end-of-octest sentinel handling:
+    * require strict two-zeros sentinel encoding
+    * recognize EOO sentinel only when explicitly requested by caller
+      of the decoder via allowEoo=True parameter (warning: API change)
+  - DER codec hardened not to tolerate indefinite length encoding/decoding.
+
+-------------------------------------------------------------------
+Wed Apr 22 12:35:13 UTC 2015 - mcihar@suse.cz
+
+- Run testsuite in %check
+
+-------------------------------------------------------------------
+Tue Mar  3 15:56:43 UTC 2015 - lchiquitto@suse.com
+
+- Reflect license change (from BSD-3-Clause to BSD-2-Clause) which
+  happened in version 0.1.7 in the spec file
+
+-------------------------------------------------------------------
+Thu Oct 24 11:10:32 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+- Fix changes file
+
+-------------------------------------------------------------------
+Tue May  7 08:23:39 UTC 2013 - michael@stroeder.com
+
+- updated to upstrean release 0.1.7
+  - License updated to vanilla BSD 2-Clause to ease package use
+    (http://opensource.org/licenses/BSD-2-Clause).
+  - Test suite made discoverable by unittest/unittest2 discovery feature.
+  - Fix to decoder working on indefinite length substrate -- end-of-octets
+    marker is now detected by both tag and value. Otherwise zero values may
+    interfere with end-of-octets marker.
+  - Fix to decoder to fail in cases where tagFormat indicates inappropriate
+    format for the type (e.g. BOOLEAN is always PRIMITIVE, SET is always 
+    CONSTRUCTED and OCTET STRING is either of the two)
+  - Fix to REAL type encoder to force primitive encoding form encoding.
+  - Fix to CHOICE decoder to handle explicitly tagged, indefinite length
+    mode encoding
+  - Fix to REAL type decoder to handle negative REAL values correctly. Test
+    case added.
+
+-------------------------------------------------------------------
+Fri Jan 18 09:19:52 UTC 2013 - michael@stroeder.com
+
+- updated to upstrean release 0.1.6
+  - The compact (valueless) way of encoding zero INTEGERs introduced in
+    0.1.5 seems to fail miserably as the world is filled with broken
+    BER decoders. So we had to back off the *encoder* for a while.
+    There's still the IntegerEncoder.supportCompactZero flag which
+    enables compact encoding form whenever it evaluates to True.
+  - Report package version on debugging code initialization.
+- Changes from version 0.1.5:
+  - Documentation updated and split into chapters to better match
+    web-site contents.
+  - Make prettyPrint() working for non-initialized pyasn1 data objects. It
+    used to throw an exception.
+  - Fix to encoder to produce empty-payload INTEGER values for zeros
+  - Fix to decoder to support empty-payload INTEGER and REAL values
+  - Fix to unit test suites imports to be able to run each from
+    their current directory
+
+-------------------------------------------------------------------
+Fri Jul 27 18:03:18 UTC 2012 - michael@stroeder.com
+
+- updated to upstrean release 0.1.4
+  * A built-in de/serialization debugging facility added
+  * Package versioning added (pyasn1.__version__)
+  * Leading sub-OIDs overflow condition handled
+  * REAL type exponent encoding implemented properly at BER codec
+  * Boolean BER decoder fixed to allow arbitrary payload
+  * Leading 0x80 octet now handled properly by DER/CER/DER
+     ObjectIdentifier decoder
+- includes fix needed by python-ldap's module ldap.syncrepl
+
+-------------------------------------------------------------------
+Wed Apr 25 20:11:18 UTC 2012 - michael@stroeder.com
+
+- updated to upstrean release 0.1.3
+  - Include class name into asn1 value constraint violation exception.
+  - Fix to OctetString.prettyOut() method that looses leading zero when
+    building hex string.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:46:46 UTC 2012 - saschpe@suse.de
+
+- Fix obsoletes for python-asn1 instead
+
+-------------------------------------------------------------------
+Tue Apr 17 15:12:23 UTC 2012 - dmueller@suse.com
+
+- remove self-obsoletes
+
+-------------------------------------------------------------------
+Fri Mar 23 09:59:28 UTC 2012 - michael@stroeder.com
+
+- updated to upstrean release 0.1.2
+  - Fix to __long__() to actually return longs on py2k
+  - Fix to OctetString.__str__() workings of a non-initialized object.
+  - Fix to quote initializer of OctetString.__repr__()
+  - Minor fix towards ObjectIdentifier.prettyIn() reliability
+  - ObjectIdentifier.__str__() is aliased to prettyPrint()
+  - Exlicit repr() calls replaced with '%r'
+
+-------------------------------------------------------------------
+Thu Dec  8 13:52:32 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov  8 06:25:13 UTC 2011 - highwaystar.ru@gmail.com
+
+- updated to 0.1.1
+ * Hex/bin string initializer to OctetString object reworked
+   (in a backward-incompatible manner)
+ * Fixed float() infinity compatibility issue (affects 2.5 and earlier)
+ * Fixed a bug/typo at Boolean CER encoder 
+ * Major overhawl for Python 2.4 -- 3.2 compatibility
+  +  get rid of old-style types
+  + drop string module usage
+  + switch to rich comparation
+  + drop explicit long integer type use
+  + map()/filter() replaced with list comprehension
+  + apply() replaced with */**args
+  + switched to use 'key' sort() callback function
+  + support both __nonzero__() and __bool__() methods
+  + modified not to use py3k-incompatible exception syntax
+  + getslice() operator fully replaced with getitem()
+  + dictionary operations made 2K/3K compatible
+  + base type for encoding substrate and OctetString-based types
+    is now 'bytes' when running py3k and 'str' otherwise
+  + OctetString and derivatives now unicode compliant.
+  + OctetString now supports two python-neutral getters: asOcts() & asInts()
+  + print OctetString content in hex whenever it is not printable otherwise
+  + in test suite, implicit relative import replaced with the absolute one
+  + in test suite, string constants replaced with numerics
+
+-------------------------------------------------------------------
+Wed Aug 31 16:07:46 UTC 2011 - saschpe@gmx.de
+
+- Packaged documentation
+
+-------------------------------------------------------------------
+Wed Aug 31 15:04:38 UTC 2011 - saschpe@suse.de
+
+- Initial version, obsoletes 'python-asn1'
+

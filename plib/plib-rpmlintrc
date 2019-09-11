@@ -1,0 +1,2 @@
+# Reported upstream https://sourceforge.net/p/plib/bugs/48/
+addFilter("W: incorrect-fsf-address*")

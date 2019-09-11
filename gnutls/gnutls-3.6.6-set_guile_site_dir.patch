@@ -1,0 +1,13 @@
+Index: gnutls-3.6.6/configure
+===================================================================
+--- gnutls-3.6.6.orig/configure
++++ gnutls-3.6.6/configure
+@@ -62868,7 +62868,7 @@
+ 
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Guile site directory" >&5
+ $as_echo_n "checking for Guile site directory... " >&6; }
+-  GUILE_SITE=`$PKG_CONFIG --print-errors --variable=sitedir guile-$GUILE_EFFECTIVE_VERSION`
++  GUILE_SITE=/usr/share/guile
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $GUILE_SITE" >&5
+ $as_echo "$GUILE_SITE" >&6; }
+   if test "$GUILE_SITE" = ""; then

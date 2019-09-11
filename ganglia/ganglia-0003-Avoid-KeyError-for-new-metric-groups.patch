@@ -1,0 +1,33 @@
+From: Brian Bockelman <bbockelm@cse.unl.edu>
+Date: Thu, 29 Oct 2015 12:02:09 -0500
+Git-commit: ba7c26f5b72c031cfc754b6ff524306a351089e9
+References: bsc#1087487
+Subject: [PATCH] Avoid KeyError for new metric groups.
+
+If a metric group shows up in the network file sometime after initial
+module startup, a KeyError may occur in get_metrics.  This causes the
+netstats module to be non-functional until gmond is restarted.
+
+Particularly, the IcmpMsg group will not be present until the first
+IcmpMsg has been processed.
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ gmond/python_modules/network/netstats.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gmond/python_modules/network/netstats.py b/gmond/python_modules/network/netstats.py
+index f9c6795f..bd455b5b 100644
+--- a/gmond/python_modules/network/netstats.py
++++ b/gmond/python_modules/network/netstats.py
+@@ -46,6 +46,8 @@ def get_metrics():
+                     count = 0
+                     metrics = re.split("\s+", line)
+                     metric_group = metrics[0].replace(":", "").lower()
++                    if metric_group not in stats_pos:
++                        continue
+                     new_metrics[metric_group] = dict()
+                     for value in metrics:
+                         # Skip first
+-- 
+2.13.6
+

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Feb  1 16:06:33 UTC 2016 - mpluskal@suse.com
+
+- Tiny spec file cleanups
+
+-------------------------------------------------------------------
+Sun Feb 22 18:00:59 UTC 2015 - mpluskal@suse.com
+
+- Devel package needs to require library
+
+-------------------------------------------------------------------
+Sun Feb 22 16:31:57 UTC 2015 - mpluskal@suse.com
+
+- Install COPYING
+
+-------------------------------------------------------------------
+Sat Feb 21 19:15:49 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+- Update dependencies
+  * building now requires autotools
+- Use url for source
+- Update to new release 1.0
+  * no upstream chengelog provided
+
+-------------------------------------------------------------------
+Mon Aug 13 15:11:58 UTC 2012 - jengelh@inai.de
+
+- Adhere to shared library policy
+- Run format_spec_file service
+
+-------------------------------------------------------------------
+Mon Aug 13 12:45:41 UTC 2012 - ablu.erikschilling@googlemail.com
+
+- Corrected license
+
+-------------------------------------------------------------------
+Mon Aug 13 12:37:32 UTC 2012 - ablu.erikschilling@googlemail.com
+
+- Inital version
+

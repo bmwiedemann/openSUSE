@@ -1,0 +1,4379 @@
+diff -up ./src/coolkey/coolkey.cpp.p15 ./src/coolkey/coolkey.cpp
+--- ./src/coolkey/coolkey.cpp.p15	2015-07-06 10:27:55.769827286 -0700
++++ ./src/coolkey/coolkey.cpp	2015-07-06 10:27:55.784827002 -0700
+@@ -599,13 +599,10 @@ C_Login(CK_SESSION_HANDLE hSession, CK_U
+     }
+     try {
+         log->log("C_Login called\n");
+-        if( userType != CKU_USER ) {
+-            throw PKCS11Exception(CKR_USER_TYPE_INVALID);
+-        }
+         if( pPin == NULL ) {
+             throw PKCS11Exception(CKR_ARGUMENTS_BAD);
+         }
+-        slotList->login(hSession, pPin, ulPinLen);
++        slotList->login(hSession, userType, pPin, ulPinLen);
+         return CKR_OK;
+     } catch(PKCS11Exception &e) {
+         e.log(log);
+diff -up ./src/coolkey/object.cpp.p15 ./src/coolkey/object.cpp
+--- ./src/coolkey/object.cpp.p15	2015-07-06 10:27:55.770827267 -0700
++++ ./src/coolkey/object.cpp	2015-07-06 10:27:55.785826984 -0700
+@@ -19,9 +19,9 @@
+ 
+ #include "mypkcs11.h"
+ #include "PKCS11Exception.h"
+-#include "object.h"
+ #include <algorithm>
+ #include <string.h>
++#include "object.h"
+ 
+ using std::find_if;
+ 
+@@ -29,7 +29,7 @@ const CKYByte rsaOID[] = {0x2A,0x86,0x48
+ const CKYByte eccOID[] = {0x2a,0x86,0x48,0xce,0x3d,0x02,0x01};
+ 
+ #ifdef DEBUG
+-void dump(CKYBuffer *buf)
++void dump(const char *label, const CKYBuffer *buf)
+ {
+     CKYSize i;
+     CKYSize size = CKYBuffer_Size(buf);
+@@ -38,8 +38,10 @@ void dump(CKYBuffer *buf)
+     char *bp = &string[0];
+     CKYByte c;
+ 
++    printf("%s size=%d\n", label, (int)size);
++
+     for (i=0; i < size; i++) {
+-        if (i && ((i % (ROW_LENGTH-1)) == 0) ) {
++        if (i && ((i % (ROW_LENGTH)) == 0) ) {
+             *bp = 0;
+             printf(" %s\n",string);
+             bp = &string[0];
+@@ -49,7 +51,35 @@ void dump(CKYBuffer *buf)
+         *bp++ =  (c < ' ') ? '.' : ((c & 0x80) ? '*' : c);
+     }
+     *bp = 0;
+-    for (i= (i % (ROW_LENGTH-1)); i && (i < ROW_LENGTH); i++) {
++    for (i= (i % (ROW_LENGTH)); i && (i < ROW_LENGTH); i++) {
++        printf("   ");
++    }
++    printf(" %s\n",string);
++    fflush(stdout);
++}
++
++void dumpData(const char *label, const CKYByte *buf, CKYSize size)
++{
++    CKYSize i;
++#define ROW_LENGTH 16
++    char string[ROW_LENGTH+1];
++    char *bp = &string[0];
++    CKYByte c;
++
++    printf("%s size=%d:\n",label, (int)size);
++
++    for (i=0; i < size; i++) {
++        if (i && ((i % (ROW_LENGTH)) == 0) ) {
++            *bp = 0;
++            printf(" %s\n",string);
++            bp = &string[0];
++        }
++        c = buf[i];
++        printf("%02x ",c);
++        *bp++ =  (c < ' ') ? '.' : ((c & 0x80) ? '*' : c);
++    }
++    *bp = 0;
++    for (i= (i % (ROW_LENGTH)); i && (i < ROW_LENGTH); i++) {
+         printf("   ");
+     }
+     printf(" %s\n",string);
+@@ -77,16 +107,23 @@ class AttributeTypeMatch
+ };
+ 
+ PKCS11Object::PKCS11Object(unsigned long muscleObjID_,CK_OBJECT_HANDLE handle_)
+-    : muscleObjID(muscleObjID_), handle(handle_), label(NULL), name(NULL), keyType(unknown)
++    : muscleObjID(muscleObjID_), handle(handle_), label(NULL), keySize(0),
++                   user(CKU_USER), name(NULL), keyType(unknown),
++		   keyRef(PK15_INVALID_KEY_REF)
+ { 
+     CKYBuffer_InitEmpty(&pubKey);
++    CKYBuffer_InitEmpty(&authId);
++    CKYBuffer_InitEmpty(&pinAuthId);
+ }
+ 
+ PKCS11Object::PKCS11Object(unsigned long muscleObjID_, const CKYBuffer *data,
+     CK_OBJECT_HANDLE handle_) :  muscleObjID(muscleObjID_), handle(handle_),
+-                        label(NULL), name(NULL), keyType(unknown)
++                   label(NULL), keySize(0), user(CKU_USER), name(NULL), 
++		   keyType(unknown), keyRef(PK15_INVALID_KEY_REF) 
+ {
+     CKYBuffer_InitEmpty(&pubKey);
++    CKYBuffer_InitEmpty(&authId);
++    CKYBuffer_InitEmpty(&pinAuthId);
+ 
+     CKYByte type = CKYBuffer_GetChar(data,0);
+     // verify object ID is what we think it is
+@@ -582,6 +619,21 @@ PKCS11Object::setAttribute(CK_ATTRIBUTE_
+ }
+ 
+ void
++PKCS11Object::setAttribute(CK_ATTRIBUTE_TYPE type, const CKYByte *data,
++			CKYSize size)
++{
++    AttributeIter iter;  
++
++    iter = find_if(attributes.begin(), attributes.end(),
++        AttributeTypeMatch(type));
++    if( iter != attributes.end() )  {
++        iter->setValue( data, size);
++    } else {
++        attributes.push_back(PKCS11Attribute(type, data, size));
++    }
++}
++
++void
+ PKCS11Object::setAttribute(CK_ATTRIBUTE_TYPE type, const char *string)
+ {
+     CKYBuffer buf;
+@@ -613,7 +665,7 @@ PKCS11Object::setAttributeULong(CK_ATTRI
+ 
+ typedef struct {
+     const CKYByte*data;
+-    unsigned int len;
++    CKYSize len;
+ } CCItem;
+ 
+ typedef enum {
+@@ -621,9 +673,9 @@ typedef enum {
+     SECFailure=1
+ } SECStatus;
+ 
+-static const CKYByte*
+-dataStart(const CKYByte *buf, unsigned int length,
+-                        unsigned int *data_length, bool includeTag) {
++const CKYByte*
++dataStart(const CKYByte *buf, CKYSize length,
++                        CKYSize *data_length, bool includeTag) {
+     unsigned char tag;
+     unsigned int used_length= 0;
+ 
+@@ -673,7 +725,7 @@ dataStart(const CKYByte *buf, unsigned i
+ }
+ 
+ static const CKYByte *
+-unwrapBitString(const CKYByte *buf, unsigned int len, unsigned int *retLen)
++unwrapBitString(const CKYByte *buf, CKYSize len, CKYSize *retLen)
+ {
+     /* for RSA, bit string always has byte number of bits */
+     if (buf[0] != 0) {
+@@ -687,15 +739,15 @@ unwrapBitString(const CKYByte *buf, unsi
+ }
+ 
+ static SECStatus
+-GetECKeyFieldItems(const CKYByte *spki_data,unsigned int spki_length,
++GetECKeyFieldItems(const CKYByte *spki_data, CKYSize spki_length,
+         CCItem *point, CCItem *params)
+ {
+     const CKYByte *buf = spki_data;
+-    unsigned int buf_length = spki_length;
++    CKYSize buf_length = spki_length;
+     const CKYByte *algid;
+-    unsigned int algidlen;
++    CKYSize algidlen;
+     const CKYByte *dummy;
+-    unsigned int dummylen;
++    CKYSize dummylen;
+ 
+     if (!point || !params || !buf)
+         return SECFailure;
+@@ -756,12 +808,12 @@ GetKeyOIDMatches(const CKYByte *spki_dat
+ }
+ 
+ static SECStatus
+-GetKeyAlgorithmId(const CKYByte *spki_data, unsigned int spki_length,
++GetKeyAlgorithmId(const CKYByte *spki_data, CKYSize spki_length,
+        CCItem *algorithmId)
+ {
+ 
+     const CKYByte *buf = spki_data;
+-    unsigned int buf_length = spki_length;
++    CKYSize buf_length = spki_length;
+ 
+     if ( algorithmId == NULL) return SECFailure;
+ 
+@@ -786,7 +838,7 @@ GetKeyTypeFromSPKI(const CKYBuffer *key)
+             "Failed to decode key algorithm ID.");
+     }
+ 
+-    unsigned int length = 0;
++    CKYSize length = 0;
+     const CKYByte *keyData = NULL;
+ 
+     /* Get actual oid buffer */
+@@ -829,13 +881,13 @@ GetKeyTypeFromSPKI(const CKYBuffer *key)
+ }
+ 
+ static SECStatus
+-GetKeyFieldItems(const CKYByte *spki_data,unsigned int spki_length,
++GetKeyFieldItems(const CKYByte *spki_data,CKYSize spki_length,
+         CCItem *modulus, CCItem *exponent)
+ {
+     const CKYByte *buf = spki_data;
+-    unsigned int buf_length = spki_length;
++    CKYSize buf_length = spki_length;
+     const CKYByte*dummy;
+-    unsigned int dummylen;
++    CKYSize dummylen;
+ 
+     /* skip past the algorithm id */
+     dummy = dataStart(buf,buf_length,&dummylen,false);
+@@ -955,7 +1007,7 @@ Key::Key(unsigned long muscleObjID, cons
+ }
+ 
+ void
+-Key::completeKey(const PKCS11Object &cert)
++PKCS11Object::completeKey(const PKCS11Object &cert)
+ {
+     // infer key attributes from cert
+     bool modulusExists, exponentExists;
+@@ -1015,14 +1067,14 @@ Key::completeKey(const PKCS11Object &cer
+ }
+ 
+ static SECStatus
+-GetCertFieldItems(const CKYByte *dercert,unsigned int cert_length,
++GetCertFieldItems(const CKYByte *dercert, CKYSize cert_length,
+         CCItem *issuer, CCItem *serial, CCItem *derSN, CCItem *subject,
+         CCItem *valid, CCItem *subjkey)
+ {
+     const CKYByte *buf;
+-    unsigned int buf_length;
++    CKYSize buf_length;
+     const CKYByte*dummy;
+-    unsigned int dummylen;
++    CKYSize dummylen;
+ 
+     /* get past the signature wrap */
+     buf = dataStart(dercert,cert_length,&buf_length, false);
+@@ -1330,10 +1382,10 @@ static const unsigned char CN_DATA[] = {
+ const unsigned int CN_LENGTH = sizeof(CN_DATA);
+ 
+ static SECStatus
+-GetCN(const CKYByte *dn, unsigned int dn_length, CCItem *cn)
++GetCN(const CKYByte *dn, CKYSize dn_length, CCItem *cn)
+ {
+     const CKYByte *buf;
+-    unsigned int buf_length;
++    CKYSize buf_length;
+ 
+     /* unwrap the sequence */
+     buf = dataStart(dn,dn_length,&buf_length, false);
+@@ -1341,9 +1393,9 @@ GetCN(const CKYByte *dn, unsigned int dn
+ 
+     while (buf_length) {
+         const CKYByte *name;
+-        unsigned int name_length;
++        CKYSize name_length;
+         const CKYByte *oid;
+-        unsigned int oid_length;
++        CKYSize oid_length;
+ 
+         /* unwrap the set */
+         name = dataStart(buf, buf_length, &name_length, false);
+@@ -1408,13 +1460,6 @@ CACCert::CACCert(CKYByte instance, const
+ {
+     CKYBuffer id;
+     CKYBuffer empty;
+-    CK_BBOOL decrypt = FALSE;
+-
+-    /* So we know what the key is supposed to be used for based on
+-     * the instance */
+-    if (instance == 2) {
+-        decrypt = TRUE;
+-    }
+ 
+     CKYBuffer_InitEmpty(&empty);
+     setAttributeULong(CKA_CLASS, CKO_CERTIFICATE);
+@@ -1456,6 +1501,1063 @@ CACCert::CACCert(CKYByte instance, const
+     CKYBuffer_FreeData(&derIssuer);
+ }
+ 
++static const CKYByte rev[] = {
++    0x00, 0x80, 0x40, 0xc0, 0x20, 0xa0, 0x60, 0xe0,
++    0x10, 0x90, 0x50, 0xd0, 0x30, 0xb0, 0x70, 0xf0,
++    0x08, 0x88, 0x48, 0xc8, 0x28, 0xa8, 0x68, 0xe8,
++    0x18, 0x98, 0x58, 0xd8, 0x38, 0xb8, 0x78, 0xf8,
++    0x04, 0x84, 0x44, 0xc4, 0x24, 0xa4, 0x64, 0xe4,
++    0x14, 0x94, 0x54, 0xd4, 0x34, 0xb4, 0x74, 0xf4,
++    0x0c, 0x8c, 0x4c, 0xcc, 0x2c, 0xac, 0x6c, 0xec,
++    0x1c, 0x9c, 0x5c, 0xdc, 0x3c, 0xbc, 0x7c, 0xfc,
++    0x02, 0x82, 0x42, 0xc2, 0x22, 0xa2, 0x62, 0xe2,
++    0x12, 0x92, 0x52, 0xd2, 0x32, 0xb2, 0x72, 0xf2,
++    0x0a, 0x8a, 0x4a, 0xca, 0x2a, 0xaa, 0x6a, 0xea,
++    0x1a, 0x9a, 0x5a, 0xda, 0x3a, 0xba, 0x7a, 0xfa,
++    0x06, 0x86, 0x46, 0xc6, 0x26, 0xa6, 0x66, 0xe6,
++    0x16, 0x96, 0x56, 0xd6, 0x36, 0xb6, 0x76, 0xf6,
++    0x0e, 0x8e, 0x4e, 0xce, 0x2e, 0xae, 0x6e, 0xee,
++    0x1e, 0x9e, 0x5e, 0xde, 0x3e, 0xbe, 0x7e, 0xfe,
++    0x01, 0x81, 0x41, 0xc1, 0x21, 0xa1, 0x61, 0xe1,
++    0x11, 0x91, 0x51, 0xd1, 0x31, 0xb1, 0x71, 0xf1,
++    0x09, 0x89, 0x49, 0xc9, 0x29, 0xa9, 0x69, 0xe9,
++    0x19, 0x99, 0x59, 0xd9, 0x39, 0xb9, 0x79, 0xf9,
++    0x05, 0x85, 0x45, 0xc5, 0x25, 0xa5, 0x65, 0xe5,
++    0x15, 0x95, 0x55, 0xd5, 0x35, 0xb5, 0x75, 0xf5,
++    0x0d, 0x8d, 0x4d, 0xcd, 0x2d, 0xad, 0x6d, 0xed,
++    0x1d, 0x9d, 0x5d, 0xdd, 0x3d, 0xbd, 0x7d, 0xfd,
++    0x03, 0x83, 0x43, 0xc3, 0x23, 0xa3, 0x63, 0xe3,
++    0x13, 0x93, 0x53, 0xd3, 0x33, 0xb3, 0x73, 0xf3,
++    0x0b, 0x8b, 0x4b, 0xcb, 0x2b, 0xab, 0x6b, 0xeb,
++    0x1b, 0x9b, 0x5b, 0xdb, 0x3b, 0xbb, 0x7b, 0xfb,
++    0x07, 0x87, 0x47, 0xc7, 0x27, 0xa7, 0x67, 0xe7,
++    0x17, 0x97, 0x57, 0xd7, 0x37, 0xb7, 0x77, 0xf7,
++    0x0f, 0x8f, 0x4f, 0xcf, 0x2f, 0xaf, 0x6f, 0xef,
++    0x1f, 0x9f, 0x5f, 0xdf, 0x3f, 0xbf, 0x7f, 0xff
++};
++
++unsigned long GetBits(const CKYByte *entry, CKYSize entrySize,
++				unsigned int numBits, unsigned int numBytes)
++{
++   unsigned long bits = 0;
++   unsigned long bitFlag = 0;
++   unsigned int i;
++
++   /* size of zero is valid for no bits */
++   if (entrySize <= 1) {
++	return 0;
++   }
++   entrySize--;
++   entry++;
++
++   /* if we are longer than and unsigned, just bail now */
++   if (entrySize > sizeof (unsigned long)) {
++	bitFlag = BROKEN_FLAG;
++	entrySize = sizeof(unsigned long);
++   }
++   /* turn the flags into an int */
++   for (i=0; i < entrySize; i++) {
++	CKYByte c = rev[entry[i]];
++	bits  = bits | (c << i*8);
++   }
++   return bits | bitFlag;
++}
++
++
++/*
++ * parse the path object.
++ * Caller has already unwrapped the outer ASN1Sequence
++ */
++CKYStatus PK15ObjectPath::setObjectPath(const CKYByte *current, CKYSize size)
++{
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    unsigned int i;
++    CKYStatus status;
++
++
++    if ((current == NULL) || (current[0] != ASN1_OCTET_STRING)) {
++	return CKYINVALIDDATA;
++    }
++    /* entry */
++    entry = dataStart(current, size, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDDATA; }
++    tagSize = entry - current;
++    current += entrySize + tagSize;
++    size -= (entrySize +tagSize);
++    if (size < 0) { return CKYINVALIDDATA; }
++    status = CKYBuffer_Replace(&path, 0, entry, entrySize);
++    if (status != CKYSUCCESS) {
++	return status;
++    }
++
++    /* index */
++    if ((size != 0) && current[0] ==  ASN1_INTEGER) { 
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDDATA; }
++	tagSize = entry - current;
++	current += entrySize + tagSize;
++	size -= (entrySize +tagSize);
++	if (size < 0) { return CKYINVALIDDATA; }
++	if (entrySize > 5) { return CKYINVALIDDATA; }
++	for (index = 0, i=0; i < entrySize; i++) {
++	    index = (index << 8) + (unsigned int) entry[i];
++	}
++    }
++
++    /* length */
++    if ((size != 0) && ((current[0]|ASN1_CONSTRUCTED) ==  ASN1_CHOICE_0)) { 
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDDATA; }
++	tagSize = entry - current;
++	current += entrySize + tagSize;
++	size -= (entrySize +tagSize);
++	if (size < 0) { return CKYINVALIDDATA; }
++	if (entrySize > 5) { return CKYINVALIDDATA; }
++	for (length = 0, i=0; i < entrySize; i++) {
++	    length = (length << 8) + (unsigned int) entry[i];
++	}
++    }
++    return CKYSUCCESS;
++}
++
++static unsigned int pK15GetTag(PK15ObjectType type) {
++     switch (type) { case PK15PvKey: case PK15PuKey: return 'k'<<24;
++		     case PK15Cert: return 'c' << 24; default: break; }
++     return 'v';
++}
++
++
++PK15Object::PK15Object(CKYByte inst, PK15ObjectType type, 
++	const CKYByte *der, CKYSize derSize) 
++	: PKCS11Object(pK15GetTag(type) | ((inst+'0') << 16), 0xa000 | inst)
++{
++    CKYStatus status;
++
++    instance = inst;
++    p15Type =  type;
++    CKYBuffer_InitEmpty(&authId);
++    CKYBuffer_InitEmpty(&pinAuthId);
++    state = PK15StateInit;
++    pinInfo.pinFlags = 0;
++    pinInfo.pinType = P15PinUTF8;
++    pinInfo.minLength = 4;
++    pinInfo.storedLength = 0;
++    pinInfo.maxLength = 0;
++    pinInfo.pinRef = 0;
++    pinInfo.padChar = 0xff;
++
++    status = completeObject(der, derSize);
++    if (status != CKYSUCCESS) {
++	state = PK15StateInit; /* don't try to fetch any more if we failed */
++    }
++}
++
++/* returns true if there is more work to do... */
++CKYStatus 
++PK15Object::completeObject(const CKYByte *current, CKYSize currentSize)
++{
++    const CKYByte *commonAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYByte objectTag;
++    CKYStatus status;
++    CKYBitFlags bits;
++
++    switch (state) {
++    case PK15StateInit:
++    case PK15StateNeedObject:
++	break;
++    case PK15StateNeedRawPublicKey:
++	return  completeRawPublicKey(current, currentSize);
++    case PK15StateNeedRawCertificate:
++	return  completeRawCertificate(current, currentSize);
++    case PK15StateComplete:
++	return CKYSUCCESS;
++    }
++
++    if (current == NULL) { return CKYINVALIDARGS; }
++
++    objectTag = current[0];
++
++    setAttributeBool(CKA_TOKEN, TRUE);
++
++    /* set type specific attributes */
++    switch (p15Type) {
++    case PK15Cert:
++	setAttributeULong(CKA_CLASS, CKO_CERTIFICATE);
++    	setAttributeULong(CKA_CERTIFICATE_TYPE, CKC_X_509);
++	if (objectTag != PK15X509CertType) {
++	    return CKYUNSUPPORTED;
++	}
++	break;
++    case PK15PvKey:
++	setAttributeULong(CKA_CLASS, CKO_PRIVATE_KEY);
++	goto set_key_type;
++    case PK15PuKey:
++	setAttributeULong(CKA_CLASS, CKO_PUBLIC_KEY);
++set_key_type:
++	switch (objectTag) {
++	case PK15RSAKeyType:
++	    keyType = rsa;
++	    setAttributeULong(CKA_KEY_TYPE, CKK_RSA);
++	    break;
++	case PK15ECCKeyType:
++	    keyType = ecc;
++	    setAttributeULong(CKA_KEY_TYPE, CKK_EC);
++	    break;
++	case PK15DSAKeyType:
++	case PK15DHKeyType:
++	default:
++	    return CKYUNSUPPORTED;
++	}
++	break;
++    case PK15AuthObj:
++	setAttributeULong(CKA_CLASS, CKO_DATA);
++	break;
++    default:
++	return CKYUNSUPPORTED;
++    }
++
++    /* unwrap the object */	
++    current = dataStart(current, currentSize, &currentSize, false);
++    if (current == NULL) { return CKYINVALIDDATA; }
++
++    /*
++     * parse the Common Attributes 
++     *     label UTF8_STRING
++     *     flags BIT_STRING (optional)
++     *     authid OCTET_STRING (optional)
++     */
++    if ((current == NULL) || (current[0] != ASN1_SEQUENCE)) 
++	{ return CKYINVALIDDATA; }
++    /* unwrap */
++    commonAttributes = dataStart(current, currentSize, &commonSize, false);
++    if (commonAttributes == NULL) { return CKYINVALIDDATA; }
++
++    /* point current to the next section (cass attributes)  */
++    tagSize = commonAttributes - current;
++    current += commonSize + tagSize;
++    currentSize -= (commonSize +tagSize);
++    if (currentSize < 0) { return CKYINVALIDDATA; }
++
++    /* get the CKA_LABEL */
++    if (commonAttributes[0] != ASN1_UTF8_STRING) { return CKYINVALIDDATA; }
++    entry = dataStart(commonAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonAttributes;
++    commonAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    setAttribute(CKA_LABEL, entry, entrySize);
++
++    /* parse optional flags */
++    bits = BROKEN_FLAG;
++    if (commonAttributes[0] == ASN1_BIT_STRING) {
++	entry = dataStart(commonAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAttributes;
++	commonAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	bits = GetBits(entry,entrySize,2,1);
++    }
++
++    if (commonAttributes[0] == ASN1_OCTET_STRING) {
++	entry = dataStart(commonAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAttributes;
++	commonAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	status = CKYBuffer_Replace(&authId, 0, entry, entrySize);
++	if (status != CKYSUCCESS) {
++	   return status;
++	}
++    }
++
++    if (bits & BROKEN_FLAG) {
++	bits = defaultCommonBits();
++    }
++    setAttributeBool(CKA_PRIVATE, 
++		(bits & P15FlagsPrivate) ? TRUE: FALSE);
++    setAttributeBool(CKA_MODIFIABLE, FALSE); /* our token is ReadOnly, so the
++					      * object is never modifiable for
++					      * us */
++    /* future common attributes here */
++
++    /*
++     *  Parse Class variables
++     *
++     */
++    switch (p15Type) {
++    case PK15Cert:
++	status = completeCertObject(current,currentSize);
++	break;
++    case PK15PuKey:
++    case PK15PvKey:
++	status = completeKeyObject(current,currentSize);
++	break;
++    case PK15AuthObj:
++	status = completeAuthObject(current, currentSize);
++	break;
++    }
++    return status;
++}
++
++
++CKYStatus 
++PK15Object::completeCertObject(const CKYByte *current, CKYSize currentSize)
++{
++    const CKYByte *commonCertAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYBuffer empty;
++    CKYStatus status;
++    CKYByte valueTag;
++
++    CKYBuffer_InitEmpty(&empty);
++
++    /*
++     * parse the Common Cert Attributes 
++     *     id OCTET_STRING
++     *     authority BOOLEAN DEFAULT FALSE
++     *     requestId BIT_STRING (optional)
++     *     thumbprint [0] PKS15OOBCertHash (optional)
++     */
++    if ((current == NULL) || (current[0] != ASN1_SEQUENCE)) 
++		{ return CKYINVALIDARGS; }
++    /* unwrap */
++    commonCertAttributes = dataStart(current, currentSize, &commonSize, false);
++    if (commonCertAttributes == NULL) { return CKYINVALIDDATA; }
++    /* point current to the next section (type attributes)  */
++    tagSize = commonCertAttributes - current;
++    current += commonSize + tagSize;
++    currentSize -= (commonSize +tagSize);
++    if (currentSize < 0) { return CKYINVALIDDATA; }
++
++    /* get the id */
++    if (commonCertAttributes[0] != ASN1_OCTET_STRING) { return CKYINVALIDDATA; }
++    entry = dataStart(commonCertAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonCertAttributes;
++    commonCertAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    setAttribute(CKA_ID, entry, entrySize);
++
++
++    /* skip authority (currently unused) */
++    /* skip requestID */
++    /* skip thumbprint */
++    /* future common cert attributes here */
++
++    /* certs have not subclass attributes  ASN1_CHOICE_0 */
++
++    /* handle the X509 type attributes */
++    if (current[0] != ASN1_CHOICE_1) { return CKYINVALIDDATA; }
++    /* unwrap */
++    commonCertAttributes = dataStart(current, currentSize, &commonSize, false);
++    if (commonCertAttributes == NULL) { return CKYINVALIDDATA; }
++   
++    /*
++     * PCKS11X504CertificateAttributes
++     *     value   SEQUENCE or CHOICE_0
++     *     ... don't care about the rest.
++     */
++    valueTag = commonCertAttributes[0];
++    /* unwrapp */
++    entry = dataStart(commonCertAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDDATA; }
++    if (valueTag == ASN1_SEQUENCE) {
++    	entry = dataStart(entry, entrySize, &entrySize, false);
++    	if (entry == NULL) { return CKYINVALIDDATA; }
++	/* if we have a path, the actual object is in another file,
++	 * tell the caller to get it and come back here */
++	status = objectPath.setObjectPath(entry, entrySize);
++	state = PK15StateNeedRawCertificate;
++        return status;
++    }
++    if (valueTag != ASN1_CHOICE_0) {
++	return CKYINVALIDDATA;
++    }
++    return  completeRawCertificate(entry, entrySize);
++}
++
++CKYStatus 
++PK15Object::completeAuthObject(const CKYByte *current, CKYSize currentSize)
++{
++    const CKYByte *commonAuthAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYBuffer empty;
++    CKYStatus status;
++
++    CKYBuffer_InitEmpty(&empty);
++
++    if (current == NULL) { return CKYINVALIDARGS; }
++    /* common Auth attributes */
++    if (current[0] == ASN1_SEQUENCE) {
++         /* unwrap */
++        commonAuthAttributes = 
++			dataStart(current, currentSize, &commonSize, false);
++	if (commonAuthAttributes == NULL) { return CKYINVALIDDATA; }
++	tagSize = commonAuthAttributes - current;
++	current += commonSize + tagSize;
++	currentSize -= (commonSize + tagSize);
++	if (currentSize < 0) { return CKYINVALIDDATA; }
++	if (commonAuthAttributes[0] != ASN1_OCTET_STRING) {
++	    return CKYINVALIDDATA;
++	}
++	entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	status = CKYBuffer_Replace(&pinAuthId, 0, entry, entrySize);
++	if (status != CKYSUCCESS) {
++	   return status;
++	}
++	
++    }
++    /* auth specific values */
++    if (current[0] != ASN1_CHOICE_1) { return CKYINVALIDARGS; }
++    /* unwrap */
++    commonAuthAttributes = dataStart(current, currentSize, &commonSize, false);
++    if (commonAuthAttributes == NULL) { return CKYINVALIDDATA; }
++    tagSize = commonAuthAttributes - current;
++    current += commonSize + tagSize;
++    currentSize -= (commonSize +tagSize);
++    if (currentSize < 0) { return CKYINVALIDDATA; }
++    /*
++     * parse the Pin Auth Attributes 
++     *     pinFlags  BIT_STRING
++     *     pinType   ENUMERATED (bcd, ascii-numeric, utf8)
++     *     minLength INTEGER
++     *     storedLength INTEGER
++     *     maxlength INTEGER (optional)
++     *     pinReference CHOICE_0 (optional)
++     *     padChar OCTET_STRING (optional)
++     *     lastPinChange GENERALIZED_TIME (optional)
++     *     path PKCS15Path (optional)
++     */
++    if (commonAuthAttributes[0] != ASN1_SEQUENCE) { return CKYINVALIDARGS; }
++    commonAuthAttributes = dataStart(commonAuthAttributes, 
++					commonSize, &commonSize, false);
++    if (commonAuthAttributes == NULL) { return CKYINVALIDDATA; }
++
++    /* parse pin flags */
++    if (commonAuthAttributes[0] != ASN1_BIT_STRING) { return CKYINVALIDDATA; }
++
++    entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonAuthAttributes;
++    commonAuthAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    pinInfo.pinFlags = GetBits(entry,entrySize,9,2);
++
++
++    /* parse PinType */
++    if (commonAuthAttributes[0] != ASN1_ENUMERATED) { return CKYINVALIDDATA; }
++    entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonAuthAttributes;
++    commonAuthAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    /* turn entry into an int */
++    if (entrySize > 1) { return CKYINVALIDARGS; }
++    pinInfo.pinType = (P15PinType) *entry;
++
++    /* parse minLength */
++    if (commonAuthAttributes[0] != ASN1_INTEGER) { return CKYINVALIDDATA; }
++    entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonAuthAttributes;
++    commonAuthAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    if (entrySize > 1) { return CKYINVALIDARGS; }
++    pinInfo.minLength = *entry;
++
++    /* parse storedLength */
++    if (commonAuthAttributes[0] != ASN1_INTEGER) { return CKYINVALIDDATA; }
++    entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonAuthAttributes;
++    commonAuthAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    if (entrySize > 1) { return CKYINVALIDARGS; }
++    pinInfo.storedLength = *entry;
++
++    /* parse maxLength (optional) */
++    if (commonAuthAttributes[0] == ASN1_INTEGER) { 
++	unsigned long maxPin;
++	entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize > sizeof (maxPin)) { return CKYINVALIDARGS; }
++	maxPin = 0; 
++	CKYSize i;
++	for (i=0; i < entrySize; i++) {
++	    maxPin = (maxPin << 8) | entry[i];
++	}
++	pinInfo.maxLength = maxPin;
++    }
++
++    /* parse pin ref  (optional) */
++    if ((commonAuthAttributes[0]|ASN1_CONSTRUCTED) == ASN1_CHOICE_0)  {
++	CKYByte pinRef;
++	entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize > 2) { return CKYINVALIDARGS; }
++	if (entrySize == 2) {
++	    if (*entry != 0) { return CKYINVALIDARGS; }
++	    pinRef = entry[1];
++	} else pinRef = entry[0];
++	pinInfo.pinRef = pinRef;
++    }
++
++    /* parse padChar */
++    if (commonAuthAttributes[0] == ASN1_OCTET_STRING) { 
++	entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize > 1) { return CKYINVALIDARGS; }
++	pinInfo.padChar = *entry;
++    }
++
++    /* skip lastPinChange */
++    if (commonAuthAttributes[0] == ASN1_GENERALIZED_TIME) { 
++	entry = dataStart(commonAuthAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++    }
++    /* parse path */
++    if (commonAuthAttributes[0] == ASN1_SEQUENCE) { 
++	entry = dataStart(commonAuthAttributes, commonSize, 
++							&entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonAuthAttributes;
++	commonAuthAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	/* if we have a path, the actual object is in another file,
++	 * tell the caller to get it and come back here */
++	status = objectPath.setObjectPath(entry, entrySize);
++	if (status != CKYSUCCESS) { return status; }
++    }
++    state = PK15StateComplete;
++    return CKYSUCCESS;
++}
++
++CKYStatus
++PK15Object::completeKeyObject(const CKYByte *current, CKYSize currentSize)
++{
++    const CKYByte *commonKeyAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYBuffer empty;
++    CKYStatus status;
++    unsigned long bits;
++    /*bool native; */
++
++    CKYBuffer_InitEmpty(&empty);
++    /*
++     * parse the Common Key Attributes 
++     *     id OCTET_STRING
++     *     usageFlags BIT_STRING 
++     *     native BOOLEAN DEFAULT TRUE
++     *     accessFlags BIT_STRING (optional)
++     *     keyReference OCTET_STRING (optional)
++     *     startDate GENERALIZED_TIME (optional)
++     *     endDate [0] GENERALIZED_TYPE (optional)
++     */
++    if ((current == NULL) || (current[0] != ASN1_SEQUENCE)) 
++		{ return CKYINVALIDARGS; }
++    /* unwrap */
++    commonKeyAttributes = dataStart(current, currentSize, &commonSize, false);
++    if (commonKeyAttributes == NULL) { return CKYINVALIDDATA; }
++
++    /* point current to the next section (sublcass attributes)  */
++    tagSize = commonKeyAttributes - current;
++    current += commonSize + tagSize;
++    currentSize -= (commonSize +tagSize);
++    if (currentSize < 0) { return CKYINVALIDDATA; }
++
++    /* get the id */
++    if (commonKeyAttributes[0] != ASN1_OCTET_STRING) { return CKYINVALIDDATA; }
++    entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonKeyAttributes;
++    commonKeyAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    setAttribute(CKA_ID, entry, entrySize);
++
++    /* parse flags */
++    if (commonKeyAttributes[0] != ASN1_BIT_STRING) { return CKYINVALIDDATA; }
++    entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonKeyAttributes;
++    commonKeyAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    bits = GetBits(entry,entrySize,10,2);
++    if (bits & BROKEN_FLAG) {
++	bits = defaultUsageBits();
++    }
++    setAttributeBool(CKA_ENCRYPT,
++			(bits & P15UsageEncrypt)          ? TRUE : FALSE);
++    setAttributeBool(CKA_DECRYPT,
++			(bits & P15UsageDecrypt)          ? TRUE : FALSE);
++    setAttributeBool(CKA_SIGN,
++			(bits & P15UsageSign)             ? TRUE : FALSE);
++    setAttributeBool(CKA_SIGN_RECOVER,
++			(bits & P15UsageSignRecover)      ? TRUE : FALSE);
++    setAttributeBool(CKA_WRAP,
++			(bits & P15UsageWrap)             ? TRUE : FALSE);
++    setAttributeBool(CKA_UNWRAP,
++			(bits & P15UsageUnwrap)           ? TRUE : FALSE);
++    setAttributeBool(CKA_VERIFY,
++			(bits & P15UsageVerify)           ? TRUE : FALSE);
++    setAttributeBool(CKA_VERIFY_RECOVER,
++			(bits & P15UsageVerifyRecover)    ? TRUE : FALSE);
++    setAttributeBool(CKA_DERIVE,
++			(bits & P15UsageDerive)           ? TRUE : FALSE);
++    /* no CKA value for P15UsageNonRepudiation */
++    if (bits & P15UsageNonRepudiation) {
++	/* set signing and sign recover. Non-repudiation keys are automatically
++         * signing keys */
++	setAttributeBool(CKA_SIGN, TRUE);
++	if (keyType == rsa) {
++	    setAttributeBool(CKA_SIGN_RECOVER, TRUE);
++	}
++    }
++
++    /* parse native (currently unused) */
++    /*native=true; */
++    if (commonKeyAttributes[0] == ASN1_BOOLEAN) {
++	entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonKeyAttributes;
++	commonKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	/*if ((entrySize == 1) && (entry[0] == 0)) {
++	    native = false;
++	} */
++    }
++    /* parse access flags */
++    bits = BROKEN_FLAG;
++    if (commonKeyAttributes[0] == ASN1_BIT_STRING) {
++	entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonKeyAttributes;
++	commonKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	bits = GetBits(entry,entrySize,4,1);
++    }
++    if (bits & BROKEN_FLAG) {
++	bits = defaultAccessBits();
++    }
++    setAttributeBool(CKA_SENSITIVE,  
++			(bits & P15AccessSensitive)       ? TRUE : FALSE);
++    setAttributeBool(CKA_EXTRACTABLE,
++			(bits & P15AccessExtractable)     ? TRUE : FALSE);
++    setAttributeBool(CKA_ALWAYS_SENSITIVE, 
++			(bits & P15AccessAlwaysSenstive)  ? TRUE : FALSE);
++    setAttributeBool(CKA_NEVER_EXTRACTABLE,
++			(bits & P15AccessNeverExtractable)? TRUE : FALSE);
++    setAttributeBool(CKA_LOCAL,      
++			(bits & P15AccessLocal)           ? TRUE : FALSE);
++
++    /* parse the key reference */
++    keyRef = PK15_INVALID_KEY_REF; /* invalid keyRef */
++    if (commonKeyAttributes[0] == ASN1_INTEGER) {
++	entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonKeyAttributes;
++	commonKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize == 1) {
++	    keyRef = entry[0];
++	} else if ((entrySize == 2) && (entry[0] == 0)) {
++	    keyRef = entry[1];
++	}
++    }
++    setAttribute(CKA_START_DATE, &empty);
++    if (commonKeyAttributes[0] == ASN1_GENERALIZED_TIME) {
++	entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonKeyAttributes;
++	commonKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	setAttribute(CKA_START_DATE,entry, entrySize);
++    }
++    setAttribute(CKA_END_DATE, &empty);
++    if (commonKeyAttributes[0] == ASN1_CHOICE_0) {
++	entry = dataStart(commonKeyAttributes, commonSize, &entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonKeyAttributes;
++	commonKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	setAttribute(CKA_END_DATE,entry, entrySize);
++    }
++    /* future common key attributes here */
++
++    /*
++     *  Parse Class variables
++     *
++     */
++    switch (p15Type) {
++    case PK15PuKey:
++	status = completePubKeyObject(current,currentSize);
++	break;
++    case PK15PvKey:
++	status = completePrivKeyObject(current,currentSize);
++	break;
++    default:
++	status=CKYLIBFAIL; /* shouldn't happen */
++	break;
++    }
++    return status;
++}
++
++CKYStatus PK15Object::completePrivKeyObject(const CKYByte *current,
++							CKYSize currentSize)
++{
++    const CKYByte *commonPrivKeyAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYBuffer empty;
++    CKYStatus status;
++    unsigned int modulusSize;
++    unsigned int i;
++
++    CKYBuffer_InitEmpty(&empty);
++    if (current == NULL) { return CKYINVALIDARGS; }
++
++    /* optional subclass = CommonPrivateKeyAttributes */
++    if (current[0] == ASN1_CHOICE_0) {
++	/*
++         * PKCS15CommonPrivateKeyAttributes
++         *
++         * subjectName   SEQUENCE optional
++         * keyIdentifiers CHOICE 0  optional
++         */
++	/* unwrap */
++	commonPrivKeyAttributes = 
++			dataStart(current, currentSize, &commonSize, false);
++	if (commonPrivKeyAttributes == NULL) { return CKYINVALIDDATA; }
++	/* point current to the next section (type attributes)  */
++	tagSize = commonPrivKeyAttributes - current;
++	current += commonSize + tagSize;
++	currentSize -= (commonSize +tagSize);
++	if (currentSize < 0) { return CKYINVALIDDATA; }
++
++ 	/* subjectName */
++	if (commonPrivKeyAttributes[0] == ASN1_SEQUENCE) {
++	    entry = dataStart(commonPrivKeyAttributes, commonSize, 
++							&entrySize, false);
++	    if (entry == NULL) { return CKYINVALIDARGS; }
++	    tagSize = entry - commonPrivKeyAttributes;
++	    commonPrivKeyAttributes += entrySize + tagSize;
++	    commonSize -= (entrySize +tagSize);
++	    setAttribute(CKA_SUBJECT, entry, entrySize);
++	}
++
++	/* keyIdentfiers */
++	/* future CommonPrivateKeyAttributes here */
++    }
++
++    
++    /* Type attributes (either PKCS15RSAPrivateKeyAttributes or 
++     * PKCS15ECCPrivateKeyAttributes) -- Not Optional */
++    if (current[0] != ASN1_CHOICE_1) { return CKYINVALIDDATA; }
++    /*
++     *    PKCS15RSAPrivateKeyAttributes
++     *        value PKCS15ObjectValue
++     *        modulusLength INTEGER
++     *        keyInfo SEQUENCE optional
++     *    PKCS15ECCPrivateKeyAttributes
++     *        value PKCS15ObjectValue
++     *        keyInfo SEQUENCE optional
++     */
++    /* unwrap */
++    commonPrivKeyAttributes = 
++			dataStart(current, currentSize, &commonSize, false);
++    if (commonPrivKeyAttributes == NULL) { return CKYINVALIDDATA; }
++
++    /* value */
++     /* don't support direct private key objects */
++    if (commonPrivKeyAttributes[0] == ASN1_CHOICE_0) { return CKYUNSUPPORTED;  }
++    if (commonPrivKeyAttributes[0] != ASN1_SEQUENCE) { return CKYINVALIDDATA; }
++    commonPrivKeyAttributes = dataStart(commonPrivKeyAttributes, commonSize, &commonSize, false);
++    if (commonPrivKeyAttributes == NULL) { return CKYINVALIDARGS; }
++    entry = dataStart(commonPrivKeyAttributes, commonSize, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDARGS; }
++    tagSize = entry - commonPrivKeyAttributes;
++    commonPrivKeyAttributes += entrySize + tagSize;
++    commonSize -= (entrySize +tagSize);
++    /* if we have a path, the actual object is in another file,
++     * tell the caller to get it and come back here */
++    status = objectPath.setObjectPath(entry, entrySize);
++    if (status != CKYSUCCESS) { return status; }
++
++    /* parse modulus size */
++    if ((keyType == rsa) && commonPrivKeyAttributes[0] == ASN1_INTEGER) {
++	entry = dataStart(commonPrivKeyAttributes, commonSize, 
++							&entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonPrivKeyAttributes;
++	commonPrivKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize > 4) {
++	   return CKYINVALIDDATA;
++	}
++	for (modulusSize = 0, i=0; i < entrySize; i++) {
++	   modulusSize = (modulusSize << 8) + entry[i];
++	}
++	setKeySize(modulusSize);
++    }
++
++    if (keyType == rsa) {
++	state = PK15StateComplete;
++	return CKYSUCCESS; /* we're done with RSA */
++    }
++
++    /* parse keyinfo  at this point all we are after is the EC_PARAM*/
++    if (commonPrivKeyAttributes[0] == ASN1_SEQUENCE) {
++	/* unwrap */
++	commonPrivKeyAttributes = dataStart(commonPrivKeyAttributes, 
++					commonSize, &commonSize, true);
++	if (commonPrivKeyAttributes == NULL) { return CKYINVALIDDATA; }
++	if (commonPrivKeyAttributes[0] == ASN1_SEQUENCE) {
++	    entry = dataStart(commonPrivKeyAttributes, commonSize, 
++							&entrySize, true);
++	    if (entry == NULL) { return CKYINVALIDDATA; }
++	    setAttribute(CKA_EC_PARAMS, entry, entrySize);
++	}
++    }
++    state = PK15StateComplete;
++    return CKYSUCCESS;
++}
++
++CKYStatus 
++PK15Object::completePubKeyObject(const CKYByte *current, CKYSize currentSize)
++{
++    const CKYByte *commonPubKeyAttributes;
++    CKYSize commonSize;
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++    CKYBuffer empty;
++    CKYStatus status;
++    unsigned int modulusSize;
++    unsigned int i;
++
++    CKYBuffer_InitEmpty(&empty);
++    if (current == NULL) { return CKYINVALIDDATA; }
++
++    /* optional subclass = CommonPublicKeyAttributes */
++    if (current[0] == ASN1_CHOICE_0) {
++	/*
++         * PKCS15CommonPublicKeyAttributes
++         *
++         * subjectName   SEQUENCE optional
++         * keyIdentifiers CHOICE 0  optional
++         */
++	/* unwrap */
++	commonPubKeyAttributes = 
++			dataStart(current, currentSize, &commonSize, false);
++	if (commonPubKeyAttributes == NULL) { return CKYINVALIDDATA; }
++	/* point current to the next section (type attributes)  */
++	tagSize = commonPubKeyAttributes - current;
++	current += commonSize + tagSize;
++	currentSize -= (commonSize +tagSize);
++	if (currentSize < 0) { return CKYINVALIDDATA; }
++
++ 	/* subjectName */
++	if (commonPubKeyAttributes[0] == ASN1_SEQUENCE) {
++	    entry = dataStart(commonPubKeyAttributes, commonSize, 
++							&entrySize, false);
++	    if (entry == NULL) { return CKYINVALIDARGS; }
++	    tagSize = entry - commonPubKeyAttributes;
++	    commonPubKeyAttributes += entrySize + tagSize;
++	    commonSize -= (entrySize +tagSize);
++	    setAttribute(CKA_SUBJECT, entry, entrySize);
++	}
++	/* future CommonPublicKeyAttributes here */
++    }
++
++    
++    /* Type attributes (either PKCS15RSAPublicKeyAttributes or 
++     * PKCS15ECCPublicKeyAttributes) -- Not Optional */
++    if (current[0] != ASN1_CHOICE_1) { return CKYINVALIDDATA; }
++    /*
++     *    PKCS15RSAPublicKeyAttributes
++     *        value PKCS15ObjectValue
++     *        modulusLength INTEGER
++     *        keyInfo SEQUENCE optional
++     *    PKCS15ECCPublicKeyAttributes
++     *        value PKCS15ObjectValue
++     *        keyInfo SEQUENCE optional
++     */
++    /* unwrap */
++    commonPubKeyAttributes = 
++			dataStart(current, currentSize, &commonSize, false);
++    if (commonPubKeyAttributes == NULL) { return CKYINVALIDDATA; }
++
++    /* value */
++    if (commonPubKeyAttributes[0] == ASN1_CHOICE_0) { 
++    	entry = dataStart(commonPubKeyAttributes, commonSize, 
++							&entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	status = completeRawPublicKey(entry, entrySize);
++	if (status != CKYSUCCESS) { return status; }
++    } else if (commonPubKeyAttributes[0] == ASN1_SEQUENCE) { 
++	entry = dataStart(commonPubKeyAttributes, commonSize, 
++							&entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonPubKeyAttributes;
++	commonPubKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	/* if we have a path, the actual object is in another file,
++	 * tell the caller to get it and come back here */
++	status = objectPath.setObjectPath(entry, entrySize);
++	if (status != CKYSUCCESS) { return status; }
++	state = PK15StateNeedRawPublicKey;
++    }
++
++    /* parse modulus size */
++    if ((keyType == rsa) && commonPubKeyAttributes[0] == ASN1_INTEGER) {
++	entry = dataStart(commonPubKeyAttributes, commonSize, 
++							&entrySize, false);
++	if (entry == NULL) { return CKYINVALIDARGS; }
++	tagSize = entry - commonPubKeyAttributes;
++	commonPubKeyAttributes += entrySize + tagSize;
++	commonSize -= (entrySize +tagSize);
++	if (entrySize > 4) {
++	   return CKYINVALIDDATA;
++	}
++	for (modulusSize = 0, i=0; i < entrySize; i++) {
++	   modulusSize = (modulusSize << 8) + entry[i];
++	}
++	setKeySize(modulusSize);
++    }
++
++    if (keyType == rsa) {
++	return CKYSUCCESS; /* we're done with RSA */
++    }
++
++    /* parse keyinfo  at this point all we are after is the EC_PARAM*/
++    if (commonPubKeyAttributes[0] == ASN1_SEQUENCE) {
++	/* unwrap */
++	commonPubKeyAttributes = dataStart(commonPubKeyAttributes, 
++					commonSize, &commonSize, true);
++	if (commonPubKeyAttributes == NULL) { return CKYINVALIDDATA; }
++	if (commonPubKeyAttributes[0] == ASN1_SEQUENCE) {
++	    entry = dataStart(commonPubKeyAttributes, commonSize, 
++							&entrySize, true);
++	    if (entry == NULL) { return CKYINVALIDDATA; } 
++	    setAttribute(CKA_EC_PARAMS, entry, entrySize);
++	}
++    }
++    return CKYSUCCESS;
++
++}
++
++CKYStatus 
++PK15Object::completeRawCertificate(const CKYByte *derCert, CKYSize derCertSize)
++{
++    SECStatus rv;
++    CCItem issuerItem, serialItem, derSerialItem, subjectItem,
++        validityItem, subjectKeyItem;
++    const char *certLabel;
++
++    setAttribute(CKA_VALUE, derCert, derCertSize);
++    rv = GetCertFieldItems(derCert, derCertSize, 
++        &issuerItem, &serialItem, &derSerialItem, &subjectItem, &validityItem,
++        &subjectKeyItem);
++    if (rv != SECSuccess) {
++	return CKYINVALIDDATA;
++    }
++    setAttribute(CKA_SERIAL_NUMBER, derSerialItem.data, derSerialItem.len);
++    setAttribute(CKA_SUBJECT, subjectItem.data, subjectItem.len);
++    setAttribute(CKA_ISSUER, issuerItem.data, issuerItem.len);
++    CKYBuffer_Replace(&pubKey, 0, subjectKeyItem.data, subjectKeyItem.len);
++    /* if we didn't get a label, set one based on the CN */
++    certLabel = getLabel();
++    if ((certLabel == NULL) || (*certLabel == 0)) {
++	CKYBuffer subject;
++	char *newLabel;
++	CKYBuffer_InitFromData(&subject, subjectItem.data, subjectItem.len);
++	newLabel = GetUserName(&subject);
++	if (newLabel) {
++	    setAttribute(CKA_LABEL, (CKYByte *)newLabel, 
++					(CKYSize) strlen(newLabel)-1);
++	    delete [] newLabel;
++	}
++	CKYBuffer_FreeData(&subject);
++    }
++    state = PK15StateComplete;
++    return CKYSUCCESS;
++}
++
++CKYStatus 
++PK15Object::completeRawPublicKey(const CKYByte *current, CKYSize size)
++{
++    const CKYByte *entry;
++    CKYSize entrySize;
++    CKYSize tagSize;
++
++    if ((current == NULL) || (current[0] != ASN1_SEQUENCE)) {
++	return CKYINVALIDDATA;
++    }
++    /* unwrap*/
++    current = dataStart(current, size, &size, false);
++    if (current == NULL) { return CKYINVALIDDATA; }
++
++    /* modulus */
++    if (current[0] != ASN1_INTEGER) { return CKYINVALIDDATA; }
++    entry = dataStart(current, size, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDDATA; }
++    tagSize = entry - current;
++    current += entrySize + tagSize;
++    size -= (entrySize +tagSize);
++    if (size < 0) { return CKYINVALIDDATA; }
++    if ((entry[0] == 0) && (entrySize > 1)) {
++	entry++; entrySize--;
++    }
++    setAttribute(CKA_MODULUS, entry, entrySize);
++
++    /* exponent */
++    if (current[0] != ASN1_INTEGER) { return CKYINVALIDDATA; }
++    entry = dataStart(current, size, &entrySize, false);
++    if (entry == NULL) { return CKYINVALIDDATA; }
++    tagSize = entry - current;
++    current += entrySize + tagSize;
++    size -= (entrySize +tagSize);
++    if (size < 0) { return CKYINVALIDDATA; }
++    if ((entry[0] == 0) && (entrySize > 1)) {
++	entry++; entrySize--;
++    }
++    setAttribute(CKA_PUBLIC_EXPONENT, entry, entrySize);
++    state = PK15StateComplete;
++    return CKYSUCCESS;
++}
++
+ DEREncodedSignature::DEREncodedSignature(const CKYBuffer *derSig)
+ {
+ 
+@@ -1483,9 +2585,9 @@ int DEREncodedSignature::getRawSignature
+ 
+     CKYBuffer_Zero(rawSig);
+ 
+-    unsigned int seq_length = 0;
+-    unsigned int expected_sig_len = ( (keySize + 7) / 8 ) * 2 ;
+-    unsigned int expected_piece_size = expected_sig_len / 2 ;
++    CKYSize seq_length = 0;
++    CKYSize expected_sig_len = ( (keySize + 7) / 8 ) * 2 ;
++    CKYSize expected_piece_size = expected_sig_len / 2 ;
+ 
+     /* unwrap the sequence */
+     buf = dataStart(CKYBuffer_Data(&derEncodedSignature), CKYBuffer_Size(&derEncodedSignature),&seq_length, false);
+@@ -1494,7 +2596,7 @@ int DEREncodedSignature::getRawSignature
+ 
+     // unwrap first multi byte integer
+    
+-    unsigned int int_length = 0;
++    CKYSize int_length = 0;
+     const CKYByte *int1Buf = NULL;
+     const CKYByte *int2Buf = NULL;
+ 
+@@ -1525,7 +2627,7 @@ int DEREncodedSignature::getRawSignature
+ 
+     // unwrap second multi byte integer
+ 
+-    unsigned int second_int_length = 0;
++    CKYSize second_int_length = 0;
+ 
+     int2Buf = dataStart(buf, seq_length, &second_int_length, false);
+ 
+@@ -1552,3 +2654,91 @@ int DEREncodedSignature::getRawSignature
+ 
+     return CKYSUCCESS;
+ }
++
++DEREncodedTokenInfo::DEREncodedTokenInfo(CKYBuffer *derTokenInfo)
++{
++    const CKYByte *current = CKYBuffer_Data(derTokenInfo);
++    const CKYByte *entry;
++    CKYSize size = CKYBuffer_Size(derTokenInfo);
++    CKYSize entrySize;
++    CKYSize tagSize;
++    /* set token name, etc */
++
++    version = -1;
++    CKYBuffer_InitEmpty(&serialNumber);
++    manufacturer = NULL;
++    tokenName = NULL;
++
++    if (current[0] != ASN1_SEQUENCE) {
++	return; /* just use the defaults */
++    }
++    /* unwrap */
++    current = dataStart(current, size, &size, false);
++    if (current == NULL) return;
++
++    /* parse the version */
++    if (current[0] != ASN1_INTEGER) { return; }
++    entry = dataStart(current, size, &entrySize, false);
++    if (entry == NULL) return;
++    tagSize = entry - current;
++    current += tagSize + entrySize;
++    size -= tagSize + entrySize;
++    if (entrySize < 1) {
++	version = *entry;
++    }
++    if (size < 0) return;
++
++    /* get the serial number */
++    if (current[0] != ASN1_OCTET_STRING) { return ; }
++    entry = dataStart(current, size, &entrySize, false);
++    if (entry == NULL) return;
++    tagSize = entry - current;
++    current += tagSize + entrySize;
++    size -= tagSize + entrySize;
++    CKYBuffer_Replace(&serialNumber, 0, entry, entrySize);
++    /* should we fake the cuid here? */
++
++    /* get the optional manufacture ID */
++    if (current[0] == ASN1_UTF8_STRING) {
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) return;
++	tagSize = entry - current;
++	current += tagSize + entrySize;
++	size -= tagSize + entrySize;
++	manufacturer = (char *)malloc(entrySize+1);
++	if (manufacturer) {
++	    memcpy(manufacturer, entry, entrySize);
++	    manufacturer[entrySize] = 0;
++	}
++    }
++
++    /* get the optional token name */
++    /* most choices are constructed, 
++     * but this one isn't explicity add the flag */
++    if ((current[0]|ASN1_CONSTRUCTED) == ASN1_CHOICE_0) {
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) return;
++	tagSize = entry - current;
++	current += tagSize + entrySize;
++	size -= tagSize + entrySize;
++	tokenName = (char *)malloc(entrySize+1);
++	if (tokenName) {
++	    memcpy(tokenName, entry, entrySize);
++	    tokenName[entrySize] = 0;
++	}
++    }
++
++    /* parsing flags */
++    if (current[0] == ASN1_BIT_STRING) {
++    /* recordinfo parsing would go here */
++	unsigned long bits;
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) return;
++	tagSize = entry - current;
++	current += tagSize + entrySize;
++	size -= tagSize + entrySize;
++	bits = GetBits(entry, entrySize,8,2);
++    }
++    return;
++}
++
+diff -up ./src/coolkey/object.h.p15 ./src/coolkey/object.h
+--- ./src/coolkey/object.h.p15	2015-07-06 10:27:55.770827267 -0700
++++ ./src/coolkey/object.h	2015-07-06 10:27:55.785826984 -0700
+@@ -27,6 +27,33 @@
+ 
+ using std::list;
+ 
++/*
++ * Sigh PKCS 15 is heavily ASN.1...
++ */
++const CKYByte  ASN1_BOOLEAN           = 0x01;
++const CKYByte  ASN1_INTEGER           = 0x02;
++const CKYByte  ASN1_BIT_STRING        = 0x03;
++const CKYByte  ASN1_OCTET_STRING      = 0x04;
++const CKYByte  ASN1_ENUMERATED        = 0x0a;
++const CKYByte  ASN1_UTF8_STRING       = 0x0c;
++const CKYByte  ASN1_GENERALIZED_TIME  = 0x18;
++const CKYByte  ASN1_CONSTRUCTED       = 0x20;
++const CKYByte  ASN1_SEQUENCE          = 0x30;
++const CKYByte  ASN1_CHOICE_0          = 0xa0;
++const CKYByte  ASN1_CHOICE_1          = 0xa1;
++const CKYByte  ASN1_CHOICE_2          = 0xa2;
++const CKYByte  ASN1_CHOICE_3          = 0xa3;
++
++const CKYBitFlags BROKEN_FLAG = 0x80000000;
++const unsigned int PK11_INVALID_KEY_REF = -1;
++
++const CKYByte PK15X509CertType = ASN1_SEQUENCE;
++const CKYByte PK15RSAKeyType   = ASN1_SEQUENCE;
++const CKYByte PK15ECCKeyType   = ASN1_CHOICE_0;
++const CKYByte PK15DHKeyType    = ASN1_CHOICE_1;
++const CKYByte PK15DSAKeyType   = ASN1_CHOICE_2;
++const CKYByte PK15KEAKeyType   = ASN1_CHOICE_3;
++
+ class PKCS11Attribute {
+   private:
+     CK_ATTRIBUTE_TYPE type;
+@@ -52,9 +79,30 @@ class PKCS11Attribute {
+     PKCS11Attribute() : type(0){ CKYBuffer_InitEmpty(&value); }
+     PKCS11Attribute(CK_ATTRIBUTE_TYPE type_, const CKYBuffer *value_)
+         : type(type_) { CKYBuffer_InitFromCopy(&value, value_); }
++    PKCS11Attribute(CK_ATTRIBUTE_TYPE type_, const CKYByte *data_,
++	 CKYSize size_) : type(type_) 
++		{ CKYBuffer_InitFromData(&value, data_, size_); }
+     ~PKCS11Attribute() { CKYBuffer_FreeData(&value); }
+ };
+ 
++class PK15ObjectPath {
++  private:
++    CKYBuffer path;
++    CKYOffset index;
++    CKYSize   length;
++   public:
++    PK15ObjectPath() : index(0), length(0) { CKYBuffer_InitEmpty(&path); }
++    PK15ObjectPath(const PK15ObjectPath &cpy) : 
++		index(cpy.index), length(cpy.length) 
++		{ CKYBuffer_InitFromCopy(&path, &cpy.path); }
++    ~PK15ObjectPath() { CKYBuffer_FreeData(&path); }
++    const CKYBuffer *getPath() const { return &path; }
++    CKYOffset getIndex() const { return index; }
++    CKYSize getLength() const { return length; }
++    CKYStatus setObjectPath(const CKYByte *entry, CKYSize size);
++};
++
++
+ class PKCS11Object {
+   public:
+     enum KeyType {
+@@ -72,6 +120,8 @@ class PKCS11Object {
+     unsigned long muscleObjID;
+     CK_OBJECT_HANDLE handle;
+     char *label;
++    unsigned int keySize;
++    CK_USER_TYPE user;
+ 
+     void parseOldObject(const CKYBuffer *data);
+     void parseNewObject(const CKYBuffer *data);
+@@ -82,19 +132,37 @@ class PKCS11Object {
+   protected :
+     char *name;
+     KeyType keyType;
++    unsigned int keyRef;
+     CKYBuffer pubKey;
++    CKYBuffer authId;
++    CKYBuffer pinAuthId;
++    PK15ObjectPath objectPath;
+ 
+   public:
+     PKCS11Object(unsigned long muscleObjID, CK_OBJECT_HANDLE handle);
+     PKCS11Object(unsigned long muscleObjID, const CKYBuffer *data,
+         CK_OBJECT_HANDLE handle);
+-    ~PKCS11Object() { delete label; delete name; CKYBuffer_FreeData(&pubKey);
+-			attributes.clear(); }
++    virtual ~PKCS11Object() { delete [] label; delete [] name; 
++		CKYBuffer_FreeData(&pubKey); CKYBuffer_FreeData(&authId);
++		CKYBuffer_FreeData(&pinAuthId); attributes.clear(); }
+ 
+     PKCS11Object(const PKCS11Object& cpy) :
+         attributes(cpy.attributes), muscleObjID(cpy.muscleObjID),
+-        handle(cpy.handle), label(NULL),  name(NULL), keyType(cpy.keyType) { 
+-			CKYBuffer_InitFromCopy(&pubKey,&cpy.pubKey); }
++        handle(cpy.handle), label(NULL),  keySize(cpy.keySize), 
++	user(cpy.user), name(NULL), keyType(cpy.keyType), keyRef(cpy.keyRef),
++	objectPath(cpy.objectPath) { 
++			/* label is just a cached value, don't need 
++  			 * to copy it. */
++			if (cpy.name != NULL) {
++			    int len = strlen(cpy.name);
++			    name= new char [len+1];
++			    if (name) {
++				memcpy(name,cpy.name,len+1);
++			    }
++			}
++			CKYBuffer_InitFromCopy(&pubKey,&cpy.pubKey);
++			CKYBuffer_InitFromCopy(&authId,&cpy.authId);
++			CKYBuffer_InitFromCopy(&pinAuthId,&cpy.pinAuthId); }
+ 
+ 
+     unsigned long getMuscleObjID() const { return muscleObjID; }
+@@ -107,6 +175,8 @@ class PKCS11Object {
+ 
+     void setAttribute(CK_ATTRIBUTE_TYPE type, const CKYBuffer *value);
+     void setAttribute(CK_ATTRIBUTE_TYPE type, const char *);
++    void setAttribute(CK_ATTRIBUTE_TYPE type, const CKYByte *data, 
++							CKYSize size);
+     /* bools and ulongs are too close, don't abuse function overloading
+      * for these cases */
+     void setAttributeBool(CK_ATTRIBUTE_TYPE type, CK_BBOOL);
+@@ -124,14 +194,21 @@ class PKCS11Object {
+ 	return &pubKey;
+     }
+ 
+-    KeyType getKeyType() const { return keyType;}
++    KeyType getKeyType(void) const { return keyType;}
++    unsigned int getKeySize(void) const { return keySize; }
++    unsigned int getKeyRef(void) const { return keyRef; }
++    CK_USER_TYPE getUser(void) const { return user; }
+     void setKeyType(KeyType theType) { keyType = theType; }
++    void setKeySize(unsigned int keySize_) { keySize = keySize_; }
++    const CKYBuffer *getAuthId(void) const { return &authId; }
++    const CKYBuffer *getPinAuthId(void) const { return &pinAuthId; }
++    const PK15ObjectPath &getObjectPath() const { return objectPath; }
++    void completeKey(const PKCS11Object &cert);
+ };
+ 
+ class Key : public PKCS11Object {
+   public:
+     Key(unsigned long muscleObjID, const CKYBuffer *data, CK_OBJECT_HANDLE handle);
+-    void completeKey(const PKCS11Object &cert);
+ };
+ 
+ class Cert : public PKCS11Object {
+@@ -155,6 +232,84 @@ class CACCert : public PKCS11Object {
+     CACCert(CKYByte instance, const CKYBuffer *derCert);
+ };
+ 
++typedef enum { PK15StateInit, PK15StateNeedObject, 
++	PK15StateNeedRawPublicKey,PK15StateNeedRawCertificate, 
++	PK15StateComplete } PK15State;
++
++typedef enum {PK15PvKey, PK15PuKey, PK15Cert, PK15AuthObj} PK15ObjectType;
++const unsigned int PK15_INVALID_KEY_REF = -1;
++
++class PK15Object : public PKCS11Object {
++  private:
++    CKYByte	instance;
++    PK15ObjectType p15Type;
++    PK15State state;
++    P15PinInfo pinInfo;
++
++    CKYStatus completeCertObject(const CKYByte *buf, CKYSize size);
++    CKYStatus completeAuthObject(const CKYByte *buf, CKYSize size);
++    CKYStatus completeKeyObject(const CKYByte *buf, CKYSize size);
++    CKYStatus completePrivKeyObject(const CKYByte *buf, CKYSize size);
++    CKYStatus completePubKeyObject(const CKYByte *buf, CKYSize size);
++    CKYStatus completeRawPublicKey(const CKYByte *buf, CKYSize size);
++    CKYStatus completeRawCertificate(const CKYByte *buf, CKYSize size);
++   
++    CKYBitFlags defaultCommonBits() {
++	return ((p15Type == PK15PvKey) && (CKYBuffer_Size(&authId) != 0)) ?
++		P15FlagsPrivate : 0;
++    }
++    CKYBitFlags defaultUsageBits() {
++	CKYBitFlags sign, recover, encrypt;
++	switch (p15Type) {
++	case PK15PuKey:
++	    sign = P15UsageVerify; recover = P15UsageVerifyRecover;
++	    encrypt = P15UsageEncrypt;
++	    break;
++	case PK15PvKey:
++	    sign = P15UsageSign; recover = P15UsageSignRecover;
++	    encrypt = P15UsageDecrypt;
++	    break;
++	default:
++	    sign = 0; recover = 0; encrypt = 0;
++	    break;
++	}
++	switch(keyType) {
++	case rsa:
++	    return sign | recover | encrypt;
++	case ecc:
++	    return sign | P15UsageDerive;
++	default:
++	    break;
++	}
++	return 0;
++    }
++    CKYBitFlags defaultAccessBits() {
++	switch (p15Type) {
++	case PK15PuKey:
++		return P15AccessExtractable | P15AccessLocal;
++	case PK15PvKey:
++		return P15AccessSensitive | P15AccessLocal;
++	default:
++		break;
++	}
++	return 0;
++    }
++    CKYBitFlags defaultPinBits() {
++	return ((p15Type == PK15AuthObj) ?  P15PinInitialized : 0);
++    }
++		
++  public:
++    PK15Object(CKYByte inst, PK15ObjectType type, 
++					const CKYByte *derObject, CKYSize size);
++    CKYStatus completeObject(const CKYByte *data, CKYSize size);
++    PK15State getState(void) const { return state; }
++    bool isSO(void) const { return 
++		(pinInfo.pinFlags & P15PinSOPin) ? true : false; }
++    bool isLocal(void) const { return 
++			(pinInfo.pinFlags & P15PinLocal) ? true : false; }
++    const P15PinInfo *getPinInfo(void) const { return &pinInfo; }
++};
++
+ class Reader : public PKCS11Object {
+   public:
+     Reader(unsigned long muscleObjID, CK_OBJECT_HANDLE handle, 
+@@ -180,6 +335,21 @@ class DEREncodedSignature  {
+ 
+ };
+ 
++class DEREncodedTokenInfo {
++public:
++   int   version;
++   CKYBuffer serialNumber;
++   char *manufacturer;
++   char *tokenName;
++   public :
++   DEREncodedTokenInfo(CKYBuffer *derTokenInfo);
++   ~DEREncodedTokenInfo() { 
++	CKYBuffer_FreeData(&serialNumber);
++	free(manufacturer);
++	free(tokenName);
++    }
++};
++
+ class AttributeMatch {
+ 
+   private:
+@@ -202,6 +372,9 @@ makeLEUInt(const CKYBuffer *buf, unsigne
+             (b[offset+0] <<  0) ;
+ }
+ 
++const CKYByte* dataStart(const CKYByte *buf, CKYSize length,
++                        CKYSize *data_length, bool includeTag);
++
+ // fixed object ID constants 
+ #define READER_ID 0x72300000 /* 'r0\0\0' */
+ #define COMBINED_ID 0x7a300000 /* 'z0\0\0' */
+diff -up ./src/coolkey/pkcs11t.h.p15 ./src/coolkey/pkcs11t.h
+--- ./src/coolkey/pkcs11t.h.p15	2015-07-06 10:27:55.770827267 -0700
++++ ./src/coolkey/pkcs11t.h	2015-07-06 10:29:32.293005407 -0700
+@@ -274,6 +274,7 @@ typedef CK_ULONG          CK_USER_TYPE;
+ #define CKU_SO    0
+ /* Normal user */
+ #define CKU_USER  1
++#define CKU_CONTEXT_SPECIFIC 2
+ 
+ 
+ /* CK_STATE enumerates the session states */
+@@ -492,6 +493,9 @@ typedef CK_ULONG          CK_ATTRIBUTE_T
+ #define CKA_RESET_ON_INIT      0x00000301
+ #define CKA_HAS_RESET          0x00000302
+ 
++/* new for v2.20 */
++#define CKA_ALWAYS_AUTHENTICATE  0x00000202
++
+ #define CKA_VENDOR_DEFINED     0x80000000
+ 
+ 
+diff -up ./src/coolkey/slot.cpp.p15 ./src/coolkey/slot.cpp
+--- ./src/coolkey/slot.cpp.p15	2015-07-06 10:27:55.782827040 -0700
++++ ./src/coolkey/slot.cpp	2015-07-06 10:27:55.786826965 -0700
+@@ -54,6 +54,11 @@ const CKYByte ATR2[] =
+ {  0x3B, 0x6F, 0x00, 0xFF, 0x52, 0x53, 0x41, 0x53, 0x65, 0x63, 0x75, 0x72,
+    0x49, 0x44, 0x28, 0x52, 0x29, 0x31, 0x30 };
+ 
++/* PKCS #15 AID */
++const CKYByte P15AID[] =
++{ 0xa0, 0, 0,  0, 0x63, 'P', 'K', 'C', 'S', '-', '1', '5'};
++
++
+ 
+ /* ECC curve information
+  *    Provide information for the limited set of curves supported by our smart card(s).
+@@ -405,19 +410,29 @@ SlotList::updateReaderList()
+ 
+ Slot::Slot(const char *readerName_, Log *log_, CKYCardContext* context_)
+     : log(log_), readerName(NULL), personName(NULL), manufacturer(NULL),
++	tokenManufacturer(NULL),
+ 	slotInfoFound(false), context(context_), conn(NULL), state(UNKNOWN), 
+ 	isVersion1Key(false), needLogin(false), fullTokenName(false), 
+-	mCoolkey(false), mOldCAC(false),mCACLocalLogin(false),
+-	pivContainer(-1), pivKey(-1), mECC(false), 
++	mCoolkey(false), mOldCAC(false), mCACLocalLogin(false),
++	pivContainer(-1), pivKey(-1), mECC(false), p15aid(0), p15odfAddr(0),
++	p15tokenInfoAddr(0), p15Instance(0),
+ #ifdef USE_SHMEM
+ 	shmem(readerName_),
+ #endif
+ 	sessionHandleCounter(1), objectHandleCounter(1)
+ {
++  int i; 
++
++  for (i=0; i < MAX_AUTH_USERS; i++) {
++    auth[i]=NULL;
++  }
+ 
+   tokenFWVersion.major = 0;
+   tokenFWVersion.minor = 0;
+-
++  CKYBuffer_InitFromData(&p15AID, P15AID, sizeof(P15AID));
++  CKYBuffer_InitEmpty(&p15tokenInfo);
++  CKYBuffer_InitEmpty(&p15odf);
++  CKYBuffer_InitEmpty(&p15serialNumber);
+ 
+   try {
+     conn = CKYCardConnection_Create(context);
+@@ -433,6 +448,8 @@ Slot::Slot(const char *readerName_, Log
+     loggedIn = false;
+     pinCache.invalidate();
+     pinCache.clearPin();
++    contextPinCache.invalidate();
++    contextPinCache.clearPin();
+     //readSlotInfo();
+     manufacturer = strdup("Unknown");
+     if (!manufacturer) {
+@@ -515,12 +532,23 @@ Slot::~Slot()
+     if (manufacturer) {
+ 	free(manufacturer);
+     }
++    if (tokenManufacturer) {
++	free(tokenManufacturer);
++    }
+     CKYBuffer_FreeData(&nonce);
+     CKYBuffer_FreeData(&cardATR);
+     CKYBuffer_FreeData(&mCUID);
++    CKYBuffer_FreeData(&p15AID);
++    CKYBuffer_FreeData(&p15odf);
++    CKYBuffer_FreeData(&p15tokenInfo);
++    CKYBuffer_FreeData(&p15serialNumber);
+     for (int i=0; i < MAX_CERT_SLOTS; i++) {
+ 	CKYBuffer_FreeData(&cardAID[i]);
+     }
++    for (int i=0; i < MAX_AUTH_USERS; i++) {
++	if (auth[i]) delete auth[i];
++	auth[i]=NULL;
++    }
+ }
+ 
+ template <class C>
+@@ -637,9 +665,10 @@ Slot::getPIVLoginType(void)
+     }
+ done:
+     CKYBuffer_FreeData(&buffer);
+-    return true;
++    return local;
+ }
+ 
++
+ void
+ Slot::connectToToken()
+ {
+@@ -745,7 +774,7 @@ Slot::connectToToken()
+ 	 /* CARD is a PIV card */
+ 	 state |= PIV_CARD | APPLET_SELECTABLE | APPLET_PERSONALIZED;
+ 	 isVersion1Key = 0;
+-	 needLogin = 1;
++	 needLogin = true;
+          mCoolkey = 0;
+ 	 mOldCAC = 0;
+ 	 mCACLocalLogin = getPIVLoginType();
+@@ -757,12 +786,22 @@ Slot::connectToToken()
+ 	status = getCACAid();
+ 	if (status != CKYSUCCESS) {
+ 	    log->log("CAC Select failed 0x%x\n", status);
+-	    if (status == CKYSCARDERR) {
++	    status = getP15Params();
++	    if (status != CKYSUCCESS) {
++	    	if (status == CKYSCARDERR) {
+ 		    log->log("Card Failure 0x%x\n",
+ 				CKYCardConnection_GetLastError(conn));
+ 		    disconnect();
+-	    }
+-	    /* CARD is unknown */
++	    	}
++	        /* CARD is unknown */
++	        return;
++	    } 
++	    /* enable PCKS 15 */
++	    state |= P15_CARD | APPLET_SELECTABLE | APPLET_PERSONALIZED;
++	    isVersion1Key = 0;
++	    needLogin = false; /* get it from token info */
++            mCoolkey = 0;
++	    mCACLocalLogin = false;
+ 	    return;
+ 	}
+ 	state |= CAC_CARD | APPLET_SELECTABLE | APPLET_PERSONALIZED;
+@@ -771,7 +810,7 @@ Slot::connectToToken()
+          * other apps may be running now, so resetting the cac is a bit
+          * unfriendly */
+ 	isVersion1Key = 0;
+-	needLogin = 1;
++	needLogin = true;
+         mCoolkey = 0;
+ 	mCACLocalLogin = false;
+ 	return;
+@@ -841,6 +880,8 @@ Slot::invalidateLogin(bool hard)
+     } else {
+ 	loggedIn = false;
+ 	pinCache.invalidate();
++	contextPinCache.invalidate();
++	contextPinCache.clearPin();
+ 	if (hard) {
+ 	    pinCache.clearPin();
+ 	}
+@@ -951,6 +992,414 @@ done:
+     return status;
+ }
+ 
++CKYStatus Slot::getP15Params()
++{
++    CKYStatus status = CKYSCARDERR;
++    int i;
++    CKYISOStatus apduRC;
++
++    /* read the EF(DIR) */  
++    status = CACApplet_SelectFile(conn, 0x2f00, &apduRC);
++    if (status == CKYSUCCESS) {
++	CKYBuffer record;
++
++	CKYBuffer_InitEmpty(&record);
++	/* dump it out */
++        for (i=1; i < 255; i++) {
++	    status = P15Applet_ReadRecord(conn, i, 0, P15_READ_P1, 255,
++			&record, &apduRC);
++	    if (status != CKYSUCCESS) {
++		log->log("EF(DIR) Read Record %d failed 0x%x apduRC=0x%x\n",
++							 i, status, apduRC);
++		break;
++	    }
++	}
++	CKYBuffer_FreeData(&record);
++	return CKYSCARDERR; /* don't yet support EF(DIR)*/
++
++    } else {
++	log->log("EF(DIR) Select failed 0x%x apduRC=0x%0x\n", status, apduRC);
++	p15aid = 0; /* use the default */
++	p15odfAddr=0x5031;
++	p15tokenInfoAddr=0x5032;
++    }
++   
++    status = CKYApplet_SelectFile(conn, &p15AID, &apduRC);
++    if (status != CKYSUCCESS) {
++	log->log("DF(PKCS-15) select failed 0x%x apduRC=0x%0x\n", status,
++				apduRC);
++	return status;
++    }
++    status = P15Applet_SelectFile(conn, p15tokenInfoAddr, &apduRC);
++    if (status != CKYSUCCESS) {
++	log->log("EF(TokenInfo) select failed 0x%x apduRC=0x%0x\n", status, 
++				apduRC);
++	return status;
++    }
++    /* dump it out */
++    CKYBuffer_Resize(&p15tokenInfo, 0);
++    status = P15Applet_ReadBinary(conn, 0, 0, 0, 0, &p15tokenInfo, &apduRC);
++    if (status != CKYSUCCESS) {
++	log->log("EF(TokenInfo) Read binary failed 0x%x apduRC=0x%x\n", status,
++				 apduRC);
++	    return status;
++    }
++    status = P15Applet_SelectFile(conn, p15odfAddr, &apduRC);
++    if (status != CKYSUCCESS) {
++	log->log("EF(ODF) select failed 0x%x apduRC=0x%0x\n", status,
++				apduRC);
++	return status;
++    }
++
++    CKYBuffer_Resize(&p15odf, 0);
++    status = P15Applet_ReadBinary(conn, 0, 0, 0, 0, &p15odf, &apduRC);
++    if (status != CKYSUCCESS) {
++	    log->log("EF(ODF) Read binary failed 0x%x apduRC=0x%x\n", status,
++				 apduRC);
++	    return status; 
++    }
++
++    return CKYSUCCESS;
++}
++
++CKYStatus
++Slot::readFromPath(const PK15ObjectPath &obj, CKYBuffer *file)
++{
++    CKYStatus status;
++    CKYISOStatus apduRC;
++    CKYSize bufSize;
++    CKYOffset index = obj.getIndex();
++    CKYSize length = obj.getLength();
++
++    CKYBuffer_Resize(file, 0);
++    status = selectPath(obj.getPath(), &apduRC);
++    if (status != CKYSUCCESS) {
++	return status;
++    }
++    status = P15Applet_ReadBinary(conn, index, 0, 0, 
++			(length >= 256)?0:length, file, &apduRC);
++    if (status != CKYSUCCESS) {
++	return status;
++    }
++
++    /* if we asked for a specific length and got it, or we asked for 
++     * an indeterminate length and got less than 256 bytes, then we 
++     * got everything. */
++    bufSize = CKYBuffer_Size(file);
++    if ((length && (bufSize >= length)) || ((length == 0) && (bufSize < 256))) {
++	/* we've already got it all */
++	return status;
++    }
++    if (bufSize < 0x82) {
++	/* make sure we have enough bytes to handle the worst case ANS.1
++         * mistake */
++	return CKYINVALIDDATA;
++    }
++    
++    if (length == 0) {
++	/* we don't yet know how long the length is, use the ASN.1 parser to
++         * find out. We lie to dataStart about actual size so that it won't
++         * fail since we know we don't have the whole buffer yet.*/
++	(void) dataStart(CKYBuffer_Data(file), 65535, &length, true);
++    }
++    if (length > 65535) {
++	return CKYINVALIDDATA;
++    }
++    while ((bufSize =CKYBuffer_Size(file)) < length) {
++	CKYSize tmpLength = length - bufSize;
++
++	if (tmpLength >= 256) tmpLength = 0;
++
++	status = P15Applet_ReadBinary(conn, (unsigned short)(index+bufSize),
++			 0, 0, tmpLength, file, &apduRC);
++	if (status != CKYSUCCESS) {
++	    return status;
++	}
++    }
++	
++    return CKYSUCCESS;
++}
++
++void
++Slot::parseEF_TokenInfo(void)
++{
++    DEREncodedTokenInfo derTokenInfo(&p15tokenInfo);
++    const CKYBuffer *serial=&derTokenInfo.serialNumber;
++
++    if (derTokenInfo.version >= 0) {
++	tokenFWVersion.major = derTokenInfo.version;
++	tokenFWVersion.minor = 0;
++    }
++
++    if (CKYSize(serial) != 0) {
++	CKYBuffer_Replace(&p15serialNumber, 0, CKYBuffer_Data(serial),
++						CKYBuffer_Size(serial));
++    }
++
++    if (derTokenInfo.manufacturer) {
++	if (tokenManufacturer) {
++	    free(tokenManufacturer);
++	    tokenManufacturer = NULL;
++	}
++	tokenManufacturer = derTokenInfo.manufacturer;
++	derTokenInfo.manufacturer = NULL; /* adopted */
++    }
++
++    if (derTokenInfo.tokenName) {
++	if (personName) {
++	    free(personName);
++	    personName = NULL;
++	}
++	personName = derTokenInfo.tokenName;
++	derTokenInfo.tokenName = NULL; /* adopted */
++	fullTokenName = true;
++    }
++    return;
++}
++
++void
++Slot::parseEF_ODF(void)
++{
++    const CKYByte *current = CKYBuffer_Data(&p15odf);
++    CKYSize size = CKYBuffer_Size(&p15odf);
++    CKYBuffer files;
++
++    CKYBuffer_InitEmpty(&files);
++
++    while (size > 0) {
++	const CKYByte *entry;
++	CKYSize entrySize;
++	CKYSize tagSize;
++	CKYByte type, type1;
++	PK15ObjectPath objPath;
++	bool skip;
++
++	type = current[0];
++	entry = dataStart(current, size, &entrySize, false);
++	if (entry == NULL) { break; }
++	tagSize = entry-current;
++	current += entrySize + tagSize;
++	size -= (entrySize + tagSize);
++
++	/* skip those entries we aren't going to parse */
++	skip = false;
++	switch (type) {
++	case 0xa2: skip=true; break; /* skip EF(PuKDF-trusted) */
++	case 0xa3: skip=true; break; /* skip EF(SKDF) */
++	case 0xa7: skip=true; break; /* skip EF(DODF) */
++	default: skip=true; break;
++	case 0xa0:        /* EF(PvKDF) */
++	case 0xa1:        /* EF(PuKDF) */
++	case 0xa4:        /* EF(CDF) */
++	case 0xa5:        /* EF(CDF-trusted) */
++	case 0xa6:        /* EF(CDF-useful) */
++	case 0xa8: break; /* EF(AODF) */
++ 	}
++	if (skip) continue;
++
++	type1 = entry[0];
++	/* unwrap */
++	entry = dataStart(entry, entrySize, &entrySize, false);
++	if (entry == NULL) continue;
++	if (type1 == ASN1_SEQUENCE) {
++	    objPath.setObjectPath(entry, entrySize);
++	    CKYBuffer_Resize(&files, 0);
++	    readFromPath(objPath, &files);
++	    entry = CKYBuffer_Data(&files);
++	    entrySize = CKYBuffer_Size(&files);
++	} else if (type1 != ASN1_CHOICE_0) {
++	    continue;
++	}
++	
++	switch (type) {
++	case 0xa0: parseEF_Directory(entry, entrySize, PK15PvKey); break;
++	case 0xa1: parseEF_Directory(entry, entrySize, PK15PuKey); break;
++	case 0xa4: parseEF_Directory(entry, entrySize, PK15Cert); break;
++	case 0xa5: parseEF_Directory(entry, entrySize, PK15Cert); break;
++	case 0xa6: parseEF_Directory(entry, entrySize, PK15Cert); break;
++	case 0xa8: parseEF_Directory(entry, entrySize, PK15AuthObj); break;
++	default: break;
++	}
++    }
++    CKYBuffer_FreeData(&files);
++    return;
++}
++
++
++class ObjectCertCKAIDMatch {
++  private:
++    const CKYBuffer *cka_id;
++  public:
++    ObjectCertCKAIDMatch(const CKYBuffer *cka_id_) : cka_id(cka_id_) {}
++    bool operator()(const PKCS11Object& obj) {
++	const CKYBuffer *id;
++        const CKYBuffer *objClass;
++	CK_OBJECT_CLASS certClass = CKO_CERTIFICATE;
++	objClass = obj.getAttribute(CKA_CLASS);
++        if (objClass == NULL || !CKYBuffer_DataIsEqual(objClass, 
++				(CKYByte *)&certClass, sizeof(certClass))) {
++	    return false;
++        }
++ 	id = obj.getAttribute(CKA_ID);
++        return (id != NULL && CKYBuffer_IsEqual(id,cka_id)) ? true : false;
++    }
++};
++
++class ObjectKeyCKAIDMatch {
++  private:
++    const CKYBuffer *cka_id;
++  public:
++    ObjectKeyCKAIDMatch(const CKYBuffer *cka_id_) : cka_id(cka_id_) {}
++    bool operator()(const PKCS11Object& obj) {
++	const CKYBuffer *id;
++        const CKYBuffer *objClass;
++	CK_OBJECT_CLASS keyClass = CKO_PRIVATE_KEY;
++	objClass = obj.getAttribute(CKA_CLASS);
++        if (objClass == NULL || !CKYBuffer_DataIsEqual(objClass, 
++				(CKYByte *)&keyClass, sizeof(keyClass))) {
++	    return false;
++        }
++ 	id = obj.getAttribute(CKA_ID);
++        return (id != NULL && CKYBuffer_IsEqual(id,cka_id)) ? true : false;
++    }
++};
++
++CKYStatus
++Slot::parseEF_Directory(const CKYByte *current, 
++					CKYSize size, PK15ObjectType type)
++{
++    CKYBuffer file;
++    CKYBuffer_InitEmpty(&file);
++    CKYStatus status;
++
++
++    while (size > 0) {
++	const CKYByte *entry;
++	CKYSize entrySize;
++
++	if (current[0] != ASN1_SEQUENCE) {
++	    /* no more */
++	    break;
++	}
++
++	entry = dataStart(current, size, &entrySize, true);
++	if (entry == NULL) { break; }
++	current += entrySize;
++	size -= entrySize;
++
++	do {
++	    PK15Object obj(PK15Instance(), type, entry, entrySize);
++
++	    /* if state failed, then there is something wrong with this
++	     * der, skip this object */
++	    if (obj.getState() == PK15StateInit) {
++		break;
++	    }
++	    status = CKYSUCCESS;
++	    while (obj.getState() != PK15StateComplete) {
++	        CKYBuffer_Resize(&file, 0);
++	        readFromPath(obj.getObjectPath(), &file);
++		status = obj.completeObject(CKYBuffer_Data(&file), 
++						CKYBuffer_Size(&file));
++		if (status != CKYSUCCESS) {
++		    break;
++		}
++	    }
++	    if (status != CKYSUCCESS) {
++		break;
++	    }
++	    assert(obj.getState() == PK15StateComplete);
++	    /* handle type specific per object fixups */
++	    switch (type) {
++	    case PK15AuthObj:
++	    /* if we're an auth object, squirrel us away for future use */
++		if (obj.isSO()) {
++		    if (auth[CKU_SO] != 0) {
++			auth[CKU_SO] = new PK15Object(obj);
++		    }
++		} else if (auth[CKU_USER] == NULL) {
++		    auth[CKU_USER] = new PK15Object(obj);
++		} else if (auth[CKU_CONTEXT_SPECIFIC] == NULL) {
++		    ObjectIter iter;
++		    const CKYBuffer *authid = obj.getPinAuthId();
++
++		    /* these should put on the individual keys */
++		    auth[CKU_CONTEXT_SPECIFIC] = new PK15Object(obj);
++
++		    for( iter = tokenObjects.begin(); 
++			 iter != tokenObjects.end(); ++iter) {
++			if( CKYBuffer_IsEqual(iter->getAuthId(),authid)) {
++			    iter->setAttributeBool(CKA_ALWAYS_AUTHENTICATE,
++						   TRUE);
++			}
++		    }
++		}
++		/* drop unkown */
++		break;
++	    case PK15PvKey:
++		/* does the cert already exist? */
++		{
++		    ObjectConstIter iter;
++		    const CKYBuffer *id;
++
++		    id = obj.getAttribute(CKA_ID);
++		    if ((!id) || (CKYBuffer_Size(id) != 1)) {
++			break;
++		    }
++		    iter = find_if(tokenObjects.begin(), tokenObjects.end(),
++                        ObjectCertCKAIDMatch(id));
++			
++		    if ( iter != tokenObjects.end() ) {
++			obj.completeKey(*iter);
++		    }
++		}
++		break;
++	    case PK15Cert:
++		/* does a corresponding key already exist? */
++		{
++		    ObjectIter iter;
++		    const CKYBuffer *id;
++
++		    id = obj.getAttribute(CKA_ID);
++		    if ((!id) || (CKYBuffer_Size(id) != 1)) {
++			break;
++		    }
++		    iter = find_if(tokenObjects.begin(), tokenObjects.end(),
++                        ObjectKeyCKAIDMatch(id));
++			
++		    if ( iter != tokenObjects.end() ) {
++			iter->completeKey(obj);
++		    }
++		}
++		break;
++	    case PK15PuKey:
++		break;
++	    }
++    	    tokenObjects.push_back(obj);
++  	} while ( false );
++    }
++    CKYBuffer_FreeData(&file);
++    return CKYSUCCESS;
++}
++
++
++CKYStatus
++Slot::selectPath(const CKYBuffer *path, CKYISOStatus  *apduRC)
++{
++    CKYSize size = CKYBuffer_Size(path);
++    CKYStatus status = CKYINVALIDARGS;
++    CKYOffset pos;
++
++    for (pos=0; pos < size; pos +=2) {
++	unsigned short ef = CKYBuffer_GetShort(path, pos);
++	status = P15Applet_SelectFile(conn, ef, apduRC);
++	if (status != CKYSUCCESS) {
++		break;
++	}
++    }
++    return status;
++}
++
+ void
+ Slot::refreshTokenState()
+ {
+@@ -1132,8 +1581,20 @@ void
+ Slot::makeSerialString(char *serialNumber, int maxSize,
+ 						 const unsigned char *cuid)
+ {
++    CKYSize ssize = CKYBuffer_Size(&p15serialNumber);
+     memset(serialNumber, ' ', maxSize);
+ 
++    if (ssize != 0) {
++	CKYSize i;
++	ssize = MIN((CKYSize)maxSize/2, ssize);
++	for (i=0; i < ssize; i++) {
++	   CKYByte c = CKYBuffer_GetChar(&p15serialNumber, i);
++	   serialNumber[2*i] = hex((c >> 4) & 0xf);
++	   serialNumber[2*i+1] = hex(c & 0xf);
++	}
++    }
++	    
++
+     // otherwise we use the eepromSerialNumber as a hex value 
+     if (cuid) {
+          makeCUIDString(serialNumber, maxSize, cuid);
+@@ -1204,7 +1665,8 @@ struct _manList {
+ static const struct _manList  manList[] = {
+         { 0x4090, "Axalto" },
+         { 0x2050, "Oberthur" },
+-        { 0x4780, "RSA" }
++        { 0x4780, "RSA" },
++        { 0x534e, "SafeNet" }
+ };
+ 
+ static int manListSize = sizeof(manList)/sizeof(manList[0]);
+@@ -1213,8 +1675,15 @@ void
+ Slot::makeManufacturerString(char *man, int maxSize, const unsigned char *cuid)
+ {
+     char *cp = man;
++    int manLen;
+     memset(man, ' ', maxSize);
+ 
++    if (tokenManufacturer) {
++	manLen = strlen(tokenManufacturer);
++	memcpy(man, tokenManufacturer, MIN(manLen, maxSize));
++        // UTF8 Truncate fixup! don't drop halfway through a UTF8 character 
++        return;
++    }
+     if (!cuid) {
+ 	return;
+     }
+@@ -1633,26 +2102,6 @@ class KeyNumMatch {
+     }
+ };
+ 
+-class ObjectCertCKAIDMatch {
+-  private:
+-    CKYByte cka_id;
+-  public:
+-    ObjectCertCKAIDMatch(CKYByte cka_id_) : cka_id(cka_id_) {}
+-    bool operator()(const PKCS11Object& obj) {
+-	const CKYBuffer *id;
+-        const CKYBuffer *objClass;
+-	CK_OBJECT_CLASS certClass = CKO_CERTIFICATE;
+-	objClass = obj.getAttribute(CKA_CLASS);
+-        if (objClass == NULL || !CKYBuffer_DataIsEqual(objClass, 
+-				(CKYByte *)&certClass, sizeof(certClass))) {
+-	    return false;
+-        }
+- 	id = obj.getAttribute(CKA_ID);
+-        return (id != NULL && CKYBuffer_DataIsEqual(id,&cka_id, 1))
+-						 ? true : false;
+-    }
+-};
+-
+ CK_OBJECT_HANDLE
+ Slot::generateUnusedObjectHandle()
+ {
+@@ -1706,7 +2155,7 @@ Slot::addKeyObject(list<PKCS11Object>& o
+                         "Missing or invalid CKA_ID value");
+         }
+         iter = find_if(objectList.begin(), objectList.end(),
+-                        ObjectCertCKAIDMatch(CKYBuffer_GetChar(id,0)));
++                        ObjectCertCKAIDMatch(id));
+         if ( iter == objectList.end() ) {
+             // We failed to find a cert with a matching CKA_ID. This
+             // can happen if the cert is not present on the token, or
+@@ -1758,6 +2207,11 @@ Slot::unloadObjects()
+     free(personName);
+     personName = NULL;
+     fullTokenName = false;
++    if (tokenManufacturer) {
++	free(tokenManufacturer);
++	tokenManufacturer = NULL;
++    }
++    CKYBuffer_Resize(&p15serialNumber,0);
+ }
+ 
+ #ifdef USE_SHMEM
+@@ -2956,6 +3410,17 @@ Slot::loadObjects()
+ 	loadReaderObject();
+ 	return;
+     }
++    if (state & P15_CARD) {
++	parseEF_TokenInfo();
++	parseEF_ODF();
++	if (auth[CKU_USER] != NULL) {
++	    /* set need login */
++	    needLogin = true;
++	}
++	status = trans.end();
++	loadReaderObject();
++	return;
++    }
+ 
+     selectApplet();
+     log->log("time load object: Select Applet (again) %d ms\n",
+@@ -3123,15 +3588,15 @@ Slot::getSessionInfo(SessionHandleSuffix
+ }
+ 
+ void
+-SlotList::login(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pPin,
+-    CK_ULONG ulPinLen)
++SlotList::login(CK_SESSION_HANDLE hSession, CK_USER_TYPE user,
++    CK_UTF8CHAR_PTR pPin, CK_ULONG ulPinLen)
+ {
+     CK_SLOT_ID slotID;
+     SessionHandleSuffix suffix;
+ 
+     decomposeSessionHandle(hSession, slotID, suffix);
+ 
+-    slots[slotIDToIndex(slotID)]->login(suffix, pPin, ulPinLen);
++    slots[slotIDToIndex(slotID)]->login(suffix, user, pPin, ulPinLen);
+ }
+ 
+ void
+@@ -3181,8 +3646,8 @@ Slot::isLoggedIn()
+ }
+ 
+ void
+-Slot::login(SessionHandleSuffix handleSuffix, CK_UTF8CHAR_PTR pPin,
+-    CK_ULONG ulPinLen)
++Slot::login(SessionHandleSuffix handleSuffix, CK_USER_TYPE user,
++    CK_UTF8CHAR_PTR pPin, CK_ULONG ulPinLen)
+ {
+     refreshTokenState();
+ 
+@@ -3191,10 +3656,23 @@ Slot::login(SessionHandleSuffix handleSu
+             "Slot::login\n", (unsigned long) handleSuffix);
+         throw PKCS11Exception(CKR_SESSION_HANDLE_INVALID);
+     }
++    /* only support CKU_USER for CAC, PIV, and coolkey... CKU_USER and
++     * CKU_CONTEX_SPECIFIC for P15Card */
++    if (user != CKU_USER) {
++	if ((user != CKU_CONTEXT_SPECIFIC) || ((state & P15_CARD) == 0)) {
++	    throw PKCS11Exception(CKR_USER_TYPE_INVALID);
++	}
++    }
++
+ 
+     if (!isVersion1Key) {
+-	pinCache.invalidate();
+-	pinCache.set((const char *)pPin, ulPinLen);
++	if (user == CKU_USER) {
++	    pinCache.invalidate();
++	    pinCache.set((const char *)pPin, ulPinLen);
++	} else { 
++	    contextPinCache.invalidate();
++	    contextPinCache.set((const char *)pPin, ulPinLen);
++	}
+     } else if (nonceValid) {
+ 	throw PKCS11Exception(CKR_USER_ALREADY_LOGGED_IN);
+     }
+@@ -3205,17 +3683,85 @@ Slot::login(SessionHandleSuffix handleSu
+ 
+     if (state & GOV_CARD) {
+ 	selectCACApplet(0, true);
+-    } else {
++    } else if ((state & P15_CARD)== 0) {
++	/* p15 does the select in attemptLogin */
+ 	selectApplet();
+     }
+ 
+     if (isVersion1Key) {
+-	attemptLogin((const char *)pPin);
+-    } else if (state & GOV_CARD) {
++	attemptCoolKeyLogin((const char *)pPin);
++    } else  {
++	attemptLogin(user, false);
++    }
++}
++
++void
++Slot::attemptLogin(CK_USER_TYPE user, bool flushPin) {
++    if (state & GOV_CARD) {
+ 	attemptCACLogin();
++    } else if (state & P15_CARD) {
++	attemptP15Login(user);
+     } else {
+ 	oldAttemptLogin();
+     }
++    if (flushPin && (user == CKU_CONTEXT_SPECIFIC)) {
++	contextPinCache.clearPin();
++    }
++}
++void dump(const char *label, const CKYBuffer *buf);
++
++void
++Slot::attemptP15Login(CK_USER_TYPE user)
++{
++    PinCache *pinCachePtr  = userPinCache(user);
++    const CKYBuffer *path;
++
++    if (user == CKU_USER) {
++	loggedIn = false;
++    }
++    pinCachePtr->invalidate();
++
++    CKYStatus status;
++    CKYISOStatus result;
++
++    if ((user >= MAX_AUTH_USERS) || (auth[user] == NULL)) {
++	throw PKCS11Exception(CKR_USER_TYPE_INVALID,
++			"No PKCS #15 auth object for user %d\n", user);
++    }
++
++    path = auth[user]->getObjectPath().getPath();
++    status = selectPath(auth[user]->getObjectPath().getPath(), &result);
++    if( status == CKYSCARDERR )  {
++	handleConnectionError();
++    }
++    if (status != CKYSUCCESS) {
++	throw PKCS11Exception(CKR_DEVICE_ERROR, "Applet select return 0x%04x",
++								result);
++    }
++
++    status = P15Applet_VerifyPIN(conn, 
++		(const char *)CKYBuffer_Data(pinCachePtr->get()), 
++		auth[user]->getPinInfo(), &result);
++    if( status == CKYSCARDERR ) {
++	handleConnectionError();
++    }
++    switch( result ) {
++      case CKYISO_SUCCESS:
++        break;
++      case 0x6983:
++	pinCachePtr->clearPin();
++        throw PKCS11Exception(CKR_PIN_LOCKED);
++      default:
++	pinCachePtr->clearPin();
++	if ((result & 0xff00) == 0x6300) {
++            throw PKCS11Exception(CKR_PIN_INCORRECT);
++	}
++        throw PKCS11Exception(CKR_DEVICE_ERROR, "Applet returned 0x%04x", 
++								result);
++    }
++    pinCachePtr->validate();
++    if (user == CKU_USER)
++	loggedIn = true;
+ }
+ 
+ void
+@@ -3252,6 +3798,7 @@ Slot::attemptCACLogin()
+     loggedIn = true;
+ }
+ 
++
+ void
+ Slot::oldAttemptLogin()
+ {
+@@ -3286,7 +3833,7 @@ Slot::oldAttemptLogin()
+ 
+ // should already be in a transaction, and applet selected
+ void
+-Slot::attemptLogin(const char *pin)
++Slot::attemptCoolKeyLogin(const char *pin)
+ {
+     CKYStatus status;
+     CKYISOStatus result;
+@@ -3362,7 +3909,7 @@ Slot::logout(SessionHandleSuffix suffix)
+         throw PKCS11Exception(CKR_SESSION_HANDLE_INVALID);
+     }
+ 
+-    if (state & GOV_CARD) {
++    if (state & (GOV_CARD|P15_CARD)) {
+ 	CACLogout();
+ 	return;
+     }
+@@ -3601,31 +4148,26 @@ Slot::ensureValidSession(SessionHandleSu
+ // from 0-9.
+ //
+ CKYByte
+-Slot::objectHandleToKeyNum(CK_OBJECT_HANDLE hKey)
++Slot::objectToKeyNum(const PKCS11Object *key)
+ {
+-    ObjectConstIter iter = find_if(tokenObjects.begin(), tokenObjects.end(),
+-        ObjectHandleMatch(hKey));
+-
+-    if( iter == tokenObjects.end() ) {
+-        // no such object
+-        throw PKCS11Exception(CKR_KEY_HANDLE_INVALID);
+-    }
++    unsigned long id = key->getMuscleObjID();
+ 
+-    if( getObjectClass(iter->getMuscleObjID()) != 'k' ) {
++    if( getObjectClass(id) != 'k' ) {
+         throw PKCS11Exception(CKR_KEY_HANDLE_INVALID);
+     }
+-    unsigned short keyNum = getObjectIndex(iter->getMuscleObjID());
++    unsigned short keyNum = getObjectIndex(id);
+     if( keyNum > 9 ) {
+         throw PKCS11Exception(CKR_KEY_HANDLE_INVALID);
+     }
+     return keyNum & 0xFF;
+ }
+ 
+-PKCS11Object::KeyType
+-Slot::getKeyTypeFromHandle(CK_OBJECT_HANDLE hKey)
++PKCS11Object *
++Slot::getKeyFromHandle(CK_OBJECT_HANDLE hKey)
+ {
+     ObjectConstIter iter = find_if(tokenObjects.begin(), tokenObjects.end(),
+         ObjectHandleMatch(hKey));
++    PKCS11Object &obj = (PKCS11Object &)*iter;
+ 
+     if( iter == tokenObjects.end() ) {
+          throw PKCS11Exception(CKR_KEY_HANDLE_INVALID);
+@@ -3635,7 +4177,7 @@ Slot::getKeyTypeFromHandle(CK_OBJECT_HAN
+         throw PKCS11Exception(CKR_KEY_HANDLE_INVALID);
+     }
+ 
+-    return iter->getKeyType();
++    return &obj;
+ }
+ 
+ void
+@@ -3648,9 +4190,7 @@ Slot::signInit(SessionHandleSuffix suffi
+         throw PKCS11Exception(CKR_SESSION_HANDLE_INVALID);
+     }
+ 
+-    PKCS11Object::KeyType  keyType = getKeyTypeFromHandle(hKey);
+-
+-    session->signatureState.initialize(objectHandleToKeyNum(hKey), keyType);
++    session->signatureState.initialize(getKeyFromHandle(hKey));
+ }
+ 
+ void
+@@ -3663,9 +4203,7 @@ Slot::decryptInit(SessionHandleSuffix su
+         throw PKCS11Exception(CKR_SESSION_HANDLE_INVALID);
+     }
+ 
+-    PKCS11Object::KeyType keyType = getKeyTypeFromHandle(hKey);
+-
+-    session->decryptionState.initialize(objectHandleToKeyNum(hKey), keyType);
++    session->decryptionState.initialize(getKeyFromHandle(hKey));
+ }
+ 
+ /**
+@@ -3935,7 +4473,7 @@ Slot::sign(SessionHandleSuffix suffix, C
+ 
+     CryptOpState sigState = dummyParams.getOpState(*session);
+ 
+-    PKCS11Object::KeyType keyType = sigState.keyType;
++    PKCS11Object::KeyType keyType = sigState.key->getKeyType();
+    
+     if ( keyType == PKCS11Object::unknown) {
+         throw PKCS11Exception(CKR_DATA_INVALID);
+@@ -3982,9 +4520,9 @@ Slot::cryptRSA(SessionHandleSuffix suffi
+     }
+     CryptOpState& opState = params.getOpState(*session);
+     CKYBuffer *result = &opState.result;
+-    CKYByte keyNum = opState.keyNum;
++    PKCS11Object  *key = opState.key;
+ 
+-    unsigned int keySize = getRSAKeySize(keyNum);
++    unsigned int keySize = getRSAKeySize(key);
+ 
+     if (keySize != CryptParams::DEFAULT_KEY_SIZE)
+         params.setKeySize(keySize);
+@@ -4008,8 +4546,8 @@ Slot::cryptRSA(SessionHandleSuffix suffi
+   	}
+ 	try {
+ 	    params.padInput(&inputPad, &input);
+-            performRSAOp(&output, &inputPad, params.getKeySize(), 
+-								keyNum, params.getDirection());
++            performRSAOp(&output, &inputPad, params.getKeySize(), key, 
++							params.getDirection());
+ 	    params.unpadOutput(result, &output);
+ 	    CKYBuffer_FreeData(&input);
+ 	    CKYBuffer_FreeData(&inputPad);
+@@ -4072,9 +4610,9 @@ void Slot::signECC(SessionHandleSuffix s
+     }
+     CryptOpState& opState = params.getOpState(*session);
+     CKYBuffer *result = &opState.result;
+-    CKYByte keyNum = opState.keyNum;
++    PKCS11Object  *key = opState.key;
+ 
+-    unsigned int keySize = getECCKeySize(keyNum);
++    unsigned int keySize = getECCKeySize(key);
+ 
+     if(keySize != CryptParams::ECC_DEFAULT_KEY_SIZE)
+         params.setKeySize(keySize);
+@@ -4100,7 +4638,7 @@ void Slot::signECC(SessionHandleSuffix s
+             throw PKCS11Exception(CKR_HOST_MEMORY);
+         }
+         try {
+-            performECCSignature(&output, &input, params.getKeySize(), keyNum);
++            performECCSignature(&output, &input, params.getKeySize(), key);
+             params.unpadOutput(result, &output);
+             CKYBuffer_FreeData(&input);
+             CKYBuffer_FreeData(&output);
+@@ -4122,8 +4660,26 @@ void Slot::signECC(SessionHandleSuffix s
+ }
+ 
+ void
++Slot::selectKey(const PKCS11Object *key, bool retry)
++{
++    /* P15 cards need to be reselected on retry because P15 must select
++     * on authentication. PIV, CAC and Coolkeys do not */
++    if (retry && ((state & GOV_CARD) || ((state & P15_CARD) == 0))) {
++	return;
++    }
++    if (state & GOV_CARD) {
++	selectCACApplet(objectToKeyNum(key), true);
++    } else if (state & P15_CARD) {
++	selectPath(key->getObjectPath().getPath(), NULL);
++    } else {
++	selectApplet();
++    }
++    return;
++}
++
++void
+ Slot::performECCSignature(CKYBuffer *output, const CKYBuffer *input, 
+-						unsigned int keySize, CKYByte keyNum)
++			unsigned int keySize, const PKCS11Object *key)
+ {
+ 
+     /* establish a transaction */
+@@ -4135,22 +4691,23 @@ Slot::performECCSignature(CKYBuffer *out
+         throw PKCS11Exception(CKR_FUNCTION_NOT_SUPPORTED);
+     }
+ 
+-    if (state & GOV_CARD) {
+-	selectCACApplet(keyNum, true);
+-    } else {
+-	selectApplet();
+-    }
+-
+     CKYISOStatus result;
+-    int loginAttempted = 0;
++    bool loginAttempted = false;
+ 
+ retry:
++    selectKey(key, loginAttempted);
++
+     if (state & PIV_CARD) {
+-        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 0, input, output, &result);
++        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 0, 
++					input, output, &result);
+     } else if (state & CAC_CARD) {
+         status = CACApplet_SignDecrypt(conn, input, output, &result);
++    } else if (state & P15_CARD) {
++	status = P15Applet_SignDecrypt(conn, key->getKeyRef(), keySize/8,
++				CKY_DIR_ENCRYPT, input, output, &result); 
++	
+     } else {
+-        status = CKYApplet_ComputeECCSignature(conn, keyNum, input, NULL, output, getNonce(), &result);
++        status = CKYApplet_ComputeECCSignature(conn, objectToKeyNum(key), 					input, NULL, output, getNonce(), &result);
+     }
+     /* map the ISO not logged in code to the coolkey one */
+     if ((result == CKYISO_CONDITION_NOT_SATISFIED) ||
+@@ -4166,19 +4723,16 @@ retry:
+         if (result == CKYISO_DATA_INVALID) {
+             throw PKCS11Exception(CKR_DATA_INVALID);
+         }
+-        /* version0 keys could be logged out in the middle by someone else,
+-           reauthenticate... This code can go away when we depricate.
+-           version0 applets.
+-        */
++        /* keys could be logged out in the middle by someone else,
++         *  reauthenticate... coolkey version 1 bypasses this issue by
++         *  allowing multiple applications separate login states at once.
++         */
+         if (!isVersion1Key && !loginAttempted  &&
++				userPinCache(key->getUser())->isValid() &&
+                     (result == CKYISO_UNAUTHORIZED)) {
+             /* try to reauthenticate  */
+ 	    try {
+-		if (state & GOV_CARD) {
+-		    attemptCACLogin();
+-		} else {
+-		    oldAttemptLogin();
+-		}
++		attemptLogin(key->getUser(),true);
+             } catch(PKCS11Exception& ) {
+                 /* attemptLogin can throw things like CKR_PIN_INCORRECT
+                   that don't make sense from a crypto operation. This is
+@@ -4199,8 +4753,9 @@ retry:
+ 
+ 
+ void
+-Slot::performRSAOp(CKYBuffer *output, const CKYBuffer *input, unsigned int keySize,
+-					CKYByte keyNum, CKYByte direction)
++Slot::performRSAOp(CKYBuffer *output, const CKYBuffer *input, 
++		unsigned int keySize, const PKCS11Object *key, 
++		CKYByte direction)
+ {
+     if ( mECC ) {
+         throw PKCS11Exception(CKR_FUNCTION_NOT_SUPPORTED);
+@@ -4212,26 +4767,25 @@ Slot::performRSAOp(CKYBuffer *output, co
+     Transaction trans;
+     CKYStatus status = trans.begin(conn);
+     if( status != CKYSUCCESS ) handleConnectionError();
+-
+-    //
+-    // select the applet
+-    //
+-    if (state & GOV_CARD) {
+-	selectCACApplet(keyNum, true);
+-    } else {
+-	selectApplet();
+-    }
+-
+     CKYISOStatus result;
+-    int loginAttempted = 0;
++    bool loginAttempted = false;
++
+ retry:
++    selectKey(key, loginAttempted);
++
++
+     if (state & PIV_CARD) {
+-        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 0, input, output, &result);
++        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 0, 
++				input, output, &result);
+     } else if (state & CAC_CARD) {
+         status = CACApplet_SignDecrypt(conn, input, output, &result);
++    } else if (state & P15_CARD) {
++	status = P15Applet_SignDecrypt(conn, key->getKeyRef(), keySize/8,
++				direction, input, output, &result);
+     } else {
+-        status = CKYApplet_ComputeCrypt(conn, keyNum, CKY_RSA_NO_PAD, direction,
+-		input, NULL, output, getNonce(), &result);
++        status = CKYApplet_ComputeCrypt(conn, objectToKeyNum(key), 
++		CKY_RSA_NO_PAD, direction, input, NULL, output, 
++		getNonce(), &result);
+     } 
+ 
+     /* map the ISO not logged in code to the coolkey one */
+@@ -4250,15 +4804,12 @@ retry:
+ 	// version0 keys could be logged out in the middle by someone else,
+ 	// reauthenticate... This code can go away when we depricate.
+         // version0 applets.
+-	if (!isVersion1Key && !loginAttempted  && pinCache.isValid() &&
++	if (!isVersion1Key && !loginAttempted  && 
++				userPinCache(key->getUser())->isValid() &&
+ 					(result == CKYISO_UNAUTHORIZED)) {
+ 	    // try to reauthenticate 
+ 	    try {
+-		if (state & GOV_CARD) {
+-		    attemptCACLogin();
+-		} else {
+-		    oldAttemptLogin();
+-		}
++		attemptLogin(key->getUser(), true);
+ 	    } catch(PKCS11Exception& ) {
+ 		// attemptLogin can throw things like CKR_PIN_INCORRECT
+ 		// that don't make sense from a crypto operation. This is
+@@ -4278,7 +4829,7 @@ void
+ Slot::seedRandom(SessionHandleSuffix suffix, CK_BYTE_PTR pData,
+         CK_ULONG ulDataLen)
+ {
+-    if (state & GOV_CARD) {
++    if (state & (GOV_CARD|P15_CARD)) {
+ 	/* should throw unsupported */
+ 	throw PKCS11Exception(CKR_DEVICE_ERROR);
+     }
+@@ -4330,7 +4881,7 @@ void
+ Slot::generateRandom(SessionHandleSuffix suffix, const CK_BYTE_PTR pData,
+         CK_ULONG ulDataLen)
+ {
+-    if (state & GOV_CARD) {
++    if (state & (GOV_CARD|P15_CARD)) {
+ 	/* should throw unsupported */
+ 	throw PKCS11Exception(CKR_DEVICE_ERROR);
+     }
+@@ -4364,61 +4915,44 @@ Slot::generateRandom(SessionHandleSuffix
+ 
+ #define MAX_NUM_KEYS 8
+ unsigned int
+-Slot::getRSAKeySize(CKYByte keyNum)
++Slot::getRSAKeySize(PKCS11Object *key)
+ {
+     unsigned int keySize = CryptParams::DEFAULT_KEY_SIZE;
+     int modSize = 0;
+ 
+-    if(keyNum >= MAX_NUM_KEYS) {
+-        return keySize;
+-    }
+-
+-    ObjectConstIter iter;
+-    iter = find_if(tokenObjects.begin(), tokenObjects.end(),
+-        KeyNumMatch(keyNum,*this));
+-
+-    if( iter == tokenObjects.end() ) {
+-        return keySize;
++    modSize = key->getKeySize();
++    if (modSize != 0) {
++	return modSize;
+     }
+ 
+-    CKYBuffer const *modulus = iter->getAttribute(CKA_MODULUS);
++    CKYBuffer const *modulus = key->getAttribute(CKA_MODULUS);
+ 
+     if(modulus) {
+         modSize = CKYBuffer_Size(modulus);
+         if(CKYBuffer_GetChar(modulus,0) == 0x0) {
+             modSize--;
+         }
+-        if(modSize > 0)
++        if(modSize > 0) {
+             keySize = modSize * 8;
++	    key->setKeySize(keySize);
++	}
+     }
+ 
+     return keySize;
+ }
+ 
+ unsigned int
+-Slot::getECCKeySize(CKYByte keyNum)
+-{
+-    return calcECCKeySize(keyNum);
+-} 
+-
+-unsigned int
+-Slot::calcECCKeySize(CKYByte keyNum)
++Slot::getECCKeySize(PKCS11Object *key)
+ {
+     unsigned int keySize = CryptParams::ECC_DEFAULT_KEY_SIZE;
++    unsigned int objKeySize = 0;
+ 
+-    if(keyNum >= MAX_NUM_KEYS) {
+-        return keySize;
+-    }
+-
+-    ObjectConstIter iter;
+-    iter = find_if(tokenObjects.begin(), tokenObjects.end(),
+-        KeyNumMatch(keyNum,*this));
+-
+-    if( iter == tokenObjects.end() ) {
+-        return keySize;
++    objKeySize = key->getKeySize();
++    if (objKeySize != 0) {
++	return objKeySize;
+     }
+ 
+-    CKYBuffer const *eccParams = iter->getAttribute(CKA_EC_PARAMS);
++    CKYBuffer const *eccParams = key->getAttribute(CKA_EC_PARAMS);
+ 
+     if (eccParams == NULL) {
+         return keySize;
+@@ -4457,6 +4991,7 @@ Slot::calcECCKeySize(CKYByte keyNum)
+ 
+         if ( match == 1 ) {
+             keySize =  curveBytesNamePair[i].length;
++	    key->setKeySize(keySize);
+             return keySize;
+         }
+ 
+@@ -4476,10 +5011,9 @@ Slot::derive(SessionHandleSuffix suffix,
+     ECCKeyAgreementParams params(CryptParams::ECC_DEFAULT_KEY_SIZE);
+     SessionIter session = findSession(suffix);
+ 
+-    PKCS11Object::KeyType keyType = getKeyTypeFromHandle(hBaseKey);
+-
+-    session->keyAgreementState.initialize(objectHandleToKeyNum(hBaseKey), keyType);
+-    deriveECC(suffix, pMechanism, hBaseKey, pTemplate, ulAttributeCount, phKey, params);
++    session->keyAgreementState.initialize(getKeyFromHandle(hBaseKey));
++    deriveECC(suffix, pMechanism, hBaseKey, pTemplate, ulAttributeCount, 
++		phKey, params);
+ 
+ }
+ 
+@@ -4515,9 +5049,8 @@ void Slot::deriveECC(SessionHandleSuffix
+ 
+     CryptOpState& opState = params.getOpState(*session);
+     CKYBuffer *result = &opState.result;
+-    CKYByte keyNum = opState.keyNum;
+ 
+-    unsigned int keySize = getECCKeySize(keyNum);
++    unsigned int keySize = getECCKeySize(opState.key);
+ 
+     if(keySize != CryptParams::ECC_DEFAULT_KEY_SIZE)
+         params.setKeySize(keySize);
+@@ -4542,10 +5075,11 @@ void Slot::deriveECC(SessionHandleSuffix
+ 
+     if( CKYBuffer_Size(result) == 0 ) {
+         try {
+-            performECCKeyAgreement(deriveMech, &publicDataBuffer, &secretKeyBuffer,
+-			 keyNum, params.getKeySize());
++            performECCKeyAgreement(deriveMech, &publicDataBuffer, 
++			&secretKeyBuffer, opState.key, params.getKeySize());
+             CK_OBJECT_HANDLE keyObjectHandle = generateUnusedObjectHandle();
+-            secret = createSecretKeyObject(keyObjectHandle, &secretKeyBuffer, pTemplate, ulAttributeCount);
++            secret = createSecretKeyObject(keyObjectHandle, &secretKeyBuffer, 
++						pTemplate, ulAttributeCount);
+         } catch(PKCS11Exception& e) {
+             CKYBuffer_FreeData(&secretKeyBuffer);
+             CKYBuffer_FreeData(&publicDataBuffer);
+@@ -4557,15 +5091,15 @@ void Slot::deriveECC(SessionHandleSuffix
+    CKYBuffer_FreeData(&publicDataBuffer);
+ 
+    if ( secret ) {
+-
+        *phKey = secret->getHandle();
+         delete secret;
+    }
+ }
+ 
+ void
+-Slot::performECCKeyAgreement(CK_MECHANISM_TYPE deriveMech, CKYBuffer *publicDataBuffer, 
+-			     CKYBuffer *secretKeyBuffer, CKYByte keyNum, unsigned int keySize)
++Slot::performECCKeyAgreement(CK_MECHANISM_TYPE deriveMech, 
++	CKYBuffer *publicDataBuffer, CKYBuffer *secretKeyBuffer, 
++	const PKCS11Object *key, unsigned int keySize)
+ {
+     if (!mECC) {
+        throw PKCS11Exception(CKR_FUNCTION_NOT_SUPPORTED);
+@@ -4575,25 +5109,26 @@ Slot::performECCKeyAgreement(CK_MECHANIS
+     CKYStatus status = trans.begin(conn);
+     if( status != CKYSUCCESS ) handleConnectionError();
+ 
+-    if (state & GOV_CARD) {
+-	selectCACApplet(keyNum, true);
+-    } else {
+-	selectApplet();
+-    }
+-
+     CKYISOStatus result;
+-    int loginAttempted = 0;
++    bool loginAttempted = false;
+ 
+ retry:
++    selectKey(key, loginAttempted);
+ 
+     if (state & PIV_CARD) {
+-        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 1, publicDataBuffer, 
+-			secretKeyBuffer, &result);
++        status = PIVApplet_SignDecrypt(conn, pivKey, keySize/8, 1, 
++			publicDataBuffer, secretKeyBuffer, &result);
+     } else if (state & CAC_CARD) {
+-        status = CACApplet_SignDecrypt(conn, publicDataBuffer, secretKeyBuffer, &result);
++        status = CACApplet_SignDecrypt(conn, publicDataBuffer, 
++			secretKeyBuffer, &result);
++    } else if (state & P15_CARD) {
++	/*status = P15Applet_SignDecrypt(conn, key->getKeyRef(), keySize/8,
++				publicDataBuffer, secretKeyBuffer, &result); */
++	throw PKCS11Exception(CKR_FUNCTION_NOT_SUPPORTED);
+     } else {
+-    	status = CKYApplet_ComputeECCKeyAgreement(conn, keyNum, 
+-			publicDataBuffer , NULL, secretKeyBuffer, getNonce(), &result);
++    	status = CKYApplet_ComputeECCKeyAgreement(conn, objectToKeyNum(key), 
++			publicDataBuffer , NULL, secretKeyBuffer, 
++			getNonce(), &result);
+     }
+     /* map the ISO not logged in code to the coolkey one */
+     if ((result == CKYISO_CONDITION_NOT_SATISFIED) ||
+@@ -4610,13 +5145,10 @@ retry:
+             throw PKCS11Exception(CKR_DATA_INVALID);
+         }
+         if (!isVersion1Key && !loginAttempted  &&
+-            (result == CKYISO_UNAUTHORIZED)) {
++				userPinCache(key->getUser())->isValid() &&
++            				(result == CKYISO_UNAUTHORIZED)) {
+ 	    try {
+-		if (state & GOV_CARD) {
+-		    attemptCACLogin();
+-		} else {
+-		    oldAttemptLogin();
+-		}
++		attemptLogin(key->getUser(), true);
+ 	    } catch(PKCS11Exception& ) {
+               throw PKCS11Exception(CKR_DEVICE_ERROR);
+ 	    }
+diff -up ./src/coolkey/slot.h.p15 ./src/coolkey/slot.h
+--- ./src/coolkey/slot.h.p15	2015-07-06 10:27:55.772827229 -0700
++++ ./src/coolkey/slot.h	2015-07-06 10:27:55.786826965 -0700
+@@ -183,7 +183,7 @@ struct PinCache {
+ 	CKYBuffer_Replace(&cachedPin, 0, (const CKYByte *)newPin, pinLen);
+ 	CKYBuffer_AppendChar(&cachedPin, 0);
+     }
+-    void clearPin() { CKYBuffer_Zero(&cachedPin); }
++    void clearPin() { CKYBuffer_Zero(&cachedPin); valid = false; }
+     void invalidate() { valid = false; }
+     void validate() { valid = true; }
+     const CKYBuffer *get() const { return &cachedPin; }
+@@ -209,29 +209,26 @@ class CryptOpState {
+   public:
+     enum State { NOT_INITIALIZED, IN_PROCESS, FINALIZED };
+     State state;
+-    CKYByte keyNum;
+     CKYBuffer result;
+-    PKCS11Object::KeyType keyType;
++    PKCS11Object *key;
+ 
+-    CryptOpState() : state(NOT_INITIALIZED), keyNum(0), keyType(PKCS11Object::unknown)
++    CryptOpState() : state(NOT_INITIALIZED), key(NULL)
+ 				{ CKYBuffer_InitEmpty(&result); }
+     CryptOpState(const CryptOpState &cpy) : 
+-				state(cpy.state), keyNum(cpy.keyNum), keyType(cpy.keyType) { 
++				state(cpy.state), key(cpy.key) { 
+ 	CKYBuffer_InitFromCopy(&result, &cpy.result);
+     }
+     CryptOpState &operator=(const CryptOpState &cpy) {
+ 	state = cpy.state,
+-	keyNum = cpy.keyNum;
+-        keyType = cpy.keyType;
++        key = cpy.key;
+ 	CKYBuffer_Replace(&result, 0, CKYBuffer_Data(&cpy.result),
+ 				CKYBuffer_Size(&cpy.result));
+ 	return *this;
+     }
+     ~CryptOpState() { CKYBuffer_FreeData(&result); }
+-    void initialize(CKYByte keyNum, PKCS11Object::KeyType theKeyType) {
++    void initialize(PKCS11Object *theKey) {
+         state = IN_PROCESS;
+-        this->keyNum = keyNum;
+-        this->keyType = theKeyType;
++        this->key = theKey;
+         CKYBuffer_Resize(&result, 0);
+     }
+ };
+@@ -298,6 +295,7 @@ class CryptParams {
+ };
+ 
+ #define MAX_CERT_SLOTS 3
++#define MAX_AUTH_USERS 3
+ class Slot {
+ 
+   public:
+@@ -308,7 +306,8 @@ class Slot {
+         APPLET_SELECTABLE = 0x08,
+         APPLET_PERSONALIZED = 0x10,
+         CAC_CARD = 0x20,
+-        PIV_CARD = 0x40
++        PIV_CARD = 0x40,
++	P15_CARD = 0x80
+     };
+     enum {
+ 	NONCE_SIZE = 8
+@@ -321,6 +320,7 @@ class Slot {
+     char *readerName;
+     char *personName;
+     char *manufacturer;
++    char *tokenManufacturer;
+     //char *model;
+     CK_VERSION hwVersion;
+     CK_VERSION tokenFWVersion;
+@@ -329,6 +329,7 @@ class Slot {
+     CKYCardConnection* conn;
+     unsigned long state; // = UNKNOWN
+     PinCache pinCache;
++    PinCache contextPinCache;
+     bool loggedIn;
+     bool reverify;
+     bool nonceValid;
+@@ -349,6 +350,14 @@ class Slot {
+     int pivContainer;
+     int pivKey;
+     bool mECC;
++    unsigned short p15aid;
++    unsigned short p15odfAddr;
++    unsigned short p15tokenInfoAddr;
++    unsigned int p15Instance;
++    CKYBuffer p15AID;
++    CKYBuffer p15tokenInfo;
++    CKYBuffer p15odf;
++    CKYBuffer p15serialNumber;
+     //enum { RW_SESSION_HANDLE = 1, RO_SESSION_HANDLE = 2 };
+ 
+ #ifdef USE_SHMEM
+@@ -367,6 +376,7 @@ class Slot {
+ 
+     void closeAllSessions();
+     SessionHandleSuffix generateNewSession(Session::Type type);
++    PK15Object *auth[MAX_AUTH_USERS];
+ 
+     bool cardStateMayHaveChanged();
+     void connectToToken();
+@@ -418,48 +428,63 @@ class Slot {
+                               bool throwException);
+     CKYStatus readCACCertificateAppend(CKYBuffer *cert, CKYSize nextSize);
+ 
++    CKYStatus getP15Params();
+     void selectApplet();
+     void selectCACApplet(CKYByte instance,bool do_disconnect);
++    void selectKey(const PKCS11Object *key, bool retry);
++    CKYStatus selectPath(const CKYBuffer *path, CKYISOStatus *adpurc);
++    CKYStatus readFromPath(const PK15ObjectPath &obj, CKYBuffer *file);
+     void unloadObjects();
+     void loadCACObjects();
+     void loadCACCert(CKYByte instance);
+     void loadObjects();
+     void loadReaderObject();
+ 
+-    void attemptLogin(const char *pin);
++    void attemptCoolKeyLogin(const char *pin);
++    void attemptLogin(CK_USER_TYPE user, bool flushPin);
++    void attemptP15Login(CK_USER_TYPE user);
+     void attemptCACLogin();
+     void oldAttemptLogin();
+     void oldLogout(void);
+     void CACLogout(void);
++    PinCache *userPinCache(CK_USER_TYPE user) {
++	return ((user == CKU_CONTEXT_SPECIFIC) && (state & P15_CARD)) ?
++		&contextPinCache : &pinCache; }
++
++    void parseEF_ODF(void);
++    void parseEF_TokenInfo(void);
++    CKYStatus parseEF_Directory(const CKYByte *data, CKYSize size, 
++				PK15ObjectType type);
++    unsigned int PK15Instance(void) { return p15Instance++; }
+ 
+     void readMuscleObject(CKYBuffer *obj, unsigned long objID, 
+ 							unsigned int objSize);
+ 
+     void performSignature(CKYBuffer *sig, const CKYBuffer *unpaddedInput, 
+-							CKYByte keyNum);
+-    void performDecryption(CKYBuffer *data, const CKYBuffer *input, CKYByte keyNum);
++						const PKCS11Object *key);
++    void performDecryption(CKYBuffer *data, const CKYBuffer *input, 
++						const PKCS11Object *key);
+ 
+     void cryptRSA(SessionHandleSuffix suffix, CK_BYTE_PTR pInput,
+         CK_ULONG ulInputLen, CK_BYTE_PTR pOutput,
+         CK_ULONG_PTR pulOutputLen, CryptParams& params);
+ 
+-    void performRSAOp(CKYBuffer *out, const CKYBuffer *input, unsigned int keySize,
+-						CKYByte keyNum, CKYByte direction);
++    void performRSAOp(CKYBuffer *out, const CKYBuffer *input, 
++	unsigned int keySize, const PKCS11Object *key, CKYByte direction);
+ 
+     void signECC(SessionHandleSuffix suffix, CK_BYTE_PTR pInput,
+         CK_ULONG ulInputLen, CK_BYTE_PTR pOutput,
+         CK_ULONG_PTR pulOutputLen, CryptParams& params);
+ 
+     void performECCSignature(CKYBuffer *out, const CKYBuffer *input, 
+-					unsigned int keySize, CKYByte keyNum);
++				unsigned int keySize, const PKCS11Object *key);
+     void performECCKeyAgreement(CK_MECHANISM_TYPE deriveMech, 
+-        CKYBuffer *publicDataBuffer, 
+-        CKYBuffer *secretKeyBuffer, CKYByte keyNum, unsigned int keySize);
++        CKYBuffer *publicDataBuffer, CKYBuffer *secretKeyBuffer, 
++	const PKCS11Object *key, 	unsigned int keySize);
+ 
+     void processComputeCrypt(CKYBuffer *result, const CKYAPDU *apdu);
+ 
+-    CKYByte objectHandleToKeyNum(CK_OBJECT_HANDLE hKey);
+-    unsigned int calcECCKeySize(CKYByte keyNum);
++    CKYByte objectToKeyNum(const PKCS11Object *key);
+     Slot(const Slot &cpy)
+ #ifdef USE_SHMEM
+ 	: shmem(readerName)
+@@ -491,10 +516,10 @@ class Slot {
+     }
+ 
+     // actually get the size of a key in bits from the card
+-    unsigned int getRSAKeySize(CKYByte keyNum);
+-    unsigned int getECCKeySize(CKYByte keyNum);
++    unsigned int getRSAKeySize(PKCS11Object *key);
++    unsigned int getECCKeySize(PKCS11Object *key);
+ 
+-    PKCS11Object::KeyType  getKeyTypeFromHandle(CK_OBJECT_HANDLE hKey);
++    PKCS11Object *getKeyFromHandle(CK_OBJECT_HANDLE hKey);
+ 
+     SessionHandleSuffix openSession(Session::Type type);
+     void closeSession(SessionHandleSuffix handleSuffix);
+@@ -504,8 +529,8 @@ class Slot {
+     void getSessionInfo(SessionHandleSuffix handleSuffix,
+         CK_SESSION_INFO_PTR pInfo);
+ 
+-    void login(SessionHandleSuffix handleSuffix, CK_UTF8CHAR_PTR pPin,
+-        CK_ULONG ulPinLen);
++    void login(SessionHandleSuffix handleSuffix, CK_USER_TYPE user,
++	CK_UTF8CHAR_PTR pPin, CK_ULONG ulPinLen);
+ 
+     void logout(SessionHandleSuffix suffix);
+ 
+@@ -604,8 +629,8 @@ class SlotList {
+     void getSessionInfo(CK_SESSION_HANDLE sessionHandle,
+         CK_SESSION_INFO_PTR pInfo);
+ 
+-    void login(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pPin,
+-        CK_ULONG ulPinLen);
++    void login(CK_SESSION_HANDLE hSession, CK_USER_TYPE user,
++	CK_UTF8CHAR_PTR pPin, CK_ULONG ulPinLen);
+ 
+     void logout(CK_SESSION_HANDLE hSession);
+ 
+diff -up ./src/libckyapplet/cky_applet.c.p15 ./src/libckyapplet/cky_applet.c
+--- ./src/libckyapplet/cky_applet.c.p15	2015-07-06 10:27:55.775827172 -0700
++++ ./src/libckyapplet/cky_applet.c	2015-07-06 10:27:55.787826946 -0700
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include "cky_applet.h"
++#include <string.h>
+ 
+ #define MIN(x, y) ((x) < (y) ? (x) : (y))
+ 
+@@ -51,6 +52,12 @@ CACAppletFactory_SelectFile(CKYAPDU *apd
+ }
+ 
+ CKYStatus
++P15AppletFactory_SelectFile(CKYAPDU *apdu, const void *param)
++{
++    return CKYAPDUFactory_SelectFile(apdu, 0, 0, (const CKYBuffer *)param);
++}
++
++CKYStatus
+ CKYAppletFactory_SelectCardManager(CKYAPDU *apdu, const void *param)
+ {
+     return CKYAPDUFactory_SelectCardManager(apdu);
+@@ -269,17 +276,10 @@ PIVAppletFactory_SignDecrypt(CKYAPDU *ap
+ }
+ 
+ CKYStatus
+-CACAppletFactory_VerifyPIN(CKYAPDU *apdu, const void *param)
++P15AppletFactory_VerifyPIN(CKYAPDU *apdu, const void *param)
+ {
+-    const char *pin=(const char *)param;
+-    return CACAPDUFactory_VerifyPIN(apdu, CAC_LOGIN_GLOBAL, pin);
+-}
+-
+-CKYStatus
+-PIVAppletFactory_VerifyPIN(CKYAPDU *apdu, const void *param)
+-{
+-    const char *pin=(const char *)param;
+-    return CACAPDUFactory_VerifyPIN(apdu, PIV_LOGIN_LOCAL, pin);
++    const P15AppletArgVerifyPIN *vps = (const P15AppletArgVerifyPIN *)param;
++    return P15APDUFactory_VerifyPIN(apdu, vps->pinRef, vps->pinVal);
+ }
+ 
+ CKYStatus
+@@ -323,6 +323,39 @@ CKYAppletFactory_LogoutAllV0(CKYAPDU *ap
+    return CKYAPDU_SetSendData(apdu, data, sizeof(data));
+ }
+ 
++CKYStatus
++P15AppletFactory_ReadRecord(CKYAPDU *apdu, const void *param)
++{
++    const P15AppletArgReadRecord *rrs = (const P15AppletArgReadRecord *)param;
++    return P15APDUFactory_ReadRecord(apdu, rrs->record,
++					rrs->short_ef, rrs->flags, rrs->size);
++}
++
++CKYStatus
++P15AppletFactory_ReadBinary(CKYAPDU *apdu, const void *param)
++{
++    const P15AppletArgReadBinary *res = (const P15AppletArgReadBinary *)param;
++    return P15APDUFactory_ReadBinary(apdu, res->offset,
++					res->short_ef, res->flags, res->size);
++}
++
++CKYStatus
++P15AppletFactory_ManageSecurityEnvironment(CKYAPDU *apdu, const void *param)
++{
++    const P15AppletArgManageSecurityEnvironment *mse = 
++		(const P15AppletArgManageSecurityEnvironment *)param;
++    return P15APDUFactory_ManageSecurityEnvironment(apdu, mse->p1, 
++						mse->p2, mse->keyRef);
++}
++
++CKYStatus
++P15AppletFactory_PerformSecurityOperation(CKYAPDU *apdu, const void *param)
++{
++    const P15AppletArgPerformSecurityOperation *pso = 
++		(const P15AppletArgPerformSecurityOperation *)param;
++    return P15APDUFactory_PerformSecurityOperation(apdu, pso->dir, pso->chain,
++						   pso->retLen, pso->data);
++}
+ /*****************************************************************
+  *
+  * Generic Fill routines used by several calls in common
+@@ -975,9 +1008,6 @@ CKYApplet_ComputeECCSignature(CKYCardCon
+     const CKYBuffer *data, CKYBuffer *sig,
+     CKYBuffer *result, const CKYBuffer *nonce, CKYISOStatus *apduRC)
+ {
+-    int         use2APDUs = 0;
+-    int         use_dl_object =  0; 
+-    short       dataSize = 0;
+     CKYStatus ret = CKYAPDUFAIL;
+     CKYAppletArgComputeECCSignature ccd;
+     CKYBuffer    empty;
+@@ -1052,6 +1082,11 @@ done:
+     return ret;
+ }
+ 
++const P15PinInfo CACPinInfo = 
++   { P15PinInitialized|P15PinNeedsPadding, P15PinUTF8, 0, 8, 8, 0, 0xff };
++const P15PinInfo PIVPinInfo = 
++   { P15PinLocal|P15PinInitialized|P15PinNeedsPadding, 
++					   P15PinUTF8, 0, 8, 8, 0, 0xff };
+ /*
+  * do a CAC VerifyPIN
+  */
+@@ -1059,23 +1094,8 @@ CKYStatus
+ CACApplet_VerifyPIN(CKYCardConnection *conn, const char *pin, int local,
+ 		    CKYISOStatus *apduRC)
+ {
+-    CKYStatus ret;
+-    CKYISOStatus status;
+-    if (apduRC == NULL) {
+-	apduRC = &status;
+-    }
+-
+-    ret = CKYApplet_HandleAPDU(conn, local ? PIVAppletFactory_VerifyPIN :
+-			    CACAppletFactory_VerifyPIN, pin, NULL, 
+-			    0, CKYAppletFill_Null, 
+-			    NULL, apduRC);
+-    /* it's unfortunate that the same code that means 'more data to follow' for
+-     * GetCertificate also means, auth failure, you only have N more attempts
+-     * left in the verify PIN call */
+-    if ((*apduRC & CKYISO_MORE_MASK) == CKYISO_MORE) {
+-	ret = CKYAPDUFAIL;
+-    }
+-    return ret;
++    return P15Applet_VerifyPIN(conn, pin, 
++				local ? &PIVPinInfo: &CACPinInfo, apduRC);
+ }
+ 
+ 
+@@ -1165,6 +1185,214 @@ CACApplet_ReadFile(CKYCardConnection *co
+     return ret;
+ }
+ 
++/*
++ *  Select a EF
++ */
++CKYStatus
++P15Applet_SelectFile(CKYCardConnection *conn, unsigned short ef,
++						 CKYISOStatus *apduRC)
++{
++    CKYStatus ret;
++    CKYBuffer efBuf;
++    CKYBuffer_InitEmpty(&efBuf);
++    CKYBuffer_AppendShort(&efBuf, ef);
++    ret = CKYApplet_HandleAPDU(conn, P15AppletFactory_SelectFile, &efBuf,
++		 NULL, CKY_SIZE_UNKNOWN, CKYAppletFill_Null, NULL, apduRC);
++    CKYBuffer_FreeData(&efBuf);
++    return ret;
++}
++
++CKYStatus
++P15Applet_SelectRootFile(CKYCardConnection *conn, unsigned short ef,
++						 CKYISOStatus *apduRC)
++{
++    CKYStatus ret;
++    CKYBuffer efBuf;
++    CKYBuffer_InitEmpty(&efBuf);
++    CKYBuffer_AppendShort(&efBuf, ef);
++    ret = CKYApplet_HandleAPDU(conn, CKYAppletFactory_SelectFile, &efBuf,
++		 NULL, CKY_SIZE_UNKNOWN, CKYAppletFill_Null, NULL, apduRC);
++    CKYBuffer_FreeData(&efBuf);
++    return ret;
++}
++
++CKYStatus
++P15Applet_VerifyPIN(CKYCardConnection *conn, const char *pin, 
++			const P15PinInfo *pinInfo, CKYISOStatus *apduRC)
++{
++    CKYStatus ret;
++    CKYISOStatus status;
++    CKYSize size;
++    CKYBuffer encodedPin;
++    P15AppletArgVerifyPIN vps;
++
++    CKYBuffer_InitEmpty(&encodedPin);
++
++    if (apduRC == NULL) {
++	apduRC = &status;
++    }
++
++    size = strlen(pin);
++    if (pinInfo->pinFlags & P15PinNeedsPadding) {
++	if (size > pinInfo->storedLength) {
++	    size = pinInfo->storedLength;
++	}
++	ret=CKYBuffer_Reserve(&encodedPin, pinInfo->storedLength);
++	if (ret != CKYSUCCESS) { goto fail; }
++    }
++    /* This is where we would do upcase processing for the case insensitive 
++     * flag. It's also where we would do mapping for bcd pins */
++    ret = CKYBuffer_Replace(&encodedPin, 0, (const CKYByte *)pin, size);
++    if (ret != CKYSUCCESS) { goto fail; }
++    if (pinInfo->pinFlags & P15PinNeedsPadding) {
++	int i; 
++	int padSize = pinInfo->storedLength - size;
++	for (i=0; i < padSize; i++) {
++	    CKYBuffer_AppendChar(&encodedPin, pinInfo->padChar);
++	}
++    }
++
++    vps.pinRef = pinInfo->pinRef | 
++     ((pinInfo->pinFlags & P15PinLocal) ? ISO_LOGIN_LOCAL : ISO_LOGIN_GLOBAL);
++    vps.pinVal = &encodedPin;
++    ret = CKYApplet_HandleAPDU(conn, P15AppletFactory_VerifyPIN, &vps, NULL, 
++			    0, CKYAppletFill_Null, 
++			    NULL, apduRC);
++    /* it's unfortunate that the same code that means 'more data to follow' for
++     * GetCertificate also means, auth failure, you only have N more attempts
++     * left in the verify PIN call */
++    if ((*apduRC & CKYISO_MORE_MASK) == CKYISO_MORE) {
++	ret = CKYAPDUFAIL;
++    }
++fail:
++    CKYBuffer_FreeData(&encodedPin);
++    return ret;
++}
++
++
++/*
++ * Read Record
++ */
++CKYStatus
++P15Applet_ReadRecord(CKYCardConnection *conn, CKYByte record, CKYByte short_ef,
++		CKYByte flags, CKYByte size, CKYBuffer *data, CKYISOStatus *apduRC)
++{
++    P15AppletArgReadRecord rrd;
++
++    rrd.record = record;
++    rrd.short_ef = short_ef;
++    rrd.flags = flags;
++    rrd.size = size;
++    return CKYApplet_HandleAPDU(conn, P15AppletFactory_ReadRecord, &rrd, NULL,
++	CKY_SIZE_UNKNOWN, CKYAppletFill_ReplaceBuffer, data, apduRC);
++}
++
++static CKYStatus
++P15Applet_ManageSecurityEnvironment(CKYCardConnection *conn, CKYByte key,
++				 CKYByte direction, CKYByte p1, 
++				 CKYISOStatus *apduRC)
++{
++    P15AppletArgManageSecurityEnvironment mse;
++
++    mse.p1 = p1; /* this appears to be where most cards disagree */
++    mse.p2 = (direction == CKY_DIR_DECRYPT) ? ISO_MSE_KEA : ISO_MSE_SIGN;
++    mse.keyRef = key; /* should be CKYBuffer in the future? */
++    return CKYApplet_HandleAPDU(conn, 
++		P15AppletFactory_ManageSecurityEnvironment, &mse, NULL,
++		CKY_SIZE_UNKNOWN, CKYAppletFill_Null, NULL, apduRC);
++}
++
++CKYStatus
++P15Applet_SignDecrypt(CKYCardConnection *conn, CKYByte key, 
++		unsigned int keySize, CKYByte direction, 
++		const CKYBuffer *data, CKYBuffer *result, CKYISOStatus *apduRC)
++{
++    CKYStatus ret;
++    P15AppletArgPerformSecurityOperation pso;
++    CKYSize dataSize = CKYBuffer_Size(data);
++    CKYOffset offset = 0;
++    CKYBuffer tmp;
++    int length = dataSize;
++    int appendLength = length;
++    int hasPad = 0;
++
++    /* Hack, lie and say we are always doing encipherment */
++    direction = CKY_DIR_DECRYPT;
++    CKYBuffer_Resize(result,0);
++    /*
++     * first set the security environment
++     */
++    ret = P15Applet_ManageSecurityEnvironment(conn, key, direction, 
++			ISO_MSE_SET|ISO_MSE_QUAL_COMPUTE, apduRC);
++    if (ret != CKYSUCCESS) {
++	return ret;
++    }
++
++    CKYBuffer_InitEmpty(&tmp);
++
++    pso.data = &tmp;
++    pso.dir = direction;
++    if (direction == CKY_DIR_DECRYPT) {
++	length++;
++	CKYBuffer_AppendChar(&tmp, 0x00); /* pad byte */
++	hasPad = 1;
++    }
++    if (CKYCardConnection_GetProtocol(conn) == SCARD_PROTOCOL_T0) {
++	ret = CKYBuffer_Reserve(&tmp, CKY_MAX_WRITE_CHUNK_SIZE);
++	if (ret != CKYSUCCESS) {
++	    goto done;
++	}
++	for(offset = 0; length > CKY_MAX_WRITE_CHUNK_SIZE; 
++					hasPad = 0,
++					offset += CKY_MAX_WRITE_CHUNK_SIZE, 
++					length -= CKY_MAX_WRITE_CHUNK_SIZE) {
++	    pso.chain = 1;
++	    pso.retLen = 0;
++	    CKYBuffer_AppendBuffer(&tmp, data, offset, 
++	     hasPad ? (CKY_MAX_WRITE_CHUNK_SIZE-1) : CKY_MAX_WRITE_CHUNK_SIZE);
++            ret = CKYApplet_HandleAPDU(conn, 
++			P15AppletFactory_PerformSecurityOperation, &pso, NULL, 
++			CKY_SIZE_UNKNOWN, CKYAppletFill_Null, NULL, apduRC);
++	    if (ret != CKYSUCCESS) {
++		goto done;
++	    }
++	    CKYBuffer_Resize(&tmp, 0);
++	}
++	appendLength = length;
++    } else {
++	ret = CKYBuffer_Reserve(&tmp, length);
++    }
++    CKYBuffer_AppendBuffer(&tmp, data, offset, appendLength);
++    pso.chain = 0;
++    pso.retLen = dataSize;
++
++    ret = CKYApplet_HandleAPDU(conn, 
++		P15AppletFactory_PerformSecurityOperation, &pso, NULL, 
++	CKY_SIZE_UNKNOWN, CKYAppletFill_ReplaceBuffer, result, apduRC);
++
++done:
++    CKYBuffer_FreeData(&tmp);
++    return ret;
++}
++
++/*
++ * Read Binary
++ */
++CKYStatus
++P15Applet_ReadBinary(CKYCardConnection *conn, unsigned short offset,
++			CKYByte short_ef, CKYByte flags, CKYByte size, 
++			CKYBuffer *data, CKYISOStatus *apduRC)
++{
++    P15AppletArgReadBinary red;
++
++    red.offset = offset;
++    red.short_ef = short_ef;
++    red.flags = flags;
++    red.size = size;
++    return CKYApplet_HandleAPDU(conn, P15AppletFactory_ReadBinary, &red, NULL,
++	CKY_SIZE_UNKNOWN, CKYAppletFill_AppendBuffer, data, apduRC);
++}
++
+ CKYStatus 
+ CACApplet_GetCertificateFirst(CKYCardConnection *conn, CKYBuffer *cert, 
+ 			CKYSize *nextSize, CKYISOStatus *apduRC)
+@@ -1632,6 +1860,7 @@ CKYApplet_ReadObjectFull(CKYCardConnecti
+     return ret;
+ }
+ 
++
+ /*
+  * Write Object
+  * This makes multiple APDU calls to write the entire object.
+diff -up ./src/libckyapplet/cky_applet.h.p15 ./src/libckyapplet/cky_applet.h
+--- ./src/libckyapplet/cky_applet.h.p15	2015-07-06 10:27:55.776827153 -0700
++++ ./src/libckyapplet/cky_applet.h	2015-07-06 10:27:55.788826927 -0700
+@@ -204,6 +204,7 @@ typedef struct _CKYAppletArgReadObject {
+     CKYByte         size;
+ } CKYAppletArgReadObject;
+ 
++
+ typedef struct _CKYAppletArgWriteObject {
+     unsigned long objectID;
+     CKYOffset     offset;
+@@ -262,6 +263,39 @@ typedef struct _PIVAppletRespSignDecrypt
+      CKYBuffer  *buf;
+ } PIVAppletRespSignDecrypt;
+ 
++typedef struct _P15AppletArgReadRecord {
++    CKYByte	    record;
++    CKYByte         short_ef;
++    CKYByte         flags;
++    CKYByte         size;
++} P15AppletArgReadRecord;
++
++typedef struct _P15AppletArgReadBinary {
++    unsigned short    offset;
++    CKYByte         short_ef;
++    CKYByte         flags;
++    CKYByte         size;
++} P15AppletArgReadBinary;
++
++typedef struct _P15AppletArgVerifyPIN {
++    const  CKYBuffer *pinVal;
++    CKYByte pinRef;
++} P15AppletArgVerifyPIN;
++
++typedef struct _P15AppletArgManageSecurityEnvironment {
++    CKYByte p1;
++    CKYByte p2;
++    CKYByte keyRef;
++}
++ P15AppletArgManageSecurityEnvironment;
++
++typedef struct _P15AppletArgPerformSecurityOperation {
++    CKYByte dir;
++    int     chain;
++    CKYSize retLen;
++    const CKYBuffer *data;
++} P15AppletArgPerformSecurityOperation;
++
+ /* fills in an APDU from a structure -- form of all the generic factories*/
+ typedef CKYStatus (*CKYAppletFactory)(CKYAPDU *apdu, const void *param);
+ /* fills in an a structure from a response -- form of all the fill structures*/
+@@ -514,6 +548,7 @@ CKYStatus CACApplet_ReadFile(CKYCardConn
+ CKYStatus CACApplet_SelectFile(CKYCardConnection *conn, unsigned short ef,
+ 			     CKYISOStatus *apduRC);
+ 
++
+ /* must happen with PKI applet selected */
+ CKYStatus CACApplet_SignDecrypt(CKYCardConnection *conn, const CKYBuffer *data,
+ 		CKYBuffer *result, CKYISOStatus *apduRC);
+@@ -539,6 +574,26 @@ CKYStatus PIVApplet_SignDecrypt(CKYCardC
+ 				   unsigned int keySize, int derive,
+                                    const CKYBuffer *data, CKYBuffer *result, 
+                                    CKYISOStatus *apduRC);
++
++/* PKCS Commands 15 */
++CKYStatus P15Applet_SelectFile(CKYCardConnection *conn, unsigned short ef,
++			     CKYISOStatus *apduRC);
++CKYStatus P15Applet_SelectRootFile(CKYCardConnection *conn, unsigned short ef,
++			     CKYISOStatus *apduRC);
++CKYStatus P15Applet_ReadRecord(CKYCardConnection *conn, CKYByte record, 
++		CKYByte short_ef, CKYByte flags, CKYByte size, CKYBuffer *data, 
++		CKYISOStatus *apduRC);
++CKYStatus P15Applet_ReadBinary(CKYCardConnection *conn, unsigned short offset, 
++		CKYByte short_ef, CKYByte flags, CKYByte size, CKYBuffer *data, 
++		CKYISOStatus *apduRC);
++CKYStatus P15Applet_VerifyPIN(CKYCardConnection *conn, const char *pin, 
++			const P15PinInfo *pinInfo, CKYISOStatus *apduRC);
++
++CKYStatus P15Applet_SignDecrypt(CKYCardConnection *conn, CKYByte key,
++				   unsigned int keySize, CKYByte direction,
++                                   const CKYBuffer *data, CKYBuffer *result, 
++                                   CKYISOStatus *apduRC);
++
+ /*
+  * There are 3 read commands:
+  *  
+diff -up ./src/libckyapplet/cky_base.c.p15 ./src/libckyapplet/cky_base.c
+--- ./src/libckyapplet/cky_base.c.p15	2015-07-06 10:27:55.776827153 -0700
++++ ./src/libckyapplet/cky_base.c	2015-07-06 10:27:55.788826927 -0700
+@@ -651,21 +651,38 @@ CKYStatus
+ CKYAPDU_SetSendData(CKYAPDU *apdu, const CKYByte *data, CKYSize len)
+ {
+     CKYStatus ret;
++    CKYOffset offset = 0;
+ 
+-    if (len > CKYAPDU_MAX_DATA_LEN) {
+-	return CKYDATATOOLONG;
+-    }
++    /* Encode with T1 if necessary */
+ 
+-    ret = CKYBuffer_Resize(&apdu->apduBuf, len + CKYAPDU_HEADER_LEN);
+-    if (ret != CKYSUCCESS) {
+-	return ret;
++    if (len < CKYAPDU_MAX_DATA_LEN) {
++	offset = 0;
++        ret = CKYBuffer_Resize(&apdu->apduBuf, len+offset+CKYAPDU_HEADER_LEN);
++	if (ret != CKYSUCCESS ) {
++	    return ret;
++	}
++    	ret = CKYBuffer_SetChar(&apdu->apduBuf, CKY_LC_OFFSET, (CKYByte) len);
++    } else if (len < CKYAPDU_MAX_T1_DATA_LEN) {
++	offset = 2;
++        ret = CKYBuffer_Resize(&apdu->apduBuf, len+offset+CKYAPDU_HEADER_LEN);
++	if (ret != CKYSUCCESS ) {
++	    return ret;
++	}
++    	ret = CKYBuffer_SetChar(&apdu->apduBuf, CKY_LC_OFFSET, (CKYByte) 0);
++	if (ret != CKYSUCCESS) {
++	    return ret;
++	}
++        ret = CKYBuffer_SetShort(&apdu->apduBuf,CKY_LC_OFFSET+1,
++							(unsigned short)len);
++    } else {
++	return CKYDATATOOLONG;
+     }
+-    ret = CKYBuffer_SetChar(&apdu->apduBuf, CKY_LC_OFFSET,
+-				len == CKYAPDU_MAX_DATA_LEN ? 0: (CKYByte) len);
++	
+     if (ret != CKYSUCCESS) {
+ 	return ret;
+     }
+-    return CKYBuffer_Replace(&apdu->apduBuf, CKYAPDU_HEADER_LEN, data, len);
++    return CKYBuffer_Replace(&apdu->apduBuf, 
++				CKYAPDU_HEADER_LEN + offset , data, len);
+ }
+ 
+ CKYStatus
+@@ -685,15 +702,15 @@ CKYAPDU_AppendSendData(CKYAPDU *apdu, co
+     }
+ 
+     dataLen = CKYBuffer_Size(&apdu->apduBuf) + len - CKYAPDU_HEADER_LEN;
+-    if (dataLen > CKYAPDU_MAX_DATA_LEN) {
++    /* only handles T0 encoding, not T1 encoding */
++    if (dataLen >= CKYAPDU_MAX_DATA_LEN) {
+ 	return CKYDATATOOLONG;
+     }
+     ret = CKYBuffer_AppendData(&apdu->apduBuf, data, len);
+     if (ret != CKYSUCCESS) {
+ 	return ret;
+     }
+-    return CKYBuffer_SetChar(&apdu->apduBuf, CKY_LC_OFFSET,
+-			dataLen == CKYAPDU_MAX_DATA_LEN ? 0 : (CKYByte) dataLen);
++    return CKYBuffer_SetChar(&apdu->apduBuf, CKY_LC_OFFSET, (CKYByte) dataLen);
+ }
+ 
+ CKYStatus
+@@ -714,11 +731,100 @@ CKYAPDU_SetReceiveLen(CKYAPDU *apdu, CKY
+ }
+ 
+ CKYStatus
++CKYAPDU_SetShortReceiveLen(CKYAPDU *apdu, unsigned short recvlen)
++{
++    CKYStatus ret;
++
++    if (recvlen <= CKYAPDU_MAX_DATA_LEN) {
++	return APDU_SetReceiveLen(apdu, (CKYByte)(recvlen & 0xff));
++    }
++    ret = CKYBuffer_Resize(&apdu->apduBuf, CKYAPDU_HEADER_LEN+2);
++    if (ret != CKYSUCCESS) {
++	return ret;
++    }
++    ret = CKYBuffer_SetChar(&apdu->apduBuf, CKY_LE_OFFSET, 0);
++    if (ret != CKYSUCCESS) {
++	return ret;
++    }
++    return CKYBuffer_SetShort(&apdu->apduBuf, CKY_LE_OFFSET+1, recvlen);
++}
++
++CKYStatus
++CKYAPDU_SetReceiveLength(CKYAPDU *apdu, CKYSize recvlen)
++{
++    if (recvlen <= CKYAPDU_MAX_T1_DATA_LEN) {
++	return CKYAPDU_SetShortReceiveLen(apdu, (unsigned short) 
++						(recvlen & 0xffff));
++    }
++    return CKYDATATOOLONG;
++}
++
++/*
++ *  Append Le, If Le=0, treat it as 256 (CKYAPD_MAX_DATA_LEN)
++ */
++CKYStatus
+ CKYAPDU_AppendReceiveLen(CKYAPDU *apdu, CKYByte recvlen)
+ {
++    /* If we already have a data buffer, make sure that we aren't already
++     * using T1 encoding */
++    if (CKYBuffer_Size(&apdu->apduBuf) > CKYAPDU_MIN_LEN) {
++	if (CKYBuffer_GetChar(&apdu->apduBuf, CKY_LC_OFFSET) == 0) {
++	    /* we are using T1 encoding, use AppendShort*/
++	    return CKYBuffer_AppendShort(&apdu->apduBuf, 
++		recvlen ? (unsigned short) recvlen: CKYAPDU_MAX_DATA_LEN);
++	}
++    }
+     return CKYBuffer_AppendChar(&apdu->apduBuf, recvlen);
+ }
+ 
++/*
++ * Append a short Le. If Le be encoded with just T0, do so. If Le=0 treat
++ * it as 65536 (CKYAPDU_MAX_T1_DATA_LEN)
++ */
++CKYStatus
++CKYAPDU_AppendShortReceiveLen(CKYAPDU *apdu, unsigned short recvlen)
++{
++    CKYStatus ret;
++    /* If we already have a data buffer, it's encoding affects ours */
++    if (CKYBuffer_Size(&apdu->apduBuf) > CKYAPDU_MIN_LEN) {
++	/* CKY_LC_OFFSET == 0 means T1, otherwise it's T0 */
++	if (CKYBuffer_GetChar(&apdu->apduBuf, CKY_LC_OFFSET) != 0) {
++	    /* remember 0 is 65536 here */
++	    if ((recvlen == 0) || (recvlen > CKYAPDU_MAX_DATA_LEN)) {
++		/* we can't a encode T1 receive length if we already have a
++ 		 * T0 encoded buffer data */
++		return CKYDATATOOLONG;
++	    }
++	    /* T0 encoding */
++	    return CKYBuffer_AppendChar(&apdu->apduBuf, (CKYByte)recvlen&0xff);
++	}
++	/* T1 encoding */
++	return CKYBuffer_AppendShort(&apdu->apduBuf, recvlen);
++    }
++    /* if length fits in a bit and we aren't forced into T1 encoding, use
++     * T0 */
++    if ((recvlen != 0) && (recvlen <= CKYAPDU_MAX_DATA_LEN)) {
++	return CKYBuffer_AppendChar(&apdu->apduBuf, (CKYByte)recvlen&0xff);
++    }
++    /* write the T1 encoding marker */
++    ret = CKYBuffer_AppendChar(&apdu->apduBuf, (CKYByte)0);
++    if (ret != CKYSUCCESS) {
++	return ret;
++    }
++    /* T1 encoded length */
++    return CKYBuffer_AppendShort(&apdu->apduBuf, recvlen);
++}
++
++CKYStatus
++CKYAPDU_AppendReceiveLength(CKYAPDU *apdu, CKYSize recvlen)
++{
++    if (recvlen > CKYAPDU_MAX_T1_DATA_LEN) {
++	return CKYDATATOOLONG;
++    }
++    return CKYAPDU_AppendShortReceiveLen(apdu, 
++					(unsigned short)(recvlen & 0xffff));
++}
++
+ 
+ void
+ CKY_SetName(const char *p)
+diff -up ./src/libckyapplet/cky_base.h.p15 ./src/libckyapplet/cky_base.h
+--- ./src/libckyapplet/cky_base.h.p15	2015-07-06 10:27:55.777827135 -0700
++++ ./src/libckyapplet/cky_base.h	2015-07-06 10:27:55.789826908 -0700
+@@ -32,6 +32,8 @@ typedef unsigned char CKYByte;
+ /* Bool type */
+ typedef unsigned char CKYBool;
+ 
++typedef unsigned long CKYBitFlags;
++
+ #define CKYBUFFER_PUBLIC \
+     unsigned long reserved1;\
+     unsigned long reserved2;\
+@@ -93,6 +95,8 @@ typedef enum {
+ 			 * (command) sent. ADPUIOStatus has more info on
+ 			 * why the APDU failed */
+     CKYINVALIDARGS,      /* Caller passed in bad args */
++    CKYINVALIDDATA,	/* Data supplied was invalid */
++    CKYUNSUPPORTED,	/* Requested Operation or feature is not supported */
+ } CKYStatus;
+ 
+ /*
+@@ -107,12 +111,56 @@ typedef enum {
+ #define CKY_LE_OFFSET	4
+ 
+ #define CKYAPDU_MAX_DATA_LEN	256
++#define CKYAPDU_MAX_T1_DATA_LEN	65536
+ #define CKYAPDU_MIN_LEN		4
+ #define CKYAPDU_HEADER_LEN	5
+ #define CKYAPDU_MAX_LEN		(CKYAPDU_HEADER_LEN+CKYAPDU_MAX_DATA_LEN)
+ #define CKY_MAX_ATR_LEN		32
+ #define CKY_OUTRAGEOUS_MALLOC_SIZE (1024*1024)
+ 
++#define P15FlagsPrivate           0x00000001
++#define P15FlagsModifiable        0x00000002
++
++#define P15UsageEncrypt           0x00000001
++#define P15UsageDecrypt           0x00000002
++#define P15UsageSign              0x00000004
++#define P15UsageSignRecover       0x00000008
++#define P15UsageWrap              0x00000010
++#define P15UsageUnwrap            0x00000020
++#define P15UsageVerify            0x00000040
++#define P15UsageVerifyRecover     0x00000080
++#define P15UsageDerive            0x00000100
++#define P15UsageNonRepudiation    0x00000200
++
++#define P15AccessSensitive        0x00000001
++#define P15AccessExtractable      0x00000002
++#define P15AccessAlwaysSenstive   0x00000004
++#define P15AccessNeverExtractable 0x00000008
++#define P15AccessLocal            0x00000010
++
++#define P15PinCaseSensitive       0x00000001
++#define P15PinLocal               0x00000002
++#define P15PinChangeDisabled      0x00000004
++#define P15PinUnblockDisabled     0x00000008
++#define P15PinInitialized         0x00000010
++#define P15PinNeedsPadding        0x00000020
++#define P15PinUnblockingPin       0x00000040
++#define P15PinSOPin               0x00000080
++#define P15PinDisableAllowed      0x00000100
++
++typedef enum {P15PinBCD=0, P15PinASCIINum=1, P15PinUTF8=2} P15PinType;
++
++typedef struct _P15PinInfo {
++    CKYBitFlags   pinFlags;
++    P15PinType    pinType;
++    CKYByte       minLength;
++    CKYByte       storedLength;
++    unsigned long maxLength;
++    CKYByte       pinRef;
++    CKYByte       padChar;
++} P15PinInfo;
++     
++
+ /*
+  * allow direct inclusion in C++ files 
+  */
+@@ -278,7 +326,11 @@ CKYStatus CKYAPDU_AppendSendDataBuffer(C
+ /* set Le in the APDU header to the amount of bytes expected to be
+  * returned. */
+ CKYStatus CKYAPDU_SetReceiveLen(CKYAPDU *apdu, CKYByte recvlen);
++CKYStatus CKYAPDU_SetShortReceiveLen(CKYAPDU *apdu, unsigned short recvlen);
++CKYStatus CKYAPDU_SetReceiveLength(CKYAPDU *apdu, CKYSize recvlen);
+ CKYStatus CKYAPDU_AppendReceiveLen(CKYAPDU *apdu, CKYByte recvlen);
++CKYStatus CKYAPDU_AppendShortReceiveLen(CKYAPDU *apdu, unsigned short recvlen);
++CKYStatus CKYAPDU_AppendReceiveLength(CKYAPDU *apdu, CKYSize recvlen);
+ 
+ /* set the parent loadmodule name */
+ void CKY_SetName(const char *name);
+diff -up ./src/libckyapplet/cky_card.c.p15 ./src/libckyapplet/cky_card.c
+--- ./src/libckyapplet/cky_card.c.p15	2015-07-06 10:27:55.778827116 -0700
++++ ./src/libckyapplet/cky_card.c	2015-07-06 10:27:55.790826889 -0700
+@@ -910,6 +910,7 @@ ckyCardConnection_init(CKYCardConnection
+     conn->protocol = SCARD_PROTOCOL_T0;
+ }
+ 
++
+ CKYCardConnection *
+ CKYCardConnection_Create(const CKYCardContext *ctx)
+ {
+@@ -984,6 +985,12 @@ CKYCardConnection_IsConnected(const CKYC
+     return (conn->cardHandle != 0);
+ }
+ 
++unsigned long
++CKYCardConnection_GetProtocol(const CKYCardConnection *conn)
++{
++    return conn->protocol;
++}
++
+ CKYStatus 
+ ckyCardConnection_reconnectRaw(CKYCardConnection *conn, unsigned long init)
+ {
+@@ -996,6 +1003,7 @@ ckyCardConnection_reconnectRaw(CKYCardCo
+ 	conn->lastError = rv;
+ 	return CKYSCARDERR;
+     }
++    conn->protocol = protocol;
+     return CKYSUCCESS;
+ }
+ 
+diff -up ./src/libckyapplet/cky_card.h.p15 ./src/libckyapplet/cky_card.h
+--- ./src/libckyapplet/cky_card.h.p15	2015-07-06 10:27:55.766827342 -0700
++++ ./src/libckyapplet/cky_card.h	2015-07-06 10:27:55.790826889 -0700
+@@ -116,6 +116,7 @@ CKYStatus CKYCardConnection_ExchangeAPDU
+ CKYStatus CKYCardConnection_Connect(CKYCardConnection *connection, 
+ 					const char *readerName);
+ CKYStatus CKYCardConnection_Disconnect(CKYCardConnection *connection);
++unsigned long CKYCardConnection_GetProtocol(const CKYCardConnection *conn);
+ CKYBool CKYCardConnection_IsConnected(const CKYCardConnection *connection);
+ CKYStatus CKYCardConnection_Reconnect(CKYCardConnection *connection);
+ CKYStatus CKYCardConnection_GetStatus(CKYCardConnection *connection,
+diff -up ./src/libckyapplet/cky_factory.c.p15 ./src/libckyapplet/cky_factory.c
+--- ./src/libckyapplet/cky_factory.c.p15	2015-07-06 10:27:55.778827116 -0700
++++ ./src/libckyapplet/cky_factory.c	2015-07-06 10:27:55.791826870 -0700
+@@ -29,7 +29,7 @@ CKYAPDUFactory_SelectFile(CKYAPDU *apdu,
+ 			  const CKYBuffer *AID)
+ {
+     CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
+-    CKYAPDU_SetINS(apdu, CKY_INS_SELECT_FILE);
++    CKYAPDU_SetINS(apdu, ISO_INS_SELECT_FILE);
+     CKYAPDU_SetP1(apdu, p1);
+     CKYAPDU_SetP2(apdu, p2);
+     return CKYAPDU_SetSendDataBuffer(apdu, AID);
+@@ -40,7 +40,7 @@ CKYAPDUFactory_SelectCardManager(CKYAPDU
+ {
+     CKYByte c = 0;
+     CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
+-    CKYAPDU_SetINS(apdu, CKY_INS_SELECT_FILE);
++    CKYAPDU_SetINS(apdu, ISO_INS_SELECT_FILE);
+     CKYAPDU_SetP1(apdu, 0x04);
+     CKYAPDU_SetP2(apdu, 0x00);
+     /* I can't find the documentation for this, but if you pass an empty
+@@ -57,7 +57,7 @@ CKYStatus
+ CKYAPDUFactory_GetCPLCData(CKYAPDU *apdu)
+ {
+     CKYAPDU_SetCLA(apdu, CKY_CLASS_GLOBAL_PLATFORM);
+-    CKYAPDU_SetINS(apdu, CKY_INS_GET_DATA);
++    CKYAPDU_SetINS(apdu, ISO_INS_GET_DATA);
+     CKYAPDU_SetP1(apdu, 0x9f);
+     CKYAPDU_SetP2(apdu, 0x7f);
+     return CKYAPDU_SetReceiveLen(apdu, CKY_SIZE_GET_CPLCDATA);
+@@ -707,6 +707,7 @@ fail:
+     CKYBuffer_FreeData(&buf);
+     return ret;
+ }
++
+ CKYStatus
+ CACAPDUFactory_GetProperties(CKYAPDU *apdu)
+ {
+@@ -718,37 +719,6 @@ CACAPDUFactory_GetProperties(CKYAPDU *ap
+ }
+ 
+ CKYStatus
+-CACAPDUFactory_VerifyPIN(CKYAPDU *apdu, CKYByte keyRef, const char *pin)
+-{
+-    CKYStatus ret;
+-    CKYSize size;
+-
+-    CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
+-    CKYAPDU_SetINS(apdu, CAC_INS_VERIFY_PIN);
+-    CKYAPDU_SetP1(apdu, 0x00);
+-    CKYAPDU_SetP2(apdu, keyRef);
+-    /* no pin, send an empty buffer */
+-    if (!pin) {
+-    	return CKYAPDU_SetReceiveLen(apdu, 0);
+-    }
+-
+-    /* all CAC pins are 8 bytes exactly. If to long, truncate it */
+-    size = strlen(pin);
+-    if (size > 8) {
+-	size = 8;
+-    }
+-    ret = CKYAPDU_SetSendData(apdu, (unsigned char *) pin, size);
+-    /* if too short, pad it */
+-    if ((ret == CKYSUCCESS) && (size < 8)) {
+-	static const unsigned char pad[]= { 0xff , 0xff, 0xff ,0xff, 
+-				   0xff, 0xff, 0xff, 0xff };
+-	return CKYAPDU_AppendSendData(apdu, pad, 8-size);
+-    }
+-    return ret;
+-
+-}
+-
+-CKYStatus
+ PIVAPDUFactory_SignDecrypt(CKYAPDU *apdu, CKYByte chain, CKYByte alg, 
+ 			   CKYByte key, int len, const CKYBuffer *data)
+ {
+@@ -807,3 +777,109 @@ fail:
+     return ret;
+ }
+ 
++CKYStatus
++P15APDUFactory_VerifyPIN(CKYAPDU *apdu, CKYByte keyRef, const CKYBuffer *pin)
++{
++    CKYStatus ret;
++
++    CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
++    CKYAPDU_SetINS(apdu, CAC_INS_VERIFY_PIN);
++    CKYAPDU_SetP1(apdu, 0x00);
++    CKYAPDU_SetP2(apdu, keyRef);
++    /* no pin, send an empty buffer */
++    if (CKYBuffer_Size(pin) == 0) {
++    	return CKYAPDU_SetReceiveLen(apdu, 0);
++    }
++
++    /* all CAC pins are 8 bytes exactly. If to long, truncate it */
++    ret = CKYAPDU_SetSendDataBuffer(apdu, pin);
++    return ret;
++
++}
++
++CKYStatus
++P15APDUFactory_ReadRecord(CKYAPDU *apdu, CKYByte record, CKYByte short_ef, 
++					CKYByte flags, CKYByte count)
++{
++    CKYByte control;
++
++    control = (short_ef << 3) & 0xf8;
++    control |= flags & 0x07;
++
++    CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
++    CKYAPDU_SetINS(apdu, ISO_INS_READ_RECORD);
++    CKYAPDU_SetP1(apdu, record);
++    CKYAPDU_SetP2(apdu, control);
++    return CKYAPDU_SetReceiveLen(apdu, count);
++}
++
++CKYStatus
++P15APDUFactory_ReadBinary(CKYAPDU *apdu, unsigned short offset, 
++			CKYByte short_ef, CKYByte flags, CKYByte count)
++{
++    CKYByte p1 = 0,p2 = 0;
++    unsigned short max_offset = 0;
++
++    if (flags & P15_USE_SHORT_EF) {
++	max_offset = 0xff;
++	p1 = P15_USE_SHORT_EF | (short_ef & 0x7);
++	p2 = offset & 0xff;
++    } else {
++	max_offset = 0x7fff;
++	p1 = (offset >> 8) & 0x7f;
++	p2 = offset & 0xff;
++    }
++    if (offset > max_offset) {
++	return CKYINVALIDARGS;
++    }
++
++    CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
++    CKYAPDU_SetINS(apdu, ISO_INS_READ_BINARY);
++    CKYAPDU_SetP1(apdu, p1);
++    CKYAPDU_SetP2(apdu, p2);
++    return CKYAPDU_SetReceiveLen(apdu, count);
++}
++
++CKYStatus
++P15APDUFactory_ManageSecurityEnvironment(CKYAPDU *apdu, CKYByte p1, CKYByte p2,
++					CKYByte keyRef)
++{
++    CKYByte param[3];
++
++    CKYAPDU_SetCLA(apdu, CKY_CLASS_ISO7816);
++    CKYAPDU_SetINS(apdu, ISO_INS_MANAGE_SECURITY_ENVIRONMENT);
++    CKYAPDU_SetP1(apdu, p1);
++    CKYAPDU_SetP2(apdu, p2);
++    param[0] = 0x83;
++    param[1] = 1;
++    param[2] = keyRef;
++    return CKYAPDU_SetSendData(apdu, param, sizeof param);
++}
++
++CKYStatus
++P15APDUFactory_PerformSecurityOperation(CKYAPDU *apdu, CKYByte dir,
++			int chain, CKYSize retLen, const CKYBuffer *data)
++{
++    CKYByte p1,p2;
++    CKYStatus ret;
++
++    CKYAPDU_SetCLA(apdu, chain ? CKY_CLASS_ISO7816_CHAIN :
++				  CKY_CLASS_ISO7816);
++    CKYAPDU_SetINS(apdu, ISO_INS_PERFORM_SECURITY_OPERATION);
++    if (dir == CKY_DIR_DECRYPT) {
++	p1 = ISO_PSO_DECRYPT_P1;
++	p2 = ISO_PSO_DECRYPT_P2;
++    } else {
++	p1 = ISO_PSO_SIGN_P1;
++	p2 = ISO_PSO_SIGN_P2;
++    }
++    CKYAPDU_SetP1(apdu, p1);
++    CKYAPDU_SetP2(apdu, p2);
++    ret =  CKYAPDU_SetSendDataBuffer(apdu, data);
++    if (ret == CKYSUCCESS && (chain == 0) && retLen != 0) {
++	ret = CKYAPDU_AppendReceiveLength(apdu, retLen);
++    }
++    return ret;
++}
++
++
+diff -up ./src/libckyapplet/cky_factory.h.p15 ./src/libckyapplet/cky_factory.h
+--- ./src/libckyapplet/cky_factory.h.p15	2015-07-06 10:27:55.779827097 -0700
++++ ./src/libckyapplet/cky_factory.h	2015-07-06 10:27:55.791826870 -0700
+@@ -35,8 +35,31 @@
+  * Applet Instruction Bytes
+  */
+ /* Card Manager */
+-#define CKY_INS_SELECT_FILE	0xa4
+-#define CKY_INS_GET_DATA 	0xca
++#define ISO_INS_SELECT_FILE	0xa4
++#define ISO_INS_GET_DATA 	0xca
++#define ISO_INS_READ_BINARY 	0xb0
++#define ISO_INS_READ_RECORD 	0xb2
++#define ISO_INS_MANAGE_SECURITY_ENVIRONMENT 0x22
++#define ISO_INS_PERFORM_SECURITY_OPERATION 0x2a
++
++/* ISO Parameters: */
++#define ISO_LOGIN_LOCAL		0x80
++#define ISO_LOGIN_GLOBAL	0x00
++#define ISO_MSE_SET		0x01
++#define ISO_MSE_STORE		0xf2
++#define ISO_MSE_RESTORE		0xf3
++#define ISO_MSE_ERASE		0xf4
++#define ISO_MSE_QUAL_VERIFY	0x80
++#define ISO_MSE_QUAL_COMPUTE	0x40
++#define ISO_MSE_AUTH		0xa4
++#define ISO_MSE_SIGN		0xb6
++#define ISO_MSE_KEA		0xb8
++#define ISO_PSO_SIGN_P1		0x9e
++#define ISO_PSO_SIGN_P2		0x9a
++#define ISO_PSO_ENCRYPT_P1	0x86
++#define ISO_PSO_ENCRYPT_P2	0x80
++#define ISO_PSO_DECRYPT_P1	0x80
++#define ISO_PSO_DECRYPT_P2	0x86
+ 
+ /* deprecated */
+ #define CKY_INS_SETUP    	0x2A
+@@ -84,6 +107,7 @@
+ #define CKY_INS_SEC_READ_IOBUF	0x08
+ #define CKY_INS_SEC_START_ENROLLMENT	0x0C
+ 
++
+ /* CAC */
+ #define CAC_INS_GET_CERTIFICATE 0x36
+ #define CAC_INS_SIGN_DECRYPT	0x42
+@@ -94,11 +118,8 @@
+ #define CAC_SIZE_GET_PROPERTIES	48
+ #define CAC_P1_STEP		0x80
+ #define CAC_P1_FINAL		0x00
+-#define CAC_LOGIN_GLOBAL	0x00
+ 
+ /* PIV */
+-#define PIV_LOGIN_LOCAL		0x80
+-#define PIV_LOGIN_GLOBAL	CAC_LOGIN_GLOBAL
+ #define PIV_INS_GEN_AUTHENTICATE 0x87
+ 
+ /*
+@@ -121,7 +142,7 @@
+ /* functions */
+ #define CKY_CIPHER_INIT		1
+ #define CKY_CIPHER_PROCESS	2
+-#define CKY_CIPHER_FINAL		3
++#define CKY_CIPHER_FINAL	3
+ #define CKY_CIPHER_ONE_STEP	4  /* init and final in one APDU */
+ 
+ /* modes */
+@@ -173,6 +194,18 @@
+ #define CKY_CARDM_MANAGER_LOCKED          0x7f
+ #define CKY_CARDM_MANAGER_TERMINATED      0xff
+ 
++/* Read Record Flags */
++#define P15_READ_P1          0x4
++#define P15_READ_P1_TO_LAST  0x5
++#define P15_READ_LAST_TO_P1  0x6
++#define P15_READ_FIRST       0x0
++#define P15_READ_LAST        0x1
++#define P15_READ_NEXT        0x2
++#define P15_READ_PREV        0x3
++
++/* Read Binary Flags */
++#define P15_USE_SHORT_EF    0x80
++
+ /*
+  * The following factories 'Fill in' APDUs for each of the
+  * functions described below. Nonces are not automatically added.
+@@ -234,17 +267,28 @@ CKYStatus CKYAPDUFactory_GetBuiltinACL(C
+ 
+ CKYStatus CACAPDUFactory_SignDecrypt(CKYAPDU *apdu, CKYByte type, 
+ 				     const CKYBuffer *data);
+-CKYStatus CACAPDUFactory_VerifyPIN(CKYAPDU *apdu, CKYByte keyRef,
+-				   const char *pin);
+ CKYStatus CACAPDUFactory_GetCertificate(CKYAPDU *apdu, CKYSize size);
+ CKYStatus CACAPDUFactory_ReadFile(CKYAPDU *apdu, unsigned short offset, 
+ 				  CKYByte type, CKYByte count);
+ CKYStatus CACAPDUFactory_GetProperties(CKYAPDU *apdu);
++
+ CKYStatus PIVAPDUFactory_GetData(CKYAPDU *apdu, const CKYBuffer *object, 
+ 				CKYByte count);
+ CKYStatus PIVAPDUFactory_SignDecrypt(CKYAPDU *apdu, CKYByte chain, CKYByte alg, 
+                            CKYByte key, int len, const CKYBuffer *data);
+ 
++CKYStatus P15APDUFactory_VerifyPIN(CKYAPDU *apdu, CKYByte keyRef,
++			   const CKYBuffer *pin);
++CKYStatus P15APDUFactory_ReadRecord(CKYAPDU *apdu, CKYByte record, 
++			   CKYByte short_ef, CKYByte flags, CKYByte count);
++CKYStatus P15APDUFactory_ReadBinary(CKYAPDU *apdu, unsigned short offset, 
++			   CKYByte short_ef, CKYByte flags, CKYByte count);
++CKYStatus P15APDUFactory_ManageSecurityEnvironment(CKYAPDU *apdu, 
++			   CKYByte p1, CKYByte p2, CKYByte key);
++CKYStatus P15APDUFactory_PerformSecurityOperation(CKYAPDU *apdu, CKYByte dir,
++			   int chain, CKYSize retLen, const CKYBuffer *data);
++
++
+ CKY_END_PROTOS
+ 
+ #endif /* CKY_FACTORY_H */

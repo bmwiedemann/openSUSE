@@ -1,0 +1,211 @@
+#
+# spec file for package k3b
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%bcond_without lang
+%bcond_without ffmpeg
+%bcond_without lame
+%bcond_without mad
+Name:           k3b
+Version:        19.08.0
+Release:        0
+Summary:        CD/DVD/Blu-ray Burning Application for KDE
+License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/CD/Record
+URL:            https://www.kde.org
+Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+# PATCH-FIX-OPENSUSE
+Patch1:         Don-t-suggest-to-install-libburn.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Revert-Enable-the-k3b-helper-by-default.patch
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  flac-devel
+BuildRequires:  libdvdread-devel
+BuildRequires:  libkcddb-devel
+BuildRequires:  libmpcdec-devel
+BuildRequires:  libmusicbrainz-devel
+BuildRequires:  libsamplerate-devel
+BuildRequires:  libsndfile-devel
+BuildRequires:  libvorbis-devel
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Archive) >= 5.21.0
+BuildRequires:  cmake(KF5Config) >= 5.21.0
+BuildRequires:  cmake(KF5CoreAddons) >= 5.21.0
+BuildRequires:  cmake(KF5DocTools) >= 5.21.0
+BuildRequires:  cmake(KF5FileMetaData) >= 5.21.0
+BuildRequires:  cmake(KF5I18n) >= 5.21.0
+BuildRequires:  cmake(KF5IconThemes) >= 5.21.0
+BuildRequires:  cmake(KF5JobWidgets) >= 5.21.0
+BuildRequires:  cmake(KF5KCMUtils) >= 5.21.0
+BuildRequires:  cmake(KF5KIO) >= 5.21.0
+BuildRequires:  cmake(KF5NewStuff) >= 5.21.0
+BuildRequires:  cmake(KF5Notifications) >= 5.21.0
+BuildRequires:  cmake(KF5NotifyConfig) >= 5.21.0
+BuildRequires:  cmake(KF5Service) >= 5.21.0
+BuildRequires:  cmake(KF5Solid) >= 5.21.0
+BuildRequires:  cmake(KF5WidgetsAddons) >= 5.21.0
+BuildRequires:  cmake(KF5XmlGui) >= 5.21.0
+BuildRequires:  cmake(Qt5Core) >= 5.5.0
+BuildRequires:  cmake(Qt5DBus) >= 5.5.0
+BuildRequires:  cmake(Qt5Gui) >= 5.5.0
+BuildRequires:  cmake(Qt5Test) >= 5.5.0
+BuildRequires:  pkgconfig(taglib)
+Requires:       %{_bindir}/cdrdao
+Requires:       %{_bindir}/cdrecord
+Requires:       %{_bindir}/mkisofs
+Requires:       %{_bindir}/readcd
+Requires:       dvd+rw-tools
+Requires(post): hicolor-icon-theme
+Requires(post): shared-mime-info
+Requires(postun): hicolor-icon-theme
+Requires(postun): shared-mime-info
+Recommends:     %{_bindir}/normalize
+Recommends:     %{_bindir}/sox
+Recommends:     %{_bindir}/transcode
+Recommends:     %{name}-lang
+Recommends:     vcdimager
+Provides:       kde4-k3b = 4.2.2.svn951754
+Obsoletes:      k3b-codecs
+Obsoletes:      kde4-k3b < 4.2.2.svn951754
+%if %{with ffmpeg}
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+%endif
+%if %{with lame}
+BuildRequires:  libmp3lame-devel
+Requires:       lame
+%endif
+%if %{with mad}
+BuildRequires:  pkgconfig(mad)
+%endif
+
+%description
+Featuring a graphical interface, k3b provides various
+options for burning a CD, DVD, or BD (Blu-ray disc). Various types of
+projects are supported, including audio and data, video
+projects for DVD and VCD, as well as multi-session and mixed-mode discs. k3b
+has the ability to erase re-writeable media, and can perform more
+complicated tasks such as audiovisual encoding and decoding.
+
+%package devel
+Summary:        Development files for k3b
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description devel
+This package contain files needed for development with k3b.
+
+%lang_package
+
+%prep
+%setup -q
+%autopatch -p1
+
+%build
+CXXFLAGS="%{optflags} -fno-strict-aliasing"
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%make_jobs
+
+%install
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
+  %{kf5_find_htmldocs}
+  %else
+  # %%kf5_find_htmldocs is only defined since Leap 42.3
+  CURDIR=`pwd`
+  pushd %{buildroot}%{_kf5_htmldir}
+  for i in *; do
+    if ! [ -d "%{_datadir}/locale/${i}" ]; then
+        echo "Removing unsupported translation %{_kf5_htmldir}/${i}"
+        rm -rf "$i"
+    elif [ "$i" != "en" ]; then
+        echo "%doc %lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang
+    fi
+  done
+  popd
+  %endif
+%endif
+
+%suse_update_desktop_file -r org.kde.k3b Qt KDE AudioVideo DiscBurning
+
+%fdupes -s %{buildroot}
+
+%post
+/sbin/ldconfig
+%desktop_database_post
+%icon_theme_cache_post
+
+%postun
+/sbin/ldconfig
+%desktop_database_postun
+%icon_theme_cache_postun
+
+%files
+%license COPYING*
+%doc ChangeLog FAQ.txt PERMISSIONS.txt README.txt
+%config %{_kf5_configdir}/k3btheme.knsrc
+%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_sharedir}/konqsidebartng
+%dir %{_kf5_sharedir}/konqsidebartng/virtual_folders
+%dir %{_kf5_sharedir}/konqsidebartng/virtual_folders/services
+%dir %{_kf5_sharedir}/solid
+%dir %{_kf5_sharedir}/solid/actions
+%doc %lang(en) %{_kf5_htmldir}/en/k3b/
+%{_kf5_applicationsdir}/org.kde.k3b.desktop
+%{_kf5_appstreamdir}/org.kde.k3b.appdata.xml
+%{_kf5_bindir}/k3b
+%{_kf5_iconsdir}/hicolor/*/apps/k3b.*
+%{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-k3b.*
+%{_kf5_kxmlguidir}/k3b
+%{_kf5_libdir}/libk3bdevice.so.*
+%{_kf5_libdir}/libk3blib.so.*
+%{_kf5_notifydir}/k3b.notifyrc
+%{_kf5_plugindir}/k3b*.so
+%{_kf5_plugindir}/kcm_k3b*.so
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/kio/
+%{_kf5_plugindir}/kf5/kio/videodvd.so
+%{_kf5_servicesdir}/ServiceMenus/k3b_*.desktop
+%{_kf5_servicesdir}/k3b*.desktop
+%{_kf5_servicesdir}/kcm_k3b*.desktop
+%{_kf5_servicesdir}/videodvd.protocol
+%{_kf5_servicetypesdir}/k3bplugin.desktop
+%{_kf5_sharedir}/k3b
+%{_kf5_sharedir}/konqsidebartng/virtual_folders/services/videodvd.desktop
+%{_kf5_sharedir}/mime/packages/x-k3b.xml
+%{_kf5_sharedir}/solid/actions/k3b_*.desktop
+
+%files devel
+%license COPYING*
+%{_includedir}/k3b*.h
+%{_kf5_libdir}/libk3bdevice.so
+%{_kf5_libdir}/libk3blib.so
+
+%if %{with lang}
+%files lang -f %{name}.lang
+%license COPYING*
+%endif
+
+%changelog

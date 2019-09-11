@@ -1,0 +1,56 @@
+Index: emacs-25.2/configure.ac
+===================================================================
+---
+ emacs-26.1/configure.ac |    2 +-
+ emacs-26.1/src/image.c  |   12 ++++++++++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+--- emacs-26.1/configure.ac
++++ emacs-26.1/configure.ac	2018-05-29 12:46:11.911662417 +0000
+@@ -2525,7 +2525,7 @@ if test "${HAVE_X11}" = "yes" || test "$
+     ## 6.3.5 is the earliest version known to work; see Bug#17339.
+     ## 6.8.2 makes Emacs crash; see Bug#13867.
+     ## 7 and later have not been ported to; See Bug#25967.
+-    IMAGEMAGICK_MODULE="Wand >= 6.3.5 Wand != 6.8.2 Wand < 7"
++    IMAGEMAGICK_MODULE="MagickWand >= 6.3.5 MagickWand != 6.8.2"
+     EMACS_CHECK_MODULES([IMAGEMAGICK], [$IMAGEMAGICK_MODULE])
+ 
+     if test $HAVE_IMAGEMAGICK = yes; then
+--- emacs-26.1/src/image.c
++++ emacs-26.1/src/image.c	2018-05-29 12:43:23.178732705 +0000
+@@ -8434,7 +8434,11 @@ imagemagick_compute_animated_image (Magi
+       PixelWand **source, **dest;
+       size_t source_width, source_height;
+       ssize_t source_left, source_top;
++#if MagickLibVersion >= 0x700
++      PixelInfo pixel;  
++#else
+       MagickPixelPacket pixel;
++#endif
+       DisposeType dispose;
+       ptrdiff_t lines = 0;
+ 
+@@ -8499,7 +8503,11 @@ imagemagick_compute_animated_image (Magi
+ 	      if (dispose == BackgroundDispose || PixelGetAlpha (source[x]))
+ 		{
+ 		  PixelGetMagickColor (source[x], &pixel);
++#if MagickLibVersion >= 0x700
++		  PixelSetPixelColor (dest[x + source_left], &pixel);
++#else
+ 		  PixelSetMagickColor (dest[x + source_left], &pixel);
++#endif
+ 		}
+ 	    }
+ 	  PixelSyncIterator (dest_iterator);
+@@ -8546,7 +8554,11 @@ imagemagick_load_image (struct frame *f,
+   MagickWand *image_wand;
+   PixelIterator *iterator;
+   PixelWand **pixels, *bg_wand = NULL;
++#if MagickLibVersion >= 0x700
++  PixelInfo pixel;
++#else
+   MagickPixelPacket  pixel;
++#endif
+   Lisp_Object image;
+   Lisp_Object value;
+   Lisp_Object crop;

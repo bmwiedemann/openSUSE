@@ -1,0 +1,157 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-09-14 21:24:24.641753040 +0200
+
+build: produce shared libraries
+
+Partly based on Debian's upstream-autotoolization.patch.
+---
+ Makefile.am  |  101 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ configure.ac |   14 +++++---
+ 2 files changed, 111 insertions(+), 4 deletions(-)
+
+Index: nauty26r10/Makefile.am
+===================================================================
+--- /dev/null
++++ nauty26r10/Makefile.am
+@@ -0,0 +1,101 @@
++ACLOCAL_AMFLAGS = -I m4
++bin_PROGRAMS = dreadnaut addedgeg amtog biplabg catg complg converseg copyg \
++	countg cubhamg deledgeg delptg directg dretodot dretog genbg genbgL \
++	geng genquarticg genrang genspecialg gentourng gentreeg hamheuristic \
++	labelg linegraphg listg multig newedgeg NRswitchg pickg planarg \
++	ranlabg shortg showg subdivideg twohamg vcolg watercluster2 blisstog \
++	checks6 sumlines
++
++nautyA1_flavor_CPPFLAGS = -DMAXN=WORDSIZE
++nautyS0_flavor_CPPFLAGS = -DWORDSIZE=16
++nautyS1_flavor_CPPFLAGS = ${nautyA1_flavor_CPPFLAGS} ${nautyS0_flavor_CPPFLAGS}
++nautyW0_flavor_CPPFLAGS = -DWORDSIZE=32
++nautyW1_flavor_CPPFLAGS = ${nautyA1_flavor_CPPFLAGS} ${nautyW0_flavor_CPPFLAGS}
++nautyL0_flavor_CPPFLAGS = -DWORDSIZE=64
++nautyL1_flavor_CPPFLAGS = ${nautyA1_flavor_CPPFLAGS} ${nautyL0_flavor_CPPFLAGS}
++genbg_CPPFLAGS = ${nautyW1_flavor_CPPFLAGS}
++genbgL_CPPFLAGS = ${nautyL1_flavor_CPPFLAGS} -DMAXN1=30
++geng_CPPFLAGS = ${nautyW1_flavor_CPPFLAGS}
++genquarticg_CPPFLAGS = ${nautyL1_flavor_CPPFLAGS}
++gentourng_CPPFLAGS = -DMAXN=24
++watercluster2_CPPFLAGS = -DMAXN=32
++dreadnaut_LDADD = libnauty.la
++addedgeg_LDADD = libnauty.la
++amtog_LDADD = libnauty.la
++biplabg_LDADD = libnauty.la
++catg_LDADD = libnauty.la
++complg_LDADD = libnauty.la
++converseg_LDADD = libnauty.la
++copyg_LDADD = libnauty.la
++countg_SOURCES = testg.c
++countg_LDADD = libnauty.la
++cubhamg_LDADD = libnauty.la
++deledgeg_LDADD = libnauty.la
++delptg_LDADD = libnauty.la
++directg_LDADD = libnauty.la
++dretodot_LDADD = -lm libnauty.la
++dretog_LDADD = libnauty.la
++genbg_LDADD = libnautyW1.la
++genbgL_SOURCES = genbg.c
++genbgL_LDADD = libnautyL1.la
++geng_LDADD = libnautyW1.la
++genquarticg_LDADD = libnautyL1.la
++genrang_LDADD = libnauty.la
++genspecialg_LDADD = libnauty.la
++gentourng_LDADD = libnauty.la
++gentreeg_LDADD = libnauty.la
++hamheuristic_LDADD = libnauty.la
++labelg_LDADD = libnauty.la
++linegraphg_LDADD = libnauty.la
++listg_LDADD = libnauty.la
++multig_LDADD = libnauty.la
++newedgeg_LDADD = libnauty.la
++NRswitchg_LDADD = libnauty.la
++pickg_SOURCES = testg.c
++pickg_LDADD = libnauty.la
++planarg_SOURCES = planarg.c planarity.c
++planarg_LDADD = libnauty.la
++ranlabg_LDADD = libnauty.la
++shortg_LDADD = libnauty.la
++subdivideg_LDADD = libnauty.la
++twohamg_LDADD = libnauty.la
++vcolg_LDADD = libnauty.la
++watercluster2_LDADD = libnauty.la
++blisstog_LDADD = libnauty.la -lz
++checks6_LDADD = libnauty.la
++sumlines_LDADD = -lgmp
++
++pkginclude_HEADERS = nauty.h nautinv.h naurng.h nausparse.h naututil.h naugroup.h schreier.h traces.h gtools.h gutils.h
++
++lib_LTLIBRARIES = libnauty.la libnautyA1.la libnautyL0.la libnautyL1.la libnautyS0.la libnautyS1.la libnautyW0.la libnautyW1.la
++libnauty_la_SOURCES = nauty.c nautil.c nausparse.c naugraph.c naurng.c schreier.c traces.c gtools.c naututil.c nautinv.c gutil1.c gutil2.c gtnauty.c naugroup.c
++libnauty_la_LIBADD = -lpthread
++libnauty_la_LDFLAGS = -release ${PACKAGE_VERSION}
++libnautyA1_la_CPPFLAGS = ${nautyA1_flavor_CPPFLAGS}
++libnautyA1_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyA1_la_LIBADD   = -lpthread
++libnautyA1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyS0_la_CPPFLAGS = ${nautyS0_flavor_CPPFLAGS}
++libnautyS0_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyS0_la_LIBADD   = -lpthread
++libnautyS0_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyS1_la_CPPFLAGS = ${nautyS1_flavor_CPPFLAGS}
++libnautyS1_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyS1_la_LIBADD   = -lpthread
++libnautyS1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyL0_la_CPPFLAGS = ${nautyL0_flavor_CPPFLAGS}
++libnautyL0_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyL0_la_LIBADD   = -lpthread
++libnautyL0_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyL1_la_CPPFLAGS = ${nautyL1_flavor_CPPFLAGS}
++libnautyL1_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyL1_la_LIBADD   = -lpthread
++libnautyL1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyW0_la_CPPFLAGS = ${nautyW0_flavor_CPPFLAGS}
++libnautyW0_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyW0_la_LIBADD   = -lpthread
++libnautyW0_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
++libnautyW1_la_CPPFLAGS = ${nautyW1_flavor_CPPFLAGS}
++libnautyW1_la_SOURCES  = ${libnauty_la_SOURCES}
++libnautyW1_la_LIBADD   = -lpthread
++libnautyW1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
+Index: nauty26r10/configure.ac
+===================================================================
+--- nauty26r10.orig/configure.ac
++++ nauty26r10/configure.ac
+@@ -1,5 +1,11 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(nauty-h.in)
++AC_INIT([nauty], [2.6.11])
++AC_CONFIG_AUX_DIR([build-aux])
++AC_CONFIG_MACRO_DIR([m4])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
++AC_PROG_INSTALL
++AM_PROG_AR
++LT_INIT([disable-static])
+ 
+ AC_DEFUN([AX_TLS], [
+   AC_MSG_CHECKING(for thread local storage (TLS) class)
+@@ -48,12 +54,12 @@ AC_DEFUN([AC_TRY_CFLAGS],
+ 
+ dnl CVT_YESNO([YES-NO VARIABLE],[0-1 VARIABLE])
+ dnl Make a 0-1 output variable from a yes/no shell variable
+-AC_DEFUN(CVT_YESNO,[if test x"$$1" = x"yes"; then
++AC_DEFUN([CVT_YESNO],[if test x"$$1" = x"yes"; then
+ $2=1
+ else
+ $2=0
+ fi
+-AC_SUBST($2)])
++AC_SUBST([$2])])
+ 
+ dnl Checks for system features
+ AC_CANONICAL_HOST
+@@ -400,6 +406,6 @@ AC_SUBST(edit_msg)
+ echo CFLAGS=$CFLAGS
+ echo MORECFLAGS=$MORECFLAGS
+ 
+-AC_OUTPUT(makefile:makefile.in nauty.h:nauty-h.in
++AC_OUTPUT(Makefile nauty.h:nauty-h.in
+     naututil.h:naututil-h.in gtools.h:gtools-h.in)
+ 

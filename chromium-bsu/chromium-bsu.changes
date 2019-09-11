@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Mon Apr  2 12:05:22 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.16.1:
+  * Allow translations of Linux menu file.
+  * Compile fixes.
+- Update to version 0.9.16:
+  * Add SDL2 support.
+  * Add version option.
+  * Use different font for French.
+  * Compile fixes.
+- Build with SDL2 instead of SDL1.
+- Drop chromium-bsu-0.9.15.1-gcc6.patch (applied upstream).
+- Use %license instead of %doc (boo#1082318).
+- Clean spec file with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:01:19 UTC 2017 - meissner@suse.com
+
+- own /var/games directory as filesystem no longer has it
+
+-------------------------------------------------------------------
+Thu Mar  9 00:39:31 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged file builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Fri Jun 24 18:25:08 UTC 2016 - i@marguerite.su
+
+- add patch: chromium-bsu-0.9.15.1-gcc6.patch
+  * fix boo#985196
+  * fix call of overloaded 'abs(float&)' is ambiguous
+
+-------------------------------------------------------------------
+Sat Nov 22 14:47:29 UTC 2014 - nemysis@gmx.ch
+
+- Change Source to use Web URL and remove not working _service
+- Use chromium-bsu-0.9.15-src_HiScore.cpp.patch instead of
+  chromium-bsu-0.9.15-hiscore.patch
+- Remove BuildRequires for Mesa-devel
+- Use BuildRequires pkgconfig() instead of devel packages
+- Add BuildRequires for fdupes, hicolor-icon-theme and dejavu-fonts
+- Use BuildRequires libGLC-devel instead of ftgl-devel
+- Change Description and Documentation
+
+-------------------------------------------------------------------
+Fri Jun 28 11:56:24 UTC 2013 - joop.boonen@opensuse.org
+
+- Update to version 0.9.15.1 
+
+-------------------------------------------------------------------
+Mon Apr 22 09:13:21 UTC 2013 - joop.boonen@opensuse.org
+
+- Adapted the License according to the spdx standard
+
+-------------------------------------------------------------------
+Sat Jan  5 14:11:23 UTC 2013 - joop.boonen@opensuse.org
+
+- openal*-devel isn't a build requirement as it's a requirement
+  of freealut-devel
+
+-------------------------------------------------------------------
+Sat Dec  8 20:28:16 UTC 2012 - joop.boonen@opensuse.org
+
+- Build with libSDL_image-devel instead of libglpng-devel
+
+-------------------------------------------------------------------
+Thu Jul 12 20:41:38 UTC 2012 - devel.openSUSE.org@gmail.com
+
+- update to 0.9.15
+
+-------------------------------------------------------------------
+Thu May 13 16:02:34 UTC 2010 - prusnak@suse.cz
+
+- removed useless const_cast (const_cast.patch)
+
+-------------------------------------------------------------------
+Fri Oct 30 13:36:02 CET 2009 - prusnak@suse.cz
+
+- /usr/games, /usr/share/games -> /usr/bin, /usr/share
+
+-------------------------------------------------------------------
+Tue Jun 16 14:16:24 CEST 2009 - prusnak@suse.cz
+
+- renamed package to chromium-bsu to follow upstream
+- updated to 0.9.14
+
+-------------------------------------------------------------------
+Wed Jan 21 05:33:26 CET 2009 - cmorve69@yahoo.es
+
+- update to 0.9.13.3
+
+-------------------------------------------------------------------
+Thu Sep 25 13:46:45 CEST 2008 - cmorve69@yahoo.es
+
+- update to 0.9.13.2
+
+-------------------------------------------------------------------
+Tue Oct 24 02:04:04 CEST 2006 - ro@suse.de
+
+- try to fix build with freealut
+
+-------------------------------------------------------------------
+Tue Sep  5 13:25:50 CEST 2006 - anosek@suse.cz
+
+- fixed compiler warning: operation on 'Global::randIndex' may be
+  undefined [#188219] (warning.patch)
+
+-------------------------------------------------------------------
+Mon Jan 30 12:20:08 CET 2006 - ro@suse.de
+
+- added Mesa-devel to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 18 17:20:05 CEST 2005 - nadvornik@suse.de
+
+- installed icon [#74577]
+
+-------------------------------------------------------------------
+Mon Aug 16 12:53:43 CEST 2004 - nadvornik@suse.cz
+
+- build with system libpng [#43008]
+
+-------------------------------------------------------------------
+Mon Mar 22 00:43:48 CET 2004 - ro@suse.de
+
+- removed .xvpics directory
+
+-------------------------------------------------------------------
+Wed Dec 17 17:31:52 CET 2003 - lnussel@suse.de
+
+- fix launching chromium from within chromium-setup
+- use default qt theme instead of sgi style in chromium-setup
+- use alDistanceModel(AL_NONE) to work around too silent sound
+
+-------------------------------------------------------------------
+Tue Nov  4 23:03:25 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add run_permissions
+- don't build as root
+
+-------------------------------------------------------------------
+Mon Aug 11 10:56:54 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Mon May 19 16:13:17 CEST 2003 - ro@suse.de
+
+- remove CVS subdirs
+
+-------------------------------------------------------------------
+Mon Jan 13 18:15:45 CET 2003 - nadvornik@suse.cz
+
+- use lib64
+
+-------------------------------------------------------------------
+Mon Nov 11 18:12:12 CET 2002 - nadvornik@suse.cz
+
+- compiled with qt3
+- fixed installation of help files
+
+-------------------------------------------------------------------
+Thu Oct 24 14:37:43 CEST 2002 - pthomas@suse.de
+
+- Build and install chromium-setup
+- Fix chromium-setup to build with current openal
+- Use C compatibility headers
+- Change Makefiles to allow passing additional compiler options
+- Use RPM_OPT_FLAGS
+- Define GL_GLEXT_PROTOTYPES in glpng.c to get prototypes
+  for the GL extensions
+
+-------------------------------------------------------------------
+Tue Jul 30 16:35:25 CEST 2002 - kukuk@suse.de
+
+- Change group game to games
+
+-------------------------------------------------------------------
+Fri Feb  8 10:47:33 CET 2002 - nadvornik@suse.cz
+
+- added Ogg/Vorbis support
+
+-------------------------------------------------------------------
+Wed Feb  6 15:08:30 CET 2002 - nadvornik@suse.cz
+
+- added smpeg to neededforbuild
+
+-------------------------------------------------------------------
+Sat Feb  2 21:03:56 CET 2002 - sndirsch@suse.de
+
+- fixed OpenAL Audio support (was broken by Update to OpenAL-20020201)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:09 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 15 18:01:17 CET 2002 - ro@suse.de
+
+- added openal-devel to neededforbuild
+
+-------------------------------------------------------------------
+Tue Nov 20 16:10:02 CET 2001 - nadvornik@suse.cz
+
+- removed broken patch for axp
+
+-------------------------------------------------------------------
+Thu Nov  8 18:38:54 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild
+
+-------------------------------------------------------------------
+Mon Oct  8 11:20:00 CEST 2001 - nadvornik@suse.cz
+
+- added /var/games/chromium.highscore to filelist
+
+-------------------------------------------------------------------
+Sat Sep 22 13:33:27 CEST 2001 - sndirsch@suse.de
+
+- RPM Group tag set to Amusements/Games, so it can be found easier
+
+-------------------------------------------------------------------
+Wed Aug  8 17:43:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <kdelibs kdelibs-devel> to <kdelibs-artsd>
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Thu Jun 21 10:12:20 CEST 2001 - pblaha@suse.cz
+
+- update on new version 9.12
+- add kdelibs kdelibs-devel for libartsc
+
+-------------------------------------------------------------------
+Sun May  6 00:26:20 CEST 2001 - sndirsch@suse.de
+
+- replaced glx with mesasoft in #neededforbuild
+
+-------------------------------------------------------------------
+Tue Apr 17 13:54:13 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Tue Apr 17 11:32:44 CEST 2001 - pblaha@suse.cz
+
+- bziped source and fix SDL version to compile
+
+-------------------------------------------------------------------
+Tue Apr 10 16:55:40 CEST 2001 - pblaha@suse.cz
+
+- fix highscore file into /var/games
+
+-------------------------------------------------------------------
+Fri Mar 30 17:51:02 CEST 2001 - uli@suse.de
+
+- don't use precompiled glpng (fixes non-x86 archs)
+
+-------------------------------------------------------------------
+Mon Mar 26 12:05:39 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <sdl sdl-devel>
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesaglu> to <xf86glu>
+- changed neededforbuild <mesaglu-devel> to <xf86glu-devel>
+
+-------------------------------------------------------------------
+Wed Mar 14 12:12:11 CET 2001 - pblaha@suse.cz
+
+- update on 9.11
+
+-------------------------------------------------------------------
+Thu Mar  8 15:51:55 CET 2001 - uli@suse.de
+
+- added mesaglut* to neededforbuild
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:41 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Wed Feb 21 15:06:21 CET 2001 - uli@suse.de
+
+- added alsa to neededforbuild (reqd. by new SDL)
+
+-------------------------------------------------------------------
+Tue Jan 30 17:13:55 CET 2001 - mmj@suse.de
+
+- Added a patch to remove the -Werror
+- Touched some source files beacuse the author forgot
+  #include <string.h> where string functions were used
+
+-------------------------------------------------------------------
+Tue Nov 21 09:44:16 CET 2000 - pblaha@suse.cz
+
+- create this package
+

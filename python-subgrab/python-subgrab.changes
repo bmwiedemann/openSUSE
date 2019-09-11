@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:54:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Nov 11 10:38:23 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.17
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sat Sep 23 13:37:05 UTC 2017 - aloisio@gmx.com
+
+- Fixed source URL
+
+-------------------------------------------------------------------
+Sat Sep 16 17:41:03 UTC 2017 - aloisio@gmx.com
+
+- Initial package (0.16) 

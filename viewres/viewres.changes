@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:54:17 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.0.5
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Thu Feb  6 11:17:53 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile
+
+-------------------------------------------------------------------
+Sat Jan 19 10:38:37 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Eliminate use of tab stops. Helps with structural translation
+    to DocBook.
+  + config:
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Move man pages into their own directory.
+  + man:
+    - Replace hard coded man page section with substitution strings
+    - Remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split viewres from xorg-x11. Initial version: 1.0.3.
+

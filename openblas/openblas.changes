@@ -1,0 +1,819 @@
+-------------------------------------------------------------------
+Mon Aug 12 06:22:47 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.7
+  common:
+    * having the gmake special variables TARGET_ARCH or TARGET_MACH
+      defined no longer causes build failures in ctest or utest
+    * defining NO_AFFINITY or USE_TLS to zero in gmake builds
+      no longer has the same effect as setting them to one
+    * a new test program was added to allow checking the library for thread safety
+    * a new option USE_LOCKING was added to ensure thread safety
+      when OpenBLAS itself is built without multithreading but
+    * will be called from multiple threads.
+    * a build failure on Linux with glibc versions earlier than 2.5 was fixed
+    * a runtime error with CPU enumeration (and NO_AFFINITY not set)
+      on glibc 2.6 was fixed
+    * NO_AFFINITY was added to the CMAKE options
+      (and defaults to being active on Linux, as in the gmake builds)
+  x86_64
+    * the build-time logic for detection of AVX512 availability
+      in the processor and compiler was fixed
+    * gmake builds on OSX now set the internal name
+      of the library to libopenblas.0.dylib (consistent with CMAKE)
+    * the Haswell DGEMM kernel received a significant speedup
+      through improved prefetch and load instructions
+    * performance of DGEMM, DTRMM, DTRSM and ZDOT on Zen/Zen2
+      was markedly increased by avoiding vpermpd instructions
+    * the SKYLAKEX (AVX512) DGEMM helper functions have now been
+      disabled to fix remaining errors in DGEMM, DSYMM and DTRMM
+  POWER:
+    * added support for building on FreeBSD/powerpc64 and FreeBSD/ppc970
+    * added optimized kernels for POWER9 single and double precision complex BLAS3
+    * added optimized kernels for POWER9 SGEMM and STRMM
+  ARMV7:
+    * fixed the softfp implementations of xAMAX and IxAMAX
+    * removed the predefined -march= flags on both ARMV5
+      and ARMV6 as they were appropriate for only a subset of platforms
+- Remove not needed fix-arm64-cpuid-return.patch.
+
+-------------------------------------------------------------------
+Tue Apr 30 07:42:06 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.6 (boo#1122186)
+  common:
+    * the build tools now check that a given cpu TARGET is actually valid
+    * the build-time check of system features (c_check) has been made
+      less dependent on particular perl features (this should mainly
+      benefit building on Windows)
+    * several problems with ReLAPACK and its integration were fixed,
+      including INTERFACE64 support and building a shared library
+    * building with CMAKE on BSD systems was improved
+    * a non-absolute SUM function was added based on the
+      existing optimized code for ASUM
+    * CBLAS interfaces to the IxMIN and IxMAX functions were added
+    * a name clash between LAPACKE and BOOST headers was resolved
+    * CMAKE builds with OpenMP failed to include the appropriate getrf_parallel
+      kernels
+    * a crash on thread (key) deletion with the USE_TLS=1 memory management
+      option was fixed
+    * restored several earlier fixes, in particular for OpenMP performance,
+      building on BSD, and calling fork on CYGWIN, which had inadvertently
+      been dropped in the 0.3.3 rewrite of the memory management code.
+  POWER:
+    * single precision BLAS1/2 functions have received optimized POWER8 kernels
+    * POWER9 is now a separate target, with an optimized DGEMM/DTRMM kernel
+    * building on PPC970 systems under OSX Leopard or Tiger is now supported
+    * out-of-bounds memory accesses in the gemm_beta microkernels were fixed
+    * building a shared library on AIX is now supported for POWER6
+    * DYNAMIC_ARCH support has been added for POWER6 and newer
+  ARMV7:
+    * corrected xDOT behaviour with zero INC_X or INC_Y 
+    * a bug in the IMIN implementation made it return the result of IMAX
+  ARMV8:
+    * added support for HiSilicon TSV110 cpus
+    * the CMAKE build system now recognizes 32bit userspace on 64bit hardware 
+    * cross-compilation with CMAKE now works again
+    * a bug in the IMIN implementation made it return the result of IMAX
+    * ARMV8 builds with the BINARY=32 option are now automatically handled as ARMV7
+  x86_64:
+    * the AVX512 DGEMM kernel has been disabled again due to unsolved problems
+    * building with old versions of MSVC was fixed
+    * it is now possible to build a static library on Windows with CMAKE
+    * accessing environment variables on CYGWIN at run time was fixed
+    * the CMAKE build system now recognizes 32bit userspace on 64bit hardware
+    * Intel "Denverton" atom and Hygon "Dhyana" zen CPUs are now autodetected
+    * building for DYNAMIC_ARCH with a DYNAMIC_LIST of targets is now supported
+      with CMAKE as well
+    * building for DYNAMIC_ARCH with GENERIC as the default target is now supported
+    * a buffer overflow in the SSE GEMM kernel for Intel Nano targets was fixed
+    * assembly bugs involving undeclared modification of input operands were fixed
+      in the AXPY, DOT, GEMV, GER, SCAL, SYMV and TRSM microkernels for Nehalem, 
+      Sandybridge, Haswell, Bulldozer and Piledriver. These would typically cause
+      test failures or segfaults when compiled with recent versions of gcc from 8 onward.
+    * a similar bug was fixed in the blas_quickdivide code used to split workloads
+      in most functions
+    * a bug in the IxMIN implementation for the GENERIC target made it return the result of IxMAX
+    * fixed building on SkylakeX systems when either the compiler or the (emulated) operating 
+      environment does not support AVX512
+    * improved GEMM performance on ZEN targets
+  x86:
+    * build failures caused by the recently added checks for AVX512 were fixed
+    * an inline assembly bug involving undeclared modification of an input argument was
+      fixed in the blas_quickdivide code used to split workloads in most functions
+    * a bug in the IMIN implementation for the GENERIC target made it return the result of IMAX
+  MIPS32:
+    * a bug in the IMIN implementation made it return the result of IMAX
+  IBM Z:
+    * optimized microkernels for single precicion BLAS1/2 functions have been added for Z13 and Z14
+  - Rebase openblas-noexecstack.patch and openblas-s390.patch patches.
+  - Remove 0001-Add-a-register-to-the-clobber-list-for-the-mul-instr.patch.
+
+-------------------------------------------------------------------
+Sun Mar 10 06:06:05 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reduce _constraints to a reasonable size, the old constraints
+  were probably necessary pre multibuild.
+- Enable DYNAMIC_ARCH for aarch64, available since 0.3.4
+
+-------------------------------------------------------------------
+Thu Feb 14 18:22:49 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add OPENBLAS_INC and OPENBLAS_DIR to HPC environment (bsc#1125547).
+
+-------------------------------------------------------------------
+Tue Feb 12 19:33:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix https://github.com/xianyi/OpenBLAS/issues/2014
+  Add 0001-Add-a-register-to-the-clobber-list-for-the-mul-instr.patch
+
+-------------------------------------------------------------------
+Mon Jan  7 10:15:03 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to versiom 0.3.5
+  common:
+    * Loop unrolling in TRMV has been enabled again.
+    * A domain error in the thread workload distribution for SYRK
+      has been fixed.
+    * gmake builds will now automatically add -fPIC to the build
+      options if the platform requires it.
+    * A pthreads key leakage (and associate crash on dlclose) in
+      the USE_TLS codepath was fixed.
+    * Building of the utest cases on systems that do not provide
+      an implementation of complex.h was fixed.
+  x86_64:
+    * The SkylakeX code was changed to compile on OSX.
+    * Unwanted application of the -march=skylake-avx512 option
+      to the common code parts of a DYNAMIC_ARCH build was fixed.
+    * Improved performance of SGEMM for small workloads on Skylake X.
+    * Performance of SGEMM and DGEMM was improved on Haswell.
+  armv8:
+    * A configuration error that broke the CNRM2 kernel was corrected.
+    * Compilation of the GEMM kernels with CMAKE was fixed.
+    * DYNAMIC_ARCH builds are now available with CMAKE as well.
+    * Using CMAKE for cross-compilation to the new cpu TARGETs
+      introduced in 0.3.4 now works.
+  power:
+    * A problem in cpu autodetection for AIX has been corrected.
+
+-------------------------------------------------------------------
+Fri Dec  7 12:29:27 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.3.4
+  common:
+    * The new, experimental thread-local memory allocation had
+      inadvertently been left enabled for gmake builds in 0.3.3
+      despite the announcement. It is now disabled by default,
+      and single-threaded builds will keep using the old
+      allocator even if the USE_TLS option is turned on.
+    * OpenBLAS will now provide enough buffer space for at least
+      50 threads by default.
+    * The output of openblas_get_config() now contains the version
+      number.
+    * A serious thread safety bug in GEMV operation with small M and
+      large N size has been fixed.
+    * The code will now automatically call blas_thread_init after
+      a fork if needed before handling a call to
+      openblas_set_num_threads
+    * Accesses to parallelized level3 functions from multiple
+      callers are now serialized to avoid thread races
+      (unless using OpenMP).
+    * This should provide better performance than the
+      known-threadsafe (but non-default)
+      USE_SIMPLE_THREADED_LEVEL3 option.
+    * When building LAPACK with gfortran, -frecursive is now
+      (again) enabled by default to ensure correct behaviour.
+    * The OpenBLAS version cblas.h now supports both CBLAS_ORDER
+      and CBLAS_LAYOUT as the name of the matrix row/column order
+      option.
+    * Externally set LDFLAGS are now passed through to the final
+      compile/link
+    * steps to facilitate setting platform-specific linker flags.
+    * A potential race condition during the build of LAPACK
+      (that would usually manifest itself as a failure to build
+      TESTING/MATGEN) has been fixed.
+    * xHEMV has been changed to stay single-threaded for small
+      input sizes where the overhead of multithreading exceeds
+      any possible gains
+    * CSWAP and ZSWAP have been limited to a single thread
+      except on ARMV8 or ThunderX hardware with sizable input.
+    * Linker flags for the PGI compiler have been updated
+    * Behaviour of AXPY with zero increments is now handled
+      in the C interface, correcting the result on at least
+      Intel Atom.
+    * The result matrix from calling SGELSS with an all-zero
+      input matrix is now zeroed completely.
+  x86_64:
+    * Autodetection of AMD Ryzen2 has been fixed (again).
+    * CMAKE builds now support labeling of an INTERFACE64=1
+      build of the library with the _64 suffix.
+    * AVX512 version of DGEMM has been added and the
+      AVX512 SGEMM kernel has been sped up by rewriting
+      with C intrinsics
+    * Fixed compilation on RHEL5/CENTOS5 
+      (issue with typename __WAIT_STATUS)
+  armv8:
+    * DYNAMic_ARCH support is now available for 64bit ARM
+    * cross-compiling for ARMV8 under iOS now works.
+    * cpu-specific code has been rearranged to make better
+      use of both hardware commonalities and model-specific
+      compiler optimizations.
+    * XGENE1 has been removed as a TARGET, superseded by the
+      improved generic ARMV8 support.
+  armv7:
+    * Older assembly mnemonics have been converted to UAL
+      form to allow building with clang 7.0
+
+-------------------------------------------------------------------
+Tue Oct  9 19:00:49 UTC 2018 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Update to version 0.3.3 
+  common:
+    * thread memory allocation has been switched back to the method
+      used before version 0.3.1 due to unexpected problems caused by
+      the new code under some circumstances.
+    * LAPACK PR272 has been integrated, which fixes spurious errors
+      in DSYEVR and related functions caused by missing conversion
+      from ILAENV to ILAENV_2STAGE in several _2stage routines.
+  x86_64
+    * added AVX512 implementations of SDOT, DDOT, SAXPY, DAXPY,
+      DSCAL, DGEMVN and DSYMVL
+    * added a workaround for a cygwin issue that prevented compilation
+      of AVX512 code
+
+
+-------------------------------------------------------------------
+Fri Aug 17 12:56:04 UTC 2018 - idonmez@suse.com
+
+- Update to version 0.3.2
+  common:
+    * Fixes for regressions caused by the rewrite of the thread
+      initialization code in 0.3.1
+  x86_64:
+    * Added autodetection of AMD Ryzen 2
+    * Fixed build with older versions of MSVC
+  power:
+    * Fixed cpu autodetection for the BSDs
+  mips64:
+    * Fixed utest errors in AXPY, DSDOT, ROT and SWAP
+- Version 0.3.1
+  common:
+    * Rewritten thread initialization code with significantly
+      reduced overhead
+    * Added CBLAS interfaces to the IxAMIN BLAS extension functions
+    * Fixed the lapack-test target
+    * CMAKE builds now create an OpenBLASConfig.cmake file
+    * ZAXPY now uses a single thread for small input sizes
+    * The LAPACK code was updated from Reference-LAPACK/lapack#253
+  power:
+    * Corrected CROT and ZROT behaviour with zero INC_X
+  armv7:
+    * Corrected xDOT behaviour with zero INC_X or INC_Y
+  x86_64:
+    * Retired some older targets of DYNAMIC_ARCH builds to a
+      new option DYNAMIC_OLDER, this affects PENRYN,DUNNINGTON,
+      OPTERON,OPTERON_SSE3,BOBCAT,ATOM and NANO (which will still
+      be supported via the slower PRESCOTT kernels when this option
+      is not set)
+    * Added an option DYNAMIC_LIST that (used in conjunction with
+      DYNAMIC_ARCH) allows to specify the list of x86_64 targets to
+      include. Any target not on the list will be supported by
+      the Sandybridge or Nehalem kernels if available, or by Prescott.
+    * Improved SWITCH_RATIO on Haswell for increased GEMM throughput
+    * Added initial support for Intel Skylake X, including an AVX512
+      SGEMM kernel
+    * Added autodetection of Intel Cannon Lake series as Skylake X
+    * Added a default L2 cache size for hypervisors that return zero
+      here (Chromebook)
+    * Fixed a name clash with recent Windows10 headers that broke the
+      build with (at least) recent mingw from MSYS2
+    * Fixed a link error in mixed clang/gfortran builds with OpenMP
+    * Updated the OSX deployment target to 10.8
+    * Switched on parallel make for builds on MS Windows by default
+  x86:
+    * Fixed SSWAP and DSWAP behaviour with zero INC_X and INC_Y
+- Version 0.3.0
+  common:
+     * Fixed some more thread race and locking bugs
+     * Added preliminary support for calling an OpenMP build of the
+       library from multiple threads
+     * Removed performance impact of thread locks added in 0.2.20
+       on OpenMP code
+     * General code cleanup 
+     * Optimized DSDOT implementation
+     * Improved thread distribution for GEMM
+     * Corrected IMATCOPY/OMATCOPY implementation
+     * Fixed out-of-bounds accesses in the multithreaded xBMV/xPMV
+       and SYMV implementations
+     * Cmake build improvements
+     * pkgconfig file now contains build options
+     * openblas_get_config() now reports USE_OPENMP and NUM_THREADS
+       settings used for the build
+     * Corrections and improvements for systems with more than 64 cpus
+     * LAPACK code updated to 3.8.0 including later fixes
+     * Added ReLAPACK, a recursive implementation of several LAPACK functions
+     * Rewrote ROTMG to handle cases that the netlib code failed to address
+     * Disabled (broken) multithreading code for xTRMV
+     * corrected prototypes of complex CBLAS functions to make our
+       cblas.h match the generally accepted standard
+     * Shared memory access failures on startup are now handled more gracefully
+     * Restored utests from earlier releases (and made them pass on all
+       affected systems)
+  sparc:
+    * several fixes for cpu autodetection
+  arm:
+    * Added support for CortexA53 and A72 
+    * Added autodetection for ThunderX2T99
+    * Made most optimized kernels the default for generic ARMv8 targets
+  x86_64:
+    * Parallelized DDOT kernel for Haswell
+    * Changed alignment directives in assembly kernels to boost performance on OSX
+    * Fixed register handling in the GEMV microkernels (bug exposed by gcc7)
+    * Added support for building on OpenBSD and Dragonfly 
+    * Updated compiler options to work with Intel release 2018
+    * Support fully optimized build with clang/flang on Microsoft Windows
+    * Fixed building on AIX
+  ibm z:
+    * added optimized BLAS 1/2 functions
+  mips:
+    * Fixed cpu autodetection helper code
+    * Added mips32 1004K cpu (Mediatek MT7621 and similar SoC)
+    * Added mips64 I6500 cpu
+- Remove c_xerbla_no-void-return.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jan 30 18:19:33 CET 2018 - ro@suse.de
+
+- add openblas-s390.patch to build on s390 (bsc#1079513).
+
+-------------------------------------------------------------------
+Fri Jan  5 18:27:17 UTC 2018 - eich@suse.com
+
+- Switch from gcc6 to gcc7 as additional compiler flavor for HPC on SLES.
+- Fix library package requires - use HPC macro (boo#1074890).
+- Fix unexpanded rpm macro in environment module file for HPC (boo#1074897).
+
+-------------------------------------------------------------------
+Mon Nov 27 11:55:04 UTC 2017 - normand@linux.vnet.ibm.com
+
+- Add -mvsx option for ppc64 archi (not required for ppc64le)
+  to avoid ./kernel/power/sasum_microk_power8.c:41:3: error: 
+  '__vector' undeclared (first use in this function); ...
+
+-------------------------------------------------------------------
+Tue Oct 17 13:38:47 UTC 2017 - eich@suse.com
+
+- Add magic to limit the number of flavors built in the
+  OBS to non-HPC ones.
+
+-------------------------------------------------------------------
+Thu Oct 12 10:01:10 UTC 2017 - eich@suse.com
+
+- Generate baselib.conf dynamically and only for the non-HPC
+  builds: this avoids issues with the source validator.
+
+-------------------------------------------------------------------
+Fri Sep  8 14:30:29 UTC 2017 - eich@suse.com
+
+- Convert openblas to multibuild.
+- Add HPC build using environment modules.
+  (FATE#321708).
+- fix-arm64-cpuid-return.patch
+  Fix CPUID detection on ARM (From OHPC).
+
+-------------------------------------------------------------------
+Wed Aug  9 19:45:54 UTC 2017 - dmitry_r@opensuse.org
+
+- Remove migration %post scripts for old library names
+
+-------------------------------------------------------------------
+Sat Jul 29 16:08:38 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.2.20:
+  * common:
+    - Improved CMake support
+    - Fixed several thread race and locking bugs
+    - Fixed default LAPACK optimization level
+    - Updated LAPACK to 3.7.0
+    - Added ReLAPACK (https://github.com/HPAC/ReLAPACK), make
+      BUILD_RELAPACK=1
+  * POWER:
+    - Optimizations for Power9
+    - Fixed several Power8 assembly bugs
+  * ARM:
+    - New optimized Vulcan and ThunderX2T99 targets
+    - Support for ARMV7 SOFT_FP ABI  (make ARM_SOFTFP_ABI=1)
+    - Detect all cpu cores including offline ones
+    - Fix compilation with CLANG
+    - Support building a shared library for Android
+  * MIPS:
+    - Fixed several threading issues
+    - Fix compilation with CLANG
+  * x86_64:
+    - Detect Intel Bay Trail and Apollo Lake
+    - Detect Intel Sky Lake and Kaby Lake
+    - Detect Intel Knights Landing
+    - Detect AMD A8, A10, A12 and Ryzen
+    - Support 64bit builds with Visual Studio
+    - Fix building with Intel and PGI compilers
+    - Fix building with MINGW and TDM-GCC
+    - Fix cmake builds for Haswell and related cpus
+    - Fix building for Sandybridge with CLANG 3.9
+    - Add support for the FLANG compiler
+  * IBM Z:
+    - New target z13 with BLAS3 optimizations
+- Drop 0001-Fix-power8-asm.patch; fixed upstream.
+- Minor rebase of c_xerbla_no-void-return.patch and
+  openblas-noexecstack.patch for updated version.
+- Remove installed pkgconfig file as it is not adapted to the
+  library names we use.
+
+-------------------------------------------------------------------
+Thu May 18 09:33:23 UTC 2017 - meissner@suse.com
+
+- 0001-Fix-power8-asm.patch: fixed power8 assembly (bsc#1039397)
+
+-------------------------------------------------------------------
+Wed Sep  7 15:58:36 UTC 2016 - idonmez@suse.com
+
+- Update to version 0.2.19
+  POWER:
+    * Optimize BLAS on Power8
+    * Fixed Julia+OpenBLAS bugs on Power8
+  MIPS:
+    * Optimize BLAS on MIPS P5600 and I6400
+  ARM:
+    * Improved on ARM Cortex-A57
+
+-------------------------------------------------------------------
+Wed Apr 13 08:12:19 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.2.18
+  ARM:
+    * Provide DGEMM 8x4 kernel for Cortex-A57
+  POWER:
+    * Optimize S and C BLAS3 on Power8
+    * Optimize BLAS2/1 on Power8
+
+-------------------------------------------------------------------
+Mon Mar 21 21:15:39 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.2.17
+  * Enable BUILD_LAPACK_DEPRECATED=1 by default.
+
+-------------------------------------------------------------------
+Wed Mar 16 19:35:53 UTC 2016 - idonmez@suse.com
+
+- Update to version 0.2.16
+  * Upgrade LAPACK to 3.6.0 version.
+  * Disable multi-threading for small size swap and ger.
+  * Improve small zger, zgemv, ztrmv using stack alloction.
+  * Let openblas_get_num_threads return the number of active threads.
+  * Fix LAPACK Dormbr, Dormlq bug.
+  * Avoid potential getenv segfault.
+  * Import LAPACK svn bugfix #142-#147,#150-#155
+  x86/x86_64:
+    * Optimize trsm kernels for AMD Bulldozer, Piledriver, Steamroller.
+    * Detect Intel Avoton.
+    * Detect AMD Trinity, Richland, E2-3200.
+    * Optimize c/zgemv for AMD Bulldozer, Piledriver, Steamroller
+    * Fix bug with scipy linalg test.
+  ARM:
+    * Support and optimize Cortex-A57 AArch64.
+    * Update ARMV6 kernels.
+    * Improve DGEMM for ARM Cortex-A57.
+  POWER:
+    * Fix detection of POWER architecture.
+    * Optimize D and Z BLAS3 functions for Power8.
+- Remove openblas-libs.patch, not needed.
+
+-------------------------------------------------------------------
+Tue Oct 27 21:11:50 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.2.15
+  * Enable MAX_STACK_ALLOC flags by default.
+  * Improve ger and gemv for small matrices.
+  * Improve gemv parallel with small m and large n case.
+  * Improve ?imatcopy when lda==ldb
+  * Add vecLib benchmarks
+  * Fix LAPACK lantr for row major matrices
+  * Fix LAPACKE lansy
+  * Import bug fixes for LAPACKE s/dormlq, c/zunmlq
+  * Raise the signal when pthread_create fails
+  * Drop obsolete openblas-arm64-build.patch
+  x86/x86-64:
+    * Support pure C generic kernels for x86/x86-64.
+    * Support Intel Boardwell and Skylake by Haswell kernels.
+    * Support AMD Excavator by Steamroller kernels.
+    * Optimize s/d/c/zdot for Intel SandyBridge and Haswell.
+    * Optimize s/d/c/zdot for AMD Piledriver and Steamroller.
+    * Optimize s/d/c/zapxy for Intel SandyBridge and Haswell.
+    * Optimize s/d/c/zapxy for AMD Piledriver and Steamroller.
+    * Optimize d/c/zscal for Intel Haswell, dscal for Intel SandyBridge.
+    * Optimize d/c/zscal for AMD Bulldozer, Piledriver and Steamroller.
+    * Optimize s/dger for Intel SandyBridge.
+    * Optimize s/dsymv for Intel SandyBridge.
+    * Optimize ssymv for Intel Haswell.
+    * Optimize dgemv for Intel Nehalem and Haswell.
+    * Optimize dtrmm for Intel Haswell.
+  ARM:
+    * Support Android NDK armeabi-v7a-hard ABI (-mfloat-abi=hard)
+    * Fix lock, rpcc bugs
+  POWER:
+    * Support ppc64le platform (ELF ABI v2)
+    * Support POWER7/8 by POWER6 kernels.
+
+-------------------------------------------------------------------
+Wed Jul 29 21:13:47 UTC 2015 - dmitry_r@opensuse.org
+
+- Change library name suffix
+  * drop openblas-soname.patch
+- Add RPM %post script for manual BLAS/LAPACK update-alternatives
+  configuration update
+- Use update-alternatives mechanism for OpenBLAS variants (serial,
+  openmp, pthreads). pthreads variant is default for x86 and x86_64,
+  OpenMP for other architectures.
+- Fix build on ARM64
+  * openblas-arm64-build.patch
+- Add update-alternatives mechanism for CBLAS
+- Provide cmake module
+- Delete info about host cpu from openblas_config.h for dynamic arch
+- Add update-alternatives to 'preup' and 'post' requires list for 
+  libraries
+- Add README.SUSE
+
+-------------------------------------------------------------------
+Wed Mar 25 08:05:20 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.2.14
+  * Improve ger and gemv for small matrices by stack allocation.
+    e.g. make -DMAX_STACK_ALLOC=2048
+  * Introduce openblas_get_num_threads and openblas_get_num_procs.
+  * Add ATLAS-style ?geadd function.
+  * Fix c/zsyr bug with negative incx.
+  * Fix race condition during shutdown causing a crash in
+    gotoblas_set_affinity().
+  x86/x86-64:
+  * Support AMD Streamroller.
+  ARM:
+  * Add Cortex-A9 and Cortex-A15 targets.
+
+-------------------------------------------------------------------
+Wed Dec  3 16:06:49 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.13
+  * Add SYMBOLPREFIX and SYMBOLSUFFIX makefile options
+    for adding a prefix or suffix to all exported symbol names
+    in the shared library.
+  * Remove openblas-0.1.0-soname.patch
+  * Add openblas-soname.patch
+  * Rebase openblas-noexecstack.patch
+  x86/x86-64:
+  * Add generic kernel files for x86-64. make TARGET=GENERIC
+  * Fix a bug of sgemm kernel on Intel Sandy Bridge.
+  * Fix c_check bug on some amd64 systems.
+  ARM:
+  * Support APM's X-Gene 1 AArch64 processors.
+  * Optimize trmm and sgemm.
+
+-------------------------------------------------------------------
+Fri Oct 17 13:09:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.12
+  * Added CBLAS interface for ?omatcopy and ?imatcopy.
+  * Enable ?gemm3m functions.
+  * Added benchmark for ?gemm3m.
+  * Optimized multithreading lower limits.
+  * Disabled SYMM3M and HEMM3M functions because of segment violations.
+  x86/x86-64:
+  * Improved axpy and symv performance on AMD Bulldozer.
+  * Improved gemv performance on modern Intel and AMD CPUs.
+
+-------------------------------------------------------------------
+Mon Aug 18 12:43:10 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.11
+  * Added some benchmark codes.
+  x86/x86-64:
+  * Improved s/c/zgemm performance for Intel Haswell.
+  * Improved s/d/c/zgemv performance.
+  * Support the big numa machine.(EXPERIMENT)
+  ARM:
+  * Fix detection when cpuinfo uses "Processor".
+
+-------------------------------------------------------------------
+Thu Jul 17 20:44:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.10
+  * Added BLAS extensions as following.
+    s/d/c/zaxpby, s/d/c/zimatcopy, s/d/c/zomatcopy.
+  * Added OPENBLAS_CORETYPE environment for dynamic_arch. (a86d34)
+  * Support outputing the CPU corename on runtime.(#407)
+  * Patched LAPACK to fix bug 114, 117, 118. 
+   (http://www.netlib.org/lapack/bug_list.html)
+  * Disabled ?gemm3m for a work-around fix. (#400)
+  * Fixed lots of bugs for optimized kernels on sandybridge,Haswell, 
+    bulldozer, and piledriver.
+  * Remove obsolete openblas-0.2.9-gcc-warnings.patch
+
+-------------------------------------------------------------------
+Tue Jun 10 14:34:02 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.9
+  * Update LAPACK to 3.5.0 version
+  * Fixed compatiable issues with Clang and Pathscale compilers.
+  * Added OPENBLAS_VERBOSE environment variable.(#338)
+  * Make OpenBLAS thread-pool resilient to fork via pthread_atfork.
+    (#294)
+  * Rewrote rotmg
+  * Fixed sdsdot bug.
+  * Improved the result for LAPACK testing. (#372)
+  x86/x86-64:
+  * Optimization on Intel Haswell.
+  * Enable optimization kernels on AMD Bulldozer and Piledriver.
+  * Detect Intel Haswell for new Macbook.
+  * To improve LAPACK testing, we fallback some kernels. (#372)
+    https://github.com/xianyi/OpenBLAS/wiki/Fixed-optimized-kernels-To-do-List
+  ARM:
+  * Support ARMv6 and ARMv7 ISA.
+  * Optimization on ARM Cortex-A9.
+- Update patches:
+  * openblas-0.2.8-libs.patch
+  * openblas-0.2.8-noexecstack.patch
+  to
+  * openblas-libs.patch
+  * openblas-noexecstack.patch
+- Fix gcc warnings (#385)
+  * openblas-0.2.9-gcc-warnings.patch
+
+-------------------------------------------------------------------
+Sat Apr 12 09:02:16 UTC 2014 - dmitry_r@opensuse.org
+
+- Remove files with problematic licenses
+
+-------------------------------------------------------------------
+Fri Apr  4 20:32:24 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.2.8
+  * Add executable stack markings.
+  * Respect user's LDFLAGS
+  * Rollback bulldozer and piledriver kernels to barcelona kernels  
+  * update openblas-0.2.6-libs.patch
+  * update c_xerbla_no-void-return.patch
+  * update openblas-0.2.7-noexecstack.patch
+
+-------------------------------------------------------------------
+Fri Jul 26 20:31:17 UTC 2013 - scorot@free.fr
+
+- version 0.2.7
+  * Support LSB (Linux Standard Base) 4.1.
+    e.g. make CC=lsbcc
+  * Include LAPACK 3.4.2 source codes to the repo. 
+    Avoid downloading at compile time.
+  * Add NO_PARALLEL_MAKE flag to disable parallel make.
+  * Create openblas_get_parallel to retrieve information which 
+    parallelization model is used by OpenBLAS. (Thank
+    grisuthedragon)
+  * Detect LLVM/Clang compiler.
+  * A walk round for dtrti_U single thread bug. Replace it with
+    LAPACK codes. (#191)
+  * Optimize c/zgemm, trsm, dgemv_n, ddot, daxpy, dcopy on 
+    AMD Bulldozer. (Thank Werner Saar)
+  * Add Intel Haswell support (using Sandybridge optimizations).
+    (Thank Dan Luu)
+  * Add AMD Piledriver support (using Bulldozer optimizations).
+  * Fix the computational error in zgemm avx kernel on 
+    Sandybridge. (#237)
+  * Fix the overflow bug in gemv.
+  * Fix the overflow bug in multi-threaded BLAS3, getrf when
+    NUM_THREADS is very large.(#214, #221, #246).
+- rebase patch noexecstack.patch
+- remove lapack source tarball since lapack sources are included
+  in openblas sources
+- increase NUM_THREAD from 32 to 64
+
+-------------------------------------------------------------------
+Sat Mar  2 16:08:16 UTC 2013 - scorot@free.fr
+
+- version 0.2.6
+  * Improved OpenMP performance slightly. (d744c9)
+  * Improved cblas.h compatibility with Intel MKL.(#185)
+  * Fixed the overflowing bug in single thread cholesky
+    factorization.
+  * Fixed the overflowing buffer bug of multithreading hbmv and
+    sbmv.(#174)
+  * Added AMD Bulldozer x86-64 S/DGEMM AVX kernels. (Thank
+    Werner Saar) We will tune the performance in future.
+  * Auto-detect Intel Xeon E7540.
+  * Fixed the overflowing buffer bug of gemv. (#173)
+  * Fixed the bug of s/cdot about invalid reading NAN on
+    x86_64. (#189)
+- rebase patch0 openblas-0.2.6-libs.patch
+
+-------------------------------------------------------------------
+Sun Feb 17 14:10:55 UTC 2013 - jengelh@inai.de
+
+- Remove redundant cleaning commands
+- Do not create .so.0.2.5. SO versions are not package release
+  numbers.
+
+-------------------------------------------------------------------
+Mon Jan 21 20:19:13 UTC 2013 - scorot@free.fr
+
+- use Requires(post) and Requires(preun) instead of PreReq
+- add patch markups in spec file 
+
+-------------------------------------------------------------------
+Tue Jan 15 20:42:00 UTC 2013 - scorot@free.fr
+
+- add update-alternatives support to allow easy switching between
+  the different blas and lapack implementations 
+
+-------------------------------------------------------------------
+Fri Nov 30 20:46:47 UTC 2012 - scorot@free.fr
+
+- version 0.2.5
+ * Export LAPACK 3.4.2 symbols in shared library. (#147)
+ * Restore the original CPU affinity when calling 
+   openblas_set_num_threads(1) (#153)
+ * Fixed a SEGFAULT bug in dgemv_t when m is very large.(#154) 
+
+-------------------------------------------------------------------
+Mon Oct  8 19:12:49 UTC 2012 - scorot@free.fr
+
+- version 0.2.4
+ * Upgraded LAPACK to 3.4.2 version. (#145)
+ * f77blas.h:compatibility for compilers without C99 complex 
+   number support. (#141)
+ * Added NO_AVX flag. Check OS supporting AVX on runtime. (#139)
+
+-------------------------------------------------------------------
+Mon Aug 20 21:30:03 UTC 2012 - scorot@free.fr
+
+- version 0.2.3
+ * Fixed LAPACK unstable bug about ?laswp. (#130)
+ * Fixed the shared library bug about unloading the library on 
+   Linux (#132).
+
+-------------------------------------------------------------------
+Sun Jul  8 20:24:03 UTC 2012 - scorot@free.fr
+
+- version 0.2.2
+ * Support Intel Sandy Bridge 22nm desktop/mobile CPU 
+
+-------------------------------------------------------------------
+Mon Jul  2 20:45:57 UTC 2012 - scorot@free.fr
+
+- version 0.2.1
+ * Fixed the SEGFAULT bug about hyper-theading
+ * Support AMD Bulldozer by using GotoBLAS2 AMD Barcelona codes
+ * Removed the limitation (64) of numbers of CPU cores.
+   Now, it supports 256 cores at max.
+ * Supported clang compiler.
+ * Fixed some build bugs on FreeBSD
+ * Optimized Level-3 BLAS on Intel Sandy Bridge x86-64 by AVX
+   instructions.
+ * Support AMD Bobcat by using GotoBLAS2 AMD Barcelona codes. 
+- update patch3
+
+-------------------------------------------------------------------
+Wed May  2 21:16:16 UTC 2012 - scorot@free.fr
+
+- update patch0 
+
+-------------------------------------------------------------------
+Wed May  2 20:45:18 UTC 2012 - scorot@free.fr
+
+- again fix remaining library file name error in spec file
+
+-------------------------------------------------------------------
+Wed May  2 20:18:48 UTC 2012 - scorot@free.fr
+
+- fix wrong library file name version 
+
+-------------------------------------------------------------------
+Wed May  2 20:05:55 UTC 2012 - scorot@free.fr
+
+- Update to version 0.1.1 
+	* Upgraded LAPACK to 3.4.1 version. (Thank Zaheer Chothia)
+	* Supported LAPACKE, a C interface to LAPACKE. (Thank Zaheer Chothia)
+	* Fixed the build bug (MD5 and download) on Mac OSX.
+	* Auto download CUnit 2.1.2-2 from SF.net with UTEST_CHECK=1.
+x86/x86_64:
+	* Auto-detect Intel Sandy Bridge Core i7-3xxx & Xeon E7 Westmere-EX.
+	* Test alpha=Nan in dscale.
+	* Fixed a SEGFAULT bug in samax on x86 windows.
+
+-------------------------------------------------------------------
+Wed Apr 25 21:46:07 UTC 2012 - scorot@free.fr
+
+- version 0.1.0
+- update openblas-0.1.0-soname.patch
+- add openblas-0.1.0-noexecstack.patch
+- spec file cleanup 
+
+-------------------------------------------------------------------
+Mon Mar 12 22:19:17 UTC 2012 - scorot@free.fr
+
+- version 0.1alpha2.5 
+

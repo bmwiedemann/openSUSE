@@ -1,0 +1,13 @@
+Index: opal-3.10.10/plugins/audio/SILK/SILK_SDK/Makefile
+===================================================================
+--- opal-3.10.10.orig/plugins/audio/SILK/SILK_SDK/Makefile
++++ opal-3.10.10/plugins/audio/SILK/SILK_SDK/Makefile
+@@ -55,7 +55,7 @@ VPATH = ./ \
+ LIB_NAME = SKP_SILK_SDK
+ TARGET = $(LIBPREFIX)$(LIB_NAME)$(LIBSUFFIX)
+ 
+-SRCS_C = $(wildcard src/*.c)
++SRCS_C = $(sort $(wildcard src/*.c))
+ 
+ OBJS := $(patsubst %.c,%$(OBJSUFFIX),$(SRCS_C))
+ 

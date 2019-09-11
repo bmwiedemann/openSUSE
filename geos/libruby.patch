@@ -1,0 +1,27 @@
+Description: RUBY_EXTENSION_DIR fix, use vendorarchdir for Debian package.
+Author: Christian Hofstaedtler <zeha@debian.org>
+Bug-Debian: https://bugs.debian.org/735652
+Forwarded: not-needed
+
+--- a/configure
++++ b/configure
+@@ -19329,7 +19329,7 @@ fi
+ 
+ 				RUBY_ARCH_LIB_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG["archlibdir"] || Config::CONFIG["archlibdir"]'`
+ 
+-				RUBY_EXTENSION_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG["sitearchdir"] || Config::CONFIG["sitearchdir"]'`
++				RUBY_EXTENSION_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG["vendorarchdir"] || Config::CONFIG["vendorarchdir"]'`
+ 
+ 				RUBY_SO_NAME=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG["RUBY_SO_NAME"] || Config::CONFIG["RUBY_SO_NAME"]'`
+ 
+--- a/macros/ruby.m4
++++ b/macros/ruby.m4
+@@ -41,7 +41,7 @@ AC_DEFUN([AC_RUBY_DEVEL],
+ 		RUBY_ARCH_LIB_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG[["archlibdir"]] || Config::CONFIG[["archlibdir"]]'`
+ 
+ 		dnl Get Ruby extensions directory
+-		RUBY_EXTENSION_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG[["sitearchdir"]] || Config::CONFIG[["sitearchdir"]]'`
++		RUBY_EXTENSION_DIR=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG[["vendorarchdir"]] || Config::CONFIG[["vendorarchdir"]]'`
+ 
+ 		dnl Get Ruby shared library name, this does not include the lib prefix or extension name
+ 		RUBY_SO_NAME=`$RUBY -rrbconfig -e 'puts RbConfig::CONFIG[["RUBY_SO_NAME"]] || Config::CONFIG[["RUBY_SO_NAME"]]'`

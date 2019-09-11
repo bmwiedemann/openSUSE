@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Tue Dec 16 00:11:14 UTC 2014 - ddiss@suse.com
+
+- Fix paths in sample conf and doc files; (boo#910112).
+
+-------------------------------------------------------------------
+Thu Dec 11 14:18:49 UTC 2014 - ddiss@suse.com
+
+- Update to upstream istgt-20141125.tar.gz:
+
+- Japanese -> English ChangeLog.jp via Google Translate:
+  + Change so that it does not warn of key change from the
+    reservation holder
+  + Add -fstack-protector to default
+  + Fixed a problem that deletion of the registration key is not
+    done correctly
+  + Modified to re-set when the reservation key is changed
+  + Changed to link in favor of libmd
+  + Fixed a problem to skip SYNCHRONIZE_CACHE of LEN = 0
+  + Modified to retry without error when you are disconnected during
+    accept
+  + Change backlog to 1 so that it does not create a thread waiting
+  + Add the latency to start after you have created a thread
+
+- Cleanup systemd services file:
+  + Deleted build-use-systemd-init.patch
+  + Added build-specify-systemd-services-file-on-Linux.patch
+  + Removed exec flags from service file; (boo#910111).
+
+- Use BSD md5 library:
+  + Removed md5-add-RFC1321-based-RSA-free-MD5-library.patch and
+    md5-use-in-tree-libmd5-rfc-rather-than-libcrypto.patch
+  + Added md5-add-in-tree-MD5-library.patch and
+    md5-use-in-tree-MD5-rather-than-libcrypto.patch
+
+- Improve usability for non-root users:
+  + Removed fix-installdir.patch
+  + Added etc-use-bindir-instead-of-sbindir-in-init-scripts.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 16:03:23 UTC 2014 - ddiss@suse.com
+
+- Call systemd pre[un]/post[un] macros
+
+-------------------------------------------------------------------
+Mon Feb  3 11:58:29 UTC 2014 - ddiss@suse.com
+
+- Add systemd services file
+  + etc-add-systemd-service-file.patch
+  + build-use-systemd-init.patch
+  + build-regenerate-configure.patch
+
+- Add rcistgt symlink
+  + links to SysV init or systemd service path
+
+-------------------------------------------------------------------
+Wed Jul 10 14:03:25 UTC 2013 - ddiss@suse.com
+
+- Add SCSI target fixes:
+  + disk-support-0-len-read-and-write-CBDs.patch
+  + lu-perform-lba-range-check-before-0-byte-fastpath.patch
+  + lu-add-sense-data-to-out-of-range-read-and-write-err.patch
+
+- Cleanup shutdown logic:
+  + iscsi-cancel-conn-worker-threads-using-the-task_pipe.patch
+
+- Remove openssl dependency:
+  + md5-add-RFC1321-based-RSA-free-MD5-library.patch
+  + md5-use-in-tree-libmd5-rfc-rather-than-libcrypto.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 22:55:33 UTC 2013 - schwab@suse.de
+
+- Move configure run to %build section
+
+-------------------------------------------------------------------
+Tue Nov  6 13:07:35 UTC 2012 - ddiss@suse.com
+
+- Update to upstream istgt-20121028.tar.gz release.
+
+- Japanese -> English ChangeLog.jp via Google Translate:
+  + Modified to return the (Changeable values) PC = 01b in MODE_SENSE
+    and modified to use NOTE_LOWAT SO_RCVLOWAT
+  + Fixed issue an error if you specify no authentication: istgtcontrol
+  + modified to abort initialization error: istgtcontrol
+  + Socket system displays an error
+  + Iqn Show at the PDU error
+  + Add a time-out error log
+  + Add the batch code using readv / writev
+
+-------------------------------------------------------------------
+Mon Sep  3 16:18:19 UTC 2012 - ddiss@suse.com
+
+- Update to upstream istgt-20120901.tar.gz release.
+  + Remove linux init script patches, now upstream.
+
+- Japanese -> English ChangeLog.jp via Google Translate:
+  + Changed to return INVALID FIELD IN CDB to MODE_SENSE unsupported
+  + Change so as to release resources after the end of the confirmation signal
+    thread
+  + Changed to not issue a malloc each time ATS
+  + Add (12) READ DEFECT DATA (10) / READ DEFECT DATA
+  + Add (12) (16) / ATA PASS-THROUGH ATA PASS-THROUGH dummy
+  + Add LOG_SELECT / LOG_SENSE of dummy
+  + Add the init scripts of Linux
+  + If you fail at reload of LU added the processing settings back
+  + Add qcow, qcow2, qed, an extension to handle vhdx
+  + 4.2.X VirtualBox support
+  + Add a poll to display when not in use kqueue
+  + Record usage of atomic functions at startup
+  + investigation gcc configure the built-in function
+  + Fix leak of mutex change
+  + Mistake correction of the error message
+  + Add a dummy signal function
+  + Change the position of the command loop termination
+  + Since the built-in function exclusion gcc gives an error on i386
+  + Fixed a warning will be issued in the gcc parts
+
+-------------------------------------------------------------------
+Mon Aug 13 09:24:38 UTC 2012 - ddiss@suse.com
+
+- Update to upstream istgt-20120811.tar.gz release, which adds support for
+  VirtualBox VirtualDisks.
+
+- Japanese -> English ChangeLog.jp via Google Translate:
+  + separated by a vbox for a shutdown function
+  + Modified to specify the mutex ADAPTIVE_NP to some of the
+  + Corresponding to the virtual drive using a shared library of VirtualBox
+
+- Add no_CMPXCHG_on_i386.patch.
+
+-------------------------------------------------------------------
+Wed Aug  8 11:36:48 UTC 2012 - ddiss@suse.com
+
+- Update to upstream istgt-20120807.tar.gz release.
+
+- Japanese -> English ChangeLog.jp via Google Translate:
+  + Fix transfer locked position
+  + Add a task buffer allocation size
+  + Forgetting to fix error handling when
+  + Modified to log the number of leave to reload
+  + Modified so that it can continue with the error when reload
+  + EV_SET of NetBSD fix a warning
+  + add a function to get status of using the built-in functions since gcc4.1
+  + Organize and unnecessary variable function
+  + Fixed memory leak at the end of
+  + Change if there is more than one LUN queue to run twice in a loop
+  + Add (except during the connection) process of changing the LU
+  + Modified so as to keep the number of elements in the queue
+  + Reduce the time lock of the queue, so as not to fix in the PG SendTargets inaccessible
+  + Change does not come out of the loop as to when a configuration error PG
+  + Issue a stop request to accept loop when receiving SIGTERM / INT
+  + Issues a connection request to stop all threads at the end
+  + Change so as to perform without a lock at the end of the state
+  + Add a script for NetBSD
+  + Add syslogd mountlate: LOGIN, REQUIRE: BEFORE the startup script
+  + Fix configure.in / Makefile.in
+  + fix the warning is in gcc and clang
+  + -Wextra-Wformat compiler warnings, such as adding
+
+- Install Linux rc script into /etc/init.d rather than /etc/rc.d
+
+-------------------------------------------------------------------
+Wed Aug  1 09:35:45 UTC 2012 - ddiss@suse.com
+
+- Remove unnecessary %clean section from spec file.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:42:49 UTC 2012 - ddiss@suse.com
+
+- Remove fix-autosize.patch catering for symlinked devices.
+  + Symlink devices can be enabled with the '--enable-symlink-device'
+    configure option.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:39:42 UTC 2012 - ddiss@suse.com
+
+- Add support for (force-)reload init script arguments.
+  + Sends a SIGHUP to the istgt daemon.
+
+-------------------------------------------------------------------
+Thu Jul 26 13:59:41 UTC 2012 - ddiss@suse.com
+
+- Update to upstream istgt-20120726.tar.gz tarball.
+  + Drop unneeded fix-as-needed-build.patch & fix-mandir.patch patches.
+
+-------------------------------------------------------------------
+Fri Jun  1 11:10:20 UTC 2012 - ddiss@suse.com
+
+- Add Linux style System-V init scipt.
+
+-------------------------------------------------------------------
+Thu May 31 13:41:56 UTC 2012 - ddiss@suse.com
+
+- Initial check in with istgt-20111008.tar.gz from
+  http://shell.peach.ne.jp/aoyama/archives/1741 and patches from Debian.
+
+  See istgt-20111008/ChangeLog.jp in the source package for a summary of
+  changes up until now.

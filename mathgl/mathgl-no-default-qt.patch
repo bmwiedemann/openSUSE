@@ -1,0 +1,24 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Do not mark a Qt version as default if it's the only one built
+
+We do not package the plain "qt" plugin, as it's just a copy of either
+"qt4" or "qt5". It's not possible to do this with a cmake invocation,
+as the deleted lines override it otherwise.
+
+Index: mathgl-2.4.1/CMakeLists.txt
+===================================================================
+--- mathgl-2.4.1.orig/CMakeLists.txt
++++ mathgl-2.4.1/CMakeLists.txt
+@@ -215,12 +215,6 @@ if(enable-qt4 OR enable-qt5)
+ 	if(enable-qt4asqt AND enable-qt5asqt)
+ 		message(SEND_ERROR "You cannot make Qt4 and Qt5 as qt at the same time.")
+ 	endif(enable-qt4asqt AND enable-qt5asqt)
+-	if(enable-qt4 AND NOT enable-qt5)
+-		set(enable-qt4asqt TRUE)
+-	endif(enable-qt4 AND NOT enable-qt5)
+-	if(enable-qt5 AND NOT enable-qt4)
+-		set(enable-qt5asqt TRUE)
+-	endif(enable-qt5 AND NOT enable-qt4)
+ # 	if(NOT enable-opengl)
+ # 		message(SEND_ERROR "You cannot build MathGL with Qt4 or Qt5 without OpenGL enabled.")
+ # 	endif(NOT enable-opengl)

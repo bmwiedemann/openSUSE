@@ -1,0 +1,13 @@
+Index: lisp/cus-edit.el
+===================================================================
+--- lisp/cus-edit.el.orig
++++ lisp/cus-edit.el
+@@ -1395,7 +1395,7 @@ item in another window.\n\n"))
+ (defface custom-modified-face '((((class color))
+ 				 (:foreground "white" :background "blue"))
+ 				(t
+-				 (:italic t :bold)))
++				 (:italic t :bold t)))
+   "Face used when the customize item has been modified."
+   :group 'custom-magic-faces)
+ 

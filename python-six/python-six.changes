@@ -1,0 +1,281 @@
+-------------------------------------------------------------------
+Thu Jul 18 09:15:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Simplify the pytest call
+
+-------------------------------------------------------------------
+Tue Jun 11 06:58:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix pytest call
+- Fixdocumentation package generating
+
+-------------------------------------------------------------------
+Fri Jan 25 19:43:33 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Change %pretrans back to %pre to fix bootstrap issue (boo#1123064)
+
+-------------------------------------------------------------------
+Thu Jan 17 11:31:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Require just base python module, even full python is too much
+  and it is not required here
+
+-------------------------------------------------------------------
+Mon Dec 10 09:20:52 CET 2018 - mcepl@suse.com
+
+- Update to 0.12.0:
+    * `six.add_metaclass` now preserves `__qualname__` from the
+      original class.
+    * Add `six.ensure_binary`, `six.ensure_text`, and
+      `six.ensure_str`.
+- Because of cyclical dependencies between six and Sphinx, we
+  need to to do multibuild.
+
+-------------------------------------------------------------------
+Mon Sep  3 15:37:13 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- remove egg-info directory in %pretrans
+- fix egg-info directory pattern
+- match any version of egg-info for a certain python version
+
+-------------------------------------------------------------------
+Sat Aug 18 09:08:38 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Break the cycilical dependency on python-setuptools.
+
+-------------------------------------------------------------------
+Fri Aug 10 13:07:30 UTC 2018 - tchvatal@suse.com
+
+- Remove argparse dependency
+
+-------------------------------------------------------------------
+Mon Oct 16 16:49:50 UTC 2017 - jmatejek@suse.com
+
+- remove egg-info directory before installation if it exists,
+  because setuptools produce directory and six switched to distutils
+  that produce a file
+  (and because rpm can't handle that by itself)
+  fixes bsc#1057496
+
+-------------------------------------------------------------------
+Thu Sep 28 07:47:18 UTC 2017 - tbechtold@suse.com
+
+- Fix Source url
+
+-------------------------------------------------------------------
+Sat Sep 23 20:49:03 UTC 2017 - arun@gmx.de
+
+- README->README.rst, add CHANGES
+
+- update to version 1.11.0:
+  * Pull request #178: `with_metaclass` now properly proxies
+    `__prepare__` to the underlying metaclass.
+  * Pull request #191: Allow `with_metaclass` to work with metaclasses
+    implemented in C.
+  * Pull request #203: Add parse_http_list and parse_keqv_list to
+    moved urllib.request.
+  * Pull request #172 and issue #171: Add unquote_to_bytes to moved
+    urllib.parse.
+  * Pull request #167: Add `six.moves.getoutput`.
+  * Pull request #80: Add `six.moves.urllib_parse.splitvalue`.
+  * Pull request #75: Add `six.moves.email_mime_image`.
+  * Pull request #72: Avoid creating reference cycles through
+    tracebacks in `reraise`.
+
+-------------------------------------------------------------------
+Wed Oct  5 14:33:14 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+
+-------------------------------------------------------------------
+Tue Feb  9 07:45:20 UTC 2016 - olaf@aepfle.de
+
+- Restore buildarch for SLE_11 to fix build
+
+-------------------------------------------------------------------
+Tue Jan 19 09:07:19 UTC 2016 - toddrme2178@gmail.com
+
+- Run tests in -doc package to avoid dependency loops
+  * python-setuptools -> python-six -> python-py -> python-setuptools
+  * python-setuptools -> python-six -> python-pytest -> python-setuptools
+- Actually run the tests.  They weren't previously being run.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:17:49 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.10.0:
+  - Issue #122: Improve the performance of `six.int2byte` on Python 3.
+  - Pull request #55 and issue #99: Don't add the `winreg` module to `six.moves`
+    on non-Windows platforms.
+  - Pull request #60 and issue #108: Add `six.moves.getcwd` and
+    `six.moves.getcwdu`.
+  - Pull request #64: Add `create_unbound_method` to create unbound methods.
+
+-------------------------------------------------------------------
+Tue Aug  4 07:50:17 UTC 2015 - dimstar@opensuse.org
+
+- Delete the system egg-info during pre phase: older versions of
+  the package installed it as a directory, the latest update
+  creates a file, and rpm has known issues with replacing this.
+
+-------------------------------------------------------------------
+Wed Jul 29 13:01:56 UTC 2015 - toddrme2178@gmail.com
+
+- Make tests conditional to avoid dependency loop.
+
+-------------------------------------------------------------------
+Thu Apr 16 10:41:33 UTC 2015 - hpj@urpla.net
+
+- don't build/package documentation here: it breaks due to cyclic 
+  requirements between six and Sphinx, move doc in its own package
+
+-------------------------------------------------------------------
+Sat Jan 24 13:45:42 UTC 2015 - mailaender@opensuse.org
+
+- update to version 1.9.0
+  - Issue #106: Support the `flush` parameter to `six.print_`.
+  - Pull request #48 and issue #15: Add the `python_2_unicode_compatible`
+    decorator.
+  - Pull request #57 and issue #50: Add several compatibility methods for
+    unittest assertions that were renamed between Python 2 and 3.
+  - Issue #105 and pull request #58: Ensure `six.wraps` respects the
+    *updated* and *assigned* arguments.
+  - Issue #102: Add `raise_from` to abstract out Python 3's raise from
+    syntax.
+  - Issue #97: Optimize `six.iterbytes` on Python 2.
+  - Issue #98: Fix `six.moves` race condition in multi-threaded code.
+  - Pull request #51: Add `six.view(keys|values|itmes)`, which provide
+    dictionary views on Python 2.7+.
+
+-------------------------------------------------------------------
+Tue Sep 16 06:32:25 UTC 2014 - tbechtold@suse.com
+
+- update to version 1.8.0:
+  * Issue #90: Add six.moves.shlex_quote.
+  * Issue #59: Add six.moves.intern.
+  * Add six.urllib.parse.uses_(fragment|netloc|params|query|relative).
+  * Issue #88: Fix add_metaclass when the class has __slots__ containing
+  "__weakref__" or "__dict__".
+  * Issue #89: Make six use absolute imports.
+  * Issue #85: Always accept *updated* and *assigned* arguments for wraps().
+  * Issue #86: In reraise(), instantiate the exception if the second argument is
+  None.
+  * Pull request #45: Add six.moves.email_mime_nonmultipart.
+  * Issue #81: Add six.urllib.request.splittag mapping.
+  * Issue #80: Add six.urllib.request.splituser mapping.
+
+-------------------------------------------------------------------
+Wed Aug 13 07:44:30 UTC 2014 - mcihar@suse.cz
+
+- update to 1.7.3:
+  - Issue #77: Fix import six on Python 3.4 with a custom loader.
+  - Issue #74: six.moves.xmlrpc_server should map to SimpleXMLRPCServer on Python
+    2 as documented not xmlrpclib.
+
+-------------------------------------------------------------------
+Mon Jun 23 08:28:39 UTC 2014 - dmueller@suse.com
+
+- update to 1.7.2:
+  - Issue #72: Fix installing on Python 2.
+  - Issue #71: Make the six.moves meta path importer handle reloading of the six
+  module gracefully.
+  - Pull request #30: Implement six.moves with a PEP 302 meta path hook.
+  - Pull request #32: Add six.wraps, which is like functools.wraps but always sets
+  the __wrapped__ attribute.
+  - Pull request #35: Improve add_metaclass, so that it doesn't end up inserting
+  another class into the hierarchy.
+  - Pull request #34: Add import mappings for dummy_thread.
+  - Pull request #33: Add import mappings for UserDict and UserList.
+  - Pull request #31: Select the implementations of dictionary iterator routines
+  at import time for a 20% speed boost.
+
+-------------------------------------------------------------------
+Thu Apr 24 11:20:32 UTC 2014 - dmueller@suse.com
+
+- update to 1.6.1:
+  - Raise an AttributeError for six.moves.X when X is a module not available in
+    the current interpreter.
+  - Raise an AttributeError for every attribute of unimportable modules.
+  - Issue #56: Make the fake modules six.moves puts into sys.modules appear not to
+    have a __path__ unless they are loaded.
+  - Pull request #28: Add support for SplitResult.
+  - Issue #55: Add move mapping for xmlrpc.server.
+  - Pull request #29: Add move for urllib.parse.splitquery.
+
+-------------------------------------------------------------------
+Wed Feb 26 16:44:10 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #315990)
+
+-------------------------------------------------------------------
+Sun Feb  9 17:06:59 UTC 2014 - toms@opensuse.org
+
+- update to 1.5.2:
+  - Issue #53: Make the fake modules six.moves puts into sys.modules 
+    appear not to have a __name__ unless they are loaded.
+
+Changes of older releases, see CHANGES files in the Bitbucket repo at
+https://bitbucket.org/gutworth/six/src/758cacd651f3ee8c9eb2253ca3905a1d46f88786/CHANGES?at=default
+
+-------------------------------------------------------------------
+Tue Jan  7 14:52:36 UTC 2014 - speilicke@suse.com
+
+- Bring back argparse requirement for SP3
+
+-------------------------------------------------------------------
+Mon Sep  2 15:34:12 UTC 2013 - dmueller@suse.com
+
+- update to 1.4.1:
+  - Issue #31: Add six.moves mapping for UserString.
+  - Pull request #12: Add six.add_metaclass, a decorator for adding a metaclass to
+    a class.
+  - Add six.moves.zip_longest and six.moves.filterfalse, which correspond
+    respectively to itertools.izip_longest and itertools.ifilterfalse on Python 2
+    and itertools.zip_longest and itertools.filterfalse on Python 3.
+  - Issue #25: Add the unichr function, which returns a string for a Unicode
+    codepoint.
+  - Issue #26: Add byte2int function, which complements int2byte.
+  - Issue #23: Allow multiple base classes to be passed to with_metaclass.
+  - Issue #24: Add six.moves.range alias. This exactly the same as the current
+  xrange alias.
+  - Pull request #5: Create six.moves.urllib, which contains abstractions for a
+    bunch of things which are in urllib in Python 3 and spread out across urllib,
+    urllib2, and urlparse in Python 2.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:41:52 UTC 2013 - speilicke@suse.com
+
+- Run testsuite
+- Build and package HTML documentation
+
+-------------------------------------------------------------------
+Mon Apr 29 11:14:05 UTC 2013 - dmueller@suse.com
+
+- update to 1.3.0:
+  - In six.iter(items/keys/values/lists), passed keyword arguments through to the
+  underlying method.
+  - Add six.iterlists().
+  - Fix Jython detection.
+
+-------------------------------------------------------------------
+Thu Nov 22 14:18:55 UTC 2012 - toddrme2178@gmail.com
+
+- Removed openSUSE 11.4 spec file workarounds
+
+-------------------------------------------------------------------
+Wed Sep 12 03:01:59 UTC 2012 - os-dev@jacraig.com
+
+- Update to 1.2.0:
+  * Issue #13: Make iterkeys/itervalues/iteritems return iterators on Python 3
+    instead of iterables.
+  * Issue #11: Fix maxsize support on Jython.
+  * Add six.next() as an alias for six.advance_iterator().
+  * Use the builtin next() function for advance_iterator() where is available
+    (2.6+), not just Python 3.
+  * Add the Iterator class for writing portable iterators.
+
+-------------------------------------------------------------------
+Tue Jun  5 11:30:58 UTC 2012 - toddrme2178@gmail.com
+
+- Initial spec file
+

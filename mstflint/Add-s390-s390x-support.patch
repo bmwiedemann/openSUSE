@@ -1,0 +1,110 @@
+commit fcbb58df88e9a209b17b815c106768b5cc50d777
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Thu May 18 11:17:54 2017 +0200
+
+    Add s390/s390x support
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git common/compatibility.h common/compatibility.h
+index 79414719265c..b187938ae0af 100644
+--- common/compatibility.h
++++ common/compatibility.h
+@@ -63,6 +63,10 @@
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+ #       define ARCH_arm6l
++#   elif defined(__s390x__)
++#       define ARCH_s390x
++#   elif defined(__s390__)
++#       define ARCH_s390
+ #   else
+ #       error Unknown CPU architecture using the linux OS
+ #   endif
+@@ -94,7 +98,7 @@
+ #define U16H_FMT    "0x%04x"
+ #define U8H_FMT     "0x%02x"
+ 
+-#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l)
++#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_s390)
+ #   if defined(__MINGW32__) || defined(__MINGW64__)
+ #       include <inttypes.h>
+ #       define U64D_FMT    "0x%" PRId64
+@@ -109,7 +113,7 @@
+ #       define U48H_FMT     "0x%012llx"
+ #       define U64D_FMT_GEN "llu"
+ #   endif
+-#elif defined(ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(ARCH_arm64)
++#elif defined(ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(ARCH_arm64) || defined(ARCH_s390x)
+ #    define U64D_FMT     "%lu"
+ #    define U64H_FMT     "0x%016lx"
+ #    define U48H_FMT     "0x%012lx"
+diff --git mtcr_ul/packets_common.h mtcr_ul/packets_common.h
+index 4df05efaa9c2..68a08d0589ae 100644
+--- mtcr_ul/packets_common.h
++++ mtcr_ul/packets_common.h
+@@ -152,6 +152,10 @@
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+ #       define ARCH_arm6l
++#   elif defined(__s390x__)
++#       define ARCH_s390x
++#   elif defined(__s390__)
++#       define ARCH_s390
+ #   else
+ #       error Unknown CPU architecture using the linux OS
+ #   endif
+@@ -163,9 +167,9 @@
+ 
+ /**********************************/
+ /* define macros for print fields */
+-//#if defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__)
++//#if defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__) || defined(ARCH_s390x)
+ /*
+- #if !defined(UEFI_BUILD) && (defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__))
++ #if !defined(UEFI_BUILD) && (defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__) || defined(ARCH_s390x))
+  #   define U64H_FMT "0x%016lx"
+  #   define U64D_FMT "%lu"
+  #   define U32H_FMT "0x%08x"
+@@ -173,7 +177,7 @@
+  #   define U8H_FMT  "0x%02x"
+  #   define U32D_FMT "%u"
+  #   define STR_FMT "%s"
+- #elif defined(ARCH_x86) || defined(ARCH_ppc) || defined(__MINGW32__) || defined(UEFI_BUILD) || defined(ARCH_arm6l)
++ #elif defined(ARCH_x86) || defined(ARCH_ppc) || defined(__MINGW32__) || defined(UEFI_BUILD) || defined(ARCH_arm6l)) || defined(ARCH_s390)
+  #   define U64H_FMT "0x%016llx"
+  #   define U64D_FMT "%llu"
+  #   define U32H_FMT "0x%08x"
+diff --git tools_layouts/adb_to_c_utils.h tools_layouts/adb_to_c_utils.h
+index 19ffab03aba3..0a5cee5fec54 100644
+--- tools_layouts/adb_to_c_utils.h
++++ tools_layouts/adb_to_c_utils.h
+@@ -137,6 +137,10 @@ extern "C" {
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+ #       define ARCH_arm6l
++#   elif defined(__s390x__)
++#       define ARCH_s390x
++#   elif defined(__s390__)
++#       define ARCH_s390
+ #   else
+ #       error Unknown CPU architecture using the linux OS
+ #   endif
+@@ -169,7 +173,7 @@ extern "C" {
+ #define U16H_FMT    "0x%04x"
+ #define U8H_FMT     "0x%02x"
+ 
+-#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l)
++#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_s390)
+ #   if defined(__MINGW32__) || defined(__MINGW64__)
+ #       include <inttypes.h>
+ #       define U64D_FMT    "0x%" PRId64
+@@ -180,7 +184,7 @@ extern "C" {
+ #       define U64H_FMT    "0x%016llx"
+ #       define U48H_FMT    "0x%012llx"
+ #   endif
+-#elif defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(ARCH_arm64)
++#elif defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(ARCH_arm64) || defined(ARCH_s390x)
+ #    define U64D_FMT    "%lu"
+ #    define U64H_FMT    "0x%016lx"
+ #	 define U48H_FMT	"0x%012lx" 

@@ -1,0 +1,62 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Jun 6 21:18:26 2019 +0200
+Subject: Add support for numbered variables
+Patch-mainline: Not yet
+Git-commit: e0306cf0f44468290cfe7f46f31da6102baa4884
+References: 
+
+To use multipe instances of the same variable, introduced 'numbered
+variables' (sort of like an array).
+In the validHeaders table, these variables are
+represented by an '&n' attached to their name:
+ie:
+    "foo&n": true,
+this will match variables of the form:
+foo0: somestring
+in the definition file. The value can be referenced from
+the Header map using "foo0" as key.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ .../sylabs/singularity/pkg/build/types/parser/deffile.go   | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+diff --git a/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile.go b/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile.go
+index b490831..a3cc040 100644
+--- a/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile.go
++++ b/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile.go
+@@ -337,6 +337,7 @@ func doHeader(h string, d *types.Definition) (err error) {
+ 	cont_key, cont_val := "", ""
+ 
+ 	for _, line := range toks {
++		var key, val string = "", ""
+ 		// skip empty or comment lines
+ 		if line = strings.TrimSpace(line); line == "" || strings.Index(line, "#") == 0 {
+ 			if len(cont_key) > 0 {
+@@ -354,9 +355,9 @@ func doHeader(h string, d *types.Definition) (err error) {
+ 				return fmt.Errorf("header key %s had no val", linetoks[0])
+ 			}
+ 
+-			key, val := strings.ToLower(strings.TrimSpace(linetoks[0])), strings.TrimSpace(linetoks[1])
++			key, val = strings.ToLower(strings.TrimSpace(linetoks[0])), strings.TrimSpace(linetoks[1])
+ 		} else {
+-		        key, val := cont_key, cont_val + strings.TrimSpace(trimLine)
++		        key, val = cont_key, cont_val + strings.TrimSpace(trimLine)
+ 			cont_key, cont_val = "", ""
+ 		}
+ 		// continuation
+@@ -369,7 +370,14 @@ func doHeader(h string, d *types.Definition) (err error) {
+ 			continue
+ 		}
+ 		if _, ok := validHeaders[key]; !ok {
+-			return fmt.Errorf("invalid header keyword found: %s", key)
++			rgx := regexp.MustCompile(`\d+$`)
++			tmp_key := rgx.ReplaceAllString(key, "&n")
++			if ok = tmp_key != key; ok {
++				_, ok = validHeaders[tmp_key]
++			}
++			if !ok {
++				return fmt.Errorf("invalid header keyword found: %s", key)
++			}
+ 		}
+ 		header[key] = val
+ 	}

@@ -1,0 +1,607 @@
+-------------------------------------------------------------------
+Tue Mar 19 12:07:00 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 1.36:
+  * Two new error codes to better support PIV cards
+  * Support armv7a-unknown-linux-gnueabihf
+
+-------------------------------------------------------------------
+Mon Jan 28 08:03:16 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 1.35:
+  * Distribute the correct gpgrt-config
+
+-------------------------------------------------------------------
+Wed Jan 16 12:19:34 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- update to 1.34:
+  * Support for riscv32
+  * New API to allow emergency cleanup after internal fatal errors
+  * Minor bug and portability fixes
+
+-------------------------------------------------------------------
+Sat Dec  8 10:56:32 UTC 2018 - astieger@suse.com
+
+- update to 1.33:
+  * New unified config script gpgrt-config
+  * The log functions now sanitize strings printed with the "%s"
+    format specifier
+  * New fprintf style function to apply a custom filter for string
+    arguments
+  * New function to compare version strings
+
+-------------------------------------------------------------------
+Thu Jul 12 10:02:01 UTC 2018 - kbabioch@suse.com
+
+- Update to 1.32:
+  * Fixes a problem with gpgrt_fflush and gpgrt_fopencookie
+  * Fixes a problem with the C11 header stdnoreturn.h
+
+-------------------------------------------------------------------
+Sat May 12 11:38:30 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix %install_info_delete usage:
+  * It has to be performed in %preun not in %postun.
+  * See https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25install_info_delete.
+
+-------------------------------------------------------------------
+Wed May  2 18:48:17 UTC 2018 - astieger@suse.com
+
+- update to 1.31:
+ * Fixes for platforms other than GNU/Linux
+ * New translation for Spanish
+
+-------------------------------------------------------------------
+Mon Apr 30 12:27:46 UTC 2018 - astieger@suse.com
+
+- update to 1.30:
+  * fixes for platforms other than GNU/Linux
+  * Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Thu Apr 19 14:12:03 UTC 2018 - astieger@suse.com
+
+- update signature files as more signatures got added
+- refresh package signing keyring from upstream
+
+-------------------------------------------------------------------
+Wed Apr 11 08:51:39 UTC 2018 - kbabioch@suse.com
+
+- Cleaned up spec file with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Apr 11 08:48:50 UTC 2018 - kbabioch@suse.com
+
+- Update to 1.29:
+ * The yat2m tool is during cross-compile now also installed on the
+   host platform.
+ * New option parser and associated functions similar to the one used
+   by GnuPG.
+ * New Base-64 encoder.
+ * Fixes regression in 1.28 for arm64 and w64 builds.
+- Dropped fix_aarch64.patch (included upstream now)
+
+-------------------------------------------------------------------
+Thu Mar 22 10:15:51 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Backport upstream patch to fix AArch64 build:
+  * fix_aarch64.patch
+
+-------------------------------------------------------------------
+Tue Mar 13 14:28:52 UTC 2018 - kbabioch@suse.com
+
+- update to 1.28:
+
+  * The formerly internal yat2m tool is now installed for a native build.
+  * The new files gpgrt.m4 and gpgrt-config are now installed. They can
+    be used instead of gpg-error.m4 and gpg-error-config.
+  * New logging functions similar to those used by GnuPG.
+  * New helper functions for platform abstraction. 
+  * Interface changes
+
+-------------------------------------------------------------------
+Tue Mar  7 12:37:41 UTC 2017 - astieger@suse.com
+
+- update to 1.27:
+ * Added a Base64 decoder.
+ * Added support for the sh3 architecture.
+ * Added header gpgrt.h as an alias for gpg-error.h.
+ * Fixed macro GPGRT_GCC_VERSION.
+ * Interface changes relative to the 1.26 release:
+   gpgrt_b64state_t                 NEW type.
+   gpgrt_b64dec_start               NEW.
+   gpgrt_b64dec_proc                NEW.
+   gpgrt_b64dec_finish              NEW.
+   GPG_ERR_WRONG_NAME               NEW.
+   gpgrt.h                          NEW header.
+
+-------------------------------------------------------------------
+Thu Dec 22 10:10:09 UTC 2016 - astieger@suse.com
+
+- update to 1.26:
+ * New option --desc for gpg-error.
+ * Interface changes relative to the 1.25 release:
+   GPG_ERR_UNKNOWN_FLAG         NEW.
+   GPG_ERR_INV_ORDER            NEW.
+   GPG_ERR_ALREADY_FETCHED      NEW.
+   GPG_ERR_TRY_LATER            NEW.
+   GPG_ERR_SYSTEM_BUG           NEW.
+   GPG_ERR_DNS_UNKNOWN          NEW.
+   GPG_ERR_DNS_SECTION          NEW.
+   GPG_ERR_DNS_ADDRESS          NEW.
+   GPG_ERR_DNS_NO_QUERY         NEW.
+   GPG_ERR_DNS_NO_ANSWER        NEW.
+   GPG_ERR_DNS_CLOSED           NEW.
+   GPG_ERR_DNS_VERIFY           NEW.
+   GPG_ERR_DNS_TIMEOUT          NEW.
+
+-------------------------------------------------------------------
+Tue Nov 15 09:39:41 UTC 2016 - astieger@suse.com
+
+- update to 1.25:
+  * New interface gpgrt_get_syscall_clamp to allow libaries to make
+    use of Libgpg-error's system call wrapper functions.
+  * Fixed bug in the locking code when used with the nPth threading
+    library.
+  * Added new error codes.
+  * Interface changes relative to the 1.23 release:
+    gpgrt_get_syscall_clamp          NEW.
+    GPG_ERR_ENGINE_TOO_OLD	     NEW.
+    GPG_ERR_WINDOW_TOO_SMALL         NEW.
+    GPG_ERR_WINDOW_TOO_LARGE         NEW.
+    GPG_ERR_MISSING_ENVVAR	     NEW.
+    GPG_ERR_USER_ID_EXISTS           NEW.
+    GPG_ERR_NAME_EXISTS              NEW.
+    GPG_ERR_DUP_NAME                 NEW.
+    GPG_ERR_TOO_OLD                  NEW.
+    GPG_ERR_TOO_YOUNG                NEW.
+
+-------------------------------------------------------------------
+Mon Jul 18 22:21:21 UTC 2016 - astieger@suse.com
+
+- update to 1.24:
+ * Fixes a bug in es_fclose_snatch when used used after es_fseek.
+ * Fixes building without thread support.
+ * New configure option --disable-tests.
+
+
+-------------------------------------------------------------------
+Wed Jun 15 17:59:30 UTC 2016 - astieger@suse.com
+
+- update to 1.23:
+  * Fixes an assertion failure due to es_flush on read/write streams.
+  * Fixes a bug with a too short memory limit is es_fopenmen.
+  * Interface changes relative to the 1.22 release:
+    GPG_ERR_SUBKEYS_EXP_OR_REV       NEW.
+
+-------------------------------------------------------------------
+Fri Apr 29 18:08:07 UTC 2016 - astieger@suse.com
+
+- update to 1.22:
+  * Support for LeakSanitizer with the gpgrt_annotate_leaked_object
+    inline function.
+  * Interface changes relative to the 1.21 release:
+    GPG_ERR_DB_CORRUPTED             NEW.
+    gpgrt_annotate_leaked_object     NEW inline func.
+    GPGRT_ENABLE_W32_ICONV_MACROS    NEW.
+    gpgrt_w32_iconv_open             NEW.
+    gpgrt_w32_iconv_close            NEW.
+    gpgrt_w32_iconv                  NEW.
+
+-------------------------------------------------------------------
+Mon Dec 14 09:08:59 UTC 2015 - astieger@suse.com
+
+- update to 1.21:
+  * New functions gpgrt_poll and gpgrt_set_nonblock.  For now only
+    pipes and sockets on Unix are supported.
+  * Interface changes relative to the 1.20 release:
+    gpgrt_set_nonblock               NEW.
+    gpgrt_get_nonblock               NEW.
+    gpgrt_poll                       NEW.
+    gpgrt_poll_t                     NEW type.
+    es_poll_t                        NEW type.
+    es_set_nonblock                  NEW macro.
+    es_get_nonblock                  NEW macro.
+    es_poll                          NEW macro.
+    GPG_ERR_TRUE                     NEW.
+    GPG_ERR_FALSE                    NEW.
+    GPG_ERR_NO_NAME                  NEW.
+    GPG_ERR_NO_KEY                   NEW.
+    GPG_ERR_SERVER_FAILED            NEW.
+
+-------------------------------------------------------------------
+Wed Aug 26 11:03:34 UTC 2015 - astieger@suse.com
+
+- update to 1.20:
+ * New macros for GCC attributes.
+ * Allow building without thread support.
+ * Build without a build timestamp by default.
+ * Interface changes relative to the 1.19 release:
+   GPGRT_VERSION                    NEW macro.
+   GPGRT_VERSION_NUMBER             NEW macro.
+   GPGRT_INLINE                     NEW macro.
+   GPGRT_GCC_VERSION                NEW macro.
+   GPGRT_ATTR_NORETURN              NEW macro.
+   GPGRT_ATTR_PRINTF                NEW macro.
+   GPGRT_ATTR_NR_PRINTF             NEW macro.
+   GPGRT_ATTR_FORMAT_ARG            NEW macro.
+   GPGRT_ATTR_SENTINEL              NEW macro.
+   GPGRT_ATTR_USED                  NEW macro.
+   GPGRT_ATTR_UNUSED                NEW macro.
+   GPGRT_ATTR_DEPRECATED            NEW macro.
+   GPGRT_ATTR_PURE                  NEW macro.
+   GPGRT_ATTR_MALLOC                NEW macro.
+   GPGRT_HAVE_MACRO_FUNCTION        NEW macro.
+   GPGRT_HAVE_PRAGMA_GCC_PUSH       NEW macro.
+
+-------------------------------------------------------------------
+Fri Apr 10 20:24:54 UTC 2015 - astieger@suse.com
+
+- update to 1.19:
+ * New set of error codes for use with LDAP.
+ * New options --help and --defines for gpg-error.
+ * Allow building with gcc 5.
+   (replacing patch libgpg-error-1.18-gcc5.patch now removed)
+ * Interface changes relative to the 1.18 release:
+   GPG_ERR_LDAP_*                   NEW.
+
+-------------------------------------------------------------------
+Thu Mar 19 16:12:59 UTC 2015 - astieger@suse.com
+
+- remove libtool requirement
+
+-------------------------------------------------------------------
+Thu Feb 19 09:24:12 UTC 2015 - rguenther@suse.com
+
+- Add libgpg-error-1.18-gcc5.patch to pass -P to the preprocessor
+  when generating files to deal with C preprocessor changes in GCC 4.9 and up.
+
+-------------------------------------------------------------------
+Mon Jan 26 13:42:03 UTC 2015 - andreas.stieger@gmx.de
+
+- update to 1.18:
+ * New translations for Hungarian, Portuguese, Russian, and
+   traditional Chinese.  Updated other translations.
+ * New error codes.
+ * Interface changes relative to the 1.17 release:
+   GPG_ERR_FORBIDDEN                NEW.
+   GPG_ERR_OBJ_TERM_STATE           NEW.
+   GPG_ERR_REQUEST_TOO_SHORT        NEW.
+   GPG_ERR_REQUEST_TOO_LONG         NEW.
+   GPG_ERR_LEGACY_KEY               NEW.
+
+-------------------------------------------------------------------
+Wed Oct 15 19:43:20 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.17:
+ * New error codes for TLS protocol libraries.
+ * New configure option --enable-build-timestamp.
+ * New man page for gpg-error-config.
+ * Interface changes relative to the 1.16 release:
+   GPG_ERR_SOURCE_TLS               NEW.
+   GPG_ERR_NO_CERT_CHAIN            NEW.
+   GPG_ERR_CERT_TOO_LARGE	          NEW.
+   GPG_ERR_INV_RECORD               NEW.
+   GPG_ERR_BAD_MAC	          NEW.
+   GPG_ERR_UNEXPECTED_MSG           NEW.
+   GPG_ERR_COMPR_FAILED             NEW.
+   GPG_ERR_WOULD_WRAP               NEW.
+   GPG_ERR_FATAL_ALERT              NEW.
+   GPG_ERR_NO_CIPHER                NEW.
+   GPG_ERR_MISSING_CLIENT_CERT      NEW.
+   GPG_ERR_CLOSE_NOTIFY             NEW.
+   GPG_ERR_TICKET_EXPIRED           NEW.
+   GPG_ERR_BAD_TICKET               NEW.
+   GPG_ERR_UNKNOWN_IDENTITY         NEW.
+   GPG_ERR_BAD_HS_CERT              NEW.
+   GPG_ERR_BAD_HS_CERT_REQ          NEW.
+   GPG_ERR_BAD_HS_CERT_VER          NEW.
+   GPG_ERR_BAD_HS_CHANGE_CIPHER     NEW.
+   GPG_ERR_BAD_HS_CLIENT_HELLO      NEW.
+   GPG_ERR_BAD_HS_SERVER_HELLO      NEW.
+   GPG_ERR_BAD_HS_SERVER_HELLO_DONE NEW.
+   GPG_ERR_BAD_HS_FINISHED          NEW.
+   GPG_ERR_BAD_HS_SERVER_KEX        NEW.
+   GPG_ERR_BAD_HS_CLIENT_KEX        NEW.
+   GPG_ERR_BOGUS_STRING             NEW.
+   gpgrt_pending                    NEW.
+   gpgrt_pending_unlocked           NEW.
+- Build with --enable-build-timestamp=no to prevent unneccessary
+  rebuilds of dependent packages  
+- add required spec for introducted info page
+
+-------------------------------------------------------------------
+Sun Sep 21 20:09:03 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.16:
+ * Fixed a prototype mismatch.
+ * Fix es_fclose for streams opened with "samethread".
+
+-------------------------------------------------------------------
+Sat Sep 13 11:31:06 UTC 2014 - meissner@suse.com
+
+- update to 1.15:
+ * This releases fixes problems with the use of off_t and ssize_t by
+   the estream functions introduced with 1.14.  Although this is
+   technically an ABI break on some platforms, we take this as a
+   simple bug fix for 1.14.  The new functions are very unlikely in
+   use by any code and thus no breakage should happen.  The 1.14
+   tarball will be removed from the archive.
+
+ * Add type gpgrt_off_t which is guaranteed to be 64 bit.
+
+ * Add type gpgrt_ssize_t to make use on Windows easier.  On Unix
+   platforms this is an alias for ssize_t.
+
+-------------------------------------------------------------------
+Wed Sep 10 22:42:03 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.14:
+ * Added gpgrt_lock_trylock.
+ * Added the estream library under the name gpgrt and a set of macros
+   to use them with their "es_" names.
+ * Interface changes relative to the 1.13 release:
+   GPG_ERR_KEY_DISABLED         NEW.
+   gpgrt_*, GPGPT_*             NEW.
+
+-------------------------------------------------------------------
+Sun Apr 27 16:18:42 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.13:
+  * Added a portable mutex API.
+  * The AM_PATH_GPG_ERROR macro now defines GPG_ERROR_MT_CFLAGS
+    and GPG_ERROR_MT_LIBS autoconf output variables for use by
+    programs which need gpgrt based thread support.
+    gpg-error-config has a new option --mt.
+- Interface changes relative to the 1.12 release:
+  GPG_ERR_KEY_ON_CARD          NEW.
+  GPG_ERR_MAC_ALGO             NEW.
+  GPG_ERR_INV_LOCK_OBJ         NEW.
+  gpgrt_lock_t                 NEW.
+  GPGRT_LOCK_INITIALIZER       NEW.
+  GPGRT_LOCK_DEFINE            NEW.
+  gpgrt_lock_init              NEW.
+  gpgrt_lock_lock              NEW.
+  gpgrt_lock_unlock            NEW.
+  gpgrt_lock_destroy           NEW.
+  gpgrt_yield                  NEW.
+- run available tests
+- fix SLE 11 SP2 build (make install)
+
+-------------------------------------------------------------------
+Mon Aug 19 21:21:34 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.12
+ * Interface changes relative to the 1.11 release:
+   GPG_ERR_NO_CRYPT_CTX         NEW.
+   GPG_ERR_WRONG_CRYPT_CTX      NEW.
+   GPG_ERR_BAD_CRYPT_CTX        NEW.
+   GPG_ERR_CRYPT_CTX_CONFLICT   NEW.
+   GPG_ERR_BROKEN_PUBKEY        NEW.
+   GPG_ERR_BROKEN_SECKEY        NEW.
+- drop unused libgpg-error-nld-build.diff
+- drop autoreconv call
+
+-------------------------------------------------------------------
+Tue Jun 18 08:46:57 UTC 2013 - coolo@suse.com
+
+- remove gpg verification from bootstrap packages
+
+-------------------------------------------------------------------
+Mon Feb 25 19:07:29 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.11
+ * New error source GPG_ERR_SOURCE_ASSUAN for Libassuan related
+   errors.
+ * New macros GPG_ERROR_VERSION and GPG_ERROR_VERSION_NUMBER.  New
+   function gpg_error_check_version.
+ * Interface changes relative to the 1.10 release:
+   GPG_ERR_NO_KEYSERVER          NEW.
+   GPG_ERR_INV_CURVE             NEW.
+   GPG_ERR_UNKNOWN_CURVE         NEW.
+   GPG_ERR_DUP_KEY               NEW.
+   GPG_ERR_AMBIGUOUS             NEW.
+   GPG_ERR_SOURCE_ASSUAN         NEW.
+   gpg_error_check_version       NEW.
+   GPG_ERROR_VERSION             NEW.
+   GPG_ERROR_VERSION_NUMBER      NEW.
+- add offline verification of source signature
+
+-------------------------------------------------------------------
+Sat Feb  2 18:52:02 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Sun Feb 12 21:31:41 UTC 2012 - crrodriguez@opensuse.org
+
+- Move libraries back to %{_libdir}, /usr merge project
+
+-------------------------------------------------------------------
+Sat Nov 19 15:56:17 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Oct  2 18:04:00 UTC 2011 - crrodriguez@opensuse.org
+
+-  Update to version 1.10
+* Define GPG_ERR_ENABLE_ERRNO_MACROS.
+* Add GPG_ERR_NOT_INITIALIZED.
+* Add GPG_ERR_MISSING_ISSUER_CERT
+-------------------------------------------------------------------
+Fri Dec  3 11:53:24 UTC 2010 - puzel@novell.com
+
+- update to version 1.9 
+ * New function gpg_err_deinit.
+ * Interface changes relative to the 1.8 release:
+   GPG_ERR_MISSING_KEY           NEW
+   GPG_ERR_TOO_MANY              NEW
+   GPG_ERR_LIMIT_REACHED         NEW
+   gpg_err_deinit                NEW
+- clean up specfile
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Aug 17 11:41:23 UTC 2010 - puzel@novell.com
+
+- update to version 1.8 
+ * New option --list for gpg-error.
+ * Interface changes relative to the 1.7 release:
+   GPG_ERR_NOT_ENABLED           NEW
+   GPG_ERR_SOURCE_G13            NEW
+   GPG_ERR_NO_ENGINE             NEW
+   gpg_err_set_errno             NEW
+
+-------------------------------------------------------------------
+Mon Dec 14 16:29:18 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Mon Jun  1 11:41:02 CEST 2009 - puzel@suse.cz
+
+- update to version 1.7
+ * Minor fixes and a few new error codes.
+ * Interface changes relative to the 1.6 release:
+   GPG_ERR_NOT_OPERATIONAL       NEW
+   GPG_ERR_NO_PASSPHRASE         NEW
+   GPG_ERR_NO_PIN                NEW
+
+-------------------------------------------------------------------
+Fri Feb 20 03:00:44 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries, there is no reason to use them as
+  shared libraries live in /%{_lib} 
+
+-------------------------------------------------------------------
+Thu Jan 29 10:57:01 CET 2009 - olh@suse.de
+
+- obsolete libgpg-error-XXbit in the library subpackage
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sun May 11 12:15:22 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Nov 21 18:21:11 CET 2007 - mkoenig@suse.de
+
+- update to version 1.6 
+  * Minor build system fixes
+  * gpg-error has a new option --version
+  * Interface changes relative to the 1.4 release:
+    GPG_ERR_UNFINISHED            NEW
+    GPG_ERR_SOURCE_GPA            NEW
+    GPG_ERR_SOURCE_KLEO           NEW
+- package branch to conform shlib policy:
+  libgpg-error0
+
+-------------------------------------------------------------------
+Wed Dec 13 12:37:00 CET 2006 - mkoenig@suse.de
+
+- get rid of .la file and fix devel so link
+
+-------------------------------------------------------------------
+Tue Dec  5 18:47:06 CET 2006 - mkoenig@suse.de
+
+- move shared lib to /%_lib 
+
+-------------------------------------------------------------------
+Tue Sep 19 16:23:09 CEST 2006 - mkoenig@suse.de
+
+- update to version 1.4:
+ * New error codes for the Assuan IPC library.
+ * New error code GPG_ERR_MISSING_ERRNO
+ * New error source GPG_ERR_SOURCE_ANY
+ * New convenience functions gpg_err_code_from_syserror and
+   gpg_error_from_syserror
+
+-------------------------------------------------------------------
+Thu Jul 13 09:55:21 CEST 2006 - mskibbe@suse.de
+
+- add autoreconf --force ( includes the missing -fPIC option while
+  build ) 
+
+-------------------------------------------------------------------
+Wed Jul 12 11:14:55 CEST 2006 - mskibbe@suse.de
+
+- update to version 1.3 which
+  o includes fixes in Makefiles
+  o fix cast problems
+  o include utf8 functions
+  o add some languages
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 23 17:31:04 CEST 2005 - hvogel@suse.de
+
+- require libgpg-error
+- add %clean section
+
+-------------------------------------------------------------------
+Thu Oct 14 16:50:38 CEST 2004 - hvogel@suse.de
+
+- update to version 1.0
+
+-------------------------------------------------------------------
+Mon Sep 27 14:37:55 CEST 2004 - hvogel@suse.de
+
+- fixed ac-quotation of gpg-error.m4
+
+-------------------------------------------------------------------
+Mon Jul 19 13:31:55 CEST 2004 - hvogel@suse.de
+
+- correct nld_build if statement 
+
+-------------------------------------------------------------------
+Wed Jul 14 10:20:45 CEST 2004 - adrian@suse.de
+
+- create -devel subpackage
+- prepare for NLD
+
+-------------------------------------------------------------------
+Mon May 24 16:42:53 CEST 2004 - ro@suse.de
+
+- added return value to non-void function (main)
+
+-------------------------------------------------------------------
+Wed May 19 15:03:17 CEST 2004 - hvogel@suse.de
+
+- update to version 0.7
+
+-------------------------------------------------------------------
+Tue Feb 17 21:13:31 CET 2004 - hvogel@suse.de
+
+- initial package, version 0.6 
+

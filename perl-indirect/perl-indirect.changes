@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Tue Jul 16 10:24:17 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-indirect/Changes
+
+  0.39    2019-07-08 12:00 UTC
+          + Fix : [RT #127118] : Fails on perl >= v5.28.0 with -DDEBUGGING
+                  The module has been amended to accomodate with a change of
+                  behaviour of a core macro.
+          + Upd : Contact info.
+
+-------------------------------------------------------------------
+Sun Nov  5 07:17:46 UTC 2017 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-indirect/Changes
+
+  0.38    2017-11-04 15:40 UTC
+          + Fix : [RT #123374] : Compatibility with CV-in-stash optimisation
+                  Thanks Father Chrysostomos for reporting and contributing a
+                  patch.
+
+-------------------------------------------------------------------
+Wed Jul 13 06:03:28 UTC 2016 - coolo@suse.com
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-indirect/Changes
+
+  0.37    2016-07-12 16:40 UTC
+          + Chg : A large chunk of boilerplate XS code, which is also used in
+                  other XS modules, has been factored out of the main .xs file
+                  to a collection of .h files in the xsh subdirectory.
+          + Fix : [RT #115392] : Intermittent segfaults with heredocs
+                  Heredocs should now be handled correctly.
+                  Thanks Graham Knop for reporting.
+
+-------------------------------------------------------------------
+Sat Jul 18 09:20:09 UTC 2015 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-indirect/Changes
+
+  0.36    2015-07-17 22:15 UTC
+          + Fix : [RT #104312] : fatal hides perl errors in modules
+                  no indirect 'fatal' will no longer hide compilation errors
+                  occurring before indirect constructs.
+                  Thanks Lukas Mai for reporting.
+
+-------------------------------------------------------------------
+Mon Apr 13 19:31:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-indirect/Changes
+
+  0.35    2015-04-06 22:20 UTC
+          + Fix : The module could end being disabled in one thread if it was
+                  first loaded in another thread and that thread was immediately
+                  terminated. This is now fixed and should address test failures
+                  of t//09-load-threads.t and t/42-threads-global.t.
+  
+  0.34    2015-04-02 19:50 UTC
+          + Chg : The new environment variable to enable thread tests on older
+                  perls is PERL_FORCE_TEST_THREADS. Note that this variable
+                  should only be turned on by authors.
+          + Fix : [RT #100068] : add link to historical tchrist post
+                  The link has been added to the documentation. Thanks Olivier
+                  Mengué for reporting.
+          + Fix : Segfaults when the module is loaded by several threads (or
+                  Windows emulated processes) ran in parallel.
+          + Fix : Update the Windows ActivePerl + gcc 3.4 workaround for
+                  ExtUtils::MakeMaker 7.04. Thanks Christian Walde for reporting
+                  and feedback on this issue.
+          + Fix : Be really compatible with the optional OP_PARENT feature.
+          + Tst : $ENV{$Config{ldlibpthname}} is now preserved on all platforms,
+                  which will address failures of t/41-threads-teardown.t and
+                  t/50-external.t with unusual compilers (like icc) that link all
+                  their compiled objects to their own libraries.
+  
+  0.33    2014-09-29 20:20 UTC
+          + Fix : [RT #99083] : Breaks eval in an END block in Win32 pseudo-forks.
+                  Thanks Graham Knop for reporting.
+          + Fix : Segfaults during global destruction of a thread or a
+                  pseudo-fork.
+  
+  0.32    2014-09-21 20:15 UTC
+          + Add : Support for the PERL_OP_PARENT optional feature introduced in
+                  perl 5.21.2.
+          + Fix : [RT #92806] : Tests that use run_perl() fail on Android
+                  Thanks Brian Fraser for the patch.
+          + Fix : indirect constructs will no longer segfault while inside
+                  the empty package on perl 5.8.x. This fix may also prevent
+                  some segfaults during global destruction.
+
+-------------------------------------------------------------------
+Sat Mar  1 06:48:22 UTC 2014 - coolo@suse.com
+
+- updated to 0.31
+         + Fix : [RT #88428] : no indirect in eval can trigger for direct calls
+                 on __PACKAGE__
+                 Thanks Graham Knop for reporting.
+         + Tst : Author tests are no longer bundled with this distribution.
+                 They are only made available to authors in the git repository.
+         + Fix : [RT #83806] : false positives with Devel::Declare
+                 [RT #83839] : false positive using ? : syntax
+                 Thanks Andrew Main for the patch.
+                 However, please note that the reason this patch seems to fix
+                 thinks has not been explained.
+         + Fix : [RT #84649] : incorrect RT link in metadata
+                 Thanks Karen Etheridge for reporting.
+         + Fix : [RT #83659] : false positives
+                 Proper method calls in string-like environments (like
+                 "@{[ $x->new ]}" will no longer be reported as indirect.
+                 This was a regression in 0.28.
+                 Thanks Andrew Main for reporting.
+         + Fix : Broken linkage on Windows with gcc 3.4, which appears in
+                 particular when using ActivePerl's default compiler suite.
+                 For those setups, the indirect shared library will now be
+                 linked against the perl dll directly (instead of the import
+                 library).
+         + Fix : [RT #83450] : newlines confuse indirect
+                 Perl sometimes resets the line buffer between the object and
+                 the method name (e.g. for "sort Class\n->method" outside of
+                 eval), and this could cause direct method calls to be reported
+                 as indirect.
+
+-------------------------------------------------------------------
+Sun Dec 11 09:30:10 UTC 2011 - coolo@suse.com
+
+- initial package 0.26
+    * created by cpanspec 1.78.06
+

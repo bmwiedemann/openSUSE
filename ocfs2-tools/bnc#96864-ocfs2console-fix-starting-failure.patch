@@ -1,0 +1,47 @@
+From 5cf4d29df66c9a539d686f7646a70cb312899f7f Mon Sep 17 00:00:00 2001
+From: Eric Ren <zren@suse.com>
+Date: Thu, 17 Mar 2016 11:15:25 +0800
+Subject: [PATCH] ocfs2console: fix starting failure
+
+ocfs2console failed to start with this errors:
+ImportError: /usr/lib64/python2.7/site-packages/ocfs2interface/o2cbmodule.so: undefined
+symbol: cmap_get_string
+ImportError: ocfs2console/ocfs2interface/o2cbmodule.so: undefined
+symbol: ocfs2_free
+
+The first is caused by commit: 9be25f2fadf7 (Get cluster list info from corosync);
+As for the second, actually, I don't know when it slipped in, but much likely from
+when someone use ocfs2_free somewhere.
+
+Signed-off-by: Eric Ren <zren@suse.com>
+---
+ ocfs2console/ocfs2interface/Makefile | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/ocfs2console/ocfs2interface/Makefile b/ocfs2console/ocfs2interface/Makefile
+index 5409455..f49d998 100644
+--- a/ocfs2console/ocfs2interface/Makefile
++++ b/ocfs2console/ocfs2interface/Makefile
+@@ -21,6 +21,10 @@ LIBO2CB_LIBS = -L$(TOPDIR)/libo2cb -lo2cb
+ endif
+ LIBO2CB_DEPS = $(TOPDIR)/libo2cb/libo2cb.a
+ 
++ifneq ($(BUILD_CMAP_SUPPORT),)
++LIBO2CB_LIBS += -lcmap
++endif
++
+ ifdef HAVE_BLKID
+ BLKID_DEPS =
+ else
+@@ -103,7 +107,7 @@ ocfs2module.so: $(OCFS2_OBJS) $(LIBOCFS2_DEPS) $(LIBO2DLM_DEPS) $(LIBO2CB_DEPS)
+ 	$(LINK) -shared $(LIBOCFS2_LIBS) $(LIBO2DLM_LIBS) $(LIBO2CB_LIBS) $(COM_ERR_LIBS) $(UUID_LIBS)
+ 
+ o2cbmodule.so: $(O2CB_OBJS) $(LIBO2CB_DEPS)
+-	$(LINK) -shared $(LIBO2CB_LIBS) $(COM_ERR_LIBS)
++	$(LINK) -shared ${LIBOCFS2_LIBS} $(LIBO2CB_LIBS) $(COM_ERR_LIBS)
+ 
+ install-pylib:
+ 	$(SHELL) $(TOPDIR)/mkinstalldirs $(DESTDIR)$(pyexecdir)/ocfs2interface
+-- 
+2.6.2
+

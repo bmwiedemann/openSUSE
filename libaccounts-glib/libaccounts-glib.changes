@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Nov  3 09:45:25 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * fix source url
+
+-------------------------------------------------------------------
+Thu Nov  2 23:08:51 UTC 2017 - buschmann23@opensuse.org
+
+- Update to 1.23
+  * Add a couple of methods related to .application files:
+    ag_manager_list_services_by_application() and
+    ag_application_supports_service().
+- Update to 1.22
+  * Lib: migrate to GTask
+  * Build: add support for lcov 1.12
+
+-------------------------------------------------------------------
+Wed Feb 24 10:54:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 1.21
+  * Support desktop-specific overrides for service and providers 
+    files: desktops can define service and providers files in
+    /usr/share/accounts/{providers,services}/$XDG_CURRENT_DESKTOP
+    and these would override any files having the same name in the 
+    parent (default) directory.
+  * Fixes
+
+- Drop upstream libaccounts-glib-ignore-deprecated-declarations.patch
+  no longer required
+
+
+-------------------------------------------------------------------
+Fri Dec 18 15:36:23 UTC 2015 - fcrozat@suse.com
+
+- Add libaccounts-glib-ignore-deprecated-declarations.patch: fix
+  build with latest glib2.
+
+-------------------------------------------------------------------
+Mon Oct 19 17:54:06 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.18:
+  * Python: Fix Accounts.Manager() constructor, which got broken
+    when version 1.17 was released.
+- Fix license.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Oct 30 22:42:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.17
+  * Allow instantiation of AgManager with no D-Bus
+  * Tests: increase timeout in test_store_locked_cancel
+  * AgManager: expose DB timeout parameters as properties
+  * Fix build with -Werror
+
+-------------------------------------------------------------------
+Tue Feb 18 12:06:27 UTC 2014 - tittiatcoke@gmail.com
+
+- Initial package based on version 1.16

@@ -1,0 +1,345 @@
+-------------------------------------------------------------------
+Wed Jul 17 16:01:20 UTC 2019 - trenn@suse.de
+
+- Add intel-speed-select tool (jsc#SLE-5364)
+A intel-speed-select-1.0.tar.bz2
+A intel-speed-select_remove_DATE_TIME.patch
+- Fix missing governors when running cpupower frequency-info (bsc#1117709)
+M rapl_monitor.patch
+
+-------------------------------------------------------------------
+Wed Jun  5 11:38:15 UTC 2019 - trenn@suse.de
+
+- jira#5244 Turbostat for Ice Lake
+- Remove very old cpufrequtils provides and requires (predecessor)
+- Update libcpupower description
+- Sidenote about fate#321274 - This feature is on the kernel side
+  and got wrongly mentioned in cpupower in a released product.
+
+-------------------------------------------------------------------
+Mon Apr  8 14:12:34 UTC 2019 - trenn@suse.de
+
+- Update to latest kernel HEAD sources
+  (5.1-rc4, 15ade5d2e7775667cf191cf2f94327a4889f8b9d)
+Patches included mainline:
+D cpupower_fix_compilation_and_sysfs_read_file_mess.patch
+D cpupower_bash-completion_for_cpupower_tool.patch
+Adjusted patches:
+M turbostat_makefile_fix_asm_header.patch
+M x86_perf_makefile_fix_asm_header.patch
+M rapl_monitor.patch
+M cpupower_rapl.patch
+
+-------------------------------------------------------------------
+Thu Dec  6 12:50:21 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Description updates.
+
+-------------------------------------------------------------------
+Thu Dec  6 09:33:55 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Run spec-cleaner
+- Don't disable as-needed, it works now.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:14:23 UTC 2018 - trenn@suse.de
+
+- Add bash completion for cpupower command (from mainline submit)
+A cpupower_bash-completion_for_cpupower_tool.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 12:50:20 UTC 2018 - trenn@suse.de
+
+- Fix static compilation and sysfs_read_file mess
+A cpupower_fix_compilation_and_sysfs_read_file_mess.patch
+
+-------------------------------------------------------------------
+Mon Oct  1 13:59:45 UTC 2018 - trenn@suse.de
+
+- Updating to latest 4.19(-rc6) kernel sources
+  Turbostat is increased to version 18.07.27 by this
+  Patches which got deleted because they are now mainline:
+D    turbostat_decode_MSR_IA32_MISC_ENABLE_only_on_Intel.patch
+D    turbostat_fix_man_perm.patch
+D    x86_perf_fix_man_permissions.patch
+
+-------------------------------------------------------------------
+Thu Jan 11 16:00:56 UTC 2018 - trenn@suse.de
+
+- Update cpupower to latest kernel version (version name 4.15, but
+  checked out against latest kernel tag 4.15-rc7. There will not
+  be important changes any more, maybe a fix).
+- cpu online/offline fixes
+- This is the first cpupower package (with updated version) which
+  includes x86_energy_perf_policy binary.
+  This is important for later package dependencies, namely tuned.
+A cpupower_exclude_kernel_Makefile.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 16:07:07 UTC 2018 - trenn@suse.de
+
+- Add x86_energy_perf_bias tool
+  This is a tool which is, same as turbostat, located in kernel sources here:
+  tools/power/x86/
+A x86_energy_perf_policy-17.05.11.tar.bz2
+A x86_perf_fix_man_permissions.patch
+A x86_perf_makefile_fix_asm_header.patch
+
+-------------------------------------------------------------------
+Fri Oct 20 15:09:15 UTC 2017 - trenn@suse.de
+
+fate#321274
+- Provide rapl domain info (cpupower powercap-info cmd)
+* Add: cpupower_rapl.patch
+- Provide rapl power monitoring
+* Add: rapl_monitor.patch
+
+-------------------------------------------------------------------
+Fri Oct  6 13:01:48 UTC 2017 - josef.moellers@suse.com
+
+- Added missing references.
+  [bsc#1041332,bsc#996052,bsc#976983]
+
+-------------------------------------------------------------------
+Thu Oct  5 14:52:11 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups. Replace old $RPM_ shell variables by macros.
+  Apply consistent styling to macros.
+
+-------------------------------------------------------------------
+Thu Oct  5 12:02:46 UTC 2017 - josef.moellers@suse.com
+
+- Enter decode_misc_enable_msr() only if genuine_intel.
+  [bsc#1048546,
+  turbostat_decode_MSR_IA32_MISC_ENABLE_only_on_Intel.patch]
+
+-------------------------------------------------------------------
+Wed May  3 11:13:53 UTC 2017 - trenn@suse.de
+
+- Update to latest mainline sources
+- turbostat changed versioning scheme (we now have version 17.04.12)
+
+-------------------------------------------------------------------
+Wed Mar 22 19:00:17 UTC 2017 - trenn@suse.de
+
+- Update cpupower and turbostat to latest kernel v4.10 sources
+D library_cleanup.patch
+- Change .c file header file modification, modify in Makefile instead:
+D turbostat_set_asm_header_fixed.patch
+A turbostat_makefile_fix_asm_header.patch
+- fate #320908: KBL: Turbostat for KBL H/S & U/Y
+- fate #321191: [KNL] turbostat reports to report corect MSR_TURBO_RATIO_LIMIT
+  information
+- fate #321193: [KNL] turbostat should report correct cpu clock values for
+  Knights Landing
+- fate #321285: turbostat support for Skylake-SP server
+- fate #321286: turbostat support for Harrisonville (Denverton SoC)
+- fate #321925: [HPC, KNM, kernel] turbostat support
+
+-------------------------------------------------------------------
+Thu Apr 28 12:28:09 UTC 2016 - trenn@suse.de
+
+- Update turbostat to version 4.12
+- Update cpupower to latest sources
+- Let turbostat only build against a local msr-index.h
+  Also add the msr-index.h export to the tarball from git repo script
+*Delete make_header_file_passable_from_outside.patch
+
+-------------------------------------------------------------------
+Wed Apr 20 13:16:43 UTC 2016 - trenn@suse.de
+
+- Add cpuidle functions to public libcpupower
+*Add library_cleanup.patch
+
+-------------------------------------------------------------------
+Tue Jan 26 17:29:27 UTC 2016 - trenn@suse.de
+
+- Move from kernel version to turbostat internal version for turbostat
+- Add latest turbostat sources (latest git commit: 30f05309bde492)
+- Adds Skylake, Broadwell and Knights Landing support for turbostat
+  (fate#319798, fate#319183, fate#319516)
+
+-------------------------------------------------------------------
+Wed Jan  6 10:22:14 UTC 2016 - jdelvare@suse.com
+
+- Drop dead link.
+- Fix Obsoletes statement, cpufrequtils package versions were
+  greater than cpupower package versions so we must obsolete all
+  versions of cpufrequtils.
+
+-------------------------------------------------------------------
+Wed Jan 28 18:18:52 UTC 2015 - trenn@suse.de
+
+- Make sources also build against 13.1 and older by providing
+  asm-index.h which is included in linux-glibc-devel in newer
+  distributions
+*Add turbostat_set_asm_header_fixed.patch
+
+-------------------------------------------------------------------
+Wed Jan 28 17:11:07 UTC 2015 - trenn@suse.de
+
+- Update cpupower and turbostat to latest git kernel HEAD version
+  this currently is 3.19-rc6, but it is expected that there are no
+  changes anymore and the version gets named 3.19 already.
+  The patches are already included mainline and get removed from osc:
+      cpupower_disable_by_latency.patch
+      add_idle_manpages_in_Makefile.patch
+      cpupower-always_try_to_load_msr_driver_as_root.patch
+      cpupower-return_zero_on_success.patch
+      cpupower-remove_mc_scheduler_bits.patch
+
+-------------------------------------------------------------------
+Wed Aug 13 13:06:27 UTC 2014 - trenn@suse.de
+
+- Fix cpupower_export_tarball_from_git.sh script and make sure msr-index.h
+  is included in the turbostat tarball.
+
+-------------------------------------------------------------------
+Tue Aug 12 13:49:16 UTC 2014 - trenn@suse.de
+
+- Update turbostat to latest 3.17 kernel version (in fact it is 3.16-rc7)
+  This fixes bnc#891523
+
+-------------------------------------------------------------------
+Tue Apr  1 12:31:14 UTC 2014 - trenn@suse.de
+
+- Do return 0 if cpupower info -b is called instead of the perf bias value
+  which is already printed to stdout.
+  Add cpupower-return_zero_on_success.patch
+- Remove mc and smt scheduler knobs. These do not exist anymore in latest
+  kernels for quite a while now.
+  Add cpupower-remove_mc_scheduler_bits.patch
+
+-------------------------------------------------------------------
+Mon Mar 31 15:27:14 UTC 2014 - trenn@suse.de
+
+- If root, try to load msr driver on x86 if /dev/cpu/0/msr is not avail
+  Add cpupower-always_try_to_load_msr_driver_as_root.patch
+
+-------------------------------------------------------------------
+Fri Mar 28 19:35:10 UTC 2014 - trenn@suse.de
+
+- Update to latest turbostat version (git 2d6e532279ddf30188d5fbd)
+  bnc#866862, bnc#869071, bnc#869809
+- Adjust MSR include path
+  add make_header_file_passable_from_outside.patch
+
+-------------------------------------------------------------------
+Fri Mar 28 19:05:46 UTC 2014 - trenn@suse.de
+
+- Fix Makefile: Install latest cpupower-idle-* manpages
+  Add add_idle_manpages_in_Makefile.patch
+
+-------------------------------------------------------------------
+Fri Mar 14 03:22:50 UTC 2014 - trenn@suse.de
+
+- Introduce idle state disable-by-latency and enable-all
+  Part of fate#316611
+  Add cpupower_disable_by_latency.patch
+
+-------------------------------------------------------------------
+Fri Feb 14 13:32:00 UTC 2014 - trenn@suse.de
+
+- turbostat is an x86 (in fact an Intel) only tool
+  exclude it for other archs to fix building of the package there again
+
+-------------------------------------------------------------------
+Fri Jan 31 15:48:18 UTC 2014 - trenn@suse.de
+
+- Update cpupower to latest kernel version (3.13-rc7, rc7 missed out,
+  there won't be any changes in cpupower anymore and obs does not like
+  -rc7 in version tag.
+- All patches are now included mainline, therefore:
+  Drop cpupower_make_get_idlestate_count_unsigned.patch
+  Drop cpupower_disable_cstates.patch
+  Drop introduce_cpupower_idle_set.patch
+  Drop cpupower-haswell_support.patch
+  Drop cpupower_hsw_special.patch
+- Add turbostat utility (fate#315666):
+  Add turbostat-3.13.tar.bz2
+  Add turbostat_fix_man_perm.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 08:55:52 UTC 2013 - trenn@suse.de
+
+- Add disable C-state capability and support for latest Haswell CPUs
+
+-------------------------------------------------------------------
+Fri May 31 15:57:02 UTC 2013 - varkoly@suse.com
+
+- Fix spec to avoid conflict with cpufrequtils-devel
+
+-------------------------------------------------------------------
+Wed Feb 13 14:57:44 UTC 2013 - trenn@suse.de
+
+- Add Haswell support
+
+-------------------------------------------------------------------
+Wed Jan 23 10:49:30 UTC 2013 - trenn@suse.de
+
+- Update to kernel version 3.7
+  * IvyBridge support integrated
+
+-------------------------------------------------------------------
+Tue Nov 13 11:26:27 UTC 2012 - trenn@suse.de
+
+- Rename SandyBridge monitor to IvyBridge if CPU is an IvyBridge
+
+-------------------------------------------------------------------
+Tue Nov 13 11:08:12 UTC 2012 - trenn@suse.de
+
+- Add ivy bridge processor (EP and EX) support
+
+-------------------------------------------------------------------
+Tue May  8 15:25:00 UTC 2012 - trenn@suse.de
+
+- Update to latest 3.4.rc6 kernel based version
+
+-------------------------------------------------------------------
+Wed Dec 21 10:03:28 UTC 2011 - aj@suse.de
+
+- Add cpupower_export_tarball_from_git.sh as source file.
+
+-------------------------------------------------------------------
+Tue Dec 20 13:22:00 UTC 2011 - trenn@suse.de
+
+- Add idle-info manpage
+- Fix two bugs: memleak in idle-info and wrong idle state count
+
+-------------------------------------------------------------------
+Thu Dec 15 10:58:25 UTC 2011 - trenn@suse.de
+
+- Update to 3.2-rc5 version (not much changed, includes the
+  use-manpage-on-help patch -> removed it)
+- Change licence from GPL-2.0+ to GPL-2.0 to fit the kernel
+  licence where sources are coming from
+- Provide a tiny script to quickly export and tar sources from
+  the git repo
+
+-------------------------------------------------------------------
+Thu Dec 15 10:38:07 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sat Sep 17 23:56:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 25 15:44:12 UTC 2011 - trenn@suse.de
+
+- Use manpages for help commands
+
+-------------------------------------------------------------------
+Mon May  2 12:31:50 UTC 2011 - trenn@suse.de
+
+- cpupower-bench obsoletes cpufrequtils-bench
+
+-------------------------------------------------------------------
+Thu Apr 21 15:28:55 UTC 2011 - trenn@suse.de
+
+- Initial commit of tools/power/cpupower directory from
+  linux-next kernel repository
+

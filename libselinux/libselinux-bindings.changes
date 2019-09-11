@@ -1,0 +1,358 @@
+-------------------------------------------------------------------
+Tue May 28 08:28:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133244).
+
+-------------------------------------------------------------------
+Fri May 24 11:22:19 UTC 2019 -  <jsegitz@suse.com>
+
+- Set License: to correct value (bsc#1135710)
+
+-------------------------------------------------------------------
+Wed Mar 20 15:05:35 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.9
+  * Add security_reject_unknown(3) man page
+  * Change matchpathcon usage to match with matchpathcon manpage
+  * Do not define gettid() if glibc >= 2.30 is used
+  * Fix RESOURCE_LEAK defects reported by coverity scan
+  * Fix line wrapping in selabel_file.5
+  * Do not dereference symlink with statfs in selinux_restorecon
+  * Fix overly strict validation of file_contexts.bin
+  * Fix selinux_restorecon() on non-SELinux hosts
+  * Fix the whatis line for the selinux_boolean_sub.3 manpage
+  * Fix printf format string specifier for uint64_t
+  * Fix handling of unknown classes/perms
+  * Set an appropriate errno in booleans.c
+- Dropped python3.patch, is now upstream
+
+-------------------------------------------------------------------
+Wed Oct 17 11:48:30 UTC 2018 - jsegitz@suse.com
+
+- Update to version 2.8 (bsc#1111732). 
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/RELEASE-20180524.txt
+- ran spec-cleaner on spec files
+
+-------------------------------------------------------------------
+Mon May 14 22:50:42 UTC 2018 - mcepl@cepl.eu
+
+- Update to version 2.7.
+    * %files needed to be heavily modified
+    * Based expressly on python3, not just python 
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
+
+-------------------------------------------------------------------
+Fri Mar 16 15:25:10 UTC 2018 - jsegitz@suse.com
+
+- Updated spec file to use python3. Added python3.patch to fix
+  build
+
+-------------------------------------------------------------------
+Fri Nov 24 09:09:02 UTC 2017 - jsegitz@suse.com
+
+- Update to version 2.6. Notable changes:
+  * selinux_restorecon: fix realpath logic
+  * sefcontext_compile: invert semantics of "-r" flag
+  * sefcontext_compile: Add "-i" flag
+  * Introduce configurable backends
+  * Add function to find security.restorecon_last entries
+  * Add openrc_contexts functions
+  * Add support for pcre2
+  * Handle NULL pcre study data
+  * Add setfiles support to selinux_restorecon(3)
+  * Evaluate inodes in selinux_restorecon(3)
+  * Change the location of _selinux.so
+  * Explain how to free policy type from selinux_getpolicytype()
+  * Compare absolute pathname in matchpathcon -V
+  * Add selinux_snapperd_contexts_path()
+  * Modify audit2why analyze function to use loaded policy
+  * Avoid mounting /proc outside of selinux_init_load_policy()
+  * Fix location of selinuxfs mount point
+  * Only mount /proc if necessary
+  * procattr: return einval for <= 0 pid args
+  * procattr: return error on invalid pid_t input
+- Dropped
+  * libselinux-2.2-ruby.patch 
+  * libselinux-proc-mount-only-if-needed.patch 
+  * python-selinux-swig-3.10.patch
+
+-------------------------------------------------------------------
+Wed Jul  5 10:30:57 UTC 2017 - schwab@suse.de
+
+- readv-proto.patch: include <sys/uio.h> for readv prototype
+
+-------------------------------------------------------------------
+Sun Jul 17 15:30:05 UTC 2016 - jengelh@inai.de
+
+- Update RPM groups, trim description and combine filelist entries.
+
+-------------------------------------------------------------------
+Thu Jul 14 07:59:04 UTC 2016 - jsegitz@novell.com
+
+- Adjusted source link
+
+-------------------------------------------------------------------
+Tue Jul  5 16:44:44 UTC 2016 - i@marguerite.su
+
+- add patch: python-selinux-swig-3.10.patch, fixed boo#985368
+  * swig-3.10 in Factory use importlib instead of imp to find
+    _selinux.so. imp searched the same directory as __init__.py
+    is while importlib searchs only standard paths. so we have
+    to move _selinux.so. fixed by upstream 
+- update version 2.5
+  * Add selinux_restorecon function
+  * read_spec_entry: fail on non-ascii
+  * Add man information about thread specific functions
+  * Don't wrap rpm_execcon with DISABLE_RPM with SWIG
+  * Correct line count for property and service context files
+  * label_file: fix memory leaks and uninitialized jump
+  * Replace selabel_digest hash function
+  * Fix selabel_open(3) services if no digest requested
+  * Add selabel_digest function
+  * Flush the class/perm string mapping cache on policy reload
+  * Fix restorecon when path has no context
+  * Free memory when processing media and x specfiles
+  * Fix mmap memory release for file labeling
+  * Add policy context validation to sefcontext_compile
+  * Do not treat an empty file_contexts(.local) as an error
+  * Fail hard on invalid property_contexts entries
+  * Fail hard on invalid file_contexts entries
+  * Support context validation on file_contexts.bin
+  * Add selabel_cmp interface and label_file backend
+  * Support specifying file_contexts.bin file path
+  * Support file_contexts.bin without file_contexts
+  * Simplify procattr cache
+  * Use /proc/thread-self when available
+  * Add const to selinux_opt for label backends
+  * Fix binary file labels for regexes with metachars
+  * Fix file labels for regexes with metachars
+  * Fix if file_contexts not '\n' terminated
+  * Enhance file context support
+  * Fix property processing and cleanup formatting
+  * Add read_spec_entries function to replace sscanf
+  * Support consistent mode size for bin files
+  * Fix more bin file processing core dumps
+  * add selinux_openssh_contexts_path()
+  * setrans_client: minimize overhead when mcstransd is not present
+  * Ensure selabel_lookup_best_match links NULL terminated
+  * Fix core dumps with corrupt *.bin files
+  * Add selabel partial and best match APIs
+  * Use os.walk() instead of the deprecated os.path.walk()
+  * Remove deprecated mudflap option
+  * Mount procfs before checking /proc/filesystems
+  * Fix -Wformat errors with gcc-5.0.0
+  * label_file:  handle newlines in file names
+  * Fix audit2why error handling if SELinux is disabled
+  * pcre_study can return NULL without error
+  * Only check SELinux enabled status once in selinux_check_access
+- changes in 2.4
+  * Remove assumption that SHLIBDIR is ../../ relative to LIBDIR
+  * Fix bugs found by hardened gcc flags
+  * Set the system to permissive if failing to disable SELinux because
+    policy has already been loaded
+  * Add db_exception and db_datatype support to label_db backend
+  * Log an error on unknown classes and permissions
+  * Add pcre version string to the compiled file_contexts format
+  * Deprecate use of flask.h and av_permissions.h
+  * Compiled file_context files and the original should have the same DAC
+    permissions
+-------------------------------------------------------------------
+Wed May 27 11:53:54 UTC 2015 - dimstar@opensuse.org
+
+- Update libselinux-2.2-ruby.patch: use RbConfig instead of
+  deprecated Config.
+
+-------------------------------------------------------------------
+Sun May 18 00:15:17 UTC 2014 - crrodriguez@opensuse.org
+
+- Update to version 2.3 
+* Get rid of security_context_t and fix const declarations.
+* Refactor rpm_execcon() into a new setexecfilecon() from Guillem Jover.
+
+-------------------------------------------------------------------
+Thu Oct 31 13:43:41 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2
+  * Fix avc_has_perm() returns -1 even when SELinux is in permissive mode.
+  * Support overriding Makefile RANLIB
+  * Update pkgconfig definition
+  * Mount sysfs before trying to mount selinuxfs.
+  * Fix man pages
+  * Support overriding PATH  and LIBBASE in Makefile
+  * Fix LDFLAGS usage
+  * Avoid shadowing stat in load_mmap
+  * Support building on older PCRE libraries
+  * Fix handling of temporary file in sefcontext_compile
+  * Fix procattr cache
+  * Define python constants for getenforce result
+  * Fix label substitution handling of /
+  * Add selinux_current_policy_path from
+  * Change get_context_list to only return good matches
+  * Support udev-197 and higher
+  * Add support for local substitutions
+  * Change setfilecon to not return ENOSUP if context is already correct
+  * Python wrapper leak fixes
+  * Export SELINUX_TRANS_DIR definition in selinux.h
+  * Add selinux_systemd_contexts_path
+  * Add selinux_set_policy_root
+  * Add man page for sefcontext_compile
+- Remove libselinux-rhat.patch; merged on upstream
+- Adapt libselinux-ruby.patch to upstream changes
+- Use fdupes to symlink duplicate manpages
+
+-------------------------------------------------------------------
+Thu Jun 27 14:57:53 UTC 2013 - vcizek@suse.com
+
+- change the source url to the official 2.1.13 release tarball
+
+-------------------------------------------------------------------
+Wed Jan 30 12:33:45 UTC 2013 - vcizek@suse.com
+
+- update to 2.1.12
+- added BuildRequires: pcre-devel
+
+-------------------------------------------------------------------
+Mon Jan  7 22:34:03 UTC 2013 - jengelh@inai.de
+
+- Remove obsolete defines/sections
+
+-------------------------------------------------------------------
+Wed Jul 25 11:15:02 UTC 2012 - meissner@suse.com
+
+- updated to 2.1.9 again (see below)
+
+-------------------------------------------------------------------
+Fri Jun  1 18:34:04 CEST 2012 - mls@suse.de
+
+- update to libselinux-2.1.9
+  * better man pages
+  * selinux_status interfaces
+  * simple interface for access checks
+  * multiple bug fixes
+- fix build for ruby-1.9
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Feb 25 14:57:16 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.0.91
+  * changes too numerous to list
+
+-------------------------------------------------------------------
+Sat Dec 12 16:43:54 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Jul 24 17:09:50 CEST 2009 - thomas@novell.com
+
+- updated selinux-ready script
+
+-------------------------------------------------------------------
+Wed Jul 22 15:17:25 CEST 2009 - prusnak@suse.cz
+
+- change libsepol-devel to libsepol-devel-static in dependencies
+  of python bindings
+
+-------------------------------------------------------------------
+Wed Jul  1 12:26:48 CEST 2009 - prusnak@suse.cz
+
+- put libsepol-devel back to Requires of libselinux-devel
+
+-------------------------------------------------------------------
+Mon Jun 29 21:24:16 CEST 2009 - prusnak@suse.cz
+
+- added selinux-ready tool to selinux-tools package
+
+-------------------------------------------------------------------
+Tue Jun  9 20:17:54 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries
+- libselinux-devel does not require libsepol-devel
+
+-------------------------------------------------------------------
+Wed May 27 14:06:14 CEST 2009 - prusnak@suse.cz
+
+- updated to 2.0.80
+  * deny_unknown wrapper function from KaiGai Kohei
+  * security_compute_av_flags API from KaiGai Kohei
+  * Netlink socket management and callbacks from KaiGai Kohei
+  * Netlink socket handoff patch from Adam Jackson
+  * AVC caching of compute_create results by Eric Paris
+  * fix incorrect conversion in discover_class code
+
+-------------------------------------------------------------------
+Fri Apr 17 17:12:06 CEST 2009 - prusnak@suse.cz
+
+- fixed memory leak (memleak.patch)
+
+-------------------------------------------------------------------
+Wed Jan 14 14:04:30 CET 2009 - prusnak@suse.cz
+
+- updated to 2.0.77
+  * add new function getseuser which will take username and service
+    and return seuser and level; ipa will populate file in future
+  * change selinuxdefcon to return just the context by default
+  * fix segfault if seusers file does not work
+  * strip trailing / for matchpathcon
+  * fix restorecon python code
+
+-------------------------------------------------------------------
+Mon Dec  1 11:32:50 CET 2008 - prusnak@suse.cz
+
+- updated to 2.0.76
+  * allow shell-style wildcarding in X names
+  * add Restorecon/Install python functions
+  * correct message types in AVC log messages
+  * make matchpathcon -V pass mode
+  * add man page for selinux_file_context_cmp
+  * update flask headers from refpolicy trunk
+
+-------------------------------------------------------------------
+Wed Oct 22 16:28:59 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Tue Sep 23 12:51:10 CEST 2008 - prusnak@suse.cz
+
+- require only version, not release [bnc#429053]
+
+-------------------------------------------------------------------
+Tue Sep  2 12:09:22 CEST 2008 - prusnak@suse.cz
+
+- updated to 2.0.71
+  * Add group support to seusers using %groupname syntax from Dan Walsh.
+  * Mark setrans socket close-on-exec from Stephen Smalley.
+  * Only apply nodups checking to base file contexts from Stephen Smalley.
+  * Merge ruby bindings from Dan Walsh.
+
+-------------------------------------------------------------------
+Mon Sep  1 07:35:00 CEST 2008 - aj@suse.de
+
+- Fix build of debuginfo.
+
+-------------------------------------------------------------------
+Fri Aug 22 14:45:29 CEST 2008 - prusnak@suse.cz
+
+- added baselibs.conf file
+- split bindings into separate subpackage (libselinux-bindings)
+- split tools into separate subpackage (selinux-tools)
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:20 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Tue Jul 15 16:26:31 CEST 2008 - prusnak@suse.cz
+
+- initial version 2.0.67
+  * based on Fedora package by Dan Walsh <dwalsh@redhat.com>
+

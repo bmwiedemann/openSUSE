@@ -1,0 +1,12 @@
+--- a/setup.py
++++ b/setup.py
+@@ -2,9 +2,6 @@
+ import os
+ import re
+ 
+-import ez_setup
+-ez_setup.use_setuptools()
+-
+ from setuptools import setup, Extension, find_packages
+ 
+ 

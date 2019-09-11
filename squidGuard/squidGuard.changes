@@ -1,0 +1,296 @@
+-------------------------------------------------------------------
+Mon Jul  8 12:49:28 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Use "su" directive in logrotate conf file (boo#1104856)
+- Set user write permissions on /var/lib/squidGuard/db/blacklist
+  (boo#1140722)
+- Get rid of SysV init call in postrotate script  
+
+-------------------------------------------------------------------
+Wed Feb 28 12:29:06 UTC 2018 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 28 10:12:20 UTC 2018 - adam.majer@suse.de
+
+- remove patches that modify generated code instead of template.
+  They are already in the template and are unnedded.
+  + squidGuard-trailing_dot.patch
+  + squidGuard-unusual_url_end.patch
+- update patches removing parts that update generated code
+  + squidGuard-1.4_upgrade.patch
+  + type_fixes.patch
+- remove generated code before applying patches
+- use SPDX 3.0 license and install it correctly
+  squidGuard is GPL-2.0-only
+
+-------------------------------------------------------------------
+Thu Feb 15 11:13:36 UTC 2018 - adam.majer@suse.de
+
+- Enable LDAP support (bnc#1081012)
+- type_fixes.patch: Actually define functions so use use correct
+  pointer sizes on 64-bit arches once LDAP support is enabled.
+- Minor specfile and description cleanup
+- Fix building on SLE12 by removing useless BR: on lynx
+
+-------------------------------------------------------------------
+Wed Oct  4 14:13:11 UTC 2017 - adam.majer@suse.de
+
+- Merge SLE changes into Factory
+
+-------------------------------------------------------------------
+Thu Jun 29 12:03:06 UTC 2017 - adam.majer@suse.de
+
+- default_config_pathfixes.patch:
+  reference only existing filter lists in default installed config
+  (bnc#961499)
+
+-------------------------------------------------------------------
+Mon Jun 20 11:29:28 UTC 2016 - adam.majer@suse.de
+
+- add xss_fix_02_2015.patch:
+  o fix XSS possibility in blocked error page by escaping all
+    < and > in the printed url (CVE-2015-8936, bnc#985612)
+- fix URL in README so it doesn't point at non-existent page
+
+-------------------------------------------------------------------
+Tue Mar 10 17:09:20 UTC 2015 - ecsos@opensuse.org
+
+- fix squid 3.4 error witch patch squidGuard-1.4_upgrade.patch
+  see http://bugs.squid-cache.org/show_bug.cgi?id=3978 (bnc#1040757)
+
+-------------------------------------------------------------------
+Sat Mar  7 12:35:59 UTC 2015 - ecsos@opensuse.org
+
+- fix permissions for blacklist, conf, dbhome and logdir, 
+  so other tools like squidguardmanager can access
+
+-------------------------------------------------------------------
+Wed Sep 24 08:00:04 UTC 2014 - pgajdos@suse.com
+
+- SuSE -> SUSE [bnc#889003]
+
+-------------------------------------------------------------------
+Thu Oct 14 13:14:50 UTC 2010 - puzel@novell.com
+
+- fix squidGuard-CVE-2009-3826.patch patch 
+
+-------------------------------------------------------------------
+Thu Jul 29 12:42:25 UTC 2010 - puzel@novell.com
+
+- add squidGuard-CVE-2009-3700.patch,
+  squidGuard-CVE-2009-3826.patch (bnc#550930)
+
+-------------------------------------------------------------------
+Wed Jul 14 11:43:22 CEST 2010 - ro@suse.de
+
+- add "missingok" to logrotate configuration
+  (no logfile if never used causing error from cron when
+   running logrotate) 
+
+-------------------------------------------------------------------
+Wed Oct 14 16:08:49 UTC 2009 - chris@computersalat.de
+
+- fixed deps for SLES_9
+  o Unknown tag: Recommends:
+
+-------------------------------------------------------------------
+Sat Oct 10 22:31:29 CEST 2009 - chris@computersalat.de
+
+- fix deps
+  o PreReq: http_proxy
+  o osc meta -e prjconf Prefer: squid3
+
+-------------------------------------------------------------------
+Fri Oct  9 18:27:01 CEST 2009 - chris@computersalat.de
+
+- fixed lost mods from kssingvo 20070702
+  o "Requires: http_proxy"  now, as squid3 is an alternative
+- spec
+  o sorted TAGS
+- rpmlint
+  o non-utf8-spec-file
+
+-------------------------------------------------------------------
+Sat Sep 26 23:35:58 CEST 2009 - lrupp@suse.de
+
+- update to 1.4:
+  + some fixes
+  + Added MySQL support for authentication. The database is
+    assumed to be configured on localhost.
+  + Fixed configure.in to comply with the autoconf standard
+  + Fixed broken "make test"
+  + Added new runtime parameter "-P". This parameter changes
+    the default behaviour from stop (emergency mode) to pass
+    when an error in building the database files occurs. So
+    this parameter only works in connection with the runtime
+    paramter "-C". Before using "-P" in your environment
+    make sure that nothing breakes when the building of the
+    db files fail.
+  + Added Spanish translation to squidGuard.cgi
+- enabled --nolog option
+- enabled mysql auth
+- removed squidGuard-1.3-bl_less_noise.patch (upstream)
+- adapted squidGuard-1.3-config.patch 
+- split up doc package
+- package the cgi scripts (and babel files) in /srv/www/cgi-bin
+- package blocked.gif in /srv/www/htdocs/images
+- added squidGuard.logrotate script
+
+-------------------------------------------------------------------
+Tue Jul 22 17:57:45 CEST 2008 - kssingvo@suse.de
+
+- added latest upstream patch (20080714) as two individual patches:
+  * fix for squid complaining about progress bar 
+  * fix if URL was requested which ends with "://"
+
+-------------------------------------------------------------------
+Wed Jul  2 19:28:36 CEST 2008 - kssingvo@suse.de
+
+- added latest upstream patch (20080613) as trailing_dot.patch
+- "Requires: http_proxy"  now, as squid3 is an alternative
+
+-------------------------------------------------------------------
+Thu Nov 29 12:10:44 CET 2007 - kssingvo@suse.de
+
+- update to version 1.3:
+  * Included configurable logging. New configure option --nolog
+    suppress all runtime logmessages. Start and stop is still
+    logged. Default behaviour is now to log the non debug
+    messages except when the runtime option -d is supplied to
+    squidGuard. May need some more finetuning in later versions.
+    (bug 11) Made some slight changes to the outdated FAQ file.
+  * Modified auth code to work with and without ldap (choosing
+    subroutine rfc1738_unescape or sgFindUser in sg.y.in)
+  * Corrected include statement in sg.h.in.
+  * Added patch by Marc Clayton to include a progressbar to the
+    build of the database files (bug 6).
+  * Added patch by Eric Harrison to enable full sed compliance to
+    rewrite statements (bug 7).
+  * Corrected missing evaluation of configure parameters for
+    logdir, dbhome and config file (bug 11).
+  * Added patch from satish to block urls entries that include
+    hostnames (bug 4).
+  * Fixed broken regex evaluation (bug 12)
+  * Fixed a compile problem on some systems (bug 10).
+  * Corrected an issue with the fix for the double slash
+    vulnerability (incorrectly found double slashes) (bug 1). 
+- fixed build/config issues
+
+-------------------------------------------------------------------
+Wed Jul  4 20:51:16 CEST 2007 - kssingvo@suse.de
+
+- fixes from upstream:
+  * double slash bug fix extracted from Patch-20070513 tarball
+  * regexp bug fix extracted from Patch-20070520 tarball
+  * compiler bug fix extracted from Patch-20070520 tarball
+
+-------------------------------------------------------------------
+Thu May 10 15:53:47 CEST 2007 - kssingvo@suse.de
+
+- upgrade to version 1.2.1:
+  * Fixed multiple slash bypass vulnerabilty.
+  * Fixed some bugs in squidGuard-simple.cgi and added a
+    German version of it.
+  * Fixed encoding bypass vulnerabilty.
+  * Updated y.tab.c.bison and y.tab.h.bison to the recent version.
+  * Fixed bug in user authentication.
+  * Fixed some typos which broke compilation on Sun Solaris
+    when using the Sun CC compiler.
+  * Corrected unproper evaluated if-clause, which broke the
+    BerkeleyDB 2 compatibility.
+  * Fixed minor typo in samples/Makefile.in.
+  * Replaced the sleepycat links from the configure program with
+    the oracle links.
+  * Corrected typo in Makefile.in.
+  * Removed a stupid bug from the Makefile in the docs directory.
+  * Removed references to squidguard.org in Makefile.in in the
+    Doc directory (squidguard.org is down).
+  * Added ISSUES.txt file about known problem with the current
+    code (any information that is missing and should go in there
+    is gladly welcomed).
+  * Release now supports LDAP queries for authentication:
+  * Added Chris Frey's ldap patches and fixes (03, 05, 06,
+    07 and 10; Patches from:
+    http://www.netdirect.ca/software/category.php?cat=SquidGuard).
+  * The LDAP feature can be included during the configure run
+    by setting --with-ldap. 
+  * Added a fix provided by Francesco Ranieri to solve an issue
+    with the (un)escaping of the authentication "domain%5cusername".
+- adapted configuration related patches
+
+-------------------------------------------------------------------
+Thu Mar 29 16:22:05 CEST 2007 - rguenther@suse.de
+
+- add bison and flex BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:52:56 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Thu Apr 29 01:42:53 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Jun 25 11:53:46 CEST 2003 - kssingvo@suse.de
+
+- fixed db->open() call, like Thorsten suggested
+
+-------------------------------------------------------------------
+Tue Feb  4 15:52:39 CET 2003 - kssingvo@suse.de
+
+- made pathes FHS 2.2 clean
+
+-------------------------------------------------------------------
+Thu Aug  1 12:17:27 CEST 2002 - kssingvo@suse.de
+
+- added README.SuSE (as suggest in bugzilla #16670)
+
+-------------------------------------------------------------------
+Mon Jul  8 09:19:42 CEST 2002 - kukuk@suse.de
+
+- Fix to build without existing squid user
+- Add squid to PreRequires.
+
+-------------------------------------------------------------------
+Wed Jun 26 01:43:16 CEST 2002 - ro@suse.de
+
+- fix directory permissions 
+
+-------------------------------------------------------------------
+Wed Jan  9 18:07:07 CET 2002 - ro@suse.de
+
+- use db package (update to 1.2.0 to make it compile)
+
+-------------------------------------------------------------------
+Wed Sep 26 13:36:20 CEST 2001 - bjacke@suse.de
+
+- use buildroot
+- correct permissions in /var/squidGuard
+- rename squigrd -> squidGuard
+
+-------------------------------------------------------------------
+Tue Apr 10 17:54:51 CEST 2001 - ro@suse.de
+
+- added group tag 
+
+-------------------------------------------------------------------
+Wed Jun 28 11:59:01 CEST 2000 - bodammer@suse.de
+
+- installing a useable test configuration
+
+-------------------------------------------------------------------
+Fri Jun 23 14:15:29 CEST 2000 - bodammer@suse.de
+
+- initial package of squidGuard Version 1.1.4
+
+

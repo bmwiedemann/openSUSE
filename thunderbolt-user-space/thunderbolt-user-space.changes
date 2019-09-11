@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Mar 15 17:10:03 CET 2018 - ndas@suse.de
+
+- fate reference: this package needed for thunderbolt support in 
+  SLE12SP4 (fate#325100)
+
+-------------------------------------------------------------------
+Fri Feb 23 13:31:10 CET 2018 - ndas@suse.de
+
+- Updated to 0.9.3
+    *xdomain: added loading Thunderbolt networking driver automatically on XDomain connection
+    *tbtadm: added peers command and XDomain is now shown in the topology output
+    *tbtadm: added add command for adding to ACL database without approve command
+    *tbtadm: fixed adding to ACL database in security level 0
+    *tbtadm: fixed Coverity error reformatting string array initialization
+    *tbtadm: fixed multi-controller topology tree
+    *tbtadm: improved readability of console output
+    *tests: added automatic testing in umockdev simulated environment with docker
+    *build: remove unneeded libboost-program-options dependency
+
+-------------------------------------------------------------------
+Tue Oct 17 17:16:10 CEST 2017 - ndas@suse.de
+
+- Do not pull boost-devel on Factory (bsc#1062800)
+
+-------------------------------------------------------------------
+Tue Oct 10 17:27:53 CEST 2017 - ndas@suse.de
+
+- Add missing rpm group
+
+-------------------------------------------------------------------
+Mon Oct  9 14:34:47 CEST 2017 - ndas@suse.de
+
+- Minor version release with new command (approve), 
+  new flag (--once), bash completion and more improvements and fixes.
+
+-------------------------------------------------------------------
+Mon Oct  2 11:12:15 UTC 2017 - jengelh@inai.de
+
+- Redo description to describe the package, not the protocol.
+
+-------------------------------------------------------------------
+Thu Sep 14 10:57:20 CEST 2017 - ndas@suse.de
+
+- Initial version 0.9.1 (fate#324014)

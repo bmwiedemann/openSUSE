@@ -1,0 +1,305 @@
+-------------------------------------------------------------------
+Tue Jul 30 19:59:33 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.3.5
+  * Add detectPlatform to always use wayland in a wayland session
+  * i18n: fix extraction of nautilus extension
+  * Don't update new notifications
+  * Install desktop file for kdeconnectd
+  * [sftp] Fix error message wording
+  * Change plugin name
+  * [sftp] Give better error messages for common errors
+  * [sftp] Improve error reporting
+  * Use KAboutData to set information about the daemon
+  * Disable session management
+  * Print socket error when connection fails
+  * [kio] Mount device during stat if necessary
+  * [backends/lan] Don't fail silently when a UDP packet could not
+    be unserialized
+  * Fix crash in daemon
+  * Fix crash in notifications plugin (kde#400010)
+  * Don't show multiple windows when replying to a notification
+- Drop Leap 42.3 specific patches, it's no longer supported:
+  * 0001-Fix-build-on-Leap-42.3.patch
+  * 0001-Revert-Retry-the-network-packet-if-it-failed-to-unse.patch
+- Don't install SuSEfirewall2 file on Tumbleweed anymore, Sf2 has
+  been dropped
+
+-------------------------------------------------------------------
+Mon Apr  1 22:28:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Mon Mar 25 15:00:43 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.3.4
+  * Always play when call ended (kde#400787)
+  * [cli] Show all reachable devices (kde#402088)
+  * [sftp] Get device ID from URL
+  * Retry the network packet if it failed to unserialize
+  * Fix sending keys via CLI
+  * [kio] Fix file browsing with non-KIO file managers
+- Run spec-cleaner
+- Refresh 0001-Fix-build-on-Leap-42.3.patch
+- Add 0001-Revert-Retry-the-network-packet-if-it-failed-to-unse.patch
+  to make it build on Leap 42.3
+- Drop Provides/Obsoletes for kdeconnect-kde-devel, that package
+  doesn't exist anymore since 2015 and nothing should need it
+
+-------------------------------------------------------------------
+Wed Nov 14 22:10:19 UTC 2018 - wbauer@tmo.at
+
+- Add 0001-Fix-build-on-Leap-42.3.patch to make it build on Leap
+  42.3
+
+-------------------------------------------------------------------
+Wed Nov  7 15:30:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 1.3.3
+  * Instantiate QApplication object to fix crash on KDE Neon
+    (kde#400178)
+  * Fix build failure on musl based systems (kde#395161)
+
+-------------------------------------------------------------------
+Thu Oct 18 20:47:55 UTC 2018 - wbauer@tmo.at
+
+- Update to 1.3.2
+  * Also allow modern algorithms, for compat with future apps
+  * Remove characters from UUID that aren't legal in URLs
+  * Add new notifications at the top of the list
+  * Change the 'Dismiss all notifications' icon
+  * Fix DBus signals in Mprisremote
+
+-------------------------------------------------------------------
+Fri Jun  1 08:28:46 UTC 2018 - wbauer@tmo.at
+
+- Update to 1.3.1
+  * Fix a bug that would hang Nautilus when copying a file if
+    paired devices were available
+  * Fix remote filesystem reconnection issue
+  * Add a missing dependency check in cmake
+  * Add missing notification category to the plasmoid
+- Mark license file with %license instead of %doc
+
+-------------------------------------------------------------------
+Mon Apr  9 12:40:29 UTC 2018 - kamikazow@opensuse.org
+
+- Update to 1.3.0
+  * Fixed frequent crash when receiving notifications
+  * Fixed MPRIS player entries never being deleted
+  * Added a Gnome Files (Nautilus) extension to send files from the
+    context menu
+  * Added handling of "tel:" links with KDE Connect
+  * Support sending album art in MPRIS plugin
+  * Allow sharing more than one file from the CI (eg: --share *.mp3)
+- Remove patches, now upstream:
+  * 0001-Fix-null-dereference.patch
+- Modified wording in Description to match that KDE Connect
+  runs under any Linux desktop (see upstream README.md file)
+
+-------------------------------------------------------------------
+Tue Feb 20 15:47:11 UTC 2018 - alarrosa@suse.com
+
+- Add 0001-Fix-null-dereference.patch to fix a null dereference. 
+
+- Add signature file kdeconnect-kde-v1.2.1.tar.xz.sig
+
+-------------------------------------------------------------------
+Thu Jan 18 16:38:28 UTC 2018 - wbauer@tmo.at
+
+- Update to 1.2.1
+  * Require the latest version of KF5
+  * Was getting a double-delete, now it won't crash
+  * Get rid of ProcessRunner
+  * Add album art to mpris network packets
+  * Add title, artist and album to MPRIS network packets
+  * Fix information leak via /tmp (kde#383144)
+  * Add support for new Android 2.3 (API 9+) cipher
+  * Fix kdeconnect-cli device list
+  * Fix "error activiting kdeconnectd" for kdeconnect-cli
+  * Delay kdeconnectd autostart phase
+  * Fix Notifications in Plasmoid
+  * Make sure there's not a path within the filename
+  * share plugin: fix path display
+  * Use pactl instead of KMix in PauseMusic Plugin
+- needs KDE Frameworks 5.42 now
+
+-------------------------------------------------------------------
+Sun Oct  1 15:43:40 UTC 2017 - wbauer@tmo.at
+
+- Update to 1.2.0
+- Update build requirements, it needs Qt 5.7 and KF 5.38 now
+- Remove patches, now upstream:
+  * 0001-Treat-device-names-as-plaintext-not-rich-text.patch
+
+-------------------------------------------------------------------
+Wed Jul 12 09:24:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix unauthenticated HTML injection (kde#382243):
+  * 0001-Treat-device-names-as-plaintext-not-rich-text.patch
+
+-------------------------------------------------------------------
+Fri Dec 23 10:41:07 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.0.3
+
+-------------------------------------------------------------------
+Sat Nov 12 13:56:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 1.0.2
+
+-------------------------------------------------------------------
+Wed Sep 21 17:42:05 UTC 2016 - wbauer@tmo.at
+
+- Update to 1.0.1
+  * fixes some issues found in 1.0
+- Drop upstreamed fix-build-with-older-qt.patch
+
+-------------------------------------------------------------------
+Wed Sep  7 10:19:34 UTC 2016 - wbauer@tmo.at
+
+- Add fix-build-with-older-qt.patch from upstream to make it
+  compile with Qt < 5.6, and lower the Qt requirement to 5.2 again
+  (as demanded by CMakeLists.txt)
+
+-------------------------------------------------------------------
+Fri Aug 26 22:28:10 UTC 2016 - herbert@graeber-clan.de
+
+- Add firewalld service file
+
+-------------------------------------------------------------------
+Fri Aug 26 19:26:49 UTC 2016 - fabian@ritter-vogt.de
+
+- Build docs again
+- Require at least Qt 5.6
+
+-------------------------------------------------------------------
+Fri Aug 26 19:14:41 UTC 2016 - lbeltrame@kde.org
+
+- New upstream version 1.0
+  * Trigger custom commands from phone
+  * Reply to SMS messages from the desktop
+  * Receive desktop notifications on phone
+  * TLS encryption 
+
+-------------------------------------------------------------------
+Mon Feb  1 17:30:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 0.9g
+  * No changelog provided
+- Drop upstreamed 0001-This-syntax-also-works-on-older-OpenSSH-versions.patch
+
+-------------------------------------------------------------------
+Thu Jan 14 11:43:42 UTC 2016 - alarrosa@suse.com
+
+- Add 0001-This-syntax-also-works-on-older-OpenSSH-versions.patch from
+  upstream to be compatible with older openssh versions (bnc#961554)
+
+-------------------------------------------------------------------
+Mon Nov 30 10:26:53 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 0.9f
+  * Adds translations
+- Update to 0.9
+  * KF5 version
+
+-------------------------------------------------------------------
+Fri Feb 20 19:30:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 0.8
+  * No changelog provided
+
+-------------------------------------------------------------------
+Mon Jan 12 19:47:20 UTC 2015 - tittiatcoke@gmail.com
+
+- Add Requires:  sshfs  to make it work.
+
+-------------------------------------------------------------------
+Thu Oct 16 09:30:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.7.3:
+   * No changelog provided
+
+-------------------------------------------------------------------
+Fri Sep 12 21:12:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.7.2:
+   * No changelog provided
+
+-------------------------------------------------------------------
+Tue Jul  1 17:04:14 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.7.1:
+  * Touchpad allows to scroll with 2 fingers, middle and right click.
+  * Minor fixes.
+
+-------------------------------------------------------------------
+Sat Jun 28 10:35:33 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.7:
+  * Use phone as cursor controller.
+  * Allow android phone to receive files from PC.
+  * Many bug fixes.
+  * Translation available in 25 languages.
+
+-------------------------------------------------------------------
+Fri May 16 21:45:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.5.2.1
+  * New upstream release, no changelog provided
+
+-------------------------------------------------------------------
+Sun Mar  9 17:58:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.5.1
+  * New upstream release, no changelog provided
+
+-------------------------------------------------------------------
+Sat Feb 22 20:59:10 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.5.
+- Build language package.
+
+-------------------------------------------------------------------
+Sat Dec 21 22:16:38 UTC 2013 - fisiu@opensuse.org
+
+- Add kdeconnect-kde.SuSEfirewall: config file for SuSEfirewall2.
+
+-------------------------------------------------------------------
+Fri Dec 20 13:59:29 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.4.2:
+  * Plasmoid now displays the devices' battery.
+  * Added standalone binary to run kdeconnect without kded.
+  * Added a config dialog to pausemusic plugin.
+  * Share plugin changed name.
+  * The battery percentage for low battery level is now signaled by the device.
+
+-------------------------------------------------------------------
+Mon Nov 11 18:02:46 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.4.1
+  * New feature release, no changelog provided
+
+-------------------------------------------------------------------
+Tue Nov  5 00:47:03 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.4
+  * New feature release, no changelog provided
+- Remove lang tar, translations removed also from tar
+- BuildRequire libqjson-devel >= 0.8, as it doesn't build with older
+  QJson
+
+-------------------------------------------------------------------
+Thu Oct  3 17:27:14 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.3
+  * New feature release
+- Added lang tarball
+
+-------------------------------------------------------------------
+Mon Sep  9 09:00:27 UTC 2013 - toddrme2178@gmail.com
+
+- Initial version (0.1)
+

@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# xbm2face
+# convert an X11 bitmap to a Blit ikon bitmap, and then to a face
+# compressed bitmap for use in the mail X-Face header. Requires some
+# bitmap filters from the pbmplus package, and the compface program
+# from the faces package.
+#
+# Anthony Thyssen 17 Dec 1993 anthony@cit.gu.edu.au
+#
+xbmtopbm "$@" | pbmtoicon |
+sed -e 1,2d -e '$s/$/,/' |
+tr -d '\011\012' | tr ',' '\012' |
+pr -l1 -t -w22 -3 -s, |
+sed -e 's/$/,/' -e 's/\(0x....\)\(0x....\)\(0x....\),/\1,\2,\3,/' |
+compface

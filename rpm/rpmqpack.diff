@@ -1,0 +1,114 @@
+--- ./Makefile.am.orig	2017-12-01 15:04:09.723014378 +0000
++++ ./Makefile.am	2017-12-01 15:04:13.396003910 +0000
+@@ -187,6 +187,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
+ 
+ dist_bin_SCRIPTS =	scripts/gendiff
+ 
++bin_PROGRAMS +=		rpmqpack
++rpmqpack_SOURCES =      rpmqpack.c
++rpmqpack_LDADD =        lib/librpm.la
++
+ rpmconfig_DATA = rpmrc
+ rpmrc: $(top_srcdir)/rpmrc.in
+ 	@$(SED) \
+--- ./doc/Makefile.am.orig	2017-12-01 15:04:13.397003907 +0000
++++ ./doc/Makefile.am	2017-12-01 15:04:42.681920389 +0000
+@@ -8,7 +8,7 @@ EXTRA_DIST += $(man_man1_DATA)
+ 
+ man_man8dir = $(mandir)/man8
+ man_man8_DATA = rpm.8 rpm-misc.8 rpmbuild.8 rpmdeps.8 rpmgraph.8 rpm2cpio.8
+-man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8
++man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmqpack.8
+ man_man8_DATA += rpm-plugin-systemd-inhibit.8
+ EXTRA_DIST += $(man_man8_DATA)
+ 
+--- ./doc/rpmqpack.8.orig	2017-12-01 15:04:13.397003907 +0000
++++ ./doc/rpmqpack.8	2017-12-01 15:04:13.397003907 +0000
+@@ -0,0 +1,25 @@
++.TH RPMQPACK 8 "Mar 2002"
++.SH NAME
++rpmqpack \- check for installed rpm packages
++
++.SH SYNOPSIS
++.B rpmqpack
++.RI [ pack1 "] [" pack2 ]...
++
++.SH DESCRIPTION
++rpmqpack checks if packages given as arguments are installed in
++the system. It prints each installed package to stdout.
++If no arguments are given all installed packages are printed.
++
++.SH EXIT STATUS
++rpmqpack returns 0 if all given packages are installed, otherwise
++1.
++
++.SH SEE ALSO
++.BR rpm (1)
++
++.SH COPYRIGHT
++2002 SUSE Linux AG Nuernberg, Germany.
++
++.SH AUTHOR
++Michael Schroeder <mls@suse.de>
+--- ./rpmqpack.c.orig	2017-12-01 15:04:13.398003904 +0000
++++ ./rpmqpack.c	2017-12-01 15:04:13.398003904 +0000
+@@ -0,0 +1,59 @@
++#include <sys/types.h>
++#include <limits.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++#include <db.h>
++
++DBT key;
++DBT data;
++
++int
++main(int argc, char **argv)
++{
++  DB *db = 0;
++  DBC *dbc = 0;
++  int ret = 0;
++
++  if (db_create(&db, 0, 0))
++    {
++      perror("db_create");
++      exit(1);
++    }
++  if (db->open(db, 0, "/var/lib/rpm/Name", 0, DB_UNKNOWN, DB_RDONLY, 0664))
++    {
++      perror("db->open");
++      exit(1);
++    }
++  if (argc == 1)
++    {
++      if (db->cursor(db, NULL, &dbc, 0))
++	{
++	  perror("db->cursor");
++	  exit(1);
++	}
++      while (dbc->c_get(dbc, &key, &data, DB_NEXT) == 0)
++	printf("%*.*s\n", (int)key.size, (int)key.size, (char *)key.data);
++      dbc->c_close(dbc);
++    }
++  else
++    {
++      argc--;
++      while (argc--)
++	{
++	  argv++;
++	  key.data = (void *)*argv;
++	  key.size = strlen(*argv);
++	  data.data = NULL;
++	  data.size = 0;
++	  if (db->get(db, 0, &key, &data, 0) == 0)
++	    printf("%s\n", *argv);
++	  else
++	    ret = 1;
++	}
++    }
++  db->close(db, 0);
++  return ret;
++}

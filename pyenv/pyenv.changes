@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Mon Jan 28 14:22:07 UTC 2019 - thomas.schraitle@suse.com
+
+- Update to 1.2.9:
+  * python-build: Add CPython 3.7.2 and CPython 3.6.8 (#1256)
+  * python-build: Add anaconda[23]-5.3.1 (#1246)
+  * python-build: Add Anaconda 2018.12 (#1259)
+  * python-build: Fix ironpython-dev git repo url (#1260)
+  * python-build: Add OPENSSL_NO_SSL3 patch for CPython 3.3.7 (#1263)
+
+- Version 1.2.8:
+  * python-build: Add CPython 3.7.1
+  * python-build: Add CPython 3.6.7
+  * python-build: Add anaconda[23]-5.3.0 (#1220)
+
+-------------------------------------------------------------------
+Mon Jan 28 13:41:38 UTC 2019 - thomas.schraitle@suse.com
+
+- Install fish completion file to /usr/share/fish/completions/
+
+-------------------------------------------------------------------
+Thu Nov  8 16:25:48 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Install bash completion file to /usr/share/bash-completion/completions
+  and fix shebangs of several bash scripts.
+
+-------------------------------------------------------------------
+Tue Oct 30 09:58:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 16 12:59:13 UTC 2018 - Jon Brightwell <jon@moozaad.co.uk>
+
+- Update to 1.2.7:
+
+    python-build: Add CPython 3.5.6 (#1199)
+    python-build: Add CPython 3.4.9
+
+	1.2.5
+
+    python-build: Add CPython 3.7.0 (#1177)
+    python-build: Add micropython 1.9.4 (#1160)
+    python-build: Add anaconda[23]-5.2.0 (#1165)
+    pyenv: Fix seq(1) is not available on OpenBSD (#1166)
+
+	1.2.4
+
+    python-build: Add CPython 2.7.15
+    python-build: Add PyPy 6.0.0
+    python-build: Allow overriding HTTP client type based on environment variable PYTHON_BUILD_HTTP_CLIENT (#1126)
+    python-build: Use version-specific get-pip.py when installing 2.6 and 3.2 (#1131)
+    pyenv: Merge rbenv master (#1151)
+    pyenv: Make pyenv-rehash safer for multiple processes (#1092)
+
+-------------------------------------------------------------------
+Wed Apr  4 09:03:21 UTC 2018 - michele.bologna@suse.com
+
+- Update to 1.2.3:
+    * python-build: Add CPython 3.6.5
+    * python-build: Set openssl PKG_CONFIG_PATH for python 3.7 (#1117)
+    * python-build: Add ActivePython versions 2.7.14, 3.5.4, 3.6.0 (#1113)
+    * python-build: Unset PIP_VERSION before invoking get-pip.py as a workaround for invalid truth value error (#1124)
+
+-------------------------------------------------------------------
+Tue Feb  6 17:08:18 UTC 2018 - michele.bologna@suse.com
+
+- Changelog for pyenv:
+  Update to 1.2.1:
+  * python-build: Add CPython 3.6.4
+  * python-build: Add PyPy[23] 5.10
+
+-------------------------------------------------------------------
+Sun Sep 24 15:45:27 UTC 2017 - thomas.schraitle@suse.com
+
+Update to 1.1.4 
+
+* pyenv: Workaround for scripts in $PATH which needs to be
+  source'd (#100, #688, #953)
+* python-build: Add support for PyPy3 executables like
+  libpypy3-c.so (#955, #956)
+* python-build: Add CPython 2.7.14, 3.4.7, 3.5.4 (#965, #971, #980)
+* python-build: Add Jython 2.7.1 (#973)
+
+
+Spec changes:
+
+* Add pyenv.d/rehash/conda.d/ directory
+* Remove excluding .gitignore
+
+-------------------------------------------------------------------
+Sun Sep 17 17:07:29 UTC 2017 - thomas.schraitle@suse.com
+
+More changes in the spec file:
+
+ - Corrected path to Python definitions from python-build
+ - Fixed install/uninstall and python-build
+   They are now installed under libexec, not bin
+ - Corrected manpage link creation to pyenv-{install,uninstall}
+ - Switched from noarch to arch dependent due to pyenv-realpath.dylib
+ - Add missing pyenv.d/rehash/conda.txt
+
+-------------------------------------------------------------------
+Sun Sep 17 10:28:56 UTC 2017 - thomas.schraitle@suse.com
+
+Update to 1.1.3:
+
+* python-build: Add CPython 3.6.2 (#951)
+
+Spec file changes:
+
+* create manpage
+* subpackages for shell completion scripts
+* use spec-cleaner
+* add -rpmlintrc to suppress false error messages about
+  wrong interpreter
+
+Details between 1.0.8 to 1.1.2, see below:
+
+v1.1.2:
+* pyenv: Fix incorrect pyenv --version output in v1.1.1 (#947)
+
+v1.1.1:
+* python-build: Update links to Portable Pypy 5.8-1 bugfix release (#939)
+* This is a minor release to update upstream links to Portable PyPy 5.8-1, see details at:
+  squeaky-pl/portable-pypy#54
+
+v1.1.0:
+* pyenv: Merge rbenv master (#927)
+* python-build: Add PyPy 5.8.0 (#932)
+* python-build: Anaconda[23] 4.4.0 (#930)
+* python-build: Add micropython-dev (#920)
+
+v1.0.9:
+* fixes #865: Add support for PyPy2 5.7 and PyPy3 5.7
+
+No public changelog for v1.0.8.
+
+-------------------------------------------------------------------
+Fri Apr 28 10:53:14 UTC 2017 - mbologna@suse.de
+
+- Version bump to 1.0.9
+
+-------------------------------------------------------------------
+Mon Feb 20 15:57:54 UTC 2017 - toms@opensuse.org
+
+Update to 1.0.7:
+
+* python-build: Add CPython 3.5.3 (#811)
+* python-build: Add CPython 3.4.6 (#812)
+* python-build: Fix tar.gz checksum of CPython 3.6.0 (#793)
+* python-build: Jython installer workaround (#800)
+* python-build: Disable optimization (-O0) when
+  --debug was specified (#808)
+
+-------------------------------------------------------------------
+Thu Jan  5 09:33:43 UTC 2017 - toms@opensuse.org
+
+- Use spec file from dmacvicar, but:
+  - Create additional pyenv.d and plugins directories
+- Rewrote spec file from scratch
+- Update to 1.0.6
+
+-------------------------------------------------------------------
+Wed Mar  2 12:22:08 UTC 2016 - dmacvicar@suse.de
+
+- update to version 20160202
+
+-------------------------------------------------------------------
+Fri Jan  8 07:58:38 UTC 2016 - dmacvicar@suse.de
+
+- update to version 20151222
+
+-------------------------------------------------------------------
+Sat Mar 14 21:50:44 UTC 2015 - dmacvicar@suse.de
+
+- initial package for 20150226

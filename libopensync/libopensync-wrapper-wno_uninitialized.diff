@@ -1,0 +1,15 @@
+--- wrapper/Makefile.am
++++ wrapper/Makefile.am
+@@ -1,10 +1,10 @@
+ 
+-AM_CFLAGS = -Werror
++AM_CFLAGS = -Wno-uninitialized
+ 
+ INCLUDES= @PACKAGE_CFLAGS@ $(PYTHON_INCLUDES) -I$(top_srcdir) -I$(top_srcdir)/opensync @XML_CFLAGS@
+ 
+ opensync_wrap.c: $(srcdir)/opensync.i
+-	$(SWIG) -Werror -python -modern -I$(top_srcdir)/opensync $(PYTHON_INCLUDES) -o opensync_wrap.c $(srcdir)/opensync.i
++	$(SWIG) -python -modern -I$(top_srcdir)/opensync $(PYTHON_INCLUDES) -o opensync_wrap.c $(srcdir)/opensync.i
+ 
+ EXTRA_DIST = opensync.i
+ 

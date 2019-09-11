@@ -1,0 +1,102 @@
+Index: openscap-1.3.0/cpe/openscap-cpe-dict.xml
+===================================================================
+--- openscap-1.3.0.orig/cpe/openscap-cpe-dict.xml
++++ openscap-1.3.0/cpe/openscap-cpe-dict.xml
+@@ -141,6 +141,14 @@
+             <title xml:lang="en-us">SUSE Linux Enterprise Desktop 12</title>
+             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.sled:def:12</check>
+       </cpe-item>
++      <cpe-item name="cpe:/o:suse:sles:15">
++            <title xml:lang="en-us">SUSE Linux Enterprise Server 15</title>
++            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.sles:def:15</check>
++      </cpe-item>
++      <cpe-item name="cpe:/o:suse:sled:15">
++            <title xml:lang="en-us">SUSE Linux Enterprise Desktop 15</title>
++            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.sled:def:15</check>
++      </cpe-item>
+       <cpe-item name="cpe:/o:opensuse:opensuse:11.4">
+             <title xml:lang="en-us">openSUSE 11.4</title>
+             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.opensuse:def:114</check>
+Index: openscap-1.3.0/cpe/openscap-cpe-oval.xml
+===================================================================
+--- openscap-1.3.0.orig/cpe/openscap-cpe-oval.xml
++++ openscap-1.3.0/cpe/openscap-cpe-oval.xml
+@@ -475,6 +475,34 @@
+                   </criteria>
+             </definition>
+ 
++            <definition class="inventory" id="oval:org.open-scap.cpe.sles:def:15" version="1">
++                  <metadata>
++                        <title>SUSE Linux Enterprise Server 15</title>
++                        <affected family="unix">
++                            <platform>SUSE Linux Enterprise Server 15</platform>
++                        </affected>
++                        <reference ref_id="cpe:/o:suse:sles:15" source="CPE"/>
++                        <description>The operating system installed on the system is SUSE Linux Enterprise Server 15</description>
++                  </metadata>
++                  <criteria>
++                        <criterion comment="SLES 15 is installed" test_ref="oval:org.open-scap.cpe.sles:tst:15"/>
++                  </criteria>
++            </definition>
++
++            <definition class="inventory" id="oval:org.open-scap.cpe.sled:def:15" version="1">
++                  <metadata>
++                        <title>SUSE Linux Enterprise Desktop 15</title>
++                        <affected family="unix">
++                            <platform>SUSE Linux Enterprise Desktop 15</platform>
++                        </affected>
++                        <reference ref_id="cpe:/o:suse:sled:15" source="CPE"/>
++                        <description>The operating system installed on the system is SUSE Linux Enterprise Desktop 15</description>
++                  </metadata>
++                  <criteria>
++                        <criterion comment="SLED 15 is installed" test_ref="oval:org.open-scap.cpe.sled:tst:15"/>
++                  </criteria>
++            </definition>
++
+             <definition class="inventory" id="oval:org.open-scap.cpe.opensuse:def:1" version="1">
+                   <metadata>
+                         <title>openSUSE All Versions</title>
+@@ -870,6 +898,11 @@
+                   <object object_ref="oval:org.open-scap.cpe.sles-release:obj:1"/>
+                   <state state_ref="oval:org.open-scap.cpe.sles:ste:12"/>
+             </rpminfo_test>
++            <rpminfo_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.sles:tst:15" version="1" check="at least one" comment="sles-release is version 15"
++                  xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++                  <object object_ref="oval:org.open-scap.cpe.sles-release:obj:1"/>
++                  <state state_ref="oval:org.open-scap.cpe.sles:ste:15"/>
++            </rpminfo_test>
+             <rpminfo_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.sled:tst:10" version="1" check="at least one" comment="sled-release is version 10"
+                   xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <object object_ref="oval:org.open-scap.cpe.sled-release:obj:1"/>
+@@ -885,6 +918,11 @@
+                   <object object_ref="oval:org.open-scap.cpe.sled-release:obj:1"/>
+                   <state state_ref="oval:org.open-scap.cpe.sled:ste:12"/>
+             </rpminfo_test>
++            <rpminfo_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.sled:tst:15" version="1" check="at least one" comment="sled-release is version 15"
++                  xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++                  <object object_ref="oval:org.open-scap.cpe.sled-release:obj:1"/>
++                  <state state_ref="oval:org.open-scap.cpe.sled:ste:15"/>
++            </rpminfo_test>
+             <rpminfo_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.opensuse:tst:1" version="1" check="at least one" comment="openSUSE-release is version 11.4"
+                   xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <object object_ref="oval:org.open-scap.cpe.openSUSE-release:obj:1"/>
+@@ -1159,6 +1207,9 @@
+             <rpminfo_state id="oval:org.open-scap.cpe.sles:ste:12" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <version operation="pattern match">^12($|[^\d])</version>
+             </rpminfo_state>
++            <rpminfo_state id="oval:org.open-scap.cpe.sles:ste:15" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++                  <version operation="pattern match">^15($|[^\d])</version>
++            </rpminfo_state>
+             <rpminfo_state id="oval:org.open-scap.cpe.sled:ste:10" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <version operation="pattern match">^10($|[^\d])</version>
+             </rpminfo_state>
+@@ -1168,6 +1219,9 @@
+             <rpminfo_state id="oval:org.open-scap.cpe.sled:ste:12" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <version operation="pattern match">^12($|[^\d])</version>
+             </rpminfo_state>
++            <rpminfo_state id="oval:org.open-scap.cpe.sled:ste:15" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++                  <version operation="pattern match">^15($|[^\d])</version>
++            </rpminfo_state>
+             <rpminfo_state id="oval:org.open-scap.cpe.opensuse:ste:2" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+                   <name operation="pattern match">^openSUSE-release</name>
+             </rpminfo_state>

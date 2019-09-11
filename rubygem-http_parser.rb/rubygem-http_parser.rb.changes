@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Jan 12 14:37:05 UTC 2015 - dmueller@suse.com
+
+- regenerate with newer gem2rpm to package license files 
+
+-------------------------------------------------------------------
+Sat Nov  1 17:14:20 UTC 2014 - tboerger@suse.com
+
+- Replaced rb_ver with an asterisk to expand correctly with multiple ruby versions
+
+-------------------------------------------------------------------
+Wed Oct 22 15:12:48 UTC 2014 - tboerger@suse.com
+
+- Remove development and java files
+
+-------------------------------------------------------------------
+Mon Oct 13 12:15:36 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Feb 13 09:31:35 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Thu Dec 12 10:19:36 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.0, no changelog
+
+-------------------------------------------------------------------
+Mon Nov  5 05:59:58 UTC 2012 - coolo@suse.com
+
+- update to current gem2rpm template
+
+-------------------------------------------------------------------
+Fri Jan  6 05:28:56 UTC 2012 - mrueckert@suse.de
+
+- initial package
+

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jul 17 06:05:41 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use kubernetes-apiserver instead of kubernetes-common
+
+-------------------------------------------------------------------
+Wed Jun 26 20:06:00 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version 

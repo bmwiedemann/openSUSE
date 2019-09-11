@@ -1,0 +1,720 @@
+Add F10h decoding support
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
+Index: mcelog-1.60/amd.c
+===================================================================
+--- mcelog-1.60.orig/amd.c	2018-09-24 15:14:18.771885991 +0200
++++ mcelog-1.60/amd.c	2018-09-24 15:15:05.902689347 +0200
+@@ -14,7 +14,7 @@
+ #include "mcelog.h"
+ #include "amd.h"
+ 
+-static char *k8bank[] = {
++static const char * const k8bank[] = {
+ 	"data cache",
+ 	"instruction cache",
+ 	"bus unit",
+@@ -22,28 +22,34 @@ static char *k8bank[] = {
+ 	"northbridge",
+ 	"fixed-issue reoder"
+ };
+-static char *transaction[] = { 
++static const char * const transaction[] = {
+ 	"instruction", "data", "generic", "reserved"
+-}; 
+-static char *cachelevel[] = { 
++};
++static const char * const cachelevel[] = {
+ 	"0", "1", "2", "generic"
+ };
+-static char *memtrans[] = { 
++static const char * const memtrans[] = {
+ 	"generic error", "generic read", "generic write", "data read",
+ 	"data write", "instruction fetch", "prefetch", "evict", "snoop",
+ 	"?", "?", "?", "?", "?", "?", "?"
+ };
+-static char *partproc[] = { 
+-	"local node origin", "local node response", 
+-	"local node observed", "generic participation"
++static const char * const partproc[] = {
++	"local node origin",
++	"local node response",
++	"local node observed",
++	"generic participation"
+ };
+-static char *timeout[] = { 
++static const char * const timeout[] = {
+ 	"request didn't time out",
+ 	"request timed out"
+ };
+-static char *memoryio[] = { 
++static const char * const memoryio[] = {
+ 	"memory", "res.", "i/o", "generic"
+ };
++
++/* internal error type */
++static const char * const uu_msgs[] = { "RESV", "RESV", "HWA", "RESV" };
++
+ static char *nbextendederr[] = { 
+ 	"RAM ECC error", 
+ 	"CRC error",
+@@ -65,6 +71,46 @@ static char *nbextendederr[] = {
+ 	"L3 Cache Tag Error",
+ 	"L3 Cache LRU Error"
+ };
++
++static const char * const mc4_mce_desc[] = {
++	"DRAM ECC error detected on the NB",
++	"CRC error detected on HT link",
++	"Link-defined sync error packets detected on HT link",
++	"HT Master abort",
++	"HT Target abort",
++	"Invalid GART PTE entry during GART table walk",
++	"Unsupported atomic RMW received from an IO link",
++	"Watchdog timeout due to lack of progress",
++	"DRAM ECC error detected on the NB",
++	"SVM DMA Exclusion Vector error",
++	"HT data error detected on link",
++	"Protocol error (link, L3, probe filter)",
++	"NB internal arrays parity error",
++	"DRAM addr/ctl signals parity error",
++	"IO link transmission error",
++	"L3 data cache ECC error",			/* xec = 0x1c */
++	"L3 cache tag error",
++	"L3 LRU parity bits error",
++	"ECC Error in the Probe Filter directory"
++};
++
++static const char * const mc5_mce_desc[] = {
++	"CPU Watchdog timer expire",
++	"Wakeup array dest tag",
++	"AG payload array",
++	"EX payload array",
++	"IDRF array",
++	"Retire dispatch queue",
++	"Mapper checkpoint array",
++	"Physical register file EX0 port",
++	"Physical register file EX1 port",
++	"Physical register file AG0 port",
++	"Physical register file AG1 port",
++	"Flag register file",
++	"DE error occurred",
++	"Retire status queue"
++};
++
+ static char *highbits[32] = { 
+ 	[31] = "valid",
+ 	[30] = "error overflow (multiple errors)",
+@@ -100,6 +146,21 @@ static char *k8threshold[] = {
+                 "Unknown threshold counter",
+ };
+ 
++static u8 xec_mask = 0xf;
++
++enum cputype select_amd_cputype(u32 family)
++{
++	switch (family) {
++	case 0xf:
++		return CPU_K8;
++	case 0x10:
++		return CPU_F10H;
++	default:
++		break;
++	}
++
++	return CPU_GENERIC;
++}
+ 
+ static void decode_k8_generic_errcode(u64 status)
+ {
+@@ -245,21 +306,393 @@ static decoder_t decoders[] = {
+ 	[5] = decode_k8_fr_mc,
+ };
+ 
+-void decode_amd_mc(enum cputype cpu, struct mce *mce, int *ismemerr)
++static bool k8_mc1_mce(u16 ec, u8 xec)
++{
++	u8 ll	 = LL(ec);
++	bool ret = true;
++
++	if (!MEM_ERROR(ec))
++		return false;
++
++	if (ll == 0x2)
++		Wprintf("during a linefill from L2.\n");
++	else if (ll == 0x1) {
++		switch (R4(ec)) {
++		case R4_IRD:
++			Wprintf("Parity error during data load.\n");
++			break;
++
++		case R4_EVICT:
++			Wprintf("Copyback Parity/Victim error.\n");
++			break;
++
++		case R4_SNOOP:
++			Wprintf("Tag Snoop error.\n");
++			break;
++
++		default:
++			ret = false;
++			break;
++		}
++	} else
++		ret = false;
++
++	return ret;
++}
++
++static bool f12h_mc0_mce(u16 ec, u8 xec)
++{
++	bool ret = false;
++
++	if (MEM_ERROR(ec)) {
++		u8 ll = LL(ec);
++		ret = true;
++
++		if (ll == LL_L2)
++			Wprintf("aduring L1 linefill from L2.\n");
++		else if (ll == LL_L1)
++			Wprintf("Data/Tag %s error.\n", R4_MSG(ec));
++		else
++			ret = false;
++	}
++	return ret;
++}
++
++static bool f10h_mc0_mce(u16 ec, u8 xec)
++{
++	if (R4(ec) == R4_GEN && LL(ec) == LL_L1) {
++		Wprintf("during data scrub.\n");
++		return true;
++	}
++	return f12h_mc0_mce(ec, xec);
++}
++
++static void decode_mc0_mce(struct amd_decoder_ops *ops, struct mce *m)
++{
++	u16 ec = EC(m->status);
++	u8 xec = XEC(m->status, xec_mask);
++
++	Wprintf("  MC0 Error: ");
++
++	/* TLB error signatures are the same across families */
++	if (TLB_ERROR(ec)) {
++		if (TT(ec) == TT_DATA) {
++			Wprintf("%s TLB %s.\n", LL_MSG(ec),
++				((xec == 2) ? "locked miss"
++					    : (xec ? "multimatch" : "parity")));
++			return;
++		}
++	} else if (ops->mc0_mce(ec, xec))
++		;
++	else
++		Eprintf("Corrupted MC0 MCE info?\n");
++}
++
++static void decode_mc1_mce(struct amd_decoder_ops *ops, struct mce *m)
+ {
+-	if (mce->bank < NELE(decoders))
+-		decoders[mce->bank](mce->status, ismemerr);
+-	else if (mce->bank >= K8_MCE_THRESHOLD_BASE &&
+-		 mce->bank < K8_MCE_THRESHOLD_TOP)
+-		decode_k8_threshold(mce->misc);
++	u16 ec = EC(m->status);
++	u8 xec = XEC(m->status, xec_mask);
++
++	Wprintf("  MC1 Error: ");
++
++	if (TLB_ERROR(ec))
++		Wprintf("%s TLB %s.\n", LL_MSG(ec),
++			(xec ? "multimatch" : "parity error"));
++	else if (BUS_ERROR(ec)) {
++		bool k8 = ((ops->cpu == AMD_K8) && (m->status & BIT_64(58)));
++
++		Wprintf("during %s.\n", (k8 ? "system linefill" : "NB data read"));
++	} else if (ops->mc1_mce(ec, xec))
++		;
+ 	else
+-		Wprintf("  no decoder for unknown bank %u\n", mce->bank);
++		Eprintf("Corrupted MC1 MCE info?\n");
++}
++
++static bool k8_mc2_mce(u16 ec, u8 xec)
++{
++	bool ret = true;
++
++	if (xec == 0x1)
++		Wprintf(" in the write data buffers.\n");
++	else if (xec == 0x3)
++		Wprintf(" in the victim data buffers.\n");
++	else if (xec == 0x2 && MEM_ERROR(ec))
++		Wprintf(": %s error in the L2 cache tags.\n", R4_MSG(ec));
++	else if (xec == 0x0) {
++		if (TLB_ERROR(ec))
++			Wprintf(": %s error in a Page Descriptor Cache or "
++				"Guest TLB.\n", TT_MSG(ec));
++		else if (BUS_ERROR(ec))
++			Wprintf(": %s/ECC error in data read from NB: %s.\n",
++				R4_MSG(ec), PP_MSG(ec));
++		else if (MEM_ERROR(ec)) {
++			u8 r4 = R4(ec);
++
++			if (r4 >= 0x7)
++				Wprintf(": %s error during data copyback.\n",
++					R4_MSG(ec));
++			else if (r4 <= 0x1)
++				Wprintf(": %s parity/ECC error during data "
++					"access from L2.\n", R4_MSG(ec));
++			else
++				ret = false;
++		} else
++			ret = false;
++	} else
++		ret = false;
++
++	return ret;
++}
++
++static void decode_mc2_mce(struct amd_decoder_ops *ops, struct mce *m)
++{
++	u16 ec = EC(m->status);
++	u8 xec = XEC(m->status, xec_mask);
++
++	Wprintf("  MC2 Error: ");
++
++	if (!ops->mc2_mce(ec, xec))
++		Eprintf("Corrupted MC2 MCE info?\n");
++}
++
++static void decode_mc3_mce(struct amd_decoder_ops *ops, struct mce *m)
++{
++	u16 ec = EC(m->status);
++	u8 xec = XEC(m->status, xec_mask);
++
++	if (ops->cpu >= AMD_F14H) {
++		Eprintf("You shouldn't be seeing MC3 MCE on this cpu family,"
++			 " please report on LKML.\n");
++		return;
++	}
++
++	Wprintf("  MC3 Error");
++
++	if (xec == 0x0) {
++		u8 r4 = R4(ec);
++
++		if (!BUS_ERROR(ec) || (r4 != R4_DRD && r4 != R4_DWR))
++			goto wrong_mc3_mce;
++
++		Wprintf(" during %s.\n", R4_MSG(ec));
++	} else
++		goto wrong_mc3_mce;
++
++	return;
++
++wrong_mc3_mce:
++	Eprintf("Corrupted MC3 MCE info?\n");
++}
++
++static void decode_mc4_mce(struct amd_decoder_ops *ops, struct mce *m)
++{
++	u16 ec = EC(m->status);
++	u8 xec = XEC(m->status, 0x1f);
++	u8 offset = 0;
++
++	Wprintf("  MC4 Error: ");
++
++	switch (xec) {
++	case 0x0 ... 0xe:
++
++		/* special handling for DRAM ECCs */
++		if (xec == 0x0 || xec == 0x8) {
++			/* no ECCs on F11h */
++			if (ops->cpu == AMD_F11H)
++				goto wrong_mc4_mce;
++
++			Wprintf("%s.\n", mc4_mce_desc[xec]);
++			return;
++		}
++		break;
++
++	case 0xf:
++		if (TLB_ERROR(ec))
++			Wprintf("GART Table Walk data error.\n");
++		else if (BUS_ERROR(ec))
++			Wprintf("DMA Exclusion Vector Table Walk error.\n");
++		else
++			goto wrong_mc4_mce;
++		return;
++
++	case 0x19:
++		if (ops->cpu >= AMD_F15H || ops->cpu <= AMD_F16H)
++			Wprintf("Compute Unit Data Error.\n");
++		else
++			goto wrong_mc4_mce;
++		return;
++
++	case 0x1c ... 0x1f:
++		offset = 13;
++		break;
++
++	default:
++		goto wrong_mc4_mce;
++	}
++
++	Wprintf("%s.\n", mc4_mce_desc[xec - offset]);
++	return;
++
++ wrong_mc4_mce:
++	Eprintf("Corrupted MC4 MCE info?\n");
++}
++
++static void decode_mc5_mce(struct amd_decoder_ops *ops, struct mce *m)
++{
++	u8 xec = XEC(m->status, xec_mask);
++
++	if (ops->cpu == AMD_K8 || ops->cpu == AMD_F11H)
++		goto wrong_mc5_mce;
++
++	Wprintf("  MC5 Error: ");
++
++	if (xec == 0x0 || xec == 0xc)
++		Wprintf("%s.\n", mc5_mce_desc[xec]);
++	else if (xec <= 0xd)
++		Wprintf("%s parity error.\n", mc5_mce_desc[xec]);
++	else
++		goto wrong_mc5_mce;
++
++	return;
++
++ wrong_mc5_mce:
++	Eprintf("Corrupted MC5 MCE info?\n");
++}
++
++static void decode_mc6_mce(struct mce *m)
++{
++	u8 xec = XEC(m->status, xec_mask);
++
++	Wprintf("  MC6 Error: ");
++
++	switch (xec) {
++	case 0x1:
++		Wprintf("Free List");
++		break;
++
++	case 0x2:
++		Wprintf("Physical Register File");
++		break;
++
++	case 0x3:
++		Wprintf("Retire Queue");
++		break;
++
++	case 0x4:
++		Wprintf("Scheduler table");
++		break;
++
++	case 0x5:
++		Wprintf("Status Register File");
++		break;
++
++	default:
++		goto wrong_mc6_mce;
++		break;
++	}
++
++	Wprintf(" parity error.\n");
++
++	return;
++
++ wrong_mc6_mce:
++	Eprintf("Corrupted MC6 MCE info?\n");
++}
++
++static inline void amd_decode_err_code(u16 ec)
++{
++	if (INT_ERROR(ec)) {
++		Wprintf("  internal: %s\n", UU_MSG(ec));
++		return;
++	}
++
++	Wprintf("  cache level: %s", LL_MSG(ec));
++
++	if (BUS_ERROR(ec))
++		Wprintf(", mem/io: %s", II_MSG(ec));
++	else
++		Wprintf(", tx: %s", TT_MSG(ec));
++
++	if (MEM_ERROR(ec) || BUS_ERROR(ec)) {
++		Wprintf(", mem-tx: %s", R4_MSG(ec));
++
++		if (BUS_ERROR(ec))
++			Wprintf(", part-proc: %s (%s)", PP_MSG(ec), TO_MSG(ec));
++	}
++
++	Wprintf("\n");
++}
++
++struct amd_decoder_ops fam_ops[] = {
++	[AMD_F10H] = {
++		.cpu	 = AMD_F10H,
++		.mc0_mce = f10h_mc0_mce,
++		.mc1_mce = k8_mc1_mce,
++		.mc2_mce = k8_mc2_mce,
++	},
++};
++
++static void __decode_amd_mc(enum cputype cpu, struct mce *mce)
++{
++	struct amd_decoder_ops *ops;
++
++	switch (cpu) {
++	case CPU_F10H:
++		ops = &fam_ops[AMD_F10H];
++		break;
++	default:
++		Eprintf("Huh? What family is it: 0x%x?!\n", cpu);
++		return;
++		break;
++	}
++
++	switch (mce->bank) {
++	case 0:
++		decode_mc0_mce(ops, mce);
++		break;
++	case 1:
++		decode_mc1_mce(ops, mce);
++		break;
++	case 2:
++		decode_mc2_mce(ops, mce);
++		break;
++	case 3:
++		decode_mc3_mce(ops, mce);
++		break;
++	case 4:
++		decode_mc4_mce(ops, mce);
++		break;
++	case 5:
++		decode_mc5_mce(ops, mce);
++		break;
++	case 6:
++		decode_mc6_mce(mce);
++		break;
++
++	default:
++		break;
++	}
++	amd_decode_err_code(mce->status & 0xffff);
++}
++
++void decode_amd_mc(enum cputype cpu, struct mce *mce, int *ismemerr)
++{
++	if (cpu == CPU_K8) {
++		if (mce->bank < NELE(decoders))
++			decoders[mce->bank](mce->status, ismemerr);
++		else if (mce->bank >= K8_MCE_THRESHOLD_BASE &&
++			 mce->bank < K8_MCE_THRESHOLD_TOP)
++			decode_k8_threshold(mce->misc);
++		else
++			Wprintf("  no decoder for unknown bank %u\n", mce->bank);
++	} else
++		__decode_amd_mc(cpu, mce);
+ }
+ 
+ char *k8_bank_name(unsigned num)
+ { 
+ 	static char buf[64];
+-	char *s = "unknown";
++	const char *s = "unknown";
+ 	if (num < NELE(k8bank))
+ 		s = k8bank[num];
+ 	else if (num >= K8_MCE_THRESHOLD_BASE && 
+@@ -270,13 +703,16 @@ char *k8_bank_name(unsigned num)
+ 	return buf;
+ }
+ 
+-int mce_filter_k8(struct mce *m)
+-{	
+-	/* Filter out GART errors */
+-	if (m->bank == 4) { 
+-		unsigned short exterrcode = (m->status >> 16) & 0x0f;
+-		if (exterrcode == 5 && (m->status & (1ULL<<61)))
++int mce_filter_amd(struct mce *m)
++{
++        /*
++         * NB GART TLB error reporting is disabled by default.
++         */
++	if (m->bank == 4) {
++		u8 xec = (m->status >> 16) & 0x1f;
++
++		if (xec == 0x5 && (m->status & BIT_64(61)))
+ 			return 0;
+-	} 
+-	return 1;
++	}
++        return 1;
+ }
+Index: mcelog-1.60/amd.h
+===================================================================
+--- mcelog-1.60.orig/amd.h	2018-09-24 15:14:55.678081186 +0200
++++ mcelog-1.60/amd.h	2018-09-24 15:15:05.902689347 +0200
+@@ -1,6 +1,25 @@
++#include <stdbool.h>
++
+ char *k8_bank_name(unsigned num);
+ void decode_amd_mc(enum cputype, struct mce *mce, int *ismemerr);
+-int mce_filter_k8(struct mce *m);
++int mce_filter_amd(struct mce *m);
++enum cputype select_amd_cputype(u32 family);
++
++enum amdcpu {
++	AMD_K8 = 0,
++	AMD_F10H,
++	AMD_F11H,
++	AMD_F14H,
++	AMD_F15H,
++	AMD_F16H,
++};
++
++struct amd_decoder_ops {
++	enum amdcpu cpu;
++	bool (*mc0_mce)(u16, u8);
++	bool (*mc1_mce)(u16, u8);
++	bool (*mc2_mce)(u16, u8);
++};
+ 
+ #define K8_MCE_THRESHOLD_BASE        (MCE_EXTENDED_BANK + 1)      /* MCE_AMD */
+ #define K8_MCE_THRESHOLD_TOP         (K8_MCE_THRESHOLD_BASE + 6 * 9)
+@@ -10,6 +29,8 @@ int mce_filter_k8(struct mce *m);
+ #define K8_MCELOG_THRESHOLD_L3_CACHE (4 * 9 + 2)
+ #define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
+ 
++#define BIT_64(n)                       (1ULL << (n))
++
+ #define EC(x)				((x) & 0xffff)
+ #define XEC(x, mask)			(((x) >> 16) & mask)
+ 
+@@ -22,23 +43,20 @@ int mce_filter_k8(struct mce *m);
+ #define INT_ERROR(x)			(((x) & 0xF4FF) == 0x0400)
+ 
+ #define TT(x)				(((x) >> 2) & 0x3)
+-#define TT_MSG(x)			tt_msgs[TT(x)]
++#define TT_MSG(x)			transaction[TT(x)]
+ #define II(x)				(((x) >> 2) & 0x3)
+-#define II_MSG(x)			ii_msgs[II(x)]
++#define II_MSG(x)			memoryio[II(x)]
+ #define LL(x)				((x) & 0x3)
+-#define LL_MSG(x)			ll_msgs[LL(x)]
++#define LL_MSG(x)			cachelevel[LL(x)]
+ #define TO(x)				(((x) >> 8) & 0x1)
+-#define TO_MSG(x)			to_msgs[TO(x)]
++#define TO_MSG(x)			timeout[TO(x)]
+ #define PP(x)				(((x) >> 9) & 0x3)
+-#define PP_MSG(x)			pp_msgs[PP(x)]
++#define PP_MSG(x)			partproc[PP(x)]
+ #define UU(x)				(((x) >> 8) & 0x3)
+ #define UU_MSG(x)			uu_msgs[UU(x)]
+ 
+ #define R4(x)				(((x) >> 4) & 0xf)
+-#define R4_MSG(x)			((R4(x) < 9) ?  rrrr_msgs[R4(x)] : "Wrong R4!")
+-
+-#define CASE_AMD_CPUS \
+-	case CPU_K8
++#define R4_MSG(x)			((R4(x) < 9) ?  memtrans[R4(x)] : "Wrong R4!")
+ 
+ enum tt_ids {
+ 	TT_INSTR = 0,
+@@ -72,3 +90,7 @@ enum rrrr_ids {
+ 	R4_EVICT,
+ 	R4_SNOOP,
+ };
++
++#define CASE_AMD_CPUS \
++	case CPU_K8:  \
++	case CPU_F10H
+Index: mcelog-1.60/mcelog.h
+===================================================================
+--- mcelog-1.60.orig/mcelog.h	2018-09-24 15:14:09.599340401 +0200
++++ mcelog-1.60/mcelog.h	2018-09-24 15:15:05.902689347 +0200
+@@ -117,6 +117,7 @@ enum cputype {
+ 	CPU_P6OLD,
+ 	CPU_CORE2, /* 65nm and 45nm */
+ 	CPU_K8,
++	CPU_F10H,
+ 	CPU_P4,
+ 	CPU_NEHALEM,
+ 	CPU_DUNNINGTON,
+Index: mcelog-1.60/mcelog.c
+===================================================================
+--- mcelog-1.60.orig/mcelog.c	2018-09-24 15:14:18.775886227 +0200
++++ mcelog-1.60/mcelog.c	2018-09-24 15:15:05.906689585 +0200
+@@ -147,19 +147,20 @@ static void resolveaddr(unsigned long lo
+ 
+ static int mce_filter(struct mce *m, unsigned recordlen)
+ {
+-	if (!filter_bogus) 
++	if (!filter_bogus)
+ 		return 1;
++
+ 	/* Filter out known broken MCEs */
+ 	switch (cputype) {
+-	case CPU_K8:
+-		return mce_filter_k8(m);
++	CASE_AMD_CPUS:
++		return mce_filter_amd(m);
+ 		/* add more buggy CPUs here */
+ 	CASE_INTEL_CPUS:
+ 		return mce_filter_intel(m, recordlen);
+ 	default:
+ 	case CPU_GENERIC:
+ 		return 1;
+-	}	
++	}
+ }
+ 
+ static void print_tsc(int cpunum, __u64 tsc, unsigned long time) 
+@@ -226,6 +227,7 @@ static char *cputype_name[] = {
+ 	[CPU_P6OLD] = "Intel PPro/P2/P3/old Xeon",
+ 	[CPU_CORE2] = "Intel Core", /* 65nm and 45nm */
+ 	[CPU_K8] = "AMD K8 and derivates",
++	[CPU_F10H] = "AMD Greyhound",
+ 	[CPU_P4] = "Intel P4",
+ 	[CPU_NEHALEM] = "Intel Xeon 5500 series / Core i3/5/7 (\"Nehalem/Westmere\")",
+ 	[CPU_DUNNINGTON] = "Intel Xeon 7400 series",
+@@ -255,6 +257,7 @@ static struct config_choice cpu_choices[
+ 	{ "p6old", CPU_P6OLD },
+ 	{ "core2", CPU_CORE2 },
+ 	{ "k8", CPU_K8 },
++	{ "f10h", CPU_F10H },
+ 	{ "p4", CPU_P4 },
+ 	{ "dunnington", CPU_DUNNINGTON },
+ 	{ "xeon74xx", CPU_DUNNINGTON },
+@@ -366,9 +369,7 @@ static enum cputype setup_cpuid(u32 cpuv
+ 	case X86_VENDOR_INTEL:
+ 	        return select_intel_cputype(family, model);
+ 	case X86_VENDOR_AMD:
+-		if (family >= 15 && family <= 17)
+-			return CPU_K8;
+-		/* FALL THROUGH */
++		return select_amd_cputype(family);
+ 	default:
+ 		Eprintf("Unknown CPU type vendor %u family %u model %u",
+ 			cpuvendor, family, model);
+@@ -551,14 +552,9 @@ int is_cpu_supported(void)
+ 
+ 		} 
+ 		if (seen == ALL) {
+-			if (!strcmp(vendor,"AuthenticAMD")) {
+-				if (family == 15) {
+-					cputype = CPU_K8;
+-				} else if (family >= 16) {
+-					Eprintf("ERROR: AMD Processor family %d: mcelog does not support this processor.  Please use the edac_mce_amd module instead.\n", family);
+-					return 0;
+-				}
+-			} else if (!strcmp(vendor,"GenuineIntel"))
++			if (!strcmp(vendor,"AuthenticAMD"))
++				cputype = select_amd_cputype(family);
++			else if (!strcmp(vendor,"GenuineIntel"))
+ 				cputype = select_intel_cputype(family, model);
+ 			/* Add checks for other CPUs here */	
+ 		} else {

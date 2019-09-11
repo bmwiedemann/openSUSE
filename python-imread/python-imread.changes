@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed May 22 10:57:59 UTC 2019 - pgajdos@suse.com
+
+- version update from 0.6.1 to 0.7.1
+  * Fix 16-bit RGB/RGBA TIFF write
+  * Support reading ImageJ ROIs
+
+-------------------------------------------------------------------
+Wed May  9 02:05:02 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.8.1
+  * Support pathlib paths as function arguments
+  * Fix 16 bit PNG write support (patch by Tomi Aarnio)
+
+-------------------------------------------------------------------
+Mon May 22 17:28:39 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

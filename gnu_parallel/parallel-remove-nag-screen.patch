@@ -1,0 +1,26 @@
+Index: parallel-20190422/src/parallel
+===================================================================
+--- parallel-20190422.orig/src/parallel
++++ parallel-20190422/src/parallel
+@@ -1609,7 +1609,7 @@ sub parse_options(@) {
+     #
+     # If you are an honest person please read the above before
+     # changing this line.
+-    citation_notice();
++    # citation_notice();
+ 
+     parse_halt();
+ 
+Index: parallel-20190422/src/sem
+===================================================================
+--- parallel-20190422.orig/src/sem
++++ parallel-20190422/src/sem
+@@ -1609,7 +1609,7 @@ sub parse_options(@) {
+     #
+     # If you are an honest person please read the above before
+     # changing this line.
+-    citation_notice();
++    # citation_notice();
+ 
+     parse_halt();
+ 

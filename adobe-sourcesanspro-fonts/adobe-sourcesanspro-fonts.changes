@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Wed May 29 04:02:31 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update source url
+
+-------------------------------------------------------------------
+Mon May 27 20:18:31 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 2.045 (Roman) and 1.095 (Italic):
+  * Bugfixes (too many to name here)
+- Run through spec cleaner
+- Only package the (better) otf fonts (following the Source Code
+  Pro package)
+
+-------------------------------------------------------------------
+Thu Oct  8 15:17:22 UTC 2015 - fcrozat@suse.com
+
+- Update to version 2.020 for Roman styles:
+  * Changed vendor ID to ADBO.
+  * Updated x-height measurements in all fonts.
+  * Updated name table to remove full license text from binary font
+    files.
+  * Removed NULL (U+0000) and CR (U+000D) glyphs from TrueType
+    fonts.
+- Update to version 1.075 for Italic styles:
+  * Updated right side bearing of quotedblbase and kerning of
+  * baseline quotes.
+  * Added narrow no-break space (U+202F).
+  * Moved fi and fl ligatures to the end of glyph order.
+- Update url to github.com.
+
+-------------------------------------------------------------------
+Wed Jul  9 05:51:13 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.010 for Roman styles:
+  * Geometric shapes were made larger.
+  * Adds narrow no-break space U+202F.
+  * Updates kerning of small caps and adds small cap punctuation.
+  * Adds Cyrillic and Greek support.
+  * Updates size and shape of diacritics.
+  * Adjusts superscript height to coordinate baseline of letters and numbers.
+- Update to version 1.065 for Italic styles:
+  * Geometric shapes were made larger.
+  * Updates size and shape of diacritics.
+  * Adjusts superscript height to coordinate baseline of letters and numbers.
+
+-------------------------------------------------------------------
+Mon Jun 10 08:48:15 UTC 2013 - fa0sck@gmail.com
+
+- Install fonts without x-bit 
+
+-------------------------------------------------------------------
+Mon May  6 15:51:48 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 1.050
+  * Coordinated the vertical alignment of the tops of the letters
+    across all the styles at the various sizes.
+
+-------------------------------------------------------------------
+Tue Apr  9 08:36:26 UTC 2013 - nwalter@suse.com
+
+- updated to version 1.040
+
+- improvement: Adds Zero_Width_Non_Breaking_Space character (ZWNBS, U+FEFF) to address GitHub issue #20 
+
+-------------------------------------------------------------------
+Sat Oct 27 12:29:09 UTC 2012 - toms@opensuse.org
+
+- Update to version 1.038 (2012/09/12):
+* Updates the metrics of Majuscule letters in lighter weights.
+* Updates fonts to add small capitals and superior capital letters
+  to upright styles.
+* Adds the following characters for transliteration: Blinebelow, 
+  blinebelow, Klinebelow klinebelow, Emacronacute, emacronacute,
+  Omacronacute, omacronacute, primemod
+* Adds the following punctuation characters: bardbl, iterrobang,
+  ceilingleft, ceilingright, floorleft floorright, bracketleftwhite,
+  bracketrightwhite, brackhalftopleft, brackhalftopright, brackhalfbotleft,
+  brackhalfbotright
+* Adds dotted zero and slashed zero.
+ 
+
+-------------------------------------------------------------------
+Fri Sep 28 12:21:52 UTC 2012 - toms@opensuse.org
+
+- Added Obsoletes and Provides
+
+-------------------------------------------------------------------
+Fri Sep 28 11:16:33 UTC 2012 - toms@opensuse.org
+
+- Renamed from SourceSansPro package, fixed .changes and .spec file
+
+-------------------------------------------------------------------
+Tue Sep 25 10:47:16 UTC 2012 - toms@opensuse.org
+
+- Spec: Use %{_ttfontsdir} macro instead of %{_datadir}
+
+-------------------------------------------------------------------
+Sun Sep 23 06:34:03 UTC 2012 - toms@opensuse.org
+
+- Updated to 1.0.36 release
+  Updates fonts to fix bug in TTF versions in which the GDEF table
+  was not included. 
+
+- 1.0.35 release:
+  Updates the fitting for 'u' and its related glyphs. Updates the
+  kerning in the upright fonts.
+
+-------------------------------------------------------------------
+Mon Aug 27 07:32:57 UTC 2012 - toms@opensuse.org
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536)
+
+-------------------------------------------------------------------
+Wed Aug 22 06:28:30 UTC 2012 - toms@opensuse.org
+
+- Included SourceSansProReadMe.html file into %doc path
+  (contains changelog)
+
+-------------------------------------------------------------------
+Tue Aug 21 08:10:55 UTC 2012 - toms@opensuse.org
+
+- Update to 1.0.34 release
+- SPEC file changes:
+  . Fix line endings for LICENSE.txt
+  . Adapted to new structure in archive
+  . Installed both, OTF and TTF files 
+
+-------------------------------------------------------------------
+Sat Aug  4 09:48:04 UTC 2012 - dimstar@opensuse.org
+
+- Update to latest 1.033 release
+  + No real change, except that we have proper version numbers.
+
+-------------------------------------------------------------------
+Fri Aug  3 11:06:59 UTC 2012 - dimstar@opensuse.org
+
+- Initial package, version from 2012-07-31.
+

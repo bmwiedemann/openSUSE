@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Aug 22 11:42:15 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.2
+* Add JSON output formatting to nfacct utility
+* nfacct: adding quota capabilities
+
+-------------------------------------------------------------------
+Tue Sep 23 16:10:44 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Mon Mar  4 14:00:43 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0.1
+* fix parsing of command line arguments when both the "xml" and
+  "reset" options are used
+
+-------------------------------------------------------------------
+Wed Nov 28 20:48:08 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Tue Mar 27 14:11:18 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.0.0
+* add support for XML output
+
+-------------------------------------------------------------------
+Sun Jan  1 00:19:55 UTC 2012 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

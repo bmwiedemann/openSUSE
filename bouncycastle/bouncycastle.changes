@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Thu Jul 19 10:24:12 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.60 bsc#1100694:
+  * CVE-2018-1000613 Use of Externally-ControlledInput to Select Classes or Code
+  * CVE-2018-1000180: issue around primality tests for RSA key pair generation
+    if done using only the low-level API [bsc#1096291]
+  * Release notes:
+    http://www.bouncycastle.org/releasenotes.html
+
+-------------------------------------------------------------------
+Mon Jun 11 12:32:43 UTC 2018 - abergmann@suse.com
+
+- Version update to 1.59:
+  * CVE-2017-13098: Fix against Bleichenbacher oracle when not
+    using the lightweight APIs (boo#1072697).
+  * CVE-2016-1000338: Fix DSA ASN.1 validation during encoding of
+    signature on verification (boo#1095722).
+  * CVE-2016-1000339: Fix AESEngine key information leak via lookup
+    table accesses (boo#1095853).
+  * CVE-2016-1000340: Fix carry propagation bugs in the
+    implementation of squaring for several raw math classes
+    (boo#1095854).
+  * CVE-2016-1000341: Fix DSA signature generation vulnerability to
+    timing attack (boo#1095852).
+  * CVE-2016-1000342: Fix ECDSA ASN.1 validation during encoding of
+    signature on verification (boo#1095850).
+  * CVE-2016-1000343: Fix week default settings for private DSA key
+    pair generation (boo#1095849).
+  * CVE-2016-1000344: Remove DHIES from the provider to disable the
+    unsafe usage of ECB mode (boo#1096026).
+  * CVE-2016-1000345: Fix DHIES/ECIES CBC mode padding oracle
+    attack (boo#1096025).
+  * CVE-2016-1000346: Fix other party DH public key validation
+    (boo#1096024).
+  * CVE-2016-1000352: Remove ECIES from the provider to disable the
+    unsafe usage of ECB mode (boo#1096022).
+  * Release notes:
+    http://www.bouncycastle.org/releasenotes.html
+- Removed patch:
+  * ambiguous-reseed.patch
+
+-------------------------------------------------------------------
+Tue May 15 17:44:49 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Sep 15 07:25:45 UTC 2017 - fstrba@suse.com
+
+- Version update to 1.58
+- Added patch:
+  * ambiguous-reseed.patch
+    + Upstream fix for an ambiguous overload
+
+-------------------------------------------------------------------
+Thu Sep  7 13:04:44 UTC 2017 - fstrba@suse.com
+
+- Set java source and target to 1.6 to allow building with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 10:17:53 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local
+- Fixed requires
+- Spec file cleaned
+
+-------------------------------------------------------------------
+Sat Feb 20 08:34:39 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.54:
+  * No obvious changelog to be found
+  * Fixes bnc#967521 CVE-2015-7575
+
+-------------------------------------------------------------------
+Fri Oct 23 08:47:46 UTC 2015 - tchvatal@suse.com
+
+- Version update to 1.53 (latest upstream)
+  * No obvious changelog
+  * Fixes bnc#951727 CVE-2015-7940
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:03 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Fri Feb 20 09:55:46 UTC 2015 - tchvatal@suse.com
+
+- Disable tests on obs as they hang
+
+-------------------------------------------------------------------
+Tue Feb 10 12:29:43 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.50 to match Fedora
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul  7 14:57:54 UTC 2014 - tchvatal@suse.com
+
+- Depend on junit not junit4
+
+-------------------------------------------------------------------
+Thu May 15 15:29:26 UTC 2014 - darin@darins.net
+
+- disable bytecode check on sle_11
+
+-------------------------------------------------------------------
+Thu Nov 14 11:45:43 UTC 2013 - mvyskocil@suse.com
+
+- Don't own /etc/java/security to not clash with javapackages-tools
+- Don't mark random files as config
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:33 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Aug 28 08:25:18 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from recent javapackages-tools
+- temporary mozilla-nss to BT: in order to pass a tests
+
+-------------------------------------------------------------------
+Fri May 18 12:39:28 UTC 2012 - mvyskocil@suse.cz
+
+- bumb target to 1.6
+
+-------------------------------------------------------------------
+Mon Jan 16 14:19:33 UTC 2012 - mvyskocil@suse.cz
+
+- Initial packaging for SUSE
+  from Fedora's bouncycastle 1.46
+

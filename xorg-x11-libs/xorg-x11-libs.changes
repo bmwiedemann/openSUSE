@@ -1,0 +1,1211 @@
+-------------------------------------------------------------------
+Wed Jun 26 08:01:11 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer require libXTrap-devel and libXxf86misc-devel on
+  TW/factory, which is no longer supported with xorgproto 2019.1
+
+-------------------------------------------------------------------
+Wed Jan 31 16:31:43 UTC 2018 - sndirsch@suse.com
+
+- raised version number of package; improved definitions for
+  provide/obsolete of xorg-x11-util-devel so makedepend, lndir,
+  gccmakedep, xorg-cf-files and xorg-sgml-doctools no longer
+  conflict with xorg-x11-devel package (bsc#1077489)
+
+-------------------------------------------------------------------
+Mon Jan 29 11:28:16 UTC 2018 - sndirsch@suse.com
+
+- Directly require packages, which were required by
+  xorg-x11-util-devel meta package; provide/obsolete
+  xorg-x11-util-devel now (bsc#1077489)
+
+-------------------------------------------------------------------
+Sat May  3 10:25:41 UTC 2014 - sndirsch@suse.com
+
+- removed requires to libWindowsWM-devel, which never has been
+  required by anyone on non-Windows platforms 
+
+-------------------------------------------------------------------
+Fri Apr 25 12:36:42 UTC 2014 - sndirsch@suse.com
+
+- xorg-x11-devel: remove requires to xorg-x11-proto-devel, which has
+  been replaced by pthread-stubs and numerous *proto packages
+
+-------------------------------------------------------------------
+Sat Jan 11 16:05:19 UTC 2014 - sndirsch@suse.com
+
+- libvnc/libXcliplist have been part of xf4vnc. Since we moved from
+  xf4vnc to tigervnc, they are of no use any longer. So no longer
+  require them at all.
+
+-------------------------------------------------------------------
+Fri Feb  1 12:03:33 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Apr 19 10:05:33 UTC 2012 - vuntz@opensuse.org
+
+- Remove all tarballs and patches, since they're not used anymore
+  with the split packages.
+- Stop making xorg-x11-devel have a Requires on xorg-x11-libs: both
+  are metapackages, so it's useless.
+- Add a README.meta file to explain the goal of the compatibility
+  metapackages, and update their summaries and descriptions as
+  well.
+
+-------------------------------------------------------------------
+Fri Feb 24 10:33:03 UTC 2012 - sndirsch@suse.com
+
+- devel package: fixed devel requires for libpciaccess, added the
+  remaining requires: liblbxutil-devel, xbitmaps-devel,
+  xorg-x11-fonts-devel
+
+-------------------------------------------------------------------
+Fri Feb 24 08:13:02 UTC 2012 - coolo@suse.com
+
+- there is no value in manually adding the pkgconfig provides of 
+  package names we already know (bnc#748486)
+  The pkgconfig provides of random X libraries can change at any
+  time and it would be necessary to touch this meta package without
+  any additional gain.
+
+-------------------------------------------------------------------
+Mon Feb 20 13:12:39 UTC 2012 - sndirsch@suse.com
+
+- fixed xcb-util Requires for openSUSE <= 12.1
+
+-------------------------------------------------------------------
+Sat Feb 18 06:34:19 UTC 2012 - coolo@suse.com
+
+- readd all the devel libs lost during the split as pkgconfig requires
+
+-------------------------------------------------------------------
+Tue Feb 14 11:18:00 UTC 2012 - sndirsch@suse.com
+
+- turned -devel package into a meta package, which now requires
+  all the previously required packages by adding the appropriate 
+  pkgconfig(...) Requires
+
+-------------------------------------------------------------------
+Fri Feb 10 16:18:29 UTC 2012 - sndirsch@suse.com
+
+- back to real libs package, but no longer preferred in project 
+
+-------------------------------------------------------------------
+Thu Feb  9 15:26:18 UTC 2012 - sndirsch@suse.com
+
+- please rebuild !!! 
+
+-------------------------------------------------------------------
+Thu Feb  9 14:28:07 UTC 2012 - sndirsch@suse.com
+
+- no longer package anything, since libs are now packaged
+  seperately ==> dummy package
+
+-------------------------------------------------------------------
+Tue Feb  7 16:58:55 UTC 2012 - sndirsch@suse.com
+
+- instead of using LD_PRELOAD link the fake libs against the
+  freshly introduced libxcb-util; hope this works out ...
+  Still this does not help on openSuSE 11.4 (bnc#742297)
+
+-------------------------------------------------------------------
+Fri Feb  3 10:14:23 UTC 2012 - sndirsch@suse.com
+
+- still we need a LD_PRELOAD for the freshly introduced libxcb-util;
+  added this to /etc/profile.d/xorg-x11-libs.{csh,sh}; seems to
+  help on openSUSE 12.1, but apparently not on openSUSE 11.4 
+  (bnc #742297)
+
+-------------------------------------------------------------------
+Mon Jan 23 10:59:06 UTC 2012 - sndirsch@suse.com
+
+- fixed typo in generating fake xcb libs; fake xcb libs don't need
+  to be provided explicitely via spec file, since this Provides is
+  already picked up from the generated xcb libs themselves
+
+-------------------------------------------------------------------
+Thu Jan 19 10:54:03 UTC 2012 - sndirsch@suse.com
+
+- create the full set of fake libxcb-* libs being replaced now
+  by libxcb-util (reported by email)
+
+-------------------------------------------------------------------
+Mon Jan 16 11:25:52 CET 2012 - sndirsch@suse.de
+
+- provide fake libxcb-atom.so.1 (bnc #741465) for older openSUSE
+  releases since it apparently vanished with xcb-util 0.3.8 :-(
+
+-------------------------------------------------------------------
+Sat Jan  7 18:02:53 UTC 2012 - chris@computersalat.de
+
+- xcb-util 0.3.8
+  * Split up atom, aux event into their own repository.
+  * Create a single shared library and header file.
+  * Remove namespaceless pre-defined atoms.
+  * Remove synchronous xcb_atom_get().
+  * Remove useless xcb_atom_get_fast*() and xcb_atom_get_name().
+  * Delete redundant core-protocol error codes.
+  * Delete callback-based APIs for events, properties, and replies.
+  * Link with -no-undefined.
+  * Add AM_MAINTAINER_MODE for vendors.
+- remove AUTHORS from description
+- switch {?jobs:-j%jobs} to {?_smp_mflags}
+
+-------------------------------------------------------------------
+Sun Nov 20 06:49:27 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep  2 13:39:04 UTC 2011 - sndirsch@suse.com
+
+- U_libXfont_LZW-decompress-fix-for-CVE-2011-2895.patch
+  * LZW decompress: fix for CVE-2011-2895 (bnc #709851)
+
+-------------------------------------------------------------------
+Tue Aug 30 13:04:47 UTC 2011 - sndirsch@suse.com
+
+- split off libpciaccess to avoid build cycles; latest intel driver
+  now buildrequires libpciaccess
+
+-------------------------------------------------------------------
+Mon Jun 20 16:29:40 UTC 2011 - mhopf@novell.com
+
+- Don't delete .la files for SLE11-SP1
+
+-------------------------------------------------------------------
+Tue May 31 09:12:57 UTC 2011 - eich@suse.de
+
+- removed libXTrap-pcfix.diff:
+  * This patch is rather irrelevant to us. We are not even
+    going to submit it to upstream.
+
+-------------------------------------------------------------------
+Tue Dec 21 02:49:24 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Thu Dec  9 11:31:02 UTC 2010 - sndirsch@novell.com
+
+- xbitmaps 1.1.1
+  * This minor maintenance release mostly provides the usual
+    collection of janitorial cleanups and build configuration
+    improvements.
+    It also changes the installation path for the pkg-config
+    xbitmaps.pc from $(libdir) to $(datadir), as no libraries
+    or compiled code are found via this pkg-config file, only
+    platform-independent image files (which double as C source
+    code headers that programs may #include at compile time).
+
+-------------------------------------------------------------------
+Wed Dec  1 11:47:35 UTC 2010 - sndirsch@novell.com
+
+- revert 'export only public API symbols'
+  it breaks at least build of Xnest (xorg-x11-server package)
+
+-------------------------------------------------------------------
+Tue Nov 30 18:28:47 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- export only public API symbols
+- disable silent rules, defeat the purpose of post build checks 
+
+-------------------------------------------------------------------
+Sun Nov 21 23:35:35 UTC 2010 - sndirsch@novell.com
+
+- libXxf86misc 1.0.3
+  * This minor maintenance release provides the usual recent set
+    of misc. cleanups and build configuration improvements.
+
+-------------------------------------------------------------------
+Mon Nov  1 23:37:01 UTC 2010 - sndirsch@novell.com
+
+- libXevie-1.0.3
+  * This release provides the cleanups and build configuration
+    improvements that have been made since the last libXevie
+    release in 2006.
+
+-------------------------------------------------------------------
+Sat Oct 30 14:46:55 UTC 2010 - sndirsch@novell.com
+
+- libXft 2.2.0
+  * This release removes the deprecated xft-config script now that
+    pkg-config is well-established as it's replacement.   It also
+    updates the xft pkg-config file to reduce unnecessary linking
+    in users of libXft, but may cause issues if used with versions
+    of pkg-config older than the pkg-config 0.22 release from 2007.
+    It also includes the usual recent set of build configuration
+    improvements and janitorial cleanups.
+- libXtst 1.2.0
+  * This release adds the specification documents for the API's for
+    both extensions, converted from the original troff format to
+    DocBook/XML. It also includes the usual recent rounds of build
+    configuration improvements and janitorial cleanups.
+- libXxf86dga 1.1.2
+  * This minor maintenance release provides the usual recent
+    collection of build configuration improvements and janitorial
+    cleanups.
+- libXxf86vm 1.1.1
+  * This minor maintenance release provides the usual recent
+    collection of build configuration improvements and janitorial
+    cleanups.
+- libXScrnSaver 1.2.1
+  * This minor maintenance release provides the usual recent
+    collection of build configuration improvements and janitorial
+    cleanups, with no additional snarkiness beyond that provided
+    in this announcement.
+
+-------------------------------------------------------------------
+Fri Oct 29 08:27:37 UTC 2010 - sndirsch@novell.com
+
+- libXfont 1.4.3
+  * This bug fix release mostly fixes build issues on various
+    platforms involving the hackery required for libXfont to
+    depend on symbols defined in the X server itself. Trying to
+    explain or understand this hackery may be damaging to your
+    sanity - it has already robbed several generations of X
+    developers of ours.
+- libdmx 1.1.1
+  * This minor maintenance release provides the latest set of
+    the usual build configuration improvements and janitorial
+    cleanups.
+- libXrandr 1.3.1
+  * This release includes several fixes to the error handling
+    paths in the library, as well as the usual set of recent
+    build configuration improvements and janitorial cleanups.
+- libXres 1.0.5
+  * This minor maintenance release provides the latest set of
+    the usual build configuration improvements and janitorial
+    cleanups.
+
+-------------------------------------------------------------------
+Thu Oct 28 16:18:30 UTC 2010 - sndirsch@novell.com
+
+- readded lbx headers, since these have been removed from libXext
+  1.2.0
+
+-------------------------------------------------------------------
+Thu Oct 28 14:14:29 UTC 2010 - sndirsch@novell.com
+
+- libXcomposite 0.4.3
+  * This minor maintenance release provides build improvements and
+    reduces both buildtime & runtime dependencies of the library.
+- libXcursor 1.1.11
+  * This minor maintenance release provides the usual recent set
+    of build configuration improvements and janitorial cleanups.
+- libXinerama 1.1.1 
+  * This minor maintenance release of the Xlib-based library for
+    the Xinerama extension protocol provides the usual set of
+    recent build configuration improvements and janitorial
+    cleanups.
+
+-------------------------------------------------------------------
+Wed Oct 27 07:26:54 UTC 2010 - sndirsch@novell.com
+
+- fixed build on openSUSE 11.2/SLE11-SP1
+
+-------------------------------------------------------------------
+Wed Oct 27 02:16:30 UTC 2010 - sndirsch@novell.com
+
+- libFS 1.0.3
+  * This minor maintenance release simply collects the latest set
+    of build configuration improvements and janitorial cleanups.
+
+-------------------------------------------------------------------
+Mon Oct 25 18:30:04 UTC 2010 - sndirsch@novell.com
+
+- libXaw 1.0.8
+  * This minor maintenance release fixes some bugs, improves build
+    configuration, includes various janitorial cleanups, and
+    delivers for the first time the DocBook/XML conversion of the
+    API docs that were previously in troff format.
+
+-------------------------------------------------------------------
+Sun Sep  5 02:38:28 UTC 2010 - sndirsch@novell.com
+
+- libXcomposite 0.4.2
+- libXdamage 1.1.3
+- libXfontcache 1.0.5
+- libXvMC 1.0.6
+- libXxf86misc 1.0.2
+- libpciaccess 0.12.0
+
+-------------------------------------------------------------------
+Mon Aug 23 12:40:28 CEST 2010 - sndirsch@suse.de
+
+- libXfont 1.4.2
+  * This minor release contains a new and single hook function to
+    be used by the server to register all fpe functions
+    (register_fpe_functions()). Also, lot of clean-ups for
+    configuration happened.
+- required by xorg-server 1.9
+
+-------------------------------------------------------------------
+Thu May  6 10:45:05 CEST 2010 - sndirsch@suse.de
+
+- build libpciaccess with corrrect path to pci.ids (bnc #603071) 
+
+-------------------------------------------------------------------
+Sun Apr 11 16:40:46 CEST 2010 - sndirsch@suse.de
+
+- libxtrap-pcfix.patch --> libXTrap-pcfix.diff
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Mon Apr  5 07:11:20 CEST 2010 - sndirsch@suse.de
+
+- libXaw 1.0.7 
+- provide libXaw8.so.8, libXaw7.so.7, libXaw6.so.6
+- create compatibility symlinks libXaw8.so.8, libXaw.so.8
+
+-------------------------------------------------------------------
+Sun Apr  4 17:07:59 CEST 2010 - sndirsch@suse.de
+
+- libWindowsWM 1.0.1
+- libXScrnSaver 1.2.0
+- libXcomposite 0.4.1
+- libXcursor 1.1.10
+- libXdamage 1.1.2
+- libXfont 1.4.1
+- libXinerama 1.1
+- libXres 1.0.4
+- libXvMC 1.0.5
+- libpciaccess 0.10.9
+- xbitmaps 1.1.0
+- libXft 2.1.14
+- obsoletes p_xft_cjk.diff, Header-cleanup-bug-4703.patch
+- adjusted libXft-2.1.7-lcd-filter-2.patch
+- bumped version number to 7.5
+
+-------------------------------------------------------------------
+Thu Feb 18 06:13:05 CET 2010 - sndirsch@suse.de
+
+- exclude /usr/include/X11/extensions/lbximage.h from 
+  xorg-x11-devel (already in xorg-x11-libXext-devel)
+- exclude /usr/lib/libpciaccess.so from xorg-x11-devel (already in
+  libpciaccess0-devel)
+
+-------------------------------------------------------------------
+Sat Jan 16 18:43:31 CET 2010 - sndirsch@suse.de
+
+- updated libraries
+  * libXtst-1.1.0
+  * libXxf86dga-1.1.1
+  * libXxf86vm-1.1.0
+  * libdmx-1.1.0
+  * liblbxutil-1.1.0
+- removed lbxbuf.h/lbxbufstr.h (same version already in libXext)
+- removed libAppleWM
+- removed libXi (seperate libXi6 package now)
+- added libXi6-devel to Requires
+
+-------------------------------------------------------------------
+Mon Dec 14 20:23:58 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Nov 19 04:07:23 CET 2009 - sndirsch@suse.de
+
+- moved pkgconfig file for libpciaccess to seperate libpciaccess
+  package 
+
+-------------------------------------------------------------------
+Mon Aug 24 21:23:47 CEST 2009 - sndirsch@suse.de
+
+- xcb-util 0.3.6
+  * various issues fixed
+
+-------------------------------------------------------------------
+Wed Jul  8 03:06:15 CEST 2009 - sndirsch@novell.com
+
+- libFS 1.0.2: various fixes 
+
+-------------------------------------------------------------------
+Mon Jun  8 20:53:21 CEST 2009 - sndirsch@suse.de
+
+- drop libXft1, since it's no longer required by current versions
+  of Intel's Debugger (bnc #198432) 
+
+-------------------------------------------------------------------
+Sun Jun  7 11:07:02 CEST 2009 - sndirsch@suse.de
+
+- force removal of .la files on openSUSE > 11.1 (fixes build on
+  IA64)
+
+-------------------------------------------------------------------
+Fri Jun  5 12:58:51 CEST 2009 - eich@suse.de
+
+- Add patches from Moblin:
+  * libXft:
+    . clean up header file.
+  * libXTrap:
+    . remove trapproto as Requires from pkgconfig file.
+
+-------------------------------------------------------------------
+Fri May 29 18:31:51 CEST 2009 - sndirsch@suse.de
+
+- xcb-util 0.3.5
+  * various issues fixed 
+
+-------------------------------------------------------------------
+Thu Apr 30 22:40:53 CEST 2009
+
+- fix a version typo that prevented the .la files to be found for
+  11.0 <= version <= 11.1
+
+-------------------------------------------------------------------
+Thu Apr 30 21:53:45 CEST 2009
+
+- pack .la files in devel package
+
+-------------------------------------------------------------------
+Thu Apr 30 20:35:27 CEST 2009 - eich@suse.de
+
+- move static libraries to devel package
+
+-------------------------------------------------------------------
+Thu Apr 30 18:55:01 CEST 2009 - sndirsch@suse.de
+
+- build static libraries for versions <= 11.1
+
+-------------------------------------------------------------------
+Sat Apr 25 04:47:13 CEST 2009 - sndirsch@suse.de
+
+- libpciaccess 0.10.6
+
+-------------------------------------------------------------------
+Tue Apr 21 21:36:01 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu Apr 16 00:57:41 CEST 2009 - sndirsch@suse.de
+
+- xcb-util 0.3.4 
+
+-------------------------------------------------------------------
+Tue Mar 10 03:10:45 CET 2009 - sndirsch@suse.de
+
+- libXrandr 1.3.0
+- obsoletes libXrandr-70d641c.diff
+
+-------------------------------------------------------------------
+Wed Mar  4 20:36:25 CET 2009 - sndirsch@suse.de
+
+- libXrandr-70d641c.diff
+  * fixes fatal protocol error in libXrandr, which broke RANDR
+    support completely (bnc #481863) 
+
+-------------------------------------------------------------------
+Fri Feb 27 20:32:39 CET 2009 - sndirsch@suse.de
+
+- libXfont 1.4.0 
+
+-------------------------------------------------------------------
+Thu Feb 26 13:08:49 CET 2009 - sndirsch@suse.de
+
+- back to libXfont 1.3.3
+
+-------------------------------------------------------------------
+Thu Feb 26 10:34:20 CET 2009 - sndirsch@suse.de
+
+- back to libXaw 1.0.4 
+
+-------------------------------------------------------------------
+Thu Feb 26 04:22:21 CET 2009 - sndirsch@suse.de
+
+- xcb-util 0.3.3 
+
+-------------------------------------------------------------------
+Thu Feb 26 03:58:29 CET 2009 - sndirsch@suse.de
+
+- libXi 1.2.1
+- libXrandr 1.2.99.4 
+
+-------------------------------------------------------------------
+Thu Feb 26 03:19:09 CET 2009 - sndirsch@suse.de
+
+- libXfont 1.4.0
+- libXaw 1.0.5
+- libpciaccess 0.10.5 
+
+-------------------------------------------------------------------
+Fri Feb 13 07:04:00 CET 2009 - sndirsch@suse.de
+
+- libpixman now in seperate source package (bnc #439019)
+
+-------------------------------------------------------------------
+Wed Feb 11 15:05:13 CET 2009 - coolo@suse.de
+
+- fix baselibs.conf for the split out libs
+
+-------------------------------------------------------------------
+Sun Feb  8 13:41:52 CET 2009 - sndirsch@suse.de
+
+- xorg-x11-devel: added missing requires to libpciaccess0-devel,
+  libpixman-1-0-devel
+
+-------------------------------------------------------------------
+Thu Feb  5 16:11:39 CET 2009 - sndirsch@suse.de
+
+- split out libpixman (bnc #439019)
+- split out libpciaccess (bnc #438226)
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov 21 17:27:22 CET 2008 - schwab@suse.de
+
+- Revert last change.
+- Use sigsetjmp to save/restore the signal mask.
+
+-------------------------------------------------------------------
+Thu Nov 13 16:24:49 CET 2008 - sndirsch@suse.de
+
+- use --disable-vmx for building pixman on ppc/ppc64 (bnc #444639)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Sep 19 18:08:24 CEST 2008 - sndirsch@suse.de
+
+- updated pixman from development release 0.11.10 to stable release
+  0.12.0. New features since 0.10.0 include:
+  * New image formats with 10 bits per channel (Aaron Plattner)
+  * SSE2 optimizations for many operations (André Tupinambá)
+  * Opacity based optimizations for operators (Antoine Azar)
+  * Altivec optimizations for many operations (Luca Barbato)
+  * A 32 bit region implementation (Søren Sandmann)
+
+-------------------------------------------------------------------
+Thu Sep 11 14:22:26 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Mon Sep  8 09:04:45 CEST 2008 - sndirsch@suse.de
+
+- pixman 0.11.10
+  * bugfix release and a release candidate for 0.12.0. 
+
+-------------------------------------------------------------------
+Sat Aug 30 04:39:04 CEST 2008 - sndirsch@suse.de
+
+- remove also libXft.a (now that libXft.la is gone)
+
+-------------------------------------------------------------------
+Fri Aug 29 15:32:41 CEST 2008 - sndirsch@suse.de
+
+- fixed build by adding libexpat-devel to Buildrequires
+- removed libXft.la (bnc #421322)
+
+-------------------------------------------------------------------
+Fri Aug  1 12:37:37 CEST 2008 - sndirsch@suse.de
+
+- xcb-util 0.2.1
+  * bug fixes 
+
+-------------------------------------------------------------------
+Fri Jul 18 17:12:08 CEST 2008 - sndirsch@suse.de
+
+- pixman 0.11.8
+- obsoletes pixman-bfo16310.diff
+
+-------------------------------------------------------------------
+Thu Jul 10 17:07:24 CEST 2008 - sndirsch@suse.de
+
+- pixman 0.11.6
+  * development release
+- pixman-bfo16310.diff
+  * fixes bug in SSE2 fast path, which resulted in unreadable fonts
+    (bfo #16310)
+
+-------------------------------------------------------------------
+Fri Jul  4 05:22:20 CEST 2008 - sndirsch@suse.de
+
+- libXrandr 1.2.3
+  * Hide some private symbols.
+  * bfo #14388: Remove XRRScreenConfig() and XRRConfig() from
+    Xrandr.h.
+  * Rename parameters to clarify QueryVersion/QueryExtension.
+  * bfo #16430: Ignore ConfigureNotify on non-root windows in
+    UpdateConfiguration 
+- libXfont 1.3.3
+  * Don't allow a font alias to point to itself and create a loop
+  * FontFileDirectoryChanged: check length of "fonts.alias" as well
+    as "fonts.dir"
+  * Add missing include in src/FreeType/ftfuncs.c
+  * Do not call FT_Get_BDF_Charset_ID() if configured with 
+    --disable-bdfformat
+- obsoletes libXfont-commit-0f9db4a.diff
+- libXxf86vm 1.0.2
+  * bfo #10846: Fix XF86VidModeGetMonitor when vendor or model are
+    null.
+  * Don't terminate zero-length strings.
+- libXft 2.1.13
+  * bfo #14232: Fix XftDrawRect when Render not supported.
+  * XftFontOpenInfo: Use of uninitialised value of size 8
+    (bfo #11200)
+  * Register objects used by libXft.
+- obsoletes p_xft_register.diff
+
+-------------------------------------------------------------------
+Thu Jun 12 23:17:09 CEST 2008 - sndirsch@suse.de
+
+- libpciaccess 0.10.3
+
+-------------------------------------------------------------------
+Thu May 22 09:38:35 CEST 2008 - sndirsch@suse.de
+
+- libFS 1.0.1
+  * Put all copyright/license notices into COPYING file
+  * Replace sprintf with snprintf
+  * libFS ansification.
+
+-------------------------------------------------------------------
+Thu May 22 02:27:07 CEST 2008 - sndirsch@suse.de
+
+- libpciaccess 0.10.2
+  * Linux: Fail gracefully on machines without PCI.
+  * Initialize err to 0 in pci_device_solx_devfs_map_range
+  * Add pci_system_solx_devfs_create prototype to
+    pciaccess_private.h
+  * Fix lint warnings in solx_devfs.c
+  * Fix function prototypes for C++
+  * linux: add pci_device_enable entrypoint and sysfs support for
+    it
+  * Add DragonFly BSD support
+  * solaris: add pci_tools.h to OS_SUPPORT
+  * Kludge around linux bug and turn off write-through and
+    cache-disable bits
+  * OpenBSD support for libpciaccess.
+  * Bug #13988: Fix reads from "0"-sized ROMs.
+
+-------------------------------------------------------------------
+Wed May 14 12:16:06 CEST 2008 - sndirsch@suse.de
+
+- libXfont-commit-0f9db4a.diff
+  * fixes 2 byte buffer overflow (bnc #390065)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sun Mar 30 18:05:47 CEST 2008 - sndirsch@suse.de
+
+- pixman 0.10.0
+  * Support for new YUV formats
+  * MMX acceleration now works with MS Visual C++
+  * Many performance improvements and bug fixes
+
+-------------------------------------------------------------------
+Tue Mar 18 10:21:15 CET 2008 - sndirsch@suse.de
+
+- libXScrnSaver 1.1.3 
+
+-------------------------------------------------------------------
+Thu Mar  6 22:14:04 CET 2008 - sndirsch@suse.de
+
+- libpciaccess 0.10
+- libXinerama 1.0.3 
+
+-------------------------------------------------------------------
+Thu Mar  6 08:07:27 CET 2008 - sndirsch@suse.de
+
+- libXfont 1.3.2 
+  * obsoletes bug348296-pcf_font_parser-libXfont.diff
+
+-------------------------------------------------------------------
+Fri Feb 29 16:26:45 CET 2008 - dmueller@suse.de
+
+- add missing %postun call to ldconfig
+
+-------------------------------------------------------------------
+Fri Jan 18 01:37:25 CET 2008 - sndirsch@suse.de
+
+- bug348296-pcf_font_parser-libXfont.diff
+  * PCF font parser vulnerability (Bug #348296)
+
+-------------------------------------------------------------------
+Thu Nov 22 22:20:16 CET 2007 - sndirsch@suse.de
+
+- pixman --> pixman-1
+- obsoletes pixman.diff
+
+-------------------------------------------------------------------
+Thu Nov 15 12:45:25 CET 2007 - sndirsch@suse.de
+
+- pixman 0.9.6
+  * fixes X.Org Bug 12398
+  * no longer run SSE instructions on non-SSE CPUs
+
+-------------------------------------------------------------------
+Sat Sep 29 18:53:34 CEST 2007 - sndirsch@suse.de
+
+- pixman.diff:
+  * fixed pkgconfig file 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:24:09 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Thu Sep  6 23:25:32 CEST 2007 - sndirsch@suse.de
+
+- pixman-0.9.5
+  * Don't skip fbFetch/fbStore when PIXMAN_FB_ACCESSORS is enabled.
+  * Remove redundant defines.
+  * Remove unnecessary wrapping from fbFetch/fbStore.
+  * One more minor wrapping fix
+  * Fix typo AC_MAJOR -> PIXMAN_MAJOR
+  * Update .pc file for library version name change.
+  * Fix failure to set identity transform in pixman.
+  * Add conjoint and disjoint operators to pixman.h
+  * Remove trailing comma in enum
+  * Add missing comma in enum
+  * Set accessors for the destination image in composite-test.c
+  * Add pixman_image_set_source_clipping()
+  * Fix bug 12039, based on Chris Wilson's patch
+  * rasterize traps that extend outside of the image bounds
+    correctly
+- libXi 1.1.3
+  * The most important feature of this release is a set of locking 
+    fixes, which unbreak this library for threaded apps. The lock
+    issues were exposed by libxcb.
+- libXfont 1.3.1
+  * This release fixes bugs in the catalogue dir support.
+- libXrandr 1.2.2
+  * This release fixes a protocol encode/decode copy'n'paste bug.
+- libXxf86dga 1.0.2
+  * This release fixes a sign-extension bug with nasty results on
+    I32L64 platforms.
+
+-------------------------------------------------------------------
+Tue Aug 28 04:16:35 CEST 2007 - sndirsch@suse.de
+
+- added libpciaccess (release 0.9.1) 
+
+-------------------------------------------------------------------
+Mon Aug 27 03:04:57 CEST 2007 - sndirsch@suse.de
+
+- libXcursor 1.1.9
+  * Use cursorpath found by configure in man page
+  * Add XCURSOR_PATH to man page
+  * Make shadow man pages for each function
+  * Store the cursor names in one large string.
+
+-------------------------------------------------------------------
+Fri Aug 24 15:52:52 CEST 2007 - sndirsch@suse.de
+
+- libXaw 1.0.4
+  * Use iswalnum() if it's present as a function, not just if it's
+    #defined 
+  * Bug #11091: libXaw COPYING file
+  * Bug #9649: Bad markup on XAw.3x
+  * obsoletes bug233919-libXaw.diff
+
+-------------------------------------------------------------------
+Tue Aug 21 22:53:55 CEST 2007 - sndirsch@suse.de
+
+- fixed build of libpixman 
+
+-------------------------------------------------------------------
+Sat Aug 18 09:17:27 CEST 2007 - sndirsch@suse.de
+
+- libXtst man pages generation fails if srcdir != builddir 
+
+-------------------------------------------------------------------
+Wed Aug  8 23:04:35 CEST 2007 - sndirsch@suse.de
+
+- pixman 0.9.4
+  * This is the initial release of the pixman library. Pixman
+    contains lowlevel pixel manipulation routines and is used by
+    both xorg and cairo.
+
+-------------------------------------------------------------------
+Thu Aug  2 12:20:04 CEST 2007 - sndirsch@suse.de
+
+- libXi 1.1.2
+  * "Brown paper bag release, that actually lets
+    DevicePresenceNotify work: cf. 
+    http://people.freedesktop.org/~daniels/devicemon.c."
+
+-------------------------------------------------------------------
+Thu Jul  5 15:36:31 CEST 2007 - sndirsch@suse.de
+
+- libXi 1.1.1
+  * DevicePresenceNotify: remove verbosity, fill out all fields
+  * Makefile.am: make ChangeLog hook safer
+  * Bug #8663: _XiCheckExtInit must drop the Display lock in all
+    error cases.
+  * Bug 9657: Bad markup on XGrabDeviceKey.3x
+
+-------------------------------------------------------------------
+Wed Jul  4 21:26:04 CEST 2007 - sndirsch@suse.de
+
+- libXfont 1.3.0
+  * Ok, here's another libXfont release.  There was a crasher where 
+    strstr would chase a NULL pointer if a symlink didn't have any
+    attributes. This release fixes that, and in retrospect I
+    declare the 1.2.9 release a beta release and am bumping the
+    minor in with this release to indicate the new catalogue
+    feature.
+- libXcomposite 0.4.0
+  * Follow composite protocol version to 0.4, although there is no
+    ABI change.
+
+-------------------------------------------------------------------
+Thu Jun  7 22:06:43 CEST 2007 - sndirsch@suse.de
+
+- updated libXtst to release 1.0.2
+  * ANSIfy static function declarations (clears some lint warnings)
+  * Coverity #578/579: Don't leak memory if one malloc fails but
+    other succeeds
+  * Add man pages for XTest*() functions
+
+-------------------------------------------------------------------
+Thu May  3 06:57:44 CEST 2007 - sndirsch@suse.de
+
+- updated libXcomposite to release 0.3.2
+  * No code changes since 0.3.1 - just adding a man page for the 
+    API. 
+
+-------------------------------------------------------------------
+Tue May  1 12:45:29 CEST 2007 - sndirsch@suse.de
+
+- updated libvnc/libXcliplist to current CVS (2007-05-01) 
+
+-------------------------------------------------------------------
+Wed Apr 11 22:12:01 CEST 2007 - sndirsch@suse.de
+
+- updated libXi to release 1.0.4 
+  * Don't call XInput_find_display in _XiGetExtensionVersion, while
+    the Display lock is held.
+- obsoletes libXi-20061015090357.diff
+
+-------------------------------------------------------------------
+Wed Apr 11 03:52:26 CEST 2007 - sndirsch@suse.de
+
+- updated libXi to release 1.0.3
+  * X.Org Bug #8663: _XiCheckExtInit must drop the Display lock in
+    all error cases 
+- obsoletes libXi-20061119100426.diff
+
+-------------------------------------------------------------------
+Fri Apr  6 11:45:46 CEST 2007 - sndirsch@suse.de
+
+- updated libXfont to release 1.2.8:
+  * Actually use loadable font modules
+  * Add #pragma weak for Sun cc where needed
+  * added -flat_namespace to CFLAGS for Darwin
+  * Integer overflow vulnerabilities
+- obsoletes bug-247730-247732_libXfont.diff
+
+-------------------------------------------------------------------
+Mon Mar 26 12:57:55 CEST 2007 - sndirsch@suse.de
+
+- bug-247730-247732_libXfont.diff:
+  * X Window System Server fonts.dir File Parsing Integer Overflow
+    Vulnerability / X Window System Server BDF Font Parsing Integer
+    Overflow Vulnerability (Bugs #247730, #247732)
+
+-------------------------------------------------------------------
+Sat Mar 17 11:11:50 CET 2007 - sndirsch@suse.de
+
+- updated libXinerama to release 1.0.2
+  * Add support for source code checkers such as sparse & lint
+  * Clear sparse warnings & error
+  * Remove unneeded #include of <stdio.h>
+  * Add man page for Xinerama API functions
+
+-------------------------------------------------------------------
+Wed Mar 14 22:08:28 CET 2007 - sndirsch@suse.de
+
+- updated libXdamage to release 1.1.1
+  * This release fixes the DSO versioning for the added ABI. 
+
+-------------------------------------------------------------------
+Mon Mar  5 06:28:10 CET 2007 - sndirsch@suse.de
+
+- updated libXrandr to release 1.2.1
+  * Fix the use of a C++ keyword as a parameter name in Xrandr.h
+- obsoletes p_xrandr-headers.diff
+
+-------------------------------------------------------------------
+Sat Mar  3 05:33:02 CET 2007 - sndirsch@suse.de
+
+- added xcb-util 0.2: 
+  The xcb-util module provides a number of libraries which sit on
+  top of libxcb, the core X protocol library, and some of the
+  extension libraries. These experimental libraries provide
+  convenience functions and interfaces which make the raw X
+  protocol more usable. Some of the libraries also provide
+  client-side code which is not strictly part of the X protocol but
+  which have traditionally been provided by Xlib. These libraries
+  are currently included, roughly ordered by maturity:
+  * render-util: Convenience functions for the Render extension.
+  * aux: Convenient access to connection setup and some core
+    requests.
+  * atom: Standard core X atom constants and atom caching.
+  * property: Callback X property-change handling.
+  * icccm: Both client and window-manager helpers for ICCCM.
+  * keysyms: Standard X key constants and conversion to/from
+    keycodes.
+  * event: Callback X event handling.
+  * image: Port of Xlib's XImage and XShmImage functions.
+  * wm: Framework for window manager implementation.
+
+-------------------------------------------------------------------
+Thu Mar  1 22:26:14 CET 2007 - sndirsch@suse.de
+
+- libXxf86misc-xcb.diff:
+  * added missing UnlockDisplay() calls
+
+-------------------------------------------------------------------
+Fri Feb 23 14:46:06 CET 2007 - dmueller@suse.de
+
+- p_xrandr-headers.diff:
+  * delete is a keyword in non-C languages
+
+-------------------------------------------------------------------
+Fri Feb 23 11:00:51 CET 2007 - sndirsch@suse.de
+
+- libXrandr.diff:
+  * fixes fatal warning 
+
+-------------------------------------------------------------------
+Wed Feb 21 18:34:06 CET 2007 - sndirsch@suse.de
+
+- updated libXrandr to release 1.2.0
+  * Merge branch 'randr-1.2' 
+  * Add support for various output property requests.
+  * Return the right actual property type for XRRGetOutputProperty.
+  * Return a valid property info even if we lack valid value sets.
+  * Start update to 1.2, splitting code across multiple files.
+  * XRRGetScreenSizeRange returns Status. Lots more requests added.
+  * Add mode origins and output options.
+  * Remove mode origins. Add preferred mode count.
+  * Moving physical size from mode to output.
+  * Remove RandR output options.
+  * Change properties to have a pending value and report valid values.
+  * Add initial implementation of crtc gamma and mode adding requests.
+  * Failed to copy rotations from reply to XRRCrtcInfo.
+  * Avoid nested LockDisplay calls.
+  * Fix read sizes for 64-bit machines.
+  * Merge 64-bit fixes in
+  * Must pass size information in SetCrtcGamma request.
+  * Reset version from 1.2.0.0 to 1.2.0
+
+-------------------------------------------------------------------
+Tue Jan 23 18:00:09 CET 2007 - sndirsch@suse.de
+
+- bug233919-libXaw.diff:
+  * fixes buffer overflow in xedit (Bug #233919) 
+
+-------------------------------------------------------------------
+Tue Jan 23 10:07:54 CET 2007 - sndirsch@suse.de
+
+- updated libXfont to release 1.2.7
+  * fontfile: accept empty (but valid) font paths (bug #3091)
+  * Add stubs for the scalable renderer callbacks.
+
+-------------------------------------------------------------------
+Fri Jan 12 00:34:03 CET 2007 - sndirsch@suse.de
+
+- added libvnc/libXcliplist from xf4vnc project
+
+-------------------------------------------------------------------
+Thu Jan 11 05:24:04 CET 2007 - sndirsch@suse.de
+
+- updated libXdamage to release 1.1
+  * adds the interface to the new DamageAdd request
+
+-------------------------------------------------------------------
+Thu Jan  4 07:16:04 CET 2007 - sndirsch@suse.de
+
+- updated libXaw to release 1.0.3
+  * Fix configure option --disable-xaw6 to not break builds of xaw7 
+    or xaw8 & rebuild with latest autoconf/automake/xorg-macros.
+
+-------------------------------------------------------------------
+Wed Dec 27 17:26:51 CET 2006 - sndirsch@suse.de
+
+- set sysconfdir appropriate (Bug #230714)
+
+-------------------------------------------------------------------
+Wed Dec 20 04:50:19 CET 2006 - sndirsch@suse.de
+
+- libXi-20061015090357.diff:
+  * Don't call XInput_find_display in _XiGetExtensionVersion, 
+    while the Display lock is held (X.Org Bug #8581/9392)
+- libXi-20061119100426.diff:
+  * _XiCheckExtInit must drop the Display lock in all
+    error cases (X.Org Bug #8663)
+
+-------------------------------------------------------------------
+Sun Dec 17 12:08:36 CET 2006 - sndirsch@suse.de
+
+- updated libXScrnSaver to release 1.1.2
+  * Makefile.am: make ChangeLog hook safer
+- updated libXfont to release 1.2.6
+  * Makefile.am: make ChangeLog hook safer
+  * don't distribute fontconf.h
+  * build Type1 by default
+- updated libXfontcache to release 1.0.4
+  * Makefile.am: make ChangeLog hook safer
+- updated libXres to release 1.0.3
+  * Makefile.am: make ChangeLog hook as safe as possible
+- updated libXvMC to release 1.0.4
+  * Makefile.am: make ChangeLog hook safer
+
+-------------------------------------------------------------------
+Sat Dec  9 15:25:48 CET 2006 - sndirsch@suse.de
+
+- updated libXft to release 2.1.12
+  * XftNameUnparse: re-export to public API (bug #8900) 
+
+-------------------------------------------------------------------
+Sun Dec  3 15:54:06 CET 2006 - sndirsch@suse.de
+
+- moved libxcb to seperate package (xorg-x11-libxcb)
+- updated libXfont to release 1.2.5
+  * remove CID font support (bug #5553)
+
+-------------------------------------------------------------------
+Mon Nov 27 12:40:56 CET 2006 - dmueller@suse.de
+
+- reduce p_xft_cjk.diff to only disable antialiasing on
+  fonts with embedded bitmaps (Bug #223682)
+
+-------------------------------------------------------------------
+Fri Nov 10 14:58:52 CET 2006 - sndirsch@suse.de
+
+- fixed typo in libxkbui (Bug #219732)
+
+-------------------------------------------------------------------
+Wed Nov  8 16:55:34 CET 2006 - sndirsch@suse.de
+
+- updated libXdamage to release 1.0.4 (X.Org 7.2 RC2)
+  * Remove incorrect UnlockDisplay and SyncHandle from
+    XDamageQueryVersion
+- updated libXi to release 1.0.2 (X.Org 7.2 RC2)
+  * fix indentation on function declarations
+  * Don't call XInput_find_display in _XiCheckExtInit, while the 
+    Display lock is held.
+
+-------------------------------------------------------------------
+Fri Nov  3 11:54:25 CET 2006 - sndirsch@suse.de
+
+- updated optional libxcb to release 1.0 RC3 (0.9.93)
+
+-------------------------------------------------------------------
+Fri Oct 20 12:54:28 CEST 2006 - mfabian@suse.de
+
+- Bugzilla 213320: add lcd-filter-2 patch from David Turner, see
+  http://lists.gnu.org/archive/html/freetype/2006-09/msg00083.html
+  http://david.freetype.org/lcd/libXft-2.1.7-lcd-filter-2.patch
+  (This patch is needed for freetype >= 2.2.2).
+
+-------------------------------------------------------------------
+Mon Oct 16 12:51:02 CEST 2006 - sndirsch@suse.de
+
+- added optional libxcb 
+
+-------------------------------------------------------------------
+Sat Oct 14 06:27:12 CEST 2006 - sndirsch@suse.de
+
+- package update to X.Org 7.2RC1
+  * libXevie-1.0.2
+  * libXfontcache-1.0.3
+  * libXres-1.0.2
+  * libXfont-1.2.3
+  * libXcomposite-0.3.1
+  * libXcursor-1.1.8
+  * libXrandr-1.1.2
+  * libXScrnSaver-1.1.1
+  * libXft-2.1.11
+
+-------------------------------------------------------------------
+Mon Oct  9 15:53:29 CEST 2006 - sndirsch@suse.de
+
+- updated to libXvMC 1.0.3:
+  * Minor cleanup release - just some sparse warning cleanups, and
+    adding autoconf check to enable shmat() code (missed in
+    original conversion from Imake).
+
+-------------------------------------------------------------------
+Tue Sep 12 20:47:36 CEST 2006 - sndirsch@suse.de
+
+- updated libXfont to release 1.2.2
+  * Fixes for integer overflows in CID encoded fonts parsing
+    reported by iDefense
+  * More check on PCF file reading. Bugzilla #7535
+  * use OpenBitmap when available
+  * move builtin fonts to gzip
+  * Bug #7397: Fix a buffer overflow in Freetype font support.
+  * obsoletes libXfont-pcfread.diff
+
+-------------------------------------------------------------------
+Thu Aug 31 23:10:02 CEST 2006 - sndirsch@suse.de
+
+- fixed libXaw Provides for 64bit (Bug #198461)
+
+-------------------------------------------------------------------
+Sat Aug 12 05:29:53 CEST 2006 - sndirsch@suse.de
+
+- added libXft1 (Bug #198432)
+
+-------------------------------------------------------------------
+Sat Aug  5 22:47:55 CEST 2006 - sndirsch@suse.de
+
+- p_xft_cjk.diff:
+  * adds fake bold support to Xft library (Bug #38202) 
+- p_xft_register.diff:
+  * new fontconfig objects needs to be registered first (Bug #141216)
+
+-------------------------------------------------------------------
+Wed Aug  2 10:55:54 CEST 2006 - sndirsch@suse.de
+
+- added /usr/include/X11/pixmaps/ to filelist 
+
+-------------------------------------------------------------------
+Mon Jul 31 14:46:40 CEST 2006 - sndirsch@suse.de
+
+- moved bitmap directory from -devel to main package
+
+-------------------------------------------------------------------
+Fri Jul 28 14:45:02 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:48:49 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre 
+
+-------------------------------------------------------------------
+Wed Jul 26 07:39:21 CEST 2006 - sndirsch@suse.de
+
+- libXfont-pcfread.diff:
+  * handle malformed pcf files (Bug #192095)
+
+-------------------------------------------------------------------
+Fri Jun 23 17:22:12 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

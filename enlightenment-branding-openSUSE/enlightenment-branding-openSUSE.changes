@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Wed Jun 10 06:56:12 UTC 2015 - simon@simotek.net
+
+- At the recommendation of DimStar Obsolete but don't provide 
+  e17 branding
+
+-------------------------------------------------------------------
+Mon Dec 29 11:58:54 UTC 2014 - simon@simotek.net
+
+- Should require openSUSE Profiles as these are a fundamental part 
+  of the branding
+
+-------------------------------------------------------------------
+Mon Sep 22 02:43:56 UTC 2014 - simon@simotek.net
+
+- New 13.2 themes added
+- Updated def-ibar.txt
+  Includes hexchat and xchat in text implementations
+  Browsers before text editors
+  Add kate to the list of text editors
+  Add Yast2
+
+-------------------------------------------------------------------
+Wed Feb 19 01:04:34 UTC 2014 - simon@simotek.net
+
+- Fixed Summary's mention of e17 and tried to fix
+  Branding conflicts.
+
+-------------------------------------------------------------------
+Tue Feb 18 11:04:53 UTC 2014 - simon@simotek.net
+
+- Conflict with e17 branding
+
+-------------------------------------------------------------------
+Tue Dec 24 03:34:54 UTC 2013 - simon@simotek.net
+
+- update for terminology
+
+-------------------------------------------------------------------
+Sun Dec 22 05:42:53 UTC 2013 - simon@simotek.net
+
+- e-theme-openSUSE replaced with e17-theme-openSUSE
+
+-------------------------------------------------------------------
+Sun Nov  3 12:57:01 UTC 2013 - simon@simotek.net
+
+- Require default theme otherwise e17 won't start the first time
+
+-------------------------------------------------------------------
+Wed Oct  2 06:02:30 UTC 2013 - simon@simotek.net
+
+- Use new openSUSE theme as default
+  Recommend other themes as well
+
+-------------------------------------------------------------------
+Thu Jan 10 23:47:45 UTC 2013 - sleep_walker@suse.cz
+
+- add AUTHORS and COPYING files
+- name files properly
+
+-------------------------------------------------------------------
+Wed Jan  9 11:53:48 UTC 2013 - sleep_walker@suse.cz
+
+- require e-profiles-openSUSE
+
+-------------------------------------------------------------------
+Fri Jan  4 21:28:53 UTC 2013 - sleep_walker@suse.cz
+
+- require default theme for now
+
+-------------------------------------------------------------------
+Tue Dec 18 20:59:05 UTC 2012 - sleep_walker@suse.cz
+
+- let there be openSUSE branding!
+

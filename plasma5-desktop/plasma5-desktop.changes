@@ -1,0 +1,1929 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:18 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- Changes since 5.16.3:
+  * Do not skip code launching application in application dashboard (kde#408748)
+  * Properly initialize oldStart and oldEnd in PreviewImageProvider::requestImage (kde#409518)
+  * Fix compilation with Qt 5.13 (missing include QTime)
+  * [LNF KCM] make it possible to close the preview
+  * [Fonts KCM] Alter DPI only on explicit user interaction (kde#405572)
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- Changes since 5.16.2:
+  * Fix compilation without libinput
+  * Add missing libinput include
+  * Also filter on the ghns_excluded tag, otherwise they'll be shown...
+  * Add TagFilter (for top level tags), and don't explicitly reject 4
+  * Filter KNewStuff Plasma Themes by Download Tag
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- Changes since 5.16.1:
+  * make appstream validate
+  * [Look and Feel and KSplash KCM] Set sourceSize for thumbnail
+  * [Task Manager] Prefer PID match even when desktop entry doesn't match
+  * Fix merge screwup
+  * [Kickoff/Dash] Show Calculator and Unit Converter runners
+  * Increment iterator before any potential continue
+  * Reject duplicate events with identical coordinates
+  * Fix ocasional crash on the touchpad kded
+  * [Colors KCM] Assign properties in a binding
+  * touchpad: fix some easy warnings
+  * [Touchpad KCM] Do not crash in case there is no touchpad (kde#408325)
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:15 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- Changes since 5.16.0:
+  * [desktoppackage] Re-add spacing between inline message and first UI element (kde#408712)
+  * doc: Write docbook date in standard format
+  * Replace the excludeRange mode setting when already available (kde#244857,kde#408415)
+  * [minimzeall] Change panel icon size to smallMedium
+
+-------------------------------------------------------------------
+Thu Jun 13 21:25:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- File moved to %_kf5_dbuspolicydir
+
+-------------------------------------------------------------------
+Mon Jun 10 10:08:54 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Tar got respun
+- Remove patches, now upstream:
+  * 0001-kcm_fonts-Fix-tracking-of-configuration-changes.patch
+
+-------------------------------------------------------------------
+Fri Jun  7 11:34:13 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix issues with kcm_fonts (kde#402381):
+  * 0001-kcm_fonts-Fix-tracking-of-configuration-changes.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * [showdesktop][minimizeall] Reduce the maximum panel icon size
+  * Make the Trashcan applet use the same shadow settings as desktop icons
+  * kcm_colors: Extract i18n messages from .ui files
+  * Allow 'Exclude folders' section in Baloo KCM to fill window (kde#407709)
+  * [Notifications] Delay configuring events
+  * [Notifications] Return invalid model index for empty query
+  * [Touchpad KCM] Revoke touchpad enabled/disabled notification before sending a new one (kde#387590)
+  * [Notifications KCM] Try both model indices
+  * [Touchpad KCM] Fix kded crashing at startup (kde#407614)
+  * Revert project version
+  * [Touchpad KCM] Fixed loading of wrong qml file (kde#398228)
+  * [WidgetExplorer] Fix blurry previews
+- Remove patches, now upstream:
+  * 0001-Touchpad-KCM-Fix-kded-crashing-at-startup.patch
+
+-------------------------------------------------------------------
+Mon May 20 12:01:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix kded crash (kde#407614):
+  * 0001-Touchpad-KCM-Fix-kded-crashing-at-startup.patch
+
+-------------------------------------------------------------------
+Thu May 16 16:56:39 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  7 11:04:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * [WidgetExplorer] Fix blurry previews
+  * Allow folder view elements to be be dropped using other Action than Copy
+  * [Widget Explorer] Continue using a trash can icon for deleting delegates
+  * [kcolorschemeeditor] Use config path instead of searching again (kde#399951)
+  * [Folder View] use Math.floor() instead of Math.round()
+  * [Folder View] Improve label crispness
+  * [Folder View] Use a more reasonable minimum cell width (kde#403412)
+  * [Kickoff] Return Kickoff to Favorites page after running a search
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- Changes since 5.15.3:
+  * Harmonize use of HAVE_X11, using cmakedefine01.
+  * Use camelcase KPeople headers, they do work.
+  * [KickerDash] Add missed argument in addFavorite
+  * [Kicker] Fix "Tooltip can not be displayed" (kde#390804)
+  * [Desktop Theme KCM] Emit current index change when resetting the model
+  * [Pager] Shrink label font size dynamically
+  * [Splash KCM] Sort "None" first
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:22 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- Changes since 5.15.2:
+  * [Splash KCM] Sort "None" first
+  * Make Ctrl+A work regardless of focus and visualize active selection in search heading
+  * [Task Manager] Fix virtual desktops subtext on task tooltip
+  * Reset tooltip delegate label height to defaults (kde#401842)
+  * [kcolorschemeditor] Don't re-add existing tab (kde#393282)
+  * [Task Manager] Make sure "Alternatives..." context menu item is always available (kde#404969)
+  * [ConfigCategoryDelegate] Add horizontal padding to the label
+- Workaround doc translation needing a newer kdoctools
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:46 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- Changes since 5.15.1:
+  * [Kickoff] Don't respond to window resizing/tiling shortcuts (kde#402614)
+  * [Kickoff] remove hint state
+
+-------------------------------------------------------------------
+Tue Feb 19 12:26:25 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- Changes since 5.15.0:
+  * [Kickoff] Return Kickoff to Favorites page after running a search
+  * Use Dialog's visibility directly rather than relying on the mainItem's
+  * [Containment Actions Configuration] Fix changing plugin
+  * Sort setting grid views alphabetically (kde#400404)
+  * [Activities KCM] Properly vertically center the buttons
+  * Revert "[Activities KCM] vertically center the buttons"
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:52 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * [Activities KCM] Properly vertically center the buttons
+  * Revert "[Activities KCM] vertically center the buttons"
+  * [kcms/cursortheme] Correctly load m_originalPreferredSize (kde#403775)
+  * [kcms/mouse] Load current server settings in kcminit (kde#395401)
+  * [kcms/keys] Fix double margin
+  * [kcms/launch] Avoid infinite loop in button handling (kde#403950)
+  * [Look and Feel KCM] Write schemeName last (kde#403774)
+  * [Task Manager] Sort manually by default
+  * Fix new file creation leading to dupe items on a fresh view (kde#401023)
+  * Use https urls in doc
+  * Use https URLS
+  * Check icon positions after move (kde#402574)
+  * Defer initial positions apply until listing is complete (kde#354802)
+  * [KRDB] Also try wildcard tooltip (kde#355540)
+  * [KRDB] Write correct tooltip colors into gtkrc in kcminit
+  * [kcms/cursortheme] Fix size combo (kde#403019)
+  * [kcms/cursortheme] Set theme before loading size
+  * Don't put some KCMs in a single-item top-level category
+  * Set libkworkspace minimum version
+  * [build] Search for kirigami as a runtime dependency
+  * [Date & Time KCM] Fix clock display with fractional scale factor (kde#396936)
+
+-------------------------------------------------------------------
+Thu Jan 17 18:48:19 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * [Activities KCM] Disable delete button when there's only one activity BUG: 397887 FIXED-IN; 5.12.8 (kde#397887)
+  * [Activities KCM] vertically center the buttons
+  * Fix removing first item in languages list (kde#401473)
+  * Make accessibility warning dialog usable again and fix event handling
+  * Make accessibility warning dialog usable again
+  * Make sure m_labelMode is initialised
+  * Round label width
+  * [Folder View] implement a minimum width for icon view to ensure that labels are never rendered useless (kde#379432)
+  * Fix group popup dialog (kde#401508)
+- Remove patches, now upstream:
+  * 0001-Fix-group-popup-dialog.patch
+
+-------------------------------------------------------------------
+Fri Dec 14 12:50:34 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add back xf86-input-synaptics recommends as libinput configuration
+  is still lacking, leading to complaints
+
+-------------------------------------------------------------------
+Wed Nov 28 16:09:02 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch from Plasma/5.14 to fix the group dialog (kde#401508):
+  * 0001-Fix-group-popup-dialog.patch
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:47 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * [Folder View] improve label contrast against challenging backgrounds (kde#361228)
+  * [Componentchooser KCM] Make default browser app choice work even when combobox is not used (kde#350663)
+  * Minor: Fix -Wextra-semi warning
+  * Fix dismissing the Dashboard by clicking inbetween multi-grid categories. (kde#400720)
+  * Revert unintended line
+  * Compress calls to `updateSize` (kde#400364)
+  * Remove debug
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:48 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- Changes since 5.14.2:
+  * [Libinput KCMs] Remove tiny dots by using Kirigami.Separator correctly
+  * Swap Trash/Delete when Shift is used while the menu is open (kde#395155)
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:05 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- Changes since 5.14.1:
+  * Remove.
+  * Focus handling fixes (kde#399566)
+  * [Kicker] Rename id column to itemColumn
+  * Add accessibility information to desktop icons
+
+-------------------------------------------------------------------
+Thu Oct 18 14:48:36 UTC 2018 - Michal Suchanek <msuchanek@suse.de>
+
+- Bump memory requirement on ppc64 - builds randomly fail.
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:15 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- Changes since 5.14.0:
+  * Focus handling fixes (kde#399566)
+- Remove patches, now upstream:
+  * 0001-Focus-handling-fixes.patch
+
+-------------------------------------------------------------------
+Thu Oct 11 13:41:27 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix keyboard input on the desktop:
+  * 0001-Focus-handling-fixes.patch
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Fix initial focus (kde#399185)
+  * [Folder View] Don't spawn multiple stat jobs for the same folder
+  * Fix drop between shared views
+  * Add lock icon to desktop context menu
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:29 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:41 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * [plasma-changeicons] Call sync() after writing
+  * Revert "Fix bad model hygiene in Positioner::move()"
+  * Kicker: Reset re-used menu width to default one
+  * [Style KCM] Use "configure" icon (kde#397358)
+  * fontinst quits after KJob is done (kde#379524,kde#379324,kde#349673,kde#361960,kde#392267)
+  * [Desktop Toolbox] Emit contextualActionsAboutToShow before opening (kde#384862)
+  * Fix bad model hygiene in Positioner::move() (kde#396666)
+- Remove patches, now upstream:
+  * fontinst-quits-after-KJob-is-done.patch
+
+-------------------------------------------------------------------
+Tue Jul 31 13:24:21 UTC 2018 - wbauer@tmo.at
+
+- Add fontinst-quits-after-KJob-is-done.patch to fix problems when
+  installing/removing multiple fonts system-wide at once
+  (kde#379524, kde#379324, kde#349673, kde#361960, kde#392267)
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * Don't unintentionally change font rendering when rendering preview images
+  * [Folder View] Improve file name text rendering
+  * Give file and folder names a bit more room in Folder View
+  * Honor ghns KIOSK restriction in new KCMs
+  * [Kicker] Use KFilePlaces::convertedUrl for ComputerModel (kde#363337)
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:14 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * [Icons KCM] Clip delegate during animation
+  * [Icons KCM] Load preview pixmaps for animation on-demand and cache them
+  * [Font Management KCM] Only show on xcb platform (kde#364746)
+  * [Fonts KCM] Generate font rendering previews only on X (kde#396214)
+  * Correct Folder View sizing and representation switch behavior (kde#395477)
+  * [Splash Screen KCM] Fix "no thumbnail" icon for "None"
+  * Fix crash on post-initial refresh()
+  * [Icons KCM] Also set minimum width for icon preview
+- Remove patches, now upstream:
+  * Correct-Folder-View-sizing-and-representation-switch-behavior.patch
+
+-------------------------------------------------------------------
+Wed Jul  4 21:31:21 UTC 2018 - wbauer@tmo.at
+
+- Add upstream patch to fix too tiny popups of Folderview widgets
+  in the panel (boo#1097992, kde#395477):
+  * Correct-Folder-View-sizing-and-representation-switch-behavior.patch
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:06 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * Fix tooltip woes (kde#382571,kde#385947,kde#389469,kde#388749)
+  * Revert "Fix tooltip woes"
+  * Remove unused entry X-KDE-DBus-ModuleName from kded plugins' metadata
+  * [kded kcm] Fix estimating dbusModuleName of kded plugins
+  * Set X-KDE-PluginInfo-Name=touchpad in KDED desktop file
+  * Revert "Touchpad KDED module: Convert to JSON metadata" (kde#395622)
+  * [Fonts KCM] disable "to" label when its companion controls are also disabled
+- Remove patches, now upstream:
+  * 0001-Revert-Touchpad-KDED-module-Convert-to-JSON-metadata.patch
+  * 0002-Set-X-KDE-PluginInfo-Name-touchpad-in-KDED-desktop-f.patch
+
+-------------------------------------------------------------------
+Tue Jun 19 14:45:15 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * Fix tooltip woes (kde#382571,kde#385947,kde#389469,kde#388749)
+  * Ref KConfig whilst we're using it (kde#394534)
+  * Fix accident.
+  * Touchpad KDED module: Convert to JSON metadata
+  * Swap Trash for Delete action when only one is enabled and the Shift modifier is pressed (kde#395155)
+  * Fonts KCM: Fix text readability regression
+- Add patches to fix the touchpad KCM:
+  * 0001-Revert-Touchpad-KDED-module-Convert-to-JSON-metadata.patch
+  * 0002-Set-X-KDE-PluginInfo-Name-touchpad-in-KDED-desktop-f.patch
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:51 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Too many changes to list here
+- Remove patches, now upstream:
+  * 0001-Fix-submenus-not-updating-when-switching-between-cat.patch
+  * 0002-Fix-submodel-population.patch
+
+-------------------------------------------------------------------
+Wed May 23 08:39:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Add Requires: kirigami2 to express the dependency directly
+
+-------------------------------------------------------------------
+Sat May 19 14:16:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Too many changes to list here
+- Remove patches, now upstream:
+  * 0001-Place-toolbox-in-the-top-right-corner-of-the-screen.patch
+- Add patches from Plasma/5.13 branch:
+  * 0002-Fix-submodel-population.patch
+
+-------------------------------------------------------------------
+Wed May  9 07:55:45 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix display of certain submenus in kicker (kde#394013):
+  * 0001-Fix-submenus-not-updating-when-switching-between-cat.patch
+
+-------------------------------------------------------------------
+Wed May  2 09:24:19 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * [Desktop Theme KCM] Workaround bug in FileDialog
+  * FunnelModel: fix invalid model API usage.
+  * [Window List] Show pin icon only when in panel (kde#391145)
+  * Make automounting work even if StorageAccess is ignored (kde#389479)
+  * [Folder View] Set shortcut on plasmoid.action (kde#392730)
+  * [Folder View] Use KStandardAction for rename, delete, and trash
+  * [Folder View] Simplify clearing of lists
+  * [Folder View] Update "Empty Trash" enabled state for files inside Trash and links to Trash (kde#392738)
+  * [System Model] Support actions
+  * Do clamping in the model and add missing lower bound check (kde#390888)
+- Remove patches, now upstream:
+  * Make-automounting-work-even-if-StorageAccess-is-ignored.patch
+
+-------------------------------------------------------------------
+Mon Apr  9 09:20:03 UTC 2018 - wbauer@tmo.at
+
+- Add Make-automounting-work-even-if-StorageAccess-is-ignored.patch
+  to fix Auto-mounting not working in some cases (kde#389479)
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * [Folder View] Fix selecting text with Shift+Home/End (kde#392318)
+  * Make Select/Deselect All operate on the filtered rows.
+  * Remove long-time deprecated Encoding=UTF-8 from desktop format files
+  * [touchpad kded] Work around kded fail on X-KDE-OnlyShowOnQtPlatforms lists
+  * [Touchpad KCM] Sync values to UI on Defaults in Wayland session (kde#392029)
+  * [Workspace Options KCM] sync() after writing settings
+  * bad textarea width for rename file if filename too short (kde#386546)
+  * Fix scrollbar on empty search results (kde#391644)
+  * kimpanel: Fix the window positioning when plasma uses native-qt scaling.
+  * Load correct wallpaper plugin configuration in the dialog
+  * Don't skip certain recent documents in kicker and taskmanager
+  * Improve multi-desktop folderview behavior (kde#390676)
+  * Use QUrl in the ScreenMapper API
+  * use opacity instead of visible (kde#391432)
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:50 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * [kaccess] Improve the port away from kdelibs4support
+  * [taskmanager applet] Disable MPRIS Stop entry in context menu if stopped
+  * [taskmanager applet] Fix MPRIS entries in context menu for CanPause==false
+  * [taskmanager applet] Fix MPRIS buttons in tooltip for CanPause==false
+  * Prevent duplicate entries in the Baloo kcm folders list.
+  * Improve detecting D&D between two screen showing the same URL
+  * [Task Manager] Limit badge label to a sane size
+
+-------------------------------------------------------------------
+Thu Mar  1 14:03:24 UTC 2018 - fabian@ritter-vogt.de
+
+- Backport upstream commit to move the toolbox away from the desktop icons:
+  * 0001-Place-toolbox-in-the-top-right-corner-of-the-screen.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * Disable positioning in popup folderviews
+  * [lookandfeel kcm] Do not declare plugin in lookandfeeltool code version, v2
+  * Revert "[lookandfeel kcm] Do not declare plugin in lookandfeeltool code version"
+  * Keep item highlighted when context menu opens
+  * [Look and feel KCM] Fix copying color scheme data
+  * Unbreak DND.
+  * [Application Dashboard] Fix erroneously using Plasma icons for applications (kde#390353)
+  * [Kickoff] Enable smooth scaling for icon
+  * Workaround the touchpad toggle button not working
+  * [lookandfeel kcm] Do not declare plugin in lookandfeeltool code version
+  * Fix launching by touchscreen tap (kde#366527)
+  * Fix window pin not showing (kde#390428)
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * Implement Tab/Backtab navigation (kde#387316)
+  * [touchpad kcm] No KLocalizedString::setApplicationDomain() in kded plugin
+  * [knetattach] Fix i18n calls being made before QApp creation
+  * [Mouse KCM] Check libinput Atom availability before using them (kde#389978)
+  * [Task Manager] Use KFilePlacesModel::isHidden
+  * Improve preview thumbnail quality (kde#376848)
+  * minor optimization: use reserve()
+  * [kwin & plasma-desktop runners] add missing TRANSLATION_DOMAIN definition
+  * Fix kded5 startup warning:
+  * Fix warnings in kded5 startup, due to i18n("")
+  * Require KDE Frameworks 5.42
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * Require KDE Frameworks 5.42
+  * fix applying color effects of the theme
+  * Fix iterator
+  * [Look and feel KCM] Destroy and recreate GHNS button when palette changes (kde#389351)
+  * [Look and feel KCM] Keep cursor size when applying theme
+  * [Look and feel KCM] Sync color group after copying over color file values (kde#370162)
+  * Remove QT_VERSION checks
+  * Bump Qt version to 5.9
+  * Make sure the search result that Return will run is highlighted
+  * Don't close plasmoid when closing a subdialog (kde#388669)
+  * Fix missing action arguments. (kde#389234)
+  * [Folder View] Don't trash local files
+  * [Style KCM] Sync KConfig before announcing change
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:06 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Support-font-ttf-and-font-otf-mimetypes-in-kfontinst.patch
+  * 0001-Folder-View-Accept-mouse-events-if-we-handled-them.patch
+
+-------------------------------------------------------------------
+Fri Jan 12 14:17:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix generation of font previews:
+  * 0001-Support-font-ttf-and-font-otf-mimetypes-in-kfontinst.patch
+
+-------------------------------------------------------------------
+Tue Jan  2 17:58:15 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * Don't show "Edit Application..." action for non-app services. (kde#388340)
+  * Use automoc keyword for kimpanel-scim-panel
+  * [Folder View] Show "Widgets unlocked" help only for containment (kde#387589)
+
+-------------------------------------------------------------------
+Sun Dec 17 10:53:13 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix issue appearing with Qt 5.10 (kde#387199):
+  * 0001-Folder-View-Accept-mouse-events-if-we-handled-them.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 10:46:07 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * Fix crash in KAStatsFavouritesModel (kde#386439)
+  * Be more explicit about Qt5::Widgets dependencies
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:42 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Default X font DPI to 96 on wayland
+
+-------------------------------------------------------------------
+Tue Oct 24 18:13:35 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * Default X font DPI to 96 on wayland
+  * kcm baloo: Fix extraction of folder basename for error message
+
+-------------------------------------------------------------------
+Sat Oct 21 13:46:43 UTC 2017 - fabian@ritter-vogt.de
+
+- Add #!BuildIgnore to break the
+  plasma5-workspace-devel -> plasma5-workspace -> kwin5 -> kdialog
+  dep chain which results in pulling in kdebase4-runtime on 42.2
+
+-------------------------------------------------------------------
+Tue Oct 17 17:19:09 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * [Task Manager] Understand applications: URLs in Unity launchers (kde#385730)
+  * kimpanel: we don't change text color in new implementation. remove used code.
+  * Fix QFile::copy warning when the colors file doesn't exist
+  * Fix editing items in SimpleFavoritesModel (kde#385463)
+  * Use correct .desktop file name when setting KMail as default
+- Remove patches, now upstream:
+  * 0001-Fix-editing-items-in-SimpleFavoritesModel.patch
+
+-------------------------------------------------------------------
+Sun Oct  8 19:30:16 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix editing of system icons in the runner favorite area:
+  * 0001-Fix-editing-items-in-SimpleFavoritesModel.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * kimpanel: Wrap everything in an item for PlasmaCore.Dialog
+  * kimpanel: another try to workaround kimpanel window not getting updated issue.
+  * Error out if the device returns a negative number of buttons
+  * Sync XRDB DPI to the platform specific setting
+  * Use a different key for font DPI on X and Wayland
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:06 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Too many changes to list here
+- Remove patches, now upstream:
+  * fix-writing-Qt4-font-settings.patch
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * Set focus in this FocusScope. (kde#383667)
+  * Compress size hint changes before releasing position and repositioning item. (kde#382759)
+  * Update size hints less often.
+  * Fix up botched patch.
+  * Disable bouncy scrolling.
+  * [Folder View] Don't process mime data if immutable (kde#383371)
+  * Fix group dialog no longer resizing/closing as windows are closed and the group is dissolved (kde#382638)
+  * Prefer using https for kns providers
+  * kimpanel: Reduce the inputpanel flicker.
+  * kimpanel: backport two commit not on 5.10 branch.
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * don't define behaviors for the same properies in 2 places
+  * kimpanel: use visualParent to correctly position the popup menu
+  * [Task Manager] Fix icon size in launcher tooltips (kde#380432)
+  * Fix crash in KCMKeyboardWidget::populateWithCurrentXkbOptions on Wayland
+  * Backport fix from e5df3ded85c94f0a33afe12b18e6afad96f12639.
+
+-------------------------------------------------------------------
+Sat Jul  1 08:57:33 UTC 2017 - wbauer@tmo.at
+
+- Add fix-writing-Qt4-font-settings.patch to fix syncing back the
+  configured general font to Qt4's config on login (kde#378262)
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:43 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * Fix clicking outside of preview popups to dismiss them corrupting mouse state (kde#380982)
+  * Fix crashes with 'Drag me' in touchpad test area (kde#346900,kde#366113)
+  * Fix DND onto Task Manager for groups, group dialog scrollbar (kde#379888,kde#379037)
+  * Remove implicit use of QtQml in Qt 5.7 (kde#380240)
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * Fix warning: Typo in enum notation.
+  * Fix warning: Not all models implement AppPid.
+  * Fix warning: x has no RESET, and this is unnecessary.
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:56 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Set 5.7 as minimum Qt version as it will not compile with anything less
+  * Disable session restoration in kaccess
+  * Force KAccess to run under XCB (kde#372597)
+  * [Folder View] Use a copy of QMimeData in signal handler (kde#380806)
+  * Add missing semicolon.
+  * React to changes in the size hint. (kde#378443)
+  * add session and power mgmt runners to kickoff
+- Remove patches, now upstream:
+  * 0001-Folder-View-Use-a-copy-of-QMimeData-in-signal-handle.patch
+
+-------------------------------------------------------------------
+Sun Jun  4 15:21:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix crash with upcoming kdeclarative 5.35:
+  * 0001-Folder-View-Use-a-copy-of-QMimeData-in-signal-handle.patch
+
+-------------------------------------------------------------------
+Sat Jun  3 21:21:36 UTC 2017 - fabian@ritter-vogt.de
+
+- Add workaround for boo#1038368:
+  * Rename org.kde.desktopcontainment to "Desktop Containment"
+    to not conflict with "Desktop" provided by org.kde.plasma.desktop
+
+-------------------------------------------------------------------
+Fri May 26 14:10:32 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * Only defer initial refresh when actually instanciated from QML. (kde#379783)
+  * enable edge resize only when the applet handle is open
+  * Implement the new panel icon size ceiling also for Input Method Panel. (kde#378443)
+  * Implement the new panel icon size ceiling also for Activities. (kde#378443)
+  * Implement the new panel icon size ceiling also for Kickoff. (kde#378443)
+  * fix editing of "current" color scheme
+  * Fix race condition in spring-loading timer management.
+  * Fix a bunch of reference errors introduced in 1aec30d9.
+  * Clear selection when opening desktop context menu.
+
+-------------------------------------------------------------------
+Thu May 11 20:26:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Too many changes to list here
+- Remove patches, now upstream:
+  * 0001-kcm_baloofile-Add-option-to-disable-file-content-ind.patch
+  * 0001-Fix-new-checkbox-for-file-content-indexing-in-kcm_ba.patch
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Apr 19 07:25:39 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstreamed patch to fix the apply button on the file content
+  indexing option (boo#1034800):
+  * 0001-Fix-new-checkbox-for-file-content-indexing-in-kcm_ba.patch
+
+-------------------------------------------------------------------
+Wed Apr 12 13:18:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstreamed patch to allow switching off baloo content indexing:
+  * 0001-kcm_baloofile-Add-option-to-disable-file-content-ind.patch
+
+-------------------------------------------------------------------
+Sat Apr  8 11:44:22 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove empty files in %_kf5_appstreamdir
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:46 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * [Kicker] Fix highlighting favorites
+  * Fix invalid reference of toolTipArea.
+  * [Folder View] Explicitly set prefix as empty in normal state (kde#377441)
+  * Do apply margin if in right-to-left mode. (kde#376529)
+  * [AppletAppearance] Silence warning
+  * [Folder View] Fix action button hover and pressed state
+  * Disable editing of 'Global Shortcuts' component names (kde#376935)
+  * Remove accidentally commited .directory file
+  * Fix switching categories via the filter listview on touchscreens.
+- Remove patches, now upstream:
+  * 0001-Folder-View-Explicitly-set-prefix-as-empty-in-normal.patch
+
+-------------------------------------------------------------------
+Sat Mar 18 16:47:43 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to workaround non-themed placeholder face icon in kickoff:
+  * 0001-Use-themed-user-face-icon-in-kickoff.patch
+
+-------------------------------------------------------------------
+Fri Mar 10 13:41:50 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix hovering folder view items with KDE Frameworks >= 5.32:
+  * 0001-Folder-View-Explicitly-set-prefix-as-empty-in-normal.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 19:55:19 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * [tooltips] Limit tooltip title to one line
+  * Add an option to limit the number of text lines in task buttons.
+  * Make the hover state optional.
+  * Make the hover state optional.
+  * Fix default fixed font in fonts kcm
+  * Avoid capturing MenuItem instead determine checked state from toggled signal
+  * Set root.dragging to false during reset.
+  * Revert "Revert "use KPluginMetaData::readStringList""
+  * Revert "use KPluginMetaData::readStringList"
+  * Use icon center for vertical hitscan on drop.
+  * Don't pin during reordering by DND.
+  * Revert "remove get new looks button from 5.8"
+  * remove get new looks button from 5.8
+- Remove patches, now upstream:
+  * 0001-Don-t-pin-during-reordering-by-DND.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 18:58:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix regression in 5.9.2:
+  * 0001-Don-t-pin-during-reordering-by-DND.patch
+
+-------------------------------------------------------------------
+Sat Feb 18 18:01:53 UTC 2017 - fabian@ritter-vogt.de
+
+- Add BuildRequires: plasma5-workspace to fix generation of package
+  metadata (needed in :LTS, apparently already pulled in by something else here)
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * Fix crash when invoking Present Windows with the group dialog open.
+  * Fix crash when invoking Present Windows with the group dialog open.
+  * [Folder View] Don't show script execution prompt on desktop:/
+  * Use proper version for baloo
+  * [Folder View] Don't show script execution prompt on desktop:/
+  * [Folder View] Support extracting files to sub-directories with drag and drop from Ark
+  * fix discover desktopid in favorties
+  * [ContextMenu] Ungrab mouse in taskmanager
+  * [taskmanager] Uniform tasmanager tooltips to systray ones
+  * [ContextMenu] Ungrab mouse in taskmanager
+  * [Task Manager] Don't import QtQuick 2.7
+  * Reverse TaskManager DragDrop to blacklist Plasma instead of whitelisting URLs
+- Remove patches, now upstream:
+  * plasma-desktop-run.patch
+
+-------------------------------------------------------------------
+Fri Feb 10 08:13:03 UTC 2017 - fabian@ritter-vogt.de
+
+- Fix build with breeze5-icons >= 5.31
+- Fix iconsdir paths
+
+-------------------------------------------------------------------
+Thu Feb  9 18:17:42 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix regression with security fix (allow running .desktop files
+  inside desktop:/, boo#1024446)
+  * plasma-desktop-run.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 18:54:31 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * [Solid Device Actions KCM] Encode action file name
+  * [Task Manager] Enable "Mark applications that play audio" option only if plasma-pa is available
+  * Fix i18n extraction in Kickoff Buttons
+  * Add missing include in sortedactivitiesmodel to fix build with GCC 7
+  * Add missing include in sortedactivitiesmodel to fix build with GCC 7
+  * Fix i18n extraction: xgettext doesn't recognize single quotes
+  * Use consistent default icon in UserManager and Kicker
+  * Revamp (Activity) Pager wheel handling
+  * [Folder View] Open selection in preferred application instead of running them
+  * [Folder View] show script execution prompt when clicking item
+  * And maybe don't undo the fix while fixing the fix ...
+  * Fix startup warning introduced in 3568d8e4.
+  * Fix clearing selection when rectangle selection contains no items.
+  * Fix Plasmoid.busy visualization in desktop containment.
+  * Call correct function and fix warning.
+  * Fix crash and loss of favorites model on refresh with pagination on.
+  * Make parts of KCM Touchpad interface translatable (Patch by Victor <victorr2007@narod.ru>)
+  * Clip by bounding delegate size instead of Item.clip.
+  * fix autotest
+- Remove patches, now upstream:
+  * 0001-Folder-View-show-script-execution-prompt-when-clicki.patch
+  * 0002-Folder-View-Open-selection-in-preferred-application-.patch
+
+-------------------------------------------------------------------
+Thu Feb  2 10:50:45 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Jan 31 22:09:24 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix prompt for executing files in folderview containment:
+  * boo#1022904, kde#375793
+  * 0001-Folder-View-show-script-execution-prompt-when-clicki.patch
+  * 0002-Folder-View-Open-selection-in-preferred-application-.patch
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:56 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * More like systray.
+  * [Task Manager] Hide group dialog when opening applets settings
+  * Use the systray applet's icon sizing logic to size audio indicators.
+  * use KPluginMetaData::readStringList
+  * [kcm] Fix reset logic
+  * Add missing descriptions on the trashcan and appmenubar plasmoids
+  * [Style KCM] Make sure to enable kappmenu kded module
+  * Fix loading of translation catalog (thanks to Victor <victorr2007@yandex.ru>)
+  * [Task Manager] Vertically center audio indicator for real
+  * Fix "Pin" not working with more than one activity.
+  * Silence warning.
+  * Sync kicker tooltip icon to config setting
+  * Follow theme in taskmanager tooltip media controls background
+  * [Task Manager] Don't show separator between media controls and "Mute"
+  * [Task Manager] Find player if we don't have a PID
+  * Use correct loop variable.
+  * Don't hardcore reserve size.
+  * Fix switching from 'All Applications' to 'Widgets'.
+- Remove patch, now upstream:
+  * fix-switching-to-widgets.patch
+
+-------------------------------------------------------------------
+Fri Jan 13 21:32:53 UTC 2017 - wbauer@tmo.at
+
+- Only BuildRequire AppStreamQt 0.10.4 where it is available
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * See https://www.kde.org/announcements/plasma-5.8.5-5.8.95-changelog.php#plasma-desktop
+- Add patch for upstream bugfix:
+  * fix-switching-to-widgets.patch
+- Remove patches, now upstream:
+  * Dont-clear-hover-state-while-a-child-dialog-is-open.patch
+  * Fix-right-click-erroneously-opening-files.patch
+
+-------------------------------------------------------------------
+Mon Jan  9 09:07:11 UTC 2017 - wbauer@tmo.at
+
+- Add Fix-right-click-erroneously-opening-files.patch to prevent
+  folderview from opening files erroneously in addition to showing
+  the context menu when right-clicking on an icon (kde#360219)
+
+-------------------------------------------------------------------
+Wed Jan  4 10:49:23 UTC 2017 - wbauer@tmo.at
+
+- Add Dont-clear-hover-state-while-a-child-dialog-is-open.patch to
+  fix a regression in 5.8.5 that prevents one from browsing
+  subfolders on the desktop/folderview, the popups would close
+  immediately when moving the mouse over them (kde#374291)
+
+-------------------------------------------------------------------
+Wed Dec 28 18:56:01 UTC 2016 - wbauer@tmo.at
+
+- Drop unneeded 0001-Require-xorg-evdev-2.8.99.1.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Sat Dec 24 13:00:25 UTC 2016 - fabian@ritter-vogt.de
+
+- Recommend xf86-input-synaptics, otherwise libinput is used
+  for touchpads, which isn't that configurable with the kcm
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Thu Nov  3 17:41:26 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Wed Oct 12 15:23:37 UTC 2016 - fabian@ritter-vogt.de
+
+- Merge -kimpanel subpackage into main package (boo#1004093)
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:50 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+- Remove patches (upstream):
+    folderviewkjob.patch
+    kglobalshortcutseditor-Change-component-shown-on-selection-changes.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 11:02:47 UTC 2016 - wbauer@tmo.at
+
+- Add kglobalshortcutseditor-Change-component-shown-on-selection-changes.patch:
+  fixes kglobalshortcutseditor when "double-click to open files/folders"
+  is activated in the mouse settings (boo#1001279, kde#368661)
+
+-------------------------------------------------------------------
+Sat Sep 24 08:35:21 UTC 2016 - fabian@ritter-vogt.de
+
+- Add folderviewkjob.patch
+  * Use correct parent for folderview context menu actions (boo#1000546)
+
+-------------------------------------------------------------------
+Wed Sep 21 17:35:20 UTC 2016 - fabian@ritter-vogt.de
+
+- Fix self-obsoletion
+
+-------------------------------------------------------------------
+Wed Sep 21 13:19:03 UTC 2016 - wbauer@tmo.at
+
+- Do not Obsolete plasma5-desktop-branding-openSUSE as this is done
+  in plasma5-theme-openSUSE, it was ineffective here anyway because
+  of the wrong version number
+
+-------------------------------------------------------------------
+Wed Sep 21 09:15:16 UTC 2016 - fabian@ritter-vogt.de
+
+- Use %{_plasma5_version} again, define it if needed
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+- Remove patch use-iconName-if-possible.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Sat Aug 27 01:29:30 UTC 2016 - wbauer@tmo.at
+
+- Don't try to remove kactivities5.po anymore, they have been
+  removed upstream
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Fri Aug 26 09:59:11 UTC 2016 - wbauer@tmo.at
+
+- Add use-iconName-if-possible.patch: adjust the application menu's
+  search function to use the iconName if set, and change the
+  included runners to set the iconName instead of an icon to
+  prevent threading issues and speed up things (boo#994983)
+
+-------------------------------------------------------------------
+Tue Aug  2 11:36:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+- Drop upstreamed patches:
+  0001-don-t-create-activities-by-ourselves.patch
+  0002-use-desktopsForActivty-currentActivity.patch
+  0003-correct-typo.patch
+  loop-trough-screens-only-once.patch
+
+-------------------------------------------------------------------
+Sat Jul 30 12:41:41 UTC 2016 - jengelh@inai.de
+
+- Run fdupes to soothe rpmlint
+
+-------------------------------------------------------------------
+Fri Jul 29 15:42:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-don-t-create-activities-by-ourselves.patch
+  0002-use-desktopsForActivty-currentActivity.patch
+  and 0003-correct-typo.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 20:39:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added loop-trough-screens-only-once.patch from upstream
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:52:02 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+- Drop upstreamed patches:
+  100-fix-compile-with-gcc6.diff, fix-opening-recent-docs.patch and
+  Cleanup-and-fixup-KConfig-handling-for-componentchooser.patch
+
+-------------------------------------------------------------------
+Fri Jun 10 12:54:01 UTC 2016 - fvogt@suse.com
+
+- Add missing Requires: in branding subpackage (boo#968427)
+
+-------------------------------------------------------------------
+Sun May 29 21:53:13 UTC 2016 - wbauer@tmo.at
+
+- Add Cleanup-and-fixup-KConfig-handling-for-componentchooser.patch
+  to fix setting the default browser (boo#931316)
+- Add fix-opening-recent-docs.patch to fix opening recent documents
+  from the application menu on newer KF5 (boo#982146, kde#363337)
+
+-------------------------------------------------------------------
+Tue May 24 05:18:41 UTC 2016 - lbeltrame@kde.org
+
+- Add 100-fix-compile-with-gcc6.diff from upstream Plasma/5.6 branch
+  * Fix compilation with GCC 6 (missing cmath include)
+
+-------------------------------------------------------------------
+Sun May 15 16:50:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:46:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:21:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+- Drop upstreamed and/or obsolete patches:
+  use-correct-kf5-var.patch
+  Dont-use-Plasma-theme-icons-in-task-icon.patch
+  0001-Refactor-kcm-touchpad-to-fix-some-issue-related-to-h.patch
+  0002-remove-the-duplicate-m_touchpadOffAtom-member.patch
+  0003-use-updateCurrentState-when-touchpadReset-happens.patch
+  0001-Emit-PaletteChanged-when-setting-colors-from-look-an.patch
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:58 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+- Remove conflicting kactivities5.po
+
+-------------------------------------------------------------------
+Tue Mar 15 15:18:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added use-correct-kf5-var.patch: honour toplist CMakeLists
+  requirement for KF5, instead of pulling it in from FindKF5 module
+
+-------------------------------------------------------------------
+Tue Mar  1 17:33:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+- Added 0001-Emit-PaletteChanged-when-setting-colors-from-look-an.patch
+  (kde#359924)
+
+-------------------------------------------------------------------
+Sat Feb 27 21:00:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added Dont-use-Plasma-theme-icons-in-task-icon.patch (kde#359387)
+- Added 0001-Refactor-kcm-touchpad-to-fix-some-issue-related-to-h.patch,
+  0002-remove-the-duplicate-m_touchpadOffAtom-member.patch and
+  0003-use-updateCurrentState-when-touchpadReset-happens.patch
+  trying to fix boo#954215
+
+-------------------------------------------------------------------
+Wed Jan 27 12:13:07 UTC 2016 - nico.kruber@gmail.com
+
+- adapt spec file to Plasma 5.5.4
+- Drop upstreamed 0001-fix-font-preview-colors.patch (kde#336089)
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Thu Jan 14 16:07:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Add 0001-fix-font-preview-colors.patch (kde#336089)
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Mon Jan  4 07:53:46 UTC 2016 - mlin@suse.com
+
+- Add pkgconfig(xft) and pkgconfig(xi), seems it was affected by
+  libcanberra-devel changes too.
+
+-------------------------------------------------------------------
+Thu Dec 31 18:27:11 UTC 2015 - dimstar@opensuse.org
+
+- Replace libcanberra-devel BuildRequires with
+  pkgconfig(libcanberra) to align with what cmake is looking for.
+- Add pkgconfig(xcursor) BuildRequires: since the reorganisation
+  of libcanberra-devel, it no longer pulls in GTK3 (which is
+  actually good for plasma, as it does not need GTK3), but this
+  also means GTK3 no longer pulls in xcursor, which plasma relies
+  on.
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+- Drop upstreamed fix-migration-of-multiple-favorites.patch
+
+-------------------------------------------------------------------
+Sat Dec 12 17:32:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sat Dec 12 12:19:31 UTC 2015 - wbauer@tmo.at
+
+- Add fix-migration-of-multiple-favorites.patch: fixes migration of
+  kickoff's favorites (kde#356398)
+
+-------------------------------------------------------------------
+Mon Nov 16 16:23:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Drop oxygen-icon-theme Requires
+
+-------------------------------------------------------------------
+Sun Nov  8 19:01:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Mon Oct 26 15:45:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Provide and Obsolete calendar and akonadi components from
+  kdebase4-workspace so upgrades from earlier openSUSE versions
+  go smoother
+
+-------------------------------------------------------------------
+Sun Oct  4 10:44:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Wed Sep 16 12:16:12 UTC 2015 - wbauer@tmo.at
+
+- Require kactivities5-imports, without that the ActivityManager
+  doesn't work at all
+
+-------------------------------------------------------------------
+Thu Sep 10 17:18:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 31 19:03:50 UTC 2015 - tittiatcoke@gmail.com
+
+- Also obsolete the synaptiks package, so that we can install
+  correctly on openSUSE:42
+
+-------------------------------------------------------------------
+Mon Aug 24 17:52:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Drop build-kcminput-without-libusb-compat.patch, upstreamed
+- Drop pkgconfig(libusb) BuildRequires
+- Added  pkgconfig(xkbfile) and xkeyboard-config BuildRequires
+- Add kde-user-manager Requires
+
+-------------------------------------------------------------------
+Sun Jul 26 16:12:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Re-add 0001-Require-xorg-evdev-2.8.99.1.patch, and reverse it on
+  Leap, as the required features are present there, but version of
+  xf86-input-evdev isn't bumped
+
+-------------------------------------------------------------------
+Thu Jul 23 10:50:24 UTC 2015 - mlin@suse.com
+
+- Fix those version condition for 42
+
+-------------------------------------------------------------------
+Mon Jul  6 18:22:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added build-kcminput-without-libusb-compat.patch: we need libusb
+  only for logitech mouse support, the rest of the kcm can build
+  fine w/o it
+
+-------------------------------------------------------------------
+Mon Jul  6 13:24:08 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Drop libusb-0.1 BuildRequires, used for Logitech mouse systemsettings
+  * it requires forbidden direct device access, see bnc#787063
+  * it is one of the last users of the old libusb-0.1 API
+
+-------------------------------------------------------------------
+Sun Jun 28 18:32:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+- Drop 0001-Require-xorg-evdev-2.8.99.1.patch, merged upstream
+
+-------------------------------------------------------------------
+Wed Jun 10 16:56:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Use %version instead of no longer existing %{_plasma5_branding_version}
+  for branding provides/requires
+
+-------------------------------------------------------------------
+Fri May 22 15:30:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+- Add pkgconfig(xorg-evdev) BuildRequires
+- Add 0001-Require-xorg-evdev-2.8.99.1.patch
+
+-------------------------------------------------------------------
+Tue May 19 01:18:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Require ksysguard5, kmenuedit5 and kinfocenter5 instead of recommending
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+- Obsolete kdebase4-workspace and kcm-touchpad for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Update required KF5 version to 5.9.0
+- Added kdbusaddons-devel, kdeclarative-devel, kded-devel,
+  knotifications-devel,kpeople5-devel, pkgconfig(xorg-server) and
+  pkgconfig(xorg-synaptics) BuildRequires
+- Added conflict with kcm-touchpad
+- Provide and obsolete kcm-touchpad5, it is merged into plasma-desktop
+- Drop patches merged upstream:
+  0001-extract-UI-messages.patch,
+  0003-Reset-current-item-index-when-the-source-model-is-sw.patch,
+  0005-Specify-explicit-fallbacks.patch,
+  0006-Fix-triggering-items-in-additional-runner-result-col.patch,
+  0007-Fix-conflict-with-delegate-keypress-handling.patch,
+  0008-Fix-regressions-in-keyboard-based-subdialog-nav.patch,
+  0009-Check-for-children.patch,
+  0010-Add-icon-fallback-to-the-Recent-Apps-model.patch,
+  0011-Fix-crash-when-wrapping-around-the-leftmost-list-sea.patch,
+  0001-Jump-into-the-first-column-with-results-when-navigat.patch,
+  0002-Skip-over-empty-columns-when-doing-keyboard-nav-betw.patch,
+  0003-Fix-check.patch,
+  0004-Disable-focus-on-spawn-for-dialogs-opened-by-mouse.patch and
+  Let-kcmkded-also-handle-kded-modules-that-use-JSON-metadata.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 18:25:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-extract-UI-messages.patch,
+  0003-Reset-current-item-index-when-the-source-model-is-sw.patch
+  (kde#345667),
+  0005-Specify-explicit-fallbacks.patch,
+  0006-Fix-triggering-items-in-additional-runner-result-col.patch
+  (kde#345714),
+  0007-Fix-conflict-with-delegate-keypress-handling.patch,
+  0008-Fix-regressions-in-keyboard-based-subdialog-nav.patch,
+  0009-Check-for-children.patch,
+  0010-Add-icon-fallback-to-the-Recent-Apps-model.patch,
+  0011-Fix-crash-when-wrapping-around-the-leftmost-list-sea.patch
+  (kde#345785),
+  0001-Jump-into-the-first-column-with-results-when-navigat.patch
+  (kde#345843),
+  0002-Skip-over-empty-columns-when-doing-keyboard-nav-betw.patch
+  (kde#345843), 0003-Fix-check.patch and
+  0004-Disable-focus-on-spawn-for-dialogs-opened-by-mouse.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+- Drop patches merged upstream:
+  0001-Fix-the-no-checkbox-being-checked-for-displayText-co.patch,
+  0003-Fix-Bug-266760-The-autostart-kcm-doesn-t-show-the-co.patch,
+  0004-Fix-double-click.patch,
+  0005-Fix-tabbar-not-showing-up-when-switching-to-favorite.patch
+  and 0006-Close-config-dialog-when-panel-gets-locked-from-cont.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 11:55:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kglobalaccel-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar  7 22:38:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  Let-kcmkded-also-handle-kded-modules-that-use-JSON-metadata.patch,
+  0001-Fix-the-no-checkbox-being-checked-for-displayText-co.patch
+  (kde#344711),
+  0003-Fix-Bug-266760-The-autostart-kcm-doesn-t-show-the-co.patch
+  (kde#266760),
+  0004-Fix-double-click.patch,
+  0005-Fix-tabbar-not-showing-up-when-switching-to-favorite.patch
+  (kde#343524)
+  and 0006-Close-config-dialog-when-panel-gets-locked-from-cont.patch
+  (kde#345068)
+
+-------------------------------------------------------------------
+Fri Feb 20 02:44:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+- Drop kde343583.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Feb  9 11:43:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added kde343583.patch, in order to resolve kde#343583 and workaround
+  kde#340691
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Bump (Build)Requires of other Plasma 5 components to same version
+  as this package
+- Drop 0007-Fix-BUG-105797-inappropriate-fontconfig-settings-are.patch,
+  merged upstream
+- Add boost-devel BuildRequires
+- Drop not needed Obsoletes
+- Add _constraints to prevent memory exhaustion
+
+-------------------------------------------------------------------
+Thu Dec 11 18:00:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * Fix vertical aligment. kde#341229
+  * Fix test by removing old test install directory
+  * Read/Write ColorScheme to configGroup General instead of KDE
+  * Remove KGlobal check and KComponentData object that overrode
+    applications KAboutData when showing dialogs.
+  * Ignore bottom margin unless view is overflowing.
+  * Highlight first entry when searching. kde#340067
+  * Fix 'Forget App' in Recent Apps not working immediately.
+    kde#341141
+  * Set right margin properly. kde#341008
+  * Don't duplicate entries when the Rever button is clicked
+  * Bouncing cursor is the default
+  * Fix installing cursor themes from GHNS
+  * Fix crash on Defaults
+  * Disable checkbox buddies when unchecked.
+  * Yank duplicate group header.
+  * X-KDE-Keywords separator is ,
+  * Fix regression in event handler causing favorites to launch
+    on right-click release.
+  * Don't put scripts from ~/.config/autostart in
+    autostart kcm list.
+  * Don't parse window titles as rich text. kde#340689
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * Event compress panel resize when many hints change,
+    drastically reduces size dancing (kde#339207, kde#337382)
+  * Don't bind the panel size (kde#339207, kde#337382)
+  * Resize button doesn't depend from a QAction, kde#339836
+  * Fix emptying the trash from the context menu
+  * Add a small margin on top panels, kde#339925
+  * Handle doesn't not access focus, kde#339851
+  * Fix race between delegate construction and layout after
+    model resets. kde#339953
+  * Make apply button work correctly, kde#339946
+  * Close all applets when configuring, kde#337991
+  * Raise the tooltip again if it was covered, kde#339848
+  * Fix glitching Alternatives dialog, kde#340003
+  * Cleanup applet configuration scrollbar handling,
+    (kde#336533, kde#337298)
+  * Sync tabbar's tab as well, kde#337496
+  * Hide the sidebar separator if only one type of sidebar
+    item is shown. kde#340041
+  * Sort Region items in combobox in KCM Formats, kde#340449
+  * Save user dirs to the correct location, kde#340102
+  * Backport settings made in the component chooser
+    to KDE 4 applications, kde#339967
+  * Do not pass ntpUtility as an argument to datetime helper
+    (boo#904625, CVE-2014-8651)
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+
+-------------------------------------------------------------------
+Sat Oct 25 17:49:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+- Relax dependancies to plasma-framework private parts, and fix
+  a blip moment, typo in package name
+
+-------------------------------------------------------------------
+Mon Oct 20 16:57:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Move default layouts for desktop and panel to upstream branding
+  subpackage, as we'll provide the equivalents in openSUSE branding
+- Make sure that upstream branding requires plasma5-workspace
+  upstream branding
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+- Hardcode versions of plasma-framework-componets and
+  plasma-framework-private packages, as upstream doesn't
+  keep backwards compability there
+
+-------------------------------------------------------------------
+Wed Oct  1 11:12:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0007-Fix-BUG-105797-inappropriate-fontconfig-settings-are.patch
+  from upstream, kde#105797, bnc#768896
+
+-------------------------------------------------------------------
+Fri Sep 26 09:25:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * No changes since previous snapshot
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+- Recommend plasma5-addons, kinfocenter5 and kmenuedit5
+
+-------------------------------------------------------------------
+Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Create upstream-branding subpackage, empty for now
+- Update to 5.0.95~git20140925 (r277deb5):
+   * Honor settings of look-and-feel package (needed for openSUSE
+     branding)
+
+-------------------------------------------------------------------
+Thu Sep 11 16:28:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140911 (r3aa8a23):
+   * Allow to swap plasmoids via alternatives system
+   * Introduction of 'Look and Feel' packages: allows users to change
+     outlook of entire desktop in a single place
+   * Ported IconTasks plasmoid
+   * Various other bugfixes, improvements and cleanups
+- Drop sync_settings.diff, merged upstream
+- Explicitly Require plasma5-workspace
+
+-------------------------------------------------------------------
+Sun Aug 10 21:32:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+   * Bugfix release
+- Rebase sync_settings.diff
+
+-------------------------------------------------------------------
+Mon Jul 28 18:50:31 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Adjust BuildRequires depending whether Qt is built with openGL
+  or open GL ES2
+
+-------------------------------------------------------------------
+Fri Jul 25 10:23:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Mark license as GPL-2.0
+
+-------------------------------------------------------------------
+Thu Jul 24 17:51:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1~20140724~85baf47 snapshot
+
+-------------------------------------------------------------------
+Sat Jul 19 20:54:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added sync_settings.diff from upstream -- syncs configuration
+  done to 5.x applications to 4.x config; concerns icons and style
+
+-------------------------------------------------------------------
+Fri Jul 11 16:11:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+   * Plasma 5.0 Final
+
+-------------------------------------------------------------------
+Thu Jul  3 17:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * Plasma 5 RC release
+- Drop 68ca607.patch, adjust_componentchooser.diff and
+  KFI_stat_namespace.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Jun  6 19:51:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate plasma-desktop5 package
+

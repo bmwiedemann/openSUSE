@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Jan 24 09:25:19 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jan 24 08:20:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Sort out a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Mon May 22 19:12:01 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version
+- Add fix_cache_clear.patch
+  Upstream patch to fix unit test error

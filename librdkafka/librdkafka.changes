@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Fri Dec 14 14:57:50 UTC 2018 - astieger@suse.com
+
+- fix pkg-config provides warning
+
+-------------------------------------------------------------------
+Mon Dec 10 11:08:33 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Don't BuildRequire lz4 on SLE12
+- Do not use %make_build which is not available on SLE12
+
+-------------------------------------------------------------------
+Thu Dec  6 09:24:41 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add missing Requires to -devel package
+
+-------------------------------------------------------------------
+Thu Nov 29 19:13:40 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summaries. Remove performance results that do not
+  mention their reference.
+- Remove duplicate Group/Summary fields.
+- Fix rpmlint's "librdkafka.x86_64: W: no-binary"
+- Fix shlib package requiring itself. Remove excess Provides.
+
+-------------------------------------------------------------------
+Thu Nov 29 10:49:49 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Fix Requires for -devel package
+
+-------------------------------------------------------------------
+Thu Nov 29 09:22:19 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 0.11.6)

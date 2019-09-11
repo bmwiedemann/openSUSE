@@ -1,0 +1,15 @@
+diff -urN ../libreadline-java-0.8.0.orig/src/org/gnu/readline/Readline.java ./src/org/gnu/readline/Readline.java
+--- ../libreadline-java-0.8.0.orig/src/org/gnu/readline/Readline.java	2003-01-07 05:14:35.000000000 -0500
++++ ./src/org/gnu/readline/Readline.java	2007-07-05 16:05:25.000000000 -0400
+@@ -130,8 +130,9 @@
+       iLib = lib;
+       return;
+     }
+-    System.loadLibrary(lib.getName()); // might throw UnsatisfiedLinkError
+-    iLib = lib;
++    // Load Editline backing library by default.
++    System.load("@LIBDIR@/libreadline-java/libJavaEditline.so");
++    iLib = ReadlineLibrary.Editline;
+   }
+ 
+   /////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,26 @@
+--- src/f_readeps.c
++++ src/f_readeps.c	2013-12-10 13:57:36.222235930 +0000
+@@ -257,7 +257,7 @@ bitmap_from_gs(file, filetype, pic, urx,
+     char        buf[300];
+     FILE       *tmpfp, *pixfile, *gsfile;
+     char       *driver;
+-    int         status, wid, ht, nbitmap, fd;
++    int         status, wid, ht, nbitmap, fd, len;
+     char        tmpfile[PATH_MAX],
+ 		pixnam[PATH_MAX],
+ 		errnam[PATH_MAX],
+@@ -317,9 +317,13 @@ bitmap_from_gs(file, filetype, pic, urx,
+ 	file_msg("Cannot canonicalize %s: %s\n", tmpfile, strerror(errno));
+ 	return False;
+     }
+-    sprintf(gscom,
++    len = snprintf(gscom, sizeof(gscom) - 1,
+ 	    "%s -r72x72 -sDEVICE=%s -g%dx%d -sOutputFile=%s -dDELAYSAFER -c '<< /PermitFileReading [ (%s)] >> setuserparams .locksafe' -dSAFER -q - > %s 2>&1",
+ 	    appres.ghostscript, driver, wid, ht, pixnam, psnam, errnam);
++    if (len >= sizeof(gscom) - 1 || len < 0) {
++	file_msg("Cannot write to buffer, file name to large: %s\n", psnam);
++	return False;
++    }
+     if (appres.DEBUG)
+ 	fprintf(stderr,"calling: %s\n",gscom);
+     if ((gsfile = popen(gscom, "w")) == 0) {

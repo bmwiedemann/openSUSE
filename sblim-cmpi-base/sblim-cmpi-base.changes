@@ -1,0 +1,323 @@
+-------------------------------------------------------------------
+Tue May 15 07:05:58 UTC 2018 - kkaempf@suse.com
+
+- Fix missing dependencies in Makefile.am
+  0001-make-lib-dependencies-explicit-in-Makefile.am.patch
+
+- enable parallel make
+
+-------------------------------------------------------------------
+Fri Jul  3 07:28:07 UTC 2015 - kkaempf@suse.com
+
+- Fix RHEL7 build
+
+-------------------------------------------------------------------
+Tue Jun 23 10:36:54 UTC 2015 - mvetter@suse.com
+
+- cleanup spec file
+  * running spec cleaner
+  * install xml files with correct permission
+  * 'make' only with one thread
+  * remove sblim-cmpi-base-1.6.2-missing-fclose.patch as it is in upstream since git commit 3eb68295874453fdb1885489443105cb2ff6432d
+
+-------------------------------------------------------------------
+Sat Nov 29 18:59:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in scripts
+- add patches:
+  * sblim-cmpi-base-1.6.4-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 23:52:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in post script
+
+-------------------------------------------------------------------
+Tue Oct 28 14:53:53 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.6.4
+  Bugs Fixed:
+  - SBLIM-2737: bugfix for sprintf() handling
+
+-------------------------------------------------------------------
+Thu Oct 23 06:55:26 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.6.3
+  Bugs Fixed:
+  - SBLIM-2634: incorrect max cpu frequency
+  - SBLIM-2644: wrong UserModeTime and KernelModeTime
+  - SBLIM-2698: system name might have empty domainname
+                (-> drop call-domainname.patch)
+  - SBLIM-2737: datetime values do not adjust for DST
+
+-------------------------------------------------------------------
+Thu Oct 31 14:30:01 UTC 2013 - kkaempf@suse.com
+
+- fix Linux_ComputerSystem Name to include domain name
+  (fall back to domainname if dnsdomainname is empty)
+  Add call-domainname.patch  
+
+-------------------------------------------------------------------
+Wed Aug 28 07:44:51 UTC 2013 - kkaempf@suse.com
+
+- install indication samples to docdir
+
+-------------------------------------------------------------------
+Fri Nov 30 08:10:29 UTC 2012 - kkaempf@suse.com
+
+- Update to 1.6.2
+  Bugs Fixed:
+  - 3275169 bash error reported in provider bootstrap scripts
+  - 3306580 wrong OperatingSystem.Version prop value on RHEL6
+  - 3424288 Underlinked libcmpiOSBase_ProcessorProvider.so
+  - 3582069 Linux_UnixProcess command injection vulnerability
+
+-------------------------------------------------------------------
+Wed Feb  8 11:12:08 UTC 2012 - puzel@suse.com
+
+- fix file-packaged-twice error
+
+-------------------------------------------------------------------
+Sun Nov 27 06:47:34 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon May 24 10:31:42 UTC 2011 - kkaempf@novell.com
+
+- update to 1.6.1 (bnc#694324)
+  Bugs Fixed:
+  - 2843613 Missing fclose in sblim-cmpi-base
+  - 2882514 leak in sblim-cmpi-base-1.5.9/cmpiOSBase_OperatingSystem.c
+  - 2836926 _osbase_common_init unreliable
+  - 2610775 ProcessorProvider crashes on exit (bnc#694324)
+
+- fix license (Eclipse Public License)
+
+-------------------------------------------------------------------
+Mon May 23 14:20:03 UTC 2011 - kkaempf@novell.com
+
+- fix ProcessorProvider crash on exit
+  (bnc#694324, upstream 2610775)
+
+-------------------------------------------------------------------
+Fri Sep 10 09:17:13 UTC 2010 - kkaempf@novell.com
+
+- fix RH/Fedora build
+
+-------------------------------------------------------------------
+Wed Oct 14 15:50:37 CEST 2009 - mhrusecky@suse.cz
+
+- sending current development version to SLE11 SP1 (fate#307089)
+
+-------------------------------------------------------------------
+Thu Oct  1 17:21:55 CEST 2009 - mhrusecky@suse.cz
+
+- update to version 1.6.0
+  - migrate provider licenses to EPL
+
+-------------------------------------------------------------------
+Mon Aug 24 17:01:13 CEST 2009 - mhrusecky@suse.cz
+
+- Adding missing fclose (bnc#530325)
+
+-------------------------------------------------------------------
+Mon May 25 16:44:21 CEST 2009 - mhrusecky@suse.cz
+
+- Fixed registration in tog-pegasus
+
+-------------------------------------------------------------------
+Mon Mar  9 14:26:54 CET 2009 - mhrusecky@suse.cz
+
+- Enabling methods by default (bnc#470670)
+
+-------------------------------------------------------------------
+Tue Mar  3 16:30:35 CET 2009 - mhrusecky@suse.cz
+
+- update to version 1.5.9
+  o Bugs
+    - 2508592 add CMPIStatus to indication function return
+    - 2634178 Versioned libcmpiOSBase_OperatingSystemProvider
+      * Dropped sblim-cmpi-base-1.5.8-avoid-version.patch as it was
+        accepted upstream
+
+-------------------------------------------------------------------
+Wed Feb 25 11:04:10 CET 2009 - mhrusecky@suse.cz
+
+- avoiding version info in libcmpiOSBase_OperatingSystemProvider
+
+-------------------------------------------------------------------
+Mon Dec 15 18:46:14 CET 2008 - mhrusecky@suse.cz
+
+- update to version 1.5.8
+  o Bugs
+    - 2384043: incorrect process count
+    - 2308219: invokeMethod doesn't test parameter type
+    - 1203827: update cmpi-base README.INDICATION for sfcb support
+    - 2169940: Linux_Processor: reports wrong value for load 
+               percentage
+    - 2065946: OSBase ProcessorProvider crashes on some platforms
+    - 2093965: Linux_OperatingSystem fails to set some properties
+    - 2093799: distro version script guesses wrong 
+    - 2089546: CIM_OS_DISTRO should only be intialized once
+    - 1883918: OperatingSystem provider segfaults on file not found
+    - 2089383: Shared library use of _init/_fini obsolete
+    - 1832839: OSBase OperatingSystem provider returns wrong max 
+               processes
+
+-------------------------------------------------------------------
+Mon Aug 25 10:46:14 MDT 2008 - npaxton@novell.com
+
+- Revert back some of changes:
+  remove symlink in /usr/sbin
+  remove namespace and ow-loadmof patches in provider-register.sh
+
+-------------------------------------------------------------------
+Wed Jul  9 11:11:08 MDT 2008 - npaxton@novell.com
+
+- Fix docdir issues in spec file
+
+-------------------------------------------------------------------
+Wed Jul  9 09:44:15 MDT 2008 - npaxton@novell.com
+
+- Minor spec file cleanup
+  -remove 'rm -rf buildroot'
+  -move .la back to main pkg
+
+-------------------------------------------------------------------
+Mon Jul  7 11:27:23 MDT 2008 - npaxton@novell.com
+
+- Sync spec file between sle10-sp2 and stable
+- Add symlink to this package's provider-register.sh from
+  /usr/sbin : several other packages will use this package's
+  provider-register script, and can't access script in
+  fully-qualified path in /usr/share
+
+-------------------------------------------------------------------
+Fri May 30 13:08:57 MDT 2008 - npaxton@novell.com
+
+- change registration from loadmof to provider-register to support
+  multiple cimoms, then modified provider-register.sh to use
+  ow-loadmof.sh and ow-rmmof.sh for openwbem cimom
+- added dependency on sblim-indication_helper-devel so will build
+  indication support
+
+-------------------------------------------------------------------
+Mon Aug  6 03:49:35 CEST 2007 - mrueckert@suse.de
+
+- update to version 1.5.6
+  o Bugs
+    - 1626832 Test cases for class Linux_BaseBoard and association
+      Linux_CSBaseBoard added
+- additional changes from 1.5.5
+  o Bugs
+    - 1368636 Fixed infinite recursion with trace level 4.
+    - 1395363 Fixed postinstall step location dependence.
+- removed included patches:
+  cmpi-base-proc-ia64.patch
+  sblim-cmpi-base-processutil.patch
+- fixed and ignored a few rpmlint warnings
+- no longer build static libs
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 15:36:45 CET 2006 - mrueckert@suse.de
+
+- replaced my header patch with a patch from upstream
+
+-------------------------------------------------------------------
+Sun Jan 15 21:42:09 CET 2006 - mrueckert@suse.de
+
+- fixed Makefile to install all headers. some headers where missing
+  but required for other modules.
+
+-------------------------------------------------------------------
+Mon Nov 14 15:57:59 CET 2005 - mrueckert@suse.de
+
+- Fix CPU detecion on ia64.[#95989]
+
+-------------------------------------------------------------------
+Wed Oct 26 20:22:42 CEST 2005 - mrueckert@suse.de
+
+- Use openwbem instead of pegasuswbem.
+- Update to version 1.5.4.
+
+-------------------------------------------------------------------
+Mon Sep 26 23:26:33 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Mon Nov 15 17:16:19 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Wed May 19 03:24:55 CEST 2004 - nashif@suse.de
+
+- Fix issue with empty dnsdomainname resulting in grep errors
+
+-------------------------------------------------------------------
+Mon May 17 12:29:57 CEST 2004 - ro@suse.de
+
+- fix spec file
+
+-------------------------------------------------------------------
+Wed May 12 18:49:07 CEST 2004 - nashif@suse.de
+
+- Do not deregister providers when updating package
+
+-------------------------------------------------------------------
+Mon May 10 22:52:56 CEST 2004 - nashif@suse.de
+
+- #40275: consistence test for class Linux_Processor fails 
+  on Linux on S390
+- Dereigster providers when uninstalling (#39667)
+
+-------------------------------------------------------------------
+Fri Apr 30 01:23:21 CEST 2004 - nashif@suse.de
+
+- Install testsuite files
+
+-------------------------------------------------------------------
+Fri Apr 16 13:58:00 CEST 2004 - nashif@suse.de
+
+- Update version with bugfixes from IBM
+
+-------------------------------------------------------------------
+Wed Apr 14 15:37:44 CEST 2004 - nashif@suse.de
+
+- Added PreReq for loadmof.sh (#38891)
+
+-------------------------------------------------------------------
+Wed Apr  7 02:12:26 CEST 2004 - nashif@suse.de
+
+- Update to latest version from the sblim project
+- register providers in %post
+- Requires cim-server
+
+-------------------------------------------------------------------
+Mon Mar 29 16:53:18 CEST 2004 - ro@suse.de
+
+- add x86_64/ia64 to platform.sh that code is just looking
+  at proc/cpuinfo anyway 
+
+-------------------------------------------------------------------
+Tue Mar 23 22:59:47 CET 2004 - meissner@suse.de
+
+- really apply fpic patch.
+
+-------------------------------------------------------------------
+Tue Mar 23 11:48:23 CET 2004 - meissner@suse.de
+
+- fixed lib64 handling, added -fPIC and RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Tue Mar 23 02:26:37 CET 2004 - nashif@suse.de
+
+- Initial Release
+

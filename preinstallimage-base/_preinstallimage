@@ -1,0 +1,4 @@
+Name: base
+BuildRequires: bash
+#!BuildIgnore: brp-trim-desktopfiles
+#!BuildIgnore: cputype-armv6

@@ -1,0 +1,47 @@
+diff -Pdpru PtokaX.orig/core/HubCommands-RZ.cpp PtokaX/core/HubCommands-RZ.cpp
+--- PtokaX.orig/core/HubCommands-RZ.cpp	2017-03-18 22:20:59.000000000 +0200
++++ PtokaX/core/HubCommands-RZ.cpp	2017-04-14 03:57:53.330916603 +0300
+@@ -413,7 +413,6 @@ bool HubCommands::Stats(ChatCommand * pC
+ #ifdef _PtokaX_TESTING_
+     " [build " BUILD_NUMBER "]"
+ #endif
+-    " built on " __DATE__ " " __TIME__ "\n"
+ 
+ #if LUA_VERSION_NUM > 501
+ 	"Lua: " LUA_VERSION_MAJOR "." LUA_VERSION_MINOR "." LUA_VERSION_RELEASE "\n";
+diff -Pdpru PtokaX.orig/core/PtokaX-nix.cpp PtokaX/core/PtokaX-nix.cpp
+--- PtokaX.orig/core/PtokaX-nix.cpp	2017-03-19 14:30:04.000000000 +0200
++++ PtokaX/core/PtokaX-nix.cpp	2017-04-14 03:59:07.235932373 +0300
+@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
+ 	            }
+             }
+ 	    } else if(strcasecmp(argv[i], "-v") == 0) {
+-	        printf("%s built on %s %s\n", g_sPtokaXTitle, __DATE__, __TIME__);
++	        printf("%s built on %s %s\n", g_sPtokaXTitle, "", "");
+ 	        return EXIT_SUCCESS;
+ 	    } else if(strcasecmp(argv[i], "-h") == 0) {
+ 	        printf("Usage: PtokaX [-d] [-v] [-m] [-c configdir] [-p pidfile]\n\n"
+diff -Pdpru PtokaX.orig/core/ServerManager.cpp PtokaX/core/ServerManager.cpp
+--- PtokaX.orig/core/ServerManager.cpp	2017-04-08 13:06:30.000000000 +0300
++++ PtokaX/core/ServerManager.cpp	2017-04-14 04:00:01.937723391 +0300
+@@ -1052,7 +1052,7 @@ void ServerManager::CreateServerThread(c
+ //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ void ServerManager::CommandLineSetup() {
+-	printf("%s built on %s %s\n\n", g_sPtokaXTitle, __DATE__, __TIME__);
++	printf("%s built on %s %s\n\n", g_sPtokaXTitle, "", "");
+ 	printf("Welcome to PtokaX configuration setup.\nDirectory for PtokaX configuration is: %s\nWhen this directory is wrong, then exit this setup.\nTo specify correct configuration directory start PtokaX with -c configdir parameter.", m_sPath.c_str());
+ 
+ 	const char sMenu[] = "\n\nAvailable options:\n"
+diff -Pdpru PtokaX.orig/skein/Additional_Implementations/skein_test.c PtokaX/skein/Additional_Implementations/skein_test.c
+--- PtokaX.orig/skein/Additional_Implementations/skein_test.c	2010-10-15 02:40:28.000000000 +0300
++++ PtokaX/skein/Additional_Implementations/skein_test.c	2017-04-14 04:01:31.466107739 +0300
+@@ -1213,7 +1213,7 @@ void Skein_MeasurePerformance(const char
+         if (targetSize == 0)
+             {
+             printf("\nSkein performance, in clks per byte, dtMin = %4d clks.\n",dtMin);
+-            printf("         [compiled %s,%s  by  '%s%s', %u-bit]\n",__TIME__,__DATE__,COMPILER_ID,CVER,(uint_t)(8*sizeof(size_t)));
++            printf("         [compiled %s,%s  by  '%s%s', %u-bit]\n","","",COMPILER_ID,CVER,(uint_t)(8*sizeof(size_t)));
+             printf("         =================================================================\n");
+             printf("         ||                       Skein block size                       |\n");
+             printf("         ||--------------------------------------------------------------|\n");

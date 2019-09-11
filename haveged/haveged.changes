@@ -1,0 +1,483 @@
+-------------------------------------------------------------------
+Tue Jul 30 08:25:59 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- get-poolsize.patch: Fix type mismatch in get_poolsize that breaks error
+  checking (bsc#1111047)
+
+-------------------------------------------------------------------
+Wed Sep 19 09:27:15 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch f2193587.patch from github pull request (bsc#1134351)
+  * Fix segfault on arm machines which do not eport the cache size
+    or say it is -1 in sysfs
+- Refresh patches
+
+-------------------------------------------------------------------
+Tue Sep 11 15:29:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summary. Grammar fixes to description.
+
+-------------------------------------------------------------------
+Tue Sep 11 11:00:13 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.4:
+  * Avoid misleading message if cmd socket is in use
+  * Implements a command mode and use it for chroot
+- Drop upstreamed patches:
+  * change-sysroot.patch
+- Update project and download url's
+
+-------------------------------------------------------------------
+Mon Jul  2 13:37:19 UTC 2018 - werner@suse.de
+
+- Add patch change-sysroot.patch to
+  move forward to socket communication within private network 
+- Add haveged-switch-root.service which send the new root location
+  to running haveged process
+
+-------------------------------------------------------------------
+Wed Jun 27 08:51:36 UTC 2018 - werner@suse.de
+
+- Make haveged survive switch root within initrd  (boo#1075359)
+  added change-sysroot.patch
+  haveged-switch-root.service
+
+-------------------------------------------------------------------
+Mon Mar 19 15:32:07 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Sun Feb 18 20:27:41 UTC 2018 - avindra@opensuse.org
+
+- update to 1.9.2
+  * Cross compile fixes
+  * Limit watermark max to less than pool size to avoid 100% cpu
+    condition
+  * Add service.suse init script
+- drop fix-enforced-clock-gettime.patch (fixed upstream)
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jun 19 13:16:01 UTC 2016 - jengelh@inai.de
+
+- reset rpm groups
+
+-------------------------------------------------------------------
+Fri Jun 17 14:15:05 UTC 2016 - psimons@suse.com
+
+- Add haveged-no-syslog.patch to remedy the potential for deadlocks
+  when booting the system: journald reads from /dev/random, which
+  receives entropy from haveged, which in turn logs to syslog
+  before providing any. Ideally, haveged would provide a proper
+  command-line flag to disable use of syslog. Will work with
+  upstream to resolve this in a cleaner way. (bnc#959237)
+
+- Remove "After=systemd-random-seed.service" from systemd service
+  file to avoid the potential for deadlocks when booting the
+  system: systemd-random-seed needs /var to read its previous
+  state; mounting /var needs journald; journald needs entropy; and
+  entropy is provided by haveged, which needs systemd-random-seed.
+  (bnc#959237)
+
+-------------------------------------------------------------------
+Thu Dec 10 16:20:27 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+
+-------------------------------------------------------------------
+Fri Oct  9 13:11:27 UTC 2015 - meissner@suse.com
+
+- haveged.service: reverted the dependency on systemd-journald.socket
+  for now, as it causes a dependency loop. bsc#949728 bsc#950857
+
+-------------------------------------------------------------------
+Wed Sep 30 12:15:14 UTC 2015 - meissner@suse.com
+
+- modules-setup.sh should be module-setup.sh in dracut, also 755
+- add dependency on systemd-journald.socket to make haveged
+  really start before journald in the initrd. bsc#898669
+
+-------------------------------------------------------------------
+Tue Sep 29 12:30:21 UTC 2015 - dmueller@suse.com
+
+- add fix-enforced-clock-gettime.patch to fix build on generic
+  platforms like e.g. aarch64, which is only needed due to
+  our (non-recommended choice) of using gettime (fate#318370)
+
+-------------------------------------------------------------------
+Tue Feb 17 12:53:42 UTC 2015 - meissner@suse.com
+
+- haveged-dracut.module: include haveged into the initrd for
+  randomness generation. bsc#898669
+- haveged.service: adjust so it is started before journald
+  and also make sure it is shutdown quite late. bsc#898669
+- regenerate initrd on installation. bsc#898669
+
+-------------------------------------------------------------------
+Fri Aug 29 07:23:34 UTC 2014 - tchvatal@suse.com
+
+- Adjust the service to start early enough for all usecases.
+  Should fix bnc#892096.
+
+-------------------------------------------------------------------
+Tue Jun 10 08:27:54 UTC 2014 - tchvatal@suse.com
+
+- Disable haveged service on containers. bnc#881882
+
+-------------------------------------------------------------------
+Mon May 12 10:55:20 UTC 2014 - tchvatal@suse.com
+
+- Disable randomly failing ENT test bnc#876674
+- Added patches:
+  * haveged-conditional-enttest.patch
+
+-------------------------------------------------------------------
+Mon May 12 10:49:09 UTC 2014 - tchvatal@suse.com
+
+- Threads seem not to fix the random testsuite fail.
+
+-------------------------------------------------------------------
+Sat May 10 03:40:03 UTC 2014 - crrodriguez@opensuse.org
+
+- Fix "stop" of service, the daemon in foreground actually 
+ exits with a weird exit code. workaround this misbehaviour
+ in the service file.
+
+-------------------------------------------------------------------
+Sat May 10 02:34:26 UTC 2014 - crrodriguez@opensuse.org
+
+- revert to non-forking service, "forking" services are racy
+  and provided by systemd purely for compatibility with old daemons.
+  see daemon(7) for the rationale. Only "simple" (default) and 
+  "notify" services must be used if possible.
+
+- Also, there is no haveged.conf around, neither such file
+  is parsed by the daemon at all.
+
+- Start the daemon as soon as the random device is available with
+  the help of udev, as starting services while starved of entropy 
+  is no good.
+
+-------------------------------------------------------------------
+Wed May  7 09:12:26 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Adapt the service file to be forking and match what it does for
+  me on Gentoo.
+- Disable threads as they seem break some times.
+- Capitalize summaries to make rpmlint happy.
+
+-------------------------------------------------------------------
+Tue Mar 11 10:21:46 UTC 2014 - dvaleev@suse.com
+
+- Add ppc64le support 
+
+- added patches:
+  * ppc64le.patch
+-------------------------------------------------------------------
+Tue Feb 18 13:11:01 UTC 2014 - crrodriguez@opensuse.org
+
+- version 1.9.1
+* test suite improvements
+* man page updates
+* a few build tweaks
+- restore rchaveged link
+
+-------------------------------------------------------------------
+Mon Jan  6 10:28:03 UTC 2014 - mvyskocil@suse.com
+
+- update to 1.8 
+ * Fix return code for signalled termination.
+ * Update init.d/service.fedora - new return code + simple, not forking
+ * Add --enable_unitdir as DESTDIR for systemd install
+
+-------------------------------------------------------------------
+Mon Jun 17 09:39:07 UTC 2013 - mvyskocil@suse.com
+
+- update to 1.7c
+  * Correct additional run-time test aligment problems on mips. 
+  * Correct run-time test aligment problems on sparc and mips.
+  * Correct ppc detection in build
+    deprecates haveged-ppc.patch
+- use correct Group for libhavege1
+- haveged-devel requires libhavege1
+
+-------------------------------------------------------------------
+Sun May  5 18:46:15 UTC 2013 - crrodriguez@opensuse.org
+
+- Remove PrivateTmp=true here, haveged does not create temporary
+  files, either directly or indirectly.
+
+-------------------------------------------------------------------
+Thu May  2 18:25:33 UTC 2013 - crrodriguez@opensuse.org
+
+- haveged 1.7a 
+* Correct VPATH issues and modify check target to support 
+parallel builds and changes in automake 1.13 test harness. 
+Updated sample spec file and other documentation changes.
+
+-------------------------------------------------------------------
+Tue Mar 26 14:19:46 UTC 2013 - mvyskocil@suse.com
+
+- add autoconf to BuildRequires
+- explain the need for autoreconf
+- tag haveged-ppc.patch
+
+-------------------------------------------------------------------
+Wed Mar 20 23:28:42 UTC 2013 - crrodriguez@opensuse.org
+
+- Remove all sysvinit compatibility. 
+
+-------------------------------------------------------------------
+Mon Jan 21 01:18:16 CET 2013 - ro@suse.de
+
+- spit off devel package (all new files not present before)
+- spit off library package to follow shared library policy
+- update to 1.7
+  * Add havege_status_dump() as basis for haveged diagnositics
+  * Provide sample spec to build haveged and haveged-devel
+  * Add contrib/build to provide build support
+  * Modify build to use libtool
+  * Retname base types to alias stdint.h types to allow 'fixes' if necessary
+  * Rename all public functions to follow havege_* naming convention
+  * Sanitize havege.h to be include file for devel package
+  * Add destroy() to havege for library use.
+  * Move all remaining static vars to allocated memory.
+  * Rework include file structure to eliminate include sequence errors.
+  * Fix (rare) segfault in test0 caused by 1.6 alignment fix
+  
+- update to  v1.6a
+  * Fix typo in configure.ac
+ 
+
+-------------------------------------------------------------------
+Fri Dec 21 11:53:16 UTC 2012 - dvaleev@suse.com
+
+- fix powerpc detection (haveged-ppc.patch) 
+
+-------------------------------------------------------------------
+Sun Dec 16 02:11:10 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.6:
+  * make clock_gettime a build option and correct dependencies when used
+  * fix alignment fault on arm64 in procedure A test0
+
+-------------------------------------------------------------------
+Mon Nov 26 20:59:36 UTC 2012 - crrodriguez@opensuse.org
+
+- Current version does support ARM, remove the ExcludeArch 
+
+-------------------------------------------------------------------
+Mon Sep 24 19:48:16 UTC 2012 - crrodriguez@opensuse.org
+
+- Tight up systemd service file, this daemon does not
+  need network and can use PrivateNetwork=yes 
+
+-------------------------------------------------------------------
+Mon Aug 13 13:15:15 UTC 2012 - mvyskocil@suse.cz
+
+- Update to 1.5
+  * Add online tests based on AIS-31 
+  * Add -p option to specify the pid location.
+  * Fix -F option to not take argument - i.e. now a switch
+  * Factor diagnostic methods for capture and inject for better performance
+  * Fix install target, move to bin and eliminate script if not daemon, now use sysv and systemd templates 
+- use -F with no arguments in haveged.service 
+- work-around nist check on i586 by decreasing the size of static array in a test
+
+-------------------------------------------------------------------
+Fri May 15 22:46:03 UTC 2012 - aboe@opensuse.org
+
+- Update to version 1.4
+  * Add s390 architecture. Thanks to Dan Horak and Jiri Hladky
+  * Add generic architecture with clock_gettime() timer.
+  * Rewrite collection loop to support multiple instances and new diagnostics
+  * Rewrite tuning mechanism to add virtual file system mining and correct cpuid bugs
+  * Add prototype multi-thread collection option
+  * Reduce collection buffer size to .5MB
+  * Improve/correct build and install
+  * Add new invocation options to support new features.
+
+- init script additions $remote_fs added
+
+-------------------------------------------------------------------
+Thu Feb  9 21:20:37 UTC 2012 - crrodriguez@opensuse.org
+
+- build with -fpie 
+
+-------------------------------------------------------------------
+Sat Dec 31 05:09:38 UTC 2011 - crrodriguez@opensuse.org
+
+- Put the haveged binary back in /usr/sbin not in /sbin
+
+-------------------------------------------------------------------
+Wed Dec 14 23:42:57 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.3.0a, PPC fixes.
+- Cleanup systemd unit and drop capabiltities there.
+
+-------------------------------------------------------------------
+Fri Dec  2 07:26:32 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov 29 03:21:09 UTC 2011 - crrodriguez@opensuse.org
+
+- Use proper systemd macros
+- reduce verbosity level to the minimum
+
+-------------------------------------------------------------------
+Tue Nov 22 14:24:33 UTC 2011 - crrodriguez@opensuse.org
+
+- Use Service type "simple" in systemd unit 
+
+-------------------------------------------------------------------
+Tue Nov  1 17:46:35 CET 2011 - ro@suse.de
+
+- fix build on ia64, s390, s390x 
+
+-------------------------------------------------------------------
+Tue Oct 25 08:37:28 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.3:
+  * reorganized to allow its collection mechanism to be better accessed
+    directly through the file system: includes the option to suppress the
+    daemon interface in the build for circumstances where /dev/random is
+    unavailable or its use is inappropriate
+
+-------------------------------------------------------------------
+Sat Oct  1 14:55:05 UTC 2011 - crrodriguez@opensuse.org
+
+- There is no support for arm targets here, may be fixable
+  later.
+
+-------------------------------------------------------------------
+Sun Jul 24 19:23:34 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.2.
+
+-------------------------------------------------------------------
+Mon Jun  6 11:45:47 UTC 2011 - k0da@opensuse.org
+
+- fix ppc64 build 
+
+-------------------------------------------------------------------
+Mon Jun  6 10:11:20 UTC 2011 - adrian@suse.de
+
+- fix URL to source tar ball
+
+-------------------------------------------------------------------
+Sat May  7 20:06:23 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.1, upstream version where the bugs
+  present in old versions have been fixed in different ways. 
+
+-------------------------------------------------------------------
+Tue Mar  1 10:03:17 CET 2011 - meissner@suse.de
+
+- avoid unnecessary services. bnc#675841
+  also the start should be mediated by YaST or kiwi depending
+  on presence of a virtualization environment, not by the package
+  itself.
+
+-------------------------------------------------------------------
+Tue Jan  4 23:14:52 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Update to version 0.9_git201101042303
+  * fix wrong usage of strdupa
+- fix build in older distros that have no XZ
+
+-------------------------------------------------------------------
+Tue Jan  4 17:18:34 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Fix build in older distros
+- run spec cleaner 
+
+-------------------------------------------------------------------
+Tue Dec  7 21:26:31 UTC 2010 - coolo@novell.com
+
+- prereq init script syslog
+
+-------------------------------------------------------------------
+Thu Nov 25 22:04:37 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Use gcc's __cpuid instead of homegrown asm.
+
+-------------------------------------------------------------------
+Tue Nov 23 23:37:48 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Fix optimization problem, actually a bug in inline asm
+  code. avoid using it, instead try hard to use either
+  GCC builtins or properly corrected inline asm.
+  Thanks Richard for pointing to the right solution.
+
+-------------------------------------------------------------------
+Sat Nov  6 00:00:24 UTC 2010 - aj@suse.de
+
+- Package /lib/systemd/system/ and /lib/systemd to fix build
+
+-------------------------------------------------------------------
+Fri Nov  5 14:23:53 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Link with full RELRO (-Wl,-z,relro,-z,now) 
+
+-------------------------------------------------------------------
+Wed Nov  3 20:50:59 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- add systemd support 
+
+-------------------------------------------------------------------
+Fri Sep 24 16:14:20 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Drop as much capabilitites as possible using libcap-ng 
+
+-------------------------------------------------------------------
+Sat Jul 31 23:55:20 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- I meant Enhances not Supplements 
+
+-------------------------------------------------------------------
+Fri Jul 30 22:18:23 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Implement hack to start by default only in VMs 
+
+-------------------------------------------------------------------
+Tue Jul 27 22:02:20 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Run the complete test suite (for the paranoid)
+- use O_CLOEXEC on fds 
+
+-------------------------------------------------------------------
+Tue Jul 20 21:27:49 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- enable daemon by default
+- add a few Supplements so the it gets installed automatically.
+
+-------------------------------------------------------------------
+Sun Jul 18 21:25:16 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- add proper Requires(pre) 
+
+-------------------------------------------------------------------
+Fri Jul 16 17:30:31 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- build with no optimization, there are reports saying it
+  may crash with -O1 like http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=563938  
+
+-------------------------------------------------------------------
+Thu Jul 15 17:37:11 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- move deamon to /sbin
+- tune the spec file
+- add a SUSE standard init script 
+
+-------------------------------------------------------------------
+Fri May 28 14:03:54 CEST 2010 - meissner@suse.de
+
+- haveged 0.9
+
+  Gather entropy by doing calculation and looking
+  at secondary high resolution processor information
+  (tsc, cache misses etc.)

@@ -1,0 +1,50 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-26 23:57:32.980881379 +0200
+Upstream: dead
+
+getline is already defined by glibc.
+
+---
+ source/gaa_parser.y |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+Index: gaa-1.6.6/source/gaa_parser.y
+===================================================================
+--- gaa-1.6.6.orig/source/gaa_parser.y
++++ gaa-1.6.6/source/gaa_parser.y
+@@ -805,7 +805,7 @@ void copy_file_state(FILE* source, FILE*
+ /* Returns the number of the line, that the index-th character
+  * is placed.
+  */
+-int getline(FILE* fd, int index)
++int gaa_getline(FILE* fd, int index)
+ {
+     int tmp, line = 1, i;
+     int a = 0;
+@@ -830,7 +830,7 @@ int getline(FILE* fd, int index)
+ void copy_line(FILE* fd, int index, FILE* target, char* file, char term)
+ {
+     int a;
+-    fprintf(target, "#line %d \"%s\"\n\t", getline(fd, index), file);
++    fprintf(target, "#line %d \"%s\"\n\t", gaa_getline(fd, index), file);
+     fseek(fd, index, SEEK_SET);
+     do
+     {
+@@ -853,7 +853,7 @@ void put_action( FILE* fd, int index, FI
+     int a;
+     char *str_cmp;
+     int i, flag = 1;
+-    fprintf(target, "#line %d \"%s\"\n", getline(fd, index), file);
++    fprintf(target, "#line %d \"%s\"\n", gaa_getline(fd, index), file);
+     fprintf(target, "{");
+     fseek(fd, index, SEEK_SET);
+     if(opt[0] == 0)
+@@ -954,7 +954,7 @@ void put_action( FILE* fd, int index, FI
+ void copy_file(FILE* fd, int index, FILE* target, char *file)
+ {
+     int a, pa = -1;
+-    fprintf(target, "#line %d \"%s\"\n", getline(fd, index), file);
++    fprintf(target, "#line %d \"%s\"\n", gaa_getline(fd, index), file);
+     fseek(fd, index, SEEK_SET);
+     while( (a=fgetc(fd)) != EOF)
+     {

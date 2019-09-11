@@ -1,0 +1,254 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:37:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.17.0
+ see installed CHANGELOG.md
+
+  0.17.0 (2019-07-02)
+  ===================
+  
+  Maintenance release with nice convenience features and important bugfixes.
+  Notably this **will be the last release to support ruby versions that have reached their end of life**. Moving forward official CRuby support will be 2.4+ and JRuby support will be 9.1+. Older versions might still work but no guarantees.
+  
+  ## Enhancements
+  
+  * Per default filter hidden files and folders. See [#721](https://github.com/colszowka/simplecov/pull/721) (thanks [Renuo AG](https://www.renuo.ch))
+  * Print the exit status explicitly when it's not a successful build so it's easier figure out SimpleCov failed the build in the output. See [#688](https://github.com/colszowka/simplecov/pull/688) (thanks [@daemonsy](https://github.com/daemonsy))
+  
+  ## Bugfixes
+  
+  * Avoid a premature failure exit code when setting `minimum_coverage` in combination with using [parallel_tests](https://github.com/grosser/parallel_tests). See [#706](https://github.com/colszowka/simplecov/pull/706) (thanks [@f1sherman](https://github.com/f1sherman))
+  * Project roots with special characters no longer cause crashes. See [#717](https://github.com/colszowka/simplecov/pull/717) (thanks [@deivid-rodriguez](https://github.com/deivid-rodriguez))
+  * Avoid continously overriding test results with manual `ResultMergere.store_results` usage. See [#674](https://github.com/colszowka/simplecov/pull/674) (thanks [@tomeon](https://github.com/tomeon))
+
+-------------------------------------------------------------------
+Tue Mar 20 10:17:27 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.16.1
+ see installed CHANGELOG.md
+
+  0.16.1 (2018-03-16)
+  ===================
+  
+  ## Bugfixes
+  
+  * Include the LICENSE in the distributed gem again (accidentally removed in 0.16.0). (thanks @tas50)
+  
+  0.16.0 (2018-03-15)
+  ===================
+  
+  ## Enhancements
+  
+  * Relax version constraint on `docile`, per SemVer
+  * exception that occurred on exit is available as `exit_exception`! See [#639](https://github.com/colszowka/simplecov/pull/639)  (thanks @thomas07vt)
+  * Performance: processing results now runs from 2.5x to 3.75x faster. See [#662](https://github.com/colszowka/simplecov/pull/662) (thanks @BMorearty & @eregon)
+  * Decrease gem size by only shipping lib and docs
+  
+  ## Bugfixes
+  
+  * (breaking) Stop handling string filters as regular expressions, use the dedicated regex filter if you need that behaviour. See [#616](https://github.com/colszowka/simplecov/pull/616) (thanks @yujinakayama)
+  * Avoid overwriting the last coverage results on unsuccessful test runs. See [#625](https://github.com/colszowka/simplecov/pull/625) (thanks @thomas07vt)
+  * Don't crash on invalid UTF-8 byte sequences. (thanks @BMorearty)
+
+-------------------------------------------------------------------
+Tue Sep 12 12:49:16 UTC 2017 - dkang@suse.com
+
+- updated to version 0.15.1
+
+## Bugfixes
+
+* Filter directories outside SimpleCov.root that have it as a prefix. See [#617](https://github.com/colszowka/simplecov/pull/617) (thanks @jenseng)
+* Fix standard rails profile rails filter (didn't work). See [#618](https://github.com/colszowka/simplecov/pull/618) (thanks @jenseng again!)
+
+-------------------------------------------------------------------
+Mon Aug 14 06:38:14 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.15.0
+
+## Enhancements
+
+* Ability to use regex filters for removing files from the output. See [#589](https://github.com/colszowka/simplecov/pull/589) (thanks @jsteel)
+
+## Bugfixes
+
+* Fix merging race condition when running tests in parallel and merging them. See [#570](https://github.com/colszowka/simplecov/pull/570) (thanks @jenseng)
+* Fix relevant lines for unloaded files - comments, skipped code etc. are correctly classigied as irrelevant. See [#605](https://github.com/colszowka/simplecov/pull/605) (thanks @odlp)
+* Allow using simplecov with frozen-string-literals enabled. See [#590](https://github.com/colszowka/simplecov/pull/590) (thanks @pat)
+* Make sure Array Filter can use all other filter types. See [#589](https://github.com/colszowka/simplecov/pull/589) (thanks @jsteel)
+* Make sure file names use `Simplecov.root` as base avoiding using full absolute project paths. See [#589](https://github.com/colszowka/simplecov/pull/589) (thanks @jsteel)
+
+-------------------------------------------------------------------
+Sun Mar 19 05:35:07 UTC 2017 - coolo@suse.com
+
+- updated to version 0.14.1
+ see installed CHANGELOG.md
+
+  0.14.1 2017-03-18 ([changes](https://github.com/colszowka/simplecov/compare/v0.14.0...v0.14.1))
+  ========
+
+  ## Bugfixes
+
+  * Files that were skipped as a whole/had no relevant coverage could lead to Float errors. See [#564](https://github.com/colszowka/simplecov/pull/564) (thanks to @stevehanson for the report in [#563](https://github.com/colszowka/simplecov/issues/563))
+
+-------------------------------------------------------------------
+Thu Mar 16 05:41:49 UTC 2017 - coolo@suse.com
+
+- updated to version 0.14.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Jan 26 05:43:10 UTC 2017 - coolo@suse.com
+
+- updated to version 0.13.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jul  4 04:42:01 UTC 2016 - coolo@suse.com
+
+- updated to version 0.12.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb  4 05:41:02 UTC 2016 - coolo@suse.com
+
+- updated to version 0.11.2
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Dec  3 05:30:26 UTC 2015 - coolo@suse.com
+
+- updated to version 0.11.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Dec  1 05:31:49 UTC 2015 - coolo@suse.com
+
+- updated to version 0.11.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Apr 23 08:08:27 UTC 2015 - coolo@suse.com
+
+- updated to version 0.10.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb 19 05:30:33 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.2
+
+-------------------------------------------------------------------
+Wed Oct 15 11:41:19 UTC 2014 - coolo@suse.com
+
+- updated to version 0.9.1
+ ## Bugfixes
+
+  * In 0.9.0, we introduced a regression that made SimpleCov no-op mode fail on Ruby 1.8, while
+    dropping 1.8 support altogether is announced only for v1.0. This has been fixed.
+    See [#333](https://github.com/colszowka/simplecov/issues/333) (thanks (@sferik)
+
+
+ 0.9.0, 2014-07-17 ([changes](https://github.com/colszowka/simplecov/compare/v0.8.2...v0.9.0))
+ ====================
+
+ **A warm welcome and big thank you to the new contributors [@xaviershay](https://github.com/xaviershay), [@sferik](https://github.com/sferik) and especially [@bf4](https://github.com/bf4) for tackling a whole lot of issues and pull requests for this release!**
+
+ ## Enhancements
+
+   * New interface to specify multiple formatters.
+     See [#317](https://github.com/colszowka/simplecov/pull/317) (thanks @sferik)
+   * Document in the README how to exclude code from coverage reports,
+     and that the feature shouldn't be abused for skipping untested
+     private code.
+     See [#304](https://github.com/colszowka/simplecov/issues/304)
+   * Clarify Ruby version support.
+     See [#279](https://github.com/colszowka/simplecov/pull/279) (thanks @deivid-rodriguez)
+
+ ## Bugfixes
+
+   * Ensure calculations return Floats, not Fixnum or Rational. Fixes segfaults with mathn.
+     See [#245](https://github.com/colszowka/simplecov/pull/245) (thanks to @bf4)
+   * Using `Kernel.exit` instead of exit to avoid uncaught throw :IRB_EXIT when
+     exiting irb sessions.
+     See [#287](https://github.com/colszowka/simplecov/pull/287) (thanks @wless1)
+     See [#285](https://github.com/colszowka/simplecov/issues/285)
+   * Does not look for .simplecov in ~/ when $HOME is not set.
+     See [#311](https://github.com/colszowka/simplecov/pull/311) (thanks @lasseebert)
+   * Exit with code only if it's Numeric > 0.
+     See [#302](https://github.com/colszowka/simplecov/pull/303)(thanks @hajder)
+   * Make default filter case insensitive.
+     See [#280](https://github.com/colszowka/simplecov/pull/280) (thanks @ryanatball)
+   * Improve regexp that matches functional tests.
+     See [#276](https://github.com/colszowka/simplecov/pull/276) (thanks @sferik)
+   * Fix TravisCI [#272](https://github.com/colszowka/simplecov/pull/272) [#278](https://github.com/colszowka/simplecov/pull/278), [#302](https://github.com/colszowka/simplecov/pull/302)
+   * Fix global config load.
+     See [#311](https://github.com/colszowka/simplecov/pull/311) (thanks @lasseebert)
+
+-------------------------------------------------------------------
+Mon Oct 13 06:47:09 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:38 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.2, see CHANGELOG.md (tons of those)
+
+-------------------------------------------------------------------
+Sun Oct 28 05:56:51 UTC 2012 - coolo@suse.com
+
+- updated to version 0.7.1
+  * [BUGFIX] The gem packages of 0.7.0 (both simplecov and simplecov-html) pushed to Rubygems had some file
+    permission issues, leading to problems when installing SimpleCov in a root/system Rubygems install and then
+    trying to use it as a normal user (see https://github.com/colszowka/simplecov/issues/171, thanks @envygeeks
+    for bringing it up). The gem build process has been changed to always enforce proper permissions before packaging
+    to avoid this issue in the future.
+
+-------------------------------------------------------------------
+Fri Oct 12 09:43:22 UTC 2012 - coolo@suse.com
+
+- updated to version 0.7.0
+  * [FEATURE] The new `maximum_coverage_drop` and `minimum_coverage` now allow you to fail your build when the
+    coverage dropped by more than what you allowed or is below a minimum value required. Also, `refuse_coverage_drop` disallows
+    any coverage drops between test runs.
+    See https://github.com/colszowka/simplecov/pull/151, https://github.com/colszowka/simplecov/issues/11,
+    https://github.com/colszowka/simplecov/issues/90, and https://github.com/colszowka/simplecov/issues/96 (thanks to @infertux)
+  * [FEATURE] SimpleCov now ships with a built-in MultiFormatter which allows the easy usage of multiple result formatters at
+    the same time without the need to write custom wrapper code.
+    See https://github.com/colszowka/simplecov/pull/158 (thanks to @nikitug)
+  * [BUGFIX] The usage of digits, hyphens and underscores in group names could lead to broken tab navigation
+    in the default simplecov-html reports. See https://github.com/colszowka/simplecov-html/pull/14 (thanks to @ebelgarts)
+  * [REFACTORING] A few more ruby warnings removed. See https://github.com/colszowka/simplecov/issues/106 and
+    https://github.com/colszowka/simplecov/pull/139. (thanks to @lukejahnke)
+  * A [Pledgie button](https://github.com/colszowka/simplecov/commit/63cfa99f8658fa5cc66a38c83b3195fdf71b9e93) for those that
+    feel generous :)
+  * The usual bunch of README fixes and documentation tweaks. Thanks to everyone who contributed those!
+
+-------------------------------------------------------------------
+Thu May 10 19:08:48 UTC 2012 - coolo@suse.com
+
+- update to 0.6.4
+ * [BUGFIX] Encoding issues with ISO-8859-encoded source files fixed.
+   See https://github.com/colszowka/simplecov/pull/117. (thanks to @Deradon)
+ * [BUGFIX] Ensure ZeroDivisionErrors won't occur when calculating the coverage result, which previously
+   could happen in certain cases. See https://github.com/colszowka/simplecov/pull/128. (thanks to @japgolly)
+ * [REFACTORING] Changed a couple instance variable lookups so SimpleCov does not cause a lot of warnings when
+   running ruby at a higher warning level. See https://github.com/colszowka/simplecov/issues/106 and
+   https://github.com/colszowka/simplecov/pull/119. (thanks to @mvz and @gioele)
+ * [BUGFIX] Modified the API-changes for newer multi_json versions introduced with #122 and v0.6.2 so
+   they are backwards-compatible with older multi_json gems in order to avoid simplecov polluting
+   the multi_json minimum version requirement for entire applications.
+   See https://github.com/colszowka/simplecov/issues/132
+ * Added appraisal gem to the test setup in order to run the test suite against both 1.0 and 1.3
+   multi_json gems and ensure the above actually works :)
+
+-------------------------------------------------------------------
+Mon Apr 23 08:02:33 UTC 2012 - coolo@suse.com
+
+- update to 0.6.2 - remove use of deprecated multijson API
+
+-------------------------------------------------------------------
+Sat Apr  7 14:54:32 UTC 2012 - coolo@suse.com
+
+- initial package
+

@@ -1,0 +1,158 @@
+From 5f3bf1a6b74550e83596ed7be18bdf53345f0c60 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Wed, 17 May 2017 09:09:57 +0200
+Subject: [PATCH] plugins-don-t-abuse-require_relative.patch
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ plugins/guests/arch/cap/configure_networks.rb      | 2 +-
+ plugins/guests/debian/cap/configure_networks.rb    | 2 +-
+ plugins/guests/freebsd/cap/configure_networks.rb   | 2 +-
+ plugins/guests/funtoo/cap/configure_networks.rb    | 2 +-
+ plugins/guests/gentoo/cap/configure_networks.rb    | 2 +-
+ plugins/guests/netbsd/cap/configure_networks.rb    | 2 +-
+ plugins/guests/nixos/cap/configure_networks.rb     | 2 +-
+ plugins/guests/openbsd/cap/configure_networks.rb   | 2 +-
+ plugins/guests/redhat/cap/configure_networks.rb    | 2 +-
+ plugins/guests/slackware/cap/configure_networks.rb | 2 +-
+ plugins/guests/suse/cap/configure_networks.rb      | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/plugins/guests/arch/cap/configure_networks.rb b/plugins/guests/arch/cap/configure_networks.rb
+index 0ef71d55f..df0bd0f8f 100644
+--- a/plugins/guests/arch/cap/configure_networks.rb
++++ b/plugins/guests/arch/cap/configure_networks.rb
+@@ -2,7 +2,7 @@ require "ipaddr"
+ require "socket"
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestArch
+diff --git a/plugins/guests/debian/cap/configure_networks.rb b/plugins/guests/debian/cap/configure_networks.rb
+index 35ffba2d2..c09c59518 100644
+--- a/plugins/guests/debian/cap/configure_networks.rb
++++ b/plugins/guests/debian/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestDebian
+diff --git a/plugins/guests/freebsd/cap/configure_networks.rb b/plugins/guests/freebsd/cap/configure_networks.rb
+index 36b11d1ed..866f8503a 100644
+--- a/plugins/guests/freebsd/cap/configure_networks.rb
++++ b/plugins/guests/freebsd/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestFreeBSD
+diff --git a/plugins/guests/funtoo/cap/configure_networks.rb b/plugins/guests/funtoo/cap/configure_networks.rb
+index 6e20dc237..1b41340c1 100644
+--- a/plugins/guests/funtoo/cap/configure_networks.rb
++++ b/plugins/guests/funtoo/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestFuntoo
+diff --git a/plugins/guests/gentoo/cap/configure_networks.rb b/plugins/guests/gentoo/cap/configure_networks.rb
+index f7464432c..002271b71 100644
+--- a/plugins/guests/gentoo/cap/configure_networks.rb
++++ b/plugins/guests/gentoo/cap/configure_networks.rb
+@@ -1,7 +1,7 @@
+ require "tempfile"
+ require "ipaddr"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestGentoo
+diff --git a/plugins/guests/netbsd/cap/configure_networks.rb b/plugins/guests/netbsd/cap/configure_networks.rb
+index d53b6c6e4..922edfdab 100644
+--- a/plugins/guests/netbsd/cap/configure_networks.rb
++++ b/plugins/guests/netbsd/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestNetBSD
+diff --git a/plugins/guests/nixos/cap/configure_networks.rb b/plugins/guests/nixos/cap/configure_networks.rb
+index 96458622f..ed371765e 100644
+--- a/plugins/guests/nixos/cap/configure_networks.rb
++++ b/plugins/guests/nixos/cap/configure_networks.rb
+@@ -1,7 +1,7 @@
+ require "ipaddr"
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestNixos
+diff --git a/plugins/guests/openbsd/cap/configure_networks.rb b/plugins/guests/openbsd/cap/configure_networks.rb
+index fefc05b9e..a3bfcaf48 100644
+--- a/plugins/guests/openbsd/cap/configure_networks.rb
++++ b/plugins/guests/openbsd/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestOpenBSD
+diff --git a/plugins/guests/redhat/cap/configure_networks.rb b/plugins/guests/redhat/cap/configure_networks.rb
+index 44fa5fa67..58ac7a31c 100644
+--- a/plugins/guests/redhat/cap/configure_networks.rb
++++ b/plugins/guests/redhat/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestRedHat
+diff --git a/plugins/guests/slackware/cap/configure_networks.rb b/plugins/guests/slackware/cap/configure_networks.rb
+index b11b93e98..0f180275f 100644
+--- a/plugins/guests/slackware/cap/configure_networks.rb
++++ b/plugins/guests/slackware/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestSlackware
+diff --git a/plugins/guests/suse/cap/configure_networks.rb b/plugins/guests/suse/cap/configure_networks.rb
+index 2dd140230..e6dd96f08 100644
+--- a/plugins/guests/suse/cap/configure_networks.rb
++++ b/plugins/guests/suse/cap/configure_networks.rb
+@@ -1,6 +1,6 @@
+ require "tempfile"
+ 
+-require_relative "../../../../lib/vagrant/util/template_renderer"
++require "vagrant/util/template_renderer"
+ 
+ module VagrantPlugins
+   module GuestSUSE
+-- 
+2.19.1
+

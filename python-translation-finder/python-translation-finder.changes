@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Jul 22 12:32:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6 bsc#1142582:
+  * Improved discovery of POT files.
+  * Added support for subtitle files supported in Weblate 3.7.
+  * Improved detection of actual JSON formats.
+  * Added support for detecting PHP files.
+  * Improved detection of YAML formats.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:03:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5:
+  * Various performance improvements.
+  * Added detection of Fluent translations.
+  * Improved detection of language code within filename.
+  * Added detection of YAML translations.
+
+-------------------------------------------------------------------
+Mon May  6 08:46:03 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4
+  * Improved detection in Perl code.
+  * Extended skip list for language codes.
+  * Improved detection of nested language codes with country suffix.
+  * Improved processing of Transifex .tx/config files.
+  * Include discovery metadata in API results.
+  * Improve detection of files in source directory.
+  * Fixed discovery of monolingual files in root.
+  * Improved detection of non language paths.
+
+-------------------------------------------------------------------
+Wed Apr  3 09:05:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use %pytest macro for now to get this in Leap faster
+
+-------------------------------------------------------------------
+Tue Apr  2 10:58:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1:
+  * Improved detection of translation with full language code.
+  * Improved detection of language code in directory and file name.
+  * Improved detection of language code separated by full stop.
+  * Added detection for app store metadata files.
+  * Added detection for JSON files.
+  * Ignore symlinks during discovery.
+  * Improved detection of matching pot files in several corner cases.
+  * Improved detection of monolingual Gettext.
+- Fix the deps to not pull coverage things
+
+-------------------------------------------------------------------
+Wed Mar 20 09:00:37 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- initial package version 1.0

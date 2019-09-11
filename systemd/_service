@@ -1,0 +1,16 @@
+<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
+<!-- for more details on the syntax -->
+
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/openSUSE/systemd.git</param>
+		<param name="filename">systemd</param>
+		<param name="versionformat">@PARENT_TAG@+suse.@TAG_OFFSET@.g%h</param>
+		<param name="revision">openSUSE-Factory</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		 <param name="file">*systemd-v237+suse.*.tar</param>
+		 <param name="compression">xz</param>
+	</service>
+</services>

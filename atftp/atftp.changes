@@ -1,0 +1,465 @@
+-------------------------------------------------------------------
+Fri Jul  5 11:45:37 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Fri Apr 26 09:37:19 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Removed old initscript conditionals and atftpd.init file
+
+-------------------------------------------------------------------
+Wed Apr 24 14:57:32 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to version 0.7.2 [bsc#1133114, CVE-2019-11365][bsc#1133145, CVE-2019-11366]
+  * atftpd.c: Fixed a potential DoS bug (introduced by the IPv6 patch)
+  * Fix Debian Bug deb#613582 and deb#258998 atftpd: does not reply properly when there's more than 1 interface
+  * Fix Debian Bug deb#622840 atftpd: Forgets port if both --port and --bind-address are used
+  * Fix Debian Bug deb#606969 atftp exits with no error after a get when disk is full
+  * Fix Debian Bug deb#575831 atftp: error return value when tftp put file
+  * Fix missing default port from Ubuntu bug lp#972834 
+  * Merged patches to improve debugging and warning messages
+  * Merged patch from Gentoo distribution: 
+    add support for proprietary password extension necessary for
+    transferring files to linksys routers (atftp client)
+  * Added patch from Gentoo bug #322601: client fails for filenames containing spaces
+  * Listening Address configuration fixed
+  * Added Patch "Blksize option can be smaller than SEGSIZE" 
+  * Fix Debian Bug deb#609813 Apply patch listen on requested port when in daemon mode.
+  * Fix Debian Bug deb#598474 Fixed use of sendto() over a connected datagram socket on FreeBSD
+  * Fix Debian Bug deb#580473 Apply IPv6 support patch by Ben Hutchings.
+    Add AC_GNU_SOURCE to configure.ac to address FTBFS.
+  * Fix Debian Bug deb#536295 Updated config.sub .guess.
+  * Fix Debian Bug deb#535604 Make sure we have the --daemon option before starting atftpd
+  * Fix Debian Bug deb#514521 Crash fix
+  * Fix Debian Bug deb#484739 Added support for logging to stdout.
+  * Fix Debian Bug deb#484932 inetd.conf: change udp to udp4
+  * Fix Debian Bug deb#436310 Fixed the FTBFS.
+  * Fix Debian Bug deb#420900 Use CLOCKS_PER_SEC instead of CLK_TCK. Fixed a FTBFS.
+  * Fix Debian Bug deb#271816 Random segfaults fixed
+  * Fix Debian Bug deb#291829 Segfault fixed on AMD64.
+  * Fix Debian Bug deb#290062 Copyright fixed.
+  * Fix Debian Bug deb#275052 Data corruption bug in multicast mode fixed.
+  * New Project home: https://sourceforge.net/projects/atftp/
+- Removed patches fixed upstream:
+  * atftp-0.7.dif
+  * atftp-CLK_TCK.diff
+  * atftp-0.7_compiler_warnings.patch
+  * atftp-0.7_thread_crash.patch
+  * atftp-0.7_sol_ip.patch
+  * atftp-0.7_bug-213384_OPT_NUMBER.patch
+  * atftpd-0.7_unprotected_assignments_crash.patch
+  * atftpd-0.7_circumvent_tftp_size_restrictions.patch
+- Rebased patches:
+  * atftp-0.7-ack_heuristic.patch
+  * atftp-0.7-default_user_man.patch
+  * atftp-0.7-server_receive_race.patch
+  * atftp-0.7-sorcerers_apprentice.patch
+  * atftp-drop_privileges_non-daemon.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:03 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Sep  8 13:01:24 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Changed permissions of /srv/tftpboot to be readable [bsc#940608]
+
+-------------------------------------------------------------------
+Tue Dec  6 12:39:32 UTC 2016 - vcizek@suse.com
+
+- honor --user and --group options in non-daemon mode (bsc#1013565)
+  * add atftp-drop_privileges_non-daemon.patch
+
+-------------------------------------------------------------------
+Mon Jun 15 13:19:22 UTC 2015 - mpluskal@suse.com
+
+- Use ATFTPD_BIND_ADDRESSES in init script (boo#921219)
+- Move autoreconf back to %buils as it causes issues with quilt
+
+-------------------------------------------------------------------
+Mon Jun  8 07:39:43 UTC 2015 - schwab@suse.de
+
+- Force gnu89 inline semantics
+
+-------------------------------------------------------------------
+Tue May 26 08:19:21 UTC 2015 - mpluskal@suse.com
+
+- Move autoreconf to %prep section as it better fits there
+
+-------------------------------------------------------------------
+Sun May 24 21:24:18 UTC 2015 - mpluskal@suse.com
+
+- Fix atftpd.socket (boo#932161)
+
+-------------------------------------------------------------------
+Wed Mar 18 15:23:17 UTC 2015 - mpluskal@suse.com
+
+- Do not install service and socket file as executable 
+  * change to 0644
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 16 13:06:57 UTC 2015 - p.drouand@gmail.com
+
+- Add systemd support for openSUSE >= 12.1
+
+-------------------------------------------------------------------
+Tue Nov 12 20:41:45 UTC 2013 - chris@computersalat.de
+
+- rebase patches (p0)
+- rename atftpd.init.d to atftpd.init
+- fix spec
+  * remove ghost /var/run/atftp (created by init)
+
+-------------------------------------------------------------------
+Thu Feb  7 13:05:52 UTC 2013 - vcizek@suse.com
+
+- create capabilites provided by both tftp and atftp
+  (bnc#801481 or bnc#725378)
+
+-------------------------------------------------------------------
+Thu Jan  3 13:28:02 UTC 2013 - vcizek@suse.com
+
+- change ownership of /srv/tftpboot, because atftpd running as
+  tftp:tftp can't write to that directory
+- create pid directory on service start
+- manpage changes:
+  * substitute /tftpboot with /srv/tftpboot
+  * default user is now tftp:tftp
+  * added patches:
+    atftp-0.7-default_user_man.patch
+    atftp-0.7-default_dir_man.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 08:49:53 UTC 2012 - vcizek@suse.com
+
+- use Vladimir Nadvornik's heuristic for packet retransmission
+  by default (see bnc#774376)
+  The RFC1350 compliant behaviour stays optional.
+  (added atftp-0.7-ack_heuristic.patch)
+- merged the two sorcerer's apprentice syndrome patches to one
+  (removed atftp-0.7-prevent-sas.patch)
+
+-------------------------------------------------------------------
+Tue Sep 11 13:01:20 UTC 2012 - vcizek@suse.com
+
+- added rules for SuSEfirewall2 (bnc#729793) 
+
+-------------------------------------------------------------------
+Tue Sep 11 12:47:04 UTC 2012 - vcizek@suse.com
+
+- use the "su" logrotate directive (bnc#677335) 
+
+-------------------------------------------------------------------
+Wed Sep  5 14:10:03 UTC 2012 - vcizek@suse.com
+
+- prevent the sorcerer's apprentice syndrome situation only when
+  explicitly specified by the user (bnc#774376)
+  (added a new command line option --prevent-sas to turn it on)
+
+-------------------------------------------------------------------
+Wed Jan 11 15:27:36 UTC 2012 - vcizek@suse.com
+
+- fix a race condition where two server threads pick up a single
+  client, which causes the transported file being overwritten
+  (bnc#599856)
+
+-------------------------------------------------------------------
+Mon Jan  2 17:28:19 UTC 2012 - vcizek@suse.cz
+
+- added autoconf as BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  1 11:20:12 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov  9 15:13:18 UTC 2011 - vcizek@suse.com
+
+- licence in spdx format
+
+-------------------------------------------------------------------
+Thu Nov  3 16:56:46 UTC 2011 - vcizek@suse.com
+
+- fixed the "Sorcerer's Apprentice Syndrome" bug
+  (bnc#727843)
+
+-------------------------------------------------------------------
+Sat Sep 17 13:28:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Sep  6 11:55:01 UTC 2011 - vcizek@suse.com
+
+- added missing PreReq: pwdutils (bnc#683140)
+
+-------------------------------------------------------------------
+Fri Oct 29 23:18:57 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o RPM_BUILD_ROOT vs buildroot
+- fix pre
+  o no check before addding group/user (darix)
+- fix files
+  o provide /srv/tftpboot
+- modify sysconfig
+  o provide defaults (darix)
+
+-------------------------------------------------------------------
+Wed Oct 13 21:28:56 UTC 2010 - chris@computersalat.de
+
+- modified init/sysconfig file
+  o set defaults in init file
+- added default group/user tftp:tftp (bnc#472282)
+- added /srv/tftpboot as default ATFTPD_DIRECTORY (bnc#248008,507011)
+- added logrotate script
+  o --logfile /var/log/atftpd/atftp.log
+- added missing README.MCAST, README.PCRE
+- some rpmlint stuff
+  o fixed missing-dependency-to-logrotate
+  o fixed init non-remote_fs-dependency
+  o fixed init no-reload-entry
+  o fixed non-conffile-in-etc
+
+-------------------------------------------------------------------
+Wed Sep 22 06:39:40 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- add missing pcre-devel to build Requires (bnc#537425)
+
+-------------------------------------------------------------------
+Fri Sep 12 16:27:04 CEST 2008 - mrueckert@suse.de
+
+- add atftpd-0.7_circumvent_tftp_size_restrictions.patch:
+  allow block counts higher than 65536 (Fate#303031)
+- replace network with remote_fs in the init script dependencies
+
+-------------------------------------------------------------------
+Fri Aug 22 15:14:00 CEST 2008 - ro@suse.de
+
+- change fillup_and_insserv to fillup_only (not active by default) 
+
+-------------------------------------------------------------------
+Thu Apr  3 15:57:09 CEST 2008 - mrueckert@suse.de
+
+- added atftpd-0.7_unprotected_assignments_crash.patch: (bnc#291884)
+  under high load atftpd dies as data access wasnt always protected
+  with a mutex.
+
+-------------------------------------------------------------------
+Thu Jun 21 15:37:53 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Mon Jan 22 18:33:44 CET 2007 - mrueckert@suse.de
+
+- added atftp-0.7_bug-213384_OPT_NUMBER.patch:
+  "atftpd incorrectly sends OACK (option acknowledge) packets"
+  (#213384,#80441)
+
+-------------------------------------------------------------------
+Mon Jul 31 16:16:43 CEST 2006 - mrueckert@suse.de
+
+- added /var/run/atftpd/ (0755,nobody,nogroup):
+  at ftp can finally create pid files
+  the default pid file for a single instance will be
+  /var/run/atftpd/pid
+- added support to run multiple instances of atftpd bound to specific
+  IP addresses:
+  * new sysconfig variable ATFTPD_BIND_ADDRESSES: whitespace
+    seperated list of ip addresses.
+  * each instance has its own pid file /var/run/atftpd/$ip.pid
+
+-------------------------------------------------------------------
+Sat Jul  1 04:54:51 CEST 2006 - mrueckert@suse.de
+
+- bump the version number to 0.7.0:
+  This fix is needed because 0.7 < 0.7cvs. Replaced %{version}
+  with %{pkg_version} everywhere. %{pkg_version} holds the original
+  value of 0.7.
+
+-------------------------------------------------------------------
+Thu Mar 30 18:32:19 CEST 2006 - mrueckert@suse.de
+
+- added atftp-0.7_compiler_warnings.patch:
+  o missing include of pthread.h
+  o make the the 1st parameter of tftp_mtftp_missed_packet
+    unsigned int to fix a differ in signedness warning
+  o configure overwrote the CFLAGS from the environment.
+  o fixed logging of threadids
+- added atftp-0.7_thread_crash.patch:
+  fixes http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=271816
+- added atftp-0.7_sol_ip.patch:
+  only use the SOL_IP if it is defined
+- updated atftp-0.7.dif:
+  o really always run through the whole bitmap to find old holes.
+    (bug #148779, #65660)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 11:56:43 CET 2005 - ro@suse.de
+
+- define CLK_TCK if not already done
+
+-------------------------------------------------------------------
+Thu Mar  3 19:12:15 CET 2005 - nashif@suse.de
+
+- Applied patch from #65660: transfer breaks down if packets get
+  dropped
+
+-------------------------------------------------------------------
+Thu Mar  3 19:06:48 CET 2005 - nashif@suse.de
+
+- According to #65660 memory allocation issue not present anymore
+
+-------------------------------------------------------------------
+Sun Feb 13 21:46:53 CET 2005 - nashif@suse.de
+
+- fixed segfault on x86_64
+
+-------------------------------------------------------------------
+Tue Nov 16 06:44:58 CET 2004 - ro@suse.de
+
+- merge old changelog entries (after checking all fixes are here)
+- removed also destdir.patch (included upstream)
+
+-------------------------------------------------------------------
+Fri Nov 12 19:17:31 CET 2004 - jhargado@suse.de
+
+- Added a patch to fix a problem where if a client requests a file
+  that doesn't exist, sometimes the daemon would exit without warning.
+ The .7 version of atftp is needed in SLRS to allow HA functionality.
+  This package is only included in the SLRS distribution.
+
+-------------------------------------------------------------------
+Sat Sep 11 17:21:40 CEST 2004 - kukuk@suse.de
+- Adjust to new glibc __THROW define
+
+-------------------------------------------------------------------
+Mon Apr 12 03:05:46 CEST 2004 - nashif@suse.de
+
+- update to 0.7 final
+  - when called in batch mode, return right exit code if
+    operation fails.
+
+-------------------------------------------------------------------
+Tue Mar  9 15:23:01 CET 2004 - ms@suse.de
+
+- include timeout patch:
+  We finally got a network trace with
+  the ACKs included.  When the client fails the checksum, it stops acking
+  the server.  This was occurring anywhere from the middle to the end of the
+  730MB download.  It boils down to slower systems are taking to long to
+  write the network data to the disk and in the meanwhile the tftp timeout
+  value is incrementing and when it reaches 5 tftp timeouts, the clients
+  gives up!!   Dan added code to reset the timeout counter when the client
+  received another good packet.   With this fix, the clients, even slow
+  clients never failed.   We think adding more memory to the slower clients
+  made the problem worse because it took longer to write the memory cache
+  out to the disk and caused more timeouts.    While trying to cause more
+  timeouts on the clients (we paused the client in the middle of the
+  download), we noticed the server code has the same timeout scheme so Dan
+  also added this code to reset the timeout counter when good packets were
+  received.    These fixes look solid, even under error conditions.
+
+-------------------------------------------------------------------
+Mon Mar  1 05:33:58 CET 2004 - nashif@suse.de
+
+- Update to 0.7 cvs
+
+-------------------------------------------------------------------
+Thu Feb 19 10:50:20 CET 2004 - kukuk@suse.de
+
+- Cleanup neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb  4 17:54:51 CET 2004 - ms@suse.de
+
+- according to Anas Nashif <nashif@suse.de> the current version
+  0.6.2 includes the fix for bug (#27341). buffer overflow when a long
+  filename is sent to the server
+
+-------------------------------------------------------------------
+Wed Feb  4 15:26:43 CET 2004 - ms@suse.de
+
+- include version 0.6.2 to SLES8 includes important multicast
+  fixes related to project Point-of-Sale (#34074)
+
+-------------------------------------------------------------------
+Sat Jan 10 21:11:12 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 29 04:38:45 CEST 2003 - nashif@suse.de
+
+- Provide default tftp directory
+
+-------------------------------------------------------------------
+Fri Aug  1 05:46:44 CEST 2003 - nashif@suse.de
+
+- update to 0.6.2
+- Fixes bug #27341
+- Readded conflict to tftp
+
+-------------------------------------------------------------------
+Wed May 28 16:41:41 CEST 2003 - nashif@suse.de
+
+- Removed conflict to tftp
+- added manpages as doc files
+
+-------------------------------------------------------------------
+Mon May 26 13:05:04 CEST 2003 - lmuelle@suse.de
+
+- Remove set -e from init script; exit with rc 5 if binary is not installed
+
+-------------------------------------------------------------------
+Wed Jan  1 17:21:33 CET 2003 - nashif@suse.de
+
+- Fixed bug #22614: missing metadata in sysconfig template
+
+-------------------------------------------------------------------
+Sat Sep 14 06:23:15 CEST 2002 - nashif@suse.de
+
+- Added missing restart to init script
+
+-------------------------------------------------------------------
+Fri Aug 30 17:04:36 CEST 2002 - nashif@suse.de
+
+- Fixed bug #18661: Removed ; from sysconfig file
+
+-------------------------------------------------------------------
+Sat Aug 17 18:31:00 CEST 2002 - nashif@suse.de
+
+- Fixed bug #17793: Added PreReq
+- Fixed init script output
+
+-------------------------------------------------------------------
+Sun Jun  9 06:45:05 CEST 2002 - nashif@suse.de
+
+- Update to version 0.6.1.1
+
+-------------------------------------------------------------------
+Sat Apr 13 18:00:14 CEST 2002 - nashif@suse.de
+
+- Use tftp_LDADD for libraries instead of LDFLAGS
+
+-------------------------------------------------------------------
+Sat Mar 23 04:38:43 CET 2002 - nashif@suse.de
+
+- Initial release (0.50)
+

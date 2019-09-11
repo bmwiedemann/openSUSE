@@ -1,0 +1,27 @@
+From cfa1d4ad984527e065b5a12df7d9ad70925f1618 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 15 Feb 2019 18:16:53 +0100
+Subject: [PATCH 2/5] Return *this from operator= in medenum python wrapper
+
+Obviously, the "return *this;" should not be commented out.
+---
+ python/med_enum_typemap.i | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/python/med_enum_typemap.i b/python/med_enum_typemap.i
+index eb15702..c72c814 100644
+--- a/python/med_enum_typemap.i
++++ b/python/med_enum_typemap.i
+@@ -47,7 +47,8 @@
+     return os << "[Classe Type(): _val:"<<foo._val<<"]"<<std::endl;
+   }
+   Type & operator=(const Type & foo) {_val=foo._val;
+-    //std::cout << "Type Operator = :"<<this<< " [_val:"<<_val<<"]" <<std::endl; return *this;
++    //std::cout << "Type Operator = :"<<this<< " [_val:"<<_val<<"]" <<std::endl;
++    return *this;
+   }
+ 
+   };
+-- 
+2.20.1
+

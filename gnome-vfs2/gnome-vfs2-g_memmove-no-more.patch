@@ -1,0 +1,97 @@
+Index: gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ace.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/libgnomevfs/gnome-vfs-ace.c
++++ gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ace.c
+@@ -523,7 +523,7 @@ gnome_vfs_ace_del_perm (GnomeVFSACE
+ 
+ 	for (i=0; i<permset->count; i++) {
+ 		if (permset->perms[i] == perm) {
+-			g_memmove (&permset->perms[i], &permset->perms[i+1], permset->count - i);
++			memmove (&permset->perms[i], &permset->perms[i+1], permset->count - i);
+ 			permset->count--;
+ 			break;
+ 		}
+Index: gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-job.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/libgnomevfs/gnome-vfs-job.c
++++ gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-job.c
+@@ -851,7 +851,7 @@ serve_channel_read (GnomeVFSHandle *hand
+ 					if (written_bytes_in_buffer > 0) {
+ 						/* Need to shift the unwritten bytes
+ 						   to the start of the buffer */
+-						g_memmove(buffer,
++						memmove(buffer,
+ 							  (char *) buffer + written_bytes_in_buffer,
+ 							  filled_bytes_in_buffer - written_bytes_in_buffer);
+ 						filled_bytes_in_buffer =
+Index: gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-resolve.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/libgnomevfs/gnome-vfs-resolve.c
++++ gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-resolve.c
+@@ -115,7 +115,7 @@ resolvehandle_from_hostent (struct hoste
+ 	   *handle = NULL;
+ 	   
+ 	   for (iter = he->h_addr_list; *iter != NULL; iter++) {
+-			 g_memmove (aptr, *iter, he->h_length);
++			 memmove (aptr, *iter, he->h_length);
+ 			 addr = gnome_vfs_address_new_from_sockaddr (sa, addrlen);
+ 
+ 			 if (addr != NULL)
+Index: gnome-vfs-2.24.4/modules/nntp-method.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/modules/nntp-method.c
++++ gnome-vfs-2.24.4/modules/nntp-method.c
+@@ -587,7 +587,7 @@ remove_numbers_between_dashes(char *inpu
+ 			segment_size = right_ptr - left_ptr;
+ 			if (all_numbers_or_spaces(left_ptr, right_ptr) && segment_size > 1) {
+ 				length_to_end = strlen(right_ptr + 1) + 1;
+-					g_memmove(left_ptr, right_ptr + 1, length_to_end);
++					memmove(left_ptr, right_ptr + 1, length_to_end);
+ 			} else {
+ 				left_ptr = right_ptr;
+ 			}
+@@ -680,7 +680,7 @@ remove_of_expressions (char *input_str)
+ 		if (found_number) {		
+ 			length_to_end = strlen(right_ptr);
+ 			if (length_to_end > 0) {
+-				g_memmove(left_ptr + 1, right_ptr, length_to_end + 1);
++				memmove(left_ptr + 1, right_ptr, length_to_end + 1);
+ 			} else {
+ 				left_ptr += 1;
+ 				*left_ptr = '\0';
+@@ -715,7 +715,7 @@ filter_folder_name(char *folder_name)
+ 		right_ptr = strchr(left_ptr, ']');
+ 		if (right_ptr != NULL && right_ptr > left_ptr) {
+ 			length_to_end = strlen(right_ptr + 1) + 1;
+-			g_memmove(left_ptr, right_ptr + 1, length_to_end);
++			memmove(left_ptr, right_ptr + 1, length_to_end);
+ 		}	
+ 	}
+ 	
+@@ -757,7 +757,7 @@ remove_commas(char *source_str)
+ 	ptr = source_str;
+ 	while (*ptr != '\0') {
+ 		if (*ptr == ',') {
+-			g_memmove(ptr, ptr+1, strlen(ptr));
++			memmove(ptr, ptr+1, strlen(ptr));
+ 		} else {
+ 			ptr += 1;
+ 		}
+@@ -1267,7 +1267,7 @@ load_from_article (NNTPConnection *conn,
+ 				line_len = conn->buffer_size - buffer_offset;
+ 			}
+ 			dest_ptr = (char*) conn->buffer + buffer_offset;
+-			g_memmove(dest_ptr, line, line_len);
++			memmove(dest_ptr, line, line_len);
+ 			if (conn->uu_decode_mode) {
+ 				line_len = uu_decode_text(dest_ptr, line_len);
+ 				buffer_offset += line_len;
+@@ -1354,7 +1354,7 @@ copy_bytes_from_buffer(NNTPConnection *c
+ 		size_to_move = bytes_to_read;
+ 	}
+ 	/* move the bytes from the buffer */
+-	g_memmove(destination_buffer, ((char*) connection->buffer) + connection->buffer_offset, size_to_move);
++	memmove(destination_buffer, ((char*) connection->buffer) + connection->buffer_offset, size_to_move);
+ 	
+ 	/* update the counts */
+ 	connection->buffer_offset += size_to_move;

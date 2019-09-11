@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Sat Jun  8 07:55:13 UTC 2013 - coolo@suse.com
+
+- updated to 0.49
+    * Fix RT #78194: PAR::Dist::parse_dist_name mis-parses par file name
+      Patch from KENO, thanks!
+
+-------------------------------------------------------------------
+Tue Nov 29 20:31:39 UTC 2011 - coolo@suse.com
+
+- update to 0.48
+   * Prefer MYMETA.yml over META.yml if possible.
+   * Try YAML implementations in different order (XS first).
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 08:10:39 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Thu Aug 26 18:54:36 UTC 2010 - pascal.bleser@opensuse.org
+
+- rewrote auto-generated spec file
+- update to 0.47:
+  * POD fixes
+  * do not use Archive::Zip if its version is 1.28
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:18 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 14:50:27 CEST 2009 - chris@computersalat.de
+
+- initial pkg 0.45
+

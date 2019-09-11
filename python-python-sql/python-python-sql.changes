@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Mon Oct  1 08:59:59 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0.0
+  * Add Flavor filter_ to fallback to case expression
+  * Allow to use expression in AtTimeZone
+  * Add comparison predicates
+  * Add COLLATE
+  * various bugfixes
+
+-------------------------------------------------------------------
+Mon Apr 24 11:49:18 UTC 2017 - axel.braun@gmx.de
+
+- Version 0.9 
+  * Add distinct_on on Select
+  * Allow to use Select as Column of Select query
+  * Support Select without from clause
+
+-------------------------------------------------------------------
+Mon Apr 17 08:32:08 UTC 2017 - axel.braun@gmx.de
+
+- singlespec
+  source URL corrected
+
+-------------------------------------------------------------------
+Thu Jun 30 14:09:28 UTC 2016 - axel.braun@gmx.de
+
+- corrected name/metaname 
+
+-------------------------------------------------------------------
+Thu Jun 30 13:11:32 UTC 2016 - axel.braun@gmx.de
+
+- correct naming to python-python-sql
+  correct License 
+
+-------------------------------------------------------------------
+Sat Sep 19 16:17:47 UTC 2015 - axel.braun@gmx.de
+
+- Version 0.8 
+  * Add DISTINCT qualifier to aggregate expressions
+  * Allow to order on select queries
+  * Add NULL ordering
+  * Use UPPER to simulate missing ILIKE
+  * Add CURRENT_DATE function
+  * Fix DateTrunc function name
+  * Add no_boolean Flavor
+  * Add converter format2numeric
+  * Add rownum limit style
+  * Add no_as Flavor
+
+-------------------------------------------------------------------
+Wed May 20 14:28:13 UTC 2015 - axel.braun@gmx.de
+
+- upgrade to version 0.7
+   * Fix WINDOW and HAVING params order in Select
+   * Add window functions
+   * Add filter and within group to aggregate
+   * Add limitstyle with 'offset' and 'limit'
+   * Add Lateral
+
+-------------------------------------------------------------------
+Fri Feb 06 08:57:23 UTC 2015 - axel.braun@gmx.de
+
+- upgrade to version 0.6
+  * Fix Delete query under multithread
+  * Add missing quote for with query name
+- Changes from version 0.5
+  * Add schema
+  * Add Common Table Expression
+  * Escape Mod operator '%' with format paramstyle
+  * Deprecate Interesect in favor of Intersect
+  * Add Values
+- remove build dependencies to python-Genshi, python-lxml
+
+-------------------------------------------------------------------
+Fri Sep 12 08:04:20 UTC 2014 - axel.braun@gmx.de
+
+- upgrade to version 0.4
+
+-------------------------------------------------------------------
+Mon Mar 24 13:12:58 UTC 2014 - axel.braun@gmx.de
+
+- update to version 0.3 
+
+-------------------------------------------------------------------
+Mon Oct 28 15:08:46 UTC 2013 - axel.braun@gmx.de
+
+- Initial Build on OBS

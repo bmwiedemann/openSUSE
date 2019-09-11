@@ -1,0 +1,18 @@
+Index: exampples/postgrey_clients_dump
+===================================================================
+--- examples/postgrey_clients_dump.orig
++++ examples/postgrey_clients_dump
+@@ -1,11 +1,9 @@
+-#!/usr/sepp/bin/perl-5.8.4 -w
+-
+-use lib '/usr/isgtc/lib/perl';
++#!/usr/bin/perl -w
+ 
+ use BerkeleyDB;
+ use Socket;
+ 
+-my $dbdir = '/var/spool/postfix/postgrey';
++my $dbdir = '/var/lib/postgrey';
+ 
+ sub resolv($) {
+     my $host = shift;

@@ -1,0 +1,10 @@
+/var/log/matomo/matomo-archive.log
+{
+su wwwrun www
+rotate 30
+daily
+missingok
+notifempty
+delaycompress
+compress
+}

@@ -1,0 +1,38 @@
+Index: css-parser-1.0.4/css_parser_tests/test_errorhandler.py
+===================================================================
+--- css-parser-1.0.4.orig/css_parser_tests/test_errorhandler.py
++++ css-parser-1.0.4/css_parser_tests/test_errorhandler.py
+@@ -99,13 +99,6 @@ class ErrorHandlerTestCase(basetest.Base
+         self.assertEqual(s.getvalue(),
+                          'ERROR    Property: Invalid value for "CSS Level 2.1" property: 1 [1:5: color]\n')
+ 
+-        s = self._setHandler()
+-
+-        css_parser.log.setLevel(logging.ERROR)
+-        css_parser.parseUrl('http://example.com')
+-        self.assertEqual(s.getvalue()[:38],
+-                         'ERROR    Expected "text/css" mime type')
+-
+     def test_parsevalidation(self):
+         style = 'color: 1'
+         t = 'a { %s }' % style
+Index: css-parser-1.0.4/css_parser_tests/test_parse.py
+===================================================================
+--- css-parser-1.0.4.orig/css_parser_tests/test_parse.py
++++ css-parser-1.0.4/css_parser_tests/test_parse.py
+@@ -4,6 +4,7 @@ from __future__ import absolute_import,
+ 
+ import sys
+ import xml.dom
++import unittest
+ 
+ import css_parser
+ 
+@@ -83,6 +84,7 @@ class CSSParserTestCase(basetest.BaseTes
+             p.parseString(css).cssText,
+             '/*1*/\na {\n    color: /*2*/ red\n    }'.encode())
+ 
++    @unittest.skip('online test')
+     def test_parseUrl(self):
+         "CSSParser.parseUrl()"
+         parser = css_parser.CSSParser()

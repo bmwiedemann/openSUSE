@@ -1,0 +1,2604 @@
+-------------------------------------------------------------------
+Fri May 10 09:31:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Wed Apr 24 17:15:07 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133239).
+
+-------------------------------------------------------------------
+Wed Feb 27 10:28:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop libqt4-devel-doc, fails to build with GCC9
+
+-------------------------------------------------------------------
+Fri Feb 22 13:22:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with GCC 9 (boo#1121214):
+  * 0001-Redo-the-Q_FOREACH-loop-control-without-GCC-statemen.patch
+
+-------------------------------------------------------------------
+Wed Jan  9 09:38:38 UTC 2019 - rguenther@suse.com
+
+- Add libqt4-toplevel-asm.patch to adhere to stricter
+  toplevel asm parsing, dropping volatile qualification that has no
+  effect.  (boo#1121214)
+
+-------------------------------------------------------------------
+Mon Feb 26 09:12:04 UTC 2018 - fabian@ritter-vogt.de
+
+- Actually clean up openssl BuildReq: use pkgconfig(openssl)
+
+-------------------------------------------------------------------
+Wed Feb 21 09:36:31 UTC 2018 - vcizek@suse.com
+
+- Clean up openssl BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 15 18:39:18 UTC 2018 - crrodriguez@opensuse.org
+
+- Do not use xorg-x11-devel metapackage, instead use individual
+  libraries.
+- libqt4-devel Requires have been adjusted to require all X11
+  libs which were used for build, none of them are actually 
+  required but remain there in order not to break hundreds 
+  of packages that may have counted on xorg-x11-devel being
+  pulled.
+
+-------------------------------------------------------------------
+Tue Dec 26 12:42:05 UTC 2017 - fabian@ritter-vogt.de
+
+- Change fix-build-icu59.patch to build qlocale_icu.cpp with
+  -std=c++11 to support ICU60 headers
+
+-------------------------------------------------------------------
+Wed Dec  6 16:56:06 UTC 2017 - fabian@ritter-vogt.de
+
+- Add proper patch headers to:
+  * no-ssl3.patch
+  * qt4-openssl-1.1.0pre-3.patch
+- Remove patch, not needed:
+  * qt-everywhere-opensource-src-4.8.7-gcc7.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 01:45:40 CET 2017 - ro@suse.de
+
+- add patches from mageia to fix build with openssl-1.1
+- add no-ssl3.patch
+- add qt4-openssl-1.1.0pre-3.patch
+- add qt-everywhere-opensource-src-4.8.7-openssl.patch
+- add qt-everywhere-opensource-src-4.8.7-gcc7.patch
+
+-------------------------------------------------------------------
+Sun Sep 10 18:19:39 UTC 2017 - dimstar@opensuse.org
+
+- BuildRequire libnsl-devel on current TW and CODE15 targets. The
+  library has been deprecated in glibc and is now in an own
+  package.
+
+-------------------------------------------------------------------
+Mon Sep  4 13:41:22 UTC 2017 - cornelis@solcon.nl
+
+- Add fix-medium-font.diff (taken from ubuntu) to fix bolder font
+  in Qt4 apps (boo#956357)
+
+-------------------------------------------------------------------
+Thu Aug 24 13:50:50 UTC 2017 - fvogt@suse.com
+
+- Force building against openSSL 1.0 (boo#1042657)
+- Do not build the MySQL plugin on TW, it would cause an openSSL
+  version conflict
+- Adjust fix-build-icu59.patch to also work if built with c++11
+  support
+
+-------------------------------------------------------------------
+Wed May 10 09:04:37 UTC 2017 - fabian@ritter-vogt.de
+
+- Add fix-build-icu59.patch to fix building with ICU4C >= 59
+- Invoke configure with sh to fix build on some older distros
+
+-------------------------------------------------------------------
+Fri Feb 10 21:02:26 UTC 2017 - alarrosa@suse.com
+
+- Add fix-moc-parsing-with-glibc-2.25.patch to fix moc parsing
+  system headers from glibc 2.25 correctly. 
+
+-------------------------------------------------------------------
+Fri Jun 24 05:12:34 UTC 2016 - lbeltrame@kde.org
+
+- Add fix-gcc6-detection.diff to fix GCC6 detection (boo#986350)
+
+-------------------------------------------------------------------
+Thu Jun  2 16:35:38 UTC 2016 - matwey.kornilov@gmail.com
+
+- Enable libqt4-devel-32bit to fix boo#982826
+
+-------------------------------------------------------------------
+Thu Feb 11 14:45:23 UTC 2016 - rguenther@suse.com
+
+- Explicitely build with -std=gnu++98.  [bnc#964458]
+
+-------------------------------------------------------------------
+Wed Feb 10 12:28:49 UTC 2016 - alarrosa@suse.com
+
+- Added 0001-Fix-exclusion-of-anonymous-ciphers.patch from upstream
+  to disable exp-adh and aecdh ciphers.
+- Added disable-rc4-ciphers-bnc865241.diff to disable <128 bits and
+  RC4 based ciphers which are now considered insecure. This
+  makes konqueror pass the https://www.howsmyssl.com test (bnc#865241)
+
+-------------------------------------------------------------------
+Thu May 28 21:45:10 UTC 2015 - dmueller@suse.com
+
+- update to 4.8.7 (bsc#1039291):
+  * see http://download.qt.io/official_releases/qt/4.8/4.8.7/changes-4.8.7
+
+- remove 0001-Don-t-crash-on-broken-GIF-images.patch,
+  0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch,
+  0001-Fix-DateTime-with-recent-versions-of-tzdata.patch,
+  0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch,
+  0001-Fixes-crash-in-gif-image-decoder.patch,
+  0001-Ignore-expired-certificate-during-certificate-valida.patch,
+  0001-Memory-and-file-descriptor-leak-in-QFontCache.patch,
+  0001-QDbus-Fix-a-b-comparison.patch,
+  0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch,
+  0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch,
+  0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch,
+  fix-a-division-by-zero.patch,
+  fix-detection-of-GCC5.patch,
+  fix-upload-corruptions-when-server-closes-connection.patch:
+  * upstreamed
+
+-------------------------------------------------------------------
+Fri May 22 19:35:04 UTC 2015 - tittiatcoke@gmail.com
+
+- Update patch fix-moc-from-choking-on-boost-headers.patch to 
+  include an additiona boost header due to the upgrade to 
+  Boost 1.58
+
+-------------------------------------------------------------------
+Thu May  7 10:50:00 UTC 2015 - dmueller@suse.com
+
+- add 0001-Fixes-crash-in-gif-image-decoder.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch
+  (bnc#927806, bnc#927807, bnc#927808,
+  CVE-2015-1858, CVE-2015-1859, CVE-2015-1860)
+- add 0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch
+- add 0001-Fix-DateTime-with-recent-versions-of-tzdata.patch
+- add 0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch
+- add 0001-Ignore-expired-certificate-during-certificate-valida.patch
+- add 0001-Memory-and-file-descriptor-leak-in-QFontCache.patch
+- add 0001-QDbus-Fix-a-b-comparison.patch
+- add 0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch
+- add 0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch
+- add 0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch
+
+-------------------------------------------------------------------
+Wed May  6 01:25:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added fix-upload-corruptions-when-server-closes-connection.patch
+  (boo#929688)
+
+-------------------------------------------------------------------
+Mon Mar  9 20:47:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added fix-a-division-by-zero.patch (bnc#921999, CVE-2015-0295)
+
+-------------------------------------------------------------------
+Sun Feb 22 16:47:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added fix-detection-of-GCC5.patch
+
+-------------------------------------------------------------------
+Wed Nov 19 21:00:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update use-freetype-default.diff to use same method as with
+  libqt5-qtbase package: Qt itself already does runtime check
+  whether subpixel rendering is available, but only when
+  FT_CONFIG_OPTION_SUBPIXEL_RENDERING is defined. Thus it is enough
+  to only remove that condition
+
+-------------------------------------------------------------------
+Tue Nov 11 10:49:35 UTC 2014 - alarrosa@suse.com
+
+- The -devel subpackage requires Mesa-devel, not only at build time 
+
+-------------------------------------------------------------------
+Mon Nov 10 13:35:30 UTC 2014 - alarrosa@suse.com
+
+- Fixed compilation on SLE_11_SP3 by making it build against
+  Mesa-devel on that system
+
+-------------------------------------------------------------------
+Thu Oct  2 10:49:53 UTC 2014 - tittiatcoke@gmail.com
+
+- Replace patch l-qclipboard_fix_recursive.patch with
+  qtcore-4.8.5-qeventdispatcher-recursive.patch. The later one 
+  seems to work better and really resolves the issue in LibreOffice
+
+-------------------------------------------------------------------
+Thu Sep 18 18:38:07 UTC 2014 - alarrosa@suse.com
+
+- Added fix_qrasterpixmapdata_bnc847880.diff (bnc#847880).
+  When extracting a region of a QRasterPixmapData an optimization 
+  was using the wrong bit depth for some calculations thus copying 
+  a different section of the image than requested. This breaks
+  specially the oxygen kde theme under qemu when using a cirrus driver.
+- Removed workaround for bnc#847880 which is no longer needed.
+
+-------------------------------------------------------------------
+Sun Sep  7 20:13:48 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added workaround for bnc#847880: if Cirrus graphics are detected,
+  export QT_GRAPHICSSYSTEM as native
+- Added kde4_qt_plugin_path.patch, so kde4 plugins are magically
+  found/known outside kde4 enviroment/session
+
+-------------------------------------------------------------------
+Wed Aug 20 13:58:19 CEST 2014 - behlert@suse.de
+
+- added _constraints. building took up to 7GB of disk space on
+  s390x, and more than 6GB on x86_64 
+
+-------------------------------------------------------------------
+Mon Jun 16 10:10:37 UTC 2014 - lbeltrame@kde.org
+
+- Add 3 patches for Qt bugs to make LibreOffice KDE4 file
+  picker work properly again:
+  * Add glib-honor-ExcludeSocketNotifiers-flag.diff (QTBUG-37380)
+  * Add l-qclipboard_fix_recursive.patch (QTBUG-34614)
+  * Add l-qclipboard_delay.patch (QTBUG-38585)
+
+-------------------------------------------------------------------
+Tue Apr 29 21:58:40 UTC 2014 - dmueller@suse.com
+
+- update to 4.8.6:
+  * long list of bugfixes, forward and backward compatible
+  * for detailed list of changes, see included changes-4.8.6
+  * see also http://blog.qt.digia.com/blog/2014/04/24/qt-4-8-6-released/
+- remove patches that went upstream:
+  * 0001-Disallow-deep-or-widely-nested-entity-references.patch
+  * 0001-Don-t-crash-if-the-relayed-signal-was-emitted-from-t.patch
+  * 0001-Fully-expand-entities-to-ensure-deep-or-widely-neste.patch
+  * 0001-Mitigate-performance-regression-in-isExpandedEntityV.patch
+  * 0002-QDBusPendingCall-add-a-missing-QWaitCondition-wakeAl.patch
+  * 0003-Fix-unprotected-access-to-QDBusPendingCallPrivate-pe.patch
+  * 0004-Remove-QDBusPendingCallPrivate-autoDelete-logic.patch
+  * 0005-Change-QDBusPendingCallPrivate-to-full-reference-cou.patch
+  * 0006-Revert-QTBUG-15319-fix-shortcuts-with-secondary-Xkb-layout.patch
+  * aarch64-support.diff
+  * qt-everywhere-opensource-src-4.8.5.tar.gz
+  * webkit-sparc64.diff
+
+-------------------------------------------------------------------
+Mon Apr 28 15:26:07 UTC 2014 - dmueller@suse.com
+
+- add 0001-Don-t-crash-on-broken-GIF-images.patch (bnc#875470, 
+  CVE-2014-0190)
+
+-------------------------------------------------------------------
+Mon Mar 10 23:18:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added QSystemTrayicon.diff: adds support for sni-qt plugin, which
+  allows Qt applications to communicate via KStatusNotifier spec, 
+  will/is needed for Plasma Next
+
+-------------------------------------------------------------------
+Mon Jan 20 10:24:08 UTC 2014 - dmueller@suse.com
+
+- add 0001-Mitigate-performance-regression-in-isExpandedEntityV.patch
+  (bnc#859158)
+
+-------------------------------------------------------------------
+Tue Jan  7 13:48:11 UTC 2014 - dmueller@suse.com
+
+- add 0001-Disallow-deep-or-widely-nested-entity-references.patch,
+  0001-Fully-expand-entities-to-ensure-deep-or-widely-neste.patch 
+  (bnc#856832, CVE-2013-4549)
+
+-------------------------------------------------------------------
+Fri Dec  6 14:33:33 CET 2013 - mls@suse.de
+
+- add ppc64le.diff to make the configure script recognize
+  ppc64le as 'powerpc'
+
+-------------------------------------------------------------------
+Mon Oct  7 13:06:08 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop 0007-postgresql-driver-escape-backslashes-only-when-serve.patch
+  bug has been fixed properly with akonadi 1.10.3, and the patch
+  conflicts with the resolution in akonadi
+
+-------------------------------------------------------------------
+Fri Sep 13 08:52:05 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patch from upstream for resolving bnc#835384, QTBUG#32908
+  0006-Revert-QTBUG-15319-fix-shortcuts-with-secondary-Xkb-layout.patch
+- Revert upstream commit that breaks akonadi PostgreSQL backend (QTBUG#30076):
+  0007-postgresql-driver-escape-backslashes-only-when-serve.patch
+
+-------------------------------------------------------------------
+Fri Aug 30 00:58:13 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream for resolving QtDbus bugs and crashes:
+  0001-Don-t-crash-if-the-relayed-signal-was-emitted-from-t.patch
+  (QTBUG#31932,kde#234484)
+  0002-QDBusPendingCall-add-a-missing-QWaitCondition-wakeAl.patch
+  (QTBUG#27809)
+  0003-Fix-unprotected-access-to-QDBusPendingCallPrivate-pe.patch
+  (QTBUG#27809)
+  0004-Remove-QDBusPendingCallPrivate-autoDelete-logic.patch
+  (QTBUG#27809)
+  0005-Change-QDBusPendingCallPrivate-to-full-reference-cou.patch
+  (QTBUG#27809)
+- Don't BuildRequire Mesa-devel, pkgconfig(gl) is enough, and it
+  doesn't pull the whole Mesa egl/gles stack
+
+-------------------------------------------------------------------
+Mon Jul 29 23:12:10 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added qlocale_icu-no-warning-output.patch -- since openSUSE
+  now has it's own icu so versioning, and we can't predict what will
+  happen in future, qWarnings about icu libraries and symbols are now
+  only emmited in debug builds. This will be usefull regardless of
+  icu versioning.
+
+-------------------------------------------------------------------
+Tue Jul  2 16:07:16 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Readd re-aranged fix-moc-from-choking-on-boost-headers.patch, it
+  is still needed for newer boost versions
+
+-------------------------------------------------------------------
+Tue Jul  2 11:33:30 UTC 2013 - dmueller@suse.com
+
+- update to 4.8.5:
+  * Qt 4.8.5 provides overall close to 400 improvements, for example:
+  * 35 fixes to Qt Core module
+  * 65 fixes to Qt Gui module
+  * 21 Mac OS X specific fixes
+  * 15 Windows specific fixes
+  * 8 Linux/X11 specific fixes
+  * Webkit upgrade to 2.2.4 (minor improvements)
+  * Change all shmget calls to user-only memory (security)
+  A detailed list of the fixes and improvements in Qt 4.8.5 compared
+  to Qt 4.8.4 can be found in the included changes-4.8.5 file.
+
+- remove CVE-2011-3922.diff
+- remove undo-fix-jit-crash-on-x86_64.patch
+- remove openssl-incompatibility-fix.diff
+- remove cert-blacklist-tuerktrust.diff
+- remove cert-blacklist-more.diff
+- remove garbage-collect-deleted-objects.patch
+- remove libqt4-CVE-2013-0254.patch
+- remove Fix-call-to-QMetaObject.patch
+- remove check-return-value-of-qt_safe_pipe.patch
+- remove moc-boost148-workaround.diff
+- remove fix-moc-from-choking-on-boost-headers.patch
+- remove slovak-zero.patch
+- remove qdbusviewer.patch
+
+-------------------------------------------------------------------
+Wed May 29 09:27:12 UTC 2013 - jslaby@suse.com
+
+- separate linguist to a separate package (bnc#738543).
+
+-------------------------------------------------------------------
+Mon Apr 22 06:40:35 UTC 2013 - pgajdos@suse.com
+
+- Added slovak-zero.patch, fixes bug [bnc#812528].
+
+-------------------------------------------------------------------
+Sat Apr 20 16:32:12 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added fix-moc-from-choking-on-boost-headers.patch, workaround for 
+  QTBUG#22829
+
+-------------------------------------------------------------------
+Thu Apr 11 11:36:55 UTC 2013 - dmueller@suse.com
+
+- add moc-boost148-workaround.diff:
+  * add workaround for moc issues with boost148 
+
+-------------------------------------------------------------------
+Fri Apr  5 13:07:27 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Tue Mar  5 21:42:55 UTC 2013 - dmueller@suse.com
+
+- Add aarch64-support.diff:
+  * Fix aarch64 support in webkit tree 
+
+-------------------------------------------------------------------
+Tue Mar  5 13:42:52 UTC 2013 - schwab@suse.de
+
+- Add qatomic_generic.patch: 
+  * Fix generic qatomic for const pointers
+
+-------------------------------------------------------------------
+Sun Mar  3 13:26:53 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Add check-return-value-of-qt_safe_pipe.patch:
+  * fixes QTBUG#18934 and kde#310777
+
+-------------------------------------------------------------------
+Fri Feb 22 16:33:27 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added Fix-call-to-QMetaObject.patch, fixes qtbug29082 and kde#311751, 
+  crashing of plasma-desktop on QML systray
+
+-------------------------------------------------------------------
+Thu Feb 21 09:56:04 UTC 2013 - mvyskocil@suse.com
+
+- fix bnc#802634: information disclosure via QSharedMemory (CVE-2013-0254)
+  * libqt4-CVE-2013-0254.patch
+
+-------------------------------------------------------------------
+Fri Jan 18 18:23:22 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added garbage-collect-deleted-objects.patch from upstream, 
+  Fixes performance issues in apps which register 
+  and deregister objects very frequently (like nepomukstorage)
+
+-------------------------------------------------------------------
+Mon Jan  7 16:09:50 UTC 2013 - dmueller@suse.com
+
+- Add cert-blacklist-more.diff, cert-blacklist-tuerktrust.diff:
+  * blacklist more evil certificates
+
+-------------------------------------------------------------------
+Mon Jan  7 12:38:48 UTC 2013 - dmueller@suse.com
+
+- enable linked support for OpenSSL
+
+-------------------------------------------------------------------
+Fri Jan  4 15:16:33 UTC 2013 - dmueller@suse.com
+
+- qdbusviewer.patch: Add fix for qdbusviewer not matching args (bnc#784197)
+- openssl-incompatibility-fix.diff: Fix wrong error reporting when using
+  a binary incompatible version of openSSL (bnc#797006, CVE-2012-6093)
+
+-------------------------------------------------------------------
+Sun Dec 16 18:59:51 CET 2012 - ro@suse.de
+
+- fix build on s390x by adding
+  qt4-fix-s390x-build.diff 
+
+-------------------------------------------------------------------
+Mon Dec  3 07:56:00 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to version 4.8.4:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.4 for details
+- remove obsolete backport disable-ssl-compression-by-default.patch
+- update License and URL to Digia
+
+-------------------------------------------------------------------
+Tue Nov 27 10:11:35 UTC 2012 - dmueller@suse.com
+
+- revert optflags breakage in last change
+
+-------------------------------------------------------------------
+Fri Nov 16 18:53:12 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLE_11 build. %patch -R doesn't work for the SLE repos.
+- Spec cleanup: Remove obsolete conditions and drop use-freetype-default-legacy.diff,
+                Replace absolute paths with rpm variables,
+                Move the prep section below the packages descriptions,
+                Remove some unused blocks
+
+-------------------------------------------------------------------
+Tue Oct 16 13:12:43 UTC 2012 - kok3rs@gmail.com
+
++ Added upstream patch to resolve an assistant segfault 
+  fix_assistant_segfault_QTBUG-25324.patch
+
+-------------------------------------------------------------------
+Thu Oct  4 09:25:36 UTC 2012 - dmueller@suse.com
+
+- Disable compression by default to mitigate CRIME attack (CVE-2012-4929)
+
+-------------------------------------------------------------------
+Tue Oct  2 23:03:48 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Revert fix-jit-crash commit responsible for kde#305718
+    undo-fix-jit-crash-on-x86_64.patch
+
+-------------------------------------------------------------------
+Tue Sep 18 15:04:13 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.3:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.3 for details
+
+-------------------------------------------------------------------
+Wed Aug 22 00:20:20 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Omit qdbusconnection warnings in release/no-debug mode
+
+-------------------------------------------------------------------
+Sun Aug  5 12:41:12 UTC 2012 - toddrme2178@gmail.com
+
+- Add rpm macros file with commonly-needed folders and other macros
+
+-------------------------------------------------------------------
+Thu Jun  7 16:57:26 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.2: 
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.2 for details
+- remove upstreamed patches
+
+-------------------------------------------------------------------
+Thu Apr  5 11:22:02 UTC 2012 - dmueller@suse.com
+
+- make tga reader compatible
+
+-------------------------------------------------------------------
+Tue Apr  3 16:38:22 CEST 2012 - dmueller@suse.de
+
+- add fix for qtextlayout crash triggered in calligra (qt bug 24718)
+
+-------------------------------------------------------------------
+Thu Mar 29 22:43:47 CEST 2012 - dmueller@suse.de
+
+- update to 4.8.1:
+  * extremely long list of forward and backward compatible
+  bug fixes. see included changes-4.8.1 for details
+
+-------------------------------------------------------------------
+Thu Mar 15 09:09:10 UTC 2012 - aj@suse.de
+
+- Fix build with gcc 4.7 (patch qt-everywhere-opensource-src-4.8.0-gcc-4.7.patch
+  from Fedora).
+
+-------------------------------------------------------------------
+Mon Feb 27 10:52:07 CET 2012 - dmueller@suse.de
+
+- fix update conflict with libqt4-devel-doc (bnc#746098)
+
+-------------------------------------------------------------------
+Fri Jan  6 17:06:22 CET 2012 - dmueller@suse.de
+
+- add patch for rare stack based overflow in harbuzz parser
+  (bnc#739904, CVE-2011-3922).
+
+-------------------------------------------------------------------
+Fri Dec 16 11:04:43 CET 2011 - dmueller@suse.de
+
+- update to 4.8.0 (final): 
+  * only minimal change over rc1
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+
+-------------------------------------------------------------------
+Wed Dec 14 00:26:42 CET 2011 - dmueller@suse.de
+
+- fix license to SUSE-LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+
+-------------------------------------------------------------------
+Thu Dec  8 13:12:43 UTC 2011 - coolo@suse.com
+
+- sync license in devel-doc and plugins spec file
+
+-------------------------------------------------------------------
+Mon Nov 28 14:08:59 UTC 2011 - idoenmez@suse.de
+
+- Fix duplicate files 
+
+-------------------------------------------------------------------
+Mon Nov 21 19:17:33 CET 2011 - dmueller@suse.de
+
+- update to 4.8.0 rc1:
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+- remove patches that went upstream
+- rediff patches and adjust filelist
+
+-------------------------------------------------------------------
+Mon Nov 21 00:21:24 CET 2011 - ro@suse.de
+
+- rediffed webkit-ia64_s390x.patch and reactivated patch 
+
+-------------------------------------------------------------------
+Fri Oct 21 16:25:23 CEST 2011 - mls@suse.de
+
+- do not use /usr/src/packages in specfile
+
+-------------------------------------------------------------------
+Fri Oct 21 12:11:43 CEST 2011 - tiwai@suse.de
+
+- disable IM for password entry (bnc#725471)
+
+-------------------------------------------------------------------
+Tue Oct 11 23:11:43 CEST 2011 - dmueller@suse.de
+
+- require the right QtWebKit version again
+
+-------------------------------------------------------------------
+Fri Oct  7 15:57:50 UTC 2011 - adrian@suse.de
+
+- fix arm assembler when using thumb2
+- disable neon support, seems we lack header definitions atm
+
+-------------------------------------------------------------------
+Fri Oct  7 08:17:25 UTC 2011 - coolo@suse.com
+
+- do not require specific QtWebKit versions - they are different now
+
+-------------------------------------------------------------------
+Thu Oct  6 11:24:29 UTC 2011 - coolo@suse.com
+
+- reenable fix for bnc#656144 - I reviewed the patch one more time
+
+-------------------------------------------------------------------
+Sun Sep 25 10:54:07 UTC 2011 - tittiatcoke@gmail.com
+
+- libQtWebKit4 is now delivered through its separate package,
+  therefore libqt4 should not build it from the qt4 sources anymore
+
+-------------------------------------------------------------------
+Sat Sep 17 14:27:00 UTC 2011 - embar@users.berlios.de
+
+- Add qt_lt.ts - Lithuanian translation (bnc#713143)
+
+-------------------------------------------------------------------
+Sat Sep 10 18:19:37 UTC 2011 - idonmez@suse.com
+
+- Revert fix for bnc#656144, it causes bnc#717127 
+
+-------------------------------------------------------------------
+Thu Sep  8 10:18:57 CEST 2011 - dmueller@suse.de
+
+- blacklist DigiNotar intermediate certificates (bnc#714931)
+
+-------------------------------------------------------------------
+Tue Sep  6 09:59:13 UTC 2011 - coolo@suse.com
+
+- assume KDE session if KDE_FULL_SESSION is set as xatom
+- use Oxygen if kdelibs is installed (bnc#656144)
+
+-------------------------------------------------------------------
+Tue Sep  6 02:04:57 UTC 2011 - crrodriguez@opensuse.org
+
+- Respect user provided openssl.cnf,so configured engines
+  can be used automatically, requires no source changes, but
+  build with -DOPENSSL_LOAD_CONF see OPENSSL_config(3ssl) for
+  details
+
+-------------------------------------------------------------------
+Sat Sep  3 16:49:36 UTC 2011 - idonmez@suse.com
+
+- Remove executable permissions from *.cpp *.h files 
+
+-------------------------------------------------------------------
+Fri Sep  2 07:57:17 UTC 2011 - stephan.binner@basyskom.de
+
+- update to 4.7.4 release (CVE-2011-3193, bnc#714984):
+  - Qt 4.7.4 is a bug-fix release. It maintains both forward and backward
+  compatibility (source and binary) with Qt 4.7.0.  For more details,
+  refer to the online documentation included in this distribution. The
+  documentation is also available online:
+
+  http://qt.nokia.com/doc/4.7
+
+  A detailed list of the over 140 individual code bug fixes 
+  since 4.7.3 can be found in the included changes-4.7.4 file.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:22:49 CEST 2011 - dmueller@suse.de
+
+- add crashfix for broken fonts
+- remove patch which causes slow render paths (bnc#689489)
+- change a few defines to make merging of the snapshot
+  spec files easier
+- require make for qmake
+- build + install qvfb
+- refresh and rediff patches
+- remove konsole / nvidia font rendering workaround as
+  it causes regressions (bnc#689489)
+
+-------------------------------------------------------------------
+Mon Aug 15 04:28:53 UTC 2011 - crrodriguez@opensuse.org
+
+- Add fix for QTBUG-14985.
+
+-------------------------------------------------------------------
+Fri Aug 12 15:29:24 CEST 2011 - dmueller@suse.de
+
+- do not generate documentation in libqt4, it is supposed
+  to be in libqt4-devel-doc
+
+-------------------------------------------------------------------
+Thu Aug 11 19:29:31 UTC 2011 - aj@suse.de
+
+- Fix provides/obsoletes.
+- There are no jpegs, so remove line to make them non-executable.
+- Properly run fdupes in libqt4-devel-doc to save 29 MB.
+
+-------------------------------------------------------------------
+Thu Aug 11 10:13:06 CEST 2011 - munix9@googlemail.com
+
+- added libjscore.* from 3rdparty dir into libQtWebKit-devel package
+  (currently needed to compile eg. gambas3)
+
+-------------------------------------------------------------------
+Tue Aug  9 09:41:57 UTC 2011 - meissner@novell.com
+
+- run fdupes, images should not be executable
+
+-------------------------------------------------------------------
+Sat Jul  9 10:23:56 CEST 2011 - dmueller@suse.de
+
+- fix reading of tiff images with multiple samples (bnc#637275)
+
+-------------------------------------------------------------------
+Mon Jun 20 16:05:53 UTC 2011 - dmueller@suse.de
+
+- build a libqt4-private-headers-devel for qt-creator build
+
+-------------------------------------------------------------------
+Mon Jun 13 17:33:04 CEST 2011 - dmueller@suse.de
+
+- remove spurious executable permissions
+
+-------------------------------------------------------------------
+Mon May 30 15:01:28 CEST 2011 - dmueller@suse.de
+
+- fix buildrequires on subspecfiles
+
+-------------------------------------------------------------------
+Sat May 28 14:15:16 UTC 2011 - idonmez@novell.com
+
+- Use diff -u instead of cmp in check_config 
+
+-------------------------------------------------------------------
+Fri May 20 22:51:37 CEST 2011 - dmueller@suse.de
+
+-fix build for older distros
+
+-------------------------------------------------------------------
+Thu May  5 00:07:41 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.3:
+  * bugfixes only
+  * [QTBUG-18338] blacklist fraudulent SSL certificates
+  * More details see included changes-4.7.3 file
+- merge libqt4-devel-doc-data main spec file back into
+  a subspecfile of libqt4-devel-doc
+
+-------------------------------------------------------------------
+Mon Mar 28 11:59:33 CEST 2011 - dmueller@suse.de
+
+- blacklist fraudulently issued certificates:
+  http://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html
+
+-------------------------------------------------------------------
+Fri Mar 11 14:15:20 CET 2011 - dmueller@suse.de
+
+- revert last change temporarily
+
+-------------------------------------------------------------------
+Thu Mar 10 00:29:48 CET 2011 - dmueller@suse.de
+
+- remove Mesa-devel from libqt4-devel
+
+-------------------------------------------------------------------
+Thu Mar  3 14:47 CET 2011 - cgiboudeaux@gmail.com
+- Add qtreeview-fix-QTBUG-16292.diff (picked from http://bugreports.qt.nokia.com/browse/QTBUG-16292)
+  Fixes a crash inside QTreeView::indexRowSizeHint when the index was already deleted
+  Will be part of Qt 4.7.3.
+  Fixes various KDE crashes in KMail(kde#219964), KPackageKit, amarok(kde#260303)
+
+-------------------------------------------------------------------
+Tue Mar  1 21:21:42 CET 2011 - dmueller@suse.de
+
+- update to 4.7.2:
+  - Qt 4.7.2 is a bug-fix release. It maintains both forward and backward
+  compatibility (source and binary) with Qt 4.7.0.  For more details,
+  refer to the online documentation included in this distribution. The
+  documentation is also available online:
+
+  http://qt.nokia.com/doc/4.7
+
+  A detailed list of code fixes since 4.7.1 can be found in the
+  included changes-4.7.2 file.
+
+- Removed upstreamed patches:
+  * fix-psql.diff
+  * push-glib-context.diff
+
+-------------------------------------------------------------------
+Thu Feb  3 16:25:56 CET 2011 - dmueller@suse.de
+
+- add support for postgresql 8.3 and 9 (bnc#668210)
+
+-------------------------------------------------------------------
+Sat Dec  4 16:13:55 UTC 2010 - ctrippe@gmx.net
+
+- Make the print dialog use the cups default settings (bnc#552218) 
+
+-------------------------------------------------------------------
+Mon Nov 29 11:30:34 CET 2010 - dmueller@suse.de
+
+- remove QMAKE*FLAGS override (bnc#559808)
+
+-------------------------------------------------------------------
+Sat Nov 20 11:54:32 CET 2010 - dmueller@suse.de
+
+- finalize package splitting
+
+-------------------------------------------------------------------
+Sat Nov 20 02:06:29 CET 2010 - dmueller@suse.de
+
+- fix package splitting
+- support glib 2.22
+
+-------------------------------------------------------------------
+Thu Nov 11 11:26:49 UTC 2010 - kruber@zib.de
+
+- update to 4.7.1 (final):
+  - Qt 4.7.1 is a bug-fix release. It maintains both forward and backward
+  compatibility (source and binary) with Qt 4.7.0.  For more details,
+  refer to the online documentation included in this distribution. The
+  documentation is also available online:
+
+  http://qt.nokia.com/doc/4.7
+
+  A detailed list of code fixes since 4.7.0 can be found in the
+  included changes-4.7.1 file.
+
+-------------------------------------------------------------------
+Mon Sep 27 00:29:25 CEST 2010 - dmueller@suse.de
+
+- add patch to avoid jumps in QTreeViews when deleting the 
+  current item
+
+-------------------------------------------------------------------
+Wed Sep 22 10:25:53 CEST 2010 - dmueller@suse.de
+
+- update to 4.7.0 (final):
+  * minor bugfixes over 4.7.0 RC1
+
+-------------------------------------------------------------------
+Mon Sep  6 08:35:14 UTC 2010 - coolo@novell.com
+
+- fix file list in devel-doc
+
+-------------------------------------------------------------------
+Wed Sep  1 15:31:54 CEST 2010 - dmueller@suse.de
+
+- update to 4.7.0 RC1:
+  - Qt 4.7 introduces many new features and improvements as well as bugfixes
+  over the 4.6.x series. For more details, refer to the online documentation
+  included in this distribution. The documentation is also available online:
+
+  http://qt.nokia.com/doc/4.7
+
+  A detailed list of code fixes since previous 4.7.0 Beta
+  can be found in the included changes-4.7.0 file.
+
+-------------------------------------------------------------------
+Tue Aug  3 16:24:52 CEST 2010 - dmueller@suse.de
+
+- fix buildrequires of libqt4-devel-doc
+
+-------------------------------------------------------------------
+Wed Jul 21 12:59:20 CEST 2010 - dmueller@suse.de
+
+- fix crash of QtWebKit with flash player 10.1 (bnc#613818)
+
+-------------------------------------------------------------------
+Wed Jul 14 14:09:13 CEST 2010 - dmueller@suse.de
+
+- fix endless loop in SSL code on error conditions (bnc#619089)
+
+-------------------------------------------------------------------
+Thu Jul  8 17:19:15 UTC 2010 - jengelh@medozas.de
+
+- SPARC64 compile fixes
+
+-------------------------------------------------------------------
+Thu Jul  1 13:23:23 CEST 2010 - dmueller@suse.de
+
+- remove 3rd party fonts (unused, bnc#616249)
+
+-------------------------------------------------------------------
+Fri Jun 18 22:45:04 CEST 2010 - dmueller@suse.de
+
+- fix fileconflicts
+
+-------------------------------------------------------------------
+Fri Jun 11 06:53:08 UTC 2010 - bg@novell.com
+
+- apply patches from debian to fix build for hppa 
+
+-------------------------------------------------------------------
+Tue Jun  8 16:22:06 CEST 2010 - dmueller@suse.de
+
+- update to 4.6.3:
+  * forward and backward compatible bugfix update with a long
+  list of fixes, see included changes-4.6.3
+  * remove upstreamed patches
+
+------------------------------------------------------------------
+Wed Jun  2 11:04:29 CEST 2010 - dmueller@suse.de
+
+- fix handling of transparent monochromatic pixmaps (bnc#610578)
+- reduce buildcompare failures triggered by rcc
+
+-------------------------------------------------------------------
+Wed May 19 08:24:33 UTC 2010 - aj@suse.de
+
+- Use changes date as build date to get reproduceable builds.
+
+-------------------------------------------------------------------
+Mon Apr 19 17:29:27 CEST 2010 - dmueller@suse.de
+
+- add fix-qdbus-signal-handling.diff (bnc#578988):
+  fixes dbus signals sometimes getting lost
+
+-------------------------------------------------------------------
+Sun Apr 11 17:09:32 UTC 2010 - stefan.bruens@rwth-aachen.de
+
+- fix printing of object-/className when QT_DEBUG_TIMER is set
+
+-------------------------------------------------------------------
+Thu Mar 25 13:33:21 CET 2010 - dmueller@suse.de
+
+- fix patchlevel of last change
+
+-------------------------------------------------------------------
+Tue Mar 23 21:15:42 CET 2010 - dmueller@suse.de
+
+- fix crash in QGtkStyle when no Gtk is available (bnc#580478)
+
+-------------------------------------------------------------------
+Wed Feb 17 17:15:06 CET 2010 - dmueller@suse.de
+
+- update to 4.6.2:
+  * forward and backward compatible bugfix update with a long
+  list of fixes, see included changes-4.6.2
+
+-------------------------------------------------------------------
+Sat Feb 13 22:08:13 UTC 2010 - jengelh@medozas.de
+
+- SPARC configuration support
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Feb  3 17:19:37 CET 2010 - dmueller@suse.de
+
+- fix QAtomic related corruptions on s390 (bnc#573503)
+
+-------------------------------------------------------------------
+Mon Feb  1 17:09:48 CET 2010 - dmueller@suse.de
+
+- fix QSslCertificate::subjectInfo() (QtBug-6466)
+
+-------------------------------------------------------------------
+Wed Jan 20 17:13:51 CET 2010 - dmueller@suse.de
+
+- update to 4.6.1:
+  * forward and backward compatible bugfix update with a long
+  list of fixes, see included changes-4.6.1
+
+-------------------------------------------------------------------
+Sun Jan 10 22:21:12 UTC 2010 - llunak@novell.com
+
+- workaround for slow Konsole font rendering with nvidia
+
+-------------------------------------------------------------------
+Fri Jan  8 13:03:14 UTC 2010 - llunak@novell.com
+
+- move qhelpgenerator, qhelpconverter from -devel-doc to -devel
+
+-------------------------------------------------------------------
+Mon Dec 21 14:15:43 CET 2009 - dmueller@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Wed Dec 16 20:49:36 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat Dec 12 17:13:27 UTC 2009 - aj@suse.de
+
+- Add libqt4-libtool-nodate.diff to not write date to libtool generated files.
+
+-------------------------------------------------------------------
+Fri Dec  4 23:16:01 UTC 2009 - dmueller@suse.de
+
+- fix filelist conflict libqt4-devel/libQtWebkit-devel
+
+-------------------------------------------------------------------
+Thu Dec  3 01:18:34 CET 2009 - dmueller@suse.de
+
+- update to 4.6.0:
+  * for a detailed list of changes, see the included changes-4.6.0
+
+-------------------------------------------------------------------
+Wed Dec  2 10:00:00 CET 2009 - kruber@zib.de
+
+- fixed building of libqt4-devel-doc
+
+-------------------------------------------------------------------
+Fri Nov 13 13:51:36 CET 2009 - dmueller@suse.de
+
+- strip timestamp from rcc as well (bnc#554462)
+
+-------------------------------------------------------------------
+Fri Nov 13 11:53:01 CET 2009 - dmueller@suse.de
+
+- refresh patches
+
+-------------------------------------------------------------------
+Fri Oct 30 14:30:00 CET 2009 - Nico.Laus.2001@gmx.de
+
+- build && install qdoc3, needed for qt-creator
+  (patch from dmueller@suse.de that went into libqt = 4.5 but not here)
+
+-------------------------------------------------------------------
+Thu Oct 22 11:56:41 UTC 2009 - tittiatcoke@gmail.com
+
+- Rearranged how the packages of Qt 4.6 are build
+   + Main libraries are now build from libqt4
+   + New package that contains examples and demos
+
+-------------------------------------------------------------------
+Mon Oct 19 15:20:51 CEST 2009 - dmueller@suse.de
+
+- fix memory leak in QPixmapFilter (bnc#547896)
+
+-------------------------------------------------------------------
+Thu Oct 15 23:54:46 CEST 2009 - dmueller@suse.de
+
+- backport for SLE11-SP1 (FATE#306930)
+
+-------------------------------------------------------------------
+Thu Oct 15 12:12:54 CEST 2009 - dmueller@suse.de
+
+- fix QTimer(0) regression
+
+-------------------------------------------------------------------
+Mon Oct 12 18:05:50 CEST 2009 - dmueller@suse.de
+
+- compile with xsync support
+- fix translation build
+
+-------------------------------------------------------------------
+Mon Oct 12 16:03:29 CEST 2009 - dmueller@suse.de
+
+- update to 4.5.3:
+  * for detailed changelog see included changes-4.5.3
+- fix deadlock in dbus bindings (bnc#482749)
+
+-------------------------------------------------------------------
+Tue Jul 28 18:31:05 CEST 2009 - dmueller@novell.com
+
+- disable use of x shared pixmaps, not supported by newer
+  drivers anymore and very slow anyway
+- Fix QMenu not respecting minimum width, this affects
+  the Plasma taskabar
+- Fix X11 timestamp issues which cause clipboard synchronisation
+  bugs
+
+-------------------------------------------------------------------
+Wed Jun 24 17:32:40 CEST 2009 - sbrabec@suse.cz
+
+- Packageand supplement 32bit packages in baselibs.conf
+  (bnc#354164).
+- %plugindir/codecs moved to libqt4, as it is used by QtCore.
+- %plugindir subdirs moved to packages, where it logically belong.
+
+-------------------------------------------------------------------
+Wed Jun 17 22:24:07 CEST 2009 - dmueller@suse.de
+
+- fix use-after-free issue (CVE-2009-0945, bnc#512559)
+
+-------------------------------------------------------------------
+Sun May 31 17:31:45 CEST 2009 - dmueller@suse.de
+
+- add patches:
+  * Fix deserialization of values with custom types
+  * Make sure syncqt creates the Phonon/Global file.
+  * Fix huge memory leak in QPixmapCache
+  * Do not deduce scrollbar extent twice
+
+-------------------------------------------------------------------
+Thu Apr 23 22:00:12 CEST 2009 - beineri@opensuse.org
+
+- update to 4.5.1:
+   * for detailed changelog see included changes-4.5.1
+
+-------------------------------------------------------------------
+Tue Mar  3 22:38:50 CET 2009 - beineri@opensuse.org
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Mar  3 10:34:50 CET 2009 - dmueller@suse.de
+
+- update to 4.5.0 final:
+  * licensing change. LGPLv2.1 or later is a new option
+
+-------------------------------------------------------------------
+Sun Mar  1 22:07:48 CET 2009 - dmueller@suse.de
+
+- update to 4.5.0 RC2:
+  * for detailed changelog, see included changes-4.5.0
+- build && install qdoc3, needed for qt-creator
+
+-------------------------------------------------------------------
+Wed Feb 11 19:40:26 CET 2009 - dmueller@suse.de
+
+- use minimal-toc for ppc64
+
+-------------------------------------------------------------------
+Wed Feb 11 17:02:13 CET 2009 - coolo@suse.de
+
+- do not include a timestamp in includeguards either
+
+-------------------------------------------------------------------
+Fri Feb  6 19:01:05 CET 2009 - coolo@suse.de
+
+- do not include a timestamp in files generated from .ui either
+
+-------------------------------------------------------------------
+Fri Feb  6 11:37:00 CET 2009 - dmueller@suse.de
+
+- fix QTestLib build again
+
+-------------------------------------------------------------------
+Thu Feb  5 12:53:42 CET 2009 - dmueller@suse.de
+
+- fix baselibs.conf (bnc#472311)
+
+-------------------------------------------------------------------
+Thu Feb  5 12:06:44 CET 2009 - dmueller@suse.de
+
+- update to 4.5.0 RC1:
+  * for detaled changelog, see included changes-4.5.0
+  * add missing libqt4-sql-sqlite baselib (bnc#472311)
+
+-------------------------------------------------------------------
+Tue Jan 27 23:12:29 CET 2009 - dmueller@suse.de
+
+- drop 0258-windowsxpstyle-qbrush.diff, rejected upstream
+- fix qmake path separators
+- fix zero height qpixmaps not being considered null
+- fix crash in formlayouting
+
+-------------------------------------------------------------------
+Thu Jan 15 12:08:02 CET 2009 - dmueller@suse.de
+
+- add libQtWebKit4 to baselibs.conf
+- do not hardcode build date in generated moc files
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Jan  5 16:24:36 CET 2009 - dmueller@suse.de
+
+- remove hardcoded legacy font mapping (bnc#448012)
+
+-------------------------------------------------------------------
+Fri Dec  5 09:27:20 CET 2008 - dmueller@suse.de
+
+- add 32bit modules (bnc#354164)
+- sync before setting own X error handler
+- fix crashes caused by animation in QTreeView (kde#176045)
+
+-------------------------------------------------------------------
+Mon Nov 17 20:38:09 CET 2008 - dmueller@suse.de
+
+- add patch for recursive painting crash (maybe fixes bnc#444591)
+- fix major performance regression in QUrl
+- fix windows xp style painting
+- fix native socket implementation not handling EINTR correctly
+
+-------------------------------------------------------------------
+Sun Nov 16 09:55:15 CEST 2008 - stbinner@suse.de
+
+- Fix deletion of a qgraphicswidget on clear focus even if it
+  doesn't have the focus. (bnc#442680)
+
+-------------------------------------------------------------------
+Tue Oct  7 01:25:15 CEST 2008 - dmueller@suse.de
+
+- fix crashes in QGraphicsProxyWidget dtor
+
+-------------------------------------------------------------------
+Mon Sep 29 16:14:23 CEST 2008 - dmueller@suse.de
+
+- update to 4.4.3:
+  * branding && copyright update
+  * no code changes
+
+-------------------------------------------------------------------
+Thu Sep 25 15:17:06 CEST 2008 - dmueller@suse.de
+
+- add missing glib2-devel requires
+
+-------------------------------------------------------------------
+Fri Sep 19 14:45:27 CEST 2008 - dmueller@suse.de
+
+- update to 4.4.2:
+  * for detaled changelog, see included changes-4.4.2
+- enable glib2 eventloop integration (bnc#421909)
+
+-------------------------------------------------------------------
+Fri Sep 12 14:41:15 CEST 2008 - llunak@suse.cz
+
+- support for Display key (fate#4147)
+
+-------------------------------------------------------------------
+Mon Sep  1 11:13:56 CEST 2008 - dmueller@suse.de
+
+- always configure with webkit support (bnc#413829)
+- mark qFatal as noreturn
+- experimental patch for spell checker "wiggly line" crashes
+
+-------------------------------------------------------------------
+Wed Aug 27 12:53:42 CEST 2008 - llunak@suse.cz
+
+- fix randr changes detection (qt-copy patch #0245)
+
+-------------------------------------------------------------------
+Tue Aug  5 14:30:20 CEST 2008 - dmueller@suse.de
+
+- temporarily revert a change in qwidget.cpp to fix systray
+
+-------------------------------------------------------------------
+Thu Jul 31 17:07:45 CEST 2008 - dmueller@suse.de
+
+- update to 4.4.1:
+  * for detailed changelog, see included changes-4.4.1
+- detect freetype build during runtime (bnc#378801)
+
+-------------------------------------------------------------------
+Tue Jul 22 13:47:21 CEST 2008 - dmueller@suse.de
+
+- add more patches from KDE's qt-copy
+- fix -devel/-x11 fileconflict
+
+-------------------------------------------------------------------
+Thu Jul 17 22:16:55 CEST 2008 - dmueller@suse.de
+
+- always pull in a sql backend and add a virtual metaprovide 
+
+-------------------------------------------------------------------
+Fri Jul  4 13:52:30 CEST 2008 - dmueller@suse.de
+
+- fix postgresql 8.3 support (bnc#403385)
+
+-------------------------------------------------------------------
+Tue Jul  1 15:13:15 CEST 2008 - schwab@suse.de
+
+- Fix memset call.
+- Fix aliasing violation.
+
+-------------------------------------------------------------------
+Thu Jun 26 01:23:03 CEST 2008 - dmueller@suse.de
+
+- add experimental patch to fix QTextStream parsing numbers
+  in system locale
+
+-------------------------------------------------------------------
+Wed Jun 18 11:52:21 CEST 2008 - mfabian@suse.de
+
+- bnc#398526: add qt4-input-method-lazy-load.patch
+  by Peng Wu <pwu@novell.com>.
+
+-------------------------------------------------------------------
+Mon Jun 16 08:52:30 CEST 2008 - dmueller@suse.de
+
+- make qFatal() call abort
+- add ability to debug timer leaks
+
+-------------------------------------------------------------------
+Sat Jun 14 09:40:35 CEST 2008 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Use -mminimal-toc on ppc64 for libQtWebKit.
+- Fix ppc atomic ops.
+
+-------------------------------------------------------------------
+Tue Jun  3 15:51:29 CEST 2008 - dmueller@suse.de
+
+- merge overlapping screens even if they're same size (bnc#395050)
+
+-------------------------------------------------------------------
+Fri May 16 17:38:38 CEST 2008 - dmueller@suse.de
+
+- fix QSortFilterProxyModel::invalidate() triggering a scroll to
+  the current item/index
+
+-------------------------------------------------------------------
+Sun May 11 12:18:41 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Fri May  9 17:51:00 CEST 2008 - dmueller@suse.de
+
+- fix qt3/2 apps hanging during startup when run under KDE4
+
+-------------------------------------------------------------------
+Tue May  6 11:48:31 CEST 2008 - dmueller@suse.de
+
+- update to 4.4.0 (fate #303637):
+  for detailed changelog, see included changes-4.4.0
+- fix endless loop on stroked painter paths
+
+-------------------------------------------------------------------
+Wed Apr 30 01:35:54 CEST 2008 - dmueller@suse.de
+
+- fix QTabBar layout being wrongly cached (kde#159014)
+- fix major performance regression in QPixmap::hasAlpha()
+- fix wrongly diffed snapshot update
+
+-------------------------------------------------------------------
+Tue Apr 22 12:42:11 CEST 2008 - dmueller@suse.de
+
+- fix crash in xim destroy callback (bnc#382254)
+
+-------------------------------------------------------------------
+Mon Apr 21 11:38:44 CEST 2008 - dmueller@suse.de
+
+- update to 20080419 of release branch:
+  * some patches were upstreamed
+- try a different workaround for postgresql-devel requirements
+  being incorrect
+
+-------------------------------------------------------------------
+Mon Apr 14 20:30:06 CEST 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Apr 14 19:12:34 CEST 2008 - dmueller@suse.de
+
+- fix repaint recursion (bnc#357727) 
+
+-------------------------------------------------------------------
+Mon Apr 14 11:17:23 CEST 2008 - dmueller@suse.de
+
+- update to 20080413 of 4.4 branch:
+  * last minute release blocker fixes
+
+-------------------------------------------------------------------
+Thu Apr 10 15:28:08 CEST 2008 - dmueller@suse.de
+
+- remove fake embolden patch as it causes rendering regressions
+  (bnc#374073)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Apr  8 13:54:40 CEST 2008 - dmueller@suse.de
+
+- restore binary compatibility with Qt 4.3
+
+-------------------------------------------------------------------
+Mon Apr  7 12:58:56 CEST 2008 - dmueller@suse.de
+
+- add patch from last .changes (bnc#368456)
+- re-establish workaround for postgresql-devel (bnc#361431)
+
+-------------------------------------------------------------------
+Thu Apr  3 23:23:49 CEST 2008 - dmueller@suse.de
+
+- fix x error recursion (bnc#368456)
+- fix build on sles10 or older
+- update to 4.4.0 rc1:
+  * no changelog available
+
+-------------------------------------------------------------------
+Wed Apr  2 15:08:46 CEST 2008 - dmueller@suse.de
+
+- fix crashes on starting qt4 apps (bnc#360405, bnc#372726)
+- add patch for artifical font styles (bnc#374073)
+
+-------------------------------------------------------------------
+Fri Mar 28 13:08:03 CET 2008 - dmueller@suse.de
+
+- update to 20080325:
+  * lots of optional-features compile fixes
+  * fix http proxy issue
+
+-------------------------------------------------------------------
+Thu Mar 20 00:44:10 CET 2008 - dmueller@suse.de
+
+- update to 20080319:
+  * several bugfixes
+- add qt4-x11-tools subpackage which will collect
+  useful example tools
+
+-------------------------------------------------------------------
+Tue Mar 18 17:23:50 CET 2008 - dmueller@suse.de
+
+- update to 20080317
+  * fixed compositing support
+
+-------------------------------------------------------------------
+Tue Mar 11 18:47:01 CET 2008 - dmueller@suse.de
+
+- update to 20080310
+  * fixes s390(x) compile
+
+-------------------------------------------------------------------
+Thu Mar  6 14:46:03 CET 2008 - dmueller@suse.de
+
+- update to 20080306
+  * fixes kdebindings4 build regression
+
+-------------------------------------------------------------------
+Sat Mar  1 20:58:37 CET 2008 - dmueller@suse.de
+
+- update to 20080301
+  * fix deleteLater() regression
+
+-------------------------------------------------------------------
+Tue Feb 26 22:54:03 CET 2008 - dmueller@suse.de
+
+- update to 20080226
+  * fixes in packaging
+  * QFile bugfixes among many others
+- add patch to ignore bogus global advance width (#359984)
+- fixes SVG rendering regression (#364936)
+
+-------------------------------------------------------------------
+Thu Feb 21 21:08:02 CET 2008 - dmueller@suse.de
+
+- update to 20080221 snapshot:
+  * restore compatibility with Qt 4.3
+
+-------------------------------------------------------------------
+Fri Feb 15 02:45:25 CET 2008 - dmueller@suse.de
+
+- update to 20080215:
+  * split out QtWebKit and QtXmlPatterns into separate
+  spec to reduce rebuild time
+  * better documentation install (bnc#362635)
+
+-------------------------------------------------------------------
+Tue Feb 12 17:07:05 CET 2008 - dmueller@suse.de
+
+- update to 20080212
+  * should be closer to beta1, more bugfixes
+
+-------------------------------------------------------------------
+Sat Feb  9 13:30:32 CET 2008 - dmueller@suse.de
+
+- fix typo in xrandr-support patch
+
+-------------------------------------------------------------------
+Fri Feb  8 19:39:16 CET 2008 - dmueller@suse.de
+
+- update to 20080207:
+  * varius bugfixes
+- small packaging fixlets
+
+-------------------------------------------------------------------
+Sun Feb  3 23:30:27 CET 2008 - dmueller@suse.de
+
+- update to 4.4 snapshot 20080202:
+  * also licensed under the GPLv3, in addition to GPLv2
+  * bugfixes
+
+-------------------------------------------------------------------
+Thu Jan 31 22:06:16 CET 2008 - dmueller@suse.de
+
+- fix ppc miscompile due to wrong asm constraints (bnc #356200)
+
+-------------------------------------------------------------------
+Wed Jan 30 22:21:16 CET 2008 - schwab@suse.de
+
+- Fix asm constraints.
+
+-------------------------------------------------------------------
+Wed Jan 30 20:17:02 CET 2008 - dmueller@suse.de
+
+- workaround ppc issue to unblock installation (bnc#356200)
+
+-------------------------------------------------------------------
+Tue Jan 29 14:47:31 CET 2008 - llunak@suse.cz
+
+- add qt-copy patch #0206 (fix Meta key modifier)
+
+-------------------------------------------------------------------
+Mon Jan 28 07:33:17 CET 2008 - dmueller@suse.de
+
+- qhelpconverter should be in libqt4-devel
+
+-------------------------------------------------------------------
+Fri Jan 25 10:00:23 CET 2008 - stbinner@suse.de
+
+- fix file conflicts
+
+-------------------------------------------------------------------
+Sat Jan 19 02:11:11 CET 2008 - dmueller@suse.de
+
+- update to 4.4 snapshot 20080110
+  * no changelog available yet, new QtHelp and QtWebKit
+  libraries
+  * much faster stylesheet processing
+
+-------------------------------------------------------------------
+Sat Dec  8 11:56:56 CET 2007 - dmueller@suse.de
+
+- fix strict aliasing violations in tool classes
+- silence frequent warnings in headers
+
+-------------------------------------------------------------------
+Thu Dec  6 12:03:34 CET 2007 - dmueller@suse.de
+
+- add quoting to environment variable
+
+-------------------------------------------------------------------
+Wed Dec  5 17:43:02 CET 2007 - dmueller@suse.de
+
+- update to 4.3.3:
+   * for changelog, see included changes-4.3.3
+
+-------------------------------------------------------------------
+Wed Nov 14 13:19:51 CET 2007 - dmueller@suse.de
+
+- added patches:
+  * add window properties to popups so that they can be properly
+    used for compositing
+  * fix a crash when clearing q3toolbar
+  * fix lineedit rendering with oxygen theme
+- fix requires of libqt4-sql-* subpackages
+
+-------------------------------------------------------------------
+Tue Oct  9 01:55:55 CEST 2007 - dmueller@suse.de
+
+- fix QTreeview crashes, Q3MenuBar sizing and 
+  moc compiling nested Foo/Foo files correctly 
+- build fixes for older code tree's
+
+-------------------------------------------------------------------
+Fri Oct  5 14:44:39 CEST 2007 - stbinner@suse.de
+
+- update to 4.3.2:
+   * for changelog, see included changes-4.3.2
+
+-------------------------------------------------------------------
+Tue Sep 18 16:17:04 CEST 2007 - dmueller@suse.de
+
+- fix QListWidget's color handling 
+
+-------------------------------------------------------------------
+Fri Sep 14 15:44:36 CEST 2007 - dmueller@suse.de
+
+- add patch to fix off-by-one in utf8 decoder (#304249) 
+
+-------------------------------------------------------------------
+Mon Aug 27 15:50:38 CEST 2007 - llunak@suse.cz
+
+- update 0178-transparency-window-types.diff to avoid a crash
+
+-------------------------------------------------------------------
+Sat Aug 25 09:35:08 CEST 2007 - dmueller@suse.de
+
+- fix devel requires 
+
+-------------------------------------------------------------------
+Thu Aug 23 19:06:15 CEST 2007 - dmueller@suse.de
+
+- enable glib2 eventloop integration
+
+-------------------------------------------------------------------
+Tue Aug 14 11:59:12 CEST 2007 - dmueller@suse.de
+
+- drop patch 0182 as it seems to cause rendering glitches
+
+-------------------------------------------------------------------
+Wed Aug  8 11:53:05 CEST 2007 - dmueller@suse.de
+
+- update to 4.3.1:
+  * for changelog, see included changes-4.3.1
+
+-------------------------------------------------------------------
+Wed Aug  1 00:25:41 CEST 2007 - dmueller@suse.de
+
+- fix anti-aliased text drawing on alpha transparent background
+
+-------------------------------------------------------------------
+Sat Jul 21 08:26:55 CEST 2007 - coolo@suse.de
+
+- Do not require xorg-x11 to build
+
+-------------------------------------------------------------------
+Sat Jul 14 17:06:07 CEST 2007 - dmueller@suse.de
+
+- add secure format string patch
+- add compat symlinks for QTDIR based setups
+
+-------------------------------------------------------------------
+Thu Jul  5 17:21:22 CEST 2007 - coolo@suse.de
+
+- package icons for the desktop files
+
+-------------------------------------------------------------------
+Thu Jun 28 13:19:33 CEST 2007 - dmueller@suse.de
+
+- add various critical bugfixes needed for KDE4
+
+-------------------------------------------------------------------
+Thu Jun 21 11:27:05 CEST 2007 - stbinner@suse.de
+
+- fix invalid .desktop files
+
+-------------------------------------------------------------------
+Fri Jun  8 17:49:20 CEST 2007 - dmueller@suse.de
+
+- fix build for old distributions
+
+-------------------------------------------------------------------
+Fri Jun  1 13:24:00 CEST 2007 - dmueller@suse.de
+
+- update to final 4.3.0 release:
+  * for changelog, see included changes-4.3.0
+
+-------------------------------------------------------------------
+Mon May 28 22:09:25 CEST 2007 - dmueller@suse.de
+
+- update to 4.3.0-20070528
+
+-------------------------------------------------------------------
+Wed May 23 13:27:59 CEST 2007 - stbinner@suse.de
+
+- add %post/postun dbus-1 ldconfig call
+- use %fdupes
+
+-------------------------------------------------------------------
+Wed May  9 15:33:23 CEST 2007 - dmueller@suse.de
+
+- fix failing getgrgid_r() calls
+- fix crash in dbus bindings
+
+-------------------------------------------------------------------
+Wed May  9 00:40:00 CEST 2007 - dmueller@suse.de
+
+- fix streaming operators not being compiled
+
+-------------------------------------------------------------------
+Mon May  7 16:46:32 CEST 2007 - dmueller@suse.de
+
+- update to 20070507 snapshot (fixes #271803)
+
+-------------------------------------------------------------------
+Wed Apr 25 15:45:21 CEST 2007 - stbinner@suse.de
+
+- fix build of libqt4-sql-plugins
+
+-------------------------------------------------------------------
+Mon Apr 23 18:55:37 CEST 2007 - dmueller@suse.de
+
+- uppate to 4.3.0-20070423
+  * fixes various Qt network issues for kmail4
+
+-------------------------------------------------------------------
+Thu Apr 19 09:30:46 CEST 2007 - stbinner@suse.de
+
+- add a patch to fix capitalization of XIM sub-menu entry
+
+-------------------------------------------------------------------
+Mon Apr 16 23:20:53 CEST 2007 - dmueller@suse.de
+
+- compile without exceptions
+- fix header symlinking
+- compile with openssl support
+- re-apply -pedantic header patch
+- link development tools shared
+
+-------------------------------------------------------------------
+Fri Apr 13 14:56:03 CEST 2007 - dmueller@suse.de
+
+- update to 4.3.0-20070413
+  * fixes dbus error callback
+
+-------------------------------------------------------------------
+Fri Apr 13 09:45:50 CEST 2007 - dmueller@suse.de
+
+- add QAtomic primitives for s390(x)
+
+-------------------------------------------------------------------
+Tue Mar 27 21:52:51 CEST 2007 - dmueller@suse.de
+
+- update to 4.3.0 beta
+  * no upstream ChangeLog available yet
+
+-------------------------------------------------------------------
+Sat Mar 17 01:24:33 CET 2007 - dmueller@suse.de
+
+- fix headers for more recent gcc's
+
+-------------------------------------------------------------------
+Tue Mar 13 12:08:32 CET 2007 - dmueller@suse.de
+
+- add patch for font problems (#244579)
+- fix memory leak in dbus calls
+- fix application name typo in qdbus2xml
+- fix word wrap handling in uic3 ressources
+- reduce size of devel package by 30%
+
+-------------------------------------------------------------------
+Mon Mar 12 14:30:07 CET 2007 - dmueller@suse.de
+
+- update to 4.2.3:
+  * ChangeLog is under /usr/share/doc/packages/libqt4/changes-4.2.3
+
+-------------------------------------------------------------------
+Wed Feb 28 20:41:21 CET 2007 - dmueller@suse.de
+
+- move qdbus to libqt4-dbus
+
+-------------------------------------------------------------------
+Wed Feb 21 00:52:34 CET 2007 - dmueller@suse.de
+
+- fix excessive compiler warnings in headers
+
+-------------------------------------------------------------------
+Tue Feb 13 20:44:29 CET 2007 - dmueller@suse.de
+
+- fix reading of x ressources (#244935)
+
+-------------------------------------------------------------------
+Mon Feb 12 14:24:48 CET 2007 - dmueller@suse.de
+
+- update configure parameters
+
+-------------------------------------------------------------------
+Wed Jan 24 18:33:34 CET 2007 - dmueller@suse.de
+
+- fix paths in installed pkg-config descriptions (#238169)
+
+-------------------------------------------------------------------
+Tue Jan 23 11:11:08 CET 2007 - stbinner@suse.de
+
+- fix string literal comparison
+
+-------------------------------------------------------------------
+Mon Jan  8 21:26:51 CET 2007 - dmueller@suse.de
+
+- add patch to fix moc path issue
+- add patch to fix indic script rendering buglet
+
+-------------------------------------------------------------------
+Fri Dec  1 18:40:48 CET 2006 - dmueller@suse.de
+
+- update to 4.2.2 (#222624):
+   * includes just bugfixes, see changes-4.2.2 for details
+
+-------------------------------------------------------------------
+Tue Nov 28 11:07:21 CET 2006 - dmueller@suse.de
+
+- shuffle around libs to fix cyclic dependencies
+
+-------------------------------------------------------------------
+Mon Nov 27 20:21:11 CET 2006 - dmueller@suse.de
+
+- add patch to fix QGraphicsView eventhandling
+- disable dbus-1 subpackage for older distributions
+
+-------------------------------------------------------------------
+Mon Nov 20 15:08:53 CET 2006 - schwab@suse.de
+
+- Provide/obsolete qt-sql only once.
+
+-------------------------------------------------------------------
+Thu Nov 16 22:43:20 CET 2006 - dmueller@suse.de
+
+- split devel-doc-data from devel-doc
+
+-------------------------------------------------------------------
+Tue Nov 14 00:40:47 CET 2006 - dmueller@suse.de
+
+- move dbus-viewer from demos to /usr/bin
+
+-------------------------------------------------------------------
+Wed Oct 25 16:42:58 CEST 2006 - dmueller@suse.de
+
+- add several patches for common bugs
+- default to plastique style for undetectable environments (#214960)
+
+-------------------------------------------------------------------
+Fri Oct 20 15:59:28 CEST 2006 - dmueller@suse.de
+
+- update to 4.2.1:
+  * include CVE-2006-4811 patch
+
+-------------------------------------------------------------------
+Fri Oct 20 15:38:14 CEST 2006 - dmueller@suse.de
+
+- fix typo in CVE-2006-4811 patch
+
+-------------------------------------------------------------------
+Thu Oct 19 23:44:40 CEST 2006 - dmueller@suse.de
+
+- fix provides/obsoletes for libqt4-dbus
+
+-------------------------------------------------------------------
+Thu Oct 19 17:53:54 CEST 2006 - dmueller@suse.de
+
+- add patch for integer overflow in QPixmap/QImage
+  (#212544, CVE-2006-4811)
+
+-------------------------------------------------------------------
+Sat Oct  7 12:08:00 CEST 2006 - stbinner@suse.de
+
+- add Provides: and Obsoletes: for old package names
+
+-------------------------------------------------------------------
+Wed Oct  4 11:58:50 CEST 2006 - dmueller@suse.de
+
+- update to 4.2.0:
+  * bugfixes
+
+-------------------------------------------------------------------
+Mon Sep 11 19:27:44 CEST 2006 - dmueller@suse.de
+
+- update to 4.2 snapshot 20060911:
+  * dbus related tools are renamed
+  * QLibrary bugfixes
+
+-------------------------------------------------------------------
+Tue Sep  5 16:33:55 CEST 2006 - dmueller@suse.de
+
+- Qt 4.2.rc1 update:
+  * no changelog available
+
+-------------------------------------------------------------------
+Sun Sep  3 12:13:18 CEST 2006 - dmueller@suse.de
+
+- Rename the other qt-* related references as well.
+
+-------------------------------------------------------------------
+Sun Sep  3 11:21:15 CEST 2006 - aj@suse.de
+
+- Rename qt -> libqt4 in BuildRequires and Requires as well.
+
+-------------------------------------------------------------------
+Fri Sep  1 21:58:49 CEST 2006 - dmueller@suse.de
+
+- update to Qt 4.2 snapshot 20060901:
+  * various critical bugfixes
+
+-------------------------------------------------------------------
+Mon Aug 28 13:41:04 CEST 2006 - dmueller@suse.de
+
+- package rename: qt -> libqt4
+
+-------------------------------------------------------------------
+Tue Aug 22 00:05:27 CEST 2006 - dmueller@suse.de
+
+- update to Qt 4.2 snapshot 20060820:
+ * QtDBus API review
+ * build system overhaul
+
+-------------------------------------------------------------------
+Sat Aug 12 00:16:47 CEST 2006 - dmueller@suse.de
+
+- add patch for middle click support in QSystemTrayIcon
+
+-------------------------------------------------------------------
+Tue Aug  1 11:57:06 CEST 2006 - dmueller@suse.de
+
+- add provides/obsoletes for dbus-1-qt
+
+-------------------------------------------------------------------
+Mon Jul 31 16:24:09 CEST 2006 - dmueller@suse.de
+
+- Update to Qt 4.2 technical preview 1
+  - QGraphicsView
+  - DBus Bindings
+
+-------------------------------------------------------------------
+Mon Jul 10 23:31:52 CEST 2006 - dmueller@suse.de
+
+- Remove patches that didn't go upstream
+- Shorten ChangeLog
+- Install libQtUiTools (#189163)
+
+-------------------------------------------------------------------
+Wed Jun 28 13:06:31 CEST 2006 - dmueller@suse.de
+
+- move icons into the right subpackage (#172505) 
+
+-------------------------------------------------------------------
+Fri Jun 23 09:52:50 CEST 2006 - adrian@suse.de
+
+- update to version 4.1.4
+  Plenty of changes/bugfixes, but full forward and backward
+  compatibility to 4.1.x. Details are described in
+  /usr/share/doc/packages/qt/changes.4.1.4
+- allow build on Mandriva and Fedora
+
+-------------------------------------------------------------------
+Mon Jun 19 12:05:22 CEST 2006 - dmueller@suse.de
+
+- Fix build on s390(x) 
+
+-------------------------------------------------------------------
+Mon May 29 15:20:32 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri May 26 08:50:22 CEST 2006 - dmueller@suse.de
+
+- fix sql plugins version require base package (#159092) 
+
+-------------------------------------------------------------------
+Tue May 23 08:25:13 CEST 2006 - adrian@suse.de
+
+- reapply the 0119-qaction-widgetfactory.diff and
+  0112-ksyntaxhighlighter-rehighlight-document.diff patch to be 
+  able to build KDE 4 again
+
+-------------------------------------------------------------------
+Sat May 20 12:20:23 CEST 2006 - adrian@suse.de
+
+- update to version 4.1.3
+  Plenty of changes/bugfixes, but full forward and backward
+  compatibility. Details are described in
+  /usr/share/doc/packages/qt/changes.4.1.3
+- fix build for the openSUSE build service
+
+-------------------------------------------------------------------
+Tue May 16 12:36:39 CEST 2006 - adrian@suse.de
+
+- add patch 0116 from qt-copy to be able to build KDE 4
+  (0116-qtoolbar-widgetforaction.diff)
+
+-------------------------------------------------------------------
+Tue May 16 11:05:02 CEST 2006 - dmueller@suse.de
+
+- fix qt-devel requires
+
+-------------------------------------------------------------------
+Mon May 15 17:55:23 CEST 2006 - dmueller@suse.de
+
+- 4.1.2 update:
+- Fix crash when signals or slots were longer than 64 characters.
+- QAbstractItemView
+  Make sure we do not emit the activated() signal with an
+  invalid index.
+- QFileDialog
+  Make getSaveFileName() use correct directory if the file does
+  not exist.
+  Fix crash when autocompleting in a directory with similar
+  filenames.
+- FreeType
+  Fix compilation with older versions of FreeType.
+- QHostAddress
+  Fix crash in constructors.
+- QImage
+  Fix possible crash in copy() if the QRect is outside the image
+  bounds.
+- QLineEdit
+  Fix mouse positioning with input methods.
+- QMenu
+  Fix dangling pointers.
+- QPixmap
+  Fix broken resize().
+- QSet
+  Fix crash when comparing two QSets.
+- SQL drivers
+  Fix compilation with PostgreSQL for earlier versions than 7.4.
+  Fix TDS plugin build error on 64-bit Linux.
+- QSvgRenderer
+  Fix memory leak in QSvgRenderer when objects were destroyed.
+- QTextBrowser
+  Fix crash when loading large HTML file with tables.
+- Text engine
+  Fix memory corruption in QStackTextEngine.
+- QTreeWidget
+  Fix multi line text items.
+- Q3PointArray
+  Fix assert in makeArc() when the spanning angle is less than
+  16.
+- QFontDatabase
+  Fix crash in loadXlfd().
+- Printing
+  Fix printing for X11.
+- QAbstractItemView
+  Fix selections when mouse-tracking is turned on.
+  Fixed selection issues after row resizing.
+  Fixed focus after pressing enter.
+- QAbstractItemModel
+  More consistent behavior in drag-and-drop code.
+- QAbstractSlider
+  Ensure changed-signals are only emitted when the value
+  actually changed.
+- QAbstractSocket
+  Fixed a crash if disconnected during waitForReadyRead().
+- QAccessibleWidget
+  Fix an off-by-one navigation error in the accessibility
+  support for menu bar and menus.
+- QByteArray
+  Fixed leftJustified() and rightJustified() when array contains
+  \0's.
+- QComboBox
+  Fixed a crash when setting and deleting the model.
+  Fixed a crash when using a QListWidget as the view.
+- QCoreApplication
+  Fixes race condition during plugin loading.
+- QCommonStyle
+  Fixed wrong size hint of PM_MenuButtonIndicator.
+- QDateTime
+  Fixed a regression in fromString().
+  Avoid potential hang when paring invalid date formats.
+- QDialog
+  Fixed an issue where setExtension()/showExtension() didn't
+  work in a constrained size mode.
+- QDir
+  cd() now fails when attempting to cd to a non-directory.
+- QDirModel
+  Improved stability when appending network drives.
+  Improved stability when handling symlinks with relative paths.
+- QDockWidget
+  Update toggleViewAction() when widget gets hidden with close
+  button.
+- QFile
+  Changed behavior of rename() to fail if a file of the same
+  name already exists.
+- QFileDialog
+  Make sure filter combo box gets enabled when changing from
+  Directory to ExistingFile mode.
+  Improve filename completion for files with the same name but
+  different extension.
+  Make sure the selection is updated when modifying the filename
+  by removing characters.
+  Allow typing in several file names in the file name line edit.
+  Improve handling of non-existent windows shares.
+  Improve handling of hidden directories.
+ Make it possible to create new folder when a folder called
+  "New Folder" already exists.
+  Improve usability by not changing the filename text when
+  directories are selected.
+  Improve usability by not autoselecting the first item when
+  changing directories.
+  Ensure that calling setDirectory() with a path shows the
+  directory when the path contains a file name.
+  Avoid unnecessary resolving of mount points, leading to
+  lockups on Unix.
+  Fixed potential crash when selecting an extension filter with
+  no matches in current directory.
+  Fixed a problem where using selectFilter() didn't update the
+  view.
+- QFileInfo
+  Fixed issue where copying a QFileInfo and calling refresh()
+  could result in file info data being cleared.
+  Fixed issue where calling readLink() would resolve link
+  targets incorrectly.
+- QGLWidget
+  Switching from full screen mode to normal mode no longer
+  results in incorrect window decorations.
+  Fixed overline, underline and strikethrough for text drawn
+  with renderText().
+- QGridLayout
+  Respect specified alignment over default alignment.
+- QHeaderView
+  Respects dragDistance.
+  Respects TextColorRole.
+  Fixed painting problems caused by clicking both mouse buttons
+  at the same time.
+  Fixed painting flaws when using sort indicators.
+  Fixed issue where QStyleOptionHeader::End would not be set by
+  paintSection.
+  Only the left mouse button can now be used to move and resize
+  header sections.
+  Fixed incorrect header size after swapping header sections.
+  Fixed resize mode of header sections after section moves.
+  Fixed an assert when changing the selection model.
+- QHash / QSet
+  Make the operator==() not take the internal order of elements
+  into account when comparing.
+- QIcon
+  Fixed issue where creating QIcons with an invalid path could
+  result in a crash.
+- Improved handling of focus events when using input methods.
+- QInputDialog
+  Fixed handling of ampersands in labels.
+- QImage
+  Fixed drawing of QBitmap's onto a QImage.
+- QImageIOHandler
+  Made all supported image formats support the Size option.
+- QItemSelectionModel
+  Fixed an infinite loop in isRowSelected().
+- QItemDelegate
+  Better handling of QStyleOptionViewItem::Bottom.
+  Increased the delegate horizontal margin.
+- QLayout
+  Warn instead of crash when adding two layouts to a widget.
+- QLocale
+  Add missing entry for "nb".
+- QList
+  Fixed a memory leak when repeatedly removing items from the
+  end and inserting items in the middle.
+- QListView
+  Fixed an assert when using QProxyModel as the model.
+- QMainWindow
+  Handle RTL layout for dockwidgets properly.
+  Make dockwidgets remember their sizes after being hidden.
+  Improved reliability when saving and restoring state.
+- QMenu
+  Fixed shortcut handling of already selected submenus.
+  Fix setting the window title on torn off menus.
+  Fix bug where exec() returned the wrong QAction on some cases.
+- QMenuBar
+  Improved widget placement in setCornerWidget().
+- QMenuItem
+  Ensure space for both check mark and icon when using
+  QPlastiqueStyle.
+- QMYSQLDriver
+  Fix crash when formatValue() is called without connection.
+- QMessageBox
+  information() now works correctly when calling it after
+  returning from QApplication::exec()
+- QPaintEngine
+  Fixed an out of memory issue when drawing very long lines.
+  OpenGL : Make sure the image and pixmap cache is used.
+  OpenGL : Faster rect outlining for the most common case.
+- QPrintEngine
+  Better font underlining/overlining.
+  Support PDF font embedding, resulting in smaller PDF files and
+  selectable text.
+  Made our generated PDFs readable by Ghostscript.
+  Support pens that have patterns/pixmaps for PDFs.
+  Support landscape mode for PDFs.
+- QPixmap
+  Fixed issue where save() in some cases would return true on
+  failure.
+- QProgressBar
+  Fix incorrect progress in some cases.
+- QPushButton
+  Buttons reparented into a dialog parent through the layout are
+  now auto-default.
+- QRadioButton
+  Fixed a potential crash in QRadioButton Qt 3 support
+  constructors.
+- QSortFilterProxyModel
+  Improve stability when adding rows to source model.
+  Fixed issue where some nodes would show up as expandable even
+  if all it's children had been filtered.
+  Fixed a crash when deleting rows.
+- QSizeGrip
+  Fixed size grip painting when maximizing a QMainWindow in a
+  QWorkspace.
+- QSvgRenderer
+  Better handling of invalid files.
+- QSvg
+  Improve stroking with pen width 0.
+  Fix rectangle filling bug.
+- QSyntaxHighlighter
+  Fixed missing handling of blocks of text under certain
+  conditions.
+  Improved interaction with input methods.
+- QScrollArea
+  Fixed an issue where the scroll area sometimes would not
+  resize to compensate for content change.
+- QString
+  Fixed regression in fromLocal8Bit().
+- QTextDocument
+  Support span style background-color.
+  Fix nested tables in html documents regression.
+- QTextLayout
+  Added support for soft-hyphens.
+- QToolButton
+  Make popup menus appear on the correct screen.
+  Fixed ToolButtonPopupMode when QToolButton has a
+  QAction.
+- QToolBar
+  Combo boxes now appears as submenus in a toolbar extension.
+  setIconSize() now works correctly.
+  Relative position within toolbars are now kept when saving and
+  restoring state.
+- QTextBrowser
+  Fix missing line break after paragraph.
+- QTextEdit
+  Improve handling of the TITLE tag.
+  Fixed navigating links via tab.
+  Improved handling of malformed html.
+  Fixed rendering for tables with thead/tbody/tfoot elements.
+  Improved copy and paste of content with whitespace
+  Make undo/redo update the cursor position.
+  Fixed lost cursorPositionChanged() signal in read-only mode.
+  Fixed memory leak when calling setHtml() repeatedly.
+  Significantly improved performance when appending and editing
+  text.
+  Improved performance when selecting all text.
+  Emit copyAvailable() on mouse selection.
+- QTableView
+  Fixed drawing of selections after moving columns.
+  Do not wrap to the top if Page Down is pressed.
+  Improve scrolling behavior.
+  QTableView now takes ownership of QHeaders set using
+  setHorizontalHeader()
+  Fixed issue where calling setModel(0) could result in a
+  crash.
+- QTreeView
+  Fixed scrolling-related item expand bug.
+  Improve scrolling behavior.
+  QTreeView now takes ownership of QHeaders set using
+  setHorizontalHeader()
+  Avoid crash when calling setRowHidden with no model.
+  Avoid crash when calling sizeHintForColumn() in some cases.
+  Improved performance when adding rows.
+  Fixed update of view when changing row heights.
+  Fixed a bug where calling setCurrentIndex() did not update the
+  view correctly.
+  Removed extra emit of the expanded() signal on already
+  expanded branches.
+- QTreeWidget
+  Fixed tristate check item behavior.
+- QTabWidget
+  Fixed bug that caused missing resize when dynamically adding
+  widgets.
+  Fixed text positioning in a tab with an icon.
+- QTemporaryFile
+  Fixed issue where calling open() could potentially change the
+  file name.
+- QTextDocument
+  Improved stability when importing incorrectly formed html
+  tables.
+  Improved stability when importing closing tags without
+  corresponding opening tags.
+- QTextStream
+  Ensure valid codec converter state after calling seek(0).
+  Fixed issue where readAll() would not work with sequential
+  devices.
+- QTabBar
+  Improve handling of tab removal.
+- QUrl
+  Improve handling of hostnames containing digits.
+  Fix crash when calling hasQueryItem() on QUrl without any
+  query items.
+  Added support for parsing file names with '[' and ']'
+  characters.
+- QVariant
+  Improve operator==() behavior when comparing different types.
+  The QVariant(const char *) constructor is now unavailable when
+  QT_NO_CAST_TO_ASCII is set. Otherwise, it uses
+  QString::fromAscii to convert the const char * to a Unicode
+  QString to prevent loss of information.
+- QWidget
+  Fix regression in setMask().
+  Fixed issue where incorrect minimum size was reported after
+  reparenting from a top level widget.
+  Fixed return value of normalGeometry() after the widget has
+  been maximized.
+  Fixed crash on application exit if the widget was created
+  before the widget mapper is initialized.
+- QXpmHandler
+  Fixed handling of non-transparent XPM images.
+- XMLInputReader
+  Fixed issue where entities in XML files were not
+ resolved.
+- QXmlSimpleReader
+  A significant (approx. 50x) speedup in QXmlSimpleReader when
+  parsing documents which contain internal or external entities.
+- Q3DataTable
+  Drivers not supporting the QuerySize feature would display one
+  row of data too little.
+- Q3IconView
+  Fixed selection appearance.
+- Q3TextEdit
+  Fixed focus indicator tabbing through tables.
+  Fixed coloring when inserting text after use of setColor().
+- Q3TabDialog
+  Added missing selected() signal
+- Q3ListView
+  Fixed occasional crashes when deleting items.
+  Fixed wrong label after addLabel(QString()).
+- Q3ScrollView
+  Fixed default focus policy for deriving classes.
+- Q3ToolBar
+  Q3Action::setOn() now works correctly.
+  Adding an action now sets all action properties correctly.
+- Q3ActionGroup
+  Fix drop down drawing error.
+- Q3MainWindow
+  Fixed a regression in setUsesIconText().
+  Reintroduced qt_x11_set_global_double_buffer() for binary
+  compatibility.
+  Improved tablet event handling.
+- QApplication
+  The KeypadModifier is now set when NumLock is enabled.
+- QBitmap
+  Fixed text drawing errors under some fontconfig
+  settings.
+- QLibrary
+  isLibrary() now returns true for .a and .so on AIX.
+- qmake
+  Improved stability when modifying environment variables
+  Allow '/' as a path separator on all platforms.
+- QPaintEngine
+  Fixed issue where filling and stroking ellipses could leave
+  pixel gaps.
+- QPainter
+  Implemented Porter-Duff composition support.
+  Fix artifacts when drawing aliased primitives with an alpha
+  pen.
+  Fixed issue where rotating pixmaps could add a pixel row in
+  some cases.
+  Fixed drawing of arcs of less than 1 degree.
+  Made drawText() honor the Qt::TextWrapAnywhere flag.
+- QPrinter
+  Fixed cleanup of child processes.
+- QPrintDialog
+  Fixed problems when using "From page" and "To page" spin
+  boxes.
+  Made it impossible to choose "OK" when no printers are
+  configured.
+- QProcess
+  Fixed possible deadlock when calling startDetatched().
+- QScrollArea
+  Catch double click also when size exceeds window system size
+  limits.
+- QTextEdit
+  Fixed an issue where the horizontal scrollbar did not show up.
+- QWorkspace
+  Fixed missing mouse event propagation to child widgets.
+
+-------------------------------------------------------------------
+Mon Apr 10 11:35:17 CEST 2006 - dmueller@suse.de
+
+- fix wrong assembler mnemonic in QAtomic for s390x
+
+-------------------------------------------------------------------
+Wed Mar 22 16:50:05 CET 2006 - dmueller@suse.de
+
+- fix debug package conflict 
+
+-------------------------------------------------------------------
+Tue Mar 21 18:17:28 CET 2006 - dmueller@suse.de
+
+- don't build the examples against debug libs
+- fix plugin loading (#159092) 
+
+-------------------------------------------------------------------
+Wed Mar  1 16:21:36 CET 2006 - dmueller@suse.de
+
+- strip $RPM_BUILD_DIR from installed files (#153597) 
+
+-------------------------------------------------------------------
+Fri Feb 17 14:19:39 CET 2006 - dmueller@suse.de
+
+- install arthurplugin into plugin designer path (#151529) 
+- add patch to make parallel builds work
+- enable parallel builds
+
+-------------------------------------------------------------------
+Wed Feb 15 22:25:37 CET 2006 - dmueller@suse.de
+
+- Fix qt-devel requires
+- Add patch to make it usable for KDE 4 
+
+-------------------------------------------------------------------
+Sun Feb 12 12:54:09 CET 2006 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Feb 12 11:34:24 CET 2006 - ro@suse.de
+
+- fix spec file
+
+-------------------------------------------------------------------
+Wed Feb  8 02:55:27 CET 2006 - dmueller@suse.de
+
+- build qt-sql in qt.spec, and only the plugins separate 
+
+-------------------------------------------------------------------
+Fri Feb  3 14:40:32 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb  1 16:28:21 CET 2006 - dmueller@suse.de
+
+- remove no-visibility patch. Qt now builds fine with it
+- remove no_rpath patch and instead use -no-rpath configure option
+- split source package
+- add upstream patch to fix license display in Qt dialog boxes
+  (#146599) 
+
+-------------------------------------------------------------------
+Tue Jan 31 09:48:42 CET 2006 - dmueller@suse.de
+
+- fix qt-qt3support / qt-devel file conflict
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 15:30:15 CET 2005 - dmueller@suse.de
+
+- update to Qt 4.1 final
+- add ldconfig post/postun for qt3support 
+
+-------------------------------------------------------------------
+Wed Dec  7 12:18:59 CET 2005 - uli@suse.de
+
+- atomic-s390.patch has been merged into 4.1, applying it again
+  breaks build; removed
+- change X keysyms include order to avoid double definitions
+
+-------------------------------------------------------------------
+Tue Nov 22 09:54:07 CET 2005 - stbinner@suse.de
+
+- update to Qt 4.1 RC 1
+
+-------------------------------------------------------------------
+Thu Nov 17 15:57:37 CET 2005 - dmueller@suse.de
+
+- fix build for 9.1, 9.2 
+
+-------------------------------------------------------------------
+Wed Sep 28 13:01:11 CEST 2005 - dmueller@suse.de
+
+- fix upgrade path (unpacking symlinks over dirs doesn't work) 
+
+-------------------------------------------------------------------
+Sat Sep 17 15:42:47 CEST 2005 - dmueller@suse.de
+
+- add patch to make input methods work (#116778) 
+
+-------------------------------------------------------------------
+Sat Sep 17 13:33:28 CEST 2005 - dmueller@suse.de
+
+- fix build for older distro's 
+
+-------------------------------------------------------------------
+Thu Sep  8 18:23:03 CEST 2005 - dmueller@suse.de
+
+- fix qtdemo (#113783)
+
+-------------------------------------------------------------------
+Thu Sep  8 17:52:19 CEST 2005 - adrian@suse.de
+
+- do not disable STL support, which would make us incompatible
+
+-------------------------------------------------------------------
+Thu Sep  1 01:02:44 CEST 2005 - dmueller@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Mon Aug 29 14:28:50 CEST 2005 - adrian@suse.de
+
+- do not do a parallel build, it does fail too often
+
+-------------------------------------------------------------------
+Tue Aug 23 13:45:26 CEST 2005 - dmueller@suse.de
+
+- fix filelist
+- fix pkgconfig location
+- remove BUILD-dirs from pkgconfig files
+
+-------------------------------------------------------------------
+Mon Aug 22 18:49:52 CEST 2005 - dmueller@suse.de
+
+- 4.0.1 update (bugfixes)
+- add -debug subpackage
+
+-------------------------------------------------------------------
+Fri Aug 12 21:57:16 CEST 2005 - dmueller@suse.de
+
+- fix dependency of devel package
+- fix doc packaging
+- fix permissions
+- add hack to fix the .la files produced by qmake
+
+-------------------------------------------------------------------
+Sun Aug  7 21:09:16 CEST 2005 - adrian@suse.de
+
+- link against external sqlite
+- fix -devel package requires
+
+-------------------------------------------------------------------
+Sat Aug  6 12:15:13 CEST 2005 - adrian@suse.de
+
+- add desktop files for gui applications
+
+-------------------------------------------------------------------
+Tue Jul 12 00:48:14 CEST 2005 - schwab@suse.de
+
+- Fix ia64 atomic ops.
+
+-------------------------------------------------------------------
+Tue Jul  5 09:57:29 CEST 2005 - uli@suse.de
+
+- fixed semantics of atomic ops for s390* (tested and working)
+
+-------------------------------------------------------------------
+Wed Jun 29 20:07:08 CEST 2005 - dmueller@suse.de
+
+- reapply lost ia64 fixes
+- build with -release only
+
+-------------------------------------------------------------------
+Wed Jun 29 16:33:29 CEST 2005 - uli@suse.de
+
+- fixed to build on lib64 archs
+- squelched warnings that offend autobuild
+- added atomic ops for s390*
+
+-------------------------------------------------------------------
+Tue Jun 28 14:30:53 CEST 2005 - dmueller@suse.de
+
+- upgrade Qt 4.0 final 
+
+-------------------------------------------------------------------
+Fri Jun 17 11:01:30 CEST 2005 - dmueller@suse.de
+
+- some more rpmlint fixes and one ia64 fix. 
+
+-------------------------------------------------------------------
+Wed Jun 15 17:15:47 CEST 2005 - dmueller@suse.de
+
+- build 
+
+-------------------------------------------------------------------
+Wed Jun 15 00:55:58 CEST 2005 - dmueller@suse.de
+
+- fix packaging 
+
+-------------------------------------------------------------------
+Tue Jun 14 17:39:31 CEST 2005 - dmueller@suse.de
+
+- update to 4.0.0rc1 
+
+-------------------------------------------------------------------
+Thu May 12 02:00:53 CEST 2005 - ro@suse.de
+
+- fix build on x86-64 fix build on x86-64 
+
+-------------------------------------------------------------------
+Wed Apr 13 12:11:08 CEST 2005 - adrian@suse.de
+
+- update to beta2
+- rename qt-qt3compat package to qt-qt3support to follow library name
+
+-------------------------------------------------------------------
+Wed Jan  5 10:31:55 CET 2005 - adrian@suse.de
+
+- update to pre beta2 snapshot 200513
+  * package is under GPL/QPL again
+- split package into sub packages
+  * qt           - does not require any X11 or image lib dependency
+  * qt-x11       - does need libX11 and OpenGL
+  * qt-qt3compat - library for easy porting of Qt 3 code
+  * qt-devel     - all development stuff
+  * qt-devel-doc - API documentation and assistant tool
+  * qt-sql*      - SQL database lib and plugins
+
+-------------------------------------------------------------------
+Fri Jul  9 12:53:27 CEST 2004 - adrian@suse.de
+
+- initial package of the new, great, perfect designed Qt 4
+- internal package only for now
+

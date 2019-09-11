@@ -1,0 +1,24 @@
+diff -u -r aspell-0.60.6.1/modules/filter/tex.cpp /var/tmp/build-root/standard-x86_64/home/abuild/rpmbuild/BUILD/aspell-0.60.6.1/modules/filter/tex.cpp
+--- aspell-0.60.6.1/modules/filter/tex.cpp	2011-07-02 23:09:09.000000000 +0200
++++ aspell-0.60.6.1/modules/filter/tex.cpp	2016-12-16 11:14:33.893176139 +0100
+@@ -174,7 +174,7 @@
+ 
+     if (c == '{') {
+ 
+-      if (top.in_what == Parm || top.in_what == Opt || top.do_check == '\0')
++      if (top.in_what == Parm || top.in_what == Opt || *top.do_check == '\0')
+ 	push_command(Parm);
+ 
+       top.in_what = Parm;
+diff -u -r aspell-0.60.6.1/prog/check_funs.cpp /var/tmp/build-root/standard-x86_64/home/abuild/rpmbuild/BUILD/aspell-0.60.6.1/prog/check_funs.cpp
+--- aspell-0.60.6.1/prog/check_funs.cpp	2011-07-04 11:17:27.000000000 +0200
++++ aspell-0.60.6.1/prog/check_funs.cpp	2016-12-16 11:15:23.294134519 +0100
+@@ -647,7 +647,7 @@
+     }
+   }
+   if (i == width-1) {
+-    if (word == '\0')
++    if (*word == '\0')
+       put(out,' ');
+     else if (word[len] == '\0')
+       put(out, word, len);

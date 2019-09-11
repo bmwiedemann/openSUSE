@@ -1,0 +1,11 @@
+--- etc/update-checker.conf
++++ etc/update-checker.conf	2018/12/10 09:49:15
+@@ -2,7 +2,7 @@
+ output=stdout
+ 
+ [global-systemd]
+-output=issue
++output=salt
+ 
+ [update]
+ variant=up

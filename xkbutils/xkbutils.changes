@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Feb 26 19:06:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Declare bit to shift as unsigned to clear compiler warning.
+  + Add -version flags to all three commands.
+  + Combine usage message strings/calls.
+  + Delete unused macros from utils.h.
+  + Remove unused u*alloc functions from utils.c.
+  + Remove unused uStringDup function.
+  + Make configure actually check for strcasecmp.
+  + Remove unused debug & function tracing infrastructure from
+    utils.c.
+  + Mark uFatalError as _X_NORETURN.
+  + Add printf attributes to utils.c printing functions.
+  + Declare utils.c functions as taking const char * arguments.
+  + Remove unused streq() macro.
+  + Remove unused #ifdef notyet typedef.
+  + Remove CVS version tags.
+  + Convert to X.Org standard coding style.
+  + Fix typo in SetValues which could fail to detect a change if
+    only width/height changed.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Move man pages into their own directory.
+  + man: Remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xkbutils from xorg-x11. Initial version: 1.0.3.
+

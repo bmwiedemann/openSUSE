@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Support 32 cpus.
+  * sysinfo: Show debian version.
+  * Show available disc space in ZFS.
+  * Show 32/64-bit Version intead of release for Arch Linux in
+    System tab.
+  * Show OpenIndiana release and kernel info in System tab.
+  * Show FreeBSD sysname, release, version in System tab.
+  * Fix openSUSE Tumbleweed rolling release info.
+  * gtk3: Use “program-name” property in gtk_show_about_dialog.
+  * help: Update copyright
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * interface: Avoid deprecated gtk_menu_popup.
+  * Avoid compile warning for g_type_class_add_private.
+  * Avoid deprecated GtkStock.
+  * Ensure proper translation of the about dialogue title.
+  * Licence text in the About dialogue.
+  * Make translatable the copyright in the about dialogue.
+  * Help - Priority preset values, including custom value.
+  * procman: Avoid deprecated g_settings_list_keys.
+  * Update translations.
+- Rebase mate-system-monitor-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Mon Dec 24 15:02:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Disable deprecation warnings for distcheck.
+  * Move AppStream files to the metainfo/ directory.
+  * Fix grammar mistake & gui label.
+  * Use make functions for HELP_LINGUAS.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Jun 17 19:41:29 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Fix a crash on systems with pid 0.
+  * Update interval text in resources tab corrected.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Avoid deprecated gdk_screen_width/height().
+  * sysinfo: Avoid deprecated GtkAlignment.
+  * Fix system logo alignment.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * process table: Make search case-insensitive.
+  * procman.cpp: Fix "argument 1 null where non-null expected".
+  * sysinfo.cpp: Fix "this 'if' clause does not guard..."
+  * proctable.cpp: Fix "this 'else' clause does not guard..."
+  * Update translations.
+- Add mate-system-monitor-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:20:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * sysinfo: Disable focus in all labels.
+  * Update copyright year.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Add pkexec support for using kill and renice on other users
+    processes, and try using it before trying gksu.
+  * Fix some GTK+ deprecations.
+  * Update translations.
+- Require polkit instead of xdg-utils but keep
+  mate-system-monitor-xdgsu.patch just in case.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Update translations.
+- Remove mate-system-monitor-gtk3.10.patch.
+
+-------------------------------------------------------------------
+Sun Aug 14 11:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Fix build with recent gcc and clang.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0 (changes since 1.12.2):
+  * Move to GTK+3, drop GTK+2 code and --with-gtk build option.
+  * Set minimum required GTK+ version to 3.14, drop some deprecated
+    code.
+  * Run gksu binary instead of loading libgksu2.so (which is GTK+2
+    only).
+  * Drop MateConf migration script.
+  * Main window: Save maximised state in gsettings on exit and load
+    it on startup.
+  * Disks: Add saving and loading width and visibility of columns.
+  * Process properties: Show cgroups.
+  * Process properties: Show N/A when cgroups or selinux isn't set.
+  * Process table: Show running state when CPU time changes.
+  * Change graph grid line colours and pattern.
+  * Draw the background of graphs explicitly to avoid issues with
+    GTK+ 3.20.
+  * Fix incorrect icons for some known applications like marco or
+    vino.
+  * Some more fixes and cleanups.
+  * Update translations.
+  * Fix Changelog generation.
+- Rebase mate-system-monitor-xdgsu.patch.
+- Add mate-system-monitor-gtk3.10.patch: add support for Gtk 3.10
+  (SLE 12 and openSUSE 13.1).
+
+-------------------------------------------------------------------
+Mon Mar 21 19:25:19 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.12.2:
+  * Process table: Avoid expanding collapsed nodes on every refresh.
+  * Prefs dialog: Fix refresh rate not saving in some cases.
+  * Memmaps dialog: Fix unwanted autoscrolling to the top of list.
+  * Fix segfault on view mode change with process properties open.
+  * Some more fixes.
+- Add mate-system-monitor-xdgsu.patch: use xdg-su instead of gksu.
+- Require xdg-utils for privileging.
+
+-------------------------------------------------------------------
+Mon Jan 11 15:30:48 UTC 2016 - sor.alexei@meowr.ru
+
+- Build with systemd support.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Process table: delay saving column widths (avoids eating CPU
+    and slowdowns when resizing columns).
+  * Process table: force icon size (fixes huge mate-sensors-applet
+    icon with recent Gtk3 versions).
+  * Disks: set minimum width for device column (fixes crash when
+    resizing it to zero with recent Gtk3 versions).
+  * Some fixes and adjustments.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * Support build with C++11.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:45:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * SysInfo: Add proper detection for Linux Mint and LMDE.
+  * SysInfo: Let distributions define custom side image.
+  * Interface: Add border to notebook.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Add support for libsystemd (in addition to libsystemd-login).
+  * Drop useless dependency on mate-icon-theme.
+  * Drop C89 support.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Jul 13 21:12:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Help fixes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue May  5 13:47:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.2):
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 22 10:08:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.2 (unstable)
+  * Bugs fix release
+
+-------------------------------------------------------------------
+Sun Nov 23 14:10:35 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  + Dont sync GSettings before quit; It is unneeded
+    Closes #37 (https://github.com/mate-desktop/mate-system-monitor/issues/37)
+  + Add appdata support
+  + Update translations
+
+-------------------------------------------------------------------
+Mon Jul 14 16:24:52 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Fix man page NAME section
+
+-------------------------------------------------------------------
+Wed Mar  5 12:14:36 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 12:59:02 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + Add GTK3 support
+  + Use libwnck instead of libmatewnck
+  + Use yelp-tools instead of mate-doc-utils
+- Remove unused dependencies: glibmm, giomm
+- Replace libmatewnck requirement with libwnck
+- Replace mate-doc-utils requirement with yelp-tools
+
+-------------------------------------------------------------------
+Thu Sep 19 15:29:39 UTC 2013 - p.drouand@gmail.com
+
+- Remove branded logo; it doesn't have real interest
+
+-------------------------------------------------------------------
+Sat Aug  3 14:37:43 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + fix make file for automake-1.13
+  + fixes for make dist
+  + check if cpu color key exists before read it
+    closes #14 https://github.com/mate-desktop/mate-system-monitor/issues/14
+  + fix indentation
+  + add manpage for mate-system-monitor
+    closes #20 https://github.com/mate-desktop/mate-system-monitor/issues/20
+
+-------------------------------------------------------------------
+Wed Apr  3 23:41:24 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + AC_CONFIG_HEADERS to please automake 1.13
+  +  Update mate-system-monitor.desktop.in.in
+     * choose a unique name
+     * add generic name
+  + update translations
+
+-------------------------------------------------------------------
+Thu Jan 24 20:48:32 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + fix gsettings key names
+  + gsettings schema translatable
+  + add missing semi-colon to desktop file
+  + fix first 5 original cpu colors
+  + minor other fixes
+- Remove mate-system-monitor-1.5.0-fix_desktop_file.patch,
+  upstreamed
+
+-------------------------------------------------------------------
+Wed Nov  7 16:31:59 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + migrate to gsettings and drop all mateconf-2.0 stuff
+  + fix POTFILES
+- Add mate-system-monitor-1.5.0-fix_desktop_file.patch - fix
+  desktop file, add missing semi-colon - merged upstream
+- Add desktop database macros
+
+-------------------------------------------------------------------
+Mon Oct  1 17:19:01 UTC 2012 - nmo.marques@gmail.com
+
+- Add side-openSUSE.png: add openSUSE branded icon instead of the
+  upstream ugly one!
+
+-------------------------------------------------------------------
+Sat Sep  8 16:09:56 UTC 2012 - nmo.marques@gmail.com
+
+- initial package from version 1.4.0
+

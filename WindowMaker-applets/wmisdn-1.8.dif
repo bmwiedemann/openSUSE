@@ -1,0 +1,35 @@
+--- Makefile
++++ Makefile
+@@ -6,10 +6,10 @@
+ DIR = wmisdn-$(VER)
+ 
+ .cc.o:
+-	cc -c -Wall -DVER=$(VER) $< -o $*.o
++	cc -c -Wall -DVER=$(VER) $< -o $*.o $(CFLAGS)
+ 
+ wmisdn: $(OBJS)
+-	cc -o wmisdn $^ $(LIBDIR) $(LIBS)
++	c++ -o wmisdn $^ $(LIBDIR) $(LIBS)
+ 
+ install:: wmisdn
+ 	install -d /usr/local/sbin/
+--- wmisdn.cc
++++ wmisdn.cc
+@@ -1187,7 +1187,7 @@
+ 
+ int isdn_ioctl( int func, void *arg, const char *errmsg, const char *filename )
+ {
+-	int fd = fd = open( filename, O_RDONLY );
++	int fd = open( filename, O_RDONLY );
+ 	if( fd == -1 )
+ 	{
+ 		if( errmsg != NULL )
+@@ -1449,7 +1449,7 @@
+ bool extractIsdnInfoData( const char *all_data, const char *key, char buffer[ISDN_MAX_CHANNELS][100] )
+ {
+ 	char temp[100]; /* buffer the key string */
+-	char *ptr;
++	const char *ptr;
+ 	
+ 	ptr = strstr( all_data, key );
+ 	if( ptr == NULL )

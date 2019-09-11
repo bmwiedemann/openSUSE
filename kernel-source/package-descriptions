@@ -1,0 +1,173 @@
+# Descriptions of the binary kernel packages. The format is
+#
+# === <package name> ===
+# Summary: Package summary (single line)
+# Requires: additional dependencies for KMPs (single line)
+# ...
+#
+# Long description (multiple
+# lines)
+#
+# Descriptions of the -base and -extra subpackages are derived from the
+# main descriptions. The "Summary:" keyword can be omitted
+
+=== kernel-debug ===
+A Debug Version of the Kernel
+
+This kernel has several debug facilities enabled that hurt performance.
+Only use this kernel when investigating problems.
+
+=== kernel-default ===
+The Standard Kernel
+
+The standard kernel for both uniprocessor and multiprocessor systems.
+
+=== kernel-kvmsmall ===
+The Small Developer Kernel for KVM
+
+This kernel is intended for kernel developers to use in simple virtual
+machines.  It contains only the device drivers necessary to use a
+KVM virtual machine *without* device passthrough enabled.  Common
+local and network file systems are enabled.  All device mapper targets
+are enabled.  Only the network and graphics drivers for devices that qemu
+emulates are enabled.  Many subsystems enabled in the default kernel
+are entirely disabled.  This kernel is meant to be small and to build
+very quickly.  The configuration may change arbitrarily between builds.
+
+=== kernel-azure ===
+Kernel for MS Azure cloud
+
+Kernel for use in the MS Azure cloud and other Hyper-V based virtualization
+solutions.
+
+=== kernel-pae ===
+Kernel with PAE Support
+
+This kernel supports up to 64GB of main memory. It requires Physical
+Addressing Extensions (PAE), which were introduced with the Pentium Pro
+processor.
+
+PAE is not only more physical address space but also important for the
+"no execute" feature which disables execution of code that is marked as
+non-executable. Therefore, the PAE kernel should be used on any systems
+that support it, regardless of the amount of main memory.
+
+=== kernel-vanilla ===
+The Standard Kernel - without any SUSE patches
+
+The standard kernel - without any SUSE patches
+
+=== kernel-xen ===
+The Xen Kernel
+
+The Linux kernel for Xen paravirtualization.
+
+This kernel can be used both as the domain0 ("xen0") and as an
+unprivileged ("xenU") kernel.
+
+=== kernel-ec2 ===
+The Amazon EC2 Xen Kernel
+
+The Linux kernel for Xen paravirtualization.
+
+This kernel can only be used as an unprivileged ("xenU") kernel
+(mainly, but not exclusively, for Amazon EC2).
+
+=== kernel-64kb ===
+Kernel with 64kb PAGE_SIZE
+
+This kernel is identical to the default kernel, but is configured with
+64kb page size granule. Its main purpose is to serve as compatibility
+kernel for systems that were installed when the default kernel was still
+configured with 64kb page size granule.
+
+=== kernel-lpae ===
+Kernel for LPAE enabled systems
+
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
+
+=== kernel-cubox ===
+Kernel for SolidRun Cubox
+
+The standard kernel for Marvell Dove SoC, as found in
+the SolidRun Cubox.
+
+=== kernel-exynos ===
+Kernel for Samsung's Exynos SoC
+
+The standard kernel for Samsung's Exynos 4 & 5 SoC, as found in the Origen board.
+
+=== kernel-syzkaller ===
+Kernel used for fuzzing by syzkaller
+
+The syzkaller kernel should be used solely in a virtual machine by
+syzkaller only. It supports kernel coverage and enables a lot of slow
+debugging options.
+
+=== kernel-versatile ===
+Kernel for Versatile SoC
+
+The standard kernel for Versatile SoC, or for emulation with QEMU.
+
+=== kernel-zfcpdump ===
+The IBM System Z zfcpdump Kernel
+
+The Linux kernel for booting the zfcpdump process on IBM System Z.
+
+This kernel should only be used by the s390-tools package. This kernel
+should not be installed as a regular booting kernel.
+
+=== cluster-md-kmp ===
+Summary: Clustering support for MD devices
+Requires: dlm-kmp
+
+Clustering support for MD devices. This enables locking and
+synchronization across multiple systems on the cluster, so all
+nodes in the cluster can access the MD devices simultaneously.
+
+=== dlm-kmp ===
+DLM kernel modules
+
+DLM stands for Distributed Lock Manager, a means to synchronize access to
+shared resources over the cluster.
+
+=== gfs2-kmp ===
+Summary: GFS2 kernel modules
+Requires: dlm-kmp
+
+GFS2 is Global Filesystem, a shared device filesystem.
+
+=== ocfs2-kmp ===
+Summary: OCFS2 kernel modules
+Requires: dlm-kmp
+
+OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
+accessible simultaneously from multiple nodes of a cluster.
+
+=== kselftests-kmp ===
+Kernel sefltests
+
+This package contains kernel modules which are part of the upstream kernel
+selftest effort. kselftest is the name of the upstream kernel target to build
+and run all selftests. You can also run each test individually from the
+respective upstream tools/testing/selftests/ directory, this package is
+intended to be used using individial upstream selftest scripts given only
+select supported selftest drivers are enabled.
+
+It should always be possible to always run the latest linux-next version of the
+selftest scripts and tests against any older kernel selftest driver.  Certain
+tests facilities may be backported onto older kernels to enable further
+testing.
+
+Selftests also provide for a vehicle or proof of concept issues to be
+reproduced, verified and corrected.
+
+Selftest drivers are intended to be supported only in testing and QA
+environments, they are not intended to be run on production systems.
+
+=== reiserfs-kmp ===
+Reiserfs kernel module
+
+The reiserfs file system is no longer supported in SLE15.  This package
+provides the reiserfs module for the installation system.

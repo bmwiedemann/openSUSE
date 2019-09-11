@@ -1,0 +1,385 @@
+From b174a5f400f08b04c7595eaabf21484c5c689967 Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Sat, 15 Apr 2017 20:20:36 +0200
+Subject: [PATCH] Better udev-handling
+
+---
+ CMakeLists.txt                    | 69 +++++++++++++++++++++++++++-----
+ rtl-sdr.rules => rtl-sdr.rules.in | 84 +++++++++++++++++++--------------------
+ 2 files changed, 101 insertions(+), 52 deletions(-)
+ rename rtl-sdr.rules => rtl-sdr.rules.in (73%)
+
+Index: rtl-sdr-0.5.3+git.20170919/CMakeLists.txt
+===================================================================
+--- rtl-sdr-0.5.3+git.20170919.orig/CMakeLists.txt
++++ rtl-sdr-0.5.3+git.20170919/CMakeLists.txt
+@@ -105,16 +105,65 @@ add_custom_target(uninstall
+ ########################################################################
+ # Install udev rules
+ ########################################################################
+-option(INSTALL_UDEV_RULES "Install udev rules for RTL-SDR" OFF)
+-if (INSTALL_UDEV_RULES)
+-    install (
+-        FILES rtl-sdr.rules
+-        DESTINATION "/etc/udev/rules.d"
+-        COMPONENT "udev"
+-        )
+-else (INSTALL_UDEV_RULES)
+-    message (STATUS "Udev rules not being installed, install them with -DINSTALL_UDEV_RULES=ON")
+-endif (INSTALL_UDEV_RULES)
++if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++    SET(SYSTEM_IS_LINUX TRUE)
++    SET(UDEV_OPTION_DEFAULT ON)
++else()
++    SET(SYSTEM_IS_LINUX FALSE)
++    SET(UDEV_OPTION_DEFAULT OFF)
++endif()
++
++option(INSTALL_UDEV_RULES
++    "Install udev rules for the RTLSDR"
++    ${UDEV_OPTION_DEFAULT}
++)
++
++set(UDEV_RULES_PATH
++    "/etc/udev/rules.d"
++    CACHE STRING
++    "Target directory for udev rule installation. Ensure you have permissions to write to this directory."
++)
++
++if(SYSTEM_IS_LINUX)
++    if(INSTALL_UDEV_RULES)
++        if(NOT DEFINED UDEV_RULES_GROUP)
++            foreach(group usb plugdev)
++                execute_process(COMMAND "getent" group "${group}"
++                                RESULT_VARIABLE _GETENT_RESULT
++                                OUTPUT_QUIET
++                                ERROR_QUIET)
++                if(NOT _GETENT_RESULT)
++                    message(STATUS "Setting udev rule group to - ${group}")
++                    set(UDEV_RULES_GROUP ${group})
++                    break()
++                endif(NOT _GETENT_RESULT)
++            endforeach(group)
++        endif(NOT DEFINED UDEV_RULES_GROUP)
++        if(DEFINED UDEV_RULES_GROUP)
++            set(RTLSDR_GROUP "${UDEV_RULES_GROUP}"
++                CACHE STRING "Group to associate RTL-SDR devices with in udev rules")
++            configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rtl-sdr.rules.in
++                        ${CMAKE_CURRENT_BINARY_DIR}/rtl-sdr.rules
++                        @ONLY
++                        )
++            message(STATUS  "RTL-SDR udev rules will be installed to '${UDEV_RULES_PATH}' upon running 'make install'")
++            install(FILES ${CMAKE_CURRENT_BINARY_DIR}/rtl-sdr.rules
++                    DESTINATION ${UDEV_RULES_PATH}
++                    COMPONENT "udev_rules")
++        else(UDEV_RULES_GROUP)
++            message(STATUS "RTL-SDR udev rules will not be installed because no suitable group was found")
++            message(STATUS "A group can be specified with -DUDEV_RULES_GROUP=<group>")
++        endif(DEFINED UDEV_RULES_GROUP)
++    else(INSTALL_UDEV_RULES)
++        message(STATUS
++                "RTL-SDR udev rules will not be installed because INSTALL_UDEV_RULES=OFF"
++               )
++    endif(INSTALL_UDEV_RULES)
++else(SYSTEM_IS_LINUX)
++    if(INSTALL_UDEV_RULES)
++        message(STATUS "udev rules not supported on this platform. Hide this message via -DINSTALL_UDEV_RULES=Off")
++    endif(INSTALL_UDEV_RULES)
++endif(SYSTEM_IS_LINUX)
+ 
+ option(DETACH_KERNEL_DRIVER "Detach kernel driver if loaded" OFF)
+ if (DETACH_KERNEL_DRIVER)
+Index: rtl-sdr-0.5.3+git.20170919/rtl-sdr.rules
+===================================================================
+--- rtl-sdr-0.5.3+git.20170919.orig/rtl-sdr.rules
++++ /dev/null
+@@ -1,142 +0,0 @@
+-#
+-# Copyright 2012-2013 Osmocom rtl-sdr project
+-#
+-# This program is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-#
+-
+-# original RTL2832U vid/pid (hama nano, for example)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2832", MODE:="0666"
+-
+-# RTL2832U OEM vid/pid, e.g. ezcap EzTV668 (E4000), Newsky TV28T (E4000/R820T) etc.
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE:="0666"
+-
+-# DigitalNow Quad DVB-T PCI-E card (4x FC0012?)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0413", ATTRS{idProduct}=="6680", MODE:="0666"
+-
+-# Leadtek WinFast DTV Dongle mini D (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0413", ATTRS{idProduct}=="6f0f", MODE:="0666"
+-
+-# Genius TVGo DVB-T03 USB dongle (Ver. B)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0458", ATTRS{idProduct}=="707f", MODE:="0666"
+-
+-# Terratec Cinergy T Stick Black (rev 1) (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00a9", MODE:="0666"
+-
+-# Terratec NOXON rev 1 (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b3", MODE:="0666"
+-
+-# Terratec Deutschlandradio DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b4", MODE:="0666"
+-
+-# Terratec NOXON DAB Stick - Radio Energy (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b5", MODE:="0666"
+-
+-# Terratec Media Broadcast DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b7", MODE:="0666"
+-
+-# Terratec BR DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b8", MODE:="0666"
+-
+-# Terratec WDR DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b9", MODE:="0666"
+-
+-# Terratec MuellerVerlag DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00c0", MODE:="0666"
+-
+-# Terratec Fraunhofer DAB Stick (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00c6", MODE:="0666"
+-
+-# Terratec Cinergy T Stick RC (Rev.3) (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00d3", MODE:="0666"
+-
+-# Terratec T Stick PLUS (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00d7", MODE:="0666"
+-
+-# Terratec NOXON rev 2 (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00e0", MODE:="0666"
+-
+-# PixelView PV-DT235U(RN) (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1554", ATTRS{idProduct}=="5020", MODE:="0666"
+-
+-# Astrometa DVB-T/DVB-T2 (R828D)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="15f4", ATTRS{idProduct}=="0131", MODE:="0666"
+-
+-# HanfTek DAB+FM+DVB-T
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="15f4", ATTRS{idProduct}=="0133", MODE:="0666"
+-
+-# Compro Videomate U620F (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0620", MODE:="0666"
+-
+-# Compro Videomate U650F (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0650", MODE:="0666"
+-
+-# Compro Videomate U680F (E4000)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0680", MODE:="0666"
+-
+-# GIGABYTE GT-U7300 (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d393", MODE:="0666"
+-
+-# DIKOM USB-DVBT HD
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d394", MODE:="0666"
+-
+-# Peak 102569AGPK (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d395", MODE:="0666"
+-
+-# KWorld KW-UB450-T USB DVB-T Pico TV (TUA9001)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d397", MODE:="0666"
+-
+-# Zaapa ZT-MINDVBZP (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d398", MODE:="0666"
+-
+-# SVEON STV20 DVB-T USB & FM (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d39d", MODE:="0666"
+-
+-# Twintech UT-40 (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3a4", MODE:="0666"
+-
+-# ASUS U3100MINI_PLUS_V2 (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3a8", MODE:="0666"
+-
+-# SVEON STV27 DVB-T USB & FM (FC0013)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3af", MODE:="0666"
+-
+-# SVEON STV21 DVB-T USB & FM
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3b0", MODE:="0666"
+-
+-# Dexatek DK DVB-T Dongle (Logilink VG0002A) (FC2580)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1101", MODE:="0666"
+-
+-# Dexatek DK DVB-T Dongle (MSI DigiVox mini II V3.0)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1102", MODE:="0666"
+-
+-# Dexatek DK 5217 DVB-T Dongle (FC2580)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1103", MODE:="0666"
+-
+-# MSI DigiVox Micro HD (FC2580)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1104", MODE:="0666"
+-
+-# Sweex DVB-T USB (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="a803", MODE:="0666"
+-
+-# GTek T803 (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="b803", MODE:="0666"
+-
+-# Lifeview LV5TDeluxe (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="c803", MODE:="0666"
+-
+-# MyGica TD312 (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="d286", MODE:="0666"
+-
+-# PROlectrix DV107669 (FC0012)
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="d803", MODE:="0666"
+Index: rtl-sdr-0.5.3+git.20170919/rtl-sdr.rules.in
+===================================================================
+--- /dev/null
++++ rtl-sdr-0.5.3+git.20170919/rtl-sdr.rules.in
+@@ -0,0 +1,142 @@
++#
++# Copyright 2012-2013 Osmocom rtl-sdr project
++#
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++# original RTL2832U vid/pid (hama nano, for example)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2832", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# RTL2832U OEM vid/pid, e.g. ezcap EzTV668 (E4000), Newsky TV28T (E4000/R820T) etc.
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# DigitalNow Quad DVB-T PCI-E card (4x FC0012?)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0413", ATTRS{idProduct}=="6680", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Leadtek WinFast DTV Dongle mini D (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0413", ATTRS{idProduct}=="6f0f", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Genius TVGo DVB-T03 USB dongle (Ver. B)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0458", ATTRS{idProduct}=="707f", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec Cinergy T Stick Black (rev 1) (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00a9", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec NOXON rev 1 (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b3", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec Deutschlandradio DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b4", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec NOXON DAB Stick - Radio Energy (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b5", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec Media Broadcast DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b7", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec BR DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b8", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec WDR DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00b9", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec MuellerVerlag DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00c0", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec Fraunhofer DAB Stick (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00c6", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec Cinergy T Stick RC (Rev.3) (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00d3", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec T Stick PLUS (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00d7", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Terratec NOXON rev 2 (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ccd", ATTRS{idProduct}=="00e0", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# PixelView PV-DT235U(RN) (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1554", ATTRS{idProduct}=="5020", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Astrometa DVB-T/DVB-T2 (R828D)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="15f4", ATTRS{idProduct}=="0131", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# HanfTek DAB+FM+DVB-T
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="15f4", ATTRS{idProduct}=="0133", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Compro Videomate U620F (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0620", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Compro Videomate U650F (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0650", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Compro Videomate U680F (E4000)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="185b", ATTRS{idProduct}=="0680", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# GIGABYTE GT-U7300 (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d393", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# DIKOM USB-DVBT HD
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d394", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Peak 102569AGPK (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d395", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# KWorld KW-UB450-T USB DVB-T Pico TV (TUA9001)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d397", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Zaapa ZT-MINDVBZP (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d398", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# SVEON STV20 DVB-T USB & FM (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d39d", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Twintech UT-40 (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3a4", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# ASUS U3100MINI_PLUS_V2 (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3a8", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# SVEON STV27 DVB-T USB & FM (FC0013)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3af", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# SVEON STV21 DVB-T USB & FM
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1b80", ATTRS{idProduct}=="d3b0", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Dexatek DK DVB-T Dongle (Logilink VG0002A) (FC2580)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1101", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Dexatek DK DVB-T Dongle (MSI DigiVox mini II V3.0)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1102", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Dexatek DK 5217 DVB-T Dongle (FC2580)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1103", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# MSI DigiVox Micro HD (FC2580)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d19", ATTRS{idProduct}=="1104", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Sweex DVB-T USB (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="a803", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# GTek T803 (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="b803", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# Lifeview LV5TDeluxe (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="c803", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# MyGica TD312 (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="d286", MODE:="0660", GROUP="@RTLSDR_GROUP@"
++
++# PROlectrix DV107669 (FC0012)
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="d803", MODE:="0660", GROUP="@RTLSDR_GROUP@"

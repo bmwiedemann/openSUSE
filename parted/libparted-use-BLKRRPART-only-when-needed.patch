@@ -1,0 +1,108 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Thu, 25 Jan 2018 17:06:00 +0100
+Subject: libparted: dasd: Use BLKRRPART only when needed
+References: bsc#1065197, bsc#1067435
+Patch-mainline: no, upstream dropped proper DASD support
+
+The BLKRRPART ioctl is required due to limitations of the DASD
+disk layout. We use it always for those devices right now but when
+adding or removing a partition at the end, then it is enough to use
+the BLKPG* ioctls. The problem with BLKRRPART occurs when one of the
+first partitions is busy. BLKRRPART touches all partitions and the
+parted command fails in this case.
+So detect that situation and use BLKRRPART only when needed instead.
+
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ include/parted/disk.in.h |  1 +
+ libparted/arch/linux.c   | 13 +++++++------
+ libparted/disk.c         | 15 +++++++++++++--
+ 3 files changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/include/parted/disk.in.h b/include/parted/disk.in.h
+index b42e7cf..ac57d68 100644
+--- a/include/parted/disk.in.h
++++ b/include/parted/disk.in.h
+@@ -195,6 +195,7 @@ struct _PedDisk {
+         int                 update_mode;        /**< mode without free/metadata
+                                                    partitions, for easier
+                                                    update */
++        int                 needs_blkrrpart;    /* special cases on DASDs */
+ };
+ 
+ struct _PedDiskOps {
+diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
+index 461c095..d7d37e7 100644
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -3264,14 +3264,15 @@ static int
+ linux_disk_commit (PedDisk* disk)
+ {
+         if (disk->dev->type != PED_DEVICE_FILE) {
+-                /* The ioctl() command BLKPG_ADD_PARTITION does not notify
+-                 * the devfs system; consequently, /proc/partitions will not
+-                 * be up to date, and the proper links in /dev are not
+-                 * created.  Therefore, if using DevFS, we must get the kernel
+-                 * to re-read and grok the partition table.
++                /* If adding or removing partitions not at the end, then the
++                 * ioctl() command BLKPG_ADD_PARTITION does not notify the
++                 * devfs system; consequently, /proc/partitions will not be up
++                 * to date, and the proper links in /dev are not created.
++                 * Therefore, if using DevFS, we must get the kernel to re-read
++                 * and grok the partition table.
+                  */
+                 /* Work around kernel dasd problem so we really do BLKRRPART */
+-		if (disk->dev->type == PED_DEVICE_DASD)
++		if (disk->dev->type == PED_DEVICE_DASD && disk->needs_blkrrpart)
+ 		       return _kernel_reread_part_table(disk->dev);
+ 
+ 		assert(_have_blkpg());
+diff --git a/libparted/disk.c b/libparted/disk.c
+index 18cee12..03f8548 100644
+--- a/libparted/disk.c
++++ b/libparted/disk.c
+@@ -406,6 +406,7 @@ _ped_disk_alloc (const PedDevice* dev, const PedDiskType* disk_type)
+ 	disk->update_mode = 1;
+ 	disk->part_list = NULL;
+ 	disk->needs_clobber = 0;
++	disk->needs_blkrrpart = 0;
+ 	return disk;
+ 
+ error:
+@@ -1733,8 +1734,12 @@ _disk_raw_remove (PedDisk* disk, PedPartition* part)
+ 
+ 	if (part->prev) {
+ 		part->prev->next = part->next;
+-		if (part->next)
++		if (part->next) {
++			/* remove partition in the middle */
++			if (part->type == PED_PARTITION_NORMAL)
++				disk->needs_blkrrpart = 1;
+ 			part->next->prev = part->prev;
++		}
+ 	} else {
+ 		if (part->type & PED_PARTITION_LOGICAL) {
+ 			ped_disk_extended_partition (disk)->part_list
+@@ -1742,8 +1747,12 @@ _disk_raw_remove (PedDisk* disk, PedPartition* part)
+ 		} else {
+ 			disk->part_list = part->next;
+ 		}
+-		if (part->next)
++		if (part->next) {
++			/* remove first partition */
++			if (part->type == PED_PARTITION_NORMAL)
++				disk->needs_blkrrpart = 1;
+ 			part->next->prev = NULL;
++		}
+ 	}
+ 
+ 	return 1;
+@@ -1773,6 +1782,8 @@ _disk_raw_add (PedDisk* disk, PedPartition* part)
+ 	}
+ 
+ 	if (walk) {
++		if (part->type == PED_PARTITION_NORMAL)
++			disk->needs_blkrrpart = 1;
+ 		return _disk_raw_insert_before (disk, walk, part);
+ 	} else {
+ 		if (last) {

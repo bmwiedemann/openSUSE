@@ -1,0 +1,25 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 11 Jan 2019 16:26:21 -0700
+Subject: tests: Fix Makefile handling of check-report.tap
+
+I assume this will get fixed upstream soon, but for now, fix
+what I understand to be the intended functionality.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 36fc73fef5..befc02ac7a 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -923,7 +923,7 @@ check-report-unit.tap: $(check-unit-y)
+ # Reports and overall runs
+ 
+ check-report.tap: $(patsubst %,check-report-qtest-%.tap, $(QTEST_TARGETS)) check-report-unit.tap
+-	$(call quiet-command,./scripts/tap-merge.py $^ > $@,"GEN","$@")
++	$(call quiet-command,./scripts/tap-merge.pl < $^ > $@,"GEN","$@")
+ 
+ # FPU Emulation tests (aka softfloat)
+ #

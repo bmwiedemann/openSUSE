@@ -1,0 +1,78 @@
+Index: node-git.b4e670dc26/addon-rpm.gypi
+===================================================================
+--- /dev/null
++++ node-git.b4e670dc26/addon-rpm.gypi
+@@ -0,0 +1,35 @@
++{
++  'target_defaults': {
++    'type': 'loadable_module',
++    'product_prefix': '',
++    'include_dirs': [
++      '/usr/include/node12/',
++      '/usr/include/'
++    ],
++
++    'target_conditions': [
++      ['_type=="loadable_module"', {
++        'product_extension': 'node',
++        'defines': [ 'BUILDING_NODE_EXTENSION' ],
++      }]
++    ],
++
++    'conditions': [
++      [ 'OS=="mac"', {
++        'libraries': [ '-undefined dynamic_lookup' ],
++        'xcode_settings': {
++          'DYLIB_INSTALL_NAME_BASE': '@rpath'
++        },
++      }],
++      [ 'OS=="win"', {
++        'libraries': [ '-l<(node_root_dir)/$(Configuration)/node.lib' ],
++        # warning C4251: 'node::ObjectWrap::handle_' : class 'v8::Persistent<T>'
++        # needs to have dll-interface to be used by clients of class 'node::ObjectWrap'
++        'msvs_disabled_warnings': [ 4251 ],
++      }],
++      [ 'OS=="freebsd" or OS=="openbsd" or OS=="solaris" or (OS=="linux" and target_arch!="ia32")', {
++        'cflags': [ '-fPIC' ],
++      }]
++    ]
++  }
++}
+Index: node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
+===================================================================
+--- node-git.b4e670dc26.orig/deps/npm/node_modules/node-gyp/lib/configure.js
++++ node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
+@@ -62,10 +62,6 @@ function configure (gyp, argv, callback)
+       if ('v' + release.version !== process.version) {
+         // if --target was given, then determine a target version to compile for
+         log.verbose('get node dir', 'compiling against --target node version: %s', release.version)
+-      } else {
+-        // if no --target was specified then use the current host node version
+-        log.verbose('get node dir', 'no --target version specified, falling back to host node version: %s', release.version)
+-      }
+ 
+       if (!release.semver) {
+         // could not parse the version string with semver
+@@ -82,6 +78,12 @@ function configure (gyp, argv, callback)
+         nodeDir = path.resolve(gyp.devDir, release.versionDir)
+         createBuildDir()
+       })
++      } else {
++        // if no --target was specified then use RPM-installed headers
++        log.verbose('get node dir', 'no --target version specified, falling back to RPM installed headers')
++        nodeDir = '/usr/include/node12'
++        createBuildDir()
++      }
+     }
+   }
+ 
+@@ -280,7 +282,8 @@ function configure (gyp, argv, callback)
+ 
+     // this logic ported from the old `gyp_addon` python file
+     var gyp_script = path.resolve(__dirname, '..', 'gyp', 'gyp_main.py')
+-    var addon_gypi = path.resolve(__dirname, '..', 'addon.gypi')
++    var addon_gypi_file = gyp.opts.target || gyp.opts.nodedir ? 'addon.gypi' : 'addon-rpm.gypi'
++    var addon_gypi = path.resolve(__dirname, '..', addon_gypi_file)
+     var common_gypi = path.resolve(nodeDir, 'include/node/common.gypi')
+     fs.stat(common_gypi, function (err, stat) {
+       if (err)

@@ -1,0 +1,634 @@
+-------------------------------------------------------------------
+Wed Oct 24 15:58:10 UTC 2018 - sean@suspend.net
+
+- Update to 1.5.0:
+  * User defined padding was moved after appended partitions
+  * xorriso and libisoburn make user of the new xattr capability of libisofs
+  * libburn got some rarely triggered bugs fixed
+
+-------------------------------------------------------------------
+Thu Feb  8 20:25:18 UTC 2018 - asterios.dramis@gmail.com
+
+- Update to 1.4.8:
+  * Bug fix: Option -dummy did not affect writing by
+    direct_write_amount=
+  * New API call burn_drive_reset_simulate()
+  * New API call burn_drive_get_bd_r_pow()
+  * Refusing to write to BD-R if formatted to Pseudo Overwrite
+
+-------------------------------------------------------------------
+Sun Jan 29 20:16:18 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to 1.4.6:
+  * Bug fix: SAO CD could be perceived 2 blocks to short.
+    Regression in 1.4.4 by rev 5672.
+  * New API call burn_drive_set_immed()
+  * New cdrskin option use_immed_bit=
+
+-------------------------------------------------------------------
+Wed Jul 27 21:34:55 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 1.4.4:
+  * Bug fix: Option drive_scsi_dev_family=sg did not convert
+    /dev/sr* to /dev/sg*
+  * Bug fix: burn_make_input_sheet_v07t() falsly recognized double
+    byte encoding. Affected cdrskin option: cdtext_to_v07t=
+  * Bug fix: Double free at end of run if
+    burn_write_opts_set_leadin_text() is used. Affected cdrskin
+    option: textfile=
+  * Bug fix: DVD book type of DVD+RW DL and DVD+R DL was reported
+    wrong.
+
+-------------------------------------------------------------------
+Sun Jun 26 18:03:52 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 1.4.2.pl01:
+  cdrskin:
+  * Bug fix: cdrskin "failed to attach fifo" when burning from 
+    stdin. Regression of 1.4.2, rev 5522.
+  From 1.4.2:
+  libburn:
+  * Bug fix: burn_disc_get_media_id() returned BD identifiers 2
+    chars too long
+  * Bug fix: burn_disc_get_multi_caps() returned 2048 bytes too
+    many in caps.start_range_high
+  * Bug fix: Media summary session count of blank and closed media
+    was short by 1
+  * Bug fix: Endless loop if transport error occurs while waiting
+    for drive ready
+  * New API calls burn_drive_get_serial_no() and
+    burn_drive_get_media_sno()
+  * Result of a Coverity audit: 40+ code changes, but no
+    easy-to-trigger bugs
+  cdrskin:
+  * New -toc line "Drive id" tells the drive's individual serial
+    number
+
+-------------------------------------------------------------------
+Mon May 25 17:32:18 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 1.4.0:
+  libburn:
+  * Bug fix: Wrong read access to memory.
+  cdrskin:
+  * Bug fix: Double free with cdrskin -vvv. Introduced with
+    rev 5065, version 1.3.1.
+
+-------------------------------------------------------------------
+Sun Mar  8 13:51:52 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.3.8
+  * Bug fix: Wrong stack usage caused SIGBUS on sparc when 
+    compiled by gcc -O2
+  * Bug fix: Minimum drive buffer fill was measured by cdrskin 
+    before the buffer could get full
+  * Bug fix: A failed MMC BLANK command did not cause error 
+    indication by libburn
+  * Bug fix: A final fsync(2) was performed with stdio drives, 
+    even if not desired
+
+-------------------------------------------------------------------
+Fri May 30 20:17:59 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 1.3.6.pl01:
+  libburn:
+  * Bug fix: Compilation warning for unsupported systems mutated into an error.
+    This is a regression introduced by release 1.3.6.
+  From version 1.3.6:
+  * New system adapter for NetBSD
+  * Bug fix: CD TAO with multiple tracks or add-on sessions could cause a
+    buffer overrun by one 0-byte.
+- Split libburn from libburnia and make it a separate package.
+- Added cdrskin as a subpackage.
+
+-------------------------------------------------------------------
+Tue Dec 17 10:23:37 UTC 2013 - gber@opensuse.org
+
+- update libisofs to version 1.3.4
+  * Giving sort weight 2 as default to El Torito boot images
+  * Encoding HFS+ names in UTF-16 rather than UCS-2.
+- update libburn to version 1.3.4
+  * Bug fix: Drive error reports were ignored during blanking and
+    formatting
+  * Bug fix: Drive LG BH16NS40 stalls on inspection of unformatted
+    DVD+RW
+  * New API call burn_disc_pretend_full_uncond()
+- update libisoburn to version 1.3.4
+  * Bug fix: Command -blank "as_needed" formatted blank BD-R.
+  * Bug fix: -as mkisofs option -log-file put the log file into the
+    image
+  * Bug fix: -cut_out did not add x-permission to r-permission of
+    directory
+  * Bug fix: Command -zisofs did not accept all options emitted by
+    -status -zisofs
+  * Bug fix: -blank force:... failed on appendable or closed media
+  * New command -read_speed
+  * New -close mode "as_needed", new -as cdrecord option
+    --multi_if_possible
+  * New -alter_date types: a-c , m-c , b-c , c
+- add rpmlintrc to remove false-positive dependency error
+
+-------------------------------------------------------------------
+Thu Aug  8 13:24:26 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.3.2:
+  * cdrskin has acquired the ability to copy audio tracks to .wav files
+  * cdrskin can extract CD-TEXT in a form which is readable for humans and for
+    cdrskin itself
+
+-------------------------------------------------------------------
+Sun Jun 16 23:59:28 UTC 2013 - jengelh@inai.de
+
+- Explicitly list libattr-devel as BuildRequires
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Sun May 26 21:19:38 UTC 2013 - gber@opensuse.org
+
+- updated libisofs to version 1.3.0
+  * Bug fix: GPT header CRC was computed from all 512 bytes rather
+    than from 92.
+  * Bug fix: Unspecified Expiration Time and Effective Time of ISO
+    volume was represented by 0-bytes rather than ASCII '0' digits.
+  * Bug fix: Reserved and unused fields of APM entries were not
+    zeroed.
+  * Bug fix: The protective MBR partition for GPT started at block
+    0 instead of 1.
+  * New option bits with el_torito_set_isolinux_options() and
+    iso_write_opts_set_system_area() to control GRUB2 patching of
+    boot image and MBR.
+  * New API calls iso_image_set_sparc_core() and
+    iso_image_get_sparc_core().
+- updated libburn to version 1.3.0
+  * Bug fix: Full formatting of BD-RE used certification regardless
+    of drive capabilities
+  * Bug fix: DVD+R with damaged TOC were reported by -minfo with
+    wrong end address
+- updated libisoburn to version 1.3.0
+  * Bug fix: Disk paths with components '.' or '..' could be
+    mistaken for directories.
+  * Bug fix: -as mkisofs -print-size failed with -isohybrid-mbr and
+    a single boot image. Regression introduced by libisoburn-1.2.8.
+  * Bug fix: -as mkisofs -path-list did not switch to --no-emul-toc
+    by default.
+  * Bug fix: Unspecified Expiration Time and Effective Time of ISO
+    volume was represented by 0-bytes rather than ASCII '0' digits.
+  * Bug fix: Reserved and unused fields of APM entries were not
+    zeroed.
+  * Bug fix: GPT header CRC was computed from all 512 bytes rather
+    than from 92.
+  * Bug fix: The protective MBR partition for GPT started at block
+    0 instead of 1.
+  * New -boot_image bootspecs grub2_mbr= and grub2_boot_info=
+  * New -boot_image bootspec grub2_sparc_core=
+  * New -as mkisofs options --grub2-mbr , --grub2-boot-info ,
+    --grub2-sparc-core
+  * New -hardlinks mode "lsl_count" / "no_lsl_count" 
+
+-------------------------------------------------------------------
+Tue Mar 26 15:18:24 UTC 2013 - gber@opensuse.org
+
+- updated libburn to version 1.2.8
+  * New cdrskin option --list_speeds
+  * -toc and -minfo now report about tracks in the incomplete
+    session
+  * New API call burn_disc_get_incomplete_sessions()
+  * New burn_toc_entry component .track_status_bits
+  * Bug fix: All CD tracks were reported with the sizes of the
+    tracks in the first session. Regression introduced with version
+    1.2.0 (rev 4552).
+  * Bug fix: On some drives the request for minimum speed yielded
+    maximum speed
+  * New cdrskin option --no_load
+  * Bug fix: Speed setting had no effect on BD media
+  * New API call burn_read_audio()
+  * New API call burn_list_sev_texts()
+  * New API call burn_write_opts_set_obs_pad(), ./configure
+    --enable-dvd-obs-pad
+  * New cdrskin option --obs_pad
+  * Bug fix: CD SAO sessions with data tracks started by an audio
+    pause
+  * Bug fix: CD tracks were perceived 2 sectors too short. Nice
+    with TAO, bad with SAO.
+  * Bug fix: cdrskin SIGSEGV if track source was added when no
+    drive was available
+- updated libisoburn to version 1.2.8
+  * Bug fix: -tell_media_space altered the pointers to MD5 of data
+    files which stem from a previous session. This produced false
+    mismatches with -check_md5_r.
+  * Bug fix: CD tracks were reported with the sizes of the tracks
+    in the first session.
+  * Bug fix: -check_media use=outdev sector_map= stored TOC of
+    input drive
+  * Bug fix: -hide hfsplus and -as mkisofs -hide-hfsplus had no
+    effect.  Thanks to Davy Ho.
+  * Bug fix: ./configure did not abort if libburn.h or libisofs.h
+    were missing
+  * New command -move
+  * New -as mkisofs options -eltorito-id , -eltorito-selcrit
+  * Bug fix: SIGSEGV by uninitialized local variable with
+    -check_media patch_lba0="on". Regression by version 1.0.6
+  * Bug fix: -partition_offset 16 kept -isohybrid-gpt-basdat from
+    writing MBR partition table entries of type 0xef
+  * Bug fix: -rollback did not work if indev and outdev were empty
+  * New API calls Xorriso_parse_line() and Xorriso__dispose_words()
+  * New API calls Xorriso_fetch_outlists() and
+    Xorriso_peek_outlists()
+  * New API call Xorriso_start_msg_watcher()
+  * New API calls Xorriso__severity_cmp() and
+    Xorriso__severity_list()
+  * New API calls Xorriso_sieve_add_filter,
+  * Xorriso_sieve_get_result, Xorriso_sieve_clear_results,
+    Xorriso_sieve_dispose, Xorriso_sieve_big
+  * New -boot_image partition_cyl_align mode "all"
+  * New -blank mode prefix "force:"
+  * New -osirrox settings "blocked" and "unblock"
+  * New command -lns for creating symbolic links
+  * New command -toc_of
+  * New command -msg_op
+  * New command -launch_frontend
+  * Proof-of-concept of a GUI frontend program: xorriso-tcltk
+    written in Tcl/Tk.
+  * New API call isoburn_igopt_set_hfsp_serial_number()
+  * New API calls isoburn_igopt_set_prep_partition,
+    isoburn_igopt_set_efi_bootp
+  * New API calls isoburn_igopt_set_hfsp_block_size() and
+    isoburn_igopt_get_hfsp_block_size()
+  * New -check_media option async_chunks=
+  * New xorriso command -write_type
+  * New xorriso command -rockridge
+  * New xorriso command -hfsplus
+  * New -find tests -has_hfs_crtp, has_hfs_bless
+  * New -find actions set/get_hfs_crtp,  set/get_hfs_bless
+  * New -find test -disk_path
+  * New -boot_image bootspec hfsplus_serial=
+  * New -boot_image bootspecs hfsplus_block_size= and apm_block_size=
+  * New -boot_image bootspecs efi_boot_part, prep_boot_part,
+    chrp_boot_part
+  * Command -hide allows hiding in HFS+ filesystem
+  * New -as cdrecord options -tao -sao -dao
+  * New -as mkisofs option -log-file
+  * New -as mkisofs option --norock
+  * New -as mkisofs option -hfsplus
+  * New -as mkisofs option -hfsplus-file-creator-type
+  * New -as mkisofs options -hfs-bless and -hfs-bless-by
+  * New -as mkisofs option -hfsplus-serial-no
+  * New -as mkisofs options -hfsplus-block-size and -apm-block-size
+  * New -as mkisofs option -hide-hfsplus, -hide-hfsplus-list
+  * New -as mkisofs options -prep-boot-part, -efi-boot-part,
+    -chrp-boot-part
+  * New -as mkisofs options -isohybrid-gpt-basdat,
+    -isohybrid-gpt-hfsplus, -isohybrid-apm-hfsplus
+  * Bug fix: Memory corruption when reading bootable image that was
+    truncated
+  * Bug fix: -update deleted MD5 of files of which only attributes
+    had changed
+- updated libisofs to version 1.2.8
+  * New API call iso_image_get_pvd_times().
+  * Bug fix: Image size prediction altered the pointers to MD5 of
+    data files which stem from a previous session.
+  * Bug fix: Reading damaged Rock Ridge data could cause SIGSEGV by
+    NULL.
+  * Bug fix: Appended partitions did not obey cylinder alignment
+  * Bug fix: Non-zero partition offset zeroized the MBR copies of
+    GPT partition table entries
+  * Bug fix: Isohybrid production without any boot image led to
+    SIGSEGV by NULL
+  * Bug fix: Prevented a memory fault when reading damaged Rock
+    Ridge information
+  * Bug fix: Memory corruption when reading bootable image that was
+    truncated before the storage location of the boot catalog
+  * Bug fix: Symbol iso_fs_global_id was missing in libisofs.ver.
+  * Bug fix: Volume descriptors of Joliet and ISO 9660:1999 beared
+    non-zero Effective Date, involuntarily restricting the early
+    end of their lifetime.
+  * Bug fix: File Structure Version field of ISO 9660:1999 Enhanced
+    Volume Descriptor was 1 instead of 2.
+  * Bug fix: The separator dot of Joliet names was byte swapped on
+    big-endian machines.
+  * Bug fix: Joliet name comparison was done as signed bytes and
+    thus produced a peculiar sorting order.
+  * Bug fix: Partition cylinder alignment worked only if both, El
+    Torito and application provided system area data were present.
+  * New API function iso_write_opts_set_hfsplus
+  * New API functions iso_hfsplus_xinfo_func(),
+    iso_hfsplus_xinfo_new(), and new struct iso_hfsplus_xinfo_data.
+  * New API call iso_write_opts_set_hfsp_serial_number()
+  * New API calls iso_image_hfsplus_bless and
+    iso_image_hfsplus_get_blessed(), and new public enum
+    IsoHfsplusBlessings.
+  * New API calls so_write_opts_set_prep_img(),
+    iso_write_opts_set_efi_bootp()
+  * New API call iso_write_opts_set_hfsp_block_size()
+  * New API call iso_tree_resolve_symlink()
+  * New system area sub type CHRP with
+    iso_write_opts_set_system_area()
+  * New option bits 2 to 8 for GPT and APM with
+    el_torito_set_isolinux_options()
+  * New flag bit with iso_node_set_attrs() to protect namespace
+    "isofs"
+  * New IsoHideNodeFlag value LIBISO_HIDE_ON_HFSPLUS
+- added new subpackage libburnia-tools-x11 for GUI tools so that
+  libburnia-tools does not depend on X11
+
+-------------------------------------------------------------------
+Fri May  4 11:20:49 UTC 2012 - prusnak@opensuse.org
+
+- updated libburn to version 1.2.2
+  * Small internal refinements
+- updated libisofs to version 1.2.2
+  * New API calls isoburn_get_attached_start_lba(), isoburn_attach_start_lba()
+  * New API calls isoburn_igopt_set_rr_reloc(), isoburn_igopt_get_rr_reloc()
+  * New API calls isoburn_ropt_set_data_cache(), isoburn_ropt_get_data_cache()
+  * New commands -x, -list_arg_sorting
+  * New command -rr_reloc_dir
+  * New command -data_cache_size
+  * New -as mkisofs option -rr_reloc, implemented option -hide-rr-moved
+  * Now ignoring -as mkisofs -no-split-symlink-components -no-split-symlink-fields
+  * Bug fix: -osirrox on:sort_lba_on -extract from / restored nearly nothing
+  * Bug fix: -as mkisofs without -graft-points could not handle names with "="
+  * Bug fix: Relaxation options joliet_rec_mtime and iso1999_rec_mtime had wrong values
+- updated libisoburn to version 1.2.2
+  * New API call iso_write_opts_set_rr_reloc()
+  * Bug fix: Directory name mapping to ISO level 1 was too liberal if
+    iso_write_opts_set_allow_dir_id_ext() was enabled
+  * New API call iso_write_opts_set_allow_7bit_ascii()
+  * Improved standards compliance for ISO level 1 names with partly relaxed
+    constraints.
+
+-------------------------------------------------------------------
+Tue Feb 21 11:58:54 UTC 2012 - prusnak@opensuse.org
+
+- updated libburn to version 1.2.0
+  * Bug fix: cdrskin produced a memory fault if interupted before writing began
+  * Bug fix: Solaris adapter mishandled write commands which failed on first try
+  * Bug fix: Interrupting libburn while drive tray is loading led to endless loop
+  * Bug fix: Progress report with blanking and formatting could be bogus
+  * New API calls burn_disc_get_leadin_text(), burn_write_opts_set_leadin_text()
+  * New API calls for composing CD-TEXT, see doc/cdtext.txt
+  * New API call burn_session_by_cue_file() for reading CDRWIN .cue files
+  * New API call burn_track_set_isrc_string()
+  * New API calls burn_track_set_index(), burn_track_clear_indice()
+  * New API calls burn_session_set_start_tno(), burn_session_get_start_tno()
+  * New API calls burn_track_set_pregap_size(), burn_track_set_postgap_size()
+  * Implemented cdrskin option textfile=
+  * Implemented cdrskin option combination -vv -toc for cdtext.dat production
+  * Implemented cdrskin options mcn= and isrc=
+  * Implemented cdrskin options -scms -copy -nocopy -preemp -nopreemp
+  * Implemented cdrskin option index=
+  * Partly implemented cdrskin options cuefile= and -text
+  * New cdrskin option input_sheet_v07t= for CD-TEXT definition
+  * New cdrskin options --cdtext_dummy and --cdtext_verbose
+  * New cdrskin options --four_channel --two_channel
+  * New cdrskin option cd_start_tno=
+  * New cdrskin options sao_pregap=, sao_postgap=
+- updated libisofs to version 1.2.0
+  * Bug fix: mkisofs emulation did not record mtime in ECMA-119 directories
+  * Bug fix: Program abort while drive tray is loading led to endless loop
+  * Bug fix: Solaris adapter mishandled write commands which failed on first try
+  * Bug fix: libisoburn.ver had a duplicate function entry
+  * New relaxations isoburn_igopt_joliet_rec_mtime,
+    isoburn_igopt_iso1999_rec_mtime
+  * Made -compliance "rec_mtime" default for xorriso
+- updated libisoburn to version 1.2.0
+  * Extended influence of iso_write_opts_set_dir_rec_mtime() to Joliet and
+    ISO 9660:1999.
+
+-------------------------------------------------------------------
+Wed Sep 21 09:20:04 UTC 2011 - gber@opensuse.org
+
+- update libburn to version 1.1.4
+  * New API call burn_lookup_device_link()
+  * New API call burn_disc_get_phys_format_info()
+  * New cdrskin option --device_links
+  * New API call burn_disc_next_track_is_damaged()
+  * New API call burn_disc_close_damaged()
+  * Burning DVD-R DAO with 2 kB size granularity rather than 32 kB
+  * New API call burn_allow_drive_role_4()
+  * Bugfixes
+- update libisofs to version 1.1.4
+  * New API call iso_image_get_bootcat()
+  * New API call iso_write_opts_set_joliet_long_names()
+  * New error codes for oversized file addresses
+  * New no_md5 value 2 for API call iso_read_opts_set_no_md5()
+  * New option bits 8 and 9 with iso_write_opts_set_system_area()
+  * Bugfixes
+- update libisoburn to version 1.1.4
+  * New option -device_links
+  * Enabled extraction of the boot catalog file to disk filesystem
+  * New option -list_speeds
+  * New option -signal_handling
+  * New option -close_damaged
+  * New API call isoburn_set_truncate()
+  * New relax option isoburn_igopt_joliet_long_names
+  * New option -early_stdio_test
+  * New options -print_info and -print_mark
+  * New -compliance option joliet_long_names
+  * -as mkisofs option -joliet-long is now fully functional
+  * Burning DVD-R DAO with 2 kB size granularity rather than 32 kB
+  * New isoburn_ropt_set_extensions() option isoburn_ropt_nomd5tag
+  * New -padding modes "included" and "appended"
+  * New bootspec partition_cyl_align=, new -as mkisofs option -partition_cyl_align
+  * New -as mkisofs and -as cdrecord option --no_rc
+  * Own man page and info document for xorrisofs
+  * Bugfixes
+- do not use source services and recompress any more as per
+  discussion on opensuse-factory@
+
+-------------------------------------------------------------------
+Sun Feb 27 20:24:17 UTC 2011 - reddwarf@opensuse.org
+
+- updated libburn to 1.0.2.pl00
+  * Improved recognition of non-seekable stdio pseudo-drives
+  * Allowed umask to create stdio-drive files with rw-permissions
+    for all
+  * cdrskin now refuses to burn if the foreseeable size exceeds
+    media capacity
+- updated libisoburn to 1.0.2.pl00
+  * New API calls isoburn_igopt_set_extensions(),
+    isoburn_igopt_old_empty,
+    isoburn_igopt_set_untranslated_name_len(),
+    isoburn_igopt_set_disc_label(), isoburn_igopt_get_disc_label(),
+    isoburn_ropt_set_displacement(),
+    isoburn_ropt_get_displacement()
+  * xorriso novelties:
+    * New options -clone, -cp_clone, -displacement
+    * New -find actions update_merge, rm_merge, clear_merge
+    * New -as mkisofs options -max-iso9660-filenames, --old-empty,
+      -root, -old-root, --old-root-no-md5, --old-root-no-ino,
+      --old-root-dev, -untranslated_name_len, -joliet-long,
+      -iso-level 4, -disallow_dir_id_ext, -sparc-boot, -sparc-label
+    * Default -abort_on value is now "FAILURE" with batch and
+      "NEVER" with dialog
+    * New -compliance options untranslated_names,
+      untranslated_name_len=, iso_9660_1999, iso_9660_level=number,
+      allow_dir_id_ext
+    * Disabled TOC emulation with -as mkisofs, may be re-enabled by
+      --emul-toc
+    * New bootspec sparc_label=
+    * Bufixes
+- updated libisofs to 1.0.2
+  * New API calls iso_tree_clone(), iso_stream_clone,
+    iso_node_xinfo_make_clonable(), iso_node_xinfo_get_cloner(),
+    iso_node_get_next_xinfo(), iso_node_remove_all_xinfo(),
+    iso_node_remove_tree(), iso_write_opts_set_old_empty(),
+    iso_write_opts_set_untranslated_name_len(),
+    iso_write_opts_set_allow_dir_id_ext(), iso_memory_stream_new(),
+    iso_write_opts_set_disc_label(),
+    iso_write_opts_set_will_cancel()
+  * New IsoFileSourceIface version 2 with method clone_src()
+  * New IsoStreamIface version 4 with method clone_stream()
+  * New public function prototype iso_node_xinfo_cloner
+  * New public iso_node_xinfo_cloner instance aaip_xinfo_cloner()
+  * new system area type 3 = SUN Disk Label for booting SUN SPARC
+    systems
+  * New error reply code ISO_DISPLACE_ROLLOVER for external data
+    sources with address displacement
+
+-------------------------------------------------------------------
+Sun Jan 30 13:23:09 UTC 2011 - gber@opensuse.org
+
+- improved descriptions/summaries
+- more precise filelist
+
+-------------------------------------------------------------------
+Fri Dec 24 10:23:27 UTC 2010 - gber@opensuse.org
+
+- corrected group of library subpackages
+
+-------------------------------------------------------------------
+Fri Dec 10 13:55:10 UTC 2010 - reddwarf@opensuse.org
+
+- updated libburn to 0.9.0.pl00
+  * Regression fix: SCSI reply data logging was disabled in release 0.8.6
+- updated libisofs to 0.6.40
+  * New API call iso_write_opts_set_disc_label(), new system area type 3 = SUN Disk Label for booting SUN SPARC systems.
+  * New API call iso_write_opts_set_will_cancel() avoids start of write thread and is to be used to inquire the future image size.
+  * New error reply code ISO_DISPLACE_ROLLOVER for external data sources with address displacement.
+
+-------------------------------------------------------------------
+Thu Dec  2 14:13:09 UTC 2010 - prusnak@opensuse.org
+
+- updated libburn to 0.8.8.pl00
+  * New API call burn_offst_source_new()
+  * New API call burn_disc_get_bd_spare_info()
+- updated libisoburn to 0.6.4.pl00
+  * New API call isoburn_libjte_req()
+  * New API calls isoburn_igopt_attach_jte() and isoburn_igopt_detach_jte()
+  * New API call isoburn_igopt_set_tail_blocks()
+  * New API call isoburn_libjte_req()
+  xorriso novelties:
+  * New option -jigdo
+  * New -as mkisofs options -jigdo-* and -md5-list as of genisoimage
+  * New -as mkisofs options -checksum_algorithm_iso, -checksum_algorithm_template
+  * New bootspecs mips_path= and mipsel_path= for Debian MIPS releases
+  * New -as mkisofs options -mips-boot and -mipsel-boot
+  * New option -append_partition, -as mkisofs -append_partition
+- updated libisofs to 0.6.38
+  * New API calls iso_write_opts_attach_jte() and iso_write_opts_detach_jte()
+    allow to use of libjte for jigdo production.
+  * New API call iso_write_opts_set_tail_blocks() for tail padding inside
+    ISO image.
+  * New API call iso_image_generator_is_running() to learn when the write thread
+    is done.
+  * New API calls iso_image_add_mips_boot_file(),
+    iso_image_get_mips_boot_files(), iso_image_give_up_mips_boot().
+  * New API call iso_write_opts_set_partition_img() for appending e.g. a small
+    empty FAT12 filesystem which may be used on USB stick.
+
+-------------------------------------------------------------------
+Fri Sep 24 03:53:20 UTC 2010 - reddwarf@opensuse.org
+
+- updated libburn to 0.8.6.pl00
+  * Lifted test reservation on DVD-R DL media.
+  * Hiding all non-API symbols from the linker by use of
+    --version-script
+  * Now with history of release notes in ./ChangeLog file.
+- updated libisoburn to 0.6.2.pl00
+  * New API function isoburn_igopt_set_part_offset()
+  * Hiding all non-API symbols from the linker by use of
+    --version-script
+  * Now with history of release notes in ./ChangeLog file.
+  * Bug fix: Regression with -hardlinks and -compliance old_rr,
+    0.4.2, Aug 2009
+  * New option -preparer_id, -as mkisofs options -p and -preparer
+  * New -boot_image specifier emul_type=none|hard_disk|floppy
+  * New boot_image boot specs partition_offset,partition_hd_cyl,
+    partition_sec_hd
+  * Made behavior of -as mkisofs with unknown options more similar
+    to original
+  * New -as mkisofs option -hard-disk-boot, enabled -b without
+    -no-emul-boot
+  * New -as mkisofs option -e from Fedora genisoimage
+  * New -as mkisofs options -partition_offset,-partition_hd_cyl,
+    -partition_sec_hd
+
+-------------------------------------------------------------------
+Wed Sep 15 23:03:35 UTC 2010 - reddwarf@opensuse.org
+
+- updated libisofs to 0.6.36
+  * Can produce ISO images which bear a partiton 1 with non-zero
+    start address. They can be mounted from USB stick via the main
+    device file (e.g. /dev/sdb) as well as via the partition device
+    file (e.g. /dev/sdb1).
+
+-------------------------------------------------------------------
+Fri Jul 23 22:12:49 UTC 2010 - reddwarf@opensuse.org
+
+- updated libburn to 0.8.4.pl00
+  * General POSIX system adapters ignore SIGWINCH and SIGURG if
+    defined
+  * Allowed 64 kB max output buffer size on all OSes
+- updated libisoburn to 0.6.0.pl00
+  * New option -read_mkisofsrc interprets .mkisofsrc To be
+    performed before -as mkisofs. Performed automatically with
+    program alias name "xorrisofs".
+  * Implemented -as mkisofs options -dir-mode, -file-mode,
+    -abstract, -biblio, -copyright
+  * Implemented -as mkisofs options -hide, -hide-joliet,
+    -hide-list, -hide-joliet-list
+  * New -as mkisofs option --boot-catalog-hide
+  * New option -hide, -find action -hide, -find test -hidden
+  * New -boot_image bootspec cat_hidden=on
+  * New options -copright_file , -biblio_file , -abstract_file
+  * New find test -disk_name
+  * Bug fix: -check_media patch_lba0= could install wrong image
+    size
+  * Bug fix: -as mkisofs option -volset was wrongly interpreted
+    like -volid
+- updated libisofs to 0.6.34
+  * New API call iso_image_set_boot_catalog_hidden()
+  * New API call iso_node_get_hidden()
+  * New IsoHideNodeFlag bit LIBISO_HIDE_BUT_WRITE
+  * New error code ISO_BOOT_NO_CATALOG
+  * Opportunity to reduce compile line length by including "config.h"
+- added support for zisofs, ACL and xattr
+
+-------------------------------------------------------------------
+Thu Feb 25 13:05:50 UTC 2010 - prusnak@suse.cz
+
+- updated libburn to 0.7.6
+- updated libisoburn to 0.5.0
+- updated libisofs 0.6.28
+
+-------------------------------------------------------------------
+Tue May 26 17:15:53 CEST 2009 - prusnak@suse.cz
+
+- updated libburn to 0.6.6
+- updated libisoburn to 0.3.8
+- updated libisofs to 0.6.18
+
+-------------------------------------------------------------------
+Wed Feb 25 14:13:41 CET 2009 - prusnak@suse.cz
+
+- updated libburn to 0.6.2
+- updated libisoburn to 0.3.2
+- updated libisofs to 0.6.12
+
+-------------------------------------------------------------------
+Mon Jul 21 11:27:15 CEST 2008 - prusnak@suse.cz
+
+- created package
+  * libburn 0.5.0
+  * libisoburn 0.2.2
+  * libisofs 0.6.6

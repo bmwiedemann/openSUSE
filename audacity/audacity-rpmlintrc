@@ -1,0 +1,2 @@
+addFilter("audacity.* desktopfile-without-binary")
+addFilter("audacity.* devel-file-in-non-devel-package")

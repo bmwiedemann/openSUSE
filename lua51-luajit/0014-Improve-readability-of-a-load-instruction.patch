@@ -1,0 +1,28 @@
+From 9f233a7b3ef4f4ced0ee8da6dc3a58d058c10617 Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gustavo.scalet@eldorado.org.br>
+Date: Wed, 30 Aug 2017 13:25:29 -0300
+Subject: [PATCH 14/15] Improve readability of a load instruction
+
+---
+ src/vm_ppc64.dasc | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/vm_ppc64.dasc b/src/vm_ppc64.dasc
+index cd38d544b673..b92de564f4d0 100644
+--- a/src/vm_ppc64.dasc
++++ b/src/vm_ppc64.dasc
+@@ -1488,9 +1488,8 @@ static void build_subroutines(BuildCtx *ctx)
+   |.endif
+   |  lbz TMP0, L:CARG1->status
+   |   ld TMP1, L:CARG1->cframe
+-  |     la TMP3, L:CARG1->base
+-  |     ld TMP2, 0(TMP3)
+-  |     ld CARG2, 8(TMP3)
++  |     ld TMP2, L:CARG1->base
++  |     ld CARG2, L:CARG1->top
+   |  cmpldi cr0, TMP0, LUA_YIELD
+   |     add TMP3, CARG2, TMP0
+   |   cmpldi cr1, TMP1, 0
+-- 
+2.20.1
+

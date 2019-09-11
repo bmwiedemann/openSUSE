@@ -1,0 +1,13 @@
+--- ./scripts/find-lang.sh.orig	2017-12-01 16:07:23.339071251 +0000
++++ ./scripts/find-lang.sh	2017-12-01 16:13:00.392088317 +0000
+@@ -296,7 +296,9 @@ s:%lang(C) ::
+ 
+ find "$TOP_DIR" -type f -o -type l|sed '
+ s:'"$TOP_DIR"'::
+-'"$NO_ALL_NAME$QT"'s:\(.*/'"$NAME"'_\([a-zA-Z]\{2\}\([_@].*\)\?\)\.qm$\):%lang(\2) \1:
++'"$ALL_NAME$QT"'s:\(.*/locale/\)\([^/]\+\)\(/.\+/\)\([^/]\+_qt\.qm$\):%lang(\2) \1\2\3\4:
++'"$NO_ALL_NAME$QT"'s:\(.*/locale/\)\([^/]\+\)\(/.\+/\)\('"$NAME"'_qt\.qm$\):%lang(\2) \1\2\3\4:
++'"$NO_ALL_NAME$QT"'s:^\([^%].*/'"$NAME"'_\([a-zA-Z]\{2\}\([_@].*\)\?\)\.qm$\):%lang(\2) \1:
+ '"$ALL_NAME$QT"'s:^\([^%].*/\([a-zA-Z]\{2\}[_@].*\)\.qm$\):%lang(\2) \1:
+ '"$ALL_NAME$QT"'s:^\([^%].*/\([a-zA-Z]\{2\}\)\.qm$\):%lang(\2) \1:
+ '"$ALL_NAME$QT"'s:^\([^%].*/[^/_]\+_\([a-zA-Z]\{2\}[_@].*\)\.qm$\):%lang(\2) \1:

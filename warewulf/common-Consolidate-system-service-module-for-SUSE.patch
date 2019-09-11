@@ -1,0 +1,95 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Sep 27 09:17:58 2018 +0200
+Subject: common: Consolidate system service module for SUSE
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 316112adbf8283ec03bbd980d9555c931450042b
+References: 
+
+* Collect output from both old style SysV and systemd scripts.
+* Return failure to caller.
+* Remove unneeded code.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/lib/Warewulf/System/Suse.pm | 33 ++++++++++++++++-----------------
+ 1 file changed, 16 insertions(+), 17 deletions(-)
+diff --git a/common/lib/Warewulf/System/Suse.pm b/common/lib/Warewulf/System/Suse.pm
+index fbc29bd..155547c 100644
+--- a/common/lib/Warewulf/System/Suse.pm
++++ b/common/lib/Warewulf/System/Suse.pm
+@@ -65,14 +65,18 @@ sub
+ service($$$)
+ {
+     my ($self, $service, $command) = @_;
++    my $cmdline;
+ 
+     &dprint("Running service command: $service, $command\n");
+ 
+     if ( -x "/bin/systemctl" ) {
+-        system("/bin/systemctl $command $service.service");
++        $cmdline="/bin/systemctl $command $service.service";
+     } elsif (-x "/etc/init.d/$service") {
++        $cmdline="/etc/init.d/$service $command";
++    }
++    if ($cmdline) {
+         $self->{"OUTPUT"} = ();
+-        open(SERVICE, "/etc/init.d/$service $command 2>&1|");
++        open(SERVICE, $cmdline . " 2>&1|");
+         while(<SERVICE>) {
+             $self->{"OUTPUT"} .= $_;
+         }
+@@ -81,19 +85,10 @@ service($$$)
+             &dprint("Service command ran successfully\n");
+             return(1);
+         } else {
+-            &dprint("Error running: /etc/init.d/$service $command\n");
++            &dprint("Error running: " . $cmdline . "\n");
+         }
+     }
+-    if ($self->{"OUTPUT"}) {
+-        chomp($self->{"OUTPUT"});
+-        if (close SERVICE) {
+-            &dprint("Service command ran successfully\n");
+-            return(1);
+-        } else {
+-            &dprint("Error running: /usr/bin/systemctl $command $service\n");
+-        }
+-    }
+-    return(1);
++    return(0);
+ }
+ 
+ =item chkconfig($name, $command)
+@@ -107,11 +102,15 @@ sub
+ chkconfig($$$)
+ {
+     my ($self, $service, $command) = @_;
++    my $cmdline;
+ 
+     if ( -x "/bin/systemctl" ) {
+-        system("/bin/systemctl enable $service.service");
++        $cmdline="/bin/systemctl enable $service.service";
+     } elsif (-x "/sbin/chkconfig") {
+-        open(CHKCONFIG, "/sbin/chkconfig $service $command 2>&1|");
++        $cmdline="/sbin/chkconfig $service $command";
++    }
++    if ($cmdline) {
++        open(CHKCONFIG, $cmdline . " 2>&1|");
+         while(<CHKCONFIG>) {
+             $self->{"OUTPUT"} .= $_;
+         }
+@@ -122,10 +121,10 @@ chkconfig($$$)
+             &dprint("Chkconfig command ran successfully\n");
+             return(1);
+         } else {
+-            &dprint("Error running: /sbin/chkconfig $service $command\n");
++            &dprint("Error running: " . $cmdline . "\n");
+         }
+     }
+-    return(1);
++    return(0);
+ }
+ 
+ 

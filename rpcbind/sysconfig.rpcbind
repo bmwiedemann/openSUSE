@@ -1,0 +1,9 @@
+## Path:        Network/RPC/Rpcbind
+## Description: Rpcbind startup options
+## Type:        string
+## Default:     ""
+# 
+# Startup options for rpcbind
+#
+RPCBIND_OPTIONS=""
+

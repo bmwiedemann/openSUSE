@@ -1,0 +1,28 @@
+Index: policy.xml
+===================================================================
+--- policy.xml	2018-10-01 13:13:51.008702622 +0200
++++ policy.xml	2018-10-01 13:22:06.174722426 +0200
+@@ -75,4 +75,23 @@
+   <!-- <policy domain="cache" name="memory-map" value="anonymous"/> -->
+   <!-- <policy domain="cache" name="synchronize" value="True"/> -->
+   <!-- <policy domain="cache" name="shared-secret" value="passphrase" stealth="true"/> -->
++  <!-- Disable insecure coders by default -->
++  <!-- https://bugzilla.suse.com/show_bug.cgi?id=978061 -->
++  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
++  <policy domain="coder" rights="none" pattern="URL" />
++  <policy domain="coder" rights="none" pattern="HTTPS" />
++  <policy domain="coder" rights="none" pattern="MVG" />
++  <policy domain="coder" rights="none" pattern="MSL" />
++  <policy domain="coder" rights="none" pattern="TEXT" />
++  <policy domain="coder" rights="none" pattern="SHOW" />
++  <policy domain="coder" rights="none" pattern="WIN" />
++  <policy domain="coder" rights="none" pattern="PLT" />
++  <policy domain="coder" rights="write" pattern="PS" />
++  <policy domain="coder" rights="write" pattern="PS2" />
++  <policy domain="coder" rights="write" pattern="PS3" />
++  <policy domain="coder" rights="write" pattern="PDF" />
++  <policy domain="coder" rights="write" pattern="XPS" />
++  <policy domain="coder" rights="write" pattern="EPS" />
++  <policy domain="coder" rights="write" pattern="PCL" />
++  <policy domain="path" rights="none" pattern="@*"/>
+ </policymap>

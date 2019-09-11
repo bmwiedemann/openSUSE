@@ -1,0 +1,19 @@
+--- src/dds.imageio/squish/clusterfit.cpp
++++ src/dds.imageio/squish/clusterfit.cpp
+@@ -66,14 +66,14 @@
+ 	// build the list of dot products
+ 	float dps[16];
+ 	u8* order = ( u8* )m_order + 16*iteration;
+-	for( int i = 0; i < count; ++i )
++	for( int i = 0; i < count && i < 16; ++i )
+ 	{
+ 		dps[i] = Dot( values[i], axis );
+ 		order[i] = ( u8 )i;
+ 	}
+ 		
+ 	// stable sort using them
+-	for( int i = 0; i < count; ++i )
++	for( int i = 0; i < count && i < 16; ++i )
+ 	{
+ 		for( int j = i; j > 0 && dps[j] < dps[j - 1]; --j )
+ 		{

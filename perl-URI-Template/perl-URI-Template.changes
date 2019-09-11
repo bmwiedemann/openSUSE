@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sat Sep 22 06:06:52 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-URI-Template/Changes
+
+-------------------------------------------------------------------
+Wed Jul 11 06:14:28 UTC 2018 - coolo@suse.com
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-URI-Template/Changes
+
+  0.23 2018-07-10
+   - Fix Makefile.PL with no '.' in @INC (GH #5, RT #121036)
+   - Ensure we don't re-encode pre-encoded values for +var and #var 
+     (GH #7, GH #8)
+
+-------------------------------------------------------------------
+Tue Apr 14 17:28:54 UTC 2015 - coolo@suse.com
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-URI-Template/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:28 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Aug 31 22:23:04 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.15
+
+- changes from 0.14:
+  * conform to latest spec (draft 03);
+    due to the new spec, the following are no longer applicable:
+    + deparse()
+    + all_variables()
+    + passing an arrayref to the process subs
+  * as_string() is now just template()
+  * added expansions() - returns the coderefs used to expand the template
+  * add support for default values (where applicable)
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new package
+
+

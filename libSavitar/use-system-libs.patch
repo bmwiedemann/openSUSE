@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5630612..b15654b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ include(CMakePackageConfigHelpers)
+ option(BUILD_PYTHON "Build " ON)
+ option(BUILD_STATIC "Build as a static library" OFF)
+ option(BUILD_TESTS "Building the test-suite" OFF)
++option(USE_SYSTEM_LIBS "Use the system libraries if available" OFF)
+ 
+ if(BUILD_TESTS)
+     message(STATUS "Building with tests...")
+@@ -14,7 +15,11 @@ if(BUILD_TESTS)
+     find_package(Threads QUIET)
+ endif()
+ 
+-add_subdirectory(pugixml)
++if(USE_SYSTEM_LIBS)
++  find_package(pugixml CONFIG REQUIRED)
++else()
++  add_subdirectory(pugixml)
++endif()
+ 
+ if(BUILD_PYTHON)
+     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)

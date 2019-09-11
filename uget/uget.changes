@@ -1,0 +1,471 @@
+-------------------------------------------------------------------
+Mon Apr 30 21:51:40 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+- Replace %__-type macro indirections.
+
+-------------------------------------------------------------------
+Sat Apr 28 19:32:52 UTC 2018 - enzokiel@kabelmail.de.de
+
+- Update to version 2.2.1:
+  + reduce memory usage.
+  + mega plug-in: completed size should not be '-1' if file size
+    > 2G on a 32-bit system.
+  + adjust speed limit independently without enabling global speed
+    limit.
+  + Fix: Can't get 1080p video from YouTube.
+  + update translation files.
+
+-------------------------------------------------------------------
+Sat Jan 13 17:59:49 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.2.0:
+  + mega plug-in: create new plug-in for MEGA site.
+  + all plug-in: avoid crash if plug-in failed to start.
+  + Fix: some category/status doesn't refresh it's download list.
+  + Updated translations.
+- Add conditional for post(un) handling, only apply for older
+  versions of openSUSE.
+
+-------------------------------------------------------------------
+Sun Aug 27 16:10:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.0.10:
+  + User can use sorting in any category and status.
+  + curl plug-in: It can use ftruncate() to create large file.
+  + Fix: uGet doesn't close File Descriptor when saving config
+    file.
+  + Fix: category functions can't work correctly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  8 19:00:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.0.9:
+  + Use character ↓/↑ to replace D:/U: to display speed.
+  + Avoid configure file corrupted on sudden shutdown.
+  + Curl plug-in: crashes when download file > 4GB.
+  + Fix: program will move download to incorrect position if user
+    switch to offline mode.
+  + Fix: Segmentation fault after pressing delete key on gtk
+    window.
+  + Fix: Wayland hidden tray.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun 19 17:02:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.0.8:
+  + In speed limit mode, program adjust existing task speed when
+    adding new task.
+  + Add new setting "Display large icon".
+  + Add configure argument "--enable-unix-socket" to use JSON-RPC
+    over UNIX domain socket.
+  + Use msys2 + mingw to build uGet for windows.
+  + curl plug-in: Don't use CURLAUTH_ANY, it causes authentication
+    failed.
+  + Fix: User can't use command-line to assign config directory
+    (ui-gtk-1to2).
+  + Fix: Incorrect encoding on some characters.
+  + Fix: Program stop download queuing in some case.
+- Changes from version 2.0.7:
+  + Fix: UI freeze if user activate download in sorted list.
+  + Add Keywords entry into desktop file.
+  + Updated translation.
+- Changes from version 2.0.6:
+  + curl plug-in:
+    - Fix a bug that downloaded file may be incomplete in some
+      cases.
+    - Improve downloaded segment handler.
+    - Set min split size to 10 MiB.
+    - Adjust speed when plug-in add/remove segments in speed limit
+      mode.
+    - Avoid showing "99:99:99" in "elapsed" when downloading start.
+  + aria2 plug-in: fix a memory leak.
+  + Fix: Program stop running download when user set "Runnable" to
+    it.
+  + Revert URI decoder to 2.0.4, this may fix incorrect encoding on
+    some characters.
+  + This version fix bug that download speed is slow when progress
+    near 100%.
+- Pass --enable-unix-socket to configure following upstream
+  changes.
+- Stop packaging ChangeLog, it's a empty file.
+
+-------------------------------------------------------------------
+Fri Feb 12 09:35:51 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.0.5:
+  + Save and restore width of download column.
+  + Adjust schedule form for large font size.
+  + In speed limit mode, program adjust speed when downloading
+    start-up.
+  + Use filename from RPC request to match category if URL doesn't
+    contain filename.
+  + curl plug-in: use posix_fallocate() to preallocate space for a
+    file on Linux.
+  + curl plug-in: use SetEndOfFile() to preallocate space for a
+    file on Windows.
+  + Fix: program crash when simultaneously download > 32 files.
+  + Fix: Can't save height of summary area.
+  + Add compressed 256x256 icon for Windows 7.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 11:36:18 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.0.4:
+  + Save and restore width of download column.
+  + Adjust schedule form for large font size.
+  + In speed limit mode, program adjust speed when downloading
+    start-up.
+  + Use filename from RPC request to match category if URL doesn't
+    contain filename.
+  + curl plug-in:
+    - use posix_fallocate() to preallocate space for a file on
+      Linux.
+    - use SetEndOfFile() to preallocate space for a file on
+      Windows.
+  + Fix: program crash when simultaneously download > 32 files.
+  + Fix: Can't save height of summary area.
+  + Add compressed 256x256 icon for Windows 7.
+- Changes from version 2.0.3:
+  + curl plug-in:
+    - Update control file path if download file was renamed.
+    - Update downloaded size after loading aria2 control file.
+    - Update file size when allocating disk space.
+    - Don't show border in right side of setting dialog.
+
+-------------------------------------------------------------------
+Sun Oct 11 11:11:48 UTC 2015 - gour@atmarama.net
+
+- Update to version 2.0.2:
+  + Fix memory leak and avoid accessing NULL pointer.
+  + curl plug-in:
+    - Create new file with correct size if file size is not the
+      same.
+    - Create new file only in first connection.
+    - Change setting's file name if plug-in created new file.
+  + Don't resume file with incorrect aria2 control file (no bit
+    field).
+  + Replace invalid characters \/:*?"<>| by _ in filename.
+- Changes from version 2.0.1:
+  + curl plug-in:
+    - Create new download file if file size is not the same.
+    - Use common user & password by default.
+    - Response error if post or cookie file not found.
+    - Don't create aria2 control file if download file create
+      failed.
+    - If error occurred while allocating disk space, delete created
+      download file.
+    - Count downloaded size after splitting download (avoid
+      progress > 100%).
+  + Avoid crash if user doesn't specify argument value.
+  + When creating folder failed, check folder exists before
+    returning error.
+  + When uGet get SIGTERM, it will save settings and call
+    sync() for Linux.
+  + Check and fix settings after loading Setting.json.
+
+-------------------------------------------------------------------
+Fri May  1 13:23:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.0:
+  + Enable infinite retries if retry limit is zero.
+  + Don't remove filename from last download.
+  + Set limit of max connections to 16.
+  + Add new item "Keyboard Shortcuts" to help menu.
+- Changes from version 1.10.5:
+  + Fix GnuTLS build problem (--with-gnutls).
+- Drop uget-libgcrypt.patch: Fixed upstream.
+- Following above changes, drop libtool BuildRequires and call to
+  autoreconf. Exchange --enable-gnutls for --with-gnutls as
+  configure option.
+
+-------------------------------------------------------------------
+Sun Oct  5 20:17:22 UTC 2014 - jengelh@inai.de
+
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Sat Aug 23 21:32:46 UTC 2014 - zaitor@opensuse.org
+
+- Comment out uget-libgcrypt.patch and BuildRequires, also stop
+  passing --enable-gnutls to configure. To be reenabled on next
+  versionupdate.
+
+-------------------------------------------------------------------
+Sat Jan  4 11:25:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.10.4:
+  + Aria2 plug-in support magnet.
+  + Add GnuTLS support (configure --enable-gnutls).
+  + Fix: uGet unexpectedly exits with large list of urls.
+  + Updated translations.
+- Update URL to http://ugetdm.com.
+- Add pkgconfig(gnutls) and libgcrypt-devel BuildRequires: new
+  dependencies for gnutls support.
+- Pass --enable-gnutls to configure: enable new gnutls support.
+- Add uget-libgcrypt.patch: Fix linking with libgcrypt when using
+  gnutls.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Thu Jan 24 17:55:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + Add new download option - "mirrors".
+  + Change hotkey, Shift+Delete to delete data, Ctrl+Delete to
+    delete file and data.
+  + Changed logo, app icon and tray icons*.
+  + Rearrange menu items for better organization.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  5 10:16:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.10.2:
+  + Display "unnamed URL" if no filename specified.
+  + Add new hotkeys: Enter, Shift+Enter, Delete, and Shift+Delete.
+  + Don't assign filename even if program accept '--quiet' argument.
+  + Hide aria2 console window in Windows platform.
+  + Program can build with gstreamer-1.0 (auto detect by autoconf).
+  + Updated translations.
+- Replace pkgconfig(gstreamer-0.10) BuildRequires with
+  pkgconfig(gstreamer-1.0), following upstreams port to
+  GStreamer 1.0.
+
+-------------------------------------------------------------------
+Sun Sep 16 12:01:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.10.1:
+  + This version need GTK 3.4+ and GLib 2.32+.
+  + Add global speed limits for aria2.
+  + Add new option "Retrieve timestamp" in Download dialog.
+  + Add new option "User Agent" in Download dialog.
+  + Add Commandline Settings for some FlashGot users.
+  + Add setting option "Apply recently download settings". (Enabled
+    by default)
+  + Change aria2 default arguments to "--enable-rpc=true -D
+    --check-certificate=false".
+  + aria2 plug-in use argument "continue=true".
+  + aria2 plug-in can use user specified filename.
+  + curl plug-in disable peer SSL certificate verification.
+  + curl plug-in can keep user specified filename.
+  + Fix: program crash when user deleting files.
+  + Fix minor bugs.
+  + Updated translations.
+- Drop uget-gtk-deprecation.patch: fixed upstream.
+- Remove conditional gtk2 BuildRequires: uget 1.10 no longer
+  supports being built against GTK+ 2.0.
+- Replace libindicator-devel BuildRequires with
+  pkgconfig(appindicator3-0.1): this represents exactly what
+  configure is checking for.
+- Replace libnotify-devel BuildRequires with pkgconfig(libnotify)
+  and gstreamer-0_10-devel with pkgconfig(gstreamer-0.10): use the
+  same as configure is checking for. This might switch older
+  releases to 'unresolvable' if they do not support pkgconfig()-
+  style BuildRequires, but those would not have GTK 3.4 neither.
+- Remove the favor_gtk2 conditions: no longer posisble to build
+  gtk2
+- Do not pass --enable-gtk3 to confgiure: the parameter is now
+  unknown
+- Minor spec cleanup: do not check for outdated openSUSE releases.
+
+-------------------------------------------------------------------
+Mon May 14 11:52:53 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.8.2:
+  + Fix: aria2 plug-in can't use user and password.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  6 17:12:47 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + Avoid problem with file size larger than 2GB in 32bit systems.
+  + Fix build failure on gtk 3.3
+  + Change aria2 default arguments from --enable-xml-rpc to
+    --enable-rpc
+  + Updated translations.
+- Only apply uget-gtk-deprecation.patch for gtk3.
+
+-------------------------------------------------------------------
+Mon Jan 16 14:09:31 UTC 2012 - dimstar@opensuse.org
+
+- Fix uget-gtk-deprecation.patch: Some gtk_vbox_new calls were
+  wrongly replaced with horizontal gtk_box_new replacements, which
+  broke the layout [bnc#741473].
+
+-------------------------------------------------------------------
+Mon Aug  8 09:40:23 UTC 2011 - dimstar@opensuse.org
+
+- Add uget-gtk-deprecation.patch: Replace deprecated gtk_[hv].*_new
+  calls with current equivalents.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:59:33 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Thu Jun  2 20:19:37 UTC 2011 - badshah400@gmail.com
+
+- Update to version 1.8.0 (listing changes since last stable
+  version 1.6.0):
+  + support for torrent and metalink files (with aria2 plugin)
+  + support for application indicator
+  + speed limit control per download
+  + sorting downloads by column in the "All" category
+  + add scheduler
+  + add new plugin that supports aria2 version >= 1.10
+  + add new timestamp columns: "Added on" and "Completed on"
+  + add configure option "--with-gtk3" to enable GTK+3 support
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun  1 13:57:25 CEST 2011 - vuntz@opensuse.org
+
+- Add aria2 Requires to make the aria2 plugin work.
+
+-------------------------------------------------------------------
+Mon May 23 11:24:51 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.7.6:
+  + add "Force Start" to download menu.
+  + avoid Ubuntu Unity crash if user disable "Always show tray
+    icon" and close window.
+  + fix display problems when uget is compiled with GTK+3
+  + Updated translations.
+- Changes from version 1.7.5:
+  + display upload speed in status bar and status icon.
+  + fix memory leak.
+  + Updated translations.
+- Changes from version 1.7.4:
+  + create new download from Torrent and Metalink file (with
+    aria2 plug-in).
+  + save/restore sorted column.
+  + fix minor bugs.
+  + changes in aria2 plug-in:
+    - This version MAY work with aria2 version 1.9.
+    - add "retry-wait" if aria2 version >= 1.11
+    - add "max-connection-per-server" if aria2 version >= 1.10
+    - remove "load-cookies" option to avoid aria2.addUri response
+      fault.
+- Changes from version 1.7.3:
+  + support for application indicator.
+  + program can use absolute path to launch aria2c.
+  + fix building error.
+- Changes from version 1.7.2a:
+  + add configure option "-with-gtk3" to enable GTK+3 support.
+- Changes from version 1.7.2:
+  + add setting: "Always show tray icon".
+  + add more setting, column, and view for aria2.
+  + enable aria2 plug-in by default. (remove -enable-plugin-aria2)
+  + fix minor bugs.
+- Changes from version 1.7.1:
+  + Add scheduler.
+  + Add new timestamp columns: "Added On" and "Completed On"
+  + It can sort downloads by column in "All" category.
+  + It can do speed limit control per download.
+  + It can handle HTTP header "Accept-Ranges:" and send message to
+    notify resumable or not resumable.
+  + The layout of main window was changed.
+- Changes from version 1.7.0:
+  + You can see new icons and "Active" subcategory.
+  + It also can refresh progress more fast than 1.6.
+  + Program will rename config directory from "Uget" to "uGet"
+    automatically.
+  + Program can change tray icon if an error occurred or
+    downloading start.
+- If favor_gtk2 is not set (meaning when we build for gtk3), add
+  pkgconfig(gtk+-3.0) BuildRequires. Move gtk2-devel BuildRequires
+  inside a favor_gtk2 condition. Add --with-gtk3 to configure as
+  needed.
+
+-------------------------------------------------------------------
+Mon May  2 16:50:48 CEST 2011 - vuntz@opensuse.org
+
+- Use WITH_APPINDICATOR, which can be defined in the project
+  metadata, instead of with_libappindicator which was macro defined
+  locally in this package.
+
+-------------------------------------------------------------------
+Mon Apr 18 15:15:15 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.6.4 (based on 1.6.4-1 rerelease tarball):
+  + Fix memory leak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  7 23:25:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.6.3:
+  + add indicator support for Ubuntu natty
+  + some building fixes
+- Use download, set_version and recompress source services.
+- Remove SUSE_ASNEEDED=0: no longer required.
+- Allow building of appindicator by defining with_libappindicator.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:56:35 CET 2011 - vuntz@opensuse.org
+
+- Call missing relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Mon Dec 13 10:28:25 CET 2010 - badshah400@gmail.com
+
+- Update to version 1.6.2:
+  + Add option "Sound when download is finished"
+  + Support libnotify 0.7
+  + Prepare to switch to GTK+ 3
+  + Fix "command argument --http-password works incorrectly"
+  + Fix "Can’t remember exit setting"
+  + Fix "Can’t hide tray icon menu on Windows"
+  + Use label to replace link in the "About" page in Windows.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  8 09:39:28 CET 2010 - vuntz@opensuse.org
+
+- Cleanup packaging for inclusion in Factory:
+  + Fix license to be LGPLv2.1+, instead of LGPLv2.1.
+  + Remove unneeded gettext-runtime BuildRequires.
+  + Remove unneeded glib2 and gtk2 Requires.
+  + Improve description.
+  + Split lang subpackage.
+
+-------------------------------------------------------------------
+Sat Dec  4 07:54:20 UTC 2010 - badshah400@gmail.com
+
+- Update to version 1.6.1:
+  + Fix resuming a download after retry
+  + Update translation file zh_CN.po
+  + Add new command-line argument "--set-offline"
+  + Fix building errors in some distributions
+
+-------------------------------------------------------------------
+Wed Aug 18 19:16:02 UTC 2010 - badshah400@gmail.com
+
+- Update to upstream 1.6.0 (changes over 1.5.x):
+  - Require gtk+ >= 2.18
+  - Clipboard monitor can work quietly
+  - Download starting notification
+  - The right side of statusbar displays download speed
+  - New command argument "--http-user-agent" and "--version"
+  - Support offline mode
+  - Support shutdown when downloads complete
+  - New notification sound.
+  - New translation (de).
+
+-------------------------------------------------------------------
+Sat Aug  7 12:48:00 UTC 2010 - badshah400@gmail.com
+
+- Initial build
+

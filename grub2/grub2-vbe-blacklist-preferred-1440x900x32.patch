@@ -1,0 +1,20 @@
+Index: grub-2.02~beta2/grub-core/video/i386/pc/vbe.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/video/i386/pc/vbe.c
++++ grub-2.02~beta2/grub-core/video/i386/pc/vbe.c
+@@ -1053,6 +1053,15 @@ grub_video_vbe_setup (unsigned int width
+ 	      || vbe_mode_info.y_resolution > height)
+ 	    /* Resolution exceeds that of preferred mode.  */
+ 	    continue;
++
++	  /* Blacklist 1440x900x32 from preferred mode handling until a
++	     better solution is available.  This mode causes problems on
++	     many Thinkpads.
++	   */
++	  if (vbe_mode_info.x_resolution == 1440 &&
++	      vbe_mode_info.y_resolution == 900 &&
++	      vbe_mode_info.bits_per_pixel == 32)
++	    continue;
+ 	}
+       else
+ 	{

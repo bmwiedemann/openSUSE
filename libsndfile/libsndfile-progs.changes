@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Fri Jul  6 14:11:47 CEST 2018 - tiwai@suse.de
+
+- Fix buffer overflow in sndfile-deinterleave, which isn't really a
+  security issue (bsc#1100167, CVE-2018-13139, bsc#1116993,
+  CVE-2018-19432):
+  (Apply all the rest as well to sync with libsndfile.spec)
+  0001-FLAC-Fix-a-buffer-read-overrun.patch
+  0002-src-flac.c-Fix-a-buffer-read-overflow.patch
+  0010-src-aiff.c-Fix-a-buffer-read-overflow.patch
+  0020-src-common.c-Fix-heap-buffer-overflows-when-writing-.patch
+  0030-double64_init-Check-psf-sf.channels-against-upper-bo.patch
+  0031-sfe_copy_data_fp-check-value-of-max-variable.patch
+  libsndfile-CVE-2017-17456-alaw-range-check.patch
+  libsndfile-CVE-2017-17457-ulaw-range-check.patch
+  sndfile-deinterlace-channels-check.patch
+  sndfile-ocloexec.patch
+
+-------------------------------------------------------------------
+Mon Apr 10 10:47:58 CEST 2017 - tiwai@suse.de
+
+- Update to version 1.0.27:
+  * Fix a seek regression in 1.0.26
+  * Add metadata read/write for CAF and RF64
+  * FIx PAF endian-ness issue
+- Update to version 1.0.28
+  * Fix buffer overruns in FLAC and ID3 handling code
+   (CVE-2017-7585, CVE-2017-7586, bsc#1033054, bsc#1033053)
+  * Reduce default header memory requirements
+  * Fix detection of Large File Support for 32 bit systems.
+- Obsoleted patch:
+  libsndfile-psf_strlcpy_crlf-fix-CVE-2015-8075.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 08:31:31 UTC 2015 - idonmez@suse.com
+
+- Remove documentation, it belongs to the libsndfile package. 
+
+-------------------------------------------------------------------
+Mon Nov 23 17:22:41 CET 2015 - tiwai@suse.de
+
+- Update to version 1.0.26:
+  * Fix for CVE-2014-9496, CVE-2014-9756 and CVE-2015-7805.
+  * Add ALAC/CAF support. Minor bug fixes and improvements. 
+- Drop libsndfile-example-fix.diff
+
+-------------------------------------------------------------------
+Sat Mar 21 08:14:38 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Apr 15 14:00:22 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Nov 21 17:30:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Jul 29 14:48:03 CEST 2011 - tiwai@suse.de
+
+- Fix zero-division in PAF parser (bnc#708988)
+
+-------------------------------------------------------------------
+Mon Jul 18 17:23:30 CEST 2011 - tiwai@suse.de
+
+- updated to version 1.0.25:
+  Fix for Secunia Advisory SA45125 (CVE-2011-2696, bnc#705681)
+  Minor bug fixes and improvements
+
+-------------------------------------------------------------------
+Wed Mar 23 13:01:06 UTC 2011 - oliver.bengs@opensuse.org
+
+- Update to version 1.0.24
+- Upstream changes :
+  * WAV files are now written with an 18 byte u-law and A-law fmt chunk
+  * A document on virtual I/O functionality was added
+  * Two new methods were added in sndfile.hh
+  * A fix was made for a non-zero SSND offset values on AIFF
+  * Minor bug fixes and improvements were done
+
+-------------------------------------------------------------------
+Mon Oct 11 16:20:37 UTC 2010 - oliver.bengs@opensuse.org
+
+- Update to version 1.0.23:
+- Upstream changes :
+  * configure.ac src/version-metadata.rc.in src/Makefile.am
+    Add version string resources to the windows DLL.
+  * doc/api.html
+    Update to add missing SF_FORMAT_* values. Closed Debian bug #545257.
+  * NEWS README configure.ac doc/*.html
+    Updates for 1.0.23 release.
+  * Other minor bug fixes
+
+-------------------------------------------------------------------
+Fri Oct  8 06:50:36 UTC 2010 - davejplater@gmail.com
+
+- Update to version 1.0.22
+- Upstream changes :
+  * Bunch of minor bug fixes.
+
+-------------------------------------------------------------------
+Mon Aug 16 12:44:02 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.0.21:
+  * Bunch of minor bug fixes.
+  * including VUL-1 divide-by-zero fix (bnc#631379)
+
+-------------------------------------------------------------------
+Wed Jun  3 00:13:56 CEST 2009 - dmueller@suse.de
+
+- explicitely enable sqlite support to avoid random flipping
+
+-------------------------------------------------------------------
+Fri May 15 14:38:13 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.20:
+  * Fix for potential heap overflow
+- enable ogg/vorbis support
+
+-------------------------------------------------------------------
+Mon Apr 27 01:06:17 CEST 2009 - ro@suse.de
+
+- buildfix: tar basedir is libsndfile not libsndfile-progs
+
+-------------------------------------------------------------------
+Fri Apr 24 14:50:32 CEST 2009 - tiwai@suse.de
+
+- built progs subpackage from an individual spec file to cut the
+  circular dependency with jack.
+
+-------------------------------------------------------------------
+Wed Mar  4 09:40:59 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.19:
+  * Fix for CVE-2009-0186 (bnc#481769 - VUL-0: libsndfile CAF
+    Processing Integer Overflow Vulnerability)
+  * Huge number of minor fixes as a result of static analysis
+- remove INSTALL file from filelist
+
+-------------------------------------------------------------------
+Mon Feb  9 12:40:43 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.18
+  * Add Ogg/Vorbis support (disabled right now due to vorbis
+    version mismatch; SVN version is required)
+  * Remove captive FLAC library.
+  * Many new features and bug fixes.
+  * Generate Win32 and Win64 pre-compiled binaries.
+- Dropped libsndfile-octave subpackage (as octave itself is
+  dropped from FACTORY)
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Oct 14 17:53:37 CEST 2008 - meissner@suse.de
+
+- prototype for memset
+
+-------------------------------------------------------------------
+Tue May  6 15:10:55 CEST 2008 - tiwai@suse.de
+
+- fix missing initializations in demo programs (bnc#351128)
+
+-------------------------------------------------------------------
+Tue Apr 15 17:39:20 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 10 18:42:43 CET 2008 - crrodriguez@suse.de
+
+- remove explicit-lib-dependencies
+- fix -devel package dependencies
+
+-------------------------------------------------------------------
+Thu Sep 20 15:22:45 CEST 2007 - tiwai@suse.de
+
+- VUL-0: Heap-based buffer overflow in flac.c (#326070,
+  CVE-2007-4974)
+
+-------------------------------------------------------------------
+Mon Apr 16 13:56:20 CEST 2007 - tiwai@suse.de
+
+- Move docs and manpages to appropriate sub-packages (#264820)
+- Remove static library (#264820)
+
+-------------------------------------------------------------------
+Mon Apr 16 11:12:42 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Fri Apr 13 14:50:15 CEST 2007 - tiwai@suse.de
+
+- fix FLAC-1.1.4 support.
+
+-------------------------------------------------------------------
+Fri Sep  1 20:46:09 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.17:
+  * Add C++ wrapper sndfile.hh. Minor bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Tue Jul  4 16:35:22 CEST 2006 - tiwai@suse.de
+
+- fix the build -- removed invalidly overridden HAVE_DECL_S_IRGRP
+  definition in configure.ac.
+
+-------------------------------------------------------------------
+Mon May 29 15:42:24 CEST 2006 - tiwai@suse.de
+
+- added flac-devel to requires of devel sub package.
+
+-------------------------------------------------------------------
+Mon May 15 12:54:14 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.16.
+  * more format supports
+  * code cleanups
+  * fix memleaks
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 30 18:27:24 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.12.
+- split example programs to progs sub-package.
+- added -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Wed Nov 17 15:46:25 CET 2004 - tiwai@suse.de
+
+- updated to version 1.0.11.
+
+-------------------------------------------------------------------
+Fri Sep  3 15:27:52 CEST 2004 - tiwai@suse.de
+
+- removed python from neededforbuild.
+
+-------------------------------------------------------------------
+Thu Aug  5 12:25:07 CEST 2004 - tiwai@suse.de
+
+- updated to version 1.0.10.
+
+-------------------------------------------------------------------
+Thu Feb 26 12:29:53 CET 2004 - tiwai@suse.de
+
+- updated to version 1.0.7.
+
+-------------------------------------------------------------------
+Sat Jan 10 17:13:28 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Sep 15 16:52:26 CEST 2003 - kukuk@suse.de
+
+- Set x bit on directories
+
+-------------------------------------------------------------------
+Fri Jun 20 23:38:53 CEST 2003 - ro@suse.de
+
+- added directories to filelist
+
+-------------------------------------------------------------------
+Fri Jun  6 15:35:57 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.0.5.
+
+-------------------------------------------------------------------
+Tue May 13 11:11:36 CEST 2003 - pthomas@suse.de
+
+- Put Octave interface files into an own subpackage.
+
+-------------------------------------------------------------------
+Thu Feb 13 15:39:36 CET 2003 - pthomas@suse.de
+
+- Compile with all usefull warnings and fix all places where the
+  compiler warned.
+- Fix configure to use $libdir instead of $prefix/lib for reporting.
+
+-------------------------------------------------------------------
+Tue Feb  4 12:34:39 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0.4.
+
+-------------------------------------------------------------------
+Fri Jan 17 16:01:25 CET 2003 - tiwai@suse.de
+
+- added %run_ldconfig to %post.
+
+-------------------------------------------------------------------
+Thu Jan 16 13:31:21 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0.3.
+- added *.la to devel package.
+
+-------------------------------------------------------------------
+Mon Nov 25 15:21:43 CET 2002 - tiwai@suse.de
+
+- updated to version 1.0.2.
+
+-------------------------------------------------------------------
+Fri Sep 20 17:31:18 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Mon Aug 19 18:29:00 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.0.0 final.
+
+-------------------------------------------------------------------
+Fri Aug  2 14:46:34 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.0.0rc3.
+
+-------------------------------------------------------------------
+Tue Jun 25 17:52:50 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.0.0rc2.
+
+-------------------------------------------------------------------
+Fri Apr 12 16:16:58 CEST 2002 - tiwai@suse.de
+
+- set %__libdir.
+- use make install as default instead of install-strip.
+
+-------------------------------------------------------------------
+Thu Feb  7 11:23:10 CET 2002 - tiwai@suse.de
+
+- fixed build on s390x.
+
+-------------------------------------------------------------------
+Fri Dec  7 13:55:21 CET 2001 - tiwai@suse.de
+
+- fixed group tag (System -> System Environment)
+
+-------------------------------------------------------------------
+Thu Dec  6 17:44:35 CET 2001 - tiwai@suse.de
+
+- removed binaries from alsa-devel examples directory.
+
+-------------------------------------------------------------------
+Wed Nov 21 19:35:00 CET 2001 - tiwai@suse.de
+
+- updated to ver.0.0.27.
+
+-------------------------------------------------------------------
+Wed Oct 17 13:10:51 CEST 2001 - tiwai@suse.de
+
+- updated to ver.0.0.26.
+  + Added sf_command () interface.
+  + Added support for IRCAM files.
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
+Tue Aug 28 17:49:52 CEST 2001 - tiwai@suse.de
+
+- updated to ver.0.0.24.
+  + Added support for 32 bit floating point AIFC files, little endian AIFC
+    files and 16, 24 and 32 bit Sphere NIST files.
+  + Massive refactoring of internal code.
+  + Added read and write handling of PEAK chunks on AIFF and WAV files.
+  + Added read support for REX files (Propellerheads Reason).
+  + Added sf_read_float () and sf_write_float () interfaces.
+  + Minor bug fixes.
+- changed group tag to System/Libraries
+
+-------------------------------------------------------------------
+Fri Aug  3 12:03:42 CEST 2001 - tiwai@suse.de
+
+- fixed compile on s390.
+
+-------------------------------------------------------------------
+Thu Jun  7 11:45:19 CEST 2001 - tiwai@suse.de
+
+- fixed compile with the latest libtool & autoconf.
+
+-------------------------------------------------------------------
+Tue Apr  3 14:17:33 CEST 2001 - kukuk@suse.de
+
+- move *.so files into devel package
+- Remove kernel_header requires
+- Fix glibc-devel dependencies
+
+-------------------------------------------------------------------
+Wed Dec 13 14:24:47 CET 2000 - tiwai@suse.de
+
+- fixed compile on ia64.
+
+-------------------------------------------------------------------
+Thu Nov  2 15:25:52 CET 2000 - ro@suse.de
+
+- changed Group to Development/Libraries (old group did not exist)
+
+-------------------------------------------------------------------
+Thu Nov  2 13:44:50 CET 2000 - tiwai@suse.de
+
+- Updated to 0.0.22.
+- Changed for long package-name support (libsnd -> libsndfile,
+  libsndd -> libsndfile-devel).
+
+-------------------------------------------------------------------
+Tue Sep 26 18:54:27 CEST 2000 - tiwai@suse.de
+
+- changed to bzip2.
+- added suse_update_config.
+
+-------------------------------------------------------------------
+Wed Sep  6 13:10:25 CEST 2000 - tiwai@suse.de
+
+- Initial version: 0.0.21.
+

@@ -1,0 +1,42 @@
+Even if used only by developers to debug readline library do not open
+temporary files from public location without O_EXCL (bcn#868822).
+
+---
+ lib/readline/util.c |    9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+--- lib/readline/util.c
++++ lib/readline/util.c	2018-09-20 06:47:51.238715688 +0000
+@@ -487,10 +487,12 @@ _rl_trace (va_alist)
+ 
+   if (_rl_tracefp == 0)
+     _rl_tropen ();
++  if (!_rl_tracefp)
++    goto out;
+   vfprintf (_rl_tracefp, format, args);
+   fprintf (_rl_tracefp, "\n");
+   fflush (_rl_tracefp);
+-
++out:
+   va_end (args);
+ }
+ 
+@@ -510,7 +512,7 @@ _rl_tropen (void)
+ #endif
+   snprintf (fnbuf, sizeof (fnbuf), "%s/rltrace.%ld", x, (long)getpid());
+   unlink(fnbuf);
+-  _rl_tracefp = fopen (fnbuf, "w+");
++  _rl_tracefp = fopen (fnbuf, "w+xe");
+   return _rl_tracefp != 0;
+ }
+ 
+@@ -519,7 +521,8 @@ _rl_trclose (void)
+ {
+   int r;
+ 
+-  r = fclose (_rl_tracefp);
++  if (_rl_tracefp)
++    r = fclose (_rl_tracefp);
+   _rl_tracefp = 0;
+   return r;
+ }

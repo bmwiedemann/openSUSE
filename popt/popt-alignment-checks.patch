@@ -1,0 +1,74 @@
+Index: popt-1.16/configure.ac
+===================================================================
+--- popt-1.16.orig/configure.ac
++++ popt-1.16/configure.ac
+@@ -47,7 +47,7 @@ AC_SYS_LARGEFILE
+ 
+ AC_ISC_POSIX
+ 
+-AC_CHECK_HEADERS(float.h fnmatch.h glob.h langinfo.h libintl.h mcheck.h unistd.h)
++AC_CHECK_HEADERS(float.h fnmatch.h glob.h langinfo.h libintl.h mcheck.h unistd.h stdalign.h)
+ 
+ # For some systems we know that we have ld_version scripts.
+ # Use it then as default.
+Index: popt-1.16/popt.c
+===================================================================
+--- popt-1.16.orig/popt.c
++++ popt-1.16/popt.c
+@@ -25,6 +25,15 @@ extern long long int strtoll(const char
+ 
+ #include "poptint.h"
+ 
++#ifdef HAVE_STDALIGN_H
++#include <stdalign.h>
++#define ALIGNOF(x) alignof(x)
++#elif defined __GNUC__
++#define ALIGNOF(x) __alignof__(x)
++#else
++#define ALIGNOF(x) sizeof(x)
++#endif
++
+ #ifdef	MYDEBUG
+ /*@unchecked@*/
+ int _popt_debug = 0;
+@@ -977,12 +986,8 @@ static unsigned int seed = 0;
+ 
+ int poptSaveLongLong(long long * arg, unsigned int argInfo, long long aLongLong)
+ {
+-    if (arg == NULL
+-#ifdef	NOTYET
+     /* XXX Check alignment, may fail on funky platforms. */
+-     || (((unsigned long long)arg) & (sizeof(*arg)-1))
+-#endif
+-    )
++    if (arg == NULL || (((unsigned long)arg) & (ALIGNOF(*arg)-1)))
+ 	return POPT_ERROR_NULLARG;
+ 
+     if (aLongLong != 0 && LF_ISSET(RANDOM)) {
+@@ -1023,7 +1028,7 @@ int poptSaveLongLong(long long * arg, un
+ int poptSaveLong(long * arg, unsigned int argInfo, long aLong)
+ {
+     /* XXX Check alignment, may fail on funky platforms. */
+-    if (arg == NULL || (((unsigned long)arg) & (sizeof(*arg)-1)))
++    if (arg == NULL || (((unsigned long)arg) & (ALIGNOF(*arg)-1)))
+ 	return POPT_ERROR_NULLARG;
+ 
+     if (aLong != 0 && LF_ISSET(RANDOM)) {
+@@ -1056,7 +1061,7 @@ int poptSaveLong(long * arg, unsigned in
+ int poptSaveInt(/*@null@*/ int * arg, unsigned int argInfo, long aLong)
+ {
+     /* XXX Check alignment, may fail on funky platforms. */
+-    if (arg == NULL || (((unsigned long)arg) & (sizeof(*arg)-1)))
++    if (arg == NULL || (((unsigned long)arg) & (ALIGNOF(*arg)-1)))
+ 	return POPT_ERROR_NULLARG;
+ 
+     if (aLong != 0 && LF_ISSET(RANDOM)) {
+@@ -1089,7 +1094,7 @@ int poptSaveInt(/*@null@*/ int * arg, un
+ int poptSaveShort(/*@null@*/ short * arg, unsigned int argInfo, long aLong)
+ {
+     /* XXX Check alignment, may fail on funky platforms. */
+-    if (arg == NULL || (((unsigned long)arg) & (sizeof(*arg)-1)))
++    if (arg == NULL || (((unsigned long)arg) & (ALIGNOF(*arg)-1)))
+ 	return POPT_ERROR_NULLARG;
+ 
+     if (aLong != 0 && LF_ISSET(RANDOM)) {

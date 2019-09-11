@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Apr 10 05:01:57 UTC 2017 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-AnyEvent-I3/Changes
+
+  0.17    2017-04-09
+  
+     * support the shutdown event
+     * use lib '.' for Perl 5.25.11+
+
+-------------------------------------------------------------------
+Tue Apr 14 10:09:56 UTC 2015 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-AnyEvent-I3/Changes
+
+  0.16    2014-10-03
+  
+     * support the barconfig_update and binding event
+
+-------------------------------------------------------------------
+Wed May 15 15:18:41 UTC 2013 - coolo@suse.com
+
+- updated to 0.15
+   * support the window event
+   * support the mode event
+
+-------------------------------------------------------------------
+Tue Sep  4 13:02:12 UTC 2012 - coolo@suse.com
+
+- updated to 0.13
+  * support the GET_VERSION request with a fall-back to i3 --version
+  * taint mode fix: remove relative directories from $ENV{PATH}
+  * taint mode fix for FreeBSD
+
+-------------------------------------------------------------------
+Mon Apr 30 10:45:35 UTC 2012 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  See README
+
+-------------------------------------------------------------------
+Fri Apr 27 07:31:52 UTC 2012 - coolo@suse.com
+
+- initial package 0.09
+    * created by cpanspec 1.78.06
+

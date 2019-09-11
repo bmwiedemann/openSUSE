@@ -1,0 +1,92 @@
+Index: telnetd/global.c
+===================================================================
+--- telnetd/global.c.orig	2012-01-02 23:23:52.000000000 +0000
++++ telnetd/global.c	2012-01-02 23:23:55.000000000 +0000
+@@ -38,6 +38,7 @@ char do_dont_resp[256];
+ char will_wont_resp[256];
+ int linemode;			/* linemode on/off */
+ int utmp_len = MAXHOSTNAMELEN;
++int login_suppress_hostname;	/* Pass -H to /bin/login */
+ 
+ #ifdef  LINEMODE
+ int uselinemode;		/* what linemode to use (on/off) */
+Index: telnetd/sys_term.c
+===================================================================
+--- telnetd/sys_term.c.orig	2012-01-02 23:23:52.000000000 +0000
++++ telnetd/sys_term.c	2012-01-02 23:23:55.000000000 +0000
+@@ -767,6 +767,10 @@ start_login (const char *host)
+ 	}
+     }
+   closelog ();
++
++  if (login_suppress_hostname)
++	  addarg(&avs, "-H");
++
+   /* execv() should really take char const* const *, but it can't */
+   /*argvfoo = argv */ ;
+   memcpy (&argvfoo, &avs.argv, sizeof (argvfoo));
+Index: telnetd/telnetd.c
+===================================================================
+--- telnetd/telnetd.c.orig	2012-01-02 23:23:52.000000000 +0000
++++ telnetd/telnetd.c	2012-01-02 23:23:55.000000000 +0000
+@@ -65,7 +65,7 @@ extern void usage (void);
+  * that only the actual options that we support will be
+  * passed off to getopt().
+  */
+-char *valid_opts = "d:L:hnS:u:UD:46"
++char *valid_opts = "d:L:hnS:u:UD:46H"
+ #ifdef	LINEMODE
+ 	"kl"
+ #endif
+@@ -176,6 +176,9 @@ main (int argc, char *argv[], char *env[
+ 	case '6':
+ 	  family = AF_INET6;
+ 	  break;
++	case 'H':
++	  login_suppress_hostname = 1;
++	  break;
+ 
+ 	default:
+ 	  fprintf(stderr, "telnetd: %c: unknown option\n", ch);
+@@ -290,6 +293,7 @@ usage()
+   syslog(LOG_ERR, "usage: telnetd [-debug]"
+ 	 " [-D (options|report|exercise|netdata|ptydata)]\n\t"
+ 	 " [-h]"
++	 " [-H]"
+ #if	defined(LINEMODE) && defined(KLUDGELINEMODE)
+ 	 " [-k]"
+ #endif
+Index: telnetd/ext.h
+===================================================================
+--- telnetd/ext.h.orig	2012-01-02 23:23:52.000000000 +0000
++++ telnetd/ext.h	2012-01-02 23:23:55.000000000 +0000
+@@ -36,6 +36,7 @@ extern char do_dont_resp[256];
+ extern char will_wont_resp[256];
+ extern int linemode;	/* linemode on/off */
+ extern int utmp_len;
++extern int login_suppress_hostname;
+ 
+ #ifdef LINEMODE
+ extern int uselinemode;	/* what linemode to use (on/off) */
+Index: telnetd/in.telnetd.8
+===================================================================
+--- telnetd/in.telnetd.8.orig	2012-01-02 23:23:52.000000000 +0000
++++ telnetd/in.telnetd.8	2012-01-02 23:23:55.000000000 +0000
+@@ -36,7 +36,7 @@
+ protocol server
+ .Sh SYNOPSIS
+ .Nm in.telnetd
+-.Op Fl Uhlkn46
++.Op Fl Uhlkn46H
+ .Op Fl D Ar debugmode
+ .Op Fl I Ns Ar initid
+ .Op Fl S Ar tos
+@@ -118,6 +118,8 @@ in
+ .It Fl h
+ Disables the printing of host-specific information before
+ login has been completed.
++.It Fl H
++Instruct the login program to suppress printing the hostname before the prompt.
+ .It Fl I Ar initid
+ This option is only applicable to
+ .Tn UNICOS

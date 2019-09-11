@@ -1,0 +1,22 @@
+--- SpecTcl/configure.tk
++++ SpecTcl/configure.tk
+@@ -203,7 +203,7 @@
+     pack .palette.f -fill both -anchor nw -padx 2 -pady 2
+ 
+     set x 0
+-    foreach widgetlist [list $topwidgets $bottomwidgets] {
++    foreach widgetlist [list $topwidgets] {
+ 	foreach widget [lsort $widgetlist] {
+ 	    $spec(m:genericMenu) add command -label $widget \
+ 		-command "activate_generic $widget true"
+--- SpecTcl/perl_init.tk
++++ SpecTcl/perl_init.tk
+@@ -710,7 +710,7 @@
+ 	incr row
+     }
+     set numcolumns 1
+-    foreach widget  [lsort $bottomwidgets] {
++    foreach widget  [lsort {}] {
+ 	catch {destroy .palette.$widget}
+ 	if {[lsearch [image names] $widget.gif] > -1} {
+ 	    set imlabel $widget.gif

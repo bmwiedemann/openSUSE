@@ -1,0 +1,834 @@
+-------------------------------------------------------------------
+Mon Feb 26 10:19:21 UTC 2018 - astieger@suse.com
+
+- GNU awk 4.2.1:
+  * documentation updates
+  * In MPFR mode, When ROUNDMODE changes, string values for
+    numerically type values will be redone
+  * various bug fixes
+  * drop fold-string.patch, upstream
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Sat Oct 21 20:12:05 UTC 2017 - schwab@linux-m68k.org
+
+- fold-string.patch: Don't fold constant strings if either is translatable
+
+-------------------------------------------------------------------
+Thu Oct 19 21:54:47 UTC 2017 - schwab@linux-m68k.org
+
+- Update to gawk 4.2.0
+  * If not in POSIX mode, changes to ENVIRON are reflected into
+    gawk's environment
+  * The series of numbers returned by rand() should now be "more
+    random" than previously
+  * Multiple changes related to the pretty printer
+  * The igawk script and igawk.1 man page are no longer installed
+  * Gawk now processes a maximum of two hexadecimal digits in \x
+    escape sequences inside strings
+  * Setting PROCINFO["redirection", "NONFATAL"] to true makes I/O
+    errors for "redirection" not fatal
+  * Gawk now supports retryable I/O via PROCINFO[input-file, "RETRY"]
+  * Revisions in the POSIX standard remove the special case for POSIX
+    mode when FS = " " where newline was not a field separator
+  * Gawk now supports strongly typed regexp constants
+  * The new typeof() function can be used to indicate if a variable or
+    array element is an array, regexp, string or number
+  * Optimizations are now enabled by default
+  * Passing negative operands to any of the bitwise functions now
+    produces a fatal error
+  * The mktime function now accepts an optional second argument
+  * The FIELDWIDTHS parsing syntax has been enhanced to allow specifying
+    how many characters to skip before a field starts
+  * The PROCINFO["argv"] array records all of gawk's command line arguments
+    as gawk received them
+- gawk_ppc64le_ignore_transient_test_time_failure.patch: removed
+
+-------------------------------------------------------------------
+Wed Oct 11 11:40:41 UTC 2017 - astieger@suse.com
+
+- also ignore transient test time failure on ppc64
+
+-------------------------------------------------------------------
+Mon Apr 10 07:39:22 UTC 2017 - josef.moellers@suse.com
+
+- Added an explicit rpmlint rule to keep one file (gawkapi.h)
+  from requiring a separate package.
+  [+gawk.rpmlintrc]
+
+-------------------------------------------------------------------
+Mon Sep  5 20:27:40 UTC 2016 - astieger@suse.com
+
+* GNU awk 4.1.4:
+  * z/OS support updated
+  * debugger improvements
+  * return value of system() enhanced to convey more information
+  * two-way pipe handling improved
+  * The -d option now allows -d- to print to standard output.
+  * The DJGPP port is now officially deprecated.
+
+-------------------------------------------------------------------
+Wed May  4 15:57:22 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new gawk_ppc64le_ignore_transient_test_time_failure.patch
+
+-------------------------------------------------------------------
+Sat May 23 18:48:02 UTC 2015 - astieger@suse.com
+
+- GNU awk 4.1.3:
+  * Regexp parsing with extra brackets should now be working again.
+  * Updated to latest config.guess and config.sub.
+  * bug fixes
+
+-------------------------------------------------------------------
+Thu May  7 19:13:00 UTC 2015 - astieger@suse.com
+
+- skip frequently failing and timing dependent test strftime
+
+-------------------------------------------------------------------
+Thu May  7 07:48:15 UTC 2015 - mpluskal@suse.com
+
+- Correct info files scriplet handling section
+- Update info and update-alternatives requirements
+
+-------------------------------------------------------------------
+Sun May  3 09:30:05 UTC 2015 - astieger@suse.com
+
+- GNU awk 4.1.2:
+  * manual improved
+  * The debugger's "restart" command now works again.
+  * Redirected getline is now allowed inside BEGINFILE/ENDFILE.
+  * A number of bugs have been fixed in the MPFR code.
+  * Indirect function calls now work for both built-in and extension
+    functions.
+  * Built-in functions are now included in FUNCTAB.
+  * In non-English locales, it was accidentally possible to use
+    non-english letters for identifiers
+  * The "where" command has been added to the debugger as an alias
+    for "backtrace".
+  * Gawk no longer explicitly checks the current directory after
+    doing a path search of AWKPATH.
+  * Infrastructure upgrades: Automake 1.15, Gettext 0.19.4,
+    Libtool 2.4.6, Bison 3.0.4.
+  * If a user-defined function has a parameter with the same name
+    as another user-defined function, it is no longer possible to
+    call the second function from inside the first.
+  * POSIX requires that the names of function parameters not be the
+    same as any of the special built-in variables and also not
+    conflict with the names of any functions. Gawk has checked for
+    the former since 3.1.7. With --posix, it now also checks for
+    the latter.
+  * The test suite should check for necessary locales and skip the
+    tests where it matters if support isn't what it should be.
+  * Gawk now expects to be compiled on a system with multibyte
+    character support.
+- drop gawk-4.1.1-build-baddest.patch, upstream
+
+-------------------------------------------------------------------
+Sat May  3 15:39:14 UTC 2014 - andreas.stieger@gmx.de
+
+- remove optional libsigsegv dependency
+
+-------------------------------------------------------------------
+Tue Apr 29 20:28:42 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU awk 4.1.1:
+  * The "stat" extension now includes a "devbsize" element which
+    indicates the units for the "nblocks" element.
+  * A number of bugs in the pretty-printing / profiling code have
+    been fixed.
+  * The -O option now works again.
+  * The --include option, documented since 4.0, now actually works.
+  * Infrastructure updated to automake 1.13.4, bison 3.0.2, and
+    libtool 2.4.2.418.
+  * The configure script now accepts a --disable-extensions option,
+    which disables checking for and building the extensions.
+  * The API now provides functions pointers for malloc(), calloc(),
+    realloc() and free(), to insure that the same memory allocation
+    functions are always used. This bumps the minor version by one.
+  * The printf quote flag now works correctly in locales with
+    a different decimal point character but without a thousands
+    separator character. If the thousands separator is a string,
+    it will be correctly added to decimal numbers.
+  * The readfile extension now has an input parser that will read
+    whole files as a single record.
+- packaging changes:
+  * remove added German po file and scanning of translations
+  * remove profiling, fixing warning make-check-outside-check-section
+  * remove autoreconf call
+  * drop gawk-3.1.8.diff 
+  * drop older-automake.diff, not required for factory
+  * build with libsigsegv
+  * no not regenerate info pages
+  * add gawk-4.1.1-build-baddest.patch required for install
+  * switch to xz tarball
+  * verify source signature
+
+-------------------------------------------------------------------
+Sat Feb  8 12:02:23 UTC 2014 - gber@opensuse.org
+
+- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html)
+
+-------------------------------------------------------------------
+Mon May 13 09:35:02 UTC 2013 - idonmez@suse.com
+
+- Update to version 4.1.0
+  * The three executables gawk, pgawk, and dgawk, have been merged into
+    one, named just gawk.
+  * The new -i option (from xgawk) is used for loading awk library files.
+  * The new -l option (from xgawk) is used for loading dynamic extensions.
+  * The dynamic extension interface has been completely redone.  There is
+    now a defined API for C extensions to use.  A C extension acts like
+    a function written in awk, except that it cannot do everything that awk
+    code can. However, this allows interfacing to any facility that is
+    available from C.
+  * The "inplace" extension, built using the new facility, can be used to
+    simulate the GNU "sed -i" feature.
+  * The and(), or() and xor() functions now take any number of arguments,
+    with a minimum of two.
+  * New arrays: SYMTAB, FUNCTAB, and PROCINFO["identifiers"]. SYMTAB allows
+    indirect access to any defined variable or array; it is possible to
+    "walk" the symbol table, if that should be necessary.
+- Refreshed gawk-3.1.8.diff
+- Add older-automake.diff to support automake 1.12
+
+-------------------------------------------------------------------
+Tue Mar 26 14:25:52 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Dec 13 23:01:16 UTC 2012 - jengelh@inai.de
+
+- Remove unneded %clean section
+
+-------------------------------------------------------------------
+Fri Sep  7 12:48:01 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire makeinfo
+
+-------------------------------------------------------------------
+Wed Apr  4 01:27:28 UTC 2012 - tabraham@novell.com
+
+- Update to version 4.0.1
+  * completed the implementation of Rational Range Interpretation
+  * failure to get the group set is no longer a fatal error
+  * lots of minor bugs fixed and portability clean-ups
+
+- refreshed gawk-3.1.8.diff
+- removed gawk-revert-gsub-gawk3.patch deprecated by this release
+
+-------------------------------------------------------------------
+Wed Feb  8 20:59:12 UTC 2012 - rschweikert@suse.com
+
+- keep binaries in /usr tree {UsrMerge project)
+
+-------------------------------------------------------------------
+Mon Jan 30 16:16:45 CET 2012 - pth@suse.de
+
+- Compress message catalog.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:32:32 CET 2012 - pth@suse.de
+
+- Use latest german message catalog.
+- Call update-po as part of package build.
+
+-------------------------------------------------------------------
+Fri Dec  2 14:52:56 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  gawk is GPL-3.0+ in 4.0.0
+
+-------------------------------------------------------------------
+Thu Dec  1 15:47:50 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Sep 27 11:31:28 UTC 2011 - idonmez@suse.com
+
+- Revert sub/gsub behavior to that of gawk 3.x. Upstream commit
+  16de770359370224129f23df745178efe518c02c  
+
+-------------------------------------------------------------------
+Wed Aug 10 03:58:24 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 4.0.0 , important changes
+ * The special files /dev/pid, /dev/ppid, /dev/pgrpid and /dev/user are
+    now completely gone. Use PROCINFO instead.
+ * The POSIX 2008 behavior for `sub' and `gsub' are now the default.
+ * In POSIX mode, string comparisons use strcoll/wcscoll.
+ * Gawk now treats ranges of the form [d-h] as if they were in the C
+
+
+-------------------------------------------------------------------
+Tue Apr 19 13:46:32 CEST 2011 - dmueller@suse.de
+
+- update to 3.1.8:
+  * The zero flag no longer applies to %c and %s; apparently the standards
+  changed at some point.
+  * Failure to open a socket is no longer a fatal error.
+  * dfa.h and dfa.c are now more-or-less in sync with GNU grep, for the first
+  time in many years.
+  * Gawk no longer includes its own copy of libsigsegv but it will use it if
+  installed on the build system. The --disable-libsigsegv configure option
+  is now gone.
+  * The ' flag (%'d) is now just ignored on systems that can't support it.
+  * Gawk now has support for z/OS (IBM S/390 architecture).
+  * Gawk now handles multibyte strings better in [s]printf with field
+   widths and such.
+  * A getline from a directory is no longer fatal; instead it returns -1.
+  * Per POSIX, special variable names (like FS) cannot be used as function
+   parameter names.
+  * The new -O / --optimize option enables simple constant folding on
+  the parse tree during parsing.  We hope that with time the number
+  of optimizations will increase.
+  * Lots of bug fixes, see the ChangeLog.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Feb 16 09:06:01 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- use update-alternatives
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:17 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Sat Feb  7 18:10:26 CET 2009 - schwab@suse.de
+
+- Rebuild broken info files.
+
+-------------------------------------------------------------------
+Mon Nov 12 14:50:34 CET 2007 - schwab@suse.de
+
+- Update to gawk 3.1.6.
+  1. `gawk 'program' /non/existant/file' no longer core dumps.
+  2. Too many people the world over have complained about gawk's use of the
+     locale's decimal point for parsing input data instead of the traditional
+     period.  So, even though gawk was being nicely standards-compliant, in
+     a Triumph For The Users, gawk now only uses the locale's decimal point
+     if --posix is supplied or if POSIXLY_CORRECT is set.  It is the sincere
+     hope that this change will eliminate this FAQ from being asked.
+  3. `gawk -v BINMODE=1 ...' works again.
+  4. Internal file names like `/dev/user' now work again. (Note that these
+     file names are obsolete and will go away eventually.)
+  5. Problems with wide strings in non "C" locales have been straightened
+     out everywhere.  (At least, we think so.)
+  6. Use of `ansi2knr' is no longer supported. Please use an ANSI C compiler.
+  7. Updated to Autoconf 2.61, Automake 1.10, and Gettext 0.16.1.
+  8. The getopt* and regex* files were synchronized with current GLIBC CVS.
+     See the ChangeLog for the versions and minor edits made.
+  9. There are additional --lint-old warnings.
+  10. Gawk now uses getaddrinfo(3) to look up names and IP addresses. This
+      allows the use of an IPv6 format address and paves the way for
+      eventual addition of `/inet6/...' and `/inet4/...' hostnames.
+  11. We believe gawk to now be valgrind clean. At least when run against
+      the test suite.
+  12. A number of issues dealing with the formatting and printing of very
+      large numbers in integer formats have been dealt with and fixed.
+  13. Gawk now converts "+inf", "-inf", "+nan" and "-nan" into the corresponding
+      magic IEEE floating point values. Only those strings (case independent)
+      work.  With --posix, gawk calls the system strtod directly. You asked
+      for it, you got it, you deal with it.
+  14. Defining YYDEBUG enables the -D command line option.
+  15. Gawk should now work out of the box on Tandem NSK/OSS systems.
+  16. Lint messages rationalized: many more of the messages are now printed
+      only once, instead of every time they are encountered.
+  17. The strftime() function now accepts an optional third argument, which
+      if non-zero or non-null, indicates that the time should be formatted
+      as UTC instead of as local time.
+  18. The precedence of concatenation and `| getline' (in something like
+      "echo " "date" | getline stuff) has been reverted to the earlier
+      behavior and now once again matches Unix awk.
+  19. New configure time flag --disable-directories-fatal which causes
+      gawk to silently skip directories on the command line.  This behavior
+      is also enabled for --traditional, since it's what Unix awk does.
+  20. A new option, --use-lc-numeric, forces use of the locale's decimal
+      point without the rest of the draconian restrictions imposed by
+      --posix. This softens somewhat the stance taken in item #2.
+  21. Everything relevant has been updated to the GPL 3.
+  22. Array growth should be faster now, at no cost in space.
+  23. Lots more tests.
+  24. One new translation.
+  25. Various bugs fixed, see the ChangeLog for details.
+
+-------------------------------------------------------------------
+Mon Oct 15 12:55:28 CEST 2007 - schwab@suse.de
+
+- Update to gawk 3.1.5h.
+
+-------------------------------------------------------------------
+Fri May 25 15:00:37 CEST 2007 - schwab@suse.de
+
+- Update to gawk 3.1.5g.
+
+-------------------------------------------------------------------
+Fri Sep  1 13:02:34 CEST 2006 - schwab@suse.de
+
+- Drop doc subpackage.
+
+-------------------------------------------------------------------
+Mon Jul 24 10:35:21 CEST 2006 - schwab@suse.de
+
+- Add multibyte patch.
+
+-------------------------------------------------------------------
+Wed Jul  5 10:51:33 CEST 2006 - schwab@suse.de
+
+- Fix conversion error.
+
+-------------------------------------------------------------------
+Tue Jul  4 10:56:26 CEST 2006 - schwab@suse.de
+
+- New version of last change.
+
+-------------------------------------------------------------------
+Sun Jun 18 16:13:32 CEST 2006 - schwab@suse.de
+
+- Properly handle /dev/fd.
+
+-------------------------------------------------------------------
+Sat Mar  4 23:03:26 CET 2006 - schwab@suse.de
+
+- Add two wide string bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb  9 11:39:04 CET 2006 - schwab@suse.de
+
+- Fix dfa generation of interval expressions [#148453].
+
+-------------------------------------------------------------------
+Thu Jan 26 18:51:30 CET 2006 - schwab@suse.de
+
+- Use %jobs.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 23:59:09 CET 2005 - schwab@suse.de
+
+- Fix length on strings with embedded NUL.
+
+-------------------------------------------------------------------
+Fri Oct  7 14:18:37 CEST 2005 - schwab@suse.de
+
+- Fix off-by-one when processing FIELDWIDTHS.
+
+-------------------------------------------------------------------
+Fri Sep  2 19:05:49 CEST 2005 - schwab@suse.de
+
+- Update to gaw 3.1.5.
+
+-------------------------------------------------------------------
+Wed May 25 14:10:25 CEST 2005 - schwab@suse.de
+
+- Update flonum parsing patch.
+
+-------------------------------------------------------------------
+Sat Feb 12 00:25:51 CET 2005 - schwab@suse.de
+
+- Add libpng to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Feb  2 18:47:07 CET 2005 - schwab@suse.de
+
+- Ignore exit code from pipes.
+
+-------------------------------------------------------------------
+Tue Sep 28 23:22:50 CEST 2004 - schwab@suse.de
+
+- Fix parsing of floating point number that start with more than one
+  zero.
+
+-------------------------------------------------------------------
+Sun Sep 19 23:49:11 CEST 2004 - schwab@suse.de
+
+- Disable invalid shortcut in dfaexec [#44512].
+- Fix reading past EOF.
+
+-------------------------------------------------------------------
+Mon Aug 23 22:35:32 CEST 2004 - schwab@suse.de
+
+- Update to gawk 3.1.4.
+
+-------------------------------------------------------------------
+Fri Aug  6 16:57:35 CEST 2004 - schwab@suse.de
+
+- Use random from glibc [#43568].
+
+-------------------------------------------------------------------
+Thu Aug  5 15:45:04 CEST 2004 - schwab@suse.de
+
+- Update to gawk 3.1.3l.
+
+-------------------------------------------------------------------
+Thu Jul 22 15:20:23 CEST 2004 - schwab@suse.de
+
+- Fix int/long mismatch.
+
+-------------------------------------------------------------------
+Mon Apr  5 14:27:35 CEST 2004 - schwab@suse.de
+
+- Disable non-POSIX strtod replacement [#38332].
+
+-------------------------------------------------------------------
+Fri Mar 12 14:40:57 CET 2004 - schwab@suse.de
+
+- Fix doc bug.
+
+-------------------------------------------------------------------
+Sat Jan 10 12:57:19 CET 2004 - adrian@suse.de
+
+- do not strip during install, let rpm do it
+
+-------------------------------------------------------------------
+Wed Jul  9 15:21:10 CEST 2003 - schwab@suse.de
+
+- Update to gawk 3.1.3.
+
+-------------------------------------------------------------------
+Thu Jun  5 13:33:33 CEST 2003 - jh@suse.de
+
+- Enable profile feedback
+
+-------------------------------------------------------------------
+Tue May 13 11:59:43 CEST 2003 - schwab@suse.de
+
+- Add %defattr.
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:11:30 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Mar 27 16:56:42 CET 2003 - schwab@suse.de
+
+- Update to gawk 3.1.2.
+
+-------------------------------------------------------------------
+Fri Feb  7 13:49:41 CET 2003 - schwab@suse.de
+
+- Fix spec file.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:48:28 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Mon Nov 18 12:04:42 CET 2002 - schwab@suse.de
+
+- Add AM_GNU_GETTEXT_VERSION.
+
+-------------------------------------------------------------------
+Tue Sep 17 18:39:14 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Aug  5 17:25:58 CEST 2002 - schwab@suse.de
+
+- Add fix for gsub.
+
+-------------------------------------------------------------------
+Mon Jul 29 11:43:21 CEST 2002 - schwab@suse.de
+
+- Fix broken patch.
+
+-------------------------------------------------------------------
+Thu Jul 18 12:08:53 CEST 2002 - schwab@suse.de
+
+- Add lint check for delete.
+
+-------------------------------------------------------------------
+Tue May 14 17:28:35 CEST 2002 - schwab@suse.de
+
+- Add fix for memory leak in loops.
+- Add fix for side effects in split().
+
+-------------------------------------------------------------------
+Fri May 10 13:54:47 CEST 2002 - schwab@suse.de
+
+- Update to gawk-3.1.1 (bugfix release).
+
+-------------------------------------------------------------------
+Tue Apr  9 16:59:47 CEST 2002 - schwab@suse.de
+
+- Fix default AWKPATH.
+
+-------------------------------------------------------------------
+Sat Mar 30 23:13:12 CET 2002 - schwab@suse.de
+
+- Fix for new gettext.
+
+-------------------------------------------------------------------
+Sun Mar 17 17:37:30 CET 2002 - schwab@suse.de
+
+- Fix buffer overflow.
+
+-------------------------------------------------------------------
+Mon Feb 18 14:35:45 CET 2002 - schwab@suse.de
+
+- Workaround spurious limitation in regex matcher.
+- Fix bogus assertion in strtonum.
+
+-------------------------------------------------------------------
+Mon Jan 28 18:21:22 CET 2002 - schwab@suse.de
+
+- Add i18n patch.
+
+-------------------------------------------------------------------
+Fri Jan 11 17:09:51 CET 2002 - schwab@suse.de
+
+- Two more patches from the author:
+  * Fix use of getgroups
+  * Fix grammer in for statement.
+
+-------------------------------------------------------------------
+Fri Nov 30 14:31:42 CET 2001 - schwab@suse.de
+
+- Replace overrun patch with a better one.
+- Fix provides.
+
+-------------------------------------------------------------------
+Mon Nov 26 15:17:59 CET 2001 - schwab@suse.de
+
+- Use regex from libc again.
+
+-------------------------------------------------------------------
+Wed Nov  7 16:51:32 CET 2001 - schwab@suse.de
+
+- Fix memory overrun.
+
+-------------------------------------------------------------------
+Mon Nov  5 23:32:06 CET 2001 - schwab@suse.de
+
+- Fix lint checking and off-by-one error for printf.
+
+-------------------------------------------------------------------
+Fri Oct  5 16:08:45 CEST 2001 - schwab@suse.de
+
+- Fix for memory corruption bug from author.
+
+-------------------------------------------------------------------
+Tue Sep 25 16:34:38 CEST 2001 - schwab@suse.de
+
+- Don't set close-on-exec on standard fd (from author).
+
+-------------------------------------------------------------------
+Thu Aug 23 16:31:12 CEST 2001 - schwab@suse.de
+
+- Fix for unary minus operator from author.
+
+-------------------------------------------------------------------
+Wed Aug  8 20:29:20 CEST 2001 - schwab@suse.de
+
+- Fix for memory leak from author.
+
+-------------------------------------------------------------------
+Wed Jul 25 19:20:35 CEST 2001 - schwab@suse.de
+
+- Fix for empty RS and and blank input from author.
+
+-------------------------------------------------------------------
+Mon Jul 16 20:25:15 CEST 2001 - schwab@suse.de
+
+- Fix for index(foo, "") from author.
+
+-------------------------------------------------------------------
+Wed Jun 13 19:55:16 CEST 2001 - schwab@suse.de
+
+- Include fix for allocation bug from author.
+
+-------------------------------------------------------------------
+Mon Jun  4 18:27:31 CEST 2001 - schwab@suse.de
+
+- Update to 3.1.0.
+
+-------------------------------------------------------------------
+Sun May 13 21:23:29 CEST 2001 - schwab@suse.de
+
+- Use included regex.c (#7953).
+
+-------------------------------------------------------------------
+Wed May  9 19:37:33 CEST 2001 - cstein@suse.de
+
+- repacked sources with bzip2. 
+
+-------------------------------------------------------------------
+Thu Apr 12 19:14:40 CEST 2001 - schwab@suse.de
+
+- Add patch for \<\> from author.
+
+-------------------------------------------------------------------
+Tue Mar 20 14:10:02 CET 2001 - schwab@suse.de
+
+- Add parser patch from author.
+
+-------------------------------------------------------------------
+Thu Mar  8 14:32:03 CET 2001 - schwab@suse.de
+
+- Add two patches from author.
+
+-------------------------------------------------------------------
+Tue Oct 24 16:38:39 CEST 2000 - schwab@suse.de
+
+- Rename subpackage gawkdoc to gawk-doc.
+
+-------------------------------------------------------------------
+Thu Sep 14 15:01:25 CEST 2000 - schwab@suse.de
+
+- Add FIELDWIDTHS bug fix from arnold@skeeve.com.
+
+-------------------------------------------------------------------
+Tue Aug  8 13:20:49 CEST 2000 - schwab@suse.de
+
+- Update to 3.0.6.
+
+-------------------------------------------------------------------
+Fri Jun 30 12:58:10 CEST 2000 - schwab@suse.de
+
+- Fix handling of array indexes.
+
+-------------------------------------------------------------------
+Tue Jun 27 10:44:19 CEST 2000 - schwab@suse.de
+
+- Update to 3.0.5.
+
+-------------------------------------------------------------------
+Tue May  9 16:17:20 CEST 2000 - schwab@suse.de
+
+- Fix symlinks.
+
+-------------------------------------------------------------------
+Mon May  8 12:07:00 CEST 2000 - schwab@suse.de
+
+- Switch to BuildRoot.
+- Move /usr/bin/{,g}awk to /bin.
+
+-------------------------------------------------------------------
+Fri Apr  7 01:21:59 MEST 2000 - bk@suse.de
+
+- added suse autoconf update macro
+
+-------------------------------------------------------------------
+Tue Apr  4 12:21:09 CEST 2000 - schwab@suse.de
+
+- Fix IGNORECASE bug.
+
+-------------------------------------------------------------------
+Fri Mar 31 13:20:38 CEST 2000 - schwab@suse.de
+
+- Include more docs.
+
+-------------------------------------------------------------------
+Tue Feb 15 17:53:02 CET 2000 - schwab@suse.de
+
+- Fix parser bug.
+
+-------------------------------------------------------------------
+Tue Feb 15 15:29:21 CET 2000 - schwab@suse.de
+
+- Update config{guess,sub} to latest version.
+
+-------------------------------------------------------------------
+Tue Jan 18 14:10:26 CET 2000 - schwab@suse.de
+
+- /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 11:14:07 CEST 1999 - schwab@suse.de
+
+- specfile cleanup
+- run "make check"
+- use regex from libc
+
+-------------------------------------------------------------------
+Mon Jul 19 11:32:32 MEST 1999 - florian@suse.de
+
+- update to gawk 3.0.4
+
+-------------------------------------------------------------------
+Thu Dec 10 07:38:32 MET 1998 - florian@suse.de
+
+- egcs miscompiles gawk, use gcc instead
+
+-------------------------------------------------------------------
+Fri Jul 17 14:53:55 MEST 1998 - werner@suse.de
+
+- Use mktemp for igawk
+
+-------------------------------------------------------------------
+Wed May 13 17:21:23 MEST 1998 - ro@suse.de
+
+- used dif from jurix-mirror (date Mar 7 1998)
+- some of the patches from gnu.utils.bug are still buggy. applied some new
+  patches from the author Aharon Robbins to field.c.
+
+-------------------------------------------------------------------
+Mon Mar  2 16:45:10 MET 1998 - florian@suse.de
+
+- use a complete new patchkit from various bug-reports
+  to gnu.utils.bug
+
+-------------------------------------------------------------------
+Wed Feb  4 17:53:53 MET 1998 - ro@suse.de
+
+- build gawkdoc from same specfile
+
+----------------------------------------------------------------------------
+Thu Oct  9 19:08:47 MEST 1997 - florian@suse.de
+
+- prepare for autobuild
+
+----------------------------------------------------------------------------
+Fri Jul 18 14:52:35 MEST 1997 - florian@suse.de
+
+- add bug-fixes from gnu.utils.bug
+
+----------------------------------------------------------------------------
+Fri Jul 18 14:52:35 MEST 1997 - florian@suse.de
+
+- add several patches from gnu.utils.bug
+- gawk should work with c-news again
+
+----------------------------------------------------------------------------
+Tue May 20 14:10:37 MEST 1997 - florian@suse.de
+
+- update to version 3.0.3
+
+----------------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+- add bug-fixes from gnu.utils.bugs
+- do not use /usr/libexec anymore
+
+----------------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+- update to version 3.0.2

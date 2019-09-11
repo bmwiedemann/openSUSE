@@ -1,0 +1,43 @@
+--- swingx-0.9.4-src/nbproject/project.properties	2008-09-07 06:10:24.000000000 +0200
++++ swingx-0.9.4-src.mef/nbproject/project.properties	2008-11-04 16:52:52.000000000 +0100
+@@ -28,11 +28,10 @@
+ # Library references                                     #
+ ##########################################################
+ file.reference.jmock-1.1.0RC1.jar=lib/jmock-1.1.0RC1.jar
+-file.reference.MultipleGradientPaint.jar=lib/optional/MultipleGradientPaint.jar
++file.reference.batik-all.jar=/usr/share/java/batik-all.jar
+ file.reference.src-java=src/java
+ file.reference.src-test=src/test
+-file.reference.swing-worker.jar=lib/optional/swing-worker.jar
+-file.reference.Filters.jar=lib/optional/Filters.jar
++# file.reference.Filters.jar=lib/optional/Filters.jar
+ 
+ ##########################################################
+ # Build, test, debug, etc Classpaths                     #
+@@ -42,9 +41,7 @@
+ debug.test.classpath=\
+     ${run.test.classpath}
+ javac.classpath=\
+-    ${file.reference.MultipleGradientPaint.jar}:\
+-    ${file.reference.swing-worker.jar}:\
+-    ${file.reference.Filters.jar}
++    ${file.reference.batik-all.jar}
+ javac.test.classpath=\
+     ${javac.classpath}:\
+     ${build.classes.dir}:\
+@@ -102,7 +99,7 @@
+ # Properties for a "main class" and running that class.
+ # These are generally not used in SwingX
+ #####
+-main.class=org.jdesktop.swingx.painter.demo.PainterDemoSet
++# main.class=org.jdesktop.swingx.painter.demo.PainterDemoSet
+ application.args=
+ # Space-separated list of JVM arguments used when running the project
+ # (you may also define separate properties like run-sys-prop.name=value instead of -Dname=value
+@@ -135,4 +132,4 @@
+ build.branch=MAIN
+ 
+ # Location of the demo-taglet jar file
+-demo.taglet.jar=lib/build-only/demo-taglet.jar
+\ No newline at end of file
++demo.taglet.jar=lib/build-only/demo-taglet.jar

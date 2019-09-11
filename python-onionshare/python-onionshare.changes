@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Aug 13 07:50:48 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.1
+  * New feature: Auto-start timer, which allows scheduling when the server starts
+  * Renamed CLI argument --debug to --verbose
+  * Make Tor connection timeout configurable as a CLI argument
+  * Updated various dependencies, including to fix third-party security issues in urllib3, jinja2, and jQuery
+  * Update Tor to 0.3.5.8
+  * New translations:
+        Traditional Chinese (正體中文 (繁體)),
+        Simplified Chinese (中文 (简体))
+        Finnish (Suomi)
+        German (Deutsch)
+        Icelandic (Íslenska)
+        Irish (Gaeilge)
+        Norwegian Bokmål (Norsk Bokmål)
+        Polish (Polski)
+        Portuguese Portugal (Português (Portugal))
+        Telugu (తెలుగు)
+        Turkish (Türkçe)
+        Ukrainian (Українська)
+  * Removed translations because less than 90% of the strings were translated:
+        Bengali (বাংলা)
+        Persian (فارسی)
+        
+-------------------------------------------------------------------
+Fri Feb 22 09:26:00 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Version 2.0
+  * Receiver mode allows you to receive files with OnionShare, instead of only
+    sending files
+  * Support for next generation onion services
+  * Public mode feature, for public uses of OnionShare, which when enabled
+    turns off slugs in the URL and removes the limit on how many 404 requests
+    can be made
+  * If you're sharing a single file, don't zip it up
+  * Full support for meek_lite (Azure) bridges
+  * Allow selecting your language from a dropdown
+
+-------------------------------------------------------------------
+Fri Dec 21 16:34:04 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.3.2 to fix CVE-2018-19960 (boo#1120205)
+
+-------------------------------------------------------------------
+Wed Dec 12 21:11:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim a few redundancies from the descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 12 10:29:46 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Use full source URLs to verify the integrity
+  https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Nov 23 17:20:53 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.3.1
+  initial build on OBS 
+  thanks to scarabeus_iv for the testing part!

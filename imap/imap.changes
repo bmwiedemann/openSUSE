@@ -1,0 +1,375 @@
+-------------------------------------------------------------------
+Mon Aug  5 09:07:45 UTC 2019 - pgajdos@suse.com
+
+- use pam_keyinit.so module [bsc#1144042]
+- modified sources
+  % imap.pamd
+
+-------------------------------------------------------------------
+Wed Jul 24 11:54:03 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Tue Apr 10 15:05:31 UTC 2018 - werner@suse.de
+
+- update to 2007f for bug fixes
+- Make shared library -l(ib)c-client in one pass
+- Avoid false positiv warnings about missing compiler options
+- Enable kerberos support
+- Enable mlock
+
+-------------------------------------------------------------------
+Mon Mar 26 12:15:18 UTC 2018 - dimstar@opensuse.org
+
+- Own %{_sysconfdir}/xinetd.d: filesystem won't own this directory
+  much longer (boo#1084457).
+
+-------------------------------------------------------------------
+Tue Jul  4 10:48:02 UTC 2017 - tchvatal@suse.com
+
+- Rename README.SuSE to README.SUSE
+- Cleanup with spec-cleaner
+- Add patches from RH and Debian:
+  * imap-2007e-poll.patch
+  * imap-2007f-format-security.patch
+  * imap-openssl-1.1.patch
+
+-------------------------------------------------------------------
+Mon Mar 14 18:25:44 UTC 2016 - crrodriguez@opensuse.org
+
+- spec: most C sources need removal of old K&R extern int errno;
+  declaration, which does not actually work with glibc where
+  errno is a macro that expands to a function call.
+- spec: build with -DOPENSSL_NO_DEPRECATED and
+  -DOPENSSL_NO_SSL_INTERN to emulate as close as possible
+  API/ABI availability of upcoming openSSL releases.
+- imap-openssl.patch: remove ephemeral RSA keys support, it is
+  considered insecure.openSSL 1.1 no longer supports this feature
+  and package will fail to build.
+- imap-openssl.patch: remove code that uses insecure tmpnam()
+  function, it is not required on linux systems.
+- imap-implicit-decls.patch: fix implicit fortify/pointer
+  declaration rpmlint warnings.
+
+-------------------------------------------------------------------
+Sat Feb 13 13:06:16 UTC 2016 - crrodriguez@opensuse.org
+
+- imap-openssl.patch: Support TLS 1.2 and ECDH ciphersuites.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:35:31 CET 2013 - mls@suse.de
+
+- link libc-client with -lpam (as we link other packages with
+  with --as-needed)
+
+-------------------------------------------------------------------
+Fri Dec 18 18:39:49 UTC 2009 - chris@computersalat.de
+
+- update to 2007e which
+  o fix bugs
+- cleanup spec
+  o sort tags
+  o {name} macro
+- rework patches
+  o imap-2002c-c++.diff > imap-2007e-c++.patch
+  o imap-2006c1.diff > imap-2007e.patch
+- rpmlint
+  o deprecated-use-of-%run_ldconfig
+  o shlib-policy-name-error
+    - renamed sub-pkg 'lib' to 'libc-client2007e_suse'
+  o files-duplicate {_includedir}
+    - added rpmlintrc
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:21 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Jan  7 11:42:25 CET 2008 - mskibbe@suse.de
+
+- Bug 351197 - several packages use wrong dir for SuSEfirewall2
+  services files
+
+-------------------------------------------------------------------
+Fri Mar 16 08:08:11 CET 2007 - mskibbe@suse.de
+
+- fix ports in firewall file 
+
+-------------------------------------------------------------------
+Fri Mar  2 14:50:51 CET 2007 - mskibbe@suse.de
+
+- imap : Support for FATE #300687: Ports for SuSEfirewall added
+  via packages (#250579)
+
+-------------------------------------------------------------------
+Thu Nov 16 10:11:37 CET 2006 - mskibbe@suse.de
+
+- update to version 2006c1 which
+  o fix bugs
+  o fix bug( Bug 217287 - imap-2004g_suse-28: use of dangerous
+    "gets" function )
+  o fix bug( Bug 144598 - imap-2004g_suse-4: dodgy code )
+
+-------------------------------------------------------------------
+Thu Feb  2 11:26:25 CET 2006 - ro@suse.de
+
+- give libc-client.so a SONAME 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 23:47:06 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 11 20:16:30 CET 2006 - seife@suse.de
+
+- add -fstack-protector
+
+-------------------------------------------------------------------
+Mon Oct 10 16:21:14 CEST 2005 - rommel@suse.de
+
+- version update to imap-2004g (includes fix for Bug #120608)
+
+-------------------------------------------------------------------
+Mon Aug 22 16:50:28 CEST 2005 - rommel@suse.de
+
+- the FreeFork license used by UW says we have to make it clear in the version
+  number that we modified the sources; hinted by our license manager
+
+-------------------------------------------------------------------
+Fri Jan 21 14:59:10 CET 2005 - arvin@suse.de
+
+- updated to version 2004c
+
+-------------------------------------------------------------------
+Tue Dec 14 12:25:34 CET 2004 - arvin@suse.de
+
+- updated to version 2004b RC1
+
+-------------------------------------------------------------------
+Mon Nov 15 14:34:20 CET 2004 - kukuk@suse.de
+
+- Use common-* PAM config files in imap.pamd and pop.pamd
+
+-------------------------------------------------------------------
+Mon Sep 13 12:11:59 CEST 2004 - arvin@suse.de
+
+- fixes for mailbox access over rsh and ssh (bug #43905)
+
+-------------------------------------------------------------------
+Fri Jul 16 10:39:58 CEST 2004 - arvin@suse.de
+
+- updated to version 2004a (bugfix release)
+
+-------------------------------------------------------------------
+Tue May 11 10:06:36 CEST 2004 - arvin@suse.de
+
+- updated to version 2004
+- enable IPv6 support
+
+-------------------------------------------------------------------
+Fri Feb 27 10:42:11 CET 2004 - arvin@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jan 16 13:28:37 CET 2004 - kukuk@suse.de
+
+- Add pam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Fri Oct 31 16:31:37 CET 2003 - arvin@suse.de
+
+- build rpms as non-root user
+
+-------------------------------------------------------------------
+Wed Sep 24 15:36:08 CEST 2003 - arvin@suse.de
+
+- updated to version 2002e (minor release with primarily bugfixes)
+
+-------------------------------------------------------------------
+Thu Jun 12 11:22:36 CEST 2003 - arvin@suse.de
+
+- fixed directory file list
+
+-------------------------------------------------------------------
+Fri Jun 06 21:21:02 CEST 2003 - arvin@suse.de
+
+- updated to version 2002d (minor release with primarily bugfixes)
+
+-------------------------------------------------------------------
+Thu Apr 17 10:59:04 CEST 2003 - arvin@suse.de
+
+- updated to version 2002c (minor release with primarily bugfixes)
+
+-------------------------------------------------------------------
+Tue Apr 15 12:43:49 CEST 2003 - arvin@suse.de
+
+- explain how to create a certificate (bug #26281)
+
+-------------------------------------------------------------------
+Fri Apr 11 16:25:52 CEST 2003 - arvin@suse.de
+
+- added tls/ssl services to xinetd config file
+
+-------------------------------------------------------------------
+Thu Apr 10 20:11:32 CEST 2003 - arvin@suse.de
+
+- updated to version 2002b (maintenace release)
+
+-------------------------------------------------------------------
+Thu Apr 10 16:59:02 CEST 2003 - arvin@suse.de
+
+- fixed path for certificates (now /etc/ssl/certs) (bug #25762)
+
+-------------------------------------------------------------------
+Thu Mar 06 16:40:38 CET 2003 - arvin@suse.de
+
+- don't use tcpwrapper config file for xinetd (bug #24773)
+
+-------------------------------------------------------------------
+Mon Mar 03 15:05:09 CET 2003 - arvin@suse.de
+
+- added config file for xinetd
+
+-------------------------------------------------------------------
+Fri Feb  7 13:16:05 CET 2003 - kukuk@suse.de
+
+- Use pam_unix2.so instead of pam_unix.so
+- Don't use absolute path to pam modules
+
+-------------------------------------------------------------------
+Wed Nov 20 11:38:09 CET 2002 - arvin@suse.de
+
+- updated to imap version 2002
+- now compiled with the default SSLTYPE=nopwd in accordance with
+  current IESG security requirements
+
+-------------------------------------------------------------------
+Thu Nov 07 17:21:29 CET 2002 - arvin@suse.de
+
+- include linkage.c in imap-devel
+
+-------------------------------------------------------------------
+Tue Sep 03 18:02:10 CEST 2002 - arvin@suse.de
+
+- fixed header files to be C++ compliant
+
+-------------------------------------------------------------------
+Wed Jul 24 19:35:33 CEST 2002 - arvin@suse.de
+
+- moved shared library into extra sub package
+
+-------------------------------------------------------------------
+Fri Jul 12 14:52:43 CEST 2002 - arvin@suse.de
+
+- imap-devel package requires imap package
+
+-------------------------------------------------------------------
+Mon May 06 12:18:14 CEST 2002 - arvin@suse.de
+
+- fixed overflow while parsing rfc822 messages
+
+-------------------------------------------------------------------
+Mon Apr 22 17:57:04 CEST 2002 - arvin@suse.de
+
+- make c-client.a a link to libc-client.a
+
+-------------------------------------------------------------------
+Thu Apr 18 13:55:08 CEST 2002 - kukuk@suse.de
+
+- Use -fPIC instead of -fpic
+
+-------------------------------------------------------------------
+Mon Feb 04 17:38:57 CET 2002 - arvin@suse.de
+
+- updated to version 2001a (maintenance release)
+- turned SSL support on again
+
+-------------------------------------------------------------------
+Fri Aug 24 14:18:50 CEST 2001 - ro@suse.de
+
+- removed /lib/security path from pam.d config file
+
+-------------------------------------------------------------------
+Mon Jun 18 14:33:25 CEST 2001 - arvin@suse.de
+
+- added osdep.h to imap-devel (bug #8698)
+
+-------------------------------------------------------------------
+Tue May 08 16:29:27 CEST 2001 - arvin@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Apr 18 12:05:18 CEST 2001 - arvin@suse.de
+
+- do not explicit provide imap, it's done automatically
+
+-------------------------------------------------------------------
+Tue Feb  6 16:31:54 CET 2001 - arvin@suse.de
+
+- updated to version 2000c
+- fixed to compile without kernel header files
+
+-------------------------------------------------------------------
+Tue Dec 19 16:52:19 CET 2000 - arvin@suse.de
+
+- ensure to link against shared version of libcrypto
+
+-------------------------------------------------------------------
+Mon Dec 18 17:52:56 CET 2000 - arvin@suse.de
+
+- added SSL support
+
+-------------------------------------------------------------------
+Fri Nov  3 15:25:26 CET 2000 - kukuk@suse.de
+
+- Fix compiling on SPARC
+
+-------------------------------------------------------------------
+Fri Nov  3 11:04:44 CET 2000 - arvin@suse.de
+
+- changed group tag
+
+-------------------------------------------------------------------
+Thu Oct 26 14:03:56 CEST 2000 - arvin@suse.de
+
+- new version with imap 2000
+- contains both programs and libraries
+
+-------------------------------------------------------------------
+Fri Mar 17 16:37:47 MET 2000 - rolf@suse.de
+
+- removed binaries [bug#2378]
+- compile -fpic for shared lib
+- use RPM macros for locations of files
+- set Group: tag
+
+-------------------------------------------------------------------
+Thu Dec 23 12:20:25 MET 1999 - rolf@suse.de
+
+- make shared lib work and strip it
+
+-------------------------------------------------------------------
+Thu Dec  9 13:49:46 MET 1999 - rolf@suse.de
+
+- new version 4.7
+- build for PAM systems (LDAP not supported)
+- apply lock-patch
+- also build shared lib
+
+-------------------------------------------------------------------
+Fri Oct  1 16:25:05 MEST 1999 - rolf@suse.de
+
+- initial version 4.5.BETA

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Jan 26 14:53:18 UTC 2018 - guillaume@opensuse.org
+
+-  Remove full URL since it is not available anymore there
+
+-------------------------------------------------------------------
+Fri Jan 26 14:48:43 UTC 2018 - guillaume@opensuse.org
+
+- Fix check on AArch64, see 
+  https://rt.cpan.org/Public/Bug/Display.html?id=95400
+  adds 0001-Add-support-for-cpu_type-on-ARM-and-AArch64-Linux-pl.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 05:29:48 UTC 2016 - dmueller@suse.com
+
+- Fix build on AArch64/arm, see 
+  https://rt.cpan.org/Public/Bug/Display.html?id=95400
+  adds 0002-cpu_clock-can-be-undefined-on-an-ARM.patch
+
+-------------------------------------------------------------------
+Sat Mar 15 13:04:12 UTC 2014 - coolo@suse.com
+
+- updated to 0.61
+  v0.60 - Added FreeBSD support (Thanks Johan & SREZIC)
+  v0.61 - Fix test numbering issue
+
+-------------------------------------------------------------------
+Fri Jan 25 09:56:42 UTC 2013 - idonmez@suse.com
+
+- Initial release for build.opensuse.org
+
+

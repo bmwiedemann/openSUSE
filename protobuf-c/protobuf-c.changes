@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Fri Jun  7 13:45:12 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Add protobuf-c-namespace.patch to fix building with protobuf
+  3.8.0
+
+-------------------------------------------------------------------
+Tue May 14 11:15:56 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133277).
+
+-------------------------------------------------------------------
+Fri Oct  5 10:14:36 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.3.1
+  * Restore protobuf-2.x compatibility
+  * Convert uses of protobuf's scoped_ptr.h to C++11 std::unique_ptr,
+    needed to compile against protobuf 3.6.1.
+- Rename %soname to %sover to better reflect its use.
+
+-------------------------------------------------------------------
+Fri Dec 22 14:29:07 UTC 2017 - jengelh@inai.de
+
+- Drop %__-type macro indirections.
+
+-------------------------------------------------------------------
+Thu Dec 14 15:59:33 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.3.0:
+  * Add test case for the issue in #220 (#254).
+  * Fix issue #251, "Bad enums with multiple oneofs" (#256).
+  * Add warning flags to my_CFLAGS (#257).
+  * Fix namespace errors when compiled with latest protobuf (#280).
+  * Bump minimum required header version for proto3 syntax (#282).
+  * Relax autoconf constraint from v2.64 to v2.63 so that it works
+    on older Linux distros (#233).
+  * Fix bigendian -Wunused-label warning (#215).a
+  * proto3 support (#228).
+  * Remove leftover FIXME comment (#258).
+  * Fix proto3 "is zeroish" evaluation (#264).
+  * Small cleanup in oneof handling (#265).
+  * Rework is_zeroish one more time (#267).
+  * proto3: make strings default to "" instead of NULL (#274).
+  * CMake: Allow protobuf-c to be included via include_subdirectory
+    (#245).
+- Changes from version 1.2.1:
+  * protoc-c: Generate code that uses the universal zero initializer
+    {0} when initializing a oneof union (#187, #205).
+- Changes from version 1.2.0:
+  * Implement the "optimize_for = CODE_SIZE" option (#183).
+  * Eliminate undefined behavior in zigzag functions (#198).
+  * Pack negative enum values correctly (#199).
+  * Fix protobuf_c_message_get_packed_size() on 16-bit systems
+    (#196, #197).
+  * Update link to Autotools Mythbuster to canonical site (#201).
+  * Skip test suite when cross-compiling (#184).
+
+-------------------------------------------------------------------
+Tue May 26 11:13:22 UTC 2015 - dgutu@suse.com
+
+- Replaced autogen.sh in spec file with autoreconf -fvi
+
+-------------------------------------------------------------------
+Tue Apr  7 06:29:51 UTC 2015 - meissner@suse.com
+
+- Update to version 1.1.1:
+  [ Ilya Lipnitskiy ]
+  * Munge C block comment delimiters in protobuf comments, preventing syntax
+    errors in generated header files (Issue #180, #185).
+
+  * Add static qualifier to ProtobufCEnumValue and ProtobufCEnumValueIndex
+    variables in generated output.  
+
+  [ Oleg Efimov ]
+  * Fix -Wpointer-sign compiler diagnostics in the test suite.
+
+  * Check for NULL pointers in protobuf_c_message_free_unpacked() (Issue #177).
+
+  * Exclude protoc-c and downloaded protobuf sources from Coveralls report.
+
+  [ Andrey Myznikov ]
+  * Fix incorrect 'short_name' field values in ProtobufCServiceDescriptor
+    variables in generated output.
+
+-------------------------------------------------------------------
+Thu Mar  5 10:11:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.1.0:
+  + Fix a bug when merging optional byte fields.
+  + Documentation updates.
+  + Implement oneof support (Issue #174). Protobuf 2.6.0 or newer
+    is now required to build protobuf-c.
+  + Print leading comments for enum, message, and field definitions
+    into generated header files (Issue #175).
+- Changes from version 1.0.2:
+  + Fix a build failure with Protobuf 2.6.0 related to aliased enum
+    constants (Issue #163).
+  + Protobuf 2.5.0 or newer is now required to build protobuf-c
+    (Issue #166). This is due to the fix for #163.
+  + Eliminate void pointer arithmetic (Issue #167).
+  + Always define PROTOBUF_C__DEPRECATED, even on compilers that
+    are not GCC (Issue #167).
+  + Work around the lack of the 'inline' keyword in Microsoft
+    compilers (Issue #167).
+  + Add a CMakeLists.txt file as a fallback build system for
+    Windows (Issue #168).
+  + Fix a build failure in the test suite that occurred with a
+    parallel make running on a system with a large number of CPUs
+    (Issue #156, #169).
+- Changes from version 1.0.1:
+  + Explicitly set the .data field of ProtobufCBinaryData's to NULL
+    when unpacking a zero length byte string (Issue #157).
+- For a list of changes between 0.15 and 1.0.0, please refer to the
+  extensive ChangeLog file.
+- Bump soname to 1, following upstream.
+- Update Url tag: project moved over to github.
+- Update license to be BSD-3-Clause and install LICENSE file.
+
+-------------------------------------------------------------------
+Wed Aug 31 07:11:06 UTC 2011 - coolo@suse.com
+
+- update to 0.15
+   - make protobuf_c_message_init() into a function (Issue #49, daveb)
+   - Fix for freeing memory after unpacking bytes w/o a default-value.
+     (Andrei Nigmatulin)
+   - minor windows portability issues (use ProtobufC_FD) (Pop Stelian)
+   - --with-endianness={little,big} (Pop Stelian)
+   - bug setting up values of has_idle in public dispatch,
+     make protobuf_c_dispatch_run() use only public members (daveb)
+   - provide cmake support and some Windows compatibility (Nikita Manovich)
+
+-------------------------------------------------------------------
+Wed Apr 13 22:50:53 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.14)
+

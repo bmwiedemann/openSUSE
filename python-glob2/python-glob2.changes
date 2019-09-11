@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Jun 19 11:31:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7
+  * Fix deprecation warning.
+
+-------------------------------------------------------------------
+Thu Mar 21 10:53:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependency on python-devel
+
+-------------------------------------------------------------------
+Tue May 22 13:41:28 UTC 2018 - bruno@ioda-net.ch
+
+- spec-cleaner (date/url)
+- Use only %license 
+
+-------------------------------------------------------------------
+Wed Oct  4 15:54:13 UTC 2017 - bruno@ioda-net.ch
+
+- Backport to singlespec 
+- spec-cleanup (Mostly Year)
+- Remove Source1 (LICENSE) is now included in tar.gz
+- Update to bugfix version 0.6
+    - Support dummy recursive parameter in APIs to match the new
+      call signature of Python 3.
+    - Fix lru_cache (Kostis Anagnostopoulos).
+    - Introduce norm_paths and case_sensitive options to optionally
+      change the behaviour (Kostis Anagnostopoulos).
+  + 0.5 (2016-11-04)
+    - include_hidden option.
+    - Python 3 fixes.
+    - Publish a wheel.
+
+-------------------------------------------------------------------
+Mon Jun 13 16:01:26 UTC 2016 - toddrme2178@gmail.com
+
+- Don't check unit test coverage.
+
+-------------------------------------------------------------------
+Sun May  8 07:17:33 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Sun Mar 13 10:38:20 UTC 2016 - bruno@ioda-net.ch
+
+- Create python3 packaging 
+- Added missing LICENSE file in tar.gz from github
+  Upstream gh/issue/11
+

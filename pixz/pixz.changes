@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Jun 19 13:44:24 UTC 2017 - astieger@suse.com
+
+- Fix test suite on RHEL 5
+
+-------------------------------------------------------------------
+Mon Jun 19 12:46:41 UTC 2017 - mpluskal@suse.com
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Wed Jun 22 20:22:07 UTC 2016 - astieger@suse.com
+
+- fix build with current libarchive in CentOS/RHEL: link libbz2
+
+-------------------------------------------------------------------
+Wed Nov 18 15:53:51 UTC 2015 - astieger@suse.com
+
+- pixz 1.0.6:
+  * fixes large file support for listing
+
+-------------------------------------------------------------------
+Mon Sep 21 11:01:23 UTC 2015 - astieger@suse.com
+
+- pixz 1.0.5:
+  * add htole64 and le64toh on glibc < 2.9
+    replacing local patch pixz-endianess-functions.patch
+
+-------------------------------------------------------------------
+Sat Sep 19 20:26:01 UTC 2015 - astieger@suse.com
+
+- pixz 1.0.4:
+  * move manpage generation to bootstrap
+- pixz 1.0.3:
+  * complete autotools build
+  * large-file support for 32-bit systems
+  * creates output file with permissions of input file (if possible,
+    i.e. not reading from stdin)
+  * better error messages on incorrect input path
+  * list main differences between pixz and xz in README
+  * fix issue with extreme (-e) command line option parsing
+  * adds keep input (-k) command line option
+- packaging changes:
+  * drop pixz-underlinking.patch, no longer required with autotools
+  * remove pixz-use-static.patch, now using configure
+  * tweaks to build on CentOS and RHEL
+
+-------------------------------------------------------------------
+Tue Oct 28 23:33:20 UTC 2014 - andreas.stieger@gmx.de
+
+- support build on CentOS 7
+
+-------------------------------------------------------------------
+Sun Nov 24 16:32:31 UTC 2013 - andreas.stieger@gmx.de
+
+- support building on CentOS/RHEL, statically linking against
+  libarchive and xz (pixz-use-static.patch) 
+  and patching in missing endianess functions
+  (pixz-endianess-functions.patch)
+
+-------------------------------------------------------------------
+Wed Jan  9 18:51:06 UTC 2013 - idonmez@suse.com
+
+- Update to version 1.0.2
+  * Fix a crashing bug when input is incompressible
+    https://github.com/vasi/pixz/issues/10
+  * Add a man page
+  * Add tuning options -e, -q, -f
+- Add pixz-underlinking.patch to explicitly link to -lm
+
+-------------------------------------------------------------------
+Tue Nov 27 12:08:26 UTC 2012 - sweet_f_a@gmx.de
+
+- update to first official release 1.0
+  * Support streaming input, still decompressing in parallel
+  * Platform independent endian support
+  * Allow capping the number of threads (new switch -p)
+  * Add help option (-h)
+  * Write the compressed/uncompressed size into block headers
+
+-------------------------------------------------------------------
+Sat Sep 22 16:45:49 UTC 2012 - idonmez@suse.com
+
+- Update to git snapshot c5f99bf4b4
+  * Removed pixz-link-pthread.patch, fixed upstream.
+  * 32bit fix
+
+-------------------------------------------------------------------
+Sat Sep  1 22:42:21 UTC 2012 - idonmez@suse.com
+
+- Initial release 
+

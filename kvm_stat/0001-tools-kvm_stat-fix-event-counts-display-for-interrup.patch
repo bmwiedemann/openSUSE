@@ -1,0 +1,51 @@
+From 9a19f292a43c66726007d08b62c44f99981edbe8 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:26 +0200
+Subject: [PATCH 01/43] tools/kvm_stat: fix event counts display for
+ interrupted intervals
+
+When an update interval is interrupted via key press (e.g. space), the
+'Current' column value is calculated using the full interval length
+instead of the elapsed time, which leads to lower than actual numbers.
+Furthermore, the value should be rounded, not truncated.
+This is fixed by using the actual elapsed time for the calculation.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 124c2fc9fdf5fb1d9cea4707d7e5471e317ba3bf)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 8f74ed8e7237..4fda0b4c7354 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1009,7 +1009,8 @@ class Tui(object):
+             self.screen.addstr(row, col, '%7.1f' % (values[0] * 100 / total,))
+             col += 7
+             if values[1] is not None:
+-                self.screen.addstr(row, col, '%8d' % (values[1] / sleeptime,))
++                self.screen.addstr(row, col, '%8d' %
++                                   round(values[1] / sleeptime))
+             row += 1
+         self.screen.refresh()
+ 
+@@ -1130,9 +1131,11 @@ class Tui(object):
+         """Refreshes the screen and processes user input."""
+         sleeptime = DELAY_INITIAL
+         self.refresh_header()
++        start = 0.0  # result based on init value never appears on screen
+         while True:
+-            self.refresh_body(sleeptime)
++            self.refresh_body(time.time() - start)
+             curses.halfdelay(int(sleeptime * 10))
++            start = time.time()
+             sleeptime = DELAY_REGULAR
+             try:
+                 char = self.screen.getkey()
+-- 
+2.12.3
+

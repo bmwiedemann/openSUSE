@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sat Jun 15 07:21:15 UTC 2019 - aloisio@gmx.com
+
+- Update to version 1.0.12
+  * Added new experimental input system that should fix a lot of
+    issues related to input handling (can be enabled from
+    Preferences > Input System).
+  * Added experimental stroke filter (can be enabled in
+    Preferences > Drawing Area) to allow selections using drawing
+    tool
+  * Added ability to double click on selected objects (e.g. text
+    fields and LaTeX) to begin editing them (only available with
+    the new input system enabled)
+  * Fixed some issues with selections
+  * Fixed some issues involving autosaving
+  * Improved LaTeX editor experience, as well as bug fixes
+  * Fixed text editor copying and pasting to the wrong clipboard
+  * Fixed many zoom issues while in presentation mode
+  * Fixed some other miscellaneous issues
+
+- Use package name in the tarball
+
+-------------------------------------------------------------------
+Wed Apr 17 08:44:56 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.10:
+  * Support for a new, future file format.
+  * Lots of bug fixes and improvements.
+- Drop xournalpp-fix-horizontal-space.patch: incorporated
+  upstream.
+- New BuildRequires: pkgconfig(libzip).
+
+-------------------------------------------------------------------
+Tue Feb 19 11:34:38 UTC 2019 - badshah400@gmail.com
+
+- Update to version 1.0.8:
+  * Audio recording directly integrated, no VLC etc. needed.
+  * LaTex use now vector graphics.
+  * Multiple page layout.
+  * Minor bug fixes.
+- Add xournalpp-fix-horizontal-space.patch: fix adding horizontal
+  space to document view from preferences; patch taken from
+  upstream commit (gh#xournalpp/xournalpp#906).
+- New upstream build dependencies: pkgconfig(portaudiocpp),
+  pkgconfig(sndfile).
+
+-------------------------------------------------------------------
+Mon Jan 28 13:48:02 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop unnecessary Requires(pre/post) on desktop-file-utils.
+
+-------------------------------------------------------------------
+Thu Jan 24 20:36:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove future goals.
+
+-------------------------------------------------------------------
+Mon Jan 21 06:59:49 UTC 2019 - badshah400@gmail.com
+
+- Update to version 1.0.7:
+  * Fixes for HiDPI (gh#xournalpp/xournalpp#172).
+  * Drop bundled mathtex, thereby fixing a licensing issue
+    (mathtex is licensed under GPL-3.0,
+    gh#xournalpp/xournalpp#771).
+  * Other minor bug fixes.
+
+-------------------------------------------------------------------
+Sun Dec 30 20:38:12 UTC 2018 - badshah400@gmail.com
+
+- Initial package (version 1.0.5).

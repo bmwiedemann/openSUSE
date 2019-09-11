@@ -1,0 +1,40 @@
+Index: jython-svn-Release_2_2_1/build.xml
+===================================================================
+--- jython-svn-Release_2_2_1.orig/build.xml	2007-10-13 20:44:01.000000000 +0200
++++ jython-svn-Release_2_2_1/build.xml	2011-03-11 13:44:32.516562588 +0100
+@@ -551,7 +551,7 @@
+ 
+ 
+     <!-- build the .html files using the ht2html tool -->
+-    <target name="doc" depends="compile" if="full-build">
++    <target name="doc" depends="compile">
+         <fail unless="ht2html.dir" message="ht2html.dir is not set" />
+         <copy todir="${dist.dir}/Doc" preservelastmodified="true">
+             <fileset dir="Doc" includes="*.ht, **/*.gif" />
+@@ -572,7 +572,7 @@
+ 
+ 
+     <!-- javadoc -->
+-    <target name="javadoc" depends="compile" if="full-build">
++    <target name="javadoc" depends="compile">
+         <javadoc sourcepath="${source.dir}"
+                  destdir="${apidoc.dir}"
+                  source="${jdk.source.version}"
+@@ -588,7 +588,7 @@
+ 
+ 
+     <!-- copy for full distribution -->
+-    <target name="copy-full" if="full-build">
++    <target name="copy-full">
+         <!-- Misc files -->
+         <echo>copy misc files from ${jython.base.dir}</echo>
+         <copy todir="${dist.dir}" preservelastmodified="true">
+@@ -599,7 +599,7 @@
+ 
+         <!-- copy the CPython license -->
+         <echo>copy CPython LICENSE from ${svn.checkout.dir}/python</echo>
+-        <copy file="${svn.checkout.dir}/python/LICENSE" tofile="${dist.dir}/LICENSE_CPython.txt" preservelastmodified="true" />
++        <copy file="LICENSE.txt" tofile="${dist.dir}/LICENSE_CPython.txt" preservelastmodified="true" />
+ 
+         <!-- sources: todir has to correspond with installer/**/JarInstaller.java -->
+         <echo>copy sources from ${jython.base.dir}</echo>

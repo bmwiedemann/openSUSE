@@ -1,0 +1,11 @@
+--- src/org/jmock/expectation/AssertMo.java.sav	2007-07-13 17:44:35.000000000 +0200
++++ src/org/jmock/expectation/AssertMo.java	2007-07-13 17:45:06.000000000 +0200
+@@ -73,7 +73,7 @@
+         assertTrue("Should not have verified", threwException);
+     }
+ 
+-    static protected void failNotEquals( String message,
++    public static void failNotEquals( String message,
+                                          Object expected,
+                                          Object actual ) {
+         String formatted = "";

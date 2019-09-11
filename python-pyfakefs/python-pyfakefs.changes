@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Fri Mar 22 14:28:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.8:
+  * Mainly fixes a regression bug under Python 2.7.
+
+-------------------------------------------------------------------
+Tue Feb 12 15:37:32 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.5.7
+  * Fixes a regression introduced in the last version
+
+-------------------------------------------------------------------
+Mon Jan 14 08:32:56 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Removed unit tests from package
+
+-------------------------------------------------------------------
+Sun Jan 13 17:26:44 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.5.6
+  * import external pathlib2 and scandir packages first if present
+
+-------------------------------------------------------------------
+Thu Dec 20 21:11:36 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.5.5
+  * Removed permission warnings (shebang line vs. executable bit)
+
+-------------------------------------------------------------------
+Thu Dec 20 07:33:19 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.5.4
+  * added context manager class Pause for pause/resume
+  * fixed permission handling for root user
+  * avoid AttributeError triggered by modules without __module__ attribute
+
+-------------------------------------------------------------------
+Thu Nov 22 19:40:46 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.5.3
+  * automatically patch file system methods imported as another name like from
+    os.path import exists as my_exists, including builtin open and io.open
+  * make tests for access time less strict to account for file systems that do
+    not change it immediately
+
+-------------------------------------------------------------------
+Mon Nov 12 09:07:49 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 3.5.2 
+  * This is mostly a bug-fix release.
+  * added support for pause/resume of patching the file system modules
+  * allow to set current group ID, set current user ID and group ID as `st_uid`
+    and `st_gid` in new files
+  * fixed using `modules_to_patch` (regression)
+  * fixed recursion error on unpickling the fake file system
+  * allow trailing path in `add_real_directory`
+
+-------------------------------------------------------------------
+Thu Nov  1 10:04:37 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- State in more dependencies, the tests are still borked
+
+-------------------------------------------------------------------
+Tue Oct 23 06:39:22 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 3.5
+  * This version of pyfakefs does not support Python 3.3.
+  * The deprecation warnings for the old API are now switched on by default.
+  * Improved automatic patching:
+  * added possibility to set user ID
+  * added side_effect option to fake files
+  * added some support for extended filesystem attributes under Linux
+  * handle `contents=None` in `create_file()` as empty contents if size not set
+  * added pathlib2 support
+  * added support for null device
+  * improved error message for "Bad file descriptor in fake filesystem"
+  * fixed pytest when both pyfakefs and future are installed
+  * file timestamps are now updated more according to the real behavior
+  * fixed a problem related with patching shutil functions using zipfile
+
+-------------------------------------------------------------------
+Thu Jun 14 05:05:28 UTC 2018 - kbabioch@suse.com
+
+- Update to version 3.4.3
+  - Added support for path-like objects as arguments in create_file(), 
+    create_dir(), create_symlink(), add_real_file() and add_real_directory()
+  - Bugfixes:
+    - tell after seek gave incorrect result in append mode
+    - flushing file contents after truncate was incorrect under some conditions
+    - readline() did not work correctly in binary mode 
+    - pathlib.Path.resolve() behaved incorrectly if the path does not exist
+    - closed attribute was not implemented in fake file
+    - add_real_directory did not behave correctly for nested paths
+    - several functions did not behave correctly for paths ending with a 
+      path separator
+
+-------------------------------------------------------------------
+Tue Apr 17 11:42:01 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 3.4.1 

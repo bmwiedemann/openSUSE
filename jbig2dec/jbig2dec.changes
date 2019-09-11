@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sun Nov 19 05:13:13 UTC 2017 - aloisio@gmx.com
+
+- Use AGPL-3.0+ license
+
+-------------------------------------------------------------------
+Fri Nov 10 15:22:40 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.14
+  * Bug fix release
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed May  4 18:14:05 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.13
+  * Bug fix release.
+- Cleanup spec file with spec-cleaner
+- Drop autoreconf call
+- Update dependencies
+
+-------------------------------------------------------------------
+Thu Dec 10 16:50:25 UTC 2015 - p.drouand@gmail.com
+
+- Include missing memento.h
+
+-------------------------------------------------------------------
+Tue Dec  8 18:41:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.12
+  * Bug fix release
+- Remove libpng-devel and xz requirements
+- Add autoconf, automake and libtool build dependencies; need to
+  run autoreconf
+
+-------------------------------------------------------------------
+Fri Feb 15 09:54:56 UTC 2013 - badshah400@gmail.com
+
+- Use the correct link to source tarball (from sourceforge)
+- Add BuildRequires: xz, because source tarball is xz compressed
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Wed Jan 16 22:22:07 UTC 2013 - gber@opensuse.org
+
+- clean up specfile further
+- make jbig2dec-devel dpend on libjbig2dec0
+
+-------------------------------------------------------------------
+Thu Aug 16 13:23:31 UTC 2012 - idonmez@suse.com
+
+- Cleanup spec file 
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jul  7 18:54:55 UTC 2012 - sleep_walker@suse.cz
+
+- add -fPIC into CFLAGS
+
+-------------------------------------------------------------------
+Thu Jul  5 21:30:05 UTC 2012 - sleep_walker@suse.cz
+
+- accept wider convence for man page
+
+-------------------------------------------------------------------
+Thu Jul  5 08:20:53 UTC 2012 - sleep_walker@suse.cz
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Wed Jul  4 22:40:08 UTC 2012 - sleep_walker@suse.cz
+
+- replace tarballs
+
+-------------------------------------------------------------------
+Wed Jul  4 22:15:01 UTC 2012 - sleep_walker@suse.cz
+
+- update to 0.11
+
+-------------------------------------------------------------------
+Tue Oct 27 13:20:24 UTC 2009 - lnussel@suse.de
+
+- initial package version 0.10
+

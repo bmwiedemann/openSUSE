@@ -1,0 +1,68 @@
+From ba093f25fe5e029af6a111624a9b3d73b9d69c0c Mon Sep 17 00:00:00 2001
+From: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Date: Tue, 9 Jan 2018 13:27:01 +0100
+Subject: [PATCH 32/43] tools/kvm_stat: simplify the sortkey function
+
+The 'sortkey' function references a value in its enclosing
+scope (closure). This is not common practice for a sort key function
+so let's replace it. Additionally, the function 'sorted' has already a
+parameter for reversing the result therefore the inversion of the
+values is unneeded. The check for stats[x][1] is also superfluous as
+it's ensured that this value is initialized with 0.
+
+Signed-off-by: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Tested-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit faa312a543283c717342cd332b5b9247bd305dce)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 23 ++++++++---------------
+ 1 file changed, 8 insertions(+), 15 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index f38c97aa131d..1f78d3259a86 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1083,30 +1083,23 @@ class Tui(object):
+         self.screen.move(row, 0)
+         self.screen.clrtobot()
+         stats = self.stats.get(self._display_guests)
+-
+-        def sortCurAvg(x):
+-            # sort by current events if available
+-            if stats[x][1]:
+-                return (-stats[x][1], -stats[x][0])
+-            else:
+-                return (0, -stats[x][0])
+-
+-        def sortTotal(x):
+-            # sort by totals
+-            return (0, -stats[x][0])
+         total = 0.
+         for key in stats.keys():
+             if key.find('(') is -1:
+                 total += stats[key][0]
+         if self._sorting == SORT_DEFAULT:
+-            sortkey = sortCurAvg
++            def sortkey((_k, v)):
++                # sort by (delta value, overall value)
++                return (v[1], v[0])
+         else:
+-            sortkey = sortTotal
++            def sortkey((_k, v)):
++                # sort by overall value
++                return v[0]
++
+         tavg = 0
+-        for key in sorted(stats.keys(), key=sortkey):
++        for key, values in sorted(stats.items(), key=sortkey, reverse=True):
+             if row >= self.screen.getmaxyx()[0] - 1:
+                 break
+-            values = stats[key]
+             if not values[0] and not values[1]:
+                 break
+             if values[0] is not None:
+-- 
+2.12.3
+

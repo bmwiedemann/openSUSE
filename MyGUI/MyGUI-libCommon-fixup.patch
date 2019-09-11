@@ -1,0 +1,10 @@
+--- Common/CMakeLists.txt.orig	2016-03-05 07:17:23.175753455 -0600
++++ Common/CMakeLists.txt	2016-03-05 07:18:03.880751014 -0600
+@@ -89,6 +89,7 @@
+ endif()
+ 
+ add_library(${PROJECTNAME} ${HEADER_FILES} ${SOURCE_FILES})
++set_target_properties(${PROJECTNAME} PROPERTIES VERSION ${MYGUI_VERSION} SOVERSION ${MYGUI_VERSION_MAJOR})
+ 
+ if(MYGUI_RENDERSYSTEM EQUAL 1)
+ 	add_dependencies(${PROJECTNAME} MyGUI.DummyPlatform)

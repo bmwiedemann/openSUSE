@@ -1,0 +1,24 @@
+From a7f7123b32b00408cd32b34c479b3bc23c3ec359 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 29 Apr 2019 12:53:48 +0200
+Subject: [PATCH] Add the include path used by the openSUSE package.
+
+---
+ cmake/Modules/FindQwt.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/Modules/FindQwt.cmake b/cmake/Modules/FindQwt.cmake
+index 2b83fbf..5d54a2b 100644
+--- a/cmake/Modules/FindQwt.cmake
++++ b/cmake/Modules/FindQwt.cmake
+@@ -19,6 +19,7 @@ find_path(QWT_INCLUDE_DIRS
+   PATHS
+   /usr/local/include/qwt-qt5
+   /usr/local/include/qwt
++  /usr/include/qt5/qwt6
+   /usr/include/qwt6
+   /usr/include/qwt-qt5
+   /usr/include/qwt
+-- 
+2.21.0
+

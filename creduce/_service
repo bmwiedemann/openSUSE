@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">git://github.com/csmith-project/creduce</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">creduce</param>
+    <param name="versionformat">2.10.0+git.%cd.%h</param>
+    <param name="revision">fb91843c547794f165e5764a003166191e6c6643</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

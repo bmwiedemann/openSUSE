@@ -1,0 +1,476 @@
+-------------------------------------------------------------------
+Thu Mar  8 14:37:45 UTC 2018 - bwiedemann@suse.com
+
+- Add yudit-2.9.6-reproducible.patch to make build reproducible
+  (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Mar  2 13:14:43 UTC 2018 - crrodriguez@opensuse.org
+
+- xorg-x11-devel --> pkgconfig(x11)
+- openmotif, libjpeg or freetype are not required, remove
+  from buildrequires
+
+-------------------------------------------------------------------
+Tue Jun 13 21:58:30 CEST 2017 - tiwai@suse.de
+
+- Replace with the original tarball
+- Reformat spec with spec-cleaner to make FACTORY happier
+- Fix package group
+
+-------------------------------------------------------------------
+Thu Jun 08 11:45:15 CEST 2017 - zawel1@gmail.com
+
+- Update to version 2.9.6
+  + Updated to Unicode 7.0.0
+  + Printing control characters bug fixed
+  + Parallel compilation
+  + Syntax bug fixed
+  + Fixed datadir
+- Drop yudit-2.9.2.patch0.txt merged upstream
+- Removed unused yudit-2.4.8-tempfile.patch
+
+-------------------------------------------------------------------
+Sun Nov 25 21:33:03 UTC 2012 - gber@opensuse.org
+
+- Switch to the new font macros and fix the build
+
+-------------------------------------------------------------------
+Wed Dec 21 10:48:20 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Nov  8 14:41:43 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Mon Feb 15 17:00:26 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.9.2:
+  + Updated to Unicode 5.2.0
+  + Landscape printing bug fixed
+  + DOS CRLF with uniconv bug fixed
+  + Hungarian Runes (PUA) rovasiras glyph adjustments
+  + Windows port now behaves itself
+  + Minor enhancements
+- Drop bnc445708-delete-array.patch, merged upstream.
+- Add yudit-2.9.2.patch0.txt from upstream 'patch folder'.
+
+-------------------------------------------------------------------
+Wed Dec  2 18:55:35 UTC 2009 - coolo@novell.com
+
+- updated patches, fix build
+
+-------------------------------------------------------------------
+Fri May 29 15:39:13 CEST 2009 - werner@suse.de
+
+- Add missing patch for bnc#470998 uniprint consumes memory untilcw
+  OOM Killer steps in
+
+-------------------------------------------------------------------
+Tue Nov 18 12:32:28 CET 2008 - mfabian@suse.de
+
+- bnc#445708: undefined C++ code: delete arrays correctly.
+- use fdupes
+- fix wrong end-of-line-encoding (dos2unix).
+
+-------------------------------------------------------------------
+Wed Jan 02 16:14:53 CET 2008 - mfabian@suse.de
+
+- update to 2.9.0. From CHANGELOG.TXT:
+  • Added spell checking support for rovasiras (Hungarian Runes)
+
+-------------------------------------------------------------------
+Mon Dec 17 18:23:28 CET 2007 - mfabian@suse.de
+
+- use the compiler option -fPIE instead of -fpie to make it
+  build on s390 and s390x.
+
+-------------------------------------------------------------------
+Mon Dec 17 14:56:10 CET 2007 - mfabian@suse.de
+
+- update to 2.8.2.beta36. From CHANGELOG.TXT:
+ • Added change to SHunspellPattern.cpp so that it compiles with
+   g++ 2.96
+ • Added -ldl detection to configure.in
+ • Added dylib is loaded now for __APPLE__
+ • When printing from Editor window now prints only selected
+   text if text is selected.
+ • added canWrap to SGlyph.cpp so that STextView should use this 
+   instead of isDelimiter to decide on word wrap.
+ • More information on printing from Yudit.
+ • Windows ghostgun directory change in wuditw.properties
+ • changed yudit.editor.syntax.error.foreground to red
+ • Translation progres in history/translations.txt
+ • Changed Highlighting(__H__) to __H__igghligting in all po files.
+ • Display current highlighting mode in tooltip instead of
+   main window.
+ • Fixed redrwawing problems with small descent font.
+ • Keyboard shortcut pastes syntax command in the command area
+   instead of bringing up the dialog now.
+ • ERROR and NONE now preserves default foreground color of
+   original text. ERROR underlines it with the error foreground.
+ • Fixed syntax none
+ • Translation progres in history/translations.txt
+ • Fixed generating too many glyphs problem when printing with 
+   bitmap fonts in direct mode. 
+ • Current geometry is now saved in config file, if changed
+ • Made syntax selection dialog box.
+ • Reporting errors when files are missing in syntax selection
+   box.
+
+-------------------------------------------------------------------
+Sat Dec 08 13:03:48 CET 2007 - mfabian@suse.de
+
+- update to 2.8.2.beta26. 
+  (fixes a problem in the Form Feed support).
+
+-------------------------------------------------------------------
+Fri Dec 07 17:13:46 CET 2007 - mfabian@suse.de
+
+- update to 2.8.2.beta25.
+  Fixes remaining issue in bug #343820 (Form Feed support)
+  From CHANGELOG.TXT:
+  • Commented out forceful gaining of focus in SX11Impl.cpp
+     because this could cause an infinite loop when the window
+     is mapped and none of FocusIn even occures and none of
+     the windows are ours.
+  •  Increased stoolkit/syntax/SSyntax.h:
+       #define SD_UNIT_WORK_COUNT 200
+  • Line Separator can be inserted with <alt><enter>
+    (it will be orange now)
+  • Form Feed can be inserted with <ctrl><enter> (orange)
+  • Form feed now prints correctly on printer
+  • Created new glyphs for FF and LS
+
+-------------------------------------------------------------------
+Thu Dec 06 16:32:25 CET 2007 - mfabian@suse.de
+
+- update to 2.8.2.beta21. From CHANGELOG.TXT:
+  • Added experimental support for hunspell spelling checker.
+  • Changed selected background to DeepSkyBlue4.
+  • Moved syntax colors in properties.
+
+-------------------------------------------------------------------
+Wed Dec 05 16:59:19 CET 2007 - mfabian@suse.de
+
+- update to 2.8.2.beta18. From CHANGELOG.TXT:
+  • Made a framework around "syntax" keyword that could help to
+    integrate external spell-checkers into Yudit.
+  • Fixed Freehand drawing in doublebuffer mode.
+  • Embedded now also have proper colors.
+  • syntax still does not work well.
+  • Updated swindow/swin32 to do double buffering for flickerless
+    rendering.
+    You can switch off double buffering with the command line switch
+    via -ndb for both Unix/Linux and Windows.
+  • added doc/HOWTO-build.txt
+  • Creating double buffer only when rendering.
+  • Changed installed to install mytool files in chunks
+  • Added double buffering to aoid flicker
+    -ndb command line option switches off double buffering in
+    editor window
+  • Updated install.sh from /usr/share/automake-1.9/
+  • Added stub that can be used for syntax highlighting in
+    stoolkit/SSyntax.cpp and defined xml and properties 
+    highlight type gui/SYudit.cpp. This is still not ready, 
+    but the framework works so I though I might just add it.
+  • Added timer to have a time-window to collect more keypress
+    events and accumulate STextDataEvents. This will give 
+    time for the SSyntax.cpp to work on the highlighting.
+  • Modified simple color highlighting to distinguish only 
+    Letters, Numbers and Others
+  • Modified STextData to return size() == 1 if it is empty,
+    because this makes more sense.
+  • Give a more meaningful error message if DISPLAY is wrong.
+  • Updated SGML.kmap
+  • Added cp-1252.txt from  John Wehle 
+  • Fixed SXInputMethod.cpp XGetWindowProperty to use unsigned char
+  • Fixed SX11Impl.cpp XGetWindowProperty to use unsigned char
+  • changed Hangul.mys so that Yi can be typed not only as Ei
+    'w 'i   ->      0214
+    'W 'i   ->      0214
+    to 
+    'y 'i   ->      0214
+    'Y 'i   ->      0214
+    Changed  'E 'u 'i to 'Y 'i
+    C759 -> 'E 'u 'i 'g
+    C75A -> 'E 'u 'i 'g 'g
+    ...
+  • Fixed setlocale bug.
+  • fixed SCIM input method in yudit.properties.in
+  • Added Bulgarian-Translit.kmap 
+    keyboard map from Alex Izvorski aizvorski/gmail.com
+  • Added Simplified Chinese (zh_CN) gui translations from
+    John: vunzndi/vfemail.net, translated by
+    Zhou Jinnian: zhoujinnian168/yahoo.com
+  • Fixed syriac shaping bug in SFontTTF::substituteOTFGlyph.
+    Now Syriac should work again with truetype otf fonts.
+  • Capital letters have been added to Pali.kmap.
+  • Added SCIM to default yudit.properties.in:
+      yudit.editor.xinputs=SCIM,...
+  • Fixed compiler warnings with gcc 4.1.0
+  • Added Pali.kmap (original pali.kmap) from jon bressie
+    box100/prodigy.net
+
+-------------------------------------------------------------------
+Wed Nov 21 17:27:35 CET 2007 - mfabian@suse.de
+
+- update to 2.8.1.
+  • Updated for Unicode 5.0.0 (cd bin; make map)
+  • Preparing yudit-2.8.1. 
+  • Made Yudit understand +LINENO command line option.
+  • Further Khanda Ta fixes. Made bangla.ttf (all small lettters)
+    from 
+    http://www.omicronlab.com/avrokeyboard/bangla-fonts/index.htm
+    the default Bengali font. 
+  • Added  MuktiNarrow.ttf as the default bengali font from 
+    http://savannah.nongnu.org/download/freebangfont/MuktiNarrow-0.94.tar.bz2
+  • Added Bulgarian fixes from Alexander Shopov
+  • Updated configure script to behave nicer.
+  • Fixed some minor spelling mistakes.
+  • Added a more detailed error message when yudit is built
+    without X11. (The command line tools are still working fine
+    without X11.)
+  • Made icons/SS_Open.xpm look nicer.
+  • Updated yudit.iss truetype.iss bitmap.iss for 
+    latest Inno Setup compiler (isetup-5.1.6.exe):
+  • Fixed redrawing bug of highlighted text with bitmap font.
+  • Added changes to compile with gcc 4.1.
+  • adding new media types from Daryoush Javan <djavan/unixoft.com>.
+  • Added changes to 
+      swindow/SPostscript.cpp
+      swindow/SPostscript.h
+      swindow/SPrinter.h
+      swindow/SUniPrint.cpp
+      swindow/SUniPrint.h
+      uniprint/uniprint.1.in
+      uniprint/Main.cpp
+   from Daryoush Javan <djavan/unixoft.com>.
+  • Added Polish-slash.kmap from Krzysztof SUCHECKI <hs6_06/go2.pl>
+  • Updated for Unicode 4.1.0 
+  • Fixed bin/arabickmap.pl
+  • Added one more null pointer patch from 
+    Marcus Meissner <meissner/suse.de> 
+    into swindow/sx11/SXInputMethod.cpp
+  • Updated Slavic.kmap and added Glagolitic.kmap from
+    Страхиња Радић <mr99164@alas.matf.bg.ac.yu>
+  • Added baybayin
+      HOWTO-baybayin.txt
+      Baybayin.kmap
+    from roel cantada <rcantada2002/yahoo.com>
+  • Added Devanagari-Velthuis.kmap
+      from Anshuman Pandey <apandey/u.washington.edu>
+- remove yudit-null.patch, fix-c++-build-problem.patch
+  (included upstream).
+
+-------------------------------------------------------------------
+Thu Jan 18 12:24:07 CET 2007 - ssommer@suse.de
+
+- fix duplicated assignment
+
+-------------------------------------------------------------------
+Fri Aug 11 10:36:20 CEST 2006 - sndirsch@suse.de
+
+- fixed font path for X.Org 7 in yudit-properties.patch, but keep
+  it backward compatible (/usr/X11R6/lib/X11/fonts still in font
+  search path)
+
+-------------------------------------------------------------------
+Thu Aug 10 11:11:12 CEST 2006 - mfabian@suse.de
+
+- compile everything with -fpie, link everything with -pie.
+
+-------------------------------------------------------------------
+Wed Aug 09 16:27:08 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/truetype and binaries to /usr/bin
+  (openSUSE 10.2 will use X11R7).
+- use macro run_suseconfig_fonts
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 18:07:28 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Oct 18 18:02:06 CEST 2005 - mfabian@suse.de
+
+- make it build with gcc 4.1.
+
+-------------------------------------------------------------------
+Fri May 06 16:01:23 CEST 2005 - mfabian@suse.de
+
+- update to 2.7.8.
+
+-------------------------------------------------------------------
+Tue Feb 22 17:23:34 CET 2005 - meissner@suse.de
+
+- Fixed some 0 -> NULL, fixed one global C++ anon struct
+  problem.
+
+-------------------------------------------------------------------
+Sun Mar 21 22:11:47 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq and run SuSEconfig.fonts 
+
+-------------------------------------------------------------------
+Thu Jan 15 12:07:01 CET 2004 - mfabian@suse.de
+
+- update to 2.7.6.
+- fix "command not found" when using the print preview.
+
+-------------------------------------------------------------------
+Sat Jan 10 15:09:25 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Sep 18 18:07:41 CEST 2003 - mfabian@suse.de
+
+- segfault fixes from the author Gaspar Sinai:
+  * fixed  stoolkit/SString.cpp - fixed array overflow segfault.
+  * fixed stoolkit/SParagraph.cpp - fixed array overflow segfault.
+
+-------------------------------------------------------------------
+Mon Jun 16 19:31:39 CEST 2003 - mfabian@suse.de
+
+- update to 2.5.7.
+
+-------------------------------------------------------------------
+Fri Jun 13 11:56:38 CEST 2003 - mfabian@suse.de
+
+- update to 2.5.7.beta15
+- remove fixed local copy of yudit.ttf, fixed upstream now.
+- remove obsolete patches: SAMPA.kmap.diff.txt,
+  yudit-2.7.2.patch1.txt, yudit-2.7.2.patch3.txt,
+  yudit-2.7.2.patch2.txt, yudit-2.7.2.patch4.txt
+
+-------------------------------------------------------------------
+Wed May  7 12:06:36 CEST 2003 - ro@suse.de
+
+- use g++ as CC
+
+-------------------------------------------------------------------
+Tue Apr 29 21:52:19 CEST 2003 - mfabian@suse.de
+
+- yudit-setlocale.patch: set only LC_CTYPE instead of LC_ALL when
+  switching input methods in order to avoid influencing LC_NUMERIC.
+  Otherwise printing fails when running in a German locale after
+  switching to the "German" input method because floating point
+  numbers are then printed using ',' instead of '.' into the
+  Postscript output.
+
+-------------------------------------------------------------------
+Tue Jan 28 17:38:58 CET 2003 - mfabian@suse.de
+
+- update to 2.7.2 with yudit-2.7.2.patch{1,2,3,4}.txt and
+  SAMPA.kmap.diff.txt from upstream author.
+- replace yudit.ttf with version which has the family name
+  and PostScript name "Yudit" instead of "Yudit Unicode"
+  (will be like that in the next upstream version as well,
+  remember to remove the fixed yudit.ttf again during the next
+  update).
+
+-------------------------------------------------------------------
+Wed Nov 27 00:55:47 CET 2002 - mfabian@suse.de
+
+- update to 2.7 with yudit-2.7.patch{1,2,3,4}.txt from
+  upstream author Gaspar Sinai.
+- add /usr/X11R6/lib/X11/fonts to yudit.fontpath
+- move yudit.ttf to /usr/X11R6/lib/X11/fonts/truetype to make
+  it usable by other applications as well
+- add fonts.scale.yudit
+- use x-devel-packages in '# neededforbuild'
+
+-------------------------------------------------------------------
+Mon Aug 19 19:56:37 CEST 2002 - mfabian@suse.de
+
+- make it build again.
+
+-------------------------------------------------------------------
+Mon Aug 19 17:38:13 CEST 2002 - mfabian@suse.de
+
+- update to 2.6.2
+- use buildroot
+
+-------------------------------------------------------------------
+Wed Jan 23 15:32:26 CET 2002 - okir@suse.de
+
+- Fixed tempfile race
+
+-------------------------------------------------------------------
+Thu Nov 15 13:49:24 CET 2001 - rolf@suse.de
+
+- update to 2.4.8
+
+-------------------------------------------------------------------
+Tue Oct 30 16:49:48 CET 2001 - ro@suse.de
+
+- removed qtlib/klibs from neededforbuild (never needed) 
+
+-------------------------------------------------------------------
+Wed May  9 17:36:35 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Feb  7 13:04:26 CET 2001 - uli@suse.de
+
+- fixed for glibc 2.2.1
+- fixed group tag
+
+-------------------------------------------------------------------
+Wed Oct 25 17:26:04 CEST 2000 - ro@suse.de
+
+- fixed neededforbuild for new openmotif package names 
+
+-------------------------------------------------------------------
+Tue Oct 24 11:48:42 CEST 2000 - rolf@suse.de
+
+- patches for ia64
+- switch to openmotif from lesstif
+
+-------------------------------------------------------------------
+Wed Aug 23 13:08:49 CEST 2000 - mfabian@suse.de
+
+- removed bogus 'Requires:' and 'neededforbuild'
+
+-------------------------------------------------------------------
+Mon May 29 15:17:10 CEST 2000 - rolf@suse.de
+
+- a few changes, no new version yet
+- changed yuditrc for SuSE freetype path
+
+-------------------------------------------------------------------
+Fri Mar  3 09:40:15 MET 2000 - rolf@suse.de
+
+- changed manpath to %{_mandir}
+
+-------------------------------------------------------------------
+Mon Jan 24 00:02:13 CET 2000 - ro@suse.de
+
+- freetype includes are in usr/include/freetype now 
+
+-------------------------------------------------------------------
+Mon Dec 13 07:56:25 CET 1999 - ro@suse.de
+
+- added lesstif to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Dec  9 19:21:31 MET 1999 - rolf@suse.de
+
+- build kde and motif versions as well
+
+-------------------------------------------------------------------
+Thu Dec  9 16:41:43 MET 1999 - rolf@suse.de
+
+- new package yudit 1.5
+

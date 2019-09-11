@@ -1,0 +1,526 @@
+-------------------------------------------------------------------
+Tue Feb 26 18:21:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- apply disable-attr.patch to disable broken test:
+  https://rt.cpan.org/Public/Bug/Display.html?id=128529
+
+-------------------------------------------------------------------
+Wed Feb 14 06:13:53 UTC 2018 - coolo@suse.com
+
+- updated to 3.7.4
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+-------------------------------------------------------------------
+Mon Feb 12 11:32:22 UTC 2018 - coolo@suse.com
+
+- updated to 3.7.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.7.1  Released February 11, 2017 (git tag 3.7.1)
+  
+    - Fixed problem when using placeholders and escaped question marks, the recopied string 
+      was not terminated correctly.
+      [Greg Sabino Mullane]
+      (Github issue #33)
+  
+    - Make sure nulls in our self-generated arrays are not set as read-only in some Perls.
+      [Greg Sabino Mullane]
+      (CPAN ticket #107556)
+  
+    - If the server returns no error message, and an "unknown" code from libpq, supply a custom
+      message mentioning client_min_messages may be to blame.
+      [Greg Sabino Mullane]
+      (CPAN ticket #109591)
+  
+    - Declare VERSION with 'our' in seldom-used Bundle module
+      (CPAN ticket #123218)
+
+-------------------------------------------------------------------
+Fri Oct  6 05:15:19 UTC 2017 - coolo@suse.com
+
+- updated to 3.7.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  
+  Version 3.7.0  Released September 24, 2017 (git tag 3.7.0)
+  
+    - If no placeholders, use PQexec instead of PQexecParams
+      [Greg Sabino Mullane]
+  
+    - Fix running tests with non-UTF8 server_encoding
+      [Dagfinn Ilmari Mannsåker]
+      (Github issue #26)
+  
+    - Fix crash with missing client_encoding
+      [David Christensen, reported by Marko Tiikkaja]
+      (Github issue #29)
+  
+    - Fix crash with missing server_version
+      [David Christensen]
+  
+    - Fix leak in ->state methods
+      [Dagfinn Ilmari Mannsåker]
+      (Github issue #30)
+  
+    - Add $sth->{pg_async_status} to determine async status of a statement handle.
+      Values can be 0 (no async), 1 (async), or -1 (cancelled)
+      [Greg Sabino Mullane, as requested by Dmytro Zagashev (ZDM)]
+      (CPAN ticket #116172)
+  
+  
+  Version 3.6.2  Released May 23, 2017 (git tag 3.6.2)
+  
+    - Remove errant debugging aid from test suite
+  
+  
+  
+  Version 3.6.1  Released May 22, 2017 (git tag 3.6.1)
+  
+    - Various fixes to support testing against Postgres 10beta
+      [David Christensen]
+  
+  
+  Version 3.6.0  Released April 17, 2017 (git tag 3.6.0)
+  
+    - Make sure we do not inadvertently modify the string passed to prepare() when 
+      doing the new backslash escape manipulation.
+      [Greg Sabino Mullane]
+      (CPAN ticket #114000)
+  
+    - Fix bug where $DBD::Pg::DBDPG_DEFAULT not picked up as a magic 
+      string first time it is used in a script.
+      [Greg Sabino Mullane]
+      (CPAN ticket #112309)
+  
+    - Fix UTF8 flag handling in pg_(get|put)copydata
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Fix UTF8 double-encoding with pg_enable_utf8 = 0
+      [Serge Pushkin]
+      (CPAN ticket #103137)
+  
+    - Fix bug in quote_name which would fail to quote in some circumstances
+      (Github Issue #22)
+  
+    - Allow clean parsing of new Postgres X.Y version format
+      [Erik Rijkers    er at xs4all.nl]
+  
+    - Add pg_canonical_ids() and pg_canonical_names(), which returns information 
+      about each column in the result set.
+      [Warstone    warstone at list.ru]
+      (CPAN ticket #106858)
+  
+    - Map SQL_NUMERIC to PG_NUMERIC (instead of PG_FLOAT8)
+      [Alice Maz    alice at alizemaz.com]
+      (CPAN ticket #120358)
+   
+    - Force real, float, and double precision into SvNVs
+      [Greg Sabino Mullane]
+      (CPAN ticket #113683 and other places)
+  
+    - Support for number of rows greater than an "int". Requires support for same 
+      from a future version of libpq before it will work completely.
+      [Greg Sabino Mullane]
+      (CPAN ticket #102444)
+  
+    - Fix skipped test counts in Win32 builds
+      [Andy Grundman]
+  
+    - Allow tests to work against Postgres 8.4 by tweaking client_encoding calls.
+      [Pavel Raiskup    praiskup at redhat.com]
+      (CPAN ticket #116179)
+  
+    - Silence warnings in t/02attribs.t and t/04misc.t
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Support binary COPY format
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Ensure tests do not use $ENV{PGSERVICE} or $ENV{PGDATABASE}
+      [Erik Rijkers]
+  
+    - Switched canonical repo to git://github.com/bucardo/dbdpg.git
+
+-------------------------------------------------------------------
+Wed Aug 30 10:35:59 UTC 2017 - coolo@suse.com
+
+- Just use postgresql-server everywhere and leave it up to prjconf,
+  SLE12 has no 94 in maintenance anymore
+
+-------------------------------------------------------------------
+Sat Mar 18 00:10:27 UTC 2017 - aj@ajaissle.de
+
+- Fixed sle_version macro
+- Removed %clean section
+
+-------------------------------------------------------------------
+Tue Dec  8 15:13:42 UTC 2015 - stephan.barth@suse.com
+
+- update to version 3.5.3
+  changes with 3.5.3:
+  - Minor fix in the test file t/03dbmethod.t
+
+  changes with 3.5.2:
+  - Fix enum value ordering on Postgres servers 9.1 and greater
+  - Return bigint values as plain integer values when they fit
+  - Fix typo in sprintf for get_info() SQL_DATA_SOURCE_NAME
+  - Set the repository in META.yml to github
+
+-------------------------------------------------------------------
+Wed Feb 18 09:36:47 UTC 2015 - stephan.barth@suse.com
+
+- Update to version 3.5.1 from 3.5.0
+  Upstream changes:
+  - Prevent core dump if the second argument to the quote() method 
+    is anything but a hashref
+  - Better "support" for SQL_ASCII servers in the tests.
+    Allow env var DBDPG_TEST_ALWAYS_ENV to force use of DBI_DSN and DBI_USER
+    in tests.
+  - Fix client_encoding detection on pre-9.1 servers
+  - Fix operator existence check in tests on pre-8.3 servers
+  - Documentation fix
+  - Fix pg_switch_prepared database handle documentation
+
+-------------------------------------------------------------------
+Mon Jan 26 06:36:48 UTC 2015 - stephan.barth@suse.com
+
+- Update to version 3.5.0 from 3.4.1
+  Upstream changes:
+  - 3.5.0
+    - Allow "placeholder escaping" by the use of a backslash directly before
+      it (CPAN bug #101030)
+    - Improve the workings of the ping() method (CPAN bug #100648)
+    - Add get_info(9000) => 1 to indicate driver can escape placeholders.
+    - In tests, force the client_encoding to UTF8, skip tests that involve 
+      characters not supported by the server_encoding
+    - Fix memory leak when selecting from arrays
+    - Make get_info much more efficient and slightly simpler
+  - 3.4.2
+    - Fix bug where single-quoted type arguments to the table_info()
+      method were causing a SQL error. (CPAN bug #99144)
+  
+-------------------------------------------------------------------
+Thu Aug 21 11:40:23 UTC 2014 - stephan.barth@suse.com
+
+- Update to version 3.4.1 from 3.4.0
+  Change from upstream:
+  - Allow '%' again for the type in table_info() and thus tables()
+    It's not documented or tested in DBI, but it used to work until
+    DBD::Pg 3.4.0, and the change broke DBIx::Class::Schema::Loader, which
+    uses type='%'.
+
+-------------------------------------------------------------------
+Mon Aug 18 12:18:56 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.4.0 from 3.3.0
+  Upstream changes:
+  - Cleanup and improve table_info()
+    table_info() type searching now supports TABLE, VIEW, SYSTEM TABLE,
+    SYSTEM VIEW, and LOCAL TEMPORARY
+
+    table_info() object searching fully supports the above types.
+
+    table_info() object searching no longer ignores invalid types - a filter 
+    of 'NOSUCH' will return no rows, and 'NOSUCH,LOCAL TEMPORARY' will
+    return only temp objects.
+
+    tableinfo() type filters are strictly matched now ... previously a 
+    search for SYSTEM TABLE would have fetched plain TABLE objects.
+
+    table_info() now treats temporary tables and temporary views as LOCAL
+    TEMPORARY
+
+  - Make sure column_info() and table_info() can handle materialized views.
+
+-------------------------------------------------------------------
+Mon Jun  2 08:50:31 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.3.0 from 3.2.1
+  Upstream changes:
+  - Major cleanup of UTF-8 support
+  - Rewrite foreign_key_info to be just one query
+  - Remove ODBC support from foreign_key_info
+  - Remove use of dTHX in functions in quote.c and types.c
+
+-------------------------------------------------------------------
+Thu May 29 07:40:06 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.2.1 from 3.2.0
+  Changes from upstream:
+  - Stricter testing for array slices: disallow number-colon-number from
+    being parsed as a placeholder.
+    [Greg Sabino Mullane] (CPAN bug #95713)
+
+  - Fix for small leak with AutoInactiveDestroy
+    [David Dick] (CPAN bug #95505)
+
+  - Adjust test regex to fix failing t/01_connect.t on some platforms
+    [Greg Sabino Mullane]
+
+  - Further tweaks to get PGINITDB working for test suite.
+    [Nicholas Clark]
+
+-------------------------------------------------------------------
+Fri May 16 09:01:57 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.2.0 from 3.1.1
+  Changes from upstream:
+  - Add new attribute pg_placeholder_nocolons to turn off all parsing of
+    colons into placeholders.
+    [Graham Ollis] (CPAN bug #95173)
+
+  - Fix incorrect skip count for HandleSetErr
+    [Greg Sabino Mullane] (CPAN bug #94841)
+
+  - Don't attempt to use the POSIX signalling stuff if the OS is Win
+    [Greg Sabino Mullane] (CPAN bug ##94841)
+
+  - Fix missing check for PGINITDB in the test suite.
+    [Nicholas Clark]
+
+-------------------------------------------------------------------
+Tue Apr  8 05:17:01 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.1.1 from 3.0.0
+  Changes from upstream:
+  Version 3.1.1  Released April 6, 2014
+  - Minor adjustments so tests pass in varying locales.
+
+  Version 3.1.0  Released April 4, 2014
+  - Make sure UTF-8 enabled notifications are handled correctly
+    [Greg Sabino Mullane]
+  - Allow "WITH" and "VALUES" as valid words starting a DML statement
+    [Greg Sabino Mullane] (CPAN bug #92724)
+
+-------------------------------------------------------------------
+Wed Mar 26 08:40:52 UTC 2014 - stephan.barth@suse.com
+
+- update from version 2.19.3 to 3.0.0
+  These are the most important changes from upstream:
+  - Major change in UTF-8 handling
+  - Better handling of libpq errors to return SQLSTATE 08000
+  - Add support for AutoInactiveDestroy
+  and many bugfixes. See the Changes file for a full list of changes.
+
+-------------------------------------------------------------------
+Tue Jan 21 15:25:06 UTC 2014 - kpetsch@suse.com
+
+-Added BuildRequires postgresql-server to provide initdb for the
+ testsuite.
+
+-------------------------------------------------------------------
+Fri May  3 15:34:43 UTC 2013 - darin@darins.net
+
+- update to 2.19.3
+  - Fix bug in pg_st_split_statement causing segfaults
+    (CPAN bug #79035)
+  - See Changes for 2.19.0 - 2.19.2 changes
+
+-------------------------------------------------------------------
+Tue Nov 29 20:26:53 UTC 2011 - coolo@suse.com
+
+- update to 2.18.1
+  - Fix LANG testing issue [GSM] (CPAN bug #56705)
+  - Fix bug when async commands issued immediately after a COPY. 
+    [GSM] (CPAN bug #68041)
+
+-------------------------------------------------------------------
+Fri Apr  8 19:24:01 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  o add openssl-devel
+- fix build
+  o build with -lssl
+- bzip source
+- add testme.tmp.pl to doc
+
+-------------------------------------------------------------------
+Thu Mar 31 09:11:48 UTC 2011 - coolo@novell.com
+
+- update to 2.18.0
+ - Thanks to 123people.com for sponsoring work on this release [GSM]
+ - Fix memory leak when binding arrays [GSM] (CPAN bug #65734)
+ - Fix memory leak with ParamValues. [Martin J. Evans] (CPAN bug #60863)
+ - New cancel() method per DBI spec. [Eric Simon] (CPAN bug #63516)
+ - Fix memory leak in handle_old_async (missing PQclear)
+   [Rainer Weikusat] (CPAN bug #63408)
+ - Fix memory leak in pg_db_cancel (missing PQclear)
+   [Rainer Weikusat] (CPAN bug #63441)
+ - Mark pg_getcopydata strings as UTF8 as needed (CPAN bug #66006)
+ - Function dequote_bytea returning void should not try to return something
+   [Dagobert Michelsen] (CPAN bug #63497)
+ - Fix the number of tests to skip in t/01connect.t when the $DBI_DSN
+   environment variable lacks a database specification. [David E. Wheeler]
+ - Fix algorithm for skipping tests in t/06bytea.t when running on a version
+   of PostgreSQL lower than 9.0. [David E. Wheeler]
+ - Small tweaks to get tests working when compiled against Postgres 7.4
+   (CPAN bug #61713) [GSM]
+ - Fix failing test when run as non-superuser [GSM] (CPAN bug #61534)
+
+-------------------------------------------------------------------
+Thu Dec  2 08:36:00 UTC 2010 - chris@computersalat.de
+
+- update to 2.17.2
+  - Support dequoting of hex bytea format for 9.0.
+    [Dagfinn Ilmari MannsÃ¥ker] (CPAN bug #60200).
+  - Don't PQclear on execute() if there is an active async query
+    [rweikusat at mssgmbh.com] (CPAN bug #58376)
+  - Allow data_sources() to accept any case-variant of 'dbi:Pg' (CPAN bug #61574)
+  - Fix failing test in t/04misc.t on Perl 5.12. [Eric Simon]
+  - Fix for some 7.4 failing tests [Dagfinn Ilmari MannsÃ¥ker]
+  - Return bare instead of undef in test connections (CPAN bug #61574)
+- recreated by cpanspec 1.78
+- removed Authors
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:52 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Apr 21 14:17:52 UTC 2010 - chris@computersalat.de
+
+- update to 2.17.1
+  - Only use lo_import_with_oid if Postgres libraries are 8.4 or better
+    [GSM] (CPAN bug #56363)
+- added Buildi-/Req perl(version)
+- fix deps for postgresql-devel >= 7.4
+
+-------------------------------------------------------------------
+Wed Apr  7 19:26:03 UTC 2010 - chris@computersalat.de
+
+- update to 2.17.0
+  - Do not automatically ROLLBACK on a failed pg_cancel [GSM]
+    (CPAN bug #55188)
+  - Added support for new lo_import_with_oid function.
+    [GSM] (CPAN bug #53835)
+  - Don't limit stored user name to \w in tests [GSM]
+    (CPAN bug #54372)
+  - Allow tests to support versions back to Postgres 7.4 [GSM]
+- TestSuite broken for postgresql < 8.4
+  o undefined symbol: lo_import_with_oid
+  o BUG opened
+    https://rt.cpan.org/Public/Bug/Display.html?id=56363
+
+-------------------------------------------------------------------
+Tue Apr  6 16:07:24 UTC 2010 - chris@computersalat.de
+
+- update to 2.16.1
+  - Output error messages in UTF-8 as needed. Reported biy 
+    Michael Hofmann. [GSM] (CPAN bug #53854)
+- 2.16.0 Released December 17, 2009
+ - Put in a test for high-bit characters in bytea handling.
+   [Bryce Nesbitt] (see also CPAN bug #39390)
+ - Better SQLSTATE code on connection failure (CPAN bug #52863)
+   [Chris Travers with help from Andrew Gierth]
+ - Fixed POD escapes (CPAN bug #51856) [FWIE@cpan.org]
+- cleanup spec
+  o sort TAGS
+  o upated Summary
+  o macros
+  o fixed deps
+- added perl-macros
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Aug 12 14:33:37 CEST 2009 - max@suse.de
+
+- New version: 2.15.1.
+- http://cpansearch.perl.org/src/TURNSTEP/DBD-Pg-2.15.1/Changes
+
+-------------------------------------------------------------------
+Thu Sep 11 13:22:31 CEST 2008 - max@suse.de
+
+- New version: 2.10.3:
+  * Add the 'DBD' trace setting to output only non-DBI trace
+    messages, and allow 'dbd_verbose' as a connection attribute
+    for the same effect.
+  * Allow multi-statement do() calls with parameters to work if
+    pg_server_prepare is set to 0
+  * Add support for database handle attribute "ReadOnly".
+  * Added in payload strings for LISTEN/NOTIFY in 8.4.
+  * Plus more bug fixes and improvements to the test suite and
+    documentation.
+
+-------------------------------------------------------------------
+Tue Apr 22 18:05:06 CEST 2008 - max@suse.de
+
+- Fixed file list.
+
+-------------------------------------------------------------------
+Thu Apr 17 12:06:50 CEST 2008 - max@suse.de
+
+- New version: 2.6.0. Changes include:
+  * Various performance improvements.
+  * Add Bundle::DBD::Pg
+  * Fix memory leaks in dbdimp.c
+  * Fix strlen problems in dbdimp.c
+  * Overhaul COPY functions
+  * Add support for arrays
+  * Add support for asynchronous queries
+- See /usr/share/doc/packages/perl-DBD-Pg/Changes for details.
+
+-------------------------------------------------------------------
+Fri May 19 12:32:43 CEST 2006 - max@suse.de
+
+- New version: 1.49:
+  * Added support for geometric types.
+  * Various bugfixes.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 10:01:08 CET 2006 - max@suse.de
+
+- New version: 1.42 (bug #128183).
+
+-------------------------------------------------------------------
+Sat Feb 28 12:02:31 CET 2004 - ro@suse.de
+
+- fix requirement for /usr/local
+- fix "control reaches end of non-void function"
+
+-------------------------------------------------------------------
+Sat Jan 10 21:36:15 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:24:15 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 21 15:17:49 CEST 2003 - max@suse.de
+
+- new version: 1.22
+- Fix build for perl-5.8.1.
+
+-------------------------------------------------------------------
+Mon Jun 30 11:34:58 CEST 2003 - ro@suse.de
+
+- remove traces of buildroot from installed files 
+
+-------------------------------------------------------------------
+Sun Jun 22 22:00:30 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Wed Feb  5 01:10:08 CET 2003 - ro@suse.de
+
+- updated neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jul  3 13:49:47 CEST 2002 - max@suse.de
+
+- New package perl-DBD-Pg version 1.13.
+- A database driver for perl-DBI and PostgreSQL.
+

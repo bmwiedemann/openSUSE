@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Thu Jul 18 14:07:56 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Supplement libgtk-3-0 instead to avoid installation on a textmode install
+  (boo#1142000)
+
+-------------------------------------------------------------------
+Thu Feb 14 10:36:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Supplement the openssh and libx11 together to ensure this package
+  is installed on machines where there is X stack
+
+-------------------------------------------------------------------
+Mon Oct 22 08:59:02 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 7.9p1
+  * No actual changes for the askpass
+  * See main package changelog for details
+
+-------------------------------------------------------------------
+Tue Oct  9 10:52:15 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.8p1:
+  * no actual changes for the askpass
+- Format with spec-cleaner
+- Respect cflags
+- Use gtk3 rather than gtk2 which is being phased out
+
+-------------------------------------------------------------------
+Mon May 21 15:19:03 UTC 2018 - pcerny@suse.com
+
+- Upgrade to 7.7p1 (bsc#1094068)
+
+-------------------------------------------------------------------
+Wed Jan 31 22:54:55 UTC 2018 - pcerny@suse.com
+
+- .spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov  3 12:27:18 UTC 2017 - pcerny@suse.com
+
+- upgrade to 7.6p1
+  see main package changelog for details
+
+-------------------------------------------------------------------
+Mon Jul 25 13:45:53 UTC 2016 - meissner@suse.com
+
+- fixed url
+
+-------------------------------------------------------------------
+Sun Apr 17 23:27:51 UTC 2016 - pcerny@suse.com
+
+- upgrade to 7.2p2
+
+-------------------------------------------------------------------
+Tue Feb 10 13:28:56 UTC 2015 - pcerny@suse.com
+
+- changing license to 2-clause BSD to match source
+
+-------------------------------------------------------------------
+Fri Apr 11 21:50:51 UTC 2014 - pcerny@suse.com
+
+- Update of the underlying OpenSSH to 6.6p1
+
+-------------------------------------------------------------------
+Wed Feb 12 01:24:16 UTC 2014 - pcerny@suse.com
+
+- Update of the underlying OpenSSH to 6.5p1
+
+-------------------------------------------------------------------
+Fri Jan 24 15:13:09 UTC 2014 - pcerny@suse.com
+
+- Update of the underlying OpenSSH to 6.4p1
+
+-------------------------------------------------------------------
+Thu Sep 19 02:02:56 UTC 2013 - pcerny@suse.com
+
+- spec file cleanup (don't pointelssly build whole OpenSSH)
+
+-------------------------------------------------------------------
+Sat Aug  3 18:12:20 UTC 2013 - crrodriguez@opensuse.org
+
+- Update for 6.2p2 
+
+-------------------------------------------------------------------
+Tue Nov 13 10:51:12 UTC 2012 - meissner@suse.com
+
+- Updated to 6.1p1, a bugfix release
+  Features:
+ * sshd(8): This release turns on pre-auth sandboxing sshd by default for
+   new installs, by setting UsePrivilegeSeparation=sandbox in sshd_config.
+ * ssh-keygen(1): Add options to specify starting line number and number of
+   lines to process when screening moduli candidates, allowing processing
+   of different parts of a candidate moduli file in parallel
+ * sshd(8): The Match directive now supports matching on the local (listen)
+   address and port upon which the incoming connection was received via
+   LocalAddress and LocalPort clauses.
+ * sshd(8): Extend sshd_config Match directive to allow setting AcceptEnv
+   and {Allow,Deny}{Users,Groups}
+ * Add support for RFC6594 SSHFP DNS records for ECDSA key types. bz#1978
+ * ssh-keygen(1): Allow conversion of RSA1 keys to public PEM and PKCS8
+ * sshd(8): Allow the sshd_config PermitOpen directive to accept "none" as
+   an argument to refuse all port-forwarding requests.
+ * sshd(8): Support "none" as an argument for AuthorizedPrincipalsFile
+ * ssh-keyscan(1): Look for ECDSA keys by default. bz#1971
+ * sshd(8): Add "VersionAddendum" to sshd_config to allow server operators
+   to append some arbitrary text to the server SSH protocol banner.
+ Bugfixes:
+ * ssh(1)/sshd(8): Don't spin in accept() in situations of file
+   descriptor exhaustion. Instead back off for a while.
+ * ssh(1)/sshd(8): Remove hmac-sha2-256-96 and hmac-sha2-512-96 MACs as
+   they were removed from the specification. bz#2023,
+ * sshd(8): Handle long comments in config files better. bz#2025
+ * ssh(1): Delay setting tty_flag so RequestTTY options are correctly
+   picked up. bz#1995
+ * sshd(8): Fix handling of /etc/nologin incorrectly being applied to root
+   on platforms that use login_cap.
+ Portable OpenSSH:
+ * sshd(8): Allow sshd pre-auth sandboxing to fall-back to the rlimit
+   sandbox from the Linux SECCOMP filter sandbox when the latter is
+   not available in the kernel.
+ * ssh(1): Fix NULL dereference when built with LDNS and using DNSSEC to
+   retrieve a CNAME SSHFP record.
+ * Fix cross-compilation problems related to pkg-config. bz#1996
+
+-------------------------------------------------------------------
+Wed Jun 27 09:51:19 UTC 2012 - coolo@suse.com
+
+- the gnome askpass does not require the x11 askpass - especially not
+  in the version of openssh (it's at 1.X)
+
+-------------------------------------------------------------------
+Tue May 29 07:14:53 UTC 2012 - meissner@suse.com
+
+- use correct tarball url
+- update to 6.0p1.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:42:32 UTC 2012 - aj@suse.de
+
+- Add build require on autoconf and automake.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:42 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Wed Oct 19 00:40:15 UTC 2011 - pcerny@suse.com
+
+- Update to 5.9p1 
+
+-------------------------------------------------------------------
+Fri Feb  4 11:19:14 UTC 2011 - lchiquitto@novell.com
+
+- Update to 5.8p1
+
+-------------------------------------------------------------------
+Mon Jan 24 11:51:10 UTC 2011 - lchiquitto@novell.com
+
+- Update to 5.7p1
+
+-------------------------------------------------------------------
+Wed Jan 12 13:37:38 CET 2011 - sbrabec@suse.cz
+
+- Removed relics of no more implemented opensc support.
+
+-------------------------------------------------------------------
+Tue Aug 24 15:50:17 CEST 2010 - anicka@suse.cz
+
+- update to 5.6p1 
+
+-------------------------------------------------------------------
+Fri Mar 26 11:04:59 CET 2010 - anicka@suse.cz
+
+- update to 5.4p1
+- remove -pam-fix4.diff (in upstream now) 
+
+-------------------------------------------------------------------
+Mon Feb 23 17:27:22 CET 2009 - anicka@suse.cz
+
+- update to 5.2p1
+
+-------------------------------------------------------------------
+Wed Apr  9 14:35:42 CEST 2008 - anicka@suse.cz
+
+- update to 5.0p1 
+
+-------------------------------------------------------------------
+Wed Apr  2 15:06:01 CEST 2008 - anicka@suse.cz
+
+- update to 4.9p1 
+
+-------------------------------------------------------------------
+Wed Dec  5 10:56:07 CET 2007 - anicka@suse.cz
+
+- - update to 4.7p1
+  * Add "-K" flag for ssh to set GSSAPIAuthentication=yes and
+    GSSAPIDelegateCredentials=yes. This is symmetric with -k
+  * make scp try to skip FIFOs rather than blocking when nothing is
+    listening.
+  * increase default channel windows
+  * put the MAC list into a display
+  * many bugfixes
+
+-------------------------------------------------------------------
+Tue Dec 12 14:44:41 CET 2006 - anicka@suse.cz
+
+- update to 4.5p1
+  * Use privsep_pw if we have it, but only require it if we
+    absolutely need it.
+  * Correctly check for bad signatures in the monitor, otherwise
+    the monitor and the unpriv process can get out of sync.
+  * Clear errno before calling the strtol functions.
+  * exit instead of doing a blocking tcp send if we detect
+    a client/server timeout, since the tcp sendqueue might
+    be already full (of alive requests)
+  * include signal.h, errno.h, sys/in.h
+  * some more bugfixes
+
+-------------------------------------------------------------------
+Wed Oct  4 12:56:40 CEST 2006 - postadal@suse.cz
+
+- updated to version 4.4p1 [#208662]
+  * fixed pre-authentication DoS, that would cause sshd(8) to spin 
+    until the login grace time expired
+  * fixed unsafe signal hander, which was vulnerable to a race condition 
+    that could be exploited to perform a pre-authentication DoS
+  * fixed a GSSAPI authentication abort that could be used to determine 
+    the validity of usernames on some platforms
+  * implemented conditional configuration in sshd_config(5) using the
+    "Match" directive
+  * added support for Diffie-Hellman group exchange key agreement with a
+    final hash of SHA256
+  * added a "ForceCommand", "PermitOpen" directive to sshd_config(5)
+  * added optional logging of transactions to sftp-server(8)
+  * ssh(1) will now record port numbers for hosts stored in
+    ~/.ssh/authorized_keys when a non-standard port has been requested
+  * added an "ExitOnForwardFailure" option to cause ssh(1) to exit (with
+    a non-zero exit code) when requested port forwardings could not be
+    established
+  * extended sshd_config(5) "SubSystem" declarations to allow the
+    specification of command-line arguments
+- removed obsoleted patches: autoconf-fix.patch
+
+-------------------------------------------------------------------
+Tue Jul 25 13:40:10 CEST 2006 - schwab@suse.de
+
+- Fix syntax error in configure script.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 15:54:49 CET 2006 - postadal@suse.cz
+
+- updated to version 4.2p1
+- removed obsoleted patches: upstream_fixes.diff, gssapi-secfix.patch
+
+-------------------------------------------------------------------
+Thu Sep  8 16:20:06 CEST 2005 - postadal@suse.cz
+
+- don't strip
+
+-------------------------------------------------------------------
+Thu Aug  4 11:30:18 CEST 2005 - uli@suse.de
+
+- parallelize build
+
+-------------------------------------------------------------------
+Fri Jun 10 16:24:22 CEST 2005 - postadal@suse.cz
+
+- updated to version 4.1p1
+- removed obsoleted patches: restore_terminal, pam-returnfromsession,
+  timing-attacks-fix, krb5ccname, gssapi-pam, logdenysource, 
+  sendenv-fix, documentation-fix
+
+-------------------------------------------------------------------
+Wed Jan 19 18:25:29 CET 2005 - postadal@suse.cz
+
+- renamed askpass-gnome package to openssh-askpass-gnome
+
+-------------------------------------------------------------------
+Wed Jan 19 15:58:07 CET 2005 - postadal@suse.cz
+
+- splited spec file to decreas number of build dependencies
+

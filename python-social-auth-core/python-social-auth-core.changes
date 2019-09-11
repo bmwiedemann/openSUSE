@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Mon Jun  3 10:08:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.0:
+  * Cognito backend
+  * OpenStack (openstackid and openstackid-dev) backends
+  * Many fixes to all existing Backends to match up upstream projects
+
+-------------------------------------------------------------------
+Thu Apr 11 04:22:39 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove build dependency on unittest2, as this was also a missing
+  runtime dependency on both Python 2 and 3 as the tests are
+  distributed in the runtime package, and are used by the test suite
+  of other packages.
+  * Add patch remove-unittest2.patch
+- Suggest python3-saml dependency for both Python 2 & 3, and
+  activate the SAML tests, adding missing saml_config.json for tests.
+  Not recommended due to dependency chain including libxmlsec,
+  which at the moment is unsupported v1.2.20
+- Add README.md to %doc
+
+-------------------------------------------------------------------
+Wed Apr  3 08:43:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Lower down PyJWT dependency the higher is not really needed
+
+-------------------------------------------------------------------
+Tue Apr  2 10:09:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.0:
+  * Universe Ticketing backend
+  * Auth0.com authentication backend
+  * Update Bungie backend dropping any Django reference
+  * Enable and fix JWT related tests
+  * Remove PyPy support from Tox
+  * Drop support for Python 3.4 in Tox
+  * Allow to override JWT decode options in Open ID Connect base backend
+  * Pass access token via Authorization header to Google user data url
+  * Updated user_data method in AzureADOAuth2 to return access_token if id_token is not present in response
+  * Updated Azure B2C to extract first email from list if it's a list
+  * Replace deprecated Google+ API usage with https://www.googleapis.com/oauth2/v3/userinfo
+  * Updated Azure Tenant to fix Nonetype error
+  * Updated comment denoting incorrect setting name
+  * Yandex: do not fail when no email is present
+  * Mediawiki: do not fail when no email is present
+  * Mediawiki: enhance get_user_details to return more details
+
+-------------------------------------------------------------------
+Fri Nov 30 09:58:21 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 2.0.0
+  + Added Telegram authentication backend
+  + Added Keycloak backend with premilinary OAuth2 support
+  + Added Globus OpenId Connect backend
+  + Added Discord OAuth2 backend
+  + Added SciStarter OAuth2 backend
+  + Added Flat OAuth2 backend
+  + Added ELIXIR OpenId Connect backend
+  + Added Atlassian OAuth2 backend
+  + GitHub backend now uses state parameter instead of redirect_state
+  + Correct setting name on AzureAD Tenant backend
+  + Introduce access token expired threshold of 5 seconds by default
+  + Delete partial token from session if still present
+  + Use userPrincipalName to set username and email accordingly
+  + Send authorization headers to Kakao OAuth2, properly fill user details
+  + LINE API update to v2.1
+  + Use unitest2 with Python 3
+  + Update Slack backend to use computed usename on teams setups
+  + Enforce unicode_literals on Slack backend
+  + Update ORCID backend to support Member API
+  + Updated Pixelpin backend to use the new OpenId Connect service
+  + Update sanitize_redirect to invalidate redirects like ///evil.com
+  + Update Coinbase API endpoint
+  + Dropped Python 3.3 support
+  + Updated Weixin backend to use urlencode from six
+  + Updated Google+ backend to properly process requests with id_token
+  + Updated OpenId connect dependencies
+- Require python3 3.4.0 or newer to build and run
+ 
+-------------------------------------------------------------------
+Wed Aug  1 13:37:44 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Run the tests with %python_expand rather than %python_exec
+
+-------------------------------------------------------------------
+Fri Jul 27 06:29:23 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Address punctuation issues.
+
+-------------------------------------------------------------------
+Wed Jul 25 17:55:04 UTC 2018 - sean.marlow@suse.com
+
+- Move license in spec.
+- Drop devel module dependency.
+- Remove conditionals from buildRequirements.
+
+-------------------------------------------------------------------
+Tue Feb 20 15:54:34 UTC 2018 - buschmann23@opensuse.org
+
+- update to version 1.7.0
+  + Update EvenOnline token expiration key
+  + Update OpenStreetMap URL to https
+  + Fix LinkedIn backend to send the oauth_token as Authorization header
+  + Fixed extra_data update to use the alias as key too
+  + Make signed_request optional in Facebook App OAuth2 backend
+  + Support string and lists on SAML permanent id value
+  + Correct sending params sending on GET access-token retrieval case
+  + Ensure b2c policy name check
+  + Use extras_requrie to specify python specific version dependencies
+  + Added support for AzureAD B2C OAuth2
+  + Added LinkedIn Mobile OAuth2 backend
+- spec file changes
+  + do not include README.md in files list because it does not
+    contain any relevant information
+
+-------------------------------------------------------------------
+Fri Dec 29 11:54:34 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 1.6.0
+  + Fix coinbase backend to use api v2
+  + Default REDIRECT_STATE to False in FacebookOAuth2 backend
+  + Add revoke token url for Coinbase OAuth2 backend
+  + Fix LinkedIn backend to send oauth_token as request header
+  + Make partial step decorator handle arguments
+  + Added support for ChatWork OAuth2 backend
+- spec file changes
+  + put explicit py2 and py3 buildrequires into ifpython codeblocks
+
+-------------------------------------------------------------------
+Sat Dec 16 09:49:25 UTC 2017 - buschmann23@opensuse.org
+
+- improve spec file summary and description
+
+-------------------------------------------------------------------
+Wed Nov 15 08:46:19 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 1.5.0
+  + Fix using the entire SAML2 nameid string
+  + Prevent timing attacks against state token
+  + Updated GitLab API version to v4
+  + Enforce UTC when calculating access token expiration time
+  + Cleanup user attributes update from social details
+  + Send authorization header on Reddit auth
+  + Added support for tenant for Azure AD backend
+  + Added JWT validation for Azure AD backend
+  + Added support for Bungie.net OAuth2 backend
+  + Added support for Eventbrite OAuth2 backend
+  + Added support for OpenShift OAuth2 backend
+  + Added support for Microsoft Graph OAuth2 backend
+- spec file changes
+  + use python_expand for nosetests
+  + add CHANGELOG.md to docs
+  + update project url
+
+-------------------------------------------------------------------
+Tue Oct 24 11:44:03 UTC 2017 - buschmann23@opensuse.org
+
+- fix requirements for python-openid
+
+-------------------------------------------------------------------
+Tue Oct 24 11:30:43 UTC 2017 - buschmann23@opensuse.org
+
+- convert into single spec
+
+-------------------------------------------------------------------
+Thu Aug 10 08:35:15 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 1.4.0
+  + Fix path in import BaseOAuth2 for Monzo
+  + Fix auth header formatting problem for Fitbit OAuth2
+  + Raise AuthForbidden when provider returns 401.
+  + Update Facebook API to version 2.9
+  + Speed up authorization process for VKAppOAuth2
+  + Apply same sanitization as on connect to disconnect.
+  + Disable redirect_state usage on Disqus backend
+  + Added Udata OAuth2 backend
+  + Added ORCID backend
+  + Added feature to get all extra data from backend through
+    GET_ALL_EXTRA_DATA boolean flag.
+  + Added Patreon provider
+- update to version 1.3.0
+  + Use extra_data method when refreshing an access_token, ensure that
+    auth-time is updated then
+  + Added 500px OAuth1 backend
+  + Added Monzo OAuth2 backend
+  + Added get_access_token method that will refresh if expired
+  + Updated email validation to pass the partial pipeline token if
+    given.
+  + Prefer passed parameters in authenticate method
+  + Properly discard already used verification codes
+  + Save SAML attributes in extra_data
+  + Note id_token in GooglePlusAuth's AuthMissingParameter
+

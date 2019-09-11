@@ -1,0 +1,35 @@
+Remove call to pthreads_mutex_trylock
+
+Reference bnc
+594388
+This appears only to be in very recent releases of glibc.
+Its presence causes
+
+/sbin/dmraid -ay -p
+The dynamic shared library "libdmraid-events-isw.so" could not be loaded:
+    /lib/libdmraid-events-isw.so: undefined symbol: pthread_mutex_trylock
+
+on openSUSE 11.3, it is is not used for anything except a simple
+logging message.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+
+---
+ 1.0.0.rc16/lib/events/libdmraid-events-isw.c |    6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+--- dmraid.orig/1.0.0.rc16/lib/events/libdmraid-events-isw.c
++++ dmraid/1.0.0.rc16/lib/events/libdmraid-events-isw.c
+@@ -1433,11 +1433,7 @@ void process_event(struct dm_task *dmt,
+ 	/*
+ 	 * Make sure, events are processed sequentially per RAID set.
+ 	 */
+-	if (pthread_mutex_trylock(&rs->event_mutex)) {
+-		syslog(LOG_NOTICE,
+-		       "  Another thread is handling an event.  Waiting...");
+-		pthread_mutex_lock(&rs->event_mutex);
+-	}
++	pthread_mutex_lock(&rs->event_mutex);
+ 
+ 	do {
+ 		next = dm_get_next_target(dmt, next, &start, &length,

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Feb 19 11:08:21 UTC 2019 - bjorn.lie@gmail.com
+
+- Add n_libva-2.0-ABI-header-fix.patch: Load libva-x11.so.2 for
+  libva-2.0 ABI version. This is a reworked patch from an upstream
+  merge request. Patch in it's current form is not upstreamable,
+  but works for us since we only have libva-2.0 to care about.
+  See https://github.com/01org/intel-hybrid-driver/pull/26 for more
+  context.
+
+-------------------------------------------------------------------
+Sat Jan 26 20:20:30 UTC 2019 - bjorn.lie@gmail.com
+
+- Add U_Update-the-dependency-to-libva-2.0.patch: Update the
+  dependency to libva 2.0. In addition, this fixes deprecated
+  warning caused by libva 2.0.
+- Add Group tag and use macros in spec for building.
+
+-------------------------------------------------------------------
+Thu Sep 21 12:21:31 UTC 2017 - sndirsch@suse.com
+
+- fixed build on Leap (apparently there is no %make_build macro yet) 
+
+-------------------------------------------------------------------
+Fri Aug 18 09:07:28 UTC 2017 - zaitor@opensuse.org
+
+- Initial packaging for openSUSE, version 1.0.2.
+

@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Sat Apr  7 18:21:47 UTC 2018 - wbauer@tmo.at
+
+- Add fix-build-with-SDL_mixer-2.0.2.patch to fix build with
+  SDL2_mixer 2.0.2 where MIX_INIT_FLUIDSYNTH has been renamed to
+  MIX_INIT_MID
+
+-------------------------------------------------------------------
+Sat Jul 15 13:28:08 UTC 2017 - mailaender@opensuse.org
+
+- Install appdata.xml file
+
+-------------------------------------------------------------------
+Sun Jan 22 13:10:57 UTC 2017 - mailaender@opensuse.org
+
+- update to version 0.96.4
+- drop fix-gcc6.patch (included upstream)
+- drop dunelegacy-0.96.3-configure-CXXFLAGS.diff (included upstream)
+
+-------------------------------------------------------------------
+Thu Jun 30 19:58:52 UTC 2016 - dap.darkness@gmail.com
+
+- Added dunelegacy-0.96.3-configure-CXXFLAGS.diff to not override
+  system's CXXFLAGS and to not use -O3.
+- Added man page.
+- Enabled verbose make output.
+
+-------------------------------------------------------------------
+Thu Jun 30 18:29:25 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-gcc6.patch to fix build with gcc6 (c++14)
+
+-------------------------------------------------------------------
+Sun Aug 16 05:48:03 UTC 2015 - mailaender@opensuse.org
+
+- Run unit tests
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Mar 25 06:44:06 UTC 2013 - mailaender@opensuse.org
+
+- Update to 0.96.3
+- Use https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Apr 30 19:25:20 UTC 2012 - jengelh@medozas.de
+
+- Enable parallel build with %_smp_mflags
+- Remove seemingly unneeded calls to autotools regeneration
+
+-------------------------------------------------------------------
+Fri Jul 22 00:00:00 UTC 2011 - mailaender@opensuse.org
+
+- Initial package for build.opensuse.org, based upon
+  http://cvs.pld-linux.org/cgi-bin/cvsweb/packages/dunelegacy/dunelegacy.spec?rev=1.8.2.1

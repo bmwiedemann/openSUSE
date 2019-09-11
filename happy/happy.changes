@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Fri Jun  7 02:01:39 UTC 2019 - psimons@suse.com
+
+- Update happy to version 1.19.11.
+  1.19.11
+
+          * Fix for building with GHC 8.6.x
+
+  -----------------------------------------------------------------------------
+
+-------------------------------------------------------------------
+Fri May 10 13:28:46 UTC 2019 - psimons@suse.com
+
+- Update happy to version 1.19.10.
+  1.19.10
+
+          * Fix polymorphic (rank-n) non-terminals
+          * Fix for GHC 8.8.1
+
+  -----------------------------------------------------------------------------
+
+-------------------------------------------------------------------
+Sat Oct 20 11:26:41 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support ghc-8.6.1.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:49 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jun 13 18:35:28 UTC 2018 - ptrommler@icloud.com
+
+- Another tweak for SLE 12
+  * use plain make to build documentation
+
+-------------------------------------------------------------------
+Tue Jun 12 18:09:12 UTC 2018 - ptrommler@icloud.com
+
+- Fix build on SLE 12 SP 3
+  * configure in doc directory chokes on
+    --disable-dependency-tracking
+
+-------------------------------------------------------------------
+Wed May 16 14:19:58 UTC 2018 - psimons@suse.com
+
+- Update to version 1.19.9.
+  * Fix build with GHC 8.4.1-alpha
+  * Fix issue #94 (some grammars don't compile due to new type
+    signatures introduced to allow overloading to be used)
+  * Fix misisng test suite files in the sdist
+  * Manually generate Parser.hs using Makefile before sdist,
+    to fix bootstrapping problems with cabal sandboxes & new-build
+  * Documentation fixes
+  * Fixed GLR support
+  * new option -p/--pretty prints the grammar rules (only) to a file
+  * Added generation of additional type signatures to enable use
+    of typeclasses in monadic parsers.
+  * Code cleanups (thanks Index Int <vlad.z.4096@gmail.com>)
+  * fix for GHC 7.10 (Applicative/Monad, #19, #21)
+  * fix for GHC 7.2 (#16)
+  * fixes for clang (XCode 5)
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Tue Jul 11 04:02:43 UTC 2017 - bwiedemann@suse.com
+
+- Drop build logs from rpm to fix build-compare
+
+-------------------------------------------------------------------
+Sat Apr 29 18:32:34 UTC 2017 - psimons@suse.com
+
+- Update to version 1.19.5 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:23:32 UTC 2016 - psimons@suse.com
+
+- Update to version 1.19.5 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed May 13 09:06:25 UTC 2015 - mimi.vx@gmail.com
+
+- temporary disable tests
+
+-------------------------------------------------------------------
+Thu Apr  9 16:46:01 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.19.5
+
+-------------------------------------------------------------------
+Mon Feb  2 19:11:21 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- downgrade to 1.19.4
+* strict version requirement by Haskell Platform
+
+-------------------------------------------------------------------
+Mon Feb  2 12:02:42 UTC 2015 - mimi.vx@gmail.com
+
+- change line endings from dos to unix in examples
+
+-------------------------------------------------------------------
+Sun Jan 18 20:18:58 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.19.5
+- remove rpmlintrc
+* fixes for GHC 7.10
+* Code cleanups (thanks Index Int <vlad.z.4096@gmail.com>)
+
+-------------------------------------------------------------------
+Mon Nov 24 08:29:34 UTC 2014 - mimi.vx@gmail.com
+
+- change licence to BSD-2-Clause
+
+-------------------------------------------------------------------
+Sun Nov 23 19:02:58 UTC 2014 - mimi.vx@gmail.com
+
+- typo in Summary
+
+-------------------------------------------------------------------
+Sun Nov 23 18:20:06 UTC 2014 - mimi.vx@gmail.com
+
+- add tests
+- suppres warnings with rpmlintrc
+- spec file cleanup with cabal-rpm and spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 12 06:55:24 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 1.19.4
+* fix manual page
+* fix build with ghc 7.8 and (future) 7.10
+* Haskell Platform 2014.2.0.0
+- drop happy-1.18.6-generate-man-page.patch
+* fixed upstream
+
+-------------------------------------------------------------------
+Sat Aug 23 00:32:47 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 13:24:22 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- spec file cleanup and reformatting by OBS service
+
+-------------------------------------------------------------------
+Thu Dec 27 13:51:50 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fixed license tag
+
+-------------------------------------------------------------------
+Sat Nov 17 14:59:53 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Mon Oct  1 19:14:05 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 1.18.10 from upstream for Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun 10 06:50:15 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- dropped BuildRequires xmltex (not needed)
+
+-------------------------------------------------------------------
+Tue Jun  5 13:26:11 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 1.18.9 from upstream for Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Mon May  7 19:23:10 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- patch file added
+
+-------------------------------------------------------------------
+Mon May  7 19:22:17 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- added patch to enable man page generation
+- build, install and package man page
+
+-------------------------------------------------------------------
+Mon Jan 23 08:03:09 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- SPDX compliant version tag
+- BR autoconf explicitly
+
+-------------------------------------------------------------------
+Mon Dec  5 09:00:46 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fixed ExclusiveArch for OBS
+- Added ghc-mtl-devel BR
+
+-------------------------------------------------------------------
+Thu Nov 24 21:30:04 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

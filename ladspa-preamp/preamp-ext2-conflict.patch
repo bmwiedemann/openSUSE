@@ -1,0 +1,33 @@
+---
+ exp2.h    |    3 +++
+ preamp.cc |    2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+--- a/exp2.h
++++ b/exp2.h
+@@ -7,6 +7,8 @@
+  * thanks, andy!
+  */
+ 
++namespace DSP {
++
+ static inline float
+ exp2 (float x)
+ {
+@@ -22,4 +24,5 @@ exp2 (float x)
+ 	return x;
+ }
+ 
++} /* namespace DSP */
+ #endif /* _EXP_2_H_ */
+--- a/preamp.cc
++++ b/preamp.cc
+@@ -194,7 +194,7 @@ Preamp::process (int frames)
+ 		hp.set_f (fc / fs);
+ 	}
+ 	
+-	double g = gain < 1 ? gain + .00001 : exp2 (gain - 1);
++	double g = gain < 1 ? gain + .00001 : DSP::exp2 (gain - 1);
+ 	double ig = .063 / g;
+ 
+ 	g *= 4.; /* correction for first valve transfer at -12 dB gain */

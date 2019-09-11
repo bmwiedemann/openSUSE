@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Mon Mar 18 09:23:25 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.0 (bsc#1131198)
+  * Bump model version and fix typo
+  * Add HashingAnnoy model
+  * Add hashing\_nn benchmark in doc string
+  * Add HashingApproximateNeighbors model
+  * Implement iterator interface for file-like objects
+  * Refactor TokenizerTests
+  * Provide a bit more info about timings of the training
+  * Remove support for bag-of-words\_lshf
+  * Don't store duplicate data in model
+  * Fix heat\_uuid regexp formatting
+  * Relax digits\_re again a bit
+  * Vectorizer optimisation: don't do word analysing
+  * debug\_lineprocess: Handle more than one input file
+  * debug\_lineprocess: Format output slightly nicer and remove duplicates
+  * Tighten heat\_uuid regexp
+  * Tighten length-based regexp matches properly
+  * debug\_lineprocess add some simple word / token statistics
+  * Blacklist .xml extension
+  * Use for loop instead of handcrafted while construct
+  * tests: use free tcp port for gearman server
+  * Add --model-type argument to top-level command
+  * tokenizer: remove sshd warnings
+  * Make debugging scripts callable again
+  * Reduce code duplication a bit
+  * Micro-optimize the tokenization
+  * ci: enable gate jobs
+  * Make systemd service file SCL independent
+  * Transition webui related files to the log-classify name
+  * Match uuid\_re before heat\_re
+  * Use SqlAlchemy intrinsics for ordering
+  * Fix overly greedy date tokenization
+  * Fix tokenization error on removing SSH fingerprints
+  * DRY: Remove implementation override that also exists in the base class
+  * Fix assertEquals() deprecation warning
+  * Use generator for reading files
+  * tokenizer regexp speedups
+  * cmd: add --json argument to report options
+  * Spelling typos
+  * logreduce: Fix inconsistency for model\_file in model-run
+  * logreduce.spec: Fixes
+  * README: Add openSUSE instructions
+  * Add py36/py37 to the env list as well
+  * Run pep8 against pip installed flake8
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Oct 29 13:37:17 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * Add support for ara database classification
+  * Add webui sub-package to the spec file
+  * tokenizer: handle hexa numbers
+  * react: fix typo and add build time
+  * Add React web interface
+  * Add worker service to process user report
+  * Add anomaly update method
+  * Add model skeleton and report import method
+  * Add api skeleton
+
+-------------------------------------------------------------------
+Wed Oct 24 18:45:49 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * Use ara[-\_]\*.\*/ in the default ignore paths list
+  * Fix download asyncio loop and logger names
+  * Record test command used to train models
+  * Add a uuid to model object
+  * Remove chunk grouping in the process function
+  * Rewrite html output using patternfly
+  * Collect ZuulBuild in anomaly report
+  * Add --cacheonly argument to skip file download
+  * Add ara-.\* to the default ignore list
+  * Rewrite ZuulBuilds download module to discover base log\_url
+  * common: small fixes for automated process
+
+-------------------------------------------------------------------
+Wed Aug  8 17:04:25 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Jul  9 10:53:33 UTC 2018 - dmueller@suse.com
+
+- update to 0.1.3:
+ * Update zuul-jobs log-classify role
+ * Fix ARA report directory link to ara-report
+ * Automatically set the zuul-web url for logs.rdoproject.org
+ * Add tripleo-ci job tokenization
+ * Update README todo lists
+ * Fix typo in ARA Records Ansible
+ * Start with a capitalized pypi summary
+ * Move flake8 from test-requirements to the linter env
+
+-------------------------------------------------------------------
+Tue May 22 18:31:27 UTC 2018 - dmueller@suse.com
+
+- Initial package (0.1.2)

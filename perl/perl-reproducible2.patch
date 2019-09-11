@@ -1,0 +1,35 @@
+commit 3b3217087ecdc7a51bfeba5233e1a4612da9ea5b
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Thu Dec 27 11:24:43 2018 +0100
+
+    Avoid recursion depth variations across builds
+    
+    See https://reproducible-builds.org/ for why this is good.
+    
+    Variations are likely coming from ASLR.
+    
+    On an openSUSE Linux system, this changed
+    $Storable::recursion_limit
+    from varying between 14265 and 14267 to a constant 14256
+    
+    There could be a chance for remaining variations.
+    
+    ---
+    Better fixes welcome.
+
+Index: perl-5.28.1/dist/Storable/stacksize
+===================================================================
+--- perl-5.28.1.orig/dist/Storable/stacksize
++++ perl-5.28.1/dist/Storable/stacksize
+@@ -198,8 +198,8 @@ my $max_depth_hash = $n;
+ # be fairly aggressive in trimming this, smoke testing showed several
+ # several apparently random failures here, eg. working in one
+ # configuration, but not in a very similar configuration.
+-$max_depth = int(0.6 * $max_depth);
+-$max_depth_hash = int(0.6 * $max_depth);
++$max_depth = int(0.6 * $max_depth) & ~31;
++$max_depth_hash = int(0.6 * $max_depth) & ~31;
+ 
+ my $stack_reserve = $^O eq "MSWin32" ? 32 : 16;
+ if ($] ge "5.016" && !($^O eq "cygwin" && $ptrsize == 8)) {
+

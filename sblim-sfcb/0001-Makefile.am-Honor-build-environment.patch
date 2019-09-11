@@ -1,0 +1,34 @@
+From 2d281f4a64a6f3017c771891301dbd84ed4c8eca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 18 Aug 2010 11:20:53 +0200
+Subject: [PATCH 01/25] Makefile.am: Honor build environment
+
+---
+ Makefile.am | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 7b9a222de2e4..6d0f5f10f833 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -554,11 +554,15 @@ dist-hook:
+ 
+ install-cimschema: getSchema.sh
+ 	test -d $(DESTDIR)$(sfcbdatadir) || $(mkdir_p) $(DESTDIR)$(sfcbdatadir)
+-	sh getSchema.sh -f $(DESTDIR)$(sfcbdatadir)
++	if test ! -f /.buildenv; then \
++	  sh getSchema.sh -f $(DESTDIR)$(sfcbdatadir); \
++	fi;
+ 
+ create-sslkeys:
+ if SSL
+-	$(sfcbdatadir)/genSslCert.sh $(sfcbconfdir)
++	if test ! -f /.buildenv; then \
++	  $(sfcbdatadir)/genSslCert.sh $(sfcbconfdir); \
++	fi;
+ endif
+ 
+ footprint-sloc:
+-- 
+2.15.0
+

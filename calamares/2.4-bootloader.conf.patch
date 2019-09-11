@@ -1,0 +1,23 @@
+Adjust some default settings (default shipped .conf files).
+GRUB2 is default bootloader in openSUSE and openSUSE based appliances.
+
+diff --git a/src/modules/bootloader/bootloader.conf b/src/modules/bootloader/bootloader.conf
+--- a/src/modules/bootloader/bootloader.conf
++++ b/src/modules/bootloader/bootloader.conf
+@@ -17,9 +17,13 @@
+ 
+ # GRUB 2 binary names and boot directory
+ # Some distributions (e.g. Fedora) use grub2-* (resp. /boot/grub2/) names.
+-grubInstall: "grub-install"
+-grubMkconfig: "grub-mkconfig"
+-grubCfg: "/boot/grub/grub.cfg"
++grubInstall: "grub2-install"
++grubMkconfig: "grub2-mkconfig"
++grubCfg: "/boot/grub2/grub.cfg"
++# Some other distributions use grub-* (resp. /boot/grub/) names.
++#grubInstall: "grub-install"
++#grubMkconfig: "grub-mkconfig"
++#grubCfg: "/boot/grub/grub.cfg"
+ # Optionally set the --bootloader-id to use for EFI. If not set, this defaults
+ # to the bootloaderEntryName from branding.desc with problematic characters
+ # replaced. If an efiBootloaderId is specified here, it is taken to already be a

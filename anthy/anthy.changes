@@ -1,0 +1,283 @@
+-------------------------------------------------------------------
+Thu Jun 13 07:07:00 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix baselibs.conf: the library was split out as libanthy0 with
+  the last change.
+
+-------------------------------------------------------------------
+Sun Mar 17 21:49:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic that is useless in the face of --disable-static.
+- Drop pre-openSUSE-12.3 parts from the build recipe.
+- Implement the shared library packaging policy.
+- Replace description because canna/freewnn seem comparatively
+  active in OBS's M17N project.
+
+-------------------------------------------------------------------
+Sat Sep  1 12:13:32 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file with spec-cleaner
+- Don't install INSTALL file
+- Use %bcond_with{out}
+
+-------------------------------------------------------------------
+Fri Aug 31 10:19:58 UTC 2018 - qzhao@suse.com
+
+- Update anthy.spec: Divide openSUSE build with emacs function and 
+  SLE doesn't need it.
+
+-------------------------------------------------------------------
+Thu Feb  8 17:26:49 UTC 2018 - msuchanek@suse.com
+
+- Drop build-time requirement on X11. It does not seem to be used for anything.
+
+-------------------------------------------------------------------
+Tue Sep 22 09:52:59 UTC 2015 - ftake@geeko.jp
+
+- Stop providing locale(ja)
+  + Most of ja locale users do not need this anymore
+- Change the upstream URL
+- Clean up the spec file
+
+-------------------------------------------------------------------
+Fri May 30 20:37:56 UTC 2014 - jengelh@inai.de
+
+- Drop unused build-time requirements on libpng, libgif, libtiff,
+  krb5, openldap2
+
+-------------------------------------------------------------------
+Wed Nov  6 15:32:43 CET 2013 - tiwai@suse.de
+
+- Fix breakage on GNU Emacs on openSUSE 13.1 (bnc#849211)
+- Added patch: anthy-use-last-command-event.diff
+
+-------------------------------------------------------------------
+Fri Jul 12 12:39:02 CEST 2013 - tiwai@suse.de
+
+- work around the build error with xemacs 21.5.33
+
+-------------------------------------------------------------------
+Mon Feb  4 09:07:19 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Sun Jun  3 03:15:56 UTC 2012 - i@marguerite.su
+
+- fix sles builds.
+
+-------------------------------------------------------------------
+Sun Dec 11 15:00:46 CET 2011 - meissner@suse.de
+
+- does not need openldap2 direct dependency, libraries are enough
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:41 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 11:09:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Dec 18 00:45:46 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Jun  4 09:39:49 CEST 2009 - tiwai@suse.de
+
+- updated to anthy-9100h
+  * auto-tools fixes
+  * corpus updates
+  * alt-cannadic updates
+  * other many fixes; see ChangeLog
+
+-------------------------------------------------------------------
+Fri Jan  9 00:26:03 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+
+-------------------------------------------------------------------
+Mon Dec  1 12:45:37 CET 2008 - ro@suse.de
+
+- added baselibs.conf for anthy (needed by uim) 
+
+-------------------------------------------------------------------
+Fri Jan 11 18:16:03 CET 2008 - mfabian@suse.de
+
+- use fdupes only for openSUSE >= 10.3 to make it work for the
+  older versions in the openSUSE build service.
+
+-------------------------------------------------------------------
+Tue Dec 04 17:16:57 CET 2007 - mfabian@suse.de
+
+- remove openldap2 from BuildRequires.
+- use fdupes.
+
+-------------------------------------------------------------------
+Thu Aug 02 13:39:28 CEST 2007 - mfabian@suse.de
+
+- update to 9100.
+- add ldconfig post scripts.
+
+-------------------------------------------------------------------
+Wed Apr 25 18:41:25 CEST 2007 - mfabian@suse.de
+
+- update to 8813.
+
+-------------------------------------------------------------------
+Tue Dec 19 18:03:11 CET 2006 - mfabian@suse.de
+
+- update to 8419.
+- fix bugzilla #224463.
+
+-------------------------------------------------------------------
+Fri Jul 28 09:22:19 CEST 2006 - mfabian@suse.de
+
+- update to 7917.
+  •dictionary of place names added
+  •memory leak when the emacs key-map was changed fixed
+  •add a dictionary of postal codes
+
+-------------------------------------------------------------------
+Tue Feb 28 16:57:30 CET 2006 - mfabian@suse.de
+
+- add Provides:     locale(...).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 12:45:58 CET 2006 - mfabian@suse.de
+
+- update to 7307.
+
+-------------------------------------------------------------------
+Wed Aug 03 12:39:35 CEST 2005 - mfabian@suse.de
+
+- update to 6801.
+- remove Andreas Schwab's cleanup.patch, it is included now.
+
+-------------------------------------------------------------------
+Fri May 06 12:05:48 CEST 2005 - mfabian@suse.de
+
+- update to 6506.
+
+-------------------------------------------------------------------
+Sat Apr 23 15:10:57 CEST 2005 - schwab@suse.de
+
+- Clean up lisp code.
+- Move *.so links to devel package.
+
+-------------------------------------------------------------------
+Tue Feb 01 16:36:49 CET 2005 - mfabian@suse.de
+
+- update to 6131.
+
+-------------------------------------------------------------------
+Tue Jan 18 15:58:03 CET 2005 - mfabian@suse.de
+
+- fix anthy.el to make 'backspace work when XEmacs is started
+  in a terminal "xemacs -nw".
+
+-------------------------------------------------------------------
+Tue Dec 28 16:06:45 CET 2004 - mfabian@suse.de
+
+- update to 6024.
+
+-------------------------------------------------------------------
+Thu Dec 16 19:30:22 CET 2004 - mfabian@suse.de
+
+- update to 5924.
+
+-------------------------------------------------------------------
+Mon Oct 11 14:12:17 CEST 2004 - mfabian@suse.de
+
+- make 'anthy-add-word' work with xemacs.
+- make 'anthy-add-word-interactive' work for special nouns.
+
+-------------------------------------------------------------------
+Mon Sep 20 17:11:24 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45561: move .so files to main package. uim needs the
+  .so files but uim should not need to have anthy-devel installed
+  to work.
+- update to 5714:
+  - initialize hankaku_kana_table. otherwise segv.
+  - depgraph/: update from hmm branch
+
+-------------------------------------------------------------------
+Sat Sep  4 20:38:28 CEST 2004 - mfabian@suse.de
+
+- update to 5704.
+
+-------------------------------------------------------------------
+Fri Aug 13 21:01:52 CEST 2004 - mfabian@suse.de
+
+- update to 5613.
+
+-------------------------------------------------------------------
+Tue Feb 24 19:35:39 CET 2004 - mfabian@suse.de
+
+- update to 5021.
+
+-------------------------------------------------------------------
+Tue Feb 10 21:39:47 CET 2004 - mfabian@suse.de
+
+- update to 5008.
+- compile and install emacs-lisp file for XEmacs as well.
+- don't build as root.
+
+-------------------------------------------------------------------
+Mon Aug 25 22:37:05 CEST 2003 - mfabian@suse.de
+
+- update to 4421.
+
+-------------------------------------------------------------------
+Sun Feb 16 17:15:18 CET 2003 - mfabian@suse.de
+
+- update to 3814
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:55 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Mon Aug 12 16:12:22 CEST 2002 - mfabian@suse.de
+
+- update to 3208
+- fix autoconf problem
+- anthy-devel should require anthy
+- remove extra cannadic sources because they are contained in the
+  anthy tarball now.
+- add suse-start-anthy.el to make the input-method
+  'japanese-anthy automatically available for GNU Emacs as soon
+  as anthy is installed.
+
+-------------------------------------------------------------------
+Fri Apr  5 17:07:49 CEST 2002 - mfabian@suse.de
+
+- update to 2427b
+- use 'libtoolize --force' and 'autoreconf --force --install'
+  to fix build problems
+
+-------------------------------------------------------------------
+Wed Apr  3 23:01:55 CEST 2002 - mfabian@suse.de
+
+- update to version 2307
+- update cannadic to 0.94b
+- use %{_libdir}
+- add emacs stuff to '# neededforbuild' to be able to compile
+  anthy.el
+
+-------------------------------------------------------------------
+Sat Sep  8 22:21:00 CEST 2001 - mfabian@suse.de
+
+- new package: Anthy, version 1800b

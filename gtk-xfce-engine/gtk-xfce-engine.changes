@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Sat Feb 28 20:24:06 UTC 2015 - gber@opensuse.org
+
+- update to version 3.2.0
+  - add new theme Xfce-flat
+  - fix invalid free on theme parse error
+
+-------------------------------------------------------------------
+Thu Feb 19 09:56:03 UTC 2015 - gber@opensuse.org
+
+- update to version 3.1.0
+  - added default colors to xfce basic theme
+  - fix uinitialized value (bxo#10877)
+  - support trough-side-details
+  - added flat_border and focus_color style properties
+  - more rendering improvements
+  - Gtk+-3 support has been stopped
+- dropped obsolete gtk-xfce-engine-fix-memory-leak.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 09:12:18 UTC 2012 - gber@opensuse.org
+
+- added gtk-xfce-engine-fix-memory-leak.patch which fixes a memory
+  leak in the cairo drawing code (bnc#771292)
+
+-------------------------------------------------------------------
+Sat Apr 28 11:28:25 UTC 2012 - gber@opensuse.org
+
+- update to version 3.0.0
+  - added px for border sizes
+  - corrected DETAIL names
+  - use the correct colors for options and checks
+  - more consistent extension rendering
+  - corrected class matching and alignments
+  - require Gtk 3.2
+  - tuned default theme for Gtk 3.2
+  - added Gtk 3.4 support to the engine
+  - default themes don't support Gtk+-3.4
+
+-------------------------------------------------------------------
+Sat Apr 14 11:39:54 UTC 2012 - gber@opensuse.org
+
+- update to version 2.99.3
+  - link against libm for floor() and ceil()
+  - reduce GtkComboBox padding
+
+-------------------------------------------------------------------
+Sun Apr  8 18:04:26 UTC 2012 - gber@opensuse.org
+
+- update to version 2.99.2
+  - improved menu theming
+  - theme gtk-tooltip
+  - scale radio and check boxes
+  - draw inset border around default button
+  - changed rendering of GtkSpinButton
+  - pixel align checkboxes in the Gtk+-3.0 engine
+  - link against libm (bug #6253)
+  - added Gtk+-3.0 theming engine
+  - changed drawing routines to use cairo
+
+-------------------------------------------------------------------
+Sat Mar 31 09:48:01 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue Mar  8 22:34:37 UTC 2011 - gber@opensuse.org
+
+- update to version 2.8.1
+  - bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 17 12:18:23 UTC 2011 - gber@opensuse.org
+
+- do not build static library
+- update to version 2.8.0
+  - changed active window decoration color
+  - bugfixes
+
+-------------------------------------------------------------------
+Thu Dec 23 16:36:15 UTC 2010 - gber@opensuse.org
+
+- removed explicit dependencies on gtk2 and glib2
+- improved summary/description
+
+-------------------------------------------------------------------
+Wed Dec  1 18:12:55 UTC 2010 - prusnak@opensuse.org
+
+- use pkgconfig symbol in BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 31 23:40:58 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Fri Feb 27 13:15:51 CET 2009 - prusnak@suse.cz
+
+- updated to 2.6.0 (Xfce 4.6.0 release)
+  * Fix bg color being shown under group box title (Bug #1018)
+  * Remove README.html files (Bug #3280)
+  * Update WM colors to match the new xfwm4 decoration theme
+  * Much compact version of the default theme.
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:20 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164)
+
+-------------------------------------------------------------------
+Wed Oct 29 22:13:19 CET 2008 - bwalle@suse.de
+
+- update to 4.2.3 (Xfce 4.4.3)
+  o bug fixes
+
+-------------------------------------------------------------------
+Mon Dec  3 22:41:26 CET 2007 - bwalle@suse.de
+
+- update to 2.4.2 (Xfce 4.4.2)
+  o Don't include the iconrc file in gtkrc.
+
+-------------------------------------------------------------------
+Mon Nov 12 15:52:12 CET 2007 - prusnak@suse.cz
+
+- do not package INSTALL file
+
+-------------------------------------------------------------------
+Sat Jun 23 23:10:55 CEST 2007 - bwalle@suse.de
+
+- replaced group 'System/GUI/Other' by 'System/GUI/XFCE'
+
+-------------------------------------------------------------------
+Tue May 22 11:22:30 CEST 2007 - prusnak@suse.cz
+
+- sync with BuildService
+
+-------------------------------------------------------------------
+Tue Apr 10 23:57:58 CEST 2007 - bwalle@suse.de
+
+- update to 4.4.1 (no upstream changelog for this subpackage)
+
+-------------------------------------------------------------------
+Sun Jan 21 20:31:33 CET 2007 - bwalle@suse.de
+
+- upgraded to 2.4.0
+
+-------------------------------------------------------------------
+Wed Jan 17 15:19:58 CET 2007 - pnemec@suse.cz
+
+- merged back from BuildService into factory
+
+-------------------------------------------------------------------
+Sun Nov 05 00:00:00 CET 2006 - bwalle@suse.de
+
+- updated to 2.3.99.2 (2.4 rc2)
+
+-------------------------------------------------------------------
+Tue Sep 05 00:00:00 CET 2006 - pnemec@suse.cz
+
+- updated to new version 2.3.99.1
+
+-------------------------------------------------------------------
+Thu Aug 24 00:00:00 CET 2006 - pnemec@suse.cz
+
+ - added dbus-devel to build requires 
+
+-------------------------------------------------------------------
+Wed Aug  2 00:00:00 CET 2006 - pnemec@suse.cz
+
+- initial comment, version is 2.3.90.2
+- package moved into BuildService
+- no patch needed
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 21 17:29:19 CET 2006 - cthiel@suse.de
+
+- update to 2.2.8
+
+-------------------------------------------------------------------
+Wed Sep 14 22:19:51 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Mon Aug  1 15:05:57 CEST 2005 - cthiel@suse.de
+
+- added Requires
+
+-------------------------------------------------------------------
+Wed May 18 11:50:36 CEST 2005 - cthiel@suse.de
+
+- update to 2.2.7
+
+-------------------------------------------------------------------
+Mon Apr 11 13:11:03 CEST 2005 - cthiel@suse.de
+
+- update to 2.2.6
+
+-------------------------------------------------------------------
+Wed May 12 12:14:21 CEST 2004 - ltinkl@suse.cz
+
+- initial version
+

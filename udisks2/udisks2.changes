@@ -1,0 +1,762 @@
+-------------------------------------------------------------------
+Tue Jul  9 09:26:58 UTC 2019 - Thomas Blume <thomas.blume@suse.com>
+
+- don't call systemd uninstall macro for clean-mount-point@.service 
+  template (boo#1139996)
+
+-------------------------------------------------------------------
+Thu Jun 13 18:06:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.8.3:
+  + This release brings many memory leak fixes with similar work
+    done in libblockdev-2.22. While libblockdev version requirement
+    remains unchanged, it's strongly recommended to use both
+    releases together to get full coverage of the fixes.
+  + Other notable changes include:
+    - Default and supported encryption types are now exposed on the
+      org.freedesktop.UDisks2.Manager interface.
+    - Minor org.freedesktop.UDisks2.Filesystem improvements related
+      to updating properties upon method call return.
+    - Various test fixes and improvements.
+    - Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 13:40:19 CET 2019 - ro@suse.de
+
+- update to 2.8.2
+  + migration from intltool to gettext, udisks no longer depends
+    on gnome-common
+  + added 'windows_names' as a default mount option for ntfs-3g
+  + fixed an issue potentially leading to open filedescriptors
+    exhaustion
+- drop buildreq for intltool
+
+-------------------------------------------------------------------
+Wed Feb 13 17:50:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize VDO description.
+- Fix faulty grammar.
+
+-------------------------------------------------------------------
+Tue Feb 12 07:53:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Add more info to description of vdo.
+
+-------------------------------------------------------------------
+Wed Jan 30 21:34:08 UTC 2019 - bjorn.lie@gmail.com
+
+- Add libblockdev-vdo-devel BuildRequires: Build the new vdo
+  module. Following this, add new vdo sub-package.
+
+-------------------------------------------------------------------
+Thu Jan 24 21:17:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.8.1:
+  + Mostly bugfixes.
+- Changes from version 2.8.0:
+  + Introduce a new VDO module that is built on top of
+    libblockdev-vdo.
+  + General bugfixes.
+  + Support creating LUKS 2 encrypted devices and other
+    LUKS-related enhancements.
+
+-------------------------------------------------------------------
+Thu Jan 24 20:55:44 UTC 2019 - bjorn.lie@gmail.com
+
+- Add explicit libblockdev-lvm-dbus-devel BuildRequires: Previously
+  pulled in implicitly.
+
+-------------------------------------------------------------------
+Fri Jan 11 11:54:40 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.7.8:
+  + Fix string format vulnerability (CVE-2018-17336)
+
+-------------------------------------------------------------------
+Wed Apr 25 22:59:33 UTC 2018 - luc14n0@linuxmail.org
+
+- Add missing libblockdev-loop Requires tag: it is needed by
+  default.
+
+-------------------------------------------------------------------
+Wed Mar 28 02:56:37 UTC 2018 - luc14n0@linuxmail.org
+
+- Require specific libblockdev plugins in due udisks2's modules,
+  following libblockdev's plugins split (bsc#1086447).
+- Drop redundant libblockdev-devel BuildRequires: it is not needed
+  once its pkgconfig module is already a requirement.
+
+-------------------------------------------------------------------
+Tue Mar  6 00:34:27 UTC 2018 - luc14n0@linuxmail.org
+
+- Fix BuildRequires/Requires tags related to libblockdev and
+  libatasmart dependencies.
+- Drop storaged Provides tags since there is no need for them.
+- Switch libconfig-devel and libstoragemgmt-devel BuildRequires by
+  their pkgconfig modules counterparts.
+- Add a Recommends tag for the btrfs module to offer support for
+  the openSUSE's file system of choice by default.
+
+-------------------------------------------------------------------
+Thu Mar  1 14:32:37 UTC 2018 - jengelh@inai.de
+
+- Rectify grammar issues in summaries
+
+-------------------------------------------------------------------
+Fri Nov 17 02:40:30 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.7.6:
+  + Add: UdisksUtabEntry and read-write lock.
+  + Fix escaping mountpoint for the cleanup service.
+  + Check for all LUKS devices when looking for
+    CryptoBackingDevice.
+  + First implementation of udisksutabmonitor.
+  + Invoke job_complete in the proper context in order to avoid
+    deadlocks.
+  + Generate autocleanup functions for interfaces.
+  + Update documentation.
+- Changes from version 2.7.5:
+  + Add:
+    - 'no-discard' option to formatting methods.
+    - An assertion method for checking an objects interfaces.
+  + Fix:
+    - Possible NULL pointer dereference in:
+      udiskslinuxdrive.c, udiskslinuxmdraidobject.c and
+      udisksclient.c
+    - Resource leak.
+    - size_str memory leaks in UDisksObjectInfo.
+    - Copy-paste error in apply_configuration_thread_func from
+      udiskslinuxdriveata.c.
+    - "Deadcode" and ignore "check return" warnings in udisksctl.c.
+  + Resolve mountpoint to the real path.
+  + Include exFAT as a possible partition type for ID 0x07.
+  + Always try to read configuration from crypttab in
+    handle_unlock.
+  + Make sure the table_type is consistent in
+    handle_create_partition.
+  + Wait for device to become initialized before probing it.
+  + Use different mode/dmode for shared file systems.
+- Changes from version 2.7.4:
+  + Add: New function to set label on swap devices.
+  + Fix:
+    - Uninitalized value in "udisks_linux_loop_update";
+    - Loop device automounting in GNOME.
+  + Run cryptsetup before returning from non-blocking Format.
+  + Use new libblockdev functionality to disable checks during
+    init.
+  + Do not try to create file watchers for RAIDs without
+    redundancy.
+  + Try to use libblockdev to get RAID array size.
+  + Re-add support the legacy BIOS bootable GPT flag.
+- Changes from version 2.7.3:
+  + Add:
+    - Version info to docstrings of the partition Resize function;
+    - New ResolveDevice function;
+    - New OpenDevice function;
+    - some missing functions to doc/udisks2-sections.txt.in.in.
+  + Fix:
+    - Wrong GSList pointer declaration in
+      "handle_get_block_devices";
+    - "supports_owners" flag for UDF;
+    - ExFAT partition type;
+    - Bash completion for udisksctl;
+    - Force unmounting;
+    - Building documentation with new gtk-doc.
+  + Process partition resize update before return.
+  + Wait for cleartext device object to disappear on Lock().
+  + Ignore Asus Zendisk virtual CDROM and ZFS member partitions.
+  + Set corrent part type/id and GUID for UDF formatted partitions.
+  + Use LUKS specific partition ID and GUID.
+  + Make iSCSI Login and Logout wait for DBus objects update.
+  + Disable cleaning using blivet for now.
+  + Start even if a libblockdev plugin fails to load.
+- Changes from version 2.7.2:
+  + Add:
+    - Filesystem Resize, Check and Repair;
+    - A new "Partitions" property to "PartitionTable" interface;
+    - A function to:
+      . "take ownership" of a filesystem;
+      . List all block devices.
+    - A function to wait for an object to disappear.
+  + Fix:
+    - Detection of drives created using isohybrid images
+      (fdo#1437791);
+    - Setting "SetupByUID" property when adding a new loop device;
+    - How we create UDF file systems.
+  + Wait for:
+    - The bcache object to disappear after BcacheDestroy;
+    - Zram objects to disappear on DestroyDevices().
+  + Resize method for Partition interface.
+  + Trigger change uevent on disk after adding partitions to it.
+  + Use the assert with multiple tries for Block.Configuration.
+  + Do not wait for partitions to appear after LoopSetup.
+  + Try harder to ignore WD SmartWare virtual CDs.
+- Changes from version 2.7.1:
+  + Don't always fail on missing LibStorageMgmt support.
+  + Fix:
+    - Broken partition authorization code;
+    - How UDisksClient filters property changes;
+    - The position to wait for a partition to appear at.
+  + Don't use serial as unique ID for drive objects.
+  + udiskslinuxblockbcache.c: Fix uninitialized variable.
+  + udisksiscsiutil.c: Correct strncpy lengths.
+  + udiskslinuxiscsisessionobject.c: Correct precondition check.
+  + lsm_linux_drive.c: Remove std_lsm_vol_data_free error case.
+  + udiskslinuxvolumegroupobject.c: Remove variable shadow lvs_p.
+  + udiskssimplejob.c: Allow NULL for message.
+  + Re-create sysfs watchers for changed mdraid devices.
+  + UDisksClient: Do not try remove changed_blacklist hash table in
+    finalize.
+  + Query methods for available utility binaries.
+  + Clear GError after calling "bd_part_get_part_by_pos".
+  + Use "model_serial" as unique ID for drive objects.
+  + Add "--yes" arg when resizing filesystem with "lvresize".
+  + Do not trigger extra uevents for newly created partitions.
+  + Free the partition spec libblockdev gives us.
+  + Allow the user to specify the partition type.
+- Changes from version 2.7.0:
+  + udisksdaemonutil.c: Fix GVariant resource leak.
+  + Use libblockdev swap plugin for swapspace.
+  + Use libblockdev FS plugin for mounting and unmounting devices.
+  + Use libblockdev:
+    - For:
+      . Partitioning code;
+      . Wiping newly created partitions;
+      . LUKS operations.
+    - To get LUKS UUID for LUKS open;
+    - As a library not just the plugins;
+    - MDRAID code and wipefs calls in MDRAID code.
+  + Use libblockdev-lvm for:
+    - LV and VG operations;
+    - VolumeGroupCreate() too;
+    - When updating VG on Poll() call.
+  + Fix:
+    - bd_reinit and g_clear_error calls in btrfs, zram and bcache;
+    - Docstring of 'CreateSnapshot' method in '.Filesystem.BTRFS';
+    - Requires and BuildRequires for libblockdev;
+    - API for BcacheCreate function.
+  + Add:
+    - Libblockdev MDRAID and FS plugins to BuildRequires;
+    - 'options' parameter do zRAM 'Refresh' function;
+    - A function for running threaded jobs synchronously;
+    - A new configure option --enable-available-modules.
+  + Remove unused variables in handle_mdraid_create.
+  + Create Job objects for partitioning related actions.
+  + Change:
+    - btrfs module API to be consistent with udisks core;
+    - bcache properties do CamelCase;
+    - ZRAM 'CreateDevices' function to return newly created;
+    - zRAM properties to CamelCase.
+  + Bcache, btrfs and zRAM modules: Handle invocations in threads.
+  + Do not try to set GError over the top of a previous GError.
+  + zRAM: Extract used CompAlgorithm as a single value.
+    ZRAMs.
+  + Move new partition start if overlaps with extended partition
+    metadata.
+  + Do not start threaded jobs automatically
+  + Require and initialize the libblockdev-lvm plugin
+  + Check that blockdev/lvm.h is available if LVM2 support
+    requested.
+  + Also create thin pools using libblockdev-lvm.
+  + Get VGs with bd_lvm_vgs() run in a thread.
+  + Update information about PVs, LVs and VGs using
+    libblockdev-lvm.
+  + Get rid of the udisks-lvm helper program.
+  + Use:
+    - Info for metadata LV when updating LV which has one;
+    - Systemd-defined macros in the spec file template;
+    - bd_lvm_vgreduce() instead of running 'vgreduce'.
+  + REMOVE-ME: use the CLI-based libblockdev-lvm plugin.
+  + Make sure we have the AX_CHECK_ENABLE_DEBUG macro.
+  + Also check if libblockdev supports bcache.
+  + Require 'udev' not 'systemd-udev'.
+- Adopt the use of %make_build and %make_install while dropping
+  deprecated use of raw commands, following the best practices.
+- Pass disable-static to configure as static libs are enabled by
+  default. And enable-bcache, enable-btrfs, enable-lsm,
+  enable-lvm2, enable-lvmcache and enable-zram to enable new
+  available features.
+- Add blkid, blockdev, libsystemd and mount pkgconfig modules, and
+  libbd_btrfs-devel, libbd_crypto-devel, libbd_fs-devel,
+  libbd_kbd-devel, libbd_loop-devel, libbd_lvm-devel,
+  libbd_mdraid-devel, libbd_part-devel, libbd_swap-devel,
+  libconfig-devel, libstoragemgmt-devel, lvm2-devel BuildRequires
+  as new dependencies.
+- Add libblockdev, libbd_crypto, libbd_fs, libbd_loop,
+  libbd_mdraid, libbd_part and libbd_swap Requires as new run time
+  requirements.
+- Add e2fsprogs, xfsprogs, and dosfstools Requires, being the first
+  needed by mkfs.ext3, mkfs.ext3 and e2label. The second, by
+  mkfs.xfs and xfs_admin. And the third, by mkfs.vfat.
+- Add gio-unix-2.0 and gmodule-2.0 pkgconfig BuildRequires: note
+  that they was already being pulled with pkgconfig(glib-2.0) and
+  used, once they live in the same devel package.
+- Drop pkgconfig(udev) BuildRequires: no longer needed.
+- Replace libgudev-1_0-devel and pkgconfig(systemd) BuildRequires
+  by gudev-1.0 and libsystemd, respectively.
+- Add LGPL-2.0+ to the preamble License tag once the preamble
+  License tag is used for the source RPM and binary RPM packages.
+- Correct some subpackages LGPL-2.1+ License tags to LGPL-2.0+ as
+  pointed by the COPYING and source files.
+
+-------------------------------------------------------------------
+Wed Jul  5 10:03:57 UTC 2017 - Thomas.Blume@suse.com
+
+- Update to version 2.6.5 (fate#323354)
+  * switch to new maintained codestream at
+    https://github.com/storaged-project/udisks
+  * Detailed changelog in /usr/share/doc/packages/udisks2/NEWS
+
+-------------------------------------------------------------------
+Fri Dec  9 09:44:18 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.1.8:
+  + Allow NTFS mount option "big_writes".
+  + Don't coldplug uninitilized udev devices.
+  + Detect old (non-Pro) MemoryStick cards.
+  + Lock the partition table while creating a new partition.
+  + exfat: Drop umask=0077 default.
+  + udisks2.service: Add KillSignal=SIGINT.
+  + btrfs: Add support for changing label.
+  + Updated translations.
+- Replace pkgconfig(libsystemd-login) BuildRequires with
+  pkgconfig(libsystemd): the two have been merged since
+  systemd 209.
+- Drop udisks2-Reread-partition-table-before-wiping.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Apr 15 14:43:34 UTC 2016 - zaitor@opensuse.org
+
+- Add udisks2-Reread-partition-table-before-wiping.patch: Reread
+  partition table before wiping when creating new partitions
+  (fdo#85477).
+
+-------------------------------------------------------------------
+Fri Mar  4 07:46:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.1.7:
+  + Allow disabling ACL.
+  + udisksctl: Properly redirect stdout.
+  + Catch bogus UUID changes of MDRAIDs.
+  + Fix udiskctl help for glib 2.45.
+  + udisks2.service.in: Add [Install] section.
+  + Fix translator comments in udisksobjectinfo.c.
+  + integration-test: Explicitly require UDisks 2.0 typelib.
+  + integration-test: Fix wait_timeout/busy error messages.
+  + integration-test: PEP-8 fixes.
+  + integration-test: Fix Polkit.test_removable_fs.
+  + test_polkitd.py: Fix race condition in waiting for test
+    polkitd.
+  + integration-test: Fix race condition in fake CD drive creation.
+  + integration-test: Add timeout to readd_device().
+  + Add support for read look-ahead ATA settings (fdo#92488).
+- Add tarball signing.
+- Change group to System/Daemons.
+
+-------------------------------------------------------------------
+Thu Jul  9 21:55:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.1.6:
+  + udev rules: Stop hardcoding sed path.
+  + Fix crash on inaccessible RAID member "state" attribute.
+  + UDF: Drop umask=0077 default.
+  + Install udisksd into a libexecdir.
+  + Fail before formatting if partition contains a partition table.
+  + Fix udisks_daemon_util_file_set_contents() return value
+    handling.
+  + Remove deprecated g_io_scheduler_* calls.
+  + integration-tests:
+    - Settle while waiting for property change.
+    - Don't fail if a SMART test was aborted.
+    - Add a wrapper to write and flush stderr.
+  + Don't ignore isohybrid udf filesystems.
+  + Add support for creating f2fs filesystems.
+  + Decide whether devices are on the same seat by uid, not pid.
+  + UDisksSpawnedJob: Retrieve uid/gid info before forking.
+
+-------------------------------------------------------------------
+Fri Mar  6 16:00:45 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.1.5:
+  * configure: stop using tmpl files for docs.
+  * docs: include the annotation glossary.
+  * Drop default [df]mask for VFAT and NTFS.
+  * Drop unused goto label.
+  * Fix crash in udisks_client_finalize().
+  * Fix format string signedness warnings.
+  * integration-tests: Don't assume ordering in mount-points
+    property.
+  * integration-test: Skip double mount check for NTFS.
+  * integration-test: Stop requiring the build dependencies.
+  * integration-test: Test fstab parsing.
+  * Make UdisksClient.get_size_for_display() units translatable.
+  * Provide fallback for systems without ACL support.
+  * Recognize PARTUUID and PARTLABEL in fstab.
+  * Support mounting in /media for FHS compatibility.
+  * Update translations.
+- Add recommended /usr/sbin/rcudisks2 service alias.
+- Remove obsolete definitions.
+
+-------------------------------------------------------------------
+Fri Dec 19 12:35:16 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.1.4:
+  + Add GPT partition types from the Discoverable Partitions
+    Specification.
+  + Remove newly-added "Auto-enabled swap" GTP partition type.
+  + Fine-tune GTP partitions some more.
+  + Send SCSI SYNCHRONIZE CACHE before powering down a drive.
+  + Fix buffer overflow in pick_word_at().
+  + Add Intel Fast Flash Standby partition GPT type.
+  + Skip password strength checks when changing LUKS passphrase.
+  + Fix build with clang.
+  + Revert "Fix standby timers".
+  + integration-test:
+    - Update for logind.
+    - Fix code formatting.
+    - sync file systems in sync().
+    - integration-test: Drop sync_workaround, fix property testing.
+    - integration-test: Better failure messages.
+    - integration-test: Fix btrfs test.
+  + Fix display ID for generic FAT.
+  + Update obsolete gnome-common and automake macros.
+  + build:
+    - Use config-aux/ directory.
+    - Enable gcc colors.
+  + Drop obsolete g_type_init().
+  + Drop obsolete polkit_unix_process_new().
+  + Fix docs for SmartUpdate().
+  + Hide Microsoft reserved partition.
+  + Identify JetFlash Transcend drives as thumb drives.
+  + Fix sorting of mount points.
+  + Fix fallback media icons for nonremovable media.
+  + Fix polkit auth string.
+  + Hide DIAGS and IntelRST partitions.
+  + Add a man page for umount.udisks2.
+  + Support building against libsystemd library.
+  + udisks: Change name for Intel SW RAID.
+  + Use internal pm check for smart poll.
+  + Fix standby timers.
+  + Fix TOCTOU race when making directories.
+  + Add missing #include.
+  + Properly initialize all used variables.
+  + udiskslinuxmanager.c: Don't use uninitialized wait_data struct.
+  + Remove useless assignments.
+  + udisks_linux_drive_object_uevent(): Handle null device.
+  + Hide Windows Recovery Environment partitions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 10 10:03:31 UTC 2014 - pwieczorkiewicz@suse.com
+
+- Update to version 2.1.3:
+  + Identify SD Card Reader in ChromeBook Pixel
+  + Send SCSI START STOP UNIT when powering down a drive
+  + udisksctl: add power-off verb to power off drives
+  + udisksctl: fix grammar
+  + Prefer /dev/VG/LV for LVM2 volumes.
+  + Fix buffer overflow in mount path parsing. If users have 
+    the possibility to create very long mount points, such as
+    with FUSE, they could cause udisksd to crash, or even to
+    run arbitrary code as root with specially crafted mount paths.
+    (bnc#865854, CVE-2014-0004)
+  + Use SECTOR_COUNT=1 when issuing ATA IDENTIFY COMMAND
+  + Use reentrant version of getpwuid() for thread safety
+  + udisks_daemon_util_get_caller_uid_sync(): Add missing goto
+  + Fix crash when loop-deleting non-loop device
+
+-------------------------------------------------------------------
+Sun Feb 16 22:27:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.1.2:
+  + Add exfat mount options.
+  + Hide more rescue partitions.
+  + Build fails due to missing IT_PROG_INTLTOOL macro (fdo#67679).
+  + Add exfat FS integration test.
+  + Drop "david" user name from publish make rules.
+  + Use dosfstools instead of mtools.
+  + Add polkit authorization variables for removable media.
+  + Fix crash when waiting for loop device.
+- Drop udisks2-20131026-removable-devices-polkit-auth.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Dec 10 08:33:56 UTC 2013 - pwieczorkiewicz@suse.com
+
+- Added udisks2-20131026-removable-devices-polkit-auth.patch.
+  It adds polkit authorization variables for removable media, which
+  allow restricting or granting access to removable media based on
+  its type using polkit authorization rules (fate#312966 fdo#72122).
+
+-------------------------------------------------------------------
+Sun Nov 24 04:06:19 UTC 2013 - crrodriguez@opensuse.org
+
+- define _udevrulesdir only if not already defined
+- run %udev_rules_update, if defined. 
+
+-------------------------------------------------------------------
+Wed Aug 21 07:04:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.1.1:
+  + Properly identify firewire devices as non-system devices.
+  + Identify Lexar Dual Slot USB 3.0 Reader Professional as a card
+    reader.
+  + Identify Transcend USB 3.0 Multi-Card reader as such.
+  + Promote ZFS partition type to generic.
+  + UDisksClient: Make it possible to get part desc based on the
+    part table subtype.
+  + Add ChromeOS partition types.
+  + Use new SSD icon from g-i-t-e.
+  + Identify Patriot Memory USB sticks as thumb drives.
+  + Fix test for logind availability.
+  + Fix hiding of "WD SmartWare" partitions.
+  + integration-test: Fix for nonexisting /run/udev/rules.d/.
+  + integration-test: For VFAT, ignore case for label comparison.
+
+-------------------------------------------------------------------
+Mon Mar 18 08:58:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.1.0:
+  + mdraid: Remove spurious argument for the format.
+  + Support broken setups where ID_SERIAL is available but
+    ID_SERIAL_SHORT is not.
+  + Call the right D-Bus completion routines.
+  + integration-test: Update for mkntfs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  3 23:10:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 2.0.92:
+  + Fix out of source build - set xsltproc path.
+  + Fold UDisksPersistentStore class into UDisksCleanup.
+  + Rename UDisksCleanup to UDisksState.
+  + Don't leak UDisksLinuxDevice when handling uevent.
+  + Check for NULL pointer when creating MD-RAID array.
+  + Use own udev namespace for MD-RAID properties.
+  + Introduce UDISKS_FILESYSTEM_SHARED=1 to use /media for
+    mounting.
+  + Don't wipe extended partitions.
+  + Make sure logical partitions stay within the extended
+    partition.
+
+-------------------------------------------------------------------
+Thu Jan 17 20:49:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.0.91:
+  + Don't bail in MD-RAID file monitor event handler.
+  + Add MDRaid:RequestSyncAction() method.
+  + Add MDRaid:SyncRate and MDRaid:SyncRemainingTime properties.
+  + Get the MD-RAID sync rate from the right file.
+  + Pull new translations from Transifex.
+  + Use correct polkit action.
+  + Fix up comments in polkit policy file.
+- Changes from version 2.0.90:
+  + Initial MD-RAID support.
+- Drop fix_polkit_action_name.diff: it's not applied anyway.
+
+-------------------------------------------------------------------
+Thu Jan 17 07:36:09 UTC 2013 - vuntz@opensuse.org
+
+- Really apply fix_polkit_action_name.diff.
+
+-------------------------------------------------------------------
+Mon Jan 07 13:30:34 UTC 2013 - stefan.bruens@rwth-aachen.de
+
+- Fix name of polkit action (fdo#58629):
+  modify-device-system-other-seat -> modify-device-other-seat
+
+-------------------------------------------------------------------
+Sun Jan  6 21:02:27 UTC 2013 - dimstar@opensuse.org
+
+- Add gptfdisk Requires: sgdisk is called by udisksd to modify the
+  partition tables (bnc#796853).
+
+-------------------------------------------------------------------
+Mon Nov 12 22:22:01 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to version 2.0.0
+  + configure.ac: raise gudev dependency
+  + Add --disable-man configure option
+  + Update list of recovery/system partitions
+  + Add support for creating exFAT filesystems and changing exFAT
+    labels
+  + Add textual descriptions for IMSM Raid members
+  + Use all-caps for RAID
+  + Only do the isohybrid hack for the first partition
+  + Don't complain about missing /etc/crypttab file
+  + Don't complain about missing /etc/fstab file
+  + Make it work without requiring the kernel to be CONFIG_SWAP=y
+  + Mention the right file when complaing about /proc/swaps
+  + Fix glaringly wrong documentation for Filesystem.Mount()
+  + Move bash completion script into
+    /usr/share/bash-completion/completions
+  + Don't require that users define UDISKS_API_IS_SUBJECT_TO_CHANGE
+  + Remove udisks_daemon_util_on_other_seat() from sections.txt
+  + Add workaround annotation for
+    udisks_client_get_block_for_dev()
+  + Enable large file support
+  + Various doc and tests fixes
+  + Bugs fixed: fdo#51063.
+  + Updated translations.
+- Drop systemd-dynamic-check.diff: fixed upstream.
+- Dropped gnome-common BuildRequires and call to gnome-autogen.sh,
+  as the patch which needed that is dropped.
+
+-------------------------------------------------------------------
+Wed Oct 24 12:16:42 UTC 2012 - meissner@suse.com
+
+- remove the rpmlintrc after adding the privs bnc#779404
+
+-------------------------------------------------------------------
+Wed Oct 17 13:03:06 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules directory location.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:19:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.99.0:
+  + Catch up with latest polkit guidance
+  + Don't require auth for Standby'ing non-system drives on own
+    seat
+  + Mark Realtek rts5229 based card readers as flash drives
+  + Black-list seemingly invalid WWN for SAMSUNG SP1604N hard disks
+  + Ignore non-Linux software on SanDisk Cruzer
+  + Add drive configuration interfaces and configuration files
+  + Add "Linux Filesystem" GPT partition type
+  + Add support for VMWare filesystem types and GPT partition types
+  + Update integration tests.
+  + Bugs fixed:
+    - fdo#51439: udisks should hide lvm PVs
+- Changes from version 1.98.0:
+  + Drive: Refuse to eject drives that appear to be in use
+  + udisksd: work if polkitd is not available
+  + Updated documentations
+  + Bugs fixed:
+    - fdo49842: Unhandled rootfs on bind mount
+- Drop udisks-hide-lvm-raid-partitions.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:14:34 UTC 2012 - vuntz@opensuse.org
+
+- Update systemd-dynamic-check.diff with patch sent upstream.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  needed by the patch now.
+
+-------------------------------------------------------------------
+Tue Jul  3 15:39:33 CEST 2012 - tiwai@suse.de
+
+- Add systemd-dynamic-check.diff: add a check of running systemd
+  (bnc#769570)
+
+-------------------------------------------------------------------
+Tue Jun 26 18:18:09 UTC 2012 - gber@opensuse.org
+
+- Added udisks-hide-lvm-raid-partitions.patch in order to hide
+  partitions marked as containing LVM and RAID. This is only useful
+  for encrypted partitions (fixes fdo#51439 and bnc#737038).
+
+-------------------------------------------------------------------
+Fri May 11 14:51:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.97.0:
+  + Several improvements for loop devices
+  + Also check for "target is busy" when checking umount(8) output
+  + UDisksCleanup: Remove stale entries when adding new ones
+  + Add work-around to show FS on CDs/USB sticks created using
+    isohybrid
+  + Several code improvements
+  + Update path to mounted-fs file in documentation
+- Changes from version 1.96.0:
+  + Actually link with libsystemd-login
+- Changes from version 1.95.0:
+  + Add multi-seat support
+  + Add versioning macros
+  + Use libacl library instead of setfacl(1)
+  + Work around missing serial/wwn on VMware hard disks
+  + Add separate polkit actions for ejecting media
+  + Make $(udisks2.device) in authentication messages include the
+    vendor/model
+  + Remove unused .filesystem-unmount-others-shared polkit action
+  + Documentation fixes and improvements
+  + Updated translations
+- Add libacl-devel BuildRequires: it's now really used.
+
+-------------------------------------------------------------------
+Wed Apr 11 09:33:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.94.0:
+  + Pass --readonly to cryptsetup(8) if device to unlock is
+    read-only
+  + Add udev rules for identifying devices which should not be
+    shown
+  + Fix unmounting large disks when not asked to
+  + Make escaping work properly with non-ASCII UTF-8 strings
+  + Change some D-Bus types from bytestring ('ay') to UTF8 ('s')
+  + Convert some g_warning() uses to udisks_warning()
+  + Improved documentation.
+
+-------------------------------------------------------------------
+Tue Mar  6 09:00:40 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.93.0:
+  + Force MediaRemovable to TRUE for e.g. SD cards using the mmc
+    layer
+  + Ensure that whatever we pass as -t to mount(8) is in a
+    whitelist
+  + Ensure that the loop file name we pass to the kernel is always
+    NUL-terminated
+  + Properly escape all device files
+  + Improved documentation.
+- Remove libacl-devel BuildRequires: not needed anymore.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:57:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.92.0:
+  + client: Fix bit shifts of flags on 32 bit
+  + Avoid using $XDG_RUNTIME_DIR/media for now
+  + Don't free object twice when deleting a loop device
+  + Use /run/media/$USER for mounting
+  + Move to /usr-only setup and get rid of hardcoded paths to /lib
+    and sbin
+- Changes from version 1.91.0:
+  + Install a systemd service file if systemd is used
+  + Ensure PATH is set
+  + Fix use of memset(3)
+  + Use org.freedesktop.UDisks2.* for errors, not
+    org.freedesktop.UDisks.*
+  + For mount options, switch from comment=udisks to x-udisks
+  + Prefer mounting in /run/user/$USER/media instead of /media
+  + With /media and /run on tmfs, switch to temporary store for
+    mounted-fs
+  + Make sure that Drive:SortKey sorts e.g. sdz before sdaa
+  + Do coldplug for block devices twice
+  + Use g_dbus_interface_dup_object() and check return value
+  + Shut up valgrind complaing about LOOP_GET_STATUS64 ioctl
+  + Fix a couple of uninitialized warnings and simplify SMART
+    self-test handling
+  + udisksctl:
+    - nuke PORT column in output of 'status' verb
+    - sort the drives using Drive:SortKey for 'status' verb
+  + Documentation fixes.
+  + Build fixes.
+  + Updated translations.
+- Add systemd-related packaging:
+  + Add pkgconfig(systemd) BuildRequires.
+  + Use %{?systemd_requires}.
+  + Call %service_{add,del}_* macros in scriptlets for
+    udisks2.service.
+- Add pkgconfig(udev) BuildRequires, now needed to find right path
+  for udev files.
+- Add libacl-devel BuildRequires, now needed.
+
+-------------------------------------------------------------------
+Sat Jan 21 10:02:13 UTC 2012 - vuntz@opensuse.org
+
+- New udisks2 source package, based on udisks source package.
+- First version (1.90.0).
+- udisks 2.x is parallel-installable with udisks 1.x.
+

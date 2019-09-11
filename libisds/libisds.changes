@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Sun Jun  2 19:25:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust SRPM group.
+
+-------------------------------------------------------------------
+Wed May 22 18:48:46 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Use the default GPGme library instead of OpenSSL [bsc#1135761]
+
+-------------------------------------------------------------------
+Tue May 21 07:29:12 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add fix-gnutls-3.6.4.patch (fixes build)
+
+-------------------------------------------------------------------
+Mon Aug 13 07:09:37 UTC 2018 - tchvatal@suse.com
+
+- Version bump to 0.10.8:
+  * Various memory leaks fixed
+  * Recognise EV8
+
+-------------------------------------------------------------------
+Wed Jul 19 11:45:05 UTC 2017 - jslaby@suse.com
+
+- Version bump to 0.10.7:
+  * l10n: Update translation catalogues
+  * doc: Annotate documentation for new box types
+  * Added OVM_FO, OVM_PFO and OVM_PO box types.
+  * Add missing user and sender types to example client...
+  * Added PFO_AUDITOR box type.
+  * Added RECEIVER and GUARDIAN user types.
+
+-------------------------------------------------------------------
+Sun Jun  4 06:26:27 UTC 2017 - tchvatal@suse.com
+
+- Disable werror
+
+-------------------------------------------------------------------
+Thu Oct 20 11:57:02 UTC 2016 - jslaby@suse.com
+
+- Version bump to 0.10.6:
+  * l10n: Update translation catalogues
+  * Adapt to OpenSSL 1.1.0
+
+-------------------------------------------------------------------
+Mon Oct 10 08:27:44 UTC 2016 - jslaby@suse.com
+
+- Version bump to 0.10.5:
+  * l10n: Update translation catalogues
+  * Added a new value into isds_DbState.
+  * Fixed a bug. User identification didn't work properly.
+
+-------------------------------------------------------------------
+Mon Apr 11 18:09:19 UTC 2016 - mpluskal@suse.com
+
+- Add gpg signature
+- Small cleanup with spec-cleaner
+  * use valid rpm category
+  * use pkgconfig() style dependencies
+-Update build dependencies
+  * add gpgme-devel
+
+-------------------------------------------------------------------
+Mon Apr 11 15:32:40 UTC 2016 - jslaby@suse.com
+
+- Version bump to 0.10.3:
+  * l10n: Update translation catalogues
+  * Correct _isds_build_url_from_context() documentation
+  * Do not use dolar in formatting strings
+  * Fixed a potential bug when printing debugging information.
+  * Fix building without libcurl
+
+-------------------------------------------------------------------
+Mon Sep  7 08:19:41 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.10.1:
+  * Fix expired certificates so the testsuite pass again
+
+-------------------------------------------------------------------
+Mon Jan 12 08:16:39 UTC 2015 - tchvatal@suse.com
+
+- Cleanup for openSUSE
+- Version bump to 0.10:
+  * A new ISDSSearch2 service was implemented by an isds_find_box_by_fulltext()
+    function.
+  * The OpenSSL library can be used instead of the default GPGme library by
+    specifying --enable-openssl-backend option to the configure script.
+  * When parsing ISO 8601 date-time strings from a server response, microsecond
+    fractions are properly rounded (half up) now.
+  * An use-after-free bug in parsing SOAP response has been fixed.
+  * Handling su_seconds_t type used in the timeval structure was corrected to
+    enable flawless compilation with Mac OS X standard library.
+  * Various signedness mismataches which could lead to an undefined behaviour
+    were fixed.
+  * A work-around for accessing the strdup(3) function in Mac OS X standard
+    library was applied.
+
+-------------------------------------------------------------------
+Tue Aug 12 00:00:00 UTC 2014 - ppisar@redhat.com
+
+- 0.9 bump
+
+-------------------------------------------------------------------
+Wed Apr  2 00:00:00 UTC 2014 - ppisar@redhat.com
+
+- Use _DEFAULT_SOURCE where _BSD_SOURCE macro presents to satisfy glibc-2.19.90
+
+-------------------------------------------------------------------
+Mon Oct 21 00:00:00 UTC 2013 - ppisar@redhat.com
+
+- 0.8 bump
+
+-------------------------------------------------------------------
+Wed Mar 27 00:00:00 UTC 2013 - ppisar@redhat.com
+
+- Update config.sub to support aarch64 (bug #925782)
+
+-------------------------------------------------------------------
+Thu Jan  3 00:00:00 UTC 2013 - ppisar@redhat.com
+
+- 0.7 bump
+
+-------------------------------------------------------------------
+Wed Oct 31 00:00:00 UTC 2012 - ppisar@redhat.com
+
+- 0.6.2 bump
+
+-------------------------------------------------------------------
+Tue Oct 30 00:00:00 UTC 2012 - ppisar@redhat.com
+
+- 0.6.1 bump
+
+-------------------------------------------------------------------
+Thu Mar  3 00:00:00 UTC 2011 - ppisar@redhat.com
+
+- 0.5 bump (breaks ABI, API preserved)
+- Remove aplied patch and GPG hack
+
+-------------------------------------------------------------------
+Fri Feb 11 00:00:00 UTC 2011 - ppisar@redhat.com
+
+- Rebuild with GCC 4.6
+- Remove BuildRoot stuff
+- Make devel subpackage dependencies ISA specific
+
+-------------------------------------------------------------------
+Mon Dec 20 00:00:00 UTC 2010 - ppisar@redhat.com
+
+- 0.4 bump, it breaks ABI
+- Use smaller xz archive instead of bzip2
+- Do tests in parallel
+
+-------------------------------------------------------------------
+Tue Jun 29 00:00:00 UTC 2010 - ppisar@redhat.com
+
+- 0.3.1 version bump
+- Create ~/.gnupg to workaround bug in gnupg2-smime
+
+-------------------------------------------------------------------
+Tue Apr 13 00:00:00 UTC 2010 - ppisar@redhat.com
+
+- New version 0.2.1 released by upstream
+
+-------------------------------------------------------------------
+Thu Feb 11 00:00:00 UTC 2010 - mcepl@redhat.com
+
+- Fixing small issue with documentation for package review
+
+-------------------------------------------------------------------
+Tue Feb  9 00:00:00 UTC 2010 - mcepl@redhat.com
+
+- Initial packaging effort
+

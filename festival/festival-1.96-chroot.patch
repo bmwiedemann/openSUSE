@@ -1,0 +1,111 @@
+--- src/main/festival_main.cc
++++ src/main/festival_main.cc
+@@ -39,6 +39,10 @@
+ /*                                                                       */
+ /*=======================================================================*/
+ #include <cstdio>
++#include <sys/types.h>
++#include <unistd.h>
++#include <pwd.h>
++#include <grp.h>
+ 
+ using namespace std;
+ 
+@@ -75,6 +79,9 @@
+     EST_StrList files;
+     int real_number_of_files = 0;
+     int heap_size = FESTIVAL_HEAP_SIZE;
++	unsigned int uid = -1;
++	unsigned int gid = -1;
++	struct passwd *pw;
+ 
+     if (festival_check_script_mode(argc,argv) == TRUE)
+     {   // Need to check this directly as in script mode args are 
+@@ -106,6 +113,9 @@
+ 	"              english, spanish and welsh are available\n"+
+ 	"--server      Run in server mode waiting for clients\n"+
+ 	"              of server_port (1314)\n"+
++	"--chroot <string> Run server in chroot\n"+
++	"--uid <string> Run server as given user\n"+
++	"--gid <int> Run server with this group\n"+
+ 	"--script <ifile>\n"+
+         "              Used in #! scripts, runs in batch mode on\n"+
+ 	"              file and passes all other args to Scheme\n"+
+@@ -123,6 +133,77 @@
+ 	exit(0);
+     }
+ 
++	if( al.present( "--uid" ) )
++	{
++		EST_String b = al.sval( "--uid" );
++
++		pw = getpwnam( b.str() );
++		if( pw != NULL )
++		{
++			uid = pw->pw_uid;
++			gid = pw->pw_gid;
++		}
++		else
++		{
++			printf("unknow user\n");
++			festival_error();
++		}
++	}
++
++	if( al.present( "--gid" ) )
++	{
++		gid = al.ival( "--gid" );
++		if( al.present( "--uid" ) )
++		{
++			printf( "useless without --uid\n" );
++			festival_error();
++		}
++	}
++
++	if( al.present( "--chroot" ) )
++	{
++		if( !al.present( "--uid" ) )
++		{
++			printf( "chroot only makes sense in combination with uid switching\n" );
++			festival_error();
++		}
++
++		EST_String a = al.sval( "--chroot" );
++		printf( "chroot to %s\n", a.str() );
++		if( chdir( a.str() ) )
++		{
++			festival_error();
++		}
++		if( chroot( a.str() ) )
++		{
++        	festival_error();
++		}
++		if( chdir( "/" ) )
++		{
++			festival_error();
++		}
++	}
++
++	if( al.present( "--uid" ) )
++	{
++		if( setgroups( 1, &gid ) < 0 )
++		{
++			festival_error();
++		}
++
++		if( setgid( gid ) != 0 )
++		{
++			printf( "can't setgid\n" );
++			festival_error();
++		}
++
++		if( setuid( uid ) != 0 )
++		{
++			printf( "can't setuid\n" );
++			festival_error();
++		}
++	}
++
+     if (al.present("--libdir"))
+ 	festival_libdir = wstrdup(al.val("--libdir"));
+     else if (getenv("FESTLIBDIR") != 0)

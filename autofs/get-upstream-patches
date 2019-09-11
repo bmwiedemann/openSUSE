@@ -1,0 +1,57 @@
+#! /bin/bash
+#
+# get autofs upstream patched from
+# http://www.kernel.org/pub/linux/daemons/autofs/v5/patches-$version/
+# and cat them in one bzipped file
+# autofs-$LATEST_RELEASE-upstream-patches-$DATE
+# where DATE is the date of the top patch in the series
+#
+# usage: get-upstream-patches
+
+LATEST_RELEASE="5.0.9"
+NEXT_RELEASE="5.0.10"
+
+BASE=http://www.kernel.org/pub/linux/daemons/autofs/v5/patches-$NEXT_RELEASE/
+SERIES=patch_order-$LATEST_RELEASE
+WGET_OPTS=-q
+PATCHDIR=upstream-patches-$LATEST_RELEASE
+CURRENT=$PWD
+DELIMITER=$(mktemp)
+
+test -x /usr/bin/wget || { echo "wget is missing!"; exit 1; }
+test -x /usr/bin/bzip2 || { echo "bzip2 is missing!"; exit 1; }
+test -x /usr/bin/sed || { echo "sed is missing!"; exit 1; }
+
+test -d $PATCHDIR || mkdir $PATCHDIR
+pushd $PATCHDIR > /dev/null 2>&1
+rm -f $SERIES
+
+echo "retrieving series file $SERIES"
+wget $WGET_OPTS $BASE/$SERIES
+sed -i '/^#/d' $SERIES
+
+while read patch
+do
+	if test -r "$patch"; then
+		echo "$patch ...skipping"
+	else
+		echo "$patch ...retrieving"
+		wget $WGET_OPTS $BASE/$patch
+	fi
+done < $SERIES
+
+LAST=$(sed -e "/^$/d" $SERIES | tail -n 1)
+DATE=$(stat -c "%y" $LAST | cut -d' ' -f 1 | sed "s/-//g")
+
+echo > $DELIMITER
+echo "----------" >>  $DELIMITER
+echo >> $DELIMITER
+
+cat $SERIES $DELIMITER $(cat $SERIES) > $CURRENT/autofs-$LATEST_RELEASE-upstream-patches-$DATE
+
+rm -f $DELIMITER
+
+bzip2 $CURRENT/autofs-$LATEST_RELEASE-upstream-patches-$DATE
+
+popd > /dev/null 2>&1
+

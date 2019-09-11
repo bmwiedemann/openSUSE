@@ -1,0 +1,81 @@
+Based on 3b1ffcd8c3387f67fd9be5e1da73d780dffbdd51 Mon Sep 17 00:00:00 2001
+From: Ikumi Keita <ikumi@ikumi.que.jp>
+Date: Mon, 28 May 2018 14:46:52 +0900
+Subject: [PATCH] TL 2018 non-ascii file name fix for preview-latex
+
+* preview.el.in (preview-LaTeX-command): Wrap file name after implicit
+\input in \detokenize{}.
+(preview-cache-preamble): Arrange the ini file code so that non-ascii
+file name can be used with generated format file.  Be careful not to
+lose capability of handling file name with space.
+(preview-undump-replacements): Use new TeX macro defined in the above
+ini file code to accept even unusual file name with non-ascii
+character or space.
+Delegate quoting of format name to `TeX-inline-preview-internal' so
+that non-ascii character will not be quoted twice.
+(TeX-inline-preview-internal): Adjust to the above change.
+---
+ preview.el.in |   31 +++++++++++++++++++++++--------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
+
+--- preview.el.in
++++ preview.el.in	2018-07-25 08:32:38.554859129 +0000
+@@ -2227,7 +2227,14 @@ list of LaTeX commands is inserted just
+ (defcustom preview-LaTeX-command '("%`%l \"\\nonstopmode\\nofiles\
+ \\PassOptionsToPackage{" ("," . preview-required-option-list) "}{preview}\
+ \\AtBeginDocument{\\ifx\\ifPreview\\undefined"
+-preview-default-preamble "\\fi}\"%' %t")
++preview-default-preamble "\\fi}\"%' \"{\\detokenize{\" %t \"}}\"")
++  ;; Since TeXLive 2018, the default encoding for LaTeX files has been
++  ;; changed to UTF-8 if used with classic TeX or pdfTeX.  I.e.,
++  ;; \usepackage[utf8]{inputenc} is enabled by default in (pdf)latex.
++  ;; c.f. LaTeX News issue 28
++  ;; Due to this change, \detokenize is required to recognize
++  ;; non-ascii characters in the file name when \input is supplemented
++  ;; implicitly by %`-%' pair.
+   "*Command used for starting a preview.
+ See description of `TeX-command-list' for details."
+   :group 'preview-latex
+@@ -3302,8 +3309,12 @@ This is passed through `preview-do-repla
+ 
+ (defcustom preview-undump-replacements
+   '(("\\`\\([^ ]+\\)\
+- .*? \"\\\\input\" \\(.*\\)\\'"
+-     . ("\\1 -interaction=nonstopmode \"&" preview-format-name "\" \\2")))
++ .*? \"\\\\input\" \"{\\\\detokenize{\" \\(.*\\) \"}}\"\\'"
++     . ("\\1 -interaction=nonstopmode " preview-format-name
++	" \"/AUCTEXINPUT{\" \\2 \"}\"")))
++  ;; See the ini file code below in `preview-cache-preamble' for the
++  ;; wierd /AUCTEXINPUT construct.  In short, it is crafted so that
++  ;; dumped format file can read file of non-ascii name.
+   "Use a dumped format for reading preamble."
+   :group 'preview-latex
+   :type '(repeat
+@@ -3347,8 +3358,11 @@ If FORMAT-CONS is non-nil, a previous fo
+       ;; in the tools bundle is an empty file.
+       (write-region "\\ifx\\pdfoutput\\undefined\\else\
+ \\let\\PREVIEWdump\\dump\\def\\dump{%
+-\\edef\\next{{\\catcode`\\ 9 \\pdfoutput=\\the\\pdfoutput\\relax\
+-\\the\\everyjob}}\\everyjob\\next\\catcode`\\ 10 \\let\\dump\\PREVIEWdump\\dump}\\fi\\input mylatex.ltx \\relax\n" nil dump-file)
++\\edef\\next{{\\pdfoutput=\\the\\pdfoutput\\relax\
++\\the\\everyjob}}\\everyjob\\next\\catcode`\\ 10 %
++\\catcode`/ 0 %
++\\def\\AUCTEXINPUT##1{\\catcode`/ 12\\relax\\catcode`\\ 9\\relax\\input{\\detokenize{##1}}}%
++\\let\\dump\\PREVIEWdump\\dump}\\fi\\input mylatex.ltx \\relax%\n" nil dump-file)
+       (TeX-save-document master)
+       (prog1
+ 	  (preview-generate-preview
+@@ -3535,9 +3549,10 @@ internal parameters, STR may be a log to
+   (set-buffer commandbuff)
+   (let*
+       ((preview-format-name (shell-quote-argument
+-			     (preview-dump-file-name
+-			      (file-name-nondirectory master))))
+-       (process-environment process-environment)
++			     (concat "&"
++				     (preview-dump-file-name
++				      (file-name-nondirectory master)))))
++       (process-environment (copy-sequence process-environment))
+        (process
+ 	(progn
+ 	  ;; Fix Bug#20773, Bug#27088.

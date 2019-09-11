@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Wed Aug 16 10:30:22 UTC 2017 - tchvatal@suse.com
+
+- Add %release to old package obsolete/provide as we still have
+  the same version
+
+-------------------------------------------------------------------
+Thu Jul 13 18:49:06 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild syntax
+
+-------------------------------------------------------------------
+Thu Jul 13 18:43:33 UTC 2017 - tchvatal@suse.com
+
+- Rename to lua-messagepack to be used by all namespaced variants
+
+-------------------------------------------------------------------
+Tue Dec  8 12:24:19 UTC 2015 - ronisbr@gmail.com
+
+- Add documentation to the package.
+
+-------------------------------------------------------------------
+Sat Dec  5 13:00:52 UTC 2015 - ronisbr@gmail.com
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Dec  2 11:27:10 UTC 2015 - ronisbr@gmail.com
+
+- Initial version based on devel:languages:lua/lua-messagepack
+

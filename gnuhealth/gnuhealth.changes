@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Tue Jun 11 16:10:20 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- gnuhealth-control changed to version 3.4.1 
+  * use bsdtar (can handle zip files, tar can't)
+
+-------------------------------------------------------------------
+Sun Mar 10 11:15:13 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.4.1 various bugfixes, e.g.
+  bug #55594: Traceback when creating a person without a system institution
+  bug #55595: Remove unimplemented functionality fields from Federation Country
+  
+-------------------------------------------------------------------
+Thu Feb 28 20:15:19 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- add dependency for bsdtar (gnuhealth-control changed)
+
+-------------------------------------------------------------------
+Sat Dec 29 16:40:16 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- gnuhealth-webdav service adapted to new GH webdav server
+
+-------------------------------------------------------------------
+Fri Dec  7 18:21:20 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- New version 3.4.0
+  * The GNU Health Federation model
+  * Thalamus message server
+  * New Health Information System (on MongoDB)
+  * Person Master Index
+  * MongoDB support (on the HIS)
+  * Updated UniprotKB database with over 30K protein natural variants
+  * Contextualized information on genetics and social determinants
+  * Genetic and family history and environmental factors integrated to
+    the Page of Life and Federation The GNU Health Book of Life
+  * Tryton 4.6 integration on the HMIS node
+
+-------------------------------------------------------------------
+Thu Nov 15 09:28:38 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- correction for gnuhealth-control (v 3.2.4) 
+
+-------------------------------------------------------------------
+Mon Aug 27 14:07:12 UTC 2018 - axel.braun@gmx.de
+
+- Adding a dummy executable called 'gnuhealth' with some help text
+  (boo#1107771)
+
+-------------------------------------------------------------------
+Tue Jul 17 07:19:15 UTC 2018 - axel.braun@gmx.de
+
+- openSUSE-gnuhealth-setup: User tryton set to SUPERUSER
+  Documentation updated
+
+-------------------------------------------------------------------
+Wed Jun 20 09:17:23 UTC 2018 - axel.braun@gmx.de
+
+- gnuhealth-control: added info about backup file
+  openSUSE-gnuhealth-setup added
+
+-------------------------------------------------------------------
+Tue Jun  5 12:13:54 UTC 2018 - axel.braun@gmx.de
+
+- Version 3.2.10
+  bug #54055: Caldav event does not update after changing the appointment
+
+-------------------------------------------------------------------
+Fri Jan 19 15:36:11 UTC 2018 - axel.braun@gmx.de
+
+- added gnuhealth-client to documentation
+
+-------------------------------------------------------------------
+Fri Dec 29 14:12:10 UTC 2017 - axel.braun@gmx.de
+
+- typo in documentation corrected
+
+-------------------------------------------------------------------
+Sat Dec  9 18:17:59 UTC 2017 - axel.braun@gmx.de
+
+- documentation updated
+
+-------------------------------------------------------------------
+Wed Dec  6 16:30:12 UTC 2017 - axel.braun@gmx.de
+
+- Version 3.2.9
+  Fix bug #52580: Removing the patient field before saving the record generates an error
+  Fix bug #52579: some on_change numeric method operations generate traceback
+  Fix bug #52578: WHR should be on the same line as hip and waist fields
+
+-------------------------------------------------------------------
+Wed Nov 15 22:01:40 UTC 2017 - axel.braun@gmx.de
+
+- removed pypi dependencies 
+
+-------------------------------------------------------------------
+Wed Nov 15 10:59:28 UTC 2017 - axel.braun@gmx.de
+
+- health_crypto. Fix bug #52366: Error when signing the death certificate
+  task #14626: Renaming Package names prefix trytond_ from Pypi. Update descriptions
+  task #14626: Renaming Package names prefix trytond_ from Pypi. Remove tryton from keywords
+  remove lingering egg-info dirs from webdav3
+
+-------------------------------------------------------------------
+Sun Oct 29 07:26:16 UTC 2017 - axel.braun@gmx.de
+
+- Version 3.2.6
+  dependency on python3-pymongo removed
+  fix bug #52298: Traceback generating an invoice from service with an insurance policy plan
+  Fix bug #52275: Traceback when creating a free slot in appointments or work schedule
+
+-------------------------------------------------------------------
+Wed Oct 18 19:14:54 UTC 2017 - axel.braun@gmx.de
+
+- Correction for gnuhealth-control (file not found in backup)
+
+-------------------------------------------------------------------
+Sun Oct  8 19:47:40 UTC 2017 - axel.braun@gmx.de
+
+- version 3.2.5
+  health, health_qrcodes : Fix bug #52179: Traceback due to obsolete unicode method in reports 
+
+-------------------------------------------------------------------
+Wed Oct  4 20:21:32 UTC 2017 - axel.braun@gmx.de
+
+- Version 3.2.4
+  health_services: Fix bug #52160: Issues related to invoice type and domain when creating the service invoice
+  health_disability : Rename anf fix  Amputation model description from Amputation to Prothesis
+  health : Prescription report . Include duration frequency selections strings for translation. Update conditional op. to Python3 (!=)
+
+-------------------------------------------------------------------
+Wed Sep 27 14:59:40 UTC 2017 - axel.braun@gmx.de
+
+- gnuhealth-control corrected (message command)
+
+-------------------------------------------------------------------
+Sat Sep 16 16:18:04 UTC 2017 - axel.braun@gmx.de
+
+- version 3.2.3 Fix bug #52038: Field history is repeated in the tree
+  view of the prescription line 
+
+-------------------------------------------------------------------
+Thu Sep 14 19:14:55 UTC 2017 - axel.braun@gmx.de
+
+- Documentation adapted
+
+-------------------------------------------------------------------
+Mon Aug 28 19:29:06 UTC 2017 - axel.braun@gmx.de
+
+- version 3.2.2
+  health_imaging : Update health professional retrieval to the current standard method
+
+-------------------------------------------------------------------
+Tue Aug  8 18:51:23 UTC 2017 - axel.braun@gmx.de
+
+- added gnuhealth-webdav@.service
+- updated documentation on gnuhealth-webdav@.service
+- added alias cdutil for compatibility reasons (not really needed,
+  as binaries are in /usr/bin anyway)
+- fixed path for cdexe  
+
+-------------------------------------------------------------------
+Sat Jul 22 16:13:36 UTC 2017 - axel.braun@gmx.de
+
+- version 3.2.1
+  Fix view error on lab order
+  
+-------------------------------------------------------------------
+Tue Jul 11 15:25:45 UTC 2017 - axel.braun@gmx.de
+
+- update of documentation for upgrade from Leap 42.2 
+
+-------------------------------------------------------------------
+Sun Jul  2 16:19:59 UTC 2017 - axel.braun@gmx.de
+
+- Version 3.2.0
+
+-------------------------------------------------------------------
+Sat Jun 24 10:56:45 UTC 2017 - axel.braun@gmx.de
+
+- Requirement on python3-PyWebDAV3-GNUHealth added
+
+-------------------------------------------------------------------
+Tue Jun 20 15:26:18 UTC 2017 - axel.braun@gmx.de
+
+- GNU Health version 3.1.0b3
+
+-------------------------------------------------------------------
+Sun Mar 26 16:29:15 UTC 2017 - axel.braun@gmx.de
+
+- release 3.0.8
+  [bug #50635] Missing declaration of view directory on setup.py on health_disability module
+
+-------------------------------------------------------------------
+Tue Mar 14 21:10:27 UTC 2017 - axel.braun@gmx.de
+
+- Release 3.0.7 (bnc1026365)
+
+-------------------------------------------------------------------
+Sat Feb 25 17:51:41 UTC 2017 - axel.braun@gmx.de
+
+- added DB-role to gnuhealh-control
+  updated documentation
+
+-------------------------------------------------------------------
+Mon Feb 20 10:28:42 UTC 2017 - axel.braun@gmx.de
+
+- renamed gnuhealth_control to gnuhealth-control
+  fixed documentation
+
+-------------------------------------------------------------------
+Tue Feb 14 06:09:10 UTC 2017 - axel.braun@gmx.de
+
+- version 3.06
+  * Fix bug #50269: Traceback when assigning a new meal order
+  * Fix bug #50281: Traceback when displaying patient critical info
+    in non-english languages
+  * fix bug #50288: Wrong widget for mealtime field. // Fix
+    validation for meal order warning
+  * Remove readonly from patient meal order warning, to correctly
+    save state of the field
+-------------------------------------------------------------------
+Mon Dec 12 15:59:19 UTC 2016 - axel.braun@gmx.de
+
+- Release 3.0.5
+  * Update to ICD10 version 2016
+  * fix bug #49414: Error when printing prescription using review dates
+  * bug #49405: Error on summary report when no date of birh is assigned to the person
+
+-------------------------------------------------------------------
+Sat Oct 22 18:00:22 UTC 2016 - axel.braun@gmx.de
+
+- temporary fix for prescription_orders report until 3.0.5 is released
+
+-------------------------------------------------------------------
+Sat Oct 22 09:34:44 UTC 2016 - axel.braun@gmx.de
+
+- Release 3.0.4
+
+-------------------------------------------------------------------
+Tue Oct 18 18:59:15 UTC 2016 - axel.braun@gmx.de
+
+- README updated
+
+-------------------------------------------------------------------
+Wed Sep 28 18:35:02 UTC 2016 - axel.braun@gmx.de
+
+- update of README.SUSE 
+
+-------------------------------------------------------------------
+Wed Aug 31 06:26:10 UTC 2016 - axel.braun@gmx.de
+
+- file permissions corrected
+
+-------------------------------------------------------------------
+Sun Aug 21 12:19:30 UTC 2016 - jengelh@inai.de
+
+- Trim summary/description from redundant words
+
+-------------------------------------------------------------------
+Mon Jan 11 12:07:51 UTC 2016 - axel.braun@gmx.de
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Jan  4 07:27:41 UTC 2016 - axel.braun@gmx.de
+
+- Version 3.0RC2
+
+-------------------------------------------------------------------
+Thu Jan 22 06:41:46 UTC 2015 - axel.braun@gmx.de
+
+- version 2.8
+
+-------------------------------------------------------------------
+Thu Jul 10 14:55:14 UTC 2014 - axel.braun@gmx.de
+
+- Release 2.6.0
+
+-------------------------------------------------------------------
+Wed Jan 22 07:44:06 UTC 2014 - axel.braun@gmx.de
+
+- GnuHealth 2.4RC1 on Tryton 3.0 
+
+-------------------------------------------------------------------
+Fri Oct 18 12:10:27 UTC 2013 - axel.braun@gmx.de
+
+- Initial package build on OBS ( version 2.2.1 )

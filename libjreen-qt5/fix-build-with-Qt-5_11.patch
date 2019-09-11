@@ -1,0 +1,45 @@
+commit 7f7a5d3e91caf1a743649af47ed5bb29e47b6ff7
+Author: Christophe Giboudeaux <christophe@krop.fr>
+Date:   Thu May 24 23:55:58 2018 +0200
+
+    Fix build with Qt 5.11.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7988ee7..2f40f1c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,6 +24,7 @@ endif()
+ 
+ if(Qt5Core_DIR)
+     find_package(Qt5Network QUIET)
++    include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Network_INCLUDE_DIRS})
+     message(STATUS "Found Qt5!")
+     set(JREEN_SUFFIX "-qt5")
+     set(JREEN_INCLUDE_PATH "jreen-qt5")
+@@ -37,9 +38,6 @@ else()
+ 
+     find_package(Qt4 4.6.0 COMPONENTS QtCore QtNetwork REQUIRED)
+ 
+-    macro(qt5_use_modules)
+-    endmacro()
+-
+     include(${QT_USE_FILE})
+ endif()
+ 
+@@ -193,14 +191,14 @@ if(SPEEX_FOUND)
+ endif()
+ 
+ target_link_libraries(jreen${JREEN_SUFFIX}
+-    ${QT_LIBRARIES}
++    ${Qt5Core_LIBRARIES}
++    ${Qt5Network_LIBRARIES}
+     ${GSASL_LIBRARIES}
+     ${ZLIB_LIBRARIES}
+     ${EXTRA_LIBS}
+ )
+ 
+ set_target_properties(jreen${JREEN_SUFFIX} PROPERTIES AUTOMOC TRUE)
+-qt5_use_modules(jreen${JREEN_SUFFIX} Core Network)
+ 
+ # Install package config file
+ if(NOT WIN32)

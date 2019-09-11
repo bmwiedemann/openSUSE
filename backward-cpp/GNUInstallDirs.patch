@@ -1,0 +1,50 @@
+From d4f6779afb1f3278f2e5db9e81c1e8892425edb1 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@suse.de>
+Date: Mon, 22 Oct 2018 16:20:08 +0200
+Subject: [PATCH] cmake: Use GNUInstallDirs for libdir and includedir
+
+The comon practice in cmake to allow to specify the libdir or
+includedir using GNUInstallDirs which introduces the following
+options:
+
+* CMAKE_INSTALL_INCLUDEDIR
+* CMAKE_INSTALL_LIBDIR
+
+The main motivation behind this change is ability to use /usr/lib64
+instead of /usr/lib as a libdir.
+---
+ CMakeLists.txt | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3ab9d6b..7ebda29 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,6 +23,12 @@
+ cmake_minimum_required(VERSION 2.8.12)
+ project(backward CXX)
+ 
++# Introduce variables:
++# * CMAKE_INSTALL_LIBDIR
++# * CMAKE_INSTALL_BINDIR
++# * CMAKE_INSTALL_INCLUDEDIR
++include(GNUInstallDirs)
++
+ include(BackwardConfig.cmake)
+ 
+ # check if compiler is nvcc or nvcc_wrapper
+@@ -125,9 +131,9 @@ endif()
+ 
+ install(
+     FILES "backward.hpp"
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+ )
+ install(
+     FILES "BackwardConfig.cmake"
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/backward
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/backward
+ )
+-- 
+2.19.0
+

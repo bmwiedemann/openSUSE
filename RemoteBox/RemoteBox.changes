@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Sat Mar 16 15:26:34 UTC 2019 - chri@gallochri.com
+
+- Update to 2.6 version
+- Removed old version of env-script-interpreter.patch
+- Added RemoteBox-2.6_fix-env-script-interpreter.patch
+- RemoteBox now requires VirtualBox 6.0.x
+- Added additional screen modes for video capture and video hinting
+- Added option to select between Video and Audio, Video Only or 
+  Audio Only when screen capturing
+- Added support for VirtualBox VGA card with VMware SVGA II 
+  extensions
+- Added support for having no graphics card in the guest. Note 
+  however, you cannot connect to the guest with RDP/VNC without a 
+  virtual graphics card.
+- Added support for setting the emulated serial UART type
+- The Audio Input and Audio Output options can now also be set 
+  while the guest is running
+- Added support to the VMM (Virtual Media Manager) for compaction 
+  of hard disk images to reduce their physical size
+- Added support to the VMM (Virtual Media Manager) for resizing 
+  hard disk images
+- Added ability to save a guest log to a local text file
+- Added refresh button to reload the guest logs in the log viewer
+- Added cancel button to the VirtualBox Preferences dialog
+- Removed Host-Only-Network and NAT Network configuration from 
+  the VirtualBox preferences dialog and created the Host Network 
+  Manager dialog accessible from the file menu
+- Significantly updated the RemoteBox icon set and added 
+  additional decals
+- To work around a VirtualBox bug, when changing a shared folder 
+  the guest settings are now explicitly saved. This includes 
+  adding, editing and deleting
+- Optimised a lot of the settings retrieval code which should 
+  improve latency especially for those on slower systems and 
+  networks.
+- Fixed the Edit Shared Folder dialog not correctly showing a 
+  share's Permanent Status, when editing the shared folder.
+- Various code cleanups
+ 
+-------------------------------------------------------------------
+Sun May 20 18:38:51 UTC 2018 - ecsos@opensuse.org
+
+- Update to 2.5 version
+  - RemoteBox now only pops up a VirtualBox Extensions warning 
+    dialog on login, for server operating systems that have them 
+    available but the extension pack
+    is not installed. Currently this is Linux, Solaris, Windows and 
+    MacOS X. Others such as FreeBSD will just get a warning in the 
+    message log as there are no VirtualBox extensions.
+  - Added support for setting the Audio driver of a guest when 
+    using a FreeBSD server
+  - Improved the code which automatically adds the guest addition 
+    ISO to the VMM on login which should prevent an error if the 
+    server does not provide a guest additions ISO
+  - Added support for VNC. If your server has the VNC extension 
+    pack installed, you can use VNC to connect to the guest 
+    displays instead of RDP. You must install a VNC client on your 
+    RemoteBox machine and configured it as appropriate in your 
+    preferences. TigerVNC is the default client
+  - The guest display icon now shows whether the server expects 
+    a VNC or RDP connection when opening the display of guests.
+  - Added option to change the floppy drive type to 360k, 720k, 
+    1.44MB, 2.88MB, 15.6MB and 63.5MB.
+  - Added a button to assist with the automatic generation of 
+    serial port paths
+  - Fixed a bug causing the port path setting to be reset with the 
+    defaults
+  - Fixed audio support for Solaris servers. The SolAudio driver is 
+    non functional in VirtualBox and has been replaced with OSS.
+
+-------------------------------------------------------------------
+Mon Nov  6 18:29:46 UTC 2017 - chri@gallochri.com
+
+-Update to 2.4 version 
+-RemoteBox now requires VirtualBox 5.2.x
+-Updated guest icons
+-Added option to enable/disable audio output from a guest
+-Added option to enable/disable audio input to a guest
+-Added option to record audio from the guest when capturing a video
+-Added support for exporting appliances to Oracle Public Cloud 
+Format 1.0
+-Added ability to select a connection profile to use for 
+automatically logging in when starting up RemoteBox.
+-Added option 'Release Keys' to clear any held keys in the case 
+where a host and guest's keyboard status may become out of sync.
+-New guests now automatically have their audio output enabled
+-Fixed: You now can't set video RAM to zero, even though VirtualBox
+reports this as a valid minimum, the guest won't start.
+- env-script-interpreter.patch fix pearl interpreter script
+
+-------------------------------------------------------------------
+Sat May 20 10:34:39 UTC 2017 - chri@gallochri.com
+
+-Updtae to 2.3 version 
+
+-------------------------------------------------------------------
+Thu Aug 18 15:34:51 UTC 2016 - chri@gallochri.com
+
+-Update to 2.2 version 
+
+-------------------------------------------------------------------
+Fri Jul 29 07:39:00 UTC 2016 - chri@gallochri.com
+
+-Update to 2.1 version 
+
+-------------------------------------------------------------------
+Sun Jul 12 11:56:17 UTC 2015 - chri@gallochri.com
+
+-Updated to 2.0 version 
+
+-------------------------------------------------------------------
+Thu Apr  2 17:25:35 UTC 2015 - dimstar@opensuse.org
+
+- Manually symlink the duplicate icon between /usr/share/icons and
+  /usr/share/RemoteBox. This allows us, contrary to the use of
+  fdupes, to define that we want the real file in /usr/share/icons,
+  which is a requirement for Application containerisation (the icon
+  needs to be extractable from a defined location for host system
+  integration).
+
+-------------------------------------------------------------------
+Sun Mar 29 22:38:23 UTC 2015 - dimstar@opensuse.org
+
+- Install upstream provided appdata.xml file.
+
+-------------------------------------------------------------------
+Thu Oct 30 11:55:19 UTC 2014 - chri@gallochri.com
+
+-Fixed SLE_11_SP3 build 
+
+-------------------------------------------------------------------
+Sun Oct 26 07:55:31 UTC 2014 - chri@gallochri.com
+
+-Updated to 1.9 version 
+
+-------------------------------------------------------------------
+Sat Aug 16 20:26:56 UTC 2014 - wr@rosenauer.org
+
+- added RPM group tag matching other Virtualization packages
+
+-------------------------------------------------------------------
+Thu Jun 19 12:41:15 UTC 2014 - chri@gallochri.com
+
+- Changes name fixed
+
+-------------------------------------------------------------------
+Thu Jun 19 11:47:34 UTC 2014 - chri@gallochri.com
+
+- Package name fixed
+
+-------------------------------------------------------------------
+Mon Jun  9 20:09:17 UTC 2014 - chri@gallochri.com
+
+- Fixed doc dir path
+
+-------------------------------------------------------------------
+Mon Jun  9 16:02:24 UTC 2014 - chri@gallochri.com
+
+- Updated to version 1.8.1
+
+-------------------------------------------------------------------
+Fri Jun  6 14:45:59 UTC 2014 - chri@gallochri.com
+
+- Added perl-SOAP-Lite as required
+
+-------------------------------------------------------------------
+Thu Jun  5 11:05:46 UTC 2014 - chri@gallochri.com
+
+- ops, patch missed ;-)
+
+-------------------------------------------------------------------
+Thu Jun  5 11:01:25 UTC 2014 - chri@gallochri.com
+
+- Soap Version patch added
+
+-------------------------------------------------------------------
+Wed Jun  4 11:42:29 UTC 2014 - chri@gallochri.com
+
+- First version
+
+-------------------------------------------------------------------
+Wed Jun  4 11:36:21 UTC 2014 - chri@gallochri.com
+
+- Init
+

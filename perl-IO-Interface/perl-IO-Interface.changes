@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Nov 25 06:29:27 UTC 2015 - coolo@suse.com
+
+- regenerate to fix Module::Build dep on leap
+
+-------------------------------------------------------------------
+Tue Apr 14 19:27:06 UTC 2015 - coolo@suse.com
+
+- updated to 1.09
+   see /usr/share/doc/packages/perl-IO-Interface/Changes
+
+  1.09    Tue Dec  9 11:22:56 EST 2014
+  	-Converted to use Module::Build
+  
+  1.08    Mon Dec  8 10:38:42 EST 2014
+  	-First Git version
+  	-Apply segfault patches for OpenBSD from Mikolaj Kucharski.	
+  
+  1.07    Sun Jun  8 21:29:58 EDT 2014
+  	-Apply patch from Miolaj Kucharski to fix segfault on OpenBSD.
+
+-------------------------------------------------------------------
+Tue Nov 27 22:19:13 UTC 2012 - crrodriguez@opensuse.org
+
+- Skip tests in qemu arm, flaky emulator  
+
+-------------------------------------------------------------------
+Tue Nov 29 15:15:17 UTC 2011 - coolo@suse.com
+
+- update to 1.06
+    Address test 5 failure on systems with aliases on loopback. 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:01 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Apr  4 15:15:30 UTC 2010 - chris@computersalat.de
+
+- initial package 1.05
+

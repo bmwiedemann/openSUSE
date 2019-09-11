@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://gitlab.freedesktop.org/xdg/shared-mime-info.git</param>
+    <param name="scm">git</param>
+    <param name="version">1.12</param>
+    <param name="revision">Release-1-12</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+

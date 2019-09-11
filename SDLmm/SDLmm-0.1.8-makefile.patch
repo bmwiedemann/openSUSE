@@ -1,0 +1,11 @@
+--- Makefile.am
++++ Makefile.am
+@@ -40,7 +40,7 @@
+ 	rpm -ba SDLmm.spec
+ 
+ # Run ldconfig after installing the library:
+-install-hook:
++install-exec-hook:
+ 	-ldconfig
+ 
+ force:

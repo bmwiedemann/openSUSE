@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Apr 19 22:20:34 UTC 2017 - toddrme2178@gmail.com
+
+- Source must be https.
+
+-------------------------------------------------------------------
+Tue Apr 18 16:55:27 UTC 2017 - toddrme2178@gmail.com
+
+- Minor spec file cleanups
+- Provide python2-python-openid for compatibility
+  with singlespec macros.
+
+-------------------------------------------------------------------
+Wed Aug 31 13:31:37 UTC 2011 - saschpe@suse.de
+
+- Add provides/obsolets for python-openid
+
+-------------------------------------------------------------------
+Wed Aug 31 13:26:51 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

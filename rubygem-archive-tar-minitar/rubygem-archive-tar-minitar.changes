@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Fri Jan 27 17:42:20 UTC 2017 - jmassaguerpla@suse.com
+
+- fix CVE-2016-10173 (bsc#1021740): rubygem-minitar,
+  rubygem-archive-tar-minitar: directory traversal vulnerability
+  bsc_1021740.patch: contains the fix
+
+-------------------------------------------------------------------
+Mon Oct 13 06:27:26 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Dec  3 13:22:19 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ or Ruby
+  SPDX format
+
+-------------------------------------------------------------------
+Thu Jun 10 15:01:48 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Sat Aug  8 22:54:39 UTC 2009 - dmacvicar@novell.com
+
+- initial package for 0.5.2 
+

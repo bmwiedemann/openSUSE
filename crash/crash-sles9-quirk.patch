@@ -1,0 +1,75 @@
+From: Bernhard Walle <bwalle@suse.de>
+Subject: [PATCH] Add quirk for SLES9 LKCD header
+Patch-mainline: never
+
+On SLES9, we have a different header on IA64:
+
+    SLES 10:
+
+    typedef struct __dump_header_asm {
+            uint64_t            dha_magic_number;
+            uint32_t            dha_version;
+            uint32_t            dha_header_size;
+            uint64_t            dha_pt_regs;
+            struct pt_regs      dha_regs;
+            uint64_t            dha_rnat;
+            uint64_t            dha_pfs;
+            uint64_t            dha_bspstore;
+            uint32_t	        dha_smp_num_cpus;
+            uint32_t	        dha_dumping_cpu;
+            struct pt_regs	dha_smp_regs[NR_CPUS];
+            uint64_t	        dha_smp_current_task[NR_CPUS];
+            uint64_t	        dha_stack[NR_CPUS];
+            uint64_t	        dha_stack_ptr[NR_CPUS];
+            uint64_t            dha_kernel_addr;
+    } __attribute__((packed)) dump_header_asm_t;
+
+    SLES 9:
+    typedef struct __dump_header_asm {
+            uint64_t            dha_magic_number;
+            uint32_t            dha_version;
+            uint32_t            dha_header_size;
+            uint64_t            dha_kernel_addr;
+            uint64_t            dha_pt_regs;
+            struct pt_regs      dha_regs;
+            uint64_t            dha_rnat;
+            uint64_t            dha_pfs;
+            uint64_t            dha_bspstore;
+            uint32_t	        dha_smp_num_cpus;
+            uint32_t	        dha_dumping_cpu;	
+            struct pt_regs	dha_smp_regs[NR_CPUS];
+            uint64_t	        dha_smp_current_task[NR_CPUS];
+            uint64_t	        dha_stack[NR_CPUS];
+            uint64_t	        dha_stack_ptr[NR_CPUS];
+    } __attribute__((packed)) dump_header_asm_t;
+
+That patch tries to guess if it's a SLES 9 or a SLES 10 header
+at runtime.
+
+
+Signed-off-by: Bernhard Walle <bwalle@suse.de>
+
+---
+ lkcd_v8.c |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+--- a/lkcd_v8.c
++++ b/lkcd_v8.c
+@@ -130,6 +130,17 @@ lkcd_dump_init_v8_arch(dump_header_t *dh
+ 		goto err;
+ 	}
+ 
++#if IA64
++	/* SLES9 on IA64? */
++	if ( *((uint64_t *)(hdr_buf + hdr_size - sizeof(uint64_t))) <= NR_CPUS) {
++		uint64_t kernel_addr;
++		kernel_addr = ((dump_header_asm_t *)hdr_buf)->dha_pt_regs;
++		memmove(hdr_buf + offsetof(dump_header_asm_t, dha_pt_regs),
++				hdr_buf + offsetof(dump_header_asm_t, dha_regs),
++				hdr_size - offsetof(dump_header_asm_t, dha_regs));
++		*((uint64_t *)(hdr_buf + hdr_size - sizeof(uint64_t))) = kernel_addr;
++	}
++#endif
+ 
+ 	/*
+          * Though we have KL_NR_CPUS is 128, the header size is different

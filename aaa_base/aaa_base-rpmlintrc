@@ -1,0 +1,66 @@
+# it's just a README....
+addFilter("non-remote_fs-dependency.*/etc/init.d/README")
+addFilter("init-script-non-executable.*/etc/init.d/README")
+addFilter("no-status-entry.*/etc/init.d/README")
+addFilter("non-executable-script.*/sbin/init.d.README")
+addFilter("non-executable-in-bin.*/sbin/init.d.README")
+addFilter("script-without-shebang.*/sbin/init.d.README")
+# contains just functions - executable bit is not needed
+addFilter("non-executable-script.*/lib/YaST/SuSEconfig.functions")
+# random don't need $remote-fs
+addFilter("non-remote_fs-dependency.*/etc/init.d/random")
+# if this script is triggered, remote-fs is not important
+addFilter("non-remote_fs-dependency.*/etc/init.d/powerfail")
+# single user mode is without remote connection
+addFilter("non-remote_fs-dependency.*/etc/init.d/single")
+# no comment
+addFilter("non-remote_fs-dependency.*/etc/init.d/halt")
+# this script is only for runlevel changes
+addFilter("non-remote_fs-dependency.*/etc/init.d/rc")
+# perhaps should be configurable later...
+addFilter("non-etc-or-var-file-marked-as-conffile.*/sbin/quick_halt")
+# confirmed - but standard
+addFilter("non-root-group-log-file /var/log/wtmp utmp")
+# the following init script don't need to be reloaded - 
+# even after an update
+addFilter("no-reload-entry.*/etc/init.d/README")
+addFilter("no-reload-entry.*/etc/init.d/boot.swap")
+addFilter("no-reload-entry.*/etc/init.d/boot.proc")
+addFilter("no-reload-entry.*/etc/init.d/random")
+addFilter("no-reload-entry.*/etc/init.d/boot.ipconfig")
+addFilter("no-reload-entry.*/etc/init.d/boot.rootfsck")
+addFilter("no-reload-entry.*/etc/init.d/powerfail")
+addFilter("no-reload-entry.*/etc/init.d/single")
+addFilter("no-reload-entry.*/etc/init.d/boot.cleanup")
+addFilter("no-reload-entry.*/etc/init.d/halt")
+addFilter("no-reload-entry.*/etc/init.d/boot.ldconfig")
+addFilter("no-reload-entry.*/etc/init.d/boot")
+addFilter("no-reload-entry.*/etc/init.d/boot.klog")
+addFilter("no-reload-entry.*/etc/init.d/rc")
+addFilter("no-reload-entry.*/etc/init.d/boot.clock")
+addFilter("no-reload-entry.*/etc/init.d/boot.localnet")
+addFilter("no-reload-entry.*/etc/init.d/boot.localfs")
+# the following init scripts don't need to be stopped - 
+# even after an update
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/skeleton.compat")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/README")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.swap")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.proc")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/random")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.ipconfig")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.rootfsck")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/powerfail")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/single")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.cleanup")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/skeleton")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/halt")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.ldconfig")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.klog")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/rc")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.clock")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.localnet")
+addFilter("init-script-without-%stop_on_removal-preun.*/etc/init.d/boot.localfs")
+
+# aaa_base requires net-tools
+addFilter("dangling-symlink.*/usr/lib/restricted/bin/hostname.*/bin/hostname")

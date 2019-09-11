@@ -1,0 +1,21 @@
+Index: wiiuse-0.14.0_p20150515/src/CMakeLists.txt
+===================================================================
+--- wiiuse-0.14.0_p20150515.orig/src/CMakeLists.txt
++++ wiiuse-0.14.0_p20150515/src/CMakeLists.txt
+@@ -57,6 +57,7 @@ if(WIN32)
+ 	target_link_libraries(wiiuse ws2_32 setupapi ${WINHID_LIBRARIES})
+ elseif(LINUX)
+ 	target_link_libraries(wiiuse m ${BLUEZ_LIBRARIES})
++        set_target_properties(wiiuse PROPERTIES SOVERSION 0 VERSION ${CPACK_PACKAGE_VERSION})
+ elseif(APPLE)
+ 	# link libraries
+ 	find_library(IOBLUETOOTH_FRAMEWORK
+@@ -100,7 +101,7 @@ install(TARGETS
+ 	development
+ 	LIBRARY
+ 	DESTINATION
+-	lib
++	lib${LIB_SUFFIX}
+ 	COMPONENT
+ 	runtime
+ 	PUBLIC_HEADER

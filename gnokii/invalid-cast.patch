@@ -1,0 +1,13 @@
+Index: gnokii-0.6.31/xgnokii/xgnokii_xring.c
+===================================================================
+--- gnokii-0.6.31.orig/xgnokii/xgnokii_xring.c
++++ gnokii-0.6.31/xgnokii/xgnokii_xring.c
+@@ -195,7 +195,7 @@ static int createpixmap(GtkWidget * wind
+ 						   &style->
+ 						   bg[GTK_STATE_NORMAL],
+ 						   a);
+-	return (int) pam->pixmap;	/* (to) NULL or not (to) NULL */
++	return pam->pixmap != NULL;	/* (to) NULL or not (to) NULL */
+ }
+ 
+ enum {

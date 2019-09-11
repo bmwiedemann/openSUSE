@@ -1,0 +1,633 @@
+-------------------------------------------------------------------
+Mon Jul 22 16:58:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.5.2
+  * Fixed compatibility with python 3.8: Fixed `Dictonary keys changed during
+    iteration` RuntimeError while moving/renameing a node.
+    Thanks to Christoph Gohlke for reporting and Miro Hroncok for help with
+    building PyTables for python 3.8alpha (cython compatibility).
+  * Fixed a bug in offset calculations producing floats instead of ints
+    affecting python 3. See PR #736. Thanks to Brad Montgomery.
+- Update to 3.5.1
+  * Maintenance release to fix how PyPi repo is handling wheel versions.
+- Update to 3.5.0
+  * When copying data from native HDF5 files with padding in compound types,
+    the padding is not removed now by default.  This allows for better
+    compatibility with existing HDF5 applications that expect the padding
+    to stay there.
+    Also, when the `description` is a NumPy struct array with padding, this
+    is honored now.  The previous behaviour (i.e. getting rid of paddings) can
+    be replicated by passing the new `allow_padding` parameter when opening
+    a file.  For some examples, see the new `examples/tables-with-padding.py`
+    and `examples/attrs-with-padding.py`.  For details on the implementation
+  * Added a new flag `--dont-allow-padding` in `ptrepack` utility so as to
+    replicate the previous behaviour of removing padding during file copies.
+    The default is to honor the original padding in copies.
+  * Improve compatibility with numpy 1.16.
+  * Improve detection of the LZO2 library at build time.
+  * Suppress several warnings.
+  * Add AVX2 support for Windows.
+- Rebase Never-use-the-msse2-flag-explicitly.patch
+- Remove upstream-included patches:
+  * pytables_no_unsafe_write.patch
+  * pytables_fix_exception_check.patch
+
+-------------------------------------------------------------------
+Wed Feb 13 19:21:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add patches for numpy 1.16 compatibility:
+  * pytables_fix_exception_check.patch
+    from: https://github.com/PyTables/PyTables/commit/46fa2f07c00613ed6b647b2cf44e388f547fe668
+  * pytables_no_unsafe_write.patch
+    from: https://github.com/PyTables/PyTables/commit/f6b64c942fb91e6c261fa455969a38482c22beeb
+
+-------------------------------------------------------------------
+Fri Aug 10 11:48:19 UTC 2018 - tchvatal@suse.com
+
+- Drop python-unittest2 dependency it was needed only on py2.6
+
+-------------------------------------------------------------------
+Wed Jun 13 17:39:10 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 3.4.4
+  + Improvements
+    * Environment variable to control the use of embedded libraries.
+    * Include citation in repository.
+  + Bugs fixed
+    * Fixed import error with numexpr 2.6.5.dev0
+    * Fixed linter warnings.
+    * Fixed for re.split() is version detection.
+    * Fixed test failures with Python 2.7 and NumPy 1.14.3
+- Remove upstream-included initRecArray_tuples.patch
+
+-------------------------------------------------------------------
+Thu May  3 17:06:41 UTC 2018 - toddrme2178@gmail.com
+
+- Add initRecArray_tuples.patch
+  Upstream bug report: https://github.com/PyTables/PyTables/issues/688
+  From: https://github.com/PyTables/PyTables/pull/689
+  Should be in next release
+
+-------------------------------------------------------------------
+Wed May  2 10:31:55 UTC 2018 - tchvatal@suse.com
+
+- Version update to 3.4.3:
+  * On interactive python sessions, group/attribute __dir__() method
+    autocompletes children that are named as valid python identifiers.
+  * Implement Group.__getitem__() to have groups act as python-containers,
+    so code like this works: hfile.root['some child'].
+  * Enable building with Intel compiler (icc/icpc).
+  * PEP 519 support, using new os.fspath method.
+  * Optional disable recording of ctime (metadata creation time) when
+    creating datasets that makes possible to get bitwise identical output
+    from repeated runs.
+  * Prevent from reading all rows for each coord in a VLArray when
+    indexing using a list .
+  * Fixed division by zero when using _convert_time64() with an empty
+    nparr array.
+  * Fixed deprecation warnings with numpy 1.14.
+  * Skip DLL check when running from a frozen app.
+  * Fixed behaviour with slices out of range.
+- Drop merged patch fix_numpy_recarray.patch
+- Add patch Never-use-the-msse2-flag-explicitly.patch to avoid using
+  msse2 and avx on buildbots that support it, as we can be on non
+  avx machines...
+
+-------------------------------------------------------------------
+Mon Feb 26 17:31:44 UTC 2018 - toddrme2178@gmail.com
+
+- Add fix_numpy_recarray.patch
+  Fixes issues with recarrays under numpy 1.14.
+  Patch accepted upstream.  Should be in next release.
+  From: https://github.com/PyTables/PyTables/pull/664
+
+-------------------------------------------------------------------
+Tue Apr 25 19:08:44 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.4.2
+  + Improvements
+    * setup.py detects conda env and uses installed conda
+      (hdf5, bzip2, lzo and/or blosc) packages when building from
+      source.
+  + Bugs fixed
+    * Linux wheels now built against built-in blosc.
+    * Fixed windows absolute paths in ptrepack, ptdump, ptree.
+      :issue:`616`. Thanks to oscar6echo.
+- Update to version 3.4.1
+  + Bugs fixed
+    * Fixed bug in ptrepack
+- Switch to hdf5 1.10 series.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Thu Aug 25 17:49:47 UTC 2016 - toddrme2178@gmail.com
+
+- hdf5_18 has been renamed to hdf5-1_8.
+
+-------------------------------------------------------------------
+Tue Aug 16 15:37:55 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 3.2.3.1:
+  * Fixed issues with pip install.
+- update to version 3.2.3:
+  * Improvements
+    + It is now possible to use HDF5 with the new shared library
+      naming scheme (>= 1.8.10, hdf5.dll instead of hdf5dll.dll) on
+      Windows (gh-540). Thanks to Tadeu Manoel.
+    + Now :program: ptdump sorts output by node name and does not
+      print a backtrace if file cannot be opened. Thanks to Zbigniew
+      Jędrzejewski-Szmek.
+  * Bugs fixed
+    + Only run tables.tests.test_basics.UnicodeFilename if the
+      filesystem encoding is utf-8. Closes gh-485.
+    + Add lib64 to posix search path. (closes gh-507) Thanks to Mehdi
+      Sadeghi.
+    + Ensure cache entries are removed if fewer than 10 (closes
+      gh-529). Thanks to Graham Jones.
+    + Fix segmentation fault in a number of test cases that use
+      index.Index (closes gh-532 and gh-533). Thanks to Diane Trout.
+    + Fixed the evaluation of transcendental functions when numexpr is
+      compiled with VML support (closes gh-534, PR #536). Thanks to
+      Tom Kooij.
+    + Make sure that index classes use buffersizes that are a multiple
+      of chunkshape[0] (closes gh-538, PR #538). Thanks to Tom Kooij.
+    + Ensure benchmark paths exist before benchmarks are executed (PR
+      #544). Thanks to rohitjamuar.
+  * Other changes
+    + Minimum Cython version is now v0.21
+- specfile:
+  * add python-py-cpuinfo to build requirements
+  * depend on hdf5_18-devel, since pytables is not compatible with
+    hdf5 >= 1.10
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Mon Feb  1 11:28:11 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 3.2.2:
+  * Fix AssertionError in Row.__init_loop. See gh-477.
+  * Fix issues with Cython 0.23. See gh-481.
+  * Only run tables.tests.test_basics.UnicodeFilename if the
+    filesystem encoding is utf-8. Closes gh-485.
+  * Fix missing missing PyErr_Clear. See gh-#486.
+  * Fix the C type of some numpy attributes. See gh-494.
+  * Cast selection indices to integer. See gh-496.
+  * Fix indexesextension._keysort_string. Closes gh-497 and gh-498.
+- changes from version 3.2.1.1:
+  * Fix permission on distributed source distribution
+- update to version 3.2.1:
+  * Fix indexesextension._keysort. Fixes gh-455. Thanks to Andrew Lin.
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu May 14 09:07:43 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.2.0:
+  Improvements
+  * The nrowsinbuf is better computed now for EArray/CArray having
+    a small chunkshape in the main dimension. Fixes #285.
+  * PyTables should be installable very friendly via pip, including
+    NumPy being installed automatically in the unlikely case it is
+    not yet installed in the system. Thanks to Andrea Bedini.
+  * setup.py has been largely simplified and now it requires
+    setuptools. Although we think this is a good step, please keep
+    us informed this is breaking some installation in a very bad
+    manner.
+  * setup.py now is able to used pkg-config, if available, to
+    locate required libraries (hdf5, bzip2, etc.). The use of
+    pkg-config can be controlled via setup.py command line flags or
+    via environment variables. Please refer to the installation
+    guide (in the User Manual) for details. Closes gh-442.
+  * It is now possible to create a new node whose parent is a
+    softlink to another group (see gh-422). Thanks to Alistair
+    Muldal.
+  * link.SoftLink objects no longer need to be explicitly
+    dereferenced. Methods and attributes of the linked object are
+    now automatically accessed when the user acts on a soft-link
+    (see gh-399). Thanks to Alistair Muldal.
+  * Now ptrepack recognizes hardlinks and replicates them in the
+    output (repacked) file. This saves disk space and makes
+    repacked files more conformal to the original one. Closes
+    gh-380.
+  * New pttree script for printing HDF5 file contents as a pretty
+    ASCII tree (closes gh-400). Thanks to Alistair Muldal.
+  * The internal Blosc library has been downgraded to version
+    1.4.4. This is in order to still allow using multiple threads
+    inside Blosc, even on multithreaded applications (see gh-411,
+    gh-412, gh-437 and gh-448).
+  * The print_versions() function now also reports the version of
+    compression libraries used by Blosc.
+  * Now the setup.py tries to use the ‘-march=native’ C flag by
+    default. In falls back on ‘-msse2’ if ‘-march=native’ is not
+    supported by the compiler. Closes gh-379.
+  * Fixed a spurious unicode comparison warning (closes gh-372 and
+    gh-373).
+  * Improved handling of empty string attributes. In previous
+    versions of PyTables empty string were stored as scalar HDF5
+    attributes having size 1 and value ‘0’ (an empty null
+    terminated string). Now empty string are stored as HDF5
+    attributes having zero size
+  * Added a new cookbook recipe and a couple of examples for simple
+    threading with PyTables.
+  * The redundant utilsextension.get_indices() function has been
+    eliminated (replaced by slice.indices()). Closes gh-195.
+  * Allow negative indices in point selection (closes gh-360)
+  * Index wasn’t being used if it claimed there were no results.
+    Closes gh-351 (see also gh-353)
+  * Atoms and Col types are no longer generated dynamically so now
+    it is easier for IDEs and static analysis tool to handle them
+    (closes gh-345)
+  * The keysort functions in idx-opt.c have been cythonised using
+    fused types. The perfomance is mostly unchanged, but the code
+    is much more simpler now. Thanks to Andrea Bedini.
+  * Small unit tests re-factoring
+  Bugs fixed
+  * Fixed compatibility problems with numpy 1.9 and 1.10-dev
+    (closes gh-362 and gh-366)
+  * Fixed compatibility with Cython >= 0.20 (closes gh-386 and
+    gh-387)
+  * Fixed support for unicode node names in LRU cache (only Python
+    2 was affected). Closes gh-367 and gh-369.
+  * Fixed support for unicode node titles (only Python 2 was
+    affected). Closes gh-370 and gh-374.
+  * Fixed a bug that caused the silent truncation of unicode
+    attributes containing the ‘0’ character. Closes gh-371.
+  * Fixed descr_from_dtype() to work as expected with complex
+    types. Closes gh-381.
+  * Fixed the tests.test_basics.ThreadingTestCase test case. Closes
+    gh-359.
+  * Fix incomplete results when performing the same query twice and
+    exhausting the second iterator before the first. The first one
+    writes incomplete results to seqcache (gh-353)
+  * Fix false results potentially going to seqcache if
+    tableextension.Row.update() is used during iteration (see
+    gh-353)
+  * Fix Column.create_csindex() when there’s NaNs
+  * Fixed handling of unicode file names on windows (closes gh-389)
+  * No longer not modify sys.argv at import time (closes gh-405)
+  * Fixed a performance issue on NFS (closes gh-402)
+  * Fixed a nasty problem affecting results of indexed queries.
+    Closes gh-319 and probably gh-419 too.
+  * Fixed another problem affecting results of indexed queries too.
+    Closes gh-441.
+  * Replaced “len(xrange(start, stop, step))” -> “len(xrange(0,
+    stop - start, step))” to fix issues with large row counts with
+    Python 2.x. Fixes #447.
+  Other changes
+  * Cython is not a hard dependency anymore (although developers
+    will need it so as to generated the C extension code).
+  * The number of threads used by default for numexpr and Blosc
+    operation that was set to the number of available cores have
+    been reduced to 2. This is a much more reasonable setting for
+    not creating too much overhead.
+- add python-setuptools as a new build dependency
+- pass -q to %setup to avoid spamming the build log
+- rename README.txt to README.rst: changed upstream
+- add new binary pttree to the package
+
+-------------------------------------------------------------------
+Thu May  8 11:15:34 UTC 2014 - toddrme2178@gmail.com
+
+- New version 3.1.1
+  - Fixed a critical bug that caused an exception at import time.
+    The error was triggered when a bug in long-double detection is detected
+    in the HDF5 library (see :issue:`275`) and numpy_ does not expose
+    `float96` or `float128`. Closes :issue:`344`.
+  - The internal Blosc_ library has been updated to version 1.3.5.
+    This fixes a false buffer overrun condition that made c-blosc to fail,
+    even if the problem was not real.
+- New version 3.1.0
+  - New features¶
+    - Now PyTables is able to save/restore the default value 
+      of EnumAtom types.
+    - Implemented support for the H5FD_SPLIT driver.
+    - New quantization filter: the filter truncates floating point 
+      data to a specified precision before writing to disk. 
+      This can significantly improve the performance of compressors.
+    - Added new VLArray.get_row_size() method to VLArray for querying
+      the number of atoms of a VLArray row. Closes gh-24 and gh-315.
+    - The internal Blosc library has been updated to version 1.3.2. 
+      All new features introduced in the Blosc 1.3.x series, and in 
+      particular the ability to leverage different compressors within 
+      Blosc (see the Blosc Release Notes), are now available in 
+      PyTables via the blosc filter.
+  - Improvements¶
+    - The node caching mechanism has been completely redesigned to 
+      be simpler and less dependent from specific behaviours of 
+      the __del__ method. Now PyTables is compatible with the 
+      forthcoming Python 3.4. Closes gh-306.
+    - PyTables no longer uses shared/cached file handlers. 
+      This change somewhat improves support for concurrent reading 
+      allowing the user to safely open the same file in different 
+      threads for reading (requires HDF5 >= 1.8.7). More details 
+      about this change can be found in the Backward incompatible 
+      changes section. See also gh-130, gh-129 gh-292 and gh-216.
+    - PyTables is now able to detect and use external installations 
+      of the Blosc library (closes gh-104). If Blosc is not found in 
+      the system, and the user do not specify a custom installation 
+      directory, then it is used an internal copy of the Blosc source 
+      code.
+    - Automatically disable extended float support if a buggy version
+      of HDF5 is detected (see also Issues with H5T_NATIVE_LDOUBLE).
+    - Documented an unexpected behaviour with string literals in query 
+      conditions on Python 3 (closes gh-265)
+    - The deprecated getopt module has been dropped in favour of 
+      argparse in all command line utilities (close gh-251)
+    - Improved the installation section of the PyTables User’s Guide.
+        - instructions for installing PyTables via pip have been added.
+        - added a reference to the Anaconda, Canopy and Christoph 
+          Gohlke suites (closes gh-291)
+    - Enabled Travis-CI builds for Python 3.3
+    - Tables.read_coordinates() now also works with boolean indices input.
+    - Improved compatibility with numpy >= 1.8 (see gh-259)
+    - The code of the benchmark programs (bench directory) has been updated.
+    - Fixed some warning related to non-unicode file names 
+      (the Windows bytes API has been deprecated in Python 3.4)
+  - Bugs fixed¶
+    - Fixed detection of platforms supporting Blosc
+    - Fixed a crash that occurred when one attempts to write a numpy array
+      to an Atom (closes gh-209 and gh-296)
+    - Prevent creation of a table with no columns.
+    - Fixed a memory leak that occured when iterating over 
+      CArray/EArray objects.
+    - Make NaN types sort to the end. Closes gh-282 and gh-313
+    - Fixed selection on float columns when NaNs are present.
+    - Fix computation of the buffer size for iterations on rows. 
+      The buffers size was overestimated resulting in a MemoryError 
+      in some cases. Closes gh-316. Thamks to bbudescu.
+    - Better check of file open mode. Closes gh-318.
+    - The Blosc filter now works correctly together with fletcher32. Closes gh-21.
+    - Close the file handle before trying to delete the corresponding file. 
+      Fixes a test failure on Windows.
+    - Use integer division for computing indices (fixes some warning on Windows)
+- Use external python-blosc.  The internal one builds a bad version
+  of zlib.
+
+-------------------------------------------------------------------
+Tue Oct 22 13:34:13 UTC 2013 - toddrme2178@gmail.com
+
+- new version 3.0.0
+  * New features
+    - Since this release PyTables provides full support to Python_ 3
+      (closes :issue:`188`).
+    - The entire code base is now more compliant with coding style guidelines
+      describe in the PEP8_ (closes :issue:`103` and :issue:`224`).
+      See `API changes`_ for more details.
+    - Basic support for HDF5 drivers.  Now it is possible to open/create an
+      HDF5 file using one of the SEC2, DIRECT, LOG, WINDOWS, STDIO or CORE
+      drivers.  Users can also set the main driver parameters (closes
+      :issue:`166`).
+      Thanks to Michal Slonina.
+    - Basic support for in-memory image files.  An HDF5 file can be set from or
+      copied into a memory buffer (thanks to Michal Slonina).  This feature is
+      only available if PyTables is built against HDF5 1.8.9 or newer.
+      Closes :issue:`165` and :issue:`173`.
+    - New :meth:`File.get_filesize` method for retrieving the HDF5 file size.
+    - Implemented methods to get/set the user block size in a HDF5 file
+      (closes :issue:`123`)
+    - Improved support for PyInstaller_.  Now it is easier to pack frozen
+      applications that use the PyTables package (closes: :issue:`177`).
+      Thanks to Stuart Mentzer and Christoph Gohlke.
+    - All read methods now have an optional *out* argument that allows to pass a
+      pre-allocated array to store data (closes :issue:`192`)
+    - Added support for the floating point data types with extended precision
+      (Float96, Float128, Complex192 and Complex256).  This feature is only
+      available if numpy_ provides it as well.
+      Closes :issue:`51` and :issue:`214`.  Many thanks to Andrea Bedini.
+    - Consistent ``create_xxx()`` signatures.  Now it is possible to create all
+      data sets :class:`Array`, :class:`CArray`, :class:`EArray`,
+      :class:`VLArray`, and :class:`Table` from existing Python objects (closes
+      :issue:`61` and :issue:`249`).  See also the `API changes`_ section.
+    - Complete rewrite of the :mod:`nodes.filenode` module. Now it is fully
+      compliant with the interfaces defined in the standard :mod:`io` module.
+      Only non-buffered binary I/O is supported currently.
+      See also the `API changes`_ section.  Closes :issue:`244`.
+    - New :program:`pt2to3` tool is provided to help users to port their
+      applications to the new API (see `API changes`_ section).
+  * Improvements
+    - Improved runtime checks on dynamic loading of libraries: meaningful error
+      messages are generated in case of failure.
+      Also, now PyTables no more alters the system PATH.
+      Closes :issue:`178` and :issue:`179` (thanks to Christoph Gohlke).
+    - Improved list of search paths for libraries as suggested by Nicholaus
+      Halecky (see :issue:`219`).
+    - Removed deprecated Cython_ include (.pxi) files. Contents of
+      :file:`convtypetables.pxi` have been moved in :file:`utilsextension.pyx`.
+      Closes :issue:`217`.
+    - The internal Blosc_ library has been upgraded to version 1.2.3.
+    - Pre-load the bzip2_ library on windows (closes :issue:`205`)
+    - The :meth:`File.get_node` method now accepts unicode paths
+      (closes :issue:`203`)
+    - Improved compatibility with Cython_ 0.19 (see :issue:`220` and
+      :issue:`221`)
+    - Improved compatibility with numexpr_ 2.1 (see also :issue:`199` and
+      :issue:`241`)
+    - Improved compatibility with development versions of numpy_
+      (see :issue:`193`)
+    - Packaging: since this release the standard tar-ball package no more includes
+      the PDF version of the "PyTables User Guide", so it is a little bit smaller
+      now.  The complete and pre-build version of the documentation both in HTML
+      and PDF format is available on the file `download area`_ on SourceForge.net.
+      Closes: :issue:`172`.
+    - Now PyTables also uses `Travis-CI`_ as continuous integration service.
+      All branches and all pull requests are automatically tested with different
+      Python_ versions.  Closes :issue:`212`.
+  * Other changes
+    - PyTables now requires Python 2.6 or newer.
+    - Minimum supported version of Numexpr_ is now 2.0.
+  * API changes
+    The entire PyTables API as been made more PEP8_ compliant (see :issue:`224`).
+
+    This means that many methods, attributes, module global variables and also
+    keyword parameters have been renamed to be compliant with PEP8_ style
+    guidelines (e.g. the ``tables.hdf5Version`` constant has been renamed into
+    ``tables.hdf5_version``).
+
+    We made the best effort to maintain compatibility to the old API for existing
+    applications.  In most cases, the old 2.x API is still available and usable
+    even if it is now deprecated (see the Deprecations_ section).
+
+    The only important backwards incompatible API changes are for names of
+    function/methods arguments.  All uses of keyword arguments should be
+    checked and fixed to use the new naming convention.
+
+    The new :program:`pt2to3` tool can be used to port PyTables based applications
+    to the new API.
+
+    Many deprecated features and support for obsolete modules has been dropped:
+    - The deprecated :data:`is_pro` module constant has been removed
+    - The nra module and support for the obsolete numarray module has been removed.
+      The *numarray* flavor is no more supported as well (closes :issue:`107`).
+    - Support for the obsolete Numeric module has been removed.
+      The *numeric* flavor is no longer available (closes :issue:`108`).
+    - The tables.netcdf3 module has been removed (closes :issue:`68`).
+    - The deprecated :exc:`exceptions.Incompat16Warning` exception has been
+      removed
+    - The :meth:`File.create_external_link` method no longer has a keyword
+      parameter named *warn16incompat*.  It was deprecated in PyTables 2.4.
+    - The :meth:`File.create_array`, :meth:`File.create_carray`,
+      :meth:`File.create_earray`, :meth:`File.create_vlarray`, and
+      :meth:`File.create_table` methods of the :class:`File` objects gained a
+      new (optional) keyword argument named ``obj``.  It can be used to initialize
+      the newly created dataset with an existing Python object, though normally
+      these are numpy_ arrays.
+      The *atom*/*descriptor* and *shape* parameters are now optional if the
+      *obj* argument is provided.
+    - The :mod:`nodes.filenode` has been completely rewritten to be fully
+      compliant with the interfaces defined in the :mod:`io` module.
+      The FileNode classes currently implemented are intended for binary I/O.
+      Main changes:
+      * the FileNode base class is no more available,
+      * the new version of :class:`nodes.filenode.ROFileNode` and
+        :class:`nodes.filenode.RAFileNode` objects no more expose the *offset*
+        attribute (the *seek* and *tell* methods can be used instead),
+      * the *lineSeparator* property is no more available end the ``\n``
+        character is always used as line separator.
+    - The `__version__` module constants has been removed from almost all the
+      modules (it was not used after the switch to Git).  Of course the package
+      level constant (:data:`tables.__version__`) still remains.
+      Closes :issue:`112`.
+    - The :func:`lrange` has been dropped in favor of xrange (:issue:`181`)
+    - The :data:`parameters.MAX_THREADS` configuration parameter has been dropped
+      in favor of :data:`parameters.MAX_BLOSC_THREADS` and
+      :data:`parameters.MAX_NUMEXPR_THREADS` (closes :issue:`147`).
+    - The :func:`conditions.compile_condition` function no more has a *copycols*
+      argument, it was no more necessary since Numexpr_ 1.3.1.
+      Closes :issue:`117`.
+    - The *expectedsizeinMB* parameter of the :meth:`File.create_vlarray` and of
+      the :meth:`VLArrsy.__init__` methods has been replaced by *expectedrows*.
+      See also (:issue:`35`).
+    - The :meth:`Table.whereAppend` method has been renamed into
+      :meth:`Table.append_where` (closes :issue:`248`).
+  * Other possibly incompatible changes
+    - All methods of the :class:`Table` class that take *start*, *stop* and
+      *step* parameters (including :meth:`Table.read`, :meth:`Table.where`,
+      :meth:`Table.iterrows`, etc) have been redesigned to have a consistent
+      behaviour.  The meaning of the *start*, *stop* and *step* and their default
+      values now always work exactly like in the standard :class:`slice` objects.
+      Closes :issue:`44` and :issue:`255`.
+    - Unicode attributes are not stored in the HDF5 file as pickled string.
+      They are now saved on the HDF5 file as UTF-8 encoded strings.
+    - System attributes are now stored in the HDF5 file using the character set
+      that reflects the native string behaviour: ASCII for Python 2 and UTF8 for
+      Python 3.  In any case, system attributes are represented as Python string.
+    - The :meth:`iterrows` method of :class:`*Array` and :class:`Table` as well
+      as the :meth:`Table.itersorted` now behave like functions in the standard
+      :mod:`itertools` module.
+      If the *start* parameter is provided and *stop* is None then the
+      array/table is iterated from *start* to the last line.
+      In PyTables < 3.0 only one element was returned.
+  * Deprecations
+    - As described in `API changes`_, all functions, methods and attribute names
+      that was not compliant with the PEP8_ guidelines have been changed.
+      Old names are still available but they are deprecated.
+    - The use of upper-case keyword arguments in the :func:`open_file` function
+      and the :class:`File` class initializer is now deprecated.  All parameters
+      defined in the :file:`tables/parameters.py` module can still be passed as
+      keyword argument to the :func:`open_file` function just using a lower-case
+      version of the parameter name.
+
+
+-------------------------------------------------------------------
+Tue Jul 31 01:11:15 UTC 2012 - toddrme2178@gmail.com
+
+- new version 2.4.0
+
+-------------------------------------------------------------------
+Thu Mar  8 12:31:53 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup
+- Only ship HTML docs, not the doc sources
+
+-------------------------------------------------------------------
+Sat Feb 25 21:35:21 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11 
+
+-------------------------------------------------------------------
+Fri Jan  6 17:28:34 UTC 2012 - toddrme2178@gmail.com
+
+- Clean up spec file
+- Fix .changes file
+- Update manual
+- Removed seperate manual from the sources since it is included in the tarball
+
+-------------------------------------------------------------------
+Sun Nov 20 17:56:24 UTC 2011 - werner.ho@gmx.de
+
+- new version 2.3.1
+
+-------------------------------------------------------------------
+Sun May 29 00:00:00 UTC 2011 - werner@linux-xl08.site
+
+- fixed hdf5 package change
+
+-------------------------------------------------------------------
+Sat Sep 19 00:00:00 UTC 2010 - werner.ho@gmx.de
+
+- new version 2.2 with numexpr support
+
+-------------------------------------------------------------------
+Sat Oct 10 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.1.2
+
+-------------------------------------------------------------------
+Sun Apr 29 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.1.1
+
+-------------------------------------------------------------------
+Thu Dec 21 00:00:00 UTC 2008 werner.ho@gmx.de
+
+- new version 2.1
+
+-------------------------------------------------------------------
+Thu Dec 21 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.1
+
+-------------------------------------------------------------------
+Thu Dec 19 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.1rc2
+
+-------------------------------------------------------------------
+Thu Dec 16 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- need numpy-devel now
+
+-------------------------------------------------------------------
+Sun Jul 27 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.4
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.3
+
+-------------------------------------------------------------------
+Sat Nov 26 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- new version 2.0.2
+
+-------------------------------------------------------------------
+Sat Sep 08 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- new version 2.0
+
+-------------------------------------------------------------------
+Mon May 29 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- new version 2.0rc2
+
+-------------------------------------------------------------------
+Thu May 24 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- initial spec file based on a draft provided by
+  Felix Richter <felix.richter2@uni-rostock.de>

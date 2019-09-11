@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Sat Sep 16 11:56:19 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.1.2:
+  * Fix several hangs and leaks when reading damaged files found with the
+    help of american-fuzzy-lop.
+  * Fix build with recent clang.
+  * Make --help output of all command-line tools more help2man-friendly.
+  * Require C++11 for build.
+  * Parse more features:
+    * text on path
+    * more text attributes
+    * stroke patterns
+    * arrows
+    * paragraph attributes
+    * custom line and fill styles
+    * text effects
+  * Write correct rotation center of a textbox.
+  * Fix an issue found by oss-fuzz.
+  * Fix several issues found by Coverity.
+  * Various code cleanups and other small improvements.
+
+-------------------------------------------------------------------
+Thu Jun 11 15:22:31 UTC 2015 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.1
+  * drastical improvement of all features
+    - fills
+    - strokes
+    - embedded images
+    - embedded text
+  * output of visible elements only in right place on the canvas
+  * coverage from Freehand 3.0 to Freehand 11
+- Add build dependency on icu and lcms2
+
+-------------------------------------------------------------------
+Wed Aug 13 12:21:21 UTC 2014 - fcrozat@suse.com
+
+- Fix source url.
+
+-------------------------------------------------------------------
+Mon May 26 09:45:24 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.0
+  * ABI change
+  * Remove dependency on libwpd-devel and libwpg-devel
+  * Add dependency on librevenge-devel
+
+-------------------------------------------------------------------
+Sat Jan 18 15:05:11 UTC 2014 - crrodriguez@opensuse.org
+
+- build with -fvisibility-inlines-hidden, modest reduction
+ in the exported symbol table as the library is already small.
+
+-------------------------------------------------------------------
+Fri Nov  1 10:11:04 UTC 2013 - tchvatal@suse.com
+
+- visio -> freehand typo.
+
+-------------------------------------------------------------------
+Fri Nov  1 09:03:45 UTC 2013 - tchvatal@suse.com
+
+- Acutally package all content and make it build.
+
+-------------------------------------------------------------------
+Fri Nov  1 08:57:36 UTC 2013 - tchvatal@suse.com
+
+- Initial commit of freehand library. To be used in libo-4.2.
+

@@ -1,0 +1,45 @@
+Index: ipmitool-1.8.13/contrib/bmc-snmp-proxy.service
+===================================================================
+--- ipmitool-1.8.13.orig/contrib/bmc-snmp-proxy.service
++++ ipmitool-1.8.13/contrib/bmc-snmp-proxy.service
+@@ -11,8 +11,8 @@ ConditionPathExists=/var/run/bmc-info
+ Type=oneshot
+ RemainAfterExit=yes
+ 
+-ExecStart=/usr/libexec/bmc-snmp-proxy start
+-ExecStop=/usr/libexec/bmc-snmp-proxy stop
++ExecStart=/usr/sbin/bmc-snmp-proxy start
++ExecStop=/usr/sbin/bmc-snmp-proxy stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+Index: ipmitool-1.8.13/contrib/exchange-bmc-os-info.service.redhat
+===================================================================
+--- ipmitool-1.8.13.orig/contrib/exchange-bmc-os-info.service.redhat
++++ ipmitool-1.8.13/contrib/exchange-bmc-os-info.service.redhat
+@@ -6,8 +6,8 @@ Requires=ipmi.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/usr/libexec/exchange-bmc-os-info start
+-ExecStop=/usr/libexec/exchange-bmc-os-info stop
++ExecStart=/usr/sbin/exchange-bmc-os-info start
++ExecStop=/usr/sbin/exchange-bmc-os-info stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+Index: ipmitool-1.8.13/contrib/bmc-snmp-proxy
+===================================================================
+--- ipmitool-1.8.13.orig/contrib/bmc-snmp-proxy
++++ ipmitool-1.8.13/contrib/bmc-snmp-proxy
+@@ -14,6 +14,10 @@
+ #
+ # Assumptions:  This script will work only when /etc/snmp/ is writable.
+ #
++# Provides:          bmc-snmp-proxy
++# Required-Start:    ipmi snmp
++# Default-Start:     3 4 5
++# Default-Stop:      0 1 2 6
+ #############################################################################
+ # GLOBALS
+ #############################################################################

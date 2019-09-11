@@ -1,0 +1,3629 @@
+--- a/Makefile
++++ b/Makefile
+@@ -26,7 +26,7 @@ MAKE = make
+ CP = cp
+ 
+ # How to compile C programs
+-CC = cc
++CC = gcc
+ 
+ # You may also want to change the CFLAGS variable, which will be passed on 
+ # to all subdirectories.    If you do that, the changes will only work right if you
+@@ -38,7 +38,7 @@ FOOBAR-sun4=-Bstatic
+ 
+ STATICFLAG=FOOBAR${HOST_ARCH}
+ 
+-CFLAGS = -g -I.  ${$(STATICFLAG)} 
++CFLAGS = $(RPM_OPT_FLAGS) -g -pipe -DLINUX -DSTDC_HEADERS -I. ${$(STATICFLAG)} 
+ # The following is better if you want to make sure you run with SYSV defined
+ # CFLAGS = -g -I.  ${$(STATICFLAG)}  -DSYSV
+ # Also, for SGI Irix, compile in K&R mode
+@@ -75,15 +75,15 @@ CONFIGDIR = .
+ INSTALL = install -c -s
+ 
+ # Root of installation tree
+-INSTROOT = /usr/local
++INSTROOT = /usr
+ #
+ # This is where binaries should be copied
+ LOCALBINDIR = ${INSTROOT}/bin
+ 
+ # This is where man pages should be copied, and their extensions
+-MAN1DIR = ${INSTROOT}/man/man1
++MAN1DIR = ${INSTROOT}/share/man/man1
+ MAN1EXT = 1
+-MAN4DIR = ${INSTROOT}/man/man4
++MAN4DIR = ${INSTROOT}/share/man/man4
+ MAN4EXT = 4
+ 
+ # Sets the font suffix your version of X uses - snf for X11R4, pcf for X11R5
+@@ -91,7 +91,7 @@ MAN4EXT = 4
+ FONTSUFFIX=pcf
+ 
+ # This is where the mailcap file should be put
+-MAILCAPDIR = ${INSTROOT}/etc
++MAILCAPDIR = /etc
+ 
+ # This helps with the "for" constructs below on some platforms:
+ SHELL=/bin/sh
+@@ -129,22 +129,24 @@ install-all: basics
+ 	do 					\
+ 	    target=$(LOCALBINDIR)/$$file; 	\
+ 	    echo "installing binary $$target";	\
++	    test $$file = mimencode &&		\
++	    ${LN} -f mmencode $$target 2>/dev/null || \
+ 	    ${INSTALL} $$file $$target 2>/dev/null; \
+ 	done)
+-#	@(cd man;				\
+-#	for file in *.1;			\
+-#	do 					\
+-#	    target=$(MAN1DIR)/`basename $$file .1`.$(MAN1EXT); \
+-#	    echo "installing man page $$target";\
+-#	    ${CP} $$file $$target; 		\
+-#	done)
+-#	@(cd man;				\
+-#	for file in *.4;			\
+-#	do 					\
+-#	    target=$(MAN4DIR)/`basename $$file .4`.$(MAN4EXT); \
+-#	    echo "installing man page $$target";\
+-#	    ${CP} $$file $$target; 		\
+-#	done)
++	@(cd man;				\
++	for file in *.1;			\
++	do 					\
++	    target=$(MAN1DIR)/`basename $$file .1`.$(MAN1EXT); \
++	    echo "installing man page $$target";\
++	    install -m 644 $$file $$target;	\
++	done)
++	@(cd man;				\
++	for file in *.4;			\
++	do 					\
++	    target=$(MAN4DIR)/`basename $$file .4`.$(MAN4EXT); \
++	    echo "installing man page $$target";\
++	    install -m 644 $$file $$target;	\
++	done)
+ #	@echo "Renaming old mailcap file to $(MAILCAPDIR)/mailcap.old"
+ #	-mv $(MAILCAPDIR)/mailcap $(MAILCAPDIR)/mailcap.old
+ #	@echo "installing file $(MAILCAPDIR)/mailcap"
+--- a/config.h
++++ b/config.h
+@@ -38,6 +38,9 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ 
+ #ifdef LINUX
+ #define SYSV /* Linux is SysV */
++#include <string.h>
++#include <unistd.h>
++#include <stdlib.h>
+ #endif
+ 
+ #ifdef SVR3
+@@ -100,12 +103,14 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ #endif
+ 
+ #ifdef SYSV
++#if 0
+ #define killpg(a, b) kill(-(a), (b))
+ #define bcopy(a, b, c) memcpy(b, a, c)
+ #define bzero(a, b) memset(a, 0, b)
+ #define bcmp memcmp
+ #define index strchr
+ #define rindex strrchr
++#endif
+ #define initstate srand
+ #define random rand
+ #define NO_RLIMITS 1
+@@ -173,7 +178,7 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ #else
+ #define PATH_SEPARATOR ':'
+ #ifndef STDPATH
+-#define STDPATH "/.mailcap:/usr/local/etc/mailcap:/usr/etc/mailcap:/etc/mailcap:/etc/mail/mailcap:/usr/public/lib/mailcap"
++#define STDPATH "/usr/local/etc/mailcap:/usr/etc/mailcap:/etc/mailcap"
+ #endif
+ #endif
+ #endif
+--- a/bin/audiosend
++++ b/bin/audiosend
+@@ -43,14 +43,14 @@ else
+ 	dev=/dev/audio
+ fi
+ 
+-if test -f /usr/lib/sendmail
++if test -x /usr/sbin/sendmail
+ then
+-    MAILCOMMAND=/usr/lib/sendmail
++    MAILCOMMAND=/usr/sbin/sendmail
+ else
+     MAILCOMMAND=/bin/mail
+ fi
+ 
+-if test ! -z "${1:-}"
++if test ! -z "${1:-}"; then
+     to=$1
+ else
+     echo -n "To: "
+@@ -70,8 +70,14 @@ do
+ 		echo -n "Press RETURN when you are ready to start recording: "
+ 		read foo
+ 
+-		fname=${METAMAIL_TMPDIR}/audio-out.$$
+-		fnameraw=${METAMAIL_TMPDIR}/audio-raw.$$
++		if [ -n "`type -p mktemp`" ] ; then
++			   fname=`mktemp ${METAMAIL_TMPDIR}/audio-out.$$.XXXXXX` || exit 1
++			fnameraw=`mktemp ${METAMAIL_TMPDIR}/audio-raw.$$.XXXXXX` || exit 1
++		else
++			   fname=${METAMAIL_TMPDIR}/audio-out.$$
++			fnameraw=${METAMAIL_TMPDIR}/audio-raw.$$
++			/bin/rm -f $fname $fnameraw
++		fi
+ 
+ 		echo "To: $to" > $fname
+ 		echo "Subject: $subject" >> $fname
+@@ -111,7 +117,7 @@ do
+ 	read which
+ 	case $which in
+ 		1) echo -n "Sending mail, please wait...  "
+-		  $MAILCOMMAND $to $cc < $fname
++		  $MAILCOMMAND "$to" "$cc" < $fname
+ 
+ 		  if test $? -eq 0
+ 		  then
+--- a/bin/mailserver
++++ b/bin/mailserver
+@@ -28,20 +28,28 @@ setenv PATH ${METAMAILDIR}:${PATH}
+ rehash
+ set FromName=""
+ set Subject=""
+-set TmpFile=/tmp/ms.$$
++#  Generate temporary file name:
++if ( -x /bin/mktemp || -x /usr/bin/mktemp ) then
++	set TmpFile="`mktemp /tmp/ms.$$.XXXXXXX`" || exit 1
++else
++	set TmpFile=/tmp/ms.$$
++	rm -rf $TmpFile
++endif
++onintr - end
++#
+ set FOORAW=$<
+ while ("$FOORAW" != "") 
+-set FOO=(` echo "$FOORAW" | tr "[" "x"`)
++set FOO=(`echo "$FOORAW" | tr "[" "x"`)
+ set BAR=($FOO)
+-set BARLC=(`echo $FOO | tr A-Z a-z`)
+-if ($BARLC[1] == "from:") then
++set BARLC=(`echo "$FOO" | tr A-Z a-z`)
++if ("$BARLC[1]" == "from:") then
+ 	if ("$FromName" == "") then
+-		set FromName = ($BAR[2-])
++		set FromName = ("$BAR[2-]")
+ 	endif
+-else if ($BARLC[1] == "reply-to:") then
+-	set FromName = ($BAR[2-])
+-else if ($BARLC[1] == "subject:") then
+-	set Subject = ($BAR[2-])
++else if ("$BARLC[1]" == "reply-to:") then
++	set FromName = ("$BAR[2-]")
++else if ("$BARLC[1]" == "subject:") then
++	set Subject = ("$BAR[2-]")
+ endif
+ set FOORAW=$<
+ end
+@@ -52,12 +60,14 @@ if ("$Subject" == "") then
+ endif
+ 
+ if ("$FromName" == "") then
++	set noglob
+ 	cat > $TmpFile <<!
+-From: $LOCALADDR@`hostname`
++From: $LOCALADDR@`hostname -f`
+ To: $MAINTAINER
+ Subject: $Subject
+ 
+-The metamail mailserver script, installed locally as $LOCALADDR, has received a request without any reply address.
++The metamail mailserver script, installed locally as $LOCALADDR,
++has received a request without any reply address.
+ 
+ It is possible that this is the result of a user running the "mailserver" 
+ program by hand.  It is intended to be run as an automated recipient of 
+@@ -68,7 +78,8 @@ reproduced below.  If no message appears
+ probably run in some circumstance other than mail delivery.
+ --------------------
+ !
+-	cat $TmpFile - | /usr/lib/sendmail $MAINTAINER
++	unset noglob
++	cat $TmpFile - | /usr/sbin/sendmail "$MAINTAINER"
+ 	# Takes the rest of the message from standard input
+ 	rm $TmpFile
+ 	exit 0
+@@ -76,8 +87,9 @@ endif
+ 
+ set danger=`echo $Subject | fgrep ..`
+ if ($danger != "") then
++	set noglob
+ 	cat > $TmpFile <<!
+-From: $LOCALADDR@`hostname`
++From: $LOCALADDR@`hostname -f`
+ To: $FromName
+ Subject: Re: $Subject
+ 
+@@ -86,15 +98,17 @@ that contain ".." in the path name.
+ 
+ The file you requested, if it exists, will not be sent to you.
+ !
+-	/usr/lib/sendmail -t < $TmpFile
++	unset noglob
++	/usr/sbin/sendmail -t < $TmpFile
+ 	rm $TmpFile
+ 	exit 0
+ endif
+ 
+ cd $ROOTDIR
+ if (! -e "$Subject") then
++	set noglob
+ 	cat > $TmpFile <<!
+-From: $LOCALADDR@`hostname`
++From: $LOCALADDR@`hostname -f`
+ To: $FromName
+ Subject: Re: $Subject
+ 
+@@ -106,22 +120,24 @@ That file does not exist, so your reques
+ Here is a list of the currently available files:
+ --------------------------------
+ !
++	unset noglob
+ 	ls -R >> $TmpFile
+-	/usr/lib/sendmail -t < $TmpFile
++	/usr/sbin/sendmail -t < $TmpFile
+ 	rm $TmpFile
+ 	exit 0
+ endif
+ 
+-if (-e ${Subject}.ct) then
+-	set ct=`cat ${Subject}.ct`
++if (-e "${Subject}.ct" ) then
++	set ct=`cat "${Subject}.ct"`
+ else 
+ 	set ct="application/octet-stream"
+ endif
+ 
+ metasend -b -t "$FromName" -f "$Subject" -m "$ct" -s "Re: $Subject"
+ if ($status != 0) then
++	set noglob
+ 	cat > $TmpFile <<!
+-From: $LOCALADDR@`hostname`
++From: $LOCALADDR@`hostname -f`
+ To: $FromName
+ Subject: Re: $Subject
+ 
+@@ -135,18 +151,24 @@ Command failed:
+   metasend -b -t "$FromName" -f "$Subject" -m "$ct" -s "Re: $Subject"
+ 
+ !
+-	/usr/lib/sendmail -t < $TmpFile
++	unset noglob
++	/usr/sbin/sendmail -t < $TmpFile
+ 	rm $TmpFile
+ 	exit 0
+ endif
+ 
+ if ("$LOGADDR" != "") then
+-	/usr/lib/sendmail -t <<!
+-From: ${LOCALADDR}@`hostname`
++	set noglob
++	/usr/sbin/sendmail -t <<!
++From: ${LOCALADDR}@`hostname -f`
+ To: $LOGADDR
+ Subject: Autosend delivery report
+ 
+ The file: $Subject 
+ was sent to: $FromName
+ !
++	unset noglob
++endif
++end:
++rm -f $TmpFile
+ exit 0
+--- a/bin/mailto-hebrew
++++ b/bin/mailto-hebrew
+@@ -29,13 +29,13 @@
+ # Brought into line with metamail 2.7 beta release Csh version
+ #    Dave Shield	February 1994
+ 
+-MYFONTDIR=/usr/lib/X11/fonts/misc
++MYFONTDIR=/usr/X11R6/lib/X11/fonts/misc
+ 
+ if test ! -z "${MM_CHARSET:-}"
+ then
+ 	if test "$MM_CHARSET" = iso-8859-8
+ 	then
+-		mailto $*
++		mailto "$@"
+ 		exit 0
+ 	fi
+ fi
+@@ -73,4 +73,4 @@ fi
+ echo Running xterm to compose mail in iso-8859-8, please wait...
+ 
+ MM_CHARSET=iso-8859-8; export MM_CHARSET
+-xterm -fn \*iso-8859-8 -e mailto $*
++xterm -fn \*iso-8859-8 -e mailto "$@"
+--- a/bin/metasend
++++ b/bin/metasend
+@@ -29,10 +29,10 @@
+ #    Dave Shield	February 1994
+ 
+ if [ -z "$METAMAIL_TMPDIR" ]
+-then METAMAIL_TMPDIR=/tmp
++then METAMAIL_TMPDIR=${TMPDIR:-"/tmp"}
+ fi
+ 
+-hname=`hostname`
++hname=`hostname -f`
+ idctr=0
+ MustDelete=0
+ batchmode=0
+@@ -44,11 +44,20 @@ else
+ 	splitsize=100000
+ fi
+ 
++if date --rfc-822 > /dev/null 2>&1
++then
++	d="--rfc-822"
++else
++	LC_TIME=POSIX
++	export LC_TIME
++	d="+%a, %e %b %Y %T %z"
++fi
++
+ ouputfile=""
+ multipartsubtype="mixed"
+ cdescrip="An object packed by metasend"
+ isentity=0
+-newid=`date | tr " :" "__"`
++newid=`date ${d+"$d"}| tr " :" "__"`
+ cid="<${newid}_$idctr@${hname}>"
+ idctr=`expr $idctr + 1`
+ 
+@@ -252,7 +261,7 @@ do
+ 		    datafile=""
+ 		    encode=""
+ 		    encodingprog=""
+-		    newid=`date | tr " :" "__"`
++		    newid=`date ${d+"$d"}| tr " :" "__"`
+ 		    cid="<${newid}_$idctr@${hname}>"
+ 		    idctr=`expr $idctr + 1`
+ 		    cdescrip="An object packed by metasend"
+@@ -362,7 +371,7 @@ then
+ 		    datafile=""
+ 		    encode=""
+ 		    encodingprog=""
+-		    newid=`date | tr " :" "__"`
++		    newid=`date ${d+"$d"}| tr " :" "__"`
+ 		    cid="<${newid}_$idctr@${hname}>"
+ 		    idctr=`expr $idctr + 1`
+ 		    multipart=`expr $multipart + 1`
+@@ -453,8 +462,17 @@ eval cid${multipart}=\"$cid\"
+ eval isentity${multipart}=$isentity
+ eval encodingprog${multipart}=\"\$encodingprog\"
+ 
+-fname=$METAMAIL_TMPDIR/metasend.$$
+-echo "MIME-Version: 1.0" > $fname
++if [ -n "`type -p mktemp`" ] ; then
++	fname=`mktemp $METAMAIL_TMPDIR/metasend.XXXXXX` || exit 1
++	echo "MIME-Version: 1.0" > $fname
++else
++	fname=$METAMAIL_TMPDIR/metasend.$$
++	rm -f $fname
++	set -Ce
++	echo "MIME-Version: 1.0" > $fname
++	set +Ce
++fi
++trap "rm -f $fname" 0 1 2 3 7 13 15
+ 
+ if test ! -z "${to:-}"
+ then echo "To: $to" >> $fname
+@@ -471,8 +489,8 @@ fi
+ 
+ if test $multipart -gt 1
+ then
+-	boundary=${hname}.$$.`date | tr "  " .`
+-	newid=`date | tr " :" "__"`
++	boundary=${hname}.$$.`date ${d+"$d"}| tr "  " .`
++	newid=`date ${d+"$d"}| tr " :" "__"`
+ 	if test ! -z "${multicid:-}"
+ 	then
+ 		echo "Content-ID: $multicid" >> $fname
+@@ -518,7 +536,7 @@ else
+ 	then
+ 		echo "Content-ID: $cid" >> $fname
+ 		echo "Content-type: $ctype" >> $fname
+-		echo "Content-Description: $cdesrip" >> $fname
++		echo "Content-Description: $cdescrip" >> $fname
+ 		echo "Content-Transfer-Encoding: $encode" >> $fname
+ 	fi
+ 	echo "" >> $fname
+--- a/bin/mimeit
++++ b/bin/mimeit
+@@ -19,4 +19,4 @@ shift
+   echo Subject: "$sub" ; \
+   echo Content-Transfer-Encoding: base64 ;
+   echo "" ; \
+-  mimencode -b ) | splitmail -d $*
++  mimencode -b ) | splitmail -d "$@"
+--- a/bin/patch-metamail
++++ b/bin/patch-metamail
+@@ -67,9 +67,15 @@ read ans
+ 
+ case "$ans" in
+ 	[Yy]*) cd $TREEROOT
+-	       ident=`whoami`@`hostname`
++	       ident=`whoami`@`hostname -f`
+ 	       echo Using anonymous ftp with password $ident
+-	       ftp -n <<!
++	       if [ -n "`type -p mktemp`" ] ; then
++		   TmpFtp=`mktemp ${METAMAIL_TMPDIR-/tmp}/mm.ftp.$$.XXXXXX` || exit 1
++	       else
++		   TmpFtp=${METAMAIL_TMPDIR-/tmp}/mm.ftp.$$
++	       fi
++	       set -f
++	       cat > $TmpFtp <<!
+ open $HOSTNAME
+ user anonymous $ident
+ cd $DIRNAME
+@@ -77,6 +83,9 @@ binary
+ get ${PREFIX}${PATCHNUMBER}
+ quit
+ !
++	       set +f
++	       ftp -n < $TmpFtp
++	       rm -f $TmpFtp
+ 	       patch -p < ${PREFIX}${PATCHNUMBER} ;;
+ 	*) echo Patch not installed
+ esac
+--- a/bin/showaudio
++++ b/bin/showaudio
+@@ -34,7 +34,7 @@ then
+         METAMAIL_TMPDIR=/tmp
+ fi
+ 
+-thishost=`hostname`
++thishost=`hostname -f`
+ 
+ AUDIOBINDIR=/u/andrew/phone-sau/bin
+ AUDIOPHONEHOST=greenbush
+@@ -96,7 +96,7 @@ then
+ 			if test $MM_NOTTTY -eq 1
+ 			then
+ 				MM_NOTTTY=0; export MM_NOTTTY
+-				xterm -e showaudio $*
++				xterm -e showaudio "$@"
+ 				exit 0
+ 			fi
+ 		fi
+@@ -135,6 +135,12 @@ fi
+ 
+ if test $playphone -eq 0
+ then
++	if [ -n "`type -p mktemp`" ] ; then
++		TmpAudio=`mktemp ${METAMAIL_TMPDIR}/audio.$$.XXXXXX` || exit 1
++	else
++		TmpAudio=${METAMAIL_TMPDIR}/audio.$$
++		rm -f $TmpAudio
++	fi
+ 	audiohost=$thishost
+ 	if test ! -z "${DISPLAY:-}"
+ 	then
+@@ -162,7 +168,7 @@ then
+ 			then
+ 				cat | mms -host $audiohost "show audio/basic"
+ 			else
+-				cat $* | mms -host $audiohost "show audio/basic"
++				cat "$@" | mms -host $audiohost "show audio/basic"
+ 			fi
+ 			exit 0
+ 		fi
+@@ -171,7 +177,7 @@ then
+ 		then
+ 			cat | $RSH $audiohost $thisprog -s
+ 		else
+-			cat $* | $RSH $audiohost $thisprog -s
++			cat "$@" | $RSH $audiohost $thisprog -s
+ 		fi
+ 		exit 0
+ 	fi
+@@ -181,22 +187,22 @@ then
+ 	then
+ 		if test $# -ne 0
+ 		then
+-			exec /usr/sbin/sfplay -i mu-law chan 1 rate 8000 end $*
++			exec /usr/sbin/sfplay -i mu-law chan 1 rate 8000 end "$@"
+ 		else
+-			cat > ${METAMAIL}/audio.$$
+-			/usr/sbin/sfplay -i mu-law chan 1 rate 8000 end ${METAMAIL}/audio.$$
+-			rm ${METAMAIL}/audio.$$
++			cat > $TmpAudio
++			/usr/sbin/sfplay -i mu-law chan 1 rate 8000 end $TmpAudio
++			rm $TmpAudio
+ 			exit 0
+ 		fi
+ 	elif test -f /usr/bin/audioplay
+ 	then
+ 	# Solaris 2.0
+-		/usr/bin/audioconvert -i raw,voice -f sun $* | /usr/bin/audioplay
++		/usr/bin/audioconvert -i raw,voice -f sun "$@" | /usr/bin/audioplay
+ 		exit $?
+ 	elif test -f /bin/audioplay
+ 	then
+ 	# Solaris 2.0
+-		/bin/audioconvert -i raw,voice -f sun $* | /bin/audioplay
++		/bin/audioconvert -i raw,voice -f sun "$@" | /bin/audioplay
+ 		exit $?
+ 	elif test -d /usr/sony
+ 	then
+@@ -212,7 +218,7 @@ then
+ 		then
+ 			if test ! -z "${SOX:-}"
+ 			then
+-			    for ii in $*
++			    for ii in "$@"
+ 			    do
+ #
+ #  The "approved magic" to translate arbitary sounds
+@@ -225,16 +231,16 @@ then
+ 				$SOX -t auto $ii -c 1 -t au -c 1 -r 8000 $dev
+ 			    done
+ 			else
+-				cat $* > $dev
++				cat "$@" > $dev
+ 			fi
+ 		else
+ 			if test ! -z "${SOX:-}"
+ 			then
+-				cat > ${METAMAIL}/audio.$$
++				cat > $TmpAudio
+ #
+ #  See also above
+ #
+-				$SOX -t auto ${METAMAIL}/audio.$$ -c 1 -t au -c 1 -r 8000 $dev
++				$SOX -t auto $TmpAudio -c 1 -t au -c 1 -r 8000 $dev
+ 			else
+ 				cat > $dev
+ 			fi
+@@ -253,7 +259,7 @@ then
+ 			if test $MM_NOTTTY -eq 1
+ 			then
+ 				MM_NOTTTY=0; export MM_NOTTTY
+-				xterm -e $thisprog $*
++				xterm -e $thisprog "$@"
+ 				exit 0
+ 			fi
+ 		fi
+@@ -271,9 +277,9 @@ then
+ 		mail -s "showaudio: `whoami` called $AUDIOPHONE" $AUDIOLOGMAIL < /dev/null
+ 		if test $STDINPUT -eq 1
+ 		then
+-			cat $AUDIOBINDIR/../GREET.au $* - | $AUDIOBINDIR/play -\# $AUDIOPHONE -
++			cat $AUDIOBINDIR/../GREET.au "$@" - | $AUDIOBINDIR/play -\# $AUDIOPHONE -
+ 		else
+-			cat $AUDIOBINDIR/../GREET.au $* | $AUDIOBINDIR/play -\# $AUDIOPHONE -
++			cat $AUDIOBINDIR/../GREET.au "$@" | $AUDIOBINDIR/play -\# $AUDIOPHONE -
+ 		fi
+ 		echo All done
+ 		exit 0
+@@ -281,9 +287,9 @@ then
+ 		echo Trying to rsh to $AUDIOPHONEHOST to send audio via telephone
+ 		if test $STDINPUT -eq 1
+ 		then
+-			cat $* - | $RSH $AUDIOPHONEHOST $thisprog -p $AUDIOPHONE -
++			cat "$@" - | $RSH $AUDIOPHONEHOST $thisprog -p $AUDIOPHONE -
+ 		else
+-			cat $* | $RSH $AUDIOPHONEHOST $thisprog -p $AUDIOPHONE -
++			cat "$@" | $RSH $AUDIOPHONEHOST $thisprog -p $AUDIOPHONE -
+ 		fi
+ 		exit 0
+ 	fi
+@@ -302,7 +308,12 @@ then
+ fi
+ if test $MM_NOTTY -eq 1
+ then
+-	fname=/tmp/mm.aud.$$
++	if [ -n "`type -p mktemp`" ] ; then
++		fname=`mktemp ${METAMAIL_TMPDIR}/mm.aud.XXXXXX` || exit 1
++	else
++		fname=${METAMAIL_TMPDIR}/mm.aud.$$
++		rm -f $fname
++	fi
+ else
+ 	echo -n "Do you want to write the audio out to a file [y] ? "
+ 	read ANS
+--- a/bin/showexternal
++++ b/bin/showexternal
+@@ -28,9 +28,9 @@
+ # Brought into line with metamail 2.7 beta release Csh version
+ #    Dave Shield	February 1994
+ 
+-if test -f /usr/lib/sendmail
++if test -f /usr/sbin/sendmail
+ then
+-    MAILCOMMAND=/usr/lib/sendmail
++    MAILCOMMAND=/usr/sbin/sendmail
+ else
+     MAILCOMMAND=/bin/mail
+ fi
+@@ -46,22 +46,35 @@ then
+ 	METAMAIL_TMPDIR=/tmp
+ fi
+ 
+-bodyfile=$1
++if [ -n "$METAMAIL_PAGER" ]
++then
++	PAGER="$METAMAIL_PAGER"
++fi
++
++# Check argument integrity. Don't trust mail headers
++case "$1$2$3$4$5$6$7" in
++  *[\ \	]*)
++	echo "Illegal white space in arguments -- possibly a mail bomb?\!"
++	echo "Command was:"
++	echo \'$0\' \'$1\' \'$2\' \'$3\' \'$4\' \'$5\' \'$6\' \'$7\'
++	exit 2
++esac
++bodyfile="$1"
+ atype=`echo $2 | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz`
+-name=$3
++name="$3"
+ 
+-site=$4
++site="$4"
+ 
+-dir=$5
++dir="$5"
+ 
+-mode=$6
++mode="$6"
+ 
+-server=$7
++server="$7"
+ 
+ if test -z "$server" -a $atype = "mail-server"
+ then
+ 	server=${name}@${site}
+-	echo WARNING -- old style mailserver syntax, using server $server
++	echo "WARNING -- old style mailserver syntax, using server $server"
+ fi
+ 
+ ctype=`grep -i content-type: $bodyfile | sed -e 's/............: //'`
+@@ -72,8 +85,8 @@ cenc=`grep -i content-transfer-encoding:
+ username=""
+ pass=""
+ TMPDIR=$METAMAIL_TMPDIR/XXXternal.$$
+-trap 'cd $METAMAIL_TMPDIR ; rmdir "$TMPDIR" >/dev/null 2>&1' 1 2 3 15
+-mkdir $TMPDIR
++trap "cd $METAMAIL_TMPDIR/ ; rm -rf $TMPDIR" 1 2 3 7 13 15
++mkdir $TMPDIR || exit 1
+ PUSHED_DIR=`pwd`
+ cd $TMPDIR
+ NEWNAME="mm.ext.$$"
+@@ -91,7 +104,14 @@ case $atype in
+ 		echo automatically using the FTP protocol to a site on the network. ;;
+ 
+ 	mail-server)
+-		cat > $METAMAIL_TMPDIR/ext.junk.$$ <<!
++		if [ -n "`type -p mktemp`" ] ; then
++			TmpExtJunk=`mktemp ${METAMAIL_TMPDIR}/ext.junk.$$.XXXXXX` || exit 1
++		else
++			TmpExtJunk=${METAMAIL_TMPDIR}/ext.junk.$$
++			rm -f $TmpExtJunk
++		fi
++		set -f
++		cat > $TmpExtJunk <<!
+ This mail message contains a POINTER (reference) to data that is not
+ included in the message itself.  Rather, the data can be retrieved by
+ sending a special mail message to a mail server on the network.
+@@ -107,9 +127,14 @@ Subject: Automated Mail Server Request
+ To: $server
+ 
+ !
+-		sed -e 1,/^\$/d < $bodyfile >> $METAMAIL_TMPDIR/ext.junk.$$
+-		more $METAMAIL_TMPDIR/ext.junk.$$
+-		rm $METAMAIL_TMPDIR/ext.junk.$$ ;;
++		set +f
++		sed -e 1,/^\$/d < $bodyfile >> $TmpExtJunk
++		if [ -n "$PAGER" ] ; then
++			$PAGER $TmpExtJunk
++		else
++			more   $TmpExtJunk
++		fi
++		rm $TmpExtJunk ;;
+ 
+ 	*)
+ 		NEEDSCONFIRMATION=0 ;;
+@@ -132,7 +157,7 @@ case "$atype" in
+ 		case "$atype" in
+ 		anon-ftp )
+ 			username=anonymous
+-			pass=`whoami`@`hostname`
++			pass=`whoami`@`hostname -f`
+ 			;;
+ 		esac
+ 
+@@ -168,7 +193,14 @@ case "$atype" in
+ 		fi
+ 		echo OBTAINING MESSAGE BODY USING FTP
+ 		echo SITE: $site USER: $username
+-		${FTP:-ftp} -n <<!
++		if [ -n "`type -p mktemp`" ] ; then
++			TmpFtp=`mktemp ${METAMAIL_TMPDIR}/mm.ftp.$$.XXXXXX` || exit 1
++		else
++			TmpFtp=${METAMAIL_TMPDIR}/mm.ftp.$$
++			rm -f $TmpFtp
++		fi
++		set -f
++		cat > $TmpFtp <<!
+ open $site
+ user $username $pass
+ $DIRCMD
+@@ -176,6 +208,9 @@ $MODECMD
+ get $name $NEWNAME
+ quit
+ !
++		set +f
++		${FTP:-ftp} -n < $TmpFtp
++		rm -f $TmpFtp
+ 		if test ! -r "$NEWNAME"
+ 		then
+ 			echo FTP failed.
+@@ -205,7 +240,7 @@ quit
+ 			exit 1
+ 		fi
+ 		echo Subject: Automated Mail Server Request > $NEWNAME
+-		echo To: $server >> $NEWNAME
++		echo To: "$server" >> $NEWNAME
+ 		echo "" >> $NEWNAME
+ 		sed -e 1,/^\$/d < $bodyfile >> $NEWNAME
+ 		$MAILCOMMAND -t < $NEWNAME
+--- a/bin/shownonascii
++++ b/bin/shownonascii
+@@ -28,7 +28,12 @@
+ # Brought into line with metamail 2.7 beta release Csh version
+ #    Dave Shield	February 1994
+ 
+-MYFONTDIR=/usr/lib/X11/fonts/misc
++MYFONTDIR=/usr/X11R6/lib/X11/fonts/misc
++
++if [ -n "$METAMAIL_PAGER" ]
++then
++	PAGER="$METAMAIL_PAGER"
++fi
+ 
+ CHARSET=$1
+ shift
+@@ -36,18 +41,23 @@ shift
+ if test "$1" = "-e"
+ then
+ 	shift
+-	CMD="$*"
+-	RIGHTTERMCMD="$*"
++	CMD='"$@"'
++	RIGHTTERMCMD='"$@"'
+ else
+-	CMD="more $* /dev/null"
+-	RIGHTTERMCMD="more $*"
++	if [ -n "$PAGER" ] ; then
++		more="$PAGER"
++	else
++		more=more
++	fi
++	CMD='$more "$@" /dev/null'
++	RIGHTTERMCMD='$more "$@"'
+ fi
+ 
+ if test ! -z "${MM_CHARSET:-}"
+ then
+ 	if test "$MM_CHARSET" = "$CHARSET"
+ 	then
+-		$RIGHTTERMCMD
++		eval $RIGHTTERMCMD
+ 		exit 0
+ 	fi
+ fi
+@@ -55,7 +65,7 @@ for f in "${MM_AUXCHARSETS:-}"
+ do
+ 	if test "$f" = "$CHARSET"
+ 	then
+-		$RIGHTTERMCMD
++		eval $RIGHTTERMCMD
+ 		exit 0
+ 	fi
+ done
+@@ -66,7 +76,7 @@ then
+ 	echo has not yet been installed on this machine.  What follows
+ 	echo "may be partially unreadable, but the English (ASCII) parts"
+ 	echo "should still be readable."
+-	cat $*
++	cat "$@"
+ 	exit 0
+ fi
+ 
+@@ -76,7 +86,7 @@ then
+ 	echo properly if you are running X11.  What follows
+ 	echo "may be partially unreadable, but the English (ASCII) parts"
+ 	echo "should still be readable."
+-	cat $*
++	cat "$@"
+ 	exit 0
+ fi
+ 
+@@ -103,4 +113,4 @@ echo Running xterm to display text in $C
+ # Bogus -- need to unsetenv MM_NOTTTY, but can't in Bourne shell.  --bobg.
+ MM_NOTTTY=''
+ XCHARSET=\*`echo $CHARSET | sed -e s/iso-/iso/`
+-xterm -fn $XCHARSET -e $CMD
++eval xterm -fn \$XCHARSET -e $CMD
+--- a/bin/showpartial
++++ b/bin/showpartial
+@@ -38,18 +38,18 @@ then
+ 	exit 1
+ fi
+ 
+-file=$1
++file="$1"
+ 
+ # This next line is because message-id can contain weird chars
+-id=`echo $2 | tr -d \!\$\&\*\(\)\|\'\"\;\/\<\>\\ `
++id=`echo "$2" | tr -d \!\$\&\*\(\)\|\'\"\;\/\<\>\\ `
+ 
+-partnum=$3
++partnum="$3"
+ 
+ if test -z "$4"
+ then
+ 	totalnum=-1
+ else
+-	totalnum=$4
++	totalnum="$4"
+ fi
+ 
+ if test ! -d $TREEROOT
+--- a/bin/showpicture
++++ b/bin/showpicture
+@@ -58,7 +58,12 @@ then
+ 	echo X11, you will be able to see the picture properly.
+ 	if test $MM_NOTTY -eq 1
+ 	then
+-		fname=$METAMAIL_TMPDIR/sp.$$
++		if [ -n "`type -p mktemp`" ] ; then
++			fname=`mktemp $METAMAIL_TMPDIR/sp.$$.XXXXXX` || exit 1
++		else
++			fname=$METAMAIL_TMPDIR/sp.$$
++			rm -f $fname
++		fi
+ 		echo "The picture is being automatically stored in the file $fname"
+ 		echo "If you do not want this file, please delete it."
+ 	else
+@@ -90,7 +95,12 @@ fi
+ 
+ if test -z "$1"
+ then
+-	SQUIRREL=${METAMAIL_TMPDIR}/sp.$$
++	if [ -n "`type -p mktemp`" ] ; then
++		SQUIRREL=`mktemp ${METAMAIL_TMPDIR}/sp.$$.XXXXXX` || exit 1
++	else
++		SQUIRREL=${METAMAIL_TMPDIR}/sp.$$
++		rm -f $SQUIRREL
++	fi
+ 	cat > $SQUIRREL
+ else
+ 	SQUIRREL="$*"
+--- a/bin/sun-audio-file
++++ b/bin/sun-audio-file
+@@ -18,7 +18,13 @@ if [ -z "$METAMAIL_TMPDIR" ]
+ then METAMAIL_TMPDIR=/tmp
+ fi
+ 
++if [ -n "`type -p mktemp`" ] ; then
++	fn=`mktemp ${METAMAIL_TMPDIR}/audio-file.$$.XXXXXX` || exit 1
++else
++	fn=${METAMAIL_TMPDIR}/audio-file.$$
++	rm -f $fn
++fi
+ cd $METAMAIL_TMPDIR
+-uudecode < $1
+-audiotool audio-file
+-rm -f audio-file $1
++uudecode -o $fn < "$1"
++audiotool $fn
++rm -f $fn $1
+--- a/bin/sun-message
++++ b/bin/sun-message
+@@ -5,12 +5,24 @@
+ #  then gives the user a short menu of choices:
+ #    display, save or quit.
+ 
+-mkdir /tmp/decode.$$
++mkdir /tmp/decode.$$ || exit 1
+ cd /tmp/decode.$$
+ 
+-if test $2 = "uuencode"
++if [ -n "`type -p mktemp`" ] ; then
++	fn=`mktemp uu.XXXXXX` || exit 1
++else
++	fn=uu.$$
++	rm -f $fn
++fi
++
++if [ -n "$METAMAIL_PAGER" ]
++then
++	PAGER="$METAMAIL_PAGER"
++fi
++
++if test "$2" = "uuencode"
+ then 
+-	uudecode $1
++	uudecode -o $fn < "$1"
+ 
+ 	echo "The following file was uudecoded:"
+ 	echo
+@@ -37,7 +49,12 @@ then
+ 		fi
+ 
+ 		case $ans in
+-			1)	more $fn ;;
++			1)	if [ -n "$PAGER" ] ; then
++					$PAGER $fn
++				else
++					more   $fn
++				fi
++				;;
+ 			2)	echo -n "Save as: $HOME/"
+ 				read nfn
+ 				if test ! -z "${nfn:-}"
+@@ -57,5 +74,9 @@ then
+ 		defans=3
+ 	done
+ else
+-	more $1
++	if [ -n "$PAGER" ] ; then
++		$PAGER "$1"
++	else
++		more   "$1"
++	fi
+ fi
+--- a/bin/sun-message.csh
++++ b/bin/sun-message.csh
+@@ -5,11 +5,22 @@
+ # This is sun-message.  It looks at $2 to figure out how to decode $1, then gives the
+ # user a short menu of choices, display, save, or quit.
+ #
+-mkdir /tmp/decode.$$
++mkdir /tmp/decode.$$ || exit 1
+ cd /tmp/decode.$$
+ 
+-if ($2 == "uuencode") then
+-    uudecode $1
++if ( -x /bin/mktemp || -x /usr/bin/mktemp ) then
++	set fn="`mktemp uu.XXXXXX`" || exit 1
++else
++	set fn="uu.$$"
++	rm -f $fn
++endif
++
++if ( ${?METAMAIL_PAGER} ) then
++	set PAGER=$METAMAIL_PAGER
++endif
++
++if ("$2" == "uuencode") then
++    uudecode -o $fn < "$1"
+ 
+     echo "The following file was uudecoded:"
+     echo ""
+@@ -17,7 +28,6 @@ if ($2 == "uuencode") then
+     set defans = "1"
+     while (1)
+ 	ls -l
+-	set fn = *
+ 
+ 	echo ""
+ 	echo "Please choose one:"
+@@ -29,20 +39,24 @@ if ($2 == "uuencode") then
+ 	echo -n "Which do you prefer (1 - 3)? [$defans] "
+ 
+ 	set ans = $< 
+-	if (x$ans == x) then
++	if ("x$ans" == "x") then
+ 	    set ans = $defans
+ 	endif
+-	if ($ans == 3)  then
++	if ("$ans" == "3")  then
+ 	    rm $1
+ 	    cd /tmp; /bin/rm -rf /tmp/decode.$$
+ 	    exit 0
+-	else if ($ans == 1) then
+-	    more $fn
+-	else if ($ans == 2) then
++	else if ("$ans" == "1") then
++	    if ( ${?PAGER} ) then
++		${PAGER} $fn
++	    else
++		more     $fn
++	    endif
++	else if ("$ans" == "2") then
+ 	    set nfn = ""
+ 	    echo -n "Save as: $HOME/"
+ 	    set nfn = $<
+-	    if (x$nfn != x) then
++	    if ("x$nfn" != "x") then
+ 		/bin/cp $fn ${HOME}/$nfn
+ 	    else
+ 		echo "Not Saved."
+@@ -53,7 +67,11 @@ if ($2 == "uuencode") then
+ 	set defans = "3"
+     end
+ else
+-    more $1
++    if ( ${?PAGER} ) then
++	${PAGER} $fn
++    else
++    	more     $1
++    endif
+ endif
+ 
+ 
+--- a/bin/sun-to-mime
++++ b/bin/sun-to-mime
+@@ -18,10 +18,15 @@ if [ -z "$METAMAIL_TMPDIR" ]
+ then METAMAIL_TMPDIR=/tmp
+ fi
+ 
+-TMPFILE=${METAMAIL_TMPDIR}/suntomime.$$
++if [ -n "`type -p mktemp`" ] ; then
++	TMPFILE=`mktemp ${METAMAIL_TMPDIR}/suntomime.$$.XXXXXX` || exit 1
++else
++	TMPFILE=${METAMAIL_TMPDIR}/suntomime.$$
++	rm -f $TMPFILE
++fi
+ echo "Content-type: multipart/mixed; boundary=--------" > $TMPFILE
+ echo "" >> $TMPFILE
+-sed -e 's/X-Sun-Data-Type:/Content-type:/' >> $TMPFILE < $1
++sed -e 's/X-Sun-Data-Type:/Content-type:/' >> $TMPFILE < "$1"
+ echo "------------" >> $TMPFILE
+ #metamail -d -z $TMPFILE
+ metamail -z $TMPFILE
+--- a/bin/sun2mime
++++ b/bin/sun2mime
+@@ -6,12 +6,19 @@
+ # This program is for use with sun-message which takes an arg to figure out how
+ # (or if) the message is encoded.
+ #
+-if [ x$METAMAIL_TMPDIR = x ]; then
++if [ "x$METAMAIL_TMPDIR" = "x" ]; then
+     METAMAIL_TMPDIR=/tmp
+ fi
+-TMPFILE=${METAMAIL_TMPDIR}/suntomime.$$
+ 
+-/usr/bin/nawk '
++if [ -n "`type -p mktemp`" ] ; then
++	TMPFILE=`mktemp ${METAMAIL_TMPDIR}/suntomime.$$.XXXXXX` || exit 1
++else
++	TMPFILE=${METAMAIL_TMPDIR}/suntomime.$$
++	rm -f $TMPFILE
++fi
++
++
++/usr/bin/gawk '
+   BEGIN { printf("Content-type: multipart/mixed; boundary=--------\n\n")
+           RS=""; FS="\n"; mode="HEADER" }
+   mode == "HEADER" {
+@@ -36,7 +43,7 @@ TMPFILE=${METAMAIL_TMPDIR}/suntomime.$$
+       print
+   }
+   END { printf("----------\n") }
+-' $1 > $TMPFILE
++' "$1" > $TMPFILE
+ 
+ metamail -z $TMPFILE
+ rm -f $TMPFILE
+--- a/bin/uudepipe
++++ b/bin/uudepipe
+@@ -10,6 +10,11 @@
+ # MAKES NO REPRESENTATIONS ABOUT THE ACCURACY OR SUITABILITY
+ # OF THIS MATERIAL FOR ANY PURPOSE.  IT IS PROVIDED "AS IS",
+ # WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+-file=${TMPDIR=/tmp}/UUP$$
++if [ -n "`type -p mktemp`" ] ; then
++	file=`mktemp ${TMPDIR=/tmp}/UUP$$.XXXXXX` || exit 1
++else
++	file=${TMPDIR=/tmp}/UUP$$
++	rm -f $file
++fi
+ cat ${1-"-"} | sed "s:begin [0-9][0-9]* .*:begin 600 $file:" | uudecode
+ cat $file && rm -f $file
+--- a/fonts/Makefile
++++ b/fonts/Makefile
+@@ -30,11 +30,11 @@ heb8x13B.${FONTSUFFIX}: heb8x13B.bdf
+ 	-${DIRBUILDER}
+ 
+ shownonascii: Xshownonascii
+-	sed -e s@/u/nsb/lib/fonts@`pwd`@ < Xshownonascii > shownonascii
++	sed -e s@/u/nsb/lib/fonts@/usr/X11R6/lib/X11/fonts/mis@ < Xshownonascii > shownonascii
+ 	chmod +x shownonascii
+ 
+ mailto-hebrew: Xmailto-hebrew
+-	sed -e s@/u/nsb/lib/fonts@`pwd`@ < Xmailto-hebrew > mailto-hebrew
++	sed -e s@/u/nsb/lib/fonts@/usr/X11R6/lib/X11/fonts/mis@ < Xmailto-hebrew > mailto-hebrew
+ 	chmod +x mailto-hebrew
+ 
+ clean:
+--- a/fonts/Xmailto-hebrew
++++ b/fonts/Xmailto-hebrew
+@@ -1,7 +1,7 @@
+ #!/bin/csh -fb
+ # (The "-fb" might need to be changed to "-f" on some systems)
+ #
+-set MYFONTDIR=/usr/lib/X11/fonts/misc
++set MYFONTDIR=/usr/X11R6/lib/X11/fonts/misc
+ 
+ if ($?MM_CHARSET) then
+     if ($MM_CHARSET == iso-8859-8) then
+--- a/fonts/Xshownonascii
++++ b/fonts/Xshownonascii
+@@ -1,7 +1,11 @@
+ #!/bin/csh -fb
+ # (The "-fb" might need to be changed to "-f" on some systems)
+ #
+-set MYFONTDIR=/usr/lib/X11/fonts/misc
++set MYFONTDIR=/usr/X11R6/lib/X11/fonts/misc
++
++if ( ${?METAMAIL_PAGER} ) then
++	set PAGER=$METAMAIL_PAGER
++endif
+ 
+ set CHARSET="$1"
+ shift
+@@ -10,8 +14,13 @@ if ("$1" == "-e") then
+     set CMD="$*"
+     set RIGHTTERMCMD="$*"
+ else
+-    set CMD="more $* /dev/null"
+-    set RIGHTTERMCMD="more $*"
++    if ( ${?PAGER} ) then
++	set more="${PAGER}"
++    else
++	set more="more"
++    endif
++    set CMD="$more $* /dev/null"
++    set RIGHTTERMCMD="$more $*"
+ endif
+ if ($?MM_CHARSET) then
+     if ($MM_CHARSET == "$CHARSET") then
+@@ -58,7 +67,5 @@ unsetenv MM_NOTTTY
+ #      think it smart inhibit 8 bit chars in xterms.
+ # xterm -fn $CHARSET -tm litout -e $CMD
+ set XCHARSET=\*`echo $CHARSET | sed -e s/iso-/iso/`
+-xterm -fn "$XCHARSET" -e $CMD
+-
+-
++exec xterm -fn "$XCHARSET" -e $CMD
+ 
+--- a/man/mailto.1
++++ b/man/mailto.1
+@@ -1,6 +1,6 @@
+ .TH MAILTO 1 "Release 1" "Bellcore Prototype"
+ .SH NAME
+-mailto - Simple mutlimedia mail sending program
++mailto - Simple multimedia mail sending program
+ .SH SYNOPSIS
+ .ta 8n
+ \fBmailto\fP	[-a] [-c] [-s] [recipient name(s)]
+@@ -230,7 +230,7 @@ The .mailrc file in your home directory
+    dot -- controls whether or not a period alone on a line 
+         should be interpreted as terminating your mail
+    ignore -- controls whether or not interrupts are ignored
+-   verbose -- controls the verbosity of output from /usr/lib/sendmail
++   verbose -- controls the verbosity of output from /usr/sbin/sendmail
+    quiet -- controls the verbosity of output from the mailto program.
+    keepblind -- controls whether or not a 'blind' copy of the mail is kept.
+   commasonly -- controls whether or not a space character
+--- a/metamail/Makefile
++++ b/metamail/Makefile
+@@ -41,9 +41,9 @@ shared.o:  shared.c ../config.h
+ 
+ splitmail.o:  shared.c ../config.h
+ 
+-mmencode: mmencode.o codes.o
++mmencode: mmencode.o codes.o shared.o
+ 	$(RM) -f mmencode
+-	$(CC) $(LOCALCFLAGS) -o mmencode  mmencode.o  codes.o $(LDLIBS)
++	$(CC) $(LOCALCFLAGS) -o mmencode  mmencode.o  codes.o shared.o $(LDLIBS)
+ 
+ mailto: mailto.o codes.o shared.o
+ 	$(RM) -f mailto
+@@ -53,9 +53,10 @@ splitmail: splitmail.o shared.o
+ 	$(RM) -f splitmail
+ 	$(CC) $(LOCALCFLAGS) -o splitmail  splitmail.o shared.o $(LDLIBS)
+ 
+-metamail:  metamail.o codes.o uue.o shared.o putenv.o
++#metamail:  metamail.o codes.o uue.o shared.o putenv.o
++metamail:  metamail.o codes.o uue.o shared.o
+ 	$(RM) -f metamail
+-	$(CC) $(LOCALCFLAGS) -o metamail  metamail.o  putenv.o codes.o uue.o shared.o $(LDLIBS)
++	$(CC) $(LOCALCFLAGS) -o metamail  metamail.o  codes.o uue.o shared.o $(LDLIBS)
+ 
+ clean:
+ 	$(RM) -f metamail mmencode mailto splitmail *.o *.BAK
+--- a/metamail/codes.c
++++ b/metamail/codes.c
+@@ -19,6 +19,7 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ extern char *index();
+ static char basis_64[] =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
++void output64chunk();
+ 
+ static char index_64[128] = {
+     -1,-1,-1,-1, -1,-1,-1,-1, -1,-1,-1,-1, -1,-1,-1,-1,
+@@ -69,6 +70,7 @@ int PortableNewlines;
+ #endif
+ }
+ 
++void
+ to64(infile, outfile, PortableNewlines) 
+ FILE *infile, *outfile;
+ int PortableNewlines;
+@@ -97,6 +99,7 @@ int PortableNewlines;
+     fflush(outfile);
+ }
+ 
++void
+ output64chunk(c1, c2, c3, pads, outfile)
+ FILE *outfile;
+ {
+@@ -114,6 +117,7 @@ FILE *outfile;
+     }
+ }
+ 
++int
+ PendingBoundary(s, Boundaries, BoundaryCt)
+ char *s;
+ char **Boundaries;
+@@ -140,6 +144,7 @@ int *BoundaryCt;
+ static int CRpending = 0;
+ 
+ #ifdef NEWLINE_CHAR
++void
+ almostputc(c, outfile, PortableNewlines)
+ int c;
+ FILE *outfile;
+@@ -165,6 +170,7 @@ int PortableNewlines;
+     }
+ }
+ #else
++void
+ almostputc(c, outfile, PortableNewlines)
+ int c;
+ FILE *outfile;
+@@ -174,6 +180,7 @@ int PortableNewlines;
+ }
+ #endif
+ 
++void
+ from64(infile, outfile, boundaries, boundaryct, PortableNewlines) 
+ FILE *infile, *outfile;
+ char **boundaries;
+@@ -275,6 +282,7 @@ char c;
+ }
+ */
+ 
++void
+ toqp(infile, outfile) 
+ FILE *infile, *outfile;
+ {
+@@ -350,6 +358,7 @@ FILE *infile, *outfile;
+     }
+ }
+ 
++void
+ fromqp(infile, outfile, boundaries, boundaryct) 
+ FILE *infile, *outfile;
+ char **boundaries;
+@@ -360,7 +369,7 @@ int *boundaryct;
+     /* The neednewline hack is necessary because the newline leading into 
+       a multipart boundary is part of the boundary, not the data */
+ 
+-    while ((c1 = getc(infile)) != EOF) {
++    while ((int)(c1 = getc(infile)) != EOF) {
+         if (sawnewline && boundaries && (c1 == '-')) {
+             char Buf[200];
+             unsigned char *s;
+--- a/metamail/mailto.c
++++ b/metamail/mailto.c
+@@ -60,8 +60,63 @@ extern char *getenv();
+ #include <unistd.h>
+ #endif
+ 
++#ifndef LINUX
+ extern char *malloc(), *realloc(), *index(), *getmyname();
++#else
++#include <stdlib.h>
++#include <string.h>
++#include <curses.h>
++#include <term.h>
++#include <time.h>
++extern char *getmyname();
++#endif
++extern FILE *Fopen();
++extern void to64();
++extern void toqp();
++extern int DoesNeedPortableNewlines();
++extern int lc2strcmp();
++extern int lc2strncmp();
++extern int ExceptionalNewline();
++extern void from64();
++extern void fromqp();
++
+ struct mailpart *CreateNewPart();
++void nomemabort();
++int tfputs();
++void cleanexit();
++void ProcessInitFiles();
++void InitSignals();
++int ProcessMailcapFiles();
++void FputsQuotingLT();
++void TryClosingStyle();
++void TryOpeningStyle();
++void TempCloseStyles();
++void ReopenStyles();
++void ToggleStyle();
++int TranslateInputToEncodedOutput();
++void EditCurrentMessage();
++void EndStyle();
++void StartStyle();
++void WriteOutMessage();
++void RestoreCurrentStyles();
++int WriteDeadLetter();
++void SwitchToEuropean();
++void EmitHeader();
++void EmitHeaderWithAliases();
++void WriteContentTypeAndEncoding();
++void WriteCtypeNicely();
++int WhichEncodingForFile();
++void SetTextFlags();
++void BuildCommand();
++int ContainsEightBitChar();
++void ProcessOneMailRC();
++void HandleAliasCommand();
++void HandleSetCommand();
++void HeaderFputs();
++void PutQP();
++void EmitAddresses();
++void DeAlias();
++void fputsquoting();
+ 
+ /* The main data structure for the multiple parts of the mail */
+ 
+@@ -138,7 +193,7 @@ int  V_askcc=0, /* To ask about the Cc f
+ int JustificationState = JUST_LEFT;
+ 
+ 
+-EightBitCharHelp() {
++void EightBitCharHelp() {
+     if (!CharacterSet || !strcmp(CharacterSet, "us-ascii")) {
+         printf("There are no extended characters available for your US-ASCII terminal.\n\n");
+         printf("If you are actually using a terminal or terminal emulator with a richer\ncharacter set, you must use the '-a' option or the 'MM_CHARSET' environment\nvariable to inform this program of that fact.\n");
+@@ -199,13 +254,16 @@ tmpname() {
+     return(s);
+ }
+ 
+-TildeHelp() {
+-    char *pager = getenv("PAGER");
++void TildeHelp() {
+     char TmpName[100], CmdBuf[150];
++    char *pager;
+     FILE *fp;
+ 
++    if ((pager = getenv("METAMAIL_PAGER")) == NULL)
++	pager = getenv("PAGER");
++
+     strcpy(TmpName, tmpname());
+-    fp = fopen(TmpName, "w");
++    fp = Fopen(TmpName, "w");
+     if (!fp) fp = stdout;
+     fprintf(fp, "The following tilde escapes are BSD-mail-compatible:\n");
+     fprintf(fp, "~? Show help on tilde escapes\n");
+@@ -298,7 +356,7 @@ char *gethome() {
+ static char standoutbuf[50], standendbuf[50], StartUnderline[50], StopUnderline[50], BoldOn[50], BoldOff[50], KS[50], KE[50];
+ static int termcolumns, termrows;
+ 
+-InitTerminal() {
++void InitTerminal() {
+ #ifdef AMIGA
+     strcpy(standoutbuf, "\x9b\x37m");   /* Enter standout (highlighted) mode */
+     strcpy(standendbuf, "\x9b\x30m");   /* Exit standout mode */
+@@ -350,7 +408,7 @@ InitTerminal() {
+ #endif
+ }
+ 
+-FinalizeTerminal() {
++void FinalizeTerminal() {
+     tfputs(standendbuf);
+     tfputs(BoldOff);
+     tfputs(StopUnderline);
+@@ -375,7 +433,7 @@ NewPart() {
+     return(p);
+ }
+ 
+-nomemabort() {
++void nomemabort() {
+     fprintf(stderr, "mailto: Out of memory\n");
+     cleanexit(-1);
+ }
+@@ -431,7 +489,7 @@ char *s;
+ 
+     if (V_commasonly) {
+         ans = malloc(1+strlen(s));
+-        if (!ans) nomemabort;
++        if (!ans) nomemabort();
+         strcpy(ans, s);
+         return(ans);
+     }
+@@ -484,7 +542,7 @@ int definitelynew;
+     return(List);
+ }
+ 
+-main(argc, argv)
++int main(argc, argv)
+ char **argv;
+ {
+     char *sdum, *LineBuf, CmdBuf[100];
+@@ -591,7 +649,7 @@ char **argv;
+     }
+     FirstPart = NewPart();
+     CurrentPart = FirstPart;
+-    fpout = fopen(CurrentPart->filename, "w");
++    fpout = Fopen(CurrentPart->filename, "w");
+     if (!fpout) {
+         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+         cleanexit(-1);
+@@ -678,7 +736,7 @@ char **argv;
+                     CurrentPart->next = NewPart();
+                     CurrentPart->next->prev = CurrentPart;
+                     CurrentPart = CurrentPart->next;
+-                    fpout = fopen(CurrentPart->filename, "w");
++                    fpout = Fopen(CurrentPart->filename, "w");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+                         cleanexit(-1);
+@@ -717,7 +775,7 @@ char **argv;
+                     CurrentPart = CurrentPart->next;
+                     CurrentPart->istext = 0;
+                     CurrentPart->content_type = "message/rfc822";
+-                    fpout = fopen(CurrentPart->filename, "w");
++                    fpout = Fopen(CurrentPart->filename, "w");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto: Cannot open temporary file %s\n", CurrentPart->filename);
+                         break;
+@@ -729,7 +787,7 @@ char **argv;
+                     CurrentPart->next = NewPart();
+                     CurrentPart->next->prev = CurrentPart;
+                     CurrentPart = CurrentPart->next;
+-                    fpout = fopen(CurrentPart->filename, "w");
++                    fpout = Fopen(CurrentPart->filename, "w");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+                         cleanexit(-1);
+@@ -808,11 +866,11 @@ char **argv;
+                     char Cmd[TMPFILE_NAME_SIZE + 15];
+                     char *s=tmpname();
+                     fclose(fpout);
+-                    fptmp = fopen(s, "w");
++                    fptmp = Fopen(s, "w");
+                     WriteOutMessage(fptmp, ToList, Subject, CCList, FirstPart);
+                     TempCloseStyles(fptmp);
+                     fclose(fptmp);
+-                    fpout = fopen(CurrentPart->filename, "a");
++                    fpout = Fopen(CurrentPart->filename, "a");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+                         cleanexit(-1);
+@@ -896,7 +954,7 @@ char **argv;
+                     char *fname;
+                     fclose(fpout);
+                     fname = start;
+-                    fptmp = fopen(fname, "w");
++                    fptmp = Fopen(fname, "w");
+                     WriteOutMessage(fptmp, ToList, Subject, CCList, FirstPart);
+                     TempCloseStyles(fptmp);
+                     if(fclose(fptmp)) {
+@@ -904,7 +962,7 @@ char **argv;
+                     } else {
+                         printf("Wrote draft to %s\n", fname);
+                     }
+-                    fpout = fopen(CurrentPart->filename, "a");
++                    fpout = Fopen(CurrentPart->filename, "a");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+                         cleanexit(-1);
+@@ -969,7 +1027,7 @@ char **argv;
+                     CurrentPart = CurrentPart->next;
+                     CurrentPart->istext = 0;
+                     CurrentPart->content_type = "message/rfc822";
+-                    fpout = fopen(CurrentPart->filename, "w");
++                    fpout = Fopen(CurrentPart->filename, "w");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto: Cannot open temporary file %s\n", CurrentPart->filename);
+                         break;
+@@ -991,7 +1049,7 @@ char **argv;
+                     CurrentPart->next = NewPart();
+                     CurrentPart->next->prev = CurrentPart;
+                     CurrentPart = CurrentPart->next;
+-                    fpout = fopen(CurrentPart->filename, "w");
++                    fpout = Fopen(CurrentPart->filename, "w");
+                     if (!fpout) {
+                         fprintf(stderr, "mailto:  Can't open temporary file %s\n", CurrentPart->filename);
+                         cleanexit(-1);
+@@ -1028,6 +1086,7 @@ char **argv;
+         cleanexit(-1);
+     }
+     cleanexit(0); /* Never returns */
++    return 0;
+ }
+ 
+ char *newid() {
+@@ -1042,7 +1101,7 @@ char *newid() {
+     return(idbuf);
+ }
+ 
+-WriteOutMessage(fp, ToList, Subject, CCList, FirstPart)
++void WriteOutMessage(fp, ToList, Subject, CCList, FirstPart)
+ FILE *fp;
+ char *ToList, *Subject, *CCList;
+ struct mailpart *FirstPart;
+@@ -1121,7 +1180,7 @@ struct mailpart *FirstPart;
+     }
+ }
+ 
+-WriteContentTypeAndEncoding(fp, part)
++void WriteContentTypeAndEncoding(fp, part)
+ FILE *fp;
+ struct mailpart *part;
+ {
+@@ -1160,7 +1219,7 @@ struct mailpart *part;
+     }
+ }
+ 
+-TranslateInputToEncodedOutput(InputFP, OutputFP, Ecode, ctype)
++int TranslateInputToEncodedOutput(InputFP, OutputFP, Ecode, ctype)
+ FILE *InputFP, *OutputFP;
+ int Ecode;
+ char *ctype;
+@@ -1192,7 +1251,7 @@ static char *EnvStartStack[MAX_STACK_SIZ
+    kept open across an inserted object -- i.e. the richtext is split into 
+    two parts of a multipart message */
+ 
+-TempCloseStyles(fp)
++void TempCloseStyles(fp)
+ FILE *fp;
+ {
+     int i = StackSize;
+@@ -1205,7 +1264,7 @@ FILE *fp;
+     fflush(stdout);
+ }
+ 
+-RestoreCurrentStyles() {
++void RestoreCurrentStyles() {
+     int i=0;
+     while (i<StackSize) {
+         if (EnvStartStack[i]) {
+@@ -1215,7 +1274,7 @@ RestoreCurrentStyles() {
+     }
+ }
+ 
+-ReopenStyles(fp, part)
++void ReopenStyles(fp, part)
+ FILE *fp;
+ struct mailpart *part;
+ {
+@@ -1227,12 +1286,12 @@ struct mailpart *part;
+     }
+ }
+ 
+-richtextreset()
++void richtextreset()
+ {
+     StackSize = 0;
+ }
+ 
+-AlreadyInStyle(s)
++int AlreadyInStyle(s)
+ char *s;
+ {
+     int i;
+@@ -1242,7 +1301,7 @@ char *s;
+     return(0);
+ }
+ 
+-StartStyle(fp, s, envstartstr)
++void StartStyle(fp, s, envstartstr)
+ FILE *fp;
+ char *s;
+ char *envstartstr;
+@@ -1258,7 +1317,7 @@ char *envstartstr;
+     if (!V_quiet) printf("Beginning: %s\n", t);
+ }
+ 
+-EndStyle(fp, s)
++void EndStyle(fp, s)
+ FILE *fp;
+ char *s;
+ {
+@@ -1282,7 +1341,7 @@ char *s;
+     if (!V_quiet) printf("Ending: %s\n", s);
+ }
+ 
+-ToggleStyle(name, fp, part, turnonstr, turnoffstr)
++void ToggleStyle(name, fp, part, turnonstr, turnoffstr)
+ char *name;
+ FILE *fp;
+ struct mailpart *part;
+@@ -1301,7 +1360,7 @@ char *turnonstr, *turnoffstr;
+     }
+ }
+ 
+-TryOpeningStyle(name, fp, part, envstartstr)
++void TryOpeningStyle(name, fp, part, envstartstr)
+ char *name;
+ FILE *fp;
+ struct mailpart *part;
+@@ -1315,7 +1374,7 @@ char *envstartstr;
+     }
+ }
+ 
+-TryClosingStyle(name, fp, part)
++void TryClosingStyle(name, fp, part)
+ char *name;
+ FILE *fp;
+ struct mailpart *part;
+@@ -1328,7 +1387,7 @@ struct mailpart *part;
+     }
+ }
+ 
+-FputsQuotingLT(s, fp, part, EightBitMode, RightToLeftMode)
++void FputsQuotingLT(s, fp, part, EightBitMode, RightToLeftMode)
+ char *s;
+ FILE *fp;
+ struct mailpart *part;
+@@ -1393,14 +1452,7 @@ int EightBitMode, RightToLeftMode;
+     }
+ }
+ 
+-cleanexit(code)
+-int code;
+-{
+-    finalize();
+-    exit(code);
+-}
+-
+-finalize() {
++void finalize() {
+     while (FirstPart) {
+         unlink(FirstPart->filename);
+         FirstPart = FirstPart->next;
+@@ -1408,6 +1460,13 @@ finalize() {
+     FinalizeTerminal();
+ }
+ 
++void cleanexit(code)
++int code;
++{
++    finalize();
++    exit(code);
++}
++
+ void
+ cleanup(signum)
+ int signum;
+@@ -1436,7 +1495,7 @@ int signum;
+ #endif
+ }
+ 
+-InitSignals() {
++void InitSignals() {
+     signal(SIGINT, cleanup);
+ #ifndef AMIGA
+     signal(SIGPIPE, cleanup);
+@@ -1456,7 +1515,7 @@ InitSignals() {
+ #endif
+ }
+ 
+-WriteDeadLetter()
++int WriteDeadLetter()
+ {
+     FILE *fp;
+ #ifdef AMIGA
+@@ -1473,7 +1532,7 @@ WriteDeadLetter()
+     char DeadFile[1000];
+ 
+     sprintf(DeadFile, "%s/dead.letter", gethome());
+-    fp = fopen(DeadFile, "w");
++    fp = Fopen(DeadFile, "w");
+     WriteOutMessage(fp, ToList, Subject, CCList, FirstPart);
+     if(fclose(fp)) {
+         perror("Could not write ~/dead.letter\n");
+@@ -1587,7 +1646,7 @@ FILE *fp;
+ 	if (LineBuf[0] == '#') continue;
+ 	len = strlen(LineBuf);
+         if (LineBuf[len-1] == '\n') LineBuf[--len] = '\0';
+-	if ((len + strlen(rawentry)) > rawentryalloc) {
++	if ((len + (int)strlen(rawentry)) > rawentryalloc) {
+             rawentryalloc += MAX_LINELENGTH;
+ 	    rawentry = realloc(rawentry, rawentryalloc+1);
+ 	    if (!rawentry) nomemabort();
+@@ -1662,7 +1721,7 @@ FILE *fp;
+     return(mc);
+ }
+ 
+-ProcessMailcapFiles() 
++int ProcessMailcapFiles() 
+ {
+     char *s, *path = getenv("MAILCAPS"), *origpath;
+     static char *stdpath = STDPATH;
+@@ -1773,7 +1832,7 @@ CreateNewPart() {
+             printf("Cannot read %s, data insertion cancelled\n", sdum);
+             return(NULL);
+         }
+-        fpo = fopen(mp->filename, "w");
++        fpo = Fopen(mp->filename, "w");
+         if (!fpo) {
+             printf("Cannot open temporary file, data insertion cancelled\n");
+             return(NULL);
+@@ -1791,7 +1850,9 @@ CreateNewPart() {
+                 int ct;
+                 printf("\nEnter the MIME Content-type value for the data from file %s\n    (type '?' for a list of locally-valid content-types): ", sdum);
+                 fflush(stdout);
+-                gets(LineBuf);
++                fgets(LineBuf, sizeof(LineBuf), stdin);
++                if (LineBuf[strlen(LineBuf)-1] == '\n')
++                    LineBuf[strlen(LineBuf)-1] = '\0';
+                 if (index(LineBuf, '/')) {
+                     char lc[100], *s, AnsBuf[100];
+                     strcpy(lc, LineBuf);
+@@ -1809,7 +1870,7 @@ CreateNewPart() {
+                     }
+                     if (mc) break;
+                     printf("The MIME content-type '%s' is not listed in your local mailcap files,\nand may not be a valid MIME type.  Do you want to use it anyway [no] ? ", LineBuf);
+-                    s = gets(AnsBuf);
++                    s = fgets(AnsBuf, sizeof(AnsBuf), stdin);
+                     while (s && *s && isspace((unsigned char) *s)) ++s;
+                     if (s && (*s == 'y' || *s == 'Y')) break;
+                     continue;
+@@ -1866,9 +1927,9 @@ CreateNewPart() {
+         mp->content_type = mc->contenttype;
+         mp->encoding_type_needed = WhichEncodingForFile(mp->filename, mp->content_type);
+     } else {
+-        char c, LineBuf[1000], *colon, *ctypebuf = NULL, *cencbuf = NULL, *s, *newfilename;
++        char LineBuf[1000], *colon, *ctypebuf = NULL, *cencbuf = NULL, *s, *newfilename;
+         FILE *fp, *fpout;
+-        int inheaders=1, bct=0;
++        int c, inheaders=1, bct=0;
+ 
+         s = LineBuf;
+         fp = fopen(mp->filename, "r");
+@@ -1936,7 +1997,7 @@ CreateNewPart() {
+             mp->encoding_type_needed = ENC_NONE;
+         }
+         newfilename = tmpname();
+-        fpout = fopen(newfilename, "w");
++        fpout = Fopen(newfilename, "w");
+         if (!fpout) {
+             fprintf(stderr, "Cannot open file %s for writing, no data included.\n", newfilename);
+             free(CmdBuf);
+@@ -1967,7 +2028,7 @@ CreateNewPart() {
+     return(mp);
+ }
+ 
+-SetTextFlags(mp)
++void SetTextFlags(mp)
+ struct mailpart *mp;
+ {
+     if (!lc2strncmp(mp->content_type, "text/", 5)) {
+@@ -1978,7 +2039,7 @@ struct mailpart *mp;
+     }
+ }
+ 
+-WhichEncodingForFile(fname, ctype)
++int WhichEncodingForFile(fname, ctype)
+ char *fname, *ctype;
+ {
+     int c, linesize=0, total=0, unsafechars=0, longlines=0;
+@@ -2014,7 +2075,7 @@ char *fname, *ctype;
+     return(ENC_NONE);
+ }
+ 
+-BuildCommand(Buf, controlstring, TmpFileName)
++void BuildCommand(Buf, controlstring, TmpFileName)
+ char *Buf, *controlstring, *TmpFileName;
+ {
+     char *from, *to;
+@@ -2052,7 +2113,7 @@ char *Buf, *controlstring, *TmpFileName;
+     }
+ }
+ 
+-CtypeMatch(ctype, pat)
++int CtypeMatch(ctype, pat)
+ char *ctype, *pat;
+ {
+     int len;
+@@ -2073,7 +2134,7 @@ char *ctype, *pat;
+     return(0);
+ }
+ 
+-EditCurrentMessage(UseVisual)
++void EditCurrentMessage(UseVisual)
+ int UseVisual;
+ {
+     char *editor = NULL;
+@@ -2106,7 +2167,7 @@ int UseVisual;
+              ContainsEightBitChar(FirstPart->filename)) {
+             FirstPart->encoding_type_needed = ENC_QP;
+         }
+-        fpout = fopen(FirstPart->filename, "a");
++        fpout = Fopen(FirstPart->filename, "a");
+         free(CmdBuf);
+         free(CmdBuf2);
+         return;
+@@ -2156,13 +2217,13 @@ int UseVisual;
+         lastmp = mp;
+         mp = mp->next;
+     }
+-    fpout = fopen(lastmp->filename, "a");
++    fpout = Fopen(lastmp->filename, "a");
+     free(CmdBuf);
+     free(CmdBuf2);
+ }
+ 
+ 
+-ProcessInitFiles() {
++void ProcessInitFiles() {
+ #ifdef AMIGA
+     ProcessOneMailRC(mailRC, 0);
+ #else
+@@ -2212,7 +2273,7 @@ int IsAndrew;
+     }
+ }
+ 
+-ProcessOneMailRC(fname, IsAndrew)
++void ProcessOneMailRC(fname, IsAndrew)
+ char *fname;
+ int IsAndrew;
+ {
+@@ -2246,7 +2307,7 @@ int IsAndrew;
+     fclose(fp);
+ }
+ 
+-HandleSetCommand(cmd, DoSet)
++void HandleSetCommand(cmd, DoSet)
+ char *cmd;
+ int DoSet;
+ {
+@@ -2290,7 +2351,7 @@ struct alias {
+     struct alias *next;
+ } *FirstAlias = NULL;
+ 
+-HandleAliasCommand(aliasline)
++void HandleAliasCommand(aliasline)
+ char *aliasline;
+ {
+     struct alias *tmpalias;
+@@ -2319,7 +2380,7 @@ char *aliasline;
+     FirstAlias = tmpalias;
+ }
+ 
+-EmitHeader(fp, hdr, body)
++void EmitHeader(fp, hdr, body)
+ FILE *fp;
+ char *hdr;
+ char *body;
+@@ -2357,7 +2418,7 @@ char *s;
+     return(NULL);
+ }
+ 
+-HeaderFputs(s, fp, hdr)
++void HeaderFputs(s, fp, hdr)
+ char *s;
+ FILE *fp;
+ char *hdr;
+@@ -2384,7 +2445,7 @@ char *hdr;
+                 PutQP(*s, fp);
+                 ++s;
+             }
+-            fputs("?= ", fp); /* close encoded word */
++            fputs("?=", fp); /* close encoded word */
+             firstnonascii=firstbad(s);
+         }
+         while (*s) {
+@@ -2398,7 +2459,7 @@ char *hdr;
+ 
+ static char basis_hex[] = "0123456789ABCDEF";
+ 
+-PutQP(c, fp)
++void PutQP(c, fp)
+ unsigned char c;
+ FILE *fp;
+ {
+@@ -2407,7 +2468,7 @@ FILE *fp;
+     putc(basis_hex[c&0xF], fp);
+ }
+ 
+-EmitHeaderWithAliases(fp, hdr, names)
++void EmitHeaderWithAliases(fp, hdr, names)
+ FILE *fp;
+ char *hdr;
+ char *names;
+@@ -2418,7 +2479,7 @@ char *names;
+     fputs("\n", fp);
+ }
+ 
+-EmitAddresses(fp, names, hdr)
++void EmitAddresses(fp, names, hdr)
+ FILE *fp;
+ char *names;
+ char *hdr;
+@@ -2436,7 +2497,7 @@ char *hdr;
+     }
+ }
+ 
+-DeAlias(name, fp, hdr)
++void DeAlias(name, fp, hdr)
+ char *name;
+ FILE *fp;
+ char *hdr;
+@@ -2462,7 +2523,7 @@ char *hdr;
+ }
+ 
+ 
+-WriteCtypeNicely(fp, ct)
++void WriteCtypeNicely(fp, ct)
+ FILE *fp;
+ char *ct;
+ {
+@@ -2497,7 +2558,7 @@ char *ct;
+     }
+ }
+ 
+-fputsquoting(s, fp)
++void fputsquoting(s, fp)
+ char *s;
+ FILE *fp;
+ {
+@@ -2566,28 +2627,29 @@ char *cmd;
+ }
+ #endif
+ 
+-controlputc(c)
++int controlputc(c)
+ char c;
+ {
+-    fputc(c, stdout);
++    return fputc(c, stdout);
+ }
+ 
+ /* Do the equivalent of an fputs for the terminal escape stuff */
+ #ifdef AMIGA
+-tfputs(s)
++int tfputs(s)
+ char *s;
+ {
+     fputs(s, stdout);
+     return (0);
+ }
+ #else
+-tfputs(s)
++int tfputs(s)
+ char *s;
+ {
+     tputs(s, 1, controlputc);
++    return (0);
+ }
+ #endif
+-ContainsEightBitChar(fname)
++int ContainsEightBitChar(fname)
+ char *fname;
+ {
+     int c, eightBitSeen = 0;
+@@ -2607,7 +2669,7 @@ char *fname;
+     return(eightBitSeen);
+ }
+ 
+-SwitchToEuropean() {
++void SwitchToEuropean() {
+     printf("WARNING:  You have entered 8-bit characters in what is supposed to be\n");
+     printf("plain ASCII text.  If you are using a non-ASCII character set, you should\n");
+     printf("declare this to be the case with the MM_CHARSET environment variable.\n");
+--- a/metamail/metamail.c
++++ b/metamail/metamail.c
+@@ -47,7 +47,17 @@ extern char *mktemp(char *);
+ 
+ #ifndef AMIGA
+ #ifdef SYSV
++#ifdef LINUX
++#include <termios.h>
++#include <malloc.h>
++#include <stdlib.h>
++#include <time.h>
++#include <signal.h>
++#include <string.h>
++#else
+ #include <termio.h>
++#endif
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #else /* SYSV */
+ #include <sgtty.h>
+@@ -56,7 +66,7 @@ extern char *mktemp(char *);
+ #endif /* MICROSOFT */
+ #endif /* BORLAND */
+ 
+-#ifdef SYSV
++#if defined(SYSV) && !defined(LINUX)
+ #define LPRTEMPLATE "lp %s"
+ #define LPRCOMMAND "lp"
+ #else
+@@ -83,12 +93,19 @@ extern char *MkRmScript();
+ #define MAX_FILE_NAME_SIZE 256
+ #define WRITE_BINARY	"w"
+ #else /* AMIGA */
+-extern char **environ, *gets();
++#include <stdio.h>	/* declare gets(3) */
++extern char **environ;
+ #define CATCOMMAND  "cat"
+ #define CATTEMPLATE "cat %s"
+ #define METAMAIL    "metamail"
++#ifdef LINUX
++#include <limits.h>
++#define TMPFILE_NAME_SIZE	PATH_MAX
++#define MAX_FILE_NAME_SIZE	PATH_MAX
++#else
+ #define TMPFILE_NAME_SIZE   1000
+ #define MAX_FILE_NAME_SIZE 1000
++#endif
+ #define WRITE_BINARY	"w"
+ #endif /* AMIGA */
+ #endif /* MSDOS */
+@@ -100,17 +117,61 @@ extern char **environ, *gets();
+ #define CMDSIZE 1200 /* Maximum size of command to execute */
+ 
+ #define LINE_BUF_SIZE       2000
+-#ifndef MICROSOFT
+-extern char *malloc();
+-extern char *realloc();
+-#endif
++#ifndef LINUX
+ extern char *getenv();
+ extern char *index();
+ extern char *rindex();
++#endif
+ char fileToDelete[MAX_FILE_NAME_SIZE];
++void ExitWithError();
++void RestoreTtyState();
++int ProcessArguments();
++int HandleMessage();
++void PauseForUser();
++int Read822Prefix();
++void PrepareMessage();
++int ProcessMailcapFiles(); 
++int ProcessMailcapFile();
++int SaveSquirrelFile();
++void MkTmpFileName();
++int TryBuiltIns(); 
++void TranslateInputToOutput();
++void usage();
++void StripTrailingSpace();
++void RunInNewWindow();
++void CreateNewWindowPrefix();
++void SetUpEnvironment();
++int TryMailcapEntry();
++int IsDirectory();
++int GetMailcapEntry();
++int CtypeMatch();
++int PassesTest();
++int ExecuteMailcapEntry();
++void BuildCommand();
++void SaveTtyState();
++int NeedToAskBeforeExecuting();
++int OKToRun();
++void strcatquoting();
++int WriteTmpFile();
++int ExecuteCommand();
++void maybephead();
++void phead();
++void EliminateNastyChars();
++void strcpynoquotes();
++int StartRawStdin();
+ 
+ char *FindParam();
+ extern FILE *popen();
++extern FILE *Fopen();
++extern int lc2strncmp();
++extern int lc2strcmp();
++extern int ExceptionalNewline();
++extern void from64();
++extern int DoesNeedPortableNewlines();
++extern void fromqp();
++extern void fromuue ();
++extern int PendingBoundary();
++
+ static char *nomem = "Out of memory!";
+ static char *mmversion = MM_VERSTRING;
+ static char *NoAskDefault = "text,text/plain,text/richtext";
+@@ -295,6 +356,7 @@ char *auxpath;
+     }
+ }
+ 
++int
+ main(argc, argv)
+ int argc;
+ char **argv;
+@@ -387,6 +449,7 @@ char *fname;
+     }
+ }
+ 
++int
+ HandleMessage(SquirrelFile, nestingdepth)
+ char *SquirrelFile;
+ /* SquirrelFile, if non-NULL, is a place to save a recognized body instead of executing it. */
+@@ -423,7 +486,7 @@ int nestingdepth;
+       } else {
+         char *LineBuf, NewSquirrelFile[TMPFILE_NAME_SIZE];
+         char *subtype = NULL;
+-        int currct, result, IsAlternative, WroteSquirrelFile, boundarylen;
++        int currct, result, IsAlternative, WroteSquirrelFile = 0, boundarylen;
+ 
+         if (SquirrelFile) return(SaveSquirrelFile(SquirrelFile));
+         if (boundary[0] == '"') {
+@@ -579,7 +642,7 @@ int nestingdepth;
+                                 int overwriteans = -1;
+                                 do {
+                                     printf("File %s exists.  Do you want to overwrite it (y/n) ?\n", Fname);
+-                                    s = gets(AnsBuf);
++                                    s = fgets(AnsBuf, sizeof(AnsBuf), stdin);
+                                     if (!s) {
+                                         overwriteans = 0;
+                                     } else {
+@@ -645,7 +708,7 @@ int nestingdepth;
+         if (Fname[0] == 0 || Fname[0] == '\n') {
+             ConsumeRestOfPart(NULL);
+         } else {
+-            fp = fopen(Fname, WRITE_BINARY);
++            fp = Fopen(Fname, WRITE_BINARY);
+             if (!fp) ExitWithError("Cannot open temporary file");
+             TranslateInputToOutput(InputFP, fp, EncodingCode, ContentType);
+             ecode = fclose(fp);
+@@ -661,6 +724,7 @@ int nestingdepth;
+     return(-1); /* Unrecognized, really */
+ }
+ 
++int
+ ProcessArguments(argc, argv)
+ int argc;
+ char **argv;
+@@ -940,11 +1004,13 @@ char **argv;
+     return(0);
+ }
+ 
++void
+ usage() {
+     fprintf(stderr, "Usage:  metamail [-b] [-B] [-d] [-e] [-h] [-r] [-R] [-p]  [-P] [-x] [-y] [-z] [-c content-type] [-E content-transfer-encoding] [-f from-name] [-m mailername] [-s subject] [message-file-name]\n");
+     ExitWithError(NULL);
+ }
+ 
++void
+ RunInNewWindow(argv, argc, SourceFileNamePtr)
+ char **argv, **SourceFileNamePtr;
+ int argc;
+@@ -960,7 +1026,7 @@ int argc;
+         /* Create it, ugh.  Also needs to affect later command. */
+         MkTmpFileName(TmpName);
+         DeleteSourceFileWhenDone = 1;
+-        fptmp = fopen(TmpName, WRITE_BINARY);
++        fptmp = Fopen(TmpName, WRITE_BINARY);
+         if (!fptmp) ExitWithError("Can't open temporary file\n");
+         while (fgets(LineBuf, LINE_BUF_SIZE, stdin)) {
+             fputs(LineBuf, fptmp);
+@@ -1026,6 +1092,7 @@ struct MailcapEntry BuiltInsAlternative[
+     {"text/plain", CATTEMPLATE, NULL, 0, 1, 0, "plain text", LPRTEMPLATE},
+     {NULL, NULL, NULL, 0, 0, 0}};
+ 
++int
+ ProcessMailcapFiles(SquirrelFile) 
+ char *SquirrelFile;
+ {
+@@ -1082,6 +1149,7 @@ char *SquirrelFile;
+ #endif /* MICROSOFT */
+ }
+ 
++int
+ TryBuiltIns(SquirrelFile) 
+ char *SquirrelFile;
+ {
+@@ -1094,6 +1162,7 @@ char *SquirrelFile;
+     return(-1);
+ }
+ 
++int
+ ProcessMailcapFile(file, SquirrelFile)
+ char *file, *SquirrelFile;
+ {
+@@ -1166,6 +1235,7 @@ eatmore:
+     }
+ }    
+ 
++int
+ TryMailcapEntry(mc, SquirrelFile)
+ struct MailcapEntry mc;
+ char *SquirrelFile;
+@@ -1189,12 +1259,13 @@ char *SquirrelFile;
+     return(-1);
+ }
+ 
++int
+ SaveSquirrelFile(SquirrelFile)
+ char *SquirrelFile;
+ {
+     int j;
+     FILE *outfp;
+-    outfp = fopen(SquirrelFile, WRITE_BINARY);
++    outfp = Fopen(SquirrelFile, WRITE_BINARY);
+     if (!outfp) {
+         fprintf(stderr, "Cannot open %s to squirrel away a portion of a multipart/alternative\n", SquirrelFile);
+         return(-1);
+@@ -1214,6 +1285,7 @@ char *SquirrelFile;
+     return(0);
+ }
+ 
++int
+ ExecuteMailcapEntry(mc, TmpFileName, ThisContentType)
+ char *TmpFileName, *ThisContentType;
+ struct MailcapEntry mc;
+@@ -1361,6 +1433,7 @@ struct MailcapEntry mc;
+     return(0);
+ }
+ 
++int
+ PassesTest(mc)
+ struct MailcapEntry *mc;
+ {
+@@ -1414,6 +1487,7 @@ char *s, **t;
+     return(NULL);
+ }	
+ 
++int
+ GetMailcapEntry(fp, mc)
+ FILE *fp;
+ struct MailcapEntry *mc;
+@@ -1431,7 +1505,7 @@ struct MailcapEntry *mc;
+         len = strlen(LineBuf);
+         if (len == 0) continue;
+         if (LineBuf[len-1] == '\n') LineBuf[--len] = 0;
+-	if ((len + strlen(rawentry)) > rawentryalloc) {
++	if ((len + (int)strlen(rawentry)) > rawentryalloc) {
+ 	    rawentryalloc += 2000;
+ 	    rawentry = realloc(rawentry, rawentryalloc+1);
+ 	    if (!rawentry) ExitWithError(nomem);
+@@ -1507,6 +1581,7 @@ struct MailcapEntry *mc;
+     return(1);
+ }
+ 
++void
+ ExitWithError(txt)
+ char *txt;
+ {
+@@ -1526,7 +1601,7 @@ char *s;
+     while (t && (*(t+1) == ' ' || *(t+1) == '\t')) {
+         t = index(t+1, '\n');
+     }
+-    len = t ? (t-s+1) : (strlen(s)+1);
++    len = t ? (t-s+1) : (int)(strlen(s)+1);
+     newcopy = malloc(len+3);/* two extra bytes for a bizarre bug caused by the fact that FindParam calls FreshHeaderCopy and sometimes tacks on "--". */
+     if (!newcopy) ExitWithError(nomem);
+     strncpy(newcopy, s, len);
+@@ -1534,6 +1609,7 @@ char *s;
+     return(newcopy);
+ }
+ 
++int
+ Read822Prefix(PrintHeads, nestingdepth)
+ int PrintHeads, nestingdepth;
+ {
+@@ -1654,6 +1730,7 @@ yankagain:
+     return 0;
+ }
+ 
++void
+ PrepareMessage() {
+     int c;
+ 
+@@ -1688,6 +1765,7 @@ PrepareMessage() {
+     SetUpEnvironment();  
+ }
+ 
++void
+ SetUpEnvironment() { 
+     int i, j, environsize;
+     char **newenviron, *mailervar, *summaryvar, *ctypevar, *s;
+@@ -1798,7 +1876,7 @@ char *def;
+     nameBuf[(cp - def) + 4] = 0;
+     cp++;               /* Now points to value part of environment string. */
+ 
+-    if ((envFile = fopen(nameBuf, "w")) == NULL) {
++    if ((envFile = Fopen(nameBuf, "w")) == NULL) {
+         return(2);
+     }
+ 
+@@ -1809,6 +1887,7 @@ char *def;
+ }
+ #endif
+ 
++int
+ OKToRun(ctype, progname, label)
+ char *ctype, *progname, *label;
+ {
+@@ -1823,7 +1902,7 @@ char *ctype, *progname, *label;
+         } else {
+             printf("This message contains '%s'-format data.\nDo you want to view it using the '%s' command (y/n) [y] ? ", ctype, ShortCommand(progname));
+         }
+-        s = gets(AnsBuf);
++        s = fgets(AnsBuf, sizeof(AnsBuf), stdin);
+         if (!s) return(0); /* EOF */
+ 	while (s && *s && isspace((unsigned char) *s)) ++s;
+ 	if (*s == 'y' || *s == 'Y' || !*s || *s == '\n') return(1);
+@@ -1834,6 +1913,7 @@ char *ctype, *progname, *label;
+     }
+ }
+ 
++void
+ EliminateNastyChars(s)
+ char *s;
+ {
+@@ -1848,6 +1928,7 @@ char *s;
+     }
+ }
+ 
++void
+ StripTrailingSpace(s)
+ char *s;
+ {
+@@ -1900,6 +1981,7 @@ char *hdr;
+ }
+ 
+ /* check the header given to see if it matches any in the KeyHeadList */
++void
+ maybephead(hdr)
+ char *hdr;
+ {
+@@ -1934,6 +2016,7 @@ char *hdr;
+ }
+ 
+ /* This next routine prints out a mail header, and needs to deal with the new extended charset headers. */
++void
+ phead(s)
+ char *s;
+ {
+@@ -2037,7 +2120,7 @@ int ShowLeadingWhitespace;
+     } else {
+         /* What follows is REALLY bogus, but all my encoding stuff is pipe-oriented right now... */
+         MkTmpFileName(TmpFile);
+-        fp = fopen(TmpFile, WRITE_BINARY);
++        fp = Fopen(TmpFile, WRITE_BINARY);
+         if (!fp) {
+             fprintf(stderr, "Could not open temporary file\n");
+         } else {
+@@ -2068,6 +2151,7 @@ int ShowLeadingWhitespace;
+     PrintHeader(txtend + 2, 0);
+ }
+ 
++void
+ BuildCommand(Buf, controlstring, TmpFileName, UsedTmpFileName, PartsWritten)
+ char *Buf, *controlstring, *TmpFileName;
+ int *UsedTmpFileName;
+@@ -2192,7 +2276,7 @@ struct part **PartsWritten;
+                             strcpy(thispart->fname, TmpFileNameBuf);
+                             WriteTmpFile(thispart->fname, thispart->ctype);
+                             strcat(TmpFileNameBuf, "H");
+-                            headfp = fopen(TmpFileNameBuf, "w");
++                            headfp = Fopen(TmpFileNameBuf, "w");
+                             if (headfp) {
+                                 fputs(mailheaders+12, headfp);
+                                 /* The +12 gets rid of MM_HEADERS=\n */
+@@ -2280,6 +2364,7 @@ struct part **PartsWritten;
+     *to = 0;
+ }
+ 
++void
+ strcpynoquotes(t,f)
+ char *t, *f;
+ {
+@@ -2291,6 +2376,7 @@ char *t, *f;
+     }
+ }
+ 
++int
+ WriteTmpFile(fname, ctype)
+ char *fname;
+ char *ctype;
+@@ -2298,7 +2384,7 @@ char *ctype;
+     FILE *fpout;
+     int retval = 0;
+ 
+-    fpout = fopen(fname, WRITE_BINARY);
++    fpout = Fopen(fname, WRITE_BINARY);
+     if (!fpout) {
+         perror("WriteTmpFile");
+         ExitWithError("Can't create temporary file");
+@@ -2309,7 +2395,7 @@ char *ctype;
+     return(retval);
+ }
+ 
+-
++void
+ TranslateInputToOutput(InputFP, OutputFP, Ecode, ctype)
+ FILE *InputFP, *OutputFP;
+ int Ecode;
+@@ -2337,6 +2423,7 @@ char *ctype;
+ #endif
+ }
+ 
++void
+ CreateNewWindowPrefix(Prefix)
+ char *Prefix;
+ {
+@@ -2377,18 +2464,28 @@ char *Prefix;
+ int HasSavedTtyState=0;
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
++#ifdef LINUX
++static struct termios MyTtyStateIn, MyTtyStateOut;
++#else
+ static struct termio MyTtyStateIn, MyTtyStateOut;
++#endif
+ #else
+ static struct sgttyb MyTtyStateIn, MyTtyStateOut;
+ #endif
+ #endif
+ 
++void
+ SaveTtyState() {
+     /* Bogus -- would like a good portable way to reset the terminal state here */
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
++#ifdef LINUX
++    tcgetattr(fileno(stdin),  &MyTtyStateIn);
++    tcgetattr(fileno(stdout), &MyTtyStateOut);
++#else
+     ioctl(fileno(stdin), TCGETA, &MyTtyStateIn);
+     ioctl(fileno(stdout), TCGETA, &MyTtyStateOut);
++#endif
+ #else
+     gtty(fileno(stdin), &MyTtyStateIn);
+     gtty(fileno(stdout), &MyTtyStateOut);
+@@ -2397,12 +2494,18 @@ SaveTtyState() {
+ #endif
+ }
+ 
++void
+ RestoreTtyState() {
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
+     if (HasSavedTtyState) {
++#ifdef LINUX
++	tcsetattr(fileno(stdout), TCSANOW, &MyTtyStateOut);
++	tcsetattr(fileno(stdin),  TCSANOW, &MyTtyStateIn);
++#else
+         ioctl(fileno(stdout), TCSETA, &MyTtyStateOut);
+         ioctl(fileno(stdin), TCSETA, &MyTtyStateIn);
++#endif
+     }
+ #else
+     if (HasSavedTtyState) {
+@@ -2413,6 +2516,7 @@ RestoreTtyState() {
+ #endif
+ }
+ 
++int
+ NeedToAskBeforeExecuting(type)
+ char *type;
+ {
+@@ -2424,6 +2528,7 @@ char *type;
+     return(1);
+ }
+ 
++int
+ NeedToBeQuiet(cmd)
+ char *cmd;
+ {
+@@ -2434,6 +2539,7 @@ char *cmd;
+     return(0);
+ }
+ 
++int
+ CtypeMatch(ctype, pat)
+ char *ctype, *pat;
+ {
+@@ -2460,6 +2566,7 @@ char *ctype, *pat;
+     return(0);
+ }
+ 
++int
+ ExecuteCommand(cmd, really)
+ char *cmd;
+ int really;
+@@ -2485,6 +2592,7 @@ int really;
+     return(0);
+ }
+ 
++void
+ MkTmpFileName(name)
+ char *name;
+ {
+@@ -2519,7 +2627,7 @@ char *nameBuf;
+     FILE *script;
+ 
+     MkTmpFileName(nameBuf);
+-    if ((script = fopen(nameBuf, "w")) == NULL) {
++    if ((script = Fopen(nameBuf, "w")) == NULL) {
+         fprintf(stderr, "Unable to open %s for writing\n", nameBuf);
+         exit(1);
+     }
+@@ -2641,11 +2749,12 @@ char *s;
+ }
+ #endif
+ 
++void
+ strcatquoting(s1, s2)
+ char *s1;
+ char *s2;
+ {
+-    strcat(s1, s2);
++    (void)strcat(s1, s2);
+ #ifdef NOTDEF
+     while (*s1) ++s1;
+     while (*s2) {
+@@ -2656,6 +2765,7 @@ char *s2;
+ #endif
+ }
+ 
++void
+ PauseForUser() {
+ #if defined(MSDOS) || defined(AMIGA)
+     char Buf[100];
+@@ -2680,17 +2790,27 @@ PauseForUser() {
+ #endif
+ }
+ 
++int
+ StartRawStdin() {
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
++#ifdef LINUX
++    struct termios  orterm, fterm;
++    tcgetattr(0, &orterm);	/* get current (i.e. cooked) termio */
++#else
+     struct termio   orterm, fterm;
+     ioctl(0, TCGETA, &orterm);	/* get current (i.e. cooked) termio */
++#endif
+     fterm = orterm;		/* get termio to modify */
+ 
+     fterm.c_lflag &= ~ICANON;	/* clear ICANON giving raw mode */
+     fterm.c_cc[VMIN] = 1;	/* set MIN char count to 1 */
+     fterm.c_cc[VTIME] = 0;	/* set NO time limit */
++#ifdef LINUX
++    return tcsetattr(0, TCSADRAIN, &fterm);	/* modify termio for raw mode */
++#else
+     return ioctl(0, TCSETAW, &fterm);	/* modify termio for raw mode */
++#endif
+ #else
+     struct sgttyb ts;
+     gtty(fileno(stdin), &ts);
+--- a/metamail/mmencode.c
++++ b/metamail/mmencode.c
+@@ -18,14 +18,27 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ #include <fcntl.h>
+ #endif
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <errno.h>
++
+ #define BASE64 1
+ #define QP 2 /* quoted-printable */
+ 
++extern FILE *Fopen(char * Fopen_path, char * Fopen_mode);
++extern void to64(); 
++extern void toqp(); 
++extern void from64();
++extern void fromqp();
++
++int
+ main(argc, argv)
+ int argc;
+ char **argv;
+ {
+     int encode = 1, which = BASE64, i, portablenewlines = 0;
++    struct stat fpstat;
+     FILE *fp = stdin;
+     FILE *fpo = stdout;
+ 
+@@ -37,7 +50,7 @@ char **argv;
+ 			fprintf(stderr, "mimencode: -o requires a file name.\n");
+ 			exit(-1);
+ 		    }
+-		    fpo = fopen(argv[i], "w");
++		    fpo = Fopen(argv[i], "w");
+ 		    if (!fpo) {
+ 			perror(argv[i]);
+ 			exit(-1);
+@@ -63,14 +76,14 @@ char **argv;
+         } else {
+ #ifdef MSDOS
+             if (encode)
+-                fp = fopen(argv[i], "rb");
++                fp = Fopen(argv[i], "rb");
+             else
+             {
+-                fp = fopen(argv[i], "rt");
++                fp = Fopen(argv[i], "rt");
+                 setmode(fileno(fpo), O_BINARY);
+             } /* else */
+ #else
+-            fp = fopen(argv[i], "r");
++            fp = Fopen(argv[i], "r");
+ #endif /* MSDOS */
+             if (!fp) {
+                 perror(argv[i]);
+@@ -81,6 +94,12 @@ char **argv;
+ #ifdef MSDOS
+     if (fp == stdin) setmode(fileno(fp), O_BINARY);
+ #endif /* MSDOS */
++    if(fstat(fileno(fp), &fpstat) == -1) {
++	perror("fstat");
++	exit(3);
++    }
++    if (fpo != stdout)
++	fchmod(fileno(fpo), fpstat.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+     if (which == BASE64) {
+         if (encode) {
+             to64(fp, fpo, portablenewlines);
+--- a/metamail/putenv.c
++++ b/metamail/putenv.c
+@@ -23,7 +23,6 @@ Cambridge, MA 02139, USA.  */
+ #include <stdlib.h>
+ #else
+ extern int errno;
+-#endif
+ 
+ #if defined(STDC_HEADERS) || defined(USG) || defined(SYSV)
+ #include <string.h>
+@@ -98,3 +97,4 @@ putenv (string)
+ 
+   return 0;
+ }
++#endif
+--- a/metamail/shared.c
++++ b/metamail/shared.c
+@@ -1,16 +1,25 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <config.h>
++#include <unistd.h>
++#include <string.h>
++#include <errno.h>
++#include <fcntl.h>
++#include <sys/stat.h>
+ #ifdef SYSV
+ #include <unistd.h>
+ #include <sys/utsname.h>
+ #endif
+ 
+-extern char *malloc();
++#include <stdlib.h>
++
+ char **Exceptions;
+ int *NeedsPortableNewlines;
+ int ExceptionsAlloced = 0, ExceptionsUsed = 0;
++int lc2strncmp();
++int lc2strcmp();
+ 
++int
+ ExceptionalNewline(contenttype, needsportable)
+ char *contenttype;
+ int needsportable;
+@@ -40,6 +49,7 @@ int needsportable;
+     return(0);
+ }
+ 
++int
+ DoesNeedPortableNewlines(ctype)
+ char *ctype;
+ {
+@@ -65,6 +75,7 @@ char *ctype;
+     return(0);
+ }
+ 
++int
+ lc2strncmp(s1, s2, len)
+ char *s1, *s2;
+ int len;
+@@ -78,6 +89,7 @@ int len;
+     return((*s1 == *s2) ? 0 : -1);
+ }
+ 
++int
+ lc2strcmp(s1, s2)
+ char *s1, *s2;
+ {
+@@ -118,3 +130,53 @@ char *getmyname() {
+     return(hostname);
+ }
+ 
++
++/*  This fopen wrapper function is designed to avoid /tmp-file race
++ *  conditions where a temporary filename is created and somebody
++ *  throws a link in your way before the fopen(...,"w").  This
++ *  would only happen if another user on the system were actively
++ *  trying to trick you into destroying files.
++ *  Sorry, but "a" mode is not really handled any safer than fopen,
++ *  since I really have no criterium for deciding what files are
++ *  OK to write to.  */
++FILE *Fopen(Fopen_path,Fopen_mode)
++char *Fopen_path; char *Fopen_mode;
++{
++#ifdef MSDOS
++return(fopen(Fopen_path,Fopen_mode));
++#else
++int Fopen_fd;
++struct stat Fopen_sb;
++int Fopen_appendmode = 0;
++int Fopen_readmode = 0;
++int Fopen_openflags = 0;
++int Fopen_r;
++if ( strchr(Fopen_mode,'r') != (char *)0 ) return(fopen(Fopen_path,Fopen_mode));
++if ( strchr(Fopen_mode,'a') != (char *)0 ) Fopen_appendmode = 1;
++if ( strchr(Fopen_mode,'+') != (char *)0 ) Fopen_readmode = 1;
++if ( ( Fopen_appendmode && (strchr(Fopen_mode,'w') != (char *)0) ) ||
++     ( (! Fopen_appendmode) && (strchr(Fopen_mode,'w') == (char *)0) ) )
++    {
++    errno = EINVAL ;
++    return( (FILE *)0 );
++    }
++if ( Fopen_appendmode )
++    {
++    /*  If "a" and file exists, pass it to the real fopen()  */
++    Fopen_r = stat(Fopen_path,&Fopen_sb) ;
++    if ( (Fopen_r != -1) || (errno != ENOENT) )
++        return( fopen(Fopen_path,Fopen_mode) );
++    }
++if ( Fopen_readmode )
++    Fopen_openflags = O_RDWR|O_CREAT|O_EXCL ;
++else
++    Fopen_openflags = O_WRONLY|O_CREAT|O_EXCL ;
++if ( Fopen_appendmode ) Fopen_openflags |= O_APPEND ;
++remove( Fopen_path );
++/*  0666?  We'd better hope their umask is safe...  */
++Fopen_fd = open(Fopen_path,Fopen_openflags,0666);
++if ( Fopen_fd > -1 ) return( fdopen(Fopen_fd,Fopen_mode) );
++return( (FILE *)0 );
++#endif
++}
++
+--- a/metamail/splitmail.c
++++ b/metamail/splitmail.c
+@@ -26,9 +26,16 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ #include <config.h>
+ #include <ctype.h>
+ #include <time.h>
++#include <fcntl.h>
+ 
+ #define MINCHUNKSIZE 20000 /* Better be enough to hold the headers, or we die! */
++#ifndef LINUX
+ extern char *malloc(), *index(), *getmyname();
++#else
++#include <stdlib.h>
++#include <string.h>
++extern char *getmyname();
++#endif
+ 
+ #ifdef AMIGA
+ #define Prototype   extern
+@@ -41,11 +48,11 @@ extern char *malloc(), *index(), *getmyn
+ #define VERBOSEDELIVERYCMD VerboseDeliveryCmd
+ #else
+ extern char *getenv();
+-#define NORMALDELIVERYCMD "/usr/lib/sendmail -t -oi"
+-#define VERBOSEDELIVERYCMD "/usr/lib/sendmail -t -v -oi"
++#define NORMALDELIVERYCMD "/usr/sbin/sendmail -t -oi"
++#define VERBOSEDELIVERYCMD "/usr/sbin/sendmail -t -v -oi"
+ #endif
+ 
+-usageexit() {
++void usageexit() {
+     fprintf(stderr, "Usage:  splitmail [-d] [-v] [-s splitsize] [-i id-suffix] [-p prefix] [file-name]\n");
+     exit(-1);
+ }
+@@ -53,6 +60,11 @@ usageexit() {
+ char *MonthNames[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+ char *DayNames[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+ 
++int ShareThisHeader();
++void HandleOnePart();
++int ULstrcmp();
++int IllegalContentType();
++
+ char *
+ endofheader(s)
+ char *s;
+@@ -67,6 +79,7 @@ char *s;
+     }
+ }
+ 
++int
+ main(argc, argv)
+ char **argv;
+ {
+@@ -238,11 +251,12 @@ char **argv;
+     return(0);
+ }
+ 
+-HandleOnePart(DoDeliver, deliverycmd, prefix, numparts, whichpart, SharedHeaders, SubjectBuf, id, MessageID, bigbuf, OrigID)
++void HandleOnePart(DoDeliver, deliverycmd, prefix, numparts, whichpart, SharedHeaders, SubjectBuf, id, MessageID, bigbuf, OrigID)
+ int DoDeliver, numparts, whichpart;
+ char *deliverycmd, *prefix, *SharedHeaders, *SubjectBuf, *id, *MessageID, *bigbuf, *OrigID;
+ {
+     FILE *fpout;
++    int fd;
+     char OutputFile[1000];
+     int code;
+ #if defined(sequent)
+@@ -255,7 +269,11 @@ char *deliverycmd, *prefix, *SharedHeade
+         fpout = popen(deliverycmd, "w");
+     } else {
+         sprintf(OutputFile, "%s%d", prefix, whichpart);
+-        fpout = fopen(OutputFile, "w");
++        /* fpout = fopen(OutputFile, "w"); */
++        remove(OutputFile);
++        fpout = NULL;
++        fd = open(OutputFile, O_WRONLY|O_CREAT|O_EXCL, 0600);
++        if ( fd > -1 ) fpout = fdopen(fd, "w");
+     }
+     if (!fpout) {
+ 	fprintf(stderr, "splitmail: Can't open %s for writing\n", DoDeliver ? deliverycmd : OutputFile);
+@@ -339,7 +357,7 @@ static char *SharedHeads[] = {
+     NULL
+ };
+ 
+-ShareThisHeader(s, SubjectBuf, SubjectBufLen, OrigID)
++int ShareThisHeader(s, SubjectBuf, SubjectBufLen, OrigID)
+ char *s;
+ char *SubjectBuf;
+ size_t SubjectBufLen;
+@@ -381,7 +399,7 @@ char **OrigID;
+ 
+ static char *tspecials = "()<>@,;:\\\"/[]?.=";
+ 
+-IllegalContentType(ctype)
++int IllegalContentType(ctype)
+ char *ctype;
+ {
+     char *ct, *semicolon, *st, *s, *param, *eq, *matcheq;
+--- a/metamail/uue.c
++++ b/metamail/uue.c
+@@ -1,10 +1,13 @@
+ #include <stdio.h>
++#include <string.h>
++
++int PendingBoundary();
+ 
+ /*
+  * hack to metamail to decode uuencoded bodyparts
+  * Written by Keith Moore, February 1992
+  */
+-
++void
+ uueget (ptr, outfp, n)
+ char *ptr;
+ FILE *outfp;
+@@ -29,7 +32,7 @@ FILE *outfp;
+ 	putc (c3, outfp);
+ }
+ 
+-
++int
+ getline (buf, size, fp)
+ char *buf;
+ int size;
+@@ -61,7 +64,7 @@ FILE *fp;
+ (0); /* shut lint up */
+ }
+ 
+-
++void
+ fromuue (infp, outfp, boundaries, ctptr)
+ FILE *infp, *outfp;
+ char **boundaries;
+--- a/richmail/iso2022.c
++++ b/richmail/iso2022.c
+@@ -41,9 +41,13 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <string.h>
+ #include "richlex.h"
+ #include "richset.h"
+ 
++extern void controloutput();
++extern int controlputc();
++
+ /*
+  * Global data for this module.
+  */
+@@ -73,7 +77,7 @@ static	int	OutAsciiMode;
+ /*
+  * Initialise the ISO-2022 character set processor.
+  */
+-iso2022_init (name)
++void iso2022_init (name)
+ char	*name;
+ {
+     SwToAscii = 'B';
+@@ -257,7 +261,7 @@ RCHAR	ch;
+ /*
+  * Render the given ISO-2022 character.
+  */
+-iso2022_render (ch,param)
++int iso2022_render (ch,param)
+ RCHAR	ch;
+ void	*param;
+ {
+@@ -274,7 +278,7 @@ void	*param;
+ 	    }
+ 	}
+         (*RichtextPutc) ((int)((ch & 0xFF00) >> 8),param);
+-        (*RichtextPutc) ((int)(ch & 0xFF),param);
++        return (*RichtextPutc) ((int)(ch & 0xFF),param);
+     } else {
+ 	if (OutCharLen > 1 && ch >= 0x20) {
+ 	    /* Add extra escape sequences before stray ASCII characters */
+@@ -287,14 +291,14 @@ void	*param;
+ 		(*RichtextPutc) (SI,param);
+ 	    }
+ 	}
+-	(*RichtextPutc) ((int)(ch & 0xFF),param);
++	return (*RichtextPutc) ((int)(ch & 0xFF),param);
+     }
+ }
+ 
+ /*
+  * Enter or leave the ISO-2022 encoding.
+  */
+-iso2022_encoding (newenc)
++int iso2022_encoding (newenc)
+ int	newenc;
+ {
+     switch (newenc) {
+@@ -306,6 +310,7 @@ int	newenc;
+ 	case RICH_ENC_KSC_5601: controloutput("\016",0);   break;
+ 	default:		controloutput("\033(B",0); break;
+     }
++    return 0;
+ }
+ 
+ /*
+@@ -372,4 +377,5 @@ FILE	*file;
+     }
+     OutPrevPrevChar = OutPrevChar;
+     OutPrevChar = ch;
++    return 0;
+ }
+--- a/richmail/richlex.c
++++ b/richmail/richlex.c
+@@ -42,6 +42,7 @@
+ -------------------------------------------------------------------------*/
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <ctype.h>
+ #include "richlex.h"
+ #include "richset.h"
+@@ -89,7 +90,7 @@ static	int	PushbackExtract=0;
+  * on the terminal.
+  */
+ #define	ISO2022_GENERIC	"x-iso-2022-gen-%2x"
+-#define	ISO2022_CHARSET "x-iso-charset-"
++#define	ISO2022_CHARSET "x-iso-charset-%8x"
+ 
+ /*
+  * Define the character set shift characters for ISO-2022-KR.
+@@ -105,7 +106,7 @@ static	int	PushbackExtract=0;
+ /*
+  * Reset the richtext parsing mechanism.
+  */
+-richtextreset()
++void richtextreset()
+ {
+     StackSize = 0;
+     FlushStack = 0;
+@@ -191,7 +192,7 @@ static int richtextmatchup()
+  * Determine if the current token is one of the singleton
+  * richtext commands: <nl>, <lt>, <np>.
+  */
+-static richtextsingle(TextEnriched)
++static int richtextsingle(TextEnriched)
+ int TextEnriched;
+ {
+     return (charsetsingle (NextToken) ||
+@@ -416,7 +417,7 @@ int nofill; /* Inside a nofill env we pa
+ /*
+  * Output a string via "RichtextPutc".
+  */
+-static richtextoutstr(str,outparam)
++static void richtextoutstr(str,outparam)
+ char *str;
+ void *outparam;
+ {
+@@ -430,7 +431,7 @@ void *outparam;
+  * Read the input stream, correct the richtext, and write the
+  * results to the output stream.
+  */
+-richtextcorrect(inparam,outparam,TextEnriched)
++void richtextcorrect(inparam,outparam,TextEnriched)
+ void *inparam,*outparam;
+ int TextEnriched;
+ {
+@@ -459,7 +460,7 @@ int TextEnriched;
+  * Change the encoding used for characters not present in
+  * richtext command sequences.
+  */
+-richtextencoding(encoding)
++void richtextencoding(encoding)
+ int	encoding;
+ {
+     RichtextCharEncoding = encoding;
+--- a/richmail/richlex.h
++++ b/richmail/richlex.h
+@@ -101,7 +101,7 @@ extern	int (*RichtextPutc) ();
+ /*
+  * Reset the richtext parsing mechanism.
+  */
+-extern	richtextreset();
++extern	void richtextreset();
+ 
+ /*
+  * Get the next token from the input stream.  RICHTEXT_COMMAND
+@@ -123,7 +123,7 @@ extern	RCHAR	richtextlex( /* void *file,
+  * "RichtextPutc" function as the second argument, and "inparam"
+  * is passed to "richtextlex" during parsing.
+  */
+-extern	richtextcorrect( /* void *inparam,void *outparam,int TextEnriched */ );
++extern	void richtextcorrect( /* void *inparam,void *outparam,int TextEnriched */ );
+ 
+ #define	RICH_ENC_US_ASCII	0	/* US-ASCII encoding: one-byte */
+ #define	RICH_ENC_JP_ASCII	1	/* JP-ASCII encoding: one-byte */
+@@ -143,7 +143,7 @@ extern	int	RichtextCharEncoding;
+  * Change the encoding used for characters not present in
+  * richtext command sequences.
+  */
+-extern	richtextencoding( /* int encoding */ );
++extern	void richtextencoding( /* int encoding */ );
+ 
+ /*
+  * Define a number of macros for decoding multi-byte character
+--- a/richmail/richset.c
++++ b/richmail/richset.c
+@@ -34,6 +34,7 @@
+ -------------------------------------------------------------------------*/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "richlex.h"
+ #include "richset.h"
+ 
+@@ -58,7 +59,7 @@ static	int	CharEncStack[MAX_CHAR_SETS];
+  * a particular base processor.  The initialisation function of all
+  * character set processors is called.
+  */
+-charsetinit (charset,name)
++void charsetinit (charset,name)
+ struct	charsetproc *charset;
+ char	*name;
+ {
+@@ -76,7 +77,7 @@ char	*name;
+  * Initialise the stack, starting with a character set processor with
+  * a particular name.
+  */
+-charsetnameinit	(name)
++void charsetnameinit	(name)
+ char	*name;
+ {
+     int temp = 0;
+@@ -110,7 +111,7 @@ char	*name;
+ /*
+  * Push a new character set processor onto the stack.
+  */
+-charsetpush (charset)
++void charsetpush (charset)
+ struct	charsetproc *charset;
+ {
+     if (NumCharSets >= MAX_CHAR_SETS) {
+@@ -128,7 +129,7 @@ struct	charsetproc *charset;
+  * if it matches the given processor.  Note: the base
+  * processor is never popped off.
+  */
+-charsetpop (charset)
++void charsetpop (charset)
+ struct	charsetproc *charset;
+ {
+     if (NumCharSets > 1 && CharSets[NumCharSets - 1] == charset) {
+@@ -156,7 +157,7 @@ struct	charsetproc *charset;
+  * Set the details for a character set member in the top-most
+  * character set.
+  */
+-charmember (member,ch)
++void charmember (member,ch)
+ struct	charsetmember *member;
+ RCHAR	ch;
+ {
+@@ -167,7 +168,7 @@ RCHAR	ch;
+ /*
+  * Set the details for a member of a specific character set.
+  */
+-charmemberspec (member,ch,charset)
++void charmemberspec (member,ch,charset)
+ struct	charsetmember *member;
+ RCHAR	ch;
+ struct	charsetproc *charset;
+@@ -179,7 +180,7 @@ struct	charsetproc *charset;
+ /*
+  * Set the details for a output control code character.
+  */
+-charmemberctrl (member,ch)
++void charmemberctrl (member,ch)
+ struct	charsetmember *member;
+ RCHAR	ch;
+ {
+--- a/richmail/richset.h
++++ b/richmail/richset.h
+@@ -58,7 +58,7 @@ extern "C" {
+ struct	charsetproc
+ 		{
+ 		    char *names;
+-		    int (*init) ( /* char *name */ );
++		    void (*init) ( /* char *name */ );
+ 		    int (*command) ( /* char *token, int negated */ );
+ 		    int (*single) ( /* char *token */ );
+ 		    int (*width) ( /* RCHAR c */ );
+@@ -89,25 +89,25 @@ struct	charsetmember
+  * a particular base processor.  The initialisation function of all
+  * character set processors is called.
+  */
+-extern	charsetinit	( /* struct charsetproc *charset, char *name */ );
++extern	void charsetinit	( /* struct charsetproc *charset, char *name */ );
+ 
+ /*
+  * Initialise the stack, starting with a character set processor with
+  * a particular name.
+  */
+-extern	charsetnameinit	( /* char *name */ );
++extern	void charsetnameinit	( /* char *name */ );
+ 
+ /*
+  * Push a new character set processor onto the stack.
+  */
+-extern	charsetpush	( /* struct charsetproc *charset */ );
++extern	void charsetpush	( /* struct charsetproc *charset */ );
+ 
+ /*
+  * Pop the top-most character set processor off the stack
+  * if it matches the given processor.  Note: the base
+  * processor is never popped off.
+  */
+-extern	charsetpop	( /* struct charsetproc *charset */ );
++extern	void charsetpop	( /* struct charsetproc *charset */ );
+ 
+ /*
+  * See if the character set processor on the top of the stack
+@@ -119,18 +119,18 @@ extern	int	charsettop ( /* struct charse
+  * Set the details for a character set member in the top-most
+  * character set.
+  */
+-extern	charmember	( /* struct charsetmember *member, RCHAR ch */ );
++extern	void charmember	( /* struct charsetmember *member, RCHAR ch */ );
+ 
+ /*
+  * Set the details for a member of a specific character set.
+  */
+-extern	charmemberspec	( /* struct charsetmember *member, RCHAR ch,
++extern	void charmemberspec	( /* struct charsetmember *member, RCHAR ch,
+ 			     struct charset *charset */ );
+ 
+ /*
+  * Set the details for a output control code character.
+  */
+-extern	charmemberctrl	( /* struct charsetmember *member, RCHAR ch */ );
++extern	void charmemberctrl	( /* struct charsetmember *member, RCHAR ch */ );
+ 
+ /*
+  * Determine if the given character is a control code character.
+--- a/richmail/richtext.c
++++ b/richmail/richtext.c
+@@ -16,6 +16,8 @@ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <signal.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "richlex.h"
+ #include "richset.h"
+ #include <config.h>
+@@ -82,7 +84,18 @@ static int FakeTerminal;
+ extern tputs();
+ #endif
+ 
+-static outputc(), realoutputc(), MakeWorkingMargins(), Pause(), fputsmovingright(), ResetTerminalCodes(), FinalizeTerminal(), outputstr(), FPUTS(), lc2strcmp();
++void controloutput();
++
++static void outputc();
++static void realoutputc();
++static void MakeWorkingMargins();
++static void Pause();
++static void fputsmovingright();
++static void ResetTerminalCodes();
++static void FinalizeTerminal();
++static void outputstr();
++static void FPUTS();
++static int lc2strcmp();
+ 
+ #define	OUTC(c)		(outputc((RCHAR)(c)))
+ 
+@@ -128,7 +141,7 @@ int signum;
+ #endif
+ }
+ 
+-static InitSignals() {
++static void InitSignals() {
+     signal(SIGINT, cleanup);
+ #if !defined(AMIGA)
+ #if !defined(MSDOS)
+@@ -149,7 +162,8 @@ static InitSignals() {
+ #endif
+ }
+ 
+-static nomemabort() {
++#if 0
++static void nomemabort() {
+     fprintf(stderr, "richtext: Out of memory\n");
+     FinalizeTerminal();
+ #ifdef AMIGA
+@@ -158,15 +172,17 @@ static nomemabort() {
+     exit(-1);
+ #endif
+ }
++#endif
+ 
+ #ifndef	RICHTEXT_LIBRARY
+ 
++int richtext_main();
+ /*
+  * Only include the main function if this module is not being used as a
+  * library call.
+  */
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int argc;
+ char **argv;
+ {
+@@ -175,7 +191,7 @@ char **argv;
+ 
+ #endif
+ 
+-richtext_main(argc, argv)
++int richtext_main(argc, argv)
+ int argc;
+ char **argv;
+ {
+@@ -341,15 +357,15 @@ char **argv;
+         char *cp;
+                    
+         cp = cb; 
+-        if (dum = tgetstr("ks", &cp)) strcpy (KS, dum); else KS[0] = '\0';
+-        if (dum = tgetstr("ke", &cp)) strcpy (KE, dum); else KE[0] = '\0';
+-        if (dum = tgetstr("so", &cp)) strcpy (standoutbuf, dum); standoutbuf[0] = '\0';
+-        if (dum = tgetstr("se", &cp)) strcpy (standendbuf, dum); standendbuf[0] = '\0';
+-        if (dum = tgetstr("md", &cp)) strcpy (BoldOn, dum); else strcpy(BoldOn, standoutbuf);
+-        if (dum = tgetstr("me", &cp)) strcpy (BoldOff, dum); else strcpy(BoldOff, standendbuf);
+-        if (dum = tgetstr("us", &cp)) strcpy (StartUnderline, dum); else StartUnderline[0] = '\0';
+-        if (dum = tgetstr("ue", &cp)) strcpy (StopUnderline, dum); else StopUnderline[0] = '\0';
+-        if (dum = tgetstr("nd", &cp)) strcpy (MoveRight, dum); else {
++        if ((dum = tgetstr("ks", &cp))) strcpy (KS, dum); else KS[0] = '\0';
++        if ((dum = tgetstr("ke", &cp))) strcpy (KE, dum); else KE[0] = '\0';
++        if ((dum = tgetstr("so", &cp))) strcpy (standoutbuf, dum); standoutbuf[0] = '\0';
++        if ((dum = tgetstr("se", &cp))) strcpy (standendbuf, dum); standendbuf[0] = '\0';
++        if ((dum = tgetstr("md", &cp))) strcpy (BoldOn, dum); else strcpy(BoldOn, standoutbuf);
++        if ((dum = tgetstr("me", &cp))) strcpy (BoldOff, dum); else strcpy(BoldOff, standendbuf);
++        if ((dum = tgetstr("us", &cp))) strcpy (StartUnderline, dum); else StartUnderline[0] = '\0';
++        if ((dum = tgetstr("ue", &cp))) strcpy (StopUnderline, dum); else StopUnderline[0] = '\0';
++        if ((dum = tgetstr("nd", &cp))) strcpy (MoveRight, dum); else {
+             MoveRight[0] = ' ';
+             MoveRight[1] = '\0';
+         }
+@@ -654,31 +670,32 @@ char **argv;
+     return(0);
+ }
+ 
+-static struct charsetmember OutputBuf[1000] = {0,0};
++static struct charsetmember OutputBuf[1000];
+ static int PendingOutput = 0, PendingControls = 0;
+ 
+-controlputc(c)
++int controlputc(c)
+ int c;
+ {
+     charmemberctrl (&OutputBuf[PendingOutput],(RCHAR)c);
+     ++PendingOutput;
+     ++PendingControls;
++    return 0;
+ }
+ 
+-static immediate_controlputc(c)
++static int immediate_controlputc(c)
+ int c;
+ {
+-    (*RichtextPutc) (c, stdout);
++    return (*RichtextPutc) (c, stdout);
+ }
+ 
+-controloutput(s, immediate)
++void controloutput(s, immediate)
+ char *s;
+ int immediate;
+ {
+     tputs(s, 1, immediate ? immediate_controlputc : controlputc);
+ }
+ 
+-static folding_point (buf, pos)
++static int folding_point (buf, pos)
+ struct	charsetmember *buf;
+ int	pos;
+ {
+@@ -690,7 +707,7 @@ int	pos;
+     return (0);
+ }
+ 
+-static calc_column (buf, pos)
++static int calc_column (buf, pos)
+ struct	charsetmember *buf;
+ int	pos;
+ {
+@@ -705,7 +722,7 @@ int	pos;
+     return (col);
+ }
+ 
+-static FlushOut() {
++static void FlushOut() {
+     int i, j, x;
+     static struct charsetmember NewOutputBuf[1000];
+     struct charsetmember *s;
+@@ -795,7 +812,7 @@ static FlushOut() {
+                         StopUnderline, 0, BoldOn, BoldOff, 0);
+ }
+ 
+-static outputc(c)
++static void outputc(c)
+ RCHAR c;
+ {
+     struct charsetmember member;
+@@ -803,7 +820,7 @@ RCHAR c;
+     realoutputc(member, 0);
+ }
+ 
+-static realoutputc(c, alreadyformatted)
++static void realoutputc(c, alreadyformatted)
+ struct charsetmember c;
+ int alreadyformatted;
+ {
+@@ -875,7 +892,7 @@ int alreadyformatted;
+     }
+ }
+ 
+-static MakeWorkingMargins() {
++static void MakeWorkingMargins() {
+     int oldworkingleft=workingleft, i;
+ 
+     workingleft = leftmargin;
+@@ -889,7 +906,7 @@ static MakeWorkingMargins() {
+     }
+ }
+ 
+-static Pause()
++static void Pause()
+ {
+     int	c;
+ 
+@@ -903,7 +920,7 @@ static Pause()
+ /* Leading spaces should be output as MoveRight, to avoid 
+    having margins that are underlined or reverse video */
+ 
+-static fputsmovingright(s, fp)
++static void fputsmovingright(s, fp)
+ struct charsetmember *s;
+ FILE *fp;
+ {
+@@ -923,7 +940,7 @@ FILE *fp;
+     }
+ }
+ 
+-static ResetTerminalCodes(FakeTerminal, standout, underline, bold, standoutbuf, standendbuf,
++static void ResetTerminalCodes(FakeTerminal, standout, underline, bold, standoutbuf, standendbuf,
+                     modifiedstandout, StartUnderline, StopUnderline, modifiedunderline,
+                     BoldOn, BoldOff, modifiedbold)
+ char *standoutbuf, *standendbuf, *StartUnderline, *StopUnderline,
+@@ -951,14 +968,14 @@ char *standoutbuf, *standendbuf, *StartU
+     }
+ }
+ 
+-static FinalizeTerminal() {
++static void FinalizeTerminal() {
+     tputs(standendbuf, 1, immediate_controlputc);
+     tputs(BoldOff, 1, immediate_controlputc);
+     tputs(StopUnderline, 1, immediate_controlputc);
+     FPUTS(KE, stdout);
+ }
+ 
+-static outputstr(s)
++static void outputstr(s)
+ char *s;
+ {
+     while (*s) OUTC(*s++);
+@@ -980,14 +997,14 @@ int (*func)();
+ }
+ #endif
+ 
+-static FPUTS(s,fp)
++static void FPUTS(s,fp)
+ unsigned char *s;
+ FILE *fp;
+ {
+     while(*s) (*RichtextPutc)((int)(*s++),fp);
+ }
+ 
+-static lc2strcmp(s1, s2)
++static int lc2strcmp(s1, s2)
+ char *s1, *s2;
+ {
+     if (!s1 || !s2) return (-1);
+@@ -998,7 +1015,8 @@ char *s1, *s2;
+     return((*s1 == *s2) ? 0 : -1);
+ }
+ 
+-static lc2strncmp(s1, s2, len)
++#if 0
++static int lc2strncmp(s1, s2, len)
+ char *s1, *s2;
+ int len;
+ {
+@@ -1010,3 +1028,4 @@ int len;
+     if (len <= 0) return(0);
+     return((*s1 == *s2) ? 0 : -1);
+ }
++#endif
+--- a/richmail/richtoatk.c
++++ b/richmail/richtoatk.c
+@@ -13,9 +13,12 @@ OF THIS MATERIAL FOR ANY PURPOSE.  IT IS
+ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+ */
+ #include <stdio.h>
++#include <string.h>
+ #include <ctype.h>
+ #include "richlex.h"
+ 
++int ignoretoken();
++
+ char *translate(t)
+ char *t;
+ {
+@@ -25,7 +28,7 @@ char *t;
+     return(t);
+ }
+ 
+-main() {
++int main() {
+     RCHAR c;
+     int i, JustDidNewline = 0;
+     char tok[MAX_TOKEN_SIZE + 1],*token;
+@@ -73,10 +76,10 @@ main() {
+             JustDidNewline = 0;
+         }
+     }
+-    fputs("\n \n\\enddata{text, 42}\n", stdout);
++    return fputs("\n \n\\enddata{text, 42}\n", stdout);
+ }
+ 
+-ignoretoken(t)
++int ignoretoken(t)
+ char *t;
+ {
+     if (*t == '/') ++t;
+@@ -86,12 +89,12 @@ char *t;
+     return(0);
+ }
+ 
+-controlputc(c)
++void controlputc(c)
+ int c;
+ {
+ }
+ 
+-controloutput(s, immediate)
++void controloutput(s, immediate)
+ char *s;
+ int immediate;
+ {
+--- a/richmail/usascii.c
++++ b/richmail/usascii.c
+@@ -34,6 +34,7 @@
+ -------------------------------------------------------------------------*/
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <ctype.h>
+ #include "richlex.h"
+ #include "richset.h"
+@@ -41,7 +42,7 @@
+ /*
+  * Initialise the US-ASCII character set processor.
+  */
+-usascii_init (name)
++void usascii_init (name)
+ char	*name;
+ {
+     if (name)
+@@ -98,20 +99,21 @@ RCHAR	ch;
+ /*
+  * Render the given US-ASCII character.
+  */
+-usascii_render (ch,param)
++int usascii_render (ch,param)
+ RCHAR	ch;
+ void	*param;
+ {
+-    (*RichtextPutc) ((int)ch,param);
++    return (*RichtextPutc) ((int)ch,param);
+ }
+ 
+ /*
+  * Enter or leave the US-ASCII encoding.
+  */
+-usascii_encoding (newenc)
++int usascii_encoding (newenc)
+ int	newenc;
+ {
+     /* Nothing to be done in this version */
++    return 0;
+ }
+ 
+ /*
+@@ -119,10 +121,10 @@ int	newenc;
+  */
+ struct 	charsetproc	usascii_charset =
+ 	  {"us-ascii",
+-	   usascii_init,
+-	   usascii_command,
+-	   usascii_single,
+-	   usascii_width,
+-	   usascii_fold,
+-	   usascii_render,
+-	   usascii_encoding};
++	   &usascii_init,
++	   &usascii_command,
++	   &usascii_single,
++	   &usascii_width,
++	   &usascii_fold,
++	   &usascii_render,
++	   &usascii_encoding};

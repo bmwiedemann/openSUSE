@@ -1,0 +1,157 @@
+---
+ xemacs-packages-20130822/mule-packages/locale/app-defaults/de/Emacs |   14 +++
+ xemacs-packages-20130822/mule-packages/locale/app-defaults/fr/Emacs |   15 +++
+ xemacs-packages-20130822/mule-packages/locale/app-defaults/ja/Emacs |   46 +++++++++-
+ xemacs-packages-20130822/mule-packages/locale/app-defaults/ro/Emacs |   16 +++
+ xemacs-packages-20130822/mule-packages/locale/app-defaults/sv/Emacs |   14 +++
+ 5 files changed, 103 insertions(+), 2 deletions(-)
+
+--- xemacs-packages-20130822/mule-packages/locale/app-defaults/de/Emacs
++++ xemacs-packages-20130822/mule-packages/locale/app-defaults/de/Emacs	2015-11-27 12:46:12.803663000 +0000
+@@ -3,6 +3,20 @@
+ ! German localization resources for XEmacs.
+ ! updated Fri Aug 10 16:17:07 2007  by Mike FABIAN  <mfabian@suse.de>
+ 
++!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
++!! FontSet for menus when you use --with-xfs or --with-xim=xlib.
++XEmacs*FontSet:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*popup*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++XEmacs*popup*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++
+ ! Pulldown menu internationalization.  The first line of the file
+ ! "*XlwMenu.resourceLabels: True" has to be there to make sure
+ ! all the labelString will be read and displayed by X.
+--- xemacs-packages-20130822/mule-packages/locale/app-defaults/fr/Emacs
++++ xemacs-packages-20130822/mule-packages/locale/app-defaults/fr/Emacs	2015-11-27 12:43:22.039371000 +0000
+@@ -1,3 +1,18 @@
++! -*- coding: iso-8859-1 -*-
++!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
++!! FontSet for menus when you use --with-xfs or --with-xim=xlib.
++XEmacs*FontSet:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*popup*FontSet:           -*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++XEmacs*popup*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++
+ *XlwMenu.resourceLabels: True
+ 
+ 
+--- xemacs-packages-20130822/mule-packages/locale/app-defaults/ja/Emacs
++++ xemacs-packages-20130822/mule-packages/locale/app-defaults/ja/Emacs	2015-11-27 12:47:20.694934000 +0000
+@@ -1,3 +1,4 @@
++! -*- coding: euc-jp -*-
+ !    Japanese localization resources for XEmacs.
+ ! @(#)Emacs	1.3 96/09/22
+ !    Copyright (C) 1996 Sun Microsystems, Inc.
+@@ -33,7 +34,50 @@
+ ! And fontList is just used under Motif menubar.
+ *fontList: -*-gothic-medium-r-normal--14-120-75-75-c-*-*-*:
+ !! FontSet for menus when you use --with-xfs or --with-xim=xlib.
+-*fontSet: -*-fixed-medium-r-normal--14-*
++XEmacs*fontSet:			-efont-biwidth-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-gnu-unifont-medium-r-normal--16-160-75-75-p-80-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0
++XEmacs*menubar*fontSet:		-efont-biwidth-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-gnu-unifont-medium-r-normal--16-160-75-75-p-80-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0
++XEmacs*popup*fontSet:		-efont-biwidth-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-gnu-unifont-medium-r-normal--16-160-75-75-p-80-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-iso10646-1,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0,\
++				-*-sazanami gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-kochi-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-gothic-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0,\
++				-*-*-medium-r-normal--16-*-*-*-*-*-jisx0201.1976-0
++XEmacs*menubar*Font:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*
++XEmacs*popup*Font:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*
+ 
+ ! Starting below here are menu label string which can be translated to
+ ! different languages. 
+--- xemacs-packages-20130822/mule-packages/locale/app-defaults/ro/Emacs
++++ xemacs-packages-20130822/mule-packages/locale/app-defaults/ro/Emacs	2015-11-27 12:44:11.181368000 +0000
+@@ -1,5 +1,19 @@
+-*XlwMenu.resourceLabels: True
++! -*- coding: iso-8859-2 -*-
++!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
++!! FontSet for menus when you use --with-xfs or --with-xim=xlib.
++XEmacs*FontSet:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*popup*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++XEmacs*popup*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
+ 
++*XlwMenu.resourceLabels: True
+ 
+ ! menu-apps
+ 
+--- xemacs-packages-20130822/mule-packages/locale/app-defaults/sv/Emacs
++++ xemacs-packages-20130822/mule-packages/locale/app-defaults/sv/Emacs	2015-11-27 12:44:55.176153000 +0000
+@@ -3,6 +3,20 @@
+ ! Swedish localization resources for XEmacs.
+ ! Based on german localization resources by Mike FABIAN  <mfabian@suse.de>
+ 
++!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
++!! FontSet for menus when you use --with-xfs or --with-xim=xlib.
++XEmacs*FontSet:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*popup*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,\
++				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10464-1,\
++				*
++XEmacs*menubar*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++XEmacs*popup*Font:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
++
+ ! Pulldown menu internationalization.  The first line of the file
+ ! "*XlwMenu.resourceLabels: True" has to be there to make sure
+ ! all the labelString will be read and displayed by X.

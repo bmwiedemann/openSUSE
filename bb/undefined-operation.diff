@@ -1,0 +1,11 @@
+--- zoom.c.orig
++++ zoom.c
+@@ -199,7 +199,7 @@ struct dyn_data {
+ #define adddata(n,i) ((((n)<<DSIZES)+(((i)&(DSIZEHMASK)))))
+ #define getbest(i) (((size)<<DSIZES)+(i))
+ 
+-#define PRICE(i,i1) ((((ftmp=((i)-(i1)))*ftmp)*(rangedelta)))
++#define PRICE(i,i1) (((ftmp=((i)-(i1)),ftmp*ftmp)*(rangedelta)))
+ #define NEWPRICE (FPMUL)
+ 
+ #define NOSETMASK ((unsigned int)0x80000000)

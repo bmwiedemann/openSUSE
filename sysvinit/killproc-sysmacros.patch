@@ -1,0 +1,24 @@
+Index: killproc-2.21/libinit.c
+===================================================================
+--- killproc-2.21.orig/libinit.c
++++ killproc-2.21/libinit.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include <sys/mount.h>
++#include <sys/sysmacros.h>
+ #include "libinit.h"  /* Now get the inlined functions */
+ #ifndef  INITDIR
+ # define INITDIR	"/etc/init.d"
+Index: killproc-2.21/rvmtab.c
+===================================================================
+--- killproc-2.21.orig/rvmtab.c
++++ killproc-2.21/rvmtab.c
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include "libinit.h"

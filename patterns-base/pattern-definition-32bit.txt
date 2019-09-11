@@ -1,0 +1,376 @@
+%package apparmor-32bit
+Summary:        AppArmor
+Recommends:     pattern()-32bit
+Recommends:     apparmor-abstractions-32bit
+Recommends:     apparmor-parser-32bit
+Recommends:     apparmor-profiles-32bit
+Recommends:     apparmor-docs-32bit
+Recommends:     apparmor-utils-32bit
+Recommends:     yast2-apparmor-32bit
+Recommends:     audit-32bit
+Recommends:     audit-32bit
+Provides:       pattern() = apparmor%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-apparmor)
+
+%files apparmor-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/apparmor-32bit.txt
+
+%description apparmor-32bit
+The 32bit pattern complementing apparmor.
+#
+#-------------------------------------------------------------------
+#
+%package base-32bit
+Summary:        Minimal Base System
+Recommends:     e2fsprogs-32bit
+Recommends:     kmod-32bit
+Recommends:     openssh-32bit
+Recommends:     polkit-32bit
+Recommends:     polkit-default-privs-32bit
+Recommends:     shadow-32bit
+Recommends:     util-linux-32bit
+Recommends:     which-32bit
+Recommends:     systemd-coredump-32bit
+Recommends:     busybox-static-32bit
+Recommends:     bash-completion-32bit
+Recommends:     btrfsprogs-32bit
+Recommends:     ca-certificates-mozilla-32bit
+Recommends:     chrony-32bit
+Recommends:     cron-32bit
+Recommends:     cronie-32bit
+Recommends:     grub2-32bit
+Recommends:     glibc-locale-32bit
+Recommends:     systemd-sysvinit-32bit
+Recommends:     snapper-32bit
+Recommends:     branding-openSUSE-32bit
+Recommends:     branding-SLE-32bit
+Recommends:     efibootmgr-32bit
+Recommends:     shim-32bit
+Recommends:     grub2-x86_64-efi-32bit
+Recommends:     shim-32bit
+Recommends:     grub2-arm64-efi-32bit
+Recommends:     efibootmgr-32bit
+Recommends:     grub2-arm-efi-32bit
+Recommends:     lshw-32bit
+Recommends:     lsvpd-32bit
+Recommends:     ppc64-diag-32bit
+Recommends:     haveged-32bit
+Recommends:     issue-generator-32bit
+Provides:       pattern() = base%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-base)
+
+%files base-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/base-32bit.txt
+
+%description base-32bit
+The 32bit pattern complementing base.
+#
+#-------------------------------------------------------------------
+#
+%package enhanced_base-32bit
+Summary:        Enhanced Base System
+Recommends:     pattern()-32bit
+Recommends:     pattern()-32bit
+Recommends:     pattern()-32bit
+Recommends:     pattern()-32bit
+Recommends:     aaa_base-extras-32bit
+Recommends:     acl-32bit
+Recommends:     alsa-plugins-32bit
+Recommends:     attr-32bit
+Recommends:     autofs-32bit
+Recommends:     bind-utils-32bit
+Recommends:     binutils-32bit
+Recommends:     bzip2-32bit
+Recommends:     cifs-utils-32bit
+Recommends:     command-not-found-32bit
+Recommends:     cpio-32bit
+Recommends:     cpupower-32bit
+Recommends:     cronie-32bit
+Recommends:     cryptsetup-32bit
+Recommends:     cups-32bit
+Recommends:     cups-client-32bit
+Recommends:     curl-32bit
+Recommends:     cyrus-sasl-32bit
+Recommends:     cyrus-sasl-crammd5-32bit
+Recommends:     cyrus-sasl-digestmd5-32bit
+Recommends:     cyrus-sasl-gssapi-32bit
+Recommends:     cyrus-sasl-plain-32bit
+Recommends:     deltarpm-32bit
+Recommends:     diffutils-32bit
+Recommends:     dos2unix-32bit
+Recommends:     e2fsprogs-32bit
+Recommends:     ethtool-32bit
+Recommends:     file-32bit
+Recommends:     fillup-32bit
+Recommends:     findutils-32bit
+Recommends:     firewalld-32bit
+Recommends:     fuse-32bit
+Recommends:     gawk-32bit
+Recommends:     gettext-runtime-32bit
+Recommends:     glibc-locale-32bit
+Recommends:     gpart-32bit
+Recommends:     gpg2-32bit
+Recommends:     gpm-32bit
+Recommends:     grep-32bit
+Recommends:     gzip-32bit
+Recommends:     hdparm-32bit
+Recommends:     hwinfo-32bit
+Recommends:     info-32bit
+Recommends:     initviocons-32bit
+Recommends:     iproute2-32bit
+Recommends:     iputils-32bit
+Recommends:     irqbalance-32bit
+Recommends:     joe-32bit
+Recommends:     kmod-compat-32bit
+Recommends:     kpartx-32bit
+Recommends:     krb5-32bit
+Recommends:     less-32bit
+Recommends:     logrotate-32bit
+Recommends:     lsscsi-32bit
+Recommends:     mailx-32bit
+Recommends:     man-32bit
+Recommends:     mdadm-32bit
+Recommends:     multipath-tools-32bit
+Recommends:     ncurses-utils-32bit
+Recommends:     net-snmp-32bit
+Recommends:     netcat-openbsd-32bit
+Recommends:     netcfg-32bit
+Recommends:     nfs-client-32bit
+Recommends:     nfsidmap-32bit
+Recommends:     nscd-32bit
+Recommends:     ntfs-3g-32bit
+Recommends:     ntfsprogs-32bit
+Recommends:     openslp-32bit
+Recommends:     openssh-32bit
+Recommends:     pam-config-32bit
+Recommends:     parted-32bit
+Recommends:     pciutils-32bit
+Recommends:     pciutils-ids-32bit
+Recommends:     perl-Bootloader-32bit
+Recommends:     perl-base-32bit
+Recommends:     pinentry-32bit
+Recommends:     postfix-32bit
+Recommends:     psmisc-32bit
+Recommends:     rsync-32bit
+Recommends:     rsyslog-32bit
+Recommends:     scout-32bit
+Recommends:     screen-32bit
+Recommends:     sed-32bit
+Recommends:     sg3_utils-32bit
+Recommends:     smartmontools-32bit
+Recommends:     sudo-32bit
+Recommends:     sysconfig-32bit
+Recommends:     system-tuning-common-SUSE-32bit
+Recommends:     systemd-sysvinit-32bit
+Recommends:     time-32bit
+Recommends:     timezone-32bit
+Recommends:     translation-update-32bit
+Recommends:     udev-32bit
+Recommends:     udev-configure-printer-32bit
+Recommends:     usbutils-32bit
+Recommends:     vim-32bit
+Recommends:     wget-32bit
+Recommends:     xz-32bit
+Recommends:     zisofs-tools-32bit
+Recommends:     dmidecode-32bit
+Recommends:     hfsutils-32bit
+Recommends:     mouseemu-32bit
+Recommends:     pdisk-32bit
+Recommends:     powerpc32-32bit
+Recommends:     grub2-branding-openSUSE-32bit
+Recommends:     plymouth-32bit
+Recommends:     plymouth-branding-openSUSE-32bit
+Recommends:     release-notes-openSUSE-32bit
+Recommends:     grub2-branding-SLE-32bit
+Recommends:     plymouth-32bit
+Recommends:     dmraid-32bit
+Recommends:     dosfstools-32bit
+Recommends:     ifplugd-32bit
+Recommends:     klogd-32bit
+Recommends:     nano-32bit
+Recommends:     openldap2-client-32bit
+Recommends:     prctl-32bit
+Recommends:     psmisc-32bit
+Recommends:     smp_utils-32bit
+Recommends:     strace-32bit
+Recommends:     syslinux-32bit
+Recommends:     tnftp-32bit
+Recommends:     tuned-32bit
+Recommends:     wireless-tools-32bit
+Recommends:     wol-32bit
+Recommends:     acpica-32bit
+Recommends:     mcelog-32bit
+Recommends:     numactl-32bit
+Recommends:     ucode-amd-32bit
+Recommends:     ucode-intel-32bit
+Provides:       pattern() = enhanced_base%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-enhanced_base)
+
+%files enhanced_base-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/enhanced_base-32bit.txt
+
+%description enhanced_base-32bit
+The 32bit pattern complementing enhanced_base.
+#
+#-------------------------------------------------------------------
+#
+%package minimal_base-32bit
+Summary:        Minimal Appliance Base
+Recommends:     aaa_base-32bit
+Recommends:     bash-32bit
+Recommends:     coreutils-32bit
+Recommends:     device-mapper-32bit
+Recommends:     distribution-release-32bit
+Recommends:     dracut-32bit
+Recommends:     filesystem-32bit
+Recommends:     glibc-32bit
+Recommends:     iproute2-32bit
+Recommends:     kbd-32bit
+Recommends:     pam-32bit
+Recommends:     procps-32bit
+Recommends:     rpm-32bit
+Recommends:     sysconfig-32bit
+Recommends:     system-group-hardware-32bit
+Recommends:     system-group-wheel-32bit
+Recommends:     system-user-bin-32bit
+Recommends:     system-user-daemon-32bit
+Recommends:     system-user-nobody-32bit
+Recommends:     systemd-32bit
+Recommends:     udev-32bit
+Recommends:     zypper-32bit
+Recommends:     rollback-helper-32bit
+Recommends:     openSUSE-build-key-32bit
+Recommends:     SUSEConnect-32bit
+Recommends:     rollback_helper-32bit
+Recommends:     suse-build-key-32bit
+Provides:       pattern() = minimal_base%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-minimal_base)
+
+%files minimal_base-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/minimal_base-32bit.txt
+
+%description minimal_base-32bit
+The 32bit pattern complementing minimal_base.
+#
+#-------------------------------------------------------------------
+#
+%package sw_management-32bit
+Summary:        Software Management
+Recommends:     pattern()-32bit
+Recommends:     zypper-32bit
+Recommends:     lifecycle-data-32bit
+Recommends:     zypper-lifecycle-plugin-32bit
+Provides:       pattern() = sw_management%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-sw_management)
+
+%files sw_management-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/sw_management-32bit.txt
+
+%description sw_management-32bit
+The 32bit pattern complementing sw_management.
+#
+#-------------------------------------------------------------------
+#
+%package x11-32bit
+Summary:        X Window System
+Recommends:     pattern()-32bit
+Recommends:     pattern()-32bit
+Recommends:     xorg-x11-fonts-core-32bit
+Recommends:     xorg-x11-server-32bit
+Recommends:     yast2-qt-32bit
+Recommends:     dejavu-fonts-32bit
+Recommends:     google-roboto-fonts-32bit
+Recommends:     libyui-qt-32bit
+Recommends:     libyui-qt-pkg-32bit
+Recommends:     lightdm-32bit
+Recommends:     noto-sans-fonts-32bit
+Recommends:     tigervnc-32bit
+Recommends:     x11-tools-32bit
+Recommends:     xdmbgrd-32bit
+Recommends:     xorg-x11-Xvnc-32bit
+Recommends:     xorg-x11-driver-video-32bit
+Recommends:     xorg-x11-essentials-32bit
+Recommends:     xorg-x11-fonts-32bit
+Recommends:     xorg-x11-server-extra-32bit
+Recommends:     xterm-32bit
+Recommends:     xtermset-32bit
+Recommends:     yast2-control-center-32bit
+Recommends:     xf86-input-libinput-32bit
+Recommends:     xf86-input-vmmouse-32bit
+Recommends:     xf86-input-wacom-32bit
+Provides:       pattern() = x11%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-x11)
+
+%files x11-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/x11-32bit.txt
+
+%description x11-32bit
+The 32bit pattern complementing x11.
+#
+#-------------------------------------------------------------------
+#
+%package x11_enhanced-32bit
+Summary:        X Window System
+Recommends:     pattern()-32bit
+Recommends:     pattern()-32bit
+Recommends:     glibc-locale-32bit
+Recommends:     xkeyboard-config-32bit
+Recommends:     xorg-x11-essentials-32bit
+Recommends:     web_browser-32bit
+Recommends:     cabextract-32bit
+Recommends:     command-not-found-32bit
+Recommends:     dbus-1-glib-32bit
+Recommends:     dbus-1-x11-32bit
+Recommends:     dialog-32bit
+Recommends:     fontconfig-32bit
+Recommends:     fonts-config-32bit
+Recommends:     fribidi-32bit
+Recommends:     ghostscript-x11-32bit
+Recommends:     numlockx-32bit
+Recommends:     translation-update-32bit
+Recommends:     xauth-32bit
+Recommends:     xdmbgrd-32bit
+Recommends:     xkeyboard-config-32bit
+Recommends:     xorg-x11-fonts-32bit
+Recommends:     xorg-x11-fonts-core-32bit
+Recommends:     yast2-control-center-gnome-32bit
+Recommends:     yast2-scanner-32bit
+Recommends:     MozillaFirefox-branding-SLE-32bit
+Recommends:     desktop-data-SLE-32bit
+Recommends:     numlockx-32bit
+Recommends:     openssh-askpass-32bit
+Recommends:     susepaste-32bit
+Recommends:     susepaste-screenshot-32bit
+Provides:       pattern() = x11_enhanced%2d32bit
+Group:          Metapackages
+Supplements:    packageand(patterns-base-32bit:patterns-base-x11_enhanced)
+
+%files x11_enhanced-32bit
+%defattr(-,root,root)
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/x11_enhanced-32bit.txt
+
+%description x11_enhanced-32bit
+The 32bit pattern complementing x11_enhanced.
+#
+#-------------------------------------------------------------------
+#
+

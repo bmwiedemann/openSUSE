@@ -1,0 +1,14 @@
+--- swingx-0.9.4-src/src/java/org/jdesktop/swingx/auth/LoginService.java	2008-09-07 06:10:24.000000000 +0200
++++ swingx-0.9.4-src.mef/src/java/org/jdesktop/swingx/auth/LoginService.java	2008-11-04 16:35:33.000000000 +0100
+@@ -24,10 +24,10 @@
+ import java.util.logging.Logger;
+ 
+ import javax.swing.SwingUtilities;
++import javax.swing.SwingWorker;
+ import javax.swing.event.EventListenerList;
+ 
+ import org.jdesktop.beans.AbstractBean;
+-import org.jdesktop.swingworker.SwingWorker;
+ 
+ /**
+  * <b>LoginService</b> is the abstract base class for all classes implementing

@@ -1,0 +1,18 @@
+Description: avoid to install undesirable files.
+Author: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2015-04-15
+Index: netdiscover-0.3-pre-beta7/Makefile.am
+===================================================================
+--- netdiscover-0.3-pre-beta7.orig/Makefile.am
++++ netdiscover-0.3-pre-beta7/Makefile.am
+@@ -5,10 +5,7 @@ SUBDIRS = src doc
+ 
+ doc_DATA = \
+         README\
+-        COPYING\
+         AUTHORS\
+-        ChangeLog\
+-        NEWS\
+         TODO
+ 
+ EXTRA_DIST = \

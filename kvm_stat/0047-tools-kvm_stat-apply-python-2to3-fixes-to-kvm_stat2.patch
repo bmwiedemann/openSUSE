@@ -1,0 +1,103 @@
+From d422b653bbd30152ce332eeb88154d3236b3ce5f Mon Sep 17 00:00:00 2001
+From: Larry Dewey <ldewey@suse.com>
+Date: Thu, 29 Nov 2018 09:11:29 -0700
+Subject: [PATCH] tools/kvm_stat: apply python 2to3 fixes to kvm_stat2
+
+[LD: BSC#1116822]
+Signed-off-by: Larry Dewey <ldewey@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 8f74ed8e7237..1209c6931c81 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -315,8 +315,8 @@ def parse_int_list(list_string):
+             integers.append(int(member))
+         else:
+             int_range = member.split('-')
+-            integers.extend(range(int(int_range[0]),
+-                                  int(int_range[1]) + 1))
++            integers.extend(list(range(int(int_range[0]),
++                                  int(int_range[1]) + 1)))
+ 
+     return integers
+ 
+@@ -486,9 +486,9 @@ class Group(object):
+         """
+         length = 8 * (1 + len(self.events))
+         read_format = 'xxxxxxxx' + 'Q' * len(self.events)
+-        return dict(zip([event.name for event in self.events],
++        return dict(list(zip([event.name for event in self.events],
+                         struct.unpack(read_format,
+-                                      os.read(self.events[0].fd, length))))
++                                      os.read(self.events[0].fd, length)))))
+ 
+ 
+ class Event(object):
+@@ -711,7 +711,7 @@ class TracepointProvider(object):
+         """Returns 'event name: current value' for all enabled events."""
+         ret = defaultdict(int)
+         for group in self.group_leaders:
+-            for name, val in group.read().iteritems():
++            for name, val in group.read().items():
+                 if name in self._fields:
+                     ret[name] += val
+         return ret
+@@ -764,7 +764,7 @@ class DebugfsProvider(object):
+             if len(vms) == 0:
+                 self.do_read = False
+ 
+-            self.paths = filter(lambda x: "{}-".format(pid) in x, vms)
++            self.paths = [x for x in vms if "{}-".format(pid) in x]
+ 
+         else:
+             self.paths = []
+@@ -992,9 +992,9 @@ class Tui(object):
+             else:
+                 return (0, -stats[x][0])
+         total = 0.
+-        for val in stats.values():
++        for val in list(stats.values()):
+             total += val[0]
+-        for key in sorted(stats.keys(), key=sortkey):
++        for key in sorted(list(stats.keys()), key=sortkey):
+ 
+             if row >= self.screen.getmaxyx()[0]:
+                 break
+@@ -1174,25 +1174,25 @@ def batch(stats):
+         s = stats.get()
+         for key in sorted(s.keys()):
+             values = s[key]
+-            print '%-42s%10d%10d' % (key, values[0], values[1])
++            print('%-42s%10d%10d' % (key, values[0], values[1]))
+     except KeyboardInterrupt:
+         pass
+ 
+ 
+ def log(stats):
+     """Prints statistics as reiterating key block, multiple value blocks."""
+-    keys = sorted(stats.get().iterkeys())
++    keys = sorted(stats.get().keys())
+ 
+     def banner():
+         for k in keys:
+-            print '%s' % k,
+-        print
++            print('%s' % k, end=' ')
++        print()
+ 
+     def statline():
+         s = stats.get()
+         for k in keys:
+-            print ' %9d' % s[k][1],
+-        print
++            print(' %9d' % s[k][1], end=' ')
++        print()
+     line = 0
+     banner_repeat = 20
+     while True:
+-- 
+2.19.1
+

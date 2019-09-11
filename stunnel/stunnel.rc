@@ -1,0 +1,245 @@
+#! /bin/sh
+# Copyright (c) 1996, 1997, 1998 S.u.S.E. GmbH
+# Copyright (c) 1998, 1999, 2000, 2001 SuSE GmbH
+# Copyright (c) 2002 SuSE Linux AG
+#
+# License: same as stunnel
+#
+# Author: Peter Poeml <poeml@suse.de>, 2002
+#
+# /etc/init.d/stunnel
+#   and its symbolic link
+# /usr/sbin/rcstunnel
+#
+### BEGIN INIT INFO
+# Provides:			stunnel
+# Required-Start:		$local_fs $remote_fs $network 
+# Should-Start:			$named $syslog $time 
+# Required-Stop:		$local_fs $remote_fs $network
+# Should-Stop:			$named $syslog $time
+# Default-Start:		3 5
+# Default-Stop:			0 1 2 6
+# Short-Description:		stunnel (universal SSL tunnel)
+# Description:			Start the universal SSL tunnel "stunnel"
+### END INIT INFO
+
+
+DAEMON="stunnel (SSL tunnel)"
+DAEMON_BIN=/usr/sbin/stunnel
+: ${STUNNEL_CONF:=/etc/stunnel/stunnel.conf}
+STARTPROC_LOGFILE=/var/log/rc.stunnel.log
+SUPPORTS_HUP=false
+
+test -x $DAEMON_BIN || exit 5
+
+#
+# read the configuration
+#
+STUNNEL_RUN_CHROOTED=false
+DAEMON_PIDFILE=/var/run/stunnel.pid
+EXECUTABLES=
+CHROOT_PREFIX=
+while read -a line; do 
+	case ${line} in 
+	chroot)	CHROOT_PREFIX=${line[2]}; STUNNEL_RUN_CHROOTED=true;;
+	pid) 	DAEMON_PIDFILE=${line[2]};;
+	exec) 	EXECUTABLES="$EXECUTABLES ${line[2]}";;
+	esac; 
+done < $STUNNEL_CONF
+DAEMON_PIDFILE="$CHROOT_PREFIX$DAEMON_PIDFILE"
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+# this seems to want to delete the pid file if it is empty
+test -e $DAEMON_PIDFILE && ! test -s $DAEMON_PIDFILE && rm $DAEMON_PIDFILE
+
+case "$1" in
+    start)
+	echo -n "Starting $DAEMON "
+
+        ## If there is no conf file, skip starting of stunnel
+        ## and return with "program not configured"
+	if ! [ -f $STUNNEL_CONF ]; then
+		echo -e -n "... no configuration file found";
+		# Tell the user this has skipped
+		rc_status -s
+		# service is not configured
+		exit 6;
+	fi
+
+	##
+	## set up chroot directory
+	##
+	if $STUNNEL_RUN_CHROOTED; then 
+		# /etc
+		for i in $STUNNEL_CONF /etc/{resolv.conf,host.conf,hosts,localtime,hosts.{allow,deny}}; do
+			cp -p $i $CHROOT_PREFIX/etc/ &>/dev/null \
+				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; rc_failed; rc_status -v1; exit 6; }
+		done
+		# executables
+		for i in $EXECUTABLES; do 
+			mkdir -p `dirname $CHROOT_PREFIX/$i`
+			cp -p $i $CHROOT_PREFIX/$i \
+				|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; rc_failed; rc_status -v1; exit 6; }
+		done
+		# libs
+		libdir=/$(basename $(echo /var/lib/stunnel/lib*))
+		for i in $EXECUTABLES; do 
+			unset libs
+			ldd $i | grep '=> /' | while read -a line; do
+				cp -p ${line[2]} $CHROOT_PREFIX/$libdir \
+					|| { echo "...$0:$LINENO: could not copy $i to chroot jail"; rc_failed; rc_status -v1; exit 6; }
+			done
+		done
+	fi
+
+	rm -f $STARTPROC_LOGFILE # start log
+	error=0
+	## Start daemon with startproc(8). If this fails
+	## the echo return value is set appropriate.
+	# startproc should return 0, even if service is 
+	# already running to match LSB spec.
+
+	test "$2" = "-v" && echo -en \
+		"\nrunnning '$DAEMON_BIN '"
+	startproc -l $STARTPROC_LOGFILE $DAEMON_BIN ${STUNNEL_CONF}			|| error=1 
+	
+	if [ $error -eq 1 ]; then 
+		echo -e -n "  please see $STARTPROC_LOGFILE for details ";
+		## set status to failed
+		rc_failed
+	else
+		$STUNNEL_RUN_CHROOTED && echo -n "[chroot]" || :
+	fi
+
+	# Remember status and be verbose
+	rc_status -v
+	;;
+    stop)
+	echo -n "Shutting down $DAEMON "
+
+	## Stop daemon with killproc(8) and if this fails
+	## set echo the echo return value.
+
+	killproc -p $DAEMON_PIDFILE -TERM $DAEMON_BIN
+
+	# Remember status and be verbose
+	rc_status -v
+
+	# delete pidfile (stunnel cannot do it if it doesn't run as root)
+	rm -f $DAEMON_PIDFILE
+	;;
+    try-restart)
+	## Do a restart only if the service was active before.
+	## Note: try-restart is now part of LSB (as of 1.9).
+	## RH has a similar command named condrestart.
+	$0 status
+	if test $? = 0; then
+		$0 restart
+	else
+		rc_reset        # Not running is not a failure.
+	fi
+	# Remember status and be quiet
+	rc_status
+	;;
+    restart)
+	## Stop the service and regardless of whether it was
+	## running or not, start it again.
+	$0 stop
+	sleep 3
+	$0 start
+
+	# Remember status and be quiet
+	rc_status
+	;;
+    force-reload)
+	## Signal the daemon to reload its config. Most daemons
+	## do this on signal 1 (SIGHUP).
+	## If it does not support it, restart.
+
+	echo -n "Reload service $DAEMON"
+
+	if $SUPPORTS_HUP; then 
+		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
+		#touch $DAEMON_PIDFILE
+		rc_status -v
+	else
+		$0 stop  &&  sleep 3  &&  $0 start
+		rc_status 
+	fi
+	;;
+    reload)
+	## Like force-reload, but if daemon does not support
+	## signalling, do nothing (!)
+
+	if $SUPPORTS_HUP; then
+		# If it supports signalling:
+		echo -n "Reload service $DAEMON"
+		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
+		#touch $DAEMON_PIDFILE
+		rc_status -v
+	else
+		## Otherwise if it does not support reload:
+		rc_failed 3
+		rc_status -v
+	fi
+	;;
+    status)
+	echo -n "Checking for $DAEMON: "
+	## Check status with checkproc(8), if process is running
+	## checkproc will return with exit status 0.
+
+	# Status has a slightly different for the status command:
+	# 0 - service running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 2 - service dead, but /var/lock/ lock file exists
+	# 3 - service not running
+
+	# NOTE: checkproc returns LSB compliant status values.
+	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN
+	rc_status -v
+	;;
+    probe)
+	## Optional: Probe for the necessity of a reload,
+	## give out the argument which is required for a reload.
+
+	rc=0
+	for i in $STUNNEL_CONF; do
+		test $i -nt $DAEMON_PIDFILE && rc=1
+	done
+	test $rc = 1 && echo restart
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe} [-v]"
+	exit 1
+esac
+rc_exit
+
+# vim: syntax=sh ai

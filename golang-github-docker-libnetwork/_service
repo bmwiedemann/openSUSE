@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/docker/libnetwork.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">git.%H</param>
+    <param name="revision">fc5a7d91d54cc98f64fc28f9e288b46a0bee756c</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">libnetwork-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

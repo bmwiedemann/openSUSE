@@ -1,0 +1,16 @@
+===================================================================
+Index: Aegisub-524c6114a82157b143567240884de3a6d030b091/configure.ac
+===================================================================
+--- Aegisub-524c6114a82157b143567240884de3a6d030b091.orig/configure.ac	2019-03-29 13:17:21.692386078 +0200
++++ Aegisub-524c6114a82157b143567240884de3a6d030b091/configure.ac	2019-03-29 13:17:38.925081533 +0200
+@@ -145,8 +145,8 @@ AS_IF([test x$enable_compiler_flags != x
+     CFLAGS="$CFLAGS -O0"
+     CXXFLAGS="$CXXFLAGS -O0"
+   ], [
+-    CFLAGS="$CFLAGS -O3"
+-    CXXFLAGS="$CXXFLAGS -O3"
++    CFLAGS="$CFLAGS"
++    CXXFLAGS="$CXXFLAGS"
+   ])
+ ])
+ 

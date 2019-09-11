@@ -1,0 +1,615 @@
+Index: ipsec-tools-0.8.2/src/racoon/crypto_openssl.c
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/crypto_openssl.c
++++ ipsec-tools-0.8.2/src/racoon/crypto_openssl.c
+@@ -312,13 +312,18 @@ eay_cmp_asn1dn(n1, n2)
+ 	for(idx = 0; idx < X509_NAME_entry_count(a); idx++) {
+ 		X509_NAME_ENTRY *ea = X509_NAME_get_entry(a, idx);
+ 		X509_NAME_ENTRY *eb = X509_NAME_get_entry(b, idx);
++		ASN1_STRING	*eav = X509_NAME_ENTRY_get_data(ea);
++		ASN1_STRING	*ebv;
+ 		if (!eb) {	/* reached end of eb while still entries in ea, can not be equal... */
+ 			i = idx+1;
+ 			goto end;
+ 		}
+-		if ((ea->value->length == 1 && ea->value->data[0] == '*') ||
+-		    (eb->value->length == 1 && eb->value->data[0] == '*')) {
+-	    		if (OBJ_cmp(ea->object,eb->object)) {
++		ebv = X509_NAME_ENTRY_get_data(eb);
++		if ((ASN1_STRING_length(eav) == 1 && ASN1_STRING_get0_data(eav)[0] == '*') ||
++		    (ASN1_STRING_length(ebv) == 1 && ASN1_STRING_get0_data(ebv)[0] == '*')) {
++			ASN1_OBJECT	*eao = X509_NAME_ENTRY_get_object(ea);
++			ASN1_OBJECT	*ebo = X509_NAME_ENTRY_get_object(eb);
++	    		if (OBJ_cmp(eao,ebo)) {
+ 				i = idx+1;
+ 				goto end;
+ 	    		}
+@@ -430,7 +435,7 @@ cb_check_cert_local(ok, ctx)
+ 
+ 	if (!ok) {
+ 		X509_NAME_oneline(
+-				X509_get_subject_name(ctx->current_cert),
++				X509_get_subject_name(X509_STORE_CTX_get_current_cert(ctx)),
+ 				buf,
+ 				256);
+ 		/*
+@@ -438,7 +443,7 @@ cb_check_cert_local(ok, ctx)
+ 		 * ok if they are self signed. But we should still warn
+ 		 * the user.
+  		 */
+-		switch (ctx->error) {
++		switch (X509_STORE_CTX_get_error(ctx)) {
+ 		case X509_V_ERR_CERT_HAS_EXPIRED:
+ 		case X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT:
+ 		case X509_V_ERR_INVALID_CA:
+@@ -453,9 +458,9 @@ cb_check_cert_local(ok, ctx)
+ 		}
+ 		plog(log_tag, LOCATION, NULL,
+ 			"%s(%d) at depth:%d SubjectName:%s\n",
+-			X509_verify_cert_error_string(ctx->error),
+-			ctx->error,
+-			ctx->error_depth,
++			X509_verify_cert_error_string(X509_STORE_CTX_get_error(ctx)),
++			X509_STORE_CTX_get_error(ctx),
++			X509_STORE_CTX_get_error_depth(ctx),
+ 			buf);
+ 	}
+ 	ERR_clear_error();
+@@ -477,10 +482,10 @@ cb_check_cert_remote(ok, ctx)
+ 
+ 	if (!ok) {
+ 		X509_NAME_oneline(
+-				X509_get_subject_name(ctx->current_cert),
++				X509_get_subject_name(X509_STORE_CTX_get_current_cert(ctx)),
+ 				buf,
+ 				256);
+-		switch (ctx->error) {
++		switch (X509_STORE_CTX_get_error(ctx)) {
+ 		case X509_V_ERR_UNABLE_TO_GET_CRL:
+ 			ok = 1;
+ 			log_tag = LLV_WARNING;
+@@ -490,9 +495,9 @@ cb_check_cert_remote(ok, ctx)
+ 		}
+ 		plog(log_tag, LOCATION, NULL,
+ 			"%s(%d) at depth:%d SubjectName:%s\n",
+-			X509_verify_cert_error_string(ctx->error),
+-			ctx->error,
+-			ctx->error_depth,
++			X509_verify_cert_error_string(X509_STORE_CTX_get_error(ctx)),
++			X509_STORE_CTX_get_error(ctx),
++			X509_STORE_CTX_get_error_depth(ctx),
+ 			buf);
+ 	}
+ 	ERR_clear_error();
+@@ -517,13 +522,13 @@ eay_get_x509asn1subjectname(cert)
+ 		goto error;
+ 
+ 	/* get the length of the name */
+-	len = i2d_X509_NAME(x509->cert_info->subject, NULL);
++	len = i2d_X509_NAME(X509_get_subject_name(x509), NULL);
+ 	name = vmalloc(len);
+ 	if (!name)
+ 		goto error;
+ 	/* get the name */
+ 	bp = (unsigned char *) name->v;
+-	len = i2d_X509_NAME(x509->cert_info->subject, &bp);
++	len = i2d_X509_NAME(X509_get_subject_name(x509), &bp);
+ 
+ 	X509_free(x509);
+ 
+@@ -662,14 +667,14 @@ eay_get_x509asn1issuername(cert)
+ 		goto error;
+ 
+ 	/* get the length of the name */
+-	len = i2d_X509_NAME(x509->cert_info->issuer, NULL);
++	len = i2d_X509_NAME(X509_get_issuer_name(x509), NULL);
+ 	name = vmalloc(len);
+ 	if (name == NULL)
+ 		goto error;
+ 
+ 	/* get the name */
+ 	bp = (unsigned char *) name->v;
+-	len = i2d_X509_NAME(x509->cert_info->issuer, &bp);
++	len = i2d_X509_NAME(X509_get_issuer_name(x509), &bp);
+ 
+ 	X509_free(x509);
+ 
+@@ -850,7 +855,7 @@ eay_check_x509sign(source, sig, cert)
+ 		return -1;
+ 	}
+ 
+-	res = eay_rsa_verify(source, sig, evp->pkey.rsa);
++	res = eay_rsa_verify(source, sig, EVP_PKEY_get0_RSA(evp));
+ 
+ 	EVP_PKEY_free(evp);
+ 	X509_free(x509);
+@@ -992,7 +997,7 @@ eay_get_x509sign(src, privkey)
+ 	if (evp == NULL)
+ 		return NULL;
+ 
+-	sig = eay_rsa_sign(src, evp->pkey.rsa);
++	sig = eay_rsa_sign(src, EVP_PKEY_get0_RSA(evp));
+ 
+ 	EVP_PKEY_free(evp);
+ 
+@@ -1100,7 +1105,7 @@ vchar_t *
+ evp_crypt(vchar_t *data, vchar_t *key, vchar_t *iv, const EVP_CIPHER *e, int enc)
+ {
+ 	vchar_t *res;
+-	EVP_CIPHER_CTX ctx;
++	EVP_CIPHER_CTX *ctx;
+ 
+ 	if (!e)
+ 		return NULL;
+@@ -1111,7 +1116,7 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 	if ((res = vmalloc(data->l)) == NULL)
+ 		return NULL;
+ 
+-	EVP_CIPHER_CTX_init(&ctx);
++	ctx = EVP_CIPHER_CTX_new();
+ 
+ 	switch(EVP_CIPHER_nid(e)){
+ 	case NID_bf_cbc:
+@@ -1126,7 +1131,7 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 		 */
+ 		/* init context without key/iv
+          */
+-        if (!EVP_CipherInit(&ctx, e, NULL, NULL, enc))
++        if (!EVP_CipherInit(ctx, e, NULL, NULL, enc))
+         {
+             OpenSSL_BUG();
+             vfree(res);
+@@ -1135,7 +1140,7 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 		
+         /* update key size
+          */
+-        if (!EVP_CIPHER_CTX_set_key_length(&ctx, key->l))
++        if (!EVP_CIPHER_CTX_set_key_length(ctx, key->l))
+         {
+             OpenSSL_BUG();
+             vfree(res);
+@@ -1144,7 +1149,7 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 
+         /* finalize context init with desired key size
+          */
+-        if (!EVP_CipherInit(&ctx, NULL, (u_char *) key->v,
++        if (!EVP_CipherInit(ctx, NULL, (u_char *) key->v,
+ 							(u_char *) iv->v, enc))
+         {
+             OpenSSL_BUG();
+@@ -1153,7 +1158,7 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 		}
+ 		break;
+ 	default:
+-		if (!EVP_CipherInit(&ctx, e, (u_char *) key->v, 
++		if (!EVP_CipherInit(ctx, e, (u_char *) key->v, 
+ 							(u_char *) iv->v, enc)) {
+ 			OpenSSL_BUG();
+ 			vfree(res);
+@@ -1162,15 +1167,15 @@ evp_crypt(vchar_t *data, vchar_t *key, v
+ 	}
+ 
+ 	/* disable openssl padding */
+-	EVP_CIPHER_CTX_set_padding(&ctx, 0); 
++	EVP_CIPHER_CTX_set_padding(ctx, 0); 
+ 	
+-	if (!EVP_Cipher(&ctx, (u_char *) res->v, (u_char *) data->v, data->l)) {
++	if (!EVP_Cipher(ctx, (u_char *) res->v, (u_char *) data->v, data->l)) {
+ 		OpenSSL_BUG();
+ 		vfree(res);
+ 		return NULL;
+ 	}
+ 
+-	EVP_CIPHER_CTX_cleanup(&ctx);
++	EVP_CIPHER_CTX_free(ctx);
+ 
+ 	return res;
+ }
+@@ -1680,9 +1685,9 @@ eay_hmac_init(key, md)
+ 	vchar_t *key;
+ 	const EVP_MD *md;
+ {
+-	HMAC_CTX *c = racoon_malloc(sizeof(*c));
++	HMAC_CTX *c = HMAC_CTX_new();
+ 
+-	HMAC_Init(c, key->v, key->l, md);
++	HMAC_Init_ex(c, key->v, key->l, md, NULL);
+ 
+ 	return (caddr_t)c;
+ }
+@@ -1761,8 +1766,7 @@ eay_hmacsha2_512_final(c)
+ 
+ 	HMAC_Final((HMAC_CTX *)c, (unsigned char *) res->v, &l);
+ 	res->l = l;
+-	HMAC_cleanup((HMAC_CTX *)c);
+-	(void)racoon_free(c);
++	HMAC_CTX_free((HMAC_CTX *)c);
+ 
+ 	if (SHA512_DIGEST_LENGTH != res->l) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+@@ -1811,8 +1815,7 @@ eay_hmacsha2_384_final(c)
+ 
+ 	HMAC_Final((HMAC_CTX *)c, (unsigned char *) res->v, &l);
+ 	res->l = l;
+-	HMAC_cleanup((HMAC_CTX *)c);
+-	(void)racoon_free(c);
++	HMAC_CTX_free((HMAC_CTX *)c);
+ 
+ 	if (SHA384_DIGEST_LENGTH != res->l) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+@@ -1861,8 +1864,7 @@ eay_hmacsha2_256_final(c)
+ 
+ 	HMAC_Final((HMAC_CTX *)c, (unsigned char *) res->v, &l);
+ 	res->l = l;
+-	HMAC_cleanup((HMAC_CTX *)c);
+-	(void)racoon_free(c);
++	HMAC_CTX_free((HMAC_CTX *)c);
+ 
+ 	if (SHA256_DIGEST_LENGTH != res->l) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+@@ -1912,8 +1914,7 @@ eay_hmacsha1_final(c)
+ 
+ 	HMAC_Final((HMAC_CTX *)c, (unsigned char *) res->v, &l);
+ 	res->l = l;
+-	HMAC_cleanup((HMAC_CTX *)c);
+-	(void)racoon_free(c);
++	HMAC_CTX_free((HMAC_CTX *)c);
+ 
+ 	if (SHA_DIGEST_LENGTH != res->l) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+@@ -1962,8 +1963,7 @@ eay_hmacmd5_final(c)
+ 
+ 	HMAC_Final((HMAC_CTX *)c, (unsigned char *) res->v, &l);
+ 	res->l = l;
+-	HMAC_cleanup((HMAC_CTX *)c);
+-	(void)racoon_free(c);
++	HMAC_CTX_free((HMAC_CTX *)c);
+ 
+ 	if (MD5_DIGEST_LENGTH != res->l) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+@@ -2234,28 +2234,28 @@ vchar_t *
+ eay_md5fips_one(data)
+ 	vchar_t *data;
+ {
+-	EVP_MD_CTX	ctx;
++	EVP_MD_CTX	*ctx;
+ 	vchar_t *res;
+ 	unsigned int i;
+ 
+ 	if ((res = vmalloc(EVP_MD_size(EVP_md5()))) == 0)
+ 		return NULL;
+ 
+-	EVP_MD_CTX_init(&ctx);
++	ctx = EVP_MD_CTX_new();
+ #ifdef EVP_MD_CTX_FLAG_NON_FIPS_ALLOW
+ 	/* appeared around openssl 0.9.8k as define, allows usage in FIPS mode. */
+-	EVP_MD_CTX_set_flags(&ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
++	EVP_MD_CTX_set_flags(ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
+ #endif
+-	EVP_DigestInit_ex (&ctx, EVP_md5(), NULL);
++	EVP_DigestInit_ex (ctx, EVP_md5(), NULL);
+ 
+-	if (!EVP_DigestUpdate(&ctx, (void *) data->v, data->l))
++	if (!EVP_DigestUpdate(ctx, (void *) data->v, data->l))
+ 	{
+-		EVP_MD_CTX_cleanup(&ctx);
++		EVP_MD_CTX_free(ctx);
+ 		vfree(res);
+ 		return NULL;
+ 	}
+-	EVP_DigestFinal_ex(&ctx, (void *) res->v, &i);
+-	EVP_MD_CTX_cleanup(&ctx);
++	EVP_DigestFinal_ex(ctx, (void *) res->v, &i);
++	EVP_MD_CTX_free(ctx);
+ 	return res;
+ }
+ 
+@@ -2294,36 +2294,40 @@ eay_dh_generate(prime, g, publen, pub, p
+ 	u_int publen;
+ 	u_int32_t g;
+ {
+-	BIGNUM *p = NULL;
++	BIGNUM *dhg = NULL;
++	BIGNUM *dhp = NULL;
++	const BIGNUM *pub_key;
++	const BIGNUM *priv_key;
+ 	DH *dh = NULL;
+ 	int error = -1;
+ 
+ 	/* initialize */
+ 	/* pre-process to generate number */
+-	if (eay_v2bn(&p, prime) < 0)
++	if (eay_v2bn(&dhp, prime) < 0)
+ 		goto end;
+ 
+ 	if ((dh = DH_new()) == NULL)
+ 		goto end;
+-	dh->p = p;
+-	p = NULL;	/* p is now part of dh structure */
+-	dh->g = NULL;
+-	if ((dh->g = BN_new()) == NULL)
++	if ((dhg = BN_new()) == NULL)
+ 		goto end;
+-	if (!BN_set_word(dh->g, g))
++	if (!BN_set_word(dhg, g))
+ 		goto end;
+ 
++	DH_set0_pqg(dh,dhp,NULL,dhg);
++	dhp = NULL;
+ 	if (publen != 0)
+-		dh->length = publen;
++		DH_set_length(dh,publen);
+ 
+ 	/* generate public and private number */
+ 	if (!DH_generate_key(dh))
+ 		goto end;
+ 
++	DH_get0_key(dh,&pub_key, &priv_key);
++
+ 	/* copy results to buffers */
+-	if (eay_bn2v(pub, dh->pub_key) < 0)
++	if (eay_bn2v(pub, pub_key) < 0)
+ 		goto end;
+-	if (eay_bn2v(priv, dh->priv_key) < 0) {
++	if (eay_bn2v(priv, priv_key) < 0) {
+ 		vfree(*pub);
+ 		goto end;
+ 	}
+@@ -2333,8 +2337,8 @@ eay_dh_generate(prime, g, publen, pub, p
+ end:
+ 	if (dh != NULL)
+ 		DH_free(dh);
+-	if (p != 0)
+-		BN_free(p);
++	if (dhp != 0)
++		BN_free(dhp);
+ 	return(error);
+ }
+ 
+@@ -2344,6 +2348,10 @@ eay_dh_compute(prime, g, pub, priv, pub2
+ 	u_int32_t g;
+ {
+ 	BIGNUM *dh_pub = NULL;
++	BIGNUM *dhp = NULL;
++	BIGNUM *dhg = NULL;
++	BIGNUM *dhpub_key = NULL;
++	BIGNUM *dhpriv_key = NULL;
+ 	DH *dh = NULL;
+ 	int l;
+ 	unsigned char *v = NULL;
+@@ -2356,20 +2364,23 @@ eay_dh_compute(prime, g, pub, priv, pub2
+ 	/* make DH structure */
+ 	if ((dh = DH_new()) == NULL)
+ 		goto end;
+-	if (eay_v2bn(&dh->p, prime) < 0)
++	if (eay_v2bn(&dhp, prime) < 0)
+ 		goto end;
+-	if (eay_v2bn(&dh->pub_key, pub) < 0)
++	if (eay_v2bn(&dhpub_key, pub) < 0)
+ 		goto end;
+-	if (eay_v2bn(&dh->priv_key, priv) < 0)
++	if (eay_v2bn(&dhpriv_key, priv) < 0)
+ 		goto end;
+-	dh->length = pub2->l * 8;
+ 
+-	dh->g = NULL;
+-	if ((dh->g = BN_new()) == NULL)
++	dhg = NULL;
++	if ((dhg = BN_new()) == NULL)
+ 		goto end;
+-	if (!BN_set_word(dh->g, g))
++	if (!BN_set_word(dhg, g))
+ 		goto end;
+ 
++	DH_set0_pqg(dh,dhp,NULL,dhg);
++	DH_set0_key(dh,dhpub_key,dhpriv_key);
++	DH_set_length(dh,pub2->l * 8);
++
+ 	if ((v = racoon_calloc(prime->l, sizeof(u_char))) == NULL)
+ 		goto end;
+ 	if ((l = DH_compute_key(v, dh_pub, dh)) == -1)
+@@ -2415,7 +2426,7 @@ eay_v2bn(bn, var)
+ int
+ eay_bn2v(var, bn)
+ 	vchar_t **var;
+-	BIGNUM *bn;
++	const BIGNUM *bn;
+ {
+ 	*var = vmalloc(BN_num_bytes(bn));
+ 	if (*var == NULL)
+@@ -2532,9 +2543,7 @@ binbuf_pubkey2rsa(vchar_t *binbuf)
+ 		rsa_pub = NULL;
+ 		goto out;
+ 	}
+-	
+-	rsa_pub->n = mod;
+-	rsa_pub->e = exp;
++	RSA_set0_key(rsa_pub,mod,exp,NULL);
+ 
+ out:
+ 	return rsa_pub;
+Index: ipsec-tools-0.8.2/src/racoon/eaytest.c
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/eaytest.c
++++ ipsec-tools-0.8.2/src/racoon/eaytest.c
+@@ -106,7 +106,7 @@ rsa_verify_with_pubkey(src, sig, pubkey_
+ 		printf ("PEM_read_PUBKEY(): %s\n", eay_strerror());
+ 		return -1;
+ 	}
+-	error = eay_check_rsasign(src, sig, evp->pkey.rsa);
++	error = eay_check_rsasign(src, sig, EVP_PKEY_get0_RSA(evp));
+ 
+ 	return error;
+ }
+Index: ipsec-tools-0.8.2/src/racoon/crypto_openssl.h
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/crypto_openssl.h
++++ ipsec-tools-0.8.2/src/racoon/crypto_openssl.h
+@@ -224,7 +224,7 @@ RSA *bignum_pubkey2rsa(BIGNUM *in);
+ extern int eay_revbnl __P((vchar_t *));
+ #include <openssl/bn.h>
+ extern int eay_v2bn __P((BIGNUM **, vchar_t *));
+-extern int eay_bn2v __P((vchar_t **, BIGNUM *));
++extern int eay_bn2v __P((vchar_t **, const BIGNUM *));
+ 
+ extern const char *eay_version __P((void));
+ 
+Index: ipsec-tools-0.8.2/src/racoon/rsalist.c
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/rsalist.c
++++ ipsec-tools-0.8.2/src/racoon/rsalist.c
+@@ -98,7 +98,10 @@ rsa_key_dup(struct rsa_key *key)
+ 		return NULL;
+ 
+ 	if (key->rsa) {
+-		new->rsa = key->rsa->d != NULL ? RSAPrivateKey_dup(key->rsa) : RSAPublicKey_dup(key->rsa);
++		const BIGNUM *d;
++
++		RSA_get0_key(key->rsa,NULL,NULL,&d);
++		new->rsa = (d != NULL) ? RSAPrivateKey_dup(key->rsa) : RSAPublicKey_dup(key->rsa);
+ 		if (new->rsa == NULL)
+ 			goto dup_error;
+ 	}
+Index: ipsec-tools-0.8.2/src/racoon/prsa_par.y
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/prsa_par.y
++++ ipsec-tools-0.8.2/src/racoon/prsa_par.y
+@@ -174,31 +174,31 @@ statement:
+ rsa_statement:
+ 	TAG_RSA OBRACE params EBRACE
+ 	{
++
+ 		if (prsa_cur_type == RSA_TYPE_PUBLIC) {
++			const BIGNUM *n, *e;
+ 			prsawarning("Using private key for public key purpose.\n");
+-			if (!rsa_cur->n || !rsa_cur->e) {
++			RSA_get0_key(rsa_cur,&n,&e,NULL);
++			if (!n || !e) {
+ 				prsaerror("Incomplete key. Mandatory parameters are missing!\n");
+ 				YYABORT;
+ 			}
+ 		}
+ 		else {
+-			if (!rsa_cur->n || !rsa_cur->e || !rsa_cur->d) {
++			const BIGNUM *n, *e, *d;
++			const BIGNUM *p, *q, *dmp1, *dmq1, *iqmp;
++
++			RSA_get0_key(rsa_cur,&n,&e,&d);
++			if (!n || !e || !d) {
+ 				prsaerror("Incomplete key. Mandatory parameters are missing!\n");
+ 				YYABORT;
+ 			}
+-			if (!rsa_cur->p || !rsa_cur->q || !rsa_cur->dmp1
+-			    || !rsa_cur->dmq1 || !rsa_cur->iqmp) {
+-				if (rsa_cur->p) BN_clear_free(rsa_cur->p);
+-				if (rsa_cur->q) BN_clear_free(rsa_cur->q);
+-				if (rsa_cur->dmp1) BN_clear_free(rsa_cur->dmp1);
+-				if (rsa_cur->dmq1) BN_clear_free(rsa_cur->dmq1);
+-				if (rsa_cur->iqmp) BN_clear_free(rsa_cur->iqmp);
+-
+-				rsa_cur->p = NULL;
+-				rsa_cur->q = NULL;
+-				rsa_cur->dmp1 = NULL;
+-				rsa_cur->dmq1 = NULL;
+-				rsa_cur->iqmp = NULL;
++			RSA_get0_factors(rsa_cur,&p,&q);
++			RSA_get0_crt_params(rsa_cur,&dmp1,&dmq1,&iqmp);
++			if (!p || !q || !dmp1 || !dmq1 || !iqmp) {
++				/* i think the intent here is to clear the key if it is incomplete ? */
++				RSA_free(rsa_cur);
++				rsa_cur = RSA_new();
+ 			}
+ 		}
+ 		$$ = rsa_cur;
+@@ -301,21 +301,21 @@ params:
+ 
+ param:
+ 	MODULUS COLON HEX 
+-	{ if (!rsa_cur->n) rsa_cur->n = $3; else { prsaerror ("Modulus already defined\n"); YYABORT; } }
++	{ const BIGNUM *n; RSA_get0_key(rsa_cur,&n, NULL, NULL); if (!n) RSA_set0_key(rsa_cur,$3,NULL,NULL); else { prsaerror ("Modulus already defined\n"); YYABORT; } }
+ 	| PUBLIC_EXPONENT COLON HEX 
+-	{ if (!rsa_cur->e) rsa_cur->e = $3; else { prsaerror ("PublicExponent already defined\n"); YYABORT; } }
++	{ const BIGNUM *e; RSA_get0_key(rsa_cur,NULL,&e,NULL); if (!e) RSA_set0_key(rsa_cur,NULL,$3,NULL); else { prsaerror ("PublicExponent already defined\n"); YYABORT; } }
+ 	| PRIVATE_EXPONENT COLON HEX 
+-	{ if (!rsa_cur->d) rsa_cur->d = $3; else { prsaerror ("PrivateExponent already defined\n"); YYABORT; } }
++	{ const BIGNUM *d; RSA_get0_key(rsa_cur,NULL,NULL,&d); if (!d) RSA_set0_key(rsa_cur,NULL,NULL,$3); else { prsaerror ("PrivateExponent already defined\n"); YYABORT; } }
+ 	| PRIME1 COLON HEX 
+-	{ if (!rsa_cur->p) rsa_cur->p = $3; else { prsaerror ("Prime1 already defined\n"); YYABORT; } }
++	{ const BIGNUM *p; RSA_get0_factors(rsa_cur,&p,NULL); if (!p) RSA_set0_factors(rsa_cur,$3,NULL); else { prsaerror ("Prime1 already defined\n"); YYABORT; } }
+ 	| PRIME2 COLON HEX 
+-	{ if (!rsa_cur->q) rsa_cur->q = $3; else { prsaerror ("Prime2 already defined\n"); YYABORT; } }
++	{ const BIGNUM *q; RSA_get0_factors(rsa_cur,NULL,&q); if (!q) RSA_set0_factors(rsa_cur,NULL,$3); else { prsaerror ("Prime2 already defined\n"); YYABORT; } }
+ 	| EXPONENT1 COLON HEX 
+-	{ if (!rsa_cur->dmp1) rsa_cur->dmp1 = $3; else { prsaerror ("Exponent1 already defined\n"); YYABORT; } }
++	{ const BIGNUM *dmp1; RSA_get0_crt_params(rsa_cur,&dmp1,NULL,NULL); if (!dmp1) RSA_set0_crt_params(rsa_cur,$3,NULL,NULL); else { prsaerror ("Exponent1 already defined\n"); YYABORT; } }
+ 	| EXPONENT2 COLON HEX 
+-	{ if (!rsa_cur->dmq1) rsa_cur->dmq1 = $3; else { prsaerror ("Exponent2 already defined\n"); YYABORT; } }
++	{ const BIGNUM *dmq1; RSA_get0_crt_params(rsa_cur,NULL,&dmq1,NULL); if (!dmq1) RSA_set0_crt_params(rsa_cur,NULL,$3,NULL); else { prsaerror ("Exponent2 already defined\n"); YYABORT; } }
+ 	| COEFFICIENT COLON HEX 
+-	{ if (!rsa_cur->iqmp) rsa_cur->iqmp = $3; else { prsaerror ("Coefficient already defined\n"); YYABORT; } }
++	{ const BIGNUM *iqmp; RSA_get0_crt_params(rsa_cur,NULL,NULL,&iqmp); if (!iqmp) RSA_set0_crt_params(rsa_cur,NULL,NULL,$3); else { prsaerror ("Coefficient already defined\n"); YYABORT; } }
+ 	;
+ %%
+ 
+Index: ipsec-tools-0.8.2/src/racoon/plainrsa-gen.c
+===================================================================
+--- ipsec-tools-0.8.2.orig/src/racoon/plainrsa-gen.c
++++ ipsec-tools-0.8.2/src/racoon/plainrsa-gen.c
+@@ -90,12 +90,14 @@ mix_b64_pubkey(const RSA *key)
+ 	char *binbuf;
+ 	long binlen, ret;
+ 	vchar_t *res;
+-	
+-	binlen = 1 + BN_num_bytes(key->e) + BN_num_bytes(key->n);
++	const BIGNUM *e, *n;
++
++	RSA_get0_key(key,&e,&n,NULL);
++	binlen = 1 + BN_num_bytes(e) + BN_num_bytes(n);
+ 	binbuf = malloc(binlen);
+ 	memset(binbuf, 0, binlen);
+-	binbuf[0] = BN_bn2bin(key->e, (unsigned char *) &binbuf[1]);
+-	ret = BN_bn2bin(key->n, (unsigned char *) (&binbuf[binbuf[0] + 1]));
++	binbuf[0] = BN_bn2bin(e, (unsigned char *) &binbuf[1]);
++	ret = BN_bn2bin(n, (unsigned char *) (&binbuf[binbuf[0] + 1]));
+ 	if (1 + binbuf[0] + ret != binlen) {
+ 		plog(LLV_ERROR, LOCATION, NULL,
+ 		     "Pubkey generation failed. This is really strange...\n");
+@@ -122,25 +124,29 @@ int
+ print_rsa_key(FILE *fp, const RSA *key)
+ {
+ 	vchar_t *pubkey64 = NULL;
++	const BIGNUM *n, *e, *d, *p, *q, *dmp1, *dmq1, *iqmp;
+ 
+ 	pubkey64 = mix_b64_pubkey(key);
+ 	if (!pubkey64) {
+ 		fprintf(stderr, "mix_b64_pubkey(): %s\n", eay_strerror());
+ 		return -1;
+ 	}
++	RSA_get0_key(key,&n,&e,&d);
++	RSA_get0_factors(key,&p,&q);
++	RSA_get0_crt_params(key,&dmp1,&dmq1,&iqmp);
+ 	
+ 	fprintf(fp, "# : PUB 0s%s\n", pubkey64->v);
+ 	fprintf(fp, ": RSA\t{\n");
+-	fprintf(fp, "\t# RSA %d bits\n", BN_num_bits(key->n));
++	fprintf(fp, "\t# RSA %d bits\n", BN_num_bits(n));
+ 	fprintf(fp, "\t# pubkey=0s%s\n", pubkey64->v);
+-	fprintf(fp, "\tModulus: 0x%s\n", lowercase(BN_bn2hex(key->n)));
+-	fprintf(fp, "\tPublicExponent: 0x%s\n", lowercase(BN_bn2hex(key->e)));
+-	fprintf(fp, "\tPrivateExponent: 0x%s\n", lowercase(BN_bn2hex(key->d)));
+-	fprintf(fp, "\tPrime1: 0x%s\n", lowercase(BN_bn2hex(key->p)));
+-	fprintf(fp, "\tPrime2: 0x%s\n", lowercase(BN_bn2hex(key->q)));
+-	fprintf(fp, "\tExponent1: 0x%s\n", lowercase(BN_bn2hex(key->dmp1)));
+-	fprintf(fp, "\tExponent2: 0x%s\n", lowercase(BN_bn2hex(key->dmq1)));
+-	fprintf(fp, "\tCoefficient: 0x%s\n", lowercase(BN_bn2hex(key->iqmp)));
++	fprintf(fp, "\tModulus: 0x%s\n", lowercase(BN_bn2hex(n)));
++	fprintf(fp, "\tPublicExponent: 0x%s\n", lowercase(BN_bn2hex(e)));
++	fprintf(fp, "\tPrivateExponent: 0x%s\n", lowercase(BN_bn2hex(d)));
++	fprintf(fp, "\tPrime1: 0x%s\n", lowercase(BN_bn2hex(p)));
++	fprintf(fp, "\tPrime2: 0x%s\n", lowercase(BN_bn2hex(q)));
++	fprintf(fp, "\tExponent1: 0x%s\n", lowercase(BN_bn2hex(dmp1)));
++	fprintf(fp, "\tExponent2: 0x%s\n", lowercase(BN_bn2hex(dmq1)));
++	fprintf(fp, "\tCoefficient: 0x%s\n", lowercase(BN_bn2hex(iqmp)));
+ 	fprintf(fp, "  }\n");
+ 
+ 	vfree(pubkey64);

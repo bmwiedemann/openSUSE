@@ -1,0 +1,718 @@
+-------------------------------------------------------------------
+Fri Jul 26 06:19:44 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Set caps for clockdiff (boo#1140994), based on change in permissions package
+  https://github.com/openSUSE/permissions/commit/5da6a81e38bb74f2090d73208b1a0101a0c5b73b
+- With new permissions package both clockdiff and ping have capabilities
+  cap_net_raw+p instead of cap_net_raw+ep (boo#1140993), also ping6 does not
+  try to set permissions on links (boo#1140991)
+- Pass -DNO_SETCAP_OR_SUID=true (don't run setcap via distro script
+  build-aux/setcap-setuid.sh, we set capabilities with rpm)
+
+-------------------------------------------------------------------
+Wed Jul 10 08:27:00 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version s20190709
+- Removed patches included in this upstream release:
+  ping-Fix-unwanted-bell-on-unreachable-address.patch
+  0001-build-sys-doc-Fix-the-dependency-on-xsltproc.patch
+  meson-remove-setcap-setuid.sh.patch
+- Add libcap-progs as a build dependency (setcap is needed)
+
+-------------------------------------------------------------------
+Fri Jun 14 12:56:38 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Add patch ping-Fix-unwanted-bell-on-unreachable-address.patch (boo#1135118)
+
+-------------------------------------------------------------------
+Fri May 24 16:22:41 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version s20190515 (includes changes s20190324)
+  * s20190324: 189 commits since s20180629 that include changing build
+    system from autotools to meson, added rarpd and rdisc systemd service
+    files, many fixes
+  * s20190515 bugfix release (6 commits)
+- User visible change: arping and clockdiff are moved from /usr/sbin
+  to /usr/bin (respect upstream path)
+- Backport patch 0001-build-sys-doc-Fix-the-dependency-on-xsltproc.patch
+  (fixing build system)
+- Add workaround patch meson-remove-setcap-setuid.sh.patch
+- Remove 0001-tracepath-Fix-copying-input-IPv6-address.patch
+  (included in s20190324 release)
+- Refresh old patches (iputils-ping-interrupt.diff, iputils-sec-ping-unblock.diff)
+- Changes caused by upstream switching to meson build system (drop sed build dependency)
+- Added locales
+- Fix typos
+
+-------------------------------------------------------------------
+Thu Jul 26 09:17:45 UTC 2018 - pvorel@suse.cz
+
+- Backport upstream patch fixing tracepath6 (poo#38492)
+  e0baf20 tracepath: Fix copying input IPv6 address
+  0001-tracepath-Fix-copying-input-IPv6-address.patch
+
+-------------------------------------------------------------------
+Fri Jun 29 18:25:51 UTC 2018 - pvorel@suse.cz
+
+- Update to version s20180629
+  * ping: Fix signed overflow/conversion warning
+  * ping: Fix ping name encoded using ACE on C locale
+  * fix checksum always success in IPv4 ping.
+  * ping6: Fix device binding
+  * Ping: Correct rounding of timing displays
+  * docs: Tiny fixes in README.md
+  * doc/ping: Update Interface section
+  * doc/ping: Replace deprecated commands in "SEE ALSO" section
+  * Revert "correctly initialize first hop"
+  * tracepath: Support calling `tracepath` as `tracepath4` or `tracepath6`
+  * ping: remove spurious error message
+  * tracepath: fix heap-buffer-overflow [asan]
+  * arping: do not use libsysfs to read from /sys
+  * .travis.yml: corrected variable values in matrix
+  * .travis.yml: install libidn2
+  * ping: use libidn2 instead of libidn
+  * ping: Remove workaround for bug in IP_RECVERR on raw sockets
+  * ping6: simplified IDNA usage
+  * traceroute6: use getaddrinfo IDNA conversion
+  * arping,tracepath: removed unused idna header
+  * cleanup: really old code, simplify little bit
+  * licenses: fill missing clockdiff.c and ping_common.c license
+  * LICENSE: convert BSD4 to BSD3 license
+  * doc: ping - document mdev behaviour
+  * LICENSE: add information about licenses
+  * ping: fix incorrect packet loss calculation
+  * doc: convert from converting SGML to XML
+  * travis-ci: cleanup and switch to Ubuntu 14.04 build
+  * RELNOTES: deprecated in favor of git history & github
+  * remove iputils.spec
+  * ping: fix conflicting defines
+  * ping: flowinfo: fixup checks for flowinfo and also add decimal numbers support
+  * ping: parsetos verification is enough, allow decimal values
+  * ping: fix typo in error tos error message
+  * meson: add experimental meson buildsystem support
+  * gitignore: prepare for Meson
+  * ping: read from error queue when POLLERR is set
+  * ping_common.c: POLLERRR is ignored in events
+  * ping: fix pmtu discovery for ipv6
+  * traceroute6: Fix traceroute to IPv6 address
+  * traceroute6: Fix leaking the idn memory
+  * traceroute6: Fix use after free for hostname
+  * tracepath,doc: Added -4, -6 Parameter in doc and void usage(void)
+  * fix multicast setsockopt calls on big endian
+  * arping: exit if network disappears while running
+  * ping: prevent possible double free after cap_free()
+  * Add strict pattern matching on response when pattern was provided
+  * traceroute6: Fix udp packet port specification.
+- Removed patches (taken from upstream, now in tree)
+  * iputils-add-license-info.diff
+  * iputils-ping-fix-pmtu-for-ipv6.patch
+  * iputils-remove-bogus-check-required-for-2.4.9-kernels.patch
+- Rebased patches
+  * iputils-ping-interrupt.diff
+  * iputils-sec-ping-unblock.diff
+- Add build dependency docbook-xsl-stylesheets (required by man pages)
+- Add tracepath6 man page, updated list of unwanted man enties (ipg, pgset)
+- Removed RELNOTES (upstream removed it)
+
+-------------------------------------------------------------------
+Mon Apr 16 11:56:51 UTC 2018 - jcaamano@suse.com
+
+- Backport license information from upstream (bnc#1082788):
+  iputils-add-license-info.diff
+
+-------------------------------------------------------------------
+Fri Jan  5 11:11:03 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Backport iputils-ping-fix-pmtu-for-ipv6.patch from upstream
+  to fix PMTU discovery in ping6. (bsc#1072460)
+
+-------------------------------------------------------------------
+Mon Dec 11 08:20:16 UTC 2017 - mpluskal@suse.com
+
+- Install rdisc as rdisc, do not use in.rdisc anymore (xinetd which
+  was using in.* names is obsolete anyways)
+
+-------------------------------------------------------------------
+Mon Dec 11 07:31:23 UTC 2017 - pvorel@suse.cz
+
+- iputils: remove man pages of unused binaries: ninfod, pg3, rdisc
+  (rdisc is in a separate package)
+
+-------------------------------------------------------------------
+Sat Dec  9 08:32:23 UTC 2017 - mpluskal@suse.com
+
+- Add systemd service for rarpd
+
+-------------------------------------------------------------------
+Thu Nov 30 08:30:22 UTC 2017 - meissner@suse.com
+
+- mark ping also verify not caps, as these are changed by the
+  permissions package. (bsc#1065835)
+
+-------------------------------------------------------------------
+Tue Nov 28 11:31:33 UTC 2017 - mpluskal@suse.com
+
+- Reintroduce rarpd as subpackage
+- Explicitly list content in filelist as we have two subpackages
+  now
+
+-------------------------------------------------------------------
+Mon Nov 13 17:24:40 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep  7 19:27:48 UTC 2017 - pvorel@suse.cz
+
+- Update to version s20161105 (Changes taken from the RELNOTES file)
+  * ping: eliminate deadcode & simplify
+  * ping: do not allow oversized packets to root
+  * correctly initialize first hop
+  * ping: fix ping -6 -I
+  * arping,doc: fix documentation of -I
+  * ping: fix error message when getting EACCES from connect()
+  * renamed INSTALL to INSTALL.md
+  * (re)structured INSTALL.md and transformed into markdown; added hint that installation into prefix has to be done with DESTDIR make variable and that there's no prefix support in configure, close #21
+  * ping: Silence GCC warnings when building with -fstrict-aliasing
+  * tftpd: Drop supplementary groups for root
+  * libgcrypt: fix static linking
+  * doc: Inserted a missing word
+  * tracepath6: avoid redundant family variable
+  * tracepath: borrow everything good from tracepath6
+  * tracepath: switch to dual-stack operation
+  * tracepath: remove now redundant tracepath6
+  * docs: fix parallel build of manpages
+  * ping: remove assignments of values that are never read
+  * docs: remove references to ping6 and traceroute6
+  * ping: work with older kernels that don't support ping sockets
+  * Revert "ping_common.c: fix message flood when EPERM is encountered in ping"
+  * reorder -I option parsing (boo#1057664)
+  * ping: also bind the ICMP socket to the specific device
+- tracepath6 is now symlink to tracepath.
+
+-------------------------------------------------------------------
+Tue Jan  3 10:21:00 UTC 2017 - mchandras@suse.de
+
+- Add ping6 symlink (boo#1017616)
+
+-------------------------------------------------------------------
+Tue May 24 09:28:43 UTC 2016 - meissner@suse.com
+
+- do not install rarpd and rarpd.8 manpage (comes from rarpd rpm currently)
+
+-------------------------------------------------------------------
+Tue May 17 16:15:24 UTC 2016 - mchandras@suse.de
+
+- Update to version s20160308 (Changes taken from the RELNOTES file)
+  * use syntax compatible with busybox date in Makefile
+  * 'admin prohibited' should print !X not !S.
+  * Makefile: use #define as in previous code changes
+  * doc/Makefile: require bash, because we use pushd and popd
+  * doc: don't timestamp manpages by default
+  * ping: status() now returns received/transmitted instead of trans/recv
+  * ping: don't mess with internals of struct msghdr
+  * ping: ICMP error replies while errno < 0 is a hard error
+  * ping: always use POSIX locale when parsing -i
+  * ping: link against libm
+  * made ping functions protocol independent
+  * ping: perform dual-stack ping by default
+  * ping: remove obsolete preprocessor directives
+  * ping: avoid name clashes between IPv4 and IPv6 code
+  * ping: merge all ping header files into a single one
+  * ping: merge `ping6` command into `ping`
+  * ping: refactor ping options
+  * ping: refactor ping socket code
+  * ping: merge IPv4 and IPv6 `pr_addr()`
+  * ping: fix defines and libs in Makefile
+  * ping: handle single protocol systems
+  * iputils ping/ping6: Add a function to check if a packet is ours
+  * ping: Add <linux/types.h> to fix compilation error.
+  * ping6: Use GNUTLS API directly for MD5. (v2)
+  * ping6: Use libgcrypt instead of gnutls for MD5.
+  * Allow ping to use IPv6 addresses
+  * ping,ping6 doc: More description on CAP_NET_RAW usage.
+  * if IPv4 resolving fails fallback to ping6
+  * ping: in usage print the 'ping -6' options as well
+  * ping: allow option -4 which forces IPv4
+  * combine sock and errno into a single structure
+  * This patch allows running ping and ping6 without root privileges on
+  * use better names for socket variables
+  * tracepath,doc: fix corrupted tag
+  * doc: ping: add missing options and remove ping6
+  * ninfod: remove unused variables
+  * ninfod: Regenerate configure by autoconf-2.69.
+  * ninfod: libgcrypt support.
+  * Fix building with musl
+  * travis.yml: install nettle-dev
+  * Allow using nettle instead of libgcrypt for MD5
+  * avoid compiler warning caused by snapshot.h
+  * make `getaddrinfo()` and `getnameinfo()` usage consistent
+  * enable IDN by default
+  * remove IPV4_TARGETS and IPV6_TARGETS
+  * Use svg instead of png to get better image quality
+  * spec: Configure before building ninfod.
+  * spec: Fix date in %changelog.
+  * make,spec: Add rpm target.
+- Refreshed patches
+  * iputils-ping-interrupt.diff
+  * iputils-sec-ping-unblock.diff
+- Remove ifenslave.c. It has been removed in the linux kernel commit
+  b1098bbe1b24("bonding: remove ifenslave.c from kernel source").
+  bonding can be done via iproute (netlink)
+- dropped iputils-ifenslave.diff
+- Append our CFLAGS to the upstream ones instead of overriding them.
+- Cleanup old make command since the upstream Makefile does things right
+  it seems.
+- Use Provides: for old /{,s}bin utils to satisfy reverse dependencies.
+- Install utilities to /bin and /sbin until reverse dependencies are
+  properly fixed.
+- Do not install tftp and traceroute to avoid conflicts with the tftp and
+  traceroute packages. Stick to what iputils used to provide in the past.
+- Remove iputils-traceroute6-stdint.diff patch since we are not building
+  the traceroute* utilities.
+- Install tracepath to /usr/bin. (boo#795788)
+
+-------------------------------------------------------------------
+Tue Dec  1 13:39:07 UTC 2015 - p.drouand@gmail.com
+
+- Update to version s20150815
+  * use syntax compatible with busybox date in Makefile
+  * Makefile: use #define as in previous code changes
+  * ping: status() now returns received/transmitted instead of trans/recv
+  * ping: don't mess with internals of struct msghdr
+  * tracepath,doc: fix corrupted tag
+  * made ping functions protocol independent
+  * Allow ping to use IPv6 addresses
+  * if IPv4 resolving fails fallback to ping6
+  * ping: in usage print the 'ping -6' options as well
+  * ping: allow option -4 which forces IPv4
+  * combine sock and errno into a single structure
+  * This patch allows running ping and ping6 without root privileges on
+  * use better names for socket variables
+  * travis.yml: install nettle-dev
+  * Allow using nettle instead of libgcrypt for MD5
+  * avoid compiler warning caused by snapshot.h
+  * make `getaddrinfo()` and `getnameinfo()` usage consistent
+  * enable IDN by default
+  * ping: perform dual-stack ping by default
+  * remove IPV4_TARGETS and IPV6_TARGETS
+  * ping: remove obsolete preprocessor directives
+  * ping: avoid name clashes between IPv4 and IPv6 code
+  * ping: merge all ping header files into a single one
+  * ping: merge `ping6` command into `ping`
+  * ping: refactor ping options
+  * ping: refactor ping socket code
+  * ping: merge IPv4 and IPv6 `pr_addr()`
+  * Use svg instead of png to get better image quality
+  * iputils ping/ping6: Add a function to check if a packet is ours
+  * ping: Add <linux/types.h> to fix compilation error.
+  * ping6: Use GNUTLS API directly for MD5. (v2)
+  * ping6: Use libgcrypt instead of gnutls for MD5.
+  * ninfod: Regenerate configure by autoconf-2.69.
+  * ninfod: libgcrypt support.
+  * spec: Configure before building ninfod.
+  * spec: Fix date in %changelog.
+  * make,spec: Add rpm target.
+  * ping,ping6 doc: More description on CAP_NET_RAW usage.
+- Update patches
+  * iputils-s20101006-ping-interrupt.diff > iputils-ping-interrupt.diff 
+  * iputils-s20101006-sec-ping-unblock.diff > iputils-sec-ping-unblock.diff 
+  * iputils-remove-bogus-check-required-for-2.4.9-kernels.patch 
+- Update home project page and download Url
+- Remove obsolete %clean section
+- Remove UsrMerge process; it has been done for more than two
+  openSUSE releases now
+
+-------------------------------------------------------------------
+Mon Apr 20 17:07:42 CEST 2015 - tiwai@suse.de
+
+- Fix a bogus kernel version check (boo#927831):
+  iputils-remove-bogus-check-required-for-2.4.9-kernels.patch
+
+-------------------------------------------------------------------
+Tue Jan 28 08:13:46 CET 2014 - hare@suse.de
+
+- Fixed ping segfaults (bnc#860616,bnc#860655)
+  * Removed iputils-pingnamelookuponce.diff
+
+-------------------------------------------------------------------
+Thu Jan 23 11:02:06 CET 2014 - hare@suse.de
+
+- Update to upstream version s20121221 (FATE#316211)
+  - See RELNOTES for full changelog
+- Removed merges patches:
+  * iputils-pingtypo.diff
+  * iputils-s20101006-capabilities.diff
+- Updated patches for apply
+- Remove libsysfs dependency (FATE#316211)
+
+-------------------------------------------------------------------
+Wed Nov 13 14:43:36 UTC 2013 - meissner@suse.com
+
+- also do the usr move with the permissions handlers bnc#841533
+
+-------------------------------------------------------------------
+Tue Jul 23 11:04:46 CEST 2013 - ms@suse.de
+
+- ping denpend on SIGALRM to exit sometime, so we mask it UNBLOCK (bnc #674304)
+
+-------------------------------------------------------------------
+Fri Mar  8 03:27:28 UTC 2013 - crrodriguez@opensuse.org
+
+- Build everythiong with full RELRO here. SUID code around..
+
+-------------------------------------------------------------------
+Sat Mar  2 08:18:36 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Feb 17 00:36:48 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Tue May 31 10:06:29 CEST 2011 - ms@suse.de
+
+- fixed typo in ping output. Since 11.4 sequence tag is icmp_req
+  instead of icmp_seq beause of that for example cacti ping script
+  does not work anymore (bnc #696720)
+
+-------------------------------------------------------------------
+Fri Nov 19 09:55:18 UTC 2010 - coolo@novell.com
+
+- remove no longer needed patches
+
+-------------------------------------------------------------------
+Tue Nov 16 15:41:51 UTC 2010 - lnussel@suse.de
+
+- don't verify caps as that's done by chkstat as well
+- use new %set_permissions macro
+
+-------------------------------------------------------------------
+Mon Nov  8 10:32:37 UTC 2010 - lnussel@suse.de
+
+- fix capabilities patch: first switch uid then drop caps.
+
+-------------------------------------------------------------------
+Wed Nov  3 14:31:09 UTC 2010 - lnussel@suse.de
+
+- update to version s20100418
+  * ping,ping6: avoid gethostbyaddr during ping flood.
+  * arping: Set correct broadcast address.
+  * tracepath: Fix some small typos in tracepath.sgml.
+  * ping: Fix resource consumption triggered by specially crafted ICMP
+    Echo Reply (CVE-2010-2529)
+- don't install fscaps, rely on /etc/permissions handling instead
+- compile using -fno-strict-aliasing
+- drop capabilities unconditionally (bnc#645423)
+- spec file cleanup
+
+-------------------------------------------------------------------
+Mon Oct 11 03:56:55 UTC 2010 - reddwarf@opensuse.org
+
+- Use POSIX capabilities instead of SUID for ping
+
+-------------------------------------------------------------------
+Tue Sep  7 20:35:03 UTC 2010 - aj@suse.de
+
+- BuildRequire sysfsutils-devel
+
+-------------------------------------------------------------------
+Wed Jul 14 13:42:08 CEST 2010 - ms@suse.de
+
+- fixed device broadcast setup (bnc #614389)
+- upstream maintainer has changed. new maintainer is
+  YOSHIFUJI Hideaki. Along with this change the versioning
+  of the package also changed. Current version is: s20100418
+  from 18-Apr-2010
+- many patches upstream now, reduced patch set	
+
+-------------------------------------------------------------------
+Tue Jul 13 17:03:24 CEST 2010 - ms@suse.de
+
+- reverted arping-infiniband.diff, it breaks arping
+  (bnc #614389) and (bnc #610839)
+
+-------------------------------------------------------------------
+Thu Jul  8 16:24:50 CEST 2010 - ms@suse.de
+
+- security fix: replies by a malicious system can
+  make ping run into an endless loop (bnc #620837)
+
+-------------------------------------------------------------------
+Fri Jun  4 09:22:08 CEST 2010 - ms@suse.de
+
+- fixed arping buffer overflow on Infiniband (bnc #610839)
+
+-------------------------------------------------------------------
+Fri Apr 23 16:16:33 CEST 2010 - ms@suse.de
+
+- ifenslave: fixed detach/attach code of bonds (bnc #595474)
+- ifenslave: fixed output of the IP address - in hex: (bnc #595474)
+
+-------------------------------------------------------------------
+Tue Dec 22 21:21:39 UTC 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Oct  6 10:47:49 CEST 2008 - ms@suse.de
+
+- fixed compiler warning in ifenslave.c:
+  *ordered comparison of pointer with integer zero (bnc #431910)
+
+-------------------------------------------------------------------
+Thu Sep  4 14:40:01 CEST 2008 - ms@suse.de
+
+- fixed ping signal handling during address lookup (bnc #416404)
+
+-------------------------------------------------------------------
+Wed Dec 12 15:44:07 CET 2007 - rguenther@suse.de
+
+- use sysconf(_SC_OPEN_MAX) instead of OPEN_MAX to fix build
+
+-------------------------------------------------------------------
+Tue Mar  6 09:14:02 CET 2007 - ms@suse.de
+
+- fixed overbound ttab2 array access (#251195)
+
+-------------------------------------------------------------------
+Wed Dec  6 15:24:00 CET 2006 - ms@suse.de
+
+- ping_common.c: added check for oversized packages (-s) (#222010)
+
+-------------------------------------------------------------------
+Thu Nov 23 17:04:15 CET 2006 - olh@suse.de
+
+- move ifenslave.c to the first patch to allow quilt setup *.spec
+
+-------------------------------------------------------------------
+Wed Nov 22 11:47:46 CET 2006 - ms@suse.de
+
+- ping6: use getaddrinfo() instead of gethostbyname2 (#221745)
+
+-------------------------------------------------------------------
+Fri Nov 10 12:26:57 CET 2006 - ro@suse.de
+
+- fix manpage permissions 
+
+-------------------------------------------------------------------
+Mon Aug  7 20:38:57 CEST 2006 - aj@suse.de
+
+- use sysconf(_SC_CLK_TCK) instead of HZ
+
+-------------------------------------------------------------------
+Wed Mar  1 15:47:50 CET 2006 - schwab@suse.de
+
+- ifenslave: fix display of interface address.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 13:45:37 CET 2006 - mmj@suse.de
+
+- Fix ping6 [#143932]
+
+-------------------------------------------------------------------
+Fri Jul  8 10:34:54 CEST 2005 - mmj@suse.de
+
+- Patch from ak which allows to use the standard ping6
+  link-local-addr%interface syntax instead of ping6 -I interface
+  link-local-addr.
+
+-------------------------------------------------------------------
+Thu Jun 16 09:58:16 CEST 2005 - mmj@suse.de
+
+- Compile with -fpie, link with -pie
+
+-------------------------------------------------------------------
+Fri Sep  3 11:40:14 CEST 2004 - kukuk@suse.de
+
+- Fix compiling with new glibc headers
+
+-------------------------------------------------------------------
+Fri Mar 19 12:07:00 CET 2004 - mmj@suse.de
+
+- Use correct permissions for manpages [#36321]
+
+-------------------------------------------------------------------
+Wed Mar 17 13:16:15 CET 2004 - mmj@suse.de
+
+- Add Olaf Kirch patch to only do name lookup once in ping [#36161]
+
+-------------------------------------------------------------------
+Mon Jan 12 13:20:18 CET 2004 - mmj@suse.de
+
+- Update ifenslave.c to the one from linux-2.6.1
+
+-------------------------------------------------------------------
+Thu Oct 16 12:17:57 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Cleanup a bit
+
+-------------------------------------------------------------------
+Wed Jun  4 15:40:48 CEST 2003 - kukuk@suse.de
+
+- Don't include net/if.h and linux/if.h at the same time
+
+-------------------------------------------------------------------
+Mon May 12 13:43:31 CEST 2003 - mmj@suse.de
+
+- Update to newest snapshot, ss021109
+
+-------------------------------------------------------------------
+Mon Feb 24 20:44:28 CET 2003 - schwab@suse.de
+
+- Fix use of kernel headers.
+
+-------------------------------------------------------------------
+Wed Oct 30 11:36:11 CET 2002 - mmj@suse.de
+
+- Apply patch for the ping/ping6 manpage to mention the -R option
+  is for IPv4 only.
+- Clean up the specfile a bit.
+
+-------------------------------------------------------------------
+Fri Oct 25 08:25:20 CEST 2002 - mmj@suse.de
+
+- Apply patch for setuid() return value check from Thomas Biege
+
+-------------------------------------------------------------------
+Wed Oct  2 13:40:50 CEST 2002 - mmj@suse.de
+
+- Add the ifenslave binary from the kernel Documentation directory
+  [#20372]
+
+-------------------------------------------------------------------
+Tue Oct  1 15:28:16 CEST 2002 - mmj@suse.de
+
+- Update to snapshot 020927 which among other things should have
+  below fix merged.
+
+-------------------------------------------------------------------
+Thu Aug  8 16:42:52 CEST 2002 - mmj@suse.de
+
+- Apply other patch to fix the dynamic IP problem and still allows
+  the from address to be printed. Thanks to Olaf Kirch. [#17519]
+
+-------------------------------------------------------------------
+Sun Jul 28 09:25:06 CEST 2002 - kukuk@suse.de
+
+- remove unused tetex from neededforbuild
+
+-------------------------------------------------------------------
+Thu Jul 25 18:23:55 CEST 2002 - mmj@suse.de
+
+- Disabled traceroute6
+
+-------------------------------------------------------------------
+Fri Jul  5 19:39:39 CEST 2002 - bk@suse.de
+
+- fix build on ia64(use glibc kernel headers, not /usr/src/linux)
+- add optflags
+
+-------------------------------------------------------------------
+Thu Jul  4 21:22:16 MEST 2002 - bk@suse.de
+
+- add fix for buffer overflow problem in traceroute6.c(datalen.patch)
+- add fix for ipv6 error printing problem (ping6-errorprinting.patch)
+- add patch to activate the rdisc server  (rdisc-server.patch)
+
+-------------------------------------------------------------------
+Mon Jun 17 14:41:30 CEST 2002 - mmj@suse.de
+
+- Revert back to the ping from iputils, and apply patch to fix 
+  the dynamic ip problem.
+
+-------------------------------------------------------------------
+Mon Jun 10 15:27:18 CEST 2002 - mmj@suse.de
+
+- Use old nkitb ping which works with dynamic IP [#12568]
+
+-------------------------------------------------------------------
+Mon Feb  4 15:57:00 CET 2002 - mmj@suse.de
+
+- Update to snapshot from January 24th 2002
+
+-------------------------------------------------------------------
+Tue Jan 22 14:38:43 CET 2002 - mmj@suse.de
+
+- Update to snapshot from December 2nd 2001
+
+-------------------------------------------------------------------
+Mon Dec 10 15:51:04 CET 2001 - bjacke@suse.de
+
+- move arping to /sbin/
+
+-------------------------------------------------------------------
+Wed Oct 10 15:01:25 CEST 2001 - mmj@suse.de
+
+- Update to snapshot from October 2 2001
+
+-------------------------------------------------------------------
+Thu Sep  6 16:20:30 CEST 2001 - kukuk@suse.de
+
+- Remove wrong warning about to old kernel and warning about
+  problems with the clock from ping (ping has a special handler
+  for this, so it is okay). Both only confuses tester [Bug #10141
+  and Bug #10146].
+
+-------------------------------------------------------------------
+Sat Aug 25 12:53:59 CEST 2001 - kukuk@suse.de
+
+- Update to snapshot from 24 Aug 2001
+- Use included ping like all other distributions do
+- Don't use included rarpd and tftpd
+- Lot of new functions and minor bug fixes
+
+-------------------------------------------------------------------
+Mon Jun 18 16:19:41 CEST 2001 - schwab@suse.de
+
+- Fix use of cpp directives inside macro call.
+
+-------------------------------------------------------------------
+Fri Mar 30 14:07:34 CEST 2001 - kukuk@suse.de
+
+- Use ping6 from inet6-apps package [Bug #6354]
+
+-------------------------------------------------------------------
+Mon Mar 12 11:57:23 CET 2001 - schwab@suse.de
+
+- Fix use of kernel headers.
+
+-------------------------------------------------------------------
+Fri Mar  9 16:39:25 CET 2001 - kukuk@suse.de
+
+- Add ping and ping.8 manual page from OpenBSD.
+
+-------------------------------------------------------------------
+Mon Mar  5 10:50:44 CET 2001 - kukuk@suse.de
+
+- fix to build with current glibc
+
+-------------------------------------------------------------------
+Wed Feb 14 15:50:22 CET 2001 - uli@suse.de
+
+- fixed to build on PPC 
+
+-------------------------------------------------------------------
+Sat Nov 11 13:30:26 CET 2000 - kukuk@suse.de
+
+- Update to new version (20001110).
+
+-------------------------------------------------------------------
+Sat Oct 14 15:15:11 CEST 2000 - kukuk@suse.de
+
+- spec file fixes
+
+-------------------------------------------------------------------
+Sat Oct 14 14:14:51 CEST 2000 - kukuk@suse.de
+
+- Initial version
+

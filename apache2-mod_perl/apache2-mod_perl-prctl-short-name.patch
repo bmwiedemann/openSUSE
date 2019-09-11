@@ -1,0 +1,20 @@
+Index: mod_perl-2.0.10/src/modules/perl/mod_perl.c
+===================================================================
+--- mod_perl-2.0.10.orig/src/modules/perl/mod_perl.c	2016-10-27 22:11:11.000000000 +0200
++++ mod_perl-2.0.10/src/modules/perl/mod_perl.c	2018-07-17 10:47:27.962807330 +0200
+@@ -15,6 +15,7 @@
+  */
+ 
+ #include "mod_perl.h"
++#include <sys/prctl.h>
+ 
+ /* make sure that mod_perl won't try to start itself, while it's
+  * already starting. If the flag's value is 1 * it's still starting,
+@@ -281,6 +282,7 @@ PerlInterpreter *modperl_startup(server_
+      */
+     PL_origalen = strlen(argv[0]) + 1;
+     sv_setpv_mg(get_sv("0",0), argv[0]);
++    prctl(PR_SET_NAME, (unsigned long)apr_filepath_name_get(argv[0]), 0, 0, 0);
+ 
+     perl_run(perl);
+ 

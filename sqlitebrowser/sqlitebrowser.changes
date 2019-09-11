@@ -1,0 +1,390 @@
+-------------------------------------------------------------------
+Fri Jul 27 14:03:16 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+- Trim redundancies from description.
+
+-------------------------------------------------------------------
+Fri Jun 29 11:00:50 UTC 2018 - wbauer@tmo.at
+
+- update to version 3.10.1
+  * Bug fixes
+    - General
+      + cipher: Fix passphrases containing single quotes
+      + cipher: Change tab order in encryption dialog
+      + Fix typo in Russian translation
+      + Pass /norestart to vcredist installer
+      + Fix index updating when removing an indexed column from a table
+      + Don't automatically commit all changes when editing a table column
+      + Make text selectable in Edit dock even if db is opened as read only
+      + Add '<>NULL' filter
+      + Fix custom type saving when only focus changes for user-entered type
+    - DBHub.io related
+      + dbhub: Tweak certificate UI in the preferences dialog
+      + dbhub: Fix progress dialog for very large files
+      + dbhub: Remove closing "." from the progress dialog
+      + dbhub: Ask user what to do when trying to open an updated database
+      + dbhub: Enforce name and commit message length limits in push dialog
+      + dbhub: Add tooltip to cog tool button
+      + dbhub: Redownload database if local copy has been deleted
+      + dbhub: Fix wrong file size being shown for very large files
+      + dbhub: Support pushing to different branches than "master"
+      + dbhub: Improve file size format
+      + dbhub: Optimise code
+      + dbhub: Fix branch list in push dialog
+
+-------------------------------------------------------------------
+Wed Aug 30 14:24:07 UTC 2017 - mpluskal@suse.com
+
+- Correct license
+- Use more cmake macros
+- Use shared qscintilla library
+
+-------------------------------------------------------------------
+Tue Aug 29 16:59:44 UTC 2017 - wbauer@tmo.at
+
+- update to version 3.10.0
+  * Highlights
+    - DBHub.io integration
+      + Uploading and downloading of databases works
+      + Branching, forking, starring works, as does creating tags and releases
+      + There's a 100MB per database limit at the moment though, as it's still in development
+      + Backups aren't done on it (yet), so don't use it as your only place for storing important things (!!!)
+      + The front page is... not great. We're working on it.
+      + Still lots of upcoming stuff needing to be done. An API to query your databases, a cli, merging, discussions/issues
+      + Please report bugs, ideas, suggestions (etc) on the dbhub.io repo issue tracker as you find them.
+    - Many plot improvements (NULL values, progress dialog, remember settings, better colours, and bug fixes)
+    - Better table editing (foreign key editor, toggling the WITHOUT ROWID flag, temporary tables, ...)
+    - Better Import CSV dialog. It can now handle multiple CSV files at once
+    - Improved Index dialog and better index handling in general
+    - Better handling of virtual tables
+    - Filter improvements (ranges, NULL search)
+    - The usual improvements to the grammar parser
+  * See the full list of changes under
+    https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.10.0
+- switch back to cmake build
+- use system antlr on openSUSE, the problems seem to be fixed
+- unconditionally build with Qt5, Qt4 support has been dropped in
+  this release
+
+-------------------------------------------------------------------
+Thu Jan 19 12:38:53 UTC 2017 - hpj@urpla.net
+
+- switch to qmake build: cmake is badly broken ATM
+- update to version 3.9.1 
+  * Major features
+    - DBHub.io was recently announced.
+    - Future releases of DB Browser for SQLite will optionally be able to save and retrieve your SQLite databases "in the cloud".
+    - You can enable/disable this new submenu in Preferences.
+
+  * Enhancements
+    - Decreased lagging with long strings (further work still needed) - #761 (thanks to @innermous and @MKleusberg)
+    - Indicate when display strings are being truncated - #767 (thanks to @justinclift)
+    - Focus the newly created field after clicking 'Add field' - 64ee665 (thanks to @Revolter)
+    - Improved Execute current SQL line action - #780, 45affc9, 531eddb (thanks to @Revolter)
+
+  * Bug fixes
+    - Fixed default font selected being incorrectly detected - b15c7f2, 49786e1 (thanks to @innermous and @justinclift)
+    - Increased custom Page Size upper limit - e12e043 (thanks to @MKleusberg)
+    - Fixed program not being able to uninstall from "Programs and Features" in Windows 7 - 90c094e (thanks to @justinclift)
+    - Fixed executing current line action incorrectly logging the entire SQL - 55d8905 (thanks to @Revolter)
+    - Added HTML entities escaping in output when executing SQL - b9dd11d (thanks to @innermous)
+    - Fixed Indexes with spaces around their name not being able to be deleted - 8be2c54 (thanks to @MKleusberg)
+    - Removed quotes around content when a single cell is copied - 8c510ff (thanks to @Revolter)
+    - Help button should not be present in Windows title bar - #796 (thanks to @schdub)
+
+- update to version 3.9.0
+  It's been yet another half a year (more precisely, 8 months) since the previous version 3.8.0 was released, and a lot of good things happened.
+  * Major features
+    - Strong encryption is now supported on Windows, using SQLCipher! - 5d98a19 (thanks to @huy-cong and @justinclift for figuring this out)
+    - Keyboard navigation in the "Browse Data" tab now works well
+    - Our releases are now digitally signed on both Windows and MacOS
+
+  * Enhancements
+    - Add Fedora install instructions - #467, #470 (thanks to @subdriven)
+    - Add Windows DATE display format - #471 (thanks to @MyRoGeertGit)
+    - Remove ampersands from windows title - d9d2f96 (thanks to @MKleusberg)
+    - Feature request: Option to turn off "intellisense"-like suggestions - #537 (thanks to @MKleusberg)
+    - Add select and deselect all options for Export SQL dialog - #549 (thanks to @wierzba3)
+    - Add Homebrew Cask install instructions - #564, #566 (thanks to @timbroder)
+    - Add decimal support to display format - #569 (thanks to @jungle-boogie)
+    - Add Edit Database Cell update when selecting a cell from the Execute SQL tab - #570 (thanks to @larsimmisch)
+    - Cannot view binary data on BLOB columns containing image - #580 (thanks to @justinclift)
+    - Update Fedora install instructions - #586, #587 (thanks to @FreedomBen)
+    - Add preference setting for exports line ending - #592, #597 (thanks to @justinclift)
+    - Adjust executable/app name according to the project's name - #593 (thanks to @justinclift)
+    - Add duplicate record option - #594 (thanks to @innermous)
+    - Change default button to No in removal message dialogs - #618 (thanks to @innermous)
+    - Add default field type preference setting - #652 (thanks to @revolter)
+    - Add option to export only the data in an SQL export - c8f0203 (thanks to @MKleusberg)
+    - Remove buggy Edit Dialog and improved Edit Dock - #668, #679 (thanks to @justinclift)
+    - Add Ubuntu install instructions on the website - #671 (thanks to @justinclift)
+    - Add Rackspace logo on the website - 6fda155 (thanks to @justinclift)
+    - Add binary data size to the Edit Dock - #699 (thanks to @revolter)
+    - Update installer .dmg on Mac OS - #693 (thanks to @justinclift and @revolter)
+    - Add Create Index button in the toolbar and fixed Create Index dialog sizing - #704 (thanks to @revolter)
+    - Add backspace alongside delete key for cell empty, for laptops missing the delete key - #705 (thanks to @justinclift)
+    - Optimize choosing displayed text for cell - 6b42af7 (thanks to @innermous)
+    - Improve copy/pasting in ExtendedTableWidget - #709 (thanks to @innermous)
+    - Feature request: We should sign our official releases - #711 (thanks to @justinclift)
+    - Reimplement data handling in the Edit Cell widget - #713 #410 (thanks to @justinclift)
+
+  * Bug fixes
+    - Fix building on CentOS - #572 (thanks to @Maxim-Mazurok)
+    - Fix crash when browsing data in some cases - 730a272 (thanks to @MKleusberg)
+    - Fix font blur on retina displays in the SQL Log - #575 (thanks to @nickberry17)
+    - Fix crash when trying to delete records from empty table - #590 (thanks to @innermous)
+    - Fix database toolbar actions not updating after deleting a table - #600 (thanks to @revolter)
+    - Fix cancel button not working in the Export SQL dialog - #608 (thanks to @justinclift)
+    - Fix Field separator and Quote character preferences not restoring correctly - #609 (thanks to @justinclift)
+    - Fix various small bugs with the quote and separator choices - #611 (thanks to @justinclift)
+    - Fix primary keys not being quoted when creating/modifying tables - 7e0adab (thanks to @MKleusberg)
+    - Fix crash in Browse Data tab when pasting empty string over non-empty cell - 1ce62d7 (thanks to @innermous)
+    - Fix cell Edit Dialog not showing up centered - #644 (thanks to @DelphiGit)
+    - Fix Show rowid column option not correctly refreshing the table view - #645 (thanks to @revolter)
+    - Fix crash when hovering over any row from the rowid column - #646 (thanks to @revolter)
+    - Fix for unquoted path vulnerability in the Windows app - #649 (thanks to @DelphiGit and @justinclift)
+    - Fix incorrect app version in Finder's Info view - #658 (thanks to @revolter)
+    - Fix crash when trying to Export table(s) as CSV in some cases - 2c1ab5b (thanks to @innermous)
+    - Fix navigation keyboard shortcuts not working in Browse Data tab in some cases - 2bcc603 (thanks to @justinclift)
+    - Fix DB Toolbar visibility preference setting not restored in some cases - #666 😈 (thanks to @innermous)
+    - Fix Alt-Delete not setting the selected cell to NULL - #663 (thanks to @justinclift)
+    - Fix transactions not being ignored when executing SQL - #656 (thanks to @revolter)
+    - Fix elements focus order on Tab press - #676 (thanks to @chrisjlocke)
+    - Fix Edit Dialog opening when pressing Enter - a7b5c3f (thanks to @MKleusberg)
+    - Fix Filter Input row in RTL Locales - #685 (thanks to @SafaAlfulaij)
+    - Fix Edit Dock default position - 30d2ce3 (thanks to @revolter)
+    - Fix crash when closing unsaved database (or some other rare cases) - #690 (thanks to @revolter)
+    - Fix font preference settings not being reflected in the Edit Dock - 7eb733b (thanks to @justinclift)
+    - Fix Arabic translations not showing up correctly - #702 (thanks to @justinclift)
+    - Fix cell binary data getting corrupted when trying to edit in place - #708 (thanks to @SafaAlfulaij)
+    - Fix foreign key preview not showing up for foreign keys in the first column - #718 (thanks to @schdub)
+
+-------------------------------------------------------------------
+Mon Jul  4 08:32:44 UTC 2016 - mpluskal@suse.com
+
+- Comment out antrl dependency as it causes build issues on x86_64
+
+-------------------------------------------------------------------
+Sun Jul  3 22:00:45 UTC 2016 - wbauer@tmo.at
+
+- Pass -DBUILD_SHARED_LIBS=OFF to %cmake to fix static linking with
+  the included libraries (boo#984828)
+
+-------------------------------------------------------------------
+Thu May 12 08:05:33 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Sun Apr 10 09:55:39 UTC 2016 - mpluskal@suse.com
+
+- Drop some build dependencies
+  * autotools are not used
+- Add macros for icons
+- Add correct dependencies for post/postun macros
+- Use cmake macros
+- Drop some conditional build dependencies for unsupported releases
+- Build with qt5 where possible
+
+-------------------------------------------------------------------
+Sat Apr  9 15:32:00 UTC 2016 - mailaender@opensuse.org
+
+- update to version 3.8.0
+  * Enhancements
+    - Add proper file extension filters to all file dialogs - 6b8f57d (thanks to @MKleusberg)
+    - Improved error handling, e.g. more error messages with more detailed error descriptions - #362, #363, 1696ad1 (thanks to @schdub and @MKleusberg)
+    - Allow changing table columns even when there is a foreign key constraint on the table - #362 (thanks to @MKleusberg)
+    - When holding Ctrl and Shift while clicking on a cell with a foreign key set, the browser now jumps to the referenced record - #192 (thanks to @MKleusberg)
+    - Add option for disabling the SQL error indicators in the Execute SQL area - #302 (thanks to @MKleusberg)
+    - Add an option for setting the colours of fields with regular and binary data - #377 (thanks to @schdub)
+    - Use the name of the imported file as default suggestion for a table name during CSV import - #376 (thanks to @MKleusberg)
+    - Save filter values, sort order and column widths for all tables when switching the current table or tab; also save the settings in the project file - 748f06d (thanks to @MKleusberg)
+    - Show a small clear button inside each filter box - 944e22a (thanks to @MKleusberg)
+    - Add basic support for different 'display formats', i.e. a conversion of the contents of a column into a different format for display purposes (e.g. converting a Unix epoch into an actual date) - 7c1d237, 22e858d (thanks to @MKleusberg)
+    - Remove deleted files from list of recently opened files - #379 (thanks to @MKleusberg)
+    - Add a new option for horizontal tiling of the code and result view in the Execute SQL area - #380 (thanks to @MKleusberg)
+    - Move execution time of the SQL statement to the top of the result view in the Execute SQL area - #381 (thanks to @MKleusberg)
+    - Add 'x rows affected' information to the result view of the Execute SQL area - 82292c2 (thanks to @MKleusberg)
+    - Add built-in UTF16 and UTF16CI collation - #391 (thanks to @sebastian-philipp)
+    - Add Ctrl+R shortcut (besides F5) for the refresh table button - #388 (thanks to @MKleusberg)
+    - Add option for setting the font and font size of the text in the table browser view - #383 (thanks to @MKleusberg)
+    - Support opening of read only database files - #402 (thanks to @MKleusberg)
+    - Add option for showing the rowid column in the data browser view - #408 (thanks to @MKleusberg)
+    - Add option for showing the text in the data browser view using a different encoding - #414 (thanks to @MKleusberg)
+    - Add option for setting an escape character for the filters in the data browser - #421 (thanks to @MKleusberg)
+    - Add a small delay before applying a new filter value instead of performing an instantaneous search to improve performance on large tables - #415 (thanks to @MKleusberg)
+    - Automatically add '%...%' wildcards to a filter query - #415 (thanks to @MKleusberg)
+    - Add Delete and Alt+Delete keyboard shortcuts for setting the current cell to empty string or NULL in the data browser view - #443 (thanks to @MKleusberg)
+    - Add new option for moving the Edit cell data dialog into a dock which is locked to the main window and stays opened - #416, #440, #441 (thanks to @MKleusberg)
+    - Allow drag-&-dropping text and files on a cell in the data browser - #441 (thanks to @MKleusberg)
+    - Add keyboard shortcuts for recently opened files - #432 (thanks to @MKleusberg)
+    - Add new option for setting a SQL script which gets executed whenever any database file is opened - #451 (thanks to @MKleusberg)
+    - Allow pasting data (e.g. from a spreadsheet) directly into the data browser view - #453 (thanks to @MilosSubotic)
+  * Bug fixes
+    - Fix missing SQL log when query contains a line break, also trim the log - #337, #356 (thanks to @schdub and @MKleusberg)
+    - Also set foreign key settings when creating a new database instead of just setting them when opening a file - 212116a (thanks to @MKleusberg)
+    - Fix drawing of Unicode characters in the SQL editor where the font settings wouldn't apply as they should have - #365 (thanks to @SevenLines)
+Allow values greater than 10000 in the user_version pragma of a database - #366 (thanks to @schdub)
+    - Fix adding new a record into a table where all fields are set to a default value - #369 (thanks to @schdub)
+    - Fix resizing of the code and result view in the Execute SQL area - 6806a9b (thanks to @MKleusberg)
+    - Fix error message when changing table - #390 (thanks to @MKleusberg and @GeorgijK)
+    - Fix parsing of double backticks and double quotes used to escape a single one in create table statements - 160bc87, dce47b3 (thanks to @MKleusberg)
+    - Fix handling of tables when their name contains a backtick - #387 (thanks to @MKleusberg)
+    - Try to set a better window position when opening the Edit cell data dialog - #342, #394 (thanks to @MKleusberg)
+    - Fix possible infinite loop in the Edit cell data dialog - #444 (thanks to @manisandro)
+    - Fix bug when pressing the cancel button in the dialog you see when you're closing a database with unsaved changes - #432 (thanks to @MKleusberg)
+    - Don't allow conflicting field names in the Edit Table dialog - #460 (thanks to @MKleusberg)
+  * Translations
+    - Add translation into Traditional Chinese - #425 (thanks to @PeterDaveHello)
+
+-------------------------------------------------------------------
+Thu Aug 13 12:29:25 UTC 2015 - stephan.barth@suse.com
+
+- update to version 3.7.0
+  * Among many bug fixes 3.7.0 also contains these upstream enhancements:
+    - Add option to remember last location for file dialogs
+    - Add option for setting the font used in the SQL code editor
+    - Preserve filters in Browse Data tab when changing tabs
+    - Allow setting the line type and the point shape in the plot area
+    - Add a 'Copy Create statement' popup action to Database Browser tab
+    See the full list of 3.7.0 changes under
+    https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.7.0
+  * Major new features that were added by upstream for version 3.6.0:
+    - Better SQL export
+    - REGEXP support (see the wiki page for details...)
+    - NULL value highlighting - customisable in the preferences
+    See the full list of 3.6.0 changes under
+    https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.6.0
+
+-------------------------------------------------------------------
+Tue Apr 28 21:32:32 UTC 2015 - crrodriguez@opensuse.org
+
+- Use QT5 for Factory builds
+- Honour RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Thu Apr  2 07:09:42 UTC 2015 - mpluskal@suse.com
+
+- Update licensing information
+
+-------------------------------------------------------------------
+Thu Mar 26 14:04:19 UTC 2015 - stephan.barth@suse.com
+
+- Update to version 3.5.1 from 3.4.0
+  Upstream changes for 3.5.1:
+
+  Bug fixes
+
+  - Default Location field can't be changed in v3.5.0 on OSX - #197
+  - Crash when a table name is empty - #194
+  - CSV Import bug - final row being missed - #193
+  - Attach database when main is encrypted - #174
+  - Failure to delete some SQLite entries (.s3db) - #172
+
+  Important upstream changes for 3.5.0:
+  One of the major improvements in this release, is support for encrypted
+  databases. This is done using the SQLCipher encryption library.
+
+  Enhancements
+
+  - I18N - Simplified Chinese language support - #138
+  - Add tooltip for all table items - #139
+  - Remember CSV export options - #149
+  - Distinguish Save and Save As when saving SQL files in the Execute SQL tab
+    - #152
+  - Add two buttons to navigate to the head and the tail - #169
+  - Support Indices without sorting - #176
+
+  Enhancements with progress, though more still needs to be done
+
+  - Open Encrypted Database - #12
+  - Add full support for tables without rowid - #51
+  - NULL field values are not highlighted - #163
+  - Ability to change language - #182 #187
+
+  Bug fixes
+
+  - Foreign Key in Edit Create Table - #109
+  - CSV export bug - Fields aren't automatically quoted when separator
+    character is present in the data - #144
+  - [feature request]"Execute SQL": clear output if query returns nothing -
+    - #151
+  - Export to SQL INT Datatype Expression - #156
+  - Crash when opening db without rowid and composite primary key - #159
+  - Database Structure view: wrong parsing of CHECK constraints - #179
+  - tests: fix QCoreApplication parameters #185
+
+-------------------------------------------------------------------
+Mon Dec  8 10:51:35 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.4.0
+  + CSV file import and export code has been extensively modified
+    for better RFC compatibility
+  + support for custom collation sequences. This lets people use
+    SQLite3 databases copied from their Android phone or tablet.
+  + several fixes in our SQL grammar parser
+  + Make adding new rows less confusing by showing automatically
+    generated data by default values, triggers or the PK right after
+    the new row is added
+  + Edit Table dialog: Add option for adding a unique constraint to columns
+  + UI improvements: Show line numbers in the SQL log
+  + Add a database schema pane (can be torn off)
+  + Added a Russian translation, fixed German translation
+  + new Project files feature, for saving metadata about your SQLite
+    Database files
+  + New: Plotting, a quick and dirty way to draw graphs from your
+    table data
+  + Bi-licensed under MPLv2 and GPLv3
+- adapt package license string for the bi-license
+- use cmake now instead of old qmake
+- let make install the sqlitebrowser binary
+- build-require hicolor-icon-theme for the directory ownership
+
+-------------------------------------------------------------------
+Sun Feb 16 19:34:33 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.0.2:
+  + Fix a memory leak
+  + Allow space characters in table and index names, disallow ` chars
+  + Update execute query table view when no results returned
+  + Fix non tables/column names with non ascii characters
+
+-------------------------------------------------------------------
+Sun Dec 15 15:55:47 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.0.1:
+  + key names in table/column names
+  + copy/paste of single cell
+
+-------------------------------------------------------------------
+Thu Nov  7 13:20:45 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.0:
+  + Qt3Support was removed
+  + Recent files menu added
+  + Improved UI, making it more modern, replacing some dialogs etc.
+  + Syntax highlighting for SQL code
+  + Cleaned up the code, reducing the SLOC quite a bit
+  + Added basic support for triggers and views
+  + Added pragma editing
+  + Added BLOB support
+  + Added a new filter row for searching
+  + Improved performance when opening large tables
+  + Extended the SQL tab
+  + Added SQLite extension support
+  + Fixed a ton of bugs
+  + Probably more
+- removed edittableform-fix-qdebug-use.patch
+- removed sqlitebrowser-libs.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 07:24:24 UTC 2011 - lars@linux-schulserver.de
+
+- add -ldl to the linker (sqlitebrowser-libs.patch)
+
+-------------------------------------------------------------------
+Thu Aug 25 14:10:41 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 2.0b1, but using SVN revision 69 instead
+

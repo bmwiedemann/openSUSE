@@ -1,0 +1,33 @@
+From a3d976ddfd376cd1c5b6ae7aa3c5e7139a5a4032 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 23 Jul 2019 10:04:22 +0200
+Subject: [PATCH] errorlog: Prevent alignment error buiding with gcc9.
+
+Fixes this build error:
+[ 52s] hw/fsp/fsp-elog-write.c: In function 'opal_elog_read':
+[ 52s] hw/fsp/fsp-elog-write.c:213:12: error: taking address of packed member of 'struct errorlog' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[ 52s] 213 | list_del(&log_data->link);
+[ 52s] | ^~~~~~~~~~~~~~~
+
+Fixes: https://github.com/open-power/skiboot/issues/247
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ include/errorlog.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/errorlog.h b/include/errorlog.h
+index 6da96649e048..b4cc163ced39 100644
+--- a/include/errorlog.h
++++ b/include/errorlog.h
+@@ -119,7 +119,7 @@ struct __attribute__((__packed__))elog_user_data_section {
+  * needs to populate this structure using pre-defined interfaces
+  * only
+  */
+-struct __attribute__((__packed__)) errorlog {
++struct __attribute__((__packed__)) __attribute__ ((aligned (8))) errorlog {
+ 
+ 	uint16_t component_id;
+ 	uint8_t error_event_type;
+-- 
+2.22.0
+

@@ -1,0 +1,1113 @@
+-------------------------------------------------------------------
+Thu Apr  4 14:37:09 CEST 2019 - jsmeix@suse.de
+
+- Version upgrade to 9.27
+  Highlights in this release include:
+  * We (i.e. Ghostscript upstream) have extensively cleaned up
+    the Postscript name space: removing access to internal and/or
+    undocumented Postscript operators, procedures and data.
+    This has benefits for security and maintainability.
+    Incompatible changes:
+    The process of "tidying" the Postscript name space should
+    have removed only non-standard and undocumented operators.
+    Nevertheless, it is possible that any integrations or
+    utilities that rely on those non-standard and undocumented
+    operators may stop working, or may change behaviour.
+    If you encounter such a case, please contact us (i.e.
+    Ghostscript upstream) - (either the #ghostscript IRC channel,
+    or the gs-devel mailing list would be best), and we'll work
+    with you to either find an alternative solution.
+  * Fontmap can now reference invidual fonts in a TrueType
+    Collection for font subsitution. Previously, a Fontmap entry
+    could only reference a TrueType collection and use the default
+    (first) font.
+    Now, the Fontmap syntax allows for specifying a specific index
+    in a TTC. See the comments at the top of (the default)
+    Fontmap.GS for details.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  IMPORTANT: It is our intention, within the next 12 months
+    (ideally sooner, in time for the next release) to make SAFER
+    the default mode of operation. For many users this will have
+    no effect, since they use SAFER explicitly, but some niche
+    uses which rely on SAFER being disabled may need to start
+    explicitly adding the "-dNOSAFER" option.
+  IMPORTANT: We (i.e. Ghostscript upstream) are in the process of
+    forking LittleCMS. LCMS2 is not thread safe, and cannot be made
+    thread safe without breaking the ABI. Our fork will be thread
+    safe, and include performance enhancements (these changes have
+    all be been offered and rejected upstream). We will maintain
+    compatibility between Ghostscript and LCMS2 for a time, but not
+    in perpetuity. Our fork will be available as its own package
+    separately from Ghostscript (and MuPDF).
+  For a release summary see:
+  http://www.ghostscript.com/doc/9.27/News.htm
+  For details see the News.htm and History9.htm files.
+  The Ghostscript 9.27 release should fix (cf. the entry below
+  dated 'Fri Sep 14 10:47:33 CEST 2018' what "should fix" means)
+  in particular those security issues:
+  * CVE-2019-3838 forceput in DefineResource is still accessible
+    https://bugzilla.suse.com/show_bug.cgi?id=1129186 bsc#1129186
+    https://bugs.ghostscript.com/show_bug.cgi?id=700576
+  * CVE-2019-3835: superexec operator is available
+    https://bugzilla.suse.com/show_bug.cgi?id=1129180 bsc#1129180
+    https://bugs.ghostscript.com/show_bug.cgi?id=700585
+- ghostscript-2.26-subclassing-devices-fix-put_image-method.patch
+  is no longer needed because it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Thu Mar 14 08:03:24 UTC 2019 - jsegitz@suse.com
+
+- Added AA rules for dvips (bsc#1127934)
+- Allow execution of dirname (bsc#1128697)
+- Allow execution of hpijs (bsc#1128467). For now this is in
+  complain mode
+- Sane profile name "ghostscript", moved profile from
+  /etc/apparmor.d/usr.bin.gs to /etc/apparmor.d/ghostscript
+  (bsc#1128607)
+- Improved AA packaging (bsc#1128608)
+  Thanks to Christian Boltz for his help
+
+-------------------------------------------------------------------
+Fri Mar  8 10:49:18 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix IJS printing problem (bsc#1128467)
+  * added ijs_exec_server_dont_use_sh.patch
+  * allow exec'ing hpijs in apparmor profile
+
+-------------------------------------------------------------------
+Thu Feb  7 09:27:44 UTC 2019 - jsegitz@suse.com
+
+- Added apparmor_usr.bin.gs. This profile prevents execution of
+  executables to serve as hardening for the binaries that process
+  ghostscript. This is of limited use but prevents simple exploits.
+
+-------------------------------------------------------------------
+Wed Jan 23 16:52:00 CET 2019 - jsmeix@suse.de
+
+- Version upgrade to 9.26a
+  The version 9.26a is a special security bugfix version to fix
+  * CVE-2019-6116: subroutines within pseudo-operators
+    must themselves be pseudo-operators
+    https://bugs.ghostscript.com/show_bug.cgi?id=700317
+    https://bugzilla.suse.com/show_bug.cgi?id=1122319 bsc#1122319
+
+-------------------------------------------------------------------
+Thu Jan 10 17:09:16 UTC 2019 - jweberhofer@weberhofer.at
+
+- ghostscript-2.26-subclassing-devices-fix-put_image-method.patch
+  fixes Ghostscript issue #700315 and bsc#1121490
+  https://bugs.ghostscript.com/show_bug.cgi?id=700315
+  Segfault in GS 9.26 with certain PDFs with -dLastPage=1
+
+-------------------------------------------------------------------
+Fri Nov 30 09:01:17 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.26
+  Highlights in this release include:
+  * Security issues have been the primary focus of this release,
+    including solving several (well publicised) real and potential
+    exploits.
+    Thanks to Man Yue Mo of Semmle Security Research Team,
+    Jens Mueller of Ruhr-Universitaet Bochum and
+    Tavis Ormandy of Google's Project Zero
+    for their help to identify specific security issues.
+    PLEASE NOTE:
+    We (i.e. Ghostscript upstream) strongly urge users to upgrade
+    to this latest release to avoid these issues.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  For a release summary see:
+  http://www.ghostscript.com/doc/9.26/News.htm
+  For details see the News.htm and History9.htm files.
+  The Ghostscript 9.26 release should fix (cf. the entry below
+  dated 'Fri Sep 14 10:47:33 CEST 2018' what "should fix" means)
+  in particular those security issues (bsc#1117331)
+  * CVE-2018-19475: psi/zdevice2.c allows attackers to bypass
+    intended access restrictions
+    https://bugs.ghostscript.com/show_bug.cgi?id=700153
+    https://bugzilla.suse.com/show_bug.cgi?id=1117327 bsc#1117327
+  * CVE-2018-19476: psi/zicc.c allows attackers to bypass
+    intended access restrictions because of a setcolorspace
+    type confusion
+    https://bugs.ghostscript.com/show_bug.cgi?id=700169
+    https://bugzilla.suse.com/show_bug.cgi?id=1117313 bsc#1117313
+  * CVE-2018-19477: psi/zfjbig2.c allows attackers to bypass
+    intended access restrictions because of a JBIG2Decode
+    type confusion
+    https://bugs.ghostscript.com/show_bug.cgi?id=700168
+    https://bugzilla.suse.com/show_bug.cgi?id=1117274 bsc#1117274
+  * CVE-2018-19409: LockSafetyParams is not checked correctly
+    if another device is used
+    https://bugs.ghostscript.com/show_bug.cgi?id=700176
+    https://bugzilla.suse.com/show_bug.cgi?id=1117022 bsc#1117022
+  and those security issues
+  * CVE-2018-18284: 1Policy operator gives access to .forceput
+    https://bugs.ghostscript.com/show_bug.cgi?id=69963
+    https://bugzilla.suse.com/show_bug.cgi?id=1112229 bsc#1112229
+  * CVE-2018-18073: saved execution stacks can leak operator arrays
+    https://bugs.ghostscript.com/show_bug.cgi?id=699927
+    https://bugzilla.suse.com/show_bug.cgi?id=1111480 bsc#1111480
+  * CVE-2018-17961: bypassing executeonly to escape -dSAFER sandbox
+    https://bugs.ghostscript.com/show_bug.cgi?id=699816
+    https://bugzilla.suse.com/show_bug.cgi?id=1111479 bsc#1111479
+  * CVE-2018-17183: remote attackers could be able to supply
+    crafted PostScript to potentially overwrite or replace
+    error handlers to inject code
+    https://bugs.ghostscript.com/show_bug.cgi?id=699708
+    https://bugzilla.suse.com/show_bug.cgi?id=1109105 bsc#1109105
+
+-------------------------------------------------------------------
+Fri Nov  9 11:25:19 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.26rc1 (first release candidate for 9.26).
+  Highlights in this release include:
+  * Purely security and a few bug fixes, there are no new features,
+    and no API changes to report.
+
+-------------------------------------------------------------------
+Fri Sep 14 10:47:33 CEST 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.25
+  For the highlights in this release see the highlights in the
+  9.25rc1 first release candidate for 9.25 entry below.
+  PLEASE NOTE:
+  We (i.e. Ghostscript upstream) strongly urge users to upgrade
+  to this latest release to avoid these issues.
+  For a release summary see:
+  http://www.ghostscript.com/doc/9.25/News.htm
+  For details see the News.htm and History9.htm files.
+  The Ghostscript 9.25 release should fix (see below)
+  in particular those security issues:
+  * CVE-2018-15909: shading_param incomplete type checking
+    https://bugs.ghostscript.com/show_bug.cgi?id=699660
+    https://bugzilla.suse.com/show_bug.cgi?id=1106172 bsc#1106172
+  * CVE-2018-15908: .tempfile file permission issues
+    https://bugs.ghostscript.com/show_bug.cgi?id=699657
+    https://bugzilla.suse.com/show_bug.cgi?id=1106171 bsc#1106171
+  * CVE-2018-15910: LockDistillerParams type confusion
+    https://bugs.ghostscript.com/show_bug.cgi?id=699656
+    https://bugzilla.suse.com/show_bug.cgi?id=1106173 bsc#1106173
+  * CVE-2018-15911: uninitialized memory access in the aesdecode
+    https://bugs.ghostscript.com/show_bug.cgi?id=699665
+    https://bugzilla.suse.com/show_bug.cgi?id=1106195 bsc#1106195
+  * CVE-2018-16513: setcolor missing type check
+    https://bugs.ghostscript.com/show_bug.cgi?id=699655
+    https://bugzilla.suse.com/show_bug.cgi?id=1107412 bsc#1107412
+  * CVE-2018-16509: /invalidaccess bypass after failed restore
+    https://bugs.ghostscript.com/show_bug.cgi?id=699654
+    https://bugzilla.suse.com/show_bug.cgi?id=1107410 bsc#1107410
+  * CVE-2018-16510: Incorrect exec stack handling in the "CS"
+    and "SC" PDF primitives
+    https://bugs.ghostscript.com/show_bug.cgi?id=699671
+    https://bugzilla.suse.com/show_bug.cgi?id=1107411 bsc#1107411
+  * CVE-2018-16542: .definemodifiedfont memory corruption
+    if /typecheck is handled
+    https://bugs.ghostscript.com/show_bug.cgi?id=699668
+    https://bugzilla.suse.com/show_bug.cgi?id=1107413 bsc#1107413
+  * CVE-2018-16541 incorrect free logic in pagedevice replacement
+    https://bugs.ghostscript.com/show_bug.cgi?id=699664
+    https://bugzilla.suse.com/show_bug.cgi?id=1107421 bsc#1107421
+  * CVE-2018-16540 use-after-free in copydevice handling
+    https://bugs.ghostscript.com/show_bug.cgi?id=699661
+    https://bugzilla.suse.com/show_bug.cgi?id=1107420 bsc#1107420
+  * CVE-2018-16539: incorrect access checking in temp file
+    handling to disclose contents of files
+    https://bugs.ghostscript.com/show_bug.cgi?id=699658
+    https://bugzilla.suse.com/show_bug.cgi?id=1107422 bsc#1107422
+  * CVE-2018-16543: gssetresolution and gsgetresolution allow
+    for unspecified impact
+    https://bugs.ghostscript.com/show_bug.cgi?id=699670
+    https://bugzilla.suse.com/show_bug.cgi?id=1107423 bsc#1107423
+  * CVE-2018-16511: type confusion in "ztype" could be used by
+    remote attackers able to supply crafted PostScript to crash
+    the interpreter or possibly have unspecified other impact
+    https://bugs.ghostscript.com/show_bug.cgi?id=699659
+    https://bugzilla.suse.com/show_bug.cgi?id=1107426 bsc#1107426
+  * CVE-2018-16585 .setdistillerkeys PostScript command is
+    accepted even though it is not intended for use
+    https://bugzilla.suse.com/show_bug.cgi?id=1107581 bsc#1107581
+  * CVE-2018-16802: Incorrect"restoration of privilege" checking
+    when running out of stack during exceptionhandling could be
+    used by attackers able to supply crafted PostScript to execute
+    code using the "pipe" instruction. This is due to an incomplete
+    fix for CVE-2018-16509
+    https://bugs.ghostscript.com/show_bug.cgi?id=699714
+    https://bugs.ghostscript.com/show_bug.cgi?id=699718
+    https://bugzilla.suse.com/show_bug.cgi?id=1108027 bnc#1108027
+  Regarding what the above "should fix" means:
+  PostScript is a general purpose Turing-complete programming
+  language (cf. https://en.wikipedia.org/wiki/PostScript)
+  that supports in particular file access on the system disk.
+  When Ghostscript processes PostScript it runs a PostScript
+  program as the user who runs Ghostscript.
+  When Ghostscript processes an arbitrary PostScript file,
+  the user who runs Ghostscript runs an arbitrary program
+  which can do anything on the system where Ghostscript runs
+  that this user is allowed to do on that system.
+  To make it safer when Ghostscript runs a PostScript program
+  the Ghostscript command line option '-dSAFER' disables
+  certain file access functionality, for details see
+  /usr/share/doc/ghostscript/9.25/Use.htm
+  Its name 'SAFER' says everything: It makes it 'safer'
+  to let Ghostscript run a PostScript program,
+  but it does not make it completely safe.
+  In theory software is safe against misuse (i.e. has no bugs).
+  In practice there is an endless sequence of various kind of
+  security issues (i.e. software can be misused to do more than
+  what is intended) that get fixed issue by issue ad infinitum.
+  In the end all that means:
+  In practice the user who runs Ghostscript must not let it
+  process arbitrary PostScript files from untrusted origin.
+  In particular Ghostscript is usually run when printing
+  documents (with the '-dSAFER' option set), see the part about
+  "It is crucial to limit access to CUPS to trusted users" in
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
+Thu Sep 13 14:14:39 CEST 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.25rc1 (first release candidate for 9.25).
+  Highlights in this release include:
+  * This release fixes problems with argument handling, some
+    unintended results of the security fixes to the SAFER file
+    access restrictions (specifically accessing ICC profile files),
+    and some additional security issues over the 9.24 release.
+  * Security issues have been the primary focus of this release,
+    including solving several (well publicised) real
+    and potential exploits.
+    PLEASE NOTE:
+    We (i.e. Ghostscript upstream) strongly urge users to upgrade
+    to this latest release to avoid these issues.
+  * Avoid that ps2epsi fails with
+    'Error: /undefined in --setpagedevice--'
+    Recent changes required to harden SAFER mode mean that
+    it is no longer possible to run ps2epsi in SAFER mode,
+    because it relies upon unsafe Ghostscript non-standard
+    extension operators.
+    Removing SAFER and DELAYSAFER, and the code to reset SAFER,
+    allow ps2epsi to run as well as it ever did (ie badly).
+    This program (i.e. ps2epsi) should now be considered unsafe,
+    you should not use it on untrusted PostScript programs.
+    Likely we (i.e. Ghostscript upstream) will deprecate and
+    remove this program in future.
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+
+-------------------------------------------------------------------
+Thu Sep 13 10:25:21 CEST 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.24
+  Highlights in this release include:
+  * Security issues have been the primary focus of this release,
+    including solving several (well publicised)
+    real and potential exploits.
+    PLEASE NOTE:
+    We (i.e. Ghostscript upstream) strongly urge users to upgrade
+    to this latest release to avoid these issues.
+  * As well as Ghostscript itself, jbig2dec has had a significant
+    amount of work improving its robustness in the face of
+    out specification files.
+  * IMPORTANT: We (i.e. Ghostscript upstream) are in the process
+    of forking LittleCMS. LCMS2 is not thread safe, and cannot
+    be made thread safe without breaking the ABI. Our fork
+    will be thread safe, and include performance enhancements
+    (these changes have all be been offered and rejected upstream).
+    We will maintain compatibility between Ghostscript and LCMS2
+    for a time, but not in perpetuity. Our fork will be available
+    as its own package separately from Ghostscript (and MuPDF).
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  For a release summary see:
+  http://www.ghostscript.com/doc/9.24/News.htm
+  For details see the News.htm and History9.htm files.
+- fix_ln_docdir_gsdatadir.patch is no longer needed
+  because the issue is fixed in the upstream sources.
+- CVE-2018-10194.patch is no longer needed
+  because the issue is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Tue Jun  5 14:47:59 CEST 2018 - jsmeix@suse.de
+
+- CVE-2018-10194.patch fixes stack-based buffer overflow
+  in gdevpdts.c (bsc#1090099), see
+  https://bugs.ghostscript.com/show_bug.cgi?id=699255 and
+  http://git.ghostscript.com/?p=ghostpdl.git;a=commit;h=39b1e54b2968620723bf32e96764c88797714879
+
+-------------------------------------------------------------------
+Thu Mar 22 12:51:39 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.23
+  Highlights in this release include:
+  * Ghostscript now has a family of 'pdfimage' devices
+    (pdfimage8, pdfimage24 and pdfimage32) which produce
+    rendered output wrapped up as an image in a PDF.
+    Additionally, there is a 'pclm' device which
+    produces PCLm format output.
+  * There is now a ColorAccuracy parameter allowing the user
+    to decide between speed or accuracy in ICC color transforms.
+  * JPEG Passthrough: devices which support it can now receive
+    the 'raw' JPEG stream from the interpreter.
+    The main use of this is the pdfwrite/ps2write family of devices
+    that can now take JPEG streams from the input file(s) and write
+    them unchanged to the output (thus avoiding additional
+    quantization effects).
+  * PDF transparency performance improvements
+  * IMPORTANT: We (i.e. Ghostscript upstream) are in the process
+    of forking LittleCMS.
+    LCMS2 is not thread safe, and cannot be made thread safe
+    without breaking the ABI. Our fork will be thread safe,
+    and include performance enhancements (these changes have all
+    be been offered and rejected upstream). We will maintain
+    compatibility between Ghostscript and LCMS2 for a time,
+    but not in perpetuity. Our fork will be available as its own
+    package separately from Ghostscript (and MuPDF).
+  * We have continued the focus on code hygiene in this release
+    cleaning up security issues, ignored return values,
+    and compiler warnings.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes
+  * The planned device API tidy has, unfortunately, been
+    indefinitely postponed, until appropriate resources
+    are available.
+  For a release summary see:
+  http://www.ghostscript.com/doc/9.23/News.htm
+  For details see the News.htm and History9.htm files.
+  See also the entries below since "Version upgrade to 9.22"
+  (boo#1082896 and boo#1074266).
+
+-------------------------------------------------------------------
+Fri Mar 16 12:39:36 CET 2018 - jsmeix@suse.de
+
+- For now use lcms2 from SUSE because that is what currently
+  Ghostscript upstream recommends according to
+  https://ghostscript.com/pipermail/gs-devel/2018-March/010061.html
+  because since Ghostscript 9.23rc1 there is no longer lcms2
+  in Ghostscript but now it is lcms2art which is the beginning
+  of a lcms2 fork, see News.htm that reads in particular
+  "LCMS2 is not thread safe ... Our fork will be thread safe ...
+   We will maintain compatibility between Ghostscript and LCMS2
+   for a time, but not in perpetuity", see also
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1082896#c14
+- On SLE11 and on SLE12-SP1 there is liblcms2-2-2.5
+  which is too old so that configure fails there with
+    configure: error: lcms2 not found, or too old
+  but there is no configure option to build it without lcms2
+  so that for SLE11 and SLE12-SP1 it is built with
+  the lcms2art in Ghostscript.
+- ppc64le-support.patch is no longer needed because it only
+  contained a fix for lcms2art/include/lcms2art.h in Ghostscript
+  but currently lcms2 from SUSE is used instead (see above).
+- Do no longer require any fonts packages in particular
+  neither require ghostscript-fonts-std because the PostScript
+  Base35 fonts are provided by Ghostscript (in 'Resource')
+  nor require ghostscript-fonts-other (provides Bitream Charter,
+  Adobe Utopia, URW Antiqua, URW Grotesq and Hershey fonts where
+  all but the last are also provided by texlive-<name>-fonts) and
+  those fonts are not required for PostScript compliance, see
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1082896#c13
+
+-------------------------------------------------------------------
+Thu Mar 15 11:19:33 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 9.23rc1 (first release candidate for 9.23).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+- Adapted ppc64le-support.patch: In Ghostscript 9.23 there is now
+  lcms2art/include/lcms2art.h (instead of lcms2/include/lcms2.h).
+- ghostscript-fix-debug-use.patch is no longer needed
+  because the issue is fixed in the upstream sources.
+- fix_ln_docdir_gsdatadir.patch avoids
+  "base/unixinst.mak:162: recipe for target 'install-doc' failed"
+- Adapted spec file to the new Ghostscript upstream documentation
+  directory /usr/share/doc/ghostscript/9.23/
+
+-------------------------------------------------------------------
+Wed Feb 28 00:14:31 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use -p /sbin/ldconfig instead of shell post(un) scriptlet, drop
+  explicit Prereq for ldconfig
+- Use shared libgs library for gs binary instead of static linked
+  version
+- Use --disable-compile-inits, to allow unbundling of Resource files
+- Remove --disable-omni switch, has been removed in GS 9.20
+- Keep patch ordering in full/mini consistent
+- Remove patch backup files to avoid packaging
+
+-------------------------------------------------------------------
+Tue Feb 27 14:55:51 CET 2018 - novell@mirell.de
+
+- Add ghostscript-fix-debug-use.patch from upstream to fix broken
+  printing with some drivers (especially Dell Printers) from
+  https://bugs.ghostscript.com/show_bug.cgi?id=698837
+- Fix build for SLE targets
+
+-------------------------------------------------------------------
+Wed Nov 29 16:04:48 CET 2017 - jsmeix@suse.de
+
+- Version upgrade to 9.22.
+  For details see the News.htm and History9.htm files.
+  Highlights in this release include:
+  * Ghostscript can now consume and produce (via the pdfwrite
+    device) PDF 2.0 compliant files.
+  * The main focus of this release has been security and code
+    cleanliness. Hence many AddressSanitizer, Valgrind and
+    Coverity issues have been addressed.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes
+  * The planned device API tidy (still!) did not happen for
+    this release, due to time pressures, but we still intend
+    to undertake the following: We plan to somewhat tidy up
+    the device API. We intend to remove deprecated device procs
+    (methods/function pointers) and change the device API
+    so every device proc takes a graphics state parameter
+    (rather than the current scheme where only a very few procs
+    take an imager state parameter). This should serve as notice
+    to anyone maintaining a Ghostscript device outside the
+    canonical source tree that you may (probably will) need
+    to update your device(s) when these changes happen.
+    Devices using only the non-deprecated procs should be
+    trivial to update.
+- Up to 9.22rc1 it "just built" for all openSUSE versions but
+  since 9.22rc2 the libijs part does no longer buid for any
+  released openSUSE version where if fails with messages like
+    libtool: Version mismatch error.
+      This is libtool 2.4.6 Debian-2.4.6-2, but the
+      definition of this LT_INIT comes from libtool 2.4.2.
+      You should recreate aclocal.m4 with macros from
+      libtool 2.4.6 Debian-2.4.6-2 and run autoconf again.
+    Makefile: recipe for target 'ijs.lo' failed
+  so that currently it only builds for Tumbleweed/Factory.
+  Presumably it is not too complicated to make it build again
+  also for released openSUSE versions but currently I have
+  less than zero energy to fix such "latest breaking changes"
+  so that for now Ghostscript 9.22 is only provided for
+  openSUSE Tumbleweed/Factory and the upcoming SLE15/Leap15.
+
+-------------------------------------------------------------------
+Fri Sep 29 09:12:06 CEST 2017 - jsmeix@suse.de
+
+- Version upgrade to 9.22rc2 (second release candidate for 9.22).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+
+-------------------------------------------------------------------
+Thu Sep 14 15:19:40 CEST 2017 - jsmeix@suse.de
+
+- Version upgrade to 9.22rc1 (first release candidate for 9.22).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+- Since Ghostscript 9.22rc1 font2c and wftopfa are removed.
+- CVE-2017-5951.patch CVE-2017-7207.patch
+  CVE-2017-8291.patch and CVE-2017-9216.patch
+  are fixed in the version 9.22rc1 upstream sources.
+
+-------------------------------------------------------------------
+Fri Jun  2 09:12:45 UTC 2017 - daniel.molkentin@suse.com
+
+- CVE-2017-7207.patch fixes a NULL pointer dereference
+  in mem_get_bits_rectangle
+  see https://bugs.ghostscript.com/show_bug.cgi?id=697676
+  (bsc#1030263)
+- CVE-2017-9216.patch fixes a NULL pointer dereference
+  in jbig2_huffman_get
+  see https://bugs.ghostscript.com/show_bug.cgi?id=697934
+  (bsc#1040643)
+
+-------------------------------------------------------------------
+Tue May  2 14:27:22 CEST 2017 - jsmeix@suse.de
+
+- CVE-2017-8291.patch fixes
+  a type confusion in .rsdparams and .eqproc
+  see https://bugs.ghostscript.com/show_bug.cgi?id=697808
+  and https://bugs.ghostscript.com/show_bug.cgi?id=697799
+  (bsc#1036453).
+
+-------------------------------------------------------------------
+Wed Apr 12 11:12:27 CEST 2017 - jsmeix@suse.de
+
+- CVE-2016-10317 (bsc#1032230)
+  heap buffer overflow in fill_threshhold_buffer()
+  is not yet fixed because there is no fix available at
+  https://bugs.ghostscript.com/show_bug.cgi?id=697459
+- CVE-2016-10219 (bsc#1032138)
+  divide by zero in intersect()
+  https://bugs.ghostscript.com/show_bug.cgi?id=697453
+  is fixed in the version 9.21 upstream sources
+- CVE-2016-10218 (bsc#1032135)
+  null pointer dereference in pdf14_pop_transparency_group()
+  https://bugs.ghostscript.com/show_bug.cgi?id=697444
+  is fixed in the version 9.21 upstream sources.
+- CVE-2016-10217 (bsc#1032130)
+  use-after-free in pdf14_cleanup_parent_color_profiles()
+  that is related to pdf14_open() in base/gdevp14.c
+  https://bugs.ghostscript.com/show_bug.cgi?id=697456
+  is fixed in the version 9.21 upstream sources.
+- CVE-2016-10220 (bsc#1032120)
+  null pointer dereference in gx_device_finalize() that is
+  related to gs_makewordimagedevice() in base/gsdevmem.c
+  https://bugs.ghostscript.com/show_bug.cgi?id=697450
+  is fixed in the version 9.21 upstream sources.
+- CVE-2017-5951.patch fixes
+  null pointer dereference in ref_stack_index() that is
+  related to mem_get_bits_rectangle() in base/gdevmem.c
+  https://bugs.ghostscript.com/show_bug.cgi?id=697548
+  (bsc#1032114)
+
+-------------------------------------------------------------------
+Mon Apr 10 14:06:09 CEST 2017 - jsmeix@suse.de
+
+- Version upgrade to 9.21.
+  For details see the News.htm and History9.htm files.
+  Highlights in this release include:
+  * pdfwrite now preserves annotations from
+    input PDFs (where possible).
+  * The GhostXPS interpreter now provides the pdfwrite device
+    with the data it requires to emit a ToUnicode CMap: thus
+    allowing fully searchable PDFs to be created from XPS
+    input (in the vast majority of cases).
+  * Ghostscript now allows the default color space
+    for PDF transparency blends.
+  * The Ghostscript/GhostPDL configure script now has much
+    better/fuller support for cross compiling.
+  * The tiffscaled and tiffscaled4 devices can now
+    use ETS (Even Tone Screening)
+  * The toolbin/pdf_info.ps utility can now emit
+    the PDF XML metadata.
+  * Ghostscript has a new scan converter available
+    (currently optional, but will become the default in a near
+    future release). It can be enabled by using the command line
+    option: '-dSCANCONVERTERTYPE=2'. This new implementation
+    provides vastly improved performance with large and complex
+    paths.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes:
+  * The planned device API tidy (still!) did not happen for
+    this release, due to time pressures, but we still intend
+    to undertake the following: We plan to somewhat tidy up
+    the device API. We intend to remove deprecated device
+    procs (methods/function pointers) and change the device API
+    so every device proc takes a graphics state parameter
+    (rather than the current scheme where only a very few procs
+    take an imager state parameter). This should serve as notice
+    to anyone maintaining a Ghostscript device outside the
+    canonical source tree that you may (probably will) need to
+    update your device(s) when these changes happen. Devices using
+    only the non-deprecated procs should be trivial to update.
+- CVE-2016-7976.patch and CVE-2016-7977.patch and
+  CVE-2016-7978.patch and CVE-2016-7979.patch and
+  CVE-2016-8602.patch are no longer needed because
+  those issues are fixed in the upstream sources.
+- 0001-mkromfs-make-build-reproducible-use-buildtime-from-S.patch
+  and
+  0002-mkromfs-sort-gp_enumerate_files-output-for-determini.patch
+  are no longer needed because both are included
+  in the upstream sources, see the upstream issue
+  https://bugs.ghostscript.com/show_bug.cgi?id=697484
+- Again use the zlib sources from Ghostscript upstream
+  and disable remove-zlib-h-dependency.patch because
+  Ghostscript 9.21 does no longer build this way,
+  cf. the entry below dated "Wed Nov 18 11:46:58 UTC 2015"
+
+-------------------------------------------------------------------
+Thu Jan 12 17:13:58 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Set SOURCE_DATE_EPOCH based on changelog head
+- Add 0001-mkromfs-make-build-reproducible-use-buildtime-from-S.patch
+  * Use SOURCE_DATE_EPOCH for mkromfs output for reproducible build
+- Add 0002-mkromfs-sort-gp_enumerate_files-output-for-determini.patch
+  * Sort ROM contents for deterministic output
+
+-------------------------------------------------------------------
+Mon Oct 17 13:36:57 CEST 2016 - jsmeix@suse.de
+
+- CVE-2013-5653 (getenv and filenameforall ignore -dSAFER)
+  is fixed in the Ghostscript 9.20 upstream sources
+  see http://bugs.ghostscript.com/show_bug.cgi?id=694724
+  (bsc#1001951).
+- CVE-2016-7976.patch fixes that
+  various userparams allow %pipe% in paths, allowing
+  remote shell command execution
+  see http://bugs.ghostscript.com/show_bug.cgi?id=697178
+  (bsc#1001951).
+- CVE-2016-7977.patch fixes that
+  .libfile doesn't check PermitFileReading array, allowing
+  remote file disclosure
+  see http://bugs.ghostscript.com/show_bug.cgi?id=697169
+  (bsc#1001951).
+- CVE-2016-7978.patch fixes that
+  reference leak in .setdevice allows
+  use-after-free and remote code execution
+  see http://bugs.ghostscript.com/show_bug.cgi?id=697179
+  (bsc#1001951).
+- CVE-2016-7979.patch fixes that
+  type confusion in .initialize_dsc_parser allows
+  remote code execution
+  see http://bugs.ghostscript.com/show_bug.cgi?id=697190
+  (bsc#1001951).
+- CVE-2016-8602.patch fixes a NULL dereference in .sethalftone5
+  see http://bugs.ghostscript.com/show_bug.cgi?id=697203
+  (bsc#1004237).
+
+-------------------------------------------------------------------
+Thu Sep 29 14:40:38 CEST 2016 - jsmeix@suse.de
+
+- Version upgrade to 9.20. Purely a maintenance release.
+  For details see the News.htm and History9.htm files.
+  Highlights in this release include:
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes:
+  * The planned device API tidy did not happen for this release,
+    due to time pressures, but we still intend to undertake the
+    following: We plan to somewhat tidy up the device API.
+    We intend to remove deprecated device procs
+    (methods/function pointers) and change the device API
+    so every device proc takes a graphics state parameter (rather
+    than the current scheme where only a very few procs take an
+    imager state parameter). This should serve as notice to anyone
+    maintaining a Ghostscript device outside the canonical source
+    tree that you may (probably will) need to  update your
+    device(s) when these changes happen. Devices using only
+    the non-deprecated procs should be trivial to update.
+
+-------------------------------------------------------------------
+Thu Sep 15 10:12:03 CEST 2016 - jsmeix@suse.de
+
+- Version upgrade to 9.20rc1 (first release candidate for 9.20).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+
+-------------------------------------------------------------------
+Wed Mar 23 15:43:27 CET 2016 - jsmeix@suse.de
+
+- Version upgrade to 9.19. Mainly a maintenance release.
+  For details see the News.htm and History9.htm files.
+  Highlights in this release include:
+  * Metadata pdfmark is now implemented. This allows the user
+    to specify an XMP stream which will be written to the
+    Catalog of the PDF file. A new pdfmark 'Ext_Metadata' has
+    been defined. This takes a string parameter which contains
+    XML to be add to the XMP normally created by pdfwrite.
+    See "pdfwrite pdfmark extensions" for more information.
+  * An experimental, rudimentary raster trapping implementation
+    has been added to the Ghostscript graphics library.
+    See "Trapping" for details.
+  Incompatible changes:
+  * (Minor) API change: copy_alpha now supports 8 bit depth
+    (as well as the previous 2 and 4).
+  * The gs man pages are woefully out of date and basically
+    unmaintained. With the release following 9.19, we intend
+    to replace their contents with a very limited summary
+    of (unlikely to ever change aspects of) calling
+    Ghostscript, and a pointer to the (maintained) HTML
+    documentation. That is, unless a volunteer is willing
+    to update, and commit to maintaining the man pages.
+  * ijs-config is no longer provided
+  Planned incompatible changes:
+  * We plan (ideally for the release following 9.19) to somewhat
+    tidy up the device API. We plan to remove deprecated device
+    procs (methods/function pointers). We also intend to merge
+    the imager state and graphics state (thus eliminating the
+    imager state), and change the device API so every device proc
+    takes a graphics state parameter (rather than the current
+    scheme where only a very few procs take an imager state
+    parameter). This should serve as notice to anyone maintaining
+    a Ghostscript device outside the canonical source tree that
+    you may (probably will) need to update your device(s) when
+    these changes happen. Devices using only the non-deprecated
+    procs should be trivial to update.
+- fix_make_install.patch fixes and
+  add_brackets_for_old_autoconf.patch are no longer needed
+  because both issues are fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Fri Mar 18 10:13:23 CET 2016 - jsmeix@suse.de
+
+- Version upgrade to 9.19rc1 (first release candidate for 9.19).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+- ijs-config is no longer provided
+- fix_make_install.patch fixes an install error and
+  add_brackets_for_old_autoconf.patch fixes an autoconf error
+  see http://bugs.ghostscript.com/show_bug.cgi?id=696665
+- fix_ijs_and_x11_for_FirstPage_and_LastPage.patch is no longer
+  needed because it is fixed in the upstream sources.
+- install_gserrors.h.patch is no longer needed because it is fixed
+  in the upstream sources.
+
+-------------------------------------------------------------------
+Wed Nov 18 11:46:58 UTC 2015 - schwab@suse.de
+
+- Do not use library sources for freetype jpeg libpng tiff zlib
+  from the Ghostscript upstream tarball because we prefer to use
+  for long-established standard libraries the ones from SUSE
+  in particular to automatically get SUSE security updates
+  for standard libraries.
+  In contrast we use e.g. lcms2 from the Ghostscript upstream
+  tarball because this one is specially modified to work with
+  Ghostscript so that we cannot use lcms2 from SUSE.
+- remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
+  in makefiles as we do not use the zlib sources from the
+  Ghostscript upstream tarball.
+
+-------------------------------------------------------------------
+Thu Nov  5 13:33:14 CET 2015 - jsmeix@suse.de
+
+- An incompatible change appeared when building other software
+  with Ghostscript 9.18.
+  Since version 9.18 Ghostscript does no longer provide
+  e_<SomeError> (e.g. e_NeedInput) in its header files
+  (gserrors.h and ierrors.h).
+  When building other software with Ghostscript 9.18
+  gs_error_<SomeError> (e.g. gs_error_NeedInput)
+  must be used, see boo#953149 and
+  http://bugs.ghostscript.com/show_bug.cgi?id=696317
+
+-------------------------------------------------------------------
+Fri Oct 30 11:28:14 CET 2015 - jsmeix@suse.de
+
+- install_gserrors.h.patch installs gserrors.h to fix
+  http://bugs.ghostscript.com/show_bug.cgi?id=696301
+  because without gserrors.h several other packages fail to build
+  (in particular texlive, libspectre, gimp,...).
+
+-------------------------------------------------------------------
+Mon Oct 12 10:26:52 CEST 2015 - jsmeix@suse.de
+
+- fix_ijs_and_x11_for_FirstPage_and_LastPage.patch
+  fixes the Ghostscript device ijs and the x11* devices
+  so that they also work when -dFirstPage/-dLastPage is used,
+  see http://bugs.ghostscript.com/show_bug.cgi?id=696246
+
+-------------------------------------------------------------------
+Tue Oct  6 10:21:22 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 9.18. A maintenance release.
+  There are no recorded incompatible changes (as of this writing).
+  Highlights in this release include:
+  * A substantial revision of the build system and GhostPDL
+    directory structure. Ghostscript-only users should
+    not be affected by this change.
+  * A new method of internally inserting devices into the device
+    chain has been developed, named "device subclassing".
+    This allows suitably written devices to be more easily and
+    consistently as "filter" devices.
+    The first fruit of this is a new implementation of
+    the "-dFirstPage"/"-dLastPage" feature which functions
+    a device filter in the Ghostscript graphics library, meaning
+    it works consistently with all input languages.
+  * Plus the usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  See http://www.ghostscript.com/doc/9.18/News.htm
+  For details see the News.htm and History9.htm files.
+
+-------------------------------------------------------------------
+Tue Sep 29 11:05:48 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 9.18rc2 (second release candidate for 9.18).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+- assign_pointer_not_value_in_gximono.c.patch is no longer needed
+  because it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Thu Sep 24 10:29:04 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 9.18rc1 (first release candidate for 9.18).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+- CVE-2015-3228.patch is no longer needed because it is fixed
+  in the upstream sources.
+- assign_pointer_not_value_in_gximono.c.patch attempts to fix a
+  "assignment makes pointer from integer without a cast" compiler
+  warning by assigning the pointer and not the integer value.
+- Removed --disable-compile-inits from configure, see
+  http://bugs.ghostscript.com/show_bug.cgi?id=696223
+  and "Precompiled run-time data" in
+  /usr/share/ghostscript/9.18/doc/Make.htm
+
+-------------------------------------------------------------------
+Wed Jul 29 15:20:46 CEST 2015 - jsmeix@suse.de
+
+- CVE-2015-3228.patch fixes out of bound read/write cause
+  by integer overflow in gsmalloc.c (boo#939342).
+
+-------------------------------------------------------------------
+Tue Mar 31 10:18:06 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 9.16. Primarily a maintenance release.
+  There are no recorded incompatible changes (as of this writing).
+  Highlights in this release include:
+  * "LockColorants" command line option for tiffsep and psdcmyk
+    devices.
+  * Improved high level devices handling of Forms.
+  See http://www.ghostscript.com/doc/9.16/News.htm
+  For details see the News.htm and History9.htm files.
+- fix.including.pread.pwrite.pthread_mutexattr_settype.diff
+  is no longer needed because it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Wed Mar 25 12:38:16 CET 2015 - jsmeix@suse.de
+
+- fix.including.pread.pwrite.pthread_mutexattr_settype.diff
+  fixes on SLE11 implicit declaration of function warnings
+  for 'pread' 'pwrite' 'pthread_mutexattr_settype' see
+  http://bugs.ghostscript.com/show_bug.cgi?id=695882
+- ppc64le-support.patch is a remainder of the previous patch
+  now the hunk for LCMS (lcms/include/lcms.h) is removed
+  because LCMS 1.x is removed since Ghostscript 9.16
+  but the hunk for LCMS2 (lcms2/include/lcms2.h) is still needed
+  see http://bugs.ghostscript.com/show_bug.cgi?id=695544
+
+-------------------------------------------------------------------
+Fri Mar 20 17:12:34 CET 2015 - jsmeix@suse.de
+
+- Version upgrade to 9.16rc2 (second release candidate for 9.16).
+  For details see the News.htm and History9.htm files.
+  Regarding installing packages (in particular release candidates)
+  from the openSUSE build service development project "Printing"
+  see https://build.opensuse.org/project/show/Printing
+
+-------------------------------------------------------------------
+Sun Sep 28 18:00:37 CEST 2014 - ro@suse.de
+
+- readd ppc64le patch ppc64le-support.patch (adapted for lcms2 in
+  Ghostscript version 9.15): the tests in lcms2.h cannot work
+  without "include <endian.h>" that is now added and
+  regardless that lcms is not used by default (unless the
+  configure option --with-lcms is set), lcms is again fixed
+  (see http://bugs.ghostscript.com/show_bug.cgi?id=695544).
+
+-------------------------------------------------------------------
+Tue Sep 23 10:14:28 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 9.15. Primarily a maintenance release.
+  There are no recorded incompatible changes (as of this writing).
+  Highlights in this release include:
+  * Ghostscript now supports the PDF security handler revision 6.
+  * The pdfwrite and ps2write (and related) devices can now be
+    forced to "flatten" glyphs into "basic" marking operations
+    (rather than writing fonts to the output), by giving
+    the -dNoOutputFonts command line option (defaults to "false").
+  * PostScript programs can now use get_params or get_param to
+    determine if a page contains color markings by reading the
+    pageneutralcolor state from the device (so whether the page
+    is "color" or "mono"). Note that this is only accurate when in
+    clist mode, so -dMaxBitmap=0 and -dGrayDetection=true should
+    both be used.
+  * The pdfwrite device now supports Link annotations with GoTo
+    and GoToR actions.
+  * The pdfwrite device now supports BMC/BDC/EMC pdfmarks
+  * Regarding the new color management for the pdfwrite device
+    introduced in the previous release, the proscription on using
+    the new color management when producing PDF/A-1 compliant files
+    is now lifted. To reiterate, also, with the new color
+    management implementation, using the UseCIEColor option is
+    strongly discouraged. For further information on the new
+    pdfwrite color management, see in Ps2pdf.htm the
+    "Color Conversion and Management" section.
+  * Plus the usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  For details see the News.htm and History9.htm files.
+
+-------------------------------------------------------------------
+Wed Sep 17 12:17:47 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 9.15rc2 (second release candidate for 9.15).
+  Ghostscript upstream QA highlighted a couple of issues
+  that they felt warranted a fresh release candidate.
+  For details see the History9.htm file.
+
+-------------------------------------------------------------------
+Tue Sep  9 16:06:31 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 9.15rc1 (first release candidate for 9.15).
+  For details see the News.htm and History9.htm files.
+- ppc64le-support.patch is no longer needed because
+  it is fixed in the upstream sources.
+- Removed trailing whitespaces in spec file and changes file.
+
+-------------------------------------------------------------------
+Thu Mar 27 12:21:55 CET 2014 - jsmeix@suse.de
+
+- Version upgrade to 9.14. Primarily a maintenance release.
+  Highlights in this release include (excerpt):
+  * pdfwrite now uses the same color management engine as
+    Ghostscript rendering devices (by default LCMS2). For
+    the duration of this release a new switch -dPDFUseOldCMS
+    is available which will restore the old color management.
+    See: "Color Conversion and Management" in Ps2pdf.htm
+    Due to constraints of the PDF/A-1 specification, the new color
+    management does not yet apply when producing PDF/A files.
+  * A new device 'eps2write' has been added which allows for the
+    creation of EPS files using the ps2write device instead of
+    the deprecated and removed pswrite device. The epswrite device
+    is now also deprecated and will be removed in a future release.
+  * Ghostscript has a new "pwgraster" output device for PWG Raster
+    output.
+  * The CUPS device now has improved support for PPD-less printing.
+  For details see the News.htm and History9.htm files.
+
+-------------------------------------------------------------------
+Fri Dec 13 19:09:12 UTC 2013 - uweigand@de.ibm.com
+
+- ppc64le-support.patch from IBM fixes endianness
+  in lcms (the Little-CMS library) to support the new
+  architecture ppc64le (IBM Power PC Little Endian architecture)
+  because ppc64 is big-endian and ppc64le is little-endian
+  and lcms has a hard-coded check that assumes PowerPC
+  is always big-endian which is incorrect on ppc64le.
+  The fix is already in the main Little-CMS repository
+  by this Git commit
+  https://github.com/mm2/Little-CMS/commit/b4f5c91a2c1582bd284f0d0f49cb43e2c2235a79
+  (There are some cosmetic changes in the upstream patch.)
+  It is not yet in the imported copy in Ghostscript.
+  IBM will work with upstream to get the fix imported too.
+
+-------------------------------------------------------------------
+Tue Sep  3 16:26:46 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 9.10. Primarily a maintenance release.
+  Highlights in this release include:
+  * LittleCMS2 and libpng have both been updated to the
+    latest versions.
+  * The URW Postscript font set has been updated to the
+    latest version, fixing many compatibility problems
+    with the Adobe fonts.
+  * The CUPS filters gstoraster and gstopxl have been
+    removed from Ghostscript. Those filters are now provided by
+    cups-filters (a free software package hosted by OpenPrinting)
+    that contains all CUPS filters needed by CUPS under Linux
+    (see also the openSUSE issue bnc#735404 comment#44 at
+     https://bugzilla.novell.com/show_bug.cgi?id=735404#c44).
+  For details see the News.htm and History9.htm files.
+- fix-undefined-operation.patch is no longer needed because
+  it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Thu Aug 29 15:06:13 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 9.10rc1 (release candidate for the 9.10 version).
+  For details see the News.htm and History9.htm files.
+- Prepare spec files to build both releases and release candidates
+  easily in the future by using special different version strings.
+- fix-undefined-operation.patch fixes
+  http://bugs.ghostscript.com/show_bug.cgi?id=694546
+- Removed BuildRequires for liblcms-devel because it is not needed
+  when we build Ghostscript that works in compliance with upstream
+  (see https://bugzilla.novell.com/show_bug.cgi?id=828751#c5).
+
+-------------------------------------------------------------------
+Wed Mar 27 07:58:08 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Feb 19 13:51:06 CET 2013 - jsmeix@suse.de
+
+- Version upgrade to 9.07.
+  * As of this release (9.07), Ghostscript is distributed
+    under the GNU Affero General Public License (AGPL).
+  * Ghostscript has been extended to support file sizes >4Gb
+    in particular reading and writing PDF files.
+  * Color management enhancements. Full details of the color
+    management features can be found in: GS9_Color_Management.pdf
+  * The pdfwrite devices now supports linearized (or optimized
+    for fast web view) output directly ("-dFastWebView").
+  * With the addition of linearisation to pdfwrite, pdfopt.ps
+    has become redundant. Since it is difficult to maintain,
+    has a number of bugs, and is believed not to work properly
+    anyway, it is removed. Accordingly the pdfopt shell script
+    that used pdfopt.ps is also removed.
+
+-------------------------------------------------------------------
+Thu Jan  3 11:58:51 CET 2013 - jsmeix@suse.de
+
+- Provide libijs (that is not done via "configure --with-ijs")
+  because libijs is needed by the pdftoijs filter in the
+  cups-filters package (see the README file in cups-filters).
+
+-------------------------------------------------------------------
+Thu Sep 27 12:02:51 UTC 2012 - mmeister@suse.com
+
+- Version upgrade to 9.06. Mainly a bugfix release.
+  * pdfwrite announcements:
+    pdfwrite now supports the creation of PDF/A-2 files.
+    For further details see the NEWS file.
+  * removed moribund dumphint tool, see History9.htm and
+    http://bugs.ghostscript.com/show_bug.cgi?id=693223
+
+-------------------------------------------------------------------
+Mon Sep 24 10:44:57 UTC 2012 - idonmez@suse.com
+
+- "export SUSE_ASNEEDED=0" disables -Wl,--as-needed linker flags,
+  see http://bugs.ghostscript.com/show_bug.cgi?id=693100
+
+-------------------------------------------------------------------
+Thu May 10 15:49:33 CEST 2012 - jsmeix@suse.de
+
+- Require Ghostscript's font packages because the
+  Ghostscript package provides the "Fontmap" file
+  /usr/share/ghostscript/<version>/Resource/Init/Fontmap.GS
+  which lists Ghostscript's fonts but the fonts itself
+  are provided in the separated packages ghostscript-fonts-std
+  and ghostscript-fonts-other so that a RPM requirement
+  is needed to make sure that Ghostscript has its fonts.
+- Extract the catalog of devices which are actually built-in
+  in exactly this Ghostscript and provide it as catalog.devices
+  in the Ghostscript package.
+
+-------------------------------------------------------------------
+Tue Apr 24 14:30:45 CEST 2012 - jsmeix@suse.de
+
+- Install documentation which is not installed by default
+  (LICENSE doc/AUTHORS doc/COPYING doc/thirdparty.htm
+   doc/WhatIsGS.htm doc/GS9_Color_Management.pdf
+   doc/gs-vms.hlp doc/Ps2ps2.htm).
+- Add a link from SUSE's usual documentation directory
+  (/usr/share/doc/packages/ghostscript/) to Ghostscript's
+  documentation directory (/usr/share/ghostscript/9.05/doc/)
+  because "configure --docdir=..." does not work.
+- Let ghostscript-mini "Conflicts: ghostscript-library".
+
+-------------------------------------------------------------------
+Wed Mar 28 10:59:21 CEST 2012 - jsmeix@suse.de
+
+- Require only the basic fonts for Ghostscript
+  (package ghostscript-fonts-std) but do not recommend
+  optional fonts (package ghostscript-fonts-other).
+
+-------------------------------------------------------------------
+Fri Mar 23 11:32:28 CET 2012 - jsmeix@suse.de
+
+- Cleaned up BuildRequires.
+- Explicitly specify configure --with-* versus --without-*
+  in ghostscript.spec versus ghostscript-mini.spec
+  to make the differences clear.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:07:56 CET 2012 - jsmeix@suse.de
+
+- Initial ghostscript-mini package.
+

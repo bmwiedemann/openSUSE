@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Dec 12 12:24:10 UTC 2017 - dmitry_r@opensuse.org
+
+- Fix gcc flags
+
+-------------------------------------------------------------------
+Sun Nov 27 09:32:17 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build
+  * lssa-complex-real-imag.patch
+
+-------------------------------------------------------------------
+Sat Jun 18 19:33:42 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build with GCC6 [boo#985375]
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 0.1.2
+

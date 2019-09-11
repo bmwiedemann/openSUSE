@@ -1,0 +1,27 @@
+From ec65a8ab8e6bcc1691b4a6a3df1c2bd29c85eea9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 12 Oct 2018 03:30:21 +0200
+Subject: [PATCH 5/5] Respect DESTDIR when byte-compiling python code
+
+---
+ config/cmake_files/medMacros.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/cmake_files/medMacros.cmake b/config/cmake_files/medMacros.cmake
+index b79f387..5f0ba83 100644
+--- a/config/cmake_files/medMacros.cmake
++++ b/config/cmake_files/medMacros.cmake
+@@ -456,8 +456,8 @@ MACRO(INSTALL_AND_COMPILE_PYTHON_FILE PYFILE2COMPINST PYFILELOC)
+   FOREACH(input ${PYFILE2COMPINST})
+     GET_FILENAME_COMPONENT(inputname ${input} NAME)
+     INSTALL(FILES ${input} DESTINATION ${CMAKE_INSTALL_PREFIX}/${PYFILELOC})
+-    INSTALL(CODE "MESSAGE(STATUS \"py compiling ${CMAKE_INSTALL_PREFIX}/${PYFILELOC}/${inputname}\")")
+-    INSTALL(CODE "SET(CMD \"import py_compile ; py_compile.compile('${CMAKE_INSTALL_PREFIX}/${PYFILELOC}/${inputname}')\")")
++    INSTALL(CODE "MESSAGE(STATUS \"py compiling \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${PYFILELOC}/${inputname}\")")
++    INSTALL(CODE "SET(CMD \"import py_compile ; py_compile.compile('\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${PYFILELOC}/${inputname}')\")")
+     INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c \"\${CMD}\")")
+     INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -O -c \"\${CMD}\")")
+   ENDFOREACH(input ${PYFILE2COMPINST})
+-- 
+2.20.1
+

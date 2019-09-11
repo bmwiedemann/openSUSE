@@ -1,0 +1,55 @@
+From 4d87728c7b703309d8c4789c0cbf61d63bb1fde4 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:29 +0100
+Subject: [PATCH 30/43] tools/kvm_stat: add line for totals
+
+Add a line for the total number of events and current average at the
+bottom of the body.
+Note that both values exclude child trace events. I.e. if drilldown is
+activated via interactive command 'x', only the totals are accounted, or
+we'd be counting these twice (see previous commit "tools/kvm_stat: fix
+child trace events accounting").
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit cf656c76614c6ec5b016233cac29738881c83c08)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index f613e2beef7b..9d55afbd549e 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1102,8 +1102,9 @@ class Tui(object):
+             sortkey = sortCurAvg
+         else:
+             sortkey = sortTotal
++        tavg = 0
+         for key in sorted(stats.keys(), key=sortkey):
+-            if row >= self.screen.getmaxyx()[0]:
++            if row >= self.screen.getmaxyx()[0] - 1:
+                 break
+             values = stats[key]
+             if not values[0] and not values[1]:
+@@ -1115,9 +1116,15 @@ class Tui(object):
+                 self.screen.addstr(row, 1, '%-40s %10d%7.1f %8s' %
+                                    (key, values[0], values[0] * 100 / total,
+                                     cur))
++                if cur is not '' and key.find('(') is -1:
++                    tavg += cur
+             row += 1
+         if row == 3:
+             self.screen.addstr(4, 1, 'No matching events reported yet')
++        else:
++            self.screen.addstr(row, 1, '%-40s %10d        %8s' %
++                               ('Total', total, tavg if tavg else ''),
++                               curses.A_BOLD)
+         self.screen.refresh()
+ 
+     def show_msg(self, text):
+-- 
+2.12.3
+

@@ -1,0 +1,15 @@
+Reference: bnc#885380
+Allow Xen based VMs to default to using qcow2
+Index: virt-manager-2.2.0/virtinst/support.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtinst/support.py
++++ virt-manager-2.2.0/virtinst/support.py
+@@ -249,7 +249,7 @@ class SupportCache:
+     # This is an arbitrary check to say whether it's a good idea to
+     # default to qcow2. It might be fine for xen or qemu older than the versions
+     # here, but until someone tests things I'm going to be a bit conservative.
+-    conn_default_qcow2 = _make(hv_version={"qemu": "1.2.0", "test": 0})
++    conn_default_qcow2 = _make(hv_version={"qemu": "1.2.0", "all": 0})
+     conn_autosocket = _make(hv_libvirt_version={"qemu": "1.0.6"})
+     conn_pm_disable = _make(hv_version={"qemu": "1.2.0", "test": 0})
+     conn_qcow2_lazy_refcounts = _make(

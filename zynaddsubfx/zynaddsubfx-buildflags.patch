@@ -1,0 +1,36 @@
+Index: zynaddsubfx-3.0.4/src/CMakeLists.txt
+===================================================================
+--- zynaddsubfx-3.0.4.orig/src/CMakeLists.txt	2019-03-29 11:24:06.254813169 +0200
++++ zynaddsubfx-3.0.4/src/CMakeLists.txt	2019-03-29 11:24:17.375274138 +0200
+@@ -182,6 +182,7 @@ endif()
+ option (BuildForAMD_X86_64 "Build for AMD x86_64 system" OFF)
+ option (BuildForCore2_X86_64 "Build for Intel Core2 x86_64 system" OFF)
+ option (BuildForDebug "Include gdb debugging support" OFF)
++option (X86Build "Build for X86 family" OFF)
+ option (IncludeWhatYouUse "Check for useless includes" OFF)
+ mark_as_advanced(IncludeWhatYouUse)
+ 
+@@ -323,19 +324,19 @@ endif()
+ 
+ if (BuildForDebug)
+ 	set (CMAKE_BUILD_TYPE "Debug")
+-	set (CMAKE_CXX_FLAGS_DEBUG ${BuildOptionsDebug})
++	set (CMAKE_CXX_FLAGS_DEBUG "${BuildOptionsDebug} ${CMAKE_CXX_FLAGS}")
+ 	message (STATUS "Building for ${CMAKE_BUILD_TYPE}, flags: ${CMAKE_CXX_FLAGS_DEBUG}")
+ else (BuildForDebug)
+ 	set (CMAKE_BUILD_TYPE "Release")
+ 	
+-	set (CMAKE_CXX_FLAGS_RELEASE ${BuildOptionsBasic})
++	set (CMAKE_CXX_FLAGS_RELEASE "${BuildOptionsBasic} ${CMAKE_CXX_FLAGS}")
+ 	
+ 	if (BuildForAMD_X86_64)
+-		set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${BuildOptions_x86_64AMD}")
++		set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${BuildOptions_x86_64AMD} ${CMAKE_CXX_FLAGS}")
+ 	endif (BuildForAMD_X86_64)
+ 	
+ 	if (BuildForCore2_X86_64)
+-			set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${BuildOptions_X86_64Core2}")
++			set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${BuildOptions_X86_64Core2} ${CMAKE_CXX_FLAGS}")
+ 	endif (BuildForCore2_X86_64)
+ 				
+ 	if (SUPPORT_SSE)

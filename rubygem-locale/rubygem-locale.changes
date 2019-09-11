@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Sep 16 04:28:54 UTC 2015 - coolo@suse.com
+
+- updated to version 2.1.2
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Sat May 16 04:29:23 UTC 2015 - coolo@suse.com
+
+- updated to version 2.1.1
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Mon May 11 07:16:29 UTC 2015 - lslezak@suse.cz
+
+- regenerated .spec file to build the gem for both Ruby 2.1 and 2.2
+
+-------------------------------------------------------------------
+Sun Oct 12 11:30:16 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Dec 16 06:28:06 UTC 2013 - coolo@suse.com
+
+- updated to version 2.1.0, no changelog
+
+-------------------------------------------------------------------
+Mon Sep 23 14:53:06 UTC 2013 - coolo@suse.com
+
+- updated to version 2.0.9
+  Locale handling fix release.
+  
+  ### Improvements
+  
+    * Added license metadata to gem package.
+      [GitHub#1] [Suggested by jordimassaguerpla]
+  
+  ### Fixes
+  
+    * Added missing .yardopts file.
+    * Fixed a bug that wrong environment value is used.
+      [Debian:#520181][Debian:#690572][GitHub#2]
+      [Reported by Stefano Zacchiroli][Reported by Hleb Valoshka]
+
+-------------------------------------------------------------------
+Thu Aug 30 05:40:56 UTC 2012 - coolo@suse.com
+
+- updated to version 2.0.8
+
+-------------------------------------------------------------------
+Wed Aug 29 08:22:38 UTC 2012 - coolo@suse.com
+
+- updated to version 2.0.7
+
+-------------------------------------------------------------------
+Mon Mar 26 13:51:36 UTC 2012 - cfarrell@suse.com
+
+- license update: Ruby
+  SPDX
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 01:17:18 UTC 2009 - prusnak@suse.cz
+
+- updated to 2.0.5
+  * Update license information (obiviously Ruby's and LGPL).
+  * Fixed bugs
+
+-------------------------------------------------------------------
+Tue Apr 14 15:32:34 CEST 2009 - schubi@suse.de
+
+- initial. splitted off from ruby-gettext package
+

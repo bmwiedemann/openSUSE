@@ -1,0 +1,270 @@
+-------------------------------------------------------------------
+Wed May 16 06:43:44 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Backport https://github.com/openbabel/openbabel/commit/e26491
+  * fix_narrowing.patch
+- Backport https://github.com/openbabel/openbabel/commit/8d707b
+  * fix_yasara.patch
+
+-------------------------------------------------------------------
+Sun May 13 17:29:16 UTC 2018 - wbauer@tmo.at
+
+- Don't delete command line tools, include them in the main package
+  as with openbabel < 2.4
+- Pass -ULIB_INSTALL_DIR to unset this var, the %cmake macro sets
+  it to %{_libdir} resulting in a duplicate /usr in the module
+  search path which causes the plugins not to be found (boo#997190)
+
+-------------------------------------------------------------------
+Wed Feb 21 22:01:13 UTC 2018 - wbauer@tmo.at
+
+- Provide/Obsolete libopenbabel-devel for compatibility
+
+-------------------------------------------------------------------
+Sun Feb 18 12:18:20 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Update descriptions.
+
+-------------------------------------------------------------------
+Sat Feb  3 21:54:05 UTC 2018 - wbauer@tmo.at
+
+- Force python2 by passing -DPYTHON_EXECUTABLE=%{_bindir}/python2
+  to cmake to fix build on Tumbleweed
+
+-------------------------------------------------------------------
+Mon Feb  6 12:34:16 UTC 2017 - mailaender@opensuse.org
+
+- build with wxWidgets support
+- add baselibs.conf
+- enable python support (for real now)
+- add libinchi0 and openbabel sub packages
+- correct the .so version suffix for libopenbabel
+- Drop openbabel-2.3.1-no-build-date.patch
+
+-------------------------------------------------------------------
+Sun Nov 20 08:29:20 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.4.1, see
+  https://sourceforge.net/projects/openbabel/files/openbabel/2.4.0
+  for changelog
+- Dropped cripple_source.sh
+- Replaced openbabel-2.2.3-no-build-date.patch with
+  sed regex
+- Dropped build-checks.diff due to significant source
+  changes
+- Dropped python-installdir.patch (included upstream)
+- Dropped openbabel-gcc5.patch (included upstream)
+
+-------------------------------------------------------------------
+Sun Jun 19 11:22:13 UTC 2016 - schwab@suse.de
+
+- openbabel-gcc6.patch: remove obsolete hunk
+
+-------------------------------------------------------------------
+Fri Jun 17 09:02:52 UTC 2016 - martin.liska@suse.com
+
+- Fix errors seen by 02-check-gcc-output script.
+
+-------------------------------------------------------------------
+Thu Jun 16 14:39:01 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.3.2 and cripple the tarball
+  * various small bugfixes, the git is far away from this but
+    upstream seems not to do releases
+  * Add patch to properly install bindings to right location:
+    + python-installdir.patch
+
+-------------------------------------------------------------------
+Thu Jun 16 13:00:32 UTC 2016 - mliska@suse.cz
+
+- Add patch to build with gcc6 openbabel-gcc6.patch
+
+-------------------------------------------------------------------
+Fri Jun 19 12:02:45 UTC 2015 - dimstar@opensuse.org
+
+- Add openbabel-gcc5.patch: Fix build with gcc5.
+
+-------------------------------------------------------------------
+Mon Aug  5 18:04:00 UTC 2013 - hrvoje.senjan@gmail.com
+
+- enable CMAKE_SKIP_INSTALL_RPATH option so RPATH is ommited from 
+  install tree
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Thu Apr  5 08:13:07 UTC 2012 - coolo@suse.com
+
+- add -32bit libs for avogadro
+
+-------------------------------------------------------------------
+Fri Mar 23 20:02:36 UTC 2012 - dhall@wustl.edu
+
+- Add python bindings
+
+-------------------------------------------------------------------
+Tue Nov 29 01:55:33 CET 2011 - ro@suse.de
+
+- determine arch suffix from _lib macro 
+
+-------------------------------------------------------------------
+Tue Oct 18 00:17:21 UTC 2011 - dhall@wustl.edu
+
+- updated to OpenBabel 2.3.1
+  * Better support for unknown stereochemistry, including a "wobbly" bond in 2D depiction.
+  * Many fixes for rare bugs with stereochemical conversions, including unusual valences.
+  * Significantly improved 2D depiction code, improving performance and cis/trans stereochemical accuracy
+  * Added support for direct 2D depiction to PNG files using the Cairo library, if available.
+  * PNG files from Open Babel contain molecular information and can be read to give the MDL Molfile.
+  * SVG files with 2D depiction can now include a grid of molecules with embedded JavaScript to zoom and scroll.
+  * Molecular formulas now include the total charge (e.g., HCO2-)
+  * Added the EEM partial charge model from Bultinck, et. al.
+  * Fixed problems with FastSearch databases larger than 4GB, now checking for large files.
+  * Improved performance with force field minimization, particularly the UFF and GAFF methods.
+  * Several MMFF94 atom typing bugs fixed.
+  * Updated GAFF parameters from the AmberTools distribution.
+  * Improvements in 3D coordinate generation, particularly more accurate sp3 bond angles
+  * Fixed tests for auto-typing molecules with force fields when running through different isomers.
+  * Improvements in scripting bindings, particularly Python, Ruby, and Java
+  * Pybel now uses the built-in 2D depiction, and no longer needs OASA.
+  * Added initial support for MM3 atom typing with the Tinker package
+  * Significant bug fixes for the PDBQT format.
+  * Reading FASTA files can now generate 3D coordinates for single-stranded DNA in addition to the default double-strand.
+  * Support for reading/writing unit cell information from MOPAC files.
+  * Support for re-numbering SMILES by specifying the first and last atoms with -xf and -xl flags.
+  * Better support for InChI -> InChI key generation by direct conversion, rather than re-perception of the InChI.
+  * Fix for rare stack overflow crash in SMARTS perception.
+  * Improved UNIX man pages.
+  * Many bug fixes and small enhancements
+  * New File Formats
+    * Import and Export:
+      * Gromacs GRO
+    * Import:
+      * ABINIT
+      * XCrySDen XSF
+    * Export:
+      * InChI Key
+
+-------------------------------------------------------------------
+Sat Jun 18 10:52:25 UTC 2011 - dhall@wustl.edu
+
+- use rpm %ifarch
+
+-------------------------------------------------------------------
+Fri Jun 17 23:55:56 UTC 2011 - dhall@wustl.edu
+
+- Updated to OpenBabel 2.3.0
+  * Completely rewritten stereochemistry perception, including support
+    for tetrahedral, square planar, and higher-order stereochemistry.
+  * Dramatically improved canonicalization algorithm (Note that in general, canonical SMILES have changed since the 2.2.x release.)
+  * 2D depiction, including SVG vector graphics generation using code from MCDL.
+  * New Spectrophore generation, contributed by Silicos NV.
+  * New ChargeMethod API including support for partial charge assignment
+    from Gasteiger, MMFF94, QEq, QTPIE methods and plugin interface for
+    adding more.
+  * Improved 3D coordinate generation.
+  * New conformer generation framework, including support for diverse
+    conformer generation and genetic algorithm lowest-energy searching.
+  * Improved user documentation.
+  * Improved aromaticity / Kekule bond assignment.
+  * Improved unit test suite using the CMake-based CTest program.
+  * Improved support for crystallographic unit cells (e.g., in CIF format).
+  * Improved UFF force field method, including hypervalent 5, 6, 7 and higher coordination numbers.
+  * Support for the GAFF (Generalized Amber Force Field) method.
+  * Support for reading geometry optimizations as multiple conformers
+    from Gaussian, GAMESS-US, and other quantum chemistry packages.
+  * Support for reading molecular orbital energies from quantum chemistry formats.
+  * Several memory leaks fixed.
+  * Fixed many compiler warnings.
+  * Fixed support for MinGW and Cygwin environments.
+  * Fixed bugs with Gaussian 09 output files.
+  * Latest released version of the InChI library (1.0.3) generating standard InChI.
+  * Many more bug fixes and small feature improvements.
+
+-------------------------------------------------------------------
+Mon Sep 13 00:54:59 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build dates in binaries. 
+
+-------------------------------------------------------------------
+Sat Sep 11 17:16:44 UTC 2010 - alinm.elena@gmail.com
+
+- added pkg-config to remove the error during the build 
+
+-------------------------------------------------------------------
+Sat Sep 11 09:03:40 UTC 2010 - alinm.elena@gmail.com
+
+- Updated to OpenBabel 2.2.3
+  * Improved Java interface
+  * Many fixes to the fingerprint code
+  * Added support of the pH parameter to the GUI
+  * Several bug fixes and small enhancements- 
+
+-------------------------------------------------------------------
+Sat Jul 25 23:48:41 CEST 2009 - beineri@opensuse.org
+
+- update to OpenBabel 2.2.2:
+   * Fixed many stereochemistry errors when reading/writing SMILES.
+   * Significantly improved aromaticity and Kekule bond assignment. 
+   * Improved 2D -> 3D coordinate generation 
+   * Improved coordinate generation using --gen3d command-line operation 
+   * Improved performance for coordinate generation. 
+   * New --fillUC command-line operation for babel. 
+   * Fixes to pH-dependent hydrogen addition. 
+   * Added support for reading vibrational data from Molden, Molpro,
+     and NWChem output files. 
+   * Updated atomic radii from recent theoretical calculations. 
+   * Fixed bug when reading gzip-compressed Mol2 or XML files. 
+   * Close files after an error. Fixes a bug with Pybel where files
+     would remain open. 
+   * New File Formats Import & Export: 
+    - Molpro input and output. 
+    -VASP coordinate files (CONTCAR and POSCAR).
+
+- update to OpenBabel 2.2.1:
+   * Added support for MACCS fingerprints.
+   * Many fixes and enhancements to the force field code.
+   * Improved 3D coordinate generation, particularly with ring fragments.
+   * Fixed a variety of PDB import errors with atom types. 
+   * Added support for reading charges and radii from PQR file formats. 
+   * Added support for reading and writing unit cells in PDB formats. 
+   * New "output" file format for taking generic ".out", ".log", and
+     ".dat" files and reading with appropriate file type based on contents.
+   * Added improved error handling/reporting when unable to load file formats. 
+   * Improved CIF file format support. 
+   * Generic "output" format for reading from quantum chemistry files.
+
+-------------------------------------------------------------------
+Tue Jul 22 14:13:26 CEST 2008 - dmueller@suse.de
+
+- cripple tarball to remove binary dll's we don't need (bnc#411171)
+
+-------------------------------------------------------------------
+Sat Jul 19 12:43:49 CEST 2008 - dmueller@suse.de
+
+- various fixes, fix library package name
+
+-------------------------------------------------------------------
+Wed Jul  9 16:02:10 CEST 2008 - dmueller@suse.de
+
+- review last change
+
+-------------------------------------------------------------------
+Wed Jul  9 15:52:31 CEST 2008 - cniehaus@kde.org
+
+- update to OpenBabel 2.2.0:
+  * http://openbabel.org/wiki/Open_Babel_2.2.0
+
+-------------------------------------------------------------------
+Sun Oct 21 12:44:24 CEST 2007 - dmueller@suse.de
+
+- gcc 4.3 fixes 
+
+-------------------------------------------------------------------
+Tue Oct  9 01:07:21 CEST 2007 - dmueller@suse.de
+
+- Initial package (2.1.1) 
+

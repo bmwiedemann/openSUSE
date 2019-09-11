@@ -1,0 +1,33 @@
+diff --git a/dracut/30ignition/ignition-setup-user.service b/dracut/30ignition/ignition-setup-user.service
+index 26e2d3c..9714eb0 100644
+--- a/dracut/30ignition/ignition-setup-user.service
++++ b/dracut/30ignition/ignition-setup-user.service
+@@ -7,13 +7,11 @@ Before=local-fs-pre.target
+ Before=ignition-disks.service
+ Before=ignition-files.service
+ 
+-Requires=dev-disk-by\x2dlabel-boot.device
+-After=dev-disk-by\x2dlabel-boot.device
++Wants=dev-disk-by\x2dlabel-ignition.device
++After=dev-disk-by\x2dlabel-ignition.device
+ 
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-# The MountFlags=slave is so the umount of /boot is guaranteed to happen
+-# /boot will only be mounted for the lifetime of the unit.
+ MountFlags=slave
+ ExecStart=/usr/sbin/ignition-setup-user
+diff --git a/dracut/30ignition/ignition-setup-user.sh b/dracut/30ignition/ignition-setup-user.sh
+index 3745202..ea9749f 100755
+--- a/dracut/30ignition/ignition-setup-user.sh
++++ b/dracut/30ignition/ignition-setup-user.sh
+@@ -20,5 +20,7 @@ mkdir -p $destination
+ # with MountFlags=slave so it is unmounted for us.
+ bootmnt=/mnt/boot_partition
+ mkdir -p $bootmnt
+-mount /dev/disk/by-label/boot $bootmnt
++if [ -e /dev/disk/by-label/ignition ]; then
++    mount /dev/disk/by-label/ignition $bootmnt
++fi
+ copy_file_if_exists "${bootmnt}/ignition/config.ign" "${destination}/user.ign"

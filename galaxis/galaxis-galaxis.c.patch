@@ -1,0 +1,10 @@
+--- galaxis.c.orig	2014-05-21 14:13:01.000000000 +0200
++++ galaxis.c	2014-12-15 13:00:16.667488650 +0100
+@@ -664,6 +664,7 @@
+ 	(confirm());
+     outro(0);
+     /*NOTREACHED*/
++    return 0;
+ }
+ 
+ /* galaxis.c ends here */

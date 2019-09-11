@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-devspaces-0.1.0.orig/setup.py azure-mgmt-devspaces-0.1.0/setup.py
+--- azure-mgmt-devspaces-0.1.0.orig/setup.py	2018-07-12 23:22:42.000000000 +0200
++++ azure-mgmt-devspaces-0.1.0/setup.py	2018-09-04 11:49:32.455825354 +0200
+@@ -79,7 +79,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

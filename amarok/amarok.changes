@@ -1,0 +1,1723 @@
+-------------------------------------------------------------------
+Fri May 11 06:44:51 UTC 2018 - wbauer@tmo.at
+
+- Symlink service menu file to KF5 location so that it shows up
+  in current KDE file managers
+
+-------------------------------------------------------------------
+Thu Mar  8 10:59:56 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.0
+VERSION 2.9.0
+  * CHANGES:
+    * Substitute deprecated MySQL option --myisam-recover for
+      compatibility with MySQL 5.7+ (kde#354255)
+  * BUGFIXES:
+    * Fix integer fields, like length, always showing up as zero in
+      filter creation dialog (kde#341661)
+    * Fix background color of the lyrics applet (kde#314854)
+    * Fix Organize tracks / Guess tags presets not persisted
+      properly (kde#226144)
+    * Fix MPRIS2 DesktopEntry name, makes media controls in Plasma
+      5.7 taskbar work again (kde#365275)
+    * Auto-expand after search in Collection Browser works
+      correctly again (kde#335217)
+    * Fix crash during MusicBrainz search (kde#328359)
+VERSION 2.8.90
+  * FEATURES:
+    * Database configuration dialog now has a "test connection"
+      button
+    * Add Service entries for directories (kde#229708)
+    * Collection Browser scrolls back to its original position when
+      the filter is cleared (kde#188074)
+    * Notification Center support on Mac OS X
+    * Statistics synchronization between Amarok collections and
+      Amarok 1.4, Amarok 2.x, Apple iTunes, Banshee, Clementine,
+      and Rhythmbox track databases
+    * Usability of the Organize Files dialog has been improved
+    * Wikipedia can now be also used over SSL
+    * New ASCII Analyzer option in the Analyzer widget
+  * CHANGES:
+    * Last played and first played dates now use the same formatter
+      than in the playlist giving a human readable date such as
+      "one minute ago" in meta edit dialog
+    * "Import" button under Configure Amarok -> Local Collection no
+      longer serves to import statistics from Amarok 1.4 and
+      iTunes, and has been renamed to "Import batch file" to
+      reflect the change
+    * Configure Amarok -> Metadata tab includes new buttons to add
+      and reconfigure synchronization targets
+    * When ffmpeg is not available, the Transcode dialog is no
+      longer skipped; info message is shown instead (kde#317902)
+    * Amarok now uses some C++11 features. The subset used is
+      defined by the compilers currently supported by KDE.
+  * BUGFIXES:
+    * Fixed longstanding APG zero-length playlist bug (kde#313762,
+      kde#315206, kde#323945)
+    * Fix a crash when searching the Icecast directory (kde#334479)
+    * Correct wrong lowercase for FLAC and MP3 (kde#339495)
+    * Collection Browser no longer excessively expands the tree
+      (kde#300557)
+    * Properly calculate and store Aft tags in mp4 files
+      (kde#332811)
+    * Update Progress Slider when restoring from System Tray
+      (kde#299883)
+    * Update Jamendo to use new website (kde#331934)
+    * Allows CollectionBrowser filter to have length of almost 24
+      hours (kde#291400)
+    * Prevent creation of video stream when transcoding to Opus
+    * Fix crash when starting Amarok with an iPod mounted
+      (kde#329498)
+    * Also fetch cover art from xiph-comments with
+      METADATA_BLOCK_PICTURE tag (kde#328451)
+    * Fix crash on quit when Amarok is in the middle of fadeout
+      (kde#325723)
+    * Prevent shared memory size errors for very large collections
+      (kde#327812)
+    * Fix OpenGL related crash (kde#327150)
+    * Always show preview in Organize Files dialog, hide
+      complicated options behind a button (kde#327201)
+    * Fix sound glitch with fade-out on pause and GStreamer
+      (kde#323729)
+    * Fix a bug in Organize Collection functionality that could
+      lead to assertion failures later on (kde#322474)
+    * Fix an assertion failure when a track in Local Collection is
+      replaced by another already tracked one (kde#323156)
+    * Fix failure to start embedded MySQL (with version 5.1 and
+      MariaDB) (kde#323802)
+    * Fixed compilation with libc++ (used on OSX and FreeBSD)
+      (kde#324075)
+    * Fixed crashes with Intel drivers due to Analyzer applet
+      (kde#323635)
+    * Fixed performance problem with large podcast feeds
+      (kde#283022)
+    * Fixed issue with Amarok sometimes not finding its plugins
+      after an upgrade
+    * Album Artist / Compilation / Disc Number tags are now read
+      correctly from APE tags (kde#323735)
+    * Using Shuffle keyboard shortcut no longer causes Amarok to
+      crash (kde#323614)
+    * Check for QtBindings at runtime instead. Disable scripts and
+      display error message if missing (kde#325006)
+    * Print playlist download errors to the debug log (kde#325120)
+    * Wikipedia Applet only connect with SSL, so that redirects
+      are handled correctly (kde#349313)
+- Drop patches merged upstream:
+  * amarok-taglib-compare.patch
+  * gcc6-workaround.patch
+  * Skip-qtwebkit-parts.patch
+  * 0001-Don-t-add-the-analyzer-applet-when-Phonon-doesn-t-su.patch
+  * 0002-Don-t-allow-adding-Analyzer-applet-when-not-supporte.patch
+  * 0003-Optimization-Don-t-draw-more-than-necessary.patch
+  * 0004-Fix-reading-Album-Artist-Compilation-Disc-Number-in-.patch
+  * 0005-Sync-playlist-search-config-instantly.patch
+  * 0006-Don-t-suppress-html-tag-like-characters.patch
+  * 0007-Fix-performance-issue-with-large-podcast-feeds.patch
+  * 0008-Clean-up-the-leftover-of-strigi-removal.patch
+  * 0009-Fix-Ampache-plugin-connections.patch
+  * Enable_Wikipedia_over_SSL.patch
+  * amarok-ffmpeg3.0.patch
+  * Fix-for-infinite-loop-with-some-Audio-CDs.patch
+  * Fix-MPRIS2-DesktopEntry-value.patch
+  * Fix-crash-during-musicbrainz-search.patch
+  * amarok-2.8.0-find_mysql.patch
+- Don't disable QtWebKit on Leap 42, it's available there
+- Build with libqca2 again, it supports OpenSSL 1.1 now
+- Drop load-scrips-without-qca.patch, no longer necessary
+- Drop revert_solid_workaround.diff, it shouldn't be needed
+- Add Fix-build-with-gcc6.patch to make it compile on Leap 42
+- Adjust initial-preference.diff and flac_mimetype_bnc671581.diff
+- Update Source Url
+
+-------------------------------------------------------------------
+Sat Dec 23 14:44:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to avoid automatic network requests (boo#1070899):
+  * disable-web-plugins-by-default.patch
+- Also disable all scripts by default
+- Fix loading of scripts:
+  * load-scrips-without-qca.patch
+
+-------------------------------------------------------------------
+Sat Dec 16 13:42:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Do not build against QCA
+
+-------------------------------------------------------------------
+Sat Dec  2 16:44:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to not build WebKit-dependent parts:
+  * Skip-qtwebkit-parts.patch
+
+-------------------------------------------------------------------
+Fri Nov 24 13:33:14 UTC 2017 - kstreitova@suse.com
+
+- Fix build with libmariadb by disabling using
+  mysql_config/mariadb_config (DMYSQLCONFIG_EXECUTABLE:BOOL=OFF)
+  and let find_library() find respective libraries in predefined
+  paths [bsc#1067898]
+- Add amarok-2.8.0-find_mysql.patch to fix obvious typo in paths
+  definition in find_library()
+
+-------------------------------------------------------------------
+Fri Nov 24 11:00:10 UTC 2017 - fabian@ritter-vogt.de
+
+- BuildIgnore openssl 1.0 headers to not conflict with 1.1 headers
+  required by some deps
+
+-------------------------------------------------------------------
+Wed Nov  1 12:48:10 UTC 2017 - vcizek@suse.com
+
+- Workaround to fix build when openssl 1.1 is the default
+  * Temporarily drop BuildRequires of libgpod-devel and taglib-extras-devel
+    that pull in libimobiledevice-devel
+  * Currently amarok builds against libopenssl1_0_0, but
+    libimobiledevice-devel pulls in libopenssl1_1_0, causing a conflict
+
+-------------------------------------------------------------------
+Mon Oct  9 10:44:09 UTC 2017 - tchvatal@suse.com
+
+- Pull in openssl-1_0_0-devel in order for the distribution to switch
+  overall to 1.1 release bsc#1042629
+
+-------------------------------------------------------------------
+Sat Sep 16 20:52:17 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-ugly Recommends: Provide mp3 playback by
+  default for users.
+
+-------------------------------------------------------------------
+Thu Aug 24 10:41:10 UTC 2017 - wbauer@tmo.at
+
+- Add Fix-crash-during-musicbrainz-search.patch to fix a possible
+  crash when looking up metadata on MusicBrainz (kde#328359)
+
+-------------------------------------------------------------------
+Thu Dec  8 19:57:50 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Sat Dec  3 20:47:38 UTC 2016 - wbauer@tmo.at
+
+- Recommend kio_audiocd4 for playback of AudioCDs, the standard
+  kio_audiocd package is KF5 based now
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Sun Sep 18 22:12:37 UTC 2016 - cornelis@solcon.nl
+
+- Add Fix-MPRIS2-DesktopEntry-value.patch to get working media
+  controls in plasma taskbar (kde#565275) 
+
+-------------------------------------------------------------------
+Wed May 25 12:49:35 UTC 2016 - martin.liska@suse.com
+
+- Add gcc6-workaround.patch to workaround an error seen by GCC,
+  link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=71273.
+
+-------------------------------------------------------------------
+Sun May 15 14:24:20 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Use share-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Tue Apr 12 21:36:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Copy download icon from Breeze on Leap 42.1 and Tumbleweed
+
+-------------------------------------------------------------------
+Sat Apr  9 15:04:41 UTC 2016 - wbauer@tmo.at
+
+- Add Fix-for-infinite-loop-with-some-Audio-CDs.patch to fix the
+  infinite loop in case a home-burned or old audio CD (without
+  CDTEXT) is inserted (kde#339190)
+
+-------------------------------------------------------------------
+Fri Feb 26 16:19:27 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Added amarok-ffmpeg3.0.patch to build against ffmpeg-3.0
+  libraries on PMBS.
+-------------------------------------------------------------------
+Tue Jan  5 07:29:12 UTC 2016 - olaf@aepfle.de
+
+- Add amarok-taglib-compare.patch (kde#351013)
+
+-------------------------------------------------------------------
+Fri Dec 18 16:12:05 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Do not conditionalize ffmpeg, we don't need to be in packman
+  the factory ffmpeg is enough
+
+-------------------------------------------------------------------
+Wed Nov 18 13:00:31 UTC 2015 - tittiatcoke@gmail.com
+
+- Drop the recommends for moodbar. This would free us from 
+  gstreamer_0.10
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul  9 09:50:57 UTC 2015 - wbauer@tmo.at
+
+- Add Enable_Wikipedia_over_SSL.patch to make the Wikipedia applet
+  work again (boo#934730, kde#349313)
+  
+-------------------------------------------------------------------
+Wed Feb  4 10:08:19 UTC 2015 - coolo@suse.com
+
+- add the changes file as source so the .src.rpm can be rebuild
+
+-------------------------------------------------------------------
+Sat Jan 10 09:06:49 UTC 2015 - lbeltrame@kde.org
+
+- Add 0008-Clean-up-the-leftover-of-strigi-removal.patch: 
+  remove unneeded Strigi reference in the Ampache plugin build
+  system
+- Add 0009-Fix-Ampache-plugin-connections.patch: unbreak Ampache
+  plugin connection due to wrong hashing algorithm being used 
+
+-------------------------------------------------------------------
+Thu Dec 18 17:08:44 UTC 2014 - olaf@aepfle.de
+
+- Require correct libtag.so to avoid undefined symbols at runtime
+
+-------------------------------------------------------------------
+Sun Nov 09 00:40:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Wed May  7 17:01:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added libxml2-devel BuildRequires, was pulled in via
+  libkde4-devel previously
+
+-------------------------------------------------------------------
+Fri Mar 7 18:29:32 UTC 2014 - tittiatcoke@gmail.com
+
+- Remove nepomuk-core from the buildrequires
+-------------------------------------------------------------------
+Tue Oct  1 18:18:23 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Explicitly require phonon-backend, as it's possible that in certain
+  conditions users would have none installed
+
+-------------------------------------------------------------------
+Mon Sep  9 19:23:13 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0002-Don-t-allow-adding-Analyzer-applet-when-not-supporte.patch,
+  0003-Optimization-Don-t-draw-more-than-necessary.patch,
+  0004-Fix-reading-Album-Artist-Compilation-Disc-Number-in-.patch,
+  0005-Sync-playlist-search-config-instantly.patch,
+  0006-Don-t-suppress-html-tag-like-characters.patch and
+  0007-Fix-performance-issue-with-large-podcast-feeds.patch
+  which resolve kde#323735, kde#324295, kde#324614, kde#283022 and
+  kde#323119
+- Renamed Don-t-add-the-analyzer-applet-when-Phonon-doesn-t-su.patch
+
+-------------------------------------------------------------------
+Wed Aug 21 15:04:08 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added Don-t-add-the-analyzer-applet-when-Phonon-doesn-t-su.patch
+  from upstream, avoids adding the analyzer applet on phonon backends
+  that don't support it (e.g. vlc)
+
+-------------------------------------------------------------------
+Wed Aug 14 21:26:59 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.0
+VERSION 2.8
+  * FEATURES:
+    * Tracks from Recently Played List widget can now directly be
+      added to the playlist. (kde#279263, kde#296090)
+  * CHANGES:
+    * The Jamendo service now uses a higher quality MP3 format
+      instead of Ogg Vorbis.
+    * Added an option whether adding tracks to playlist should
+      start playing. (kde#322428)
+    * Amarok now depends on Qt 4.8.3.
+    * Amarok now uses FindFFMpeg.cmake from kdelibs
+  * BUGFIXES:
+    * Don't reload Wikipedia applet content if artist/album have
+      not changed. (kde#112044)
+    * Jamendo service: Albums are now downloaded directly instead
+      of going via BitTorrent. This is far more reliable and also
+      supports on-the-fly transcoding. (kde#299434)
+    * Work-around Solid UDisks2 backend bug that caused
+      USB Mass Storage devices and iPods not being recognized when
+      connected before Amarok was started. Also fixes a bug where
+      blank devices would appear in Play Media dialog.
+      (kde#322980)
+    * Definitely fix a bug where storing Last.fm credentials in
+      plain-text isn't offered when KWallet is disabled.
+      (kde#315306)
+    * Radio streams from scripted services are now
+      instantly playable. (kde#320718)
+    * Recently Played List widget now keeps its own time for
+      tracks instead of relying on the Last Played statistic.
+      (kde#302485)
+    * Prevent hitting an assertion failure if just removed track
+      from the Local Collection is edited. (kde#322474)
+    * Fixed a regression introduced in 2.8 Beta where tracks in
+      the Local Collection were sometimes forgotten and then
+      found again. (kde#322603)
+    * Fixed invalid SQL queries when you have files or folders
+      with an apostrophe in your collection. (kde#322415)
+    * Fixed organizing/copying/moving tracks to Local
+      Collection on Windows. (kde#279560, kde#302251)
+    * Various usability improvements for the applet toolbar.
+      (kde#197948)
+    * Removed broken Apply button in applets' settings dialog.
+      (kde#322015)
+    * Fix incorrect colors in Context View toolbar when
+      switching themes. (kde#301305)
+    * Many fixes for various bugs with switching desktop color
+      themes at runtime, including OSD, spectrum analyzer,
+      collection browser.
+    * Avoid updating the MPRIS2 Metadata between tracks.
+      (kde#321602)
+
+-------------------------------------------------------------------
+Thu Jul  4 13:56:44 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.90
+  * FEATURES:
+    * Ctrl+C copies the currently playing artist & title to the
+      clipboard. (kde#228872)
+    * Volume fade-out is now also available for pause.
+    * The Files browser now has a Refresh button. (kde#213666)
+    * The active playlist item is animated with a soft glow effect.
+    * Added an audio analyzer visualization applet.
+    * Added a function for resetting the GUI layout back to default
+      state. (kde#300753)
+    * Pressing enter when searching collections now adds found
+      tracks to the playlist and clears the search bar, this is a
+      very convenient way to populate your playlist.
+    * Allow to transcode only certain (different format,
+      playability) tracks when transferring them to a
+      collection (kde#312407)
+    * On-Screen-Display fades in/out smoothly.
+    * Added support for .asx playlists; (kde#170207)
+    * Add Radio GFM radio streams to Cool Stream Script.
+      (kde#317978)
+    * Added options to pause playback on system suspend and to
+      inhibit automatic suspend  if playing a track (enabled by
+      default); (kde#259862) (kde#222571)
+    * Playlist files are now read asynchronously when possible;
+      (kde#291934)
+    * Added support to filter tracks to scrobble to Last.fm by
+      label. (kde#140198)
+    * Added transcoding support for Opus codec if ffmpeg is
+      compiled with support for the libopus library
+    * Added keyboard shortcuts for small 2 s seeks
+      (Ctrl + Left/Right) and long 1 minute  seeks
+      (Shift + Left/Right) in addition to standard 10 s seeks.
+      Durations are now configurable in amarokrc, see
+      Amarok Handbook (kde#177258)
+    * Added support for files in Opus codec if Amarok is compiled
+      against recent enough TagLib (post 1.8) (kde#312905)
+    * Added Ctrl+H shortcut to randomize playlist (kde#208061)
+  * CHANGES:
+    * Removed LikeBack (a development feature in debug builds).
+      (kde#312498) (kde#252323)
+    * Collection Browser: Artist level was renamed to Track Artist
+      and replaced by Album Artist by default. Various Artists
+      item is no longer shown under Track Artist level.
+    * Removed the splash screen.
+    * Playlist-related actions were harmonized, double-clicking
+      or pressing enter will append tracks to playlist, using any
+      "play media" action will prepend tracks to queue and
+      immediately start playing; middle-clicking or will append
+      & play while other append or replace actions will no longer
+      start playback. (kde#145468, kde#145490, kde#194549)
+    * When a new collection plugin is enabled, its collections
+      appear immediately without a need for restart.
+    * Update the MusicBrainz tagger to MusicBrainz web service 2,
+      make it show some more good suggestions for tagging, and add
+      some options to help choosing the best results.
+    * Add note about generating .mood files into Moodbar Options;
+      (kde#289483)
+    * Amarok now depends on Qt 4.8.2.
+    * Add prepareToQuit() signal to Amarok.Window script bindings;
+      (kde#241066)
+    * Data CDs are now recognized in Amarok; (kde#316128)
+    * On-Screen-Display now uses the system font instead of
+      hardcoded sans-serif. (kde#248707)
+    * Fancy behavior of some context menus showing different
+      actions when Shift key is held has been reverted.
+      All entries are now shown all the time.
+    * The dynamic playlist behavior has changed. It will no longer
+      generate "pretty good" playlists that do not fulfill the
+      given biases. Instead it might add no song at all if given
+      impossible-to-fulfill conditions.
+    * The "tracks have been hidden in the playlist" warning when
+      filtering the playlist is now displayed inside the playlist.
+      (kde#260352)
+    * Update tag widget for Layout edit, filter edit, organize
+      collection and guess tag dialog.
+    * When fadeout and/or Replay Gain isn't possible, gray-out
+      related UI elements in order not to fool users.
+  * BUGFIXES:
+    * When you remove whole directories from the Local Collection
+      and have Watch Folders for Changes enabled, the tracks now
+      disappear from Collection Browser. (kde#311078)
+    * Fix dynamic playlist bug: When "Automatically scroll playlist
+      to current track" was enabled, Amarok would keep scrolling
+      to the bottom. (kde#284214)
+    * Fix a problem where ghost tracks would remain in the Local
+      Collection until the  database is wiped. (kde#319084)
+    * Added missing CMake check for QtWebKit. (kde#321598)
+    * Definitely fix a bug where Local Collection wouldn't update
+      in browser. (kde#262504)
+    * Fix crashed caused by race conditions at the end of the
+      track scanning. (kde#319835)
+    * Fix crash when disabling the Free Music Charts script.
+      (kde#321329)
+    * Albums having same name but different album artist won't be
+      mixed together on the playlist if sorting by album is enabled.
+    * Fix crash on startup with KDE 4.11. (kde#320855)
+    * Fix tracks not able to be dragged around when playlist
+      is shuffled. (kde#320129)
+    * Prevent Last.fm scrobbles not being submitted until restart
+      due to change in liblastfm 1.0.7. (kde#320219)
+    * Resume Playback on Start will correctly restore paused state,
+      instead of always starting in playing state. (kde#313330)
+    * Optimize removal of tens of thousands of tracks from
+      playlist. (kde#316242)
+    * Fix `amarok --queue` which didn't actually queue the
+      tracks. (kde#317385)
+    * Fix suboptimal initial MusicBrainz tag dialog size by
+      remembering it. (kde#269454)
+    * Fix file-browser becoming empty when a file was moved to
+      trash. (kde#317944)
+    * Fix `amarok --play file.mp3` option didn't actually start
+      playback.
+    * Reason why a particular track is not playable is now shown
+      in playlist tooltip; (kde#313649)
+    * Pre-apmlifier in equalizer is now only enabled if it is
+      actually supported; (kde#301311)
+    * Fix Amarok crashed while doing "Organize Files" (kde#317980)
+    * Fix Amarok erroneously merges two albums.
+      (kde#216759, kde#272802)
+    * Fix Crash on very long artist names. (kde#276894)
+    * Fix Move tracks to rubbish and the current track cover
+      changes to the deleted cover. (kde#306735)
+    * Fix theoretical configwidget leak in services. (kde#301352)
+    * Fix "Local collection" text label is truncated with
+      large font. (kde#282561)
+    * Fix crash by putting a broadcast in the playlist.
+      (kde#313718)
+    * Fix Keyboard navigates context menu in collection will move
+      two items. (kde#307794)
+    * Fix add track to playlist by double click on arrow in the
+      collection. (kde#279513)
+    * Fix VFAT safe names missing a couple of idiosyncrasies.
+      (kde#312574)
+    * Clarify message when Last.fm streams are not available.
+      (kde#315771)
+    * Fix crash when Dynamic Playlist based on last.fm is aborted.
+      (kde#314243)
+    * Fix Group by directory doesn't work in main playlist.
+      (kde#265415)
+    * Don't remove common labels when editing the tags of multiple
+      tracks. (kde#316043)
+    * Fix vertical positioning of On-Screen-Display. (kde#269788)
+    * Fix OSD sometimes misplaces the font and the font's shadow.
+      (kde#257643)
+    * Prevent inability to save Last.fm password in corner cases.
+      (kde#315306)
+    * Fix "Copy to Collection" window doesn't fit on small screens.
+      (kde#283361)
+    * Fix crash when quitting Amarok with Statistics Synchronization
+      open. (kde#315525)
+    * Fix items moving around when expanded in collection browser.
+      (kde#305602)
+    * Fix Organize collection folder deletion going 'too far'.
+      (kde#314348)
+    * Fix %albumartist% placeholder translates to some strange unicode
+      symbol. (kde#314351)
+    * Fix bumpy fade-out when first used. (kde#312062)
+    * Fix crash when switching/removing organize collection presets.
+      (kde#314344)
+    * Fix crash on start if a playlist source is unavailable.
+      (kde#313460)
+    * Fix Copy/Move to collection picks up wrong destination path
+      and fails silently. (kde#314460)
+    * Cleanup TrackOrganizer. (kde#305291)
+    * Fix Editing Playist Layout Editor. (kde#250594)
+    * Fix Display glitch for rating in verbose playlist. (kde#300118)
+    * Refactoring Ampache service, fix Albums with multiple disks not
+      listed correctly. (kde#249857)
+    * Fix playlist sorting by type. (kde#249338)
+    * Fix subtle bugs when a long fade-out is initiated near the
+      song end.
+    * Don't try to fade-out with phonon backends that don't
+      support it. (vlc)
+    * Fix Can't edit & save an existing equalizer preset.
+      (kde#241874)
+    * Clean up Equalizer Dialog. (kde#274972)
+- Drop kill-amarok-mockup.patch, included in this release
+- Added oxygen-icon-theme BuildRequires, needed for amzdownloader icon
+- Explicitly BuildRequire Qt4 >= 4.8.2, as per upstream change
+
+-------------------------------------------------------------------
+Sun Jun 23 11:13:33 UTC 2013 - asterios.dramis@gmail.com
+
+- Added clamz as recommended runtime requirement.
+
+-------------------------------------------------------------------
+Thu Jun 13 20:29:34 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added kill-amarok-mockup.patch which removes usage of non-existant
+  Amarok-Mockup plasma theme, that casues crashes with KDE 4.11
+  (kde#320855)
+
+-------------------------------------------------------------------
+Wed May 15 23:07:45 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.1
+  * CHANGES:
+    * Problematic support for treating MusicBrainz ids as track
+      unique ids was dropped; should avoid surprising
+      "Duplicate Tracks Found" errors. (315329)
+  * BUGFIXES:
+    * Fix inability to reverse "Use Music Location" decision and
+      inability to clear database once all collection directories
+      have been unset. (kde#316216)
+    * Fix frequent crashes on Linux when starting to play a track.
+      (kde#319371)
+    * Fix compilation error on systems with gcc-4.2 (kde#314528)
+    * Fix inability to create database when home directory contains
+      non-ASCII characters. (kde#313914)
+    * Fix typo in Nepomuk query which did not let track numbers of
+      Nepomuk Collection tracks show up in Amarok. (kde#311847)
+- Drop fix-crashes-on-track-change.patch and trackNumber-typo-fix.diff
+  these patches are included in this release
+
+-------------------------------------------------------------------
+Thu May  9 18:10:48 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added fix-crashes-on-track-change.patch, fixes frequent crashes
+  when changing tracks (kde#319371)
+
+-------------------------------------------------------------------
+Fri Feb 15 14:54:31 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added trackNumber-typo-fix.diff, fixes kde#311847, track number
+  not shown in Nepomuk collection
+
+-------------------------------------------------------------------
+Fri Jan 18 05:09:28 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 2.7
+  * FEATURES:
+    * Track dragging support in Unique Tracks tab of the Synchronize
+      Statistics action; allows you to do a "diff" between collections
+      and transfer missing tracks. (kde#237266)
+    * Amarok now scrobbles tracks in streams if the stream correctly
+      updates meta-data. (kde#240732)
+    * When scrobbling to Last.fm, Amarok announces suggested tag
+      corrections (configurable). (kde#309697)
+    * Ability to scrobble recently played tracks from iPod (and
+      the like) to Last.fm.
+    * Synchronization of labels and rating between Last.fm and
+      Amarok collections; play count can be synchronized one-way
+      from Last.fm to Amarok. (kde#206249)
+    * Statistics synchronization between collections, supports
+      rating, first / last played time, play count and labels.
+    * New APG constraint: Specify a total file size for playlist.
+      (kde#283618)
+    * Amazon store: Added support for Amazon MP3 in Italy and
+      Spain. (kde#307981)
+    * Mark downloaded podcast episodes to keep, even when purge
+      is enabled. (kde#261062)
+    * Nepomuk plugin: Play and manage tracks using the Nepomuk
+      database.
+    * Support for reading and writing tags from/to mod, s3m,
+      it and xm files.
+    * Amazon store: It is now possible to add items to your
+      shopping cart using amarok:// URLs.
+    * Amazon store: Use the context info applet to show further
+      infos about a selected item.
+    * New argument --debug-audio to enable Phonon debugging.
+    * Amazon store: We now ship a utility to handle downloads
+      from Amazon.
+
+- Removed patch liblastfm1-support.diff (fixed upstream)
+- Added build require for nepomuk-core-devel for the Nepomuk plugin
+
+-------------------------------------------------------------------
+Sun Dec 16 01:09:22 UTC 2012 - stefan.bruens@rwth-aachen.de
+
+- fix broken signal/slot signatures caused by SR:130759
+
+-------------------------------------------------------------------
+Fri Nov  2 15:54:05 UTC 2012 - ctrippe@opensuse.org
+
+- Install the english handbook only with the lang-package as otherwise
+  translations will not be displayed when they are provided by
+  bundle-lang-kde-* (bnc#695108)
+- No longer Build-require libksuseinstall-devel as the corresponding
+  patch was removed
+
+-------------------------------------------------------------------
+Thu Sep  6 15:59:28 UTC 2012 - dmueller@suse.com
+
+- add support for liblastfm1
+  * liblastfm1-support.diff
+
+-------------------------------------------------------------------
+Tue Aug 14 06:50:24 UTC 2012 - toddrme2178@gmail.com
+
+- Remove ksuseinstall patch entirely
+
+-------------------------------------------------------------------
+Mon Aug 13 09:19:22 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 2.6
+  * See http://strohel.blogspot.com/2012/08/amarok-26-released-enjoy-great-ipod.html
+- Removed obsolete version checks
+- Remove upstream implemented patches
+- Temporarily disabled non-working ksuseinstall patch
+- Rebased patches
+
+-------------------------------------------------------------------
+Fri Jun 15 23:58:24 UTC 2012 - stefan.bruens@rwth-aachen.de
+
+- remove errmsg patch, it must match the version of the installed
+  libmysqld, thus libmysqld need a matching dependency
+  depends on fixed mysql package
+  fixes bnc#712749
+
+-------------------------------------------------------------------
+Mon May 28 21:06:39 UTC 2012 - reddwarf@opensuse.org
+
+- Fix build with ffmpeg 0.11
+
+-------------------------------------------------------------------
+Tue Mar  6 04:24:27 UTC 2012 - stefan.bruens@rwth-aachen.de
+
+- Revert: Fix detection of mounts of NFS & SMB Shares
+  depends on fix in solids mtab handling, available with SC 4.8.2
+
+-------------------------------------------------------------------
+Wed Feb 1 07:14:00 UTC 2012 - tittiatcoke@gmail.com
+
+- Enable proper script support again as that qt4-qtscript now
+  compiles for Qt 4.8
+
+-------------------------------------------------------------------
+Fri Jan 27 10:08:00 UTC 2012 - idonmez@suse.com
+
+- Add patch to fix kde#290123
+
+-------------------------------------------------------------------
+Tue Dec 20 15:48:16 UTC 2011 - adrian@suse.de
+
+- Update to final version 2.5.0
+  * Mainly bugfixes since Beta 1, check the ChangeLog file for details
+
+-------------------------------------------------------------------
+Mon Dec 12 09:22:18 UTC 2011 - idonmez@suse.com
+
+- Fix path to errmsg.sys
+
+-------------------------------------------------------------------
+Fri Dec  9 13:00:51 CET 2011 - dmueller@suse.de
+
+- remove qt4-qtscript dependency
+
+-------------------------------------------------------------------
+Wed Nov 30 14:00:38 UTC 2011 - mlin@suse.com
+
+- Add amarok-fix-infinite-loop-eating-CPU.diff
+  * Fix infinite loop in context view eating CPU until main
+    window is shown (bnc#733421)
+
+-------------------------------------------------------------------
+Tue Nov 15 23:37:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 2.5 Beta 1 (2.4.90)
+  * New "equals" match in collection filter
+  * Enable dropping tracks on empty area in Saved Playlists to
+    create new playlist.
+  * Added a "create new playlist" action in the empty space of the
+    Saved Playlists. (bko#202725)
+  * Add new type of optional tokens in format string
+    (Collection Organizer) (bko#264874)
+  * Music store based on the Amazon catalogue.
+  * Auto-save the playlist so that it is not lost if Amarok
+    crashes.
+  * Both Delete and Move to Trash actions are now offered in the
+    collection browser context menu. (bko#286356)
+  * New USB Mass Storage media-device plugin using the Amarok
+    Collection Scanner.
+  * Playlist: Don't group albums without name. (bko#243344)
+  * Total rewrite of Automated Playlist Generator algorithm.
+  * Several bugfixes
+
+-------------------------------------------------------------------
+Sun Nov  6 17:49:24 UTC 2011 - ctrippe@opensuse.org
+
+- Change ksuseinstall to support the gstreamer-backend instead of
+  the xine one (bnc#728476)
+
+-------------------------------------------------------------------
+Fri Oct  7 10:48:44 UTC 2011 - ctrippe@opensuse.org
+
+- Remove errmsg-mysql51-embedded.diff as this causes amarok to fail
+  when initializing the collection (bnc#712749)
+- Remove the action for audio-cds as amarok is not really a good
+  player for these (bnc#712749)
+
+-------------------------------------------------------------------
+Sat Sep 17 11:01:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Aug 29 15:04:23 UTC 2011 - idonmez@suse.com
+
+- Don't disable ksuseintall & liblastfm support for KDE:UpdatedApps
+
+-------------------------------------------------------------------
+Tue Aug  9 23:42:55 UTC 2011 - reddwarf@opensuse.org
+
+- Optionally enable MusicDNS support (requires ffmpeg/libav)
+
+-------------------------------------------------------------------
+Mon Aug  1 17:47:59 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 2.4.3:
+   Bugfixes:
+    * Fix KWallet auth requests on every track change. (bko#278177)
+    * Display correct values for pretty times (playlist length) > 1 day.
+    * Update playlist length correctly after removing track. (bko#273407)
+    * Fix seek backward from dbus. (Thanks to Matthieu Bedouet) (bko#263287)
+    * Prevent dialog querying last.fm settings being displayed on startup if
+      none set.
+    * Fix detection of smartphones in USB storage mode. (bko#277685)
+    * Fix crashes on expanding a newly cloned dynamic playlist (bko#277750)
+    * Don't block the UI while calculating the filename previews. (bko#233196)
+    * Make M3U & PLS playlist files editable from Saved Playlists. (bko#245963)
+  From 2.4.2-Beta 1:
+   Features:
+    * Made Amarok compile with the Clang LLVM frontend.
+    * Enable drag and drop on collections to copy/move within Local Music and
+      directly from the playlist. (bko#223400)
+    * Added KNotify scripting interface. (bko#260750)
+    * Make podcast episodes download filename configurable. Patch by
+      Sandeep Raghuraman. (bko#155075)
+    * Automatic scrolling in lyrics applet (Thanks to Jan Gerrit Marker)
+    * Option to scrobble composer as artist to Last.fm (Thanks to Nicholas
+      Wilson)
+    * Option to hide the OSD if another window is taking the full screen
+   Changes:
+    * Again write back ratings only if option is selected.
+    * Moved the queue-editor action to the main menu under playlist to save
+      space. Queue editor now has a shortcut: Meta+U.
+    * Removed the redo action from the playlist toolbar to make it less wide.
+    * Made some playlist toolbar actions collapse into a menu button for use on
+      small screens.
+    * Removed the statusbar. Moved progress info & messages to the Media
+      Sources dock.
+    * Removed the preview button and checkbox from the organize collection
+      dialog.
+    * General user interface cleanup (addition of browser widget backgrounds,
+      etc.)
+    * Removed the add button in the context toolbar. Applet explorer is opened
+      on config.
+    * Easier to understand Dynamic playlists
+    * Made Amarok depend ffmpeg-0.6 or newer.
+    * Use KImageCache if possible (kdelibs 4.5.0 and later), which should
+      reduce the number of cache-related crashes.
+   Bugfixes:
+    * Make the Coverbling applet build again. (Patch by Manu Wagner)
+    * Don't let the album applet freeze Amarok for ages on track change.
+      (bko#260810, bko#277021)
+    * Fixed cover fetching from Google Images. (bko#275265)
+    * Fixed a crash in the equalizer dialog when selecting "Off".
+    * Fix finalization of track copy process to media device collections.
+      (bko#238912) Patch by Tommaso Falchi Delitala.
+    * Fixed crash on MusicBrainz search. (bko#274956)
+    * Avoid crash in ContextView when accessing Plasma::Applet::view().
+      (bko#258741)
+    * Fixed playlist tooltip getting too tall for multiline comments.
+     (bko#256038)
+    * Made equalizer keywords (dB,kHz,...) translatable. (bko#263572)
+    * Made equalizer preset names translatable. (bko#263596)
+    * Fixed runtime error reporting of scripts. (bko#207409)
+    * Fixed "Happy" moodbar theme. (bko#264432)
+    * Fixed crash for invalid scripts trying to be stopped by the manager.
+      (bko#268917)
+    * Fixed collection menu items ordering. (bko#207007)
+    * Fixed top level podcast location setting. (bko#263736)
+    * Fixed double-clicking in collection using left-handed mouse setting.
+      (bko#272360)
+- Removed remove-plasma-service.patch that fixed build with KDE 4.7 rc2 (fixed
+  upstream).
+- Rebased ksuseinstall.diff patch to apply cleanly.
+
+-------------------------------------------------------------------
+Thu Jul 21 11:13:22 UTC 2011 - idoenmez@suse.de
+
+- Enable libmygpo-qt. Remove deprecated conditions
+
+-------------------------------------------------------------------
+Tue May 10 10:58:56 UTC 2011 - wstephenson@novell.com
+
+- Amarok 2.4.1:
+  - Features:
+    * Remote NFS & SMB/CIFS collections now work! (bko#249760, bko#232976, bko#171213, bko#187692)
+    * New "Preview" feature for the Organize Collection dialog
+    * String filtering in the albums applet.
+    * Ability to change text alignment in the lyrics applet.
+    * gpodder.net Service, a Podcast Directory displaying the most used Tags from gpodder.net & the top Podcasts of these Tags
+  - Changes:
+    * The podcast directory service is now based on incremental parsing of OPML without caching in the database.
+    * Plugins can now be optionally enabled in the config dialog
+    * Script selector is moved from the menubar to the config dialog.
+
+-------------------------------------------------------------------
+Wed Apr 27 20:36:54 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Cleanup in Buildrequires: entries.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Removed amarok-devel subpackage since the package doesn't actually provides
+    any shared libraries. Also removed some *.so libraries to fix rpmlint
+    warning "devel-file-in-non-devel-package".
+  * Added "Audio" to the Categories entry of amarok.desktop file.
+  * Moved english help files in the main package.
+  * Updates in %files section.
+  * Minor other updates.
+- Removed amarok-rpmlintrc (not needed).
+- Removed amarokNoAudio.desktop from initial-preference.diff patch (since it
+  was not used).
+- Removed errmsg-mysql-embedded.diff patch (not needed for openSUSE > 11.0).
+- Removed no_buildtime.patch and added a fix inside the spec file.
+
+-------------------------------------------------------------------
+Sat Mar 19 10:12:18 UTC 2011 - wstephenson@novell.com
+
+- Update to 2.4.0.90 (2.4.1beta1)
+- Remove amarok-e1aa6497-missing-toolbar-fresh-start.diff (uptream)
+
+-------------------------------------------------------------------
+Tue Feb 15 20:48:46 UTC 2011 - ctrippe@gmx.net
+
+- Support for the changed mimetype for flac files (bnc#671581)
+
+-------------------------------------------------------------------
+Tue Feb  8 20:50:42 UTC 2011 - ctrippe@gmx.net
+
+- Recommend the amarok-lang package (bnc#661855)
+
+-------------------------------------------------------------------
+Sat Jan 29 17:01:51 UTC 2011 - wstephenson@novell.com
+
+- Fix missing main toolbar on first run (bko#248690)
+
+-------------------------------------------------------------------
+Tue Jan 11 18:24:11 UTC 2011 - wstephenson@novell.com
+
+- Update to 2.4.0
+  * New splashscreen
+  * Playdar collection type disabled pending bug fixes
+  * Fixed broken radio stream URLs
+  * Fix crash on copying tracks between collections (bko#261364)
+  * Fix fetching of script data (bko#261839)
+  * Leave pending files in case of conflicts or errors while moving
+    tracks (bko#257739)
+  * Fix issue with UMS Collection that made amarok delete original
+    track instead of newly copied one. (bko#238915)
+  * Fixed issue with Audio CDs that do not provide CDDB information.
+    Patch by Andriy Gapon <avg@icyb.net.ua>. (bko#257818)
+  * Fixed issue with the Organize Files Dialog that prevented
+    presets from being loaded when in advanced mode. Patch by
+    Philipp Schmidt <philschmidt@gmx.net>.  (bko#255325)
+    on the network.
+
+-------------------------------------------------------------------
+Sat Jan  1 10:24:14 UTC 2011 - rwooninck@opensuse.org
+
+- Changed the patchfile for the embedded mysql server (bnc#661950)
+
+-------------------------------------------------------------------
+Mon Dec 13 11:02:51 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 2.3.90 (2.4 Beta 1)
+  New Features:
+    * New UPnP Collection detects and plays media on UPnP devices
+    * Mass-tagging UI using Musicbrainz
+    * The ability to use iPod Touch 3G and possibly newer devices
+    * A new applet for guitar and bass tab information
+    * A map and calendar view for the upcoming events applet
+    * A new Playdar collection that lets you listen to music
+      provided by a local Playdar service
+    * Transcoding: Now you can convert tracks from one file format
+      to another when copying from the file browser to the local
+      collection. We will expand this to media devices in future
+      releases.
+    * Shiny new collection scanner, rewritten from scratch - it
+      should now detect compilations in a more robust way
+    * Writing back to tags: there is now an option to have Amarok
+      write statistics and album covers to the files directly, so
+      you can save your play counts and tags in the files themselves.
+
+-------------------------------------------------------------------
+Fri Sep 24 14:53:35 UTC 2010 - wstephenson@novell.com
+
+- Fix invalid characters in id3 tags ending up in database due to
+  new tag processing code (bnc#251762)
+
+-------------------------------------------------------------------
+Fri Sep 24 07:27:59 UTC 2010 - coolo@novell.com
+
+- update to 2.3.2
+   * Bumped libMTP dependency to version 1.0.0.
+   * Improved response of current track and albums applet on data updates.
+   * Use system date/time format for default name when saving user playlists.
+   * Many bug fixes
+
+-------------------------------------------------------------------
+Wed Aug 25 13:10:54 UTC 2010 - coolo@novell.com
+
+- fix build in reordering includes for qt and gdk (later uses
+  "signals")
+
+-------------------------------------------------------------------
+Fri Aug 13 10:02:33 CEST 2010 - vuntz@opensuse.org
+
+- Drop unneeded libnjb-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Jul 17 11:14:57 UTC 2010 - reddwarf@opensuse.org
+
+- Remove optional libmp4v2-devel dependency. Not needed anymore.
+
+-------------------------------------------------------------------
+Fri Jun 25 10:18:54 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 2.3.1 Final
+  * Automated Playlist Generator
+  * New Applets for Context View (Upcoming Events & Similar Artists)
+  * Many improvements for Cover Fetching
+  * support for the new System Tray Protocol
+  * See http://amarok.kde.org/en/releases/2.3.1
+
+-------------------------------------------------------------------
+Fri Jun 25 09:31:43 UTC 2010 - beineri@opensuse.org
+
+- fix build for <11.3
+
+-------------------------------------------------------------------
+Mon Jun 21 20:50:56 UTC 2010 - cmorve69@yahoo.es
+
+- Make it the default media player ONLY for audio files
+
+-------------------------------------------------------------------
+Thu May 13 12:34:13 UTC 2010 - llunak@novell.com
+
+- increase initial preference to be used for audio files
+  instead of Kaffeine (bnc#605522)
+
+-------------------------------------------------------------------
+Thu Apr  1 15:51:44 UTC 2010 - llunak@novell.com
+
+- support for on-demand codecs install using ksuseinstall
+
+-------------------------------------------------------------------
+Thu Mar 25 11:20:47 UTC 2010 - tittiatcoke@gmail.com
+
+- Include patch for Info Applet to prevent crash
+  (bko#229756, bko#227639)
+
+-------------------------------------------------------------------
+Thu Mar 11 07:46:50 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 2.3.0
+  * Podcast channels and episodes can be dragged to add them to other
+    providers. (bko#195704)
+  * Track action buttons are now available in the label for the current track.
+  * Bookmark button is now available in the Current Track applet.
+  * When a podcast episode is no longer shown because of the episode limit,
+      the downloaded file is also deleted from disk. (bko#227674)
+  * Volume Dial: Gradient indicator and pointing cursor hint above the dial ring
+  * The visibility of columns in the new Files Browser is now configurable.
+  * Set Media Keys as default global shortcuts for playlist navigation.
+      (bko#194259)
+  * for detailed changes, see http://amarok.kde.org/en/releases/2.3 or
+    the included ChangeLog
+
+-------------------------------------------------------------------
+Sun Feb 14 21:32:51 UTC 2010 - wstephenson@novell.com
+
+- update to 2.3 Beta 1
+  * Improved podcast UI
+  * New main toolbar
+  * Use USB Mass Storage devices as collections automatically
+  * Dynamic Collection
+  * Last.fm interactive cover search
+  * for detailed changes, see http://amarok.kde.org/en/releases/2.3/beta/1
+
+-------------------------------------------------------------------
+Mon Feb  1 15:28:31 CET 2010 - vuntz@opensuse.org
+
+- Remove gdk-pixbuf-devel BuildRequires: amarok needs gdk-pixbuf2
+  which is in gtk2-devel.
+
+-------------------------------------------------------------------
+Tue Jan 12 08:13:36 UTC 2010 - tittiatcoke@gmail.com
+
+- included the patch to prevent Amarok from a crash during scanning.
+
+-------------------------------------------------------------------
+Sat Jan  9 15:50:00 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 2.2.2
+  * see for detailed changelog : http://amarok.kde.org/en/releases/2.2.2
+  * The inline playlist editor now also allows resizing of auto sized items
+    that are invisible because fixed sized items already use up 100% width.
+  * Enhanced the playlist sorting breadcrumb items to separately highlight
+    the order inversion arrow on hover. (bko#209011)
+  * The automatic character set detection for tags has been disabled; it
+    caused too many problems with legitimate UTF-8 tags. It can be
+    re-enabled from Settings->Collection. (Many BRs)
+  * Dynamic mode is now automatically disabled when replacing the playlist.
+    (bko#214759)
+  * The collection search filter now also searches for file names as a
+    fallback. Patch by Andreas Hartmetz <ahartmetz@gmail.com>.
+  * Fixed loading MusicBrainz-tagger tracks in dynamic playlists (bko#219902)
+  * Fixed crash when trying to play a media device track whose collection
+    no longer exists (bko#210477)
+  * Other bugfixes
+
+
+-------------------------------------------------------------------
+Thu Dec 17 10:27:44 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to 2.2.2 Beta 1
+  * See for detailed changelog : http://amarok.kde.org/en/releases/2.2.2/beta/1
+  * Tracks in Albums applet are now sorted by track number.
+  * New menu to add applets to the context view.
+  * Moved the "Playlist Layout" button into the main menu, as the playlist
+    toolbar was becoming too crowded.
+  * New interface for repeat and random playback modes. Interface now correctly
+    represents the actual behaviour (ony one mode can be active at any time)
+    and is accessible directly from the playlist toolbar.
+  * Usability: Added tooltips all over the place, improved existing ones.
+  * Improved automatic resizing of lyrics and suggestions in the context applet.
+
+-------------------------------------------------------------------
+Sun Nov 29 08:53:42 UTC 2009 - cmorve69@yahoo.es
+
+- Patch to remove build time from code
+
+-------------------------------------------------------------------
+Mon Nov 16 12:44:55 UTC 2009 - tittiatcoke@gmail.com
+
+- Added fix for the default playlist layout
+
+-------------------------------------------------------------------
+Sat Nov 14 15:55:11 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to 2.2.1
+  - Removed patch to handle x-vorbis+ogg (included upstream)
+  * Podcasts will only be automatically updated when there is a network
+      connection (using Solid)
+  * The SMB (Samba) protocol is now supported in the playlist. Patch by
+      Steven van der Vegt <s.vandervegt@student.utwente.nl>. (bko#178691)
+  * CTRL+SHIFT+F toggles full screen mode. Patch by Rick W. Chen
+      <stuffcorpse@archlinux.us>
+  * Playlist files can be droped on the "Saved Playlist" category to
+      import them into Amarok. (bko#193476)
+  * Middle-clicking an item in the Collection Browser appends it to the
+      playlist. Patch by Felix Geyer <debfx-kde@fobos.de>. (bko#197423)
+  * Added feature for removing duplicates from the playlist. Patch by John
+      Atkinson <john@fauxnetic.co.uk>. (bko#200445)
+  * Allow changing of playlist layout item sizes using the inline editor.
+  * Initial KNotify support.
+  * Show total playlist file size in a tooltip when hovering over the total
+      play list time. (bko#91640)
+  * Implemented "Jump To". Press Ctrl+J to focus the playlist search.
+    (bko#92400)
+  * Made Love/Skip/Ban/Enqueue/Dequeue available in Shortcuts configuration
+      dialog. (bko#136232, bko#187542)
+  * Many more fixes and changes. See ChangeLog for more information
+
+-------------------------------------------------------------------
+Wed Oct 14 17:40:03 UTC 2009 - saigkill@opensuse.org
+
+- Tweaked the Package in -devel
+- fixed some RPMLint Errors
+- added rpmlintrc
+- reworked handle-x-vorbis+ogg.diff (New created with quilt)
+
+-------------------------------------------------------------------
+Fri Oct  9 22:20:37 UTC 2009 - saigkill@opensuse.org
+
+- added handle-x-vorbis+ogg.diff (Based on an Proposal on the amarok-users List.)
+
+-------------------------------------------------------------------
+Wed Sep 30 10:17:02 UTC 2009 - tittiatcoke@gmail.com
+
+- update to 2.2.0 final: several bugfixes and
+   * The MusicBrainz ID of a track is now scrobbled to Last.fm, if it exists
+     (kde#122281)
+   * More collection scanning speedups.
+   * Replay gain works on the Phonon Xine backend.
+   * Fadeout on track end works again.
+   * Fixed regression where the last album to be scanned would not have its
+     cover picked up by the collection scanner.
+   * Sorting by track length in the playlist is now possible (kde#208689)
+   * Fixed track bookmarks not immediately getting removed from progress bar
+     when they are deleted from the bookmark manager.
+   * Fixed new track bookmarks not getting shown in the progress bar
+     immediately.
+   * Fixed track bookmarks not getting correctly repainted when resizing
+     progress bar. (kde#207091)
+   * Correct a logic bug during incremental scanning that could cause the
+     wrong tracks to be removed from the collection, requiring a full rescan.
+     Should fix bug 208403 and likely multiple others. (kde#208403)
+   * "Configure Amarok" dialog takes up less space, making it suitable for
+     small screens.
+   * Fixed photos applet not working after resuming playback. (kde#206829)
+   * Fixed regression where the genre field in the Tag Dialog would show the
+     composer of the track. (kde#208255)
+   * Don't reshuffle the playlist every time the active track changes when
+   * using a random sort order.
+   * Fixed the Various Artist node sometimes being shown in the Collection
+     Browser with nothing underneath it (or an empty "Unknown" album).
+   * Fixed some tracks' tags not being saved correctly to the database.
+     (kde#202021)
+
+-------------------------------------------------------------------
+Tue Sep 22 18:52:02 UTC 2009 - beineri@opensuse.org
+
+- update to 2.2 RC 1: several bugfixes and
+   * Import itpc:// podcast urls
+   * Mark podcast episode as not-new when starting to play it
+   * Reintroduced indicator icons for new podcast episodes
+   * Added "subscribe" command line switch to add a podcast channel
+   * Removed Shoutcast service due to technical & other issues
+   * Made audio CDs respect "Automatically retrieve cover art" setting.
+   * TagLib 1.6 built with ASF & MP4 support is now required. This
+     release fixes many, many bugs and contains new format support.
+   * TagLib-Extras 1.0.0 is now required. This release is compatible
+     with the new TagLib 1.6 release.
+   * Removed non working menu entry "rename" from the Bookmark Manager.
+     Functionality is no longer needed as inline renaming is possible.
+   * Improvements for volume widget in ToolbarNG.
+   * Added "Lock layout" option to the main window's context menu.
+
+-------------------------------------------------------------------
+Tue Sep 15 06:00:25 UTC 2009 - beineri@opensuse.org
+
+- Update to 2.2 Beta 2: several bugfixes and
+   * Added DBus methods Forward and Backward for relative seeking
+     and PlayPause for toggling pause state
+   * Grouping mode has been merged into the playlist layouts so each
+     layout sets its own. The default grouping mode for layout files
+     that do not have this value explicitly set is "Album".
+
+-------------------------------------------------------------------
+Sun Sep 13 12:43:36 UTC 2009 - cmorve69@yahoo.es
+
+- update LyricWiki fix
+
+-------------------------------------------------------------------
+Thu Aug 27 11:15:30 UTC 2009 - beineri@opensuse.org
+
+- tweak it to keep building against older distros
+
+-------------------------------------------------------------------
+Wed Aug 26 17:31:45 CEST 2009 - mhrusecky@suse.cz
+
+- using up to date errmsg.sys (bnc#528312)
+
+-------------------------------------------------------------------
+Tue Aug 18 07:29:31 CEST 2009 - beineri@opensuse.org
+
+- fix playing of filenames with spaces for gstreamer (bnc#525286)
+
+-------------------------------------------------------------------
+Wed Aug  5 14:42:46 UTC 2009 - cmorve69@yahoo.es
+
+- Backport upstream fix so LyricWiki works again
+
+-------------------------------------------------------------------
+Sun Jul 19 09:26:56 CEST 2009 - beineri@opensuse.org
+
+- update build requires after mysql changes
+
+-------------------------------------------------------------------
+Sat Jun 13 09:58:56 CEST 2009 - beineri@opensuse.org
+
+- update to 2.1.1: several bugfixes and
+   * Option to hide the context view.
+   * Applets are now laid out according to two criteria: either
+     fixed height or flowing to fill the CV. No more slivers of
+     applets visible at the bottom.
+   * Load contents of an m3u file if specified when running amarok
+     from the command line. File must be local.
+   * Added large source emblem in current track applet.
+   * Make it possible to delete multiple selected playlists at once
+     from the "My Playlists" category in the playlist browser.
+   * Show info box in CV if no applets are visible.
+
+-------------------------------------------------------------------
+Thu Jun  4 09:36:31 CEST 2009 - beineri@opensuse.org
+
+- don't require errmsg.sys from mysql package (bnc#509815)
+
+-------------------------------------------------------------------
+Sat May 30 08:13:34 CEST 2009 - beineri@opensuse.org
+
+- update to 2.1 release: several bugfixes and
+    * Removed the "Amarok Handbook" menu entry until the handbook
+      actually exists (work in progress).
+    * Single-click/double-click behavior in the Collection Browser
+      now follows the preference set in KDE System Settings.
+    * Automatically fetch database for Jamendo/Opml on first load.
+    * Escape clears most search filters throughout Amarok.
+    * Tracks of saved playlists are again shown in playlistbrowser.
+      They can be added and sorted using drag and drop.
+
+-------------------------------------------------------------------
+Wed May 20 12:12:22 CEST 2009 - beineri@opensuse.org
+
+- require amarok-lang
+
+-------------------------------------------------------------------
+Mon May 18 19:33:57 CEST 2009 - cmorve69@yahoo.es
+
+- make mp4 support a build option
+
+----------------------------------------------------------------------------------
+Mon May 11 11:25:01 CEST 2009 - beineri@opensuse.org
+
+- update to 2.1 Beta 2: several bugfixes and
+   * New Script method to get current track time in milliseconds.
+   * Pressing the return key in the playlist search activates the
+     selected result.
+   * Pressing escape key in playlist search clears its contents.
+   * Optimizations to the insertion and removal of large numbers
+     of tracks from the playlist. Especially clearing a large
+     playlist is now about 300 times faster.
+   * Always scroll to newly inserted tracks in the Playlist.
+   * When removing upcoming tracks from an active dynamic playlist,
+     add a simmilar number of new ones to keep if from "drying up".
+   * Some action cleanup in the playlist context menu.
+   * When clearing the playlist, also reset the search/filter text.
+   * Podcast titles are stripped of unnecessary whitespace.
+
+-------------------------------------------------------------------
+Tue Apr 21 10:18:16 CEST 2009 - dmueller@suse.de
+
+- kde4-amarok -> amarok
+
+-------------------------------------------------------------------
+Thu Apr 16 13:21:52 CEST 2009 - shrikantkhare@gmail.com
+
+- update to version 2.0.90.svn954151.20090415
+
+- FEATURES:
+  * New Script method to get current track time in milliseconds. (bko#177073)
+
+- BUGFIXES:
+  * Don't fetch all coverless albums automatically when opening the Cover
+    Manager. (bko#176170)
+  * Podcast episodes are loaded correctly when restoring a playlist on
+    startup. This means the local file will be played if downloaded.
+    (bko#189328)
+  * Next button in the main toolbar no longer has a clipped shadow.
+    (bko#176031)
+  * Fixed slider mouse events in RTL layouts. (bko#185465)
+  * Detect iPhones as iPods. (bko#184744)
+  * Clicking on "Stop after current track" disables the flag if it is
+    already enabled.
+  * Show a track marker when the "stop after current track" flag is set.
+    (bko#185888)
+  * Don't flash the OSD when opening the settings dialog. Patch thanks
+    to Andreas Heider <andreas@meetr.de>.
+  * Podcast file formats are correctly displayed.
+  * Don't crash when pressing Delete on empty playlist. (bko#189021)
+
+- VERSION 2.1beta1
+  * The collection scanner is now able to be run in batch mode, allowing for
+    automated scans of both full and incremental types.  In addition, all
+    graphical dependencies have been removed, allowing for headless, remote
+    runs of collection scans.  A wiki page detailing how to do this will be
+    made available shortly.
+  * Covers are shown for iPod collections.
+  * Phonon multimedia system can be configured directly from Amarok.
+  * Cover art can now be disabled in the collection browser.
+  * Scrobble tracks from streams that have title and artist metadata
+  * Add support for showing a stream with multiple alternative servers as a
+    single item in the playlist and add GUI for manually selecting prefered
+    source.
+  * Ampache service: Add support for Ampache 3.5.x as well as 3.4.4.
+  * Auto timecoding (position bookmarking) now exists for tracks with length
+    greater than 10 minutes. (bko#148740)
+  * Add a animated "loading..." screen when dynamically fetching info about
+    an item to show in the service info applet.
+  * Deleting tracks from the local collection is now possible. (bko#170999)
+  * Add a filter-by-date-added to the collection browser. Use added:"today"
+    or added:<2m2d
+  * Add a tab bar in the current track applet for showing also the favorite
+    tracks in the collection.
+  * Add an advanced but user friendly playlist layout editor allowing users
+    to modify and create their own playlist layouts.
+  * The Playlist can now render itself using layouts defined in XML. A
+    number of default layouts are included and can be switched between.
+  * Option to automatically scroll the playlist to the active item on track
+    change.
+  * New QtScript methods for accessing the playlist:
+    Amarok.Playlist.selectedFilenames() & Amarok.Playlist.selectedIndizes().
+	Patch by Mathias Panzenböck <grosser.meister.morti@gmx.net>.
+  * New QtScript method for the Track prototype: imagePixmap( size ). Returns
+    a QPixmap of the given size, or the default if the size argument isn't
+    supplied.
+  * New QtScript class 'DataDownloader' that returns results as a QByteArray
+    instead of a string. Needed for image downloads.
+  * Cue Sheets are now supported as in Amarok 1.4, plus each cue entry
+    (usually a track) will be displayed as a timecode on the Progress Bar
+	with a nice onMouseOver popup.
+  * Ipod support now uses/depends on libgpod 0.7.0
+  * Bookmarking specific positions within local tracks and downloaded local
+    podcast episodes, with a nice visual indicator on the progress bar.
+  * When the last.fm service is active, any track, from any collection or
+    service, can be loved from the browser , and there will always be a love
+    button for the currently playing track, no matter the source.
+  * Dbus methods added: VolumeUp, VolumeDown and Mute. (bko#181130)
+  * The feed url is displayed in the config dialog of a podcast channel.
+    By left clicking in the url it's copied to the clipboard. (bko#180853)
+  * The Playlist Browser can now show playlists from multiple sources,
+    including media devices.
+  * The last.fm service now allows for the playing of all types of user
+    stations (personal, loved tracks, recommendations, and neighborhood).
+  * Arbitrary Tags can now be played in the last.fm service. (bko#139802)
+  * Replay Gain support for most file formats that Amarok can read tags from.
+    Reading Replay Gain tags from MP4 files requires libMP4v2.  Musepack
+    (MPC) files are unsupported due to a limitation of TagLib.
+  * Amarok urls. Amarok can now load and generate "amarok urls" that allows
+    any "view" to be bookmarked and later retrieved. A protocol handler is
+    also installed that will launch amarok into the correct state, or make
+    amarok show the correct view if already running if such a url is
+    activated system wide.
+  * Customizable playlist layouts. The playlist is now rendered according to
+    an xml layout, allowing the playlist to assume a variety of different
+    looks and supply customizable information.
+  * Album cover art can be accessed via the scripting API. Patch thanks to
+    Simon Esneault <simon.esneault@gmail.com>. (bko#179732)
+  * New vertical Context View layout.
+  * New applet toolbar in the Context View to arrange, select, and add applets.
+
+-------------------------------------------------------------------
+Thu Apr  9 13:21:52 CEST 2009 - rhafer@suse.de
+
+- included upstream fix for broken last.fm authentication (kde#188678)
+
+-------------------------------------------------------------------
+Fri Mar  6 09:46:03 CET 2009 - wstephenson@suse.de
+
+- update to 2.0.2
+    * Show a statusbar message when loving a lastfm track.
+    * Show error message when Wikipedia information cannot be retrieved.
+    * Fix showing of book information from the LibriVox service.
+    * Don't crash if a script has uncaught exceptions.
+    * Open ogg files in Amarok when using Dolphin and other file
+      managers. Patch thanks to Lubos Lunak. (kde#180155)
+    * Fix podcast episodes not ordered right because of incorrect
+      parsing of pubdate. (kde#181338)
+    * Fix crash in tagdialog when editing tracks without an artist.
+      (kde#183180)
+    * Statistics were not calculated properly in all instances.
+      (kde#182025)
+    * Compilation fixes on Open Solaris.
+    * Trim URL before adding a new podcast.
+    * Add Ok button to the podcast configuration dialog to improve usability.
+     (kde#181339)
+    * Add tooltips to now playing widget icons.
+    * Fix not possible to download episodes from newly added podcast channel.
+      (kde#180851)
+
+-------------------------------------------------------------------
+Mon Mar  2 21:44:55 CET 2009 - coolo@suse.de
+
+- compile with gcc 4.4
+
+-------------------------------------------------------------------
+Sat Jan 10 09:00:50 CET 2009 - stbinner@suse.de
+
+- update to 2.0.0.1: fix possible buffer overflows when parsing
+  Audible .aa files (bnc#465098)
+
+-------------------------------------------------------------------
+Fri Jan  9 17:58:43 CET 2009 - llunak@suse.cz
+
+- add more variants of ogg mimetypes to amarok.desktop (bnc#438718)
+
+-------------------------------------------------------------------
+Tue Jan  6 18:59:19 CET 2009 - stbinner@suse.de
+
+- update to 2.0.1
+   * Add advanced, configurable, searching and filtering to playlist.
+   * Add "Stop after track" option to the playlist menu.
+   * Queue track functionality has returned.
+   * Add automatic recovery option to MySQL embedded server.
+   * Greatly improved Librivox.org service script. It now works for
+     all books, and dynamically fetches a summary of each book that
+     is shown in the service info applet. The script now also has a
+     propper icon in the service browser and its own emblem and
+     default "album" cover for books.
+   * Sorting collection by Composer is now possible.
+   * Service scripts can now dynamically fetch context info when
+     items are selected (info can still be applied statically to
+     each item as well).
+   * Album items from a service script can now have custom covers.
+   * Items from a service script can now have a custom emblem.
+   * Service scripts can now set custom icons for the service browser.
+   * Add simple filtering to the service browser.
+   * Podcast channels are automatically refreshed once per hour if
+     autoscan is enabled.
+
+-------------------------------------------------------------------
+Wed Dec 31 17:47:28 CET 2008 - stbinner@suse.de
+
+- gdkpixbuf is required for pod support
+
+-------------------------------------------------------------------
+Tue Dec 30 22:18:33 CET 2008 - stbinner@suse.de
+
+- don't require errmsg.sys from mysql package (bnc#450318)
+
+-------------------------------------------------------------------
+Mon Dec 15 17:00:19 CET 2008 - dmueller@suse.de
+
+- add missing requirement on qt4-sql-sqlite
+- use mysql embedded instead of mysql server
+
+-------------------------------------------------------------------
+Sun Dec 14 20:38:28 CET 2008 - meissner@suse.de
+
+- fixed a crash with MTP devices without sufficient permissions.
+  bnc#457931
+
+-------------------------------------------------------------------
+Sat Dec  6 15:44:26 CET 2008 - stbinner@suse.de
+
+- update to Amarok 2.0 final release tarball plus official patches:
+   CHANGES:
+    * Removed the KBookmarks menu in the FileBrowser because it
+      causes crashes.
+    * The Organize Collection dialog has been improved.
+    * Last.Fm service now uses KIO for network access, respects
+      desktop proxy settings.
+
+   BUGFIXES:
+    * Fix bug that showed misplaced applets in the Context View
+      after resizing the window and changing to another containment.
+    * Don't try to squeeze text into wrongly tiny space, make the track
+      label in the tag dialog work again.
+    * Collection setup directory chooser would incorrectly set some paths as
+      disabled. Patch thanks to Ben Boeckel <MathStuf@gmail.com>.
+    * Fix shadows around the cover in the current track applet (and
+      potentially other places as well) getting progresssively darker.
+    * Don't compare Solid and libmtp's serial number to connect.
+    * Workaround a bug in the CurrentEngine class that makes the nocover image
+      look grainy in the currenttrack applet.
+    * Dragging and Dropping folders from the filebrowser into the playlist will
+      now result in the tracks being ordered correctly.
+    * Fixed deletion for downloaded podcast episodes
+    * Show artists in Cover Manager sorted alphabetically.
+    * Fix reading of windows playlists, recognise \ as directory separator.
+    * Fix crash when searching in collections.
+    * Prevent disabled MP3tunes service from being initialized on first run.
+    * Elide text properly in applet chooser widget.
+    * Fixed potential crash when playing streams.
+    * Don't show wrong metadata for Last.fm radio.
+    * Don't try to squeeze text into wrongly tiny space, make the track label
+      in the tag dialog work again.
+    * Expand applets width when a complete column has been removed.
+    * Don't try to fetch another cover if there are no more albums to fetch
+      for.
+    * Don't crash when trying to edit the details of a track without an artist
+      or album.
+
+-------------------------------------------------------------------
+Sat Nov 29 00:11:15 CET 2008 - stbinner@suse.de
+
+- update to post-RC1 snapshot tarball provided by Amarok team:
+   FEATURES:
+     * Added read/write configuration APIs for Qtscript.
+   CHANGES:
+     * Added icons to the filename scheme and organize collection dialogs.
+     * Added an OK button for the script manager.
+   BUGFIXES:
+     * Magnatune.com store: Correctly show progress info when downloading.
+     * Magnatune.com store: Fix purchase/download of wrong album being initiated
+       when selecting "Purchase" or "Download" from the playlist context menu.
+     * Fix a bug that stopping a running script crashes amarok.
+     * The context view could sometimes show the "stopped state" even when
+       a track was playing.
+     * Amarok 1.4 database importer would crash under some circumstances.
+     * Covers could not be fetched from Amazon Japan.
+     * Fix a bug that the script manager deletes wrong entry after script
+       installation.
+     * Make lyrics auto-display when applet is added while a song is playing.
+     * "Watch folders for changes" actually works now
+     * Fix a bug that caused dynamic playlists not to repopulate.
+     * Fixed potential issues with malformed XML breaking the collection scan.
+     * Focus of text fields no longer lost when changing tracks using the Next/
+       Previous buttons in tag dialog.
+     * Sort Podcasts in the right order.
+
+-------------------------------------------------------------------
+Fri Nov 21 08:49:32 CET 2008 - stbinner@suse.de
+
+- update to 1.98 (2.0 Release Candidate 1)
+  FEATURES:
+    * Users' Recommended radio is now shown in the Last.Fm Service.
+    * Playlist browser items can be deleted and renamed using the keyboard.
+    * Basic and Advanced view when editing a filename scheme are synchronized.
+    * Added delete button to Advanced view for defining a filename scheme.
+    * Importer for iTunes libraries now allows you to import your statistics
+      from iTunes.
+    * The settings dialog now remembers the page that was last used.
+    * Track information can be edited from the file browser.
+  CHANGES:
+    * Video and Last.fm applet have been disabled. They are not ready for release.
+    * Ipods and MTP devices auto-connect again for usability.
+    * Ipod Collections can now delete multiple tracks at once.
+    * User playlists added from files are now updated on collection rescans, so
+      any changes in the file is reflected in the SQL playlist.
+    * Layout refactoring in the Organize Collection dialog.
+    * Enabled Last.fm scrobbling by default when Last.fm login is supplied.
+    * Amarok now allows opening of video files again.
+    * "Show active track" has been moved from the playlist context menu to the
+      playlist toolbar.
+  BUGFIXES: too many to copy them all here :-)
+
+-------------------------------------------------------------------
+Wed Nov 12 12:11:06 CET 2008 - dmueller@suse.de
+
+- call post_install hook to update desktop translations
+
+-------------------------------------------------------------------
+Wed Nov  5 01:53:41 CET 2008 - dmueller@suse.de
+
+- use minimal-toc to fix build on ppc(64)
+
+-------------------------------------------------------------------
+Tue Nov  4 09:22:51 CET 2008 - stbinner@suse.de
+
+- update to 1.94 (2.0 Beta 3):
+   * playlist and statusbar recieved major attention
+   * database/statistics import from Amarok 1.4
+   * major overhaul of the Last.fm integration
+   * sorting by year and album in the Collection Browser is
+     possible again (small, but often requested)
+   * shortcut to jump to current track in the playlist
+   * many, many bugs squashed and stability fixes
+
+-------------------------------------------------------------------
+Thu Oct 16 15:40:56 CEST 2008 - stbinner@suse.de
+
+- split off kde4-amarok-lang package
+
+-------------------------------------------------------------------
+Mon Oct  6 10:26:42 CEST 2008 - dmueller@suse.de
+
+- update to 1.92.2 (2.0 Beta2)
+  * music database is now using mysql embedded
+  * various fixes / new features
+
+-------------------------------------------------------------------
+Tue Sep  9 11:09:59 CEST 2008 - dmueller@suse.de
+
+- fix uninitialized return value warnings
+
+-------------------------------------------------------------------
+Wed Aug 20 21:42:43 CEST 2008 - dmueller@suse.de
+
+- update to 1.90 (2.0 Beta1)
+
+-------------------------------------------------------------------
+Mon Jul 21 23:27:35 CEST 2008 - dmueller@suse.de
+
+- update to 1.86 (2.0 Alpha2)
+
+-------------------------------------------------------------------
+Thu Jul 10 01:37:08 CEST 2008 - dmueller@suse.de
+
+- update to 1.83 (2.0 Alpha1)
+
+-------------------------------------------------------------------
+Thu Jun 26 16:09:02 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.84.svn824686
+
+-------------------------------------------------------------------
+Tue Jun 24 17:37:03 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81.svn823998
+
+-------------------------------------------------------------------
+Tue Jun  3 15:33:43 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81.svn816194
+
+-------------------------------------------------------------------
+Thu May 15 21:13:32 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.74.svn808129
+
+-------------------------------------------------------------------
+Wed May  7 22:38:24 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.73.svn805196
+
+-------------------------------------------------------------------
+Thu Apr 24 18:35:57 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.71.svn800684
+
+-------------------------------------------------------------------
+Fri Apr 18 16:48:15 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.69.svn798537
+
+-------------------------------------------------------------------
+Wed Apr  2 17:56:56 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.68.svn792936
+
+-------------------------------------------------------------------
+Thu Feb 14 23:45:25 CET 2008 - dmueller@suse.de
+
+- update to 4.0.62.svn775117
+
+-------------------------------------------------------------------
+Wed Nov 28 13:13:42 CET 2007 - dmueller@suse.de
+
+- update to 3.96.0.svn742626
+
+-------------------------------------------------------------------
+Thu Nov  1 20:42:20 CET 2007 - dmueller@suse.de
+
+- update to 3.95.0.svn731749
+

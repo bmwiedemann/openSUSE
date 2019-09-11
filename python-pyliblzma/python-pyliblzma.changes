@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Jul 26 12:29:57 UTC 2018 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use python singlespec
+- Drop useless removal of shebang
+- Reduce duplicities
+- Drop doc subpackage
+
+-------------------------------------------------------------------
+Thu Dec 17 14:52:37 UTC 2015 - rjschwei@suse.com
+
+- Fix build for SLE_11_SP{3,4}
+  + In SLE 11 the build setup cannot differentiate between a noarch sub
+    package and arch dependent package. All packages must be either
+    arch dependent or noarch. Since the main package is arch dependent
+    the doc package also needs to be arch dependent for SLE 11 builds
+
+-------------------------------------------------------------------
+Mon Sep 14 14:51:01 UTC 2015 - ms@suse.com
+
+- Package required in SLE12 due to fate#319400
+
+-------------------------------------------------------------------
+Mon Jun  8 10:06:33 UTC 2015 - nemysis@gmx.ch
+
+- Modernize spec
+- Use %{oname} instead of pyliblzma
+- Use %{module} instead of liblzma
+- Change Summary
+- Change license GNU General Public License version 3 (GPL v3) to LGPL-3.0
+- Change URL
+- Split out doc and add doc into subpackages
+- Change Description
+- Add sed, fix Shebang
+- Use right files name instead of files.lst
+
+-------------------------------------------------------------------
+Tue Aug 10 17:12:46 UTC 2010 - pascal.bleser@opensuse.org
+
+- require xz-devel, as anything else is too old to build properly anyway
+
+-------------------------------------------------------------------
+Tue Aug 10 06:13:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.5.3)
+

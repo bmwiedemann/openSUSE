@@ -1,0 +1,1144 @@
+From: Yavor Doganov <yavor@gnu.org>
+Date: Fri, 12 Oct 2018 16:18:55 +0300
+Subject: stop using libgnome(ui)
+
+Fix crashes when (re)moving dictionaries (LP: #382068).
+Fix runtime warnings (GtkSpinButton).
+
+Bug-Ubuntu: https://launchpad.net/bugs/382068
+Bug-Debian: https://bugs.debian.org/868422
+---
+ configure.in       |   2 +-
+ data/Makefile.am   |   2 +-
+ data/worddic.glade | 169 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ po/POTFILES.in     |   1 +
+ src/conf.c         |   2 +-
+ src/dicfile.c      |   3 +-
+ src/gjiten.c       | 120 +++++++++++++------------------------
+ src/kanjidic.c     | 106 +++++----------------------------
+ src/pref.c         |  91 +++++++++++++++++------------
+ src/worddic.c      |  98 +++++++++----------------------
+ 10 files changed, 308 insertions(+), 286 deletions(-)
+ create mode 100644 data/worddic.glade
+
+Index: gjiten-2.6/configure.in
+===================================================================
+--- gjiten-2.6.orig/configure.in
++++ gjiten-2.6/configure.in
+@@ -20,7 +20,7 @@ AC_PROG_INTLTOOL([0.22])
+ AC_PATH_PROG([GCONFTOOL], [gconftool-2])
+ 
+ dnl GNOME_PLATFORM_GNOME_2(yes, force)
+-PKG_CHECK_MODULES(GJITEN, libgnome-2.0 >= 2.2.0 libgnomeui-2.0 >= 2.2.0 libglade-2.0 gconf-2.0)
++PKG_CHECK_MODULES(GJITEN, gtk+-2.0 >= 2.14 gmodule-export-2.0 libglade-2.0 gconf-2.0)
+ AM_GCONF_SOURCE_2
+ 
+ # Checks for header files.
+Index: gjiten-2.6/data/Makefile.am
+===================================================================
+--- gjiten-2.6.orig/data/Makefile.am
++++ gjiten-2.6/data/Makefile.am
+@@ -1,7 +1,7 @@
+ pkgdata_DATA = vconj.utf8 radkfile.utf8
+ 
+ gladedir	= $(pkgdatadir)
+-glade_DATA	= gjiten-settings.glade
++glade_DATA	= gjiten-settings.glade worddic.glade
+ 
+ schemasdir       = $(GCONF_SCHEMA_FILE_DIR)
+ schemas_in_files = gjiten.schemas.in gjiten-dicfiles.schemas.in
+Index: gjiten-2.6/data/worddic.glade
+===================================================================
+--- /dev/null
++++ gjiten-2.6/data/worddic.glade
+@@ -0,0 +1,169 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<interface>
++  <requires lib="gtk+" version="2.24"/>
++  <!-- interface-naming-policy project-wide -->
++  <object class="GtkAccelGroup" id="accelgroup"/>
++  <object class="GtkWindow" id="window">
++    <property name="can_focus">False</property>
++    <child>
++      <object class="GtkVBox" id="vbox">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <child>
++          <object class="GtkMenuBar" id="menubar">
++            <property name="visible">True</property>
++            <property name="can_focus">False</property>
++            <child>
++              <object class="GtkMenuItem" id="menuitem1">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="label" translatable="yes">_File</property>
++                <property name="use_underline">True</property>
++                <child type="submenu">
++                  <object class="GtkMenu" id="menu1">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="accel_group">accelgroup</property>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem5">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">_Quit</property>
++                        <property name="use_underline">True</property>
++                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
++                        <signal name="activate" handler="worddic_destroy_window" swapped="no"/>
++                      </object>
++                    </child>
++                  </object>
++                </child>
++              </object>
++            </child>
++            <child>
++              <object class="GtkMenuItem" id="menuitem2">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="label" translatable="yes">_Edit</property>
++                <property name="use_underline">True</property>
++                <child type="submenu">
++                  <object class="GtkMenu" id="menu2">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="accel_group">accelgroup</property>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem6">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">_Copy</property>
++                        <property name="use_underline">True</property>
++                        <accelerator key="c" signal="activate" modifiers="GDK_CONTROL_MASK"/>
++                        <signal name="activate" handler="worddic_copy" swapped="no"/>
++                      </object>
++                    </child>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem7">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">_Paste</property>
++                        <property name="use_underline">True</property>
++                        <accelerator key="v" signal="activate" modifiers="GDK_CONTROL_MASK"/>
++                        <signal name="activate" handler="worddic_paste" swapped="no"/>
++                      </object>
++                    </child>
++                    <child>
++                      <object class="GtkSeparatorMenuItem" id="menuitem8">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                    </child>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem9">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">Prefere_nces</property>
++                        <property name="use_underline">True</property>
++                        <signal name="activate" handler="create_dialog_preferences" swapped="no"/>
++                      </object>
++                    </child>
++                  </object>
++                </child>
++              </object>
++            </child>
++            <child>
++              <object class="GtkMenuItem" id="menuitem3">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="label" translatable="yes">_Tools</property>
++                <property name="use_underline">True</property>
++                <child type="submenu">
++                  <object class="GtkMenu" id="menu5">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="accel_group">accelgroup</property>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem12">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">KanjiDic</property>
++                        <property name="use_underline">True</property>
++                        <signal name="activate" handler="kanjidic_create" swapped="no"/>
++                      </object>
++                    </child>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem10">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="label" translatable="yes">KanjiPad</property>
++                        <property name="use_underline">True</property>
++                        <signal name="activate" handler="gjiten_start_kanjipad" swapped="no"/>
++                      </object>
++                    </child>
++                  </object>
++                </child>
++              </object>
++            </child>
++            <child>
++              <object class="GtkMenuItem" id="menuitem4">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="label" translatable="yes">_Help</property>
++                <property name="use_underline">True</property>
++                <child type="submenu">
++                  <object class="GtkMenu" id="menu3">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="accel_group">accelgroup</property>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem11">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="tooltip_text" translatable="yes">Display the Gjiten Manual</property>
++                        <property name="label" translatable="yes">_Manual</property>
++                        <property name="use_underline">True</property>
++                        <signal name="activate" handler="gjiten_display_manual" swapped="no"/>
++                      </object>
++                    </child>
++                    <child>
++                      <object class="GtkMenuItem" id="menuitem13">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="tooltip_text" translatable="yes">Information about the program</property>
++                        <property name="label" translatable="yes">_About</property>
++                        <property name="use_underline">True</property>
++                        <signal name="activate" handler="gjiten_create_about" swapped="no"/>
++                      </object>
++                    </child>
++                  </object>
++                </child>
++              </object>
++            </child>
++          </object>
++          <packing>
++            <property name="expand">False</property>
++            <property name="fill">True</property>
++            <property name="position">0</property>
++          </packing>
++        </child>
++      </object>
++    </child>
++  </object>
++</interface>
+Index: gjiten-2.6/po/POTFILES.in
+===================================================================
+--- gjiten-2.6.orig/po/POTFILES.in
++++ gjiten-2.6/po/POTFILES.in
+@@ -1,4 +1,5 @@
+ data/gjiten-settings.glade
++data/worddic.glade
+ data/gjiten.schemas.in
+ gnome/gjiten.desktop.in
+ src/gjiten.c
+Index: gjiten-2.6/src/conf.c
+===================================================================
+--- gjiten-2.6.orig/src/conf.c
++++ gjiten-2.6/src/conf.c
+@@ -24,7 +24,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <fcntl.h>
+-#include <libgnome/libgnome.h>
++#include <glib/gi18n.h>
+ 
+ #include "conf.h"
+ #include "constants.h"
+Index: gjiten-2.6/src/dicfile.c
+===================================================================
+--- gjiten-2.6.orig/src/dicfile.c
++++ gjiten-2.6/src/dicfile.c
+@@ -25,7 +25,8 @@
+ #  include <config.h>
+ #endif
+ 
+-#include <libgnome/libgnome.h>
++#include <glib/gi18n.h>
++#include <stdio.h>
+ #include <unistd.h>
+ #ifdef HAVE_INTTYPES_H
+ #include <inttypes.h>
+Index: gjiten-2.6/src/gjiten.c
+===================================================================
+--- gjiten-2.6.orig/src/gjiten.c
++++ gjiten-2.6/src/gjiten.c
+@@ -26,8 +26,8 @@
+ #endif
+ 
+ #include <string.h>
+-#include <libgnome/libgnome.h>
+-#include <libgnomeui/libgnomeui.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <gconf/gconf-client.h>
+ #ifdef HAVE_INTTYPES_H
+ #include <inttypes.h>
+@@ -47,11 +47,6 @@
+ 
+ GjitenApp *gjitenApp = NULL;
+ 
+-static void parse_an_arg(poptContext state,
+-												 enum poptCallbackReason reason,
+-												 const struct poptOption *opt,
+-												 const char *arg, void *data);
+-
+ /***************** VARIABLES ***********************/
+ 
+ gchar *clipboard_text = NULL;
+@@ -72,27 +67,30 @@ enum {
+   CLIP_WORD_KEY       = -5
+ };
+ 
+-/* Command line arguments via popt */
+-static struct poptOption arg_options [] = {
+-  { NULL, '\0', POPT_ARG_CALLBACK, (gpointer)parse_an_arg, 0,
+-    NULL, NULL },
++gboolean startkanjidic = FALSE;
++gboolean clip_kanji_lookup = FALSE;
++gboolean clip_word_lookup = FALSE;
++gchar *word_to_lookup = NULL;
++gchar *kanji_to_lookup = NULL;
+ 
+-  { "kanjidic", 'k', POPT_ARG_NONE, NULL, KANJIDIC_KEY,
++/* Command line arguments via popt */
++static GOptionEntry arg_options [] = {
++  { "kanjidic", 'k', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE, &startkanjidic,
+     N_("Start up Kanjidic instead of Word dictionary"), NULL },
+ 
+-  { "word-lookup", 'w', POPT_ARG_STRING, NULL, WORD_LOOKUP_KEY,
+-    N_("Look up WORD in first dictionary"), N_("WORD") },
++  { "word-lookup", 'w', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
++    &word_to_lookup, N_("Look up WORD in first dictionary"), N_("WORD") },
+ 
+-  { "kanji-lookup", 'l', POPT_ARG_STRING, NULL, KANJI_LOOKUP_KEY,
+-    N_("Look up KANJI in kanji dictionary"), N_("KANJI") },
++  { "kanji-lookup", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
++    &kanji_to_lookup, N_("Look up KANJI in kanji dictionary"), N_("KANJI") },
+ 
+-  { "clip-kanji", 'c', POPT_ARG_NONE, NULL, CLIP_KANJI_KEY,
+-    N_("Look up kanji from clipboard"), NULL },
++  { "clip-kanji", 'c', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
++    &clip_kanji_lookup, N_("Look up kanji from clipboard"), NULL },
+ 
+-  { "clip-word", 'v', POPT_ARG_NONE, NULL, CLIP_WORD_KEY,
++  { "clip-word", 'v', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE, &clip_word_lookup,
+     N_("Look up word from clipboard"), NULL },
+ 
+-  { NULL, '\0', 0, NULL, 0, NULL, NULL }
++  { NULL }
+ 
+ };
+ 
+@@ -100,35 +98,6 @@ static struct poptOption arg_options []
+ 
+ /*================ Functions ===============================================*/
+ 
+-static void parse_an_arg(poptContext state,
+-												 enum poptCallbackReason reason,
+-												 const struct poptOption *opt,
+-												 const char *arg, void *data) {
+-
+-  
+-  switch (opt->val) {
+-  case KANJIDIC_KEY:
+-    gjitenApp->conf->startkanjidic = TRUE;
+-    break;
+-  case WORD_LOOKUP_KEY:
+-    gjitenApp->conf->word_to_lookup = (gchar *)arg;
+-    break;
+-  case KANJI_LOOKUP_KEY:
+-    gjitenApp->conf->kanji_to_lookup = (gchar *)arg;
+-    break;
+-  case CLIP_KANJI_KEY:
+-    gjitenApp->conf->clip_kanji_lookup = TRUE;
+-    gjitenApp->conf->clip_word_lookup = FALSE;
+-    break;
+-  case CLIP_WORD_KEY:
+-    gjitenApp->conf->clip_word_lookup = TRUE;
+-    gjitenApp->conf->clip_kanji_lookup = FALSE;
+-    break;
+-  default:
+-    break;
+-  }
+-}
+-
+ void gjiten_clear_entry_box(gpointer entrybox) {
+   gtk_entry_set_text(GTK_ENTRY(entrybox), "");
+ }
+@@ -172,7 +141,7 @@ void gjiten_display_manual(GtkWidget *wi
+   GError *err = NULL;
+   gboolean retval = FALSE;
+ 
+-  retval = gnome_help_display("gjiten.xml", NULL, &err);
++  retval = gtk_show_uri(NULL, "ghelp:gjiten", GDK_CURRENT_TIME, &err);
+   
+   if (retval == FALSE) {
+     GtkWidget *dialog;
+@@ -200,15 +169,8 @@ void gjiten_create_about() {
+   const gchar *authors[] = { "Botond Botyanszki <boti@rocketmail.com>", NULL };
+   const gchar *documenters[] = { NULL };
+   const gchar *translator = _("TRANSLATORS! PUT YOUR NAME HERE");
+-  static GtkWidget *about = NULL;
+   GdkPixbuf *pixbuf = NULL;
+ 
+-  if (about != NULL) {
+-    gdk_window_show(about->window);
+-    gdk_window_raise(about->window);
+-    return;
+-  }
+-
+   if (pixbuf != NULL) {
+     GdkPixbuf* temp_pixbuf = NULL;
+     
+@@ -228,25 +190,24 @@ void gjiten_create_about() {
+     _("Released under the terms of the GNU GPL.\n"
+     "Check out http://gjiten.sourceforge.net for updates"), 
+   */
+-  about = gnome_about_new("gjiten", VERSION, "Copyright \xc2\xa9 1999-2005 Botond Botyanszki",
+-			  _("gjiten is a Japanese dictionary for Gnome"),
+-			  (const char **)authors,
+-			  (const char **)documenters,
+-			  (const char *)translator,
+-			  pixbuf);
++  gtk_show_about_dialog(GTK_WINDOW(gjitenApp->worddic->window),
++                        "program-name", "gjiten", "version", VERSION,
++                        "copyright",
++                        "Copyright \xc2\xa9 1999-2005 Botond Botyanszki",
++                        "comments",
++                        _("gjiten is a Japanese dictionary for Gnome"),
++                        "authors", authors, "documenters", documenters,
++                        "translator-credits", translator,
++                        "logo", pixbuf, NULL);
+ 
+-  gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
+   if (pixbuf != NULL)  g_object_unref (pixbuf);
+-
+-  g_signal_connect(G_OBJECT(about), "destroy", G_CALLBACK(gtk_widget_destroyed), &about);
+-  gtk_widget_show(about);
+-
+ }
+ 
+ 
+ 
+ /*********************** MAIN ***********************************/
+ int main (int argc, char **argv) {
++  GError *err = NULL;
+   char *icon_path = PIXMAPDIR"/jiten.png";
+  
+ 	gjitenApp = g_new0(GjitenApp, 1);
+@@ -269,17 +230,20 @@ int main (int argc, char **argv) {
+   textdomain(PACKAGE);
+ #endif
+ 
+-  gnome_program_init("gjiten", VERSION, LIBGNOMEUI_MODULE, argc, argv, 
+-										 GNOME_PARAM_POPT_TABLE, arg_options, 
+-										 GNOME_PARAM_HUMAN_READABLE_NAME, _("gjiten"), 
+-										 GNOME_PARAM_APP_DATADIR, GNOMEDATADIR,
+-										 NULL);
++	if (! gtk_init_with_args(&argc, &argv, NULL, arg_options, PACKAGE, &err))
++		g_error("Option parsing failed: %s", err->message);
++
++	gjitenApp->conf->startkanjidic = startkanjidic;
++	gjitenApp->conf->word_to_lookup = word_to_lookup;
++	gjitenApp->conf->kanji_to_lookup = kanji_to_lookup;
++	gjitenApp->conf->clip_kanji_lookup = clip_kanji_lookup;
++	gjitenApp->conf->clip_word_lookup = clip_word_lookup;
+ 
+   if (! g_file_test (icon_path, G_FILE_TEST_EXISTS)) {
+     g_warning ("Could not find %s", icon_path);
+   }
+   else {
+-    gnome_window_icon_set_default_from_file(icon_path);
++    gtk_window_set_default_icon_from_file(icon_path, NULL);
+   }
+ 
+   /* the following is for clipboard lookup. */
+@@ -311,7 +275,6 @@ int main (int argc, char **argv) {
+     }
+   }
+ 
+-  if (argc > 1) {
+     if (gjitenApp->conf->startkanjidic) {
+       kanjidic_create();
+     }
+@@ -337,10 +300,7 @@ int main (int argc, char **argv) {
+ 			}
+ 			else if (!gjitenApp->conf->clip_kanji_lookup && !gjitenApp->conf->clip_word_lookup) 
+ 				gjitenApp->worddic = worddic_create();
+-  }
+-  else {
+-    gjitenApp->worddic = worddic_create();
+-  }
++
+ 	gjiten_flush_errors();
+   gtk_main();
+   return 0;
+Index: gjiten-2.6/src/kanjidic.c
+===================================================================
+--- gjiten-2.6.orig/src/kanjidic.c
++++ gjiten-2.6/src/kanjidic.c
+@@ -28,7 +28,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <gnome.h>
++#include <glib/gi18n.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <sys/mman.h>
+@@ -63,52 +63,6 @@ KanjiDic *kanjiDic;
+ extern gchar *strginfo[];
+ extern GjitenApp *gjitenApp;
+ 
+-static GnomeUIInfo kfile_menu_uiinfo[] = {
+-  GNOMEUIINFO_MENU_EXIT_ITEM(GTK_SIGNAL_FUNC(kanjidic_close), NULL),
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo kedit_menu_uiinfo[] = {
+-  //GNOMEUIINFO_MENU_CUT_ITEM(NULL, NULL),
+-  //GNOMEUIINFO_MENU_COPY_ITEM(gjiten_copy, NULL),
+-  //GNOMEUIINFO_MENU_PASTE_ITEM(gjiten_paste, NULL),
+-  //  GNOMEUIINFO_MENU_CLEAR_ITEM(NULL, NULL),
+-  GNOMEUIINFO_SEPARATOR,
+-  GNOMEUIINFO_MENU_PREFERENCES_ITEM(create_dialog_preferences, NULL),
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo ktools_menu_uiinfo[] = {
+-  {
+-    GNOME_APP_UI_ITEM, N_("KanjiPad"), NULL, gjiten_start_kanjipad, NULL, NULL,
+-    GNOME_APP_PIXMAP_FILENAME, "kanjipad.png", 0, 0, NULL
+-  },
+-  {
+-    GNOME_APP_UI_ITEM, N_("WordDic"), NULL, worddic_create, NULL, NULL,
+-    GNOME_APP_PIXMAP_FILENAME, "kanjidic.png", 0, 0, NULL
+-  },
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo khelp_menu_uiinfo[] = {
+-	GNOMEUIINFO_HELP("gjiten"),
+-	GNOMEUIINFO_SEPARATOR,
+-	GNOMEUIINFO_MENU_ABOUT_ITEM(gjiten_create_about, NULL),
+-	GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo kmenubar_uiinfo[] = {
+-  GNOMEUIINFO_MENU_FILE_TREE(kfile_menu_uiinfo),
+-  GNOMEUIINFO_MENU_EDIT_TREE(kedit_menu_uiinfo),
+-  {
+-    GNOME_APP_UI_SUBTREE, N_("Tools"), NULL, ktools_menu_uiinfo, NULL, 
+-    NULL,  GNOME_APP_PIXMAP_NONE, N_("Tools"), 0, 0, NULL
+-  },
+-  GNOMEUIINFO_MENU_HELP_TREE(khelp_menu_uiinfo),
+-  GNOMEUIINFO_END
+-};
+-
+-
+ /* ************************************************************ */
+ void do_kdicline(gchar *kstr) {
+   char tmpstr[KBUFSIZE];
+@@ -460,7 +414,7 @@ void on_kanji_search() {
+ 	GHashTable *rad_info_hash = NULL;
+ 	KanjiInfo *kanji_info;
+ 
+-  gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji),_("Searching..."));
++  gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0, _("Searching..."));
+   kappbarmsg[0] = 0;
+ 
+   gtk_text_buffer_set_text(GTK_TEXT_BUFFER(kanjiDic->kanji_results_buffer), "", 0);
+@@ -513,7 +467,7 @@ void on_kanji_search() {
+   if ((GTK_TOGGLE_BUTTON(kanjiDic->checkb_radical)->active) && (g_utf8_strlen(radentry, -1) > 0)) {
+     findk_by_radical(radentry); 
+     if (klinklist == NULL) {
+-      gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji),_("No such kanji with this radical combination."));
++      gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0, _("No such kanji with this radical combination."));
+       return;
+     }
+   }
+@@ -521,14 +475,14 @@ void on_kanji_search() {
+   //FIND BY STROKE
+   if (GTK_TOGGLE_BUTTON(kanjiDic->checkb_stroke)->active) {
+     if ((stroke < 1) || (stroke > 30)) {
+-      	gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji),
++       gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0,
+ 				_("Invalid stroke count :-P "));
+ 				return;
+     }
+     if (klinklist == NULL) {
+       findk_by_stroke(stroke, plus_min, &klinklist);  // this should! give results
+       if (klinklist == NULL ) {
+-				gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji),
++				gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0,
+ 				_("Stroke search didn't find any match :-O "));
+ 				return;
+       }
+@@ -538,7 +492,7 @@ void on_kanji_search() {
+       klists_merge(); 
+       if (klinklist == NULL) {  
+ 				found = FALSE; 
+-				gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji),
++				gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0,
+ 																_("No such kanji with this stroke/radical combination.")); 
+ 				return;
+       }
+@@ -553,14 +507,14 @@ void on_kanji_search() {
+       klists_merge();
+     }
+     if (klinklist == NULL) {    
+-      gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji), _("No Matches found!"));
++      gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0, _("No Matches found!"));
+       return;
+     }
+   }
+   
+ 	result_num = g_list_length(klinklist);
+   snprintf(kappbarmsg, 100, _("Kanji found: %d"), result_num);
+-  gnome_appbar_set_status(GNOME_APPBAR(kanjiDic->appbar_kanji), kappbarmsg);
++  gtk_statusbar_push(GTK_STATUSBAR(kanjiDic->appbar_kanji), 0, kappbarmsg);
+ 
+   if (result_num == 1) print_kanjinfo((gunichar) klinklist->data);
+   
+@@ -1067,7 +1021,6 @@ KanjiDic *kanjidic_create() {
+   GtkWidget *frame_kresults;
+   GtkWidget *scrolledwin_kresults;
+   GtkWidget *scrolledwin_kinfo;
+-  GtkWidget *dock_kanjidic;
+   GtkWidget *hbox;
+   GtkWidget *frame_kinfo;
+   GtkWidget *tmpimage;
+@@ -1086,47 +1039,16 @@ KanjiDic *kanjidic_create() {
+   if (kdic_line == NULL) kdic_line = (gchar *)g_malloc(KCFGNUM * KBUFSIZE);
+   if (kdic_line == NULL) gjiten_abort_with_msg("Couldn't allocate memory\n");
+ 
+-  kanjiDic->window = gnome_app_new("gjiten", _("Gjiten - KanjiDic"));
++  kanjiDic->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
++  gtk_window_set_title(GTK_WINDOW(kanjiDic->window), _("Gjiten - KanjiDic"));
+   GTK_WIDGET_SET_FLAGS(kanjiDic->window, GTK_CAN_DEFAULT);
+   g_signal_connect(G_OBJECT(kanjiDic->window), "destroy", G_CALLBACK(kanjidic_close), NULL);
+   gtk_window_set_default_size(GTK_WINDOW(kanjiDic->window), 500, 500);
+ 
+-  dock_kanjidic = GNOME_APP(kanjiDic->window)->dock;
+-  gtk_widget_show(dock_kanjidic);
+-
+-  if (gjitenApp->conf->menubar) gnome_app_create_menus(GNOME_APP(kanjiDic->window), kmenubar_uiinfo);
+-  
+   vbox_maink = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox_maink);
+-  gnome_app_set_contents(GNOME_APP(kanjiDic->window), vbox_maink);
++  gtk_container_add(GTK_CONTAINER(kanjiDic->window), vbox_maink);
+    
+-  if (gjitenApp->conf->toolbar) {
+-    toolbar_kanji = gtk_toolbar_new();
+-    gtk_widget_show(toolbar_kanji);
+-
+-    gnome_app_set_toolbar(GNOME_APP(kanjiDic->window), GTK_TOOLBAR(toolbar_kanji));
+-    
+-    button_closek = gtk_toolbar_insert_stock(GTK_TOOLBAR(toolbar_kanji), GTK_STOCK_CLOSE,
+-																						 _("Close KanjiDic"), "Close", 
+-																						 NULL, NULL, -1);
+-		g_signal_connect_swapped(G_OBJECT(button_closek), "clicked", 
+-														 G_CALLBACK(gtk_widget_destroy), kanjiDic->window);
+-
+-    tmpimage = gtk_image_new_from_file(PIXMAPDIR"/kanjidic.png");
+-    button_worddic = gtk_toolbar_append_item(GTK_TOOLBAR(toolbar_kanji), _("WordDic"),
+-																						 _("Launch WordDic"), "WordDic", tmpimage,
+-																						 G_CALLBACK(worddic_create), NULL);
+-
+-    tmpimage = gtk_image_new_from_file(PIXMAPDIR"/kanjipad.png");
+-    button_kanjipad = gtk_toolbar_append_item(GTK_TOOLBAR(toolbar_kanji), _("KanjiPad"),
+-					      _("Launch KanjiPad"), "KanjiPad", tmpimage,
+-					      GTK_SIGNAL_FUNC(gjiten_start_kanjipad), NULL);
+-    
+-    button_searchk = gtk_toolbar_insert_stock(GTK_TOOLBAR(toolbar_kanji), GTK_STOCK_FIND,
+-					      _("Search entered Kanji"), "Search", 
+-					      on_kanji_search, NULL, -1);
+-  }
+-  
+   frame_koptions = gtk_frame_new(_("Kanji Search Options"));
+   gtk_widget_show(frame_koptions);
+   gtk_box_pack_start(GTK_BOX(vbox_maink), frame_koptions, FALSE, FALSE, 0);
+@@ -1162,7 +1084,7 @@ KanjiDic *kanjidic_create() {
+   gtk_table_attach(GTK_TABLE(table_koptions), hbox_spinb, 1, 2, 0, 1,
+                     (GtkAttachOptions)(GTK_FILL), (GtkAttachOptions)(GTK_FILL), 0, 0);
+ 
+-  spinb_strokenum_adj = gtk_adjustment_new(1, 1, 30, 1, 2, 2);
++  spinb_strokenum_adj = gtk_adjustment_new(1, 1, 30, 1, 2, 0);
+   kanjiDic->spinb_strokenum = gtk_spin_button_new(GTK_ADJUSTMENT(spinb_strokenum_adj), 1, 0);
+   gtk_widget_show(kanjiDic->spinb_strokenum);
+   gtk_box_pack_start(GTK_BOX(hbox_spinb), kanjiDic->spinb_strokenum, FALSE, FALSE, 0);
+@@ -1171,7 +1093,7 @@ KanjiDic *kanjidic_create() {
+   gtk_widget_show(kanjiDic->label_plusmin);
+   gtk_box_pack_start(GTK_BOX(hbox_spinb), kanjiDic->label_plusmin, FALSE, FALSE, 0);
+ 
+-  spinb_plusmin_adj = gtk_adjustment_new(0, 0, 10, 1, 10, 10);
++  spinb_plusmin_adj = gtk_adjustment_new(0, 0, 10, 1, 10, 0);
+   kanjiDic->spinb_plusmin = gtk_spin_button_new(GTK_ADJUSTMENT(spinb_plusmin_adj), 1, 0);
+   gtk_widget_show(kanjiDic->spinb_plusmin);
+   gtk_box_pack_start(GTK_BOX(hbox_spinb), kanjiDic->spinb_plusmin, FALSE, FALSE, 0);
+@@ -1278,7 +1200,7 @@ KanjiDic *kanjidic_create() {
+   gtk_paned_add2(GTK_PANED(vpane), frame_kinfo);
+   gtk_box_pack_start(GTK_BOX(vbox_maink), vpane, TRUE, TRUE, 0);
+ 
+-  kanjiDic->appbar_kanji = gnome_appbar_new(TRUE, TRUE, GNOME_PREFERENCES_NEVER);
++  kanjiDic->appbar_kanji = gtk_statusbar_new();
+   gtk_widget_show(kanjiDic->appbar_kanji);
+   gtk_box_pack_start(GTK_BOX(vbox_maink), kanjiDic->appbar_kanji, FALSE, FALSE, 0);
+ 
+Index: gjiten-2.6/src/pref.c
+===================================================================
+--- gjiten-2.6.orig/src/pref.c
++++ gjiten-2.6/src/pref.c
+@@ -27,7 +27,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <gnome.h>
++#include <glib/gi18n.h>
+ #include <glade/glade.h>
+ 
+ #include "constants.h"
+@@ -98,14 +98,14 @@ enum {
+ 
+ 
+ 
+-void font_set(GtkWidget *entry, gchar *arg1, GnomeFontPicker *fontpicker) {
++void font_set(GtkFontButton *fontpicker, GtkWidget *entry) {
+   const gchar *fontname;
+ 
+-  fontname = gnome_font_picker_get_font_name(GNOME_FONT_PICKER(fontpicker));
++  fontname = gtk_font_button_get_font_name(fontpicker);
+   gtk_entry_set_text(GTK_ENTRY(entry), fontname);
+ }
+ 
+-static void add_dic_response_cb(GtkDialog *dialog, gint response, GnomeFileEntry *fileentry) {
++static void add_dic_response_cb(GtkDialog *dialog, gint response, GtkFileChooser *fileentry) {
+ 	GtkWidget *nameentry;
+ 	GjitenDicfile dicfile;
+ 
+@@ -113,11 +113,15 @@ static void add_dic_response_cb(GtkDialo
+ 		nameentry = glade_xml_get_widget(gladexml_add_dic, "entry_dic_name");
+ 		dicfile.name = g_strdup(gtk_entry_get_text(GTK_ENTRY(nameentry)));
+ 
+-		dicfile.path = gnome_file_entry_get_full_path(fileentry, TRUE);
++		dicfile.path = gtk_file_chooser_get_filename(fileentry);
+ 
+ 		if (dicfile.path != NULL) {
+-			if (dicfile_init(&dicfile) == FALSE) return;
++			if (dicfile_init(&dicfile) == FALSE) {
++				g_free(dicfile.path);
++				return;
++			}
+ 			if (dicfile_is_utf8(&dicfile) == FALSE) {
++				g_free(dicfile.path);
+ 				dicfile_close(&dicfile);
+ 				return;
+ 			}
+@@ -125,8 +129,11 @@ static void add_dic_response_cb(GtkDialo
+ 			gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+ 			gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_DICPATH, dicfile.path, -1);
+ 			gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_DICNAME, dicfile.name, -1);
++			g_free(dicfile.path);
+ 		}
+ 		else gjiten_print_error(_("Dictionary file not found!"));
++
++		g_free(dicfile.name);
+ 	}
+ 	else {
+ 		gtk_widget_destroy(GTK_WIDGET(dialog));
+@@ -134,13 +141,14 @@ static void add_dic_response_cb(GtkDialo
+ 	}
+ }
+ 
+-static void set_dic_name_cb(GnomeFileEntry *fileentry, GtkEntry *entry) {
++static void set_dic_name_cb(GtkFileChooser *fileentry, GtkEntry *entry) {
+   gchar *filename, *dictf, *old;
+ 	const gchar *entrytext;
+ 
+ 	GJITEN_DEBUG("set_dic_name_cb()\n");
+ 
+-  filename = gnome_file_entry_get_full_path(fileentry, TRUE);
++  filename = gtk_file_chooser_get_filename(fileentry);
++
+   old = dictf = strtok(filename, "/");
+   while (dictf != NULL) {
+     old = dictf;
+@@ -150,6 +158,8 @@ static void set_dic_name_cb(GnomeFileEnt
+ 	entrytext = gtk_entry_get_text(entry);
+ 	printf("Dicname old: %s, new: %s\n", entrytext, old);
+ 	if ((entrytext == NULL) || (strlen(entrytext) == 0)) gtk_entry_set_text(entry, old);
++
++	g_free(filename);
+ }
+ 
+ static void add_dict() {
+@@ -162,13 +172,15 @@ static void add_dict() {
+ 		gtk_widget_show_all(dialog_add_dic);
+ 	}
+ 	else {
+-		chdir(GJITEN_DICDIR);
+ 		gladexml_add_dic = glade_xml_new(GJITEN_DATADIR"/gjiten-settings.glade", "dialog_add_dic", NULL);
+ 		nameentry = glade_xml_get_widget(gladexml_add_dic, "entry_dic_name");
+ 		dialog_add_dic = glade_xml_get_widget(gladexml_add_dic, "dialog_add_dic");
+  
+-		fileselector = gnome_file_entry_new(NULL, _("Select dictionary file"));
+-		g_signal_connect(G_OBJECT(fileselector), "activate", G_CALLBACK(set_dic_name_cb), nameentry);
++		fileselector = gtk_file_chooser_button_new(_("Select dictionary file"),
++		                                           GTK_FILE_CHOOSER_ACTION_OPEN);
++		gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(fileselector),
++		                                    GJITEN_DICDIR);
++		g_signal_connect(fileselector, "file-set", G_CALLBACK(set_dic_name_cb), nameentry);
+ 
+ 
+ 		gtk_table_attach(GTK_TABLE(glade_xml_get_widget(gladexml_add_dic, "table_add_dic")), fileselector, 1, 2, 1, 2,
+@@ -181,7 +193,7 @@ static void add_dict() {
+ 	}
+ }
+ 
+-static void change_dic_response_cb(GtkDialog *dialog, gint response, GnomeFileEntry *fileentry) {
++static void change_dic_response_cb(GtkDialog *dialog, gint response, GtkFileChooser *fileentry) {
+   gchar *dicpath, *dicname;
+ 	GtkWidget *nameentry;
+   GtkTreeSelection *selection;
+@@ -190,14 +202,17 @@ static void change_dic_response_cb(GtkDi
+ 		nameentry = glade_xml_get_widget(gladexml_add_dic, "entry_dic_name_change");
+ 		dicname = g_strdup(gtk_entry_get_text(GTK_ENTRY(nameentry)));
+ 
+-		dicpath = gnome_file_entry_get_full_path(fileentry, TRUE);
++		dicpath = gtk_file_chooser_get_filename(fileentry);
+ 		if (dicpath != NULL) {
+ 			selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
+ 			if (gtk_tree_selection_get_selected(selection, &model, &iter) == FALSE) return;
+ 			gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_DICPATH, dicpath, -1);
+ 			gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_DICNAME, dicname, -1);
++			g_free(dicpath);
+ 		}
+ 		else gjiten_print_error(_("Dictionary file not found!"));
++
++		g_free(dicname);
+ 	}
+ 	else gtk_widget_destroy(GTK_WIDGET(dialog));
+ }
+@@ -232,8 +247,9 @@ static void change_dict() {
+ 
+ 	if (dicname != NULL) gtk_entry_set_text(GTK_ENTRY(nameentry), dicname);
+ 
+-	fileselector = gnome_file_entry_new(NULL, _("Select dictionary file"));
+-	gnome_file_entry_set_filename(GNOME_FILE_ENTRY(fileselector), dicpath);
++	fileselector = gtk_file_chooser_button_new(_("Select dictionary file"),
++	                                           GTK_FILE_CHOOSER_ACTION_OPEN);
++	gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(fileselector), dicpath);
+ 
+   gtk_table_attach(GTK_TABLE(glade_xml_get_widget(gladexml_add_dic, "table_change_dic")), fileselector, 1, 2, 1, 2,
+ 									 (GtkAttachOptions)(GTK_FILL),
+@@ -271,7 +287,7 @@ static void up_dict(GtkWidget *button) {
+ 			gtk_list_store_swap(GTK_LIST_STORE(model), &iter, &tmpiter);
+ 		}
+ 	}
+-	g_free(treepath);
++	gtk_tree_path_free(treepath);
+ }
+ 
+ 
+@@ -284,7 +300,7 @@ static void remove_dict(GtkWidget *butto
+ 	treepath = gtk_tree_model_get_path(model, &iter);
+ 	gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
+ 	gtk_tree_selection_select_path(selection, treepath);
+-	g_free(treepath);
++	gtk_tree_path_free(treepath);
+ 
+ }
+ 
+@@ -325,13 +341,15 @@ void preferences_response_cb(GtkDialog *
+     else gjitenApp->conf->kdiccfg[i] = FALSE; 
+   }
+ 
+-	kanjidic_path = g_strdup(gtk_entry_get_text(GTK_ENTRY(gnome_entry_gtk_entry(GNOME_ENTRY(entry_kanjidic)))));
+-  if ((kanjidic_path != NULL) && strlen(kanjidic_path))  {
++	kanjidic_path = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(entry_kanjidic));
++  if ((kanjidic_path != NULL) && strlen(kanjidic_path)
++      && !g_file_test(kanjidic_path, G_FILE_TEST_IS_DIR))  {
+     gjitenApp->conf->kanjidic->path = kanjidic_path;
+   }
+ 
+-	kanjipad_path = g_strdup(gtk_entry_get_text(GTK_ENTRY(gnome_entry_gtk_entry(GNOME_ENTRY(entry_kanjipad)))));
+-  if ((kanjipad_path != NULL) && strlen(kanjipad_path))  {
++	kanjipad_path = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(entry_kanjipad));
++  if ((kanjipad_path != NULL) && strlen(kanjipad_path)
++      && !g_file_test(kanjipad_path, G_FILE_TEST_IS_DIR))  {
+     gjitenApp->conf->kanjipad = kanjipad_path;
+   }
+ 
+@@ -459,14 +477,15 @@ void create_dialog_preferences() {
+ 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GETWIDGET("checkbutton_verb_deinflection")), gjitenApp->conf->verb_deinflection);	
+ 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GETWIDGET("checkbutton_unicode_radicals")), gjitenApp->conf->unicode_radicals);	
+ 	
+-	chdir(GJITEN_DICDIR);
+ 	//	gnome_file_entry_set_default_path(GNOME_FILE_ENTRY(tmpwidget), GJITEN_DICDIR);
+-	tmpwidget = gnome_file_entry_new(NULL, _("Select KanjiDic"));
+-	entry_kanjidic = gnome_file_entry_gnome_entry(GNOME_FILE_ENTRY(tmpwidget));
++	entry_kanjidic = gtk_file_chooser_button_new(_("Select KanjiDic"),
++	                                             GTK_FILE_CHOOSER_ACTION_OPEN);
++	gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(entry_kanjidic),
++	                                    GJITEN_DICDIR);
+ 	if (gjitenApp->conf->kanjidic && gjitenApp->conf->kanjidic->path) {
+-		gnome_file_entry_set_filename(GNOME_FILE_ENTRY(tmpwidget), gjitenApp->conf->kanjidic->path);
++		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(entry_kanjidic), gjitenApp->conf->kanjidic->path);
+ 	}
+-  gtk_box_pack_start(GTK_BOX(GETWIDGET("hbox_kanjidicfile")), tmpwidget, TRUE, TRUE, 0);
++  gtk_box_pack_start(GTK_BOX(GETWIDGET("hbox_kanjidicfile")), entry_kanjidic, TRUE, TRUE, 0);
+ 
+   tmpwidget = GETWIDGET("table_kanji_info");
+ 
+@@ -481,30 +500,26 @@ void create_dialog_preferences() {
+     }
+ 	}
+ 
+-	fontpicker = gnome_font_picker_new();
++	fontpicker = gtk_font_button_new();
+   gtk_widget_show(fontpicker);
+   if (gjitenApp->conf->normalfont != NULL) {
+     gtk_entry_set_text(GTK_ENTRY(GETWIDGET("entry_normal_font")), gjitenApp->conf->normalfont);
+     //gnome_font_picker_set_font_name(GNOME_FONT_PICKER(fontpicker), gjitenApp->conf->normalfont);
+   }
+ 
+-  gnome_font_picker_set_preview_text(GNOME_FONT_PICKER(fontpicker), fontteststrg);
+-  gnome_font_picker_set_mode(GNOME_FONT_PICKER(fontpicker), GNOME_FONT_PICKER_MODE_PIXMAP);
+-  g_signal_connect_swapped(G_OBJECT(fontpicker), "font-set", G_CALLBACK(font_set), (gpointer)GETWIDGET("entry_normal_font"));
++  g_signal_connect(fontpicker, "font-set", G_CALLBACK(font_set), (gpointer)GETWIDGET("entry_normal_font"));
+   gtk_table_attach(GTK_TABLE(GETWIDGET("table_fonts")), fontpicker, 2, 3, 0, 1,
+ 									 (GtkAttachOptions)(0),
+ 									 (GtkAttachOptions)0, 0, 0);
+ 
+-	fontpicker = gnome_font_picker_new();
++	fontpicker = gtk_font_button_new();
+   gtk_widget_show(fontpicker);
+   if (gjitenApp->conf->largefont != NULL) {
+     gtk_entry_set_text(GTK_ENTRY(GETWIDGET("entry_large_font")), gjitenApp->conf->largefont);
+     //gnome_font_picker_set_font_name(GNOME_FONT_PICKER(fontpicker), gjitenApp->conf->normalfont);
+   }
+ 
+-  gnome_font_picker_set_preview_text(GNOME_FONT_PICKER(fontpicker), fontteststrg);
+-  gnome_font_picker_set_mode(GNOME_FONT_PICKER(fontpicker), GNOME_FONT_PICKER_MODE_PIXMAP);
+-  g_signal_connect_swapped(G_OBJECT(fontpicker), "font-set", G_CALLBACK(font_set), (gpointer)GETWIDGET("entry_large_font"));
++  g_signal_connect(fontpicker, "font-set", G_CALLBACK(font_set), (gpointer)GETWIDGET("entry_large_font"));
+   gtk_table_attach(GTK_TABLE(GETWIDGET("table_fonts")), fontpicker, 2, 3, 1, 2,
+ 									 (GtkAttachOptions)(0),
+ 									 (GtkAttachOptions)0, 0, 0);
+@@ -525,12 +540,12 @@ void create_dialog_preferences() {
+ 
+ 
+ 
+-	tmpwidget = gnome_file_entry_new(NULL, _("Select KanjiPad"));
+-	entry_kanjipad = gnome_file_entry_gnome_entry(GNOME_FILE_ENTRY(tmpwidget));
++	entry_kanjipad = gtk_file_chooser_button_new(_("Select KanjiPad"),
++	                                             GTK_FILE_CHOOSER_ACTION_OPEN);
+ 	if (gjitenApp->conf->kanjipad != NULL) {
+-		gnome_file_entry_set_filename(GNOME_FILE_ENTRY(tmpwidget), gjitenApp->conf->kanjipad);
++		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(entry_kanjipad), gjitenApp->conf->kanjipad);
+ 	}
+-  gtk_box_pack_start(GTK_BOX(GETWIDGET("hbox_kanjipadfile")), tmpwidget, TRUE, TRUE, 0);
++  gtk_box_pack_start(GTK_BOX(GETWIDGET("hbox_kanjipadfile")), entry_kanjipad, TRUE, TRUE, 0);
+ 
+ 
+   g_signal_connect_swapped(G_OBJECT(dialog_preferences), "response", G_CALLBACK(preferences_response_cb), NULL);
+Index: gjiten-2.6/src/worddic.c
+===================================================================
+--- gjiten-2.6.orig/src/worddic.c
++++ gjiten-2.6/src/worddic.c
+@@ -28,8 +28,8 @@
+ #  include <config.h>
+ #endif
+ 
+-#include <libgnome/libgnome.h>
+-#include <libgnomeui/libgnomeui.h>
++#include <glib/gi18n.h>
++#include <gdk/gdkkeysyms.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+@@ -49,10 +49,10 @@
+ #include "gjiten.h"
+ #include "error.h"
+ 
+-static void worddic_copy();
++void worddic_copy();
+ static void print_result(gchar *txt2print, int result_offset, gchar *searchstrg);
+ static void worddic_close();
+-static void worddic_destroy_window();
++void worddic_destroy_window();
+ 
+ extern GtkWidget *window_kanjidic;
+ extern GtkWidget *dialog_preferences;
+@@ -70,62 +70,8 @@ int dicname_printed;
+ int append_to_history = TRUE;
+ gpointer current_glist_word = NULL;
+ 
+-static GnomeUIInfo file_menu_uiinfo[] = {
+-  GNOMEUIINFO_MENU_EXIT_ITEM(G_CALLBACK(worddic_destroy_window), NULL),
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo edit_menu_uiinfo[] = {
+-  //GNOMEUIINFO_MENU_CUT_ITEM(NULL, NULL),
+-  GNOMEUIINFO_MENU_COPY_ITEM(worddic_copy, NULL),
+-  GNOMEUIINFO_MENU_PASTE_ITEM(worddic_paste, NULL),
+-  // GNOMEUIINFO_MENU_CLEAR_ITEM(clear_entry_box, GTK_OBJECT(GTK_COMBO(wordDic->combo_entry)->entry)),
+-  GNOMEUIINFO_SEPARATOR,
+-  GNOMEUIINFO_MENU_PREFERENCES_ITEM(create_dialog_preferences, NULL),
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo tools_menu_uiinfo[] = {
+-  {
+-    GNOME_APP_UI_ITEM, N_("KanjiDic"), NULL, kanjidic_create, 
+-    NULL, NULL, GNOME_APP_PIXMAP_FILENAME, "kanjidic.png", 0, 0, NULL
+-  },
+-  {
+-    GNOME_APP_UI_ITEM, N_("KanjiPad"), NULL, gjiten_start_kanjipad, NULL, NULL,
+-    GNOME_APP_PIXMAP_FILENAME, "kanjipad.png", 0, 0, NULL
+-  },
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo help_menu_uiinfo[] =  {
+-  {
+-    GNOME_APP_UI_ITEM, N_("_Manual"), N_("Display the Gjiten Manual"),
+-    gjiten_display_manual, NULL, NULL,
+-    GNOME_APP_PIXMAP_STOCK, GTK_STOCK_HELP,
+-    0, 0, NULL },
+-  
+-  {    
+-    GNOME_APP_UI_ITEM, N_("_About"), N_("Information about the program"),
+-    gjiten_create_about, NULL, NULL,
+-    GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_ABOUT,
+-    0, 0, NULL },
+-  
+-  GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo menubar_uiinfo[] = {
+-	GNOMEUIINFO_MENU_FILE_TREE(file_menu_uiinfo),
+-	GNOMEUIINFO_MENU_EDIT_TREE(edit_menu_uiinfo), 
+-	{
+-		GNOME_APP_UI_SUBTREE, N_("_Tools"), NULL, tools_menu_uiinfo, NULL, 
+-		NULL, GNOME_APP_PIXMAP_NONE, N_("Tools"), 0, 0, NULL
+-	},
+-	GNOMEUIINFO_MENU_HELP_TREE(help_menu_uiinfo),
+-	GNOMEUIINFO_END
+-};
+-
+ 
+-static void worddic_copy() {
++void worddic_copy() {
+   gchar *selection = NULL;
+ 
+   selection = gtk_clipboard_wait_for_text(gtk_clipboard_get(GDK_SELECTION_PRIMARY));
+@@ -611,7 +557,7 @@ static void worddic_search(gchar *srchst
+ 
+ 	if (gjitenApp->conf->dicfile_list == NULL) {
+     snprintf(appbarmsg, 50, _("No dicfiles specified! Set your preferences first."));
+-    gnome_appbar_set_status(GNOME_APPBAR(wordDic->appbar_mainwin),appbarmsg);
++    gtk_statusbar_push(GTK_STATUSBAR(wordDic->appbar_mainwin), 0, appbarmsg);
+     return;
+   } 
+ 
+@@ -650,9 +596,9 @@ static void worddic_search(gchar *srchst
+   if (word_matches) {
+     if (truncated) snprintf(appbarmsg, 50, _("Matches found (truncated): %d"), word_matches);
+     else snprintf(appbarmsg, 50, _("Matches found: %d"), word_matches);
+-    gnome_appbar_set_status(GNOME_APPBAR(wordDic->appbar_mainwin), appbarmsg);
++    gtk_statusbar_push(GTK_STATUSBAR(wordDic->appbar_mainwin), 0, appbarmsg);
+   }
+-  else gnome_appbar_set_status(GNOME_APPBAR(wordDic->appbar_mainwin), _("No match found!"));
++  else gtk_statusbar_push(GTK_STATUSBAR(wordDic->appbar_mainwin), 0, _("No match found!"));
+ }
+ 
+ void on_text_entered() {
+@@ -693,7 +639,7 @@ void on_text_entered() {
+   gtk_text_buffer_set_text (GTK_TEXT_BUFFER(wordDic->text_results_buffer), "", 0);
+   gtk_text_buffer_get_start_iter(wordDic->text_results_buffer, &wordDic->iter);
+ 
+-  gnome_appbar_set_status(GNOME_APPBAR(wordDic->appbar_mainwin), _("Searching..."));
++  gtk_statusbar_push(GTK_STATUSBAR(wordDic->appbar_mainwin), 0, _("Searching..."));
+ 
+   worddic_search(new_entry_text);
+   
+@@ -767,7 +713,7 @@ static void worddic_init_history() {
+   } 
+ }
+ 
+-static void worddic_destroy_window() {
++void worddic_destroy_window() {
+ 	if ((wordDic != NULL) && (GTK_IS_WIDGET(wordDic->window))) {
+ 		gtk_widget_destroy(wordDic->window);
+ 	}
+@@ -948,6 +894,8 @@ WordDic *worddic_create() {
+   GtkObject *spinb_searchlimit_adj;
+   GtkWidget *tmpimage;
+   GdkPixbuf *cursor_pixbuf;
++  GtkBuilder *builder;
++  GError *err = NULL;
+ 
+ 	if (wordDic == NULL) {
+ 		wordDic = g_new0(WordDic, 1);
+@@ -971,20 +919,26 @@ WordDic *worddic_create() {
+ 	worddic_init_history();
+   Verbinit(); //FIXME: On demand
+ 
+-  wordDic->window = gnome_app_new("gjiten", _("Gjiten - WordDic"));
++  builder = gtk_builder_new();
++  if (! gtk_builder_add_from_file(builder, GJITEN_DATADIR G_DIR_SEPARATOR_S
++                                  "worddic.glade", &err))
++    g_error("Could not initialize UI: %s", err->message);
++
++  gtk_builder_set_translation_domain(builder, PACKAGE);
++  gtk_builder_connect_signals(builder, NULL);
++  wordDic->window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
++  gtk_window_set_title(GTK_WINDOW(wordDic->window), _("Gjiten - WordDic"));
+   GTK_WIDGET_SET_FLAGS(wordDic->window, GTK_CAN_DEFAULT);
+   g_signal_connect(G_OBJECT(wordDic->window), "destroy", G_CALLBACK(worddic_close), NULL);
+   gtk_window_set_default_size(GTK_WINDOW(wordDic->window), 500, 500);
+ 
+-  dock_main = GNOME_APP(wordDic->window)->dock;
++  dock_main = gtk_bin_get_child(GTK_BIN(wordDic->window));
+   gtk_widget_show(dock_main);
+ 
+-  gnome_app_create_menus(GNOME_APP(wordDic->window), menubar_uiinfo);
+-
+ 	toolbar = gtk_toolbar_new();
+ 	gtk_widget_show(toolbar);
+ 
+-	gnome_app_set_toolbar(GNOME_APP(wordDic->window), GTK_TOOLBAR(toolbar));
++	gtk_box_pack_start(GTK_BOX(dock_main), toolbar, FALSE, FALSE, 0);
+ 	
+ 	button_exit = gtk_toolbar_insert_stock(GTK_TOOLBAR(toolbar), GTK_STOCK_CLOSE,
+ 																				 _("Close Gjiten"), "Close", NULL, NULL, -1);
+@@ -1045,7 +999,7 @@ WordDic *worddic_create() {
+ 
+   vbox_main = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox_main);
+-  gnome_app_set_contents(GNOME_APP(wordDic->window), vbox_main);
++  gtk_box_pack_start(GTK_BOX(dock_main), vbox_main, TRUE, TRUE, 0);
+ 
+   wordDic->hbox_options = gtk_hbox_new(FALSE, 0);
+   gtk_widget_show(wordDic->hbox_options);
+@@ -1163,7 +1117,7 @@ WordDic *worddic_create() {
+ 									 G_CALLBACK(checkb_searchlimit_toggled), NULL);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(wordDic->checkb_searchlimit), gjitenApp->conf->searchlimit_enabled);
+ 
+-	spinb_searchlimit_adj = gtk_adjustment_new(gjitenApp->conf->maxwordmatches, 1, G_MAXFLOAT, 1, 2, 2);
++	spinb_searchlimit_adj = gtk_adjustment_new(gjitenApp->conf->maxwordmatches, 1, G_MAXFLOAT, 1, 2, 0);
+   wordDic->spinb_searchlimit = gtk_spin_button_new(GTK_ADJUSTMENT(spinb_searchlimit_adj), 1, 0);
+   gtk_widget_show(wordDic->spinb_searchlimit);
+   gtk_box_pack_start(GTK_BOX(hbox_searchlimit), wordDic->spinb_searchlimit, FALSE, FALSE, 0);
+@@ -1251,7 +1205,7 @@ WordDic *worddic_create() {
+   gtk_box_pack_start(GTK_BOX(vbox_results), scrolledwin_results, TRUE, TRUE, 0);
+   gtk_widget_show(scrolledwin_results);
+ 
+-  wordDic->appbar_mainwin = gnome_appbar_new(TRUE, TRUE, GNOME_PREFERENCES_NEVER);
++  wordDic->appbar_mainwin = gtk_statusbar_new();
+   gtk_widget_show(wordDic->appbar_mainwin);
+   gtk_box_pack_end(GTK_BOX(vbox_results), wordDic->appbar_mainwin, FALSE, FALSE, 0);
+  

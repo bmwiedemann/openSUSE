@@ -1,0 +1,32 @@
+Index: openssl-1.0.2a/crypto/fips/fips_rand_lcl.h
+===================================================================
+--- openssl-1.0.2a.orig/crypto/fips/fips_rand_lcl.h	2015-05-24 13:18:49.460282194 +0200
++++ openssl-1.0.2a/crypto/fips/fips_rand_lcl.h	2015-05-24 13:42:20.793812240 +0200
+@@ -51,6 +51,8 @@
+  * ====================================================================
+  */
+ 
++#pragma GCC visibility push(hidden)
++
+ typedef struct drbg_hash_ctx_st DRBG_HASH_CTX;
+ typedef struct drbg_hmac_ctx_st DRBG_HMAC_CTX;
+ typedef struct drbg_ctr_ctx_st DRBG_CTR_CTX;
+@@ -211,3 +213,5 @@ const struct evp_cipher_st *FIPS_get_cip
+ #define FIPS_digestupdate EVP_DigestUpdate
+ #define FIPS_digestfinal EVP_DigestFinal
+ #define M_EVP_MD_size EVP_MD_size
++
++#pragma GCC visibility pop
+Index: openssl-1.0.2a/crypto/fips/fips_rsa_x931g.c
+===================================================================
+--- openssl-1.0.2a.orig/crypto/fips/fips_rsa_x931g.c	2015-05-24 13:18:49.461282208 +0200
++++ openssl-1.0.2a/crypto/fips/fips_rsa_x931g.c	2015-05-24 13:42:20.793812240 +0200
+@@ -65,7 +65,7 @@
+ #ifdef OPENSSL_FIPS
+ # include <openssl/fips.h>
+ 
+-extern int fips_check_rsa(RSA *rsa);
++extern int fips_check_rsa(RSA *rsa) __attribute__ ((visibility ("hidden")));
+ #endif
+ 
+ /* X9.31 RSA key derivation and generation */

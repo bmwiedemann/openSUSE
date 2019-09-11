@@ -1,0 +1,156 @@
+From 9786fcf845c109af47c28ccc50cfea836fefe96d Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gsscalet@gmail.com>
+Date: Tue, 2 Jun 2015 15:15:37 -0300
+Subject: [PATCH 05/15] PPC64: Add ffi support
+
+---
+ src/lj_ccall.c      | 32 ++++++++++++++++++++++++++++++++
+ src/lj_ccall.h      |  9 +++++++++
+ src/lj_ccallback.c  | 15 +++++++++++++++
+ src/lj_target_ppc.h |  9 +++++++++
+ 4 files changed, 65 insertions(+)
+
+diff --git a/src/lj_ccall.c b/src/lj_ccall.c
+index 5c252e5b6830..babf6a29ed05 100644
+--- a/src/lj_ccall.c
++++ b/src/lj_ccall.c
+@@ -387,6 +387,37 @@
+ #define CCALL_HANDLE_COMPLEXARG \
+   /* Pass complex by value in 2 or 4 GPRs. */
+ 
++#if LJ_ARCH_PPC64
++#define CCALL_HANDLE_REGARG \
++  if (isva) {  /* only GPRs will be used on C ellipsis operator */ \
++    goto gpr; \
++  } \
++  else { \
++    if (isfp) {  /* Try to pass argument in FPRs. */ \
++      if (nfpr + 1 <= CCALL_NARG_FPR) { \
++	dp = &cc->fpr[nfpr]; \
++	nfpr += 1; \
++	ngpr += 1;  /* align GPRs */ \
++	d = ctype_get(cts, CTID_DOUBLE);  /* FPRs always hold doubles. */ \
++	goto done; \
++      } \
++    } else {  /* Try to pass argument in GPRs. */ \
++  gpr: \
++      if (n > 1) { \
++	lua_assert(n == 2 || n == 4);  /* int64_t or complex (float). */ \
++	if (ctype_isinteger(d->info)) \
++	  ngpr = (ngpr + 1u) & ~1u;  /* Align int64_t to regpair. */ \
++	else if (ngpr + n > maxgpr) \
++	  ngpr = maxgpr;  /* Prevent reordering. */ \
++      } \
++      if (ngpr + n <= maxgpr) { \
++	dp = &cc->gpr[ngpr]; \
++	ngpr += n; \
++	goto done; \
++      } \
++    } \
++  }
++#else	/* 32 bits */
+ #define CCALL_HANDLE_REGARG \
+   if (isfp) {  /* Try to pass argument in FPRs. */ \
+     if (nfpr + 1 <= CCALL_NARG_FPR) { \
+@@ -409,6 +440,7 @@
+       goto done; \
+     } \
+   }
++#endif
+ 
+ #define CCALL_HANDLE_RET \
+   if (ctype_isfp(ctr->info) && ctr->size == sizeof(float)) \
+diff --git a/src/lj_ccall.h b/src/lj_ccall.h
+index 59f664817a29..3b26e8f201b1 100644
+--- a/src/lj_ccall.h
++++ b/src/lj_ccall.h
+@@ -85,12 +85,21 @@ typedef union FPRArg {
+ 
+ #elif LJ_TARGET_PPC
+ 
++#if LJ_ARCH_PPC64
++#define CCALL_NARG_GPR		8
++#define CCALL_NARG_FPR		8
++#define CCALL_NRET_GPR		4	/* For complex double. */
++#define CCALL_NRET_FPR		1
++#define CCALL_SPS_EXTRA		14
++#define CCALL_SPS_FREE		0
++#else
+ #define CCALL_NARG_GPR		8
+ #define CCALL_NARG_FPR		8
+ #define CCALL_NRET_GPR		4	/* For complex double. */
+ #define CCALL_NRET_FPR		1
+ #define CCALL_SPS_EXTRA		4
+ #define CCALL_SPS_FREE		0
++#endif
+ 
+ typedef intptr_t GPRArg;
+ typedef double FPRArg;
+diff --git a/src/lj_ccallback.c b/src/lj_ccallback.c
+index 846827b119b4..e44d077d4345 100644
+--- a/src/lj_ccallback.c
++++ b/src/lj_ccallback.c
+@@ -61,7 +61,11 @@ static MSize CALLBACK_OFS2SLOT(MSize ofs)
+ 
+ #elif LJ_TARGET_PPC
+ 
++#if LJ_ARCH_PPC64
++#define CALLBACK_MCODE_HEAD		40
++#else  /* PPC 32bits */
+ #define CALLBACK_MCODE_HEAD		24
++#endif
+ 
+ #elif LJ_TARGET_MIPS32
+ 
+@@ -193,10 +197,21 @@ static void callback_mcode_init(global_State *g, uint32_t *page)
+   uint32_t *p = page;
+   void *target = (void *)lj_vm_ffi_callback;
+   MSize slot;
++#if LJ_ARCH_PPC64
++  *p++ = PPCI_LI | PPCF_T(RID_TMP) | ((((intptr_t)target) >> 32) & 0xffff);
++  *p++ = PPCI_LI | PPCF_T(RID_R12) | ((((intptr_t)g) >> 32) & 0xffff);
++  *p++ = PPCI_RLDICR | PPCF_T(RID_TMP) | PPCF_A(RID_TMP) | PPCF_SH(32) | PPCF_M6(63-32);  /* sldi */
++  *p++ = PPCI_RLDICR | PPCF_T(RID_R12) | PPCF_A(RID_R12) | PPCF_SH(32) | PPCF_M6(63-32);  /* sldi */
++  *p++ = PPCI_ORIS | PPCF_A(RID_TMP) | PPCF_T(RID_TMP) | ((((intptr_t)target) >> 16) & 0xffff);
++  *p++ = PPCI_ORIS | PPCF_A(RID_R12) | PPCF_T(RID_R12) | ((((intptr_t)g) >> 16) & 0xffff);
++  *p++ = PPCI_ORI | PPCF_A(RID_TMP) | PPCF_T(RID_TMP) | (((intptr_t)target) & 0xffff);
++  *p++ = PPCI_ORI | PPCF_A(RID_R12) | PPCF_T(RID_R12) | (((intptr_t)g) & 0xffff);
++#else  /* PPC 32bits */
+   *p++ = PPCI_LIS | PPCF_T(RID_TMP) | (u32ptr(target) >> 16);
+   *p++ = PPCI_LIS | PPCF_T(RID_R12) | (u32ptr(g) >> 16);
+   *p++ = PPCI_ORI | PPCF_A(RID_TMP)|PPCF_T(RID_TMP) | (u32ptr(target) & 0xffff);
+   *p++ = PPCI_ORI | PPCF_A(RID_R12)|PPCF_T(RID_R12) | (u32ptr(g) & 0xffff);
++#endif
+   *p++ = PPCI_MTCTR | PPCF_T(RID_TMP);
+   *p++ = PPCI_BCTR;
+   for (slot = 0; slot < CALLBACK_MAX_SLOT; slot++) {
+diff --git a/src/lj_target_ppc.h b/src/lj_target_ppc.h
+index c5c991a377af..8b8827655259 100644
+--- a/src/lj_target_ppc.h
++++ b/src/lj_target_ppc.h
+@@ -131,6 +131,8 @@ static LJ_AINLINE uint32_t *exitstub_trace_addr_(uint32_t *p, uint32_t exitno)
+ #define PPCF_C(r)	((r) << 6)
+ #define PPCF_MB(n)	((n) << 6)
+ #define PPCF_ME(n)	((n) << 1)
++#define PPCF_SH(n)	((((n) & 31) << (11+1)) | (((n) & 32) >> (5-1)))
++#define PPCF_M6(n)	((((n) & 31) << (5+1)) | (((n) & 32) << (11-5)))
+ #define PPCF_Y		0x00200000
+ #define PPCF_DOT	0x00000001
+ 
+@@ -200,6 +202,13 @@ typedef enum PPCIns {
+   PPCI_RLWINM = 0x54000000,
+   PPCI_RLWIMI = 0x50000000,
+ 
++  PPCI_RLDICL = 0x78000000,
++  PPCI_RLDICR = 0x78000004,
++  PPCI_RLDIC = 0x78000008,
++  PPCI_RLDIMI = 0x7800000c,
++  PPCI_RLDCL = 0x78000010,
++  PPCI_RLDCR = 0x78000012,
++
+   PPCI_B = 0x48000000,
+   PPCI_BL = 0x48000001,
+   PPCI_BC = 0x40800000,
+-- 
+2.20.1
+

@@ -1,0 +1,78 @@
+--- install/froxlor.sql.orig	2019-07-09 16:04:20.132449558 +0200
++++ install/froxlor.sql	2019-07-09 16:05:05.720484286 +0200
+@@ -1,3 +1,15 @@
++# change path from /var to /srv
++# webspaces: /srv/customers/webs
++# logs: /srv/customers/logs/
++# mails: /srv/customers/mail/
++# tmp: /srv/customers/tmp
++# cgi:  /srv/www/cgi-bin/
++# fcgi: /srv/www/php-fcgi-scripts
++# backup: /srv/customers/backups/
++# doc documentroot_prefix /srv/customers/webs/
++# asemen 20190709
++
++
+ DROP TABLE IF EXISTS `ftp_groups`;
+ CREATE TABLE `ftp_groups` (
+   `id` int(20) NOT NULL auto_increment,
+@@ -401,18 +413,18 @@
+ 	('customredirect', 'enabled', '1'),
+ 	('customredirect', 'default', '1'),
+ 	('perl', 'suexecworkaround', '0'),
+-	('perl', 'suexecpath', '/var/www/cgi-bin/'),
++	('perl', 'suexecpath', '/srv/www/cgi-bin/'),
+ 	('login', 'domain_login', '0'),
+ 	('login', 'maxloginattempts', '3'),
+ 	('login', 'deactivatetime', '900'),
+ 	('phpfpm', 'enabled', '0'),
+-	('phpfpm', 'tmpdir', '/var/customers/tmp/'),
++	('phpfpm', 'tmpdir', '/srv/customers/tmp/'),
+ 	('phpfpm', 'peardir', '/usr/share/php/:/usr/share/php5/'),
+ 	('phpfpm', 'envpath', '/usr/local/bin:/usr/bin:/bin'),
+ 	('phpfpm', 'enabled_ownvhost', '0'),
+ 	('phpfpm', 'vhost_httpuser', 'froxlorlocal'),
+ 	('phpfpm', 'vhost_httpgroup', 'froxlorlocal'),
+-	('phpfpm', 'aliasconfigdir', '/var/www/php-fpm/'),
++	('phpfpm', 'aliasconfigdir', '/srv/www/php-fpm/'),
+ 	('phpfpm', 'defaultini', '1'),
+ 	('phpfpm', 'vhost_defaultini', '2'),
+ 	('phpfpm', 'fastcgi_ipcdir', '/var/lib/apache2/fastcgi/'),
+@@ -516,14 +528,14 @@
+ 	('nginx', 'fastcgiparams', '/etc/nginx/fastcgi_params'),
+ 	('system', 'lastaccountnumber', '0'),
+ 	('system', 'lastguid', '9999'),
+-	('system', 'documentroot_prefix', '/var/customers/webs/'),
+-	('system', 'logfiles_directory', '/var/customers/logs/'),
++	('system', 'documentroot_prefix', '/srv/customers/webs/'),
++	('system', 'logfiles_directory', '/srv/customers/logs/'),
+ 	('system', 'ipaddress', 'SERVERIP'),
+ 	('system', 'apachereload_command', '/etc/init.d/apache2 reload'),
+ 	('system', 'last_traffic_run', '000000'),
+ 	('system', 'vmail_uid', '2000'),
+ 	('system', 'vmail_gid', '2000'),
+-	('system', 'vmail_homedir', '/var/customers/mail/'),
++	('system', 'vmail_homedir', '/srv/customers/mail/'),
+ 	('system', 'vmail_maildirname', 'Maildir'),
+ 	('system', 'bind_enable', '1'),
+ 	('system', 'bindconf_directory', '/etc/bind/'),
+@@ -544,8 +556,8 @@
+ 	('system', 'apacheconf_htpasswddir', '/etc/apache2/htpasswd/'),
+ 	('system', 'webalizer_quiet', '2'),
+ 	('system', 'last_archive_run', '000000'),
+-	('system', 'mod_fcgid_configdir', '/var/www/php-fcgi-scripts'),
+-	('system', 'mod_fcgid_tmpdir', '/var/customers/tmp'),
++	('system', 'mod_fcgid_configdir', '/srv/www/php-fcgi-scripts'),
++	('system', 'mod_fcgid_tmpdir', '/srv/customers/tmp'),
+ 	('system', 'ssl_cert_file', '/etc/apache2/apache2.pem'),
+ 	('system', 'use_ssl', '0'),
+ 	('system', 'default_vhostconf', ''),
+@@ -620,7 +632,7 @@
+ 	('system', 'letsencryptca', 'production'),
+ 	('system', 'letsencryptcountrycode', 'DE'),
+ 	('system', 'letsencryptstate', 'Hessen'),
+-	('system', 'letsencryptchallengepath', '/var/www/froxlor'),
++	('system', 'letsencryptchallengepath', '/srv/www/froxlor'),
+ 	('system', 'letsencryptkeysize', '4096'),
+ 	('system', 'letsencryptreuseold', 0),
+ 	('system', 'leenabled', '0'),

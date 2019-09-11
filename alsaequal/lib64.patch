@@ -1,0 +1,43 @@
+diff -Pdpru alsaequal.orig/ctl_equal.c alsaequal/ctl_equal.c
+--- alsaequal.orig/ctl_equal.c	2009-02-01 01:06:47.000000000 +0300
++++ alsaequal/ctl_equal.c	2017-07-16 17:43:03.103171927 +0300
+@@ -166,7 +166,7 @@ SND_CTL_PLUGIN_DEFINE_FUNC(equal)
+ 	snd_config_iterator_t it, next;
+ 	snd_ctl_equal_t *equal;
+ 	const char *controls = ".alsaequal.bin";
+-	const char *library = "/usr/lib/ladspa/caps.so";
++	const char *library = "/usr/lib64/ladspa/caps.so";
+ 	const char *module = "Eq";
+ 	long channels = 2;
+ 	const char *sufix = " Playback Volume";
+diff -Pdpru alsaequal.orig/Makefile alsaequal/Makefile
+--- alsaequal.orig/Makefile	2010-03-05 20:30:39.000000000 +0300
++++ alsaequal/Makefile	2017-07-16 17:42:16.005092241 +0300
+@@ -45,11 +45,11 @@ clean:
+ 
+ install: all
+ 	@echo Installing...
+-	$(Q)install -m 644 $(SND_PCM_BIN) ${DESTDIR}/usr/lib/alsa-lib/
+-	$(Q)install -m 644 $(SND_CTL_BIN) ${DESTDIR}/usr/lib/alsa-lib/
++	$(Q)install -m 644 $(SND_PCM_BIN) ${DESTDIR}/usr/lib64/alsa-lib/
++	$(Q)install -m 644 $(SND_CTL_BIN) ${DESTDIR}/usr/lib64/alsa-lib/
+ 
+ uninstall:
+ 	@echo Un-installing...
+-	$(Q)rm ${DESTDIR}/usr/lib/alsa-lib/$(SND_PCM_BIN)
+-	$(Q)rm ${DESTDIR}/usr/lib/alsa-lib/$(SND_CTL_BIN)
++	$(Q)rm ${DESTDIR}/usr/lib64/alsa-lib/$(SND_PCM_BIN)
++	$(Q)rm ${DESTDIR}/usr/lib64/alsa-lib/$(SND_CTL_BIN)
+ 	
+diff -Pdpru alsaequal.orig/pcm_equal.c alsaequal/pcm_equal.c
+--- alsaequal.orig/pcm_equal.c	2010-02-02 01:55:00.000000000 +0300
++++ alsaequal/pcm_equal.c	2017-07-16 17:43:25.178271867 +0300
+@@ -150,7 +150,7 @@ SND_PCM_PLUGIN_DEFINE_FUNC(equal)
+ 	snd_pcm_equal_t *equal;
+ 	snd_config_t *sconf = NULL;
+ 	const char *controls = ".alsaequal.bin";
+-	const char *library = "/usr/lib/ladspa/caps.so";
++	const char *library = "/usr/lib64/ladspa/caps.so";
+ 	const char *module = "Eq";
+ 	long channels = 2;
+ 	int err;

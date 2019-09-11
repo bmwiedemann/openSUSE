@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,8 +30,8 @@ AM_GLIB_GNU_GETTEXT
+ 
+ AC_SUBST(GCC_FLAGS)
+ 
+-GLIB_REQUIRED=2.50.0
+-GTK_REQUIRED=3.22.0
++GLIB_REQUIRED=2.48.0
++GTK_REQUIRED=3.20.0
+ 
+ PKG_CHECK_MODULES(MAXIMUS_DEPS, 
+                   gtk+-3.0 >= $GTK_REQUIRED

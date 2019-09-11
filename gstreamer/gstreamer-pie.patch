@@ -1,0 +1,29 @@
+diff -urp gstreamer-1.16.0.orig/libs/gst/helpers/meson.build gstreamer-1.16.0/libs/gst/helpers/meson.build
+--- gstreamer-1.16.0.orig/libs/gst/helpers/meson.build	2019-01-26 19:10:08.000000000 -0600
++++ gstreamer-1.16.0/libs/gst/helpers/meson.build	2019-06-12 15:06:33.120486636 -0500
+@@ -5,6 +5,7 @@ executable('gst-plugin-scanner',
+   dependencies : [gobject_dep, gmodule_dep, glib_dep, mathlib, gst_dep],
+   install_dir : helpers_install_dir,
+   install: true,
++  pie: true,
+ )
+ 
+ # Used in test env setup to make tests find plugin scanner in build tree
+@@ -18,6 +19,7 @@ if bashcomp_found
+     dependencies : [gobject_dep, glib_dep, gst_dep],
+     install_dir : helpers_install_dir,
+     install: true,
++    pie: true,
+   )
+ endif
+ 
+@@ -118,7 +120,8 @@ if have_ptp
+     include_directories : [configinc, libsinc],
+     dependencies : [gio_dep, gobject_dep, glib_dep, mathlib, gst_dep, cap_dep],
+     install_dir : helpers_install_dir,
+-    install : true)
++    install : true,
++    pie : true)
+ 
+   meson.add_install_script('ptp_helper_post_install.sh',
+       helpers_install_dir, with_ptp_helper_permissions,

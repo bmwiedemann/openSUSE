@@ -1,0 +1,20 @@
+--- a/src/3ds/SoStream.cpp
++++ b/src/3ds/SoStream.cpp
+@@ -176,7 +176,7 @@ do { \
+   if (!gotNum) { setBadBit(); return FALSE; } \
+  \
+   char *ce; \
+-  s = '\0'; \
++  s = 0; \
+   _convertType_ tempVal = _convertFunc_(buf, &ce, 0); \
+  \
+   if (ce != s) \
+@@ -273,7 +273,7 @@ do { \
+ gotAll: \
+   \
+   char *ce; \
+-  s = '\0'; \
++  s = 0; \
+   double tempVal = _convertFunc_(buf, &ce); \
+  \
+   if (ce != s) \

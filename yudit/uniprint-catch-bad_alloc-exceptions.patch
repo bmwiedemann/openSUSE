@@ -1,0 +1,35 @@
+--- yudit-2.9.6.orig/uniprint/Main.cpp	2017-06-08 10:55:22.617380172 +0200
++++ yudit-2.9.6/uniprint/Main.cpp	2017-06-08 10:57:21.453489303 +0200
+@@ -37,6 +37,8 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
++#include <new>
++
+ #define BUFFER_SIZE 512
+ 
+ static const char *version="uniprint version %s GNU(c) Gaspar Sinai\n";
+@@ -318,11 +320,20 @@
+   uniPrint.setLineEndMark(shownl);
+   uniPrint.setWordWrap(wrap);
+ 
+-  if (!uniPrint.print (ifileString, utf8.encode (res)))
++  try
+   {
+-    fprintf (stderr, "uniprint: can not print.\n");
+-    return 1;
++    if (!uniPrint.print (ifileString, utf8.encode (res)))
++    {
++      fprintf (stderr, "uniprint: can not print.\n");
++      return 1;
++    }
++  }
++  catch (std::bad_alloc)
++  {
++    fprintf (stderr, "uniprint: can not print (out of memory).\n");
++	return 1;
+   }
++
+   int pagecount = uniPrint.getPageCount();
+   if (pagecount > 1)
+   {

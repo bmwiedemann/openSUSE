@@ -1,0 +1,23 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -175,12 +175,13 @@ AM_PATH_GTK_2_0(2.4.0,,
+         AC_MSG_ERROR([*** GTK >= 2.4.0 not installed - please install first ***]))
+ 
+ if test -z "$usewraster"; then
+-        AM_PATH_GDK_IMLIB(1.9.3,[AC_DEFINE(HAVE_IMLIB, 1, [Undef if you don't have the gdk_imlib library]) have_imlib="yes"], AC_MSG_WARN([*** IMLIB >= 1.9.3 not installed - please install first ***]))
++        #AM_PATH_GDK_IMLIB(1.9.3,[AC_DEFINE(HAVE_IMLIB, 1, [Undef if you don't have the gdk_imlib library]) have_imlib="yes"], AC_MSG_WARN([*** IMLIB >= 1.9.3 not installed - please install first ***]))
+         # workaround for imlib 1.9.2
+-        if test "$IMLIB_CONFIG" != "no" ; then
+-                IMLIB_LIBS=`$IMLIB_CONFIG --libs`
+-                GDK_IMLIB_LIBS="$GDK_IMLIB_LIBS $IMLIB_LIBS"
+-        fi
++        #if test "$IMLIB_CONFIG" != "no" ; then
++        #        IMLIB_LIBS=`$IMLIB_CONFIG --libs`
++        #        GDK_IMLIB_LIBS="$GDK_IMLIB_LIBS $IMLIB_LIBS"
++        #fi
++        true
+ else
+          CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
+          LIBS="$LIBS $GTK_LIBS"

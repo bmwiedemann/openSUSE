@@ -1,0 +1,96 @@
+diff -ur kinput2-v3.1.org/lib/imlib/imconv.c kinput2-v3.1/lib/imlib/imconv.c
+--- kinput2-v3.1.org/lib/imlib/imconv.c	2002-10-03 18:35:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imconv.c	2004-12-22 11:59:00.721597279 +0900
+@@ -909,11 +909,20 @@
+ 	ICClearConversion(input_obj);
+ 	TRACE(("\twas converting. %d bytes left\n", num_bytes));
+
++#if 0
++	/*
++	 * IMStopConversion() seems to not work correctly while
++	 * resetting IC. So this block was moved to ximResetICProc().
++	 * If calling IMResetIC() is required in other functions,
++	 * the following block is also used in it.
++	 */
+ 	if (icp->common_attr.reset_state == XIMInitialState) {
+ 	    /* Force to end the conversion. */
+ 	    TRACE(("\tback to the initial state\n"));
+ 	    IMStopConversion(icp);
+ 	}
++#endif
++
+     }
+     return num_bytes;
+ }
+@@ -965,6 +974,42 @@
+
+ /* ARGSUSED */
+ void
++IMStatusDraw(icp)
++IMIC *icp;
++{
++    Widget input_obj;
++    OCCPreeditDrawArg arg;
++
++    TRACE(("IMStatusDraw(ic%d)\n", icp->id));
++    if (!(icp->common_attr.input_style & XIMStatusCallbacks))
++	return;
++
++
++    arg.caret = 0;         /* ignored */
++    arg.chg_first = 0;     /* ignored */
++    arg.chg_length = 0;    /* ignored */
++    arg.encoding = IMCtextAtom(icp->im->connection->proto_widget);
++    arg.format = 0;        /* set by ICGetStatusString */
++    arg.text_length = 0;   /* set by ICGetStatusString */
++    arg.text = NULL;       /* set by ICGetStatusString */
++    arg.attrs_length = 0;  /* ignored */
++    arg.attrs = NULL;      /* ignored */
++
++    if (icp->conversion) {
++	XtVaGetValues(icp->conversion, XtNinputObject, &input_obj, NULL);
++	if (ICGetStatusString(input_obj, &arg.encoding, &arg.format,
++			      &arg.text_length, &arg.text,
++			      &arg.attrs_length) == -1)
++	return;
++    }
++
++    statusDraw(icp, &arg);
++
++    XtFree((char *)arg.text);
++}
++
++/* ARGSUSED */
++void
+ IMStatusDone(icp)
+ IMIC *icp;
+ {
+diff -ur kinput2-v3.1.org/lib/imlib/imfuncs.h kinput2-v3.1/lib/imlib/imfuncs.h
+--- kinput2-v3.1.org/lib/imlib/imfuncs.h	2002-10-03 18:35:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imfuncs.h	2004-12-22 11:59:00.722597158 +0900
+@@ -102,6 +102,7 @@
+ extern void IMSetFocus _Pt_((IMIC *icp));
+ extern void IMUnsetFocus _Pt_((IMIC *icp));
+ extern void IMStatusStart _Pt_((IMIC *icp));
++extern void IMStatusDraw _Pt_((IMIC *icp));
+ extern void IMStatusDone _Pt_((IMIC *icp));
+ extern void IMStartForwarding _Pt_((IMIC *icp));
+ extern void IMStopForwarding _Pt_((IMIC *icp));
+diff -ur kinput2-v3.1.org/lib/imlib/imrequest.c kinput2-v3.1/lib/imlib/imrequest.c
+--- kinput2-v3.1.org/lib/imlib/imrequest.c	2002-10-03 18:35:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imrequest.c	2004-12-22 12:16:30.835247338 +0900
+@@ -1353,6 +1353,14 @@
+     IMFinishRequest(conn, offset);
+     if (text != NULL) XtFree(text);
+     icp->state &= ~IC_RESETTING;
++
++    IMStatusDraw(icp);
++   /* moved from IMResetIC() */
++    if (icp->common_attr.reset_state == XIMInitialState) {
++	/* Force to end the conversion. */
++	TRACE(("\tback to the initial state\n"));
++	IMStopConversion(icp);
++    }
+ }
+
+ /*- ximExtMoveProc: handle XIM_EXT_MOVE request -*/

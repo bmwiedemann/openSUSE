@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Aug  6 05:14:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.005
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  4.005     2019-08-05 11:00:01 EDT
+    - Allow fields to be removed with note method.
+
+-------------------------------------------------------------------
+Tue Jul 16 09:43:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.004
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  4.004     2019-07-09 00:53:20 EDT
+    - Add time field to list_jobs method.
+
+-------------------------------------------------------------------
+Sat Jun 22 05:18:44 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 4.003
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  4.003     2019-06-21 18:06:07 EDT
+    - Ignore missing workers for jobs in the minion_foreground named queue to
+      make debugging very slow jobs easier.
+
+-------------------------------------------------------------------
+Wed Oct 10 09:17:14 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- initial package 4.002
+ * created by cpanspec 1.78.08

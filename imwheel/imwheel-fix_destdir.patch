@@ -1,0 +1,15 @@
+--- Makefile.am.orig	2008-01-08 00:04:02.000000000 +0100
++++ Makefile.am	2008-01-08 00:05:11.000000000 +0100
+@@ -30,10 +30,8 @@
+ 	chown @suid@ $$progname ; \
+ 	chmod u+s $$progname
+ endif
+-	$(mkinstalldirs) $(ETCDIR)
+-	-[ -f /etc/imwheelrc ] && mv /etc/imwheelrc $(ETCDIR)/imwheelrc || true
+-	-[ -f /etc/X11/imwheelrc ] && mv /etc/X11/imwheelrc $(ETCDIR)/imwheelrc || true
+-	-[ -f $(ETCDIR)/imwheelrc ] && install -m 644 imwheelrc $(ETCDIR)/imwheelrc.new || install -m 644 imwheelrc $(ETCDIR)/imwheelrc
++	$(mkinstalldirs) $(DESTDIR)$(ETCDIR)
++	install -m 644 imwheelrc $(DESTDIR)$(ETCDIR)/imwheelrc
+ 
+ extras: $(EXTRA_PROGRAMS)
+ 

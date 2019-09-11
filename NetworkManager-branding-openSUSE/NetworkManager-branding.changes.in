@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Feb 28 22:24:05 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec file by running spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 14 11:29:27 UTC 2017 - fezhang@suse.com
+
+- Apply %{branding_name} also to summary and description.
+
+-------------------------------------------------------------------
+Wed Sep  6 09:47:27 UTC 2017 - fezhang@suse.com
+
+- Add a SLE flavor.
+- Clean up specfile.
+
+-------------------------------------------------------------------
+Wed Aug 30 01:44:05 UTC 2017 - sckang@suse.com
+
+- SLE15 SP0 package, based on openSUSE version (bsc#1055200).
+
+-------------------------------------------------------------------
+Wed May  4 09:57:24 CEST 2016 - fcrozat@suse.com
+
+- SLE12 SP2 package, based on openSUSE version (FATE#320455).
+
+-------------------------------------------------------------------
+Sun Mar 13 23:59:31 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

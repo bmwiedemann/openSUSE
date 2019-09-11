@@ -1,0 +1,19 @@
+diff -urN SuiteSparse.orig/SuiteSparse_config/SuiteSparse_config.h SuiteSparse/SuiteSparse_config/SuiteSparse_config.h
+--- SuiteSparse.orig/SuiteSparse_config/SuiteSparse_config.h	2014-10-10 00:19:51.000000000 +0200
++++ SuiteSparse/SuiteSparse_config/SuiteSparse_config.h	2014-10-22 09:40:49.041061515 +0200
+@@ -153,13 +153,13 @@
+ ) ;
+ 
+ /* determine which timer to use, if any */
+-#ifndef NTIMER
++/*#ifndef NTIMER*/
+ #ifdef _POSIX_C_SOURCE
+ #if    _POSIX_C_SOURCE >= 199309L
+ #define SUITESPARSE_TIMER_ENABLED
+ #endif
+ #endif
+-#endif
++/*#endif*/
+ 
+ /* SuiteSparse printf macro */
+ #define SUITESPARSE_PRINTF(params) \

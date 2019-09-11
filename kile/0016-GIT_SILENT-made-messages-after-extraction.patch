@@ -1,0 +1,37 @@
+From 428f3e7e0095a334d6effc47e221bd96f02d86d1 Mon Sep 17 00:00:00 2001
+From: l10n daemon script <scripty@kde.org>
+Date: Wed, 10 Oct 2018 03:55:25 +0200
+Subject: [PATCH 16/35] GIT_SILENT made messages (after extraction)
+
+---
+ kile.xml                          | 1 -
+ src/data/org.kde.kile.appdata.xml | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/kile.xml b/kile.xml
+index 50892747..0559ad5d 100644
+--- a/kile.xml
++++ b/kile.xml
+@@ -3,7 +3,6 @@
+   <mime-type type="text/x-kilepr">
+     <comment>Kile project</comment>
+     <comment xml:lang="ar">مشروع كايل</comment>
+-    <comment xml:lang="ast">Proyeutu Kile</comment>
+     <comment xml:lang="bs">Kile projekt</comment>
+     <comment xml:lang="ca">projecte del Kile</comment>
+     <comment xml:lang="ca@valencia">projecte del Kile</comment>
+diff --git a/src/data/org.kde.kile.appdata.xml b/src/data/org.kde.kile.appdata.xml
+index 814c75d2..691d8110 100644
+--- a/src/data/org.kde.kile.appdata.xml
++++ b/src/data/org.kde.kile.appdata.xml
+@@ -5,7 +5,6 @@
+   <project_license>GPL-2.0+</project_license>
+   <name>Kile</name>
+   <name xml:lang="ar">كايل</name>
+-  <name xml:lang="ast">Kile</name>
+   <name xml:lang="ca">Kile</name>
+   <name xml:lang="ca-valencia">Kile</name>
+   <name xml:lang="cs">Kile</name>
+-- 
+2.20.1
+

@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Thu Jun 14 16:46:05 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:43:47 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon Jul 10 18:42:12 UTC 2017 - toddrme2178@gmail.com
+
+- Fix wrong-script-interpreter rpmlint error.
+
+-------------------------------------------------------------------
+Wed Feb  1 11:52:52 UTC 2012 - saschpe@suse.de
+
+- (Re-add) a proper description
+- Rebase kid-setuptools.patch
+
+-------------------------------------------------------------------
+Tue Jan 31 14:28:22 UTC 2012 - saschpe@suse.de
+
+- Completely replaced crappy spec file
+- Run testsuite
+- Buildrequire python-distribute
+
+-------------------------------------------------------------------
+Mon Jan 15 09:34:26 CET 2007 - cthiel@suse.de
+
+- fix build, only use BuildRequires: python-elementtree on old dists
+
+-------------------------------------------------------------------
+Thu Jan 11 14:47:49 CET 2007 - poeml@suse.de
+
+- use python-xml requirement for python 2.5 only (because that's
+  where elementtree lives since then)
+
+-------------------------------------------------------------------
+Tue Jan  9 14:55:47 CET 2007 - poeml@suse.de
+
+- re-add python-elementtree requirement if built with python < 2.5
+
+-------------------------------------------------------------------
+Mon Jan  8 22:51:15 CET 2007 - cthiel@suse.de
+
+- Enhancements
+  * Error messages
+    o XML errors from the Expat parser are now shown along with the
+      corresponding line of the erroneous XML code and the exact position of
+      the error.
+    o Kid is now much less picky about py:extends and py:layout expressions
+      and will output much better error messages if they cause an error.
+    o Kid will now also check that you dont' use a Template parameter that
+      conflicts with the name of a member of the BaseTemplate class.  Output
+      Format Control
+
+    o The serialization methods now take an additional attribute format that
+      must be an instance of the new Format class or a string referring to
+      one of several predefined output formats. This class gives you more
+      fine control over how the text content is serialized. You can do
+      things like removing redundant whitespace, adding indentation, word
+      wrapping, using named entities and using typographic characters for
+      quotes etc. You can also plug-in your own text filters here. The
+      chapter on Formatting in the User's Guide lists all available
+      parameters.
+    o The old filter methods of the Serializer class have been replaced by a
+      more powerful general method incorporating the specified format.  HTML
+      Serializer
+    o As discussed on the mailing list, the HTML serializer now produces
+      tags in lowercase. You can change this behavior with the transpose
+      attribute or using the output method 'HTML' instead of 'html'.
+    o Additional HTML output methods have been defined corresponding to
+      Mozilla's "full standards mode", "almost standards mode" and "quirks
+      mode." XHTML Serializer
+    o The XHTML Serializer now also injects a meta tag with the content type
+      at the top of the head section. This had been only done by the
+      HTMLSerializer before. The content type is not injected if such a meta
+      tag already exists. This automatism can be controlled with the
+      inject_type parameter.  XML Comments
+    o The rule when variable substitution is applied to XML comments has
+      been slightly changed, as explained in the Language Specification. 
+      Additional parameters for parsing templates
+    o The load_template() function now takes additional parameters
+      entity_map and exec_module. This lets you choose a different XML
+      entity map to be used when parsing the template, and gives you more
+      control over the way in which the compiled template code is executed
+      in the newly created module. The entity_map parameter can also be
+      passed to some other functions such as XML() and compile_file().  Full
+      compatibility with Python 2.5 and Python eggs
+    o The enable_import mechanism has been completely rewritten to support
+      both Python 2.5 and Python eggs. The old method based on ihooks is not
+      used any more since ihooks is not compatible with Python eggs; and the
+      old method based on path_hooks is not used any more since in Python 2.5,
+      importers installed via path_hooks do not fall back to the built-in
+      import mechanism any more, breaking the previous implementation.
+    o The new implementation allows enabling imports from specified paths as
+      well as imports from sys.path which is now implemented via meta_path.
+    o Python versions older than Python 2.3 are not supported by Kid any
+      more.
+  * Changes
+   o Due to optimizations in kid.template_util, Kid 0.9.3 templates need to
+     be re-compiled in order to run with Kid 0.9.4.
+   o The 'html' output method now produces lower-case tags. If you want
+     upper-case tags, you have to use the 'HTML' method now.
+   o The kid.parser and kid.pull modules have been renamed kid.codewriter
+     and kid.parser respectively (in anticipation of a parsing subsystem).
+ * Bug Fixes
+   o A couple of bugs that had been reported as trac tickets have been
+     fixed.
+   o Using layout templates which are extended by another template did not
+     work properly (as reported on the TurboGears mailing list); this has
+     been fixed.
+   o More unit tests have been added. The testing machinery now supports
+     both py.test and nose, or you can simply use the run_tests.py script.
+- removed obsolete Requires: python-elementtree
+
+-------------------------------------------------------------------
+Tue Nov 21 15:36:51 CET 2006 - cthiel@suse.de
+
+- requires python-xml
+
+-------------------------------------------------------------------
+Mon Oct  2 14:02:09 CEST 2006 - cthiel@suse.de
+
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Thu Sep 21 14:25:33 CEST 2006 - cthiel@suse.de
+
+- fix build with python 2.5
+
+-------------------------------------------------------------------
+Fri Aug  4 17:20:07 CEST 2006 - cthiel@suse.de
+
+- update to version 0.9.3
+  * Re-applied a patch from ticket [66] that fix a bug where comments caused
+    errors when in base templates.
+  * Changed all of the lesscode.org links into kid-templating.org
+  * Added and updated a few tests
+  * Removed the NamespaceStack.set method and made NamespaceStack.pop return
+    the deleted value.
+  * Set balanced blocks to be off by default.
+  * Updated the parser to better handle interpolation of non-string types in
+    comments.
+
+-------------------------------------------------------------------
+Tue Jun 27 15:54:26 CEST 2006 - cthiel@suse.de
+
+- update to version 0.9.2
+  * Enhancements
+    o Updated to current version of ez_setup.py.
+    o Improved importer.py, resolving tickets #103 (FutureWarnings) and 137
+      #(using new import hooks).
+    o The testing code can now figure out what testing modules to run
+      dynamically. In addition, the code also determines which functions are
+      tests dynamically. Tests that need pylib are skipped for those that
+      don't have it. If you run 'python test_kid.py' now you should be
+      seeing more tests executed.
+    o Removed the revision history from the language and and instead include
+      a pointer to the Release Notes.
+  * API Changes
+    o Allow the kid command to accept XML piped into it's stdin when '-' is
+      used as the filename.
+    o Patch from #143. The load_template() function accepts an 'ns'keyword
+      argument to pre-populate the template module namespace with global
+      variables. Thanks!
+    o Created an API to replace the various ways that configuration options
+      are currently set.
+    o Allow the XML function to take a new keword parameter (xmlns) that
+      sets the default namespace for a fragment.
+  * Add Support for Python 2.5
+     o Added support for xml.etree, which is the ElementTree packaged with
+       Python 2.5. Running 'make test' only checks xml.etree currently.
+     o The __future__ imports have been moved to the top of the module to
+       play nicely in Python 2.5. I have also added 2.5 to the makefile so
+       it will be tested before each release.
+     o makefile regression test includes Python 2.5.
+
+-------------------------------------------------------------------
+Thu May 25 14:48:18 CEST 2006 - cthiel@suse.de
+
+- update to version 0.9.1
+  * Layout Templates: 
+    o The parameters passed to a template with a py:layout were not visible
+      in named template functions or match templates.
+    o A small bug existed in Python 2.3 where the dict.update() method was
+      being called incorrectly. Python 2.4 allows a list of tuples to be
+      passed to update(), whereas Python 2.3 does not.
+    o There is a new feature in Kid for a template to specify a layout
+      template to which match templates, named template definitions, and
+      template parameters will be applied. This is useful for applying a
+      generic set of headers, menus, footers, etc. to a many pages without
+      duplicating large amounts of code in each page.
+  * py:match:
+    o The logic to apply the template matches has been reworked. This was
+      due to the discovery of some odd behavior when using multiple template
+      inheritence.
+  * Convenience Functions
+    o Kid Template instances now provide convenience funcitons defined(name)
+      and value_of(name).
+  * Invisible Comments
+    o XML comments starting with a ! character will not appear in the
+      serialized output of a template.
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec 24 16:14:24 CET 2005 - cthiel@suse.de
+
+- update to version 0.8
+
+-------------------------------------------------------------------
+Tue Nov  8 14:08:55 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Sep 12 21:41:52 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue Aug 16 11:07:54 CEST 2005 - cthiel@suse.de
+
+- initial package (version 0.6.4)
+
+

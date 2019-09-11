@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Wed Sep 24 05:47:11 UTC 2014 - mt@suse.com
+
+- Removed obsolete README.SuSE (fate#316521,bnc#888999),
+  see ifcfg-vlan(5) manual page for actual informations.
+
+-------------------------------------------------------------------
+Wed Feb 15 16:19:04 UTC 2012 - mt@suse.com
+
+- Corrected last change log entry.
+
+-------------------------------------------------------------------
+Mon Jan 30 18:42:27 UTC 2012 - rschweikert@suse.com
+
+- Changed install of vconfig to /usr/sbin as part of usr merge
+  project. With having /usr on a remote fs is supported by
+  initrd, thus this does not effect issues reported in (#285472)
+  any more.
+
+-------------------------------------------------------------------
+Tue Dec 18 16:33:31 CET 2007 - mt@suse.de
+
+- Removed obsolete hardware descriptions usage info from README
+- Changed to install vconfig in /sbin for /usr on nfs (#285472)
+
+-------------------------------------------------------------------
+Mon Nov  6 19:38:44 CET 2006 - schwab@suse.de
+
+- Clean debris before building.
+
+-------------------------------------------------------------------
+Fri Oct 27 15:55:07 CEST 2006 - poeml@suse.de
+
+- update to 1.9:
+  - Fixed error exit codes to be !0 (makes it behave much better in
+    scripts.
+  - there are also changes in macvlan_config.c, which we don't
+    package though.
+
+-------------------------------------------------------------------
+Wed Mar 29 13:58:02 CEST 2006 - poeml@suse.de
+
+- updated README for usage of hardware descriptions for ETHERDEVICE
+  [#150771]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 15 20:43:22 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri Mar  5 18:18:23 CET 2004 - poeml@suse.de
+
+- update to 1.8
+- vlan.1.6-strings.patch dropped, is fixed upstreams
+
+-------------------------------------------------------------------
+Thu Feb 26 12:25:44 CET 2004 - hmacht@suse.de
+
+- added option norootforbuild in specfile
+
+-------------------------------------------------------------------
+Thu Jul 24 14:38:36 CEST 2003 - poeml@suse.de
+
+- update to 1.7m
+
+-------------------------------------------------------------------
+Tue Jan 14 18:14:35 CET 2003 - nadvornik@suse.cz
+
+- fixed multi-line string literals
+
+-------------------------------------------------------------------
+Wed Jul 17 12:38:01 CEST 2002 - okir@suse.de
+
+- added README describing sysconfig/network hooks for VLAN
+
+-------------------------------------------------------------------
+Thu Apr 11 17:39:30 CEST 2002 - ro@suse.de
+
+- up to version 1.6 to fix compile issues 
+
+-------------------------------------------------------------------
+Sat Feb  2 18:20:52 CET 2002 - poeml@suse.de
+
+- initial package...
+

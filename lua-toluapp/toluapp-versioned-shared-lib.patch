@@ -1,0 +1,53 @@
+Index: tolua++-1.0.93/SConstruct
+===================================================================
+--- tolua++-1.0.93.orig/SConstruct
++++ tolua++-1.0.93/SConstruct
+@@ -1,6 +1,8 @@
+ import sys;
+ import os
+ 
++version = "1.0.93"
++
+ tools = ['default']
+ if os.name == 'nt':
+ 	tools = ['mingw']
+@@ -26,8 +28,8 @@ opts.Add('no_cygwin', 'Use -mno-cygwin t
+ opts.Add('LIBS', 'libraries', [])
+ opts.Add('LIBPATH', 'library path', [])
+ 
+-opts.Add('tolua_bin', 'the resulting binary', 'tolua++')
+-opts.Add('tolua_lib', 'the resulting library', 'tolua++')
++opts.Add('tolua_bin', 'the resulting binary', 'toluapp-@SUFFIX@')
++opts.Add('tolua_lib', 'the resulting library', 'tolua++-@SUFFIX@')
+ opts.Add('TOLUAPP', 'the name of the tolua++ binary (to use with built_dev=1)', 'tolua++')
+ 
+ opts.Add('prefix', 'The installation prefix')
+@@ -169,7 +171,7 @@ Default('all')
+ 
+ if env['prefix']:
+ 	env.Install(env['prefix']+'/bin', env.bin_target)
+-	env.Install(env['libdir'], env.lib_target)
++	env.InstallVersionedLib(env['libdir'], env.lib_target, SHLIBVERSION=version)
+ 	env.Install(env['prefix']+'/include', '#include/tolua++.h')
+ 
+ 	env.Alias('install', [env['prefix']+'/bin', env['prefix']+'/include', env['libdir']])
+Index: tolua++-1.0.93/src/lib/SCsub
+===================================================================
+--- tolua++-1.0.93.orig/src/lib/SCsub
++++ tolua++-1.0.93/src/lib/SCsub
+@@ -1,5 +1,6 @@
+ Import('env')
+ 
++version = "1.0.93"
+ 
+ sources = [
+ 	'tolua_event.c',
+@@ -12,7 +13,7 @@ sources = [
+ env.lib_target_static = env.Library('#/lib/'+env['tolua_lib']+'_static', sources)
+ 
+ if env['shared']:
+-	env.lib_target = env.SharedLibrary('#lib/'+env['tolua_lib'], sources)
++	env.lib_target = env.SharedLibrary('#lib/'+env['tolua_lib'], sources, SHLIBVERSION=version)
+ else:
+ 	env.lib_target = env.Library('#/lib/'+env['tolua_lib'], sources)
+ 

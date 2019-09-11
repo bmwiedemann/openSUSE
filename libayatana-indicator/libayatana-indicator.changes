@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Jun 11 04:49:44 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Avoid mate-common for some openSUSE-specific reasons.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:20:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.2:
+  * Makefile.am: Drop distcheck features.
+  * libayatana-indicator/indicator-ng.c: Type cast assignments from
+    g_object_ref_sink().
+
+-------------------------------------------------------------------
+Mon Mar 19 13:29:54 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Mar  1 07:36:44 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.2.5
+  * Keeping up with Qt5, CMake and QNX
+
+-------------------------------------------------------------------
+Thu Oct 25 13:14:21 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.4
+  * Fix a build issue
+- Drop fix-build.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue May 22 18:31:56 UTC 2018 - christophe@krop.fr
+
+- Update to 1.2.3. Changes since 1.2.1:
+ * minor syncing with externals
+ * Fix build issue with Qt 5.10 on windows+MSVC
+ * Update graphviz SHA1 (fixes issues regarding sort.exe lookup)
+ * Minor CMake improvements
+- Add fix-build.patch to fix build with recent Qt versions.
+
+-------------------------------------------------------------------
+Sun Aug 20 08:30:52 UTC 2017 - christophe@krop.fr
+
+- Update to 1.2.1:
+  * Handle building with QtRemoteObjects from Qt5.9
+  * API docs are always built if doxygen is found (unless -DBUILD_DOCS is off)
+  * QCH docs are also built
+  * Fix build against namespaced Qt
+- Drop the kdstatemachineeditor package.
+
+-------------------------------------------------------------------
+Sun Feb 19 22:18:27 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups again. Trim filler words from description.
+
+-------------------------------------------------------------------
+Fri Feb 17 17:26:12 UTC 2017 - alarrosa@suse.com
+
+- Initial release 1.2.0 
+

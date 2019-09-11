@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Sep 10 17:03:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Use 'find +'.
+
+-------------------------------------------------------------------
+Wed Aug 29 09:13:41 UTC 2018 - tchvatal@suse.com
+
+- Install some license
+- Remove devel dependency
+
+-------------------------------------------------------------------
+Thu May 31 15:39:30 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 3.11
+  * Fixed some minor bugs related to re flags and token order.  
+  * Added a set_lexpos() method to grammar symbols.  Github issue #148.
+  * Mostly minor bug fixes and small code cleanups.
+
+-------------------------------------------------------------------
+Mon Jul 10 18:42:12 UTC 2017 - toddrme2178@gmail.com
+
+- Fix wrong-script-interpreter rpmlint error.
+
+-------------------------------------------------------------------
+Thu Mar 16 19:28:47 UTC 2017 - rjschwei@suse.com
+
+- Switch to single-spec build
+- Update to 3.10
+  * Changed grammar signature computation to not involve hashing
+    functions. Parts are just combined into a big string.
+
+-------------------------------------------------------------------
+Fri Sep  2 13:55:35 UTC 2016 - tbechtold@suse.com
+
+- update to 3.9:
+  * Exposed the parser state number as the parser.state attribute
+    in productions and error functions.
+  * Fixed Issue #88. Python3 compatibility with ply/cpp.
+  * Fixed Issue #93. Ply can crash if SyntaxError is raised inside
+    a production.   Not actually sure if the original implementation
+    worked as documented at all.  Yacc has been modified to follow
+    the spec as outlined in the CHANGES noted for 11/27/07 below.
+  * Fixed Issue #97. Failure with code validation when the original
+    source files aren't present.   Validation step now ignores
+    the missing file.
+  * Minor fixes to version numbers.
+
+-------------------------------------------------------------------
+Wed Oct  7 06:24:38 UTC 2015 - hpj@urpla.net
+
+- update to version 3.8:
+  * Fixed issues related to Python 3.5. Patch contributed by Barry Warsaw.
+
+- update to version 3.7
+  * Fixed problems when reading table files from pickled data.
+  * Fixed regression in handling of table modules if specified as module
+    objects.   See https://github.com/dabeaz/ply/issues/63
+
+- clean up spec
+- add testing rig
+
+-------------------------------------------------------------------
+Mon May 11 12:39:33 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.6:
+  * If PLY is unable to create the 'parser.out' or 'parsetab.py'
+    files due to permission issues, it now just issues a warning
+    message and continues to operate
+  * Fixed some issues related to use of packages and table file
+    modules
+- additional changes from version 3.5:
+  * Added support for defaulted_states in the parser
+  * Fixed debug logging in the parser
+  * Added actions to be defined to character literals (Issue #32)
+  * Import of the 'parsetab.py' file is now constrained to only
+    consider the directory specified by the outputdir argument to
+    yacc()
+  * Changed default output directory to be the same as that in
+    which the yacc grammar is defined
+  * Changed the parsetab.py file signature slightly so that the
+    parsetab won't regenerate if created on a different major
+    version of Python
+  * Fixed Issue #44 call_errorfunc() should return the result of
+    errorfunc()
+  * Support for versions of Python <2.7 is officially dropped
+  * Fixed bug related to calling yacc(start=...)
+  * Added skipped tests for PyPy and Java
+  * Added filter to make unit tests pass under 'python -3'
+  * Fixed CPP_INTEGER regex in ply/cpp.py (Issue 21)
+  * Fixed yacc validation bugs when from __future__ import
+    unicode_literals is being used
+  * Added support for Travis-CI
+  * Added a .gitignore file
+  * Fixed validation problems for source files that include a
+    different source code encoding specifier
+  * Fixed unit tests for yacc to eliminate random failures due to
+    dict hash value randomization in Python 3.3
+  * Fixed comment whitespace processing bugs in ply/cpp.py
+  * Fixed token names in ply/ctokens.py to match rule names
+  * Changes to functions available in panic mode error recover
+  * Fixed some problems with line and position tracking and the use
+    of error symbols
+  * Change to doc string handling in lex module
+  * Fixed issue #1: Fixed _tabversion. It should use __tabversion__
+    instead of __version__
+  * Fixed issue #8: Literals empty list causes IndexError
+  * Fixed issue #12: Typo in code snippet in documentation
+  * Fixed issue #10: Correctly escape t_XOREQUAL pattern.
+- clean the test and example directories
+- remove stray backup files in doc
+- remove unneeded executable bit of testlex.py
+- remove CFLAGS export: unneeded
+- do not drop executable bit of everything in test since
+  it contains subdirectories
+- remove useless clean section
+- remove README from package: not provided anymore
+
+-------------------------------------------------------------------
+Wed Jan  2 19:44:41 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Fri May 25 10:04:56 UTC 2012 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Fri May 25 03:24:34 UTC 2012 - highwaystar.ru@gmail.com
+
+- python3 package added 
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:05 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Mar 29 14:02:28 UTC 2011 - saschpe@suse.de
+
+- Update to 3.4:
+  + Minor patch to make cpp.py compatible with Python 3.
+  + Fixed setup.py trove classifiers to properly list PLY as Python
+    3 compatible.
+- License changed to BSD3c
+- Packaged more doc files
+- Moved important docs (README, ..) to base package
+- Fixed build for non-SUSE distros
+
+-------------------------------------------------------------------
+Tue Sep 14 08:36:55 UTC 2010 - coolo@novell.com
+
+- Update to 3.3:
+  + PLY-3.3 is a minor bug fix release, it supports both Python 2
+    and Python 3.
+- License changed to BSD
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- Use new python macros
+
+-------------------------------------------------------------------
+Mon Jul 28 13:22:46 CDT 2008 - maw@suse.de
+
+- Update to version 2.5:
+  + Various bug fixes
+  + Some performance improvements
+  + For a blow-by-blow account of changes, see the file CHANGES
+    in the package python-ply-doc.
+
+-------------------------------------------------------------------
+Tue Mar 18 00:40:23 CET 2008 - maw@suse.de
+
+- Import into autobuild
+- Add a -doc subpackage
+- Add python-ply-shebangs.patch
+
+-------------------------------------------------------------------
+Tue Oct 23 16:52:11 CDT 2007 - maw@suse.de
+
+- Don't build as noarch.
+
+-------------------------------------------------------------------
+Fri Apr 13 12:08:08 CDT 2007 - maw@suse.de
+
+- Initial import into the build service
+- Rename ply.spec to python-ply.spec as that is what the resultant
+  package is called.
+

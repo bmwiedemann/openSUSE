@@ -1,0 +1,21 @@
+diff -ur pcc-libs-1.0.0.orig/libpcc/Makefile.in pcc-libs-1.0.0/libpcc/Makefile.in
+--- pcc-libs-1.0.0.orig/libpcc/Makefile.in	2011-04-15 12:45:50.999999980 +0200
++++ pcc-libs-1.0.0/libpcc/Makefile.in	2011-04-15 12:50:44.117999870 +0200
+@@ -20,6 +20,7 @@
+ PCCINCDIR = $(libdir)/pcc/$(TARGET)/$(VERSION)/include
+ 
+ CPPFLAGS += @CPPFLAGS@ -I$(srcdir) @ENDIAN_FLAG@ -Dos_$(TARGOS)
++SSP_CFLAGS = @CFLAGS@ -fno-stack-protector
+ 
+ LIBS = @LIBS@
+ AR = @AR@
+@@ -50,6 +51,9 @@
+ 	$(AR) r $@ $?
+ 	$(RANLIB) $@
+ 
++ssp.o: ssp.c
++	$(CC) -O $(CPPFLAGS) $(SSP_CFLAGS) -c $<
++
+ .c.o :
+ 	$(CC) -O $(CPPFLAGS) $(CFLAGS) -c $<
+ 

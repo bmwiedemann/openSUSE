@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Jan 12 13:48:17 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * libhubbub-0.3.0-is_error.patch
+    + Avoid implicit declaration and undefined symbol "is_error"
+
+-------------------------------------------------------------------
+Tue Aug  8 19:41:39 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Thu Jul 31 14:55:34 UTC 2014 - dvaleev@suse.com
+
+- Workaround false positive on powerpc64 (bnc#889740)
+
+- added patches:
+  * 0001-workaround-fail-on-ppc64.patch
+-------------------------------------------------------------------
+Fri May 23 11:27:44 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri May 23 11:06:45 UTC 2014 - fstrba@suse.com
+
+- Initial import of libhubbub, inspired by Fedora package
+- Add patch to not store timestamp in package:
+  * libhubbub-0.3.0-notimestamp.patch
+

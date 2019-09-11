@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Mon Jul 15 11:09:23 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1563188951.f6f7c6b3:
+  * spec: Provide a "devel" subpackage pulling in all build+test dependencies
+  * spec: Fix warning about missing explicit perl-base
+
+-------------------------------------------------------------------
+Sat Jul 06 11:50:50 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1562413838.c3d5e8ac:
+  * VNC: reverse key order when sending key up events (#1174)
+
+-------------------------------------------------------------------
+Tue Jul 02 07:23:28 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1562052196.bca214ee:
+  * Use default graphics on x86 to circumvent "cirrus" limitations (#1169)
+  * os-autoinst.spec: Fix vanished runtime requires
+  * Save RPM spec file in upstream repo same as for openQA
+
+-------------------------------------------------------------------
+Wed Jun 19 07:53:48 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560860907.6a126c01:
+  * t: Catch output of failing runcmd
+  * osutils: Let the "attempts" sound less harmful
+  * t: Do not waste time waiting in test 13-osutils.t
+  * t: Fix all uncaught output and warnings in 08-autotest.t
+  * t: Fix warning about undefined variable in 17-basetest.t
+  * sshVirtsh: Remove procedure add_serial_console()
+
+-------------------------------------------------------------------
+Sun Jun 16 23:53:45 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560548250.151bd110:
+  * Use QUIET variable for script_run/output
+
+-------------------------------------------------------------------
+Fri Jun 14 08:53:01 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560502370.2654e4ef:
+  * Format using Perl::Tidy 20190601
+
+-------------------------------------------------------------------
+Wed Jun 05 12:48:21 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1559738889.52a75c17:
+  * sshVirtsh: Log libvirt xml files
+  * Fix missing or double output in autoinst-log.txt with partial revert
+  * Increment API version after  'Always log to autoinst-log.txt'
+  * Fix perl warning about undefined VIRTIO_CONSOLE
+  * Fix typo in HDDFORMAT die handler
+  * Always log to autoinst-log.txt
+  * Add recursive get data call
+
+-------------------------------------------------------------------
+Wed May 29 14:50:35 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1559044089.b8a76372:
+  * qemu: Multiple virtio-consoles
+  * Allow failing for matching regex in autoinst log
+
+-------------------------------------------------------------------
+Mon May 27 06:50:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558854356.09e08ded:
+  * Log best candidate needle also on timeout
+
+-------------------------------------------------------------------
+Fri May 24 22:50:36 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558691185.f7da5cd0:
+  * Avoid "unitialized value in string eq" warning
+  * Add quiet option to wait_serial()
+
+-------------------------------------------------------------------
+Tue May 21 09:56:52 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558432600.6c62e09d:
+  * Don't modify backend vars when running test
+
+-------------------------------------------------------------------
+Wed May 15 14:33:28 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1557827957.ce72694e:
+  * Add debug output before 'flushing frames'
+
+-------------------------------------------------------------------
+Mon May 13 12:06:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1557391016.927f3d85:
+  * Add explanation to error regarding command server
+  * Extend type_password arguments
+  * Add an option of mousehide for assert_and_click
+  * Assign click_point when parsing needle
+  * Take click point from area over to match
+  * Enable assert_and_click to use an area's click point
+  * Remove out-commented code in assert_and_click
+  * script_output: log script for execution into log
+  * Make get_var_array return values consistent
+
+-------------------------------------------------------------------
+Thu Apr 11 11:32:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1554982352.0cb8a1e0:
+  * Fix assert_screen_change method call
+  * Allow multiple tap interfaces in one network
+  * Fix error message in consoles::network_console
+  * consoles: Rename virtio_screen to serial_screen
+  * svirt: scp serial_terminal.txt log to worker
+  * svirt: Refactor serial console initialization and running code
+  * svirt: Rename $command variable back to $cmd
+  * sshVirtsh: Rename $channel variable to $chan
+  * svirt: Merge get_ssh_output() implementations into single one
+  * svirt: Remove unused variables from start_serial_grab()
+  * svirt: Pass credentials via %hash in run_ssh_cmd()
+  * svirt: Fix virsh console initialization
+  * svirt: Fix serial backend for s390x
+  * consoles/sshVirtshSUT: Fix domain detection
+
+-------------------------------------------------------------------
+Fri Dec 07 10:04:15 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1544111663.31867f0e:
+  * Replace all uses of JSON and JSON::XS with Mojo::JSON and Cpanel::JSON::XS
+  * Clean up generically named variables and use more fitting names
+  * Make get_cmd_output() use other connections than 'ssh'
+  * Describe VMWARE_NFS_DATASTORE & VMWARE_REMOTE_VMM
+  * VMware: Rewrite add_disk()
+  * VMware: Replace vCenter with ESXi host
+  * VMware: Support snapshots, suspend, resume etc
+  * Use Perl::Critic::Freenode to determine good coding style
+  * Add unit test for format_vtt_timestamp
+  * Use video captions to overlay wallclock time
+
+-------------------------------------------------------------------
+Fri Nov 30 15:50:25 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1543593014.1e83b015:
+  * Include folder hierachy in category name
+  * Remove actual use of bmwqemu from command processing tests
+  * Increase timeout in fullstack test for 'Skip timeout'
+  * Test command processing for assert/check screen and setting timeout
+  * Allow to adjust timeout via command server
+  * test: Add QEMU_APPEND option tests
+  * Make currently executed function available to developer mode
+  * Keep only the 30 most recently used needle images
+  * qemu: Enhance QEMU_APPEND option to handle multiple options with or without params
+
+-------------------------------------------------------------------
+Tue Oct 16 05:52:06 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1539636518.09d55556:
+  * Ensure main.pm is still used for proper initialization on SCHEDULE (#1039)
+  * Add test flag to revert to last good when test module didn't fail (#1034)
+  * Record info for barriers and mutexes (#978)
+  * Avoid overriding SERIALDEV obtained from testsuite or machine settings (#1037)
+  * Fix undefined BACKEND warning in search_for_expected_serial_failures
+  * Use Test::Warnings where possible to prevent warnings in tests
+  * Improve error handling in needle download
+  * Handle OPENQA_URL set to eg. 'localhost:9526' correctly
+  * Download new needles on resume in autotest
+  * Add limit for downloading new needles
+  * Improve deducing openQA URL for needle downlaod from test variables
+  * Refactor needle download and add unit tests
+  * Download new needles from openQA on resume
+  * Delete redundant newlines in die's
+  * Prevent warnings in 02-test_ocr.t
+  * Fix perlcritic error in backend/driver.pm
+  * Add doc for OFW
+  * Block and ignore SIGTERM from opencv threads
+  * Reduce the opencv libraries we link to
+  * testapi: Relax regex in script_output filtering what to return
+
+-------------------------------------------------------------------
+Mon Sep 10 10:58:21 UTC 2018 - okurz@suse.com
+
+- Add package self-test with separate spec-file

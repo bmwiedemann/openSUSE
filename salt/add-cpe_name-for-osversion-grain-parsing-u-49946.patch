@@ -1,0 +1,73 @@
+From c2c002a2b8f106388fda3c1abaf518f2d47ce1cf Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Tue, 9 Oct 2018 14:08:50 +0200
+Subject: [PATCH] Add CPE_NAME for osversion* grain parsing (U#49946)
+
+Remove unnecessary linebreak
+
+Override VERSION_ID from os-release, if CPE_NAME is given
+
+Add unit test for WFN format of CPE_NAME
+
+Add unit test for v2.3 of CPE format
+
+Add unit test for broken CPE_NAME
+
+Prevent possible crash if CPE_NAME is wrongly written in the distro
+
+Add part parsing
+
+Keep CPE_NAME only for opensuse series
+
+Remove linebreak
+
+Expand unit test to verify part name
+
+Fix proper part name in the string-bound CPE
+---
+ salt/grains/core.py | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 29e8371c2b..d688b6c757 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -1571,6 +1571,34 @@ def _parse_cpe_name(cpe):
+     return ret
+ 
+ 
++def _parse_cpe_name(cpe):
++    '''
++    Parse CPE_NAME data from the os-release
++
++    Info: https://csrc.nist.gov/projects/security-content-automation-protocol/scap-specifications/cpe
++
++    :param cpe:
++    :return:
++    '''
++    part = {
++        'o': 'operating system',
++        'h': 'hardware',
++        'a': 'application',
++    }
++    ret = {}
++    cpe = (cpe or '').split(':')
++    if len(cpe) > 4 and cpe[0] == 'cpe':
++        if cpe[1].startswith('/'):  # WFN to URI
++            ret['vendor'], ret['product'], ret['version'] = cpe[2:5]
++            ret['phase'] = cpe[5] if len(cpe) > 5 else None
++            ret['part'] = part.get(cpe[1][1:])
++        elif len(cpe) == 13 and cpe[1] == '2.3':  # WFN to a string
++            ret['vendor'], ret['product'], ret['version'], ret['phase'] = [x if x != '*' else None for x in cpe[3:7]]
++            ret['part'] = part.get(cpe[2])
++
++    return ret
++
++
+ def os_data():
+     '''
+     Return grains pertaining to the operating system
+-- 
+2.17.1
+
+

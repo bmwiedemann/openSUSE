@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Aug 18 10:32:51 UTC 2014 - cdenicolo@suse.com
+
+- license update:  LGPL-2.1+ or MIT
+  no GPL found in package.
+
+-------------------------------------------------------------------
+Fri Aug 15 16:19:34 UTC 2014 - petr@yarpen.cz
+
+- version bump to 1.3
+- configure/testing program compiles
+
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

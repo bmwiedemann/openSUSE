@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Sun Sep  3 06:52:24 UTC 2017 - jweberhofer@weberhofer.at
+
+- Cleaned up files
+
+-------------------------------------------------------------------
+Fri Aug 18 10:00:27 UTC 2017 - ecsos@opensuse.org
+
+- renamed package to php7-pear-MDB2_Driver_mysqli
+
+-------------------------------------------------------------------
+Fri Feb  1 13:30:01 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 1.5.0b4
+
+- Changelog 1.5.0b4
+  * Make varchar_max_length property public, Bug #19582.
+  * Revert 327099 by afz, caused "Notice: Undefined index: charset on line 1003"
+  * PEAR::isError() -> MDB2::isError(), Bug #19491.
+  * PEAR::loadExtension() -> extension_loaded(), Bug #19583.
+  * max value for VARCHAR is 65535 but if used multi-bytes (UTF8) so it is 21844, because UTF8 string takes 3bytes
+  * Fix Bug #19262. Updates conditional stagements to use logical operators to include MDB2_FETCHMODE_OBJECT where appropriate. Was broken in r321197.
+  * Have truncateTable() return MDB2_OK on success, as documented (bug 19201)
+  * Have alterTable() return MDB2_OK on success, as documented (bug 19200)
+  * Have dropIndex() return MDB2_OK on success, as documented (bug 19198)
+  * Have vacuum() return MDB2_OK on success, as documented (bug 19196)
+  * Have createIndex() return MDB2_OK on success, as documented (bug 19195)
+  * Have dropConstraint() return MDB2_OK on success, as documented (bug 19194)
+  * Have dropSequence() return MDB2_OK on success, as documented (bug 19191).
+  * Make setOption('result_wrap_class') actually useful by changing the default value of $result_wrap_class parameters from false to true.
+  * Obtain error information in _doQuery() because standaloneQuery() throws off $this->connection.
+  * FETCHMODE constants are NOT bitwise.
+  * Make $sql_comments public (was before, used in tests, no real harm).
+  * Property visibility
+  * boolean data type
+  * fixed bug #17984: Error is not reported when mysqli_stmt_bind_param() fails [dennylin93]
+  * fixed bug #18057: Result of getDeclaration() can have invalid syntax [hschletz]
+  * request #18068: mapNativeDatatype() returns decimal places also for 'float' mdb2type
+  * fixed bug #18203: Type introspection breaks with associative arrays if names are identical (patch by Peter Bex)
+  * fixed bug #17892: removed debug message [pdt256]
+  * fixed bug #17892: removed debug message [pdt256]
+  * fixed bug #17984: Error is not reported when mysqli_stmt_bind_param() fails [dennylin93]
+  * fixed bug #18057: Result of getDeclaration() can have invalid syntax [hschletz]
+  * request #18068: mapNativeDatatype() returns decimal places also for 'float' mdb2type
+
+- Changelog 1.5.0b3
+  * fixed bug #16003: incorrect check for error after mysqli_store_result
+  * fixed bug #16147: first prepared statement is emulated when using factory with mysql
+  * fixed bug #17037: 'on update' not mentioned in tableInfo()
+  * fixed bug #17065: There is no NEW row in on DELETE trigger (fix error in FK constraint triggers)
+  * fixed bug #17650: lastInsertId can not handle bigint, forces cast to integer [alexpw]
+  * return ON UPDATE|DELETE action in getTableConstraintDefinition()
+  * result->free() now works on multiple result sets
+
+- Changelog 1.5.0b2
+  * fixed bug #12117: disconnect() does not work as documented
+  * fixed bug #13412: sometimes getTableConstraintDefinition() fails for FOREIGN KEYs
+  * fixed bug #13581: wrong query in beginTransaction() for certain MySQL versions
+  * fixed bug #13928: Invalid triggers created for 'ON UPDATE'
+  * fixed bug #15051: Cannot create constraints with field length
+  * add index on FK column(s) or a FK constraint cannot be created in some cases
+
+- Changelog 1.5.0b1
+  * fixed bug #11831: createTable() now supports tables with a multi-field PRIMARY KEY where one field is defined as AUTO_INCREMENT
+  * request #11204: support AUTO_INCREMENT for FLOAT data type and UNSIGNED option for FLOAT and DECIMAL data type [afz]
+  * fixed bug #11692: value of $db->supports('transactions') changes after query [afz]
+  * request #12731: added truncateTable() in the Manager module
+  * request #12732: added vacuum() in the Manager module for OPTIMIZE/VACUUM TABLE abstraction
+  * request #12800: added alterDatabase() in the Manager module [afz]
+  * fixed quoting in createDatabase() in the Manager module
+  * fixed bug #12924: correctly handle internal expected errors even with custom error handling
+  * added standaloneQuery() and databaseExists()
+  * request #13106: added unixtimestamp() in the Function module
+  * fixed regexp in listTableConstraints() in the Manager module to list FOREIGN KEY constraints
+  * fixed bug #13180: MySQL driver tells SAVEPOINT is supported for MyISAM tables
+  * fixed bug #13283: replace() doesn't respect quote_identifiers option
+  * request #13313: setCharSet() supports 'COLLATE' too
+  * fixed bug #13370: some capabilities depend on user options, so check them after a setOption() call
+  * when triggers are supported, two triggers are created to emulate ON UPDATE / ON DELETE actions for FOREIGN KEY constraints. Known limitation: since mysql doesn't support multiple triggers with the same action time and event for one table, if there are multiple table referencing the same table, only the first one will have the triggers created.
+
+- Changelog 1.5.0a2
+  * fixed bug #12516: error in FK constraint creation query
+  * request #12012: added charset/collation support in createDatabase()
+
+- Changelog 1.5.0a1
+  * fixed bug #10024: Added new option 'lob_allow_url_include' (default false) to [dis]allow inserting a LOB from an url (file, http, ...).
+  * fixed bug #10986: Using more random statement names (request #11625)
+  * fixed bug #11055: Using placeholders with := variable assignment fails [bekarau]
+  * initial support for FOREIGN KEY constraints in the Manager and Reverse modules
+  * request #11389: added many new MySQL 5.1 error codes in errorInfo()
+  * fixed bug #11428: propagate quote() errors with invalid data types
+  * fixed bug in _modifyQuery() when using SELECT FOR UPDATE or similar queries
+  * fixed bug #11590: _getServerCapabilities() has to be called once per connection
+  * fixed bug #11790: avoid array_diff() because it has a memory leak in PHP 5.1.x
+  * fixed some E_STRICT errors with PHP5
+  * fixed bug #12010: MDB2_PORTABILITY_RTRIM option was ignored
+  * fixed bug #12083: createTable() in the Manager module now returns MDB2_OK on success, as documented
+  * request #12213: usage of mysqli_options 'MYSQLI_SET_CHARSET_NAME' and mysqli_set_charset() when available (patch by Carsten Wiedmann)
+  * fixed bug #12242: missing charset info in the Reverse module (patch by Carsten Wiedmann)
+  * fixed bug #12269: tableInfo() in the Reverse module detect 'clob' data type as first option
+  * fixed bug #12336: supply default value for NOT NULL timestamp fields
+
+-------------------------------------------------------------------
+Tue Nov 27 13:31:10 UTC 2012 - Ralf Lang <lang@b1-systems.de>
+
+- SLE11SP2 compatible dependency names
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:06 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jan 20 15:23:57 UTC 2011 - chris@computersalat.de
+
+- change to php_pear_gen_filelist macro
+
+-------------------------------------------------------------------
+Thu Jan 20 14:54:45 UTC 2011 - chris@computersalat.de
+
+- pkg rename php5-pear-MDB2_Driver_mysqli
+- dr for php5-pear-mdb2_driver_mysqli
+- cleanup spec
+
+-------------------------------------------------------------------
+Sun Jul  4 11:05:34 UTC 2010 - lars@linux-schulserver.de
+
+- initial package 1.4.1
+

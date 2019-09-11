@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/lnussel/yast-slide-show.git</param>
+          <param name="changesrevision">6f56730fc1760741bd3b6e95b3f02dad104347f0</param></service><service name="tar_scm">
+            <param name="url">git://github.com/openSUSE/yast-slide-show.git</param>
+          <param name="changesrevision">3f822a8cfd9d5aa0045281e661277b3d43ff4fd7</param></service></servicedata>

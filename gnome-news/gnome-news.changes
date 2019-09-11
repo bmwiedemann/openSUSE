@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Fri Feb 01 20:28:36 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.0.1+20190129:
+  + Use Unicode quotation marks in user-visible strings.
+  + application: Migrate to Primary Menu.
+  + Updated translations.
+- Drop post(un) handling of glib2_gsettings_schema_post(un) and
+  icon_theme_cache_post(un), no longer needed, filetriggers takes
+  care of this now.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:56 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 06 18:39:50 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.0.1+20171119:
+  + flatpak: News requires GL access for the images.
+  + Flatpak: News obviously needs access to the network.
+  + flatpak: Add missing dependency on libgrss.
+  + flatpak: Use the HTTPS protocol, not the Git one.
+  + flatpak: Remove nonexistent property.
+  + flatpak: Remove comments from the manifest.
+  + Fix the appdata.
+  + Rename the icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 25 15:19:52 UTC 2017 - malcolmlewis@opensuse.org
+
+- Change appstream file location due to appstream-glib >= 0.7.3.
+- Fix rpm runtime dependency rpmlint warning for python3.
+- Cleanup duplicate files.
+
+-------------------------------------------------------------------
+Wed Aug 16 11:29:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.0.1+20170808:
+  + build: Add a first version of Flatpak manifest
+  + tracker: Update queries to sparql1.1 correct syntax
+  + Use Tracker 2.0 unconditionally
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 22 20:54:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.0.1+20170118:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 14:01:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.1~20161205:
+  + Fix scope of CACHE_PATH constant introduced by 7236f05.
+  + Support non-srcdir builds in autogen.sh.
+  + Respect PEP 3127 octinteger syntax.
+  + tracker: make adding channels an asynchronous operation.
+  + toolbar:
+    - Show a spinner while adding the feed.
+    - Simplify the code.
+  + Updated translations.
+- Change git url in _service to new upstream (git.gnome.org).
+- Add lang package macros and subpackage now that upstream provide
+  translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 07:48:20 UTC 2015 - zaitor@opensuse.org
+
+- Own %dir %{_datadir}/appdata for openSUSE Leap.
+
+-------------------------------------------------------------------
+Wed Sep 16 10:49:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.0.1~20150915:
+  + view: provide the right number of arguments for format string
+
+-------------------------------------------------------------------
+Tue Sep  1 13:28:33 UTC 2015 - dimstar@opensuse.org
+
+- Initial package.
+

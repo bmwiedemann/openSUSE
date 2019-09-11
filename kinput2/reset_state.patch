@@ -1,0 +1,12 @@
+diff -ru kinput2-v3.1.orig/lib/imlib/imattr.c kinput2-v3.1/lib/imlib/imattr.c
+--- kinput2-v3.1.orig/lib/imlib/imattr.c	2002-10-03 11:35:30.000000000 +0200
++++ kinput2-v3.1/lib/imlib/imattr.c	2004-04-02 10:01:58.615362831 +0200
+@@ -1851,7 +1851,7 @@
+     if (mask & ATTR_MASK_PREEDIT_STATE) {
+ 	/* unless the client specified, we should start with disabled state. */
+ 	ap->set_mask |= ATTR_MASK_PREEDIT_STATE;
+-	ap->reset_state = XIMPreeditDisable;
++	ap->preedit_state = XIMPreeditDisable;
+     }
+     if (mask & ATTR_MASK_RESET_STATE) {
+ 	/* the default reset state must be the initial state. */

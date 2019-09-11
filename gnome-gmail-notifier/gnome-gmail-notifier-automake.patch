@@ -1,0 +1,41 @@
+Index: gnome-gmail-notifier-0.10.1/configure.ac
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/configure.ac
++++ gnome-gmail-notifier-0.10.1/configure.ac
+@@ -3,6 +3,7 @@ AC_PREREQ(2.52)
+ AC_INIT(gnome-gmail-notifier, 0.10.1, geekysuavo@gmail.com)
+ AC_CONFIG_SRCDIR(src/main.c)
+ AM_CONFIG_HEADER(src/config.h)
++AM_INIT_AUTOMAKE
+ 
+ AC_PROG_CC
+ AC_PROG_INSTALL
+@@ -14,7 +15,6 @@ GGN_LOCALEDIR="${datadir}/locale"
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_SUBST(GGN_LOCALEDIR)
+ 
+-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+ 
+ ALL_LINGUAS="es"
+ AM_GLIB_GNU_GETTEXT
+Index: gnome-gmail-notifier-0.10.1/autogen.sh
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/autogen.sh
++++ gnome-gmail-notifier-0.10.1/autogen.sh
+@@ -61,16 +61,3 @@ automake --add-missing
+ echo "  autoconf"
+ autoconf
+ 
+-if [ -x config.status -a -z "$*" ]; then
+-	./config.status --recheck
+-else
+-    if test -z "$*"; then
+-        echo "I am going to run ./configure with no arguments - if you wish"
+-        echo "to pass any to it, please specify them on the $0  command line."
+-        echo "If you do not wish to run ./configure, press  Ctrl-C now."
+-        trap 'echo "configure aborted" ; exit 0' 1 2 15
+-        sleep 1
+-    fi
+-    echo "  ./configure ${@}"
+-    ./configure "$@";
+-fi

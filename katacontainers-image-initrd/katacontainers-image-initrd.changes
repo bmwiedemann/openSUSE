@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Aug  5 16:51:17 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Include kernel version in initrd image name, and symlink it to the generic
+  image name. This allows the katacontainers package to retrieve the correct
+  kernel version to use
+- Rename kata-osbuilder tarball to osbuilder
+
+-------------------------------------------------------------------
+Wed Jul 31 07:23:24 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Initial package creation version 1.9.0~alpha0

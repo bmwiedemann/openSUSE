@@ -1,0 +1,90 @@
+From f408e57b282cd55d59c1317240ee9e0dc679373c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
+Date: Thu, 24 Jul 2014 17:02:56 +0200
+Subject: [PATCH 04/32] added example gem2rpm.yml
+
+---
+ Rakefile                  |  2 +-
+ gem2rpm.yml.documentation | 70 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 71 insertions(+), 1 deletion(-)
+ create mode 100644 gem2rpm.yml.documentation
+
+diff --git a/gem2rpm.yml.documentation b/gem2rpm.yml.documentation
+new file mode 100644
+index 0000000..5e444eb
+--- /dev/null
++++ b/gem2rpm.yml.documentation
+@@ -0,0 +1,70 @@
++# ---
++# ## used by gem2rpm
++# :summary: this is a custom summary
++# ## used by gem2rpm
++# :description: |-
++#   this is a custom description
++#
++#   it can be multiline
++# ## used by gem2rpm
++# :license: MIT or Ruby
++# ## used by gem2rpm and gem_packages
++# :version_suffix: -x_y
++# ## used by gem2rpm and gem_packages
++# :disable_docs: true
++# ## used by gem2rpm
++# :disable_automatic_rdoc_dep: true
++# ## used by gem2rpm
++# :preamble: |-
++#   BuildRequires: foobar
++#   Requires: foobar
++# ## used by gem2rpm
++# :patches:
++#   foo.patch: -p1
++#   bar.patch:
++# ## used by gem2rpm
++# :sources:
++# - foo.desktop
++# - bar.desktop
++# :gem_install_args: '....'
++# ## used by gem2rpm
++# :pre_install: |-
++#   %if 0%{?use_system_libev}
++#   export USE_VENDORED_LIBEV="no"
++#   %endif
++# ## used by gem2rpm
++# :post_install: |-
++#   # delete custom files here or do other fancy stuff
++#   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
++# ## used by gem2rpm
++# :testsuite_command: |-
++#   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
++# ## used by gem2rpm
++# :filelist: |-
++#   /usr/bin/gem2rpm-opensuse
++# ## used by gem2rpm
++# :scripts:
++#   :post: |-
++#     /bin/echo foo
++# ## used by gem_packages
++# :main:
++#   :preamble: |-
++#     Requires: util-linux
++#     Recommends: pwgen
++#   :filelist: |-
++#     /usr/bin/gem2rpm-opensuse
++# ## used by gem_packages
++# :custom:
++#   apache:
++#     :preamble: |-
++#       Requires: .....
++#     :filelist: |-
++#       /etc/apache2/conf.d/passenger.conf
++#     :summary: Custom summary is optional
++#     :description: |-
++#       Custom description is optional
++#
++#       bar
++#     :post: |-
++#       /bin/echo foo
++#
+-- 
+2.20.1
+

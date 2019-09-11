@@ -1,0 +1,28 @@
+From 352b509c8f452a0d77d8adb9149130d5af624b32 Mon Sep 17 00:00:00 2001
+From: Liuhua Wang <lwang@suse.com>
+Date: Thu, 9 Jul 2015 10:22:46 +0800
+Subject: [PATCH] fix undefined symbol
+
+Signed-off-by: Liuhua Wang <lwang@suse.com>
+References: bnc#935623
+
+---
+ dmraid/1.0.0.rc16/tools/dmevent_tool.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git 1.0.0.rc16.orig/tools/dmevent_tool.c 1.0.0.rc16/tools/dmevent_tool.c
+index 8562098..4c43b30 100644
+--- 1.0.0.rc16.orig/tools/dmevent_tool.c
++++ 1.0.0.rc16/tools/dmevent_tool.c
+@@ -77,6 +77,8 @@
+ #define SYS_DM_DEV "/dev"
+ #define SYS_DM_SLAVES_DIR "/slaves"
+ 
++int dmeventd_debug = 0;
++
+ /* Command line option counters for CLI processing. */
+ enum option_type { OPT_a, OPT_h, OPT_m, OPT_r, OPT_u, OPT_V, OPT_SUM, OPT_MAX };
+ static int optc[OPT_MAX];
+-- 
+1.8.4.5
+

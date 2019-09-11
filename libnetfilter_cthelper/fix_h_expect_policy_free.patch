@@ -1,0 +1,21 @@
+From: Chris Horler <cshorler@googlemail.com>
+Date: 2014-12-08 11:54:20 CET
+References: https://bugzilla.netfilter.org/show_bug.cgi?id=990
+
+Dereferencing h after freeing leads to undefined behavior.
+
+--- libnetfilter_cthelper-1.0.0.orig/src/libnetfilter_cthelper.c	2012-06-05 17:59:28.810356258 +0100
++++ libnetfilter_cthelper-1.0.0/src/libnetfilter_cthelper.c	2014-12-07 19:52:55.769975500 +0000
+@@ -113,11 +113,11 @@
+ {
+ 	int i;
+ 
+-	free(h);
+ 	for (i=0; i<NF_CT_HELPER_CLASS_MAX; i++) {
+ 		if (h->expect_policy[i])
+ 			free(h->expect_policy[i]);
+ 	}
++	free(h);
+ }
+ EXPORT_SYMBOL(nfct_helper_free);
+ 

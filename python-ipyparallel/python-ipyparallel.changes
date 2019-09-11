@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Sun Aug 11 03:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch from wheel to sdist.
+
+-------------------------------------------------------------------
+Wed Jun 12 20:23:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 6.2.4
+  * Improve compatibility with ipykernel 5
+  * Fix %autopx with IPython 7
+  * Fix non-local ip warning when using current hostname
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Sat Dec 22 06:55:16 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 6.2.3
+  * Fix compatibility for execute requests with ipykernel 5
+  * require ipykernel >= 4.4
+
+-------------------------------------------------------------------
+Thu Aug  2 19:40:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 6.2.2
+  * Fix compatibility with tornado 4, broken in 6.2.0
+  * Fix encoding of engine and controller logs in ipcluster --debug on Python 3
+  * Fix compatiblity with joblib 0.12
+  * Include LICENSE file in wheels
+
+-------------------------------------------------------------------
+Thu Jun  7 17:42:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 6.2.1
+  * Workaround a setuptools issue preventing installation from sdist on Windows
+- Update to version 6.2.0
+  * Drop support for Python 3.3. IPython parallel now requires Python 2.7 or >= 3.4.
+  * Further fixes for compatibility with tornado 5 when run with asyncio (Python 3)
+  * Fix for enabling clusters tab via nbextension
+  * Multiple fixes for handling when engines stop unexpectedly
+  * Installing IPython Parallel enables the Clusters tab extension by default, without any additional commands.
+- Switch to wheel-based install
+- Run tests in main package
+- Remove -doc subpackage and use upstream-build docs
+
+-------------------------------------------------------------------
+Thu Feb 15 14:43:43 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 6.1.1
+  * Fix regression in 6.1.0 preventing BatchSpawners (PBS, etc.) from launching with ipcluster.
+- Update to 6.1.0
+  + Compatibility fixes with related packages:
+    * Fix compatibility with pyzmq 17 and tornado 5.
+    * Fix compatibility with IPython ≥ 6.
+    * Improve compatibility with dask.distributed ≥ 1.18.
+  + New features:
+    * Add :attr:`namespace` to BatchSpawners for easier extensibility.
+    * Support serializing partial functions.
+    * Support hostnames for machine location, not just ip addresses.
+    * Add ``--location`` argument to ipcluster for setting the controller location.
+      It can be a hostname or ip.
+    * Engine rank matches MPI rank if engines are started with ``--mpi``.
+    * Avoid duplicate pickling of the same object in maps, etc.
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Wed Sep 20 17:04:11 UTC 2017 - toddrme2178@gmail.com
+
+- Further improvements to notebook extension handling
+
+-------------------------------------------------------------------
+Wed Sep 20 15:26:13 UTC 2017 - toddrme2178@gmail.com
+
+- Fix notebook extension handling
+
+-------------------------------------------------------------------
+Sun Aug  6 03:42:48 UTC 2017 - toddrme2178@gmail.com
+
+- Fix script interpeter.
+
+-------------------------------------------------------------------
+Thu Apr 27 17:28:08 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:04:07 UTC 2017 - toddrme2178@gmail.com
+
+- Clean up update-alternatives usage.
+
+-------------------------------------------------------------------
+Thu Mar 30 19:24:51 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 6.0.2
+  * Upload fixed sdist for 6.0.1.
+- Update to 6.0.1
+  * Small encoding fix for Python 2.
+- Update to 6.0
+  * Due to a compatibility change and semver, this is a major release. However, it is not a big release.
+  * The main compatibility change is that all timestamps are now timezone-aware UTC timestamps.
+  * This means you may see comparison errors if you have code that uses datetime objects without timezone info (so-called naïve datetime objects).
+  *  Rename :meth:`Client.become_distributed` to :meth:`Client.become_dask`.
+    :meth:`become_distributed` remains as an alias.
+  *  import joblib from a public API instead of a private one
+    when using IPython Parallel as a joblib backend.
+  *  Compatibility fix in extensions for security changes in notebook 4.3
+- Update to 5.2
+  *  Fix compatibility with changes in ipykernel 4.3, 4.4
+  *  Improve inspection of ``@remote`` decorated functions
+  *  :meth:`Client.wait` accepts any Future.
+  *  Add ``--user`` flag to :command:`ipcluster nbextension`
+  *  Default to one core per worker in :meth:`Client.become_distributed`.
+    Override by specifying `ncores` keyword-argument.
+  *  Subprocess logs are no longer sent to files by default in :command:`ipcluster`.
+- Update to 5.1
+  * IPython Parallel 5.1 adds integration with other parallel computing tools,
+    such as `dask.distributed <https://distributed.readthedocs.io>`_ and `joblib <https://pythonhosted.org/joblib>`__.
+  * IPython parallel now supports the notebook-4.2 API for enabling server extensions,
+    to provide the IPython clusters tab
+      jupyter serverextension enable --py ipyparallel
+      jupyter nbextension install --py ipyparallel
+      jupyter nbextension enable --py ipyparallel
+    though you can still use the more convenient single-call::
+      ipcluster nbextension enable
+    which does all three steps above.
+  * `Slurm <https://computing.llnl.gov/tutorials/linux_clusters>`_ support is added to ipcluster.
+- Update to 5.0.1
+  *  Fix imports in :meth:`use_cloudpickle`, :meth:`use_dill`.
+  *  Various typos and documentation updates to catch up with 5.0.
+
+-------------------------------------------------------------------
+Wed Feb 17 13:00:52 UTC 2016 - toddrme2178@gmail.com
+
+- specfile:
+  * update copyright year
+- update to version 5.0.0:
+  * The highlight of ipyparallel 5.0 is that the Client has been
+    reorganized a bit to use Futures. AsyncResults are now a Future
+    subclass, so they can be `yield`ed in coroutines, etc. Views have
+    also received an Executor interface. This rewrite better connects
+    results to their handles, so the Client.results cache should no
+    longer grow unbounded.
+    + The Executor API :class:`ipyparallel.ViewExecutor`
+    + Creating an Executor from a Client:
+      :meth:`ipyparallel.Client.executor`
+    + Each View has an :attr:`executor` attribute
+  * Part of the Future refactor is that Client IO is now handled in a
+    background thread, which means that :meth:`Client.spin_thread` is
+    obsolete and deprecated.
+  * Other changes:
+    + Add :command:`ipcluster nbextension enable|disable` to toggle
+    the clusters tab in Jupyter notebook
+  * Less interesting development changes for users: Some
+    IPython-parallel extensions to the IPython kernel have been moved
+    to the ipyparallel package:
+    + :mod:`ipykernel.datapub` is now :mod:`ipyparallel.datapub`
+    + ipykernel Python serialization is now in
+      :mod:`ipyparallel.serialize`
+    + apply_request message handling is implememented in a Kernel
+      subclass, rather than the base ipykernel Kernel.
+- update to version 4.1.0:
+  * Add :meth:`.Client.wait_interactive`
+  * Improvements for specifying engines with SSH launcher.
+- Split documentation into own subpackage to speed up builds.
+  
+-------------------------------------------------------------------
+Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Fri Aug 28 18:38:51 UTC 2015 - toddrme2178@gmail.com
+
+- Fix conflict.
+
+-------------------------------------------------------------------
+Wed Aug 26 13:41:45 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

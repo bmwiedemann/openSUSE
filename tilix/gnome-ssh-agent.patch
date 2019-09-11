@@ -1,0 +1,12 @@
+diff -Pdpru tilix-1.9.0.orig/data/pkg/desktop/com.gexperts.Tilix.desktop.in tilix-1.9.0/data/pkg/desktop/com.gexperts.Tilix.desktop.in
+--- tilix-1.9.0.orig/data/pkg/desktop/com.gexperts.Tilix.desktop.in	2019-03-17 17:06:44.249518955 +0100
++++ tilix-1.9.0/data/pkg/desktop/com.gexperts.Tilix.desktop.in	2019-03-17 17:15:39.507125839 +0100
+@@ -9,7 +9,7 @@ Type=Application
+ StartupNotify=true
+ Categories=System;TerminalEmulator;X-GNOME-Utilities;
+ Icon=com.gexperts.Tilix
+-DBusActivatable=true
++DBusActivatable=false
+ Actions=new-window;new-session;preferences;
+ 
+ [Desktop Action new-window]

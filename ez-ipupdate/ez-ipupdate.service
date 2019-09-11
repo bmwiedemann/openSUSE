@@ -1,0 +1,13 @@
+[Unit]
+Description=Ez-ipupdate Check and update your IP to dynamic DNS Server
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/ez-ipupdate/ez-ipupdate.pid
+ExecStart=/usr/bin/ez-ipupdate --daemon --config-file /etc/ez-ipupdate.conf --pid-file /run/ez-ipupdate/ez-ipupdate.pid
+
+[Install]
+WantedBy=multi-user.target
+
+

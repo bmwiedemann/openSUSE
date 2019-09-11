@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Fri Jun 28 08:33:20 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Fix bug Bug 1096636 - tripwire looks for the configuration file in
+  /etc instead of /etc/tripwire. Now tw.cfg will really appead in /etc/tripwire
+  * add patch 'tripwire-2.4.3.7-config-dir-location.patch'
+    which update config dir to /etc/tripwire.
+  * add build require libtool (which pulls automake and autoconf)
+  * add 'autoreconf -a -i' to make sure automake is overwritten
+  * Move /etc/tw.cfg to /etc/tripwire/tw.cfg in %post as make transition smoother
+  
+-------------------------------------------------------------------
+Sat Mar 23 07:40:40 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to version 2.4.3.7
+
+- Changes from 2.4.3.2 to 2.4.3.7
+    * Run Clang static analyzer & fix some of its quibbles
+    * Fix compilation error on Alpine Linux 3.x (Issue #15)
+    * Fix file permissions on a couple of source files (Issue #14)
+    * Fix some errors w/ make install/uninstall/dist (Issue #15)
+    * Fix a new issue with level 2 report printing ( Issue #19 )
+    * Fix 'make install-strip' target, which wasn't actually 
+      stripping binaries (Issue #20)
+    * Updated release to include archives with curl/wget-friendly names (Issue #22) 
+    * Buildsys: 'install-strip', 'uninstall', 'check', and 'distcheck'
+      make targets now do useful things. (the install-strip change
+      addresses the remaining bit of issue #18.)
+    * Buildsys: To support old flavors of gcc, add "--disable-extrawarnings"
+      configure option for compilers that don't understand -Wextra arg, and
+      detect if the local g++ happens to be called c++.
+    * Fix various new warnings w/ GCC 7.
+    * Use std::unique_ptr instead of deprecated std::auto_ptr, where available.
+    * Clean up / enable more twtest unit tests, & tweak the framework for clarity.
+    * Remove more dead code and strip out a bunch of uses of the always-true IS_UNIX ifdef.
+    * Address some static analysis warnings from CppCheck & Flawfinder
+    * Add a sanity check in fcodatasourceiterimpl to address a unit test that failed on some platforms.
+    * Update old policy test files in src/parser/testfiles to use current policy syntax.
+    * Fix & expand tests in Perl acceptance test framework
+    * Fix & expand twtest unit tests, & rework unit test mini-framework so they’re
+      referenced by name, not some numeric ID, and list tests as “skipped" if
+      they don’t make any test assertions.
+    * Add configure options to enable coverage, profiling, & use
+      /dev/urandom as RNG (all off by default)
+    * Add a ‘list’ make target to list all make targets
+    * Remove dead code & add test coverage per gcov+lcov results
+    * Fix various memory issues pointed out by valgrind
+    * In examine-encryption mode, better reporting (& nonzero exit) if we can't find a
+      keyfile for the examined file.
+    * More exception handling around individual objects & init/IC as a whole,
+      since there have been occasional reports of uncaught exceptions during init or check,
+      and so far haven’t been able to repro or figure out what circumstances
+      it occurs under. (e.g. Github issue #25)
+    * Tweak install.sh so it can be run directly, not just thru 'make install'
+      if you want. (Github issue #26)
+    * Improve native (non-Posixy) path handling on platforms that need it (DOS, AROS, RISC OS, Redox)
+    * New platforms: MirOS BSD, Bitrig, LibertyBSD, RISC OS, Redox
+    * Add default policies for HP-UX & various BSDs
+    * Fix & expand tests in Perl acceptance test framework
+    * Fix & expand twtest unit tests, & rework unit test mini-framework so they’re
+      referenced by name, not some numeric ID, and list tests as “skipped" if they
+      don’t make any test assertions.
+    * Add configure options to enable coverage, profiling, & use /dev/urandom as RNG (all off by default)
+    * Add a ‘list’ make target to list all make targets
+    * Remove dead code & add test coverage per gcov+lcov results
+    * Fix various memory issues pointed out by valgrind
+    * In examine-encryption mode, better reporting (& nonzero exit) if we can't find
+      a keyfile for the examined file.
+    * More exception handling around individual objects & init/IC as a whole,
+      since there have been occasional reports of uncaught exceptions during
+      init or check, and so far haven’t been able to repro or figure out what
+      circumstances it occurs under. (e.g. Github issue #25)
+    * Tweak install.sh so it can be run directly, not just thru
+      'make install' if you want. (Github issue #26)
+    * Improve native (non-Posixy) path handling on platforms that
+      need it (DOS, AROS, RISC OS, Redox)
+    * New platforms: MirOS BSD, Bitrig, LibertyBSD, RISC OS, Redox
+    * Add default policies for HP-UX & various BSDs
+    * twprint can now print reports for individual objects.
+    * twprint now has verbosity levels for --print-dbfile mode.
+    * Provide a useful README.md (issue #17 ).
+    * Document return codes in man pages (issue #28 ).
+    * Update install script after testing on additional platforms.
+    * Provide default policies for more operating systems, and update some
+      existing policies
+    * Usability tweaks to twtest.
+    * Clean up code style with clang-format, & add a custom style that
+      approximates existing OST usage.
+    * Update copyright dates to 2018.
+
+-------------------------------------------------------------------
+Thu Mar 23 14:19:23 UTC 2017 - jengelh@inai.de
+
+- Replace old $RPM_* shell variables by macros.
+- Provide "Tripwire" with full version
+- Trim manual from description.
+
+-------------------------------------------------------------------
+Fri Mar  3 07:14:12 UTC 2017 - meissner@suse.com
+
+- removed author credits from description.
+
+-------------------------------------------------------------------
+Thu Feb  9 10:44:35 UTC 2017 - meissner@suse.com
+
+- Updated to 2.4.3.2 (bsc#1024442)
+  See:
+  https://github.com/Tripwire/tripwire-open-source/releases
+
+- tripwire-2.4.1.2-src-off_t.patch: fixed upstream 
+- tripwire-2.4.1.2-src-undefined-operation.patch: fixed upstream
+- README.SuSE -> README.SUSE
+
+-------------------------------------------------------------------
+Thu Aug 30 22:43:58 UTC 2012 - Greg.Freemyer@gmail.com
+
+- added gcc47 patch to allow build to work
+- upgrade to 2.4.2.2
+	* Bumping version to 2.4.2.2
+	* Updated version revision in reports and all
+	* Added experimental policy creation (see policy/policy_generator_readme.txt)
+	* Fixed report formating and sendmail issues
+	* Added Debian patches for crypto and hostnames
+	* Fixed compiling issue on recent GCC compilers (-fpermissive)
+	* Added patch to fix bug [ 1962485 ] Cannot change or expect-script
+
+-------------------------------------------------------------------
+Thu Jun  4 17:59:44 CEST 2009 - poeml@suse.de
+
+- support large files (>2GB), by defining the correct type for file
+  sizes.
+      tripwire-2.4.1.2-src-off_t.patch
+- fix build failure due to compile warning about undefined
+  behaviour when incrementing variables
+      tripwire-2.4.1.2-src-undefined-operation.patch
+- make sure that RPM_OPT_FLAGS are used when compiling.
+
+-------------------------------------------------------------------
+Thu Jun  4 16:17:28 CEST 2009 - poeml@suse.de
+
+- fix paths in the sample twpol-Linux.txt
+- remove obsolete patches
+- update README.SuSE a bit
+- package config directory and database directory to be readable
+  only for root
+
+-------------------------------------------------------------------
+Thu Jun  4 15:15:00 CEST 2009 - poeml@suse.de
+
+- take SLES9 package and update it to 2.4.1.2
+
+-------------------------------------------------------------------
+Fri Jun 18 13:50:16 CEST 2004 - tcrhak@suse.cz
+
+- format string fix (patch format, bug #41622)
+
+-------------------------------------------------------------------
+Wed Mar 31 20:31:58 CEST 2004 - tcrhak@suse.cz
+
+- fixed for big endian archs (patch endian)
+
+-------------------------------------------------------------------
+Mon Mar 29 20:05:02 CEST 2004 - tcrhak@suse.cz
+
+- fixed for x86_64 (bug #36050, patch types)
+
+-------------------------------------------------------------------
+Sat Jan 10 11:01:05 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Jan 27 16:27:09 CET 2003 - ro@suse.de
+
+- use stdarg 
+
+-------------------------------------------------------------------
+Mon Jan 06 18:34:20 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.3.1
+- created README.SuSE and twcfg.txt
+
+-------------------------------------------------------------------
+Wed Nov 13 16:51:22 CET 2002 - ro@suse.de
+
+- fix for current bison (end all rules with ";") 
+
+-------------------------------------------------------------------
+Mon Mar 25 16:26:12 CET 2002 - stepan@suse.de
+
+- fix 64bit overflow bug
+
+-------------------------------------------------------------------
+Fri Mar 15 14:03:10 CET 2002 - tcrhak@suse.cz
+
+- added dir /usr/share/lib/tripwire to filelist
+
+-------------------------------------------------------------------
+Mon Aug 13 18:13:10 CEST 2001 - adostal@suse.cz
+
+- apply tripwire-1.2.patch and makefile.patch
+- fixed spec file (patches, RPM_BUILD_ROOT)
+
+-------------------------------------------------------------------
+Tue Jul 31 13:15:59 CEST 2001 - adostal@suse.cz
+
+- convert source to bz2 and dif to patch  
+
+-------------------------------------------------------------------
+Wed Mar  1 16:29:43 MET 2000 - choeger@suse.de
+
+- added mandir 
+
+-------------------------------------------------------------------
+Thu Oct 28 11:20:59 CEST 1999 - ro@suse.de
+
+- fixed to build on alpha 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Sep 14 11:49:27 MEST 1998 - choeger@suse.de
+
+- just another fix for german 'umlaute'
+
+-------------------------------------------------------------------
+Tue Sep  1 11:18:12 MEST 1998 - choeger@suse.de
+
+- added siggen to the list of files...
+
+-------------------------------------------------------------------
+Thu Jul  2 19:26:48 MEST 1998 - choeger@suse.de
+
+- changed some path's
+
+-------------------------------------------------------------------
+Mon Jun 29 13:49:43 MEST 1998 - choeger@suse.de
+
+- new package, v1.2
+

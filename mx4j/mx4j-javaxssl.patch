@@ -1,0 +1,26 @@
+Index: mx4j-3.0.2/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java
+===================================================================
+--- mx4j-3.0.2.orig/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java	2006-10-13 01:12:17.000000000 +0200
++++ mx4j-3.0.2/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java	2009-11-19 12:00:10.898707063 +0100
+@@ -21,9 +21,9 @@
+ import javax.net.ssl.SSLServerSocket;
+ import javax.net.ssl.SSLServerSocketFactory;
+ 
+-import com.sun.net.ssl.KeyManagerFactory;
+-import com.sun.net.ssl.SSLContext;
+-import com.sun.net.ssl.TrustManagerFactory;
++import javax.net.ssl.KeyManagerFactory;
++import javax.net.ssl.SSLContext;
++import javax.net.ssl.TrustManagerFactory;
+ import mx4j.log.Log;
+ import mx4j.log.Logger;
+ 
+@@ -60,7 +60,7 @@
+ {
+    static
+    {
+-      addProvider(new com.sun.net.ssl.internal.ssl.Provider());
++      //addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+    }
+ 
+    private String m_keyStoreType = "JKS";

@@ -1,0 +1,240 @@
+-------------------------------------------------------------------
+Thu May 23 11:06:20 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1136056).
+
+-------------------------------------------------------------------
+Tue Sep 11 09:29:34 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add patch spandsp-handle-international-dialstring-prefix.diff
+  in order to support the international dialing prefix
+
+-------------------------------------------------------------------
+Mon Sep 10 12:17:35 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply patch spandsp-raise-traintime-tolerance.diff
+  as supplied with iaxmodem
+
+-------------------------------------------------------------------
+Wed Mar 25 17:33:40 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.0.6 (finale)
+  * Unupdated changelog
+- Remove obsolete patches
+  * spandsp-pkgconfig1.diff
+  * spandsp-path.diff
+  * spandsp-lrint.diff
+- Update spandsp-autoconf.diff
+- Use download Url as source
+- Remove xz require
+
+-------------------------------------------------------------------
+Fri Jan 25 04:27:45 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.0.6pre21
+* No upstream changelog has been specified
+
+-------------------------------------------------------------------
+Sun Mar 11 12:41:13 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 0.0.6pre20
+* No upstream changelog has been specified
+* Protect against T.38 stuff arriving after document has finished
+
+-------------------------------------------------------------------
+Sun Mar 11 12:37:18 UTC 2012 - jengelh@medozas.de
+
+- License clarifications (bnc#731943)
+
+-------------------------------------------------------------------
+Sat Nov 19 16:02:00 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Oct 27 15:16:40 UTC 2011 - kkeil@linux-pingi.de
+
+- Upstream did change the license to LGPL 2.1 in 2008
+
+-------------------------------------------------------------------
+Sat Oct  8 16:23:09 UTC 2011 - jengelh@medozas.de
+
+- updated to new upstream release 0.0.6pre18
+* no changelog was provided by upstream
+- put documentation into its own subpackage
+- enable SSE2 on x86_64, since it's part of the x86_64 ABI anyway
+- add patches to resolve autoconf warnings (spandsp-autoconf.diff),
+  failure to properly find lrint (spandsp-lrint.diff), a typo
+  (spandsp-path.diff), and faulty dependencies
+  (spandsp-pkgconfig1.diff)
+- Separate build and test dependencies
+- Enable parallel build
+
+-------------------------------------------------------------------
+Sat Mar 13 20:33:19 UTC 2010 - chris@computersalat.de
+
+- added baselibs.conf
+- cleanup spec
+  o sort TAGS
+  o fix build warnig
+    build without RPM_OPT_FLAGS
+  o macro usage
+  o removed data from changelog
+
+-------------------------------------------------------------------
+Wed Sep 24 12:22:20 CEST 2008 - ro@suse.de
+
+- fix debug package requires again 
+
+-------------------------------------------------------------------
+Wed Sep 17 02:14:21 CEST 2008 - mrueckert@suse.de
+
+- fix requires of the debug package
+
+-------------------------------------------------------------------
+Thu Sep 11 15:20:12 CEST 2008 - max@suse.de
+
+- New version: 0.0.5pre4
+- Packages renamed to comply with the package naming conventions.
+- Added libxslt and docbook-xsl-stylesheets to build the
+  T.34 documentation.
+
+-------------------------------------------------------------------
+Fri May  2 23:05:28 CEST 2008 - crrodriguez@suse.de
+
+- fix Error: shlib-with-non-pic-code /usr/lib/libspandsp.so.0.0.2 in PPC
+_ some files not built with RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Mon Feb 25 07:12:47 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig*  errors  
+- fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Wed Jan 23 15:28:20 CET 2008 - max@suse.de
+
+- New version: 0.0.4pre16
+- It is said to be more stable for faxing (#347599).
+- Added API documentation to the devel subpackage.
+- Enabled MMX for i586 and i686.
+- Removed the static library.
+
+-------------------------------------------------------------------
+Thu Aug  2 14:37:03 CEST 2007 - max@suse.de
+
+- Update to final 0.0.3 version (obsoletes our previous patches)
+- Split off a devel package
+
+-------------------------------------------------------------------
+Tue Mar 13 16:25:38 CET 2007 - pgajdos@suse.cz
+
+- fixed 'warning: array subscript is above array bounds' (#239958) 
+- array-subscript.patch
+
+-------------------------------------------------------------------
+Fri Oct 20 18:47:51 CEST 2006 - max@suse.de
+
+- New version: 0.0.3pre24
+- Improved fax handling.
+
+-------------------------------------------------------------------
+Mon Mar 20 17:14:46 CET 2006 - max@suse.de
+
+- New version: 0.0.2pre25
+- fixed an error in T.4 processing, causing a sideways shift with some
+  sending FAX machines (e.g. some Canons).
+- fixed an error in the generation of single tones.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:19:51 CET 2006 - max@suse.de
+
+- New version: 0.0.2pre23
+
+-------------------------------------------------------------------
+Fri Dec 16 16:41:21 CET 2005 - max@suse.de
+
+- New version: 0.0.2pre21
+
+-------------------------------------------------------------------
+Mon May 23 18:09:47 CEST 2005 - max@suse.de
+
+- New version: 0.0.2pre18
+
+-------------------------------------------------------------------
+Wed May  4 09:49:56 CEST 2005 - max@suse.de
+
+- New version: 0.0.2pre17
+
+-------------------------------------------------------------------
+Fri Apr 22 18:31:47 CEST 2005 - max@suse.de
+
+- New version: 0.0.2pre15
+- Fixed building with gcc4 and reduced warnings.
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Mon Feb 28 18:07:21 CET 2005 - max@suse.de
+
+- New version: 0.0.2pre10
+
+-------------------------------------------------------------------
+Mon Feb 28 16:40:04 CET 2005 - max@suse.de
+
+- New version: 0.0.2pre9
+
+-------------------------------------------------------------------
+Thu Jan 13 15:49:19 CET 2005 - max@suse.de
+
+- New version: 0.0.2pre8
+
+-------------------------------------------------------------------
+Wed Jan 12 15:27:23 CET 2005 - max@suse.de
+
+- New version: 0.0.2pre7
+
+-------------------------------------------------------------------
+Mon Nov 29 12:10:47 CET 2004 - max@suse.de
+
+- New version: 0.0.2pre6
+
+-------------------------------------------------------------------
+Thu Nov 18 02:02:40 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Fri Nov  5 14:02:49 CET 2004 - max@suse.de
+
+- New version: 0.0.2pre4
+
+-------------------------------------------------------------------
+Tue Jul  6 14:44:08 CEST 2004 - max@suse.de
+
+- autoreconf needs --install to get the names of shared libs right.
+
+-------------------------------------------------------------------
+Mon Jul  5 15:32:34 CEST 2004 - max@suse.de
+
+- Don't use x86-speciffic assembler code.
+
+-------------------------------------------------------------------
+Wed Jun 23 18:44:07 CEST 2004 - max@suse.de
+
+- New package: spandsp (0.0.1k)
+
+- SpanDSP is a library of DSP functions for telephony, in the
+  8000 sample per second world of E1s, T1s, and higher order
+  PCM channels. It contains low level functions, such as basic
+  filters. It also contains higher level functions, such as
+  cadenced supervisory tone detection, and a complete software
+  FAX machine.

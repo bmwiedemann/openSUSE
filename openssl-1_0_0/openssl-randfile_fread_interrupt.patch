@@ -1,0 +1,16 @@
+Index: openssl-1.0.2j/crypto/rand/randfile.c
+===================================================================
+--- openssl-1.0.2j.orig/crypto/rand/randfile.c	2016-09-27 13:52:29.265425064 +0200
++++ openssl-1.0.2j/crypto/rand/randfile.c	2016-09-27 13:53:34.162468100 +0200
+@@ -205,6 +205,11 @@ int RAND_load_file(const char *file, lon
+         else
+             n = BUFSIZE;
+         i = fread(buf, 1, n, in);
++        if (i <= 0 && ferror(in) && errno == EINTR) {
++            clearerr(in);
++            continue;
++        }
++
+         if (i <= 0)
+             break;
+ #ifdef PURIFY

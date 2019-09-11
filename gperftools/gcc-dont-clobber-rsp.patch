@@ -1,0 +1,26 @@
+From 9e5b1628737c67b4587f937164572774592978c4 Mon Sep 17 00:00:00 2001
+From: Aliaksey Kandratsenka <alkondratenko@gmail.com>
+Date: Sun, 10 Feb 2019 12:46:18 -0800
+Subject: [PATCH] don't try to mark rsp as clobbered in linux syscall support
+
+rsp is not actually clobbered by that code and later gccs actually (correctly) bark
+at it.
+
+Fixed issue #1076.
+---
+ src/base/linux_syscall_support.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/base/linux_syscall_support.h b/src/base/linux_syscall_support.h
+index 13aa415e..199061a9 100644
+--- a/src/base/linux_syscall_support.h
++++ b/src/base/linux_syscall_support.h
+@@ -1485,7 +1485,7 @@ struct kernel_stat {
+                                "d"(LSS_SYSCALL_ARG(parent_tidptr)),
+                                "r"(LSS_SYSCALL_ARG(newtls)),
+                                "r"(LSS_SYSCALL_ARG(child_tidptr))
+-                             : "rsp", "memory", "r8", "r10", "r11", "rcx");
++                             : "memory", "r8", "r10", "r11", "rcx");
+       }
+       LSS_RETURN(int, __res);
+     }

@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-cosmosdb-0.5.2.orig/setup.py azure-mgmt-cosmosdb-0.5.2/setup.py
+--- azure-mgmt-cosmosdb-0.5.2.orig/setup.py	2019-04-11 15:47:52.086313366 +0200
++++ azure-mgmt-cosmosdb-0.5.2/setup.py	2019-04-11 15:48:13.514513296 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

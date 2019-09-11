@@ -1,0 +1,146 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:38 +0200
+Subject: [PATCH] suse-binarieschecks.diff
+
+===================================================================
+---
+ BinariesCheck.py | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 56 insertions(+), 2 deletions(-)
+
+Index: rpmlint-rpmlint-1.11/BinariesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/BinariesCheck.py
++++ rpmlint-rpmlint-1.11/BinariesCheck.py
+@@ -16,7 +16,7 @@ import rpm
+ 
+ import AbstractCheck
+ import Config
+-from Filter import addDetails, printError, printWarning
++from Filter import addDetails, printError, printWarning, printInfo
+ import Pkg
+ 
+ 
+@@ -54,6 +54,9 @@ class BinaryInfo(object):
+     setuid_call_regex = create_regexp_call(r'set(?:res|e)?uid')
+     setgroups_call_regex = create_regexp_call(r'(?:ini|se)tgroups')
+     chroot_call_regex = create_regexp_call('chroot')
++    debuginfo_regex = re.compile(r'^\s+\[\s*\d+\]\s+\.debug_.*\s+')
++    symtab_regex = re.compile(r'^\s+\[\s*\d+\]\s+\.symtab\s+')
++    gethostbyname_call_regex = create_regexp_call(r'(gethostbyname|gethostbyname2|gethostbyaddr|gethostbyname_r|gethostbyname2_r|gethostbyaddr_r)')
+ 
+     forbidden_functions = Config.getOption("WarnOnFunction")
+     if forbidden_functions:
+@@ -83,7 +86,10 @@ class BinaryInfo(object):
+         self.exec_stack = False
+         self.exit_calls = []
+         self.forbidden_calls = []
++        self.calls_gethostbyname = False
+         fork_called = False
++        self.debuginfo = False
++        self.symtab = False
+         self.tail = ''
+         self.lto_sections = False
+ 
+@@ -134,6 +140,14 @@ class BinaryInfo(object):
+                     self.non_pic = False
+                     continue
+ 
++                if BinaryInfo.debuginfo_regex.search(line):
++                    self.debuginfo = True
++                    continue
++
++                if BinaryInfo.symtab_regex.search(line):
++                    self.symtab = True
++                    continue
++
+                 r = BinaryInfo.soname_regex.search(line)
+                 if r:
+                     self.soname = r.group(1)
+@@ -174,6 +188,9 @@ class BinaryInfo(object):
+                 if BinaryInfo.chroot_call_regex.search(line):
+                     self.chroot = True
+ 
++                if BinaryInfo.gethostbyname_call_regex.search(line):
++                    self.calls_gethostbyname = True
++
+                 if BinaryInfo.forbidden_functions:
+                     for r_name, func in BinaryInfo.forbidden_functions.items():
+                         ret = func['f_regex'].search(line)
+@@ -432,13 +449,26 @@ class BinariesCheck(AbstractCheck.Abstra
+                 continue
+ 
+             # stripped ?
+-            if 'not stripped' in pkgfile.magic:
++            if ('not stripped' in pkgfile.magic and
++                    (os.environ.get('BUILD_DIR', '') == '' or
++                     os.environ.get('BUILD_DEBUG', '') != '')):
+                 printWarning(pkg, 'unstripped-binary-or-object', fname)
+ 
+             # inspect binary file
+             is_shlib = so_regex.search(fname)
+             bin_info = BinaryInfo(pkg, pkgfile.path, fname, is_ar, is_shlib)
+ 
++            # stripped static library
++            if is_ar:
++                if bin_info.readelf_error:
++                    pass
++                elif not bin_info.symtab:
++                    printError(pkg, 'static-library-without-symtab', fname)
++                elif (not bin_info.debuginfo and
++                        (os.environ.get('BUILD_DIR', '') == '' or
++                         os.environ.get('BUILD_DEBUG', '') != '')):
++                    printWarning(pkg, 'static-library-without-debuginfo', fname)
++
+             if is_shlib:
+                 has_lib = True
+ 
+@@ -496,6 +526,10 @@ class BinariesCheck(AbstractCheck.Abstra
+                 printWarning(pkg, ec, fname,
+                              BinaryInfo.forbidden_functions[ec]['f_name'])
+ 
++            # gethostbyname ?
++            if bin_info.calls_gethostbyname:
++                printInfo(pkg, 'binary-or-shlib-calls-gethostbyname', fname)
++
+             # rpath ?
+             if bin_info.rpath:
+                 for p in bin_info.rpath:
+@@ -724,6 +758,14 @@ with the intended shared libraries only.
+ 'ldd-failed',
+ '''Executing ldd on this file failed, all checks could not be run.''',
+ 
++'static-library-without-symtab',
++'''The static library doesn't contain any symbols and therefore can't be linked
++against. This may indicated that it was strip.''',
++
++'static-library-without-debuginfo',
++'''The static library doesn't contain any debuginfo. Binaries linking against
++this static library can't be properly debugged.''',
++
+ 'executable-stack',
+ '''The binary declares the stack as executable.  Executable stack is usually an
+ error as it is only needed if the code contains GCC trampolines or similar
+@@ -736,6 +778,10 @@ don\'t define a proper .note.GNU-stack s
+ make the stack executable.  Usual suspects include use of a non-GNU linker or
+ an old GNU linker version.''',
+ 
++'binary-or-shlib-calls-gethostbyname',
++'''The binary calls gethostbyname(). Please port the code to use
++getaddrinfo().''',
++
+ 'shared-lib-calls-exit',
+ '''This library package calls exit() or _exit(), probably in a non-fork()
+ context. Doing so from a library is strongly discouraged - when a library
+@@ -754,6 +800,12 @@ that use prelink, make sure that prelink
+ placing a blacklist file in /etc/prelink.conf.d.  For more information, see
+ http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=256900#49''',
+ 
++'unstripped-binary-or-object',
++'''stripping debug info from binaries happens automatically according to global
++project settings. So there's normally no need to manually strip binaries.
++Left over unstripped binaries could therefore indicate a bug in the automatic
++stripping process.''',
++
+ 'non-position-independent-executable',
+ '''This executable must be position independent.  Check that it is built with
+ -fPIE/-fpie in compiler flags and -pie in linker flags.''',

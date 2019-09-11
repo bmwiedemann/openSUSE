@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Mar 21 14:07:32 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.0.0
+ * drop python2 support
+ * Add support for ANY queries
+
+-------------------------------------------------------------------
+Fri Mar  1 09:30:55 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.2.0
+- Fix dependencies
+ * Add support for Python 3.7
+ * Fix CNAME test
+ * Add examples with `async` and `await`
+ * Fix Python version check
+ * Add gethostbyaddr
+
+-------------------------------------------------------------------
+Fri May 11 21:52:30 UTC 2018 - toddrme2178@gmail.com
+
+- Don't forget python_module workaround.
+
+-------------------------------------------------------------------
+Fri Feb  9 14:52:05 UTC 2018 - sleep_walker@opensuse.org
+
+- put LICENSE with %license
+- make conditional tests (but disable by default because of OBS build
+  isolation)
+
+-------------------------------------------------------------------
+Fri Feb  9 13:16:39 UTC 2018 - sleep_walker@opensuse.org
+
+- install LICENSE, ChangeLog and README
+- improve spec file a bit
+- add URL to source
+- make it proper single spec python package
+
+-------------------------------------------------------------------
+Wed Feb  7 18:49:56 UTC 2018 - sleep_walker@opensuse.org
+
+- let there be python-aiodns

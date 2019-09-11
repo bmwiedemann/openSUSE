@@ -1,0 +1,19 @@
+Index: prctl.c
+===================================================================
+--- prctl.c.orig	2006-05-25 00:06:24.000000000 +0200
++++ prctl.c	2010-11-19 10:03:03.821629772 +0100
+@@ -48,12 +48,12 @@
+ /* Verbose mode */
+ int verbose=0;
+ 
+-print_version(char *progname)
++void print_version(char *progname)
+ {
+ 	printf("%s version %s\n", progname, VERSION);
+ }
+ 
+-usage(char *progname)
++void usage(char *progname)
+ {
+ 	print_version(progname);
+ 	printf("Usage: %s [-v] [-h|--help] [--version]\n", progname);

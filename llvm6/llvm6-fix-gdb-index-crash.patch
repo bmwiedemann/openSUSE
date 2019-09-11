@@ -1,0 +1,191 @@
+commit d227a3b47ef9e57d86127c7a94b4d06fdf1bfd2d
+Author: Rafael Espindola <rafael.espindola@gmail.com>
+Date:   Wed Mar 21 21:31:25 2018 +0000
+
+    Handle abbr_offset with relocations.
+    
+    This is mostly just plumbing to get a DWARFDataExtractor where we
+    compute abbr_offset so we can use getRelocatedValue.
+    
+    This is part of PR36793.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/llvm/trunk@328154 91177308-0d34-0410-b5e6-96231b3b80d8
+
+--- llvm-6.0.0.src/test/DebugInfo/X86/abbr_offset.s.sav	2018-06-29 02:29:06.993601497 +0200
++++ llvm-6.0.0.src/test/DebugInfo/X86/abbr_offset.s	2018-06-29 02:29:06.993601497 +0200
+@@ -0,0 +1,51 @@
++# RUN: llvm-mc -triple x86_64-pc-linux %s -filetype=obj -o - | \
++# RUN: llvm-dwarfdump - | FileCheck %s
++
++# This test simulates the result of ld -r. That produces files where
++# abbr_offset is not zero.
++
++# CHECK: abbr_offset = 0x0000
++# CHECK: abbr_offset = 0x0008
++
++       	.section	.debug_abbrev,"",@progbits
++.Labbrev1:
++	.byte	1                       # Abbreviation Code
++	.byte	17                      # DW_TAG_compile_unit
++	.byte	0                       # DW_CHILDREN_no
++	.byte	16                      # DW_AT_stmt_list
++	.byte	23                      # DW_FORM_sec_offset
++	.byte	0                       # EOM(1)
++	.byte	0                       # EOM(2)
++	.byte	0                       # EOM(3)
++
++.Labbrev2:
++	.byte	1                       # Abbreviation Code
++	.byte	17                      # DW_TAG_compile_unit
++	.byte	0                       # DW_CHILDREN_no
++	.byte	16                      # DW_AT_stmt_list
++	.byte	23                      # DW_FORM_sec_offset
++	.byte	0                       # EOM(1)
++	.byte	0                       # EOM(2)
++	.byte	0                       # EOM(3)
++
++	.section	.debug_info,"",@progbits
++	.long	.Lend0 - .Lbegin0       # Length of Unit
++.Lbegin0:
++	.short	4                       # DWARF version number
++	.long	.Labbrev1               # Offset Into Abbrev. Section
++	.byte	8                       # Address Size (in bytes)
++	.byte	1                       # Abbrev [1] 0xb:0x1f DW_TAG_compile_unit
++	.long	.Lline_table_start0     # DW_AT_stmt_list
++.Lend0:
++
++       	.long	.Lend1 - .Lbegin1       # Length of Unit
++.Lbegin1:
++	.short	4                       # DWARF version number
++	.long	.Labbrev2               # Offset Into Abbrev. Section
++	.byte	8                       # Address Size (in bytes)
++	.byte	1                       # Abbrev [1] 0xb:0x1f DW_TAG_compile_unit
++	.long	.Lline_table_start0     # DW_AT_stmt_list
++.Lend1:
++
++	.section	.debug_line,"",@progbits
++.Lline_table_start0:
+--- llvm-6.0.0.src/lib/DebugInfo/DWARF/DWARFTypeUnit.cpp.sav	2018-06-29 02:29:01.217592047 +0200
++++ llvm-6.0.0.src/lib/DebugInfo/DWARF/DWARFTypeUnit.cpp	2018-06-29 02:29:06.993601497 +0200
+@@ -18,7 +18,7 @@
+ 
+ using namespace llvm;
+ 
+-bool DWARFTypeUnit::extractImpl(DataExtractor debug_info,
++bool DWARFTypeUnit::extractImpl(const DWARFDataExtractor &debug_info,
+                                 uint32_t *offset_ptr) {
+   if (!DWARFUnit::extractImpl(debug_info, offset_ptr))
+     return false;
+--- llvm-6.0.0.src/lib/DebugInfo/DWARF/DWARFUnit.cpp.sav	2018-06-29 02:29:01.221592053 +0200
++++ llvm-6.0.0.src/lib/DebugInfo/DWARF/DWARFUnit.cpp	2018-06-29 02:29:06.993601497 +0200
+@@ -32,7 +32,7 @@ using namespace dwarf;
+ 
+ void DWARFUnitSectionBase::parse(DWARFContext &C, const DWARFSection &Section) {
+   const DWARFObject &D = C.getDWARFObj();
+-  parseImpl(C, Section, C.getDebugAbbrev(), &D.getRangeSection(),
++  parseImpl(C, D, Section, C.getDebugAbbrev(), &D.getRangeSection(),
+             D.getStringSection(), D.getStringOffsetSection(),
+             &D.getAddrSection(), D.getLineSection(), D.isLittleEndian(), false,
+             false);
+@@ -41,7 +41,7 @@ void DWARFUnitSectionBase::parse(DWARFCo
+ void DWARFUnitSectionBase::parseDWO(DWARFContext &C,
+                                     const DWARFSection &DWOSection, bool Lazy) {
+   const DWARFObject &D = C.getDWARFObj();
+-  parseImpl(C, DWOSection, C.getDebugAbbrevDWO(), &D.getRangeDWOSection(),
++  parseImpl(C, D, DWOSection, C.getDebugAbbrevDWO(), &D.getRangeDWOSection(),
+             D.getStringDWOSection(), D.getStringOffsetDWOSection(),
+             &D.getAddrSection(), D.getLineDWOSection(), C.isLittleEndian(),
+             true, Lazy);
+@@ -92,7 +92,8 @@ bool DWARFUnit::getStringOffsetSectionIt
+   return true;
+ }
+ 
+-bool DWARFUnit::extractImpl(DataExtractor debug_info, uint32_t *offset_ptr) {
++bool DWARFUnit::extractImpl(const DWARFDataExtractor &debug_info,
++                            uint32_t *offset_ptr) {
+   Length = debug_info.getU32(offset_ptr);
+   // FIXME: Support DWARF64.
+   FormParams.Format = DWARF32;
+@@ -102,7 +103,7 @@ bool DWARFUnit::extractImpl(DataExtracto
+     FormParams.AddrSize = debug_info.getU8(offset_ptr);
+     AbbrOffset = debug_info.getU32(offset_ptr);
+   } else {
+-    AbbrOffset = debug_info.getU32(offset_ptr);
++    AbbrOffset = debug_info.getRelocatedValue(4, offset_ptr);
+     FormParams.AddrSize = debug_info.getU8(offset_ptr);
+   }
+   if (IndexEntry) {
+@@ -129,7 +130,8 @@ bool DWARFUnit::extractImpl(DataExtracto
+   return true;
+ }
+ 
+-bool DWARFUnit::extract(DataExtractor debug_info, uint32_t *offset_ptr) {
++bool DWARFUnit::extract(const DWARFDataExtractor &debug_info,
++                        uint32_t *offset_ptr) {
+   clear();
+ 
+   Offset = *offset_ptr;
+--- llvm-6.0.0.src/include/llvm/DebugInfo/DWARF/DWARFTypeUnit.h.sav	2018-06-29 02:29:01.217592047 +0200
++++ llvm-6.0.0.src/include/llvm/DebugInfo/DWARF/DWARFTypeUnit.h	2018-06-29 02:29:06.989601490 +0200
+@@ -46,7 +46,8 @@ public:
+   static const DWARFSectionKind Section = DW_SECT_TYPES;
+ 
+ protected:
+-  bool extractImpl(DataExtractor debug_info, uint32_t *offset_ptr) override;
++  bool extractImpl(const DWARFDataExtractor &debug_info,
++                   uint32_t *offset_ptr) override;
+ };
+ 
+ } // end namespace llvm
+--- llvm-6.0.0.src/include/llvm/DebugInfo/DWARF/DWARFUnit.h.sav	2018-06-29 02:29:01.217592047 +0200
++++ llvm-6.0.0.src/include/llvm/DebugInfo/DWARF/DWARFUnit.h	2018-06-29 02:29:06.993601497 +0200
+@@ -56,7 +56,8 @@ public:
+ protected:
+   ~DWARFUnitSectionBase() = default;
+ 
+-  virtual void parseImpl(DWARFContext &Context, const DWARFSection &Section,
++  virtual void parseImpl(DWARFContext &Context, const DWARFObject &Obj,
++                         const DWARFSection &Section,
+                          const DWARFDebugAbbrev *DA, const DWARFSection *RS,
+                          StringRef SS, const DWARFSection &SOS,
+                          const DWARFSection *AOS, const DWARFSection &LS,
+@@ -116,14 +117,14 @@ public:
+   }
+ 
+ private:
+-  void parseImpl(DWARFContext &Context, const DWARFSection &Section,
+-                 const DWARFDebugAbbrev *DA, const DWARFSection *RS,
+-                 StringRef SS, const DWARFSection &SOS, const DWARFSection *AOS,
+-                 const DWARFSection &LS, bool LE, bool IsDWO,
+-                 bool Lazy) override {
++  void parseImpl(DWARFContext &Context, const DWARFObject &Obj,
++                 const DWARFSection &Section, const DWARFDebugAbbrev *DA,
++                 const DWARFSection *RS, StringRef SS, const DWARFSection &SOS,
++                 const DWARFSection *AOS, const DWARFSection &LS, bool LE,
++                 bool IsDWO, bool Lazy) override {
+     if (Parsed)
+       return;
+-    DataExtractor Data(Section.Data, LE, 0);
++    DWARFDataExtractor Data(Obj, Section, LE, 0);
+     if (!Parser) {
+       const DWARFUnitIndex *Index = nullptr;
+       if (IsDWO)
+@@ -269,7 +270,8 @@ class DWARFUnit {
+   }
+ 
+ protected:
+-  virtual bool extractImpl(DataExtractor debug_info, uint32_t *offset_ptr);
++  virtual bool extractImpl(const DWARFDataExtractor &debug_info,
++                           uint32_t *offset_ptr);
+ 
+   /// Size in bytes of the unit header.
+   virtual uint32_t getHeaderSize() const { return getVersion() <= 4 ? 11 : 12; }
+@@ -327,7 +329,7 @@ public:
+   }
+ 
+ 
+-  bool extract(DataExtractor debug_info, uint32_t* offset_ptr);
++  bool extract(const DWARFDataExtractor &debug_info, uint32_t *offset_ptr);
+ 
+   /// extractRangeList - extracts the range list referenced by this compile
+   /// unit from .debug_ranges section. Returns true on success.

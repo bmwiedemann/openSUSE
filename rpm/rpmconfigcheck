@@ -1,0 +1,45 @@
+#! /bin/bash
+# Copyright (c) 2002 SUSE GmbH Nuernberg, Germany.
+#
+# Author: Michael Schroeder <feedback@suse.de>
+#
+# Script to scan for unresolved .rpmnew, .rpmorig, and .rpmsave files
+#
+
+configcheckfile=/var/adm/rpmconfigcheck
+packages=/var/lib/rpm/Packages
+
+if test -s $packages -a \( ! -e $configcheckfile -o -s $configcheckfile -o ! $packages -ot $configcheckfile \) ; then
+    echo "Searching for unresolved configuration files"
+    if test ! -e $configcheckfile -o ! $packages -ot $configcheckfile ; then
+	test -e $configcheckfile && mv -f $configcheckfile $configcheckfile.old
+	rpm -qalc | sort | perl -lne '-e "$_.rpmnew" and print "$_.rpmnew"; -e "$_.rpmorig" and print "$_.rpmorig"; -e "$_.rpmsave" and print "$_.rpmsave"' > $configcheckfile
+    else
+	mv -f $configcheckfile $configcheckfile.old
+	while read l; do
+	    test -e $l && echo $l
+	done < $configcheckfile.old > $configcheckfile
+    fi
+    if test -s $configcheckfile; then
+	echo "Please check the following files (see /var/adm/rpmconfigcheck):"
+	sed -e 's/^/    /' < $configcheckfile
+	touch $configcheckfile.old
+	cat $configcheckfile $configcheckfile.old | sort | uniq -d > $configcheckfile.dup
+	cat $configcheckfile $configcheckfile.dup | sort | uniq -u > $configcheckfile.new
+	if test -s $configcheckfile.new ; then
+	    (
+		echo "----------------------------------------------------------------------"
+		echo "----------------------------------------------------------------------"
+		echo "rpmconfigcheck"
+		date
+		echo "----------------------------------------"
+		echo "This is a warning message."
+		echo "rpmconfigcheck has found the following new unresolved config files"
+		echo "(all files are listed in /var/adm/rpmconfigcheck):"
+		cat $configcheckfile.new
+		echo "----------------------------------------"
+	    ) >> /var/log/update-messages
+	fi
+    fi
+    rm -f $configcheckfile.old $configcheckfile.dup $configcheckfile.new
+fi

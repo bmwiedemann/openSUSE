@@ -1,0 +1,30 @@
+diff -uNr mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manager.cpp mysql-workbench-community-6.3.10-src/library/cdbc/src/driver_manager.cpp
+--- mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manager.cpp	2017-11-09 18:11:42.000000000 +0200
++++ mysql-workbench-community-6.3.10-src/library/cdbc/src/driver_manager.cpp	2018-02-05 11:51:59.083657042 +0200
+@@ -297,7 +297,7 @@
+       if (properties.find("OPT_READ_TIMEOUT") == properties.end())
+         properties["OPT_READ_TIMEOUT"] = read_timeout;
+     }
+-    properties["OPT_CAN_HANDLE_EXPIRED_PASSWORDS"] = true;
++    //properties["OPT_CAN_HANDLE_EXPIRED_PASSWORDS"] = true;
+     properties["CLIENT_MULTI_STATEMENTS"] = true;
+     properties["metadataUseInfoSchema"] =
+       false; // I_S is way too slow for many things as of MySQL 5.6.10, so disable it for now
+@@ -324,7 +324,7 @@
+       properties.erase("sslCipher");
+     }
+ 
+-    ssize_t sslModeWb = parameter_values.get_int("useSSL", 0);
++    /*ssize_t sslModeWb = parameter_values.get_int("useSSL", 0);
+     sql::ssl_mode sslMode = sql::SSL_MODE_DISABLED;
+     switch(sslModeWb)
+     {
+@@ -344,7 +344,7 @@
+         sslMode = sql::SSL_MODE_VERIFY_IDENTITY;
+         break;
+     }
+-    properties["OPT_SSL_MODE"] = sslMode;
++    properties["OPT_SSL_MODE"] = sslMode;*/
+ 
+     // If we are on a pipe connection then set the host name explicitly.
+     // However, pipe connections can only be established on the local box (Win only).

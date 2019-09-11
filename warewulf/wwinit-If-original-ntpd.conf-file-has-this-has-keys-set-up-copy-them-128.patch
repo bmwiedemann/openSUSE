@@ -1,0 +1,50 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Tue Sep 11 12:58:26 2018 -0600
+Subject: wwinit: If original ntpd.conf file has this has keys set up, copy them (#128)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: eda20cbe769e8f93bf77da58bd32729e27a90d61
+References: 
+
+With a keys file present but commented out trustedkey or requestkey,
+ntp will not start.
+If original ntp.conf had a working setup, just copy it.
+
+Signed-off-by: Egbert Eich <eich@suse.com>---
+ cluster/libexec/wwinit/50-ntpd.init | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+diff --git a/cluster/libexec/wwinit/50-ntpd.init b/cluster/libexec/wwinit/50-ntpd.init
+index e7721b3..ae6582d 100644
+--- a/cluster/libexec/wwinit/50-ntpd.init
++++ b/cluster/libexec/wwinit/50-ntpd.init
+@@ -29,6 +29,13 @@ fi
+ NETWORK=`perl -MWarewulf::Network -MWarewulf::Config -e 'print Warewulf::Network->new()->network(Warewulf::Config->new("provision.conf")->get("network device"));'`
+ NETMASK=`perl -MWarewulf::Network -MWarewulf::Config -e 'print Warewulf::Network->new()->netmask(Warewulf::Config->new("provision.conf")->get("network device"));'`
+ 
++ntp_trustedkey=$(cat /etc/ntp.conf | sed -ne "s/^[^#t]*\(trustedkey[^#]\+\).*/\1/p")
++[ -z "$ntp_trustedkey" ] && ntp_trustedkey='#controlkey 8'
++ntp_controlkey=$(cat /etc/ntp.conf | sed -ne "s/^[^#c]*\(controlkey[^#]\+\).*/\1/p")
++[ -z "$ntp_controlkey" ] && ntp_controlkey='#trustedkey 4 8 42'
++ntp_requestkey=$(cat /etc/ntp.conf | sed -ne "s/^[^#r]*\(requestkey[^#]\+\).*/\1/p")
++[ -z "$ntp_requestkey" ] && ntp_requestkey='#requestkey 8'
++
+ if ! grep -q "^# This file was created by Warewulf" /etc/ntp.conf; then
+     cp /etc/ntp.conf /etc/ntp.conf-orig
+     wwprint "Backed up current NTP config to /etc/ntp.conf-orig\n"
+@@ -76,13 +83,13 @@ includefile /etc/ntp/crypto/pw
+ $KEY_FILE
+ 
+ # Specify the key identifiers which are trusted.
+-#trustedkey 4 8 42
++$ntp_trustedkey
+ 
+ # Specify the key identifier to use with the ntpdc utility.
+-#requestkey 8
++$ntp_requestkey
+ 
+ # Specify the key identifier to use with the ntpq utility.
+-#controlkey 8
++$ntp_controlkey
+ 
+ # Enable writing of statistics records.
+ #statistics clockstats cryptostats loopstats peerstats

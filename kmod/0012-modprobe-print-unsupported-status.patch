@@ -1,0 +1,75 @@
+From e48d1ee5980643f56165a9ee1687ff64f864aeb6 Mon Sep 17 00:00:00 2001
+From: Vlad Bespalov <vlad.bespalov@jetstreamsoft.com>
+Date: Fri, 8 Jun 2018 21:13:00 +0000
+Subject: [PATCH 6/6] modprobe: print status of "allow_unsupported_modules"
+ variable
+
+In SLES11 modprobe printed everything referenced in /etc/modprobe.d
+in SLES12 config parsing changed to explicitly find and print
+specific groups of modprobe options, which did not print
+the status of "allow_unsupported_modules" option when running
+modprobe -c
+The proposed patch fixes this deficiency
+
+Patch-mainline: never
+---
+ libkmod/libkmod-config.c | 13 +++++++++++++
+ libkmod/libkmod.h        |  1 +
+ tools/modprobe.c         |  5 +++++
+ 3 files changed, 19 insertions(+)
+
+diff --git a/libkmod/libkmod-config.c b/libkmod/libkmod-config.c
+index 550a612..0fc2250 100644
+--- a/libkmod/libkmod-config.c
++++ b/libkmod/libkmod-config.c
+@@ -1008,6 +1008,19 @@ static struct kmod_config_iter *kmod_config_iter_new(const struct kmod_ctx* ctx,
+  * @short_description: retrieve current libkmod configuration
+  */
+ 
++/*
++ * kmod_config_unsupported_allowed:
++ * @ctx: kmod library context
++ *
++ * Retrieve status of unsupported modules
++ */
++KMOD_EXPORT bool kmod_config_unsupported_allowed(const struct kmod_ctx *ctx)
++{
++	struct kmod_config *config = (struct kmod_config *)kmod_get_config(ctx);
++
++	return !config->block_unsupported;
++}
++
+ /**
+  * kmod_config_get_blacklists:
+  * @ctx: kmod library context
+diff --git a/libkmod/libkmod.h b/libkmod/libkmod.h
+index 352627e..c2b9657 100644
+--- a/libkmod/libkmod.h
++++ b/libkmod/libkmod.h
+@@ -115,6 +115,7 @@ const char *kmod_config_iter_get_key(const struct kmod_config_iter *iter);
+ const char *kmod_config_iter_get_value(const struct kmod_config_iter *iter);
+ bool kmod_config_iter_next(struct kmod_config_iter *iter);
+ void kmod_config_iter_free_iter(struct kmod_config_iter *iter);
++bool kmod_config_unsupported_allowed(const struct kmod_ctx *ctx);
+ 
+ /*
+  * kmod_module
+diff --git a/tools/modprobe.c b/tools/modprobe.c
+index aa4033d..4f1c54a 100644
+--- a/tools/modprobe.c
++++ b/tools/modprobe.c
+@@ -201,6 +201,11 @@ static int show_config(struct kmod_ctx *ctx)
+ 		kmod_config_iter_free_iter(iter);
+ 	}
+ 
++	// SUSE specific option:
++	if (!kmod_config_unsupported_allowed(ctx)) {
++		puts("allow_unsupported_modules   0\n");
++	}
++
+ 	puts("\n# End of configuration files. Dumping indexes now:\n");
+ 	fflush(stdout);
+ 
+-- 
+2.20.1
+

@@ -1,0 +1,78 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.6-scheduler_locking-step-is-default.patch
+
+;; Make upstream `set scheduler-locking step' as default.
+;;=push+jan: How much is scheduler-locking relevant after non-stop?
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -2075,7 +2075,7 @@ static const char *const scheduler_enums[] = {
+   schedlock_replay,
+   NULL
+ };
+-static const char *scheduler_mode = schedlock_replay;
++static const char *scheduler_mode = schedlock_step;
+ static void
+ show_scheduler_mode (struct ui_file *file, int from_tty,
+ 		     struct cmd_list_element *c, const char *value)
+diff --git a/gdb/testsuite/gdb.mi/mi-cli.exp b/gdb/testsuite/gdb.mi/mi-cli.exp
+--- a/gdb/testsuite/gdb.mi/mi-cli.exp
++++ b/gdb/testsuite/gdb.mi/mi-cli.exp
+@@ -199,7 +199,7 @@ mi_expect_stop "breakpoint-hit" "main" "" ".*basics.c" \
+ # Test that the token is output even for CLI commands
+ # Also test that *stopped includes frame information.
+ mi_gdb_test "34 next" \
+-    ".*34\\\^running.*\\*running,thread-id=\"all\"" \
++    ".*34\\\^running.*\\*running,thread-id=\"1\"" \
+     "34 next: run"
+ 
+ # Test that the new current source line is output to the console
+diff --git a/gdb/testsuite/gdb.mi/mi-console.exp b/gdb/testsuite/gdb.mi/mi-console.exp
+--- a/gdb/testsuite/gdb.mi/mi-console.exp
++++ b/gdb/testsuite/gdb.mi/mi-console.exp
+@@ -60,6 +60,9 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
+ 
+ mi_run_to_main
+ 
++# thread-id=\"all\" vs. thread-id=\"1\" below:
++mi_gdb_test "210-gdb-set scheduler-locking off" "210\\^done" "set scheduler-locking off"
++
+ # The output we get from the target depends on how it is hosted.  If
+ # we are semihosted (e.g., the sim or a remote target that supports
+ # the File I/O remote protocol extension), we see the target I/O
+diff --git a/gdb/testsuite/gdb.mi/mi-logging.exp b/gdb/testsuite/gdb.mi/mi-logging.exp
+--- a/gdb/testsuite/gdb.mi/mi-logging.exp
++++ b/gdb/testsuite/gdb.mi/mi-logging.exp
+@@ -53,7 +53,7 @@ close $chan
+ 
+ set mi_log_prompt "\[(\]gdb\[)\] \[\r\n\]+"
+ 
+-if [regexp "\\^done\[\r\n\]+$mi_log_prompt\\^running\[\r\n\]+\\*running,thread-id=\"all\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt\\^running\[\r\n\]+\\*running,thread-id=\"all\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt" $logcontent] {
++if [regexp "\\^done\[\r\n\]+$mi_log_prompt\\^running\[\r\n\]+\\*running,thread-id=\"1\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt\\^running\[\r\n\]+\\*running,thread-id=\"1\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt" $logcontent] {
+     pass "log file contents"
+ } else {
+     fail "log file contents"
+@@ -76,7 +76,7 @@ set chan [open $milogfile]
+ set logcontent [read $chan]
+ close $chan
+ 
+-if [regexp "1001\\^done\[\r\n\]+$mi_log_prompt.*1002\\^running\[\r\n\]+\\*running,thread-id=\"all\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt.*1003\\^running\[\r\n\]+\\*running,thread-id=\"all\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt" $logcontent] {
++if [regexp "1001\\^done\[\r\n\]+$mi_log_prompt.*1002\\^running\[\r\n\]+\\*running,thread-id=\"1\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt.*1003\\^running\[\r\n\]+\\*running,thread-id=\"1\"\[\r\n\]+$mi_log_prompt\\*stopped,reason=\"end-stepping-range\",.*\[\r\n\]+$mi_log_prompt" $logcontent] {
+     pass "redirect log file contents"
+ } else {
+     fail "redirect log file contents"
+diff --git a/gdb/testsuite/gdb.opt/inline-cmds.exp b/gdb/testsuite/gdb.opt/inline-cmds.exp
+--- a/gdb/testsuite/gdb.opt/inline-cmds.exp
++++ b/gdb/testsuite/gdb.opt/inline-cmds.exp
+@@ -331,7 +331,7 @@ proc mi_cli_step {cli_output_re message} {
+ 
+     send_gdb "interpreter-exec console \"step\"\n"
+     gdb_expect {
+-	-re "\\^running\r\n\\*running,thread-id=\"all\"\r\n${mi_gdb_prompt}${cli_output_re}" {
++	-re "\\^running\r\n\\*running,thread-id=\"1\"\r\n${mi_gdb_prompt}${cli_output_re}" {
+ 	    pass $message
+ 	}
+ 	timeout {

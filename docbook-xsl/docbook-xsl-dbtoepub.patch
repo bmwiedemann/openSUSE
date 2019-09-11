@@ -1,0 +1,13 @@
+diff -ur docbook-xsl-1.76.1.orig/epub/bin/dbtoepub docbook-xsl-1.76.1/epub/bin/dbtoepub
+--- docbook-xsl-1.76.1.orig/epub/bin/dbtoepub	2010-09-13 23:59:41.000000000 +0200
++++ docbook-xsl-1.76.1/epub/bin/dbtoepub	2011-04-12 09:43:49.000000000 +0200
+@@ -17,7 +17,7 @@
+ #                                        layer (imports epub/docbook.xsl).
+ #     -v, --verbose                    Make output verbose.
+ 
+-lib = File.expand_path(File.join(File.dirname(__FILE__), 'lib'))
++lib= '/usr/share/xml/docbook/stylesheet/nwalsh/current/epub/bin/lib'
+ $LOAD_PATH.unshift(lib) if File.exist?(lib)
+ 
+ require 'fileutils'
+Nur in docbook-xsl-1.76.1/epub/bin: dbtoepub~.

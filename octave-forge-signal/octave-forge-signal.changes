@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Mar  7 17:20:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with current octave versions:
+  Substitute gripes.h -> errwarn.h, functions gripe_* -> err_*
+  Substitute NINT -> octave::math::nint
+
+-------------------------------------------------------------------
+Wed Jun  6 07:45:26 UTC 2018 - badshah400@gmail.com
+
+- Update to version 1.4.0:
+  * The buttord, cheb1ord, cheb2ord, and ellipord functions now
+    support analog filter design with the "s" option.
+  * The cheb1ord and cheb2ord functions will now compute the
+    filter order for band-stop or notch filters.
+  * The medfilt1 function has been completely rewritten to support
+    additional arguments and options and to improve Matlab
+    compatibility.
+  * The following new functions have been added to the signal
+    package: cconv, pow2db, udecode, db2pow, rms, uencode,
+    peak2peak, rssq, unshiftdata, peak2rms, shiftdata.
+  * Other functions that have been changed for smaller bugfixes,
+    increased Matlab compatibility, or performance: bitrevorder,
+    ellip, primitive, buffer, findpeaks, rectpuls, butter,
+    fracshift, schtrig, cheby1, gauspuls, sigmoid_train, cheby2,
+    gausswin, specgram, chirp, impz, square, cplxreal, invfreqs,
+    tripuls, data2fun, invfreqz, digitrevorder, marcumq.
+
+-------------------------------------------------------------------
+Wed May 27 20:41:52 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 1.3.2
+  * The package is no longer dependent on the general package.
+
+-------------------------------------------------------------------
+Wed Apr  8 07:51:45 UTC 2015 - dmitry_r@opensuse.org
+
+Update to version 1.3.1
+  * The following window functions now accept a Matlab compatible option
+    to select the periodic variant, useful for FFT applications:
+      blackmanharris    hann
+      blackmannuttall   nuttallwin
+  * The following filter design functions have improved and more
+    consistent input parameter validation:
+      buttord    cheb2ord
+      cheb1ord   ellipord
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 1.3.0
+

@@ -1,0 +1,1570 @@
+-------------------------------------------------------------------
+Tue Apr 30 04:48:25 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Fix systemd kill signal (uwsgi does not die on SIGTERM)
+- Add reload command to systemd service
+
+-------------------------------------------------------------------
+Sat Mar 16 00:45:25 UTC 2019 - James Oakley <jfunk@funktronics.ca>
+
+- Add patch uwsgi-2.0.18-postgresql-config.patch to use pkg-config
+  instead of pg_config as it was removed in postgres11-devel
+
+-------------------------------------------------------------------
+Sat Feb  9 16:19:37 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- HTTPS URL for source
+- update to upstream release 2.0.18
+  * Fixed support for Python 3.7
+  * Allow to use autoport (socket :0) with custom socket backlog
+  * pyuwsgi ported to python3
+  * pyuwsgi packages fixes
+  * pyuwsginossl build configuration for building pyuwsgi without ssl support
+  * Fix unix socket inheritance after reload on FreeBSD
+  * Fix crashes with --wsgi-env-behavior=holy (#1950)
+  * Fix invalid free in python plugin (#1942)
+  * Fix compilation warnings with gcc-8 (#1819)
+  * Fix spooler python references
+  * Don't generate build warnings in systemd_logger
+  * Fix segmentation fault during worker shutdown (#1651)
+
+-------------------------------------------------------------------
+Thu Aug  2 22:12:22 UTC 2018 - michael@stroeder.com
+
+- Trimmed package description
+
+-------------------------------------------------------------------
+Mon Jul 23 13:33:36 UTC 2018 - jfunk@funktronics.ca
+
+- Work around missing include dir in glusterfs pkg-config
+
+-------------------------------------------------------------------
+Mon Jul  9 14:52:54 UTC 2018 - michael@stroeder.com
+
+- update to upstream release 2.0.17.1
+  * Fixed memory leak in HTTPS_CLIENT_CERTIFICATE
+  * TLSv1 is now disabled by default
+  * Improved daemons throttle system
+  * Add “secs” log formatting variable
+  * Improved snprintf() usage to be OpenBSD-friendly
+  * Improved glibc crypt/crypt_r management
+  * Fixed websocket pong timeout check
+  * Add the “License” classifier to setup.py
+  * Add support for php user.ini
+  * Official support for Python 3.7
+
+-------------------------------------------------------------------
+Thu May 31 00:45:55 UTC 2018 - jfunk@funktronics.ca
+
+- Don't create a /run directory for Apache on startup. It fails if Apache is
+  not installed and sockets are defined per-application anyway (bnc#1082002)
+- Fix broken build dependency on Leap 15
+
+-------------------------------------------------------------------
+Tue Apr 24 10:48:33 UTC 2018 - michael@stroeder.com
+
+- Require Apache 2.4.33 for Leap 15 and Tumbleweed
+  because otherwise mod_proxy_uwsgi is not available (bsc#1090695)
+
+-------------------------------------------------------------------
+Wed Apr 18 13:32:20 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Handle aarch64 arch
+
+-------------------------------------------------------------------
+Mon Apr 16 23:48:42 UTC 2018 - jfunk@funktronics.ca
+
+- Disable apache2-mod_proxy_uwsgi on Leap 15 since upstream Apache includes
+  the module now
+
+-------------------------------------------------------------------
+Mon Apr 16 13:42:59 UTC 2018 - jfunk@funktronics.ca
+
+- Update to 2.0.17:
+  * The Emperor throttling subsystem does not make use anymore of blocking
+    functions, like usleep(), this should fix stats serving and should improve
+    vassals startup time
+  * [Security/PHP] enforce DOCUMENT_ROOT check when using --php-docroot to
+    avoid directory traversal (Marios Nicolaides)
+  * added --shutdown-sockets to improve graceful shutdowns (Andrew Wason)
+
+-------------------------------------------------------------------
+Tue Feb 27 11:53:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update License tag to SPDX 3 version:
+  Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0.
+
+-------------------------------------------------------------------
+Sun Feb 18 18:51:03 UTC 2018 - michael@stroeder.com
+
+- removed obsolete reproducible.patch
+- Update to 2.0.16:
+  * [CVE-2018-6758] Stack-based buffer overflow in
+    core/utils.c:uwsgi_expand_path()
+  * Backported early_post_jail plugin hook (Bjørnar Ness)
+  * Fixed ipv6 suupport for http-socket (James Brown)
+  * Enable execinfo on DragonFly BSD (Aaron LI)
+  * Fix inet_ntop buffer size (Orivej Desh)
+  * Add worker running time metrics (Serge/yasek)
+  * Backported safe-pidfile, safe-pidfile2 (Nate Coraor)
+  * Stop using libxml2 by default on osx
+  * Fixed uwsgi_kvlist_parse signature
+  * Backport http range fixes from master (Curtis Maloney, Sokolov Yura)
+  * relicensed mod_proxy_uwsgi to Apache 2.0
+  * logging: Add ${millis} support to json encode
+  * plugins/router_xmldir: fixup invalid locale check (Riccardo Magliocchetti)
+  * Add ssl-verify-depth flag to set the max Client CA chain length (Paul Tagliamonte)
+  * Allow to override build date (Bernhard M. Wiedemann)
+  * Python 3 plugin: improved thread names handling (Jyrki Muukkonen, Mark Meyer)
+  * Added uwsgi_resolve_ip for redis host (ahmbas)
+  * plugins/gevent: Fix signal handlers (Maslov Alexander)
+  * Write x509 DER to the uwsgi buffer (Paul Tagliamonte)
+  * plugin/http: Fix compilation (Melvyn Sopacua)
+  * Fixed emperor throttling system (Jeremy Hiatt)
+  * Fix application loading without Plack after excluding “.” from @INC in new Perl versions (Anton Petrusevich)
+  * Fix MULE MSG QUEUE IS FULL message hint (Eugene Tataurov)
+  * Build System: support k_minor has a _xxx suffix (TOGO Li)
+  * Fixed drop-after-* options (Robert DeRose)
+  * Add mule_send_msg success indicator (Josh Tiras)
+  * Properly check item size in uwsgi_queue_push (Josh Tiras)
+  * FastRouter / HTTP Router can now have a ‘fallback’ key configured
+  * HTTP Router now supports post-buffer, just like FastRouter
+  * Fix handling of env in embedded dict in Python plugin (could cause segfaults in single thread mode)
+  * Add support for Brotli (.br) with –static-gzip
+  * Back-ported HTTP/1.1 support (–http11-socket) from 2.1
+
+-------------------------------------------------------------------
+Sun Dec 10 04:51:02 UTC 2017 - i@marguerite.su
+
+- fix a leaf problem found by repo-checker
+  * uwsgi-python3 can't be install because it requires python-base = 3.6
+    which should be python3-base
+
+-------------------------------------------------------------------
+Wed Nov 09 00:00:00 UTC 2017 - sven@uebelacker.net
+
+- creating /run/uwsgi for sockets via systemd service now
+
+-------------------------------------------------------------------
+Wed Oct 26 00:00:00 UTC 2017 - sven@uebelacker.net
+
+- Update to 2.0.15: [2017-03-30]
+  * workaround for the holy allocator for avoiding crashes with newrelic (see
+    Issues notes)
+  * avoid time overflow in request logs during (even minimal) clock skew
+  * fixed python logger with python3
+  * fixed catch-exceptions with python3
+  * backported “don’t clone $env->{‘psgix.io’} on ‘PSGI cancel’”
+  * added support for authentication in the redis logger
+  * added the spinningfifo action hook to the core
+  * fixed compilation with php 7.1 (Дамјан Георгиевски)
+  * correctly returns error code 22 in lazy_apps + master_mode
+  * fixed compilation for OpenSSL 1.1 (Riccardo Magliocchetti)
+  * Add a –skip-atexit-teardown option to skip perl/python teardown (Ævar
+    Arnfjörð Bjarmason)
+  * fixed static file serving over https-socket
+- building now php7 plugin via php7-embed package for Factory/Tumbleweed
+- removing uwsgi-1.9.13-emperor_pg-Wformat.patch
+
+-------------------------------------------------------------------
+Wed Oct 18 08:35:31 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Sat Jun 24 06:59:57 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to override build date to make build more reproducible
+- sort list of plugins
+
+-------------------------------------------------------------------
+Wed Oct  5 12:14:59 UTC 2016 - buschmann23@opensuse.org
+
+- Update to 2.0.14:
+  * backported gevent-early-monkey-patch (jianbin-wei)
+  * Fixed OpenBSD version check (Pavel Korovin)
+  * PSGI/Perl cache api fixes (Alexander Demenshin)
+  * Correctly decode PATH_INFo in router_rewrite plugin (Ben Hearsum)
+  * add uwsgi.accepting() for chain-reload + worker-override combo
+    (enkore)
+  * fixed workers killing when in cheaper modes (shoham-stratoscale)
+  * added –cgi-safe option (nnnn20430)
+  * Implemented graceful reload for COROAE plugin (aleksey-mashanov)
+  * Added –php-fallback2, –php-fallback-qs (Felicity unixwitch)
+  * Added ipv4in and ipv6in routing rules (Felicity unixwitch)
+  * Fixed readline support in python3 when working interactively
+    (Anthony Sottile)
+  * Implement touch-reloading for mules and spoolers (Alexandre Bonnetain)
+  * add request_start timestamp in stats (Ben Plotnick)
+  * Fixed double free in uwsgi_routing_func_rewrite (William Orr)
+  * Various mod_proxy_uwsgi fixes (Ya-Lin Huang)
+  * support for ‘no-answer’ in PSGI (Anton Petrusevich)
+  * added php-constant option (Дамјан Георгиевски [gdamjan])
+  * added the stdio logger (Дамјан Георгиевски [gdamjan])
+  * spooler: fix reading inconsistent data (Pavel Patrin)
+  * Removed -WError from the build procedure (Riccardo Magliocchetti,
+    suggested by Ian Denhardt)
+  * The usual amount of coverity-based fixes (Riccardo Magliocchetti)
+
+-------------------------------------------------------------------
+Wed Sep 28 02:00:36 UTC 2016 - jfunk@funktronics.ca
+
+- Don't fail build on deprecated declarations
+
+-------------------------------------------------------------------
+Wed Jun  8 18:53:26 UTC 2016 - buschmann23@opensuse.org
+
+- Update to 2.0.13.1:
+  * Fixed support for python 2.5 and python 2.6
+  * Fixed support for older glibc
+  * Reverted EPOLLEXCLUSIVE patch, requires more investigation 
+
+-------------------------------------------------------------------
+Thu May 12 04:43:00 UTC 2016 - jfunk@funktronics.ca
+
+- Update to 2.0.13:
+  *  Fix compilation with GCC 6
+  *  Remote rpc fixes (Darvame)
+  *  Musl support! (Natanael Copa, Matt Dainty, Riccardo Magliocchetti)
+  *  Create the spooler directory if it does not exist (Alexandre Bonnetain)
+  *  Fix compilation on big endian linux (Riccardo Magliocchetti)
+  *  A ton of cache fixes (Darvame)
+  *  Make it easier to compile plugins on a different directory (Jakub
+     Jirutka)
+  *  Add wheel package machinery (Matt Robenolt)
+  *  Use EPOLLEXCLUSIVE for reading, helps with the thundering herd problem
+     (on linux 4.5+) (INADA Naoki)
+  *  Fix apache 2.4 integration with unix sockets (Alexandre Rossi)
+  *  Add HTTP/2 support to apache 2 proxy (Michael Fladischer, OGAWA Hirofumi)
+  *  Fix apache mod proxy compilation with apache 2.4.20 (Mathieu Arnold)
+  *  Default to clang as default compiler on MacOS X (Riccardo Magliocchetti)
+  *  Added --cgi-close-stdin-on-eof (Roberto De Ioris)
+
+-------------------------------------------------------------------
+Thu Jan  7 13:50:57 UTC 2016 - buschmann23@opensuse.org
+
+- Udate to version 2.0.12
+  * Bugfixes
+    * ‘rpcvar’ routing action correctly returns NEXT on empty response
+    * uwsgiconfig: fix handling of empty keys in python3 (Simone Basso)
+    * plugins/alarm_speech: fix AppKit spelling to support
+      case-sensitive filesystems (Andrew Janke)
+    * Fix inheriting INET address 0.0.0.0 (INADA Naoki)
+    * core/xmlconf: correctly initialize libxml2 (Riccardo Magliocchetti)
+    * Pass LIBDIR to linker in python plugin (Borys Pierov)
+    * Platforms-related build fixes for pty, forkptyrouter and mono
+      plugins (Jonas Smedegaard and Riccardo Magliocchetti)
+  * New Features
+    * The custom worker api - Finally you are able to override the uWSGI
+      processing model to completeley get control of it.
+      https://github.com/unbit/uwsgi-docs/blob/master/WorkerOverride.rst
+    * --wsgi-disable-file-wrapper - This option disables the wsgi.file_wrapper
+      optimization of the WSGI standard. IN some corner case this is
+      the only trick to avoid errors.
+    * Official PHP7 support - PHP 7 is now officially supported in
+      the php plugin.
+    * uwsgi.spooler_get_task api (Credits: Alexandre Bonnetain)
+      This patch allows you to easily parse spooler files.
+    * --if-hostname-match (Credits: Alexandre Bonnetain)
+      This options for config logic allows you to define options only
+      when a regexp over the hostname machtes.
+- Update patch 1 - uwsgi-1.9.17-no-LD_RUN_PATH.patch - renamed patch
+  file to uwsgi-2.0.12-no-LD_RUN_PATH.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 17:33:31 UTC 2015 - buschmann23@opensuse.org
+
+- Update to version 2.0.11.2
+  * Bugfixes
+    * OSX 10.11 supports TCP_FASTOPEN
+    * fixed http-socket parser state after harakiri
+    * fixed threaded request logger
+    * fixed fastrouter subscriptions modifiers
+    * fixed alarm backlog 
+
+-------------------------------------------------------------------
+Sat Sep 26 17:39:41 UTC 2015 - jfunk@funktronics.ca
+
+- Remove uwsgi-2.0.10-gcc5.patch as it was integrated upstream
+- Update to 2.0.11.1:
+  * Bugfixes
+    * fixed HTTPS router resource deallocation and fiel descriptors leak
+    * do not spit out ssl errors when errno is 0
+  * New Features
+    * The unix_signal hook - You can now remap UNIX signals to specific
+      functions symbols
+- Changes from 2.0.11:
+  * Bugfixes
+    * [pypy] fixed misuse of ffi.string
+    * fixed detection for gcc 5 (jimfunk)
+    * fixed shared sockets for gateways
+    * [psgi] Changed abs to labs because offset is declared as a long (Peter H.
+      Ezetta)
+    * add null terminator to uwsgi_get_dot_h() and uwsgi_config_py() (Jay
+      Oster)
+    * fixed thread waiting during stop/restart (Kaiwen Xu)
+    * fixed chain reloading verbosity
+    * [python] fixed spooler job reference counting (Curtis Maloney)
+    * various static analysis improvements (Riccardo Magliocchetti)
+    * fixed sharedarea support for very big ranges
+    * fixed gzip transformation for zero-sized responses (Curtis Maloney)
+    * fixed management of https client certificate authentication (Vladimir
+      Didenko)
+    * fixed OpenBSD build
+    * fixed TMPFILE permissions
+  * New Features
+    * The mem_collector thread - Evil memory monitors (like --evil-reload-on-rss)
+      are now asynchronously managed by a dedicated thread. This solves the issue
+      of runaway processes not catched by the master.
+    * fixpathinfo routing action - This is another step in removing the need of
+      the infamous uwsgi_modifier1 30 relic.
+    * uwsgi[sor] and time[micros] routing vars - This two new vars exposes the
+      start of the current request (in micros) and the current time (again in
+      micros)
+    * wait-for-socket - This works like wait-for-fs/iface/file/dir. The spawn
+      of the instance is suspended until the specified tcp/unix socket is
+      ready. You can use it to synchronize vassals spawn (like stopping a
+      vassal until a postgresql server has been spawned)
+    * wait_for hooks - All of the wait-for-* functions can now be used as a
+      hook
+
+-------------------------------------------------------------------
+Wed Aug 12 11:10:35 UTC 2015 - dvaleev@suse.com
+
+- Don't build v8 plugin for PowerPC 
+
+-------------------------------------------------------------------
+Sun Jun 28 18:10:21 UTC 2015 - jfunk@funktronics.ca
+
+- Added uwsgi-2.0.10-gcc5.patch to fix build for gcc 5
+- Update to 2.0.10:
+  * Bugfixes
+    * Don't lower security standards with gcc 4.9 (Riccardo Magliocchetti)
+    * Perl/PSGI make sure that at least two params are passed to xs_input_seek
+      (Ivan Kruglov)
+    * Perl/PSGI fixed multiple interpreters usage
+    * spooler: fixed scandir usage
+    * fixed exception handler arguments management
+    * fixed 'log-master' + 'daemonize2' disables all logging
+    * fixed http Range header management
+  * New Features
+    * safeexec hook - this is like 'exec' but do not exit on error even if the
+      executed command returns a non-zero value
+    * backported --emperor-wrapper-fallback and --emperor-wrapper-override
+    * added support for UNIX sockets to rsyslog
+    * forcecl transformation - this transformation works like 'fixcl' but
+      generates the Content-Length header even if Content-Length has been
+      listed for removal
+- Changes from 2.0.9:
+  * Bugfixes
+    * fixed mod_proxy_uwsgi for non-blocking mode (many thanks to Joe cuchac)
+    * fixed master-fifo + cheaper
+    * fixed leak on error in bind_to_unix (Riccardo Magliocchetti)
+    * atexit hooks works in cheaped workers too
+    * atexit hooks works in gevent mode too during shutdown
+    * fixed carbon command line option value after reload
+    * do not honour Emperor throttling on the first run
+    * fixed Mono plugin
+    * fixed peer name in corerouters
+    * fixed stop signal for daemons
+    * various ssl/tls fixes in https/spdy router
+    * fixed python3 --py-auto-reload-ignore
+    * fixed modifiers in corerouters
+    * support for yajl from homebrew (OSX)
+    * psgi: Ensure that we call any DESTROY hooks on psgix.harakiri.commit
+      (Ævar Arnfjörð Bjarmason)
+    * systemdlogger: fix compilation with -Werror=format-security (Riccardo
+      Magliocchetti)
+    * fixed unmasked websockets
+    * perl fixed latent refcounting bug (Mattia Barbon)
+   * New Features
+    * Improved PyPy support for Linux
+    * Fastrouter post-buffering
+    * Perl uwsgi::opt - The psgi/perl plugin exposes the uwsgi::opt hash,
+      reporting the whole instance key-value configuration
+    * --pull-header - This is like --collect-header but the collected header
+      is not returned to the client
+    * active-workers signal target - This is like the 'workers' target, but
+      forward the signal only to non-cheaper workers
+    * httpdumb routing action - The http internal router exposes a new mode
+      called 'httpdumb' that does not change headers before forwarding the
+      request
+- Changes from 2.0.8:
+  * Bugfixes
+    * fixed PHP `SCRIPT_NAME` usage when --php-app is in place
+    * allow "appendn" hook without second argument
+    * fix heap corruption in the Carbon plugin (credits: Nigel Heron)
+    * fix getifaddrs() memory management
+    * fixed `tcsetattr()` usage
+    * fixed kevent usage of return value (credits: Adriano Di Luzio)
+    * ensure PSGI response headers are in the right format
+    * fixed reloading of attached daemons
+    * fixed SSL/TLS shutdown
+    * fixed mountpoint logic for paths not ending with / (credits: Adriano Di
+      Luzio)
+    * fixed Python3 support in spooler decorators (credits: Adriano Di Luzio)
+  * New Features
+    * RTSP and chunked input backports from 2.1 for the HTTP router
+    * --hook-post-fork - This custom hook allows you to call actions after
+      each fork()
+    * fallback to trollius for asyncio plugin
+    * added sweep_on_full, clear_on_full and no_expire to --cache2 - Three new
+      options for --cache2 have been added for improving the caching expire
+      strategies:
+      * sweep_on_full will call a sweep (delete all of the expired items) as
+        soon as the cache became full
+      * clear_on_full will completely clear the cache as soon as it is full
+      * no_expire forces the cache to not generate a cache sweeper thread,
+        delegating items removal to the two previous options
+    * backported wait-for-fs/mountpoints from 2.1:
+      * --wait-for-fs <path>: suspend the uWSGI startup until a file/directory
+        is available
+      * --wait-for-file <path>: suspend the uWSGI startup until a file is
+        available
+      * --wait-for-dir <path>: suspend the uWSGI startup until a directory is
+        available
+      * --wait-for-mountpoint <path>: suspend the uWSGI startup until a
+        mountpoint is available
+    * improved the offload api (backport from 2.1)
+    * Allows building plugins from remote sources as embedded
+    * Automatically manage HTTP_X_FORWARDED_PROTO
+- Changes from 2.0.7
+  * Bugfixes
+    * fixed counters in Statsd plugin (Joshua C. Forest)
+    * fixed caching in PHP plugin (Andrew Bevitt)
+    * fixed management of system users starting with a number
+    * fixed request body readline using memmove instead of memcpy (Andrew
+      Wason)
+    * ignore "user" namespace in setns (still a source of problems)
+    * fixed Python3 RPC bytes/string mess (result: we support both)
+    * do not destroy the Emperor on failed mount hooks
+    * fixed symbol lookup error in the Mono plugin on OS X (Ventero)
+    * fixed FastCGI and SCGI protocols error when out of buffer happens
+    * fixed Solaris/SmartOS I/O management
+    * fixed two memory leaks in the RPC subsystem (Riccardo Magliocchetti)
+    * fixed the Rados plugin's PUT method (Martin Mlynář)
+    * fixed multiple Python mountpoints with multiple threads in cow mode
+    * stats UNIX socket is now deleted by vacuum
+    * fixed off-by-one corruption in cache LRU mode
+    * force single-CPU build in Cygwin (Guido Notari)
+  * New Features
+    * Allow calling the spooler from every CPython context
+    * store_delete cache2 option - The store_delete flag of the --cache2
+      option allows you to force the cache engine to automatically remove
+      invalid backing store files instead of steadfastly refusing to launch
+    * file logger rotation
+    * Vassal plugin hooks
+    * Broodlord improvements - The Broodlord subsystem has been improved with
+      a new option: --vassal-sos that automatically ask for reinforcement when
+      all of the workers of an instance are busy
+
+-------------------------------------------------------------------
+Tue Jul  1 17:14:31 UTC 2014 - jfunk@funktronics.ca
+
+- Update to 2.0.6:
+  * Bugfixes
+    * fixed a memory leak with subscription system
+    * fixed shortcut for ssl-socket
+    * fixed apache2 mod_proxy_uwsgi (it is now considered stable with all mpm
+      engines)
+    * fixed SCRIPT_NAME and PATH_TRANSLATED generation in php plugin (thanks
+      Matthijs Kooijman)
+    * remove the old FIFO socket from the event queue when recreating it
+      (thanks Marko Tiikkaja)
+  * New features
+    * The new Rados plugins. The rados plugin has been improved and
+      stabilized, and now it is considered usable in production.
+    * --if-hostname. This is a configuration logic for including options only
+      when the specified hostname matches
+    * Apache2 mod_proxy_uwsgi stabilization. After literally years of bug
+      reports, and corrupted data, the mod_proxy_uwsgi is now stable, and on
+      modern apache2 releases it supports unix sockets too
+    * uwsgi[rsize] routing var. This routing var (meaningful only in the
+      'final' chain) exposes the response size of the request
+    * the callint scheme. This scheme allows you to generate blob from
+      functions exposed by your uWSGI instance
+    * --fastrouter-fallback-on-no-key. The corerouters fallback procedure
+      requires a valid key (domain name) has been requested. This option
+      forces the various routers to trigger the fallback procedure even if a
+      key has not been found
+    * php 5.5 opcode caching via --php-sapi-name
+    * Improved chain-reloading. Thanks to Marko Tiikkaja the chain reloading
+      procedure correctly works in cheaper modes and it is more verbose
+    * added 'chdir' keyval to --attach-daemon2. You can now set where attached
+      daemons need to chdir()
+- Changes from 2.0.5:
+  * Bugfixes
+    * fixed support for repeated headers in lua plugin (Credits: tizoc)
+    * fixed support for embedding config in OpenBSD and NetBSD
+    * various fixes in the curl-based plugins (Credits: Yu Zhao)
+    * fixed milliseconds-based waits
+    * fixed sharedarea poller
+    * fixed stats server json escaper
+    * fixed fastcgi parser and implemented eof management (Credits: Jeff
+      Trawick)
+    * improved fast on-demand mode
+    * exclude avg_rt computation for static files
+    * fixed variables support in uwsgi internal router
+    * fixed websockets + keepalive ordering
+    * disable SIGPIPE management in corutines-based loop-engines
+    * fixed 64bit sharedarea management in 32bit systems
+    * honour chmod/chown-socket in fd0 mode
+    * hack for avoiding Safari iOS to make mess with keepalive
+    * fixed log setup when both --logto and --log2 (Credits: Łukasz
+      Mierzwa)
+    * fixed mule_get_msg EAGAIN
+    * signal_pidfile returns the right error code
+    * fixed asyncio on OSX
+  * New features
+    * graceful reload of mule processes (Credits: Paul Egan). SIGHUP is now
+      sent to mules instead of directly killing them
+    * return routing action (Credits: Yu Zhao). The new action will allow
+      users to write simplified "break" clause
+    * --emperor-no-blacklist. This new option, completely disables the
+      blacklisting Emperor subsystem
+    * Icecast2 protocol helpers
+    * --metrics-no-cores, --stats-no-cores, --stats-no-metrics. When you have
+      hundreds (or thousands) of async cores, exposing metrics of them could
+      be really slow.  Three new options have been added allowing you to
+      disable the generation of core-related metrics and (eventually) their
+      usage in the stats server
+    * sharedarea improvements. The sharedarea api continues to improve. Latest
+      patches include support for mmapping device directly from the command
+      line
+    * UWSGI_GO_CHEAP_CODE. This exit code (15) can be raised by a worker to
+      tell the master to not respawn it
+    * PROXY1 support for the http router (Credits: bgglenn). The option
+      --http-enable-proxy-protocol allows the HTTP router to understand PROXY1
+      protocol requests (like the ones made by haproxy or amazon elb)
+    * reset_after_push for metrics (Credits: Babacar Tall). This metric
+      attribute ensure that the matric value is reset to 0 (or its hardcoded
+      initial_value) evry time the metric is pushed to some external system
+      (like carbon, or statsd)
+    * setremoteaddr. This routing action allows you to completely override the
+      REMOTE_ADDR detected by protocol handlers
+    * The resolve option. There are uWSGI options (or plugins) that do not
+      automatically resolves dns name to ip addresses. This option allows you
+      to map a placeholder to the dns resolution of a string
+- Changes from 2.0.4:
+  * Bugfixes
+    * fixed "mime" routing var (Steve Stagg)
+    * allow duplicate headers in http parsers
+    * faster on_demand Emperor management
+    * fixed UWSGI_ADDITIONAL_SOURCES build option
+    * merge duplicated headers when SPDY is enabled (Łukasz Mierzwa)
+    * fixed segfault for unnamed loggers
+    * --need-app works in lazy-apps mode
+    * fixed fatal hooks management
+  * New features
+    * The experimental asyncio loop engine (CPython >= 3.4). asyncio (also
+      known as 'tulip') is the new infrastructure for writing
+      non-blocking/async/callback-based code with Python 3. This plugin
+      (experimental) allows you to use asyncio as the uWSGI loop engine
+    * httprouter advanced timeout management. The http router got 2 new
+      specific timeout:
+      * --http-headers-timeout <n> ; defines the timeout while waiting for
+        http headers
+      * --http-connect-timeout <n> ; defines the timeout when connecting to
+        backend instances
+      they should help the sysadmin in improving security and availability.
+      Credits: Łukasz Mierzwa
+    * Allow disabling cache warnings in --cache2. Author: Łukasz Mierzwai.
+      The 'ignore_full' keyval option has beed added to cache2. This will
+      disable warnings when a cache is full
+    * purge LRU cache feature by Yu Zhao (getcwd). This new mode allows you to
+      configure a cache to automatically expires least recently used (LRU)
+      items when it is full. Just add purge_lru=1 to your cache2 directive
+    * support embedded config on FreeBSD. You can now embed config on FreeBSD
+      systems
+    * rpc hook.  Two new hooks have been added:
+      * 'rpc' -> call the specified rpc function (fails on error)
+      * 'rpcretry' -> call the specified rpc function (retry on error)
+    * setmodifier1 and setmodifier2 routing actions. Having to load the
+      'uwsgi' routing plugin just for setting modifiers was really annoying.
+      These two routing actions (embedded in the core) allow you to
+      dynamically set modifiers
+    * no_headers option for static router. Keyval based static routing action
+      can now avoid to rewrite response headers (useful for X-Sendfile), just
+      add no_headers=1 to your keyval options.
+- Added Python 3 plugin
+- Added rcuwsgi link
+
+-------------------------------------------------------------------
+Sat Mar 29 17:28:02 UTC 2014 - jfunk@funktronics.ca
+
+- Update to 2.0.3:
+  * Bugfixes
+    * fixed spooler 'at' key usage
+    * fixed a memory and fd leak with on-demand Emperor sockets
+    * on __APPLE__ use LOG_NOTICE for syslog plugin
+    * fixed mongrel2 support
+    * hack for avoiding libmongoclient to crash on broken cursor
+    * log alarm is now a uwsgi_log_verbose() wrapper
+    * fixed tuntap router memory corruption
+    * Set ECDHE curve independently from DHE parameters (Hynek Schlawack)
+    * do not wait for a whole Emperor cycle before checking for each waitpid
+    * fix a regression with caller() not indicating the starting *.psgi program
+      (Ævar Arnfjörð Bjarmason)
+  * New features
+    * The Emperor now responds to two new signals:
+      * SIGWINCH: force an emperor rescan of vassals
+      * SIGURG: cleanup the Emperor states (for now it only clears its blacklist)
+    * --build-plugin. Building plugins on-the-fly from git repositories
+    * uwsgi.add_var(key, value). You can now set request variables directly
+      from your app, for better integration with the internal routing
+      subsystem
+    * 'disableheaders' routing action. This new action disables the sending of
+      response headers, independently by the current request state
+    * Smarter Emperor on bad conditions. Now the Emperor completely destroys
+      internal vassal-related structures when it is impossible to correctly
+      kill a broken vassal (both for inconsistent Emperor state or for
+      internal system problems)
+
+-------------------------------------------------------------------
+Sun Mar 16 18:00:35 UTC 2014 - jfunk@funktronics.ca
+
+- Update to 2.0.2:
+  * Bugfixes
+    * fixed python3 support on older compilers/libc
+    * allow starting in spooler-only mode
+    * fixed cache bitmap support and added test suite (credits: Danila Shtan)
+    * fixed ftime log var
+    * added async remote signal management
+    * fixed end-for and end-if
+    * fixed loop in internal-routing response chain
+    * fixed pypy execute_source usage
+    * logpipe: Don't setsid() twice (credits: INADA Naoki) 
+  * New features and improvements
+    * CGI plugin
+      * The plugin has been improved to support streaming
+      * The long-awaited async support is finally ready
+    * PSGI loading improvements
+      * The PSGI loader now tries to use Plack::Util::load_psgi() function
+        instead of simple eval
+
+-------------------------------------------------------------------
+Fri Feb 21 16:49:14 UTC 2014 - jfunk@funktronics.ca
+
+- Update to 2.0.1:
+  * Bugfixes
+    * due to a wrong prototype declaration, building uWSGI without SSL
+      resulted in a compilation bug. The issue has been fixed.
+    * a race condition preventing usage of a massive number of threads in the
+      PyPy plugin has been fixed
+    * check for heartbeat status only if heartbeat subsystem has been enabled
+    * improved heartbeat code to support various corner cases
+    * improved psgi.input to support offset in read()
+    * fixed (and simplified) perl stacktrace usage
+    * fixed sni secured subscription
+    * CGI plugin does not require anymore that Status header is the first one
+      (Andjelko Horvat)
+    * fixed CPython mule_msg_get timeout parsing
+    * allows embedding of config files via absolute paths
+    * fixed symcall rpc
+    * fixed a memory leak in CPython spooler api (xiaost)
+    * The --no-orphans hardening has been brought back (currently Linux-only)
+    * improved dotsplit router mode to reduce DOS risk
+    * sub-Emperor are now loyal by default
+    * fixed non-shared ruby 1.8.7 support
+    * fixed harakiri CPython tracebacker
+    * request vars are now correctly exposed by the stats server
+    * support log-master for logfile-chown
+    * improved legion reload
+    * fixed tuntap netmask
+    * fixed busyness plugin without metrics subsystem
+  * New features
+    * See http://uwsgi-docs.readthedocs.org/en/latest/Changelog-2.0.1.html
+    * Perl native Spooler support
+    * --alarm-backlog: Raise the specified alarm when the listen queue is full
+    * --close-on-exec2: applies CLOSE_ON_EXEC socket flag on all of the server
+      sockets
+    * simple notifications subsystem for subscriptions
+    * pid namespace for daemons (Linux only)
+    * The fastrouter and the http/https/spdy router now support
+      "resubscription".
+    * filesystem monitor api
+    * support for yajl 1.0
+    * for-readline: a config-logic iterator that yields file lines
+    * %i magic var: returns the inode of the currently parsed file
+    * %j magic var: returns hex representation of 32bit djb33x hashing of the
+      currently parsed absolute filename
+    * --inject-before and --inject-after: prepend and append 'blobs' to a
+      config file
+    * --http-server-name-as-http-host: This flag allow the http router to map
+      SERVER_NAME to HTTP_HOST automatically instead of instructing your uWSGI
+      instances to do it
+    * better Emperor's Ragnarok (shutdown procedure)
+    * PyPy paste support
+Changes from 2.0.0:
+  * Important changes
+    * Dynamic options have been definitely removed as well as the
+      broken_plugins directory
+  * Bugfixes and improvements
+    * improved log rotation
+    * do not rely on unix signals to print request status during harakiri
+    * added magic vars for uid and gid
+    * various Lua fixes
+    * a tons of coverity-governed bugfixes made by Riccardo Magliocchetti
+  * New features
+    * --attach-daemon2: this is a keyval based option for configuring external
+      daemons
+    * Linux setns() support
+    * "private" hooks
+    * Support for yajl library (JSON parser)
+    * Perl spooler support
+    * Gateways can drop privileges
+    * Subscriptions-governed SNI contexts
+* Changes from 1.9.21:
+  * Bugfixes
+    * croak if the psgi streamer fails
+    * allows building coroae on raspberrypi
+    * do not wait for write availability until strictly required
+    * avoid segfault when async mode api is called without async mode
+    * fixed plain (without suspend engine) async mode
+    * do not spit errors on non x86 timerfd_create
+    * support timerfd_create/timerfd_settime on __arm__
+  * Optimizations
+    * writev() for the first chunk
+    * use a single buffer for websockets outgoing packets
+  * New features
+    * See http://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.21.html
+    * removed zeromq api
+    * The shared area subsystem has been rewritten
+    * report request data in writers and readers
+    * Modular logchunks management
+    * 6 new request logging variables are available:
+      * tmsecs: report the current unix time in milliseconds
+      * tmicros: report the current unix time in microseconds
+      * werr: report the number of write errors for the current request
+      * rerr: report the number of read errors for the current request
+      * ioerr: the sum of werr and rerr
+      * var.XXX: report the context of the request var XXX (like
+        var.PATH_INFO)
+    * mountpoints and mules support for symcall
+    * read2 and wait_milliseconds async hooks
+    * websockets binary messages
+    * the 'S' master fifo command
+    * as-mule hook
+    * accepting hook and improved chain reloading
+    * --after-request-call: this option allows you to call specific C
+      functions (in chains) after each request
+    * error pages
+    * Simplified plugins builder
+* Changes from 1.9.20:
+  * First round of deprecations and removals for 2.0
+    * The Go plugin is now considered "broken" and has been moved away from
+      the plugins directory. The new blessed way for running Go apps in uWSGI
+      is using the GCCGO plugin.
+    * The --auto-snapshot option has been removed, advanced management of
+      instances now happens via MasterFIFO
+    * The matheval support has been removed, while a generic "matheval" plugin
+      (for internal routing) is available (but not compiled in by default).
+      See below for the new way for making "math" in config files.
+    * The "erlang" and "pyerl" plugins are broken and has been moved out of
+      the plugins directory. Erlang support will be completely rewritten after
+      2.0 release.
+  * Bugfixes
+    * Fixed master hang when gracefully reloading in lazy mode.
+    * Fixed default_app usage.
+    * Another round of coverity fixes by Riccardo Magliocchetti.
+    * Fixed EAGAIN management when reading the body.
+  * New features
+    * See http://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.20.html
+    * 64bit return values for the RPC subsystem
+    * The new GCCGO plugin
+    * Simple math in configuration files
+    * New magic vars
+      * %t: Unix time (in seconds, gathered at instance startup)
+      * %T: Unix time (in microseconds, gathered at instance startup)
+      * %k: Number of detected CPU cores
+    * Perl/PSGI improvements
+    * New native protocols: --https-socket and --ssl-socket
+    * PROXY (version1) protocol support
+    * New metrics collectors
+      * avg: Compute the math average of children
+      * accumulator: Always add the value of the specified children to the
+        final value
+      * multiplier: Multiply the sum of the specified children for the value
+        specified in arg1n
+
+-------------------------------------------------------------------
+Sun Nov 10 20:06:51 UTC 2013 - jfunk@funktronics.ca
+
+- Update to 1.9.19:
+  * This release starts the 'hardening' cycle for uWSGI 2.0 (scheduled for the 
+    end of december 2013). The metrics subsystem was the last piece missing
+    and this version (after 1 year of analysis) finally includes it. During
+    the following 2 months we will start deprecating features or plugins that
+    got no-interest, are known to be broken or are simply superseed by more
+    modern/advanced ones.
+  * Bugfixes
+    * completely skip cgroups initialization when non-root
+    * tons of post-static_analysis fixes by Riccardo Magliocchetti
+    * fixed the greenlet plugin reference counting
+    * avoid kevent storm for stats pusher thread
+    * fixed rbtimers math
+    * both 'cache' and 'file' routers got a 'no_content_length' key option to
+      avoid setting the Content-Length header
+    * the PyPy plugin automatically enables threads/GIL
+    * manage dot_segments in HTTP parser
+    * improved srand() usage
+  * New features
+    * The Metrics subsystem. This was the last piece missing before uWSGI 2.0.
+      The Metrics subsystem allows you to store "numbers" related to
+      monitoring, graphing and quality checks and exports them in various ways
+    * The Tornado loop engine. While working on nodejs integration we realized
+      that contrary to what we used to believe, Tornado (an asynchronous,
+      callback based module for python) is usable in uWSGI.
+    * The 'puwsgi' protocol. A "persistent" (keep-alive) version of the
+      'uwsgi' parser has been added named 'puwsgi' (persistent uwsgi).
+    * --vassal-set. You can tell the Emperor to pass specific options to every
+      vassal using the --set facility
+    * The 'template' transformation. This is a transformation allowing you to
+      apply all of the internal routing patterns to your responses.
+
+-------------------------------------------------------------------
+Fri Nov  8 19:50:28 UTC 2013 - jfunk@funktronics.ca
+
+- Added apache2-mod_proxy_uwsgi and apache2-mod_uwsgi sub packages
+
+-------------------------------------------------------------------
+Thu Oct 17 18:10:06 UTC 2013 - jfunk@funktronics.ca
+
+- Update to 1.9.18.2:
+  * check for NULL dictionary values in python3 autoreloader
+  * fixed fastrouter realloc() bug
+  * fixed stdin and embedded configuration
+  * fixed vassal's strict mode
+  * fixed UUID randomization when libuuid is not used
+  * added --iprint (immediate print) option
+- Changes from 1.9.18:
+  * License change. This version of uWSGI is the first of the 1.9 tree using
+    GPL2 + linking exception instead of plain GPL2
+  * Bugfixes
+    * fixed uwsgi native protocol support on big endian machines
+    * fixed jvm build system for arm (Jorge Gallegos)
+    * fixed a memleak spotted by cppcheck in zlib management
+    * chdir() at every emperor glob iteration
+    * correctly honour --force-cwd
+    * fixed ia64/Linux compilation (Jonas Smedegaard/Riccardo Magliocchetti)
+    * fixed ruby rvm paths parsing order
+    * added waitpid() after daemon’s SIGTERM (Łukasz Mierzwa)
+    * fixed pid numbering after --idle (Łukasz Mierzwa)
+    * fixed/improved cheaper memory limits (Łukasz Mierzwa)
+    * correctly close inherited sockets in gateways
+    * fix checks for MAP_FAILED in mmap() (instead of NULL)
+    * fixed FastCGI non-blocking body read() (patch by Arkaitz Jimenez)
+    * fixed attach.py script
+    * avoid crashing on non-conformant PSGI response headers
+    * run the python autoreloader even in non-apps mode when non-lazy
+  * New Features
+    * https://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.18.html
+    * Minimal build profiles
+    * Auto-fix modifier1. Now if the modifier1 of the request is zero, but the
+      python plugin is not loaded (or there are no python apps loaded) the
+      first configured app will be set instead (unless you disable with
+      feature with --no-default-app).
+    * Perl auto reloader. The --perl-auto-reload option allows the psgi plugin
+      to check for changed modules after every request. It takes the frequency
+      (in seconds) of the scan.
+    * The "raw" mode (preview technology, only for CPython). Raw mode allows
+      you to directly parse the request in your application callable. Instead
+      of getting a list of CGI vars/headers in your callable you only get the
+      file descriptor soon after accept(). You can then read()/write() to that
+      file descriptor in full freedom.
+    * Optional NON-standard support for CPython buffer protocol for WSGI
+      responses. This is a NON-standard behaviour you have to voluntarily
+      enable with --wsgi-accept-buffer.
+    * Emperor and config improvements
+      * The config system has been improved to be even more consistent in
+        respect to strict mode (reminder: with --strict you basically check
+        your config files for unknown options avoiding headaches caused by
+        typos).
+      * New magic vars have been added exposing the name of the original
+        config file (this simplifies templating when in Emperor mode), check
+        them at
+        https://github.com/unbit/uwsgi-docs/blob/master/Configuration.rst#magic-variables
+      * The Emperor got support for Linux capabilities using the --emperor-cap
+        option. The option takes the list of capability you want to maintain
+        for your vassals when they start as root
+    * Build system improvements
+      * The build system has been improved to link custom sources on the fly.
+      * Riccardo Magliocchetti rewrote the build script to use optparse
+        instead of raw/old-fashioned sys.argv parsing
+    * Pluginized the 'schemes' managementi. Schemes are the prefix part of
+      uWSGI uri's. When you do "uwsgi --ini http://foobar.local:9090/test.ini"
+      the http:// is the scheme, signalling uWSGI it has to download the
+      config file via http. Til now those 'schemes' were hardcoded. Now they
+      are exposed as plugins, so you can add more of them (or override the
+      default one).
+    * mountpoints checks. Allows for managing, for example, FUSE filesystems
+      with uWSGI:
+      http://uwsgi-docs.readthedocs.org/en/latest/tutorials/ReliableFuse.html
+    * Preliminary libffi plugin. As embedding c libraries for exposing hooks
+      is becoming more common, we have started working on libffi integration,
+      allowing safe (and sane) argument passing to hooks. More to came soon.
+    * Official support for kFreeBSD. Debian/kFreeBSD is officially supported.
+
+-------------------------------------------------------------------
+Tue Sep 24 16:49:25 UTC 2013 - jfunk@funktronics.ca
+
+- Update to 1.9.17.1:
+  * Emergency release fixing two bugs:
+    * fixed inheriting of file descriptor 0 (this breaks fastcgi on dreamhost,
+      and uwsgi on unbit.it)
+    * fixed router_http REQUEST_URI rewrite (double free)
+
+-------------------------------------------------------------------
+Mon Sep 23 18:47:59 UTC 2013 - jfunk@funktronics.ca
+
+- Disable v8 on unsupported architectures, and on distributions with newer
+  versions of v8, as it seems that upstream is not maintaining it
+- Update to 1.9.17
+  * Bugfixes
+    * the pty client is now blocking (safer approach)
+    * removed strtok() usage (substituted by a new uwsgi api function on top
+      of strtok_r())
+    * fixed --pty-exec (Credits: C Anthony Risinger)
+    * listen_queue/somaxconn linux check is now done even for UNIX sockets
+  * New features
+    * https://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.17.html
+    * The Master FIFO: a new management way in addition to UNIX signals
+    * A new hook, named asap has been added. It will be run soon after the
+      options are parsed
+    * The TCC (libtcc) plugin: TCC is an embeddable c compiler. It includes a
+      shared library (libtcc) you can use to compile strings of c code on the
+      fly. The libtcc uWSGI plugins allows compiling strings of c to process
+      symbols. Currently the "tcc" hook engine has been implemented:
+    * The forkptyrouter gateway: While work on Linux containers/namespaces
+      continues to improve we have added this special router/gateway allowing
+      dynamic allocation of pseodoterminals in uWSGI instances. To access the
+      sockets created by the forkptyrouter you can use the --pty-connect
+      option exposed by the pty plugin.
+    * added a new magic var for ANSI escaping. It allows you to define ANSI
+      sequences in your logs
+    * Routable log encoders: You can now attach log encoders to specific log
+      routes
+    * --vassals-include: This is like --vassal-inherit but the parsing will be
+      "immediate" (so you can use placeholders)
+    * The Emperor heartbeat system is now mercyless. The old approach for the
+      heartbeat Emperor subsystem was asking for "gentle" reload to bad
+      vassals. Now vassals not sending heartbeat (after being registered with
+      the heartbeat subsystem) are killed with -9
+    * logpipe: You can now send loglines to the stdin of an external command
+    * Added "fd" logger to "logfile" plugin: you can directly send logs to a
+      file descriptor
+- Changes from 1.9.16
+  * Important change in the gevent plugin shutdown/reload procedure: The
+    shutdown/reload phase when in gevent mode has been changed to better
+    integrate with multithreaded (and multigreenlet) environments (most
+    notably the newrelic agent). Instead of "joining" the gevent hub, a new
+    "dummy" greenlet is spawned and "joined". During shutdown only the
+    greenlets spawned by uWSGI are taken in account, and after all of them are
+    destroyed the process will exit. This is different from the old approach
+    where the process wait for ALL the currently available greenlets (and
+    monkeypatched threads). If you prefer the old behaviour just specify the
+    option --gevent-wait-for-hub
+  * Bugfixes/Improvements
+    * fixed CPython reference counting bug in rpc and signal handlers
+    * improved smart-attach-daemon for slow processes
+    * follow Rack specifications for QUERY_STRING, SCRIPT_NAME,SERVER_NAME and
+      SERVER_PORT
+    * report missing internal routing support (it is only a warning when
+      libpcre is missing)
+    * better ipcsem support during shutdown and zerg mode (added
+      --persistent-ipcsem as special case)
+    * fixed fastcgi bug exposed by apache mod_fastcgi
+    * do not call pre-jail hook on reload
+    * force linking with -lrt on solaris
+    * report thunder lock status
+    * allow custom priority in rsyslog plugin
+  * New features
+    * https://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.16.html
+    * FreeBSD jails native support
+    * The Rados plugin: Based on the The GlusterFS plugin plugin, a new one
+      allowing access to Rados object storage is available
+    * The TunTap router: A new method of providing virtual network interfaces
+      in namespaces
+    * Linux O_TMPFILE: Latest Linux kernel supports a new operational mode for
+      opening files: O_TMPFILE. This flag opens a temporary file (read:
+      unlinked) without any kind of race conditions. This mode is
+      automatically used if available (no options needed)
+    * Linux pivot-root: When dealing with Linux namespaces, changing the root
+      filesystem is one of the main task. chroot() is generally too simple,
+      while pivot-root allows you more advanced setup. The syntax is
+      --pivot-root <new_root> <old_root>
+    * Cheaper memlimit: This new check allows control of dynamic process
+      spawning based on the RSS usage
+    * Log encoders: A method of encoding logs for arbitrary external logging
+      systems. They are basically patterns you can apply to each logline
+    * New "advanced" Hooks: A new series of hooks for developers needing
+      little modifications to the uWSGI cores are available.
+    * New mount/umount hooks: When dealing with namespaces and jails, mounting
+      and unmounting filesystems is one of the most common tasks. As the mount
+      and umount commands could not be available during the setup phase, these
+      2 hooks have been added directly calling the syscalls.
+- Changes from 1.9.15
+  * Bugfixes
+    * fixed jvm options hashmap (#364)
+    * fixed python3 wsgi.file_wrapper
+    * fixed python3 --catch-exceptions
+    * fixed type in pypy wsgi.input.read
+    * better symbol detection for pypy
+    * improved ruby libraries management on heroku
+    * fixed http-keepalive memleak
+    * fixed spooler body management under CPython
+    * fixed unshare() usage of 'fs'
+    * fixed UWSGI_PROFILE usage when building plugins with --plugin
+    * improved SmartOS support and added OmniOS support
+  * New features
+    * The PTY plugin: This new plugin allows you to generate pseudoterminals
+      and attach them to your workers. Pseudoterminals are then reachable via
+      network (UNIX or TCP sockets). You can use them for shared debugging or
+      to have input channels on your webapps.
+    * strict mode: If you want to check all of your config options, you can
+      now add the --strict option. Unknown options will trigger a fatal error.
+    * fallback configs: Being very cheap (in term of resources) and supporting
+      lot of operating systems and architectures, uWSGI is heavily used in
+      embedded systems. One of the common feature in such devices is the
+      "reset to factory defaults." uWSGI now natively support this kind of
+      operation, thanks to the --fallback-config option.
+    * --perl-exec and --perl-exec-post-fork: You can now run custom perl code
+      before and after the fork() calls. Both options simply take the perl
+      script as the argument
+    * uwsgi.cache_keys([cache]): This api function has been added to the
+      python and pypy plugins. It allows you to iterate the keys of a local
+      uWSGI cache. It returns a list.
+    * added %(ftime) to logformat: this is like 'ltime' but honouring the
+      --log-date format
+    * protect destruction of UNIX sockets when another instance binds them: on
+      startup uWSGI now get the inode of the just created unix socket. On
+      vacuum if the inode is changed the unlink of the socket is skipped. This
+      should help avoiding sysadmin destructive race conditions or
+      misconfigurations
+    * --worker-exec2: this is like --worker-exec but happens after post_fork
+      hooks
+    * allow post_fork hook on general plugins: general plugins (the ones
+      without the .request hook) can now expose the .post_fork hook
+    * --call hooks: In the same spirit of exec-* hooks, call hooks works in
+      the same way but directly calling functions in the current process
+     address space (they have to be exposed as valid symbols)
+    * init_func support for plugins, and --need-plugin variant: when loading a
+      plugin you can call a symbol defined in it soon after dlopen()
+    * added commodity loader for the pecan framework: A new python loader
+      (--pecan) has been added for the pecan WSGI framework
+    * UWSGI_REMOVE_INCLUDES: during the build phase you can remove include
+      headers with the UWSGI_REMOVE_INCLUDES environment variable. This is
+      useful for cross-compilation where some automatically detected includes
+      could be wrong
+    * router_expires: We already have various options in the uWSGI core to set
+      Expires header. This router has been added to allow customizing them
+    * announce Legion's death on reload/shutdown: Every legion member will now
+      announce its death as soon as a reload (or a shutdown) of the instance
+      is triggered
+    * The GlusterFS plugin (beta): This new plugin make use ot the new
+      glusterfs c api, avoiding the overhead of fuse when serving files stored
+      on glusterfs servers. The plugin supports the multiprocess and
+      multithreads modes, while async modes are currently in beta.
+    * --force-gateway: all of the gateways (fastrouter, httprouter, rawrouter,
+      sslrouter ...) has to be run under the master process. By specifying
+      --force-gateway, you will bypass this limit
+    * preliminary python3 profiler (beta): The --profiler pycall/pyline
+      profilers have been added to python3. They are beta quality (they leak
+      memory), but should be usable.
+    * file monitor support for OpenBSD,NetBSD,DragonFlyBSD: Both --fs-reload
+      and the @fmon decorator now work on these operating systems.
+    * --cwd: you can force the startup "current working directory" (used by
+      --vacuum and the reloading subsystem) with this option. It is useful in
+      chroot setups where the binary executable change its place.
+    * --add-gid: This options allows you to add additional group ids to the
+      current process. You can specify it multiple times.
+    * Emperor and Linux namespaces improvements: Thanks to the cooperation
+      with the pythonanywhere.com guys the Emperor has been improved for
+      better Linux namespaces integration. The --emperor-use-clone option
+      allows you to use clone() instead of fork() for your vassal's spawn. In
+      this way you can create the vassals directly in a new namespace. The
+      function takes the same parameters of the --unshare one
+    * --wait-for-interface: As dealing with the Linux network namespace
+      introduces lot of race conditions (expecially when working with virtual
+      ethernets), this new option allows you to pause an instance until a
+      network interface is available. This is useful when waiting for the
+      emperor to move a veth to the vassal namespace, avoiding the vassal to
+      run commands on the interface before is available
+- Changes from 1.9.14
+  * Bugfixes
+    * fixed python modifier1 management (was hardcoded to 0)
+    * fixed url decoding in http and http-socket (it now supports lowercase
+      hex, spotted by Miles Shang)
+    * more user-friendly error message for undeletable unix sockets
+    * fixed --http-auto-chunked in http 1.1 keepalive mode (André Cruz)
+    * fixed python wheel support (Fraser Nevett)
+    * fixed --safe-fd (was not correctly honoured by the Emperor)
+    * fixed ruby 2.x reloading
+    * improved support for OSX Tiger (yes, OSX 10.4)
+    * better computation of listen queue load
+    * fixed v8 build on OSX
+    * fixed pypy rpc
+    * improved chunked api performance
+    * fixed latin1 encoding with python3
+    * fixed --spooler-ordered (Roberto Leandrini)
+    * fixed php status line reported in request logs
+  * New features
+    * Ruby 1.9.x/2.x native threads support: Ruby 1.9 (mri) introduced native
+      threads support (very similar to the CPython ones, governed by a global
+      lock named GVL).
+    * Filesystem monitoring interface (fsmon): Currently uWSGI is able to
+      monitor filesystem changes using the "simple" --touch-* facility or the
+      signal framework (using various operating system api like inotify or
+      kqueue). A new interface for plugin writers named "fsmon" has been
+      added, allowing easy implementation of realtime filesystem monitors.
+    * uClibc support: uWSGI can now be built on uclibc-based systems
+      (generally, embedded systems)
+    * Lua 5.2 support:  the lua plugins now support Lua 5.2
+    * setscheme, setdocroot: These two new routing actions allow you to
+      dynamically override DOCUMENT_ROOT and UWSGI_SCHEME
+    * sendfile, fastfile: These two actions (added to the router_static
+      plugin) allow you to return static files to the client bypassing the
+      DOCUMENT_ROOT check.
+    * --reload-on-fd and --brutal-reload-on-fd: Two new options allowing you
+      to reload an instance when a file descriptor is ready. Currently the
+      best usage scenario is for the oom_control cgroup interface (via
+      eventfd)
+    * Spooler improvements: You can now pass to all of the available
+      spooler-related decorators the "pass_arguments=True" option, to
+      automatically serialize the spooler function parameters. This is an
+      abstraction avoiding you the need to serialize/deserialize arguments. In
+      addition to this the decorators have been extended to implement __call__
+      in this way you can directly call spoller decorated functions as normal
+      functions.
+    * --emperor-nofollow: Enabling this option will allow the Emperor to watch
+      for symbolic links mtime update instead of the mtime of the real file.
+    * daemontools envdir support: Albeit daemontools look old-fashioned,
+      things like envdirs (http://cr.yp.to/daemontools/envdir.html) are
+      heavily used in various context. uWSGI got two new options (--envdir
+      <path> and --early-envdir <path>) allowing you to support this special
+      (archaic ?) configuration way.
+    * xmldir improvements: The xmldir plugins has been improved supporting
+      iconv-based utf8 encoding. Various minor fixes have been committed.
+
+-------------------------------------------------------------------
+Fri Sep 20 15:06:48 UTC 2013 - dvaleev@suse.com
+
+- enable v8 conditionally (enables build for powerpc and s390) 
+
+-------------------------------------------------------------------
+Thu Sep  5 18:43:14 CEST 2013 - mls@suse.de
+
+- add libperl_requires, as we link against libperl and thus
+  need a specific version of perl
+
+-------------------------------------------------------------------
+Tue Jul 16 20:41:08 UTC 2013 - jfunk@funktronics.ca
+
+- Add -Wformat to emperor_pg CFLAGS since pg-config --cflags returns
+  -Wformat-security and gcc complains about it's exclusion
+
+-------------------------------------------------------------------
+Tue Jul 16 17:15:59 UTC 2013 - jfunk@funktronics.ca
+
+- Update to 1.9.13
+ * Bugfixes
+   * Fixed a corner case bug when response offloading is enabled, but no
+     request plugin is loaded
+   * Fixed harakiri routing when multiple rules are in place (return NEXT
+     instead of CONTINUE)
+   * Fixed curl crashing master on slow dns responses (Łukasz Mierzwa)
+   * Removed PTRACE check in uwsgi.h (it is no more needed since uWSGI 1.0)
+   * Fixed -print-sym
+   * Added a newline in -cflags
+   * Improved python3 detection and compilation
+   * Fixed Coro::AnyEvent loop engine (John Berthels)
+   * Rack api functions are now static
+   * Better fastcgi handling of big uploads
+   * Improved GCC usage on Darwin for Python non-apple builds
+   * Fixed XCLIENT usage in rawrouter
+   * Use the clang preprocessor instead of hardcoded 'cpp' when CC=clang is
+     used
+   * Set 16bit options to 65535 when higher values are requested
+   * Fixed virtualhosting (it is now compatible with 1.4 configurations)
+ * New features
+   * https://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.13.html
+   * PyPy performance and features improvents
+   * Chunked input api
+   * Toward better third-party plugins management: the -dot-h option
+   * setmethod, seturi and setpathinfo routing action
+   * UWSGI_INCLUDES
+   * Improved set_user_harakiri api function
+   * -add-cache-item [cache ]KEY=VALUE
+   * the router_xmldir plugin
+   * Implement __call__ for @spool* decorators
+   * the uwsgi[lq] routing var
+   * -use-abort
+- Changes from 1.9.12
+  * Bugfixes
+    * offloading cache writes will return the correct status code and not 202
+    * you can now control the path of temporary files setting the TMPDIR
+      environment variable (this fixes an old issue for users without control
+      over /tmp)
+    * fixed a compilation error on amqp imperial monitor
+    * cron commands are correctly escaped when reported in the stats server
+    * fixed fastcgi parser corner-case bug with big uploads
+    * fixed support for newest cygwin
+  * New Features
+    * https://uwsgi-docs.readthedocs.org/en/latest/Changelog-1.9.12.html
+    * Offloading responses
+    * JWSGI and JVM improvements
+    * -touch-signal
+    * The "pipe" offload engine
+    * The new redis router
+    * The "hash" router
+
+-------------------------------------------------------------------
+Fri May 31 18:52:08 UTC 2013 - jfunk@funktronics.ca
+
+- Fix path to uwsgi binary in service file
+- Install uwsgi.ini
+- Fix signed/unsigned comparison in emperor_amqp
+
+-------------------------------------------------------------------
+Wed May 29 17:26:24 UTC 2013 - jfunk@funktronics.ca
+
+- Deprecated init script and sysconfig file in favor of systemd service and a
+  default configuration file /etc/uwsgi/uwsgi.ini
+- Update README to describe important changes
+- Removed separate packages for plugins that have no uncommon requirements
+- Update to 1.9.11
+  * Fixed Python 3 stdout/stderr buffering
+  * Fixed mule messages (@mulefunc is now reliable)
+  * Fixed SCRIPT_NAME handling in dynamic mode
+  * Fixed X-Sendfile with gzip static mode
+  * Fixed cache item maximum size with custom block size
+  * Fixed cache path handling
+  * Added the new high-performance PyPy plugin
+  * You can now avoid overlapping crons using --unique-cron. The uWSGI master
+    will track death of a single task, and until its death the same cron will
+    not be triggered
+  * A key/value variant of the --cron option is now available
+  * When using the cron2 option you are allowed to set a harakiri timeout for a
+    cron task. Just add harakiri=n to the options
+  * Added support for GNU Hurd
+  * A new offload engine named "memory" allows to offload memory transfers. The
+    cache router automatically supports it. To enable it just add
+    --offload-threads <n>
+  * An example websocket chat using Redis has been added to the repository
+  * You can now define a routing table to be executed as soon as you set the
+    HTTP status code in your plugin
+  * Generally the wsgi.file_wrapper callable expects a file-like object. PEP
+    333/3333 reports a special pattern when the object is not a file (call
+    read() until the object is consumed). uWSGI now supports this pattern (even
+    if in a hacky way)
+  * When using --http-keepalive you can now hold the connection open even if
+    the request has a body
+  * You can now set a harakiri timer for each request using internal routing
+  * The RPC plugin has been extended to allows interoperation with other
+    standards. Currently a simple HTTP wrapper and an XML-RPC one are exposed
+- 1.9.10
+  * fixed alarm threads during reloads
+  * fixed uninitialized memory in --touch-* options
+  * fixed a regression in --attach-daemon
+  * Added gccgo plugin. As Go 1.1 will be no no more compatible with uWSGI,
+    gccgo will became the official way for running go apps
+  * You can now run routing rules after a request. Obviously not all of the
+    exposed actions make sense after the request but you should be able to
+    write even more complex setup
+- 1.9.9
+  * Special warning: The router_basicauth plugin has changed its default
+    behaviour to return "break" if authorization fails. The "basicauth-next"
+    action, uses the old behaviour (returning "next"). This new approach should
+    reduce security problems caused by wrong configurations
+  * do not increment "tx" statistics counter for "unaccountable" plugins
+  * fixed --backtrace-depth
+  * fixed cache-sync parsing
+  * fixed mule farms initialization
+  * fixed multithreading bug when regexp conditional route is used
+  * fixed default-app usage in the psgi plugin
+  * fixed python dynamic mode + threads
+  * fixed error reporting in corerouter when retry is in place
+  * correctly report harakiri condition for gateways
+  * Added the WebDav plugin
+  * Added support for Go 1.1. Albeit you can successfully embed go 1.1 apps in
+    uWSGI, go 1.1 will be completely fork() unsafe. That means you are not able
+    to use multiprocessing, the master, mules and so on
+  * Stackless, Greenlet and Fiber support have been updated to support new
+    async features
+  * You can now authenticate over radius servers using the router_radius plugin
+  * Added another authentication backend, using SPNEGO (kerberos)
+  * Added the ldap authenticator
+  * Removed the GOON action, as it was messy and basically useless with the new
+    authentication approach
+  * The "setscriptname" action has been added to override the internally
+    computed SCRIPT_NAME (not only the var)
+  * The "donotlog" action forces uWSGI to not log the current request
+  * The "regexp" routing conditions has been improved to allows grouping. Now
+    you can easily manipulate strings and adding them as new request VARS
+  * uwsgi.atexit hook is now honoured by the gevent plugin (Author: André Cruz)
+  * Transformations can be applied on the fly (no buffering involved)
+  * The xattr plugin allows you to reference files extended attributes in the
+    internal routing subsystem
+  * Added airbrake plugin. Currently at early stage of development, it allows
+    sending uWSGI exceptions and alarms to airbrake servers
+  * Added legion daemons, allowing you to run external processes only when an
+    instance is a lord
+  * A new "touch" option (like --touch-reload) is available, triggering the
+    execution of a command
+  * You can now use the caching subsystem to store 64bit signed numbers and
+    apply atomic operations on them
+- 1.9.8
+  * fixed a crash when reloading the master
+  * fixed a crash in async mode + uGreen
+  * the 'mime' routing var requires a request var (not a raw string)
+- 1.9.7
+  * fixed teajs engine build
+  * fixed offloading status code (set to 202 when a request is offloaded)
+  * execute cron tasks within 60 second resolution, instead of 61 seconds
+  * fixed websocket proxy
+  * check for python3 unicode encoding (instead of crashing...)
+  * fixed ipcsem removal on reload
+  * fixed kqueue timer on OpenBSD, NetBSD and DragonFlyBSD
+  * fixed/reimplemented perl uwsgi::register_rpc
+  * fixed fd leak on sendfile() error
+  * fixed Content-Length when gzip file variant is used
+  * allows non-request plugins to register rpc functions
+  * more robust error checking for cgroups
+  * honour SCRIPT_NAME the in the PSGI plugin when multiple perl apps are
+    mounted
+  * Added legion cron to force only one instance of an application in legion
+    mode to execute cron tasks
+  * The curl_cron plugin has been added allowing the cron subsystem to call
+    urls (via libcurl) instead of unix commands
+  * The cachestore routing function can now directly store items in gzip format
+  * Added --skip-atexit to avoid calling atexit() hooks to workaround a bug in the
+    mongodb client library
+  * The http and uwsgi routing instructions are now more smart. You can cache
+    their output and get the right status code in the logs
+  * Added a generic api for manipulating the response has been added
+    (cachestore uses it)
+  * You can now trigger alarms when an fd is ready for read with --alarm-fd
+  * The spooler server plugin and the cheaper busyness algorithm are now
+    compiled in by default
+- 1.9.6
+  * workaround for building the python plugin with gcc 4.8
+  * Sqlite and LDAP configuration moved to plugins
+  * New instructions added to allow for dynamic apps using internal routing
+  * You can now configure how the carbon plugin send the response average when
+    no requests have been managed
+  * Added numeric checks for the internal routing
+  * Added math and time support in the internal routing
+  * Added non-standard seek() and tell() to wsgi.input (post-buffering
+    required)
+  * You can invoke the ipython shell instead of the default one when using
+    --pyshell
+  * Added the 'rpcraw' routing instruction (dangerous)
+  * Added preliminary support for the HTTP Range header
+  * Added the 'lord' routing condition for Legion
+  * Added GridFS authentication
+  * Added the 'uwsgi' routing var for accessing internal uWSGI parameters
+  * Added the 'alarm' routing action for triggering alarms from the routing
+    subsystem
+  * Added --rbshell for accessing a Ruby shell
+  * Added --lua-shell for accessing a Lua shell
+  * Removed the old (and useless) probe subsystem
+  * Two new hooks have been added to the Legion subsystem: --legion-node-joined
+    and --legion-node-left
+  * --socket-sndbuf and --socket-rcvbuf have been added to allow tuning of the
+    send and receive buffers of the uWSGI sockets (use with caution)
+  * V8 plugin improvements
+- 1.9.5
+  * fixed a memory leak with cachestore routing instruction (Riccardo
+    Magliocchetti)
+  * fixed a memory leak in carbon plugin (Riccardo Magliocchetti)
+  * fixed a memory leak in the cgi plugin (Riccardo Magliocchetti)
+  * fixed old-style python dynamic apps
+  * force the emperor to honour --max-fd for vassals
+  * improved PSGI seek with post-buffering
+  * fixed kvlist escaping
+  * Added the GridFS plugin
+  * Improved V8 plugin
+  * Added the 'cgi' routing instruction to call CGI scripts directly
+- 1.9.4
+  * fixed cache statistics exported by the stats subsystem (Łukasz Mierzwa)
+  * fixed CoroEV bug in after_request (Tom Molesworth and John Berthels)
+  * update cache items after a restore from persistent storage (Łukasz Mierzwa)
+  * fixed signal handling in non-worker processes
+  * fixed thundering herd in multiple mules setup
+  * ported the cplusplus skeletal plugin to the new api
+  * fixed uWSGI reloading when build as a shared library
+  * From now on, SmartOS is included in the officially supported operating
+    systems
+  * Support for JavaScript routing rules and configurations using V8
+  * Added the rpcnext routing action
+  * Legion improvements
+- 1.9.3
+  * fixed imports in the JVM build system when virtualenvs are used (Ryan
+    Kaskel)
+  * fixed mod_proxy_uwsgi with apache 2.4
+  * fixed php headers generation when Status is created from the php app itself
+  * Pluggable configuration system (with Lua support)
+  * Immediate setuid and setgid with new options --immediate-uid and
+    --immediate-gid
+  * The option --emperor-tyrant-nofollow has been added forcing the emperor to
+    now follow symlinks when searching for uid/gid in tyrant mode
+  * Added the "rpcret" routing action to usa Lua to write advanced rules
+- 1.9.2
+  * Fixed python3 response headers managament (wrong refcnt)
+  * Fixed readline() on request body when postbuffering is in place
+  * Fixed ruby fiber plugin
+  * You can now store responses automatically in the uWSGI cache using
+    route-run and the cachestore routing action
+  * routing access to cookie and query string
+  * Added empty internal routing condition
+  * Added the Geoip plugin
+  * Added the SSI plugin (beta)
+- 1.9.1
+  * Fixed --req-logger after a graceful reload
+  * Fixed a crash with the carbon plugin
+  * Fixed signal handling when multiple workers + copy on write is in place
+  * Fixed exception handling in the Rack plugin
+  * The XSLT plugin has been added. It allows to apply XML transformation via
+    request plugin or uWSGI internal routing
+  * Legion scrolls api
+  * On demand vassals in Emperor mode
+  * The --exec-post-app hook has been added allowing you to run commands after
+    the load of an application
+  * The cache router plugin has been improved
+  * Added a crypto logger allowing for encryption in logging to remote hosts
+    via UDP
+  * The "rpc" routing instruction has been added, allowing you to call rpc
+    functions directly from the routing subsystem and forward they output to
+    the client
+  * Preliminary support for name resolving in the carbon plugin
+  * New routing conditions have been added (equal,startswith,endswith,regexp)
+  * You can reference the uWSGI version string using the %V magic var in your
+    configurations
+  * Added the 'mongodb' generic plugin
+- 1.9
+  * From now on, all of the request plugins need to be non-blocking
+  * Added Coro::AnyEvent plugin for Perl. Requires Coro::Anyevent package
+  * We have finally a truly working JVM infrastructure
+  * The first Mono plugin attempt (in 2010) was a total failure. Now we have a
+    new shining implementation
+  * Language independent HTTP body manage
+  * Faster uwsgi/HTTP/FastCGI/SCGI native sockets
+  * Can split request/error logging
+  * Chain reloading of workers
+  * Offloading improvements
+  * Better static files management/serving
+  * New Generation Cache subsystem (cache2)
+  * The Legion subsystem is a new whole addition to the uWSGI project. It has
+    superseeded the old Clustering subsystem
+  * Cygwin (windows) support
+  * Advanced Exceptions subsystem
+  * SPDY, SSL and SNI support
+  * HTTP router keepalive, auto-chunking, auto-gzip and transparent websockets
+  * The SSL router (sslrouter) for SSL virtual hosting
+  * New Websockets API
+  * New Programmable Internal Routing (turing complete ?)
+  * A new imperial monitor has been added allowing vassals to be governed over
+    zeromq messages
+  * Total introspection via the stats server
+  * Ping requests sent using nagios plugin will no longer be counted in apps
+    request stats
+  * The --app option has been removed. To load applications on specific
+    mountpoints use the --mount option
+  * The --static-offload-to-thread option has been removed. Use the more
+    versatile --offload-threads
+  * The grunt mode has been removed. To accomplish the same behaviour just use
+    threads or directly call fork() and uwsgi.disconnect()
+  * The send_message/recv_message api has been removed (use language-supplied
+    functions)
+- 1.5
+  * added --not-alarm-log
+  * support for TCP_FASTOPEN (Linux-only)
+  * improved emperor reloading
+  * added --get
+  * Legion subsystem
+  * emperor_zeromq plugin
+  * SNI support
+  * distributed SSL session cache
+- 1.4.1
+  * fixed typos in corerouter plugins
+  * fixed offloading when the number of threads is higher than 1
+  * fixed static_maps for non-existent paths
+  * fixed uwsgi_connect() on modern Linux systems to reset the socket to blocking mode
+- 1.4
+  * gevent improvements
+  * improved http/https router and fastrouter
+  * Go official support
+  * a new set of infos are exported to the stats system
+  * improved systemd support
+  * log filtering and routing
+  * improved tracebacker
+  * offload transfer for static files, and network transfers
+  * matheval support
+  * plugins can be written in Obj-C
+  * smart attach daemon
+  * added support for PEP 405 virtualenvs
+  * rawrouter with xclient support
+  * internal routing plugin for cache
+- 1.3
+  * python tracebacker
+  * user-governed harakiri
+  * simplified external plugin development
+  * Linux namespace mountpoint improvements
+  * secured subscription system
+  * merged routers codebase (fastrouter, http, rawrouter)
+  * https support in the http router
+  * config report at the end of uWSGI build process
+  * improved subscription system (multicast and unix socket)
+  * custom options
+  * graceful reloads on shared sockets
+  * configurable log-master buffer size
+  * extreme-optimizations for the stats subsystem
+  * redislog and mongodblog plugins
+  * added python logger
+  * mongodb and postgres imperial monitors
+  * implemented psgix.logger and psgix.cleanup
+  * full rack spec compliance
+  * preliminary ipv6 support
+  * gevent graceful reloads
+  * support for multiple loggers and logformat
+  * lazy-apps to load apps after fork() but without changing reloading subsystem
+  * emperor heartbeat subsystem
+  * cheaper busyness plugin
+  * pluggable clock sources
+  * added router_rewrite and router_http plugins
+  * external spoolers
+  * support for section:// and fd:// loaders
+  * alarm subsystem (with curl and xmpp plugins)
+
+-------------------------------------------------------------------
+Tue Sep 11 22:13:54 UTC 2012 - jfunk@funktronics.ca
+
+- Install uwsgidecorators module for Python plugin
+- Create sysconfig file for adding uwsgi options
+
+-------------------------------------------------------------------
+Sun Sep  9 19:11:43 UTC 2012 - jfunk@funktronics.ca
+
+- Don't attempt to build Erlang plugins on openSUSE < 12.2
+- Don't attempt to build Greenlet plugin on openSUSE < 12.1
+
+-------------------------------------------------------------------
+Sun Sep  9 18:56:43 UTC 2012 - jfunk@funktronics.ca
+
+- Don't attempt to build Ruby 1.9 features on openSUSE < 12.2
+
+-------------------------------------------------------------------
+Sun Sep  9 00:19:40 UTC 2012 - jfunk@funktronics.ca
+
+- Fix JVM build on i586
+
+-------------------------------------------------------------------
+Sat Sep  8 23:17:30 UTC 2012 - jfunk@funktronics.ca
+
+- Fix lua requirement for openSUSE < 12.2
+
+-------------------------------------------------------------------
+Sat Sep  8 21:41:39 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+

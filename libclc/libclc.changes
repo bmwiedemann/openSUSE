@@ -1,0 +1,374 @@
+-------------------------------------------------------------------
+Tue Mar 19 08:23:57 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update License tag to (BSD-3-Clause or MIT) and Apache-2.0 WITH
+  LLVM-exception after legal review.
+
+-------------------------------------------------------------------
+Wed Mar 13 19:52:59 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 0.2.0+git.20190313:
+  * sincos: Simplify declaration headers.
+  * fdim: Use binary_decl_tt.inc instead of custom inc file.
+  * nextafter: Use binary_decl_tt.inc instead of custom inc file.
+  * copysign: Use binary_decl_tt.inc instead of custom inc file.
+  * atan2pi: Use binary_decl_tt.inc instead of custom inc file.
+  * atan2: Use binary_decl_tt.inc instead of custom inc file.
+  * hypot: Use binary_decl_tt.inc instead of custom inc file
+  * Move unary_instrinsic.inc to private headers.
+  * Move binary_intrinsic.h to private headers.
+  * Move ternary_intrinsic.h to private headers.
+  * trunc: Remove llvm intrinsic from the header.
+  * round: Remove llvm intrinsic from the header
+  * rint: Remove llvm intrinsic from the header.
+  * floor: Remove llvm isntrinsic from the header.
+  * fabs: Remove llvm intrinsic from the header.
+  * ceil: Remove llvm intrinsic from the header.
+  * sqrt: Split function generation to a shared inc file.
+  * mad: Convert to standard ternary header
+  * travis: Deduplicate LLVM_CONFIG variable
+  * travis: Use gcc-6 for llvm-7 build
+  * Adjust documentation for git migration.
+  * Fix typos throughout the license files that somehow I and my reviewers all missed!
+  * Update the file headers across all of the LLVM projects in the monorepo to reflect the new license.
+  * Install new LLVM license structure and new developer policy.
+  * Update year in license files
+  * cmake: Install libraries to DATADIR from GNUInstallDirs
+
+-------------------------------------------------------------------
+Sat Jan  5 16:43:13 UTC 2019 - aaronpuchert@alice-dsl.net
+
+- Update to version 0.2.0+git.20181127, which fixes issues with amdgcn:
+  * travis: Add cmake build
+  * Add cmake build system
+  * r600: Remove empty OVERRIDES file
+  * amdgcn: Consolidate atomic minmax helpers
+  * configure: Add target specific asm rule.
+  * configure: provide llvm_as helper variable
+  * r600: Add datalayout to image builtin implementation
+  * Remove redundant OVERRRIDES file
+  * configure: Provide symlink for amdgcn-mesa3d instead of configure hack
+  * travis: Check tahiti-amdgcn-mesa-mesa3d.bc
+  * amdgcn-amdhsa: Convert get_{global,local}_size to clc for all llvm versions
+  * amdgcn: Move __clc_amdgcn_s_waitcnt definition to clc file
+  * amdgcn: Convert get_num_groups to clc
+  * amdgcn: Convert get_global_size to clc
+  * amdgcn: Convert get_local_size to clc
+  * r600: Convert barrier to clc
+  * r600: Convert get_num_groups to clc
+  * r600: Convert get_global_size to clc
+  * r600: Convert get_local_size to clc
+
+-------------------------------------------------------------------
+Fri Oct 12 01:55:46 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 0.2.0+git.20180915:
+  * configure: Rework support for gfx9+ devices that were added post LLVM 3.9
+  * .travis: Add llvm-7 build
+  * .travis: Use source whitelist alias for llvm-6 repository
+  * amdgcn: Use __constant AS for amdgcn builtins.
+  * atom: Use volatile pointers for cl_khr_{global,local}_int32_{base,extended}_atomics
+  * atom: Consolidate cl_khr_{local,global}_int32_{base,extended}_atomics implementation
+  * atomic: Provide function implementation of atomic_{dec,inc}
+  * atom: Consolidate cl_khr_int64_{base,extended}_atomics declarations
+  * atom: Consolidate cl_khr_{local,global}_int32_{base,extended}_atomics declarations
+  * atomic: Cleanup atomic_cmpxchg header
+  * atomic: Move define cleanup to shared include
+  * Update copyright year to 2018.
+  * r600/fmin: Flush denormals before calling builtin.
+  * r600/fmax: Flush denormals before calling builtin.
+  * math/fma: Add fp32 software implementation
+  * Add initial support for half precision builtins
+  * rootn: Use denormal path only
+  * remquo: Flush denormals if not supported
+  * remquo: Port from amd builtins
+  * math: Add helper function to flush denormals if not supported.
+  * clc_sqrt: Reuse unary_decl.inc
+  * relational/select: Condition types for half are short/ushort, not char/uchar
+  * log10: Use sw implementation from amd builtins
+  * powr: Use denormal path only
+  * pown: Use denormal path only
+  * pow: Use denormal path only
+  * amdgcn/fmin: Fix typos that reduced precision
+  * exp10: Port from amd builtins
+  * hypot: Port from amd builtins
+  * select: simplify implementation and fix fp16
+  * fmod: Port from amd_builtins
+  * r600: Update datalayout after LLVM r328656
+  * amdgcn: Update datalayout after LLVM r328656
+  * remainder: Port from amd builtins
+  * nan: Implement
+  * travis: Add build using llvm-6
+  * amdgcn/fmax: fcanonicalize operands
+  * amdgcn/fmin: fcanonicalize operands
+  * amdgcn,popcount: Workaround broken llvm.ctpop intrinsic on some GCN ASICs
+  * integer/gentype: Add __CLC_VECSIZE macro
+  * popcount: Provide function implementation rather than intrinsic redirect
+  * lgamma_r: Move code from .inc to .cl file
+  * frexp: Reuse types provided by gentype.inc
+  * select: Add vector implementation
+  * minmag: Condition variable needs to be the same bitwidth as operands
+  * maxmag: Condition variable needs to be the same bitwidth as operands
+  * Move cl_khr_fp64 exntension enablement to gentype include lists
+  * utils: Adapt to llvm r325155
+  * amdgcn: Fix build after GDS/const AS swap in r325030
+  * amdgcn: Fix datalayout after addition of 32bit const AS in r324747
+  * r600: Fix datalayout after clang r324101
+  * amdgcn: Fix datalayout after clang r324101
+  * amdgpu/half_recip: Switch implementation to native_recip
+  * amdgpu/half_log2: Switch implementation to native_log2
+  * amdgpu/half_log10: Switch implementation to native_log10
+  * amdgpu/half_log: Switch implementation to native_log
+  * amdgpu/half_exp2: Switch implementation to native_exp2
+  * amdgpu/half_exp10: Switch implementation to native_exp10
+  * amdgpu/half_exp: Switch implementation to native_exp
+  * amdgpu/half_sqrt: Switch implementation to native_sqrt
+  * amdgpu/half_rsqrt: Switch implementation to native_rsqrt
+  * Add vstore_half_rte implementation
+  * Add vstore_half_rtp implementation
+  * Add vstore_half_rtn implementation
+  * Add vstore_half_rtz implementation
+  * vstore_half: Consolidate declarations
+  * vstore_half: Add support for custom rounding functions
+  * vstore_half: Make sure the helper function is always inline
+  * half_powr: Implement using powr
+  * math.h: Use logical operations instead of bit operations for readability
+  * math.h: Set HAVE_HW_FMA32 based on compiler provided macro
+  * tanpi: Port from amd_builtins
+  * tan: Port from amd_builtins
+  * half_divide: Implement using x/y
+  * half_tan: Implement using tan
+  * half_sin: Implement using sin
+  * half_recip: Implement using 1/x
+  * half_log2: Implement using log2
+  * half_log10: Implement using log10
+  * half_log: Implement using log
+  * half_exp10: Implement using exp10
+  * half_exp2: Implement using exp2
+  * half_exp: Implement using exp
+  * half_cos: Implement using cos
+  * half_sqrt: Cleanup implementation
+  * half_rsqrt: Cleanup implementation
+  * rootn: Port from amd_builtins
+  * powr: Port from amd_builtins
+  * pown: Port from amd_builtins
+  * pow: Port from amd_builtins
+
+-------------------------------------------------------------------
+Sat Dec 23 08:24:44 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.2.0+git.20171127:
+  * configure.py: Add gfx900 (Vega, Raven)
+  * math: Implement minmag
+  * math: Implement maxmag
+  * native_powr: Switch implementation to native_exp2 and native_log2
+  * native_divide: provide function implementation instead of macro
+  * native_recip: provide function implementation instead of macro
+  * native_rsqrt: Switch implementation to 1 / native_sqrt
+  * native_tan: Switch implementation to use native_sin/native_cos
+  * math: Use precomputed constant for log2(10.0)
+  * native_exp10: Switch implementation to llvm intrinsic
+  * native_sqrt: Switch implementation to llvm intrinsic
+  * native_sin: Switch implementation to llvm intrinsic
+  * native_cos: Switch implementation to llvm intrinsic
+  * native_exp2: Switch implementation to llvm intrinsic
+  * native_exp: Switch implementation to llvm intrinsic
+  * amdgpu: Add workaround for unimplemented llvm.exp intrinsic
+  * native_log10: Switch to generic native intrinsic inc file
+  * native_log: Switch to generic native intrinsic inc file
+  * native_log2: Switch to generic native intrinsic inc file
+
+-------------------------------------------------------------------
+Tue Nov  7 12:48:22 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.2.0+git.20171102:
+  * tgamma: Use unary_decl instead of custom inc file
+  * tanh: Use unary_decl instead of custom inc file
+  * tan: Use unary_decl instead of custom inc file
+  * sqrt: Use unary_decl instead of custom inc file
+  * sinpi: Use unary_decl instead of custom inc file
+  * sinh: Use unary_decl instead of custom inc file
+  * sin: Use unary_decl instead of custom inc file
+  * native_log: Use unary_decl instead of custom inc file
+  * native_log2: Use unary_decl instead of custom inc file
+  * native_log10: Use unary_decl instead of custom inc file
+  * log: Use unary_decl instead of custom inc file
+  * logb: Use unary_decl instead of custom inc file
+  * log2: Use unary_decl instead of custom inc file
+  * log1p: Use unary_decl instead of custom inc file
+  * lgamma: Use unary_decl instead of custom inc file
+  * exp2: Use unary_decl instead of custom inc file
+  * cospi: Use unary_decl instead of custom inc file
+  * cosh: Use unary_decl instead of custom inc file
+  * cos: Use unary_decl instead of custom inc file
+  * cbrt: Use unary_decl instead of custom inc file
+  * atanpi: Use unary_decl instead of custom inc file
+  * atanh: Use unary_decl instead of custom inc file
+  * atan: Use unary_decl instead of custom inc file
+  * asinpi: Use unary_decl instead of custom inc file
+  * asinh: Use unary_dec instead of custom inc file
+  * asin: Use unary_decl instead of custom inc file
+  * acospi: Use unary_decl instead of custom inc file
+  * acosh: Use unary_decl instead of custom inc file
+  * acos: Use unary_decl instead of custom inc file
+  * math: Implement native_log10
+  * amdgpu/math: Don't use llvm instrinsic for native_log
+  * shared: Implement aligned vector stores (vstorea_half)
+  * shared: Implement aligned vector loads (vloada_half)
+  * amdgcn: Add missing datalayout info to .ll files
+  * r600: Add missing datalayout to .ll files
+  * travis: enable checks of nvptx libraries
+  * travis: Enable external function call checks on llvm-{4,5}
+  * Make image builtins r600/llvm-3.9 only
+  * Implement mem_fence on ptx
+  * Make ptx barrier work irrespective of the cl_mem_fence_flags
+  * travis: Make sure we report failure even if only earlier checked files fail
+  * check_external_calls.sh: Print number of calls in tested file.
+  * ptx: Use __clc_nextafter to implement nextafter
+  * Do not include clc_nextafter header globally
+  * math/nextafter: Use custom declaration inc file
+  * math/binary_decl.inc: Do not declare mixed float/double functions
+  * ldexp: Fix double precision function return type
+  * configure: Fix handling of directories with compats only source lists
+  * Add vload_half helpers for ptx
+  * Add vstore_half helpers for ptx
+  * integer/sub_sat: Use clang builtin instead of llvm asm
+  * integer/add_sat: Use clang builtin instead of llvm asm
+  * integer/clz: Use clang builtin instead of llvm asm
+  * Let get_work_dim take exactly 0 arguments
+  * Do no circularly define NULL
+  * Fix amdgcn-amdhsa on llvm-3.9
+  * travis: Check built libraries on llvm-3.9
+  * Add script to check for unresolved function calls
+  * geometric: geometric functions are only supported for vector lengths <=4
+  * travis: add build using llvm-3.9
+  * Restore support for llvm-3.9
+  * Add missing HAVE_LLVM define to fix build with latest llvm
+  * Rework atomic ops to use clang builtins rather than llvm asm
+  * prepare_builtins: Fix compile breakage with older LLVM
+  * [Support] Rename tool_output_file to ToolOutputFile, NFC
+- Use python3 for building
+
+-------------------------------------------------------------------
+Thu Sep 21 03:02:31 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 0.2.0+git.20170920:
+  * generic: add missing get_work_dim include
+  * add __kernel_exec macros
+  * configure.py: Make python3 friendly
+  * configure.py: Drop explicit import of int builtin
+  * amdgcn: Implement {read_,write_,}mem_fence builtin
+  * amdgcn: rewrite barrier() using fence and clang __builtin_amdgcn_s_barrier
+  * Add halfN types and enable fp16 when generating builtin declarations
+  * relational: Implement shuffle builtin
+  * relational: Implement shuffle2 builtin
+  * Fixup clc.h comment
+  * r600: Cleanup barrier implementation.
+  * amdgcn,waitcnt: Add datalayout info
+  * configure.py: Simplify compatibility sources
+  * vstore: Cleanup and add vstore(half)
+  * Implement vload_half{,n} and vload(half)
+  * integer: Add popcount implementation using ctpop intrinsic
+  * Add native_recip(x) as ((1)/(x))
+  * Add travis CI configuration file
+  * Implement cl_khr_int64_base_atomics builtins
+  * Implement cl_khr_int64_extended_atomics builtins
+
+-------------------------------------------------------------------
+Wed Apr 12 19:37:03 UTC 2017 - jimmy@boombatower.com
+
+- Update rpmlintrc to include both lib dir .pc files.
+
+-------------------------------------------------------------------
+Mon Apr 10 15:44:21 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 0.2.0+git.20170225:
+  * Fix build since llvm r286566 and require at least llvm 4.0
+  * Fix build since r286752.
+  * math: Add expm1 builtin function
+  * math: Add logb builtin
+  * math: Add native_rsqrt builtin function
+  * Add the correct prefixes to the cl_khr_fp64 pragma
+  * Move BufferPtr into the block where it it being used
+  * math: Add native_tan as wrapper to tan
+  * .gitignore: Ignore amdgcn-mesa object directory
+  * math: Implement sinh function
+
+-------------------------------------------------------------------
+Sun Sep 25 17:24:10 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.2.0+git.20160921:
+  * Avoid ambiguity in calling atom_add functions.
+  * Replace nextafter implementation
+  * Add ADDR_SPACE parameter to _CLC_V_V_VP_VECTORIZE
+  * math: Implement lgamma_r
+  * math: Implement lgamma
+  * math: Implement tgamma
+  * amdgcn-amdhsa: Add get_global_size() implementation
+  * amdgcn-amdhsa: Add get_num_groups implementation
+  * configure: Add amdgcn-mesa-mesa3d target
+  * Provide vstore_half helper to workaround clc restrictions
+
+-------------------------------------------------------------------
+Sun Jul 03 08:32:55 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.2.0+git.20160209:
+  * integer: remove explicit casts from _MIN definitions
+  * AMDGPU: Add alias for tonga
+  * AMDGPU: Add aliases for all VI targets
+  * Add _CLC_V_V_VP_VECTORIZE macro
+  * Implement modf math builtin
+  * math: Add frexp ported from amd-builtins
+  * math: Fix log2 vectorization on non-fp64 hw
+  * configure: Introduce per device defines
+  * configure: Remove cl_khr_fp64 for device that don't support doubles
+  * configure: Remove llvm 3.6 defines
+
+-------------------------------------------------------------------
+Thu Dec 17 10:00:57 UTC 2015 - coolo@suse.com
+
+- fix license according to legal team
+
+-------------------------------------------------------------------
+Thu Dec 17 10:00:44 UTC 2015 - sndirsch@suse.com
+
+- modify license to 'BSD-3-Clause or MIT'
+- added LICENSE.TXT file to %doc 
+
+-------------------------------------------------------------------
+Wed Dec  9 17:37:18 UTC 2015 - mpluskal@suse.com
+
+- Remove unnecessary ldconfig calls
+- Rename rpmlintrc to libclc-rpmlintrc
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
+Tue Dec  8 11:00:01 UTC 2015 - sndirsch@suse.com
+
+- used BSD-3-Clause instead of BSD-2-Clause in order to make our
+  legal team happy
+
+-------------------------------------------------------------------
+Mon Dec  7 13:49:34 UTC 2015 - sndirsch@suse.com
+
+- added rpmlintrc as source to specfile 
+
+-------------------------------------------------------------------
+Wed Dec  2 07:39:37 UTC 2015 - jimmy@boombatower.com
+
+- Remove devel package in favor of main package since libclc is
+  unusable without the header files used to compile OpenCL
+  applications against.
+
+-------------------------------------------------------------------
+Mon Nov 30 07:29:46 UTC 2015 - jimmy@boombatower.com
+
+- Merge home:X0F:HSF spec changes.
+- Set _service file to static revisions in lieu of tags.
+- Major cleanup of spec file.
+- Apply spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Feb  3 00:00:00 UTC 2012 - pontostroy@gmail.com
+
+- initial package

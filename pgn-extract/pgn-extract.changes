@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Nov 15 13:55:11 UTC 2018 - aloisio@gmx.com
+
+- Update to version 18.10 (no changelog supplied)
+- Refreshed pgn-extract-no-buildtime.patch
+
+-------------------------------------------------------------------
+Thu Nov 15 13:38:08 UTC 2018 - aloisio@gmx.com
+
+- Modified pgn-extract-no-buildtime.patch. Previous patch left a
+  dangling '%s' in the format string which causes the app to crash
+  when called with '-h' (courtesy of Rolf Offermanns)
+  Fixes (boo#1116207)
+
+-------------------------------------------------------------------
+Sun Jan 28 13:59:29 UTC 2018 - aloisio@gmx.com
+
+- Update to version 17.55
+
+- Refreshed pgn-extract-set_eco.pgn_path.patch and
+  pgn-extract-no-buildtime.patch
+
+-------------------------------------------------------------------
+Sun Feb  7 01:56:01 UTC 2010 - packman@links2linux.de - 16.7
+
+- initial package, version 16.7
+

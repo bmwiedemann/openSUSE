@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/clearlinux/telemetrics-client.git</param>
+    <param name="changesrevision">781d9382d0c15abd2492ecc6f33126ddb7b21a5c</param>
+ </service>
+</servicedata>

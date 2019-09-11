@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jan 14 10:54:44 CET 2019 - tiwai@suse.de
+
+- Renamed from semi-emacs to emacs-semi package to align with FLIM
+- Dropped xemacs variant that causes a problem with persitent build
+
+-------------------------------------------------------------------
+Tue Jan 28 12:03:20 CET 2014 - tiwai@suse.de
+
+- mime-hide-buttons-in-reply.diff:
+  Add mime-hide-buttons-in-reply custom variable
+
+-------------------------------------------------------------------
+Wed Jan 22 14:29:47 CET 2014 - tiwai@suse.de
+
+- clean up spec file via osc service
+- update url, etc
+
+-------------------------------------------------------------------
+Fri Jun 27 15:51:44 CEST 2008 - tiwai@suse.de
+
+- ported from semi-xemacs-1.14.6
+

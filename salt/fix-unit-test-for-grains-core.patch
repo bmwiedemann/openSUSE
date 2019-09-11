@@ -1,0 +1,42 @@
+From 7ffa39cd80393f2a3ed5cd75793b134b9d939cf9 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Thu, 11 Oct 2018 16:20:40 +0200
+Subject: [PATCH] Fix unit test for grains core
+
+---
+ tests/unit/grains/test_core.py | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 2ab32ef41b..4923ee00b0 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -62,11 +62,10 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+     def test_parse_etc_os_release(self, path_isfile_mock):
+         path_isfile_mock.side_effect = lambda x: x == "/usr/lib/os-release"
+         with salt.utils.files.fopen(os.path.join(OS_RELEASE_DIR, "ubuntu-17.10")) as os_release_file:
+-            os_release_content = os_release_file.read()
+-        with patch("salt.utils.files.fopen", mock_open(read_data=os_release_content)):
+-            os_release = core._parse_os_release(
+-                '/etc/os-release',
+-                '/usr/lib/os-release')
++            os_release_content = os_release_file.readlines()
++        with patch("salt.utils.files.fopen", mock_open()) as os_release_file:
++            os_release_file.return_value.__iter__.return_value = os_release_content
++            os_release = core._parse_os_release(["/etc/os-release", "/usr/lib/os-release"])
+         self.assertEqual(os_release, {
+             "NAME": "Ubuntu",
+             "VERSION": "17.10 (Artful Aardvark)",
+@@ -128,7 +127,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+ 
+     def test_missing_os_release(self):
+         with patch('salt.utils.files.fopen', mock_open(read_data={})):
+-            os_release = core._parse_os_release('/etc/os-release', '/usr/lib/os-release')
++            os_release = core._parse_os_release(['/etc/os-release', '/usr/lib/os-release'])
+         self.assertEqual(os_release, {})
+ 
+     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+-- 
+2.19.0
+
+

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sat Nov  3 12:04:25 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.4
+ * Included the to_xs arity patch needed for weird Rails compatibility
+   issue.
+ * Escaping newlines in attributes now.
+ * Allow method caching
+ * Ruby 1.9 compatiblity issues.
+
+-------------------------------------------------------------------
+Mon Aug  6 11:02:11 UTC 2012 - coolo@suse.com
+
+- buildrequire rdoc
+
+-------------------------------------------------------------------
+Sat Jul 28 05:57:54 UTC 2012 - coolo@suse.com
+
+- update to latest gem2rpm
+
+-------------------------------------------------------------------
+Fri Mar 23 11:07:45 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Wed Dec 14 18:00:09 UTC 2011 - jreidinger@suse.com
+
+- decrease significantly size of package ( remove useless xctags
+  file which has almsot 3MB) 
+
+-------------------------------------------------------------------
+Mon Jun 20 19:18:51 UTC 2011 - mrueckert@suse.de
+
+- initial package for the 3.0 branch (3.0.0)
+

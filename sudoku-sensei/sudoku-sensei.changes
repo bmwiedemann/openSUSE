@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Apr 13 11:54:46 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Basic-port-to-Qt5.patch to remove the Qt4 dependencies
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 23 04:32:02 UTC 2015 - nemysis@gmx.ch
+
+- Use make %{?_smp_mflags} instead of make
+
+-------------------------------------------------------------------
+Mon Jun 22 22:41:17 UTC 2015 - nemysis@gmx.ch
+
+- Change sudoku-sensei.sh, copy only what is needed
+- Use mak instead of %make_build, fix build for i586
+
+-------------------------------------------------------------------
+Mon Jun 22 22:24:32 UTC 2015 - nemysis@gmx.ch
+
+- Initial package creation
+

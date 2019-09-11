@@ -1,0 +1,14 @@
+Index: libjpeg-turbo-2.0.2/CMakeLists.txt
+===================================================================
+--- libjpeg-turbo-2.0.2.orig/CMakeLists.txt	2019-03-13 12:44:05.376162889 +0100
++++ libjpeg-turbo-2.0.2/CMakeLists.txt	2019-03-13 12:45:59.156696193 +0100
+@@ -1003,7 +1003,8 @@ foreach(libtype ${TEST_LIBTYPES})
+     DEPENDS djpeg-${libtype}-rgb-islow)
+ 
+   add_bittest(jpegtran icc "-copy;all;-icc;${TESTIMAGES}/test2.icc"
+-    testout_rgb_islow2.jpg testout_rgb_islow.jpg ${MD5_JPEG_RGB_ISLOW2})
++    testout_rgb_islow2.jpg testout_rgb_islow.jpg ${MD5_JPEG_RGB_ISLOW2}
++    cjpeg-${libtype}-rgb-islow)
+ 
+   if(NOT WITH_12BIT)
+     # CC: RGB->RGB565  SAMP: fullsize  IDCT: islow  ENT: huff

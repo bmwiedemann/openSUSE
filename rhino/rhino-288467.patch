@@ -1,0 +1,159 @@
+Index: toolsrc/org/mozilla/javascript/tools/debugger/SwingGui.java
+===================================================================
+--- toolsrc/org/mozilla/javascript/tools/debugger/SwingGui.java.orig	2009-11-16 15:55:49.986561156 +0100
++++ toolsrc/org/mozilla/javascript/tools/debugger/SwingGui.java	2009-11-16 15:56:51.102061154 +0100
+@@ -42,6 +42,7 @@
+ package org.mozilla.javascript.tools.debugger;
+ 
+ import javax.swing.*;
++import javax.swing.filechooser.*;
+ import javax.swing.text.*;
+ import javax.swing.event.*;
+ import javax.swing.table.*;
+@@ -333,7 +334,14 @@
+         statusBar = new JLabel();
+         statusBar.setText("Thread: ");
+         contentPane.add(statusBar, BorderLayout.SOUTH);
+-        dlg = new JFileChooser();
++        try {
++            dlg = new JFileChooser();
++        } catch (SecurityException e) {
++            // Work around bug in JFileChooser when security is enforced.
++            // http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4802383
++            dlg = new JFileChooser(new FileWrapper("."),
++                                   new FileSystemViewWrapper());
++        }
+ 
+         javax.swing.filechooser.FileFilter filter =
+             new javax.swing.filechooser.FileFilter() {
+@@ -3592,7 +3600,130 @@
+ 
+           default:
+             throw new IllegalArgumentException(String.valueOf(type));
++        }
++    }
++}
++
++/**
++ * A <code>FileSystemView</code> that ensures <code>File</code> objects
++ * returned from methods are instances of <code>FileWrapper</code>.
++ * This class is used to work around bugs in {@link JFileChooser}.
++ */
++class FileSystemViewWrapper extends FileSystemView {
+ 
++    private FileSystemView v = FileSystemView.getFileSystemView();
++
++    public File createFileObject(File dir, String filename) {
++        return new FileWrapper(v.createFileObject(dir, filename));
++    }
++
++    public File createFileObject(String path) {
++        return new FileWrapper(v.createFileObject(path));
++    }
++
++    public File createNewFolder(File containingDir) throws IOException {
++        return new FileWrapper(v.createNewFolder(containingDir));
++    }
++
++    public File getChild(File parent, String fileName) {
++        return new FileWrapper(v.getChild(parent, fileName));
++    }
++
++    public File getDefaultDirectory() {
++        return new FileWrapper(v.getDefaultDirectory());
++    }
++
++    public File[] getFiles(File dir, boolean useFileHiding) {
++        File[] fs = v.getFiles(dir, useFileHiding);
++        File[] ret = new File[fs.length];
++        for (int i = 0; i < fs.length; i++) {
++            ret[i] = new FileWrapper(fs[i]);
+         }
++        return ret;
++    }
++
++    public File getHomeDirectory() {
++        return new FileWrapper(v.getHomeDirectory());
++    }
++
++    public File getParentDirectory(File dir) {
++        return new FileWrapper(v.getParentDirectory(dir));
++    }
++
++    public File[] getRoots() {
++        File[] fs = v.getRoots();
++        File[] ret = new File[fs.length];
++        for (int i = 0; i < fs.length; i++) {
++            ret[i] = new FileWrapper(fs[i]);
++        }
++        return ret;
++    }
++
++    public String getSystemDisplayName(File f) {
++        return v.getSystemDisplayName(f);
++    }
++
++    public Icon getSystemIcon(File f) {
++        return getSystemIcon(f);
++    }
++
++    public String getSystemTypeDescription(File f) {
++        return v.getSystemTypeDescription(f);
++    }
++
++    public boolean isComputerNode(File dir) {
++        return v.isComputerNode(dir);
++    }
++
++    public boolean isDrive(File dir) {
++        return v.isDrive(dir);
++    }
++
++    public boolean isFileSystem(File f) {
++        return v.isFileSystem(f);
++    }
++
++    public boolean isFileSystemRoot(File dir) {
++        return v.isFileSystemRoot(dir);
++    }
++
++    public boolean isFloppyDrive(File dir) {
++        return v.isFloppyDrive(dir);
++    }
++
++    public boolean isHiddenFile(File f) {
++        return v.isHiddenFile(f);
++    }
++
++    public boolean isParent(File folder, File file) {
++        return v.isParent(folder, file);
++    }
++
++    public boolean isRoot(File f) {
++        return v.isRoot(f);
++    }
++
++    public Boolean isTraversable(File f) {
++        return v.isTraversable(f);
++    }
++}
++
++/**
++ * A <code>File</code> that always returns <code>false</code> from
++ * {@link #canWrite()}.  This class is used to work around bugs in
++ * {@link JFileChooser}.
++ */
++class FileWrapper extends File {
++
++    public FileWrapper(File f) {
++        this(f.toString());
++    }
++
++    public FileWrapper(String pathname) {
++        super(pathname);
++    }
++
++    public boolean canWrite() {
++        return false;
+     }
+ }

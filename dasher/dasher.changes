@@ -1,0 +1,449 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:24:33 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 14 18:37:15 UTC 2016 - toddrme2178@gmail.com
+
+- Fix some typos in the language code mapping.
+- Upgrade .spec.in file to produce the correct spec file.
+
+-------------------------------------------------------------------
+Sat Jun 18 12:08:57 UTC 2016 - dimstar@opensuse.org
+
+- Add dasher-gcc6.patch: Fix build with gcc 6 (bool can't be used
+  as return value for functions returning string) (boo#985108).
+
+-------------------------------------------------------------------
+Mon Feb 10 19:22:21 UTC 2014 - mgorse@suse.com
+
+- Remove libgnomeui-devel BuildRequires, add gconf2-devel and
+  gtk2-devel BuildRequires. Dasher doesn't check for libgnomeui
+  if AT-SPI is disabled and does not appear to use it.
+
+-------------------------------------------------------------------
+Sat Feb  8 20:43:37 UTC 2014 - mgorse@suse.com
+
+- Disable AT-SPI (1) support. It will not work correctly anyhow
+  since GNOME 3 uses AT-SPI 2:
+  + Pass --disable-a11y to configure.
+  + Drop at-spi-devel BuildRequires.
+- Add pkgconfig(xtst) BuildRequires: needed if AT-SPI is not
+  enabled. 
+
+-------------------------------------------------------------------
+Fri Mar  1 12:42:39 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 25 12:04:08 UTC 2011 - dimstar@opensuse.org
+
+- Add dasher-linkX11.patch: Remove functions that would require us
+  to link against X11: those functions have not been called for a
+  long time. See bgo#657307.
+
+-------------------------------------------------------------------
+Mon Jun 27 16:06:17 CEST 2011 - vuntz@opensuse.org
+
+- Drop gnome-speech-devel BuildRequires: gnome-speech is
+  deprecated. There is code in git to use speech-dispatcher, so the
+  next version will have speech features again.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:28:21 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Sat May 29 03:14:05 CEST 2010 - vuntz@opensuse.org
+
+- Create data-recommended and data-extras subpackages and move
+  alphabets files there, to make the main package smaller. Those
+  packages also provide specific locales for dasher.
+- Add dasher-data-lang.sh script and locale-map.txt map file to
+  determine which file should go in which package.
+- Add Recommends on data-recommended and Suggests on data-extras.
+
+-------------------------------------------------------------------
+Tue Mar 23 14:43:07 UTC 2010 - dimstar@opensuse.org
+
+- Remove en@shaw locale on openSUSE <= 11.2.
+
+-------------------------------------------------------------------
+Sun Mar 14 12:10:06 CET 2010 - dimstar@opensuse.org
+
+- Update to version 4.11:
+  + New two-push, one button, dynamic mode (which reduces the
+    up-and-down motion of one button dynamic mode).
+  + Fix switching alphabets and then deleting across languages.
+  + Gtk: Fix blank start window caused by new Gtk library.
+  + Gtk: Don't use libglade.
+- Changes from version 4.10.2
+  + MacOS X version uses OpenGL
+  + Fix compass mode (broken by letter leakage fix in 4.10.0)
+- Remove libstdc++ and libglade-devel BuildRequires
+- Clean specfile using spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Aug  4 21:08:25 CEST 2009 - vuntz@novell.com
+
+- Do not package omf files twice.
+
+-------------------------------------------------------------------
+Tue Apr 28 12:37:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 4.10.1:
+  + Fix crash when scrolling precisely vertically.
+  + Gtk: the speed spin button on the main screen now changes and
+    is in synch with the value in preferences.
+
+-------------------------------------------------------------------
+Tue Mar 17 02:44:41 CET 2009 - vuntz@novell.com
+
+- Update to version 4.10.0:
+  + Fix click modes where letters near the edge of the selection
+    box to "leak" out so they could not be selected.
+  + Fix UTF-8 bug so e.g., Japanese and Hebrew work.
+  + Many code fixes (see ChangeLog)
+  + Updated translations.
+- Remove unneeded autoreconf, intltoolize calls.
+- Do not add DocPath to desktop file: yelp doesn't need this.
+- Remove checks for old versions of openSUSE.
+- Remove sr@Latn to sr@latin workaround (fixed upstream)
+- Stop removing uz@cyrillic.
+- Do not manually install gconf schemas: the tarball does this.
+- Remove unneeded BuildRequires: docbook_4, libwnck-devel,
+  perl-XML-Parser, scrollkeeper.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 20:44:34 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Sat Aug 30 23:02:25 CEST 2008 - crrodriguez@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Wed Jun 18 20:12:13 CEST 2008 - maw@suse.de
+
+- Update to version 4.9.0:
+  + New project branch, with various bugfixes and improvements.
+
+-------------------------------------------------------------------
+Thu Apr 10 16:06:10 CEST 2008 - maw@suse.de
+
+- Update to version 4.7.3:
+  + Misc. bugfixes
+- Drop dasher-includes.patch.
+
+-------------------------------------------------------------------
+Thu Mar  6 18:46:53 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Wed Feb 20 12:59:28 CET 2008 - rodrigo@suse.de
+
+- Upstreamed patch and tag .spec file accordingly 
+
+-------------------------------------------------------------------
+Fri Feb  1 21:24:03 CET 2008 - maw@suse.de
+
+- Update to version 4.7.0:
+  + New development series
+- Remove abuild.patch.
+- Remove dasher-gcc4.3-fixes.patch, but add dasher-includes.patch,
+  which does very nearly the same thing!
+
+-------------------------------------------------------------------
+Tue Nov  6 21:10:14 CET 2007 - maw@suse.de
+
+- Add dasher-gcc4.3-fixes.patch.
+
+-------------------------------------------------------------------
+Tue Sep 18 17:53:46 CEST 2007 - maw@suse.de
+
+- Update to version 4.6.0:
+  + Updated translations
+- Add abuild.patch.
+
+-------------------------------------------------------------------
+Mon Aug  6 23:12:18 CEST 2007 - mauro@suse.de 
+
+- Split out a -lang subpackage
+- Added %fdupes stuff
+
+-------------------------------------------------------------------
+Wed Aug  1 22:27:50 CEST 2007 - mauro@suse.de
+
+- Update to version 4.5.2
+- Bugfixes, new CTW language model, updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  9 18:52:13 CEST 2007 - maw@suse.de
+
+- Update to version 4.5.1
+- Bugfixes, code cleanups, and updated translations.
+
+-------------------------------------------------------------------
+Thu May 10 11:43:30 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from BuildRequires [#247450]
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Apr 11 11:57:03 CDT 2007 - maw@suse.de
+
+- Update to version 4.4.1 which as minor bugfixes and translation
+  updates.
+
+-------------------------------------------------------------------
+Thu Mar 29 18:13:46 CST 2007 - maw@suse.de
+
+- Update to version 4.4.0
+- Remove upstreamed autobuild-warnings.patch
+- Code cleanups
+- b.g.o 412217, 407773, 398103, 346973.
+
+-------------------------------------------------------------------
+Thu Mar  8 12:42:35 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Wed Feb 28 13:19:02 CST 2007 - maw@suse.de
+
+- Remove dasher-return-random-data.patch, dasher-warning.patch,
+  and dasher-4.2.0-unused-code.patch, which are now upstream
+- Add autobuild-warnings.patch.
+
+-------------------------------------------------------------------
+Tue Feb 27 15:13:07 CST 2007 - maw@suse.de
+
+- Update to version 4.3.4
+- Remove dasher-desktop.patch, which is now upstream.
+
+-------------------------------------------------------------------
+Wed Feb 21 17:21:23 CET 2007 - mvaner@suse.cz
+
+- Fixed uninitiated variable (#230228)
+  - unused-code.patch
+
+-------------------------------------------------------------------
+Thu Jan  4 16:08:55 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Oct 13 07:44:46 CEST 2006 - aj@suse.de
+
+- Adjust BuildRequires for gnome-doc-utils.
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep 14 01:24:52 CEST 2006 - jhargadon@suse.de
+
+- update to version 4.2.0
+- translation updates
+- Documentation update
+- Bugfixes 
+
+-------------------------------------------------------------------
+Wed Sep  6 09:55:18 CEST 2006 - anosek@suse.cz
+
+- fixed compiler warning: missing return statement at end
+  of non-void function [#203479] (warning.patch)
+
+-------------------------------------------------------------------
+Wed Aug 30 23:20:03 CEST 2006 - jhargadon@suse.de
+
+- update to version 4.1.10
+- Minor update to UI
+- Bugfixes
+- Updated translations 
+
+-------------------------------------------------------------------
+Fri Aug 18 01:23:43 CEST 2006 - jhargadon@suse.de
+
+- update to version 4.1.9
+- bug 350117 - crash on dasher
+- bug 350071 - Translation credits string 
+
+-------------------------------------------------------------------
+Wed Aug  2 01:05:13 CEST 2006 - gekker@suse.de
+
+- Update to version 4.1.8
+  * Improvements to dynamic button modes
+  * Many bugfixes
+  * Redesigned preferences dialogue
+  * Updated two button dynamic mode
+  * Improved interaction with desktop environment
+  * Fixes to build system
+  * Considerable internal rewriting
+  * Introduction of 'application styles' - the aim here is to improve
+    integration with the desktop.
+  * Improved button control.
+  * Improved support for Hiragana to Kanji conversion.
+  * Prototype support for the Maemo environment as used on the Nokia N770.
+  * Cairo support ported from 3.2 branch
+  * (Partial) button mode support
+  * Infinite back off
+  * Improved symbol grouping in alphabets
+  * New status bar, with 'favourite' alphabet selection
+  * Updated translations
+  * Panel detection code fixed
+  * Fixed a speech crash bug
+  * Use gtkfilechooser
+  * X server portability fixes
+  * Behaves intelligently when it comes to deleting characters
+  * Fix various nasty things that broke switching between accessible applications
+
+-------------------------------------------------------------------
+Fri Apr 14 22:20:06 CEST 2006 - dobey@suse.de
+
+- Replace icon with new version from upstream
+
+-------------------------------------------------------------------
+Tue Feb 28 17:50:09 CET 2006 - sbrabec@suse.cz
+
+- Fixed BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:33 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Fri Feb 24 13:58:18 CET 2006 - sbrabec@suse.cz
+
+- Improved Categories.
+
+-------------------------------------------------------------------
+Fri Feb 17 21:04:37 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 15:57:03 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 3.2.19.
+
+-------------------------------------------------------------------
+Mon Sep  5 17:27:57 CEST 2005 - gekker@suse.de
+
+- Updated to version 3.2.18 (GNOME 2.12) 
+
+-------------------------------------------------------------------
+Mon Sep  5 12:11:07 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 3.2.17.
+
+-------------------------------------------------------------------
+Tue Aug 23 18:47:19 CEST 2005 - gekker@suse.de
+
+- Update to version 3.2.16 
+
+-------------------------------------------------------------------
+Wed Mar  9 16:12:18 CET 2005 - gekker@suse.de
+
+- Update to version 3.2.15 (GNOME 2.10).
+- remove upstreamed patch for libwnck API breakage 
+
+-------------------------------------------------------------------
+Mon Mar  7 18:04:43 CET 2005 - gekker@suse.de
+
+- Patch the libwnck API breakage 
+
+-------------------------------------------------------------------
+Thu Feb 10 23:05:06 CET 2005 - gekker@suse.de
+
+- Updated to version 3.2.13 
+
+-------------------------------------------------------------------
+Fri Jan 14 17:11:57 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 3.2.12.
+
+-------------------------------------------------------------------
+Tue Dec 14 20:48:20 CET 2004 - hvogel@suse.de
+
+- fix desktop file 
+
+-------------------------------------------------------------------
+Wed Oct 27 10:51:34 CEST 2004 - mmj@suse.de
+
+- locale rename no to nb
+
+-------------------------------------------------------------------
+Mon Sep 20 15:06:21 CEST 2004 - adrian@suse.de
+
+- add %suse_update_desktop_file (#45636)
+
+-------------------------------------------------------------------
+Tue Aug 31 20:33:10 CEST 2004 - clahey@suse.de
+
+- Don't --check as the docs don't validate.
+
+-------------------------------------------------------------------
+Wed Aug 25 06:22:26 CEST 2004 - clahey@suse.de
+
+- Cache dasher docs and have dasher show up in khelpcenter.
+
+-------------------------------------------------------------------
+Mon Aug 16 16:53:30 CEST 2004 - ro@suse.de
+
+- find Xtst lib on lib64
+
+-------------------------------------------------------------------
+Tue Jun 08 15:48:12 CEST 2004 - sbrabec@suse.cz
+
+- GNOME support work-around.
+  http://bugzilla.gnome.org/show_bug.cgi?id=143332
+- Added support for Czech language.
+- Added Czech training text (with permission of the Institute of the
+  Czech National Corpus).
+
+-------------------------------------------------------------------
+Tue May 11 12:05:36 CEST 2004 - sbrabec@suse.cz
+
+- Fixed gconftool-2 prerequirements.
+
+-------------------------------------------------------------------
+Tue May 04 19:20:52 CEST 2004 - sbrabec@suse.cz
+
+- New SuSE package, version 3.2.10 (GNOME 2.6).
+

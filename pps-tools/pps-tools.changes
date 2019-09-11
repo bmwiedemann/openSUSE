@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Dec 14 10:58:06 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0.0+git.20181203:
+  * Makefile: fix installation to empty DESTDIR
+  * ppsfind: Use /bin/sh, fix possible issues.
+  * ppswatch: Fix quitting after signal
+  * Fix linking under -Wl,--as-needed
+  * Add ppsldisc from LKML patch by Rodolfo Giometti.
+  * Makefile: Cleanup CFLAGS: remove -I. add -fPIC.
+  * Removes OFFSETASSERT requirement from ppstest and ppsctl.
+  * ppsfind: Add licence to the file header.
+  * Remove debian directory.
+  * ppswatch: Add useful stats output.
+
+-------------------------------------------------------------------
+Mon Aug  8 09:44:32 UTC 2016 - benoit.monin@gmx.fr
+
+- install timepps.h in location specified by RFC 2783
+
+-------------------------------------------------------------------
+Wed May 11 17:15:07 UTC 2016 - mpluskal@suse.com
+
+- Update license information
+
+-------------------------------------------------------------------
+Thu May 05 14:15:29 UTC 2016 - mpluskal@suse.com
+
+- Simplify version scheme (use just date)
+
+-------------------------------------------------------------------
+Wed May  4 17:09:38 UTC 2016 - jengelh@inai.de
+
+- Update description to go a bit more into detail on PPS.
+
+-------------------------------------------------------------------
+Sun May 01 16:25:29 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.0.0+git.20120407:
+  * rename ppsbind to ppsctl
+  * ppsctl: don't bind by default
+  * add copyright information
+  * pps-test: line-flush stdout output
+  * Add uninstall production.
+  * Add .gitignore for generated files.
+  * Install timepps.h in location specified by RFC 2783.
+  * Update .gitignore
+  * Include our own timepps.h since it is in the same tree
+
+-------------------------------------------------------------------
+Sun May  1 15:55:46 UTC 2016 - matwey.kornilov@gmail.com
+
+- Initial version
+

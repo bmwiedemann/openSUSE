@@ -1,0 +1,912 @@
+-------------------------------------------------------------------
+Tue Jul 30 10:28:34 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- add nmap-7.70-fix_infinite_loop.patch to fix infinite loop in
+  tls-alpn when server is forcing a protocol [bsc#1143277]
+
+-------------------------------------------------------------------
+Fri May  3 14:53:44 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- add nmap-7.70-CVE-2018-15173_pcre_limits.patch to reduce LibPCRE
+  resource limits so that version detection can't use as much of
+  the stack. Previously Nmap could crash when run on low-memory
+  systems against target services which are intentionally or
+  accidentally difficult to match [bsc#1104139] [CVE-2018-15173].
+
+-------------------------------------------------------------------
+Fri May 18 16:53:53 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from description.
+- Trim idempotent %if..%endif blocks.
+- Explicitly request bash for bashisms in %install.
+
+-------------------------------------------------------------------
+Thu May 10 12:31:02 UTC 2018 - kstreitova@suse.com
+
+- don't build zenmap and ndiff python2 subpackages because of the
+  python2 deprecation in Tumbleweed
+- run spec-cleaner
+- tweak Summaries and Descriptions
+
+-------------------------------------------------------------------
+Thu Mar 22 16:55:26 UTC 2018 - mvetter@suse.com
+
+- Update to 7.70:
+  * 14 new NSE scripts
+  * iec-identify probes for the IEC 60870-5-104 SCADA protocol
+  * ssh-brute performs brute-forcing of SSH password credentials
+  * See https://nmap.org/changelog.html#7.70 for the complete changelog.
+
+-------------------------------------------------------------------
+Wed Aug  2 08:49:17 UTC 2017 - erwin.vandevelde@gmail.com
+
+- Nmap 7.60:
+  * NSE scripts now have complete SSH support via libssh2
+  * Added 14 NSE scripts from 6 authors, bringing the total up to 579!
+  * See https://nmap.org/changelog.html#7.60 for the complete changelog.
+
+-------------------------------------------------------------------
+Fri Jun 16 10:57:22 UTC 2017 - idonmez@suse.com
+
+- Nmap 7.50:
+  * Integrated all of your service/version detection fingerprints
+    submitted from September to March (855 of them). The signature
+    count went up 2.9% to 11,418. We now detect 1193 protocols from
+    apachemq, bro, and clickhouse to jmon, slmp, and zookeeper.
+    Highlights: http://seclists.org/nmap-dev/2017/q2/140
+  * Many added NSE scripts, OS fingerprints, service probes
+  * See https://nmap.org/changelog.html#7.50 for the complete changelog.
+
+-------------------------------------------------------------------
+Thu Dec 29 12:58:58 UTC 2016 - idonmez@suse.com
+
+- Nmap 7.40:
+  * Many added NSE scripts, OS fingerprints, service probes
+  * New option --defeat-icmp-ratelimit dramatically reduces UDP
+    scan times in exchange for labeling unresponsive 
+    (and possibly open) ports as "closed|filtered".
+  * New NSE library, geoip.lua, provides a common framework for
+    storing and retrieving IP geolocation results.
+  * See https://nmap.org/changelog.html#7.40 for the complete
+    changelog.
+- Refresh nmap-5.61-desktop_files.patch as
+  nmap-7.40-desktop_files.patch
+
+-------------------------------------------------------------------
+Fri Oct 28 19:00:50 UTC 2016 - astieger@suse.com
+
+- Nmap 7.31:
+  * Fix the way Nmap handles scanning names that resolve to the
+    same IP
+  * Zenmap: Better visual indication that display of hostname is
+    tied to address in the Topology page
+
+-------------------------------------------------------------------
+Wed Oct  5 14:23:28 UTC 2016 - astieger@suse.com
+
+- Nmap 7.30:
+  * Many added NSE scripts, OS fingerprints, service probes
+  * Improved output filtering
+  * Using Lua 5.3
+  * Many bug fixes, improvements and performance enhancements
+
+-------------------------------------------------------------------
+Sun Apr  3 20:27:44 UTC 2016 - astieger@suse.com
+
+- Nmap 7.12:
+  * Zenmap: Avoid file corruption in zenmap.conf
+  * NSE: VNC updates
+  * NSE: Add STARTTLS support for VNC, NNTP, and LMTP
+  * Add new service probes and match lines for OpenVPN
+
+-------------------------------------------------------------------
+Wed Mar 23 18:37:26 UTC 2016 - astieger@suse.com
+
+- Nmap 7.11:
+  * Add support for diffie-hellman-group-exchange-* SSH key
+    exchange methods to ssh2.lua, allowing ssh-hostkey to run on
+    servers that only support custom Diffie-Hellman groups.
+  * Add support in sslcert.lua for Microsoft SQL Server's TDS
+    protocol, so you can now grab certs with ssl-cert or check
+    ciphers with ssl-enum-ciphers.
+  * Fix crashes in Zenmap
+
+-------------------------------------------------------------------
+Fri Mar 18 16:36:47 UTC 2016 - astieger@suse.com
+
+- Nmap 7.10:
+  * Add 12 NSE scripts 
+  * Integrate OS, service/version detection fingerprint submissions
+  * Updated to various NSE scripts
+  * Zenmap: Remember window geometry (position and size) from the
+    previous time Zenmap was run.
+  * Give option parsing errors after the long usage statement
+  * Changed Nmap's idea of reserved and private IP addresses to include
+    169.254/16 (RFC3927) and remove 6/8, 7/8, and 55/8 networks
+    (for -iR randomly generated targets)
+    Usage of own exclusion lists with --exclude or --exclude-file is
+    recommended to avoid scanning newly-valid addresses belonging to
+    the US DoD.
+  * Allow the -4 option for Nmap to indicate IPv4 address family.
+  * Add verbosity level of 0 (-v0): not text output
+
+-------------------------------------------------------------------
+Mon Dec 14 19:16:33 UTC 2015 - astieger@suse.com
+
+- Nmap 7.01:
+  * various bug fixes in NSE
+
+-------------------------------------------------------------------
+Sun Nov 22 17:31:09 UTC 2015 - mardnh@gmx.de
+
+- Nmap 7.00:
+  * see /usr/share/doc/packages/nmap/CHANGELOG
+- removed patches:
+  * nmap-4.00-noreturn.diff
+  * nmap-6.00-libpcap-filter.diff
+  not needed since we do not build against the bundled libpcap
+- updated patch:
+  * nmap-ncat-skip-network-tests.patch
+
+-------------------------------------------------------------------
+Mon Oct  5 19:04:56 UTC 2015 - astieger@suse.com
+
+- Unbreak everything not Factory
+
+-------------------------------------------------------------------
+Mon Oct  5 16:33:47 UTC 2015 - plinnell@opensuse.org
+
+- Fix the build for Factory. Insist on lua 5.2.x
+
+-------------------------------------------------------------------
+Thu Jul 30 10:21:10 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequire lua52-devel on openSUSE > 13.2 (current Tumbleweed):
+  nmap has not been ported to LUA 5.3 yet.
+- Minor fix in check session: internal lua identifies itself as
+  5.2.3 by now.
+
+-------------------------------------------------------------------
+Tue Mar  3 20:03:31 UTC 2015 - astieger@suse.com
+
+- fix build on SLE 12 by removing gpg-offline dependency
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 26 23:28:28 UTC 2014 - andreas.stieger@gmx.de
+
+- Nmap 6.47:
+  * updated IPv4 OS fingerprints
+  * Removed the External Entity Declaration from the DOCTYPE in
+    Nmap's XML. The doctype is now: <!DOCTYPE nmaprun>
+  * Ncat: Fixed SOCKS5 username/password authentication
+  * Avoid formatting NULL as "%s" when running nmap --iflist
+  * Zenmap, Ndiff: Avoid crashing with old PyXML package
+  * Handle ICMP admin-prohibited messages when doing service version
+    detection.
+  * NSE: Fix a bug causing http.head to not honor redirects.
+  * Zenmap: Fix a bug in DiffViewer causing a crash
+- fix self-obsoletion of zenmap (nmap-gtk)
+
+-------------------------------------------------------------------
+Sat Apr 26 10:34:06 UTC 2014 - andreas.stieger@gmx.de
+
+- Nmap 6.46
+- NSE: 
+  * Made numerous improvements to ssl-heartbleed to provide
+    more reliable detection of the vulnerability
+  * Fix some bugs which could cause snmp-ios-config and
+    snmp-sysdescr scripts to crash
+  * Improved performance of citrixlua library when handling large
+    XML responses containing application lists
+- Zenmap:
+  * Fixed a bug which caused this crash message: "IOError:
+    [Errno socket error] [Errno 10060] A connection attempt
+    failed [...]" due to DOCTYPE definition to Nmap's XML output
+
+-------------------------------------------------------------------
+Sat Apr 12 19:42:34 UTC 2014 - andreas.stieger@gmx.de
+
+- Nmap 6.45
+- NSE:
+  * Add ssl-heartbleed script to detect the Heartbleed OpenSSL bug
+  * Fixed an error-handling bug in socks-open-proxy that caused it
+    to fail when scanning a SOCKS4-only proxy
+  * Improved ntp-info script to handle underscores in returned
+    data
+  * Add quake1-info script for retrieving server and player
+    information from Quake 1 game servers
+  * Add unicode library for decoding and encoding UTF-8, UTF-16,
+    CP437 and other character sets to Unicode code points. Scripts
+    that previously just added or skipped nulls in UTF-16 data can
+    use this to support non-ASCII characters
+  * When doing a ping scan (-sn), the --open option will prevent down
+    hosts from being shown when -v is specified. This aligns with
+    similar output for othe rscan types
+  * Add http-ntlm-info script for getting server information from
+    Web servers that require NTLM authentication
+  * Added tls library for functions related to SSLv3 and TLS
+    messages. Existing ssl-enum-ciphers, ssl-date, and
+    tls-nextprotoneg scripts were updated to use this library
+  * Add sstp-discover script to discover Microsoft's Secure Socket
+    Tunnelling Protocol
+  * Added unittest library and NSE script for adding unit tests to
+    NSE libraries
+  * Added allseeingeye-info script
+  * Add freelancer-info script
+  * Add http-server-header script
+  * Add rfc868-time script
+  * Add weblogic-t3-info script
+  * Removed a fixed value (28428) which was being set for the Request
+    ID in the snmpWalk library function
+  * Add http-iis-short-name-brute script
+  * Add http-dlink-backdoor
+  * Made telnet-brute support multiple parallel guessing threads
+  * Made the table returned by ssh1.fetch_host_key contain a "key"
+    element, like that of ssh2.fetch_host_key
+  * Update dns-cache-snoop script to use a new list of top 50
+    domains rather than a 2010 list
+  * Added the qconn-exec script
+- Ncat: 
+  * Added support for socks5 and corresponding regression tests.
+  * Fixed compilation when --without-liblua is specified
+  * Added NCAT_PROTO, NCAT_REMOTE_ADDR, NCAT_REMOTE_PORT,
+    NCAT_LOCAL_ADDR and NCAT_LOCAL_PORT environment variables being
+    set in all --*-exec child processes.
+- Nsock:
+  * Handle timers and timeouts via a priority queue
+- Various:
+  * Added TCP support to dns.lua
+  * Added safe fd_set operations. This makes nmap fail gracefully
+    instead of crashing when the number of file descriptors grows
+    over FD_SETSIZE
+  * Updated bundled liblua from 5.2.2 to 5.2.3 (bugfix release)
+  * Added version detection signatures and probes for a bunch of
+    Android remote mouse/keyboard servers, including AndroMouse,
+    AirHID, Wifi-mouse, and RemoteMouse.
+  * Fixed a bug with UDP checksum calculation
+  * Idle scan now supports IPv6
+  * The ICMP ID of ICMP probes is now matched against the sent ICMP
+    ID to reduce the chance of false matches
+- Zenmap:
+  * Fixed a crash that would happen when you entered a search
+    term starting with a colon
+
+-------------------------------------------------------------------
+Fri Dec  6 20:19:45 UTC 2013 - andreas.stieger@gmx.de
+
+- add missing python-gtk dependency for zenmap [bnc#752158]
+
+-------------------------------------------------------------------
+Mon Aug 19 23:01:55 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 6.40
+- [Ncat] Added --lua-exec
+- new and updated IPv4 OS fingerprints
+- new and updated IPv6 OS fingerprints
+- new and updated service/version fingerprints
+- [Nsock] Added initial proxy support to Nsock
+- [NSE] Added 14 NSE scripts
+- Updated the Nmap license terms, still GPL-2.0+ 
+  https://svn.nmap.org/nmap/COPYING.
+- [NSE] fix possibility of writing arbitrary file to client system 
+  when using the http-domino-enum-passwords script with the 
+  domino-enum-passwords.idpath parameter against a malicious server
+- Unicast CIDR-style IPv6 range scanning is now supported
+- It's now possible to mix IPv4 range notation with CIDR netmasks in 
+  target specifications.
+- Timeout script-args are now standardized to use the timespec that
+  Nmap's command-line arguments take (5s, 5000ms, 1h, etc.)
+- Nmap may now partially rearrange its target list for more efficient
+  host groups.
+- [Ncat] The -i option (idle timeout) now works in listen mode as well as
+  connect mode.
+- [Ncat] Ncat now support chained certificates with the --ssl-cert
+  option.
+- [Nping] Nping now checks for a matching ICMP ID on echo replies
+- [NSE] The ipOps.isPrivate library now considers the deprecated 
+  site-local prefix fec0::/10 to be private.
+- Nmap's routing table is now sorted first by netmask, then by metric.
+- Routes are now sorted to prefer those with a lower metric. 
+- Fixed a byte-ordering problem on little-endian architectures when doing
+  idle scan with a zombie that uses broken ID increments. 
+- Stop parsing TCP options after reaching EOL in libnetutil.
+- [NSE] The dns-ip6-arpa-scan script now optionally accepts "/" syntax for
+  a network mask
+- Fixed our NSEDoc system for UTF-8 names
+- UDP protocol payloads were added for detecting the Murmer service 
+- [NSE] Added http-phpmyadmin-dir-traversal
+- Fixed address matching for SCTP (-PY) ping
+- Removed some non-ANSI-C strftime format strings ("%F") and
+  locale-dependent formats ("%c") from NSE scripts and libraries.
+- [Zenmap] Improved internationalization support
+- [Zenmap] Fixed internationalization files
+- [NSE] Updated the included Liblua from version 5.2.1 to 5.2.2.
+- [Nsock] Added a minimal regression test suite for Nsock.
+- [NSE] Updated the redis-brute and redis-info scripts to work against
+  the latest versions of redis server
+- [Ncat] Fixed errors in connecting to IPv6 proxies.
+- [NSE] Updated hostmap-bfk to work with the latest version of their website
+- [NSE] Added XML structured output support to:
+  + xmpp-info, irc-info, sslv2, address-info
+  + hostmap-bfk, hostmap-robtex, hostmap-ip2hosts.
+  + http-git.nse.
+- Added new service probes for:
+  + Erlang distribution nodes
+  + Minecraft servers.
+  + Hazelcast data grid.
+- [NSE] Rewrote telnet-brute for better compatibility with a variety of
+  telnet servers.
+- Fixed a regression that changed the number of delimiters in machine
+  output.
+- Fixed a regression in broadcast-dropbox-listener which prevented it from
+  producing output.
+- Handle ICMP type 11 (Time Exceeded) responses to port scan probes.
+- Add new decoders (BROWSER, DHCP6 and LLMNR) to broadcast-listener and
+  changed output of some of the decoders slightly.
+- Namespace the pipes used to communicate with subprocesses by PID, to avoid
+  multiple instances of Ncat from interfering with each other. 
+- [NSE] Changed ip-geolocation-geoplugin to use the web service's new output
+  format.
+- Limited the number of open sockets in ultra_scan to FD_SETSIZE.
+- Fixed a bug that prevented Nmap from finding any interfaces when one of
+  them had the type ARP_HDR_APPLETALK
+- [Ncat] Ncat now keeps running in connect mode after receiving EOF from the
+  remote socket, unless --recv-only is in effect.
+- Packet trace of ICMP packets now include the ICMP ID and sequence number
+  by default.
+- [NSE] Fixed various NSEDoc bugs
+- [Zenmap] Zenmap now understands the NMAP_PRIVILEGED and NMAP_UNPRIVILEGED
+  environment variables.
+- Added an ncat_assert macro.
+- Added nmap-fo.xsl to convert Nmap XML into XSL-FO, which can be converted 
+  into PDF using tools suck as Apache FOP.
+- Increased the number of slack file descriptors not used during connect
+  scan.
+- Changed the --webxml XSL stylesheet to point to the new location of
+  nmap.xsl in the new repository (https://svn.nmap.org/nmap/docs/nmap.xsl).
+- [NSE] The vulnerability library can now preserve vulnerability information
+  across multiple ports of the same host.
+- Removed the undocumented -q option, which renamed the nmap process to
+  something like "pine".
+- Moved the Japanese man page from man1/jp to man1/ja. JP is a country code
+  while JA is a language code.
+- [Nsock] Reworked the logging infrastructure to make it more flexible and
+  consistent.
+- [NSE] Fixed scripts using unconnected UDP sockets.
+- Made some changes to Ndiff to reduce parsing time when dealing with large
+  Nmap XML output files.
+- [Zenmap] Fixed a crash that could be caused by opening the About dialog,
+  using the window manager to close it, and opening it again.
+- [Ncat] Made test-addrset.sh exit with nonzero status if any tests
+  fail. 
+- Fixed compilation with --without-liblua.
+- Fixed CRC32c calculation (as used in SCTP scans) on 64-bit
+  platforms.
+- [NSE] Added multicast group name output to broadcast-igmp-discovery.nse.
+- [NSE] Added new fingerprints for http-enum: Sitecore, Moodle, typo3,
+  SquirrelMail, RoundCube.
+- Packaging changes:
+  * remove nmap-ncat-fail-test-addrset.patch, committed upstream
+  * ja locale was corrected upstream
+
+-------------------------------------------------------------------
+Sun Mar 10 22:33:12 UTC 2013 - andreas.stieger@gmx.de
+
+- add verification of gpg signatures of source tarballs
+
+-------------------------------------------------------------------
+Sat Dec  8 13:42:44 UTC 2012 - andreas.stieger@gmx.de
+
+- run available unit tests
+- add nmap-ncat-fail-test-addrset.patch to make ncat tests effective
+- add nmap-ncat-skip-network-tests.patch to skip tests requiring
+  name resolution
+
+-------------------------------------------------------------------
+Sun Dec  2 14:09:50 UTC 2012 - andreas.stieger@gmx.de
+
+- update to 6.25
+  + add 373 IPv4 OS fingerprints and improve existing fingerprints
+  + add more than 400 service/version detection fingerprints
+  + integrate latest IPv6 OS submissions and corrections
+  + Enabled support for IPv6 traceroute using UDP, SCTP, and IPProto
+    (Next Header) probes.
+  + Scripts can now return a structured name-value table so that results
+    are query-able from XML output. Scripts can return a string as
+    before, or a table, or a table and a string. In this last case, the
+    table will go to XML output and the string will go to screen output.
+  + Ncat: Added support for Unix domain sockets. The new -U and
+    --unixsock options activate this mode.
+  + removal of Windows dependencies reduces size of source tarball
+  + Replaced old RPC grinder with NSE-based implementation
+  + Updated Nmap Scripting Engine to use Lua 5.2
+  + Added 85 NSE scripts
+  + Added 12 new protocol libraries: 
+    * ajp (Apache JServ Protocol)
+    * base32 (Base32 encoding/decoding - RFC 4648)
+    * bjnp (Canon BJNP printer/scanner discovery protocol)
+    * cassandra (Cassandra database protocol)
+    * eigrp (Cisco Enhanced Interior Gateway Routing Protocol)
+    * gps (Global Positioning System - does GPRMC NMEA decoding)
+    * ipp (CUPS Internet Printing Protocol)
+    * isns (Internet Storage Name Service)
+    * jdwp (Java Debug Wire Protocol)
+    * mobileme (a service for managing Apple/Mac devices)
+    * ospf (Open Shortest Path First routing protocol)
+    * rdp (Remote Desktop Protocol)
+  + added more Common Platform Enumeration (CPE) identifiers 
+  + Scans that use OS sockets (including TCP connect scan, version
+    detection, and script scan) now use the SO_BINDTODEVICE sockopt on
+    Linux, so that the -e (select network device) option is
+    honored.
+  + [Zenmap] Host filters can now do negative matching, for example you
+     can use "os:!linux" to match hosts NOT detected as Linux.
+  + further minor improvements and bug fixes as listed in 
+     http://nmap.org/changelog.html
+- for openSUSE releases where lua 5.2 is available, build with that
+  library, otherwise use the library that comes with the sources
+- add tests for the correct system or included libraries
+- refresh nmap-4.75-nostrip.patch
+- refresh su-to-zenmap.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 21:46:27 UTC 2012 - andreas.stieger@gmx.de
+
+- update manpages glob to fix Factory build
+
+-------------------------------------------------------------------
+Sat Jun 23 08:56:35 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 6.0.1
+  * fix a zenmap a crash that happened when activating the host filter.
+  * fix finding network interfaces if one of them is in monitor mode
+  * fixx greppable output of hosts that time-out
+
+-------------------------------------------------------------------
+Mon May 21 20:27:08 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 6.00
+  * enhanced Nmap Scripting Engine
+  * Better Web Scanning
+  * Full IPv6 Support
+  * New NPing Tool
+  * Better Zenmap GUI & results viewer
+  * Faster scans
+  * for a full list of changes see http://nmap.org/6/#changes and
+    http://nmap.org/changelog.html
+- refresh nmap-4.00-libpcap-filter.diff
+
+-------------------------------------------------------------------
+Tue Mar 27 21:36:17 UTC 2012 - andreas.stieger@gmx.de
+
+- as nmap is built with the inluded and stripped nmap-libdnet-1.12,
+  remove system libdnet as build requirement
+
+-------------------------------------------------------------------
+Mon Mar 26 21:22:40 UTC 2012 - andreas.stieger@gmx.de
+
+- Update to nmap-5.61TEST5
+- refresh nmap-4.00-libpcap-filter.diff for moved source lines
+- refresh nmap-4.00-noreturn.diff for moved source lines
+- refresh nmap-4.75-nostrip.patch for moved source lines
+- update nmap-5.00-desktop_files.patch 
+      to nmap-5.61-desktop_files.patch for change source
+- update su-to-zenmap.patch for moved source lines
+
+-------------------------------------------------------------------
+Mon Mar 26 19:16:15 UTC 2012 - dimstar@opensuse.org
+
+- Conditionally change lua-devel BuildRequires to lua51-devel on
+  openSUSE > 12.1. The code is not yet ready for lua 5.2.
+
+-------------------------------------------------------------------
+Sat Oct 22 17:43:10 UTC 2011 - eugene@nobilis.org.ru
+
+- Fixed a run Zenmap as sudo in KDE and GNOME
+
+-------------------------------------------------------------------
+Mon Oct 17 02:38:28 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to nmap 5.61-xxx branch, changelog too long, see NEWS
+  for details.
+- Add a new subpackage "nping"
+- drop no-md2.patch already in upstream.
+
+-------------------------------------------------------------------
+Wed Dec  1 15:47:07 UTC 2010 - vcizek@novell.com
+
+- add nmap-5.21-gnomesu.patch (fixed bnc#613847)
+
+-------------------------------------------------------------------
+Sat Oct 30 04:44:07 UTC 2010 - malcolmlewis@opensuse.org
+
+- spec file clean up to build on SLE and openSUSE < 11.3 
+
+-------------------------------------------------------------------
+Fri Aug 27 13:53:19 CEST 2010 - anicka@suse.cz
+
+- update to 5.21
+ * Dramatically improved the version detection database, integrating
+   2,596 submissions that users contributed since February 3, 2009!
+ * bugfixes
+
+-------------------------------------------------------------------
+Mon Apr 19 09:01:38 CEST 2010 - meissner@suse.de
+
+- disable md2 in the scripting language (no longer supplied
+  by default openssl)
+
+-------------------------------------------------------------------
+Fri Oct  9 14:09:25 CEST 2009 - anicka@suse.cz
+
+- fixed bnc#528581 
+
+-------------------------------------------------------------------
+Wed Aug 12 17:38:39 CEST 2009 - coolo@novell.com
+
+- Pascal updated to 5.00 with way too many changes to list them,
+  see /usr/share/doc/packages/nmap/CHANGELOG
+- introduce ncat and ndiff packages providing tools for nmap scans
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue Jun 23 14:46:57 CEST 2009 - meissner@suse.de
+
+- remove strip so we have debuginfos
+
+-------------------------------------------------------------------
+Thu Sep 11 16:25:06 CEST 2008 - hvogel@suse.de
+
+- Update to 4.75
+  * [Zenmap] Added a new Scan Topology system.
+  * [Zenmap] Another exciting new Zenmap feature is Scan
+    Aggregation.
+  * [Zenmap] Added a context-sensitive help system to the Profile
+    Editor.
+  * Expanded nmap-services to include information on how frequently
+    each port number is found open.
+  * Nmap now scans the most common 1,000 ports by default in either
+    protocol (UDP scan is still optional).
+  * Nmap fast scan (-F) now scans the top 100 ports by default in
+    either protocol.
+  * The --top-ports option lets you specify the number of ports you
+    wish to scan in each protocol, and will pick the most popular
+    ports for you based on the new frequency data.
+  * integrated all of the OS detection fingerprint and correction
+    submissions
+- rename nmap-gtk subpackage to zenmap
+
+-------------------------------------------------------------------
+Mon Sep  8 14:45:59 CEST 2008 - hvogel@suse.de
+
+- update to version 4.68
+  * Too many changes to list, see http://nmap.org/changelog.html
+
+-------------------------------------------------------------------
+Thu Apr  3 07:11:03 CEST 2008 - crrodriguez@suse.de
+
+- update to version 4.60 tons of bugfixes, see http://nmap.org/changelog.html
+- Wrong files for package nmap in openSUSE:Factory  [BNC #369021]
+- We have to buildrequire lua-devel, otherwise bundled is used
+
+-------------------------------------------------------------------
+Sun Mar  2 12:08:30 CET 2008 - coolo@suse.de
+
+- fix packaging issues
+
+-------------------------------------------------------------------
+Mon Jan 21 15:20:49 CET 2008 - mskibbe@suse.de
+
+- update to version 4.53 which
+  o Added UPnP-info NSE script. It gathers information from the
+    UPnP service (UDP port 1900) which listens on many network
+    devices such as routers, printers, and networked media players.
+  o Fix a lot of Bugs
+  o The Nmap Scripting Engine (NSE) now supports run-time interaction
+    and the Nmap --host-timeout option.
+
+-------------------------------------------------------------------
+Thu Jul 26 16:55:50 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 30 16:56:36 CEST 2007 - ro@suse.de
+
+- change last patch to build 
+
+-------------------------------------------------------------------
+Thu Apr 19 08:23:48 CEST 2007 - mskibbe@suse.de
+
+- fix build bug 
+
+-------------------------------------------------------------------
+Thu Feb 22 11:43:41 CET 2007 - mskibbe@suse.de
+
+- update to version 4.20 which
+  o Integrated the latest OS fingerprint submissions
+  o Fix Bugs 
+
+-------------------------------------------------------------------
+Mon Jan  8 00:11:17 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Thu Oct 26 03:43:23 CEST 2006 - dmueller@suse.de
+
+- build against system provided libdnet
+
+-------------------------------------------------------------------
+Thu Jul 13 13:53:17 CEST 2006 - mskibbe@suse.de
+
+- update to version 4.11 which
+  o Added a dozens of more detailed SSH version detection
+    signatures 
+  o Fixed the Nmap Makefile
+  o Fixed a compilation problem on solaris and possibly other
+    platforms.
+  o Applied a patch which helps with HP-UX compilation by linking
+    in the nm library (-lnm
+  o Added version detection probes for detecting the Nessus daemon.
+
+-------------------------------------------------------------------
+Sat Feb 25 14:05:47 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  2 17:17:11 CET 2006 - hvogel@suse.de
+
+- update to 4.0 final. Only some metadata updates 
+
+-------------------------------------------------------------------
+Fri Jan 27 15:00:17 CET 2006 - hvogel@suse.de
+
+- added pcre-devel to buildrequires
+- updated to 3.999 which includes:
+o Upgraded the included LibPCRE from version 6.3 to 6.4. 
+o Integrated all remaining 2005 service submissions.
+o Added run time interaction
+o Reverse DNS resolution is now done in parallel
+o Added the --badsum option, which causes Nmap to use invalid TCP or
+  UDP checksums for packets sent to target hosts.
+o More excellent NmapFE patches from Priit Laes
+o Added --max_retries option
+o Many of the Nmap low-level timing options take a value in
+  milliseconds.
+o Made some changes to allow source port zero scans (-g0).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  9 11:57:46 CET 2005 - hvogel@suse.de
+
+- 3.95 update 
+
+-------------------------------------------------------------------
+Thu Nov  3 02:07:16 CET 2005 - dmueller@suse.de
+
+- 3.93 update (fixes #129227) 
+
+-------------------------------------------------------------------
+Fri Oct 14 17:08:49 CEST 2005 - sf@suse.de
+
+- fix specfile 
+
+-------------------------------------------------------------------
+Fri Oct 14 15:55:07 CEST 2005 - sf@suse.de
+
+- fix C++ Problem with gcc 4.1
+- fix Makefile.in to use RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Fri Sep  9 14:47:10 CEST 2005 - mmj@suse.de
+
+- Update to nmap-3.90
+
+-------------------------------------------------------------------
+Wed Aug 24 18:13:02 CEST 2005 - hvogel@suse.de
+
+- use internal pcre to avoid problems with SYN scan 
+  [#104337]
+
+-------------------------------------------------------------------
+Tue Aug 16 12:20:54 CEST 2005 - mmj@suse.de
+
+- Don't strip binaries
+
+-------------------------------------------------------------------
+Tue Aug  9 14:54:44 CEST 2005 - hvogel@suse.de
+
+- Build against system libpcap/libpcre to avoid libpcap bugs
+  [Bug #98249]
+
+-------------------------------------------------------------------
+Wed Mar 23 18:45:44 CET 2005 - sbrabec@suse.cz
+
+- Moved desktop file, added icon (#73653).
+
+-------------------------------------------------------------------
+Tue Feb  8 14:23:08 CET 2005 - meissner@suse.de
+
+- fix return values of gencode.c.
+
+-------------------------------------------------------------------
+Tue Feb  8 09:41:46 CET 2005 - mmj@suse.de
+
+- Update to nmap-3.81
+
+-------------------------------------------------------------------
+Mon Feb  7 11:24:29 CET 2005 - mmj@suse.de
+
+- Update to nmap-3.80
+
+-------------------------------------------------------------------
+Fri Dec  3 12:06:57 CET 2004 - mmj@suse.de
+
+- Update to nmap-3.77
+
+-------------------------------------------------------------------
+Wed Oct 20 14:23:26 CEST 2004 - mmj@suse.de
+
+- Update to nmap-3.75
+
+-------------------------------------------------------------------
+Wed Sep  1 14:26:12 CEST 2004 - mmj@suse.de
+
+- Update to nmap-3.70
+
+-------------------------------------------------------------------
+Thu Jul  8 18:04:54 CEST 2004 - mmj@suse.de
+
+- Update to nmap-3.55
+
+-------------------------------------------------------------------
+Tue Feb 10 14:55:28 CET 2004 - mmj@suse.de
+
+- Fix accidental deletion of specfile tag
+
+-------------------------------------------------------------------
+Tue Feb 10 12:46:22 CET 2004 - mmj@suse.de
+
+- Add openssl to #nfb in order to enable SSL-scan-through support
+
+-------------------------------------------------------------------
+Thu Jan 22 13:03:44 CET 2004 - mmj@suse.de
+
+- Update to nmap-3.50
+
+-------------------------------------------------------------------
+Wed Nov 19 16:51:10 CET 2003 - hvogel@suse.de
+
+- move nmapfe/xnmap to a subpackage nmap-gtk
+- make use of openssl
+- fix DESTDIR patch 
+- dont build as root
+
+-------------------------------------------------------------------
+Wed Oct  8 17:08:29 CEST 2003 - mmj@suse.de
+
+- Update to version 3.48
+
+-------------------------------------------------------------------
+Sat Aug 16 10:20:28 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Sat Jul 19 02:37:08 CEST 2003 - mmj@suse.de
+
+- Update to version 3.30
+
+-------------------------------------------------------------------
+Sun Jun 22 23:31:44 CEST 2003 - mmj@suse.de
+
+- Update to version 3.28
+
+-------------------------------------------------------------------
+Mon May 26 14:59:31 CEST 2003 - mmj@suse.de
+
+- Update to nmap-3.27
+
+-------------------------------------------------------------------
+Tue May 13 14:26:22 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Tue Apr  1 16:31:47 CEST 2003 - mmj@suse.de
+
+- Update to nmap-3.20
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sun Aug 18 15:48:45 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+- use BuildRoot
+- add missing files to file list
+
+-------------------------------------------------------------------
+Mon Aug  5 23:53:49 MEST 2002 - draht@suse.de
+
+- long awaited version 3.00. News: 
+  * 700 operation systems + network devices in fingerprint database
+  * uptime scan
+  * XML output
+  * all references to God in error messages are capitalized
+  added filter.dif security fix for homegrown libpcap.
+
+-------------------------------------------------------------------
+Wed Jan  9 13:53:23 MET 2002 - draht@suse.de
+
+- new version 2.54BETA30.
+
+-------------------------------------------------------------------
+Thu Aug  9 02:02:43 CEST 2001 - ro@suse.de
+
+- fixed specfile to build (suse_update_config before autoconf)
+
+-------------------------------------------------------------------
+Tue May  8 15:34:49 MEST 2001 - draht@suse.de
+
+- update to 2.54BETA22
+
+-------------------------------------------------------------------
+Sun Jan 28 20:05:53 CET 2001 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Mon Nov 13 15:36:30 CET 2000 - ro@suse.de
+
+- fixed inet_aton detection 
+
+-------------------------------------------------------------------
+Sat Nov  4 16:14:28 CET 2000 - kukuk@suse.de
+
+- fix neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jul 11 16:47:15 MEST 2000 - mge@suse.de
+
+- update to 2.53, move /usr/lib/nmap to /usr/share/nmap
+
+-------------------------------------------------------------------
+Tue Feb 22 01:11:13 CET 2000 - garloff@suse.de
+
+- Version 2.3BETA14. Move manpage to /usr/share/man
+
+-------------------------------------------------------------------
+Mon Oct 25 11:20:13 MEST 1999 - freitag@suse.de
+
+- update to version 2.3BETA6 
+
+-------------------------------------------------------------------
+Wed Oct 20 09:50:21 MEST 1999 - freitag@suse.de
+
+- new version 2.12 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Mar 18 15:26:31 MET 1999 - uli@suse.de
+
+- new package, version 2.02
+

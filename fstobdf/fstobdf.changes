@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Jan  3 17:49:46 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.6:
+  This minor maintenance release provides the usual set of
+  accumulated build configuration improvements, compiler warning
+  fixes, and other janitorial cleanups.
+
+-------------------------------------------------------------------
+Mon Apr 23 07:05:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.5:
+  + Compiler warning fixes.
+  + Janitorial cleanups.
+  + Build configuration improvements.
+- Add pkgconfig(xproto) BuildRequires: new dependency upstream.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split fstobdf from xorg-x11. Initial version: 1.0.4.
+

@@ -1,0 +1,104 @@
+diff --git a/build.xml b/build.xml
+index 698b91f..95a8789 100644
+--- a/build.xml
++++ b/build.xml
+@@ -18,6 +18,7 @@
+     <property file="build.properties" />
+ 
+     <property name="jar.dir" value="lib"/>
++    <property name="systemjar.dir" value="/usr/share/java"/>
+     <property name="plugin.dir" value="plugin"/>
+     <property name="build.dir" value="build"/>
+     <property name="junit.dir" value="build/junit"/>
+@@ -59,13 +60,26 @@
+     <property name="version.props.file" value="${build.dir}/classes/edu/umd/cs/findbugs/version.properties"/>
+ 
+     <path id="findbugs.classpath">
+-        <fileset dir="${jar.dir}" includes="*.jar"/>
++        <pathelement location="${systemjar.dir}/ant.jar" />
++        <pathelement location="${systemjar.dir}/objectweb-asm/asm.jar" />
++        <pathelement location="${systemjar.dir}/objectweb-asm/asm-commons.jar" />
++        <pathelement location="${systemjar.dir}/objectweb-asm/asm-tree.jar" />
++        <pathelement location="${systemjar.dir}/findbugs-bcel.jar" />
++        <pathelement location="${systemjar.dir}/apache-commons-lang.jar" />
++        <pathelement location="${systemjar.dir}/dom4j.jar" />
++        <pathelement location="${systemjar.dir}/jaxen.jar" />
++        <pathelement location="${systemjar.dir}/jcip-annotations.jar" />
++        <pathelement location="${systemjar.dir}/jdepend.jar" />
++        <pathelement location="${systemjar.dir}/jFormatString.jar" />
++        <pathelement location="${systemjar.dir}/jsr-305.jar" />
++        <pathelement location="${systemjar.dir}/junit.jar" />
++        <pathelement location="${systemjar.dir}/hamcrest/core.jar" />
+     </path>
+ 
+     <path id="tools.classpath">
+         <pathelement location="${classes.dir}"/>
+         <pathelement location="${jar.dir}/findbugs.jar"/>
+-        <pathelement location="${jar.dir}/jdepend-2.9.jar"/>
++        <pathelement location="${systemjar.dir}/jdepend.jar"/>
+         <path refid="findbugs.classpath"/>
+     </path>
+ 
+@@ -122,13 +134,6 @@
+                 </javac>
+     </target>
+     <target name="classes" depends="init">
+-        <echo>Requires JDK 7.x (not 8!), using: ${ant.java.version}</echo>
+-        <fail message="Requires JDK 7.x (not 8!), using: ${ant.java.version}">
+-             <condition>
+-                 <equals arg1="1.8" arg2="${ant.java.version}"/>
+-             </condition>
+-         </fail>
+-
+         <!-- Compile Java source files. -->
+         <echo level="info" message="compiling findbugs"/>
+         <javac
+@@ -298,8 +303,6 @@
+             <fileset dir="${src.dir}">
+                 <include name="**/annotations/*.java"/>
+             </fileset>
+-            <zipfileset src="${jar.dir}/jcip-annotations.jar" excludes="META-INF/**,**/*.html"/>
+-            <zipfileset src="${jar.dir}/jsr305.jar" excludes="META-INF/**,**/*.html"/>
+         </jar>
+     </target>
+ 
+@@ -634,25 +637,13 @@
+ 
+     <!-- Get version properties.  -->
+ 
+-    <target name="-get-git-revision">
+-    <exec executable="git" spawn="false" outputproperty="gitrnum">
+-            <arg value="log"/>
+-            <arg value="--pretty=format:%h"/>
+-            <arg value="-n"/>
+-            <arg value="1"/>
+-    </exec>
+-        <echo>Got git revision ${gitrnum}</echo>
+-    </target>
+-
+-
+-    <target name="version" depends="classes,-get-git-revision" >
+-        <echo>${gitrnum}</echo>
++    <target name="version" depends="classes" >
+         <java classpathref="tools.classpath"
+               output="${version.props.file}"
+               classname="edu.umd.cs.findbugs.Version"
+               failonerror="true">
+             <arg value="-props"/>
+-            <sysproperty key="git.revision" value="${gitrnum}"/>
++            <sysproperty key="git.revision" value="Unknown"/>
+         </java>
+ 
+         <loadproperties srcfile="${version.props.file}"/>
+diff --git a/design/architecture/Makefile b/design/architecture/Makefile
+index 8765025..0fc7869 100644
+--- a/design/architecture/Makefile
++++ b/design/architecture/Makefile
+@@ -4,6 +4,7 @@ PDFS = $(TEX_SRCS:.tex=.pdf)
+ %.pdf : %.tex
+ 	pdflatex $*
+ 	pdflatex $*
++	pdflatex $*
+ 
+ all : $(PDFS)
+ 

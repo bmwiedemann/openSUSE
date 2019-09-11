@@ -1,0 +1,63 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-11-22 08:20:11.934094533 +0100
+
+According to Werner Fink, the libraries' DT_SONAME must be
+libXaw{,3d}.so.{6,7,8} and that we cannot cheat our way with symlinks
+or otherwise the runtime linker would complain, though this has never
+been corroborated by some program output. (If you have it, paste it
+here in the description.)
+
+On the other hand, the absence (so far) of a runtime linker
+complaint is observable on openSUSE 12.3's "xaw3dd" package
+where we did in fact use symlinks.
+
+	ares07:~> ldd /usr/bin/xterm | grep Xaw
+	        libXaw.so.7 => /usr/lib64/Xaw3d/libXaw.so.7
+	        (0x00007fe219b67000)
+	ares07:~> readelf -a /usr/lib64/Xaw3d/libXaw.so.7 | grep SONAME
+	 0x000000000000000e (SONAME)      Library soname: [libXaw.so.7]
+	ares07:~> xterm
+	xterm: Xt error: Can't open display: 
+	xterm: DISPLAY is not set
+
+---
+ src/Makefile.am |   22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+Index: libXaw3d-1.6.2/src/Makefile.am
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Makefile.am
++++ libXaw3d-1.6.2/src/Makefile.am
+@@ -1,4 +1,8 @@
+-lib_LTLIBRARIES = libXaw3d.la
++# The .la file with newest SOVERSION should come last,
++# so that it "wins" during `make install`.
++lib_LTLIBRARIES = xaw6/libXaw3d.la xaw7/libXaw3d.la libXaw3d.la
++xawdir = ${libdir}/Xaw3d
++xaw_LTLIBRARIES = xaw6/libXaw.la xaw7/libXaw.la libXaw.la
+ 
+ AM_YFLAGS = -d -p LayYY
+ 
+@@ -73,6 +77,22 @@ libXaw3d_la_LIBADD = \
+ 
+ libXaw3d_la_LDFLAGS = -version-info 8:0:0 -no-undefined
+ 
++libXaw_la_SOURCES        = ${libXaw3d_la_SOURCES}
++libXaw_la_LIBADD         = ${libXaw3d_la_LIBADD}
++libXaw_la_LDFLAGS        = ${libXaw3d_la_LDFLAGS}
++xaw6_libXaw3d_la_SOURCES = ${libXaw3d_la_SOURCES}
++xaw6_libXaw3d_la_LIBADD  = ${libXaw3d_la_LIBADD}
++xaw6_libXaw3d_la_LDFLAGS = ${libXaw3d_la_LDFLAGS} -version-info 6:0:0
++xaw6_libXaw_la_SOURCES   = ${libXaw3d_la_SOURCES}
++xaw6_libXaw_la_LIBADD    = ${libXaw3d_la_LIBADD}
++xaw6_libXaw_la_LDFLAGS   = ${libXaw3d_la_LDFLAGS} -version-info 6:0:0
++xaw7_libXaw3d_la_SOURCES = ${libXaw3d_la_SOURCES}
++xaw7_libXaw3d_la_LIBADD  = ${libXaw3d_la_LIBADD}
++xaw7_libXaw3d_la_LDFLAGS = ${libXaw3d_la_LDFLAGS} -version-info 7:0:0
++xaw7_libXaw_la_SOURCES   = ${libXaw3d_la_SOURCES}
++xaw7_libXaw_la_LIBADD    = ${libXaw3d_la_LIBADD}
++xaw7_libXaw_la_LDFLAGS   = ${libXaw3d_la_LDFLAGS} -version-info 7:0:0
++
+ BUILT_SOURCES = laygram.h
+ 
+ dist_doc_DATA = README.XAW3D

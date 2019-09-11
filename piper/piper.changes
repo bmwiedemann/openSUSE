@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Fri Aug 02 20:35:49 UTC 2019 - marix@marix.org
+
+- Update to version 0.3:
+  * Switched back to "normal" version numbering
+  * Check the APIVersion field in ratbagd to ensure it is
+    compatible.
+- Drop fix-resource-generation-script-shebang.patch as it has been
+  applied upstream.
+
+-------------------------------------------------------------------
+Tue Apr 23 19:19:11 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Add missing dependency to python3-cairo. (boo#1132961)
+
+-------------------------------------------------------------------
+Sat Mar 30 09:11:19 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Update to version 0.2.904:
+  * Adjusted to breaking DBus API changes of libratbag 0.9.905.
+  * Removed "Add Profile" button as the functionality was not
+    implemented.
+  * SVG handling is now done wholly within Piper instead of relying
+    on libratbag providing the SVGs.
+- Added patch fix-resource-generation-script-shebang.patch which
+  backports a fix for one of the build scripts.
+
+-------------------------------------------------------------------
+Wed Jan 30 09:16:04 UTC 2019 - marix@marix.org
+
+- Update to version 0.2.903:
+  * Updated Polish and German translations.
+  * Adjust to incompatible changes in ratbagd 0.9.904.
+  * Improved handling of error cases.
+  * Improved compatibility with HiDPI screens.
+  * Provide localized desktop files
+
+-------------------------------------------------------------------
+Fri Oct 19 17:26:31 UTC 2018 - marix@marix.org
+
+- Added missing dependency to python3-gobject-Gdk.
+
+-------------------------------------------------------------------
+Thu Oct 18 18:02:32 UTC 2018 - marix@marix.org
+
+- Fixed use of deprecated syntax for BuildArch in the package
+  spec.
+
+-------------------------------------------------------------------
+Wed Oct 17 19:06:47 UTC 2018 - marix@marix.org
+
+- Improved Category adjustment logic.
+- Corrected Url in metadata to actually point to the upstream code
+  repository.
+- Replaced sed-patching by proper patch files.
+- Minimised build dependencies.
+
+-------------------------------------------------------------------
+Tue Oct 16 21:47:44 UTC 2018 - marix@marix.org
+
+- Initial package creation

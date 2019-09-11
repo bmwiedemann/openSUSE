@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Apr 20 15:29:17 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update project url
+
+-------------------------------------------------------------------
+Wed Apr 20 13:34:37 UTC 2016 - carlospecter@gmail.com
+
+- spec update: installed shunit2 binary to bindir
+
+-------------------------------------------------------------------
+Thu May 23 09:41:50 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1
+  This package is LGPL-2.1, not GPL-3.0
+
+-------------------------------------------------------------------
+Thu Feb  2 08:35:14 UTC 2012 - toms@opensuse.org
+
+- First initial release 2.1.6

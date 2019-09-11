@@ -1,0 +1,24 @@
+From: Ben Harris <bjh21@cam.ac.uk>
+Date: Wed, 18 Mar 2015 10:54:16 +0000
+Subject: Don't depend on Test::More 0.87_01
+
+done_testing was introduced in Test::More 0.87_01, but SLES 11 shipped with
+Test::More 0.72.  This patch removes the use of done_testing so that the
+package is buildable on SLES 11.
+
+diff -ur YAML-LibYAML-0.59.orig/t/000-require-modules.t YAML-LibYAML-0.59/t/000-require-modules.t
+--- YAML-LibYAML-0.59.orig/t/000-require-modules.t	2015-01-26 23:04:24.000000000 +0000
++++ YAML-LibYAML-0.59/t/000-require-modules.t	2015-03-17 19:39:15.000000000 +0000
+@@ -1,5 +1,5 @@
+ # This test does a basic `use` check on all the code.
+-use Test::More;
++use Test::More qw(no_plan);
+ 
+ use File::Find;
+ 
+@@ -13,5 +13,3 @@
+     wanted => \&test,
+     no_chdir => 1,
+ }, 'lib';
+-
+-done_testing;

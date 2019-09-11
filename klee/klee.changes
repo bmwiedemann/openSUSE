@@ -1,0 +1,1126 @@
+-------------------------------------------------------------------
+Mon Jul 12 23:35:27 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use -flto=thin instead of -flto=<number> for Clang.
+
+-------------------------------------------------------------------
+Mon Jul  1 23:16:30 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Switch to LLVM 8.
+
+-------------------------------------------------------------------
+Mon May 27 09:39:22 UTC 2019 - jslaby@suse.com
+
+- Update to version 2.0+20190507:
+  * Propagate correct version of metasmt to build script
+  * Add missing dependency for tabulate package
+  * Remove CC as requirement; automatically set by sanitizer_compiler
+  * klee-stats: add - to to-csv/grafana options
+  * Add klee-stats test, fix microseconds bug
+  * Add MSan support for sqlite
+  * Clean klee-stats, StatsTracker and cmake
+  * Change the .stats format into sqlite3
+  * Add FreeBSD OS triple in RaiseAsm
+  * Teach ConcreteTest.py to use `gmake` instead of `make` on FreeBSD
+  * and more
+
+-------------------------------------------------------------------
+Mon Feb 25 10:15:41 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- Update to version 1.4.0+20190115:
+  * make AssignmentLessThan::operator() const-invocable
+  * fix a bug in a function call
+  * ktest-tool: move from optparse to argparse, add ouput/example sections to help
+  * Travis OSX: install Python 3.x
+  * regression/2014-09-13-debug-info.c: use 'int: ' instead of 'data:'
+  * Various fixes for ktest-tool
+  * Added default values to option comments
+  * Renamed --environ to --env-file
+  * Renamed --stop-after-n-tests to --max-tests
+  * Added a replaying option category
+  * Added checks option category, moved --optimize to starting category, renamed original --run-in option to --running-dir
+  * Added linking option category
+  * Added starting option category
+  * Added test case option category
+  * Added debugging category
+  * Renamed --stop-after-n-instructions to --max-instructions, as suggested by @251
+  * Added some descriptions suggested by @MartinNowack and placed --max-static-... options under the termination category of options
+  * Added option categories for external call policy and termination criteria
+  * Created two more option categories: test generation and seeding.
+
+-------------------------------------------------------------------
+Sun Dec 16 09:33:44 UTC 2018 - Jiri Slaby <jslaby@suse.com>
+
+- Update to version 1.4.0+20181214:
+  * Enable C++14 support
+  * Implemented memalign with alignment
+  * Use LLVM 4 for Mac Build
+  * Fix bug which resulted in an incorrect warning to be printed.
+  * fix: actually set -O0 in test/concrete/CMakeLists.txt
+  * Fixed crash on zero size arrays
+  * Check for stack overflow in a tested program
+  * Added test for the case where external calls are encountered but disallowed
+  * Replaced --no-externals and --allow-external-sym-calls with --external-calls, updated tests accordingly, and improved documentation on external calls
+  * The test DeterministicSwitch.c does not need to allow external symbolic calls
+  * Introduced a constraint solving option category to which all the options in CmdLineOptions.cpp are currently added.
+  * Base time API upon std::chrono
+  * add %OOopt to recently added tests and Concrete
+
+-------------------------------------------------------------------
+Mon Oct 29 16:28:27 UTC 2018 - Jiri Slaby <jslaby@suse.com>
+
+- switch to LLVM 7
+- add disable-failing-test.patch
+
+-------------------------------------------------------------------
+Sat Oct 27 07:24:23 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20181026:
+  * travis: enable LLVM 7 testing
+  * llvm7: handle new header files
+  * llvm7: adapt to new openFileForWrite
+  * llvm7: WriteBitcodeToFile takes Module &
+  * Added gen-bout tool to generate ktest file (file.bout) using specified concrete arguments and files.
+  * travis: enable LLVM 6 testing
+  * llvm6: handle headers renaming
+  * llvm6: SetVersionPrinter now passes down a stream
+  * travis: enable LLVM 5 testing
+  * llvm5: APInt->getSignBit -> getSignMask
+  * llvm5: CallSite.paramHasAttr is indexed from 0
+  * llvm5: test, add -disable-O0-optnone to -O0
+  * llvm5: test, change objectsize
+  * llvm5: Intrinsic::objectsize has three arguments
+  * llvm5: use MutableArrayRef for APFloat::convertToInteger
+  * llvm5: handle new file_magic's location
+  * llvm5: SwitchInst case functions now return pointers
+  * llvm5: handle getOrInsertFunction terminator
+  * llvm5: integerPartWidth is from llvm::APFloatBase
+  * llvm5: avoid ++ on function->arg_begin()
+  * Add testcase for shift check
+  * ShiftChecker: Instrument shift instructions only once
+  * ShiftChecker: Avoid unneeded checks
+  * ShiftCheck: Use llvm::Builder instead of Inst::Create*
+  * Add test case for div checker
+  * DivCheck do not instrument multiple times
+  * DivCheck Skip unneeded checks
+  * Use llvm::Builder for DivCheck instrumentation
+  * Introduce KLEEIRMetaData to manipulate LLVM-IR metadata
+  * Added lowering pass
+  * refactor klee_open_output_file to return std::unique_ptr
+  * use klee_open_output_file for uncompressed logs
+  * Updated an include to reflect a recent filename change
+  * Move unrelated function from ReadExpr class
+  * Avoid unsafe static downcasts
+  * Modernize code
+  * Move optimization specific headers away from the project include directory
+  * Clean-up headers
+  * Use std::unordered collections as we use C++11
+  * Remove unneeded externs
+  * Remove condition check before function invocation
+  * Move ConstantExpr check inside optimizeExpr function
+  * optimizeExpr: return the result as return value instead as function argument
+  * Make valueOnly parameter of optimizeExpr explicit
+  * Fixed compilation of array optimization patch with LLVM >= 4.0
+  * Added missing headers and clang-format the files
+  * Added support for KLEE value-based array optimization
+  * Added support for KLEE index-based array optimization
+  * tests: disable CompressedExprLogging on zlib-less systems
+  * Small changes to comments
+  * Added missing header to SolverCmdLine.h and clang-format it
+  * Renamed klee/CommandLine.h to klee/SolverCmdLine.h, since this file is meant to have only solver options.
+  * fix handling of failing external calls
+  * cmake/lit: add asan/non-asan, ubsan/non-ubsan flags
+  * cleanup headers, whitespaces, and types
+  * add support for klee-replay on OSX
+  * Workaround for flaky coverage
+  * kleeModule: always link irreader (required since llvm 3.3)
+  * remove obsolete dependency of kleeModule on kleeCore
+  * config.h.cmin: remove obsolete cmakedefine
+  * Marking resolve methods as const
+  * Refactored AddressSpace::resolve() by creating a new function AddressSpace::checkPointerInObject() that is called in both the forward and the backward searches.  This makes the code more modular and removes a large part of duplicated code and should also address the non-deterministic coverage in the resolve() function which affects Codecov reports.
+  * Fix a crash when the last running state is terminated during merging
+  * Changed code to create up to 100 properly-numbered symbolic arguments, and add a corresponding check.
+  * Add checks for correct usage of the POSIX model, together with an associated test.
+  * Revert lit to 0.6.0 version, as 0.7.0 misbehaves
+- removed (in upstream):
+  * 0001-llvm5-avoid-on-function-arg_begin.patch
+  * 0002-llvm5-integerPartWidth-is-from-llvm-APFloatBase.patch
+  * 0003-llvm5-handle-getOrInsertFunction-terminator.patch
+  * 0004-llvm5-SwitchInst-case-functions-now-return-pointers.patch
+  * 0005-llvm5-handle-new-file_magic-s-location.patch
+  * 0006-llvm5-use-MutableArrayRef-for-APFloat-convertToInteg.patch
+  * 0007-llvm5-Intrinsic-objectsize-has-three-arguments.patch
+  * 0008-llvm5-test-change-objectsize.patch
+  * 0009-llvm5-test-add-disable-O0-optnone-to-O0.patch
+  * 0010-llvm5-CallSite.paramHasAttr-is-indexed-from-0.patch
+  * 0011-llvm6-SetVersionPrinter-now-passes-down-a-stream.patch
+  * 0012-llvm6-handle-headers-renaming.patch
+
+-------------------------------------------------------------------
+Fri Sep 21 11:24:38 UTC 2018 - jslaby@suse.com
+
+- Update to version 1.4.0+20180920:
+  * Removed unused file
+  * Removed unused --sym-files 0 0 argument from FD_Fail test and rewrote the test to use FileCheck instead of grep
+  * Updated IoCtl test to use --sym-stdin instead of --sym-files 0 x to make stdin symbolic and removed unused arguments to main.
+  * Updated DirSeek test to use --sym-stdin instead of --sym-files 0 x to make stdin symbolic.
+  * Silence an uninitialized variable compiler warning (and a tiny formatting change)
+  * travis: enable LLVM 4 testing
+  * llvm4: gep_type_iterator has no operator*
+  * llvm4: PointerType is not SequentialType
+  * llvm4: use chrono helpers from LLVM
+  * llvm4: errorOr and similar
+  * llvm4: APFloat members are functions
+  * llvm4: handle different header names
+  * travis CI: add LLVM 3.9 build tests
+  * llvm39: switch KLEE_RUNTIME_BUILD_TYPE to Debug+Asserts
+  * cmake: find_llvm, fix libraries with llvm-config 3.9
+  * llvm: make KLEE compile against LLVM 3.9
+  * Add testcase to run POSIX environment and main without arguments
+  * Add POSIX runtime as dependency for the test case
+  * Unify the error message if that function has not been found.
+  * Fix generation of global constructors and destructors
+  * POSIX: Add invocation of klee_init_env into wrapper before calling main
+  * Fix missing includes and declarations
+  * Use FileCheck and LINE instead of grep if possible
+  * llvm36.patch: fix build for newer glibc/gcc versions
+  * runtime: fix memory error in canonicalize_file_name
+  * Build on trusty without sudo - uses faster Docker infrastructure from TravisCI
+  * Avoid Vararg non-deterministic allocation
+- removed (in upstream):
+  * 0001-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * 0002-cmake-find_llvm-fix-libraries-with-llvm-config-3.9.patch
+  * 0003-llvm39-switch-KLEE_RUNTIME_BUILD_TYPE-to-Debug-Asser.patch
+  * 0004-llvm40-handle-different-header-names.patch
+  * 0005-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+  * 0006-llvm40-errorOr-and-similar.patch
+  * 0007-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+  * 0008-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+  * 0009-llvm40-gep_type_iterator-has-no-operator.patch
+- removed (not needed):
+  * 0017-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+- renamed:
+  * 0010-llvm50-avoid-on-function-arg_begin.patch
+    -> 0001-llvm5-avoid-on-function-arg_begin.patch
+  * 0011-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+    -> 0002-llvm5-integerPartWidth-is-from-llvm-APFloatBase.patch
+  * 0012-llvm50-handle-getOrInsertFunction-terminator.patch
+    -> 0003-llvm5-handle-getOrInsertFunction-terminator.patch
+  * 0013-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+    -> 0004-llvm5-SwitchInst-case-functions-now-return-pointers.patch
+  * 0014-llvm50-handle-new-file_magic-s-location.patch
+    -> 0005-llvm5-handle-new-file_magic-s-location.patch
+  * 0015-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+    -> 0006-llvm5-use-MutableArrayRef-for-APFloat-convertToInteg.patch
+  * 0016-llvm50-AllocaInst-takes-address-space.patch
+    -> 0007-llvm5-Intrinsic-objectsize-has-three-arguments.patch
+  * 0018-llvm50-test-change-objectsize.patch
+    -> 0008-llvm5-test-change-objectsize.patch
+  * 0019-llvm50-test-add-disable-O0-optnone-to-O0.patch
+    -> 0009-llvm5-test-add-disable-O0-optnone-to-O0.patch
+  * 0020-llvm50-CallSite.paramHasAttr-is-indexed-from-0.patch
+    -> 0010-llvm5-CallSite.paramHasAttr-is-indexed-from-0.patch
+  * 0021-llvm6-SetVersionPrinter-now-passes-down-a-stream.patch
+    -> 0011-llvm6-SetVersionPrinter-now-passes-down-a-stream.patch
+  * 0022-llvm6-handle-headers-renaming.patch
+    -> 0012-llvm6-handle-headers-renaming.patch
+
+-------------------------------------------------------------------
+Sun Sep 02 08:39:37 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20180829:
+  * klee-stats: add TResolve(%) to --print-all
+  * llvm.sh: fix patch source paths
+  * Disabled unit testing in default build
+  * Fixed runtest library to handle the case of a NULL "name" argument in klee_make_symbolic.  Changed a test case to check this feature.
+  * Replace remaining *Inst::Create() calls with llvm::Builder
+  * [clang-format]Allow longer codelines in test/
+  * test: remove geq-llvm-3.4
+  * remove last comma from -debug-print-escaping-functions
+  * test/Feature/EscapingFunctionsAlias.c: clarify alias(ee) casting
+  * add declarations to escapingFunctions
+  * ModuleUtil: improve and test valueIsOnlyCalled
+  * fix: LLVM 3.5, begin_user() instead of begin_use()
+  * ExternalDispatcher: setErrorStr for EngineBuilder
+  * travis CI: add LLVM 3.8 build tests
+  * llvm38: test, change some tests
+  * llvm38: no more implicit iterators
+  * llvm38: archive child iterator changes
+  * llvm38: adapt to new Linker::linkModules
+  * llvm38: SmallString is always up-to-date
+  * llvm38: handle optimization passes changes
+  * llvm38: no rounding in APFloat
+  * Fix uploading of coverage information from inside of docker
+  * Add missing curl
+  * Fix slow Mac Travis build: wildcard is not expanded with quotes
+  * Added "override" in Executor.h to silence compiler warnings (and ran clang-format on patch)
+  * Removed support for klee_make_symbolic with 2 arguments.  This has been deprecated for many years now and causes problems during replay.  Changed and simplified affected test case.
+  * test: remove undefined behaviour
+  * Enabled tcmalloc by default
+  * Link dynamic libraries with specific paths instead of resolving them during runtime
+  * Fix incorrect invocation of klee
+  * Fix uninitialized memory: enums have to be initialized
+  * Add missing out-of-tree include files directory for TCMalloc
+  * Fix compiler warnings if assertions are disabled
+  * Support sanitizer suppression files with lit-based testing
+  * Extensive updates to the build script for dependencies and docker
+  * runtime: remove obsolete code for building modules instead of archives
+  * Reorder linking and optimizations
+  * Reorganise runtime libraries provided by KLEE
+  * Removed obsolete script
+  * test/lit.cfg: remove obsolete hack from (LLVM < 3.0 is no longer supported)
+  * CMake: use cmake_{push,pop}_check_state
+  * CMake: check for ctype and mallinfo functions with CXX instead of C compiler
+  * fix out of range access in KleeHandler::getKTestFilesInDir
+  * Explicitly initialize value to squelch a potentially uninitialized value warning
+  * Fix the final -Wimplicit-fallthrough warning
+  * Make ConstantExpr hashing function faster and modify affected test
+- added patches:
+  * 0003-llvm39-switch-KLEE_RUNTIME_BUILD_TYPE-to-Debug-Asser.patch
+  * 0005-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+  * 0020-llvm50-CallSite.paramHasAttr-is-indexed-from-0.patch
+- removed patches (in upstream now):
+  * 0001-test-remove-undefined-behaviour.patch
+  * 0002-llvm38-no-rounding-in-APFloat.patch
+  * 0003-llvm38-handle-optimization-passes-changes.patch
+  * 0004-llvm38-SmallString-is-always-up-to-date.patch
+  * 0005-llvm38-materializeAllPermanently-was-renamed.patch
+  * 0006-llvm38-adapt-to-new-Linker-linkModules.patch
+  * 0007-llvm38-archive-child-iterator-changes.patch
+  * 0008-llvm38-no-more-implicit-iterators.patch
+  * 0009-llvm38-test-change-some-tests.patch
+- renamed patches:
+  * 0010-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+    -> 0001-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * 0011-cmake-find_llvm-fix-libraries-with-llvm-config-3.9.patch
+    -> 0002-cmake-find_llvm-fix-libraries-with-llvm-config-3.9.patch
+  * 0012-llvm40-handle-different-header-names.patch
+    -> 0003-llvm39-switch-KLEE_RUNTIME_BUILD_TYPE-to-Debug-Asser.patch
+  * 0013-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+    -> 0004-llvm40-handle-different-header-names.patch
+  * 0014-llvm40-errorOr-and-similar.patch
+    -> 0006-llvm40-errorOr-and-similar.patch
+  * 0015-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+    -> 0007-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+  * 0016-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+    -> 0008-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+  * 0017-llvm40-gep_type_iterator-has-no-operator.patch
+    -> 0009-llvm40-gep_type_iterator-has-no-operator.patch
+  * 0018-llvm50-avoid-on-function-arg_begin.patch
+    -> 0010-llvm50-avoid-on-function-arg_begin.patch
+  * 0019-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+    -> 0011-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+  * 0020-llvm50-handle-getOrInsertFunction-terminator.patch
+    -> 0012-llvm50-handle-getOrInsertFunction-terminator.patch
+  * 0021-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+    -> 0013-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+  * 0022-llvm50-handle-new-file_magic-s-location.patch
+    -> 0014-llvm50-handle-new-file_magic-s-location.patch
+  * 0023-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+    -> 0015-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+  * 0024-llvm50-AllocaInst-takes-address-space.patch
+    -> 0016-llvm50-AllocaInst-takes-address-space.patch
+  * 0025-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+    -> 0017-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+  * 0026-llvm50-test-change-objectsize.patch
+    -> 0018-llvm50-test-change-objectsize.patch
+  * 0027-llvm50-test-add-disable-O0-optnone-to-O0.patch
+    -> 0019-llvm50-test-add-disable-O0-optnone-to-O0.patch
+  * 0028-llvm60-SetVersionPrinter-now-passes-down-a-stream.patch
+    -> 0021-llvm6-SetVersionPrinter-now-passes-down-a-stream.patch
+  * 0029-llvm60-handle-headers-renaming.patch
+    -> 0022-llvm6-handle-headers-renaming.patch
+
+-------------------------------------------------------------------
+Sat Jun 16 09:09:56 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20180614:
+  * Add unittest for DiscretePDF
+  * klee_int: allow NULL as name
+  * cmake: find_llvm, handle libLLVM-version.so properly
+  * Fixed memory leak from Executor::inCloseMerge, fixes #883
+- Require python3-lit as the lit packaging was refactored
+- switch to llvm 6
+- removed patches:
+  * 0001-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+    (it was split into multiple commits below)
+  * klee-skip-some-tests.patch
+    (tests should be working perfectly now)
+- added patches:
+  * 0001-test-remove-undefined-behaviour.patch
+  * 0002-llvm38-no-rounding-in-APFloat.patch
+  * 0003-llvm38-handle-optimization-passes-changes.patch
+  * 0004-llvm38-SmallString-is-always-up-to-date.patch
+  * 0005-llvm38-materializeAllPermanently-was-renamed.patch
+  * 0006-llvm38-adapt-to-new-Linker-linkModules.patch
+  * 0007-llvm38-archive-child-iterator-changes.patch
+  * 0008-llvm38-no-more-implicit-iterators.patch
+  * 0011-cmake-find_llvm-fix-libraries-with-llvm-config-3.9.patch
+  * 0027-llvm50-test-add-disable-O0-optnone-to-O0.patch
+- renamed patches:
+  * 0002-llvm38-test-change-some-tests.patch
+    -> 0009-llvm38-test-change-some-tests.patch
+  * 0003-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+    -> 0010-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * 0004-llvm40-handle-different-header-names.patch
+    -> 0012-llvm40-handle-different-header-names.patch
+  * 0005-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+    -> 0013-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+  * 0006-llvm40-errorOr-and-similar.patch
+    -> 0014-llvm40-errorOr-and-similar.patch
+  * 0007-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+    -> 0015-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+  * 0008-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+    -> 0016-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+  * 0009-llvm40-gep_type_iterator-has-no-operator.patch
+    -> 0017-llvm40-gep_type_iterator-has-no-operator.patch
+  * 0010-llvm50-avoid-on-function-arg_begin.patch
+    -> 0018-llvm50-avoid-on-function-arg_begin.patch
+  * 0011-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+    -> 0019-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+  * 0012-llvm50-handle-getOrInsertFunction-terminator.patch
+    -> 0020-llvm50-handle-getOrInsertFunction-terminator.patch
+  * 0013-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+    -> 0021-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+  * 0014-llvm50-handle-new-file_magic-s-location.patch
+    -> 0022-llvm50-handle-new-file_magic-s-location.patch
+  * 0015-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+    -> 0023-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+  * 0016-llvm50-AllocaInst-takes-address-space.patch
+    -> 0024-llvm50-AllocaInst-takes-address-space.patch
+  * 0017-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+    -> 0025-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+  * 0018-llvm50-test-change-objectsize.patch
+    -> 0026-llvm50-test-change-objectsize.patch
+  * 0019-llvm60-SetVersionPrinter-now-passes-down-a-stream.patch
+    -> 0028-llvm60-SetVersionPrinter-now-passes-down-a-stream.patch
+  * 0020-llvm60-handle-headers-renaming.patch
+    -> 0029-llvm60-handle-headers-renaming.patch
+
+-------------------------------------------------------------------
+Fri May 25 10:57:57 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20180524:
+  * isLSB should be a boolean, as it is only used in truth contexts
+  * remove switch fallthrough in floating point comparision
+  * llvm37: enable travis testing
+  * llvm37: handle getRegisteredOptions
+  * test: add versions of some tests for LLVM 3.7
+  * llvm: make KLEE compile against LLVM 3.7
+  * llvm37: handle GetElementPtrInst::Create's new parameter
+  * test: add parenthesis around & operands
+- removed patches that are in upstream now:
+  * 0001-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch
+  * 0002-llvm-make-KLEE-compile-against-LLVM-3.7.patch
+  * 0003-test-add-versions-of-some-tests-for-LLVM-3.7.patch
+  * 0004-llvm37-handle-getRegisteredOptions.patch
+- renamed patches:
+    * 0005-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+      -> 0001-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+    * 0007-llvm38-test-change-some-tests.patch
+      -> 0002-llvm38-test-change-some-tests.patch
+    * 0006-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+      -> 0003-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+    * 0008-llvm40-handle-different-header-names.patch
+      -> 0004-llvm40-handle-different-header-names.patch
+    * 0009-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+      -> 0005-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+    * 0010-llvm40-errorOr-and-similar.patch
+      -> 0006-llvm40-errorOr-and-similar.patch
+    * 0011-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+      -> 0007-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+    * 0012-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+      -> 0008-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+    * 0013-llvm40-gep_type_iterator-has-no-operator.patch
+      -> 0009-llvm40-gep_type_iterator-has-no-operator.patch
+    * 0014-llvm50-avoid-on-function-arg_begin.patch
+      -> 0010-llvm50-avoid-on-function-arg_begin.patch
+    * 0015-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+      -> 0011-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+    * 0016-llvm50-handle-getOrInsertFunction-terminator.patch
+      -> 0012-llvm50-handle-getOrInsertFunction-terminator.patch
+    * 0017-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+      -> 0013-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+    * 0018-llvm50-handle-new-file_magic-s-location.patch
+      -> 0014-llvm50-handle-new-file_magic-s-location.patch
+    * 0019-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+      -> 0015-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+    * 0020-llvm50-AllocaInst-takes-address-space.patch
+      -> 0016-llvm50-AllocaInst-takes-address-space.patch
+- added patches
+  * 0017-llvm50-Intrinsic-objectsize-has-three-arguments.patch
+  * 0018-llvm50-test-change-objectsize.patch
+  * 0019-llvm60-SetVersionPrinter-now-passes-down-a-stream.patch
+  * 0020-llvm60-handle-headers-renaming.patch
+
+-------------------------------------------------------------------
+Wed May 23 12:25:13 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20180522:
+  * clang-format on lib/Module/{IntrinsicCleaner.cpp,Passes.h}
+  * some housekeeping in Passes.h and IntrinsicCleaner.cpp
+  * CompressionStream: fix sporadic segfaults (uninitialised avail_in)
+  * Removed .c_str() from getSourceLocation calls
+  * Renamed printFileLine to getSourceLocation (as suggested by @delcypher) to reflect the fact that it simply returns a string
+  * Simplified printFileLine by using std::to_string, and removed unneeded version that takes an argument a stream
+  * stop using DEBUG macro name
+  * fix some casts for LLP64 compilers
+
+-------------------------------------------------------------------
+Mon May 21 09:30:16 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0+20180518:
+  * tests: use names in klee_make_symbolic
+  * Delete coverageServer.py
+  * Abort execution if --only-output-states-covering-new is enabled but its dependency --output-istats is not
+  * Add support for concretizing symbolic objects passed to external functions
+  * Improve error messages for ReadStringAtAddress
+  * Improved code quality
+  * Implemented incomplete merging
+  * remove QueryLog.h
+  * Update clang-format standard for KLEE codebase to C++11
+  * Fix test case to check for correct call string
+  * Improve handling of constant array in Z3
+  * Remove the option for truncating lines in assembly.ll
+  * Remove workaround for bug in older LLVM version (< 3)
+  * Fix include files
+  * remove unused file: tools/klee/Debug.cpp
+  * Fixed test case to exercise modification to utimes()
+  * Fixed utimes() behavior for symbolic files when the second argument is NULL
+  * Moved regression test to proper location.  Fixes #705
+  * Fix handling of errno if external functions are invoked
+  * Factor out method to update state memory with process state
+  * Ensured program reliably has 3 paths to be explored, and removed unnecessary options.  Make klee_abort() call abort() in replay, and removed trivial test which cannot be easily integrated into the test suite.
+  * Implement klee_prefer_cex() and klee_abort() in Runtest and added corresponding tests
+  * add blockaddress and indirectbr instructions
+  * fix compilation warning
+  * exitOnError no output buf fix
+  * Change llvm apt repository to enable llvm 3.7+
+  * Fix python2 linking
+  * doDumpStates: incorrectly increments stats
+  * [CMake] Add option to set GTest include dir
+  * fix test/Feature/BFSSearcherAndDFSSearcherInterleaved.c to use explicit enumeration of possible strings instead of CHECK-SAME (does not work as intended with LLVM >= 3.7)
+  * Store CexCache stats and then update klee-stats to use them
+  * Add missing endian information to avoid selecction of big endian systems
+  * Fail for aggegrations with big endian ordering
+  * Fixed handling of constant vectors with complex data
+  * Test complex constant data vectors as well
+  * Make print function of ObjectState public and const
+  * Add testcase for constant array handling
+  * Add test case for constant vector init
+  * Fix correct element order of InsertElement/ExtractElement
+  * Fix getelementptr for array or vector indices
+  * Fix generation of expressions from constant sequential data
+  * Added comment for getPointerWidth
+  * llvm50: use auto variable instead of SwitchInst::CaseIt
+  * Enable caching for travis-ci
+  * Fix coverage generation
+  * MergeHandler: remove unused closedStateCount
+  * add wllvm to the python packages to be installed
+  * [Travis-CI] Added codecov.io support
+- Dropped patches (they are in upstream already):
+  * 0001-MergeHandler-remove-unused-closedStateCount.patch
+  * 0002-llvm50-use-auto-variable-instead-of-SwitchInst-CaseI.patch
+  * 0001-Fix-generation-of-expressions-from-constant-sequenti.patch
+  * 0002-Fix-getelementptr-for-array-or-vector-indices.patch
+  * 0003-Fix-correct-element-order-of-InsertElement-ExtractEl.patch
+  * 0004-Provide-errno-independent-of-CTYPE_EXTERNALS-being-d.patch
+  * 0005-Track-errno-correctly.patch
+  * 0006-Declare-klee_get_errno-and-remove-local-declarations.patch
+  * 0007-Add-support-for-modelling-errno_location.patch
+  * 0008-Cleanup-test-cases.patch
+  * 0009-test-fix-Feature-BFSSearcherAndDFSSearcherInterleave.patch
+
+-------------------------------------------------------------------
+Wed Jan 24 07:59:06 UTC 2018 - jslaby@suse.com
+
+- Add klee-skip-some-tests.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 10:24:53 UTC 2018 - jslaby@suse.com
+
+- Update to version 1.4.0+20180108:
+  * [NFC] Remove unused config header template that was only used by the old build system (now removed).
+  * fix regression test: use `%klee` instead of `klee`
+  * fix merging tests: use `%klee` instead of `klee`
+  * Move Homebrew tap from personal repository to the KLEE organization
+  * Updated TravisCI to use pip2 instead of pip
+  * Bumped xcode version for TravisCI
+  * Implemented bounded merging functionality
+  * Added pause and continue functionality for states in Executor
+  * Replace confusing message in lit.site.cfg.in about the file being autogenerated
+  * klee_make_symbolic: add test cases for API
+  * klee_make_symbolic: warn on deprecated usage
+- added patches:
+  * 0001-MergeHandler-remove-unused-closedStateCount.patch
+  * 0002-llvm50-use-auto-variable-instead-of-SwitchInst-CaseI.patch
+  * 0013-llvm40-gep_type_iterator-has-no-operator.patch
+  * 0014-llvm50-avoid-on-function-arg_begin.patch
+  * 0015-llvm50-integerPartWidth-is-from-llvm-APFloatBase.patch
+  * 0016-llvm50-handle-getOrInsertFunction-terminator.patch
+  * 0017-llvm50-SwitchInst-case-functions-now-return-pointers.patch
+  * 0018-llvm50-handle-new-file_magic-s-location.patch
+  * 0019-llvm50-use-MutableArrayRef-for-APFloat-convertToInte.patch
+  * 0020-llvm50-AllocaInst-takes-address-space.patch
+- renamed patches:
+  * 0013-llvm38-test-change-some-tests.patch ->
+      0007-llvm38-test-change-some-tests.patch
+  * 0007-llvm40-handle-different-header-names.patch ->
+      0008-llvm40-handle-different-header-names.patch
+  * 0008-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch ->
+      0009-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+  * 0009-llvm40-errorOr-and-similar.patch ->
+      0010-llvm40-errorOr-and-similar.patch
+  * 0010-llvm-use-chrono-helpers-from-LLVM-4.0.patch ->
+      0011-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+  * 0011-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch ->
+      0012-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+  * 0012-llvm40-gep_type_iterator-has-no-operator.patch ->
+      0013-llvm40-gep_type_iterator-has-no-operator.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 07:49:05 UTC 2018 - jslaby@suse.com
+
+- change "env python" to "python3" in tests, so that we can build and
+  depend on py3 only
+
+-------------------------------------------------------------------
+Mon Jan  8 07:18:25 UTC 2018 - jslaby@suse.com
+
+- add python3-setuptools BuildRequires, so that we have pkg_resources
+  for tests
+
+-------------------------------------------------------------------
+Fri Nov 17 17:01:38 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.4.0+20171026:
+  * [cmake]Fix detection of non-standard path for tcmalloc
+  * fixing huge allocation size constant to be unsigned
+  * [travis] build metaSMT with C++11
+  * [travis] add a workaround to keep Travis alive when running tests for metaSMT-CVC4 (which needs around 10m for one specific test case)
+  * [travis] update scripts to additionally test CVC4 and Yices2
+  * [cmake] detect available metaSMT backends using a pre-defined flag and raise compile flags accordingly
+  * add support for CVC4 and Yices2 via metaSMT
+  * Fixed assert in BFSSearcher that does not hold as part of interleaved searcher
+  * Removed unnecessary and redundant variable
+- removed
+  * 0001-errno-define-__errno_location.patch
+  * 0001-test-DirSeek-make-it-XFAIL-temporarily.patch
+- added
+  * 0001-Fix-generation-of-expressions-from-constant-sequenti.patch
+  * 0002-Fix-getelementptr-for-array-or-vector-indices.patch
+  * 0003-Fix-correct-element-order-of-InsertElement-ExtractEl.patch
+  * 0004-Provide-errno-independent-of-CTYPE_EXTERNALS-being-d.patch
+  * 0005-Track-errno-correctly.patch
+  * 0006-Declare-klee_get_errno-and-remove-local-declarations.patch
+  * 0007-Add-support-for-modelling-errno_location.patch
+  * 0008-Cleanup-test-cases.patch
+  * 0009-test-fix-Feature-BFSSearcherAndDFSSearcherInterleave.patch
+  * 0012-llvm40-gep_type_iterator-has-no-operator.patch
+  * 0013-llvm38-test-change-some-tests.patch
+
+-------------------------------------------------------------------
+Tue Oct 10 12:45:08 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.4.0+20171009:
+  * Added support for hiding command-line options
+  * Removed "llvm::" and reformatting in CmdLineOptions.cpp
+  * Remove unnecessary null pointer checks
+  * Removed dead link, fixes #754
+  * [CMake] Fix initialisation order of `KLEE_COMPONENT_*` and `KLEE_SOLVER_LIBRARIES` variables. The code to add `NDEBUG` to `KLEE_COMPONENT_CXX_DEFINES` did so before initialisation and would be silently overwritten.
+  * [CMake] Report the value of some important variables during configure to aid debugging.
+  * Silenced some warnings about unused variables when assertions are disabled.
+  * Remove Autoconf/Makefile build system and adjust the TravisCI configuration, TravisCI scripts and Dockerfile build appropriately.
+  * Fix TravisCI `METASMT_DEFAULT` setting.
+  * [CMake] Fix bug when doing non-assert builds.
+  * [CMake] Add global clean target `clean_all`. Fixes #718.
+  * [CMake] Add `clean_doxygen` rule to clean up doxygen build tree and add this as a dependency of `clean_all`.
+  * enforce c++11
+  * Removed the word 'unsigned' from integer overflow error messages
+  * Silenced warnings on comparison of integers of different signs in TreeStreamTest
+  * Fixed initialization of distance to uncovered instructions when KLEE relies on default searchers
+- removed:
+  * 0004-cmake-expand-library-dependencies-with-USE_CMAKE_FIN.patch
+- renamed:
+  * 0005-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch ->
+      0004-llvm37-handle-getRegisteredOptions.patch
+  * 0006-llvm-make-KLEE-compile-against-LLVM-3.8.patch ->
+      0005-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+  * 0007-llvm-make-KLEE-compile-against-LLVM-3.9.patch ->
+      0006-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * 0008-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch ->
+      0007-llvm40-handle-different-header-names.patch
+  * 0009-llvm40-handle-different-header-names.patch ->
+      0007-llvm40-handle-different-header-names.patch
+  * 0010-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch ->
+      0008-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+  * 0011-llvm40-errorOr-and-similar.patch ->
+      0009-llvm40-errorOr-and-similar.patch
+  * 0012-llvm-use-chrono-helpers-from-LLVM-4.0.patch ->
+      0010-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+  * 0013-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch ->
+      0011-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+
+-------------------------------------------------------------------
+Thu Aug 17 12:05:26 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.4.0+20170811:
+  * Removing flaky test Vararg.c from Darwin build until we find a proper fix
+  * Fixed typos in comments related to vararg support.
+  * llvm: don't use clEnumValEnd for LLVM 4.0
+  * llvm: get rid of static_casts from iterators
+  * llvm37: do not copy DILocation to getDSPIPath
+  * Added location info for external calls and improved a message.
+  * llvm37: introduce type for PassManager
+  * move module loading into external function
+  * Corrected comment of Z3Solver class
+  * Added caching of Homebrew downloads
+  * Use assembly line for printing debug information
+  * Fixes bug in TreeStreamWriter::write reported by @gladtbx in #562.  Also removes commented out code from that function.
+  * Implement basic support for vectorized instructions.
+  * Added some unit tests for TreeStream: one testing some basic behaviour, the other a regression test for #562
+  * Core: TimingSolver, use TimerStatIncrementer
+  * Replace assertions of types on LLVM instructions in the Executor with a pass that checks these assertions. This improves several things.
+  * Switching version to 1.4.0
+  * Release notes for 1.4.0
+  * Remove support for LLVM < 3.4
+  * Updated test cases to reflect removal of LLVM 2.9
+  * Cleanup Travis builder
+  * Remove klee-gcc
+  * Remove LLVM 2.9 from Makefiles
+  * [CMake] Fix bug where the runtime build system would not rebuild bitcode archive/modules when the list of source files that constitute it changes.
+  * [CMake] Add a sanity check to the runtime build system so that we provide a better error message (and stop earlier) when no C source files are found.
+  * llvm: get rid of static_casts from iterators (take 2)
+  * more portable shebangs
+  * Moved klee_choose from klee-libc to KLEE intrinsics.
+  * Re-enable parts of `FloatingPointOps.ll`. The message about failures doesn't seem relevant anymore given that LLVM 3.4 is the minimum version KLEE supports. Also do minor clean up. This was spotted by @andreamattavelli.
+  * Added the const qualifier to the keys in the constantMap
+  * This commit simply moves evalConstant to ExecutorUtil (where evalConstantExpr also resides), as suggested by an old comment.
+  * [CMake] Fix bug where we would inherit LLVM's `-DNDEBUG` define when LLVM was built without assertions. This prevented `ENABLE_KLEE_ASSERTS` from working correctly.
+  * [CMake] Emit warning when mixing assert and non assert builds.
+  * Cleanup tests for last LLVM 2.9 references
+  * Added regression test for bug reported by @kren1 in #262
+  * This reverts incorrect patch https://github.com/klee/klee/commit/db29a0bba74b672cdf4b8fef4d94ffa6ab845e6d __fprintf_chk has a different prototype than fprintf
+  * Now that LLVM 2.9 is gone, we can use cl::bits instead of cl::list
+  * [CMake] Refactor STP detection and change the default value of `ENABLE_SOLVER_STP` to be set dynamically based on whether STP is available. Previously the default was always off.
+  * [CMake] Refactor Z3 detection and change the default value of `ENABLE_SOLVER_Z3` to be set dynamically based on whether Z3 is available. Previously the default was always off.
+  * [CMake] Add `ENABLE_ZLIB` option to control whether KLEE uses zlib. The default is `ON` if zlib is found on first configure and `OFF` if zlib is not found on first configure.
+  * [CMake] Change the default value of `ENABLE_SOLVER_METASMT` to be set dynamically based on whether MetaSMT is available. Previously the default was always off.
+  * [TravisCI] Make sure when building with CMake that only the solvers requested get used.
+  * Modified Travis-CI script to compile STP with BOOST support
+  * Fixed script for STP in Travis-CI: Build now exits on errors
+  * Added another variant of printFileLine in KInstruction that returns the location as a string.  Also added const qualifier to the printFileLine functions
+  * Added an optional KInstruction* argument to evalConstant and evalConstantExpr which allows us to print the location associated with the constant in any error messages.  Added a test case for the unsupported features for taking the address of a label, which exercises the patch.
+  * Fix build for FreeBSD.
+  * Fixed test case counter: Previously the number of test cases generated by KLEE was always incremented, even if a symbolic solution was not found.
+  * Removed merging searchers
+  * Added checks for div/mod by zero and overshifts in constant expressions.  Such div/mod by zero expressions would previously crash KLEE.  Added two test cases, one for div/mod by zero, the other for overshift.  This fixes the bug reported in #268.
+  * Untabify this file, which was using a mix of spaces and tabs for alignment.
+  * Fixed a compiler warning (unused variable)
+  * Fixed a bug causing KLEE to generate files with no  permissions bits set.  This was introduced when we added the --readable-posix-inputs option.
+  * Added a basic test for klee-replay
+- reshuffle with patches
+  * A 0001-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch
+  * A 0002-llvm-make-KLEE-compile-against-LLVM-3.7.patch
+  * A 0003-test-add-versions-of-some-tests-for-LLVM-3.7.patch
+  * A 0004-cmake-expand-library-dependencies-with-USE_CMAKE_FIN.patch
+  * A 0005-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch
+  * A 0006-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+  * A 0007-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * A 0008-llvm37-handle-GetElementPtrInst-Create-s-new-paramet.patch
+  * D 0001-llvm-don-t-use-clEnumValEnd-for-LLVM-4.0.patch
+  * D 0002-llvm-get-rid-of-static_casts-from-iterators.patch
+  * D 0003-Core-TimingSolver-use-WallTimer.patch
+  * D 0004-llvm-make-KLEE-compile-against-LLVM-3.7.patch
+  * D 0005-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+  * D 0006-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+  * D 0007-test-add-versions-of-some-tests-for-LLVM-3.8.patch
+  * D 0008-travis-CI-add-LLVM-3.8-build-tests.patch
+
+-------------------------------------------------------------------
+Tue Jun 27 08:43:06 UTC 2017 - jslaby@suse.com
+
+- switch to python 3
+
+-------------------------------------------------------------------
+Thu Jun 08 08:48:58 UTC 2017 - jslaby@suse.com
+
+- Build against LLVM 4
+- Update to version 1.3.0+20170607:
+  * Fix test failure on systems with libstdc++ corresponding to gcc7.
+  * llvm: rename ExitOnError to OptExitOnError
+  * Prevent test failure when realloc fails in test/Feature/Realloc.c
+- added patches:
+    0001-llvm-don-t-use-clEnumValEnd-for-LLVM-4.0.patch
+    0002-llvm-get-rid-of-static_casts-from-iterators.patch
+    0003-Core-TimingSolver-use-WallTimer.patch
+    0004-llvm-make-KLEE-compile-against-LLVM-3.7.patch
+    0005-llvm-make-KLEE-compile-against-LLVM-3.8.patch
+    0006-llvm-make-KLEE-compile-against-LLVM-3.9.patch
+    0007-test-add-versions-of-some-tests-for-LLVM-3.8.patch
+    0008-travis-CI-add-LLVM-3.8-build-tests.patch
+    0009-llvm40-handle-different-header-names.patch
+    0010-llvm-APFloat-members-are-functions-in-LLVM-4.0.patch
+    0011-llvm40-errorOr-and-similar.patch
+    0012-llvm-use-chrono-helpers-from-LLVM-4.0.patch
+    0013-llvm-PointerType-is-not-SequentialType-in-LLVM-4.patch
+- removed patches (renamed to the above):
+    0001-test-add-versions-of-some-tests-for-LLVM-3.8.patch
+    0002-Make-KLEE-compile-against-LLVM-3.7.patch
+    0003-Make-KLEE-compile-against-LLVM-3.8.patch
+
+-------------------------------------------------------------------
+Mon Jun 05 07:45:51 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170602:
+  * use METASMT_REQUIRE_RTTI flag to decide whether we need RTTI
+  * [travis] add environment variable METASMT_BOOST_VERSION to control the boost version used by metaSMT and test it with the combination LLVM-2.9 + metaSMT
+  * [CMake] change WARNING to FATAL_ERROR when building with a non-RTTI LLVM version and a metaSMT version that requires RTTI
+  * [TravisCI] Try to unbreak the build against upstream STP.
+  * Remove redundant KLEE prefix while logging
+  * llvm: make KLEE compile against LLVM 3.5 and 3.6
+  * travis CI: add LLVM 3.5 and 3.6 tests
+  * Rearchitect ExternalDispatcher
+  * gitignore build
+  * [Z3] Support another solver failure reason that Z3 might give. I'm going to guess it means timeout but I'm not 100% sure about this.
+  * [Z3] Add assertions in Z3 builder to catch underflow with bad widths.
+  * [Z3] Move the `dump()` methods of the Z3NodeHandle<> specializations into `Z3Builder.cpp` so they can be called from in gdb.
+  * Refactor file opening code out of `main.cpp` and into `klee_open_output_file()` function so that it can be used by the Z3Solver.
+  * [Z3] Add the `-debug-z3-dump-queries=<path>` command line option. This is useful for getting access to the constraints being stored in the Z3 solver in the SMT-LIBv2.5 format.
+  * [Z3] Add option to manually validate Z3 models.
+  * [Z3] Implement API logging.
+  * [Z3] In `getConstraintLog()` use a separate builder from that of the solver. This is to avoid tampering with the cache of the builder the solver is using.
+  * [Z3] Switch from `Z3_mk_simple_solver()` to `Z3_mk_solver()`.
+  * [Z3] Add `-debug-z3-verbosity=<N>` option which behaves like Z3's `-v:<N>` option. This lets us see what Z3 is doing execution (e.g. which tactic is being applied) which is very useful for debugging.
+  * [Z3] Remove unused include.
+  * replace handleMetaSMT() with klee::createMetaSMTSolver() and move it into MetaSMTSolver.cpp so that the backend headers only need to be included once there
+  * hide backend solver declarations from public include
+- remove 0001-Make-KLEE-compile-against-LLVM-3.5-and-3.6.patch
+  It is upstream already.
+
+-------------------------------------------------------------------
+Wed Apr 26 09:18:55 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170409:
+  * [TravisCI] Check if `METASMT_VERSION` is set and abort if it is not set. Also exit if any of the commands in `.travis/metaSMT.sh` fail.
+  * [TravisCI] Try to unbreak the metaSMT build.
+  * [TravisCI] Try unbreaking the TravisCI metaSMT build. Copying across the `cmake` directory breaks KLEE's CMake build.
+  * [CMake] Try to fix bug reported by #633.
+  * [CMake] Fix #631
+  * [CMake] When supported pass `USES_TERMINAL` argument to `ExternalProject_Add_Step()` so that when using Ninja the output of the bitcode build system is shown immediately.
+  * [CMake] Add the `clean_runtime` top level target to provide an easy way to clean the runtime build.
+  * [Docker] Unbreak build.
+  * [TravisCI] Make handling of `TRAVIS_OS_NAME` more robust by not assuming that its value not being `linux` implies `osx`.
+  * test: lit, add geq/lt-llvm- configs
+  * [NFC] Reindent `test/lit.cfg` and add vim mode line to use right indentation and syntax highlighting.
+  * [travis] fix a git submodule failure of metaSMT
+  * [CMake] Don't redownload FileCheck.cpp if it exists
+  * Removed unused variable 'fake_object' in MemoryObject
+
+-------------------------------------------------------------------
+Tue Mar 28 13:43:30 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170328:
+  * runtime: POSIX, make it compile with glibc 2.25
+  * [Lit] Add system information (linux/darwim) to LIT configuration. Added 'not-*' features that exist if target operating system does not match a list of know operating systems.
+  * Fix test case for OSX: only weak aliases are supported on darwin Rewritten tests by replacing 'XFAIL: darwin' with 'REQUIRES: not-darwin'
+  * test: fix 'not' build
+  * test: POSIX, stop FD_Fail to fail
+  * runtime: POSIX, check path prior dereference
+  * [travis] use a proper version of metaSMT via environment variable METASMT_VERSION
+  * [travis] build metaSMT without C++11
+  * remove special handling of metaSMT_CXXFLAGS (unnecessary now as we use a fixed version of metaSMT with this flag being properly set)
+  * [WIP] Fix bug where stats would not be updated on early exit caused by finding a bug with the `-exit-on-error` option enabled.
+  * Replace `llvm:errs()` with `klee_error()` as suggested by @andreamattavelli
+  * Add test case to check that on early exits stats are flushed
+  * Add `AssignmentValidatingSolver`. It's purpose is to check any computed assignments against the corresponding `Query` object and check the assignment evaluates correctly.
+  * [CMake] Unbreak build due to not adding AssignmentValidatingSolver.cpp to list of source files.
+  * [Travis-CI] Refactored Z3 in its own script
+  * [Travis-CI] Added support for macOS build
+- enable checking of the result (%check section), only on x86_64
+- add some patches
+  * 0001-errno-define-__errno_location.patch
+  * 0001-test-DirSeek-make-it-XFAIL-temporarily.patch
+  * 0001-test-add-versions-of-some-tests-for-LLVM-3.8.patch
+- renamed patches
+  * 0005-Make-KLEE-compile-against-LLVM-3.7.patch
+	-> 0002-Make-KLEE-compile-against-LLVM-3.7.patch
+  * 0006-Make-KLEE-compile-against-LLVM-3.8.patch
+	-> 0003-Make-KLEE-compile-against-LLVM-3.8.patch
+- deleted patches (they are upstream)
+  * 0001-runtime-POSIX-make-it-compile-with-glibc-2.25.patch
+  * 0002-Fix-compiler-warning.patch
+  * 0004-Cleanup-removed-unneccessary-bools.patch
+  * 0007-fix-compilation-on-LLVM-3.8-after-rebase-to-master.patch
+
+-------------------------------------------------------------------
+Wed Mar 15 12:57:25 UTC 2017 - jslaby@suse.com
+
+- add 0001-runtime-POSIX-make-it-compile-with-glibc-2.25.patch
+- Update to version 1.3.0+20170307:
+  * klee: remove use of deprecated 'register'
+  * Makefile: change -std-compile-opts to -O3
+  * CommandLine: do not copy list in optionIsSet
+  * Teach KLEE to respect the requested memory alignment of globals and stack variables when possible.
+  * llvm: stop using global context
+  * Module: simplify is_object checks
+  * convert iterators using static_cast
+  * Core: MCJIT functions need unique names
+  * Added new option --warnings-only-to-file which causes warnings to be written to warnings.txt only.  Disabled by default.
+  * Updated test cases that check warning messages.
+  * Core: explicitly create CallSite from Instruction
+  * fix for PathOS.id
+  * Using klee_message instead of llvm:errs
+  * Moved printFileLine() to be part of KInstruction
+  * test: POSIX/DirSeek, cleanup
+  * test: ConstantExpr, fix bogus test
+
+-------------------------------------------------------------------
+Thu Mar  2 14:11:06 UTC 2017 - jslaby@suse.com
+
+- enable uclibc & POSIX runtime
+- add some %doc files
+
+-------------------------------------------------------------------
+Wed Feb 22 10:36:55 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170221:
+  * Fix `Feature/MemoryLimit.c` test when building KLEE with ASan.
+  * [TravisCI] Modify TravisCI/Docker build scripts to support doing ASan/UBSan builds of KLEE.
+  * Fix the Autoconf/Makefile build system when building with coverage flags.
+  * Teach both build systems to pass the user provided CXXFLAGS and CFLAGS when using the native compiler in system tests.
+  * In legacy build system fix building libkleeRuntest when building with ASan.
+  * Increased the type size for the stop-after-n-instructions option to avoid too strict limitations
+  * Revert "Increased the type size for the stop-after-n-instructions option to a…"
+  * Silenced two "control may reach end of non-void function [-Wreturn-type]" compiler warnings, one by adding an assert, and the other by refactoring the choose() function.
+  * Removing unused lib/SMT directory
+  * Added error message when STP fails to fork.
+  * ReadExpr::create() was missing an opportunity to constant fold when handling constant arrays.
+  * Added unit tests for ReadExpr::create() to check that constant folding is correctly applied
+  * Added pre/post conditions as assertions
+  * Fixed assertion invocation: We were invoking bits64::truncateToNBits with a width greater than 64
+  * Refactoring code to improve readability by using UINT32/64_C macros
+  * Fix linker compatibility under macOS
+  * Increased the type size for the stop-after-n-instructions option to avoid too strict limitations (LLVM >= 3.0)
+  * Silenced warning: comparison of integers of different signs ('const int' and 'const unsigned long long')
+  * Add test case that causes an assertion failure in `klee::getDirectCallTarget(llvm::CallSite)`.
+  * Teach `klee::getDirectCallTarget()` to resolve weak aliases. This is controlled by a new parameter `moduleIsFullyLinked`. When true the linkage type of a weak alias is ignored. It is legal to do this when the module is fully linked because there won't be another function that could override the weak alias.
+  * fix metaSMT version
+
+-------------------------------------------------------------------
+Mon Feb 13 12:06:09 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170211:
+  * [cmake] add PATH_SUFFIXES needed to find z3 on Fedora
+  * test: fix broken Vararg test
+  * [CMake] More widely available rebuilding for runtimes
+- switch to llvm 3.8
+
+-------------------------------------------------------------------
+Fri Jan 27 12:43:32 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.3.0+20170118:
+  * Typo fix when compiling with LLVM 3.5 and above
+  * [TravisCI] Fix bug where TravisCI build scripts would carry on executing even though configure/build failed. This due to using the `&&` operator which means failure of commands to execute in this compound statement will not trigger the script to exit as requested by `set -e`.
+  * [TravisCI] Remove `set +e` commands so that when running tests we fail fast rather than continuing to run the tests (due to `set -e` at the beginning of the script).
+  * [TravisCI] When building with the old build system move back to the root of the build tree after doing the hack the generate the lit configuration files.
+  * CMake: Fixed the LLVM version regex
+  * [CMake] Fix linker warning about mixed linking modes when LLVM was built with `-fvisibility-inlines-hidden`.
+  * Fix -Wformat warnings emitted by Apple Clang (800.0.42.1).
+  * rerun lit tests for non-default metaSMT backends
+  * Changed preferred permissions from 0622 to the more standard 0644.
+  * Fix two issues with AC_LINK_IFELSE for metaSMT:
+  * tests: Added substitution for llvm-ar
+  * Write tests to test `libkleeRuntest`. The `replay_posix_runtime.c` test is marked XFAIL because there is a bug in the implementation of `libkleeRuntest`.
+  * Fix bug reported privately by @danielschemmel .
+  * Change how error handling is done in libkleeRuntest.
+  * [CMake] Rename "integrationtests" to "systemtests".
+  * Rename old build system targets so that
+  * Remove undocumented and unused `check-local`, `check-dg` and `check-lit` targets from Autoconf/Makefile build system. Having these around just confuses things.
+  * [CMake] Only add dependencies to `check` if the target is enabled.
+  * [CMake] If CMP0037 policy is available set it to NEW so that we disallow using reserved target names.
+  * [CMake] Remove `ENABLE_TESTS` CMake cache option.
+
+-------------------------------------------------------------------
+Thu Dec 15 10:30:23 UTC 2016 - jslaby@suse.com
+
+- Update to version 1.3.0+20161210:
+  * Fixing current version of STP in Dockerfile (see #505) to 2.1.2
+  * Switched to STP 2.1.2 on Travis CI builds
+  * Increasing version to 1.3.0
+  * Release notes for 1.3.0
+  * Remove support for reporting the approximate git tag.
+  * Added  among the external calls that we model
+  * CMake: support LLVMCC.ExtraFlags
+  * Fixed the issue of klee-stats not being copied to bin/
+  * [TravisCI] Fix the list of available configuration environment variables.
+  * [TravisCI] Clean up the configuration matrix.
+  * [CMake] Fix bug in the Makefile bitcode build system where the runtime would not recompile if the LLVM C compiler flags changed. This could happen if the user did something like
+  * [CMake] Fix bug in the Makefile bitcode build system where the runtime would not recompile if the `Makefile.cmake.bitcode.rules` file changed.
+  * [CMake] Fix bug where if KLEE was built with `ENABLE_TCMALLOC` and then re-configured with `ENABLE_TCMALLOC` set to OFF then `klee/Config/config.h` was not correctly re-generated.
+
+-------------------------------------------------------------------
+Wed Nov 30 09:03:48 UTC 2016 - jslaby@suse.com
+
+- Update to version 1.0.0+20161129:
+  * [CMake] Add missing dependencies reported in #507.
+  * [CMake] Fix link order of LLVM libraries and required system libraries.
+  * [CMake] Add another missing LLVM component dependency for `kleeModule`.
+  * [CMake] Fix determining the system libraries needed by LLVM from `llvm-config` when using LLVM 3.5 and newer.
+  * [CMake] Fix bug where the wrong path is checked for when checking to see if we can find klee-uclibc's C library.
+  * [CMake] Fix some indentation issues.
+  * Renamed .pc to .kquery (kleaver query)
+  * Fix bug in implementation of `NotExpr`. It should not implement `compareContents()`.
+  * Remove default implementation of `Expr::compareContents(const Expr&)` and make it a pure virtual method. Also make it protected rather than public because it is an implementation detail of `Expr::compare()`.
+  * Clean up `Expr::compare()` interface by
+- remove 0001-lib-Module-needs-codegen.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 12:54:44 UTC 2016 - jslaby@suse.com
+
+- Update to version 20161121:
+  * [CMake] Implement install of the kleeRuntest target.
+  * [CMake] Fix the build when `-DBUILD_SHARED_LIBS=ON` is passed. This fixes issue #507.
+
+-------------------------------------------------------------------
+Sun Nov 20 19:26:50 UTC 2016 - jslaby@suse.com
+
+- remove proper-shared-libs.patch
+- add 0001-lib-Module-needs-codegen.patch
+- Update to version 20161119:
+  * add nicer error messages for --use-merge and add explanation why it currently cannot be used with random-path
+  * Fix BFS searcher
+  * [CMake] Re-express LLVM and KLEE library dependencies as transitive dependencies on KLEE's libraries rather than on the final binaries. This is better because it means we can build other tools that use KLEE's libraries and not need to express the needed LLVM dependencies.
+  * [CMake] Remove use of tabs in `CMakeLists.txt` files.
+  * [CMake] Document implicit `STP_DIR` and `metaSMT_DIR` options.
+  * Documented the level at which BFS operates in KLEE, as part of --help
+  * Remove option --randomize-fork.  If someone needs this, the right way is to implement it in the solver.
+  * [CMake] Remove unneeded dependency declarations for the unit tests. These were changes that I forgot to make in dda296e09ee53ed85ccf1c3f08e7e809adce612e .
+  * [CMake] Fix the old Autoconf/Makefile build system files in source tree interfering with CMake build.
+
+-------------------------------------------------------------------
+Fri Nov 18 14:55:02 UTC 2016 - jslaby@suse.com
+
+- switch to cmake
+- Update to version 20161117:
+  * remove mimic_stp option and the associated ITE chain construction for shift operators
+  * When building KLEE with the sanitizers make sure the runtime is not built with them because KLEE can't handle this.
+  * Use newer trusty-based Travis CI (#452)
+  * Fix `-Wmisleading-indentation` warning and also correctly set the `dirty` flag if we remove `llvm.trap` from the module.
+  * remove outdated FIXME (metaSMT-Z3 implements assumption via push/pop)
+  * change signature of runAndGetCex() to match runAndGetCexForked()
+  * move the query creation part into runAndGetCex() (to be consistent with runAndGetCexForked())
+  * upgrade to boolector-2.2.0 & remove the no longer needed aux array vector
+  * update comments
+  * apply clang-format
+  * Adds support for Darwin platform in RaiseAsm pass
+  * Implement a CMake based build system for KLEE.
+  * Add the Dockerfile to `.dockerignore` so that changes the Dockerfile don't trigger unnecessary rebuilds. Also make the Dockerfile ignore Vim source files anywhere in the tree.
+  * [CMake] Report git revision information if available.
+  * [cmake] Build with newer JIT (for LLVM >= 3.6)
+
+-------------------------------------------------------------------
+Fri Sep 30 06:29:04 UTC 2016 - jslaby@suse.com
+
+- Update to version 20160929:
+  * Fixed the description of -posix-runtime option
+  * configure: add option to enable timestamping
+  * configure: run AutoRegen.sh
+  * Fix bug in `AssignmentEvaluator` where NotOptimizedExpr would not (#466)
+- remove 0001-configure-add-option-to-enable-timestamping.patch: upstream
+- remove 0002-configure-run-AutoRegen.sh.patch: upstream
+
+-------------------------------------------------------------------
+Thu Sep 29 08:29:04 UTC 2016 - jslaby@suse.com
+
+- add 0001-configure-add-option-to-enable-timestamping.patch
+- add 0002-configure-run-AutoRegen.sh.patch
+- remove no_date_time.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 07:21:47 UTC 2016 - jslaby@suse.com
+
+- Update to version 20160926:
+  * Extended support for assembler raising
+  * Check the existence of the entry point during the initialization of the POSIX runtime. If the check fails, exit with an error. (#457)
+  * Clang-format ``ConstructSolverChain.cpp``
+  * Add ``-debug-cross-check-core-solver`` option to allow cross-checking with another solver. For example the core solver can be STP and the cross checking solver can be Z3.
+  * Correct out of date comments for some of the klee error handling functions.
+  * Rename `-debug-cross-check-core-solver` option to `-debug-crosscheck-core-solver` as requested by Cristian
+  * Avoid internalization of non-standard entry point (i.e. not the main function) (#455)
+  * Modified logging information to steer the usage of klee_message, klee_warning, and klee_error
+- remove Executor-skip-empty-asm-instead-of-abort.patch: upstream
+- remove Executor-do-not-crash-on-non-sized-globals.patch: upstream
+
+-------------------------------------------------------------------
+Mon Aug  1 17:01:41 UTC 2016 - jslaby@suse.com
+
+- Add gperftools-devel, libacl-devel, libcap-devel, libselinux-devel
+  to BuildRequires. It allows for more features.
+
+-------------------------------------------------------------------
+Tue May 31 08:20:56 UTC 2016 - jslaby@suse.com
+
+- update to 20160528
+  * Fixed an incorrect read() invocation and missing includes for FD_Fail2.c
+  * Improved help message for POSIX environment options.
+  * add entry for llvm-2.9 and z3
+  * add include in Z3Solver.cpp (did not compile with llvm-2.9)
+  * Split creation of symbolic files and stdin in two distinct options
+  * Fixed bug #375 in Kleaver's parser
+  * Allow relocation of installed klee tree
+  * Modified -debug-print-instructions to allow to write directly on log file.
+  * Add cmake 2.8.11 as additional dependency
+
+-------------------------------------------------------------------
+Fri Apr 29 12:02:37 UTC 2016 - jslaby@suse.com
+
+- Executor-skip-empty-asm-instead-of-abort.patch: add
+
+-------------------------------------------------------------------
+Thu Apr 28 13:09:08 UTC 2016 - jslaby@suse.com
+
+- Executor-do-not-crash-on-non-sized-globals.patch: add
+
+-------------------------------------------------------------------
+Mon Apr 25 18:01:52 UTC 2016 - jslaby@suse.com
+
+- update to 20160419
+
+-------------------------------------------------------------------
+Fri Mar 11 10:15:10 UTC 2016 - jslaby@suse.com
+
+- build against llvm34-klee and do not rebuild llvm
+- add proper-shared-libs.patch
+
+-------------------------------------------------------------------
+Wed Mar  9 15:42:23 UTC 2016 - jslaby@suse.com
+
+- update to 20160306
+
+-------------------------------------------------------------------
+Fri Nov 27 09:44:56 UTC 2015 - jslaby@suse.com
+
+- update to 20151113
+
+-------------------------------------------------------------------
+Fri Sep  4 09:20:13 UTC 2015 - jslaby@suse.com
+
+- use date for filename
+
+-------------------------------------------------------------------
+Fri Sep  4 08:18:12 UTC 2015 - jslaby@suse.com
+
+- add: no_date_time.patch
+
+-------------------------------------------------------------------
+Thu Sep  3 18:29:29 UTC 2015 - jslaby@suse.com
+
+- update to 1440176974
+- use llvm 3.4
+
+-------------------------------------------------------------------
+Thu Nov 13 12:22:18 UTC 2014 - jslaby@suse.com
+
+- initial commit
+

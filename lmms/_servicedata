@@ -1,0 +1,13 @@
+<servicedata>
+	<service name="obs_scm">
+		<param name="url">https://github.com/LMMS/lmms.git</param>
+    	<param name="changesrevision">1349d45d72d74b83d30cdf8a092b51e2e1b73afe</param>
+	</service>
+    <service name="tar_scm">
+        <param name="url">https://github.com/LMMS/lmms.git</param>
+        <param name="changesrevision">a2685c1cca3ef20e317d69eccb915f9d7b05e349</param></service>
+    <service name="recompress">
+        <param name="file">lmms-*.tar</param>
+        <param name="compression">xz</param>
+	</service>
+</servicedata>

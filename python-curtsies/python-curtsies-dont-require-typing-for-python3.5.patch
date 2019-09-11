@@ -1,0 +1,23 @@
+From 217b4f83e954837f8adc4c549c1f2f9f2bb272a7 Mon Sep 17 00:00:00 2001
+From: Po-Chuan Hsieh <sunpoet@sunpoet.net>
+Date: Wed, 14 Feb 2018 21:28:38 +0800
+Subject: [PATCH] Fix install_requires
+
+typing is only required for Python 3.4 or below.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index b35c7c3..6e52cbd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -41,7 +41,7 @@ def get_long_description():
+       install_requires = [
+           'blessings>=1.5',
+           'wcwidth>=0.1.4',
+-          'typing',
++          'typing; python_version<"3.5"',
+       ],
+       tests_require = [
+           'mock',

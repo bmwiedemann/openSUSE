@@ -1,0 +1,133 @@
+--- Makefile.Linux
++++ Makefile.Linux
+@@ -0,0 +1,3 @@
++extract:
++	tar xIfp ../libsx-2.03.tar.bz2
++
+--- libsx-2.03/libsx_defs
++++ libsx-2.03/libsx_defs
+@@ -44,7 +44,7 @@
+ #  CFLAGS = -O3 -D_POSIX_SOURCE
+ #
+ # On Linux, use CC=cc, RANLIB=ranlib, and:
+-CFLAGS = -Wall -O2 -D_POSIX_SOURCE
++CFLAGS = -Wall -O2 -D_POSIX_SOURCE $(RPM_OPT_FLAGS)
+ #  
+ # On a Motorola Delta/88K box, you can use (with gcc):
+ #  CFLAGS = -O2 -DSYSV -DUSG -DMOTOROLA -DMOTOR32V2
+--- libsx-2.03/src/Makefile
++++ libsx-2.03/src/Makefile
+@@ -9,9 +9,9 @@
+ #
+ include ../libsx_defs
+ 
+-LIBDIR=/usr/X11/lib
+-INCLUDEDIR=/usr/X11/include/X11/SX
+-SHAREDIR=/usr/share/libsx
++LIBDIR=/usr/lib
++INCLUDEDIR=/usr/include/X11/SX
++SHAREDIR=/usr/share/libsx
+ 
+ CC=gcc
+ 
+@@ -89,12 +89,12 @@
+ callbacks.o : libsx.h callbacks.c
+ 
+ install:
+-	mkdirhier $(LIBDIR)
+-	cp -f libsx.a libsx.so $(LIBDIR)
+-	mkdirhier $(INCLUDEDIR)
+-	cp -f libsx.h $(INCLUDEDIR)
+-	mkdirhier $(SHAREDIR)
+-	cp -f dialogs/dialogs* $(SHAREDIR)
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	cp -f libsx.a libsx.so $(DESTDIR)$(LIBDIR)
++	mkdir -p $(DESTDIR)$(INCLUDEDIR)
++	cp -f libsx.h $(DESTDIR)$(INCLUDEDIR)
++	mkdir -p $(DESTDIR)$(SHAREDIR)
++	cp -f dialogs/dialogs* $(DESTDIR)$(SHAREDIR)
+ 
+ clean:
+ 	rm -f *.o *~ dialogs/*~ core libsx.a libsx.so
+--- src/Makefile
++++ src/Makefile
+@@ -1,24 +1,26 @@
+-BIN_DIR = /usr/games/bin
++BIN_DIR = /usr/bin
+ CC = gcc
+ #CFLAGS = -Wall -g
+-CFLAGS = -Wall -O2
++CFLAGS = -I../libsx-2.03/src -Wall -O2 $(RPM_OPT_FLAGS)
+ LDFLAGS = -lm
+ 
+ # XLIBS = -L/usr/X11R6/lib -lsx -lXt -lXpm -lXaw -lX11
+ # XLIBS = -L/usr/X11R6/lib -lsx -lXt -lXpm -lXaw3d -lX11
+-XLIBS = -L/usr/X11R6/lib -lsx -lXt -lXpm -lXaw95 -lX11
++X11_LIBDIR = /usr/lib
++XLIBS = -L../libsx-2.03/src -L$(X11_LIBDIR) -lsx -lXt -lXpm -lXaw3d -lX11
+ 
+ all: xstereograph
+ 
+ xstereograph:   help.h xstereograph.c
+-	echo "#define SISDIR \"`cd .. ; pwd`\"" > config.h
+-	$(CC) $(XLIBS) $(LDFLAGS) xstereograph.c -o xstereograph
++	echo "#define SISDIR \"/usr/share/xstereograph\"" > config.h
++	$(CC) $(CFLAGS) $(XLIBS) $(LDFLAGS) xstereograph.c -o xstereograph
+ 
+ clean:
+ 	rm -f config.h *.o *~ core xstereograph 
+ 
+ install:
+-	install -c -s xstereograph $(BIN_DIR)
++	mkdir -p $(DESTDIR)$(BIN_DIR)
++	install -c xstereograph $(DESTDIR)$(BIN_DIR)
+ 
+ 
+ 
+--- src/xstereograph.c
++++ src/xstereograph.c
+@@ -6,7 +6,7 @@
+ #include <dirent.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+-#include <X11/SX/libsx.h>
++#include <libsx.h>
+ 
+ #include "pixmaps.h"
+ #include "config.h"
+@@ -20,7 +20,7 @@
+                        " -vb -ms red -cr green -fn 10x20 -e microemacs"; */
+ char editor_cmd[256] = "emacs -geometry 80x32 -bg lightyellow "
+                        "-ms red -cr green -fn 9x15";
+-char img_viewer_cmd[256] = "xv -owncmap";
++char img_viewer_cmd[256] = "display";
+ char stereograph_cmd[256] = "stereograph -w 95 -A -f ppm";
+ char pager_cmd[256] = "xless -geometry 80x36 -fn 9x15";
+ 
+--- stereograph-0.28a/Makefile
++++ stereograph-0.28a/Makefile
+@@ -11,8 +11,8 @@
+ 
+ # Linux
+ CC  = gcc
+-CFLAGS = -Wall -O2 -Dlinux
+-LDFLAGS = -lm /usr/lib/libpng.so /usr/lib/libz.so
++CFLAGS = -Wall -O2 -Dlinux $(RPM_OPT_FLAGS)
++LDFLAGS = -lm -lpng -lz
+ 
+ # HPUX
+ #CC = cc
+--- stereograph-0.28a/Makefile.in
++++ stereograph-0.28a/Makefile.in
+@@ -14,7 +14,10 @@
+ 
+ 
+ install:
+-	cp stereograph /usr/local/bin/stereograph
++	mkdir -p $(DESTDIR)/usr/bin
++	mkdir -p $(DESTDIR)/usr/share/man/man1/
++	cp stereograph $(DESTDIR)/usr/bin/stereograph
++	cp stereograph.1 $(DESTDIR)/usr/share/man/man1/
+ 
+ clean:
+ 	rm -f $(OBJ0) stereograph core

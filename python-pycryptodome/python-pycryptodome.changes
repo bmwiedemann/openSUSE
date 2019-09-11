@@ -1,0 +1,285 @@
+-------------------------------------------------------------------
+Thu May 30 15:03:25 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update Source to point to github.
+
+-------------------------------------------------------------------
+Thu May 30 11:47:57 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+  - Update to 3.8.2
+    * GH#291: fix strict aliasing problem, emerged with GCC 9.1.
+
+-------------------------------------------------------------------
+Fri May 24 11:36:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+-  Use -fno-strict-aliasing in order to bypass:
+   https://github.com/Legrandin/pycryptodome/issues/291.
+
+-------------------------------------------------------------------
+Tue May 14 13:03:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.8.1
+  * Add support for loading PEM files encrypted with AES192-CBC, 
+    AES256-CBC, and AES256-GCM.
+  * When importing ECC keys, ignore EC PARAMS section that was 
+    included by some openssl commands.
+  * repr() did not work for ECC.EccKey.
+  * Minimal length for Blowfish cipher is 32 bits, not 40 bits.
+  3.8.0
+  * Speed-up ECC performance. ECDSA is 33 times faster on the 
+    NIST P-256 curve.
+  * Added support for NIST P-384 and P-521 curves.
+  * EccKey has new methods size_in_bits() and size_in_bytes().
+  * Support HMAC-SHA224, HMAC-SHA256, HMAC-SHA384, and HMAC-SHA512 
+    in PBE2/PBKDF2.
+  * DER objects were not rejected if their length field had 
+    a leading zero.
+  * Allow legacy RC2 ciphers to have 40-bit keys.
+  * point_at_infinity() becomes an instance method for 
+    Crypto.PublicKey.ECC.EccKey, from a static one.
+  3.7.3
+  * GH#258: False positive on PSS signatures when externally 
+    provided salt is too long.
+
+-------------------------------------------------------------------
+Wed Jan  9 21:55:51 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Protect older platforms from encountering "Suggests:" keyword
+
+-------------------------------------------------------------------
+Thu Nov 29 16:41:53 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.7.2
+  - Resolved issues
+    * GH#242: Fixed compilation problem on ARM platforms.
+
+- Update to 3.7.1
+  - New features
+    * Added type stubs to enable static type checking with mypy.
+      Thanks to Michael Nix.
+    * New ``update_after_digest`` flag for CMAC.
+
+  - Resolved issues
+    * GH#232: Fixed problem with gcc 4.x when compiling
+      ``ghash_clmul.c``.
+    * GH#238: Incorrect digest value produced by CMAC after cloning
+      the object.
+    * Method ``update()`` of an EAX cipher object was returning the
+      underlying CMAC object, instead of the EAX object itself.
+    * Method ``update()`` of a CMAC object was not throwing an
+      exception after the digest was computed (with ``digest()`` or
+      ``verify()``).
+
+-------------------------------------------------------------------
+Thu Nov 29 16:34:47 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- checked in python-pycrytodomex as separate package on request of
+  Dirk Müller
+
+-------------------------------------------------------------------
+Sun Nov 25 10:54:15 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fixed source url
+
+-------------------------------------------------------------------
+Thu Nov  1 10:42:04 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.7.0
+  - New features
+    * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
+      for key derivation).
+    * Added support for ChaCha20-Poly1305 AEAD cipher.
+    * New parameter output for Crypto.Util.strxor.strxor, 
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in 
+      symmetric ciphers (Crypto.Cipher package). output is a 
+      pre-allocated buffer (a bytearray or a writeable memoryview) 
+      where the result must be stored. This requires less memory for 
+      very large payloads; it is also more efficient when encrypting 
+      (or decrypting) several small payloads.
+
+  - Resolved issues
+    * GH#266: AES-GCM hangs when processing more than 4GB at a time
+      on x86 with PCLMULQDQ instruction.
+
+  - Breaks in compatibility
+    * Drop support for Python 3.3.
+    * Remove Crypto.Util.py3compat.unhexlify and
+      Crypto.Util.py3compat.hexlify.
+    * With the old Python 2.6, use only ctypes (and not cffi) to
+      interface to native code.
+
+- Clean up spec
+- pycryptodomex package spec added
+-------------------------------------------------------------------
+Fri Oct 19 13:02:22 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- remove pycryptodomex copy in this package container
+
+-------------------------------------------------------------------
+Mon Sep  3 14:21:25 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.6.6
+  - Resolved issues:
+    * Fix vulnerability on AESNI ECB with payloads smaller than 
+      16 bytes.
+
+- Update to 3.5.5
+  - Resolved issues
+
+    * Fixed incorrect AES encryption/decryption with AES 
+      acceleration on x86 due to gcc’s optimization and strict 
+      aliasing rules.
+    * More prime number candidates than necessary where discarded 
+      as composite due to the limited way D values were searched 
+      in the Lucas test.
+    * Fixed ResouceWarnings and DeprecationWarnings.
+
+- Update to 3.5.4
+  - New features:
+    * Build Python 3.7 wheels on Linux, Windows and Mac.
+  - Resolved issues:
+    * More meaningful exceptions in case of mismatch in IV length 
+      (CBC/OFB/CFB modes).
+
+-------------------------------------------------------------------
+Tue Jul  3 10:17:10 UTC 2018 - hpj@urpla.net
+
+- Update to 3.6.3 (21 June 2018)
+  - Resolved issues
+    * GH#175: Fixed incorrect results for CTR encryption/decryption
+      with more than 8 blocks.
+
+- Update to 3.6.2 (19 June 2018)
+  - New features
+    * ChaCha20 accepts 96 bit nonces (in addition to 64 bit nonces)
+      as defined in RFC7539.
+    * Accelerate AES-GCM on x86 using PCLMULQDQ instruction.
+    * Accelerate AES-ECB and AES-CTR on x86 by pipelining AESNI
+      instructions.
+    * As result of the two improvements above, on x86 (Broadwell):
+      - AES-ECB and AES-CTR are 3x faster
+      - AES-GCM is 9x faster
+
+  - Resolved issues
+    * On Windows, MPIR library was stilled pulled in if renamed to
+      ``gmp.dll``.
+
+  - Breaks in compatibility
+    * In ``Crypto.Util.number``, functions ``floor_div`` and
+      ``exact_div`` have been removed. Also, ``ceil_div`` is limited
+      to non-negative terms only.
+
+- suggesting libgmp10 and python-cffi
+- add license file tag
+
+-------------------------------------------------------------------
+Wed May 16 12:26:23 UTC 2018 - tchvatal@suse.com
+
+- Provide/obsolete also python-crypto for py2 package
+
+-------------------------------------------------------------------
+Mon May  7 20:17:35 UTC 2018 - hpj@urpla.net
+
+- fix condition to act as drop in replacement for python-pycrypto
+
+-------------------------------------------------------------------
+Fri May  4 18:29:29 UTC 2018 - hpj@urpla.net
+
+- Update to 3.6.1 (15 April 2018)
+  - New features
+    * Added Google Wycheproof tests (https://github.com/google/wycheproof)
+      for RSA, DSA, ECDSA, GCM, SIV, EAX, CMAC.
+    * New parameter ``mac_len`` (length of MAC tag) for CMAC.
+  - Resolved issues
+    * In certain circumstances (at counter wrapping, which happens on average after
+      32 GBi) AES GCM produced wrong ciphertexts.
+    * Method ``encrypt()`` of AES SIV cipher could be still called,
+      whereas only ``encrypt_and_digest()`` should be allowed.
+
+- Update to 3.6.0 (8 April 2018)
+  - New features
+    * Introduced ``export_key`` and deprecated ``exportKey`` for DSA and RSA key
+      objects.
+    * Ciphers and hash functions accept ``memoryview`` objects in input.
+    * Added support for SHA-512/224 and SHA-512/256.
+  - Resolved issues
+    * Reintroduced `Crypto.__version__` variable as in PyCrypto.
+    * Fixed compilation problem with MinGW.
+
+- Update to 3.5.1 (8 March 2018)
+  - Resolved issues
+    * GH#142. Fix mismatch with declaration and definition of addmul128.
+
+- Update to 3.5.0 (7 March 2018)
+  - New features
+    * Import and export of ECC curves in compressed form.
+    * The initial counter for a cipher in CTR mode can be a byte string
+      (in addition to an integer).
+    * Faster PBKDF2 for HMAC-based PRFs (at least 20x for short passwords,
+      more for longer passwords). Thanks to Christian Heimes for pointing
+      out the implementation was under-optimized.
+    * The salt for PBKDF2 can be either a string or bytes (GH#67).
+    * Ciphers and hash functions accept data as `bytearray`, not just
+      binary strings.
+    * The old SHA-1 and MD5 hash functions are available even when Python's
+      own `hashlib` does not include them.
+  - Resolved issues
+    * Without libgmp, modular exponentiation (since v3.4.8) crashed
+      on 32-bit big-endian systems.
+  - Breaks in compatibility
+    * Removed support for Python < 2.6.
+
+- Update to 3.4.12 (5 February 2018)
+  - Resolved issues
+    * GH#129. pycryptodomex could only be installed via wheels.
+
+- Update to 3.4.11 (5 February 2018)
+  - Resolved issues
+    * GH#121. the record list was still not correct due to PEP3147
+      and __pycache__ directories. Thanks again to John O'Brien.
+
+- Update to 3.4.10 (2 February 2018)
+  - Resolved issues
+    * When creating ElGamal keys, the generator wasn't a square residue:
+      ElGamal encryption done with those keys cannot be secure under
+      the DDH assumption. Thanks to Weikeng Chen.
+
+- Update to 3.4.9 (1 February 2018)
+  - New features
+    * More meaningful error messages while importing an ECC key.
+  - Resolved issues
+    * GH#123 and #125. The SSE2 command line switch was not always passed on
+      32-bit x86 platforms.
+    * GH#121. The record list (--record) was not always correctly filled for
+      the pycryptodomex package. Thanks to John W. O'Brien.
+
+- Update to 3.4.8 (27 January 2018)
+  - New features
+    * Added a native extension in pure C for modular exponentiation, optimized
+      for SSE2 on x86.
+      In the process, we drop support for the arbitrary arithmetic library MPIR
+      on Windows, which is painful to compile and deploy.
+      The custom  modular exponentiation is 130% (160%) slower on an Intel CPU
+      in 32-bit (64-bit) mode, compared to MPIR. Still, that is much faster
+      that CPython's own `pow()` function which is 900% (855%) slower than MPIR.
+      Support for the GMP library on Unix remains.
+    * Added support for *manylinux* wheels.
+    * Support for Python 3.7.
+  - Resolved issues
+    * The DSA parameter 'p' prime was created with 255 bits cleared
+      (but still with the correct strength).
+    * GH#106. Not all docs were included in the tar ball.
+      Thanks to Christopher Hoskin.
+    * GH#109. ECDSA verification failed for DER encoded signatures.
+      Thanks to Alastair Houghton.
+    * Human-friendly messages for padding errors with ECB and CBC.
+
+-------------------------------------------------------------------
+Mon Sep 18 15:29:37 UTC 2017 - hpj@urpla.net
+
+- provide python-crypto 2.6.1
+
+-------------------------------------------------------------------
+Wed Sep  6 15:22:27 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

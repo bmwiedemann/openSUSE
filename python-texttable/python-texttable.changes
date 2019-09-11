@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Jul 22 12:41:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.2:
+  * Fix auto-formatting NaN
+
+-------------------------------------------------------------------
+Fri Feb 15 12:46:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to 1.6.1
+  * Packaging fixes only
+
+-------------------------------------------------------------------
+Fri Feb 15 01:35:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to 1.6.0
+  * Added texttable.pyi 
+  * Added missing set_header_align method stub
+  * Allow chaining of method calls
+  * Replace distutils with setuptools
+  * Create a method for redefining the max_width 
+  * Switch to MIT License
+  * Use wcwidth if available for better rendering (basic emoji support)
+  * Update README.md 
+
+-------------------------------------------------------------------
+Fri Jul 20 11:36:41 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.4.0:
+  * Add set_header_align() method (#45)
+  * Fix missing textwrapper command when cjkwrap is not used (#43)
+  * Remove redundant code for unsupported/EOL Python (#31)
+  * Use test_cjkwrap only when cjkwrap is available (#35)
+  * Use cjkwrap for better CJK text support (#34)
+- Enable tests
+
+-------------------------------------------------------------------
+Thu Dec  7 13:10:46 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 1.1.1, no upstream changelog available
+
+-------------------------------------------------------------------
+Tue Aug 18 09:06:05 UTC 2015 - jmassaguerpla@suse.com
+
+- fix license to LGPL-3.0+ as in LICENSE file 
+
+-------------------------------------------------------------------
+Thu Apr  9 16:11:51 UTC 2015 - fcastelli@suse.com
+
+- Updated to version 0.8.3
+
+-------------------------------------------------------------------
+Thu Aug 14 19:43:03 UTC 2014 - fcastelli@suse.com
+
+- Initial package for version 0.8.1
+

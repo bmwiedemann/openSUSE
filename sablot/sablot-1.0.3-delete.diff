@@ -1,0 +1,11 @@
+--- src/engine/base.cpp
++++ src/engine/base.cpp
+@@ -398,7 +398,7 @@
+   result = isValidNCName(start) && (local == NULL || isValidNCName(local));
+ 
+   //if (colon) *colon = ':';
+-  if (copy) delete start;
++  if (copy) delete[] start;
+   return result;
+ }
+ 

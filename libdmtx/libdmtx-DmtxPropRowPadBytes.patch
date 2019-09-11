@@ -1,0 +1,52 @@
+diff --git a/dmtxencode.c b/dmtxencode.c
+index bb810bf..ee0497c 100644
+--- a/dmtxencode.c
++++ b/dmtxencode.c
+@@ -167,7 +167,7 @@ extern DmtxPassFail
+ dmtxEncodeDataMatrix(DmtxEncode *enc, int inputSize, unsigned char *inputString)
+ {
+    int sizeIdx;
+-   int width, height, bitsPerPixel;
++   int width, height, bitsPerPixel, rowSizeBytes;
+    unsigned char *pxl;
+    DmtxByte outputStorage[4096];
+    DmtxByteList output = dmtxByteListBuild(outputStorage, sizeof(outputStorage));
+@@ -212,8 +212,12 @@ dmtxEncodeDataMatrix(DmtxEncode *enc, int inputSize, unsigned char *inputString)
+       return DmtxFail;
+    assert(bitsPerPixel % 8 == 0);
+ 
++   rowSizeBytes = width * (bitsPerPixel/8);
++   /* Align to next multiple of enc->rowPadBytes */
++   if(enc->rowPadBytes > 0)
++     rowSizeBytes = (((rowSizeBytes + enc->rowPadBytes - 1) / enc->rowPadBytes ) * enc->rowPadBytes );
+    /* Allocate memory for the image to be generated */
+-   pxl = (unsigned char *)malloc(width * height * (bitsPerPixel/8) + enc->rowPadBytes);
++   pxl = (unsigned char *)malloc(height * rowSizeBytes);
+    if(pxl == NULL) {
+       perror("pixel malloc error");
+       return DmtxFail;
+diff --git a/dmtximage.c b/dmtximage.c
+index bb1b9cf..a944e81 100644
+--- a/dmtximage.c
++++ b/dmtximage.c
+@@ -79,7 +79,7 @@ dmtxImageCreate(unsigned char *pxl, int width, int height, int pack)
+    img->bitsPerPixel = GetBitsPerPixel(pack);
+    img->bytesPerPixel = img->bitsPerPixel/8;
+    img->rowPadBytes = 0;
+-   img->rowSizeBytes = img->width * img->bytesPerPixel + img->rowPadBytes;
++   img->rowSizeBytes = img->width * img->bytesPerPixel;
+    img->imageFlip = DmtxFlipNone;
+ 
+    /* Leave channelStart[] and bitsPerChannel[] with zeros from calloc */
+@@ -195,7 +195,10 @@ dmtxImageSetProp(DmtxImage *img, int prop, int value)
+    switch(prop) {
+       case DmtxPropRowPadBytes:
+          img->rowPadBytes = value;
+-         img->rowSizeBytes = img->width * (img->bitsPerPixel/8) + img->rowPadBytes;
++         img->rowSizeBytes = img->width * (img->bitsPerPixel/8);
++         /* Align to next multiple of img->rowPadBytes */
++         if(img->rowPadBytes > 0)
++           img->rowSizeBytes = (((img->rowSizeBytes + img->rowPadBytes - 1) / img->rowPadBytes ) * img->rowPadBytes);
+          break;
+       case DmtxPropImageFlip:
+          img->imageFlip = value;

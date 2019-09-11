@@ -1,0 +1,340 @@
+From 1524b7cc7b8e6e18cc1575118e87ea464d6ae494 Mon Sep 17 00:00:00 2001
+From: Charles Lindsay <chaz@chazomatic.us>
+Date: Fri, 8 Jul 2016 21:38:59 -0700
+Subject: [PATCH] Upgrade to Lua 5.3
+
+It's been out for a while, might as well keep current.
+
+The C code is pretty easy--unsigneds just become integers, no big whoop.
+The lua code is a little trickier since every math operation has to
+(gets to?) take the new integer type into account.  I think I got it all
+ok, might've even gotten a little pedantic in there... but if this isn't
+the place for pedantry, what is?
+---
+ configure.ac               |  6 +++---
+ l3/l3.c                    |  2 +-
+ l3/level.c                 | 18 +++++++++---------
+ l3/sync.c                  |  2 +-
+ res/base/bot.lua           |  8 ++++----
+ res/base/entities/bomn.lua |  4 ++--
+ res/base/entities/dude.lua |  8 ++++----
+ res/base/generate.lua      | 22 +++++++++++-----------
+ res/base/sprites/blast.lua |  4 ++--
+ 9 files changed, 37 insertions(+), 37 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1833c5b..941d132 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,9 +18,9 @@ PKG_CHECK_MODULES([SDL], [
+ 	SDL2_image >= 2.0.0
+ 	SDL2_ttf >= 2.0.12
+ ])
+-PKG_CHECK_MODULES([LUA], [lua5.2 >= 5.2.0], [], dnl Linux package name
+-	[PKG_CHECK_MODULES([LUA], [lua-5.2 >= 5.2.0], [], dnl BSD
+-	[PKG_CHECK_MODULES([LUA], [lua >= 5.2.0])] dnl OpenSUSE (et al.?)
++PKG_CHECK_MODULES([LUA], [lua5.3 >= 5.3.0], [], dnl Linux package name
++	[PKG_CHECK_MODULES([LUA], [lua-5.3 >= 5.3.0], [], dnl BSD
++	[PKG_CHECK_MODULES([LUA], [lua >= 5.3.0])] dnl OpenSUSE (et al.?)
+ )])
+ AC_CHECK_HEADERS([argp.h], [],
+ 	[AC_MSG_ERROR([cannot find required header argp.h])]
+diff --git a/l3/l3.c b/l3/l3.c
+index e540f09..9392b48 100644
+--- a/l3/l3.c
++++ b/l3/l3.c
+@@ -128,7 +128,7 @@ static void set_tile_images(lua_State *restrict l) {
+         b3_fatal("Missing global table %s", L3_TILE_IMAGES_NAME);
+ 
+     for(int i = 0; i < B3_TILE_COUNT; i++) {
+-        lua_pushunsigned(l, (lua_Unsigned)i);
++        lua_pushinteger(l, (lua_Integer)i);
+         lua_gettable(l, -2);
+ 
+         b3_image **p_image = luaL_testudata(l, -1, IMAGE_METATABLE);
+diff --git a/l3/level.c b/l3/level.c
+index f566237..4f0ae97 100644
+--- a/l3/level.c
++++ b/l3/level.c
+@@ -40,7 +40,7 @@ l3_level *push_new_level(lua_State *restrict l) {
+ 
+ static int level_new(lua_State *restrict l) {
+     b3_size size = check_size(l, 1);
+-    int max_entities = luaL_checkint(l, 2);
++    int max_entities = (int)luaL_checkinteger(l, 2);
+ 
+     l3_level *level = push_new_level(l);
+ 
+@@ -84,14 +84,14 @@ static int level_get_tile(lua_State *restrict l) {
+     l3_level *level = check_level(l, 1);
+     b3_pos pos = check_map_pos(l, 2, level->map);
+ 
+-    lua_pushunsigned(l, (lua_Unsigned)b3_get_map_tile(level->map, &pos));
++    lua_pushinteger(l, (lua_Integer)b3_get_map_tile(level->map, &pos));
+     return 1;
+ }
+ 
+ static int level_set_tile(lua_State *restrict l) {
+     l3_level *level = check_level(l, 1);
+     b3_pos pos = check_map_pos(l, 2, level->map);
+-    b3_tile tile = (b3_tile)luaL_checkunsigned(l, 3);
++    b3_tile tile = (b3_tile)luaL_checkinteger(l, 3);
+ 
+     b3_set_map_tile(level->map, &pos, tile);
+ 
+@@ -231,7 +231,7 @@ static int sprentity_set_image(lua_State *restrict l) {
+ // Works on either "sprites" or entities.
+ static int sprentity_set_z_order(lua_State *restrict l) {
+     b3_entity *entity = check_sprentity(l, 1);
+-    int z_order = luaL_checkint(l, 2);
++    int z_order = (int)luaL_checkinteger(l, 2);
+ 
+     b3_set_entity_z_order(entity, z_order);
+ 
+@@ -263,7 +263,7 @@ static int level_new_entity(lua_State *restrict l) {
+ 
+ static int level_get_entity(lua_State *restrict l) {
+     l3_level *level = check_level(l, 1);
+-    b3_entity_id id = (b3_entity_id)luaL_checkunsigned(l, 2);
++    b3_entity_id id = (b3_entity_id)luaL_checkinteger(l, 2);
+ 
+     b3_entity *entity = b3_get_entity(level->entities, id);
+     if(entity) {
+@@ -279,14 +279,14 @@ static int level_get_entity(lua_State *restrict l) {
+ 
+ static int level_set_dude(lua_State *restrict l) {
+     l3_level *level = check_level(l, 1);
+-    int i = luaL_checkint(l, 2) - 1;
++    int i = (int)luaL_checkinteger(l, 2) - 1;
+     luaL_argcheck(
+         l,
+         i >= 0 && i < L3_DUDE_COUNT,
+         2,
+         "dude index out of bounds"
+     );
+-    b3_entity_id id = (b3_entity_id)luaL_checkunsigned(l, 3);
++    b3_entity_id id = (b3_entity_id)luaL_checkinteger(l, 3);
+ 
+     level->dude_ids[i] = id;
+ 
+@@ -298,7 +298,7 @@ static int entity_get_id(lua_State *restrict l) {
+     b3_entity *entity = check_entity(l, 1);
+ 
+     b3_entity_id id = b3_get_entity_id(entity);
+-    lua_pushunsigned(l, (lua_Unsigned)id);
++    lua_pushinteger(l, (lua_Integer)id);
+     return 1;
+ }
+ 
+@@ -328,7 +328,7 @@ static int entity_get_life(lua_State *restrict l) {
+ 
+ static int entity_set_life(lua_State *restrict l) {
+     b3_entity *entity = check_entity(l, 1);
+-    int life = luaL_checkint(l, 2);
++    int life = (int)luaL_checkinteger(l, 2);
+ 
+     b3_set_entity_life(entity, life);
+ 
+diff --git a/l3/sync.c b/l3/sync.c
+index ed0cd08..6e470a4 100644
+--- a/l3/sync.c
++++ b/l3/sync.c
+@@ -130,7 +130,7 @@ void l3_sync_deleted(b3_entity_id ids[], int count) {
+     lua_createtable(lua, count, 0);
+     for(int i = 0; i < count; i++) {
+         lua_pushinteger(lua, (lua_Integer)(i + 1));
+-        lua_pushunsigned(lua, (lua_Unsigned)ids[i]);
++        lua_pushinteger(lua, (lua_Integer)ids[i]);
+         lua_settable(lua, -3);
+     }
+ 
+diff --git a/res/base/bot.lua b/res/base/bot.lua
+index d873c54..e0c8b59 100644
+--- a/res/base/bot.lua
++++ b/res/base/bot.lua
+@@ -36,7 +36,7 @@ end
+ function Bot:co_start(elapsed)
+   -- Wait just a tick (beyond what's already elapsed, which we ignore) to be a
+   -- little more human at the start.
+-  self:co_wait(self.action_time + math.random(0, 5) / 10)
++  self:co_wait(self.action_time + math.random(0, 5) / 10.0)
+ 
+   while true do
+     self:co_rethink()
+@@ -55,7 +55,7 @@ function Bot:co_rethink(danger)
+ end
+ 
+ function Bot:do_until(act, done)
+-  local elapsed = 0
++  local elapsed = 0.0
+   while not done(elapsed) do
+     elapsed = elapsed + act()
+   end
+@@ -229,7 +229,7 @@ function Bot:co_run_away(danger)
+   -- TODO: omit paths (unless it's the only one) that go through a dude.
+ 
+   local function interrupt(elapsed)
+-    return elapsed > 3
++    return elapsed > 3.0
+   end
+ 
+   if #safe == 0 then
+@@ -252,7 +252,7 @@ function Bot:co_hunt()
+   end
+ 
+   local function interrupt(elapsed)
+-    return elapsed > 1 or self:get_danger()
++    return elapsed > 1.0 or self:get_danger()
+   end
+ 
+   if not target then
+diff --git a/res/base/entities/bomn.lua b/res/base/entities/bomn.lua
+index 9ac571d..270a48f 100644
+--- a/res/base/entities/bomn.lua
++++ b/res/base/entities/bomn.lua
+@@ -29,7 +29,7 @@ local serial = require("serial")
+ local Blast = require("sprites.blast")
+ 
+ 
+-Bomn.TIME = 3
++Bomn.TIME = 3.0
+ Bomn.RADIUS = 8
+ 
+ Bomn.ANIMATION = nil
+@@ -149,7 +149,7 @@ end
+ 
+ function Bomn:l3_update(backing, elapsed)
+   self.time = self.time - elapsed
+-  if self.time <= 0 then
++  if self.time <= 0.0 then
+     self:explode(backing)
+     return
+   end
+diff --git a/res/base/entities/dude.lua b/res/base/entities/dude.lua
+index c016701..9ad5d43 100644
+--- a/res/base/entities/dude.lua
++++ b/res/base/entities/dude.lua
+@@ -29,7 +29,7 @@ local Entities = require("entities")
+ local Bot = require("bot")
+ 
+ 
+-Dude.SUPER_TIME = 10
++Dude.SUPER_TIME = 10.0
+ Dude.BUMP_DAMAGE = 1
+ Dude.BLAST_DAMAGE = 5
+ 
+@@ -83,7 +83,7 @@ function Dude:set_visual(backing)
+ end
+ 
+ function Dude:is_super()
+-  return self.super_time > 0
++  return self.super_time > 0.0
+ end
+ 
+ function Dude:can_fire()
+@@ -98,7 +98,7 @@ function Dude:superify(backing)
+ end
+ 
+ function Dude:unsuperify(backing)
+-  self.super_time = 0
++  self.super_time = 0.0
+ 
+   -- If we ever call unsuperify before the time is actually out, we'll also
+   -- need a self:set_dirty(backing) call here.
+@@ -169,7 +169,7 @@ function Dude:l3_update(backing, elapsed)
+ 
+   if self:is_super() then
+     self.super_time = self.super_time - elapsed
+-    if self.super_time <= 0 then
++    if self.super_time <= 0.0 then
+       self:unsuperify(backing)
+     end
+   end
+diff --git a/res/base/generate.lua b/res/base/generate.lua
+index df5f68c..0100bbb 100644
+--- a/res/base/generate.lua
++++ b/res/base/generate.lua
+@@ -56,16 +56,16 @@ end
+ 
+ function Generator:set_spawns()
+   local quads = {
+-    core.Pos(MAP_SIZE.width / 2, MAP_SIZE.height / 2),
++    core.Pos(MAP_SIZE.width // 2, MAP_SIZE.height // 2),
+     core.Pos(0, 0),
+-    core.Pos(MAP_SIZE.width / 2, 0),
+-    core.Pos(0, MAP_SIZE.height / 2),
++    core.Pos(MAP_SIZE.width // 2, 0),
++    core.Pos(0, MAP_SIZE.height // 2),
+   }
+ 
+   for i, q in ipairs(quads) do
+     self.spawns[i] = core.Pos(
+-      math.random(q.x + 2, q.x + MAP_SIZE.width  / 2 - 2),
+-      math.random(q.y + 2, q.y + MAP_SIZE.height / 2 - 2)
++      math.random(q.x + 2, q.x + MAP_SIZE.width  // 2 - 2),
++      math.random(q.y + 2, q.y + MAP_SIZE.height // 2 - 2)
+     )
+   end
+ end
+@@ -79,8 +79,8 @@ end
+ 
+ function Generator:add_walls()
+   local fourth = core.Size(
+-    math.floor(MAP_SIZE.width  / 4),
+-    math.floor(MAP_SIZE.height / 4)
++    math.floor(MAP_SIZE.width  // 4),
++    math.floor(MAP_SIZE.height // 4)
+   )
+   local pos = {
+     core.Pos(fourth.width, fourth.height),
+@@ -111,7 +111,7 @@ function Generator:add_walls()
+   for _, p in ipairs(pos) do
+     wall_grid(p)
+   end
+-  wall_grid(core.Pos(MAP_SIZE.width / 2, MAP_SIZE.height / 2))
++  wall_grid(core.Pos(MAP_SIZE.width // 2, MAP_SIZE.height // 2))
+ end
+ 
+ function Generator:fill_space()
+@@ -139,8 +139,8 @@ function Generator:spawn_crates()
+   local function bisect(a, b)
+     -- Rounded up or down at random.
+     return core.Pos(
+-      math.floor((a.x + b.x) / 2 + 0.5 * math.random(0, 1)),
+-      math.floor((a.y + b.y) / 2 + 0.5 * math.random(0, 1))
++      math.floor((a.x + b.x) / 2.0 + 0.5 * math.random(0, 1)),
++      math.floor((a.y + b.y) / 2.0 + 0.5 * math.random(0, 1))
+     )
+   end
+ 
+@@ -163,7 +163,7 @@ function Generator:spawn_crates()
+     return true
+   end
+ 
+-  local center = core.Pos(MAP_SIZE.width / 2, MAP_SIZE.height / 2)
++  local center = core.Pos(MAP_SIZE.width // 2, MAP_SIZE.height // 2)
+ 
+   span_dir = core.Pos(0, 1)
+   util.line(center, bisect(self.spawns[1], self.spawns[3]), crates)
+diff --git a/res/base/sprites/blast.lua b/res/base/sprites/blast.lua
+index e8196ad..019f918 100644
+--- a/res/base/sprites/blast.lua
++++ b/res/base/sprites/blast.lua
+@@ -27,7 +27,7 @@ local core = require("core")
+ local util = require("util")
+ 
+ 
+-Blast.TIME = 1
++Blast.TIME = 1.0
+ 
+ function Blast:init_animation()
+   self.animation = {}
+@@ -63,7 +63,7 @@ end
+ 
+ function Blast:l3_update(backing, elapsed)
+   self.time = self.time - elapsed
+-  if self.time <= 0 then
++  if self.time <= 0.0 then
+     self:destroy(backing)
+     return
+   end

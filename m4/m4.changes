@@ -1,0 +1,560 @@
+-------------------------------------------------------------------
+Wed Aug  1 13:58:30 UTC 2018 - schwab@suse.de
+
+- gnulib-libio.patch: adjust gnulib for libio.h removal
+- Use %license for COPYING
+
+-------------------------------------------------------------------
+Thu Oct 19 06:26:27 UTC 2017 - jayvdb@gmail.com
+
+- Explicitly remove %{_infodir}/dir before creating package to
+  allow builds on RHEL and derived Linux distributions
+- Enable configure option --disable-dependency-tracking to
+  allow build on Mageia
+- Add xz as BuildRequires to unpack source on SLE 11
+
+-------------------------------------------------------------------
+Thu Feb  9 12:37:26 UTC 2017 - dimstar@opensuse.org
+
+- Fix de-registration of the info files.
+
+-------------------------------------------------------------------
+Thu Jan  5 14:28:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4.18:
+  * Diagnose --word-regexp as unsupported if it was not configured.
+  * Preliminary support for OS/2.
+  * A number of portability improvements inherited from gnulib.
+- Some packaging changes:
+  * Use https url's
+  * Get keyring from savannah
+  * Use xs compressed files
+  * Make building more verbose
+
+-------------------------------------------------------------------
+Sat Oct  3 06:41:27 UTC 2015 - mpluskal@suse.com
+
+- Update info handling from postun to preun
+
+-------------------------------------------------------------------
+Mon Mar  2 20:37:45 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Add prerequires for info pages
+
+-------------------------------------------------------------------
+Wed Nov 13 18:39:38 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to version 1.4.17:
+  * Fix compilation with newer glibc headers.
+  * Fix a failure with diverting large amounts of text on mingw
+    (does not affect platforms that can rename an open file).
+  * A number of portability improvements inherited from gnulib.
+- remove m4-stdio.in.patch, merged by upstream
+
+-------------------------------------------------------------------
+Tue Jul  9 07:40:14 UTC 2013 - schwab@suse.de
+
+- Override broken configure checks
+
+-------------------------------------------------------------------
+Tue Jul 17 19:07:25 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Wed May 30 21:00:37 UTC 2012 - sweet_f_a@gmx.de
+
+- remove useless automake dependency
+
+-------------------------------------------------------------------
+Thu Dec  1 11:22:53 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep 19 15:14:23 UTC 2011 - coolo@suse.com
+
+- remove fragile _service file
+
+-------------------------------------------------------------------
+Wed Mar  9 13:27:00 UTC 2011 - coolo@novell.com
+
+- Update to version 1.4.16:
+ * Fix regressions in the `index' builtin.  On glibc platforms, this
+   avoids false positives from a strstr bug in glibc 2.9 through 2.12;
+   on many other platforms, it fixes two separate regressions, a false
+   positive introduced in 1.4.11 and a false negative in 1.4.15.
+
+ * A number of portability improvements inherited from gnulib.
+
+-------------------------------------------------------------------
+Sun Sep 19 09:28:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.4.15:
+  + Fix regression introduced in 1.4.9b where the `format' builtin
+    could crash on an invalid format string.
+  + Fix compilation against newer glibc, and on AIX 7.1BETA.
+  + A number of portability improvements inherited from gnulib.
+- Changes from version 1.4.14:
+  + Fix regression introduced in 1.4.12 where executing with stdout
+    closed could crash m4 on exit on some platforms.
+  + Fix regressions introduced in 1.4.13 in the `esyscmd' builtin,
+    where closed file descriptors could interfere with child
+    execution, and where a child status of 127 made m4 print a
+    spurious message to stderr.
+  + Fix a security hole in 'make dist', present since at least M4
+    1.4, that could affect anybody attempting to redistribute
+    modified sources (see Automake CVE-2009-4029).
+  + A number of portability improvements inherited from gnulib.
+- Remove hacks from prep changing permissions: they're not needed
+  anymore.
+- Remove lzma BuildRequires as the source is bz2 now.
+- Remove AutoReqProv: it's default now.
+- Use %configure and %makeinstall macros.
+- Drop m4-1.4.13.diff: it doesn't seem to be needed (some parts are
+  upstream, at least), and it's not documented at all, so let's try
+  without it.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Nov 15 10:34:56 CET 2009 - meissner@suse.de
+
+- refreshed patches with fuzz=0
+
+-------------------------------------------------------------------
+Wed May 20 18:24:57 CEST 2009 - puzel@suse.cz
+
+- Update to m4 1.4.13 
+  ** The manual is now distributed under the terms of FDL 1.3.
+  ** The `divert' and `undivert' builtins have been made more efficient
+     when using temporary files for large diversions.
+  ** The `translit' builtin has been made more efficient when the second
+     argument is short.
+  ** The input engine has been optimized for faster processing.
+  ** The command line option `--debugfile', introduced in 1.4.7, now
+     treats its argument as optional, in order to allow setting the debug
+     output back to stderr when used without an argument; and order is now
+     significant with respect to command line files.  You must therefore use
+     `m4 --debugfile=trace file', not `m4 file --debugfile trace'.  This
+     change does not affect the deprecated `-o'/`--error-output' option.
+  ** The `syscmd' and `esyscmd' builtins can be configured to use an
+     alternate shell, via the new `configure' option `--with-syscmd-shell'.
+  ** A number of portability improvements inherited from gnulib.
+
+-------------------------------------------------------------------
+Sat Oct 11 21:08:03 CEST 2008 - schwab@suse.de
+
+- Update to m4 1.4.12.
+  ** Fix regression introduced in 1.4.4b where using `traceon' could delete
+     a macro.  This was most noticeable with `traceon(`traceon')', but
+     would also happen in cases such as `foo(traceon(`foo'))'.
+  ** Fix regression introduced in 1.4.7 where `m4 -N9' died with an assertion
+     failure.
+  ** Fix regression introduced in 1.4.11 where `defn' died with an assertion
+     failure on a traced but undefined macro.
+  ** New `-g'/`--gnu' command-line option overrides `-G'/`--traditional'.
+     For now, the environment variable POSIXLY_CORRECT has no effect on M4
+     behavior; but a future release of M4 will behave as though --traditional
+     is implied if POSIXLY_CORRECT is set (this future change is necessary,
+     because in the current release, there is no way to disable GNU
+     extensions that conflict with POSIX without the use of a non-POSIX
+     command-line argument).  Clients of M4 that want to use GNU extensions,
+     even when POSIXLY_CORRECT is set, should start using the -g command-line
+     argument, even though it is currently a no-op if -G did not appear
+     earlier in the command line, so that the client will not break in the
+     face of an upgraded m4 and a POSIXLY_CORRECT execution environment.
+  ** The `-L'/`--nesting-limit' command-line option now defaults to 0 for
+     unlimited on platforms that can detect and deal with stack overflow.  On
+     systems that lack alternate stack support, such as Cygwin, and on
+     systems that do not obey the POSIX semantics for distinguishing stack
+     overflow from other exceptions, such as Linux, you can optionally
+     install the libsigsegv library (version 2.6 or newer recommended) to
+     enhance m4's ability to accurately report stack overflow:
+     http://www.gnu.org/software/libsigsegv/
+  ** A number of portability improvements inherited from gnulib.
+
+-------------------------------------------------------------------
+Tue Oct  7 15:50:03 CEST 2008 - lrupp@suse.de
+
+- disable build check for now
+
+-------------------------------------------------------------------
+Wed Oct  1 14:31:29 CEST 2008 - schwab@suse.de
+
+- Update to head of branch-1.4.
+
+-------------------------------------------------------------------
+Mon Jun 23 19:19:01 CEST 2008 - dmueller@suse.de
+
+- documentation shouldn't be executable
+
+-------------------------------------------------------------------
+Thu Apr  3 10:32:47 CEST 2008 - schwab@suse.de
+
+- Update to m4 1.4.11.
+  ** Security fixes for the -F option, for bugs present since -F was
+     introduced in 1.3: Avoid core dump with 'm4 -F file -t undefined', and
+     avoid arbitrary code execution with certain file names.
+  ** Fix regression introduced in 1.4.9b in the `divert' builtin when more
+     than 512 kibibytes are saved in diversions on platforms like NetBSD
+     or darwin where fopen(name,"a+") seeks to the end of the file.
+  ** The output of the `maketemp' and `mkstemp' builtins is now quoted if a
+     file was created.  This is a minor security fix, because it was possible
+     (although rather unlikely) that an unquoted string could match an
+     existing macro name, such that use of the `mkstemp' output would trigger
+     inadvertent macro expansion and operate on the wrong file name.
+  ** Enhance the `defn' builtin to support concatenation of multiple text
+     arguments, as required by POSIX.  However, at this time, it is not
+     possible to concatenate a builtin macro with anything else; a warning is
+     now issued if this is attempted, although a future version of M4 may
+     lift this restriction to match other implementations.
+  ** Enhance the `format' builtin to parse all C99 floating point numbers,
+     even on platforms where strtod(3) is buggy, although the replacement
+     function does have the known issue of rounding errors when parsing
+     some decimal floating point values.  This fixes testsuite failures
+     introduced in 1.4.9b.
+  ** Enhance the `index' builtin to guarantee linear behavior, in spite of
+     the surprisingly large number of systems with a brain-dead quadratic
+     strstr(3).
+  ** A number of portability improvements inherited from gnulib.
+
+-------------------------------------------------------------------
+Mon Nov 26 13:24:51 CET 2007 - schwab@suse.de
+
+- Remove broken tests.
+
+-------------------------------------------------------------------
+Tue Jul 10 13:55:30 CEST 2007 - schwab@suse.de
+
+- Update to m4 1.4.10.
+  * Upgrade from GPL version 2 to GPL version 3 or later.
+  * A number of portability improvements inherited from gnulib.
+  * Avoid undefined behavior introduced in 1.4.9b in the `format' builtin
+    when handling %c.  However, this area of code has never been documented,
+    and currently does not match the POSIX behavior of printf(1), so it may
+    have further changes in the next version.
+
+-------------------------------------------------------------------
+Fri Mar 23 23:31:50 CET 2007 - schwab@suse.de
+
+- Update to m4 1.4.9.
+  * Minor documentation and portability cleanups.
+
+-------------------------------------------------------------------
+Mon Dec  4 11:13:03 CET 2006 - schwab@suse.de
+
+- Update to m4 1.4.8.
+  * The `divert' macro and `-H'/`--hashsize' command line option no longer
+    cause a core dump when handed extra large values.  Also, `divert' now
+    uses memory proportional to the number of diversions in use, rather than
+    to the maximum diversion number encountered, so that large diversion
+    numbers are less likely to exhaust system memory; and is no longer
+    limited by the maximum number of file descriptors.
+  * The `--help' and `--version' command line options now consistently
+    override all earlier options.  For example, `m4 --debugfile=trace
+    --help' now no longer accidentally creates an empty file `trace'.
+  * The `-L'/`--nesting-limit' command line option can now be set to 0
+    to remove the default limit of 1024.  However, it is still possible that
+    heavily nested input can cause abrupt program termination due to stack
+    overflow.
+  * Problems encountered when writing to standard error, such as with the
+    `errprint' macro, now always cause a non-zero exit status.
+  * Warnings and errors issued during macro expansion are now consistently
+    reported at the line where the macro name was detected, rather than
+    where the close parenthesis resides.  Text wrapped by `m4wrap' now
+    remembers the location that was in effect when m4wrap was invoked,
+    rather than changing to line 0 and the empty string for a file.  The
+    macros `__line__' and `__file__' now work correctly even as the last
+    token in an included file.
+  * The `builtin' and `indir' macros now transparently handle builtin
+    tokens generated by `defn'.
+  * When diversions created by the `divert' macro collect enough text that
+    M4 must use temporary files, the environment variable $TMPDIR is now
+    consulted, and a better effort is made to clean up those files in the
+    event of a fatal signal.
+  * The `mkstemp' builtin is added with the same GNU semantics as `maketemp',
+    based on the recommendation of POSIX to deprecate the POSIX semantics of
+    `maketemp' as inherently insecure.  In GNU mode (no -G supplied on the
+    command line), `maketemp' silently retains the secure GNU semantics, but
+    a future release of M4 will change this to emit a warning.  In
+    traditional mode (m4 -G), `maketemp' now uses the POSIX-mandated insecure
+    semantics, and issues a warning that you should convert your script to
+    use `mkstemp' instead.  Additionally, `mkstemp' and `maketemp' are now
+    well-defined even if the template argument does not end in six `X'
+    characters.
+  * The manual has been improved, including a new section on a composite
+    macro `foreach'.
+  * The `changecom' and `changequote' macros now treat an empty second
+    argument the same as if it were missing, rather than using the empty
+    string and making it impossible to end a comment or quote.
+  * The `translit' macro now operates in linear instead of quadratic time,
+    and is now eight-bit clean.
+  * The `-D', `-U', `-s', and `-t' command line options now take effect
+    after any files encountered earlier on the command line, rather than up
+    front, as is done in traditional implementations and required by POSIX.
+
+-------------------------------------------------------------------
+Mon Sep 25 15:39:25 CEST 2006 - schwab@suse.de
+
+- Update to m4 1.4.6.
+  * Fix regression from 1.4.5 in handling a file that ends in a macro
+    expansion without arguments instead of a newline.
+  * The define and pushdef macros now warn when the first argument is not
+    a string, rather than silently doing nothing.
+  * Standard input can now be read more than once, as in 'm4 - file -', and
+    is not closed until all wrapped text is handled.  This makes a
+    difference when stdin is not a regular file, and also fixes bugs when
+    using the syscmd or esyscmd macros from wrapped text.
+  * When standard input is a seekable file, the m4exit, syscmd, and esyscmd
+    macros now restore the current position to the next unread byte rather
+    than discarding an arbitrary amount of buffered data.
+  * SysV command-line compatibility is no longer a goal of GNU M4; the
+    focus will be instead on POSIX compatibility.  This release continues to
+    support previous usage, but adds warnings in areas which will allow a
+    future version of GNU M4 to use its own extensions without being tied to
+    the SysV command line interface.
+  * The no-op compatibility command line options -B, -N, -S, -T, and
+    --diversions may be withdrawn or assigned new meanings in future
+    releases, so they now issue a warning if used.
+  * A new command line option -i replaces the compatibility -e as the
+    short spelling of --interactive, for consistency with other GNU tools; a
+    warning is issued if the old spelling is used, and it may be assigned new
+    meaning in future releases.
+  * A new command line option --debugfile replaces the options -o and
+    --error-output as the preferred spelling.  The old options were
+    misleading in their names and inconsistent with other GNU tools; they are
+    still silently accepted, but no longer documented in --help, and may be
+    assigned new meanings in future releases.
+
+-------------------------------------------------------------------
+Sat Aug 26 09:20:43 CEST 2006 - schwab@suse.de
+
+- Update to m4 1.4.6.
+  * Fix buffer overruns in regexp and patsubst macros when handed a trailing
+    backslash in the replacement text, or when handling \n substitutions
+    beyond the number of \(\) groups.
+  * Fix memory leak in regexp, patsubst, and changeword macros.
+  * The format macro now understands %F, %g, and %G.
+  * When loading frozen files, m4 now exits with status 63 if version
+    mismatch is detected.
+  * Fix bugs that occurred when invoked with stdout or stderr closed,
+    and detect write failures to stdout or to the target of the
+    debugfile macro.  In particular, the syscmd and esyscmd macros can
+    no longer interfere with the debug stream or diversions.
+  * The m4exit macro now converts values outside the range 0-255 to 1.
+  * It is now an error if a command-line input file ends in the middle of a
+    comment, matching the behavior of mid-string and mid-argument
+    collection.
+  * The dnl macro now warns if end of file is encountered instead of a
+    newline.
+  * The error message when end of file is encountered now uses the file and
+    line where the dangling construct started, rather than `NONE:0:'.
+  * The debugmode and __file__ macros, and the -s/--synclines option, now
+    show what directory a file was found in when the -I/--include option or
+    M4PATH variable had an effect.
+  * The changequote and changecom macros now work with 8-bit characters, and
+    quotes and comments that begin with `(' are properly recognized
+    following a word.
+  * The new macro __program__ is added, which allows the input file to issue
+    an error message that resembles messages from m4.  Warning and error
+    messages have been reformatted to comply with GNU Coding Standards.
+  * The errprint, m4wrap, and shift macros are now recognized only with
+    arguments.
+  * The index, substr, translit, regexp, and patsubst macros now produce
+    output when given only one argument, but still warn about a missing
+    second argument.
+  * The patsubst macro now reliably finds zero-length matches at the end
+    of a string.
+
+-------------------------------------------------------------------
+Mon Jul 17 13:30:00 CEST 2006 - schwab@suse.de
+
+- Update to m4 1.4.5.
+  * Fix sysval on BeOS, OS/2, and other systems that store exit status
+    in the low-order byte.  Additionally, on Unix platforms, if syscmd was
+    terminated by a signal, sysval now displays the signal number shifted
+    left by eight bits, to match traditional m4 implementations.
+  * The maketemp macro is no longer subject to platform limitations (such as
+    26 or 32 max files from a given template).
+  * Frozen files now require that the first directive be V (version), to
+    better diagnose version mismatch.  Additionally, if the F directive
+    (builtin function) names an unknown builtin that existed in the m4 that
+    froze the file but not in the current m4 (for example, changeword), the
+    warning is deferred until an attempt is made to actually use the
+    builtin.  This allows downgrading from beta m4-1.4o to stable m4-1.4.5
+    without breaking autoconf.
+  * The format and indir macros are now recognized only with arguments.
+  * The eval macro no longer crashes on x86 architectures when dividing the
+    minimum integer by -1.
+  * On systems with ecvt and fcvt, format no longer truncates trailing
+    zeroes on integers printed with %.0f.  On systems without these
+    functions, format is no longer subject to a buffer overflow that
+    permitted arbitrary code execution.
+  * On native Windows builds, the macro __windows__ is provided instead of
+    __unix__.  Likewise, on OS/2 builds, the macro __os2__ is provided.  This
+    allows input files to determine when syscmd might behave differently.
+  * Fix bug in 1.4.3 patch to use \n line-endings that did not work for
+    cygwin.
+  * When given the empty string or 0, undivert is now documented as a no-op
+    rather than closing stdout, warning about a non-existent file, or trying
+    to read a directory as a file.
+  * Many documentation improvements.  Also, the manual is now distributed
+    under FDL 1.2, rather than a stricter verbatim-only license.
+  * Raise the -L (--nesting-limit) command line option limit from 250 to
+    1024.
+  * The decr, incr, divert, m4exit, and substr macros treat an empty number
+    as 0, issue a warning, and expand as normal; rather than issuing an error
+    and expanding to the empty string.
+  * The eval macro now treats an empty radix argument as 10, handles radix 1,
+    and treats the width argument as number of digits excluding the sign,
+    for compatibility with other m4 implementations.
+  * The ifdef, divert, m4exit, substr, and translit macros now correctly
+    ignore extra arguments.
+  * The popdef and undefine macros now correctly accept multiple arguments.
+  * Although changeword is on its last leg, if enabled, it now reverts to the
+    default (faster) regexp when passed the empty string.
+  * The regexp and substr macros now warn and ignore a trailing backslash in
+    the replacement, and warn on \n for n larger than the number of
+    sub-expressions in the regexp.
+  * Fix a recursive push_string crashing bug, which affected changequote of
+    three or more characters on some compilers.
+  * Use automake to fix build portability issues.
+  * Fix a recursive m4wrap crashing bug.
+  * Fix a 1 in 2**32 hash crashing bug.
+  * Tracing a macro by name is now persistent, even if the macro is
+    subsequently undefined or redefined.  The traceon and traceoff macros no
+    longer warn about undefined symbols.  This solves a crash when using
+    indir on an undefined macro traced with the -t option, as well as an
+    incorrect result of ifdef.  Furthermore, tracing is no longer transferred
+    with builtins, solving the bug of "m4 -tm4_eval" failing to give trace
+    output on the input "define(`m4_eval',defn(`eval'))m4_eval(1)".
+  * Fix a crash when a macro is undefined while collecting its arguments, by
+    always using the definition that was in effect before argument
+    collection.  This behavior matches the C pre-processor, and means that
+    the sequence "define(`f',`1')f(define(`f',`2'))f" is now documented to
+    result in "12", rather than the previously undocumented "22".
+  * Update the regex engine to fix several bugs.
+  * Fix a potential crash on machines where char is signed.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 21 14:38:36 CEST 2005 - schwab@suse.de
+
+- Update to m4 1.4.4.
+
+-------------------------------------------------------------------
+Tue May 31 22:34:37 CEST 2005 - schwab@suse.de
+
+- Fix signedness issue when matching comment or quote characters.
+
+-------------------------------------------------------------------
+Thu Mar 31 17:58:01 CEST 2005 - schwab@suse.de
+
+- Update to m4 1.4.3.
+
+-------------------------------------------------------------------
+Sun Sep  5 17:10:11 CEST 2004 - schwab@suse.de
+
+- Speed up parsing by inlining out the common part of next_char().
+
+-------------------------------------------------------------------
+Sat Aug 21 15:53:39 CEST 2004 - schwab@suse.de
+
+- Update to m4 1.4.2.
+
+-------------------------------------------------------------------
+Mon Jun 14 22:07:39 CEST 2004 - schwab@suse.de
+
+- Update to m4 1.4.1.
+
+-------------------------------------------------------------------
+Thu Feb 19 10:31:35 CET 2004 - kukuk@suse.de
+
+- Cleanup neededforbuild
+
+-------------------------------------------------------------------
+Wed Jan  7 17:20:10 CET 2004 - schwab@suse.de
+
+- Fix quoting for autoconf.
+- Use newer version of the gettext macros.
+
+-------------------------------------------------------------------
+Tue May 13 12:03:05 CEST 2003 - schwab@suse.de
+
+- Add %defattr.
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:12:00 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:49:19 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Mon Nov 18 11:40:25 CET 2002 - schwab@suse.de
+
+- Remove mangling of LIBOBJS.
+- Don't clobber po/Makefile.
+- Clean up neededforbuild.
+- Use AM_GNU_GETTEXT_VERSION.
+- Fix some warnings from automake.
+
+-------------------------------------------------------------------
+Sat Mar 30 19:44:58 CET 2002 - schwab@suse.de
+
+- Fix for new autoconf.
+
+-------------------------------------------------------------------
+Wed Feb  6 10:19:01 CET 2002 - schwab@suse.de
+
+- Gettextize to work with new gettext.
+
+-------------------------------------------------------------------
+Thu Oct  4 10:44:09 CEST 2001 - schwab@suse.de
+
+- Fix for automake 1.5.
+
+-------------------------------------------------------------------
+Sat Jul 21 20:54:58 CEST 2001 - schwab@suse.de
+
+- Run autoconf in libltdl.
+- Fix libltdl/configure.in for autoconf 2.50+.
+
+-------------------------------------------------------------------
+Fri Jun  1 16:51:55 CEST 2001 - schwab@suse.de
+
+- Fix for new configure tools.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:51:02 CET 2001 - ro@suse.de
+
+- added split-aliases as provides
+
+-------------------------------------------------------------------
+Thu Mar  8 13:01:59 CET 2001 - schwab@suse.de
+
+- Don't use regex from libc5.
+
+-------------------------------------------------------------------
+Wed Mar  7 18:18:00 CET 2001 - schwab@suse.de
+
+- Split from base.
+

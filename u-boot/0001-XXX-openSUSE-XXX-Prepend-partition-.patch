@@ -1,0 +1,33 @@
+From 0d6f92cbd3c73b3ea3059c3be51723c6b38c22e8 Mon Sep 17 00:00:00 2001
+From: Guillaume GARDET <guillaume.gardet@free.fr>
+Date: Wed, 13 Apr 2016 13:44:29 +0200
+Subject: [PATCH] XXX openSUSE XXX: Prepend partition 2 (and 3 fo chromebook
+ snow) to list of boot partition to load DTB before EFI Also add new folders
+ to find DTB
+
+---
+ include/config_distro_bootcmd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index 4993303f4d..7a32bed91b 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -141,7 +141,7 @@
+ 		"load ${devtype} ${devnum}:${distro_bootpart} "           \
+ 			"${fdt_addr_r} ${prefix}${efi_fdtfile}\0"         \
+ 	\
+-	"efi_dtb_prefixes=/ /dtb/ /dtb/current/\0"                        \
++	"efi_dtb_prefixes=/ /dtb/ /dtb/current/ /boot/ /boot/dtb/ /boot/dtb/current/\0" \
+ 	"scan_dev_for_efi="                                               \
+ 		"setenv efi_fdtfile ${fdtfile}; "                         \
+ 		BOOTENV_EFI_SET_FDTFILE_FALLBACK                          \
+@@ -438,7 +438,7 @@
+ 	"scan_dev_for_boot_part="                                         \
+ 		"part list ${devtype} ${devnum} -bootable devplist; "     \
+ 		"env exists devplist || setenv devplist 1; "              \
+-		"for distro_bootpart in ${devplist}; do "                 \
++		"for distro_bootpart in 2 3 ${devplist}; do "             \
+ 			"if fstype ${devtype} "                           \
+ 					"${devnum}:${distro_bootpart} "   \
+ 					"bootfstype; then "               \

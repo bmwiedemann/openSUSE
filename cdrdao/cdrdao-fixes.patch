@@ -1,0 +1,10 @@
+--- paranoia/p_block.c
++++ paranoia/p_block.c
+@@ -111,6 +111,7 @@
+   }    
+ 
+   free_elem(c->e,1);
++  c->e = NULL;
+ }
+ 
+ static v_fragment *i_vfragment_constructor(void){

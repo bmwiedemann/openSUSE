@@ -1,0 +1,27 @@
+From 9eceadea72d667c89d578cb4bd3cb89fc0663e0c Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Wed, 30 Jan 2019 21:37:26 +0100
+Subject: [PATCH] Enable -fPIE / -pie
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d63a8c3..c670a6a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -507,8 +507,8 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_MINGW OR
+         add_definitions(-D_FORTIFY_SOURCE=2)
+ 
+         # Text address randomisation, disabled for now, seems to cause problems
+-        #    MACRO_TUNE_COMPILER("-fPIE")
+-        #    MACRO_TUNE_LINKER("-pie")
++            MACRO_TUNE_COMPILER("-fPIE")
++            MACRO_TUNE_LINKER("-pie")
+         # These do not work on Windows right now
+         if (NOT WIN32)
+             # Stack protector
+-- 
+2.16.4
+

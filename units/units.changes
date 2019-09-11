@@ -1,0 +1,356 @@
+-------------------------------------------------------------------
+Wed Jul 31 20:24:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.19:
+  * Unit definitions updated to reflect new 2019 revisions to SI
+    and the 2018 NIST CODATA.
+  * Added definitions of country and USA state areas, and physical
+    properties of selected woods.
+  * Changes only to definitions.units in this release.  
+
+-------------------------------------------------------------------
+Thu Oct 25 07:15:01 UTC 2018 - astieger@suse.com
+
+- units 2.18:
+  * The units_cur script now supports multiple currency sources
+  * Add hyperbolic functions: sinh, cosh, tanh, asinh, acosh, atanh
+  * Add log to arbitrary integer bases: log3, log4, log72, etc.
+  * Units can be redefined without a warning by adding '+' before
+    the unit name in definitions.units.  
+  * Add 'quit' and 'exit' commands.
+  * Add support for CGS electromagnetic units (activated using the
+    -u option or the UNITS_SYSTEM environment variable)
+  * Add !prompt command to add a prefix to the "You have:" prompt
+  * Texts specified with !message appear in the log file
+
+-------------------------------------------------------------------
+Wed Jun 27 11:34:25 UTC 2018 - astieger@suse.com
+
+- units 2.17:
+  * Updates to units database
+  * Update units_cur to handle bad records returned by yahoo server
+  * Move currency.units out of /usr/share because the file is not
+    static and /usr/share is supposed to house static files. 
+    The new location is $sharedstatedir which may be /var/lib 
+
+-------------------------------------------------------------------
+Wed Nov  1 13:53:59 UTC 2017 - astieger@suse.com
+
+- units 2.16:
+ * Fix missing USD currency code (update to units_cur and
+   definitions.units only).
+- includes changes from 2.15:
+  * The old timegenie service has vanished.  A new units_cur script
+    uses yahoo.com server. The new script works directly in Python 2
+    or Python 3 and no longer depends on unidecode.  
+  * Some currency definitions (e.g. currencies pegged to the euro)
+    have moved out of definitions.units into currency.units.
+  * Added bitcoin to currency.units
+  * Fixed a memory leak bug for invalid exponent operations
+
+-------------------------------------------------------------------
+Mon Apr  3 13:16:49 UTC 2017 - astieger@suse.com
+
+- units 2.14:
+  * Eliminated parser memory management limitation affecting long
+    input expressions (e.g. a sum of more than 100 units)
+  * Control characters are treated as white space rather than
+    producing an error about invalid UTF-8.
+
+-------------------------------------------------------------------
+Thu Jun 23 20:58:25 UTC 2016 - astieger@suse.com
+
+- units 2.13:
+  * Corrected error in heat of vaporization of water
+  * Fixed bug where single character unicode prefixes couldn't
+    combined with the second "s", so microsecond couldn't be
+    abbreviated.  
+  * Fixed bug where -H '' option would write history to ~/.history.
+  * Added -fpic compile option so that it is possible to compile to
+    a library
+
+-------------------------------------------------------------------
+Thu Oct 15 14:28:28 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.12
+  * Updated and revised units database, with constants now based 
+    on 2014 CODATA.
+  * Readline history is persistent and is saved to 
+    ~/.units_history, or to the file specified with --history (-H) 
+    option.
+  * Fixed bug where '_' didn't give last result after conversion 
+    to function.
+  * Fixed sporadic segmentation fault with --log.
+  * Comments allowed on interactive input with '#', most useful 
+    with logging.
+  * Added configure test for rl_completion_suppress_append, which 
+    helps compilation under MacOS.
+  * Comment processing happens before checking UTF-8 
+    validity---comments are allowed to contain bogus UTF-8.
+  * Changed units_cur to skip bogus precious metals data from 
+    timegenie and to skip currencies with no rate.
+- Cleanups spec file with spec-cleaner
+- Update usage of gpg signature
+- Move info scriplet to preun
+- Enable units_cur builiding by default
+
+-------------------------------------------------------------------
+Mon Apr  7 20:11:57 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU Units 2.11:
+  * Many long options didn't work
+  * units_cur wouldn't print to stdout
+
+-------------------------------------------------------------------
+Sat Mar 29 09:44:50 UTC 2014 - andreas.stieger@gmx.de
+
+- install documentation files, including COPYING
+
+-------------------------------------------------------------------
+Thu Mar 27 21:48:50 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU Units 2.10:
+  * Added '_' to represent the previous result.
+  * Added support for rational exponents with numerators larger
+    than 1 so you can do calculations like liter^2|3.  
+  * Added logging with --log (-L) option.  
+  * Fixed some unit definitions (R_infinity, planckmass), and added
+    R_K90 and K_J90 for the conventional values of the von Klitzing
+    and Josephson constants.  
+  * Don't use readline unless reading from a tty.
+  * Display of nonlinear unit definitions shows the range over which
+    the unit is defined and the required dimensions of the argument.  
+  * Unit completion with readline will now complete nonlinear units,
+    functions  (e.g. cuberoot), prefixes, and unit list aliases. It
+    will no longer insert a space after the completion.
+  * Running "units --version" returns success.
+  * Combining "--version" with "--terse" gives a terse version
+    output.
+  * Combining "--version" with "--verbose" or running with "--info"
+    gives a detailed output of how units was compiled and where its
+    supporting files are found.  
+  * A nonlinear unit can be defined equal to another nonlinear unit
+    using the syntax: "newfunc() oldfunc".
+  * Domain and range specified with nonlinear units can be open
+    intervals, indicated  by parentheses instead of brackets. 
+  * The "noerror" keyword on a nonlinear unit supresses error
+    checking with "units --check" for that unit.  
+  * Changes to units_cur to work with timegenie changes and to
+    support Python 3. 
+    The Python module unidecode is now required for units_cur.  
+  * The method for finding supporting files has changed when units
+    is compiled to be relocatable.
+  * Fix to compile with Bison 3.0.  
+  * Improved error messages for various cases.  
+  * Some simple icons are included.  
+- licence is GPL-3.0+
+- run minimal unit tests
+- spec file cleaning
+- note that make install fails with smp_flags
+- support optional build with units_cur for updating units
+  (requires python-Unidecode, not in Factory)
+
+-------------------------------------------------------------------
+Mon Sep  9 10:01:03 UTC 2013 - pgajdos@suse.com
+
+- updated to version 2.02:
+  * Added support for %a and %A output formats (hexadecimal floating point), and
+    eliminated the restriction on the number of displayed digits when specifying
+    an output format with the --output-format (-o) option.  Improved error
+    handling for formats specified with --output-format.
+  * Added --digits (-d) to specify the number of digits to display.  Giving
+    '--digits max' (-dmax) will use the full available precision.
+  * Added support for various Unicode minus sign symbols.  Units now treats the
+    figure dash (U+2012), the en dash (U+2013), and the minus (U+2212) as
+    identical to the ASCII hyphen/minus symbol (U+002D).
+  * The !message command in units data files has been fixed so it does not
+    produce output when the --quiet option is given.
+  * Improved error handling when unit names end with numbers without a '_'.
+  * Modified units_cur to work with XML format as the txt format disappeared.
+  * Corrected error in definition of the nat.
+  * Improved manual.
+- employ gpg-offline
+
+-------------------------------------------------------------------
+Thu Nov  1 08:26:21 UTC 2012 - pgajdos@suse.com
+
+- updated to version 2.01:
+    * Fixed error in electronmass
+    * New definition for au
+    * Fixed DESTDIR support for installation
+    * Changed configure script for success with Solaris
+    * Small changes to manual
+- removed build.patch
+
+-------------------------------------------------------------------
+Tue Aug  7 11:50:03 UTC 2012 - pgajdos@suse.com
+
+- updated to version 2.00:
+
+    General changes:
+    * Unit lists provide conversion to sums of units (e.g. feet and inches).
+    * Added --round (-r) and --show-factor (-S) options for use with unit lists.
+    * Added unit lists aliases (e.g. time, usvol).
+    * A python script, units_cur, can update currency data.
+    * Units now flushes its output so you can talk to it with a pipe. 
+    * Units now works in UTF-8 if the system supports it.  
+    * Added --locale (-l) option to set the locale.
+    * English units such as the gallon are defined in all locales, with US
+      definitions by default except in the en_BG locale.  You can force
+      the desired definition (Great Britain or US) by setting the
+      environment variable UNITS_ENGLISH to GB or US.  
+    * Revised and extended the documentation, with more examples. 
+    * Added locale mapping to address Windows locale names. 
+    * Updated and revised units database, including UTF-8 definitions and
+      the 2010 CODATA. 
+    * Fixed parsing bug for "1..2" or "1.2.3".  These now give an error. 
+    * Unit names can end with a number in the form of a subscript that
+      starts with a '_', as in 'X_3'.  
+
+    Changes for units definition files:
+    * Changed location and names of unit database, splitting off currency
+      Files are /usr/local/share/units/{definitions,currency}.units and
+      the personal units file is $HOME/.units instead of $HOME/units.dat.  
+    * Personal units filename can be changed with MYUNITSFILE environment variable.
+    * Prefixes can be defined in any order: it is no longer necessary to
+      define longer ones before shorter ones.  
+    * New definitions replace previous ones.  Personal units file is read
+      after the system file rather than before.  
+    * Changed syntax for function definitions.  Instead of [in-unit,out-unit] 
+      you must now write units=[in-unit,out-unit].  Use 'units -c' to find
+      places in your personal data files that need to be updated.  
+    * Add optional domain and range to function definitions with syntax
+      domain=[min,max] and range=[min,max].  Either min or max can be
+      omitted to signal infinity. 
+    * Unit list aliases can be defined with !unitlist command.
+    * Added !var and !varnot and !endvar to include definitions based on
+      environment variable settings.  
+    * Added !set to set environment variables (if they aren't already set).
+    * Added !message to display a message
+    * Data files are in UTF-8, with !utf8 and !endutf8 commands to mark
+      definitions that require UTF-8 support. 
+    * Improved error handling when reading units.dat.
+
+-------------------------------------------------------------------
+Thu Aug 26 11:58:19 CEST 2010 - pgajdos@suse.cz
+
+- Updated to version 1.88
+  * Updated units.dat
+  * Fixed bug involving readline version 4.2
+
+-------------------------------------------------------------------
+Wed Feb 13 15:46:28 CET 2008 - schwab@suse.de
+
+- Update to units 1.85.
+  * Units reads ~/.units.dat if it exists before reading the standard
+    units database.  
+  * Added support for ** as an exponent operator.
+  * Type 'search text' to list units that contain 'text' in their name.
+  * Precedence of '*' changed to match precedence of '/'.
+    (Multiplication by juxtaposition retains a higher precedence than
+    '/'.)  The --oldstar option selects the old precedence and --newstar
+    forces the new precedence.  
+
+-------------------------------------------------------------------
+Thu Mar 29 11:40:20 CEST 2007 - schwab@suse.de
+
+- Add bison to BuildRequires.
+
+-------------------------------------------------------------------
+Mon Dec  4 11:03:49 CET 2006 - schwab@suse.de
+
+- Update to units 1.85.
+  * Added --one-line (-1) option which causes the program to print only
+    one line of output. 
+  * Added --compact option which causes the program to print only the
+    conversion factors and a newline on output.
+  * Added build support for DESTDIR.
+  * Made minor changes that allow the program to be compiled into a
+    library and linked with other programs.
+  * Fixed bugs (including bus error on Intel Mac) and added 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun May 22 19:08:38 CEST 2005 - schwab@suse.de
+
+- Update to units 1.85.
+
+-------------------------------------------------------------------
+Thu Oct  7 16:00:40 CEST 2004 - schwab@suse.de
+
+- Update to units 1.80.
+
+-------------------------------------------------------------------
+Sat Sep 11 00:39:06 CEST 2004 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Sat Apr 17 11:19:00 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Fri Feb 27 18:16:06 CET 2004 - schwab@suse.de
+
+- Add %defattr.
+
+-------------------------------------------------------------------
+Thu Apr 17 14:41:31 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Jan 14 18:09:07 CET 2003 - nadvornik@suse.cz
+
+- fixed multi-line string literals
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Jun 13 15:07:09 CEST 2002 - uli@suse.de
+
+- update -> 1.74 (rewritten parser supports () for grouping,
+  supports noninteger powers of numbers (e.g. 3^0.25), supports a bunch of
+  functions (log, ln, log2, sin, cos, tan, exp) which can have units as
+  arguments but they must reduce to dimensionless (e.g.
+  log(watts/horsepower)), supports sqrt(unit) and cuberoot(unit), higher
+  roots as unit^(1|4); functions can be defined in units.dat along with
+  their inverse, and conversion to a function by specifying it's name alone
+  as the "want" item; tables with linear interpolation)
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Mon Sep 25 15:16:39 CEST 2000 - uli@suse.de
+
+- update -> 1.55
+
+-------------------------------------------------------------------
+Wed Mar  1 15:42:48 CET 2000 - schwab@suse.de
+
+- Specfile cleanup, remove Makefile.Linux
+- /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+
+- first version of units 1.53
+
+

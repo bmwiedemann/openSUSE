@@ -1,0 +1,1205 @@
+-------------------------------------------------------------------
+Mon Aug 12 16:30:50 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Revert "Add support for rendering jinja template as yaml"
+
+-------------------------------------------------------------------
+Thu Aug  1 12:15:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.0.0
+  * Fix typo in bitbucket\_scm discover-branch parameter
+  * Adding support for the cachet gating plugin
+  * Correct dependencies on tox linters
+  * Add support for rendering jinja template as yaml
+  * Add support for GH Custom Notification Context
+  * Add support for 'Micro Focus Application Automation Tools'
+  * Include support for jacoco source inclusion pattern
+  * Add 'skip-initial-build' to project multibranch
+  * OpenDev Migration Patch
+  * fix job-template call in include-raw-escaped fixtures
+  * remove support of old plugin config format
+  * Add \`Specs support\` for \`artifactory\_generic\` Add support of Artifactory Specs https://www.jfrog.com/confluence/display/RTF/Using+File+Specs
+  * Ignore view update if not specified
+
+-------------------------------------------------------------------
+Thu May 16 21:08:30 UTC 2019 - Stephen Ma <sma@suse.com>
+
+- Fixed the BuildRequires line for pbr: added a space after '>='. 
+
+-------------------------------------------------------------------
+Tue May 14 23:06:15 UTC 2019 - Jonathan Harker <jharker@suse.com>
+
+- update to 2.10.0
+  * Adds named branches to property strategy support
+  * Do not ignore global-settings-type in Maven module
+  * Adds github scm multibranch regex branch filte
+  * Adds match-script and groovy-sandbox to Lockable Resources Plugin properties
+  * Add 'publishers-from' to the publishers module
+  * Refactor jobfilters to separate file
+
+-------------------------------------------------------------------
+Mon Apr  8 11:30:44 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add 0001-Allow-pyyaml-5.patch
+  Needed for newer python-PyYAML versions
+
+-------------------------------------------------------------------
+Tue Feb  5 05:01:51 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.9.1:
+  * Fix default '0' being ignored
+  * Convert parameter default value to str
+  * Adds support for Property Strategies
+
+-------------------------------------------------------------------
+Fri Nov 30 09:08:28 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.8.0:
+  * Handle cancel-builds-on-update values from vars
+  * Remove random print
+  * Add support for All view-type
+  * Add missing 'release' stage for Nexus IQ
+  * Adds support for Disable GitHub Multibranch Status
+  * Add 'secret-token' parameter to gitlab trigger
+  * Add 'publish-over-cifs' to the builders module
+  * docker-pull-image: Pull Docker image from Docker Hub/Registry
+  * jclouds: Utilize convert\_mapping\_to\_xml
+  * Fix flake8 failures and make its execution more consistent
+  * Add .venv to .gitignore
+  * Add support for the "Gitlab Logo Plugin"
+  * Adds option to specify secret id for github
+  * Fix build-result trigger jobs list in examples
+  * Add support for the "Disk Usage" plugin
+  * Fix 'block-level' Build Blocker Plugin Property
+  * Make jjb-tox-cross-python-jenkins job voting
+  * Add update option to the JJB config sample
+  * docker-custom-build-env: Add support for new options
+  * docker-container: Improve support for more options
+  * gitlab-merge-request: Add support for 2.x
+  * email: Utilize convert\_mapping\_to\_xml
+  * Fix options.update is not 'all' if no config
+  * Add config options --jobs-only and --views-only
+  * Enable groovy sandbox for properties-inject
+  * Add support for docker-stop-container
+  * trig-param-build: Utilize convert\_mapping\_to\_xml
+  * hue-light: Add commas to mapping tuple
+  * jdepend: Add commas to mapping tuple
+  * Support SSHCheckout trait
+  * Extend multibranch pipeline project scm
+  * reporters: Import entire helpers library for usage
+  * docker-build-publish: Improve support for new options
+  * config-file-provider: Add tests
+  * cvs: Fix indentation
+  * Use upstream default for allNodesMatchingLabel
+  * Document practical use case for variable defaults
+  * copyartifact-build-selector: Utilize convert\_mapping\_to\_xml
+  * Add multibranch features
+  * credentials-binding: Add support for more options
+  * github-pull-request: Utilize convert\_mapping\_to\_xml
+  * pollurl: Utilize convert\_mapping\_to\_xml
+  * Add new checkboxes for Xcode plugin
+  * build-keeper: Add support for RunCondition
+  * vault-secrets: Utilize convert\_mapping\_to\_xml
+  * jclouds: Utilize convert\_mapping\_to\_xml
+  * copyartifact: Add support for new options
+  * artifactory-generic: Utilize convert\_mapping\_to\_xml
+- Drop 0001-Use-upstream-default-for-allNodesMatchingLabel.patch
+  Applied upstream
+
+-------------------------------------------------------------------
+Mon Sep 10 12:25:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Sep  7 12:34:09 UTC 2018 - dmueller@suse.com
+
+- add 0001-Use-upstream-default-for-allNodesMatchingLabel.patch
+
+-------------------------------------------------------------------
+Tue Sep  4 17:39:28 UTC 2018 - dmueller@suse.com
+
+- update to 2.3.0:
+  * Allow control of verbose option for publish-over plugins
+  * Allow running only on one of nodes with label parameter
+  * branch-api: Support skip-rate-limit param
+  * ansicolor: Enforce valid types
+  * build-blocker: Refactor to increase code quality
+  * Avoid extra XML elements in views
+  * ant: Refactor code to improve readability
+  * Views require case insensitive sorting
+  * Add matching parameter to throttle concurrent jobs
+  * ssh-agent-credentials: Support ignore-missing-credentials param
+  * Add support for "Invoke Nexus Policy Evaluation"
+  * Fix pipeline view-type should be pipeline
+  * [view\_list] Update helpers import to common style
+  * [pipeline] Update helpers import to common style
+  * [wrappers] Update helpers import to common style
+  * [scm] Update helpers import to common style
+  * [Triggers] Update helpers import to common style
+  * Fix typo in anchor test
+  * [Maven] Update helpers import to common style
+  * [Workflow] Update helpers import to common style
+  * Refactor parameters.py
+  * Refactor email-ext in publishers.py
+  * Add support for filtering by name in git source
+  * Fix typo in test docstring
+  * Allow dashes in variable key names
+  * Add support for few of Extra Columns plugin' extra columns for ListView generator
+  * Add support for Basic Branch Build Strategies Plugin
+  * Refactor hipchat\_notif.py
+  * Refactor notifications.py
+  * Refactor clone\_workspace function to use convert\_mapping\_to\_xml
+  * adopt pre-commit hooks
+  * Refactor builders.py
+  * Stable identifier for branch sources in multibranch job
+  * Add commas to all mapping tuples in properties.py
+  * Refactor ivy function in triggers.py to utilize convert\_mapping\_to\_xml
+  * Fix typo of function description in helpers.py
+  * Fix bug in Git 'skip-tag' backwards compatibility
+  * ghprb: blacklist-target-branches support
+  * Normalize newlines at end of file
+  * Symlink folders001.xml to deduplicate the test xml
+  * Add XUnit processing plugin to builders
+  * Adds wrapper for vault plugin
+  * Constrain PyYAML to v3.x
+  * multibranch-bitbucket: discover strategies
+  * multibranch-bitbucket regex for source branches
+  * Access priority sorter plugin info via short name
+  * Improve support for nodelabelparameter
+  * Refactor duplicated code in xml\_config.py
+  * multibranch-bitbucket: Configure server address
+  * multibranch: Configurable script-path
+  * Add publishers related to GitLab Plugin
+  * Allow jjb to be called as a module
+  * Revert "fix tox python3 overrides"
+  * fix tox python3 overrides
+  * upgrade hacking module
+  * Improve support for rvm plugin
+  * Add support for AccuRev as SCM Provider
+  * Improve unicode support
+  * Fix indent of git for scm
+  * Improve support for EnvInject plugin
+  * Add depth option to git shallow-clone
+  * Fix typo in robot-lists XML
+  * Add support for GraphView column to views
+  * Correct doc for deprecation version of git skip-tag
+  * Use convert\_mapping\_to\_xml helper function
+  * Add discover-tags to multibranch pipeline project
+  * Add trigger-from-child-projects option
+  * Handle generateParcelBuilderInputFile flag correctly
+  * Add support for Jenkins Sounds plugin
+  * Fix doc in logparser
+  * Change default on fail\_required parameter to True for convert xml
+  * Update BuildResultTrigger plugin
+  * Update hipchat example for new syntax
+  * Fixes delete-all command when no option is provided
+  * triggers: correct name of JMS Messaging Plugin
+  * Add retain\_anchors config option
+  * Handle string skip-vote parameters in gerrit trigger
+  * Make the deprecated plugin config messaging clearer
+  * Add groovy-script-file option to extended parameters
+  * adding extra properties to sonar publisher
+  * Fixes a bug in the multibranch project type
+  * add pipeline template using nested stage command
+  * Add support for policy-violations for view columns
+  * Fix default value regex pattern
+  * Improve support for Extended Choice Parameters
+  * Add support for setting file paths to trigger on
+  * Add support for new option in config\_file\_provider\_builder
+  * README: add mailing list and IRC details
+  * Deprecate running testjobs without config-xml flag
+  * Fix a typo in doc Fix correct link to CloudBees Folders Plugin Add missing comma in line 1290 of module wrappers
+  * bug/2002053 allow None for auth-token
+  * Fix dontWaitForConcurrentBuildCompletion option in s3 plugin
+  * Add XCode 9.1 Support
+  * Add support for Cloud Foundry plugin
+  * fixed config format for nodejs plugin
+  * Add Slack 2.2 new settings
+  * Use of OrderedDict allows hash seed != 0
+  * fixed spelling errors
+  * Update build\_blocker to make use of convert\_mapping\_to\_xml()
+  * Add support for aggregated test results
+  * Add support for unclassified job filters
+  * Add support for upstream downstream job filter
+  * Add support for user permissions job filter
+  * Add support for secured jobs filter
+  * Add support for scmtype job filters
+  * Add support for other views job filter
+  * Add support for parameter job filter
+  * Add support for job type filter
+  * Add support for regex job filters
+  * Add support for user relevance job filter
+  * Add support for build status Job Filter plugin
+  * Add support for fallback Job Filters
+  * Fix Parameter: Credentials Plugin docs example
+  * fix spelling errors
+  * Fix view parameters indent for sphinx
+  * Fix Postbuildscript Plugin Info Lookup
+  * Document use of | character for variable defaults
+  * conditional\_publisher: add support for Matrix Aggregation
+  * wrappers: fix XML node name for scrip-env's only-run-on-parent
+  * Add support for jira-changelog trigger
+  * gitlab trigger: add support for different MR events
+  * Add helper tag to join arbitrary lists into strings
+  * Add support for view-templates
+  * Sort views list jobs
+  * Include view url in logs when possible
+  * Sonar: Support sonar-scanner tag builder task (master)
+  * Add Gerrit SCM Support to MultiBranch project
+  * Delete old managed folders when calling update subcommand with --delete-old option
+  * Replace testr with stestr
+  * Add 'existing-only' argument for update subcommand
+  * Enable cross testing with python-jenkins
+  * Allows params to be specified via environment variables
+  * Added code for lightweight-checkout
+  * Reporters: fix 'perModuleEmail' support
+  * Add multibranch project-type
+  * Moved create directory log level to debug
+  * Add a "list" subcommand
+  * Capture XML output from test
+  * [Docs] Ensure commands are monospaced
+  * Add support for job status job filter
+  * Added main entry point
+  * Update release to make use of convert\_mapping\_to\_xml()
+  * Update artifact\_resolver to make use of convert\_mapping\_to\_xml()
+  * Update flowdock to use convert\_mapping\_to\_xml()
+  * Update dynamic\_scriptler\_param\_common to use convert\_xml()
+  * Maven project: allow to disable trigger downstream projects
+  * Update inject\_passwords to use convert\_xml()
+  * Fix duplicated actions field in XML for folders
+  * Update svn to make use of convert\_mapping\_to\_xml()
+  * Update monitor\_files to use convert\_xml()
+  * Add support for build trend Job Filter plugin
+  * Support First Unstable and Fixed Unhealthy trigger type
+  * Add tox to test-requirements.txt
+  * Add support for build duration Job Filter plugin
+  * Add support for {% include %} in Jinja2 templates
+  * Always deep format Jinja2 templates
+  * tox: enable multiple py3x versions
+  * Add !j2 directive to allow inline Jinja2 templates
+  * publishers: add Task Scanner Plugin support
+  * Support version 2.0 and greater of the Priority Sorter Plugin
+  * Add support for PostBuildScript 2.x
+  * Add support for plugin column views
+  * Add support for most recent job filters
+  * Add delay units to documentation
+  * Preserve template-name via escaping
+  * Update credentials\_binding to use convert\_xml()
+  * gerrit-trigger: avoid exception spamming logs
+  * hipchat\_notif: Fix compatibility dispatch
+  * tests/base: Use plugins\_info in SingleJobTestCase as well
+  * tests/base: Drop "is not None"
+  * docs: sphinx upgrade and warnings as erros
+  * Added option to print job names as urls
+  * Add views and jobs only options for update
+  * Improve test resiliency
+  * Fix view definition documentation
+  * Fix the formatter regex
+  * Allow template-name in the global defaults
+  * Fix: initialize builder['plugins\_info'] to None
+  * Update artifactory\_maven to make use of convert\_mapping\_to\_xml()
+  * bump python-jenkins version
+  * Tidy up config object
+  * Fix timeout wrapper version detection
+  * Generate universal wheels
+  * Fix: use False for default value of query\_plugins\_info
+  * Change file inclusion level from info to debug
+  * Add tests for inner macro expansion
+  * Revert "Move macro expansion into YamlParser."
+  * Add support for stash-pullrequest-builder plugin
+  * fixed depricated typo
+  * Add \`enhanced-logging\` for \`trigger-remote\`
+  * Prevent deprecation warning using test with stdin
+  * No warn on old plugin conf format not in use
+  * Add messages and categories ignores to warnings publisher
+  * Enable groovy-script includes for extended\_choice\_param
+  * Update xcode plugin to support 2.0
+  * Fix git-parameter sortMode values
+  * Add support for ghprb wrappers
+  * Fix documentation for nodejs builder
+  * re-raise the original Exception instead of raising a new one
+  * Add support for the Git Parameter Jenkins plugin
+  * Update svn-tag parameter to support all config
+  * Support all parameters in gitlab-merge-request
+  * Add NodeJS executor build step
+  * Update build\_result to use convert\_xml()
+  * Update tfs to use convert\_mapping\_to\_xml()
+  * Update class Flow to use convert\_mapping\_to\_xml()
+  * Update valgrind to use convert\_mapping\_to\_xml()
+  * Update conditional\_step to use convert\_xml()
+  * Add cloudbees folder creation support
+  * Basic folder support
+  * Add support for CloudBees Docker Hub Notification Plugin
+  * publishers: add args to gitlab publisher
+  * Update tox.ini to run voting tests by default
+  * Give an explicit error message when unsupported view type used
+  * Add default columns to list views
+  * Add Support for a list of additional-credentials in the SVN-plugin
+  * Add support for unstable return parameter for shell builders
+  * Missed Replay property of authorization matrix
+  * Switch param order from yaml conf to plugin specific
+  * Allow update to provide plugin\_info via yaml
+  * change assert(Not)Equals to assert(Not)Equal
+  * Default conditional-publisher to newest plugin format
+  * Default slack to newest plugin config format
+  * Default groovy-postbuild to newest plugin format
+  * Add support for jira\_issue\_updater
+  * Move macro expansion into YamlParser
+  * Migrate hipchat conf to new plugin style conf
+  * Update archive to use convert\_mapping\_to\_xml()
+  * Update openstack to use convert\_mapping\_to\_xml()
+  * Add support for jira\_comment\_trigger
+  * Add support for the Branch API Plugin
+  * Adds support for prefix-variable in version-number wrapper
+  * Update build\_keeper to use convert\_mapping\_to\_xml()
+  * Update cloudformation\_stack to use convert\_xml()
+  * Update cvs to use convert\_mapping\_to\_xml()
+  * Update class Pipeline to use convert\_mapping\_to\_xml()
+  * Document JJB 2.0 plugin config default behaviour
+  * ansible\_playbook: add support for DoNotSpecify inventory type
+  * use alphanum sorting for jobs and views
+  * Add !include-jinja2 for rendering templates with Jinja2
+  * Update extended\_choice\_param to use convert\_xml()
+  * Update Sphinx extlinks for new Jenkins domain name
+  * Update plot plugin
+  * Use default plugin list when listing Forbidden
+  * Default cmake config to newest plugin format
+  * Default artifactory-generic to newest plugin config format
+  * Default gitlab to newest plugin config format
+  * Fix typo in documentation to 'notify-back-to-normal'
+  * Update google\_cloud\_storage to use convert\_xml()
+  * Add support for new parameter option in Slack Plugin
+  * Update class List to use convert\_to\_xml()
+  * Update sauce\_ondemand to use convert\_xml()
+  * Update custom\_tools to use convert\_to\_xml()
+  * Updating slack publisher parameters
+  * Extend multijob build step with "execution-type" option
+  * Add support for the Jenkins Docker Plugin's.
+  * Update hg to use convert\_mapping\_to\_xml()
+  * Update build\_gerrit\_triggers to use convert\_xml()
+  * Update disable\_failed\_job to use convert\_xml()
+  * Update downstream\_ext to use convert\_xml()
+  * Update post\_tasks to use convert\_xml()
+  * Update class Workflow to use convert\_xml()
+  * Update http\_endpoint to use convert\_xml()
+  * Update class HipChat to use convert\_xml()
+  * Update trigger\_project to use convert\_mapping\_to\_xml()
+  * Fix workspace cleanup code
+  * Update store to make use of convert\_mapping\_to\_xml()
+  * Update docker\_custom\_build\_env to use convert\_xml()
+  * Update slave\_utilization use of convert\_mapping\_to\_xml()
+  * Update copy\_to\_slave to use convert\_mapping\_to\_xml()
+  * Update ShiningPanda Plugin to use convert\_mapping\_to\_xml()
+  * Update maven\_target to use convert\_mapping\_to\_xml()
+  * Update multijob to use convert\_mapping\_to\_xml()
+  * Update managed\_script to use convert\_mapping\_to\_xml()
+  * Update env\_script to use convert\_mapping\_to\_xml()
+  * Update workspace\_cleanup to use of convert\_xml()
+  * Update timeout to make use of convert\_mapping\_to\_xml()
+  * Update logstash to make use of convert\_mapping\_to\_xml()
+  * Update pre\_scm\_buildstep to use convert\_mapping\_to\_xml()
+  * Update \_groovy\_common\_scriptSource to use convert\_xml()
+  * Update bzr to make use of convert\_mapping\_to\_xml()
+  * Update trigger\_builds to use convert\_mapping\_to\_xml()
+  * Add integration with Allure Report plugin
+  * Update matrix\_tie\_parent to use convert\_xml()
+  * Update build\_name to use convert\_mapping\_to\_xml()
+  * Update matrix\_combinations\_param to use convert\_xml()
+  * Update violations to make use of convert\_mapping\_to\_xml()
+  * Update workspace to make use of convert\_mapping\_to\_xml()
+  * Update inject\_ownership\_variables to use convert\_xml()
+  * Update ansicolor to make use of convert\_mapping\_to\_xml()
+  * Update exclusion to make use of convert\_mapping\_to\_xml()
+  * Update nodejs\_installator to use convert\_xml()
+  * Update job\_log\_logger to use convert\_xml()
+  * Update android\_emulator to use convert\_xml()
+  * Update jms\_messaging to make use of convert\_mapping\_to\_xml()
+  * Update groovy\_script to make use of convert\_mapping\_to\_xml()
+  * Update script to make use of convert\_mapping\_to\_xml()
+  * Update parameterized\_timer to make use of convert\_mapping\_to\_xml()
+  * Update rabbitmq to make use of convert\_mapping\_to\_xml()
+  * Update zeromq\_event to make use of convert\_mapping\_to\_xml()
+  * Update url to make use of convert\_mapping\_to\_xml()
+  * Update sitemonitor plugin
+  * Update doxygen plugin
+  * Allow using lockfile per jenkins master
+  * Update aggregate\_tests to use convert\_mapping\_to\_xml()
+  * Update description\_setter plugin
+  * Update javadoc to use convert\_mapping\_to\_xml()
+  * Update shining\_panda to use convert\_mapping\_to\_xml()
+  * Update hipchat to use convert\_mapping\_to\_xml()
+  * Update dependency\_check plugin
+  * Update gatling to use convert\_mapping\_to\_xml()
+  * Update phabricator to make use of convert\_mapping\_to\_xml()
+  * Update stash plugin
+  * Update artifactory to use convert\_mapping\_to\_xml()
+  * Update aggregate\_flow\_tests to use convert\_mapping\_to\_xml()
+  * Update \_violations\_add\_entry to use convert\_mapping\_to\_xml()
+  * Update build\_publisher plugin
+  * Update campfire to use convert\_mapping\_to\_xml()
+  * Update copyartifact\_build\_selector\_param to use convert\_to\_xml()
+  * Update jclouds to use convert\_mapping\_to\_xml()
+  * Update git plugin test cases
+  * Update svn\_tags\_param to use convert\_mapping\_to\_xml()
+  * Update throttle to make use of convert\_mapping\_to\_xml()
+  * Update ftp to make use of convert\_mapping\_to\_xml()
+  * project matrix: rename variable/refactor
+  * Update trigger\_remote to make use of convert\_mapping\_to\_xml
+  * Update Ant Plugin to make use of convert\_mapping\_to\_xml()
+  * Update builders\_from to make use of convert\_mapping\_to\_xml()
+  * Complete support of Yaml Axis Plugin
+  * Update heavyjob to make use of convert\_mapping\_to\_xml()
+  * Update batch\_tasks to make use of convert\_mapping\_to\_xml()
+  * Update priority\_sorter to make use of convert\_mapping\_to\_xml()
+  * Update sidebar to make use of convert\_mapping\_to\_xml()
+  * Update description\_setter to make use of convert\_mapping\_to\_xml()
+  * Consolidate pipeline and trigger-parameterized-builds
+  * Update least\_load to make use of convert\_mapping\_to\_xml()
+  * Update builds\_chain\_fingerprinter to use convert\_xml()
+  * Update maven\_metadata\_param to make use of convert\_mapping\_to\_xml()
+  * Update validating\_string\_param to make use of convert\_mapping\_to\_xml()
+  * Update run\_param to make use of convert\_mapping\_to\_xml()
+  * Update xcode to make use of convert\_mapping\_to\_xml()
+  * Update docker\_build\_publish to make use of convert\_mapping\_to\_xml()
+  * Update ssh\_builder to make use of convert\_mapping\_to\_xml()
+  * Update tox to make use of convert\_mapping\_to\_xml()
+  * Update ircbot plugin
+  * Add support for chuck\_norris publisher
+  * Update system\_groovy to make use convert\_mapping\_to\_xml()
+  * Add \`do-not-fetch-tags\` to CloneOption for Git
+  * Update examples filename
+  * Update artifactory\_common\_details to make use of convert\_mapping\_to\_xml
+  * Update artifactory\_repository to make use of convert\_mapping\_to\_xml
+  * Update GitLab Plugin to make use of convert\_mapping\_to\_xml
+  * Builders: conditional-step fix
+  * Update Random String Parameter Plugin to use convert\_mapping\_to\_xml
+  * Update Tests Selector Plugin to use convert\_mapping\_to\_xml
+  * Add support for using multiple servers
+  * Add option to make test output file layout match Jenkins
+  * Add support for jms\_messaging builder and publisher
+  * Add new fields to Github pull request builder plugin
+  * Add support for new option in s3 plugin
+  * setup.cfg: use project homepage
+  * triggers: gitlab's wip-skip defaults to True
+  * Update EnvInject to make use of convert\_mapping\_to\_xml
+  * properly support private builds in the registry
+  * Documented default choice
+  * Fix !include parsing with variable
+  * scm: introduce parent-credentials for git submodules
+  * builders: do not pass empty "preload-script"
+  * Add support for jms\_messaging plugin as a trigger
+  * docker-build-publish: add registry + server support
+  * Wrapper pre-scm-buildstep: added support for failOnError parameter
+  * scm: handle "bitbucketweb" browser for mercurial
+  * Add note regarding a bug with !include-raw-escape
+  * Add support for 'Groovy Label Assignment Plugin'
+  * add two new options to Log Parser Plugin
+  * builders: fix docker-build-publish docstring link
+  * Removed some deprecation warnings and enabled py35 on tox
+  * Add the Slave Prerequisites properties plugin
+  * Add a publisher for MQTT
+  * Update JaCoCo plugin
+  * Enable options and use convert\_mapping\_to\_xml for groovy plugin
+  * Fixed serialization for 'branch-filter-type' of gitlab
+  * Use convert\_mapping\_to\_xml for CAV plugin
+  * Add case-sensitive arg to archive publisher
+  * Fix find top level of stack
+  * Added support for 'JUnit Attachments Plugin'
+  * Add Dimensions SCM support
+  * Typo fix
+  * Prevent creation of empty parameters for Repo
+  * Add Pipeline job type and deprecate Workflow
+  * Remove support for py33
+  * Reporters: fix typo and support 'perModuleEmail'
+  * Update Gradle plugin to use convert\_mapping\_to\_xml function
+  * Update text-finder plugin
+  * Add support for credentials job parameter type
+  * Update sloccount plugin
+  * Update warnings plugin
+  * Sync requirements with openstack/requirements
+  * Fix docs build issue
+  * Add support for Saltstack plugin builder
+  * Output additional info when exceptions occur
+  * Correct minor grammatical error
+  * Update robot plugin
+  * Update rich-text-publisher plugin
+  * Update workspace-cleanup plugin
+  * Fix plot publisher tests
+  * Enable and fix xml\_config tests
+  * Update the docstring of join plugin
+  * Ensure keep is an iterable
+  * Rename JenkinsManager tests
+  * Use standard python method naming for xml\_config methods
+  * Update jabber plugin
+  * Adds height and width support to the Plot Publisher
+  * Support default string values for variables
+  * Add convenience function for plugin namespace
+  * user's input should not be interpreted
+  * Update performance plugin
+  * Builders: Add ansible-playbook builder
+  * Update mailer plugin
+  * Update checkstyle plugin
+  * Update cucumber-testresult plugin
+  * Add view management functionality
+  * Update sonar plugin
+  * Update cifs plugin
+  * Remove trailing \ of base\_publish\_over function
+  * Update groovy-postbuild plugin
+  * Update copy-to-slave plugin
+  * Update cppcheck plugin
+  * corrected minor mispelling
+  * Update logparser plugin
+  * Adding nexus-artifact-uploader plugin
+  * Update fingerprint plugin
+  * Update email-ext plugin
+  * Remove dead tool jenkins-jobs.py
+  * Add support for the random string parameter
+  * properties: cover lockable-resources plugin
+  * Fix documentation about "allow-empty-results" parameter for junit publisher
+  * Fix confirm() util true state
+  * Update scp plugin
+  * Regression test for update command with --delete-old
+  * Use JJBConfig() class
+  * Add Workflow Project Documentation
+  * Add comment about proxy env pass through
+  * Update xunit plugin
+  * Convert multiline strings to concatenated single-quote
+  * Raise exception on unrecognized project type
+  * Improve logger output for expanding templates
+  * Refactor base test classes inheritance for reuse
+  * Simplify delete by removing unnecessary loop
+  * Update junit plugin
+  * Add support for Sonar wrapper
+  * Update cloverphp plugin
+  * Update clone-workspace plugin
+  * Move CacheStorage to its own module
+  * Add support for Parameterized Scheduler Plugin
+  * Add GitBucket plugin support
+  * Test stream no encoding bug
+  * Update build-discarder to use convert xml
+  * Update rebuild plugin to use convert xml
+  * Add display-name option to github plugin
+  * Update properties.slack to use convert xml
+  * Update TestNG to use valid\_dict property of convert xml
+  * Switch to import module instead of function in properties
+  * email-ext trigger script
+  * Add cancel-builds-on-update to GHPRB trigger
+  * Rename Builder.delete\_job to Builder.delete\_jobs
+  * Remove unused builder.Builder.update\_job method
+  * Be explicit about objects exported by modules
+  * Update xvfb to use convert xml
+  * Add support for FTP-Publisher plugin
+  * Cleanup various deprecation warnings
+  * Ensure logging enabled for CLI
+  * Fix disabled always returning true
+  * docker-build-publish: Add support for buildContext
+  * Not limit stevedore to 1.8.0
+  * Rename "parallelize" decorator to "concurrent"
+  * Factor XmlJobGenerator out of YamlParser
+  * Disentangle YamlParser and ModuleRegistry classes
+  * add post-send script option
+  * Adding support for Hidden parameter plugin
+  * add compress-log option to compress log
+  * test non-default value of attach-build-log
+  * builders: add 'publish over ssh' support as a build step
+  * Use xml\_jobs not jobs
+  * Support lazy resolving of include yaml tags
+  * Add version-number wrapper functionality
+  * Fix typo for reporters doc
+  * Add missing docs for maven-targets
+  * Update hipchat plugin to use convert xml
+  * Update disable-failed-job to use convert xml
+  * Update Summary Display plugin to use convert xml
+  * Update jdepend to use convert xml
+  * Update helpers.artifactory
+  * Fix issue that cause JCloud instance to be set
+  * Update findbugs\_settings to use convert xml
+  * Update cfp builder to use convert xml
+  * Update maven-builder to use convert xml
+  * Update runscope plugin to use convert xml
+  * Update docker build publish to use convert xml
+  * Fix bug causing all jobs to be deleted
+  * Update Build Name Setter plugin to use convert xml
+  * Update cobertura to use convert xml
+  * Correct configuration file usage
+  * Remove deprecated 'extended-choice' property
+  * Remove YamlParser references from JJB modules
+  * TestSubCommand inherit from UpdateSubCommand
+  * Don't expose YamlParser methods unnecessarily
+  * Move subcommand logic into subcommand classes
+  * Move 'delete' yaml parsing to JenkinsJobs.execute
+  * Add support for Keivox KMAP plugin
+  * Move 'update' yaml parsing to JenkinsJobs.execute
+  * Test at more appropriate boundaries for update
+  * Add support for Growl plugin
+  * gitlab trigger: Update Gitlab to >=1.3.0
+  * gitlab trigger: Support new "trigger-open-merge-request-push" options
+  * Remove handle\_entity\_children for convert xml
+  * Update FindBugs docs to 4 space indent syntax
+  * Update Cobertura docs to be 4 space indent syntax
+  * Update LogStash plugin to use convert xml
+  * Update Delivery Pipeline plugin to use convert xml
+  * Add support for CodeCover plugin
+  * Add support for enabling empty results
+  * Update HTML Publisher plugin to use convert xml
+  * Fix link to findbugs minimal example
+  * Add valid\_dict parameter to convert xml
+  * Add support for Fingerprint plugin
+  * Move JJBConfigException to errors module
+  * Ensure flush cache option obeyed
+  * Update xvnc to use convert xml
+  * Simplify 'update and delete old jobs' test
+  * Move load\_files method to YamlParser from Builder
+  * Use JJBConfig in ModuleRegistry
+  * Use JJBConfig in YamlParser
+  * Finish removing code from jenkins\_jobs.cmd
+  * Update M2 Release plugin to use convert xml
+  * Untangle argparser and config objects
+  * Update Cucumber Reports plugin
+  * Improve documentation of throttle option parameter
+  * Added a doc entry and a test for jdk general parameter
+  * Remove discover from test-requirements
+  * Add unstable-if-warnings option for msbuild
+  * Update hue light plugin to use convert xml
+  * Update plot doc to 4 space indent syntax
+  * Update clamav plugin to use convert xml
+  * Update Grails plugin to use convert xml
+  * Update check for valid attributes for HTTP Request
+  * Update SonaType to test 'stage' non default value
+  * Update Repo plugin to use convert\_mapping\_to\_xml
+  * Update Copy Artifact plugin to use convert xml
+  * Update doxygen plugin to use convert xml
+  * Fix entry point name for delete-all subcommand
+  * Use JJBConfig for arg/config initialization
+  * Adds support rerun matrix part to the naginator
+  * Update GitHub pull request builder plugin
+  * Update OpenShift Pipeline plugin
+  * Update WhiteSource plugin
+  * Update scoverage to use convert xml
+  * Update MongoDB plugin
+  * Update Logfilesizechecker to use convert xml
+  * Update live-screenshot plugin to use convert xml
+  * Fix documentation of --delete-old: affects only managed jobs
+  * Update Gerrit Trigger to use convert xml
+  * Update DRY plugin to use convert xml function
+  * Update clang scan build
+  * Update RunDeck plugin to use convert xml
+  * Update check for valid attributes for SonaType CLM
+  * Update TestFairy plugin
+  * Update TestNG plugin
+  * Update TAP plugin
+  * Introduce modular implementation of subcommands
+  * Python 3: Don't use BaseException.message attribute
+  * Update sbt plugin to use convert\_mapping\_to\_xml
+  * Add valid set of options parameters to convert\_xml
+  * Clean up import helpers in publishers
+  * Update FSTrigger plugin
+  * Add partial support for maven-release-plugin
+  * Add support for retry in multijob plugin
+  * Update bazaar plugin
+  * Add plugin="junit" attribute for JUnit plugin
+  * Update ScriptTrigger plugin
+  * scm.py: correct indention to fix sphinx-docs warning
+  * doc/definition.rst: add missing '/' into include path
+  * Properties: fix copyartifact permissions with several projects
+  * Update sonar plugin
+  * Update config file provider docs to have default options
+  * Add addTestResults to GitHub pull request builder trigger
+  * Adding property-file into the pipeline publisher
+  * Update FindBugs doc options to have default value
+  * Use 'false' and 'true' in default docstrings
+  * Adds matrix restriction to trigger-builds plugin
+  * Add support for Clang Scan-Build plugin version 1.7
+  * Remove the colon after default in docstring
+  * Add support for GitLab notifier and connection property
+  * SCM repo: add ignore-projects option
+  * Add missing parameter ZUUL\_VOTING to zuul style jobs
+- remove 0001-Fix-timeout-wrapper-version-detection.patch,
+  0002-Update-logparser-plugin.patch,
+  0003-add-two-new-options-to-Log-Parser-Plugin.patch : upstream
+- run tests
+
+-------------------------------------------------------------------
+Thu May 10 15:21:04 UTC 2018 - toddrme2178@gmail.com
+
+- Don't forget BuildRequires:  python-rpm-macros
+
+-------------------------------------------------------------------
+Mon Sep 25 12:42:15 UTC 2017 - dmueller@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Fri Apr 28 10:38:39 UTC 2017 - tbechtold@suse.com
+
+- update to 1.6.2:
+  * remove cap on pbr
+
+-------------------------------------------------------------------
+Wed Mar 22 11:49:09 GMT 2017 - aspiers@suse.com
+
+- Fix backport of patches for log parser plugin
+
+-------------------------------------------------------------------
+Wed Mar 15 13:20:22 GMT 2017 - aspiers@suse.com
+
+- Add two patches for the log parser plugin:
+  * 0002-Update-logparser-plugin.patch
+  * 0003-add-two-new-options-to-Log-Parser-Plugin.patch
+
+-------------------------------------------------------------------
+Tue Oct 18 05:58:56 UTC 2016 - tbechtold@suse.com
+
+- Add 0001-Fix-timeout-wrapper-version-detection.patch (bsc#1019600)
+
+-------------------------------------------------------------------
+Fri Jul 15 07:02:05 UTC 2016 - tbechtold@suse.com
+
+- Switch to pypi.io as Source url
+
+-------------------------------------------------------------------
+Thu Jul 14 14:08:15 UTC 2016 - tbechtold@suse.com
+
+- update to 1.6.1:
+  * Catch OSError when renaming and try to remove the destination file first
+  * Fix broken skip-push on docker-build-publish
+  * Update Sonatype CLM for CI plugin
+  * Remove obsolete tools script
+  * Adds support multijob support to the CopyArtifact plugin
+  * Allow testing non-default configs with complex definitions
+  * Python 3.x tempfile requires unicode
+  * Prevent corruption of cache by using atomic update
+  * Add support for Jenkins OpenStack Cloud Plugin
+  * Add support for http request plugin
+  * Add test and update documentation for mailer plugin
+  * XUnitDotNetTestType xUnit publisher support
+  * Update Plot plugin
+  * docs: add missing :jenkins-wiki: macro to CMake builder
+  * Add deadline option for build-timeout plugin
+  * Fix typo in doc of workspace-cleaner wrapper
+  * builders: update cmake to match CMake plugin versions 2.x
+  * Compatibility support for older maven project plugins
+  * Update workspace-cleanup to support newer options
+  * Update Google Cloud Storage publisher
+  * Update deprecated from version to 1.5.0
+  * Add support for URL scm plugin
+  * Serialize combine-queued-commits for git-revision
+  * Fix Generic Artifactory repository key selection options
+  * Add Build Name Setter to Builders
+  * Support test trend graph in Build Flow Test Aggregator
+  * Update Hipchat support to work w/all versions
+  * Job DSL target needs to be plural, not singular
+  * Add support for OWASP Dependency-Check Plugin
+  * Removing perModuleEmail paramater management
+  * Add trigger for RabbitMQ trigger module
+  * Change documentation to install from pypi
+  * Add support for docker builder plugin
+  * Add Promoted Build parameter
+  * Be able to handle Slack Plugin 2.0 configuration
+  * Convert remaining Jenkins wiki URLs to sphinx roles
+  * Update Urls for redirects and broken
+  * Fix CFP configuration for >=2.10.0
+  * Fix building (make) in 'doc' directory
+  * Clarify exception message for missed trigger properties
+  * Tidy up True/False and use better exceptions
+  * Replace deprecated assertEquals with assertEqual
+  * cmd: Add a config file fallback to the user's home directory
+  * email_ext publisher: Improve docstring wording
+  * email publisher: Clarify format of recipients list in docstring
+  * Add user/password command line argument
+  * multijob: add support for "ALWAYS" continuation condition
+  * Revert "Allow using lockfile per jenkins master"
+  * Allow using lockfile per jenkins master
+  * Added possibility to exclude project combinations
+  * Add PLAIN default for branch|project-compare-type
+  * Add support for disable-strict-forbidden-file-verification
+  * upd google-cloud-storage plugin support
+  * slack notifications on repeated failure
+  * Allow to omit list of projects in Gerrit trigger config
+  * Fix 3 doc warnings
+  * Take parameter order from yaml in trigger_parameterized_builds
+  * Use provided mapping object type instead OrderedDict
+  * Preserve data type when constructing new container
+  * add support for node-parameters option for multijob builder
+  * Update docs to include installation via pypi
+  * Adding the build-discarder property
+  * Partial support Yaml Axis Plugin
+  * Added github-pull-request-merge publisher
+  * Add helper function to convert xml
+  * gerrit trigger: Fix doc on topics
+  * Fix issue with non-ascii characters in get_job_md5
+  * Document template variable default values
+  * Allow id's for different templates to follow same naming
+  * Description Setter Plugin support as builder
+  * SCM repo: add show-all-changes option
+  * SCM repo: add trace option
+  * SCM repo: add no-tags option
+  * SCM repo: add reset-first option
+  * SCM repo: add depth option
+  * Allow null values for log-text
+  * SCM repo: add force-sync option
+  * add reference-repo option to scm git submodule
+  * Add new parameter for warnings publisher
+  * Remove ordereddict support from py26
+  * Fix delete-all command to include all job types
+  * Fixed downstream_ext comparison conditions
+  * Fix default result for reverse trigger
+  * Add doxygen builder support
+  * Add script-type to env-script wrapper
+  * Fix ircbot's any-failure parameter documentation
+  * Small typo fix
+  * Add Docker Custom Build Environment Plugin support
+  * Adding support for maven-metadata-plugin
+  * Add matrixOptions to throttle properties module
+  * Add hue-light plugin support
+  * Add Test Selector Plugin support
+  * * Added support for the Jenkins Slack plugin
+  * gitlab trigger: Support new "addCiMessage" flag
+  * Wrap stdout object only once with wrap_stream
+  * Add more details about Emotional Jenkins plugin to docs
+  * Add support for credentials properties in authorization matrix
+  * Remove linkcheck from sphinx builders list in config
+  * Add separate linkcheck env and allow dev to select builder
+  * Remove Python 2.6 compatibility patch
+  * Updated to support changes to openshift pipeline plugin
+  * Warn only once for masked definitions
+  * Add support for default-excludes in archives
+  * Reorder imports to match hacking guidelines
+  * Adding Build Keeper plugin
+  * Clarify 'trigger-parameterized-builds' description
+  * Allow multiple credentials-binding entries
+  * Adding setup of credentialsId in stashNotifier
+  * Modifying .gitignore file to add .idea folder
+  * Implement bzr SCM module
+  * Add support for matrices' subset in multijobs
+  * Fix docstring of downstream-ext publisher
+  * Adding a new project parameter on multijob
+  * Added "Downstream build of" build selector
+  * Add support for "tox" builder
+  * Order component retrieval to favour user defined
+  * Infer and build entry points from component modules
+  * Standardize docstrings for properties module
+  * Deprecated tox -downloadcache option removed
+  * Add support for cucumber reports plugin
+  * delivery-pipeline: support task description template
+  * document workspace-cleanup wrapper "dirmatch" default
+  * builders: fix mavenName sorting with py35
+  * publishers: iterate over copy of checkstyle data
+  * Standardize builders docstrings and remove '\'
+  * Add support of 'somewhereElse' value to Copy to slave plugin
+  * Revert "Add support for "tox" builder"
+  * Correct the entry points of cucumber-testresult
+  * Fix pollscm backwards compatiblity
+  * Add support for "tox" builder
+  * Document the new {template-name} variable
+  * Add parallelization options
+  * Add regexp option to conditional publisher
+  * Add support for the RunDeck plugin
+  * Added support for the workflow job type
+  * Add template-name as a variable that can be used in a template
+  * Add 'do-not-fingerprint' to 'copyartifact' builder
+  * Debug message leads to (n*m) log growth
+  * Option to mark build as unstable in PostBuildScript publisher
+  * Allow deep formatting of macro parameters
+  * publishers: xunit doesn't accepts integers as threshold
+  * Fix the wrong info in docs about default slave param
+  * add support for NodeJS Plugin
+  * Add support for Rebuild Plugin
+  * Remove deprecated getChildren() usage
+  * Copy config files tree
+  * useMatrixChild support in parameterized trigger
+  * Add support for runscope plugin
+  * Add flatten and encryption support to s3 publisher
+  * cmd.py: tweak plugin information querying logic
+  * Make git.timeout parameter set clone timeout too
+  * [BUGFIX] Add missing "strExclusionSet" element when using "exclusionValues"
+  * Fix the artifactory plugin docs due to extra whitespace
+  * quick-start: Fix the configuration file argument to read "--conf"
+  * Adding support for monitoring files using FSTrigger Plugin
+  * fix for python 3, decode job output
+  * Fix update after deleting all jobs
+  * Allow raw XML at project top-level
+  * Fix delete-all command on python 3
+  * Wrap file objects with codecs to handle unicode
+  * Made a common helper function - convert_mapping_to_xml
+  * builder.py: fix potential race condition
+  * Implements: additions for OS3 plugin entry points in builders and scm
+  * setup.cfg: py26 is no longer supported
+  * Revert "Support for Shiningpanda's Tox Builder"
+  * Capture logs with FakeLogging Fixture
+  * Support for Shiningpanda's Tox Builder
+  * Distinguish kept jobs and unmanaged jobs when skipping removal
+  * Add control over more settings of github pull request builder plugin
+  * Update sphinx to be compatible with readthedocs.org
+  * fix default handling of script-file-path
+  * Allow save to be called more than once
+  * Allow JJB to set connection timeout to jenkins server
+  * Separate out custom yaml tags into separate classes
+  * Support copyartifact build selector param
+  * Add support for Artifactory plugin
+  * Add new parameters to Build Blocker example / test
+  * support for the phabricator plugin
+  * List conditions for trigger-parameterized-builds
+  * Added hipchat publisher for HipChat plugin >=0.1.9
+  * Added gitlab plugin
+  * Add support for whitesource plugin
+  * Add Trigger that supports the Jenkins "BitBucket plugin"
+  * Boolean parameters and more options in Parameterized Trigger Plugin
+  * Add support for the CucumberTestResult plugin
+  * Add support for blocking-level and queue scanning to Build Blocker plugin
+  * Add Ability to use the AWS Cloudformation Plugin
+- Adjust Requires
+- Remove 0001-Add-marker-to-only-need-ordereddict-for-py2.6.patch
+  Applied upstream.
+
+-------------------------------------------------------------------
+Sun Nov  1 09:43:00 UTC 2015 - tbechtold@suse.com
+
+- set correct Name which is python-jenkins-job-builder
+
+-------------------------------------------------------------------
+Fri Oct 30 06:20:19 UTC 2015 - tbechtold@suse.com
+
+- add 0001-Add-marker-to-only-need-ordereddict-for-py2.6.patch
+  Only require ordereddict with python 2.6
+
+-------------------------------------------------------------------
+Fri Oct 30 05:24:46 UTC 2015 - tbechtold@suse.com
+
+- update to 1.3.0:
+  * rm argparse from requirements.txt
+  * Update tox with supported python versions
+  * Reformat docstrings for SCM
+  * BugFix: Target field in Job-DSL plugin was not being populated
+  * correct sidebar link url & name
+  * adding support for android emulator
+  * Add support for forbidden file paths in gerrit trigger
+  * Validate and set compare types in gerrit trigger
+  * Use correct element name in scoverage module
+  * Enhance macro expansion documentation
+  * Add a JJB quick start guide
+  * Allow whitespace to be significant
+  * Ensure tests run with ConfigParser object
+  * Add trigger-with-no-params for join-trigger
+  * Support for externaljob project-type for monitoring external jobs
+  * Adds onlyIfSuccessful to ArtifactArchiver publisher
+  * Document that jjb supports json job definitions
+  * Support disable-publisher and both-html-text content-type in email-ext
+  * Add a requirements file for readthedocs
+  * Fix two typos and Fix readability
+  * Adding publisher support to join-trigger plugin
+  * Replace open() with io.open() and force 'utf-8'
+  * Adding support for IvyTrigger Plugin
+  * Reformat xUnit publisher function and docstring help
+  * Find module for exceptions raised from gen_xml
+  * configure git PathRestriction as an extension
+  * Avoid parallel builder tests creating cache dir
+  * Adding Flowdock as a supported publisher
+  * Support for more conditions type in conditions-buildstep plugin
+  * Support for more configurable options in sonar publisher
+  * Support for more extensions and options in Git plugin
+  * Add Google Cloud Storage Plugin support
+  * Support for repo-depth and ignore-externals in svn plugin
+  * general: add support for childCustomWorkspace
+  * Adding support for Sidebar Plugin
+  * scm svn: add support for viewvc-url
+  * Added support for groovy script trigger
+  * Add deprication warning in documentation
+  * Improvement in the Credentials Binding Plugin
+  * Removed unnecessary parameter from delete_old_jobs
+  * Adding support for javadoc plugin
+  * Support for health-scale-factor in junit plugin
+  * xunit: Add support for Google Test
+  * Exclude .test directory from pep8 check
+  * Support anonymous credentials for Jenkins plugin info query
+  * Add Disable Failed Job Plugin support
+  * Add Parameterized Remote Trigger Plugin support
+  * Add support for the Naginator Plugin
+  * Update xml-summary publisher
+  * Adding support for LiveScreenshot Plugin
+  * Support for more options in gerrit plugin and doc cleanup
+  * Test update command with --delete-old option
+  * Support for post-step-run-condition in Maven projects
+  * Add support to reverse trigger for job list
+  * Update 'timeout' wrapper module
+  * Validate the use of `[]` as an `scm` value
+  * Change zuul-cloner parameters
+  * Adding unittest to ownership property
+  * Support for image gallery publisher
+  * requirements: pin pbr>=0.8.2,<2.0
+  * Fall back to git clone if zuul-cloner not available
+  * Support for more configurable options in Plots Plugin
+  * Adding Maven3 Builder Targets
+  * Adding disableArchiveOutput option in Robot Framework Plugin
+  * Adding builder for SSH plugin
+  * Add support for keep-records parameter for plots-plugin
+  * Enable tests of builder object
+  * Support use of lists in trigger-build publisher
+  * Make include_path deterministic
+  * Add support for Clang Scan-Build plugin version 1.5
+  * Replace ci.o.o links with docs.o.o/infra
+  * Adding tests surrounding handling of defaults values
+  * Improvements in the Maven Plugin
+  * Add logstash publisher
+  * Add support for Gatling plugin
+  * Test with LANG set to UTF-8
+  * Allow use of aliases defined previously inside included files
+  * Query all jobs once
+  * Revert "Added parallelization options"
+  * Move writexml fix for older minidom to same module as caller
+  * Adding support for Beaker Builder Plugin
+  * add support for measurement plots plugin to junit publisher
+  * Add support for 'raw' to inject direct xml to job configs
+  * Added parallelization options
+  * hipchat bug fix
+  * Accept list of hipchat rooms
+  * Add support for Display Upstream Changes Plugin
+  * Remove YamlParser from jenkins_jobs.builder
+  * Remove superfluous calls to matches()
+  * Add support for Sonatype CLM plugin
+  * Support for Xvfb plugin
+  * Add InvalidAttributeError and MissingAttributeError
+  * Add support to CFP in builders sections
+  * Allow inclusion of multiple files
+  * Added gerrit trigger missing options
+  * Add support for hipchat notifier 0.1.8
+  * Support the use of lists in trigger-build builder
+  * zuul: drop notifications
+  * Only query jenkins plugins if config provided
+  * Log info about updated and deleted jobs
+  * added support for NodeLabel parameter in trigger-builds
+  * Add ability to configure releaseEnvVar for maven-deploy publisher
+  * Initial work for supporting downstream-ext
+  * Add support for Scoverage plugin
+  * Added support for JClouds Blobstore
+  * Fixed broken links in documentation
+  * publishers: groovy-postbuild changes between 1.x & 2.x
+  * Fix jenkins-job-builder-compare-xml job by using zuul-cloner
+  * Added possibility to use non-existent keys
+  * Stop mkdir output on each job write
+  * Treat non-existant output files as empty files
+  * Convert all inline publisher examples to tests
+  * Adding more configurable options in Notifications plugin
+  * Add FindBugs support to Publishers
+  * Add checking of multijob phase condition
+  * Add missing '
+  * Pass through git revision to triggered jobs
+  * Add support to configure boolean parameter in PBT
+  * Add 'Job Log Logger' wrapper
+  * Add support of multiple credentials for ssh-agent-credentials wrapper
+  * Remove nonexistent servername and cleanup build publisher
+  * updated conditional_publisher to support plugin changes
+  * fix test in include-raw-escape001.yaml
+  * Add support for Sonar analysis builder
+  * Log the job name info when running test mode
+  * Add FindBugs plugin support
+  * Add tests for yaml anchor behaviour
+  * Fix typo in format string
+  * Consolidate CFP settings into a common function
+  * Add support for Config File Provider to Maven Project module
+  * Support additional features in Build Flow project
+  * Add detailed call out about the SCP plugin
+  * Add support to customize trigger-builds block thresholds
+  * Support hacking module <= 0.10.1
+  * Use sphinx extlinks to shorten links to Jenkins wiki
+  * Check external documentation links are valid
+  * Remove unnecessary warning message
+  * Add 'Build Flow Test Aggregator' publisher
+  * The email publisher needs a list of recipients
+  * Add support for github commit status pending
+  * Fix bug in template job yaml expansion
+  * Add support for xvnc
+  * Add Job DSL Plugin
+  * Fix broken link on documentation
+  * Add 'readable-message' parameter to gerrit trigger
+  * xUnit publisher: add option to skip if there are no tests files
+  * Enable whitelisted-orgs-as-admins for ghprb trigger
+  * Adding coverage.py publisher for ShiningPanda Plugin
+  * Add details to credentials param in scm docs
+  * Support excludes when recursively processing paths
+  * Change test folder name to 'fixture' for consistency
+  * Fix wrong casing in JDKAxis <name> tag
+  * Add 'last-completed' to copyartifact 'which-build' values
+  * adds support for not condition in conditional_step
+  * Lazy load plugin list
+  * Use open() instead of file()
+  * BugFix: pollscm trigger docs & unittests
+  * Add support for new patchset-created exclude fields
+  * Depend on python-jenkins 0.4.1 or later
+  * Implement recursive search for test fixtures
+  * Fix NullPtr issue in ownership props
+  * Add plugins_info to module registry object
+  * Fix formatting for inclusion of README.rst
+  * Update SCM Git Clean configuration to use new extensions style
+  * Update SCM Wipe workspace to use extensions style
+  * Provide a more complete yaml reference in the docs for CMake module
+  * xUnit publisher: add test-time-margin extra config option
+  * xUnit publisher: add support to CTest
+  * Provide info on number of jobs processed for test, update and delete-all
+  * Fix invalid link to jenkins puppet module
+  * Interpolate params inside of params
+  * Add test for name defaults overridden by template
+  * Use mock in a Python 3.4 compatible way
+  * Add support for JDK axis
+  * Enable whitelisting branches with pull request builder
+  * builders: add cmakebuilder plugin support
+  * Add 'Enable condition' support to MultiJob builder
+  * Skip duplicate input files
+  * Update and clean up docs
+  * Add support for 'All Nodes For Label Factory'
+  * Update git-submodule configuration to new extension style
+  * add support for EnvInject mask password params option
+  * Add support for M2 repository cleanup plugin
+  * Allow multiple node selection for 'node' parameter
+  * Move project matrix documentation into a test
+  * fix project matrix doc rendering
+  * Report source of duplicate entries where possible
+  * Add DRY publisher
+  * add support for python and tox matrix project axis
+  * Add example to demonstrate flow plugin for job-template
+  * update jjb info for clarity
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Mar 11 10:34:51 UTC 2015 - tbechtold@suse.com
+
+- update to 1.1.0:
+  * deprecate postbuildscript onsuccess and onfailure parameter names
+  * Add 'node' parameter to 'parameters'
+  * Add support for Gerrit Trigger Comment Contains Expression
+  * Allow multiple comment-added events in gerrit trig
+  * Add Mercurial plugin feature to jenkins-job-builder
+  * adding support for the custom tools plugin
+  * fix typo, must be 'classifier' to appear on pypi.python.org
+  * Workflow documentation is now in infra-manual
+  * Fix the postbuildscript documentation
+  * URL in Maven deploy is an optional field
+  * Reorganize tests/cmd
+  * Make the recipients argument optional
+  * Add examples for 'predefined-parameters'
+  * Add parameter to trigger_parameterized_builds
+  * Refactor checkstyle publisher
+  * Document node parameter usage with matrix projects
+  * Add support for Config File Provider to Maven Project module
+  * adds safe-output to email-ext in publishers.py
+  * add support to git for changelog against branch
+  * Add perlcritic capability to violations method
+  * Move extended-choice support to parameters module
+  * include publisher.xunit test as doc
+  * Add support for the Jenkins Clang Scan-Build publisher plugin
+  * Add MongoDB plugin support
+  * add test for globbed parameters feature
+  * Add fingerprint parameter to archive publisher
+  * Add support for the matrix-combinations plugin
+  * report exactly which jobs will be deleted
+  * Add support for the S3 Publisher plugin
+  * Switched documentation to point to storyboard
+- update Requires
+
+-------------------------------------------------------------------
+Mon Apr 21 15:26:36 UTC 2014 - thomasbechtold@jpberlin.de
+
+- Initial packaging for jenkins-job-builder.
+

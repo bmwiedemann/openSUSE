@@ -1,0 +1,605 @@
+-------------------------------------------------------------------
+Mon May 20 17:08:19 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 2.2.3:
+  * Fixed asserts when compiled against wxGTK 3.0
+    (gh#vslavik/poedit#571).
+- Drop poedit-2.2.2-null-variant.patch: Fixed upstream.
+- Fix URL and name case.
+
+-------------------------------------------------------------------
+Wed May 15 17:55:20 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- PoEdit 2.2.2:
+  * Bug fixes.
+- Add poedit-2.2.2-null-variant.patch: Fix type error which is
+  spammed at runtime (gh#vslavik/poedit#571).
+- Move AppData to metainfo folder.
+- Don't manually include nlohmann_json directory: configure
+  script is now able to detect it.
+
+-------------------------------------------------------------------
+Mon Jan 14 19:51:20 UTC 2019 - astieger@suse.com
+
+- PoEdit 2.2.1:
+  * Improved highlighting of HTML and placeholders
+  * File references are now supported in XLIFF
+  * Compatibility fixes for Wayland, wxGTK 3.0 and dark themes
+
+-------------------------------------------------------------------
+Wed Oct 10 15:01:04 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Mon Oct  8 16:56:28 UTC 2018 - antoine.belvire@opensuse.org
+
+- PoEdit 2.2:
+  * Support for editing XLIFF (both 1.2 and 2) files.
+  * Fixes for correct handling of dark themes.
+  * Improved appearance with GTK+ 3.
+  * Updated AppData and desktop files to use reverse DNS naming.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 27 09:32:39 UTC 2018 - antoine.belvire@opensuse.org
+
+- PoEdit 2.1.1:
+  * Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 09:29:41 UTC 2018 - antoine.belvire@opensuse.org
+
+- PoEdit 2.1:
+  * Added import and export of translation memory as TMX files.
+  * Added ability to delete bad translations from the TM.
+  * TM now has limited support for plural forms (only nplurals<=2).
+  * Improved handling plural form rules. CLDR is now used as the
+    data source and expressions are checked for equivalence before
+    warning about unusual forms.
+- Prefer system libraries over bundled ones.
+- Fix cpprest detection: Add openssl as build requirement.
+- Minor spec cleanups:
+  * Don't recommend lang package as lang package has already a
+    'Supplements:' with the same effect.
+  * Remove call to suse_update_desktop_file (redundant with brp
+    script).
+  * Remove compatibility with Leap <= 42.3 (dependencies are
+    unresolvable since PoEdit 1.8.12 anyway).
+
+-------------------------------------------------------------------
+Wed Jul 11 20:55:20 UTC 2018 - antoine.belvire@opensuse.org
+
+- PoEdit 2.0.9:
+  * Improved dark theme supports (still not perfect).
+  * Fixed broken list rendering of RTL text on Windows.
+
+-------------------------------------------------------------------
+Tue Jun 12 20:18:23 UTC 2018 - antoine.belvire@opensuse.org
+
+- PoEdit 2.0.8:
+  * Added CakePHP support.
+  * Minor QA warnings and RTL fixes.
+  * Improved TM reset to work when the index is corrupted.
+
+-------------------------------------------------------------------
+Wed May  9 07:15:32 UTC 2018 - astieger@suse.com
+
+- PoEdit 2.0.7:
+  * Fix mangled non-English gettext error messages
+  * Add inline explanation of custom extractors syntax
+
+-------------------------------------------------------------------
+Thu Jan 18 15:17:46 UTC 2018 - astieger@suse.com
+
+- PoEdit 2.0.6:
+  * Fix hanging with certain rare (non-UTF8, non-ASCII msgids) 
+    PO files
+
+-------------------------------------------------------------------
+Tue Dec 12 08:15:39 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0.5:
+  * Various bugfixes, including fixes for other platforms
+
+-------------------------------------------------------------------
+Mon Nov 13 09:05:27 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0.4:
+  * Added support for Crowdin branches.
+  * Poedit now remembers your pre-translation settings.
+  * drop upstreamed poedit-2.0.3-fix-icu.patch
+
+-------------------------------------------------------------------
+Mon Aug  7 13:24:51 UTC 2017 - jengelh@inai.de
+
+- Reword description to resolve grammar issues in it.
+
+-------------------------------------------------------------------
+Mon Jul 31 15:46:53 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0.3:
+  * Much faster loading and saving of large PO files.
+  * Fixed frequent false positives in QA warnings for German,
+    Japanese, Arabic and translations with reordered brackets.
+  * Fixed issues with suggestions not showing up in the sidebar if
+    the user had an unusually tall editing area set up.
+  * Fixed assert when opening a PO file on Linux.
+- build build with GCC7, ICU 59.1 on Factory bsc#1041277
+  add poedit-2.0.3-fix-icu.patch
+
+-------------------------------------------------------------------
+Mon Jun 12 10:08:42 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0.2:
+  * Unusual whitespace (2+ spaces) in the middle of strings is now
+    highlighted
+  * Strings with warnings are now put at the top together with
+    errors
+  * Fixed crash when clicking on an item with plurals in a POT file
+  * Added --line command line argument to open a file at specified
+    item
+
+-------------------------------------------------------------------
+Sun Apr 16 20:47:37 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0.1:
+  * Restored compatibility with Zend Framework and its .phtml extension.
+  * Fixed keyboard navigation between plurals.
+  * Fixed false positives in punctuation warnings (quotes, Chinese).
+  * Mostly fixed compatibility with wxGTK 3.0.2.
+
+-------------------------------------------------------------------
+Fri Apr  7 12:00:25 UTC 2017 - astieger@suse.com
+
+- PoEdit 2.0:
+  * Revamped user interface
+  * Syntax highlighting for markup and special characters
+  * Warnings are now shown for common translation mistakes
+  * More robust pre-translation (previous "Fill missing
+    translations from TM")
+  * "Fuzzy" was renamed "Needs work" thorough to be more accessible
+    to gettext non-experts.
+  * xgettext invocation can now be customized on per-file basis
+  * Files opened from Crowdin now auto-sync on save.
+  * New Linux icon
+  * Many small improvements all over
+  * Can no longer convert legacy translation memory
+
+-------------------------------------------------------------------
+Thu Mar 16 10:11:22 UTC 2017 - astieger@suse.com
+
+- update to 1.8.12:
+  * Fix previous msgid display.
+  * Fix Find to correctly highlight text with "whole words only"
+    enabled
+  * Poedit now passes --previous to msgmerge
+
+-------------------------------------------------------------------
+Thu Feb  2 11:43:29 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Nov 20 10:20:19 UTC 2016 - astieger@suse.com
+
+- poedit 1.8.11:
+  * Fixed handling of sr_RS locale.
+  * Added support for X-Source-Language header.
+  * Added AppData file, dropping upstreamed appdata.patch
+
+-------------------------------------------------------------------
+Sun Sep  4 06:53:30 UTC 2016 - mailaender@opensuse.org
+
+- poedit 1.8.9
+  * Fixes to handling of RTL languages.
+  * Fixed retrieving of Crowdin user info.
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Sun Jun 19 14:45:04 UTC 2016 - astieger@suse.com
+
+- poedit 1.8.8:
+  * Multiple fixes to Poedit’s interface in right-to-left languages.
+  * Don't leave directional marks in translated text if there's a
+    LTR/RTL mismatch.
+  * Assorted small fixes.
+
+-------------------------------------------------------------------
+Mon Apr  4 06:03:11 UTC 2016 - i@marguerite.su
+
+- do not create poedit.desktop using suse_update_desktop_file
+  macro, use upstream's. or poedit can't open existing .po/.pot
+  file but a default index. fix boo#973731
+
+-------------------------------------------------------------------
+Sat Feb 27 17:32:41 UTC 2016 - astieger@suse.com
+
+- poedit 1.8.7.1:
+  * Add explicit boost dependencies in cpprest 
+
+-------------------------------------------------------------------
+Mon Feb  8 19:51:47 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.8.7
+  * Added Copy From Singular operation and Next/Prev Plural Form 
+    navigation shortcuts.
+  * Translation errors are now properly translated.
+  * Fixed default Turkish plural form.
+  * Fixed a bug where a perfect match wouldn't be found in the TM 
+    in some rare cases.
+  * Updated bundled gettext to 0.19.7 (added appdata.xml and ITS 
+    support).
+  * Assorted bugfixes.
+- Make building more verbose
+
+-------------------------------------------------------------------
+Tue Oct 27 07:10:39 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.6:
+  * Fix visual flicker when quickly scrolling through a file with
+    arrow keys.
+  * Fix file width autodetection when long comments were present.
+  * Disable Find next/prev menu items properly.  
+
+-------------------------------------------------------------------
+Wed Sep 23 19:21:36 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.5:
+  * Improved setting and handling of source paths.
+  * Implement gzip support in Crowdin API client.
+  * Assorted fixes.
+
+-------------------------------------------------------------------
+Mon Aug 24 00:39:59 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.4:
+  * Fix bug in handling POTs with plural forms introduced in 1.8.3.
+
+-------------------------------------------------------------------
+Wed Jul 22 17:22:50 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.3:
+  * Fixed Last-Translator error when creating a new translation
+    from existing POT.
+  * Fixed bogus "Sources not available" error for single files
+    setups.
+  * Fixed TM error reporting to prevent rendering the entire UI
+    mostly unusable.
+
+-------------------------------------------------------------------
+Sat Jun 27 14:13:44 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.2:
+  * text editor now ensures that trailing newlines are present only
+    if they also exist in the source text
+  * automatically fix some bad paths settings in PO files
+  * improved source language detection
+  * fix incorrect timezone of PO-Revision-Date in some cases
+  * use the user's default browser for Crowdin authentication on
+    all platforms
+- now handles the poedit URI scheme
+
+-------------------------------------------------------------------
+Sun May 31 21:46:18 UTC 2015 - astieger@suse.com
+
+- fix some conditionals and options for non-default builds
+
+-------------------------------------------------------------------
+Thu May 28 00:16:24 UTC 2015 - astieger@suse.com
+
+- poedit 1.8.1:
+  + fix TM-related crash under heavy concurrency
+- enabled features:
+  + integration with the Crowdin localization management platform
+  + support for non-English source languages (auto-detected)
+
+-------------------------------------------------------------------
+Tue May 19 20:14:32 UTC 2015 - astieger@suse.com
+
+- poedit 1.8:
+  + search & replace
+  + support for directly handling POT files
+  + improved interface for configuring source code paths
+  + Poedit now automatically fixes certain broken files produced
+    by certain broken tools (e.g. WPML)
+  + modernized HTML export
+- disabled features:
+  + integration with the Crowdin localization management platform
+  + support for non-English source languages (auto-detected)
+
+-------------------------------------------------------------------
+Mon May 18 15:05:10 UTC 2015 - astieger@suse.com
+
+- poedit 1.7.7:
+  + strip whitespace in extractor definitions resulting from copy
+    and paste
+
+-------------------------------------------------------------------
+Mon Apr 20 17:25:51 UTC 2015 - astieger@suse.com
+
+- poedit 1.7.6:
+  + fix handling of multiple displays
+
+-------------------------------------------------------------------
+Wed Mar 11 18:04:58 UTC 2015 - astieger@suse.com
+
+- poedit 1.7.5:
+  + fix scrolling to the top when saving a file; focus should be
+    preserved now
+  + fix disabling of extractors in preferences (oops)
+
+-------------------------------------------------------------------
+Wed Jan 28 13:54:17 UTC 2015 - ftake@geeko.jp
+
+- Remove MIME type icons conflicting with virtaal 
+
+-------------------------------------------------------------------
+Mon Jan 26 19:11:45 UTC 2015 - andreas.stieger@gmx.de
+
+- poedit 1.7.4:
+  + size of the bottom editing part is now remembered correctly
+    again
+  + [GTK+] fix broken Edit->Copy/Cut/Paste
+
+-------------------------------------------------------------------
+Fri Jan 23 14:45:53 UTC 2015 - ftake@geeko.jp
+
+- Remove MIME type icons conflicting with virtaal 
+
+-------------------------------------------------------------------
+Sat Jan 10 22:44:37 UTC 2015 - andreas.stieger@gmx.de
+
+- poedit 1.7.3:
+  + it is now possible to disable unwanted extractors in
+    preferences
+  + source paths in catalog properties can now include individual
+    files
+  + exclusion paths in catalog properties can now use wildcards
+    (e.g. *.js, now default for WordPress)
+  + fix mangling of format specifiers (%1$s etc.) in machine-
+    translated suggestions
+  + "Consult TM when updating from sources" now includes only
+    "good" matches (with at least 75% score)
+  + fix loosing of the editing position when saving a file
+  + fix Preferences layout in Japanese and Chinese translations
+- 1.7.2 was not released
+
+-------------------------------------------------------------------
+Fri Dec  5 20:02:12 UTC 2014 - andreas.stieger@gmx.de
+
+- poedit 1.7.1:
+  + fix menu shortcuts problem in Polish localization
+
+-------------------------------------------------------------------
+Wed Dec  3 18:56:22 UTC 2014 - andreas.stieger@gmx.de
+
+- poedit 1.7:
+  + reworked preferences
+  + support for extraction from JavaScript (and more) sources
+  + suggestions and other relevant information (comments etc.) are
+    now much easier to access in a unified sidebar
+  + syntax highlighting of special characters in translations
+  + added Group by Context sorting option
+  + implemented multiple selection
+  + formatting of PO files can now be customized
+  + added support for msgmerge --no-fuzzy-matching
+
+-------------------------------------------------------------------
+Sat Nov 29 20:54:31 UTC 2014 - andreas.stieger@gmx.de
+
+- poedit 1.6.11:
+  * fix MO compilation for extensionless PO files
+  * translations updates and fixes
+
+-------------------------------------------------------------------
+Fri Oct 24 22:37:33 UTC 2014 - andreas.stieger@gmx.de
+
+- poedit 1.6.10:
+  * multiple fixes to parsing of the Language header
+  * fix handling of broken POTs with duplicate headers
+  * improved robustness of the Lucene TM database
+  * misc small fixes
+  * translations updates and fixes
+- fix mime type icon file conflict with virtaal
+
+-------------------------------------------------------------------
+Sat Oct 18 12:11:01 UTC 2014 - andreas.stieger@gmx.de
+
+- poedit 1.6.9
+- New and updated in 1.6.x series:
+  * improved languages handling (entering, sorting, plural forms
+    expressions)
+  * completely new translation memory implementation
+  * assorted UI improvements
+  * fixes to handling of RTL translations
+  * fix parsing of obsolete entries in PO files
+  * better handle "fatal" (but not really) msgfmt errors
+  * added exclusion paths support to updating from sources
+  * add support for Zend Framework's .phtml
+  * and support for WordPress' translators: comments
+- Includes changes from 1.5.7 and 1.5.6:
+  * fix several problems with the file viewer: better lookup of files,
+  * add --add-comments=TRANSLATORS to xgettext call in default parsers
+  * fix parsing of obsolete entries to recognize "#~|"
+  * fix incorrect update stats when using msg contexts
+- drop poedit-1.5.5-wx28.patch, obsolete
+- use automatic dependency resolution
+
+-------------------------------------------------------------------
+Sat Jun 15 07:37:22 UTC 2013 - coolo@suse.com
+
+- remove _service
+
+-------------------------------------------------------------------
+Fri Jun 14 23:51:10 UTC 2013 - christoph.miebach@web.de
+
+- update to Version 1.5.5
+  * fix crash when auto-updating translations with some TMs
+  * fix file corruption when the catalog's charset was set to one
+    that couldn't represent all of the text
+  * translations updates
+- poedit-1.5.5-wx28.patch with upstream fix
+  http://www.poedit.net/trac/ticket/513#comment:3
+
+-------------------------------------------------------------------
+Sun Oct 28 05:09:09 UTC 2012 - elchevive@opensuse.org
+
+- update to Version 1.5.4
+  * fix display of source code (#472)
+  * fix bug when saving file fails on permissions (#491)
+  * fix Unix makefiles to install all icons (#493)
+- Version 1.5.3
+  * fixes to parsing of msgfmt errors
+  * misc UI fixes
+  * fixed problems with TM migration after upgrade
+  * reverted removal of line numbers in 1.5.2
+  * reverted: the default is to compile MO files on save again
+
+-------------------------------------------------------------------
+Fri Sep 14 04:42:12 UTC 2012 - swyear@gmail.com
+
+- for maintenance note: this version fix bnc#779633 
+
+-------------------------------------------------------------------
+Tue Aug 14 12:25:28 UTC 2012 - christoph.miebach@web.de
+
+- update to Version 1.5.2
+  * fixed crash when clearing the translation
+  * removed no longer needed line numbers from the UI
+  * OS X: improved attention bar looks
+  * translations updates
+
+-------------------------------------------------------------------
+Wed Aug  1 20:54:44 UTC 2012 - christoph.miebach@web.de
+
+- update to Version 1.5.1
+  * Windows: fix missing libstdc++-6.dll
+  * updated several translations
+- Version 1.5
+  * show translation errors inline with the entries they relate to,
+    instead of a confusing errors log when saving
+  * implement full support for message contexts
+  * replaced popups when Poedit is started for the first time with
+    unobtrusive Firefox-style notifications
+  * selecting suggested translation from right-click popup menu now
+    correctly removes fuzzy flag from the translation
+  * warn the user if Plural-Forms header is inconsistent with the
+    number of plural translations in the catalog or if has syntax
+    errors
+  * correctly deduce catalog's language from filenames in the form
+    of foo.LANG.po, as used by several large Open Source projects
+  * Boost library is now required when compiling from sources
+  * fixed the Find window so that it can be closed using the Esc
+    key
+  * positions of translation fields are now remembered correctly
+    when Poedit window is maximized
+  * added Edit->Clear translation command (Marcin Floryan)
+  * removed View->Fullscreen view, it doesn't make sense in this 
+    kind of app
+  * better application and document icons
+  * removed the "Shaded translations list" option, it's now always
+    enabled
+  * misc minor UI improvements
+  * fixed possible transaction memory database corruption
+  * added instructions on how to install additional spellchecker
+    dictionaries
+  * added sorting by different criteria
+  * improved source files viewer
+  * included outdated documentation was replaced with online wiki
+    docs
+  * more keyboard navigation shortcuts
+  * saving PO files no longer reformats source code references;
+    moreover, they are always formatted according to the default
+    style used by GNU gettext tools
+  * don't restore remembered window positions if they are outside
+    currently available screens
+  * changed Alt+ shortcuts to non-conflicting Ctrl+ ones: "Copy
+    From Source Text" now uses Ctrl+B and "Translation Is Fuzzy"
+    Ctrl+U
+  * various UI improvements
+  * added more translations:
+     Bosnian translation (Kenan Dervisevic)
+     Tajik (Victor Ibragimov)
+     Kurdish Sorani (Asos Ap)
+
+-------------------------------------------------------------------
+Sun Mar 11 18:16:09 UTC 2012 - lazy.kent@opensuse.org
+
+- Use wxWidgets defines.
+- Split off language package.
+- Removed check for unsupported openSUSE versions.
+- Use full URL as a source.
+- Corrected Summary style.
+- Use fdupes to remove file duplicates.
+- Added icon_theme_cache_post/un macros.
+- Removed redundant "clean" section.
+- Removed zip from build dependencies.
+
+-------------------------------------------------------------------
+Wed Apr  6 17:53:21 UTC 2011 - fisiu@opensuse.org
+
+- fixed BuildRequires related to wxWidgets
+- fixed incorrect RPM group to Development/Tools/Other
+
+-------------------------------------------------------------------
+Mon May 31 16:27:14 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.4.6.1
+- added gettext-tools to Requires [bnc#595327]
+
+-------------------------------------------------------------------
+Thu Oct  1 12:17:40 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.4.3
+- cleaned spec file
+
+-------------------------------------------------------------------
+Thu Mar 26 13:48:19 CEST 2009 - lmichnovic@gmail.com
+
+- update to version 1.4.2
+ * Unix: fixed Ctrl+Up/Down/PgUp/PgDn shortcuts when NumLock is on (#2006843)
+ * added Uyghur translation
+
+-------------------------------------------------------------------
+Tue Aug 19 16:40:19 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 1.4.1
+ * fixed HTML export to properly escape the text
+ * remember last used search phrase in Find window
+- 1.4.0
+ * wxWidgets >= 2.8 is now required when compiling from sources
+ * don't show comments windows by default to avoid confusion
+ * significantly faster updating of catalogs on multi-core
+  machines (on Linux, some distributions included multi-threaded
+  gettext, some don't)
+ * fixed remaining problems with list selection
+ * use more standard way of differentiating between different kinds
+   of entries in the list (translated, fuzzy, new) by using font
+   variants instead of different background colors (#1863332)
+ * don't update PO-Revision-Date header if it's unused (#1900298)
+ * added Belarusian latin translation (Alaksandar Navicki)
+
+-------------------------------------------------------------------
+Fri Dec 14 15:41:36 CET 2007 - lmichnovic@suse.cz
+
+- update to version 1.3.9
+ * OS X: fixed corruption of first entry when opening catalog
+   from manager 
+
+-------------------------------------------------------------------
+Sun Dec  9 21:19:04 CET 2007 - lmichnovic@suse.cz
+
+- update to 1.3.8
+ * OS X: fixed startup on computers that didn't have Poedit installed before
+ * fixed translation status color indicator to work correctly in case
+   of plural entries
+ * changed the official spelling from "poEdit" to "Poedit"
+ * preserve old msgid records (#| msgid "...") when saving
+ * preserve deleted records when updating catalogs
+ * preserve msgctxt entries in catalogs (#1680554)
+ * OS X: Sparkle is now used for automatic updates
+ * OS X: fixed spell checker to use catalog's language
+ * fixed View->Display quotes setting broken in 1.3.7
+ * added more translations:    Irish (Seanán Ó Coistín)
+

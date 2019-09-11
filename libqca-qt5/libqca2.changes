@@ -1,0 +1,347 @@
+-------------------------------------------------------------------
+Fri Apr 26 12:49:35 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Fri Apr 26 07:43:43 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.2.1
+  * support for openssl 1.1
+  * support for AES GCM and AES CCM modes
+  * new base64 convenience functions
+  * new botan2 support
+  * new hkdf support
+  * various build improvements and (deprecation) cleanups
+- Drop patches merged upstream:
+  * 0001-Revert-tlsunittest-disable-some-ciphers.patch
+  * 0002-Disable-missed-openssl-cipher-suites.patch
+  * 0003-Add-support-for-OpenSSL-1.1.0.patch
+- Rename qca-2.1.3-fixDSA.patch to qca-2.2.1-fixDSA.patch and
+  rebase it
+- Re-enable pkcs11, there is no openssl conflict anymore
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 25 09:28:30 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- Fix segfault when creating DSA keys
+  * [qca-2.1.3-fixDSA.patch]
+  * bsc#1108634
+
+-------------------------------------------------------------------
+Wed Dec 27 10:57:18 UTC 2017 - jengelh@inai.de
+
+- Remove idempotent %if..%endif guards.
+  Diversify subpackage descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 20 18:11:16 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patches to support OpenSSL 1.1.0:
+  * 0001-Revert-tlsunittest-disable-some-ciphers.patch
+  * 0002-Disable-missed-openssl-cipher-suites.patch
+  * 0003-Add-support-for-OpenSSL-1.1.0.patch
+
+-------------------------------------------------------------------
+Fri Dec 15 08:04:01 UTC 2017 - fabian@ritter-vogt.de
+
+- BuildIgnore libopenssl-1_1_0-devel to avoid conflict
+
+-------------------------------------------------------------------
+Thu Oct 19 08:48:26 UTC 2017 - meissner@suse.com
+
+- buildignore openssl-1_0_0 to avoid conflicts during the
+  openssl 1.1 effort.
+
+-------------------------------------------------------------------
+Sun Oct  1 16:38:12 UTC 2017 - wbauer@tmo.at
+
+- updated to version 2.1.3
+  * no changelog provided
+- update Url
+
+-------------------------------------------------------------------
+Thu Aug 24 13:52:26 UTC 2017 - fvogt@suse.com
+
+- Force building against openSSL 1.0 (boo#1055310)
+- Disable PKCS11 on TW to avoid openssl conflicts
+
+-------------------------------------------------------------------
+Thu Aug 25 08:29:08 UTC 2016 - fabian@ritter-vogt.de
+
+- Add new plugin-gcrypt subpackage
+
+-------------------------------------------------------------------
+Thu Dec 17 10:38:11 UTC 2015 - tchvatal@suse.com
+
+- Pass all required switches to cmake to ensure it builds properly
+- Install manpage to correct location
+
+-------------------------------------------------------------------
+Thu Dec 17 10:12:46 UTC 2015 - tchvatal@suse.com
+
+- Switch to bcond_with/without usage instead of 0/1 defines
+
+-------------------------------------------------------------------
+Sun Dec  6 08:42:54 UTC 2015 - mailaender@opensuse.org
+
+- update to version 2.1.1 (now part of KDE)
+- use system root certificates
+
+-------------------------------------------------------------------
+Mon Nov 23 12:20:15 UTC 2015 - mailaender@opensuse.org
+
+- updated to version 2.1.0 (plugins now included)
+  - Ported to Qt5 (Qt4 also supported)
+  - New building system. CMake instead of qmake
+  - Added CTR symetric cipher support to qca core
+  - Added no padding encryption algorithm to qca core
+  - qcatool2 renamed to qcatool
+  - fixed crash in qcatool when only options provided on command line without any commands
+  - Use plugins installation path as hard-coded runtime plugins search path
+  - Added new functiion pluginPaths
+  - Added functions to get runtime QCA version
+  - Fixed 'no watch file' warnings in FileWatch
+  - Added EME_PKCS1v15_SSL Encryption Algorithm
+  - New implementation of SafeTimer to prevent crashes
+  - Updated certificates for unittests
+  - RSA Keys are permutable, can encrypt with private and decrypt with public
+  - Add unloadProvider() function for symmetry with insertProvider()
+  - Overloaded "makeKey" to derive a password depending on a time factor
+  - Remove pointer to deinit() routine from QCoreApplication at deinitialization
+  - Fix a couple of crashes where all plugins might not be available
+  - Fix operating on keys with unrelated expired subkeys
+  - Fixed timers in Synchronizer class
+  - Dropped randomunittest
+  - Fixed many unittests
+  - qca-gnupg: internal refactoring
+  - qca-gnupg: try both gpg and gpg2 to find gnupg executable
+  - qca-gnupg: fixed some encodings problem
+  - qca-ossl: no DSA_* dl groups in FIPS specification
+  - qca-ossl: added missed signatures to CRLContext
+  - qca-ossl: fixed certs time zone
+  - qca-nss: fixed KeyLenght for Cipher
+  - qca-botan: fixed getting result size for ciphers
+- removed deprecated patches:
+  - fix-qt-check.diff
+  - r928413.diff
+  - disable-insecure-ssl.diff
+  - qca-2.0.3-gcc47.patch
+  - detect_ssl2_available.diff
+  - qca-no-ssl-internals.patch
+- enabled plugin-nss
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sat Apr 19 04:59:22 UTC 2014 - crrodriguez@opensuse.org
+
+- qca-no-ssl-internals.patch + spec file: Never use 
+  the ssl library internals directly, instead use the proper
+  API accessors.
+
+-------------------------------------------------------------------
+Wed Apr 16 16:13:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added detect_ssl2_available.diff: fix build with no-ssl2 in
+  openssl lib
+
+-------------------------------------------------------------------
+Fri Oct 11 18:31:58 UTC 2013 - crrodriguez@opensuse.org
+
+- build with -DOPENSSL_LOAD_CONF so QCA respects and uses 
+ the system's openSSL configuration.
+
+-------------------------------------------------------------------
+Thu Mar 15 09:03:35 UTC 2012 - aj@suse.de
+
+- Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Mar 11 00:06:55 UTC 2012 - crrodriguez@opensuse.org
+
+- Build respecting RPM_OPT_FLAGS, ugly hack to fix all 
+  *.pro files ensued.
+- Build with visibility-inlines-hidden
+
+-------------------------------------------------------------------
+Thu Jun 23 16:08:39 CEST 2011 - dmueller@suse.de
+
+- update to 2.0.3:
+  - Bugfix release, forward and backward compatible with 2.0.x
+  - Fix compilation when using Qt/Windows SDK
+
+-------------------------------------------------------------------
+Thu Jun 23 15:53:48 CEST 2011 - dmueller@suse.de
+
+- remove dependency on botan now that it got broken
+
+-------------------------------------------------------------------
+Mon Apr 19 11:15:35 CEST 2010 - dmueller@suse.de
+
+- fix build when MD2 support is disabled (as default in openSSL 1.0.x)
+
+-------------------------------------------------------------------
+Mon Feb  1 11:48:24 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jul 11 09:36:26 CEST 2009 - beineri@opensuse.org
+
+- fix build on Factory by including upstream commit 864423:
+  remove whirlpool hash usage. the algorithm is missing on at least 
+  0.9.8g/i/k, even though there is an OBJ_whirlpool definition
+
+-------------------------------------------------------------------
+Wed Jul  8 14:22:19 CEST 2009 - dmueller@suse.de
+
+- readd qt dependency
+
+-------------------------------------------------------------------
+Fri Jul  3 23:47:56 CEST 2009 - prusnak@suse.cz
+
+- updated to 2.0.2
+  * Bugfix release, forward and backward compatible with 2.0.x
+  * Fix compatibility with Qt 4.5 when QCA::Initializer appears before QApp
+  * Don't convert to secure memory when Hash::update(QByteArray) is used
+
+-------------------------------------------------------------------
+Sun May  3 22:20:44 CEST 2009 - dmueller@suse.de
+
+- qt plugins need *exactly* the same Qt version
+
+-------------------------------------------------------------------
+Thu Feb 19 15:37:12 CET 2009 - dmueller@suse.de
+
+- fix build with gcc 4.4
+- fix build for older distros
+- fix baselibs configuration
+
+-------------------------------------------------------------------
+Wed Feb 11 20:47:10 CET 2009 - ro@suse.de
+
+- added libqca2 to baselibs.conf (required by plugins) 
+
+-------------------------------------------------------------------
+Tue Feb  3 14:17:15 CET 2009 - dmueller@suse.de
+
+- fix qt version check (bnc#471444)
+
+-------------------------------------------------------------------
+Thu Jan 22 01:31:04 CET 2009 - dmueller@suse.de
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 28 22:20:17 CEST 2008 - wstephenson@suse.de
+
+- update to 2.0.1
+  * Bugfix release
+  * the pkgconfig file is always qca2.pc, even in debug mode
+  * Certificates containing wildcards are now matched properly
+  * DirWatch/FileWatch now work
+  * Keystore writes now work
+  * Don't delete objects in their event handler (prevents Qt 4.4 warnings)
+  * Fix potential hang with TLS in server mode
+- improve packaging
+
+-------------------------------------------------------------------
+Mon Jul  7 15:10:37 CEST 2008 - dmueller@suse.de
+
+- update qca providers to latest beta release (bnc#379500)
+
+-------------------------------------------------------------------
+Sat Oct 20 11:56:40 CEST 2007 - dmueller@suse.de
+
+- only move the pkgconfig file for lib64 archs 
+
+-------------------------------------------------------------------
+Thu Oct 18 17:51:33 CEST 2007 - dmueller@suse.de
+
+- build fix 
+
+-------------------------------------------------------------------
+Thu Oct 18 16:33:13 CEST 2007 - dmueller@suse.de
+
+- improve packaging
+
+-------------------------------------------------------------------
+Wed Oct 17 14:35:06 CEST 2007 - dmueller@suse.de
+
+- update to 2.0.0 final:
+  - Rewritten for Qt 4
+  - MAC algorithms
+  - DSA
+  - Diffie-Hellman
+  - Secure random
+  - Secure memory
+  - Extensive X.509 API, supporting chains, crls, and validation
+  - Smart cards and other key storage
+  - OpenPGP
+  - Cryptographic Message Syntax (for S/MIME)
+  - probably more
+
+-------------------------------------------------------------------
+Tue Aug 28 11:10:23 CEST 2007 - dmueller@suse.de
+
+- update to 2.0.0-test1:
+  * finalized API 
+
+-------------------------------------------------------------------
+Mon Aug  6 18:45:28 CEST 2007 - aj@suse.de
+
+- Botan-devel -> libbotan-devel
+
+-------------------------------------------------------------------
+Fri Aug  3 18:59:01 CEST 2007 - dmueller@suse.de
+
+- update to svn695914
+- build plugins modular
+- add nss, gcrypt, gnupg and cyrus-sasl plugins
+
+-------------------------------------------------------------------
+Mon Jun 25 19:23:39 CEST 2007 - dmueller@suse.de
+
+- update to svn revision680219
+
+-------------------------------------------------------------------
+Thu May 31 21:56:49 CEST 2007 - dmueller@suse.de
+
+- update to svn670229 to fix compilation with gcc 4.3
+
+-------------------------------------------------------------------
+Mon Apr 23 18:41:00 CEST 2007 - dmueller@suse.de
+
+- build against system Botan
+
+-------------------------------------------------------------------
+Thu Apr 19 11:44:20 CEST 2007 - dmueller@suse.de
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Apr 15 00:11:14 CEST 2007 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Apr 11 17:59:43 CEST 2007 - dmueller@suse.de
+
+- fix -devel package requires
+
+-------------------------------------------------------------------
+Thu Apr  5 17:36:14 CEST 2007 - dmueller@suse.de
+
+- remove examples from devel package
+
+-------------------------------------------------------------------
+Tue Jan 23 17:23:16 CET 2007 - dmueller@suse.de
+
+- fix build on lib64 platforms
+
+-------------------------------------------------------------------
+Mon Jan 22 15:38:18 CET 2007 - dmueller@suse.de
+
+- Initial package (SVN r626102)
+

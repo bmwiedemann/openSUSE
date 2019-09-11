@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Tue May  7 10:39:18 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8.0
+  * Adds a `PyWidget` class that can be used as a base class for your high-level
+    widgets. Because it is a PyComponent, this makes it much easier to write apps
+    that fully work in Python (desktop-like apps).
+  * The ``FormLayout`` uses CSS ``grid`` instead of ``<table>``.
+  * A new ``GridLayout`` widget.
+  * A new ``MultiLineEdit`` widget.
+  * Improvements to docs and guide.
+  * Support for freezing Flexx apps to standalone executables (via PyInstaller).
+
+-------------------------------------------------------------------
+Fri Mar 22 14:22:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the URL
+
+-------------------------------------------------------------------
+Tue Mar 19 15:25:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * Improved shutdown behavior (#533).
+  * Small fix in App.export (#532).
+  * Fix bahevior when navigating back to a Flexx app (#536).
+  * New examples for Openlayers and including local assets (by @ocobacho).
+  * Tests, demos and readme are included in the sdist, helping packaging on Linux (by @toddrme2178).
+  * Some performance tweaks which should help in larger applications.
+  * Add outernode attribute in TreeItem` widget, enabling more powerful subclasses.
+  * The Combobox is smarter about the placement of the "dropdown".
+  * A new RangeSlider widget.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Oct 29 15:58:48 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.2
+  * Bugfix in combobox.
+  * BSDF check dtype in JS.
+- Update to version 0.6.0
+  * Add ``Widget.minsize_from_children`` property (#497).
+  * Update BSDF (data serialization).
+  * Widgets van be orphaned upon initialization by setting parent to None (#493)
+  * Some internal improvements on the dropdown widget.
+- Update to version 0.5.0
+  * A major refactoring of the event system.
+  * We spun out the PyScript transpiler into the PScript project, as well
+    as the webruntime and dialite project. This means that Flexx itself
+    is focussed on the GUI aspect alone.
+  * Added touch support.
+  * Dropped the depency on Phosphor.js.
+  * A new combined namespace: ``from flexx import flx``.
+  * A proper guide in the docs.
+  * More examples.
+
+-------------------------------------------------------------------
+Sat Mar  3 16:15:44 UTC 2018 - jengelh@inai.de
+
+- Summary and description improvements.
+
+-------------------------------------------------------------------
+Fri Dec  1 18:33:09 UTC 2017 - toddrme2178@gmail.com
+
+- intial version

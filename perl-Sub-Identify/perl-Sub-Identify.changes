@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Wed Apr 12 06:38:06 UTC 2017 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Sub-Identify/Changes
+
+  0.14 2017-04-11 RGARCIA
+      - Make tests pass without . in @INC (actual fix, by James E Keenan)
+
+-------------------------------------------------------------------
+Mon Apr  3 06:44:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Sub-Identify/Changes
+
+-------------------------------------------------------------------
+Thu Sep 10 10:06:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Sub-Identify/Changes
+
+  0.12- Rafael Garcia-Suarez (2):
+        Update changes for 0.11
+        Fix build on perl 5.8
+  
+  0.11- B. Estrade (1):
+        Adding new test for signatures as part of Feb 2015 PRC.
+  
+        Rafael Garcia-Suarez (8):
+        Bump version to 0.10
+        Merge pull request #6 from estrabd/Issue-5-add-signature-test
+        Fix skipping tests on earliers perls
+        Add new test to MANIFEST
+        Do not let get_code_location() segfault on XSUBs
+        Add a test for calling get_code_location on XSUBs
+        Add a pure-perl version of last test
+        Bump version
+  
+  0.10- No changes
+
+-------------------------------------------------------------------
+Fri Sep  4 09:47:59 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Sub-Identify/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 20:32:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Sub-Identify/Changes
+
+  0.09- A. Sinan Unur (1):
+        Fix test failure due to hard-coded filenames.
+  
+  0.08- Rafael Garcia-Suarez (2):
+        Require at least perl 5.8.0
+        Improve docs beyond a really terse synopsis
+  
+  0.07- Rafael Garcia-Suarez (1):
+        Require B unconditionally on older perls
+  
+  0.06- Rafael Garcia-Suarez (4):
+        Remove perl version requirement
+        Skip tests that rely on perls more recent than 5.14.0
+        Update ppport.h
+        Use the pure-perl version of is_sub_constant on perls earlier than 5.16
+  
+  0.05- Rafael Garcia-Suarez (13):
+        Add test for function prototypes
+        Require at least perl 5.14.1
+        Better, simpler code for testing if we can load the XS version
+        Add gitignore file
+        Experimental implementation of get_code_location
+        Add XS implementation of get_code_location()
+        Add test for the prototype of get_code_location
+        Make get_code_location work on undefined subs
+        Add link to github repo in the meta file
+        Add TODO file
+        Add pure-perl implementation of is_sub_constant()
+        Add XS implemetation of is_constant_sub()
+        Add documentation
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:20 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 17:34:39 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fixed deps
+
+-------------------------------------------------------------------
+Thu Dec 10 22:03:34 UTC 2009 - chris@computersalat.de
+
+- initial pkg 0.04
+

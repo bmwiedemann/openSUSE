@@ -1,0 +1,15 @@
+---
+ src-util/anthy.el |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src-util/anthy.el
++++ b/src-util/anthy.el
+@@ -892,7 +892,7 @@
+ 	 ((equal event (character-to-event 'backspace)) 8)
+ 	 (t
+ 	  (char-to-int (event-to-character event)))))
+-    last-command-char))
++    last-command-event))
+ 
+ ;;
+ ;;

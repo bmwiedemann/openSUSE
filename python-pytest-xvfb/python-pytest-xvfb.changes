@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Apr 23 10:56:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one of the tests checking for error return code that fails
+  on i586
+
+-------------------------------------------------------------------
+Tue Feb 12 12:53:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.0:
+  * Item.get_closest_marker is now used, which restores compatibility with pytest 4.1.0 and requires pytest 3.6.0 or newer.
+
+-------------------------------------------------------------------
+Tue Feb 12 12:52:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Really run tests
+- Remove devel dependency
+
+-------------------------------------------------------------------
+Sun Apr 15 18:54:38 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * always run tests
+
+- update to version 1.1.0:
+  * The xvfb_args option is now a single line parsed with shlex.split.
+  * The XvfbExitedError exception now includes stdout and stderr.
+
+-------------------------------------------------------------------
+Mon Aug 28 17:18:33 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

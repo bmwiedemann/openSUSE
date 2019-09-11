@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Fri Feb 15 23:19:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Align getent/useradd error hiding with the other Factory packages.
+
+-------------------------------------------------------------------
+Wed Jun  7 23:30:12 UTC 2017 - jengelh@inai.de
+
+- Add gcc7.diff
+
+-------------------------------------------------------------------
+Fri Apr 14 01:02:03 UTC 2017 - 13ilya@gmail.com
+
+- Update to 0.5.2.2
+  * Added: Reconnect to database on connection failure or connection lost.
+  * Fixed: Typo in server manager and resource leak in sqlite on exit.
+  * Fixed: Incorrect long length message when incomplete search command was received.
+  * Fixed: Search request was sent to users without share.
+  * Fixed: Missing $ValidateDenide when user use nick that is in reserved nicks.
+  * Fixed: Extra pipe in !checknickban result.
+  * Fixed: IP and Port check in DC commands.
+  * Fixed: Missing IP check for validity in some hub commands.
+  * Fixed: Empty password received from user was not checked properly and accepted as new password for reg.
+  * Fixed: Bandwidth waste, when IPv6 user send search request with IPv4 address.
+  * Fixed: Possible crash on hublist registration.
+  * Fixed: Bind to single IP caused bind to all addresses when IPv6 address was empty.
+  * Fixed: Typo in scripting interface. MaxSlotsLimt -> MaxSlotsLimit.
+  * Changed: Log script errors is enabled by default.
+- Removed addressofbool.diff
+
+-------------------------------------------------------------------
+Sat Nov 12 21:57:52 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.5.2.1
+* Fixed a crash when redirect on permanent ban is enabled and
+  permban redirect address is empty and main redirect addres is
+  empty.
+* Added a command line menu with configuration and add registered
+  user options to PtokaX service (-m cmd param).
+* Changed settings, reserved nicks and scripts settings files from
+  xml to simple text format.
+* Added support for CTM2HUB.
+- Drop redundant words from description, remove redundant
+  %clean section.
+- Check for user/group existence before trying to add, and do not
+  suppress error messages.
+- Drop makefile_use_shared.patch (no longer needed)
+- Add nodate.diff, addressofbool.diff
+
+-------------------------------------------------------------------
+Sat May  4 02:29:45 UTC 2013 - highwaystar.ru@gmail.com
+
+- systemd unit added
+- update to 0.5.0.0
+ * Added: Core.SetUserInfo call to Lua api.
+ * Added: IDs 28 - 42 for Core.GetUserValue Lua api call (see Lua API docs).
+ * Added: IPv6 support to sockets.
+ * Added: IPv6 support to bans and range bans.
+ * Added: IPv6 country database support.
+ * Added: IPv6 client to client connections support.
+ * Added: IPv6 search support.
+ * Added: IP64 and IPv4 protocol extensions support.
+ * Added: Check for IPv4 connection for user connected to hub by IPv6.
+ * Added: IPv4 client connection support for users connected to hub 
+   by IPv6 when IPv4 connection check success.
+ * Added: IPv4 search support for users connected to hub by IPv6 when 
+   IPv4 connection check success.
+ * Added: Setting for manual IPv4 and IPv6 addresses.
+ * Added: Both IP addresses to !getinfo command for users with IPv6 
+   and IPv4 connection available.
+ * Added: Both IP addresses to !myip command for users with IPv6 and 
+   IPv4 connection available.
+ * Added: Core.GetHubIPs to Lua API.
+ * Added: tUser.tIPs to Lua API.
+ * Added: Missing end line dots on some hub commands reply (thx Alexey for report).
+ * Added: RegUser hub command. OP need to provide online nick and 
+   profile. Hub will ask user for password and after password is 
+   entered then user is added to registered users.
+ * Added: IP in $Search and $ConnectToMe commands is replaced with 
+   correct one when user send wrong IP.
+ * Added: Smart searching for IPv6 users with IPv4 support.
+ * Added: IP2Country now work for 6to4 and Teredo connections.
+ * Added: IP2Country.Reload to Lua api.
+ * Added: RegMan.AddReg now support second syntax 
+   RegMan.AddReg(sNick, nProfileNumber). That way user is asked for 
+   password and registered after he send it.
+ * Added: Users connected with IPv6 using 6to4 or teredo tunneling 
+   have automatically IPv4 active connection available without need 
+   to support any protocol extension.
+ * Added: Targets to makefile.
+ * Added: Lua 5.2.x support.
+ * Changed: Country database for IPv4 from ip-to-country to IpToCountry 
+   (http://software77.net/geo-ip/).
+ * Changed: Not allowed chars in nick to only space, pipe and dollar. 
+   Only those protocol disallow. Issues with other chars is client work.
+ * Changed: Max simultaneous logins value from 500 to 1000.
+ * Changed: UserDisconnected is now called when user is disconnected by 
+   script in User/Reg/OpConnected.
+ * Changed: Max send buffer size on small hubs from 128 kB to 256 kB.
+ * Changed: Disabled keep slow client online for clients with zpipe support.
+ * Changed: Memory allocation failures checking. When memory allocation 
+   fail then user who caused that is disconnected and hub not crash.
+ * Changed: Line ending to \n on windoze.
+ * Changed: Registered users are now stored in binary file instead of xml.
+ * Changed: !ban and !tempban now working for offline nicks and create nickban for them.
+ * Fixed: TmrMan.RemoveTimer Lua api call in windoze version (thx Cęńoßy+ę for report).
+ * Fixed: MOTD was not updated after change in gui (thx mappy for report).
+ * Fixed: Few settings was not updated after change in gui.
+ * Fixed: Buggy chat input line after using some settings pages (thx The-Master for report).
+ * Fixed: All strict aliasing issues with GCC 02 and higher optimization 
+   level compile.
+ * Fixed: Core.GetUsersCount can in rare cases have different user count 
+   than number of users returned by Core.GetOnlineUsers.
+ * Fixed: Crash on script error loging in some cases.
+ * Fixed: Memory leak in users and bans ip hashtables.
+ * Fixed: Bug in gui initialisation causing rare termination on startup.
+ * Fixed: Incorrect translation of "full" in ban commands (thx Alexey for report).
+ * Fixed: Shutdown with ctrl+c on non-windows OS (thx Alexey for report).
+ * Fixed: Crash in Lua 5.1 on invalid conversion specifier in os.date (fix from Lua 5.2).
+ * Fixed: Buggy search length checking for active and passive users (thx Alexey for report).
+ * Fixed: Compile with Clang compiler on Linux.
+ * Fixed: Message returned on !clrrangetempbans (thx Alexey for report).
+ * Fixed: Rare case when short myinfo was sent to ops when they should get long myinfo.
+ * Fixed: Error message on script syntax checking when PtokaX api call is outside function.
+ * Fixed: Doubleclick in gui on script now open script editor only when it is not on checkbox.
+ * Fixed: !nickban and !nicktempban allowed to ban user with higher 
+   profile when he was offline.
+ * Fixed: Reply to chat from Lua script was sent before that chat (ie from talkbot).
+ * Fixed: Missing GB translation in !getinfo command (thx Alexey for report).
+ * Fixed: Compile errors on Haiku OS.
+ * Removed: All info related to old ip-to-country database.
+ * Removed: Obsolete client tags.
+ * Removed: Obsolete setting to accept unknown tag.
+ * Rewritten: Global data queues for better IPv6 support.
+ * Updated: makefile to work with buggy gold linker.
+
+-------------------------------------------------------------------
+Thu Mar 29 06:24:57 UTC 2012 - highwaystar.ru@gmail.com
+
+- added -lpthread to fix linking error 
+
+-------------------------------------------------------------------
+Tue Sep 13 02:02:55 UTC 2011 - highwaystar.ru@gmail.com
+
+- update to 0.4.2.0
+- patchset updated
+
+-------------------------------------------------------------------
+Sat Jul 31 06:49:30 UTC 2010 - highwaystar.ru@gmail.com
+
+- logs moved to /var/logs/ptokax
+- service now starts as ptokax user 
+
+-------------------------------------------------------------------
+Sun Feb 14 16:21:14 UTC 2010 - highwaystar.ru@gmail.com
+
+- initial release for openSUSE
+

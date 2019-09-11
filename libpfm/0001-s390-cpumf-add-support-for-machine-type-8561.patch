@@ -1,0 +1,29 @@
+From b831b04254ac7fd1700b20b349799810952ff66e Mon Sep 17 00:00:00 2001
+From: Thomas Richter <tmricht@linux.ibm.com>
+Date: Thu, 11 Jul 2019 17:51:03 -0700
+Subject: [PATCH] s390/cpumf: add support for machine type 8561
+
+Add extended counter set support for s390 machine types
+8561 and 8562.
+
+Signed-off-by: Thomas Richter <tmricht@linux.ibm.com>
+---
+ lib/pfmlib_s390x_cpumf.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/pfmlib_s390x_cpumf.c b/lib/pfmlib_s390x_cpumf.c
+index e68b000..c11f9d9 100644
+--- a/lib/pfmlib_s390x_cpumf.c
++++ b/lib/pfmlib_s390x_cpumf.c
+@@ -195,6 +195,8 @@ static int pfm_cpumcf_init(void *this)
+ 		break;
+ 	case 3906:  /* IBM z14  */
+ 	case 3907:  /* IBM z14 ZR1  */
++	case 8561:  /* IBM Machine types 8561 and 8562 */
++	case 8562:
+ 		ext_set = cpumcf_z14_counters;
+ 		ext_set_count = LIBPFM_ARRAY_SIZE(cpumcf_z14_counters);
+ 		break;
+-- 
+2.22.0
+

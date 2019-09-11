@@ -1,0 +1,6 @@
+#
+# files to update in inst-sys
+#
+
+# yast2-pkg-bindings (bnc#449564)
+#/usr/lib*/YaST2/plugin/libpy2Pkg.so.2.0.0

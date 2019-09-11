@@ -1,0 +1,147 @@
+From 27ffcf036bda1ca51997197ec0c8977293cfb4c9 Mon Sep 17 00:00:00 2001
+From: Jeremy Cline <jeremy@jcline.org>
+Date: Wed, 4 Oct 2017 03:08:11 +0000
+Subject: [PATCH 20/43] tools/kvm_stat: Add Python 3 support to kvm_stat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Make kvm_stat support Python 3 by changing the use of "print" to a
+function rather than a statement, switching from "iteritems" and
+"iterkeys" (removed in Python 3) to "items" and "keys" respectively,
+and decoding bytes to strings when dealing with text.
+
+With this change, kvm_stat is usable with Python 2.6 and greater.
+
+Signed-off-by: Jeremy Cline <jeremy@jcline.org>
+Signed-off-by: Radim Krčmář <rkrcmar@redhat.com>
+(cherry picked from commit 9cc5fbbb8ca2178d94f2eeeb2ce675293a3f8ae2)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 30 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 218b7396f0fe..179fe5c44701 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -19,9 +19,11 @@ Three different ways of output formatting are available:
+ 
+ The data is sampled from the KVM's debugfs entries and its perf events.
+ """
++from __future__ import print_function
+ 
+ import curses
+ import sys
++import locale
+ import os
+ import time
+ import optparse
+@@ -225,6 +227,8 @@ IOCTL_NUMBERS = {
+     'RESET':       0x00002403,
+ }
+ 
++ENCODING = locale.getpreferredencoding(False)
++
+ 
+ class Arch(object):
+     """Encapsulates global architecture specific data.
+@@ -669,7 +673,7 @@ class TracepointProvider(Provider):
+         """Returns 'event name: current value' for all enabled events."""
+         ret = defaultdict(int)
+         for group in self.group_leaders:
+-            for name, val in group.read().iteritems():
++            for name, val in group.read().items():
+                 if name in self._fields:
+                     ret[name] += val
+         return ret
+@@ -958,7 +962,7 @@ class Tui(object):
+         except:
+             raise Exception
+         for line in child.stdout:
+-            line = line.lstrip().split(' ', 1)
++            line = line.decode(ENCODING).lstrip().split(' ', 1)
+             # perform a sanity check before calling the more expensive
+             # function to possibly extract the guest name
+             if ' -name ' in line[1]:
+@@ -1008,7 +1012,7 @@ class Tui(object):
+         name = ''
+         try:
+             line = open('/proc/{}/cmdline'
+-                        .format(pid), 'rb').read().split('\0')
++                        .format(pid), 'r').read().split('\0')
+             parms = line[line.index('-name') + 1].split(',')
+             while '' in parms:
+                 # commas are escaped (i.e. ',,'), hence e.g. 'foo,bar' results
+@@ -1173,7 +1177,7 @@ class Tui(object):
+                                .format(self.stats.fields_filter))
+             self.screen.addstr(3, 0, "New regex: ")
+             curses.echo()
+-            regex = self.screen.getstr()
++            regex = self.screen.getstr().decode(ENCODING)
+             curses.noecho()
+             if len(regex) == 0:
+                 self.stats.fields_filter = DEFAULT_REGEX
+@@ -1207,7 +1211,7 @@ class Tui(object):
+ 
+             curses.echo()
+             self.screen.addstr(3, 0, "Pid [0 or pid]: ")
+-            pid = self.screen.getstr()
++            pid = self.screen.getstr().decode(ENCODING)
+             curses.noecho()
+ 
+             try:
+@@ -1236,7 +1240,7 @@ class Tui(object):
+             self.screen.addstr(2, 0, 'Change delay from %.1fs to ' %
+                                self._delay_regular)
+             curses.echo()
+-            val = self.screen.getstr()
++            val = self.screen.getstr().decode(ENCODING)
+             curses.noecho()
+ 
+             try:
+@@ -1276,7 +1280,7 @@ class Tui(object):
+             self.print_all_gnames(7)
+             curses.echo()
+             self.screen.addstr(3, 0, "Guest [ENTER or guest]: ")
+-            gname = self.screen.getstr()
++            gname = self.screen.getstr().decode(ENCODING)
+             curses.noecho()
+ 
+             if not gname:
+@@ -1372,25 +1376,25 @@ def batch(stats):
+         s = stats.get()
+         for key in sorted(s.keys()):
+             values = s[key]
+-            print '%-42s%10d%10d' % (key, values[0], values[1])
++            print('%-42s%10d%10d' % (key, values[0], values[1]))
+     except KeyboardInterrupt:
+         pass
+ 
+ 
+ def log(stats):
+     """Prints statistics as reiterating key block, multiple value blocks."""
+-    keys = sorted(stats.get().iterkeys())
++    keys = sorted(stats.get().keys())
+ 
+     def banner():
+         for k in keys:
+-            print '%s' % k,
+-        print
++            print(k, end=' ')
++        print()
+ 
+     def statline():
+         s = stats.get()
+         for k in keys:
+-            print ' %9d' % s[k][1],
+-        print
++            print(' %9d' % s[k][1], end=' ')
++        print()
+     line = 0
+     banner_repeat = 20
+     while True:
+-- 
+2.12.3
+

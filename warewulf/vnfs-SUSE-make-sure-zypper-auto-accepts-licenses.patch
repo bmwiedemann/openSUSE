@@ -1,0 +1,26 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 27 08:15:24 2018 +0100
+Subject: vnfs: SUSE - make sure zypper auto-accepts licenses
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: c4fa1689727b9e21f5f4b6c53643098cdb512a88
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ vnfs/libexec/wwmkchroot/include-suse | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index 06a8c83..1b556f5 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -26,7 +26,7 @@ set_overlay() {
+         echo "ERROR: This must be a SuSE compatible chroot!"
+         return 1
+     fi
+-    PKGR_CMD="$ZYP_CMD install $PKGLIST"
++    PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
+     return 0
+ }
+ 

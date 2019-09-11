@@ -1,0 +1,14 @@
+Index: libmng_zlib.c
+===================================================================
+--- libmng_zlib.c.orig
++++ libmng_zlib.c
+@@ -163,6 +163,9 @@ mng_retcode mngzlib_inflateinit (mng_dat
+ #ifdef MNG_SUPPORT_TRACE
+   MNG_TRACE (pData, MNG_FN_ZLIB_INFLATEINIT, MNG_LC_START);
+ #endif
++
++  if (pData->bInflating)               /* free the old zlib structures */
++     inflateEnd(&pData->sZlib);
+                                        /* initialize zlib structures and such */
+   iZrslt = inflateInit (&pData->sZlib);
+ 

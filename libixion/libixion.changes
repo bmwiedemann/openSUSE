@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Thu Mar  7 10:05:25 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Add missing dependency on libboost_system-devel
+
+-------------------------------------------------------------------
+Thu Nov 15 13:48:27 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14.1:
+  * Update for new orcus
+  * Various 23bit build issues
+  * Various coverity fixes
+
+-------------------------------------------------------------------
+Thu Feb 15 08:19:15 UTC 2018 - tchvatal@suse.com
+
+- Rename python3 package to match up naming conventions
+- Install license file
+
+-------------------------------------------------------------------
+Wed Nov 29 12:44:50 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.13.0:
+  * Step lock update with orcus
+  * Various fixes / fuzzer crashes resolved
+
+-------------------------------------------------------------------
+Wed Feb  1 12:54:11 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Dec  3 13:44:31 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.12.1:
+  * Update to be in sync with orcus
+  * Small fixes around
+
+-------------------------------------------------------------------
+Wed May 25 11:55:37 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.11.1:
+  * Switch to mdds-1.2
+  * Few small fixes
+
+-------------------------------------------------------------------
+Mon Mar  7 12:43:06 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.11.0:
+  * Switch to mdds-1.0
+  * Various fixes
+  * Python3 bindings obsoleted python2 ones
+
+-------------------------------------------------------------------
+Mon Apr 13 10:47:29 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.9.1:
+  * various triv bugfixes
+  * Build with tests and work this time
+
+-------------------------------------------------------------------
+Tue Mar 24 14:16:41 UTC 2015 - tchvatal@suse.com
+
+- Drop copy&pasto from fedora
+
+-------------------------------------------------------------------
+Tue Mar 24 10:09:15 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.9.0:
+  * Needed for new orcus
+  * Python bindings are around now
+- Update homepage
+- Add python subpackage
+- Tests fail with this release, next one will fix it again
+
+-------------------------------------------------------------------
+Mon May 26 21:22:15 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 0.7.0
+  * needed by libreoffice 4.3.x
+- Add pkgconfig(mdds) dependency instead of mdds-devel
+
+-------------------------------------------------------------------
+Sun Jan 26 08:57:36 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and make the outputs verbose.
+
+-------------------------------------------------------------------
+Wed May 15 11:42:14 UTC 2013 - cfarrell@suse.com
+
+- license update: MIT
+  The SPDX shortname for the license described in the COPYING file is MIT
+
+-------------------------------------------------------------------
+Sat Apr 20 11:44:14 UTC 2013 - tchvatal@suse.com
+
+- Add URL path for the download.
+- Update the package to be matching the released tarball.
+- Do not force autoreconf as it is not really needed with released
+  package.
+
+-------------------------------------------------------------------
+Wed Mar 27 13:58:07 UTC 2013 - kyoshida@suse.com
+
+- Updated the package which includes the boost patch and several 
+  others.
+- Removed distro-specific patch.
+
+-------------------------------------------------------------------
+Tue Mar 26 17:11:53 UTC 2013 - tchvatal@suse.com
+
+- Cleanup a bit more for factory inclusion.
+
+-------------------------------------------------------------------
+Tue Mar 26 14:58:20 UTC 2013 - jengelh@inai.de
+
+- Fix wrong order of patch application and broken sed substitution
+  in %prep stage
+- Runtime boost dependency is automatic and not needed
+
+-------------------------------------------------------------------
+Tue Mar 26 13:31:04 UTC 2013 - tchvatal@suse.com
+
+- Beautify a bit.
+
+-------------------------------------------------------------------
+Tue Mar 26 13:26:03 UTC 2013 - tchvatal@suse.com
+
+- Fix boost m4 macro to pass configure stage.
+
+-------------------------------------------------------------------
+Tue Mar 26 05:03:03 UTC 2013 - kyoshida@suse.com
+
+- Updated to the 0.5.0 pre-release version.
+
+-------------------------------------------------------------------
+Tue Jan 31 16:52:01 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Add autotools BuildRequires for factory/12.2
+
+-------------------------------------------------------------------
+Thu Oct 27 02:57:02 UTC 2011 - kyoshida@suse.com
+
+- Initial package.
+

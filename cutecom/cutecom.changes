@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sat Sep 01 13:37:14 UTC 2018 - cyc1ingsir@gmail.com
+
+-update to release 0.51.0
+ * moved to a new home
+ * added auto reconnect feature
+
+ -------------------------------------------------------------------
+Mon Aug 06 15:48:14 UTC 2018 - cyc1ingsir@gmail.com
+
+-update to release 0.50.0
+ * added the byte counter plugin
+ * added a plugin manager
+ * added macros plugin to support similar to br@y's terminal
+ * added netproxy plugin
+ * improved logfile handling
+ * redesign control panel's opening button
+
+-------------------------------------------------------------------
+Thu Jun 17 19:44:34 UTC 2018 - cyc1ingsir@gmail.com
+
+-update to release 0.45.0
+ * Enable input of Crl characters using a popup or Ctrl+<x>
+ * Windows support added
+ * line termination was not saved in settings - FIX
+ * upgrading to clang-format to version 3.8.0
+ * updating travis ci instructions - FIX
+ * support for Qt5>=5.11
+
+-------------------------------------------------------------------
+Mon Jun 11 08:25:25 UTC 2018 - opensuse@dstoecker.de
+
+- fix build with cmake >= 5.11 (68.patch)
+
+-------------------------------------------------------------------
+Sat Aug 12 21:41:30 UTC 2017 - jengelh@inai.de
+
+- Trim redundant info from description that is already part of the
+  spec preamble.
+
+-------------------------------------------------------------------
+Thu Aug  3 06:48:14 UTC 2017 - opensuse@dstoecker.de
+
+- update to 0.40.0
+ -First implementation of searching the output
+ -Linked line termination of displayed data
+  with the option (LF, CRLF, CR, ...) for user input.
+ -compress/combine multiple non printable characters into one expression
+  in case the same non printable characters is beeing received multiple
+  times in a sequence
+ -enable a mix from hex and ascii characters in hex input mode
+ -Disable RTS/DTR when no flow control is used
+ -man page update
+ -licenses cleanup
+ -now builds and runs using Qt5 versions less than 5.3
+ -performance tuning by switching to QPlainTextEdit
+
+-------------------------------------------------------------------
+Tue Jul  5 18:32:24 UTC 2016 - toddrme2178@gmail.com
+
+- Spec file cleanups:
+  * Use upstream Summary
+  * Use upstream Description
+  * Fix Group tag
+
+-------------------------------------------------------------------
+Thu Jan 14 14:21:11 UTC 2016 - opensuse@dstoecker.de
+
+- update to release 0.30.2
+ * custom baud rates restored properly on startup
+ * custom baud rates > 200000 now selectable
+ * prevent horizontal scroll bar showing up (feedback)
+
+-------------------------------------------------------------------
+Fri Dec 18 20:20:20 UTC 2015 - cyc1ingsir@gmail.com 
+
+- reimplementation based on Qt5
+- including various feature enhancements
+- removed cutecom-0.22.0-license.diff - codebase changed
+- removed cutecom-0.22.0-nolinebreak.diff - codebase changed
+
+-------------------------------------------------------------------
+Tue Nov 17 10:35:42 UTC 2015 - opensuse@dstoecker.de
+
+- fix build for Leap 42.1
+- correct FSF address
+
+-------------------------------------------------------------------
+Thu Feb 23 17:08:17 UTC 2012 - opensuse@dstoecker.de
+
+- display correct license in about dialog
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:33 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Apr 26 18:39:52 CEST 2011 - opensuse@dstoecker.de
+
+- fix line breaking issue (patch copied from Debian)
+
+-------------------------------------------------------------------
+Tue Jan 27 12:00:00 CEST 2009 - opensuse@dstoecker.de
+
+- initial setup

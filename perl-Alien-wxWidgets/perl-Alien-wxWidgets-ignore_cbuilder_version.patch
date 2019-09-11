@@ -1,0 +1,11 @@
+--- Build.PL.orig	2010-12-27 11:20:05.000000000 +0100
++++ Build.PL	2010-12-27 11:20:22.000000000 +0100
+@@ -44,7 +44,7 @@
+                          'Module::Pluggable'              => '2.6',
+                         },
+     build_requires  => { 'Module::Build'                  => '0.28',
+-                         'ExtUtils::CBuilder'             => '0.24',
++                         'ExtUtils::CBuilder'             => 0,
+                          'File::Spec'                     => '1.50',
+                          },
+     configure_requires => { 'Module::Build'               => '0.28',

@@ -1,0 +1,35 @@
+From: Simon Charette <charette.s@gmail.com>
+Date: Thu, 6 Dec 2018 11:37:43 -0500
+Subject: Fixed #29182 -- Adjusted SQLite schema table alteration to support
+ 3.26.
+
+SQLite 3.26 repoints foreign key constraints on table renames even when
+foreign_keys pragma is off which breaks every operation that requires
+a table rebuild to simulate unsupported ALTER TABLE statements.
+
+Fortunately the newly introduced legacy_alter_table pragma allows one to disable
+this behavior and restore the previous schema editor assumptions.
+
+Thanks Florian Apolloner, Christoph Trassl, Chris Lamb for the report and
+troubleshooting assistance.
+---
+ django/db/backends/sqlite3/schema.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: Django-1.11.18/django/db/backends/sqlite3/schema.py
+===================================================================
+--- Django-1.11.18.orig/django/db/backends/sqlite3/schema.py
++++ Django-1.11.18/django/db/backends/sqlite3/schema.py
+@@ -24,10 +24,12 @@ class DatabaseSchemaEditor(BaseDatabaseS
+             c.execute('PRAGMA foreign_keys')
+             self._initial_pragma_fk = c.fetchone()[0]
+             c.execute('PRAGMA foreign_keys = 0')
++        self.connection.cursor().execute('PRAGMA legacy_alter_table = ON')
+         return super(DatabaseSchemaEditor, self).__enter__()
+ 
+     def __exit__(self, exc_type, exc_value, traceback):
+         super(DatabaseSchemaEditor, self).__exit__(exc_type, exc_value, traceback)
++        self.connection.cursor().execute('PRAGMA legacy_alter_table = OFF')
+         with self.connection.cursor() as c:
+             # Restore initial FK setting - PRAGMA values can't be parametrized
+             c.execute('PRAGMA foreign_keys = %s' % int(self._initial_pragma_fk))

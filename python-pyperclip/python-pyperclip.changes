@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Apr 12 13:44:27 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.7.0
+  * Added ability to read/write clipboard by running `python -m pyperclip`
+- added sources
+  https://github.com/asweigart/pyperclip/issues/17
+  + LICENSE.txt
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:38 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Feb 13 08:08:27 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 1.6.0
+  * Capture stderr of xclip subprocess, fixed issue where emojii
+    cut off the last character, allowed selection between PRIMARY
+    and CLIPBOARD for xsel and xclip
+  * Pyperclip works with qtpy module, set pyqt as lower priority
+    than xsel/xclip/klipper, add support for PyQt5
+  * Fixed the encoding that was set to "uft-8"
+  * Added lazy loading
+
+-------------------------------------------------------------------
+Sat Mar 11 21:00:33 UTC 2017 - jengelh@inai.de
+
+- Trim redundant words from descriptions.
+
+-------------------------------------------------------------------
+Mon Mar  6 19:28:45 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.5.27
+  * Disable broken cygwin implementation until issue 55 can be
+    fixed
+  * Fix #51, Replace wcscpy_s with memmove for Windows XP.
+  * Fix #53, PEP8 changes, STRING_FUNCTION rename
+
+- Converted to single-spec
+
+- Updated source URL, license and homepage
+
+-------------------------------------------------------------------
+Sun Jan  3 21:36:53 UTC 2016 - freitag@opensuse.org
+
+- Update to upstream version 1.5.24 
+
+-------------------------------------------------------------------
+Mon Aug 24 19:00:22 UTC 2015 - freitag@opensuse.org
+
+- First initial package of version 1.5.11 
+

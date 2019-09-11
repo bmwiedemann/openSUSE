@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Sat Nov 17 09:01:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove errant backslahes from description.
+- Rewrite summaries without em dashes.
+
+-------------------------------------------------------------------
+Fri Nov 16 11:06:17 UTC 2018 - adam.majer@suse.de
+
+- Update to version 1.8.1:
+  * add pkg-config files
+  * add --no_stacktrace_support for json-output-unittest
+  * allow macros inside of parametrized test names.
+  * support JSON output format in addition to XML
+  * add options to parallelize builds
+  * fix double free when building Gtest/GMock in shared libraries
+    and linking a test executable with both.
+  * 2.6.4 is the minimum CMake version
+- cleanup spec file
+- googletest-fix-cmake-libdir-install.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Sat Dec 30 00:13:00 CET 2017 - tiwai@suse.de
+
+- Fix the source (and put the download URL as a comment) for
+  matching with the actual tarball file name.
+
+-------------------------------------------------------------------
+Sat Dec 16 18:55:22 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 1.8.0:
+  * Update the value of GTEST_DIR to reflect the googletest dir.
+  * Change the GTestDir marco value to reflect the new dir of
+    googletest.
+  * Read Bazel's $XML_OUTPUT_FILE environment variable
+  * Restructure:
+    - Test so each scenario is independent.
+    - $XML_OUTPUT_FILE logic
+  * Fixes:
+    - Error C2440 'return' in gmock_test
+      (gh#google/googletest#775).
+    - Tests that return object which implement operator bool.
+    - Operator precedence in GTEST_TEST_BOOLEAN_ with expressions
+      that implement operator bool.
+    - env_var_test to ignore XML_OUTPUT_FILE if already set.
+    - Link that's returned when running tests
+      (gh#google/googletest#714).
+- Rework package turning it into a source package essencially, once
+  its original intention is to provide source files for a testing
+  framework, a pure development package itself. Aligning with
+  upstream ease our job and avoid unexpected bugs.
+- Drop libgtest0 and googletest-devel subpackages bringing gtest
+  subpackage instead and obsoleting the previous ones, following
+  the above change.
+- Provide googlemock together with googletest now that upstream
+  officially brought this project under gloogle's wings.
+- Replace autoconf and automake BuildRequires by cmake and switch
+  configure, make and make_install macros by cmake, cmake_jobs and
+  cmake_install. Autotools are deprecated and cmake is recommended
+  by upstream.
+- Drop libtool BuildRequires and autoreconf call. With the adoption
+  of cmake it's no longer need anymore.
+- Drop googletest-enable-make-install.patch. No longer needed once
+  make install is not used anymore.
+- Add googletest-fix-cmake-libdir-install.patch for enabling the
+  use of /usr/lib(64) instead of /usr/local/lib(64), once
+  upstream's CMakeLists doesn't provide flexibility in this regard.
+- Add googletest-rpmlintrc file to filter warnings about
+  devel-file-in-non-devel-package, shlib-policy-missing-suffix and
+  obsolete-not-provided as the package is a devel one itself now.
+
+-------------------------------------------------------------------
+Thu Aug 20 07:31:46 UTC 2015 - mpluskal@suse.com
+
+- Update project and source url (now on github)
+- Change library name, provides obsoletes should not be necessary
+  as no released binary should link against it
+
+-------------------------------------------------------------------
+Sat Feb 28 13:29:29 UTC 2015 - mpluskal@suse.com
+
+- Correct typo in library name
+
+-------------------------------------------------------------------
+Fri Feb 27 18:04:48 UTC 2015 - mpluskal@suse.com
+
+- Use source url
+- Package libraries as libgoogletest0
+- Run tests when building
+
+-------------------------------------------------------------------
+Sun Jul  6 06:27:04 UTC 2014 - i@marguerite.su
+
+- add patch: googletest-enable-make-install.patch
+  * use standard procedure to install googletest.
+- add scripts/gtest-config to installation
+  * used by many programs to find gtest CFLAGS and etc.
+- install shared libraries for sles too
+
+-------------------------------------------------------------------
+Mon Nov 11 00:46:53 UTC 2013 - i@marguerite.su
+
+- update version 1.7.0
+  * New feature: death tests are supported on OpenBSD and in iOS
+    simulator now.
+  * New feature: Google Test now implements a protocol to allow
+    a test runner to detect that a test program has exited
+    prematurely and report it as a failure (before it would be
+    falsely reported as a success if the exit code is 0).
+  * New feature: Test::RecordProperty() can now be used outside of the
+    lifespan of a test method, in which case it will be attributed to
+    the current test case or the test program in the XML report.
+  * New feature (potentially breaking): --gtest_list_tests now prints
+    the type parameters and value parameters for each test.
+  * Improvement: char pointers and char arrays are now escaped properly
+    in failure messages.
+  * Improvement: failure summary in XML reports now includes file and
+    line information.
+  * Improvement: the <testsuites> XML element now has a timestamp attribute.
+  * Improvement: When --gtest_filter is specified, XML report now doesn't
+    contain information about tests that are filtered out.
+  * Fixed the bug where long --gtest_filter flag values are truncated in
+    death tests.
+  * Potentially breaking change: RUN_ALL_TESTS() is now implemented as a
+    function instead of a macro in order to work better with Clang.
+  * Compatibility fixes with C++ 11 and various platforms.
+  * Bug/warning fixes.
+
+-------------------------------------------------------------------
+Sun Aug 12 14:51:34 UTC 2012 - i@marguerite.su
+
+- rename.
+
+-------------------------------------------------------------------
+Sun Aug 12 13:27:39 UTC 2012 - i@marguerite.su
+
+- force sles build static libraries, else a lot of inner test can't build.
+
+-------------------------------------------------------------------
+Sun Aug 12 11:08:50 UTC 2012 - i@marguerite.su
+
+- further clean spec.
+- enable build shared libraries.
+
+-------------------------------------------------------------------
+Tue Aug  9 15:36:41 CEST 2011 - tiwai@suse.de
+
+- Add missing Group to gtest-devel
+- Add missing BuildRoot (for building with older distros)
+- Clean up spec file
+
+-------------------------------------------------------------------
+Sat Jul  9 07:29:10 UTC 2011 - ftake@geeko.jp
+
+- Initial import
+ * Upstream version: 1.6.0 
+

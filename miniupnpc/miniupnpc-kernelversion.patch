@@ -1,0 +1,15 @@
+Index: miniupnpc-2.1/updateminiupnpcstrings.sh
+===================================================================
+--- miniupnpc-2.1.orig/updateminiupnpcstrings.sh
++++ miniupnpc-2.1/updateminiupnpcstrings.sh
+@@ -8,8 +8,8 @@ TMPFILE=miniupnpcstrings.h.tmp
+ TEMPLATE_FILE=${FILE}.in
+ 
+ # detecting the OS name and version
+-OS_NAME=`uname -s`
+-OS_VERSION=`uname -r`
++OS_NAME=openSUSE
++OS_VERSION=Distribution
+ if [ -f /etc/debian_version ]; then
+ 	OS_NAME=Debian
+ 	OS_VERSION=`cat /etc/debian_version`

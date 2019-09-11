@@ -1,0 +1,24 @@
+# RPM macros for packages installing a MIME type according to the XDG specification
+#
+###
+#
+# When a package installs a MIME type as per the XDG specification, it should
+# use both macros:
+#
+#  - %mime_database_post in %post
+#  - %mime_database_postun in %postun
+#
+# Note that these macros can optionally take as argument the directory
+# where the MIME type is installed. If no argument is passed, then
+# %{_datadir}/mime will be used (which is where applications usually install
+# the MIME type information).
+#
+###
+
+# macros are place holders to not unnescessarily break packages; package converted to file triggers
+%mime_database_post()                                          \
+%nil
+
+# macros are place holders to not unnescessarily break packages; package converted to file triggers
+%mime_database_postun()                                        \
+%nil

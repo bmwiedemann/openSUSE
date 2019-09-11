@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=QSyncthingTray
+Exec=qsyncthingtray %U
+Icon=qsyncthingtray
+Terminal=false
+Type=Application
+GenericName=Tray icon Application for Syncthing
+Comment=A cross-platform status bar for Syncthing in Qt
+Comment[de]=Eine plattformübergreifend Statuszeile für Syncthing in Qt
+Comment[eo]=Plursistema statusbreto por Syncthing en Qt
+Comment[ru]=Кроссплатформенный статусбар для Syncthing на Qt
+Comment[uk]=Богатоплатформовий статусбар для Syncthing на Qt
+Categories=Network;FileTransfer;

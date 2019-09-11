@@ -1,0 +1,21 @@
+diff -Nura gnome-initial-setup-3.24.2/gnome-initial-setup/gnome-initial-setup.c gnome-initial-setup-3.24.2_new/gnome-initial-setup/gnome-initial-setup.c
+--- gnome-initial-setup-3.24.2/gnome-initial-setup/gnome-initial-setup.c	2017-06-01 14:43:53.772011715 +0800
++++ gnome-initial-setup-3.24.2_new/gnome-initial-setup/gnome-initial-setup.c	2017-06-01 14:47:30.912508998 +0800
+@@ -62,17 +62,8 @@
+ #define PAGE(name, new_user_only) { #name, gis_prepare_ ## name ## _page, new_user_only }
+ 
+ static PageData page_table[] = {
+-  PAGE (language, FALSE),
+   /* PAGE (region,   FALSE), */
+   PAGE (keyboard, FALSE),
+-  PAGE (eula,     FALSE),
+-  PAGE (network,  FALSE),
+-  PAGE (privacy,  FALSE),
+-  PAGE (timezone, TRUE),
+-  PAGE (software, TRUE),
+-  PAGE (goa,      FALSE),
+-  PAGE (account,  TRUE),
+-  PAGE (password, TRUE),
+   PAGE (summary,  FALSE),
+   { NULL },
+ };

@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Mon Jun 19 14:08:26 UTC 2017 - fvogt@suse.com
+
+- Use update-alternatives to create default.desktop xsession (boo#1030873)
+
+-------------------------------------------------------------------
+Sun Dec 25 14:09:32 UTC 2016 - trcs@gmx.com
+
+- New upstream version 0.99.2
+  * Replaced 'stretch' wallpaper_mode setting with 'crop' in 
+    pcmanfm.conf
+  * Updated view_mode and sort settings in pcmanfm.conf with new 
+    values
+  * Made dbus-launch start only if $XDG_RUNTIME_DIR/bus isn't 
+    available
+  * Updated lxpanel configuration files to match latest version
+  * Added volume plugin to default panel, near everyone uses audio 
+    nowadays
+  * Removed netstat plugin from default panel, it's usually 
+    superseded with either NM or wicd
+  * Updated startlxde.1 man page
+  * Ensured the existance of the user applications folder by 
+    startlxde
+  
+  Changes on 0.99.2 since 0.99.1:
+  
+  * Added TryExec=lxsession-logout into lxde-logout.desktop
+  * Added W+f keybinding for pcmanfm --find-files
+
+-------------------------------------------------------------------
+Thu Sep  4 09:53:40 UTC 2014 - trcs@gmx.com
+
+- New upstream version 0.99.0
+  * Changes since previous release 0.5.6
+    + Fixed missing install of lxde-logout.desktop file
+    + Removed inappropriate text about lxde-settings from README
+    + Fixed sort_by in the pcmanfm.conf, it should be 2, not 0
+    + Added exporting XDG_CURRENT_DESKTOP in startlxde script
+    + Disabled copying pcmanfm config file. The recent pcmanfm 
+      releases support profile selection on its own, so this code 
+      is no longer needed
+    + Fixed lxpanel profile location
+    + Added launching LXRandR when Fn+Screen (XF86Display key) is 
+      pressed
+    + Correctly implemented translations for *.desktop files using 
+      intltool, now those can be properly translated
+    + Added lxde-screenlock.desktop file to call lxlock (taken 
+      from Debian, with translations too)
+    + Few new translations added, some were updated
+    + Removed obsolete key Encoding from *.desktop files
+  * changes since previous release 0.5.5
+    + The "Fullscreen" keybinding in Openbox rc.xml file changed 
+      from F11 to Alt+F11, Many applications already have this 
+      keybinding bound to own processing so let not interfere with 
+      them
+    + Installation: added fix for invalid $sysconfdir in configure 
+      in case of $prefix is /usr
+    + Fixed incorrect path to pcmanfm.conf file in startlxde 
+      script
+    + Changed location of all configuration files placement from 
+      somewhere in system shared data directory to location under 
+      system config data directory
+    + Added keybinding for 'lxpanelctl menu' on Alt+F1, the same 
+      as it is in GNOME and Lubuntu
+    + Added keybinding to launch gnome-screenshot when PrintScreen 
+      is pressed
+    + Installation: updated autogen.sh to support automake > 1.11
+    + Changed default distribution tarball format to xz instead of 
+      gzip
+- removed lxde-common-0.5.5-fix-default-pcmanfm.patch
+  * fixed upstream
+- disabled lxde-common-0.5.0-lxde.desktop.patch
+  * renamed the file directly to avoid failed build caused by 
+    autoreconf
+- removed lxde-lock-screen.desktop
+  * it is now provided by upstream
+- spec file cleanup
+
+-------------------------------------------------------------------
+Wed Dec 19 13:56:01 UTC 2012 - andrea@opensuse.org
+
+- fixed build failures for suse <= 12.1 
+
+-------------------------------------------------------------------
+Wed Jun  6 16:07:51 UTC 2012 - pgajdos@suse.com
+
+- fixed build (mv LXDE.desktop lxde.desktop)
+
+-------------------------------------------------------------------
+Thu Sep 22 08:23:41 UTC 2011 - andrea.turrini@opensuse.org
+
+- fixed typos in lxde-common.spec
+
+-------------------------------------------------------------------
+Sat Jul 30 10:37:12 UTC 2011 - andrea@opensuse.org
+
+- added lxde-common-0.5.5-fix-default-pcmanfm.patch to fix
+  import of default pcmanfm config file now in a different folder 
+
+-------------------------------------------------------------------
+Sat Jul 30 09:23:36 UTC 2011 - andrea@opensuse.org
+
+- New upstream version 0.5.5
+  * full support to pcmanfm2
+  * bugfixes
+  * full support to LXDE "profiles"
+- removed lxde-common-0.5.0-pcmanfm2.patch and
+  lxde-common-startlxde.diff now into upstream code
+
+-------------------------------------------------------------------
+Wed Jul 27 06:22:01 UTC 2011 - andrea@opensuse.org
+
+- fixed bug bnc#698167 
+
+-------------------------------------------------------------------
+Thu Jul 21 14:54:19 UTC 2011 - andrea@opensuse.org
+
+- fixed branding package dependency 
+
+-------------------------------------------------------------------
+Sun Jul 10 18:05:03 UTC 2011 - andrea@opensuse.org
+
+- removed useless pkgconfig and gtk2-devel buildrequires 
+- added URL tag
+- fixed license tag
+
+-------------------------------------------------------------------
+Wed Mar 23 16:11:41 UTC 2011 - andrea@opensuse.org
+
+- added gtk2-engines on suse 11.4 to fix ugly appereance 
+
+-------------------------------------------------------------------
+Mon Mar 14 17:38:01 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Wed Feb  2 12:26:09 UTC 2011 - gber@opensuse.org
+
+- rename session file from LXDE.desktop to lxde.desktop
+
+-------------------------------------------------------------------
+Sun Nov 21 09:05:23 UTC 2010 - andrea@opensuse.org
+
+- Improved startlxde script to fix black background of first login
+
+-------------------------------------------------------------------
+Wed Nov  3 23:05:47 UTC 2010 - andrea@opensuse.org
+
+- Fixed startlxde script to copy pcmanfm.conf in the proper
+  location bnc#651089
+
+-------------------------------------------------------------------
+Mon Jun  7 14:10:24 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Tue May 18 08:32:37 UTC 2010 - andrea@opensuse.org
+
+- Sync pcmanfm.conf with new one from pcmanfm 0.9.5 
+
+-------------------------------------------------------------------
+Fri Mar 26 12:22:10 UTC 2010 - andrea@opensuse.org
+
+- modified lxde-common-startlxde.diff patch to fix bnc#591407 
+
+-------------------------------------------------------------------
+Mon Mar  1 11:37:31 UTC 2010 - andrea@opensuse.org
+
+- added lxde-common-0.5.0-pcmanfm2.patch to switch to pcmanfm2 
+
+-------------------------------------------------------------------
+Tue Feb  9 12:40:40 UTC 2010 - andrea@opensuse.org
+
+- lxsession export dbus information now, gnome-keyring now work
+  out of the box. Fixed bnc#564703
+
+-------------------------------------------------------------------
+Thu Dec 24 14:35:13 UTC 2009 - andrea@opensuse.org
+
+- spec file cleanup 
+
+-------------------------------------------------------------------
+Wed Dec 23 16:38:46 UTC 2009 - andrea@opensuse.org
+
+- added workaround to bnc#564703 
+
+-------------------------------------------------------------------
+Fri Dec 11 08:15:06 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.0 
+
+-------------------------------------------------------------------
+Sun Oct 25 00:38:16 UTC 2009 - andrea@opensuse.org
+
+- improved startlxde.diff to respect XDG system variables
+  based also on LOCALE settings 
+
+-------------------------------------------------------------------
+Fri Jul 17 09:13:18 CEST 2009 - andrea@opensuse.org
+
+- upgrade to svn 1835, lxde-settings-daemon now obsoletes
+- created branding upstream package 
+
+-------------------------------------------------------------------
+Wed Jul  8 15:47:23 CEST 2009 - andrea@opensuse.org
+
+- New upstream version 0.4.2 
+
+-------------------------------------------------------------------
+Sat May 30 16:20:11 CEST 2009 - andrea@opensuse.org
+
+- added pcmanfm default settings
+- added workaround for lxpanel x86_64 issue 
+
+-------------------------------------------------------------------
+Sat May 23 16:20:53 CEST 2009 - andrea@opensuse.org
+
+- new package
+

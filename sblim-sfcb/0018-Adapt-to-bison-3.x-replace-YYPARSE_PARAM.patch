@@ -1,0 +1,94 @@
+From efd7cd785d31072bd1ed32e93293cbba5c8aa92a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Nov 2017 11:59:40 +0100
+Subject: [PATCH 18/25] Adapt to bison-3.x: replace YYPARSE_PARAM
+
+was deprecated since bison 1.875
+Adapt yyerror parameters as well
+---
+ cimXmlOps.y      | 9 ++++-----
+ queryParser.y    | 7 +++----
+ queryStatement.c | 2 +-
+ 3 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/cimXmlOps.y b/cimXmlOps.y
+index 5f4a7b2f9425..449164b17cdb 100644
+--- a/cimXmlOps.y
++++ b/cimXmlOps.y
+@@ -54,8 +54,6 @@ int updateMethodParamTypes(RequestHdr * hdr);
+ // Define the global parser state object:
+ //
+ 
+-#define YYPARSE_PARAM parm
+-#define YYLEX_PARAM parm
+ #define YYERROR_VERBOSE 1
+ 
+ 
+@@ -72,7 +70,7 @@ extern int      noChunking;
+ 
+ 
+ 
+-extern int yyerror(void* parm, const char*);
++extern int yyerror(void *, const char *);
+ extern int yylex (void *lvalp, ParserControl *parm);
+ //extern MsgSegment setInstanceMsgSegment(const CMPIInstance *ci);
+ 
+@@ -1796,8 +1794,9 @@ buildEnumerationCountRequest(void *parm)
+ 
+ %}
+ 
+-%pure_parser
+-%parse-param { void* parm }
++%pure-parser
++%parse-param { void* parm };
++%lex-param { void *parm };
+ 
+ /*
+ **==============================================================================
+diff --git a/queryParser.y b/queryParser.y
+index 64d93595d77c..ce97218dad6e 100644
+--- a/queryParser.y
++++ b/queryParser.y
+@@ -6,7 +6,8 @@
+ **==============================================================================
+ */
+ 
+-
++%parse-param { void *parm };
++%lex-param { void *parm };
+ %{
+ 
+ /*
+@@ -67,15 +68,13 @@
+ #include "queryOperation.h"
+ #include "mlog.h"
+ 
+-#define YYPARSE_PARAM parm
+-#define YYLEX_PARAM parm
+ #define YYERROR_VERBOSE 1 
+  
+ extern int yylex(void *);
+ extern void sfcQueryErr(char*,char*,char*);
+ extern void yyError(char*);
+ extern void yyerror(char*);
+-extern void sfcQueryError(const char* s1);
++extern void sfcQueryError(void *, const char* s1);
+ extern char * qsStrDup(QLStatement *qs, char *str);
+ extern QLOperand* newNameQueryOperand(QLStatement *qs, char* val);
+ 
+diff --git a/queryStatement.c b/queryStatement.c
+index 59bab8c83b74..9c5c4daa8002 100644
+--- a/queryStatement.c
++++ b/queryStatement.c
+@@ -72,7 +72,7 @@ sfcQueryErr(char *s1, char *s2, char *s3)
+ }
+ 
+ void
+-sfcQueryError(char *s1)
++sfcQueryError(void __attribute__ ((unused)) *unused, char *s1)
+ {
+   mlogf(M_ERROR, M_SHOW, "--- %s\n", s1);
+ }
+-- 
+2.15.0
+

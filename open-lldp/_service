@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/lldpad.git</param>
+    <param name="subdir"></param>
+    <param name="filename">open-lldp</param>
+    <param name="version">v1.0.1</param>
+    <param name="versionformat">v1.0.1+@TAG_OFFSET@.%h</param>
+    <param name="match-tag">v1.[0-9].[0-9]</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*open-lldp*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

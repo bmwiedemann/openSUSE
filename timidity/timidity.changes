@@ -1,0 +1,612 @@
+-------------------------------------------------------------------
+Tue Feb 20 14:33:10 CET 2018 - tiwai@suse.de
+
+- Fix division-by-zero with malformed MIDI file (CVE-2017-11546,
+  bsc#1081694):
+  timidity-readmidi-zero-division-fix.patch
+- Fix out-of-bound accesses in the resamplers (CVE-2017-11547,
+  bsc#1081694):
+  timidity-resample-frac-overflow-fix.patch
+- Drop tcl/tk dependency; it's already broken with Tcl/Tk 8.6
+
+-------------------------------------------------------------------
+Thu Nov 23 13:53:31 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Sep 27 16:26:34 UTC 2017 - dimstar@opensuse.org
+
+- Disable obsolete esd support:
+  + Drop esound-devel BuildRequires.
+  + Remove esd from configure's --enable-audio parameter.
+
+-------------------------------------------------------------------
+Mon Jul 21 16:21:43 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2.14.0 (final)
+  + Add --reverb option for Freeverb parameter.
+  + Add --preserve-silence option.
+  + Add a "trysource" config file directive, which allows to try and
+    source other config files, while continuing without error if the
+    specified file is missing.
+  + Support for GM2 Master Fine/Coarse Tuning, GS Master Tune and XG
+    Master Tuning (4C not 27) SysEx.
+  + Allow Device Numbers other than 0x10 for XG SYSTEM ON SYSEX
+    events.
+  + Fix multiple vulnerabilities found in GNU gzip also apply to lha,
+    namely: CVE-2006-4335, CVE-2006-4337 and CVE-2006-4338.
+  + Support for lzma decompression.
+  + Support for ipv6.
+  + Support for libpng 1.5 and newer.
+  + Support for Tcl/Tk 8.5.
+  + Make compatible with xaw3d v1.5, style changes.
+  + Various improvements in XAW interface (see README.xaw).
+  + Support for Windows Named Pipe interface.
+  + ...and many other bug fixes.
+- Use systemd instead of sysvinit
+- Remove obsolete patches
+  + 0001-Fix-possible-invalid-access-below-the-array-range.patch
+  + 0003-Fix-the-faulty-check-of-parameters-in-server_c.c-con.patch
+  + 0004-Add-missing-void-argument-for-function-declarations.patch
+  + 0005-Add-missing-quotes-in-autoconf-utils.m4.patch
+  + 0006-Add-the-lzma-decompression-support.patch
+  + 0007-Fix-the-missing-return-value-in-emacs_c.c.patch
+  + 0008-Fix-type-punning-in-smplfile.c.patch
+  + 0009-Use-AS_HELP_STRING-to-make-the-help-output-more-read.patch
+- Remove obsolete macros hacks
+- Fix default parameters for server mode
+- Fix wrong SUSE capitalization
+- Use download Url as source
+
+-------------------------------------------------------------------
+Sat Dec  1 14:36:24 UTC 2012 - freek@opensuse.org
+
+ - timidity as a system daemon conflicts with pulseaudio bnc#790158
+   a warning is printed when timidity as a system daemon is started and
+   pulsaudio is enabled. The solution is documented in README.SuSE.
+
+-------------------------------------------------------------------
+Fri Nov  9 15:10:56 UTC 2012 - freek@opensuse.org
+
+- Fixed init script TIM_ALSASEQPARAM -> TIM_ALSASEQPARAMS bnc#788444
+- Reversed value of the two pameters in /etc/sysconfig/timidity and
+  added some extra parameters as default
+- Added some comment about the values of the paramters and
+  two recommended package: fluid-soundfont-gm and fluid-soundfont-gs
+ 
+-------------------------------------------------------------------
+Wed May 30 17:56:39 CEST 2012 - tiwai@suse.de
+
+- Update to TiMidity++ 2.14.0-pre git version (commit 81c8d72e)
+- Rebase existing patches
+
+-------------------------------------------------------------------
+Mon May 28 19:53:55 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Disable building the Motif output plugin
+  (see http://lists.opensuse.org/opensuse-factory/2012-05/msg00133.html)
+
+-------------------------------------------------------------------
+Tue Mar 27 13:25:38 UTC 2012 - aj@suse.de
+
+- Add buildrequire on xorg-x11 for directory ownership.
+
+-------------------------------------------------------------------
+Fri Dec  2 16:32:42 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Sep 20 15:12:05 UTC 2011 - idonmez@suse.com
+
+- Fix timidity startup parameter bnc#675426 
+- Don't package INSTALL file
+
+-------------------------------------------------------------------
+Fri Aug 12 15:43:27 CEST 2011 - tiwai@suse.de
+
+- Fix inifinte loop with non-existing soundfont files
+
+-------------------------------------------------------------------
+Wed Jan 19 21:02:22 CET 2011 - pth@suse.de
+
+- Fix name of fluid config files.
+
+-------------------------------------------------------------------
+Wed Jan 19 20:22:46 CET 2011 - pth@suse.de
+
+- Fix init script, use pmidi to list the midi ports TiMidity has
+  connected to.
+
+-------------------------------------------------------------------
+Wed Jan 19 19:19:58 CET 2011 - pth@suse.de
+
+- Add an init script that sets up timidity as an alsa MIDI
+  sequencer.
+- Fix all implicit declarations.
+- Enable FLAC/OggFLAC and speex support.
+- Fix timidity to work with the changed FLAC API.
+- Fix OggFLAC support.
+- Properly quote arguments to AC_DEFUN
+- Use AS_HELP_STRING to make the --help output more readable.
+- Add _cv_ to configure variables to get them cached again.
+- Fix ptr<->int casts.
+- Add xz and lzma to list of decompressors.
+- Convert files in utils from EUC-JISX0213 to UTF-8.
+- Remove use of __DATE__ to prevent needless rebuilds.
+- Recommend the FLUID soundfont packages.
+- Add commented lines to source the soundfont configuration
+  files.
+
+-------------------------------------------------------------------
+Fri Sep  3 12:52:09 CEST 2010 - tiwai@suse.de
+
+- remove arts output for FACTORY (so that libpng14 is used)
+
+-------------------------------------------------------------------
+Tue Jun 30 15:32:58 CEST 2009 - tiwai@suse.de
+
+- fix array subscript overflow in server_c.c (bnc#517719)
+
+-------------------------------------------------------------------
+Thu Sep 25 16:47:01 CEST 2008 - lrupp@suse.de
+
+- build on older distributions
+- disable internal dependency generator 
+
+-------------------------------------------------------------------
+Wed Apr 16 17:09:40 CEST 2008 - tiwai@suse.de
+
+- fix build with tcl8.5
+
+-------------------------------------------------------------------
+Tue Jan 15 14:33:33 CET 2008 - tiwai@suse.de
+
+- fix app-defaults for UTF-8 japanese locale (#353816)
+- fix fonts to work without 100dpi fonts
+
+-------------------------------------------------------------------
+Thu Aug  2 18:36:23 CEST 2007 - tiwai@suse.de
+
+- fix alsaseq polling at idle time
+- clean up spec file
+
+-------------------------------------------------------------------
+Wed Jun 20 14:50:53 CEST 2007 - tiwai@suse.de
+
+- fix fdupes usage
+- fix encoding of ja_JP documents
+
+-------------------------------------------------------------------
+Tue Jun 12 18:36:49 CEST 2007 - tiwai@suse.de
+
+- add missing libao support
+- use fdupes to make rpmlint happy
+
+-------------------------------------------------------------------
+Fri Jun  1 17:12:09 CEST 2007 - dmueller@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Wed May 23 13:54:31 CEST 2007 - tiwai@suse.de
+
+- fixed path in non-executable *.tcl files
+
+-------------------------------------------------------------------
+Mon Apr  2 16:24:49 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 31 11:54:54 CET 2007 - tiwai@suse.de
+
+- fix invalid array access (#240161)
+- fix broken gcc4-fix patch
+
+-------------------------------------------------------------------
+Wed Aug 30 00:10:54 CEST 2006 - ro@suse.de
+
+- add a newline to autoconf/arts.m4 for new m4
+
+-------------------------------------------------------------------
+Thu Aug  3 12:56:37 CEST 2006 - tiwai@suse.de
+
+- fixed app-defaults path to /usr/share/X11.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  2 17:24:38 CET 2005 - tiwai@suse.de
+
+- fixed compile warning (#134737).
+
+-------------------------------------------------------------------
+Thu Oct 13 12:05:07 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Tue May 10 13:01:41 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS. Fix problems spotted by gcc4.
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Apr  8 14:55:28 CEST 2005 - tiwai@suse.de
+
+- fix compilation with gcc-4.0.
+
+-------------------------------------------------------------------
+Fri Jan 21 13:17:23 CET 2005 - tiwai@suse.de
+
+- updated to version 2.13.2.
+- link with gtk2.
+
+-------------------------------------------------------------------
+Thu Aug  5 16:10:04 CEST 2004 - tiwai@suse.de
+
+- updated to 2.13.0 final.
+- enabled server mode again.
+
+-------------------------------------------------------------------
+Mon Mar  1 14:47:17 CET 2004 - tiwai@suse.de
+
+- updated to 2.13.0-rc2 tarball.
+
+-------------------------------------------------------------------
+Fri Feb 27 15:35:12 CET 2004 - tiwai@suse.de
+
+- updated to 2.13.0-rc2 (cvs version).
+- build interfaces as dynamic objects.
+- fixed the path of timidity.el.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:34:15 CET 2004 - adrian@suse.de
+
+- fix Categories
+
+-------------------------------------------------------------------
+Wed Feb 11 19:08:18 CET 2004 - tiwai@suse.de
+
+- updated to version 2.13.0-rc1.
+- added glib2 and glib2-devel for arts.
+
+-------------------------------------------------------------------
+Mon Jan 12 10:32:35 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jan  9 16:22:21 CET 2004 - tiwai@suse.de
+
+- updated to cvs 2004.01.09 version.
+
+-------------------------------------------------------------------
+Mon Nov 17 20:30:03 CET 2003 - tiwai@suse.de
+
+- updated to cvs 2003.11.17 version.
+  all patches have been merged.
+- use /etc/timidity.cfg as the config file (bug #32486).
+
+-------------------------------------------------------------------
+Thu Sep 18 11:36:05 CEST 2003 - tiwai@suse.de
+
+- fixed a segfault when a non-existing drum is played.
+- fixed the fallback device detection.
+
+-------------------------------------------------------------------
+Mon Sep 15 17:39:10 CEST 2003 - tiwai@suse.de
+
+- added desktop icon.
+
+-------------------------------------------------------------------
+Fri Sep 12 12:38:31 CEST 2003 - tiwai@suse.de
+
+- security fix for realtime-priority mode.
+- added RT-priority and sequencer ports options.
+- fixed the effect table.
+- fixed the option parser.
+
+-------------------------------------------------------------------
+Mon Sep  8 11:36:29 CEST 2003 - tiwai@suse.de
+
+- use the absolute path in desktop file to avoid the name
+  confliction.
+
+-------------------------------------------------------------------
+Thu Sep  4 19:09:59 CEST 2003 - adrian@suse.de
+
+- it is installed by default -> hide menu entry by default
+
+-------------------------------------------------------------------
+Wed Sep  3 19:13:51 CEST 2003 - tiwai@suse.de
+
+- fixed the generation of tclIndex on build system.
+- clean up make install stuffs.
+
+-------------------------------------------------------------------
+Tue Sep  2 14:49:06 CEST 2003 - tiwai@suse.de
+
+- fixed the xaw interface bug.
+- exit timidity properly when the interface is killed.
+- install japanese X resource files.
+
+-------------------------------------------------------------------
+Wed Aug 27 16:19:50 CEST 2003 - tiwai@suse.de
+
+- improved the rendering resolution on ALSA sequencer interface.
+  supporting non-stream type output devices like WAV.
+- set the proper client name on ALSA sequener interface.
+
+-------------------------------------------------------------------
+Mon Aug 25 16:06:10 CEST 2003 - tiwai@suse.de
+
+- updated to cvs 2003.08.25.
+  supporting JACK output.
+- fixed neededforbuild for JACK support.
+
+-------------------------------------------------------------------
+Tue Aug 19 19:28:23 CEST 2003 - tiwai@suse.de
+
+- updated to cvs version 2003.08.19.
+  supported long options.
+- use xaw interface for desktop command.
+
+-------------------------------------------------------------------
+Fri Aug 15 17:37:26 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jul 24 11:20:43 CEST 2003 - tiwai@suse.de
+
+- added tk-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Jul 23 15:34:54 CEST 2003 - uli@suse.de
+
+- no ALSA on s390*
+
+-------------------------------------------------------------------
+Tue Jul 22 12:51:39 CEST 2003 - tiwai@suse.de
+
+- updated to cvs 2003.07.22.
+  fixed the fallback output-device.
+- added aRts output support.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:52:55 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jul  7 17:09:42 CEST 2003 - tiwai@suse.de
+
+- updated to cvs 2003.07.07.
+- removed obsolete documents.
+
+-------------------------------------------------------------------
+Thu Jul  3 10:55:12 CEST 2003 - tiwai@suse.de
+
+- fixed the build on x86-64.
+
+-------------------------------------------------------------------
+Wed Jul  2 17:16:44 CEST 2003 - tiwai@suse.de
+
+- use the nightly tarball 2003.07.02 including many fixes.
+
+-------------------------------------------------------------------
+Thu Jun  5 15:59:24 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Aug 29 14:54:57 CEST 2002 - tiwai@suse.de
+
+- fixed alsaseq interface to initialize effects (bug #18558).
+
+-------------------------------------------------------------------
+Tue Aug 20 18:56:58 CEST 2002 - tiwai@suse.de
+
+- fixed the declarations of variables on 64bit architectures.
+
+-------------------------------------------------------------------
+Mon Aug 12 15:30:20 CEST 2002 - tiwai@suse.de
+
+- updated to the patch to 20020804 version.
+
+-------------------------------------------------------------------
+Mon Aug 12 14:47:41 CEST 2002 - schwab@suse.de
+
+- Fix makefile.
+
+-------------------------------------------------------------------
+Mon Jul 15 15:28:46 CEST 2002 - tiwai@suse.de
+
+- added detection of tcl/tk 8.4.
+
+-------------------------------------------------------------------
+Wed Jul  3 16:33:58 CEST 2002 - tiwai@suse.de
+
+- fixed seg-fault on alsa seq interface mode.
+
+-------------------------------------------------------------------
+Mon Jul  1 17:33:07 CEST 2002 - tiwai@suse.de
+
+- updated to version 2.12.0-pre1b.
+  alsa 0.9 patch is already included.
+- added unofficial enhancement patches.
+
+-------------------------------------------------------------------
+Fri May 31 15:57:22 CEST 2002 - ro@suse.de
+
+- changed neededforbuild <slang> to <slang slang-devel>
+
+-------------------------------------------------------------------
+Mon May  6 15:09:39 CEST 2002 - tiwai@suse.de
+
+- fixed __libdir.
+
+-------------------------------------------------------------------
+Mon Apr  8 12:58:53 CEST 2002 - ro@suse.de
+
+- build with current automake/autoconf 
+
+-------------------------------------------------------------------
+Thu Mar  7 14:14:37 CET 2002 - tiwai@suse.de
+
+- open the device with non-block mode on alsa output.
+
+-------------------------------------------------------------------
+Mon Feb 18 12:53:05 CET 2002 - tiwai@suse.de
+
+- fixed the path in default config file (Bug #13392).
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:14 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 22 17:11:18 CET 2002 - ttiwai@suse.de
+
+- updated to version 2.11.3 (bug fixed version).
+- added %defattr to filelist.
+
+-------------------------------------------------------------------
+Tue Jan 15 11:18:13 CET 2002 - tiwai@suse.de
+
+- updated to version 2.11.2. (bug-fixed version)
+- regenerated alsa9 patch.
+
+-------------------------------------------------------------------
+Wed Jan  2 17:24:07 CET 2002 - tiwai@suse.de
+
+- updated to version 2.11.1.
+- removed (already integrated) patches for soundfont support.
+
+-------------------------------------------------------------------
+Mon Dec  3 16:37:22 CET 2001 - tiwai@suse.de
+
+- corrected patch for ALSA 0.9.0.
+
+-------------------------------------------------------------------
+Mon Nov  5 16:06:11 CET 2001 - tiwai@suse.de
+
+- updated to version 2.11.0-pre2.
+- fixed build with the latest automake.
+- improved lowpass filter in soundfont emulation.
+
+-------------------------------------------------------------------
+Thu Oct 25 16:27:25 CEST 2001 - tiwai@suse.de
+
+- fixed incorrect tuning on some soundfonts.
+- added suse_update_config.
+
+-------------------------------------------------------------------
+Mon Oct  8 11:29:34 CEST 2001 - tiwai@suse.de
+
+- support playback of RMI file (bug #11680).
+
+-------------------------------------------------------------------
+Fri Jul 13 12:26:51 CEST 2001 - tiwai@suse.de
+
+- use _prefix and co.
+- fixed filelist.
+- fixed compile on ia64.
+
+-------------------------------------------------------------------
+Mon Apr  2 14:07:17 CEST 2001 - uli@suse.de
+
+- small fix for gcc >2.96
+
+-------------------------------------------------------------------
+Fri Mar 23 12:38:53 CET 2001 - tiwai@suse.de
+
+- fixed typo of documents location.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:03:13 CET 2001 - tiwai@suse.de
+
+- updated to ver.2.10.4.
+- added slang to neededforbuild.
+- updated options.html.
+- removed Makefile* from documents.
+
+-------------------------------------------------------------------
+Mon Mar 12 15:54:24 CET 2001 - tiwai@suse.de
+
+- updated to ver.2.10.3.
+- Add README.SuSE and options.html as separate files.
+
+-------------------------------------------------------------------
+Mon Dec 11 13:50:59 CET 2000 - tiwai@suse.de
+
+- added a sample patchset (out of kmidi).
+
+-------------------------------------------------------------------
+Wed Nov 29 18:54:43 CET 2000 - tiwai@suse.de
+
+- fixed big-endian support on alsa output device.
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:55 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Tue Nov 21 01:02:25 CEST 2000 - ro@suse.de
+
+- use openmotif
+
+-------------------------------------------------------------------
+Tue Nov 14 12:17:49 CET 2000 - tiwai@suse.de
+
+- Updated to 2.10.2.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:48:56 CEST 2000 - tiwai@suse.de
+
+- Update of ALSA-0.6.0 support.
+
+-------------------------------------------------------------------
+Fri Sep  1 15:31:09 CEST 2000 - tiwai@suse.de
+
+- Bugfix of ALSA sequencer interface and ALSA audio output.
+- Support for ALSA 0.6.0 (not enabled by build though).
+
+-------------------------------------------------------------------
+Tue Aug 15 13:07:01 CEST 2000 - tiwai@suse.de
+
+- update to official version 2.10.0
+- small alsaseq interface bugfix
+
+-------------------------------------------------------------------
+Tue Aug  1 17:35:23 CEST 2000 - tiwai@suse.de
+
+- update to version 2.10.0a3 (with the latest alsaseq patch)
+- add ALSA and ESD outputs
+- fix tcl/tk check in configure script
+
+-------------------------------------------------------------------
+Thu May 25 13:38:42 CEST 2000 - freitag@suse.de
+
+- update to version 2.9.4 
+
+-------------------------------------------------------------------
+Mon Feb  7 17:00:04 MET 2000 - freitag@suse.de
+
+- initial version 2.8.1
+

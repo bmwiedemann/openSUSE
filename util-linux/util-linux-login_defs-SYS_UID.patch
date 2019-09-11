@@ -1,0 +1,60 @@
+From 0d37969cbe2cb85d9c01f78071528a8a7c789f96 Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Wed, 24 Apr 2019 11:16:53 +0200
+Subject: [PATCH] lslogins: Fix discrepancies of SYS_UID_MIN
+
+util-linux does not contain useradd. Its most popular implementation
+comes from shadow. SYS_UID_MIN is one of common parameters. Its
+hardcoded fallback value is equal to 101 in shadow useradd (see
+shadow-4.6/libmisc/find_new_uid.c: get_ranges()), but 201 in
+login-utils/lslogins.c.
+
+Let lslogins use the same fallback as useradd from shadow.
+
+Hopefully most distros define its custom value of SYS_UID_MIN in
+/etc/login.defs, so this problem is not visible.
+
+login-utils/lslogins.1 does not mention its default at all. Add a
+reference and improve text of lslogins(1) to prevent off-by-one
+interpretation.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ login-utils/lslogins.1 | 6 +++---
+ login-utils/lslogins.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/login-utils/lslogins.1 b/login-utils/lslogins.1
+index 5aa14c706..f003ef264 100644
+--- a/login-utils/lslogins.1
++++ b/login-utils/lslogins.1
+@@ -92,9 +92,9 @@ Display information related to login by password (see also \fB\-afL).
+ Raw output (no columnation).
+ .TP
+ \fB\-s\fR, \fB\-\-system\-accs\fR
+-Show system accounts.  These are by default all accounts with a UID below 1000
+-(non-inclusive), with the exception of either nobody or nfsnobody (UID 65534).
+-This hardcoded default maybe overwritten by parameters SYS_UID_MIN and SYS_UID_MAX in
++Show system accounts.  These are by default all accounts with a UID between 101 and 999
++(inclusive), with the exception of either nobody or nfsnobody (UID 65534).
++This hardcoded default may be overwritten by parameters SYS_UID_MIN and SYS_UID_MAX in
+ the file /etc/login.defs.
+ .TP
+ \fB\-\-time\-format\fR \fItype\fP
+diff --git a/login-utils/lslogins.c b/login-utils/lslogins.c
+index efb20a4f7..3d9c9b97a 100644
+--- a/login-utils/lslogins.c
++++ b/login-utils/lslogins.c
+@@ -74,7 +74,7 @@ static int lslogins_flag;
+ 
+ #define UL_UID_MIN 1000
+ #define UL_UID_MAX 60000
+-#define UL_SYS_UID_MIN 201
++#define UL_SYS_UID_MIN 101
+ #define UL_SYS_UID_MAX 999
+ 
+ /* we use the value of outmode to determine
+-- 
+2.21.0
+

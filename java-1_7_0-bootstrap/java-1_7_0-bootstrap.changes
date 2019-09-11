@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue May  8 11:27:36 UTC 2018 - dmueller@suse.com
+
+- add armv7hl bootstrap binaries (copied from Leap 42.3 Ports GA)
+
+-------------------------------------------------------------------
+Thu Oct  5 07:08:01 UTC 2017 - fstrba@suse.com
+
+- Rename the icons to avoid file conflicts with java-1_7_0-openjdk
+  packages
+
+-------------------------------------------------------------------
+Mon Sep 11 19:49:02 UTC 2017 - matz@suse.com
+
+- New package.

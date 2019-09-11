@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Jul 15 04:49:10 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.11.1.1
+
+  * Fixed LIGHTBOX2_VERSION and VERSION constants (The values were not updated for the last release)
+
+-------------------------------------------------------------------
+Sun Jul 14 22:22:59 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.11.1
+
+  see upstream changelog: https://github.com/lokesh/lightbox2/releases/tag/v2.11.1
+
+  * #557 Bugfix - MaxHeight wouldn't work. Fix by @RuiBandarra
+  * #660 fix: use max[Width|Height] when fitImagesInViewport is false. Fix by @k-iwanishi
+  * #664 feature: Prevent Esc keypress from bubbling. Requested by @rkyoku in #663
+
+-------------------------------------------------------------------
+Sun May  5 09:33:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.11.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Mar 12 10:20:41 UTC 2019 - Lukas Krause <lukas.krause@suse.com>
+
+- Update to version 2.10.0.2
+  * Fix: Wrong version of jquery-rails was required within the gemspec file
+  * Fix(introduced in 2.10.0.1): Fixes an issue when lightbox2 is being used in combination with turbolinks
+
+-------------------------------------------------------------------
+Mon Mar 11 17:16:30 UTC 2019 - Lukas Krause <lukas.krause@suse.com>
+
+- Initialize package 

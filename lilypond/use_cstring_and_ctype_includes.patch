@@ -1,0 +1,83 @@
+Description: Include missing cstring include files
+Forwarded: 
+Origin: vendor
+Author: Don Armstrong <don@debian.org>
+Index: lily/midi-stream.cc
+===================================================================
+--- lily/midi-stream.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/midi-stream.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -18,7 +18,7 @@
+ */
+ 
+ #include "midi-stream.hh"
+-
++#include <cstring>
+ #include <cerrno>
+ using namespace std;
+ 
+Index: lily/piano-pedal-engraver.cc
+===================================================================
+--- lily/piano-pedal-engraver.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/piano-pedal-engraver.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -38,6 +38,7 @@
+ #include "item.hh"
+ 
+ #include "translator.icc"
++#include <cstring>
+ 
+ #include <string.h>
+ 
+Index: lily/prob.cc
+===================================================================
+--- lily/prob.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/prob.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -22,7 +22,7 @@
+ #include "item.hh"
+ #include "input.hh"
+ #include "profile.hh"
+-
++#include <cstring>
+ #include "ly-smobs.icc"
+ 
+ IMPLEMENT_SMOBS (Prob);
+Index: lily/relocate.cc
+===================================================================
+--- lily/relocate.cc.orig	2018-05-15 10:43:59.399752162 +0200
++++ lily/relocate.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -23,8 +23,10 @@
+ 
+ /* TODO: autoconf support */
+ 
++#include <ctype.h>
+ #include <sys/types.h>
+ #include <dirent.h>
++#include <cstring>
+ 
+ #if HAVE_GETTEXT
+ #include <libintl.h>
+Index: lily/source-file.cc
+===================================================================
+--- lily/source-file.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/source-file.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -24,7 +24,7 @@
+ #endif /* GCC_MAJOR < 4 */
+ 
+ #include "source-file.hh"
+-
++#include <cstring>
+ #include "config.hh"
+ 
+ #include <cstdio>
+Index: lily/translator.cc
+===================================================================
+--- lily/translator.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/translator.cc	2018-05-15 10:50:35.852394146 +0200
+@@ -18,7 +18,7 @@
+ */
+ 
+ #include "translator.hh"
+-
++#include <cstring>
+ #include "context-def.hh"
+ #include "dispatcher.hh"
+ #include "global-context.hh"

@@ -1,0 +1,73 @@
+From 599cc7afea4c418ff9eff1bd3b4b3d4f157162e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 22 Dec 2018 03:00:04 +0100
+Subject: [PATCH] Avoid leaking string copy
+
+---
+ texk/web2c/pdftexdir/pdftoepdf-poppler0.69.0.cc |    2 +-
+ texk/web2c/pdftexdir/pdftoepdf-poppler0.70.0.cc |    2 +-
+ texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc |    2 +-
+ texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc |    2 +-
+ texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.69.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.69.0.cc
+--- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.69.0.cc
++++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.69.0.cc
+@@ -977,7 +977,7 @@ The changes below seem to work fine.
+             }
+             l = dic1.getLength();
+             for (i = 0; i < l; i++) {
+-                groupDict.dictAdd((const char *)copyString(dic1.getKey(i)),
++                groupDict.dictAdd((const char *)dic1.getKey(i),
+                                   dic1.getValNF(i));
+             }
+ // end modification
+diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.70.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.70.0.cc
+--- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.70.0.cc
++++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.70.0.cc
+@@ -977,7 +977,7 @@ The changes below seem to work fine.
+             }
+             l = dic1.getLength();
+             for (i = 0; i < l; i++) {
+-                groupDict.dictAdd((const char *)copyString(dic1.getKey(i)),
++                groupDict.dictAdd((const char *)dic1.getKey(i),
+                                   dic1.getValNF(i));
+             }
+ // end modification
+diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc
+--- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc
++++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc
+@@ -977,7 +977,7 @@ The changes below seem to work fine.
+             }
+             l = dic1.getLength();
+             for (i = 0; i < l; i++) {
+-                groupDict.dictAdd((const char *)copyString(dic1.getKey(i)),
++                groupDict.dictAdd((const char *)dic1.getKey(i),
+                                   dic1.getValNF(i));
+             }
+ // end modification
+diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
+--- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
++++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
+@@ -977,7 +977,7 @@ The changes below seem to work fine.
+             }
+             l = dic1.getLength();
+             for (i = 0; i < l; i++) {
+-                groupDict.dictAdd((const char *)copyString(dic1.getKey(i)),
++                groupDict.dictAdd((const char *)dic1.getKey(i),
+                                   dic1.getValNF(i));
+             }
+ // end modification
+diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc
+--- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc
++++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc
+@@ -977,7 +977,7 @@ The changes below seem to work fine.
+             }
+             l = dic1.getLength();
+             for (i = 0; i < l; i++) {
+-                groupDict.dictAdd((const char *)copyString(dic1.getKey(i)),
++                groupDict.dictAdd((const char *)dic1.getKey(i),
+                                   dic1.getValNF(i).copy());
+             }
+ // end modification

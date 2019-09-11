@@ -1,0 +1,14 @@
+Index: gold/configure
+===================================================================
+--- gold/configure.orig	2018-07-16 09:55:04.675278145 +0200
++++ gold/configure	2018-07-16 09:55:36.007836031 +0200
+@@ -5180,7 +5180,8 @@ for targ in $target $canon_targets; do
+     . ${srcdir}/configure.tgt
+ 
+     if test "$targ_obj" = "UNKNOWN"; then
+-      as_fn_error $? "\"unsupported target $targ\"" "$LINENO" 5
++      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \"unsupported target $targ\"" >&5
++        $as_echo "$as_me: WARNING: \"unsupported target $targ\"" >&2;}
+     else
+       targetobjs="$targetobjs ${targ_obj}.\$(OBJEXT)"
+       if test "$targ_extra_obj" != ""; then

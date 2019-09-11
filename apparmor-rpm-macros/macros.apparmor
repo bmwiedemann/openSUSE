@@ -1,0 +1,7 @@
+%apparmor_reload()\
+	if [ "$YAST_IS_RUNNING" != "instsys" ]; then\
+		if /usr/bin/systemctl is-active --quiet apparmor.service; then\
+			/sbin/apparmor_parser -r -T -W %{?*} &> /dev/null || :\
+		fi\
+	fi\
+%{nil}

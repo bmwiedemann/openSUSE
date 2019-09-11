@@ -1,0 +1,83 @@
+--- rtf-fix/rtf2rtf.c
++++ rtf-fix/rtf2rtf.c	1999/04/26 23:12:12
+@@ -543,8 +543,8 @@
+ int section_id = 0; /* used for TOC hyperlinks */
+ int in_appendix = 0;
+   
+-FILE *out = stdout;
+-FILE *idx_fp = stdout;
++FILE *out;
++FILE *idx_fp;
+ 
+ char buf[2048], sectname[256], labeltxt[256];
+ char firstname[256], outname[256];
+@@ -2079,6 +2079,8 @@
+ main( int argc, char **argv )
+ {
+   int i;
++
++  out = idx_fp = stdout;
+ 
+   strcpy( firstname, "RTF" );
+ 
+--- rtf-fix/rtf2rtf.l
++++ rtf-fix/rtf2rtf.l	1999/04/26 23:11:39
+@@ -53,8 +53,8 @@
+ int section_id = 0; /* used for TOC hyperlinks */
+ int in_appendix = 0;
+   
+-FILE *out = stdout;
+-FILE *idx_fp = stdout;
++FILE *out;
++FILE *idx_fp;
+ 
+ char buf[2048], sectname[256], labeltxt[256];
+ char firstname[256], outname[256];
+@@ -384,6 +384,8 @@
+ main( int argc, char **argv )
+ {
+   int i;
++
++  out = idx_fp = stdout;
+ 
+   strcpy( firstname, "RTF" );
+ 
+--- lib/dist/sgmltool/latex2e/mapping~	Fri Jun 26 21:39:17 1998
++++ lib/dist/sgmltool/latex2e/mapping	Tue Jun 29 14:51:46 1999
+@@ -10,7 +10,7 @@
+ 			"\\usepackage{url}\n"
+ 			"\\usepackage\[latin1\]{inputenc}\n"
+ 			"\\usepackage{t1enc}\n"
+-			"\\usepackage{babel}\n"
++			"\\usepackage\[english\]{babel}\n"
+ 			"\\usepackage{epsfig}\n"
+ 			"\\usepackage{[OPTS]}\n"
+ 			"\\def\\addbibtoc{\n"
+@@ -25,7 +25,7 @@
+ 			"\\usepackage{url}\n"
+ 			"\\usepackage\[latin1\]{inputenc}\n"
+ 			"\\usepackage{t1enc}\n"
+-			"\\usepackage{babel}\n"
++			"\\usepackage\[english\]{babel}\n"
+ 			"\\usepackage{epsfig}\n"
+ 			"\\usepackage{[OPTS]}\n"
+ 			"\\def\\addbibtoc{\n"
+@@ -41,7 +41,7 @@
+ 			"\\usepackage{url}\n"
+ 			"\\usepackage\[latin1\]{inputenc}\n"
+ 			"\\usepackage{t1enc}\n"
+-			"\\usepackage{babel}\n"
++			"\\usepackage\[english\]{babel}\n"
+ 			"\\usepackage{epsfig}\n"
+ 			"\\usepackage{[OPTS]}\n"
+ 			"\\def\\addbibtoc{\n"
+@@ -58,7 +58,7 @@
+ 			"\\usepackage{url}\n"
+ 			"\\usepackage\[latin1\]{inputenc}\n"
+ 			"\\usepackage{t1enc}\n"
+-			"\\usepackage{babel}\n"
++			"\\usepackage\[english\]{babel}\n"
+ 			"\\usepackage{epsfig}\n"
+ 			"\\usepackage{[OPTS]}\n"
+ 			"\\def\\title#1{\n"
+

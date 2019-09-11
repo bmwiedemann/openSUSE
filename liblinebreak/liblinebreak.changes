@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Aug 19 13:50:22 UTC 2013 - schwab@suse.de
+
+- Move configure run into %build section to allow running
+  config.sub/config.guess update hook
+
+-------------------------------------------------------------------
+Wed Aug 31 22:54:07 UTC 2011 - kirill.kirillov@gmail.com
+
+- cleaned spec using spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug  2 22:57:13 UTC 2011 - kirill.kirillov@gmail.com
+
+- initial package of version 2.1
+

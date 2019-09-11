@@ -1,0 +1,37 @@
+From 70f2683580a88180238804546dd24a6a41427282 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Thu, 18 Aug 2011 10:06:01 +0200
+Subject: [PATCH] dhcp-4.1.1-tmpfile
+
+Signed-off-by: Marius Tomaschewski <mt@suse.de>
+
+diff --git a/server/db.c b/server/db.c
+index 5238ed8..0c642ad 100644
+--- a/server/db.c
++++ b/server/db.c
+@@ -1116,15 +1116,19 @@ int new_lease_file ()
+ 	 * either by malice or ignorance, we panic, since the potential
+ 	 * for havoc is high.
+ 	 */
+-	if (snprintf (newfname, sizeof newfname, "%s.%d",
+-		     path_dhcpd_db, (int)t) >= sizeof newfname)
++	if (snprintf (newfname, sizeof newfname, "%s.XXXXXX",
++		     path_dhcpd_db) >= sizeof newfname)
+ 		log_fatal("new_lease_file: lease file path too long");
+ 
+-	db_fd = open (newfname, O_WRONLY | O_TRUNC | O_CREAT, 0664);
++	db_fd = mkstemp (newfname);
+ 	if (db_fd < 0) {
+ 		log_error ("Can't create new lease file: %m");
+ 		return 0;
+ 	}
++	if (fchmod(db_fd, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH) == -1) {
++		log_error ("Can't fchmod new lease file: %m");
++		goto fail;
++	}
+ 
+ #if defined (PARANOIA)
+ 	/*
+-- 
+2.1.4
+

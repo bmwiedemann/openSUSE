@@ -1,0 +1,11 @@
+--- CBFlib_0.7.9/Makefile
++++ CBFlib_0.7.9/Makefile
+@@ -313,7 +313,7 @@
+ #########################################################
+ CC	= gcc
+ C++	= g++
+-CFLAGS  = -g -O2  -Wall -ansi -pedantic
++CFLAGS  = -g -O2  -Wall -ansi -pedantic $(RPM_OPT_FLAGS)
+ F90C = gfortran
+ F90FLAGS = -g
+ F90LDFLAGS = 

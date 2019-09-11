@@ -1,0 +1,933 @@
+-------------------------------------------------------------------
+Tue Jul 23 08:42:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.28.2:
+  * Fix include directory ordering when using bundled dependencies.
+  * Fix infinite loop when searching for a non-existing repository with
+    Windows-style paths including drive prefixes.
+  * Fix symlinks to directories on Windows.
+  * Fix paths with a trailing "/" not always being treated as
+    directories when computing ignores.
+  * Fix false negatives when computing ignores where ignore rules
+    that are a prefix to a negative ignore rule exist.
+  * Fix patches with CRLF line endings not being parsed correctly.
+  * Fix segfault when parsing patches with file addition (deletion)
+    where the added (deleted) file name contains a space.
+  * Fix assertion failure when trying to write to a non-existent
+    locked configuration file.
+
+-------------------------------------------------------------------
+Thu Feb 14 19:09:18 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+-  Update to version 0.28.1:
+   - The deprecated functions (git_buf_free and the giterr_ family
+     of functions) are now exported properly. In the v0.28 release,
+     they were not given the correct external attributes and they
+     did not have the correct linkage visibility in the v0.28
+     library.
+
+-------------------------------------------------------------------
+Wed Feb 13 10:20:24 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.28.0:
+  * Changes or improvements:
+    - The library is now always built with cdecl calling
+      conventions on Windows; the ability to build a stdcall
+      library has been removed.
+    - Reference log creation now honors
+      core.logallrefupdates=always.
+    - Fix some issues with the error-reporting in the OpenSSL
+      backend.
+    - HTTP proxy support is now builtin; libcurl is no longer used
+      to support proxies and is removed as a dependency.
+    - Certificate and credential callbacks can now return
+      GIT_PASSTHROUGH to decline to act; libgit2 will behave as if
+      there was no callback set in the first place.
+    - The line-ending filtering logic - when checking out files -
+      has been updated to match newer git (>= git 2.9) for proper
+      interoperability.
+    - Symbolic links are now supported on Windows when
+      core.symlinks is set to true.
+    - Submodules with names which attempt to perform path traversal
+      now have their configuration ignored. Such names were blindly
+      appended to the $GIT_DIR/modules and a malicious name could
+      lead to an attacker writing to an arbitrary location. This
+      matches git's handling of CVE-2018-11235.
+    - Object validation is now performed during tree creation in
+      the git_index_write_tree_to API.
+    - Configuration variable may now be specified on the same line
+      as a section header; previously this was erroneously a parser
+      error.
+    - When an HTTP server supports both NTLM and Negotiate
+      authentication mechanisms, we would previously fail to
+      authenticate with any mechanism.
+    - The GIT_OPT_SET_PACK_MAX_OBJECTS option can now set the
+      maximum number of objects allowed in a packfile being
+      downloaded; this can help limit the maximum memory used when
+      fetching from an untrusted remote.
+    - Line numbers in diffs loaded from patch files were not being
+      populated; they are now included in the results.
+    - The repository's index is reloaded from disk at the beginning
+      of git_merge operations to ensure that it is up-to-date.
+    - Mailmap handling APIs have been introduced, and the new
+      commit APIs git_commit_committer_with_mailmap and
+      git_commit_author_with_mailmap will use the mailmap to
+      resolve the committer and author information. In addition,
+      blame will use the mailmap given when the
+      GIT_BLAME_USE_MAILMAP option.
+    - Ignore handling for files in ignored folders would be
+      ignored.
+    - Worktrees can now be backed by bare repositories.
+    - Trailing spaces are supported in .gitignore files, these
+      spaces were previously (and erroneously) treated as part of
+      the pattern.
+    - The library can now be built with mbedTLS support for HTTPS.
+    - The diff status character 'T' will now be presented by the
+      git_diff_status_char API for diff entries that change type.
+    - Revision walks previously would sometimes include commits
+      that should have been ignored; this is corrected.
+    - Revision walks are now more efficient when the output is
+      unsorted; we now avoid walking all the way to the beginning
+      of history unnecessarily.
+    - Error-handling around index extension loading has been fixed.
+      We were previously always misreporting a truncated index.
+  * API additions:
+    - The index may now be iterated atomically using
+      git_index_iterator.
+    - Remote objects can now be created with extended options using
+      the git_remote_create_with_opts API.
+    - Diff objects can now be applied as changes to the working
+      directory, index or both, emulating the git apply command.
+      Additionally, git_apply_to_tree can apply those changes to a
+      tree object as a fully in-memory operation.
+    - You can now swap out memory allocators via the
+      GIT_OPT_SET_ALLOCATOR option with git_libgit2_opts().
+    - You can now ensure that functions do not discard unwritten
+      changes to the index via the
+      GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY option to
+      git_libgit2_opts(). This will cause functions that implicitly
+      re-read the index (eg, git_checkout) to fail if you have
+      staged changes to the index but you have not written the
+      index to disk. (Unless the checkout has the FORCE flag
+      specified.)
+    - At present, this defaults to off, but we intend to enable
+      this more broadly in the future, as a warning or error. We
+      encourage you to examine your code to ensure that you are not
+      relying on the current behavior that implicitly removes
+      staged changes.
+    - Reference specifications can be parsed from an arbitrary
+      string with the git_refspec_parse API.
+    - You can now get the name and path of worktrees using the
+      git_worktree_name and git_worktree_path APIs, respectively.
+    - The ref field has been added to git_worktree_add_options to
+      enable the creation of a worktree from a pre-existing branch.
+    - It's now possible to analyze merge relationships between any
+      two references, not just against HEAD, using
+      git_merge_analysis_for_ref.
+  * API removals:
+    - The git_buf_free API is deprecated; it has been renamed to
+      git_buf_dispose for consistency. The git_buf_free API will be
+      retained for backward compatibility for the foreseeable
+      future.
+    - The git_otype enumeration and its members are deprecated and
+      have been renamed for consistency. The GIT_OBJ_ enumeration
+      values are now prefixed with GIT_OBJECT_. The old
+      enumerations and macros will be retained for backward
+      compatibility for the foreseeable future.
+    - Several index-related APIs have been renamed for consistency.
+      The GIT_IDXENTRY_ enumeration values and macros have been
+      renamed to be prefixed with GIT_INDEX_ENTRY_. The
+      GIT_INDEXCAP enumeration values are now prefixed with
+      GIT_INDEX_CAPABILITY_. The old enumerations and macros will
+      be retained for backward compatibility for the foreseeable
+      future.
+    - The error functions and enumeration values have been renamed
+      for consistency. The giterr_ functions and values prefix have
+      been renamed to be prefixed with git_error_; similarly,
+      the GITERR_ constants have been renamed to be prefixed with
+      GIT_ERROR_. The old enumerations and macros will be retained
+      for backward compatibility for the foreseeable future.
+  * Breaking API changes:
+    - The default checkout strategy changed from DRY_RUN to SAFE.
+    - Adding a symlink as .gitmodules into the index from the
+      workdir or checking out such files is not allowed as this can
+      make a Git implementation write outside of the repository and
+      bypass the fsck checks for CVE-2018-11235.
+- Bump sover to 28 following upstreams changes.
+
+-------------------------------------------------------------------
+Mon Nov  5 18:22:36 UTC 2018 - astieger@suse.com
+
+- libgit2 0.27.7:
+  * Various improvements for handling repositories
+  * Various API correctness fixes
+- includes changess from 0.27.6:
+  * Various security fixes for parsing integers from buffers,
+    and buffer handling bsc#1114729
+
+-------------------------------------------------------------------
+Sun Oct  7 12:32:42 UTC 2018 - astieger@suse.com
+
+- libgit2 0.27.5:
+  * CVE-2018-17456: Submodule URLs and paths with a leading "-"
+    are now ignored to avoid injecting options into library
+    consumers that perform recursive clones (bsc#1110949)
+  * Avoid a buffer overflow when running repack
+  * Avoid stack overflow from unbounded recursion in configuration
+    file parser
+  * Avoid heap-buffer overflow when parsing "ok" packets
+  * Fix heap-buffer overflows in smart protocol parsing code
+  * Fix potential integer overflows on platforms with 16 bit ints
+  * Fix potential NULL pointer dereference when parsing
+    configuration files
+
+-------------------------------------------------------------------
+Tue Aug 21 08:47:14 UTC 2018 - mpluskal@suse.com
+
+- Use pkgconfig style of dependencies, refresh dependencies
+- Use more of cmake macros
+
+-------------------------------------------------------------------
+Mon Aug 13 11:24:27 UTC 2018 - astieger@suse.com
+
+- libgit2 0.27.4:
+  * fix out-of-bounds reads when processing smart-protocol "ng" 
+    packets (bsc#1104641)
+
+-------------------------------------------------------------------
+Tue Jul 10 15:51:22 UTC 2018 - astieger@suse.com
+
+- libgit2 0.27.3:
+  * CVE-2018-10887 (bsc#1100613), CVE-2018-10888 (bsc#1100612):
+    Specially crafted delta object in packfiles could trigger an
+    integer overflow, bypassing input validation and causing the
+    object database to contain copies of system memory. This may
+    allow denial of service or, potentially, an information leak
+- includes changes from 0.27.2:
+  * various API and correctnes fixes
+  * Fixes related to handling of .gitmodules
+- includes changes from 0.27.1:
+  * CVE-2018-11235: insufficient validation of submodule names from
+    .gitmodules allowed writes to arbitrary paths (bsc#1095219)
+  * disallow .gitmodules files as symlinks.
+
+-------------------------------------------------------------------
+Mon Apr 23 01:52:34 UTC 2018 - mrueckert@suse.de
+
+- update to 0.27.0:
+  - Changes or improvements
+    - Improved p_unlink in posix_w32.c to try and make a file
+      writable before sleeping in the retry loop to prevent
+      unnecessary calls to sleep.
+    - The CMake build infrastructure has been improved to speed up
+      building time.
+    - A new CMake option "-DUSE_HTTPS=" makes it possible to
+      explicitly choose an HTTP backend.
+    - A new CMake option "-DSHA1_BACKEND=" makes it possible to
+      explicitly choose an SHA1 backend. The collision-detecting
+      backend is now the default.
+    - A new CMake option "-DUSE_BUNDLED_ZLIB" makes it possible to
+      explicitly use the bundled zlib library.
+    - A new CMake option "-DENABLE_REPRODUCIBLE_BUILDS" makes it
+      possible to generate a reproducible static archive. This
+      requires support from your toolchain.
+    - The minimum required CMake version has been bumped to 2.8.11.
+    - Writing to a configuration file now preserves the case of the
+      key given by the caller for the case-insensitive portions of
+      the key (existing sections are used even if they don't
+      match).
+    - We now support conditional includes in configuration files.
+    - Fix for handling re-reading of configuration files with
+      includes.
+    - Fix for reading patches which contain exact renames only.
+    - Fix for reading patches with whitespace in the compared
+      files' paths.
+    - We will now fill FETCH_HEAD from all passed refspecs instead
+      of overwriting with the last one.
+    - There is a new diff option, GIT_DIFF_INDENT_HEURISTIC which
+      activates a heuristic which takes into account whitespace and
+      indentation in order to produce better diffs when dealing
+      with ambiguous diff hunks.
+    - Fix for pattern-based ignore rules where files ignored by a
+      rule cannot be un-ignored by another rule.
+    - Sockets opened by libgit2 are now being closed on exec(3) if
+      the platform supports it.
+    - Fix for peeling annotated tags from packed-refs files.
+    - Fix reading huge loose objects from the object database.
+    - Fix files not being treated as modified when only the file
+      mode has changed.
+    - We now explicitly reject adding submodules to the index via
+      git_index_add_frombuffer.
+    - Fix handling of GIT_DIFF_FIND_RENAMES_FROM_REWRITES raising
+      SIGABRT when one file has been deleted and another file has
+      been rewritten.
+    - Fix for WinHTTP not properly handling NTLM and Negotiate
+      challenges.
+    - When using SSH-based transports, we now repeatedly ask for
+      the passphrase to decrypt the private key in case a wrong
+      passphrase is being provided.
+    - When generating conflict markers, they will now use the same
+      line endings as the rest of the file.
+  - API additions
+    - The git_merge_file_options structure now contains a new
+      setting, marker_size. This allows users to set the size of
+      markers that delineate the sides of merged files in the
+      output conflict file.  By default this is 7
+      (GIT_MERGE_CONFLICT_MARKER_SIZE), which produces output
+      markers like <<<<<<< and >>>>>>>.
+    - git_remote_create_detached() creates a remote that is not
+      associated to any repository (and does not apply
+      configuration like 'insteadof' rules).  This is mostly useful
+      for e.g. emulating git ls-remote behavior.
+    - git_diff_patchid() lets you generate patch IDs for diffs.
+    - git_status_options now has an additional field baseline to
+      allow creating status lists against different trees.
+    - New family of functions to allow creating notes for a
+      specific notes commit instead of for a notes reference.
+    - New family of functions to allow parsing message trailers.
+      This API is still experimental and may change in future
+      releases.
+  - Breaking API changes
+    - Signatures now distinguish between +0000 and -0000 UTC offsets.
+    - The certificate check callback in the WinHTTP transport will
+      now receive the message_cb_payload instead of the
+      cred_acquire_payload.
+    - We are now reading symlinked directories under .git/refs.
+    - We now refuse creating branches named "HEAD".
+    - We now refuse reading and writing all-zero object IDs into
+      the object database.
+    - We now read the effective user's configuration file instead
+      of the real user's configuration in case libgit2 runs as part
+      of a setuid binary.
+    - The git_odb_open_rstream function and its readstream callback
+      in the git_odb_backend interface have changed their
+      signatures to allow providing the object's size and type to
+      the caller.
+
+-------------------------------------------------------------------
+Wed Mar 14 09:11:57 UTC 2018 - kbabioch@suse.com
+
+- Update to 0.26.3:
+  * Fix cloning of the libgit2 project with git clone --recursive by removing an
+    invalid submodule from our testing data.
+  * Fix endianness of the port in p_getaddrinfo().
+  * Fix handling of negative gitignore rules with wildcards.
+  * Fix handling of case-insensitive negative gitignore rules.
+  * Fix resolving references to a tag if the reference is stored with its fully
+    resolved OID in the packed-refs file.
+  * Fix checkout not treating worktree files as modified when only their mode has
+    changed.
+  * Fix rename detection with GIT_DIFF_FIND_RENAMES_FROM_REWRITES.
+  * Fixes memory handling issues when reading crafted repository index files.
+    The issues allow for possible denial of service due to allocation of large
+    memory and out-of-bound reads.
+    (CVE-2018-8098 bnc#1085257 CVE-2018-8099 bnc#1085256)
+  * Updates the bundled zlib to 1.2.11. Users who build the bundled zlib are
+    vulnerable to security issues in the prior version.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:31 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 13 10:15:36 UTC 2017 - mimi.vx@gmail.com
+
+- remove unneeded dependency (python is used only for testsuite, which
+    isn't used during build)
+
+-------------------------------------------------------------------
+Sat Aug  5 19:26:58 UTC 2017 - astieger@suse.com
+
+- libgit2 0.26.0:
+  * Support for opening, creating and modifying worktrees.
+  * Can now detect SHA1 collisions resulting from the SHAttered
+    attack CVE-2005-4900
+  * Fix for missing implementation of `git_merge_driver_source` getters
+  * Fix for installed pkg-config file being broken when the prefix
+    contains spaces
+  * Can now detect when the hashsum of on-disk objects does not
+    match their expected hashsum.
+  * Support open-ended ranges (e.g. "master..", "...master") in
+    revision range parsing code.
+  * Correctly compute ignores with leading "/" in subdirectories.
+  * Optionally call `fsync` on loose objects, packfiles and their
+    indexes, loose references and packed reference files.
+  * Builds against OpenSSL v1.1 and against LibreSSL.
+  * Improvements for reading index v4 files.
+  * API additions and incompatible API changes
+
+-------------------------------------------------------------------
+Wed Jan 11 20:27:04 UTC 2017 - astieger@suse.com
+
+- libgit2 0.25.1
+- New features and functionality:
+  * repository discovery features
+  * Support for reading and writing git index v4 files
+  * Improve the performance of the revwalk
+  * reference db concurrency improvements
+  * Nanosecond resolution is now activated by default
+  * restrict the set of ciphers used with OpenSSL by default.
+  * user-registered merge drivers
+  * built-in support for the union merge driver
+  * callers can now specify proxy settings
+  * New API for creating signed commits
+  * New API for creating blobs from streams
+  * New flags for opening repositories
+  * New functions for various git operations
+- Removed API:
+  * git_blob_create_fromchunks() has been removed in  favour of
+    git_blob_create_fromstream()
+- Changed API: 
+  * git_packbuilder_object_count and git_packbuilder_written now
+    return a size_t instead of a uint32_t for more thorough
+    compatibility with the rest of the library.
+  * git_packbuiler_progress now provides explicitly sized uint32_t
+    values instead of unsigned int.
+  * git_diff_file now includes an id_abbrev field that reflects the
+    number of nibbles set in the id field.
+  * git_odb_backend now has a freshen function pointer
+  * git_remote_connect() now accepts proxy options.
+
+-------------------------------------------------------------------
+Wed Jan 11 09:27:33 UTC 2017 - astieger@suse.com
+
+- libgit2 0.24.6, including the following security fixes:
+  * bsc#1019036: edge cases in the Git Smart Protocol can lead to
+    attempting to parse outside of the buffer
+    CVE-2016-10128,CVE-2016-10129
+  * bsc#1019037: MITM possible due to lack of parameter for
+    certificate parameter
+    CVE-2016-10130,CVE-2017-5338,CVE-2017-5339
+- includes changes from 0.24.5:
+  * add support for OpenSSL 1.1.0 for BIO filter
+
+-------------------------------------------------------------------
+Thu Dec  1 15:08:57 UTC 2016 - astieger@suse.com
+
+- libgit2 0.24.3, fixing the following vulnerabilities:
+  * CVE-2016-8568, CVE-2016-8569: invalid memory accesses parsing
+    object files (bsc#1003810)
+  * various bug fixes from the 0.24.2 release
+
+-------------------------------------------------------------------
+Mon May  9 20:24:07 UTC 2016 - sreeves@suse.com
+
+- Add to the SDK. Fate#319349
+- Update license to GPL-2.0 WITH GCC-exception-2.0
+
+-------------------------------------------------------------------
+Wed Apr 20 17:24:54 UTC 2016 - astieger@suse.com
+
+- libgit2 0.24.1:
+  + various compatible backported bug fixes
+
+-------------------------------------------------------------------
+Wed Mar 16 17:27:05 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.24.0:
+  + Custom filters can now be registered with wildcard attributes,
+    for example filter=*. Consumers should examine the attributes
+    parameter of the check function for details.
+  + Symlinks are now followed when locking a file, which can be
+    necessary when multiple worktrees share a base repository.
+  + You can now set your own user-agent to be sent for HTTP
+    requests by using the GIT_OPT_SET_USER_AGENT with
+    git_libgit2_opts().
+  + You can set custom HTTP header fields to be sent along with
+    requests by passing them in the fetch and push options.
+  + Tree objects are now assumed to be sorted. If a tree is not
+    correctly formed, it will give bad results. This is the git
+    approach and cuts a significant amount of time when reading the
+    trees.
+  + Filter registration is now protected against concurrent
+    registration.
+  + Filenames which are not valid on Windows in an index no longer
+    cause to fail to parse it on that OS.
+  + Rebases can now be performed purely in-memory, without touching
+    the repository's workdir.
+  + When adding objects to the index, or when creating new tree or
+    commit objects, the inputs are validated to ensure that the
+    dependent objects exist and are of the correct type. This
+    object validation can be disabled with the
+    GIT_OPT_ENABLE_STRICT_OBJECT_CREATION option.
+  + The WinHTTP transport's handling of bad credentials now behaves
+    like the others, asking for credentials again.
+  + Various API changes (additions AND removals).
+- Rename libgit2-23 subpackage to libgit2-24, following upstraems
+  soname bump (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Mon Nov 30 10:46:23 UTC 2015 - astieger@suse.com
+
+- libgit2 0.23.4:
+  * various bug fixes and improvements
+- drop upstreamed libgit2-fix-.pc-file.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 09:29:34 UTC 2015 - astieger@suse.com
+
+- libgit2 0.23.3, containing critical fixes:
+  * blame: guard xdiff calls for large files
+  * diff: don't feed large files to xdiff
+  * merge_file: treat large files as binary
+  * xdiff: convert size variables to size_t
+  * GITERR_CHECK_ALLOC_ADDn: multi-arg adders
+
+-------------------------------------------------------------------
+Thu Sep 10 14:04:07 UTC 2015 - dimstar@opensuse.org
+
+- Add libgit2-fix-.pc-file.patch: Fix paths written in libgit2.pc.
+
+-------------------------------------------------------------------
+Mon Sep  7 19:55:45 UTC 2015 - astieger@suse.com
+
+- libgit2 0.23.2:
+  * documentation fixes
+  * diff: don't error out on an invalid regex
+  * http: propagate the credentials callback's error code
+  * Fix bug in git_smart__push: push_transfer_progress cb is never called
+  * remote: don't confuse tag auto-follow rules with refspec matching
+  * curl: use the most secure auth method for the proxy
+  * Forcing libssh2 lib location
+  * fix duplicate basenames to support older VS
+- includes changes from 0.23.1:
+  * Stage an unregistered submodule in _add_bypath()
+  * filebuf: remove lockfile upon rename errors
+  * Increase required version of cmake to 2.8
+  * Handle ssh:// and git:// urls containing a '~' character.
+  * documentation updates
+  * submodule URL handling fixes
+  * index: allow add_bypath to update submodules
+  * blob: fail to create a blob from a dir with EDIRECTORY
+  * submodule: lookup the submodule by path if available
+  * submdule: reproduce double-reporting of a submodule in foreach
+- note cmake requirement and use cmake makros
+- build with system libcurl
+- build with system http-parser
+
+-------------------------------------------------------------------
+Tue Jul 28 12:34:52 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.23.0:
+  + Changes or improvements:
+    - Patience and minimal diff drivers can now be used for merges.
+    - Merges can now ignore whitespace changes.
+    - Updated binary identification in CRLF filtering to avoid
+      false positives in UTF-8 files.
+    - Rename and copy detection is enabled for small files.
+    - Checkout can now handle an initial checkout of a repository,
+      making GIT_CHECKOUT_SAFE_CREATE unnecessary for users of
+      clone.
+    - The signature parameter in the ref-modifying functions has
+      been removed. Use git_repository_set_ident() and
+      git_repository_ident() to override the signature to be used.
+    - The local transport now auto-scales the number of threads to
+      use when creating the packfile instead of sticking to one.
+    - Reference renaming now uses the right id for the old value.
+    - The annotated version of branch creation, HEAD detaching and
+      reset allow for specifying the expression from the user to be
+      put into the reflog.
+    - git_rebase_commit now returns GIT_EUNMERGED when you attempt
+      to commit with unstaged changes.
+    - On Mac OS X, we now use SecureTransport to provide the
+      cryptographic support for HTTPS connections insead of
+      OpenSSL.
+    - Checkout can now accept an index for the baseline
+      computations via the baseline_index member.
+    - The configuration for fetching is no longer stored inside the
+      git_remote struct but has been moved to a git_fetch_options.
+      The remote functions now take these options or the callbacks
+      instead of setting them beforehand.
+    - git_submodule instances are no longer cached or shared across
+      lookup. Each submodule represents the configuration at the
+      time of loading.
+    - The index now uses diffs for add_all() and update_all() which
+      gives it a speed boost and closer semantics to git.
+    - The ssh transport now reports the stderr output from the
+      server as the error message, which allows you to get the
+      "repository not found" messages.
+    - git_index_conflict_add() will remove staged entries that
+      exist for conflicted paths.
+    - The flags for a git_diff_file will now have the
+      GIT_DIFF_FLAG_EXISTS bit set when a file exists on that side
+      of the diff. This is useful for understanding whether a side
+      of the diff exists in the presence of a conflict.
+    - The constructor for a write-stream into the odb now takes
+      git_off_t instead of size_t for the size of the blob, which
+      allows putting large files into the odb on 32-bit systems.
+    - The remote's push and pull URLs now honor the
+      url.$URL.insteadOf configuration. This allows modifying URL
+      prefixes to a custom value via gitconfig.
+    - git_diff_foreach, git_diff_blobs, git_diff_blob_to_buffer,
+      and git_diff_buffers now accept a new binary callback of type
+      git_diff_binary_cb that includes the binary diff information.
+    - The race condition mitigations described in racy-git.txt have
+      been implemented.
+    - If libcurl is installed, we will use it to connect to HTTP(S)
+      servers.
+  + Various API changes (incl. breaking changes).
+- Rename libgit2-22 subpackage to libgit2-23, following upstreams
+  soname bump (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Tue Jan 27 20:40:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.22.1:
+  + The following (critical) fixes have been backported to this
+    maintenance release:
+    - checkout: introduce git_checkout_perfdata.
+    - git_path_join_unrooted: return base len.
+    - checkout: don't recreate previous directory.
+    - checkout tests: nasty symlinks.
+    - checkout: drop newline in error message.
+    - checkout: remove files before writing new ones.
+    - checkout tests: emulate p_realpath poorly on Win32.
+    - checkout tests: cleanup realpath impl on Win32.
+- Changes from version 0.22.0:
+  + git_signature_new() now requires a non-empty email address.
+  + Use CommonCrypto libraries for SHA-1 calculation on Mac OS X.
+  + Disable SSL compression and SSLv2 and SSLv3 ciphers in favor of
+    TLSv1 in OpenSSL.
+  + The fetch behavior of remotes with autotag set to
+    GIT_REMOTE_DOWNLOAD_TAGS_ALL has been changed to match git
+    1.9.0 and later. In this mode, libgit2 now fetches all tags in
+    addition to whatever else needs to be fetched.
+  + git_checkout() now handles case-changing renames correctly on
+    case-insensitive filesystems; for example renaming "readme" to
+    "README".
+  + The search for libssh2 is now done via pkg-config instead of a
+    custom search of a few directories.
+  + Add support for core.protectHFS and core.protectNTFS. Add more
+    validation for filenames which we write such as references.
+  + The local transport now generates textual progress output like
+    git-upload-pack does ("counting objects").
+  + git_checkout_index() can now check out an in-memory index that
+    is not necessarily the repository's index, so you may check out
+    an index that was produced by git_merge and friends while
+    retaining the cached information.
+  + Remove the default timeout for receiving / sending data over
+    HTTP using the WinHTTP transport layer.
+  + Add SPNEGO (Kerberos) authentication using GSSAPI on Unix
+    systems.
+  + Provide built-in objects for the empty blob (e69de29) and empty
+    tree (4b825dc) objects.
+  + The index' tree cache is now filled upon read-tree and
+    write-tree and the cache is written to disk.
+  + LF -> CRLF filter refuses to handle mixed-EOL files.
+  + LF -> CRLF filter now runs when * text = auto (with Git for
+    Windows 1.9.4).
+  + File unlocks are atomic again via rename. Read-only files on
+    Windows are made read-write if necessary.
+  + Share open packfiles across repositories to share descriptors
+    and mmaps.
+  + Use a map for the treebuilder, making insertion O(1).
+  + The build system now accepts an option EMBED_SSH_PATH which
+    when set tells it to include a copy of libssh2 at the given
+    location. This is enabled for MSVC.
+  + Add support for refspecs with the asterisk in the middle of a
+    pattern.
+  + Fetching now performs opportunistic updates. To achieve this,
+    we introduce a difference between active and passive refspecs,
+    which make git_remote_download() and git_remote_fetch() to take
+    a list of resfpecs to be the active list, similarly to how git
+    fetch accepts a list on the command-line.
+  + The THREADSAFE option to build libgit2 with threading support
+    has been flipped to be on by default.
+  + The remote object has learnt to prune remote-tracking branches.
+    If the remote is configured to do so, this will happen via
+    git_remote_fetch(). You can also call git_remote_prune() after
+    connecting or fetching to perform the prune.
+- Rename libgit2-21 subpackage to libgit2-22, following upstreams
+  soname bump (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Thu Oct 16 19:21:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jul 10 21:37:25 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.21.1:
+  + Added a new config snapshotting API to fix race issues when
+    different applications (e.g. Git and a libgit2 client) access
+    the same repository simultaneously.
+  + Added reflog support to all APIs that could alter a reference.
+  + Avoided race conditions when updating references.
+  + Converted all APIs that output string data to use git_buf
+    objects for the return value.
+  + Added standard git_<object>_init_options functions to
+    initialize options structures when static initialization is not
+    possible, and renamed options structures to standard
+    git_<object>_options (replacing _opts suffix used in some
+    places).
+  + Improved use of const on pointers in many APIs (which may
+    affect some bindings).
+  + Replaced use of oid with simply id for references to
+    git_oid value.s
+  + Previously, when a callback function returned an error value
+    (i.e. non-zero), libgit2 converted it to GIT_EUSER for the
+    parent function's return value. Now, libgit2 tries to pass
+    through the callback's return value all the way back to the
+    caller.
+  + All inline functions were eliminated from the public libgit2
+    API.
+  + Removed all Apache licensed code from library.
+  + For more changes, please see detailed ChangeLog in package.
+- Rename libgit2-0 subpackage to libgit2-21, following upstreams
+  soname change (another project believing the soname should match
+  the version).
+- Enable SSH Support:
+  + Add pkgconfig(libssh2) BuildRequires.
+  + Pass -DUSE_SSH:BOOL=ON to cmake call in order to enable SSH
+    support.
+
+-------------------------------------------------------------------
+Mon Jan  6 22:36:54 UTC 2014 - dimstar@opensuse.org
+
+- Build libgit2 threadsafe:
+  + Pass -DTHREADSAFE:BOOL=ON to cmake call.
+
+-------------------------------------------------------------------
+Mon Nov 25 21:00:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.20.0:
+  + Blame APIs.
+  + Filter APIs.
+  + Public git_buffer APIs.
+  + Merge conflict support in Checkout.
+  + Simplified Clone options and git_clone_into.
+  + Config iterator APIs and updated Config multivar API.
+  + Diff API reorganization and renaming, with Patch API split off.
+  + Indexer API renaming and improvements.
+  + ODB backend API cleanup.
+  + Improves progress callbacks for Packbuilder, Push, Fetch (and
+    any other Remote operation).
+  + Public Pathspec matching APIs.
+  + Reflog API and RefDB Backend API cleanup.
+  + Remote API extensions.
+  + SSH Transport configuration cleanup.
+  + Submodule status improvements.
+  + Pluggable Transport APIs.
+  + Lots of other small features (e.g. decomposed unicode support on
+    MacOS, revwalk simplifying by first parent),
+  + Bug fixes (e.g. junction support on Win32, redirect handling
+    in HTTP transport) and performance improvements.
+  + Lots of new examples (init, status, log, blame, etc.) and
+    relicensing of example code under CC0 license.
+
+-------------------------------------------------------------------
+Mon Jul  8 19:40:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.19.0:
+  + New (threadsafe) cache for objects.
+  + Iterator for Status.
+  + New Merge APIs.
+  + SSH support on *NIX.
+  + Function context on diff.
+  + Namespaces support.
+  + Index add/update/remove with wildcard support.
+  + Iterator for References.
+  + Fetch and push refspecs for Remotes.
+  + Rename support in Status.
+  + New 'sys/` namespace for external headers with low-level APIs.
+
+-------------------------------------------------------------------
+Sun Jun 23 20:58:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18:
+  + Almost one year worth of bug fixing... yet, upstream does not
+    publish a statement / announcement of what is actually new...
+
+-------------------------------------------------------------------
+Fri Aug 31 13:27:15 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 0.17
+    Attributes:
+        - Added function macros to check attribute values instead of having
+        to manually compare them
+        - Added support for choosing the attribute loading order (workdir files
+        vs index) and to skip the systems' default `.gitattributes`
+        - Fixed issues when fetching attribute data on bare repositories
+
+    Blob:
+        - Added support for creating blobs from any file on disk (not
+        restricted to the repository's working directory)
+        - Aded support for smudge filters when writing blobs to the ODB
+                - So far only CRLF normalization is available
+    Branches:
+        - Added a high-level branch API:
+                - git_branch_create
+                - git_branch_delete
+                - git_branch_list
+                - git_branch_move
+    Commit:
+        - Commit messages are now filtered to match Git rules (stripping
+        comments and adding proper whitespacing rules)
+    Config:
+        - Added support for setting and getting multivars
+        - Added `git_config_get_mapped` to map the value of a config
+        variable based on its defaults
+    Diff:
+        - Added full diff API:
+                - tree to tree
+                - index to tree
+                - workdir to index
+                - workdir to tree
+                - blob to blob
+        - Added helper functions to print the diffs as valid patchfiles
+    Error handling:
+        - New design for the error handling API, taking into consideration
+        the requirements of dynamic languages
+    Indexer:
+        - Added streaming packfile indexer
+    Merge:
+        - Added support for finding the merge base between two commits
+    Notes:
+        - Full git-notes support:
+                - git_note_read
+                - git_note_message/git_note_oid
+                - git_note_create
+                - git_note_remove
+                - git_note_free
+                - git_note_foreach
+    References:
+        - Added `git_reference_name_to_oid` helper to resolve
+        a reference to its final OID
+        - Added `git_reference_cmp` to compare two references with
+        a stable order
+    Remotes:
+        - Added support for writing and saving remotes
+                - `git_remote_add`
+                - `git_remote_save`
+                - Setters for all the attributes of a remote
+        - Switched remote download to the new streaming packfile indexer
+        - Fixed fetch on HTTP and Git under Windows
+        - Added `git_remote_supported_url` helper to check if a protocol
+        can be accessed by the library
+        - Added `git_remote_list`
+    Repository:
+        - Made `git_repository_open` smarter when finding the `.git` folder.
+        - Added `git_repository_open_ext` with extra options when
+        opening a repository
+    Revwalk:
+        - Added support for pushing/hiding several references through a glob
+        - Added helper to push/hide the current HEAD to the walker
+        - Added helper to push/hide a single reference to the walker
+    Status:
+        - Greatly improved Status implementation using the new `diff` code
+        as a backend
+    Submodules:
+        - Added a partial submodules API to get information about a
+        submodule and list all the submodules in a repository
+                - git_submodule_foreach
+                - git_submodule_lookup
+    Tag:
+        - Added `git_tag_peel` helper to peel a tag to its pointed object
+        - Tag messages are now filtered to match Git rules (stripping comments
+        and adding proper whitespacing rules)
+    Tree:
+        - Killed the old `git_tree_diff` API, which is replaced by the
+        new diff code.
+
+-------------------------------------------------------------------
+Mon May  7 10:15:10 UTC 2012 - idonmez@suse.com
+
+- Fix license to be GPL-2.0-with-GCC-exception 
+
+-------------------------------------------------------------------
+Mon Apr 16 10:22:50 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 0.16.0
+  - Git Attributes support (see git2/attr.h)
+      There is now support to efficiently parse and retrieve information
+      from `.gitattribute` files in a repository. Note that this
+      information is not yet used e.g. when checking out files.
+
+  - .gitignore support
+      Likewise, all the operations that are affected by `.gitignore` files
+      now take into account the global, user and local ignores when
+      skipping the relevant files.
+
+  - Cleanup of the object ownership semantics
+      The ownership semantics for all repository subparts (index, odb,
+      config files, etc) has been redesigned. All these objects are now
+      reference counted, and can be hot-swapped in the middle of
+      execution, allowing for instance to add a working directory and an
+      index to a repository that was previously opened as bare, or to
+      change the source of the ODB objects after initialization.
+
+      Consequently, the repository API has been simplified to remove all
+      the `_openX` calls that allowed setting these subparts *before*
+      initialization.
+
+  - git_index_read_tree()
+      Git trees can now be read into the index.
+
+  - More reflog functionality
+      The reference log has been optimized, and new API calls to rename
+      and delete the logs for a reference have been added.
+
+  - Rewrite of the References code with explicit ownership semantics
+      The references code has been mostly rewritten to take into account
+      the cases where another Git application was modifying a repository's
+      references while the Library was running.
+
+      References are now explicitly loaded and free'd by the user, and
+      they may be reloaded in the middle of execution if the user suspects
+      that their values may have changed on disk. Despite the new
+      ownership semantics, the references API stays the same.
+
+  - Simplified the Remotes API
+      Some of the more complex Remote calls have been refactored into
+      higher level ones, to facilitate the usual `fetch` workflow of a
+      repository.
+
+  - Greatly improved thread-safety
+      The library no longer has race conditions when loading objects from
+      the same ODB and different threads at the same time. There's now
+      full TLS support, even for error codes. When the library is built
+      with `THREADSAFE=1`, the threading support must be globally
+      initialized before it can be used (see `git_threads_init()`)
+
+  - Tree walking API
+      A new API can recursively traverse trees and subtrees issuing callbacks for
+      every single entry.
+
+  - Tree diff API
+      There is basic support for diff'ing an index against two trees.
+
+-------------------------------------------------------------------
+Tue Jan 31 17:12:58 UTC 2012 - jengelh@medozas.de
+
+- Provide pkgconfig symbols
+
+-------------------------------------------------------------------
+Thu Oct 27 19:58:14 UTC 2011 - saschpe@suse.de
+
+- Change license to 'GPL-2.0 with linking', fixes bnc#726789
+
+-------------------------------------------------------------------
+Wed Oct 26 22:14:56 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.15.0:
+  * Upstream doesn't provide changes
+- Removed outdated %clean section
+
+-------------------------------------------------------------------
+Tue Jan 18 20:53:29 UTC 2011 - saschpe@gmx.de
+
+- Proper Requires for devel package
+
+-------------------------------------------------------------------
+Tue Jan 18 20:32:36 UTC 2011 - saschpe@gmx.de
+
+- Set BuildRequires to "openssl-devel" also for RHEL and CentOS
+
+-------------------------------------------------------------------
+Tue Jan 18 20:25:33 UTC 2011 - saschpe@gmx.de
+
+- Initial commit (0.0.1)
+- Added patch to fix shared library soname
+

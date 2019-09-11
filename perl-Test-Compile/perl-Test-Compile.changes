@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue Jul 16 10:10:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.2.2
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v2.2.2    2019-07-11
+      - Fix cpan-test failures on mswin32
+  
+  v2.2.1    2019-07-09
+      - Ooops, the module still depends on UNIVERSAL::require
+      - Oh, and the subprocess function now requires perl 5.10.0 
+  
+  v2.2.0    2019-07-08
+      - RT-118530: Capture (and optionally suppress) all output from subcommands
+      - RT-102817: Change the default value for 'verbose', from 1 to undef
+      - RT-118419: pm and pl files are now both checked using 'perl -c'
+      - Changes to POD: fixes to escaping, update for new functionality, simplify it
+      - The module no longer depends on UNIVERSAL::require
+  
+  v2.1.2    2019-07-03
+      - More corrections to the POD
+      - More tests, try specifying specific files to all_pX_files()
+      - Use the correct method in all_pl_files_ok() (Noel Maddy)
+
+-------------------------------------------------------------------
+Mon Jul  1 05:30:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.1.1
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+-------------------------------------------------------------------
+Fri Jun 28 05:40:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.1.0
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v2.1.0    2019-XX-XX
+      - Update copyright
+      - Add all_pm_files_ok() and all_pl_files_ok() methods to the internal class
+
+-------------------------------------------------------------------
+Mon Jun 24 05:30:53 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 2.0.1
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+-------------------------------------------------------------------
+Wed Jun 19 05:32:26 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 2.0.0
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v2.0_0    2019-06-18 (DEV RELEASE)
+      Łukasz Hejnak <lehack@lehack.pl>
+      - Replaced import() with Exporter usage.
+      - Added all_files_ok to the procedural mode.
+      - Added .git to list of directories ignored when looking for pm/pl files.
+      - Added an else clause for pl_file_compiles so that it catches file not found errors.
+      Evan Giles <egiles@cpan.org>
+      - Remove 'exported_to' function
+      - Remove cleanup steps from the Build.PL file
+      - Bump version number for backwards incompatible changes (semver.org)
+
+-------------------------------------------------------------------
+Sat Sep 26 09:15:01 UTC 2015 - coolo@suse.com
+
+- updated to 1.3.0
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 18:34:18 UTC 2015 - coolo@suse.com
+
+- updated to 1.2.1
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v1.2.1    UNRELEASED              (Evan Giles <egiles@cpan.org>)
+      - Fix (skip where appropriate) failing CPAN test
+      - Avoid warnings for empty files in all_pl_files (Nigel Gregoire)
+
+-------------------------------------------------------------------
+Tue Dec  2 10:08:46 UTC 2014 - coolo@suse.com
+
+- updated to 1.2.0
+     - Files without extension may not be perl (rt83917)
+     - Small POD fix
+ 
+ v1.1.0    2014-07-18              (Evan Giles <egiles@cpan.org>)
+     - Allow use of Test::Compile in an object oriented manner
+     - Promote the OO interface in the POD
+     - Test::Compile::Internal is now verbose by default
+     - Correct the dependancy information
+ 
+ v1.0.1    2014-03-20              (Evan Giles <egiles@cpan.org>)
+     - Fix stupid omission from the MANAIFEST (tests failed everywhere)
+ 
+ v1.0.0    2014-03-19              (Evan Giles <egiles@cpan.org>)
+     - Try to use Sematic Versioning - http://semver.org
+     - Add diagnostics on compilation failure        (Micheal G. Schwern)
+     - require, don't use                            (Micheal G. Schwern)
+     - Test for truth, not an integer.               (Micheal G. Schwern)
+     - Small POD fix                                 (Micheal G. Schwern)
+     - OS X is not a crazy OS from a redirection POV (Micheal G. Schwern)
+ 
+ 0.24  2013 02 22                  (Evan Giles <egiles@cpan.org>)
+     - Update POD to explain more problems with Test::Compile
+ 
+ 0.23  2013.01.23                  (Evan Giles <egiles@cpan.org>)
+     - Update Copyright for 2013
+     - CPAN-RT #82887, Sébastien Aperghis-Tramoni <sebastien@aperghis.net>
+         - Correct handling of PERL5LIB
+         - fix regexp to detect taint mode
+ 
+ 0.22  2012.10.31                  (Evan Giles <egiles@cpan.org>)
+     - Set verbose on for the Test::Compile library (rt80187)
+ 
+ 0.21  2012.09.05                  (Evan Giles <egiles@cpan.org>)
+     - Finally test that the verbose method actaully works.
+     - Update the POD - mostly to simplify it.
+     - Remove redundant code, yet more tests.
+     - Test::Compile::Internal is no longer 'beta'.
+ 
+ 0.20  2012.08.08                  (Evan Giles <egiles@cpan.org>)
+     - Tests should also work outside unix (rt78810)
+ 
+ 0.19  2012.08.03                  (Evan Giles <egiles@cpan.org>)
+     - Introduce Test::Compile::Internal.pm
+     - Utilise Test::Compile::Internal to get better test coverage
+ 
+ 0.18  2012.07.16                  (Evan Giles <egiles@cpan.org>)
+     - Fix a warning that leaks out (rt78363)
+ 
+ 0.17  2012.02.25                   (Evan Giles <egiles@cpan.org>)
+     - Another few tests for taint logic
+ 
+ 0.16_1 2012.02.23                   (Evan Giles <egiles@cpan.org>)
+     - Reapply patches from Nicholas Bamber (rt55837 & rt72557)
+ 
+ 0.16   2012.02.21                   (Evan Giles <egiles@cpan.org>)
+     - Skip tests if there are not files to test (rt69297)
+     - Handle taint mode correctly (rt55837)
+     - Add 'blib/lib' to the search path for scripts (rt72557)
+ 
+ 0.15  Fri 2012.02.03 20:33:55 NZST (Evan Giles <egiles@cpan.org>)
+     - Fork, and run compile tests in the child process (rt73290 & rt73291)
+ 
+ 0.14  Tue 2012.01.10 20:03:24 NZST (Evan Giles <egiles@cpan.org>)
+     - Convert to Module::Build
+     - Improved test for pl_file_ok()
+     - Better test coverage (which files do we process, failed to compile, etc)
+     - Remove duplicate code
+
+-------------------------------------------------------------------
+Thu Apr 21 10:38:15 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.13
+    * created by cpanspec 1.78.04
+

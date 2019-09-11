@@ -1,0 +1,27 @@
+Index: axis-1_4/build.xml
+===================================================================
+--- axis-1_4.orig/build.xml
++++ axis-1_4/build.xml
+@@ -92,6 +92,9 @@ Copyright:
+     <depend srcdir="${src.dir}" destdir="${build.dest}"
+             cache="${build.dir}/dependencycache" closure="no">
+     </depend>  
++    <presetdef name="javac">
++      <javac includeantruntime="false" />
++    </presetdef>
+     <javac srcdir="${src.dir}" destdir="${build.dest}"  nowarn="${nowarn}" debug="${debug}"
+       deprecation="${deprecation}" 
+       source="${source}"
+Index: axis-1_4/tools/build.xml
+===================================================================
+--- axis-1_4.orig/tools/build.xml
++++ axis-1_4/tools/build.xml
+@@ -106,7 +106,7 @@ Copyright:
+     <fileset dir="${tools.dir}"
+       includes="*-tasks.properties"/>
+     <fileset dir="${tools.dir}" includes="org/**/*.xml"/>
+-    <fileset dir="${tools.dir}" file="log4j.properties"/>
++    <fileset dir="${tools.dir}" includes="log4j.properties"/>
+   </copy>
+   
+   <tstamp/>

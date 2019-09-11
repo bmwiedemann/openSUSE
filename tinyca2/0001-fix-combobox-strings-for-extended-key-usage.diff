@@ -1,0 +1,32 @@
+From 673b1934fac99981ac0b10d46d9d453997a0cfed Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Mon, 12 Oct 2009 13:40:29 +0200
+Subject: [PATCH 1/2] fix combobox strings for extended key usage
+
+---
+ lib/GUI/TCONFIG.pm |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/lib/GUI/TCONFIG.pm b/lib/GUI/TCONFIG.pm
+index 150e241..7e7511b 100644
+--- a/lib/GUI/TCONFIG.pm
++++ b/lib/GUI/TCONFIG.pm
+@@ -421,6 +421,7 @@ sub show_configbox {
+    
+    if((defined($main->{'TCONFIG'}->{'server_cert'}->{'extendedKeyUsage'})) &&
+       ($main->{'TCONFIG'}->{'server_cert'}->{'extendedKeyUsage'} ne 'none') &&
++      ($main->{'TCONFIG'}->{'server_cert'}->{'extendedKeyUsage'} ne 'user') &&
+       ($main->{'TCONFIG'}->{'server_cert'}->{'extendedKeyUsage'} ne '')) {
+       push(@combostrings, 
+             $main->{'TCONFIG'}->{'server_cert'}->{'extendedKeyUsage'});
+@@ -849,6 +850,7 @@ sub show_configbox {
+    
+    if((defined($main->{'TCONFIG'}->{'client_cert'}->{'extendedKeyUsage'})) &&
+       ($main->{'TCONFIG'}->{'client_cert'}->{'extendedKeyUsage'} ne 'none') &&
++      ($main->{'TCONFIG'}->{'client_cert'}->{'extendedKeyUsage'} ne 'user') &&
+       ($main->{'TCONFIG'}->{'client_cert'}->{'extendedKeyUsage'} ne '')) {
+       push(@combostrings, 
+             $main->{'TCONFIG'}->{'client_cert'}->{'extendedKeyUsage'});
+-- 
+1.6.4.2
+

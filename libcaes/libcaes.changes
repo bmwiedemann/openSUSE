@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Apr  2 18:30:58 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20190102
+	* Added OpenSSL EVP AES-XTS support
+	* Removed WinCrypt support (deprecated)
+
+-------------------------------------------------------------------
+Sun Oct  1 22:12:45 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170110
+	* applied 2017 updates
+	* code clean up
+	* worked on tests
+
+-------------------------------------------------------------------
+Fri Jan  9 00:33:54 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+- remove %if for opensuse.  Not needed with libyal consolidated in security:forensics
+
+-------------------------------------------------------------------
+Thu Aug 14 13:09:30 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to 0~20140731
+	* Added HAVE_DLLMAIN support
+	* 2014 update
+	* updated dependencies
+	* fixed issue not freeing error state memory allocated by EVP
+	* worked on tests
+	* worked on moving XTS support from libfvde
+	* textual changes
+- remove use of xz compression to simplify tarball download
+
+-------------------------------------------------------------------
+Fri Aug  2 14:46:22 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update DL-URL
+- use factory package for libcerror if available
+
+-------------------------------------------------------------------
+Fri Apr  5 20:08:25 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20130331) for build.opensuse.org

@@ -1,0 +1,16 @@
+--- src/lcms2_internal.h.orig
++++ src/lcms2_internal.h
+@@ -37,6 +37,7 @@
+ // assert macro is part of C99 as per 7.2
+ #include <assert.h>
+ 
++#pragma GCC visibility push(hidden)
+ // Some needed constants
+ #ifndef M_PI
+ #       define M_PI        3.14159265358979323846
+@@ -602,4 +603,5 @@
+ 
+ 
+ #define _lcms_internal_H
++#pragma GCC visibility pop
+ #endif

@@ -1,0 +1,64 @@
+Index: acsccid-1.1.5/src/ccid_usb.c
+===================================================================
+--- acsccid-1.1.5.orig/src/ccid_usb.c
++++ acsccid-1.1.5/src/ccid_usb.c
+@@ -191,6 +191,59 @@ static struct _bogus_firmware Bogus_firm
+ /* data rates supported by the secondary slots on the GemCore Pos Pro & SIM Pro */
+ unsigned int SerialCustomDataRates[] = { GEMPLUS_CUSTOM_DATA_RATES, 0 };
+ 
++/* Fix the compatibility with libusb 1.0.8. */
++#define libusb_handle_events_completed(ctx, completed) libusb_handle_events(ctx)
++static const char *libusb_error_name(int error_code)
++{
++	switch (error_code)
++	{
++	case LIBUSB_ERROR_IO:
++		return "LIBUSB_ERROR_IO";
++	case LIBUSB_ERROR_INVALID_PARAM:
++		return "LIBUSB_ERROR_INVALID_PARAM";
++	case LIBUSB_ERROR_ACCESS:
++		return "LIBUSB_ERROR_ACCESS";
++	case LIBUSB_ERROR_NO_DEVICE:
++		return "LIBUSB_ERROR_NO_DEVICE";
++	case LIBUSB_ERROR_NOT_FOUND:
++		return "LIBUSB_ERROR_NOT_FOUND";
++	case LIBUSB_ERROR_BUSY:
++		return "LIBUSB_ERROR_BUSY";
++	case LIBUSB_ERROR_TIMEOUT:
++		return "LIBUSB_ERROR_TIMEOUT";
++	case LIBUSB_ERROR_OVERFLOW:
++		return "LIBUSB_ERROR_OVERFLOW";
++	case LIBUSB_ERROR_PIPE:
++		return "LIBUSB_ERROR_PIPE";
++	case LIBUSB_ERROR_INTERRUPTED:
++		return "LIBUSB_ERROR_INTERRUPTED";
++	case LIBUSB_ERROR_NO_MEM:
++		return "LIBUSB_ERROR_NO_MEM";
++	case LIBUSB_ERROR_NOT_SUPPORTED:
++		return "LIBUSB_ERROR_NOT_SUPPORTED";
++	case LIBUSB_ERROR_OTHER:
++		return "LIBUSB_ERROR_OTHER";
++
++	case LIBUSB_TRANSFER_ERROR:
++		return "LIBUSB_TRANSFER_ERROR";
++	case LIBUSB_TRANSFER_TIMED_OUT:
++		return "LIBUSB_TRANSFER_TIMED_OUT";
++	case LIBUSB_TRANSFER_CANCELLED:
++		return "LIBUSB_TRANSFER_CANCELLED";
++	case LIBUSB_TRANSFER_STALL:
++		return "LIBUSB_TRANSFER_STALL";
++	case LIBUSB_TRANSFER_NO_DEVICE:
++		return "LIBUSB_TRANSFER_NO_DEVICE";
++	case LIBUSB_TRANSFER_OVERFLOW:
++		return "LIBUSB_TRANSFER_OVERFLOW";
++
++	case 0:
++		return "LIBUSB_SUCCESS / LIBUSB_TRANSFER_COMPLETED";
++	default:
++		return "**UNKNOWN**";
++	}
++}
++
+ /*****************************************************************************
+  *
+  *					close_libusb_if_needed

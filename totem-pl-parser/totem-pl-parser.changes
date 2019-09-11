@@ -1,0 +1,746 @@
+-------------------------------------------------------------------
+Tue Mar  5 13:16:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.3:
+  + Atom parsing bug fixes.
+
+-------------------------------------------------------------------
+Wed Jan 16 17:51:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2:
+  + tests: Update for podcast URL change
+  + build: honor 'includedir' meson parameter
+  + Updated translations.
+- Add revision to _service file, check out explicit released tag.
+
+-------------------------------------------------------------------
+Sat Jul 28 10:31:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.1+20180713.b7f36dd:
+  + build: Add CI
+  + podcast: Remove GMIME dependency
+- Drop pkgconfig(gmime-3.0) BuildRequires and stop passing
+  disable-gmime-i-know-what-im-doing=false to meson: No longer
+  needed after upstream changes.
+
+-------------------------------------------------------------------
+Fri Jun 15 08:41:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.1+20180614.d22b155:
+  + docs: Add headers to the ignore list
+  + core: Fix compile-time warnings in XML parser
+  + Update translations.
+- Update service to point to new gitlab home.
+
+-------------------------------------------------------------------
+Tue Apr 10 23:15:42 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions. Update summaries.
+
+-------------------------------------------------------------------
+Thu Mar 22 23:22:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0+20180301.0091a56:
+  + plparse: Don't consider MJPEG streams as JPEG images.
+  + build: Remove libsoup dependency.
+  + podcast: Add support for "medium" property.
+  + videosite: Fix leak in totem_pl_parser_add_videosite.
+  + Updated translations.
+- Switch to git checkout via source service.
+- Drop pkgconfig(libsoup-2.4) BuildRequires following upstreams
+  changes.
+- Use autosetup macro.
+- Pass explicit disable-gmime-i-know-what-im-doing=false,
+  enable-quvi=yes, enable-libarchive=yes and enable-libgcrypt=yes
+  to meson, make sure we build the features we want.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:46:28 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Feb 26 11:48:52 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Thu Sep 14 16:11:52 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 29 10:52:27 UTC 2017 - dimstar@opensuse.org
+
+- Update license following legal review: LGPL-2.1+ AND GPL-2.0+.
+
+-------------------------------------------------------------------
+Mon Aug 14 18:56:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Correct the soname of the install library.
+  + Fix TOTEM_PL_PARSER_CHECK_VERSION() being missing.
+  + Fix a small memory leak checking for videosite scripts and
+    document the internal API.
+  + Remove a number of obsolete files.
+- Drop totem-pl-parser-header.patch: Fixed upstream.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Set sover define to 18, upstream have sorted out it's versioning.
+
+-------------------------------------------------------------------
+Thu Jun 22 10:33:32 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Use meson instead of autotools as a build tool.
+- Port to meson build system:
+  + Add meson and gtk-doc BuildRequires.
+  + use meson relevant macros in place of
+    configure/make/make_install.
+  + Delete %{_libdir}/pkgconfig/totem-pl-parser.spec: this file is
+    being installed by error (bgo#784086).
+- Introduce sover defines, set to 19_0_1, used for the shared
+  library packages. Before setting the variable, the value would
+  have beeen '18'. This resolts in renaming of the SLPP packages to
+  *19_0_1.
+- Add totem-pl-parser-header.patch: Use the header template to
+  create the actual header file.
+- Replace pkgconfig(gmime-2.6) with pkgconfig(gmime-3.0) following
+  upstream changes.
+
+-------------------------------------------------------------------
+Wed Jun 21 18:18:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.10.8:
+  + Use Unicode in translatable strings.
+  + Autotools build changes.
+  + Enable videosite support even without quvi.
+  + Port from GSimpleAsyncResult to GTask.
+  + Fix shadowed URI variable in PLA parser.
+  + Add support for GMime 3.0 API.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 12:01:47 UTC 2016 - dimstar@opensuse.org
+
+- Update to 3.10.7:
+  + Don't consider M3U playlists as text/plain.
+  + Simplify ITMS link parsing.
+  + Fix mmap error checking.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Tue Dec 15 15:45:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.10.6:
+  + Fix a number of bugs in iTunes link handling and M3U and HLS
+    playlist parsing.
+  + Make it possible to use an alternate helper script to the
+    default quvi based one.
+
+-------------------------------------------------------------------
+Thu Apr 30 14:17:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.10.5:
+  + Don't handle HLS playlists served as m3u8.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 14:43:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.10.4:
+  + Fix parsing of Windows-style SMB playlists.
+  + Add support for EXTVLCOPT:audio-track-id in m3u files.
+  + Fix parsing of SMIL playlists.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:19:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.10.3:
+  + Ignore partially downloaded files when recursing.
+  + Fix crash when passing a broken URI.
+  + Fix potential integer overflow when parsing long durations.
+  + Fix potential crash when parsing RTSPtext QuickTime files.
+  + Fix parsing of Windows Media files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 15:23:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.10.2:
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  8 11:13:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.1:
+  + Build fixes.
+  + Fix possible crash parsing iTunes podcasts.
+  + Add support for detecting Blu-ray discs.
+  + Add images to RSS feeds.
+  + Support non-ASCII characters for video sites metadata. 
+
+-------------------------------------------------------------------
+Mon Feb 10 18:56:18 UTC 2014 - dimstar@opensuse.org
+
+- Fix dependencies:
+  + No longer provide / obsolete totem-pl-parser by
+    libtotem-plparser18: we have a main package with a libexec
+    binary.
+  + Require totem-pl-parser by libtotem-plparser18 and
+    libtotem-plparser-mini18 in order to have the libexec helper
+    available to the libraries.
+  + Move -lang Recommends to the main package.
+  + Add libquvi-scripts Requires: needed as the actual parsers
+    (bnc#863126).
+- Remove obsolete -lang cleanup from install section.
+
+-------------------------------------------------------------------
+Mon Sep 23 08:03:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Fix introspection for playlist saving.
+
+-------------------------------------------------------------------
+Wed Sep 18 18:20:49 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + Remove totem-disc from the public API.
+  + Remove linking to libquvi.
+- Rename subpackages libtotem-plparser17 and
+  libtotem-plparser-mini17 to libtotem-plparser18 and
+  libtotem-plparser-mini18 following upstreams so name bump. Due to
+  above namechange also change all corresponding Requires and %post
+  and %postun calls.
+
+-------------------------------------------------------------------
+Mon Aug  5 19:13:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Port to libquvi 0.9.
+  + Update for libarchive 3.0.
+  + Update for libsoup 2.44.
+  + Fix small memory leaks.
+- Replace pkgconfig(libquvi) BuildRequires with
+  pkgconfig(libquvi-0.9), following upstreams port.
+- Require the main package from the library package: a new binary
+  helper was introduced, which is being launcher by the library.
+
+-------------------------------------------------------------------
+Tue May 14 11:37:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.4.5:
+  + Avoid warnings when the volume doesn't have a mount.
+  + Fix media detection on loopback devices.
+  + Work-around hang-on-close() bugs in gvfs when parsing M3U
+    playlists.
+  + Save everything we're told to in XSPF playlists.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:56:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.4.4:
+  + Remove dependency on newer versions of glib.
+  + Fix overescaping of URIs in XSPF playlists.
+  + Add support for the itmss URI scheme.
+  + Require gmime 2.6.
+  + Fix small memory leak in totem_pl_parser_can_parse_from_data().
+  + Add read and write support for Totem XSPF extensions.
+  + Send content-type along with playlist-started/-ended signals
+    for PLS, M3U and XSPF playlist types.
+
+-------------------------------------------------------------------
+Tue Sep 18 11:45:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.3:
+  + Report "unsupported" errors from quvi
+  + Fix *.ts files being ignored (most of them aren't Qt Linguist
+    files)
+  + Don't show zero length coming from quvi
+  + Don't add JPEG files as entries in Podcasts
+  + Make RSS feeds ending in '/' parseable
+  + Make resolution test case pass with newer versions of glib
+  + Build fixes.
+
+-------------------------------------------------------------------
+Tue May 15 14:58:56 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Add totem-pl-parser-mini API documentation
+  + Fix possible crash with newer versions of GLib/GThread
+
+-------------------------------------------------------------------
+Mon Apr 16 17:01:27 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.1:
+  + archive:// URI fixes.
+  + Use the best available format for video sites.
+  + Test case updates.
+
+-------------------------------------------------------------------
+Tue Mar 27 09:43:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 17 16:24:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Fix introspection of TotemPlParserMetadata.
+  + Fix compilation with libgcrypt.
+  + Handle RSS feeds for video sites.
+
+-------------------------------------------------------------------
+Mon Feb 20 12:33:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Add support for AmazonMP3 download files
+  + Update for glib deprecations
+  + Update API for newer versions of quvi
+  + Avoid quvi poking the remote files by verifying the URLs it
+    generates. No good for one-time links.
+  + Fixes for warnings in introspection generation
+  + Add more test cases
+- Drop totem-pl-parser-new-libquvi.patch: fixed upstream.
+- Add libgcrypt-devel BuildRequires for AmazonMP3 download files
+  support.
+
+-------------------------------------------------------------------
+Wed Jan 11 17:40:51 UTC 2012 - dimstar@opensuse.org
+
+- Replace pkgconfig(gmime-2.4) BuildRequires with
+  pkgconfig(gmime-2.6).
+
+-------------------------------------------------------------------
+Tue Jan 10 13:27:58 UTC 2012 - vuntz@opensuse.org
+
+- Add totem-pl-parser-new-libquvi.patch: add compatibility with
+  libquvi 0.4.x.
+
+-------------------------------------------------------------------
+Thu Dec  8 22:24:53 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-TotemPlParser-1_0 subpackage.
+- Add typelib-1_0-TotemPlParser-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Sep 21 11:12:59 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.32.6:
+  + Fix parsing of remote RSS feeds
+  + Add support for M4U/MXU playlists
+- Change Obsoletes for totem-pl-parser from <= to < now that we
+  have a new upstream version.
+
+-------------------------------------------------------------------
+Tue Sep  6 18:26:08 UTC 2011 - vuntz@opensuse.org
+
+- Apply shared library packaging policy (bnc#688747):
+  + Create libtotem-plparser17 and libtotem-plparser-mini17
+    subpackages.
+  + Add Provides/Obsoletes for totem-pl-parser to
+    libtotem-plparser17.
+  + Move Recommends for lang subpackage to libtotem-plparser17, as
+    it's fair to assume that users of the mini version care less
+    about translations.
+  + Changes totem-pl-parser Requires in devel subpackage to
+    libtotem-plparser17 and libtotem-plparser-mini17 Requires.
+- Remove gtk2-devel and gmime-2_4-devel Requires from devel
+  subpackage: they will automatically be added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Wed Jun  8 17:14:37 UTC 2011 - nmarques@opensuse.org
+
+- Move to pkgconfig() style BuildRequires:
+  + Old ones: glib2-devel, gmime-2_4-devel,
+    gobject-introspection-devel, libquvi-devel, libsoup-devel,
+    libxml2-devel.
+  + New ones: glib-2.0, gmime-2.4, gobject-introspection-1.0,
+    libquvi, libsoup-2.4, libxml-2.0.
+- Improved removal of libtool archives on spec.
+
+-------------------------------------------------------------------
+Wed Jun  1 12:26:33 CEST 2011 - vuntz@opensuse.org
+
+- Add libquvi-devel BuildRequires to enable Quvi video link
+  parsing. Fix bnc#676294.
+- Pass --enable-quvi to make sure quvi support is built-in; it will
+  make the build fail if we lose it for some reason, which is good
+  to not lose the feature silently.
+
+-------------------------------------------------------------------
+Wed May 18 03:21:07 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.32.5:
+  + Fix parsing of iTunes podcasts
+  + Use libarchive to detect media discs in ISO files, instead of
+    gvfs, which makes it more reliable
+  + Add support for quvi properties (duration and thumbnail URL).
+- Add pkgconfig(libarchive) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:47:53 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.32.4:
+  + Fix --enable-quvi option
+  + Fix getting past the last line of PLS files
+  + Add "content-type" property when available
+
+-------------------------------------------------------------------
+Sun Feb 27 13:42:57 UTC 2011 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Thu Feb 24 14:11:56 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.32.3:
+  + quvi related build fixes
+- Changes from version 2.32.2:
+  + Parse links to video websites using libquvi
+  + Fix parsing data from broken HTTP servers
+  + Fix warning when opening a directory fails
+  + Fix parsing some ASF redirections masquerading as WMA files
+
+-------------------------------------------------------------------
+Wed Oct 20 11:38:30 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.1:
+  + Make introspection work for TotemCd and TotemDisc namespaces
+  + Ignore leading tabs and spaces before EXTINF comments in M3U
+    files
+  + Fix out-of-order signals when using async API
+  + Fix parsing of iTunes Podcast links
+  + Don't force add directories to the playlist when the recurse
+    level is too high
+
+-------------------------------------------------------------------
+Tue Sep 28 19:05:35 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:57:37 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Thu Sep 16 09:38:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Fix introspection build with gobject-introspection 0.9.5,
+    breaking the GIR API
+
+-------------------------------------------------------------------
+Mon Sep 13 18:00:51 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.3:
+  + Fix parsing of M3U files with ":" in their titles
+  + Fix parsing of files hiding as MP4 files (eg. an FLV with an
+    MP4 extension)
+
+-------------------------------------------------------------------
+Fri Aug  6 11:48:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Fix parsing PLS playlists with "holes" in the numbering
+  + Fix crash in totem_pl_parser_parse_with_base when parsing PHP
+    files that really are PHP files
+  + Add Genre extension to XSPF playlists
+  + Fix itms links parsing
+  + Add support for Last.fm's new XSPF extensions
+- Drop totem-pl-parser-gir11.patch: fixed upstream.
+- Add libsoup-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jul 18 19:29:49 UTC 2010 - dimstar@opensuse.org
+
+- Add totem-pl-parser-gir11.patch to support gir 1.1.
+
+-------------------------------------------------------------------
+Wed May 12 22:03:00 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Fix parsing of a number of Podcasts, including possible
+    crashers
+  + Fix parsing of playlists on HTTP servers when they don't match
+    the suffix used (eg. PHP page giving an XSPF playlist)
+  + A few win32 compilation fixes
+  + Use GIO for decompressing Podcasts.
+
+-------------------------------------------------------------------
+Mon Mar 29 22:06:27 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 15 22:21:52 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + Fix parsing of Guardian Podcasts
+  + Fix parsing of pukas.wax playlist
+  + Fix directory file descriptor leak
+  + Fix versioning of the introspection support.
+
+-------------------------------------------------------------------
+Wed Jan 27 13:45:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.1:
+  + Add introspection support
+  + Remove GTK+ dependency
+  + Remove deprecated symbols
+  + Add more metadata to XSPF playlist saving
+  + Fix compilation on *BSDs
+- Drop gtk2-devel BuildRequires.
+- Add gobject-introspection-devel BuildRequires.
+- Move API documentation to devel package.
+
+-------------------------------------------------------------------
+Thu Dec 17 13:26:20 CET 2009 - vuntz@opensuse.org
+
+- Fix build on openSUSE <= 11.2.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:43:42 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.2:
+  + Add support for subtitle properties in SMIL files
+  + Make totem-pl-parser's XML parsing thread-safe
+  + Fix detection of DVD ISOs from remote shares
+  + Fix getting DVD title from remote shares
+  + Fix some RSS feeds being detected as HTML
+  + Fix parsing of multi-line RTSPtext files
+  + Fix parsing of some RSS feeds with valid XML, but broken CDATA
+    usage
+
+-------------------------------------------------------------------
+Wed Sep 30 10:30:22 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Fix some files with magic getting ignored
+  + Small bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 28 13:41:11 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 18:52:28 CEST 2009 - lmedinas@opensuse.org
+
+- Update to version 2.27.92:
+  + Speed up PLS parsing
+  + Fix error when trying to activate a data mount in Totem's Movie
+    menu
+  + Try harder to ignore text files
+  + Fix test parser
+
+-------------------------------------------------------------------
+Mon Aug  3 12:29:20 CEST 2009 - vuntz@novell.com
+
+- Remove evolution-data-server-devel and add gmime-2_4-devel to
+  Requires of devel package.
+
+-------------------------------------------------------------------
+Wed Jul 29 20:35:26 CEST 2009 - vuntz@novell.com
+
+- Drop gnome-vfs2-devel, gtk-doc, hal-devel, perl-XML-Parser
+  BuildRequires.
+- Add gtk2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 27 17:05:09 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.2:
+  + Add asynchronous parsing API
+  + Use GMime instead of evolution-data-server's libcamel for dates
+    parsing
+  + Fix detection of DVD ISOs
+- Replace evolution-data-server-devel dependency by gmime-2_4-devel
+
+-------------------------------------------------------------------
+Thu May  7 05:10:38 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Handle all types of newline combinations (Unix/DOS)
+  + Fix compilation in MacOS X
+  + Convert tests to GTest API
+
+-------------------------------------------------------------------
+Tue May  5 16:41:14 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + Fix relative paths resolution for a number of playlist types
+  + Implement support for non-unicode encodings in the XML parser
+  + Fix parsing of iTunes podcasts for recent Apple changes
+  + Fix incorrect parsing of non-metalink QuickTime files
+
+-------------------------------------------------------------------
+Sat Apr  4 15:08:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Fix playback of radio streams when the URL has a trailing slash
+  + Fix detection of ISOs as VCDs or DVDs
+  + Fix parsing of some podcasts with huge amounts of CDATA in the
+    XML
+- Pass --disable-static to configure, and only remove la files
+  manually.
+
+-------------------------------------------------------------------
+Mon Mar 16 15:54:25 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  8 23:55:57 CET 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Wed Mar  4 12:28:44 CET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.92:
+  + Updated translations
+- Changes from version 2.25.91:
+  + Update API documentation
+  + Fix PLA writing to make filenames appear correctly on the
+    device
+  + Fix possible crasher in the itms feed parser
+  + Fix crasher when parsing a PLS file with invalid UTF-8
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Feb  5 03:48:57 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.90:
+  + Add support for the WPL playlist type
+  + Fix the Python bindings not working
+  + Fix a few memory leaks in XSPF parsing
+  + Fix parsing of ISO-8859-1 M3U files
+  + Ignore rtmp:// URIs
+
+-------------------------------------------------------------------
+Sat Dec 20 07:42:21 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.1:
+  + Port disc detection code to GIO, remove HAL dependency
+  + Add a way to disable the libcamel dependency for very
+    specific system integration cases
+  + Use error codes properly and document them
+
+-------------------------------------------------------------------
+Tue Dec 16 19:00:19 CET 2008 - coolo@suse.de
+
+- fix typo in last change
+
+-------------------------------------------------------------------
+Fri Dec 12 07:54:07 CET 2008 - coolo@suse.de
+
+- require the lang subpackage
+
+-------------------------------------------------------------------
+Tue Oct 14 06:54:33 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Fix DVB channels parsing in Totem
+  + Fix parsing of DOS M3U files that don't finish with a line feed
+  + Always write '#EXTM3U" at the start of M3U playlists
+
+-------------------------------------------------------------------
+Tue Sep 23 08:06:18 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Sun Aug 30 19:48:42 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Add support for parsing Zune and ZENCast URLs
+  + Fix parsing broken podcasts with HTML comments in them
+  + Better detection of Podcasts
+  + Fix parsing of QuickTime metalinks masquerading as MPEG-4 files
+  + Fix a few memleaks from GIO porting
+  + Fixes for the Python bindings
+  + Use a nice title for the developer documentation
+
+-------------------------------------------------------------------
+Wed Aug 06 19:48:42 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.3:
+  + Fix a possible crasher when detecting the media type of an optical
+    media, and an error occurs (such the device not being an audio CD)
+  + Fix compilation with some setups
+
+-------------------------------------------------------------------
+Mon Jun 23 19:48:42 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.2:
+  + Port to gio/gvfs
+  + Fix handling of XML-ish files with linefeeds after the document
+    head
+  + Add support for parsing remote DVDs (ISOs and directories)
+  + Check mime-type by hand when we get application/octect-stream
+    as a mime-type
+  + Remove trailing linefeeds from titles
+  + Ignore pnm:// URLs that are passed to us
+  + Fix block device detection code
+  + Fix bad detection of itms feeds
+  + Work-around problems with filenames when passed .php or .asp
+    files by the web browser.
+
+-------------------------------------------------------------------
+Fri Apr 11 16:04:47 CEST 2008 - vuntz@suse.de
+
+- Update to version 2.22.2:
+  + Add support for feed:// URLs as used by Firefox 3
+  + Work-around for feeds with a linefeed straight after "<rss"
+
+-------------------------------------------------------------------
+Thu Mar 13 14:02:39 CET 2008 - vuntz@suse.de
+
+- Update to version 2.22.1:
+  + Updated translations.
+- Changes from version 2.22.0:
+  + Sort filenames like nautilus does when adding directories
+
+-------------------------------------------------------------------
+Wed Mar  5 02:09:43 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Add support for more metadata when parsing XSPF files, as used on last.fm
+  + Better detection of files that aren't recognised as Podcast feeds
+  + Detect some additional ASX files
+  + Fix parsing of RTSPtext playlist from http://mediathek.zdf.de/
+  + Fix parsing of VLC-specific playlists from Freebox
+- Remove totem-pl-parser.diff.
+
+-------------------------------------------------------------------
+Thu Feb 28 16:03:18 CET 2008 - jpr@suse.de
+
+- Add evolution-data-server-devel to -devel requires for camel
+
+-------------------------------------------------------------------
+Fri Feb 22 05:52:02 CET 2008 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Feb 20 19:04:40 CET 2008 - maw@suse.de
+
+- Initial version: 2.21.91.
+

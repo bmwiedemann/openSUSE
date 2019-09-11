@@ -1,0 +1,82 @@
+Index: gnome-vfs-2.24.0/modules/smb-method.c
+================================================================================
+--- gnome-vfs-2.24.0/configure.in
++++ gnome-vfs-2.24.0/configure.in
+@@ -544,6 +544,12 @@
+ 		AC_CHECK_MEMBER(SMBCCTX.close,
+ 				[AC_DEFINE(HAVE_SAMBA_OLD_CLOSE, , [Defined if old close is available in SMBCCTXT])],,
+ 				[#include <libsmbclient.h>])
++		AC_CHECK_DECL(SMBC_SHAREMODE_DENY_WRITE,
++				[AC_DEFINE(HAVE_SMBC_SHAREMODE_DENY_WRITE, , [Defined if SMBC_SHAREMODE_DENY_WRITE is declared])],,
++				[#include <libsmbclient.h>])
++		AC_CHECK_DECL(SMBC_SHAREMODE_DENY_NONE,
++				[AC_DEFINE(HAVE_SMBC_SHAREMODE_DENY_NONE, , [Defined if SMBC_SHAREMODE_DENY_NONE is declared])],,
++				[#include <libsmbclient.h>])
+ 		CPPFLAGS="$CPPFLAGS_save"
+ 	else
+ 		SAMBA_CFLAGS=""
+--- gnome-vfs-2.24.0/modules/smb-method.c.old	2009-02-19 19:11:16.000000000 +0100
++++ gnome-vfs-2.24.0/modules/smb-method.c	2009-02-19 19:11:58.000000000 +0100
+@@ -983,6 +983,8 @@ lookup_user_cache (SmbAuthContext *actx,
+         g_free (key);
+        
+         if (user) {
++/* mask this to reload the username/userdomain/userpasswd to get the useful information from the cache*/
++#if 0
+                 /* If we already have a user name or domain double check that... */
+ 		if (!(actx->prompt_flags & GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_USERNAME) &&
+ 		    !string_compare(user->username, actx->use_user)) {
+@@ -995,7 +997,7 @@ lookup_user_cache (SmbAuthContext *actx,
+ 			retval = FALSE;
+ 			goto out;
+ 		}
+-		
++#endif		
+                 actx->use_user = string_realloc (actx->use_user, user->username);
+                 actx->use_domain = string_realloc (actx->use_domain, user->domain);
+                 actx->use_password = string_realloc (actx->use_password, user->password);
+@@ -1917,10 +1919,15 @@ do_open (GnomeVFSMethod *method,
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+ 
++ /* open_share_mode is not support in samba 3.0.22 (10.1) and the previous versions.
++ * mask it for compiling 10.1 version
++ */
++#ifdef HAVE_SMBC_SHAREMODE_DENY_WRITE
+  	if (mode & GNOME_VFS_OPEN_LOCKED) {
+  		smbc_option_set (smb_context, "open_share_mode",
+  				 SMBC_SHAREMODE_DENY_WRITE);
+  	}
++#endif
+ 
+ 	/* Important: perform_authentication leaves and re-enters the lock! */
+ 	while (perform_authentication (&actx) > 0) {
+@@ -1929,10 +1936,12 @@ do_open (GnomeVFSMethod *method,
+ 		DEBUG_SMB(("ctx->open(\"%s\") returned file %p and error %d\n", path, file, (int) actx.res));
+ 	}
+ 
++#ifdef HAVE_SMBC_SHAREMODE_DENY_NONE
+  	if (mode & GNOME_VFS_OPEN_LOCKED) {
+  		smbc_option_set (smb_context, "open_share_mode",
+  				 SMBC_SHAREMODE_DENY_NONE);
+  	}
++#endif
+ 	UNLOCK_SMB();
+ 
+ 	if (file == NULL) {
+@@ -2473,6 +2482,15 @@ do_open_directory (GnomeVFSMethod *metho
+ 		dir = smb_context->opendir (smb_context, path);
+ 		actx.res = (dir != NULL) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
+ 		DEBUG_SMB(("ctx->opendir(\"%s\") returned dir %p and error %d\n", path, dir, (int) actx.res));
++
++		/*remove the server which cannot be opened from the cache*/
++		if (actx.res != GNOME_VFS_OK) {
++			SMBCSRV *server;
++			server = find_cached_server (actx.for_server, actx.for_share, actx.use_domain?actx.use_domain:smb_context->workgroup, actx.use_user);
++			if (server) {
++				remove_cached_server (server_cache, server);
++			}
++		}
+ 	}
+ 
+ 	UNLOCK_SMB();

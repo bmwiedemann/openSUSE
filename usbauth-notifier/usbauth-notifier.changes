@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Feb 26 05:23:04 UTC 2018 - stefan.koch10@gmail.com
+
+- fix formatting of notifications
+- fix group name in manpage/README
+- use XDG autostart instead of xinitrc.d
+
+-------------------------------------------------------------------
+Tue Feb 13 22:30:00 UTC 2018 - stefan.koch10@gmail.com
+
+- buildrequires usbauth not needed, we create both
+  groups here.
+- fix group creation within spec file
+
+-------------------------------------------------------------------
+Thu Oct 12 14:37:00 UTC 2017 - meissner@suse.com
+
+- susefied spec file. correct permission handling added.
+
+-------------------------------------------------------------------
+Thu Oct 12 06:58:07 UTC 2017 - meissner@suse.com
+
+- UI notifications for new USB devices to be authenticated
+

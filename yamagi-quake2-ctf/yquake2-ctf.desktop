@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;ActionGame;
+Encoding=UTF-8
+Name=Quake II - Three Wave Capture The Flag
+GenericName=Quake II - Three Wave Capture The Flag
+Comment=Three Wave Capture The Flag
+Type=Application
+Icon=yquake2
+Exec=yquake2-ctf
+Terminal=false
+StartupNotify=false

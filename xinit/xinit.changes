@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Mon Mar  4 10:47:26 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.1
+  * This release fixes a bug when too many arguments are supplied
+    to the program and improves the man pages.
+
+-------------------------------------------------------------------
+Sat Sep 15 13:40:18 UTC 2018 - sndirsch@suse.com
+
+- xinit-nolonger-unset-dbus-session.patch
+  * no longer unset DBUS_SESSION_BUS_ADDRESS variable to prevent
+    gnome-session (and probably other DEs or programs, except of
+    Plasma) from launching a new D-Bus session, while systemd has
+    already launched its own. Unsetting it broke user systemd
+    services that use D-Bus (e.g. PulseAudio), because X uses
+    another D-Bus session (boo#1108549) 
+
+-------------------------------------------------------------------
+Wed Jul 11 11:16:48 UTC 2018 - fcrozat@suse.com
+
+- Do not check /var/lib/X11/X anymore, it is obsolete
+  (FATE#325524).
+
+-------------------------------------------------------------------
+Wed Apr  4 14:27:04 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.4.0
+  * autogen.sh: use quoted string variables
+  * Remove SCO support for SHELL_CMD and startx man page.
+  * Remove support for ancient A/UX 3.0 support
+  * Remove left over $(launchagents_DATA) in CLEANFILES
+  * startx: Pass -keeptty when telling the server to start on the current tty
+  * startx: Fix startx picking an already used display number when -nolock is used
+  * remove bogus \/ escapes
+  * launchd: Install binaries into libexecdir
+  * startx: Add -listen tcp if nolisten_tcp is disabled for XQuartz
+  * startx: Add support for enabling IGLX for XQuartz
+  * startx: Don't use GNU expr extensions
+  * autogen: add default patch prefix
+  * startx: fix comment typo
+  * startx: don't init defaultdisplay to :0
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * xinit: check for correct fork error code
+
+-------------------------------------------------------------------
+Wed Jun  1 12:37:18 UTC 2016 - mstaudt@suse.com
+
+- xinitrc.common: Add plasma* in list of fallback WMs
+
+-------------------------------------------------------------------
+Wed Jun  1 10:43:56 UTC 2016 - mstaudt@suse.com
+
+- xinitrc.common: Add comments, make error messages clearer.
+  Don't filter out twm, as it's only installed on request.
+  Don't expand fallback WINDOWMANAGER.
+
+-------------------------------------------------------------------
+Wed Jun  1 07:36:25 UTC 2016 - werner@suse.de
+
+- xinit.tar.bz2: skip twm and xsession desktops 
+
+-------------------------------------------------------------------
+Tue May 31 16:46:51 UTC 2016 - werner@suse.de
+
+- xinit.tar.bz2:
+  simplify bash code of /etc/X11/xinit/xinitrc.common to avoid that
+  already set WINDOWMANAGER variable becomes stripped (bsc#981437)
+
+-------------------------------------------------------------------
+Fri Apr  1 08:39:03 UTC 2016 - eich@suse.com
+
+- xinit.tar.bz2:
+  update /etc/X11/xinit/xinitrc.common to make sure numbered scripts
+  are run sequentially. All non-numbered scripts will still be run in
+  background to avoid stalling on non-daemonizing 'services' (boo#973559).
+
+-------------------------------------------------------------------
+Sun May 10 01:21:00 UTC 2015 - Led <ledest@gmail.com>
+
+- fix bashism in startx script
+- update patches:
+  * xinit-suse.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 11:47:43 UTC 2015 - sndirsch@suse.com
+
+- fixed bugnumer reference in previous changelog entry 
+
+-------------------------------------------------------------------
+Wed Mar 11 13:30:04 UTC 2015 - werner@suse.de
+
+- Allow WINDOWMANAGER to be a command line string (bsc#921172)
+    
+-------------------------------------------------------------------
+Wed Jan 28 09:35:36 UTC 2015 - sndirsch@suse.com
+
+- startx.cpp:
+  * /usr/X11R6/bin/X --> /usr/bin/X
+  * /var/X11R6/bin/X --> /var/lib/X11/X
+- refreshed patches
+
+-------------------------------------------------------------------
+Fri Jan 23 17:07:35 UTC 2015 - sndirsch@suse.com
+
+- apparently with release 1.3.4 xinit needs cc1plus; otherwise
+  generation of startx fails and results in a file with a size
+  of 0 bytes
+
+-------------------------------------------------------------------
+Wed Jan 21 09:40:03 UTC 2015 - sndirsch@suse.com
+
+- Fixed some more spacing and minor issues in adapted patches 
+
+-------------------------------------------------------------------
+Tue Jan 20 17:44:43 UTC 2015 - sfalken@opensuse.org
+
+- Fixed some spacing and single quote vs backtick issues
+  in patches 
+
+-------------------------------------------------------------------
+Mon Jan 19 17:12:31 UTC 2015 - sfalken@opensuse.org
+
+- Corrections to variable names in xinit-suse.patch and
+  xinit-tolerant-hostname-changes.patch 
+
+-------------------------------------------------------------------
+Sun Jan 18 17:38:28 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 1.3.4:
+  + Changes from 1.3.3
+    - Fix warnings about parameters to startServer & startClient
+      shadowing globals
+    - Pass files to cpp via CLI arg instead of stdin to workaround
+      gcc 4.8 change (fdo#69439) 
+    - Remove unixware / sco support
+    - Bump required util-macros version to 1.19
+    - Replace $RAWCPPFLAGS with $TRADITIONALCPPFLAGS when processing
+      cpp files
+    - Under Linux start X on the current VT (rh#806491)
+    - startx; Pass vtX as long as the user did not specify one
+    - configure: Drop AM_MAINTAINER_MODE
+    - autogen.sh: Honor NOCONFIGURE=1
+    - startx: Make the bugzilla reference in a comment survive cpp
+      processing (fdo#83019)
+    - Remove hardcoded path to OpenSSL for OpenBSD
+  + Patches refactored/renamed for version change
+  + Added:
+    - xinit-client-session.patch
+    - xinit-tolerant-hostname-changes.patch
+    - xinit-suse.patch
+    - xinit-1.3.4.tar.bz2
+  + Modified:
+    - xinit-client-session.patch
+  + Dropped:
+    - xinit-tolerant-hostname-changes.diff
+    - xinit-suse.diff
+    - xinit-1.3.3.tar.bz2
+
+-------------------------------------------------------------------
+Wed Dec 17 20:36:15 UTC 2014 - dimstar@opensuse.org
+
+- On openSUSE > 13.2, xterm has been split into xterm-bin for the
+  program and xterm for the app launcher. We only need the program,
+  so conditionall Require xterm-bin.
+
+-------------------------------------------------------------------
+Tue Sep  9 07:54:00 UTC 2014 - sndirsch@suse.com
+
+- add info to run chkstat after modifying /etc/permissions.local
+  in order to run startx (bnc#895647) 
+
+-------------------------------------------------------------------
+Wed Jan  8 13:57:53 UTC 2014 - lnussel@suse.de
+
+- don't call the obsolete wmlist. Read /usr/share/xsessions instead.
+
+-------------------------------------------------------------------
+Mon Sep 16 15:09:42 UTC 2013 - sndirsch@suse.com
+
+- fixed loading of .xkb files (bnc#840408)
+
+-------------------------------------------------------------------
+Thu Sep 12 19:53:48 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.3.3:
+  + Add Apple copyright/license notice from launchd files to
+    COPYING.
+  + Use pid_t instead of int for type of pids.
+  + Check for openssl as mkcookie fallback on all platforms, not
+    just OpenBSD.
+  + Declare processTimeout() as taking a const string arg.
+  + If we have to forcibly kill the Xserver on Solaris, reset
+    kbd_mode.
+  + Add printf attributes suggested by gcc.
+  + install: Use sysconfdir instead of libdir for config files.
+  + man: Set correct config file location in man page.
+  + privileged_startx: use root:wheel instead of 0:0.
+  + XQuartz: Fix an issue where -dpi was not being passed to the
+    server despite being set.
+  + Annotate Fatal and Fatalx as _X_NORETURN.
+  + darwin: Silence a syslog message from defaults.
+  + laucnhd:
+    - Silence some syslog spam.
+    - Fix the destination of moved-aside directories in
+      privileged_startx.
+    - Load privileged_startx properly on Tiger.
+    - Provide more verbose error reporting for launchd checkin
+      failures.
+    - Don't provide the LaunchAgent on Tiger.
+  + launchd/privileged_startx: Improved error resolution.
+- Add pkgconfig(xproto) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Wed Dec  5 09:40:27 UTC 2012 - werner@suse.de
+
+- Move xinitrc.d sourcing part to xinit.common to make it work
+  even with xdm session scripts
+- Detect other running X server in xserverrc
+
+-------------------------------------------------------------------
+Mon Jul  2 09:34:48 UTC 2012 - werner@suse.de
+
+- Allow xinitrc scripts to be sourced (bnc#750980)
+
+-------------------------------------------------------------------
+Sun Apr 15 15:16:28 UTC 2012 - vuntz@opensuse.org
+
+- Move /etc/X11/Xresources from xorg-x11 to this package (in
+  xinit.tar.bz2), since this is the base package using this file.
+
+-------------------------------------------------------------------
+Sat Apr 14 22:02:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.3.2:
+  + Use default clientargs, serverargs, and display if none were
+    set
+  + launchd: Add an option (--with-launchagent-xserver) to set the
+    default X11 server
+  + startx: Choose an unused $DISPLAY by default on all platforms
+    (fdo#1789)
+  + Include <sys/time.h> and <sys/resource.h> unconditionally
+    (fdo#40632)
+  + darwin: Buildfix for Tiger which doesn't have posix_spawn
+- Changes from version 1.3.1:
+  + launchd: Brownbag fix string compare
+  + launchd: console_redirect: Actually read and log the remaining
+    data when we get EV_EOF
+  + launchd: Enable stdout/stderr redirection to ASL
+  + launchd: Fix an array-index-out-of-bounds crasher
+  + launchd: Log messages to ASL rather than fprintf
+  + launchd: Reorganized layout of launchd sources
+  + launchd: Set the correct id for privileged_startx
+  + launchd: Silence clang static analyzer
+  + launchd: syslog: Use facility org.x rather than user
+  + launchd: Update console redirection to work with libdispatch
+  + privileged_startx: Prefer /usr/bin/mktemp
+  + Rename launchd-id-prefix to bundle-id-prefix
+  + Use XORG_MANPAGE_SECTIONS rather than cpprules.in to build man
+    pages
+  + Build system fixes.
+- Rebase xinit.diff.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xinit from xorg-x11. Initial version: 1.3.0.
+

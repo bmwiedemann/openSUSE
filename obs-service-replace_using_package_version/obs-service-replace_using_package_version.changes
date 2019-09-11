@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Jun 25 15:22:55 UTC 2019 - containers@suse.com
+
+- Update to version 1561476096.079b75f:
+  * Bump version: 0.0.2 → 0.0.3
+  * new patch_update and offset parameters (bsc#1139343)
+
+-------------------------------------------------------------------
+Tue Oct 09 07:24:59 UTC 2018 - containers@suse.com
+
+- Update to version 1539069197.d0e12bd:
+  * Bump version: 0.0.1 → 0.0.2
+  * Add bumpversion support
+  * Add the `--parse-version` flag (fixes bsc#1111089)
+  * Add a simple example in README.md
+  * Adjusting readme and tests code style
+
+-------------------------------------------------------------------
+Tue Mar 20 17:09:00 UTC 2018 - containers@suse.com
+
+- Update to version 1521565666.36ea78a:
+  * Minor changes
+
+-------------------------------------------------------------------
+Tue Mar 20 16:48:26 UTC 2018 - containers@suse.com
+
+- Update to version 1521564356.3457a22:
+  * Remove makefile
+  * Include LICENSE file into the RPM package
+  * Update changes log format
+  * Add GPLv3 License
+  * Improve README
+  * check rpm db of installed packages first
+  * Adding simple changelog generator
+  * Update installation strategy
+  * Fix ./setup.py install
+  * Adding travis.yml file
+

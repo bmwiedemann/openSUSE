@@ -1,0 +1,1470 @@
+-------------------------------------------------------------------
+Sat Apr 20 10:35:36 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Rework /var/adm/update-messages handling to be far less complicated, and more
+  packaging-friendly (by update-messages be owned by the rpm) as well as
+  storing the update message in a autoconf-templated source file.
+
+-------------------------------------------------------------------
+Wed Apr 10 16:01:01 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix apparmor dropin to be compatible with LXC 3.1.0 (bsc#1131762)
+
+-------------------------------------------------------------------
+Sun Apr  7 07:20:48 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Avoid wrong permissions warning by conditionally setting the setuid bit based
+  on what version of permissions is available in that distribution (makes no
+  difference but results in less confusion to users).
+
+-------------------------------------------------------------------
+Mon Apr  1 07:00:41 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Fix builds on SLE12, by depending on apparmor-profiles instead of
+  apparmor-abstractions. In addition, remove the Requires on abstractions.
+
+-------------------------------------------------------------------
+Fri Mar 29 09:14:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim project history from package description.
+
+-------------------------------------------------------------------
+Tue Mar 26 02:04:57 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXC 3.1.0. The changelog is far too long to include here, please
+  look at the changelogs posted on https://linuxcontainers.org/. boo#1131762
+  * Includes fixes for CVE-2019-5736 bsc#1122185.
+  + pam_cgfs is now provided by this package, since upstream has moved the
+    sources to LXC (it used to be part of lxcfs).
+  * All of the patches have been upstreamed or are no longer relevant:
+    - 0001-apparmor-Allow-usr-lib-paths-for-mount-and-pivot_roo.patch
+    - 0001-utils-add-LXC_PROC_PID_FD_LEN.patch
+    - 0001-lxc-user-nic-verify-file-descriptor-stable-2.0.patch
+    - 0001-Backport-autodev-fix-from-lxc-master.patch
+    - 0001-PyOS_AfterFork-python3.7.patch
+- Add a warning if lxc-user-nic is not setuid after set_permissions, to ensure
+  users actually read the warning (which means we get to remove README.SUSE).
+  It also supports people using paranoid mode, which is why it's done in
+  post-install and isn't packaged. boo#988348
+- Quite a lot of the runtime helpers and configuration have been moved to
+  liblxc, in order to allow LXD to make use of them (because, in truth, they
+  were always a requirement of liblxc and not just the lxc-* tools).
+- Add workaround for pre-15 distros, where _sharedstatedir was inexplicably
+  /usr/com, to use the correct directory of /var/lib.
+
+-------------------------------------------------------------------
+Tue Mar 26 00:09:22 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Rework packaging to be a more modern openSUSE-style.
+
+-------------------------------------------------------------------
+Mon Feb  4 20:16:17 UTC 2019 - Bjoern Voigt <bjoernv@arcor.de>
+
+- compilation fixed for Python 3.7
+  (PyOS_AfterFork() replaced with PyOS_AfterFork_Child())
+  added patch 0001-PyOS_AfterFork-python3.7.patch
+
+-------------------------------------------------------------------
+Sat Sep 15 19:36:52 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix for bsc#988348 (lxc: enable setuid bit on lxc-user-nic)
+  - do not remove setuid bit for lxc-user-nic on releases with suse_version >=1550
+  - remove setuid stuff from README.SUSE on releases with suse_version >=1550
+
+-------------------------------------------------------------------
+Fri Sep 14 20:46:26 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
+
+- move bash completion file from /etc/bash_completion.d/lxc to
+  /usr/share/bash-completion/completions/ to avoid warning
+
+-------------------------------------------------------------------
+Mon Aug 27 06:51:25 UTC 2018 - bernd-obs@wachter.fi
+
+- 0001-Backport-autodev-fix-from-lxc-master.patch: fix unprivileged
+  lxc containers on kernel >= 4.18
+
+-------------------------------------------------------------------
+Fri Aug  3 07:57:34 UTC 2018 - matthias.gerstner@suse.com
+
+- 0001-utils-add-LXC_PROC_PID_FD_LEN.patch: prerequisite for applying the
+  next patch
+- 0001-lxc-user-nic-verify-file-descriptor-stable-2.0.patch: fix information
+  leak and possible open() side effects accessible to regular users via
+  lxc-user-nic (bsc#988348, CVE-2018-6556)
+
+-------------------------------------------------------------------
+Thu Jul 19 12:56:36 UTC 2018 - mchandras@suse.de
+
+- Add upstream patch to fix container start up problems when AppArmor
+  is enabled (boo#1099239)
+  * 0001-apparmor-Allow-usr-lib-paths-for-mount-and-pivot_roo.patch
+
+-------------------------------------------------------------------
+Wed Jun 13 11:01:45 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Tue Oct 31 19:42:13 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- update to version 2.0.9
+  Bugfixes:
+  * apparmor: Allow containers to start in AppArmor namespaces
+  * apparmor: Drop useless apparmor denies
+  * caps: Move ifndef/define to the top
+  * cgfsng: Fail when limits fail to apply
+  * cgfsng: Log when we defer to cgfsng
+  * cgfsng: Only output debug info when we set cgroup data
+  * cgroups: Handle hybrid cgroup layouts
+  * cgroups: Use tight scoping
+  * cgroups: Workaround gcc-7 bug
+  * commands: Abstract cmd socket handling + logging
+  * commands: Add missing translation
+  * commands: Delete meaningless comments
+  * commands: Handle EINTR
+  * commands: Make state server interface flexible
+  * commands: Move lxc_make_abstract_socket_name()
+  * commands: Rename to lxc_cmd_add_state_client()
+  * commonds: Fix typo
+  * conf: Adapt to lxc-user-nic usage
+  * conf: Add lxc_get_idmaps()
+  * conf: Add userns_exec_full()
+  * conf: Allow to clear all config items
+  * conf: Allow to get lxc.autodev
+  * conf: Allow to get lxc.haltsignal
+  * conf: Allow to get lxc.kmsg
+  * conf: Allow to get lxc.rebootsignal
+  * conf: Allow to get lxc.stopsignal
+  * conf: Allow writing uid mappings with euid != 0
+  * conf: Avoid double-frees in userns_exec_1()
+  * conf: Clear lxc.include
+  * conf: Do not check for empty value twice
+  * conf: Do not check union on wrong net type
+  * conf: Do not deref null pointer
+  * conf: Do not free static memory
+  * conf: Do not log uninitialized memory
+  * conf: Do not write out trailing spaces
+  * conf: Don't send ttys when none are configured
+  * conf: Dump lxc_get_config_item()
+  * conf: Error out on too many mappings
+  * conf: Fix bionic builds
+  * conf: Fix build without libcap
+  * conf: Fix tty creation
+  * conf: Fix userns_exec_1()
+  * conf: Free netdev->downscript
+  * conf: Implement config item clear callback
+  * conf: Improve lxc_map_ids()
+  * conf: Improve tty shifting function
+  * conf: Improve write_id_mapping()
+  * conf: Increase lxc-user-nic buffer
+  * conf: Log lxc-user-nic output
+  * conf: lxc_listconfigs -> lxc_list_config_items
+  * conf: Move clearing config items into one place
+  * conf: Non-functional changes
+  * conf: NOTICE() on mounts on container's /dev
+  * conf: Performance tweaks
+  * conf: Preserve newlines
+  * conf: Properly parse lxc.idmap entries
+  * conf: Record idmap that gets written
+  * conf: Refactoring of most config parsing code
+  * conf: Refactor network deletion
+  * conf: Remove dead assignments in parse_idmaps()
+  * conf: Remove dead mount code
+  * conf: Rework lxc_map_ids()
+  * conf: Rework userns_exec_1()
+  * conf: Send ttys in batches of 2
+  * conf: Switch API to new callback system
+  * conf: Use a minimal {g,u}id map
+  * conf: Use correct check on char array
+  * conf: Use run_command for lxc-usernsexec
+  * console: Clean tty state + return 0 on peer exit
+  * console: DO NOT add the handles of adjust winsize when the 'stdin' is not a tty
+  * console: Fix memory leak of 'lxc_tty_state'
+  * console: Remove dead assignments
+  * core: Do remount with the MS_REMOUNT flag when mounts with MS_RDONLY
+  * core: Fix a format string build failure on x32
+  * core: Fix includes for Android
+  * core: Fix memory and resource leak
+  * core: Fix some cppcheck warnings
+  * core: Fix the bug of 'ts->stdoutfd' did not fill with parameters 'stdoutfd'
+  * core: Include custom mntent for Android
+  * core: Log function called in userns_exec_1()
+  * core: Remove the __func__ macro
+  * core: Remove the unused macro
+  * core: Replace "priority" with "level"
+  * core: Revert "Add a prefix to the lxc.pc"
+  * core: root -> am_root
+  * core: struct bdev -> struct lxc_storage
+  * core: Update .gitignore
+  * core: Use strerror(errno) instead of %m
+  * criu: Add cmp_version()
+  * criu: Use correct check initialization check
+  * doc: Add CII Best Practices badge to README
+  * doc: Add console behavior to Japanese lxc.container.conf(5)
+  * doc: Document missing env variables
+  * doc: Fix regex-typo in Japanese and Korean lxc-monitor(1)
+  * doc: Fix regex-typo in lxc-monitor.sgml.in
+  * doc: Reword id mapping restrictions when unpriv
+  * doc: Rework README
+  * doc: Tweak Japanese lxc.container.conf(5)
+  * doc: Tweak lxc.container.conf a little
+  * doc: Untabify Japanese lxc.container.conf(5)
+  * doc: Update API documentation for get_config_item
+  * execute: Enable console & standard /dev symlinks
+  * init: Add comment for exclude 32 and 33 signals
+  * init: Adjust include statements
+  * init: Become session leader
+  * init: Move initialization of act to outside of the loop
+  * init: Report exec*() failure
+  * init: Use lxc-stop to stop systemd service
+  * liblxc: Make sure memory is free()ed
+  * liblxc: Only spawn monitord on demand
+  * liblxc: Remove 5s timeout on error
+  * liblxc: Use snprintf()
+  * liblxc: Use userns_exec_full()
+  * lock: Non-functional changes
+  * lock: Return the right error when open lock file failed
+  * log: Prevent stack smashing
+  * log: Switch to a new lxc_log_init function
+  * monitor: Abstract lxc_abstract_unix_{send,recv}_fd for af_unix
+  * monitor: Add lxc_cmd_state_server()
+  * monitor: Add TRACE()ers
+  * monitor: Delete unneccessory include file
+  * monitor: Remove dead assignments
+  * monitor: Remove the workaround-code for lxc_abstract_unix_connect
+  * monitor: Remove unlink operation for af_unix
+  * network: Add arg to config clear method
+  * network: Add data arg to set callback
+  * network: Add ifindex field for host veth device
+  * network: Add lxc_log_configured_netdevs()
+  * network: Add missing checks for empty links
+  * network: Add network counter
+  * network: Add warning when ignoring MTU
+  * network: Clear ifindeces
+  * network: Delete ovs for unprivileged networks
+  * network: Document all fields in struct lxc_netdev
+  * network: Don't delete net devs we didn't create
+  * network: Fix grammar
+  * network: Implement lxc_get_netdev_by_idx()
+  * network: Log cleanup thread pid for openswitch
+  * network: Log ifindex
+  * network: Log ifindex for host side veth device
+  * network: Log veth_attr.pair and veth_attr.veth1
+  * network: Move config_value_empty() to confile_utils
+  * network: Perform network validation at creation time
+  * network: Remove allocation from lxc_mkifname()
+  * network: Remove dead assignments
+  * network: Remove netpipe
+  * network: Retrieve correct names and ifindices
+  * network: Retrieve the host's veth device ifindex
+  * network: Rework network creation
+  * network: Send ifindex for unpriv networks
+  * network: Stop recording saved physical net devices
+  * network: Use correct network device name
+  * network: Use send()/recv()
+  * network: Use single helper to delete networks
+  * network: Use static memory for net device names
+  * openvswitch: Delete ports intelligently
+  * seccomp: Export the seccomp filter after load it into kernel successful
+  * seccomp: Print action name in log
+  * seccomp: s/n-new-privs/no-new-privs/g
+  * seccomp: Update comment for function parse_config
+  * start: Add lxc_free_handler()
+  * start: Add lxc_init_handler()
+  * start: Document all handler fields
+  * start: Don't call lxc_map_ids() without id map
+  * start: Don't close inherited namespace fds
+  * start: Don't let data_sock users close the fd
+  * start: Dup std{in,out,err} to pty slave
+  * start: Ensure cgroups are cleaned up
+  * start: Generalize lxc_check_inherited()
+  * start: Log sending and receiving of tty fds
+  * start: lxc_setup() after unshare(CLONE_NEWCGROUP)
+  * start: Move env setup before container setup
+  * start: Pass LXC_LOG_LEVEL to hooks
+  * start: Pin rootfs when privileged
+  * start: Remove dead variable
+  * start: Send state to legacy lxc-monitord state server even if no state clients registered
+  * start: Set environment variables correctly
+  * start: Switch from SOCK_DGRAM to SOCK_STREAM
+  * start: Switch ids at last possible instance
+  * start: Use separate socket on daemonized start
+  * start: Use userns_exec_full()
+  * state: Remove lxc_rmstate declaration
+  * storage: Add storage_utils.{c.h}
+  * storage: Avoid segfault
+  * storage: Default to orig type on identical paths
+  * storage: Record output from mkfs.*
+  * storage: Rename files "bdev" -> "storage"
+  * storage: Use userns_exec_full()
+  * storage/dir: Using 'add-required_remount_flags' function to add required flags
+  * storage/loop: Detect loop file
+  * storage/overlayfs: Fix wrong path
+  * storage/overlay: Handle overlay for stable 2.0
+  * template: Remove obsolete bind-mounts from userns.conf
+  * template: Use "rsync -SHaAX" to copy the cached rootfs into place
+  * template/alpine: Add support for ppc64le
+  * template/alpine: Change file check to also check file size (-f => -s)
+  * template/archlinux: Change locale "en-US.UTF-8" to "en_US.UTF-8"
+  * template/centos: Add cronie to the pkg list
+  * template/centos: Use altarch mirror for CentOS on arches other than i386 and x86_64
+  * template/debian: Add aarch64 -> arm64 mapping
+  * template/debian: Add buster as a valid release
+  * template/debian: Don't force getty@ configuration
+  * template/debian: Use deb.debian.org as the default Debian mirror
+  * template/download: Fix syntax error
+  * template/download: Sanitize script with shellcheck
+  * template/opensuse: Add Tumbleweed as supported release
+  * template/opensuse: Fix tumbleweed software selection
+  * template/opensuse: getty.target.wants does not always exists
+  * template/opensuse: Support leap 42.3
+  * template/opensuse: Tumbleweed has no update repo
+  * template/plamo: Delete unnecessary process during container shutdown
+  * template/ubuntu: Check that there is netplan binary, rather than just just a config directory
+  * template/ubuntu: Conditionally move upstart ssh job, as it is now optional
+  * template/ubuntu: Support netplan in newer releases by default
+  * tests: Adapt lxc-user-nic tests to new syntax
+  * tests: Add corner-case tests for lxc_safe_{u}int()
+  * tests: Add item clear and config file tests
+  * tests: Add test script to test the ro option of lxc.rootfs.options
+  * tests: Add unit tests for idmap parser
+  * tests: Avoid NULL pointer dereference
+  * tests: Compare return value to expected value whenever we can
+  * tests: Define a network before checks
+  * tests: Don't fail when no processes for the user exist
+  * tests: Enforce all methods for config items
+  * tests: Remove dead assignments
+  * tests: Remove the temp container directory
+  * tests: Shortlived daemonized containers
+  * tests: Support systemd hybrid cgroups
+  * tools: Add additional cgroup checks
+  * tools: Print "-devel" when LXC_DEVEL is true
+  * tools: Use "which"
+  * tools/lxc-attach: Allow for situations without /dev/tty
+  * tools/lxc-checkconfig: Add CONFIG_NETFILTER_XT_MATCH_COMMENT
+  * tools/lxc-checkconfig: Add probe status checking
+  * tools/lxc-execute: Print error message when failed
+  * tools/lxc-ls: Return all containers by default
+  * tools/lxc-monitord: Exit when receiving a quit command
+  * tools/lxc-unshare: Do not pass NULL pointer
+  * tools/lxc-user-nic: Add new {create,delete} subcommands
+  * tools/lxc-user-nic: Check db before trying to delete
+  * tools/lxc-user-nic: Fix adding database entries
+  * tools/lxc-user-nic: Fix memleak
+  * tools/lxc-user-nic: Free memory and check for error
+  * tools/lxc-user-nic: Initialize vars to silence gcc-7
+  * tools/lxc-user-nic: Keep lines from other {users,links}
+  * tools/lxc-user-nic: Remove delta between master + stable
+  * tools/lxc-user-nic: Remove double initialization
+  * tools/lxc-user-nic: Rework renaming net devices
+  * tools/lxc-user-nic: Simplify logic
+  * tools/lxc-user-nic: Test privilege over netns on delete
+  * tools/lxc-usernsexec: Remove dead assignments
+  * travis: Fix builds
+  * utils: Add has_fs_type() + is_fs_type()
+  * utils: Add lxc_nic_exists()
+  * utils: Add lxc_safe_ulong()
+  * utils: Add run_command
+  * utils: Close parent end in child process after fork
+  * utils: Do not write to 0 sized buffer
+  * utils: Duplicate stderr as well in lxc_popen()
+  * utils: Fix lxc_mount_proc_if_needed()
+  * utils: Fix lxc_popen()/lxc_pclose()
+  * utils: Fix mem leak with realpath
+  * utils: Fix num parsing functions
+  * utils: Fix ppc64le builds
+  * utils: Fix the way to detect blocking signal
+  * utils: lxc_popen() remove dead assignments
+  * utils: Move helpers from cgfsng.c to utils.{c,h}
+  * utils: Rework lxc_deslashify()
+  * utils: Switch to has_fs_type()
+  * utils: Use 1LU otherwise we overflow
+  * utils: Use access instead of stat
+
+-------------------------------------------------------------------
+Tue Sep 12 06:19:25 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- removed ldconfig from lxc %post section
+
+-------------------------------------------------------------------
+Fri Sep  1 09:39:30 UTC 2017 - mchandras@suse.de
+
+- Fix libcap-progs dependency. The 'setcap' binary is located in /sbin
+  instead of /usr/sbin but it's best to depend on the actual package
+  instead since the location might change in the future.
+
+-------------------------------------------------------------------
+Wed Aug 30 18:02:40 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- removed apparmor-rpm-macros again, as it is not needed for the current %post solution
+
+-------------------------------------------------------------------
+Wed Aug 30 17:57:26 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- added Requires for apparmor-abstractions and BuildRequires for apparmor-rpm-macros to apply the fix for boo#1036360
+
+-------------------------------------------------------------------
+Wed Aug 30 17:49:47 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- added correct reload of apparmor to %post
+
+-------------------------------------------------------------------
+Tue Jul  4 19:41:07 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- added workaround for #bsc1041291 to allow builds on Tumbleweed with gcc7, until this bug in gcc7 is fixed...
+
+-------------------------------------------------------------------
+Tue May 16 16:47:47 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.8
+  * Security fix for CVE-2017-5985
+  * All templates have been updated to not set default passwords anymore, instead requiring lxc-attach be used to configure users.
+  * This may affect some automated environments that were relying on our default (very much insecure) users.
+
+ Bugfixes:
+    Make lxc-start-ephemeral Python 3.2-compatible
+    Fix typo
+    Allow build without sys/capability.h
+    lxc-opensuse: fix default value for release code
+    util: always malloc for setproctitle
+    util: update setproctitle comments
+    confile: clear lxc.network..ipv{4,6} when empty
+    lxc_setup_tios(): Ignore SIGTTOU and SIGTTIN signals
+    Make lxc-net return non-zero on failure
+    seccomp: allow x32 guests on amd64 hosts.
+    Add HAVE_LIBCAP
+    c/r: only supply --ext-mount-map for bind mounts
+    Added 'mkdir -p' functionality in create_or_remove_cgroup
+    Use LXC_ROOTFS_MOUNT in clonehostname hook
+    squeeze is not a supported release anymore, drop the key
+    start: dumb down SIGCHLD from WARN() to NOTICE()
+    log: fix lxc_unix_epoch_to_utc()
+    cgfsng: make trim() safer
+    seccomp: set SCMP_FLTATR_ATL_TSKIP if available
+    lxc-user-nic: re-order #includes
+    lxc-user-nic: improve + bugfix
+    lxc-user-nic: delete link on failure
+    conf: only try to delete veth when privileged
+    Fix lxc-containers to support multiple bridges
+    Fix mixed tab/spaces in previous patch
+    lxc-alpine: use dl-cdn.a.o as default mirror instead of random one
+    lxc-checkconfig: verify new[ug]idmap are setuid-root
+    [templates] archlinux: resolve conflicting files
+    [templates] archlinux: noneed default_timezone variable
+    python3: Deal with potential NULL char*
+    lxc-download.in / allow setting keyserver from env
+    lxc-download.in / Document keyserver change in help
+    Change variable check to match existing style
+    tree-wide: include directly
+    conf/ile: make sure buffer is large enough
+    tree-wide: include directly
+    tests: Support running on IPv6 networks
+    tests: Kill containers (don't wait for shutdown)
+    Fix opening wrong file in suggest_default_idmap
+    do not set the root password in the debian template
+    do not set insecure passwords
+    don't set a default password for altlinux, gentoo, openmandriva and pld
+    tools: exit with return code of lxc_execute()
+    Keep veth.pair.name on network shutdown
+    Makefile: fix static clang init.lxc build
+    Avoid waiting for bridge interface if disabled in sysconfig/lxc | lxc-net via USE_LXC_BRIDGE
+    Increased buffer length in print_stats()
+    avoid assigning to a variable which is not POSIX shell proof (bug #1498)
+    remove obsolete note about api stability
+    conf: less error prone pointer access
+    conf: lxc_map_ids() non-functional changes
+    caps: add lxc_{proc,file}_cap_is_set()
+    conf: check for {filecaps,setuid} on new{g,u}idmap
+    conf: improve log when mounting rootfs
+    ls: simplify the judgment condition when list active containers
+    fix typo introduced in #1509
+    attach|unshare: fix the wrong comment
+    caps: skip file capability checks on android
+    autotools: check for cap_get_file
+    caps: return false if caps are not supported
+    conf: non-functional changes to setup_pts()
+    conf: use bind-mount for /dev/ptmx
+    conf: non-functional changes
+    utils: use loop device helpers from LXD
+    create ISSUE_TEMPLATE.md
+    cgroups: improve cgfsng debugging
+    issue template: fix typo
+    conf: close fd in lxc_setup_devpts()
+    conf: non-functional changes
+    utils: tweak lxc_mount_proc_if_needed()
+    Change sshd template to work with Ubuntu 17.04
+    conf: order mount options
+    conf: add MS_LAZYTIME to mount options
+    monitor: report errno on exec() error
+    af unix: allow for maximum socket name
+    commands: avoid NULL pointer dereference
+    commands: non-functional changes
+    lxccontainer: avoid NULL pointer dereference
+    monitor: simplify abstract socket logic
+    precise is not the latest LTS, let's use xenial instead
+    fix the wrong exit status
+    conf: non-functional changes lxc_fill_autodev()
+    conf: remove /dev/console from lxc_fill_autodev()
+    conf: non-functional changes lxc_setup()
+    conf: non-functional changes to console functions
+    conf: improve lxc_setup_dev_console()
+    conf: lxc_setup_ttydir_console()
+    config: remove /dev/console bind mount
+    doc: document console behavior
+    utils: add lxc_unstack_mountpoint()
+    conf: unstack all mounts atop /dev/console
+    console: fail when we cannot allocate peer tty
+    start: remove umount2()
+    conf: non-functional changes
+    utils: handle > 2^31 in lxc_unstack_mountpoint()
+    Install systemd units for CentOS
+    Merge ubuntu and debiancase
+    start: add crucial details about lxc_spawn()
+
+- Deleted patches that have been backported before:
+  - 0003-CVE-2017-5985-Ensure-target-netns-is-caller-owned.patch
+  - 0001-tree-wide-include-sys-sysmacros.h-directly.patch
+  - 0002-tree-wide-include-sys-sysmacros.h-directly.patch
+
+- added signature verification
+
+-------------------------------------------------------------------
+Fri Apr  7 19:23:33 UTC 2017 - jengelh@inai.de
+
+- Replace %__cp by cp
+
+-------------------------------------------------------------------
+Thu Mar 30 06:31:37 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- fix for boo#1028264
+  added patch 0003-CVE-2017-5985-Ensure-target-netns-is-caller-owned.patch
+
+-------------------------------------------------------------------
+Wed Mar 29 20:01:55 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- backported two patches to get the package to build again for Tumbleweed
+  (applied only on tumbleweed aka suse_version >1315)
+  0001-tree-wide-include-sys-sysmacros.h-directly.patch
+  0002-tree-wide-include-sys-sysmacros.h-directly.patch
+
+-------------------------------------------------------------------
+Fri Jan 27 19:10:11 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- all patches (00*.patch) are upstream already, thus deleted; patch lxc-aa_allow_incomplete-default.patch is now reworked and added as a drop-in file in /usr/share/lxc/config/common.conf.d/
+  0001-bdev-use-correct-overlay-module-name.patch
+  0002-cleanup-tools-remove-name-from-lxc-top-usage-message.patch
+  0003-cleanup-whitespaces-in-option-alignment-for-lxc-exec.patch
+  0004-Use-full-GPG-fingerprint-instead-of-long-IDs.patch
+  0005-tools-move-rcfile-to-the-common-options-list.patch
+  0006-tools-set-configfile-after-load_config.patch
+  0007-doc-add-rcfile-to-common-opts.patch
+  0008-doc-Update-Korean-lxc-attach-1.patch
+  0009-doc-Add-rcfile-to-Korean-common-opts.patch
+  0010-doc-Add-rcfile-to-Japanese-common-opts.patch
+  0011-tools-use-exit-EXIT_-everywhere.patch
+  0012-tools-unify-exit-calls-outside-of-main.patch
+  0013-utils-Add-mips-signalfd-syscall-numbers.patch
+  0014-seccomp-Implement-MIPS-seccomp-handling.patch
+  0015-seccomp-Add-mips-and-mips64-entries-to-lxc_config_pa.patch
+  0016-seccomp-fix-strerror.patch
+  0017-confile-add-more-archs-to-lxc_config_parse_arch.patch
+  0018-seccomp-add-support-for-s390x.patch
+  0019-seccomp-remove-double-include-and-order-includes.patch
+  0020-seccomp-non-functional-changes.patch
+  0021-templates-use-fd-9-instead-of-200.patch
+  0022-templates-fedora-requires-openssl-binary.patch
+  0023-tools-use-boolean-for-ret-in-lxc_device.c.patch
+  0024-c-r-use-proc-self-tid-children-instead-of-pidfile.patch
+  0025-c-r-Fix-pid_t-on-some-arches.patch
+  0026-templates-Add-mips-hostarch-detection-to-debian.patch
+  0027-cleanup-replace-tabs-wth-spaces-in-usage-strings.patch
+  lxc-aa_allow_incomplete-default.patch
+  0001-attach-do-not-send-procfd-to-attached-process.patch
+
+-------------------------------------------------------------------
+Tue Jan 24 15:51:26 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- update to version 2.0.7
+  This is the seventh bugfix release for LXC 2.0. The main bugfixes in this release are:
+  - attach: Close lsm label file descriptor
+  - attach: Non-functional changes
+  - attach: Simplify lsm_openat()
+  - caps: Add lxc_cap_is_set()
+  - conf: attach: Save errno across call to close
+  - conf: Clearly report to either use drop or keep
+  - conf: criu: Add make_anonymous_mount_file()
+  - conf: Fix suggest_default_idmap()
+  - configure: Add --enable-gnutls option
+  - configure: Check for memfd_create()
+  - configure: Check whether gettid() is declared
+  - configure: Do not allow variable length arrays
+  - configure: Remove -Werror=vla
+  - configure: Use AC_HEADER_MAJOR to detect major()/minor()/makedev()
+  - conf: Non-functional changes
+  - conf: Remove thread-unsafe strsignal + improve log
+  - init: Add cgroupfs-mount to Should-Start/Stop sysvinit LSB headers
+  - log: Add lxc_unix_epoch_to_utc()
+  - log: Annotate lxc_unix_epoch_to_utc()
+  - log: Drop all timezone conversion functions
+  - log: Make sure that date is correctly formatted
+  - log: Use lxc_unix_epoch_to_utc()
+  - log: Use N/A if getpid() != gettid() when threaded
+  - log: Use thread-safe localtime_r()
+  - lvm: Supress warnings about leaked files
+  - lxccontainer: Log failure to send sig to init pid
+  - monitor: Add more logging
+  - monitor: Close mainloop on exit if we opened it
+  - monitor: Improve log + set log level to DEBUG
+  - monitor: Log which pipe fd is currently used
+  - monitor: Make lxc-monitord async signal safe
+  - monitor: Non-functional changes
+  - python3-lxc: Fix api_test.py on s390x
+  - start: Check for CAP_SETGID before setgroups()
+  - start: Fix execute and improve setgroups() calls
+  - state: Use async signal safe fun in lxc_wait()
+  - templates: lxc-debian: Don't try to get stuff from /usr/lib/systemd on the host
+  - templates: lxc-debian: Fix getty service startup
+  - templates: lxc-debian: Fix typo in calling dpkg with --print-foreign-architectures option
+  - templates: lxc-debian: Handle ppc hostarch -> powerpc
+  - templates: lxc-opensuse: Change openSUSE default release to Leap 42.2
+  - templates: lxc-opensuse: Remove libgcc_s1
+  - templates: lxc-opensuse: Remove poweroff.target -> sigpwr.target copy
+  - templates: lxc-opensuse: Set to be unconfined by AppArmor
+  - templates: lxc-opensuse: Update for Leap 42.2
+  - tests; Don't cause test failures on cleanup errors
+  - tests: Skip unpriv tests on broken overlay module
+  - tools: Improve logging
+  - tools: lxc-start: Remove c->is_defined(c) check
+  - tools: lxc-start: Set configfile after load_config
+  - tools: Only check for O_RDONLY
+  - tree-wide: Random macro cleanups
+  - tree-wide: Remove any variable length arrays
+  - tree-wide: Sic semper assertis!
+  - utils: Add macro __LXC_NUMSTRLEN
+  - utils: Add uid, gid, group convenience wrappers
+
+- commented out the patches, as they no longer apply cleanly
+
+-------------------------------------------------------------------
+Tue Dec  6 16:54:24 UTC 2016 - cbosdonnat@suse.com
+
+- CVE-2016-8649: lxc: guest escape via ptrace of lxc-attach (bsc#1010933).
+  0001-attach-do-not-send-procfd-to-attached-process.patch
+
+-------------------------------------------------------------------
+Mon Sep 19 15:09:41 UTC 2016 - schwab@suse.de
+
+- setcap has been moved to /usr/sbin (boo#998326).
+
+-------------------------------------------------------------------
+Wed Aug 31 11:16:59 UTC 2016 - cbrauner@suse.de
+
+- update lxc to 2.0.4
+- add 0001-bdev-use-correct-overlay-module-name.patch
+- add 0002-cleanup-tools-remove-name-from-lxc-top-usage-message.patch
+- add 0003-cleanup-whitespaces-in-option-alignment-for-lxc-exec.patch
+- add 0004-Use-full-GPG-fingerprint-instead-of-long-IDs.patch
+- add 0005-tools-move-rcfile-to-the-common-options-list.patch
+- add 0006-tools-set-configfile-after-load_config.patch
+- add 0007-doc-add-rcfile-to-common-opts.patch
+- add 0008-doc-Update-Korean-lxc-attach-1.patch
+- add 0009-doc-Add-rcfile-to-Korean-common-opts.patch
+- add 0010-doc-Add-rcfile-to-Japanese-common-opts.patch
+- add 0011-tools-use-exit-EXIT_-everywhere.patch
+- add 0012-tools-unify-exit-calls-outside-of-main.patch
+- add 0013-utils-Add-mips-signalfd-syscall-numbers.patch
+- add 0014-seccomp-Implement-MIPS-seccomp-handling.patch
+- add 0015-seccomp-Add-mips-and-mips64-entries-to-lxc_config_pa.patch
+- add 0016-seccomp-fix-strerror.patch
+- add 0017-confile-add-more-archs-to-lxc_config_parse_arch.patch
+- add 0018-seccomp-add-support-for-s390x.patch
+- add 0019-seccomp-remove-double-include-and-order-includes.patch
+- add 0020-seccomp-non-functional-changes.patch
+- add 0021-templates-use-fd-9-instead-of-200.patch
+- add 0022-templates-fedora-requires-openssl-binary.patch
+- add 0023-tools-use-boolean-for-ret-in-lxc_device.c.patch
+- add 0024-c-r-use-proc-self-tid-children-instead-of-pidfile.patch
+- add 0025-c-r-Fix-pid_t-on-some-arches.patch
+- add 0026-templates-Add-mips-hostarch-detection-to-debian.patch
+- add 0027-cleanup-replace-tabs-wth-spaces-in-usage-strings.patch
+
+-------------------------------------------------------------------
+Sat Jul 23 07:49:02 UTC 2016 - jengelh@inai.de
+
+- Abolish old macro use. Remove ancient %clean section.
+  Avoid sh invocation for simple ldconfig calls.
+
+-------------------------------------------------------------------
+Sat Jul  9 11:38:48 UTC 2016 - cbrauner@suse.de
+
+- add lxcfs dependency: lxc relies on lxcfs for a long time now to provide
+  container aware /proc files. The /sys/fs/cgroup part is slowly phased out
+  because we now have cgroup namespaces.
+
+-------------------------------------------------------------------
+Sat Jul  9 06:01:58 UTC 2016 - cbrauner@suse.de
+
+- Split into packages to follow best practice.
+  * lxc
+  * liblxc1
+  * liblxc-devel
+  Also, we need liblxc1 to be separately installable from LXC for LXD.
+- Tweak descriptions.
+
+-------------------------------------------------------------------
+Thu Jul  7 21:57:24 UTC 2016 - cbrauner@suse.de
+
+- Update to 2.0.3 (changes since 2.0.1):
+  * apparmor: Refresh generated file
+  * apparmor: add make-rslave to usr.bin.lxc-start
+  * apparmor: Allow bind-mounts and {r}shared/{r}private
+  * apparmor: allow mount move
+  * apparmor: Update mount states handling
+  * core: Drop lxc-devsetup as unneeded by current autodev
+  * core: Fix redefinition of struct in6_addr
+  * core: Include all lxcmntent.h function declarations on Bionic
+  * c/r: c/r: use criu's "full" mode for cgroups
+  * systemd: start containers in foreground when using the lxc@.service
+  * templates: debian: Make sure init is installed
+  * templates: oracle: Fix console login
+  * templates: plamo: Fix various issues
+  * templates: ubuntu: Install apt-transport-https by default
+  * travis: ensure 'make install' doesn't fail
+  * travis: test VPATH builds
+  * upstart: Force lxc-instance to behave like a good Upstart client
+
+-------------------------------------------------------------------
+Fri Jun 10 17:16:42 CEST 2016 - tiwai@suse.de
+
+- Update to 2.0.1:
+  Lots of fixes and enhancements.
+  https://linuxcontainers.org/lxc/news/#lxc-201-release-announcement-16th-of-may-2016
+- Add criu to recommends for C/R support
+- Add a workaround for lxc-start failure without apparmor:
+  lxc-aa_allow_incomplete-default.patch
+- Drop obsoleted patch:
+  lxc-1.0.7-fix-bashisms.patch
+-------------------------------------------------------------------
+Tue Nov 17 09:52:17 UTC 2015 - t1loc@opensuse.org
+
+- Update to 1.1.5
+
+-------------------------------------------------------------------
+Wed Oct  7 09:25:41 UTC 2015 - t1loc@opensuse.org
+
+- Remove attach-mount-a-sane-prox-for-LSM-setup.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 07:51:52 UTC 2015 - t1loc@opensuse.org
+
+- Update to 1.1.4
+  * Remove CVE-2015-1331-lxclock-use-run-lxc-lock-rather-than-r.patch
+  * Remove CVE-2015-1334-Don-t-use-the-container-s-proc-during-.patch
+  * Remove CVE-2015-1335-Protecti-container-mounts-against-symlinks.patch
+  * Remove templates-lxc-opensuse-use-rpm-to-determine-build-ve.patch
+    Now integrated into the current version
+
+-------------------------------------------------------------------
+Thu Oct  1 12:37:11 UTC 2015 - cbosdonnat@suse.com
+
+- Added CVE-2015-1335-Protecti-container-mounts-against-symlinks.patch
+  (bsc#946744)
+
+-------------------------------------------------------------------
+Wed Aug  5 08:17:01 UTC 2015 - jslaby@suse.com
+
+- Added templates-lxc-opensuse-use-rpm-to-determine-build-ve.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 07:56:32 UTC 2015 - jslaby@suse.com
+
+- Added CVE-2015-1331-lxclock-use-run-lxc-lock-rather-than-r.patch
+  (bnc#938522)
+- Added attach-mount-a-sane-prox-for-LSM-setup.patch (bnc#938523)
+- Added CVE-2015-1334-Don-t-use-the-container-s-proc-during-.patch
+  (bnc#938523)
+
+-------------------------------------------------------------------
+Tue Jul 21 13:31:42 UTC 2015 - jslaby@suse.com
+
+- update to 1.1.2
+- Removed 0001-added-upstream-action-fallback-create-directory-loca.patch
+- Removed 0003-lxc-opensuse-template-now-understands-release-argume.patch
+- Removed 0004-lxc-opensuse.in-Added-explanation-on-how-to-use-the-.patch
+- Removed 0005-lxc-opensuse.in-Check-if-given-argument-is-a-valid-r.patch
+- Removed 0006-lxc-opensuse-default-release-changed-to-13.1-as-12.3.patch
+- Removed 0007-lxc-opensuse-Disabling-builds-on-13.2-Tumbleweed-onl.patch
+
+-------------------------------------------------------------------
+Sat Dec 27 22:35:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in lxc-autostart-helper script
+- add patches:
+  + lxc-1.0.7-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Dec 17 17:21:48 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- Improved error message
+
+-------------------------------------------------------------------
+Wed Dec 17 13:02:29 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- Disabling builds on 13.2/Tumbleweed only, if build version before 20141120
+  Patch 0007-lxc-opensuse-Disabling-builds-on-13.2-Tumbleweed-onl.patch
+
+-------------------------------------------------------------------
+Fri Dec 12 21:14:18 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- lxc-opensuse default release changed to 13.1, as 12.3 reaches end-of-life soon
+  Patch 0006-lxc-opensuse-default-release-changed-to-13.1-as-12.3.patch
+-------------------------------------------------------------------
+Sun Dec  7 11:57:35 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- patch 0002-Disable-building-opensuse-containers-on-openSUSE13.2.patch has been sent upstream and is included in version 1.0.7
+
+-------------------------------------------------------------------
+Sat Dec  6 20:58:44 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- update to version 1.0.7
+  Core:
+   Include network prefix when ipv4/ipv6 keys are queried
+   apparmor: silence 'silent' mount denials
+   add file/func/line to debug info
+   apparmor: restrict signal and ptrace for processes
+   cgmanager: several fixes
+   lxc: don't call pivot_root if / is on a ramfs
+   fix lxc.mount.auto clearing
+   conf.c: Define MS_PRIVATE for Android
+   network: convert param ifname to const.
+   network: check result of if_nametoindex().
+   network: allow lxc_network_move_by_index() rename netdev in moving.
+   network: introduce a interface named lxc_netdev_isup().
+   lxccontainer.c: rename enter_to_ns to enter_net_ns
+   lxc_global_config_value can return the default lxc.cgroup.pattern whether root or non-root
+   do_rootfs_setup: fix return bugs
+   lxc-start: don't re-try to mount rootfs if we already did so
+   attach: don't use confstr(_CS_PATH)
+   lxc_global_config_value: simplify the theme
+   Fixed mismatch on ipvX gateway
+   attach: don't ignore sigint/sigkill if stdin is redirected
+   cgmanager: fix 'attach' with "all" controller support
+   lxc/utils: bugfix freed pointer return value
+   conf.c: change 'instanciate' to 'instantiate'
+   fix wrong nlmsg_len
+   Remounts bind mounts if read-only flag is provided
+   Allow lxc_clear_config_item to clear idmaps.
+   overlay and aufs clone_paths: be more robust
+   overlayfs: overlayfs.v22 or higher needs workdir option
+   Fix clone issues
+   Improve veth error cases logging
+   fixed typo in comment
+   audit: added capacity and reserve() to nlmsg
+   rmdir and lxc_unpriv returns non-negative error codes
+   typofixes - https://github.com/vlajos/misspell_fixer
+  Bindings:
+   add src/python-lxc/setup.py into .gitignore
+  Tests:
+    tests: Fix unpriv test
+    lxc-test-unpriv: don't clear out /etc/lxc/lxc-usernet
+    lxc-test-unpriv: test for different cgroups per subsystem
+    tests: try again when waitpid() sets errno as EINTR
+  Commands:
+   lxc_start: ERROR if container is already running.
+   lxc-start: return 0 rather than error if container is already running
+   Make legacy lxc-ls more robust
+   lxc_info: flush stdout before calling routines which may fork
+  Templates:
+   Fix typo in lxc-gentoo template
+   busybox template: support for unprivileged containers
+   busybox template: mount fstab when available
+   Fix another gentoo template typo
+   Create the apt proxy in the cache instead of the 1st container
+   lxc-plamo: mount tmpfs on /dev/shm
+   lxc-cirros: support creating+running unprivileged
+   Fix lxc-openmandriva.in typo.
+   Fix lxc-centos.in typo.
+   lxc-opensuse: Disable on 13.2
+   lxc-alpine: make sure /dev/shm is world writeable
+   lxc-alpine: create a default tty for console
+   lxc-debian: added support for package installation
+   lxc-debian: Fix default mirrors
+   lxc-debian: support systemd as PID 1
+   lxc-debian: adjust init system configurations
+   lxc-debian: mask both Wheezy and Jessie udev services
+   lxc-opensuse: Disabling builds on openSUSE Tumbleweed, detection improved.
+  Documentation:
+   Fix the lxc manpage a bit
+   lxc-create -t option is not optional
+   doc: Update kernel and cgroup info in Japanese lxc(7)
+   tabs/spaces consistency
+
+-------------------------------------------------------------------
+Sat Nov 29 20:28:21 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- changed patch 0002 to work on newer Tumbleweed snapshots, where os-release does not contain 'Harlequin' anymore
+
+-------------------------------------------------------------------
+Wed Nov 26 20:39:13 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- backported the patches from upstream, so that the opensuse template now accepts releases as arguments, and it is possible to install 12.3, 13.1 or 13.2
+  * 0003-lxc-opensuse-template-now-understands-release-argume.patch
+  * 0004-lxc-opensuse.in-Added-explanation-on-how-to-use-the-.patch
+  * 0005-lxc-opensuse.in-Check-if-given-argument-is-a-valid-r.patch
+
+-------------------------------------------------------------------
+Wed Nov 19 08:18:08 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- Added 0002-Disable-building-opensuse-containers-on-openSUSE13.2.patch
+  Disable building opensuse containers on openSUSE 13.2 due to changed
+  build behaviour (bsc#905638)
+
+-------------------------------------------------------------------
+Mon Oct 27 20:18:18 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added 0001-added-upstream-action-fallback-create-directory-loca.patch
+    * adds action fallback available upstream
+    * creates directory /run/lock/subsys/ if not available
+- deleted 0001-systemd-Ensure-action-is-defined.patch
+
+-------------------------------------------------------------------
+Sat Sep 27 05:12:44 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- update to 1.0.6, which includes the following changes/fixes:
+    rootfs_is_blockdev: don't run if no rootfs is specified
+    confile: sanity-check netdev->type before setting netdev->priv elements
+    Fix typo in previous patch
+    Remove mention of mountcgroups in ubuntu.common config
+    remove mountcgroup hook entirely
+    Add SIGPWR support to lxc_init
+    Sysvinit script fixes
+    unprivileged containers: use next available nic name if unspecified
+    fix typo in btrfs error msg
+    apparmor: Allow slave bind mounts
+    provide an example SELinux policy for older releases
+    print a helpful message if creating unpriv container with no idmap
+    use non-thread-safe getpwuid and getpwgid for android
+    btrfs: support recursive subvolume deletion (v2)
+    fix '--log-priority' --> '--logpriority' in main
+    Fix a file descriptor leak in the daemonization
+    Fix a file descriptor leak in the monitord spawn
+    Ensure /dev/pts directory exists on pts setup
+    Do not allow snapshots of LVM backed containers
+    add lxc.console.logpath
+    coverity: don't use newname after null check
+    coverity: malloc the right size for btrs_node tree
+    introduce --with-distro=raspbian
+    cgmanager get/set: clean up child (v2)
+    Add extra debugging
+    Fix typo in the previous commit...
+    do_mount_entry: add nexec, nosuid, nodev, rdonly flags if needed at remount
+    command socket: use hash if needed
+    monitor: fix sockname calculation for long lxcpaths
+    show additional info if btrfs subvolume deletion fails (issue #315)
+    ignore SIGKILL (CTRL-C) and SIGQUIT (CTRL-\) - issue #313
+    chmod container dir to 0770 (v2)
+    build: Fix support for split build and source dirs
+    mount_entry: use statvfs
+    lxc_mount_auto_mounts: honor existing nodev etc at remounts
+    statvfs: do nothing if statvfs does not exist (android/bionic)
+    Prevent compiler warning by initializing ifindex
+    build: don't remove configuration template on clean
+    build: Make setup.py run from srcdir to avoid distutils errors
+    handle hashed command socket names (v2)
+    lxc-cgm: fix issue with nested chowning
+    Report container exit status to monitord
+    support use of 'all' containers when cgmanager supports it
+    log: fix quiet mode
+    Fix build error(ISO C90 specs violation) in lxc.c
+    lxc_map_ids: don't do bogus chekc for newgidmap
+    lxc_map_ids: add a comment
+    clean autodev dir on container exit
+    As discussed on ML, do not clean autodev dir on reboot
+    Fix build failure due to slightly different rmdir
+    Fix presentation of IPv6 addresses and gateway
+
+    lxc-start: Add -F (foreground) option
+
+    all: Discontinue the use of in-line comments (stable)
+    all: Include hostname in DHCP requests
+    all: Switch from arch command to uname -m
+    altlinux: bugfixes
+    archlinux: Properly set default locale in /etc/locale.conf
+    centos template: prevent mingetty from calling vhangup(2)
+    download: Have wget retry 3 times
+    download: Make --keyserver actually work
+    gentoo: keep original uid/gid of files/dirs when installing
+    gentoo: Use portageq to determine portage distdir
+    plamo: keep original uid/gid of files/dirs when installing
+    plamo: bugfix template
+    ssh: send hostname to dhcp server
+    ubuntu: don't check for $rootfs/run/shm
+    ubuntu: add help string
+
+    lxc-test-{unpriv,usernic.in}: make sure to chgrp as well
+    lxc-test-unpriv: test lxc-clone -s
+    tests: Call sync before testing a shutdown
+    tests: Copy the download cache when available [v2]
+    Fix the unprivileged tests cgroup management
+
+    doc: Mention that veth.pair is ignored for unpriv
+    doc: Add mention that veth.pair is ignored for unpriv in Japanese man
+    doc: Add -F option to Japanese lxc-start(1)
+    doc: Update the description of SELinux in Japanese lxc.container.conf(5)
+    doc: Add 'zfs' to the parameter of -B option in lxc-create(1)
+    doc: add lxc.console.logpath to Japanese lxc.container.conf(5)
+    doc: language correction
+    doc: Fix Japanese translation of lxc.container.conf(5)
+    doc: Add destroy option to lxc-snapshot(1)
+    doc: Add description about ignoring lxc.cgroup.use when using cgmanager
+- delete: 0002-lxc-autostart-helper-working-even-if-action-is-not-a.patch
+- delete: 0003-lxc-autostart-helper-working-even-if-var-lock-subsys.patch
+
+-------------------------------------------------------------------
+Fri Aug 15 14:43:35 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- third patch to get lxc-autostart-helper to work on openSUSE
+  * 0003-lxc-autostart-helper-working-even-if-var-lock-subsys.patch
+
+-------------------------------------------------------------------
+Fri Aug 15 13:04:48 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added another patch to ensure correct operation of lxc.service systemd-unit
+  * 0002-lxc-autostart-helper-working-even-if-action-is-not-a.patch
+
+-------------------------------------------------------------------
+Thu Aug 14 19:26:33 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added patch to ensure correct operation of lxc.service systemd-unit
+  * 0001-systemd-Ensure-action-is-defined.patch
+
+-------------------------------------------------------------------
+Wed Aug  6 19:38:55 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- update to 1.0.5
+  * seccomp profile
+  * core: Fix unprivileged containers to work with recent kernels.
+  * core: Fix building with -Werror=maybe-uninitialized.
+  * core: seccomp: Don't fail on unresolvable syscalls.
+  * core: lxc-init: Don't force dropping capabilities.
+  * core: configure: Split -lcap and -lselinux out of LIBS.
+  * core: configure: Fix expansion of libexecdir.
+  * core: seccomp: Support 'all' arch sections.
+  * core: seccomp: Fix 32-bit rules.
+  * core: seccomp: Enable a default filter for all templates.
+  * core: Fix corruption in write_config.
+  * core: attach: Fix querying for the current personality.
+  * core: cgmanager: Have cgm_set and cgm_get use absolute paths when possible.
+  * core: cgmanager: Make sure @value is null-terminated in cgm_get.
+  * core: optimization of signal filtering/parsing code.
+  * core: apparmor: Allow hugetlbfs by default (similar to tmpfs and restricted by the hugetlb cgroup controller).
+  * core: Fix find_fstype_cb to ignore blank lines and comments.
+  * lxc-autostart: Actually respect -P when passed.
+  * lxc-attach: Fix typo in usage.
+  * lxc-start: propagate the container exit code.
+  * lxc-stop: Fix incorrect timeout handling.
+  * lxc-device: Support --version.
+  * lxc-ls: Support --version.
+  * lxc-start-ephemeral: Support --version.
+  * tests: Avoid the download template when possible.
+  * tests: Don't fail when HOME isn't defined.
+  * tests: apparmor: Always end messages with a newline.
+  * tests: Clarify error message and fix return codes.
+  * tests: lxc-test-ubuntu doesn't actually need bind9-host.
+  * lxc-debian: standardize formatting.
+  * lxc-debian: fix formatting.
+  * python3: Fix attach_wait and threads.
+
+-------------------------------------------------------------------
+Fri Jun 13 19:33:04 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- fixed the build errors
+
+-------------------------------------------------------------------
+Fri Jun 13 18:24:48 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- update to 1.0.4; disable lua and excluded lxc-top, as lua-dependencies are not available
+
+-------------------------------------------------------------------
+Sat May 17 18:57:22 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added --enable-lua to compile lxc with lua support (for lxc-top)
+
+-------------------------------------------------------------------
+Sat May 17 13:14:01 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added "Requires: lua", as lxc-top needs it
+
+-------------------------------------------------------------------
+Mon May  5 13:08:04 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added file /usr/sbin/rxlcx that links to /usr/sbin/service
+
+-------------------------------------------------------------------
+Mon May  5 10:14:06 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- upgrade to version 1.0.3
+- deleted patch patch_bash_completion.d_lxc.patch, as it is included upstream already
+- added file /usr/sbin/init.lxc
+
+-------------------------------------------------------------------
+Sun Mar  2 09:06:57 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- patch now including headers and signoff
+
+-------------------------------------------------------------------
+Sun Mar  2 08:57:35 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- updated sources to 1.0.0
+- added dirs and files in /etc/apparmor.d/ and /etc/bash_completion.d/ to spec file
+- autogenned.patch: removed
+- added patch patch_bash_completion.d_lxc.patch, to remove shebang from bash_completion-file
+- The patch patch_bash_completion.d_lxc.patch has been sent upstream additionally
+
+-------------------------------------------------------------------
+Tue Jan 14 14:27:10 UTC 2014 - jslaby@suse.com
+
+- update to lxc-1.0 beta
+  * we use a later snapshot than beta1
+- drop support for older distros than 12.3 (it does not build there)
+- config_ipv6-run-inet_pton-on-the-addr-value-without-.patch: Removed
+- configure-find-seccomp-using-pkg-config.patch: Removed
+- configure-support-suse-s-docbook-to-man.patch: Removed
+- lxc-opensuse-add-perl-base-to-prerequisities.patch: Removed
+- opensuse-systemd-shutdown.patch: Removed
+
+-------------------------------------------------------------------
+Thu Jan  9 20:17:25 UTC 2014 - jslaby@suse.com
+
+- config_ipv6-run-inet_pton-on-the-addr-value-without-.patch:
+  config_ipv6: run inet_pton on the addr value without mask
+  (bnc#851760)
+
+-------------------------------------------------------------------
+Fri Sep 20 14:46:37 UTC 2013 - jslaby@suse.com
+
+- lxc-opensuse-add-perl-base-to-prerequisities.patch: lxc-opensuse:
+  add perl-base to prerequisities (bnc#839873)
+
+-------------------------------------------------------------------
+Tue Sep 10 15:32:28 UTC 2013 - cbosdonnat@suse.com
+
+- opensuse-systemd-shutdown.patch: Fixed opensuse template to
+  workaround lxc-shutdown problem with systemd (bnc#839388)
+
+-------------------------------------------------------------------
+Wed Apr 24 08:58:04 UTC 2013 - jslaby@suse.com
+
+- update to 0.9.0
+  * configure-support-suse-s-docbook-to-man.patch: added to support
+    our docbook-to-man
+  * configure-find-seccomp-using-pkg-config.patch: add support for
+    our libsseccomp being under /usr/include/libseccomp...
+  * autogenned.patch: the two above applied by autogen.sh to the sources
+  * remove a ton of patches which are upstream now:
+     0001-Ensure-btrfs-subvolume-is-destroyed-on-error.patch
+     lxc-autodev.patch
+     lxc-cgroup-already-running.patch
+     lxc-opensuse-12.2.patch
+     lxc-opensuse-12.3.patch
+     lxc-opensuse-clonefixes.patch
+     lxc-opensuse-extend-base.patch
+     lxc-opensuse-proper-failure.patch
+     lxc-opensuse-tmpfs.patch
+     pivot-root_shared.patch
+- Remove obsolete info from README.SUSE
+
+-------------------------------------------------------------------
+Thu Mar  7 15:34:34 UTC 2013 - fcrozat@suse.com
+
+- Ensure update repository directory is correctly created
+  (bnc#804435).
+
+-------------------------------------------------------------------
+Tue Feb 26 14:33:41 UTC 2013 - mvyskocil@suse.com
+
+- clean cache if a distro version in template does not match
+  with files in a cache (bnc#804435#c19)
+
+-------------------------------------------------------------------
+Tue Feb 26 09:58:10 UTC 2013 - mvyskocil@suse.com
+
+- run zypper ar only if .repo file does not exists
+  fixes a partial created repos (bnc#804435#c16)
+
+-------------------------------------------------------------------
+Wed Feb 20 16:21:03 UTC 2013 - fcrozat@suse.com
+
+- Add lxc-opensuse-12.3.patch: update template to openSUSE 12.3
+
+-------------------------------------------------------------------
+Tue Feb 19 10:59:39 UTC 2013 - jslaby@suse.com
+
+- lxc-opensuse-extend-base.patch: lxc-opensuse: extend base
+  (bnc#804232)
+- lxc-opensuse-proper-failure.patch: lxc-opensuse: proper failure
+- remove change-hwaddr-on-clone.patch as it was fixed upstream
+  already
+
+-------------------------------------------------------------------
+Mon Jan 21 09:26:57 UTC 2013 - fcrozat@suse.com
+
+- Update pivot-root_shared.patch with upstream patch to build with
+  old version of kernel headers.
+- Check for /etc/init.d/boot.cgroup presence before starting it in
+  %post.
+
+-------------------------------------------------------------------
+Fri Jan 11 15:56:54 UTC 2013 - fcrozat@suse.com
+
+- Release 0.8.0:
+  + add support for autodetection of gateway address
+  + add support for LVM2 and btrfs snapshot in lxc-clone
+  + add support for apparmor
+  + support nested cgroups
+  + lxc no longer depends on perl
+  + add support for container hooks (pre-start, mount, start, stop,
+    umount, post-stop)
+  + templates are moved to /usr/share/lxc/templates
+- Remove
+  Accurately-detect-whether-a-system-supports-clone_children.patch:
+  merged upstream.
+- Add lxc-opensuse-clonefixes.patch: fix openSUSE template
+  regarding cloning.
+- Add 0001-Ensure-btrfs-subvolume-is-destroyed-on-error.patch: fix
+  btrfs subvolume when removing a container.
+- Add lxc-autodev.patch: fill /dev when starting container (needed
+  for systemd).
+- Update lxc-opensuse-12.2.patch: switch to systemd in container.
+
+-------------------------------------------------------------------
+Fri Jan 11 15:30:21 UTC 2013 - fcrozat@suse.com
+
+- Add lxc-opensuse-12.1-fixbuild.patch: fix openSUSE 12.1 container
+  build.
+- Add lxc-opensuse-12.2.patch:
+  + switch openSUSE template to 12.2
+  + install iputils in the default configuration
+  + autoconfigure gateway if possible
+  + detect if network is set to 0.0.0.0 and configure DHCP
+  + bind mount /etc/resolv.conf in container
+- Add use-relative-paths-for-container.patch,
+  fix-lxc-clone-mount-entries.patch and update sles
+  template: use relative paths for container mount points, fixes
+  lxc-clone dropping some lxc.mount entries (bnc#789387).
+- Add Requires(post) dependency on aaa_base (bnc#786970) for
+  openSUSE < 12.3.
+- Add dhcpcd in default installation in openSUSE template (bnc#776169).
+- Add change-hwaddr-on-clone.patch: modify MAC address when cloning
+  a container (git)
+- Add wait-until-container-is-stopped.patch: if destroying a
+  running container, wait until it is stopped before destroying it.
+- Ensure lxc-createconfig uses opensuse template by default.
+- Ensure lxc-createconfig correctly detect cidr (bnc#773234).
+- Add pivot-root_shared.patch: fix pivot root when / is mounted as
+  shared (default on 12.3 and later).
+
+-------------------------------------------------------------------
+Fri Apr 20 13:53:41 UTC 2012 - fcrozat@suse.com
+
+- Add various fixes to opensuse template :
+  + create /etc/hostname as symlink to /etc/HOSTNAME
+    (lxc-clone fix)
+  + fix inadequate space in lxc.mount config (lxc-clone fix)
+  + disable network in container if not configured
+  + configure network scripts properly
+- Add lxc-snapshot-btrfs-lvm.patch: backport snapshot support,
+  using btrfs or lvm2.
+- Add lxc-opensuse-tmpfs.patch: ensure container shutting down is
+  correctly detected by LXC.
+
+-------------------------------------------------------------------
+Fri Apr 13 11:36:16 UTC 2012 - fcrozat@suse.com
+
+- Add lxc-createconfig script to easy LXC configuration
+  (bnc#723950).
+
+-------------------------------------------------------------------
+Tue Mar  6 21:11:54 CET 2012 - jslaby@suse.de
+
+- Accurately detect whether a system supports clone_children
+  (bnc#750470)
+
+-------------------------------------------------------------------
+Tue Jan 10 15:41:45 UTC 2012 - fcrozat@suse.com
+
+- Drop lxc-file_caps.patch, it is SLES specific, since openSUSE is
+  now shipping with file capabilities enabled.
+
+-------------------------------------------------------------------
+Fri Jan  6 15:51:32 UTC 2012 - fcrozat@suse.com
+
+- Update lxc-opensuse-12.1.patch to correctly generate containers
+  on x86 (bnc#739315).
+- Backport some fixes from SLES 11 SP2:
+  - Add lxc-checkconfig-kernel-3.patch and lxc-file_caps.patch:
+    fix detection of kernel 3.x and file capabilities (bnc#720845).
+  - Fix example path in manpages (bnc#723946).
+
+-------------------------------------------------------------------
+Tue Oct 25 11:35:10 UTC 2011 - fcrozat@suse.com
+
+- Add console to opensuse securetty, since we are in a container.
+
+-------------------------------------------------------------------
+Tue Oct 25 09:32:01 UTC 2011 - fcrozat@suse.com
+
+- Add lxc-opensuse-12.1.patch: create openSUSE 12.1 containers now
+- Add Recommends on build package, which is used by opensuse
+  template.
+- Update README.SUSE to current status for cgroups mountpoint
+
+-------------------------------------------------------------------
+Fri Sep  2 08:26:28 UTC 2011 - fcrozat@suse.com
+
+- Fix license tag, it is LGPLv2.1+ (using LGPLv2+ tag to be
+  consistent).
+
+-------------------------------------------------------------------
+Wed Aug 31 11:16:28 UTC 2011 - fcrozat@suse.com
+
+- Update to 0.7.5:
+  - add initial lxc-clone feature
+  - add arm as supported srcarch
+  - opensuse template is merged
+  - improve other distribution templates
+  - support cgroups mounted in multiple places
+
+-------------------------------------------------------------------
+Fri Jun 24 21:33:24 CEST 2011 - jslaby@suse.de
+
+- kill _service
+
+-------------------------------------------------------------------
+Fri Jun 24 14:09:02 UTC 2011 - fcrozat@suse.com
+
+- Add lxc-opensuse template.
+- package /var/lib/lxc.
+
+-------------------------------------------------------------------
+Fri May 27 21:16:56 CEST 2011 - jslaby@suse.de
+
+- update to 0.7.4.2
+  - exit if allocation fails
+  - ensure monitored container name is null terminated
+  - do not put devpts in fstab
+
+-------------------------------------------------------------------
+Thu Mar 24 14:22:15 UTC 2011 - brian@aljex.com
+
+- update to 0.7.4.1
+  - fix mount path
+  - rename physical device to the original name
+
+-------------------------------------------------------------------
+Mon Feb 28 18:03:32 CET 2011 - jslaby@suse.de
+
+- update to 0.7.4 final
+  - fix support for >= 2.6.37 kernels
+- update README.SUSE file -- it contained obsolete information
+
+-------------------------------------------------------------------
+Mon Feb 21 17:48:07 CET 2011 - jslaby@suse.de
+
+- update to 0.7.4-rc1+
+  - fix cgroups collision with systemd (bnc#673821)
+  - lxc-start output-to-file support
+  - better error reporting
+  - suppress udev log output
+  - many fixes
+
+-------------------------------------------------------------------
+Wed Dec 20 10:12:28 CEST 2010 - jslaby@suse.de
+
+- update to 0.7.3
+  - mount the rootfs to the mount directory first
+  - update the lxc.conf man page
+  - fix compilation and link errors
+  - don't play with the capabilities when we are root
+
+-------------------------------------------------------------------
+Wed Oct  6 09:02:28 CEST 2010 - jslaby@suse.de
+
+- update to 0.7.2
+
+-------------------------------------------------------------------
+Mon Jul  5 22:24:34 CEST 2010 - jslaby@suse.de
+
+- update to 0.7.1
+  * full list of changes since 0.6.5 at http://lxc.git.sourceforge.net
+
+-------------------------------------------------------------------
+Fri Mar  5 10:22:44 UTC 2010 - lnussel@suse.de
+
+- add README.SUSE
+- add %dir /var/lib/lxc
+
+-------------------------------------------------------------------
+Thu Mar  4 16:33:46 CET 2010 - jslaby@suse.de
+
+- update to 0.6.5
+
+-------------------------------------------------------------------
+Wed Aug 19 09:06:17 CEST 2009 - jslaby@suse.de
+
+- remove stddef.h workaround, linux-kernel-headers are fixed now
+
+-------------------------------------------------------------------
+Tue Aug 18 15:29:26 CEST 2009 - jslaby@suse.de
+
+- remove mkdir /var/lxc from %post rpm script
+
+-------------------------------------------------------------------
+Mon Aug 17 13:03:00 CEST 2009 - jslaby@suse.de
+
+- Remove old lxc hack from specfile
+- Fix factory build due to broken linux-kernel-headers
+  (add stddef.h to includes in configure.ac) and lxc automake file
+
+-------------------------------------------------------------------
+Thu Aug 13 08:51:03 UTC 2009 - adrian@suse.de
+
+- Add Requires to ensure that lxc-setcap is working
+
+-------------------------------------------------------------------
+Mon Aug 10 15:14:40 CEST 2009 - jslaby@suse.de
+
+- update to 0.6.3
+- add pkgconfig file to devel package
+
+-------------------------------------------------------------------
+Tue Jun 23 20:54:31 CEST 2009 - jslaby@suse.de
+
+- add linux-kernel-headers to build prereqs
+
+-------------------------------------------------------------------
+Mon May  4 11:52:14 CEST 2009 - jslaby@suse.de
+
+- update to 0.6.2: fixes creation scripts for several distros,
+  adds logging, adds lxc-setcap
+
+-------------------------------------------------------------------
+Fri Apr 17 20:09:04 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries
+
+-------------------------------------------------------------------
+Mon Feb 23 12:44:59 CET 2009 - jslaby@suse.de
+
+- update to 0.6.0
+
+-------------------------------------------------------------------
+Mon Feb  2 12:48:33 CET 2009 - jslaby@suse.de
+
+- Fix build on several archs without cap support
+
+-------------------------------------------------------------------
+Fri Jan 23 11:32:42 CET 2009 - jslaby@suse.de
+
+- Initial release (0.5.2)
+

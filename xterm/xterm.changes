@@ -1,0 +1,3783 @@
+-------------------------------------------------------------------
+Tue Jul 23 07:55:37 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- split out vttest
+- enable LTO (was only a problem for vttest)
+
+-------------------------------------------------------------------
+Wed May 15 13:59:14 UTC 2019 - seanlew@opensuse.org
+
+- Patch #345
+  * modify treatment of reverseVideo for dynamic colors
+  * correct a typo in setDirectFG
+  * add resource useBorderClipping
+  * fix a special case in XTPOPSGR to check direct colors
+  * increase response-buffer size 
+  * reduce the number of buffer-flashes for tcap-query batches
+
+-------------------------------------------------------------------
+Wed Apr 24 17:47:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133295).
+
+-------------------------------------------------------------------
+Mon Feb 18 05:54:48 UTC 2019 - seanlew@opensuse.org
+
+- Patch #344
+  * add ASCII escape to default for disallowedPasteControls
+  * fix typo in ctlseqs.ms
+  * implement DEC Cyrillic NRCS
+  * correct control returning sixel geometry max vs. actual size
+  * improve man page for resize
+  * improve mem management for parser to handle response strings
+  * disallow recursion which could happen in answerbackString
+
+-------------------------------------------------------------------
+Mon Jan 14 19:55:34 UTC 2019 - seanlew@opensuse.org
+
+- Patch #343
+  * modify run-tic.sh to prefer ncurses6 over ncurses5
+  * add COPYING file and dummy "check" makefile
+  * update tables of combining and ambiguous-width chars in wcwidth.c
+  * modify xtemr-new sample terminfo entry to correspond to ncurses 6.1
+  * improve documentation for deleteIsDEL resource
+  * modify logic for TrueType fallback fonts to match the sort-order
+    used by fc-match
+
+-------------------------------------------------------------------
+Fri Jan 04 20:46:18 UTC 2019 - sean@suspend.net
+
+- Patch #342
+  * limit mouse-button events to 11 buttons in the protocol
+  * correct calculaton for buttons past 11 (15 in extended proto)
+  * disable a supplementary check added in #341 that interferes with
+    fontconfig to select different sized bitmap fonts
+
+-------------------------------------------------------------------
+Sat Dec 29 07:01:48 UTC 2018 - sean@suspend.net
+
+- Patch #341
+  * Add options to mouse-codes script to demonstrate encoding works
+  * Allow mouse button numbers up to 11 using an offset of 128 for 8-11
+  * correct off-by-one right margin checks for double-width char adjustments
+  * modify the initial pattern passed to fontconfig to disallow color bmps
+  * improve error recovery for a case where fontconfig ignores the requested pattern
+ 
+-------------------------------------------------------------------
+Sun Sep 23 11:40:33 UTC 2018 - sean@suspend.net
+
+- Patch #337
+  * regenerated configure script
+  * revise/improve fix for scrolling in margins
+  * amend change to default-translations "select" to ensure that specific key-press actions are listed first 
+
+-------------------------------------------------------------------
+Sun Aug 26 20:30:58 UTC 2018 - pcerny@suse.com
+
+- Patch #335 - 2018/08/14
+  * add colorInnerBorder resource to make a change from patch
+    #334 configurable (reports by H Merijn Brand, Gabriele
+    Balducci).
+- Patch #334 - 2018/08/12
+  * modify Imakefile to reflect the fact that NetBSD no longer
+    has a working termcap emulation.
+  * add resource-setting validShells which can be used to augment
+    the system's /etc/shell (prompted by discussion with Paul
+    Lampert).
+  * stifle some useless warnings from lintian in test-packages.
+  * add the ncurses extension “RGB” to the responses for the
+    termcap-query feature.
+  * improved getopts-handling in sample scripts.
+  * fix some warnings from gcc8 and clang --analyze.
+  * update note about incorrect documentation for DECRQSS to
+    include VT525 (report by Markus Schmidt).
+  * correct check for default-values in rectangular parsing; a
+    zero counts as a missing or default parameter
+    (report/testcase by Markus Schmidt).
+  * correct some ranges in the ambiguous[] table in wcwidth
+    (adapted from patch by KUGA Tsutomu).
+  * fix a special case with faint video attribute incorrectly
+    combined with default color.
+  * add private control XTREPORTSGR for reporting
+    video-attributes and color on a rectangle, and script
+    report-sgr.pl to demonstrate it.
+  * modify some of the markup in ctlseqs.ms to work around
+    groff's reassignment of ASCII punctuation characters as
+    documented in groff_char(7).
+  * treat ECMA-48 SGR 6 the same as SGR 5.
+  * add private controls XTPUSHSGR and XTPOPSGR for
+    saving/restoring the current video-attributes on a stack
+    (adapted from patch by Dan Thompson).
+  * modify DECRPM response for logging enable to indicate its
+    state even when enabling/disabling it is not allowed.
+  * implement DECSNLS
+  * implement DECRSPS
+  * improve fill-color for double-buffer configuration, which was
+    sharing a graphic context with the cursor.
+  * fix a couple of cases where double-sized VT100 characters
+    were not clipped, seen in Joe Smith's VT100 torture test.
+  * color the inner border using the same borderColor as the
+    outer border, rather than filling with the VT100's default
+    background.
+  * change encoding of “THANKS” to UTF-8.
+  * modify handling of DECELR to recognize MotionNotify events
+    again, amending a check for allowMouseOps which limited that
+    to button-events in patch #328 (Olaf Rogalsky).
+  * fix some screen-painting problems with left/right margins
+    when using insert-line or delete-line (report/testcase by
+    Martin Hostettler). also fix similar case with
+    index/reverse-index.
+  * several minor performance improvements using macros, e.g.,
+    inline checks for character width.
+  * add DECSCPP and DECSLPP to DECRQSS.
+  * implement DECSCPP.
+  * implement DECCIR and DECTABSR presentation reports.
+  * modify checksum computation for DECRQCRA to treat
+    uninitialized cells as blanks rather than nulls.
+  * drop custom-entity from HTML-dump, use UTF-8 for &nbsp;
+    (Debian #902381).
+  * modify display of non-BMP characters when using bitmap fonts
+    to show a null/empty box rather than the replacement
+    character which was used in cleanup changes for patch #233
+    (report by Christian Weisgerber).
+  * when setting up clipping rectangle for Xft, allow for the
+    case where xterm is only displaying a combining character,
+    where the base was already written (report by Joshua
+    Crowgey).
+  * allow reset Xft's state if switching font-sizes when
+    double-buffering is used.
+  * fix repainting, e.g., on resize, when double-buffering is
+    used with Xft (patch by Daniel Colascione).
+  * correct some interchanged pairs of symbols in
+    unicode/keysym.map (Brad Town).
+  * improve configure macros CF_GCC_WARNINGS, CF_GNU_SOURCE,
+    CF_POSIX_C_SOURCE, CF_TRY_XOPEN_SOURCE, CF_XOPEN_SOURCE,
+    CF_X_ATHENA_CPPFLAGS.
+  * modify logFile resource to interpret “-” as the standard
+    output (adapted patch by Colum Paget).
+  * improve documentation of Tek4014 menu options; fix a case
+    where the Tek4014 window was not displayed before switching
+    modes.
+  * re-correct parameter for pid used for DECCKSR, DECRQCSR (see
+    xterm #315).
+  * hard/soft reset now resets the cursor-blinking state that may
+    have been set via escape sequences; the cursor-blinking
+    menu-entry feature is unmodified (report by Matthieu Herrb).
+  * update config.guess, config.sub
+- Patch #333 - 2018/05/03
+  * ensure that i18n is enabled if input-method is enabled.
+  * modify logic for pre-edit to update spot-location while the
+    cursor is invisible (Kakoune #1940).
+  * change default icon to newer one, "mini.xterm".
+  * install a complete set of icons, to simplify post-install
+    customization.
+  * add resource disallowedPasteControls to extend filtering of
+    control characters from pastes.
+  * add print-on-error action-hook, and document action-hooks for
+    dump-html, dump-svg.
+  * provide action-hook for print-immediate, which was available
+    only as a menu-item (report by Rastislav Barlik).
+  * continue to improve notes in ctlseqs.ms which mention where
+    various controls originated.
+  * add case to accept ECMA-48's bogus SD, but document the issue
+    in ctlseqs.ms.
+  * add control sequence for loading XPM-icon file, using the
+    analogous control sequence from shelltool/dtterm.
+  * add -report-icons option, to report on XPM-icon and title-bar
+    updates.
+  * correct a discrepancy between locator-reports for VT220 vs
+    VT330.
+  * add window-ops control sequences to complement existing ones
+    for reporting window-position and text-area size with reports
+    for text-area position and window-size.
+  * display vt52 graphics mode characters.
+  * correct case-statement for window-ops 10, overlooked since
+    some window managers equate vertical-maximize and
+    horizontal-maximize window hints with full-screen maximize.
+
+-------------------------------------------------------------------
+Wed Aug 15 07:55:59 UTC 2018 - schwab@suse.de
+
+- Copy updated config.sub config.guess files into vttest sources
+
+-------------------------------------------------------------------
+Tue Jul 10 14:20:54 UTC 2018 - meissner@suse.com
+
+- xterm-better-fonts.patch: Adjust the defaults fonts a bit so
+  some chinese letters are displayed better (bsc#1089049)
+
+-------------------------------------------------------------------
+Mon Apr 23 13:42:05 UTC 2018 - mimi.vx@gmail.com
+
+- Patch #332
+- spec-cleaned
+- drop support for unsupported distros
+ * add a GetChecksum item to disallowedWindowOps
+ * improve notes in ctlseqs.ms which mention where various controls originated.
+ * add control sequences for querying the X display size and the character size,
+    both in pixels to help eliminate some of the constants in esctest.
+ * fixes prompted by review of George Nachman's esctest script:
+ * add a null-pointer check and a limit-check in xtermCheckRect.
+ * correct limit-check for right-margin when processing autowrapping if xterm
+    is not built for wide-characters.
+ * repair logic in RIS to reset 132-column mode when an escape sequence is
+    used to enable 80/132-column switching.
+ * correct array-limit for EWMH working state.
+ * further improve limit-checks versus assert's.
+ * correct order of check-margins and move-to-left margin for DL and IL.
+ * modify reverse-wrap to pay attention to top/bottom margins as it has done
+    for left/right margins since patch #279.
+ * modify behavior of DECFI and DECBI to not index the screen at the left/right
+    edge of the display unless those happen to be the left/right margins.
+ * add case for VT320 DSR response for keyboard status.
+ * improve check for valid shell path using getusershell and endusershell
+    if available, in case /etc/shells does not exist/
+ * modified configure checks for groff and man2html, to use the latter by default,
+    but allowing mandoc as a partial replacement for former.
+
+-------------------------------------------------------------------
+Sat Feb  3 04:26:19 UTC 2018 - avindra@opensuse.org
+
+- Patch #331 - 2017/12/30
+  * add workaround for improper grayscale adjustments made in
+    FreeType library, exposed by changes to rounding in 2.8.1,
+    which shows up as a gap in line-drawing characters
+  * improve a special case where a non-Unicode font's line-drawing
+    characters were not used, when specifying it via the utf8Fonts
+    resource.
+  * replace constant 10msec delay for next X event with new resource
+    nextEventDelay, and reduce that to 1msec to accommodate faster
+    machines than used when -hold was implemented in 1999
+  * add scroll-to action, which simplifies binding a key to scroll
+    to the beginning or end of the saved-lines
+  * add building blocks for alternate screen and/or title-stack
+    features in the terminfo file.
+  * improve calculations for cell-data size.
+  * configure script: enable XHTML/SVG screen dumps by default.
+  * configure script: enable 256-colors by default.
+  * update config.guess, config.sub
+  * configure script: option for --with-man2html to use improved
+    script by default.
+  * add case for private mode 1044 in DECRQM, to report the
+    keepClipboard resource setting and corresponding menu entry.
+  * fix an inconsistency between private mode 12 (the AT&T 610
+    cursor blink) and DECSCUSR: the former relied on having the
+    cursorBlink resource set initially to enable the escape sequence,
+    while the latter does not.
+  * add private modes 13 and 14, as well as resource cursorBlinkXOR
+    to allow better control over the cursor-blinking state
+  * modify the html and svg screen dumps to support direct color
+  * modify media copy (screen-printing) to support the same SGR
+    codes as DECRQSS, including 88/256 indexed color as well as
+    direct color.
+  * improve options-parsing for query-status.pl script.
+  * modify parsing of SGR direct-color control making color space
+    identitier optional. The corresponding DECRQSS reply always
+    returns an empty (default) field for the identifier.
+  * add wide-attributes to DECRQSS reply for SGR.
+  * add private mode 1046 to help with scripting applications.
+  * correct expression used for readline-flags in DECRQM; to test
+    the current flag rather than information stacked within the
+    same variable.
+  * correct typo in ctlseqs.ms reference to ISO-8613-6
+  * fix lintian warning for test-package.
+  * fix typo in DECRQSS for SGR 48, which printed the foreground
+    value for colors past 15. Also use colon delimiter for codes
+    38/48 in response
+  * improve workaround for Debian #542434 by using the font's
+    maximum width when no ISO-8859-1 glyphs are provided
+  * work around a special case of Xft's mismanagement of its
+    cached data by adding a check before the -report-fonts option
+    to ensure that it does not use an XftPattern which may have been
+    freed during a call to XftFontOpenPattern.
+  * improve manual page description of regex option for onXClicks
+    resources
+  * add directColor resource.
+  * additional manpage macro cleanup
+  * add optional support for direct-colors
+  * improve legacy/NRC character set mapping:
+    + enable alternate NRC set designators for French and French
+      Canadian, ‘9’ and ‘f’ respectively, as documented in ctlseqs.
+      (‘9’ is documented for VT510, ‘f’ is a Kermit feature).
+    + correct the Unicode value in the DEC Technical table to show
+      capital delta.
+    + referring to
+      * http://vt100.net/docs/vt220-rm/table2-3b.html
+      * http://vt100.net/docs/vt320-uu/appendixe.html
+    + add entries for the DEC Supplemental Graphics table to display
+      0x28/0xa8 as ¤ and 0x5d/0xdd as Ÿ.
+        referring to
+      * http://www.vt100.net/charsets/technical.html
+      * alter the Unicode values used for 0x2b through 0x2c to use
+        curly braces to work with the “middle” parts displayed with
+	0x2f and 0x30.
+    + modify the VT220 “Supplemental” table, giving a hint that it
+      was probably meant to be “Supplemental Graphics” and is the
+      same as VT320's table.
+  * quiet a few font-warnings when a derived fontname cannot be
+    opened, overlooked in refactoring of font resources in patch #328
+  * correct error response for DECRQSS broken in cleanup of
+    Coverity reports in patch #288
+  * improve DECRPM responses by returning mode not recognized for
+    modes which may not be settable due to the selected
+    decTerminalID resource
+  * correct logic for print-immediate action, and enable
+    corresponding menu entry
+  * add configure option --with-pcre2
+  * fix a misspelled subsection title in ctlseqs.ms and add a note
+    regarding blink which was rendered as bold in X11R6. Blinking
+    text was implemented in Patch #60.
+  * fix typos in xterm.man
+  * fix typography in xterm.man
+  * fix typo in INSTALL
+  * add xterm-direct terminal description based on changes
+    introduced in patch #277, and relying upon ncurses RGB extension.
+  * modify xterm-new terminal description to use ECMA-48 REP,
+    reflecting its use in xterm since patch #32 (1996).
+  * clarify comment in ctlseqs.ms regarding blink: it has been
+    part of xterm since patch #60 (1998).
+  * update ftp URLs in documentation.
+
+-------------------------------------------------------------------
+Fri Nov 10 15:40:46 UTC 2017 - sndirsch@suse.com
+
+- xterm-settings.patch
+  * define also wideBoldFont to get rid of a warning (bsc#1067530) 
+
+-------------------------------------------------------------------
+Thu Aug 10 15:29:31 UTC 2017 - pcerny@suse.com
+
+- Patch #330 - 2017/06/20
+  * updates for ReGIS (Ross Combs):
+     + remove redundant text command error check which broke
+       T(B) and T(E).
+     + retain the loading alphabet number across multiple “L”
+       commands.
+     + add S(T) delay handler.
+     + fix some color handling error messages.
+     + add stubbed-out macrograph handling.
+     + use fragment_remaining() and fragment_consumed() instead
+       of manually checking position / length in various places.
+     + rename some local variables in string / extent / option
+       parsing
+     + wrap some long lines.
+     + move macrograph command handling out of the top-level.
+  * add a summary of the italic fonts loaded to -report-fonts
+    option.
+  * modify the font-lookup for italics to allow for “-i-” if no
+    match is found with slant “-o-” (prompted by patch by Ben
+    Wong).
+  * change default values for mkSamplePass and mkSampleSize to
+    reflect generally-improved locale support in various
+    operating systems (FreeBSD #219800).
+  * modify wcwidth.c to return -1 for non-Unicode values, and
+    adjust a couple of blocks to better match assumptions about
+    ambiguous-width characters in other implementations. Also
+    modify wcwidth.c to support configurable soft-hyphen, so
+    there is no drawback to using this version rather than a
+    system wcwidth.
+  * amend change made in patch #328 for cursor-visibility to
+    handle case where an application is updating the
+    reverse-video state (FreeBSD #219800).
+  * update tables of combining and ambiguous-width characters in
+    wcwidth.c based on Unicode 10.0.0.
+  * build-fix for --enable-sixel-graphics without
+    --enable-regis-graphics (reports by Sven Joachim, FreeBSD
+    #219945).
+- Patch #329 - 2017/06/12
+  * add control sequences for reading the Sixel and ReGIS
+    graphics sizes (suggested by Ben Wong).
+  * add a workaround for wcwidth returning -1 for characters
+    which should have been printable (FreeBSD #219800).
+  * fix a bug in font initialization from patch #328 (FreeBSD
+    #219800).
+  * fix a special case in HideCursor which assigned a bold font
+    to the slot used for normal font in changes for italics in
+    patch #307 (Debian #858304).
+  * updates for ReGIS (Ross Combs):
+     + Strings specified with no command are used as "comments".
+       Print these in the log when tracing.
+     + Catch attempts to use "alternate display" mode (AKA
+       "blink") from the GIGI, but do not implement it.
+     + The T(M) command should only multiply the height by 10,
+       not 20.
+     + Make the S(E) command reset more state than just the
+       screen contents.
+     + Remove two rotation variables which were only being
+       printed.
+     + Numerous minor fixes and comment updates in the R
+       command.
+     + Unknown R command option names trigger an empty response.
+     + Fix the output position after printing rotated text (it
+       was missing the the sign before).
+     + Fix the position change with pixelvectors and rotated
+       text (the rotation transform was not being applied).
+     + Update the TODO list and remove a verification FIXME
+       (slanted text positioning is correct as is).
+     + Emulate the approximately 1.4x enlargement for text which
+       isn't rotated at right angles.
+     + Only update the color planes specified in the plane mask
+       (the W command's F option).
+  * fix a bug introduced by the changes to font information in
+    patch #328. When processing the "checkfont" option of the
+    locale resource, the program referred to the request data, to
+    an array which was only allocated in the new/result widget
+    (report by H Merijn Brand).
+  * fix a missing assignment initialization to make the utf8
+    resource control whether escape sequences to enable/disable
+    UTF-8 mode are allowed.
+- Patch #328 - 2017/06/01
+  * revise parser for charClass resource, making these
+    improvements:
+     + accept octal and hexadecimal values
+     + allow embedded whitespace
+     + allow the class after colon to be optional, e.g., to
+       clear class settings for a range of characters.
+  * add command-line option -report-charclass.
+  * fix most lintian warnings about test-package
+  * add eraseSavedLines resource.
+  * document DECSED 3 in ctlseqs.ms (report by Ben Longmans).
+  * improve integration between configure-events and updates for
+    reported screensize, in particular when switching between
+    vt100 and tek4014 modes.
+  * modify selection-highlighting of reverse-video text to keep
+    that distinct, e.g., by reversing the selection foreground
+    and background colors as one would expect. This fixes a
+    "useless" case in the description of highlightColorMode.
+  * improve fix for Debian #759734, addressing a case where
+    non-colored cursor would be invisible against reverse-video
+    (see patch #311).
+  * updates for ReGIS (Ross Combs):
+     + the "H" option of the "T" command should multiply by 10,
+       not 20.
+     + display unknown glyphs as a solid block.
+     + given a succession of text-direction options, use the
+       last.
+     + fix the direction of ReGIS slanted text so that negative
+       values produce oblique output .
+     + fix the ReGIS text direction option to only rotate
+       characters when no following size option is used.
+  * update terminfo to better match corresponding entries in
+    ncurses, e.g., u8 pattern to match the VT220, VT420, etc.,
+    primary responses, as well as adding smxx and rmxx.
+  * fixes from Jörg Sommer:
+     + corrected a trace-message regarding maximum
+       graphics-size; it used the similar ReGIS maximum size
+       which might not be configured.
+     + in do_select_regex, clear selection if there is no match.
+       If the regex does not match anything around the cursor,
+       the selection returned must be empty, otherwise the whole
+       line is treated as a match. This way the command defined
+       by exec-selectable will not be executed if there is no
+       match.
+     + modify limit in do_select_regex to include the character
+       at the cursor in the match, making it easier to type
+       something and then hit the key to trigger
+       exec-selectable.
+     + If exec-selectable or insert-selection is triggered by a
+       mouse button click, the position of the mouse pointer
+       should be used. This makes it easier to address any
+       position on the window and it makes it possible to use
+       the mouse, e.g., for applications such as mutt where you
+       cannot move the cursor.
+  * modify DECRC to save/restore xterm's last-column flag used to
+    control wrapping behavior rather than manipulating DECAWM
+    (report/analysis by Mattias Engdegård).
+  * add configure option --enable-terminfo-env to use the value
+    set by --with-own-terminfo for the $TERMINFO environment
+    variable. That variable was set automatically for HPUX, but
+    would be useful in other systems, e.g., for Solaris (request
+    by Jeff Wieland).
+  * fix a race condition when setting up a signal handler to
+    timeout if opening /dev/tty hangs (patch by Tobias
+    Stoeckmann).
+  * review/cleanup resources which were not in the manual page
+    (report by Maxwell Anselm):
+     + add manual page description as needed.
+     + drop resource name for menuBar, as unnecessary.
+     + modify fallback numeric value for regisScreenSize
+       resource to match that for maxGraphicSize.
+  * updated configure macros CF_ADD_CFLAGS, CF_CC_ENV_FLAGS,
+    CF_GNU_SOURCE, CF_MATH_LIB, and CF_XOPEN_SOURCE from other
+    program-changes.
+  * update config.guess, config.sub
+  * change “maximum screensize” assumed by resize to 9999x9999,
+    to accommodate people using the Unreadable font.
+  * drop Utility from default value of --with-desktop-category
+    (Debian #780176).
+  * widen the configure script pattern used for finding related
+    ".desktop" files, including “Terminal”
+  * several minor improvements to font utility functions:
+     + provide for later modification to implement font-sets by
+       parsing the font resources as comma-separated lists.
+     + parse -fn and -fa similarly, using “x:” and “xft:”
+       prefixes for font name/family strings to distinguish
+       between XLFD and Xft font specifications.
+     + use loops to iterate over font classes
+     + use getters/setters for font data to allow for on-demand
+       lookups.
+     + make the debugging trace for missing glyph less verbose
+       since that interferes with the -report-fonts option.
+     + refactor xtermLoadFont to make it clearer how some fonts
+       are derived from others, e.g., bold, wide.
+     + make the triggering and suppressing of font-warnings more
+       consistent by storing the last state in the widget.
+     + reduce font-warnings by checking for repeated warnings.
+  * add vttests/query-status.pl
+  * add vttests/closest-rgb
+  * add special case for displaying soft-hyphen if it happens to
+    fall at the right margin, and omitting similar case such as
+    the BIDI markers, where a zero-width character is neither a
+    control character nor a combining character (Debian #844325).
+  * modify logic for OSC 52, manipulate selection data, to update
+    the selection-time to include the latest X events. This fixes
+    some cases where the selection was invalid, e.g., after an
+    event due to focus-follows-mouse (report/testcase by Stephane
+    Chauveau).
+  * revise macro CastMallocN as new macro TextAlloc to make
+    explicit use of sizeof(char) (prompted by patch by Cade
+    Foster).
+  * add “Mouse Ops” menu entry and related resources to allow
+    runtime disabling/enabling of the mouse protocol escape
+    sequences (discussion with Bob Proulx).
+  * improve discussion of mouse actions versus protocol in the
+    manual (discussion with Bob Proulx).
+  * improve discussion of environment variables in the manual,
+    pointing out where some features (such as termcap and the
+    System5 COLUMNS and LINES variables) are used rarely, mainly
+    to support legacy applications.
+  * add examples of translations resource for select/paste, and
+    for font-size changes to the manual.
+  * minor reordering of some entries in ctlseqs.ms for
+    consistency (report by Arran Ubels).
+  * add -s option to 256colors2.pl and 88colors2.pl, to
+    demonstrate modifying the “system” colors 0–15.
+  * omit XFT_SPACING property from call to XftPatternBuild, to
+    work around a bug in fontconfig for handling Google Go fonts,
+    whose names sort in an order not expected by fontconfig,
+    causing the request for a monospaced font to return italics,
+    e.g.,
+        $ fc-match 'Go Mono:spacing=monospace'
+        Go-Mono-Italic.ttf: "Go Mono" "Italic"
+        (report by Giacomo Boffi on Stackoverflow).
+  * modify minstall.in to improve a workaround added to the
+    manual page in patch #182 to avoid having the C preprocessor
+    used in the imake configuration strip out the comments in the
+    character classes section (reports by Ted Unangst, Anthony J
+    Bentley).
+- patch rebase:
+  [xterm-decomposed_bitmaps.patch]
+  [xterm-double_width_fonts.patch]
+  [xterm-enable_libtinfo.patch]
+  [xterm-forbid_window_and_font_ops.patch]
+  [xterm-settings.patch]
+  [xterm-sigwinch.patch]
+
+-------------------------------------------------------------------
+Sat Apr 29 15:11:43 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Nov 21 14:54:30 UTC 2016 - pcerny@suse.com
+
+- Patch #327 - 2016/10/07
+  * add a check in the function which handles end-of-line
+	wrapping to ensure that C1 controls are allocated one column
+	when allowC1Printable is set (Debian #738794).
+  * use consistent error-checking after strtol calls, fixes a
+	case where a query with OSC 6 did not ensure there was a
+	valid color number (report by Alex Smith).
+  * add -baudrate option, for testing ncurses.
+  * always generate the CASE_xxx symbols in VTparse.h and
+	Tekparse.h, as part of a change to improve debug-logging.
+	This makes the build always depend upon awk.
+  * modify allowC1Printable to disallow codes 160-254 as being
+	equivalent to codes 32-126 when parsing escape sequences
+	(Debian #839220).
+  * amend fix from patch #326 for TrueType fonts to exclude the
+	hidden character used for double-width cells (report by Grady
+	Martin).
+  * fix a typo in ctlseqs.ms
+
+-------------------------------------------------------------------
+Wed Oct  5 12:42:33 UTC 2016 - pcerny@suse.com
+
+- Patch #326 - 2016/09/25
+  * updated appdata file (report by Richard Hughes).
+  * improve discussion of the different terminal emulations
+    provided by xterm in the manual page.
+  * add examples of setting the icon title with/without the
+    window title in the manual (Debian #833984).
+  * correct a limit-check when using a numeric value for extended
+    Booleans e.g., *fullscreen:3 rather than a name such as
+    *fullscreen:never.
+  * add action allow-bold-fonts
+  * improved formatting fixes for manual page, using script to
+    find mismatches in spelling of resources, actions and menu
+    entries.
+  * improve documentation of logging resources.
+  * fix a special case of flickering cursor by adding
+    GraphicsExpose to the list of event types that should not
+    trigger making the mouse cursor visible (patch by Joe
+    Peterson).
+  * correct initialization of line-drawing in VT52-mode,
+    overlooked in changes for patch #297 (report/patch by Ben
+    Wiley Sittler).
+  * minor clarification of form-feed versus line-feed in
+    ctlseqs.ms (suggested by David Kemper).
+  * amend fix for Debian #738794 to restore a check for missing
+    characters which are not combining characters. Also fill in
+	a corresponding special case for TrueType fonts
+	(Debian #827905).
+
+-------------------------------------------------------------------
+Thu Jun 23 11:06:22 UTC 2016 - pcerny@suse.com
+
+- Patch #325 - 2016/06/05
+  * improve manual page discussion of function keys (discussion
+    with Ross Combs).
+  * further improve fix for Debian #545220 in patch #248, to
+    avoid conflict with combining characters (Debian #738794).
+  * improve -hold option to avoid 100% CPU usage with NetBSD
+    after closing the shell, which makes subsequent checks for X
+    input events fail (prompted by patch by Pierre Pronchery).
+  * review #ifdef statements, listed those which do not have a
+    configure option in xtermcfg.hin.
+  * fixed one case where the menu sensistivity for Print-All
+    Immediately and Print-All on Error was not properly ifdef'd.
+  * modify terminfo entries for 16-, 88- and 256-color to reset
+    palette with rs1 capability.
+  * accept legacy value of -kt as synonym for the oldXtermFKeys
+    resource, and extend the full-reset logic to use the keyboard
+    type set via -kt.
+  * modify ioctl calls for I_PUSH to first check if the module
+    has been added, using I_FIND. This is needed for newer
+    Solaris libraries with c11 support (adapted from patch by
+    Alan Coopersmith).
+  * add check in getXtermCombining to ensure that combining
+    characters were allocated (report by Tor Andersson).
+  * add configure option --without-xinerama to allow suppressing
+    the extension (Gentoo #580936).
+  * update keysym2ucs.c based on Unicode 9.0
+  * fixed most cppcheck --enable=all warnings, including for
+    style (prompted by report by David Binderman). There was one
+    bug-fix:
+     + RGB least-squares computation in allocateClosestRGB used
+       only one ordinate
+  * add cppcheck to lint-like programs in configure script and
+    makefile.
+  * updates for SIXEL and ReGIS (Ross Combs):
+     + Fixes some const correctness issues and points out an
+       array lifetime issue
+     + Sixel drawing should still happen after an error if some
+       commands have been processed
+     + Tiny steps toward reporting ReGIS input
+
+-------------------------------------------------------------------
+Mon Mar 14 11:18:47 UTC 2016 - pcerny@suse.com
+
+- Patch #324 - 2016/03/10
+  * updated configure macro CF_LD_RPATH_OPT from ncurses changes.
+  * provide alternate fix for Juha Nurmela's report by turning on
+    POSIX signals if _POSIX_C_SOURCE is at least one. This is
+    done to improve the behavior if a direct child process
+    receives a STOP signal.
+  * revert change to CF_POSIX_C_SOURCE from patch #323
+    (reports by Ashish Shukla, Christian Weisgerber).
+- Patch #323 - 2016/03/07
+  * updated appdata and desktop files to add keywords (report by
+    Richard Hughes).
+  * modify configure macro CF_POSIX_C_SOURCE to accommodate some
+    systems, e.g., FreeBSD, which have separated their
+    implementation specific preprocessor symbols from the POSIX
+    ones, requiring both to be defined (report by Juha Nurmela).
+  * change the directory to the current working dir of the child
+    process in exec-formatted and exec-selectable actions (patch
+    by Alexander Pohoyda).
+  * correct typo in xterm.man (patch by Larry Hynes).
+  * correct typo in ctlseqs.ms (report by Shriramana Sharma).
+  * add feature to support XHTML and SVG screen dumps (patch by
+    Jens Schweikhardt).
+  * correct response to DECRQSS when terminal id is less than 400
+    (patch by Iwamoto Kouichi).
+
+-------------------------------------------------------------------
+Mon Jan 25 10:58:33 UTC 2016 - pcerny@suse.com
+
+- Patch #322 - 2016/01/02
+  * fix regression due to incorrect fix for compiler warning when
+    allocating storage for /etc/shells (reports by Ashish Shukla,
+    Debian #809646).
+- Patch #321 - 2015/12/31
+  * add resource keepClipboard, escape sequence and action
+    keep-clipboard.
+  * add optional feature to capture text copied to clipboard at
+    the time of copying rather than at the time the clipboard
+    contents are requested for pasting (patch by Milan Mehner).
+  * improve a special case where the -e option was used to pass a
+    single-quoted command via luit, by wrapping it in a “sh -c”
+    (report by Keith Hedger).
+  * minor fix for type-cleanliness when allocating storage for
+    /etc/shells (Tobias Stoeckmann).
+  * fix a typo in manual page (Dan Church).
+  * fix minor file-descriptor leak; after calling openpty, the
+    slave's file descriptor is not needed (report by Juha
+    Nurmela).
+  * editorial change to ctlseqs.ms (report by David Gomboc).
+  * minor updates for autoconf macros.
+  * update config.guess, config.sub
+- vttest 20140305
+  * save/restore color enable-flag for menu 11.6 in a couple of
+    places so that the ISO-6429 tests do not reset it
+    unexpectedly.
+  * amend the REP test to not reset colors if it happens to be
+    run via the menu entry for BCE-related tests.
+- vttest 20140116
+  * cosmetic changes (suggested by Itay Chamiel):
+    + clear screen just before resetting SCS in menu #3 character
+      sets, in case a VT100 emulator does not simply ignore VT220
+      G2/G3 selections when it does not implement them.
+    + add check for maximum operating level before deciding
+      whether to send a DECSCL to set it to VT100-level.
+    + adjust starting point of items for menu #9 "Test of known
+      bugs" to avoid overwriting part of the description of the
+      test.
+  * add configure check for -Wlogical-op to gcc-warnings
+  * update config.guess, config.sub
+- vttest 20130915
+  * when NRCS is active, suppress ISO Latin-1 from menu to avoid
+    confusion with British NRCS.
+  * do not highlight ISO Latin-1 for NRCS, since it is a
+    96-character set, not applicable to NRCS.
+  * correct position of ruler for SD and REP screens, which
+    obscured the result.
+  * expand menu 11.6.6 to demonstrate bce with top-level menus 1
+    and 2 in addition to the existing menu 8.
+  * correct description for DA response 24; it denotes VT320.
+  * correct highlighting for French NRC mapping; "`" is not
+    mapped.
+  * add port-files from FreeBSD for test-builds.
+  * add highlighting information for VT320 Portuguese NRC
+    mapping.
+  * add highlighting information for VT220 DEC Supplemental NRC
+    mapping.
+  * updated configure-macros to add msys changes from ncurses
+    20130907.
+  * update config.guess, config.sub
+- vttest 20130818
+  * modify character-sets screens to optionally highlight the
+    characters which do not correspond to ISO-8859-1.  This makes
+    the National Replacement Characters easier to see.
+  * modify DSR cursor-position report to check if the terminal
+    accounts for origin-mode.
+  * support --datarootdir option in makefile.in, to match
+    configure script updates.
+  * updated configure macros:
+    + change from byacc for autoheader
+    + improved checks for gcc attributes
+    + improved checks for gcc version
+    + miscellaneous fixes in CF_XOPEN_SOURCE
+  * update config.guess, config.sub
+- vttest 20120603
+  * change cursor-position before IL/DL in "Test of VT102-style
+    features with BCE (Insert/Delete Char/Line)" to demonstrate
+    whether the terminal sets the cursor to the first column as a
+    side-effect, as noted in VT220 reference manual.
+- remove vttest-config_update_aarch64.patch since the current
+  vttest sports newer config version
+
+-------------------------------------------------------------------
+Wed Sep  2 13:50:49 UTC 2015 - pcerny@suse.com
+
+- Patch #320 - 2015/08/28
+  * correct documentation for %t format (report by Martin
+    Tournoij).
+  * add %R for consistency to exec-formatted() and
+    insert-formatted() actions.
+  * add %r format to exec-formatted() and insert-formatted()
+    actions (patch by Martin Tournoij).
+  * Amend fix for Debian #794201 (report forwarded from Christian
+    Jachmann by Emanuel Haupt, Debian #797008).
+- Patch #319 - 2015/08/19
+  * add a section to ctlseqs.ms discussing control sequences and
+    ECMA-48, to explain why C1 controls do not occur in the
+    decoded characters from UTF-8 byte streams (prompted by
+    discussion with Poul-Henning Kamp).
+  * modify check for cursor-theme from patch #301 to also check
+    if the resource Xcursor.theme is set to a nonempty value
+    before fallback to xterm's own dummy theme (request by Robert
+    Kloefkorn).
+  * explain in ctlseqs.ms that some keys which normally send
+    SS3-prefixes are changed to CSI-prefixes if key-modifiers are
+    passed as parameters (report by George Nachman).
+  * correct double-free of font information when multiple
+    problems are found, particularly for the wide fonts loaded
+    via the -wc option (report/testcase by Nelson Beebe).
+  * make configure option --enable-builtin-xpms actually work
+    (report by William Bulley).
+  * correct combination of -ls and -e options for utempter
+    configuration (Debian #794201).
+  * NetBSD build-fix for OPT_RENDERFONT versus OPT_SHIFT_FONTS
+    (patch by Matthew Green, forwarded by Thomas Klausner).
+  * fix a few minor bugs found with Coverity.
+  * update pixelvector handling (Ross Combs):
+    + split pixel-based and coord-based functions with common
+      parts factored out to a "raw" function
+    + add a "step" variant which loads a single PV digit
+  * make the graphic dirty upon resize or clear, fixing some
+    missing refreshes (patch by Ross Combs)
+  * fixes scrolling to use user coordinates and move in the
+    correct direction (patch by Ross Combs)
+  * several fixes/improvements for ReGIS whitespace and
+    page-handling (patch by Ross Com
+
+-------------------------------------------------------------------
+Sun Apr 19 09:03:43 UTC 2015 - mpluskal@suse.com
+
+- Update to version 318
+  * rename new(er) configure option --enable-initial-erase to 
+    --enable-pty-erase, since that conflicted with an existing 
+    option (report by Jens Schweikhardt).
+  * fix cut/paste error in --with-builtin-xpms configure option 
+    (reports by Jens Schweikhardt, Ross Combs).
+  * fix minor formatting issue in xterm manual (report by Jens 
+    Schweikhardt).
+  * eliminate unnecessary "#(vi" markers in autoconf macros by 
+    using "(" to begin case-statement cases (suggested by Jens 
+    Schweikhardt).
+  * minor fixes to improve const usage (Ross Combs).
+- Add pkgconfig and groff as dependency as configure is looking 
+  for them
+
+-------------------------------------------------------------------
+Fri Mar 27 16:45:16 UTC 2015 - pcerny@suse.com
+
+- Patch #317 - 2015/03/27
+  * adapt example for exec-formatted from Lukáš Zapletal's
+    webpage to manual (Debian #780008).
+  * add a short usage section to the xterm manual, including
+    notes on setting the window title (Debian #742477).
+  * revise a change made to ICH in patch #314 to address
+    limit-checks (reports/testcases by Zoltán Kéri and Joe
+    Peterson, also reported by Christian Weisgerber).
+- Patch #316 - 2015/03/07
+  * revert change to make DCH honor top/bottom scrolling margins.
+    For the record, both the VT420 and VT520 reference manuals
+    incorrectly state that "DCH has no effect outside the
+    scrolling margins."
+  * fix regression in DCH introduced in adjustment for
+    limit-check in patch #315 (report/testcase by Zoltán Kéri,
+    also reported by Christian Weisgerber).
+  * correct default value for configure option
+    --enable-initial-erase; it should be "False", but in patch
+    #315 it was "Maybe", which differed from default set in patch
+    #192.
+- Patch #315 - 2015/03/02
+  * change default for --enable-narrowproto for Cygwin to "no" to
+    better match contemporary configurations (report by Jens
+    Schweikhardt, prompted by discussion).
+  * provide OSC 106 as an alternative to OSC 6, avoiding conflict
+    with one of Terminal.app's undocumented escape sequences
+    (report by Egmont Koblinger).
+  * fix an off-by-one in comparison when autowrap and left/right
+    margins are combined (report by George Nachman).
+  * modify DECBI and DECFI to work outside the left/right
+    margins, since the vague VT520 reference manual could support
+    that interpretation (suggested by George Nachman).
+  * correct response for DECSCUSR in DECRQSS (report/analysis by
+    George Nachman).
+  * add DECSLRM to list for DECRQSS in ctlseqs.ms (report by
+    George Nachman).
+  * improve limit-checks versus assert's in the debugging version
+    (reports by George Nachman).
+  * correct a problem with multiple writes to the right-margin
+    when autowrap is turned off (report by George Nachman, also
+    reported in Gnome #744819 by Ulf Magnusson).
+  * modify DCH to honor top/bottom and left/right margins (report
+    by George Nachman).
+  * correct off-by-one in comparison so that DL honors left/right
+    margins (report by George Nachman).
+  * correct logic of DECSCL, which always set 8-bit controls as a
+    side-effect (report by George Nachman).
+  * correct loop limit for DECSED 1, when DECSCA is enabled
+    (report by George Nachman).
+  * fix a entry in csi_table for “$”, needed for CSI [ $ z
+    (report by George Nachman).
+  * remove restriction from patch #279 changes on DECIC and DECDC
+    to left-right mode (report by George Nachman).
+  * correct PID value returned in response to DECRQCRA
+    (report/analysis by George Nachman).
+  * fix an ifdef'ing problem, where --disable-dec-locator would
+    turn off logic needed for DECIC and DECDC (report by George
+    Nachman).
+  * correct order of parameters in report for CSI 1 9 t, which
+    gives the screensize in characters (report by George
+    Nachman).
+  * add null pointer checks for a case in DECCRA where part of
+    the target rectangle lies outside the screen limits (report
+    by George Nachman).
+  * remove extra "6" for selective erase from DA1 response
+    (report by George Nachman).
+  * support Xinerama screen specification in geometry parsing
+    (patch by Nicolas George).
+  * add configure option --enable-initial-erase to set
+    ptyInitialErase consistently with manpage, as well as adding
+    a table in manpage to clarify the relationship between the
+    resources related to the backarrow key (Debian #775952).
+  * add configure --enable-builtin-xpms to simplify compiling-in
+    the icons introduced in patch #284 (prompted by discussion
+    with William Bulley).
+  * fix/improve autoconf macros:
+    + CF_WITH_APP_DEFAULTS, add paths for OSX
+    + CF_WITH_MAN2HTML, configure option "--with-man2html"
+      provides "man2html" as alternative to groff's man/html
+      conversion
+  * fix some minor issues in manpage (Jens Schweikhardt).
+- Patch #314 - 2014/12/28
+  * fix a minor bug in the termcap-specific version of resize
+    when the lines or columns values are at the very end of an
+    incomplete termcap string (prompted by coverity report).
+  * improve paste64 feature (report by Olaf Rogalsky)
+    + fix “p;” command in paste64.pl example.
+    + modify _OwnSelection to allow the paste64 control to cause
+      primary/clipboard selections to be disowned and cleared.
+    + omit an extra "=" used in padding, to make the base64
+      response a multiple of four characters.
+    + modify _ConvertSelectionHelper to not stop converting on
+      embedded nulls in the primary or clipboard selection. That
+      makes the behavior consistent with cut-buffers. Nulls are
+      not passed on to the application because they are used for
+      separators in the X library calls that convert
+      XTextProperty values.
+  * add configure option --with-man2html to allow an alternative
+    to groff's man/html conversion.
+  * review and modify resource-settings which can be set via
+    control sequences, etc:
+    + add OSC 6, to enable/disable colors set via OSC 5, without
+      changing the color assignments (prompted by patch by Ingo
+      Brückl).
+    + add command-line option -itc for italics.
+    + add colorIT and colorITMode for italics, like colorBD,
+      etc.
+    + guard allowPasteControls against modification by editres.
+  * change passedPty from fixed-length to allocated to ensure
+    that it is long enough to hold the -S option value (report by
+    Ben Longbons).
+  * improve ReGIS graphics initialization (Ross Combs):
+    + add a new string resource to set the default ReGIS font.
+    + fix a caching problem where the font name wasn't taken into
+      consideration when looking up cached metrics.
+    + enables use of fractional values in coordinates (which in
+      turn allows setting the coordinates to something like
+      [0,1][1,0])
+    + doubles the minimum ReGIS graphic to 200x200
+    + set the default ReGIS image size to "auto"
+    + fix some swapped width/height parameters in TRACE messages
+    + add support for scaling and mirrored coordinate systems to
+      the screen address command
+    + sets a minimum ReGIS graphics size of 100x100 -- smaller
+      address ranges will be scaled up
+    + reset the image if either the width or height is zero
+      (which should happen together or not at all, but switching
+      the logic gets rid of some parentheses)
+    + adds support for alternate screen coordinates (just
+      offsets, not inverted coordinates or scaling)
+    + keeps the graphics state across ReGIS calls unless P1 or P3
+      entry codes are used
+    + changes loops to continue after parsing whitespace to allow
+      trailing whitespace
+    + fixes some incorrect character casts
+
+-------------------------------------------------------------------
+Mon Jan  5 15:57:44 UTC 2015 - pcerny@suse.com
+
+- Patch #313 - 2014/11/28
+  * add regisScreenSize resource setting to allow custom
+    screensizes for ReGIS graphics (prompted by discussion with
+    Scott Froebe).
+  * fix some minor issues in manpage (Jens Schweikhardt).
+  * improve ReGIS font-handling (Ross Combs):
+     + remove "random junk" generation for unknown characters
+     + add xterm extension to load user glyphs for alphabet 0
+     + add xterm extension to specify loading an alphabet from a
+       font by name
+     + fix bug with use of empty alphabet slots which caused slot
+       0 to be clobbered
+     + update/clarify ReGIS-related comments
+     + add DECprint extension for printing/clearing the screen
+       (only clearing is performed)
+  * improve ReGIS colorspec conversion (Ross Combs):
+     + avoid some floating point math for colorspace conversion
+     + move two copies of colorspec parsing to a single function
+     + change colorspec parsing to handle components being out of
+       order or with spaces and commas between them
+     + add support for an extension where RGB components can be
+       given instead of HLS
+  * improve use of const, e.g., for the LineData pointers (patch
+    by Ross Combs).
+  * clip of graphics that overlap the scrollback buffer and alt
+    screen (patch by Ross Combs).
+  * amend change to focus-change events in patch #287 to limit it
+    to suppressing the reset of the urgency-hint, because some
+    useful FocusOut events were lost (report by Joe Peterson).
+  * modify dpkg build-script to configure xterm-dev as an
+    x-terminal-emulator alternative.
+  * extend the --with-xterm-symlink feature to make symbolic
+    links for the other programs and scripts.
+  * minor fix to vttests/resize.pl to avoid undefined variable
+    when receiving broken/missing response, e.g., from mrxvt.
+  * change the way that ReGIS graphics are refreshed (patch by
+    Ross Combs):
+     + it pre-composes any overlapping graphics to avoid
+       unnecessary and flickering draws
+     + it adds a three-dimensional lookup table for RGB -> pixel
+       values and uses this across all graphics
+     + it draws in line segments when there is a run of the same
+       color
+     + in cases where there are no transparent parts, it uses an
+       XImage to draw
+     + it hooks into the double-buffering support if it is
+       enabled (though this doesn't seem to get rid of all
+       flicker).
+  * This has the effect of reducing flicker and speeding up
+    redraws.
+
+-------------------------------------------------------------------
+Mon Jan  5 13:41:57 UTC 2015 - dimstar@opensuse.org
+
+- Add libX11-devel, libXft-devel and libXrender-devel
+  BuildRequires: the configure script silently disables XRENDERFONT
+  support if the dependencies are missing (boo#911683).
+- Add an extra check after configure to ensure we do not lose this
+  support accidentally ever again.
+
+-------------------------------------------------------------------
+Fri Dec 19 12:57:27 UTC 2014 - dimstar@opensuse.org
+
+- Remove xorg-x11 and xorg-x11-devel BuildRequires: there is no
+  need, and it causes that xterm requires itself to build through
+  indirect requires (xdm, xinit).
+- Own the directory %{xappdefs}.
+
+-------------------------------------------------------------------
+Tue Dec 16 12:10:56 UTC 2014 - dimstar@opensuse.org
+
+- Split the desktop launcher from the binaries: there are users
+  that want to clean up their desktop launchers and also remove
+  xterm launchers (but xterm is a deep dependency of xinit, used
+  for fallback situations). The package 'xterm' is the 'app
+  launcher', which depends on xterm-bin. Installing xterm does, as
+  it did in the past, pull a FULL package installation. But the
+  user will be free to remove xterm and only keep xterm-bin (once
+  the dependencies in xinit are corrected as well) (boo#906598).
+
+-------------------------------------------------------------------
+Fri Nov 14 09:19:26 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Sun Oct 12 18:39:01 UTC 2014 - badshah400@gmail.com
+
+- Add xterm-desktop-item-in-gnome-utilities-appfolder.patch to
+  group xterm desktop item in the Utilities app-folder in the
+  GNOME shell. 
+
+-------------------------------------------------------------------
+Mon Sep 29 14:12:20 UTC 2014 - pcerny@suse.com
+
+- Patch #312 - 2014/09/28
+  * undo change to do_select_regex() in patch #311
+    (reports by H Merijn Brand, Sven-Haegar Koch, Debian #762978).
+
+-------------------------------------------------------------------
+Thu Sep 25 08:28:22 UTC 2014 - pcerny@suse.com
+
+- Patch #311 - 2014/09/18
+  * mention xclip in manpage as an alternative workaround for
+    copying clipboard data, noting that selectToClipboard (from
+    patch #209) is the recommended approach (Debian #639094).
+  * correct comparison in do_select_regex() of working position
+    against starting column.
+  * correct initialization for regular-expression feature of
+    exec-selectable and insert-selectable actions (Debian
+    #758633).
+  * modify logic for exec-formatted and insert-formatted actions
+    to ensure that the formatting occurs just after the selection
+    is received (Debian #758633).
+  * account for state of reverse-video in special case of cursor
+    coloring (Debian #759734).
+  * fix a sign-extension problem in ReGIS support, as well as
+    correcting a case where ignored-characters were not really
+    ignored (patch by Ross Combs).
+  * Enable the "Escape Sequence" menu entry when an OSC 50 is
+    received. Also disable it if the escape sequence specifies no
+    font (Debian #760208).
+  * improve fix for the fontsel menu entry from patch #304:
+    because the recovery used the "current font", it would fail
+    if one first selected a valid font, then an invalid font
+    (Debian #760207).
+  * correct an off-by-one in limit-check for ScrnLimitChar
+    function (report by Egmont Koblinger).
+
+-------------------------------------------------------------------
+Wed Sep 17 09:39:07 UTC 2014 - pcerny@suse.com
+
+- remove unnecessary colour tweaks which cause strange artifacts
+  in the ReverseVideo mode (bnc#395154, bnc#865340)
+
+-------------------------------------------------------------------
+Tue Aug 12 15:56:01 UTC 2014 - pcerny@suse.com
+
+- fix SUSE naming in the package files (bnc#888995) 
+
+-------------------------------------------------------------------
+Thu Jul 31 10:39:19 UTC 2014 - pcerny@suse.com
+
+- Patch #310 - 2014/07/25
+  * update package/freebsd files based on xterm #309 port
+  * adapt changes from Minux3.2 which ported xterm #197, to allow
+    building on that platform both using imake as well as using
+    the configure script
+  * update precompose.c based on Unicode 7.0
+  * build-fix for --with-Xaw3dxft option (report by Emanuel Haupt)
+
+-------------------------------------------------------------------
+Tue Jul 15 13:02:26 UTC 2014 - pcerny@suse.com
+
+- Patch #309 - 2014/07/13
+  * modify configure script to work around debris left by XQuartz
+    upgrades.
+  * modify test-package scripts to enable ReGIS graphics.
+  * improvements/additions to ReGIS graphics, e.g., drawing text
+    (Ross Comb).
+  * add --with-Xaw3dxft, to link with Xaw 3d xft library
+    (Stephen P Wall).
+  * amend reset for cursor-shape to take into account
+    cursorUnderline resource (report by Christian Weisgerber).
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Mon Jun 23 08:25:46 UTC 2014 - pcerny@suse.com
+
+- Patch #308 - 2014/06/19
+  * corrected font used for clipping double-width bitmap fonts
+    from patch #307 changes to work around mis-scaled fonts
+    (Debian #752947).
+  * improve wording of a warning message.
+
+-------------------------------------------------------------------
+Wed Jun 18 09:50:15 UTC 2014 - pcerny@suse.com
+
+- Patch #307 - 2014/06/17
+  * fill background for top/bottom parts of
+    double-width/double-height characters, to cover occasional
+    gaps due to bitmap font-scaling (report by Egmont Koblinger).
+  * amend resets for keyboard-type, pointer-mode and title-modes
+    from xterm #305 changes to account for resource settings
+    (Debian #751351).
+  * modify printAttributes feature to include new SGR codes.
+  * modify cursor show/hide logic to work with italic fonts.
+  * do clipping and filling for a case with bitmap-fonts and
+    italics when the font server returns only a "close" match
+    (report/testcase by Egmont Koblinger).
+  * adjust loop comparison for underlining to display underlines
+    on 5x8 font as in patch #304 (Debian #750733).
+  * amend fix for Freedesktop #15979 (Debian #750733).
+  * amend xterm.appdata.xml, making it validate with current
+    schema.
+
+-------------------------------------------------------------------
+Thu Jun 12 16:50:21 UTC 2014 - pcerny@suse.com
+
+- a special changelog entry containing the full patch file name
+  instead of the short one that appears in the real update commit
+  (previous changelog entry): xterm-decomposed_bitmaps.patch,
+  that appeases the checks in the openSUSE:Factory project in
+  OBS. These checks (and thus also this entry) are of the utmost
+  importance since they ensure that a package changelog can be
+  used instead of a proper source version control system and sane
+  patch header comments. It also adds lots of important
+  information on top of the usual boring features & fixes
+  descriptions nobody is really interested in.
+
+-------------------------------------------------------------------
+Tue Jun 10 14:45:33 UTC 2014 - pcerny@suse.com
+
+- Fix Xerror failures on ppc64le (bnc#881131)
+  [-decomposed_bitmaps.patch]
+
+-------------------------------------------------------------------
+Wed Jun  4 15:36:21 UTC 2014 - pcerny@suse.com
+
+- Patch #306 - 2014/06/03
+  * fixes for display-errors in new SGR codes (report by Egmont
+    Koblinger).
+
+-------------------------------------------------------------------
+Tue Jun  3 19:29:08 UTC 2014 - pcerny@suse.com
+
+- Patch #305 - 2014/06/02
+  * add xterm.appdata.xml (request by Richard Hughes). By the way,
+    none of the released validators yet handle <licence> tags (or
+    <metadata_license>, etc).
+  * fix memory leaks in bitmap font-name caching.
+  * other changes to hard-reset behavior:
+    + reset keyboard-type on hard-reset.
+    + reset pointer-mode (pointerMode) on hard-reset
+    + reset title-modes (titleModes) on hard-reset
+    + reset cursor-shape on hard or soft-reset
+    + reset LEDs on hard-reset.
+    + reset DECSACE on hard-reset.
+  * reset bracketed-paste mode on hard-reset (suggested by Egmont
+    Koblinger).
+  * modify UTF-8 decoder to account for allowC1Printable resource.
+  * revise getXftColor to ensure that its sequence number will not
+    overflow in long-running sessions.
+  * minor fix to selection to prevent hidden character from being
+    returned in selection data (report by Egmont Koblinger).
+  * add -sh to help-message.
+  * amend check for incomplete fonts to always decide that a
+    character is missing if the font lacks per-character metrics
+    (prompted by Freedesktop #15979).
+  * minor reorganization to implement “filler” SGR features. There
+    are no established applications which rely upon these; some
+    people find them amusing.
+    + separate bits used to manage drawing state from
+      attribute-bits.
+    + implement SGR codes 2, 3, 9, 21 and their corresponding
+      resets.
+    + add configure option --disable-wide-attrs to disable the
+      feature.
+  * additional changes for ReGIS support (patch by Ross Combs):
+    + fix some arc drawing bugs and add support for pattern
+      shading.
+
+-------------------------------------------------------------------
+Thu May 22 09:04:25 UTC 2014 - gber@opensuse.org
+
+- enable support for sixel graphics originally introduced with
+  patch #294
+
+-------------------------------------------------------------------
+Mon May  5 19:31:19 UTC 2014 - pcerny@suse.com
+
+- Patch #304 - 2014/05/03
+  * add debugging check for parsing table entries, fixed a few
+    inconsistencies.
+  * handle utmp/utmpx strings consistently with new function that
+    null-pads unused locations.
+  * build-fix for imake configuration with FreeBSD 9 and later,
+    to account for replacing utmp with utmpx.
+  * improve handling of the fontsel (font-selection) menu item:
+    + initialize the menu entry differently if the toolbar
+      configuration is used, i.e., enabling it without attempting
+      to use the current selection as a font name. Because of the
+      way in which the toolbar is setup, this attempt usually
+      failed, and would result in a warning.
+    + if the menu action fails, e.g., no font can be loaded for
+      the given selected name, then recover by resuming with the
+      current font. Before, the recovery went to the default
+      font. That was done to work around missing bitmap font in
+      patch #276.
+  * document OSC 119 in the control sequences listing (report by
+    Egmont Koblinger).
+  * modify special handling of XF86Paste or SunPaste keysyms (see
+    patch #227) to use the standard shift/lock modifiers in case
+    those are, for example, used in level 3 in an XKB file (patch
+    by Matthieu Herrb).
+  * configure macro updates:
+    + drop the -no-gcc option from CF_INTEL_COMPILER
+    + modify CF_XOPEN_SOURCE to suppress the check for defining
+      _XOPEN_SOURCE on Solaris
+  * reduce bss storage used for ReGIS/Sixel modules, as well as
+    cleanup storage usage in other modules.
+  * initial changes for ReGIS support (patch by Ross Combs):
+    + document control-sequences
+    + separate ifdef's for sixel and color-register features
+    + add configuration for VT382
+
+-------------------------------------------------------------------
+Fri Mar  7 07:00:52 UTC 2014 - meissner@suse.com
+
+- Patch #303 - 2014/03/06
+  * improve check for /etc/shells to allow its entries to be symbolic
+    links.
+  * fix a regression in patch #302 fixes relating to interaction of
+    SHELL and XTERM_SHELL variables (Debian #740919).
+  * improve manpage discussion of use of /etc/shells for validating the
+    SHELL environment variable.
+  * further improve the approximation for color map by ignoring bits
+    which would not be applied by the rgb masks for the current visual
+    (report by Joe Peterson).
+  * add -report-colors to usage-message (report by Joe Peterson).
+- Patch #302 - 2014/03/02
+  * amend  approximation for color map introduced in patch #277 to make
+    that apply only to TrueColor (adapted from patch by Joe Peterson).
+  * add -report-colors option, to show colors as they are allocated.
+  * fix some gcc -Wcast-qual warnings.
+  * correct app-defaults location for CentOS-4 in xterm.spec
+  * improve  check  in  minstall.sh for X manpage's section number; add
+    sample  dependencies  for  the  relevant  documentation  package to
+    packaging test-scripts (prompted by Novell #779474).
+  * modify sample build-scripts for dpkg and rpm to ensure that vttests
+    scripts are uncompressed and executable.
+  * modify  Perl scripts in vttests to use env to find Perl rather than
+    relying  on /usr/bin/perl This makes the sample scripts usable with
+    NetBSD and other systems using pkgsrc.
+  * amend  check  from  patch  #301  for valid shell to permit existing
+    SHELL  value  to  specify  the  shell;  clarify the behavior in the
+    manpage (report by Emmanuel Thome).
+  * amend  change to wide-character processing from patch #257 to allow
+    switching  to/from  UTF-8 encoding if the utf8 resource was not set
+    to "always" (report by Honza Maly).
+  * fix  incorrect  free  from  patch #301 changes, if explicit program
+    without -e option is a valid shell (patch by Romain Francois).
+
+-------------------------------------------------------------------
+Mon Jan 20 14:20:46 UTC 2014 - pcerny@suse.com
+
+- Patch #301 - 2014/01/19
+  * OSC 104 and 105 did not accept parameter to reset a specific
+    color (patch by Egmont Koblinger).
+  * add configure check for initgroups, and use that function to
+    complement its use of setgid (prompted by patch by Miroslav
+    Lichvar).
+  * improve manpage description of scrollbar translations versus
+    the vt100 translations (Debian #723573).
+  * add a few paragraphs to manpage explaining the implications
+    of xterm's reliance on X Toolkit for command-line parsing.
+  * modify cursor-theme logic to check if the environment
+    variable XCURSOR_THEME is set to a nonempty value before
+    constructing a dummy them (prompted by similar check added in
+    OpenBSD CVS).
+  * add check for a case where TrueType bold font is missing a
+    glyph where the non-bold font has it. Temporarily switch to
+    the non-bold font to draw the glyph (report by David
+    Demelier).
+  * minor documentation fixes for ctlseqs.ms
+  * only set SHELL environment variable to programs found in
+    /etc/shells (prompted by patch/report by Al Poole).
+  * build-fix, when --disable-wide-chars --disable-boxchar is
+    used (prompted by patch by Andrey Panov).
+
+-------------------------------------------------------------------
+Thu Dec  5 10:24:02 UTC 2013 - pcerny@suse.com
+
+- Patch #300 - 2013/12/03
+  * amend workaround for Xcursor library from patch #298; the
+    suggested solution for Debian #466704 fell afoul of a bug in
+    Xcursor which treated an empty value for Inherits= as a valid
+    theme—and resulted in a stack overflow due to unbounded
+    recursion. Certain environments such as XFCE4 exposed the
+    bug. A related report in Debian #531679 was closed without
+    following the recommendation to limit stack recursion in this
+    library (reported by Sergey V Dyatko, Debian #731269).
+
+-------------------------------------------------------------------
+Mon Dec  2 09:39:01 UTC 2013 - pcerny@suse.com
+
+- Patch #299 - 2013/12/01
+  * fix regression in line-drawing from patch #297 changes for
+    NRCS exposed by change to assumeAllChars resource in patch
+    #298 (report by Markus Waldeck).
+
+-------------------------------------------------------------------
+Fri Nov 29 13:38:23 UTC 2013 - pcerny@suse.com
+
+- Patch #298 - 2013/11/27
+  * quiet a warning about ambiguity when -h command-line option
+    is parsed, since -help is used rather than the options
+    mentioned in the message. This warning was caused by fixes in
+    patch #272.
+  * remove an extra check for keypad-mode which interfered with
+    the patch #280 modifyKeyboard feature for the numeric keypad
+    (report by David Conners).
+  * change default for assumeAllChars resource (Debian #725682).
+    There are unresolved issues with Terminus fonts, e.g., Debian
+    #722017.
+  * add -report-fonts command-line option and reportFonts
+    resource to optionally report the fonts which are loaded, and
+    their metrics such as the number of missing glyphs.
+  * work around Xcursor library to make pointerColor resource
+    work as documented (Debian #466704, analysis by Vincent
+    Lefèvre).
+  * amend change from patch #297 for ASCII-equivalents to ensure
+    that missing characters which happen to be double-width are
+    padded to the expected number of columns. Also, correct the
+    choice between normal/wide Xft fonts used when checking for
+    missing characters (reported by WU Yue, Debian #728949,
+    Gentoo #491334).
+  * modify sixel-graphics drawing to account for scrollbar width
+    (report by Mario Edelmann).
+  * fix remaining issue with DECNRCM; the British character set
+    was confused with ISO Latin-1 (report by Hayaki Saito).
+  * build-fix for --disable-boxchars configure option.
+  * updated configure macros, from ongoing work on lynx and
+    ncurses.
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Mon Sep 30 17:23:48 CEST 2013 - sbrabec@suse.cz
+
+- Fix invalid terminal.png (IDAT TFB error).
+
+-------------------------------------------------------------------
+Fri Sep 20 08:57:18 UTC 2013 - pcerny@suse.com
+
+- Patch #297 - 2013/09/10
+  * modify check for missing cells in bitmap font to work around
+    terminus 10646 encoding, which is mostly missing, add
+    assumeAllChars resource to provide the older behavior.
+  * modify macros used to check for missing cells in bitmap fonts
+    to pick up a long-overlooked improvement made to xfd in
+    XFree86.
+  * improve workaround for groff versus ASCII-equivalents; patch
+    #185 had overlooked Xft configuration (reported by anonymous
+    user on Arch Linux forum).
+  * review/extend DECNRCM support (prompted by report by Hayaki
+    Saito asking about the two "A" codes).
+     + make pasting of DECNRCM data work by translating the pasted
+       data into the selected encoding.
+     + limit mode changes to VT220 and up.
+     + ignore SCS for National Replacement Characters if DECNRCM
+       is not set.
+     + add tables and logic to decode SCS controls ending with "%"
+       and one additional character. This expects the parsing of
+       SCS to VT320.
+     + also added parsing for SCS of DEC Supplemental and DEC
+       Technical, which are for VT2xx and VT3xx respectively.
+     + implement VT220 Multinational character set "GR" aka "DEC
+       Supplemental Graphic".
+     + DEC Technical character set based on vt100.net description.
+     + implement Portuguese NRC.
+     + provide for temporarily switching to/from NRC mode from
+       UTF-8 mode when DECNRCM is set or reset.
+  * minor fix to assert's found while testing examples from
+    ttdoda's slrm-test1.txt.
+  * modify DECLRMM to not update the cursor position (report by
+    Iwamoto Kouichi forwarded by Hayaki Saito).
+  * modify cursor-position report to take origin-mode into account
+    (report by Hayaki Saito, see also iTerm2 pull request 129).
+  * correct off-by-one comparison in when handling carriage-return
+    at left margin (patch by Iwamoto Kouichi, forwarded by Hayaki
+    Saito).
+  * improve handling of faceName resource when a "size=" property
+    is embedded in it, by using that size to replace the default
+    faceSize resource. This lets xterm honor the other faceSize
+    resources (report by Jens Schweikhardt).
+  * improve OSC 52 selection-data by setting its timestamp to
+    correspond to the most-recent event received by xterm, to
+    ensure that calls to XtOwnSelect succeed even if the selection
+    is manipulated solely through the keyboard (prompted by patch
+    by Richard Tollerton).
+  * change configure-script defaults for "luit" and "wide-chars"
+    options to match the values used in the imake configuration,
+    to lessen user surprise if they are accustomed to building
+    xterm using imake(report by Andries E Brouwer).
+  * improve the imake-related configuration's check if xterm is
+    started in a locale that uses UTF-8 encoding. Before, this
+    checked the locale settings only for "UTF-8", now it checks
+    ignoring case for "UTF-8" and "UTF-8" (report by Andries E
+    Brouwer).
+
+-------------------------------------------------------------------
+Fri Jul 12 08:46:01 UTC 2013 - pcerny@suse.com
+
+- Patch #296 - 2013/07/10
+  * improve experimental sixel feature (patch by Ross Combs).
+  * modify delimiter in configure macro used to add a library
+    after a given library to avoid confusion with -Wl
+    pass-through options to linker (NetBSD #48031).
+  * fix quoting in expression used to trim extra libraries from
+    patch #295 changes (report by Thomas Klausner).
+
+- Patch #295 - 2013/07/06
+  * adjust order of libraries to work around incomplete symbol
+    resolution when using --as-needed option (ArchLinux #36047).
+  * minor fix for plink.sh, for IRIX64.
+
+- Patch #294 - 2013/07/05
+  * add note in ctlseqs.ms for CPR response pointing out a
+    potential point of confusion with the string sent by a
+    modified F1 key (suggested by Bram Moolenaar).
+  * improve plink.sh by checking if the linker supports the
+    --as-needed option (suggested by David Philippi).
+  * improve clearing for private mode 1049 when switching to the
+    alternate screen (Debian #711758).
+  * amend fix from patch #292 by removing now-unneeded chunk
+    which introduced problem in selection (Debian #714527).
+  * add definition to optionally override compiled-in class for
+    xterm from makefile, needed for test-packages.
+  * add configure option --enable-sixel-graphics
+  * add experimental support for sixel graphics (patch by Ross
+    Combs).
+
+-------------------------------------------------------------------
+Tue May 28 13:01:27 UTC 2013 - pcerny@suse.com
+
+- Patch #293 - 2013/05/27
+  * modify sample xterm.spec to use newer icon
+  * add configure option --with-icon-symlink to work around
+    systems which map icon requests for to a single "xterm" icon,
+    but neglect to install the icon needed for window decorations
+    (report by H Merijn Brand).
+  * improve parameterizing of sample xterm.spec
+  * amend fix for printer from patch #280, removing a reset of the
+    signal handler for SIGCHLD (report by Joe Julian).
+  * set environment variable XTERM_FILTER if a locale-filter is
+    used.
+  * enable DEBUG logic when --enable-trace configure option is
+    given.
+  * improve description of initialFont, set-vt-font and
+    set-tex-text in manpage (Debian #707899).
+  * fix regression from patch #292; selecting a word that ended at
+    the right margin without wrapping would not select the last
+    cell (report by Christian Weisgerber).
+
+-------------------------------------------------------------------
+Thu May  2 17:22:57 UTC 2013 - pcerny@suse.com
+
+- cleanup of spec file and patches
+
+-------------------------------------------------------------------
+Fri Apr 26 11:06:37 UTC 2013 - meissner@suse.com
+
+- Patch #292 - 2013/04/25
+ * add limit-check when double-click selects a word; if the saved-lines
+   were scrolled back and the word selected wrapped at the screen's lower
+   right corner, an assertion was triggered (patch by Taketo Kabe).
+ * correct limit-check in unsaveEditBufLines, fixing a case where
+   enlarging the terminal size could show a blank line where there
+   actually is available text (patch by Bertram Felgenhauer).
+ * add PasteControls feature to allowWindowOps which by default
+   disallows pasting control characters other than formatting such as
+   carriage return (discussion with Hayaki Saito).
+ * fix typo in ctlseqs.ms for DECRQM response (patch by Emanuele
+   Giaquinta).
+ * update  default  shown  in  configure  --help  message  for
+   --with-terminal-id option (patch by Andres Perera).
+ * rename script/preprocessor variables used for substituting the
+   backarrowKey  default value for consistency (patch by Andres
+   Perera).
+ * set umask to 077 before creating debugging-trace files.
+ * add configure option --disable-openpty to control whether openpty()
+   may be used in preference to posix_openpt().
+ * improve workaround from patch #279 for BSD systems which do not
+   complete initialization until both sides of the pseudoterminal are
+   opened, by preferring openpty() function over posix_openpt() when
+   available (report by Christian Weisgerber).
+- refreshed xterm-disallow-window-and-fonts-ops.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 10:30:33 UTC 2013 - meissner@suse.com
+
+- Patch #291 - 2013/02/26
+  * add  validity  check  for xterm widget parameter to AlternateScroll
+    function, needed to handle wheel mouse events in the scrollbar area
+    since  patch  #282 changes which introduced alternateScroll feature
+    (Redhat #874327).
+
+-------------------------------------------------------------------
+Sat Mar  2 10:29:45 UTC 2013 - schwab@suse.de
+
+- config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Tue Feb 19 10:00:45 UTC 2013 - sndirsch@suse.com
+
+- fixed check for existance of bdftopcf; added bdftopcf
+  Buildrequires for openSUSE > 12.1 (bnc#804329)
+
+-------------------------------------------------------------------
+Mon Feb 18 13:07:25 UTC 2013 - abergmann@novell.com
+
+- Patch #290 - 2013/02/12
+  * revert of patch #282 change was incomplete (report by Jim Reisert).
+  * fix typo in manpage (report by Vincent Lefevre).
+
+- Patch #289 - 2013/02/08
+
+  * revert the patch #282 change which restored "lost" text after
+    shrinking/growing the screen size. If the screen was updated between
+    the two resizing operations, unexpected text might be shown at the
+    end (report/testcase by Joe Peterson).
+  * reverse the arrow-keys sent for alternateScroll to match the usage
+    in browsers (suggested by Dieter Roelants).
+  * modify mouse reports to consistently indicate motion events whether
+    or not a button is pressed. Old behavior (since patch #127 modified
+    encoding for wheel mouse) showed only that the button was released
+    if no button had been pressed (report by Andy Koppe).
+  * correct and improve behavior for SGR 1006 mouse protocol on button
+    release in any-event mode. Initial implementation in patch #277 left
+    internal state showing the last button pressed when reporting motion
+    events. It now keeps track of all buttons which have been pressed
+    and released, showing the lowest remaining button by number in the
+    response (reports by Hayaki Saito, Andy Koppe).
+  * fix inconsistency between TermColors and OscTextColors enums which
+    interchanged values for tektronix cursor color and highlight
+    foreground in control sequences in patch #225 (report/patch by
+    Peder Stray).
+  * fix inconsistent use of noreturn-attribute in Exit function which
+    interfered with analysis by clang.
+  * remove incorrect free used in computation of XTERM_SHELL variable,
+    from Coverity fixes in patch #288 (FreeBSD #175782).
+  * add --with-valgrind option to configure script for consistency with
+    my other programs.
+  * update table of ambiguous width characters in wcwidth.c based on
+    Unicode 6.2.0
+  * update table of combining characters in wcwidth.c based on Unicode
+    6.2.0
+  * update precompose.c based on Unicode 6.2.0
+
+-------------------------------------------------------------------
+Fri Jan 25 10:52:06 UTC 2013 - pcerny@suse.com
+
+- Patch #288 - 2013/01/09
+  * fix a special case in ShowCursor where the foreground and
+    background colors of the current position are the same. In
+    that case, choose the further of the window's foreground and
+    background colors for the cursor color.
+  * modify alternateScroll feature added in patch #282 to use
+    either CSI or SS3 according to the cursor keys application
+    mode setting, to simplify using it in vi, etc. (suggested by
+    Dietar Roelants).
+  * revise manpage for resize to clarify the changes which resize
+    may make to the terminal settings as well as to the terminal
+    itself.
+  * remove code such as struct ttysize, used for SunOS 3 and 4.
+  * modify configure script and makefile to check for groff and
+    suppress groff-specific rules if groff is not found.
+  * modify ctlseqs.ms and makefile to work around bugs in grohtml
+    which cause ".png" files to be truncated when producing html
+    documentation.
+  * modify suffix rules for "make docs" to make the names of the
+    generated ".png" files predictable, helping to work around
+    longstanding problems with this feature of groff-none of its
+    releases work for all of xterm's tables..
+  * correct typo in ctlseqs.ms for DECIC and DECDC; the character
+    preceding the final "~" is an ASCII single-quote "'" rather
+    than a space (report by Paul LeoNerd Evans).
+  * update CF_GCC_VERSION macro, handling both Debian and Darwin.
+  * improve configure script checks for the
+    --with-desktop-category option. After patch #280 changes, if
+    no value was given for this option, and no existing desktop
+    files found for comparison, the incorrect "auto" value was
+    passed into the generated desktop file (report by Julien
+    Cristau).
+  * modify sample build-scripts to disable check for imake due to
+    code-rot in Xorg.
+  * add -v command-line option to resize, reporting the same
+    version string as xterm and the two shell-wrappers.
+  * make name-transformation apply to other occurrences of resize,
+    other manpages.
+  * special-case the name-transformation in xterm's manpage in the
+    NAME section so that the result works with makewhatis (report
+    by Julien Cristau).
+  * modify install-rules for manpages to put each program's
+    respective transformed name into the header rather than
+    xterm's.
+  * remove deprecated files: proto.h, os2main.c
+  * minor fixes based on Coverity scan, including:
+    + correct caching of Atom value for the font menu's
+      "Selection" entry.
+    + ensure that utmp/utmpx calls do not depend upon trailing
+      nulls in the ut_id and ut_line values.
+
+-------------------------------------------------------------------
+Tue Nov 27 20:03:03 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signatures.
+
+-------------------------------------------------------------------
+Mon Nov 26 15:00:14 UTC 2012 - meissner@suse.com
+
+- Patch #287 - 2012/11/25
+  * fix  a case where in_put() loop could continue when it has found an
+    X  event  rather  than  the pty, causing the pty-read to be delayed
+    (patch by Balazs Kezes).
+  * add  option  to  pointerMode  resource  and  corresponding  control
+    sequences  to  allow  text-cursor  to  remain hidden if the pointer
+    leaves/enters  the  window  via  accelerator  keys. Ordinary motion
+    within the window restores the pointer (prompted by patch by Balazs
+    Kezes).
+  * remove   special   case   of  modifiers  for  the  Mode_switch  and
+    XK_ISO_Level3_Shift  from  patch  #223.  Verified that the conflict
+    which  this  was  intended  to  resolve  does not happen for normal
+    compose- or modeswitch-handling (prompted by patch by Balazs Kezes,
+    Debian #638694).
+  * modify  the  handling  of focus-change events to ignore those whose
+    detail  is  NotifyPointer,  since  those  are  sent  in addition to
+    focus-change  events  directed  to the old/new windows having focus
+    (prompted by patch by Balazs Kezes to prevent the urgency-hint from
+    being reset in this scenario).
+  * modify  description  of iconName in manpage to make it clearer that
+    this  resource does not specify the filename of an icon (discussion
+    with Ian Collier).  * modify  iconHint resource to allow suppressing
+    the built-in icon by setting this to "none" (discussion with Ian
+    Collier).
+  * make -iconic option work with the toolbar configuration.
+  * correct  initialization  of  window  manager  hints used to set the
+    icon-pixmap.  That  detail  from patch #282 overwrote state used to
+    control the -iconic command-line option (report by Ian Collier).
+  * fix paste64 feature for the case where the selection comes from the
+    current terminal. The selection callback can happen after the reply
+    is  partly  built, making it necessary to flush the reply-buffer to
+    keep things in the proper order (report by Ailin Nemui).
+  * reject  command-line  options  which are longer than the options in
+    xterm's table, to avoid mismatches (Redhat #875305).
+  * correct attribution for patch #282 changes.
+
+-------------------------------------------------------------------
+Tue Oct 30 12:04:34 UTC 2012 - pcerny@suse.com
+
+- Patch #286 - 2012/10/29
+ * fix minstall.in to work with "make docs" rule, so that patch
+   number appears in the corresponding generated documentation.
+ * modify minstall.in to keep the name shown in the heading
+   consistent with any renaming, e.g., for test-builds.
+ * check for misconfigured printerCommand resource on the first
+   use, warn and disable it if it does not specify an executable
+   command (Debian #691642).
+ * improve check for window-manager name needed to establish
+   usable default for activeIcon resource. This works around a
+   scenario where gdm does incomplete cleanup, leaving window
+   properties that refer to windows which no longer exist 
+   (Redhat #869959).
+
+
+-------------------------------------------------------------------
+Thu Oct 25 13:47:52 UTC 2012 - meissner@suse.com
+
+- Patch #285 - 2012/10/23
+ * add/adapt FreeBSD ports files for test-building.
+ * modify  minstall.sh to use the patch-number and date in the manpage
+   footer.
+ * add  check  for  failure  to  allocate the fg/bg colors at startup,
+   e.g.,  misconfiguration. Work around by setting both to the default
+   colors (suggested by Scott Bertilson).
+ * amend  change  for  patch  #280 which added modifyKeyboard, to make
+   modifyOtherKeys work (report by Ailin Nemui).
+ * add query-colors.pl example for OSC 4.
+ * correct   mis-applied  fix  for  minstall.sh  (report  by  Miroslav
+   Lichvar).
+
+-------------------------------------------------------------------
+Tue Oct 16 14:49:09 UTC 2012 - meissner@suse.com
+
+-Patch #284 - 2012/10/14
+ * amend configurability changes for icons from patch #283, moving the
+   new  functionality  to the iconHint resource to avoid conflict with
+   existing  uses of the iconName resource in the Shell widget (report
+   by Emanuel Haupt).
+ * fix documentation errata (reports by Miroslav Lichvar):
+   + correct manpage default for allowTcapOps (see patch #243
+   + modify  documentation  for configure --enable-backarrow-key to
+     match the script (see patch #280).
+   + fix  typo  in  minstall.sh  in  patch  #283,  which  made  the
+     leading-cap "Xterm" become "xterm" (patch by Miroslav).
+ * fix  two  typos  in configure.in from patch #283 changes; one broke
+   the --regex configure option (report by H Merijn Brand).
+
+-------------------------------------------------------------------
+Thu Oct 11 11:56:44 UTC 2012 - pcerny@suse.com
+
+- Patch #283 - 2012/10/09
+  * modify makefile and script to generate appropriate renaming
+    s/xterm/xterm-dev/ for test-package's manpage.
+  * improve makefile rules for installing/uninstalling pixmap
+    files, to include the newer mini- and filled- variants.
+  * clarify change in manpage regarding patch #282 change to
+    always set a window-decoration icon, even if iconName is not
+    set.
+  * add a fourth flavor of window-decoration icons,
+    "filled-xterm" for a monochrome xterm with filled interior.
+  * use shape-mask to improve contrast of the window-decoration
+    icons.
+  * minor changes to icon colors to improve contrast on
+    bright-mud backgrounds.
+  * drop configure checks for memmove versus bcopy, and strerror
+    function; all currently tested platforms support these.
+  * cleanup configure macros, as done in byacc 20121003.
+  * improve configurability of the built-in icon selectable via
+    the iconName resource.
+  * update config.guess, config.sub
+- fix build on older SUSE distros (post-12.2)
+
+-------------------------------------------------------------------
+Fri Oct  5 11:07:31 UTC 2012 - meissner@suse.com
+
+- new fontpackages-devel only valid post-12.2
+
+-------------------------------------------------------------------
+Mon Oct  1 13:59:52 UTC 2012 - meissner@suse.com
+
+- Patch #282 - 2012/09/28
+  * improve configure check for XkbKeycodeToKeysym, fixing a regression
+    on some older systems in the patch #280 changes.
+  * add  clarification in manpage for alwaysBoldMode and veryBoldColors
+    resources (prompted by Derek Martin question about using the former
+    with TrueType fonts).
+  * add  alternateScroll  resource  and corresponding control sequences
+    which  modify  the  scroll-forw  and  scroll-back actions: when the
+    alternate screen is displayed, wheel mouse up/down will send cursor
+    keys (Debian #683942).
+  * improve  rendering  for the case when a Unicode character is absent
+    in  the  bold  font  but  present in the normal font by temporarily
+    falling back to the normal font (Debian #359006, Debian #408666).
+  * provide  configure  option  --enable-double-buffer  and  ifdef's to
+    allow  comparisons  with/without double-buffering. The default uses
+    normal buffering.
+  * add  feature  to  optionally  scroll  current page before clearing,
+    ontrolled  by  resource setting cdXtraScroll (prompted by patch by
+    Richard Wagenblast):
+  * integrated  patches  from  Arch  Linux  forum  posting  (patches by
+    Richard Wagenblast):
+       + modify reallocation limit of line-data when resizing screen so
+         that  "lost"  text  will  be  restored  if the screen is first
+         shrunk and then grown.
+       + modify output to use double-buffering to reduce flicker.
+  * modify  scroll-lock  action  to  handle on/off/toggle keywords like
+    other actions. Previously the optional parameter was interpreted as
+    an integer.
+  * extend  DECSCUSR  to  provide a way to set the cursor to a vertical
+    bar (patch by Paul Bolle).
+  * add  -8,  -c,  -d  and -u options to 88colors2.pl and 256colors2.pl
+    scripts.  No current terminal emulator recognizes C1 controls while
+    handling  UTF-8  encodingâ\200\224see  notes in patch #119 and patch #109
+    regarding  utf8controlsâ\200\224but  the -u and -8 options are useful for
+    demonstrating this point.
+  * improve  speed  when  changing color palettes using OSC controls by
+    deferring repaint while followup controls might be additional color
+    palette changes.
+  * modify  SGR 38 and SGR 48 to accept RGB index, matching the closest
+    entry in xterm's palette.
+  * extend  SGR 38  and  SGR 48  to accept colon as parameter separator
+    (request by Paul LeoNerd Evans).
+  * modify fullscreen action to allow it to toggle the full-screen mode
+    rather  than  only  set  or  unset  it  (prompted  by  Eeri  Kask's
+    suggestion to support _NET_WM_TOGGLE). This implementation does not
+    yet use _NET_WM_TOGGLE.
+  * add      support      for      _NET_WM_STATE_MAXIMIZED_VERT     and
+    _NET_WM_STATE_MAXIMIZED_HORZ  EWMH  properties  (suggested  by Eeri
+    Kask).
+  * make  fullscreen  mode  work  with  the tek4014 window. This change
+    makes  only the currently active window to be changed to fullscreen
+    rather than changing both windows.
+  * modify  TekClear function to discard pending output before clearing
+    the tek4014 display (patch by Kevin Ryde).
+  * fix  deleteIsDEL  feature,  broken in patch #280 changes (report by
+    Mike Thornburg, forwarded by Jeremy Huddleston).
+  * fix   a   special   case   of   wrapping   double-width  characters
+    (report/test-case by Ken Winstein).
+  * add E3 extended capability to xterm-basic to match ncurses 20120728
+    patch.
+  * fix     incorrect     transformation     of    row-parameter    for
+    ClearCurBackground in patch #279 which caused incorrect painting in
+    some scrolling scenarios (report by Chuck Silvers).
+  * fix typo in manpage description of +maximized option (Paul Maier).
+  * change  default  for  configure  option  --with-xpm,  turning it on
+    unless requested otherwise.
+  * add configure option --with-icon-name which can be used to override
+    the default icon used in icon-themes.
+  * extend  activeIcon  resource  to  provide default value which tells
+    xterm  to  determine  the  window  manager's name and automatically
+    enable  the  feature  for  fvwm  and  window  maker.  The  explicit
+    true/false values can be used to override this behavior.
+  * add  "mini" xterm icon, which scales better than the standard xterm
+    icon, e.g., for the gnome/kde "panel" feature.
+  * extend  iconName  resource  to  search  for icon named according to
+    resource value and use that if found. If not found, use compiled-in
+    pixmap. Both set the WM_ICON_NAME property which is used by various
+    window managers, usually for window decoration.
+  * updated  autoconf  patch,  adding  support for --datarootdir, which
+    changes the default location of manpages.
+  * further  improved  autoconf macros for configuring icons, from vile
+    9.8h
+
+-------------------------------------------------------------------
+Mon Aug  6 09:53:04 UTC 2012 - pgajdos@suse.com
+
+- prepare spec file for dropping SuSEconfig.fonts (openFATE#313536)
+
+-------------------------------------------------------------------
+Tue Jul 17 15:13:06 UTC 2012 - pcerny@suse.com
+
+- Patch #281 - 2012/06/26
+  * remove "$(srcdir)/" from install-icon rule to fix builds when
+    --srcdir configuration option is used.
+  * fix for configure script's search for icon file when it is
+    not found in the current directory, e.g., when building out
+    of tree (patch by Thierry Reding).
+  * undo the XK_Home / XK_End change from patch #280 which broke
+    the non-VT220 keyboard for those keys (report by H Merijn
+    Brand).
+- Patch #280 - 2012/06/24
+  * add configure check to work around warning from
+    desktop-file-install for "Encoding", noting that it emits
+    deprecation warnings without providing its version
+    information.
+  * add configure option --with-icon-theme to tell xterm whether
+    to install into an icon theme, defaulting to "hicolor"
+    (Redhat #755206, #799614 and #804279).
+  * change --with-icondir to look for "icons" directory rather
+    than "pixmaps" by default. Add new option --with-pixmapdir to
+    allow these two uses to be installed concurrently.
+  * modify configure options --with-app-defaults and
+    --with-icondir to accept "auto" as value to look for existing
+    directory from well-known locations.
+  * add missing codes for secondary DA response which tell the
+    type of terminal as in the primary DA response.
+  * update primary DA response for VT420 to include user windows
+    and horizontal scrolling.
+  * add modifyKeyboard resource to support keypad-modifier
+    changes per request by Thomas Wolff.
+  * add XK_Home / XK_End to editing-keypad checks
+  * add back-tab key kB to termcap entries to match the terminfo.
+  * update terminfo to match corresponding entries in ncurses,
+    e.g., add XT and adjust sgr string for xterm-bold entry.
+  * add configure options to predefine the most commonly
+    customized resources for terminal-settings, use those to
+    substitute into the manpage the corresponding compiled-in
+    values: altSendsEscape, backarrowKey, backarrowKeyIsErase,
+    deleteIsDEL, metaSendsEscape (Redhat #819588).
+  * change default emulation level to VT420 (discussion with
+    Ailin Nemui).
+  * improve logic for DECSCL; patch 279 partly enforced
+    limitation of this to higher-level emulations. This patch
+    finishes that change.
+  * improve check for base of combining characters, preventing
+    combination when cursor movement has intervened. Mosh's
+    webpage gives two different examples of this, with other
+    causes ascribed to the behavior.
+  * modify IL/DL to set cursor to first column on row for better
+    VT102/VT220 compatibility (prompted by code review of mosh).
+  * separate state-table entries for DECSC/DECRC from the
+    ANSI.SYS save/restore cursor, since the latter conflicts with
+    DECSLRM when DECLRMM is enabled since patch #279
+    (report/analysis by Ailin Nemui).
+  * fixes to avoid using SIGCHLD handler of main program in
+    printer's subprocess (report by Joe Julian).
+  * correct restore-parameter for mouse-modes from patch #279
+    changes.
+  * add null-pointer checks to input-method caching added in
+    patch #277 to fix a problem in the exposure code, when
+    deselecting a window (report by Kriston Rehberg).
+  * unset DESKTOP_STARTUP_ID environment variable to lessen
+    confusion on the part of GTK applications which use the
+    variable without checking it (report by John Little).
+
+-------------------------------------------------------------------
+Tue Jun 26 08:58:16 UTC 2012 - sndirsch@suse.com
+
+- require luit package on openSUSE > 12.1 (post xorg apps split)
+
+-------------------------------------------------------------------
+Sun May 13 00:49:13 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 279
+* add support for VT420/VT520 left/right margins and related
+  origin-mode
+
+-------------------------------------------------------------------
+Sat Feb 18 11:30:58 CET 2012 - meissner@suse.de
+
+- buildrequire libXaw-devel on newer systems
+
+-------------------------------------------------------------------
+Fri Jan 20 12:55:44 UTC 2012 - pcerny@suse.com
+
+- fixed build on SLE9
+
+-------------------------------------------------------------------
+Thu Jan 19 12:31:33 UTC 2012 - pcerny@suse.com
+
+- Patch #278 - 2012/01/18
+  * correct initialization for eightBitMeta resource
+    (FreeBSD #164101).
+  * make special check for Darwin 9 (and lower) to not use
+    posix_openpt (report by Christian Ebert).
+  * minor fixes (adding ".ne" directives) to reduce the cases
+    where groff's utility for generating images for tables dumps
+    core. Most versions of groff (I've found 1.19.2 to be the
+    most stable) dump core when attempting to report that there
+    are too few lines on a page for a table to be shown.
+
+- Patch #277 - 2012/01/07
+  * remove special case for ISC pseudo-terminals which attempts
+    to open the pty in two different ways.
+  * move call to grantpt before asking utempter to add a record,
+    to work with kFreeBSD which does not update the terminal's
+    ownership until this point (Debian #652907).
+  * document limitation of XIM interface in manpage
+    (Debian #230787).
+  * cleanup error reporting with new xtermWarning function.
+  * add configure option --disable-selection-ops to make the new
+    actions optional.
+  * add four new actions for making the selection or data
+    directly copied from the screen (prompted by discussion in
+    Debian #637001, as well as report by Arjen van Tol):
+    o exec-formatted
+    o exec-selectable
+    o insert-formatted
+    o insert-selectable
+  * add visualBellLine resource to allow visualBell to flash only
+    the current line (prompted by patch by Gertjan Halkes).
+  * add eightBitMeta resource to control the features which
+    modify or interpret the eighth bit of a key when the meta
+    modifier key is pressed (prompted by Debian #326200).
+  * improve discussion of eightBitInput in the manpage (prompted
+    by Debian #326200).
+  * correct logic for alt-sends-escape action, overlooked when
+    implementing altSendsEscape resource, which still used
+    eightBitInput resource value.
+  * add a workaround for XAllocColor(), which does not actually
+    allocate "a read-only colormap entry corresponding to the
+    closest RGB value supported by the hardware", but rather
+    a rough approximation (Debian #650291).
+  * undo parameter checks for RequestResize() added in patch #251
+    and amended in patch #270, because zeros also are special
+    cases (report by John S Urban).
+  * modify some test-scripts to use /bin/echo rather than the
+    shell's possibly-builtin echo, to work around broken
+    configuration on Mac OS X, i.e., neither honoring the option
+    nor flagging an error.
+  * add SGR 1006, as a better technical solution than SGR 1015:
+    o the responses will not be confused with line-deletion and
+      scrolling controls.
+    o the button encoding is a little simpler, since it does not
+      add an unnecessary 32 because the integer parameter does
+      not have to be represented as a printable character.
+    o the control responses for pressing and releasing a mouse
+      button differ, allowing an application to tell which button
+      was released.
+  * Besides these improvements, in discussion, it was noted that
+    urxvt's implementation of 1005 is incorrect, relying upon
+    a locale that provides UTF-8 encoding. In contrast, vttest
+    demonstrates a correct decoding, independent of locale.
+  * add support for urxvt SGR 1015 to address shortcoming of
+    SGR 1005 with luit (patch by Egmont Koblinger).
+  * add ISO and DEC controls useful for left/right scrolling.
+  * add some changes for OpenBSD and MirBSD (adapted from patch
+    by Thorsten Glaser):
+    o disable search for non-Unix96 ptys.
+    o fix a gcc warning in timestamp_filename
+    o modify Imakefile to install xterm setgid to utmp.
+  * add/use/prefer posix_openpt() for opening pseudo-terminal.
+  * modify special errno handling case in ptydata.c from
+    patch #158 to allow for the possibility that any platform may
+    have special cases where "/dev/tty" is absent. For example,
+    this can happen in a FreeBSD jail (patch by David Wolfskill).
+  * add keyboard logic to map shift-tab into XK_ISO_Left_Tab,
+    which is usually, not always, done by the X keyboard
+    configuration.
+  * portability fixes for some configure macros: CF_XOPEN_SOURCE
+
+-------------------------------------------------------------------
+Thu Nov 17 10:54:07 UTC 2011 - werner@suse.de
+
+- Use libtinfo if available otherwise libncurses (required due
+  bnc #729226)
+
+-------------------------------------------------------------------
+Wed Oct 19 01:47:15 UTC 2011 - pcerny@suse.com
+
+- Patch #276 - 2011/10/10
+  * modify clipping limits for TrueType fonts to account for the
+    scaleHeight resource setting, to work around another problem
+    due to recent FreeType changes. In this case, the DejaVu Sans
+    Mono set to pixelsize=13.5 is truncated because the font
+    descent is reduced by FreeType to match an incorrect height
+    metric (report by Adam Lee).
+  * improve recovery when bitmap fonts are not installed, e.g.,
+    so that switching font-sizes works for TrueType fonts.
+  * modify lookup for XTERM_SHELL feature to allow relative
+    pathnames.
+  * modify abbreviation disambiguation check for command-line
+    parameters to account for -geometry, whose parameter may
+    begin with "+" or "-" (report by Scott Bertilson).
+
+-------------------------------------------------------------------
+Thu Sep 15 14:20:26 UTC 2011 - pcerny@suse.com
+
+- Patch #275 - 2011/09/11
+  * add ash, zsh to known shells for resize.
+  * modify resize to reuse the logic from xterm which determines
+    the actual logon-user's shell if $SHELL is not set.
+  * revert the unsetenv("SHELL") added in patch #272.
+  * an unsetenv("SHELL") added in patch #272 to help ensure that
+    luit would get the user's shell consistently did not work as
+    expected for cases where multiple names are in the
+    password-file for a given uid. That was because changes in
+    patch #157 to handle this situation did not take into account
+    that repeated calls to getpwnam and getpwuid return a pointer
+    to the same static buffer. Fixed the older logic to work as
+    intended, by ensuring that the passwd-data from each call is
+    stored separately (report by Paul Keusemann).
+  * adjust ifdef's for putenv and unsetenv in case only one of
+    those is provided on a given platform.
+  * correct comparison used in ExposeContains macro from patch
+    #274 changes, to handle window-dragging (patch by Todd
+    Eigenschink).
+
+-------------------------------------------------------------------
+Wed Sep  7 15:52:47 UTC 2011 - pcerny@suse.com
+
+- Patch #274 - 2011/09/05
+  * portability fixes for cygwin: do not define SVR4, and work
+    around nonstandard header location.
+  * ifdef'd use of unsetenv from patch #273 changes to work with
+    Solaris 9 (report by Waldemar Rachwal).
+  * modify logic for XtAppPending to merge adjacent Expose and
+    ConfigureNotify events which are redundant (report by Edward
+    McGuire).
+  * fix an unneeded warning message when -r option is given.
+  * remove a few redundant entries from table used for helping
+    abbreviation-checking of command-line options, makes -geom
+    work again after patch #272 changes as an abbreviation of
+    -geometry.
+  * add scaleHeight resource and command-line option -sh as
+    workaround for some font-configurations broken by changes in
+    FreeType 2.4.6 (report by Miroslav Hodak).
+  * portability fixes for some configure macros: CF_FUNC_TGETENT,
+    CF_XOPEN_SOURCE, CF_X_ATHENA_LIBS.
+  * add configure option --with-freetype-config to improve
+    selection over the plethora of configuration options which
+    freetype has so far provided.
+  * build-fix for configure --enable-load-vt-fonts when
+    --enable-widec is not specified.
+  * build-fixes for suppressing various features, needed after
+    changes in patches 270, 271 and 272 (report by Brian
+    Lindholm)
+
+-------------------------------------------------------------------
+Wed Aug 31 10:13:15 UTC 2011 - pcerny@suse.com
+
+- Patch #273 - 2011/08/25
+  * build-fix for out-of-tree "make docs" rule.
+  * correct a typo in x_strdup, from patch #198 changes.
+  * correct initialization for -e option, broken in patch #272
+    changes (report by Gabriele Balducci).
+  * build-fix for out-of-tree builds to address minstall script
+    changes in patch #272 (patch by Thierry Reding).
+
+- Patch #272 - 2011/08/24
+  * document limitation of Gtk in connection with xterm's -into
+    option, in the manpage (Ubuntu #806969).
+  * improve -into by checking for and using the size of the window
+    within which xterm is embedded, overriding other clues.
+  * modify logic for localeFilter resource to allow that to
+    include command-line options of luit.
+  * improve -into by checking for invalid window-id, and allowing
+    hexadecimal/decimal/octal values.
+  * improve keepSelection, adding the case where the highlighting
+    is cleared, overlooked in patch #230 (patch by Marco
+    Peereboom).
+  * improve command-line parsing to make abbreviate options work
+    consistently across xterm-specific versus standard X toolkit
+    options, and report cases where an abbreviated option happens
+    to be ambiguous. In particular, -d now works as an
+    abbreviation for -display.
+  * fix regression in command-line parsing introduced in patch
+    #271 changes for Debian #629358, (Debian #637910).
+  * split-out new termcap/terminfo building block xterm+kbs for
+    configurability.
+  * modify terminfo file to reflect changes in ncurses for
+    xterm-16color and xterm-256color.
+  * modify minstall.sh, etc., to reflect the default default
+    class, $TERM and decTerminalID values.
+  * reword resize manpage to reflect the fact that $TERMCAP is not
+    set on all systems (patch by Alan Coopersmith).
+  * work around combined Xaw6/Xaw7 package in DragonFlyBSD which
+    omits the usual symbolic link to the preferred library name.
+  * further improve build-fix for termcap systems by checking for
+    some which are only partial implementations, e.g., termcap
+    2.08 in CentOS 5.2
+
+-------------------------------------------------------------------
+Wed Jul 27 12:11:45 UTC 2011 - pcerny@novell.com
+
+- Patch #271 - 2011/07/14
+  * omit permissions adjustments to pty on exit except for
+    pre-Unix98 ptys, since modern implementations handle this
+    (report by Sean C Farley).
+  * modify logic for switching fonts between UTF-8 and non-UTF-8
+  * encoding to not merge the derivable bold-, wide- and widebold
+  * values from the VT100 fonts. Also suppress warning when not
+  * using UTF-8 fonts if wide- and widebold-fonts cannot be
+  * derived or otherwise loaded (report by Werner Scheinast).
+  * modify menu-creation to suppress entries which will never be
+    used in the current configuration, rather than simply disabling
+    them.
+  * add resource printModeImmediate and menu item to allow print
+    of screen plus saved lines to a file.
+  * add menu item to allow runtime enable/disable of the
+    printFileOnXError feature.
+  * append a timestamp to filename used in printFileOnXError
+    feature, and restrict its permissions (request by Vincent
+    Lefevre).
+  * add a check when cancelling cursor-blinking, in case the
+    cursor is blinked off. Fix so that the cursor is repainted
+    without waiting for other events, e.g., keypress (report by
+    Ailin Nemui).
+  * add configure --with-app-class option, to simplify building
+    "xterm-dev" packages with filenames that do not conflict with
+    conventional "xterm" packages.
+  * corrected logic flow for DECSCL, which prevented the updated
+    operating level from being reported via DECRQSS (report by
+    Ailin Nemui).
+  * corrected default for brokenStringTerm resource to match
+    manpage.
+  * add vttests/dynamic.pl
+  * add runtime check for locale not supported by X libraries, and
+    fallback to XA_STRING in this case (request by Bryan
+    Henderson).
+  * fix a special case in configure script after no FreeType
+    libraries are found. The script was proceeding to check for a
+    usable configuration.
+  * add xterm+tmux building block to terminfo (adapted from
+    changes proposed by Ailin Nemui and Nicholas Marriott).
+  * improve discussion of faceName resource in manpage (adapted
+    from suggestions by Jens Schweikhardt).
+  * correct mapping of shifted up/down cursor-keys in termcap
+    function-keys mode, i.e., resource tcapFunctionKeys (patch by
+    Gertjan Halkes).
+  * update AIX case in CF_XOPEN_SOURCE configure macro to add
+    release 7.x.
+  * modify ifdef's in xterm_io.h for __hpux to force that to use
+    the hacked SYSV support in that file. This fixes a problem
+    with a non-blocking socket call (patch by Paul Lampert).
+  * improve filtering of desktop category scanning, to exclude
+    XFCE.
+  * modify configure script to work with systems that have both
+    ncurses (or other terminfo) as well as a real termcap library,
+    e.g., Slackware (report by Alan Watts).
+  * modify configure script to work around special case where
+    user's environment adds compiler flags to the CC variable
+    (prompted by report by Paul Lampert).
+  * amend change for Debian #110226 so that "-h" or "-v" options
+    cause an exit, rather than simply printing to stdout while the
+    window is displayed (Debian #629358).
+  * add response for DECRQSS which gives the setting for DECSCUSR.
+  * modify AllocateTermColor() to handle XtDefaultForeground and
+    XtDefaultBackground, which are not recognized by XParseColor.
+    For example, this fixes the use of OSC 112 when no explicit
+    cursor color was set (report by Ailin Nemui).
+  * handle special-case of KeyPress translated to popup-menu
+    action (Ubuntu #756273).
+
+-------------------------------------------------------------------
+Tue Jul 12 13:00:23 UTC 2011 - pcerny@novell.com
+
+- Patch #270 - 2011/04/26
+  * build-fix, e.g., for using imake on platforms which use the
+    termcap library.
+  * modify utf8 resource to accept a name.
+  * mention default for fontWarnings in manpage (report by Werner
+    Scheinast).
+  * split "UTF-8" menu entry into "UTF-8 Encoding" and "UTF-8
+    Fonts".
+  * gray-out font-menu entries when a font fails to load, e.g., a
+    bitmap font is not installed.
+  * improve behavior when there is no app-defaults file:
+    o set the toolBar resource to false
+    o gray-out the font menu entries where no resource is found.
+  * add configure option --with-desktop-category to allow
+    customization of the ".desktop" files.
+  * build-fix for the install-desktop makefile-rule, when the
+    source/build directories differ (patch by Loïc Minier).
+  * add menu entry and corresponding resource which can be used to
+    suppress all bold-fonts (discussion with Jan Engelhardt).
+  * make internal line-size value consistent with allocated sizes
+    of character and related arrays to ensure that bulk copying of
+    line data, e.g., in scrolling, accounts for the padding used
+    for pointer alignment (adapted from patch by Rajesh
+    Mandalemula, also reported by Ali Bahar).
+  * widen ifdef for screen-resizing logic from patch #176 changes
+    to send SIGWINCH to process group to include any system
+    supporting ioctl(*,TIOCGPGRP,*) (prompted by linux-specific
+    patch in OpenSUSE rpm package).
+  * add printModeOnXError and printFileOnXError resources, which
+    allow the user to specify that xterm will write the contents
+    of its screen to a file if it is exiting due to an X error
+    (Debian #280457).
+  * restore logic that made reverse-video apply to the scrollbar's
+    foreground/background, broken in patch #158 (report by Bryan
+    Ischo).
+  * amend some of the window operations parameter-checks added in
+    patch #251 for the push/pop title feature, to allow the
+    parameters used for window resizing to be -1's, which makes
+    the corresponding values ignored rather than using the
+    window's maximum width/height (report by Noah Friedman).
+  * correct order of initialization for translations vs fullscreen
+    resources to enable a special case which omits the Alt-Enter
+    translation when fullscreen is disabled (Debian #612978).
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Thu Mar  3 11:31:32 UTC 2011 - pcerny@novell.com
+
+- Patch #269 - 2011/02/19
+  * build-fixes for imake (report by Heiko Berges).
+  * modify autoconf macro CF_PKG_CONFIG to work with cross-compile
+    environments (patch by Thierry Reding).
+  * modify MapToColorMode() to favor bold over underline, matching
+    the precedence used before patch #252 (report/analysis by
+    Nicolas George).
+  * add omitTranslation resource, which can be used to suppress
+    the default translations for these features:
+    o fullscreen
+    o scroll-lock
+    o shift-fonts
+    o wheel-mouse
+  * make the fullscreen feature configurable (Debian #612978)
+    o add it to the configurable list disallowedWindowOps.
+    o add command-line option -fullscreen to allow the feature to
+      be enabled at startup.
+    o add resource fullscreen to control whether the feature is
+      active or may be enabled.
+  * modify probe_netwm_fullscreen_capability for 64-bit machines.
+    Contrary to XGetWindowProperty manpage, that function returns
+    32-bit data packed as long's.
+  * eliminate copy of name resource, which was otherwise used only
+    to give the terminal-description name for the tcap-query
+    feature. Use the actual $TERM value instead, as derived from
+    termName resource, etc.
+  * eliminate an old inconsistency with error messages, some used
+    the -name option, while others used argv[0]. The latter is now
+    used consistently.
+  * improve configure check for rpath-hack, to improve builds on
+    systems where gcc will not search /usr/local/lib, etc.
+  * build-fix for Xaw3d configuration (report by H Merijn Brand).
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Wed Feb 16 18:30:45 UTC 2011 - pcerny@novell.com
+
+- Patch #268 - 2011/02/10
+  * fix an inconsistency of the "Enable Reverse Video" checkbox in the VT
+    Options menu. This also removes a special case added in patch #217 which
+    limited the effect of the reverseVideo resource (Debian #603808).
+  * amend decoding of misformed UTF-8 sequences to avoid absorbing valid
+    characters as documented in Unicode 6.0 section 3.9 (report by Keith
+    Winstein).
+  * do not set urgency hint when window already has focus (patch by Dimitrios
+    Christidis).
+  * amend extended mouse-coordinate mode from patch #262 changes to include the
+    Cb button-code, which also may be greater than 127 (report by Ailin Nemui).
+  * ensure that underline-cursor is visible when an application happens to set
+    the background color (report by Christian Weisgerber).
+  * add feature for full-screen toggling using either Alt-Enter or a menu
+    selection (integrated patch by Dave Simmons).
+  * add missing logic to handle reallocation of FIFO index for the "UTF-8" menu
+    entry (report by David Holland, NetBSD #44344).
+  * add makefile rules docs-ctlseqs, docs-xterm, etc.
+  * correct typo in description of DECRPM in control sequences document (report
+    by Ailin Nemui).
+
+- Patch #267 - 2010/11/20
+  * minor formatting changes to ctlseqs.ms to simplify a script which extracts
+    the feature information. See the results in Comparing versions, by counting
+    controls in the xterm FAQ.
+  * add docs-clean makefile rule.
+  * add copy-selection action (request by Timo Juhani Lindfors, Debian #588785).
+  * trim leading/trailing blanks from string used for "Selection" font-menu
+    data.
+  * trim leading/trailing blanks from color resource values.
+  * configure script improvements:
+    o add workaround for removal of X11 dependency from Xt's package file
+      (report by Robert Hooker).
+    o add workaround for removal of fontconfig dependency from Xft's package
+      file (report by Jeremy Huddleston).
+    o add workaround for removal of Xmu dependency from Xaw's package file
+      (report by Jeremy Huddleston).
+    o improve workaround in CF_X_TOOLKIT macro, checking for other possible
+      packages where Xt's dependencies may be given.
+    o prefer ${name:=value} to ${name-value}, since recent bash changes break
+      legacy support for that feature.
+
+- Patch #266 - 2010/10/24
+  * add rpm and dpkg scripts, for testing.
+  * more fixes for Debian #600707 (report by Cyril Brulebois).
+
+- Patch #265 - 2010/10/22
+  * fix a regression in fontname logic from patch #263 changes (Debian #600707,
+    reported by Vincent Lefevre).
+  * revert modification of any-event/any-button protocol from patch #263
+    changes. It interferes with selection using a shifted mouse button (reports
+    by Neil Bird, Bram Moolenaar).
+
+-------------------------------------------------------------------
+Fri Oct 15 17:37:48 CEST 2010 - meissner@suse.de
+
+- Patch #264 - 2010/10/14
+  * replace a null-pointer check with check for empty string in
+    xtermOpenFont, to eliminate a warning message from patch #263 changes.
+  * build-fix for patch #263 when toolbar is not configured (patch by
+    Chris Clayton) (reports by Robby Workman, David Wood).
+
+- Patch #263 - 2010/10/13
+  * corrected initialization of "misc" resource values, to ensure that
+    xterm has allocated a copy of strings which may not have been malloc'd
+    by the X library (Debian #600129).
+  * modify handling of any-event/any-button mouse protocol; it now is
+    active with any combination of key-modifiers.
+  * add debugging feature showWrapMarks, which marks lines which xterm
+    knows are wrapped, showing where a double-click will select past the
+    end of a line.
+  * build-fix to address change in include-guards for Xlib.h in ongoing
+    Xorg edits (patch by Jeremy Huddleston).
+  * improve pointerMode by continuing to watch for motion events after
+    mouse tracking is disabled if the pointer is hidden (Debian #594856).
+  * further extend initialization for active-icon font to check if the
+    font was not loaded succesfully, to retry with font1, or as even
+    (if TrueType fonts are used) to use a TrueType font. The retries
+    are to help with cases as in patch #241 where the bitmap fonts are
+    not available.
+  * fix special case of active-icon used when TrueType font is specified
+    for the xterm window, from patch #261 change. In that case, the
+    default font's size was used for layout of the active icon's window
+    (Debian #591265).
+
+- Patch #262 - 2010/8/30
+  * fix a case where changing the cursor color via escape sequences did
+    not immediately update the screen (report by Andreas Wagner).
+  * implement ANSI and DEC request-mode control sequences. The latter
+    includes the xterm-specific private modes such as the mouse mode. The
+    feature is ifdef'd with the rectangle operations since its decoding
+    overlaps that feature.
+  * correct typo in ctlseqs.ms for response of OSC 21 (patch by Kevin Schoedel).
+  * improve discussion of mouse tracking in ctlseqs.ms
+  * increase an array limit used in reporting mouse events (report by Ryan Johnson).
+  * add extended mouse-coordinates mode, allowing up to 2015x2015 windows,
+    using UTF-8 encoding (patch by Ryan Johnson).
+  * modify manpage hyphens to conform with Debian.
+
+- Patch #261 - 2010/6/28
+  * fix regression in renderFont logic, from patch #260 changes (report
+    by Joseph Quinsey).
+
+- Patch #260 - 2010/6/20
+  * modify plink.sh to work around problem linking to recent PCRE libraries.
+  * extend renderFont resource to allow deferred switch to TrueType
+    fonts without affecting existing resource settings (Debian #585620).
+  * modify configure macro CF_X_TOOLKIT to work around omission of ICE
+    library from ".pc" file (report by Miroslav Lichvar).
+  * change configure script default for --enable-broken-st i.e., the
+    brokenStringTerm feature) to normally enable it. If the corresponding
+    resource is enabled, this feature eliminates an apparent freeze of
+    xterm when sending mis-encoded data to the screen (Debian #584801).
+  * document in manpage some actions which were overlooked:
+    o readline-button
+    o scroll-lock
+    o set-8-bit-control
+  * undo a change to limit-check in ScrnRefresh in patch #257, which
+    broke fastScroll feature (Debian #584841).
+  * modify handling of brokenLinuxOSC and brokenStringTerm to also sound
+    the bell.
+  * add control/D and control/Q to controls which will cause early exit
+    from control string per brokenStringTerm resource.
+  * improve documentation of brokenStringTerm resource in manpage.
+
+- Patch #259 - 2010/6/5
+  * modify configure check for luit to include new aliases for the program
+    (xterm-filter and bluit).
+  * add workaround in xtermClearLEDs() to account for Xkb's override,
+    making vttest's LED demo reset the scroll lock.
+  * filter out client-message events when deciding whether to hide cursor,
+    e.g., when using SCIM (patch/report by anonymous user).
+  * improve description of -bd option in manpage (report by Guy Daniel Clotilde).
+  * modify configure checks for PCRE and other libraries to use pkg-config, if available.
+  * amend change from patch #252, to take veryColorColors resource into
+    account when checking colorBDMode resource for TrueType fonts (report
+    by anonymous user).
+  * add vttests/query-fonts.pl script for demonstrating the OSC 50 font query.
+  * improve manpage discussion of Scroll Lock feature.
+  * improve configure macros CF_GCC_VERSION and CF_GCC_WARNINGS.
+  * fix warnings for "clang --analyze".
+  * change default for allowScrollLock resource to false, noting that
+    the supposedly unused key has been useful for various rebindings
+    (Debian #580946).
+
+- Patch #258 - 2010/5/1
+  * add pointer-checks in ScrnRefresh to fix a case in rapid scrolling
+    where an empty record is fetched from the scrollback FIFO.
+
+- Patch #257 - 2010/4/22
+  * correct ctlseqs.ms description of OSC 17 and OSC 19 (patch by Emanuele Giaquinta).
+  * corrected logic for menuLocale resource; the setlocale function
+    returns the original locale only when querying.
+  * improve filtering of translations resource, narrowing the scope of
+    the alwaysUseMods to address only the translations that would cause
+    a key to be sent to the host (report by Andrew Gaylard).
+  * change default value of menuLocale resource to "C", to work around
+    longstanding Xorg bug.
+  * modify handling of scrollKey feature to ignore XON/XOFF keys.
+  * implement scroll-lock feature.
+  * revise memory allocation in UTF8toLatin1() to fix an out-of-bounds
+    index (Mandriva #54531).
+  * compute value for first wide-character rather than assuming it is
+    256, fixes problem with -cjk_width introduced in patches 242 and 249
+    (report by Thomas Wolff).
+  * improve configure script:
+    o corrected check for _XOPEN_SOURCE for OpenSolaris.
+    o when possible, add rpath option for libraries in unusual places
+    o add configure option --disable-rpath-hack to control whether the rpath option can be added.
+  * modify AllocateTermColor() to separate initialization from control
+    sequences, fixing problem from patch #254 changes where enabling
+    allowSendEvents resource prevents setting cursor color on command-line
+    (Debian #572928).
+  * amend logic from patch #185 to not reallocate cell-array if processing
+    ESC % G to switch from UTF-8 if already in ISO-8859-1 character set
+    (report by Michael Koehne).
+  * fix to avoid calling XmuInternStrings() with zero count (report by Johan Bockgård).
+  * fix build when --disable-ansi-color configure option is used.
+  * fix build when neither OPT_TCAP_QUERY or OPT_TCAP_FKEYS is defined
+    (patch by Matthieu Herrb)
+
+- Patch #256 - 2010/3/6
+  * add TerminalEmulator to desktop category files.
+  * modify sinstall.sh to ignore the "." appended to permissions by selinux.
+  * change app-defaults organization, installing UXTerm-color and
+    KOI8XTerm-color for consistent behavior regarding customization: color
+    (prompted by discussion in Ubuntu #421261).
+  * fix typo in minstall.sh from patch #255 changes, and add case for
+    /var/run needed for full path of utmp (report by Julien Cristau).
+  * minor fix to xterm manpage, remove a comment stating that margin bell
+    can be changed via the VT Options menu. That was replaced in patch #225
+  * add a "docs" rule to makefile.
+  * fix initialization of Atom used for XkbBell feature from patch 243
+    changes. Unlike the other calls to XInternAtom(), in this case the
+    flag telling X to create the Atom was unset (patch by Chris Adams).
+
+-------------------------------------------------------------------
+Thu Sep  9 18:44:03 UTC 2010 - aj@suse.de
+
+- BuildRequire utempter-devel
+
+-------------------------------------------------------------------
+Sat Feb 13 11:15:30 CET 2010 - jslaby@suse.de
+
+- Patch #255 - 2010/1/21
+    * rename install.sh to install-sh in case suffix-rules might interfere.
+    * extend range for convertToUTF8 function to full 31-bits, to use with
+      printing, etc.
+    * improve manpage by checking for actual locations of utmp/wtmp files
+      (Debian #562640).
+    * modify configure macro CF_XOPEN_SOURCE to remove -D's before adding the
+      same name rather than relying on -U's, to reduce redefinition warnings
+      for some platforms that have conflicting definitions in headers.
+    * correct logic used to switch to alternate screen using FIFO-lines
+      configuration (Debian #565772).
+    * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Fri Jan 15 17:13:30 CET 2010 - meissner@suse.de
+
+- Patch #254 - 2010/1/6
+    * add a configure-check to eliminate install-ti rule from Makefile
+      when the system has no tic (terminfo compiler) program. This lets
+      one use the install-full rule more consistently.
+    * amend change to WriteText() function in patch #252 to take into
+      account the colorAttrMode resource (report by Krzysztof Kotlenga).
+    * document titleModes resource in manpage, added in patch #252.
+    * modify tcap-query table entries for shifted up/down cursor keys
+      to match ncurses convention.
+    * improve lookup of termcap-query data, allowing for duplicate
+      keycodes versus missing entries.
+    * add control sequence which can be used to modify the terminal data
+      used for the termcap-keyboard.
+    * improve portability of tcap-query feature, using terminfo functions
+      in preference to termcap on systems having terminfo.
+    * improve font-setting/querying control (OSC 50):
+          o when TrueType font is selected, the TrueType faceName will
+            be set, rather than the bitmap font.
+          o when TrueType font is selected, querying returns the name
+            of the TrueType font.
+          o querying a font recognizes the relative-font convention that
+            setting a font could use.
+    * add menu-entry for allowColorOps.
+    * add new resources for fine-tuning menu entries: allowColorOps,
+      disallowedColorOps, disallowedFontOps and disallowedTcapOps.
+    * correct logic for disabling the "TrueType Fonts" menu item; it
+      was not ensuring that the faceName resource value was non-empty.
+    * implement VT520-style controls DECSMBV and DECSWBV for setting
+      the margin- and warning-bell volume.
+    * fix a minor error from patch #243 which made the zIconBeep feature
+      use a minor-error tone rather than an informational tone.
+    * add a null-pointer check for the case where renderFont resource is
+      true, but faceName resource is unset, used in logic to strip "xft:"
+      prefix from patch #251 changes (patch by Michael Riepe).
+    * add special case to configure CF_XOPEN_SOURCE macro to use
+      extensions on Darwin (patch by Dennis Preiser).
+    * improve configure checks for regular expressions header and library
+    * update config.guess, config.sub
+
+- Patch #253 - 2009/12/10
+    * add a null-pointer check in getPrinterFlags() per changes in patch #252.
+    * add a null-pointer check, needed in UTF-8 mode for Xft fonts after
+      changes in patch #252 (patch by Alan Coopersmith).
+    * correct size when clearing struct for tek4014 (patch by Jochen Voss).
+    * parenthesize expression in MoreRows macro, fixing a limit check
+      added in patch #251 (Debian #560039).
+
+- Patch #252 - 2009/12/7
+    * modify title-querying logic to support retrieval of titles encoded using UTF-8.
+    * add new "title-modes" control sequence for controlling whether
+      window/icon titles can be set or queried using UTF-8, optionally
+      encoded in a hexadecimal string.
+    * use mkdir -p rather than mkdirs.sh (prompted by discussion of mawk
+      by Aleksey Cheusov).
+    * add appropriate copyright/license notices to the bulk of files
+      lacking same, and modify to use identical terms in others which used
+      different wording. The main exceptions are the files contributed
+      by Markus Kuhn, who appears to prefer public domain distribution,
+      noting that I have modified/improved several of these without
+      changing the terms of distribution (request by Jari Aalto).
+    * add control sequences for resetting the "dynamic" colors to their
+      default values.
+    * add control sequences for resetting the "special" colors to their
+      default values.
+    * add control sequences for setting the "special" colors such as
+      colorBD (bold).
+    * add overlooked case for setting highlight foreground color with
+      the dynamic-colors control.
+    * add OSC 104, for resetting ANSI/16/88/256 colors to default.
+    * reset ANSI/16/88/256 colors to default in soft/hard reset functions.
+    * strip "xft:" prefix from faceName and faceNameDoublesize resource values,
+    * add DECSCUSR (discussion with Andy Koppe).
+    * add check/warning on failure to load font, to see if the name looks
+      like an Xft pattern rather than XLFD. This can happen if someone
+      happens to modify their X resource settings for programs that read
+      data from xterm's namespace.
+    * modify handling of print and print-everything actions to allow
+      the various printer flags to be overridden by supplying parameters.
+    * add resource printerNewLine (request by Ovidiu Gheorghioiu).
+    * minor cleanup, finish using TScreenOf() and TekScreenOf() macros introduced in patch #224.
+    * improve checks in ShowCursor/HideCursor to get the background color,
+      particularly when highlightReverse resource is used (reports by
+      Jan Engelhardt, Christian Weisgerber).
+    * correct checkVeryBoldAttr to omit comparison of foreground color
+      to special color values used for color<XX> resources (report by
+      Jan Engelhardt).
+    * make colorBDMode and colorULMode resources work with TrueType
+      configuration (report by Jan Engelhardt).
+
+- Patch #251 - 2009/11/11
+    * add window-ops controls to push/pop icon and/or window labels on a stack.
+    * minor fixes to align termcap file with terminfo.
+    * add resource disallowedWindowOps, to allow fine-tuning of features
+      to suppress with the allowWindowOps resource (prompted by discussion
+      with Bram Moolenaar).
+    * add makefile rules for resize-manpage to pdf, etc.
+    * further improve limit-checks in select/paste (Mandriva #54531).
+
+- Patch #250 - 2009/10/13
+    * add check and error-message for fonts that have no printable values
+      in the ISO-8859-1 range (Debian #542434).
+    * some compiler-warning cleanup, in particular workaround for
+      defective implementation of gcc's attribute warn_unused_result
+      (report by Bram Moolenaar).
+    * improve estimate of single-column width for packed TrueType fonts
+      by ignoring extents for codes 127 and 159.
+    * improve line-drawing for TrueType fonts which happen to have defined
+      glyphs which are not line-drawing in 0..31 by assuming they're not,
+      and just checking the existence of the Unicode codepoints. This
+      makes it more likely that the user can override a misconfigured
+      font using the "Line-Drawing Characters" menu entry.
+    * limit minimum cell-width for packed font to maximum-advance reported
+      by Xft. Some fonts are wider than that, even in the Latin-1 range
+      (Debian #550497).
+    * add list of direct-contributors in "THANKS" file.
+    * stylistic changes to this file to help scripted extraction of list
+      of contributors.
+    * correct off-by-one in okPosition fix from patch #249 limit-checks
+      which prevented double-click selection on the bottom line of the
+      screen (reports by Rajeev V. Pillai, Debian #550368).
+    * add -q option to vttest/256colors2.pl and vttest/88colors2.pl to
+      demonstrate bulk initialization of color palette.
+    * improve the workaround from patch #188 by enabling resources for
+      the 88-color model.
+    * document in xterm manpage the limited availability of resources
+      color16 to color255 as noted in patch #188 (Ubuntu #438850).
+
+- Patch #249 - 2009/10/1
+    * change default for allowWindowOps resource to false.
+    * add limit-checks for result of visual_width() function, needed
+      from patch #242 and exposed by #244 changes (Debian #548321).
+    * improve limit-checks in select/paste.
+    * fix a remaining bug from patch #230 changes for displaying
+      multi-column characters in a proportional font (report by Chris
+      Jones).
+    * add new resource forcePackedFont and menu entry "Packed Font" to
+      control whether to use the font's minimum (default) or maximum width
+      when those differ. The workaround which xterm uses to accommodate
+      proportional fonts is not necessary with certain fonts such as
+      unifont which happen to store a mixture of multicolumn glyphs
+      (report by Chris Jones).
+    * fix an (old) bug which did not restart the timer for blinking
+      text if the only blinking text was temporarily scrolled out of view,
+      e.g., using the scrollbar.
+    * fix an (old) flaw in the delete-line operation where the text
+      which is scrolled into view while the display is scrolled up was
+      not repainted.
+    * improve delete-line and insert-line operations, retaining selection
+      when the selection does not intersect the deleted/inserted lines.
+    * fix an (old) off-by-one error when an application cleared above
+      the cursor position while the display was scrolled up, that would
+      leave an extra line of text uncleared.
+    * fix a similar problem where the double-size attribute would not
+      be reset when clearing the screen while the display was scrolled up.
+    * fix an indexing error which would occur if an application cleared
+      a line while the display was scrolled up and was also in UTF-8 mode
+      (Redhat #524503). The error was from patch #228 but more visible
+      after changes from patch #244.
+
+- Patch #248 - 2009/9/11
+    * fix an overlooked adjustment for selecting double-width characters
+      in the narrow-character configuration.
+    * eliminate uses of XTERM_CELL and XTERM_CELLC where an appropriate
+      LineData pointer is available.
+    * correct expression in okScrnRow macro, making selections give the
+      length of lines below the visible screen (report by Stuart Henderson).
+    * correct logic used to improve performance of missing-glyph check,
+      which did not handle line-drawing characters (Debian #545220).
+
+- Patch #247 - 2009/8/30
+    * add ifdef's and check for openpty() on DragonFly (patch by Alex
+      Hornung).
+    * correct calculation for size of line's data block, which was
+      sometimes off-by-one when configured using --enable-16bit-chars
+      (report by H Merijn Brand).
+    * fix indexing error in print-everything feature from patch #246
+      (patch by Ovidiu Gheorghioiu).
+
+- Patch #246 - 2009/8/16
+    * remove obsolete logic for saving/restoring wrapping flags, which did
+      not work on 64-bit platform. Wrapping flags (stored in the
+      line-index) are now copied with line-data (Debian #541160).
+    * modify comments in app-defaults files to avoid problem with C
+      preprocessor used by xrdb (Debian #541603).
+    * restore special case in makeColorPair, needed for colorBDMode
+      resource (Debian #541089).
+    * correct SetLineFlags() macro, broken in patch #244 when recoding
+      to avoid gcc-specific bitfields (Debian #541236).
+    * modify initialization of screen buffers to ensure that pointers
+      align to int-boundaries. This fixes a problem introduced in patch
+      #244 where the color- and character-arrays (stored after the
+      video-attributes in each row) might be misaligned (report by Rajeev
+      V Pillai).
+    * add limit-check in ScrnRefresh for handling saved-lines from the
+      circular buffer which are repainted on a screen whose width has
+      increased. To improve performance, circular buffer entries are
+      not resized (report by Rajeev V Pillai).
+    * correct type for CellColor (a late change in patch #244 to avoid
+      gcc-specifc enums made that unsigned rather than unsigned short,
+      for the 256-color option).
+    * fix typo in configure option --enable-16bit-chars (report by Rajeev
+      V. Pillai).
+
+- Patch #245 - 2009/8/12
+    * correct a special case in saving FIFO-lines from patch #244. If
+      the screen was shrunk, xterm used the wrong amount for copying to
+      FIFO-lines, and then used this amount to adjust the current row
+      on the screen. That was both a visible defect (Debian #541109)
+      as well as a potential addressing error (Debian #541132, #541160,
+      and #541236).
+    * add clarification in xterm manual about the various allowXXXOps
+      resources, which are disabled when the allowSendEvents resource
+      is active (patch by Julien Cristau, Debian #531597).
+
+- Patch #244 - 2009/8/9
+    * refactored storage of saved-lines, providing a configure
+      option to manage them as a FIFO (actually a circular buffer),
+      improving performance. Added configure option --enable-fifo-lines
+      to enable/disable the new feature (it is enabled by default).
+    * added fastScroll resource, to amuse people who measure terminal
+      emulator performance by cat'ing large files to the screen.
+    * modify check in readPtyData from return values to provide exit
+      on zero-bytes read from pty for FreeBSD, or eliminate high-CPU
+      in "xterm-hold" processing (discussion with Ulrich Spoerlein,
+      FreeBSD ports/136686). The check was originally modified to combine
+      negative/zero values in XFree86-3.1.2E, 1996/05/06.
+    * add configure option --enable-16bit-chars to provide wide-characters
+      with 1account whether they are double-width (report by Guilbert
+      Stabilo on comp.unix.shell).
+    * add capability for keypad-center (kb2/KA2) to termcap entry
+      for xterm-new, as well as xterm-8bit, xterm-sun and xterm-vt220
+      (FreeBSD conf/136336).
+    * change default for keepSelection resource to true (prompted by
+      discussion with David Muir Sharnoff).
+    * remove a limit-check in ptydata.c, allowing Unicode values past
+      64k to be displayed using TrueType fonts (Debian #458432).
+    * remove a vt52-specific ifdef to allow mapping F1-F4 to PF1-PF4
+      when vt52 support is not compiled (report by Olaf 'Rhialto' Seibert).
+    * save/restore line-wrapping flags when converting from ISO-8859-1
+      encoding to UTF-8 encoding, as well as when resizing screen.
+    * remove extra adjustment of position in fix for Debian #418324.
+    * modify default check for mkWidth resource to check for line-drawing
+      characters, which are categorized as double-width in Solaris 10
+      (report by Sebastian Kayser).
+    * add "print-everything" action (patch by Ovidiu Gheorghioiu).
+    * start refactoring scrollback data using new getLineData() function.
+    * demote recent change to Debian #252873 fix to experimental,
+      ifdef'd out as EXP_BOGUS_FG (Debian #522141).
+    * work around groff mapping of ASCII quotes using macros (requested
+      by Reuben Thomas based on Colin Watson advice, fixes Debian #378700).
+    * correct symbol used for default of allowWindowOps which was
+      DEF_ALLOW_FONT rather than DEF_ALLOW_WINDOW (report by Matthieu
+      Herrb).
+    * amend fix for tek4014 from patch #243 to make it only apply to
+    the Tek Options menu.
+
+Patch #243 - 2009/3/28
+
+    * revert change to default for allowTcapOps (request by Bram Moolenaar).
+    * reallocate result returned by xtermEnvLocale() to avoid reference
+      to freed memory after handling menuLocale resource.
+    * fix an old (X11R5) bug in tek4014 for switching fontsizes.
+    * add resource defaultString to make configurable the use of "#"
+      when pastes of UTF-8 text fail due to limitations in the current
+      locale settings.
+    * make the set of selection target Atom's configurable by two new
+      resources eightBitSelectTypes and utf8SelectTypes, e.g., to use the
+      TEXT Atom in preference to UTF8_STRING (discussion with Stanislav
+      Sedov regarding koi8rxterm and the FreeBSD port).
+    * modify handling of TARGETS Atom by making it return exactly the
+      set of targets as those which xterm is currently providing.
+    * set MANPAGER and PAGER explicitly to /bin/cat in minstall.sh
+      to work around /etc/man.conf's with those variables already set
+      (report by Марьясин Семён).
+    * improve error-checking of tcap-query parser.
+    * add check for keyboard tcap), which ensures that terminal
+      descriptions containing the same string for shifted/unshifted keys
+      will be seen by tcap-query as only the unshifted key. (This would
+      only happen with an incorrect terminal description).
+    * fix conversion for input event-state to modifier-parameter which
+      made tcap-query feature not work with tcapFunctionKeys (keyboard
+      type tcap).
+    * add "DEF_ALLOW_XXX" definitions to main.h to allow overriding the
+      default compiled-in values for "allowxxx" resources.
+    * remove check on bell-percentage added in patch #242, which
+      disallowed zero/negative values (Redhat Bugzilla #487829).
+
+- Updated vttest to 20091231 snapshot.
+
+-------------------------------------------------------------------
+Wed Dec 16 00:18:56 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Apr  7 11:13:29 CEST 2009 - coolo@suse.de
+
+- refresh patches to avoid fuzz
+
+-------------------------------------------------------------------
+Mon Feb 16 11:48:01 CET 2009 - meissner@suse.de
+
+- updated to release xterm-242
+  * fix  configure  check for XkbBell and provide appropriate parameter
+    for it.
+  * fix  a  caching problem with double-size fonts versus reverse video
+    that could cause core dump.
+  * repair double-size fonts from workaround used in [246]patch #240.
+  * add new section to the VT Fonts menu which allows enabling or
+    disabling the font, termcap (tcap-query), title and window operations.
+  * add  fontWarnings  resource, to control whether to show warnings on
+    failure to load a font.
+  * improve warnings for unloadable fonts introduced in [247]patch #240
+    by limiting those to the cases where a font would be specified
+    directly by a resource setting rather than a derived fontname.
+  * further amend fix for Debian #252873 from [248]patch #197 to treat
+    a blank cell which does not have both foreground and background
+    colored as a non-colored cell. This improves a special case where
+    the cursor is on a blank cell which had foreground color scrolled
+    in (report by Miroslav Lichvar).
+    Also add the same logic when hiding cursor, so the outline matches
+    the in-focus cursor.
+  * modify internals to reduce places PAIRED_CHARS() is used, making
+    WriteText() and ScrnWriteText() accept IChar array, as well as
+    providing a wrapper for drawXtermText().
+  * change default XIM font from "*" to "fixed" to improve startup time
+    in zh_CN.UTF-8 locale (Mike Fabian, bnc#464930).
+
+-------------------------------------------------------------------
+Tue Feb  3 17:48:09 CET 2009 - meissner@suse.de
+
+- updated to release xterm-241
+  * improve checks for missing bitmap fonts, fallback to "fixed" as
+    needed to work around broken font-packages (report by Jacek Luczak).
+  * fix breakage from patch #240 changes for xtermAddInput() (patches
+    by Jeff Chua, Julien Cristau).
+
+- updated to release xterm-240
+
+  * use plink.sh for linking xterm (suggested by Larry Doolittle).
+  * add resource descriptions for input method to xterm manpage.
+  * update configure script; consistently append to $CFLAGS rather
+    than prepend.
+  * add install-scripts rule to makefile, to allow roi8xterm and uxterm
+    scripts to be altered independently of install-bin
+  * add -maximized command-line option and corresponding resource
+    (prompted by alt.os.linux newsgroup comment).
+  * modify translations of scrollbar widget using xtermAddInput() (see
+    patch #181) to accept the actions that the vt100 widget accepts, such as
+    shift-insert to perform a paste operation (request by Martin Zwickel).
+  * change default for allowTcapsOps resource to false, since it causes
+    unexpected behavior for vim users with AltGr.
+
+-------------------------------------------------------------------
+Thu Jan 29 15:55:23 CET 2009 - mfabian@suse.de
+
+- bnc#464930: change the default for the ximFont resource from "*"
+  to "fixed", this still works fine with the XIM servers "scim"
+  and "kinput2" and speeds up the startup time of xterm
+  dramatically in zh_CN.UTF-8 and zh_HK.UTF-8 locales.
+
+-------------------------------------------------------------------
+Tue Jan 13 14:39:25 CET 2009 - meissner@suse.de
+
+- update to release xterm-239
+  * correct  a  cast  in  input.c,  which  broke translation of numeric
+    keypad  codes to pageup, pagedown, etc., on 64-bit platform (Debian
+    #511138, report by Larry Doolittle).
+
+-------------------------------------------------------------------
+Mon Jan  5 15:03:09 CET 2009 - meissner@suse.de
+
+- update to release xterm-238, Linux relevant changes:
+
+- Various security fixes for CVE-2008-2383 (ANSI command injection)
+
+- xterm-disallow-window-and-fonts-ops.patch: add allowWindowOps and
+  allowFontOps as "false" for default. bnc#462917
+
+- Patch #238 - 2008/12/30
+  # reset the screen wrapping-flag at the end of ClearRight to fix an
+    occasional case where the last character of a scrolled and wrapped
+    line would be cleared (patch by Joe Peterson).
+  # modify to use POSIX coding for comparing resource settings such as
+    locale, to work with locales such as Turkish (report by M Vefa
+    Bicakci).
+  # turn on configure paste64 feature by default (request by Jean-Philippe
+    Bernardy). It is runtime enabled/disabled with allowWindowOps.
+  # turn on configure tcap-query feature by default, add resource
+    allowTcapOps to make this runtime enabled/disabled.
+  # make OSC 3 (change X property, from patch #110) subject to
+    allowWindowOps resource.
+  # make VT220 DSR responses inactive in VT100-mode.
+  # make DECUDK feature inactive in VT100-mode.
+  # respond to incorrectly formatted DECRQSS with a cancel.
+  # add allowFontOps resource to allow the fontsize-switching and font
+    query/set control sequences to be enabled/disabled (prompted by Debian
+    #510030).
+  # some code cleanup based on gcc 4.x -Wconversion warnings in button.c
+    and charproc.c
+  # modify tcap-query feature to not return data for shifted cursor-keys
+    when the keyboard type is set to vt220, since returning the same
+    string for shifted/unshifted keys may confuse some applications
+    (GenToo #212546).
+
+- Patch #237 - 2008/09/14
+  # improve usability of TrueType fonts by making the font-size switching
+    for shifted keypad plus/minus use the faceSize resources to determine
+    the order of fonts (when TrueType fonts are used) rather than the
+    bitmap fonts, since their sizes may not be in the same order (report
+    by H Merijn Brand)
+  # remove an optimization of ConfigureNotify events from patch #236
+    which seems to interfere with passing SIGWINCH to applications
+    (GenToo #233836).
+  # modify handling of altSendsEscape to reset the eightBitInput mode,
+    like metaSendsEscape (patch by Ted Phelps).
+  # add feature to show the text-cursor as an underline rather than a box,
+    plus command-line options -uc and +uc and resource cursorUnderLine to
+    control the feature (patch by Paul Lampert).
+  # update config.guess, config.sub
+
+
+-------------------------------------------------------------------
+Mon Jul 28 11:16:08 CEST 2008 - sndirsch@suse.de
+
+- update to release xterm-236
+  * correct memory reallocation when handling a paste of UTF-8
+    text from [240]patch #225 changes (report/patch by Max
+    Mikhanosha).
+  * correct allocation of temporary buffer in xtermFindShell in
+    case the user's $PATH contains no ":" (report/analysis
+    by Victor Stinner, Freedesktop.Org Bugzilla #16790).
+  * modify CF_XOPEN_SOURCE to add case for DragonFly BSD, to fix
+    new compile problem exposed by fix for fd_mask (patch by
+    Hasso Tepper).
+  * add  configure-check  for  ncurses  use_extended_names,
+    (report by Martin Mokrejs).
+  * correct  computation  for  toolbar  height; layout manager
+    already takes into account borderWidth resource.
+  * implement  VT320-style  SCS (select character set) for ISO
+    Latin-1 supplemental.
+  * fixes  for  vt100-style  character  sets  in  UTF-8  mode
+    (Ubuntu #230919).
+  * fix  to  make  luit  work with xterm's -ls option
+    (report/patch by Marius Tolzmann).
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Tue Jul  8 11:22:08 CEST 2008 - schwab@suse.de
+
+- Use correct tty group.
+
+-------------------------------------------------------------------
+Mon Apr 21 16:00:01 CEST 2008 - sndirsch@suse.de
+
+- update to bugfix release xterm-235
+  * add control sequences for some of the recent resource/menu
+    settings:
+       + altSendsEscape (private mode 1039)
+       + keepSelection (private mode 1040)
+       + selectToClipboard (private mode 1041)
+       + bellIsUrgent (private mode 1042)
+       + popOnBell (private mode 1043)
+  * add resource formatOtherKeys to provide an alternate escape
+    sequence format for the modifyOtherKeys resource (request by
+    Paul LeoNerd Evans).
+  * adjust saved-cursor position if the window is resized while
+    displaying the alternate screen (Novell #196880, Debian
+    #383384).
+  * improve pointer-checks to fix a bug exposed by resizing during
+    initialization under StumpWM window manager (Fedora  Bugzilla
+    #437928).
+  * modify unselectwindow() to ensure that the mouse pointer is not
+    hidden after xterm loses focus (report by Jeremy Huddleston).
+  * add special check for fd_mask on Mac OS X (report by Jeremy
+    Huddleston).
+  * add dylib to autoconf's suffix list used for checking the result
+    from xmkmf, to work with Mac OS X (report by Jeremy Huddleston).
+  * correct initialization of bold- and wide-, wide-bold fonts which
+    may be set via the utf8Fonts subresource (Debian #347790).
+
+-------------------------------------------------------------------
+Mon Mar  3 09:55:33 CET 2008 - sndirsch@suse.de
+
+- update to bugfix release xterm-234
+  * modify sinstall.sh to use POSIX locale to bypass GNU ls changes
+    to date-format.
+  * improved/refined  changes for closing bitmap font (patch by
+    Andrea Odetti).
+  * improve  resize  computation  for situations where the
+    negotiation fails,  by  invoking  the  xterm widget's
+    core-class resize method (Debian #365602, patch by Jim Paris).
+  * restore initialization of terminal's VMIN and VTIME settings,
+    from patch #232 changes (patch by Matthieu Herrb).
+
+-------------------------------------------------------------------
+Mon Feb 25 12:35:17 CET 2008 - sndirsch@suse.de
+
+- udpate to bugfix release xterm-233
+
+-------------------------------------------------------------------
+Thu Jan 31 11:52:22 CET 2008 - sndirsch@suse.de
+
+- udpate to bugfix release xterm-232
+
+-------------------------------------------------------------------
+Sun Jan  6 13:16:16 CET 2008 - sndirsch@suse.de
+
+- update to xterm-231
+  * undo  change  to  getXtermCell()  from  patch #230 using
+    PACK_PAIR macro (Debian #459014, analysis by Caetano Jimenez
+    Carezzato).
+  * minor documentation fixes (patch by Slava Semushin)
+  * add  makefile  actions  to  install KOI8RXTerm app-defaults
+    file (patch by Julien Cristau).
+
+-------------------------------------------------------------------
+Tue Jan  1 22:18:28 CET 2008 - sndirsch@suse.de
+
+- update to xterm-230:
+  * mainly bugfixes
+
+-------------------------------------------------------------------
+Wed Sep 19 17:44:39 CEST 2007 - sndirsch@suse.de
+
+- set foreground color as well; fixes xterm -rv (Bug #283984)
+
+-------------------------------------------------------------------
+Fri Aug 31 22:35:40 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #306943: add xorg-x11 to BuildRequires because of
+  ‘bdftopcf’. Let the build fail if ‘bdftopcf’ is missing.
+- change app-defaults to use these fonts for wide characters
+  when the 10x20 font is used.
+- bzip2 source tarball.
+
+-------------------------------------------------------------------
+Mon Aug 27 21:34:56 CEST 2007 - sndirsch@suse.de
+
+- added '*metaSendsEscape: true' to app defaults (Bug #300331)
+
+-------------------------------------------------------------------
+Mon Aug 13 03:29:19 CEST 2007 - sndirsch@suse.de
+
+- update to xterm-229:
+  * override locale in minstall.sh; change in [233]patch #226 does
+    not work in UTF-8 locale (report by Zdenek Sekera).
+  * undo an incorrect fix for a memory leak in [234]patch #209
+    (Debian #435858).
+
+-------------------------------------------------------------------
+Sat Aug 11 20:05:58 CEST 2007 - sndirsch@suse.de
+
+- changed icon to a transparent one (Bug #299596)
+
+-------------------------------------------------------------------
+Tue Jul 24 17:25:38 CEST 2007 - mfabian@suse.de
+
+- update to xterm-228.
+  * modify  configure  script  to permit combining --with-utempter and
+    --enable-setuid,  e.g.,  for using xterm with the utempter library
+    on FreeBSD (report by Andriy Gapon).
+  * modify  "Quit"  menu  entry  to  override  the  -hold command-line
+    option.
+  * add  a  check  in  the startup error-reporting to avoid writing to
+    pipe  when  it  has  not  been opened. In that case, report errors
+    directly to the standard error.
+  * add   OPT_READLINE   definition  to  xtermcfg.hin,  overlooked  in
+    [232]patch #205 (report by Kalle Olavi Niemitalo).
+  * modify 88colors2.pl and 256colors2.pl, adding -r option to reverse
+    the palettes for the extended colors.
+  * check for partial overwrite or deletion of multi-column characters
+    in  several cases, e.g., insert-character, delete-character, etc.,
+    and  fill  the  remainder  of  the  cells used by the multi-column
+    characters affected with blanks.
+  * correct   character-class   codes   in   wide-character  mode  for
+    characters 215, 247 (see also [233]patch #165).
+  * fix  missing assignment for UTF-8 parsing in widget initialization
+    (Debian #403360).
+  * correct  index  expression  used to set line-wrapping flag, making
+    selection  from  scrollback  work  consistently  (Debian  #430121,
+    report by Vincent Lefevre).
+  * amend  changes  to  handshake  in [234]patch #226 to accommodate
+    Solaris,  which  relies  on the extra setting of the terminal size
+    after   I/O   initialization.  Do  this  by  adding  new  resource
+    ptySttySize,  which is false for Linux and MacOS X, i.e., true for
+    for  Solaris and other SVR4 platforms, as well as FreeBSD (reports
+    by David Wood, Renato Botelho).
+  * check  for  X  events  after  cursor-left,  and  carriage  return,
+    consistent with indexing operations (comments by Vegard Nossum and
+    Ingo Molnar on a mailing-list).
+  * initialize  the  .keyboard  structure,  needed  for some platforms
+    (such as Solaris) after [235]patch #227 fixes for keysyms (patch
+    by David Wood).
+  * update config.guess, config.sub
+- Bugzilla #293793: avoid requiring the an iso8859* version of
+  adobe-helvetica for the menus. The menus are ASCII only anyway at
+  the moment, it doesn't matter at all whether a Unicode font
+  (iso10646-1) or any of the iso8859* fonts is used, they are all
+  identical in the ASCII region anyway.
+  Using the iso* wildcard makes xterm work even if the recoded
+  versions of the bitmap fonts are missing in a minimal installation
+  and only the Unicode versions are there.
+
+-------------------------------------------------------------------
+Thu Jul 12 17:19:32 CEST 2007 - werner@suse.de
+
+- no longer overwrite translation for the key ALT, use altIsNotMeta
+  to leave it for users choise using Meta or Alt mode (bug #262330)
+- add snooper to the sources which enables to seek for character
+  sequences used by e.g. xterm in Alt mode (bug #262330)
+
+-------------------------------------------------------------------
+Mon Jul  9 21:53:00 CEST 2007 - sndirsch@suse.de
+
+- no longer package /usr/share/pixmaps to fix build
+
+-------------------------------------------------------------------
+Sat Jun 30 18:41:08 CEST 2007 - sndirsch@suse.de
+
+- Patch #227 - 2007/6/27
+- obsoletes xterm-225k.patch
+
+-------------------------------------------------------------------
+Thu Jun 14 15:48:56 CEST 2007 - sndirsch@suse.de
+
+- xterm-225k.patch:
+  * restore  a special case for cursor-color in ReverseVideo() lost
+    in rewrite for patch #224 (report by Adam Sulmicki).
+    (Bug #283984)
+
+-------------------------------------------------------------------
+Thu Mar 29 12:28:01 CEST 2007 - dmueller@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar 24 22:03:14 CET 2007 - sndirsch@suse.de
+
+- Patch #225 - 2007/3/24:
+  * add useClipping resource to allow clipping to be disabled.
+  * use   XftDrawSetClipRectangles  to  work  around  Xft  pixel-trash
+    (report by Reuben Thomas).
+  * add    configure    option   --enable-tcap-fkeys,   and   resource
+    tcapFunctionKeys,   which  can  be  used  to  tell  xterm  to  use
+    function-key  definitions  from the termcap (or terminfo) which it
+    uses to set $TERM on startup.
+  * add  resources altIsNotMeta and altSendsEscape to allow one to use
+    Alt-keys  like  the  meta-key  even if they are bound to different
+    keycodes (prompted by discussion with Daniel Jacobowitz).
+  * revert a change from [229]patch #216 that unnecessarily made the
+    meta  modifier override the eightBitInput resource if the alt- and
+    meta-modifiers   happened   to  overlap  (report/patch  by  Daniel
+    Jacobowitz).
+  * correct  associated  font for active icon for colored text (broken
+    in [230]patch #224).
+  * correct ifdef's for Darwin (patch by Emanuele Giaquinta).
+  * add  highlightTextColor  resource, and options -selfg, -selbg like
+    xwsh (adapted from patch by Victor Vaile).
+  * revise  find_closest_color()  function  to  address  concern about
+    borrowing from Tcl/Tk (request by Dan McNichol).
+  * add  "spawn-new-terminal"  action,  which  can  be assigned to key
+    translation,  allowing  one to spawn a new copy of xterm using the
+    current  process'  working directory (adapted from patch by Daniel
+    Colascio).
+  * improve  select/paste  between UTF-8 and Latin1 xterms by adapting
+    the  translations  from  [231]patch #185. Extend that to include
+    Unicode fullwidth forms FF00-FF5E. Also modify select/paste of DEC
+    line-drawing characters in Latin1 mode to use ASCII characters.
+  * add  "Enable  Bell  Urgency"  to  VT Options menu, removed "Enable
+    Margin Bell".
+  * add  bellIsUrgent  resource to control whether the Urgency hint is
+    set/reset.
+  * modify  to  set  Urgency  window manager hint on bell, reset it on
+    Focus-In event (patch by Emanuele Giaquinta).
+  * add   --disable-setgid   configure  option  (request  by  Miroslav
+    Lichvar).
+  * fix  a  possible  infinite loop in last change to dabbrev-expand()
+    (patch by Emanuele Giaquinta).
+  * modify  initialization  to set the pty erase value if the erase is
+    set  in  the ttyModes resource. This overrides the ptyInitialErase
+    setting (request by Lluis Batlle i Rossell).
+  * add  initialFont resource to xterm widget, like tek-widget (Debian
+    #299669).
+  * amend change to boldMode from [232]patch #223 for Debian #347790.
+    As  noted  in  Debian #412599, that made xterm no longer match the
+    documented  behavior.  Add  new  resource  alwaysBoldMode to allow
+    overriding  the comparison between normal/bold fonts when deciding
+    whether to use overstriking to simulate bold fonts.
+  * restore  background  color  in  ClearCurBackground(),  omitted  in
+    changes for [233]patch #223 (report by Miroslav Lichvar).
+  * correct  logic  for  repainting  double-width  TrueType characters
+    (prompted by test-case for Novell #246573).
+  * add  a  check  to  avoid  trying  to  repeat a multibyte character
+    (report by Sami Farin).
+  * modify  parameter  to  XftNameParse()  to select wide face-name as
+    needed,  to  make  -fd  option  work (patch by Mike Fabian, Novell
+    #246573).
+  * correct  logic  for  mouse  highlight  tracking's  abort sequence,
+    broken  in  a  restructuring  modification  from [234]patch #224
+    (report by Thomas Wolff).
+  * revert the simplification of blinking cursor, since that broke the
+    xor'ing introduced in [235]patch #193 (report by Thomas Wolff).
+- obsoletes xterm-224i.patch
+
+-------------------------------------------------------------------
+Thu Mar 22 17:35:02 CET 2007 - mfabian@suse.de
+
+- add ftp://invisible-island.net/temp/xterm-224i.patch
+  (obsoletes fix-fd_option.diff and fixes the redraw problems
+  for double width characters mentioned in bug #246573).
+- adapt patch a little bit to make it build with --with-utempter.
+
+-------------------------------------------------------------------
+Mon Feb 26 16:04:31 CET 2007 - sndirsch@suse.de
+
+- bug-246573-tentative-patch.diff:
+  * simplify algorithm for verifying that a font contains double
+    width characters (Bug #246573, comment #53/54)
+
+-------------------------------------------------------------------
+Wed Feb 21 12:13:16 CET 2007 - sndirsch@suse.de
+
+- fix-fd_option.diff:
+  * finally fixes double-width support (Bug #246573)
+
+-------------------------------------------------------------------
+Sat Feb 17 13:13:12 CET 2007 - sndirsch@suse.de
+
+- enabled double-width support; switched to configure (Bug #246573)
+
+-------------------------------------------------------------------
+Mon Feb 12 14:33:36 CET 2007 - sndirsch@suse.de
+
+- updated to xterm-224 (2007/02/11)
+  * simplify code for set/reset mode for blinking cursor (patch by
+    Emanuele Giaquinta).
+  * modify  dabbrev-expand() to restart after the last match (patch by
+    Emanuele Giaquinta).
+  * add  control  sequences  for enabling/disabling focus in/out event
+    reporting (request by Bram Moolenaar).
+  * improve  startup  performance  of menus by adding resource setting
+    menuLocale which can be set to override X's lengthy initialization
+    of  fontsets  -  which  are  seldom  used  for the Xaw popup menus
+    (adapted by patch by Dave Coffin).
+  * modify  do_precomposition() function and make-compose.sh to handle
+    21-bit codes vs the 16-bit codes those were written for, and fix a
+    few mis-sorted codes (patch by Thomas Wolff).
+  * handle  special  case  in  -cjk_width  which unexpectedly caused a
+    character's  width  to change when a combining character (patch by
+    Thomas Wolff)
+  * fix build for GNU/KFreeBSD (Debian #40111).
+  * consolidate GC creation/updating into a single module to reduce GC
+    manipulation  (prompted  by  Debian #389476, though a complete fix
+    would involve optimizing the scrolling behavior).
+  * fix  ifdef  of  xtermCellWidth(),  which  broke for a case without
+    TrueType  and  without  wide-character  support  (report by Martin
+    Pirker).
+  * undo a comparison in handle_translated_exposure which did not work
+    due  to  X server optimization. That caused the inner border to be
+    repainted  with  unexpected  colors when handling a repaint, e.g.,
+    after  switching to/from another workspace (Debian #401726, Redhat
+   Bugzilla #223027).
+  * allow  -cr option to override cursor color when -ah option is used
+    (Debian #406502).
+  * add  a  note  in  xterm's  manpage explaining that the -bw (or -w)
+    option  is  only  used  by  the  window manager, if at all (Debian
+    #405043).
+  * make Selection of VT Fonts work with selectToClipboard resource.
+  * correct  length  calculation for Selection entry of VT Fonts menu,
+    broken since it ignored the actual selection length since X11R4.
+  * fixes  for  fontsize  changes  with  -fa  option  (Redhat Bugzilla
+    #222340).
+
+-------------------------------------------------------------------
+Fri Dec  1 06:21:09 CET 2006 - sndirsch@suse.de
+
+- updated to xterm-223 (2006/11/30)
+  * add   --enable-rectangles  configure  option  (request  by  Martin
+    Pirker).
+  * correct default value for --with-symlink configure option.
+  * fixes configure script macros that use $X_EXTRA_LIBS.
+  * modify  configure script to provide support for pre-package config
+    versions of Xft (FreeType).
+  * add  the Xaw scrollbar translations resource to the xterm manpage,
+    add  an example showing how to change the mouse button assignments
+    (Debian #382225).
+  * amend a change from [227]patch #216, which omitted modifiers for
+    control,  meta, etc., if they were mixed with any other modifiers.
+    The   intent   of   the   change   was  to  avoid  confusion  with
+    XK_Mode_switch  and  XK_ISO_Level3_Shift;  the  check  is now done
+     explicitly (report by Daniel Jacobowitz).
+  * interpret    a    negative    value    for   modifyCursorKeys   or
+    modifyFunctionKeys  resources  to  disable the respective features
+    (prompted by Novell #220728).
+  * amend  cell-width computation for FreeType from [228]patch #217,
+    which  did  not  work  for  VT100  line-drawing characters (Debian
+    #399638, GenToo #147111).
+  * amend a change from [229]patch #216, which made alt-modifier on a
+    cursor-key send a modifier parameter (Novell #220728).
+  * correct  an  off-by-one that made DECCRA not work (report/patch by
+    Martin Pirker).
+  * revert an optimization in SGR_Foreground() and SGR_Background from
+    [230]patch #209 (Debian #347722, analysis by Pierre Lombard).
+  * fix for boldMode (Debian #347790, patch by Tim Pope).
+  * amend  fix  for  -iconic  in  [231]patch  #208,  which broke the
+    positioning part of -geom with toolbar configuration.
+  * fix  to  prevent  indexing  error in regular expressions (patch by
+    Dennis Schneider).
+  * fixes  to  make  the  internalBorder  area not change color due to
+    reverseVideo and/or related exposure events. The latter was a very
+    old bug exposed in [232]patch #196 (report by Neil Hoggarth, also
+    Debian #397624).
+- obsoletes bug220728.diff
+
+-------------------------------------------------------------------
+Tue Nov 28 06:02:04 CET 2006 - sndirsch@suse.de
+
+- bug220728.diff:
+  * Essentially the problem reported is that xterm #216 does a more
+    complete job of applying modifier parameters to cursor-,
+    function- and other keys. Some users would like to disable the
+    feature. Patch to allow modifyCursorKeys to be disabled.
+    Currently the resource accepts values 0 to 3. This adds a -1 to
+    disable the feature. Most users won't want to do this.
+    (Bug #220728)
+
+-------------------------------------------------------------------
+Wed Oct 18 11:35:46 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-222
+  * minor optimization for recoloring cursor via dynamic colors.
+  * fix  a  bug  caused  by restructuring of tek4014 widget
+    (report by Paul Schenkeveld)
+
+-------------------------------------------------------------------
+Mon Oct  9 18:28:29 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-221
+  * fix  for  regular expressions: the code which converted the column
+    offset within a line did not check properly for the end of a line,
+    and if allowed to match the whole line, would select the beginning
+    of  the  following line. If the following line were empty, in turn
+    it   would   select   from   the   next,   etc.  (report  by  Sean
+    Reifschneider).
+  * minor  optimization  of  color  allocation to avoid repainting the
+    screen if the corresponding color had not been allocated.
+  * fixes for vttests/256colors.pl (report by Egmont Koblinger).
+  * add  terminfo  building  block  entries for modifiers of the 6-key
+    editing keypad.
+  * fix for initialization of tek4014 which broke on QNX 6.1
+
+-------------------------------------------------------------------
+Mon Sep 11 17:18:14 CEST 2006 - sndirsch@suse.de
+
+- fixed luit/luitx path (Bug #204861)
+
+-------------------------------------------------------------------
+Mon Sep 11 10:26:14 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-220
+  * make  "xterm  -t -iconic" work as expected, i.e., start in
+    tek4014 mode, but iconified.
+
+-------------------------------------------------------------------
+Tue Sep  5 18:38:36 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-219
+  * some internal restructuring to separate data for vt100 and tek4014
+    widgets.
+  * fix  a  few  cases  where  form-events  would be seen by the vt100
+    widget when built with the toolbar configuration.
+
+-------------------------------------------------------------------
+Tue Aug 29 11:19:48 CEST 2006 - sndirsch@suse.de
+
+-  updated to xterm-218
+   * change behavior when encountering an illegal character in a
+     title string. Rather than reject the string, translate
+     illegal characters into "?" and use the string (requested by
+     Thomas Wolff).
+   * improve checks for nonprinting characters in title strings
+     (report by Samuel Thibault).
+   * correct typo in menu labels, changing print-redirect to
+     print-redir, making it follow the manpage and match the
+     usage for the actions table (report by Samuel Thibault).
+   * correct a typo that prevents building with some older systems
+     such as Solaris 2.6 (report by Julian Bridle).
+
+-------------------------------------------------------------------
+Tue Aug 22 05:43:29 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-217
+  * minor improvements to FreeType font layout and drawing.
+  * add  a  check  in  the  ptyInitialErase  logic  to ensure that
+    the termcap was read (Redhat Bugzilla #201246).
+  * limit  changes  for  reverse-video from patch #216 to cases
+    where  the  reverse-video  command-line  option is used (report
+    by Zdenek Sekera).
+  * correct  bitmap-derived pointsizes for TrueType fonts; they
+    should be  proportional  to  the  square  root  of the area of
+    the bitmap fonts.
+  * add  resources  to specify pointsize of TrueType fonts (request
+    by Reuben Thomas).
+  * improve  install  of  terminfo  by filtering out harmless
+    messages related  to  extended  capabilities. At the same time,
+    use ncurses tic  to  compile  the extended capabilities if
+    possible (report by Zdenek Sekera).
+  * update "xterm+pcfkeys" terminfo entry to correspond to patch
+    #216.
+
+-------------------------------------------------------------------
+Wed Aug 16 18:02:44 CEST 2006 - aj@suse.de
+
+- Remove unneeded BuildRequire on xorg-x11.
+
+-------------------------------------------------------------------
+Wed Aug  9 12:09:29 CEST 2006 - sndirsch@suse.de
+
+- fixed /usr/share/fonts directory conflict with filesystem
+
+-------------------------------------------------------------------
+Fri Aug  4 16:01:27 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-216
+  * improve handling of ConfigureNotify events by checking if there are
+    further events in the queue which obsolete the current one (adapted
+    from   rxvt   2.7.5).   Only   the   normal   normal  (non-toolbar)
+    configuration is addressed in this patch.
+  * several changes to terminfo:
+       + incorporate some minor changes from ncurses to help keep these
+         synchronized:
+
+           2005-02-26
+                   modify  sgr/sgr0  in  xterm-new to improve tgetent's
+                   derived "me".
+
+           2006-02-18
+                   remove ncv flag from xterm-16color
+
+           2006-06-24
+                   improve  xterm-256color  by  combining  the 16-color
+                   setaf/setab  strings with SGR 48, and cancelling the
+                   setf/setb strings.
+
+       + use extended function-key definitions for xterm-sun, xterm-sco
+         entries.
+       + add    terminfo    building-blocks    corresponding   to   the
+         modifyFunctionKeys and modifyCursorKeys resources.
+  * ifdef'd  Sun  function-key feature to make it optional, like HP and
+    SCO.
+  * extend  table  for  termcap-query  feature through F63, and updated
+    tcapquery.pl to match.
+  * modify  logic  for  function-key input processing to allow function
+    key  numbers  which are constructed by control- and shift-modifiers
+    to extend beyond X's hardcoded limit of 35.
+  * add control sequence to set or reset the eightBitInput resource.
+  * change  default  resource  modifyFunctionKeys to 2 to avoid sending
+    SS3 with parameters (report by Kalle Olavi Niemitalo).
+  * add  control  sequences for setting and resetting the values of the
+    modifyCursorKeys, modifyFunctionKeys and modifyOtherKeys resources.
+  * add modifyFunctionKeys resource like modifyCursorKeys. Setting this
+    to  zero  allows  one  to  use  the control- and shift-modifiers to
+    construct  function  key strings, for terminals using many function
+    keys, e.g., for xterm-sun or xterm-sco.
+  * modify screen responses and function-key logic to reduce the number
+    of  writes  made,  to make it less likely that an application would
+    read  only part of a function-key in a read operation (suggested by
+    John E Urbanczyk).
+  * add  combiningChars  resource, which allows the user to specify the
+    maximum  number  of  combining characters that xterm will store for
+    each  cell  in  wide-character  mode (prompted by request by Markus
+    Kuhn to increase the limit from 2).
+  * improve logic in metaSendsEscape in case the Alt- and Meta-keys are
+    mapped  to  different modifiers. That allows one to use the Alt-key
+    for  shifting  in  the eightBitInput and use a Meta-key modifier to
+    prefix the result with an <ESC>.
+  * improve  modifyCursorKeys  logic to prevent it from modifying codes
+    where  eightBitInput  or  metaSendsEscape  are  set (request by Dan
+    Nicolaescu).
+  * improve modifyCursorKeys logic to prevent it from changing the user
+    input when other modifiers such as AltGr are used (report by Thomas
+    Wolff).
+  * extend  modifyCursorKeys  to  include  the  numeric  keypad when in
+    application mode.
+  * improve  -reverse  (-rv)  option  (patch  by Jason Vas Dias, Redhat
+    #189161).
+  * workaround  for  color resources on Fedora-5 which made the toolbar
+    colors inconsistent.
+  * corrected  calls  used  for  --disable-setuid option, add debugging
+    traces to help diagnose this area.
+  * modify  configure  script to ensure that USE_UTMP_SETGID is defined
+    only  if  the check for POSIX saved-ids succeeds, or corresponds to
+    one of the BSD systems known to have a workable setegid function.
+  * extend configure check for POSIX saved-ids to include BSD systems
+  * modify  CF_SYSV  configure  macro  to  work with gcc on HPUX 10.20,
+    whose broken <term.h> relies on including <termios.h>.
+  * change  order of setuid/setgid ifdef checks in Imakefile to make it
+    simpler  to  produce  a  setgid  install,  allowing  the  latter to
+    override the former (prompted by an XFree86 commit).
+  * adapt  a  fix  for  setgid  support from subsequent XFree86 changes
+    (patch by Emanuele Giaquinta).
+  * further improve setgid support (patches by Emanuele Giaquinta).
+
+-------------------------------------------------------------------
+Fri Jul 28 14:45:41 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing"
+
+-------------------------------------------------------------------
+Mon Jul 24 15:39:40 CEST 2006 - sndirsch@suse.de
+
+- fixed build for X.Org 7
+
+-------------------------------------------------------------------
+Tue Jun 20 06:28:00 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-215
+  * various fixes
+
+-------------------------------------------------------------------
+Mon Jun 19 02:47:50 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-214
+  * various fixes
+
+-------------------------------------------------------------------
+Mon May  1 11:15:50 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-213
+  * obsoletes utf8-title-resource.patch
+
+-------------------------------------------------------------------
+Sat Apr 15 21:17:35 CEST 2006 - sndirsch@suse.de
+
+- updated to xterm-212
+  * obsoletes p_xterm_dotext-loop.diff
+- using new utf8Title resource (Bug #52655)
+
+------------------------------------------------------------------
+Mon Feb 13 15:39:34 CET 2006 - werner@suse.de
+
+- Avouid possible endless loop fix in dotext() at wrapping wide
+  characters
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan  4 10:33:00 CET 2006 - sndirsch@suse.de
+
+- updated to xterm-208
+
+-------------------------------------------------------------------
+Tue Nov 15 10:34:55 CET 2005 - sndirsch@suse.de
+
+- updated to xterm-207
+- adjusted patches
+
+-------------------------------------------------------------------
+Thu Oct 06 12:04:59 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #49305: add 20x20{ja,ko} fonts generated from
+  18x18{ja,ko} with the script "bdf18to20" from the mined package.
+  This is a workaround to make the popular 10x20 font work with
+  CJK until xterm is improved to become able to pad fonts
+  on the fly.
+
+-------------------------------------------------------------------
+Mon Sep 19 10:58:24 CEST 2005 - sndirsch@suse.de
+
+- updated to xterm-205
+  [...]
+  * modify computation of rows/columns on resize to avoid extending
+    beyond the given limits, e.g., if resizing in response to a
+    "maximize" in Gnome or KDE which do not use the window manager
+    hints for this case (Debian #289123, Novell #61153).
+  * fixes for Novell #113277:
+    - specify weight for wide font which may be derived from normal
+      fontname.
+    - cache the derived wide- and widebolt-fontnames.
+- obsoletes bugzilla-99564.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 16:05:05 CEST 2005 - sndirsch@suse.de
+
+- added vttest; useful for testing terminals
+
+-------------------------------------------------------------------
+Fri Aug 26 18:28:37 CEST 2005 - sndirsch@suse.de
+
+- back to xterm-203 + bugzilla-99564.patch (Bug #113277)
+
+-------------------------------------------------------------------
+Sun Aug  7 19:51:44 CEST 2005 - sndirsch@suse.de
+
+- updated to xterm-204
+  [...]
+  * correct variable used to store temporary result from lookup of
+    bold font, when initializing the wide-bold-font data and no
+    immediate match is found by asking for a bold variant of the
+    wide-font. The result was to use overstriking rather than the
+    actual bold font (Debian #318162, patch by Eugene Konev).
+  --> obsoletes mfabian's patch mentioned below
+
+-------------------------------------------------------------------
+Mon Aug 01 18:06:08 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #99564: fix the problem that bold fonts were not
+  used unless the resource boldMode was set to "false".
+
+-------------------------------------------------------------------
+Wed Jul 27 12:47:28 CEST 2005 - werner@suse.de
+
+- Re-enable SIGWINCH for linux even if struct winsize is used, due
+  to the fact that sometime a sleeping process in the process group
+  do not get the appropiate information by the ioctl TIOCSWINSZ.
+
+-------------------------------------------------------------------
+Wed Jul 13 15:24:10 CEST 2005 - sndirsch@suse.de
+
+- updated to xterm-203
+
+-------------------------------------------------------------------
+Fri May 13 04:54:01 CEST 2005 - sndirsch@suse.de
+
+- use norootforbuild
+
+-------------------------------------------------------------------
+Thu May 12 17:07:20 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue May  3 11:48:56 CEST 2005 - sndirsch@suse.de
+
+- updated to xterm-202
+
+-------------------------------------------------------------------
+Fri Apr 22 08:03:11 CEST 2005 - sndirsch@suse.de
+
+- updated to xterm-201
+- adjusted p_xterm-settings.diff
+
+-------------------------------------------------------------------
+Thu Mar 24 16:36:21 CET 2005 - sndirsch@suse.de
+
+- added missing xterm/resize manual pages (Bug #74467)
+
+-------------------------------------------------------------------
+Sun Feb  6 23:57:08 CET 2005 - sndirsch@suse.de
+
+- updated to xterm-200
+
+-------------------------------------------------------------------
+Fri Jan 28 00:49:26 CET 2005 - sndirsch@suse.de
+
+- updated to xterm-199
+
+-------------------------------------------------------------------
+Fri Jan 14 05:24:56 CET 2005 - sndirsch@suse.de
+
+- updated to xterm-198
+
+-------------------------------------------------------------------
+Thu Dec  2 21:17:03 CET 2004 - sndirsch@suse.de
+
+- p_xterm-config.diff:
+  * HAVE_LANGINFO_CODESET needs to be set in xtermcfg.h
+
+-------------------------------------------------------------------
+Wed Dec  1 05:18:42 CET 2004 - sndirsch@suse.de
+
+- updated to xterm-197:
+  * obsoletes p_xterm_iutf8.diff, p_xterm_noluit.diff
+  * adjusted p_xterm-config.diff: OPT_LUIT_PROG/OPT_MINI_LUIT needs
+    to be set in xtermcfg.h
+  * updated TODO
+
+-------------------------------------------------------------------
+Tue Nov 16 09:50:29 CET 2004 - sndirsch@suse.de
+
+- added missing xterm icon file (terminal.png, converted from
+  xterm_32x32.xpm included by icewm)
+
+-------------------------------------------------------------------
+Tue Oct 26 18:59:03 CEST 2004 - sndirsch@suse.de
+
+- added Backarrow2Backspace, Backarrow2Delete, README.SuSE
+
+-------------------------------------------------------------------
+Sun Oct 24 10:51:53 CEST 2004 - sndirsch@suse.de
+
+- added TODO
+
+-------------------------------------------------------------------
+Sat Oct 23 19:28:47 CEST 2004 - sndirsch@suse.de
+
+- created package
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Mount initrd fstab entries for Ignition
+DefaultDependencies=false
+After=initrd-root-fs.target
+After=ignition-remount-sysroot.service
+Before=ignition-files.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ {print "mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; sleep 5; " }'"'"' /sysroot/etc/fstab)'

@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed May  2 15:12:24 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue May  1 21:34:32 UTC 2018 - cornelis@solcon.nl
+
+- Updated to 0.132:
+  * Nachlieli CLM completely redesigned, and now it also supports
+    diacritics.
+  * David CLM now also supports meteg and rafe, in addition to other
+    diacritics.
+  * Nachlieli and David are provided as otf fonts.
+- Remove the Provides/Obsoletes: culmus, it was a long time ago that
+  the package name was just culmus.
+
+-------------------------------------------------------------------
+Tue Mar 26 15:03:35 UTC 2013 - pgajdos@suse.com
+
+- updated to 0.130:
+* Added new TrueType font "Shofar" by Yoram Gnat. Complete family with
+  diacritics and cantillation marks. The font is inspired by Koren type, with
+  redesigned letter forms and the height-to-width ratio.
+
+-------------------------------------------------------------------
+Tue Aug  7 12:00:50 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.121:
+  * Frank Ruehl CLM now supports diacritics.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:55 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  1 13:49:17 UTC 2012 - pgajdos@suse.com
+
+- renamed to culmus-fonts
+
+-------------------------------------------------------------------
+Sun Sep 18 00:08:08 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu May  5 10:08:40 CEST 2011 - pgajdos@suse.cz
+
+- package missed TTF fonts -- thanks to andrei.levi at gmail.com
+
+-------------------------------------------------------------------
+Mon Nov 22 09:11:35 CET 2010 - pgajdos@suse.cz
+
+- updated to 0.120:
+ 1. Keter YG - complete family with cantillation marks support. 
+    Based on Aleppo codex.
+ 2. Left quotes added to David, Miriam, Miriam Mono.
+ 3. Geresh and gershayim lowered in David, Miriam, Miriam Mono.
+ 4. Dreydl symbol added to Caladings.
+
+-------------------------------------------------------------------
+Fri Oct 15 09:08:21 CEST 2010 - pgajdos@suse.cz
+
+- updated to 0.110:
+ 1. Hadasim CLM - complete family with diacritics supported. Inspired by
+    Henri Friedlander's Hadassah font.
+ 2. Simple CLM - complete sans-serif family with diacritics supported.
+ 3. Stam Ashkenaz CLM and Stam Sefarad CLM - each in single weight, modeled
+    after the respective Torah scroll writing traditions.
+
+-------------------------------------------------------------------
+Mon Aug 30 15:44:15 CEST 2010 - pgajdos@suse.cz
+
+- updated to 0.105:
+ 1. Introduced diacritics placement into Miriam Mono font, meteg supported.
+ 2. Supported "Hataf" diacritics with all letters in Miriam, David.
+
+-------------------------------------------------------------------
+Mon Mar 15 09:35:43 CET 2010 - pgajdos@suse.cz
+
+- updated to 0.104:
+   * Fixed TZVEY YUDN MIT A PASEKH in David.
+   * Miriam font enhanced to support diacritics, more symbols.
+
+-------------------------------------------------------------------
+Tue Dec  8 11:56:01 CET 2009 - pgajdos@suse.cz
+
+- updated to 0.103
+
+-------------------------------------------------------------------
+Wed Aug  9 10:51:44 CEST 2006 - dmueller@suse.de
+
+- install into /usr/share/fonts
+
+-------------------------------------------------------------------
+Wed Mar 01 13:12:49 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(he)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 14:16:44 CEST 2005 - mfabian@suse.de
+
+- new package: culmus, version 0.101.

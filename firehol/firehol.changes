@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Mon Aug 13 09:24:30 UTC 2018 - 9+suse@cirno.systems
+
+- Drop useless _service
+
+firehol (3.1.6) - 2018-08-13
+
+  * FireHOL
+
+    - Boot startup fix #260
+    - docker_bridge helper #114
+    - Allow newer iptables #264
+    - Log blocked/dropped packets in synproxy, mac, connlimit, fragments, ...
+    - Fix wait for netfilter ready when using namespaces
+    - Fast activation fixes #272
+    - Allow matching DSCP CS0; fixes #288
+    - Allow DROP_INVALID with any action (e.g. REJECT)
+    - Add option FIREHOL_ACCEPT_OUTPUT_UNMATCHED_TCP_RST
+
+  * FireQOS
+
+    - Fix status to works with newer iproute; fixes #317
+
+  * Link-Balancer
+
+    - linkdown: routes cannot be added or deleted whilst marked invalid #211
+
+  * Update-Ipsets
+
+    - Various fixes, including #266 #265
+    - List additions, updates and removals
+    - Minor enhancements
+
+
+-------------------------------------------------------------------
+Sun Sep 17 13:21:49 UTC 2017 - 9@cirno.systems
+
+firehol (3.1.5) - 2017-09-17
+
+  * FireHOL
+
+    - Fix some links in documentation
+
+  * FireQOS
+
+    - Insert a rawmark mask if none specified
+
+  * Update-Ipsets
+
+    - Support serving ipset files from local web server
+    - Lower pressure on github
+
+-------------------------------------------------------------------
+Sun Aug 20 11:00:29 UTC 2017 - 9@cirno.systems
+
+firehol (3.1.4) - 2017-08-20
+
+  * FireHOL
+
+    - Google hangouts port range fix #235
+    - Fix hashlimit option names #223
+    - Documentation improvements, marks #184 and cthelper #94
+    - Allow negating interface in blacklist #143
+
+  * FireQOS
+
+    - DSCP match fixes #248
+    - TCP match fix #249
+    - Improve docs on using act_connmark to match ingress marked traffic #231
+
+  * Update-Ipsets
+
+    - Added various lists, removed discontinued ones
+    - Include URL in user agent string in #217
+    - Relax umask to allow stats collection by netdata #221 
+
+-------------------------------------------------------------------
+Sun Jul  9 00:13:02 UTC 2017 - jengelh@inai.de
+
+- Avoid duplicate expansion of %service_*
+- firehol-doc subpackage ought to be noarch
+
+-------------------------------------------------------------------
+Wed Mar 29 04:22:53 UTC 2017 - 9@cirno.systems
+
+firehol (3.1.3) - 2017-02-17
+
+  * FireHOL
+
+    - Be more strict when detecting address ranges
+
+      Fixes #199 where hostnames such as x-2.example.com are incorrectly
+      identified as ranges.
+
+  * Common
+
+    - Create relative links to binaries, which prevents errors when
+      installing with DESTDIR other than /
+
+      Fix for #178 and #201 proposed by @kneeke
+
+firehol (3.1.2) - 2017-02-05
+
+  * FireHOL
+    - Include user policies in chains before handling orphans. Fixes NFS
+      client where FIREHOL_DROP_ORPHAN_TCP_* options are in force.
+
+    - Do not allow server/client statements without any effect on the
+      firewall; #193
+
+    - Saved firewall contents made reproducible by always zeroing counters
+      and removing the dates from comments
+
+  * FireQOS
+
+    - Example had an ambiguous shebang which has been removed
+
+  * Common
+
+    - Running "make check" now exits non-zero if a test failed or none ran
+
+    - Various copyright updates
+
+    - Fixed pull requests from external repositories; these would previously
+      fail to build on Travis
+
+-------------------------------------------------------------------
+Thu Feb  2 10:06:45 UTC 2017 - 9@cirno.systems
+
+- 3.1.1
+

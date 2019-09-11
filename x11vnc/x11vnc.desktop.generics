@@ -1,0 +1,15 @@
+--- x11vnc/x11vnc.desktop.orig	2009-10-07 22:21:23.000000000 +0200
++++ x11vnc/x11vnc.desktop	2011-10-18 22:17:09.333000421 +0200
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=X11VNC Server
+-Comment=Share this desktop by VNC
++GenericName=VNC Server
++Comment=Share this desktop via VNC
+ Exec=x11vnc -gui tray=setpass -rfbport PROMPT -bg -o %%HOME/.x11vnc.log.%%VNCDISPLAY
+-Icon=computer
+ Terminal=false
++Icon=x11vnc
+ Type=Application
+ StartupNotify=false
+ #StartupWMClass=x11vnc_port_prompt

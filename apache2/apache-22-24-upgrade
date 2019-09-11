@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# obsolete 2.2 modules -> 2.4 modules
+
+for module in mod_authn_default mod_authz_default mod_mem_cache authz_default authn_default mem_cache; do
+	if /usr/sbin/a2enmod -q "$module"; then
+	echo "!!ATTENTION! $module was removed from apache version 2.4 or later, CHECK YOUR CONFIGURATION!!!"
+	/usr/sbin/a2dismod "$module"
+	fi
+done
+
+if ! /usr/sbin/a2enmod -q authn_core; then
+  /usr/sbin/a2enmod authn_core
+fi
+
+if ! /usr/sbin/a2enmod -q authz_core; then
+  /usr/sbin/a2enmod authz_core
+fi
+
+if ! /usr/sbin/a2enmod -q log_config; then
+  /usr/sbin/a2enmod log_config
+fi

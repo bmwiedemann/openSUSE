@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/gordboy/rtl8812au.git</param>
+    <param name="filename">rtl8812au</param>
+    <param name="versionformat">5.2.20.2+git%cd.%h</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

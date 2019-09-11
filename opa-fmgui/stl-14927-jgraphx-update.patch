@@ -1,0 +1,774 @@
+diff -cr 10.1/src/com/intel/stl/ui/network/TopGraphComponent.java 10.4/src/com/intel/stl/ui/network/TopGraphComponent.java
+*** 10.1/src/com/intel/stl/ui/network/TopGraphComponent.java	2017-01-20 04:40:10.053889049 -0500
+--- 10.4/src/com/intel/stl/ui/network/TopGraphComponent.java	2017-01-20 04:42:31.002896219 -0500
+***************
+*** 1,9 ****
+  /**
+   * Copyright (c) 2015, Intel Corporation
+!  * 
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions are met:
+!  * 
+   *     * Redistributions of source code must retain the above copyright notice,
+   *       this list of conditions and the following disclaimer.
+   *     * Redistributions in binary form must reproduce the above copyright
+--- 1,9 ----
+  /**
+   * Copyright (c) 2015, Intel Corporation
+!  *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions are met:
+!  *
+   *     * Redistributions of source code must retain the above copyright notice,
+   *       this list of conditions and the following disclaimer.
+   *     * Redistributions in binary form must reproduce the above copyright
+***************
+*** 12,18 ****
+   *     * Neither the name of Intel Corporation nor the names of its contributors
+   *       may be used to endorse or promote products derived from this software
+   *       without specific prior written permission.
+!  * 
+   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+--- 12,18 ----
+   *     * Neither the name of Intel Corporation nor the names of its contributors
+   *       may be used to endorse or promote products derived from this software
+   *       without specific prior written permission.
+!  *
+   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+***************
+*** 73,80 ****
+  public class TopGraphComponent extends mxGraphComponent {
+      private static final long serialVersionUID = -3168649345200765940L;
+  
+!     private static final Logger log = LoggerFactory
+!             .getLogger(TopGraphComponent.class);
+  
+      private boolean graphBuffered = true;
+  
+--- 73,80 ----
+  public class TopGraphComponent extends mxGraphComponent {
+      private static final long serialVersionUID = -3168649345200765940L;
+  
+!     private static final Logger log =
+!             LoggerFactory.getLogger(TopGraphComponent.class);
+  
+      private boolean graphBuffered = true;
+  
+***************
+*** 100,106 ****
+  
+      /**
+       * Description:
+!      * 
+       * @param graph
+       */
+      public TopGraphComponent(IBackgroundService updateService, TopGraph graph) {
+--- 100,106 ----
+  
+      /**
+       * Description:
+!      *
+       * @param graph
+       */
+      public TopGraphComponent(IBackgroundService updateService, TopGraph graph) {
+***************
+*** 148,154 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#createGraphControl()
+       */
+      @Override
+--- 148,154 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#createGraphControl()
+       */
+      @Override
+***************
+*** 173,179 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#createHandlers()
+       */
+      @Override
+--- 173,179 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#createHandlers()
+       */
+      @Override
+***************
+*** 216,222 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#createPanningHandler()
+       */
+      @Override
+--- 216,222 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#createPanningHandler()
+       */
+      @Override
+***************
+*** 226,232 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#createGraphHandler()
+       */
+      @Override
+--- 226,232 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#createGraphHandler()
+       */
+      @Override
+***************
+*** 236,242 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#createSelectionCellsHandler()
+       */
+      @Override
+--- 236,242 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#createSelectionCellsHandler()
+       */
+      @Override
+***************
+*** 246,252 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#installDoubleClickHandler()
+       */
+      @Override
+--- 246,252 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#installDoubleClickHandler()
+       */
+      @Override
+***************
+*** 255,264 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+!      * @see
+!      * com.mxgraph.swing.mxGraphComponent#isPanningEvent(java.awt.event.MouseEvent
+!      * )
+       */
+      @Override
+      public boolean isPanningEvent(MouseEvent event) {
+--- 255,263 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+!      * @see com.mxgraph.swing.mxGraphComponent#isPanningEvent(java.awt.event.
+!      * MouseEvent )
+       */
+      @Override
+      public boolean isPanningEvent(MouseEvent event) {
+***************
+*** 267,276 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+!      * @see
+!      * com.mxgraph.swing.mxGraphComponent#createHandler(com.mxgraph.view.mxCellState
+!      * )
+       */
+      @Override
+      public mxCellHandler createHandler(mxCellState state) {
+--- 266,274 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+!      * @see com.mxgraph.swing.mxGraphComponent#createHandler(com.mxgraph.view.
+!      * mxCellState )
+       */
+      @Override
+      public mxCellHandler createHandler(mxCellState state) {
+***************
+*** 284,290 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#selectRegion(java.awt.Rectangle,
+       * java.awt.event.MouseEvent)
+       */
+--- 282,288 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#selectRegion(java.awt.Rectangle,
+       * java.awt.event.MouseEvent)
+       */
+***************
+*** 303,309 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see com.mxgraph.swing.mxGraphComponent#getCellAt(int, int, boolean,
+       * java.lang.Object)
+       */
+--- 301,307 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see com.mxgraph.swing.mxGraphComponent#getCellAt(int, int, boolean,
+       * java.lang.Object)
+       */
+***************
+*** 348,354 ****
+          }
+  
+          if (parent != null) {
+!             Point previousTranslate = canvas.getTranslate();
+              double previousScale = canvas.getScale();
+  
+              try {
+--- 346,352 ----
+          }
+  
+          if (parent != null) {
+!             mxPoint previousTranslate = canvas.getTranslate();
+              double previousScale = canvas.getScale();
+  
+              try {
+***************
+*** 366,374 ****
+                      }
+  
+                      Object cell = model.getChildAt(parent, i);
+!                     Object result =
+!                             findCellAt(id, x, y, hitSwimlaneContent, cell,
+!                                     vertex);
+  
+                      if (result != null) {
+                          return result;
+--- 364,371 ----
+                      }
+  
+                      Object cell = model.getChildAt(parent, i);
+!                     Object result = findCellAt(id, x, y, hitSwimlaneContent,
+!                             cell, vertex);
+  
+                      if (result != null) {
+                          return result;
+***************
+*** 376,393 ****
+                              && (vertex == model.isVertex(cell))) {
+                          mxCellState state = view.getState(cell);
+  
+!                         if (state != null
+!                                 && canvas.intersects(this, hit, state)
+                                  && (!graph.isSwimlane(cell)
+!                                         || hitSwimlaneContent || (transparentSwimlaneContent && !canvas
+!                                         .hitSwimlaneContent(this, state, x, y)))) {
+                              return cell;
+                          }
+                      }
+                  }
+              } finally {
+                  canvas.setScale(previousScale);
+!                 canvas.setTranslate(previousTranslate.x, previousTranslate.y);
+              }
+          }
+  
+--- 373,392 ----
+                              && (vertex == model.isVertex(cell))) {
+                          mxCellState state = view.getState(cell);
+  
+!                         if (state != null && canvas.intersects(this, hit, state)
+                                  && (!graph.isSwimlane(cell)
+!                                         || hitSwimlaneContent
+!                                         || (transparentSwimlaneContent
+!                                                 && !canvas.hitSwimlaneContent(
+!                                                         this, state, x, y)))) {
+                              return cell;
+                          }
+                      }
+                  }
+              } finally {
+                  canvas.setScale(previousScale);
+!                 canvas.setTranslate(previousTranslate.getX(),
+!                         previousTranslate.getY());
+              }
+          }
+  
+***************
+*** 396,402 ****
+  
+      /*
+       * (non-Javadoc)
+!      * 
+       * @see
+       * com.mxgraph.swing.mxGraphComponent#setGraph(com.mxgraph.view.mxGraph)
+       */
+--- 395,401 ----
+  
+      /*
+       * (non-Javadoc)
+!      *
+       * @see
+       * com.mxgraph.swing.mxGraphComponent#setGraph(com.mxgraph.view.mxGraph)
+       */
+***************
+*** 429,437 ****
+                          selectionListener);
+              }
+          } else {
+!             throw new IllegalArgumentException("graph "
+!                     + value.getClass().getName() + " is not "
+!                     + TopGraph.class.getName());
+          }
+      }
+  
+--- 428,436 ----
+                          selectionListener);
+              }
+          } else {
+!             throw new IllegalArgumentException(
+!                     "graph " + value.getClass().getName() + " is not "
+!                             + TopGraph.class.getName());
+          }
+      }
+  
+***************
+*** 466,472 ****
+  
+      /**
+       * Description:
+!      * 
+       * @param point
+       */
+      public void zoomIn(Point point) {
+--- 465,471 ----
+  
+      /**
+       * Description:
+!      *
+       * @param point
+       */
+      public void zoomIn(Point point) {
+***************
+*** 475,481 ****
+  
+      /**
+       * Description:
+!      * 
+       * @param point
+       */
+      public void zoomOut(Point point) {
+--- 474,480 ----
+  
+      /**
+       * Description:
+!      *
+       * @param point
+       */
+      public void zoomOut(Point point) {
+***************
+*** 489,501 ****
+                  double newScale = view.getScale() * factor;
+                  if (Math.abs(newScale - view.getScale()) > 1e-4
+                          && newScale > 1e-3) {
+!                     mxPoint translate =
+!                             point == null ? new mxPoint() : getTranslate(point,
+!                                     view.getScale(), newScale);
+                      mxPoint oldTranslate = view.getTranslate();
+!                     view.scaleAndTranslate(newScale, translate.getX()
+!                             + oldTranslate.getX(), translate.getY()
+!                             + oldTranslate.getY());
+                      restartTimer();
+                      // System.out.println("ScaleAndTranslate " + view.getScale()
+                      // + " "
+--- 488,499 ----
+                  double newScale = view.getScale() * factor;
+                  if (Math.abs(newScale - view.getScale()) > 1e-4
+                          && newScale > 1e-3) {
+!                     mxPoint translate = point == null ? new mxPoint()
+!                             : getTranslate(point, view.getScale(), newScale);
+                      mxPoint oldTranslate = view.getTranslate();
+!                     view.scaleAndTranslate(newScale,
+!                             translate.getX() + oldTranslate.getX(),
+!                             translate.getY() + oldTranslate.getY());
+                      restartTimer();
+                      // System.out.println("ScaleAndTranslate " + view.getScale()
+                      // + " "
+***************
+*** 505,511 ****
+          });
+      }
+  
+!     protected mxPoint getTranslate(Point point, double oldScale, double newScale) {
+          int x = point.x;
+          int y = point.y;
+          double f = (newScale - oldScale) / (oldScale * newScale);
+--- 503,510 ----
+          });
+      }
+  
+!     protected mxPoint getTranslate(Point point, double oldScale,
+!             double newScale) {
+          int x = point.x;
+          int y = point.y;
+          double f = (newScale - oldScale) / (oldScale * newScale);
+***************
+*** 529,536 ****
+              double oldScale = view.getScale();
+              mxPoint trans = view.getTranslate();
+              // zoom to fit selected area
+!             view.scaleAndTranslate(oldScale * newScale, -rect.x / oldScale
+!                     + trans.getX(), -rect.y / oldScale + trans.getY());
+              // System.out.println("ScaleAndTranslate " + view.getScale()
+              // + " "
+              // + view.getTranslate());
+--- 528,536 ----
+              double oldScale = view.getScale();
+              mxPoint trans = view.getTranslate();
+              // zoom to fit selected area
+!             view.scaleAndTranslate(oldScale * newScale,
+!                     -rect.x / oldScale + trans.getX(),
+!                     -rect.y / oldScale + trans.getY());
+              // System.out.println("ScaleAndTranslate " + view.getScale()
+              // + " "
+              // + view.getTranslate());
+***************
+*** 539,554 ****
+  
+      protected void restartTimer() {
+          if (repaintTimer == null) {
+!             repaintTimer =
+!                     new Timer(UIConstants.UPDATE_TIME / 2,
+!                             new ActionListener() {
+!                                 @Override
+!                                 public void actionPerformed(ActionEvent e) {
+!                                     if (repaintTimer != null) {
+!                                         updateGraph();
+!                                     }
+!                                 }
+!                             });
+              repaintTimer.setRepeats(false);
+          }
+          repaintTimer.restart();
+--- 539,553 ----
+  
+      protected void restartTimer() {
+          if (repaintTimer == null) {
+!             repaintTimer = new Timer(UIConstants.UPDATE_TIME / 2,
+!                     new ActionListener() {
+!                         @Override
+!                         public void actionPerformed(ActionEvent e) {
+!                             if (repaintTimer != null) {
+!                                 updateGraph();
+!                             }
+!                         }
+!                     });
+              repaintTimer.setRepeats(false);
+          }
+          repaintTimer.restart();
+***************
+*** 567,573 ****
+  
+          /**
+           * Description:
+!          * 
+           * @param graphComponent
+           */
+          public PanningHandler(mxGraphComponent graphComponent) {
+--- 566,572 ----
+  
+          /**
+           * Description:
+!          *
+           * @param graphComponent
+           */
+          public PanningHandler(mxGraphComponent graphComponent) {
+***************
+*** 576,582 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.handler.mxPanningHandler#mousePressed(java.awt.
+           * event.MouseEvent)
+--- 575,581 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.handler.mxPanningHandler#mousePressed(java.awt.
+           * event.MouseEvent)
+***************
+*** 584,590 ****
+          @Override
+          public void mousePressed(final MouseEvent e) {
+              if (isEnabled() && !e.isConsumed()
+!                     && graphComponent.isPanningEvent(e) && !e.isPopupTrigger()) {
+                  graphControl.setCursor(mxGraphHandler.FOLD_CURSOR);
+                  updateService.submit(new Runnable() {
+                      @Override
+--- 583,590 ----
+          @Override
+          public void mousePressed(final MouseEvent e) {
+              if (isEnabled() && !e.isConsumed()
+!                     && graphComponent.isPanningEvent(e)
+!                     && !e.isPopupTrigger()) {
+                  graphControl.setCursor(mxGraphHandler.FOLD_CURSOR);
+                  updateService.submit(new Runnable() {
+                      @Override
+***************
+*** 607,615 ****
+                              int dx = e.getX() - start.x;
+                              int dy = e.getY() - start.y;
+                              double scale = view.getScale();
+!                             view.setTranslate(new mxPoint(viewTranslate.getX()
+!                                     + dx / scale, viewTranslate.getY() + dy
+!                                     / scale));
+                              restartTimer();
+                          }
+                          e.consume();
+--- 607,615 ----
+                              int dx = e.getX() - start.x;
+                              int dy = e.getY() - start.y;
+                              double scale = view.getScale();
+!                             view.setTranslate(new mxPoint(
+!                                     viewTranslate.getX() + dx / scale,
+!                                     viewTranslate.getY() + dy / scale));
+                              restartTimer();
+                          }
+                          e.consume();
+***************
+*** 620,626 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.handler.mxPanningHandler#mouseReleased(java.awt
+           * .event.MouseEvent)
+--- 620,626 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.handler.mxPanningHandler#mouseReleased(java.awt
+           * .event.MouseEvent)
+***************
+*** 639,645 ****
+  
+          /**
+           * Description:
+!          * 
+           * @param graphComponent
+           */
+          public GraphHandler(mxGraphComponent graphComponent) {
+--- 639,645 ----
+  
+          /**
+           * Description:
+!          *
+           * @param graphComponent
+           */
+          public GraphHandler(mxGraphComponent graphComponent) {
+***************
+*** 649,655 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#mousePressed(java.awt.event
+           * .MouseEvent)
+--- 649,655 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#mousePressed(java.awt.event
+           * .MouseEvent)
+***************
+*** 663,669 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#mouseReleased(java.awt.event
+           * .MouseEvent)
+--- 663,669 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#mouseReleased(java.awt.event
+           * .MouseEvent)
+***************
+*** 691,714 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#getCursor(java.awt.event
+           * .MouseEvent)
+           */
+          @Override
+          protected synchronized Cursor getCursor(MouseEvent e) {
+!             mxCell cell =
+!                     (mxCell) graphComponent
+!                             .getCellAt(e.getX(), e.getY(), false);
+  
+              updateHighlight(cellFindingId.get(), cell);
+              if (cell == null) {
+                  return null;
+              }
+  
+!             if (isMoveEnabled()
+!                     && graphComponent.getGraph().isCellMovable(cell)
+                      && isDragTrigger(e)) {
+                  return MOVE_CURSOR;
+              } else {
+--- 691,712 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.handler.mxGraphHandler#getCursor(java.awt.event
+           * .MouseEvent)
+           */
+          @Override
+          protected synchronized Cursor getCursor(MouseEvent e) {
+!             mxCell cell = (mxCell) graphComponent.getCellAt(e.getX(), e.getY(),
+!                     false);
+  
+              updateHighlight(cellFindingId.get(), cell);
+              if (cell == null) {
+                  return null;
+              }
+  
+!             if (isMoveEnabled() && graphComponent.getGraph().isCellMovable(cell)
+                      && isDragTrigger(e)) {
+                  return MOVE_CURSOR;
+              } else {
+***************
+*** 790,808 ****
+                      g2d.dispose();
+                  }
+              } finally {
+!                 log.info("Create GraphBuffer-"
+!                         + id
+!                         + " "
+!                         + (img == null ? "" : img.getWidth() + "x"
+!                                 + img.getHeight()) + " on " + graph + " in "
+!                         + (System.currentTimeMillis() - t) + " ms");
+              }
+              return new GraphBuffer(view, img, newTrans, newScale);
+          }
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.mxGraphComponent.mxGraphControl#paint(java.awt.
+           * Graphics)
+--- 788,807 ----
+                      g2d.dispose();
+                  }
+              } finally {
+!                 log.info(
+!                         "Create GraphBuffer-" + id + " "
+!                                 + (img == null ? ""
+!                                         : img.getWidth() + "x"
+!                                                 + img.getHeight())
+!                                 + " on " + graph + " in "
+!                                 + (System.currentTimeMillis() - t) + " ms");
+              }
+              return new GraphBuffer(view, img, newTrans, newScale);
+          }
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.mxGraphComponent.mxGraphControl#paint(java.awt.
+           * Graphics)
+***************
+*** 831,837 ****
+  
+          /*
+           * (non-Javadoc)
+!          * 
+           * @see
+           * com.mxgraph.swing.mxGraphComponent.mxGraphControl#updatePreferredSize
+           * ()
+--- 830,836 ----
+  
+          /*
+           * (non-Javadoc)
+!          *
+           * @see
+           * com.mxgraph.swing.mxGraphComponent.mxGraphControl#updatePreferredSize
+           * ()
+***************
+*** 852,858 ****
+  
+              /**
+               * Description:
+!              * 
+               * @param image
+               * @param trans
+               * @param scale
+--- 851,857 ----
+  
+              /**
+               * Description:
+!              *
+               * @param image
+               * @param trans
+               * @param scale
+

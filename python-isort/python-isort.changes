@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Sun Jun 30 13:17:40 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.3.21:
+ - Fixed issue #957 - Long aliases and use_parentheses generates invalid syntax
+
+-------------------------------------------------------------------
+Fri May 24 12:12:26 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.3.20:
+  - Fixed issue #948 - Pipe redirection broken on Python2.7
+  - Fixed issue #942 - correctly handle pyi (Python Template Files) to match `black` output
+- update to version 4.3.19:
+ - Fixed issue #942 - correctly handle pyi (Python Template Files) to match `black` output
+
+-------------------------------------------------------------------
+Tue May  7 08:06:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Again tweak failing tests
+
+-------------------------------------------------------------------
+Fri May  3 18:09:41 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to 4.3.18:
+ - Fixed an issue with parsing files that contain unicode characters in Python 2
+ - Fixed issue #924 - Pulling in pip internals causes depreciation warning
+ - Fixed issue #938 - Providing a way to filter explicitly passed in files via configuration settings (`--filter-files`)
+ - Improved interoperability with toml configuration files
+
+-------------------------------------------------------------------
+Mon Apr 29 22:13:28 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- skip failing tests
+- Update to 4.3.17:
+  - Fixed issue #905 & #919: Import section headers behaving
+    strangely
+
+-------------------------------------------------------------------
+Fri Mar 29 09:41:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing recommended dependencies
+
+-------------------------------------------------------------------
+Sun Mar 24 08:31:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.3.16:
+ - Fixed issue #909 - skip and skip-glob are not enforced when using settings-path.
+ - Fixed issue #907 - appdirs optional requirement does not correctly specify version
+ - Fixed issue #902 - Too broad warning about missing toml package
+ - Fixed issue #778 - remove `user` from known standard library as it's no longer in any supported Python version.
+
+-------------------------------------------------------------------
+Wed Mar 13 14:19:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.3.15:
+  * Fixed a regression with handling streaming input from pipes (Issue #895)
+  * Fixed handling of \x0c whitespace character (Issue #811)
+  * Improved CLI documentation
+  * Fixed a regression with /directory/.py style patterns
+  * Fixed the inability to accurately determine import section when a mix of conda and virtual environments are used.
+  * Fixed some output being printed even when --quiet mode is enabled.
+  * Fixed issue #890 interoperability with PyCharm by allowing case sensitive non type grouped sorting.
+  * Fixed issue #889 under some circumstances isort will incorrectly add a new line at the beginning of a file.
+  * Fixed issue #885 many files not being skipped according to set skip settings.
+  * Fixed issue #842 streaming encoding improvements.
+  * Fix error caused when a virtual environment not detected
+  * Fixed issue #876: confused by symlinks pointing to virtualenv gives FIRSTPARTY not THIRDPARTY
+  * Fixed issue #873: current version skips every file on travis
+  * Additional caching to reduce performance regression introduced in 4.3.5
+  * Improved handling of pex files and other binary Python files
+
+-------------------------------------------------------------------
+Mon Mar  4 13:25:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.3.10:
+  * Fixed Windows incompatibilities (Issue #835)
+  * Fixed relative import sorting bug (Issue #417)
+  * Fixed "no_lines_before" to also be respected from previous empty sections.
+  * Fixed slow-down introduced by finders mechanism by adding a LRU cache (issue #848)
+  * Fixed issue #842 default encoding not-set in Python2
+  * Restored Windows automated testing
+  * Added Mac automated testing
+
+-------------------------------------------------------------------
+Mon Mar  4 11:05:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix multibuild name
+
+-------------------------------------------------------------------
+Fri Mar  1 14:43:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid cycle with pylama
+
+-------------------------------------------------------------------
+Thu Feb 28 06:07:17 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop add-editorconfig.patch made redundant by new sdist
+- Add fdupes
+- Update to v4.3.9
+  * Fixed a bug that led to an incompatibility with black: #831
+- from 4.3.8
+  * Fixed a bug that led to the recursive option not always been available
+    from the command line.
+- from 4.3.7
+  * Expands the finder failsafe to occur on the creation of the finder objects.
+- from 4.3.6
+  * Fixes a fatal error that occurs if a single finder throws an exception.
+    Important as we add more finders that utilize third party libraries.
+- from 4.3.5
+  + Potentially Interface Breaking:
+    * The `-r` option for removing imports has been renamed `-rm` to avoid
+      accidental deletions and confusion with the `-rc` recursive option.
+    * `__init__.py` has been removed from the default ignore list. The default
+      ignore list is now empty - with all items needing to be explicitly ignored.
+    * Isort will now by default ignore .tox / venv folders in an effort to be "safe".
+      You can disable this behaviour by setting the "--unsafe" flag, this is
+      separate from any skip or not skip rules you may have in place.
+    * Isort now allows for files missing closing newlines in whitespace check
+    * `distutils` support has been removed to simplify setup.py
+  + New:
+    * Official Python 3.7 Compatibility.
+    * Support for using requirements files to auto determine third-paty
+      section if pipreqs & requirementslib are installed.
+    * Added support for using pyproject.toml if toml is installed.
+    * Added support for XDG_HOME if appdirs is installed.
+    * An option has been added to enable ignoring trailing comments
+      ('ignore_comments') defaulting to False.
+    * Added support to enable line length sorting for only specific sections
+    * Added a `correctly_sorted` property on the SortsImport to enable more
+      intuitive programmatic checking.
+  + Fixes:
+    * Improved black compatibility.
+    * Isort will no detect files in the CWD as first-party.
+    * Fixed several cases where '-ns' or 'not_skip' was being incorrectly
+      ignored.
+    * Fixed sorting of relative path imports ('.', '..', '...', etc).
+    * Fixed bugs caused by a failure to maintain order when loading iterables
+      from config files.
+    * Correctly handle CPython compiled imports and others that need EXT_SUFFIX
+      to correctly identify.
+    * Fixed handling of Symbolic Links to follow them when walking the path.
+    * Fixed handling of relative known_paths.
+    * Fixed lack of access to all wrap modes from the CLI.
+    * Fixed handling of FIFO files.
+    * Fixed a bug that could result in multiple imports being inserted on the
+      same line.
+
+-------------------------------------------------------------------
+Thu Feb 14 06:05:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Revert to using PyPI release by adding add-editorconfig.patch,
+  which is needed to allow the test suite to pass.
+  https://github.com/timothycrosley/isort/issues/814
+
+-------------------------------------------------------------------
+Sat Jul 21 04:35:40 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 4.3.4:
+  * Fixed issue #671: isort is corrupting CRLF files
+
+- changes from version 4.3.3:
+  * Fixed issue #665: Tabs turned into single spaces
+
+- changes from version 4.3.2:
+  * Fixed issue #651: Add imports option is broken
+  * Fixed issue #662: An error generated by rewriting .imports to
+    . imoprts
+
+-------------------------------------------------------------------
+Fri Feb  2 20:20:10 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to 4.3.1
+ * Fixed issue #654: Trailing comma count error
+ * Fixed issue #651: Add imports option is broken
+ * Fixed issue #650: Wrong error message displayed
+- update to 4.3.0
+ * Fixed #557: force_alphabetical_sort and force_sort_within_sections can now be utilized together without extra new lines
+ * Added --no-lines-before for more granular control over section output
+ * Fixed #493: Unwanted conversion to Windows line endings
+ * Implemented --version-number to retrieve just the version number without the isort logo
+- Remove patch-shebang.patch and replace it with a sed-call
+
+-------------------------------------------------------------------
+Wed Jun 21 15:28:33 UTC 2017 - sebix+novell.com@sebix.at
+
+- update description
+- install LICENSE as %license if possible
+- update to 4.2.15
+ * Fixed certain one line imports not being successfully wrapped
+- update to 4.2.14
+ * Fixed #559 & #565: Added missing standard library imports
+- update to 4.2.13
+ * Fixed #553: Check only and --diff now work together again
+- update to 4.2.12
+ * Fixed a problem with the wheel distribution
+- update to 4.2.11
+ * Fixed #546: Can't select y/n/c after latest update
+ * Fixed #545: Incorrectly moves future imports above encoding comments
+- update to 4.2.9
+ * Fixed #428: Check only modifies sorting
+ * Fixed #540: Not correctly identifying stdlib modules
+- update to 4.2.8
+ * Added --virtual-env switch command line option
+ * Added --enforce-whitespace option to go along with --check-only for more exact checks (issue #423)
+ * Fixed imports with a tailing '' and no space in-between getting removed (issue #425)
+ * Fixed issue #299: long lines occasionally not wrapped
+ * Fixed issue #432: No longer add import inside class when class starts at top of file after encoding comment
+ * Fixed issue #440: Added missing --use-parentheses option to command line tool and documentation
+ * Fixed issue #496: import* imports now get successfully identified and reformatted instead of deleted
+ * Fixed issue #491: Non ending parentheses withing single line comments no longer cause formatting issues
+ * Fixed issue #471: Imports that wrap the maximum line length and contain comments on the last line are no longer rendered incorrectly
+ * Fixed issue #436: Force sort within section no longer rearranges comments
+ * Fixed issue #473: Force_to_top and force_sort_within_sections now work together
+ * Fixed issue #484 & #472: Consistent output with imports of same spelling but different case
+ * Fixed issue #433: No longer incorrectly add an extra new-line when comment between imports and function definition
+ * Fixed issue #419: Path specification for skipped paths is not Unix/Windows inter-operable.
+ * Breaking Changes:
+ * Fixed issue #511: All command line options with an underscore, have had the underscore replaced with a dash for consistency. This effects: multi-line, add-import, remove-import, force-adds, --force-single-line-imports, and length-sort.
+ * Replaced the --enforce-whitespace option with --ignore-whitespace to restore original behavior of strict whitespace by default
+
+-------------------------------------------------------------------
+Fri Mar 24 17:01:44 UTC 2017 - jmatejek@suse.com
+
+- install LICENSE file
+
+-------------------------------------------------------------------
+Mon Mar  6 13:59:31 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+
+-------------------------------------------------------------------
+Sat Oct  8 16:07:18 UTC 2016 - sebix+novell.com@sebix.at
+
+- use github URL to run tests after packaging
+
+-------------------------------------------------------------------
+Fri Aug  5 14:14:24 UTC 2016 - sebix+novell.com@sebix.at
+
+-  patch-shebang.patch: removed superfluous shebang for packaged file main
+
+-------------------------------------------------------------------
+Sat Jun 25 15:34:58 UTC 2016 - arun@gmx.de
+
+- initial version
+

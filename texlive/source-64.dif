@@ -1,0 +1,31 @@
+---
+ configure     |    4 ++++
+ m4/libtool.m4 |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+--- configure
++++ configure	2018-04-10 08:58:00.463820598 +0000
+@@ -20674,6 +20674,10 @@ fi
+   # most powerpc-linux boxes support dynamic linking these days and
+   # people can always --disable-shared, the test was removed, and we
+   # assume the GNU/Linux dynamic linker is in use.
++  if test -n "$ARCH_LIB" ; then
++      sys_lib_search_path_spec="/usr/${ARCH_LIB} /${ARCH_LIB}"
++      sys_lib_dlsearch_path_spec="/usr/${ARCH_LIB} /${ARCH_LIB}"
++  fi
+   dynamic_linker='GNU/Linux ld.so'
+   ;;
+ 
+--- m4/libtool.m4
++++ m4/libtool.m4	2018-04-10 08:58:00.463820598 +0000
+@@ -2884,6 +2884,10 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu
+   # most powerpc-linux boxes support dynamic linking these days and
+   # people can always --disable-shared, the test was removed, and we
+   # assume the GNU/Linux dynamic linker is in use.
++  if test -n "$ARCH_LIB" ; then
++      sys_lib_search_path_spec="/usr/${ARCH_LIB} /${ARCH_LIB}"
++      sys_lib_dlsearch_path_spec="/usr/${ARCH_LIB} /${ARCH_LIB}"
++  fi
+   dynamic_linker='GNU/Linux ld.so'
+   ;;
+ 

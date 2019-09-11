@@ -1,0 +1,34 @@
+Index: toluapp-1.0.93/SConstruct
+===================================================================
+--- toluapp-1.0.93.orig/SConstruct
++++ toluapp-1.0.93/SConstruct
+@@ -52,9 +52,9 @@ env['TOLUAPP_BOOTSTRAP'] = env['tolua_bi
+ env['build_dev'] = int(env['build_dev'])
+ 
+ ## detecting the install directory on win32
+-if 'msvc' in env['TOOLS'] and not (env.has_key('prefix') or env['prefix']):
++if 'msvc' in env['TOOLS'] and not ('prefix' in env or env['prefix']):
+ 
+-	if env['MSVS'].has_key('PLATFORMSDKDIR'):
++	if 'PLATFORMSDKDIR' in env['MSVS']:
+ 		env['prefix'] = env['MSVS']['PLATFORMSDKDIR']
+ 
+ 
+@@ -68,7 +68,7 @@ def pkg_scan_dep(self, target, source):
+ 	## TODO: detectar si el archivo existe antes de abrirlo asi nomas
+ 	pkg = open(source, "rt")
+ 
+-	for linea in pkg.xreadlines():
++	for linea in pkg:
+ 		dep = re.search("^[\t\w]*\$[cphl]file\s*\"([^\"]+)\"", linea)
+ 		if dep:
+ 			self.Depends(target, '#' + dep.groups()[0]);
+@@ -91,7 +91,7 @@ def make_tolua_code(self, target, source
+ 			tolua = 'bin\\'+self['TOLUAPP_BOOTSTRAP']
+ 		else:
+ 			tolua = 'bin/'+self['TOLUAPP_BOOTSTRAP']
+-		print("********* tolua is ", tolua)
++		print(("********* tolua is ", tolua))
+ 	else:
+ 		if use_own:
+ 			if 'msvc' in self['TOOLS']:

@@ -1,0 +1,44 @@
+From 635755b57f6e750dbfc9356eda54d7a4366b8965 Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <astieger@suse.com>
+Date: Mon, 7 Mar 2016 08:12:19 -0500
+Subject: [PATCH] Test: fix test_otrl_base64_otr_decode
+References: https://bugs.otr.im/issues/91
+Upstream: in review
+
+otrl_base64_decode does not null terminate the output buffer, therefore the
+string compare operation in the test must be passed the length.
+
+Signed-off-by: Andreas Stieger <astieger@suse.com>
+Signed-off-by: David Goulet <dgoulet@ev0ke.net>
+---
+ tests/unit/test_b64.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/tests/unit/test_b64.c b/tests/unit/test_b64.c
+index 6d55992..e29b831 100644
+--- a/tests/unit/test_b64.c
++++ b/tests/unit/test_b64.c
+@@ -26,7 +26,7 @@
+ 
+ GCRY_THREAD_OPTION_PTHREAD_IMPL;
+ 
+-#define NUM_TESTS 10
++#define NUM_TESTS 11
+ 
+ const char *alphanum_encoded =
+ 	"?OTR:" "YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY3ODkwCg==" ".";
+@@ -64,8 +64,9 @@ static void test_otrl_base64_otr_decode(void)
+ 
+ 	ok(otrl_base64_otr_decode(alphanum_encoded, &bufp, &len) == 0,
+ 			"Call with valid data successfull");
+-	ok(strcmp((const char*)bufp, alphanum_decoded) == 0
+-			&& len == 37, "Decoded valid b64 test vector with success");
++	ok(len == 37, "Decoded valid b64 test vector with correct length");
++	ok(strncmp((const char*)bufp, alphanum_decoded, len) == 0,
++			"Decoded valid b64 test vector with success");
+ 	free(bufp);
+ 	bufp = NULL;
+ 	len = 0;
+-- 
+2.6.2
+

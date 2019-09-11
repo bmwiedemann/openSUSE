@@ -1,0 +1,52 @@
+From 0b1bf3932f1b1700d3c8a997e4850fb9a013569d Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 11 Apr 2019 17:14:06 +0800
+Subject: [PATCH 5/8] acpi: Fix gcc9 error -Waddress-of-packed-member
+
+Simply adds the missing packed attribute to 'struct grub_acpi_madt'.
+
+[  233s] ../../grub-core/commands/lsacpi.c: In function 'disp_acpi_xsdt_table':
+[  233s] ../../grub-core/commands/lsacpi.c:201:27: error: converting a packed 'struct grub_acpi_table_header' pointer (alignment 1) to a 'struct grub_acpi_madt' pointer (alignment 4) may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[  233s]   201 |  disp_madt_table ((struct grub_acpi_madt *) t);
+[  233s]       |                           ^~~~~~~~~~~~~~
+[  233s] In file included from ../../grub-core/commands/lsacpi.c:23:
+[  233s] ../../include/grub/acpi.h:50:8: note: defined here
+[  233s]    50 | struct grub_acpi_table_header
+[  233s]       |        ^~~~~~~~~~~~~~~~~~~~~~
+[  233s] ../../include/grub/acpi.h:90:8: note: defined here
+[  233s]    90 | struct grub_acpi_madt
+[  233s]       |        ^~~~~~~~~~~~~~
+[  233s] ../../grub-core/commands/lsacpi.c: In function 'disp_acpi_rsdt_table':
+[  233s] ../../grub-core/commands/lsacpi.c:225:27: error: converting a packed 'struct grub_acpi_table_header' pointer (alignment 1) to a 'struct grub_acpi_madt' pointer (alignment 4) may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[  233s]   225 |  disp_madt_table ((struct grub_acpi_madt *) t);
+[  233s]       |                           ^~~~~~~~~~~~~~
+[  233s] In file included from ../../grub-core/commands/lsacpi.c:23:
+[  233s] ../../include/grub/acpi.h:50:8: note: defined here
+[  233s]    50 | struct grub_acpi_table_header
+[  233s]       |        ^~~~~~~~~~~~~~~~~~~~~~
+[  233s] ../../include/grub/acpi.h:90:8: note: defined here
+[  233s]    90 | struct grub_acpi_madt
+[  233s]       |        ^~~~~~~~~~~~~~
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ include/grub/acpi.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/grub/acpi.h b/include/grub/acpi.h
+index 66148f684..84f49487d 100644
+--- a/include/grub/acpi.h
++++ b/include/grub/acpi.h
+@@ -93,7 +93,7 @@ struct grub_acpi_madt
+   grub_uint32_t lapic_addr;
+   grub_uint32_t flags;
+   struct grub_acpi_madt_entry_header entries[0];
+-};
++} GRUB_PACKED;
+ 
+ enum
+   {
+-- 
+2.16.4
+

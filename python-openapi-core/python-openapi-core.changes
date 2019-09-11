@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Jul 23 13:45:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.0:
+  * End of Python 3.4 support (#136)
+  * Add support for one-of with any type (#133)
+  * Modify FlaskOpenAPIRequest to accommodate path variables (#141)
+  * Primitive types unmarshallers (#138)
+  * attr errors hashable fix (#143)
+  * Parameters on path item object support (#144)
+
+-------------------------------------------------------------------
+Mon Jun  3 11:20:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.0:
+  * Various tests and support updates
+- Update requirements to match up upstream
+
+-------------------------------------------------------------------
+Wed Aug  8 14:45:32 UTC 2018 - tchvatal@suse.com
+
+- Switch to github tarball to get tests
+- Run the tests
+
+-------------------------------------------------------------------
+Mon Jul 30 21:05:25 UTC 2018 - sean.marlow@suse.com
+
+- Initial release v0.5.0

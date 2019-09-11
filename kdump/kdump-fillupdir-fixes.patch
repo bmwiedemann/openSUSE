@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 77205e1..3032d3d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,7 +182,7 @@ ADD_CUSTOM_TARGET(
+ INSTALL(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/sysconfig.kdump
+     DESTINATION
+-        /var/adm/fillup-templates/
++        /usr/share/fillup-templates/
+ )
+ 
+ ADD_CUSTOM_COMMAND(

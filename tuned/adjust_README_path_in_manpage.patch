@@ -1,0 +1,13 @@
+Index: tuned-2.11.0+git20190405.b4d9dfc/man/tuned.8
+===================================================================
+--- tuned-2.11.0+git20190405.b4d9dfc.orig/man/tuned.8	2019-04-05 10:49:17.000000000 +0200
++++ tuned-2.11.0+git20190405.b4d9dfc/man/tuned.8	2019-04-11 14:36:06.736132817 +0200
+@@ -59,7 +59,7 @@ Show version information.
+ .SH "FILES"
+ .nf
+ /etc/tuned
+-/usr/share/doc/tuned/README
++/usr/share/doc/packages/tuned/README
+ .SH "SEE ALSO"
+ .LP
+ tuned.conf(5)

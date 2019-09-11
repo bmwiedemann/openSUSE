@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>SUSE YaST DRBD</short>
+  <description>This allows you to open various ports related to SUSE YaST DRBD. Port 7788 and higher is recommend.</description>
+  <port protocol="tcp" port="7788"/>
+</service>

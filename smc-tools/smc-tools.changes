@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Nov 30 21:11:45 UTC 2018 - mpost@suse.com
+
+- Made multiple changes to the spec file based on the output
+  from spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 27 20:40:30 UTC 2018 - mpost@suse.com
+
+- Upgraded to version 1.1.0 (Fates 325009, 325168 and 325702)
+  Changes:
+  * smcss:    Add IPv6 support
+  * preload:  Add IPv6 support
+  * smcss:    Output format changed
+  * preload:  Rename preload library into libsmc-preload.so
+  * Makefile: Improve distro compatibility
+  * Makefile: Add SONAME to shared libraries
+  * Makefile: Do not strip binaries on install
+  * Makefile: Use LDFLAGS to allow addition of externally set link flags
+  * libsmc..: Remove hardcoded reference to libc
+  * Manpages: Formatting changes
+  Bug fixes:
+  * Makefile: Fix target 'install' dependencies
+  * smcss:    Fix "--version" output
+  * smc_pnet: Fix "--version" output
+  * smc_run:	Append preload library to LD_PRELOAD instead of potentially
+                overwriting pre-set values
+  * preload:  Set suid flag to work with suid executables
+- Updated the spec file to reference the new names for the shared
+  library.
+- Removed the ExcludeArch for %{arm} since it now builds on that
+  architecture.
+
+-------------------------------------------------------------------
+Fri Sep 29 20:16:24 UTC 2017 - mpost@suse.com
+
+- Added an ExcludeArch for %{arm} so that we won't try to build
+  the package on armv7l. The build fails on that architecture.
+
+-------------------------------------------------------------------
+Mon Apr  3 13:45:31 UTC 2017 - jengelh@inai.de
+
+- Update summary. Replace old RPM shell variables by macros.
+
+-------------------------------------------------------------------
+Mon Mar 20 22:17:15 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 1.0.0 (Fate#322376).
+
+-------------------------------------------------------------------
+Fri May  6 15:11:24 UTC 2016 - mpost@suse.com
+
+- Initial packaging of version 0.1.1 (Fate#319569).
+

@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Fri Jul 26 07:52:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.2.1
+    * Restore (partial) support for Python 3.4 for downstream projects that have LTS versions that would benefit from cloudpickle bug fixes.
+    * Leverage the C-accelerated Pickler new subclassing API (available in Python 3.8) in cloudpickle. This allows cloudpickle to pickle Python objects up to 30 times faster. (issue #253)
+    * Support pickling of classmethod and staticmethod objects in python2. arguments. (issue #262)
+    * Add support to pickle type annotations for Python 3.5 and 3.6 (pickling type annotations was already supported for Python 3.7, Python 3.4 might also work but is no longer officially supported by cloudpickle) (issue #276)
+    * Internal refactoring to proactively detect dynamic functions and classes when pickling them. This refactoring also yields small performance improvements when pickling dynamic classes (~10%) (issue #273)
+
+-------------------------------------------------------------------
+Tue May 21 11:38:21 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1.1 
+  * Support the pickling of interactively-defined functions with 
+    positional-only arguments.
+  * Track the provenance of dynamic classes and enums.
+  * Fix a bug making functions with keyword-only arguments forget 
+    the default values of these arguments after being pickled.
+
+-------------------------------------------------------------------
+Thu Mar 28 14:20:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Fix a bug (already present before 0.5.3 and re-introduced in 0.8.0) affecting relative import instructions inside depickled functions (issue #254)
+
+-------------------------------------------------------------------
+Thu Mar  7 13:00:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.0:
+  * Add support for pickling interactively defined dataclasses. (issue #245)
+  * Global variables referenced by functions pickled by cloudpickle are now unpickled in a new and isolated namespace scoped by the CloudPickler instance. This restores the (previously untested) behavior of cloudpickle prior to changes done in 0.5.4 for functions defined in the __main__ module, and 0.6.0/1 for other dynamic functions.
+
+-------------------------------------------------------------------
+Tue Feb  5 15:42:55 UTC 2019 - alarrosa@suse.com
+
+- Update to version 0.7.0:
+  * Correctly serialize dynamically defined classes that have a __slots__
+    attribute. (issue #225)
+- Update to version 0.6.1
+  * Fix regression in 0.6.0 which breaks the pickling of local function
+    defined in a module, making it impossible to access builtins. (issue #211)
+- Update to version 0.6.0
+  * Ensure that unpickling a function defined in a dynamic module several
+    times sequentially does not reset the values of global variables.
+    (issue #187)
+  * Restrict the ability to pickle annotations to python3.7+ (issue #193
+    and issue #196)
+  * Stop using the deprecated imp module under Python 3. (issue #207)
+  * Fixed pickling issue with singleton types NoneType, type(...) and
+    type(NotImplemented) (issue #209)
+- Update to version 0.5.6
+  * Ensure that unpickling a locally defined function that accesses the global
+    variables of a module does not reset the values of the global variables if
+    they are already initialized. (issue #187)
+- Update to version 0.5.5
+  * Fixed inconsistent version in cloudpickle.__version__.
+- Update to version 0.5.4
+  * Fixed a pickling issue for ABC in python3.7+ (issue #180).
+  * Fixed a bug when pickling functions in __main__ that access global
+    variables (issue #187).
+
+-------------------------------------------------------------------
+Wed Jul 18 11:48:40 UTC 2018 - tchvatal@suse.com
+
+- Fix runtime dependencies and raise numpy requirement
+
+-------------------------------------------------------------------
+Sat Jul 14 19:14:34 UTC 2018 - arun@gmx.de
+
+- update to version 0.5.3:
+  * Fixed a crash in Python 2 when serializing non-hashable
+    instancemethods of built-in types (issue #144).
+  * itertools objects can also pickled (PR #156).
+  * logging.RootLogger can be also pickled (PR #160).
+
+-------------------------------------------------------------------
+Sun Mar 11 08:53:30 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use %license macro for license.
+
+-------------------------------------------------------------------
+Wed Nov 22 19:42:07 UTC 2017 - arun@gmx.de
+
+- update to version 0.5.2:
+  * Fixed a regression: AttributeError when loading pickles that hold
+    a reference to a dynamically defined class from the __main__
+    module. (issue #131).
+  * Make it possible to pickle classes and functions defined in faulty
+    modules that raise an exception when trying to look-up their
+    attributes by name.
+
+-------------------------------------------------------------------
+Fri Nov 10 15:55:55 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.5.1
+  * Fixed `cloudpickle.__version__`.
+- Update to 0.5.0
+  * Use `pickle.HIGHEST_PROTOCOL` by default.
+- Update to 0.4.2
+  * Restored compatibility with pickles from 0.4.0.
+  * Handle the `func.__qualname__` attribute.
+- Update to 0.4.1
+  * Fixed a crash when pickling dynamic classes whose `__dict__` attribute was
+    defined as a [`property`](https://docs.python.org/3/library/functions.html#property).
+    Most notably, this affected dynamic [namedtuples](https://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields)
+    in Python 2. (https://github.com/cloudpipe/cloudpickle/pull/113)
+  * Cloudpickle now preserves the `__module__` attribute of functions (https://github.com/cloudpipe/cloudpickle/pull/118/).
+  * Fixed a crash when pickling modules that don't have a `__package__` attribute (https://github.com/cloudpipe/cloudpickle/pull/116).
+- Update to 0.4.0
+  * Fix functions with empty cells
+  * Allow pickling Logger objects
+  * Fix crash when pickling dynamic class cycles
+  * Ignore "None" mdoules added to sys.modules
+  * Support WeakSets and ABCMeta instances
+  * Remove non-standard `__transient__` support
+  * Catch exception from `pickle.whichmodule()`
+- Update to 0.3.1
+  * Fix version information and ship a changelog
+- Update to 0.3.0
+  * Import submodules accessed by pickled functions
+  * Support recursive functions inside closures
+  * Fix `ResourceWarnings` and `DeprecationWarnings`
+  * Assume modules with `__file__` attribute are not dynamic
+
+-------------------------------------------------------------------
+Thu May 11 03:26:35 UTC 2017 - toddrme2178@gmail.com
+
+- Implement singlespec version
+- Fix source URL.
+- Update to version 0.2.2
+  * Support Python 3.6
+  * Support Tornado Coroutines
+  * Support builtin methods
+- Update to version 0.2.1
+  * Packaging fix
+- Update to version 0.2.0
+  * Support `method_descriptor`
+  * Support unbound instancemethods
+  * Fixes for PyPy3
+  * More support for pickling dynamic imports
+
+-------------------------------------------------------------------
+Fri Jan 15 14:14:30 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

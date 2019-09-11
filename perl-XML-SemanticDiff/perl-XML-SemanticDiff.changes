@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Thu Aug 16 06:18:30 UTC 2018 - coolo@suse.com
+
+- updated to 1.0007
+   see /usr/share/doc/packages/perl-XML-SemanticDiff/Changes
+
+  1.0007 2018-07-31
+      - Drop minimum perl back down to 5.8
+
+-------------------------------------------------------------------
+Thu Sep 28 06:21:36 UTC 2017 - coolo@suse.com
+
+- updated to 1.0006
+   see /usr/share/doc/packages/perl-XML-SemanticDiff/Changes
+
+  1.0006 2017-09-27
+      - Fixed bug: https://rt.cpan.org/Public/Bug/Display.html?id=84546
+        where the code was failing to find the difference in this scenario
+        Before: <element>0</element> After: <element></element>
+
+-------------------------------------------------------------------
+Tue Feb 21 07:44:33 UTC 2017 - coolo@suse.com
+
+- updated to 1.0005
+   see /usr/share/doc/packages/perl-XML-SemanticDiff/Changes
+
+  1.0005 2017-02-06
+      - Convert the distribution to use git, GitHub, and Dist-Zilla.
+      - Correct some spelling errors and add more tests.
+      - Remove trailing whitespace.
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:31 UTC 2014 - coolo@suse.com
+
+- updated to 1.0004
+    - Update the contact info for Shlomi Fish from the old one.
+    - Add separate LICENSE file (CPANTS).
+    - Add inc/Test/Run/Builder.pm .
+
+-------------------------------------------------------------------
+Fri Oct  4 09:14:21 UTC 2013 - coolo@suse.com
+
+- updated to 1.0002
+     - Convert "Changes" (this file) to CPAN::Changes.
+     - Fix https://rt.cpan.org/Ticket/Display.html?id=87903
+         - Case problem with "repository" in "Build.PL".
+     - Remove trailing space.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:19 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Aug 25 10:16:54 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.0000)
+

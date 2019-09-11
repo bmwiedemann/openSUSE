@@ -1,0 +1,200 @@
+From 6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1 Mon Sep 17 00:00:00 2001
+From: "John E. Davis" <jed@jedsoft.org>
+Date: Tue, 30 Jan 2018 04:04:17 -0500
+Subject: [PATCH] pre2.3.2-19: Added support for the new ncurses 32-bit
+ terminfo database entries.
+
+---
+ src/sltermin.c |   76 +++++++++++++++++++++++++++++++++++++++++++--------------
+ src/untic.c    |    5 ++-
+ 2 files changed, 61 insertions(+), 20 deletions(-)
+
+--- src/sltermin.c
++++ src/sltermin.c	2018-02-09 08:45:27.600773794 +0000
+@@ -36,6 +36,11 @@ USA.
+  * term(4) man page on an SGI.
+  */
+ 
++/* The ncurses terminfo binary files come in two flavors: A legacy
++ * format that uses 16 bit integers in the number-section, and a new
++ * 32 bit format (nurses 6, from 2018).
++ */
++
+ /* Short integers are stored in two 8-bit bytes.  The first byte contains
+  * the least significant 8 bits of the value, and the second byte contains
+  * the most significant 8 bits.  (Thus, the value represented is
+@@ -46,7 +51,7 @@ USA.
+  * source and also is to be considered missing.
+  */
+ 
+-static int make_integer (unsigned char *buf)
++static int make_integer16 (unsigned char *buf)
+ {
+    register int lo, hi;
+    lo = (int) *buf++; hi = (int) *buf;
+@@ -58,6 +63,20 @@ static int make_integer (unsigned char *
+    return lo + 256 * hi;
+ }
+ 
++static int make_integer32 (unsigned char *buf)
++{
++   unsigned int u;
++   int i;
++
++   u = (unsigned int)buf[0];
++   u |= ((unsigned int)buf[1])<<8;
++   u |= ((unsigned int)buf[2])<<16;
++   u |= ((unsigned int)buf[3])<<24;
++
++   i = (int)u;
++   return i;
++}
++
+ /*
+  * The compiled file is created from the source file descriptions of the
+  * terminals (see the -I option of infocmp) by using the terminfo compiler,
+@@ -67,14 +86,15 @@ static int make_integer (unsigned char *
+  *
+  * The header section begins the file.  This section contains six short
+  * integers in the format described below.  These integers are (1) the magic
+- * number (octal 0432); (2) the size, in bytes, of the names section; (3)
+- * the number of bytes in the boolean section; (4) the number of short
+- * integers in the numbers section; (5) the number of offsets (short
++ * number (legacy:0432, 01036:32 but); (2) the size, in bytes, of the names section; (3)
++ * the number of bytes in the boolean section; (4) the number of integers
++ * in the numbers section; (5) the number of offsets (short
+  * integers) in the strings section; (6) the size, in bytes, of the string
+  * table.
+  */
+ 
+-#define MAGIC 0432
++#define MAGIC_LEGACY 0432
++#define MAGIC_32BIT 01036
+ 
+ /* In this structure, all char * fields are malloced EXCEPT if the
+  * structure is SLTERMCAP.  In that case, only terminal_names is malloced
+@@ -94,6 +114,8 @@ struct _pSLterminfo_Type
+ 
+    unsigned int num_numbers;
+    unsigned char *numbers;
++   unsigned int sizeof_number;
++   int (*make_integer)(unsigned char *);
+ 
+    unsigned int num_string_offsets;
+    unsigned char *string_offsets;
+@@ -112,6 +134,7 @@ static FILE *open_terminfo (char *file,
+ {
+    FILE *fp;
+    unsigned char buf[12];
++   int magic;
+ 
+    /* Alan Cox reported a security problem here if the application using the
+     * library is setuid.  So, I need to make sure open the file as a normal
+@@ -150,19 +173,34 @@ static FILE *open_terminfo (char *file,
+ 
+    if (fp == NULL) return NULL;
+ 
+-   if ((12 == fread ((char *) buf, 1, 12, fp) && (MAGIC == make_integer (buf))))
++   if (12 != fread ((char *)buf, 1, 12, fp))
++     {
++	(void) fclose(fp);
++	return NULL;
++     }
++   magic = make_integer16(buf);
++   if (magic == MAGIC_LEGACY)
++     {
++	h->make_integer = make_integer16;
++	h->sizeof_number = 2;
++     }
++   else if (magic == MAGIC_32BIT)
+      {
+-	h->name_section_size = make_integer (buf + 2);
+-	h->boolean_section_size = make_integer (buf + 4);
+-	h->num_numbers = make_integer (buf + 6);
+-	h->num_string_offsets = make_integer (buf + 8);
+-	h->string_table_size = make_integer (buf + 10);
++	h->make_integer = make_integer32;
++	h->sizeof_number = 4;
+      }
+    else
+      {
+-	fclose (fp);
+-	fp = NULL;
++	(void) fclose (fp);
++	return NULL;
+      }
++
++   h->name_section_size = make_integer16 (buf + 2);
++   h->boolean_section_size = make_integer16 (buf + 4);
++   h->num_numbers = make_integer16 (buf + 6);
++   h->num_string_offsets = make_integer16 (buf + 8);
++   h->string_table_size = make_integer16 (buf + 10);
++
+    return fp;
+ }
+ 
+@@ -215,13 +253,14 @@ static unsigned char *read_boolean_flags
+ 
+ /*
+  * The numbers section is similar to the boolean flags section.  Each
+- * capability takes up two bytes, and is stored as a short integer.  If the
+- * value represented is -1 or -2, the capability is taken to be missing.
++ * capability takes up 2(4) bytes for the legacy(32 bit) format and
++ * is stored as a integer.  If the value represented is -1 or -2, the
++ * capability is taken to be missing.
+  */
+ 
+ static unsigned char *read_numbers (FILE *fp, SLterminfo_Type *t)
+ {
+-   return t->numbers = read_terminfo_section (fp, 2 * t->num_numbers);
++   return t->numbers = read_terminfo_section (fp, t->sizeof_number * t->num_numbers);
+ }
+ 
+ /* The strings section is also similar.  Each capability is stored as a
+@@ -430,7 +469,7 @@ char *_pSLtt_tigetstr (SLterminfo_Type *
+ 
+    offset = compute_cap_offset (cap, t, Tgetstr_Map, t->num_string_offsets);
+    if (offset < 0) return NULL;
+-   offset = make_integer (t->string_offsets + 2 * offset);
++   offset = make_integer16 (t->string_offsets + 2 * offset);
+    if (offset < 0) return NULL;
+    return t->string_table + offset;
+ }
+@@ -446,7 +485,8 @@ int _pSLtt_tigetnum (SLterminfo_Type *t,
+ 
+    offset = compute_cap_offset (cap, t, Tgetnum_Map, t->num_numbers);
+    if (offset < 0) return -1;
+-   return make_integer (t->numbers + 2 * offset);
++
++   return (*t->make_integer)(t->numbers + t->sizeof_number * offset);
+ }
+ 
+ int _pSLtt_tigetflag (SLterminfo_Type *t, SLCONST char *cap)
+--- src/untic.c
++++ src/untic.c	2018-02-09 08:45:27.656772726 +0000
+@@ -36,7 +36,7 @@ int main (int argc, char **argv)
+    puts (t->terminal_names);
+    while (*map->name != 0)
+      {
+-	str = (unsigned char *) SLtt_tigetstr (map->name, (char **) &t);
++	str = (unsigned char *) SLtt_tigetstr ((SLFUTURE_CONST char *)map->name, (char **) &t);
+ 	if (str == NULL)
+ 	  {
+ 	     map++;
+@@ -76,7 +76,7 @@ int main (int argc, char **argv)
+    while (*map->name != 0)
+      {
+ 	int val;
+-	if ((val = SLtt_tigetnum (map->name, (char **) &t)) >= 0)
++	if ((val = SLtt_tigetnum ((SLFUTURE_CONST char *)map->name, (char **) &t)) >= 0)
+ 	  {
+ 	     fprintf (stdout, "\t%s#%d\t\t%s\n",
+ 		      map->name, val,
+@@ -85,6 +85,7 @@ int main (int argc, char **argv)
+ 	map++;
+      }
+ 
++   _pSLtt_tifreeent (t);
+    return 0;
+ }
+ 

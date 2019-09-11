@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Mon Jul 29 15:08:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make package not noarch: it is not installable on archs where
+  ceph is not being built. Copy the ExclusiveArch statement from
+  ceph.spec.
+
+-------------------------------------------------------------------
+Tue Jun 11 10:36:22 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1560249372.g70ec7a9:
+  + spec: drop python3-configshell-fb version guard
+
+-------------------------------------------------------------------
+Mon Jun 10 15:39:27 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1560181178.g3010fd7:
+  + Fix config hash check validation
+  + spec: fix rhel conditional blocks
+
+-------------------------------------------------------------------
+Thu Jun  6 16:25:29 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1559837868.g8be74cf:
+  + spec: conflict only with lrbd <= 3.0 to ensure lrbd is not installed
+    simultaneously with ceph-iscsi
+
+-------------------------------------------------------------------
+Thu Jun  6 10:04:00 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1559815396.g7aa8f7f:
+  + Set 'SUSE' SCSI vendor (bsc#1136769)
+  + Adds support for multiple IPs per gateway (bsc#1136757)
+  + Do not allow lrbd to be installed simultaneously with ceph-iscsi
+  + Temporary workaround to support ',' in configshell params (must be removed/reverted in the future, after configshell >= 1.1.f25 is available)
+  + Fix problem deleting target with clients/disks
+  + Removes the disk 'delete' command 
+
+-------------------------------------------------------------------
+Tue May 21 19:09:22 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1558465738.g6a0a021:
+  + If fqdn is enabled, "getfqdn" should be used instead of "gethostname"
+
+-------------------------------------------------------------------
+Tue May 21 12:57:59 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1558443949.g9784103:
+  + rbd-target-gw/api systemd dep fix
+  + Add support for enabling FQDN
+
+-------------------------------------------------------------------
+Thu May  9 15:21:26 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1557415271.g940ac86: 
+  + Fix race condition on target disk add (bsc#1134479)
+
+-------------------------------------------------------------------
+Thu May  9 10:28:06 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1557397680.g929bd14:
+  + logger level is now configurable
+  + tcmu-runner supports all RBD features
+  + allow deletion of a target that doesn't exist in LIO
+
+-------------------------------------------------------------------
+Mon Apr 29 14:04:00 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.0+1556546618.g28a0e8a:
+  + Should be possible to export config without targets
+  + Prevent error getting the number of active sessions
+  + Fix race condition in '_targetauth' config update
+  + Fix error when trying to get client info from 'gwcli'
+
+-------------------------------------------------------------------
+Mon Apr  8 14:35:04 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1554735444.g63aceaf:
+  + Adds endpoints:
+    * /api/targetinfo/<target_iqn>
+    * /api/gatewayinfo
+    * /api/clientinfo/<target_iqn>/<client_iqn>
+  + Fix upgrade from config v3 when 'controls' field is missing
+
+-------------------------------------------------------------------
+Mon Mar 25 15:44:13 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1553528639.g1149ac6:
+  + '/settings' endpoint return required and support RBD features by backstore
+  + Enable/disable 'demo_mode_write_protect' when enabling/disabling ACL authentication
+
+-------------------------------------------------------------------
+Wed Mar 20 10:13:03 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1553076762.g61c150a:
+  + Gateway management fixes and features
+  + regression: fix lun reconfigure failure
+
+-------------------------------------------------------------------
+Fri Mar 15 10:07:28 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1552644320.g118bce3:
+  + Fix chap config update
+  + Always use rados client name when connecting to Ceph cluster
+  + spec: add python-configshell runtime dependency
+  + gw: use client id when calling ceph shell command
+  + Fix race condition after gateway creation
+  + Misc target/acl reconfigure fixes
+
+-------------------------------------------------------------------
+Mon Mar 11 11:35:48 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1552304123.g67b0d30:
+  + add support for 'rbd' backstore (Ricardo Marques) 
+
+-------------------------------------------------------------------
+Thu Feb 28 10:45:20 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1551350485.g157b5fd: 
+  + refactor spec file for better Fedora/RHEL and Python 3 support (Ricardo Dias)
+  + rados pool for storing configuration is now configurable (Ricardo Marques)
+  + support for specifying the cluster client name (Ricardo Dias)
+
+-------------------------------------------------------------------
+Tue Feb 19 16:04:43 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1550592273.gda1fd9b:
+  + Support for kernel LIO backstore (which is the default backstore on SES6)
+    (Ricardo Marques)
+  + Disable OS, and package version checks (Ricardo Marques)
+
+-------------------------------------------------------------------
+Thu Feb  7 17:00:40 UTC 2019 - ncutler@suse.com
+
+- checkin.sh: append git SHA1 to version number 
+
+-------------------------------------------------------------------
+Mon Feb  4 10:55:10 UTC 2019 - ncutler@suse.com
+
+- Update to 3.0+1549277704:
+  + based on upstream master SHA1 17023339c03f8a8ad289db7689f6d6424c2b860f 
+    * packaging: Move python unbuffered option to systemd unit file
+      (bsc#1123070)
+
+-------------------------------------------------------------------
+Thu Jan 17 10:30:29 UTC 2019 - ncutler@suse.com
+
+- checkin.sh: ensure tarballs are uniquely named
+
+-------------------------------------------------------------------
+Wed Jan 16 11:44:12 UTC 2019 - ncutler@suse.com
+
+- multiple iSCSI target support (Ricardo Marques) 
+
+-------------------------------------------------------------------
+Fri Dec  7 15:48:40 UTC 2018 - ncutler@suse.com
+
+- migrate from python3-pycrypto to python3-cryptography 
+  (Ricardo Dias)
+
+-------------------------------------------------------------------
+Wed Dec  5 14:00:40 UTC 2018 - ncutler@suse.com
+
+- spec: use correct package name for python3-Flask dependency 
+
+-------------------------------------------------------------------
+Mon Nov 19 12:01:39 UTC 2018 - ncutler@suse.com
+
+- Add support for Python3 (Ricardo Marques) 
+
+-------------------------------------------------------------------
+Wed Nov 14 14:15:52 UTC 2018 - ncutler@suse.com
+
+- Initial commit, based on SUSE/ceph-iscsi.git branch "ses6",
+  SHA1 9c04ed0c3fe7a9ad057b3bb676f5f07cf97270fc
+  (upstream 0b9046105d900ca03249d044ce759c12efa5a016)

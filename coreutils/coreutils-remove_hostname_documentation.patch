@@ -1,0 +1,92 @@
+---
+ doc/coreutils.texi |   42 +-----------------------------------------
+ 1 file changed, 1 insertion(+), 41 deletions(-)
+
+Index: doc/coreutils.texi
+===================================================================
+--- doc/coreutils.texi.orig
++++ doc/coreutils.texi
+@@ -71,7 +71,6 @@
+ * groups: (coreutils)groups invocation.         Print group names a user is in.
+ * head: (coreutils)head invocation.             Output the first part of files.
+ * hostid: (coreutils)hostid invocation.         Print numeric host identifier.
+-* hostname: (coreutils)hostname invocation.     Print or set system name.
+ * id: (coreutils)id invocation.                 Print user identity.
+ * install: (coreutils)install invocation.       Copy files and set attributes.
+ * join: (coreutils)join invocation.             Join lines on a common field.
+@@ -203,7 +202,7 @@ Free Documentation License''.
+ * File name manipulation::       dirname basename pathchk mktemp realpath
+ * Working context::              pwd stty printenv tty
+ * User information::             id logname whoami groups users who
+-* System context::               date arch nproc uname hostname hostid uptime
++* System context::               date arch nproc uname hostid uptime
+ * SELinux context::              chcon runcon
+ * Modified command invocation::  chroot env nice nohup stdbuf timeout
+ * Process control::              kill
+@@ -426,7 +425,6 @@ System context
+ * date invocation::              Print or set system date and time
+ * nproc invocation::             Print the number of processors
+ * uname invocation::             Print system information
+-* hostname invocation::          Print or set system name
+ * hostid invocation::            Print numeric host identifier
+ * uptime invocation::            Print system uptime and load
+ 
+@@ -15726,7 +15724,6 @@ information.
+ * arch invocation::             Print machine hardware name.
+ * nproc invocation::            Print the number of processors.
+ * uname invocation::            Print system information.
+-* hostname invocation::         Print or set system name.
+ * hostid invocation::           Print numeric host identifier.
+ * uptime invocation::           Print system uptime and load.
+ @end menu
+@@ -16588,15 +16585,6 @@ Note this is non-portable (even across G
+ Print the machine hardware name (sometimes called the hardware class
+ or hardware type).
+ 
+-@item -n
+-@itemx --nodename
+-@opindex -n
+-@opindex --nodename
+-@cindex hostname
+-@cindex node name
+-@cindex network node name
+-Print the network node hostname.
+-
+ @item -p
+ @itemx --processor
+ @opindex -p
+@@ -16650,34 +16638,6 @@ Print the kernel version.
+ 
+ @exitstatus
+ 
+-
+-@node hostname invocation
+-@section @command{hostname}: Print or set system name
+-
+-@pindex hostname
+-@cindex setting the hostname
+-@cindex printing the hostname
+-@cindex system name, printing
+-@cindex appropriate privileges
+-
+-With no arguments, @command{hostname} prints the name of the current host
+-system.  With one argument, it sets the current host name to the
+-specified string.  You must have appropriate privileges to set the host
+-name.  Synopsis:
+-
+-@example
+-hostname [@var{name}]
+-@end example
+-
+-The only options are @option{--help} and @option{--version}.  @xref{Common
+-options}.
+-
+-@command{hostname} is not installed by default, and other packages
+-also supply a @command{hostname} command, so portable scripts should
+-not rely on its existence or on the exact behavior documented above.
+-
+-@exitstatus
+-
+ 
+ @node hostid invocation
+ @section @command{hostid}: Print numeric host identifier

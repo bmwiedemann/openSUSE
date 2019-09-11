@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue Jan  1 06:23:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.23      2018-12-31 14:28:16 -0500
+    - Internally use IS_WIN instead of IS_DOS for DOS/Windows style
+      operating systems.  This is 2018 (almost 2019) after all.
+      IS_DOS is now an alias for IS_WIN, although these are not public
+      interfaces so you shouldn't be using them anyway.
+
+-------------------------------------------------------------------
+Sat Sep  9 05:34:17 UTC 2017 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.22      2017-09-08 14:08:59 -0400
+    - Support for MSYS2 ($^O eq 'msys')
+
+-------------------------------------------------------------------
+Tue May 31 18:30:51 UTC 2016 - coolo@suse.com
+
+- fix test suite with a chmod
+
+-------------------------------------------------------------------
+Tue May 31 10:26:09 UTC 2016 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.21      2016-03-02 14:20:43 -0500
+    - Workaround for nutty cygwin filesystem rules
+  
+  1.20      2016-03-01 15:06:54 -0500
+    - Fix bug where executable named "0" would not be found (gh#7)
+
+-------------------------------------------------------------------
+Wed Jul 22 08:54:32 UTC 2015 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.19      2015-07-21 09:23:54 -0400
+    - Relax required Perl back to 5.6.x as this module is upriver to
+      a large number of modules
+    - No non-core requirements back to 5.6.2
+
+-------------------------------------------------------------------
+Tue May  5 08:20:44 UTC 2015 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.18      2015-05-04 15:35:40 -0400
+    - Remove prototypes (gh#6)
+
+-------------------------------------------------------------------
+Sat May  2 05:50:03 UTC 2015 - coolo@suse.com
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:56:03 UTC 2015 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.16 Sun 29 Mar 2015
+    - Remove use Test::Script from tests that escaped when this requirement
+      became optional.
+  
+  1.15 Sun 29 Mar 2015
+    - Fixed small but important POD error
+  
+  1.14 Sun 29 Mar 2015
+    - App::pwhich is no longer bundled with File::Which and included
+      in its own distribution.
+    - pwhich that comes with this distribution is deprecated, and will
+      report a warning if you try to use it, you should insted install
+      App::pwhich.
+    - pwhich that comes with this distribution will not be installed if
+      App::pwhich 1.14 or better is already installed.
+    - pwhich will be removed from this distribution, but not before
+      30 April 2015.
+    - Make Test::Script an optional dependency
+  
+  1.12 Thu 26 Mar 2015
+    - Fixed bug in pwhich introduced in version 1.10 where only the
+      first file was searched for
+  
+  1.11 Thu 26 Mar 2015
+    - Support for relative and fully qualified paths in Unix (gh#2)
+  
+  1.10 Thu 26 Mar 2015
+    - Test::Script is now a test instead of runtime requirement
+      It will be entirely removed as a prerequisite in a subsequent
+      release
+    - Will now find .exe and .com files (as it should) on cygwin (rt83146)
+    - Declared required Perl version is now 5.005003
+    - Updated repository and maintainer information.  Source for this
+      dist now lives on GitHub
+    - New module App::pwhich contains the guts of pwhich.  It will be moved
+      into a separate dist in the near future.  pwhich will be deprecated
+      and removed from this dist in the near future.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:43 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:33 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 13 12:14:54 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Mon Jan 25 13:39:52 CET 2010 - anicka@suse.cz
+
+- update to 1.09
+ * Set svn:executable for the exe files so cygwin tests work
+ * Fixing pwhich
+ * Adding a proper test for it
+ * Adds a dependency on Test::Script 1.08
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 15:45:01 CEST 2009 - anicka@suse.cz
+
+- update to 1.07
+ * CPAN Testers looks good for 1.06_01, moving to production release
+ * Taking over this hugely old and very popular module to clean it
+   up a bit.
+ * Moved from Test.pm to Test::More.
+ * Updated Changes
+ * Cleaned up some code a bit to make it more readable.
+ * Added an explicit minimum Perl version
+ * Changed platform detection code to constants for less code size
+   and compile-time if () optimisation.
+ * Removed non-leading tabs and other whitespace nigglies.
+
+-------------------------------------------------------------------
+Wed Dec 20 14:07:03 CET 2006 - anicka@suse.cz
+
+- package created (initial version 0.05) 
+

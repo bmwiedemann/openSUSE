@@ -1,0 +1,124 @@
+diff -Naur libdbusmenu-qt-0.9.2+14.04.20131209.orig/CMakeLists.txt libdbusmenu-qt-0.9.2+14.04.20131209/CMakeLists.txt
+--- libdbusmenu-qt-0.9.2+14.04.20131209.orig/CMakeLists.txt	2013-12-09 03:29:47.000000000 +0100
++++ libdbusmenu-qt-0.9.2+14.04.20131209/CMakeLists.txt	2013-12-18 21:58:01.847669366 +0100
+@@ -91,7 +91,7 @@
+ 
+ add_subdirectory(src)
+ if (NOT USE_QT5) # TODO port tests to Qt5
+-add_subdirectory(tests)
++#add_subdirectory(tests)
+ endif()
+ add_subdirectory(tools)
+ 
+diff -Naur libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/dbusmenuexporter.cpp libdbusmenu-qt-0.9.2+14.04.20131209/src/dbusmenuexporter.cpp
+--- libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/dbusmenuexporter.cpp	2013-12-09 03:29:47.000000000 +0100
++++ libdbusmenu-qt-0.9.2+14.04.20131209/src/dbusmenuexporter.cpp	2013-12-18 21:59:13.984767528 +0100
+@@ -160,7 +160,9 @@
+         Q_FOREACH(QAction *action, menu->actions()) {
+             int actionId = m_idForAction.value(action, -1);
+             if (actionId == -1) {
++#ifndef QT_NO_DEBUG
+                 DMWARNING << "No id for action";
++#endif
+                 continue;
+             }
+ 
+@@ -185,7 +187,9 @@
+ {
+     int id = m_idForAction.value(action, -1);
+     if (id != -1) {
++#ifndef QT_NO_DEBUG
+         DMWARNING << "Already tracking action" << action->text() << "under id" << id;
++#endif
+         return;
+     }
+     QVariantMap map = propertiesForAction(action);
+diff -Naur libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/dbusmenuimporter.cpp libdbusmenu-qt-0.9.2+14.04.20131209/src/dbusmenuimporter.cpp
+--- libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/dbusmenuimporter.cpp	2013-12-09 03:29:47.000000000 +0100
++++ libdbusmenu-qt-0.9.2+14.04.20131209/src/dbusmenuimporter.cpp	2013-12-18 22:06:44.057140849 +0100
+@@ -191,7 +191,9 @@
+             updateActionShortcut(action, value);
+         } else if (key == "children-display") {
+         } else {
++#ifndef QT_NO_DEBUG
+             DMWARNING << "Unhandled property update" << key;
++#endif
+         }
+     }
+ 
+@@ -239,7 +241,9 @@
+         action->setProperty(DBUSMENU_PROPERTY_ICON_DATA_HASH, dataHash);
+         QPixmap pix;
+         if (!pix.loadFromData(data)) {
++#ifndef QT_NO_DEBUG
+             DMWARNING << "Failed to decode icon-data property for action" << action->text();
++#endif
+             action->setIcon(QIcon());
+             return;
+         }
+@@ -390,7 +394,9 @@
+ 
+     QDBusPendingReply<uint, DBusMenuLayoutItem> reply = *watcher;
+     if (!reply.isValid()) {
++#ifndef QT_NO_DEBUG
+         DMWARNING << reply.error().message();
++#endif
+         return;
+     }
+ 
+@@ -401,7 +407,9 @@
+ 
+     QMenu *menu = d->menuForId(parentId);
+     if (!menu) {
++#ifndef QT_NO_DEBUG
+         DMWARNING << "No menu for id" << parentId;
++#endif
+         return;
+     }
+ 
+@@ -494,7 +502,9 @@
+     QPointer<QObject> guard(this);
+ 
+     if (!waitForWatcher(watcher, ABOUT_TO_SHOW_TIMEOUT)) {
++#ifndef QT_NO_DEBUG
+         DMWARNING << "Application did not answer to AboutToShow() before timeout";
++#endif
+     }
+ 
+     #ifdef BENCHMARK
+@@ -522,7 +532,9 @@
+ 
+     QDBusPendingReply<bool> reply = *watcher;
+     if (reply.isError()) {
++#ifndef QT_NO_DEBUG
+         DMWARNING << "Call to AboutToShow() failed:" << reply.error().message();
++#endif
+         return;
+     }
+     bool needRefresh = reply.argumentAt<0>();
+@@ -534,7 +546,9 @@
+         d->m_idsRefreshedByAboutToShow << id;
+         watcher = d->refresh(id);
+         if (!waitForWatcher(watcher, REFRESH_TIMEOUT)) {
++#ifndef QT_NO_DEBUG
+             DMWARNING << "Application did not refresh before timeout";
++#endif
+         }
+     }
+ }
+diff -Naur libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/debug_p.h libdbusmenu-qt-0.9.2+14.04.20131209/src/debug_p.h
+--- libdbusmenu-qt-0.9.2+14.04.20131209.orig/src/debug_p.h	2013-12-09 03:29:47.000000000 +0100
++++ libdbusmenu-qt-0.9.2+14.04.20131209/src/debug_p.h	2013-12-18 22:02:33.923267953 +0100
+@@ -36,12 +36,10 @@
+ #define DMVAR(var) DMDEBUG << #var ":" << var
+ 
+ #define DMRETURN_IF_FAIL(cond) if (!(cond)) { \
+-    DMWARNING << "Condition failed: " #cond; \
+     return; \
+ }
+ 
+ #define DMRETURN_VALUE_IF_FAIL(cond, value) if (!(cond)) { \
+-    DMWARNING << "Condition failed: " #cond; \
+     return (value); \
+ }
+ 

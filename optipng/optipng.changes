@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Fri Jan 12 07:57:59 UTC 2018 - pgajdos@suse.com
+
+- update to 0.7.7:
+    * Upgraded minitiff to version 0.2.
+   !! Fixed a buffer overflow vulnerability in the GIF decoder.
+      [Reported by Joonun Jang]
+   !! Fixed an integer overflow vulnerability in the TIFF decoder.
+      [Reported by Jaeseung Choi]
+    ! Fixed the build on macOS High Sierra.
+      [Reported by various users]
+      [Fixed by Yuen Ho Wong and Friedrich Preuss]
+    ! Fixed the build on DJGPP.
+    * Disallowed out-of-bounds values in rangeset options.
+- removed upstream patches:
+  - optipng-CVE-2017-1000229.patch
+  - optipng-CVE-2017-16938.patch
+
+-------------------------------------------------------------------
+Mon Nov 27 08:19:44 UTC 2017 - pgajdos@suse.com
+
+- security update:
+  * CVE-2017-16938 [bsc#1069774]
+    + optipng-CVE-2017-16938.patch
+
+-------------------------------------------------------------------
+Mon Nov 20 10:28:38 UTC 2017 - pgajdos@suse.com
+
+- security update:
+  * CVE-2017-1000229 [bsc#1068720]
+    + optipng-CVE-2017-1000229.patch
+
+-------------------------------------------------------------------
+Tue Apr  5 08:15:40 UTC 2016 - pgajdos@suse.com
+
+- updated to 0.7.6, fixes CVE-2016-2191
+
+-------------------------------------------------------------------
+Mon Apr 27 14:23:20 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+- Update dependencies
+- Enable checks
+
+-------------------------------------------------------------------
+Mon Mar 31 07:56:27 UTC 2014 - pgajdos@suse.com
+
+- updated to 0.7.5:
+  ! Fixed various build issues with libpng-1.5 and libpng-1.6.
+  * Allowed the handling of huge image files  (> millions of pixels
+    per row or column) to be independent of the libpng version.
+  + Allowed the option -preserve to save the file ownership (UID/GID)
+    on Unix.  (Thanks to Otto Kekäläinen for the suggestion.)
+- removed libpng16.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 12:35:19 UTC 2013 - pgajdos@suse.com
+
+- build also agains libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Tue Nov 20 12:24:53 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.7.4:
+  !! Fixed the previous fix, which failed to fix the option -fix.
+   (Thanks to Gynvael Coldwind and Mateusz Jurczyk for the report.)
+
+-------------------------------------------------------------------
+Mon Sep 24 11:58:03 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.7.3:
+  * fixed 'OptiPNG Palette Reduction Use-After-Free Vulnerability'
+    [bnc#780874]
+
+-------------------------------------------------------------------
+Tue Aug  7 12:41:22 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.7.1:
+  !! Fixed a regression in the reduction of palette-encoded grayscale
+     images.  This regression was introduced in version 0.7.
+     (Thanks to Adam Ciarcinski for the fix.)
+
+-------------------------------------------------------------------
+Fri Mar  2 11:54:06 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.7:
+  + Added the popularly-requested option -strip.
+  + Added the option -backup, as an alias of -keep.
+  + Added the option -silent, as an alias of -quiet.
+  - Deprecated the option -log.
+  * Changed the activity display output from STDOUT to STDERR.
+  + Allowed the option -preserve to save high-resolution timestamps
+   on Unix, if the POSIX-1.2008 API is available.  This feature was
+   previously available on Windows only.
+  ! Fixed a minor precision error in the display of file size percents.
+  ! Fixed a memory leak that occurred when reading broken GIF images.
+  ! Fixed various build issues.
+    (Thanks to Sebastian Pipping and Ville Skytta for the fixes.)
+  * Resolved all remaining compatibility issues with libpng-1.5.
+    (Thanks in part to Adam Ciarcinski for the contribution.)
+
+-------------------------------------------------------------------
+Thu Mar  3 12:07:53 CET 2011 - pgajdos@suse.cz
+
+- updated to 0.6.5:
+  * Fixed processing of PNG files with chunks of size 0.
+  * Fixed a display error in the TIFF import.
+  * Improved checking of the arguments of -f, -zc, -zm and -zs.
+  * Removed quirks from the rangeset option argument syntax.
+
+-------------------------------------------------------------------
+Mon Aug 23 16:48:05 CEST 2010 - pgajdos@suse.cz
+
+- updated to 0.6.4:
+   + Added the option -nx.
+   * Clarified the behavior of -nz and the relation between 
+     -nz and -o0.
+   + Added a filesystem check (resolving normalized paths, 
+     symlinks, etc.) to better detect when the output overwrites 
+     the input.
+
+-------------------------------------------------------------------
+Tue Apr  6 14:15:24 CEST 2010 - pgajdos@suse.cz
+
+- build with libpng 1.4
+
+-------------------------------------------------------------------
+Tue May 19 15:23:16 CEST 2009 - pgajdos@suse.cz
+
+- updated to 0.6.3
+  * fixes memory reallocation vulnerability (patch removed)
+  * fixes use-after-free vulnerability [bnc#505103]
+
+-------------------------------------------------------------------
+Wed Mar  4 10:41:58 CET 2009 - meissner@suse.de
+
+- build with RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Feb 24 10:28:55 CET 2009 - pgajdos@suse.cz
+
+- fixed security bug: memory reallocation vulnerability [bnc#479067]
+  * reallocation-security.diff
+
+-------------------------------------------------------------------
+Tue Jan 13 17:43:09 CET 2009 - pgajdos@suse.cz
+
+- update to 0.6.2
+  * fixes CVE-2008-5101, patch removed`
+
+-------------------------------------------------------------------
+Tue Dec  2 12:00:29 CET 2008 - pgajdos@suse.cz
+
+- fixes [bnc#447453] - optipng bmp buffer overflow
+  CVE-2008-5101.patch
+
+-------------------------------------------------------------------
+Thu Jul 31 11:46:22 CEST 2008 - pgajdos@suse.cz
+
+- updated to version 0.6.1:
+ * Upgraded cexcept to version 2.0.1.
+ + Added a configure script, to be used instead of unix-secure.mak.
+ ! Fixed a build issue that occured when using libpng from the system.
+ ! Fixed processing when image reduction yields an output larger than
+   the original.  
+ ! Fixed behavior of -preserve.
+ - Removed displaying of partial progress when abandoning IDATs under
+   the -v option.  The percentages displayed were not very accurate.
+
+-------------------------------------------------------------------
+Tue Jun 24 11:10:39 CEST 2008 - pgajdos@suse.cz
+
+- updated to version 0.6:
+  * Implemented grayscale(alpha)-to-palette reductions.
+  * Improved conversion of bKGD info during RGB-to-palette reductions.
+  * Fixed conversion of bKGD and tRNS during 16-to-8-bit reductions.
+  * Added support for compressed BMP (incl. PNG-compressed BMP)
+  * Improved the speed of reading raw PNM files.
+  * Recognized PNG digital signatures (dSIG) and disabled optimization
+    in their presence, to preserve their integrity.
+  * Allowed the user to enforce the optimization of dSIG'ed files.
+  * Recognized APNG animation files and disabled reductions to preserve
+    their integrity.
+  * Added the -snip option, to allow the user to "snip" one image out of
+    a multi-image file, such as animated GIF, multi-page TIFF, or APNG.
+  * Improved recovery of PNG files with incomplete IDAT.
+  * Fixed a crash triggered by the use of -log on some platforms.
+  * Fixed behavior of -out and -dir when the input is already optimized.
+  * Provided more detailed image information at the start of processing.
+  * Provided a more detailed summary at the end of processing, under the
+    presence of the -v option and/or the occurence of exceptional events.
+- added optipng-0.6.0.1.diff from upstream (building with system libs)
+
+-------------------------------------------------------------------
+Mon Sep 10 19:02:50 CEST 2007 - pgajdos@suse.cz
+
+- package provides %optipng macro [#309087]
+- removed DESTDIR=$RPM_BUILD_ROOT from %build phase
+
+-------------------------------------------------------------------
+Thu Feb  1 13:50:37 CET 2007 - dmueller@suse.de
+
+- update to 0.5.5:
+  * Used a previously-missed RGB-to-palette reduction opportunity
+  * Fixed conversion of bKGD info during rgb-to-palette reductions.
+  * Fixed pre-computation of iterations.
+  * Fixed behavior of -out and -dir when changing interlacing.
+
+-------------------------------------------------------------------
+Sat Dec  2 07:06:40 CET 2006 - dmueller@suse.de
+
+- add upstream patch to fix handling of true-color RGB images
+
+-------------------------------------------------------------------
+Wed Nov  8 23:48:20 CET 2006 - dmueller@suse.de
+
+- Initial package (0.5.4)
+

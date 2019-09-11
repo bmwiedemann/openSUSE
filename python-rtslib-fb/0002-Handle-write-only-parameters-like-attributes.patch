@@ -1,0 +1,58 @@
+From ee005008acfec749d3a9731a82fd08c6774cff49 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Sat, 9 Feb 2019 09:36:33 -0800
+Subject: [PATCH 2/3] Handle write-only parameters like attributes
+Patch-mainline: In developer's queue
+
+Commit 03c8c15983a21bc2 added handling of write-only
+attributes, but we could also see write-only parameters,
+since they are also from sysfs. To be safe, ensure
+the parameter list returned is writable in addition
+to being readable.
+---
+ rtslib/node.py | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/rtslib/node.py b/rtslib/node.py
+index 1ab7d9b8c58b..415f45d675f9 100644
+--- a/rtslib/node.py
++++ b/rtslib/node.py
+@@ -122,17 +122,21 @@ class CFSNode(object):
+ 
+     # CFSNode public stuff
+ 
+-    def list_parameters(self, writable=None):
++    def list_parameters(self, writable=None, readable=None):
+         '''
+-        @param writable: If None (default), returns all parameters, if True,
+-        returns read-write parameters, if False, returns just the read-only
+-        parameters.
++        @param writable: If None (default), return all parameters despite
++        their writability. If True, return only writable parameters. If
++        False, return only non-writable parameters.
+         @type writable: bool or None
++        @param readable: If None (default), return all parameters despite
++        their readability. If True, return only readable parameters. If
++        False, return only non-readable parameters.
++        @type readable: bool or None
+         @return: The list of existing RFC-3720 parameter names.
+         '''
+         self._check_self()
+         path = "%s/param" % self.path
+-        return self._list_files(path, writable)
++        return self._list_files(path, writable, readable)
+ 
+     def list_attributes(self, writable=None, readable=None):
+         '''
+@@ -242,7 +246,7 @@ class CFSNode(object):
+                 attrs[item] = self.get_attribute(item)
+         if attrs:
+             d['attributes'] = attrs
+-        for item in self.list_parameters(writable=True):
++        for item in self.list_parameters(writable=True, readable=True):
+             params[item] = self.get_parameter(item)
+         if params:
+             d['parameters'] = params
+-- 
+2.16.4
+

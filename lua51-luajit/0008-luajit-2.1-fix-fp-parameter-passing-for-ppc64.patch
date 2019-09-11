@@ -1,0 +1,37 @@
+From a06714652b81b97ad4922bdc5b0cfc7b5977257c Mon Sep 17 00:00:00 2001
+From: "Brian W. Hart" <hartb@us.ibm.com>
+Date: Wed, 31 Aug 2016 11:04:24 -0500
+Subject: [PATCH 08/15] luajit-2.1: fix fp parameter passing for ppc64
+
+The POWER 64-bit LE ABI calls for floating point function
+arguments beyond the 8th to be passed via floating point
+registers and also to reserve a slot in the parameter save
+area on the stack. The PPC CCALL_HANDLE_REGARG correctly
+includes the values in FPRs, but neglects to reserve
+corresponding slots when spilling into the save area.
+---
+ src/lj_ccall.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/lj_ccall.c b/src/lj_ccall.c
+index babf6a29ed05..1adc01173fd1 100644
+--- a/src/lj_ccall.c
++++ b/src/lj_ccall.c
+@@ -397,8 +397,13 @@
+       if (nfpr + 1 <= CCALL_NARG_FPR) { \
+ 	dp = &cc->fpr[nfpr]; \
+ 	nfpr += 1; \
+-	ngpr += 1;  /* align GPRs */ \
+ 	d = ctype_get(cts, CTID_DOUBLE);  /* FPRs always hold doubles. */ \
++	if (ngpr + 1 <= maxgpr) \
++	  ngpr += 1;  /* align GPRs */ \
++	else if (nsp + 1 <= CCALL_MAXSTACK) \
++	  nsp += 1; /* align save area slots */ \
++        else \
++          goto err_nyi; /* Too many args */ \
+ 	goto done; \
+       } \
+     } else {  /* Try to pass argument in GPRs. */ \
+-- 
+2.20.1
+

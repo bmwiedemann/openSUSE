@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Thu Jan 19 14:37:53 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.3.8:
+  * Adapt Block/WakeupHandler signature for ABI 23
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 16:47:19 UTC 2016 - sndirsch@suse.com
+
+- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23
+
+-------------------------------------------------------------------
+Tue Mar 31 09:22:23 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.3.7
+  * eventually a release which includes all changes required for
+    building with current Xserver sources since the previous
+    release in 2012
+- removed upstreamed patches now in 1.3.7:
+  * U_Fix-loading-the-driver-without-XAA.patch
+  * U_Remove-mibstore.h.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:51 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 16:25:21 UTC 2013 - sndirsch@suse.com
+
+- Add mibstore.patch, fixes build with xorg-server 1.14 
+- Fix loading the driver without XAA
+
+-------------------------------------------------------------------
+Sun Sep  2 19:43:30 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.3.6:
+  + Add support for building without XAA.
+  + Convert to new compat API.
+
+-------------------------------------------------------------------
+Thu May 31 08:45:21 UTC 2012 - coolo@suse.com
+
+- make the supplements conditional on xorg-x11-server being installed
+
+-------------------------------------------------------------------
+Wed May 23 01:05:48 UTC 2012 - crrodriguez@opensuse.org
+
+- Use proper Supplements so the driver is picked up by
+  the package manager when the user has the required hardware.
+
+-------------------------------------------------------------------
+Thu Apr 19 11:09:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.3.5:
+  + Fix for new vgaHW ABI
+  + Fall back to shadowfb if XAA is unavailable
+  + Disable PC98 code on newer servers
+  + Build fix for ABI Version 12
+- Drop xf86-video-trident-1.3.3.diff: no longer needed.
+- Use %x11_abi_videodrv_req instead of static ABI requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-trident from xorg-x11-driver-video.
+  Initial version: 1.3.4.
+

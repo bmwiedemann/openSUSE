@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon Feb  4 16:08:36 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- do not require ancient ncompress for build in SLES 
+  (externally_compressed_io subtest will not run for ncompress)
+  * why: ncompress is not part of SLES
+- package also README.md
+  * why: contains useful info
+
+-------------------------------------------------------------------
+Thu Jun 29 10:25:10 UTC 2017 - mpluskal@suse.com
+
+- Update licensing information 
+
+-------------------------------------------------------------------
+Wed Jun 21 13:39:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.1:
+  * Adds support for -B values greater than 2GB, enabled by
+    -DXD3_USE_LARGESIZET=1 variable
+  * Adds new performance and speed regression test
+- Obsolete xdelta
+- Install manpage as well
+- Use profiling when building
+
+-------------------------------------------------------------------
+Tue Feb  9 14:04:37 UTC 2016 - pgajdos@suse.com
+
+- updated to 3.0.11
+  * bug-fix release addressing a performance bug and several 
+    crashes in the decoder
+
+-------------------------------------------------------------------
+Fri Jan  1 13:15:28 UTC 2016 - mpluskal@suse.com
+
+- Don't strip binary
+
+-------------------------------------------------------------------
+Sat Sep 19 09:57:28 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.0.10
+  * see https://github.com/jmacd/xdelta-devel/releases for details
+- Update download url
+- Cleanup spec file with spec-cleaner
+- Drop xdelta3-regtest.patch as it is no longer necessary
+
+-------------------------------------------------------------------
+Tue Jun 24 13:29:03 UTC 2014 - pgajdos@suse.com
+
+- fix 32-bit build (testsuite helper)
+- added patches:
+  * xdelta3-regtest.patch
+-------------------------------------------------------------------
+Mon Jun 23 13:41:54 UTC 2014 - pgajdos@suse.com
+
+- updated to 3.0.8:
+  * bugfixes, see http://xdelta.org/ for details
+
+-------------------------------------------------------------------
+Mon Nov  7 13:18:09 UTC 2011 - pgajdos@suse.com
+
+- "GPLv2" to "GPL-2.0"
+
+-------------------------------------------------------------------
+Mon Oct 31 13:27:43 UTC 2011 - pgajdos@suse.com
+
+- make test
+
+-------------------------------------------------------------------
+Tue Oct  4 14:05:48 UTC 2011 - pgajdos@suse.com
+
+- Updated to 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 12 23:05:33 PDT 2010 - mook.moz+rpm.buildservice@gmail.com
+
+- Initial package (xdelta 3.0y)
+

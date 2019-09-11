@@ -1,0 +1,21 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: Disable GSS options from config file
+Upsteam: never
+
+Disable GSS/Kerberos options from config file. They are disabled from configure
+but need manual removal here.
+
+---
+ init.d/auditd.conf |    3 ---
+ 1 file changed, 3 deletions(-)
+
+--- a/init.d/auditd.conf
++++ b/init.d/auditd.conf
+@@ -30,7 +30,4 @@ tcp_listen_queue = 5
+ tcp_max_per_addr = 1
+ ##tcp_client_ports = 1024-65535
+ tcp_client_max_idle = 0
+-enable_krb5 = no
+-krb5_principal = auditd
+-##krb5_key_file = /etc/audit/audit.key
+ distribute_network = no

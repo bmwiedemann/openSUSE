@@ -1,0 +1,68 @@
+From 9e2139213bc2eeb8afbf10fdff663ebe7ed23887 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 3 Jul 2019 09:34:50 +0100
+Subject: [PATCH] Allow passing kwargs to pkg.list_downloaded
+ (bsc#1140193)
+
+Add unit test for pkg.list_downloaded with kwargs
+---
+ salt/modules/zypperpkg.py            |  2 +-
+ tests/unit/modules/test_zypperpkg.py | 27 +++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 9d0407e674..6bc7211f59 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -2553,7 +2553,7 @@ def download(*packages, **kwargs):
+     )
+ 
+ 
+-def list_downloaded(root=None):
++def list_downloaded(root=None, **kwargs):
+     '''
+     .. versionadded:: 2017.7.0
+ 
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index d2ae06a98e..0a3053680f 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -766,6 +766,33 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+             self.assertEqual(len(list_patches), 3)
+             self.assertDictEqual(list_patches, PATCHES_RET)
+ 
++    @patch('salt.utils.path.os_walk', MagicMock(return_value=[('test', 'test', 'test')]))
++    @patch('os.path.getsize', MagicMock(return_value=123456))
++    @patch('os.path.getctime', MagicMock(return_value=1234567890.123456))
++    @patch('fnmatch.filter', MagicMock(return_value=['/var/cache/zypper/packages/foo/bar/test_package.rpm']))
++    def test_list_downloaded_with_kwargs(self):
++        '''
++        Test downloaded packages listing.
++
++        :return:
++        '''
++        DOWNLOADED_RET = {
++            'test-package': {
++                '1.0': {
++                    'path': '/var/cache/zypper/packages/foo/bar/test_package.rpm',
++                    'size': 123456,
++                    'creation_date_time_t': 1234567890,
++                    'creation_date_time': '2009-02-13T23:31:30',
++                }
++            }
++        }
++
++        with patch.dict(zypper.__salt__, {'lowpkg.bin_pkg_info': MagicMock(return_value={'name': 'test-package',
++                                                                                         'version': '1.0'})}):
++            list_downloaded = zypper.list_downloaded(kw1=True, kw2=False)
++            self.assertEqual(len(list_downloaded), 1)
++            self.assertDictEqual(list_downloaded, DOWNLOADED_RET)
++
+     @patch('salt.utils.path.os_walk', MagicMock(return_value=[('test', 'test', 'test')]))
+     @patch('os.path.getsize', MagicMock(return_value=123456))
+     @patch('os.path.getctime', MagicMock(return_value=1234567890.123456))
+-- 
+2.21.0
+
+

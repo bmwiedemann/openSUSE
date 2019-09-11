@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jul 24 23:09:18 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups and description typography.
+
+-------------------------------------------------------------------
+Thu Jul 20 19:55:10 UTC 2017 - junghans@votca.org
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Wed Feb 26 23:33:12 UTC 2014 - junghans@votca.org
+
+- fixed installation of headers
+
+-------------------------------------------------------------------
+Fri Feb 21 22:35:24 UTC 2014 - junghans@votca.org
+
+- initial import
+- Add voro++-cmake.patch: introduce cmake build system
+

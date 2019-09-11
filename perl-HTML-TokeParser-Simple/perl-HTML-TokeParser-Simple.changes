@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sat Jul 27 11:58:44 UTC 2013 - coolo@suse.com
+
+- updated to 3.16
+     Fix POD errors and move POD tests to XT directory.
+     Fix spelling errors.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:26 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 10:56:08 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.02
+  o fix deps
+- move changelog to changes file
+
+-------------------------------------------------------------------
+Wed Jun 21 21:14:41 UTC 2006 - jfunk@funktronics.ca
+
+- Update to 3.15
+
+-------------------------------------------------------------------
+Fri Nov 11 23:44:24 UTC 2005 - jfunk@funktronics.ca
+
+- Update to 3.14
+- Build for SL10
+
+-------------------------------------------------------------------
+Thu May 12 14:33:16 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL93
+
+-------------------------------------------------------------------
+Fri Nov 19 18:28:27 UTC 2004 - jfunk@funktronics.ca
+
+- Update to 3.13
+- Build for SL92
+
+-------------------------------------------------------------------
+Tue May 11 10:50:41 UTC 2004 - jfunk@funktronics.ca
+
+- Build for SL91
+
+-------------------------------------------------------------------
+Wed Apr 14 17:48:20 UTC 2004 - jfunk@funktronics.ca
+
+- Initial release 2.2
+

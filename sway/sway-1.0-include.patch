@@ -1,0 +1,36 @@
+diff -urEbw sway-1.1.1/common/util.c sway-1.1.1.new/common/util.c
+--- sway-1.1.1/common/util.c	2019-06-03 15:54:48.000000000 +0200
++++ sway-1.1.1.new/common/util.c	2019-06-04 08:01:49.398954211 +0200
+@@ -5,7 +5,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <strings.h>
+-#include <wayland-server-protocol.h>
++#include <wayland/wayland-client-protocol.h>
+ #include "log.h"
+ #include "util.h"
+ 
+diff -urEbw sway-1.1.1/include/cairo.h sway-1.1.1.new/include/cairo.h
+--- sway-1.1.1/include/cairo.h	2019-06-03 15:54:48.000000000 +0200
++++ sway-1.1.1.new/include/cairo.h	2019-06-04 07:58:54.169992613 +0200
+@@ -3,7 +3,7 @@
+ #include "config.h"
+ #include <stdint.h>
+ #include <cairo/cairo.h>
+-#include <wayland-client-protocol.h>
++#include <wayland/wayland-client-protocol.h>
+ 
+ void cairo_set_source_u32(cairo_t *cairo, uint32_t color);
+ cairo_subpixel_order_t to_cairo_subpixel_order(enum wl_output_subpixel subpixel);
+diff -urEbw sway-1.1.1/include/util.h sway-1.1.1.new/include/util.h
+--- sway-1.1.1/include/util.h	2019-06-03 15:54:48.000000000 +0200
++++ sway-1.1.1.new/include/util.h	2019-06-04 08:03:46.167595133 +0200
+@@ -3,7 +3,7 @@
+ 
+ #include <stdint.h>
+ #include <stdbool.h>
+-#include <wayland-server-protocol.h>
++#include <wayland/wayland-client-protocol.h>
+ 
+ /**
+  * Wrap i into the range [0, max[

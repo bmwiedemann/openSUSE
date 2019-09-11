@@ -1,0 +1,11 @@
+You need to enable the apache2 php7 or php5 module, before ganglia-web works.
+SLE-12* is shipped with php5 and SLE-15* is shipped with php7, for this 
+products you also have to add the "Web and Scripting Module".
+This can be done with
+a2enmod php7
+or
+a2enmod php5
+
+apache2 must be restarted after this
+
+-- cgoll@suse.de

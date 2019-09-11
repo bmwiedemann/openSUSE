@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Sat Apr 28 10:48:20 UTC 2018 - kasimir_@outlook.de
+
+- update to version 3.5.35
+- fix build on armv6, armv7, ppc64 and riscv64
+  Modified:
+  * tanukiwrapper-additional-makefiles.patch 
+
+-------------------------------------------------------------------
+Fri Apr 13 13:44:56 UTC 2018 - mc@suse.com
+
+- fix build on aarch64 and s390x
+  Modified:
+  * tanukiwrapper-additional-makefiles.patch
+
+-------------------------------------------------------------------
+Fri Apr 13 13:29:00 UTC 2018 - fstrba@suse.com
+
+- Apply tanukiwrapper-nojavah.patch only if building with java 10
+  or above, that does not have the javah tool.
+- Relax the java-devel requirement to any version >= 1.6
+
+-------------------------------------------------------------------
+Wed Jan 10 14:32:34 UTC 2018 - bwiedemann@suse.com
+
+- Generate javadoc without timestamp to make build reproducible
+  (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Jan  9 10:12:44 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * tanukiwrapper-nojavah.patch
+    - Fix build with jdk10
+- Require java 8 or higher for build in order to be able to use
+  javac's -h option
+
+-------------------------------------------------------------------
+Tue Jan  2 18:02:41 UTC 2018 - fstrba@suse.com
+
+- Force build with jdk < 10
+
+-------------------------------------------------------------------
+Wed Sep 20 09:34:00 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target levels 1.6
+
+-------------------------------------------------------------------
+Fri May 19 16:43:41 UTC 2017 - tchvatal@suse.com
+
+- Version update to 3.5.32 - no obvious changelog
+
+-------------------------------------------------------------------
+Wed Apr 20 19:11:30 UTC 2016 - tchvatal@suse.com
+
+- Fix javadoc install to match the layout for the dirs, no version
+- Use javadoc and ant calls directly, no need of macroes 
+
+-------------------------------------------------------------------
+Wed Apr 20 15:49:41 UTC 2016 - dmacvicar@suse.de
+
+- clean spec file
+
+-------------------------------------------------------------------
+Wed Apr 20 08:19:37 UTC 2016 - dmacvicar@suse.de
+
+- update to version 3.5.29
+
+-------------------------------------------------------------------
+Wed Apr  6 22:57:23 UTC 2016 - dmacvicar@suse.de
+
+- update to version 3.5.28
+- removed not longer needed patches
+  * tanukiwrapper-no-4g-mem-limit.patch
+  * tanukiwrapper-makefile-linux-x86-64.patch
+  * tanukiwrapper-makefile-linux-x86-64.patch
+  * tanukiwrapper-build.patch
+- added tanukiwrapper-additional-makefiles.patch
+- Move from jpackage-utils to javapackages-tools
+
+-------------------------------------------------------------------
+Wed Oct 14 01:55:04 CEST 2015 - ro@suse.de
+
+- aarch64 and ppc64le are 64bit 
+
+-------------------------------------------------------------------
+Mon Oct 12 10:57:32 CEST 2015 - mc@suse.de
+
+- format specfile
+
+-------------------------------------------------------------------
+Fri Jan 30 09:37:51 UTC 2015 - dmacvicar@suse.de
+
+- allow more than 4G as -Xmx option (bnc#914900)
+  * add tanukiwrapper-no-4g-mem-limit.patch
+
+-------------------------------------------------------------------
+Thu Jun 26 14:50:09 UTC 2014 - smoioli@suse.com
+
+- License: and Obsoletes: fields fixed 
+
+-------------------------------------------------------------------
+Thu Jun 26 14:42:42 UTC 2014 - smoioli@suse.com
+
+- x86_64 Makefile fixed
+
+-------------------------------------------------------------------
+Tue Dec 17 17:34:38 CET 2013 - mc@suse.de
+
+- change rpm groups
+
+-------------------------------------------------------------------
+Tue Sep 24 12:32:40 CEST 2013 - mc@suse.de
+
+- remove BuildRequires on javadoc. It should be part of the
+  devel package which is already required.
+
+-------------------------------------------------------------------
+Tue Jun 25 08:19:24 UTC 2013 - dmacvicar@suse.de
+
+- rebase on current upstream which builds on s390x
+
+-------------------------------------------------------------------
+Tue Sep 29 12:39:17 UTC 2009 - mvyskocil@suse.cz
+
+- Initial packaging from jpackage-1.7 
+

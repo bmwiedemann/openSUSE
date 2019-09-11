@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Jul 17 16:08:03 UTC 2018 - aloisio@gmx.com
+
+- Added dataquay-includedir.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 22:06:58 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Ensure neutrality of descriptions.
+- Use upstream name for -devel subpackage.
+
+-------------------------------------------------------------------
+Thu Aug 31 12:29:16 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.9.1
+  * Update to support Qt5 and newer C++ compilers. Now requires
+    C++11 (though the library only makes minimal use of the
+    standard).
+ * Incorporate a number of build fixes
+
+- Switched to Qt5
+
+- Refreshed dataquay-redland.patch and dataquay-lib64.patch
+
+- Added dataquay-sharedlib.patch
+
+- Dropped dataquay-disable_tests.patch
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Oct 22 16:52:05 UTC 2014 - avvissu@yandex.ru
+
+- Fix to build on x86 architecture
+
+-------------------------------------------------------------------
+Sat Nov 24 22:15:36 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.9)
+

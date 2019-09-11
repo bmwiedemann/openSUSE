@@ -1,0 +1,155 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Jun 11 14:33:26 2019 +0200
+Subject: Add unit tests for zypper installation on SLE
+Patch-mainline: Not yet
+Git-commit: 02dfbd741a35a45ee0f1ad81c1541f4d7341fe5c
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ .../pkg/build/types/parser/deffile_test.go         |  2 +
+ .../types/parser/testdata_good/zypper_sle/zypper   | 30 ++++++++++
+ .../parser/testdata_good/zypper_sle/zypper.json    | 65 ++++++++++++++++++++++
+ .../testdata_good/zypper_sle/zypper_sections.json  |  8 +++
+ 4 files changed, 105 insertions(+)
+diff --git a/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile_test.go b/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile_test.go
+index 2608ff3..4cb2701 100644
+--- a/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile_test.go
++++ b/src/github.com/sylabs/singularity/pkg/build/types/parser/deffile_test.go
+@@ -34,6 +34,7 @@ func TestScanDefinitionFile(t *testing.T) {
+ 		{"Shub", "testdata_good/shub/shub", "testdata_good/shub/shub_sections.json"},
+ 		{"Yum", "testdata_good/yum/yum", "testdata_good/yum/yum_sections.json"},
+ 		{"Zypper", "testdata_good/zypper/zypper", "testdata_good/zypper/zypper_sections.json"},
++		{"Zypper_SLE", "testdata_good/zypper_sle/zypper", "testdata_good/zypper_sle/zypper_sections.json"},
+ 	}
+ 
+ 	for _, tt := range tests {
+@@ -173,6 +174,7 @@ func TestParseDefinitionFile(t *testing.T) {
+ 		{"Shub", "testdata_good/shub/shub", "testdata_good/shub/shub.json"},
+ 		{"Yum", "testdata_good/yum/yum", "testdata_good/yum/yum.json"},
+ 		{"Zypper", "testdata_good/zypper/zypper", "testdata_good/zypper/zypper.json"},
++		{"Zypper_SLE", "testdata_good/zypper_sle/zypper", "testdata_good/zypper_sle/zypper.json"},
+ 		{"NoHeader", "testdata_good/noheader/noheader", "testdata_good/noheader/noheader.json"},
+ 		{"NoHeaderComments", "testdata_good/noheadercomments/noheadercomments", "testdata_good/noheadercomments/noheadercomments.json"},
+ 		{"NoHeaderWhiteSpace", "testdata_good/noheaderwhitespace/noheaderwhitespace", "testdata_good/noheaderwhitespace/noheaderwhitespace.json"},
+diff --git a/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper
+new file mode 100644
+index 0000000..51903dd
+--- /dev/null
++++ b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper
+@@ -0,0 +1,30 @@
++Bootstrap: zypper
++OSVersion: 15.1
++MirrorURL: ftp://example.org/SLE-15-SP1-Installer-DVD-x86_64-GM-DVD1
++Product: SLE_HPC/%{OSVERSION}/x86_64
++User: test@user.org
++Regcode: REG-CODE-1a2b3c
++RegisterUrl: https://scc.suse.com
++ProductPGP: -----BEGIN PGP PUBLIC KEY BLOCK-----\n\
++Version: rpm-4.11.2 (NSS-3)\n\
++\n\
++mQENBFEKlmsBCADbpZZbbSC5Zi+HxCR/ynYsVxU5JNNiSSZabN5GMgc9Z0hxeXxp\n\
++YWvFoE/4n0+IXIsp83iKvxf06Eu8je/DXp0lMqDZu7WiT3XXAlkOPSNV4akHTDoY\n\
++91SJaZCpgUJ7K1QXOPABNbREsAMN1a7rxBowjNjBUyiTJ2YuvQRLtGdK1kExsVma\n\
++hieh/QxpoDyYd5w/aky3z23erCoEd+OPfAqEHd5tQIa6LOosa63BSCEl3milJ7J9\n\
++vDmoGPAoS6ui7S2R5X4/+PLN8Mm2kOBrFjhmL93LX0mrGCMxsNsKgP6zabYKQEb8\n\
++L028SXvl7EGoA+Vw5Vd3wIGbM73PfbgNrXjfABEBAAG0KFN1U0UgUGFja2FnZSBT\n\
++aWduaW5nIEtleSA8YnVpbGRAc3VzZS5kZT6JATwEEwECACYCGwMGCwkIBwMCBBUC\n\
++CAMEFgIDAQIeAQIXgAUCWEfrHwUJDsIitAAKCRBwr56BOdt8gpqUB/wPSSS5BcDu\n\
++Oi4n02cj4Hdt7WITKBjjo0lG1fXG1ppx1wOST+s8FertMVFY53TW6FGjcYtwVOIq\n\
++rsMYiV6kf1NxUV/jcAy7VmC5EZnO0R/D3sT4Oh5hsLtERauZolK5BZmd0S51Qa8e\n\
++TxZ5mX9PL2i3s/ShETc30drf83ugc7B4yZPNQWXNDPgGcC+hEeC5qw48RzHYIpUt\n\
++RzHmefR5Z3ioTUbDlzy+SGP2uA7mhR4Lfk/df5fYxWfCoKlyGjtrvA65cB+Pksyn\n\
++xrAeBuB+vBM+KnDrxW2Sn4AbWkzH//dfz9OJDJu4UM91hb7qxM0OkrXHQV3iNqzg\n\
++MDEhky/9NqMy\n\
++=GdP5\n\
++-----END PGP PUBLIC KEY BLOCK-----
++Modules: sle-module-basesystem,sle-module-hpc
++Otherurl0: https://download.example.org/repositories/project1/SLE_15_SP1
++Otherurl1: https://download.example.org/repositories/project2/SLE_15_SP1
++Include: somepackage
+diff --git a/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper.json b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper.json
+new file mode 100644
+index 0000000..e5146b9
+--- /dev/null
++++ b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper.json
+@@ -0,0 +1,65 @@
++{
++	"header": {
++		"bootstrap": "zypper",
++		"include": "somepackage",
++		"mirrorurl": "ftp://example.org/SLE-15-SP1-Installer-DVD-x86_64-GM-DVD1",
++		"modules": "sle-module-basesystem,sle-module-hpc",
++	        "osversion": "15.1",
++		"otherurl0": "https://download.example.org/repositories/project1/SLE_15_SP1",
++		"otherurl1": "https://download.example.org/repositories/project2/SLE_15_SP1",
++		"product": "SLE_HPC/%{OSVERSION}/x86_64",
++		"regcode": "REG-CODE-1a2b3c",
++		"registerurl": "https://scc.suse.com",
++		"productpgp": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nVersion: rpm-4.11.2 (NSS-3)\n\nmQENBFEKlmsBCADbpZZbbSC5Zi+HxCR/ynYsVxU5JNNiSSZabN5GMgc9Z0hxeXxp\nYWvFoE/4n0+IXIsp83iKvxf06Eu8je/DXp0lMqDZu7WiT3XXAlkOPSNV4akHTDoY\n91SJaZCpgUJ7K1QXOPABNbREsAMN1a7rxBowjNjBUyiTJ2YuvQRLtGdK1kExsVma\nhieh/QxpoDyYd5w/aky3z23erCoEd+OPfAqEHd5tQIa6LOosa63BSCEl3milJ7J9\nvDmoGPAoS6ui7S2R5X4/+PLN8Mm2kOBrFjhmL93LX0mrGCMxsNsKgP6zabYKQEb8\nL028SXvl7EGoA+Vw5Vd3wIGbM73PfbgNrXjfABEBAAG0KFN1U0UgUGFja2FnZSBT\naWduaW5nIEtleSA8YnVpbGRAc3VzZS5kZT6JATwEEwECACYCGwMGCwkIBwMCBBUC\nCAMEFgIDAQIeAQIXgAUCWEfrHwUJDsIitAAKCRBwr56BOdt8gpqUB/wPSSS5BcDu\nOi4n02cj4Hdt7WITKBjjo0lG1fXG1ppx1wOST+s8FertMVFY53TW6FGjcYtwVOIq\nrsMYiV6kf1NxUV/jcAy7VmC5EZnO0R/D3sT4Oh5hsLtERauZolK5BZmd0S51Qa8e\nTxZ5mX9PL2i3s/ShETc30drf83ugc7B4yZPNQWXNDPgGcC+hEeC5qw48RzHYIpUt\nRzHmefR5Z3ioTUbDlzy+SGP2uA7mhR4Lfk/df5fYxWfCoKlyGjtrvA65cB+Pksyn\nxrAeBuB+vBM+KnDrxW2Sn4AbWkzH//dfz9OJDJu4UM91hb7qxM0OkrXHQV3iNqzg\nMDEhky/9NqMy\n=GdP5\n-----END PGP PUBLIC KEY BLOCK-----",
++		"user": "test@user.org"
++	},
++	"imageData": {
++		"metadata": null,
++		"labels": {},
++		"imageScripts": {
++			"help": {
++				"args": "",
++				"script": ""
++			},
++			"environment": {
++				"args": "",
++				"script": ""
++			},
++			"runScript": {
++				"args": "",
++				"script": ""
++			},
++			"test": {
++				"args": "",
++				"script": ""
++			},
++			"startScript": {
++				"args": "",
++				"script": ""
++			}
++		}
++	},
++	"buildData": {
++		"files": [],
++		"buildScripts": {
++			"pre": {
++				"args": "",
++				"script": ""
++			},
++			"setup": {
++				"args": "",
++				"script": ""
++			},
++			"post": {
++				"args": "",
++				"script": ""
++			},
++			"test": {
++				"args": "",
++				"script": ""
++			}
++		}
++	},
++	"customData": null,
++	"raw": "Qm9vdHN0cmFwOiB6eXBwZXIKT1NWZXJzaW9uOiAxNS4xCk1pcnJvclVSTDogZnRwOi8vZXhhbXBsZS5vcmcvU0xFLTE1LVNQMS1JbnN0YWxsZXItRFZELXg4Nl82NC1HTS1EVkQxClByb2R1Y3Q6IFNMRV9IUEMvJXtPU1ZFUlNJT059L3g4Nl82NApVc2VyOiB0ZXN0QHVzZXIub3JnClJlZ2NvZGU6IFJFRy1DT0RFLTFhMmIzYwpSZWdpc3RlclVybDogaHR0cHM6Ly9zY2Muc3VzZS5jb20KUHJvZHVjdFBHUDogLS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5cClZlcnNpb246IHJwbS00LjExLjIgKE5TUy0zKVxuXApcblwKbVFFTkJGRUtsbXNCQ0FEYnBaWmJiU0M1WmkrSHhDUi95bllzVnhVNUpOTmlTU1phYk41R01nYzlaMGh4ZVh4cFxuXApZV3ZGb0UvNG4wK0lYSXNwODNpS3Z4ZjA2RXU4amUvRFhwMGxNcURadTdXaVQzWFhBbGtPUFNOVjRha0hURG9ZXG5cCjkxU0phWkNwZ1VKN0sxUVhPUEFCTmJSRXNBTU4xYTdyeEJvd2pOakJVeWlUSjJZdXZRUkx0R2RLMWtFeHNWbWFcblwKaGllaC9ReHBvRHlZZDV3L2FreTN6MjNlckNvRWQrT1BmQXFFSGQ1dFFJYTZMT29zYTYzQlNDRWwzbWlsSjdKOVxuXAp2RG1vR1BBb1M2dWk3UzJSNVg0LytQTE44TW0ya09CckZqaG1MOTNMWDBtckdDTXhzTnNLZ1A2emFiWUtRRWI4XG5cCkwwMjhTWHZsN0VHb0ErVnc1VmQzd0lHYk03M1BmYmdOclhqZkFCRUJBQUcwS0ZOMVUwVWdVR0ZqYTJGblpTQlRcblwKYVdkdWFXNW5JRXRsZVNBOFluVnBiR1JBYzNWelpTNWtaVDZKQVR3RUV3RUNBQ1lDR3dNR0N3a0lCd01DQkJVQ1xuXApDQU1FRmdJREFRSWVBUUlYZ0FVQ1dFZnJId1VKRHNJaXRBQUtDUkJ3cjU2Qk9kdDhncHFVQi93UFNTUzVCY0R1XG5cCk9pNG4wMmNqNEhkdDdXSVRLQmpqbzBsRzFmWEcxcHB4MXdPU1QrczhGZXJ0TVZGWTUzVFc2RkdqY1l0d1ZPSXFcblwKcnNNWWlWNmtmMU54VVYvamNBeTdWbUM1RVpuTzBSL0Qzc1Q0T2g1aHNMdEVSYXVab2xLNUJabWQwUzUxUWE4ZVxuXApUeFo1bVg5UEwyaTNzL1NoRVRjMzBkcmY4M3VnYzdCNHlaUE5RV1hORFBnR2NDK2hFZUM1cXc0OFJ6SFlJcFV0XG5cClJ6SG1lZlI1WjNpb1RVYkRsenkrU0dQMnVBN21oUjRMZmsvZGY1Zll4V2ZDb0tseUdqdHJ2QTY1Y0IrUGtzeW5cblwKeHJBZUJ1Qit2Qk0rS25EcnhXMlNuNEFiV2t6SC8vZGZ6OU9KREp1NFVNOTFoYjdxeE0wT2tyWEhRVjNpTnF6Z1xuXApNREVoa3kvOU5xTXlcblwKPUdkUDVcblwKLS0tLS1FTkQgUEdQIFBVQkxJQyBLRVkgQkxPQ0stLS0tLQpNb2R1bGVzOiBzbGUtbW9kdWxlLWJhc2VzeXN0ZW0sc2xlLW1vZHVsZS1ocGMKT3RoZXJ1cmwwOiBodHRwczovL2Rvd25sb2FkLmV4YW1wbGUub3JnL3JlcG9zaXRvcmllcy9wcm9qZWN0MS9TTEVfMTVfU1AxCk90aGVydXJsMTogaHR0cHM6Ly9kb3dubG9hZC5leGFtcGxlLm9yZy9yZXBvc2l0b3JpZXMvcHJvamVjdDIvU0xFXzE1X1NQMQpJbmNsdWRlOiBzb21lcGFja2FnZQo="
++}
+diff --git a/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper_sections.json b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper_sections.json
+new file mode 100644
+index 0000000..f6e1fbe
+--- /dev/null
++++ b/src/github.com/sylabs/singularity/pkg/build/types/parser/testdata_good/zypper_sle/zypper_sections.json
+@@ -0,0 +1,8 @@
++[
++   {
++      "Header":"Bootstrap: zypper\nOSVersion: 15.1\nMirrorURL: ftp://example.org/SLE-15-SP1-Installer-DVD-x86_64-GM-DVD1\nProduct: SLE_HPC/%{OSVERSION}/x86_64\nUser: test@user.org\nRegcode: REG-CODE-1a2b3c\nRegisterUrl: https://scc.suse.com\nProductPGP: -----BEGIN PGP PUBLIC KEY BLOCK-----\\n\\\nVersion: rpm-4.11.2 (NSS-3)\\n\\\n\\n\\\nmQENBFEKlmsBCADbpZZbbSC5Zi+HxCR/ynYsVxU5JNNiSSZabN5GMgc9Z0hxeXxp\\n\\\nYWvFoE/4n0+IXIsp83iKvxf06Eu8je/DXp0lMqDZu7WiT3XXAlkOPSNV4akHTDoY\\n\\\n91SJaZCpgUJ7K1QXOPABNbREsAMN1a7rxBowjNjBUyiTJ2YuvQRLtGdK1kExsVma\\n\\\nhieh/QxpoDyYd5w/aky3z23erCoEd+OPfAqEHd5tQIa6LOosa63BSCEl3milJ7J9\\n\\\nvDmoGPAoS6ui7S2R5X4/+PLN8Mm2kOBrFjhmL93LX0mrGCMxsNsKgP6zabYKQEb8\\n\\\nL028SXvl7EGoA+Vw5Vd3wIGbM73PfbgNrXjfABEBAAG0KFN1U0UgUGFja2FnZSBT\\n\\\naWduaW5nIEtleSA8YnVpbGRAc3VzZS5kZT6JATwEEwECACYCGwMGCwkIBwMCBBUC\\n\\\nCAMEFgIDAQIeAQIXgAUCWEfrHwUJDsIitAAKCRBwr56BOdt8gpqUB/wPSSS5BcDu\\n\\\nOi4n02cj4Hdt7WITKBjjo0lG1fXG1ppx1wOST+s8FertMVFY53TW6FGjcYtwVOIq\\n\\\nrsMYiV6kf1NxUV/jcAy7VmC5EZnO0R/D3sT4Oh5hsLtERauZolK5BZmd0S51Qa8e\\n\\\nTxZ5mX9PL2i3s/ShETc30drf83ugc7B4yZPNQWXNDPgGcC+hEeC5qw48RzHYIpUt\\n\\\nRzHmefR5Z3ioTUbDlzy+SGP2uA7mhR4Lfk/df5fYxWfCoKlyGjtrvA65cB+Pksyn\\n\\\nxrAeBuB+vBM+KnDrxW2Sn4AbWkzH//dfz9OJDJu4UM91hb7qxM0OkrXHQV3iNqzg\\n\\\nMDEhky/9NqMy\\n\\\n=GdP5\\n\\\n-----END PGP PUBLIC KEY BLOCK-----\nModules: sle-module-basesystem,sle-module-hpc\nOtherurl0: https://download.example.org/repositories/project1/SLE_15_SP1\nOtherurl1: https://download.example.org/repositories/project2/SLE_15_SP1\nInclude: somepackage\n"
++   }
++]
++
++
++

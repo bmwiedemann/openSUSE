@@ -1,0 +1,31 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-05-01 09:42:45.000000000 +0200
+Category: improvement
+Status: sent Wed, 1 May 2013 14:28:44 +0200
+
+With the current value of health_hbar_green=0, green will never
+be shown for monsters, which feels incorrect.
+
+---
+ src/m_misc.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: prboom2/src/m_misc.c
+===================================================================
+--- prboom2.orig/src/m_misc.c
++++ prboom2/src/m_misc.c
+@@ -953,11 +953,11 @@ default_t defaults[] =
+    def_bool,ss_stat},
+   {"health_bar_full_length", {&health_bar_full_length}, {1},0,1,
+    def_bool,ss_stat},
+-  {"health_bar_red", {&health_bar_red}, {50},0,100,
++  {"health_bar_red", {&health_bar_red}, {25},0,100,
+    def_int,ss_stat},
+-  {"health_bar_yellow", {&health_bar_yellow}, {99},0,100,
++  {"health_bar_yellow", {&health_bar_yellow}, {50},0,100,
+    def_int,ss_stat},
+-  {"health_bar_green", {&health_bar_green}, {0},0,100,
++  {"health_bar_green", {&health_bar_green}, {99},0,100,
+    def_int,ss_stat},
+ #endif
+ 

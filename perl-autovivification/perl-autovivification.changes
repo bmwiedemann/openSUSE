@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Sun Nov  5 07:16:54 UTC 2017 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-autovivification/Changes
+
+  0.18    2017-11-04 15:30 UTC
+          + Fix : [RT #123411] : Compatibility with CV-in-stash optimisation
+                  Thanks Father Chrysostomos for reporting and contributing a
+                  patch.
+          + Fix : [RT #122956] : strict/warn flags seem to simply do nothing
+                  The documentation has been amended to clarify how these two
+                  options are supposed to be used.
+                  Thanks Christian Walde for reporting.
+
+-------------------------------------------------------------------
+Thu Aug  3 06:30:16 UTC 2017 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-autovivification/Changes
+
+  0.17    2017-07-31 17:15 UTC
+          + Chg : A large chunk of boilerplate XS code, which is also used in
+                  other XS modules, has been factored out of the main .xs file
+                  to a collection of .h files in the xsh subdirectory.
+          + Fix : The new optimization in perl 5.27.3 for scalar(keys(%$hashref))
+                  is now correcty supported.
+
+-------------------------------------------------------------------
+Thu Jul  2 09:34:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-autovivification/Changes
+
+  0.16    2015-07-01 14:30 UTC
+          + Fix : Broken linkage on Windows.
+
+-------------------------------------------------------------------
+Fri May 15 11:35:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-autovivification/Changes
+
+  0.15    2015-05-14 20:35 UTC
+          + Chg : The new environment variable to enable thread tests on older
+                  perls is PERL_FORCE_TEST_THREADS. Note that this variable
+                  should only be turned on by authors.
+          + Fix : The module has been taught about the new multideref
+                  optimization, and will function properly on perl 5.21.11 and
+                  above.
+          + Fix : The module will no longer crash or behave erratically when it
+                  is loaded by several threads (or Windows emulated processes)
+                  ran in parallel.
+          + Fix : Update the Windows ActivePerl + gcc 3.4 workaround for
+                  ExtUtils::MakeMaker 7.04. Thanks Christian Walde for reporting
+                  and feedback on this issue.
+          + Fix : Be really compatible with the optional OP_PARENT feature.
+          + Tst : $ENV{$Config{ldlibpthname}} is now preserved on all platforms,
+                  which will address failures of t/43-peep.t and
+                  t/51-threads-teardown.t with unusual compilers (like icc) that
+                  link all their compiled objects to their own libraries.
+
+-------------------------------------------------------------------
+Mon Apr 13 18:22:05 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-autovivification/Changes
+
+  0.14    2014-11-01 22:25 UTC
+          + Fix : [RT #99458] : AnyEvent::Loop hangs if autovivification 0.13 is
+                  loaded
+                  [RT #99904] : 'no autovivification' breaks Lingua::EN::Inflect
+                  from a distance
+                  This was a regression in 0.13 which caused the peephole
+                  optimizer to loop infinitely on "... while 1" constructs.
+                  However, the Lingua::EN::Inflect problem only occured in perl
+                  5.20 and above.
+                  Thanks Toshio Ito and Kent Fredric for reporting.
+  
+  0.13    2014-10-04 16:55 UTC
+          This release contains a change that, while being very likely to be safe,
+          can potentially cause freezes during code compilation. Every release
+          should be carefully tested before being put in production, but this is
+          especially true for this one.
+          + Add : Support for the PERL_OP_PARENT optional feature introduced in
+                  perl 5.21.2.
+          + Doc : The CAVEATS section now warns about the global slowdown during
+                  compilation caused by this pragma.
+          + Fix : [RT #97703] : Android support
+                  t/51-threads-teardown.t will no longer fail on Android.
+                  Thanks Brian Fraser for reporting.
+          + Fix : Segfaults in eval in an END block of a Win32 pseudo-fork.
+          + Fix : Segfaults during global destruction of a thread or a
+                  pseudo-fork.
+          + Opt : The global slowdown caused by this module has been greatly
+                  reduced.
+                  Thanks Ævar Arnfjörð Bjarmason for reporting and testing the
+                  change.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:23 UTC 2013 - coolo@suse.com
+
+- updated to 0.12
+      + Fix : Check functions are now replaced and restored in a thread-safe
+              manner, either by using the wrap_op_checker() function from perl
+              when it is available (starting from perl 5.16) or by taking the
+              OP_REFCNT mutex on older perls.
+      + Tst : Author tests are no longer bundled with this distribution.
+              They are only made available to authors in the git repository.
+
+-------------------------------------------------------------------
+Mon Sep  2 11:11:33 UTC 2013 - werner@suse.de
+
+- Update to version 0.11
+  + Doc : POD tweaks and clarifications.
+  + Tst : Threads tests will not fail anymore if resources constraints
+          prevent the system from creating all the required threads.
+  + Tst : Author tests overhaul.
+  + Fix : The pragma no longer vivifies the "autovivification" entry
+          in the hints hash %^H on perl 5.8.
+
+-------------------------------------------------------------------
+Thu Apr 14 07:46:21 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.09
+    * created by cpanspec 1.78.04
+

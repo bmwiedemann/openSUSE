@@ -1,0 +1,807 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:16 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:13 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- No code changes since 5.15.90
+
+-------------------------------------------------------------------
+Thu May 16 16:56:35 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * Fix colours of header bar for acitve and inactive windows (kde#403426)
+  * Remove border around menubars
+  * Explicitly set charset to UTF-8
+  * Remove ignored style properties from CSS
+
+-------------------------------------------------------------------
+Tue May  7 11:04:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * Set the default cursor theme to breeze_cursors
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:56 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Thu Mar 14 09:17:09 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add supplements to breeze[45]-style
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:04:40 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:25:06 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * Cosmetic fixes for build_theme.sh
+
+-------------------------------------------------------------------
+Thu Jan 17 18:45:19 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Too many changes to list here
+- CSS files are now generated during build using Python and SASS
+
+-------------------------------------------------------------------
+Tue Jan  8 13:36:36 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * Set the default cursor theme to breeze_cursors
+- Remove patches, now upstream:
+  * 0001-Set-the-default-cursor-theme-to-breeze_cursors.patch
+
+-------------------------------------------------------------------
+Wed Nov 28 12:15:52 UTC 2018 - wbauer@tmo.at
+
+- Don't modify permissions of the README.md and COPYING.LIB files
+  anymore, they have been fixed upstream a long time ago
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- No code changes since 5.14.3
+
+-------------------------------------------------------------------
+Tue Nov 27 18:11:47 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to set the default cursor theme to Breeze:
+  * 0001-Set-the-default-cursor-theme-to-breeze_cursors.patch
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:05 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 23 13:54:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- Changes since 5.14.1:
+  * GTK theme treeview style typo/bug fix
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:08 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- No code changes since 5.13.90
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:24:58 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:40 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Fix scrollbars in LibreOffice (kde#389709)
+  * [kconf_update] Add "gtk-primary-button-warps-slider=0" to generated GTK3 config (kde#379773)
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:32 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:01:17 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 26 16:00:06 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:43:43 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:50 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * None
+
+-------------------------------------------------------------------
+Sat May 19 14:16:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Clean up top corners of dark headerbar
+  * Adjust dark headerbar to look like a toolbar
+  * Convert headerbar styling to toolbar appearance and adjust titlebutton rendering accordingly
+  * Restructure CSS to prepare for color scheme compatibility
+  * Use 1px padding on titlebuttons
+
+-------------------------------------------------------------------
+Wed May  2 09:05:38 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:47 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:06 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:42 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * None
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:02 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Properly check for Breeze GTK 3 theme existence in kconf_update
+  * Fixup install paths
+  * Move the 3.0 directory to 3.18 to ensure builds will not fail (kde#388018)
+  * Revert "Revert "Remove gtk+-3 build dep, install versioned gtk.css dirs unconditionally""
+  * Revert "Reverse my previous revert, and eliminate the attempted installation of the other Gtk 3 theme versions"
+  * Modify theme generator to match scrollbar updates
+  * Add preliminary theme generation script for authoring assets
+  * Add GTK 3.18 theme back to support LTS distributions
+  * Reverse my previous revert, and eliminate the attempted installation of the other Gtk 3 theme versions
+  * Revert "Remove gtk+-3 build dep, install versioned gtk.css dirs unconditionally" This commit causes the build to fail as gtk-3.18/ does not exist as a directory in the source tree
+  * Apply text contrast changes to GTK 2 theme
+  * Increase text contrast for consistency with default Breeze color scheme
+  * Rename 3.20 theme to be used for all GTK 3 versions
+  * Remove obsolete GTK versions' themes to improve maintainability
+  * Update scrollbar assets (kde#385627)
+  * Adjust client-side decorations to look correct in both CSD and forced SSD environments
+  * Add support for gtk3 theme variant feature.
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:42:03 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 24 18:12:23 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:18:03 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:17 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * Fix background-image warning
+  * Don't show scrollbar steppers
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:04 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Adjusted Scrollbars so now they fit the Qt theme
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:47 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 27 17:49:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:00 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:55 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * None
+
+-------------------------------------------------------------------
+Sat May 27 16:30:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Move all gtk-3.0+ themes to gtk3-metatheme-breeze
+
+-------------------------------------------------------------------
+Fri May 26 14:10:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * Remove gtk+-3 build dep, install versioned gtk.css dirs unconditionally
+  * Set no stepper button for GTK3 scrollbars on gtk >=3.20 (kde#377008)
+
+-------------------------------------------------------------------
+Thu May 11 20:26:19 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * Revert "Revert "No need for WITH_GTK3_VERSION anymore""
+  * Revert "Revert "Figure out the GTK version instead of using a hardcoded one""
+
+-------------------------------------------------------------------
+Tue Apr 25 18:57:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:43 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * None
+-------------------------------------------------------------------
+Tue Feb 28 19:54:04 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * Revert "Figure out the GTK version instead of using a hardcoded one"
+  * Revert "No need for WITH_GTK3_VERSION anymore"
+  * No need for WITH_GTK3_VERSION anymore
+  * Figure out the GTK version instead of using a hardcoded one
+
+-------------------------------------------------------------------
+Tue Feb  7 18:51:21 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:01 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * SWT/Eclipse toolbar fix.
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Mon Sep 19 12:30:19 UTC 2016 - wbauer@tmo.at
+
+- Re-add update_from_BreezeGTK.patch to fix the GTK theme settings on
+  upgrades from Leap 42.1, which shipped with BreezyGTK (boo#994832)
+- build the proper theme for distributions which have gtk3 < 3.20
+  (13.2 and Leap 42.1)
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+- Removed patches:
+    Install-GTK3-theme-version-depending-on-present-libg.patch
+    update_from_BreezeGTK.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Mon Aug 22 11:33:33 UTC 2016 - wbauer@tmo.at
+
+- Add update_from_BreezeGTK.patch to fix the GTK theme settings on
+  upgrades from Leap 42.1, which shipped with BreezyGTK (boo#994832)
+
+-------------------------------------------------------------------
+Tue Aug  2 11:35:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jun 11 16:06:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.90~g4fcde88
+  * Support GTK 3.20.x
+- Add Install-GTK3-theme-version-depending-on-present-libg.patch
+- Add gtk3-devel buildrequires, needed for above patch
+
+-------------------------------------------------------------------
+Sun May 15 16:50:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Wed Mar 30 16:31:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Wed Mar 30 16:14:40 UTC 2016 - alarrosa@suse.com
+
+- Changed buildrequires to require cmake 2.8.12 instead of 3.2, just
+  as the sources do.
+
+-------------------------------------------------------------------
+Tue Mar  1 17:31:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 5.4.95.
+- Change upstream project to https://projects.kde.org/breeze-gtk.
+- Add cmake, extra-cmake-modules, gcc-c++, kf5-filesystem and
+  pkgconfig(Qt5Core) to build dependences.
+- Add kconf_update to metatheme-breeze-common and make it
+  architecture-dependent.
+
+-------------------------------------------------------------------
+Sun Oct 18 08:46:06 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.1~git20150827.
+- Spec complete redone to unify with other Gtk themes.
+
+-------------------------------------------------------------------
+Wed Jul 22 13:55:17 UTC 2015 - wittemar@googlemail.com
+
+- updated to current git and included dark variant
+
+-------------------------------------------------------------------
+Thu Jun  4 09:06:57 UTC 2015 - tchvatal@suse.com
+
+- Fix rpmlint errors
+
+-------------------------------------------------------------------
+Tue Jun  2 11:48:08 UTC 2015 - tittiatcoke@gmail.com
+
+- Initial package

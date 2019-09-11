@@ -1,0 +1,1784 @@
+From 379d89f7ab15ee443d9a164d193f5e9bf3285b69 Mon Sep 17 00:00:00 2001
+From: Mario Carrion <mcarrion@novell.com>
+Date: Tue, 16 Nov 2010 17:01:32 -0500
+Subject: [UIAutomationClient] AutomationElement.FromLocalProvider
+ implementation.
+
+Fixes BNC #489388 and building with Mono 2.8
+---
+ MoonAtkBridge/MoonAtkBridge.sln                    |    5 +-
+ UIAutomation/UIAutomationBridge/Makefile.am        |    1 +
+ .../Mono.UIAutomation.Services/ArgumentCheck.cs    |   42 ++
+ .../UIAutomationBridge/UIAutomationBridge.csproj   |    1 +
+ UIAutomation/UIAutomationClient/Makefile.am        |    7 +
+ .../ClientAutomationBridge.cs                      |   87 ++++
+ .../ClientAutomationSource.cs                      |  184 +++++++
+ .../ClientElement.cs                               |  514 ++++++++++++++++++++
+ .../ClientEventManager.cs                          |  250 ++++++++++
+ .../ClientInvokePattern.cs                         |   50 ++
+ .../System.Windows.Automation/Automation.cs        |   60 +--
+ .../System.Windows.Automation/AutomationElement.cs |   14 +-
+ .../System.Windows.Automation/ClientSettings.cs    |    4 +-
+ .../ClientSideProviderDescription.cs               |   26 +-
+ .../System.Windows.Automation/SourceManager.cs     |    2 +
+ .../UIAutomationClient/UIAutomationClient.csproj   |    8 +
+ .../UIAutomationClientTests/BaseTest.cs            |    2 +
+ .../UIAutomationClientTests/LocalProviderTest.cs   |  172 ++++++-
+ .../UIAutomationClientTests.csproj                 |   15 +-
+ .../AutomationInteropProvider.cs                   |    7 +-
+ .../AutomationIdentifier.cs                        |    6 +-
+ UiaAtkBridge/Test/AtkTest/AtkTest.csproj           |    1 +
+ UiaAtkBridge/Test/GailTestApp/gtk-gui/generated.cs |   55 +--
+ .../Wrappers/ProviderElementWrapper.cs             |   16 +-
+ UiaDbus/UiaDbusSource/UiaDbusElement.cs            |    2 +-
+ uia2atk.mdw                                        |    2 +-
+ 26 files changed, 1419 insertions(+), 114 deletions(-)
+ create mode 100644 UIAutomation/UIAutomationBridge/Mono.UIAutomation.Services/ArgumentCheck.cs
+ create mode 100644 UIAutomation/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationBridge.cs
+ create mode 100644 UIAutomation/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationSource.cs
+ create mode 100644 UIAutomation/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientElement.cs
+ create mode 100644 UIAutomation/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientEventManager.cs
+ create mode 100644 UIAutomation/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientInvokePattern.cs
+
+Index: mono-uia.git/UIAutomationBridge/Makefile.am
+===================================================================
+--- mono-uia.git.orig/UIAutomationBridge/Makefile.am	2012-01-23 18:58:34.192473338 +0000
++++ mono-uia.git/UIAutomationBridge/Makefile.am	2012-01-23 18:58:44.776520265 +0000
+@@ -28,6 +28,7 @@
+ PROJECT_SOURCE_FILES =  \
+ 	Mono.UIAutomation.Bridge/IAutomationBridge.cs \
+ 	Mono.UIAutomation.Bridge/IHypertext.cs \
++	Mono.UIAutomation.Services/ArgumentCheck.cs \
+ 	Mono.UIAutomation.Services/Log.cs
+ 
+ FILES =  \
+Index: mono-uia.git/UIAutomationBridge/Mono.UIAutomation.Services/ArgumentCheck.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationBridge/Mono.UIAutomation.Services/ArgumentCheck.cs	2012-01-23 18:58:44.776520265 +0000
+@@ -0,0 +1,42 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//      Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++
++namespace Mono.UIAutomation.Services
++{
++	public static class ArgumentCheck
++	{
++		public static void NotNull<T> (T arg, string argName) where T : class {
++			if (arg == null)
++				throw new ArgumentNullException (argName);
++		}
++
++		public static void Assert<T> (T arg, Predicate<T> condition, string errorMessage) {
++			if (!condition (arg))
++				throw new ArgumentException (errorMessage);
++		}
++	}
++}
+Index: mono-uia.git/UIAutomationClient/Makefile.am
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/Makefile.am	2012-01-23 18:58:34.192473338 +0000
++++ mono-uia.git/UIAutomationClient/Makefile.am	2012-01-23 18:58:44.780520283 +0000
+@@ -31,6 +31,11 @@
+ all: $(ASSEMBLY) $(PROGRAMFILES)
+ 
+ PROJECT_SOURCE_FILES =  \
++	Mono.UIAutomation.ClientSource/ClientAutomationBridge.cs \
++	Mono.UIAutomation.ClientSource/ClientAutomationSource.cs \
++	Mono.UIAutomation.ClientSource/ClientElement.cs \
++	Mono.UIAutomation.ClientSource/ClientEventManager.cs \
++	Mono.UIAutomation.ClientSource/ClientInvokePattern.cs \
+ 	System.Windows.Automation.Text/TextPatternRange.cs \
+ 	System.Windows.Automation/AndCondition.cs \
+ 	System.Windows.Automation/Automation.cs \
+@@ -84,6 +89,8 @@
+ REFERENCES =  \
+ 	WindowsBase \
+ 	System \
++	System.Core \
++	Mono.Posix \
+ 	$(GTK_SHARP_20_LIBS)
+ 
+ DLL_REFERENCES = 
+Index: mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationBridge.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationBridge.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -0,0 +1,87 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//     Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++using System.Windows.Automation;
++using System.Windows.Automation.Provider;
++using Mono.UIAutomation.Bridge;
++
++namespace Mono.UIAutomation.ClientSource
++{
++	internal class ClientAutomationBridge : IAutomationBridge
++	{
++		#region IAutomationBridge implementation
++		public object HostProviderFromHandle (IntPtr hwnd)
++		{
++			return null;
++		}
++
++		public void RaiseAutomationEvent (AutomationEvent eventId, object provider, AutomationEventArgs e)
++		{
++			var providerSimple = provider as IRawElementProviderSimple;
++			if (providerSimple == null)
++				return;
++			ClientEventManager.RaiseAutomationEvent (eventId, providerSimple, e);
++		}
++
++		public void RaiseAutomationPropertyChangedEvent (object provider, AutomationPropertyChangedEventArgs e)
++		{
++			var providerSimple = provider as IRawElementProviderSimple;
++			if (providerSimple == null)
++				return;
++			ClientEventManager.RaiseAutomationPropertyChangedEvent (providerSimple, e);
++		}
++
++		public void RaiseStructureChangedEvent (object provider, StructureChangedEventArgs e)
++		{
++			var providerSimple = provider as IRawElementProviderSimple;
++			if (providerSimple == null)
++				return;
++			ClientEventManager.RaiseStructureChangedEvent (providerSimple, e);
++		}
++
++		public void Initialize ()
++		{
++		}
++
++		public void Terminate ()
++		{
++		}
++
++		public bool IsAccessibilityEnabled {
++			get {
++				return true;
++			}
++		}
++
++		public bool ClientsAreListening {
++			get {
++				return true;
++			}
++		}
++
++		#endregion
++	}
++}
+Index: mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationSource.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientAutomationSource.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -0,0 +1,186 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//     Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++using System.Threading;
++using System.Windows.Automation;
++using System.Windows.Automation.Provider;
++using Mono.UIAutomation.Source;
++using Mono.UIAutomation.Services;
++
++namespace Mono.UIAutomation.ClientSource
++{
++	internal class ClientAutomationSource : IAutomationSource
++	{
++		private static ClientAutomationSource instance = null;
++		private static object staticLock = new object ();
++		public static ClientAutomationSource Instance {
++			get {
++				if (instance == null)
++					lock (staticLock)
++						if (instance == null)
++							instance = new ClientAutomationSource ();
++				return instance;
++			}
++		}
++
++		#region IAutomationSource implementation
++		#pragma warning disable 67
++		public event EventHandler RootElementsChanged;
++		#pragma warning restore 67
++
++		public void Initialize ()
++		{
++		}
++
++		public IElement [] GetRootElements ()
++		{
++			return new IElement [0];
++		}
++
++		public IElement GetFocusedElement ()
++		{
++			return null;
++		}
++
++		public IElement GetElementFromHandle (IntPtr handle)
++		{
++			return null;
++		}
++
++		public void AddAutomationEventHandler (AutomationEvent eventId, IElement element, TreeScope scope, AutomationEventHandler eventHandler)
++		{
++			if (element == null)
++				// elements from local providers are not descendants of the RootElement.
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.AddAutomationEventHandler] Not ClientElement");
++				return;
++			}
++			ClientEventManager.AddAutomationEventHandler (eventId,
++				clientElement.Provider, scope, eventHandler);
++		}
++
++		public void AddAutomationPropertyChangedEventHandler (IElement element, TreeScope scope, AutomationPropertyChangedEventHandler eventHandler, AutomationProperty[] properties)
++		{
++			if (element == null)
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.AddAutomationPropertyChangedEventHandler] Not ClientElement");
++				return;
++			}
++			int [] propertyIds = Array.ConvertAll (properties, p => p.Id);
++			ClientEventManager.AddAutomationPropertyChangedEventHandler (
++				clientElement.Provider, scope, eventHandler, propertyIds);
++		}
++
++		public void AddStructureChangedEventHandler (IElement element, TreeScope scope, StructureChangedEventHandler eventHandler)
++		{
++			if (element == null)
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.AddStructureChangedEventHandler] Not ClientElement");
++				return;
++			}
++			ClientEventManager.AddStructureChangedEventHandler (clientElement.Provider,
++				scope, eventHandler);
++		}
++
++		public void AddAutomationFocusChangedEventHandler (FocusChangedEventHandler eventHandler)
++		{
++			// client provider never fires FocusChangedEvent.
++			return;
++		}
++
++		public void RemoveAutomationEventHandler (AutomationEvent eventId, IElement element, AutomationEventHandler eventHandler)
++		{
++			if (element == null)
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.RemoveAutomationEventHandler] Not ClientElement");
++				return;
++			}
++			ClientEventManager.RemoveAutomationEventHandler (eventId,
++				clientElement.Provider, eventHandler);
++		}
++
++		public void RemoveAutomationPropertyChangedEventHandler (IElement element, AutomationPropertyChangedEventHandler eventHandler)
++		{
++			if (element == null)
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.RemoveAutomationPropertyChangedEventHandler] Not ClientElement");
++				return;
++			}
++			ClientEventManager.RemoveAutomationPropertyChangedEventHandler (
++				clientElement.Provider, eventHandler);
++		}
++
++		public void RemoveStructureChangedEventHandler (IElement element, StructureChangedEventHandler eventHandler)
++		{
++			if (element == null)
++				return;
++			ClientElement clientElement = element as ClientElement;
++			if (clientElement == null) {
++				Log.Error ("[ClientAutomationSource.RemoveStructureChangedEventHandler] Not ClientElement");
++				return;
++			}
++			ClientEventManager.RemoveStructureChangedEventHandler (
++				clientElement.Provider, eventHandler);
++		}
++
++		public void RemoveAutomationFocusChangedEventHandler (FocusChangedEventHandler eventHandler)
++		{
++			// client provider never fires FocusChangedEvent.
++			return;
++		}
++
++		public void RemoveAllEventHandlers ()
++		{
++			ClientEventManager.RemoveAllEventHandlers ();
++		}
++
++		public bool IsAccessibilityEnabled {
++			get {
++				return true;
++			}
++		}
++
++		#endregion
++
++		public ClientElement GetOrCreateElement (IRawElementProviderSimple provider)
++		{
++			if (provider == null)
++				return null;
++			//?????
++			return new ClientElement (this, provider);
++		}
++	}
++}
+\ No newline at end of file
+Index: mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientElement.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientElement.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -0,0 +1,514 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//     Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++using System.Windows;
++using System.Windows.Automation;
++using System.Windows.Automation.Provider;
++using Mono.UIAutomation.Source;
++using AEIds = System.Windows.Automation.AutomationElementIdentifiers;
++using System.Collections.Generic;
++using Mono.Unix;
++using Mono.UIAutomation.Services;
++using System.Linq;
++
++namespace Mono.UIAutomation.ClientSource
++{
++	// TODO the ClientElement class shares many common code with UiaDbusBridge.ProviderElementWrapper,
++	// Any change to refactor and merge these code?
++	internal class ClientElement : IElement
++	{
++		#region All patterns and properties
++		private static int [] allPatternIds = {
++			ExpandCollapsePatternIdentifiers.Pattern.Id,
++			GridItemPatternIdentifiers.Pattern.Id,
++			GridPatternIdentifiers.Pattern.Id,
++			InvokePatternIdentifiers.Pattern.Id,
++			MultipleViewPatternIdentifiers.Pattern.Id,
++			RangeValuePatternIdentifiers.Pattern.Id,
++			ScrollPatternIdentifiers.Pattern.Id,
++			SelectionItemPatternIdentifiers.Pattern.Id,
++			SelectionPatternIdentifiers.Pattern.Id,
++			TablePatternIdentifiers.Pattern.Id,
++			TextPatternIdentifiers.Pattern.Id,
++			TogglePatternIdentifiers.Pattern.Id,
++			TransformPatternIdentifiers.Pattern.Id,
++			ValuePatternIdentifiers.Pattern.Id,
++			WindowPatternIdentifiers.Pattern.Id,
++			ScrollItemPatternIdentifiers.Pattern.Id,
++			DockPatternIdentifiers.Pattern.Id,
++			TableItemPatternIdentifiers.Pattern.Id
++		};
++
++		private static int [] allPropertyIds = {
++			AutomationElementIdentifiers.IsControlElementProperty.Id,
++			AutomationElementIdentifiers.ControlTypeProperty.Id,
++			AutomationElementIdentifiers.IsContentElementProperty.Id,
++			AutomationElementIdentifiers.LabeledByProperty.Id,
++			AutomationElementIdentifiers.NativeWindowHandleProperty.Id,
++			AutomationElementIdentifiers.AutomationIdProperty.Id,
++			AutomationElementIdentifiers.ItemTypeProperty.Id,
++			AutomationElementIdentifiers.IsPasswordProperty.Id,
++			AutomationElementIdentifiers.LocalizedControlTypeProperty.Id,
++			AutomationElementIdentifiers.NameProperty.Id,
++			AutomationElementIdentifiers.AcceleratorKeyProperty.Id,
++			AutomationElementIdentifiers.AccessKeyProperty.Id,
++			AutomationElementIdentifiers.HasKeyboardFocusProperty.Id,
++			AutomationElementIdentifiers.IsKeyboardFocusableProperty.Id,
++			AutomationElementIdentifiers.IsEnabledProperty.Id,
++			AutomationElementIdentifiers.BoundingRectangleProperty.Id,
++			AutomationElementIdentifiers.ProcessIdProperty.Id,
++			AutomationElementIdentifiers.RuntimeIdProperty.Id,
++			AutomationElementIdentifiers.ClassNameProperty.Id,
++			AutomationElementIdentifiers.HelpTextProperty.Id,
++			AutomationElementIdentifiers.ClickablePointProperty.Id,
++			AutomationElementIdentifiers.CultureProperty.Id,
++			AutomationElementIdentifiers.IsOffscreenProperty.Id,
++			AutomationElementIdentifiers.OrientationProperty.Id,
++			AutomationElementIdentifiers.FrameworkIdProperty.Id,
++			AutomationElementIdentifiers.IsRequiredForFormProperty.Id,
++			AutomationElementIdentifiers.ItemStatusProperty.Id,
++			// Comment Is*PatternAvailableProperty since MS.Net never include those
++			// properties in the return value of AutomationElement.GetSupportedProperties ()
++			//AutomationElementIdentifiers.IsDockPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsExpandCollapsePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsGridItemPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsGridPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsInvokePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsMultipleViewPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsRangeValuePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsSelectionItemPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsSelectionPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsScrollPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsScrollItemPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsTablePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsTableItemPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsTextPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsTogglePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsTransformPatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsValuePatternAvailableProperty.Id,
++			//AutomationElementIdentifiers.IsWindowPatternAvailableProperty.Id,
++			ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty.Id,
++			GridItemPatternIdentifiers.RowProperty.Id,
++			GridItemPatternIdentifiers.ColumnProperty.Id,
++			GridItemPatternIdentifiers.RowSpanProperty.Id,
++			GridItemPatternIdentifiers.ColumnSpanProperty.Id,
++			GridItemPatternIdentifiers.ContainingGridProperty.Id,
++			GridPatternIdentifiers.RowCountProperty.Id,
++			GridPatternIdentifiers.ColumnCountProperty.Id,
++			MultipleViewPatternIdentifiers.CurrentViewProperty.Id,
++			MultipleViewPatternIdentifiers.SupportedViewsProperty.Id,
++			RangeValuePatternIdentifiers.ValueProperty.Id,
++			RangeValuePatternIdentifiers.IsReadOnlyProperty.Id,
++			RangeValuePatternIdentifiers.MinimumProperty.Id,
++			RangeValuePatternIdentifiers.MaximumProperty.Id,
++			RangeValuePatternIdentifiers.LargeChangeProperty.Id,
++			RangeValuePatternIdentifiers.SmallChangeProperty.Id,
++			ScrollPatternIdentifiers.HorizontalScrollPercentProperty.Id,
++			ScrollPatternIdentifiers.HorizontalViewSizeProperty.Id,
++			ScrollPatternIdentifiers.VerticalScrollPercentProperty.Id,
++			ScrollPatternIdentifiers.VerticalViewSizeProperty.Id,
++			ScrollPatternIdentifiers.HorizontallyScrollableProperty.Id,
++			ScrollPatternIdentifiers.VerticallyScrollableProperty.Id,
++			SelectionItemPatternIdentifiers.IsSelectedProperty.Id,
++			SelectionItemPatternIdentifiers.SelectionContainerProperty.Id,
++			SelectionPatternIdentifiers.SelectionProperty.Id,
++			SelectionPatternIdentifiers.CanSelectMultipleProperty.Id,
++			SelectionPatternIdentifiers.IsSelectionRequiredProperty.Id,
++			TablePatternIdentifiers.RowHeadersProperty.Id,
++			TablePatternIdentifiers.ColumnHeadersProperty.Id,
++			TablePatternIdentifiers.RowOrColumnMajorProperty.Id,
++			TogglePatternIdentifiers.ToggleStateProperty.Id,
++			TransformPatternIdentifiers.CanMoveProperty.Id,
++			TransformPatternIdentifiers.CanResizeProperty.Id,
++			TransformPatternIdentifiers.CanRotateProperty.Id,
++			ValuePatternIdentifiers.ValueProperty.Id,
++			ValuePatternIdentifiers.IsReadOnlyProperty.Id,
++			WindowPatternIdentifiers.CanMaximizeProperty.Id,
++			WindowPatternIdentifiers.CanMinimizeProperty.Id,
++			WindowPatternIdentifiers.IsModalProperty.Id,
++			WindowPatternIdentifiers.WindowVisualStateProperty.Id,
++			WindowPatternIdentifiers.WindowInteractionStateProperty.Id,
++			WindowPatternIdentifiers.IsTopmostProperty.Id,
++			DockPatternIdentifiers.DockPositionProperty.Id,
++			TableItemPatternIdentifiers.RowHeaderItemsProperty.Id,
++			TableItemPatternIdentifiers.ColumnHeaderItemsProperty.Id
++		};
++		#endregion
++
++		#region Private FIelds
++
++		private ClientAutomationSource source = null;
++		private IRawElementProviderSimple provider = null;
++		private IRawElementProviderFragment providerFragment = null;
++		private IRawElementProviderFragmentRoot providerFragmentRoot = null;
++
++		#endregion
++
++		#region Constructor
++
++		public ClientElement (ClientAutomationSource source, IRawElementProviderSimple provider)
++		{
++			ArgumentCheck.NotNull (source, "source");
++			ArgumentCheck.NotNull (provider, "provider");
++
++			this.source = source;
++			this.provider = provider;
++			providerFragment = provider as IRawElementProviderFragment;
++			providerFragmentRoot = provider as IRawElementProviderFragmentRoot;
++		}
++
++		#endregion
++
++		internal IRawElementProviderSimple Provider {
++			get { return provider; }
++		}
++
++		#region IElement implementation
++
++		public bool SupportsProperty (AutomationProperty property)
++		{
++			ArgumentCheck.NotNull (property, "property");
++
++			object val = provider.GetPropertyValue (property.Id);
++			return val != null && val != AEIds.NotSupported;
++		}
++
++		public object GetCurrentPattern (AutomationPattern pattern)
++		{
++			ArgumentCheck.NotNull (pattern, "pattern");
++
++			var patternProvider = provider.GetPatternProvider (pattern.Id);
++			if (patternProvider == null)
++				throw new InvalidOperationException ();
++			object ret = null;
++			if (pattern == InvokePattern.Pattern)
++				ret = new ClientInvokePattern ((IInvokeProvider) patternProvider);
++			// TODO implement
++			// we still have more pattern to implement
++			else
++				throw new System.InvalidOperationException ();
++			return ret;
++		}
++
++		public AutomationPattern[] GetSupportedPatterns ()
++		{
++			return (from patternId in allPatternIds
++				where provider.GetPatternProvider (patternId) != null
++				select AutomationPattern.LookupById (patternId)).ToArray ();
++		}
++
++		public AutomationProperty[] GetSupportedProperties ()
++		{
++			return (from propertyId in allPropertyIds
++			        let val = provider.GetPropertyValue (propertyId)
++				where val != null && val != AEIds.NotSupported
++				select AutomationProperty.LookupById (propertyId)).ToArray ();
++		}
++
++		public void SetFocus ()
++		{
++			if (!IsKeyboardFocusable)
++				// as tested on Windows, the InvalidOperationException hasn't any error message 
++				throw new InvalidOperationException ();
++			if (providerFragment != null)
++				providerFragment.SetFocus ();
++		}
++
++		public IElement GetDescendantFromPoint (double x, double y)
++		{
++			if (providerFragmentRoot != null) {
++				var childProvider =
++					providerFragmentRoot.ElementProviderFromPoint (x, y);
++				return source.GetOrCreateElement (childProvider);
++			}
++			return null;
++		}
++
++		public string AcceleratorKey {
++			get {
++				return provider.GetPropertyValue (AEIds.AcceleratorKeyProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public string AccessKey {
++			get {
++				return provider.GetPropertyValue (AEIds.AccessKeyProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public string AutomationId {
++			get {
++				return provider.GetPropertyValue (AEIds.AutomationIdProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public Rect BoundingRectangle {
++			get {
++				// As tested on Windows, runtime id is solely decided
++				// by providerFragment.BoundingRectangle, and is irrelevant with
++				// IRawElementProviderSimple.GetPropertyValue (AEIds.BoundingRectangleProperty)
++
++				if (providerFragment != null)
++					return providerFragment.BoundingRectangle;
++				else
++					return Rect.Empty;
++			}
++		}
++
++		public string ClassName {
++			get {
++				return provider.GetPropertyValue (AEIds.ClassNameProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public Point ClickablePoint {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.ClickablePointProperty.Id);
++				return (obj != null) ? (Point) obj :
++					new Point (double.NegativeInfinity, double.NegativeInfinity);
++			}
++		}
++
++		public ControlType ControlType {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.ControlTypeProperty.Id);
++				return (obj != null) ? ControlType.LookupById ((int) obj) : ControlType.Custom;
++			}
++		}
++
++		public string FrameworkId {
++			get {
++				return provider.GetPropertyValue (AEIds.FrameworkIdProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public bool HasKeyboardFocus {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.HasKeyboardFocusProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public string HelpText {
++			get {
++				return provider.GetPropertyValue (AEIds.HelpTextProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public bool IsContentElement {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsContentElementProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsControlElement {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsControlElementProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsEnabled {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsEnabledProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsKeyboardFocusable {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsKeyboardFocusableProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsOffscreen {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsOffscreenProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsPassword {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsPasswordProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public bool IsRequiredForForm {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.IsRequiredForFormProperty.Id);
++				return (obj != null) ? (bool) obj : false;
++			}
++		}
++
++		public string ItemStatus {
++			get {
++				return provider.GetPropertyValue (AEIds.ItemStatusProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public string ItemType {
++			get {
++				return provider.GetPropertyValue (AEIds.ItemTypeProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public IElement LabeledBy {
++			get {
++				var labeledBy = provider.GetPropertyValue (AEIds.LabeledByProperty.Id)
++					as IRawElementProviderSimple;
++				return (labeledBy != null) ? source.GetOrCreateElement (labeledBy) : null;
++			}
++		}
++
++		public string LocalizedControlType {
++			get {
++				var controlType = this.ControlType;
++				if (controlType == ControlType.DataGrid)
++					return Catalog.GetString ("data grid");
++				else if (controlType == ControlType.DataItem)
++					return Catalog.GetString ("data item");
++				else if (controlType == ControlType.List)
++					return Catalog.GetString ("list");
++				else
++					return controlType.LocalizedControlType;
++			}
++		}
++
++		public string Name {
++			get {
++				return provider.GetPropertyValue (AEIds.NameProperty.Id)
++					as string ?? string.Empty;
++			}
++		}
++
++		public int NativeWindowHandle {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.NativeWindowHandleProperty.Id);
++				return (obj != null) ? (int) obj : 0;
++			}
++		}
++
++		public OrientationType Orientation {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.OrientationProperty.Id);
++				return (obj != null) ? (OrientationType) obj : OrientationType.None;
++			}
++		}
++
++		public int ProcessId {
++			get {
++				object obj = provider.GetPropertyValue (AEIds.ProcessIdProperty.Id);
++				return (obj != null) ? (int) obj : 0;
++			}
++		}
++
++		public int[] RuntimeId {
++			get {
++				// As tested on Windows, runtime id is solely decided
++				// by providerFragment.GetRuntimeId, and is irrelevant with
++				// IRawElementProviderSimple.GetPropertyValue (AEIds.RuntimeIdProperty)
++				//
++				// An expcetion: if the runtime id is not explicitly provided, while
++				// native handle is provided, then UIA will generate a runtime id for the provider,
++				// on Windows 7 the runtime id is [42, NativeHandleValue]
++				int [] runtimeId = null;
++				if (providerFragment != null)
++					runtimeId = providerFragment.GetRuntimeId ();
++				else {
++					int hwnd = this.NativeWindowHandle;
++					if (hwnd != 0)
++						runtimeId = new int [] {42, hwnd};
++				}
++				return runtimeId;
++			}
++		}
++
++		public IElement Parent {
++			get {
++				if (providerFragment == null)
++					return null;
++				return source.GetOrCreateElement (
++					providerFragment.Navigate (NavigateDirection.Parent));
++			}
++		}
++
++		public IElement FirstChild {
++			get {
++				if (providerFragment == null)
++					return null;
++				return source.GetOrCreateElement (
++					providerFragment.Navigate (NavigateDirection.FirstChild));
++			}
++		}
++
++		public IElement LastChild {
++			get {
++				if (providerFragment == null)
++					return null;
++				return source.GetOrCreateElement (
++					providerFragment.Navigate (NavigateDirection.LastChild));
++			}
++		}
++
++		public IElement NextSibling {
++			get {
++				if (providerFragment == null)
++					return null;
++				return source.GetOrCreateElement (
++					providerFragment.Navigate (NavigateDirection.NextSibling));
++			}
++		}
++
++		public IElement PreviousSibling {
++			get {
++				if (providerFragment == null)
++					return null;
++				return source.GetOrCreateElement (
++					providerFragment.Navigate (NavigateDirection.PreviousSibling));
++			}
++		}
++
++		public IAutomationSource AutomationSource {
++			get {
++				return source;
++			}
++		}
++
++		#endregion
++	}
++}
+Index: mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientEventManager.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientEventManager.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -0,0 +1,250 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//     Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++using System.Collections.Generic;
++using System.Windows.Automation;
++using System.Windows.Automation.Provider;
++using Mono.UIAutomation.Source;
++
++namespace Mono.UIAutomation.ClientSource
++{
++	internal static class ClientEventManager
++	{
++		private static List<PropertyChangedEventEntry> propertyChangedEventEntries
++			= new List<PropertyChangedEventEntry> ();
++		private static List<AutomationEventEntry> automationEventEntries
++			= new List<AutomationEventEntry> ();
++		private static List<StructureChangedEventEntry> structureChangedEventEntries
++			= new List<StructureChangedEventEntry> ();
++
++		public static void AddAutomationEventHandler (AutomationEvent eventId,
++			IRawElementProviderSimple provider, TreeScope scope,
++			AutomationEventHandler eventHandler)
++		{
++			var entry = new AutomationEventEntry (eventId, provider, scope, eventHandler);
++			lock (automationEventEntries)
++				automationEventEntries.Add (entry);
++		}
++
++		public static void AddAutomationPropertyChangedEventHandler (
++			IRawElementProviderSimple provider, TreeScope scope,
++			AutomationPropertyChangedEventHandler eventHandler,
++			int [] properties)
++		{
++			var entry = new PropertyChangedEventEntry (provider, scope, properties, eventHandler);
++			lock (propertyChangedEventEntries)
++				propertyChangedEventEntries.Add (entry);
++		}
++
++		public static void AddStructureChangedEventHandler (
++			IRawElementProviderSimple provider, TreeScope scope,
++			StructureChangedEventHandler eventHandler)
++		{
++			var entry = new StructureChangedEventEntry (provider, scope, eventHandler);
++			lock (structureChangedEventEntries)
++				structureChangedEventEntries.Add (entry);
++		}
++
++		public static void RemoveAutomationEventHandler (AutomationEvent eventId, IRawElementProviderSimple provider, AutomationEventHandler eventHandler)
++		{
++			lock (automationEventEntries)
++				automationEventEntries.RemoveAll (e =>
++					e.EventId == eventId &&
++					e.Provider == provider &&
++					e.Handler == eventHandler);
++		}
++
++		public static void RemoveAutomationPropertyChangedEventHandler (IRawElementProviderSimple provider, AutomationPropertyChangedEventHandler eventHandler)
++		{
++			lock (propertyChangedEventEntries)
++				propertyChangedEventEntries.RemoveAll (e =>
++					e.Provider == provider &&
++					e.Handler == eventHandler);
++		}
++
++		public static void RemoveStructureChangedEventHandler (IRawElementProviderSimple provider, StructureChangedEventHandler eventHandler)
++		{
++			lock (structureChangedEventEntries)
++				structureChangedEventEntries.RemoveAll (e =>
++					e.Provider == provider &&
++					e.Handler == eventHandler);
++		}
++
++		public static void RemoveAllEventHandlers ()
++		{
++			lock (automationEventEntries)
++				automationEventEntries.Clear ();
++			lock (structureChangedEventEntries)
++				structureChangedEventEntries.Clear ();
++			lock (propertyChangedEventEntries)
++				propertyChangedEventEntries.Clear ();
++		}
++
++		public static void RaiseAutomationEvent (AutomationEvent eventId,
++			IRawElementProviderSimple provider, AutomationEventArgs e)
++		{
++			lock (automationEventEntries)
++				foreach (var entry in automationEventEntries)
++					if (entry.EventId == eventId &&
++						IsProviderInScope (provider, entry.Provider, entry.Scope)) {
++						var clientElement =
++							ClientAutomationSource.Instance.GetOrCreateElement (provider);
++						var element = SourceManager.GetOrCreateAutomationElement (clientElement);
++						entry.Handler (element, e);
++					}
++		}
++
++		public static void RaiseAutomationPropertyChangedEvent (IRawElementProviderSimple provider,
++			AutomationPropertyChangedEventArgs e)
++		{
++			lock (propertyChangedEventEntries)
++				foreach (var entry in propertyChangedEventEntries)
++					if (IsProviderInScope (provider, entry.Provider, entry.Scope) &&
++						Array.Exists (entry.Properties, i => i == e.Property.Id)) {
++						var clientElement =
++							ClientAutomationSource.Instance.GetOrCreateElement (provider);
++						var element = SourceManager.GetOrCreateAutomationElement (clientElement);
++						// TODO implement
++						// Translate e.NewValue && e.OldValue
++						entry.Handler (element, e);
++					}
++		}
++
++		public static void RaiseStructureChangedEvent (IRawElementProviderSimple provider,
++			StructureChangedEventArgs e)
++		{
++			lock (structureChangedEventEntries)
++				foreach (var entry in structureChangedEventEntries)
++					if (IsProviderInScope (provider, entry.Provider, entry.Scope)) {
++						var clientElement =
++							ClientAutomationSource.Instance.GetOrCreateElement (provider);
++						var element = SourceManager.GetOrCreateAutomationElement (clientElement);
++						entry.Handler (element, e);
++					}
++		}
++
++		private static bool IsProviderInScope (IRawElementProviderSimple target,
++			IRawElementProviderSimple element, TreeScope scope)
++		{
++			if ((scope & TreeScope.Element) == TreeScope.Element && target == element)
++				return true;
++
++			IRawElementProviderFragment targetFragment = target as IRawElementProviderFragment;
++			IRawElementProviderFragment elementFragment = element as IRawElementProviderFragment;
++			if (targetFragment == null || elementFragment == null)
++				return false;
++
++			IRawElementProviderFragment targetFragmentRoot =
++				targetFragment.Navigate (NavigateDirection.Parent);
++			if ((scope & TreeScope.Children) == TreeScope.Children &&
++			    targetFragmentRoot != null &&
++			    targetFragmentRoot == elementFragment)
++				return true;
++			if ((scope & TreeScope.Descendants) == TreeScope.Descendants) {
++				while (targetFragmentRoot != null) {
++					if (targetFragmentRoot == elementFragment)
++						return true;
++					targetFragmentRoot = targetFragmentRoot.Navigate (NavigateDirection.Parent);
++				}
++			}
++
++			IRawElementProviderFragment elementFragmentRoot =
++				elementFragment.Navigate (NavigateDirection.Parent);
++			if ((scope & TreeScope.Parent) == TreeScope.Parent &&
++			    elementFragmentRoot != null &&
++			    elementFragmentRoot == targetFragment)
++				return true;
++			if ((scope & TreeScope.Ancestors) == TreeScope.Ancestors) {
++				while (elementFragmentRoot != null) {
++					if (elementFragmentRoot == targetFragment)
++						return true;
++					elementFragmentRoot = elementFragmentRoot.Navigate (NavigateDirection.Parent);
++				}
++			}
++
++			return false;
++		}
++#region Internal Classes
++
++		private class AutomationEventEntryBase
++		{
++			public AutomationEventEntryBase (IRawElementProviderSimple provider,
++			                                 TreeScope scope)
++			{
++				this.Provider = provider;
++				this.Scope = scope;
++			}
++
++			public IRawElementProviderSimple Provider { get; private set; }
++			public TreeScope Scope { get; private set; }
++		}
++
++		private class StructureChangedEventEntry : AutomationEventEntryBase
++		{
++			public StructureChangedEventEntry (IRawElementProviderSimple provider,
++			                                   TreeScope scope,
++			                                   StructureChangedEventHandler handler)
++				: base (provider, scope)
++			{
++				this.Handler = handler;
++			}
++			public StructureChangedEventHandler Handler { get; private set; }
++		}
++
++		private class AutomationEventEntry : AutomationEventEntryBase
++		{
++			public AutomationEventEntry (AutomationEvent eventId,
++			                             IRawElementProviderSimple provider,
++			                             TreeScope scope,
++			                             AutomationEventHandler handler)
++				: base (provider, scope)
++			{
++				this.EventId = eventId;
++				this.Handler = handler;
++			}
++
++			public AutomationEvent EventId { get; private set; }
++			public AutomationEventHandler Handler { get; private set; }
++		}
++
++		private class PropertyChangedEventEntry : AutomationEventEntryBase
++		{
++			public PropertyChangedEventEntry (IRawElementProviderSimple provider,
++			                                  TreeScope scope,
++			                                  int [] properties,
++			                                  AutomationPropertyChangedEventHandler handler)
++				: base (provider, scope)
++			{
++				this.Properties = properties;
++				this.Handler = handler;
++			}
++
++			public int [] Properties { get; private set; }
++			public AutomationPropertyChangedEventHandler Handler { get; private set; }
++		}
++#endregion
++	}
++}
+Index: mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientInvokePattern.cs
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mono-uia.git/UIAutomationClient/Mono.UIAutomation.ClientSource/ClientInvokePattern.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -0,0 +1,50 @@
++// Permission is hereby granted, free of charge, to any person obtaining 
++// a copy of this software and associated documentation files (the 
++// "Software"), to deal in the Software without restriction, including 
++// without limitation the rights to use, copy, modify, merge, publish, 
++// distribute, sublicense, and/or sell copies of the Software, and to 
++// permit persons to whom the Software is furnished to do so, subject to 
++// the following conditions: 
++//  
++// The above copyright notice and this permission notice shall be 
++// included in all copies or substantial portions of the Software. 
++//  
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
++// 
++// Copyright (c) 2010 Novell, Inc. (http://www.novell.com) 
++// 
++// Authors: 
++//     Matt Guo <matt@mattguo.com>
++// 
++
++using System;
++using System.Windows.Automation;
++using System.Windows.Automation.Provider;
++using Mono.UIAutomation.Source;
++
++namespace Mono.UIAutomation.ClientSource
++{
++	internal class ClientInvokePattern : IInvokePattern
++	{
++		private IInvokeProvider provider = null;
++
++		public ClientInvokePattern (IInvokeProvider provider)
++		{
++			this.provider = provider;
++		}
++
++		#region IInvokePattern implementation
++		public void Invoke ()
++		{
++			provider.Invoke ();
++		}
++
++		#endregion
++	}
++}
+Index: mono-uia.git/UIAutomationClient/System.Windows.Automation/Automation.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/System.Windows.Automation/Automation.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClient/System.Windows.Automation/Automation.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -28,6 +28,7 @@
+ 
+ using AEIds = System.Windows.Automation.AutomationElementIdentifiers;
+ using MUS = Mono.UIAutomation.Source;
++using Mono.UIAutomation.Services;
+ 
+ namespace System.Windows.Automation
+ {
+@@ -309,14 +310,13 @@
+ 		                                       TreeScope scope,
+ 		                                       AutomationEventHandler eventHandler)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			CheckAutomationEventId (eventId);
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
++
+ 			//TODO In theory we shall also check scope not equals to Parent or Ancestors,
+ 			//but .Net didn't test/throw exceptions for "scope"
+ 
+-			CheckAutomationEventId (eventId.Id);
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+ 					source.AddAutomationEventHandler (
+@@ -330,8 +330,7 @@
+ 
+ 		public static void AddAutomationFocusChangedEventHandler (AutomationFocusChangedEventHandler eventHandler)
+ 		{
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			MUS.FocusChangedEventHandler sourceHandler;
+ 			//according to the spec, all static methods in the UIA lib shall be thread safe.
+@@ -352,10 +351,8 @@
+ 		                                                      AutomationPropertyChangedEventHandler eventHandler,
+ 		                                                      params AutomationProperty [] properties)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+@@ -372,10 +369,8 @@
+ 		                                             TreeScope scope,
+ 		                                             StructureChangedEventHandler eventHandler)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+@@ -402,12 +397,9 @@
+ 			AutomationElement element,
+ 			AutomationEventHandler eventHandler)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
+-
+-			CheckAutomationEventId (eventId.Id);
++			CheckAutomationEventId (eventId);
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+@@ -421,8 +413,7 @@
+ 
+ 		public static void RemoveAutomationFocusChangedEventHandler (AutomationFocusChangedEventHandler eventHandler)
+ 		{
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			MUS.FocusChangedEventHandler sourceHandler;
+ 			lock (focusHandlerMapping) {
+@@ -437,10 +428,8 @@
+ 		public static void RemoveAutomationPropertyChangedEventHandler (
+ 			AutomationElement element, AutomationPropertyChangedEventHandler eventHandler)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+@@ -456,10 +445,8 @@
+ 		public static void RemoveStructureChangedEventHandler (
+ 			AutomationElement element, StructureChangedEventHandler eventHandler)
+ 		{
+-			if (element == null)
+-				throw new ArgumentNullException ("element");
+-			if (eventHandler == null)
+-				throw new ArgumentNullException ("eventHandler");
++			ArgumentCheck.NotNull (element, "element");
++			ArgumentCheck.NotNull (eventHandler, "eventHandler");
+ 
+ 			if (element == AutomationElement.RootElement)
+ 				foreach (var source in SourceManager.GetAutomationSources ())
+@@ -472,12 +459,13 @@
+ 			}
+ 		}
+ 
+-		private static void CheckAutomationEventId (int eventId)
++		private static void CheckAutomationEventId (AutomationEvent eventId)
+ 		{
+-			if (AutomationElementIdentifiers.AutomationFocusChangedEvent.Id == eventId
+-				|| AutomationElementIdentifiers.AutomationFocusChangedEvent.Id == eventId
+-				|| AutomationElementIdentifiers.AutomationPropertyChangedEvent.Id == eventId
+-				|| AutomationElementIdentifiers.StructureChangedEvent.Id == eventId)
++			ArgumentCheck.NotNull (eventId, "eventId");
++			if (AutomationElementIdentifiers.AutomationFocusChangedEvent == eventId
++				|| AutomationElementIdentifiers.AutomationFocusChangedEvent == eventId
++				|| AutomationElementIdentifiers.AutomationPropertyChangedEvent == eventId
++				|| AutomationElementIdentifiers.StructureChangedEvent == eventId)
+ 				throw new ArgumentException ("eventId");
+ 		}
+ 
+Index: mono-uia.git/UIAutomationClient/System.Windows.Automation/AutomationElement.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/System.Windows.Automation/AutomationElement.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClient/System.Windows.Automation/AutomationElement.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -523,8 +523,7 @@
+ #region Public Static Methods
+ 		public static AutomationElement FromHandle (IntPtr hwnd)
+ 		{
+-			if (hwnd == (IntPtr) null || hwnd == IntPtr.Zero)
+-				throw new ArgumentException ("hwnd");
++			ArgumentCheck.Assert (hwnd, (h => h != IntPtr.Zero), "hwnd");
+ 			if (hwnd == NativeMethods.RootWindowHandle)
+ 				return RootElement;
+ 			AutomationElement element = null;
+@@ -542,7 +541,9 @@
+ 
+ 		public static AutomationElement FromLocalProvider (IRawElementProviderSimple localImpl)
+ 		{
+-			throw new NotImplementedException ();
++			IElement sourceElement = Mono.UIAutomation.ClientSource.ClientAutomationSource.Instance
++				.GetOrCreateElement (localImpl);
++			return new AutomationElement (sourceElement);
+ 		}
+ 
+ 		public static AutomationElement FromPoint (Point pt)
+@@ -550,7 +551,12 @@
+ 			IntPtr handle = NativeMethods.WindowAtPosition ((int) pt.X, (int) pt.Y);
+ 			if (handle == IntPtr.Zero)
+ 				return RootElement;
+-			AutomationElement startElement = FromHandle (handle);
++			AutomationElement startElement = null;
++			try {
++				startElement = FromHandle (handle);
++			} catch (ElementNotAvailableException) {
++				return RootElement;
++			}
+ 			if (startElement == RootElement)
+ 				return RootElement;
+ 			//Keep searching the descendant element which are not native window
+Index: mono-uia.git/UIAutomationClient/System.Windows.Automation/ClientSettings.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/System.Windows.Automation/ClientSettings.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClient/System.Windows.Automation/ClientSettings.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -26,6 +26,7 @@
+ using System;
+ using System.Reflection;
+ using System.IO;
++using Mono.UIAutomation.Services;
+ 
+ namespace System.Windows.Automation
+ {
+@@ -33,8 +34,7 @@
+ 	{
+ 		public static void RegisterClientSideProviderAssembly (AssemblyName assemblyName)
+ 		{
+-			if (assemblyName == null)
+-				throw new ArgumentNullException ("assemblyName");
++			ArgumentCheck.NotNull (assemblyName, "assemblyName");
+ 
+ 			Assembly assembly = null;
+ 			// TODO, wrap exception messages into Catalog.GetString
+Index: mono-uia.git/UIAutomationClient/System.Windows.Automation/ClientSideProviderDescription.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/System.Windows.Automation/ClientSideProviderDescription.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClient/System.Windows.Automation/ClientSideProviderDescription.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -64,5 +71,6 @@
+ 		DisallowBaseClassNameMatch
+ 	}
+ 
+-	public delegate IRawElementProviderSimple ClientSideProviderFactoryCallback (IntPtr hwnd, int idChild, int idObject);
++	public delegate IRawElementProviderSimple ClientSideProviderFactoryCallback (
++		IntPtr hwnd, int idChild, int idObject);
+ }
+Index: mono-uia.git/UIAutomationClient/System.Windows.Automation/SourceManager.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClient/System.Windows.Automation/SourceManager.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClient/System.Windows.Automation/SourceManager.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -29,6 +29,7 @@
+ 
+ using Mono.UIAutomation.Source;
+ using Mono.UIAutomation.Services;
++using Mono.UIAutomation.ClientSource;
+ 
+ namespace System.Windows.Automation
+ {
+@@ -63,6 +64,7 @@
+ 							if (source != null)
+ 								sourcesList.Add (source);
+ 						}
++						sourcesList.Add (ClientAutomationSource.Instance);
+ 						sources = sourcesList.ToArray ();
+ 					}
+ 				}
+Index: mono-uia.git/UIAutomationClientTests/UIAutomationClientTests/BaseTest.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClientTests/UIAutomationClientTests/BaseTest.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClientTests/UIAutomationClientTests/BaseTest.cs	2012-01-23 18:58:44.780520283 +0000
+@@ -471,6 +471,8 @@
+ 
+ 		public static string PrintRuntimeId (int [] runtimeId)
+ 		{
++			if (runtimeId == null)
++				return "(null)";
+ 			StringBuilder sb = new StringBuilder();
+ 			sb.Append ("[");
+ 			foreach (int id in runtimeId)
+Index: mono-uia.git/UIAutomationClientTests/UIAutomationClientTests/LocalProviderTest.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationClientTests/UIAutomationClientTests/LocalProviderTest.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationClientTests/UIAutomationClientTests/LocalProviderTest.cs	2012-01-23 19:01:38.121289614 +0000
+@@ -38,17 +38,27 @@
+ 	[TestFixture]
+ 	public class LocalProviderTest
+ 	{
++		const int FakeHandle = 12345;
++
++		private AutomationElement simple = null;
++		private AutomationElement simple2 = null;
+ 		private AutomationElement child = null;
+ 		private AutomationElement root = null;
++		private CustomProviderSimple simpleProvider =null;
++		private CustomProviderSimple simpleProvider2 =null;
+ 		private CustomProviderFragment childProvider =null;
+ 		private CustomProviderRoot rootProvider =null;
+ 
+ 		[TestFixtureSetUp]
+ 		public virtual void FixtureSetUp ()
+ 		{
++			simpleProvider = new CustomProviderSimple ();
++			simpleProvider2 = new CustomProviderSimple (FakeHandle);
+ 			childProvider = new CustomProviderFragment (null);
+-			rootProvider = new CustomProviderRoot(childProvider);
++			rootProvider = new CustomProviderRoot (childProvider);
+ 			childProvider.Root = rootProvider;
++			simple = AutomationElement.FromLocalProvider (simpleProvider);
++			simple2 = AutomationElement.FromLocalProvider (simpleProvider2);
+ 			child = AutomationElement.FromLocalProvider(childProvider);
+ 			root = AutomationElement.FromLocalProvider(rootProvider);
+ 		}
+@@ -57,12 +67,93 @@
+ 		[Test]
+ 		public void PropertyTest ()
+ 		{
+-			Assert.AreEqual ("Custom Simple", child.Current.Name);
++			Assert.AreEqual ("Custom Child", child.Current.Name);
+ 			Assert.AreEqual (ControlType.TabItem, child.Current.ControlType);
+ 			Assert.AreEqual ("Custom Root", root.Current.Name);
+ 			Assert.AreEqual (ControlType.Tab, root.Current.ControlType);
+ 		}
+ 
++		// IRawElementFragment's GetRuntimeId method will override
++		// the value returned by GetPropertyValue
++		[Test]
++		public void RuntimeIdOverrideTest ()
++		{
++			var rid1 = root.GetRuntimeId ();
++			var rid2 = (int []) root.GetCurrentPropertyValue (AEIds.RuntimeIdProperty);
++			Assert.AreEqual (rid1, rid2, "rid1 == rid2");
++			Assert.AreEqual (CustomProviderBase.CustomRuntimeIdPrefix, rid1 [0], "Check rid1");
++			Assert.AreEqual (CustomProviderBase.CustomRuntimeIdPrefix, rid2 [0], "Check rid2");
++
++			// RuntimeId is null even if it is explicitly returned by
++			// IRawElementSimple.GetPropertyValue
++			Assert.IsNull (simple.GetRuntimeId (), "simple.GetRuntimeId ()" );
++			Assert.IsNull (simple.GetCurrentPropertyValue (AEIds.RuntimeIdProperty),
++			               "simple.GetGetCurrentPropertyValue (RuntimeId)" );
++
++			// However if the IRawElementSimple has NativeHandleProperty,
++			// then UIA will generate a runtime id for the provider,
++			// on Windows 7 the runtime id is [42, NativeHandleValue]
++			Assert.IsNotNull (simple2.GetRuntimeId (), "simple2.GetRuntimeId ()" );
++		}
++
++		// IRawElementFragment's BoundingRectangle property will override
++		// the value returned by GetPropertyValue
++		[Test]
++		public void BoundingRectangleOverrideTest ()
++		{
++			var bound = root.Current.BoundingRectangle;
++			Assert.AreEqual (200.0, bound.Width, "bound.Width");
++
++			// BoundingRectangle is empty even if it is explicitly returned by
++			// IRawElementSimple.GetPropertyValue
++			Assert.IsTrue (simple.Current.BoundingRectangle.IsEmpty);
++		}
++
++		[Test]
++		public void DefaultPropertyValueTest ()
++		{
++			// LocalizedControlType is compatible with the ControlType though
++			// LocalizedControlType is not explicitly returned by ControlType
++			Assert.AreEqual (ControlType.Tab.LocalizedControlType, root.Current.LocalizedControlType,
++				"root.LocalizedControlType");
++			// IsInvokePatternAvailableProperty is automatically set to true as long as
++			// the pattern can be returned by GetPatternProvider
++			Assert.IsTrue ((bool) child.GetCurrentPropertyValue (AEIds.IsInvokePatternAvailableProperty),
++				"child.IsInvokePatternAvailable");
++			Assert.IsFalse ((bool) root.GetCurrentPropertyValue (AEIds.IsInvokePatternAvailableProperty),
++				"root.IsInvokePatternAvailable");
++		}
++
++		[Test]
++		public void FromPointTest ()
++		{
++			var element = AutomationElement.FromPoint (new SW.Point (100, 100));
++			// though child and root defined their bounds, they won't be returned by
++			// AutomationElement.FromPoint, actually on Windows what returned is the
++			// "Desktop" element.
++			Assert.AreNotEqual (element, child, "child is never returned by FromPoint");
++			Assert.AreNotEqual (element, root, "root is never returned by FromPoint");
++		}
++
++		[Test]
++		public void FromHandleTest ()
++		{
++			BaseTest.AssertRaises <ElementNotAvailableException> (
++				() =>  AutomationElement.FromHandle (new IntPtr (FakeHandle)),
++				"simple2 is never returned by FromHandle");
++		}
++
++		[Test]
++		public void FocusedElementTest ()
++		{
++			BaseTest.AssertRaises <InvalidOperationException> (
++				() => child.SetFocus (), "child.IsKeyboardFocusable is not set");
++			// root.IsKeyboardFocusable is set to ture, so no exception
++			root.SetFocus ();
++			Assert.AreNotEqual (AutomationElement.FocusedElement, root,
++				"root is never returned by FocusedElement");
++		}
++
+ 		[Test]
+ 		public void PatternTest ()
+ 		{
+@@ -112,10 +203,58 @@
+ 		#endregion
+ 	}
+ 
++	internal class CustomProviderSimple : IRawElementProviderSimple
++	{
++		private int handle = -1;
++
++		public CustomProviderSimple ()
++		{
++		}
++
++		public CustomProviderSimple (int handle)
++		{
++			this.handle = handle;
++		}
++
++		#region IRawElementProviderSimple Members
++
++		public virtual object GetPatternProvider (int patternId)
++		{
++			return null;
++		}
++
++		public virtual object GetPropertyValue (int propertyId)
++		{
++			if (propertyId == AEIds.NameProperty.Id)
++				return "Custom Simple";
++			if (propertyId == AEIds.ControlTypeProperty.Id)
++				return ControlType.Pane.Id;
++			else if (propertyId == AEIds.RuntimeIdProperty.Id)
++				return new int[] {1, 2, 3, 4, 5};
++			else if (propertyId == AEIds.BoundingRectangleProperty.Id)
++				return new SW.Rect (0, 0, 1000, 1000);
++			else if (propertyId == AEIds.NativeWindowHandleProperty.Id && handle != -1)
++				return handle;
++			else
++				return null;
++		}
++
++		public IRawElementProviderSimple HostRawElementProvider {
++			get { return null; }
++		}
++
++		public ProviderOptions ProviderOptions {
++			get { return ProviderOptions.ClientSideProvider; }
++		}
++
++		#endregion
++	}
++
+ 	internal class CustomProviderBase : IRawElementProviderFragment
+ 	{
++		public const int CustomRuntimeIdPrefix = 8888;
+ 		private int[] runtimeId = null;
+-		private SW.Rect rect = new SW.Rect (100.0, 100.0, 200.0, 200.0);
++		private SW.Rect bound = new SW.Rect (50.0, 50.0, 200.0, 200.0);
+ 
+ 		public CustomProviderBase (IRawElementProviderFragmentRoot root)
+ 		{
+@@ -127,7 +266,7 @@
+ 		#region IRawElementProviderFragment Members
+ 
+ 		public SW.Rect BoundingRectangle {
+-			get { return rect; }
++			get { return bound; }
+ 		}
+ 
+ 		public IRawElementProviderFragmentRoot FragmentRoot {
+@@ -139,13 +278,12 @@
+ 			return new IRawElementProviderSimple[0];
+ 		}
+ 
+-		public int [] GetRuntimeId ()
++		public int[] GetRuntimeId ()
+ 		{
+-			const int CustomPrefix = 8888;
+ 			if (runtimeId == null) {
+-				byte [] bytes = new Guid ().ToByteArray ();
++				byte [] bytes = Guid.NewGuid ().ToByteArray ();
+ 				runtimeId = new int [bytes.Length + 1];
+-				runtimeId [0] = CustomPrefix;
++				runtimeId [0] = CustomRuntimeIdPrefix;
+ 				for (int i = 0; i < bytes.Length; i++)
+ 					runtimeId [i + 1] = bytes [i];
+ 			}
+@@ -198,11 +336,10 @@
+ 		}
+ 
+ 		public int ClickCount { get; set; }
+-
+-		public void PerformInvoke ()
++		public void PerformInvoke()
+ 		{
+ 			ClickCount++;
+-			AutomationInteropProvider.RaiseAutomationEvent(InvokePattern.InvokedEvent, this,
++			AutomationInteropProvider.RaiseAutomationEvent (InvokePattern.InvokedEvent, this,
+ 				new AutomationEventArgs(InvokePattern.InvokedEvent));
+ 		}
+ 
+@@ -216,7 +353,7 @@
+ 		public override object GetPropertyValue (int propertyId)
+ 		{
+ 			if (propertyId == AEIds.NameProperty.Id)
+-				return "Custom Simple";
++				return "Custom Child";
+ 			else if (propertyId == AEIds.ControlTypeProperty.Id)
+ 				return ControlType.TabItem.Id;
+ 			else
+@@ -283,6 +420,14 @@
+ 				return "Custom Root";
+ 			else if (propertyId == AEIds.ControlTypeProperty.Id)
+ 				return ControlType.Tab.Id;
++			else if (propertyId == AEIds.RuntimeIdProperty.Id)
++				// this return value won't be effective since the base class defined GetRuntimeId method
++				return new int[] {1, 2, 3, 4, 5};
++			else if (propertyId == AEIds.BoundingRectangleProperty.Id)
++				// this return value won't be effective since the base class defined BoundingRectangle property
++				return new SW.Rect (0, 0, 1000, 1000);
++			else if (propertyId == AEIds.IsKeyboardFocusableProperty.Id)
++				return true;
+ 			else
+ 				return base.GetPropertyValue (propertyId);
+ 		}
+Index: mono-uia.git/UIAutomationProvider/System.Windows.Automation.Provider/AutomationInteropProvider.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationProvider/System.Windows.Automation.Provider/AutomationInteropProvider.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationProvider/System.Windows.Automation.Provider/AutomationInteropProvider.cs	2012-01-23 18:58:44.784520301 +0000
+@@ -123,11 +123,13 @@
+ 			"UiaAtkBridge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4ceacb585d99812";
+ 		private static string UiaDbusBridgeAssembly =
+ 			"UiaDbusBridge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4ceacb585d99812";
++		private static string clientBridgeAssembly =
++			"UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35";
+ 
+ 		public static IList<IAutomationBridge> GetAutomationBridges ()
+ 		{
+ 			List<IAutomationBridge> bridges = new List<IAutomationBridge> ();
+-			
++
+ 			// Let MONO_UIA_BRIDGE env var override default bridge
+ 			string bridgeAssemblyNames =
+ 				Environment.GetEnvironmentVariable ("MONO_UIA_BRIDGE");
+@@ -135,7 +137,8 @@
+ 			if (string.IsNullOrEmpty (bridgeAssemblyNames))
+ 				bridgeAssemblyNames =
+ 					UiaAtkBridgeAssembly + ";" + UiaDbusBridgeAssembly;
+-			
++			bridgeAssemblyNames += ";" + clientBridgeAssembly;
++
+ 			foreach (string bridgeAssembly in bridgeAssemblyNames.Split (';')) {
+ 				if (string.IsNullOrEmpty (bridgeAssembly))
+ 					continue;
+Index: mono-uia.git/UIAutomationTypes/System.Windows.Automation/AutomationIdentifier.cs
+===================================================================
+--- mono-uia.git.orig/UIAutomationTypes/System.Windows.Automation/AutomationIdentifier.cs	2011-03-06 12:25:27.000000000 +0000
++++ mono-uia.git/UIAutomationTypes/System.Windows.Automation/AutomationIdentifier.cs	2012-01-23 18:58:44.784520301 +0000
+@@ -57,10 +57,14 @@
+ 
+ 		public int CompareTo (object obj)
+ 		{
++			if (obj == null)
++				throw new ArgumentNullException ("obj");
+ 			AutomationIdentifier other =
+ 				obj as AutomationIdentifier;
+ 			if (other == null)
+-				return 1; // TODO: What?
++				// As tested on Windows, when the object is not an AutomationIdentifier,
++				// a strange large integer will be returned, so we just return the MaxValue.
++				return int.MaxValue;
+ 			return id.CompareTo (other.Id);
+ 		}
+ 		

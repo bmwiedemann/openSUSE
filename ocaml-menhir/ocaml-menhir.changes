@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 20:24:18 UTC 2017 - olaf@aepfle.de
+
+- Update to version 20170712
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Tue May 24 12:01:41 UTC 2016 - olaf@aepfle.de
+
+- Initial version 20160504 for coccinelle
+

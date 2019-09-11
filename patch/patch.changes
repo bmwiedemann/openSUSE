@@ -1,0 +1,570 @@
+-------------------------------------------------------------------
+Wed May  9 09:52:04 UTC 2018 - jdelvare@suse.de
+
+- ed-style-07-dont-leak-tmp-file.patch,
+  ed-style-08-dont-leak-tmp-file-multi.patch: Fix temporary file
+  leak when applying ed-style patches (bsc#1092500,
+  savannah#53820).
+
+-------------------------------------------------------------------
+Wed Apr 18 11:16:34 CEST 2018 - jdelvare@suse.de
+
+- Add ed as BuildRequires so ed-style patches can be checked by
+  the test suite.
+
+-------------------------------------------------------------------
+Wed Apr 18 08:53:00 UTC 2018 - jdelvare@suse.de
+
+Fix CVE-2018-1000156 (bsc#1088420, savannah#53566).
+- ed-style-01-missing-input-files.patch: Allow input files to be
+  missing for ed-style patches.
+- ed-style-02-fix-arbitrary-command-execution.patch,
+  ed-style-03-update-test-Makefile.patch: Fix arbitrary command
+  execution in ed-style patches.
+- ed-style-04-invoke-ed-directly.patch: Invoke ed directly instead
+  of using the shell.
+- ed-style-05-minor-cleanups.patch: Minor cleanups in do_ed_script.
+- ed-style-06-fix-test-failure.patch: Fix 'ed-style' test failure.
+
+-------------------------------------------------------------------
+Thu Mar 22 09:43:43 CET 2018 - jdelvare@suse.de
+
+- Move COPYING from %doc to %license.
+
+-------------------------------------------------------------------
+Wed Mar 21 16:44:09 CET 2018 - jdelvare@suse.de
+
+- Add AUTHORS and COPYING to %doc.
+- fix-segfault-mangled-rename.patch: Fix segfault with mangled
+  rename patch (bsc#1080951, CVE-2018-6951, savannah#53132).
+
+-------------------------------------------------------------------
+Wed Feb  7 18:43:51 UTC 2018 - astieger@suse.com
+
+- patch 2.7.6:
+  * Files specified on the command line are no longer verified to
+    be inside the current working directory, so commands like
+    "patch -i foo.diff ../foo" will work again
+  * Fixes CVE-2016-10713 (Out-of-bounds access within
+    pch_write_line() in pch.c could possibly lead to DoS via a
+    crafted input file; bsc#1080918)
+  * Various fixes
+
+-------------------------------------------------------------------
+Sat Mar  7 10:42:46 CET 2015 - jdelvare@suse.de
+
+- patch 2.7.5
+  Fixes a functional regression introduced by the previous update. 
+  + Patching through symbolic links works again, as long as the
+    target is within the working tree.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:51:58 CET 2015 - jdelvare@suse.de
+
+- patch 2.7.4
+  Fixes a functional regression introduced by the previous security
+  fix. The security fix would forbid legitimate use cases of
+  relative symbolic links.
+  [boo#918058]
+  + Allow arbitrary symlink targets again.
+  + Do not change permissions if there isn't an explicit mode
+    change.
+  + Fix indentation heuristic for context diffs.
+- Please also note that the previous update fixed security bugs
+  boo#915328 and boo#915329 even though it did not say so.
+
+-------------------------------------------------------------------
+Fri Jan 23 00:58:35 UTC 2015 - andreas.stieger@gmx.de
+
+- patch 2.7.3
+  Contains a security fix for a directory traversal flaw when
+  handling git-style patches. This could allow an attacker to
+  overwrite arbitrary files by applying a specially crafted patch.
+  [boo#913678] [CVE-2015-1196]
+  + With git-style patches, symlinks that point outside the working
+    directory will no longer be created (CVE-2015-1196).
+  + When a file isn't being deleted because the file contents don't
+    match the patch, the resulting message is now "Not deleting
+    file ... as content differs from patch" instead of "File ...
+    is not empty after patch; not deleting".
+  + Function names in hunks (from diff -p) are now preserved in
+    reject files
+    This change was previously added as a patch. [boo#904519]
+- Version 2.7.2 differed from the above only slightly.
+- packaging changes:
+  + Verify source signatures
+  + Removed patches now upstream:
+    * error-report-crash.patch
+    * reject-print-function-01-drop-useless-test.patch
+    * reject-print-function-02-handle-unified-format.patch
+  + run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 10 11:37:03 CET 2014 - jdelvare@suse.de
+
+- reject-print-function-01-drop-useless-test.patch: Drop useless
+  test in another_hunk().
+- reject-print-function-02-handle-unified-format.patch: Preserve C
+  function name in unified rejects (bnc#904519).
+
+-------------------------------------------------------------------
+Tue May 20 07:44:03 UTC 2014 - schwab@suse.de
+
+- error-report-crash.patch: fix crash after reporting error during option
+  parsing
+
+-------------------------------------------------------------------
+Thu Dec  6 16:19:25 CET 2012 - jdelvare@suse.de
+
+- Back to bz2 archive format as old products lack xz.
+
+-------------------------------------------------------------------
+Thu Dec  6 15:34:14 CET 2012 - jdelvare@suse.de
+
+- Version 2.7.1
+  + Patch no longer gets a failed assertion for certain mangled
+    patches.
+  + Ignore destination file names that are absolute or that contain
+    a component of "..", except when working in the root directory.
+    This addresses CVE-2010-4651.
+  + Support for most features of the "diff --git" format, including
+    renames and copies, permission changes, and symlink diffs.
+    Binary diffs are not supported yet; patch will complain and
+    skip them.
+  + Support for double-quoted filenames: when a filename starts
+    with a double quote, it is interpreted as a C string literal.
+    The escape sequences \\, \", \a, \b, \f, \n, \r, \t, \v, and
+    \ooo (a three-digit octal number between 0 and 255) are
+    recognized.
+  + Refuse to apply a normal patch to a symlink. (Previous versions
+    of patch were replacing the symlink with a regular file.)
+  + New --follow-symlinks option to allow to treat symlinks as
+    files: this was patch's behavior before version 2.7.
+  + When trying to modify a read-only file, warn about the
+    potential problem by default. The --read-only command line
+    option allows to change this behavior.
+  + Files to be deleted are deleted once the entire input has been
+    processed, not immediately. This fixes a bug with numbered
+    backup files.
+  + When a timestamp specifies a time zone, honor that instead of
+    assuming the local time zone (--set-date) or Universal
+    Coordinated Time (--set-utc).
+  + Support for nanosecond precision timestamps.
+  + Many bug fixes.
+  + Clarify the message printed when a patch is expected to empty
+    out and delete a file, but the file does not become empty.
+  + Various improvements to messages when applying a patch to a
+    file of different type (regular file vs. symlink), when there
+    are line ending differences (LF vs. CRLF), and when in
+    --dry-run mode.
+  + Ignore when extended attributes cannot be preserved because
+    they are unsupported or because permission to set them is
+    denied.
+- patch-revert-e0f70752.patch: Dropped, original bug fixed
+  upstream.
+- patch-stdio.in.patch: Dropped, merged upstream.
+
+-------------------------------------------------------------------
+Tue Jul 17 08:40:27 UTC 2012 - aj@suse.de
+
+- patch-stdio.in.patch:
+   Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Fri Apr  6 14:22:12 CEST 2012 - jdelvare@suse.de
+
+- patch-revert-e0f70752.patch: Revert broken upstream commit
+  (bnc#755136).
+
+-------------------------------------------------------------------
+Wed Apr  4 19:03:25 CEST 2012 - jdelvare@suse.de
+
+- Version 2.6.1.136
+
+-------------------------------------------------------------------
+Wed Oct  5 12:33:53 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %configure macro
+
+-------------------------------------------------------------------
+Mon Apr  4 15:11:04 CEST 2011 - jdelvare@suse.de
+
+- Version 2.6.1.116:
+  + Patch now ignores destination file names that are absolute or
+    that contain a component of ".." (CVE-2010-4651, bnc#662957).
+- Drop unified-reject-files-compat.diff. Compatibility has been
+  provided for the past 18 months, hopefully nobody is relying on
+  it any longer.
+
+-------------------------------------------------------------------
+Fri Jul  2 06:57:49 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed May  5 01:28:12 CEST 2010 - agruen@suse.de
+
+- Version 2.6.1.81:
+  + Fix backup file detection for deleted files
+  + Allow to create and delete empty files
+  + Stick to the best name in the reversed-patch check
+  + Various portability improvements
+
+-------------------------------------------------------------------
+Sun May  2 15:57:54 CEST 2010 - agruen@suse.de
+
+- Fix the linker library order.
+
+-------------------------------------------------------------------
+Sun May  2 14:40:09 CEST 2010 - agruen@suse.de
+
+- Be more verbose when %verbose is defined.
+
+-------------------------------------------------------------------
+Sun May  2 14:01:47 CEST 2010 - agruen@suse.de
+
+- Version 2.6.1.64:
+  + Support for most features of the "diff --git" format: renames
+    and copies, permission changes, symlink diffs.  (Binary diffs
+    are not supported yet; patch will complain and skip them.)
+  + Support for double-quoted filenames: when a filename in a
+    context diff starts with a double quote, it is interpreted as
+    a C string literal.  The escape sequences \\, \", \a, \b, \f, \n,
+    \r, \t, \v, and \ooo (a three-digit octal number between 0 and
+    255) are recognized.
+  + Refuse to patch read-only files by default, or at least warn
+    when patching such files with --force or --batch.
+  + Refuse to apply a normal patch to a symlink.  (Previous
+    versions of patch were wrongly replacing the symlink with a
+    regular file.)
+  + When a timestamp specifies a time zone, honor that instead of
+    assuming the local time zone (--set-date) or Universal
+    Coordinated Time (--set-utc).
+  + Support for nanosecond precision timestamps.
+  + Many portability and bug fixes.
+
+-------------------------------------------------------------------
+Sun Jan 31 16:22:05 CET 2010 - agruen@suse.de
+
+- Version 2.6.1.9:
+  + Skip another ed-dependent test when ed isn't installed.
+  + More portability fixes.
+-------------------------------------------------------------------
+Wed Dec 30 17:14:24 CET 2009 - agruen@suse.de
+
+- Version 2.6.1:
+  + Support for diff3(1) style merges which show the old, original,
+    and new lines of a conflict has been added (--merge=diff3).
+    The default still is the merge(1) format (--merge or
+    --merge=merge).
+  + Bug and portability fixes.
+
+-------------------------------------------------------------------
+Sun Dec  6 17:32:57 CET 2009 - jengelh
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Nov 13 15:45:06 CET 2009 - agruen@suse.de
+
+- Version 2.6.
+
+-------------------------------------------------------------------
+Mon Sep  7 13:30:46 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.122:
+  + Try to preserve the owning group of patched files.
+- Add --unified-reject-files backwards-compatibility patch to
+  older SUSE versions of patch.
+
+-------------------------------------------------------------------
+Mon Jul 20 10:12:48 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.120:
+  + When copying files, use full_write() from gnulib instead of
+    write().
+  + The -m option hasn't been officially allocated yet.  Use only
+    the long form for now (--merge).
+
+-------------------------------------------------------------------
+Fri Jun 19 08:33:32 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.118:
+  + Change the default value of PATCH_GET to 0.
+  + When merging, make sure that hunks will not end up "out of order"
+  + When the file to patch is specified on the command line,
+    apply all patches to that file
+  + Some portability fixes/improvements
+  + Don't fail when removing nonexistent files in move_file
+
+-------------------------------------------------------------------
+Wed Apr  8 16:47:49 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.109:
+  + Preserve timestamps in reject files.
+  + Add support for sending output to standard output.
+  + Allow special characters in filenames read interactively.
+  + Don't forget to NUL terminate ptimestr in fetchname().
+
+-------------------------------------------------------------------
+Tue Apr  7 14:29:16 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.104: timestamp parsing fix, 64-bit fix.
+
+-------------------------------------------------------------------
+Mon Apr  6 18:59:55 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.97: Another bugfix.
+
+-------------------------------------------------------------------
+Mon Apr  6 15:04:50 CEST 2009 - agruen@suse.de
+
+- Version 2.5.9.95: Gnulib update, bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr  3 22:35:33 CEST 2009 - agruen@suse.de
+
+- Update to version patch-2.5.9.77: updated manpage and NEWS, no
+  strict depenency on ed in the test suite anymore, and slightly
+  improved handling of asymmetric hunks.
+
+-------------------------------------------------------------------
+Thu Apr  2 16:21:14 CEST 2009 - agruen@suse.de
+
+- Update to version patch-2.5.9.69 which has all our patches
+  merged in one form or anther, along with many other fixes and
+  improvements (see NEWS).
+
+-------------------------------------------------------------------
+Tue Feb 24 12:56:06 CET 2009 - agruen@suse.de
+
+- Include patch headers in reject files so that they form proper
+  patches themselves.
+- Rewrite the unified reject files patch; this is much cleaner
+  now.
+- Add an improved strategy for locating merges.
+
+-------------------------------------------------------------------
+Tue Feb  3 06:10:49 CET 2009 - agruen@suse.de
+
+- Implement diff3-style merges (including several fixes and
+  improvements).
+
+-------------------------------------------------------------------
+Wed Apr 23 10:53:19 CEST 2008 - agruen@suse.de
+
+- remember-backup-files.diff: Fix bug when a file is touched by
+  the same patch more than twice. Move the test cases from the
+  patch header into separate files.
+- patch-2.5.9-cat_if_device.diff: No need to remember the device
+  we write to as a backup file.
+
+-------------------------------------------------------------------
+Fri Nov  2 01:57:03 CET 2007 - agruen@suse.de
+
+- Patch fails to apply hunks with asymmetric context correctly.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 07:52:31 CET 2006 - agruen@suse.de
+
+- remember-backup-files.diff: Fix case where a patch modifies a
+  read-only file more than once while --backup is used (test case
+  in the patch header).
+
+-------------------------------------------------------------------
+Thu Aug 18 18:09:59 CEST 2005 - mmj@suse.de
+
+- --reject-unified is called --unified-reject-files [#105151]
+
+-------------------------------------------------------------------
+Wed Jun 29 13:50:06 CEST 2005 - mmj@suse.de
+
+- Don't compile with -f-signed-char [#93883]
+- Don't strip explicitly
+
+-------------------------------------------------------------------
+Tue Jan  4 21:11:54 CET 2005 - mmj@suse.de
+
+- Add patch to make patch able to write reject files to devices,
+  named pipes and sockets [#45794]
+
+-------------------------------------------------------------------
+Sat Jan 25 02:30:00 CET 2004 - agruen@suse.de
+
+- Add --reject-unified option to produce unified reject files:
+  Before, unified reject files were produced if the patch itself
+  was unified; this could sometimes have been annoying.
+- If a patch with C function names (diff -p) has rejects, include
+  the function names in the reject files.
+
+-------------------------------------------------------------------
+Sun Jan 11 11:17:55 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Oct  7 15:03:22 CEST 2003 - agruen@suse.de
+
+- remember-backup-files: Also include the file timestamps in the
+  hash table for non-POSIX-compliant systems that don't guarantee
+  that i_dev + i_ino uniquely identifies a file.
+- #32031: Create --global-reject-file even if --dry-run is
+  specified. Add a missing '\n'. 
+
+-------------------------------------------------------------------
+Wed Jul 16 15:21:44 CEST 2003 - agruen@suse.de
+
+- Replace trailing-cr-fix.diff with official upstream version that
+  fixes this bug differently.
+
+-------------------------------------------------------------------
+Mon Jun 30 13:30:33 CEST 2003 - agruen@suse.de
+
+- trailing-cr-fix.diff: Fix a bug in carriage return detection
+  (DOS files) in the unified diff path.
+- Disable patch that adds comments to C preprocessor style
+  merges, as specified by POSIX.1-2001.
+
+-------------------------------------------------------------------
+Wed Jun 25 16:46:41 CEST 2003 - agruen@suse.de
+
+- Fix bug introduced on June 5 that broke remember-backup-files.
+
+-------------------------------------------------------------------
+Tue Jun 24 17:35:09 CEST 2003 - agruen@suse.de
+
+- smart-reject-file-format.diff: Work around a special case in
+  which patches are not terminated with a '^' in the internal
+  representation. The resulting error message was "internal error
+  in abort_hunk".
+
+-------------------------------------------------------------------
+Thu Jun  5 09:38:17 CEST 2003 - agruen@suse.de
+
+- Temporary reject file logic: Ooops, now must only close the
+  temporary reject file after processing all patches, instead of
+  after each patch.
+
+-------------------------------------------------------------------
+Thu Jun  5 01:00:38 CEST 2003 - agruen@suse.de
+
+- Upgrade to 2.5.9: Several fixes, obsoletes
+  rename-same-file.patch.
+- Fix and adapt global-reject-file patch:
+  + The global reject file included corrupted headers for each
+    rejected hunk, instead of one header for each file with
+    rejects.
+  + Rename --global-reject to --global-reject-file.
+  + Simplify temporary reject file logic.
+  + Adapt to unified-reject-files patch (which has different
+    headers).
+  + Add entry in man page.
+- Fix a bug in smart-reject-file-format: Files that are created
+  are identified by `-0,0'; before the patch was generating
+  `-1,0' in reject files.
+- Switch remember-backup-files.diff over to use gnulib's hash
+  tables instead of glibc's binary trees, requested from upstream
+  to ensure greater portability.
+- Add /* SYM */ comment to #endif lines for patch -D SYM, too.
+  
+-------------------------------------------------------------------
+Wed Apr  9 19:33:59 CEST 2003 - agruen@suse.de
+
+- Fix another bug with hard links and backup file generation.
+- Fix backup file generation if the same file appears in the
+  patch more than once.
+
+-------------------------------------------------------------------
+Wed Mar 26 14:00:55 CET 2003 - mmj@suse.de
+
+- Update to 2.5.8:
+  + Bugfixes
+  + patch -D now outputs preprocessor lines without comments, as
+    required by POSIX 1003.1-2001
+  + File names in context patches may now contain spaces, so long
+    as the context patch headers use a tab to separate the file name
+    from the time stamp
+  + Perforce is now supported
+  + Patch lines beginning with "#" are comments and are ignored
+
+-------------------------------------------------------------------
+Wed Jan 15 16:50:57 CET 2003 - agruen@suse.de
+
+- Fix a bug with hardlinks (see rename-same-file.patch)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Feb  6 12:05:34 CET 2002 - coolo@suse.de
+
+- called suse_update_config
+
+-------------------------------------------------------------------
+Mon Jun 25 12:46:18 CEST 2001 - uli@suse.de
+
+- added patch adding "--global-reject" option by ak@suse.de
+- bzipped tarball
+
+-------------------------------------------------------------------
+Tue Mar  6 20:36:46 CET 2001 - bk@suse.de
+
+- update to 2.5.4, added 2 patches from PLD and use buildroot
+
+-------------------------------------------------------------------
+Wed Nov  8 17:41:23 CET 2000 - uli@suse.de
+
+- now builds with -D_GNU_SOURCE, should avoid miscompilation that
+  breaks LFS support
+- added fix for offset output by Alessandro Rubini
+- added fix and enhancement for --ifdef by Pete Buechler
+
+-------------------------------------------------------------------
+Sun Feb 27 20:16:11 CET 2000 - @suse.de
+
+- added missing CFLAGS quotes.
+
+-------------------------------------------------------------------
+Sun Feb 27 19:07:58 CET 2000 - bk@suse.de
+
+- added PPC fixes by Uli back again (-fsigned-char, CPPFLAGS)
+
+-------------------------------------------------------------------
+Fri Feb 25 17:44:41 CET 2000 - schwab@suse.de
+
+- Specfile cleanup, get rid of Makefile.Linux
+- /usr/man -> /usr/share/man
+- Add group tag.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug 18 12:13:35 MEST 1999 - uli@suse.de
+
+- fixed for PPC (-fsigned-char, CPPFLAGS)
+
+-------------------------------------------------------------------
+Tue Mar 16 14:58:42 MET 1999 - ro@suse.de
+
+- update to 2.5.3 using diff from jurix
+
+-------------------------------------------------------------------
+Wed Jan 13 15:45:28 MET 1999 - bs@suse.de
+
+- applied patch from Egbert Eich (problems with non existing files fixed)
+
+-------------------------------------------------------------------
+Thu Nov  5 00:19:13 MET 1998 - ro@suse.de
+
+- use libc's basename() for glibc
+

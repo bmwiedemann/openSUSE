@@ -1,0 +1,855 @@
+-------------------------------------------------------------------
+Wed Apr 17 09:25:24 CEST 2019 - kukuk@suse.de
+
+- Remove pre/post install to get rid of coreutils dependency.
+  We don't support upgrading of this old code anymore and coreutils
+  is not wanted in busybox containers.
+- Update services.bz2
+
+-------------------------------------------------------------------
+Wed Sep 12 08:18:06 UTC 2018 - Thorsten Kukuk <kukuk@suse.de>
+
+- Don't create /etc/HOSTNAME symlink anymore, the expected content
+  is slightly different from /etc/hostname [bsc#972463]
+
+-------------------------------------------------------------------
+Mon Jul  2 09:40:31 UTC 2018 - tchvatal@suse.com
+
+- Tell users to really install tcpd if they expects hosts.* to work
+  bsc#1099755
+
+-------------------------------------------------------------------
+Thu Feb 22 16:15:08 UTC 2018 - matthias.gerstner@suse.com
+
+- Include /etc/ethertypes to resolve a conflict between
+  security:netfilter/ebtables and security:netfilter/iptables-nft. This
+  ethertypes version comes from iptables, because it contains an additional
+  entry over the ebtables one. Increased minor version to allow a suitable
+  Requires statement in ebtables/iptables. FATE#320520
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:41 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue Mar  7 09:57:12 UTC 2017 - tchvatal@suse.com
+
+- Update script to generage services to use UTF8 by default bsc#1028305
+- Update the services list with latest content
+
+-------------------------------------------------------------------
+Tue Jan  5 10:09:05 UTC 2016 - tchvatal@suse.com
+
+- Repack services.bz2 with latest from upstream and adjust the script
+  to not add all the names+emails at the bottom bnc#959693
+
+-------------------------------------------------------------------
+Tue Aug 25 09:41:17 UTC 2015 - tchvatal@suse.com
+
+- Do not actually replace the hostname if user already has something
+  in there. Thanks to Takashi Iwai for spotting this
+
+-------------------------------------------------------------------
+Tue Aug  4 07:47:22 UTC 2015 - tchvatal@suse.com
+
+- Do not ghost the empty /etc/hostname to not break installationimages
+  pkg.
+
+-------------------------------------------------------------------
+Thu Jun 11 15:37:35 UTC 2015 - tchvatal@suse.com
+
+- Keep /etc/hostname empty and %ghost it. bnc#934056
+
+-------------------------------------------------------------------
+Wed Dec 17 10:32:15 UTC 2014 - tchvatal@suse.com
+
+- Try different approach to fix failing migration from 13.1.
+  This one is from locilka
+
+-------------------------------------------------------------------
+Wed Dec 17 10:19:29 UTC 2014 - tchvatal@suse.com
+
+- Keep the condition posix as it is shorter :)
+
+-------------------------------------------------------------------
+Mon Dec  1 16:56:09 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleanify the previous commit.
+
+-------------------------------------------------------------------
+Mon Dec  1 16:37:41 UTC 2014 - tchvatal@suse.com
+
+- Redo the HOSTNAME -> hostname migration to support smallest
+  possible step. Thus ensuring the migration is done just once and
+  finished:
+   # HOSTNAME migration supported scenarios [bnc#858908]:
+   # /etc/HOSTNAME -> /etc/hostname content preservation.
+   # If hostname and HOSTNAME both exist HOSTNAME wins.
+   # Nothing apart from content of the document is preserved
+- Solves bnc#858908 and bnc#899506 while moves bnc#887039 to
+  unsupported scenarios.
+
+-------------------------------------------------------------------
+Mon Dec  1 16:26:03 UTC 2014 - tchvatal@suse.com
+
+- Remove the socket check from the defaultdomain checker as it was
+  always false and thus not needed
+  - Add comment explaining the reason for the code
+
+-------------------------------------------------------------------
+Mon Dec  1 16:22:22 UTC 2014 - tchvatal@suse.com
+
+- Drop the scriptlet for the netgroup handling. It was caused by
+  the aaa_base -> netcfg move, which I guess after 12 years is moot
+
+-------------------------------------------------------------------
+Thu Oct  2 18:49:01 UTC 2014 - pgajdos@suse.com
+
+- fix %pre scriptlet [bnc#899506] (thanks to mls for the fix)
+
+-------------------------------------------------------------------
+Fri Jul 25 10:46:20 UTC 2014 - pgajdos@suse.com
+
+- resolve some update scenarios [bnc#883999], [bnc#886443] (private)
+  with regard to /etc/HOSTNAME -> /etc/hostname change
+
+-------------------------------------------------------------------
+Wed Jun 11 08:47:56 UTC 2014 - pgajdos@suse.com
+
+- move /etc/HOSTNAME to /etc/hostname during update
+
+-------------------------------------------------------------------
+Wed Jun  4 10:36:22 UTC 2014 - pgajdos@suse.com
+
+- HOSTNAME renamed to hostname [bnc#858908]
+
+-------------------------------------------------------------------
+Thu Feb  6 16:30:09 UTC 2014 - pgajdos@suse.com
+
+- added helper scripts and doc for creating services file to 
+  Sources
+
+-------------------------------------------------------------------
+Tue Oct 29 12:26:30 UTC 2013 - pgajdos@suse.com
+
+- /etc/protocols: assign 4 to ipv4 instead of ip to correspond with
+  IANA [bnc#843511] (internal)
+
+-------------------------------------------------------------------
+Thu Aug 22 14:42:10 UTC 2013 - pgajdos@suse.com
+
+- updated to newer (not newest) version of IANA assignments
+  [bnc#831522], [bnc#731391] (both internal)
+
+-------------------------------------------------------------------
+Wed Jun  5 11:21:06 UTC 2013 - pgajdos@suse.com
+
+- services: map sieve to 4190 instead of 2000 as upstream (IANA)
+  does
+
+-------------------------------------------------------------------
+Mon Mar  7 12:29:41 CET 2011 - ro@suse.de
+
+- bump version to 11.5 
+
+-------------------------------------------------------------------
+Thu Mar  3 14:12:42 CET 2011 - pgajdos@suse.cz
+
+- added COPYING file (cfarrell@suse.de)
+
+-------------------------------------------------------------------
+Thu Nov  4 09:43:09 CET 2010 - pgajdos@suse.cz
+
+- reverted rquotad port assigment [bnc#637382]
+  * modified services-suse.diff back to previous state
+
+-------------------------------------------------------------------
+Thu Oct 21 17:35:30 CEST 2010 - pgajdos@suse.cz
+
+- assigned port 4003 to rquotad [bnc#637382]
+  * modified services-suse.diff
+
+-------------------------------------------------------------------
+Thu Oct 23 15:05:01 CEST 2008 - pgajdos@suse.cz
+
+- commented out
+   spr-itunes        0/tcp    # Shirt Pocket netTunes
+   spl-itunes        0/tcp    # Shirt Pocket launchTunes
+  lines [bnc#435600]
+
+-------------------------------------------------------------------
+Mon Sep  8 11:11:41 CEST 2008 - pgajdos@suse.cz
+
+- /etc/services and /etc/protocols was marked as %config(noreplace)
+  [bnc#422884]
+
+-------------------------------------------------------------------
+Tue Mar 25 15:32:25 CET 2008 - mkoenig@suse.de
+
+- add rpcbind alias for sunrpc [fate#300607] 
+
+-------------------------------------------------------------------
+Tue Mar  4 17:47:27 CET 2008 - pgajdos@suse.cz
+
+- added swat 901/tcp back to the suse.patch [#362590]
+
+-------------------------------------------------------------------
+Mon Jan 28 14:06:22 CET 2008 - kukuk@suse.de
+
+- Update services file from IANA [bnc#352665]
+- Fix PreReqs
+
+-------------------------------------------------------------------
+Wed Oct  4 14:22:39 CEST 2006 - kukuk@suse.de
+
+- Update services file from IANA
+
+-------------------------------------------------------------------
+Tue May 23 11:51:34 CEST 2006 - kukuk@suse.de
+
+- Update protocols and services files from IANA
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 22:22:58 CET 2005 - kukuk@suse.de
+
+- Update services file
+
+-------------------------------------------------------------------
+Tue Sep 13 00:42:34 CEST 2005 - mmj@suse.de
+
+- Readd the correct services file to patch
+
+-------------------------------------------------------------------
+Mon Sep 12 20:44:33 CEST 2005 - mmj@suse.de
+
+- Add IANA official git port (9418) to services
+
+-------------------------------------------------------------------
+Thu Jul  7 08:55:41 CEST 2005 - kukuk@suse.de
+
+- Update services file
+
+-------------------------------------------------------------------
+Tue Mar  8 16:06:29 CET 2005 - kukuk@suse.de
+
+- Change comments to make peopleusing file wrongly happy [#71247]
+
+-------------------------------------------------------------------
+Wed Feb 23 09:14:33 CET 2005 - kukuk@suse.de
+
+- Update /etc/services from IANA
+
+-------------------------------------------------------------------
+Tue May 11 18:49:51 CEST 2004 - mmj@suse.de
+
+- Add example for mlmmj list in /etc/aliases
+
+-------------------------------------------------------------------
+Fri Apr 16 11:49:57 CEST 2004 - kukuk@suse.de
+
+- Add smtps back again, got lost with last update
+
+-------------------------------------------------------------------
+Fri Apr  2 15:21:12 CEST 2004 - kukuk@suse.de
+
+- Use linux.site instead of linux.local [Bug #36949]
+
+-------------------------------------------------------------------
+Wed Mar 31 14:44:50 CEST 2004 - mls@suse.de
+
+- add link-local network
+
+-------------------------------------------------------------------
+Mon Mar 29 15:31:00 CEST 2004 - kukuk@suse.de
+
+- Comment out shilp entry to make reading tcpdump output easier 
+  [Bug #37359]
+
+-------------------------------------------------------------------
+Sun Feb 15 15:05:14 CET 2004 - kukuk@suse.de
+
+- Update etc/services file with IANA version
+
+-------------------------------------------------------------------
+Mon Dec  1 13:41:24 CET 2003 - kukuk@suse.de
+
+- Add etc/netgroup (moved from aaa_base)
+
+-------------------------------------------------------------------
+Thu Nov 13 23:09:10 CET 2003 - adrian@suse.de
+
+- add registered services to service file
+  ( sane, distcc, svn ) 
+
+-------------------------------------------------------------------
+Mon Sep  1 17:47:57 MEST 2003 - draht@suse.de
+
+- added apcupsd daemons to /etc/hosts.allow (#29646)
+
+-------------------------------------------------------------------
+Fri Aug 15 13:54:18 CEST 2003 - kukuk@suse.de
+
+- Make rpm -V quiet
+
+-------------------------------------------------------------------
+Tue May 13 08:53:21 CEST 2003 - kukuk@suse.de
+
+- Remove inetd.conf, is now part of inetd package
+
+-------------------------------------------------------------------
+Thu Apr 24 13:32:04 CEST 2003 - olh@suse.de
+
+- run tftp via tcpd, not in.tftpd
+
+-------------------------------------------------------------------
+Tue Apr 15 14:57:31 CEST 2003 - ro@suse.de
+
+- change version numbering 
+
+-------------------------------------------------------------------
+Tue Apr 15 12:19:06 CEST 2003 - arvin@suse.de
+
+- added pop3s and imaps services to inetd.conf (bug #26281)
+
+-------------------------------------------------------------------
+Tue Mar 11 21:36:57 CET 2003 - kukuk@suse.de
+
+- Add aaa_base to PreReq. to fix update problems [Bug #25102]
+
+-------------------------------------------------------------------
+Thu Feb 13 11:24:18 CET 2003 - meissner@suse.de
+
+- Add VNC httpd and 2 VNC display ports, which start Xvnc on demand.
+
+-------------------------------------------------------------------
+Mon Jan 27 10:57:57 CET 2003 - kukuk@suse.de
+
+- Add etc/ethers [Bug #23016]
+
+-------------------------------------------------------------------
+Thu Oct 24 09:44:07 CEST 2002 - kukuk@suse.de
+
+- etc/services: Add lotusnotes alias to lotusnote [Bug #21145]
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides
+
+-------------------------------------------------------------------
+Wed Sep  4 14:20:32 CEST 2002 - kukuk@suse.de
+
+- etc/services: Add ports for sieve and smtps
+
+-------------------------------------------------------------------
+Mon Aug 26 15:39:24 CEST 2002 - kukuk@suse.de
+
+- etc/services: add mrt entry in temporary area
+
+-------------------------------------------------------------------
+Fri Aug 23 10:44:20 CEST 2002 - kukuk@suse.de
+
+- Fix pop2 daemon name, add imap pop3 daemon [Bug #14474]
+
+-------------------------------------------------------------------
+Thu Aug 15 15:46:22 CEST 2002 - kukuk@suse.de
+
+- Add PreRequires [Bug #17899]
+
+-------------------------------------------------------------------
+Sat Aug  3 16:03:22 CEST 2002 - kukuk@suse.de
+
+- etc/services: add rpcbind alias to sunrpc entry
+
+-------------------------------------------------------------------
+Tue Jul 30 15:59:14 CEST 2002 - kukuk@suse.de
+
+- Fix get_version_number.sh
+
+-------------------------------------------------------------------
+Mon Jul 22 09:43:55 CEST 2002 - adrian@suse.de
+
+- add disabled fam daemon line to inetd.conf
+- remove KDE 2 talk daemon lines
+  (not anymore support due to security issues)
+
+-------------------------------------------------------------------
+Wed Jul 17 17:36:45 CEST 2002 - kukuk@suse.de
+
+- Remove etc/defaultdomian.rpmnew if empty in postinstall script
+
+-------------------------------------------------------------------
+Fri Jul 12 08:45:40 CEST 2002 - kukuk@suse.de
+
+- Add /etc/aliases as config(noreplace).
+
+-------------------------------------------------------------------
+Fri Jul  5 14:10:31 CEST 2002 - kukuk@suse.de
+
+- Update /etc/services (add new, official ports)
+
+-------------------------------------------------------------------
+Tue Jul  2 09:26:38 CEST 2002 - kukuk@suse.de
+
+- fix typo in /etc/services [Bug #16478]
+
+-------------------------------------------------------------------
+Thu Jun 13 20:10:15 MEST 2002 - draht@suse.de
+
+- removed lprold from the comments in /etc/hosts.allow.
+
+-------------------------------------------------------------------
+Thu Jun 13 17:50:24 MEST 2002 - draht@suse.de
+
+- redo change from Tue Feb  5 18:38:44 MET 2002 - draht@suse.de
+  commented out services time, telnet, login, finger from default
+  /etc/inetd.conf. No services are configured by default.
+
+-------------------------------------------------------------------
+Wed May 15 14:37:26 CEST 2002 - kssingvo@suse.de
+
+- Add cups-lpd entry to inetd.conf (commented out)
+
+-------------------------------------------------------------------
+Wed Mar 13 17:07:15 CET 2002 - kukuk@suse.de
+
+- Remove not supported entries [Bug #14932]
+
+-------------------------------------------------------------------
+Tue Mar  5 15:58:01 CET 2002 - kukuk@suse.de
+
+- Add inofficial entries for pbs to etc/services [Bug #14450]
+
+-------------------------------------------------------------------
+Fri Mar  1 14:57:51 CET 2002 - kukuk@suse.de
+
+- Add sap db entries back to etc/services
+
+-------------------------------------------------------------------
+Wed Feb 13 15:03:53 CET 2002 - werner@suse.de
+
+- Add the options '-L sendmail' and '-Am' to be sure that
+  sendmail does work as server not as msp client
+
+-------------------------------------------------------------------
+Tue Feb  5 19:37:10 MET 2002 - draht@suse.de
+
+- revert changes in /etc/inetd.conf
+
+-------------------------------------------------------------------
+Tue Feb  5 18:55:51 MET 2002 - draht@suse.de
+
+- more descriptive comment in /etc/exports.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:49:00 MET 2002 - draht@suse.de
+
+- Added users db4web dpbox ingres mail oracle perforce pop sapdb
+  squid vscan wnn wwwrun and zope to /etc/ftpusers.
+  No users removed, legacy users stay.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:38:44 MET 2002 - draht@suse.de
+
+- commented out services telnet, login and finger from default
+  /etc/inetd.conf file.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:37:07 MET 2002 - draht@suse.de
+
+- add list of wrapped services and examples to /etc/hosts.allow
+- changed comment on /etc/hosts.deny
+
+-------------------------------------------------------------------
+Tue Feb  5 11:30:53 CET 2002 - kukuk@suse.de
+
+- Fix x11 entry in etc/services
+
+-------------------------------------------------------------------
+Fri Feb  1 18:10:48 MET 2002 - draht@suse.de
+
+- removed ^m characters from etc/services
+
+-------------------------------------------------------------------
+Tue Jan 22 10:46:41 CET 2002 - kukuk@suse.de
+
+- Sync protocols with official list [Bug #12870]
+- Sync services with official list
+
+-------------------------------------------------------------------
+Fri Jan 18 10:44:51 CET 2002 - kukuk@suse.de
+
+- disable talk, not in wide use today
+- amindexd and amidxtaped should run as user amanda [Bug #12619]
+
+-------------------------------------------------------------------
+Thu Jan 17 00:39:04 CET 2002 - ro@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Wed Jan 16 18:38:05 CET 2002 - kukuk@suse.de
+
+- Remove /var/adm/setup, diphost and add defaultdomain and HOSTNAME
+
+-------------------------------------------------------------------
+Mon Oct 22 17:46:56 CEST 2001 - mmj@suse.de
+
+- Change inetd.conf to have vsftpd support
+
+-------------------------------------------------------------------
+Mon Jul 30 11:43:31 CEST 2001 - kukuk@suse.de
+
+- Fix typo in hosts.equiv [Bug #9420]
+
+-------------------------------------------------------------------
+Tue Jul 10 17:06:29 CEST 2001 - kukuk@suse.de
+
+- Change inetd.conf entry for tftp to match new version
+
+-------------------------------------------------------------------
+Fri Jul  6 16:27:07 CEST 2001 - kukuk@suse.de
+
+- Fix path to initscript in comment
+
+-------------------------------------------------------------------
+Tue Jun  5 10:52:43 CEST 2001 - kukuk@suse.de
+
+- services: Add ksysguard
+
+-------------------------------------------------------------------
+Wed May  9 12:18:47 CEST 2001 - kukuk@suse.de
+
+- Don't send wrong email about changed ftp server
+- Fix english comment in inetd.conf [Bug #7913]
+
+-------------------------------------------------------------------
+Mon Apr 30 12:47:46 CEST 2001 - ro@suse.de
+
+- added sql6 as 7210/tcp to etc/services
+
+-------------------------------------------------------------------
+Fri Apr 20 13:46:33 CEST 2001 - kukuk@suse.de
+
+- Add comments for use of ktalkd [Bug #6566]
+
+-------------------------------------------------------------------
+Wed Apr 11 17:08:13 CEST 2001 - kukuk@suse.de
+
+- Revert some of the last changes [Bug #6957]
+
+-------------------------------------------------------------------
+Mon Mar 26 09:43:21 CEST 2001 - kukuk@suse.de
+
+- Update etc/protocols from official iana list [Bug #4183]
+
+-------------------------------------------------------------------
+Sat Mar 24 17:07:05 CET 2001 - kukuk@suse.de
+
+- etc/services: Add canna entry
+
+-------------------------------------------------------------------
+Thu Mar 22 15:32:39 CET 2001 - kukuk@suse.de
+
+- Fix example in hosts.allow
+- etc/inetd.conf: Only enable time, telnet, rlogin and talk.
+
+-------------------------------------------------------------------
+Fri Feb  9 18:26:37 CET 2001 - schwab@suse.de
+
+- Fix cvs pserver example (#6293).
+
+-------------------------------------------------------------------
+Thu Dec 14 17:36:27 CET 2000 - ro@suse.de
+
+- removed lines db2cdb2inst1 and db2idb2inst1 from etc/services (#4461)
+
+-------------------------------------------------------------------
+Sat Nov 18 15:39:48 CET 2000 - kukuk@suse.de
+
+- Add dqs entries for nashif@suse.de
+
+-------------------------------------------------------------------
+Wed Sep 27 14:20:23 CEST 2000 - kukuk@suse.de
+
+- Add more Wnn* entries to etc/services
+
+-------------------------------------------------------------------
+Fri Jul 28 19:43:47 CEST 2000 - kukuk@suse.de
+
+- Fix rsync example
+
+-------------------------------------------------------------------
+Mon Jun 19 16:14:25 CEST 2000 - kukuk@suse.de
+
+- Compress tar archive
+
+-------------------------------------------------------------------
+Mon Jun 19 14:36:41 CEST 2000 - kukuk@suse.de
+
+- Enable swat in etc/inetd.conf
+
+-------------------------------------------------------------------
+Fri May 26 22:25:01 CEST 2000 - kukuk@suse.de
+
+- Fix tar archive
+
+-------------------------------------------------------------------
+Thu May 25 17:07:10 CEST 2000 - kukuk@suse.de
+
+- Add etc/host.conf
+
+-------------------------------------------------------------------
+Mon May 15 16:03:26 CEST 2000 - kukuk@suse.de
+
+- Remove ypserv entries from hosts.allow/hosts.deny
+
+-------------------------------------------------------------------
+Mon May 15 12:07:45 CEST 2000 - ro@suse.de
+
+- removed duplicate line for opalis-rdv
+
+-------------------------------------------------------------------
+Mon May 15 08:51:07 CEST 2000 - kukuk@suse.de
+
+- etc/services: Add procstatd entry
+- etc/inetd.conf: Likewise.
+
+-------------------------------------------------------------------
+Tue May  9 15:51:22 CEST 2000 - ro@suse.de
+
+- added services entry for codine_commd
+  (inofficial 536/tcp)
+
+-------------------------------------------------------------------
+Mon Apr 17 18:46:18 CEST 2000 - kukuk@suse.de
+
+- etc/inetd.conf: Change tftpd default configuration to make a
+  chroot into tftpboot directory
+
+-------------------------------------------------------------------
+Wed Apr  5 14:17:53 CEST 2000 - kukuk@suse.de
+
+- etc/services: Add more entries
+
+-------------------------------------------------------------------
+Wed Apr  5 11:07:34 CEST 2000 - kukuk@suse.de
+
+- etc/inetd.conf: service name is imap, not imap2 [Bug 2607]
+
+-------------------------------------------------------------------
+Mon Mar 13 16:43:27 CET 2000 - kukuk@suse.de
+
+- etc/services: Now really fix axnet entry [Bug 2080]
+
+-------------------------------------------------------------------
+Fri Feb 25 19:28:20 CET 2000 - garloff@suse.de
+
+- cvs entry fixed: path to cvs added.
+
+-------------------------------------------------------------------
+Fri Feb 25 14:39:39 CET 2000 - kukuk@suse.de
+
+- etc/services: Add more entries [Bug 2080]
+
+-------------------------------------------------------------------
+Mon Feb 21 00:14:33 CET 2000 - garloff@suse.de
+
+- added commented entry for cvs-pserver to inet.conf
+
+-------------------------------------------------------------------
+Wed Feb 16 10:12:05 CET 2000 - kukuk@suse.de
+
+- etc/services: Add pbs entries
+
+-------------------------------------------------------------------
+Tue Feb 15 16:04:34 CET 2000 - kukuk@suse.de
+
+- etc/inetd.conf: fix some typos
+
+-------------------------------------------------------------------
+Thu Jan 20 13:18:09 CET 2000 - kukuk@suse.de
+
+- Add missing amanda client entry to etc/inetd.conf
+
+-------------------------------------------------------------------
+Wed Jan 19 12:00:43 CET 2000 - kukuk@suse.de
+
+- Add missing amanda idx entries to etc/services
+
+-------------------------------------------------------------------
+Thu Jan 13 14:53:26 CET 2000 - kukuk@suse.de
+
+- etc/ftpusers: Add more systemuser from /etc/passwd
+
+-------------------------------------------------------------------
+Thu Jan 13 12:11:20 CET 2000 - kukuk@suse.de
+
+- Add IPv6 addresses to etc/hosts
+
+-------------------------------------------------------------------
+Tue Jan 11 10:35:20 CET 2000 - kukuk@suse.de
+
+- etc/services: Add db2 and http-rman entries
+
+-------------------------------------------------------------------
+Mon Jan  3 15:27:45 CET 2000 - kukuk@suse.de
+
+- etc/inetd.conf: Remove RPC entries
+- etc/protocols: Add IPv6
+- etc/services: Add all known services
+- etc/rpc: Removed, is in shlibs
+
+-------------------------------------------------------------------
+Thu Oct 21 12:14:53 MEST 1999 - kukuk@suse.de
+
+- etc/inetd.conf: fix comments, disable btx and rplay
+- etc/ftpusers: Add more system users
+- etc/services: Add more official assinged numbers
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sat Sep 11 16:05:31 MEST 1999 - kukuk@suse.de
+
+- Make in.ftpd default ftp daemon (fixes bug #268)
+
+-------------------------------------------------------------------
+Thu Sep  2 16:56:56 MEST 1999 - kukuk@suse.de
+
+- Don't start identd from inetd
+
+-------------------------------------------------------------------
+Mon Jul 12 11:02:46 MEST 1999 - bs@suse.de
+
+- fixed buglet in %post (create var/adm/notify/messages)
+
+-------------------------------------------------------------------
+Mon Jul 12 10:41:48 MEST 1999 - ro@suse.de
+
+- updated etc/services (added https, ftp, data)
+
+-------------------------------------------------------------------
+Tue May 25 15:22:56 MEST 1999 - uli@suse.de
+
+- added services/inetd.conf entries for Mimer
+
+-------------------------------------------------------------------
+Tue Mar 30 12:46:46 MEST 1999 - bs@suse.de
+
+- enabled time services in /etc/inetd.conf
+
+-------------------------------------------------------------------
+Mon Mar 22 20:17:27 MET 1999 - bs@suse.de
+
+- added "bin" and "daemon" to /etc/ftpusers
+
+-------------------------------------------------------------------
+Tue Mar  9 18:48:34 MET 1999 - ro@suse.de
+
+- /etc/services: added entries for IBM DB2 Database
+
+-------------------------------------------------------------------
+Tue Mar  2 13:57:13 MET 1999 - ro@suse.de
+
+- glibc is libc.so.6.1 on alpha: no etc/rpc there
+
+-------------------------------------------------------------------
+Wed Jan 13 17:10:54 MET 1999 - bs@suse.de
+
+- added some entries for samba to inetd.conf and services
+
+-------------------------------------------------------------------
+Sat Dec  5 14:30:37 MET 1998 - bs@suse.de
+
+- added netplan to /etc/services
+- marked /etc/inetd.conf as noreplace
+
+-------------------------------------------------------------------
+Sat Nov 28 22:13:14 MET 1998 - bs@suse.de
+
+- added rsync to etc/services and etc/inetd.conf
+
+-------------------------------------------------------------------
+Wed Nov 18 14:27:35 MET 1998 - bs@suse.de
+
+- disabled vbox in inetd.conf
+
+-------------------------------------------------------------------
+Tue Nov 17 20:32:54 MET 1998 - bs@suse.de
+
+- hosts.equiv: typo fix
+- etc/services:  added afpovertcp, mysql
+
+- etc/inetd.conf:  added leafnode, vboxd
+                   removed in.nntpd
+
+-------------------------------------------------------------------
+Fri Aug 21 15:10:39 MEST 1998 - bs@suse.de
+
+- added some entries to /etc/services to be friendly for netatalk
+
+-------------------------------------------------------------------
+Mon Aug 17 09:31:08 MEST 1998 - bs@suse.de
+
+- changed entry for rplayd in inetd.conf
+
+-------------------------------------------------------------------
+Tue Jul 28 11:43:19 MEST 1998 - bs@suse.de
+
+- changed comment headers in /etc/hosts and /etc/hosts.lpd
+- added "noreplace" feature.
+
+-------------------------------------------------------------------
+Mon Jul 13 20:23:04 MEST 1998 - bs@suse.de
+
+- inetd.conf
+  - added new entry for rplay
+  - added entry for proftpd
+- services:
+  - added aliases for imap2 (imap, imap4)
+
+-------------------------------------------------------------------
+Thu May 28 14:04:17 MEST 1998 - bs@suse.de
+
+- disabled imap2 in /etc/inetd.conf
+
+-------------------------------------------------------------------
+Tue Mar  3 17:46:53 MET 1998 - ro@suse.de
+
+- etc/services     - changed entry for http-rman to nowait.10000
+
+-------------------------------------------------------------------
+Sat Feb 28 16:56:08 MET 1998 - ro@suse.de
+
+- etc/services     - added entried for radius
+
+-------------------------------------------------------------------
+Mon Feb  9 11:09:09 MET 1998 - bs@suse.de
+
+- etc/services:    - added entries for amanda
+                   - added entries for ssh
+- etc/inetd.conf:  - added entries for amanda
+                   - added "-e" to /usr/sbin/in.identd
+                   - added comment for "keep-alive"
+
+-------------------------------------------------------------------
+Wed Jan 28 13:17:33 MET 1998 - ro@suse.de
+
+- changed ftpd from in.ftpd to wu.ftpd in /etc/inetd.conf
+  (in case of update with existing in.ftpd and nonexisting
+  wu.ftpd, the administrator is notified of the change)
+
+-------------------------------------------------------------------
+Mon Jan 26 14:40:22 MET 1998 - ro@suse.de
+
+- added entries for hp eloquence software 8010,8100,8102,8104

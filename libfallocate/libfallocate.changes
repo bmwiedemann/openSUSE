@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Dec 11 10:50:26 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update dependencies
+
+-------------------------------------------------------------------
+Tue Oct 12 17:24:44 UTC 2010 - aj@suse.de
+
+- Follow packaging conventions and rename to libfallocate and
+  provide libfallocate0 as subpackage.
+
+-------------------------------------------------------------------
+Sat Aug 21 18:59:09 CEST 2010 - garloff@suse.de
+
+- Update to version 0.1.1:
+  * Provide static library in addition to shared lib.
+
+-------------------------------------------------------------------
+Wed Aug  5 11:42:40 CEST 2009 - garloff@suse.de
+
+- Initial creation of package.
+

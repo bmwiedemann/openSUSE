@@ -1,0 +1,568 @@
+-------------------------------------------------------------------
+Sun May 19 05:28:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000122
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000122  2019-05-18 08:21:20-07:00 America/Los_Angeles
+  
+      - Fix diag issues with ClassicCompare
+
+-------------------------------------------------------------------
+Wed May  8 05:27:55 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000121
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000121  2019-05-07 12:00:27-07:00 America/Los_Angeles
+  
+      - Tracking for mocked methods
+      - Include raw table in facet data when compare fails
+
+-------------------------------------------------------------------
+Sat Apr 27 05:37:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000120
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000120  2019-04-26 05:19:18-07:00 America/Los_Angeles
+  
+      - Allow all_items inside bag
+
+-------------------------------------------------------------------
+Sun Mar 17 06:34:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000119
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000119  2019-03-16 15:17:33-07:00 America/Los_Angeles
+  
+      - Allow meta-checks in bag/array/hash (Thanks jjatria)
+
+-------------------------------------------------------------------
+Sat Jan 19 06:31:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000118
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000118  2019-01-18 13:44:06-08:00 America/Los_Angeles
+  
+      - Fix typo Test::Workflow -> Test2::Workflow #170
+      - Fix test broken by new Test-Simple #175
+
+-------------------------------------------------------------------
+Thu Dec  6 16:27:16 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000117
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000117  2018-12-04 11:37:15-08:00 America/Los_Angeles
+  
+      - Remove test that belongs in another dist
+  
+  0.000116  2018-11-28 15:47:12-08:00 America/Los_Angeles
+  
+      - Add 'set' to mock tools
+      - Fix 'overload' issue in deep check cycle detection.
+      - Minor updates
+
+-------------------------------------------------------------------
+Thu Jul 12 06:10:21 UTC 2018 - coolo@suse.com
+
+- updated to 0.000115
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000115  2018-07-11 09:39:37-07:00 America/Los_Angeles
+  
+      - Fix warning on undefined note/diag
+      - Improve an error message.
+
+-------------------------------------------------------------------
+Tue Apr 24 05:56:22 UTC 2018 - coolo@suse.com
+
+- updated to 0.000114
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000114  2018-04-19 08:39:56-07:00 America/Los_Angeles
+  
+      - Fix missing manual section
+  
+  0.000113  2018-04-19 08:03:42-07:00 America/Los_Angeles
+  
+      - Fix typo
+  
+  0.000112  2018-04-19 07:15:40-07:00 America/Los_Angeles
+  
+      - Switch spec to use the testing_done callback
+      - Update copyright dates
+      - Finish the Anatomy manual section
+      - Finish the Tooling manual section
+
+-------------------------------------------------------------------
+Thu Mar 15 06:55:14 UTC 2018 - coolo@suse.com
+
+- updated to 0.000111
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000111  2018-03-14 12:37:45-07:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  0.000110  2018-03-13 13:36:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Allow events from unattached processes in AsyncSubtest
+  
+  0.000109  2018-03-12 13:20:18-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add AsyncSubtest retrieval to hubs
+
+-------------------------------------------------------------------
+Mon Mar 12 06:54:04 UTC 2018 - coolo@suse.com
+
+- updated to 0.000108
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000108  2018-03-11 12:51:56-07:00 America/Los_Angeles
+  
+      - No changes since last release
+  
+  0.000107  2018-03-09 15:43:30-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add rounded() and within() wrappers for approximate comparisons
+
+-------------------------------------------------------------------
+Wed Mar  7 06:53:24 UTC 2018 - coolo@suse.com
+
+- updated to 0.000106
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000106  2018-03-06 13:10:55-08:00 America/Los_Angeles
+  
+      - No changes since trial
+  
+  0.000105  2018-03-06 09:13:36-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix nesting bug in Test2::Workflow
+
+-------------------------------------------------------------------
+Tue Mar  6 07:05:50 UTC 2018 - coolo@suse.com
+
+- updated to 0.000104
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000104  2018-03-05 09:27:44-08:00 America/Los_Angeles
+  
+      - Add Data::Dumper to dep list (#154)
+  
+  0.000103  2018-03-02 13:00:54-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - AsyncSubtest now works with UUIDs and adds other proper meta-data
+
+-------------------------------------------------------------------
+Sat Mar  3 07:09:11 UTC 2018 - coolo@suse.com
+
+- updated to 0.000102
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000102  2018-03-02 09:45:27-08:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  0.000101  2018-02-21 16:27:18-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add much needed verbosity to 'You must attach to an AsyncSubtest ...' errors
+      - Documentation updates
+
+-------------------------------------------------------------------
+Thu Feb 15 07:11:10 UTC 2018 - coolo@suse.com
+
+- updated to 0.000100
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000100  2018-02-13 21:41:30-08:00 America/Los_Angeles
+  
+      - No changes from last TRIAL
+  
+  0.000099  2018-02-06 12:53:16-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix AsyncSubtest plan to be at the right nesting, and buffered
+  
+  0.000098  2018-02-06 12:05:28-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix AsyncSubtest main event buffered/nesting values
+      - Fix bug where AsyncSub test vanishes with no error when finished after
+        its parent ends.
+
+-------------------------------------------------------------------
+Fri Dec 15 07:01:29 UTC 2017 - coolo@suse.com
+
+- updated to 0.000097
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+-------------------------------------------------------------------
+Thu Oct 26 05:56:54 UTC 2017 - coolo@suse.com
+
+- updated to 0.000083
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000083  2017-10-25 08:12:18-07:00 America/Los_Angeles
+  
+      - Mark a float ests TODO until the PR author can fix it
+
+-------------------------------------------------------------------
+Sat Oct 21 05:53:21 UTC 2017 - coolo@suse.com
+
+- updated to 0.000082
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000082  2017-10-20 07:11:08-07:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  0.000081  2017-10-19 09:09:14-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Compare::Float to handle floating point comparison issues with
+        representation error.
+      - Add float() to Test2::Utils::Compare and import Test2::Compare::Float
+      - Import and Export Test2::Utils::Compare::float in Test2::V0
+      - Documentation fixes
+      - Better 5.10.0/utf8 fix
+      - VSTRING comparisons
+      - Bag compare now handles duplicates better
+
+-------------------------------------------------------------------
+Tue Oct 17 05:58:13 UTC 2017 - coolo@suse.com
+
+- updated to 0.000080
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000080  2017-10-15 10:13:30-07:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  0.000079  2017-10-14 20:18:51-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - (Colin Newell) Fix UTF8 issue with perl 5.10.0
+  
+  0.000078  2017-10-14 20:15:21-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix for TODO + new ok style
+
+-------------------------------------------------------------------
+Wed Sep 13 06:14:42 UTC 2017 - coolo@suse.com
+
+- updated to 0.000077
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000077  2017-09-12 07:49:16-07:00 America/Los_Angeles
+  
+      - No changes since last TRIAL release
+  
+  0.000076  2017-09-11 15:21:07-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Tools::GenTemp
+
+-------------------------------------------------------------------
+Tue Sep 12 06:17:26 UTC 2017 - coolo@suse.com
+
+- updated to 0.000075
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000075  2017-09-10 21:22:17-07:00 America/Los_Angeles
+  
+      - Add version to Test2::Event::Times
+  
+  0.000074  2017-08-31 20:37:47-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Event::Times
+      - Fix some tests that were failing in yath
+  
+  0.000073  2017-08-30 23:11:28-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Plugin::Times
+
+-------------------------------------------------------------------
+Sun Jun 18 06:26:13 UTC 2017 - coolo@suse.com
+
+- updated to 0.000072
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000072  2017-06-17 21:48:14-07:00 America/Los_Angeles
+  
+      - No change since last trial
+  
+  0.000071  2017-06-10 13:40:27-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Introduce Test2::V# bundles
+      - Deprecate Test2::Bundle::Extended
+      - Test2::V0 added
+      - Fix Test2::Mock doesn't accept non-ref values (Mike Raynham)
+      - Fix isa_ok overload issue (Mike Raynham)
+
+-------------------------------------------------------------------
+Wed May 31 19:01:22 UTC 2017 - coolo@suse.com
+
+- updated to 0.000070
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000070  2017-03-19 13:34:25-07:00 America/Los_Angeles
+  
+      - Revert Boolean overload fixes from djerius until they can be fixed
+      - Do not mention Term::ReadKey in docs
+      - Add Term::Size::Any to test report
+  
+  0.000069  2017-03-16 20:57:43-07:00 America/Los_Angeles
+  
+      - No changes from trial
+  
+  0.000068  2017-03-08 20:22:23-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Set the term size for all tests that use tables
+      - Boolean overload fixes from djerius
+  
+  0.000067  2017-01-03 19:41:52-08:00 America/Los_Angeles
+  
+      - No changes
+  
+  0.000066  2016-12-23 15:16:18-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Move sub_info to Sub::Info
+  
+  0.000065  2016-12-19 19:46:47-08:00 America/Los_Angeles
+  
+      - AUTHOR_TESTING a fragile test
+  
+  0.000064  2016-12-19 11:56:28-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Move Test2::Util::Table to Term::Table
+
+-------------------------------------------------------------------
+Sun Dec 18 07:17:23 UTC 2016 - coolo@suse.com
+
+- updated to 0.000063
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000063  2016-12-17 12:11:39-08:00 America/Los_Angeles
+  
+      - No notable changes since the last trial release.
+  
+  0.000062  2016-12-03 14:03:44-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - An event without a trace object throw would an exception when using
+        Test2::Compare::Event and the comparison failed
+      - Fix tests for small terminals (#106)
+      - Enhance the table library
+      - UTF8 plugin does not set STDERR/STDOUT
+
+-------------------------------------------------------------------
+Sun Nov 27 07:16:39 UTC 2016 - coolo@suse.com
+
+- updated to 0.000061
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000061  2016-11-26 12:39:14-08:00 America/Los_Angeles
+  
+      - Fix mocked objects so that they respond properly to ->can when using AUTOLOAD.
+      - Fix some meta-files
+      - Small build improvements
+      - Minor fixes
+
+-------------------------------------------------------------------
+Mon Sep 26 06:00:07 UTC 2016 - coolo@suse.com
+
+- updated to 0.000060
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000060  2016-09-25 12:38:43-07:00 America/Los_Angeles
+  
+      - Fix some docs
+      - Fix defer.t to work in windows
+      - Fix stack stomping bug triggered by certain Term::Readkey conditions
+  
+  0.000059  2016-09-15 13:00:03-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Create Test2::Compare::Negatable
+      - Add bool() for deep comparisons
+      - Implicit end() for checks inside is()
+      - Add try_ok to Tools/Exception
+      - Export convert() in Test2::Compare
+      - Make convert more flexible
+      - Document how to write a compare tool with custom behavior
+
+-------------------------------------------------------------------
+Sun Aug 14 05:57:40 UTC 2016 - coolo@suse.com
+
+- updated to 0.000058
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000058  2016-08-13 13:06:10-07:00 America/Los_Angeles
+  
+  0.000057  2016-08-10 22:13:39-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add contact info to docs
+  
+  0.000056  2016-08-09 14:09:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure Test2::Compare::convert loads deps
+
+-------------------------------------------------------------------
+Tue Aug  2 05:56:40 UTC 2016 - coolo@suse.com
+
+- updated to 0.000055
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000055  2016-07-30 13:18:13-07:00 America/Los_Angeles
+  
+      - Spelling fix from Debian (Thanks gregor herrmann)
+      - Fix \d -> [0-9] in several places (Thanks Mark F.)
+
+-------------------------------------------------------------------
+Fri Jul 29 06:01:18 UTC 2016 - coolo@suse.com
+
+- updated to 0.000054
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000054  2016-07-28 07:10:34-07:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  0.000053  2016-07-22 22:51:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make bag check fail when given an empty array
+      - Clean up bag diagnostics
+
+-------------------------------------------------------------------
+Tue Jul 19 05:53:56 UTC 2016 - coolo@suse.com
+
+- updated to 0.000052
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000052  2016-07-18 09:07:25-07:00 America/Los_Angeles
+  
+      - No changes from last TRIAL
+  
+  0.000051  2016-07-13 18:00:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Switch Extended bundle to use Importer
+      - Add meta_check as alias for meta
+
+-------------------------------------------------------------------
+Mon Jul 11 05:57:18 UTC 2016 - coolo@suse.com
+
+- updated to 0.000050
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000050  2016-07-09 16:58:59-07:00 America/Los_Angeles
+  
+      - No Changes since trial
+  
+  0.000049  2016-07-07 22:02:24-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Doc fixes
+      - Add U() quick check to Test2::Tools::Compare
+
+-------------------------------------------------------------------
+Mon Jul  4 13:21:08 UTC 2016 - coolo@suse.com
+
+- updated to 0.000048
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000048  2016-07-02 22:08:10-07:00 America/Los_Angeles
+  
+  0.000047  2016-07-01 18:09:26-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix global destruction warning
+      - Minor test fix to keep 5.8 working
+  
+  0.000046  2016-07-01 17:31:23-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - ref-ref's can be used in deep comparisons
+      - Fix mocking to override a base class's method
+  
+  0.000045  2016-07-01 09:30:09-07:00 America/Los_Angeles
+  
+      - Spelling and POD fixes
+  
+  0.000044  2016-06-29 15:48:33-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add DF() shortcut (JBerger)
+  
+  0.000043  2016-06-28 06:23:46-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Restructure Delta.pm to try and solve read-only problem
+  
+  0.000042  2016-06-27 21:37:22-07:00 America/Los_Angeles
+  
+      - Change Encoding.t to spit out debug message without failing
+  
+  0.000041  2016-06-27 09:00:46-07:00 America/Los_Angeles
+  
+      - Add perltidy rc to dist
+      - Documentation fixes (Thanks petdance)
+      - revert "Attempt a fix to Delta #29"
+  
+  0.000039  2016-06-25 13:44:03-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Stop leaking temp files
+      - clean up STDERR
+      - Fix #28
+
+-------------------------------------------------------------------
+Mon Jun 27 08:36:21 UTC 2016 - coolo@suse.com
+
+- updated to 0.000038
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000038  2016-06-25 13:20:07-07:00 America/Los_Angeles
+  
+      - No Changes from last TRIAL release
+  
+  0.000037  2016-06-24 14:03:52-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add all_keys() to Compare tools
+      - add all_vals() to Compare tools
+      - add all_items() to Compare tools
+      - Fix in_set(DNE) (#10)
+      - Add E()
+      - Proper line reporting for shortcuts.
+  
+  0.000036  2016-06-24 05:58:51-07:00 America/Los_Angeles
+  
+      - Better comments in SRAND (#7)
+  
+  0.000035  2016-06-23 14:48:54-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make it possible to provide a name to isa_ok, can_ok, and DOES_ok
+      - Add some regression tests for previous fixes
+      - Allow 'tests' and 'skip_all' prefixes support to plan() #25
+  
+  0.000034  2016-06-22 11:30:00-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Bump minimum Test2 version
+  
+  0.000033  2016-06-22 08:41:22-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix ClassicCompare to load deps (#23)
+
+-------------------------------------------------------------------
+Thu Jun 23 07:11:12 UTC 2016 - coolo@suse.com
+
+- updated to 0.000032
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000032  2016-06-17 06:58:17-07:00 America/Los_Angeles
+  
+      - Add 'bag' comparison (dakkar)
+      - Add 'call_list()' for DSL (dakkar)
+      - Add 'call_hash()' for DSL (dakkar)
+  
+  0.000031  2016-06-15 21:32:05-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix TODO to use pre-filters
+
+-------------------------------------------------------------------
+Sun Jun 12 14:32:37 UTC 2016 - coolo@suse.com
+
+- initial package 0.000030
+ * created by cpanspec 1.78.08
+

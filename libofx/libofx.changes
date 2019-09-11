@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Thu Apr 19 07:18:36 UTC 2018 - jengelh@inai.de
+
+- Trim history from description. Remove ineffective --with-pic
+  (applies to static libs only). Rectify RPM groups.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:25:26 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.9.12:
+  + Fixing a buffer overflow (CVE-2017-2816).
+- Add libofx-CVE-2017-14731.patch: Fix a buffer overflow on
+  unexpected tag names (CVE-2017-14731, boo#1060437).
+
+-------------------------------------------------------------------
+Wed Sep 14 14:21:49 UTC 2016 - fcrozat@suse.com
+
+- Update to version 0.9.11:
+  + Add support for client uid, from kde#366326 bug.
+- Rename libofx6 subpackage to libofx7, following the soname bump.
+- Delete backup files that should not be in the tarball.
+
+-------------------------------------------------------------------
+Wed Mar  2 17:30:38 UTC 2016 - dimstar@opensuse.org
+
+- Replace libxmll++-devel BuildRequires with
+  pkgconfig(libxml++-2.6) in order to be ready for the
+  compatibility package introduction (libxml++ goes 3.0).
+
+-------------------------------------------------------------------
+Fri Jan 30 13:18:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.9.10:
+  + Fix missing balance dates (ledger_balance_date,
+    available_balance_date).
+
+-------------------------------------------------------------------
+Sun Dec 22 18:02:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.9.9:
+  + Fix missing increment of SO_CURRENT number in libofx-0.9.6 to
+    avoid crashes when mixing this with older applications.
+  + bug#41: Fix a crash that occurs while importing a possibly
+    invalid OFX file.
+- Rename libofx5 subpackage to libofx6, following the soname bump.
+- Delete backup files that should not be in the tarball.
+
+-------------------------------------------------------------------
+Wed May 15 18:00:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.8:
+  + Fix errorneous reading of files with empty lines.
+  + bug#24: Fix build error on solaris.
+  + bug#40: Fix compiler warnings of OFX clang
+- Changes from versiom 0.9.7:
+  + Fix errorneous reading of files with long lines.
+
+-------------------------------------------------------------------
+Mon Apr  1 17:34:19 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.9.6:
+  + Extend buffer for TRANSACTION_NAME to 96 bytes due to UTF-8
+    multibyte characters.
+  + Fix typo in info message.
+  + Allow lines longer than 1024 caracters.
+  + Fix treatment of empty date strings: Must return a zero date
+    instead of a bogus one.
+  + Replace unlink() with remove() to fix compile problems with
+    gcc 4.7
+  + Make configure fail if gengetopt is missing and generated files
+    are not present.
+  + Fix garbled character encoding for UTF-8 encoded OFX 2.0 (XML)
+    files. Sadly, because of a bug in OpenSP with xml decoding this
+    currently means that iso-8859-1 OFX-2.0 files will still not be
+    properly decoded.
+- Drop libofx-gcc47.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar 14 20:51:33 UTC 2012 - dimstar@opensuse.org
+
+- Add libofx-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Wed Jan 11 07:57:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + Workaround OFX files specifying invalid encoding values
+    (specifically:  UNICODE and CP1252). This should fix most
+    encoding problems reported.
+  + Look for DTD in source directory (simplifies developpement)
+  + Add minor argument checking
+  + Expose field: OfxSecurityData::fiid in API
+  + Make string arguments a const reference where appropriate
+  + Add configure check for help2man tool
+  + Improve build system and autoconf 2.68 compatibility
+  + Improve generated man pages
+  + Use GCC's -fvisibility=hidden to hide internal symbols from
+    external users.
+- Rename libofx4 subpackage to libofx5, following the soname bump.
+- Clean spec-file using spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Jul 28 09:18:36 CEST 2011 - vuntz@opensuse.org
+
+- Fix build by not marking some non-directory files as %dir in file
+  list. This was wrong but only breaks now with newer rpm.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:36:12 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 18:47:19 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.4:
+  + Fix segfault on some malformed date formats.
+  + LibOFX will now look for DTDs in env variable OFX_DTD_PATH.  
+  + Better handling of paths (tolerates trailing path separator,
+    or lack thereof)
+  + No longer ignore return value of mkstemp()
+  + Move to LibXML++ 2.6, as 1.0 is deprecated
+  + Add generated man pages with html2man
+- Changes from version 0.9.3:
+  + sf#2969817: Fix segfault on some files containing missing
+    closing tags.
+- Changes from version 0.9.2:
+  + Win32: Look up the dtd installation directory from the current
+    executable's location.
+  + Fix a crash on invalid date format
+  + Allow wrapping the library in python.
+  + Fix "Transaction posting date off by one"
+  + Various C++ include fixes for building with recent compilers.
+- Drop libofx-0.8.2-gcc43.patch: fixed upstream.
+- Use source services: download_url, recompress, set_version.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:27 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Feb 10 19:46:49 CET 2009 - vuntz@novell.com
+
+- Update to version 0.9.1:
+  + Add more sanity checks on string length
+  + Fix gnucash crash on OFX files with non-ascii characters and
+    very long lines (bgo#528306)
+
+-------------------------------------------------------------------
+Tue Jan 13 22:02:50 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Fri Feb  1 12:10:11 CET 2008 - rodrigo@suse.de
+
+- Update to version 0.9.0:
+  * Export version information thus allowing depending apps to
+    determine the version of libOFX it is compiled against
+  * Some fields have been added to OfxFiLogin to allow for
+    modification of some OFX header fields in outgoing requests
+  * Calling apps can now tell libofx where the data field resides
+  * Some warnings for recent versions of GCC have been fixed
+  * LibOFX can now easily be cross-compiled for Windows on Linux
+  * The OFX header is now scanned for a hint regarding the encoding
+    of the document and convert the data to UTF8 if iconv is
+    available at compile time
+  * The API for online requests has been cleaned up
+- Rename libofx3 to libofx4
+
+-------------------------------------------------------------------
+Tue Nov 13 19:30:30 CET 2007 - mauro@suse.de
+
+- bug fixes for the gcc 4.3 issue. 
+
+-------------------------------------------------------------------
+Thu Oct  4 17:28:49 CEST 2007 - maw@suse.de
+
+- Split out a libofx3 subpackage
+- Add %post and %postun sections
+- Minor specfile cleanups.
+
+-------------------------------------------------------------------
+Tue Oct  3 13:59:32 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.8.2:
+  * bug fixes for GCC4.x and 64-bit compatibility
+  * fix to enable OFXDirectConnect in Aqbanking
+  * improvements to ofxpartner functionality
+  * minor build system modifications
+  * new fields for fees, commissions and stock split data
+  * fix a memory leak and a potential crashing bug
+- Developer documentation moved to devel subpackage.
+
+-------------------------------------------------------------------
+Wed May 10 16:43:22 CEST 2006 - sbrabec@suse.cz
+
+- Split devel subpackage.
+- Fixed dependencies.
+- Enabled parallel build.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 01:22:03 CET 2006 - ro@suse.de
+
+- fix typo in makefile (LIBOBJ -> LIBOBJS) 
+
+-------------------------------------------------------------------
+Wed Oct 19 16:38:07 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.8.0.
+
+-------------------------------------------------------------------
+Mon Apr 25 23:27:57 CEST 2005 - gekker@suse.de
+
+- Add libofx-gcc4.patch to fix GCC4 complilation. 
+
+-------------------------------------------------------------------
+Mon Feb 21 17:29:29 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.7.0.
+
+-------------------------------------------------------------------
+Thu Feb 19 15:29:57 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.6.6.
+
+-------------------------------------------------------------------
+Thu Jun 12 18:09:53 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Mon Jun  2 00:09:52 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Mon Feb 17 17:37:08 CET 2003 - sf@suse.de
+
+- added path to libopensp 
+
+-------------------------------------------------------------------
+Fri Feb  7 09:06:12 CET 2003 - hhetter@suse.de
+
+- initial package 
+

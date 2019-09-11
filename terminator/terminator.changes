@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Mon Aug 27 07:35:43 UTC 2018 - tchvatal@suse.com
+
+- Add dependency on python-cairo wrt bug#1105830
+
+-------------------------------------------------------------------
+Wed Apr 18 10:37:52 UTC 2018 - tchvatal@suse.com
+
+- Add direct dependency on python-gobject-Gdk without it the pkg
+  fails on not finding the screen
+
+-------------------------------------------------------------------
+Fri Mar 23 13:59:53 UTC 2018 - tchvatal@suse.com
+
+- Fix URL and format with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 29 09:22:18 UTC 2017 - scabrero@suse.com
+
+- Version update to 1.91 release:
+  * No significant new features. Just minor enhancements and lots
+    of fixes.
+
+-------------------------------------------------------------------
+Wed Feb  8 19:15:13 UTC 2017 - dimstar@opensuse.org
+
+- Filter out auto-detected typelib(Gnome) dependency. This does not
+  exist on recent GNOME desktops and terminator's code can handle
+  it as an optional feature (boo#1024260).
+
+-------------------------------------------------------------------
+Mon Feb  6 10:53:55 UTC 2017 - dimstar@opensuse.org
+
+- Fix dependency chain (auto-detection, boo#1023712):
+  + Add gobject-introspection BuildRequires
+  + Drop typlib-1_0-Keybinder-3_0 Requires: it is being
+    auto-detected.
+  + Drop vte Requires: this is provided by the library, but the
+    terminator code does not interact with it directly. It uses
+    the g-i bindings only.
+  + Drop python-vte Requires: since the app was ported to be
+    gobject introspected, the legacy python-vte is no longer
+    needed.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:37:38 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.90 release:
+  * Switch to gtk3 RC release
+
+-------------------------------------------------------------------
+Tue Jan 24 12:28:07 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.0:
+  * Few last fixes from 0.98 marking last release using gtk2
+- Drop merged patch:
+  * 0001-terminator-fix-RHBZ#1268289.patch
+- Drop support for SLE-11
+
+-------------------------------------------------------------------
+Sat Feb 20 12:01:51 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.98:
+  * Run the macro scriptlets for icons/desktop files
+  * Adjust filelist for the current state
+  * Fix few tiny rpmlint warnings
+- Add patch:
+  * 0001-terminator-fix-RHBZ#1268289.patch
+
+-------------------------------------------------------------------
+Sat Nov 08 18:58:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Tue Sep 24 14:01:11 UTC 2013 - rbrownccb@opensuse.org
+
+- update to 0.97
+- bug fixes incl. bnc#842059
+- for details see package changelog
+
+-------------------------------------------------------------------
+Thu Mar 15 13:33:29 UTC 2012 - saschpe@suse.de
+
+- Some more spec cleanup
+
+-------------------------------------------------------------------
+Thu Jan 26 17:13:04 UTC 2012 - lijewski.stefan@zabka.pl
+
+- spec cleanup
+- split languge package
+- add python-keybinder recomends
+
+-------------------------------------------------------------------
+Fri Nov 18 05:41:41 UTC 2011 - lijewski.stefan@gmail.com
+
+- fix build on 12.1 
+
+-------------------------------------------------------------------
+Thu Nov 17 14:14:33 UTC 2011 - lijewski.stefan@gmail.com
+
+- update to 0.96 - for details see package changelog
+
+-------------------------------------------------------------------
+Tue Apr  5 06:12:03 UTC 2011 - lijewski.stefan@gmail.com
+
+- fix openSUSE:Factory build missing lang files
+
+* Mon Mar 14 2011 Stefan Lijewski <lijewski.stefan@gmail.com> 0.95
+- Fix dependencies bug (bug id 679206)
+* Fri Mar 11 2011 Stefan Lijewski <lijewski.stefan@gmail.com> 0.95
+- Fix build bug about directories in openSuSE 11.4
+* Tue Sep 21 2010 Stefan Lijewski <lijewski.stefan@gmail.com> 0.95
+-initial changelog for openSuse
+
+
+* Wed Mar 31 2010 Chris Jones <cmsj@tenshu.net> 0.91-1
+- Update to fix some stupid release bugs in 0.90.
+    Note that this specfile is untested.
+
+* Tue Jan 05 2010 Chris Jones <cmsj@tenshu.net> 0.90-1
+- Attempt to update for 0.90 pre-release.
+    Note that this specfile is untested.
+
+* Thu Jan 15 2009 Chris Jones <cmsj@tenshu.net> 0.12-1
+- Remove patch application since this isn't a fedora build.
+    Note that this specfile is untested.
+
+* Mon Dec 08 2008 Ian Weller <ianweller@gmail.com> 0.11-3
+- Patch version in terminatorlib/verison.py to the one we think it is
+- Fix License tag
+- Update post and postun scripts with one line
+
+* Mon Dec 01 2008 Ian Weller <ianweller@gmail.com> 0.11-2
+- Add BuildRequires: gettext
+- Fix installation of .desktop file
+- terminator-0.11-desktop.patch:
+    Remove useless things
+    Move to same category as gnome-terminal
+- Uses spaces instead of tabs in the specfile because I can't stand tabs
+
+* Mon Dec 01 2008 Ian Weller <ianweller@gmail.com> 0.11-1
+- Update upstream
+- Fix description to something useful
+- Fix group
+- Fix some specfile oddities
+- Complete/restandardize file list
+- Get rid of she-bangs in python_sitelib
+
+* Sat Sep 13 2008 - Max Spevack <mspevack AT redhat DOT com> 0.10
+- New upstream release.
+- Tried to make sure the spec file matches guidelines on Fedora wiki.
+
+* Fri Jul 08 2008 - chantra AatT rpm-based DdOoTt org 0.9.fc9.rb
+- New upstream release
+
+* Sat May 17 2008 - chantra AatT rpm-based DdOoTt org 0.8.1.fc9.rb
+- Initial release for Fedora 9.
+

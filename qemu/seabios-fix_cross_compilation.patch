@@ -1,0 +1,11 @@
+--- a/Makefile	2019-02-20 17:45:15.458665862 +0100
++++ b/Makefile	2019-02-20 17:45:01.578593929 +0100
+@@ -13,7 +13,7 @@ export CONFIG_SHELL       := sh
+ export KCONFIG_AUTOHEADER := autoconf.h
+ export KCONFIG_CONFIG     := $(CURDIR)/.config
+ export LC_ALL             := C
+-CROSS_PREFIX=
++CROSS_PREFIX=$(CROSS_COMPILE)
+ ifneq ($(CROSS_PREFIX),)
+ CC=$(CROSS_PREFIX)gcc
+ endif

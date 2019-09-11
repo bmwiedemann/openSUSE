@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Dec 08 13:19:22 UTC 2016 - tboerger@suse.com
+
+- Update to version 0.0.0+git20160504.7cafcd8:
+  * handle unicode input correctly
+  * add license (from plan 9 from user space)
+  * open only one file at a time
+  * indent writer
+  * refactor
+  * properly track prefix bytes written
+  * relicense whole repo under MIT
+  * Run 'gofmt -w -s' on sources
+  * text: fix infinite loop in Wrap
+  * cmd/agg: new command
+
+-------------------------------------------------------------------
+Thu Dec  8 13:13:12 UTC 2016 - tboerger@suse.com
+
+- Refactoring based on new packaging proposal
+
+-------------------------------------------------------------------
+Sun Jul 12 10:05:20 UTC 2015 - i@marguerite.su
+
+- rename to golang-github-kr-text
+- update version 0.0.0+git20150520.e373e13
+- use golang-packaging for packaging
+
+-------------------------------------------------------------------
+Thu Mar 12 12:44:16 UTC 2015 - i@marguerite.su
+
+- update version 0.0.0+git20130910.6807e77
+  * no changelog
+
+-------------------------------------------------------------------
+Fri Sep 19 09:40:15 UTC 2014 - i@marguerite.su
+
+- initial version 0.0.0+git20130910.6807e77
+  * upstream has no version scheme so see git commits
+- don't run tests, because it'll need github.com/kr/pty
+  we don't want to import new dependencies.
+

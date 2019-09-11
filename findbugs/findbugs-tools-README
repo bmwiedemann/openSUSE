@@ -1,0 +1,16 @@
+This package contains additional tools for use with findbugs.  They include:
+* edu.umd.cs.findbugs.tools.FixIndentation <file>: reindents a Java file
+* edu.umd.cs.findbugs.tools.FilterPropertyDatabase <file>: filters a property
+  database, only passing through the annotations on public or protected
+  methods
+* edu.umd.cs.findbugs.tools.html.PlainPrintBugDescriptions [docTitle]:
+  prints findbugs bug descriptions as plain text
+* edu.umd.cs.findbugs.tools.html.PrettyPrintBugDescriptions [-unabridged]
+  [docTitle]: prints findbugs bug descriptions as HTML.  If the -unabridged
+  option is given, then warnings from disabled detectors are also printed.
+* edu.umd.cs.findbugs.tools.junit.JUnitJarRunner [-textui|-swingui]
+  <test suite jar file> [<classpath with code to test>]: run all of the JUnit
+  tests in a jar file.
+* edu.umd.cs.findbugs.tools.xml.CheckMessages <plugin descriptor xml>
+  <bug description xml> [<bug description xml> ...]: check the XML message
+  files in a findbugs plugin for validity and completeness.

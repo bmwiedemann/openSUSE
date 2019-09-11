@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue May 14 22:26:05 UTC 2019 - Jonathan Harker <jharker@suse.com>
+
+- Update to 19.5.1
+    * fix: authextra merging (#1191)
+    * fix: set default retry_delay_jitter (#1190)
+    * new: add rawsocket + twisted example (#1189)
+    * new: WebSocket testing support, via Agent-style interface (#1186)
+    * new: decorator for on_connectfailure
+    * fix: delayed call leakage (#1152)
+    * new: CLI client (#1150)
+    * fix: set up TLS over proxy properly (#1149)
+    * new: expose ser modules (#1148)
+    * fix: base64 encodings, add hex encoding (#1146)
+    * new: onConnecting callback (with TransportDetails and ConnectingRequest).
+        Note: if you've implemented a pure IWebSocketChannel without inheriting
+        from Autobahn base classes, you'll need to add an onConnecting() method
+        that just does return None.
+ 
+
+-------------------------------------------------------------------
+Mon Apr  8 08:41:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename reproducible.patch to respect-cflags.patch and really make
+  sure we respect all the cflags
+
+-------------------------------------------------------------------
+Mon Apr  8 07:32:05 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make package build reproducible (boo#1100677)
+  and to not use SSE4.1 instructions
+
+-------------------------------------------------------------------
+Fri Apr  5 08:12:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the %pytest_arch call to pass properly
+
+-------------------------------------------------------------------
+Tue Mar 26 13:18:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.3.3:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Tue Mar 19 14:37:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.3.2:
+  * no upstream changelog
+- List all the missing requirements based on setup.py
+
+-------------------------------------------------------------------
+Thu Oct 18 09:23:10 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 18.9.2:
+  * Various fixes all around
+  * Support python 3.7
+- remove-unittest2.patch was merged upstream
+
+-------------------------------------------------------------------
+Fri Aug 10 11:22:33 UTC 2018 - mcepl@suse.com
+
+- Add remove-unittest2.patch which remove dependency on unittest2
+  (filed upstream https://github.com/crossbario/autobahn-python/issues/1036)
+
+-------------------------------------------------------------------
+Mon Mar 12 09:11:02 UTC 2018 - tchvatal@suse.com
+
+- Fix python2 pulling of trollius
+
+-------------------------------------------------------------------
+Fri Mar  2 22:01:11 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

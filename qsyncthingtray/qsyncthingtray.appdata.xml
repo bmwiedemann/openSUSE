@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 Sorokin Alexei <sor.alexei@meowr.ru> -->
+<component type="desktop">
+ <id type="desktop">qsyncthingtray.desktop</id>
+ <metadata_license>CC0-1.0</metadata_license>
+ <project_license>LGPL-3.0+</project_license>
+ <description>
+  <p>
+   A Traybar Application for Syncthing written in Qt.
+  </p>
+ </description>
+ <screenshots>
+  <screenshot type="default">
+   <image>https://raw.githubusercontent.com/sieren/QSyncthingTray/master/media/qsyncthingubuntu.png</image>
+   <caption>The user interface</caption>
+  </screenshot>
+ </screenshots>
+ <url type="homepage">https://github.com/sieren/QSyncthingTray</url>
+</component>

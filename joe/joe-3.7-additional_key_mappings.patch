@@ -1,0 +1,112 @@
+---
+ rc/jmacsrc.in |    2 ++
+ rc/joerc.in   |    6 ++++++
+ rc/jpicorc.in |    2 ++
+ rc/jstarrc.in |    2 ++
+ rc/rjoerc.in  |    2 ++
+ 5 files changed, 14 insertions(+)
+
+Index: rc/jmacsrc.in
+===================================================================
+--- rc/jmacsrc.in.orig
++++ rc/jmacsrc.in
+@@ -1019,6 +1019,7 @@ home		.kh		Goto beginning of line
+ home		^A
+ home		^[ [ H
+ home		^[ [ 1 ~
++home		^[ [ 7 ~
+ bop		^[ p		(uemacs)
+ bop		^[ P		(uemacs)
+ bop		^[ {
+@@ -1050,6 +1051,7 @@ eol		.@7
+ eol		^E
+ eol		^[ [ F
+ eol		^[ [ 4 ~
++eol		^[ [ 8 ~
+ eop		^[ n		(uemacs)
+ eop		^[ N		(uemacs)
+ eop		^[ }
+Index: rc/joerc.in
+===================================================================
+--- rc/joerc.in.orig
++++ rc/joerc.in
+@@ -1065,6 +1065,9 @@ bof		^K u
+  bol      ^# SP A
+ home		.kh
+ home		^A
++home		^[ [ H
++home		^[ [ 1 ~
++home		^[ [ 7 ~
+ center		^K A		Center line
+ center		^K ^A
+ center		^K a
+@@ -1091,6 +1094,9 @@ eof		^K v
+ eol		.kH		Go to end of line
+ eol		.@7
+ eol		^E
++eol		^[ [ F
++eol		^[ [ 4 ~
++eol		^[ [ 8 ~
+ exsave		^K X		Save and exit
+ exsave		^K ^X
+ exsave		^K x
+Index: rc/jpicorc.in
+===================================================================
+--- rc/jpicorc.in.orig
++++ rc/jpicorc.in
+@@ -837,6 +837,7 @@ home		.kh		Goto beginning of line
+ home		^A
+ home		^[ [ H
+ home		^[ [ 1 ~
++home		^[ [ 7 ~
+ center		^[ ^C		Center line
+ center		^[ c
+ delch		.kD		Delete character
+@@ -865,6 +866,7 @@ eol		.@7
+ eol		^E
+ eol		^[ [ F
+ eol		^[ [ 4 ~
++eol		^[ [ 8 ~
+ execmd		^[ X		Prompt for command to execute
+ execmd		^[ ^X		Prompt for command to execute
+ execmd		^[ x		Prompt for command to execute
+Index: rc/jstarrc.in
+===================================================================
+--- rc/jstarrc.in.orig
++++ rc/jstarrc.in
+@@ -874,6 +874,7 @@ bof		^Q .kP
+ home		.kh		Goto beginning of line
+ home		^[ [ H
+ home		^[ [ 1 ~
++home		^[ [ 7 ~
+ home		^Q S
+ home		^Q ^S
+ home		^Q s
+@@ -915,6 +916,7 @@ eol		.kH		Go to end of line
+ eol		.@7
+ eol		^[ [ F
+ eol		^[ [ 4 ~
++eol		^[ [ 8 ~
+ eol		^Q D
+ eol		^Q ^D
+ eol		^Q d
+Index: rc/rjoerc.in
+===================================================================
+--- rc/rjoerc.in.orig
++++ rc/rjoerc.in
+@@ -879,6 +879,7 @@ bol		.kh		Goto beginning of line
+ bol		^A
+ bol		^[ [ H
+ bol		^[ [ 1 ~
++bol		^[ [ 7 ~
+  bol		^# SP A
+ center		^K A		Center line
+ center		^K ^A
+@@ -907,6 +908,7 @@ eol		.kH		Go to end of line
+ eol		^E
+ eol		^[ [ F
+ eol		^[ [ 4 ~
++eol		^[ [ 8 ~
+ exsave		^K X		Save and exit
+ exsave		^K ^X
+ exsave		^K x

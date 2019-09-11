@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Dec 20 19:20:49 UTC 2018 - mailaender@opensuse.org
+
+- Update to version 1.1
+
+-------------------------------------------------------------------
+Mon Sep 17 15:01:53 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.0.2. See changelog at:
+  https://cran.r-project.org/web/packages/openssl/NEWS
+- Run spec file through R2spec.
+- Run spec file through spec-cleaner.
+- Various other spec file cleanups.
+
+-------------------------------------------------------------------
+Wed Mar 28 16:15:03 UTC 2018 - darin@darins.net
+
+- added gcc-c++ build dependency
+
+-------------------------------------------------------------------
+Fri Oct  6 01:09:11 UTC 2017 - flyos@mailoo.org
+
+- Initial build
+

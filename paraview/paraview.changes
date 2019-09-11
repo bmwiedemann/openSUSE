@@ -1,0 +1,460 @@
+-------------------------------------------------------------------
+Fri Aug 16 14:26:00 CEST 2019 - Mark.Olesen@esi-group.com
+
+- Update to version 5.6.1
+  https://blog.kitware.com/paraview-5-6-1-release-notes/
+- using tar.xz instead of tar.gz file
+
+-------------------------------------------------------------------
+Tue Dec  4 10:39:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from description.
+- Add ldconfig dependency. Avoid xargs use where possible.
+
+-------------------------------------------------------------------
+Thu Nov 29 12:00:02 CET 2018 - Mark.Olesen@esi-group.com
+
+- Update to version 5.6.0
+  https://blog.kitware.com/paraview-5-6-0-release-notes/
+- add devel package
+- remove Tk build requirement and adjust description since ParaView
+  hasn't used Tcl/Tk for quite a few years.
+- ParaViewTutorial file not updated and not available on upstream
+- drop patches already applied upstream
+  * paraview-pythonqt-build-fix.patch
+  * fix-hdf5-gcc8.patch
+  * fix-qt-5.11-931c779.patch
+  * fix-no-plugin-doc-dir.patch
+- modify partially applied patches
+  * paraview-find-qhelpgenerator-qt5.patch
+
+-------------------------------------------------------------------
+Tue Aug 14 12:36:23 UTC 2018 - foss@grueninger.de
+
+- Update to version 5.5.2
+  see full changelog at
+  https://blog.kitware.com/paraview-5-5-0-release-notes/
+- Disable build of examples
+- Don't use VTKm as it cause CMake configure problems
+- drop patch paraview-default-qtstyle.patch as plastic style is
+  no longer set by upstream
+- drop patch Fix-ParaViewDetermineVersion.patch as a similar
+  change is included upstream
+- update patch paraview-fix-file-contains-date-time.patch
+- add patches fix-libhdf5-missing-m.patch and
+  fix-libharu-missing-m.patch to add missing libraries to
+  third-party dependencies included in ParaView
+- add patch fix-qt-5.11-931c779.patch to fix issue with Qt 5.11
+- add patch fix-no-plugin-doc-dir.patch to remove reference to
+  non-existant directory below a plug-in
+- add patch fix-hdf5-gcc8.patch to fix issue with GCC 8 taken
+  from upstream
+
+-------------------------------------------------------------------
+Sat Mar 31 11:12:06 UTC 2018 - jengelh@inai.de
+
+- Trim goals from description, only the now counts.
+  Trim marketing speech from description.
+
+-------------------------------------------------------------------
+Tue Aug 22 21:52:50 UTC 2017 - badshah400@gmail.com
+
+- Update to version 5.4.1:
+  * The black render window observed on some systems when FXAA was
+    enabled or an object's opacity was less than 1 has been fixed.
+  * Field output for cells with non-straight edges has been
+    corrected.
+  * Derivatives for quadratic triangles are now computed
+    correctly.
+  * A bug that occurred when generating a Catalyst script with no
+    images output has been fixed.
+  * A problem with writing animations as AVIs was fixed.
+  * Logic in the CGNS reader was updated to correctly read all
+    solution nodes for each centering type when
+    FlowSolutionPointers are missing.
+  * Fixed crash in CGNS reader when moving forward in time.
+  * Fixed problem with long-running animations not advancing past
+    a certain number of time steps.
+  * Resolved issue where changing one file path in the state file
+    loader "Choose File Names" dialog also changed the file paths
+    of other files with the same type.
+  * Addressed problem with enumerated property dependencies in
+    ParaViewWeb.
+  * Added ability to change the font size in the ParaView user
+    interface.
+  * Fixed BoxLib3D file reader.
+  * State files now properly support files with relative paths.
+  * Removed inappropriate scalar bar scaling when saving large
+    screen shots.
+  * A bug in the color mapping that in some cases incorrectly
+    mapped some data values to the above-range color was fixed.
+  * OSPRay can now be compiled in Cray programming environments
+    and for the first time has support for Intel Skylake
+    processors.
+  * Added lower limit to how small the GUI font size can be.
+  * Addressed issue affecting layouts when loading a state file
+    from the Python console.
+
+-------------------------------------------------------------------
+Sun Jul  2 17:09:33 UTC 2017 - badshah400@gmail.com
+
+- Update to version 5.4.0:
+  * See https://blog.kitware.com/paraview-5-4-0-release-notes/ for
+    a full list of updates.
+- Use the %%cmake macro instead of using cmake manually.
+- Minor rebase of existing patches for version update.
+- ExcludeArch for ix86 processors until 32 bit builds can be
+  sorted out; issue reported upstream.
+
+-------------------------------------------------------------------
+Mon Mar 20 15:42:39 UTC 2017 - foss@grueninger.de
+
+- Update to version 5.3.0
+  * VTK-m Plugin for many-core systems
+  * Reader and Writer Improvements and Additions
+  * Fast approximate anti-aliasing (FXAA) is now on by default
+  * new StreamLinesRepresentation plugin
+  * Added LagrangianParticleTracker plugin
+  * Python Enhancements
+  * See a summary of changes at
+    https://blog.kitware.com/paraview-5-3-0-release-notes/
+- drop package paraview-plugin-SciberQuestToolKit as SQTK is no longer
+  part of ParaView (see commit c2bc94c2efb66c4bb525383176688ddfd430ca26)
+- drop paraview-build-sciberquesttoolkit-with-opengl2.patch as SQTK is
+  no longer build
+- add paraview-do-not-install-missing-vtk-doxygen-dir.patch to remove
+  non-existing doxygen/doc/html folder from VTK.
+- modified paraview-find-qhelpgenerator-qt5.patch to adapt to partial
+  inclusion of original patch to upstream
+
+-------------------------------------------------------------------
+Thu Dec  8 15:30:11 UTC 2016 - badshah400@gmail.com
+
+- Replicate the %cmake macro manually, stripping out the
+  problematic and unused options. In particular, this restores
+  passing rpm_opt_flags to C/C++ during compilation.
+- Update paraview-fix-file-contains-date-time.patch to remove
+  references to __DATE__ and __TIME__ also from
+  Plugins/CDIReader/cdilib.c; suppresses an rpmlint warning.
+- Update %{name}-rpmlintrc file to also suppress warnings about:
+  * no-manual-page-for-binary: upstream doesn't supply manpages
+    and we don't care.
+  * hidden-file-or-dir: this hidden file is really used as a
+    catalogue of available plugins by paraview.
+
+-------------------------------------------------------------------
+Thu Nov 24 18:38:09 UTC 2016 - badshah400@gmail.com
+
+- Update to version 5.2.0: See a summary of changes at:
+  https://blog.kitware.com/paraview-5-2-0-release-notes/ .
+- Use cmake macros (except for %cmake) for %build and %install
+  actions; drop the paraview_cmake_options and send the options
+  directly to cmake. We do not use the %cmake macro because
+  it passes the RPM optflags to cmake, and with paraview 5.2 these
+  flags cause compilation errors; see
+  https://gitlab.kitware.com/paraview/paraview/issues/17049.
+- Turn off system GL2PS and DIY for bundled VTK.
+- Switch to using Qt5 for openSUSE > 13.2 and Leap 42.2 and
+  higher (Qt5 >= 5.6.0 is required).
+- Add BuildRequires on python-Sphinx, python-qt*-devel; new
+  requirements.
+- Add BuildRequires on pkgconfig(libpng), pkgconfig(freetype2) and
+  pkgconfig(xt); these are all required and being implicitly
+  pulled in by libqt4-devel.
+- Add paraview-find-qhelpgenerator-qt5.patch: Help find
+  qhelpgenerator-qt5 instead of qhelpgenerator when Qt5 is used.
+- Add paraview-pythonqt-build-fix.patch to fix build issues with
+  PythonQtPlugin; patch taken from upstream.
+- Add paraview-build-sciberquesttoolkit-with-opengl2.patch to
+  enable building of SciberQuestToolKit even when OpenGL2 is used
+  as the default VTK rendering (needs testing).
+- Drop require-only-cmake-3_0.patch, cmake >= 3.3 is now required.
+- Add documentation linked to from the Help menu in main
+  application as additional sources and install them where it
+  looks for them (ParaViewGettingStarted-5.2.0.pdf,
+  ParaViewGuide-5.2.0.pdf, ParaViewTutorial.pdf).
+- Send other docs to %{_docdir} by explicitly passing the cmake
+  option VTK_INSTALL_DOC_DIR.
+
+-------------------------------------------------------------------
+Fri Jul 29 05:13:00 UTC 2016 - foss@grueninger.de
+
+- update to version 5.1.2
+  * Rendering translucent geometries: fixed client-server configurations
+    when rendering remotely and resolved issues with multiple windows/views
+    were present.
+  * Exodus reader: Fixed bug in Exodus reader which was causing the reader to
+    improperly read files with no timesteps.
+  * Fixed the “?” button to show filter documentation.
+  * Add option to Ghost Cells Generator filter to specify the number of ghost
+    levels to generate.
+  * Cinema Fixed SpecB was not revolving the camera around the data centroid.
+- adjust require-only-cmake-3_0.patch
+
+-------------------------------------------------------------------
+Tue Jun 21 11:45:20 UTC 2016 - foss@grueninger.de
+
+- update to version 5.1.0
+  + add OSPRay ray tracing renderer
+  + interpolating point clouds
+  + generic arrays
+  + x-ray view
+  + resampling to image
+  + List of changes at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=122
+- adjust patch paraview-default-qtstyle.patch
+- add require-only-cmake-3_0.patch to lower required CMake version
+  to 3.0
+
+-------------------------------------------------------------------
+Wed Mar 30 08:40:36 UTC 2016 - foss@grueninger.de
+
+- update to version 5.0.1
+  + Trace recorder fails for CTH data
+  + improvements to cinema
+  + Move Show Axis functionality into Edit Axes Grid
+  + hover points on is deathly slow remote server
+  + CGNS reader not available in non-MPI windows binaries
+  + update pvospray
+  + Keyboard shortcut Alt+A is assigned twice
+  + Rubber band selection is broken
+  + List of changes at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=126
+
+-------------------------------------------------------------------
+Tue Mar 15 20:35:24 UTC 2016 - dvaleev@suse.com
+
+- Add disk constraint 8GB 
+
+-------------------------------------------------------------------
+Mon Jan 11 13:12:24 UTC 2016 - foss@grueninger.de
+
+- Update to version 5.0.0
+  + New Rendering Engine
+  + OpenSWR and Mesa support
+  + Include OSPray
+  + Off-screen rendering with EGL
+  + Community Atmosphere Model (Cam5) Catalyst Adaptor
+  + Accelerated Algorithms plug-in
+  + List of changes at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=121
+
+-------------------------------------------------------------------
+Mon Sep 14 21:44:39 UTC 2015 - badshah400@gmail.com
+
+- Update to version 4.4.0:
+  + List of changes at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=114.
+- Drop paraview-freetype-2.5.4.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Sat Feb 14 06:32:22 UTC 2015 - foss@grueninger.de
+
+- Update to version 4.3.1:
+  + See list of changes at
+    http://www.paraview.org/Bug/changelog_page.php
+- Packaging changes:
+  + Install new file /usr/share/cmake/hdf5/libhdf5.settings
+
+-------------------------------------------------------------------
+Mon Jan  5 12:50:29 UTC 2015 - dimstar@opensuse.org
+
+- Add paraview-freetype-2.5.4.patch: Fix build with FreeType 2.5.4
+  API changes.
+
+-------------------------------------------------------------------
+Wed Oct  1 12:40:59 UTC 2014 - foss@grueninger.de
+
+- Update to version 4.2.0:
+  + See list of changes at
+    http://vtk.org/Bug/changelog_page.php?version_id=108
+- Packaging changes:
+  + Drop paraview-Mesa10.3-build-failures.patch as this patch has
+    been included upstream
+
+-------------------------------------------------------------------
+Mon Sep  8 01:57:35 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.2.0-RC1:
+  + See list of changes at
+    http://vtk.org/Bug/changelog_page.php?version_id=108
+- Packaging changes:
+  + Add paraview-desktop-entry-fix.patch to fix paraview's desktop
+    menu entry by properly inserting required key-value pairs
+  + Drop paraview-SciberQuestToolKit-install-path.patch; no longer
+    needed as properly implemented upstream
+  + Rebase carried-over patches to apply cleanly against present
+    version
+  + Add paraview-Mesa10.3-build-failures.patch to workaround
+    build failures when compiling against Mesa >= 10.3; patch
+    taken from upstream git and rebased; applied only for
+    openSUSE >= 13.2
+  + Specfile changes:
+    - Prepare for gcc 4.9.0 by working around a compiler
+      issue
+    - Package .desktop entry and icon files; post(un) scriptlets
+      for updating hicolor icon theme and updating desktop menu
+      are used
+    - Package appdata file
+    - Fix python-bytecode-inconsistent-mtime rpmlint warnings by
+      recompiling all relevant .py files.
+
+-------------------------------------------------------------------
+Tue Feb  4 10:59:39 UTC 2014 - badshah400@gmail.com
+
+- Build with system zope (python-zope.interface) and twisted
+  (python-twisted); introduces BuildRequires and Requires on the
+  two packages
+- Remove unnecessary Requires on python-matplotlib.
+
+-------------------------------------------------------------------
+Sun Feb  2 00:19:56 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.1.0:
+  + See list of changes at
+    http://vtk.org/Bug/changelog_page.php?version_id=102
+- Packaging changes:
+  + Use full URL for source tarball
+  + Drop patches:
+    - paraview-fix-vtkpython-modules-install-dir.patch: corrected
+      upstream
+    - paraview-no-return-in-nonvoid-function.patch: corrected
+      upstream
+  + Rebase existing patches
+  + Also fix a new occurrance of __DATE__ in a source file
+    within paraview-fix-file-contains-date-time.patch 
+  + Change build type to RelWithDebInfo from Release
+    (DCMAKE_BUILD_TYPE=RelWithDebInfo).
+
+-------------------------------------------------------------------
+Mon Jul  8 04:49:03 UTC 2013 - badshah400@gmail.com
+
+- Update to version 4.0.1:
+  + Undocumented upstream changes
+- Changes from version 4.0:
+  + Too many to list, see
+    http://paraview.org/Bug/changelog_page.php?version_id=52
+    for a complete list
+- Drop paraview-fix-build-with-system-jpeg.patch; implemented
+  upstream
+- Use matplotlib during building to enable MathText rendering;
+  introduces build time and runtime requirement on
+  python-matplotlib
+- Add patches:
+  + paraview-fix-vtkpython-modules-install-dir.patch: Workaround
+    vtk's python modules getting installed in the wrong location;
+    upstream bug report at
+    http://paraview.org/Bug/view.php?id=14168
+  + paraview-fix-file-contains-date-time.patch: Remove reference
+    to __DATE__ and __TIME__ from source files
+- Use fdupes to link duplicated files.
+
+-------------------------------------------------------------------
+Thu Jun 20 05:05:52 UTC 2013 - badshah400@gmail.com
+
+- Enable python scripting with paraview 
+  (cmake variable DPARAVIEW_ENABLE_PYTHON:BOOL=ON); had been
+  turned off because earlier versions of paraview had some
+  building issues with this enabled.
+
+-------------------------------------------------------------------
+Tue Mar 12 00:43:02 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.98.1:
+  + See full list of changes at
+    http://paraview.org/Bug/changelog_page.php?version_id=99.
+- Add paraview-fix-build-with-system-jpeg.patch to fix build
+  errors when compiled with recent jpeg headers (libjpeg8-devel >=
+  8.0) 
+- Use smp flags for make to speed up build.
+
+-------------------------------------------------------------------
+Wed Feb 27 14:11:42 UTC 2013 - badshah400@gmail.com
+
+- License of SciberQuestToolKit subpackage is: GPL-2.0+ or
+  LGPL-3.0+.
+
+-------------------------------------------------------------------
+Mon Feb 25 14:47:39 UTC 2013 - badshah400@gmail.com
+
+- Split the SciberQuestToolKit plugin into its own package,
+  license it as GPL-3.0+ or LGPL-3.0+ (bnc#804987)
+- The minimum version of libqt4-devel required for compiling is
+  4.7.0; correct BuildRequires accordingly.
+
+-------------------------------------------------------------------
+Tue Jan 15 13:32:39 UTC 2013 - badshah400@gmail.com
+
+- Remove paraview-gcc47.patch; patch incorporated upstream.
+
+-------------------------------------------------------------------
+Tue Jan  8 09:14:33 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.98.0:
+  + Too many changes to list, see
+    http://paraview.org/Bug/changelog_page.php?version_id=97
+  + Fixes licensing issues (bnc#763208)
+- Remove paraview-boost-1.49-compat.patch, incorporated upstream
+- Add paraview-no-return-in-nonvoid-function.patch to fix non-void
+  function returning nothing
+- Add paraview-SciberQuestToolKit-install-path.patch to fix
+  install path of SciberQuestToolKit plugin
+- Turn off OSMESA bindings because these are no longer
+  recommended.
+
+-------------------------------------------------------------------
+Fri Oct 26 13:12:42 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.14.1:
+  + Bug fix release, see a complete list at
+    http://paraview.org/Bug/changelog_page.php?version_id=95 .
+
+-------------------------------------------------------------------
+Sat May 12 20:24:12 UTC 2012 - scorot@free.fr
+
+- fix SLE and 11.3 build with BuildRequires qt4-assistant-adp-devel
+  for 11.4 and higher
+
+-------------------------------------------------------------------
+Sat Apr 28 13:56:56 UTC 2012 - badshah400@gmail.com
+
+- Added paraview-gcc47.patch to fix build failures with gcc >= 4.7:
+  this fixes building on openSUSE > 12.1.
+
+-------------------------------------------------------------------
+Sun Apr  8 16:58:18 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.14.0:
+  + Too many changes to list. See complete list at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=94
+- Added paraview-boost-1.49-compat.patch to workaround vtk's
+  incompatibility with boost version 1.48 and higher; fixes build
+  on factory. 
+
+-------------------------------------------------------------------
+Sun Nov  6 05:59:45 UTC 2011 - badshah400@gmail.com
+
+- Update to version 3.12.0:
+  + Too many changes to list. See complete list at
+    http://www.paraview.org/Bug/changelog_page.php?version_id=85
+- Removed paraview-demo-patch. Changes committed upstream.
+- Removed paraview-sqldatabaseschema.patch. Build failure
+  properly taken care of upstream.
+
+-------------------------------------------------------------------
+Sun Apr  3 12:25:39 UTC 2011 - badshah400@gmail.com
+
+- Added paraview-default-qtstyle.patch to make paraview inherit
+  user-set qt-GUI style instead of always using Plastique
+
+-------------------------------------------------------------------
+Sat Apr  2 16:13:00 UTC 2011 - badshah400@gmail.com
+
+- Added rpmlintrc file to suppress devel-file warnings for
+  required files 
+
+-------------------------------------------------------------------
+Thu Mar 31 00:30:36 UTC 2011 - badshah400@gmail.com
+
+- Initial package (version 3.10.0) 
+

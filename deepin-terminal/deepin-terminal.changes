@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Sat Jun 15 13:00:26 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.2.6
+  * blur under KWin wm support
+  * Fix make special password for ssh login works
+  * Revert a commit which cause window size grows
+  * Fix terminal window drifts after toggling compositor
+  * Fix download file opened dialog should modal parent
+  * Fix May crash when split terminal window
+  * Fix quake window get focus on KWin
+
+-------------------------------------------------------------------
+Fri Jun  7 08:24:01 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Change License to "GPL-3.0-or-later AND GPL-3.0-only". 
+
+-------------------------------------------------------------------
+Sun Jun  2 19:48:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove nonsense from description.
+
+-------------------------------------------------------------------
+Sun May 19 10:05:03 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.2.2.1
+  * Support breaks line selection on touchscreen.
+  * Auto pull translation files from transifex.
+  * Correct a typo.
+  * Translation update.
+  * Config option for bold_is_bright
+  * Fix: Take `QT_FONT_DPI` into consideration.
+- Don't apply deepin-terminal_unbundle_vte.patch in leap 15
+
+-------------------------------------------------------------------
+Sun Mar 24 09:32:03 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.2.1.1
+  * avoid using dpkg-parsechangelog
+  * merge po
+  * update pot
+  * add travis-ci build
+  * Fix touch on selection causing deselection
+  * Fix zssh "out of pty's" issue on debian stretch w/ vendor lib
+  * Update ts file and deepin vendor support
+  * backport support for debian stretch
+  * use markup text to create layout
+  * better theme preview 'eye-candy'
+  * theme preview use the correct color'n'text
+  * remove line above at titlebar.
+  * Fix window button hover state set to hand type.
+  * feat: update window titlebar button style
+  * fix: open_in_filemanager
+  * fix: handle `GLib.Error'
+  * fix: github issue #74
+  * fix: gtk_box_pack assertion error
+  * refactor: remove 3rdparty/ and vapi/
+  * fix: github issue #73
+  * fix: missing verison info when building the deb
+  * fix: unregister menu before recreate menu
+  * refactor: match more mono fonts
+  * feat: support customized version string
+  * generate version information from git
+  * fix: support set tab title use OSC escape sequence
+  * Adapt lintian
+  * add TEST_BUILD configure condition
+  * Add customize search engine to right menu.
+  * Like XShell, if user set config option 'copy_on_select' to true, 
+    terminal will copy select text to system clipboard when text is selected.
+  * Add github, stackoverflow, duckduckgo in default search engine.
+  * Add git ssh link support: mouse hover git link to copy it.
+  * Open current directory in file manager.
+  * Slow down the opacity adjust speed.
+  * Use DBus instead dman to start Deepin Manual, Deepin Manual just will run 
+    in flatpak runtime in the future.
+  * Search improvements, allow to search with enter key and previous/next
+    buttons even after initial search panel opening, improved by avently,
+    thanks.
+  * Search improvements, disabled live search, improved by avently, thanks.
+  * Refactory CMakeLists.txt, improved by avently, thanks.
+  * Add WenQuanYi in mono font whitelist, WenQuanYi's attribute is incomplete,
+    not include spacing attribue.
+  * Just reset terminal when exit code match samba error code, other non-zero
+    code (such as Ctrl + C etc) don't trigger reset terminal.
+  * Refactory code: move prevent event code to Widgets.SpinButton.
+  * Prevent scrolling event of Gtk.ComboBoxText and Gtk.SpinButton.
+  * Add empathy theme.
+  * Fixed spell of README.md, thanks wtz.
+  * Add miss dependences in README.md.
+  * Add advanced options in README.md.
+  * Update copyright year.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Mar  1 06:21:14 UTC 2018 - hillwood@opensuse.org
+
+- Fix project path.
+
+-------------------------------------------------------------------
+Fri Feb  9 14:45:14 UTC 2018 - hillwood@opensuse.org
+
+- Update to 2.9.2
+  * Fixed blur background not work for 4k screen.
+
+-------------------------------------------------------------------
+Wed Nov 29 01:05:13 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.9.1
+  * Add option 'show_highlight_frame', default set to false, it's nosie to 
+    display highlight frame everytime i select terminal window.
+  * Adjust about dialog font size.
+  * Adjust progressbar draw coordinate.
+  * Upload file to remote server when drag file to remote terminal.
+  * Split terminal to login server if current terminal has login.
+  * Set 'NO_AT_BRIDGE' environment variable with 1 to dislable accessibility 
+    dbus warning.
+  * Display highlight frame when select different terminal window.
+  * Fixed preference dialog widget width problem when use German.
+  * Adjust slider button text width to make it can display ip address completely.
+  * Add "blur background" option in preference dialog.
+  * Update translations.
+  * Drag file to remote server if terminal is login.
+  * Downgrade zssh version
+  * Change get_ssh_script_path path to follow debian policy.
+  * Adjust preference dialog font attribute.
+  * Downgrade zssh version
+  * Change get_ssh_script_path path to follow debian policy.
+  * Adjust preference dialog font attribute.
+  * Buildin zssh in deepin-terminal, don't need depend zssh in linux distribution
+  * Fixed search text color is not correctly when terminal use light theme
+  * Add baidu and bing search engine in right menu
+  * Synchronous translations
+- Add deepin-terminal_unbundle_vte.patch. Use vte in system default.
+
+-------------------------------------------------------------------
+Fri Sep 29 13:43:14 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.7.0+git20170920
+  * Add 'load_theme' option to make new terminal load theme that provide
+    by user.
+  * Add "New theme terminal" feature: press Ctrl + Alt + num to create new 
+    theme terminal.
+  * Update pot file with new feature: load_theme option and new theme 
+    terminal window. 
+  * Make deepin-terminal can compile under vala 0.36.5.
+
+-------------------------------------------------------------------
+Fri Sep 29 13:14:00 UTC 2017 - hillwood@opensuse.org
+
+- Initial package. 

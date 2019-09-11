@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Mon Jul 22 09:50:04 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- link against libpthread to make it build (bsc#1141377)
+- added usbguard-pthread.patch
+
+-------------------------------------------------------------------
+Wed May 22 13:38:28 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Run spec-cleaner
+- Add the missing systemd build requirement.
+
+-------------------------------------------------------------------
+Tue Jan 15 16:28:33 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- use upstream usbguard.service instead of hardcoded version (bsc#1120969) 
+
+-------------------------------------------------------------------
+Wed Nov  7 17:38:38 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups. Avoid pointless shelling out to /bin/rm.
+
+-------------------------------------------------------------------
+Tue Oct  9 09:48:44 UTC 2018 - Robert Frohl <rfrohl@suse.com>
+
+- changed zsh completion location
+- added rpmlint for zero size rules.conf
+
+-------------------------------------------------------------------
+Tue Oct  9 08:05:02 UTC 2018 - Robert Frohl <rfrohl@suse.com>
+
+- added signature verification of tarball
+  - add usbguard-0.7.4.tar.gz.sig
+  - add usbguard.keyring
+
+-------------------------------------------------------------------
+Mon Oct  8 14:19:55 UTC 2018 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.7.4
+  - Changed
+    Fixed conditional manual page generation & installation
+
+- update to 0.7.3
+  - Changed
+    usbguard-daemon will now exit with an error if it fails to open a logging file or audit event file.
+    Modified the present device enumeration algorithm to be more reliable.  Enumeration timeouts won't cause usbguard-daemon process to exit anymore.
+
+  - Added
+    umockdev based device manager capable of simulating devices based on umockdev-record files.
+
+- update to 0.7.2
+  - Changed
+    Fixed memory leaks in usbguard::Hash class.
+    Fixed file descriptor leaks in usbguard::SysFSDevice class.
+    Skip audit backend logging when no backend was set.
+
+  - Added
+    Added zsh completion & other scripts to the distribution tarball.
+
+- update to 0.7.1
+  - Added
+    CLI: usbguard watch command now includes an -e <path> option to run an executable for every received event. Event data are passed to the executable via environment variables.
+    usbguard-daemon: added "-K" option which can disable logging to console.
+    Added zsh autocompletion support.
+    usbguard-daemon: added "-f" option which enabled double-fork daemonization procedure.
+    Added AuditBackend usbguard-daemon configuration option for selecting audit log backend.
+    Linux Audit support via new LinuxAudit backend.
+    Added missing RuleCondition.hpp header file to the public API headers.
+
+  - Changed
+    Qt Applet: disabled session management
+    usbguard-daemon console logging output is enabled by default now.  Previously, the -k option had to be passed to enable the output.
+    Replaced --enable-maintainer-mode configure option with --enable-full-test-suite option. When the new option is not used during the configure phase, only a basic set of test is run during the make check phase.
+    usbguard-daemon now opens configuration in read-only mode
+    Fixed UEventDeviceManager to work with Linux Kernel >= 4.13
+    Refactored audit logging to support different audit log backends
+    Made the configuration parser strict. Unknown directives and wrong syntax will cause an error.
+
+
+- Added usbguard-applet-qt package to allow easier user interaction
+- Added usbguard-applet-qt_desktop_menu_categories.patch to fix category
+- Updated usbguard-daemon.conf to upstream version
+- Removed obsolte patch usbguard-fixes.patch
+- Added rules.conf, fixing bsc#1071076
+
+-------------------------------------------------------------------
+Wed Sep  6 10:48:23 UTC 2017 - meissner@suse.com
+
+- updated to 0.7.0
+  - Added
+    Added InsertedDevicePolicy configuration option to control the policy method for inserted devices.
+    Added RestoreControllerDeviceState configuration option.
+    Added DeviceManagerBackend configuration option. This option can be used to select from several device manager backend implementations.
+    Implemented an uevent based device manager backend.
+    Added setParameter, getParameter IPC (incl. D-Bus) methods.
+    Added set-parameter, get-parameter CLI subcommands.
+    Qt Applet: Added Spanish (es_AR) translation.
+    Create empty rules.conf file at install time (make install).
+    Support for numeric UID/GID values in IPCAllowedUsers and IPCAllowedGroups settings.
+    If bash completion support is detected at configure time, install the bash completion script during make install.
+    Added new configuration setting: IPCAccessControlFiles.
+    IPC access is now configurable down to a section and privilege level per user and/or group.
+    Added add-user, remove-user usbuard CLI subcommands for creating, removing IPC access control files.
+    Added AuditFilePath configuration option for setting the location of the USBGuard audit events log file path. If set, the usbguard-daemon will log policy and device related actions and whether they succeeded or not.
+
+  - Removed
+
+    Removed UDev based device manager backend and UDev related dependencies.
+    Removed UDev development files/API dependecy
+
+  - Changed
+
+    Reset Linux root hub bcdDevice value before updating device hash. This is a backwards incompatible change because it changes how the device hash is computed for Linux root hub devices.
+    Refactored low-level USB device handling into SysFSDevice class which represents a device in the /sys filesystem (sysfs).
+    Removed usage of readdir_r because it's obsolete. Replaced with readdir with the assumption that its usage is thread-safe if the directory handle passed to it is not shared between threads.
+    Extended test suite with use case tests.
+    Install the usbguard-daemon configuration and policy file with strict file permissions to prevent policy leaks.
+    Fixed several memory leaks.
+    Don't pre-resolve user and group names in IPCAllowedUsers and IPCAllowedGroups settings. Instead, resolve the name during the IPC authentication phase.
+
+- Updated to 0.6.2
+
+    Wait for disconnect in IPCClient dtor if needed
+    Qt Applet: Fixed loading of decision method and default decision settings
+
+- Updated to 0.6.1
+
+  - Changed
+
+    Refactored logging subsystem
+    Fixed handling of IPC disconnect in the IPCClient class
+    Qt Applet: Fixed handling of main window minimization and maximization
+    Fixed building on architectures that don't provide required atomic operations.
+    The libatomic emulation library will be used in such cases.
+    Fixed several typos in the documentation
+
+  - Added
+
+    Implemented a simple internal logger
+    Access to the logger via public API
+    Improved logging coverage. Logging output can be enabled either via
+    CLI options or by setting the USBGUARD_DEBUG environment variable to 1.
+    Qt Applet: UI translation support.
+    Qt Applet: Czech (cs_CZ) translation
+
+  - Removed
+
+    Removed spdlog dependency
+
+- ....  ommitted changes from 0.5* series ..
+
+-------------------------------------------------------------------
+Tue Mar  1 12:08:51 UTC 2016 - meissner@suse.com
+
+- split off a library package libusbguard0
+
+-------------------------------------------------------------------
+Sun Jan 31 09:40:56 UTC 2016 - meissner@suse.com
+
+- a daemon and framework and tools to guard against bad usb
+  devices.
+

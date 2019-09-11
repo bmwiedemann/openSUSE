@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Mon Apr 11 10:02:03 UTC 2016 - sor.alexei@meowr.ru
+
+- Change the theme back from TraditionGreen to Numix to
+  TraditionGreen: Numix now supports Gtk 3.20.
+
+-------------------------------------------------------------------
+Thu Mar 31 17:01:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Change the theme from Numix to TraditionGreen to gain Gtk 3.20
+  compatibility.
+- Depend on mate-applet-softupd again.
+
+-------------------------------------------------------------------
+Wed Jan  6 13:21:22 UTC 2016 - sor.alexei@meowr.ru
+
+- Add mate-desktop-gschemas-branding-openSUSE with cursor theme
+  alteration to "Adwaita".
+- Recommend mate-applet-softupd instead of depending.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Bump version to 42.1.
+- Rebase mate-control-center-branding-add-YaST.patch and
+  mate-menus-branding-remove-X-SuSE-ControlCenter.patch for
+  MATE 1.12.
+- Add missing gschema requires to mate-panel-branding-openSUSE.
+- Only depend on metatheme-numix-common: Gtk versions are
+  supplemented by it.
+- Require mate-applets and mate-applet-softupd.
+
+-------------------------------------------------------------------
+Sun May 25 21:32:11 UTC 2015 - sor.alexei@meowr.ru
+
+- mate-panel-branding-openSUSE should depend on mate-menu.
+
+-------------------------------------------------------------------
+Wed Mar 25 13:33:16 UTC 2015 - p.drouand@gmail.com
+
+- Use Numix Gtk theme and Menta icon theme by default.
+- Add a SUSE branded icon for the menu bar and use it by default.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:36:09 UTC 2015 - p.drouand@gmail.com
+
+- Replace Banshee with Exaile by default; better integrated.
+
+-------------------------------------------------------------------
+Tue Nov  4 21:47:24 UTC 2014 - sor.alexei@meowr.ru
+
+- Fix default background filepath.
+- Make GSettings schema update after installing packages.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Fri Oct 24 15:57:14 UTC 2014 - p.drouand@gmail.com
+
+- Use Adwaita theme and Mate icons; because of troubles with GTK3
+  applications, it's better to use Gnome default theme
+
+-------------------------------------------------------------------
+Fri Oct 17 16:18:39 UTC 2014 - p.drouand@gmail.com
+
+- Fix default wallpaper
+
+-------------------------------------------------------------------
+Wed Oct  8 11:59:09 UTC 2014 - p.drouand@gmail.com
+
+- Fix the default icon theme; use Sonar for theme and icons
+- Reenable default theme
+
+-------------------------------------------------------------------
+Sat Jul 12 12:32:45 UTC 2014 - p.drouand@gmail.com
+
+- Do not install the branded layout; it's included in the mate-panel
+  package, just apply it
+- Temporary disable theme definition in the branded session file; it
+  conflicts with gtkrc file from gtk2-branding-openSUSE
+
+-------------------------------------------------------------------
+Thu May  1 00:23:48 UTC 2014 - p.drouand@gmail.com
+
+- Do not rename openSUSE layout
+- Also use gsetting keys to apply layout
+
+-------------------------------------------------------------------
+Tue Apr  8 17:03:39 UTC 2014 - p.drouand@gmail.com
+
+- Revert last change; we don't provide indicator applets
+
+-------------------------------------------------------------------
+Tue Apr  8 14:03:41 UTC 2014 - p.drouand@gmail.com
+
+- Use indicator-applets by default
+
+-------------------------------------------------------------------
+Mon Mar 17 14:31:20 UTC 2014 - p.drouand@gmail.com
+
+- Keep only useful stuff in mate-session-branding.gschema.override.in
+- Use sonar and gilouch as icon/theme by default to be the most closed
+  of openSUSE Gnome2 user experience
+  * define them as theme and icon theme in 
+    mate-session-branding.gschema.override.in
+  * add gtk[2,3]-metatheme-sonar and  require sonar-icon-theme
+  * remove mate-icon-theme requirement
+
+-------------------------------------------------------------------
+Sat Mar 15 17:08:53 UTC 2014 - p.drouand@gmail.com
+
+- For each branding subpackage, do not build require branded package
+  if *-branding-upstream is already build require; it's redundant
+- Fix @@WALLPAPER_URI@@ in spec file
+- Remove non-existing key entries in 
+  mate-session-branding.gschema.override.in 
+
+-------------------------------------------------------------------
+Sun Mar  2 15:31:58 UTC 2014 - p.drouand@gmail.com
+
+- Bump version to 13.2
+- Upload opensuse.layout to sources
+- Use a default layout configuration file to use gnome-main-menu by
+  default
+- Remove redundant layout install
+
+-------------------------------------------------------------------
+Thu Dec 19 14:04:05 UTC 2013 - p.drouand@gmail.com
+
+- Add mate-menus-branding-remove-X-SuSE-ControlCenter.patch: this
+  removes the desktop files with X-SuSE-ControlCenter-* categories
+  from the Applications menu. They should just appear in the
+  control center.
+
+-------------------------------------------------------------------
+Wed Dec 18 16:15:30 UTC 2013 - p.drouand@gmail.com
+
+- Change license to MIT; GPL licenses require to provide a COPYING
+  file
+
+-------------------------------------------------------------------
+Sat Oct  5 13:50:46 UTC 2013 - p.drouand@gmail.com
+
+- Remove Novell license file; it doesn't meaning nothing to provide it
+- Fix Summary main package; replace xcfe with Mate
+- Remove useless Obsoletes tags for mate-session-manager branding package
+
+-------------------------------------------------------------------
+Mon Sep 23 21:53:50 UTC 2013 - p.drouand@gmail.com
+
+- Set the same background for the lockscreen by default as we use
+  as regular background. 
+
+-------------------------------------------------------------------
+Fri Sep 20 15:14:35 UTC 2013 - p.drouand@gmail.com
+
+- Remove toggle-mute from overrides; not in Mate schema
+
+-------------------------------------------------------------------
+Tue Aug 13 17:44:30 UTC 2013 - p.drouand@gmail.com
+
+- Remove org.freedesktop.Tracker.Miner.Files entry from override file
+  don't define it here
+
+-------------------------------------------------------------------
+Sat Mar 23 15:03:01 UTC 2013 - p.drouand@gmail.com
+
+- Initial release
+

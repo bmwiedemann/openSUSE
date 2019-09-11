@@ -1,0 +1,142 @@
+From 5d3fb91fd764b50efab0fcfe9cf2da7d2f14cf2b Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Thu, 22 Feb 2018 12:16:29 +0100
+Subject: [PATCH 42/43] tools/kvm_stat: group child events indented after
+ parent
+
+We keep the current logic that sorts all events (parent and child), but
+re-shuffle the events afterwards, grouping the children after the
+respective parent. Note that the percentage column for child events
+gives the percentage of the parent's total.
+Since we rework the logic anyway, we modify the total average
+calculation to use the raw numbers instead of the (rounded) averages.
+Note that this can result in differing numbers (between total average
+and the sum of the individual averages) due to rounding errors.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit df72ecfc790fa01de1c41f836ff51d12f9c40318)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 89 ++++++++++++++++++++++++++++++---------------
+ 1 file changed, 59 insertions(+), 30 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index cc9e6885b3e8..97574f632ccd 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1127,6 +1127,45 @@ class Tui(object):
+         def is_child_field(field):
+             return field.find('(') != -1
+ 
++        def insert_child(sorted_items, child, values, parent):
++            num = len(sorted_items)
++            for i in range(0, num):
++                # only add child if parent is present
++                if parent.startswith(sorted_items[i][0]):
++                    sorted_items.insert(i + 1, ('  ' + child, values))
++
++        def get_sorted_events(self, stats):
++            """ separate parent and child events """
++            if self._sorting == SORT_DEFAULT:
++                def sortkey((_k, v)):
++                    # sort by (delta value, overall value)
++                    return (v.delta, v.value)
++            else:
++                def sortkey((_k, v)):
++                    # sort by overall value
++                    return v.value
++
++            childs = []
++            sorted_items = []
++            # we can't rule out child events to appear prior to parents even
++            # when sorted - separate out all children first, and add in later
++            for key, values in sorted(stats.items(), key=sortkey,
++                                      reverse=True):
++                if values == (0, 0):
++                    continue
++                if key.find(' ') != -1:
++                    if not self.stats.child_events:
++                        continue
++                    childs.insert(0, (key, values))
++                else:
++                    sorted_items.append((key, values))
++            if self.stats.child_events:
++                for key, values in childs:
++                    (child, parent) = key.split(' ')
++                    insert_child(sorted_items, child, values, parent)
++
++            return sorted_items
++
+         row = 3
+         self.screen.move(row, 0)
+         self.screen.clrtobot()
+@@ -1146,44 +1185,34 @@ class Tui(object):
+             # we don't have any fields, or all non-child events are filtered
+             total = ctotal
+ 
+-        if self._sorting == SORT_DEFAULT:
+-            def sortkey((_k, v)):
+-                # sort by (delta value, overall value)
+-                return (v.delta, v.value)
+-        else:
+-            def sortkey((_k, v)):
+-                # sort by overall value
+-                return v.value
+-
+-        sorted_items = sorted(stats.items(), key=sortkey, reverse=True)
+-
+         # print events
+         tavg = 0
+-        for key, values in sorted_items:
+-            if row >= self.screen.getmaxyx()[0] - 1:
++        tcur = 0
++        for key, values in get_sorted_events(self, stats):
++            if row >= self.screen.getmaxyx()[0] - 1 or values == (0, 0):
+                 break
+-            if values == (0, 0):
+-                continue
+-            if not self.stats.child_events and key.find(' ') != -1:
+-                continue
+-            if values.value is not None:
+-                cur = int(round(values.delta / sleeptime)) if values.delta else ''
+-                if self._display_guests:
+-                    key = self.get_gname_from_pid(key)
+-                    if not key:
+-                        continue
+-                self.screen.addstr(row, 1, '%-40s %10d%7.1f %8s' % (key
+-                                   .split(' ')[0], values.value,
+-                                   values.value * 100 / total, cur))
+-                if cur != '' and key.find('(') == -1:
+-                    tavg += cur
++            if self._display_guests:
++                key = self.get_gname_from_pid(key)
++                if not key:
++                    continue
++            cur = int(round(values.delta / sleeptime)) if values.delta else ''
++            if key[0] != ' ':
++                if values.delta:
++                    tcur += values.delta
++                ptotal = values.value
++                ltotal = total
++            else:
++                ltotal = ptotal
++            self.screen.addstr(row, 1, '%-40s %10d%7.1f %8s' % (key,
++                               values.value,
++                               values.value * 100 / float(ltotal), cur))
+             row += 1
+         if row == 3:
+             self.screen.addstr(4, 1, 'No matching events reported yet')
+         else:
++            tavg = int(round(tcur / sleeptime)) if tcur > 0 else ''
+             self.screen.addstr(row, 1, '%-40s %10d        %8s' %
+-                               ('Total', total, tavg if tavg else ''),
+-                               curses.A_BOLD)
++                               ('Total', total, tavg), curses.A_BOLD)
+         self.screen.refresh()
+ 
+     def _show_msg(self, text):
+-- 
+2.12.3
+

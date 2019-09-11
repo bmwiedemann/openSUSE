@@ -1,0 +1,644 @@
+-------------------------------------------------------------------
+Mon Jul  1 08:22:46 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.88:
+  * Comparing pointers that point to different objects
+  * Address of local variable 'x' is accessed at non-zero index
+  * STL usage: unnecessary search before insertion
+  * Duplicate expression for condition and assignment: if (x==3) x=3; 
+  * Better handling of C++14 and C++17
+  * New command line option --addon used to run addons directly from Cppcheck.
+  * Some advanced options are only available in GUI:
+
+- Update to version 1.87:
+  * --project can now import Cppcheck GUI projects.
+  * Condition is always true when array address is compared with 0.
+  * function argument expression calculation has known result (#8830)
+  * Better lifetime checking (using pointer/reference that points at deleted object)
+  * Improved whole program analysis
+  * Better handling of language extension var@address.
+  * Many improvements in parser to handle templates, type aliases, etc better
+  * New addon for checking naming conventions. Naming conventions are configured in json file.
+
+-------------------------------------------------------------------
+Thu Jan  3 18:13:49 UTC 2019 - Nemanja V <nafsub@outlook.com>
+
+- Workaround for CMake lacking a CFGDIR variable.
+  * Patch was submitted (https://github.com/danmar/cppcheck/pull/1554) 
+    and accepted so this change should be reverted and replaced with a CMake compile definition 
+    -DCFGDIR=\"%{_datadir}/%{name}\" once a new upstream version is released.
+
+-------------------------------------------------------------------
+Thu Dec 27 10:03:28 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging enhancements
+
+-------------------------------------------------------------------
+Thu Dec 20 13:40:09 UTC 2018 - Christoph G <foss@grueninger.de>
+
+- Use Python 3 instad of Python 2
+- Switch to CMake as the used build system, otherwise Python 3
+  could not be detected by plain make
+
+-------------------------------------------------------------------
+Wed Dec 19 21:31:18 UTC 2018 - Christoph G <foss@grueninger.de>
+
+- Update to 1.86
+  * Many fixes in the template simplifier
+  * Several fixes in the abstract syntax tree.
+  Checking improvements:
+  * New check: passing address of char to function that expects a
+    strz
+  * New check: shadow variables
+  * Improved lifetime checking
+  * Improved STL iterators checking
+  * Improved data flow analysis
+  New libraries:
+  * zlib
+  * googletest
+  Addons:
+  * misra.py: Fixes for suppressions and exclusions
+  * namingng.py: New addon to check naming conventions. Rules are
+  specified in json file.
+
+-------------------------------------------------------------------
+Thu Oct 18 08:43:15 UTC 2018 - mvetter@suse.com
+
+- Update to 1.85:
+  Changes from 1.83:
+  Command line:
+  - fixes in parser
+  - Improved loading of platform files.
+  GUI:
+  - few minor improvements in user interface
+  - Code preview
+  - Added MISRA addon integration
+  - Platform can be selected in project settings
+  - Fixed issue when loading xml results file
+  Addons:
+  - We are now officially releasing our MISRA addon. So far it supports MISRA C 2012.
+  Changes from 1.85:
+  General:
+  - We are modernizing the Cppcheck code. Support for MSVC 2010 and GCC 4.4 is dropped.
+    You now need a compiler that is at least as good as MSVC 2013 or GCC 4.6.
+  Checking improvements:
+  - New check: Suggest STL algorithms instead of hard-coded for loops
+  - New check: Warn about ineffective algorithms (same iterator passed)
+  - New check: Mismatching iterators used together in operators
+  - Container (STL/Qt/WxWidgets/etc) access out of bounds
+  - Improved the checkers that warns about same/opposite expressions, track variable values better.
+  - Variable scope: warn about references also
+  Graphical user interface:
+  - You can specify undefines in the project file dialog
+  - Fixed configuration of suppressions
+  - Windows: Fixed issue of wrong/no theme being applied to UI elements
+  Misra:
+  - support per file excludes from cppcheck
+  - support per file suppressions from cppcheck
+  - summary will now summarize results for all files again
+  - a few false positives were fixed
+
+-------------------------------------------------------------------
+Sun Feb 18 10:40:07 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.82
+  Bug fixes:
+  * Better handling of namespaces
+  * Fixed false positives
+  * Fixed parsing of compile databases
+  * Fixed parsing of visual studio projects
+  Enhancements
+  * New check; Detect mistakes when there are multiple strcmp() in
+    condition
+    Example:
+     if (strcmp(password,"A")==0 || strcmp(password,"B")==0 || strcmp(password,"C"))
+     There is a missing '==0', and therefore this condition is
+     always true except when password is "C".
+  * New check; pointer calculation result can't be NULL unless
+    there is overflow
+   Example:
+     someType **list_p = ...;
+     if ((list_p + 1) == NULL)
+   The result for '(list_p + 1)' can't be NULL unless there is
+   overflow (UB).
+  * New check; public interface of classes should be safe - detect
+    possible division by zero
+    Example:
+      class Fred {
+      public:
+      void setValue(int mul, int div) {
+        value = mul / div; // <- unsafe
+      }
+      ...
+    This check does not consider how Fred::setValue() is really
+    called.
+    If you agree that the public interface of classes should
+    always be safe; it should be allowed to call all public
+    methods with arbitrary arguments, then this checker will be
+    useful.
+  * Fixed a few false negatives
+  * More information in the cfg files
+
+  version 1.81
+  CPPCHECK:
+  * New warning: Check if condition after an early return is
+    overlapping and therefore always false.
+  * Improved knowledge about C/C++ standard, windows, posix,
+    wxwidgets, gnu
+  * Better handling of Visual Studio projects
+  GUI:
+  * Compile: Qt5 is now needed to build the GUI
+  * Compile: New qmake flag HAVE_QCHART
+  * Project: You can now run cppcheck-addons
+  * Project: We have integrated clang-tidy
+  * Results view: Reload last results (if cppcheck build dir is
+    used) when GUI is started
+  * Results view: Tag the warnings with custom keywords
+    (bug/todo/not important/etc..)
+  * Results view: Shows when warning first appeared (since date)
+  * Results view: Suppress warnings through right-click menu
+  * Statistics: Added charts (shown if Qt charts module is enabled
+    during build)
+
+  version 1.80
+  Checking improvements:
+  * Added platform for Atmel AVR 8 bit microcontrollers (avr8)
+  * Better 'callstacks' in cppcheck messages
+  * Improved gnu.cfg, posix.cfg, wxwidgets.cfg and std.cfg, added
+    motif.cfg
+  * Various improvements to AST, ValueFlow analysis and template
+    parsing
+  Command line changes:
+  * Deprecated command line argument  *-append has been removed
+  * New command line argument  *-plist-output to create .plist
+    files
+  * New command line argument  *-output-file to print output to
+    file directly
+  * Check OpenCL files (.cl)
+  GUI:
+  * Support export of statistics to PDF
+  * Several small usability improvements
+
+  * Additionally, lots of false positives and bugs have been fixed
+    and several existing checks have been improved.
+
+  version 1.79
+  General changes:
+  * C++ code in C files is rejected now (use  *-language=c++ to
+    enforce checking the code as C++)
+  * Write function access type to XML dump
+  Checking improvements:
+  * Improved configuration extraction in preprocessor
+  * Improved accuracy of AST
+  * Improved template parsing
+  * Improved support for (STL) containers in SymbolDatabase
+  * Improved support for C++11's 'auto' type
+  * Experimental support for uninitialized variables in ValueFlow
+    analysis
+  * Added qt.cfg and sfml.cfg, improved several existing .cfg files
+  GUI:
+  * Use CFGDIR macro
+
+  * Additionally, lots of false positives and bugs have been fixed
+    and several existing checks have been improved.
+
+  version 1.78
+  General changes:
+  * Reduced memory usage by up to 10% by reducing size of token
+    list
+  New checks:
+  * Mismatching argument names between function declaration and
+    definition
+  * Detect classes which have a copy constructor but no copy
+    operator and vice versa
+  Checking improvements:
+  * Improved matching of overloaded functions
+  * Improved ValueType analysis, especially related to allocations
+    with "new" and C++11's "auto"
+  * Improved support for C++11 brace initialization
+  * Improved ValueFlow analysis
+  * Improved template parsing
+  * Improved detection of memory leaks
+  * Improved nullpointer checking when nullptr and NULL are used
+  * Detect array out of bounds across compilation units
+  * Extended windows.cfg, posix.cfg and std.cfg
+
+  * Additionally, lots of false positives and bugs have been fixed
+    and several existing checks have been improved.
+
+-------------------------------------------------------------------
+Tue Mar 21 10:28:21 UTC 2017 - mpluskal@suse.com
+
+- Use qmake macros
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Mar 21 08:09:22 UTC 2017 - fvogt@suse.com
+
+- Update to version 1.77:
+  * Added flag --cppcheck-build-dir to allow incremental analysis and inter-file checking
+  * Improved --project support for Visual Studio solutions
+  * Detect pointer overflow
+  * Detect usage of variable after std::move or std::forward
+  * Warn about number and char literals in boolean expressions
+  * Improved checking for variables modified but not used again
+  * Libraries: Added support to specify <returnValue>
+  * Improved ValueFlow, especially related to function return values and casts
+  * Improved simplification of Null values to allow more accurate checking
+  * Several improvements to windows.cfg, posix.cfg, gnu.cfg and std.cfg
+  * Reimplemented check for using iterators of mismatching containers... read more
+- Always build Qt5 GUI
+
+-------------------------------------------------------------------
+Sat Feb 20 18:58:43 UTC 2016 - crrodriguez@opensuse.org
+
+- Build the GUI against QT5 in newish products.
+
+-------------------------------------------------------------------
+Tue Sep 15 13:00:50 UTC 2015 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.70
+  * General changes:
+    - New version of .cfg file format, adding support for
+      namespaces and declaring several functions at once
+    - Support building x64 installer for Windows; Both x64 and x86
+      builds are now provided
+    - Warn about deprecated options --suppressions and
+      --exitcode-suppressions. They will be removed in future
+    - Added debugging option --debug-normal, which prints out debug
+      output before second stage simplification
+  * New checks:
+    - Warn about modifying string literals
+    - Detect declaration of variable length arrays with negative
+      size
+    - Warn about implicit type conversion from int to long
+    - Warn about redundant code in conditions like (y || (!y && z))
+    - Detect conditions with known result
+    - Race condition: non-interlocked access after
+      InterlockedDecrement()
+    - Detect unused 'goto' labels
+  * Removed checks:
+    - Do no longer warn about a bug in scanf implementation of
+      ancient glibc versions
+    - Multifile analysis (added in 1.69) has been removed because
+      it did not work
+    - Removed ExecutionPath checker, which has been superseeded by
+      ValueFlow analysis
+  * Improvements:
+    - Support hexadecimal floating point numbers (C99)
+    - Support [[deprecated]] (C++14)
+    - Improved handling of sizeof()
+    - Improved handling of reserved keywords
+    - Better handling of C declaration specifiers; support
+      complex/_Complex (C99)
+    - Better handling of ternary operator in ValueFlow analysis
+    - Lots of improvements to .cfg files, especially std.cfg, which
+      now supports namespace std
+    - Improved performance and memory usage of Preprocessor
+    - Improved performance of matchcompiler
+    - Reduced Disk IO when ignoring paths
+    - Removed several obsolete simplifications
+    - Added python addons: naming.py, threadsafety.py and cert.py
+  * GUI:
+    - Support printing
+    - Added item "Open containing folder" to context menu
+  * Additionally, lots of false positives and bugs have been fixed
+    and several existing checks have been improved.
+
+-------------------------------------------------------------------
+Fri May 15 13:48:34 UTC 2015 - Adam Mizerski <adam@mizerski.pl>
+
+- update do 1.69
+  * General changes:
+    - Added flag --platform=native, when it is used type sizes and
+      behaviour of host system are used
+    - Backward compatibility for Libary files is now working.
+      Future cppcheck versions will be able to use libraries
+      written for previous versions
+    - Windows 32 bit builds now set /LARGEADDRESSAWARE, so that
+      they can use up to 4 GiB
+  * New checks:
+    - Detect bad bitmask checks (usage of | where & should be used)
+    - Suggest usage of "explicit" for constructors with a single
+      parameter
+    - Suggest usage of make_shared/make_unique
+    - Warn about usage of malloc with auto_ptr
+    - Detect redundant pointer operations like &*ptr
+  * Improvements:
+    - Support std::array (C++11)
+    - Detect same expressions in both branches of a ternary
+      operator
+    - New <container>-tags in libraries to configure STL (and
+      similar) container types
+    - Several improvements to ValueFlow analysis (for example
+      support for default function arguments)
+    - Improved buffer overrun and memory leak checking
+    - Removed a bunch of redundant checking code
+    - Removed several simplifications
+    - Stronger matching of library functions
+    - Lots of additions to std.cfg and posix.cfg
+    - New library for Microsoft SAL (microsoft_sal.cfg)
+    - Improved C++11 template parsing (">>" as closing brackets,
+      variadic templates)
+    - Added statistics to htmlreport
+  * GUI:
+    - Fixed language selection
+
+-------------------------------------------------------------------
+Thu Jan  8 11:04:07 UTC 2015 - danny.al-gaaf@bisect.de
+
+- update to 1.68:
+  * New checks:
+    - Multifile checking for buffer overruns and uninitialized 
+      variables
+  * Improvements:
+    - Libraries are now able to contain platform specific types
+    - Improved handling of function overloads
+    - Improved handling of integer literal suffixes
+    - Improved stability of template parsing
+    - Improved accuracy of ValueFlow analysis
+    - Improved checking of pointer overflow
+    - Support noexcept(false)
+    - Support __attribute__((noreturn))
+    - A bunch of additions to several Libraries, especially 
+      posix.cfg and qt.cfg
+  * Additionally, lots of false positives and bugs have been fixed 
+    and several existing checks have been improved. 
+
+-------------------------------------------------------------------
+Wed Oct 22 05:00:02 UTC 2014 - danny.al-gaaf@bisect.de
+
+- update to 1.67:
+  * General changes:
+    - Library files have now a 'format' attribute. Format version 
+      1 is assumed by default
+    - Cppcheck does no longer abort checking if unhandled 
+      characters (Non-ASCII) are found
+  * New checks:
+    - Check for unused return values
+    - Detect shift by too many bits, signed integer overflow and 
+      dangerous sign conversion
+    - Recommend usage of expm1(), log1p(), erfc()
+    - Division by sizeof() as parameter to memset/memcpy/
+      memmove/etc. as they expect a size in bytes
+    - Several new va_arg related checks:
+    -- Wrong parameter passed to va_start()
+    -- Reference passed to va_start()
+    -- Missing va_end()
+    -- Using va_list before it is opened
+    -- Subsequent calls to va_start/va_copy()
+    - Initialization by itself in initializer list
+    - Dead pointer usage when pointer alias local variable that 
+      has gone out of scope
+  * Improvements:
+    - Support uniform initialization syntax (C++11)
+    - Much improvements to value flow analysis
+    - Improved AST creation (support placement new, C++-style 
+      casts, templates, operator new[], ...)
+    - Improved lambda support
+    - Support GCC extension __attriute__((used)) and MSVC 
+      extension __declspec(property)
+    - Better support for static member variables, inherited 
+      variables and namespaces
+    - Improved typedef support where multiple variables are 
+      declared at once
+    - Avoid checking code multiple times by calculating a checksum. 
+      Duplicate preprocessor configurations are eliminated by this.
+    - Support C++03/C 'auto' keyword
+    - HTML report: display 'verbose' message using clickable 
+      expandable divs
+  * Additionally, lots of false positives and bugs have been fixed 
+    and several existing checks have been improved.
+
+-------------------------------------------------------------------
+Mon Sep  1 21:03:35 UTC 2014 - danny.al-gaaf@bisect.de
+
+- update to 1.66:
+  * new checks added:
+    - Compare pointer with '\0'
+    - Assigning boolean expression to floating point variables
+  * Improvements:
+    - Much improved AST
+    - Much improved ValueFlow analysis
+    - ValueFlow and AST now used by much more checks, improving
+      checking accuracy and performance
+    - Checking for self assignment now supports more complex
+      expressions
+    - Returning references to literals or references to calculation 
+      results is detected
+    - Enhanced support for commutative operators in duplicate 
+      expression checking
+    - Improved template/enum parsing
+    - Much improved htmlreport
+    - Definition of POD types in .cfg files
+    - Definition of minsize for buffer arguments in .cfg files 
+      for buffer overflow checking
+    - Fixed handling of #error: Do not report them if -f and -D 
+      are used together
+    - New .cfg file for AVR platform
+    - Generate xml dump of AST/ValueFlow/SymbolDatabase/TokenList 
+      if --dump is given
+    - Improved performance in several cases
+
+-------------------------------------------------------------------
+Sun May 11 20:56:06 UTC 2014 - danny.al-gaaf@bisect.de
+
+- update to 1.65:
+  * General changes:
+    - Cppcheck requires a C++11 compiler supporting the common 
+      subset of features supported by GCC 4.4, Visual Studio 2010 
+      and Clang 2.9
+  * Improvements:
+    - Much improved support of complex combinations of function 
+      pointers, arrays and references
+    - Better handling of syntax errors
+    - Better detection of stack variables passed to free()
+    - Much improved value flow analysis
+    - More robust error detection in several checks due to usage 
+      of AST
+    - Better handling of unknown Macros in function declarations
+    - Allocation/Deallocation functions can be extend across 
+      different .cfg files
+    - Better handling of some C++11 language features like enum 
+      class, in-class member initializers
+    - Detect calling (std::)abs() with bool argument
+  * New checks:
+    - Check for noexcept and __attribute__((nothrow)) correctness
+    - Check for unhandled exceptions when exception specifiers 
+      are used
+    - Access to empty STL containers
+    - Repositioning operation on a file opened in append mode
+    - Find nested redundant if-statements (was experimental before)
+  * Additionally, a large number of false positives and crashs 
+    has been fixed. 
+
+-------------------------------------------------------------------
+Thu May  1 21:46:42 UTC 2014 - danny.al-gaaf@bisect.de
+
+- update to 1.64
+  * See http://sourceforge.net/p/cppcheck/news/ for changes.
+
+-------------------------------------------------------------------
+Mon Jan 13 09:05:19 UTC 2014 - adam@mizerski.pl
+
+- Bundle config files.
+
+-------------------------------------------------------------------
+Fri Jan 10 20:18:57 UTC 2014 - adam@mizerski.pl
+
+- update to 1.63
+ * See http://sourceforge.net/p/cppcheck/news/ for changes.
+- spec cleanups:
+ * Used format_spec_file service for general cleanup.
+ * Everything compiles with %optflags now.
+ * Added SRCDIR=build CFGDIR=cfg HAVE_RULES=yes options as suggested
+   in the readme.txt
+ * Added cppcheck.1 man page creation.
+ * Cleaned up BuildRequires tags.
+ * Added missing Requires: python* tags.
+ * Removed unneded "python ./setup.py install".
+ * Added COPYING to installed docs.
+ * Updated homepage URL.
+
+-------------------------------------------------------------------
+Thu Apr 11 09:30:47 UTC 2013 - dalgaaf@suse.de
+
+- update to 1.59:
+ * Commandline/Settings changes:
+   - New option to enable warnings but not style messages: 
+     --enable=warning
+   - Cppcheck used to skip includes where the header filename 
+     is enclosed in <>. You can now include these headers also by 
+     using -I. 
+ * New checks:
+   - New POSIX checks: pipe() buffer size, redundant calls of 
+     set/get user id, too big value passed to usleep(), buffer 
+     overflow when using write()
+   - Storing getc() return value in char variable and comparing 
+     to EOF.
+   - Detect redundant bitand operations
+   - Find suspicious equality comparisons like: if(a == 0) a == 1;
+   - Warn about using malloc() for classes containing virtual
+     methods, std::-objects or constructors
+   - Portability check that warns when using NULL as argument to 
+     variadic function. It has undefined behaviour on some 
+     implementations.
+ * Improvements:
+   - Improved lookup for functions and types
+   - Switched to TinyXml2 as XML library
+   - Improved checking for uninitialized struct members, 
+     variable scopes that can be reduced and unused functions
+ * GUI:
+   - Remember last path in open file dialog
+   - Added command line parameter to open a results file
+   - Bug in statistic calculation fixed
+
+-------------------------------------------------------------------
+Fri Feb  8 07:46:59 UTC 2013 - highwaystar.ru@gmail.com
+
+- update to 1.58
+ * Commandline/Settings changes:
+  - Added --include to the cppcheck command line client. This forces 
+    inclusion of the given file. This can for instance be used 
+    instead of --append and will then allow you to use #define etc also.
+  - The threads handling has been improved. Using -jN now works in 
+    windows also.
+
+ * Improvements:
+  - NULL pointers: Improved checking of default function 
+    argument values. 
+
+-------------------------------------------------------------------
+Wed Dec 26 04:11:57 UTC 2012 - mrdocs@opensuse.org
+
+- update to 1.57
+ * Many bug fixes and additions
+ * Now requires Qt 4.8.3+
+ * Complete versioned change log from 1.53-1.57:
+   https://sourceforge.net/news/?group_id=195752
+
+-------------------------------------------------------------------
+Sat Mar 10 20:10:56 CET 2012 - jslaby@suse.de
+
+- update to 1.53
+  * 1.53: improved existing checks to detect more errors
+  * 1.52: added new checks
+  * 1.51: added new checks and fixed many false positives and false
+    negatives
+
+-------------------------------------------------------------------
+Sun Aug 28 11:45:37 UTC 2011 - asn@cryptomilk.org
+
+- update to 1.50
+  * Check for std::auto_ptr misuse (related to strict ownership).
+  * Read array and then immediately check if the array index is
+    within limits.
+  * Assign pointer to int/long.
+  * Assign bool to pointer.
+  * Duplicate "break" statements in switch.
+  * Matching "if" and "else if" conditions when using bitwise and.
+  * Matching assigment and condition when using bitwise and test if
+    unsigned value is less than zero
+
+-------------------------------------------------------------------
+Mon Aug  8 03:54:42 UTC 2011 - mrdocs@opensuse.org
+- version bump to 1.49
+- full change log 
+  http://raw.github.com/danmar/cppcheck/master/Changelog 
+
+-------------------------------------------------------------------
+Mon Apr 11 08:46:59 UTC 2011 - asn@cryptomilk.org
+
+- update to 1.48
+
+-------------------------------------------------------------------
+Thu Jan  6 13:48:46 CET 2011 - asn@cynapses.org
+
+- Added a seperate package for the gui.
+- Added cppcheck-htmlreport.
+
+-------------------------------------------------------------------
+Sun Oct  3 22:58:13 UTC 2010 - adam@mizerski.pl
+
+- update to 1.45
+
+-------------------------------------------------------------------
+Sun Aug 22   17:03:39 UTC 2010 - mrdocs@opensuse.org
+
+- Updated to 1.44
+- take over maintership
+
+-------------------------------------------------------------------
+Tue Jun  1 21:04:39 UTC 2010 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.43
+
+-------------------------------------------------------------------
+Mon Oct 26 19:04:25 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.38
+
+-------------------------------------------------------------------
+Wed Sep 30 19:21:51 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.37
+
+-------------------------------------------------------------------
+Sat May 16 03:32:31 CEST 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.32
+
+-------------------------------------------------------------------
+Wed Apr 15 03:32:31 CEST 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.31
+
+-------------------------------------------------------------------
+Wed Mar 11 03:32:31 CEST 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.30
+
+-------------------------------------------------------------------
+Tue Feb 10 03:32:31 CEST 2009 - bitshuffler #suse@irc.freenode.org
+
+- Initial RPM

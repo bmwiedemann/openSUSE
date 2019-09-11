@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Wed Feb 18 17:23:39 UTC 2015 - schwab@linux-m68k.org
+
+- sgmltool-flex.patch: removed, flex has been fixed
+
+-------------------------------------------------------------------
+Mon Sep  9 09:33:08 UTC 2013 - werner@suse.de
+
+- Use kpsepath to determine texmf main location
+
+-------------------------------------------------------------------
+Wed Dec 12 04:34:42 UTC 2012 - nfbrown@suse.com
+
+- Add buildrequires for groff so that sgml2txt
+  works, and rationalize setting of CFLAGS.
+  In particular having a "\" line continuation
+  before a %configure macro probably doesn't
+  behave as expected.
+
+-------------------------------------------------------------------
+Mon Nov 19 09:06:57 UTC 2012 - idonmez@suse.com
+
+- Add sgmltool-flex.patch: yyleng must be size_t with new flex
+
+-------------------------------------------------------------------
+Thu Aug  2 12:42:50 UTC 2012 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+- Remove redundant tags/sections from specfile,
+  use %configure
+
+-------------------------------------------------------------------
+Mon Jul 30 15:06:54 UTC 2012 - werner@suse.de
+
+- Move styles where they belong to 
+- Require packages for sgml2latex
+- Use texlive infrastructure
+
+-------------------------------------------------------------------
+Mon Jul 30 14:26:29 UTC 2012 - werner@suse.de
+
+- Quote brackets of the babel language mapping otherwise the
+  sgml2latex tool ignores it 
+
+-------------------------------------------------------------------
+Tue Dec 15 20:24:31 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Thu Aug  7 11:15:53 CEST 2008 - ke@suse.de
+
+- Improve Perl requires.  Recommended by Staphan Kulow, reported by
+  Jan Willamowius [bnc#412525].
+
+-------------------------------------------------------------------
+Wed Apr 23 12:47:53 CEST 2008 - ro@suse.de
+
+- do not redefine "name" macro 
+
+-------------------------------------------------------------------
+Thu Mar 29 13:39:49 CEST 2007 - ke@suse.de
+
+- Add BuildRequires: flex.
+
+-------------------------------------------------------------------
+Sat May 27 23:08:52 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 10 16:40:01 CEST 2005 - ke@suse.de
+
+- Use -fno-strict-aliasing.
+- Add missing return value; thanks for debugging to Richard Guenther.
+
+-------------------------------------------------------------------
+Fri Jun 17 14:43:44 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Thu Apr 29 01:32:19 CEST 2004 - ro@suse.de
+
+- added missing return value (unreached code)
+
+-------------------------------------------------------------------
+Sat Jan 10 22:07:12 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Apr 23 10:07:18 CEST 2003 - coolo@suse.de
+
+- use more of that DESTDIR
+
+-------------------------------------------------------------------
+Tue Apr 22 15:53:40 CEST 2003 - coolo@suse.de
+
+- don't mess with broken Makefiles -> empty it before execution 
+
+-------------------------------------------------------------------
+Tue Apr 22 13:33:35 CEST 2003 - coolo@suse.de
+
+- generating docs through brute force
+
+-------------------------------------------------------------------
+Thu Apr 17 01:06:47 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon Apr  7 09:56:32 CEST 2003 - mmj@suse.de
+
+- The expand syntax changed with new coreutils.
+
+-------------------------------------------------------------------
+Mon Nov 11 11:30:48 CET 2002 - ro@suse.de
+
+- adapted requires 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <sp> to <opensp>
+- changed neededforbuild <sp-devel> to <>
+
+-------------------------------------------------------------------
+Thu Jun 20 14:15:00 CEST 2002 - ke@suse.de
+
+- sgmltool-man-entities.diff: Try to map entities also for manpage
+  output; reported by Michal Svec [# 16536].
+- enable %clean section.
+
+-------------------------------------------------------------------
+Fri Mar  8 13:36:28 CET 2002 - kukuk@suse.de
+
+- Add /usr/lib/entity-map to filelist
+
+-------------------------------------------------------------------
+Mon Aug 13 15:51:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sp_libs> to <sp-devel>
+
+-------------------------------------------------------------------
+Thu Apr 26 09:53:43 CEST 2001 - ke@suse.de
+
+- Apply tools-temp-vuln-1.0.9.diff to fix a tmp file vulnerability
+  (patch provided by Sebastian Krahmer) [#6826].
+
+-------------------------------------------------------------------
+Thu Jan 27 18:51:56 CET 2000 - ke@suse.de
+
+- add more documentation lnd-1.0.tar.bz2 (thanks to mike for hint).
+- use macros: %{name}, %{version}, %{_mandir}.
+- ./configure -> %build section.
+- add group tag.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Jul  9 17:21:25 MEST 1999 - bs@suse.de
+
+- fixed path for perl module
+
+-------------------------------------------------------------------
+Tue Jun 29 14:55:22 MEST 1999 - ke@suse.de
+
+- babel now will know the language as an option (werner).
+
+-------------------------------------------------------------------
+Tue Apr 27 01:13:09 MEST 1999 - ro@suse.de
+
+- compiler fix: stdout is non constant
+
+-------------------------------------------------------------------
+Thu Nov 26 11:36:00 MET 1998 - ke@suse.de
+
+- update: version 1.0.9 (bugfix release).
+- mv the perl module to the 5.00502 dir hierarchy (hack).
+
+-------------------------------------------------------------------
+Wed Nov 18 01:12:54 MET 1998 - ro@suse.de
+
+- adapt path to perl 5.00502
+
+-------------------------------------------------------------------
+Mon Nov  9 18:04:04 MET 1998 - ro@suse.de
+
+- added sp_libs to neededforbuild
+
+-------------------------------------------------------------------
+Fri Oct 16 11:37:49 MEST 1998 - ke@suse.de
+
+- update: version 1.0.8 (bugfix release).
+
+-------------------------------------------------------------------
+Sun Jun 28 14:22:15 MEST 1998 - ke@suse.de
+
+- update: version 1.0.7 (bugfix release).
+- remove jade_dsl from neededforbuild.
+
+-------------------------------------------------------------------
+Mon Mar 23 17:08:49 MET 1998 - bs@suse.de
+
+- added sp to neededforbuild
+
+-------------------------------------------------------------------
+Fri Mar  6 15:30:56 MET 1998 - ke@suse.de
+
+- update: version 1.0.5.
+
+-------------------------------------------------------------------
+Sat Feb 28 15:25:47 MET 1998 - bs@suse.de
+
+- deleted texhash stuff (done by tetex package now)
+
+-------------------------------------------------------------------
+Sun Feb 15 11:35:18 MET 1998 - ke@suse.de
+
+- update: version 1.0.4.
+- simplify file list.
+
+-------------------------------------------------------------------
+Tue Jan 13 17:11:27 MET 1998 - ke@suse.de
+
+- update: version 1.0.3
+
+-------------------------------------------------------------------
+Wed Nov 19 14:25:02 MET 1997 - ke@suse.de
+
+- provide %post and %postun script to maintain /var/texfonts/ls-R.
+
+-------------------------------------------------------------------
+Mon Nov 17 11:20:22 MET 1997 - ke@suse.de
+
+- initial package: version 0.99.20.
+

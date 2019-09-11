@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sun Jun  5 00:00:00 UTC 2016 - fwdsbs.to.11df@xoxy.net
+
+- added use_net40dir_for_pcfile_new patch:
+ * fixed incorrect WindowsBase.dll path for mono 4.4.0 and up
+
+-------------------------------------------------------------------
+Tue May  5 15:00:00 UTC 2015 - fwdsbs.to.11df@xoxy.net
+
+- fixed build with mono 4:
+  dmcs_net40_build.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 16:26:44 UTC 2014 - dimstar@opensuse.org
+
+- 0001-UIAutomationClient-AutomationElement.FromLocalProvid.patch:
+  Update to ignore warning 0067 during build.
+
+-------------------------------------------------------------------
+Mon Dec 10 13:28:14 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2.1 release:
+  * bxc#628639 - Fedora: The control can't be found by using 
+    FindFirst(app, TreeScope.Descendants, condition) method
+  * bxc#624236 - Fail to launch KeePass.exe
+  * bxc#625814 - Segmentation fault in Fedora12 when the application
+    have toolbarbutton control
+  * bxc#623809 - The at-spi2 will hang up the new launched dialog
+  * bxc#628639 - Fedora: The control can't be found by using 
+    FindFirst(app, TreeScope.Descendants, condition) method
+  * bxc#628996 - Fedora: The pattern of slider is not implemented yet.
+  * bxc#625814 - Segmentation fault in Fedora12 when the application 
+    have toolbarbutton control
+- Patchs added: desciption on specfile:
+  * 0001-UIAutomationClient-AutomationElement.FromLocalProvid.patch
+  * avoid_obsolete_security_requests 
+  * use_specific_libX11_soname 
+  * use_net40dir_for_pcfile
+- Update mono-uia-mono-2.8.patch to work with 2.1 release:
+  mono-uia-2.1-mono-2.8.patch 
+
+-------------------------------------------------------------------
+Wed Feb 23 09:00:31 UTC 2011 - coolo@novell.com
+
+- do not package winfxcore, it's provided by mono-core
+
+-------------------------------------------------------------------
+Tue Feb 22 23:20:50 UTC 2011 - ro@suse.de
+
+- add some hunks of the "fix build with mono-2.8" patches from GIT 
+
+-------------------------------------------------------------------
+Mon Apr  5 17:40:49 UTC 2010 - sshaw@decriptor.com
+
+- Updated to the 2.0.2 release
+
+-------------------------------------------------------------------
+Tue Dec  1 02:08:06 UTC 2009 - sshaw@decriptor.com
+
+- Adding Client and bug fixes 
+
+-------------------------------------------------------------------
+Wed Jul  1 17:27:01 CEST 2009 - sshaw@decriptor.com
+
+- Initial 1.0 package 
+

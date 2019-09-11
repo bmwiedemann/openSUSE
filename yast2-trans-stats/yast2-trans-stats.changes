@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Mar 19 13:48:17 CET 2010 - ke@suse.de
+
+- Increase version number.
+
+-------------------------------------------------------------------
+Sun Jul 15 00:35:57 CEST 2007 - lrupp@suse.de
+
+- added /usr/lib/YaST2 to the package to avoid huge dependencies
+
+-------------------------------------------------------------------
+Fri Jul 13 11:04:09 CEST 2007 - ke@suse.de
+
+- Make it depended on yast2-trans-allpacks only.
+
+-------------------------------------------------------------------
+Mon Mar 26 14:20:05 CEST 2007 - ke@suse.de
+
+- Set BuildIgnore: tomcat5; thanks to Andreas Jaeger.
+
+-------------------------------------------------------------------
+Mon Jan 15 16:08:54 CET 2007 - ke@suse.de
+
+- Set BuildIgnore: java-sdk-1.5.0 java-devel
+
+-------------------------------------------------------------------
+Wed Jan 25 21:50:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue May  3 01:59:44 CEST 2005 - ro@suse.de
+
+- remove yast2-schema from nfb to break cycle 
+
+-------------------------------------------------------------------
+Wed Mar 23 08:59:49 CET 2005 - ro@suse.de
+
+- remove yast2-build-test from nfb to break cycle 
+
+-------------------------------------------------------------------
+Fri Feb 18 15:00:20 CET 2005 - ke@suse.de
+
+- Init package.
+
+

@@ -1,0 +1,26 @@
+https://gitlab.com/surfraw/Surfraw/merge_requests/2
+
+commit b5c3922105ccf5fbfddb9819daf2e662827f6d2c
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Mar 30 04:29:22 2018 +0200
+
+    Use ChangeLog date instead of build date
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    
+    Without this patch, surfraw.lsm differed between builds.
+
+Index: surfraw-2.3.0/configure
+===================================================================
+--- surfraw-2.3.0.orig/configure
++++ surfraw-2.3.0/configure
+@@ -2504,7 +2504,7 @@ fi
+ 
+ 
+ 
+-ISODATE=`date +%Y-%m-%d`
++ISODATE=`date -u -r ChangeLog +%Y-%m-%d`
+ 
+ 
+ 

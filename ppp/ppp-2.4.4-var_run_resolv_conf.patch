@@ -1,0 +1,68 @@
+--- Changes-2.3
++++ Changes-2.3
+@@ -262,10 +262,10 @@
+ 
+ * Added new option `usepeerdns', thanks to Nick Walker
+   <nickwalker@email.com>.  If the peer supplies DNS addresses, these
+-  will be written to /etc/ppp/resolv.conf.  The ip-up script can then
+-  be used to add these addresses to /etc/resolv.conf if desired (see
+-  the ip-up.local.add and ip-down.local.add files in the scripts
+-  directory).
++  will be written to /var/run/ppp_resolv.conf.$INTERFACE_NAME.
++  The ip-up script can then be used to add these addresses to
++  /etc/resolv.conf if desired (see the ip-up.local.add and
++  ip-down.local.add files in the scripts directory).
+ 
+ * The Solaris ppp driver should now work correctly on SMP systems.
+ 
+--- pppd/ipcp.c
++++ pppd/ipcp.c
+@@ -2041,10 +2041,13 @@
+     u_int32_t peerdns1, peerdns2;
+ {
+     FILE *f;
++    char rcfilename[MAXIFNAMELEN];
+ 
+-    f = fopen(_PATH_RESOLV, "w");
++    slprintf(rcfilename, sizeof(rcfilename), "%s.%s",
++                 _PATH_RESOLV, ifname);
++    f = fopen(rcfilename, "w");
+     if (f == NULL) {
+-	error("Failed to create %s: %m", _PATH_RESOLV);
++	error("Failed to create %s: %m", rcfilename);
+ 	return;
+     }
+ 
+@@ -2055,7 +2058,7 @@
+ 	fprintf(f, "nameserver %s\n", ip_ntoa(peerdns2));
+ 
+     if (ferror(f))
+-	error("Write failed to %s: %m", _PATH_RESOLV);
++	error("Write failed to %s: %m", rcfilename);
+ 
+     fclose(f);
+ }
+--- pppd/pathnames.h
++++ pppd/pathnames.h
+@@ -30,7 +30,7 @@
+ #define _PATH_TTYOPT	 _ROOT_PATH "/etc/ppp/options."
+ #define _PATH_CONNERRS	 _ROOT_PATH "/etc/ppp/connect-errors"
+ #define _PATH_PEERFILES	 _ROOT_PATH "/etc/ppp/peers/"
+-#define _PATH_RESOLV	 _ROOT_PATH "/etc/ppp/resolv.conf"
++#define _PATH_RESOLV	 _ROOT_PATH "/var/run/ppp_resolv.conf"
+ 
+ #define _PATH_USEROPT	 ".ppprc"
+ #define	_PATH_PSEUDONYM	 ".ppp_pseudonym"
+--- pppd/pppd.8
++++ pppd/pppd.8
+@@ -1062,8 +1062,8 @@
+ by the peer (if any) are passed to the /etc/ppp/ip\-up script in the
+ environment variables DNS1 and DNS2, and the environment variable
+ USEPEERDNS will be set to 1.  In addition, pppd will create an
+-/etc/ppp/resolv.conf file containing one or two nameserver lines with
+-the address(es) supplied by the peer.
++/var/run/ppp_resolv.conf.$INTERFACE file containing one or two nameserver
++lines with the address(es) supplied by the peer.
+ .TP
+ .B user \fIname
+ Sets the name used for authenticating the local system to the peer to

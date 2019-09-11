@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Jul 21 17:04:41 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.7.4:
+ - No changelog available.
+- Drop test-sys-executable.patch, merged upstream.
+
+-------------------------------------------------------------------
+Sat Mar  2 14:11:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rebase the patch to the current git state
+
+-------------------------------------------------------------------
+Sat Mar  2 02:47:44 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add support for Python <3.5, using upstream commit as
+  test-sys-executable.patch to fix the tests, replacing custom sed.
+- Remove unnecessary buid dependency on pytest and pytest-xdist
+
+-------------------------------------------------------------------
+Thu Feb 28 09:01:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the old tarball
+
+-------------------------------------------------------------------
+Thu Feb 28 04:57:58 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace test_modules.tar.gz with python-testsuite
+- Remove fix_tests.patch which is half fixing test_modules.tar.gz,
+  and the other half is replaced with a less brittle sed.
+- Remove unnecessary build dependencies
+- Update to 3.7.2
+  * Pass *args and **kwargs to superclass in Generic.__new__
+  * Fix for issue #524
+  * Fix typing_extensions to support PEP 560
+  * Add annotations to NamedTuple children __new__ constructors
+  * Add missing 'NoReturn' to __all__ in typing.py
+  * Backport Generic.__new__ fix
+  * Fix IO.closed to be property
+  * Add Final to typing_extensions
+  * Fix instance/subclass checks of functions against runtime protocols
+  * Add Literal[...] types to typing_extensions
+
+-------------------------------------------------------------------
+Tue Oct 23 10:24:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Initial effort to package typing_extensions-3.6.6

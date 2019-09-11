@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Nov  2 07:08:27 UTC 2017 - coolo@suse.com
+
+- updated to 0.902
+   see /usr/share/doc/packages/perl-XML-Atom-SimpleFeed/Changes
+
+  0.902 Thu 02 Nov 2017
+  	- Proper packaging (mea máxima culpa)
+  	- No code changes
+  
+  0.901 Wed 01 Nov 2017
+  	- Support for Time::Date objects in date constructs
+
+-------------------------------------------------------------------
+Wed Sep 23 09:18:53 UTC 2015 - coolo@suse.com
+
+- updated to 0.900
+   see /usr/share/doc/packages/perl-XML-Atom-SimpleFeed/Changes
+
+  0.900 Tue 22 Sep 2015
+  	- Support for arbitrary XML encodings
+  
+  	[INCOMPATIBLE CHANGE]
+  	- Removal of ->no_generator method.
+  
+  	  To suppress the default generator tag, specify an undef generator.
+  
+  0.863 Thu 10 Sep 2015
+  	[INCOMPATIBLE CHANGE]
+  	- Datetime object support now via ->epoch method instead of ->strftime.
+  
+  	  Despite the fact that this is an incompatible change, it should actually
+  	  be a non-event for almost all users, because every datetime module with
+  	  a ->strftime method that I could find on CPAN also has an ->epoch method
+  	  (as well as vice versa).
+  
+  	  However, the ->strftime methods of many modules are (subtly or badly)
+  	  broken in the face of timezones, even as their ->epoch methods work right
+  	  (or else are broken subtly enough to escape notice).
+  
+  	  But if you have written your own datetime class, and it has a ->strftime
+  	  method but not an ->epoch method, and you pass an instance of your class
+  	  to an instance of this module, then the feeds you generate that way will
+  	  now be broken.
+  
+  	  On balance, I believe that this change will unbreak vastly more code than
+  	  it breaks. Therefore I decided to switch.
+  
+  0.862 Tue 08 Sep 2015
+  	- Correct RFC 3339 formatting for datetime objects
+  	  (Thanks, virii)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:39:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.861
+   see /usr/share/doc/packages/perl-XML-Atom-SimpleFeed/Changes
+
+-------------------------------------------------------------------
+Mon Oct 10 05:37:39 UTC 2011 - coolo@suse.com
+
+- initial package 0.86
+    * created by cpanspec 1.78.06
+

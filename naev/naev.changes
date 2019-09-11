@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Sat Jul 22 11:17:19 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.7.0
+  * New missions
+  * Initial asteroids support
+  * Initial fleet formation support
+  * Fixed screen scaling
+  * Mission fixes
+  * Lua backend unified
+  * Lua console tab completion
+  * Generalized claim system
+- Enable SDL2 mixer support
+- Install icons
+- Add desktop/icon macros
+
+-------------------------------------------------------------------
+Sat Feb 18 13:28:13 UTC 2017 - mailaender@opensuse.org
+
+- Validate through https://en.opensuse.org/SourceUrls
+- Use upstream supplied make install rules, desktop shortcut and icon
+- Install AppData for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Mon Nov 21 01:29:59 UTC 2016 - jengelh@inai.de
+
+- Update summary and description for style, and trim redundant
+  words.
+- Drop non-SUSE parts, there are no targets configured for them
+  in the develprj.
+
+-------------------------------------------------------------------
+Thu Nov 12 20:00:00 MST 2015 - buckyballreaction@gmail.com
+
+- naev 0.6.1
+  * Improved AI (nenau)
+  * New Misisons (onpon4, nenau)
+  * Changed how action loss is handled (onpon4)
+  * Lua AI rewrite (Ian D. Scott)
+  * Misc fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Mar 17 20:00:00 MST 2015 - dbuck@novell.com
+
+- naev 0.6.0
+  * Features
+    - Core slots system
+      * Ships must have a core system, engine, and hull equipped to take off
+      * Ships’ attributes are mostly defined by their cores
+      * Total of 95 core outfits
+    - Naev’s data is now stored in a zip file, making contributing easier than ever
+    - Greatly improved SDL2 support (now default)
+      * Support for window resizing and toggling fullscreen without restarting
+      * Drag-and-drop ndata loading when ndata can’t be found
+      * Fake fullscreen is used by default to avoid turning off other monitors
+      * Fullscreen toggling via keybind (F11 by default)
+    - Improved keyboard-and-mouse gameplay, with an optional WASD layout
+    - Autonav improvements
+      * Autonav resets time accel instead of aborting (onpon4)
+      * Improved autonav behaviour when pushed off of jump points
+    - Activated outfits get hotkeys by default
+    - Fuel is now provided for free at spaceports
+    - Auto-braking (Ctrl-S by default) in lieu of a dedicated Active Cooldown key
+    - Ships only need to be spaceworthy when taking off (Avihay)
+    - Added on-screen “PAUSED” indicator (can be disabled in conf.lua)
+    - Local system maps can be bought from the landing screen
+  * Content
+    - Greatly expanded galaxy
+      * 150+ new systems and 500+ new planets
+      * Za’lek faction added (Viruk and Lineth)
+      * Expanded pirate space (Lukc)
+    - New missions
+      * Added 6 repeatable missions
+      * Added 10 scripted missions
+      * Greater mission availability in Soromid space (BSoD-naev)
+      * New Sirius mission string, “Heretic” (l0k1)
+      * Several repeatable pirate missions (Lukc)
+      * New FLF mission and two neutral missions by brognam
+    - 3 new songs by Askyel and saturn6
+    - Innumerable typo and content fixes by PhoenixRiver, perey, m1foley, ids1024, and others
+    - Cargo missions are longer-range (up to 6 jumps)
+    - Added hidden jumps, currently only discoverable via special maps
+  * Technical
+    - Error logs are now stored to help with issue reporting
+      * Windows: %APPDATA\naev\logs\
+      * OS X: ~/Library/Application Support/naev/logs/
+      * Linux: ~/.local/share/naev/logs/
+    - Fixed save corruption issues on Windows
+    - Dynamic news support for missions and events (BariumBlue)
+    - See the news Lua API module for more information
+
+-------------------------------------------------------------------
+Sun Apr 15 12:00:00 MST 2012 - dbuck@novell.com
+
+- naev 0.5.3
+  * Portable mode, allowing for Naev’s user data files (saves, screenshots, etc.) to be placed in arbitrary locations
+  * Afterburners now gradually overheat and have no fixed duration
+  * Active cooldown allows for rapid ship cooling
+  * Many typo fixes in missions and lore
+  * Fixed several rare crashes
+
+-------------------------------------------------------------------
+Thu Mar 26 12:00:00 MST 2012 - dbuck@novell.com
+
+- naev 0.5.2
+  * New events and missions
+  * New outfits
+  * House Soromid now has a logo
+  * More ways of mapping the universe
+  * Disabling damage leaks through shields
+  * conf.lua-tweakable font sizes for accessibility
+  * Bug fixes
+ 
+-------------------------------------------------------------------
+Thu Mar 01 22:00:00 MST 2012 - dbuck@novell.com
+
+- naev 0.5.1
+  * Many new missions, and improvements for older ones.
+  * Soromid faction added.
+    - Full array of ships for the faction.
+    - Populated northern area of the galaxy.
+  * New disable mechanic
+    - Disabling damage is separate from regular damage.
+    - Player ships can now be disabled, boarded and looted!
+    - Disabled ships will recover automatically over time.
+  * Jump points, planets and stations must now be discovered through exploration.
+  * Maps now reveal fixed routes, mostly between major factions’ space.
+  * Fancier map search shows details about found items.
+  * New planet and station graphics.
+  * Large AI ships now have greater weapons diversity.
+  * General usability improvements for low resolutions.
+  * Missiles lock on gradually, depending on electronic warfare values.
+  * The tutorial has been substantially expanded and reworked.
+  * Active outfits allow for powerful, temporary abilities to be toggled.
+  * New key bindings make the it possible to use the keyboard most of the time.
+    - Autonav is now more flexible and can travel to planets in addition to systems.
+    - Navigate the spaceport with keytips.
+  * Improved faction reputation logic.
+    - Factions now have ceilings for reputation gained through killing.
+    - Missions are necessary to elevate your standing beyond this.
+    - Completing major missions can increase the reputation ceilings.
+  * Landing permissions enhanced beyond the simple boolean (hostile or friendly) model.
+    - Landing at military and other special assets typically requires high reputation with a faction.
+    - When you don’t meet the required standing but aren’t hostile, assets are marked ‘restricted’.
+  * Overhaul of spaceport bar NPCs. NPCs will now often say meaningful things and can even help the player out by hinting at missions or updating his galaxy map.
+  * Complete ship health rebalancing.
+  * Store user data in XDG-compliant locations (*nix-only)
+  * Misc. bug fixes
+  * Faction standing and land permission code moved to Lua.
+    - Reputation is now handled with per-faction scripts.
+    - Special assets can have unique landing code (e.g. requiring a particular mission to be done)
+  * Large amount of Lua API additions and changes.
+  * Greatly enhanced the in-game universe editor.
+  * XML data (ships, planets, etc.) has been split into individual files to allow greater modularity.
+  * Various faction specific scripts have been reorganized to be in a more logical location, and these script have been tied closer to the master faction definition.
+  * Generally less crash-prone when loading corrupt data.
+  * Misc. bug fixes
+
+-------------------------------------------------------------------
+Thu Dec 08 14:00:00 UTC 2011 - dbuck@novell.com
+
+- Fix building on openSUSE 12.1
+- Some SPEC file clean-up

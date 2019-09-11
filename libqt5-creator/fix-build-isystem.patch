@@ -1,0 +1,19 @@
+From: Fabian Vogt <fvogt@suse.com>
+Subject: Fix build by not appending -isystem /usr/include
+References: QTCREATORBUG-18848
+
+-isystem /usr/include breaks gcc-6.0+ (RESOLVED WONTFIX) so work around that
+by not using it. llvm is installed in /usr/include anyway here.
+
+Index: qt-creator-opensource-src-4.4.0/src/tools/clangbackend/clangbackend.pro
+===================================================================
+--- qt-creator-opensource-src-4.4.0.orig/src/tools/clangbackend/clangbackend.pro
++++ qt-creator-opensource-src-4.4.0/src/tools/clangbackend/clangbackend.pro
+@@ -10,7 +10,6 @@ QT += core network
+ QT -= gui
+ 
+ LIBS += $$LIBCLANG_LIBS
+-INCLUDEPATH += $$LLVM_INCLUDEPATH
+ 
+ SOURCES += clangbackendmain.cpp
+ 

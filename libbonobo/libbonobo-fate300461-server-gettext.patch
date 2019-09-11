@@ -1,0 +1,82 @@
+Index: libbonobo-2.23.0/activation-server/object-directory-load.c
+===================================================================
+--- libbonobo-2.23.0.orig/activation-server/object-directory-load.c
++++ libbonobo-2.23.0/activation-server/object-directory-load.c
+@@ -133,6 +133,7 @@ parse_oaf_server_attrs (ParseInfo      *
+         const char *type = NULL;
+         const char *location = NULL;
+         const char *att, *val;
++        const char *domain = NULL;
+         char *error;
+         int i = 0;
+ 
+@@ -152,6 +153,8 @@ parse_oaf_server_attrs (ParseInfo      *
+                                 type = val;
+                         else if (!location && !strcmp (att, "location"))
+                                 location = val;
++                        else if (!domain && ((!strcmp (att, "suse-gettext-domain"))))
++                                domain = val;
+                 }
+                 
+         } while (att && val);
+@@ -202,7 +205,7 @@ parse_oaf_server_attrs (ParseInfo      *
+         info->cur_server->location_info = CORBA_string_dup (location);
+         info->cur_server->hostname = CORBA_string_dup (info->host);
+         info->cur_server->username = CORBA_string_dup (g_get_user_name ());
+-        info->cur_server->domain = CORBA_string_dup ("unused");
++        info->cur_server->domain = CORBA_string_dup (domain ?  domain : "");
+ 
+ #ifdef G_OS_WIN32
+         if (!strcmp (type, "exe") || !strcmp (type, "shlib"))
+Index: libbonobo-2.23.0/bonobo-activation/bonobo-activation-server-info.c
+===================================================================
+--- libbonobo-2.23.0.orig/bonobo-activation/bonobo-activation-server-info.c
++++ libbonobo-2.23.0/bonobo-activation/bonobo-activation-server-info.c
+@@ -29,6 +29,7 @@
+ #include <bonobo-activation/bonobo-activation-server-info.h>
+ 
+ #include <string.h>
++#include <libintl.h>
+ 
+ /**
+  * bonobo_server_info_prop_find:
+@@ -74,6 +75,12 @@ bonobo_server_info_prop_lookup (Bonobo_S
+         char *prop_name_buf;
+                      
+ 	if (i18n_languages) {
++		const char *msg_locale;
++		gboolean    try_gettext;
++
++		msg_locale = setlocale (LC_MESSAGES, NULL);
++		try_gettext = msg_locale != NULL && server->domain && *server->domain;
++
+ 		for (cur = i18n_languages; cur; cur = cur->next) {
+                         prop_name_buf = g_strdup_printf ("%s-%s", prop_name, (char *) cur->data);
+ 
+@@ -82,6 +89,26 @@ bonobo_server_info_prop_lookup (Bonobo_S
+ 
+ 			if (retval)
+ 				return retval;
++
++			/* if there's no inline translation for this language,
++			 * try gettext if the language is the current locale */
++			if (try_gettext && cur->data && strcmp ((char *) cur->data, msg_locale) == 0) {
++				const char *value = bonobo_server_info_prop_lookup (server, prop_name, NULL);
++				if (value && *value) {
++					const char *translated_value;
++
++					translated_value = dgettext (server->domain, value);
++
++					if (translated_value != value) {
++						if (!bind_textdomain_codeset (server->domain, NULL))
++							/* this is a small leak, but oh well,
++							 * it shouldn't happen that often */
++							translated_value = g_locale_to_utf8 (translated_value, -1, NULL, NULL, NULL);
++
++						return translated_value;
++					}
++				}
++			}
+ 		}
+ 	} 
+ 

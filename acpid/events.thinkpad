@@ -1,0 +1,5 @@
+# forward acpi events to the thinkpad handler (bluetooth etc.)
+
+event=ibm/.*
+action=/usr/lib/acpid/thinkpad_handler "%e"
+

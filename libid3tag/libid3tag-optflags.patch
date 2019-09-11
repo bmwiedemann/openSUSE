@@ -1,0 +1,20 @@
+--- configure.ac
++++ configure.ac
+@@ -17,7 +17,7 @@
+ dnl along with this program; if not, write to the Free Software
+ dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ dnl
+-AC_REVISION([$Id: configure.ac,v 1.12 2004/01/23 23:22:46 rob Exp $])dnl
++AC_REVISION([$Id: configure.ac,v 1.1 2006/10/31 09:26:19 meissner Exp meissner $])dnl
+ 
+ dnl Process this file with autoconf to produce a configure script.
+ 
+@@ -107,7 +107,7 @@
+ 	    shift
+ 	    ;;
+ 	-O*|-f*)
+-	    optimize="$1"
++	    optimize="$optimize $1"
+ 	    shift
+ 	    ;;
+ 	*)

@@ -1,0 +1,40 @@
+Index: ParaView-v5.5.0/VTK/ThirdParty/netcdf/vtknetcdf/libdispatch/derror.c
+===================================================================
+--- ParaView-v5.5.0.orig/VTK/ThirdParty/netcdf/vtknetcdf/libdispatch/derror.c
++++ ParaView-v5.5.0/VTK/ThirdParty/netcdf/vtknetcdf/libdispatch/derror.c
+@@ -13,7 +13,7 @@
+ #endif
+ 
+ /* Tell the user the version of netCDF. */
+-static const char nc_libvers[] = PACKAGE_VERSION " of "__DATE__" "__TIME__" $";
++static const char nc_libvers[] = PACKAGE_VERSION;
+ 
+ /**
+ \defgroup lib_version Library Version
+
+Index: ParaView-v5.5.0/Plugins/AnalyzeNIfTIReaderWriter/vtknifti1_io.cxx
+===================================================================
+--- ParaView-v5.5.0.orig/Plugins/AnalyzeNIfTIReaderWriter/vtknifti1_io.cxx
++++ ParaView-v5.5.0/Plugins/AnalyzeNIfTIReaderWriter/vtknifti1_io.cxx
+@@ -438,7 +438,7 @@ void vtknifti1_io::nifti_disp_lib_hist(
+ *//*--------------------------------------------------------------------*/
+ void vtknifti1_io::nifti_disp_lib_version( void )
+ {
+-   printf("%s, compiled %s\n", gni_version, __DATE__);
++   printf("%s\n", gni_version);
+ }
+ 
+ 
+Index: ParaView-v5.5.0/Plugins/CDIReader/cdilib.c
+===================================================================
+--- ParaView-v5.5.0.orig/Plugins/CDIReader/cdilib.c
++++ ParaView-v5.5.0/Plugins/CDIReader/cdilib.c
+@@ -5274,7 +5274,7 @@ static void file_table_print(void);
+ #define LIBVERSION 1.8.2
+ #define XSTRING(x) #x
+ #define STRING(x) XSTRING(x)
+-static const char file_libvers[] = STRING(LIBVERSION) " of " __DATE__ " " __TIME__;
++static const char file_libvers[] = STRING(LIBVERSION);
+ typedef struct _filePtrToIdx {
+   int idx;
+   bfile_t *ptr;

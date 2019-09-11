@@ -1,0 +1,11 @@
+--- translations/CMakeLists.txt.orig	2017-08-01 00:15:09.325243508 +0200
++++ translations/CMakeLists.txt	2017-08-01 00:15:09.357242950 +0200
+@@ -4,7 +4,7 @@
+     list(APPEND CANTATA_TRANS "${TRANS}")
+ endforeach ()
+ 
+-find_program(LRELEASE_EXECUTABLE lrelease)
++find_program(LRELEASE_EXECUTABLE lrelease-qt5)
+ 
+ if (LRELEASE_EXECUTABLE)
+     set(catalogname cantata)

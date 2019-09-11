@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Thu Feb  4 14:46:30 UTC 2016 - dimstar@opensuse.org
+
+- Add transmageddon-appdata-prjgroup.patch: Change project_group
+  in AppData file from GStreamer to GNOME. GStreamer is not a valid
+  group. Appstream-builder substitutes to GNOME here based on the
+  fact that transmageddon lives in git.gnome.org and uses bgo.
+
+-------------------------------------------------------------------
+Sun Nov  9 11:44:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.5:
+  + Fix bug stopping video only files from working properly.
+  + Fix bug when trying to drop the audio track from a file.
+- Changes from version 1.4:
+  + Fix audio encoding bug.
+  + Fix Apppdata information.
+- Drop transmageddon-gtkstock-deprecated.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug  9 13:11:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.3:
+  + Fix embarassing bug where I had turned off Vaapi decoding by
+    mistake.
+- Changes from version 1.2:
+  + Fix bug with use of H264 encoder without multipass support, like
+    the VAAPI one
+  + Make VAAPI usage reliable
+  + Bring back 'xvid' video codec (it is actually just a profile of
+    MPEG4)
+  + Small UI improvements
+  + Fix a gazillion little bugs, including various threading
+    issues.
+- Changes from version 1.1:
+  + Fixed bug in missing plugin code.
+  + Changed timestamp format for better sorting.
+  + Fixed bug causing MPEG4 Part 2 to be listed as just MPEG Video
+    in UI.
+- Changes from version 1.0:
+  + Added support for setting language of stream.
+  + Added support for handling multiple audio streams.
+  + Added support for DVD ripping.
+  + Switched to new icon designed.
+  + Added appdata for GNOME Software and similar.
+  + Add VP9 support.
+- Rebase transmageddon-gtk3.patch.
+- Add transmageddon-gtkstock-deprecated.patch: Fix startup of
+  transmageddon on GNOME 3.13, where gnome-icon-theme, and as a
+  result, GTK Stock icons are deprecated.
+
+-------------------------------------------------------------------
+Thu Aug  8 09:26:42 UTC 2013 - dimstar@opensuse.org
+
+- Add transmageddon-gtk3.patch: require GTK 3.0 from the python
+  code. We know we can't use GTK2, as introspection support is not
+  really given there.
+
+-------------------------------------------------------------------
+Thu Aug  8 08:05:57 UTC 2013 - dimstar@opensuse.org
+
+- Add python3-gobject Requires: as transmageddon makes use of
+  gobject-introspection, we need to pull in the python gi loader.
+
+-------------------------------------------------------------------
+Wed Oct 10 19:59:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.25:
+  + Fixed critical bug for remuxing.
+
+-------------------------------------------------------------------
+Mon Oct  1 19:05:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.24:
+  + Switched to Python 3.
+  + Improved handling of missing codecs.
+- Changes from version 0.23:
+  + Switched to GTK3.
+  + Switched to GStreamer 1.0.
+  + Added notifications once file is finished.
+  + Re-enabled support for multipass encoding.
+- Add gobect-introspecton BuildRequires: needed so we can parse
+  the source code and produce typelib()-Requires.
+- Add python3 BuildRequires and Requires. Note: python
+  BuildRequires is still needed, as py-compile references python
+  (without suffix).
+- Drop python-gobject2, python-gtk, python-gstreamer-0_10 and
+  python-xml Requires: they are incorrect as transmageddon has been
+  ported to use the dynamic gi-bindins.
+- Move suse_update_desktop_file call to install, where it belongs.
+- Remove outdated openSUSE version conditions (<= 11.3).
+- Replace GStramer 0.10 Requires/Recommends with GStreamer 1.0:
+  + 0.10: gstreamer-0_10-plugins-base, gstreamer-0_10-plugins-bad,
+    gstreamer-0_10-plugins-good
+  + 1.0: gstreamer-0_10-plugins-base, gstreamer-plugins-bad,
+    gstreamer-plugins-bad.
+
+-------------------------------------------------------------------
+Tue Jun  5 10:45:45 UTC 2012 - dimstar@opensuse.org
+
+- Change python-gstreamer-0_10 Requires to 0.10.22 despite
+  configure.ac mentioning 0.10.23, as this version is not avaialble
+  and the only point where this requirement is versioned is in
+  transmageddon.spec.in.
+
+-------------------------------------------------------------------
+Thu Mar 22 19:17:56 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.21:
+  + Fix MPEG4 profiles to work with new caps in GStreamer
+  + Move preset directory to be Transmageddon specific
+  + Stop using XDG python library and just use glib
+  + Fix bug with repeated remuxings of same file
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:11 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Nov  7 00:08:43 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.20:
+  + Port to new plugins-base discoverer and encodebin
+  + Replace radiobutton lists with a combobox instead
+  + Add support for audio only transcoding
+  + Add support for outputting audio only from video+audio files
+  + Add deinterlacing
+  + Support container free audio formats such as FLAC, mp3 and AAC
+  + Add HTML5 and Nokia 900 profile
+  + Add support for video only transcoding
+  + Add support for mpeg1 video and mpeg2 audio
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:24 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:54:39 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Wed Nov 10 09:50:43 UTC 2010 - coolo@novell.com
+
+- own gstreamer directories
+
+-------------------------------------------------------------------
+Tue Aug 31 15:48:58 UTC 2010 - dimstar@opensuse.org
+
+- Initial package, version 0.16
+

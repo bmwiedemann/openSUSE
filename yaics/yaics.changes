@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Aug 11 08:59:36 UTC 2017 - pgajdos@suse.com
+
+- remove aspell support [bsc#1052971]
+
+-------------------------------------------------------------------
+Sun Mar 26 15:48:00 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.5.2:
+  * Add a new image preview feature, remove previous webwidget.
+  * Update the tray icon.
+  * Add font selection in settings window.
+  * Adjust the "time" in the statuses, to keep the CPU load low.
+  * Add a follow\unfollow button in the status.
+  * Add "max num statuses" to show at once, to prevent it from
+    locking up over time.
+  * Update translations (Russian, Ukrainian).
+  * Add a German translation.
+
+-------------------------------------------------------------------
+Tue Mar 17 13:56:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.5:
+  * Remove 'tor port is...', due to tor browser bundle port and
+    'regular' tor port are different.
+  * Fix the [x] in the tabs.
+  * Add a setting for enabling the feature that shows the
+    attachment inside the messages.
+  * Fix a crash when you click icon and yaics is not fully loaded
+    yet.
+  * Make urls fully visible instead of shortened, makes it easier to
+    view/confirm the urls.
+  * Correct settings restart requirement notifications.
+  * Fix two buttons tooltip.
+  * Remove '(paused)' from tabs titles, now it writes it as a
+    status message instead.
+  * Minor bugfixes and enhancements.
+  * Update translations.
+  * Add Ukrainian translation.
+
+-------------------------------------------------------------------
+Sat Jan 24 17:24:06 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

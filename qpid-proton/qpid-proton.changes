@@ -1,0 +1,515 @@
+-------------------------------------------------------------------
+Fri Jan 11 00:16:03 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Ignore redundant files generated during builds on Red Hat
+
+-------------------------------------------------------------------
+Tue Oct 23 20:20:33 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort linked .o files
+  to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Thu Mar 15 10:32:12 UTC 2018 - fstrba@suse.com
+
+- Added oatch:
+  * catch-by-const-reference.patch
+    + Fix build with gcc8 (bsc#1084627)
+
+-------------------------------------------------------------------
+Fri Mar  2 16:08:18 UTC 2018 - tbechtold@suse.com
+
+- Define %python_module macro if not already availble
+  This fixes:
+    nothing provides %{python_module, nothing provides devel}, \
+    nothing provides xml}
+
+-------------------------------------------------------------------
+Wed Nov 15 16:20:49 UTC 2017 - jmatejek@suse.com
+
+- update BuildRequires macros to use the %python_module call
+- conditional build of python2 packages
+- do not package Python API docs, drop epydoc requirement
+
+-------------------------------------------------------------------
+Thu Aug 24 11:14:18 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Modify openssl DH code to work with openssl 1.1.0
+  * Added patch qpid-proton-fix-dh-openssl-1.1.0.patch
+
+- Rework Openssl session resume code to work with openssl 1.1.0
+  * Added patch  qpid-proton-fix-session-resume-openssl-1.1.0.patch
+
+-------------------------------------------------------------------
+Fri Aug 18 04:11:59 UTC 2017 - sflees@suse.de
+
+- Add qpid-proton-cmake-fixes.patch to fix build
+
+-------------------------------------------------------------------
+Mon Aug  7 11:00:50 UTC 2017 - tbechtold@suse.com
+
+- Rename python package to python-python-qpid-proton to follow the
+  naming policy. For python packages, that is python-$pypi_name and
+  the name on pypi is python-qpid-python.
+- Build a python2 and python3 package. The python2 package provides
+  the non-versioned python package for now.
+
+-------------------------------------------------------------------
+Mon Aug  7 09:44:04 UTC 2017 - tbechtold@suse.com
+
+- update to 0.17.0:
+  * Full text https://qpid.apache.org/releases/qpid-proton-0.17.0/release-notes.html
+  * PROTON-1312 - BlockingConnection leaks Proton-C memory
+  * PROTON-1376 - [C, windows] Release 0.16 build fail - src/protocol.h clobbered
+  * PROTON-1377 - proton-c core library was not installed
+  * PROTON-1378 - Two reactor final events generated
+  * PROTON-1379 - Compile without warnings under g++ 7.0
+  * PROTON-1380 - Cyrus SASL accesses strings that have been freed
+  * PROTON-1382 - Remove bit fields initialization for bool fields
+  * PROTON-1383 - Add missing includes to fix Solaris compilation
+  * PROTON-1388 - client fails to decrypt after sasl encryption is negotiated with qpidd
+  * PROTON-1389 - PROTON-1325: Repair broken fix for python "buffer" type.
+  * PROTON-1390 - Go fixes to build with gccgo
+  * PROTON-1391 - Passing NULL as a SASL selected mechanism is crashing pn_do_error on Solaris
+  * PROTON-1392 - SWIG doesn't define how to export symbols on Solaris
+  * PROTON-1395 - go: testing with -race fails on some platforms
+  * PROTON-1385 - make proton-j independently releasable
+  * PROTON-1386 - disable the PHP binding build by default
+  * PROTON-1396 - 0.17.0 release tasks
+- Install libqpid-proton-core files
+
+-------------------------------------------------------------------
+Tue Feb 21 14:18:32 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * qpid-proton-0.16.0-gcc7.patch
+    + fix build with gcc7 boo#1025889
+
+-------------------------------------------------------------------
+Tue Feb 21 13:54:50 CET 2017 - ndas@suse.de
+
+- Upgrade to version 0.16.0
+  * Full text https://qpid.apache.org/releases/qpid-proton-0.16.0/release-notes.html
+  * Bugs fixed
+   + PROTON-241 - proton-c: mark old transport interfaces 'deprecated'
+   + PROTON-623 - Add missing error check to pn_string_inspect
+   + PROTON-1012 - Unable to build python-qpid-proton when behind a proxy server
+   + PROTON-1292 - errno not thread-safe on Solaris
+   + PROTON-1311 - [proton-c] Accessors for max-message-size on link
+   + PROTON-1324 - Interpretation of "int8_t" on Solaris using SunStudio is different from GCC one
+   + PROTON-1325 - Python "buffer" type in Message body should map to a known encoding type
+   + PROTON-1330 - Include the C sources in the python source distribution
+   + PROTON-1331 - go: electron.Container.Dial returning (nil, nil)
+   + PROTON-1332 - go: electron client leaking links/sessions in long lived connection
+   + PROTON-1333 - CMake error if no C++ compiler avaliable.
+   + PROTON-1336 - [Proton-c 0.14.0][Visual Studio 2013] Failing ssl unit test only in Debug mode
+   + PROTON-1346 - [proton-j] reactor exit when UnresolvedAddressException is thrown during connect
+   + PROTON-1366 - Reactor Python - segfault when out of file descriptors
+   + PROTON-1371 - proton::container::schedule crashes when mixing different language versions
+   + PROTON-1372 - Use PIMPL, not an interface, for event_loop
+   [-qpid-proton-0.7-nodatetime.patch]
+
+-------------------------------------------------------------------
+Wed Feb 15 15:19:09 CET 2017 - ndas@suse.de
+
+- This library is needed for latest rsyslog 8.24.0(fate#320546)
+
+-------------------------------------------------------------------
+Tue May  3 10:26:01 UTC 2016 - fstrba@suse.com
+
+- Upgrade to version 0.12.2
+  * Bugs fixed
+    - PROTON-1171 - [proton-j] transport SSL wrapper does not flush
+      all decoded bytes to the underlying input
+
+-------------------------------------------------------------------
+Thu Mar 31 09:13:40 UTC 2016 - fstrba@suse.com
+
+- Upgrade to version 0.12.1 (bsc#973343, CVE-2016-2166)
+  * New features and improvements
+    + PROTON-948 - remove deprecated methods on the Message
+    + PROTON-964 - Proton-J extensible event types
+    + PROTON-972 - Support the heartbeat option in
+      BlockingConnection
+    + PROTON-980 - Enable handler processing the event after child
+      handlers have processed it
+    + PROTON-981 - Make JythonTest extendable
+    + PROTON-982 - Make proton python tests compatible with unittest
+    + PROTON-984 - Document proton-j time units
+    + PROTON-997 - Allow proton-j handler to be extended by a jython
+      class
+    + PROTON-1011 - Go example of plain event-driven broker.
+    + PROTON-1016 - Jython implements long with a BigInteger
+    + PROTON-1036 - c++: engine API for integration with external IO
+      frameworks
+    + PROTON-1037 - Add support for setting/getting message
+      properties
+    + PROTON-1039 - Add support for setting/getting transport headers
+    + PROTON-1047 - go: improved ack handling in electron API, add to
+      broker example
+    + PROTON-1048 - Proton-C ssl tests on Windows with SChannel
+    + PROTON-1052 - SSL support in C++ reactor client
+    + PROTON-1053 - SASL support in C++ reactor client
+    + PROTON-1054 - Add acceptor context to incoming reactor
+      connections.
+    + PROTON-1062 - proton::engine as a client example
+    + PROTON-1066 - Connection options for C++ binding
+    + PROTON-1068 - c++ remove counted_ptr and context types from
+      public API
+    + PROTON-1076 - C++ binding acceptor context
+    + PROTON-1082 - add ability to specify and inspect properties
+      for link attach frames
+    + PROTON-1083 - [C++] Simplify the messaging events
+    + PROTON-1085 - c++ improve message interface and dynamic value
+      handling
+    + PROTON-1088 - Add convenience functions to obtain the client
+      certificate fingerprint, subject subfields
+    + PROTON-1089 - C++ binding link options
+    + PROTON-1092 - c++: improve proton::message API
+    + PROTON-1095 - Error handling
+    + PROTON-1096 - [proton-j] enable set/get of MessageFormat on
+      the Delivery being sent/received
+    + PROTON-1102 - C++ binding remove _t suffix for types
+    + PROTON-1103 - C++ binding rename xxx_domain to ssl_xxx_options
+    + PROTON-1108 - Change DISCONNECT event to be called
+      TRANSPORT_CLOSE, introduce TRANSPORT_ERROR event
+    + PROTON-1109 - Improve the C++ binding documentation
+  * Bugs fixed
+    + PROTON-713 - TransportImpl#setChannelMax does not enforce
+      legal value range, may cause unexpected results
+    + PROTON-829 - Possible reference counting bug in pn_clear_tpwork
+    + PROTON-892 - pn_data_t capacity does not grow above 32768 items
+    + PROTON-937 - LinkImpl.localOpen() does not initialize source
+      and target
+    + PROTON-949 - proton doesn't build with ccache swig
+    + PROTON-952 - Building Proton with python 2.6 and python 3.4 on
+      Travis CI finds and links wrong libpython
+    + PROTON-971 - [proton-j] multi-frame deliveries may be broken
+      when sent if buffered along with a futher delivery for the
+      same link
+    + PROTON-974 - single symbol for mechanisms in sasl-mechanisms
+      not recognised
+    + PROTON-977 - handler appears to get ignored
+    + PROTON-990 - [C++ binding] Examples fail to link in Visual
+      Studio 2012, 2015
+    + PROTON-995 - Url fails to parse URL
+    + PROTON-1000 - Connection leak on heartbeat-timeouted
+      connections
+    + PROTON-1003 - ssl transport layer does not define an error
+      handler
+    + PROTON-1006 - Sending pre-settled messages over the python
+      blocking api waits indefinetly
+    + PROTON-1008 - Using a blank mech_list disables authentication
+    + PROTON-1010 - BlockingConnection leaks sockets after close()
+      is called
+    + PROTON-1013 - Documentation: CyruSASL missing as an optional
+      dependency
+    + PROTON-1015 - Documentation: typos in the C++ tutorial
+    + PROTON-1018 - Crash in pn_transport_finalize(transport.c) when
+      logging level set to PN_TRACE_DRV
+    + PROTON-1019 - Documentation: typos in the C++ API documentation
+    + PROTON-1020 - Typos in the error messages
+    + PROTON-1023 - Incorrect handling of failed attach for
+      BlockingConnection
+    + PROTON-1024 - Disconnect during close not handled correctly in
+      BlockingConnection
+    + PROTON-1026 - Invalid queue/destination causes a segmentation
+      fault
+    + PROTON-1027 - Incorrectly handling of invalid addresses
+    + PROTON-1028 - BlockingConnection leaks due to cyclical
+      reference
+    + PROTON-1029 - Do not fail hard if strerror_r fails.
+    + PROTON-1030 - Reactor never freed if handler/global_handler
+      set
+    + PROTON-1031 - [python] Bump the module version to 0.11.0
+    + PROTON-1033 - Update the revision of the libqpid-proton
+      library to 4
+    + PROTON-1034 - [Go binding] Windows build fails if Go language
+      is installed but no gcc tool kit
+    + PROTON-1035 - [proton-c] Python binding mishandles connection
+      close event
+    + PROTON-1040 - BlockingConnection fails to send heartbeats if
+      timeout is None and no local idle time is specified
+    + PROTON-1042 - Can't distinguish between null target and null
+      address on a target
+    + PROTON-1044 - Create/Delete of BlockingConnection leaks file
+      descriptors
+    + PROTON-1045 - Use of callbacks to handle accepted endpoints
+      violates design goals.
+    + PROTON-1049 - Reactor needs an alternative to using the URL to
+      pass user authentication information.
+    + PROTON-1055 - Username sent twice during SASL AUTH
+    + PROTON-1056 - Attempting to print an ApplicationEvent raises a
+      NameError
+    + PROTON-1059 - ruby: ruby binding broken in 0.11 release and on
+      master
+    + PROTON-1060 - [Python Binding] API call types for some message
+      properties do not match AMQP specification
+    + PROTON-1065 - dbgheap.c assertion when adding types to message
+      body (through proton::value)
+    + PROTON-1067 - python messenger: cannot acknowledge messages,
+      messenger forces auto-ack or pre-settled.
+    + PROTON-1069 - Windows schannel ssl hang in shutdown sequence
+    + PROTON-1074 - C++ cbinding SSL core dump
+    + PROTON-1075 - Data races detected in go_test_electron
+    + PROTON-1077 - receiver link and transport view of credit can
+      become disjoint when sending link sends flow frames
+    + PROTON-1080 - have container attribute on any relevant event
+    + PROTON-1090 - BlockingConnection client spins at 100% cpu on
+      reconnect
+    + PROTON-1093 - [proton-c++] pragma to hide a warning in GCC
+      introduces a warning in Windows
+    + PROTON-1100 - [proton-j] the transport should not emit other
+      frames before the Open frame has been sent
+    + PROTON-1101 - Proton build broken on Visual Studio 10
+    + PROTON-1104 - reactor hangs on reconnect
+    + PROTON-1105 - enable EventImpl#getTransport() to succeed in
+      more situations
+    + PROTON-1107 - [proton-j] only create the attachments Record
+      on a Delivery if it actually gets used
+    + PROTON-1110 - [proton-j] allow suppressing the synthentic flow
+      event when sending transfers
+    + PROTON-1114 - [proton-j] the transport should not emit other
+      frames after the Close frame has been sent
+    + PROTON-1116 - Potential infinite recursion detected by VC++14
+      compiler
+    + PROTON-1118 - python setup.py build fails if run from git repo
+    + PROTON-1120 - Memory leak using proton.utils
+    + PROTON-1121 - Zero pointer derefence in
+      pn_sasl_allowed_mechs()
+    + PROTON-1123 - cmake fails under python3 when
+      -DSYSINSTALL_BINDINGS=ON
+    + PROTON-1125 - c++: core dump on empty address in link options
+    + PROTON-1127 - [Windows] qpid-proton-cpp.dll not installed by
+      "make install" target
+    + PROTON-1157 - Reactor sends messages in the clear if ssl is
+      requested but not available.
+  * Tasks
+    + PROTON-973 - various javadoc errors when building with Java 8
+    + PROTON-1084 - [cpp binding] Add message annotation support
+    + PROTON-1113 - tidy up some descriptive detail around running
+      the python tests
+
+-------------------------------------------------------------------
+Mon Aug 31 08:34:21 UTC 2015 - fstrba@suse.com
+
+- Upgrade to version 0.10
+  * New features and improvements
+    - PROTON-490 - [proton-c] Python binding fails to link with
+      Python 3 libraries
+    - PROTON-518 - Add SASL hostname getter/setter
+    - PROTON-781 - Implement the Reactive APIs in Ruby
+    - PROTON-799 - Provide the engine APIs in Ruby
+    - PROTON-857 - reduce memory usage for the TransportSession link
+      handle tracking
+    - PROTON-873 - Convert use of Object.send to Object.__send__ for
+      Ruby bindings
+    - PROTON-880 - make Array iterable
+    - PROTON-881 - Proton-j reactor implementation
+    - PROTON-882 - it should be possible to override logging from
+      python
+    - PROTON-883 - Return the raw bytes from a transport buffer in
+      Ruby.
+    - PROTON-885 - Allow setup.py to bundle qpid-proton
+    - PROTON-897 - Enhance the Ruby examples
+    - PROTON-903 - UUID version should be in sixth octet
+    - PROTON-906 - Would be nice to make durable subscriptions
+      simpler
+    - PROTON-919 - make C impl behave like java wrt channel_max error
+    - PROTON-932 - Document platform-specific usage of certificates
+      and trust stores.
+    - PROTON-944 - add ability to set a default state for settling
+      received deliveries
+    - PROTON-956 - [proton-j] avoid some overhead when sending frames
+      if the trace logging isnt enabled and there is no frame tracer
+    - PROTON-957 - [proton-j] make trace logging of transfer frames
+      more useful
+  * Bugs fixed
+    - PROTON-109 - Proton should handle inbound max-frame size
+      violations.
+    - PROTON-707 - Valgrind 'invalid read' errors in
+      proton_tests.message.LoadSaveTest tests
+    - PROTON-842 - proton-c should honor channel_max
+    - PROTON-843 - proton-j: Transport advertises idle timeout as-is
+      whereas proton-c halves it before
+    - PROTON-844 - proton-j: ArrayIndexOutOfBounds exception if
+      remote peer sends a handle >1024
+    - PROTON-845 - Proton-J: Potential NPE in proton-jms outbound
+      native transformer
+    - PROTON-848 - [proton-j] TransportSession state is never
+      discarded
+    - PROTON-849 - [proton-j] TransportLink state is never discarded
+    - PROTON-850 - inconsistent state when reusing link name
+    - PROTON-853 - [proton-j] the transport emitted a new attach
+      frame for a link in the process of being closed
+    - PROTON-854 - [proton-j] ConnectionImpl retains all created
+      Sessions until the Connection is freed
+    - PROTON-858 - unbalanced maps can get corrupted
+    - PROTON-859 - cyrus sasl not compatible with pre 2.1.24 versions
+    - PROTON-861 - need to get at aspect of the client certificate
+      when for authenticated clients
+    - PROTON-864 - don't crash when channel number goes high
+    - PROTON-868 - Make Pipelined ANONYMOUS authentication work with
+      fallback SASL implementation
+    - PROTON-874 - PN_VERSION only supports major and minor versions
+    - PROTON-877 - proton-c sasl client hangs on server pipeline
+    - PROTON-878 - Python wrapper mixes up 'user' and 'password'
+      configuration API
+    - PROTON-879 - null initial response makes cyrus challenge when
+      it probably shouldn't
+    - PROTON-887 - Windows SSL implementation needs working version
+      of pn_ssl_get_remote_subject()
+    - PROTON-895 - Rely on python to build the downloaded tarball
+    - PROTON-898 - Ruby Messenger using pn_selectable_fd and not
+      pn_selectable_get_fd
+    - PROTON-899 - Unnecessary relative path in include
+    - PROTON-901 - No constants defined for Terminus.expiry_policy
+    - PROTON-904 - Remove dependency on libuuid
+    - PROTON-907 - Qpid Proton Point to Point Hang on CentOS 6
+      pn_messenger_send
+    - PROTON-908 - Use swig as a build dependency when possible
+    - PROTON-913 - Calling allow_unsecured_client() on
+      SSLDomain.MODE_CLIENT causes client segfault
+    - PROTON-914 - SSL.peer_hostname does not return the proper value.
+    - PROTON-915 - Incompatible protocol header handled incorrectly
+    - PROTON-916 - [SASL] pn_sasl_config_name - name gets overwritten
+      in python binding
+    - PROTON-917 - [SASL] buffer underrun if no mechs specified by
+      peer
+    - PROTON-920 - frames on invalid channel crash proton
+    - PROTON-922 - [python] setup.py fails to build bindings if
+      qpid-proton-c-devel installed
+    - PROTON-923 - [SASL] PN_TRANSPORT_ERROR event not raised
+    - PROTON-925 - proton-c seems to treat unspecified channel-max
+      as implying 0
+    - PROTON-929 - [SASL] If both client and server specify ANONYMOUS
+      mech connection setup does not complete
+    - PROTON-931 - proton-j: unable to determine if
+      LINK_REMOTE_DETACH happened in response to a local detach
+    - PROTON-933 - Cyrus SASL GSSAPI plugin can error if sent long
+      buffers.
+    - PROTON-934 - Build tests fail if Java is not available
+    - PROTON-935 - drop Java 6 support and move to targetting Java 7
+    - PROTON-936 - update session outgoing window handling
+    - PROTON-939 - [SSL] Regression: binding a transport erases the
+      configured peer name
+    - PROTON-940 - provide the session initial incoming window via
+      Begin rather than sending a separate Flow
+    - PROTON-947 - deprecate stale methods on the Message
+    - PROTON-950 - SASL PLAIN over cleartext should be supported
+    - PROTON-954 - miscelaneous cleanup
+    - PROTON-955 - [proton-j] only the payload for the current frame,
+      and not the entire remainder for the delivery, should be handed
+      to the trace logging / frame tracer
+    - PROTON-958 - [python] pip installed binding fails to find
+      correct libqpid-proton.so
+    - PROTON-959 - On error Proton can send an open and a close frame
+      before sending the AMQP header
+    - PROTON-960 - On error Proton can send an open and a close frame
+      during the SASL negotiation (before sending the AMQP header)
+    - PROTON-961 - messenger doesn't handle received multi-frame
+      transfers
+    - PROTON-962 - heartbeat/empty frame trace has spurious newline
+    - PROTON-963 - [SASL] Raise PN_TRANSPORT_ERROR events with
+      correct condition for authentication failure
+    - PROTON-965 - [proton-j] freed receiver link may cause a removal
+      from the wrong collection in the session
+    - PROTON-966 - [proton-j] empty frames are logged/traced when
+      sent but not when received
+    - PROTON-967 - [proton-j] make empty frame logging actually
+      mention that it is an empty frame.
+    - PROTON-975 - connecting with DIGEST-MD5 fails if buffer
+      containing outcome and first encrypted frame is received
+    - PROTON-976 - pn_read_frame does not validate frame offset
+    - PROTON-978 - Framing errors after SASL exchange when
+      max-frame-size is configured
+  * Tasks
+    - PROTON-943 - Bump library (.so) major version for proton-c libraries
+- Removed patches:
+  * 0001-NO-JIRA-Fix-install-of-Perl-bindings.patch
+  * 0002-PROTON-582-Added-in-missing-is_float-method-to-Perl-.patch
+    - Integrated upstream
+
+-------------------------------------------------------------------
+Mon Jun  1 10:19:09 UTC 2015 - fstrba@suse.com
+
+- Upgrade to version 0.9.1
+  * New features and improvements
+    + PROTON-857 - reduce memory usage for the TransportSession
+      link handle tracking
+  * Bugs fixed
+    + PROTON-843 - proton-j: Transport advertises idle timeout
+      as-is whereas proton-c halves it before
+    + PROTON-844 - proton-j: ArrayIndexOutOfBounds exception if
+      remote peer sends a handle >1024
+    + PROTON-845 - Proton-J: Potential NPE in proton-jms outbound
+      native transformer
+    + PROTON-848 - [proton-j] TransportSession state is never
+      discarded
+    + PROTON-849 - [proton-j] TransportLink state is never
+      discarded
+    + PROTON-850 - inconsistent state when reusing link name
+    + PROTON-853 - [proton-j] the transport emitted a new attach
+      frame for a link in the process of being closed
+    + PROTON-854 - [proton-j] ConnectionImpl retains all created
+      Sessions until the Connection is freed
+
+-------------------------------------------------------------------
+Thu Apr  9 07:41:34 UTC 2015 - fstrba@suse.com
+
+- Upgrade to version 0.9
+  * Build Perl binding too
+- Added patches:
+  * 0001-NO-JIRA-Fix-install-of-Perl-bindings.patch
+  * 0002-PROTON-582-Added-in-missing-is_float-method-to-Perl-.patch
+    - Fix issues with Perl bindings
+  * qpid-proton-0.9-pthread.patch
+    - Fix undefined symbols when linking Perl bindings
+- Remove unneeded patch:
+  * 0001-PROTON-731-Installing-Python-requires-Proton-be-inst.patch
+  
+
+-------------------------------------------------------------------
+Thu Feb 26 10:46:48 UTC 2015 - fstrba@suse.com
+
+- Upgrade to version 0.8
+- Add new patch
+  * 0001-PROTON-731-Installing-Python-requires-Proton-be-inst.patch
+    - Allow the building and installing of the python bindings
+
+-------------------------------------------------------------------
+Tue Sep 30 08:43:52 UTC 2014 - fstrba@suse.com
+
+- Do not build broken perl binding since we are not packaging it
+  anyway.
+
+-------------------------------------------------------------------
+Mon May 26 23:46:40 UTC 2014 - fstrba@suse.com
+
+- Upgrade to version 0.7
+- Remove an obsolete patch
+  * qpid-proton-0.5-nodatetime.patch - needs rediff
+- Add new patch
+  * qpid-proton-0.7-nodatetime.patch - do not add timestamp in
+    documentation files.
+
+-------------------------------------------------------------------
+Wed Mar 19 08:53:10 UTC 2014 - fridrich.strba@suse.com
+
+- Upgrade to version 0.6
+- Remove unneeded patch
+  * 01-PROTON-412-Fix-the-include-and-lib-directories-in-li.patch
+    integrated upstream
+
+-------------------------------------------------------------------
+Mon Sep 30 12:51:22 UTC 2013 - fstrba@suse.com
+
+- Add BuildRoot line to fix build on older systems
+- Depend on oldest swig known to work
+
+-------------------------------------------------------------------
+Thu Sep 19 14:19:26 UTC 2013 - fridrich.strba@suse.com
+
+- Initial package of qpic-proto 0.5 based on package
+  of sebastien@sebbraun.de
+

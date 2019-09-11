@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Feb 21 11:22:29 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.1.4
+  * This release delivers some small bug fixes and janitorial
+    cleanups.
+
+-------------------------------------------------------------------
+Mon May  4 14:36:25 UTC 2015 - sndirsch@suse.com
+
+- Use progname for error messages as well
+  * Convert sprintf call to use snprintf
+  * Make ImageEncodings unsigned
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Print which option was in error along with usage message
+  * Use real program name for help message
+
+-------------------------------------------------------------------
+Thu Feb  6 10:00:27 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile
+
+-------------------------------------------------------------------
+Mon Feb 25 19:05:24 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1.2:
+  + Add -version option.
+  + Add explicit braces to clarify which if the else goes with.
+  + Convert from haphazard indenting to X.Org common style.
+  + Add _X_NORETURN to PrintUsage to clear gcc/clang warnings.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Move man pages into their own directory.
+    man: remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xvinfo from xorg-x11. Initial version: 1.1.1.
+

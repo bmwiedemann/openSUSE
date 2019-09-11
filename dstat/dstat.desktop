@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Terminal=true
+Exec=dstat
+Type=Application
+StartupNotify=false
+Name=dstat
+GenericName=System Resource Monitor
+Comment=Versatile Resource Statistics Tool

@@ -1,0 +1,898 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:06 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:14 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:08 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- No code changes since 5.15.90
+
+-------------------------------------------------------------------
+Thu May 16 16:56:37 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * bump Qt version to 5.12 as agreed at start of cycle
+  * Add Meta+L shortcut for "Lock Session"
+  * Fix window height of Screen Locking KCM (kde#400355)
+  * Remove deprecated method
+  * Remove deprecated code
+  * Port test app to QQC2
+  * Fix test app
+  * Fix lock screen focus (kde#395639)
+
+-------------------------------------------------------------------
+Tue May  7 11:04:56 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- No code changes since 5.15.4
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:21 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:12 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:25:54 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:50 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * [KCM] Use a better icon
+
+-------------------------------------------------------------------
+Thu Jan 17 18:46:54 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * bump KF5 dependency to required 5.54 as agreed at start of Plasma 5.15 cycle
+  * [Greeter] Ignore unwritable configuration files (kde#403255)
+  * Fix fallback to built-in ui
+  * Disable kcrash in greeter in same way as in KWin
+  * Use override instead of Q_DECL_OVERRIDE
+  * Remove Qt include prefix
+  * Use KDEFrameworkCompilerSettings
+
+-------------------------------------------------------------------
+Tue Jan  8 13:36:58 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * Force software rendering when greeter crashed
+  * Fix build with libc++
+  * Prevent paste in screen locker (kde#388049)
+  * Load QtQuickSettings for software rendering
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:45 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- No code changes since 5.14.3
+
+-------------------------------------------------------------------
+Tue Nov 13 12:10:39 UTC 2018 - wbauer@tmo.at
+
+- Remove forced migration to pam_unix in %post (fix for
+  boo#931296), pam_unix2 is not available anymore and pam-config
+  does that migration automatically
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:20 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Thu Nov  1 19:53:07 UTC 2018 - wbauer@tmo.at
+
+- Mark /etc/pam.d/kscreenlocker as %config(noreplace) so that
+  modifications don't get lost when installing updates (boo#1114258)
+
+-------------------------------------------------------------------
+Tue Oct 23 13:55:21 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:13 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:10 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- No code changes since 5.13.90
+
+-------------------------------------------------------------------
+Sat Sep 29 08:13:06 UTC 2018 - fabian@ritter-vogt.de
+
+- Ship a copy of the xdm PAM file to not depend on a display manager
+  being installed (boo#1108329)
+- Drop fix-wayland-version-requirement.diff, not needed anymore
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:00 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Fix the plasma-workspace build.
+  * Export install location for DBUS interfaces via CMake
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Install our org.kde.screensaver interface definition
+  * Prevent paste in screen locker (kde#388049)
+  * Load QtQuickSettings for software rendering
+  * Force software rendering when greeter crashed
+  * Fix build, remove some implicit QString casts
+  * Make it compile with strict compile flags
+  * Add explicit
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:40 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Prevent paste in screen locker (kde#388049)
+  * Load QtQuickSettings for software rendering
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:01:47 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 26 16:00:35 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:44:16 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:51 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * None
+
+-------------------------------------------------------------------
+Sat May 19 14:16:36 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Use the default Plasma wallpaper on the lock screen
+  * expose the wallpaper config to the lockscreen
+  * Add script to unlock a broken session via ConsoleKit.
+  * Update path to fakekcheckpass with latest ECM's bin/ collection
+  * Help KSldTest to find its helper binaries with latest ECM's bin/ collection
+  * Use explicit
+  * Use override
+  * Use nullptr
+  * Remove module namespace from Qt includes
+  * Port away from deprecated KAuthorized::authorizeKAction()
+  * Drop ECMPackageConfigHelpers for CMakePackageConfigHelpers
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Use add_test signature where target command gets resolved to binary path
+  * Add missing project() in toplevel CMakeLists.txt
+  * Bump min cmake version to 3.0, move cmake_minimum_required to top
+  * Build test/autotest if BUILD_TESTING is defined
+
+-------------------------------------------------------------------
+Wed May  2 09:06:51 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:31 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * Update size hint of lnf config widget (kde#389483)
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * Require Qt 5.9
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:43 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * Fix brightness shortcuts in the whitelist
+  * Add touchpad shortcuts to the whitelist
+  * Fix building autotest on platforms where syscalls are not available
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:05 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Remove double margin in KCM UI
+  * Load config specified by the LnF theme (kde#384264)
+  * Remove unused class SelectImageButton
+  * Remove obsolete reviewboardrc file
+  * Bump KF5 required version to 5.42
+  * Whitelist Switch keyboard layout to shortcuts (kde#378531)
+  * port to Package::fileUrl
+  * Forbid more syscalls which could modify the filesystem
+  * Screenlocker KCM text improvements
+  * Change kcm header "Screen Locking Timeouts" to "Configure Screen Locking"
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:08 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * Adjust kwinglplatform.cpp for Mesa renderer string changes
+  * Fix greeter crashing with software rendering on wayland
+
+-------------------------------------------------------------------
+Thu Nov 30 10:43:45 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:28 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 24 18:12:59 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:18:35 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * Workaround crash on lockscreen close
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:05 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * seccomp filter: Handle openat as well (kde#384651)
+  * Don't dissallow open with write flag syscall on NVIDIA (kde#384005)
+  * Tell user to unlock his session only
+  * Use Q_DECL_OVERRIDE
+  * Fix detection of sys/event.h on FreeBSD < 12
+  * include <signal.h> for kill(2)
+- Remove patches, now upstream:
+  * 0001-Don-t-dissallow-open-with-write-flag-syscall-on-NVID.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 07:33:23 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to allow the NVIDIA driver to poke through seccomp and
+  thus not crashing (kde#384005):
+  * 0001-Don-t-dissallow-open-with-write-flag-syscall-on-NVID.patch
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:08 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 14 20:09:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Fix the kscreenlocker_greet restart in %post
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:55 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Fixup protocol mismatch between greeter and kcheckpass (kde#380491)
+  * Fix detection of sys/event.h on FreeBSD < 12
+  * kcheckpass: Add support in for non-Linux platforms via kevent.
+- Remove patches, now upstream:
+  * 0001-Fixup-protocol-mismatch-between-greeter-and-kcheckpa.patch
+
+-------------------------------------------------------------------
+Sun Jun  4 19:00:05 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix screenlocker breaking with empty password
+  (kde#380491):
+  * 0001-Fixup-protocol-mismatch-between-greeter-and-kcheckpa.patch
+
+-------------------------------------------------------------------
+Fri May 26 14:10:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * None
+
+-------------------------------------------------------------------
+Thu May 11 20:26:23 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * [Greeter] Expose wallpaper QML item as "wallpaper" context property
+  * Prevent kcheckpass from becoming an orphan
+  * Fix removal of lock window on unmap
+  * Terminate kscreenlocker_greet and don't kill it on unlockRequest
+  * [autotests] add missing add_test
+  * Use seccomp for implementing a sandbox for kscreenlocker_greet
+  * Support for long running kcheckpass supporting multiple authentications
+  * [greeter] Send the auth result through the server instead return value
+  * Add support for emergency message show on Wayland
+  * Require PAM by default and provide an option to not require it
+  * [ksld] Don't unset greeter connection on destroy unconditionally (kde#377152)
+  * [kcheckpass] Drop all outdated/obsoleted checkpass variants
+  * [kcheckpass] Drop the conv_legacy support
+  * [kcheckpass] Drop the caller command line option
+  * [kcheckpass] Drop command line option for username
+  * Enable qtvirtualkeyboard QT_IM_MODULE for greeter
+  * Add a small test application for kcheckpass
+  * [kcheckpass] Drop the ACCEPT_ENV compatibility define
+  * [kcheckpass] Drop the throttle handling code
+  * [Greeter] Also clear selection clipboard
+  * [greeter] Clear clipboard on show (kde#376526)
+  * Stop linking X11_Xcursor_LIB in KScreenLocker (kde#376068)
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:45 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * fix merge
+  * Implement manual focus on click (kde#348789,kde#374289)
+- Remove patches, now upstream:
+  * 0001-Implement-manual-focus-on-click.patch
+
+-------------------------------------------------------------------
+Wed Mar  1 18:28:36 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix screenlocker focus on multiscreen systems:
+  * 0001-Implement-manual-focus-on-click.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 19:54:41 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * Merge Plasma/5.8
+  * Fix crash in Screen Locker KCM on teardown
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * Fix crash in Screen Locker KCM on teardown
+
+-------------------------------------------------------------------
+Tue Feb  7 18:52:57 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:25 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * None
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:35:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 20:32:40 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+- Drop upstreamed Workaround-problems-with-QtQueuedConnection.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 14:02:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added Workaround-problems-with-QtQueuedConnection.patch
+  (kde#361007, kde#361008)
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:32:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+- Drop upstreamed 0001-greeter-Dont-quit-when-last-window-closes.patch
+
+-------------------------------------------------------------------
+Tue Feb  9 15:58:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-greeter-Dont-quit-when-last-window-closes.patch
+  (CVE-2016-2312, boo#964548, kde#358125)
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 22 15:32:02 UTC 2015 - dimstar@opensuse.org
+
+- Update licensetag to GPL-2.0+.
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:31:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+

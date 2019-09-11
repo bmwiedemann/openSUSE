@@ -1,0 +1,319 @@
+-------------------------------------------------------------------
+Sun Jul 21 05:22:22 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.0
+  * gnome-wall-clock.c: Fix memory leak when a custom format
+    string is in use.
+  * Privacy: Enable recents by default
+  * Remove legacy migration script from cinnamon 2.4
+
+-------------------------------------------------------------------
+Wed Mar 13 04:32:21 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 4.0.1:
+  * gnome-wall-clock.c: Fix memory leak when a custom format string is.
+  * Updated slovak translation - translated new strings(100%), fixed date/time format
+  * Update for meson changes
+  * Following the review of docinfo, this should be enabled by default.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.1:
+  * Add key binding setting for showing desklets.
+  * Fix pkgconfig version and fix spacing.
+
+-------------------------------------------------------------------
+Thu Apr 19 20:07:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.0:
+  * Switch to Meson.
+  * gnome-wall-clock.c: Adjust DATE_ONLY msgid to match the one
+    originally in cinnamon-screensaver, and graft in existing
+    translations from cinnamon-screensaver 3.2.2.
+  * gnome-wall-clock.c: Add some comments for translators for our
+    date formats.
+  * Remove gsettings key org.cinnamon.desktop.interface
+    gtk-decoration-layout.
+  * Add a setting for maximum sound volume.
+  * Remove libgsystem.
+  * Fix AccountsService set_background check.
+  * Make alsa support opt-in.
+  * libcvc: Fix pc version.
+  * libcinnamon-desktop: Fix enum generation.
+  * gnome-bg.c: Add support for setting the user background via
+    org.freedesktop.DisplayManager.AccountsService, whilst
+    retaining support for the old method (for ubuntu 16.04)
+  * gnome-bg.c: Fix SetBackgroundFile call - parameters must be a
+    GVariant tuple.
+  * Notifications: Add bottom position option.
+  * gnome-bg: Don't unref NULL gvariant.
+  * gnome-bg: Proper fix for NULL gvariant unref.
+
+-------------------------------------------------------------------
+Sun Nov 12 21:00:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.2:
+  * Set org.cinnamon.desktop.screensaver ask-for-away-message to
+    False.
+
+-------------------------------------------------------------------
+Thu Nov  9 18:24:42 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.1:
+  * Default: Change idle-delay default to 15 min.
+  * Remove obsolete gsettings key.
+
+-------------------------------------------------------------------
+Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.0:
+  * gnome-wall-clock: Improve API, handle seconds timing based on
+    format string.
+  * Use logind by default.
+  * Use Python3 instead of Python2.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.2:
+  * gnome-wall-clock: Add functionality to allow setting the update
+    interval.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.1:
+  * gnome-desktop-thumbnail: Add EFAULT as an exception to the
+    permission check.
+    See https://github.com/linuxmint/nemo/commit/b58bea5
+
+-------------------------------------------------------------------
+Wed May  4 17:44:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.0:
+  * schemas: Add some new keys for High Contrast.
+  * gvc-mixer-control: fix double-free when setting headset
+    https://git.gnome.org/browse/libgnome-volume-control/commit/?id=a28e23d
+    https://git.gnome.org/browse/libgnome-volume-control/commit/?id=25bf3ed
+  * gvc-mixer-control: Fix reference being leaked
+    https://git.gnome.org/browse/libgnome-volume-control/commit/?id=d52194f
+  * Add detection for accountsservice background as it's Ubuntu
+    only.
+  * Remove aclocal from autogen.sh.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.4 (changes since 3.2.1):
+  * Remove PAM authentication - this is moved back to
+    cinnamon-screensaver, the only current user.
+  * media-keys: Add Rotation lock support.
+  * screensaver schema: Add floating widget preference.
+  * Privacy: Disable tracking of recent files by default.
+- Remove cinnamon-desktop-suse-pam.patch.
+
+-------------------------------------------------------------------
+Thu Nov 24 10:25:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.1:
+  * Update PAM for Fedora selinux
+  * Fix includes for libcvc
+  * Port some PAM code from cinnamon-screensaver 3.0:
+    - Don't check return value of pam_acct_mgmt.
+      On some systems it can fail because account modules are not
+      configured properly or because this check requires
+      additional privileges.
+    - Call pam_setcred() to refresh credentials.
+- Rebase cinnamon-desktop-suse-pam.patch.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.0:
+  * Migrate away from gnome-common deprecated vars and macros.
+  * gnome-bg: Add an introspectable method to GnomeBG to allow
+    setting a GtkImage with a background surface.
+  * gnome-bg.c: Use gdk_cairo_surface_create_from_pixbuf() for
+    creating GtkImage surfaces - this handles widget scale factors
+    for us, and gives back the correct size/scale image surface.
+  * gnome-desktop-utils: Add a pam password check function.
+  * Add /etc/pam.d/cinnamon-desktop to build and packaging to allow
+    authentication to work.
+  * screensaver schema: Add flag, keyboard layout, and clock
+    visiblity keys.
+  * Make AX_ macros optional.
+  * screensaver schema: Add caps keyboard layout option.
+  * screensaver schema: Add albumart preference.
+  * gnome-desktop-thumbnail.c: Remove hardcoded GdkPixbuf blacklist,
+    and make mimetypes in the "disable" gsettings key apply to the
+    entire thumbnail factory, not just pluggable thumbnailers.
+  * Move flag, uppercase prefs from screensaver to interface
+    schema, and add a preference for layout name.
+  * Add screensaver lockdown preferences.
+- Add cinnamon-desktop-suse-pam.patch: Use SUSE-specific PAM
+  configuration.
+- Create libcinnamon-desktop-data-branding:
+  libcinnamon-desktop-data has to have an independent from the main
+  cinnamon package branding.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.2:
+  * libcvc: Update doap file.
+  * org.cinnamon.desktop.interface schema: Add setting for gtk
+    overlay scrollbars.
+  * Backgrounds: Take EXIF rotation tags into consideration.
+
+-------------------------------------------------------------------
+Thu May 12 09:54:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.1:
+  * Fix possible null pointer dereference.
+  * Fix usage of uninitialised values.
+  * Disable event-sounds by default.
+  * Disable audible-bell by default.
+  * Remove dependency on gnome-software (boo#978264).
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a missing python-gobject-Gdk dependency (boo#978298).
+
+-------------------------------------------------------------------
+Mon Apr 25 05:00:35 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.0:
+  * a11y schema: Limit desktop zoom max magnification to 15x.
+  * Add installer functions to check and install packages via
+    PackageKit.
+  * enums: Add zoom lens shape enum and magnifier key.
+  * gnome-installer: Use a GTask for the IsInstalled loop, so the
+    main thread isn't blocked. Add some feedback to the test script
+    to check this.
+  * Schemas: Add a few keys for a11y stuff.
+  * Add libcvc source and packages to build.
+  * gvc-channel-map.h: Add missing include.
+  * gvc-channel-map.c: Remove redundant include.
+  * thumbnail: Fix a code path where the mutex is never unlocked.
+  * Some fixes for introspection.
+  * gvc_mixer_ui_device.c: Fix comment block causing a build
+    warning.
+- Add gnome-software (gnome-packagekit-session) dependency to
+  libcinnamon-desktop package as did upstream.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:09:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.8.1:
+  * a11y schema: Limit desktop zoom max magnification to 15x.
+  * thumbnail: Fix a code path where the mutex is never unlocked.
+
+-------------------------------------------------------------------
+Sun Oct 18 08:46:06 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.0:
+  * Make cinnamon-desktop buildable with make.
+  * gnome-desktop-thumbnailer.c: block known-buggy image types from
+    being thumbnailed.
+  * Create keybinding for XF86AudioMicMute => mic-mute.
+  * Fix xml bg warning.
+- Separate library data to libcinnamon-desktop-data package.
+- Add cinnamon-desktop-correct-background-path.patch.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Aug 10 00:48:46 UTC 2015 - i@marguerite.su
+
+- update version 2.6.5
+  * screensaver schemas: use a default value that exists
+  * ignore X errors when applying xrandr configuration
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jun  2 23:00:20 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.6.4
+
+-------------------------------------------------------------------
+Thu Apr 23 18:22:29 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.4.2
+
+-------------------------------------------------------------------
+Mon Nov 10 06:36:23 UTC 2014 - i@marguerite.su
+
+- update version 2.4.1
+  * changed checking for NULL a bit
+  * keybinding migration script: add run-once check
+  * Remove postinst script for keybindings
+
+-------------------------------------------------------------------
+Wed Nov  5 06:19:06 UTC 2014 - i@marguerite.su
+
+- update version 2.4.0
+
+-------------------------------------------------------------------
+Mon Jul 14 16:29:02 UTC 2014 - i@marguerite.su
+
+- update version 2.3.0
+  * upstream just bump its version
+
+-------------------------------------------------------------------
+Wed May 21 08:41:31 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.3
+
+-------------------------------------------------------------------
+Mon May 19 10:11:05 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.2
+
+-------------------------------------------------------------------
+Thu Apr 17 04:48:19 UTC 2014 - i@marguerite.su
+
+- update version 2.2.0
+- fix libcinnamon-desktop-lang requires libcinnamon-desktop problem
+
+-------------------------------------------------------------------
+Mon Nov 25 15:36:10 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.4
+  * thumbnailer: Handle empty image files without crashing
+
+-------------------------------------------------------------------
+Mon Nov  4 11:02:22 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.3
+  * remove a leftover from copying autogen.sh from nemo
+  * Add new gi method for javascript background
+
+-------------------------------------------------------------------
+Mon Oct 28 17:43:48 UTC 2013 - i@marguerite.su
+
+- update version 2.0.2
+  * fix some schema names
+
+-------------------------------------------------------------------
+Mon Oct 21 13:05:26 UTC 2013 - i@marguerite.su
+
+- rename libcinnamon-desktop, it's a library
+
+-------------------------------------------------------------------
+Mon Oct 21 09:39:44 UTC 2013 - i@marguerite.su
+
+- copypac from home:cyberorg:cinnamon
+- add typelib-1_0-CinnamonDesktop-3_0 subpackage
+- some clean
+
+-------------------------------------------------------------------
+Thu Oct 10 08:53:11 UTC 2013 - stefan@fam-elser.de
+
+- Updated to version 2.0.2 
+
+-------------------------------------------------------------------
+Wed Oct  2 06:23:41 UTC 2013 - stefan@fam-elser.de
+
+- Initial release with git files from 2013/09/30
+

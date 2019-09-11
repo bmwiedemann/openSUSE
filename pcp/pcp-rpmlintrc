@@ -1,0 +1,9 @@
+# Note: there are some headers (e.g. domain.h) and in a few cases some
+# C source files that rpmlint complains about. These are not devel files,
+# but rather they are (slightly obscure) PMDA config files.
+#
+addFilter('E: devel-file-in-non-devel-package')
+# A /var/lib/pcp/tmp directory is created for the safe creation of shared
+# tmp files. it must be world writeable for PMDAs and client tools, which
+# may be run as anyone.
+#addFilter('E: permissions-world-writable')

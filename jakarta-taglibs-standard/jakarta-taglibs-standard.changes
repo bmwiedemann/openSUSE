@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Sep 18 15:40:25 UTC 2017 - fstrba@suse.com
+
+- Modified patch:
+  * jakarta-taglibs-standard-1.1.1-build.patch
+    + Don't hardcode java source and target levels
+- Specify source and target level 1.6 in order to allow building
+  with jdk9
+- Clean spec file and fix some rpmlint errors
+
+-------------------------------------------------------------------
+Tue Oct  6 09:00:42 UTC 2015 - tchvatal@suse.com
+
+- Update URL to link to live domain
+- Fix bnc#920813 CVE-2015-0254, patch taken from debian:
+  * CVE-2015-0254.patch
+
+-------------------------------------------------------------------
+Fri Jul 11 09:14:05 UTC 2014 - tchvatal@suse.com
+
+- Cleanup bit with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jun 13 07:13:56 UTC 2012 - mvyskocil@suse.cz
+
+- fix build with java7
+- use non-versioned javadocdir
+
+-------------------------------------------------------------------
+Tue Aug  5 11:56:52 CEST 2008 - mvyskocil@suse.cz
+
+- fixed build using openjdk6 (add java6 API and remove enums)
+- use bzip2 in source tarball
+- use macro name in patches
+- use source=1.5 and target=1.5
+
+-------------------------------------------------------------------
+Sun Sep 17 22:44:30 CEST 2006 - ro@suse.de
+
+- fix build with java-1.5 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul 28 15:01:10 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:34:00 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.1.1 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 16 14:53:41 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Mon Sep  6 00:24:26 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.1.1 (JPackage 1.5)
+

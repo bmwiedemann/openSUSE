@@ -1,0 +1,1456 @@
+Index: motif-2.3.4/lib/Xm/Xm.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/Xm.c	2012-10-22 16:50:34.000000000 +0200
++++ motif-2.3.4/lib/Xm/Xm.c	2014-02-27 17:23:18.437467882 +0100
+@@ -495,7 +495,6 @@
+     return return_wid;
+ }
+ 
+-#ifdef FIX_1381
+ /************************************************************************
+  *
+  *  _XmAssignInsensitiveColor
+@@ -529,4 +528,20 @@
+ 
+ 	return p;
+ }
+-#endif
++
++extern char *getenv(char*);
++
++int
++_XmIsStippleEnabled()
++{
++	static int stipple = -1;
++	char *envvar;
++
++	if (stipple == -1) {
++		envvar = getenv("SUSE_OPENMOTIF_ENABLE_STIPPLE");
++		if (envvar && !strcmp(envvar, "1")) stipple = 1;
++		else stipple = 0;
++	}
++
++	return stipple;
++}
+Index: motif-2.3.4/lib/Xm/XmP.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/XmP.h	2014-02-27 17:23:18.437467882 +0100
++++ motif-2.3.4/lib/Xm/XmP.h	2014-02-27 17:23:51.566653555 +0100
+@@ -1450,7 +1450,5 @@
+ #  define XM_ALIAS(sym)
+ #endif
+ 
+-#define FIX_1381
+-
+ #endif /* _XmP_h */
+ /* DON'T ADD STUFF AFTER THIS #endif */
+Index: motif-2.3.4/lib/Xm/I18List.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/I18List.c	2014-02-27 17:23:08.588412672 +0100
++++ motif-2.3.4/lib/Xm/I18List.c	2014-03-04 18:29:31.629758605 +0100
+@@ -2070,11 +2070,11 @@
+ 
+     mask = GCForeground | GCBackground | GCFont | GCGraphicsExposures;
+ 
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+ 	smask = mask | GCFillStyle;
+-#else
++    } else {
+     smask = mask | GCStipple | GCFillStyle;
+-#endif
++    }
+     
+     XmI18List_gc(ilist) = XtGetGC(w, mask, &values);
+ 
+@@ -2105,11 +2105,11 @@
+     	XmI18List_entry_background_gc(ilist) = XtGetGC(w, mask, &values);
+     }
+ 
+-#ifdef FIX_1381
++    temp = values.foreground;
++    if (!_XmIsStippleEnabled()) {
+ 	/*added for gray insensitive foreground (instead stipple)*/
+-	temp = values.foreground;
+     values.foreground=_XmAssignInsensitiveColor(w);
+-#endif
++    }
+ 
+     XmI18List_stippled_gc(ilist) = XtGetGC(w, smask, &values);
+ 
+@@ -2126,9 +2126,6 @@
+     	XmI18List_entry_background_stippled_gc(ilist) = XtGetGC(w, smask, &values);
+     }
+ 
+-#ifndef FIX_1381
+-    temp = values.foreground;
+-#endif
+     values.foreground = values.background;
+     values.background = temp;
+     XmI18List_rev_gc(ilist) = XtGetGC(w, mask, &values);
+Index: motif-2.3.4/lib/Xm/IconButton.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/IconButton.c	2014-02-27 17:23:08.589412678 +0100
++++ motif-2.3.4/lib/Xm/IconButton.c	2014-03-04 18:32:12.684566965 +0100
+@@ -1760,7 +1760,8 @@
+ 	     */
+ 	    XSetClipRectangles(XtDisplay(w), text_gc,
+ 			       0, 0, &clip, 1, Unsorted);
+-#ifdef FIX_1381
++
++            if (!_XmIsStippleEnabled()) {
+ 		/*Draw shadow for insensitive text*/
+ 		if (!XtIsSensitive(w)) {
+ 			XmStringDraw(XtDisplay(w), XtWindow(w), XmIconButton_font_list(iw),
+@@ -1769,7 +1770,8 @@
+ 				XmIconButton_max_text_width(iw), XmIconButton_alignment(iw),
+ 				XmPrim_layout_direction(iw), NULL);
+ 		}
+-#endif
++            }
++
+ 	    XmStringDraw(XtDisplay(w), XtWindow(w), XmIconButton_font_list(iw),
+ 			 XmIconButton_label_string(iw), text_gc, 
+ 			 XmIconButton_text_x(iw), XmIconButton_text_y(iw),
+@@ -1855,11 +1857,11 @@
+     values.fill_style = FillStippled;
+ 
+     mask = GCForeground | GCBackground | GCGraphicsExposures;
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+ 	smask = mask | GCFillStyle;
+-#else
++    } else {
+     smask = mask | GCStipple | GCFillStyle;
+-#endif
++    }
+ 
+     if (fs) {
+         values.font = fs->fid;
+@@ -1868,19 +1870,16 @@
+ 
+     XmIconButton_gc(iw) = XtGetGC(w, mask, &values);
+ 
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     /*generally gray insensitive foreground (instead stipple)*/
+     values.foreground = _XmAssignInsensitiveColor(iw);
+     XmIconButton_insensitive_text_gc(iw) = XtGetGC(w, smask, &values);
+-#else 
+-    XmIconButton_stippled_text_gc(iw) = XtGetGC(w, smask, &values);
+-#endif
+-
+-#ifdef FIX_1381
+     /*light shadow for insensitive text (instead stipple)*/
+     values.foreground = iw->primitive.top_shadow_color;
+     XmIconButton_shadow_gc(iw) = XtGetGC(w, smask, &values);
+-#endif
++    } else {
++    XmIconButton_stippled_text_gc(iw) = XtGetGC(w, smask, &values);
++    }
+ 
+     /*
+      * HACK ALERT: !!! Motif hack for monochrome displays. !!!
+@@ -1928,12 +1927,12 @@
+     XtReleaseGC(w, XmIconButton_pixmap_fill_gc(iw));
+     XtReleaseGC(w, XmIconButton_stippled_set_gc(iw));
+     XtReleaseGC(w, XmIconButton_stippled_unset_gc(iw));
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     XtReleaseGC(w, XmIconButton_shadow_gc(iw));
+     XtReleaseGC(w, XmIconButton_insensitive_text_gc(iw));
+-#else 
++    } else {
+     XtReleaseGC(w, XmIconButton_stippled_text_gc(iw));
+-#endif
++    }
+     XtReleaseGC(w, XmIconButton_stippled_set_text_gc(iw));
+ }
+ 
+Index: motif-2.3.4/lib/Xm/IconG.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/IconG.c	2014-02-27 17:23:18.439467894 +0100
++++ motif-2.3.4/lib/Xm/IconG.c	2014-03-04 18:34:36.450287810 +0100
+@@ -1392,9 +1392,9 @@
+     IG_NormalGC(nw) = NULL;
+     IG_BackgroundGC(nw) = NULL;
+     IG_InsensitiveGC(nw) = NULL;
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     IG_ShadowGC(nw) = NULL;
+-#endif
++    }
+     IG_TopShadowGC(nw) = NULL;
+     IG_BottomShadowGC(nw) = NULL;
+     IG_HighlightGC(nw) = NULL;
+@@ -1441,9 +1441,9 @@
+ 
+     XtReleaseGC(XtParent(wid),IG_NormalGC(wid));
+     XtReleaseGC(XtParent(wid),IG_InsensitiveGC(wid));
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     XtReleaseGC(XtParent(wid),IG_ShadowGC(wid));
+-#endif
++    }
+     XtReleaseGC(XtParent(wid),IG_BackgroundGC(wid));
+     XtReleaseGC(XtParent(wid),IG_SelectedGC(wid));
+     if (IG_InverseGC(wid)) XtReleaseGC(XtParent(wid),IG_InverseGC(wid));
+@@ -2200,9 +2200,8 @@
+ 	   up to IG_InverseGC at the beginning of this routine,
+ 	   so what's left is the forcing of this ink/foreground */
+ 	
+-#ifdef FIX_1381
+ 	/*Draw shadow for insensitive text*/
+-	if (!XtIsSensitive(wid)) {
++	if (!_XmIsStippleEnabled() && !XtIsSensitive(wid)) {
+ 		XmStringDraw(XtDisplay(wid),XtWindow(wid),
+ 		      IG_RenderTable(wid),IG_LabelString(wid), IG_ShadowGC(wid),
+ 		      ig->rectangle.x + label_x+1 + DEFAULT_LABEL_MARGIN_WIDTH,
+@@ -2211,7 +2210,6 @@
+ 		      XmALIGNMENT_BEGINNING,
+ 		      LayoutG(wid), NULL);
+ 	}
+-#endif
+ 	XmStringDraw(XtDisplay(wid),XtWindow(wid),
+ 		      IG_RenderTable(wid),IG_LabelString(wid), gc,
+ 		      ig->rectangle.x + label_x + DEFAULT_LABEL_MARGIN_WIDTH,
+@@ -3141,33 +3139,30 @@
+ 
+     /** insensitive gc **/
+ 
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+ 	/*generally gray insensitive foreground (instead stipple)*/
+     values.foreground = _XmAssignInsensitiveColor( wid);
+-#else
+-    values.foreground = IG_Foreground(wid) ;
+-#endif
+-
+-    values.background = IG_Background(wid) ; 
+-#ifdef FIX_1381
+     valueMask |= GCFillStyle;
+     values.fill_style = FillSolid;
+-#else
++    } else {
+     valueMask |= GCFillStyle | GCStipple;
+     values.fill_style = FillOpaqueStippled;
+     values.stipple = _XmGetInsensitiveStippleBitmap(wid);
+-#endif
++    values.foreground = IG_Foreground(wid) ;
++    }
++
++    values.background = IG_Background(wid) ; 
+ 
+     IG_InsensitiveGC(wid) = XtAllocateGC(XtParent(wid), 
+ 					 XtParent(wid)->core.depth, 
+ 					 valueMask, &values, modifyMask, 0);
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+ 	/*light shadow for insensitive text (instead stipple)*/
+ 	values.foreground = IG_TopShadowColor(wid);
+ 	IG_ShadowGC(wid) = XtAllocateGC(XtParent(wid),
+ 					XtParent(wid)->core.depth,
+ 					 valueMask, &values, modifyMask, 0);
+-#endif
++    }
+ 
+     /** highlight **/
+     
+Index: motif-2.3.4/lib/Xm/Label.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/Label.c	2012-10-22 16:50:34.000000000 +0200
++++ motif-2.3.4/lib/Xm/Label.c	2014-03-04 18:37:26.314138728 +0100
+@@ -74,9 +74,7 @@
+ #include <Xm/XpmP.h>
+ #include <string.h>
+ #include <Xm/XmP.h>
+-#ifdef FIX_1381
+ #include <Xm/ColorI.h>
+-#endif
+ #ifdef FIX_1521
+ #ifdef USE_XFT
+ #include "XmRenderTI.h"
+@@ -691,26 +689,26 @@
+   lw->label.normal_GC = XtAllocateGC((Widget) lw, 0, valueMask, &values,
+ 				     dynamicMask, 0);
+   
+-#ifdef FIX_1381
++  if (!_XmIsStippleEnabled()) {
+   /*generally gray insensitive foreground (instead stipple)*/
+   values.foreground =  _XmAssignInsensitiveColor((Widget)lw);
+   values.background = lw->core.background_pixel;
+-#else
++  } else {
+   valueMask |= GCFillStyle | GCStipple;
+   values.foreground = lw->core.background_pixel;
+   values.background = lw->primitive.foreground;
+   values.fill_style = FillOpaqueStippled;
+   values.stipple = _XmGetInsensitiveStippleBitmap((Widget) lw);
+-#endif
++  }
+   
+   lw->label.insensitive_GC = XtAllocateGC((Widget) lw, 0, valueMask, &values,
+ 					  dynamicMask, 0);
+-#ifdef FIX_1381
++  if (!_XmIsStippleEnabled()) {
+   /*light shadow for insensitive text (instead stipple)*/
+   values.foreground = lw->primitive.top_shadow_color;
+   lw->label.shadow_GC = XtAllocateGC((Widget) lw, 0, valueMask, &values,
+ 					  dynamicMask, 0);
+-#endif
++  }
+ 
+ }
+ 
+@@ -1382,9 +1380,9 @@
+ 
+   XtReleaseGC ((Widget) lw, lw->label.normal_GC);
+   XtReleaseGC ((Widget) lw, lw->label.insensitive_GC);
+-#ifdef FIX_1381
++  if (!_XmIsStippleEnabled()) {
+   XtReleaseGC ((Widget) lw, lw->label.shadow_GC);
+-#endif
++  }
+ }
+ 
+ /************************************************************************
+@@ -1516,11 +1514,11 @@
+ 	  Pixmap pix_use = Pix_insen (lw) ;
+ 
+ 	  if (pix_use == XmUNSPECIFIED_PIXMAP)
+-#ifdef FIX_1381
++            if (!_XmIsStippleEnabled()) {
+ 		Pix_insen(lw) = pix_use = _XmConvertToBW(wid, Pix(lw));
+-#else
++            } else {
+ 		pix_use = Pix(lw);
+-#endif
++            }
+ 	  if (pix_use != XmUNSPECIFIED_PIXMAP) 
+ 	    {
+ 	      gc = lp->insensitive_GC;
+@@ -1544,10 +1542,9 @@
+ 			    lp->TextRect.y + lp->PixmapRect.y,
+ 			    1); 
+ 
+-#ifndef FIX_1381
+ 	      /* if no insensitive pixmap but a regular one, we need
+  		 to do the stipple manually, since copyarea doesn't */
+- 	      if (pix_use == Pix(lw)) {
++ 	      if (_XmIsStippleEnabled() && pix_use == Pix(lw)) {
+  		  /* need fill stipple, not opaque */
+  		  XSetFillStyle(XtDisplay(lw), gc, FillStippled);
+  		  XFillRectangle(XtDisplay(lw), XtWindow(lw), gc,
+@@ -1558,7 +1555,6 @@
+  		  XSetFillStyle(XtDisplay(lw), gc, FillOpaqueStippled);
+ 
+  	      }
+-#endif
+ #ifdef FIX_1505
+ 	      if (pix_use == Pix(lw)) {
+ 		  XSetFillStyle(XtDisplay(lw), gc, FillStippled);
+@@ -1587,7 +1583,7 @@
+  	  tmp[_XmOSKeySymToCharacter(lp->mnemonic, NULL, tmp)] = '\0';
+ 	  underline = XmStringCreate(tmp, lp->mnemonicCharset);
+ 	  
+-#ifdef FIX_1381
++        if (!_XmIsStippleEnabled()) {
+ 	  if (XtIsSensitive(wid) )
+ 	  {
+ 		  /*Draw normal text*/
+@@ -1625,7 +1621,7 @@
+ 				  underline);
+ 
+ 	  }
+-#else
++        } else { /* StippleEnabled */
+ 	  XmStringDrawUnderline(XtDisplay(lw), XtWindow(lw),
+ 				lp->font, lp->_label,
+ 				(XtIsSensitive(wid) ? 
+@@ -1636,11 +1632,10 @@
+ 				lp->alignment,
+ 				XmPrim_layout_direction(lw), NULL,
+ 				underline);
+-#endif
++        }
+ 	  XmStringFree(underline);
+ 	}
+-      else
+-#ifdef FIX_1381
++      else if (!_XmIsStippleEnabled()) {
+ 	{
+ 	  if (XtIsSensitive(wid) )
+ 	  {
+@@ -1676,7 +1671,7 @@
+ 			  XmPrim_layout_direction(lw), NULL);
+ 	  }
+ 	}
+-#else
++      } else { /* StippleEnabled */
+ 	XmStringDraw (XtDisplay(lw), XtWindow(lw),
+ 		       lp->font, lp->_label,
+ 		       (XtIsSensitive(wid) ? 
+@@ -1686,10 +1681,10 @@
+ 		       lp->StringRect.width,
+ 		       lp->alignment,
+ 		       XmPrim_layout_direction(lw), NULL);
+-#endif
++      }
+ 
+-#ifndef FIX_1381
+ #ifdef USE_XFT
++    if (_XmIsStippleEnabled()) {
+       if (!XtIsSensitive(wid))
+         {
+           XSetFillStyle(XtDisplay(lw), lp->insensitive_GC, FillStippled);
+@@ -1700,7 +1695,7 @@
+ 			lp->StringRect.height);
+           XSetFillStyle(XtDisplay(lw), lp->insensitive_GC, FillOpaqueStippled);
+         }
+-#endif
++    }
+ #endif
+ 
+     }
+@@ -1719,7 +1714,7 @@
+ 		lp->margin_width) +
+ 	   lp->margin_left + lp->TextRect.width + lp->margin_right))
+ 
+-#ifdef FIX_1381
++                if (!_XmIsStippleEnabled()) {
+ 		  if (XtIsSensitive(wid) )
+ 		  {
+ 			  /*Draw normal text*/
+@@ -1747,7 +1742,7 @@
+ 					  lp->acc_TextRect.width, XmALIGNMENT_END,
+ 					  XmPrim_layout_direction(lw), NULL);
+ 		  }
+-#else
++                } else {
+ 	XmStringDraw (XtDisplay(lw), XtWindow(lw),
+ 		       lp->font, lp->_acc_text,
+ 		       (XtIsSensitive(wid) ? 
+@@ -1755,7 +1750,7 @@
+ 		       lp->acc_TextRect.x, lp->acc_TextRect.y,
+ 		       lp->acc_TextRect.width, XmALIGNMENT_END,
+ 		       XmPrim_layout_direction(lw), NULL);
+-#endif
++                }
+     }
+   
+   /* Redraw the proper highlight  */
+Index: motif-2.3.4/lib/Xm/LabelG.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/LabelG.c	2012-10-22 16:50:37.000000000 +0200
++++ motif-2.3.4/lib/Xm/LabelG.c	2014-03-05 19:59:37.103667214 +0100
+@@ -81,9 +81,7 @@
+ #include <Xm/XpmP.h>
+ #include <string.h>
+ #include <Xm/XmP.h>
+-#ifdef FIX_1381
+ #include <Xm/ColorI.h>
+-#endif
+ #ifdef FIX_1521
+ #ifdef USE_XFT
+ #include "XmRenderTI.h"
+@@ -1246,26 +1244,26 @@
+     LabG_NormalGC(lw) = XtAllocateGC((Widget) mw, 0, valueMask, &values,
+         dynamicMask, 0);
+ 
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     /*generally gray insensitive foreground (instead stipple)*/
+     values.foreground = _XmAssignInsensitiveColor((Widget)lw);
+     values.background = LabG_Background(lw);
+-#else
++    } else {
+     valueMask |= GCFillStyle | GCStipple;
+     values.foreground = LabG_Background(lw); 
+     values.background = LabG_Foreground(lw);
+     values.fill_style = FillOpaqueStippled;
+     values.stipple = _XmGetInsensitiveStippleBitmap((Widget) lw);
+-#endif
++    }
+ 
+     LabG_InsensitiveGC(lw) = XtAllocateGC((Widget) mw, 0, valueMask, &values,
+         dynamicMask, 0);
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+     /*light shadow for insensitive text (instead stipple)*/
+     values.foreground = LabG_TopShadowColor(lw);
+     LabG_ShadowGC(lw)  = XtAllocateGC((Widget) mw, 0, valueMask, &values,
+ 	dynamicMask, 0);
+-#endif
++    }
+ 
+ }
+ 
+@@ -2184,9 +2182,9 @@
+ 
+     XtReleaseGC (XtParent(w), LabG_NormalGC(w));
+     XtReleaseGC (XtParent(w), LabG_InsensitiveGC(w));
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+ 	XtReleaseGC (XtParent(w), LabG_ShadowGC(w));
+-#endif
++    }
+     XtReleaseGC (XtParent(w), LabG_BackgroundGC(w));
+     XtReleaseGC (XtParent(w), LabG_HighlightGC(w));
+     XtReleaseGC (XtParent(w), LabG_TopShadowGC(w));
+@@ -2405,11 +2403,11 @@
+             Pixmap pix_use = Pix_insen (lw) ;
+ 
+             if (pix_use == XmUNSPECIFIED_PIXMAP)
+-#ifdef FIX_1381
++              if (!_XmIsStippleEnabled()) {
+ 		Pix_insen(lw) = pix_use = _XmConvertToBW(wid, Pix(lw));
+-#else
++              } else {
+ 		pix_use = Pix(lw);				
+-#endif
++              }
+             if (pix_use != XmUNSPECIFIED_PIXMAP)
+             {
+                 gc = LabG_InsensitiveGC(lw);
+@@ -2432,7 +2430,7 @@
+                             lw->rectangle.y + LabG_TextRect(lw).y + LabG_PixmapRect(lw).y,
+ 			    1);
+ 
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+                 /* if no insensitive pixmap but a regular one, we need
+                 to do the stipple manually, since copyarea doesn't */
+ 				if (pix_use == Pix(lw))		{
+@@ -2448,7 +2446,7 @@
+                         LabG_PixmapRect(lw).height);
+                     XSetFillStyle(XtDisplay(lw), gc, FillOpaqueStippled);
+                 }
+-#endif
++        }
+ #ifdef FIX_1505
+                 if (pix_use == Pix(lw)) {
+                     XSetFillStyle(XtDisplay(lw), gc, FillStippled);
+@@ -2480,7 +2478,7 @@
+ 
+             tmp[_XmOSKeySymToCharacter(LabG_Mnemonic(lw), NULL, tmp)] = '\0';
+             underline = XmStringCreate(tmp, LabG_MnemonicCharset(lw));
+-#ifdef FIX_1381
++            if (!_XmIsStippleEnabled()) {
+ 			if (XtIsSensitive(wid) )
+ 			{
+ 				/*Draw normal text*/
+@@ -2511,7 +2509,7 @@
+ 						LabG_StringRect(lw).width, LabG_Alignment(lw),
+ 						LayoutG(lw), NULL, underline);
+ 			}
+-#else
++            } else {
+             XmStringDrawUnderline(XtDisplay(lw), XtWindow(lw),
+                 LabG_Font(lw), LabG__label(lw),
+                 (XtIsSensitive(wid) ?
+@@ -2521,12 +2519,10 @@
+                 LabG_StringRect(lw).width, LabG_Alignment(lw),
+                 LayoutG(lw), NULL, underline);
+ 
+-#endif
++            }
+             XmStringFree(underline);
+         }
+-        else
+-#ifdef FIX_1381
+-		{
++        else if (!_XmIsStippleEnabled()) {
+ 			if (XtIsSensitive(wid) )
+ 			{
+ 				/*Draw normal text*/
+@@ -2557,8 +2553,7 @@
+ 						LabG_StringRect(lw).width,
+ 						LabG_Alignment(lw), LayoutG(lw), NULL);
+ 			}
+-		}
+-#else
++	} else {
+             XmStringDraw (XtDisplay(lw), XtWindow(lw),
+                 LabG_Font(lw), LabG__label(lw),
+                 (XtIsSensitive(wid) ?
+@@ -2567,11 +2562,10 @@
+             lw->rectangle.y + LabG_TextRect(lw).y + LabG_StringRect(lw).y,
+             LabG_StringRect(lw).width,
+             LabG_Alignment(lw), LayoutG(lw), NULL);
+-#endif
++        }
+ 
+-#ifndef FIX_1381
+ #ifdef USE_XFT
+-        if (!XtIsSensitive(wid)) {
++        if (_XmIsStippleEnabled() && !XtIsSensitive(wid)) {
+           XSetFillStyle(XtDisplay(lw), LabG_InsensitiveGC(lw), FillStippled);
+           XFillRectangle(XtDisplay(lw), XtWindow(lw), LabG_InsensitiveGC(lw),
+ 			lw->rectangle.x + LabG_TextRect(lw).x +
+@@ -2583,7 +2577,6 @@
+           XSetFillStyle(XtDisplay(lw), LabG_InsensitiveGC(lw), FillOpaqueStippled);
+         }
+ #endif
+-#endif
+     }
+ 
+     if (LabG__acceleratorText(lw) != NULL)
+@@ -2600,7 +2593,7 @@
+             LabG_MarginLeft(lw) + LabG_TextRect(lw).width +
+             LabG_MarginRight(lw)))
+         {
+-#ifdef FIX_1381
++            if (!_XmIsStippleEnabled()) {
+ 			if (XtIsSensitive(wid) )
+ 			{
+ 				/*Draw normal text*/
+@@ -2631,7 +2624,7 @@
+ 						LabG_AccTextRect(lw).width, XmALIGNMENT_END,
+ 						LayoutG(lw), NULL);
+ 			}
+-#else
++            } else {
+             XmStringDraw (XtDisplay(lw), XtWindow(lw),
+                 LabG_Font(lw), LabG__acceleratorText(lw),
+                 (XtIsSensitive(wid) ?
+@@ -2640,7 +2633,7 @@
+                 lw->rectangle.y + LabG_AccTextRect(lw).y,
+                 LabG_AccTextRect(lw).width, XmALIGNMENT_END,
+                 LayoutG(lw), NULL);
+-#endif
++            }
+         }
+     }
+ 
+Index: motif-2.3.4/lib/Xm/List.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/List.c	2014-02-27 17:23:18.443467917 +0100
++++ motif-2.3.4/lib/Xm/List.c	2014-02-27 18:57:00.876109364 +0100
+@@ -2482,15 +2482,13 @@
+       if (XtIsSensitive((Widget)lw))
+ 	gc = ((lw->list.InternalList[pos]->selected) ?
+ 	      lw->list.InverseGC : lw->list.NormalGC);
+-      else
+-#ifdef FIX_1381
++      else if (!_XmIsStippleEnabled())
+ 	  {
+ 		gc = lw->list.InsensitiveGC;
+ 		_XmRendFG(lw->list.scratchRend) = _XmAssignInsensitiveColor(lw);
+-	  }
+-#else
++	  } else {
+ 	gc = lw->list.InsensitiveGC;
+-#endif
++      }
+ 
+       /* CR 7281: Set rendition background too. */
+       if ((lw->list.InternalList[pos]->selected) &&
+@@ -2502,21 +2500,18 @@
+ 	      _XmRendFG(lw->list.scratchRend) = lw->core.background_pixel;
+ 	      _XmRendBG(lw->list.scratchRend) = lw->primitive.foreground;
+ 	    }
+-	  else
+-#ifdef FIX_1381
++      else if (!_XmIsStippleEnabled()) {
+ 	      _XmRendBG(lw->list.scratchRend) = lw->core.background_pixel;
+-#else
+-	    {
++      } else {
+ 	      _XmRendFG(lw->list.scratchRend) = lw->primitive.foreground;
+ 	      _XmRendBG(lw->list.scratchRend) = lw->core.background_pixel;
+ 	    }
+-#endif
+ 	  _XmRendFGState(lw->list.scratchRend) = XmFORCE_COLOR;
+ 	  _XmRendBGState(lw->list.scratchRend) = XmFORCE_COLOR;
+ 	}
+       else
+ 	{
+-#ifdef FIX_1381
++        if (!_XmIsStippleEnabled()) {
+ 	  if (XtIsSensitive((Widget)lw))
+ 	  {
+ 		  _XmRendFG(lw->list.scratchRend) = lw->primitive.foreground;
+@@ -2526,12 +2521,12 @@
+ 	  }
+ 	  else
+ 		  _XmRendBG(lw->list.scratchRend) = lw->core.background_pixel;
+-#else
++        } else {
+ 	  _XmRendFG(lw->list.scratchRend) = lw->primitive.foreground;
+ 	  _XmRendFGState(lw->list.scratchRend) = XmAS_IS;
+ 	  _XmRendBG(lw->list.scratchRend) = lw->core.background_pixel;
+ 	  _XmRendBGState(lw->list.scratchRend) = XmAS_IS;
+-#endif
++        }
+ 	}
+ 
+       _XmRendGC(lw->list.scratchRend) = gc;
+@@ -2540,8 +2535,7 @@
+           _XmXftGetXftColor(XtDisplay(lw), _XmRendFG(lw->list.scratchRend));
+ #endif
+ 
+-#ifdef FIX_1381
+-if (!XtIsSensitive((Widget)lw))
++if (!_XmIsStippleEnabled() && !XtIsSensitive((Widget)lw))
+ {
+ 	/*Draw shadow for insensitive text*/
+ 	Pixel p;
+@@ -2560,7 +2554,6 @@
+ 		      lw->list.StrDir);
+ 	_XmRendFG(lw->list.scratchRend) = p;
+ }
+-#endif
+       /* CR 9204: Let _XmStringRender handle right-to-left drawing. */
+       _XmStringRender(XtDisplay(lw),
+ 		      XtWindow(lw),
+@@ -2829,15 +2822,15 @@
+ 				    valueMask, &values, modifyMask, 0);
+ 
+   values.background = lw->core.background_pixel;
+-#ifdef FIX_1381
++  if (!_XmIsStippleEnabled()) {
+   /*generally gray insensitive foreground (instead stipple)*/
+   values.foreground = _XmAssignInsensitiveColor(lw);
+-#else
++  } else {
+   values.foreground = lw->primitive.foreground;
+   valueMask |= GCStipple | GCFillStyle;
+   values.fill_style = FillOpaqueStippled;
+   values.stipple = _XmGetInsensitiveStippleBitmap((Widget) lw);
+-#endif
++  }
+ 
+   lw->list.InsensitiveGC = XtAllocateGC((Widget) lw, lw->core.depth,
+ 					valueMask, &values, modifyMask, 0);
+Index: motif-2.3.4/lib/Xm/TextF.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/TextF.c	2014-02-27 17:23:18.445467928 +0100
++++ motif-2.3.4/lib/Xm/TextF.c	2014-02-27 19:00:03.489129076 +0100
+@@ -243,10 +243,8 @@
+                         Boolean stipple);
+ #endif /* NeedWidePrototypes */
+ 
+-#ifdef FIX_1381
+ static void SetShadowGC(XmTextFieldWidget tf,
+                         GC gc);
+-#endif
+ 
+ static void SetInvGC(XmTextFieldWidget tf,
+ 		       GC gc);
+@@ -1989,15 +1987,15 @@
+   if (change_stipple) {
+     valueMask |= GCFillStyle;
+     if (stipple) {
+-#ifdef FIX_1381
++    if (!_XmIsStippleEnabled()) {
+       /*generally gray insensitive foreground (instead stipple)*/
+ 		  values.foreground = _XmAssignInsensitiveColor((Widget)tf);
+     	  values.fill_style = FillSolid;
+-#else
++    } else {
+       values.fill_style = FillStippled;
+       valueMask |= GCStipple;
+       values.stipple = tf->text.stipple_tile;
+-#endif
++    }
+     } else 
+       values.fill_style = FillSolid;
+   }
+@@ -2005,7 +2003,6 @@
+   XChangeGC(XtDisplay(tf), gc, valueMask, &values);
+ }
+ 
+-#ifdef FIX_1381
+ static void
+ SetShadowGC(XmTextFieldWidget tf, GC gc)
+ {
+@@ -2017,7 +2014,6 @@
+ 
+   XChangeGC(XtDisplay(tf), gc, valueMask, &values);
+ }
+-#endif
+ 
+ static void 
+ SetInvGC(XmTextFieldWidget tf,
+@@ -2209,8 +2205,7 @@
+ 		   TextF_FontAscent(tf) + TextF_FontDescent(tf));
+     SetNormGC(tf, tf->text.gc, True, stipple);
+   }
+-#ifdef FIX_1381
+-if (stipple){
++if (!_XmIsStippleEnabled() && stipple){
+     /*Draw shadow for insensitive text*/
+     SetShadowGC(tf, tf->text.gc);
+     if (tf->text.max_char_size != 1) {
+@@ -2222,7 +2217,6 @@
+     }
+     SetNormGC(tf, tf->text.gc, True, stipple);
+ }
+-#endif
+ 
+   
+   if (tf->text.max_char_size != 1) {
+Index: motif-2.3.4/lib/Xm/TextOut.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/TextOut.c	2014-02-27 17:23:18.447467939 +0100
++++ motif-2.3.4/lib/Xm/TextOut.c	2014-02-27 19:34:42.994464229 +0100
+@@ -106,10 +106,8 @@
+                         Boolean stipple);
+ #endif /* NeedWidePrototypes */
+ 
+-#ifdef FIX_1381
+ static void SetShadowGC(XmTextWidget tw,
+ 		       GC gc);
+-#endif
+ static void InvertImageGC(XmTextWidget tw);
+ static void SetInvGC(XmTextWidget tw,
+ 		       GC gc);
+@@ -619,15 +617,15 @@
+   if (change_stipple) {
+     valueMask |= GCFillStyle;
+     if (stipple) {
+-#ifdef FIX_1381
++        if (!_XmIsStippleEnabled()) {
+ 		/*generally gray insensitive foreground (instead stipple)*/
+ 		values.foreground = _XmAssignInsensitiveColor((Widget)tw);
+ 	    values.fill_style = FillSolid;
+-#else
++        } else {
+       values.fill_style = FillStippled;
+       valueMask |= GCStipple;
+       values.stipple = data->stipple_tile;
+-#endif
++      }
+ 
+     } else 
+       values.fill_style = FillSolid;
+@@ -636,7 +634,6 @@
+   XChangeGC(XtDisplay(tw), gc, valueMask, &values);
+ }
+ 
+-#ifdef FIX_1381
+ static void
+ SetShadowGC(XmTextWidget tf, GC gc)
+ {
+@@ -651,7 +648,6 @@
+ 
+   XChangeGC(XtDisplay(tf), gc, valueMask, &values);
+ }
+-#endif
+ 
+ 
+ 
+@@ -2637,8 +2633,7 @@
+ 	    int wx, wy;
+ 
+ 	    wx = x - data->hoffset;
+-#ifdef FIX_1381
+-	    if (stipple)
++	    if (!_XmIsStippleEnabled() && stipple)
+ 	      {
+ 	        /*Draw shadow for insensitive text*/
+ 	        SetShadowGC(tw, data->gc);
+@@ -2648,7 +2643,6 @@
+ 	        wx+1, y - data->voffset+1, block.ptr, length);
+ 	        SetNormGC(tw, data->gc, True, stipple);
+ 	      }
+-#endif
+ 
+ 	    XmbDrawString(XtDisplay(tw),
+ 			  XtWindow(tw->text.inner_widget),
+@@ -2656,8 +2650,7 @@
+ 			  wx, y - data->voffset, block.ptr, length);
+ #ifdef USE_XFT
+ 	  } else if (data->use_xft) {
+-#ifdef FIX_1381
+-	    if (stipple)
++	    if (!_XmIsStippleEnabled() && stipple)
+ 	      {
+ 	        /*Draw shadow for insensitive text*/
+ 	        SetShadowGC(tw, data->gc);
+@@ -2667,7 +2660,6 @@
+ 			  block.ptr, length);
+ 	        SetNormGC(tw, data->gc, True, stipple);
+ 	      }
+-#endif
+ 
+ 	    _XmXftDrawString2(XtDisplay(tw), XtWindow(tw->text.inner_widget),
+ 			      data->gc, (XftFont*) data->font, 1,
+@@ -2691,8 +2683,7 @@
+ 	      if (_XmIsISO10646(XtDisplay(tw), data->font)) {
+ 	        size_t ucsstr_len = 0;
+ 		XChar2b *ucsstr = _XmUtf8ToUcs2(p, csize, &ucsstr_len);
+-#ifdef FIX_1381
+-		if (stipple)
++		if (!_XmIsStippleEnabled() && stipple)
+ 		{
+ 		  /*Draw shadow for insensitive text*/
+ 		  SetShadowGC(tw, data->gc);
+@@ -2700,13 +2691,11 @@
+ 		  		data->gc, orig_x+1, orig_y+1, ucsstr, ucsstr_len);
+ 		  SetNormGC(tw, data->gc, True, stipple);
+ 		}
+-#endif
+ 		XDrawString16(XtDisplay(tw), XtWindow(tw->text.inner_widget),
+ 				data->gc, orig_x, orig_y, ucsstr, ucsstr_len);
+ 		XFree(ucsstr);
+ 	      } else {
+-#ifdef FIX_1381
+-		if (stipple)
++		if (!_XmIsStippleEnabled() && stipple)
+ 		{
+ 		  /*Draw shadow for insensitive text*/
+ 		  SetShadowGC(tw, data->gc);
+@@ -2715,7 +2704,6 @@
+ 		  		orig_x+1, orig_y+1, p, csize);
+ 		  SetNormGC(tw, data->gc, True, stipple);
+ 		}
+-#endif
+ 	      XDrawString(XtDisplay(tw),
+ 			  XtWindow(tw->text.inner_widget), data->gc,
+ 			  orig_x, orig_y, p, csize);
+@@ -2986,8 +2974,7 @@
+ 	}
+ 	SetNormGC(tw, data->gc, True, stipple);
+ 	if (data->use_fontset) {
+-#ifdef FIX_1381
+-	  if (stipple)
++	  if (!_XmIsStippleEnabled() && stipple)
+ 	    {
+ 	      /*Draw shadow for insensitive text*/
+ 	      SetShadowGC(tw, data->gc);
+@@ -2997,15 +2984,13 @@
+ 	      x - data->hoffset+1, y+1, block.ptr, length);
+ 	      SetNormGC(tw, data->gc, True, stipple);
+ 	    }
+-#endif
+ 	  XmbDrawString(XtDisplay(tw),
+ 			XtWindow(tw->text.inner_widget),
+ 			(XFontSet) data->font, data->gc, 
+ 			x - data->hoffset, y, block.ptr, length);
+ #ifdef USE_XFT
+ 	} else if (data->use_xft) {
+-#ifdef FIX_1381
+-	  if (stipple)
++	  if (!_XmIsStippleEnabled() && stipple)
+ 	    {
+ 	      /*Draw shadow for insensitive text*/
+ 	      SetShadowGC(tw, data->gc);
+@@ -3014,7 +2999,6 @@
+ 	      x - data->hoffset+1, y+1, block.ptr, length);
+ 	      SetNormGC(tw, data->gc, True, stipple);
+ 	    }
+-#endif
+ 	  _XmXftDrawString2(XtDisplay(tw), XtWindow(tw->text.inner_widget),
+ 			    data->gc, (XftFont*) data->font, 1,
+ 			    x - data->hoffset, y, block.ptr, length);
+@@ -3023,8 +3007,7 @@
+ 	  if (_XmIsISO10646(XtDisplay(tw), data->font)) {
+ 	    size_t ucsstr_len = 0;
+ 	    XChar2b *ucsstr = _XmUtf8ToUcs2(block.ptr, length, &ucsstr_len);
+-#ifdef FIX_1381
+-	    if (stipple)
++	    if (!_XmIsStippleEnabled() && stipple)
+ 	      {
+ 	        /*Draw shadow for insensitive text*/
+ 	        SetShadowGC(tw, data->gc);
+@@ -3033,7 +3016,6 @@
+ 	        ucsstr_len);
+ 	        SetNormGC(tw, data->gc, True, stipple);
+ 	      }
+-#endif
+ 
+ 	    XDrawString16(XtDisplay(tw), XtWindow(tw->text.inner_widget),
+ 				data->gc, x - data->hoffset, y, ucsstr,
+@@ -3041,8 +3023,7 @@
+ 	    XFree(ucsstr);
+ 	  } else
+ 	  {
+-#ifdef FIX_1381
+-	    if (stipple)
++	    if (!_XmIsStippleEnabled() && stipple)
+ 	      {
+ 	        /*Draw shadow for insensitive text*/
+ 	        SetShadowGC(tw, data->gc);
+@@ -3051,7 +3032,6 @@
+ 	        x - data->hoffset+1, y+1, block.ptr, length);
+ 		SetNormGC(tw, data->gc, True, stipple);
+ 	      }
+-#endif
+ 	  XDrawString(XtDisplay(tw),
+ 		      XtWindow(tw->text.inner_widget), data->gc,
+ 		      x - data->hoffset, y, block.ptr, length);
+Index: motif-2.3.4/lib/Xm/XmI.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/XmI.h	2014-02-27 17:26:53.124670152 +0100
++++ motif-2.3.4/lib/Xm/XmI.h	2014-02-27 17:27:23.294838949 +0100
+@@ -283,9 +283,9 @@
+ 
+ #define FIX_1396
+ 
+-#ifdef FIX_1381
+ extern Pixel _XmAssignInsensitiveColor(Widget w);
+-#endif
++
++extern int _XmIsStippleEnabled();
+ 
+ #define FIX_1375
+ #define FIX_1395
+Index: motif-2.3.4/lib/Xm/Color.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/Color.c	2014-02-27 17:23:08.558412504 +0100
++++ motif-2.3.4/lib/Xm/Color.c	2014-03-04 18:43:44.749031822 +0100
+@@ -43,9 +43,7 @@
+ #include "MessagesI.h"
+ #include "ScreenI.h"
+ #include "XmI.h"
+-#ifdef FIX_1381
+ #include <Xm/XpmP.h>
+-#endif
+ 
+ #define FIX_1500
+ 
+@@ -106,10 +104,8 @@
+                         Screen *screen,
+                         Colormap color_map,
+                         Pixel background) ;
+-#ifdef FIX_1381
+ static unsigned int FromColorToBlackAndWhite(
+                         char *col) ;
+-#endif
+ 
+ 
+ /********    End Static Function Declarations    ********/
+@@ -1241,7 +1237,6 @@
+    XmeGetDefaultPixel (widget, XmSELECT, offset, value);
+ }
+ 
+-#ifdef FIX_1381
+ static
+ unsigned int
+ FromColorToBlackAndWhite(char *col)
+@@ -1341,5 +1336,4 @@
+    return bw_pixmap;
+ #endif
+ }
+-#endif
+ 
+Index: motif-2.3.4/lib/Xm/ColorI.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/ColorI.h	2012-10-22 16:50:35.000000000 +0200
++++ motif-2.3.4/lib/Xm/ColorI.h	2014-03-04 18:44:21.133227335 +0100
+@@ -67,11 +67,9 @@
+                         XmColorData **ret) ;
+ extern XmColorData * _XmAddToColorCache( 
+                         XmColorData *new_rec) ;
+-#ifdef FIX_1381
+ extern Pixmap _XmConvertToBW(
+                         Widget w, 
+                         Pixmap pm) ;
+-#endif
+ /********    End Private Function Declarations    ********/
+ 
+ #ifdef __cplusplus
+Index: motif-2.3.4/lib/Xm/DataF.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/DataF.c	2012-10-22 16:50:34.000000000 +0200
++++ motif-2.3.4/lib/Xm/DataF.c	2014-03-04 18:46:14.325846695 +0100
+@@ -184,9 +184,7 @@
+ static void df_XmSetMarginGC() ;
+ static void df_XmResetSaveGC() ;
+ static void df_XmSetNormGC() ;
+-#ifdef FIX_1381
+ static void df_XmSetShadowGC() ;
+-#endif
+ static void df_XmSetInvGC() ;
+ static void df_DrawText() ;
+ static int df_FindPixelLength() ;
+@@ -409,11 +407,9 @@
+                         Boolean stipple) ;
+ #endif /* NeedWidePrototypes */
+ 
+-#ifdef FIX_1381
+ static void df_XmSetShadowGC( 
+                         XmDataFieldWidget tf,
+                         GC gc);
+-#endif
+ 
+ static void df_XmSetInvGC( 
+                         XmDataFieldWidget tf,
+@@ -2592,25 +2588,24 @@
+     values.foreground = tf->primitive.foreground;
+     values.background = tf->core.background_pixel;
+     if (change_stipple) {
+-#ifdef FIX_1381
++       if (!_XmIsStippleEnabled()) {
+        valueMask |= GCFillStyle;
+        if (stipple) {
+           /*generally gray insensitive foreground (instead stipple)*/
+           values.foreground = _XmAssignInsensitiveColor((Widget)tf);
+           values.fill_style = FillSolid;
+        } else values.fill_style = FillSolid;
+-#else
++       } else { /* stipple enabled */
+        valueMask |= GCTile | GCFillStyle;
+        values.tile = XmTextF_stipple_tile(tf);
+        if (stipple) values.fill_style = FillTiled;
+        else values.fill_style = FillSolid;
+-#endif
++       }
+     }
+ 
+     XChangeGC(XtDisplay(tf), gc, valueMask, &values);
+ }
+ 
+-#ifdef FIX_1381
+ static void
+ #ifdef _NO_PROTO
+ df_XmSetShadowGC( tf, gc )
+@@ -2630,7 +2625,6 @@
+ 
+     XChangeGC(XtDisplay(tf), gc, valueMask, &values);
+ }
+-#endif
+ 
+ static void 
+ #ifdef _NO_PROTO
+@@ -2882,8 +2876,7 @@
+        df_XmSetNormGC(tf, XmTextF_gc(tf), True, stipple);
+     }
+ 
+-#ifdef FIX_1381
+-    if (stipple) {
++    if (!_XmIsStippleEnabled() && stipple) {
+        /*Draw shadow for insensitive text*/
+        df_XmSetShadowGC(tf, XmTextF_gc(tf));
+        if (tf->text.max_char_size != 1) {
+@@ -2895,7 +2888,6 @@
+        }
+        df_XmSetNormGC(tf, XmTextF_gc(tf), True, stipple);
+     }
+-#endif
+ 
+     if (XmTextF_max_char_size(tf) != 1) {
+        df_DrawText(tf, XmTextF_gc(tf), *x, y, (char*) (XmTextF_wc_value(tf) + seg_start),
+Index: motif-2.3.4/lib/Xm/IconButtonP.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/IconButtonP.h	2012-10-22 16:50:34.000000000 +0200
++++ motif-2.3.4/lib/Xm/IconButtonP.h	2014-03-04 18:44:08.205156502 +0100
+@@ -117,9 +117,7 @@
+ 
+     Boolean label_from_name;
+     Boolean check_set_render_table;
+-#ifdef FIX_1381
+ 		GC shadow_gc;			/* GC to use shadow for text. */
+-#endif
+ 
+ 
+ } XmIconButtonPart;
+@@ -154,17 +152,13 @@
+ #define XmIconButton_fill_gc(w) (((XmIconButtonWidget)(w))->icon.fill_gc)
+ #define XmIconButton_pixmap_fill_gc(w) (((XmIconButtonWidget)(w))->icon.pixmap_fill_gc)
+ #define XmIconButton_stippled_text_gc(w) (((XmIconButtonWidget)(w))->icon.stippled_text_gc)
+-#ifdef FIX_1381
+ #define XmIconButton_insensitive_text_gc(w) (((XmIconButtonWidget)(w))->icon.stippled_text_gc)
+-#endif
+ #define XmIconButton_stippled_set_text_gc(w) (((XmIconButtonWidget)(w))->icon.stippled_set_text_gc)
+ #define XmIconButton_stippled_set_gc(w) (((XmIconButtonWidget)(w))->icon.stippled_set_gc)
+ #define XmIconButton_stippled_unset_gc(w) (((XmIconButtonWidget)(w))->icon.stippled_unset_gc)
+ #define XmIconButton_time(w) (((XmIconButtonWidget)(w))->icon.time)
+ #define XmIconButton_label_from_name(w) (((XmIconButtonWidget)(w))->icon.label_from_name)
+-#ifdef FIX_1381
+ #define XmIconButton_shadow_gc(w) (((XmIconButtonWidget)(w))->icon.shadow_gc)
+-#endif
+ typedef struct _XmIconButtonRec {
+     CorePart		core;
+     XmPrimitivePart	primitive;
+Index: motif-2.3.4/lib/Xm/IconGP.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/IconGP.h	2012-10-22 16:50:37.000000000 +0200
++++ motif-2.3.4/lib/Xm/IconGP.h	2014-03-04 18:42:53.308774697 +0100
+@@ -109,9 +109,7 @@
+    Dimension        spacing;
+    Dimension        margin_width;
+    Dimension        margin_height;
+-#ifdef FIX_1381
+    GC               shadow_GC;
+-#endif
+ } XmIconGCacheObjPart;
+ 
+ typedef struct _XmIconGCacheObjRec
+@@ -234,10 +232,8 @@
+ 				 icong.cache->background_GC)
+ #define	IG_InsensitiveGC(w)	(((XmIconGadget)(w))-> \
+ 				 icong.cache->insensitive_GC)
+-#ifdef FIX_1381
+ #define	IG_ShadowGC(w)	(((XmIconGadget)(w))-> \
+ 				 icong.cache->shadow_GC)
+-#endif
+ #define	IG_TopShadowGC(w)	(((XmIconGadget)(w))-> \
+ 				 icong.cache->top_shadow_GC)
+ #define	IG_BottomShadowGC(w)	(((XmIconGadget)(w))-> \
+Index: motif-2.3.4/lib/Xm/LabelGP.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/LabelGP.h	2012-10-22 16:50:35.000000000 +0200
++++ motif-2.3.4/lib/Xm/LabelGP.h	2014-03-04 18:44:37.877319083 +0100
+@@ -178,9 +178,7 @@
+ 
+   XRectangle	  PixmapRect;   /* The bounding box of the pixmap in TextRect */
+   XRectangle	  StringRect;   /* The bounding box of the string in TextRect */
+-#ifdef FIX_1381
+   GC		  shadow_GC;
+-#endif
+ 
+ } XmLabelGadgetPart;
+ 
+@@ -285,10 +283,8 @@
+                                            label.normal_GC)
+ #define LabG_InsensitiveGC(w)		(((XmLabelGadget)(w)) -> \
+                                            label.insensitive_GC)
+-#ifdef FIX_1381
+ #define LabG_ShadowGC(w)		(((XmLabelGadget)(w)) -> \
+                                            label.shadow_GC)
+-#endif
+ #define LabG_TextRect(w)		(((XmLabelGadget)(w)) -> \
+                                            label.TextRect)
+ #define LabG_AccTextRect(w)		(((XmLabelGadget)(w)) -> \
+Index: motif-2.3.4/lib/Xm/LabelP.h
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/LabelP.h	2012-10-22 16:50:34.000000000 +0200
++++ motif-2.3.4/lib/Xm/LabelP.h	2014-03-04 18:43:05.724836757 +0100
+@@ -119,9 +119,7 @@
+ 
+   XRectangle	  PixmapRect;   /* The bounding box of the pixmap in TextRect */
+   XRectangle	  StringRect;   /* The bounding box of the string in TextRect */
+-#ifdef FIX_1381
+   GC		  shadow_GC;
+-#endif
+ } XmLabelPart;
+ 
+ 
+Index: motif-2.3.4/lib/Xm/TabBox.c
+===================================================================
+--- motif-2.3.4.orig/lib/Xm/TabBox.c	2012-10-22 16:50:37.000000000 +0200
++++ motif-2.3.4/lib/Xm/TabBox.c	2014-03-05 19:53:52.386871965 +0100
+@@ -58,9 +58,7 @@
+ #define _XiBoolean Boolean
+ 
+ typedef enum {XiQUAD_1, XiQUAD_2, XiQUAD_3, XiQUAD_4} XiQuadrant;
+-#ifdef FIX_1381
+ typedef enum {normal, insensitive, shadow} GC_type;
+-#endif
+ 
+ typedef struct _XmTabRect {
+     int    x, y;
+@@ -190,9 +188,7 @@
+ 
+ static void CallCallbacks _ARGS((XmTabBoxWidget, XEvent*, int, int));
+ 
+-#ifdef FIX_1381
+ static void SetRightGC(XmTabBoxWidget tab, GC gc, GC_type);
+-#endif
+ static void DrawVerticalTab _ARGS((XmTabBoxWidget, XmTabAttributes, GC,
+ 				   _XiBoolean, int, int, int, _XiBoolean, int,
+ 				   int, XRectangle*, _XiBoolean, _XiBoolean));
+@@ -5510,7 +5506,7 @@
+     cbdata.old_index = from;
+     XtCallCallbackList((Widget)tab, XmTabBox_select_callback(tab), (XtPointer)&cbdata);
+ }
+-#ifdef FIX_1381
++
+ static void
+ SetRightGC(XmTabBoxWidget tab, GC gc, GC_type gc_type)
+ {
+@@ -5545,7 +5541,6 @@
+           break;
+       }
+ }
+-#endif
+ 
+ /* ARGSUSED */
+ static void
+@@ -5774,9 +5769,9 @@
+ 
+ 	if( !sensitive )
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    SetStippledGC(XtDisplay(tab), gc, XmTabBox__gray_stipple(tab));
+-#else
++        } else {
+ 	  /*Draw shadow for insensitive text*/
+ 	  SetRightGC(tab, gc, shadow);
+ 	  XmStringDraw(XtDisplay(tab), XiCanvas(tab), font_list,
+@@ -5784,15 +5779,15 @@
+ 	  	info->label_alignment, info->string_direction,
+ 	  	NULL);
+ 	  SetRightGC(tab, gc, insensitive);
+-#endif
++        }
+ 	}
+ 	else
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    RemoveStipple(XtDisplay(tab), gc);
+-#else
++        } else {
+ 	  SetRightGC(tab, gc, normal);
+-#endif
++        }
+ 	}
+ 	XmStringDraw(XtDisplay(tab), XiCanvas(tab), font_list,
+ 		     info->label_string, gc, draw.x, (Position)y, draw.width,
+@@ -6093,11 +6088,8 @@
+ 	if( !ValidPixmap(XmTabBox__bitmap(tab)) )
+ 	{
+ 	    XmTabBox__bitmap(tab) = XCreatePixmap(XtDisplay(tab), XiCanvas(tab),
+-#ifndef FIX_1381
+-						 label_width, label_height, 1);
+-#else
+-					 label_width, label_height, XmTabBox__canvas(tab)->core.depth);
+-#endif
++						 label_width, label_height,
++                         _XmIsStippleEnabled() ? 1 : XmTabBox__canvas(tab)->core.depth);
+ 
+ 	    XmTabBox__bitmap_width(tab) = label_width;
+ 	    XmTabBox__bitmap_height(tab) = label_height;
+@@ -6119,13 +6111,13 @@
+ 	    XGCValues   gcValues;
+ 	    unsigned long gcMask;
+ 
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    gcValues.foreground = 0;
+ 	    gcValues.background = 0;
+-#else
++        } else {
+ 	    gcValues.background = tab->core.background_pixel;
+ 	    gcValues.foreground = tab->core.background_pixel;
+-#endif
++        }
+ 	    XmTabBox__zero_GC(tab) = XCreateGC(XtDisplay(tab), bitmap,
+ 					      GCForeground | GCBackground,
+ 					      &gcValues);
+@@ -6151,25 +6143,25 @@
+ 		       0, 0, label_width, label_height);
+ 	if( !sensitive )
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    SetStippledGC(XtDisplay(tab), XmTabBox__one_GC(tab),
+ 			  XmTabBox__gray_stipple(tab));
+-#else
++        } else {
+ 	  /*Draw shadow for insensitive text*/
+ 	  SetRightGC(tab, XmTabBox__one_GC(tab), shadow);
+ 	  XmStringDraw(XtDisplay(tab), bitmap, font_list, info->label_string,
+ 	  XmTabBox__one_GC(tab), -1, -1, (Dimension)label_width,
+ 	  info->label_alignment, info->string_direction, NULL);
+ 	  SetRightGC(tab, XmTabBox__one_GC(tab), insensitive);
+-#endif
++        }
+ 	}
+ 	else
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    RemoveStipple(XtDisplay(tab), XmTabBox__one_GC(tab));
+-#else
++        } else {
+ 	  SetRightGC(tab, XmTabBox__one_GC(tab), normal);
+-#endif
++        }
+ 	}
+ 	XmStringDraw(XtDisplay(tab), bitmap, font_list, info->label_string,
+ 		     XmTabBox__one_GC(tab), 0, 0, (Dimension)label_width,
+@@ -6180,11 +6172,7 @@
+ 	 * into an XImage so that we can rotate it.
+ 	 */
+ 	src_ximage = XGetImage(XtDisplay(tab), bitmap, 0, 0, label_width, 
+-#ifndef FIX_1381
+-			       label_height, 1, XYPixmap);
+-#else
+-				label_height, AllPlanes, XYPixmap);
+-#endif
++			       label_height, _XmIsStippleEnabled() ? 1 : AllPlanes, XYPixmap);
+ 	dst_ximage = XiRotateImage(tab, src_ximage,
+ 				   XiTabDegree(XmTabBox_tab_orientation(tab)));
+ 
+@@ -6706,11 +6694,8 @@
+ 	if( !ValidPixmap(XmTabBox__bitmap(tab)) )
+ 	{
+ 	    XmTabBox__bitmap(tab) = XCreatePixmap(XtDisplay(tab), XiCanvas(tab),
+-#ifndef FIX_1381
+-						 label_width, label_height, 1);
+-#else
+-						 label_width, label_height, XmTabBox__canvas(tab)->core.depth);
+-#endif
++						 label_width, label_height,
++                         _XmIsStippleEnabled() ? 1 : XmTabBox__canvas(tab)->core.depth);
+ 	    XmTabBox__bitmap_width(tab) = label_width;
+ 	    XmTabBox__bitmap_height(tab) = label_height;
+ 	}
+@@ -6731,13 +6716,13 @@
+ 	    XGCValues   gcValues;
+ 	    unsigned long gcMask;
+ 
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    gcValues.foreground = 0;
+ 	    gcValues.background = 0;
+-#else
++        } else {
+ 	    gcValues.background = tab->core.background_pixel;
+ 	    gcValues.foreground = tab->core.background_pixel;
+-#endif
++        }
+ 	    XmTabBox__zero_GC(tab) = XCreateGC(XtDisplay(tab), bitmap,
+ 					      GCForeground | GCBackground,
+ 					      &gcValues);
+@@ -6763,10 +6748,10 @@
+ 		       0, 0, label_width, label_height);
+ 	if( !sensitive )
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    SetStippledGC(XtDisplay(tab), XmTabBox__one_GC(tab),
+ 			  XmTabBox__gray_stipple(tab));
+-#else
++        } else {
+ 	  /*Draw shadow for insensitive text*/
+ 	  /*text will be rotated below but shadow should be always under the text*/
+ 	  int x,y;
+@@ -6782,15 +6767,15 @@
+ 	  		XmTabBox__one_GC(tab), x, y, (Dimension)label_width,
+ 			info->label_alignment, info->string_direction, NULL);
+ 	  SetRightGC(tab, XmTabBox__one_GC(tab), insensitive);
+-#endif
++        }
+ 	}
+ 	else
+ 	{
+-#ifndef FIX_1381
++        if (_XmIsStippleEnabled()) {
+ 	    RemoveStipple(XtDisplay(tab), XmTabBox__one_GC(tab));
+-#else
++        } else {
+ 	  SetRightGC(tab, XmTabBox__one_GC(tab), normal);
+-#endif
++        }
+ 	}
+ 	XmStringDraw(XtDisplay(tab), bitmap, font_list, info->label_string,
+ 		     XmTabBox__one_GC(tab), 0, 0, (Dimension)label_width,
+@@ -6801,11 +6786,7 @@
+ 	 * into an XImage so that we can rotate it.
+ 	 */
+ 	src_ximage = XGetImage(XtDisplay(tab), bitmap, 0, 0, label_width, 
+-#ifndef FIX_1381
+-			       label_height, 1, XYPixmap);
+-#else
+-			       label_height, AllPlanes, XYPixmap);
+-#endif
++			       label_height, _XmIsStippleEnabled() ? 1 : AllPlanes, XYPixmap);
+ 	dst_ximage = XiRotateImage(tab, src_ximage,
+ 				   XiTabDegree(XmTabBox_tab_orientation(tab)));
+ 

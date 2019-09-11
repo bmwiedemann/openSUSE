@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Mon Jul 29 08:59:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in pytest, causes circular deps
+
+-------------------------------------------------------------------
+Sun Jul 21 17:28:05 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 3.7.4:
+ - No upstream changelog available.
+- Use pytest for tests because of an upstream bug.
+
+-------------------------------------------------------------------
+Sat Mar  2 04:20:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add test-sys-executable.patch to use python3 in Python 3 tests
+
+-------------------------------------------------------------------
+Fri Mar  1 10:07:01 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.6.6
+ *  no upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:31 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jul  4 12:45:47 UTC 2018 - dmueller@suse.com
+
+- fix build for older distros again
+
+-------------------------------------------------------------------
+Tue May 22 13:22:15 UTC 2018 - tchvatal@suse.com
+
+- Actually skip the py3 as it caused bit of fuzz but reduce the
+  code still
+
+-------------------------------------------------------------------
+Tue May 22 11:59:23 UTC 2018 - tchvatal@suse.com
+
+- Do not bother reducing the stuff to not build on 3.6, it is
+  just providing noop package which does not hurt anything and
+  saves 10 magic lines in spec
+
+-------------------------------------------------------------------
+Sun Feb 18 17:29:30 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 3.6.4:
+  * no changelog available
+
+-------------------------------------------------------------------
+Tue Sep 12 14:21:41 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.6.2
+- Dropped mod_generics_cache.py (now supplied upstream)
+
+-------------------------------------------------------------------
+Tue Aug 15 11:20:20 UTC 2017 - dmueller@suse.com
+
+- fix build in python2-only environments
+
+-------------------------------------------------------------------
+Thu Jul  6 13:44:57 UTC 2017 - sebix+novell.com@sebix.at
+
+- only build for python3<3.5
+
+-------------------------------------------------------------------
+Sun Apr 23 17:52:09 UTC 2017 - toddrme2178@gmail.com
+
+- Fix license formatting
+
+-------------------------------------------------------------------
+Tue Apr 18 21:00:52 UTC 2017 - toddrme2178@gmail.com
+
+- The last update broke packaging due to dysfunctional testing.
+  Provide the missing module from upstream.
+
+-------------------------------------------------------------------
+Tue Apr 18 16:00:25 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 3.6.1
+  * Uses python 3.6 version.
+- Implement single-spec version
+  Note: Some packages require this even on python 3.6.x
+
+-------------------------------------------------------------------
+Mon Aug  1 09:30:18 UTC 2016 - michael@stroeder.com
+
+- initial packaging of release 3.5.2.2
+

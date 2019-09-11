@@ -1,0 +1,16 @@
+Index: stdeb-0.8.5/stdeb/util.py
+===================================================================
+--- stdeb-0.8.5.orig/stdeb/util.py
++++ stdeb-0.8.5/stdeb/util.py
+@@ -1114,7 +1114,10 @@ class DebianInfo:
+         else:
+             self.override_dh_python3 = ''
+ 
+-        sequencer_options = ['--with '+','.join(sequencer_with)]
++        # These depend on the dh_python helpers in the Debian python packages
++        # https://salsa.debian.org/cpython-team/python-defaults
++        # sequencer_options = ['--with '+','.join(sequencer_with)]
++        sequencer_options = []
+         sequencer_options.append('--buildsystem=python_distutils')
+         self.sequencer_options = ' '.join(sequencer_options)
+ 

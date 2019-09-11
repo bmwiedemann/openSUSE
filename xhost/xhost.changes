@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Feb 20 15:09:25 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.0.8
+  * This release hardens xhost against corrupted or malicious responses from
+    the X server, as well as some minor bug & compatibility fixes, and general
+    janitorial maintenance.
+
+-------------------------------------------------------------------
+Fri Apr 24 14:52:48 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.7: 
+  * Add AC_USE_SYSTEM_EXTENSIONS to expose non-standard extensions
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+
+-------------------------------------------------------------------
+Sun Jul 21 19:08:28 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + Fix const warning for FamilyLocalHost empty address string.
+  + Mark argument to nameserver_lost signal handler as unused.
+  + If SIGALRM isn't available, don't use alarm() to timeout
+    gethostaddr(), just wait.
+  + Drop pre-POSIX signal handling support in favor of sigaction().
+  + Provide dummy sethostent(),endhostent() for Win32 also.
+  + Link with winsock for MinGW.
+  + Use Xwinsock.h on WIN32.
+  + Fix some integer sign/size conversion warnings flagged by
+    clang.
+  + Convert sprintf to snprintf in SECURE_RPC code.
+  + Move dpy declaration from static to main() function.
+  + Assume signal handlers return void, as C89 requires.
+  + Remove unused TLI ("STREAMSCONN") code from xhost.
+  + Remove unused DECnet ("DNETCONN") code from xhost.
+- Add pkgconfig(xproto) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Apr 14 22:16:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.5:
+  + Rework si:type:value code to remove need for shadowed namelen
+    variable
+  + man: xhost can not take a user name as a parameter.
+  + Declare some char * as const to fix gcc -Wwrite-strings
+    warnings
+  + Only need CFLAGS, not LIBS from xau package
+  + Move "-help" handling up to before XOpenDisplay (fdo#39633)
+  + xhost: check return value of X{Add,Remove}Host
+  + Build system fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xhost from xorg-x11. Initial version: 1.0.4.
+

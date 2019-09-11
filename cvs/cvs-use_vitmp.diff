@@ -1,0 +1,64 @@
+Index: cvs-1.12.12/configure
+================================================================================
+--- cvs-1.12.12/configure
++++ cvs-1.12.12/configure
+@@ -5516,7 +5516,7 @@
+ done
+ done
+ 
+-  test -z "$ac_cv_path_SENDMAIL" && ac_cv_path_SENDMAIL="no"
++  test -z "$ac_cv_path_SENDMAIL" && ac_cv_path_SENDMAIL="/sbin/sendmail"
+   ;;
+ esac
+ fi
+@@ -38024,7 +38024,7 @@
+ # Set the default when --with-editor wasn't supplied or when it was supplied
+ # without an argument.
+ if test yes = $with_editor; then
+-  with_editor="vim vi emacs nano pico edit"
++  with_editor="vitmp vim vi emacs nano pico edit"
+ fi
+ 
+ if echo $with_editor |grep ^/ >/dev/null; then
+--- cvs-1.12.12/configure.in
++++ cvs-1.12.12/configure.in
+@@ -94,7 +94,7 @@
+ fi
+ AC_SUBST_FILE(MKTEMP_SH_FUNCTION)
+ # for src/cvsbug.in
+-AC_PATH_PROG(SENDMAIL, sendmail, no, [$PATH:/usr/sbin:/usr/lib])
++AC_PATH_PROG(SENDMAIL, sendmail, /sbin/sendmail, [$PATH:/usr/sbin:/usr/lib])
+ # For diff/util.c
+ AC_PATH_PROG(PR, pr, no)
+ if test x"$PR" != xno; then
+@@ -713,7 +713,7 @@
+ # Set the default when --with-editor wasn't supplied or when it was supplied
+ # without an argument.
+ if test yes = $with_editor; then
+-  with_editor="vim vi emacs nano pico edit"
++  with_editor="vitmp vim vi emacs nano pico edit"
+ fi
+ 
+ if echo $with_editor |grep ^/ >/dev/null; then
+--- cvs-1.12.12/contrib/rcs-to-cvs.sh
++++ cvs-1.12.12/contrib/rcs-to-cvs.sh
+@@ -88,7 +88,7 @@
+ if [ $got_one -eq 0 ]; then
+     echo "Please Edit this file to contain the RCS log information" >$message_file
+     echo "to be associated with this directory (please remove these lines)">>$message_file
+-    ${EDITOR-vi} $message_file
++    ${EDITOR-vitmp} $message_file
+     got_one=1
+ fi
+ 
+--- cvs-1.12.12/src/cvsbug.in
++++ cvs-1.12.12/src/cvsbug.in
+@@ -136,7 +136,7 @@
+ # If they don't have a preferred editor set, then use
+ if [ -z "$VISUAL" ]; then
+   if [ -z "$EDITOR" ]; then
+-    EDIT=vi
++    EDIT=vitmp
+   else
+     EDIT="$EDITOR"
+   fi

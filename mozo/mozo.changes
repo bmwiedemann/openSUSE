@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Thu Jul 18 13:43:11 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Translations update
+  * Fix DeprecationWarning ABCs from 'collections'
+  * Fix DeprecationWarning: cgi.escape is deprecated
+  * Change url project's website
+  * use meson to build
+  * Migrate from intltool to gettext
+  * Fix drag and drop of .desktop file
+- remove patch:
+  * mozo-python-3.4.patch: we don't support Leap 42.3, wich has
+    python 3.4, anymore
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Fix creating new menus and items.
+  * Fix moving a menu corrupting the menu.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Drop acinclude.m4 which is not needed anymore.
+  * Support new mate-menus api.
+  * Remove libdir from Mozo/config.py.
+  * Re-indent python code.
+  * Fix menu entry can not move.
+  * Update translations.
+- Add mozo-python-3.4.patch: Restore Python 3.4 support.
+- Remove mozo-1.20.1-remove-libdir-from-config.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Dec 26 23:25:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Disable deprecation warnings for distcheck.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Oct  2 05:26:39 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add mozo-1.20.1-remove-libdir-from-config.patch (picked from
+  upstream): Make build reproducible (boo#1110032).
+
+-------------------------------------------------------------------
+Fri Jun 22 17:10:44 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Add Properties and Delete buttons.
+  * Fix several drag-and-drop issues.
+  * Fix a crash when .desktop file has slash in the name.
+  * Some more fixes and cleanups.
+  * Update translations.
+- Remove mozo-gtk3.10.patch.
+
+-------------------------------------------------------------------
+Wed Aug 24 22:50:28 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Fix a crash and erasing of the menu file when processing
+    non-ASCII characters.
+  * Fix a crash on invalid XML file.
+  * Always encode with UTF-8 before writing the XML file.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a missing python-gobject-Gdk dependency.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:50:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.1:
+  * Move to GTK+3 and GObject Introspection, drop old
+    PyGTK+-related code.
+- Add mozo-gtk3.10.patch: add support for Gtk 3.10 (SLE 12 and
+  openSUSE 13.1).
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0.
+
+-------------------------------------------------------------------
+Mon Jan 11 15:30:48 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing mate-menus dependency.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * Enable startup notification.
+  * Add silent rules.
+  * Some bugfixes.
+
+-------------------------------------------------------------------
+Thu Jul 23 16:01:32 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Fix wrong highlighting while moving menu items when separators
+    are present.
+  * Remove deprecated GTK properties.
+  * Fix help link.
+
+-------------------------------------------------------------------
+Wed May 20 22:17:21 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.10.0:
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Mar 10 15:59:51 UTC 2014 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  No indication of any GPL-2.0+ licensed files in the package. COPYING is
+  LGPL-2.1+
+
+-------------------------------------------------------------------
+Mon Mar 10 09:40:28 UTC 2014 - p.drouand@gmail.com
+
+- Add a Obsoletes tag to avoid conflicts with mate-menu-editor
+
+-------------------------------------------------------------------
+Wed Mar  5 13:04:12 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Sat Feb 15 17:11:22 UTC 2014 - p.drouand@gmail.com
+
+- Initial release (version 1.7.0)

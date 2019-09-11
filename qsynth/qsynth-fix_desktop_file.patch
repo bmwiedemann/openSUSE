@@ -1,0 +1,9 @@
+Index: qsynth-0.5.0/src/qsynth.desktop
+===================================================================
+--- qsynth-0.5.0.orig/src/qsynth.desktop
++++ qsynth-0.5.0/src/qsynth.desktop
+@@ -15,4 +15,3 @@ Terminal=false
+ Type=Application
+ StartupWMClass=qsynth
+ X-Window-Icon=qsynth
+-X-SuSE-translate=true

@@ -1,0 +1,24 @@
+Due to your /etc/permissions configuration (which might be caused by an
+outdated permissions package), the lxc-user-nic helper binary has been
+installed with a missing setuid bit. This setuid helper is required in order
+for LXC unprivileged containers to operate, and has already been reviewed by
+the SUSE security team and added to the Factory permissions setuid
+whitelist[1].
+
+No action has been taken to fix this configuration problem (in case this was
+intentional, and to avoid breaking openSUSE packaging guidelines), so your
+administrator will have to fix this manually.
+
+In order to fix this, add the following line to /etc/permissions.local (this is
+necessary to avoid losing the setuid bit during package updates or causing
+audit warnings):
+
+    @libexecdir@/lxc/lxc-user-nic  root:kvm  04750
+
+and then add the setuid bit to the helper:
+
+    chmod u+s @libexecdir@/lxc/lxc-user-nic
+
+... or you can re-install liblxc@LXC_ABI_MAJOR@.
+
+[1]: https://bugzilla.opensuse.org/show_bug.cgi?id=988348

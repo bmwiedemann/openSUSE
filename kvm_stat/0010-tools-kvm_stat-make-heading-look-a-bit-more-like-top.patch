@@ -1,0 +1,33 @@
+From df04dff6ef8405a577d685cba5bbf7b597068293 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:36 +0200
+Subject: [PATCH 10/43] tools/kvm_stat: make heading look a bit more like 'top'
+
+Print header in standout font just like the 'top' command does.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit f6d753102a2469ae4ce08ef3e34d170ec583fb50)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 112fe57561a5..cd4ae362a355 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -985,7 +985,8 @@ class Tui(object):
+                 regex = regex[:MAX_REGEX_LEN] + '...'
+             self.screen.addstr(1, 17, 'regex filter: {0}'.format(regex))
+         self.screen.addstr(2, 1, '%-40s %10s%7s %7s' %
+-                           ('Event', 'Total', '%Total', 'Current'))
++                           ('Event', 'Total', '%Total', 'Current'),
++                           curses.A_STANDOUT)
+         self.screen.addstr(4, 1, 'Collecting data...')
+         self.screen.refresh()
+ 
+-- 
+2.12.3
+

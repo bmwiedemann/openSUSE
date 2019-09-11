@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Oct 11 18:26:18 UTC 2014 - jengelh@inai.de
+
+- Drop unnecessary xz buildtime dependency
+
+-------------------------------------------------------------------
+Fri Apr 18 14:36:09 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5.4
+* Linear system solver FastLss now accepts constant references
+* new function 'CompMat' for Ostrowski's comparison matrix
+- Add cxsc-libversion.diff to set the right SO version
+
+-------------------------------------------------------------------
+Wed May 15 22:25:05 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 2.5.3) for build.opensuse.org

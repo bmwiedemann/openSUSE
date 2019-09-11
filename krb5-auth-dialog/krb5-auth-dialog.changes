@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Tue Mar 20 17:05:53 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:49 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Nov 12 02:41:04 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Update for newer GTK.
+  + Bugfixes.
+  + Updated translations.
+- Update Url to https://www.gnome.org/: since the app doesn't have
+  a specific home page is better to point to the GNOME site instead
+  of its download page.
+- Change libnm-glib to libnm pkgconfig(*) BuildRequires: following
+  upstream change.
+- Add gio-2.0, gio-unix-2.0 and gmodule-2.0 pkgconfig(*)
+  BuildRequires: they were already being used and pulled along with
+  the ever declared pkgconfig(glib-2.0) since they live in the same
+  devel package.
+- Add conditional use to translation-update-upstream: SLE-only
+  requirement.
+- Drop bison and flex BuildRequires and --disable-scrollkeeper
+  configure parameter: the last is no longer available and the
+  former ones are not used/needed anymore.
+- Drop %glib2_gsettings_schema_*, %desktop_database_*,
+  %icon_theme_cache_* post/postun scriptlets and 
+  %glib2_gsettings_schema_requires macro: no longer needed since
+  RPM file triggers.
+- Drop %clean section as its use is obsolete and replace pristine
+  job macro with %{?_smp_mflags} macro as handler of number of jobs
+  available for make.
+
+-------------------------------------------------------------------
+Sat Jul 23 20:26:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Use yelp-tools instead of gtk-doc-utils.
+  + Remove some deprecated macros.
+  + Updated translations.
+- Replace gnome-doc-utils-devel for yelp-tools BuildRequires
+  following upstream changes.
+
+-------------------------------------------------------------------
+Wed Jan 28 22:33:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Use GtkGrid instead of deprecated GtkVBox.
+  + Minor debug cleanups.
+  + Slightly improve ticket list view.
+  + Updated translations.
+- Changes from version 3.15.1:
+  + Make dialog layouts consistent regarding header bars.
+  + Fix wrong ticket properties in prefs.
+  + Remove notifiations in SIGTERM and SIGQUIT.
+  + Fix pkinit configuration.
+  + Use GResource.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 25 11:56:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Fix empty principal name (deb#762906).
+  + Remote GTK deprecations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 14:05:43 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Move dialog buttons into header bar.
+  + Adjust to new GApplication flags (lp#1311487).
+  + Properly reprompt for a password on KRB5_GET_IN_TKT_LOOP.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 28 15:14:49 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + Use an app menu instead of a menu bar.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:13:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Use GSettings instead of GConf.
+  + Hide configuration tickets by default (bgo#649830).
+  + Updated translations.
+- Drop pkgconfig(gconf-2.0) BuildRequires: no longer needed after
+  the port to GSettings.
+
+-------------------------------------------------------------------
+Mon Oct 17 09:21:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Fix DBus activation
+  + Add missing categories to the desktop file
+  + Fix options in documentation
+  + Updated translations.
+- Drop krb5-auth-dialog-fix-desktop.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 27 10:14:15 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Use GtkApplication
+  + Turn ticket dialog into the main window that gets shown when
+    krb5-auth-dialog is invoked multiple times. This makes the
+    prefs easily accessible.
+  + Fix crash when displaying empty ticket dialog
+  + Updated translations.
+- Add krb5-auth-dialog-fix-desktop.patch: add categories to
+  .desktop file, taken from git.
+- Drop krb5-auth-dialog-no-g-c-c.patch: fixed upstream.
+- Drop call to autoreconf: it was only needed for patch above.
+- Drop --with-gtk=3.0 option from configure: this option is now
+  gone.
+- Use GNOME, GTK, System, Network categories in the
+  krb5-auth-dialog.desktop, since the upstream ones don't pass our
+  checks.
+
+-------------------------------------------------------------------
+Tue Sep  6 14:30:39 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Move preferences from cc into the app (bgo#657292)
+  + Update ticket list on ccache changes
+  + Add menu bar to ticket dialog making help accessible again
+  + Updated translations.
+- Remove now unneeded pkgconfig(libgnome-control-center)
+  BuildRequires.
+- Add krb5-auth-dialog-no-g-c-c.patch: fix configure flag to really
+  not needed pkgconfig(libgnome-control-center).
+- Add autoreconf call, needed for above patch.
+
+-------------------------------------------------------------------
+Thu Apr 28 14:28:16 CEST 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: NetworkManager-devel, gconf2-devel, gtk3-devel,
+    libnotify-devel.
+  + New ones: gconf-2.0, glib-2.0, gtk+-3.0, libnm-glib, libnotify.
+- Drop dbus-1-glib-devel BuildRequires: the code got ported to
+  GDBus.
+- Call %suse_update_desktop_file for gnome-ka-panel.desktop.
+
+-------------------------------------------------------------------
+Thu Apr 28 11:56:12 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Fix documentation of --auto
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 14:15:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Fix DBus activation
+  + Fix missing initial notification
+  + Updated translations.
+- Changes from version 2.91.93:
+  + cc-panel: Move pkinit properties to separate tab
+  + Update for NetworkManager 0.9
+  + Minor bug fixes
+- Changes from version 2.91.91:
+  + Migrate to GDBus (bgo#622885)
+- Changes from version 2.91.90:
+  + Check credential cache right after startup so the user gets
+    immediate feedback about her/his Kerberos tickets.
+  + Make "always run" the default, don't exit when no ticket cache
+    exists.
+  + Try harder to detect the notification daemon's persistence
+    capabilities during the autostart phase (bgo#642666).
+- Changes from version 2.91.6:
+  + Add "Get ticket" button to notifications
+  + Disable tray icon if the notification server supports
+    persistent notifications.
+  + Move preferences to a gnome-control-center panel
+  + Display account expiry prompts returned by the KDC
+  + Drop gtksecentry and use GtkEntryBuffer with secmem instead
+  + Use NMClient GObject instead of deprecated functions
+  + Install desktop file to /u/s/applications so GNOME shell can
+    find the icons.
+- Change gtk2-devel BuildRequires to gtk3-devel, and pass
+  --with-gtk=3.0 to configure (instead of --with-gtk=2.0).
+- Add pkgconfig(libgnome-control-center) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:25:55 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:47:51 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Sun Sep 12 15:58:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.17:
+  + Add AFS plugin
+  + Add --with-gtk to select the GTK+ 2 or 3
+  + Updated translations.
+- Drop krb5-auth-dialog-nonvoid.patch: fixed upstream.
+- Pass --with-gtk=2.0 to configure to make sure we build against
+  the version we want.
+
+-------------------------------------------------------------------
+Thu Aug  5 16:40:13 CEST 2010 - vuntz@opensuse.org
+
+- Change group from System/Security to Productivity/Security to
+  make rpmlint happy.
+- Add pam-devel BuildRequires to build PAM plugin.
+
+-------------------------------------------------------------------
+Mon Aug  2 22:19:35 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.16:
+  + Add plugin system
+  + Memory leaks plugged
+  + Bug fixes
+  + Make -DSEAL safe
+  + Updated translations.
+- Pass --disable-static to configure.
+- Add krb5-auth-dialog-nonvoid.patch, from upstream git, to fix
+  brp checks.
+
+-------------------------------------------------------------------
+Tue Apr  6 12:50:43 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.15:
+  + Add DBus signals for ticket acquisition, expiry and renewal.
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 13 13:09:28 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.14:
+  + add ticket flags to "list tickets" dialog
+  + add manpage for krb5-auth-dialog-preferences
+  + bug fixes
+  + updated translations
+
+-------------------------------------------------------------------
+Thu Oct  1 17:41:52 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 0.13:
+  + add "list tickets" dialog
+  + plug memory leaks
+  + lots of bug fixes
+  + updated translations
+
+-------------------------------------------------------------------
+Fri Jul 31 12:37:04 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.12:
+  + ease PKINIT smartcard setup
+  + add new icons
+  + minor bug fixes
+  + updated translations
+
+-------------------------------------------------------------------
+Tue Jun 16 03:19:52 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.11:
+  + add a user manual
+  + add svg and 48x48 icons, use them in notifications
+  + add DBus API to destroy ticket cache (can be used by e.g. on
+    laptop suspend, screensaver, ...)
+  + cleanups and bug fixes
+  + updated translations
+- Add gnome-doc-utils-devel BuildRequires.
+- Pass --disable-scrollkeeper to configure.
+- Package new icons.
+
+-------------------------------------------------------------------
+Wed May 27 18:38:47 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10:
+  + allow to turn off notifications easily
+  + use GtkBuilder instead of Libglade
+  + reduce number of translatable strings
+  + various i18n fixes
+  + updated translations
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon May 18 03:25:46 CEST 2009 - vuntz@novell.com
+
+- Do not use tabs, remove trailing white spaces.
+- Add BuildRequires: NetworkManager-devel, bison, flex,
+  libnotify-devel
+- Do not add categories that are already present to desktop files.
+- Split lang package.
+
+-------------------------------------------------------------------
+Wed May 13 21:14:09 CEST 2009 - dominique-obs@leuenberger.net
+
+- Initial package, created during Community Week 1 
+

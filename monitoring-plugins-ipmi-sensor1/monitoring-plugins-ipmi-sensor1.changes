@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Apr 21 15:02:00 CEST 2017 - ro@suse.de
+
+- protect recommends with suse_version 
+
+-------------------------------------------------------------------
+Mon Dec 29 11:01:54 UTC 2014 - lars@linux-schulserver.de
+
+- adapt usr.lib.nagios.plugins.check_ipmi_sensor1 :
+  + gawk (and maybe later also ipmitool) could also be located in 
+    /bin/ with newer distributions
+
+-------------------------------------------------------------------
+Wed Jul 30 19:16:44 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-ipmi-sensor1
+
+-------------------------------------------------------------------
+Fri Aug 30 11:41:50 UTC 2013 - lars@linux-schulserver.de
+
+- added check_ipmi_sensor_v1.3_PowerEdge.patch :
+  Dell PowerEdge servers seem to have a sensor called: "Fatal IO Error"
+  which triggers the script to exit with error message.
+  (see bnc #836235)
+
+-------------------------------------------------------------------
+Thu Jan 17 21:03:43 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See the check_ipmi_sensor script and the gpl.txt file
+
+-------------------------------------------------------------------
+Wed Nov 14 08:46:47 UTC 2012 - lars@linux-schulserver.de
+
+- allow access to /var/run/nscd/*
+- specfile/license cleanup
+
+-------------------------------------------------------------------
+Tue Jul  3 08:08:25 UTC 2012 - lars@linux-schulserver.de
+
+- added apparmor profile
+
+-------------------------------------------------------------------
+Wed May  4 15:24:51 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 1.3
+

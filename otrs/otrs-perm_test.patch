@@ -1,0 +1,12 @@
+Index: Kernel/System/Package.pm
+===================================================================
+--- Kernel/System/Package.pm.orig
++++ Kernel/System/Package.pm
+@@ -4321,7 +4321,6 @@ sub _FileSystemCheck {
+     }
+ 
+     my @Filepaths = (
+-        '/bin/',
+         '/Kernel/',
+         '/Kernel/System/',
+         '/Kernel/Output/',

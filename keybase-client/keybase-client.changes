@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Sat Aug 17 08:56:46 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Upgrade to version 4.3.1
+  * Replies will automatically notify who you're replying to.
+  * Support user lookup by phone number.
+
+-------------------------------------------------------------------
+Wed Jul 24 18:38:08 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Upgrade to version 4.2.1
+  * Search across all chat conversations.
+  * Team mentions in chat.
+
+-------------------------------------------------------------------
+Thu Jun  6 07:11:19 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  make the build dep chain cheaper by using systemd-mini.
+
+-------------------------------------------------------------------
+Fri Apr 12 20:21:20 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Upgrade to version 3.2.2
+  * Support for Mastodon social proofs.
+  * New slash commands.
+  * Set short term retention policies on teams and direct messages.
+- This version requires Go >= 1.10 and will thus no longer work on
+  Leap 15.0.
+
+-------------------------------------------------------------------
+Wed Jan  2 18:56:19 UTC 2019 - marix@marix.org
+
+- Upgrade to version 2.11.0
+  * Improvements to filesystem and message handling.
+
+-------------------------------------------------------------------
+Fri Nov 23 19:22:37 UTC 2018 - marix@marix.org
+
+- Upgrade to version 2.10.1
+
+-------------------------------------------------------------------
+Tue Nov  6 22:00:05 UTC 2018 - marix@marix.org
+
+- Add a README.SUSE highlighting differences in usage to what is
+  documented by upstream.
+- Drop the upstream README that only contains information relevant
+  for people building from source.
+
+-------------------------------------------------------------------
+Fri Nov  2 20:42:10 UTC 2018 - marix@marix.org
+
+- Add the required Keybase service.
+
+-------------------------------------------------------------------
+Fri Nov  2 19:37:11 UTC 2018 - marix@marix.org
+
+- Use the production site instead of building a development client.
+
+-------------------------------------------------------------------
+Thu Nov  1 22:18:44 UTC 2018 - marix@marix.org
+
+- Stop installing development files.
+
+-------------------------------------------------------------------
+Thu Nov  1 21:52:23 UTC 2018 - marix@marix.org
+
+- Initial package version

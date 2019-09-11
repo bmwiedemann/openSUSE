@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c7eb7e9..d138392 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1909,11 +1909,6 @@ set(CPACK_SOURCE_IGNORE_FILES $(CPACK_SOURCE_IGNORE_FILES) ".git" "build" "tgz"
+ # Most people are more used to "make dist" compared to "make package_source"
+ add_custom_target(dist COMMAND "${CMAKE_MAKE_PROGRAM}" package_source)
+ 
+-include(UseRPMTools)
+-if (RPMTools_FOUND)
+-	RPMTools_ADD_RPM_TARGETS(libwebsockets scripts/libwebsockets.spec)
+-endif()
+-
+ message("---------------------------------------------------------------------")
+ message("  Settings:  (For more help do cmake -LH <srcpath>)")
+ message("---------------------------------------------------------------------")

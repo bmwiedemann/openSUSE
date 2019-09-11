@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Jun  9 17:36:11 UTC 2016 - dap.darkness@gmail.com
+
+- 0.1.1.
+- Removed manpageeditor-root-I_O.diff because of upstream fix.
+- Url tag was changes to more robust alternative.
+- Added mime_database_post(un) macro requested by upstream.
+
+-------------------------------------------------------------------
+Sun May 15 19:30:48 UTC 2016 - dap.darkness@gmail.com
+
+- Post/postun requirements fixing up.
+
+-------------------------------------------------------------------
+Sun May 15 15:22:36 UTC 2016 - dap.darkness@gmail.com
+
+- Imported from RPM Sphere.
+- SUSEficated.
+- 0.1.0
+  * See at http://gtk-apps.org/content/show.php?content=160219
+
+-------------------------------------------------------------------
+Fri Mar 27 00:00:00 MSK 2015 - huaren.zhong@gmail.com
+
+- Rebuild for Fedora
+
+-------------------------------------------------------------------
+Wed Oct 23 00:00:00 FET 2013 - symbianflo@mandrivausers.ro
+
++ Revision: 24b004a
+- dropped mrb distsuffix, enable debug

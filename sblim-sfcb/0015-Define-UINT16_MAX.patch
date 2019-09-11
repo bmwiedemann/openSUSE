@@ -1,0 +1,27 @@
+From adc0033b51580d1c3db29c887a88c940a42f64be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Nov 2017 11:57:46 +0100
+Subject: [PATCH 15/25] Define UINT16_MAX
+
+---
+ interopServerProvider.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/interopServerProvider.c b/interopServerProvider.c
+index 23ae18246393..eaa8cdd9eb4d 100644
+--- a/interopServerProvider.c
++++ b/interopServerProvider.c
+@@ -60,6 +60,10 @@ static const CMPIBroker *_broker;
+ static CMPIStatus invClassSt = { CMPI_RC_ERR_INVALID_CLASS, NULL };
+ static CMPIInstance *ISinst; //Global instance for IndicationService
+ 
++#ifndef UINT16_MAX
++#define UINT16_MAX             (65535U)
++#endif
++
+ // ------------------------------------------------------------------
+ 
+ static char    *
+-- 
+2.15.0
+

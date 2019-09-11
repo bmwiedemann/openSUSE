@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Nov  8 17:18:11 UTC 2018 - alarrosa@suse.com
+
+- Remove unneeded python devel package
+- Add %license tag
+
+-------------------------------------------------------------------
+Wed Sep 12 13:24:02 UTC 2018 - badshah400@gmail.com
+
+- Fix mtime difference between object files and sources by
+  recompiling after source file modification post python_install
+  stage; oddly fdupes needs to be run twice for this to correctly
+  work: once before compilation and once after.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:17:29 UTC 2018 - badshah400@gmail.com
+
+- Initial package.

@@ -1,0 +1,85 @@
+From 1e411dced371babfda2dc29cfc86bfc844f23f05 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Fri, 1 Dec 2017 17:27:18 +0100
+Subject: [PATCH] autotools: choose engine plugin name based on OpenSSL version
+
+In OpenSSL 1.1 engines are no longer prefixed with "lib" and also won't
+be found if installed as lib<engine>.so. So this change checks for the
+OpenSSL version we're compiling against and conditionally sets up
+libtpm.so or just tpm.so.
+---
+ Makefile.am  | 27 +++++++++++++++++++++++----
+ configure.in | 19 +++++++++++++++++++
+ 2 files changed, 42 insertions(+), 4 deletions(-)
+
+Index: openssl_tpm_engine-0.4.2/Makefile.am
+===================================================================
+--- openssl_tpm_engine-0.4.2.orig/Makefile.am
++++ openssl_tpm_engine-0.4.2/Makefile.am
+@@ -2,13 +2,32 @@ SUBDIRS=. test
+ 
+ EXTRA_DIST = README  openssl.cnf.sample
+ 
+-openssl_engine_LTLIBRARIES=libtpm.la
+ bin_PROGRAMS=create_tpm_key
+ openssl_enginedir=@libdir@/openssl/engines
+ 
+-libtpm_la_LIBADD=-lcrypto -lc -ltspi
+-libtpm_la_SOURCES=e_tpm.c e_tpm.h e_tpm_err.c
+-libtpm_la_LDFLAGS=-avoid-version -module -shared -export-dynamic
++engine_libs=-lcrypto -lc -ltspi
++engine_sources=e_tpm.c e_tpm.h e_tpm_err.c
++engine_ldflags=-avoid-version -module -shared -export-dynamic
++
++# in OpenSSL 1.1 engine modules have been stripped of the lib prefix so we
++# need to adust the library name accordingly.
++#
++# sadly there seems to be no elegant way to change the library name based on a
++# configure check outcome, so we have to explicitly define both variants like
++# this
++if OPENSSL_11
++engine_base=tpm.la
++tpm_la_LIBADD=$(engine_libs)
++tpm_la_LDFLAGS=$(engine_ldflags)
++tpm_la_SOURCES=$(engine_sources)
++else
++engine_base=libtpm.la
++libtpm_la_LIBADD=$(engine_libs)
++libtpm_la_LDFLAGS=$(engine_ldflags)
++libtpm_la_SOURCES=$(engine_sources)
++endif
++
++openssl_engine_LTLIBRARIES=$(engine_base)
+ 
+ create_tpm_key_SOURCES=create_tpm_key.c
+ create_tpm_key_LDADD=-ltspi -lcrypto
+Index: openssl_tpm_engine-0.4.2/configure.in
+===================================================================
+--- openssl_tpm_engine-0.4.2.orig/configure.in
++++ openssl_tpm_engine-0.4.2/configure.in
+@@ -51,6 +51,25 @@ AC_USE_SYSTEM_EXTENSIONS
+ AC_SYS_LARGEFILE
+ AC_PROG_LIBTOOL
+ 
++AC_MSG_CHECKING([for OpenSSL 1.1])
++AC_TRY_COMPILE(
++    [#include <openssl/opensslv.h>],
++    [
++	    #if OPENSSL_VERSION_NUMBER < 0x1010000fL
++	    #	error "old ssl"
++	    #else
++	    #   warning "new openssl"
++	    #endif
++    ],
++    [AC_MSG_RESULT(yes)
++    openssl_11=true
++    ],
++    [AC_MSG_RESULT(no)
++    openssl_11=false
++    ]
++)
++AM_CONDITIONAL([OPENSSL_11], [test x$openssl_11 = xtrue])
++
+ CFLAGS="$CFLAGS -Wall"
+ AC_SUBST(CFLAGS)
+ 

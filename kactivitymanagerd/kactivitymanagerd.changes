@@ -1,0 +1,1053 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:05 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:16 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:13 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- No code changes since 5.15.90
+
+-------------------------------------------------------------------
+Thu May 16 16:56:36 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * bump Qt version to 5.12 as agreed at start of cycle
+
+-------------------------------------------------------------------
+Tue May  7 11:04:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- No code changes since 5.15.4
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:04:47 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:25:33 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- No code changes since 5.14.90
+
+-------------------------------------------------------------------
+Thu Jan 17 18:45:47 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * bump KF5 dependency to required 5.54 as agreed at start of Plasma 5.15 cycle
+  * Consti'fy
+  * create categories file
+  * Move kactivitymanagerd to libexec and remove manual daemon management
+  * Fix compile
+  * Use QStringLiteral and co
+
+-------------------------------------------------------------------
+Tue Jan  8 13:36:44 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- No code changes since 5.14.4
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:45 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * drop ancient commented out code
+  * actually initialize kcrash properly
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:10 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 23 13:55:03 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:09 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- No code changes since 5.13.90
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:24:59 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Enabled the global shortcuts plugin by default
+  * Remove unused KAMD_DATA_DIR variables
+  * Use (non-deprecated) KDEInstallDirs variables
+  * Use KDE_INSTALL_FULL_BINDIR instead of hardcoding bin/ subdir
+  * Remove unneeded include_directories
+  * No need to set CMAKE_INCLUDE_CURRENT_DIR, done by KDECMakeSettings
+  * Add some QT_ definitions to enforce current strict state
+  * Use override
+  * Use nullptr
+  * Fix typo in assert messages
+  * Use more explicit
+  * No need to set CMAKE_AUTOMOC ourselves, done by KDECMakeSettings
+  * Use ecm_setup_qtplugin_macro_names for KAMD_EXPORT_PLUGIN
+  * No need to add explicitly ECM_KDE_MODULE_DIR, part of ECM_MODULE_PATH
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Remove unneeded cmake macro includes
+  * Require KDE Frameworks 5.42 and Qt 5.9
+  * Bump min cmake version to 3.0
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:40 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * If a query failure is bad enough for an assert, use qCWarning...
+
+-------------------------------------------------------------------
+Thu Aug  9 11:45:51 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't recommend kactivitymanagerd-imports anymore, not needed
+  after the split (boo#1104264)
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:32 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:01:26 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 26 16:00:16 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:43:57 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:50 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * None
+
+-------------------------------------------------------------------
+Sat May 19 14:16:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Warning--
+  * Link against kcrash
+  * Migrate to ecm_qt_declare_logging_category
+  * Use category logging
+  * Allowing KAMD to run without a database backend
+  * Removed the separate thread for resource score cache processing
+  * allow to have more than one default activity
+
+-------------------------------------------------------------------
+Wed May  2 09:06:27 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:47 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:18 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:43 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * Actually quit threads nicely (kde#385533)
+
+-------------------------------------------------------------------
+Tue Jan 30 08:33:52 UTC 2018 - wbauer@tmo.at
+
+- Require libQt5Sql5-sqlite, apparently it crashes without it, and
+  even if not it would probably not work properly (boo#1078173)
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:02 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Remove obsolete reviewboardrc file
+  * Don't load KDE platform module in kactivitymanagerd
+  * DBus activate KActivityManagerd
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:43:17 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * Add missing dependencies
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:16 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * [resources] Nicely quit threads
+
+-------------------------------------------------------------------
+Tue Oct 24 18:12:40 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:18:16 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:17 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:04 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Separating queries for removing from a specific activity and from all activities
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:47 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Wed Jul  5 08:48:56 UTC 2017 - wbauer@tmo.at
+
+- Recommend -lang package
+
+-------------------------------------------------------------------
+Tue Jun 27 17:49:50 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:55 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * None
+
+-------------------------------------------------------------------
+Fri May 26 14:10:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * None
+
+-------------------------------------------------------------------
+Thu May 11 20:26:20 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * None
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:44 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * None
+-------------------------------------------------------------------
+Tue Feb 28 19:54:20 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * Merge Plasma/5.8
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb  7 18:51:51 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * Merge Plasma/5.8 into Plasma/5.9
+  * Backporting the fixes from master
+  * Sync the dbus ActivityInfo structure with the framework
+
+-------------------------------------------------------------------
+Wed Feb  1 11:33:58 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:06 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * Support unlinking from any activity.
+  * Do not allow empty targetted resource to be linked.
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:42 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:35:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Mar  5 19:08:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Split out kactivitymanagerd binary as per upstream change (on
+  source package level) - it's now part of Plasma, instead of KF5
+
+-------------------------------------------------------------------
+Sun Feb  7 05:32:00 UTC 2016 - wbauer@tmo.at
+
+- Add fix-crash-in-activities-context-menu.patch: fixes a dolphin
+  and desktop crash when right-clicking on a file and opening the
+  "Activities" submenu (boo#952139, kde#351485)
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Don't call exec() from QML (kde#357435)
+  * KActivitiesStats library is now in a separate repository
+  * Fix crash on exit/logout (boo#965653, kde#348194)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Streamlined the QML loading for KCM (kde#356832)
+  * Work-around for the Qt SQL bug that does not clean up
+    connections properly (kde#348194)
+  * Merged a plugin that executes applications on
+    activity state change
+  * Port from KService to KPluginLoader
+  * Port plugins to use kcoreaddons_desktop_to_json()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:02:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Fixed a lock on the first start of the daemon
+  * Moving QAction creation to the main thread. (kde#351485)
+  * Sometimes clang-format makes a bad decision (kde#355495)
+  * Killing potential synchronization issues
+  * Use org.qtproject instead of com.trolltech
+  * Removing the usage of libkactivities from the plugins
+  * KAStats config removed from the API
+  * Added linking and unlinking to ResultModel
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:57:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Fixing the build against Qt 5.3
+  * Moved the boost.optional include to the place that uses it
+  * Replacing the boost.optional usage in continuations with a
+    slimmer optional_view structure
+  * Added support for a custom ordering of linked results
+  * Allow QML to invoke activities KCM
+  * Adding the support for activity deletion to activities KCM
+  * New activity configuration UI
+  * New configuration UI that supports adding
+    description and wallpaper
+  * Settings UI is now properly modularized
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Using a custom matching function instead of sqlite's glob.
+    (kde#352574)
+  * Fixed problem with adding a new resource to the model
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Only spawn one action loader (thread) when the actions of the
+    FileItemLinkingPlugin are not initialized (kde#351585)
+  * Fixing the build problems introduced by renaming the
+    Private classes
+  * Add missing boost include path to build on OS X
+  * Setting the shortcuts moved to activity settings
+  * Setting the private activity mode works
+  * Refactor of the settings UI
+  * Basic activity methods are functional
+  * UI for the activity configuration and deletion pop-ups
+  * Basic UI for the activities creation/deletion/configuration
+    section in KCM
+  * Increased the chunk size for loading the results
+  * Added missing include for std::set
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Adding the option not to track the user when in specific activities
+    (similar to the 'private browsing' mode in a web browser)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Tue May 26 18:10:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Unconditionally obsolete kactivities4
+- Drop kamd-rename.patch (kde#348212, kde#347817)
+
+-------------------------------------------------------------------
+Sun May  3 19:46:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+- Added pkgconfig(Qt5Quick) >= 5.2.0 BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr 26 00:04:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Obsolete kactivities4 for openSUSE > 13.2
+- Apply kamd-rename.patch for <= 13.2
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Implemented forgetting a resource
+  * Build fixes
+  * Added a plugin to register events for KRecentDocument notifications
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Resources scoring service is now finalized
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fixed starting and stopping activities
+  * Fixed activity preview showing wrong wallpaper occasionally
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Introducing the ActivityInfo QML object
+  *  Linking now supports special values alongside activity ids.
+     Supported values:
+     :global  - links to all activities
+     :current - links to the current activity
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Fix plugin loading with KDE_INSTALL_USE_QT_SYS_PATHS ON
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Added DBus interface to load plugins at runtime
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KActivities: reimplementation of the file item plugin for
+    linking files to activities
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added kcmutils-devel, kdeclarative-devel, kglobalaccel-devel and
+  kxmlgui-devel BuildRequires
+- Rebase kamd-rename.patch
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Mon Jul 28 17:27:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Split out imports to separate package
+- Improve devel subpackage summary and description
+- Recommends libQt5Sql5-sqlite for sqlite plugin
+
+-------------------------------------------------------------------
+Fri Jul 11 09:29:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Tue May 13 18:49:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Mark licence as GPL-2.0+, until the relicensing is done upstream
+
+-------------------------------------------------------------------
+Sun May  4 01:20:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+- Update devel package requires to current reality
+- Added kamd-rename.patch: rename kactivitymanagerd binary so it can
+  co-exist with kactivities4
+
+-------------------------------------------------------------------
+Wed Apr  2 06:52:26 UTC 2014 - cfarrell@suse.com
+
+- license update: LGPL-2.0+ and GPL-2.0+
+  numerous files under plugins subdirectory are GPL-2.0+ (activityranking,
+  sqlite etc). Also, please include all COPYING* files in %doc
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Mon Feb 10 21:56:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kactivities5 package
+

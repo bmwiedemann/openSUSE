@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri Feb  9 11:58:05 UTC 2018 - sknorr@suse.com
+
+- Set this package to obsolete liberation2-fonts to help
+  with Tumbleweed upgrade (boo#1080244)
+
+-------------------------------------------------------------------
+Thu Feb  5 16:45:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.07.4
+  * Restored Liberation Sans Bold 'u' instructions
+  * Resolved #1009650, renames serbian shapes as per AGL
+  * Added new glyph for "imacron" and "g"
+  * Added Correct shape for uni266B in all Liberation variants #1014357
+  * Resolved Problematic shapes for macedonian alphabet #1013949
+
+-------------------------------------------------------------------
+Wed Apr  2 08:57:19 UTC 2014 - pgajdos@suse.com
+
+- update to 1.07.3:
+  * Corrected U+2588 shape to match with Dejavu fonts in Mono
+  * Resolved Serbian bug #984428
+  * applied patch to remove kerning for number 1
+  * corrected shape of U+040D #799384
+
+-------------------------------------------------------------------
+Mon Nov 12 12:20:50 UTC 2012 - pgajdos@suse.com
+
+- downgrade to 1.07.2 [bnc#788838] 
+  (liberation2-fonts package created)
+
+-------------------------------------------------------------------
+Thu Aug  2 16:39:22 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 2.00.0.
+- The package license changed to OFL-1.1.
+- Build the fonts from sources. Added fontforge build requirement for this.
+- Add a Provides: entry for "scalable-font-el".
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Fri May 25 10:36:33 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Liberation
+  The correct license from the spreadsheet linked at license.opensuse.org
+
+-------------------------------------------------------------------
+Thu May 17 09:10:16 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  2 20:53:54 UTC 2011 - sreeves@suse.com
+
+- Fix license - bnc#725370
+
+-------------------------------------------------------------------
+Tue Jan 11 15:43:54 CET 2011 - tiwai@suse.de
+
+- updated to version 1.06.0.20100721, including Narrow fonts
+  (bnc#661433)
+
+-------------------------------------------------------------------
+Thu Apr  8 18:15:06 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Thu Nov 27 18:18:13 CET 2008 - sbrabec@suse.cz
+
+- Degrade to version 1.03. (bnc#440913)
+
+-------------------------------------------------------------------
+Sun Nov  2 10:16:48 CET 2008 - coolo@suse.de
+
+- update to 1.04 - released in july (bnc#440913)
+
+-------------------------------------------------------------------
+Fri May 11 16:03:13 CEST 2007 - mfabian@suse.de
+
+- new package: liberation-fonts, version 0.1.

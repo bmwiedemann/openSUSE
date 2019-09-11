@@ -1,0 +1,13 @@
+Index: john-1.8.0/john-1.7.9-jumbo-7/src/Makefile
+===================================================================
+--- john-1.8.0.orig/john-1.7.9-jumbo-7/src/Makefile
++++ john-1.8.0/john-1.7.9-jumbo-7/src/Makefile
+@@ -72,7 +72,7 @@ OPT_INLINE = -Os -funroll-loops -finline
+ 
+ # Works with Solaris make, and GNU make
+ PLUGFORMATS_SRCS: sh =echo *_plug.c
+-PLUGFORMATS_SRCS += $(wildcard *_plug.c)
++PLUGFORMATS_SRCS += $(sort $(wildcard *_plug.c))
+ PLUGFORMATS_OBJS = $(PLUGFORMATS_SRCS:.c=.o)
+ 
+ JOHN_OBJS = \

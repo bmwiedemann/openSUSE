@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Thu Oct 20 10:17:44 UTC 2016 - lars@linux-schulserver.de
+
+- update to 2.0.1:
+  Despite months of testing there were some bugs in the latest stable release,
+  which hopefully are gone now. This release tries to fix the following bugs:
+  + Major Centreon bug making it useless
+  + Wrong Icinga version check
+  + Thruk login problem
+  + EWMH initialization trouble
+  + Systrayicon left mouse click brought context menu
+  + DBus crashes
+
+-------------------------------------------------------------------
+Wed Oct 19 11:09:49 UTC 2016 - lars@linux-schulserver.de
+
+- remove dependency on libqt5-qtmultimedia and build require
+  libqt5-qtmultimedia-devel instead
+
+-------------------------------------------------------------------
+Fri Sep  2 09:24:07 UTC 2016 - lars@linux-schulserver.de
+
+- update to 2.0:
+  After a major overhaul Nagstamon is finally available in its 2.0 
+  incarnation. Being formerly formed of Python 2 and GTK 2 it now comes
+  freshly reshaped, made of Python 3 and Qt 5. 
+  This technology shift caused the longer absence of any other stable 
+  release, but was absolutely necessary to make sure there will be
+  future releases too.
+
+  These are some new features and fixes:
+  + Based on Qt 5 it now comes with a better integrated look-and-feel
+  + Partly simplified design
+  + Less clutter in setting dialogs
+  + Uses QT 5 multimedia which means native sound on Linux and MacOS
+  + Uses only SVG graphics – allows changing colors even in systray icon
+  + Customizable font and font size
+  + Adjust to dark or light desktop theme
+  + Action allowing to copy host/service information to clipboard
+  + Added ‘Archive Event’ action for Check_MK monitors
+  + Additionally supports IcingaWeb2
+  + Updated Opsview and Centreon to support latest monitor server versions
+  + Experimental support for Livestatus and Zenoss
+  + No or less memory leaks, especially in Windows
+  + Make sure only one instance per config is running
+  + Millions of fixes
+- adapted spec file to build again for Fedora and build with the latest
+  changes of the 2.0 version (QT instead of GTK)
+- builds only with Python 3 - so removing case decisions for old
+  distributions that are no longer supported
+
+-------------------------------------------------------------------
+Sat Dec 27 10:26:44 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.0.1:
+  + added option to disable system keyring storage to prevent crashes
+  + reverted default sorting order to "Descending"
+  + fixed too narrow fullscreen display
+
+-------------------------------------------------------------------
+Mon Jul 28 14:50:40 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.0:
+  + added custom event notification with custom commands
+  + added highlighting of new events
+  + added storage of passwords in OS keyring
+  + added optional tooltip for full status information
+  + added support for applying custom actions to specific monitor only
+  + added copy buttons for servers and actions dialogs
+  + added stopping notification if event already vanished
+  + added support for Op5Monitor 6.3 instead of Ninja
+  + added experimental Zabbix support
+  + added automatic refreshing after acknowledging
+  + added permanent hamburger menu
+  + unified layout of dialogs
+  + various Check_MK improvements
+  + fixed old regression not-staying-on-top-bug
+  + fixed Check_MK-Recheck-DOS-bug
+  + fixed pop window size calculation on multiple screens
+  + fixed following popup window on multiple screens
+  + fixed hiding dialogs in MacOSX
+  + fixed ugly statusbar font in MacOSX
+  + fixed use of changed colors
+  + fixed non-ascending default sort order
+  + fixed Opsview downtime dialog
+  + fixed sometimes not working context menu
+  + fixed some GUI glitches
+  + fixed password saving bug
+  + fixed Centreon language inconsistencies
+  + fixed regression Umlaut bug
+
+-------------------------------------------------------------------
+Wed Sep 11 11:45:10 UTC 2013 - lars@linux-schulserver.de
+
+- update to 0.9.11:
+  + added libnotify desktop notification support
+  + added Centreon criticality support
+  + fixed broken authentication dialog
+  + fixed wrong OK state for Nagios and Icinga
+  + fixed Correct-Statusbar-Position-O-Matic
+  + fixed some Thruk issues
+  + fixed popup resizing artefact
+  + fixed some server edit dialog bugs
+  + fixed missing auth field in Icinga when credentials are wrong
+  + fixed quoting URLs for browser actions
+
+-------------------------------------------------------------------
+Sat Jul 13 12:01:52 UTC 2013 - lars@linux-schulserver.de
+
+- update to 0.9.10:
+  + added fullscreen option
+  + added Thruk support
+  + added Check_MK cookie-based auth
+  + added new Centreon autologin option
+  + added configurable default sort order
+  + added filter for hosts in hard/soft state for Nagios, Icinga, 
+    Opsview and Centreon
+  + added $STATUS-INFO$ variable for custom actions
+  + added audio alarms also in fullscreen mode
+  + improved update interval set in seconds instead minutes
+  + improved Icinga JSON support
+  + improved Centreon 2.4 xml/broker support
+  + improved Nagios 3.4 pagination support
+  + improved nicer GTK theme Murrine on MacOSX
+  + fixed security bug
+  + fixed some memory leaks
+  + fixed superfluous passive icon for Check_MK
+  + fixed blocking of shutdown/reboot on MacOSX
+  + fixed saving converted pre 0.9.9 config immediately
+  + fixed statusbar position when offscreen
+  + fixed some GUI issues
+  + fixed update detection
+- this version fixes a security bug in the automatic update check 
+  (mentioned in CVE-2013-4114 and bnc #829217)
+
+-------------------------------------------------------------------
+Wed Apr 17 10:50:50 UTC 2013 - lars@linux-schulserver.de
+
+- fix build on CentOS > 5
+
+-------------------------------------------------------------------
+Fri Apr 13 14:23:32 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.9.9 (final):
+  + fixed popwin misplacement
+  + many fixes for the Windows port
+
+-------------------------------------------------------------------
+Tue Mar 13 15:49:50 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.9.9 Release Candidate 17 (0.9.9.17):
+  + added custom actions in context menu (see documentation)
+  + added reauthentication in case of authenticaton problems
+  + added filter for flapping hosts and services
+  + added history button for monitors
+  + added shortcut to filter settings in popup window
+  + improved keyboard usage in acknowledge/downtime/submit dialogs
+  + changed configuration file to configuration directory 
+    (default: ~/.nagstamon)
+  + fixed bug in Icinga acknowledgement
+  + fixed bug in Check_MK Multisite sorting
+  + fixed some Check_MK Multisite UTF trouble
+
+-------------------------------------------------------------------
+Sun Oct 30 09:33:48 UTC 2011 - lars@linux-schulserver.de
+
+- cleanup specfile as suggested in rq 89595
+
+-------------------------------------------------------------------
+Fri Oct 28 07:52:41 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Thu Oct 27 12:37:01 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.9.8:
+  + added customizable acknowledge/downtime/submit-result defaults
+  + added regexp filter for status information column
+  + added option to connect to hosts via its monitor hostname 
+    without HTTP overhead
+  + added ability to keep status detail popup open despite 
+    hovering away
+  + added option to change offset between popup window and systray 
+    icon to avoid partly hidden popup
+  + fixed some popup artefacts
+  + fixed various bugs with acknowledgement flags 
+    (persistent/sticky/notification), now they are actually working
+- build as noarch package on openSUSE > 11.2
+- recommend gnome-terminal, rdesktop, tightvnc on openSUSE (the 
+  default binaries used by nagstamon)
+- require python-egg on openSUSE (needed for module egg.trayicon)
+  and python-setuptools
+
+-------------------------------------------------------------------
+Wed Jul  6 10:01:07 UTC 2011 - lars@linux-schulserver.de
+
+- require python-setuptools on Fedora and fix the desktop file
+
+-------------------------------------------------------------------
+Sat Jun 11 09:49:56 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.9.7.1:
+  + fixed sf.net bug 3309166 which broke Centreon support
+
+-------------------------------------------------------------------
+Mon May 30 08:59:52 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.9.7:
+  + on some servers now context menu allows submitting check results 
+    for hosts and services
+  + added filter for services on acknowledged hosts
+  + added icons for "passiveonly" and "flapping" hosts and services
+  + fix for uneditable text entry fields in settings dialog - 
+    sf.net bug 3300873
+  + fix for not working filter "services on hosts in maintenance" - 
+    sf.net bug 3299790
+  + fix for soft state detection in Centreon - sf.net bug 3303861
+  + fix for not filtered services which should have been filtered - 
+    sf.net bug 3308008
+- specfile cleanup using spec-cleaner
+- use svg image for desktop icon
+
+-------------------------------------------------------------------
+Tue May 24 12:36:16 UTC 2011 - lars@linux-schulserver.de
+
+- enable build for Fedora and Mandriva
+- fix desktop icon
+
+-------------------------------------------------------------------
+Mon May 23 07:46:54 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 0.9.6.1
+

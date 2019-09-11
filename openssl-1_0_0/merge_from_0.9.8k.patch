@@ -1,0 +1,82 @@
+---
+ Configure |    4 ++--
+ config    |   23 +++++++++++++++--------
+ 2 files changed, 17 insertions(+), 10 deletions(-)
+
+Index: openssl-1.0.2a/Configure
+===================================================================
+--- openssl-1.0.2a.orig/Configure
++++ openssl-1.0.2a/Configure
+@@ -978,7 +978,7 @@ PROCESS_ARGS:
+ 			}
+ 		else
+ 			{
+-			die "target already defined - $target (offending arg: $_)\n" if ($target ne "");
++			warn "target already defined - $target (offending arg: $_)\n" if ($target ne "");
+ 			$target=$_;
+ 			}
+ 
+@@ -1258,7 +1258,7 @@ if ($target =~ /linux.*\-mips/ && !$no_a
+ my $no_shared_warn=0;
+ my $no_user_cflags=0;
+ 
+-if ($flags ne "")	{ $cflags="$flags$cflags"; }
++if ($flags ne "")	{ $cflags="$cflags $flags"; }
+ else			{ $no_user_cflags=1;       }
+ 
+ # Kerberos settings.  The flavor must be provided from outside, either through
+Index: openssl-1.0.2a/config
+===================================================================
+--- openssl-1.0.2a.orig/config
++++ openssl-1.0.2a/config
+@@ -573,7 +573,8 @@ case "$GUESSOS" in
+ 	options="$options -arch%20${MACHINE}"
+ 	OUT="iphoneos-cross" ;;
+   alpha-*-linux2)
+-        ISA=`awk '/cpu model/{print$4;exit(0);}' /proc/cpuinfo`
++        #ISA=`awk '/cpu model/{print$4;exit(0);}' /proc/cpuinfo`
++	ISA=EV56
+ 	case ${ISA:-generic} in
+ 	*[678])	OUT="linux-alpha+bwx-$CC" ;;
+ 	*)	OUT="linux-alpha-$CC" ;;
+@@ -598,8 +599,10 @@ case "$GUESSOS" in
+ 	if [ "$KERNEL_BITS" = "64" ]; then
+ 	    OUT="linux-ppc64"
+ 	else
+-	    OUT="linux-ppc"
+-	    (echo "__LP64__" | gcc -E -x c - 2>/dev/null | grep "^__LP64__" 2>&1 > /dev/null) || options="$options -m32"
++#	    OUT="linux-ppc"
++	# we have the target and force it here
++	OUT="linux-ppc64"
++	    (echo "__LP64" | gcc -E -x c - 2>/dev/null | grep "^__LP64" 2>&1 > /dev/null) || options="$options -m32"
+ 	fi
+ 	;;
+   ppc64le-*-linux2) OUT="linux-ppc64le" ;;
+@@ -632,10 +635,10 @@ case "$GUESSOS" in
+   sparc-*-linux2)
+ 	KARCH=`awk '/^type/{print$3;exit(0);}' /proc/cpuinfo`
+ 	case ${KARCH:-sun4} in
+-	sun4u*)	OUT="linux-sparcv9" ;;
+-	sun4m)	OUT="linux-sparcv8" ;;
+-	sun4d)	OUT="linux-sparcv8" ;;
+-	*)	OUT="linux-generic32"; options="$options -DB_ENDIAN" ;;
++#      sun4u*) OUT="linux-sparcv9" ;;
++#      sun4m)  OUT="linux-sparcv8" ;;
++#      sun4d)  OUT="linux-sparcv8" ;;
++        *)      OUT="linux-sparcv8" ;;
+ 	esac ;;
+   parisc*-*-linux2)
+ 	# 64-bit builds under parisc64 linux are not supported and
+@@ -654,7 +657,11 @@ case "$GUESSOS" in
+ 	#         PA8500   -> 8000   (2.0)
+ 	#         PA8600   -> 8000   (2.0)
+ 
+-	CPUSCHEDULE=`echo $CPUSCHEDULE|sed -e 's/7300LC/7100LC/' -e 's/8.00/8000/'`
++	# CPUSCHEDULE=`echo $CPUSCHEDULE|sed -e 's/7300LC/7100LC/' -e 's/8?00/8000/'`
++	# lets have CPUSCHEDULE for 1.1:
++	CPUSCHEDULE=7100LC
++	# we want to support 1.1 CPUs as well:
++	CPUARCH=1.1
+ 	# Finish Model transformations
+ 
+ 	options="$options -DB_ENDIAN -mschedule=$CPUSCHEDULE -march=$CPUARCH"

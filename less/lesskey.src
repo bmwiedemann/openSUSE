@@ -1,0 +1,101 @@
+#command
+\e[A	back-line
+\e[B	forw-line
+\eO5A	back-line
+\eO5B	forw-line
+\eO5C	right-scroll
+\eO5D	left-scroll
+\e[6~	forw-scroll
+\e[5~	back-scroll
+\217A	back-line
+\217B	forw-line
+\217C	right-scroll
+\217D	left-scroll
+\2336~	forw-scroll
+\2335~	back-scroll
+\177	back-screen
+^H	back-screen
+\e[3~	back-screen
+\e[3;5~	back-screen
+\2333~  back-screen
+\e[2~	visual
+\e[2;5~	visual
+\2332~	visual
+\e[1~	goto-line
+\eOH	goto-line
+\eO5H	goto-line
+\e[4~	goto-end
+\eOF	goto-end
+\eO5F	goto-end
+\eOM	forw-line
+#line-edit
+\eO5A	up
+\eO5B	down
+\eO5C	right
+\eO5D	left
+\217A	up
+\217B	down
+\217C	right
+\217D	left
+\177	backspace
+^H	backspace
+\e[3~	delete
+\e[3;5~	delete
+\2333~	delete
+\e[1~	home
+\eOH	home
+\eO5H	home
+\217H	home
+\e[4~	end
+\eOF	end
+\eO5F	end
+\217F	end
+\e[5~	up
+\e[6~	down
+\e[5;5~	up
+\e[6;5~	down
+\2335~	up
+\2336~	down
+\e[2~	insert
+\e[2;5~	insert
+\2332~	insert
+\e[E	insert
+\e[G	insert
+\eOE	insert
+\eOo	insert :
+\eOj	insert *
+\eOm	insert -
+\eOk	insert +
+\eOl	insert ,
+\eOM	insert 
+\eOw	insert 7
+\eOx	insert 8
+\eOy	insert 9
+\eOt	insert 4
+\eOu	insert 5
+\eOv	insert 6
+\eOq	insert 1
+\eOr	insert 2
+\eOs	insert 3
+\eOp	insert 0
+\eOn	insert .
+\217E	insert
+\217o	insert :
+\217j	insert *
+\217m	insert -
+\217k	insert +
+\217l	insert ,
+\217M	insert 
+\217w	insert 7
+\217x	insert 8
+\217y	insert 9
+\217t	insert 4
+\217u	insert 5
+\217v	insert 6
+\217q	insert 1
+\217r	insert 2
+\217s	insert 3
+\217p	insert 0
+\217n	insert .
+#env
+LESSBINFMT=*s\%o

@@ -1,0 +1,11 @@
+--- a/usr/bin/pulseaudio-equalizer
++++ b/usr/bin/pulseaudio-equalizer
+@@ -133,6 +133,8 @@ fi
+ if [ -f "$CONFIG_DIR/default.pa" ]; then
+     if [ "$(cat "$CONFIG_DIR/default.pa" | grep -m1 "### BEGIN: Equalized audio configuration")" = "### BEGIN: Equalized audio configuration" ]; then
+         PA_EQUALIZER_PERSISTENCE=1
++    else
++        PA_EQUALIZER_PERSISTENCE=0
+     fi
+ else
+     PA_EQUALIZER_PERSISTENCE=0

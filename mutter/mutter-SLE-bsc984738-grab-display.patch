@@ -1,0 +1,195 @@
+diff --git a/src/core/display-private.h b/src/core/display-private.h
+index 531c6f7..aaa90ec 100644
+--- a/src/core/display-private.h
++++ b/src/core/display-private.h
+@@ -174,6 +174,8 @@ struct _MetaDisplay
+   GHashTable *stamps;
+   GHashTable *wayland_windows;
+ 
++  int server_grab_count;
++
+   /* serials of leave/unmap events that may
+    * correspond to an enter event we should
+    * ignore
+@@ -322,6 +324,8 @@ struct _MetaDisplayClass
+ gboolean      meta_display_open                (void);
+ void          meta_display_close               (MetaDisplay *display,
+                                                 guint32      timestamp);
++void          meta_display_grab                (MetaDisplay *display);
++void          meta_display_ungrab              (MetaDisplay *display);
+ 
+ void          meta_display_unmanage_windows_for_screen (MetaDisplay *display,
+                                                         MetaScreen  *screen,
+diff --git a/src/core/display.c b/src/core/display.c
+index 4c7a00e..87e3307 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -585,6 +585,7 @@ meta_display_open (void)
+   display->focus_serial = 0;
+   display->server_focus_window = None;
+   display->server_focus_serial = 0;
++  display->server_grab_count = 0;
+ 
+   display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
+   display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
+@@ -1130,6 +1131,50 @@ meta_display_close (MetaDisplay *display,
+   meta_quit (META_EXIT_SUCCESS);
+ }
+ 
++/* Grab/ungrab routines taken from fvwm.
++ * Calling this function will cause X to ignore all other clients until
++ * you ungrab. This may not be quite as bad as it sounds, yet there is
++ * agreement that avoiding server grabs except when they are clearly needed
++ * is a good thing.
++ *
++ * If you do use such grabs, please clearly explain the necessity for their
++ * usage in a comment. Try to keep their scope extremely limited. In
++ * particular, try to avoid emitting any signals or notifications while
++ * a grab is active (if the signal receiver tries to block on an X request
++ * from another client at this point, you will have a deadlock).
++ */
++void
++meta_display_grab (MetaDisplay *display)
++{
++  if (display->server_grab_count == 0)
++    {
++      XGrabServer (display->xdisplay);
++    }
++  display->server_grab_count += 1;
++  meta_verbose ("Grabbing display, grab count now %d\n",
++                display->server_grab_count);
++}
++
++void
++meta_display_ungrab (MetaDisplay *display)
++{
++  if (display->server_grab_count == 0)
++    meta_bug ("Ungrabbed non-grabbed server\n");
++
++  display->server_grab_count -= 1;
++  if (display->server_grab_count == 0)
++    {
++      /* FIXME we want to purge all pending "queued" stuff
++       * at this point, such as window hide/show
++       */
++      XUngrabServer (display->xdisplay);
++      XFlush (display->xdisplay);
++    }
++
++  meta_verbose ("Ungrabbing display, grab count now %d\n",
++                display->server_grab_count);
++}
++
+ /**
+  * meta_display_for_x_display:
+  * @xdisplay: An X display
+@@ -1516,7 +1561,7 @@ request_xserver_input_focus_change (MetaDisplay *display,
+    * we know which is which by making two requests that the server will
+    * process at the same time.
+    */
+-  XGrabServer (display->xdisplay);
++  meta_display_grab (display);
+ 
+   serial = XNextRequest (display->xdisplay);
+ 
+@@ -1529,8 +1574,7 @@ request_xserver_input_focus_change (MetaDisplay *display,
+                    display->atom__MUTTER_FOCUS_SET,
+                    XA_STRING, 8, PropModeAppend, NULL, 0);
+ 
+-  XUngrabServer (display->xdisplay);
+-  XFlush (display->xdisplay);
++  meta_display_ungrab (display);
+ 
+   meta_display_update_focus_window (display,
+                                     meta_window,
+diff --git a/src/core/keybindings.c b/src/core/keybindings.c
+index ed34aea..a989200 100644
+--- a/src/core/keybindings.c
++++ b/src/core/keybindings.c
+@@ -979,6 +979,9 @@ meta_display_grab_window_buttons (MetaDisplay *display,
+ {
+   MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++  if (display->server_grab_count > 0)
++    return;
++
+   /* Grab Alt + button1 for moving window.
+    * Grab Alt + button2 for resizing window.
+    * Grab Alt + button3 for popping up window menu.
+@@ -1015,6 +1018,9 @@ meta_display_ungrab_window_buttons (MetaDisplay *display,
+ {
+   MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++  if (display->server_grab_count > 0)
++    return;
++
+   if (keys->window_grab_modifiers == 0)
+     return;
+ 
+@@ -1041,6 +1047,9 @@ meta_display_grab_focus_window_button (MetaDisplay *display,
+ {
+   MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++  if (display->server_grab_count > 0)
++    return;
++
+   /* Grab button 1 for activating unfocused windows */
+   meta_verbose ("Grabbing unfocused window buttons for %s\n", window->desc);
+ 
+@@ -1080,6 +1089,9 @@ meta_display_ungrab_focus_window_button (MetaDisplay *display,
+ {
+   MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++  if (display->server_grab_count > 0)
++    return;
++
+   meta_verbose ("Ungrabbing unfocused window buttons for %s\n", window->desc);
+ 
+   if (!window->have_focus_click_grab)
+@@ -1309,6 +1321,9 @@ meta_window_grab_keys (MetaWindow  *window)
+   MetaDisplay *display = window->display;
+   MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++  if (display->server_grab_count > 0)
++    return;
++
+   if (window->all_keys_grabbed)
+     return;
+ 
+@@ -1348,6 +1363,9 @@ meta_window_ungrab_keys (MetaWindow  *window)
+       MetaDisplay *display = window->display;
+       MetaKeyBindingManager *keys = &display->key_binding_manager;
+ 
++      if (display->server_grab_count > 0)
++        return;
++
+       if (window->grab_on_frame &&
+           window->frame != NULL)
+         change_window_keygrabs (keys, window->frame->xwindow, FALSE);
+diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
+index 3d47f0d..5ea1213 100644
+--- a/src/x11/window-x11.c
++++ b/src/x11/window-x11.c
+@@ -507,6 +507,8 @@ meta_window_x11_manage (MetaWindow *window)
+ 
+   meta_icon_cache_init (&priv->icon_cache);
+ 
++  meta_display_grab (display);
++
+   meta_display_register_x_window (display, &window->xwindow, window);
+ 
+   /* assign the window to its group, or create a new group if needed */
+@@ -565,6 +567,13 @@ meta_window_x11_manage (MetaWindow *window)
+ 
+   meta_window_x11_update_shape_region (window);
+   meta_window_x11_update_input_region (window);
++
++  meta_display_ungrab (display);
++
++  /* Perform operations prevented by grab */
++  if (window->frame)
++    meta_display_grab_window_buttons (display, window->frame->xwindow);
++  meta_window_grab_keys (window);
+ }
+ 
+ static void

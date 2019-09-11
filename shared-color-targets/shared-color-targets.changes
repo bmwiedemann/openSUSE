@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Fri May  3 15:54:05 CEST 2019 - vuntz@opensuse.org
+
+- Update to version 0.1.7:
+  + Add the latest it8 reference files
+
+-------------------------------------------------------------------
+Sat Jan  2 18:27:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.6:
+  + New Features: Add the latest it8 reference files.
+
+-------------------------------------------------------------------
+Thu Jan 22 17:21:25 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 0.1.5:
+  + Add the latest it8 reference files.
+- Changes from version 0.1.4:
+  + Add the latest it8 reference files.
+
+-------------------------------------------------------------------
+Sun Dec  8 20:34:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.1.3:
+  + Add the latest it8 reference files.
+- Stop packaging ChangeLog as the file is empty anyway.
+
+-------------------------------------------------------------------
+Mon Apr 22 16:48:45 UTC 2013 - dmueller@suse.com
+
+- update to 0.1.2:
+  Add the latest it8 reference files from Wolf Faust
+
+-------------------------------------------------------------------
+Thu Feb 23 16:16:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.1:
+  + Add the latest it8 reference files from Wolf Faust
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 10 08:00:24 UTC 2012 - coolo@suse.com
+
+- pick the version for CC-BY-SA
+
+-------------------------------------------------------------------
+Sat Sep 10 06:30:54 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.0:
+  + New Features:
+    - Add the latest it8 reference files from Wolf Faust
+  + Bugfixes:
+    - Update the Free Software Foundation address
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Fri Apr  2 13:48:11 CEST 2010 - vuntz@opensuse.org
+
+- Initial package
+

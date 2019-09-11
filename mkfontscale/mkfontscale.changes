@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Fri Mar 22 12:57:52 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1
+  * This release fixes a regression introduced in the 1.2.0
+    release that could leave the mkfontdir script containing
+    an unexpanded reference to ${exec_prefix} as shown in 
+    https://gitlab.freedesktop.org/xorg/app/mkfontscale/issues/5
+
+-------------------------------------------------------------------
+Sun Mar  3 09:54:43 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.0
+  * Starting with this release, 1.2.0, it now includes the
+    mkfontdir script previously distributed separately for
+    compatibility with older X11 versions.
+- provide/obsolete mkfontdir package
+
+-------------------------------------------------------------------
+Mon Sep 10 10:21:05 UTC 2018 - sndirsch@suse.com
+
+- recommends xorg-x11-fonts-core package, so an approprite 
+  encodings.dir file can be written to each font directory 
+  (boo#1106850)
+
+-------------------------------------------------------------------
+Wed Mar  7 11:52:26 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.1.3:
+  * autogen.sh: use quoted string variables
+  * mkfontscale: Avoid a buffer underrun
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * fix handling of Type1 fonts without /FamilyName and/or /FullName
+- supersedes u_mkfontscale-fix-handling-of-Type1-fonts-without-FamilyName-and-o.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 11:20:54 UTC 2015 - pgajdos@suse.com
+
+- fix segfault for Hershey fonts [bnc#918466]
+- treat /FontName as family name when /FamilyName is missing
+  + u_mkfontscale-fix-handling-of-Type1-fonts-without-FamilyName-and-o.patch
+
+-------------------------------------------------------------------
+Mon Feb  2 23:53:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.2:
+  + Remove extraneous duplicate checks for -r & -n options.
+  + autogen.sh: Honor NOCONFIGURE=1.
+  + configure: Drop AM_MAINTAINER_MODE.
+  + Only include config.h if it exists.
+  + Fix possible malloc allocation error found by clang static
+    analysis.
+  + Plug a memory leak found by clang static analysis.
+  + Print which option was in error along with usage message.
+  + Make usage() always exit(1).
+  + Add -v flag to print program version.
+  + Add missing newline to usage output.
+
+-------------------------------------------------------------------
+Sat Aug 17 22:46:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1.1:
+  + Protect config.h inclusion like usual.
+  + Document -u/-U options in man page.
+  + Replace malloc(strlen);strcpy() calls with strdup.
+  + Since hash() returns unsigned int, store results in unsigned
+    ints.
+  + Fix compilation for MinGW.
+  + Prefer original file over symlink (v2).
+- Drop mkfontscale-skip_symlinks.diff, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Apr 14 20:09:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.1.0:
+  + mkfontscale: fix Culmus entries to precede URW
+  + Add Culmus foundry to the vendor list for TrueType & Type1
+    fonts
+  + Add const attributes to fix gcc -Wwrite-strings warnings
+  + Mark format string argument to dsprintf as const char *
+  + mkfontscale: Support FontForge weight designations.
+- Changes from version 1.0.9:
+  + Add _X_ATTRIBUTE_PRINTF to functions taking printf format
+    arguments
+  + makeList: free partially allocated list on failure
+  + Leave room for null terminator in file & font name arrays
+  + Sort contents of encodings.dir
+  + Remove unused NEED_SNPRINTF code to #include non-existent
+    snprintf.c
+  + Make fscanf format string constant so it can be checked at
+    compile time
+  + Man page fixes.
+  + Build system fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 11:33:51 UTC 2012 - vuntz@opensuse.org
+
+- Update mkfontscale-skip_symlinks.diff to use realpath() instead
+  of the GNU-specific canonicalize_file_name().
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split mkfontscale from xorg-x11. Initial version: 1.0.8.
+

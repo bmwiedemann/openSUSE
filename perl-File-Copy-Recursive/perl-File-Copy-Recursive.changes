@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Jul 24 05:08:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.45
+   see /usr/share/doc/packages/perl-File-Copy-Recursive/Changes
+
+      - PR #21: fix version 0.43 in Changes file (thanks karenetheridge)
+      - PR #19: Added missing license meta name. (thanks manwar and karenetheridge)
+      - PR #24: allow for dev = 0 on NetBSD (thanks plicease)
+      - PR #25: Remove warning when copying a dir without write perm on the original. (thanks ehickeycp)
+      - Issue #26: change issues from rt to github
+
+-------------------------------------------------------------------
+Wed Sep 26 15:02:28 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 0.44
+ 0.44 Tue Apr 24 08:18:19 2018
+    - Issue #18: fix t/05.legacy-pathmk_unc.t for recent updates
+    (thanks zdm)
+ 
+ 0.43 Sat Apr 21 15:39:09 2018
+    - pull request #16 - strip down list of prerequisites to
+      modules that are safe to use high on the CPAN river (thanks
+      karenetheridge)
+ 
+ 0.42 Fri Apr 20 23:42:41 2018
+    - rt 125136 - reinstate 5.8 compat by not using // operator in
+      the new unc test (thanks SREZIC)
+    - pull request #14 - Add .gitignore. (thanks jkeenan)
+    - pull request #13 - File::Find::Rule is used in the test suite
+      but not named as a prequisite in Makefile.PL. (thanks jkeenan)
+ 
+ 0.41 Thu Apr 19 15:58:12 2018
+    - Issue #10 and #8: fix Makefile.PL; add github metadata
+      (thanks karenetheridge and chorny)
+    - Issue #11: Fix the test failure described in RT#123964
+      (thanks tomhukins and SREZIC)
+    - Issue #9: Fixes for Windows (thanks chorny)
+    - rt 124324 - fix v0.40 changelog date (thanks ANDK)
+    - rt 124151 - pathrm with force on should guard against absolute
+      paths (thanks chorny)
+    - rt 124423 - have fcopy() work around File::Copy::copy() bug
+      rt132866 (thanks DROLSKY)
+    - Issue #12 and rt 124166 - set umask for reliability (thanks
+      teoric and ether)
+    - rt 43328 - add ULC test to verify pathmk() w/ ULC (thanks
+      willi.weikum and LouisStrous)
+ 
+ 0.40 Tue Jan 16 10:00:09 2018
+    - github Issue #5 - Deep directories pathmk
+    - rt 123966 - switch to bsd_glob() since glob() will disappear
+      in perl 5.30
+    - rt 123971 - skip symlink tests when the OS does not support
+      symlinks
+    - rt 123970 - use Path::Tiny instead of File::Slurp in tests
+    - rt 117241 - add test for read only directories
+ 
+ 0.39 Fri Dec 29 13:26:12 2017
+    - tidy code
+    - Change into directory before emptying it
+    - Stop emptying/removing a path if it is changed out from
+      underneath us
+    - pathrm() fixes
+    - Actual unit tests!
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec  2 06:48:54 UTC 2011 - coolo@suse.com
+
+- regenerate with cpanspec (to fix license)
+
+-------------------------------------------------------------------
+Thu Dec  1 08:44:55 UTC 2011 - idoenmez@suse.de
+
+- Cleanup spec formatting
+- Add license boilerplate
+
+-------------------------------------------------------------------
+Mon Dec 27 21:58:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.38)
+

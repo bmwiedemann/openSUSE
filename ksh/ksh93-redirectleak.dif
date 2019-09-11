@@ -1,0 +1,20 @@
+--- src/cmd/ksh93/sh/io.c.orig	2015-12-09 11:18:00.657295950 +0000
++++ src/cmd/ksh93/sh/io.c	2015-12-09 11:18:57.719080685 +0000
+@@ -1541,7 +1541,17 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 					sh_iosave(shp,fn,indx,tname?fname:(trunc?Empty:0));
+ 				}
+ 				else if(sh_subsavefd(fn))
++				{
++					if(fd==fn)
++					{
++						if((r=sh_fcntl(fd,F_DUPFD,10)) > 0)
++						{
++							fd = r;
++							sh_close(fn);
++						}
++					}
+ 					sh_iosave(shp,fn,indx|IOSUBSHELL,tname?fname:0);
++				}
+ 			}
+ 			if(fd<0)
+ 			{

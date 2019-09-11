@@ -1,0 +1,13 @@
+Index: common.h
+===================================================================
+--- common.h.orig
++++ common.h
+@@ -127,7 +127,7 @@ typedef volatile slarge_t	v_slarge;
+ 
+ #endif /* defined(_WIN64) */
+ 
+-#elif defined(__GNUC__) && defined(_BSD_SOURCE) || defined(SCO) || defined(__QNXNTO__) || defined(SOLARIS) || defined(HP_UX) || defined(AIX) || defined(_NT_SOURCE) 
++#elif defined(__GNUC__) && defined(_BSD_SOURCE) || defined (_DEFAULT_SOURCE) ||  defined(SCO) || defined(__QNXNTO__) || defined(SOLARIS) || defined(HP_UX) || defined(AIX) || defined(_NT_SOURCE) 
+ 
+ #define QuadIsLongLong
+ typedef unsigned long long int	large_t;

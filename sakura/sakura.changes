@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Thu Aug 30 19:08:19 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.6.0
+- rebase sakura-icon.patch
+- no upstream changelog
+
+-------------------------------------------------------------------
+Sat Dec 16 08:08:00 UTC 2017 - bwiedemann@suse.com
+
+- Use convert -strip to avoid png timestamps that differ between builds
+
+-------------------------------------------------------------------
+Thu Nov 30 21:06:00 UTC 2017 - mimi.vx@gmail.com
+
+- update to 3.5.0
+- use cmake macros
+- lang subpackage
+- drop vte291.patch and refresh sakura-icon.patch 
+
+-------------------------------------------------------------------
+Sat Feb 08 18:13:02 UTC 2015 - p.silvaggio@videotron.ca
+
+- update to 3.2.0:
+  * no upstream changelog.
+- now requires vte >= 0.38
+
+-------------------------------------------------------------------
+Sat Dec 21 18:13:02 UTC 2013 - dap.darkness@gmail.com
+
+- update to 3.1.3:
+  * no upstream changelog.
+- Removed sakura-gtk.patch that was merged into upstream.
+
+-------------------------------------------------------------------
+Mon Dec  2 17:45:30 UTC 2013 - dap.darkness@gmail.com
+
+- update to 3.1.2:
+  * no upstream changelog.
+- sakura-icon.patch was updated.
+- spec was reactored in modern openSUSE style.
+- Added sakura-gtk.patch as a workaround for bnc#853227.
+
+-------------------------------------------------------------------
+Mon Apr 19 14:59:16 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.8:
+  * fixed a bug about lost keyboard focus
+  * add true transparency support if there is a composite manager running
+  * add a new item (new window) in the popup menu
+  * reorganize the menu
+  * updated translations
+  * made several small fixes
+- now requires vte >= 0.20, dropped backport patch
+
+-------------------------------------------------------------------
+Mon Mar  8 23:21:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.7:
+  * adds detection for running processes when closing sakura,
+    instead of counting the number of opened tabs
+  * a man page bug has been fixed
+  * updated translations
+
+-------------------------------------------------------------------
+Sun May 31 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- properly pass %%optflags
+- backport for vte < 0.16.15
+- update to 2.3.4:
+  * an option was added for a blinking cursor
+  * the Czech translation was updated
+  * the documentation was updated
+- changes from 2.3.3:
+  * window default size problems were fixed
+  * minor changes were made to the close dialog
+  * a new Croatian translation
+  * an SVG icon were added
+
+-------------------------------------------------------------------
+Mon Nov 10 00:00:00 UTC 2008 - guru@unixtech.be
+
+- scrapped %changelog entries before 2.3.0
+- only apply backport UsePkgConfig patch when the cmake version is < 2.6.x
+- update to 2.3.2:
+  * adds a new accelerator to open a URL using the left mouse button
+  * fixes the maximize bug and other window size problems
+  * less verbose when not compiled in debug mode
+
+-------------------------------------------------------------------
+Thu Oct 23 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.3.1:
+  * all dialogs have been improved to conform to HIG recommendations
+  * a configuration option has been added to enable/disable the per-tab close
+    button
+  * strings are used instead of keycodes for easier key bindings configuration
+
+-------------------------------------------------------------------
+Fri Sep 26 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.3.0:
+  * a bug where the scrollbar configuration was not kept has been fixed
+  * a close button has been added to tabs (disabled by default)
+  * a new terminal bell and palette options have been added
+  * a race condition when destroying the sakura window has been fixed

@@ -1,0 +1,97 @@
+Git-commit: ae0916617f38c6e2a90793364c1f4e4b54673254
+From: Liam Gretton <liam.gretton@leicester.ac.uk>
+Date: Wed, 18 Jul 2012 17:32:43 -0600
+Subject: [PATCH] allow spaces in principal names
+References: bnc#772896
+
+Change the behaviour of nfs4_setfacl slightly to allow it to add, remove
+and modify ACLs which act on principals containing space characters.
+
+The rationale behind this is to allow us to use nfs4_setfacl on a file
+system which is shared via CIFS to Windows clients and NFSv4. Though
+very rare in a Unix environment, Windows commonly uses user names (and
+hence principals derived from them) which contain spaces. A
+particularly common one is 'Domain Admins', the handling of which
+prompted me to look at modifying the nfs4_setfacl command.
+
+As of 0.3.3 of nfs4-acl-tools, nfs4_setfacl fails to handle ACLs
+containing a space character no matter what attempts to quote the ACE
+or escape the space character:
+
+Scanning ACE string 'A:fdg:Domain' failed.
+Failed while inserting ACE(s) (at index 1).
+
+(exit status 1.)
+
+Scanning ACE string 'A:fdg:Domain' failed.
+Failed while inserting ACE(s) (at index 1).
+
+(exit status 1.)
+
+The attached patch modifies the parsing of the command line and
+disallows space as an ACE delimiter. The patched version completes
+successfully:
+
+A:fdg:Domain Admins@le.ac.uk:rtncy
+
+ACEs can be chained with commas, but no longer with spaces. With the
+-A, -X, -S or -e options which expect a file containing ACLs, ACEs can
+be separated with tabs, newlines and/or carriage returns as before.
+
+As there's a slight change in behaviour, the patch also modifies one of
+the examples given in the EXAMPLES section of nfs4_setfacl(1) and the
+text of the 'ACL FORMAT' section of nfs4_acl.
+
+The patches don't modify any version numbers or dates.
+
+Signed-off-by: J. Bruce Fields <bfields@redhat.com>
+Acked-by: NeilBrown <neilb@suse.de>
+
+---
+ libnfs4acl/nfs4_insert_string_aces.c | 2 +-
+ man/man1/nfs4_setfacl.1              | 2 +-
+ man/man5/nfs4_acl.5                  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libnfs4acl/nfs4_insert_string_aces.c b/libnfs4acl/nfs4_insert_string_aces.c
+index 5878a9463078..5a482d5e54ee 100644
+--- a/libnfs4acl/nfs4_insert_string_aces.c
++++ b/libnfs4acl/nfs4_insert_string_aces.c
+@@ -45,7 +45,7 @@ int nfs4_insert_string_aces(struct nfs4_acl *acl, const char *acl_spec, unsigned
+ 	if ((s = sp = strdup(acl_spec)) == NULL)
+ 		goto out_failed;
+ 
+-	while ((ssp = strsep(&sp, " ,\t\n\r")) != NULL) {
++	while ((ssp = strsep(&sp, ",\t\n\r")) != NULL) {
+ 		if (!strlen(ssp))
+ 			continue;
+ 
+diff --git a/man/man1/nfs4_setfacl.1 b/man/man1/nfs4_setfacl.1
+index ea5f4428189b..a316bf2b78c9 100644
+--- a/man/man1/nfs4_setfacl.1
++++ b/man/man1/nfs4_setfacl.1
+@@ -204,7 +204,7 @@ delete the first ACE, but only print the resulting ACL (does not save changes):
+ .IP - 2
+ delete the last two ACEs above:
+ .br
+-	$ nfs4_setfacl -x "A::EVERYONE@rtncy, D::EVERYONE@:waxTC" foo
++	$ nfs4_setfacl -x A::EVERYONE@rtncy,D::EVERYONE@:waxTC foo
+ .IP - 2
+ modify (in-place) the second ACE above:
+ .br
+diff --git a/man/man5/nfs4_acl.5 b/man/man5/nfs4_acl.5
+index 99f62f3e73b5..224df9b04330 100644
+--- a/man/man5/nfs4_acl.5
++++ b/man/man5/nfs4_acl.5
+@@ -56,7 +56,7 @@ more permissive than the ones you set.
+ .SH ACL FORMAT
+ An NFSv4 ACL is written as an
+ .IR acl_spec ,
+-which is a comma- or whitespace-delimited string consisting of one or more
++which is a comma- or tab-delimited string consisting of one or more
+ .IR ace_specs .
+ A single NFSv4 ACE is written as an
+ .IR ace_spec ,
+-- 
+1.8.3.1.487.g3e7a5b4
+

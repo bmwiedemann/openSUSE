@@ -1,0 +1,602 @@
+-------------------------------------------------------------------
+Tue Feb 27 05:40:30 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.3.2
+ see installed CHANGELOG.md
+
+  ## 2.3.2
+  
+    * Restored support for Ruby 1.9.3 to comply with semantic versioning.
+  
+      Thanks to [Jordan Harband](https://github.com/ljharb) for reporting the problem.
+
+-------------------------------------------------------------------
+Thu Nov 16 20:56:45 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- created versioned gem for version 2.3.1
+
+-------------------------------------------------------------------
+Fri Dec 16 05:47:52 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Dec  5 06:11:47 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0
+ see installed CHANGELOG.md
+
+  ## 2.3.0
+  
+    * Added support for Ruby 2.4
+  
+      Thanks to [Koichi ITO](https://github.com/koic)
+  
+    * Dropped support for Ruby 1.9.3
+  
+  ## 2.2.0
+  
+    * Added `refute_requested` as an alias for `assert_not_requested`
+  
+      Thanks to [Michael Grosser](https://github.com/grosser)
+  
+    * Raising `Net::OpenTimeout` instead of `Timeout::Error` if available when a request stub is declared `to_timeout`
+  
+      Thanks to [Gabe Martin-Dempesy](https://github.com/gabetax)
+  
+  ## 2.1.1
+  
+    * Added support for handling status messages in Excon responses.
+  
+      Thanks to [Tero Marttila](https://github.com/SpComb) for reporting the issue.
+
+-------------------------------------------------------------------
+Sat Jun  4 04:32:25 UTC 2016 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed CHANGELOG.md
+
+  ## 2.1.0
+  
+    * Added support for `on_debug` callback in Curb.
+  
+      Thanks to [Pavel Jurašek](https://github.com/pavel-jurasek-bcgdv-com)
+  
+    * Added support for PATCH requests using Curb.
+  
+      Thanks to [Pavel Jurašek](https://github.com/pavel-jurasek-bcgdv-com)
+
+-------------------------------------------------------------------
+Sat May 21 04:40:21 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Apr 14 04:31:38 UTC 2016 - coolo@suse.com
+
+- updated to version 1.24.3
+ see installed CHANGELOG.md
+
+  ## 1.24.3
+  
+    * Allow Net:HTTP headers keys to be provided as symbols if `RUBY_VERSION` >= 2.3.0
+  
+      Thanks to [Alex Kestner](https://github.com/akestner)
+  
+    * Fixed the issue with parsing query to a hash with nested array i.e. `a[][b][]=one&a[][c][]=two`
+  
+      Thanks to [Tim Diggins](https://github.com/timdiggins) for reporting the issue.
+      Thanks to [Cedric Pimenta](https://github.com/cedricpim) for finding the solution.
+  
+    * Added a clear message on an attept to match a multipart encoded request body.
+      WebMock does't support requests with multipart body... yet.
+  
+    * `WebMock.disable_net_connect` `:allow` option, provided as regexp, matches https URIs correctly.
+  
+    * `WebMock.disable_net_connect` `:allow` option can be set as a url string with scheme, host and port.
+  
+          WebMock.disable_net_connect!(:allow => 'https://www.google.pl')
+  
+      Thanks to [Gabriel Chaney](https://github.com/gabrieljoelc) for reporting the issue.
+
+-------------------------------------------------------------------
+Fri Mar  4 05:31:22 UTC 2016 - coolo@suse.com
+
+- updated to version 1.24.2
+ see installed CHANGELOG.md
+
+  ## 1.24.2
+  
+    * Improve parsing of params on request
+  
+      Thanks to [Cedric Pimenta](https://github.com/cedricpim)
+
+-------------------------------------------------------------------
+Wed Mar  2 05:39:17 UTC 2016 - coolo@suse.com
+
+- updated to version 1.24.1
+ see installed CHANGELOG.md
+
+  ## 1.24.1
+  
+    * HTTPClient adapter supports reading basic authentication credentials directly from Authorization header.
+  
+      Thanks to [Michiel Karnebeek](https://github.com/mkarnebeek)
+  
+  ## 1.24.0
+  
+    * Enabled support for Curb > 0.8.6
+
+-------------------------------------------------------------------
+Fri Feb 19 05:41:20 UTC 2016 - coolo@suse.com
+
+- updated to version 1.23.0
+ see installed CHANGELOG.md
+
+  ## 1.23.0
+  
+    * `WebMock.disable_net_connect` accepts `:allow` option with an object that responds to `#call`, receiving a `URI` object and returning a boolean:
+  
+  
+          blacklist = ['google.com', 'facebook.com', 'apple.com']
+          allowed_sites = lambda{|uri|
+            blacklist.none?{|site| uri.host.include?(site) }
+          }
+          WebMock.disable_net_connect!(:allow => allowed_sites)
+  
+          RestClient.get('www.example.org', '/')  # ===> Allowed
+          RestClient.get('www.facebook.com', '/') # ===> Failure
+          RestClient.get('apple.com', '/')        # ===> Failure
+  
+      Thanks to [Pablo Brasero](https://github.com/pablobm)
+  
+    * Support for HTTPClient stream responses with body chunks
+  
+      Thanks to [Cedric Pimenta](https://github.com/cedricpim)
+
+-------------------------------------------------------------------
+Thu Jan 21 05:52:09 UTC 2016 - coolo@suse.com
+
+- updated to version 1.22.6
+ see installed CHANGELOG.md
+
+  ## 1.22.6
+  
+    * Fixes [issue](https://github.com/bblimke/webmock/issues/568) around
+      WebMock restricting [Addressable](https://github.com/sporkmonger/addressable)
+      version, based on Ruby 1.8.7 for all versions of Ruby.
+  
+      This change inverts that, and forces Ruby 1.8.7 users to specify in thier
+      Gemfile an Addressable version < 2.4.0.
+  
+      Thanks to [PikachuEXE](https://github.com/PikachuEXE) and
+      [Matthew Rudy Jacobs](https://github.com/matthewrudy).
+  
+  ## 1.22.5
+  
+    * Fixes [bug](https://github.com/bblimke/webmock/issues/565) where WebMock tries
+      to alias a method that is deprecated in Ruby Versions > 1.9.2 ('sysread' for class 'StringIO')
+  
+      Thanks to [Marcos Acosta](https://github.com/mmaa) for discovering this bug.
+  
+  ## 1.22.4
+  
+    * Adds support for JSONClient (a subclass of HTTPClient)
+  
+      Thanks to [Andrew Kozin](https://github.com/nepalez)
+  
+    * Adds support for Ruby 2.3.0
+  
+      Thanks to [Charles Pence](https://github.com/cpence)
+  
+    * Adds support for [http](https://github.com/httprb/http) versions >= 1.0.0
+  
+      Thanks to [Alexey Zapparov](https://github.com/ixti)
+  
+    * Fixes support for Ruby 1.8.7 by restrciting Addressable version < 2.4.0
+  
+      Thanks to [Matthew Rudy Jacobs](https://github.com/matthewrudy)
+
+-------------------------------------------------------------------
+Tue Nov  3 05:35:26 UTC 2015 - coolo@suse.com
+
+- updated to version 1.22.3
+ see installed CHANGELOG.md
+
+  ## 1.22.3
+  
+    * Return "effective_url" attribute in Typhoeus::Response
+  
+      Thanks to [Senya](https://github.com/cmrd-senya)
+
+-------------------------------------------------------------------
+Fri Oct 30 05:35:36 UTC 2015 - coolo@suse.com
+
+- updated to version 1.22.2
+ see installed CHANGELOG.md
+
+  ## 1.22.2
+  
+    * Fix: prevents adding an extra =true to urls with parameters without values
+  
+      Thanks to [David Begin](https://github.com/davidbegin)
+
+-------------------------------------------------------------------
+Wed Oct 14 04:32:53 UTC 2015 - coolo@suse.com
+
+- updated to version 1.22.1
+ see installed CHANGELOG.md
+
+  ## 1.22.1
+  
+    * Adds Rack as a development dependency and removes require rack/utils in main lib.
+  
+      Thanks to [Keenan Brock](https://github.com/kbrock)
+  
+  ## 1.22.0
+  
+    All the credit for preparing this release go to [David Begin](https://github.com/davidbegin)!
+  
+    * Adds [Manticore](https://github.com/cheald/manticore) support.
+  
+        Thanks to [Mike Knepper](https://github.com/mikeknep), [David Abdemoulaie](https://github.com/hobodave)
+  
+    * Update to Show a hash diff for requests that have stubs with a body.
+  
+        Thanks to [yurivm](https://github.com/yurivm)
+  
+    * Update to mirror Net::HTTP handling of headers as symbols
+  
+    * Update to ignore non-comparable-values error when sorting
+      query values, because sorting is just a convience.
+  
+        Thanks to [Magne Land](https://github.com/magneland)
+  
+    * Covert Boolean values to Strings when using them to define
+      the body of a request.
+  
+        Thanks to [Krzysztof Rygielski](https://github.com/riggy)
+  
+    * Fixes WebMock's parsing Multibyte characters
+  
+        Thanks to [Zhao Wen](https://github.com/VincentZhao)
+  
+    * Updates to be compatible with httpclient 2.6.0
+  
+    * Converts keys from symbols to strings when for QueryMapper.to_query
+  
+        Thanks to [Ramon Tayag](https://github.com/ramontayag)
+  
+    * Restricts http.rb version to 0.7.3 for Ruby 1.8.7
+  
+    * Fixes issue emulating em-http-request's handling of multiple requests.
+  
+        Thanks to [Matt Palmer](https://github.com/mpalmer)
+  
+    * WebMock requires only the necessary parts of crack to avoid pulling in safe_yaml
+  
+        Thanks to [Johannes Schlumberger](https://github.com/spjsschl)
+
+-------------------------------------------------------------------
+Mon Mar 30 04:33:42 UTC 2015 - coolo@suse.com
+
+- updated to version 1.21.0
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:14 UTC 2015 - coolo@suse.com
+
+- updated to version 1.20.4
+  * Fixed support for `hash_including` matcher in RSpec 3
+ 
+ ## 1.20.3
+   * `with` method raises error if provided without options hash and without block
+   * `with` and `to_return` raise an error if invoked with invalid keys in options hash.
+ 
+ ## 1.20.2
+   * WebMock provides a helpful error message if an incompatible object is given as response body.
+ 
+ ## 1.20.1
+   * `assert_requested` and `assert_not_requested` accept `at_least_times` and `at_most_times` options
+   * Silenced `instance variable undefined` warnings in Curb adapted.
+ 
+ ## 1.20.0
+   * Add support for on_missing callback of Curb::Easy
+   * Add at_least_times and at_most_times matchers
+
+-------------------------------------------------------------------
+Sun Oct 12 16:30:12 UTC 2014 - coolo@suse.com
+
+- updated to version 1.19.0
+   * Fixed issue with Excon adapter giving warning message when redirects middleware was enabled.
+   * Fixed issue with `undefined method 'valid_request_keys' for Excon::Utils:Module`
+   * Fixed query mapper to encode `'one' => ['1','2']` as `'one[]=1&one[]=2'`.
+   * Improved cookies support for em-http-request
+   * Fix HTTP Gem adapter to ensure uri attribute is set on response object.
+   * Fixed HTTPClient adapter. The response header now receives `request_method`, `request_uri`, and `request_query` transferred from request header
+   * Query mapper supports nested data structures i.e. `{"first" => [{"two" => [{"three" => "four"}, "five"]}]}`
+   * Fixed compatibility with latest versions of Excon which don't define `VALID_REQUEST_KEYS` anymore.
+   * Request method is always a symbol is request signatures. This fixes the issue of WebMock not matching Typhoeus requests with request method defined as string.
+   * Stubbing instructions which are displayed when no matching stub is found, can be disabled with `Config.instance.show_stubbing_instructions = false`
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:45 UTC 2014 - coolo@suse.com
+
+- updated to version 1.18.0
+  * Updated dependency on Addressable to versions >= 2.3.6
+  * Added support for matching uris using RFC 6570 (URI Templates)
+          uri_template = Addressable::Template.new "www.example.com/{id}/"
+          stub_request(:any, uri_template)
+  
+    Thanks to [Max Lincoln](https://github.com/maxlinc)
+  * Fixed content length calculation for Rack responses with UTF8 body
+    Thanks to [Oleg Gritsenko](https://github.com/Claster)
+  * Add missing Curl::Easy aliases
+    Thanks to [Hwan-Joon Choi](https://github.com/hc5duke)
+  * HTTP Gem >= 0.6.0 compatibility
+    Thanks to [Aleksey V. Zapparov](https://github.com/ixti)
+  * Minitest 4 and 5 compatibility.
+    Thanks to [SHIBATA Hiroshi](https://github.com/hsbt)
+
+-------------------------------------------------------------------
+Fri Mar 21 12:54:12 UTC 2014 - coolo@suse.com
+
+- updated to version 1.17.4
+ * Update matchers for RSpec 3's matcher protocol
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:41 UTC 2014 - coolo@suse.com
+
+- updated to version 1.17.3
+ * Fixed issue with Rack response removing 'Content-Type' header
+ * Support for chunked responses in Curb
+ * Fixed handling of request body passed as a hash to `Typhoeus.post`
+
+-------------------------------------------------------------------
+Mon Jan 20 09:29:43 UTC 2014 - coolo@suse.com
+
+- updated to version 1.17.1
+ * Added missing license statements.
+ * HTTP gem support!
+ * Limited Excon gem requirement to version < 0.30 until the compatibility with version > 0.30.0 is fixed.
+ * Fixed issue where empty query key caused a `TypeError`
+
+-------------------------------------------------------------------
+Mon Dec 16 06:28:03 UTC 2013 - coolo@suse.com
+
+- updated to version 1.16.1
+ * Fixed "NameError: uninitialized constant WebMock::Response::Pathname" issue.
+   Thanks to [Alex Stupakow and Karen Wang](https://github.com/stupakov) for the fix.
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:37 UTC 2013 - coolo@suse.com
+
+- updated to version 1.16.0
+ * Allow a Pathname to be passed as a Response body
+ 
+         stub_request(:get, /example.com/).to_return(
+           body: Rails.root.join('test/fixtures/foo.txt')
+         )
+ 
+   Thanks to [Ben Pickles](https://github.com/benpickles)
+ 
+ * `hash_including` matcher can be initialized with empty keys to match any values.
+ 
+         stub_request(:post, "www.example.com").with(:body => hash_including(:a, :b => {'c'}))
+         RestClient.post('www.example.com', '{"a":"1","b":"c"}', :content_type => 'application/json')
+ 
+   Thanks to [Stefano Uliari](https://github.com/steookk)
+
+-------------------------------------------------------------------
+Thu Oct 31 05:54:32 UTC 2013 - coolo@suse.com
+
+- updated to version 1.15.2
+ *  Fixed `hash_including` to accept a splat of solitary keys.
+  Thanks to [Tamir Duberstein](https://github.com/tamird) and [https://github.com/strongriley](https://github.com/strongriley)
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:29 UTC 2013 - coolo@suse.com
+
+- updated to version 1.15.0
+ * Excon >= 0.27.5 compatibility.
+   Thanks to [Brian D. Burns](https://github.com/burns)
+
+-------------------------------------------------------------------
+Fri Oct  4 07:17:58 UTC 2013 - coolo@suse.com
+
+- updated to version 1.14.0
+ * Handling non UTF-8 characters in query params.
+   Thanks to [Florian Dütsch](https://github.com/der-flo) for reporting the issue.
+ * Added support for `request_block` param in Excon
+   Thanks to [Dmitry Gutov](https://github.com/dgutov) for reporting the issue.
+ * Fixed compatibility with latest Curb
+   Thanks to [Ian Lesperance](https://github.com/elliterate) and [Matthew Horan](https://github.com/mhoran)
+ * Triggering errbacks assynchronously in em-http-request adapter.
+   Thanks to [Ian Lesperance](https://github.com/elliterate) and [Matthew Horan](https://github.com/mhoran)
+ * Handling query params with a hashes nested inside arrays.
+   Thanks to [Ian Asaff](https://github.com/montague)
+ * Changed NetConnectNotAllowedError to inherit from Exception to allow it to bubble up into a test suite.
+   Thanks to [Daniel van Hoesel](https://github.com/s0meone)
+ * HTTPClient adapter is thread safe.
+   Thanks to [Tom Beauvais](https://github.com/tbeauvais)
+
+-------------------------------------------------------------------
+Sat Jul 20 07:00:26 UTC 2013 - coolo@suse.com
+
+- updated to version 1.13.0
+ * Net::HTTP::Persistent compatibility.
+   WebMock doesn't disconnect previously started connections upon a request anymore.
+ 
+ * Fixed issue with handling Addressable::URI with query params passed to `Net::HTTP.get_response`
+ 
+   Thanks to [Leif Bladt](https://github.com/leifbladt)
+ 
+ * Fixed HTTPClient adapter to not raise an error if a request with multipart body is executed.
+
+-------------------------------------------------------------------
+Fri Jun 28 04:41:29 UTC 2013 - coolo@suse.com
+
+- updated to version 1.12.2
+  * Fixed issue with handling request.path when Addressable::URI is passed to #request instead of URI with Ruby 2.0.
+  
+    Thanks to [Leif Bladt](https://github.com/leifbladt)
+  
+  * Accept integers as query param values in request stubs
+  
+    i.e. `stub_request(:get, /.*/).with(:query => {"a" => 1})`
+  
+    Thanks to [Mitsutaka Mimura](https://github.com/takkanm)
+  
+  * Fixed Minitest < 5.0 compatibility
+  
+    Thanks to [Alex Tomlins](https://github.com/alext) for reporting the issue.
+  
+  * Not using Gem spec anymore to check loaded Curb version.
+  
+  * `WebMock.disable_net_connect!` now accepts array of regexps as allow param:
+  
+    i.e. `WebMock.disable_net_connect!(:allow => [/google.com/, /yahoo.com/])`
+  
+    Thanks to [Bastien Vaucher](https://github.com/bastien)
+  
+  * Fixed `on_header` Curb callback behaviour in Curb adapter
+  
+    Thanks to [Joel Chippindale](https://github.com/mocoso)
+  
+  * Fixed aws-sdk compatibility with Ruby 2.0, by supporting `continue_timeout` accessor on Net::HTTP socket.
+  
+     Thanks to [Lin Jen-Shin](https://github.com/godfat)
+  
+  * Fixed WebMock::Server to not give "log writing failed. can't be called from trap context" warning with Ruby 2.0
+  
+     Thanks to [Murahashi Sanemat Kenichi](https://github.com/sanemat)
+  
+  * Added support for EM-HTTP-Request streaming data off disk feature.
+  
+     Thanks to [Lin Jen-Shin](https://github.com/godfat)
+
+-------------------------------------------------------------------
+Tue Mar  5 09:04:00 UTC 2013 - coolo@suse.com
+
+- updated to version 1.11.0
+ * Excon >= 0.17 support.
+ * '+' in request path is treated as plus, but in query params always as a space.
+
+-------------------------------------------------------------------
+Sun Mar  3 09:29:20 UTC 2013 - coolo@suse.com
+
+- updated to version 1.10.1
+ * '+' in request body is still treated as a space. This fixes a bug introduced in previous version.
+ * Fixed issue: response body declared as Proc was not evaluated again on subsequent requests.
+ * '+' in query params is not treated as space anymore and is encoded as %2B
+ * added `remove_request_stub` method to the api to allow removing unused stubs i.e.
+ 
+         stub_get = stub_request(:get, "www.example.com")
+         remove_request_stub(stub_get)
+ 
+ * `assert_requested` and `assert_not_requested` raise an error if a stub object is provided together with a block.
+ * Fixed issue with unavailable constant Mutex in Ruby < 1.9
+ * Added support for Excon's :response_block parameter
+ * Fix 'rack.errors' not being set for Rack apps
+ * Added support for minitest assertions count
+ * Fixed issues with registering http requests in multi-threaded environments
+ * Bumped Crack version to >=0.3.2
+ * Fixed issues in Typhoeus 0.6. Defaulted method to GET when no method specified.
+
+-------------------------------------------------------------------
+Thu Nov 15 09:32:27 UTC 2012 - coolo@suse.com
+
+- updated to version 1.9.0
+ * Added support for Typhoeus >= 0.5.0 and removed support for Typhoeus < 0.5.0.
+
+-------------------------------------------------------------------
+Mon Oct  1 10:56:14 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.11
+ * Fix excon adapter to handle `:body => some_file_object`
+
+-------------------------------------------------------------------
+Wed Sep 12 18:43:05 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.10
+  * em-http-request fix. After request callbacks are correctly invoked for 3xx responses,
+    when :redirects option is set.
+      Thanks to [Myron Marston](https://github.com/myronmarston) for reporting that issue.
+  
+  * Fixed compatibility with Net::HTTP::DigestAuth
+      Thanks to [Jonathan Hyman](https://github.com/jonhyman) for reporting that issue.
+  
+  * Fixed problem in em-http-request 0.x appending the query to the client URI twice.
+      Thanks to [Paweł Pierzchała](https://github.com/wrozka)
+
+-------------------------------------------------------------------
+Sun Aug 26 05:50:11 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.9
+  * Fixed problem with caching nil responses when the same HTTPClient instance is used.
+  
+      Thanks to [Myron Marston](https://github.com/myronmarston)
+  
+  * Added support for Addressable >= 2.3.0. Addressable 2.3.0 removed support for multiple query value notations and broke backwards compatibility.
+  
+      https://github.com/sporkmonger/addressable/commit/f51e290b5f68a98293327a7da84eb9e2d5f21c62
+      https://github.com/sporkmonger/addressable/issues/77
+
+-------------------------------------------------------------------
+Wed Nov 16 15:15:23 UTC 2011 - fcastelli@suse.com
+
+- Update to 1.7.7, too many changes to report here.
+
+-------------------------------------------------------------------
+Mon Jun 14 19:08:16 UTC 2010 - mrueckert@suse.de
+
+- additional changes from version 1.2.2
+  - Fixed problem where ArgumentError was raised if query params
+    were made up of an array e.g. data[]=a&data[]=b.
+    Thanks to Steve Tooke
+- additional changes from version 1.2.1
+  - Changed license from GPL to MIT
+  - Fixed gemspec file. Thanks to Razic
+- additional changes from version 1.2.0 
+  - RSpec 2 compatibility. Thanks to Sam Phillips!
+  - :allow_localhost => true' now permits 127.0.0.1 as well as
+    'localhost'. Thanks to Mack Earnhardt
+  - Request URI matching in now 2x faster!
+- additional changes from version 1.1.0
+  - [VCR](http://github.com/myronmarston/vcr/) compatibility. Many
+    thanks to Myron Marston for all suggestions.
+  - Support for stubbing requests and returning responses with
+    multiple headers with the same name. i.e multiple Accept
+    headers.
+  - When real net connections are disabled and unstubbed request is
+    made, WebMock throws WebMock::NetConnectNotAllowedError instead
+    of assertion error or StandardError.
+  - Added WebMock.version()
+- additional changes from version 1.0.0
+  - Added support for [Patron](http://toland.github.com/patron/)
+  - Responses dynamically evaluated from block (idea and
+    implementation by Tom Ward)
+  - Responses dynamically evaluated from lambda (idea and
+    implementation by Tom Ward)
+  - Response with custom status message 
+  - Raising timeout errors (suggested by Jeffrey Jones)
+    (compatibility with Ruby 1.8.6 by Mack Earnhardt)
+  - External requests can be disabled while allowing localhost
+    (idea and implementation by Mack Earnhardt)
+  - Fixed issue where Net::HTTP adapter didn't work for requests
+    with body responding to read (reported by Tekin Suleyman)
+  - Fixed issue where request stub with headers declared as nil was
+    matching requests with non empty headers
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Feb 18 22:24:11 UTC 2010 - prusnak@suse.cz
+
+- created package
+

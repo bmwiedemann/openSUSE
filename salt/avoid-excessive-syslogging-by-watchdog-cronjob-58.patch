@@ -1,0 +1,26 @@
+From 310f8eb22db6010ba48ab371a7223c1345cfbcf0 Mon Sep 17 00:00:00 2001
+From: Hubert Mantel <mantel@suse.de>
+Date: Mon, 27 Nov 2017 13:55:13 +0100
+Subject: [PATCH] avoid excessive syslogging by watchdog cronjob (#58)
+
+---
+ pkg/suse/salt-minion | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/suse/salt-minion b/pkg/suse/salt-minion
+index 2e418094ed..73a91ebd62 100755
+--- a/pkg/suse/salt-minion
++++ b/pkg/suse/salt-minion
+@@ -55,7 +55,7 @@ WATCHDOG_CRON="/etc/cron.d/salt-minion"
+ 
+ set_watchdog() {
+     if [ ! -f $WATCHDOG_CRON ]; then
+-        echo -e '* * * * * root /usr/bin/salt-daemon-watcher --with-init\n' > $WATCHDOG_CRON
++        echo -e '-* * * * * root /usr/bin/salt-daemon-watcher --with-init\n' > $WATCHDOG_CRON
+         # Kick the watcher for 1 minute immediately, because cron will wake up only afterwards
+         /usr/bin/salt-daemon-watcher --with-init & disown
+     fi
+-- 
+2.13.7
+
+

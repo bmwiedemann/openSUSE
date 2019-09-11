@@ -1,0 +1,25 @@
+From cad58963ed13f5e1068fcc9e4326123b6b2bdcf8 Mon Sep 17 00:00:00 2001
+From: Carlos Corbacho <carlos@strangeworlds.co.uk>
+Date: Mon, 18 Nov 2013 12:55:44 +0000
+Subject: [PATCH] NullHandler should be an instance, not a class
+
+The logger expects a NullHandler instance, not a class. Otherwise, if you run
+this in an environment without a logger already set up, it raises an
+AttributeError as 'level' is defined on the instance, not the class.
+---
+ rfc6266.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rfc6266.py b/rfc6266.py
+index 0501493..31992ae 100644
+--- a/rfc6266.py
++++ b/rfc6266.py
+@@ -25,7 +25,7 @@
+ 
+ LOGGER = logging.getLogger('rfc6266')
+ try:
+-    LOGGER.addHandler(logging.NullHandler)
++    LOGGER.addHandler(logging.NullHandler())
+ except AttributeError:
+     pass
+ 

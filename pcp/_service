@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/performancecopilot/pcp.git</param>
+		<param name="filename">pcp</param>
+		<param name="revision">4.3.1</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="changesgenerate">disable</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">bz2</param>
+	</service>
+	<service name="set_version" mode="disabled">
+		<param name="basename">pcp</param>
+	</service>
+</services>

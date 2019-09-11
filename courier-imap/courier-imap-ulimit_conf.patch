@@ -1,0 +1,30 @@
+Index: libs/imap/pop3d.dist.in
+===================================================================
+--- libs/imap/pop3d.dist.in.orig
++++ libs/imap/pop3d.dist.in
+@@ -28,6 +28,25 @@ MAXDAEMONS=40
+ 
+ MAXPERIP=4
+ 
++##NAME: POP3_ULIMITD:0
++#
++# POP3_ULIMITD sets the maximum size of the data segment of the server
++# process.  The value of POP3_ULIMITD is simply passed to the "ulimit -d"
++# command (or ulimit -v).  The argument to ulimi sets the upper limit on the
++# size of the data segment of the server process, in kilobytes.  The default
++# value of 65536 sets a very generous limit of 64 megabytes, which should
++# be more than plenty for anyone.
++#
++# This feature is used as an additional safety check that should stop
++# any potential denial-of-service attacks that exploit any kind of
++# a memory leak to exhaust all the available memory on the server.
++# It is theoretically possible that obscenely huge folders will also
++# result in the server running out of memory when doing server-side
++# sorting (by my calculations you have to have at least 100,000 messages
++# in a single folder, for that to happen).
++
++POP3_ULIMITD=65536
++
+ ##NAME: POP3AUTH:1
+ #
+ # To advertise the SASL capability, per RFC 2449, uncomment the POP3AUTH

@@ -1,0 +1,26 @@
+situation:
+
+/var/lib/pdns            pdns:pdns 750
+/var/lib/pdns/sqlite3.db pdns:pdns 640
+
+during start up it seems pdns tries to open the file as root
+which fails because of the permissions, internally it tries to
+open it with dac override capability, which fails as it isn't
+in the capability set.
+
+Adding CAP_DAC_OVERRIDE fixes the start problems.
+
+
+Index: pdns-4.0.3/pdns/pdns.service.in
+===================================================================
+--- pdns-4.0.3.orig/pdns/pdns.service.in
++++ pdns-4.0.3/pdns/pdns.service.in
+@@ -13,7 +13,7 @@ RestartSec=1
+ StartLimitInterval=0
+ PrivateTmp=true
+ PrivateDevices=true
+-CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_CHOWN CAP_SYS_CHROOT
++CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_CHOWN CAP_SYS_CHROOT CAP_DAC_OVERRIDE
+ NoNewPrivileges=true
+ # ProtectSystem=full will disallow write access to /etc and /usr, possibly
+ # not being able to write slaved-zones into sqlite3 or zonefiles.

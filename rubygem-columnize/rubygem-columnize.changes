@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Feb 10 08:09:04 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.0, no changelog
+
+-------------------------------------------------------------------
+Sun Oct 12 10:08:29 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun May 18 09:04:35 UTC 2014 - coolo@suse.com
+
+- updated to version 0.8.9
+ - Add columnize method to Array class and a place to set its default options
+ - Add option :colfmt to allow a format specifier to use (e.g. '%02d') in stringifying
+   list items
+ - Add option linesuffix (default is "\n")
+ - When using arrange_array each line now has trailing ","
+
+-------------------------------------------------------------------
+Fri Mar  9 10:14:42 UTC 2012 - cfarrell@suse.com
+
+- license update: Ruby
+  This is essentially the Ruby license
+
+-------------------------------------------------------------------
+Thu Mar  8 08:57:30 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.3.6:
+  * Bugfix release, see CHANGELOG for details
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Mon Oct  5 17:35:01 CEST 2009 - mrueckert@suse.de
+
+- initial package
+

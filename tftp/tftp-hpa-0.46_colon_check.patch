@@ -1,0 +1,29 @@
+Index: tftp/main.c
+===================================================================
+--- tftp/main.c.orig
++++ tftp/main.c
+@@ -308,7 +308,7 @@ int main(int argc, char *argv[])
+ 
+     bsd_signal(SIGINT, intr);
+ 
+-    if (peerargc) {
++    if (peerargc > 1) {
+         /* Set peer */
+         if (sigsetjmp(toplevel, 1) != 0)
+             exit(EX_NOHOST);
+@@ -634,11 +634,14 @@ void get(int argc, char *argv[])
+         return;
+     }
+     if (!connected) {
+-        for (n = 1; n < argc; n++)
++        for (n = 1; n < argc; n++) {
+             if (literal || strchr(argv[n], ':') == 0) {
+                 getusage(argv[0]);
+                 return;
+             }
++            if (argc == 3)
++                break;
++        }
+     }
+     for (n = 1; n < argc; n++) {
+         src = strchr(argv[n], ':');

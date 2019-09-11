@@ -1,0 +1,23 @@
+From 7bf13141d090b9ed4712109917c7c5caa4ca13a4 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 2 Dec 2016 12:08:14 +0100
+Subject: [PATCH] libusbgx: fix: Add missing include in usb_common.c
+
+snprintf is used multiple times in usb_common.c,
+but it did not include stdio.h before.
+---
+ src/usbg_common.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: libusbgx/src/usbg_common.c
+===================================================================
+--- libusbgx.orig/src/usbg_common.c
++++ libusbgx/src/usbg_common.c
+@@ -14,6 +14,7 @@
+ #include "usbg/usbg_internal.h"
+ 
+ #include <errno.h>
++#include <stdio.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <malloc.h>

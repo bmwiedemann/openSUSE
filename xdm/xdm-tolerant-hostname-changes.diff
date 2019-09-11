@@ -1,0 +1,115 @@
+--- xdm/auth.c.orig	2011-09-25 09:35:47.000000000 +0200
++++ xdm/auth.c	2014-07-18 14:55:03.244300844 +0200
+@@ -767,7 +767,7 @@ writeAddr (
+ }
+ 
+ static void
+-DefineLocal (FILE *file, Xauth *auth)
++DefineLocal (FILE *file, Xauth *auth, char **pLocalAddress)
+ {
+ 	char	displayname[100];
+ 	int	len = _XGetHostname (displayname, sizeof(displayname));
+@@ -803,6 +803,9 @@ DefineLocal (FILE *file, Xauth *auth)
+ #endif
+ 
+ 	writeAddr (FamilyLocal, len, displayname, file, auth);
++
++        if (pLocalAddress)
++           *pLocalAddress = strdup(displayname);
+ }
+ 
+ #ifdef HAVE_GETIFADDRS
+@@ -1236,7 +1239,7 @@ setAuthNumber (Xauth *auth, char *name)
+ }
+ 
+ static void
+-writeLocalAuth (FILE *file, Xauth *auth, char *name)
++writeLocalAuth (FILE *file, Xauth *auth, char *name, char **pLocalAddress)
+ {
+     int	fd;
+ 
+@@ -1263,13 +1266,13 @@ writeLocalAuth (FILE *file, Xauth *auth,
+     DefineSelf (fd, file, auth);
+     close (fd);
+ #endif
+-    DefineLocal (file, auth);
++    DefineLocal (file, auth, pLocalAddress);
+ }
+ 
+ #ifdef XDMCP
+ 
+ static void
+-writeRemoteAuth (FILE *file, Xauth *auth, XdmcpNetaddr peer, int peerlen, char *name)
++writeRemoteAuth (FILE *file, Xauth *auth, XdmcpNetaddr peer, int peerlen, char *name, char **pLocalAddress)
+ {
+     int	    family = FamilyLocal;
+     char    *addr;
+@@ -1288,7 +1291,7 @@ writeRemoteAuth (FILE *file, Xauth *auth
+     }
+     else
+     {
+-	writeLocalAuth (file, auth, name);
++	writeLocalAuth (file, auth, name, pLocalAddress);
+     }
+ }
+ 
+@@ -1312,6 +1315,7 @@ SetUserAuthorization (struct display *d,
+ #ifdef HAVE_MKSTEMP
+     int		fd;
+ #endif
++    char	*localAddress = NULL;
+ 
+     Debug ("SetUserAuthorization\n");
+     auths = d->authorizations;
+@@ -1404,10 +1408,10 @@ SetUserAuthorization (struct display *d,
+ 	    {
+ 		magicCookie = i;
+ 		if (d->displayType.location == Local)
+-		    writeLocalAuth (new, auths[i], d->name);
++		    writeLocalAuth (new, auths[i], d->name, &localAddress);
+ #ifdef XDMCP
+ 		else
+-		    writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name);
++		    writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name, &localAddress);
+ #endif
+ 		break;
+ 	    }
+@@ -1425,10 +1429,10 @@ SetUserAuthorization (struct display *d,
+ 		    !strncmp (auths[i]->name, "MIT-KERBEROS-5", 14))
+ 		    auths[i]->data_length = 0;
+ 		if (d->displayType.location == Local)
+-		    writeLocalAuth (new, auths[i], d->name);
++		    writeLocalAuth (new, auths[i], d->name, &localAddress);
+ #ifdef XDMCP
+ 		else
+-		    writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name);
++		    writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name, &localAddress);
+ #endif
+ 		auths[i]->data_length = data_len;
+ 	    }
+@@ -1473,6 +1477,12 @@ SetUserAuthorization (struct display *d,
+ 	    verify->systemEnviron = setEnv (verify->systemEnviron,
+ 				    "XAUTHORITY", envname);
+ 	}
++	if (localAddress) {
++	    verify->userEnviron = setEnv (verify->userEnviron,
++				    "XAUTHLOCALHOSTNAME",localAddress);
++	    free(localAddress);
++	}
++	
+ 	XauUnlockAuth (name);
+ 	if (envname)
+ 	    chown (envname, verify->uid, verify->gid);
+@@ -1511,10 +1521,10 @@ RemoveUserAuthorization (struct display
+ 	for (i = 0; i < d->authNum; i++)
+ 	{
+ 	    if (d->displayType.location == Local)
+-		writeLocalAuth (new, auths[i], d->name);
++		writeLocalAuth (new, auths[i], d->name, NULL);
+ #ifdef XDMCP
+ 	    else
+-		writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name);
++		writeRemoteAuth (new, auths[i], d->peer, d->peerlen, d->name, NULL);
+ #endif
+ 	}
+ 	doWrite = 1;

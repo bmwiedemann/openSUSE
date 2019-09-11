@@ -1,0 +1,21 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-12-06 12:28:42.992186963 +0100
+
+Unversioned libraries suck!
+---
+ lib/meson.build |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: libcamera-0~14.b99da21/lib/meson.build
+===================================================================
+--- libcamera-0~14.b99da21.orig/lib/meson.build
++++ libcamera-0~14.b99da21/lib/meson.build
+@@ -1,6 +1,7 @@
+ sources = ['main.cpp']
+ 
+-libcamera = shared_library('camera',
++libcamera = shared_library('camera-suse',
+                            sources,
+                            install : true,
++                           soversion : '0',
+                            include_directories : inc)

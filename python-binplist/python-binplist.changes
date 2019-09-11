@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon May 28 14:06:46 UTC 2018 - mcepl@suse.com
+
+- Upgrade to 0.1.5
+    * Minor lint changes
+    * PlistToUnicode moved to the main module (with added tests)
+    * Ability to select the output encoding
+- Clean up spec and prepare for singlespec (although switched off now,
+  as the upstream has not ported to py3k yet)
+
+-------------------------------------------------------------------
+Thu Aug 24 13:33:18 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Wed Aug 13 18:57:50 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0.1.4
+	* Per GIT log replaced JSON parser with internal code
+	* other minor changes
+- change /usr/bin/binplist to /usr/bin/plist.py in %files section
+
+-------------------------------------------------------------------
+Mon Sep  9 15:02:24 UTC 2013 - Greg.Freemyer@gmail.com
+
+- fix macros in files section to build on multiple architectures
+- change sed line to more preferred syntax
+
+-------------------------------------------------------------------
+Tue Aug 20 16:19:46 UTC 2013 - Greg.Freemyer@gmail.com
+
+- initial package (v0.1.3)
+
+

@@ -1,0 +1,369 @@
+-------------------------------------------------------------------
+Wed Oct 17 19:25:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.24
+  * Make "HXOPT_AUTOHELP" behave the same in C++ as C
+  * Avoid compiler warning when using HX_list_for_each in C++
+
+-------------------------------------------------------------------
+Tue Aug 28 08:19:43 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 3.23
+  * opt parser: Support long option abbreviations.
+  * io: Deprecate use of readdir_, use readdir.
+
+-------------------------------------------------------------------
+Mon Dec 15 00:44:16 UTC 2014 - jengelh@inai.de
+
+- Switch to an out-of-tree build. Drop /pkg from include path.
+
+-------------------------------------------------------------------
+Mon Aug 25 15:20:02 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.22
+* HX_strquote() now supports the HXQUOTE_SQLBQUOTE mechanism
+
+-------------------------------------------------------------------
+Mon Jun  2 01:14:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.21
+* HXformat_add() now supports HXTYPE_MCSTR objects (with and without
+  HXTYPE_IMMED)
+* libxml_helper: New xml_getnsprop() function that gets the value of a
+  property (element attribute) by namespace prefix
+
+-------------------------------------------------------------------
+Fri Apr 18 16:29:13 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.20
+* Build fixes for the Solaris platform
+
+-------------------------------------------------------------------
+Fri Feb 21 19:13:11 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.19
+* string: add the HXQUOTE_SQLSQUOTE quoting variant
+
+-------------------------------------------------------------------
+Mon Feb 10 17:12:56 UTC 2014 - jengelh@inai.de
+
+- Do an out-of-srcdir build
+
+-------------------------------------------------------------------
+Fri Jan  3 09:24:44 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.18
+* Incorrect behavior in HX_strltrim has been fixed
+* Added a HX_stpltrim function
+
+-------------------------------------------------------------------
+Sat Nov 16 04:08:25 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.17
+* Build fixes and improvements for compiling under Windows
+
+-------------------------------------------------------------------
+Sun Sep 29 20:00:58 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.16
+* remove 256-char format key length limit in HXformat_*
+
+-------------------------------------------------------------------
+Thu Mar  7 20:29:53 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.15
+* string: add HX_strchr2
+* string: add HXQUOTE_URIENC mechanism for HX_strquote
+* defs: HXsizeof_member becomes FIELD_SIZEOF
+
+-------------------------------------------------------------------
+Mon Dec 31 08:55:30 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.14.1 (bugfix release)
+* restore forward ordering of ordered maps
+
+-------------------------------------------------------------------
+Wed Nov 28 18:31:15 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Wed Nov 14 12:48:20 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.14
+* rand: avoid division by zero when calling HX_irand with lo==hi
+
+-------------------------------------------------------------------
+Sat Jul 28 11:16:25 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.13
+* io: remove HX_REALPATH_SYMLINK
+* option: new HXOPT_RQ_ORDER flag, allows unconditional POSIX-style
+  parsing (parsing terminates at first non-option encountered)
+* option: add HXTYPE_SIZE_T
+* time: add functions and macros for arithmetic and handling of
+  timespec with support for negative time values
+
+-------------------------------------------------------------------
+Sat Feb 11 00:12:21 UTC 2012 - jengelh@inai.de
+
+- Update autotools BuildRequires (add libtool) for Factory/12.2,
+  remove unnecessary regeneration stage
+
+-------------------------------------------------------------------
+Thu Dec 15 11:27:02 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.12.1
+* string: make HX_strdup(NULL) valid again
+* build: fix build when -Wl,--no-undefined is used
+
+-------------------------------------------------------------------
+Wed Dec  7 13:03:09 UTC 2011 - cfarrell@suse.com
+
+- license update: LGPL-2.1 or LGPL-3.0
+  libHX has a dual choice of LGPL-2.1 or LGPL-3.0. Use SPDX format
+
+-------------------------------------------------------------------
+Sat Dec  3 20:05:01 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.12
+* Clang support
+* Fixes to the option parser's passthrough mode,
+  which did not correctly copy arguments over
+* POSIXLY_CORRECT support for the option parser
+* Size reduction of data structures by eliminating
+  seldomly-used fields
+
+-------------------------------------------------------------------
+Thu Dec  1 10:24:53 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Aug 10 10:26:37 UTC 2011 - jengelh@medozas.de
+
+- Remove pkgincludedir.diff and instead just use --includedir
+  to %configure
+
+-------------------------------------------------------------------
+Mon Jul 25 12:11:22 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.11
+* string: add a HXQUOTE_BASE64 to HX_strquote
+* debug: new LD_PRELOAD-able library that does additional checks
+  to the runtime
+- Provide libHX-devel-32bit
+
+-------------------------------------------------------------------
+Mon Jun  6 10:19:21 UTC 2011 - jengelh@medozas.de
+
+- Put the libHX directory into a versioned directory to detect
+  unwanted omission of libHX_CFLAGS in dependent projects
+
+-------------------------------------------------------------------
+Wed Apr  6 17:34:49 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.10.1
+* defs: BUILD_BUG_ON_EXPR had erroneously returned 1
+- Add BuildRequires: pkg-config as per rpmlint suggestion
+
+-------------------------------------------------------------------
+Tue Apr  5 18:46:20 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.10
+* format: do not split arguments in %(lower) and %(upper)
+* defs: add array type checking in ARRAY_SIZE
+* opt: use non-zero sentinel marker
+* defs: add BUILD_BUG_ON_EXPR
+* format: provide a %(substr) function
+* io: add HX_readlink (zero-terminating mc-output readlink)
+* io: add HX_realpath (supports relative-path output)
+
+-------------------------------------------------------------------
+Mon Jan 17 00:31:26 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.9.1
+* Package missing header file
+
+-------------------------------------------------------------------
+Sat Jan 15 02:47:46 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.9
+* Add missing includes and guard to public include files
+* For filesystem/filehandle-related functions, io.h should now be
+  included in userspace programs instead of misc.h
+* hxdirstamp: new development helper program for library users
+* io: new functions HXio_full{read,write}
+
+-------------------------------------------------------------------
+Wed Dec  1 20:48:36 UTC 2010 - jengelh@medozas.de
+
+- Update to new upstream release 3.8
+* HXdir_{open,read,close} now work with struct HXdir *
+  instead of void *
+* xml_newnode prototype changed to accomodate subtext
+- Run hxtools's spec-beautifier on specfile
+
+-------------------------------------------------------------------
+Wed Aug 25 21:44:17 UTC 2010 - jengelh@medozas.de
+
+- update to new upstream version 3.6
+* Fixes in 3.6:
+* bitmap: set/clear/test had no effect due to wrong type selection
+* bitmap: avoid left-shift larger than type on 64-bit
+* string: fixed buffer overflow in HX_split when too few fields were present
+  in the input (CVE-2010-2947)
+* Fixes in 3.5:
+* format2: failure to skip escaped char in "%(echo foo\ bar)" was corrected
+* proc: properly check for HXPROC_STDx--HXPROC_STDx_NULL overlap
+* strquote: do not cause allocation with invalid format numbers
+* Enhancements:
+* new format2 expandable functions like %(exec) and %(shell)
+* LDAP search filter and RDN quoting support
+* Old formatter was removed
+
+-------------------------------------------------------------------
+Wed Apr  7 02:40:35 UTC 2010 - jengelh@medozas.de
+
+- update to upstream version 3.4
+  * explicit library initializer function
+
+-------------------------------------------------------------------
+Thu Jan 21 22:36:38 CET 2010 - jengelh@medozas.de
+
+- update to upstream version 3.3
+  * fixes to the quote processing of the format1 and shconfig parsers
+  * introduces a new string formatter
+
+-------------------------------------------------------------------
+Wed Dec  9 21:34:17 CET 2009 - jengelh@medozas.de
+
+- update descriptions in specfile
+- do not pass --with-pkgconfigdir to configure;
+  build already does it right
+- update to upstream version 3.2
+  * defs: add HXsizeof_member and HXtypeof_member
+  * map: new map API, with hash-based maps and classic
+    rbtree-based maps
+  * arbtree: HXbtree was removed in favor of the new HXmap
+  * clist: clist.h moved into list.h
+  * format: HXformat_* now uses struct HXformat_map
+  * rand: use faster modulo-based variant for numbers within
+    RAND_MAX range
+  * rand: use libc rand() almost exclusively, only use
+    /dev/urandom for seed
+  * time: add time delta functions
+  * added HXbitmap_* functions
+- add baselibs.conf as a Source, so that it is available on local
+  builds too
+
+-------------------------------------------------------------------
+Mon Jul 27 11:10:51 CEST 2009 - mc@novell.com
+
+- Version 2.9
+  - string: fixed number of fields and trailing NULL in HX_split4
+  - string: add HX_basename_exact
+  - HXproc now knows about HXPROC_NULL_*, which can be used to discard I/O
+  - HXproc: expressly prohibit HXPROC_STD* for HXproc_run_sync 
+
+-------------------------------------------------------------------
+Mon May 11 11:18:17 CEST 2009 - mc@suse.de
+
+- update to version 2.7
+  - update ducumentation
+  - arbtree: add "flat view" operation
+  - misc: added HX_fls
+  - misc: make HX_time_compare otime-capable
+  - add wx_helper.hpp
+
+-------------------------------------------------------------------
+Wed Feb 18 12:22:28 CET 2009 - mc@suse.de
+
+- update to version 2.5
+  * a lot of new features and fixes
+    see /usr/share/doc/packages/libHX/changelog.txt for details 
+  * move lib back to /usr/lib/
+
+-------------------------------------------------------------------
+Thu Jan 29 15:38:19 CET 2009 - crrodriguez@suse.de
+
+- move .so symlinks to %%{_libdir} 
+- fix -devel package dependencies
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:19 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Thu Sep 25 14:54:25 CEST 2008 - mc@suse.de
+
+- pointer was not automatically updated after hmc_trunc()
+- make code resistant to memory allocation failure 
+
+-------------------------------------------------------------------
+Fri Sep  5 09:56:48 CEST 2008 - mc@suse.de
+
+- update to version 1.23
+  - code cleanup: misc.h has been split off libHX.h
+  - add defs.h 
+- move libs to /lib[64] (required for pam_mount)
+
+-------------------------------------------------------------------
+Thu Aug 14 17:57:13 CEST 2008 - mc@suse.de
+
+- update to version 1.22
+  * need to use lstat() on directory operations such as mkdir and rmdir
+  * use RTLD_LAZY when opening dynamic libraries
+  * add libxml_helper
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:12 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Mon Jun 23 12:56:42 CEST 2008 - mc@suse.de
+
+- package rename to libHX13, libHX-devel
+- version 1.18
+  - implement reverse iterating through HXlist
+  - remove deprecated HXlist_init_head() and HXclist_init_head()
+    [replaced by HXlist_init() and HXclist_init()]
+  - added HX_ffs()
+  - HXlist: added HXlist_for_each_safe, HXlist_for_each_entry_safe
+  - HXclist: added HXclist_del
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Apr  7 11:39:23 CEST 2008 - mc@suse.de
+
+- version 1.15
+  - HXformat: add %(ifempty) and %(ifnempty) tags
+  - libHX.h: split into {arbtree,deque,option,string}.h (and libHX.h)
+  - Add inline-doubly-linked-list data structures
+
+-------------------------------------------------------------------
+Wed Apr  2 18:06:43 CEST 2008 - mc@suse.de
+
+- version 1.10.2
+  * bugfixes 
+
+-------------------------------------------------------------------
+Mon Oct  8 15:03:07 CEST 2007 - mc@suse.de
+
+- version 1.10.1
+  * Fix output of line-wrapped help text
+  * fix tarball 
+- package pkgconfig file
+
+-------------------------------------------------------------------
+Thu Jul 12 11:27:47 CEST 2007 - mc@suse.de
+
+- initial release 1.10.0 
+

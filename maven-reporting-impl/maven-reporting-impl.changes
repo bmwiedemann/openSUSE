@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Mar 29 13:44:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-reporting-impl 3.0.0
+- Generate and customize ant build.xml file

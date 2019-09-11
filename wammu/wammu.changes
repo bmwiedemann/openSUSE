@@ -1,0 +1,383 @@
+-------------------------------------------------------------------
+Sun Jan  7 10:24:28 UTC 2018 - ecsos@opensuse.org
+
+- Update to 0.44
+  * Fixed layout of features selection dialog.
+  * Build is now reproducible.
+  * License changed to GPLv3+.
+- Drop patch reproducible.patch because it is now in upstream
+
+-------------------------------------------------------------------
+Fri Jun  2 14:57:36 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort appdata and desktop file entries
+  to make build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Dec 16 17:55:16 UTC 2016 - ecsos@opensuse.org
+
+- Update to 0.43
+  * Fixed images path lookups for installations to /opt.
+  * Fixed startup when installed to /opt.
+  * Fixed bug when message could not be read back.
+  * Localization updates.
+
+-------------------------------------------------------------------
+Fri Nov 25 22:03:17 UTC 2016 - ecsos@opensuse.org
+
+- Update to 0.42
+  * Improved AppData metadata.
+  * Added ttyHS ports to selection.
+  * Localization updates.
+
+-------------------------------------------------------------------
+Sat May 28 10:16:04 UTC 2016 - ecsos@opensuse.org
+
+- Update to 0.41
+  * Fixed crash with unicode home directory.
+  * Fixed possible crashes in error handler.
+  * Improved error handling when scanning for Bluetooth devices.
+
+-------------------------------------------------------------------
+Tue Nov 24 07:46:22 UTC 2015 - mcihar@suse.cz
+
+- Update to 0.40
+  * Correctly escape XML output.
+  * Make error message selectable.
+  * Fixed spurious D-Bus error message. (boo#914904)
+
+-------------------------------------------------------------------
+Sun Sep 27 11:52:23 UTC 2015 - ecsos@opensuse.org
+
+- Update to 0.39
+  * Fixed connecting to phone with no SMSC set.
+  * Various code cleanups.
+
+-------------------------------------------------------------------
+Tue Dec 30 09:59:20 UTC 2014 - ecsos@opensuse.org
+
+- Updated to 0.38:
+  * Compatibility with latest wxPython releases.
+  * Fixed corrupted appdata metadata.
+  * Fixed broken desktop file due to Chinese translation.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Sun Nov  9 15:44:41 UTC 2014 - mailaender@opensuse.org
+
+- Updated to 0.37:
+  * Translation updates (Indonesian, Spanish, ...).
+  * Add export of contact to XML.
+  * Add Get all menu option.
+  * Added appdata metadata.
+- Removed redundant %clean
+- Brought back python-xml which is a hard dependency now
+
+-------------------------------------------------------------------
+Sat Oct  1 18:36:54 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 0.36:
+  * Fixed re-enabling task bar icon (bug #1369).
+  * Improve searching for installed images (bug #1393).
+  * Translations update (Spanish, Portuguese (Brazil),...).
+  * Compatibility with 3.0 Linux kernel.
+- Spec file updates:
+  * Changed License: to GPL-2.0.
+  * Changed Group: to Productivity/Telephony/Utilities.
+  * Removed python-xml from BuildRequires:/Requires: (not needed).
+  * Recommend python-pybluez.
+
+-------------------------------------------------------------------
+Fri Mar 18 20:11:26 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Don't clean buildroot in %install section.
+  * Fix for "python setup.py install" invoked twice on non-Suse distros.
+
+-------------------------------------------------------------------
+Sun Mar 13 19:57:31 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 0.35:
+  * New Turkish translation.
+  * Updated Dutch translation.
+  * Handle security error when getting phone info (bug #1264).
+  * Read all messages on phones not supporting status but support GetNext (bug
+    #1261).
+  From 0.34:
+  * Fixed handling error when SMSC is not configured in phone (bug #1244).
+  * Drop dependency of RPM on python-xml, it's not needed anymore (bug #1248).
+  * Better error messages on non existing devices or on wrong privileges.
+  * Support for storing call entry as new contact (bug #1283).
+  * More user friendly errors from talkback dialog.
+  * Lot of translations were updated.
+  From 0.33:
+  * Fixed displaying of an animation in SMS (bug #1091).
+  * Can Add and Delete multiple selections when Edit Recipient's numbers.
+  * Better log messages when scanning for phones (bug #1182).
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Url: and Group:.
+  * Updates in Buildrequires: and Requires: sections.
+  * Added a wammu-lang package based on rpmlint warning
+    "package-with-huge-translation".
+  * Fixed desktop file Category using "suse_update_desktop_file" instead of
+    using sed in %prep section.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Sun Apr 18 19:14:19 UTC 2010 - cmorve69@yahoo.es
+
+- Add german man pages.
+
+-------------------------------------------------------------------
+Mon Apr 12 06:27:14 UTC 2010 - prusnak@suse.cz
+
+- updated to 0.32.1
+  * Fix manually updating Gammu settings (bdo #565165).
+  * Disable phone search while connected to phone (bug #460).
+  * Properly handle errors when submitting to phonedb (bug #1102).
+  * Make talkback dialog modal (bug #487).
+  * Wammu asks for PIN code on connection if required (bug #305).
+  * Command wammu -i now also shows security status.
+  * Do not try bluetooth connections on cable (bdo #565122).
+  - from 0.32
+  * Fix crash when searching for phone (bug #1073).
+  * Avoid extra space at the end of SMS (bug #869).
+  * Respect message folder when importing backup (bug #1079).
+  * Fixed handling of boolean config values (bug #1090).
+  * Translation improvements (especially Dutch).
+  - from 0.31.1
+  * Include forgotten Czech man pages.
+  * Fixed compatibility with Python 2.4.
+  - from 0.31
+  * Better formatting of message (bug #869).
+  * Allow to export only new messages to IMAP (thanks to Tilmann Bitterberg).
+  * Do not emit warnings in Python 2.6 (bug #966).
+  * Properly escape XML in XML export (bug #914).
+  * Improve some English texts (bug #859).
+  * Better configuration of IMAP export (thanks to Tilmann Bitterberg).
+  * Sleep before reading newly created fields (bug #895).
+  * Do not use transparent icons (bug #833).
+
+-------------------------------------------------------------------
+Wed Mar 18 15:54:05 CET 2009 - prusnak@suse.cz
+
+- updated to 0.30.1
+  * Do not fail if group ID can not be converted to name.
+  * Updated to work with current python-gammu.
+  * Translation updates.
+  * Support for displaying picture on contacts.
+  * Properly handle paths with special chars (bug #816).
+  * Make build time dependency checks optional.
+  * Drop wxPython 2.4 compatibility code.
+- new spec taken from home:Nijel (upstream) project
+
+-------------------------------------------------------------------
+Tue Sep  9 18:29:19 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.28
+  * Fixed freeze while searching for Bluetooth devices.
+  * Fixed guided configuration of Bluetooth devices (no more complains
+    about not existing device).
+  * Fixed saving of backups to folder with non ASCII names.
+  * Validation is less strict and allows hopefully all number.
+- updated to 0.27
+  * Do not fail if phone does not support call notifications.
+  * Improved handling of empty config file.
+  * Lot of translation updates.
+  * Fix compatibility with some IMAP servers.
+
+-------------------------------------------------------------------
+Tue Mar 11 14:46:21 CET 2008 - prusnak@suse.cz
+
+- updated to 0.26
+  * Various attempts to make Windows version back to usable state, but it
+    is not ready yet as there are quite random crashes in python-gammu on
+    Windows. Anybody with knowledge of python modules on Windows who is
+    willing to help is welcome.
+  * Dropped GNOME Bluetooth (btctl) support, it crashes too often.
+  * Fix icons size to be all 16x16.
+  * Fixed crash when D-Bus can not launch notification service.
+
+-------------------------------------------------------------------
+Wed Dec 19 15:04:44 CET 2007 - prusnak@suse.cz
+
+- updated to 0.25
+  * Fall back to Add methods if Set is not supported.
+  * Fixed phone number validation.
+  * Fixed crash when org.freedesktop.Notifications service is not
+    provided.
+  * Correctly report why guided wizard can not connect to phone.
+  * New navigation icons, thanks to David Corrales.
+
+-------------------------------------------------------------------
+Tue Nov 20 15:20:22 CET 2007 - prusnak@suse.cz
+
+- updated to 0.24
+  * Notifies user about incoming calls using D-Bus.
+  * Remember default type of created entry (eg. phone/SIM memory).
+  * Newly created entries contain some reasonable fields by default.
+  * Fixed validation of editor fields.
+  * Improvements in guided wizard to make it easier to use.
+  * Clever searching over Bluetooth based on manufacturer.
+  * Searching can be really limited to some connection types.
+
+-------------------------------------------------------------------
+Tue Oct 30 12:02:34 CET 2007 - prusnak@suse.cz
+
+- updated to 0.23
+  * fixed phone number prefix settings
+  * customisable format for displaying name
+  * fixed crash when reporting information to phone database
+- changed gnome-bluetooth to libgnomebt-devel in BuildRequires
+- removed obsoleted desktop.patch (included in update)
+
+-------------------------------------------------------------------
+Tue Sep 25 12:22:43 CEST 2007 - prusnak@suse.cz
+
+- update to 0.22
+  * fixed errors in locales and applied stricter checking
+  * fixed various crashes
+
+-------------------------------------------------------------------
+Thu Jun 21 10:47:04 CEST 2007 - prusnak@suse.cz
+
+- update do 0.21
+  * avoid blocking opening of a browser
+  * tell user if he needs to be member of some group while searching
+
+-------------------------------------------------------------------
+Thu May 17 11:01:51 CEST 2007 - prusnak@suse.cz
+
+- update to 0.20
+  * improve locales behaviour (and require wxPython with Unicode)
+  * show time in call listings
+  * fixed infinite loop in searching
+  * fixed displaying of messages with special chars
+  * fixed locale detection on system without configured locales
+
+-------------------------------------------------------------------
+Wed Apr 25 13:49:50 CEST 2007 - prusnak@suse.cz
+
+- update to 0.19
+  * improved SMS recipient list handling
+  * can save and load SMS recipient list
+  * support for sending file to phone
+  * support for task bar icon
+
+-------------------------------------------------------------------
+Tue Feb 27 11:33:23 CET 2007 - prusnak@suse.cz
+
+- update to version 0.18
+  * added s upport for reporting in Gammu Phone Database
+  * GUI more follows HIG on target platform (button placement)
+  * added wildcard search possibility
+  * use gammu configuration for phone connection instead of own
+
+-------------------------------------------------------------------
+Fri Oct 20 02:51:20 CEST 2006 - ro@suse.de
+
+- version 0.17
+  * Fix searching.
+  * Remember column sorting.
+ 
+
+-------------------------------------------------------------------
+Tue Oct 17 02:10:05 CEST 2006 - ro@suse.de
+
+- version 0.16
+  * Include platform in crash log.
+  * Fix SMS composer on Windows.
+  * Fix adding part to SMS after removing all.
+  * Fix editor on Windows.
+  * Now requires wxWidgets 2.6.
+- version 0.15
+  * Language selection for Windows (based on GTK+ 2 ISS code).
+  * Finnish translation from rosetta.
+  * Searching can be done plaintext and not only regexp.
+  * Phone number matching now works even for national numbers.
+  * Fixed usability with inveresed themes.
+- version 0.14
+  * Automatically append backup extension.
+  * PuBluez is now default for bluetooth devices lookup.
+  * Fixed mail export for non english locales.
+  * Fixed installation on Windows.
+  * Added support for py2exe for distributing Windows executable.
+  * Added script for creating Wammu installer on Windows (using Inno Setup).
+
+-------------------------------------------------------------------
+Tue Oct 17 02:09:35 CEST 2006 - ro@suse.de
+
+- make it build
+
+-------------------------------------------------------------------
+Wed Aug 16 02:26:28 CEST 2006 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Thu Jul 27 15:45:21 CEST 2006 - mjancar@suse.cz
+
+- update to 0.13
+  * Possibility to export SMS to maildir, mailbox and IMAP account.
+  * More user friendly debug logging.
+  * Many new translations, thanks to Rosetta.
+  * Improved bluetooth lookup - now uses either PyBluez or btctl
+    (part of GNOME Bluetooth).
+
+-------------------------------------------------------------------
+Tue Mar 14 01:13:20 CET 2006 - ro@suse.de
+
+- set prefix for python install 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 19:46:45 CET 2006 - mjancar@suse.cz
+
+- update to 0.12
+
+-------------------------------------------------------------------
+Mon Aug  1 14:44:52 CEST 2005 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Thu Jul 28 18:44:42 CEST 2005 - anicka@suse.cz
+
+- update to 0.9
+- desktop file created 
+
+-------------------------------------------------------------------
+Mon Dec 06 16:18:50 CET 2004 - mcihar@suse.cz
+
+- update to 0.8
+
+-------------------------------------------------------------------
+Mon Sep 06 15:04:47 CEST 2004 - mcihar@suse.cz
+
+- fix some problems with wxPython 2.5.2
+
+-------------------------------------------------------------------
+Mon Sep 06 11:47:08 CEST 2004 - mcihar@suse.cz
+
+- update to 0.7
+
+-------------------------------------------------------------------
+Fri Mar 05 10:07:14 CET 2004 - mcihar@suse.cz
+
+- update to 0.6
+
+-------------------------------------------------------------------
+Fri Jan 23 13:27:54 CET 2004 - mcihar@suse.cz
+
+- update to 0.5.1
+
+-------------------------------------------------------------------
+Mon Jan 05 11:48:10 CET 2004 - mcihar@suse.cz
+
+- initial packaging
+

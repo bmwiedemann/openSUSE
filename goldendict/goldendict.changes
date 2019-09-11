@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Wed Aug  7 14:36:34 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Split -lang package 
+
+-------------------------------------------------------------------
+Sun Mar  3 11:18:39 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update source to e7e37cb
+
+-------------------------------------------------------------------
+Sun Mar  3 11:10:45 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- fix build in spec
+- don't use CONFIG+=old_hunspell with libhunspell 1.6
+
+-------------------------------------------------------------------
+Wed Jun  6 04:59:46 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix GCC 7.3 compiler warnings.
+- Fix headwords search for case of wildcard in the first position.
+- ScanPopup: 
+  - Add button to stay over all other windows.
+  - Add an option to disable scan popup inside Goldendict in Linux
+- Full-test search: 
+  - Allow ignore diacritics while search.
+  - Use dictionary-specific articles sorting while search
+  - Add option to ignore words order while full-text search.
+  - DSL: Handle round brackets while full-text search.
+  - DSL: Expand tildes while full-text search
+  - Fix full-text search for case of partially matched sequence.
+- Add QMediaPlayer internal player back end (Qt5 only).
+- Forvo: order pronunciations by rate, high rated first.
+- Add ".webm" extension to known video types.
+- Add partial support for "audio" tag in Stardict(html), GSL.
+- Wiki: Fix parsing of "audio" tags.
+- Wiki: Fix handling of url's without urls scheme.
+- Wiki: Fix work with headwords containing the '+' sign.
+- Handle BOM's for UTF-8 and UTF-16 encoding in programs output.
+- Improve X11 autostart behavior.
+- Implement "inactive dictionaries" feature for all groups.
+- Update help system.
+- Update translations.
+
+-------------------------------------------------------------------
+Sun Jun  4 06:32:52 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 1.5.0 RC2 version
+- Remove install-paths.patch
+- Remove goldendict-gcc47.patch
+
+-------------------------------------------------------------------
+Sun Mar  5 10:55:36 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Build with Qt5 for openSUSE Leap 42 and newer openSUSE versions,
+  also for SUSE 12 SP2 or newer. Other versions will still use Qt4.
+
+-------------------------------------------------------------------
+Sun Mar 18 11:55:48 UTC 2012 - dimstar@opensuse.org
+
+- Add goldendict-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Thu Oct 12 15:26:32 UTC 2011 - opensuse.lietuviu.kalba@gmail.com
+
+- remove licenses from requires section
+- use 1291478773 git revision (version 1.0.1)
+
+-------------------------------------------------------------------
+Wed Nov 16 12:02:52 UTC 2010 - dmitry@roshchin.org
+
+- update to fresh git sources
+
+-------------------------------------------------------------------
+Sat Sep 18 16:38:45 UTC 2010 - dmitry@roshchin.org
+
+- update to fresh git sources
+- add languages in spec file
+
+-------------------------------------------------------------------
+Sat Aug 20 14:34:22 UTC 2010 - opensuse.lietuviu.kalba@gmail.com
+
+- update to fresh git sources
+- including lt_LT, uk_UA and ar_SA languages
+
+-------------------------------------------------------------------
+Mon Dec 21 19:14:57 CET 2009 - Elmar Stellnberger
+
+- update to fresh git sources resolving frequent SIGSEGV-crashes
+- goldendict-0.9.0-gcc44.patch no longer needes
+- advance install-path patch
+
+-------------------------------------------------------------------
+Wed Sep 16 18:27:47 CEST 2009 - buschmann23@opensuse.org
+
+- fixed desktop file category
+
+-------------------------------------------------------------------
+Wed Sep 16 16:29:15 CEST 2009 - buschmann23@opensuse.org
+- added goldendict-0.9.0-gcc44.patch
+- renamed instal-paths.patch to install-paths.patch
+
+-------------------------------------------------------------------
+Mon Sep 14 14:26:40 CEST 2009 - buschmann23@opensuse.org
+
+- BuildRequires hunspell-devel >= 1.2.4, and also requires
+  hunspell >= 1.2.4 to run
+
+-------------------------------------------------------------------
+Wed Jul 8 19:48:25 CEST 2009 - buschmann23@opensuse.org
+
+- initial package
+- version 0.9.0

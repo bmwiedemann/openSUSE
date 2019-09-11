@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Tue Jul  2 09:22:21 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add possibility to build with ssh and vfs integration, since
+  we have all the dependencies in openSUSE.
+
+-------------------------------------------------------------------
+Mon Apr  8 18:12:07 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the reference to parent from pom file, since we are not
+  building using maven.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:48:24 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add apache-ivy/ivy.jar symlink
+
+-------------------------------------------------------------------
+Mon Nov 26 10:25:21 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.4.0
+- Modified patch:
+  * apache-ivy-2.3.0-jdk9.patch -> apache-ivy-2.4.0-jdk9.patch
+    + rediff to changed context
+- Added patch:
+  * apache-ivy-global-settings.patch
+    + change global settings
+
+-------------------------------------------------------------------
+Tue May 15 13:26:55 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * apache-ivy-2.3.0-jdk9.patch
+    + Build with source and target 8 to prepare for a possible
+      removal of 1.6 compatibility
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Thu Sep  7 17:10:15 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * apache-ivy-2.3.0-jdk9.patch
+    + Use source and target version 1.6 to enable build with jdk9
+
+-------------------------------------------------------------------
+Sun May 21 08:01:08 UTC 2017 - tchvatal@suse.com
+
+- Reduce deps a bit
+
+-------------------------------------------------------------------
+Fri May 19 10:07:03 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local 
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:01 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Jul  8 11:01:30 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-nodeps.
+
+-------------------------------------------------------------------
+Wed Nov  6 10:58:10 UTC 2013 - mvyskocil@suse.com
+
+- Remove jakarta-commons-httpclient3, we do no longer provide it
+- Add ant.d config snippet for ivy
+- call add_maven_depmap
+
+-------------------------------------------------------------------
+Mon Sep  9 11:04:12 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Jan 25 15:03:33 UTC 2013 - archie@dellroad.org
+
+- Upgrade to release 2.3.0
+  * improved Ant support with some new Ant tasks and enhancements to existing tasks
+  * improved Maven2 compatibility
+  * some new resolvers
+  * numerous bug fixes as documented in Jira and in the release notes
+
+-------------------------------------------------------------------
+Wed Jan  2 17:08:16 UTC 2013 - archie@dellroad.org
+
+- Define ${target.ivy.version} during build
+- Include an ivy(1) command line script and man page
+
+-------------------------------------------------------------------
+Mon Jan 16 14:55:55 UTC 2012 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of apache-ivy 2.2.0
+  (without signing support)
+

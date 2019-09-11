@@ -1,0 +1,46 @@
+Index: xgrabsc.c
+===================================================================
+--- xgrabsc.c.orig
++++ xgrabsc.c
+@@ -34,6 +34,8 @@
+  */
+ 
+ #include "xgrabsc.h"
++#include <stdlib.h>
++#include <menu.h>
+ 
+ 
+ 
+@@ -626,7 +628,7 @@ xgrabsc(argc, argv, env)
+     case sourceKey:
+       childWindow =
+ #ifdef SELECTION_MASK
+-          getWindowWhenKeyIsPressed(SELECTION_MASK)
++          getWindowWhenKeyIsPressed(SELECTION_MASK);
+ #else
+           getWindowWhenKeyIsPressed(ControlMask);
+ #endif
+Index: xgrabxaw.c
+===================================================================
+--- xgrabxaw.c.orig
++++ xgrabxaw.c
+@@ -23,6 +23,7 @@
+ #include "config.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+Index: xgrabxm.c
+===================================================================
+--- xgrabxm.c.orig
++++ xgrabxm.c
+@@ -22,6 +22,7 @@
+ #include "config.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>

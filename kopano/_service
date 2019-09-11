@@ -1,0 +1,20 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://stash.kopano.io/scm/kc/kopanocore.git</param>
+		<param name="revision">kc-8.7.x</param>
+		<param name="parent-tag">kopanocore-8.7.0</param>
+		<param name="versionformat">8.7.0.@TAG_OFFSET@</param>
+
+		<!-- Regex used to rewrite the version which is applied after
+		     versionformat [kopanocore-8.5.80] and after the implicit
+		     versionformat compaction [kopanocore8.5.80].
+		     Turns kopanocore8.5.80 into 8.5.80. -->
+		<param name="versionrewrite-pattern">kopanocore-?(.*)</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

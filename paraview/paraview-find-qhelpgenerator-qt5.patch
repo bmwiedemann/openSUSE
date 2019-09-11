@@ -1,0 +1,13 @@
+Index: ParaView-v5.6.0/CMake/ParaViewMacros.cmake
+===================================================================
+--- ParaView-v5.6.0.orig/CMake/ParaViewMacros.cmake
++++ ParaView-v5.6.0/CMake/ParaViewMacros.cmake
+@@ -259,7 +259,7 @@
+   endif()
+ 
+   find_program(QT_XMLPATTERNS_EXECUTABLE
+-    xmlpatterns
++    NAMES xmlpatterns xmlpatterns-qt5
+     HINTS "${qt_binary_dir_hints}"
+     DOC "xmlpatterns used to generate html from Proxy documentation.")
+   mark_as_advanced(QT_XMLPATTERNS_EXECUTABLE)

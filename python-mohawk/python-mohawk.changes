@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Fri Jan 11 06:41:11 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.0:
+  * Security related: Bewit MACs were not compared in constant time
+    and were thus possibly circumventable by an attacker.
+  * Breaking change: Escape characters in header values (such as a
+    back slash) are no longer allowed, potentially breaking clients
+    that depended on this behavior.
+  * A sender is allowed to omit the content hash as long as their
+    request has no content. The `mohawk.Receiver` will skip the
+    content hash check in this situation, regardless of the value
+    of accept_untrusted_content.
+  * Introduced max limit of 4096 characters in the Authorization
+    header.
+  * Changed default values of content and content_type arguments to
+    `mohawk.base.EmptyValue` in order to differentiate between
+    misconfiguration and cases where these arguments are explicitly
+    given as None (as with some web frameworks).
+  * Failing to pass content and content_type arguments to
+    `mohawk.Receiver` or `mohawk.Sender.accept_response` without
+    specifying accept_untrusted_content=True will now raise
+    `mohawk.exc.MissingContent` instead of `ValueError`.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Dec  2 10:15:38 UTC 2017 - antoine.belvire@opensuse.org
+
+- Initial package: python-mohawk 0.3.4.
+

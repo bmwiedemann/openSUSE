@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Sun Jan 17 11:59:37 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use %configure macro
+- Do not strip binaries
+- Do not ship INSTALL file
+
+-------------------------------------------------------------------
+Fri Aug 21 15:49:32 UTC 2015 - qzhao@suse.com
+
+- change README.SuSE to README.SUSE.
+  to full fit FATE#316521 Get rid of files using the old SUSE spelling.(bnc#942310)
+
+-------------------------------------------------------------------
+Tue Mar 31 18:46:51 UTC 2015 - crrodriguez@opensuse.org
+
+- There is no isapnp support in x86_64 remove from Exclusivearch 
+
+-------------------------------------------------------------------
+Thu Dec  1 15:49:32 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Aug 22 12:45:40 CEST 2008 - pth@suse.de
+
+- Don't use STARTVAR anymore.
+
+-------------------------------------------------------------------
+Thu Aug 14 13:46:35 CEST 2008 - pth@suse.de
+
+- Fix init script.
+
+-------------------------------------------------------------------
+Wed Aug 13 18:14:13 CEST 2008 - ro@suse.de
+
+- add ExclusiveArch 
+
+-------------------------------------------------------------------
+Thu Mar 29 09:28:00 CEST 2007 - meissner@suse.de
+
+- buildrequires flex
+
+-------------------------------------------------------------------
+Fri Feb  9 09:47:21 CET 2007 - meissner@suse.de
+
+- build as nonroot.
+
+-------------------------------------------------------------------
+Fri Jul 28 13:48:29 CEST 2006 - olh@suse.de
+
+- boot.isapnp requires boot.rootfsck, optional $local_fs and 
+  boot.loadmodules. remove obsolete boot.loopback (#181972)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 18 17:45:25 CEST 2005 - pth@suse.de
+
+- Fix mixed static/non-static declaration.
+
+-------------------------------------------------------------------
+Fri Feb 20 16:23:08 CET 2004 - ro@suse.de
+
+- do nothing for stop case of boot.isapnp
+
+-------------------------------------------------------------------
+Sun May 11 02:25:46 CEST 2003 - pthomas@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Fri May  9 16:11:39 CEST 2003 - pthomas@suse.de
+
+- Temporarily work around problems with mod_devicetable.h
+- Change configure.in for autoconf >= 2.5x and run autoreconf
+- Compile with warnings enabled and fix most compiler warnings.
+- Split off isapnp-devel package.
+- Split up isapnptools-1.26.dif and make README.SuSE a file
+  copied from source directory instead of creating it from
+  diff.
+
+-------------------------------------------------------------------
+Mon Aug 19 10:52:22 CEST 2002 - uli@suse.de
+
+- added Prereq: %fillup_prereq %insserv_prereq (bug #17884)
+
+-------------------------------------------------------------------
+Thu Aug 15 23:24:45 CEST 2002 - ro@suse.de
+
+- remove boot.setup from required-start in boot.isapnp 
+
+-------------------------------------------------------------------
+Mon Aug  5 09:00:28 CEST 2002 - kukuk@suse.de
+
+- Remove serial from Required-Start
+
+-------------------------------------------------------------------
+Thu Aug  1 15:24:55 CEST 2002 - uli@suse.de
+
+- fixed for lib64 archs
+
+-------------------------------------------------------------------
+Thu Jul 11 15:58:13 CEST 2002 - kukuk@suse.de
+
+- Add Should-Start to init script header
+- Change serial -> setserial in init script header
+
+-------------------------------------------------------------------
+Fri Feb  1 12:48:23 CET 2002 - uli@suse.de
+
+- made boot.isapnp a real init script (bug #13001)
+
+-------------------------------------------------------------------
+Wed Dec  5 13:58:45 CET 2001 - ro@suse.de
+
+- moved boot.isapnp to this package
+- removed START variable and use fillup_and_insserv 
+
+-------------------------------------------------------------------
+Tue Jul 24 10:48:49 CEST 2001 - uli@suse.de
+
+- update -> 1.26
+
+-------------------------------------------------------------------
+Fri Mar 30 14:34:51 CEST 2001 - uli@suse.de
+
+- fixed to build on PPC
+
+-------------------------------------------------------------------
+Fri Nov 24 16:38:37 CET 2000 - uli@suse.de
+
+- fixed to build on PPC 
+
+-------------------------------------------------------------------
+Thu Feb 24 17:08:27 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+- Add rc.config variable from aaa_base
+- Remove Makefile.Linux 
+
+-------------------------------------------------------------------
+Fri Feb 11 16:31:53 CET 2000 - uli@suse.de
+
+- now builds on PPC
+- successfully tested on PReP architecture! (should also work on CHRP)
+
+-------------------------------------------------------------------
+Mon Jan  3 17:53:00 MET 2000 - uli@suse.de
+
+- update -> 1.21
+
+-------------------------------------------------------------------
+Tue Oct 26 17:19:27 MEST 1999 - uli@suse.de
+
+- update -> 1.19
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Aug 17 14:17:14 MEST 1999 - uli@suse.de
+
+- fixed README.SuSE
+
+-------------------------------------------------------------------
+Thu Mar  4 15:44:48 MET 1999 - uli@suse.de
+
+- update 1.17 -> 1.18
+- removed *.orig files
+
+-------------------------------------------------------------------
+Mon Dec  7 13:14:30 MET 1998 - uli@suse.de
+
+- fixed version no. in spec file
+
+-------------------------------------------------------------------
+Mon Nov 16 13:28:53 MET 1998 - uli@suse.de
+
+- update 1.10 -> 1.17
+
+----------------------------------------------------------------------------
+Thu Jun 19 17:27:06 CEST 1997 - rj@suse.de
+
+	- new version 1.10
+
+----------------------------------------------------------------------------
+Mon Mar 24 20:07:27 MET 1997 - kfr@suse.de
+
+
+- added /sbin/init.d/pnp an links in runlevel 1-3
+
+
+----------------------------------------------------------------------------
+Sun Feb  9 17:12:55 MET 1997 - kfr@suse.de
+
+
+- new version: 1.9
+	- new: man-pages
+	- /sbin/init.d/pnp added (linked as S01pnp in runlevel 1, 2, 3)
+	- /usr/doc/packages/isapnp/README.SuSE added

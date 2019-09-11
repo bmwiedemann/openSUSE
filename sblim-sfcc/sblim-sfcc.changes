@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Tue Jan  2 17:04:38 UTC 2018 - jengelh@inai.de
+
+- Remove no-effect --with-pic. Inline autoconfiscate.sh.
+- Implement shared library guideline.
+
+-------------------------------------------------------------------
+Tue Jan  2 13:36:51 UTC 2018 - adam.majer@suse.de
+
+- Add missing changelog entry
+- Rename rpmlintrc file to follow packaging guidelines
+- Minor specfile cleanup
+- Update upstream URL
+
+-------------------------------------------------------------------
+Mon Sep  4 16:05:13 UTC 2017 - kgronlund@suse.com
+
+- Add rpmlintrc as source in spec file
+
+-------------------------------------------------------------------
+Fri Nov 28 08:03:50 UTC 2014 - kkaempf@suse.com
+
+- Update to 2.2.8
+  - fix more memory leaks
+  - drop 0001-Don-t-release-op-when-used-as-value.patch, upstream
+    (upstream #2730)
+
+-------------------------------------------------------------------
+Fri Jun 20 10:45:17 UTC 2014 - kkaempf@suse.com
+
+- don't release objectpath when used as return value (upstream #2730)
+  add 0001-Don-t-release-op-when-used-as-value.patch
+
+-------------------------------------------------------------------
+Fri Mar 28 19:25:55 UTC 2014 - kkaempf@suse.com
+
+- Update to 2.2.7
+
+  New Features:
+  - [bugs:#2692] SFCC: SfcbLocal interface should expose markHeap()
+    and releaseHeap()
+
+  Bugs:
+  - [bugs:#2728] Missing tag definition for REFARRAY
+  - [bugs:#2729] Improper type handling for EmbeddedObject in PARAMVALUE
+  - [bugs:#2730] More memory leaks in backend/cimxml/grammer.c
+
+-------------------------------------------------------------------
+Tue Oct 15 08:30:23 UTC 2013 - pwieczorkiewicz@suse.com
+
+- update to 2.2.6
+  New Features:
+  - 3529678 getClass does not expose method information
+
+  Bugs fixed:
+  - Now compiles under OS X (upstream #2646)
+  - Remove Large Volume Support from SFCC (upstream #2648)
+  - SFCC should dlopen the versioned .so (upstream #2658)
+  - sfcc cannot reconnect with sfcb if sfcb restarts (upstream tix#79)
+  - updated tests to match [bugs:#2663, tix#79]
+
+-------------------------------------------------------------------
+Fri Dec 21 09:08:56 UTC 2012 - kkaempf@suse.com
+
+- update to 2.2.5
+  - 3586680: improve error reporting in cmciConnect2
+  - 3566968: sfcc enumInstances fails to parse the xml
+  - 3555103: wrong declaration of release attribute in _CIMCArgsFT
+  - 3547832: memory leak in backend/cimxml/grammer.c
+
+- drop patches, all included in 2.2.5
+
+-------------------------------------------------------------------
+Tue Nov 13 11:04:15 UTC 2012 - kkaempf@suse.com
+
+- remove test debug patch
+  (0006-Show-class-and-property-qualifiers.patch)
+
+- add upstream patches
+  0001-3547832-memory-leak-in-backend-cimxml-grammer.c.patch
+  0002-3555103-wrong-declaration-of-release-attribute-in-_C.patch
+  0003-3566968-sfcc-enumInstances-fails-to-parse-the-xml.patch
+
+-------------------------------------------------------------------
+Tue Nov 13 10:52:00 UTC 2012 - kkaempf@suse.com
+
+- report failure to load libcimcClientXML.so properly
+  (0001-Improve-error-reporting-within-cmciConnect2.patch)
+
+-------------------------------------------------------------------
+Tue Nov 13 10:50:51 UTC 2012 - kkaempf@suse.com
+
+- fix packaging: move libcimcClientXML.so from -devel to main
+  package, it's dlopen'ed at runtime !
+
+-------------------------------------------------------------------
+Wed Jun 13 07:17:41 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.2.4
+  Bugfix release, fixing:
+  - 3344403: Beam, unitialized vars
+  - 3344757: Beam, deref of potential Null pointers.
+  - 3344917: Beam, file leak
+  - 3528819: Crash in getInstance when instance has NULL properties
+  - 3530609: Various BEAM Errors
+  - 3435363: Wrong call of curl_global_cleanup()
+
+-------------------------------------------------------------------
+Mon Mar  5 14:40:37 UTC 2012 - kkaempf@suse.com
+
+- Fix RHEL6 build
+
+-------------------------------------------------------------------
+Mon Mar  5 13:58:19 UTC 2012 - kkaempf@suse.com
+
+- fix build, force autotools, add Group field to subpackages
+
+-------------------------------------------------------------------
+Wed Dec 14 12:33:29 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Nov 27 07:04:07 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov  9 11:59:56 UTC 2011 - kkaempf@suse.com
+
+- don't call curl_global_cleanup (upstream id 3435363)
+
+-------------------------------------------------------------------
+Sun Jul 17 10:31:21 UTC 2011 - kkaempf@novell.com
+
+- fix build for RHEL5 (outdated libtool)
+
+-------------------------------------------------------------------
+Mon Jul  4 11:05:26 UTC 2011 - kkaempf@novell.com
+
+- Update to 2.2.3
+  Bugfix release, fixing:
+  - 2967265: Code cleanup in frontend/sfcc/sfcclient.c
+  - 3286489: getInstance does not return key/value through XML
+
+-------------------------------------------------------------------
+Thu Mar 31 07:37:46 UTC 2011 - kkaempf@novell.com
+
+- Update to 2.2.2
+  Bugfix release, fixing:
+  - 2982349: Memory leak in backend/cimxml/client.c
+  - 2982352: Double free in backend/cimxml/property.c
+  - 3043288: XML generated with VALUE.ARRAY for ref arrays
+  - 3043282: XML gen for embedded instances for invokeMethod is incorrect
+  - 3059060: 'struct _CIMCArgsFT' not defined in cimc/cimcft.h
+  - 2348900: Concurrency issue when parsing responses
+  - 2793377: Missing includes
+  - 3101151: SfcbLocal failed to connect due to hardcoded library path
+  - 3195267: sfcc v2 tests segfault when sfcb is not running
+  - 2990315: cmciRelease not called in case of error
+  - 3196128: enumInstances does not set NameSpace in ObjectPath in XML mode
+  - 1956407: CIM-XML/HTTP connection to unix socket
+  - 2967257: Use of CMPI_chars in SFCC. General CMPI specification bug
+  - 2847964: sfcc's getClass() fails to report class qualifiers
+
+-------------------------------------------------------------------
+Wed Apr 21 10:25:43 UTC 2010 - kkaempf@novell.com
+
+- Release CIMCEnv on client connection error
+  (bnc591060, upstream #2990315)
+
+-------------------------------------------------------------------
+Wed Mar 10 19:57:00 UTC 2010 - kkaempf@novell.com
+
+- prefer CMPI_chars over CMPI_classNameString.
+  (bnc#578189, upstream #2967257)
+
+-------------------------------------------------------------------
+Tue Jan  5 13:36:39 UTC 2010 - kkaempf@novell.com
+
+- return class qualifiers in getClass() operation
+  (bnc535724, upstream #2847964)
+
+-------------------------------------------------------------------
+Fri Nov 27 20:18:57 UTC 2009 - kkaempf@novell.com
+
+- add autoconfiscate.sh for Mandriva build
+- fix BuildRequires for RHEL
+
+-------------------------------------------------------------------
+Mon Nov  2 11:17:24 MST 2009 - bwhiteley@suse.de
+
+- Upgrade to 2.2.1, required by sfcb version upgrade (fate#307413)
+  Changes (upstream bug numbers):
+  - 2691478: sfcc 2.1.0 cannot handle OutParams on Extrinsic Method Call
+  - 2847782: sfcc getClass crashes if cimom isn't running
+  - 2849853: getClass reports most property types as CMPI_Instance
+
+-------------------------------------------------------------------
+Thu Mar  5 20:56:48 CET 2009 - mhrusecky@suse.cz
+
+- update to 2.2.0
+  * Bugs:
+    - 2596921: v2test_ei test fails when using CIMXML interface
+    - 2431835: XML client library not found. 
+    - 2270179: Missing includes and values in return statements
+    - 2158091: sfcb modules belong in private dir
+    - 2102345: missing configuration of CIM-HOST-PORT in sblim-sfcc
+    - 2102339: Missing ret values in sblim-sfcc
+  * Dropped merged patches
+
+-------------------------------------------------------------------
+Wed Nov 12 16:19:10 CET 2008 - prusnak@suse.cz
+
+- added 5 more fixes to retval.patch
+- merged implicit-fortify-decl.patch and stdlib.patch into includes.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 20:18:26 CEST 2008 - crrodriguez@suse.de
+
+- fix build, implicit-fortify-decl backend/cimxml/indicationlistener.c:85
+- disable static libraries
+- correct -devel package requires
+
+-------------------------------------------------------------------
+Tue Sep  9 18:59:11 CEST 2008 - prusnak@suse.cz
+
+- updated to 2.1.0
+  * New features:
+    - 1820015 sfcc: prepare for indication support
+    - 1854813 sfcc: new parser
+    - 1867649 sfcc: embedded instance support (receiving side)
+    - 1828588 sfcc: Indication support (CIMXML)
+    - 1828584 sfcc: large volume data support (CIMXML)
+  * Bugs:
+    - 1887125 sfcc: cleanup due to new parser
+    - 1940546: Memory corruption in AsciiToXmlStr()
+- fixed undefined variable (cimhostport.patch)
+
+-------------------------------------------------------------------
+Tue May 20 01:35:11 CEST 2008 - ro@suse.de
+
+- add some missing return values for non-void functions 
+
+-------------------------------------------------------------------
+Wed Mar 19 16:28:04 CET 2008 - prusnak@suse.cz
+
+- updated to 2.0.3
+  * fixed sfcc generates incorrect XML for complex properties
+  * sfcc reports incorrect namespace for associators operation
+
+-------------------------------------------------------------------
+Wed Nov 21 13:09:36 CET 2007 - prusnak@suse.cz
+
+- updated to 2.0.2
+  * fixed handling of complex array IN arguments
+  * fixed issue with the SFCC xml parsing code
+  * invokeMethod test now works correctly
+
+-------------------------------------------------------------------
+Tue Jul 17 13:03:44 CEST 2007 - prusnak@suse.cz
+
+- fixed missing include <stdlib.h> for sources in TEST directory
+  (stdlib.patch)
+
+-------------------------------------------------------------------
+Tue Jul 17 10:11:17 CEST 2007 - prusnak@suse.cz
+
+- fixed documentation files handling
+
+-------------------------------------------------------------------
+Fri Jul 13 11:08:55 CEST 2007 - prusnak@suse.cz
+
+- created package (version 2.0.1)
+- based on BuildService package sblim-sfcc in home:mihajlov
+

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Mar 12 09:51:57 UTC 2015 - lnussel@suse.de
+
+- revive 2.7.6 as glfw2 package
+- add soname to shared library (glfw-2.7.6-soname.diff)
+- drop static lib
+- move .so to subdir to avoid conflict with libglfw3
+
+-------------------------------------------------------------------
+Tue Oct  8 11:18:10 UTC 2013 - lnussel@suse.de
+
+- install COPYING.txt as well
+
+-------------------------------------------------------------------
+Tue Sep 25 12:08:14 UTC 2012 - adam@mizerski.pl
+
+- update to 2.7.6
+- spec improvement and cleanup
+  - updated license information
+  - changed "BuildRequires: package-name" into
+    "BuildRequires: pkgconfig(name)" (fixes Factory build)
+- dropped glfw-force_sysctl_support.patch
+- dropped glfw-rpmlintrc - there was nothing useful
+
+-------------------------------------------------------------------
+Sat Mar 24 02:39:16 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Mon Nov  7 16:41:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.7.2
+- package shlib too
+- shared library naming policy
+- static lib moved to libglfw-devel-static
+
+-------------------------------------------------------------------
+Thu Jun 14 11:30:38 CEST 2007 - prusnak@suse.cz
+
+- initial version (2.5.0)
+

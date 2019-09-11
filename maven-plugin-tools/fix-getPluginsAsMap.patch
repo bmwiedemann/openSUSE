@@ -1,0 +1,22 @@
+--- maven-plugin-tools-3.5.1/maven-plugin-plugin/src/main/java/org/apache/maven/plugin/plugin/PluginReport.java	2018-11-08 19:20:01.544523214 +0100
++++ maven-plugin-tools-3.5.1/maven-plugin-plugin/src/main/java/org/apache/maven/plugin/plugin/PluginReport.java	2018-11-08 19:30:02.187309471 +0100
+@@ -765,7 +765,6 @@
+                 return jdk;
+             }
+ 
+-            @SuppressWarnings( "unchecked" )
+             Plugin compiler = getCompilerPlugin( project.getBuild().getPluginsAsMap() );
+             if ( compiler == null )
+             {
+@@ -797,9 +796,9 @@
+             return "Unknown";
+         }
+ 
+-        private static Plugin getCompilerPlugin( Map<String, Object> pluginsAsMap )
++        private static Plugin getCompilerPlugin( Map<String, Plugin> pluginsAsMap )
+         {
+-            return (Plugin) pluginsAsMap.get( "org.apache.maven.plugins:maven-compiler-plugin" );
++            return pluginsAsMap.get( "org.apache.maven.plugins:maven-compiler-plugin" );
+         }
+ 
+         private static String getPluginParameter( Plugin plugin, String parameter )

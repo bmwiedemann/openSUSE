@@ -1,0 +1,26 @@
+From 5ecbb02ace74d0bcb49226c59060f04df9dc2b31 Mon Sep 17 00:00:00 2001
+From: Daniel Hahler <git@thequod.de>
+Date: Mon, 10 Dec 2018 06:26:23 +0100
+Subject: [PATCH] tests: fix test_raises_exception_looks_iterable
+
+Started to fail on py37-xdist between
+https://travis-ci.org/pytest-dev/pytest/jobs/465498973 and
+https://travis-ci.org/pytest-dev/pytest/jobs/465792343, but could not
+find a diff in versions (from the tox header), and both commits failed
+locally.
+---
+ testing/python/raises.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/testing/python/raises.py
++++ b/testing/python/raises.py
+@@ -169,7 +169,8 @@ class TestRaises(object):
+             pass
+ 
+         with pytest.raises(
+-            Failed, match="DID NOT RAISE <class 'raises.ClassLooksIterableException'>"
++            Failed,
++            match=r"DID NOT RAISE <class 'raises(\..*)*ClassLooksIterableException'>",
+         ):
+             pytest.raises(ClassLooksIterableException, lambda: None)
+ 

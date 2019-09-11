@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Fri May 10 14:47:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.2.6
+  + Turn on debug logging only if debuglevel is greater than 2 (rh#1355764, rh#1580022)
+  + Fix issues with terminal hangs when attempting bash completion (rh#1702854)
+  + Better detecting of file provides (rh#1702621)
+  + Rename man page from dnf.automatic to dnf-automatic to match command name (rh#1703609)
+- Drop patch included in this release
+  * 0001-Python2-3-compatibility-for-exceptions-representatio.patch
+
+-------------------------------------------------------------------
+Fri Apr 26 11:11:22 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.2.5
+  + Fix multilib obsoletes (rh#1672947)
+  + Do not remove group package if other packages depend on it
+  + Remove duplicates from "dnf list" and "dnf info" outputs
+  + Installroot now requires absolute path
+  + Allow globs in setopt in repoid part
+  + Fix formatting of message about free space required
+  + [doc] Add info of relation update_cache with fill_sack (rh#1658694)
+  + Fix installation failiure when duplicate RPMs are specified (rh#1687286)
+  + Add command abbreviations (rh#1634232)
+  + Allow plugins to terminate dnf (rh#1701807)
+  + Fix installation of bash completion helper (rh#1695853)
+- Drop patches that are part of this release
+  * 0001-Add-command-abbreviations-RhBug-1634232.patch
+  * 0002-CMake-Actually-install-aliases.patch
+  * 0001-Fix-the-installation-of-completion_helper.py.patch
+- Backport fix for rendering exception messages in Python 3
+  * 0001-Python2-3-compatibility-for-exceptions-representatio.patch
+
+-------------------------------------------------------------------
+Sat Apr 20 17:38:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Ship systemd units and enable dnf-automatic subpackage
+- Backport fix to reintroduce subcommand abbreviations (rh#1634232)
+  * Patch: 0001-Add-command-abbreviations-RhBug-1634232.patch
+  * Patch: 0002-CMake-Actually-install-aliases.patch
+- Backport fix to correctly install the bash completion helper (rh#1695853)
+  * Patch: 0001-Fix-the-installation-of-completion_helper.py.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 15:40:56 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.2.2
+  + Allow to enable modules that break default modules (rh#1648839)
+  + Enhance documentation - API examples
+  + Add --nobest option
+  + Do not allow direct module switch (rh#1669491)
+  + Use improved config parser that preserves order of data
+  + Fix alias list command (rh#1666325)
+  + Update documentation: implemented plugins; options; deprecated commands (rh#1670835, rh#1673278)
+  + Support zchunk (".zck") compression
+  + Fix behavior  of ``--bz`` option when specifying more values
+  + Follow RPM security policy for package verification
+  + Update modules regardless of installed profiles
+  + Fix ``list --showduplicates`` (rh#1655605)
+  + [conf] Use environment variables prefixed with DNF_VAR_
+  + Enhance documentation of --whatdepends option (rh#1687070)
+  + Allow adjustment of repo from --repofrompath (rh#1689591)
+  + Document cachedir option (rh#1691365)
+  + Retain order of headers in search results (rh#1613860)
+  + Solve traceback with the "dnf install @module" (rh#1688823)
+- Drop upstreamed patch that is part of this release
+  * 0001-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 15:57:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce generated boilerplate by joining %systemd_* calls.
+
+-------------------------------------------------------------------
+Thu Feb  7 06:39:54 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Rebase to version 4.0.10:
+  + Migrated large amounts of code to libdnf
+  + Add support for RH/Fedora modules
+  + Migrate from YUMDB to new SWDB
+  + Add dnssec extension for repodata
+  + Add support for aliases
+- Drop Python 2 subpackage
+- Drop unneeded patches
+  * 0001-Add-additional-default-distroverpkg-and-installonlyp.patch
+  * dnf-2.6.3-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  * dnf-2.7.5-Fix-detection-of-Python-2.patch
+- Add patch to fix detecting Sphinx in a Python 3 only build
+  * 0001-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+
+-------------------------------------------------------------------
+Mon Apr 30 13:03:41 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Re-enable boolean dependencies now that Leap 15.0 and Tumbleweed
+  both only use rpm-md repository metadata, which supports this
+  properly.
+- Adjust changes entries to use full author identities
+
+-------------------------------------------------------------------
+Sat Jan 20 14:02:24 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix build-time detection of Python 2
+  * Add patch: dnf-2.7.5-Fix-detection-of-Python-2.patch
+
+-------------------------------------------------------------------
+Thu Jan  4 00:36:12 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Ensure DNF can recognize SUSE distro-release and kernel packages properly
+  * Add patch: 0001-Add-additional-default-distroverpkg-and-installonlyp.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 14:12:56 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 2.7.5:
+  + Improved performance for excludes and includes handling (rh#1500361)
+  + Fixed problem of handling checksums for local repositories (rh#1502106)
+  + Fix traceback when using dnf.Base.close()
+- Bump required pythonX-hawkey version
+
+-------------------------------------------------------------------
+Tue Oct 10 12:08:09 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 2.7.3:
+  + Added new option '--comment=<comment>' that adds a comment to
+    transaction in history
+  + Added 'pre_configure()' method for plugins and commands to
+    configure dnf before repos are loaded (rh#1212341)
+  + 'dnf.Base.pre_configure_plugin()' configure plugins by running
+    their 'pre_configure()' method (rh#1212341)
+  + Support '--advisory=' with install (rh#1461171)
+- Bump required pythonX-hawkey version as some APIs moved to libdnf
+- Purge libreport configuration files instead of using exclude
+
+-------------------------------------------------------------------
+Tue Sep  5 03:01:52 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Add missing pythonX-curses Requires
+
+-------------------------------------------------------------------
+Tue Aug 29 09:22:04 UTC 2017 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Disable the boolean dependencies: this is a hack (sorry) as none
+  of the released products support this in the susetags metadata,
+  which resulted in no distro being able to add the TW repo. Once
+  we migrate to the new prod builder, this can be re-enabled.
+
+-------------------------------------------------------------------
+Fri Aug 18 13:04:55 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Add dnf-lang subpackage for lang content
+- Downgrade logrotate from Requires to Recommends in dnf-conf subpackage
+- Switch (currently unused) BR from systemd-devel to systemd-rpm-macros
+  as we only need macros
+- Delete commented out BR on python-sphinx_rtd_theme as it's definitely
+  not needed
+
+-------------------------------------------------------------------
+Sun Aug 13 23:26:23 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Create /etc/dnf/repos.d on install
+
+-------------------------------------------------------------------
+Sun Aug 13 22:14:41 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Always build with Python 3 support
+
+-------------------------------------------------------------------
+Sun Aug 13 21:49:28 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable systemd units and do not install dnf-automatic by default
+
+-------------------------------------------------------------------
+Sun Aug 13 21:00:36 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Switch default reposdir to /etc/dnf/repos.d
+  * Add patch: dnf-2.6.3-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+
+-------------------------------------------------------------------
+Sun Aug 13 20:57:16 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging based on Mageia and Fedora packages

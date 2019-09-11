@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Thu Oct  2 01:39:55 UTC 2014 - crrodriguez@opensuse.org
+
+- Do not use xorg-x11-devel 
+
+-------------------------------------------------------------------
+Mon Nov  8 14:12:20 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Thu Mar 25 18:18:29 UTC 2010 - crrodriguez@opensuse.org
+
+- Only static library provided, compile with fPIC 
+
+-------------------------------------------------------------------
+Fri Feb 15 13:34:35 CET 2008 - lmichnovic@suse.cz
+
+- removed requirement with dot-in-identifier
+
+-------------------------------------------------------------------
+Mon Aug  6 15:34:08 CEST 2007 - ro@suse.de
+
+- renamed to pixmap 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:44:06 CEST 2006 - lmichnovic@suse.cz
+
+- builds also with new X.org 7.x, checks the version of X.org  
+
+-------------------------------------------------------------------
+Thu Jun 15 14:26:59 CEST 2006 - lmichnovic@suse.cz
+
+- deleted from install section: rm -rf $RPM_BUILD_ROOT
+
+-------------------------------------------------------------------
+Mon Mar 13 16:50:04 CET 2006 - lmichnovic@suse.cz
+
+- fixed non-void function [#156966]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct  7 11:08:01 CEST 2005 - meissner@suse.de
+
+- delete included X11 headers to use system ones.
+
+-------------------------------------------------------------------
+Thu May 12 15:32:53 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Sun Apr 10 11:31:00 CEST 2005 - coolo@suse.de
+
+- fix some more return values
+
+-------------------------------------------------------------------
+Thu Jul  1 09:12:58 CEST 2004 - bg@suse.de
+
+- fix Imakefile for hppa
+
+-------------------------------------------------------------------
+Mon May 24 17:04:02 CEST 2004 - ro@suse.de
+
+- add some return values to non-void functions
+
+-------------------------------------------------------------------
+Fri May 21 01:43:05 CEST 2004 - ro@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Jan 11 09:51:13 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Nov 12 16:56:24 CET 2002 - jderfina@suse.cz
+
+- fixed neededforbuild which is broken with renamed XFree86 package.
+
+-------------------------------------------------------------------
+Wed May 22 12:36:27 CEST 2002 - nadvornik@suse.cz
+
+- used %{_lib} macro
+
+-------------------------------------------------------------------
+Thu May 17 09:30:49 CEST 2001 - nadvornik@suse.cz
+
+- fixed cast warnings and include files for ia64
+
+-------------------------------------------------------------------
+Thu May 18 15:44:41 CEST 2000 - nadvornik@suse.cz
+
+- changed Group tag
+
+-------------------------------------------------------------------
+Tue Mar 14 09:45:17 CET 2000 - nadvornik@suse.cz
+
+- removed Makefile.Linux
+- added BuildRoot
+- added patches from ftp://ftp.x.org/contrib/applications/pixmap
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sun Sep 20 18:25:36 MEST 1998 - ro@suse.de
+
+- dont redeclare sys_errlist for glibc
+

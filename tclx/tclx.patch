@@ -1,0 +1,130 @@
+--- Makefile.in
++++ Makefile.in
+@@ -92,12 +92,13 @@
+ datadir		= @datadir@
+ mandir		= @mandir@
+ includedir	= @includedir@
++tclscriptdir    = $(libdir)
+ 
+ DESTDIR		=
+ 
+ PKG_DIR		= $(PACKAGE_NAME)$(PACKAGE_VERSION)
+ pkgdatadir	= $(datadir)/$(PKG_DIR)
+-pkglibdir	= $(libdir)/$(PKG_DIR)
++pkglibdir	= $(tclscriptdir)/$(PKG_DIR)
+ pkgincludedir	= $(includedir)/$(PKG_DIR)
+ 
+ top_builddir	= .
+@@ -227,6 +228,12 @@
+ 	    rm -f $(DESTDIR)$(mandir)/mann/`basename $$i`; \
+ 	    $(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/mann ; \
+ 	done
++	@mkdir -p $(DESTDIR)$(mandir)/man3
++	@for i in $(srcdir)/doc/*.3; do \
++	    echo "Installing $$i"; \
++	    rm -f $(DESTDIR)$(mandir)/man3/$$i; \
++	    $(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man3 ; \
++	done
+ 
+ test: binaries libraries
+ 	$(TCLSH) `@CYGPATH@ $(srcdir)/tests/all.tcl` $(TESTFLAGS)
+@@ -264,7 +271,7 @@
+ 
+ pkgIndex.tcl:
+ 	(echo 'package ifneeded Tclx $(PACKAGE_VERSION) \
+-		[list load [file join $$dir $(PKG_LIB_FILE)] Tclx]'\
++		[list load $(PKG_LIB_FILE) Tclx]'\
+ 	) > pkgIndex.tcl
+ 
+ #========================================================================
+@@ -360,29 +367,30 @@
+ #========================================================================
+ 
+ install-lib-binaries:
+-	@mkdir -p $(DESTDIR)$(pkglibdir)
++	@mkdir -p $(DESTDIR)$(libdir)
+ 	@list='$(lib_BINARIES)'; for p in $$list; do \
+ 	  if test -f $$p; then \
+-	    echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
+-	    $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p; \
++	    echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/$$p"; \
++	    $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/$$p; \
+ 	    stub=`echo $$p|sed -e "s/.*\(stub\).*/\1/"`; \
+ 	    if test "x$$stub" = "xstub"; then \
+-		echo " $(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p; \
+ 	    else \
+-		echo " $(RANLIB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB) $(DESTDIR)$(libdir)/$$p; \
+ 	    fi; \
+ 	    ext=`echo $$p|sed -e "s/.*\.//"`; \
+ 	    if test "x$$ext" = "xdll"; then \
+ 		lib=`basename $$p|sed -e 's/.[^.]*$$//'`.lib; \
+ 		if test -f $$lib; then \
+-		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib"; \
+-	            $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib; \
++		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib"; \
++	            $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib; \
+ 		fi; \
+ 	    fi; \
+ 	  fi; \
+ 	done
++	@mkdir -p $(DESTDIR)$(pkglibdir)
+ 	@list='$(PKG_TCL_SOURCES)'; for p in $$list; do \
+ 	  if test -f $(srcdir)/$$p; then \
+ 	    destp=`basename $$p`; \
+--- configure
++++ configure
+@@ -7182,7 +7182,7 @@
+ 	    # results, and the version is kept in special file).
+ 
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print }' /etc/.relid'`
++		system=MP-RAS-`awk '{print }' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`
+--- tclconfig/tcl.m4
++++ tclconfig/tcl.m4
+@@ -794,7 +794,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print $3}' /etc/.relid'`
++		system=MP-RAS-`awk '{print $3}' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`
+@@ -2208,7 +2208,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print $3}' /etc/.relid'`
++		system=MP-RAS-`awk '{print $3}' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`
+--- unix/tools/tkmanpages
++++ unix/tools/tkmanpages
+@@ -27,7 +27,7 @@
+     {chooseColor.n  tk/widgets/tk_chooseColor}
+     {clipboard.n    tk/control/clipboard}
+     {destroy.n      tk/control/destroy}
+-    {dialog.n       tk/widgets/tk_dialog}
++    {tk_dialog.n    tk/widgets/tk_dialog}
+     {entry.n        tk/widgets/entry}
+     {event.n        tk/control/event}
+     {focus.n        tk/control/focus}
+@@ -43,7 +43,7 @@
+     {loadTk.n       tk/control/loadTk}
+     {lower.n        tk/control/lower}
+     {menu.n         tk/widgets/menu}
+-    {menubar.n      tk/widgets/tk_menuBar}
++    {tk_menubar.n   tk/widgets/tk_menuBar}
+     {menubutton.n   tk/widgets/menubutton}
+     {message.n      tk/widgets/message}
+     {messageBox.n   tk/widgets/tk_messageBox}

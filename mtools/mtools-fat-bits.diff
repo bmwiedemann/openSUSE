@@ -1,0 +1,63 @@
+Index: fat.c
+===================================================================
+--- fat.c.orig
++++ fat.c
+@@ -705,6 +705,7 @@ static int fat_32_read(Fs_t *This, union
+ 
+ 
+ static int old_fat_read(Fs_t *This, union bootsector *boot, 
++                        int config_fat_bits,
+ 			size_t tot_sectors, int nodups)
+ {
+ 	This->writeAllFats = 1;
+@@ -719,7 +720,7 @@ static int old_fat_read(Fs_t *This, unio
+ 	if(check_media_type(This,boot, tot_sectors))
+ 		return -1;
+ 
+-	if(This->num_clus >= FAT12) {
++	if(This->num_clus >= FAT12 || config_fat_bits == 16) {
+ 		set_fat16(This);
+ 		/* third FAT byte must be 0xff */
+ 		if(!mtools_skip_check && readByte(This, 3) != 0xff)
+@@ -735,6 +736,7 @@ static int old_fat_read(Fs_t *This, unio
+  * structures.
+  */
+ int fat_read(Fs_t *This, union bootsector *boot,
++             int fat_bits,
+ 	   size_t tot_sectors, int nodups)
+ {
+ 	This->fat_error = 0;
+@@ -745,7 +747,7 @@ int fat_read(Fs_t *This, union bootsecto
+ 	This->lastFatSectorData = 0;
+ 
+ 	if(This->fat_len)
+-		return old_fat_read(This, boot, tot_sectors, nodups);
++		return old_fat_read(This, boot, fat_bits, tot_sectors, nodups);
+ 	else
+ 		return fat_32_read(This, boot, tot_sectors);
+ }
+Index: init.c
+===================================================================
+--- init.c.orig
++++ init.c
+@@ -387,7 +387,7 @@ Stream_t *fs_init(char drive, int mode,
+ 	}
+ 
+ 	/* read the FAT sectors */
+-	if(fat_read(This, &boot, tot_sectors, dev.use_2m&0x7f)){
++	if(fat_read(This, &boot, dev.fat_bits, tot_sectors, dev.use_2m&0x7f)){
+ 		This->num_fat = 1;
+ 		FREE(&This->Next);
+ 		Free(This->Next);
+Index: fsP.h
+===================================================================
+--- fsP.h.orig
++++ fsP.h
+@@ -92,6 +92,7 @@ void fatAllocate(Fs_t *This, unsigned in
+ void fatEncode(Fs_t *This, unsigned int pos, unsigned int value);
+ 
+ int fat_read(Fs_t *This, union bootsector *boot,
++                         int fat_bits,
+ 			 size_t tot_sectors, int nodups);
+ void fat_write(Fs_t *This);
+ int zero_fat(Fs_t *Fs, int media_descriptor);

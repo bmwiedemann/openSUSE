@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Fri Oct 19 17:38:13 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Download from maven central the corresponding pom file and
+  install it.
+
+-------------------------------------------------------------------
+Tue May 15 13:43:36 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Sep 15 08:25:38 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6 and
+  correct encoding of source files
+- Clean spec file and fix rpmlint warning
+
+-------------------------------------------------------------------
+Fri Jul  1 16:54:44 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Fri Jul 18 13:24:06 UTC 2014 - tchvatal@suse.com
+
+- Cleanup a bit. Use MIT license as rh does.
+
+-------------------------------------------------------------------
+Thu Jul 14 22:24:18 UTC 2011 - bmaryniuk@novell.com
+
+- Packaged for the SUSE Linux.
+

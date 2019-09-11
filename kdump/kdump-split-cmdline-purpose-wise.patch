@@ -1,0 +1,47 @@
+From: Hari Bathini <hbathini@linux.ibm.com>
+Date: Mon, 20 Aug 2018 16:12:46 +0200
+Subject: cmdline: split kdump cmdline purpose wise
+References: bsc#1101730
+Upstream: merged
+Git-commit: 56c8821596ee64c400e66002d17449007d1bd5f0
+
+Generate different cmdline files for different purposes. This gives
+flexibilty in handling them independently. The subsequent patch uses
+this in handling network bringup more gracefully.
+
+Signed-off-by: Hari Bathini <hbathini@linux.ibm.com>
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+---
+ init/module-setup.sh |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -205,10 +205,12 @@ kdump_cmdline_ip() {
+     esac
+ }
+ 
+-cmdline() {
++cmdline_zfcp() {
+     local _arch=$(uname -m)
+     [ "$_arch" = "s390" -o "$_arch" = "s390x" ] && kdump_cmdline_zfcp
++}
+ 
++cmdline_net() {
+     kdump_cmdline_ip
+ }
+ 
+@@ -219,8 +221,11 @@ installkernel() {
+ 
+ install() {
+     if [[ $hostonly_cmdline == "yes" ]] ; then
+-        local _cmdline=$(cmdline)
+-        [ -n "$_cmdline" ] && printf "%s\n" "$_cmdline" >> "${initdir}/etc/cmdline.d/99kdump.conf"
++        local _cmdline=$(cmdline_zfcp)
++        [ -n "$_cmdline" ] && printf "%s\n" "$_cmdline" >> "${initdir}/etc/cmdline.d/99kdump-zfcp.conf"
++
++        _cmdline=$(cmdline_net)
++        [ -n "$_cmdline" ] && printf "%s\n" "$_cmdline" >> "${initdir}/etc/cmdline.d/99kdump-net.conf"
+     fi
+ 
+     # Get a list of required multipath devices

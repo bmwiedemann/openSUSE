@@ -1,0 +1,62 @@
+From cd6cf796f7c2230c940f95f46dc905a25152c486 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Fri, 10 Nov 2017 15:13:45 +0200
+Subject: [PATCH] Port to Gradle 4.3.1
+
+---
+ .../java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java  | 2 +-
+ .../java/org/fedoraproject/xmvn/connector/gradle/XMvnInstallTask.java | 4 ++--
+ xmvn-parent/pom.xml                                                   | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+index 6305aa86..9e1a247a 100644
+--- a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
++++ b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+@@ -226,7 +226,7 @@ public class GradleResolver
+                     ModuleVersionIdentifier mvi =
+                         moduleIdentifierFactory.moduleWithVersion( id.getGroup(), id.getModule(), id.getVersion() );
+                     MutableModuleComponentResolveMetadata metaData =
+-                        new DefaultMutableMavenModuleResolveMetadata( mvi, id, request.getArtifacts() );
++                        DefaultMutableMavenModuleResolveMetadata.missing( mvi, id );
+                     result.resolved( metaData.asImmutable() );
+                     return;
+                 }
+diff --git a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/XMvnInstallTask.java b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/XMvnInstallTask.java
+index 07905f1f..d220e266 100644
+--- a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/XMvnInstallTask.java
++++ b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/XMvnInstallTask.java
+@@ -116,7 +116,7 @@ class XMvnInstallTask
+         } ).collect( Collectors.toList() );
+     }
+ 
+-    private void deploy( PublishArtifact gradleArtifact, Set<ModuleDependency> dependencies )
++    private void deploy( PublishArtifact gradleArtifact, Set<? extends ModuleDependency> dependencies )
+     {
+         DeploymentRequest request = new DeploymentRequest();
+ 
+@@ -170,7 +170,7 @@ class XMvnInstallTask
+ 
+             for ( UsageContext usage : internalComponent.getUsages() )
+             {
+-                Set<ModuleDependency> dependencies = usage.getDependencies();
++                Set<? extends ModuleDependency> dependencies = usage.getDependencies();
+ 
+                 for ( PublishArtifact artifact : usage.getArtifacts() )
+                 {
+diff --git a/xmvn-parent/pom.xml b/xmvn-parent/pom.xml
+index 7e7a6d94..910e27b6 100644
+--- a/xmvn-parent/pom.xml
++++ b/xmvn-parent/pom.xml
+@@ -84,7 +84,7 @@
+     <atinjectVersion>1</atinjectVersion>
+     <ivyVersion>2.4.0</ivyVersion>
+     <jcommanderVersion>1.64</jcommanderVersion>
+-    <gradleVersion>4.2.1</gradleVersion>
++    <gradleVersion>4.3.1</gradleVersion>
+     <groovyVersion>2.4.10</groovyVersion>
+     <mavenInvokerVersion>2.2</mavenInvokerVersion>
+     <mavenResolverVersion>1.0.3</mavenResolverVersion>
+-- 
+2.13.6
+

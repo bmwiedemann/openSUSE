@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Mon Feb 25 15:15:06 CET 2019 - ro@suse.de
+
+- add patches (parts of git commits from gnulib):
+  - gnulib-4af4a4a71827c0bc5e0ec67af23edef4f15cee8e-excerpt.patch
+  - gnulib-74d9d6a293d7462dea8f83e7fc5ac792e956a0ad-excerpt.patch
+  to fix compilation on current glibc
+  (fflush: adjust to glibc 2.28 libio.h removal)
+  (fflush: be more paranoid about libio.h change)
+
+-------------------------------------------------------------------
+Wed Jan 25 17:11:25 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.1:
+  * National holiday replaced Pentecost Monday as a Swedish
+    holiday 2005
+  * Report Reformation Day as an holiday everywhere in Germany in
+    2017
+
+-------------------------------------------------------------------
+Sat Jul 11 11:11:14 UTC 2015 - mpluskal@suse.com
+
+- Update to version 4
+  * Remove duplicate for All Saints Day for DE_BW and DE_RP.
+  * Spell the name of Norfolk Island correctly.
+  * Spell the name of Guy Fawkes correctly -- Fawkes, not Fawke.
+  * Correct the name of Canada's Northwest Territories
+  * Improve the computation of the Dutch Queen's and King's days
+  * Name of german federal state Saarland corrected.
+  * Name of swiss federal state Basel-Landschaft corrected.
+  * Alignment error for --date-format US fixed.
+  * Fix build on FreeBSD.
+  * Use _NL_TIME_FIRST_WEEKDAY to get correct defaults for -s N 
+    option.
+
+-------------------------------------------------------------------
+Thu Apr  2 14:54:41 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Update info dependencies
+- Remove unrecongized/useless configure flags
+
+-------------------------------------------------------------------
+Wed Dec 18 19:58:24 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.6.3
+  * Remove duplicate for All Saints Day for DE_BY.
+  * Inherit some portability fixes from gnulib.
+- Changes from 3.6.2
+  * Report correctly the Christmas day in Canada.
+- Changes from 3.6.1
+  * Include All Saints' day in HU
+  * Fix build issue under solaris 10 / studio 12.1
+  * Unicode support
+  * Make --help a synonym for --long-help
+- Remove gcal-stdio.h.patch; fixed on upstream release
+- Add xz requirement to support tarball format
+- Add an Url tag
+- Remove redundant %clean section
+- Don't package ChangeLog in documentation; empty file
+- Add a language subpackage
+
+-------------------------------------------------------------------
+Thu Aug 16 12:58:06 UTC 2012 - hvogel@suse.com
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Sun Jul 22 06:14:55 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Tue Nov 16 14:36:18 UTC 2010 - hvogel@novell.com
+
+- Update to version 3.6
+*  Work properly when the -1 timezone is specified
+*  Use ISO 3166-2 region codes
+*  Distribute BUGS LIMITATIONS doc/GREG-REFORM
+*  Fix NLS support in gcal, gcal2txt, tcal, txt2gcal
+*  Change source license to GPLv3+
+*  Do not include Henry Spencer V8 regex library
+*  Change documentation license to FDL 1.3+
+*  Use the start of the week day specified by the locale
+- Add some missing includes in lor.h
+  gcal-3.6-cleanup.patch
+- Get rid of obsolete patches  
+* gcal-bavarian-holiday.patch
+* gcal-3.01-relsymlinks.patch
+* gcal-3.01-gcc_twice_variable_use.patch
+* gcal-3.01-po_encoding.patch
+* gcal-3.01-glibc210.patch
+
+-------------------------------------------------------------------
+Thu Jun 11 22:14:08 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Mon Apr  2 11:19:45 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb 27 18:14:31 CET 2007 - mfabian@suse.de
+
+- Bugzilla #248859: fix part of the problem (for all translated
+  messages) by regenerating the .mo files.
+  The encoding problem still exists for all msgids which are
+  non-ASCII *and* which are untranslated or fuzzy.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:03:36 CET 2007 - uli@suse.de
+
+- extended string buffers from 1k to 2k (necessary if you have a
+  very long list of countries for -q)
+
+-------------------------------------------------------------------
+Tue Jan 16 18:29:57 CET 2007 - kssingvo@suse.de
+
+- beautified specfile, and renamed diff to patch filenames
+- fixed compiler problem with double use of same variable
+- fixed issue with charset encoding of files.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Feb 29 19:30:42 CET 2004 - ro@suse.de
+
+- remove dir files in info directories
+
+-------------------------------------------------------------------
+Thu Feb 26 10:52:24 CET 2004 - hmacht@suse.de
+
+- building as non-root user
+- fixing filelist
+
+-------------------------------------------------------------------
+Thu Jan 22 14:37:28 CET 2004 - schwab@suse.de
+
+- Put info dir in the same directory as the info files.
+
+-------------------------------------------------------------------
+Tue Jul  1 14:44:50 CEST 2003 - coolo@suse.de
+
+- possibly it's all my fault
+
+-------------------------------------------------------------------
+Tue Jul  1 13:23:25 CEST 2003 - coolo@suse.de
+
+- fixing build
+
+-------------------------------------------------------------------
+Mon Jun 16 16:44:38 CEST 2003 - kssingvo@suse.de
+
+- added %dir /usr/share/info/de
+
+-------------------------------------------------------------------
+Wed May 28 00:52:12 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Feb 10 22:18:46 CET 2003 - mmj@suse.de
+
+- Use %install_info macros [#23409]
+- Use BuildRoot:
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Jun 19 10:40:29 CEST 2002 - ke@suse.de
+
+- spec file:
+  - Use RPM macros more consistently.
+  - Move ./configure to the %build section.
+- Make sure to display bavarian related holidays properly; apply patch
+  provided by Klaus Singvogel [# 15955].
+
+-------------------------------------------------------------------
+Thu Nov 30 16:58:10 CET 2000 - bjacke@suse.de
+
+- updated to 3.01
+
+-------------------------------------------------------------------
+Fri Feb 25 15:31:00 CET 2000 - kukuk@suse.de
+
+- Move /usr/{info,man} -> /usr/share/{info,man} 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  9 12:15:28 CEST 1999 - bs@suse.de
+
+- fixed call of Check at the end of %install section
+
+Sun Sep 14 16:13:05 1997 - Karl Eichwalder  <ke@suse.de>
+
+- gcal 2.40: initial package

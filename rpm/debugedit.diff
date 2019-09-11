@@ -1,0 +1,61 @@
+Make debugedit build without dwarf.h
+
+--- ./Makefile.am.orig	2017-12-01 14:15:13.963574699 +0000
++++ ./Makefile.am	2017-12-01 14:16:10.634407860 +0000
+@@ -154,7 +154,6 @@ rpm2archive_LDADD +=	@WITH_POPT_LIB@ @WI
+ 
+ 
+ if LIBELF
+-if LIBDWARF
+ if LIBDW
+ rpmconfig_SCRIPTS += scripts/find-debuginfo.sh
+ 
+@@ -168,7 +167,6 @@ else
+ debugedit_LDADD +=	@WITH_LIBDW_LIB@ -lebl
+ endif # HAVE_LIBDW_STRTAB
+ endif # LIBDW
+-endif # LIBDWARF
+ rpmlibexec_PROGRAMS +=	elfdeps
+ elfdeps_SOURCES =	tools/elfdeps.c
+ elfdeps_LDADD =		rpmio/librpmio.la
+--- ./tools/debugedit.c.orig	2017-10-05 10:04:57.714602011 +0000
++++ ./tools/debugedit.c	2017-12-01 14:15:13.965574668 +0000
+@@ -39,7 +39,37 @@
+ #include <popt.h>
+ 
+ #include <gelf.h>
+-#include <dwarf.h>
++
++
++/* some defines taken from the dwarf standard */
++
++#define DW_TAG_compile_unit	0x11
++
++#define DW_AT_name		0x03
++#define DW_AT_stmt_list		0x10
++#define DW_AT_comp_dir		0x1b
++
++#define DW_FORM_addr		0x01
++#define DW_FORM_block2		0x03
++#define DW_FORM_block4		0x04
++#define DW_FORM_data2		0x05
++#define DW_FORM_data4		0x06
++#define DW_FORM_data8		0x07
++#define DW_FORM_string		0x08
++#define DW_FORM_block		0x09
++#define DW_FORM_block1		0x0a
++#define DW_FORM_data1		0x0b
++#define DW_FORM_flag		0x0c
++#define DW_FORM_sdata		0x0d
++#define DW_FORM_strp		0x0e
++#define DW_FORM_udata		0x0f
++#define DW_FORM_ref_addr	0x10
++#define DW_FORM_ref1		0x11
++#define DW_FORM_ref2		0x12
++#define DW_FORM_ref4		0x13
++#define DW_FORM_ref8		0x14
++#define DW_FORM_ref_udata	0x15
++#define DW_FORM_indirect	0x16
+ 
+ /* Unfortunately strtab manipulation functions were only officially added
+    to elfutils libdw in 0.167.  Before that there were internal unsupported

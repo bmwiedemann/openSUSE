@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.1
+  * Making sure that catalog and entry guis work
+  * Making sure that logo is always part of panel
+  * A little paranoia in case describe() exposes mutable state.
+  * Do not nest inside 'source' key twice.
+  * Work on copy that will be serialized.
+  * Apply to info-get route
+  * Don't attempt to serialise functions in server response
+  * Defer inputs until needed
+  * add intake-stac to plugins list
+  * Allow local cat entry to specify explicit driver class
+  * In GUI code, use describe() rather than attrbiutes
+  * make msgpack_numpy optional
+  * Don't pop plots from metadata
+  * Don't remove plots from description
+  * Add intake-dcat to the plugin directory.
+  * Serializing and deserializing state
+  * Add name to describe(), standardize describe() and describe_open()
+  * Fixing up done_callback switch
+  * Allow the expannding and collapsing of nested catalogs
+  * Disable buttons when they aren't ready
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Mon Jan 21 03:46:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

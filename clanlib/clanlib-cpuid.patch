@@ -1,0 +1,40 @@
+Index: ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp
+===================================================================
+--- ClanLib-2.3.6.orig/Sources/Core/System/detect_cpu_ext.cpp
++++ ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp
+@@ -30,18 +30,6 @@
+ #include "Core/precomp.h"
+ #include "API/Core/System/system.h"
+ 
+-#ifdef CL_ARM_PLATFORM
+-bool CL_System::detect_cpu_extension(CL_CPU_ExtensionPPC ext)
+-{
+-	throw ("Congratulations, you've just been selected to code this feature!");
+-}
+-
+-bool CL_System::detect_cpu_extension(CL_CPU_ExtensionX86 ext)
+-{
+-    return false;
+-}
+-#else
+-
+ #if (defined(WIN32) || defined(_WIN32) || defined(_WIN64)) && !defined __MINGW32__
+ #include <intrin.h>
+ #endif
+@@ -72,6 +60,7 @@ bool CL_System::detect_cpu_extension(CL_
+ 
+ bool CL_System::detect_cpu_extension(CL_CPU_ExtensionX86 ext)
+ {
++#if defined(__amd64__) || defined(__i386__)
+ 	unsigned int cpuinfo[4] = {0};
+ 
+ 	if(ext == mmx)
+@@ -179,7 +168,6 @@ bool CL_System::detect_cpu_extension(CL_
+ 		__cpuid((int*)cpuinfo, 0x80000001);
+ 		return ((cpuinfo[2] & (1 << 16)) != 0);
+ 	}
++#endif
+ 	return false;
+ }
+-
+-#endif

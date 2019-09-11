@@ -1,0 +1,19 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: fusermount is not supported in OBS
+
+Running fusermount doesn't work in OBS's chroot, so we just disable the
+tests that rely on it.
+
+Index: llfuse-1.3.4/test/util.py
+===================================================================
+--- llfuse-1.3.4.orig/test/util.py
++++ llfuse-1.3.4/test/util.py
+@@ -36,6 +36,8 @@ def fuse_test_marker():
+         return
+     skip = lambda x: pytest.mark.skip(reason=x)
+ 
++    return skip("Running fusermount is not suppored in OBS")
++
+     # Python 2.x: Popen is not a context manager...
+     which = subprocess.Popen(['which', 'fusermount'], stdout=subprocess.PIPE,
+                              universal_newlines=True)

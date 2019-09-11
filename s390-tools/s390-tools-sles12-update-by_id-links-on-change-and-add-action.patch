@@ -1,0 +1,31 @@
+From f7a0f391f2c4e8acc96b21ab5de54a178aa60088 Mon Sep 17 00:00:00 2001
+From: Hannes Reinecke <hare@suse.de>
+Date: Fri, 22 Nov 2013 15:39:38 +0100
+Subject: [PATCH] 59-dasd.rules: generate by-id links on 'change' and 'add'
+
+The by-id rules need to be triggered on both, 'change' and 'add',
+to work correctly during restarting udev.
+
+References: bnc#808042
+
+Signed-off-by: Robert Milasan <rmilasan@suse.de>
+---
+ etc/udev/rules.d/59-dasd.rules | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etc/udev/rules.d/59-dasd.rules b/etc/udev/rules.d/59-dasd.rules
+index 2b1435c..a08cb7c 100644
+--- a/etc/udev/rules.d/59-dasd.rules
++++ b/etc/udev/rules.d/59-dasd.rules
+@@ -6,7 +6,7 @@
+ SUBSYSTEM!="block", GOTO="dasd_symlinks_end"
+ KERNEL!="dasd*", GOTO="dasd_symlinks_end"
+ 
+-ACTION!="change", GOTO="dasd_block_end"
++ACTION!="change|add", GOTO="dasd_block_end"
+ # by-id (hardware serial number)
+ KERNEL=="dasd*[!0-9]", ATTRS{status}=="online", IMPORT{program}="/sbin/dasdinfo -a -e -b $kernel"
+ KERNEL=="dasd*[!0-9]", ENV{ID_SERIAL}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_SERIAL}"
+-- 
+1.8.1.4
+

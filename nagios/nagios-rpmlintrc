@@ -1,0 +1,19 @@
+# common.css is used in cgi - and can be expanded by user
+addFilter("zero-length.*/usr/share/nagios/stylesheets/common.css");
+# we need xntp for SLES9
+addFilter("init-script-non-var-dependency.*/etc/init.d/nagios xntpd");
+addFilter("subsys-unsupported.*/etc/init.d/nagios");
+# The name of that package is used since years - no need to change it for this new 'policy'
+addFilter("name-repeated-in-summary.*Nagios")
+# avoid FollowSymlinks in apache configuration
+addFilter("files-duplicated-waste");
+addFilter("files-duplicate.*/usr/share/nagios/.*");
+addFilter("devel-file-in-non-devel-package.*/usr/lib.*/libnagios.a");
+# we have an own rcnagios file that adds additional features otherwise missing if we would
+# use a simple simlink to /usr/sbin/service
+addFilter("suse-missing-rclink.*nagios");
+# Seems like a bug in Factory: adding this as %ghost in the file list breaks the build
+# of the package - so ignore it here as we create the dir via tmpfiles.d
+addFilter("tmpfile-not-in-filelist.*/var/run/nagios");
+# not using the macro should not be a problem if we call the service directly:
+addFilter("postin-without-tmpfile-creation.*/usr/lib/tmpfiles.d/nagios.conf");

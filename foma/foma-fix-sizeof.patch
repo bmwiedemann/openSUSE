@@ -1,0 +1,16 @@
+https://bugzilla.opensuse.org/show_bug.cgi?id=1109949
+https://github.com/mhulden/foma/pull/78
+
+Index: foma-0.9.18+git20170507.07bb944/foma/rewrite.c
+===================================================================
+--- foma-0.9.18+git20170507.07bb944.orig/foma/rewrite.c
++++ foma-0.9.18+git20170507.07bb944/foma/rewrite.c
+@@ -103,7 +103,7 @@ struct fsm *fsm_rewrite(struct rewrite_s
+     rb = xxcalloc(1, sizeof(struct rewrite_batch));
+     rb->rewrite_set = all_rules;
+     rb->num_rules = num_rules;
+-    rb->namestrings = xxmalloc(sizeof rb->namestrings * num_rules);
++    rb->namestrings = xxmalloc(sizeof *rb->namestrings * num_rules);
+     for (i = 0; i < rb->num_rules; i++) {
+ 	sprintf(rb->namestrings[i], "@#%04i@", i+1);
+     }

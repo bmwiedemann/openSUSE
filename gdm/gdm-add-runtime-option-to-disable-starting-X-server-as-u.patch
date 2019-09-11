@@ -1,0 +1,88 @@
+From a19b51ad9e446948ba60c359641f6c4c14fec1da Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@suse.com>
+Date: Fri, 26 Jan 2018 10:49:18 +0100
+Subject: [PATCH] Add runtime option to disable starting X server as user
+
+If the environmental variable GDM_DISABLE_USER_DISPLAY_SERVER is defined, the
+X server will be started under root. The same way as if gdm was built with
+--disable-user-display-server option.
+
+This allows system to run X server under root if and only-if necessary.
+---
+Index: gdm-3.32.0+2/daemon/gdm-local-display-factory.c
+===================================================================
+--- gdm-3.32.0+2.orig/daemon/gdm-local-display-factory.c
++++ gdm-3.32.0+2/daemon/gdm-local-display-factory.c
+@@ -231,11 +231,12 @@ gdm_local_display_factory_create_transie
+ 
+         g_debug ("GdmLocalDisplayFactory: Creating transient display");
+ 
+-#ifdef ENABLE_USER_DISPLAY_SERVER
+-        display = gdm_local_display_new ();
+-        if (gdm_local_display_factory_use_wayland ())
+-                g_object_set (G_OBJECT (display), "session-type", "wayland", NULL);
+-#else
++        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL) {
++                display = gdm_local_display_new ();
++                if (gdm_local_display_factory_use_wayland ())
++                        g_object_set (G_OBJECT (display), "session-type", "wayland", NULL);
++        }
++
+         if (display == NULL) {
+                 guint32 num;
+ 
+@@ -243,7 +244,6 @@ gdm_local_display_factory_create_transie
+ 
+                 display = gdm_legacy_display_new (num);
+         }
+-#endif
+ 
+         g_object_set (display,
+                       "seat-id", "seat0",
+@@ -468,7 +468,7 @@ create_display (GdmLocalDisplayFactory *
+         g_debug ("GdmLocalDisplayFactory: Adding display on seat %s", seat_id);
+ 
+ #ifdef ENABLE_USER_DISPLAY_SERVER
+-        if (g_strcmp0 (seat_id, "seat0") == 0) {
++        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL && g_strcmp0 (seat_id, "seat0") == 0) {
+                 display = gdm_local_display_new ();
+                 if (session_type != NULL) {
+                         g_object_set (G_OBJECT (display), "session-type", session_type, NULL);
+Index: gdm-3.32.0+2/daemon/gdm-session.c
+===================================================================
+--- gdm-3.32.0+2.orig/daemon/gdm-session.c
++++ gdm-3.32.0+2/daemon/gdm-session.c
+@@ -373,7 +373,11 @@ get_system_session_dirs (GdmSession *sel
+ #ifdef ENABLE_WAYLAND_SUPPORT
+         if (!self->ignore_wayland) {
+ #ifdef ENABLE_USER_DISPLAY_SERVER
+-                g_array_prepend_val (search_array, wayland_search_dir);
++                if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL) {
++                        g_array_prepend_val (search_array, wayland_search_dir);
++                } else {
++                        g_array_append_val (search_array, wayland_search_dir);
++                }
+ 
+                 for (i = 0; system_data_dirs[i]; i++) {
+                         gchar *dir = g_build_filename (system_data_dirs[i], "wayland-sessions", NULL);
+@@ -3276,8 +3280,10 @@ gdm_session_get_display_mode (GdmSession
+          *   right now.  It will die with an error if logind devices
+          *   are paused when handed out.
+          */
+-        return GDM_SESSION_DISPLAY_MODE_NEW_VT;
+-#else
++        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL) {
++                return GDM_SESSION_DISPLAY_MODE_NEW_VT;
++        }
++#endif
+ 
+ #ifdef ENABLE_WAYLAND_SUPPORT
+         /* Wayland sessions are for now assumed to run in a
+@@ -3288,7 +3294,6 @@ gdm_session_get_display_mode (GdmSession
+         }
+ #endif
+         return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
+-#endif
+ }
+ 
+ void

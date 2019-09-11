@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Jul 13 18:26:54 UTC 2017 - olaf@aepfle.de
+
+- Build with gcc6, fix build failure for Leap
+
+-------------------------------------------------------------------
+Mon Jul 10 23:07:30 UTC 2017 - jengelh@inai.de
+
+- Fix RPM group.
+
+-------------------------------------------------------------------
+Thu Jul  6 22:21:26 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 2.0.0:
+  Bug fixes
+   * #10 - Fixed the problem that "output buffer to small" was not
+     detected when writting encoded bytes to a fixed output buffer.
+     This could cause memory corruption problems.
+   * #11 - Update charlstest to return EXIT_SUCCESS/FAILURE
+   * Fixed the issue that DecodeToPnm would set
+     params.colorTransform = ColorTransformation::BigEndian but the
+     library didn’t support this option during decoding.
+  Misc
+   * Updated the source code to C++ v14.
+   * Refactored several API's to make usage of the library easier.
+- Removed unzip build requirement (not needed anymore).
+- Require gcc >= 5.0 (for C++ v14).
+- Removed the following patches (not needed anymore):
+  charls_add_cmake_install_target.patch
+  charls_add_sharedlib_soname.patch
+  charls_fix_tests.patch
+
+-------------------------------------------------------------------
+Tue Nov 20 13:20:03 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (%make_install is not expanded)
+
+-------------------------------------------------------------------
+Mon Dec  5 08:17:04 UTC 2011 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  The License file is BSD-3-Clause. Also, use SPDX format
+
+-------------------------------------------------------------------
+Fri Dec  2 18:40:22 UTC 2011 - asterios.dramis@gmail.com
+
+- Initial release (version 1.0).
+- Added three patches (taken from Fedora):
+  * charls_add_cmake_install_target.patch: Add a cmake install target for
+    CharLS header files.
+  * charls_add_sharedlib_soname.patch: Add soname to generated shared lib and
+    install libCharLS.so.
+  * charls_fix_tests.patch: Fix tests.

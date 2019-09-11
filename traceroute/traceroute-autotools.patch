@@ -1,0 +1,66 @@
+Index: traceroute-2.1.0/Makefile.am
+===================================================================
+--- /dev/null
++++ traceroute-2.1.0/Makefile.am
+@@ -0,0 +1,17 @@
++AM_CPPFLAGS = -include $(top_builddir)/config.h -I$(top_srcdir)/libsupp
++AM_CFLAGS = -fvisibility=hidden -fPIE
++
++noinst_LIBRARIES = libsupp.a
++libsupp_a_SOURCES = libsupp/clif.c libsupp/clif.h
++
++sbin_PROGRAMS = traceroute/traceroute
++
++man8_MANS = traceroute/traceroute.8
++
++traceroute_traceroute_SOURCES = traceroute/as_lookups.c traceroute/extension.c traceroute/mod-icmp.c traceroute/mod-tcp.c  \
++					 traceroute/mod-udp.c traceroute/poll.c traceroute/time.c traceroute/traceroute.c \
++					 traceroute/csum.c traceroute/flowlabel.h traceroute/mod-tcpconn.c traceroute/traceroute.h \
++					 traceroute/mod-dccp.c traceroute/mod-raw.c traceroute/module.c traceroute/random.c
++
++traceroute_traceroute_LDFLAGS = -pie
++traceroute_traceroute_LDADD = libsupp.a -lm
+\ No newline at end of file
+Index: traceroute-2.1.0/configure.ac
+===================================================================
+--- /dev/null
++++ traceroute-2.1.0/configure.ac
+@@ -0,0 +1,26 @@
++#                                               -*- Autoconf -*-
++# Process this file with autoconf to produce a configure script.
++
++AC_PREREQ(2.60)
++AC_INIT([traceroute],
++        [2.0.21],
++        [traceroute-devel@lists.sourceforge.net],
++        [traceroute],
++        [http://traceroute.sourceforge.net/])
++AC_CONFIG_SRCDIR([traceroute/traceroute.h])
++AC_CONFIG_HEADERS([config.h])
++AM_INIT_AUTOMAKE([foreign 1.11 -Wall silent-rules tar-pax no-dist-gzip dist-xz subdir-objects])
++
++# Checks for programs.
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
++AC_PROG_INSTALL
++AM_PROG_AR
++AC_PROG_RANLIB
++
++# Checks for libraries.
++AC_CHECK_FUNCS([__secure_getenv secure_getenv])
++
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT
+Index: traceroute-2.1.0/traceroute/traceroute.c
+===================================================================
+--- traceroute-2.1.0.orig/traceroute/traceroute.c
++++ traceroute-2.1.0/traceroute/traceroute.c
+@@ -28,7 +28,6 @@
+ #include "flowlabel.h"
+ 
+ #include <clif.h>
+-#include "version.h"
+ #include "traceroute.h"
+ 
+ 

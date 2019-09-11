@@ -1,0 +1,36 @@
+From 4eb9a5a70506cf76fbe954c56b39857f8a3be0eb Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Wed, 12 Jun 2019 16:03:13 +0200
+Subject: [PATCH 1/5] Don't crash if we start a drag without dragFocus
+
+Sometimes origin will be nullptr, triggering a crash.
+
+[ChangeLog][QPA plugin] Fixed a crash that sometimes happened when
+starting a drag-and-drop operation.
+
+Fixes: QTBUG-76368
+Change-Id: I8f4e6b05f073644834c3c72a8307dac5b897f626
+Reviewed-by: Johan Helsing <johan.helsing@qt.io>
+---
+ src/client/qwaylanddatadevice.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/client/qwaylanddatadevice.cpp b/src/client/qwaylanddatadevice.cpp
+index 300c9de0..11984f9d 100644
+--- a/src/client/qwaylanddatadevice.cpp
++++ b/src/client/qwaylanddatadevice.cpp
+@@ -111,7 +111,10 @@ void QWaylandDataDevice::startDrag(QMimeData *mimeData, QWaylandWindow *icon)
+     if (!origin)
+         origin = m_display->currentInputDevice()->touchFocus();
+ 
+-    start_drag(m_dragSource->object(), origin->object(), icon->object(), m_display->currentInputDevice()->serial());
++    if (origin)
++        start_drag(m_dragSource->object(), origin->object(), icon->object(), m_display->currentInputDevice()->serial());
++    else
++        qCDebug(lcQpaWayland) << "Couldn't start a drag because the origin window could not be found.";
+ }
+ 
+ void QWaylandDataDevice::cancelDrag()
+-- 
+2.22.0
+

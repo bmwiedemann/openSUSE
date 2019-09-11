@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Oct 17 05:29:55 UTC 2017 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Lingua-Translit/Changes
+
+  0.28  -- 2017-10-16
+  
+      * Fixed wrong capitalised Cyrillic A in several context rules of both
+        "BGN/PCGN RUS Standard" and "BGN/PCGN RUS Strict" - thanks to Nikola
+        Lečić for providing the fix!
+      * Spelling corrections in man page - thanks to Lucas Kanashiro for
+        providing a patch!
+      * Updated copyright (Netzum Sorglos Software GmbH).
+
+-------------------------------------------------------------------
+Thu Apr 27 06:00:47 UTC 2017 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Lingua-Translit/Changes
+
+  0.27  -- 2017-04-26
+  
+      * Added "BGN/PCGN RUS Standard" and "BGN/PCGN RUS Strict"
+        transliterations. Thanks to Nikola Lečić for contributing these tables!
+
+-------------------------------------------------------------------
+Wed Jul 20 08:48:40 UTC 2016 - mlin@suse.com
+
+- Initial import from version 0.26
+  * See changelog http://cpansearch.perl.org/src/ALINKE/Lingua-Translit-0.26/Changes
+

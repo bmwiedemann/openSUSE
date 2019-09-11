@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:15:10 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Tue Apr 14 19:32:46 UTC 2015 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-HTTP-Parser-XS/Changes
+
+  0.17
+  	- update picohttpparser (runs faster / does slightly more strict parsing)
+  
+  0.16
+  	- documentation about PATH_INFO
+  
+  0.15
+  	- deny HTTP header field with an empty name
+  
+  0.14
+  	- do not include '#' and the following characters in URI in PATH_INFO or QUERY_STRING
+  
+  0.13
+  	- fix compile error on GCC < 3 (RT #63074)
+  
+  0.12
+  	- fix undeclared dependency on URI::Escape (RT #62716)
+  	- fix parsing of protocol version in the pure perl impl to exactly match that of XS
+
+-------------------------------------------------------------------
+Tue Apr 14 19:32:44 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-HTTP-Parser-XS/Changes
+
+  0.14
+  	- do not include '#' and the following characters in URI in PATH_INFO or QUERY_STRING
+  
+  0.13
+  	- fix compile error on GCC < 3 (RT #63074)
+  
+  0.12
+  	- fix undeclared dependency on URI::Escape (RT #62716)
+  	- fix parsing of protocol version in the pure perl impl to exactly match that of XS
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:13 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov  1 14:05:40 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.11:
+  * fix build error due to the use of Module::Install::ReadmeMarkdownFromPod (RT #62589)
+
+- changes from 0.10:
+  * support for HTTP response parsing
+
+-------------------------------------------------------------------
+Thu Oct  7 11:23:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.09)
+

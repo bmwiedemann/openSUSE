@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Thu Apr 18 18:12:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Move libraries into the standard dir (/usr/lib*).
+  nss_winbind already lives there, which I take as an indicator
+  this move will work.
+
+-------------------------------------------------------------------
+Thu Mar 28 20:11:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.1:
+  + No code changes.
+  + Fix unit tests to properly work on s390x.
+- Changes from version 0.14.0:
+  + Fix -Wformat-truncation problem during reading of the allow
+    file.
+- Changes from version 0.13.2:
+  + No code changes.
+  + Change how ./configure --enable/disable-tests works:
+    - --enable-tests: tests are enabled and will fail if
+      dependencies are not found.
+    - --disable-tests: tests are not enabled and will not be built
+      even if dependencies are found.
+    - no flag given: tests are conditionally enabled if
+      dependencies are found.
+- Changes from version 0.13.1:
+  + Very minor code changes (should result in no binary changes).
+  + Reformat source to 80 columns.
+  + Improve configure options to allow disabling tests even if the
+    testing libraries are present.
+  + Automake is now non-recursive.
+  + Hardcoded paths are now exposed as configure variables.
+- Changes from version 0.13:
+  + Fix an old memory leak in reverse lookup.
+  + Fix the broken workaround for nscd segfaults (not all clients
+    would see all results).
+  + Simplify buffer management.
+  + More unit tests, more cleanups, and fewer gotos.
+- Changes from version 0.12:
+  + Fix segfault when using nscd.
+  + Remove untested, unmaintained BSD support (please help out if
+    you would like BSD support to return!).
+- Changes from version 0.11:
+  + Moved to new GitHub location, docs migrated to markdown.
+  + The long-deprecated LEGACY mode is removed.
+  + The long-deprecated HONOUR_SEARCH_DOMAINS option is removed.
+  + Unit tests are now included, with make check.
+  + nss-mdns now implements standard heuristics for detecting
+    .local unicast resolution and will automatically disable
+    resolution when a local server responds to .local requests.
+  + _nss_mdns_gethostbyname3_r and _nss_mdns_gethostbyname4_r are
+    now implemented.
+  + Full dual-stack IPv4/IPv6 support is implemented.
+- Run spec-cleaner, modernize spec.
+- Update URL and Source to new upstream home.
+- Drop unaligned.diff: Fixed upstream.
+- Add pkgconfig(check) BuildRequires and make_check macro, run
+  buildtime tests.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:57 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 18 20:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- Fix bashisms in nss-mdns-config.
+
+-------------------------------------------------------------------
+Mon Apr 15 13:34:44 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Jul 11 13:37:10 CEST 2012 - vuntz@opensuse.org
+
+- Add nss-mdns-config script as a source, and install it in
+  /usr/sbin: this script can be used to enable/disable mdns in
+  /etc/nsswitch.conf (-4/-6 can be used to restrict
+  enabling/disabling to IPv4/IPv6).
+- Change %post/%preun scriptlets to use new nss-mdns-config script
+  instead of custom perl-fu.
+- Do not restrict mdns support in /etc/nsswitch.conf to IPv4: just
+  pass --enable to nss-mdns-config in %post. Fix bnc#710231.
+- Only call nss-mdns-config in %post on first install, to avoid
+  overwriting changes done by users. Fix nss-mdns side of
+  bnc#729796.
+- Do not call sed to change /etc/nsswitch.conf to remove services
+  not provided by nss-mdns anymore: when we need this, we'll be
+  able to integrate this in nss-mdns-config.
+
+-------------------------------------------------------------------
+Tue Dec 15 22:28:46 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri May  1 03:32:54 CEST 2009 - vuntz@novell.com
+
+- Remove AutoReqProv: it's default now.
+- Also fix a typo in the description.
+
+-------------------------------------------------------------------
+Mon Oct 13 12:49:02 CEST 2008 - ro@suse.de
+
+- simplify and correct baselibs.conf 
+
+-------------------------------------------------------------------
+Wed May 28 15:49:14 CEST 2008 - olh@suse.de
+
+- change the recommends for XXbit packages to a supplements
+  add a Conflicts: != version to the XXbit packages, to give a hint
+  during manual package upgrades (bnc#336678)
+
+-------------------------------------------------------------------
+Tue Apr 22 10:08:38 CEST 2008 - coolo@suse.de
+
+- degrading the requires to recommends. It's very well possible
+  to install a system with just 64bit
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 07:00:56 CEST 2008 - hpj@suse.de
+
+- Upgraded to version 0.10:
+
+  * Ported to FreeBSD.
+  * Alignment fixes for SPARC.
+
+-------------------------------------------------------------------
+Tue Sep 11 00:36:14 CEST 2007 - ro@suse.de
+
+- modify last change:
+  - require 32bit variant on x86_64 and s390x
+  - require 64bit variant on ppc 
+
+-------------------------------------------------------------------
+Mon Sep 10 16:19:55 CEST 2007 - sbrabec@suse.cz
+
+- Fixed invalid dependency for bi-arch (#309193).
+
+-------------------------------------------------------------------
+Thu Sep  6 22:27:24 CEST 2007 - mauro@suse.de
+
+- Sync the spec with the scripts in the comment #6 of bnc #287583
+
+-------------------------------------------------------------------
+Thu Sep  6 01:25:07 CEST 2007 - mauro@suse.de
+
+- The 64 bit version of nss-mdns will require the -32 version to 
+  bugfix bnc #287583.
+
+-------------------------------------------------------------------
+Sat Apr 21 10:51:20 CEST 2007 - schwab@suse.de
+
+- Fix unaligned access.
+
+-------------------------------------------------------------------
+Tue Feb 20 17:58:09 CET 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 0.9.
+

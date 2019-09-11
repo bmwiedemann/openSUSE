@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Oct 20 18:28:28 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.6
+  * Support for progressive JPEG
+  * Some bug fixes and documentation update
+
+-------------------------------------------------------------------
+Tue Feb 20 07:50:48 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.5
+  * New option --nn to use nearest neighbour interpolation for PNG
+    files
+  * Identify Multi Picture Object (MPO) files
+
+-------------------------------------------------------------------
+Thu Oct 12 14:28:22 CEST 2017 - sbrabec@suse.com
+
+- Change Converters -> Convertors in RPM group, as all other
+  packages use this spelling.
+
+-------------------------------------------------------------------
+Wed Aug 30 18:00:09 UTC 2017 - aloisio@gmx.com
+
+- Initial package (2.4.1)

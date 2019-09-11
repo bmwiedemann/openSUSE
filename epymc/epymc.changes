@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Fri Jul  7 06:42:15 UTC 2017 - sflees@suse.de
+
+- exclude ix86 builds as python3-efl runs out of memory during build
+
+-------------------------------------------------------------------
+Wed Sep 28 08:50:40 UTC 2016 - sflees@suse.de
+
+- %lang_package is now not in description
+
+-------------------------------------------------------------------
+Sun Sep 18 08:27:09 UTC 2016 - sflees@suse.de
+
+- Add fix-desktop-file.patch
+
+-------------------------------------------------------------------
+Sun Sep 18 07:28:11 UTC 2016 - sflees@suse.de
+
+- 1.2.0 Release
+New features:
+ * New Photo module
+ * New PosterGrid/CoverGrid views
+ * New South Park Studios online video channel
+ * New themoviedb.org online video channel (with movie trailers)
+ * Added a new secret online channel
+ * Virtual keyboard is now also usable with the real keyboard
+ * Virtual keyboard now support multiple layouts
+ * Show the status of the downloads in progress (with ability to
+start/abort)
+ * Thumbnailing ability, using a custom Ethumb slave process
+ * Automatically (and manually) download and update youtube-dl
+ * New Watchdog module (sadly gstreamer1 sometimes hang the mainloop for me)
+ * Cache to file remote images for faster reloading
+ * Support remote urls also in the mediaplayer cover image
+ * Show current folders in the file-manager
+ * Option to hide the mouse cursor when not needed (not move or video
+playing)
+ * Support for subtitles embedded in the video files
+ * New check_po setup command, give translations stats with a nice bar
+
+Improvements:
+ * Initial music library scan is now 10 times faster (measured with the
+library
+   and the config folder on the same slow HDD) see Issue #2 for more info.
+ * Lots of improvements in the Music module and the AudioPlayer itself:
+   playlist is now visible and browsable, player/playlist controls are
+always
+   reachable in the UI, ability to set loop and shuffle.
+ * Better zapiks video schannel
+
+New Translations:
+ * Finnish
+
+Changes:
+ * Dropped python 2 support, you MUST use python 3 from now on
+ * Removed broken traileraddict channel (use the new tmdb instead)
+ * Use elm focus in place of the custom EmcFocusManager
+ * We now use ecore_con.Url for fetching data from the net (instead of
+   ecore.file_download + file read + file delete)
+
+Bug fixed:
+ * Fixed poster hiding (and console errors) for efl >= 1.16
+ * Fixed posters for the vimeo channel
+ * Fixed tmdb language selector in config
+ * Fixed (hopefully) subs decoding
+ * Fixed video download to work again
+ * Fixed a bug that was causing fileman buttons to be clickable also when
+hidden
+ * Removed usage of elm deprecated ObjectItem.data_get() function
+ * Removed edc warning about "fixed: 1 1"
+ * Fixed compatibility with python 3.5 (os.path.exists no more accept
+unicode)
+ * Updated yt scraper to latest web changes
+
+-------------------------------------------------------------------
+Wed Feb  3 07:40:49 UTC 2016 - sleep_walker@opensuse.org
+
+- use python3 sitelib
+
+-------------------------------------------------------------------
+Sat Oct 24 13:34:45 UTC 2015 - sleep_walker@opensuse.org
+
+- require python-efl for run
+
+-------------------------------------------------------------------
+Fri Aug 21 11:39:12 UTC 2015 - simon@simotek.net
+
+- add COPYING README.md TODO to package
+
+-------------------------------------------------------------------
+Fri Aug 21 07:25:23 UTC 2015 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No indication of GPL-3.0 (only) files in the package
+
+-------------------------------------------------------------------
+Sat Aug 15 09:28:23 UTC 2015 - simon@simotek.net
+
+- Update to 1.1.0.1 - With updated youtube plugin
+

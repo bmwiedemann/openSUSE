@@ -1,0 +1,13 @@
+diff -up progsreiserfs-0.3.0.5/aclocal.m4.orig progsreiserfs-0.3.0.5/aclocal.m4
+diff -up progsreiserfs-0.3.0.5/configure.in.orig progsreiserfs-0.3.0.5/configure.in
+--- progsreiserfs-0.3.0.5/configure.in.orig	2019-07-25 00:43:48.918008863 +0200
++++ progsreiserfs-0.3.0.5/configure.in	2019-07-25 00:43:57.350009212 +0200
+@@ -108,7 +108,7 @@ AM_PROG_LIBTOOL
+ 
+ dnl Initialize i18n:
+ ALL_LINGUAS=""
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ CFLAGS="$CFLAGS -DLOCALEDIR=\"\\\"$datadir/locale\\\"\""
+ 
+ dnl if test "$USE_INCLUDED_LIBINTL" = "yes"; then

@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Mon Jun 24 08:45:44 UTC 2019 - Grover Chou <groverchout@gmail.com>
+
+- update to version v2.7
+ * Editor: Fix smart table bugs; Fix improper leading line space on macOS;
+ * Fix bug which will open two tabs for the same file;
+ * Add copy button to copy code block in read mode;
+ * PluatUML: use shell to launch Java;
+ * Use qt 5.12.1 on macOS for better performance;
+ * Add theme v_simple provided by user LuoshuiTianyi;
+ * Support adding sibling folder in context menu;
+- For more details please visit https://github.com/tamlok/vnote/releases/tag/v2.7
+
+-------------------------------------------------------------------
+Sun Jun  2 20:02:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrailty of descriptions. Trim metadata redundancies.
+
+-------------------------------------------------------------------
+Thu May 16 06:35:26 UTC 2019 - Grover Chou <groverchout@gmail.com>
+
+- update to version v2.5
+
+-------------------------------------------------------------------
+Fri Oct  5 10:24:10 UTC 2018 - Ching-Yat Foo <tsingyat@outlook.com> 2.0
+
+- update to version v2.0
+- for more details please visit https://github.com/tamlok/vnote/releases/tag/v2.0
+
+-------------------------------------------------------------------
+Sun Aug  5 09:13:40 UTC 2018 - groverchout@gmail.com
+
+- update to version v1.20
+- For more details please visit https://github.com/tamlok/vnote/releases/tag/v1.20
+
+-------------------------------------------------------------------
+Tue May  1 21:23:16 UTC 2018 - groverchout@gmail.com
+
+- update to version v1.15
+ * Support PlantUML and Graphviz
+ * In-Place Preview for MathJax and Diagrams
+ * Live-Preview for Diagrams
+ * Embedding Images in Exported HTML
+ * Others
+- For more details please visit https://github.com/tamlok/vnote/releases/tag/v1.15
+
+-------------------------------------------------------------------
+Tue Apr  3 23:31:49 UTC 2018 - groverchout@gmail.com
+
+- update to version v1.14, for more details please visit https://github.com/tamlok/vnote/releases/
+tag/v1.14
+
+-------------------------------------------------------------------
+Sun Mar 25 13:57:10 UTC 2018 - groverchout@gmail.com
+
+- update to version v1.13, for more details please visit https://github.com/tamlok/vnote/releases/tag/v1.13
+
+-------------------------------------------------------------------
+Fri Mar  2 00:44:40 UTC 2018 - groverchout@gmail.com
+
+- Combine EditNote and SaveExitNote as EditReadNote (Ctrl+T);
+- Support exporting notes as Markdown, HTML, and PDF;
+- Support simple search in directory tree, file list, and outline;
+- Support copying selected text as HTML in edit mode;
+- Support copying text to Evernote, OneNote, Word, WeChat Public Account editor and so on;
+- Support auto-save;
+- Support fullscreen mode and hiding menu bar;
+- Support Ctrl+H/W/U to delete text in most line edits;
+- Support zooming in/out in edit mode;
+- Support MathJax in fenced code block with language mathjax specified;
+- More shortcuts;
+- Add Cart to collect notes for further processing;
+- Output built-in themes on start of VNote;
+- Esc to exit edit mode when Vim mode is disabled;
+- Support Vim command line for search in read mode;
+- Support printing;
+- Single click in file list to open file in current tab, double clicks to open in a new tab;
+
+-------------------------------------------------------------------
+Wed Dec 20 07:49:29 UTC 2017 - groverchout@gmail.com
+
+- Support themes;
+ * Three built-in mordern themes;
+ * One dark mode theme;
+- Vim mode
+ * Support block cursor in Normal/Visual mode;
+ * = to auto-indent selected lines as the first line;
+- Support custom external editors to open notes;
+- Enable Ctrl+C/Ctrl+V in Vim mode to copy/paste;
+- Support Flash Page to record ideas quickly;
+- Support previewing inline images;
+
+-------------------------------------------------------------------
+Sun Nov 19 10:59:29 UTC 2017 - groverchout@gmail.com
+
+- Migrate to Qt 5.9.1;
+- Support Compact mode in main window;
+- Update icons;
+- Support custom startup pages;
+- Remove obsolete title marker when inserting new one;
+- Support Magic Words;
+- Vim mode
+ * Share registers among all tabs;
+ * Support Ctrl+O in Insert mode;
+- Add "Code Block", "Insert Link", and "Insert Image" tool bar buttons;
+- Support Ctrl+Shift+T to recover last closed tabs;
+- Support view read-only files in edit mode;
+- Refactor editor for speed;
+- Support templates when creating notes;
+- Support snippets;
+- Support file change check;
+- Support backup file (save changes automatically);
+
+-------------------------------------------------------------------
+Fri Nov 17 19:00:42 UTC 2017 - groverchout@gmail.com
+
+- bug fixes
+
+-------------------------------------------------------------------
+Thu Nov 16 19:49:54 UTC 2017 - groverchout@gmail.com
+
+- update vnote v1.9
+- for more information please visit https://github.com/tamlok/vnote/releases/tag/v1.9
+

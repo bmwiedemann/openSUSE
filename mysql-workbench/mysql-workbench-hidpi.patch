@@ -1,0 +1,319 @@
+--- mysql-workbench-community-8.0.15-org/backend/wbprivate/workbench/about_box.cpp	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/backend/wbprivate/workbench/about_box.cpp	2019-02-23 11:58:46.373377035 +0200
+@@ -108,6 +108,8 @@
+   cairo_set_source_surface(cr, _back_image, 0, 0);
+   cairo_paint(cr);
+   cairo_identity_matrix(cr);
++  const double fix_scale = _scale_factor > 1 ? 2 / _scale_factor : 1;
++  cairo_scale(cr, fix_scale, fix_scale);
+ 
+   std::string version = base::strfmt(_("Version %i.%i.%i build %i %s (%i bits)"), APP_MAJOR_NUMBER, APP_MINOR_NUMBER,
+                                      APP_RELEASE_NUMBER, APP_BUILD_NUMBER, APP_RELEASE_TYPE, (int)sizeof(void *) * 8);
+@@ -124,6 +126,7 @@
+   cairo_show_text(cr, _edition.c_str());
+ 
+   cairo_stroke(cr);
++  cairo_identity_matrix(cr);
+ }
+ 
+ //--------------------------------------------------------------------------------------------------
+diff -uNr mysql-workbench-community-8.0.15-org/library/forms/utilities.cpp mysql-workbench-community-8.0.15-src/library/forms/utilities.cpp
+--- mysql-workbench-community-8.0.15-org/library/forms/utilities.cpp	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/library/forms/utilities.cpp	2019-02-23 14:22:55.683414594 +0200
+@@ -769,8 +769,8 @@
+ 
+   if (backing_scale_factor > 1 && mforms::Utilities::is_hidpi_icon(image)) {
+     cairo_save(cr);
+-    cairo_scale(cr, 1 / backing_scale_factor, 1 / backing_scale_factor);
+-    cairo_set_source_surface(cr, image, x * backing_scale_factor, y * backing_scale_factor);
++    cairo_scale(cr, 0.5, 0.5);
++    cairo_set_source_surface(cr, image, x * 2, y * 2);
+     if (alpha == 1.0)
+       cairo_paint(cr);
+     else
+diff -uNr mysql-workbench-community-8.0.15-org/library/forms/widgets.cpp mysql-workbench-community-8.0.15-src/library/forms/widgets.cpp
+--- mysql-workbench-community-8.0.15-org/library/forms/widgets.cpp	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/library/forms/widgets.cpp	2019-02-23 14:26:49.293546912 +0200
+@@ -701,7 +701,7 @@
+   if (icon != NULL) {
+     float scale;
+     if (mforms::Utilities::is_hidpi_icon(icon) && (scale = mforms::App::get()->backing_scale_factor()) > 1)
+-      cairo_scale(cr, 1 / scale, 1 / scale);
++      cairo_scale(cr, 0.5, 0.5);
+     cairo_set_source_surface(cr, icon, 0, 0);
+     cairo_paint(cr);
+   }
+diff -uNr mysql-workbench-community-8.0.15-org/images/admin/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/admin/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/admin/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/admin/CMakeLists.txt	2019-02-22 23:58:55.094005199 +0200
+@@ -81,6 +81,83 @@
+ 	wb-backup-logo-small.png
+ 	wb-backup-logo.png
+ 	wb_perform_config.png
++    admin_add_user@2x.png
++    admin_audit_inspector@2x.png
++    admin_config_wizard@2x.png
++    admin_connections@2x.png
++    admin_dashboard@2x.png
++    admin_export@2x.png
++    admin_firewall@2x.png
++    admin_info_offline@2x.png
++    admin_info_running@2x.png
++    admin_info_stopped@2x.png
++    admin_info_unknown@2x.png
++    admin_instrumentation_setup@2x.png
++    admin_manage_exported@2x.png
++    admin_manage_privs@2x.png
++    admin_meb_backup@2x.png
++    admin_meb_restore@2x.png
++    admin_option_file@2x.png
++    admin_performance_reports@2x.png
++    admin_restore_data@2x.png
++    admin_schema_management@2x.png
++    admin_scripts@2x.png
++    admin_server_logs@2x.png
++    admin_server_status@2x.png
++    admin_start_stop@2x.png
++    admin_status_vars@2x.png
++    admin_system_startup@2x.png
++    dashboard_header_innodb_dark@2x.png
++    dashboard_header_innodb_light@2x.png
++    dashboard_header_mysql_dark@2x.png
++    dashboard_header_mysql_light@2x.png
++    dashboard_header_network_dark@2x.png
++    dashboard_header_network_light@2x.png
++    dashboard_separator@2x.png
++    mysql-logo-00@2x.png
++    mysql-logo-50@2x.png
++    mysql-logo-51@2x.png
++    mysql-logo-55@2x.png
++    mysql-logo-56@2x.png
++    mysql-logo-57@2x.png
++    mysql-logo-58@2x.png
++    mysql-status-off@2x.png
++    mysql-status-on@2x.png
++    mysql-status-separator@2x.png
++    page_restore@2x.png
++    ps_easysetup_logo@2x.png
++    ps_easysetup_logo_enabled@2x.png
++    ps_overview@2x.png
++    ps_switcher_custom_hoover@2x.png
++    ps_switcher_custom_off@2x.png
++    ps_switcher_custom_on@2x.png
++    ps_switcher_default_hoover@2x.png
++    ps_switcher_default_off@2x.png
++    ps_switcher_default_on@2x.png
++    ps_switcher_disabled_hoover@2x.png
++    ps_switcher_disabled_off@2x.png
++    ps_switcher_disabled_on@2x.png
++    ps_switcher_fully_hoover@2x.png
++    ps_switcher_fully_off@2x.png
++    ps_switcher_fully_on@2x.png
++    ps_switcher_legend@2x.png
++    ps_switcher_text_dark@2x.png
++    ps_switcher_text_light@2x.png
++    title_backup@2x.png
++    title_connections@2x.png
++    title_dashboard@2x.png
++    title_export@2x.png
++    title_import@2x.png
++    title_instrumentation_setup@2x.png
++    title_logs@2x.png
++    title_options@2x.png
++    title_performance_reports@2x.png
++    title_restore@2x.png
++    title_startup@2x.png
++    title_users@2x.png
++    title_variables@2x.png
++    wb-backup-logo@2x.png
++    wb-backup-logo-small@2x.png
+ )
+ 
+ install(FILES ${IMAGE_FILES} DESTINATION ${WB_PACKAGE_SHARED_DIR}/images)
+diff -uNr mysql-workbench-community-8.0.15-org/images/grt/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/grt/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/grt/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/grt/CMakeLists.txt	2019-02-23 00:11:07.436883095 +0200
+@@ -149,6 +149,26 @@
+     structs/workbench.physical.oracle.Model.48x48.png
+     structs/workbench.physical.sqlite.Model.48x48.png
+     structs/workbench.physical.sybase.Model.48x48.png
++    structs/db.Column.fk.side.16x16@2x.png
++    structs/db.Column.many.side.16x16@2x.png
++    structs/db.Column.pk.side.16x16@2x.png
++    structs/db.Column.side.16x16@2x.png
++    structs/db.ForeignKey.many.side.16x16@2x.png
++    structs/db.ForeignKey.side.16x16@2x.png
++    structs/db.Index.many.side.16x16@2x.png
++    structs/db.Index.side.16x16@2x.png
++    structs/db.Routine.many.side.16x16@2x.png
++    structs/db.Routine.side.16x16@2x.png
++    structs/db.Schema.loading.side.16x16@2x.png
++    structs/db.Schema.side.16x16@2x.png
++    structs/db.Schema.unloaded.side.16x16@2x.png
++    structs/db.Table.many.side.16x16@2x.png
++    structs/db.Table.side.16x16@2x.png
++    structs/db.Trigger.many.side.16x16@2x.png
++    structs/db.Trigger.side.16x16@2x.png
++    structs/db.View.broken.side.16x16@2x.png
++    structs/db.View.many.side.16x16@2x.png
++    structs/db.View.side.16x16@2x.png
+ )
+ 
+ install(FILES ${IMAGE_FILES} DESTINATION ${WB_PACKAGE_SHARED_DIR}/images)
+diff -uNr mysql-workbench-community-8.0.15-org/images/home/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/home/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/home/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/home/CMakeLists.txt	2019-02-22 23:46:26.023192481 +0200
+@@ -27,6 +27,19 @@
+     wb_tile_user_light.png
+     home_screen_close_dark.png
+     home_screen_close_light.png
++    home_screen_close_dark@2x.png
++    home_screen_close_light@2x.png
++    sidebar_launchers@2x.png
++    sidebar_migration@2x.png
++    sidebar_modeling@2x.png
++    sidebar_wb@2x.png
++    wb_doc_model@2x.png
++    wb_tile_folder_mini_dark@2x.png
++    wb_tile_folder_mini_light@2x.png
++    wb_tile_schema_dark@2x.png
++    wb_tile_schema_light@2x.png
++    wb_tile_time_dark@2x.png
++    wb_tile_time_light@2x.png
+ )
+ 
+ install(FILES ${IMAGE_FILES} DESTINATION ${WB_PACKAGE_SHARED_DIR}/images)
+diff -uNr mysql-workbench-community-8.0.15-org/images/sql/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/sql/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/sql/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/sql/CMakeLists.txt	2019-02-23 00:05:36.143142419 +0200
+@@ -104,6 +104,71 @@
+     wb_item_overlay_execute.png
+     wb_item_overlay_inspector.png
+     wb_item_overlay_result.png
++    object_inspector_mac@2x.png
++    output_type-executionplan@2x.png
++    output_type-explaindata@2x.png
++    output_type-fieldtypes@2x.png
++    output_type-formeditor@2x.png
++    output_type-item_selected@2x.png
++    output_type-querystats@2x.png
++    output_type-resultset@2x.png
++    output_type-spacialview@2x.png
++    output_type-toggle-off@2x.png
++    output_type-toggle-on@2x.png
++    qe_main-tb-icon_add-function_mac@2x.png
++    qe_main-tb-icon_add-routine_mac@2x.png
++    qe_main-tb-icon_add-schema_mac@2x.png
++    qe_main-tb-icon_add-sql-editor_mac@2x.png
++    qe_main-tb-icon_add-table_mac@2x.png
++    qe_main-tb-icon_add-view_mac@2x.png
++    qe_main-tb-icon_execute-sql-file_mac@2x.png
++    qe_main-tb-icon_open-sql-file_mac@2x.png
++    qe_main-tb-icon_preferences_mac@2x.png
++    qe_main-tb-icon_refresh-conn_mac@2x.png
++    qe_main-tb-icon_search_db_mac@2x.png
++    qe_sql-editor-explain-tb-overview@2x.png
++    qe_sql-editor-resultset-tb-pin@2x.png
++    qe_sql-editor-resultset-tb-pinned@2x.png
++    qe_sql-editor-tb-icon_autocommit-off@2x.png
++    qe_sql-editor-tb-icon_autocommit-on@2x.png
++    qe_sql-editor-tb-icon_beautifier@2x.png
++    qe_sql-editor-tb-icon_beautifier_current@2x.png
++    qe_sql-editor-tb-icon_commit@2x.png
++    qe_sql-editor-tb-icon_execute@2x.png
++    qe_sql-editor-tb-icon_execute-current@2x.png
++    qe_sql-editor-tb-icon_explain@2x.png
++    qe_sql-editor-tb-icon_find@2x.png
++    qe_sql-editor-tb-icon_open@2x.png
++    qe_sql-editor-tb-icon_rollback@2x.png
++    qe_sql-editor-tb-icon_save@2x.png
++    qe_sql-editor-tb-icon_special-chars-off@2x.png
++    qe_sql-editor-tb-icon_special-chars-on@2x.png
++    qe_sql-editor-tb-icon_stop@2x.png
++    qe_sql-editor-tb-icon_stop-on-error-off@2x.png
++    qe_sql-editor-tb-icon_stop-on-error-on@2x.png
++    qe_sql-editor-tb-icon_word-wrap-off@2x.png
++    qe_sql-editor-tb-icon_word-wrap-on@2x.png
++    qe_sql-editor-tb-icon_zoom-area@2x.png
++    qe_sql-editor-tb-icon_zoom-auto@2x.png
++    qe_sql-editor-tb-icon_zoom-center@2x.png
++    qe_sql-editor-tb-icon_zoom-in@2x.png
++    qe_sql-editor-tb-icon_zoom-jump@2x.png
++    qe_sql-editor-tb-icon_zoom-out@2x.png
++    qe_sql-editor-tb-icon_zoom-reset@2x.png
++    switcher_bottom_off@2x.png
++    switcher_bottom_on@2x.png
++    switcher_left_off@2x.png
++    switcher_left_on@2x.png
++    switcher_right_off@2x.png
++    switcher_right_on@2x.png
++    title_schema_inspector@2x.png
++    title_table_inspector@2x.png
++    wb_item_overlay_autozoom@2x.png
++    wb_item_overlay_editor@2x.png
++    wb_item_overlay_execute@2x.png
++    wb_item_overlay_inspector@2x.png
++    wb_item_overlay_result@2x.png
++    wb-sidebar-refresh@2x.png
+ )
+ 
+ install(FILES ${IMAGE_FILES} DESTINATION ${WB_PACKAGE_SHARED_DIR}/images)
+diff -uNr mysql-workbench-community-8.0.15-org/images/toolbar/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/toolbar/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/toolbar/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/toolbar/CMakeLists.txt	2019-02-23 00:06:39.446710703 +0200
+@@ -102,6 +102,27 @@
+ wb_rel_nm.png
+ wb_rubber.png
+ wb_toolbar_pages_18x18.png
++record_add@2x.png
++record_autosize@2x.png
++record_back@2x.png
++record_del@2x.png
++record_edit@2x.png
++record_export@2x.png
++record_fetch_all@2x.png
++record_fetch_next@2x.png
++record_fetch_prev@2x.png
++record_first@2x.png
++record_import@2x.png
++record_last@2x.png
++record_next@2x.png
++record_refresh@2x.png
++tiny_refresh@2x.png
++tiny_rollback@2x.png
++wb-toolbar_automatic-help-off@2x.png
++wb-toolbar_automatic-help-on@2x.png
++wb-toolbar_manual-help@2x.png
++wb-toolbar_nav-back@2x.png
++wb-toolbar_nav-forward@2x.png
+ )
+ 
+ install(FILES ${IMAGE_FILES} DESTINATION ${WB_PACKAGE_SHARED_DIR}/images)
+diff -uNr mysql-workbench-community-8.0.15-org/images/ui/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/ui/CMakeLists.txt
+--- mysql-workbench-community-8.0.15-org/images/ui/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/images/ui/CMakeLists.txt	2019-02-22 23:39:56.825343961 +0200
+@@ -155,6 +155,24 @@
+     session.png
+     folder.png
+     session-switch.png
++    audit_log@2x.png
++    big_switcher_no@2x.png
++    big_switcher_yes@2x.png
++    firewall-header@2x.png
++    item_overlay_add@2x.png
++    item_overlay_delete@2x.png
++    JS_Datatype_Array@2x.png
++    JS_Datatype_Bin@2x.png
++    JS_Datatype_Bool@2x.png
++    JS_Datatype_Date@2x.png
++    JS_Datatype_Null@2x.png
++    JS_Datatype_Number@2x.png
++    JS_Datatype_Object@2x.png
++    JS_Datatype_ObjectId@2x.png
++    JS_Datatype_String@2x.png
++    MySQL-WB-about-screen@2x.png
++    separator_vertical@2x.png
++    wb_lock@2x.png
+ )
+ 
+ if (UNIX)

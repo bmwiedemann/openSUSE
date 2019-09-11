@@ -1,0 +1,17 @@
+Don't use the legacy /etc/ssl/certs directory anymore but rather the
+p11-kit generated /var/lib/ca-certificates/openssl one (fate#314991)
+Index: openssl-1.0.2j/crypto/cryptlib.h
+===================================================================
+--- openssl-1.0.2j.orig/crypto/cryptlib.h	2017-02-01 16:50:51.103706760 +0100
++++ openssl-1.0.2j/crypto/cryptlib.h	2017-02-01 16:52:10.517058963 +0100
+@@ -81,8 +81,8 @@ extern "C" {
+ 
+ # ifndef OPENSSL_SYS_VMS
+ #  define X509_CERT_AREA          OPENSSLDIR
+-#  define X509_CERT_DIR           OPENSSLDIR "/certs"
+-#  define X509_CERT_FILE          OPENSSLDIR "/cert.pem"
++#  define X509_CERT_DIR           "/var/lib/ca-certificates/openssl"
++#  define X509_CERT_FILE          "/var/lib/ca-certificates/ca-bundle.pem"
+ #  define X509_PRIVATE_DIR        OPENSSLDIR "/private"
+ # else
+ #  define X509_CERT_AREA          "SSLROOT:[000000]"

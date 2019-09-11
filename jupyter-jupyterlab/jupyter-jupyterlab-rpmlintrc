@@ -1,0 +1,5 @@
+addFilter("hidden-file-or-dir .*/site-packages/jupyterlab/staging/.yarnrc")
+
+# Note: These are not really backup files, they are needed
+addFilter("backup-file-in-package .*/package.json.orig")
+addFilter("suse-filelist-forbidden .*/package.json.orig")

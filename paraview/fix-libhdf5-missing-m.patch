@@ -1,0 +1,10 @@
+--- a/VTK/ThirdParty/hdf5/vtkhdf5/src/CMakeLists.txt
++++ b/VTK/ThirdParty/hdf5/vtkhdf5/src/CMakeLists.txt
+@@ -7,6 +7,7 @@
+ # Apply Definitions to compiler in this directory and below
+ #-----------------------------------------------------------------------------
+ add_definitions (${HDF_EXTRA_C_FLAGS})
++link_libraries(m dl pthread)
+ 
+ #-----------------------------------------------------------------------------
+ # List Source Files

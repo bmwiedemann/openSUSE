@@ -1,0 +1,60 @@
+From 1dae7c15e7bc3bb5b5aad72b851e0b9cd328bb0b Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 19 Nov 2018 13:30:09 +0100
+Subject: [PATCH] EP11: Fix target_list passing for EP11-session logon/logoff
+
+The target list is passed incorrectly to the handle_all_ep11_cards()
+function. Dependent on memory content, this can cause it to
+fail processing all EP11 cards. This will most likely cause a
+CKR_DEVICE_ERROR to be returned by C_Login when the STRICT_SESSION
+and/or VHSM_MODE is enabled in the ep11tok.conf config file.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/ep11_stdll/ep11_specific.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/usr/lib/ep11_stdll/ep11_specific.c b/usr/lib/ep11_stdll/ep11_specific.c
+index 2129762f..05332429 100644
+--- a/usr/lib/ep11_stdll/ep11_specific.c
++++ b/usr/lib/ep11_stdll/ep11_specific.c
+@@ -7600,7 +7600,7 @@ CK_RV ep11tok_login_session(STDLL_TokData_t * tokdata, SESSION * session)
+         }
+     }
+ 
+-    rc = handle_all_ep11_cards((ep11_target_t *) & ep11_data->target_list,
++    rc = handle_all_ep11_cards((ep11_target_t *)ep11_data->target_list,
+                                ep11_login_handler, ep11_session);
+     if (rc != CKR_OK) {
+         TRACE_ERROR("%s handle_all_ep11_cards failed: 0x%lx\n", __func__, rc);
+@@ -7646,8 +7646,7 @@ done:
+         if (ep11_session->flags &
+             (EP11_SESS_PINBLOB_VALID | EP11_VHSM_PINBLOB_VALID)) {
+             rc2 =
+-                handle_all_ep11_cards((ep11_target_t *) &
+-                                      ep11_data->target_list,
++                handle_all_ep11_cards((ep11_target_t *)ep11_data->target_list,
+                                       ep11_logout_handler, ep11_session);
+             if (rc2 != CKR_OK)
+                 TRACE_ERROR("%s handle_all_ep11_cards failed: 0x%lx\n",
+@@ -7700,7 +7699,7 @@ static CK_RV ep11tok_relogin_session(STDLL_TokData_t * tokdata,
+         return CKR_USER_NOT_LOGGED_IN;
+     }
+ 
+-    rc = handle_all_ep11_cards((ep11_target_t *) & ep11_data->target_list,
++    rc = handle_all_ep11_cards((ep11_target_t *)ep11_data->target_list,
+                                ep11_login_handler, ep11_session);
+     if (rc != CKR_OK)
+         TRACE_ERROR("%s handle_all_ep11_cards failed: 0x%lx\n", __func__, rc);
+@@ -7747,7 +7746,7 @@ CK_RV ep11tok_logout_session(STDLL_TokData_t * tokdata, SESSION * session)
+         return CKR_USER_NOT_LOGGED_IN;
+     }
+ 
+-    rc = handle_all_ep11_cards((ep11_target_t *) & ep11_data->target_list,
++    rc = handle_all_ep11_cards((ep11_target_t *)ep11_data->target_list,
+                                ep11_logout_handler, ep11_session);
+     if (rc != CKR_OK)
+         TRACE_ERROR("%s handle_all_ep11_cards failed: 0x%lx\n", __func__, rc);
+-- 
+2.16.2.windows.1
+

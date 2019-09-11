@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-billing-0.2.0.orig/setup.py azure-mgmt-billing-0.2.0/setup.py
+--- azure-mgmt-billing-0.2.0.orig/setup.py	2018-03-29 16:51:54.000000000 +0200
++++ azure-mgmt-billing-0.2.0/setup.py	2018-04-11 13:38:54.240622964 +0200
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrestazure>=0.4.20,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

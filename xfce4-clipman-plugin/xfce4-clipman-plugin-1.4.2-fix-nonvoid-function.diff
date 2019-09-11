@@ -1,0 +1,13 @@
+diff --git a/panel-plugin/xfce4-popup-clipman.c b/panel-plugin/xfce4-popup-clipman.c
+index fef6478..72b4357 100644
+--- a/panel-plugin/xfce4-popup-clipman.c
++++ b/panel-plugin/xfce4-popup-clipman.c
+@@ -29,7 +29,7 @@
+ /* Initial code was taken from xfwm4/src/menu.c:grab_available().
+  * TODO replace deprecated GTK/GDK functions.
+  */
+-static gboolean
++static void
+ grab_keyboard ()
+ {
+   guint32 timestamp = GDK_CURRENT_TIME;

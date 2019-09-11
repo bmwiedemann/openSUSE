@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Mon Jun  4 12:28:16 UTC 2018 - meissner@suse.com
+
+- build with RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Nov 20 16:02:28 UTC 2017 - dimstar@opensuse.org
+
+- Add 0001-build-support-scons-python3.patch: Support scons running
+  with python3 as interpreter.
+- Conditionalize the openSUSE post/postun scripts for suse_version
+  < 1330 only: newer versions handle the icon theme cache by means
+  of file triggers.
+
+-------------------------------------------------------------------
+Wed Feb  1 10:59:18 UTC 2017 - adam.majer@suse.de
+
+- Use individual libboost-*-devel packages instead of boost-devel.
+  + Add conditional libboost_headers-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jan 20 23:29:21 UTC 2017 - zaitor@opensuse.org
+
+- Update Url to new home.
+
+-------------------------------------------------------------------
+Tue Jan 17 14:23:52 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to allow for reproducible builds
+  (gh#thezbyg/gpick#138).
+
+-------------------------------------------------------------------
+Mon Sep 23 08:22:14 UTC 2013 - dimstar@opensuse.org
+
+- Don't lie about the required lua version: SCons checks for
+  version 5.2.
+
+-------------------------------------------------------------------
+Sat Mar 30 16:46:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.5:
+  + Bug fixes.
+  + Translations support.
+- Split out new -lang package.
+- Add libexpat-devel BuildRequires: new dependency.
+- Pass LOCALEDIR=%{_datadir} to scons.
+
+-------------------------------------------------------------------
+Thu Oct 11 07:20:49 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  summarize licenses - bulk are BSD-3-Clause
+
+-------------------------------------------------------------------
+Sat May 28 00:25:35 CEST 2011 - vuntz@opensuse.org
+
+- Correctly use %suse_update_desktop_file by not re-installing
+  .desktop file, and not replacing categories while we just need to
+  add one category.
+- Minor improvement to description.
+
+-------------------------------------------------------------------
+Mon May 16 19:09:40 UTC 2011 - nmarques@opensuse.org
+
+- Update to version 0.2.4:
+  + Bug fix release only
+- Drop gpick-no-return-in-non-void.patch, 01_expat_dependency.patch
+  and 02_dsolink_expat.patch: fixed upstream
+- BuildRequire pkgconfig instead of pkg-config (this is provided
+  cross distro)
+
+-------------------------------------------------------------------
+Sat May  7 17:47:21 UTC 2011 - nmarques@opensuse.org
+
+- Updated source package to experimental 'amalgamation' package
+  provided by upstream for testing
+  + Removed lemon parser dependency (source includes now the
+    generated files)
+- Add _smp_mflags to scons call in build section
+- BuildRequire expat
+- Add 'COPYRIGHT' file with the licences, provided by upstream
+- Add patches:
+  + gpick-no-return-in-non-void.patch: adds missing return to
+    non-void function (sent upstream);
+  + Add 01_expat_dependency.patch: Adds expat dependency
+  + Add 02_dsolink_expat.patch: fixes linking with expat.
+
+-------------------------------------------------------------------
+Thu May  5 20:47:47 UTC 2011 - nmarques@opensuse.org
+
+- Modified spec file with required stuff for Fedora builds.
+
+-------------------------------------------------------------------
+Thu May  5 16:07:27 UTC 2011 - nmarques@opensuse.org
+
+- Initial package from version 0.2.3
+

@@ -1,0 +1,501 @@
+-------------------------------------------------------------------
+Fri Apr 26 06:06:16 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Use Recommends for python-gpg and python-fastimport. Both are
+  optional requirements
+
+-------------------------------------------------------------------
+Thu Mar 14 15:03:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.19.11:
+  * too many changes to enumerate, see NEWS
+- Drop docu subpackage as it needs many more sphinx modules
+
+-------------------------------------------------------------------
+Mon Nov  6 22:05:31 UTC 2017 - rjschwei@suse.com
+
+- Update to version 0.18.5 (bsc#1066430)
+  + CVE-2017-16228
+  + No detailed upstream release notes
+  + Commit history https://www.dulwich.io/code/dulwich/
+
+-------------------------------------------------------------------
+Sun Sep 17 19:51:41 UTC 2017 - bwiedemann@suse.com
+
+- Drop environment.pickle from doc to make build reproducible
+
+-------------------------------------------------------------------
+Wed Aug  9 15:40:35 UTC 2017 - tbechtold@suse.com
+
+- switch to singlespec
+- split documentation into extra package
+
+-------------------------------------------------------------------
+Wed Aug  9 15:33:16 UTC 2017 - tbechtold@suse.com
+
+- update to 0.17.3:
+  * List Python 3.3 as supported. (Jelmer Vernooĳ, #513)
+- Remove source validation (not working)
+
+-------------------------------------------------------------------
+Mon May  1 07:49:02 UTC 2017 - develop7@develop7.info
+
+- update to 0.17.2
+  * BUG FIXES
+    + Add workaround for 
+      https://bitbucket.org/pypy/pypy/issues/2499/cpyext-pystring_asstring-doesnt-work, 
+      fixing Dulwich when used with C extensions on pypy < 5.6. (Victor Stinner)
+    + Properly quote config values with a ‘#’ character in them. 
+      (Jelmer Vernooij, #511)
+- update to 0.17.1
+  * IMPROVEMENTS
+    + Add basic ‘dulwich pull’ command. (Jelmer Vernooĳ)
+  * BUG FIXES
+    + Cope with existing submodules during pull. (Jelmer Vernooĳ, #505)
+- update to 0.17.0
+  * TEST FIXES
+    + Skip test that requires sync to synchronize filesystems if os.sync is not 
+      available. (Koen Martens)
+  * IMPROVEMENTS
+    + Implement MemoryRepo.{set_description,get_description}. (Jelmer Vernooĳ)
+    + Raise exception in Repo.stage() when absolute paths are passed in. Allow 
+      passing in relative paths to porcelain.add().(Jelmer Vernooij)
+  * BUG FIXES
+    + Handle multi-line quoted values in config files. (Jelmer Vernooĳ, #495)
+    + Allow porcelain.clone of repository without HEAD. (Jelmer Vernooĳ, #501)
+    + Support passing tag ids to Walker()’s include argument. (Jelmer Vernooĳ)
+    + Don’t strip trailing newlines from extra headers. (Nicolas Dandrimont)
+    + Set bufsize=0 for subprocess interaction with SSH client. Fixes hangs on 
+      Python 3. (René Stern, #434)
+    + Don’t drop first slash for SSH paths, except for those starting with “~”. 
+      (Jelmer Vernooij, René Stern, #463)
+    + Properly log off after retrieving just refs. (Jelmer Vernooij)
+- source verfication added
+
+-------------------------------------------------------------------
+Mon Jan 30 21:39:43 UTC 2017 - rjschwei@suse.com
+
+- Include in SLE 12 (bsc#1002895, FATE#321630)
+
+-------------------------------------------------------------------
+Wed Jan 18 17:49:04 UTC 2017 - dmueller@suse.com
+
+- update to 0.16.3:
+ IMPROVEMENTS
+  * Fixed failing test-cases on windows.
+    (Koen Martens)
+  * Add support for worktrees. See `git-worktree(1)` and
+    `gitrepository-layout(5)`. (Laurent Rineau)
+  * Add support for `commondir` file in Git control
+    directories. (Laurent Rineau)
+  * Add support for passwords in HTTP URLs.
+    (Jon Bain, Mika Mäenpää)
+  * Add `release_robot` script to contrib,
+    allowing easy finding of current version based on Git tags.
+    (Mark Mikofski)
+  * Add ``Blob.splitlines`` method.
+    (Jelmer Vernooij)
+  * Add `dulwich.config.parse_submodules` function.
+  * Add `RefsContainer.follow` method. (#438)
+  * Support `ssh://` URLs in get_transport_and_path_from_url().
+    (Jelmer Vernooĳ, #402)
+  * Support missing empty line after headers in Git commits and tags.
+    (Nicolas Dandrimont, #413)
+  * Fix `dulwich.porcelain.status` when used in empty trees.
+    (Jelmer Vernooĳ, #415)
+  * Return copies of objects in MemoryObjectStore rather than
+    references, making the behaviour more consistent with that of
+    DiskObjectStore. (Félix Mattrat, Jelmer Vernooĳ)
+  * Fix ``dulwich.web`` on Python3. (#295, Jonas Haag)
+  * Many bugfixes, see NEWS file for details
+ CHANGES
+  * Changed license from "GNU General Public License, version 2.0 or later"
+    to "Apache License, version 2.0 or later or GNU General Public License,
+    version 2.0 or later". (#153)
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Thu Jan 14 10:19:50 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 0.12.0
+  + IMPROVEMENTS
+    * Add a `dulwich.archive` module that can create tarballs.
+      Based on code from Jonas Haag in klaus.
+    * Add a `dulwich.reflog` module for reading and writing reflogs.
+      (Jelmer Vernooij)
+    * Fix handling of ambiguous refs in `parse_ref` to make
+      it match the behaviour described in https://git-scm.com/docs/gitrevisions.
+      (Chris Bunney)
+    * Support Python3 in C modules. (Lele Gaifax)
+  + BUG FIXES
+    * Simplify handling of SSH command invocation.
+      Fixes quoting of paths. Thanks, Thomas Liebetraut. (#384)
+    * Fix inconsistent handling of trailing slashes for DictRefsContainer. (#383)
+    * Add hack to support thin packs duing fetch(), albeit while requiring the
+      entire pack file to be loaded into memory. (jsbain)
+  + CHANGES
+    * This will be the last release to support Python 2.6.
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Sat Dec  5 23:29:21 UTC 2015 - termim@gmail.com
+
+- update to 0.11.2
+  + IMPROVEMENTS
+    * Add support for agent= capability. (Jelmer Vernooij, #298)
+    * Add support for quiet capability. (Jelmer Vernooij)
+  + BUG FIXES
+    * The ParamikoSSHVendor class has been moved to
+      dulwich.contrib.paramiko_vendor, as it’s currently untested.
+      (Jelmer Vernooij, #364)
+
+- update to 0.11.1 2015-09-13
+  * Fix-up release to exclude broken blame.py file.
+
+- update to 0.11.0 2015-09-13
+  + IMPROVEMENTS
+    * Extended Python3 support to most of the codebase. (Gary van der
+      Merwe, Jelmer Vernooij)
+    * The Repo object has a new close method that can be called to close
+      any open resources. (Gary van der Merwe)
+    * Support ‘git.bat’ in SubprocessGitClient on Windows. (Stefan
+      Zimmermann)
+    * Advertise ‘ofs-delta’ capability in receive-pack server side
+      capabilities. (Jelmer Vernooij)
+    * Switched default_local_git_client_cls to LocalGitClient. (Gary van
+      der Merwe)
+    * Add porcelain.ls_remote and GitClient.get_refs. (Michael Edgar)
+    * Add Repo.discover method. (B. M. Corser)
+    * Add dulwich.objectspec.parse_refspec. (Jelmer Vernooij)
+    * Add porcelain.pack_objects and porcelain.repack. (Jelmer Vernooij)
+ + BUG FIXES
+    * Fix handling of ‘done’ in graph walker and implement the ‘no-done’
+      capability. (Tommy Yu, #88)
+    * Avoid recursion limit issues resolving deltas. (William Grant, #81)
+    * Allow arguments in local client binary path overrides. (Jelmer
+      Vernooij)
+    * Fix handling of commands with arguments in paramiko SSH
+      client. (Andreas Klöckner, Jelmer Vernooij, #363)
+    * Fix parsing of quoted strings in configs. (Jelmer Vernooij, #305)
+
+-------------------------------------------------------------------
+Tue May 12 15:37:15 UTC 2015 - termim@gmail.com
+
+- update to version 0.10.1
+  + BUG FIXES
+    * Return `ApplyDeltaError` when encountering delta errors
+      in both C extensions and native delta application code.
+      (Jelmer Vernooij, #259)
+
+- update to version 0.10.0
+  + BUG FIXES
+    * In dulwich.index.build_index_from_tree, by default
+      refuse to create entries that start with .git/.
+    * Fix running of testsuite when installed.
+      (Jelmer Vernooij, #223)
+    * Use a block cache in _find_content_rename_candidates(),
+      improving performance. (Mike Williams)
+    * Add support for ``core.protectNTFS`` setting.
+      (Jelmer Vernooij)
+    * Fix TypeError when fetching empty updates.
+      (Hwee Miin Koh)
+    * Resolve delta refs when pulling into a MemoryRepo.
+      (Max Shawabkeh, #256)
+    * Fix handling of tags of non-commits in missing object finder.
+      (Augie Fackler, #211)
+    * Explicitly disable mmap on plan9 where it doesn't work.
+      (Jeff Sickel)
+  + IMPROVEMENTS
+    * New public method `Repo.reset_index`. (Jelmer Vernooij)
+    * Prevent duplicate parsing of loose files in objects
+      directory when reading. Thanks to David Keijser for the
+      report. (Jelmer Vernooij, #231)
+
+- update to version 0.9.9
+  + SECURITY BUG FIXES
+    * Fix buffer overflow in C implementation of pack apply_delta().
+      (CVE-2015-0838)
+      Thanks to Ivan Fratric of the Google Security Team for
+      reporting this issue.
+      (Jelmer Vernooij)
+
+-------------------------------------------------------------------
+Sun Feb 22 20:54:12 UTC 2015 - develop7@develop7.info
+
+- update to version 0.9.8
+  + disabled tests
+
+- Changes from 0.9.7
+  + BUG FIXES
+    * Various fixes to improve test suite running on Windows.
+      (Gary van der Merwe)
+    * Limit delta copy length to 64K in v2 pack files. (Robert Brown)
+    * Strip newline from final ACKed SHA while fetching packs.
+      (Michael Edgar)
+    * Remove assignment to PyList_SIZE() that was causing segfaults on
+      pypy. (Jelmer Vernooij, #196)
+  + IMPROVEMENTS
+    * Add porcelain 'receive-pack' and 'upload-pack'. (Jelmer Vernooij)
+    * Handle SIGINT signals in bin/dulwich. (Jelmer Vernooij)
+    * Add 'status' support to bin/dulwich. (Jelmer Vernooij)
+    * Add 'branch_create', 'branch_list', 'branch_delete' porcelain.
+      (Jelmer Vernooij)
+    * Add 'fetch' porcelain. (Jelmer Vernooij)
+    * Add 'tag_delete' porcelain. (Jelmer Vernooij)
+    * Add support for serializing/deserializing 'gpgsig' attributes in Commit.
+      (Jelmer Vernooij)
+  + CHANGES
+    * dul-web is now available as 'dulwich web-daemon'.
+      (Jelmer Vernooij)
+    * dulwich.porcelain.tag has been renamed to tag_create.
+      dulwich.porcelain.list_tags has been renamed to tag_list.
+      (Jelmer Vernooij)
+  + API CHANGES
+    * Restore support for Python 2.6. (Jelmer Vernooij, Gary van der Merwe)
+
+- Changes from 0.9.6
+  + BUG FIXES
+    * Fix tests dependent on hash ordering. (Michael Edgar)
+    * Support staging symbolic links in Repo.stage.
+      (Robert Brown)
+    * Ensure that all files object are closed when running the test suite.
+      (Gary van der Merwe)
+    * When writing OFS_DELTA pack entries, write correct offset.
+      (Augie Fackler)
+    * Fix handler of larger copy operations in packs. (Augie Fackler)
+    * Various fixes to improve test suite running on Windows.
+      (Gary van der Merwe)
+    * Fix logic for extra adds of identical files in rename detector.
+      (Robert Brown)
+  + IMPROVEMENTS
+    * Add porcelain 'status'. (Ryan Faulkner)
+    * Add porcelain 'daemon'. (Jelmer Vernooij)
+    * Add `dulwich.greenthreads` module which provides support
+      for concurrency of some object store operations.
+      (Fabien Boucher)
+    * Various changes to improve compatibility with Python 3.
+      (Gary van der Merwe, Hannu Valtonen, michael-k)
+    * Add OpenStack Swift backed repository implementation
+      in dulwich.contrib. See README.swift for details. (Fabien Boucher)
+  + API CHANGES
+    * An optional close function can be passed to the Protocol class. This will
+      be called by its close method. (Gary van der Merwe)
+    * All classes with close methods are now context managers, so that they can
+      be easily closed using a `with` statement. (Gary van der Merwe)
+    * Remove deprecated `num_objects` argument to `write_pack` methods.
+      (Jelmer Vernooij)
+  + OTHER CHANGES
+    * The 'dul-daemon' script has been removed. The same functionality
+      is now available as 'dulwich daemon'. (Jelmer Vernooij)
+
+- Changes from 0.9.5
+  + IMPROVEMENTS
+   * Add support for recursive add in 'git add'.
+     (Ryan Faulkner, Jelmer Vernooij)
+   * Add porcelain 'list_tags'. (Ryan Faulkner)
+   * Add porcelain 'push'. (Ryan Faulkner)
+   * Add porcelain 'pull'. (Ryan Faulkner)
+   * Support 'http.proxy' in HttpGitClient.
+     (Jelmer Vernooij, #1096030)
+   * Support 'http.useragent' in HttpGitClient.
+     (Jelmer Vernooij)
+   * In server, wait for clients to send empty list of
+     wants when talking to empty repository.
+     (Damien Tournoud)
+   * Various changes to improve compatibility with
+     Python 3. (Gary van der Merwe)
+  + BUG FIXES
+   * Support unseekable 'wsgi.input' streams.
+     (Jonas Haag)
+   * Raise TypeError when passing unicode() object
+     to Repo.__getitem__.
+     (Jonas Haag)
+   * Fix handling of `reset` command in dulwich.fastexport.
+     (Jelmer Vernooij, #1249029)
+   * In client, don't wait for server to close connection
+     first. Fixes hang when used against GitHub
+     server implementation. (Siddharth Agarwal)
+   * DeltaChainIterator: fix a corner case where an object is inflated as an
+     object already in the repository.
+     (Damien Tournoud, #135)
+   * Stop leaking file handles during pack reload. (Damien Tournoud)
+   * Avoid reopening packs during pack cache reload. (Jelmer Vernooij)
+  + API CHANGES
+    * Drop support for Python 2.6. (Jelmer Vernooij)
+
+- Changes from 0.9.4
+  + IMPROVEMENTS
+   * Add porcelain 'tag'. (Ryan Faulkner)
+   * New module `dulwich.objectspec` for parsing strings referencing
+     objects and commit ranges. (Jelmer Vernooij)
+   * Add shallow branch support. (milki)
+   * Allow passing urllib2 `opener` into HttpGitClient.
+     (Dov Feldstern, #909037)
+  + CHANGES
+   * Drop support for Python 2.4 and 2.5. (Jelmer Vernooij)
+  + API CHANGES
+   * Remove long deprecated ``Repo.commit``, ``Repo.get_blob``,
+     ``Repo.tree`` and ``Repo.tag``. (Jelmer Vernooij)
+   * Remove long deprecated ``Repo.revision_history`` and ``Repo.ref``.
+     (Jelmer Vernooij)
+   * Remove long deprecated ``Tree.entries``. (Jelmer Vernooij)
+  + BUG FIXES
+   * Raise KeyError rather than TypeError when passing in
+     unicode object of length 20 or 40 to Repo.__getitem__.
+     (Jelmer Vernooij)
+   * Use 'rm' rather than 'unlink' in tests, since the latter
+     does not exist on OpenBSD and other platforms.
+     (Dmitrij D. Czarkoff)
+
+- Changes from 0.9.3
+  + IMPROVEMENTS
+   * Add ssh_kwargs attribute to ParamikoSSHVendor. (milki)
+   * Add Repo.set_description(). (Víðir Valberg Guðmundsson)
+   * Add a basic `dulwich.porcelain` module. (Jelmer Vernooij, Marcin Kuzminski)
+   * Various performance improvements for object access.
+     (Jelmer Vernooij)
+   * New function `get_transport_and_path_from_url`,
+     similar to `get_transport_and_path` but only
+     supports URLs.
+     (Jelmer Vernooij)
+   * Add support for file:// URLs in `get_transport_and_path_from_url`.
+     (Jelmer Vernooij)
+   * Add LocalGitClient implementation.
+     (Jelmer Vernooij)
+  + BUG FIXES
+    * Support filesystems with 64bit inode and device numbers.
+      (André Roth)
+  + CHANGES
+    * Ref handling has been moved to dulwich.refs.
+      (Jelmer Vernooij)
+  + API CHANGES
+    * Remove long deprecated RefsContainer.set_ref().
+      (Jelmer Vernooij)
+    * Repo.ref() is now deprecated in favour of Repo.refs[].
+      (Jelmer Vernooij)
+  + FEATURES
+    * Add support for graftpoints. (milki)
+
+-------------------------------------------------------------------
+Fri Nov  1 12:04:05 UTC 2013 - p.drouand@gmail.com
+
+- Fix download Url
+
+-------------------------------------------------------------------
+Fri Nov  1 11:32:29 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9.3
+  + * Fix path for stdint.h in MANIFEST.in.
+- Changes from version 0.9.2
+  + Include stdint.h in MANIFEST.in
+- Changes from version 0.9.1
+  + Support lookups of 40-character refs in BaseRepo.__getitem_
+  + Fix fetching packs with side-band-64k capability disabled.
+  + Several fixes in send-pack protocol behaviour - handling of empty
+    pack files and deletes. #1063087
+  + Fix capability negotiation when fetching packs over HTTP.
+    #1072461
+  + Enforce determine_wants returning an empty list rather than None.
+  + In the server, support pushes just removing refs.
+  + Support passing a single revision to BaseRepo.get_walker() rather
+    than a list of revisions. 
+  + Add `Repo.get_description` method.
+  + Support thin packs in Pack.iterobjects() and Pack.get_raw().
+  + Add `MemoryObjectStore.add_pack` and `MemoryObjectStore.add_thin_pack` methods.
+  + Add paramiko-based SSH vendor.
+  + Support running 'dulwich.server' and 'dulwich.web' using 'python -m'.
+  + Add ObjectStore.close().
+  + Raise appropriate NotImplementedError when encountering dumb HTTP servers.
+  + SSHVendor.connect_ssh has been renamed to SSHVendor.run_command.
+  + ObjectStore.add_pack() now returns a 3-tuple. The last element will be an
+    abort() method that can be used to cancel the pack operation.
+- Changes from version 0.9.0
+  + Push efficiency - report missing objects only. #562676
+  + Use indentation consistent with C Git in config files.
+    #1031356
+  + Recognize and skip binary files in diff function.
+  + Fix handling of relative paths in dulwich.client.get_transport_and_path.
+  + Preserve ordering of entries in configuration.
+  + Support ~ expansion in SSH client paths. #1083439
+  + Support relative paths in alternate paths.
+    #1175007
+  + Log all error messages from wsgiref server to the logging module. This
+    makes the test suit quiet again.
+  + Support passing None for empty tree in changes_from_tree.
+  + Support fetching empty repository in client. #1060462
+  + Add optional honor_filemode flag to build_index_from_tree.
+  + Support core/filemode setting when building trees.
+  + Add chapter on tags in tutorial
+  + Add support for mergetags. #963525
+  + Add support for posix shell hooks.
+- Changes from 0.8.7
+  + Fix use of alternates in ``DiskObjectStore``.{__contains__,__iter__}.
+  + Fix compatibility with Python 2.4.
+
+-------------------------------------------------------------------
+Fri Nov 23 10:55:48 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.8.6:
+  + dulwich.__init__ no longer imports client, protocol, repo and
+    server modules. (Jelmer Vernooij)
+  + ConfigDict now behaves more like a dictionary.
+    (Adam 'Cezar' Jenkins, issue #58)
+  + HTTPGitApplication now takes an optional
+    fallback_app argument. (Jonas Haag, issue #67)
+  + Support for large pack index files. (Jameson Nash)
+  + Make index entry tests a little bit less strict, to cope with
+    slightly different behaviour on various platforms.
+    (Jelmer Vernooij)
+  + setup.py test (available when setuptools is installed) now
+    runs all tests, not just the basic unit tests.
+    (Jelmer Vernooij)
+  + Commit._deserialize now actually deserializes the current state rather than
+    the previous one. (Yifan Zhang, issue #59)
+  + Handle None elements in lists of TreeChange objects. (Alex Holmes)
+  + Support cloning repositories without HEAD set.
+    (D-Key, Jelmer Vernooij, issue #69)
+  + Support MemoryRepo.get_config. (Jelmer Vernooij)
+  + In get_transport_and_path, pass extra keyword arguments on to
+    HttpGitClient. (Jelmer Vernooij)
+- Changes from version 0.8.5:
+  + Avoid use of 'with' in dulwich.index. (Jelmer Vernooij)
+  + Be a little bit strict about OS behaviour in index tests.
+    Should fix the tests on Debian GNU/kFreeBSD. (Jelmer Vernooij)
+- See NEWS file for more changes
+
+-------------------------------------------------------------------
+Tue Sep 20 13:16:45 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.8.0:
+  * web: Use correct result MIME types.
+  * pack: Cache binary SHA of unpacked objects.
+  - See upstream git for more details...
+
+-------------------------------------------------------------------
+Sun Jul  3 10:21:34 UTC 2011 - saschpe@gmx.de
+
+- Update to version 0.7.1:
+  * Documentation udated
+  * Tree.entries deprecated
+
+-------------------------------------------------------------------
+Thu Mar 31 14:25:18 UTC 2011 - saschpe@suse.de
+
+- Removed *.egg-info from %%files section
+
+-------------------------------------------------------------------
+Tue Jan 25 17:25:04 UTC 2011 - saschpe@gmx.de
+
+- Update to 0.7.0
+- Packaged documentation
+- Added license header
+
+-------------------------------------------------------------------
+Wed Sep  8 08:49:57 UTC 2010 - nix@opensuse.org
+
+- Update to 0.6.1
+

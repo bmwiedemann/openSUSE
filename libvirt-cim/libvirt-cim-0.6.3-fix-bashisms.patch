@@ -1,0 +1,41 @@
+diff -Ndur libvirt-cim-0.6.3/provider-register.sh libvirt-cim-0.6.3-fix-bashisms/provider-register.sh
+--- libvirt-cim-0.6.3/provider-register.sh	2013-04-08 12:40:35.000000000 +0300
++++ libvirt-cim-0.6.3-fix-bashisms/provider-register.sh	2014-11-29 22:21:08.224843458 +0200
+@@ -146,12 +146,12 @@
+     done
+ 
+ #produce Capabilities
+-    let serial=0
++    serial=0
+     for rf in $regfiles
+     do
+       cat $rf | grep -v '^[[:space:]]*#.*' | while read CLASSNAME NAMESPACE PROVIDERNAME PROVIDERMODULE CAPS
+       do
+-	let serial=serial+1
++	serial=$((serial + 1))
+ 	numcap=
+ 	for cap in $CAPS
+ 	do
+@@ -772,14 +772,14 @@
+ if [ "$help" = "1" ]
+ then
+     usage
+-    echo -e "\t-h display help message"
+-    echo -e "\t-v verbose mode"
+-    echo -e "\t-d deregister provider and uninstall schema"
+-    echo -e "\t-t specify cimserver type (pegasus|sfcb|openwbem|sniacimom)"
+-    echo -e "\t-r specify registration files"
+-    echo -e "\t-m specify schema mof files"
+-    echo -e "\t-X create repository for alternate platform (sfcb only at the moment)."
+-    echo -e "\t-n target namespace definition (default: root/cimv2)."
++    echo "	-h display help message"
++    echo "	-v verbose mode"
++    echo "	-d deregister provider and uninstall schema"
++    echo "	-t specify cimserver type (pegasus|sfcb|openwbem|sniacimom)"
++    echo "	-r specify registration files"
++    echo "	-m specify schema mof files"
++    echo "	-X create repository for alternate platform (sfcb only at the moment)."
++    echo "	-n target namespace definition (default: root/cimv2)."
+     echo
+     echo Use this command to install schema mofs and register providers.
+     echo CIM Server Type is required as well as at least one registration file and one mof.

@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sun Jun 17 15:36:29 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.02.01
+  * Makefile: bump version
+  * debian/copyright: use secure URI
+  * debian/control: update dephelper to >= 11
+  * debian/control: remove trailing empty line
+  * debian/compat: update to 11
+  * voidify unused function returns
+  * Update copyright year
+
+-------------------------------------------------------------------
+Fri Jan  5 21:24:31 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.00
+  * Makefile: bump version to 0.02.00
+  * debian/rules: remove extraneous space on line 5
+  * debian/control: update Standards-Version to 4.1.2
+  * unconsitfy pointer 'metadata' to fix a build warning
+  * Fix build warning, include <sys/sysmacros.h>.
+
+-------------------------------------------------------------------
+Wed May 10 14:49:51 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.01.17
+  * Makefile: bump version
+  * Manual: update copyright year and date
+  * Add variable pid size handling.
+  * Re-order declarations of mounts and mount in fnotify_event_init
+  * Update copyright year to source
+
+- update to version 0.01.16
+  * Makefile: bump version
+  * Remove extraneous declaration of ret to fix shadowing
+  * constify fs1 fs2
+  * Make some helper functions static
+  * Makefile: add PEDANTIC flags
+
+- update to version 0.01.15
+  * Makefile: bump version
+  * reduce scope of ptr
+  * debian/control: update Standards-Version to 3.9.8
+  * Update and correct copyright years
+
+-------------------------------------------------------------------
+Wed Nov 11 21:11:38 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

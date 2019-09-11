@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Mon Aug 12 09:35:34 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.6.3
+  + Fixed a memory leak when deduplicating paths.
+  + Fixed strndup-related build regression on Windows.
+  + Added --modversion description to pkgconf(1) man page.
+  + Properly tokenize versions. Versions cannot logically contain
+    whitespace, as dependency-lists would not properly tokenize if
+    they could. A diagnostic is generated for malformed version
+    strings containing whitespace when --validate is used.
+
+-------------------------------------------------------------------
+Fri Aug  9 00:19:43 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Co-own aclocal directory to avoid requiring autoconf-archive
+
+-------------------------------------------------------------------
+Mon Aug  5 12:46:49 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add missing -gnu ABI suffix to platform names in pkgconf-pkg-config (boo#1144318)
+
+-------------------------------------------------------------------
+Mon Jul 15 00:28:33 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix license tag for pkgconf-m4
+
+-------------------------------------------------------------------
+Mon Jul 15 00:04:56 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Set pkgconf to provide pkgconfig on Tumbleweed (post SUSE Linux 15)
+
+-------------------------------------------------------------------
+Wed May  1 12:32:54 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.6.1
+  + Fixed an issue where a personality may not be properly selected
+    due to argv[0] containing a full path.
+  + Fixed a regression where having an empty PKG_CONFIG_LIBDIR
+    environment variable would not eliminate the default search
+    paths.
+  + Use POSIX realpath(3) instead of readlink() for deduplicating the
+    search path.  Use _fullpath() on Windows for the same purpose.
+  + The dequoting logic for tuples has been improved to ensure that
+    quotes *inside* a value remain quoted when necessary.
+  + Fixed issue where packages which referenced missing packages in
+    Requires.private may have crashed due to memory corruption issues
+    in some circumstances.
+  + Fixed warnings reported by GCC 8 diagnostics.
+  + Add LIBPKGCONF_VERSION and LIBPKGCONF_VERSION_STR macros for
+    determining libpkgconf version.
+  + Add pkgconf_fragment_copy_list() to copy a fragment list to
+    another fragment list.
+  + Fix edge cases for path canonicalization (especially on Windows)
+- Add personality.d directories for cross-targets
+- Add pkgconf rpm macros for pkgconf directories
+- Simplify platform-pkg-config wrapper to work with POSIX sh
+
+-------------------------------------------------------------------
+Tue Aug 21 12:27:05 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.5.3
+  + Fix edge cases involving dequoting zero-length tuples that can lead to a
+    buffer overflow under the right circumstances.  Thanks to A. Wilcox for
+    reporting and supplying a patch. (boo#1105438 - CVE-2018-1000221) 
+  + Ensure environment variables override values learned from personality files
+    or built-in defaults.
+  + Add pkgconf-personality(5) manpage documenting the personality file format.
+- Drop BR pkgconfig and manually specified pkgconfig() Provides for
+  devel subpackage to avoid dependency loops.
+
+-------------------------------------------------------------------
+Wed Jun 20 10:51:58 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 1.5.1
+  - fixed a crash with some invalid multi-line .pc files
+
+- Update to version 1.5.0
+  - pkgconf now supports the proposed Requires.internal pkg-config extension,
+    by merging it with the Requires.private list (there is no functional difference
+    between the two in our resolver implementation)
+  - Support for cross-compilation personalities have been added.  To make use of this
+    functionality, create a file in the new personality.d directory that sits inside
+    the pkgconfig directory.  The personality file format is described in
+    pc-personality(5).
+  - Support for Haiku has been added, including interpretation of BELIBRARIES and
+    other toolchain specifics.
+  - tuples are now appropriately dequoted when added by the parser
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Sun May 20 12:34:57 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Add BR pkgconfig to generate pkgconfig() deps
+
+-------------------------------------------------------------------
+Sun May 20 01:32:46 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.4.2
+  + Bug fixes
+    - ensure pkgconf_dependency_t nodes have a solution marked
+      when satisfied by an indirect provider (gh#pkgconf/pkgconf#172)
+    - revert some quoting changes because they don't work well
+      with certain GCC edge cases (gh#pkgconf/pkgconf#168)
+
+-------------------------------------------------------------------
+Mon Feb 19 15:56:36 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging based on Fedora and Mageia packaging

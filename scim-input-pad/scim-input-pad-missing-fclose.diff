@@ -1,0 +1,26 @@
+---
+ src/scim_input_group.cpp |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/src/scim_input_group.cpp
++++ b/src/scim_input_group.cpp
+@@ -284,8 +284,10 @@
+     if (!fp) return 0;
+ 
+     if (get_line (fp) != String (scim_input_pad_header) ||
+-        get_line (fp) != String (scim_input_pad_version))
++        get_line (fp) != String (scim_input_pad_version)) {
++	fclose(fp);
+         return 0;
++    }
+ 
+     while (!feof (fp)) {
+         if (get_line (fp) == String ("BEGIN_GROUP")) {
+@@ -295,6 +297,7 @@
+             }
+         }
+     }
++    fclose(fp);
+     return groups.size ();
+ }
+ 

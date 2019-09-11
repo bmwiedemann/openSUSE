@@ -1,0 +1,462 @@
+-------------------------------------------------------------------
+Wed Jun 19 15:55:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Specify GtkSourceView 3.0 import version.
+- Rebase sushi-port-to-gtksourceview4.patch, drop part now included
+  in tarball.
+
+-------------------------------------------------------------------
+Tue Jun 18 20:08:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add sushi-port-to-gtksourceview4.patch: Port to gtksourceview4.
+  Following this patch, replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4) BuildRequires.
+
+-------------------------------------------------------------------
+Sun Mar 10 13:00:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Update DOAP file for GitLab move.
+  + Explicitly hide minimize and maximize.
+
+-------------------------------------------------------------------
+Wed Jan  2 22:00:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Port to meson build system.
+  + Replace some deprecated API.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Drop intltool BuildRequires, no longer used nor needed.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:39:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Fix miscellaneous warnings.
+  + Rename service file to match owned bus name.
+- Use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Tue Apr 24 08:13:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Fix another LibreOffice to PDF conversion regression (hopefully
+    for good this time).
+
+-------------------------------------------------------------------
+Fri Apr 20 21:18:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Fix another LibreOffice to PDF conversion regression.
+- Changes from version 3.28.1:
+  + Fix LibreOffice to PDF conversion regression.
+  + Add support for docx/pptx/xlsx MIME types.
+- Changes from version 3.28.0:
+  + Add support for GIF animations.
+  + Use LibreOffice directly instead of unoconv.
+  + Prefer LibreOffice from flatpak when installed.
+- Drop unoconv BuildRequires and Recommends, following upstream
+  changes.
+- Replace gobject-introspection-devel with
+  pkgconfig(gobject-introspection-1.0) BuildRequires.
+- Drop no longer needed post(un) handling of
+  glib2_gsettings_schema_post(un) and
+  glib2_gsettings_schema_requires macro.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:48 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat May  6 20:17:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  2 10:43:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Use correct icon when fullscreen.
+  + Use upstream format.js code.
+  + Specify GdkX11 import version.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 31 16:55:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Make sushi work under Wayland.
+  + Fix builddir != srcdir builds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 17 19:48:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Link directly with harfbuzz.
+  + Updated translations.
+- Add pkgconfig(harfbuzz) BuildRequires and version it. New
+  explicit dependency.
+
+-------------------------------------------------------------------
+Fri Mar  4 08:44:02 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Port to ClutterGst 3.0.
+  + Don't assume X.
+  + Don't use deprecated style classes.
+  + Port to GTask.
+  + Fix toolbar spacing.
+  + Resync font renderer from gnome-font-viewer.
+- Drop sushi-port-to-clutter-gst-3.0.patch: fixed upstream.
+- Remove libtool BuildRequires and call to autoreconf, as we no
+  longer carry any patches.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:09:32 UTC 2015 - zaitor@opensuse.org
+
+- Add sushi-port-to-clutter-gst-3.0.patch: Port to clutter-gst-3.0
+  (bgo#756725). Also add libtool BuildRequires and pass autoreconf
+  before configure as the patch touches the buildsystem.
+- Following above port, replace pkgconfig(clutter-gst-2.0) for
+  pkgconfig(clutter-gst-3.0) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep 23 07:01:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 06:31:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Apply embedded orientation to images.
+  + Fix encoding problems when loading non utf-8 text files.
+  + Do not crash when right clicking text previews.
+  + Add a way to easily run under gdb.
+  + Use regular GTK client side decorations.
+  + Use GResource for auxiliary data.
+  + Fix theming glitches after GTK update.
+
+-------------------------------------------------------------------
+Wed May 13 16:28:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  6 11:52:29 UTC 2015 - dmueller@suse.com
+
+- disable dependency on libreoffice for all non-x86 platforms
+
+-------------------------------------------------------------------
+Tue Mar 10 08:56:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Fix deadlock with recent clutter/clutter-gtk.
+  + Don't require a parent window.
+  + Port HTML viewer to WebKit2.
+  + Fix margins in RTL.
+  + Fix toolbar icons for RTL.
+- Replace pkgconfig(webkitgtk-3.0) BuildRequires with
+  pkgconfig(webkit2gtk-4.0): follow upstreams port to WebKit2.
+
+-------------------------------------------------------------------
+Sat Jan 31 04:20:57 UTC 2015 - zaitor@opensuse.org
+
+- Exclude unoconv BuildRequires on PPC arches as it is not
+  available there.
+
+-------------------------------------------------------------------
+Thu Apr 24 07:15:14 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 10:04:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Fix compatibility with js24-based GJS.
+  + Update for E4X removal.
+  + Update FSF address.
+- Drop sushi-e4x-removal.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 13 21:54:06 UTC 2014 - dimstar@opensuse.org
+
+- Add sushi-e4x-removal.patch: Stringify the xml definitions for
+  E4X removal.
+
+-------------------------------------------------------------------
+Tue Sep 24 12:11:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Make translations appear.
+  + Some fixes for right-to-left languages.
+
+-------------------------------------------------------------------
+Tue Apr 16 08:24:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix a crash while loading PDF documents.
+
+-------------------------------------------------------------------
+Mon Mar 25 15:51:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:45:38 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Call gtk_render_background when drawing SushiFontWidget.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  8 14:49:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Use a better padding for the font preview.
+  + Remove custom CSS styling for SushiFontWidget.
+  + Fix the build with automake 1.13.
+
+-------------------------------------------------------------------
+Mon Jan 14 18:11:32 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.4:
+  + Use PackageKit to install unoconv if not detected at runtime.
+  + Drop gjs-dbus dependency.
+  + Updated translations.
+- Drop pkgconfig(gjs-dbus-1.0) BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Tue Jan  8 11:32:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Use the single-include header for GtkSourceView.
+  + Add some convenience functions to SushiFontWidget.
+  + Use a better error message in SushiFontLoader.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 07:48:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  1 20:37:18 UTC 2012 - dimstar@opensuse.org
+
+- Add glib2_gsettings_schema_* handling to preamble, post and
+  postun. Fixes bnc#782917.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:37:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Fix regression where double spacebar was required to activate
+    preview from Nautilus.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 10:06:50 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0-with-plugin-exception
+  sushi allows linking non free proprietary plugins
+
+-------------------------------------------------------------------
+Mon Sep 17 21:25:35 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 16:09:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Port to libmusicbrainz5.
+- Replace pkgconfig(libmusicbrainz4) BuildRequires with
+  pkgconfig(libmusicbrainz5), following upstream.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:07:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Port to GStreamer 1.0
+  + Fix OSD toolbar positioning for the audio viewer
+- Replace pkgconfig() BuildRequires to follow the port to
+  GStreamer 1.0:
+  + Old: clutter-gst-1.0, gstreamer-0.10, gstreamer-pbutils-0.10
+    and gstreamer-tag-0.10.
+  + New: clutter-gst-2.0, gstreamer-1.0, gstreamer-pbutils-1.0 
+    and gstreamer-tag-1.0.
+- Drop xz BuildRequires as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed Aug  8 15:25:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.5:
+  + Port to GDBus.
+  + Port to GtkApplication.
+
+-------------------------------------------------------------------
+Tue Jul 17 08:15:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.4:
+  + Unify folder and fallback file viewers.
+  + Remove more of our custom theming.
+  + Use a higher limit when querying the MusicBrainz service.
+  + Don't hardcode /bin/bash in the launcher scripts.
+- Add pkgconfig(freetype2) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Mon Jun  4 20:24:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.2:
+  + Fall back to C locale when constructing the sample string
+    before picking an entirely random-glyph string in the font
+    widget.
+  + Flip font widget orientation for RTL locales.
+  + Always pick a valid size for fixed-size fonts in the font
+    widget.
+
+-------------------------------------------------------------------
+Tue May 15 12:51:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + Use libmusicbrainz v4 API.
+  + Add a preference to turn off client window decorations.
+  + Fix vertical interline spacing in the font viewer.
+  + Enable fullscreen for the font viewer.
+  + Use OSD style class for toolbars.
+  + Use GEdit GtkSourceView color scheme if available.
+  + Don't install the private library in  the system libdir.
+  + Use mime type list provided by Totem for gst and audio viewers.
+- Replace pkgconfig(libmusicbrainz3) BuildRequires with
+  pkgconfig(libmusicbrainz4), following upstreams change.
+- Drop typelib-1_0-Sushi-1_0 and libsushi-1_0-0 subpackage: these
+  are private libraries, not meant for others to be used. Obsolete
+  those packages from the main package.
+- Move unoconv Recommends from libsushi-1_0-0 to main package.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:36:08 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.1:
+  + Fix a crash when fetching album cover art
+  + Move the window to the current desktop workspace when shown
+  + Avoid maximization and window snapping
+  + Plug some memory leaks
+
+-------------------------------------------------------------------
+Tue Mar 27 21:46:51 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 22:39:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3.92:
+  + Properly center the window title in the allocated space.
+  + Clear signal handlers when switching between viewer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:03:21 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.91:
+  + Ellipsize title for long filenames
+  + Use F11 as a keybinding for Fullscreen
+  + Initialize X11 threads
+  + Updated translations.
+- Add pkgconfig(clutter-x11-1.0) BuildRequires: new upstream
+  dependency.
+
+-------------------------------------------------------------------
+Mon Dec 19 12:39:40 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.3.0:
+  + Quote the file path before passing it to unoconv
+  + Build with latest clutter-gtk
+  + Updated translations.
+- Drop sushi-quote-unoconv.patch: fixed upstream.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Wed Dec  7 21:02:58 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib files into typelib-1_0-Sushi-1_0 subpackage.
+
+-------------------------------------------------------------------
+Wed Oct 19 14:10:57 UTC 2011 - vuntz@opensuse.org
+
+- Add sushi-quote-unoconv.patch: quote the file path before passing
+  it to unoconv, to avoid issues when there is a space in the path.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:15:29 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.1:
+  + Fix OSD toolbar not appearing for text files previews.
+  + Make sure the decoration title is centered with the close
+    button.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 15:30:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:48:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.92:
+  + Implement cache for cover art
+  + Improve documentation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 16:48:24 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.90:
+  + Add a Close() remote method
+
+-------------------------------------------------------------------
+Wed Jul 27 12:10:18 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.0.5:
+  + Use "document-open-symbolic" for run/open toolbar buttons
+  + Require latest clutter-gtk to fix underallocations with GTK+
+    3.1
+  + Use g_format_size() instead of g_format_size_for_display()
+  + Use the GTK+ dark theme
+  + UTF8-validate the text before inserting it into the buffer
+
+-------------------------------------------------------------------
+Sat Jul  9 14:30:38 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.0.4:
+  + Relicense to GPLv2 with an exception clause to allow use
+    non-free GStreamer plugins.
+  + Fix some compilation warnings.
+- Drop sushi-fix-warnings.patch: fixed upstream.
+- Change license tag from GPLv3 to GPLv2+.
+
+-------------------------------------------------------------------
+Sun Jul  3 18:11:14 CEST 2011 - vuntz@opensuse.org
+
+- Initial package (version 0.0.3).
+- sushi-fix-warnings.patch fixes build warnings that break the
+  build.
+

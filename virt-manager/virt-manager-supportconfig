@@ -1,0 +1,52 @@
+#!/bin/bash
+#############################################################
+# Name:        Supportconfig Plugin for virt-manager
+# Description: Gathers important troubleshooting information
+#              about virt-manager
+# Author:      Jim Fehlig <jfehlig@suse.com>
+#############################################################
+
+RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
+
+VIRTMAN_LOG_DIR="/root/.cache/virt-manager"
+VIRTMAN_LOG_FILES=""
+
+if [ -s $RCFILE ]; then
+    if ! source $RCFILE; then
+        echo "ERROR: Initializing resource file: $RCFILE" >&2
+        exit 1
+    fi
+fi
+
+rpm_verify() {
+    thisrpm="$1"
+    local ret=0
+
+    echo
+    echo "#==[ Validating RPM ]=================================#"
+    if rpm -q "$thisrpm" >/dev/null 2>&1; then
+        echo "# rpm -V $thisrpm"
+
+        if rpm -V "$thisrpm"; then
+            echo "Status: Passed"
+        else
+            echo "Status: WARNING"
+        fi
+    else
+        echo "package $thisrpm is not installed"
+	ret=1
+    fi
+    echo
+    return $ret
+}
+
+if ! rpm_verify virt-manager; then
+    echo "Skipped"
+    exit 0
+fi
+	
+test -d $VIRTMAN_LOG_DIR && VIRTMAN_LOG_FILES="$(find -L $VIRTMAN_LOG_DIR/ -type f)"
+plog_files 0 "$VIRTMAN_LOG_FILES"
+
+echo "Done"
+

@@ -1,0 +1,3 @@
+addFilter (".* W: explicit-lib-dependency libcontainers-common")
+addFilter (".* W: explicit-lib-dependency libcontainers-image")
+addFilter (".* W: explicit-lib-dependency libcontainers-storage")

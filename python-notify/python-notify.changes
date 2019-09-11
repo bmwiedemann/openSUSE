@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Jul  9 22:42:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO, python-notify fails to build with it.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  1 12:46:41 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Thu Apr  7 14:51:30 UTC 2011 - fcrozat@novell.com
+
+- add libnotify0.7.patch: fix build with libnotify >= 0.7 (from
+  Fedora).
+
+-------------------------------------------------------------------
+Wed Mar 16 07:01:25 UTC 2011 - cyberorg@opensuse.org
+
+- apply notify-python-0.1.1-fix-GTK-symbols.patch from fedora
+  fixes "Missing symbol 'gdk_screen_make_display_name'" 
+  https://bugzilla.redhat.com/show_bug.cgi?id=626852
+
+-------------------------------------------------------------------
+Sun Aug  8 23:51:49 CEST 2010 - vuntz@opensuse.org
+
+- Create a devel subpackage.
+
+-------------------------------------------------------------------
+Sat Aug  7 12:42:39 CEST 2010 - vuntz@opensuse.org
+
+- Add workaround to fix build on 11.3 and earlier: the pkg-config
+  file from pygtk was not referencing gtk+-2.0, and this made the
+  build fail. This is fixed correctly in python-gtk for versions
+  after 11.3.
+
+-------------------------------------------------------------------
+Thu Mar 12 16:16:46 CET 2009 - vuntz@novell.com
+
+- Make sure we have the complete bindings: pynotify.c was not
+  regenerated for the tarball, so it's not up-to-date, and we have
+  to touch a file to have it regenerated.
+- Remove checks for old version of openSUSE.
+- Remove unneeded BuildRequires: dbus-1-glib-devel, gtk2-devel,
+  pkgconfig.
+- Remove libnotify from Requires: it will be added automatically.
+- Remove notification-daemon from Requires: it's not the job of the
+  binding to say so (libnotify already does it).
+- Remove definition of CFLAGS and PYTHON.
+- Use fdupes.
+
+-------------------------------------------------------------------
+Wed Sep 10 04:18:34 CEST 2008 - vuntz@suse.de
+
+- Push package done by Pascal Bleser <guru@unixtech.be> in
+  GNOME:Factory to Factory. It's required by system-config-printer. 

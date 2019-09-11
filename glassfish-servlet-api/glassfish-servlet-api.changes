@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:08:15 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend at all on the parent pom, since we are not building
+  with maven.
+
+-------------------------------------------------------------------
+Tue Jan 29 12:40:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of javax.servlet-api 3.1.0

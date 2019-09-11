@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat May 11 09:20:30 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.3.1:
+ Fixed
+ - Fixed the expansion of the deprecated rule names ``keyschema`` and
+   ``valueschema`` (`#482`_)
+ - ``*of_``-typesavers properly expand rule names containing ``_`` (`#484`_)
+ Improved
+ - Add ``maintainer`` and ``maintainer_email`` to setup.py (`#481`_)
+ - Add ``project_urls`` to setup.py (`#480`_)
+ - Don't ignore all exceptions during coercions for nullable fields. If a
+ - Coercion raises an exception for a nullable field where the field is not
+   ``None`` the validation now fails. (`#490`_)
+
+-------------------------------------------------------------------
+Tue Apr 30 10:41:47 UTC 2019 - Michael Vetter mvetter@suse.com
+
+- Update to 1.3:
+  New:
+  * Add require_all rule and validator argument (#417)
+  * The contains rule (#358)
+  * All fields that are defined as readonly are removed from a document when a validator has the purge_readonly flag set to True (#240)
+  * The validator rule is renamed to check_with. The old name is deprecated and will not be available in the next major release of Cerberus (#405)
+  * The rules keyschema and valueschema are renamed to keysrules and valuesrules; the old names are deprecated and will not be available in the next major release of Cerbers (#385)
+  * The meta pseudo-rule can be used to store arbitrary application data related to a field in a schema
+  * Python 3.7 officially supported (#451)
+  * Python 2.6 and 3.3 are no longer supported
+  Fixed:
+  * Fix test test_{default,default_setter}_none_nonnullable (#435)
+  * Normalization rules defined within the items rule are applied (#361)
+  * Defaults are applied to undefined fields from an allow_unknown definition (#310)
+  * The forbidden value now handles any input type (#449)
+  * The allowed rule will not be evaluated on fields that have a legit None value (#454)
+  * If the cerberus distribution cannot not be found, the version is set to the value unknown (#472)
+  Improved:
+  * Suppress DeprecationWarning about collections.abc (#451)
+  * Omit warning when no schema for meta rule constraint is available (#425)
+  * Reformat code to match Black code-style (#402)
+  * Perform lint checks and fixes on staged files, as a pre-commit hook (#402)
+  * Change allowed rule to use containers instead of lists (#384)
+  * Remove Registry from top level namespace (#354)
+  * Check the empty rule against values of type Sized
+  * Various micro optimizations and 'safety belts' that were inspired by adding type annotations to a branch of the code base
+  * Update docs
+
+-------------------------------------------------------------------
+Tue Jan 15 20:55:55 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2:
+  * New: docs: Add note that normalization cannot be applied within an *of-rule. (Frank Sachsenheim)
+  * New: Add the ability to query for a type of error in an error tree. (Frank Sachsenheim)
+  * New: Add errors.MAPPING_SCHEMA on errors within subdocuments. (Frank Sachsenheim)
+  * New: Support for Types Definitions, which allow quick types check on the fly. (Frank Sachsenheim)
+  * Fix: Simplify the tests with Docker by using a volume for tox environments. (Frank Sachsenheim)
+  * Fix: Schema registries do not work on dict fields. Closes :issue:`318`. (Frank Sachsenheim)
+  * Fix: Need to drop some rules when empty is allowed. Closes :issue:`326`. (Frank Sachsenheim)
+  * Fix: typo in README (Christian Hogan)
+  * Fix: Make purge_unknown and allow_unknown play nice together. Closes :issue:`324`. (Audric Schiltknecht)
+  * Fix: API reference lacks generated content. Closes :issue:`281`. (Frank Sachsenheim)
+  * Fix: readonly works properly just in the first validation. Closes :issue:`311`. (Frank Sachsenheim)
+  * Fix: coerce ignores nullable: True. Closes :issue:`269`. (Frank Sachsenheim)
+  * Fix: A dependency is not considered satisfied if it has a null value. Closes :issue:`305`. (Frank Sachsenheim)
+  * Override UnvalidatedSchema.copy. (Peter Demin)
+  * Fix: README link. (Gabriel Wainer)
+  * Fix: Regression: allow_unknown causes dictionary validation to fail with a KeyError. Closes :issue:`302`. (Frank Sachsenheim)
+  * Fix: Error when setting fields as tuples instead of lists. Closes :issue:`271`. (Sebastian Rajo)
+  * Fix: Correctly handle nested logic and group errors. Closes :issue:`278` and :issue:`299`. (Kornelijus Survila)
+  * CI: Reactivate testing on PyPy3. (Frank Sachsenheim)
+
+-------------------------------------------------------------------
+Wed Dec  5 01:19:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:32 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Feb  6 10:29:01 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 1.1

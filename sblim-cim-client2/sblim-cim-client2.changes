@@ -1,0 +1,687 @@
+-------------------------------------------------------------------
+Wed Nov 29 12:27:48 UTC 2017 - kkaempf@suse.com
+
+- Fix build with openjdk9: sblim-cim-client2-2.2.5-src.patch
+
+-------------------------------------------------------------------
+Thu Jun 25 13:10:52 UTC 2015 - mvetter@suse.com
+
+- Update URL
+
+-------------------------------------------------------------------
+Tue Jun 23 07:39:45 UTC 2015 - mvetter@suse.com
+
+- Remove self-made dos2unix and replace by standard one
+  Convert .java files too.
+
+-------------------------------------------------------------------
+Thu Jun 18 15:08:26 UTC 2015 - mvetter@suse.com
+
+- Clean up spec file
+- Remove java conditionals, when the java version is set correctly
+  there wont be an issue
+
+-------------------------------------------------------------------
+Fri Dec 13 15:12:43 UTC 2013 - pwieczorkiewicz@suse.com
+
+- Update to version 2.2.5
+  New features
+  * Two new Java properties - sblim.wbem.sslClientProtocol and 
+    sblim.wbem.sslListenerProtocol - can be used to set the protocol
+    used for SSLContext.getInstance(String protocol) by a client or
+    listener. (#2647)
+  * One new Java property -
+    sblim.wbem.cimxmlParser.allowEmptyLocalNameSpacePath - can be
+    used to have the client allow LOCALNAMESPACEPATH elements without
+    NAMESPACE child elements in incoming responses. (#2711)
+
+  Version 2.2.5 also contains five changes that might affect
+  existing applications:
+
+  * Three internal APIs - CIMXMLParserImpl.parseNAMESPACE, 
+    parseClassName and parseCLASSNAME - now throw the
+    CIMXMLParseException. (#2670)
+  * The internal API CIMXMLBuilderImpl.createMETHODCALL now only has 
+    three parameters, pParamtype is not needed. (#2689)
+  * Two internal APIs - Node.getParamType and
+    CIMObjectFactory.getType - now throw the SAXException. (#2693)
+  * One internal API - PropertyNode.childValueNodeParsed - now throws
+    the SAXException. (#2700)
+  * One internal API - PropertyArrayNode.childValueNodeParsed - now 
+    throws the SAXException. (#2701)
+
+  Issues closed
+   2717 Update detailed release history HTML for 2.2.5
+   2716 Sync up javax.* javadoc with JSR48 1.0.0 Final V
+   2719 TCK: CIM APIs should not generate NullPointerException
+   2594 CR28: Support CIMErrorDescription HTTP field
+   2718 Bad CIMStatusCode generates NumberFormatException
+   2538 CR14: Support new CORRELATOR element
+   2715 Add VALUE.NULL support
+   2714 Add detailed CIM-XML parser test based on DSP0201 2.4
+   2713 Enforce loose validation of CIM-XML documents
+   2712 SimpleReqNode allows any CIM element as child
+   2709 Lower the level of the EOF message to FINE
+   2711 LOCALNAMESPACEPATH allows 0 NAMESPACE children
+   2710 parseVALUEOBJECTWITH(LOCAL)PATH ignores (LOCAL)CLASSPATH child
+   2708 CIMNode quietly ignores DECLARATION child
+   2707 INSTANCENAME ignores KEYVALUE and VALUE.REFERENCE children
+   2706 Bad PARAMETER.REFARRAY ARRAYSIZE generates NumberFormatException
+   2705 PARAMETER.ARRAY does not require TYPE attribute
+   2704 PARAMETER does not require TYPE attribute
+   2703 MethodNode should not require TYPE attribute
+   2702 Bad PROPERTY.ARRAY ARRAYSIZE generates NumberFormatException
+   2701 PROPERTY.ARRAY does not require TYPE attribute
+   2700 PROPERTY does not require TYPE attribute
+   2699 parseQUALIFIER does not require TYPE attribute
+   2697 (I)MethodResponseNode allows ERROR with PARAMVALUE
+   2696 parseIRETURNVALUE ignores VALUE and VALUE.ARRAY
+   2695 parseMETHODCALL allows LOCALCLASSPATH and LOCALINSTANCEPATH
+   2694 NAME attribute not required by DOM parser (part 2)
+   2693 ReturnValueNode allows invalid PARAMTYPE attribute
+   2691 RETURNVALUE should not require PARAMTYPE attribute
+   2537 Add new data types for PARAMVALUE
+   2690 Remove RESPONSEDESTINATION support
+   2689 createMETHODCALL should not add PARAMTYPE attribute
+   2688 parseMETHODCALL looks for CIMName attribute instead of NAME
+   2687 ExpParamValueNode allows VALUE, (I)METHODRESPONSE children
+   2686 parseEXPPARAMVALUE allows 2+ children, prohibits 0
+   2685 Element.getAttribute returns empty string if no attribute
+   2684 parseEXPMETHODRESPONSE has several issues
+   2683 KEYVALUE VALUETYPE optional, "string" default
+   2682 (I)MethodCallNode allows no LOCAL*PATH
+   2681 parseQUALIFIERDECLARATION does not require TYPE attribute
+   2680 IPARAMVALUE parsing broken on DOM/SAX
+   2679 parseIMETHODCALL requires one IPARAMVALUE child element
+   2678 parseMULTI___ allows one SIMPLE___ child element
+   2677 ObjectPathNode allows all child nodes
+   2676 parseMULTI(EXP)REQ looking for wrong child elements
+   2675 CIMXMLParseException messages should contain element name
+   2674 Null pointer exception in CIMDateTime(String)
+   2673 NameSpaceNode does not need testCompletness()
+   2672 Remove SIMPLEREQACK support
+   2671 Potential null pointer exception in parseERROR
+   2670 NAME attribute not required by DOM parser
+   2669 Potential null pointer exception in parseMESSAGE
+   2668 Potential null pointer exception in parseCIM
+   2666 CR12: Remove ENUMERATIONCONTEXT 
+
+-------------------------------------------------------------------
+Mon Sep 16 09:47:13 UTC 2013 - kkaempf@suse.com
+
+- Update to version 2.2.4
+  New features
+  * Two new Java properties - sblim.wbem.sslClientProtocol and
+    sblim.wbem.sslListenerProtocol - can be used to set the protocol
+    used for SSLContext.getInstance(String protocol) by a client
+    or listener. (#2647)
+  * One new Java property - sblim.wbem.socketIdleTimeout - can be
+    used to automatically reset (close, then reopen) a socket if
+    it is idle for too long. (#2654)
+  * One new Java property - sblim.wbem.enableGzipEncoding - can be
+    used to enable support for gzip decompression of CIM-XML
+    responses, identified by "Content-Encoding: gzip" header. (#2151)
+
+  Version 2.2.4 also contains two changes that might affect
+  existing applications:
+
+  * The internal API LogAndTraceBroker.setXmlTraceStream no longer
+    closes the previous XML trace stream. (#2652)
+  * The JSR48 API CIMObjectPath.equalsModelPath now compares only
+    the model path - this may produce different results from
+    previous releases. (#2660)
+
+  Issues closed
+   2661 Update detailed release history HTML for 2.2.4
+   2662 Need the specific SSLHandshakeException during the cim call
+   2660 CIMObjectPath.equalsModelPath same as equals
+   2657 Potential null pointer exception in handleConnection
+   2151 gzip compression not supported
+   2655 Content-length must be ignored when Transfer-encoding present
+   2651 IOException when tracing the cimxml
+   2654 Check jcc idle time with CIMOM keepalive timeout to avoid EOF
+   2653 FVT: java.lang.ExceptionInInitializerError during static init
+   2652 LogAndTraceBroker.setXmlTraceStream should not close previous stream
+   2650 SLP opaque value handling incorrect
+   2604 SAXException messages should contain node name
+   2647 Add two ssl protocol properties for http server and client
+
+-------------------------------------------------------------------
+Sat Jun  1 12:51:42 UTC 2013 - kkaempf@suse.com
+
+- Update to version 2.2.3
+  New features
+  * A new Java property - sblim.wbem.listenerMaxQueuedEvents - can
+    be used to set the maximum number of queued events awaiting
+    dispatch to a listener. (#2628)
+  * Two new Java properties - sblim.wbem.listenerHttpHeaderTimeout
+    and sblim.wbem.listenerHttpMaxAllowedTimeouts - can be used to
+    help prevent Denial of Service attacks on an indication listener
+    via the slowloris approach (#2635)
+  * Two new private APIs - WBEMListenerSBLIM.getBlockedIPs and
+    setBlockedIPs can be used to control the IPs of incoming
+    connections that are to be ignored by an indication
+    listener (#2635)
+  * Two new Java properties - sblim.wbem.sslClientCipherSuitesToDisable
+    and sblim.wbem.sslListenerCipherSuitesToDisable - can be used
+    to disable a list of cipher suites when connecting via an SSL
+    socket as either a client or listener. (#2642)
+
+  Version 2.2.3 also contains several changes that might affect
+  existing applications:
+
+  * The internal ChunkedInputStream constructors now require a
+    second parameter, a String representing the names of the trailer
+    fields (from HTTP Trailer header). (#2621)
+  * The internal MessageReader constructor now requires a second
+    parameter, a long representing the HTTP header timeout (#2635)
+  * The internal HttpConnectionHandler constructor now requires
+    a second parameter, a WBEMConfiguration representing the
+    configuration properties (#2635)
+  * The Java property sblim.wbem.sslCipherSuitesToDisable has
+    been deleted, use sblim.wbem.sslClientCipherSuitesToDisable
+    and/or sblim.wbem.sslListenerCipherSuitesToDisable instead (#2642)
+
+  Issues closed
+  2643 Update detailed release history HTML for 2.2.3
+  2642 Seperate properties needed for cim client and listener to
+       filter out ciphers
+  2635 Slowloris DoS attack for CIM indication listener port
+  2640 Multiple CDATA parsing broken in DOM parser
+  2639 CDATA parsing broken in PULL parser
+  2638 Do not build empty REFERENCECLASS
+  2637 Add nested embedded instance builder test
+  2636 Nested embedded instances cause CIMXMLParseException
+  2632 Potential Null Point Exception in CIMDataType
+  2605 SAX parser throws wrong exception
+  2628 Limit size of LinkedList of CIMEvents to be dispatched
+
+-------------------------------------------------------------------
+Mon Mar 18 07:54:34 UTC 2013 - kkaempf@suse.com
+
+- Update to Version 2.2.2
+  New features
+  * A new Java property - sblim.wbem.synchronizeNumericKeyDataTypes
+    - can be used to synchronize numeric data types of keys in a
+    CIMInstance's CIMObjectPath with those in its CIMProperty[]
+    FOR CIMOM RESPONSES ONLY. (#3598613)
+  * One new internal API - WBEMClientSBLIM.sendIndication
+    - can be used to send a CIMInstance representing an indication
+      to a specific URI. (#2616)
+  * A new Java property - sblim.wbem.sslCipherSuitesToDisable
+    - can be used to disable a list of cipher suites when connecting
+      via an SSL socket. (#2618)
+
+  Changes
+
+  2624 Update detailed release history HTML for 2.2.2
+  2618 Need to add property to disable weak cipher suites for the
+       secure indication
+  2623 Reflect SourceForge upgrade in documentation
+  2616 Add new API WBEMClientSBLIM.sendIndication()
+  2621 Not all chunked input has trailers
+  2620 Chunked output broken
+  2619 Host should contain port when not 5988/5989
+  2615 Add Allura links to detailed release history HTML
+  2614 Remove redundant code in transmitRequest
+
+  Bugs fixed
+
+  3602604 Clean up SAXException messages
+  3601894 Enhance HTTP and CIM-XML tracing
+  3598613 different data type in cim instance and cim object path
+  3596303 windows http response WWW-Authenticate: Negotiate fails
+
+-------------------------------------------------------------------
+Sat Dec 15 15:44:07 UTC 2012 - kkaempf@suse.com
+
+- Update to Version 2.2.1
+  New features
+  * A new internal API - WBEMConfiguation.getActiveConfigFullURL
+    - can be used to obtain the FQDN of the active conguration
+      file (#3576396)
+  * A new Java property - sblim.wbem.verifyJavaLangDoubleStrings
+    - can be used to make the client verify that strings representing
+      a Double will not hang the JRE when parsed (#3572993)
+
+  Bugs fixed
+  3584119 Update detailed release history HTML for 2.2.1
+  3592502 Enhance CIMDataType unit test
+  3588558 An enhancement on Java CIM Client logging
+  3557283 Print full response when get EOF from CIMOM
+  3576396 Improve logging of config file name
+  3572993 parseDouble("2.2250738585072012e-308") DoS vulnerability
+  3567433 Add links to top of detailed release history HTML
+
+-------------------------------------------------------------------
+Sat Sep 15 10:49:28 UTC 2012 - kkaempf@suse.com
+
+- Update to Version 2.2.0
+
+  PLEASE NOTE: Version 2.2.0 is fully compliant with the final
+  JSR48 1.0.0 specification.  In order to meet this requirement,
+  several changes occurred which may be disruptive to applications
+  that work with previous (2.1.x) versions.  Please see the following
+  for more details:
+
+  http://sblim.sourceforge.net/cim-client2-v22-doc/org/sblim/cimclient/doc-files/history.html
+
+  Detailed changes
+  ================
+  3567429 Update detailed release history HTML for 2.2.0
+  3555752 Sync up javax.* javadoc with JSR48 1.0.0 Final IV
+  3565581 TCK: remove unnecessary overriding methods
+  3562235 LogAndTraceBrokerTest breaks unit test tracing
+  3536399 Add client/listener peer authentication properties
+  3529151 TCK: CIMInstance property APIs include keys from COP
+  3536398 Update HTML to reflect secure indication support
+  3554738 dump CIM xml by LogAndTraceBroker.trace()
+  3553858 Append duplicate HTTP header fields instead of replace
+  3535383 HashDoS fix 3498482
+  3545797 Support new error code of SFCB
+  3529066 Add Jsr48IndicationTester
+  3524050 Improve WWW-Authenticate in HTTPClient.java
+  3529065 Enable WBEMListener get/setProperty
+  3529062 WBEMListenerFactory should return new instance
+  3527580 WBEMClient should not throw IllegalArgumentException
+  3526681 CIMError valid status codes out-of-date
+  3526679 DOM parser ignores ERROR node CODE
+  3526675 Unit test fails on Java 7
+  3525914 TCK: SetPropertyTest.testSetProperty failing
+  3521157 JSR48 1.0.0: PROP_ENABLE_*_LOGGING is Level, not 0/1
+  3525657 Sync up javax.* javadoc with JSR48 1.0.0 Final III
+  3525150 Remove CIMGetClassOp.getPropertyLis
+  3525145 Remove CIMDeleteNameSpaceOp.getNamespace
+  3525138 Remove WBEMConstants.PROTOCOL_CIMXML
+  3525135 Remove CIMResponse.isSuccessul
+  3525128 Remove WBEMTransportException/WBEMAuthenticationException
+  3523918 "java.io.IOException: Unexpected EOF" returned as HTTP 401
+  3522904 Add new API WBEMClientSBLIM.isActive()
+  3521328 JSR48 1.0.0: remove WBEMClient associators and references
+  3521119 JSR48 1.0.0: remove CIMObjectPath 2/3/4-parm ctors
+  3521131 Sync up javax.* javadoc with JSR48 1.0.0 Final II
+  3466280 get instance failure for CIM_IndicationSubscription
+  3513228 Reliable Indications support can create lots of threads
+  3517503 Missing parm in CIMDataType ctor javadoc
+  3516848 enumerateNamespaces() method to WBEMClient
+  3515180 JSR48 log dir/file should handle UNIX/Win separators
+  3514685 TCK: getProperty must return default values
+  3514537 TCK: execQueryInstances requires boolean, not Boolean
+  3513357 Handle multiple CDATAs in CimXmlSerializer
+  3513347 TCK: CIMObjectPath allows empty string
+  3513343 TCK: CIMObjectPath must validate XML schema name
+  3513349 TCK: CIMDataType must not accept null string
+  3513353 TCK: CIMDataType arrays must have length >= 1
+  3511454 SAX nodes not reinitialized properly
+  3510090 Fix CIMObjectPath.toString() inconsistencies
+  3510321 Handle CDATA in CimXmlSerializer
+  3505681 Add detailed release history HTML
+  3500619 JSR48 1.0.0: CIMClass association/key clean up
+
+-------------------------------------------------------------------
+Wed Aug  8 12:08:15 UTC 2012 - kkaempf@suse.com
+
+- Fix CentOS, RHEL and Fedora builds
+- License is EPL-1.0
+
+-------------------------------------------------------------------
+Thu Mar 15 17:28:58 UTC 2012 - kkaempf@suse.com
+
+- Version 2.1.12
+  This release contains several new features:
+
+  * A new sample - Jsr48SfcbIndicationSample - demonstrates how to
+    receive indications from and generate test indications in the
+    sfcb CIMOM (#3480115)
+  * Two new internal APIs - LogAndTraceBroker.isLoggableTrace and
+    isLoggableMessage - can be used to determine if the specified
+    Level will be logged (#3484014)
+  * A new internal interface - IndicationListenerSBLIM - along with
+    its indicationOccured method and corresponding three new internal
+    WBEMListenerSBLIM.addListener methods, can be used to pass the
+    InetAddress of the indication sender to the listener (#3477087)
+  * A new property - sblim.wbem.listenerIndicationTraceFilter - can
+    be used to trace incoming indications at the FINE Level (#3485074)
+  * A new property - sblim.wbem.listenerAddSenderIPAddress - can be
+    used to add a SBLIMJCC_SenderIPAddress property to indications
+    that contains the IP address of the indication sender (#3492214)
+  * A new property - sblim.wbem.socketConnectTimeout - can be used
+    to set the timeout for socket connect requests when
+    sblim.wbem.socketConnectWithTimeout=true (#3492224)
+  * Three new JSR48 APIs - CIMObjectPath.getKeyValue,
+    WBEMListener.getProperty and WBEMListener.setProperty - have
+    been added to support JSR48 1.0.0 (#3496349 and #3496385)
+
+  Version 2.1.12 also contains several changes that might affect existing
+  applications:
+
+  * The internal WBEMListenerSBLIM.WBEMListenerImpl and CIMEventDispatcher
+    constructors now accept EventListener instead of IndicationListener
+    (#3477087)
+  * Reliable indication support now allows for the SequenceContext
+    and SequenceNumber properties to be present/absent as the CIMOM
+    enables/disables them on the fly (#3484022)
+  * The WBEMListenerFactory.getPROTOCOLS method has been deleted
+    after being deprecated in version 2.1.1 (#3490009)
+  * The four WBEMException constructors that accept the integer
+    error ID now throw an IllegalArgumentException for an invalid ID;
+    valid IDs are 0-12, 14-17 and 19-28 (#3490032)
+  * The sblim.wbem.httpTimeout property no longer specifies the
+    timeout for socket connect requests, sblim.wbem.socketConnectTimeout
+    does (#3492224)
+  * The two WBEMClient.associators and references methods that return
+    a CloseableIterator have been deprecated (#3496343)
+
+  Version 2.1.12 also contains a critical fix (#3498482) to counteract
+  a possible Denial of Service attack against products that use hashing
+  to parse XML, The complete list of changes follows:
+  3504344 Sync Experimental/HEAD branches
+  3504304 Rename socket timeout variables
+  3498482 Red Hat: Possible XML Hash DoS in sblim
+  3496355 JSR48 1.0.0: add new WBEMClientConstants
+  3496385 JSR48 1.0.0: add WBEMListener get/setProperty
+  3496380 JSR48 1.0.0: add new WBEMListenerConstants
+  3496349 JSR48 1.0.0: add CIMObjectPath getKeyValue
+  3496343 JSR48 1.0.0: deprecate WBEMClient associators and references
+  3496301 Sync up javax.* javadoc with JSR48 1.0.0 Final
+  3495662 Invalid HTML from HttpConnectionHandler.writeError
+  3477298 Error compiling JSR48
+  3489638 PERF: Bottleneck in LogAndTraceBroker.java - getCaller()
+  3492224 Need two different timeouts for Socket connections
+  3492214 Add a SenderIPAddress property indications
+  3492246 Rename new indication trace property
+  3490355 TCK: Cannot instantiate WBEMClientFactory
+  3490032 TCK: WBEMException must validate error ID
+  3490009 TCK: Too many WBEMListenerFactory class methods
+  3484022 Turn reliable indication mode on and off based on SC/SN
+  3485074 An Indication trace request
+  3477087 Need Access to an Indication Sender's IP Address
+  3484014 Add LogAndTraceBroker.isLoggable for message/trace
+  3480115 Add Jsr48SfcbIndicationSample
+  3469427 Fix broken HTML links
+  3469210 Include reliable indications in HTML
+  3469018 Properties not passed to CIMIndicationHandler
+
+-------------------------------------------------------------------
+Mon Dec 19 10:10:09 UTC 2011 - kkaempf@suse.com
+
+- Version 2.1.11
+  Bugfix release
+  - 3459036 Linked list for RI queue not efficient for many LDs
+  - 3444912 Client delay during SSL handshake
+  - 3423064 Add UpdateExpiredPassword Header for Reqs from Java Client
+  - 3411944 createJavaObject exception with hex uint
+  - 3411879 TCK: CIM element value must match type
+  - 3410126 TCK: CIM element name cannot be null
+
+-------------------------------------------------------------------
+Wed Dec 14 12:36:12 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Sep 16 07:36:41 UTC 2011 - kkaempf@suse.com
+
+- Version 2.1.10
+  Bugfix release
+  - 3409691 2.1.10 packaging issues: rpmbuild broken on Red Hat
+  - 3406275 HEAD branch ONLY: sync with Experimental branch
+  - 3400209 Highlighted Static Analysis (PMD) issues
+  - 3397922 support OctetString
+  - 3390724 Problem with Reliable Indication support in the Listener
+  - 3374012 Sblim client CIMObjectPath class defect for LLA format URL
+  - 3376657 Get reliable indication properties once
+  - 3374206 NullPointerException caused by Indication
+  - 3323310 Need the ability to override certain Global Properties
+
+-------------------------------------------------------------------
+Tue Jun 28 12:03:38 UTC 2011 - kkaempf@novell.com
+
+- Version 2.1.9
+  This release includes reliable indication reordering
+  support (see bug 3288721 for details) and fixes several issues:
+  - 3311279 Repeated Instantiation of SAXParserFactory
+  - 3304953 Indication URL mapped to lower case
+  - 3304058 Use same date format in change history
+  - 3288721 Need the function of indication reordering
+  - 3206904 Indication listener deadlock causes JVM to run out sockets
+  - 3297028 Instances contain CIMClassProperty with DOM parser
+  - 3293248 Support for CIM_ERROR instances within ERROR
+  - 3281781 fail to parse Embedded Instance parameter
+  - 3277928 CIM-XML tracing cannot be enabled in the field
+  - 3267429 Samples should close client
+  - 3252669 setXmlTraceStream blindly closes previous stream
+  - 3235440 NullPointerException when socket factory returns null
+
+-------------------------------------------------------------------
+Tue Mar 15 13:11:08 UTC 2011 - kkaempf@novell.com
+
+- Version 2.1.8
+  - 3197423 Server authentication with PegasusLocalAuthInfo failing
+  - 3197627 testBasicConnect unit test fails on Windows
+  - 3194700 Exception thrown on extrinsic methods
+  - 3194680 Error in numeric keys
+  - 3195069 Need support to disable SSL Handshake
+  - 3185763 Reliable indication support - Phase 1
+  - 3190335 Erroneous use of SystemName property in samples
+  - 3186176 XML response for indication not traced
+  - 3185833 missing newline when logging request/response
+  - 3185824 Char16 definition includes whitespace
+  - 3185818 indicationOccured URL incorrect
+  - 3182121 Add Jsr48PegasusIndicationSample
+  - 3154232 EmbeddedObject misspelled in javadoc
+
+-------------------------------------------------------------------
+Wed Dec 15 14:33:58 UTC 2010 - kkaempf@novell.com
+
+- version update (2.1.7)
+  - 3111718 org.sblim.cimclient SSL Code is using the wrong SSL
+            Property
+  - 3109824 Move Java link from Sun to Oracle
+  - 3078280 Fix for a null pointer exception in 1.3.9.1
+  - 3062747 SblimCIMClient does not log all CIM-XML responces.
+
+
+-------------------------------------------------------------------
+Thu Sep 16 08:01:47 UTC 2010 - kkaempf@novell.com
+
+- version update (2.1.6)
+  * News in 2.1.6
+    - 3046073 Performance hit due to socket conn. creation with timeout
+    - 3048749 Hex digit parsing logic error in XMLPullParser
+    - 3028518 Additional StringBuilder use
+    - 3027618 Close files/readers in finally blocks
+    - 3027615 Use CLASS_ARRAY_T instead of new CIMDataType(CLASS,0)
+    - 3036683 HEAD branch ONLY: sync with Experimental branch
+    - 3027479 Dead store to local variable
+    - 3027392 Nullcheck of value previously dereferenced
+    - 3026417 XMLAttributeValue does not use iHash field
+    - 3026360 Handle unwritten fields
+    - 3026316 XMLPullParser unused fields
+    - 3026311 Vacuous comparison of integer value
+    - 3026302 CIMDateTimeInterval uses # constructor instead of valueOf
+    - 3023349 SLP uses # constructor instead of valueOf
+    - 3023348 Listener uses # constructor instead of valueOf
+    - 3023340 CIMObjectFactory uses # constructor instead of valueOf
+    - 3023145 CharValue uses # constructor instead of valueOf
+    - 3023143 CIMXMLParserImpl uses # constructor instead of valueOf
+    - 3023141 CIMObjectPath uses # constructor instead of valueOf
+    - 3023135 DADescriptor equals/compareTo issue
+    - 3023120 RequestDescriptor equals/compareTo issue
+    - 3023095 CIMQualifiedElementInterfaceImpl equals/hashCode issue
+    - 3022554 Flushing socket ignores skip() return code
+    - 3022541 File descriptor leak in sample/unittest
+    - 3022524 iSortedValueEntries not serializable in Serializable class
+    - 3022519 ServiceLocationAttribute.equals() compares same array
+    - 3022501 Possible integer overflow in getTotalUSec
+    - 3019252 Methods concatenate strings using + in a loop
+    - 3019214 SLP equals methods assume too much
+    - 3018178 CIMDateTimeInterval clean up
+    - 3004779 TCK: CIMDataType not throwing IllegalArgumentException
+    - 3004762 HTTPClient infinite loop for HTTP 407
+  * News in 2.1.5
+    - 3001333 CIMMethod class ignores propagated parameter
+    - 3001680 CIMQualifierElementInterfaceImpl changes qualifiers
+    - 3001359 XMLPullParser.CharString equals() method broken
+    - 3001357 CIMDeleteNameSpaceOp name clash
+    - 3001353 HttpHeaderParser ignores return value of toLowerCase()
+    - 3001345 File handle leaks in HttpSocketFactory and LogAndTraceBroker
+    - 3001243 Overview HTML out of date
+    - 2997865 Infinite loop in HttpClient
+    - 2994776 http 401 gives CIM_ERR_FAILED instead of CIM_ERR_ACCESS_DENIED
+    - 2994252 CIMDateTimeInterval.getTotalMilliseconds() not unit tested
+    - 2994249 CIMDateTimeInterval(long) calculates milliseconds
+    - 2992349 CIMDateTimeInterval hr/min/sec max is 23/59/59, not 24/60/60
+    - 2989424 TCK: CIMDateTimeInterval constructor
+    - 2989367 CIMDateTimeInterval(long) constructor range wrong
+    - 2990370 Development/unittest HTML out of date
+    - 2974884 Exception when attaching 2 CDRoms with invoke method
+    - 2978722 PasswordCredential(char[]) constructor is wrong
+    - 2975989 TCK: CIMQualifierType constructor does not handle null
+    - 2975975 TCK: CIMObjectPath(String) does not handle null
+    - 2975917 TCK: CIMClass.getProperty() does not handle null property
+    - 2975885 TCK: CIMXXX.hasQualifierValue(null,null) returns true
+    - 2973300 TCK: CIMDateTimeXXX.compareTo() does not handle null
+    - 2973230 TCK: UnsignedInteger64.equals() does not handle null
+    - 2973233 TCK: UnsignedIntegerNN.hashCode() not working
+    - 2972697 Fix spelling errors in HTML files
+  * News in 2.1.4
+    - 2970881 Add property to control EmbeddedObject case
+    - 2942520 IPv6 link local address with scope_id including a dot not supported
+    - 2964463 WBEMClient.initialize() throws wrong exception
+    - 2963502 Add XML tracing to sample code
+    - 2957387 EmbededObject XML attribute must not be all uppercases
+    - 2956716 Jsr48IndicationSample hardcoded namespace
+    - 2961592 Remove WBEMClient.setLocales() UnsupportedOperationException
+    - 2959586 Sync up WBEMClient javadoc with JSR48 1.0.0
+    - 2959264 Sync up javax.client.* javadoc with JSR48 1.0.0
+    - 2959240 Sync up javax.listener.* javadoc with JSR48 1.0.0
+    - 2959235 Update build.xml copyright year
+    - 2959039 Fix WBEMException.toString() logic
+    - 2958990 Remove WBEMException.CIM_ERR_TYPE_MISMATCH
+    - 2958941 Sync up javax.wbem.* javadoc with JSR48 1.0.0
+    - 2913938 Duplicate CIM requests with identical message ID
+    - 2946113 First steps code snippet has compile errors
+    - 2944830 Fix spelling of checkGranurality()
+    - 2944842 Missing thrown ArrayIndexOutOfBoundsException
+    - 2944839 Remove redundant toString() methods
+    - 2944833 Need private setValue in UnsignedInteger8
+    - 2944826 getUTCOffset() incorrect if not significant field
+    - 2944824 Missing getXmlSchemaName() in CIMObjectPath
+    - 2944219 Problem with pull operations using client against EMC CIMOM
+    - 2935258 Sync up javax.cim.* javadoc with JSR48 1.0.0
+    - 2930341 Sync up WBEMClientConstants with JSR48 1.0.0
+    - 2927029 Unit test fails on Java 6
+    - 2909941 RequestStateChange gives wrong exception/error id
+    - 2912490 NullPointerException when invoking getInstance
+
+-------------------------------------------------------------------
+Tue Jan  5 14:50:49 CET 2010 - mhrusecky@suse.cz
+
+- version update (2.1.3)
+  * News in 2.1.3
+    - 2912104 Sync up javax.wbem.* with JSR48 1.0.0
+    - 2907527 Fix SLP properties issues
+    - 2901216 lost IndicationURL for IndcationListener.indicationOccured
+    - 2903373 Java doc incorrect
+    - 2900875 Javadoc should link to external Java5 Objects / APIs
+    - 2886829 JSR48 new APIs: referenceClasses & referenceInstances
+    - 2899859 javax.wbem.client missing JSR48 credential/principal APIs
+    - 2899389 Password maximum length of 16?
+    - 2888774 support POST retry on HTTP error 505
+    - 2878054 Pull Enumeration Feature (PULL Parser)
+    - 2884718 Merge JSR48 and SBLIM client properties
+    - 2882448 Add WBEMClientConstants from JSR48
+    - 2858933 JSR48 new APIs: associatorClasses & associatorInstances
+    - 2870455 Missing CLASS_ARRAY_T in CIMDataType
+    - 2839595 SLP discovery fails on Unix IPv6 systems
+    - 2865222 enumerateQualifierTypes shouldn't require a class name
+    - 2845128 CIMObjectPath.toString() misses host
+    - 2846231 connection failure on CIMOM w/o user/pw
+    - 2860081 Pull Enumeration Feature (DOM Parser)
+  * News in 2.1.2
+    - 2849970 createVALUEARRAY fails to create reference array
+    - 2845211 Pulled Enumeration Support (SAX Parser)
+    - 2834838 Add interface to retrieve version number and product name
+    - 2817962 socket creation connects w/o a timeout
+    - 2823494 Change Boolean constructor to static
+  * News in 2.1.1
+    - 2806362 Missing new CIMDateTimeAbsolute.getUTCOffset() method
+    - 2797550 Make code compatible with JSR48 / Java Generics 
+    - 2797696 Input files use unchecked or unsafe operations 
+    - 2795671 Add Type to Comparable <T> 
+    - 2799260 Fix left over @author tag from Java5 upgrade 
+    - 2798931 Fix spelling of WBEMListenerFactory.getPROTOCOLS()
+    - 2791860 Export instance to mof, wrong syntax
+    - 2787464 lang exception in Chinese env with Java client 2.0.7
+    - 2784078 Code cleanup: messages_XX.properties
+    - 2763216 Code cleanup: visible spelling/grammar errors
+    - 2750520 Code cleanup from empty statement et al
+    - 2714989 Code cleanup from redundant null check et al
+  * News in 2.1.0
+    - 2680372 Eliminate duplicate entries in javadoc allclasses-frame.html
+    - 2641758 CIM Client does not recognize HTTP extension headers
+    - 2620505 EmbeddedObject qualifier is missing from CIMClass
+    - 2433593 isArray returns true for method parameters of type reference
+    - 2531371 Upgrade client to JDK 1.5 (Phase 2)
+    - 2573575 Fix build.xml to allow file names >100 chars
+    - 2524131 Upgrade client to JDK 1.5 (Phase 1)
+- fixed build for Fedora
+
+-------------------------------------------------------------------
+Mon Jan  4 18:51:19 CET 2010 - mhrusecky@suse.cz
+
+- version update (2.0.9.3)
+  * Bugs:
+    - 2844325 createVALUEARRAY fails to create reference array
+    - 2842121 isArray returns true for method parameters of type 
+              reference
+    - 2842120 lang exception in Chinese env with Java client 2.0.7
+
+-------------------------------------------------------------------
+Mon Oct 12 16:16:39 CEST 2009 - mhrusecky@suse.cz
+
+- sending current development version to SLE11 SP1 (fate#307105)
+
+-------------------------------------------------------------------
+Tue Sep  8 12:29:01 CEST 2009 - mhrusecky@suse.cz
+
+- version update (2.0.9.2)
+  * Bugs:
+    - 2815773 CIM Client does not recognize HTTP extension headers
+
+-------------------------------------------------------------------
+Tue May 26 15:42:11 CEST 2009 - mhrusecky@suse.cz
+
+- version update (2.0.9.1)
+  * Bugs:
+   - 2790035 Export instance to mof, wrong syntax
+- fixed end of lines
+
+-------------------------------------------------------------------
+Fri Feb 20 15:34:22 CET 2009 - mhrusecky@suse.cz
+
+- version update (2.0.9)
+  * Bugs:
+    - 2414503 SLPConfig : parseList not returning populated list
+    - 2412389 Test case failure: Java5 Complier : CIMDateTimeAbsoluteTest
+    - 2382763 HTTP header field Accept-Language does not include *
+    - 2372030 Add property to control synchronized SSL handshaking
+    - 2315151 Jsr48IndicationSample does not work
+    - 2227442 Add missing serialVersionUID
+    - 2210455 Enhance javadoc, fix potential null pointers
+    - 2204488 Fix / clean code to remove compiler warnings
+  * Version 2.0.8 bugs:
+    - 2093708 HTTP 400 - Bad Request, CIMError: request-not-valid
+    - 2087969 VALUE.ARRAY used in request for array of references
+    - 2087975 can't set the pPropagated in WBEMClient.enumerateClasses()
+    - 2038305 SAXException SBLIM Java Client V2.0.7
+    - 2034342 HttpClient not closed on cimclient close
+    - 2013628 SAXException when listing classes
+    - 2002599 M-POST not supported in java-client 
+
+-------------------------------------------------------------------
+Mon Sep  1 13:02:24 CEST 2008 - anosek@suse.cz
+
+- new package prepared for SLES11 (fate#304369)
+  * based on spec file by JPackage project

@@ -1,0 +1,734 @@
+-------------------------------------------------------------------
+Mon Aug  5 03:42:13 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Update xrdp-pam.patch: Include the pam_keyinit.so module in
+  /etc/pam.d/xrdp-sesman to support the kernel keyrings
+  (boo#1144064).
+
+-------------------------------------------------------------------
+Fri Jul 26 12:31:01 UTC 2019 - matthias.gerstner@suse.com
+
+- Removal of SuSEfirewall2 service, since SuSEfirewall2 has been
+  replaced by firewalld, see:
+
+  https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Apr 29 17:25:19 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.9.10 (jsc#SLE-5926)
+  + New features
+    - Restrict outbound (server->client) clipboard transfer,
+      configured in `sesman.ini` #1298
+  + Bug fixes
+    - Fix libscp v1 not setting width but height twice #1293
+    - Fix reconnecting to session causes duplicate drive entries
+      in fuse fs #1299
+    - Fix default_wm and reconnect_sh refer wrong path after sesman
+      caught SIGUP #1315 #1331
+    - Shutdown xrdp more responsively #1325
+    - Improve remote file lookup in drive redirection #996 #1327
+    - Overwriting & appending to existing files now supported #1327
+  + Other changes
+    - Add Danish Keyboard #1290
+    - Put xrdp- prefix to some executables appear in man page #1313
+    - Replace some URLs from SF.net to xrdp.org #1313
+  + Known issues
+    - FreeRDP 2.0.0-rc4 or later might not able to connect to xrdp
+      due to xrdp's bad-mannered behaviour, add `+glyph-cache`
+      option to FreeRDP to connect #1266
+    - Audio redirection by MP3 codec doesn't sound with some
+      client, use AAC instead #965
+
+
+-------------------------------------------------------------------
+Thu Dec 27 10:03:54 UTC 2018 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.9.9
+  + New features
+    - Disconnection by idle timeout (requires xorgxrdp v0.2.9 or
+      later) #1227
+  + Bug fixes
+    - Fix xrdp-chansrv crashes caused in drive redirection #1202
+       #1225
+    - Fix build with FDK AAC v2 #1257
+    - Do not enable RemoteApp if the INFO_RAIL flag is not set
+      (RDP-RDP proxy) #1253
+  + Other changes
+    - Add Spanish Latin Amarican keyboard #1237 #1240 #1244
+    - Dynamic channel improvements #1222 #1224
+    - Remove some deprecated sesman session types #1232
+    - Refactoring and cleanups
+  + Known issues
+    - FreeRDP 2.0.0-rc4 or later might not able to connect to xrdp
+      due to xrdp's bad-mannered behaviour, add `+glyph-cache`
+      option to FreeRDP to connect #1266
+    - Audio redirection by MP3 codec doesn't sound with some
+      client, use AAC instead #965
+  + Refresh xrdp-default-config.patch
+
+-------------------------------------------------------------------
+Wed Sep 26 09:10:35 UTC 2018 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.9.8
+  + New features
+    - Add TLSv1.3 support #1193
+  + Deprecation notice
+    - TLSv1 and TLSv1.1 are removed from the default config.
+      Current default is TLSv1.2 and TLSv1.3
+  + Bug fixes
+    - Ensure unmount redirected drive on fatal X error #1140
+  + Other changes
+    - Pulseaudio modules has been removed from xrdp source tree
+    - Pass pulse socket name via environment variable #1198
+- Update xrdp-fate318398-change-expired-password.patch: Use
+  configured values instead of hardcoded ones in login_wnd inputs
+
+-------------------------------------------------------------------
+Fri Aug 10 10:25:46 UTC 2018 - fezhang@suse.com
+
+- Add xrdp-support-KillDisconnected-for-Xvnc.patch: Support the
+  KillDisconnected option for TigerVNC Xvnc sessions (boo#1101506)
+
+-------------------------------------------------------------------
+Thu Aug  2 14:28:28 UTC 2018 - bwiedemann@suse.com
+
+- Drop unused private key.pem to make build reproducible
+  (boo#1062303)
+
+-------------------------------------------------------------------
+Fri Jun 29 12:37:10 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.9.7
+  + Bug fixes
+    - Fix endianness detection on ppc64el #1082
+    - Fix a bug xrdp file copy slow #1112 #1132
+    - Copy the PAM session environment for the reconnect script
+      #1120
+    - Accept fullpath for DefaultWindowManager, ReconnectScript
+      #1147
+  + Other changes
+    - Show OpenSSL version to '--version' CLI option #1096
+    - Support sesrun start xorgxrdp sessions #1108
+    - Show configure summary when configure is done #1126 #1134
+      #1137
+    - Less spit on the console when sesman starts #1142
+    - Fix memory leaks #1146
+    - Separate rc script for FreeBSD into xrdp and xrdp-sesman
+      #1153
+
+-------------------------------------------------------------------
+Mon Apr 16 10:22:57 UTC 2018 - fezhang@suse.com
+
+- Add --enable-painter configure flag to avoid error 0xd06 for
+  certain Android RDP clients (boo#1031910, #246)
+
+-------------------------------------------------------------------
+Tue Mar 27 03:05:52 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.9.6
+  + Compatibility notice
+    - Exclamation mark has been removed from comment out symbol of
+      config files #1033
+  + Bug fixes
+    - Make listen check before daemon fork #988
+    - Fix xrdp sometimes become zombie processes #1000
+    - Include hostname in sesman password file name #1006 #1007
+      #1076
+    - Fix default startwm.sh to use bash explicitly #1009 #1049
+  + Other changes
+    - Add Swiss French keyboard #1053
+    - Improve perfect forward secrecy, explicitly enable ECDHE/DHE
+      #1024 #1052 #1063
+    - Lots of leak fixes, cleanups and refactoring
+- Enable IPv6 (boo#1083105)
+- Refresh xrdp-bsc965647-allow-admin-choose-desktop.patch
+
+-------------------------------------------------------------------
+Thu Mar 22 10:21:51 UTC 2018 - fezhang@suse.com
+
+- Update xrdp-fate319683-allow-vnc-resizing.patch: Fix interface
+  call incompatibleness (bsc#1064602, bsc#1075163)
+
+-------------------------------------------------------------------
+Thu Jan  4 08:43:48 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.9.5
+  + Security fixes
+    - Fix local denial of service (boo#1069591 CVE-2017-16927) #958
+      #979
+  + New features
+    - Add a new log level TRACE more verbose than DEBUG #835 #944
+    - SSH agent forwarding via RDP #867 #868 FreeRDP/FreeRDP#4122
+    - Support horizontal wheel properly #928
+  + Bug fixes
+    - Avoid use of hard-coded sesman port #895 (boo#1060644)
+    - Workaround for corrupted display with Windows Server 2008
+      using NeutrinoRDP #869
+    - Fix glitch in audio redirection by AAC #910 #936
+    - Implement vsock support #930 #935 #948
+    - Avoid 100% CPU usage on SSL accept #956
+  + Other changes
+    - Add US Dvorak keyboard #929
+    - Suppress some misleading logs #964
+    - Add Finnish keyboard #972
+    - Add more user-friendlier description about Xorg config #974
+    - Renew pulseaudio document #984 #985
+    - Lots of cleanups and refactoring
+  + Known issues
+    - Audio redirection by MP3 codec doesn't sound with some
+      client, use AAC instead #965
+- Update xrdp-default-config.patch, drop usage of xrdp.sh from
+  xrdp.service (boo#1014524)
+- Update xrdp-fate318398-change-expired-password.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:36:58 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Sep 28 04:19:45 UTC 2017 - fezhang@suse.com
+
+- Update to version 0.9.4
+  + Accept prefill credentials in base64 form #153 #811
+  + Indroduce AAC encoder to audio redirection (requires Windows 10
+    client)
+  + Fix ocasional SEGV in drive redirection #838
+  + Fix client's IP addresses in xrdp-sesman.log are always logged
+    as 0.0.0.0 #878 #882
+  + Fix ls_background_image didn't accept full path #776 #853
+  + Fix misuse of hidelogwindow #414 #876
+  + Fix WTSVirtualChannelWrite return code #859
+  + Fix no longer needed socket files remained in the socket dir
+    #812 #831
+  + Make creating socket path a bit more robust #823
+  + Add Belgian keyboard #858
+  + Drop workaround for #848, fixed in upstream
+
+-------------------------------------------------------------------
+Mon Aug 14 05:04:30 UTC 2017 - ftake@geeko.jp
+
+- Add workaround for the upstream issue #848, fix xrdp does not
+  start by wrong path in *.service.
+
+-------------------------------------------------------------------
+Wed Jul 19 09:03:29 UTC 2017 - fezhang@suse.com
+
+- Update to version 0.9.3
+  + Log user-friendly messages when certificate/privkey is
+    inaccessible
+  + Now sesman sets mandatory LOGNAME environment variable #725
+  + Now sesman ensures socket directory present #801
+  + Exit with failure status if port already in use #644
+  + Fix glitches with IPv4 struct initialization #803
+  + Fix some keyboard layout integration (UK, Spanish)
+  + Fix handle OS when IPv6 disabled #714
+  + Fix issues around systemd session #778
+  + Fix protocol error when 32 bit color and non RemoteFX session
+    #737 #804
+  + Fix sesadmin shows error when no sessions #797
+  + Fix TLS spins 100% CPU #728
+  + Fix Xvnc backend disconnects when some data copied to clipboard
+    #755
+  + Optimize startwm.sh for SUSE
+    * Drop xrdp-do-not-execute-psuedo-login-shell.patch
+  + Update xrdp-avahi.diff
+- Update xrdp.keyring: add key from upstream signer (Koichiro IWAO,
+  metalefty@github, 01BF10EB)
+
+-------------------------------------------------------------------
+Tue Jul 11 16:58:40 UTC 2017 - fezhang@suse.com
+
+- Add source verification:
+  + Add xrdp-0.9.2.tar.gz.asc
+  + Add xrdp.keyring: add key from upstream signer (Idan Freiberg,
+    speidy@github, 337B1F18)
+- Drop _service and _servicedata: not needed for stable releases
+- Drop xrdp-openSUSE-logo.patch and openSUSE.bmp: not really
+  necessary
+
+-------------------------------------------------------------------
+Sun Jun 25 16:56:29 UTC 2017 - fezhang@suse.com
+
+- Rebase SLE patches:
+  + xrdp-avahi.diff
+  + xrdp-bsc965647-allow-admin-choose-desktop.patch
+  + xrdp-fate318398-change-expired-password.patch
+  + xrdp-fate319683-allow-vnc-resizing.patch
+
+-------------------------------------------------------------------
+Wed Jun  7 11:24:14 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+- Rectify RPM groups and little errors in the summaries.
+
+-------------------------------------------------------------------
+Sat May 20 07:36:25 UTC 2017 - ftake@geeko.jp
+
+- Update to version 0.9.2
+  + RemoteFX codec and Bitmap updates support are enabled
+  + TLS ciphers suites and version, and connected computer name is
+    now logged
+  + Miscellaneous RemoteFX codec mode improvements
+  + Move auth/pam calls to appropriate locations, fix potential
+    bypass in PAM (bsc#1029912, #694, #704, CVE-2017-6967).
+- Update to version 0.9.1
+  + Support for TLS security layer (preferred over RDP layer
+    if supported by the client)
+  + Support for disabling deprecated SSLv3 protocol and
+    selecting custom cipher suites in xrdp.ini
+  + Support for bidirectional fastpath
+    (enabled in both directions by default)
+  + More configurable login screen
+  + Support for new virtual channels:
+    - rdpdr: device redirection
+    - rdpsnd: audio output
+    - cliprdr: clipboard
+    - xrdpvr: xrdp video redirection channel
+      (can be used along with NeutrinoRDP client)
+  + Support for disabling virtual channels globally or
+    by session type
+  + Allow to specify the path for backends (Xorg, X11rdp, Xvnc)
+  + Multi-monitor support
+  + xrdp-chansrv stores logs in ${XDG_DATA_HOME}/xrdp now
+  + Fix VNC password file that was based on clear text user
+    password (boo#1015567 CVE-2013-1430)
+  + Fix 3 bytes PDU handling (boo#1100453)
+- New sub packages for shared libraries and development files
+  + libpainter0
+  + librfxencode0
+  + xrdp-devel
+- Drop patches merged by the upstream
+  + xrdp-fix-buildtime-warnings.patch
+  + xrdp-Allow-sessions-with-32-bpp.patch.patch
+  + xrdp-vnc-enable-32-bpp-support-for-Xvnc-it-actually-works.patch
+  + xrdp-Fix-support-for-32-bpp-clients-connecting-to-16-bpp-.patch
+  + xrdp-dont-set-LANG.patch
+- Refresh patches
+  + xrdp-pam.patch
+    - its main part has been merged by the upstream
+  + xrdp-default-config.patch
+    - keep to use Xvnc as a default backend instread of Xorg
+      (upstream default)
+  + xrdp-disable-8-bpp-vnc-support.patch
+  + xrdp-openSUSE-logo.patch
+- Add xrdp-do-not-execute-psuedo-login-shell.patch
+  + prevent ~/.profile from being executed twice
+
+-------------------------------------------------------------------
+Thu May 18 09:08:57 UTC 2017 - fezhang@suse.com
+
+- Add xrdp-dont-set-LANG.patch: Backport upstream commit 5575197,
+  sesman should stop setting LANG and let initialization scripts
+  take care of it (bsc#1023988).
+
+-------------------------------------------------------------------
+Thu May 11 04:12:48 UTC 2017 - fezhang@suse.com
+
+- Update xrdp-fate319683-allow-vnc-resizing.patch:
+  + Fix a crash caused by double freeing stream (bsc#1034606).
+  + Remove DisplaySize from Xvnc default policy to enable it
+    resizing.
+
+-------------------------------------------------------------------
+Mon Feb  6 10:31:26 UTC 2017 - fezhang@suse.com
+
+- Add xrdp-fate319683-allow-vnc-resizing.patch:
+  Add support for ExtendedDesktopSize VNC extension into xrdp's VNC
+  client to allow it to do resizing, so that returning clients can
+  reconnect to session if their resolutions changed (FATE#319683,
+  bsc#948062).
+
+-------------------------------------------------------------------
+Wed Feb  1 12:14:29 CET 2017 - vliaskovitis@suse.com
+
+- Backport upstream patches for 32bpp support (bsc#1022098)
+  - Add xrdp-Allow-sessions-with-32-bpp.patch.patch
+  - Add xrdp-vnc-enable-32-bpp-support-for-Xvnc-it-actually-works.patch
+  - Add xrdp-Fix-support-for-32-bpp-clients-connecting-to-16-bpp-.patch
+
+-------------------------------------------------------------------
+Sun Sep 25 09:41:28 UTC 2016 - jengelh@inai.de
+
+- Trim/fixup summary and description. Use faster find -delete.
+
+-------------------------------------------------------------------
+Tue Aug 30 12:28:07 UTC 2016 - fezhang@suse.com
+
+- Add xrdp-disable-8-bpp-vnc-support.patch:
+  Disable 8 bpp vnc support. Xvnc drops support for 8 bpp since
+  1.4.0. Trying to launch Xvnc in 8 bpp will cause it to dump core
+  (bsc#991059).
+
+-------------------------------------------------------------------
+Mon Aug 01 07:28:34 UTC 2016 - fezhang@suse.com
+
+- Add obs source services:
+  + tar_scm
+  + recompress
+  + set_version
+- Update to version 0.9.0~git.1456906198.f422461:
+  Fix tarball naming from 0.9.0git to 0.9.0~git to conform openSUSE
+  naming scheme for pre-release version.
+  + Numlock out of sync fix
+  + neutrinordp: minor changes, coding style, log level
+  + Update faq-compile.txt
+  + Change to allow authentication against all authentication
+    methods.
+  + Add details for crypt_level=fips to man page
+  + libxrdp: no logic change, tabs to spaces
+  + libxrdp: opps, fix typeo
+  + Fix "\ _" on jp keyboard
+  + xrdp_keyboard.ini: Fix jp keyboard model
+  + update xorgxrdp
+  + add keyboard options to xrdp_client_info
+  + xorgxrdp=68412e5
+- Add an extra legacy service action force_stop:
+  Forcefully killing xrdp processes when it cannot be stopped
+  normally.
+  Usage:
+    $ service xrdp force_stop
+    or
+    $ rcxrdp force_stop
+- Merge X11:RemoteDesktop and SLE package, unfortunately we have to
+  drop the original X11:RemoteDesktop xrdp changelog due to
+  unresolvable chronological inconsistences with the SLE changelog.
+  + Add xrdp-default-config.patch:
+    Rebased from contribution of cyberorg@opensuse.org in original
+    X11:RemoteDesktop package. Adjust various default settings to
+    openSUSE standards including removing dysfunctional backend
+    entries from xrdp login UI (bsc#989309).
+  + Add xrdp-openSUSE-logo.patch:
+    Split from xrdp-default-config.patch. Add openSUSE logo to xrdp
+    login UI.
+    Add openSUSE.bmp:
+    Taken from the original X11:RemoteDesktop package, the logo.
+  + Add xrdp-fix-buildtime-warnings.patch:
+    Fix buid time warnings, backported from commit ded462a.
+  + Drop xrdp-lsb.patch:
+    SysV and LSB init scripts are no longer supported by systemd
+    (bnc#442211).
+  + Update xrdp-avahi.diff (bnc#586785).
+  + Update xrdp-pam.patch (bnc#441750).
+  + Update xrdp-bsc965647-allow-admin-choose-desktop.patch
+    (bsc#984834).
+  + Upbate xrdp-fate318398-change-expired-password.patch
+    (FATE#318398).
+  + Cleanup specfile.
+
+-------------------------------------------------------------------
+Wed Jun 15 12:08:19 UTC 2016 - fezhang@suse.com
+
+- Update xrdp-bsc965647-allow-admin-choose-desktop.patch:
+  Fix startwm.sh broken by changed gnome-session environments
+  (bsc#965647, bsc#984834).
+
+-------------------------------------------------------------------
+Wed Jun  1 08:52:52 UTC 2016 - fezhang@suse.com
+
+- Update xrdp-fate318398-change-expired-password.patch:
+  Fixed some internal bugs (FATE#318398).
+
+-------------------------------------------------------------------
+Mon May 30 13:09:26 UTC 2016 - fezhang@suse.com
+
+- Add xrdp-fate318398-change-expired-password.patch:
+  Enable the user to update expired password in login window
+  (FATE#318398).
+
+-------------------------------------------------------------------
+Fri Apr 22 08:10:16 UTC 2016 - fezhang@suse.com
+
+ - Update to version 0.9.0, git master branch id f422461
+   (FATE#319910).
+   + Added FIPS support.
+   - Drop xrdp-change-default-crypto_level.patch:
+     fixed upstream (bnc#764044).
+   - Drop xrdp-some-minor-changes-to-arch.h.patch:
+     fixed upstream (bnc#910824).
+   - Drop xrdp-fix-segfaults-in-xrdp-chansrv-code.patch:
+     fixed upstream (bnc#899105).
+   - Drop xrdp-add-systemd-support.patch:
+     fixed upstream (bnc#899105).
+   - Drop xrdp-tab-from-mstsc-updated.patch:
+     merged into xrdp-filter-tab-from-mstsc-on-focus-change.patch,
+     which introduced the bug fixed by this patch (bnc#623534).
+   - Rebase xrdp-avahi.diff (bnc#586785).
+   - Rebase xrdp-pam.patch (bnc#441750).
+   - Rebase xrdp-bsc965647-allow-admin-choose-desktop.patch
+     (bsc#965647).
+   - Rebase xrdp-lsb.patch (bnc#442211).
+   - Rebase xrdp-filter-tab-from-mstsc-on-focus-change.patch
+     (bnc#601996, bnc#623534).
+
+-------------------------------------------------------------------
+Wed Apr 13 15:25:40 UTC 2016 - fezhang@suse.com
+
+- fix rsakeys generation test (bsc#973130) in xrdp.spec.
+
+-------------------------------------------------------------------
+Wed Mar  2 08:24:46 UTC 2016 - fezhang@suse.com
+
+- allow admin choose desktop (bsc#965647)
+  add xrdp-bsc965647-allow-admin-choose-desktop.patch
+
+-------------------------------------------------------------------
+Tue Dec 23 09:55:03 UTC 2014 - rmilasan@suse.com
+
+- Fix endian issues (bnc#910824).
+  xrdp-some-minor-changes-to-arch.h.patch.
+
+-------------------------------------------------------------------
+Fri Nov 21 09:47:55 CET 2014 - rmilasan@suse.de
+
+- add systemd support into xrdp (bnc#899105).
+- fix some segfaults in xrdp-chansrv (bnc#899105).
+
+-------------------------------------------------------------------
+Fri Apr 25 08:26:53 UTC 2014 - fezhang@suse.com
+
+- update source to version 0.6.1.
+- rebase the following patches (bnc#871761)
+    - xrdp-avahi.diff (bnc#586785)
+    - xrdp-lsb.patch (bnc#442211)
+    - xrdp-pam.patch (bnc#441750)
+    - xrdp-filter-tab-from-mstsc-on-focus-change.patch (bnc#601996)
+    - xrdp-tab-from-mstsc-updated.patch (bnc#623534)
+    - xrdp-change-default-crypto_level.patch (bnc#764044)
+- drop the following patches (bnc#871761)
+    - xrdp-0.4.1..48f00f.diff.bz2
+    - xrdp-NOMAD.diff
+    - xrdp-558195-display-id.patch
+    - xrdp-xdmx-backend-cfg.patch
+    - xrdp-auth-fix.patch
+    - xrdp-clean-auth-file.patch
+    - bug-569797_xrdp-sesman-ini-add-dmx-args.diff
+    - xrdp-available-display.patch
+    - xrdp-xdmx-setxkbmap-params.patch
+    - xrdp-xkb.patch
+    - xrdp-807610-24-bpp.patch
+    - xrdp-810265-port-not-available.patch
+
+-------------------------------------------------------------------
+Sat May  4 03:08:22 UTC 2013 - dliang@suse.com
+
+- add xrdp-810265-port-not-available.patch to fix bnc#810265
+
+-------------------------------------------------------------------
+Mon Mar 25 12:33:54 UTC 2013 - dliang@suse.com
+
+- xrdp-807610-24-bpp.patch add 24 bpp support (bnc#807610)
+
+-------------------------------------------------------------------
+Thu Jun  7 06:10:04 UTC 2012 - lzwang@suse.com
+
+- set default crypt level to high. (bnc#764044)
+
+-------------------------------------------------------------------
+Mon Jan  9 21:04:22 UTC 2012 - sreeves@suse.com
+
+- Update xrdp-NOMAD.diff to fix remaining issues in bnc#442182.
+
+-------------------------------------------------------------------
+Thu Nov  3 10:00:56 UTC 2011 - lzwang@suse.com
+
+- Add xkb support.(bnc#497578)
+
+-------------------------------------------------------------------
+Tue Oct 12 08:22:00 UTC 2010 - lzwang@novell.com
+
+- Add xrdp-xdmx-setxkbmap-params.patch to fix bnc#597298.
+
+-------------------------------------------------------------------
+Mon Sep 20 16:04:32 CST 2010 - dliang@novell.com
+
+- Update xrdp-clean-auth-file.patch as  Marcus Meissner's advice
+- Update  xrdp-available-display.patch to fix bnc#616761
+           bnc#616744
+- Add xrdp-tab-from-mstsc-updated.patch to fix bnc#623534
+
+-------------------------------------------------------------------
+Thu Aug 12 12:19:33 CEST 2010 - ro@suse.de
+
+- fix broken patch xrdp-avahi.diff including a duplicate
+  hunk from xrdp-NOMAD.diff
+
+-------------------------------------------------------------------
+Tue Jun 29 11:57:17 CST 2010 - dliang@novell.com
+
+- xrdp-xdmx-backend-cfg.patch   bnc#505015
+    - add backend option to use different 'depth'
+  xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996
+    - filter the fake tab key which is used to notify the session
+  xrdp-auth-fix.patch bnc#503677
+    - login even if the first attemp was done by root.
+  xrdp-clean-auth-file.patch  bnc#505015
+    - clean the auth file when a session was end
+  bug-569797_xrdp-sesman-ini-add-dmx-args.diff bnc#569797
+    - disable the compose effect by default.
+     done by Lance Wang (lzwang@novell.com)
+  xrdp-available-display.patch : updated patch of bnc#558195
+
+-------------------------------------------------------------------
+Thu Apr  1 16:43:18 CST 2010 - dliang@novell.com
+
+- Update xrdp-avahi.diff and xrdp-NOMAD.diff (bnc#586785)
+
+-------------------------------------------------------------------
+Thu Mar  4 15:39:01 CST 2010 - dliang@novell.com
+
+- Get the valid unused display id. (bnc#558195)
+
+-------------------------------------------------------------------
+Wed Mar 18 18:38:47 EDT 2009 - davidr@novell.com
+
+- Send complete login info requests to sesman. (bnc#486632)
+
+-------------------------------------------------------------------
+Tue Mar 17 12:02:39 EDT 2009 - davidr@novell.com
+
+- Use correct X11 rdp port number when display number is
+  greater than 99. (bnc#484086)
+
+-------------------------------------------------------------------
+Wed Feb 25 12:29:27 EST 2009 - davidr@novell.com
+
+- Allow up to 128 simultaneous sessions. (bnc#477376)
+
+-------------------------------------------------------------------
+Wed Feb 11 11:20:48 EST 2009 - davidr@novell.com
+
+- Fix a number of vulnerabilities. (bnc#442182) (bnc#466373)
+- Don't reset username/password. (bnc#442293)
+- Fix xrdp-sesrun. (bnc#466373)
+- Fix user name selection support. (bnc#474840)
+
+-------------------------------------------------------------------
+Thu Feb  5 13:13:32 EST 2009 - davidr@novell.com
+
+- Add proper Xdmx keyboard layout handling and allow X server to
+  reset when last client disconnects. (bnc#447682) (bnc#442292)
+
+-------------------------------------------------------------------
+Thu Jan 22 16:15:25 EST 2009 - davidr@novell.com
+
+- Fall-back to regular RDP connection when X11 channel
+  fails. (bnc#450142)
+- Make sure multiple RDP connections to the same DMX
+  session can exist at the same.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:57:30 EST 2009 - davidr@novell.com
+
+- Fix multiple buffer overflows. (bnc#450898)
+
+-------------------------------------------------------------------
+Tue Jan  6 10:01:45 CET 2009 - davidr@novell.com
+
+- Properly install firewall definition file. (bnc#460835)
+
+-------------------------------------------------------------------
+Mon Jan  5 11:27:17 EST 2009 - davidr@novell.com
+
+- Register session as remote. (bnc#441751)
+
+-------------------------------------------------------------------
+Tue Dec 23 11:34:28 EST 2008 - hfiguiere@suse.de
+
+- Fixed xrdp-pam.patch according the the last comment in bnc#441750
+
+-------------------------------------------------------------------
+Tue Dec 23 12:09:04 CET 2008 - davidr@novell.com
+
+- Add firewall definition (bnc#460835)
+  source: xrdp.fw
+
+-------------------------------------------------------------------
+Tue Dec  9 13:52:52 EST 2008 - hfiguiere@suse.de
+
+- Added patch xrdp-pam.patch: fix pam config file, and fix pam
+  calls to use the proper service name (bnc#441750)
+
+-------------------------------------------------------------------
+Sun Nov 23 08:04:48 EST 2008 - davidr@novell.com
+
+- Use authorization files for all sessions. (bnc#442223)
+- Use authorization file for X11rdp. (bnc#442223)
+
+-------------------------------------------------------------------
+Tue Nov 18 16:37:57 EST 2008 - davidr@novell.com
+
+- Fix initial screen resolution.
+
+-------------------------------------------------------------------
+Wed Nov 12 16:00:48 EST 2008 - davidr@novell.com
+
+- Fix X server startup issue.
+  * Avoid using unix domain socket files to determine the
+    presence of X servers.
+
+-------------------------------------------------------------------
+Fri Nov  7 14:37:38 EST 2008 - hfiguiere@suse.de
+
+- Remove fuzz from xrdp-avahi.diff
+- Add xrdp-lsb.patch
+  * Make the init script LSB compliant (bnc#442211)
+
+-------------------------------------------------------------------
+Fri Nov  7 12:58:50 EST 2008 - hfiguiere@suse.de
+
+- Add /usr/sbin/rcxrdp (bnc#442692)
+
+-------------------------------------------------------------------
+Thu Nov  6 17:34:36 CET 2008 - ro@suse.de
+
+- fix last change (just adding "#" does not work for multiline rpm
+  macros).
+
+-------------------------------------------------------------------
+Wed Nov  5 09:43:03 EST 2008 - hfiguiere@suse.de
+
+- Don't enable xrdp by default (bnc#441742)
+
+-------------------------------------------------------------------
+Mon Oct 27 15:51:42 EDT 2008 - davidr@novell.com
+
+- Include .so files for modules.
+
+-------------------------------------------------------------------
+Mon Oct 27 13:20:18 EDT 2008 - davidr@novell.com
+
+- Update xrdp-NOMAD.diff
+  * Fix zlib compression.
+
+-------------------------------------------------------------------
+Sun Oct 12 12:18:21 EDT 2008 - hfiguiere@suse.de
+
+- Update xrdp-NOMAD.diff
+  * Fix openSUSE branding
+
+-------------------------------------------------------------------
+Wed Oct  8 17:14:18 EDT 2008 - hfiguiere@suse.de
+
+- Update xrdp-avahi.diff
+  * remove warnings for missing prototypes.
+
+-------------------------------------------------------------------
+Wed Sep 17 17:34:08 EDT 2008 - hfiguiere@suse.de
+
+- Update xrdp-NOMAD.diff
+  * Fix Xdmx command line arguments
+  * Fix session data matching for XDMX sessions
+
+-------------------------------------------------------------------
+Thu Sep 11 19:41:49 EDT 2008 - hfiguiere@suse.de
+
+- Add Avahi support.
+- More comprehensive support of NOMAD.
+
+-------------------------------------------------------------------
+Tue Sep  2 18:00:38 EDT 2008 - hfiguiere@suse.de
+
+- Initial release.

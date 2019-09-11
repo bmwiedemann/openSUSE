@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu Jul 12 07:29:47 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2.4:
+  * Generate Zip64 format .zip files when the output is greater
+    than or equal to 4 GiB.
+  * Improved gzip options processing and return code compatibility
+  * Some bug fixes
+- Drop no longer needed patches:
+  * pigz-fix-missing-linker.patch
+  * pigz-fix-wrong-include.patch
+
+-------------------------------------------------------------------
+Wed Aug 16 11:07:50 UTC 2017 - psychonaut@nothingisreal.com
+
+- Update to 2.3.4:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Wed Mar 11 21:30:11 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.3.3
+  * Portability improvements
+  * Update copyright years in documentation
+- Add build fix patches
+  * pigz-fix-wrong-include.patch
+  * pigz-fix-missing-linker.patch
+- Remove pigz-lm.patch; fixed
+- Use download Url as source
+
+-------------------------------------------------------------------
+Thu Mar 14 22:30:57 UTC 2013 - adam@mizerski.pl
+
+- update to 2.3
+  * Don't complain about missing suffix when not writing output file
+  * Put all global variables in one global structure for readability
+  * Do not decompress concatenated zlib streams -- only gzip streams
+  * Add option for compression level 11 to use zopfli
+  * Fix handling of junk after compressed data
+- added pigz-lm.patch
+  * adds missing "-lm"
+- provide unpigz binary and manpage as symlink, not copy.
+- removed fake cc script - build system honors CC
+- cleanup spec file
+
+-------------------------------------------------------------------
+Tue Nov 27 08:32:43 UTC 2012 - sweet_f_a@gmx.de
+
+- update to 2.2.5:
+  * add --rsyncable functionality
+  * many bug fixes
+- remove all suse patches:
+  * pigz-dictzip.patch, large and unmaintained patch. If somebody
+    really needs that then we should rebase and test it. In this
+    case --dictzip should be probably also added to original gzip.
+  * pigz-always-thread.patch was a folloup of pigz-dictzip.patch
+  * pigz-do-symlinks.patch added IMO dangerous and stupid behaviour
+    for symlinks. The original behaviour is now again like we know
+    it from gzip, bzip2 and xz.
+  * pigz-spl.patch, why we hacked in special handling of .spl
+    files?
+  * Generally we want to have pigz to replace gzip (and vice versa)
+    so better avoiding interface incompatibilities.
+- cleanup spec file
+
+-------------------------------------------------------------------
+Fri Sep 30 15:54:33 UTC 2011 - uli@suse.com
+
+- cross-build workaround: use fake cc script to work around build
+  system that does not honor CC
+
+-------------------------------------------------------------------
+Thu Jun  2 12:20:22 CEST 2011 - visnov@suse.cz
+
+- update to 2.1.6
+- package unpigz
+- create debug packages
+- package manpage
+
+-------------------------------------------------------------------
+Tue Apr 20 00:44:25 CEST 2010 - agraf@suse.de
+
+- fix dictzip with #CPU == 1 (bnc#597756)
+
+-------------------------------------------------------------------
+Wed Mar  3 16:12:37 CET 2010 - visnov@suse.de
+
+- include symlinks patch 
+
+-------------------------------------------------------------------
+Tue Oct 20 16:32:03 CEST 2009 - jmatejek@suse.de
+
+- initial package
+

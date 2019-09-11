@@ -1,0 +1,67 @@
+--- config/cmake/ConfigureChecks.cmake
++++ config/cmake/ConfigureChecks.cmake	2017/11/14 10:53:15
+@@ -13,8 +13,8 @@
+   set (${HDF_PREFIX}_HAVE_NETCDF 1)
+ endif (HDF4_ENABLE_NETCDF)
+ 
+-if (CYGWIN)
++#if (CYGWIN)
+   CHECK_LIBRARY_EXISTS_CONCAT ("tirpc" xdr_opaque     ${${HDF_PREFIX}}_HAVE_RPC)
+   CHECK_INCLUDE_FILE_CONCAT ("rpc/types.h"     ${HDF_PREFIX}_HAVE_RPC_TYPES_H)
+   CHECK_INCLUDE_FILE_CONCAT ("rpc/xdr.h"     ${HDF_PREFIX}_HAVE_RPC_XDR_H)
+-endif (CYGWIN)
++#endif (CYGWIN)
+--- mfhdf/CMakeLists.txt
++++ mfhdf/CMakeLists.txt	2017/11/14 10:53:37
+@@ -1,11 +1,11 @@
+ cmake_minimum_required (VERSION 2.8.10)
+ PROJECT (HDF4_MFHDF)
+ 
+-if (CYGWIN)
++#if (CYGWIN)
+   INCLUDE_DIRECTORIES (/usr/include/tirpc)
+-else (CYGWIN)
+-  INCLUDE_DIRECTORIES (/usr/include/rpc)
+-endif (CYGWIN)
++#else (CYGWIN)
++#  INCLUDE_DIRECTORIES (/usr/include/rpc)
++#endif (CYGWIN)
+ 
+ #-----------------------------------------------------------------------------
+ # Option to build HDF4 Tools
+--- mfhdf/fortran/CMakeLists.txt
++++ mfhdf/fortran/CMakeLists.txt	2017/11/14 10:54:56
+@@ -10,11 +10,11 @@
+     ${HDF4_HDF_TESTSOURCE_DIR}
+ )
+ 
+-if (CYGWIN)
++#if (CYGWIN)
+   INCLUDE_DIRECTORIES (/usr/include/tirpc)
+-else (CYGWIN)
+-  INCLUDE_DIRECTORIES (/usr/include/rpc)
+-endif (CYGWIN)
++#else (CYGWIN)
++#  INCLUDE_DIRECTORIES (/usr/include/rpc)
++#endif (CYGWIN)
+ 
+ add_definitions (-DHDF)
+ 
+--- mfhdf/libsrc/CMakeLists.txt
++++ mfhdf/libsrc/CMakeLists.txt	2017/11/14 10:54:25
+@@ -52,11 +52,11 @@
+   set (HDF4_MFHDF_LIBSRC_XCHDRS ${HDF4_BINARY_DIR}/hdf4_netcdf.h)
+ endif (HDF4_ENABLE_NETCDF)
+ 
+-if (CYGWIN)
++#if (CYGWIN)
+   INCLUDE_DIRECTORIES (/usr/include/tirpc)
+-else (CYGWIN)
+-  INCLUDE_DIRECTORIES (/usr/include/rpc)
+-endif (CYGWIN)
++#else (CYGWIN)
++#  INCLUDE_DIRECTORIES (/usr/include/rpc)
++#endif (CYGWIN)
+ 
+ INCLUDE_DIRECTORIES (${HDF4_HDFSOURCE_DIR})
+ INCLUDE_DIRECTORIES (${HDF4_MFHDFSOURCE_DIR})

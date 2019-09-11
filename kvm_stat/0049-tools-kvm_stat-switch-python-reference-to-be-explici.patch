@@ -1,0 +1,25 @@
+From 143ebdcad946ea4ff8f897bca5604a0f0f5ce0bf Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 21 Nov 2018 11:31:05 -0700
+Subject: [PATCH] tools/kvm_stat: switch python reference to be
+ explicitly python3
+
+[BR: BSC#1116822]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index ed6518bf2ab5..2a95389d2864 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ #
+ # top-like utility for displaying kvm statistics
+ #
+-- 
+2.19.1
+

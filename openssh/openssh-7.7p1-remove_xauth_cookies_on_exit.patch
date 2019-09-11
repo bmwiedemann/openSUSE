@@ -1,0 +1,55 @@
+# HG changeset patch
+# Parent  a60c0d88667efe0a64c030168950b69476af1622
+# --used to be called '-xauth'
+try to remove xauth cookies on logout
+
+bnc#98815
+
+diff --git a/openssh-7.7p1/session.c b/openssh-7.7p1/session.c
+--- openssh-7.7p1/session.c
++++ openssh-7.7p1/session.c
+@@ -2302,16 +2302,44 @@ session_close(struct ssh *ssh, Session *
+ 	u_int i;
+ 
+ 	verbose("Close session: user %s from %.200s port %d id %d",
+ 	    s->pw->pw_name,
+ 	    ssh_remote_ipaddr(ssh),
+ 	    ssh_remote_port(ssh),
+ 	    s->self);
+ 
++	if ((s->display != NULL) && (s->auth_proto != NULL) &&
++	    (s->auth_data != NULL) && (options.xauth_location != NULL)) {
++		pid_t pid;
++		FILE *f;
++		char cmd[1024];
++		struct passwd * pw = s->pw;
++
++		if (!(pid = fork())) {
++			permanently_set_uid(pw);
++
++			/* Remove authority data from .Xauthority if appropriate. */
++			debug("Running %.500s remove %.100s\n",
++			    options.xauth_location, s->auth_display);
++
++			snprintf(cmd, sizeof cmd, "unset XAUTHORITY && HOME=\"%.200s\" %s -q -",
++                     	    s->pw->pw_dir, options.xauth_location);
++            		f = popen(cmd, "w");
++			if (f) {
++				fprintf(f, "remove %s\n", s->auth_display);
++				pclose(f);
++			} else
++				error("Could not run %s\n", cmd);
++			exit(0);
++		} else if (pid > 0) {
++			waitpid(pid, NULL, 0);
++		}
++	}
++
+ 	if (s->ttyfd != -1)
+ 		session_pty_cleanup(s);
+ 	free(s->term);
+ 	free(s->display);
+ 	free(s->x11_chanids);
+ 	free(s->auth_display);
+ 	free(s->auth_data);
+ 	free(s->auth_proto);

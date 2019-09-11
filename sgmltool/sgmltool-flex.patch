@@ -1,0 +1,13 @@
+Index: sgml-tools-1.0.9/rtf-fix/rtf2rtf.l
+===================================================================
+--- sgml-tools-1.0.9.orig/rtf-fix/rtf2rtf.l
++++ sgml-tools-1.0.9/rtf-fix/rtf2rtf.l
+@@ -72,7 +72,7 @@ int current;
+ int skipnewline = 0;
+ 
+ extern char *yytext;
+-extern int yyleng;
++extern size_t yyleng;
+ 
+ #define CHAPTER 1
+ #define SECTION 2

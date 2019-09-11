@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Fri Aug 10 13:00:35 UTC 2018 - tchvatal@suse.com
+
+- Use only python3 variant
+- Drop argparse dependency
+- Use %license macro
+
+-------------------------------------------------------------------
+Mon Jul  2 19:48:09 UTC 2018 - kstreitova@suse.com
+
+- Recommends p7zip-full for TW as 7z binary used in binwalk was
+  moved there
+
+-------------------------------------------------------------------
+Wed Dec 23 18:04:53 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.1.1:
+  * Many bug fixes
+  * New/improved file signatures
+  * Disassembly scans (using the Capstone Engine)
+  * Improved raw Deflate compression detection and extraction
+  * Raw LZMA compression detection and extraction
+  * Improved false positive detection for common compressions
+    (Zlib, LZMA)
+  * An IDA plugin for running binwalk inside of IDA
+  * Integration of better extraction utilities (e.g., sasquatch
+    for SquashFS, jefferson for JFFS2)
+  * Removal of all C library dependencies, including
+    libmagic - pure Python!
+  * Native Windows support!
+ 
+-------------------------------------------------------------------
+Mon Sep 14 10:56:52 UTC 2015 - sor.alexei@meowr.ru
+
+- Use Python 3.x in new openSUSE releases.
+- Use built-in pyqtgraph.
+- Require "file" instead of python-magic as a shadow ABI-agnostic
+  libmagic dependency and "ssdeep" instead of "libfuzzy2".
+- Dependencies fixes.
+- Remove manpage generation from "binwalk --help": sometimes it
+  makes package build to fail.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Wed Jul  1 13:57:37 UTC 2015 - aloisio@gmx.com
+
+- Added requirement for python-curses 
+
+-------------------------------------------------------------------
+Mon Aug  4 09:20:11 UTC 2014 - boris@steki.net
+
+- updated to latest upstream 2.0.1
+  + Python3 support
+  + Raw deflate detection/extraction
+  + Improved API
+  + Improved speed
+  + More (and improved) signatures
+  + Faster entropy scans
+- Project has moved from google code hosting to github 
+
+-------------------------------------------------------------------
+Mon Sep 23 13:13:57 UTC 2013 - vcizek@suse.com
+
+- update to 1.2.1
+ * complete re-write in Python and includes new features and
+   a scriptable Python module
+ * several new features, including recursive scanning and extraction,
+   strings and entropy analysis, and plugin support
+ * major speed improvements and regex filter support,
+   as well as bug fixes and signature updates
+ * adds the --extract option and extends --dd, allowing auto extraction
+   and auto decompression of extracted files
+ * Improved signatures and scan speed
+
+-------------------------------------------------------------------
+Tue Oct 30 12:42:57 UTC 2012 - boris@steki.net
+
+- updated to latest upstream 0.4.5
+  * Fixed magic file white space parsing bug.
+  * Fixed memory leak when more than one target file was specified.
+  * Added --dd option for auto-extraction of files.
+  * Bug fixes, signature updates
+  * Much improved scanning speed (thanks dannyb!).
+  * New options (--grep, --raw-bytes).
+  * Improved filtering.
+  * Various bug fixes and signature updates.
+  * Improved signature matching for SquashFS file systems.
+  * Added support for Linux block devices.
+  * Added support for building against libmagic.
+  * Added ability to optionally disable update features.
+
+-------------------------------------------------------------------
+Tue Aug 23 12:39:24 UTC 2011 - boris@steki.net
+
+- Initial packaging of 0.3.8 version 
+

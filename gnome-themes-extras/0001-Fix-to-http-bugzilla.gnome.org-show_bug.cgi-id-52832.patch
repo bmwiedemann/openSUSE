@@ -1,0 +1,44 @@
+From 5d61d6c6947eb6a2eddf9b9caead86ceb5df2a96 Mon Sep 17 00:00:00 2001
+From: Andrea Cimitan <andrea.cimitan@gmail.com>
+Date: Thu, 17 Apr 2008 09:00:52 +0000
+Subject: [PATCH 01/48] Fix to http://bugzilla.gnome.org/show_bug.cgi?id=528322
+
+2008-04-17  Andrea Cimitan  <andrea.cimitan@gmail.com>
+
+	* gtk-themes/Darklooks/gtk-2.0/gtkrc:
+	Fix to http://bugzilla.gnome.org/show_bug.cgi?id=528322
+
+svn path=/trunk/; revision=491
+---
+ ChangeLog                          |    5 +++++
+ gtk-themes/Darklooks/gtk-2.0/gtkrc |    2 +-
+ 2 files changed, 6 insertions(+), 1 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 8dc0512..284bf71 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,8 @@
++2008-04-17  Andrea Cimitan  <andrea.cimitan@gmail.com>
++
++	* gtk-themes/Darklooks/gtk-2.0/gtkrc:
++	Fix to http://bugzilla.gnome.org/show_bug.cgi?id=528322
++
+ 2008-04-02  Andrea Cimitan  <andrea.cimitan@gmail.com>
+ 
+ 	* NEWS:
+diff --git a/gtk-themes/Darklooks/gtk-2.0/gtkrc b/gtk-themes/Darklooks/gtk-2.0/gtkrc
+index ca60616..037dfae 100644
+--- a/gtk-themes/Darklooks/gtk-2.0/gtkrc
++++ b/gtk-themes/Darklooks/gtk-2.0/gtkrc
+@@ -1,6 +1,6 @@
+ # Set GtkSettings color scheme property.
+ # This can be overriden (via an xsetting) with eg. the gnome-appearance-properties.
+-gtk_color_scheme = "fg_color:#E6E6E6\nbg_color:#555753\nbase_color:#2E3436\ntext_color:#D3D7CF\nselected_bg_color:#3F403D\nselected_fg_color:#7AA3CC\ntooltips_bg_color:#EDDE5C\ntooltips_fg_color:#000000"
++gtk_color_scheme = "fg_color:#E6E6E6\nbg_color:#555753\nbase_color:#2E3436\ntext_color:#D3D7CF\nselected_bg_color:#3F403D\nselected_fg_color:#7AA3CC\ntooltip_bg_color:#EDDE5C\ntooltip_fg_color:#000000"
+ 
+ style "clearlooks-default"
+ {
+-- 
+1.7.3.1
+

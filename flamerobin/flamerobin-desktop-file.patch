@@ -1,0 +1,23 @@
+From d7c55b7dad45534e439e44b6a92a43d5bbe5b5b5 Mon Sep 17 00:00:00 2001
+From: Vincent Bermel <palob@users.noreply.github.com>
+Date: Mon, 9 May 2016 01:29:55 +0200
+Subject: [PATCH] Unhardcode icon path in GNU/Linux laucher
+
+---
+ res/flamerobin.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/res/flamerobin.desktop b/res/flamerobin.desktop
+index 082bdcc..8282d2e 100644
+--- a/res/flamerobin.desktop
++++ b/res/flamerobin.desktop
+@@ -3,7 +3,7 @@ Name=FlameRobin
+ GenericName=Database administration tool
+ Comment=Administration Tool for Firebird DBMS
+ Exec=flamerobin
+-Icon=/usr/share/pixmaps/flamerobin.png
++Icon=flamerobin
+ Type=Application
+ Terminal=false
+ Categories=Development;Database;GTK
+

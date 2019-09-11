@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Wed Oct 31 09:37:20 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add frei0r-plugins-openCV-3.4.2-compatibility.patch to fix a
+  build failure with openCV > 3.4.1
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Dec  9 14:22:55 UTC 2017 - davejplater@gmail.com
+
+- Split off plugins built against OpenCV because they cause
+  multiprocessing issues in shotcut and kdenlive. See boo#1068792
+  and https://github.com/mltframework/mlt/issues/274.
+
+-------------------------------------------------------------------
+Wed Dec  6 14:08:29 UTC 2017 - tchvatal@suse.com
+
+- Reduce bit operations we do in the spec and convert to pkgconfig
+  dependencies
+- Switch LICENSE to GPL-3.0+ even tho upstream says 2.0+ is enough
+  quite few filters and generators are 3.0+ only
+
+-------------------------------------------------------------------
+Tue Nov 28 06:12:12 UTC 2017 - davejplater@gmail.com
+
+- Update to version 1.6.1
+- Rebase frei0r-plugins-1.4-missing_include.patch
+- Rebase frei0r-plugins-openCV-3.0-compatibility.patch it is mostly
+  included upstream.
+- Upstream changes:
+  *Minor fixes to the build system. Version correctly updated.
+  *This release contains new filters and some bugfixes to parameters
+   and building environment, documentation is updated accordingly.
+  *New filters (3): bgsubtract0r, glitch0r, rgbsplit0r
+  *Updated (2): Distort0r now mode and velocity, Curves has improved
+   precision.
+  *This release fixes several major bugs in existing plugins and adds
+   one new filter: NDVI (Normalized Difference Vegetation Index).
+
+-------------------------------------------------------------------
+Fri Mar  4 11:27:59 UTC 2016 - olaf@aepfle.de
+
+- Fix frei0r-plugins-openCV-3.0-compatibility.patch
+
+-------------------------------------------------------------------
+Fri Mar  4 10:52:06 UTC 2016 - zaitor@opensuse.org
+
+- Update Url to http://frei0r.dyne.org/, show that we are using the
+  fork and not the original frei0r.
+
+-------------------------------------------------------------------
+Thu Mar  3 14:17:10 UTC 2016 - tittiatcoke@gmail.com
+
+- Add frei0r-plugins-openCV-3.0-compatibility.patch: fix the
+  compilation against OpenCV 3. This patch is based on the two
+  upstream commits 129eea and 7ed3f84e6.
+
+-------------------------------------------------------------------
+Thu Nov 12 21:47:02 UTC 2015 - ecsos@opensuse.org
+
+- change if clause for opencv-qt5-devel, so no need for
+  ProjectConfig
+
+-------------------------------------------------------------------
+Thu Nov  5 16:02:21 UTC 2015 - wbauer@tmo.at
+
+- Build against opencv-qt5-devel on Leap as well, Leap comes with
+  the KF5/Qt5 based kdenlive (boo#930616)
+
+-------------------------------------------------------------------
+Sat May 16 20:29:03 UTC 2015 - wbauer@tmo.at
+
+- Build against opencv-qt5-devel on > 13.2, otherwise it would
+  crash kdenlive/libmlt which are built against Qt5
+
+-------------------------------------------------------------------
+Wed Mar  6 12:15:21 UTC 2013 - reddwarf@opensuse.org
+
+- Update to version 1.4:
+  * Fix several major bugs in existing plugins
+  * Add new filters and the optional dependency to cairo.
+    - New filters (18): IIRblur, Vignette, Keyspillm0pup, Timeout,
+        Posterize, Dither, Spillsupress, Emboss, Colgate, RGBNoise,
+        Colorize, Softglow, ColrHalftone, Sigmoidaltransfer,
+        Colortap, cairogradient, cairoimagegrid, medians
+    - New mixers: cairoblend, cairoaffineblend
+- Remove frei0r-missing-return.patch and frei0r-plugins-compiler-warnings.patch
+- Add frei0r-plugins-1.4-missing_include.patch
+- Add pkgconfig(cairo) BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 15:49:12 UTC 2011 - dimstar@opensuse.org
+
+- Add pkgconfig(gavl) BuildRequires to enable the remaining
+  filters: rgbparade, scale0tilt, vectorscope.
+- Add frei0r-plugins-compiler-warnings.patch: Fix compiler warning
+  on undefined operation. Patch taken from upstream git, commit
+  id 8f8090.
+
+-------------------------------------------------------------------
+Wed Sep 28 09:34:51 UTC 2011 - vuntz@opensuse.org
+
+- Cleanup package.
+
+-------------------------------------------------------------------
+Sat Sep  3 13:23:09 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 1.3.
+

@@ -1,0 +1,2111 @@
+-------------------------------------------------------------------
+Thu Mar 28 11:43:38 UTC 2019 - colyli@suse.com
+
+- imsm: finish recovery when drive with rebuild fails (bsc#1126975)
+  0010-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
+- mdmon: don't attempt to manage new arrays when terminating
+  (bsc#1127526)
+  0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 06:21:48 UTC 2019 - colyli@suse.com
+
+- Detail.c: do not skip first character when calling xstrdup in
+  Detail() (bsc#1123814)
+  0009-Detail.c-do-not-skip-first-character-when-calling-xs.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 13:52:25 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update description. Remove references to historic software.
+
+-------------------------------------------------------------------
+Mon Dec 10 01:52:35 UTC 2018 - Neil Brown <nfbrown@suse.com>
+
+- 0001-Document-PART-POLICY-lines.patch
+  0002-policy-support-devices-with-multiple-paths.patch
+  0008-policy.c-prevent-NULL-pointer-referencing.patch
+  (bsc#1106078)
+
+- 0003-mdcheck-add-systemd-unit-files-to-run-mdcheck.patch
+  0004-Monitor-add-system-timer-to-run-oneshot-periodically.patch
+  Remove mdadm.cron
+  Remove crond.mdadm
+  (bsc#1115407)
+
+- 0005-imsm-update-metadata-correctly-while-raid10-double-d.patch
+  0006-Grow-avoid-overflow-in-compute_backup_blocks.patch
+  0007-Grow-report-correct-new-chunk-size.patch
+  Other useful upstream patches.
+
+-------------------------------------------------------------------
+Wed Oct 17 03:27:21 UTC 2018 - Coly Li <colyli@suse.com>
+
+- Update mdadm code base to mdadm-4.1
+  (FATE#325869, bsc#1111960)
+ - Assorted bug-fixes, minor improvements, and code cleanup
+ - Add PPL support (alternate change-journalling model)
+- Fix Makefile to install mdadm_env.sh to /usr/lib/mdadm/
+  (bsc#1111960)
+  0001-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+- Remove the following code base and patches since they are in
+  mdadm-4.1 already,
+ - mdadm-4.0.tar.xz
+ - 0001-Makefile-Fix-date-to-be-output-in-ISO-format.patch
+ - 0002-imsm-fix-missing-error-message-during-migration.patch
+ - 0003-Fix-oddity-where-mdadm-did-not-recognise-a-relative-.patch
+ - 0004-mdadm-check-the-nodes-when-operate-clustered-array.patch
+ - 0005-examine-tidy-up-some-code.patch
+ - 0006-mdadm-add-man-page-for-symlinks.patch
+ - 0007-mdadm-add-checking-clustered-bitmap-in-assemble-mode.patch
+ - 0008-mdadm-Add-Wimplicit-fallthrough-0-in-Makefile.patch
+ - 0009-mdadm-Specify-enough-length-when-write-to-buffer.patch
+ - 0010-mdadm-it-doesn-t-make-sense-to-set-bitmap-twice.patch
+ - 0011-mdadm-Monitor-Fix-NULL-pointer-dereference-when-stat.patch
+ - 0012-Replace-snprintf-with-strncpy-at-some-places-to-avoi.patch
+ - 0013-mdadm-Forced-type-conversion-to-avoid-truncation.patch
+ - 0014-super1-ignore-failfast-flag-for-setting-device-role.patch
+ - 0015-mdadm-bitmap-fixed-typos-in-comments-of-bitmap.h.patch
+ - 0016-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+ - 0017-Retry-HOT_REMOVE_DISK-a-few-times.patch
+ - 0018-mdadm-Build-check-the-level-parameter-when-build-new.patch
+ - 0019-Introduce-sys_hot_remove_disk.patch
+ - 0020-Add-force-flag-to-hot_remove_disk.patch
+ - 0021-Detail-handle-non-existent-arrays-better.patch
+ - 0022-Generic-support-for-consistency-policy-and-PPL.patch
+ - 0023-Detail-show-consistency-policy.patch
+ - 0024-imsm-PPL-support.patch
+ - 0025-super1-PPL-support.patch
+ - 0026-Add-ppl-and-no-ppl-options-for-update.patch
+ - 0027-Grow-support-consistency-policy-change.patch
+ - 0028-mdadm.h-struct-mdinfo-reorganize-ppl-elements-for-be.patch
+ - 0029-super1-replace-hard-coded-values-with-bit-definition.patch
+ - 0030-mdadm-Clean-up-some-ugly-multiple-actions-on-single-.patch
+ - 0031-mdadm-Fixup-a-number-of-whitespace-inconsistency-cas.patch
+ - 0032-util-Cosmetic-changes.patch
+ - 0033-Grow-Fixup-a-pile-of-cosmetic-issues.patch
+ - 0034-Grow-Remove-unnecessary-optimization.patch
+ - 0035-Grow-Do-not-shadow-an-existing-variable.patch
+ - 0036-imsm-use-rounded-size-for-metadata-initialization.patch
+ - 0037-mdadm.c-fix-compile-error-switch-condition-has-boole.patch
+ - 0038-mdadm-Create-declaring-an-existing-struct-within-sam.patch
+ - 0039-Create-Fixup-bad-placement-of-logical-in-multi-line-.patch
+ - 0040-Create-Fixup-various-whitespace-issues.patch
+ - 0041-mdadm.c-fix-compile-warning-mdfd-is-uninitialized.patch
+ - 0042-mdopen-use-parameters-new_array-to-create-arrays-whe.patch
+ - 0043-mdadm-manpage-update-manpage-for-readonly-parameter.patch
+ - 0044-mdadm-manpage-clustered-arrays-don-t-support-array-s.patch
+ - 0045-maps-Terminate-modes-map-correctly.patch
+ - 0046-Grow_continue_command-ensure-content-is-properly-ini.patch
+ - 0047-systemd-mdadm-last-resort-use-ConditionPathExists-in.patch
+ - 0048-Detail-ensure-export-names-are-acceptable-as-shell-v.patch
+ - 0049-Grow-set-component-size-prior-to-array-size.patch
+ - 0050-Grow-don-t-allow-to-enable-PPL-when-reshape-is-in-pr.patch
+ - 0051-Grow-don-t-allow-array-geometry-change-with-ppl-enab.patch
+ - 0052-IMSM-Correct-examine-output-for-4k-disks.patch
+ - 0053-imsm-allow-drives-in-a-container-regardless-of-secto.patch
+ - 0054-imsm-allocate-buffer-to-support-maximum-sector-size.patch
+ - 0055-imsm-don-t-allow-disks-with-different-sector-size-in.patch
+ - 0056-mdadm-mdmon-deleted-the-abort_reshape-never-invoked.patch
+ - 0057-util-Introduce-md_get_array_info.patch
+ - 0058-Incremental-Remove-redundant-call-for-GET_ARRAY_INFO.patch
+ - 0059-util-Introduce-md_get_disk_info.patch
+ - 0060-util-Introduce-md_set_array_info.patch
+ - 0061-md_u-Remove-some-unused-ioctl-declarations.patch
+ - 0062-mdadm-grow-reshape-would-be-stuck-from-raid1-to-raid.patch
+ - 0063-sysfs-Use-the-presence-of-sys-block-dev-md-as-indica.patch
+ - 0064-sysfs-Make-sysfs_init-return-an-error-code.patch
+ - 0065-util-must_be_container-Use-sysfs_read-GET_VERSION-to.patch
+ - 0066-util-set_array_info-Simplify-code-since-md_get_versi.patch
+ - 0067-Assemble-Assemble-Stop-checking-kernel-md-driver-ver.patch
+ - 0068-Build-Stop-bothering-about-supporting-md-driver-olde.patch
+ - 0069-Grow-Stop-bothering-about-md-driver-versions-older-t.patch
+ - 0070-Detail-Stop-bothering-about-md-drivers-older-than-0..patch
+ - 0071-Create-Remove-all-attemps-to-handle-md-driver-older-.patch
+ - 0072-Manage-Remove-all-references-to-md_get_version.patch
+ - 0073-Query-Remove-all-references-to-md_get_version.patch
+ - 0074-bitmap-Remove-use-of-md_get_version.patch
+ - 0075-mdmon-Stop-bothering-about-md_get_version.patch
+ - 0076-mdopen-open_mddev-Use-md_get_array_info-to-determine.patch
+ - 0077-mdassemble-Use-md_get_array_info-to-check-for-valid-.patch
+ - 0078-Assemble-Assemble-Get-rid-of-last-use-of-md_get_vers.patch
+ - 0079-util-Finally-kill-off-md_get_version.patch
+ - 0080-mdadm-Fail-for-kernels-older-than-2.6.15.patch
+ - 0081-Revert-mdadm-grow-reshape-would-be-stuck-from-raid1-.patch
+ - 0082-Retire-mdassemble.patch
+ - 0083-super1-Clean-up-various-style-abuses.patch
+ - 0084-Detail-Remove-pre-2.6-code-for-printing-info-on-rebu.patch
+ - 0085-Assemble-Remove-obsolete-test-for-kernels-older-than.patch
+ - 0086-Detail-Fixup-ugly-if-foo-abuse.patch
+ - 0087-Query-Handle-error-returned-by-fstat.patch
+ - 0088-Query-Use-sysfs-to-obtain-data-if-possible.patch
+ - 0089-sysfs-Parse-array_state-in-sysfs_read.patch
+ - 0090-util-Introduce-md_array_active-helper.patch
+ - 0091-maps-Use-keyvalue-for-null-terminator-to-indicate-un.patch
+ - 0092-util-Get-rid-of-unused-enough_fd.patch
+ - 0093-mdadm-retire-mdassemble-in-make-everything.patch
+ - 0094-Query-Quiet-gcc-since-it-cannot-know-errno-0-in-this.patch
+ - 0095-Makefile-Default-to-O2-optimization.patch
+ - 0096-maps-Simplify-implementation-of-map_name.patch
+ - 0097-Don-t-use-UnSet-with-consistency_policy.patch
+ - 0098-Detail-determine-array-state-from-sysfs.patch
+ - 0099-Detail-Respect-code-lines-are-80-character-wide.patch
+ - 0100-Detail-Reinstate-support-for-not-having-sysfs.patch
+ - 0101-Incremental-Use-md_array_active-where-applicable.patch
+ - 0102-Incremental-Cleanup-some-if-statement-spaghetti.patch
+ - 0103-Create-tell-udev-md-device-is-not-ready-when-first-c.patch
+ - 0104-Incremental-Use-md_array_active-to-determine-state-o.patch
+ - 0105-Manage-Manage_ro-Use-md_array_active.patch
+ - 0106-IMSM-Initialize-my_vol_raid_dev_num-during-vol-creat.patch
+ - 0107-Grow-Grow_continue_command-Avoid-aliasing-array-vari.patch
+ - 0108-change-back-0644-permission-for-Grow.c.patch
+ - 0109-util-md_array_valid-Introduce-md_array_valid-helper.patch
+ - 0110-kernel-patch-Remove-obsolete-kernel-patches-against-.patch
+ - 0111-mdassemble-Kill-off-the-last-remains.patch
+ - 0112-mdadm-util-unify-fstat-checking-blkdev-into-function.patch
+ - 0113-mdadm-util-unify-stat-checking-blkdev-into-function.patch
+ - 0114-Fix-typo-in-new-udev-rule.patch
+ - 0115-Incremental-return-is-not-a-function.patch
+ - 0116-sysfs-sysfs_read-Count-active_disks-and-failed_disks.patch
+ - 0117-container_members_max_degradation-Switch-to-using-sy.patch
+ - 0118-IncrementalScan-Use-md_array_active-instead-of-md_ge.patch
+ - 0119-Mention-endian-in-documentation-for-update-byte-orde.patch
+ - 0120-Monitor-Use-md_array_active-instead-of-manually-fidd.patch
+ - 0121-Monitor-Code-is-80-characters-per-line.patch
+ - 0122-mdadm-md.4-set-page-length-as-1000-to-avoid-warnings.patch
+ - 0123-Allow-more-spare-selection-criteria.patch
+ - 0124-Add-sector-size-as-spare-selection-criterion.patch
+ - 0125-Monitor-check_array-Centralize-exit-path.patch
+ - 0126-Monitor-check_array-Reduce-duplicated-error-handling.patch
+ - 0127-Monitor-check_array-Declate-mdinfo-instance-globally.patch
+ - 0128-Monitor-check_array-Read-sysfs-entry-earlier.patch
+ - 0129-Monitor-check_array-Obtain-RAID-level-from-syfs.patch
+ - 0130-Monitor-check_array-Get-failed_disks-from-sysfs.patch
+ - 0131-Monitor-check_array-Get-array_disks-from-sysfs.patch
+ - 0132-Monitor-check_array-Get-nr_disks-active_disks-and-sp.patch
+ - 0133-sysfs-sysfs_read-Count-working_disks.patch
+ - 0134-Monitor-check_array-Use-working_disks-from-sysfs.patch
+ - 0135-retire-the-APIs-that-driver-no-longer-supports.patch
+ - 0136-Monitor-Not-much-point-declaring-mdlist-in-both-fork.patch
+ - 0137-Monitor-mailfrom-is-initialized-correctly.patch
+ - 0138-Monitor-Fixup-a-pile-of-whitespace-issues.patch
+ - 0139-mdadm-Uninitialized-variable-rdev.patch
+ - 0140-super-ddf-sysfs_read-takes-a-pointer-as-device-name-.patch
+ - 0141-mdadm-Fixup-a-large-number-of-bad-formatting-of-logi.patch
+ - 0142-mdadm-Fixup-more-broken-logical-operator-formatting.patch
+ - 0143-mdadm-Fix-broken-formatting.patch
+ - 0144-mdadm-Fixup-broken-formatting.patch
+ - 0145-Detail-don-t-exit-if-ioctl-has-been-successful.patch
+ - 0146-super1-fix-sb-max_dev-when-adding-a-new-disk-in-line.patch
+ - 0147-md_u-Remove-unused-ioctl-declaration-of-START_ARRAY.patch
+ - 0148-Get-failed-disk-count-from-array-state.patch
+ - 0149-Monitor-don-t-assume-mdadm-parameter-is-a-block-devi.patch
+ - 0150-super1-Always-round-data-offset-to-1M.patch
+ - 0151-mdadm-r5cache-allow-adding-journal-to-array-without-.patch
+ - 0152-udev-rules-introduce-rules-for-cluster-md-to-confirm.patch
+ - 0153-Detail-correct-output-for-active-arrays.patch
+ - 0154-imsm-rebuild-from-2-disk-RAID10.patch
+ - 0155-Error-messages-should-end-with-a-newline-character.patch
+ - 0156-Use-correct-syntax-for-passing-DEVLINKS-to-mdadm-fro.patch
+ - 0157-super1-only-set-clustered-flag-when-bitmap-is-presen.patch
+ - 0158-Don-t-use-exit-ERANGE.patch
+ - 0159-Monitor-containers-don-t-have-the-same-sysfs-propert.patch
+ - 0160-Monitor-Include-containers-in-spare-migration.patch
+ - 0161-Detail-differentiate-between-container-and-inactive-.patch
+ - 0162-mdadm-install-two-more-udev-rules-in-mdadm.spec.patch
+ - 0163-mdadm-set-journal_clean-after-scanning-all-disks.patch
+ - 0164-mdadm-bitmap-examine-bitmap-failed-when-bitmap-is-ex.patch
+ - 0165-mdopen-call-modprobe-md_mod-if-it-might-be-needed.patch
+ - 0166-lib-devid2kname-should-take-a-dev_t.patch
+ - 0167-sysfs_init_dev-take-a-dev_t-argument.patch
+ - 0168-Manage_subdevs-Use-a-dev_t.patch
+ - 0169-util-Code-is-80-characters-wide.patch
+ - 0170-Close-mdfd-before-returning-main-function.patch
+ - 0171-Grow-stop-previous-reshape-process-first.patch
+ - 0172-imsm-New-disk-controller-domains.patch
+ - 0173-Monitor-Check-redundancy-for-arrays.patch
+ - 0174-mdadm-grow-Component-size-must-be-larger-than-chunk-.patch
+ - 0175-mdadm-manpage-disable-bitmap_resize-for-external-fil.patch
+ - 0176-mdadm-fixes-some-trivial-typos-in-comments.patch
+ - 0177-Don-t-abort-starting-the-array-if-kernel-does-not-su.patch
+ - 0178-super1-Add-support-for-multiple-ppls.patch
+ - 0179-imsm-Add-support-for-multiple-ppls.patch
+ - 0180-imsm-validate-multiple-ppls-during-assemble.patch
+ - 0181-Zeroout-whole-ppl-space-during-creation-force-assemb.patch
+ - 0182-imsm-switch-to-multiple-ppls-automatically-during-as.patch
+ - 0183-Grow-fix-switching-on-PPL-during-recovery.patch
+ - 0184-imsm-don-t-skip-resync-when-an-invalid-ppl-header-is.patch
+ - 0185-imsm-Write-empty-PPL-header-if-assembling-regular-cl.patch
+ - 0186-imsm-always-do-ppl-recovery-when-starting-a-rebuildi.patch
+ - 0187-imsm-use-correct-map-when-validating-ppl.patch
+ - 0188-imsm-write-initial-ppl-on-a-disk-added-for-rebuild.patch
+ - 0189-Grow-Use-all-80-characters.patch
+ - 0190-imsm-Set-disk-slot-number.patch
+ - 0191-mdmon-get-safe-mode-delay-file-descriptor-early.patch
+ - 0192-mdadm-mdstat-fixup-a-number-of-broken-formatting.patch
+ - 0193-mdadm-mdstat-correct-the-strncmp-number-4-as-6.patch
+ - 0194-mdcheck-add-some-logging.patch
+ - 0195-mdcheck-improve-cleanup.patch
+ - 0197-mdadm-grow-adding-a-test-to-ensure-resize-was-requir.patch
+ - 0198-mdadm-mdopen-create-new-function-create_named_array-.patch
+ - 0199-systemd-add-I-to-description-of-mdadm-last-resort-se.patch
+ - 0200-Incremental-Use-validate_geometry-instead-of-avail_s.patch
+ - 0201-imsm-fix-reading-scsi-serial.patch
+ - 0202-To-support-clustered-raid10.patch
+ - 0203-imsm-More-precise-message-when-spanned-raid-is-creat.patch
+ - 0204-sysfs-include-faulty-drive-in-disk-count.patch
+ - 0205-Monitor-msg-Don-t-print-error-message-if-mdmon-doesn.patch
+ - 0206-imsm-continue-resync-on-3-disk-RAID10.patch
+ - 0207-managemon-Don-t-add-disk-to-the-array-after-it-has-s.patch
+ - 0208-mdadm-grow-correct-the-s-size-1-to-make-max-work.patch
+ - 0209-policy.c-Avoid-to-take-spare-without-defined-domain-.patch
+ - 0210-mdadm-allow-clustered-raid10-to-be-created-with-defa.patch
+
+-------------------------------------------------------------------
+Fri Aug  3 18:39:09 UTC 2018 - colyli@suse.com
+
+- Add missing patches which exist in SLE12-SP3 and should be in
+  SLE15 too,
+  - mdadm: improve the dlm locking mechanism for clustered raid
+    (bsc#1049126)
+    0218-mdadm-improve-the-dlm-locking-mechanism-for-clustere.patch
+  - Assemble: provide protection when clustered raid do assemble
+    (bsc#1049126)
+    0219-Assemble-provide-protection-when-clustered-raid-do-a.patch
+  - Assemble: cleanup the failure path
+    (bsc#1049126)
+    0220-Assemble-cleanup-the-failure-path.patch
+  - Assemble: remove the protection when clustered raid do assemble
+    (bsc#1101348)
+    0221-Assemble-remove-the-protection-when-clustered-raid-d.patch
+  - 1001-display-timeout-status.patch 
+
+-------------------------------------------------------------------
+Fri Aug  3 15:55:31 UTC 2018 - colyli@suse.com
+
+- mdadm.spec
+  Change %doc to %license for COPYING file, which was warned during
+  'osc ci'. 
+
+-------------------------------------------------------------------
+Fri Aug  3 13:04:18 UTC 2018 - colyli@suse.com
+
+- imsm: change reserved space to 4MB
+  (bsc#1101110)
+  0212-imsm-change-reserved-space-to-4MB.patch
+- imsm: add functions to get and set imsm dev size
+  (bsc#1101110)
+  0213-imsm-add-functions-to-get-and-set-imsm-dev-size.patch
+- imsm: pass already existing map to imsm_num_data_members
+  (bsc#1101110)
+  0214-imsm-pass-already-existing-map-to-imsm_num_data_memb.patch
+- imsm: do not use blocks_per_member in array size calculations
+  (bsc#1101110)
+  0215-imsm-do-not-use-blocks_per_member-in-array-size-calc.patch
+- imsm: correct num_data_stripes in metadata map for migration
+  (bsc#1101110)
+  0216-imsm-correct-num_data_stripes-in-metadata-map-for-mi.patch
+- mdadm/grow: correct size and chunk_size casting
+  (bsc#1095177)
+  0217-mdadm-grow-correct-size-and-chunk_size-casting.patch 
+
+-------------------------------------------------------------------
+Wed Jun 27 16:01:33 UTC 2018 - colyli@suse.com
+
+- Assemble: prevent segfault with faulty "best" devices
+  (bsc#1082766, bsc#1095729)
+  0211-Assemble-prevent-segfault-with-faulty-best-devices.patch
+
+-------------------------------------------------------------------
+Mon Mar  5 03:25:18 UTC 2018 - gqjiang@suse.com
+
+- mdadm: allow clustered raid10 to be created with default layout
+  (bsc#1083881)
+  0210-mdadm-allow-clustered-raid10-to-be-created-with-defa.patch
+
+-------------------------------------------------------------------
+Sat Feb 10 14:34:01 UTC 2018 - colyli@suse.com
+
+- policy.c: Avoid to take spare without defined domain by imsm
+  (bsc#1076588)
+  0209-policy.c-Avoid-to-take-spare-without-defined-domain-.patch 
+
+-------------------------------------------------------------------
+Tue Jan  9 03:30:48 UTC 2018 - zlliu@suse.com
+
+- 0208-mdadm-grow-correct-the-s-size-1-to-make-max-work.patch
+  (bsc#1074949)
+
+-------------------------------------------------------------------
+Wed Jan  3 14:44:06 UTC 2018 - colyli@suse.com
+
+- 0207-managemon-Don-t-add-disk-to-the-array-after-it-has-s.patch
+  (bsc#1073862)
+
+-------------------------------------------------------------------
+Mon Dec  4 17:11:14 UTC 2017 - colyli@suse.com
+
+- Update mdadm for SLE15, for bug fixes and new feature enhancement
+- 1000-The-mdcheck-script-now-adds-messages-to-the-system.patch is
+  removed because upstream has similar fix with almost identical
+  funcationality.
+- The following patches are not deleted indeed, they are renamed
+  and added into all other new-added patches with different perfix
+  numbers,
+  0038-Create-Fixup-bad-placement-of-logical-in-multi-line-.patch
+  0039-Create-Fixup-various-whitespace-issues.patch
+  0040-mdadm.c-fix-compile-warning-mdfd-is-uninitialized.patch
+  0041-mdopen-use-parameters-new_array-to-create-arrays-whe.patch
+  0042-mdadm-manpage-update-manpage-for-readonly-parameter.patch
+  0043-mdadm-manpage-clustered-arrays-don-t-support-array-s.patch
+  0044-maps-Terminate-modes-map-correctly.patch
+  0045-Grow_continue_command-ensure-content-is-properly-ini.patch
+  0046-systemd-mdadm-last-resort-use-ConditionPathExists-in.patch
+  0047-Detail-ensure-export-names-are-acceptable-as-shell-v.patch
+  0048-Grow-set-component-size-prior-to-array-size.patch
+  0049-Grow-don-t-allow-to-enable-PPL-when-reshape-is-in-pr.patch
+  0050-Grow-don-t-allow-array-geometry-change-with-ppl-enab.patch
+  0051-IMSM-Correct-examine-output-for-4k-disks.patch
+  0052-imsm-allow-drives-in-a-container-regardless-of-secto.patch
+  0053-imsm-allocate-buffer-to-support-maximum-sector-size.patch
+  0054-imsm-don-t-allow-disks-with-different-sector-size-in.patch
+  0055-Allow-more-spare-selection-criteria.patch
+  0056-Add-sector-size-as-spare-selection-criterion.patch
+  0057-super1-fix-sb-max_dev-when-adding-a-new-disk-in-line.patch
+  0058-super1-only-set-clustered-flag-when-bitmap-is-presen.patch
+  0059-To-support-clustered-raid10.patch
+  0060-udev-rules-introduce-rules-for-cluster-md-to-confirm.patch
+- The following patche set includes the above renamed patches,
+  they have bug fixes for bsc#1068030, bsc#1069165, bsc#1069167,
+  and some other fixes and enhancement for raid5 ppl, imsm, and
+  general mdadm code,
+  0038-mdadm-Create-declaring-an-existing-struct-within-sam.patch
+  0039-Create-Fixup-bad-placement-of-logical-in-multi-line-.patch
+  0040-Create-Fixup-various-whitespace-issues.patch
+  0041-mdadm.c-fix-compile-warning-mdfd-is-uninitialized.patch
+  0042-mdopen-use-parameters-new_array-to-create-arrays-whe.patch
+  0043-mdadm-manpage-update-manpage-for-readonly-parameter.patch
+  0044-mdadm-manpage-clustered-arrays-don-t-support-array-s.patch
+  0045-maps-Terminate-modes-map-correctly.patch
+  0046-Grow_continue_command-ensure-content-is-properly-ini.patch
+  0047-systemd-mdadm-last-resort-use-ConditionPathExists-in.patch
+  0048-Detail-ensure-export-names-are-acceptable-as-shell-v.patch
+  0049-Grow-set-component-size-prior-to-array-size.patch
+  0050-Grow-don-t-allow-to-enable-PPL-when-reshape-is-in-pr.patch
+  0051-Grow-don-t-allow-array-geometry-change-with-ppl-enab.patch
+  0052-IMSM-Correct-examine-output-for-4k-disks.patch
+  0053-imsm-allow-drives-in-a-container-regardless-of-secto.patch
+  0054-imsm-allocate-buffer-to-support-maximum-sector-size.patch
+  0055-imsm-don-t-allow-disks-with-different-sector-size-in.patch
+  0056-mdadm-mdmon-deleted-the-abort_reshape-never-invoked.patch
+  0057-util-Introduce-md_get_array_info.patch
+  0058-Incremental-Remove-redundant-call-for-GET_ARRAY_INFO.patch
+  0059-util-Introduce-md_get_disk_info.patch
+  0060-util-Introduce-md_set_array_info.patch
+  0061-md_u-Remove-some-unused-ioctl-declarations.patch
+  0062-mdadm-grow-reshape-would-be-stuck-from-raid1-to-raid.patch
+  0063-sysfs-Use-the-presence-of-sys-block-dev-md-as-indica.patch
+  0064-sysfs-Make-sysfs_init-return-an-error-code.patch
+  0065-util-must_be_container-Use-sysfs_read-GET_VERSION-to.patch
+  0066-util-set_array_info-Simplify-code-since-md_get_versi.patch
+  0067-Assemble-Assemble-Stop-checking-kernel-md-driver-ver.patch
+  0068-Build-Stop-bothering-about-supporting-md-driver-olde.patch
+  0069-Grow-Stop-bothering-about-md-driver-versions-older-t.patch
+  0070-Detail-Stop-bothering-about-md-drivers-older-than-0..patch
+  0071-Create-Remove-all-attemps-to-handle-md-driver-older-.patch
+  0072-Manage-Remove-all-references-to-md_get_version.patch
+  0073-Query-Remove-all-references-to-md_get_version.patch
+  0074-bitmap-Remove-use-of-md_get_version.patch
+  0075-mdmon-Stop-bothering-about-md_get_version.patch
+  0076-mdopen-open_mddev-Use-md_get_array_info-to-determine.patch
+  0077-mdassemble-Use-md_get_array_info-to-check-for-valid-.patch
+  0078-Assemble-Assemble-Get-rid-of-last-use-of-md_get_vers.patch
+  0079-util-Finally-kill-off-md_get_version.patch
+  0080-mdadm-Fail-for-kernels-older-than-2.6.15.patch
+  0081-Revert-mdadm-grow-reshape-would-be-stuck-from-raid1-.patch
+  0082-Retire-mdassemble.patch
+  0083-super1-Clean-up-various-style-abuses.patch
+  0084-Detail-Remove-pre-2.6-code-for-printing-info-on-rebu.patch
+  0085-Assemble-Remove-obsolete-test-for-kernels-older-than.patch
+  0086-Detail-Fixup-ugly-if-foo-abuse.patch
+  0087-Query-Handle-error-returned-by-fstat.patch
+  0088-Query-Use-sysfs-to-obtain-data-if-possible.patch
+  0089-sysfs-Parse-array_state-in-sysfs_read.patch
+  0090-util-Introduce-md_array_active-helper.patch
+  0091-maps-Use-keyvalue-for-null-terminator-to-indicate-un.patch
+  0092-util-Get-rid-of-unused-enough_fd.patch
+  0093-mdadm-retire-mdassemble-in-make-everything.patch
+  0094-Query-Quiet-gcc-since-it-cannot-know-errno-0-in-this.patch
+  0095-Makefile-Default-to-O2-optimization.patch
+  0096-maps-Simplify-implementation-of-map_name.patch
+  0097-Don-t-use-UnSet-with-consistency_policy.patch
+  0098-Detail-determine-array-state-from-sysfs.patch
+  0099-Detail-Respect-code-lines-are-80-character-wide.patch
+  0100-Detail-Reinstate-support-for-not-having-sysfs.patch
+  0101-Incremental-Use-md_array_active-where-applicable.patch
+  0102-Incremental-Cleanup-some-if-statement-spaghetti.patch
+  0103-Create-tell-udev-md-device-is-not-ready-when-first-c.patch
+  0104-Incremental-Use-md_array_active-to-determine-state-o.patch
+  0105-Manage-Manage_ro-Use-md_array_active.patch
+  0106-IMSM-Initialize-my_vol_raid_dev_num-during-vol-creat.patch
+  0107-Grow-Grow_continue_command-Avoid-aliasing-array-vari.patch
+  0108-change-back-0644-permission-for-Grow.c.patch
+  0109-util-md_array_valid-Introduce-md_array_valid-helper.patch
+  0110-kernel-patch-Remove-obsolete-kernel-patches-against-.patch
+  0111-mdassemble-Kill-off-the-last-remains.patch
+  0112-mdadm-util-unify-fstat-checking-blkdev-into-function.patch
+  0113-mdadm-util-unify-stat-checking-blkdev-into-function.patch
+  0114-Fix-typo-in-new-udev-rule.patch
+  0115-Incremental-return-is-not-a-function.patch
+  0116-sysfs-sysfs_read-Count-active_disks-and-failed_disks.patch
+  0117-container_members_max_degradation-Switch-to-using-sy.patch
+  0118-IncrementalScan-Use-md_array_active-instead-of-md_ge.patch
+  0119-Mention-endian-in-documentation-for-update-byte-orde.patch
+  0120-Monitor-Use-md_array_active-instead-of-manually-fidd.patch
+  0121-Monitor-Code-is-80-characters-per-line.patch
+  0122-mdadm-md.4-set-page-length-as-1000-to-avoid-warnings.patch
+  0123-Allow-more-spare-selection-criteria.patch
+  0124-Add-sector-size-as-spare-selection-criterion.patch
+  0125-Monitor-check_array-Centralize-exit-path.patch
+  0126-Monitor-check_array-Reduce-duplicated-error-handling.patch
+  0127-Monitor-check_array-Declate-mdinfo-instance-globally.patch
+  0128-Monitor-check_array-Read-sysfs-entry-earlier.patch
+  0129-Monitor-check_array-Obtain-RAID-level-from-syfs.patch
+  0130-Monitor-check_array-Get-failed_disks-from-sysfs.patch
+  0131-Monitor-check_array-Get-array_disks-from-sysfs.patch
+  0132-Monitor-check_array-Get-nr_disks-active_disks-and-sp.patch
+  0133-sysfs-sysfs_read-Count-working_disks.patch
+  0134-Monitor-check_array-Use-working_disks-from-sysfs.patch
+  0135-retire-the-APIs-that-driver-no-longer-supports.patch
+  0136-Monitor-Not-much-point-declaring-mdlist-in-both-fork.patch
+  0137-Monitor-mailfrom-is-initialized-correctly.patch
+  0138-Monitor-Fixup-a-pile-of-whitespace-issues.patch
+  0139-mdadm-Uninitialized-variable-rdev.patch
+  0140-super-ddf-sysfs_read-takes-a-pointer-as-device-name-.patch
+  0141-mdadm-Fixup-a-large-number-of-bad-formatting-of-logi.patch
+  0142-mdadm-Fixup-more-broken-logical-operator-formatting.patch
+  0143-mdadm-Fix-broken-formatting.patch
+  0144-mdadm-Fixup-broken-formatting.patch
+  0145-Detail-don-t-exit-if-ioctl-has-been-successful.patch
+  0146-super1-fix-sb-max_dev-when-adding-a-new-disk-in-line.patch
+  0147-md_u-Remove-unused-ioctl-declaration-of-START_ARRAY.patch
+  0148-Get-failed-disk-count-from-array-state.patch
+  0149-Monitor-don-t-assume-mdadm-parameter-is-a-block-devi.patch
+  0150-super1-Always-round-data-offset-to-1M.patch
+  0151-mdadm-r5cache-allow-adding-journal-to-array-without-.patch 
+  0152-udev-rules-introduce-rules-for-cluster-md-to-confirm.patch
+  0153-Detail-correct-output-for-active-arrays.patch
+  0154-imsm-rebuild-from-2-disk-RAID10.patch (bsc#1069165)
+  0155-Error-messages-should-end-with-a-newline-character.patch
+  0156-Use-correct-syntax-for-passing-DEVLINKS-to-mdadm-fro.patch
+  0157-super1-only-set-clustered-flag-when-bitmap-is-presen.patch
+  0158-Don-t-use-exit-ERANGE.patch
+  0159-Monitor-containers-don-t-have-the-same-sysfs-propert.patch
+  0160-Monitor-Include-containers-in-spare-migration.patch
+  0161-Detail-differentiate-between-container-and-inactive-.patch
+  0162-mdadm-install-two-more-udev-rules-in-mdadm.spec.patch
+  0163-mdadm-set-journal_clean-after-scanning-all-disks.patch
+  0164-mdadm-bitmap-examine-bitmap-failed-when-bitmap-is-ex.patch
+  0165-mdopen-call-modprobe-md_mod-if-it-might-be-needed.patch
+  0166-lib-devid2kname-should-take-a-dev_t.patch
+  0167-sysfs_init_dev-take-a-dev_t-argument.patch
+  0168-Manage_subdevs-Use-a-dev_t.patch
+  0169-util-Code-is-80-characters-wide.patch
+  0170-Close-mdfd-before-returning-main-function.patch
+  0171-Grow-stop-previous-reshape-process-first.patch
+  0172-imsm-New-disk-controller-domains.patch
+  0173-Monitor-Check-redundancy-for-arrays.patch
+  0174-mdadm-grow-Component-size-must-be-larger-than-chunk-.patch
+  0175-mdadm-manpage-disable-bitmap_resize-for-external-fil.patch
+  0176-mdadm-fixes-some-trivial-typos-in-comments.patch
+  (The following 12 patches are specifically for bsc#1068030)
+  0177-Don-t-abort-starting-the-array-if-kernel-does-not-su.patch
+  0178-super1-Add-support-for-multiple-ppls.patch
+  0179-imsm-Add-support-for-multiple-ppls.patch
+  0180-imsm-validate-multiple-ppls-during-assemble.patch
+  0181-Zeroout-whole-ppl-space-during-creation-force-assemb.patch
+  0182-imsm-switch-to-multiple-ppls-automatically-during-as.patch
+  0183-Grow-fix-switching-on-PPL-during-recovery.patch
+  0184-imsm-don-t-skip-resync-when-an-invalid-ppl-header-is.patch
+  0185-imsm-Write-empty-PPL-header-if-assembling-regular-cl.patch
+  0186-imsm-always-do-ppl-recovery-when-starting-a-rebuildi.patch
+  0187-imsm-use-correct-map-when-validating-ppl.patch
+  0188-imsm-write-initial-ppl-on-a-disk-added-for-rebuild.patch
+  0189-Grow-Use-all-80-characters.patch
+  0190-imsm-Set-disk-slot-number.patch
+  (The following 1 patch is specifically for bsc#1069167)
+  0191-mdmon-get-safe-mode-delay-file-descriptor-early.patch
+  0192-mdadm-mdstat-fixup-a-number-of-broken-formatting.patch
+  0193-mdadm-mdstat-correct-the-strncmp-number-4-as-6.patch
+  0194-mdcheck-add-some-logging.patch
+  0195-mdcheck-improve-cleanup.patch
+  0196-Move-mdadm_env.sh-out-of-usr-lib-systemd.patch
+  0197-mdadm-grow-adding-a-test-to-ensure-resize-was-requir.patch
+  0198-mdadm-mdopen-create-new-function-create_named_array-.patch
+  0199-systemd-add-I-to-description-of-mdadm-last-resort-se.patch
+  0200-Incremental-Use-validate_geometry-instead-of-avail_s.patch
+  0201-imsm-fix-reading-scsi-serial.patch
+  0202-To-support-clustered-raid10.patch
+  0203-imsm-More-precise-message-when-spanned-raid-is-creat.patch
+  0204-sysfs-include-faulty-drive-in-disk-count.patch
+  0205-Monitor-msg-Don-t-print-error-message-if-mdmon-doesn.patch
+  0206-imsm-continue-resync-on-3-disk-RAID10.patch
+
+-------------------------------------------------------------------
+Fri Nov 24 01:26:09 UTC 2017 - gqjiang@suse.com
+
+- Add udev rules for cluster-md to confirm device (fate#316335)
+    0060-udev-rules-introduce-rules-for-cluster-md-to-confirm.patch 
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:30 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 15 01:27:06 UTC 2017 - gqjiang@suse.com
+
+- Add one mdadm patch to support clustered raid10 (fate#323171)
+    0059-To-support-clustered-raid10.patch
+
+-------------------------------------------------------------------
+Mon Aug 21 16:44:54 UTC 2017 - colyli@suse.com
+
+- SLE15 continues to use mdadm-4.0, synchronize mdadm package from
+  SLE12-SP3 to SLE15, re-order all patches.
+
+- Rename the following patches, they are deleted and re-add in next
+  part of patches
+    0001-Generic-support-for-consistency-policy-and-PPL.patch
+    0002-Detail-show-consistency-policy.patch
+    0002-The-mdcheck-script-now-adds-messages-to-the-system.patch
+    0003-imsm-PPL-support.patch
+    0004-super1-PPL-support.patch
+    0005-Add-ppl-and-no-ppl-options-for-update.patch
+    0006-Grow-support-consistency-policy-change.patch
+    0007-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+    0008-Retry-HOT_REMOVE_DISK-a-few-times.patch
+    0009-Introduce-sys_hot_remove_disk.patch
+    0010-Add-force-flag-to-hot_remove_disk.patch
+    0011-Detail-handle-non-existent-arrays-better.patch
+
+- Synchronize patches from mdadm of SLE12-SP3, the above renamed
+  patches are re-add here,
+    0001-Makefile-Fix-date-to-be-output-in-ISO-format.patch
+    0002-imsm-fix-missing-error-message-during-migration.patch
+    0003-Fix-oddity-where-mdadm-did-not-recognise-a-relative-.patch
+    0004-mdadm-check-the-nodes-when-operate-clustered-array.patch
+    0005-examine-tidy-up-some-code.patch
+    0006-mdadm-add-man-page-for-symlinks.patch
+    0007-mdadm-add-checking-clustered-bitmap-in-assemble-mode.patch
+    0008-mdadm-Add-Wimplicit-fallthrough-0-in-Makefile.patch
+    0009-mdadm-Specify-enough-length-when-write-to-buffer.patch
+    0010-mdadm-it-doesn-t-make-sense-to-set-bitmap-twice.patch
+    0011-mdadm-Monitor-Fix-NULL-pointer-dereference-when-stat.patch
+    0012-Replace-snprintf-with-strncpy-at-some-places-to-avoi.patch
+    0013-mdadm-Forced-type-conversion-to-avoid-truncation.patch
+    0014-super1-ignore-failfast-flag-for-setting-device-role.patch
+    0015-mdadm-bitmap-fixed-typos-in-comments-of-bitmap.h.patch
+    0016-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+    0017-Retry-HOT_REMOVE_DISK-a-few-times.patch
+    0018-mdadm-Build-check-the-level-parameter-when-build-new.patch
+    0019-Introduce-sys_hot_remove_disk.patch
+    0020-Add-force-flag-to-hot_remove_disk.patch
+    0021-Detail-handle-non-existent-arrays-better.patch
+    0022-Generic-support-for-consistency-policy-and-PPL.patch
+    0023-Detail-show-consistency-policy.patch
+    0024-imsm-PPL-support.patch
+    0025-super1-PPL-support.patch
+    0026-Add-ppl-and-no-ppl-options-for-update.patch
+    0027-Grow-support-consistency-policy-change.patch
+    0028-mdadm.h-struct-mdinfo-reorganize-ppl-elements-for-be.patch
+    0029-super1-replace-hard-coded-values-with-bit-definition.patch
+    0030-mdadm-Clean-up-some-ugly-multiple-actions-on-single-.patch
+    0031-mdadm-Fixup-a-number-of-whitespace-inconsistency-cas.patch
+    0032-util-Cosmetic-changes.patch
+    0033-Grow-Fixup-a-pile-of-cosmetic-issues.patch
+    0034-Grow-Remove-unnecessary-optimization.patch
+    0035-Grow-Do-not-shadow-an-existing-variable.patch
+    0036-imsm-use-rounded-size-for-metadata-initialization.patch
+    0037-mdadm.c-fix-compile-error-switch-condition-has-boole.patch
+    0038-Create-Fixup-bad-placement-of-logical-in-multi-line-.patch
+    0039-Create-Fixup-various-whitespace-issues.patch
+    0040-mdadm.c-fix-compile-warning-mdfd-is-uninitialized.patch
+    0041-mdopen-use-parameters-new_array-to-create-arrays-whe.patch
+    0042-mdadm-manpage-update-manpage-for-readonly-parameter.patch
+    0043-mdadm-manpage-clustered-arrays-don-t-support-array-s.patch
+    0044-maps-Terminate-modes-map-correctly.patch
+    0045-Grow_continue_command-ensure-content-is-properly-ini.patch
+    0046-systemd-mdadm-last-resort-use-ConditionPathExists-in.patch
+    0047-Detail-ensure-export-names-are-acceptable-as-shell-v.patch
+    0048-Grow-set-component-size-prior-to-array-size.patch
+    0049-Grow-don-t-allow-to-enable-PPL-when-reshape-is-in-pr.patch
+    0050-Grow-don-t-allow-array-geometry-change-with-ppl-enab.patch
+    0051-IMSM-Correct-examine-output-for-4k-disks.patch
+    0052-imsm-allow-drives-in-a-container-regardless-of-secto.patch
+    0053-imsm-allocate-buffer-to-support-maximum-sector-size.patch
+    0054-imsm-don-t-allow-disks-with-different-sector-size-in.patch
+    0055-Allow-more-spare-selection-criteria.patch
+    0056-Add-sector-size-as-spare-selection-criterion.patch
+    0057-super1-fix-sb-max_dev-when-adding-a-new-disk-in-line.patch
+    0058-super1-only-set-clustered-flag-when-bitmap-is-presen.patch
+    1000-The-mdcheck-script-now-adds-messages-to-the-system.patch
+
+-------------------------------------------------------------------
+Fri Mar 24 04:10:22 UTC 2017 - nfbrown@suse.com
+
+- New upstream release 4.0
+  Multiple bugfixes and various enhancements
+  including IMSM support for bad blocks and 4K block devices.
+  (FATE#321941)
+
+- DELETE 0001-super1-Clear-memory-allocated-for-superblock-bitmap-.patch
+  this was included upstream
+
+- 0001-Generic-support-for-consistency-policy-and-PPL.patch
+- 0002-Detail-show-consistency-policy.patch
+- 0003-imsm-PPL-support.patch
+- 0004-super1-PPL-support.patch
+- 0005-Add-ppl-and-no-ppl-options-for-update.patch
+- 0006-Grow-support-consistency-policy-change.patch
+   Add support for Partial Parity Logs
+   (FATE#321941)
+
+- 0007-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+   (bsc#956236)
+
+- 0008-Retry-HOT_REMOVE_DISK-a-few-times.patch
+   (bsc#808647)
+- 0009-Introduce-sys_hot_remove_disk.patch
+   (bsc#974154)
+- 0010-Add-force-flag-to-hot_remove_disk.patch
+   (bsc#808647)
+- 0011-Detail-handle-non-existent-arrays-better.patch
+   (bsc#966773)
+
+-------------------------------------------------------------------
+Sun May 22 15:01:13 UTC 2016 - bill@merriam.net
+
+- Added 0002-The-mdcheck-script-now-adds-messages-to-the-system.patch
+  The mdcheck bash script now writes messages to the syslog about 
+  progress with check.
+
+-------------------------------------------------------------------
+Fri May 20 05:13:48 UTC 2016 - neilb@suse.com
+
+- Do not list XXX@.service files for anything but service_del_preun.
+  They cannot be restarted by systemctl as they are
+  just templates.  They don't need to be restarted
+  at reinstall anyway.
+  (bsc#979749)
+
+-------------------------------------------------------------------
+Wed May  4 04:56:42 UTC 2016 - neilb@suse.com
+
+- New upstream release mdadm-3.4
+  Adds support for clustered-raid1 and journalled raid5
+- 0001-super1-Clear-memory-allocated-for-superblock-bitmap-.patch
+  Important upstream bugfix relating to uninialised memory.
+
+-------------------------------------------------------------------
+Thu Dec 10 17:07:40 CET 2015 - tiwai@suse.de
+
+- Add missing pre-requres for initrd macros (boo#958562)
+
+-------------------------------------------------------------------
+Mon Sep 14 13:21:33 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_systemdshutdowndir} in case nothing else does. This
+  ensures build success even if systemd-mini does not own it
+  (happens in some versions of our package).
+
+-------------------------------------------------------------------
+Mon Aug 31 11:43:43 UTC 2015 - dimstar@opensuse.org
+
+- Do not BuildRequire systemd: it conflicts with systemd-mini,
+  pulled in by systemd-mini-devel (due to BuildRequires:
+  pkgconfig(systemd)). The reason systemd was added as a
+  buildrequires was for 'something' to onw
+  /usr/lib/systemd/system-shutdown/; systemd-mini does that also
+  for us.
+
+-------------------------------------------------------------------
+Mon Aug  3 06:25:56 UTC 2015 - nfbrown@suse.com
+
+- new upstream version 3.3.4. Important bugfix
+  to honour IMSM ROM settings when RAID is disabled.
+  (bsc#939748 bsc#937363)
+
+-------------------------------------------------------------------
+Mon Jul 27 04:17:43 UTC 2015 - nfbrown@suse.com
+
+- new upstream version 3.3.3.  Lots of bug fixes, particular
+  "mdadm --assemble --force" would often not do the right thing
+  for RAID5.
+
+-  0001-Grow-Do-not-try-to-restart-if-reshape-is-running.patch
+   0001-Grow-fix-removal-of-line-in-wrong-case.patch
+   0001-IMSM-Add-warning-message-when-assemble-spanned-conta.patch
+   0001-Makefile-install-mdadm-grow-continue-.service.patch
+   mdcheck-careful.patch
+   mdcheck-no-devices.fix
+
+   All removed as now included upstream.
+
+
+-------------------------------------------------------------------
+Mon Jul 13 09:19:36 UTC 2015 - werner@suse.de
+
+- Make it build, that is build-require pkgconfig of udev and the
+  package systemd as this one is the owner of the directory
+  /usr/lib/systemd/system-shutdown
+
+-------------------------------------------------------------------
+Mon Mar  2 20:33:12 UTC 2015 - mgorse@suse.com
+
+- 0001-IMSM-Add-warning-message-when-assemble-spanned-conta.patch
+  (bnc#882634)
+
+- 0001-Grow-Do-not-try-to-restart-if-reshape-is-running.patch
+  (bnc#887773)
+
+-------------------------------------------------------------------
+Tue Feb  3 23:40:32 UTC 2015 - nfbrown@suse.com
+
+- mdcheck-careful.patch
+  Be careful about reading all output of "mdadm --detail --export"
+  as shell commands - it isn't quoted.
+  (bnc#910500)
+
+-------------------------------------------------------------------
+Mon Nov  3 00:23:45 UTC 2014 - nfbrown@suse.com
+
+- mdcheck-no-devices.fix
+  mdcheck mustn't report an error if not md devices
+  exist (bnc#903051)
+
+-------------------------------------------------------------------
+Mon Sep 29 01:23:13 UTC 2014 - nfbrown@suse.com
+
+- cron.d.mdadm: add correct PATH setting
+  (bnc#898239)
+
+-------------------------------------------------------------------
+Tue Sep 16 01:04:36 UTC 2014 - nfbrown@suse.com
+
+- Add cron job to run 'mdcheck' regularly to
+  verify all md arrays. (bnc#869261)
+
+-------------------------------------------------------------------
+Fri Jul 25 11:48:12 UTC 2014 - p.drouand@gmail.com
+
+- Remove insserv dependency; the package has been moved to systemd
+  init system
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Mon Jul  7 01:52:35 UTC 2014 - nfbrown@suse.com
+
+- Remove mkinitrd scripts again.  "libguestfs" now
+  includes them so "guestfs" does not need us to.
+  (bnc#883873)
+
+-------------------------------------------------------------------
+Thu Jun 26 03:08:15 UTC 2014 - nfbrown@suse.com
+
+- 0001-Grow-fix-removal-of-line-in-wrong-case.patch
+  (bnc#881530)
+
+-------------------------------------------------------------------
+Thu Jun 26 02:54:05 UTC 2014 - nfbrown@suse.com
+
+- add mkinitrd scripts back in.  They are needed by
+  "guestfs"
+  (bnc#883873)
+
+-------------------------------------------------------------------
+Thu Jun 12 02:08:31 UTC 2014 - nfbrown@suse.com
+
+- mdadm.spec: change calling of mkinitrd to use the
+  %regenerate_initrd_{post,posttrans} macros to optimise
+  initrd regeneration. (bnc#881780)
+
+-------------------------------------------------------------------
+Tue Jun 10 04:05:48 UTC 2014 - nfbrown@suse.com
+
+- new upstream release 3.3.1, incorporates all current patches
+  and includes assorted other minor fixes.
+- 0001-Makefile-install-mdadm-grow-continue-.service.patch
+  make sure mdadm-grow-continue.service is installed properly.
+- remove mkinitrd files, we now use dracut
+
+- Delete  0001-Assemble-allow-load_devices-to-change-the-st-which-i.patch
+- Delete  0001-DDF-mark-missing-on-assembly-device-properly.patch
+- Delete  0001-mdmon-.service-Change-type-of-process-start-up-to-fo.patch
+- Delete  0001-systemd-various-fixes-for-boot-with-container-arrays.patch
+- Delete  0002-Assemble-re-arrange-freeing-of-tst-in-load_devices.patch
+- Delete  0002-DDF-guard-against-pdnum-being-negative.patch
+- Delete  0003-Assemble-change-load_devices-to-return-most_recent-s.patch
+- Delete  0003-DDF-fix-possible-mdmon-crash-when-updating-metadata.patch
+- Delete  0003-Work-around-architectures-having-statfs.f_type-defin.patch
+- Delete  0004-DDF-Don-t-fail-compare_super_ddf-due-to-re-configure.patch
+- Delete  0004-DDF-report-seq-counter-as-events.patch
+- Delete  0005-DDF-when-first-activating-an-array-record-any-missin.patch
+- Delete  Assembe-fix-bug-in-force_array-it-wasn-t-forcing-pro.patch
+- Delete  Assemble-Incremental-don-t-hold-O_EXCL-on-mddev-afte.patch
+- Delete  Assemble-avoid-infinite-loop-when-auto-assembling-pa.patch
+- Delete  DDF-add_to_super_ddf-be-careful-with-workspace_lba.patch
+- Delete  DDF-allow-for-possibility-that-there-is-no-secondary.patch
+- Delete  DDF-brief_examine_subarrays_ddf-print-array-name.patch
+- Delete  DDF-compare_super_ddf-fix-sequence-number-check.patch
+- Delete  DDF-factor-out-array-name-generation.patch
+- Delete  DDF-fix-detection-of-failed-devices-during-assembly.patch
+- Delete  DDF-handle-fake-RAIDs-with-changing-subarray-UUIDs.patch
+- Delete  DDF-really-ignore-DDF-metadata-on-partitions.patch
+- Delete  Grow-fix-problems-with-prematurely-aborting-of-resha.patch
+- Delete  IMSM-don-t-crash-when-creating-an-array-with-missing.patch
+- Delete  Incremental-add-export-handling.patch
+- Delete  Incremental-improve-support-for-DEVICE-based-restric.patch
+- Delete  Make-IRs-and-run-work-properly-for-containers.patch
+- Delete  Monitor-don-t-set-arrays-dirty-after-transition-to-r.patch
+- Delete  Monitor-write-meta-data-in-readonly-state-sometimes.patch
+- Delete  Restructure-assemble_container_content-and-improve-m.patch
+- Delete  config-set-auto_seen-after-processing-the-auto-line.patch
+- Delete  mdmon-.service-remove-over-ride-of-Standard-IO.patch
+- Delete  mdmon-don-t-complain-about-notifying-parent-when-the.patch
+- Delete  mdmon-honour-offroot-again.patch
+- Delete  mdmonitor
+- Delete  policy-NULL-path-isn-t-really-acceptable-use-the-dev.patch
+- Delete  systemd-mdadm-last-resort@.service
+- Delete  systemd-mdadm-last-resort@.timer
+- Delete  systemd-mdmon-set-IMSM_NO_PLATFORM-1.patch
+- Delete  udev-rules-try-mdadm-I-on-change-events.patch
+- Delete  udev-rules.degraded
+
+-------------------------------------------------------------------
+Tue Apr  8 07:38:42 UTC 2014 - nfbrown@suse.com
+
+- 0001-systemd-various-fixes-for-boot-with-container-arrays.patch
+  various fixes to improve boot-from-DDF or IMSM
+  (bnc#866660)
+
+-------------------------------------------------------------------
+Wed Apr  2 04:41:53 UTC 2014 - nfbrown@suse.com
+
+- 0001-DDF-mark-missing-on-assembly-device-properly.patch
+- 0002-DDF-guard-against-pdnum-being-negative.patch
+- 0003-DDF-fix-possible-mdmon-crash-when-updating-metadata.patch
+- 0004-DDF-Don-t-fail-compare_super_ddf-due-to-re-configure.patch
+  More upstream DDF fixes (bnc#866660)
+
+-------------------------------------------------------------------
+Wed Mar 26 04:00:51 UTC 2014 - nfbrown@suse.com
+
+- 0001-mdmon-.service-Change-type-of-process-start-up-to-fo.patch
+- 0003-Work-around-architectures-having-statfs.f_type-defin.patch
+- 0004-DDF-report-seq-counter-as-events.patch
+- 0005-DDF-when-first-activating-an-array-record-any-missin.patch
+  Two fixes for DDF (bnc#866660) and a couple of other upstream fixes
+  just for good measure.
+
+-------------------------------------------------------------------
+Tue Mar  4 22:48:20 UTC 2014 - nfbrown@suse.com
+
+- 0001-Assemble-allow-load_devices-to-change-the-st-which-i.patch
+  0002-Assemble-re-arrange-freeing-of-tst-in-load_devices.patch
+  0003-Assemble-change-load_devices-to-return-most_recent-s.patch
+  Allow RAID5 to be assembled even when firs device listed recently
+  failed (bnc#865221)
+
+-------------------------------------------------------------------
+Wed Jan 22 23:45:34 UTC 2014 - nfbrown@suse.com
+
+- remove boot.md.  It no longer does anything useful.
+
+-------------------------------------------------------------------
+Wed Jan 22 04:54:22 UTC 2014 - nfbrown@suse.com
+
+- mdmonitor
+  run "mdadm --monitor" from systemd instead of init.d
+  sciprt (bnc#849523)
+- remove mdadmd due to above.
+- udev-rules-try-mdadm-I-on-change-events.patch
+  (bnc#851993)
+- policy-NULL-path-isn-t-really-acceptable-use-the-dev.patch
+- DDF-really-ignore-DDF-metadata-on-partitions.patch
+- Assemble-avoid-infinite-loop-when-auto-assembling-pa.patch
+- DDF-fix-detection-of-failed-devices-during-assembly.patch
+- Grow-fix-problems-with-prematurely-aborting-of-resha.patch
+- IMSM-don-t-crash-when-creating-an-array-with-missing.patch
+- mdmon-don-t-complain-about-notifying-parent-when-the.patch
+- systemd-mdmon-set-IMSM_NO_PLATFORM-1.patch
+- mdmon-.service-remove-over-ride-of-Standard-IO.patch
+  Various upstream bug fixes.
+
+-------------------------------------------------------------------
+Wed Dec  4 23:57:16 UTC 2013 - nfbrown@suse.com
+
+- Assemble-Incremental-don-t-hold-O_EXCL-on-mddev-afte.patch
+  Ensure fsck/mount don't find an md array to be BUSY
+  the moment it appears.
+- mkinitrd-setup.sh: Make the array device names in
+  /etc/mdadm.conf in the initrd match those in /etc/mdadm.conf
+  in the root filesystem.  (bnc#851993)
+
+-------------------------------------------------------------------
+Tue Dec  3 03:06:07 UTC 2013 - nfbrown@suse.com
+
+- Restructure-assemble_container_content-and-improve-m.patch
+- Incremental-add-export-handling.patch
+- udev-rules.degraded
+- systemd-mdadm-last-resort@.service
+- systemd-mdadm-last-resort@.timer
+  Teach systemd to start degraded arrays after a timeout if
+  some missing devices never appear (bnc#832501)
+- Incremental-improve-support-for-DEVICE-based-restric.patch
+  Teach "mdadm --incremental" to handle "DEVICE" lists from
+  mdadm.conf properly (bnc@851993)
+
+-------------------------------------------------------------------
+Mon Nov 11 00:45:03 UTC 2013 - nfbrown@suse.com
+
+
+- DDF-handle-fake-RAIDs-with-changing-subarray-UUIDs.patch
+- DDF-compare_super_ddf-fix-sequence-number-check.patch
+- Monitor-don-t-set-arrays-dirty-after-transition-to-r.patch
+- DDF-add_to_super_ddf-be-careful-with-workspace_lba.patch
+- Monitor-write-meta-data-in-readonly-state-sometimes.patch
+- Assembe-fix-bug-in-force_array-it-wasn-t-forcing-pro.patch
+  Various bugfixes from upstream - several to improve
+  DDF support, one which fixes a nasty bug in "--assemble --force".
+
+-------------------------------------------------------------------
+Wed Nov  6 05:31:54 UTC 2013 - nfbrown@suse.com
+
+- DDF-brief_examine_subarrays_ddf-print-array-name.patch
+  DDF-factor-out-array-name-generation.patch
+  Include name in "-Db" output for DDF
+  FATE#316007
+
+-------------------------------------------------------------------
+Fri Sep 13 01:46:00 UTC 2013 - nfbrown@suse.com
+
+- boot.md - simplify boot.
+  As array assembly is done by udev, it shouldn't
+  be done by boot.md.  This will avoid some problems
+  with arrays getting started degraded.
+
+-------------------------------------------------------------------
+Fri Sep 13 00:59:15 UTC 2013 - nfbrown@suse.com
+
+- Make-IRs-and-run-work-properly-for-containers.patch
+- mdmon-honour-offroot-again.patch
+- DDF-allow-for-possibility-that-there-is-no-secondary.patch
+  Upstream fixes
+
+-------------------------------------------------------------------
+Thu Sep 12 01:12:36 UTC 2013 - nfbrown@suse.com
+
+- config-set-auto_seen-after-processing-the-auto-line.patch
+  Fix bug which causes "AUTO -all" in mdadm.conf
+  in initrd to be ignored, so array might be
+  auto-assembled too early.
+
+-------------------------------------------------------------------
+Thu Sep 12 01:05:03 UTC 2013 - nfbrown@suse.com
+
+- mkinitrd-boot.sh: simplify boot sequence by relying
+  completely on udev running "mdadm -I".  Thus
+  mkinitrd-boot.sh needs to do very little.
+  The devfunction script in the mkinitrd package has
+  been modified to start newly degraded array after
+  a suitable timeout.
+- mkinitrd-setup.sh:
+   - don't save md_devs as it isn't used any more
+   - allow md device names like "/dev/md_foo" which will
+     need to be supported in due course.
+
+-------------------------------------------------------------------
+Mon Sep  9 03:06:20 UTC 2013 - nfbrown@suse.com
+
+- mkinitd-boot.sh: Clear {root,resume}_major variable
+
+  If multipath is in use, md is always on top of it. Therefore, the root
+  device is always an md device. (bnc#786526)
+
+-------------------------------------------------------------------
+Fri Sep  6 04:02:41 UTC 2013 - nfbrown@suse.com
+
+- mkinitrd-setup.sh: copy new udev rules files into
+  the initrd.
+  The "mkinitrd" package does this for the old name.
+  It is easier if this packages does it for the files
+  this package installs.
+  (bnc#838777)
+
+-------------------------------------------------------------------
+Tue Sep  3 05:45:28 UTC 2013 - nfbrown@suse.com
+
+- New upstream release - mdadm-3.3
+  Lot of improvements to --grow and DDF support.
+  Better interaction with systemd.
+  Hot-replace support and more.
+  Removes patches:
+    assemble-EXCL-race.fix
+    0001-Add-support-for-launching-mdmon-via-systemctl-instea.patch
+    0002-In-case-launching-mdmon-fails-print-an-error-message.patch
+    0003-mdmon-add-foreground-option.patch
+    0004-Suppress-error-messages-from-systemctl.patch
+  which were backports from upstream.
+
+-------------------------------------------------------------------
+Thu Jun 13 04:12:54 UTC 2013 - nfbrown@suse.com
+
+- assemble-EXCL-race.fix: avoid some races during
+  array assembled- particularly at boot (bnc#793954)
+- boot.md: make sure systemd-udev-trigger runs before
+  boot.md to avoid races: bnc#793954
+- mdmon@.service - new file plus patches to allow
+  mdmon to be started by systemd, so it doesn't
+  kill it (bnc#321366)
+
+-------------------------------------------------------------------
+Tue Apr 16 10:38:19 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Feb 27 08:14:49 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  mdadm/Software-RAID.HOWTO.tar.bz2
+
+-------------------------------------------------------------------
+Sun Nov  4 01:43:34 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix factory breakage on udev and systemd rules.
+
+-------------------------------------------------------------------
+Thu Oct 25 23:18:19 UTC 2012 - nfbrown@suse.com
+
+- new upstream release 3.2.6.  Subsumes all of our
+  patches and adds a lot of other bug fixes for
+  less common cases including for a couple that cause
+  mdadm to crash.
+
+-------------------------------------------------------------------
+Tue Oct  9 03:35:22 UTC 2012 - nfbrown@suse.com
+
+- remove /lib/udev/devices from specfile as it is
+  unused
+- mkinitrd-setup.sh: fixed recent breakage for IMSM
+  arrays (bnc#783444)
+
+-------------------------------------------------------------------
+Thu Sep 20 06:03:45 UTC 2012 - nfbrown@suse.com
+
+- mdmon-takeover.fix
+  find-free-devnum.fix
+  mapfile-rebuild.fix
+  udev-offroot
+   Fix various issues will installation on IMSM
+  RAID arrays, booting from those arrays, and
+  clean shutdown when such an array is used for '/'.
+  (bnc#752107 bnc#732294 bnc#770351)
+
+- mkinitrd-setup.sh: allow use stable md device name
+  and allow it to have a ':' in it. (bnc#779087)
+
+- boot.md: make sure udev-trigger runs before
+  boot.md. (bnc#772286)
+
+-------------------------------------------------------------------
+Mon Aug 20 06:53:24 UTC 2012 - nfbrown@suse.com
+
+- mdmon-takeover.fix
+  find-free-devnum.fix
+  mapfile-rebuild.fix
+  udev-offroot
+   Fix various issues will installation on IMSM
+  RAID arrays, booting from those arrays, and
+  clean shutdown when such an array is used for '/'.
+  (bnc#752107 bnc#732294 bnc#770351)
+
+-------------------------------------------------------------------
+Thu Jul 26 16:50:03 UTC 2012 - fcrozat@suse.com
+
+- Add blkid-builtin.patch: use blkid built-in from udev
+
+-------------------------------------------------------------------
+Thu Jul  5 03:14:43 UTC 2012 - nfbrown@suse.com
+
+- mdmon-arg.fix: fix arg parsing in mdmon so that
+  "--all --takeover" works. (bnc#767150)
+
+-------------------------------------------------------------------
+Thu Jun 21 07:27:24 UTC 2012 - meissner@suse.com
+
+- use recommends: smtp_daemon, similar to cronie example
+
+-------------------------------------------------------------------
+Thu Jun 14 18:55:05 UTC 2012 - opensuse@cboltz.de
+
+- add missing dependencies on cron and /usr/sbin/sendmail (bnc#767155)
+
+-------------------------------------------------------------------
+Thu May 24 01:52:37 UTC 2012 - nfbrown@suse.com
+
+- udev-rules.fix: make sure systemd doesn't try
+  to mount array before it is fully assembled.
+  (bnc#752869)
+
+-------------------------------------------------------------------
+Tue May 22 05:15:52 UTC 2012 - nfbrown@suse.com
+
+- boot.md/mkinitrd-boot.sh: complete any incremental
+  assembly before attempting to assemble arrays.
+  If incremental assembly has partialy assembled
+  degraded arrays, now is the time to start them going.
+  (bnc#752869)
+- mdamd.cron: send daily reports if any arrays are
+  degraded.
+
+-------------------------------------------------------------------
+Fri May 18 07:16:59 UTC 2012 - nfbrown@suse.com
+
+- New upstream version: 3.2.5.  Serious regression
+  in 3.2.4 necessitated a new release.  Only significant
+  fix is that "--add" now works again.
+
+-------------------------------------------------------------------
+Wed May  9 01:22:11 UTC 2012 - nfbrown@suse.com
+
+- New upstream version: 3.2.4. /run/mdadm is not
+  used for runtime files, not /var/run or /dev/.mdadm.
+
+-------------------------------------------------------------------
+Fri Apr 20 08:00:33 UTC 2012 - rmilasan@suse.com
+
+- Run update of initrd at %post and %postun.
+  We need this to make sure initrd reflects the updates.
+ 
+-------------------------------------------------------------------
+Wed Dec 21 10:28:19 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Thu Oct  6 02:16:35 UTC 2011 - nfbrown@suse.com
+
+- mkinitrd-setup.sh -- add "AUTO -all" to initrd mdadm.conf
+  so that only arrays needed for boot are auto-assembled.
+- auto-line.fix -- fix handling of "AUTO" line
+  in mdadm.conf so it actually works.
+  (bnc#721905)
+
+-------------------------------------------------------------------
+Fri Sep 30 15:35:39 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Thu Aug 18 06:30:45 UTC 2011 - nfbrown@novell.com
+
+- boot.md: improve 'status' and add 'reload'
+  function.  Also change 'Raid' to 'RAID'
+  for consistency (bnc#709474)
+
+-------------------------------------------------------------------
+Thu Aug 18 06:01:39 UTC 2011 - nfbrown@novell.com
+
+- Use udev rules file from upstream package, rather
+  have having a separate one.
+
+-------------------------------------------------------------------
+Thu Aug 18 03:01:57 UTC 2011 - nfbrown@novell.com
+
+- Update to new upstream 3.2.2 plug git patches.
+  Also update FSF address in boot-md.
+
+-------------------------------------------------------------------
+Wed Aug 10 02:54:57 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not use -fno-strict-aliasing when not needed 
+
+-------------------------------------------------------------------
+Tue Jun 14 06:07:19 UTC 2011 - nfbrown@novell.com
+
+- 64-md-raid.rules - make clear distinction between
+  'disk' and 'partition' cases.  In particular it
+  is wrong and problematic to test for 'md/array_state'
+  for 'partition' devices as they cannot see 'md/*'
+  and cannot exist when it doesn't have a valid value
+  anyway. (bnc#684291)
+
+-------------------------------------------------------------------
+Tue Mar  1 22:15:23 UTC 2011 - nfbrown@novell.com
+
+- mkinitrd-boot.sh: don't assume /dev/md when device
+  name cannot be found.  It could easily be wrong,
+  and there is no need as mdadm will choose a device.
+  (bnc#656536)
+
+-------------------------------------------------------------------
+Thu Feb 17 00:27:02 UTC 2011 - nfbrown@novell.com
+
+- 64-md-raid.rules: avoid races with md devices 
+  appearing and disappearing.
+  If the 'array_state' file doesn't exist, that is equivalent
+  to it having 'clear' in it. (bnc#641382)
+
+-------------------------------------------------------------------
+Wed Nov 17 03:27:33 UTC 2010 - nfbrown@novell.com
+
+-  boot.md - change args to mdmon.
+   The argument parsing of mdmon changed in the recent update
+   and we need to change boot.md to match.
+
+-------------------------------------------------------------------
+Thu Oct 21 18:01:14 CEST 2010 - ro@suse.de
+
+- update to 3.1.4
+  - Support --grow to change the layout of RAID4/5/6
+  - Support --grow to change the chunksize of raid 4/5/6
+  - Support --grow to change level from RAID1 -> RAID5 -> RAID6 and
+    back.
+  - Support --grow to reduce the number of devices in RAID4/5/6.
+  - Support restart of these grow options which assembling an array 
+    which is partially grown.
+  - Assorted tests of this code, and of different RAID6 layouts.
+  - The default metadata is now v1.2
+  - The default chunksize is now 512K rather than 64K.  This seems more
+    appropriate for modern devices.
+  - The default bitmap chunksize for internal bitmaps is now at least
+    64Meg as fine grained bitmaps tend to impact performance more for
+    little extra gain.
+  - Alway make bitmap 4K-aligned if at all possible.
+- removed patches:
+  - bitmap-4k-boundary.patch (obsolete/upstream)
+  - fix-dup.patch (obsolete/upstream)
+  - IMSM-part.patch (obsolete/upstream)
+  - container-argv-check (obsolete/upstream)
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Jun  1 15:09:53 CEST 2010 - mmarek@suse.cz
+
+- mkinitrd-setup.sh: Fix for empty $md_devs variable.
+
+-------------------------------------------------------------------
+Fri Apr 23 10:57:57 UTC 2010 - nfbrown@novell.com
+
+- IMSM-part.patch - never try to include partitions in an
+  IMSM array - bnc#597787
+- container-argv-check - avoid incorrect error message when
+  assembling multiple containers - bnc#598827
+
+-------------------------------------------------------------------
+Thu Apr 22 15:04:30 CEST 2010 - mmarek@suse.cz
+
+- mkinitrd-boot.sh: Fix booting with root=/dev/disk/by-id/md-uuid*,
+  run mdadm -v when linuxrc=trace is given (bnc#597787).
+
+-------------------------------------------------------------------
+Mon Apr 19 05:36:23 UTC 2010 - nfbrown@novell.com
+
+- fix-dup.patch: revised version to make sure partial
+  device is destroyed properly (bnc#587925).
+
+-------------------------------------------------------------------
+Fri Mar 26 16:00:05 CET 2010 - mmarek@suse.cz
+
+- fix-dup.patch: catch attempts to add the same disk twice
+  (bnc#587925).
+
+-------------------------------------------------------------------
+Wed Mar 24 17:37:27 CET 2010 - mmarek@suse.cz
+
+- 64-md-raid.rules: Use absolute path to grep, otherwise udev will
+  only search in /lib/udev (bnc#590832).
+
+-------------------------------------------------------------------
+Tue Mar 23 14:49:38 CET 2010 - mmarek@suse.cz
+
+- mkinitrd-*.sh: Assemble md arrays even if the root= or resume=
+  option doesn't directly refer to md (bnc#589676, bnc#586837,
+  bnc#583424).
+
+-------------------------------------------------------------------
+Mon Mar 22 16:30:11 CET 2010 - mmarek@suse.cz
+
+- mdmon: Fix crash if /proc/mdstat lists 0.9 superblocks
+  (bnc#589447).
+
+-------------------------------------------------------------------
+Thu Mar 11 10:18:18 CET 2010 - mmarek@suse.cz
+
+- 64-md-raid.rules: Use blkid instead of vol_id.
+
+-------------------------------------------------------------------
+Thu Mar 11 09:58:21 CET 2010 - mmarek@suse.cz
+
+- 64-md-raid.rules: Allow --incremental assembly if "AUTO -all" is
+  given in mdadm.conf (fate#307478).
+
+-------------------------------------------------------------------
+Tue Mar  9 16:15:41 CET 2010 - mmarek@suse.cz
+
+- Install udev rules in /lib/udev/rules.d (fate#307478).
+
+-------------------------------------------------------------------
+Mon Feb 22 15:14:03 CET 2010 - mmarek@suse.cz
+
+- mkinitrd-setup.sh: call mdadm --scan only if necessary
+  (bnc#581769).
+
+-------------------------------------------------------------------
+Fri Feb 19 12:10:11 CET 2010 - mmarek@suse.cz
+
+- bitmap-4k-boundary.patch: Alling the internal bitmap on 4K
+  boundary (bnc#577468).
+
+Fri Jan 15 17:37:26 CET 2010 - mmarek@suse.cz
+
+- fix modprobe invocation in boot.md (bnc#565293).
+
+-------------------------------------------------------------------
+Fri Jan 15 17:04:06 CET 2010 - mmarek@suse.cz
+
+- store mdmon runtime files in /dev/.mdadm, to make it easier to
+  transfer mdmon from the initrd to the real root.
+- rework the mkinitrd setup script a bit.
+
+-------------------------------------------------------------------
+Wed Jan  6 15:47:03 CET 2010 - mmarek@suse.cz
+
+- mkinitrd-*.sh: fix booting from partitionable md devices and
+  from container devices (bnc#565219).
+
+-------------------------------------------------------------------
+Tue Dec 15 20:26:46 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Dec  4 18:00:40 CET 2009 - mmarek@suse.cz
+
+- Support for partitionable md devices in mkinitrd scripts
+  (fate#305883).
+
+-------------------------------------------------------------------
+Tue Nov  3 11:03:54 CET 2009 - mmarek@suse.cz
+
+- update to 3.0.3 (fate#307159)
+  * mdmon improvements (needed for fate#306823)
+  * other fixes
+
+-------------------------------------------------------------------
+Fri Oct 30 16:49:40 CET 2009 - mmarek@suse.cz
+
+- mkinitrd-boot.sh: add /sbin/mdmon to the initrd (fate#306823).
+
+-------------------------------------------------------------------
+Thu Oct  1 10:51:38 CEST 2009 - mmarek@suse.cz
+
+- updated to 3.0.2 + 2 patches
+  * bugfixes only
+
+-------------------------------------------------------------------
+Fri Jun 12 09:43:43 CEST 2009 - mmarek@suse.cz
+
+- remove static md* device nodes, they should not be needed
+  anymore.
+
+-------------------------------------------------------------------
+Thu Jun 11 11:32:55 CEST 2009 - mmarek@suse.cz
+
+- updated to 3.0 final
+- dropped all patches
+
+-------------------------------------------------------------------
+Tue Mar  3 10:36:11 CET 2009 - mmarek@suse.cz
+
+- super0:  Do all metadata IO with 4096byte alignment 
+- super1 - do metadata IO in sector_size units.
+  (bnc#466172)
+
+
+-------------------------------------------------------------------
+Sat Feb 21 15:37:55 CET 2009 - mmarek@suse.cz
+
+- mkinitrd-setup.sh: filter out duplicate devices (bnc#461673,
+  patch by Xin Wei Hu)
+
+-------------------------------------------------------------------
+Tue Feb 17 17:01:23 CET 2009 - mmarek@suse.cz
+
+- disable auto-assemly in boot.md completely as it can collide with
+  dmraid (bnc#474652). If someone wants to auto-assemble md arrays
+  in the rescue system, they can run
+  'mdadm -Es -c partitions >mdadm.conf && mdadm -As -c mdadm.conf'
+  manually.
+  
+
+-------------------------------------------------------------------
+Mon Feb 16 16:00:11 CET 2009 - mmarek@suse.cz
+
+- fix segfault when stopping imsm arrays
+  (bnc#473947, patch by Dan Williams)
+
+-------------------------------------------------------------------
+Mon Jan 26 11:47:59 CET 2009 - ro@suse.de
+
+- change fillup call from "-Y" to "-y" the boot script has
+  been present in this package for long enough (SLES10-GA) 
+
+-------------------------------------------------------------------
+Fri Dec  5 10:21:10 CET 2008 - hare@suse.de
+
+- Wait for udev to settle before continuing (bnc#435778)
+
+-------------------------------------------------------------------
+Fri Dec  5 06:18:44 CET 2008 - nfbrown@suse.de
+
+- boot.md : an exit status of '2' from "mdadm --assemble"
+  should not be seen as failure by boot.md.
+  It happens if one or more arrays is already
+  assembled.
+  (bnc#456028)
+
+-------------------------------------------------------------------
+Thu Nov 20 07:07:06 CET 2008 - nfbrown@suse.de
+
+- don-t-auto-assemble-if-any-arrays-are-list.patch
+  Avoid assembling extra arrays during initrd
+  processing. bnc#445438
+
+-------------------------------------------------------------------
+Thu Nov 20 04:57:30 CET 2008 - nfbrown@suse.de
+
+- mdmon-pass-symbolic-name-to-mdmon-instead-of-device.patch
+  avoid problems if mdmon is run before
+  udev creates any devices. 
+
+-------------------------------------------------------------------
+Fri Nov 14 05:33:41 CET 2008 - nfbrown@suse.de
+
+- intel.fixes.patch : various fixes from intel for
+  proper handling of their metadata
+- name.fixes.patch : various fixes for new handling
+  of device names - one could cause a crash.
+
+-------------------------------------------------------------------
+Sun Nov  9 23:38:39 CET 2008 - ro@suse.de
+
+- fix patch apply depth 
+
+-------------------------------------------------------------------
+Fri Nov  7 12:34:30 CET 2008 - nfbrown@suse.de
+
+- mdadm-auto-assemble.patch - fix various bugs in
+  auto-assemble
+- start-kpartx-for-imsm-devices.patch - IMSM devices
+  need to be partitioned, and may programs including
+  YaST don't understand partitioned md devices,
+  so run kpartx to create 'dm' based partitions which
+  have a better chance for being understood
+  This relates to FATE#304220
+
+-------------------------------------------------------------------
+Fri Nov  7 10:32:35 CET 2008 - ro@suse.de
+
+- remove udev rule (conflicting with file in udev package) 
+
+-------------------------------------------------------------------
+Fri Nov  7 02:58:40 CET 2008 - ro@suse.de
+
+- buildfix: add missing DESTDIR to Makefile for udev rule 
+- fix len in snprintf to silence compiler warning about potential
+  overflow
+
+-------------------------------------------------------------------
+Thu Nov  6 03:22:50 CET 2008 - nfbrown@suse.de
+
+- Update from mdadm-3.0-devel1 to mdadm-3.0-devel2.
+  This includes various bug fixes and enhancements to the
+  extent that DDF and IMSM work reasonably well and can be
+  auto-assembled much like other arrays.
+- Allow BOOT_MD_USE_MDADM_CONFIG to have the value 'part'
+  that, like 'no', arrays are auto-assembled.  However they
+  get assembled as 'mdp' partitionable arrays where possible.
+  This currently only affect arrays with v1.x metadata.
+  This supports FATE#303894
+
+-------------------------------------------------------------------
+Fri Oct  3 15:28:49 CEST 2008 - mmarek@suse.cz
+
+- fixed mdmon's clone_monitor on ia64
+
+-------------------------------------------------------------------
+Fri Oct  3 14:28:55 CEST 2008 - mmarek@suse.cz
+
+- fixed byte swapping in super-intel.c on big endian.
+
+-------------------------------------------------------------------
+Wed Sep 24 18:24:25 CEST 2008 - ro@suse.de
+
+- change "udevsettle" to "udevadm settle" 
+
+-------------------------------------------------------------------
+Fri Sep 19 11:14:05 CEST 2008 - mmarek@suse.cz
+
+- added /var/run/mdadm for mdmon
+- fixed build
+
+-------------------------------------------------------------------
+Thu Sep 18 09:33:19 CEST 2008 - nfbrown@suse.de
+
+- update to mdadm-3.0-devel1
+  package version number is set to 3.0 to avodi future confusion.
+  This is a substantial update that provides support for handling
+  the metadata entirely in userspace and thus making easier to 
+  handle a variety of metadata formats.  Support is included for
+  DDF and for the Intel Matrix metadata used by recent ICH chipsets.
+
+  An extra program 'mdmon' is needed and included.  It is run to
+  monitor any array using 'external' (to the kernel) metadata
+  and will update the metadata in response to device failures etc.
+
+  This is required for FATE 304219
+ 
+
+-------------------------------------------------------------------
+Wed Sep  3 11:09:34 CEST 2008 - hare@suse.de
+
+- Call mkinitrd_setup during %post and %postun (bnc#413709)
+
+-------------------------------------------------------------------
+Sun Aug 17 08:04:26 CEST 2008 - aj@suse.de
+
+- Fix init scripts.
+
+-------------------------------------------------------------------
+Wed Jul 23 15:21:59 CEST 2008 - hare@suse.de
+
+- Include mkinitrd scriptlets.
+
+-------------------------------------------------------------------
+Fri Jun 20 14:28:20 CEST 2008 - mmarek@suse.cz
+
+- updated to 2.6.7 + fixes from git
+  *   Avoid segfault when parsing /proc/mdstat with auto-read-only
+      arrays.
+  *   For v0.90 superblocks, print the 'Events' count as a real
+      count, not 2 numbers separated by a dot.
+  *   Allow creation of a RAID6 with exactly one missing device.
+  *   Use LOG_PID for syslog, so you get the pid of mdadm in the
+      log files.
+  *   --export now works with --examine too (not just --detail)
+  *   Improve auto-creation of device special file when using
+      --incremental
+  *   Simple locking for --incremental so mdadm doesn't get
+      confused when run concurrently with itself.
+  *   Make --incremental cope better with arrays that are being
+      reshaped.
+  *   Fix autoassemble for stack arrays.
+- remove /tmp/mdadm.conf in boot.md (bnc#401138)
+
+-------------------------------------------------------------------
+Wed Apr 30 15:57:14 CEST 2008 - mmarek@suse.cz
+
+- added some fixes from Neil's git repo, fixing bnc#368704 among
+  others
+
+-------------------------------------------------------------------
+Mon Feb  4 19:24:54 CET 2008 - mmarek@suse.cz
+
+- correctly display rc_status in boot.md
+
+-------------------------------------------------------------------
+Wed Jan 23 15:55:24 CET 2008 - mmarek@suse.cz
+
+- fixed auto-assembly part of boot.md
+  * if /etc/mdadm.conf is empy or only contains whitespace or
+    comments, no autoassembly is done
+  * remove /tmp/mdadm.conf even if a directory [#329678]
+- dropped mdrun and raidautorun (no longer needed)
+
+-------------------------------------------------------------------
+Wed Oct 24 17:08:11 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.6.4
+  *  Make "--create --auto=mdp" work for non-standard device names.
+  *  Fix restarting of a 'reshape' if it was stopped in the middle.
+  *  Fix a segfault when using v1 superblock.
+  *  Make --write-mostly effective when re-adding a device to an
+     array.
+  *  Various minor fixes
+- changes in 2.6.3:
+  * allow --write-behind to be set for --grow.
+  * When adding new disk to an array, don't reserve so much bitmap
+    space that the disk cannot store the required data. (Needed
+    when 1.x array was created with older mdadm).
+  * When adding a drive that was a little too small, we did not get
+    the correct error message.
+  * Make sure that if --assemble find an array in the critical
+    region of a reshape, and cannot find the critical data to
+    restart the reshape, it gives an error message.
+  * Fix segfault with '--detail --export' and non-persistent
+    superblocks.
+  * Various manpage updates.
+  * Improved 'raid4' support (--assemble, --monitor)
+  * Option parsing fixes w.r.t -a
+  * Interpret "--assemble --metadata=1" to allow any version 1.x
+    metadata, and be more specific in the "metadata=" message
+    printed with --examine --brief
+  * Fix spare migration in --monitor.
+
+-------------------------------------------------------------------
+Fri Jul 27 13:01:01 CEST 2007 - mmarek@suse.cz
+
+- changes to the init script [#288454]
+  * don't try to autoassemble if /etc/mdadm.conf exists (even an
+    empty one)
+  * ony autoassemble partitions found in /proc/partitions
+
+-------------------------------------------------------------------
+Fri Jul 13 15:02:21 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.6.2
+  * --fail detached and --remove faulty can be used to fail and
+    remove devices that are no longer physically present.
+  * --export option for --detail or present information in a format
+    that can be processed by udev.
+  * fix internal bitmap allocation problems with v1.1, v1.2
+    metadata.
+  * --help now goes to stdout so you can direct it to a pager.
+  * Various manpage updates.
+  * Make "--grow --add" for linear arrays really work.
+  * --auto-detect to trigger in-kernel autodetect.
+  * Make return code for "--detail --test" more reliable.  Missing
+    devices as well as failed devices cause an error.
+- added some fixes from Neil's git repo (mdadm-git-fixes.patch)
+
+-------------------------------------------------------------------
+Thu Jun 21 15:58:37 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Mon Apr  2 15:00:10 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.6.1
+  * --monitor was producing some meaningless warnings due to a bug.
+  * Fix some compiler warnings.
+  * Fully support --grow for raid6.  If a reshape crashed during
+    the critical period, mdadm wouldn't restore the Q information
+    properly.
+  * Update documentation for --grow.
+  * Report bitmap status in --detail and --examine
+  * Default to v1 superblocks instead of v0.90 if the array
+    is too big for 0.90 to handle.
+  * Sort the output of "mdadm --detail --scan" so that it is
+    in a suitable order for assembling arrays. i.e. components come
+    before an array that they are part of.
+  * Require bitmap files to have a '/' in their name.
+  * Rewrite 'reshape' support including performing a backup
+    of the critical region for a raid5 growth, and restoring that
+    backup after a crash.
+  * Put a 'canary' at each end of the backup so a corruption
+    can be more easily detected.
+  * Support --backup-file for backing-up critical section during
+    growth.
+  * Erase old superblocks (of different versions) when creating new
+    array.
+  * Allow --monitor to work with arrays with >28 devices
+  * Report reshape information in --detail
+  * Handle symlinks in /dev better
+  * Fix mess in --detail output which a device is missing.
+  * Support 'bitmap=' in mdadm.conf for auto-assembling arrays with
+    write-intent bitmaps in separate files.
+  * Fix alignment problem in version-1 superblocks.
+    NOTE: This is an incompatable change affecting raid5 reshape.
+    If you want to reshape a raid5 using version-1 superblocks,
+    use 2.6.17-rc2 or later, and mdadm-2.4.1 or later.
+  * Support 'mailfrom' line in mdadm.conf so the From: line in alert
+    emails can be explicitly set.
+  * Arrange that SparesMissing (which is similar in import to
+    DegradedArray) generates an Email.
+  * Assume "DEVICE partitions" if no DEVICE line is given.
+  * Support new 'offset' layout for raid10.
+  * When creating a bitmap file, choose a chunksize to limit number
+    of bitmap chunks to 2 million.  More than this can cause kmalloc
+    failure.
+  * New 'CREATE' line in mdadm.conf for defaults such as owner, group,
+    mode and auto-flag
+  * --detail checks if array has been started or not and includes that
+    in report.
+  * When using --update=uuid on an array with a bitmap, update the
+    bitmap's uuid too.
+  * Add a copy of /proc/mdstat to the mail message sent by mdadm
+    --monitor.
+  * New flag --no-degraded to avoid starting arrays if there are
+    fewer devices available than last time the array was started.
+    This is only needed with --scan, as with --scan, that behaviour
+    is the default.
+  * Support for 'homehost' concept.  This is a fairly major update.
+    It includes a configfile option and a command line option for
+    specifying a homehost, records that host in the superblock,
+    and reports the homehost where possible.
+  * Support for Auto Assembly.  "mdadm -As" will, if provided with
+    the name of a homehost, try to assemble all arrays it can find
+    that were created for that homehost.  See man pages for more details.
+  * Don't try to create devices with --manage or --grow
+  * allow default metadata (superblock) type to be specified
+    in mdadm.conf
+  * Avoid some misdetection of overlapping partitions
+  * Add 'Array Slot' line to --examine for version-1 superblocks
+    to make it a bit easier to see what is happening.
+  * Work around bug in --add handling for  version-1 superblocks
+    in 2.6.17 (and prior).
+  * Make -assemble a bit more resilient to finding strange
+    information in superblocks.
+  * When creating devices in /dev/md/ create matching symlinks
+    from /dev.  e.g. /dev/md0 -> /dev/md/0.
+    Allow this to be disabled in mdadm.conf or on command line.
+  * Allow a number (of partitions) after the 'yes' option to --auto=
+    This is particularly useful in the 'create' line in mdadm.conf.
+  * Remove partitions from any whole device that is made part of
+    an md array.  This is a work-around for annoying messages
+    when the first block on some drive accidentally looks like a
+    partition table.
+  * Close stray fd in mdassemble so that it can assemble stacked
+    devices
+  * If mdassemble finds an array already assembled, it marks it
+    read-write.
+  * Remove error in md_open if array is already active.  This isn't
+    needed and gets in the ways if an array was created e.g. in
+    initramfs, but device doesn't yet exist in /dev.
+  * When --assemble --scan is run, if all arrays that could be found
+    have already been started, don't report an error.
+  * Allow --assemble --force to mark a raid6 clean when it has two
+    missing devices (which is needed else if won't assemble.
+    Without this fix it would only assemble if one or zero
+    missing devices.
+  * Support --update=devicesize for cases where the underlying device
+    can change size.
+  * Default to --auto=yes so the array devices with 'standard' names
+    get created automatically, as this is almost always what is wanted.
+  * Give useful message if raid4/5/6 cannot be started because it is
+    not clean and is also degraded.
+  * Increase raid456 stripe cache size if needed to --grow the array.
+    The setting used unfortunately requires intimate knowledge of the
+    kernel, and it not reset when the reshape finishes.
+  * Change 'Device Size' to 'Used Dev Size' because it only shows how
+    much of each device is actually used, not how big they are.
+  * --wait or -W will wait for resync activity to finish on the given
+    devices.
+  * If two drives in a raid5 disappear at the same time, then "-Af"
+    will add them both in rather than just one and forcing the array
+    to 'clean'.  This is slightly safer in some cases.
+  * Don't hold md device open for so long in --monitor mode - map_dev
+    can be slow and interferes with trying to stop the array.
+  * Support --uuid= with --create to choose your own UUID.
+  * New major more "--incremental" for incremental assemble of arrays,
+    intended for use with udev.
+  * lots of bugfixes
+  * manpage updates
+
+-------------------------------------------------------------------
+Wed Jan 10 11:58:14 CET 2007 - mmarek@suse.cz
+
+- use raidautorun instead of mdrun to autodetect the raid arrays in
+  boot.md [#230733]
+
+-------------------------------------------------------------------
+Wed Nov  8 10:51:13 CET 2006 - prusnak@suse.cz
+
+- fixed subscript out of range [#212697]
+
+-------------------------------------------------------------------
+Wed Sep 20 17:17:22 CEST 2006 - mjancar@suse.cz
+
+- update to 2.5.3
+  * lots bugfixes
+  * drop all patches (integrated upstream)
+
+-------------------------------------------------------------------
+Fri Jul 28 13:12:47 CEST 2006 - olh@suse.de
+
+- remove dropped boot.ibmsis from boot.md
+- boot.rootfsck should start before boot.md (#181972)
+
+-------------------------------------------------------------------
+Fri Jul 21 14:16:28 CEST 2006 - olh@suse.de
+
+- remove boot.proc from Required-Start: in boot.md (#178753)
+
+-------------------------------------------------------------------
+Wed May  3 13:12:42 CEST 2006 - mjancar@suse.cz
+
+- fix false SparesMissing error (#171326)
+
+-------------------------------------------------------------------
+Wed Apr 26 09:46:28 CEST 2006 - hare@suse.de
+
+- Fix init script dependencies
+- Implement MDADM_DEVICE_TIMEOUT to set a timeout for 
+  udevsettle (#149979)
+
+-------------------------------------------------------------------
+Tue Apr 25 13:39:38 CEST 2006 - mjancar@suse.cz
+
+- add static device nodes for udev (#168824)
+
+-------------------------------------------------------------------
+Wed Apr 19 10:27:19 CEST 2006 - mjancar@suse.cz
+
+- set $BOOT_MD_USE_MDADM_CONFIG to "yes" by default (#155120)
+
+-------------------------------------------------------------------
+Fri Apr  7 11:33:15 CEST 2006 - mjancar@suse.cz
+
+- detach mdadmd from tty in rcmdadmd (#160881)
+
+-------------------------------------------------------------------
+Mon Apr  3 09:54:55 CEST 2006 - mjancar@suse.cz
+
+- fix garbled output with --detail (#160827)
+- fix fix write-mostly with --add and --re-add (#162968)
+
+-------------------------------------------------------------------
+Fri Mar 24 21:31:54 CET 2006 - mjancar@suse.cz
+
+- add /sbin/raidautorun (#159460)
+
+-------------------------------------------------------------------
+Wed Mar  8 18:33:12 CET 2006 - mjancar@suse.cz
+
+- add $BOOT_MD_USE_MDADM_CONFIG sysconfig variable (#155120)
+
+-------------------------------------------------------------------
+Thu Feb  9 16:59:52 CET 2006 - mjancar@suse.cz
+
+- round free size to chunk size multiply on --create (#148562)
+
+-------------------------------------------------------------------
+Tue Feb  7 08:59:50 CET 2006 - mjancar@suse.cz
+
+- move boot.multipath to Should-Start instead of Required-Start
+
+-------------------------------------------------------------------
+Mon Feb  6 15:27:47 CET 2006 - mjancar@suse.cz
+
+- add "Obsoletes: raidtools"
+- start boot.md after boot.multipath
+- call mdadm without -a from mdrun, an argument is required in 2.2
+
+-------------------------------------------------------------------
+Mon Feb  6 11:36:26 CET 2006 - mjancar@suse.de
+
+- don't start mdadmd by default
+
+-------------------------------------------------------------------
+Sun Feb  5 20:46:43 CET 2006 - mjancar@suse.cz
+
+- include option for email to be sent on start (#142105)
+- fix missing md autostart due to raidtools dropped (#148234)
+  * include mdrun script from Debian
+  * create boot.md initscipt
+
+-------------------------------------------------------------------
+Sun Feb  5 17:46:32 CET 2006 - schwab@suse.de
+
+- Fix memset parameters.
+
+-------------------------------------------------------------------
+Thu Feb  2 12:30:26 CET 2006 - mjancar@suse.cz
+
+- fix segfault on --assemble (#146514)
+
+-------------------------------------------------------------------
+Fri Jan 27 02:12:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 10:48:18 CET 2006 - olh@suse.de
+
+- fix uninitialized variable, memset call and memcmp/memcpy bug
+  mdadm.bug144647-array.init.patch
+  mdadm.bug144647-update_super1-memcpy.patch
+  mdadm.bug144647-add_internal_bitmap0-memcpy.patch
+
+-------------------------------------------------------------------
+Wed Jan 11 13:49:54 CET 2006 - mjancar@suse.cz
+
+- update ro 2.2
+
+-------------------------------------------------------------------
+Tue Dec 20 12:57:25 CET 2005 - ro@suse.de
+
+- at least output errors if they occur (instead of ignoring) 
+
+-------------------------------------------------------------------
+Wed Nov 30 17:19:24 CET 2005 - schwab@suse.de
+
+- Fix broken formats.
+
+-------------------------------------------------------------------
+Tue Oct 25 09:53:57 CEST 2005 - aj@suse.de
+
+- Build with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Wed Oct 12 20:18:00 CEST 2005 - mjancar@suse.cz
+
+- update to 2.1
+
+-------------------------------------------------------------------
+Thu Jul 28 20:28:32 CEST 2005 - anicka@suse.cz
+
+- update to 1.12.0 
+
+-------------------------------------------------------------------
+Wed Jun 15 13:16:42 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS correctly.
+
+-------------------------------------------------------------------
+Tue Apr 19 13:48:24 CEST 2005 - postadal@suse.de
+
+- updated to version 1.11.0
+- fixed for gcc 4.0
+- removed obsoleted patch config-fix 
+
+-------------------------------------------------------------------
+Wed Mar 30 13:24:23 CEST 2005 - postadal@suse.cz
+
+- fixed parsing command line option '--config=partions' [#74603]
+
+-------------------------------------------------------------------
+Fri Feb  4 13:09:49 CET 2005 - postadal@suse.cz
+
+- updated to version 1.9.0
+
+-------------------------------------------------------------------
+Thu Jan 13 17:24:55 CET 2005 - postadal@suse.cz
+
+- updated to version 1.8.1
+- extended comment in sysconfig.mdadm [#48567]
+
+-------------------------------------------------------------------
+Fri Aug 06 12:09:58 CEST 2004 - postadal@suse.cz
+
+- updated to version 1.6.0
+  * added --auto= and --assume-clean options
+  * added "degraded" and "recovering" options to the "Status:" entry
+
+-------------------------------------------------------------------
+Tue Feb 10 13:45:52 CET 2004 - postadal@suse.cz
+
+- updated to version 1.5.0
+  * new commands "mdassemble"
+  * support for raid6 as found in 2.6.2
+  * support partitioned md arrays with a different major number and
+    naming scheme
+  * added "SparesMissing" event when --monitor first sees an array and
+    it doesn't have the enough spare devices.
+
+-------------------------------------------------------------------
+Sun Jan 11 11:50:04 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Mon Dec  1 10:53:02 CET 2003  - fehr@suse.de
+
+- fix quoting problem in start script (#33392)
+
+-------------------------------------------------------------------
+Fri Aug 29 09:36:24 CEST 2003 - fehr@suse.de
+
+- add PreReq for fillup
+
+-------------------------------------------------------------------
+Tue Aug 26 10:23:44 CEST 2003 - fehr@suse.de
+
+- add %stop_on_removal and %restart_on_update
+
+-------------------------------------------------------------------
+Thu Aug 14 15:40:53 CEST 2003 - fehr@suse.de
+
+- add missing activation metadata in sysconfig (#28901)
+
+-------------------------------------------------------------------
+Tue Jul 29 11:03:36 CEST 2003 - fehr@suse.de
+
+- update to new version 1.3.0 of package
+
+-------------------------------------------------------------------
+Mon Apr 14 20:01:43 CEST 2003 - postadal@suse.cz
+
+- fixed init script (added return value for unimplemented reload function)
+
+-------------------------------------------------------------------
+Mon Mar 31 17:37:03 CEST 2003 - postadal@suse.cz
+
+- added buildroot, init script, sysconfig
+- bzip2 sources and cleaned specfile
+
+-------------------------------------------------------------------
+Thu Mar 20 16:18:13 CET 2003  - fehr@suse.de
+
+- update to version 1.2.0 of package
+
+-------------------------------------------------------------------
+Mon Mar  3 12:16:22 CET 2003  - fehr@suse.de
+
+- update to version 1.1.0 of package
+
+-------------------------------------------------------------------
+Mon Dec  2 11:30:52 CET 2002  - fehr@suse.de
+
+- Fix for new glibc/gcc 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Sep 13 15:10:00 CEST 2002 - lmb@suse.de
+
+- Fix for 64bit arch; ioctl returns long instead of int (#20339)
+
+-------------------------------------------------------------------
+Fri Aug 23 11:16:51 MEST 2002 - lmb@suse.de
+
+- Multipath arrays can now be build manually even without a superblock.
+- One debugging chunk removed from patch.
+
+-------------------------------------------------------------------
+Tue Aug 13 14:43:02 MEST 2002 - lmb@suse.de
+
+- Fix for the assembly of multipath arrays.
+
+-------------------------------------------------------------------
+Mon Aug 12 11:46:43 MEST 2002 - lmb@suse.de
+
+- Added patch to support the enhanced multipath features.
+
+-------------------------------------------------------------------
+Mon Aug  5 16:05:19 CEST 2002 - fehr@suse.de
+
+- make SuSE package from version 1.0.1 of mdadm 
+

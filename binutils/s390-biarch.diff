@@ -1,0 +1,23 @@
+diff --git a/ld/emulparams/elf_s390.sh b/ld/emulparams/elf_s390.sh
+index 39c746c866..6e25a01e70 100644
+--- ld/emulparams/elf_s390.sh
++++ ld/emulparams/elf_s390.sh
+@@ -13,3 +13,18 @@ GENERATE_PIE_SCRIPT=yes
+ NO_SMALL_DATA=yes
+ SEPARATE_GOTPLT=12
+ IREL_IN_PLT=
++
++# Treat a host that matches the target with the possible exception of "x"
++# in the name as if it were native.
++if test `echo "$host" | sed -e s/x//` = `echo "$target" | sed -e s/x//`; then
++  case " $EMULATION_LIBPATH " in
++    *" ${EMULATION_NAME} "*)
++      NATIVE=yes
++      ;;
++  esac
++fi
++
++# Look for 64 bit target libraries in /lib64, /usr/lib64 etc., first.
++case "$EMULATION_NAME" in
++  *64*) LIBPATH_SUFFIX=64 ;;
++esac

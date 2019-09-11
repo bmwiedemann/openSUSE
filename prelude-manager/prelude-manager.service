@@ -1,0 +1,11 @@
+[Unit]
+Description=Prelude bus communicator
+Documentation=man:prelude-manager(1)
+After=remode_fs.target
+Before=prelude-lml.service prelude-correlator.service
+
+[Service]
+ExecStart=/usr/bin/prelude-manager
+
+[Install]
+WantedBy=multi-user.target prelude-lml.service prelude-correlator.service

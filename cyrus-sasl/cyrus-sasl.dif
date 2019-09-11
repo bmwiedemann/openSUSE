@@ -1,0 +1,49 @@
+Index: m4/cyrus.m4
+===================================================================
+--- m4/cyrus.m4.orig
++++ m4/cyrus.m4
+@@ -37,7 +37,7 @@ AC_DEFUN([CMU_GUESS_RUNPATH_SWITCH], [
+     SAVE_LDFLAGS="${LDFLAGS}"
+     LDFLAGS="-R /usr/lib"
+     AC_TRY_LINK([],[],[andrew_cv_runpath_switch="-R"], [
+-  	LDFLAGS="-Wl,-rpath,/usr/lib"
++#  	LDFLAGS="-Wl,-rpath,/usr/lib"
+     AC_TRY_LINK([],[],[andrew_cv_runpath_switch="-Wl,-rpath,"],
+     [andrew_cv_runpath_switch="none"])
+     ])
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -43,6 +43,7 @@ AUTOMAKE_OPTIONS = 1.7
+ #
+ ################################################################
+ 
++ACLOCAL_AMFLAGS=-I config -I cmulocal
+ if SASLAUTHD
+ SAD = saslauthd
+ else
+Index: sasldb/Makefile.am
+===================================================================
+--- sasldb/Makefile.am	2016-01-29 18:35:35.000000000 +0100
++++ sasldb/Makefile.am	2018-11-17 12:51:05.800696917 +0100
+@@ -57,3 +57,9 @@
+ libsasldb_la_DEPENDENCIES = $(SASL_DB_BACKEND)
+ libsasldb_la_LIBADD = $(SASL_DB_BACKEND)
+ libsasldb_la_LDFLAGS = -no-undefined
++
++# avoid these two files created at the same time, they use both the same
++# dep file
++db_berkeley.lo: db_berkeley.o
++allockey.lo: allockey.o
++
+Index: saslauthd/Makefile.am
+===================================================================
+--- saslauthd/Makefile.am.orig
++++ saslauthd/Makefile.am
+@@ -1,4 +1,5 @@
+ AUTOMAKE_OPTIONS = 1.7
++ACLOCAL_AMFLAGS=-I ../config -I ../cmulocal
+ sbin_PROGRAMS	= saslauthd testsaslauthd
+ EXTRA_PROGRAMS  = saslcache
+ 

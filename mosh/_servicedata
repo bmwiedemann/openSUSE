@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/mobile-shell/mosh.git</param>
+              <param name="changesrevision">b1da7005358b4a550e31faa646cf1cf116700412</param></service></servicedata>

@@ -1,0 +1,50 @@
+a) mariadb/mysql
+$ mysql -u adminusername -p
+mysql> CREATE DATABASE _matomo_db_name_here_;
+mysql> CREATE USER 'matomo'@'localhost' IDENTIFIED BY '_password_';
+mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES ON _matomo_db_name_here_.* TO 'matomo'@'localhost';
+
+Replace _matomo_db_name_here_ with the name of your MySQL database (if possible, this database should only have the Matomo tables installed).
+Replace _password_ with your password.
+
+b) apache
+In /etc/apache2/conf.d/matomo.conf you must insert your domain.
+
+  Apache22: Allow from .mydomain.de
+  Apache24: Require host mydomain.de
+
+And then restart or reload apache
+  
+  systemctl restart apache2
+
+c) installer
+Go to http://www.mydomain.de/matomo/
+
+At mysql-setup use mysqli not pod.
+
+
+d) Attention:
+You must disable caching for matomo.
+
+Example for APC
+   you can insert php_flag apc.cache_by_default Off in /etc/apache2/conf.d/matomo.conf like:
+
+	<Directory "/srv/www/matomo">
+    	AllowOverride All
+    	Options FollowSymLinks
+    
+    	php_flag apc.cache_by_default Off
+    
+    	<IfModule mod_authz_core.c>
+        ...
+
+e) php
+To prevent some critical issue, you must set the following in your php.ini file: 
+  always_populate_raw_post_data=-1
+After making this change, restart your web server
+
+f) auto archiving
+For autoarchiving you have two options.
+With cron or with systemd.timer.
+For cron you must uncomment the line in /etc/cron.d/matomo-archive
+For systemd.timer you must start and enable matomo-archive.timer

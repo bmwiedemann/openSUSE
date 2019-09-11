@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Mar 11 17:26:53 UTC 2019 - jsegitz@suse.com
+
+- Fixed ExclusiveArch: to correct architecture
+
+-------------------------------------------------------------------
+Mon Mar  4 07:11:25 UTC 2019 - jsegitz@suse.com
+
+- Ensure build only on 64 bit machines
+
+-------------------------------------------------------------------
+Tue Feb  5 13:50:16 UTC 2019 - jsegitz@suse.com
+
+- Retire old $RPM_* shell vars and %__-type macro indirections.
+
+-------------------------------------------------------------------
+Tue Feb  5 07:44:04 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.8
+  * ability to specify noexec/nodev/nosuid in mounts
+  * added --macvlan_vs_ma option
+  * better example configs
+  * changed behavior of --env - empty var means passing it from parent
+- Fixed requires for libnl3
+- Removed format-truncation.patch, string handling was reworked
+
+-------------------------------------------------------------------
+Thu Sep 20 13:23:00 UTC 2018 - jsegitz@suse.com
+
+- Added format-truncation.patch to prevent truncation warnings
+
+-------------------------------------------------------------------
+Thu Sep 20 12:11:46 UTC 2018 - jsegitz@suse.com
+
+- Initial import of version 2.7 

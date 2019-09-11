@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Mar  1 20:27:10 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Install all three built jar files
+- Associate the right pom file with the corresponding artifacts
+- Remove unnecessary sources and simplify the ant build
+
+-------------------------------------------------------------------
+Fri Jan 25 09:29:09 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on jakarta-commons-compress, since nothing
+  in the build needs it
+- Build against javamail and not javamail_1_4_api
+
+-------------------------------------------------------------------
+Mon Sep 18 13:28:49 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target version 1.6
+
+-------------------------------------------------------------------
+Fri May 19 14:00:40 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+- Cleanup unused conditionals
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:10 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:49 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Sep  6 09:14:29 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap 
+
+-------------------------------------------------------------------
+Fri May 15 10:29:39 CEST 2009 - mvyskocil@suse.cz
+
+- 'Initial SUSE packaging of jakarta-commons-vfs'
+

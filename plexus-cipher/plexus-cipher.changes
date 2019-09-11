@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Mar 20 16:22:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Generate the javax.inject.Named running sisu-inject at compile
+  time.
+
+-------------------------------------------------------------------
+Fri Mar  8 15:54:15 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of plexus-cipher 1.7
+- Generate and customize the ant build.xml file
+- Generate the javax.inject.Named by grepping source files that
+  have the @Named annotation

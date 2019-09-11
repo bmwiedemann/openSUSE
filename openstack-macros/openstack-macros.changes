@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Apr  8 21:02:32 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2019.1.1:
+  * macros: Ensure that py_req_cleanup is a multiline macro in impls
+  * Remove documentation-build error flag globally on prepare cleanup
+  * Add new %__openstack_set_env macro
+  * openstack-macros: Install .stestr.conf for -test packages
+  * Fix all Url fields for new spec-cleaner release
+
+-------------------------------------------------------------------
+Thu Feb 15 14:24:20 UTC 2018 - tbechtold@suse.com
+
+- Install macros.openstack-singlespec
+
+-------------------------------------------------------------------
+Thu Feb 01 14:30:48 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2018.1:
+  * openstack-macros: Define ext_man for RDO/Fedora
+  * Change Source lines in openstack-macros
+  * Fix all Url fields for new spec-cleaner release
+  * Add top_level.txt file py2_entrypoint macro
+  * openstack-macros: Add singlespec macroset copy
+  * openstack-macros: Bump version to 2018.1.0
+  * openstack-macros: Bump version for Pike to 2017.2.0
+
+-------------------------------------------------------------------
+Tue Aug 22 11:16:31 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 2017.2:
+  * Add apache related macros
+  * Bump openstack-macros to include new Apache macros
+  * switch use of python_sitelib macro to python2_sitelib
+  * Added OpenStack Macros for fedora
+
+-------------------------------------------------------------------
+Thu Apr 06 11:17:24 UTC 2017 - tbechtold@suse.com
+
+- Update to version 2017.2:
+  * Bump openstack-macros to include new Apache macros
+
+-------------------------------------------------------------------
+Thu Apr 06 09:56:22 UTC 2017 - tbechtold@suse.com
+
+- Update to version 2017.1:
+  * Add apache related macros
+
+-------------------------------------------------------------------
+Fri Feb 10 13:42:44 UTC 2017 - tbechtold@suse.com
+
+- Update to version 2017.1:
+  * Add macros to handle -test packages
+  * Add py_req_cleanup macro to openstack-macros
+  * Add openstack_pre_user_group_create macro
+  * Added tempest plugin entrypoint macro
+  * Add missing unversioned %py* macros
+  * Obsoletes/Provides rdo-rpm-macros
+  * Improved entrypoint macro for tempest plugin
+
+-------------------------------------------------------------------
+Fri Dec 23 12:48:47 UTC 2016 - tbechtold@suse.com
+
+- Update to version 2016.2:
+  * Add py_req_cleanup macro to openstack-macros
+
+-------------------------------------------------------------------
+Fri Oct 21 07:36:00 UTC 2016 - tbechtold@suse.com
+
+- Update to version 2016.2:
+  * Add macros to handle -test packages
+- switch to stable/newton branch
+
+-------------------------------------------------------------------
+Tue Aug 30 19:32:19 UTC 2016 - tbechtold@suse.com
+
+- update _service and create tarball from upstream openstack-macros
+  dir
+- cleanup duplicate macro files (now included in the tarball)
+- remove no longer needed pre_checkin.sh script
+
+-------------------------------------------------------------------
+Mon Aug 01 10:02:37 UTC 2016 - tbechtold@suse.com
+
+- Update to 4a0436
+
+-------------------------------------------------------------------
+Mon Jul 11 14:24:19 UTC 2016 - tbechtold@suse.com
+
+- update to 815ad31
+
+-------------------------------------------------------------------
+Thu Sep  3 12:04:45 UTC 2015 - dmueller@suse.com
+
+- Initial package
+

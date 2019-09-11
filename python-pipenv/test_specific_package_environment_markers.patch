@@ -1,0 +1,23 @@
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_install_markers.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_install_markers.py	2019-03-25 03:07:24.413242547 +0700
+@@ -69,7 +69,7 @@
+         with open(p.pipfile_path, 'w') as f:
+             contents = """
+ [packages]
+-requests = {version = "*", os_name = "== 'splashwear'"}
++tablib = {version = "*", os_name = "== 'splashwear'"}
+             """.strip()
+             f.write(contents)
+ 
+@@ -77,9 +77,9 @@
+         assert c.return_code == 0
+ 
+         assert 'Ignoring' in c.out
+-        assert 'markers' in p.lockfile['default']['requests']
++        assert 'markers' in p.lockfile['default']['tablib']
+ 
+-        c = p.pipenv('run python -c "import requests;"')
++        c = p.pipenv('run python -c "import tablib;"')
+         assert c.return_code == 1
+ 
+ 

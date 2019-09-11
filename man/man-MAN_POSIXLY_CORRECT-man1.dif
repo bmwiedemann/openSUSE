@@ -1,0 +1,21 @@
+---
+ man/man1/man.man1 |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+--- man/man1/man.man1
++++ man/man1/man.man1	2016-12-15 14:10:47.883461034 +0000
+@@ -1344,6 +1344,14 @@ However, some users want to see them any
+ .RB $ MAN_KEEP_STDERR
+ is set to any non-empty value, error output will be displayed as usual.
+ .TP
++.if !'po4a'hide' .BR MAN_POSIXLY_CORRECT
++If many man pages are available corresponding to the requested one,
++.B %man%
++will display them in a list, unless
++.RB $ MAN_POSIXLY_CORRECT
++is set, in which case the first page in the list will be displayed
++automatically.
++.TP
+ .if !'po4a'hide' .BR LANG , " LC_MESSAGES"
+ Depending on system and implementation, either or both of
+ .RB $ LANG

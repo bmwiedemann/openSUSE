@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Jul  2 08:29:04 UTC 2016 - mailaender@opensuse.org
+
+- add CREDITS file
+- add BSD-3-Clause for included code
+
+-------------------------------------------------------------------
+Thu Jun 30 19:27:42 UTC 2016 - jengelh@inai.de
+
+- Update to new git snapshot 20160630 to fix gcc6 erroring out on
+  narrowing conversions.
+
+-------------------------------------------------------------------
+Wed May 16 13:22:06 UTC 2012 - jreidinger@suse.com
+
+- fix build on factory
+- format license to conform spdx 
+
+-------------------------------------------------------------------
+Fri Sep 10 17:37:24 UTC 2010 - jengelh@medozas.de
+
+- Enable FLTK frontend
+
+-------------------------------------------------------------------
+Wed Jul 28 12:32:39 UTC 2010 - jengelh@medozas.de
+
+- Split up zdoom package into its components
+- grabpng
+

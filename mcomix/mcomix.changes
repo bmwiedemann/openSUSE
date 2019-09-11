@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Tue May 28 13:47:24 UTC 2019 - Gustavo Yokoyama Ribeiro <gyribeiro@suse.de>
+
+- Add python-pillow-fix-attributeerror.patch: Fix field VERSION
+  deprecated in Pillow 5.2.0 and dropped in 6.0.0
+
+-------------------------------------------------------------------
+Sun Jul 16 08:41:18 UTC 2017 - sleep_walker@opensuse.org
+
+- clean the spec with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug  3 11:03:27 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 1.2.1
+   for list of changes check ChangeLog file
+
+-------------------------------------------------------------------
+Tue Nov 10 18:01:34 CET 2015 - tiwai@suse.de
+
+- Add missing dependency on python-setuptools
+
+-------------------------------------------------------------------
+Mon Nov  2 11:56:11 UTC 2015 - sleep_walker@opensuse.org
+
+- localization was not part of package - fix it
+
+-------------------------------------------------------------------
+Mon Nov  2 06:20:19 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 1.01
+    - Keyboard shortcuts can now be edited from MComix' preference dialog
+      in a new tab "Shortcuts". (by Valentin Gologuzov)
+      Please not that the arrow keys, Backspace and Escape cannot be bound
+      to actions right now, unless you're manually editing the config file.
+
+    - During database upgrade, MComix did not consider that books in the
+      "Last read" database might no longer exist, leading to program crash.
+      This has been fixed.
+
+    - Adding a collection with a numeric name to the library made the library
+      unusable. This has been fixed.
+
+    - Fixed win32 builds missing the 'calendar' module.
+
+    - Fixed bookmarks not being displayed in the Ubuntu Unity global menu.
+
+    - Fixed 'Continue reading' not working when files are opened from
+      the command line (by Boris Bogar).
+
+    - Improved page extraction and caching algorithm, leading to much better
+      responsiveness, especially for viewing large archives. (by Benoit Pierre)
+
+    - MComix will now always hide the mouse cursor after a period of
+      inactivity, even when not in fullscreen mode. (by Benoit Pierre)
+
+    - The ALT+Left and ALT+Right keys will now either advance one page,
+      or go back one page, depending on the user being in manga mode.
+
+    - CTRL plus mouse wheel will now zoom in/out one level.
+
+    - Manual zooming will now use a logarithmic scale instead of a linear
+      spline.
+
+    - The library will now use natural sorting for "Sort by name" and
+      "Sort by path" instead of alphanumeric sorting, bringing it in line
+      with most other sorting done by MComix.
+
+    - Adding a book to a collection with the same book already existing
+      in another collection did not immediately show the book in the
+      library main view when the new collection was already selected.
+
+    - MComix can now use the '7z' executable to read .tar.xz and .tar.lzma
+      archives.
+
+    - ZIP archives using BZIP2 compression will now fall back to external
+      unzip/7z instead of failing (by Awad Mackie).
+
+    - MComix can now read PDF files using tools provided by mupdf,
+      namely mutool and mudraw. (by Benoit Pierre)
+
+    - MComix will now use the current GTK theme's icons for
+      Next/Previous buttons.
+
+    - Added AppData meta information for software repositories.
+
+    - Updated traditional Chinese translation (by Wayne Su).
+
+-------------------------------------------------------------------
+Thu Jul 24 17:38:24 UTC 2014 - sleep_walker@suse.cz
+
+- remove windows-fix.patch as it is not needed after update of
+  python-setuptools
+
+-------------------------------------------------------------------
+Thu Jul 24 16:03:17 UTC 2014 - sleep_walker@suse.cz
+
+- let there be mcomix!
+- add windows-fix.patch as python-setuptools doesn't take it correctly
+  otherwise

@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:42:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.4
+  See http://kicad-pcb.org/blog/2019/08/KiCad-5.1.4-Release/ for details.
+
+-------------------------------------------------------------------
+Mon Apr 15 19:07:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.1
+  See http://kicad-pcb.org/blog/2019/04/KiCad-5.1.1-Release/ for details.
+
+-------------------------------------------------------------------
+Mon Mar 11 17:11:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0
+  See http://kicad-pcb.org/blog/2019/03/KiCad-5.1.0-Release/ for details.
+
+-------------------------------------------------------------------
+Thu Dec  6 21:06:30 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.2
+
+-------------------------------------------------------------------
+Thu Oct 18 17:52:10 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.1
+- Shorten description, strip verbose language duplicated from KiCad package
+- Remove unnecessary BuildRequires: gcc-c++
+
+-------------------------------------------------------------------
+Fri Aug 17 06:37:26 UTC 2018 - davejplater@gmail.com
+
+- Fix description's grammar.
+
+-------------------------------------------------------------------
+Thu Aug 16 12:25:14 UTC 2018 - jengelh@inai.de
+
+- Remove duplicated metadata from description.
+
+-------------------------------------------------------------------
+Sun Jul 22 09:16:12 UTC 2018 - davejplater@gmail.com
+
+- Update to version 5.0.0
+- License is now CC-BY-SA-4.0
+- kicad-symbols replaces kicad-library package.
+- Remove kicad-library-3d sub package, 3D symbols now have their
+  own package.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:40:46 UTC 2017 - davejplater@gmail.com
+
+- Update to version 4.0.7
+- Split 3d symbols into a sub package due to it's size.
+
+-------------------------------------------------------------------
+Thu Mar 23 14:41:40 UTC 2017 - xxxxxmichl@googlemail.com
+
+- Update to version 4.0.6
+
+-------------------------------------------------------------------
+Thu Jan 12 10:28:33 UTC 2017 - davejplater@gmail.com
+
+- Update to version 4.0.5
+
+-------------------------------------------------------------------
+Mon Sep 12 08:23:38 UTC 2016 - davejplater@gmail.com
+
+- Update to version 4.0.4
+
+-------------------------------------------------------------------
+Mon Aug  8 17:34:36 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.3
+
+-------------------------------------------------------------------
+Mon Mar 21 09:41:32 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.2
+
+-------------------------------------------------------------------
+Wed Jul 31 19:56:59 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 20130729
+
+-------------------------------------------------------------------
+Tue Apr  9 15:18:07 UTC 2013 - werner.ho@gmx.de
+
+- Update to version 20130409
+
+-------------------------------------------------------------------
+Thu Jan 24 20:52:31 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 20130122
+
+-------------------------------------------------------------------
+Tue Jan  8 12:18:39 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  See COPYING and the majority of source code files
+
+-------------------------------------------------------------------
+Fri Dec 28 12:48:27 UTC 2012 - dmitry_r@opensuse.org
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Apr  1 11:05:56 UTC 2012 - werner.ho@gmx.de
+
+- Update to 2012-03-25-BZR120
+
+-------------------------------------------------------------------
+Sat May 28 10:00:00 UTC 2011 - werner.ho@gmx.de
+
+- Update to 2011-05-28-BZR109
+
+-------------------------------------------------------------------
+Tue Apr 13 15:40:27 UTC 2010 - mhopf@novell.com
+
+- Update to 2010-04-06-SVN2508
+
+-------------------------------------------------------------------
+Thu Dec 17 00:00:00 UTC 2009 - werner.ho@gmx.de
+- created library links from supports.mod to sockets.mod
+  This is another fix for #549936
+
+-------------------------------------------------------------------
+Sat Dec 05 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- use library from SVN repo. There's no working library
+  package on soureforge. Fixes #549936
+
+-------------------------------------------------------------------
+Thu Mar 25 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- initial build of the kicad library package version 1.0

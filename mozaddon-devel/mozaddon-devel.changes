@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Aug  5 09:41:47 UTC 2015 - jengelh@inai.de
+
+- Recognize <Description> XML tags with arbitrary namespace
+  prefixes
+
+-------------------------------------------------------------------
+Mon Apr  1 20:36:52 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0) for build.opensuse.org

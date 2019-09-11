@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Thu May 16 13:32:26 UTC 2019 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.0:
+  + pause and retry if API call throttling is detected in Azure
+    (bsc#1135257 bsc#1135263)
+
+-------------------------------------------------------------------
+Thu Jan 31 13:14:18 UTC 2019 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 0.9:
+  + run cloud-netconfig periodically (bsc#1118783 bsc#1122013)
+  + do not treat eth0 special wrt routing policies (bsc#1123008)
+  + reduce timeout on metadata read (bsc#1112822)
+
+-------------------------------------------------------------------
+Tue May 29 19:16:31 UTC 2018 - jgleissner@suse.com
+
+- Update to version 0.7:
+  + no persistent names in Azure (bsc#1094271)
+
+-------------------------------------------------------------------
+Wed Jan 17 10:51:05 UTC 2018 - jgleissner@suse.com
+
+- Added dependency on curl
+- Use otherproviders() only on SLES 11 builds
+
+-------------------------------------------------------------------
+Fri Jan 12 15:44:29 UTC 2018 - jgleissner@suse.com
+
+- Remove dependency on udev-persistent-ifnames (bsc#1075484)
+
+-------------------------------------------------------------------
+Thu Nov  9 15:57:52 UTC 2017 - adrian.glaubitz@suse.com
+
+- Add missing Provides/Conflicts statements to spec file
+
+-------------------------------------------------------------------
+Fri Oct 13 15:18:33 UTC 2017 - jgleissner@suse.com
+
+- Prepare for SLE11 submission (bsc#1063292)
+
+-------------------------------------------------------------------
+Fri Oct 13 13:47:05 UTC 2017 - jgleissner@suse.com
+
+- Update to version 0.6:
+  + Use tested and supported metadata API versions
+
+-------------------------------------------------------------------
+Wed Oct 11 21:21:52 UTC 2017 - rjschwei@suse.com
+
+- Update to version 0.5
+  + New API version for Azure metadata server
+  + Wait for the metadata server in EC2 
+
+-------------------------------------------------------------------
+Tue Oct 10 07:24:43 UTC 2017 - jgleissner@suse.com
+
+- Update to version 0.4:
+  Do not touch VF interfaces in Azure (bsc#1055553)
+- Prepare for SLE submission (FATE#323820, bsc#1027212)
+
+-------------------------------------------------------------------
+Thu Sep  7 16:30:30 UTC 2017 - jgleissner@suse.com
+
+- Added conflict tags
+- Fix requires for non-Leap platforms
+
+-------------------------------------------------------------------
+Mon Aug 14 08:40:32 UTC 2017 - jgleissner@suse.com
+
+- Initial version 0.3

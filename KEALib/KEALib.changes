@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Aug 15 12:36:57 UTC 2018 - jengelh@inai.de
+
+- Update descriptions. Drop empty kealib BRPM.
+
+-------------------------------------------------------------------
+Wed Jul 25 07:34:09 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.4.10:
+  * Remove requirement to build in C++98 mode. Fixes linking
+    against HDF5 built in C++11 mode.
+  * Fix C++17 compilation
+  * Fix NZTM problem in Imagine driver
+- Changes for version 1.4.9:
+  * Fix output from "kea-config --hdflibs" so it works with libtool
+  * Tidy directory structure by removing "trunk" subdirectory.
+- Changes for version 1.4.8:
+  * Improvements to Arc and Imagine Drivers
+  * Installer for ArcGIS, ArcPro and Imagine.
+  * Improvements to cmake scripts by Hiroshi Miura. Among other
+    things, out of tree builds now work.
+  * Fix building against recent HDF5 on Windows
+- Drop upstreamed patches:
+  * Fixed_out_of_tree_builds.patch
+  * fix_build_with_gdal.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 11:45:49 UTC 2018 - mpluskal@suse.com
+
+- Polish spec file with spec-cleaner
+- Use more of cmake macros
+- Run test(s)
+- Fix dependencies of devel package
+
+-------------------------------------------------------------------
+Fri Jul 13 09:54:53 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Move kea-config to devel package
+
+-------------------------------------------------------------------
+Wed May 16 19:42:20 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Disable GDAL plugin by default
+
+-------------------------------------------------------------------
+Wed May 16 14:55:08 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 1.4.7
+- Backport upstream patch to fix bin/* installation
+  * Fixed_out_of_tree_builds.patch
+
+-------------------------------------------------------------------
+Wed May 16 10:41:25 UTC 2018 - guillaume@opensuse.org
+
+- Initial version 1.4.6
+- Add patch to be able to build GDAL plugin:
+  * fix_build_with_gdal.patch

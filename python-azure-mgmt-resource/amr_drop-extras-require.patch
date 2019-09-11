@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-resource-2.1.0.orig/setup.py azure-mgmt-resource-2.1.0/setup.py
+--- azure-mgmt-resource-2.1.0.orig/setup.py	2019-04-01 10:34:43.314310768 +0200
++++ azure-mgmt-resource-2.1.0/setup.py	2019-04-01 10:44:06.331736208 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

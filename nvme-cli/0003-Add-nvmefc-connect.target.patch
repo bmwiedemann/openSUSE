@@ -1,0 +1,57 @@
+From 85ccf6e7e6ff70d6f13b0bd702b5f8210b358333 Mon Sep 17 00:00:00 2001
+From: Simon Schricker <sschricker@suse.de>
+Date: Fri, 8 Mar 2019 10:54:29 +0100
+Subject: [PATCH] Add: nvmefc-connect.target to bundle all nvmefc-connect@
+ services
+
+This allows to stop all parameterized services by stopping the target.
+This can then be used in RPM macros to avoid errors like the ones
+reported in bsc#1127076.
+
+For a more detailed explanation, visit:
+https://nordisch.org/posts/hooking-up-instantiated-services-with-rpm/
+
+nvmefc-connect@.service requires the nvmefc-connect.target so that the
+target automatically gets started when a (parameterized) service gets
+started. This is necessary to stop the (then obsolete) services on a
+package upgrade, because the rpm macros only stop _active_ systemd
+units.
+
+Also remove the [Install] section of the nvmefc-connect@.service
+because the service shouldn't be enabled.
+
+Signed-off-by: Simon Schricker <sschricker@suse.de>
+---
+ nvme-fc-autoconnect/nvmefc-connect.target   | 2 ++
+ nvme-fc-autoconnect/nvmefc-connect@.service | 5 ++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+ create mode 100644 nvme-fc-autoconnect/nvmefc-connect.target
+
+diff --git a/nvme-fc-autoconnect/nvmefc-connect.target b/nvme-fc-autoconnect/nvmefc-connect.target
+new file mode 100644
+index 0000000..953c0b7
+--- /dev/null
++++ b/nvme-fc-autoconnect/nvmefc-connect.target
+@@ -0,0 +1,2 @@
++[Unit]
++Description=All instances of nvme-fc-autoconnect daemon
+diff --git a/nvme-fc-autoconnect/nvmefc-connect@.service b/nvme-fc-autoconnect/nvmefc-connect@.service
+index c2370d6..8465ec6 100644
+--- a/nvme-fc-autoconnect/nvmefc-connect@.service
++++ b/nvme-fc-autoconnect/nvmefc-connect@.service
+@@ -5,10 +5,9 @@
+ [Unit]
+ Description=Auto-connect to subsystems on FC-NVME devices
+ After=syslog.target
++PartOf=nvmefc-connect.target
++Requires=nvmefc-connect.target
+ 
+ [Service]
+ Type=oneshot
+ ExecStart=/bin/sh -c "/usr/sbin/nvme connect-all --transport=fc `/usr/bin/echo -e '%i'`"
+-
+-[Install]
+-WantedBy=default.target
+-- 
+2.16.4
+

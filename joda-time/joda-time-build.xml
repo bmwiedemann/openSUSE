@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="joda-time" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="build.finalName" value="joda-time-2.10.1"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir.0" value="src/main/java"/>
+  <property name="build.resourceDir.0" value="."/>
+  <property name="build.resourceDir.1" value="src/main/java"/>
+  
+  <property name="source.tz" value="${build.srcDir.0}/org/joda/time/tz/src"/>
+  <property name="build.tz" value="${build.outputDir}/org/joda/time/tz/data"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <property name="repo.local" value="${user.home}/.m2/repository"/>
+
+  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+  
+  <property name="joda-convert.jar" value="lib/joda-convert.jar"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <pathelement location="${joda-convert.jar}"/>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir.0}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir.0}">
+        <include name="LICENSE.txt"/>
+        <include name="NOTICE.txt"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir.1}">
+        <include name="**/*.properties"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Timezone data compilation target                                       -->
+  <!-- ====================================================================== -->
+
+  <target name="compile-tzdb" depends="compile" description="Compile timezone data files">
+    <!-- Invoke the newly built ZoneInfoCompiler to compile the zoneinfo data files -->
+    <mkdir dir="${build.outputDir}/org/joda/time/tz/data"/>
+    <java classname="org.joda.time.tz.ZoneInfoCompiler"
+          fork="true"
+          failonerror="true">
+      <classpath path="${build.outputDir}"/>
+      <!-- Override default provider since data directory doesn't exist yet -->
+      <sysproperty key="org.joda.time.DateTimeZone.Provider"
+                   value="org.joda.time.tz.UTCProvider"/>
+      <!-- Specify source and destination directories -->
+      <arg value="-src"/>
+      <arg value="${build.srcDir.0}/org/joda/time/tz/src"/>
+      <arg value="-dst"/>
+      <arg line="${build.outputDir}/org/joda/time/tz/data"/>
+      <!-- Specify all the data files to compile -->
+      <arg value="africa"/>
+      <arg value="antarctica"/>
+      <arg value="asia"/>
+      <arg value="australasia"/>
+      <arg value="europe"/>
+      <arg value="northamerica"/>
+      <arg value="southamerica"/>
+      <arg value="pacificnew"/>
+      <arg value="etcetera"/>
+      <arg value="backward"/>
+      <arg value="systemv"/>
+    </java>
+  </target>
+  
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir.0}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             source="${compiler.source}" 
+             verbose="false" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             linksource="false" 
+             breakiterator="false">
+      <group title="User packages"/>
+      <group title="Implementation packages"/>
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile-tzdb" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+		 manifest="src/conf/MANIFEST.MF"
+         excludes="**/package.html">
+      <manifest>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

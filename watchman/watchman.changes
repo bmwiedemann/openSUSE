@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Jun 12 07:37:59 UTC 2018 - matthias.gerstner@suse.com
+
+- watchman_4.7.0_makefile-am.diff: dropped, included in tarball by now
+- 0001-Replaced-memset-calls-with-appopriate-C-11-init-or-a.patch: fix invalid
+  raw memory accesses of non-POD objects, fixes ppc build.
+- 0002-Re-worked-replacement-of-memset-with-proper-init-to-.patch: fix
+  compiler errors introduced by the above patch ...
+- update to version 4.9.0:
+  - Changes in 4.8.0:
+    * New command `flush-subscriptions` to synchronize subscriptions associated
+      with the current session.
+    * Enforce socket Unix groups more strongly — Watchman will now refuse to start
+      if it couldn't gain the right group memberships, as can happen for sites that
+      are experiencing intermittent LDAP connectivity problems.
+    * pywatchman now officially supports Python 3. pywatchman will return Unicode
+      strings (possibly with surrogate escapes) by default, but can optionally return
+      bytestrings. Note that on Python 3, pywatchman requires Watchman 4.8 and above.
+      The Python 2 interface and requirements remain unchanged.
+    * Prior to 4.8, methods on the Java WatchmanClient that returned
+    	ListenableFutures would swallow exceptions and hang in an unfinished state
+    	under situations like socket closure or thread death.  This has been fixed, and
+    	now ListenableFutures propagate exception conditions immediately.  (Note that
+    	this is typically unrecoverable, and users should create a new WatchmanClient
+    	to re-establish communication with Watchman.)  See #412.
+    * The minimum Java version for the Watchman Java client has always been 1.7,
+    	but it was incorrectly described to be 1.6.  The Java client's build file has
+    	been fixed accordingly.
+    * Watchman was converted from C to C++.  The conversion exposed several
+    	concurrency bugs, all of which have now been fixed.
+    * Subscription queries are now executed in the context of the client thread,
+    	which means that subscriptions are dispatched in parallel.  Previously,
+    	subscriptions would be serially dispatched and block the disk IO thread.
+    * Triggers are now dispatched in parallel and waits are managed in their own
+    	threads (one thread per trigger).  This improves concurrency and resolves a
+    	couple of waitpid related issues where watchman may not reap spawned children
+    	in a timely fashion, or may spin on CPU until another child is spawned.
+    * Fixed an object lifecycle management issue that could cause a crash when
+      aging out old/transient files.
+    * Implement an upgraded wire protocol, BSERv2, on the server and in pywatchman.
+    	BSERv2 can carry information about string encoding over the wire. This lets
+    	pywatchman convert to Unicode strings on Python 3. Clients and servers know how
+    	to  transparently fall back to BSERv1.
+  - Changes in 4.9.0:
+    * New field: `content.sha1hex`.  This field expands to the SHA1 hash of
+      the file contents, expressed in hex digits (40 character hex string).
+      Watchman maintains a cache of the content hashes and can compute the
+      hash on demand and also heuristically as files are changed.  This is
+      useful for tooling that wants to perform more intelligent cache invalidation
+      or build artifact fetching from content addressed storage.
+    * Fixed an issue that resulted in the perf logging thread deadlocking when
+      `perf_logger_command` is enabled in the global configuration
+    * Fixed an issue where queries larger than 1MB would likely result in
+      a PDU error response.
+    * Reduced lock contention for subscriptions that do no use the advanced
+      settling (`drop`, `defer`) options.
+    * Fixed `since` generator behavior when using unix timestamps rather than
+      the preferred clock string syntax
+    * Improved the reporting of "new" files in watchman results
+    * Improved performance of handling changes on case insensitive filesystems
+    * pywatchman: the python wheel format is used for publishing watchman pypi package
+    * pywatchman: now watchman path is configurable in python client
+    * pywatchman: now python client can be used as a context manager
+
+-------------------------------------------------------------------
+Tue Jun 20 15:40:15 UTC 2017 - matthias.gerstner@suse.com
+
+- fallthrough.diff: fix gcc 7 build issues
+
+-------------------------------------------------------------------
+Wed Nov 16 09:58:32 UTC 2016 - jengelh@inai.de
+
+- Replace %jobs by %_smp_mflags; drop unnecessary %clean section.
+- Avoid multiple invocation of %service_*.
+
+-------------------------------------------------------------------
+Thu Nov 10 16:55:19 UTC 2016 - matthias.gerstner@suse.com
+
+- added subpackage for python bindings
+- added systemd unit files for service and socket for inetd style spawning of
+  watchman user instances via systemd
+
+-------------------------------------------------------------------
+Tue Nov  8 17:44:27 CET 2016 - mgerstner@suse.de
+
+- initial version using the buildservice
+- no support for systemd, python or ruby bindings yet

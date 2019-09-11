@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sat Jul 14 19:44:10 UTC 2018 - jengelh@inai.de
+
+- Cut overly long description and trim bias.
+
+-------------------------------------------------------------------
+Sun May 27 08:45:43 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 7.7:
+ * dtd.hash: Don't include the arguments in the forward declaration
+   of lookup_element(), because those arguments differ slightly
+   depending on which version of gperf is used to generate dtd.c:
+   "unsigned int" in gperf 3.0 vs "size_t" in gperf 3.1.
+ * conficgure.ac: Check for libiconv with the AM_ICONV macro (from
+   gettext) instead of AC_SEARCH_LIBS. (Advice from Christian
+   Weisgerber, received via Anthony Bentley). That in turn requires
+   adding config.rpath to the EXTRA_DIST in Makefile.am.
+ * hxindex.c: Replaced fgets() by getline(), to allow lines of
+   arbitrary length in the term database.
+
+-------------------------------------------------------------------
+Sun Feb 18 17:03:55 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 7.6:
+ * fix read uninitialized memory bug
+- update to version 7.5:
+ * bugfixes
+ * Added support for HTML5 elements (source, audio, video)
+
+-------------------------------------------------------------------
+Sat Dec 30 11:18:16 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package for version 7.4

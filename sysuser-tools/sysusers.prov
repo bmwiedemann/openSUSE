@@ -1,0 +1,20 @@
+#!/bin/bash
+
+parse()
+{
+	while read line; do
+		[ "${line:0:1}" != '#' ] || continue
+		line="${line## *}"
+		[ -n "$line" ] || continue
+		set -- $line
+		if [ "$1" = 'g' ]; then
+			echo "group($2)"
+		elif [ "$1" = 'u' ]; then
+			echo "user($2)"
+		fi
+	done
+}
+
+while read fn; do
+	parse < "$fn"
+done

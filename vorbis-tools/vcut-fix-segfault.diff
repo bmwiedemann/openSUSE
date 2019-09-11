@@ -1,0 +1,15 @@
+---
+ vcut/vcut.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/vcut/vcut.c
++++ b/vcut/vcut.c
+@@ -178,7 +178,7 @@ static int submit_headers_to_stream(vcut
+ 	for(i=0;i<4;i++)
+ 	{
+ 		ogg_packet p;
+-		if(i < 4)  /* a header packet */
++		if(i < 3)  /* a header packet */
+ 		{
+ 			p.bytes = vs->headers[i].length;
+ 			p.packet = vs->headers[i].packet;

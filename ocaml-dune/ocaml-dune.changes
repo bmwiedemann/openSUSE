@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Thu May 30 15:23:34 UTC 2019 - Andy <andy@onthewings.net>
+
+- Update to version 1.10.0:
+  * Restricted the set of variables available for expansion in the
+    destination filename of install stanza.
+  * Call menhir from context root build_dir.
+  * Add coq.pp stanza.
+  * Add a new more generic form for the promote mode.
+  * Allow to promote only a subset of the targets.
+  * With lang dune >= 1.10, rules in standard mode are no longer
+    allowed to produce targets that are present in the source tree.
+  * Allow %{...} variables in pps flags.
+  * Add a 'cookies' option to ppx_rewriter/deriver flags in library
+    stanzas.
+  * Add more opam metadata and use it to generate .opam files.
+  * Add support for hg in dune subst.
+  * Add the %{os_type} variable.
+  * Support the .cc extension fro C++ sources.
+  * Run ocamlformat relative to the context root.
+  * Other bug fixes and improvements. For details, see
+    https://github.com/ocaml/dune/blob/1.10.0/CHANGES.md
+- Update %install.
+- Install dune-config.5 manpage.
+
+-------------------------------------------------------------------
+Thu May 16 05:47:29 UTC 2019 - Andy <andy@onthewings.net>
+
+- Update to version 1.9.3:
+  * Put back library variants in development mode.
+  * Fix a bug where dune install would install man pages to
+    incorrect paths when compared to opam-installer.
+  * Do not fail when a findlib directory doesn't exist.
+  * Rename (coqlib ...) to (coq.theory ...).
+  * Fix crash when calculating library dependency closure.
+  * Fix .install files not being generated.
+
+-------------------------------------------------------------------
+Thu Apr 11 10:32:52 UTC 2019 - Andy <andy@onthewings.net>
+
+- Update to version 1.9.1:
+  * Fix invocation of odoc to add previously missing include paths,
+    impacting mld files that are not in directories containing
+    libraries. 
+
+-------------------------------------------------------------------
+Wed Apr 10 03:28:52 UTC 2019 - Andy <andy@onthewings.net>
+
+- Update to version 1.9.0:
+  * Add support for library variants and default implementations.
+  * Add experimental `dune init` command.
+  * Experimental Coq support.
+  * Other bug fixes and improvements. For details, see
+    https://github.com/ocaml/dune/blob/1.9.0/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Mar 13 07:18:27 UTC 2019 - Andy <andy@onthewings.net>
+
+- Update to version 1.8.2:
+  * Correctly write dune-package when version is empty string.
+  * Fix auto-generated index.mld. Use correct headings for the
+    listing. 
+
+-------------------------------------------------------------------
+Fri Mar  8 05:41:38 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.8.0:
+  * Various new features and bug fixes. For details, see
+    https://github.com/ocaml/dune/blob/1.8.0/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Feb 28 02:11:16 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.7.3:
+  * Fix interpretation of META files containing archives with / in
+    the filename.
+  * Make errors about menhir stanzas be located.
+
+-------------------------------------------------------------------
+Sat Feb 23 19:12:52 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.7.2:
+  * Add ${corrected-suffix}, ${library-name} and a few other 
+    variables to the list of variables to upgrade.
+  * Fix "dune subst" failing because the build directory was not
+    set.
+  * Configurator: Add warning to Pkg_config.query when a full
+    package expression is used. Add Pkg_config.query_expr for cases
+    when the full power of pkg-config's querying is needed.
+  * Fix unavailable, optional implementations eagerly breaking the
+    build.
+- Update Url to https://dune.build/. 
+
+-------------------------------------------------------------------
+Mon Feb 18 09:55:20 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.7.1:
+  * Change the layout of build artifacts inside _build.
+  * Various other new features and bug fixes. For details, see
+    https://github.com/ocaml/dune/blob/1.7.1/CHANGES.md
+ 
+-------------------------------------------------------------------
+Fri Feb  1 09:26:44 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.6.3:
+  * Various new features and bug fixes. For details, see
+    https://github.com/ocaml/dune/blob/1.6.3/CHANGES.md
+  * Switched to MIT license.
+
+-------------------------------------------------------------------
+Thu May 17 21:50:30 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.0+beta20:
+  * Add a documentation stanza. This stanza allows one to attach
+    .mld files to opam packages. (#570 @rgrinberg)
+  * Execute all actions (defined using (action ..)) in the
+    context's environment. (#623 @rgrinberg)
+  * Add a (universe) special dependency to specify that an action
+    depend on everything in the universe. Jbuilder cannot cache the
+    result of an action that depend on the universe (#603, fixes
+    #255 @diml)
+  * Add a (package <package>) dependency specification to indicate
+    dependency on a whole package. Rules depending on whole
+    package will be executed in an environment similar to the one
+    we get once the package is installed (#624, @rgrinberg and @diml)
+  * Display documentation in alphabetical order. This is relevant
+    to packages, libraries, and modules. (#647, fixes #606
+    @rgrinberg).
+  * Missing asm in ocaml -config on bytecode only architecture is
+    no longer fatal. The same kind of fix is preemptively applied
+    to C compilers being absent. (#646, fixes $637 @rgrinberg)
+  * Use the host's PATH variable when running actions during cross
+    compilation (#649, fixes #625 @rgrinberg)
+  * Fix incorrect include (-I) flags being passed to odoc. These
+    flags should be directories that include .odoc files, rather
+    than the include flags of the libraries. (#652 fixes #651
+    @rgrinberg)
+  * Fix a regression introduced by beta19 where the generated
+    merlin files didn't include the right -ppx flags in some cases
+    (#658 fixes #657 @diml)
+  * Fix error message when a public library is defined twice.
+    Before jbuilder would raise an uncaught exception (Fixes #661,
+    @diml)
+  * Fix several cases where external-lib-deps was returning too
+    little dependencies (#667, fixes #644 @diml)
+  * Place module list on own line in generated entry point mld
+    (#670 @antron)
+  * Cosmetic improvements to generated entry point mld (#653
+    @trefis)
+- Changes from previous releases:
+  * See https://github.com/ocaml/dune/releases.
+
+-------------------------------------------------------------------
+Tue Jan 30 06:29:34 UTC 2018 - olaf@aepfle.de
+
+- Initial version 1.0.20180129.a3ff5e5

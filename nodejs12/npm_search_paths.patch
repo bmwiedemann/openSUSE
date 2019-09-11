@@ -1,0 +1,45 @@
+Index: node-v10.5.0/deps/npm/lib/help-search.js
+===================================================================
+--- node-v10.5.0.orig/deps/npm/lib/help-search.js
++++ node-v10.5.0/deps/npm/lib/help-search.js
+@@ -18,7 +18,7 @@ function helpSearch (args, silent, cb) {
+   }
+   if (!args.length) return cb(helpSearch.usage)
+ 
+-  var docPath = path.resolve(__dirname, '..', 'doc')
++  var docPath = "/usr/share/doc/packages/nodejs"
+   return glob(docPath + '/*/*.md', function (er, files) {
+     if (er) return cb(er)
+     readFiles(files, function (er, data) {
+Index: node-v10.5.0/deps/npm/lib/config/defaults.js
+===================================================================
+--- node-v10.5.0.orig/deps/npm/lib/config/defaults.js
++++ node-v10.5.0/deps/npm/lib/config/defaults.js
+@@ -102,6 +102,11 @@ Object.defineProperty(exports, 'defaults
+     if (process.env.DESTDIR) {
+       globalPrefix = path.join(process.env.DESTDIR, globalPrefix)
+     }
++
++    // don't poop all over distro territory - use /usr/local instead
++    if (globalPrefix === '/usr') {
++      globalPrefix = path.join(globalPrefix, '/local');
++    }
+   }
+ 
+   defaults = {
+Index: node-v10.5.0/deps/npm/lib/config/core.js
+===================================================================
+--- node-v10.5.0.orig/deps/npm/lib/config/core.js
++++ node-v10.5.0/deps/npm/lib/config/core.js
+@@ -153,8 +153,9 @@ function load_ (builtin, rc, cli, cb) {
+     // Eg, `npm config get globalconfig --prefix ~/local` should
+     // return `~/local/etc/npmrc`
+     // annoying humans and their expectations!
+-    if (conf.get('prefix')) {
+-      var etc = path.resolve(conf.get('prefix'), 'etc')
++    var etc_prefix = conf.get('prefix');
++    if (etc_prefix) {
++      var etc = (etc_prefix === '/usr/local' ? '/etc/nodejs' : path.resolve(etc_prefix, 'etc'));
+       defaults.globalconfig = path.resolve(etc, 'npmrc')
+       defaults.globalignorefile = path.resolve(etc, 'npmignore')
+     }

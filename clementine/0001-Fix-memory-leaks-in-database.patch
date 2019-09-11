@@ -1,0 +1,22 @@
+From 8d921c15beb2c5d5489f3eadd0ee2021ea5ca311 Mon Sep 17 00:00:00 2001
+From: Jonas Kvinge <jonas@jkvinge.net>
+Date: Thu, 25 Jul 2019 19:02:43 +0200
+Subject: [PATCH] Fix memory leaks in database
+
+---
+ src/core/database.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/src/core/database.cpp
+===================================================================
+--- Clementine-75f18dab23f0842713a4200a7e362efd51b12e31.orig/src/core/database.cpp	2019-07-26 11:44:22.296926526 +0200
++++ Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/src/core/database.cpp	2019-07-26 11:45:52.908508307 +0200
+@@ -262,7 +262,7 @@ QSqlDatabase Database::Connect() {
+   }
+ 
+   // Find Sqlite3 functions in the Qt plugin.
+-  StaticInit();
++  if (!sFTSTokenizer) StaticInit();
+ 
+   {
+ 

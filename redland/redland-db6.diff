@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-06-16 00:39:52.626194128 +0200
+
+Make redland be able to find BDB 6.0.
+
+---
+ configure.ac         |    2 +-
+ src/rdf_digest_md5.c |    6 ++++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+Index: redland-1.0.16/configure.ac
+===================================================================
+--- redland-1.0.16.orig/configure.ac
++++ redland-1.0.16/configure.ac
+@@ -324,7 +324,7 @@ if test "x$bdb_prefix" != "xno" ; then
+     fi
+ 
+     # Sigh!  And this still might not be good enough.
+-    for bdbc_version in 5.3 5.2 5.1 5.0 4.9 4.8 4.7 4.6 4.5 4.4 4.3 4.2 4.1 4.0 4 3.3 3.2 3.1 3 2; do
++    for bdbc_version in 6.0 5.3 5.2 5.1 5.0 4.9 4.8 4.7 4.6 4.5 4.4 4.3 4.2 4.1 4.0 4 3.3 3.2 3.1 3 2; do
+       bdbc_major=`echo $bdbc_version | sed -e 's/^\(.\).*$/\1/'`;
+       bdbc_version2=`echo $bdbc_version | sed -e 's/^\(.\).\(.\)$/\1\2/'`
+ 

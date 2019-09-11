@@ -1,0 +1,12 @@
+Index: man-db-2.7.1/manual/man_db.me
+===================================================================
+--- man-db-2.7.1.orig/manual/man_db.me
++++ man-db-2.7.1/manual/man_db.me
+@@ -8,6 +8,7 @@
+ .\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+ .\"
+ .so version
++.ds td -
+ .ds U \s-1\fBUNIX\fR\s+1
+ .ds N \s-1\fBNROFF\fR\s+1
+ .ds T \s-1\fBTROFF\fR\s+1

@@ -1,0 +1,1350 @@
+-------------------------------------------------------------------
+Tue Mar 20 17:39:45 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:31 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 06 18:23:38 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.12.2+20171213.567326a7:
+  + Remove the OMF file.
+  + build: Install appstream metadata to non-deprecated location.
+  + help: Rename translated screenshots.
+  + gschema: Fix gettext-domain.
+  + docs: Remove unused image from ro translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 10 22:28:00 UTC 2017 - jengelh@inai.de
+
+- Replace old macros/shell var constructs. Remove redundant %clean
+  section. Do not run fdupes across hardlink boundaries.
+  Update package descriptions.
+
+-------------------------------------------------------------------
+Sat Aug 05 14:35:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.12.2+20170804.b927e519:
+  + build: Allow building with tracker2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 21 19:19:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.12.2+20170721.6e2d7864:
+  + Remove check for dvdcss_interface_2
+  + Mark a string in the .deskop file for translation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 22 13:59:44 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.12.2+20170302.8d6244fa:
+  + Updated translations.
+  + build:
+    - Disable format-y2k error.
+    - Honor ABI version for introspection.
+    - Use modern autotools integration for introspection.
+    - Use -Wno-error=format-y2k.
+    - Use -Wno-error=format-nonliteral.
+- Switch to service generated git checkout. Following this, add
+  gnome-common BuildRequires and pass autogen.sh to bootstrap. Also
+  pass --enable-gtk-doc to configure to build documentation. This
+  fixes build with gcc 7 (boo#1030239).
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Sat Jan 14 23:19:27 UTC 2017 - zaitor@opensuse.org
+
+- Drop brasero BuildRequires from brasero-nautilus sub-package, it
+  does not need the full suite to be functional.
+
+-------------------------------------------------------------------
+Fri Apr 15 07:27:52 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Apr 28 18:38:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Add a symbolic app icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 13:31:49 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix crash in plugin dialog.
+  + Updated translations.
+- Drop brasero-fix-segfault-when-displaying-the-plugin-dialog.patch
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct 10 06:42:26 UTC 2014 - badshah400@gmail.com
+
+- Add brasero-fix-segfault-when-displaying-the-plugin-dialog.patch
+  to fix crash when clicking on Edit -> Plugins, patch taken from
+  upstream bug report; fixes bnc#900549, bgo#728376.
+
+-------------------------------------------------------------------
+Thu Sep 11 15:42:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Make desktop file validate.
+  + Make appdata file validate.
+  + Allow building with tracker 1.0.
+  + Fix problem with constructors.
+  + Updated translations.
+- Drop brasero-gtk3fix.patch and brasero-support-tracker-1.0.patch:
+  fixed upstream.
+- Drop gnome-common BuildRequires and call to autoreconf, as there
+  is no patch left touching the build system.
+
+-------------------------------------------------------------------
+Mon Aug 18 16:55:07 UTC 2014 - dimstar@opensuse.org
+
+- Add brasero-gtk3fix.patch: Fix execution with GTK3 3.13.x.
+
+-------------------------------------------------------------------
+Sun Feb 16 14:42:06 UTC 2014 - zaitor@opensuse.org
+
+- Add brasero-support-tracker-1.0.patch, also add gnome-common
+  BuildRequires and insert call to autoreconf. Support building
+  with tracker-1.0, patch sent upstream (bgo#724486).
+
+-------------------------------------------------------------------
+Thu Dec 26 14:06:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Support Tracker 0.18.
+  + Remove X session support (make Brasero work under Wayland).
+  + Updated translations.
+- Drop brasero-tracker-0.18.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to autoreconf, as we
+  don't carry any patches.
+
+-------------------------------------------------------------------
+Thu Dec 26 13:00:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.0:
+  + Include an appdata file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 26 12:18:44 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.0:
+  + Fixed drawing issues in media selection combo boxes.
+  + Fix several crashers.
+  + Fixes for new autotools.
+  + Disable audio normalisation - it's broken since GStreamer 1.0.
+  + Updated translations.
+- Drop brasero-tracker-0.16.patch, fixed upstream.
+- Drop gnome-common BuildRequires, and stop using autoreconf, not
+  needed anymore since we do not carry any patches.
+- Stop passing --disable-scrollkeeper, no longer needed nor
+  recognized.
+- Add pkgconfig(libburn-1) and pkgconfig(libisofs-1) BuildRequires
+  in order to build the libburnia plugin, we already pass
+  --enable-libburnia to configure.
+
+-------------------------------------------------------------------
+Sun May  5 12:03:01 UTC 2013 - davejplater@gmail.com
+
+- Allow wodim as well as cdrecord as backends:
+  + Drop wodim Requires.
+  + Add /usr/bin/cdrecord, /usr/bin/mkisofs and /usr/bin/readcd
+    Requires: they are provided by wodim and cdrtools.
+  + Add /usr/bin/cdda2wav Requires: provided by
+    cdrkit-cdrtools-compat and cdrtools.
+
+-------------------------------------------------------------------
+Tue Mar 26 08:54:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Documentation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 09:34:04 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Add a question mark to a question.
+  + Support notification filtering.
+  + Remove nonexisting options from the man page.
+  + Fix while loop in `brasero_libisofs_write_image_to_fd_thread.
+  + Updated translations.
+- Add brasero-tracker-0.16.patch: Fix build with tracker 0.16.
+- Add gnome-common BuildRequires and call to autoreconf, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Mon Nov 12 20:45:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Libburnia plugin: Fix while loop in
+    `brasero_libisofs_write_image_to_fd_thread()` (bgo#685983)
+  + Remove nonexisting options from the man page
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:19:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Fix build, link libbrasero-burn against libm (for ceil(3))
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 16:30:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Fix build against gstreamer-plugins-base-1.0
+  + Fix build without preview
+  + build: Require gstpbutils-1.0 instead of 0.10
+  + Port to new documentation infrastructure
+  + Port brasero to GStreamer 1.0
+  + brasero-project: include libxml/xmlerror.h for xmlError
+  + Put settings in the correct path
+  + Add Desktop Actions for Unity
+  + Updated translations.
+- Replace gnome-doc-utils-devel with yelp-tools, following
+  upstreams port o the new documentation infrastructure.
+- Replace BuildRequires for the switch to GStreamer 1.0:
+  + Old: pkgconfig(gstreamer-0.10),
+    pkgconfig(gstreamer-plugins-base-0.10)
+  + New: pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-video-1.0),
+    pkgconfig(gstreamer-tag-1.0), pkgconfig(gstreamer-pbutils-1.0),
+    pkgconfig(gstreamer-plugins-base-1.0)
+- Replace Requires for the switch to GStreamer 1.0:
+  + Old: gstreamer010, gstreamer010-plugins-base,
+    gstreamer010-plugins-oil, gstreamer010-plugins-bad
+  + New: gstreamer, gstreamer-plugins-base, gstreamer-plugins-bad.
+- Add explicit pkgconfig(gdk-x11-3.0) BuildRequires: configure
+  checks for it. This does not cause any change for our package, as
+  it is being pulled in indirectly anyway.
+
+-------------------------------------------------------------------
+Sun Jul  1 21:30:48 UTC 2012 - dimstar@opensuse.org
+
+- Add cdrdao and cdrkit-cdrtools-compat Requires: Those packages
+  are required for CD Audio copy features (bnc#743601).
+
+-------------------------------------------------------------------
+Tue Apr 17 06:27:02 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 21:30:29 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:25:16 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Fix formatting error in man page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 20:26:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Correct CD cover dimensions (bgo#660918).
+  + Call gettext() where translated string array items are used.
+  + Add a fix for optical drive not selected by default.
+  + Update categories in brasero.desktop
+  + Use g_mkdtemp() rather than mkdtemp() (bgo#623890)
+  + Support build against tracker 0.13/0.14
+  + Build fixes (including bgo#641650)
+  + Documentation improvements.
+  + Updated translations.
+- Drop brasero-tracker-0.14.patch: fixed upstream
+- Remove hack to change categories in brasero.desktop: fixed
+  upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh:
+  they were only needed for above patch.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:55:01 UTC 2012 - reddwarf@opensuse.org
+
+- Enable libburnia plugins:
+  + Add pkgconfig(lbburn-1) and pkgconfig(libisofs-1) BuildRequires
+  + Pass --enable-libburnia to configure 
+
+-------------------------------------------------------------------
+Sun Feb 19 15:50:46 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice) and pkgconfig(sm) BuildRequires: they used to
+  be pulled in by something else before.
+
+-------------------------------------------------------------------
+Thu Jan 19 09:10:28 UTC 2012 - vuntz@opensuse.org
+
+- Add support for tracker 0.13/0.14:
+  + Add brasero-tracker-0.14.patch.
+  + Add gnome-common BuildRequires and call to gnome-autogen.sh,
+    needed for above patch.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:32:30 UTC 2011 - vuntz@opensuse.org
+
+- Split typelib file from libbrasero-burn3-1 into
+  typelib-1_0-BraseroBurn-3_2_0 and from libbrasero-media3-1 into
+  typelib-1_0-BraseroMedia-3_2_0.
+- Add typelib-1_0-BraseroBurn-3_2_0 and
+  typelib-1_0-BraseroMedia-3_2_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:42:11 UTC 2011 - rbrownccb@opensuse.org
+
+- Add wodim Requires to fix burning of CDs (bnc#729984).
+
+-------------------------------------------------------------------
+Thu Oct  6 22:10:43 UTC 2011 - vuntz@opensuse.org
+
+- Change categories in brasero.desktop so that brasero doesn't
+  appear twice in the gnome-shell list of applications.
+  Fix bnc#722215.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:06:17 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Tue Sep 27 10:30:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 11:26:51 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Switch to g_format_size()
+  + Rewrote help in Mallard
+  + Remove unneeded gconf build dependency
+  + Support building against tracker 0.11/0.12
+  + Updated translations.
+- Remove pkgconfig(gconf-2.0) BuildRequires, following upstream
+  change.
+- Remove sed hack in %prep to support tracker 0.12: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:09:41 UTC 2011 - vuntz@opensuse.org
+
+- Add sed hack in %prep to support the build against tracker
+  0.11/0.12.
+
+-------------------------------------------------------------------
+Thu Sep  1 15:17:00 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + Drop beagle support (bgo#657313, bgo#639257)
+  + Use libtracker-sparql instead of libtracker-client (bgo#651630)
+  + Use the primary-toolbar style class where applicable.
+  + Do not use deprecated H/V variants of GTK+ widgets.
+  + nautilus: wait for the track to load file info before adding to
+    session.
+  + Wrong semi-colon in brasero-nautilus.desktop (bgo#649178)
+  + Fix Documenters list in the About Dialog (bgo#646112)
+  + Fix two typos.
+  + Updated translations.
+- Drop use_tracker macro and therefore libbeagle-devel
+  BuildRequires when it was unset: tracker is always used now.
+
+-------------------------------------------------------------------
+Thu Apr 14 09:29:12 UTC 2011 - dimstar@opensuse.org
+
+- Split out libbrasero-utils3-1 from the main package. Even though
+  the lib is not supposed to be directly used by other apps, other
+  brasero libs link to it and this causes issues on upgrades.
+- Obsolete libbrasero-burn1 in libbrasero-burn3-1: this is
+  technically wrong, but smoothens the upgrade path due to the
+  previously missing split of libbrasero-utils1.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:27:38 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 13:55:47 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + Use /opt/gnome for schemas instead of /apps
+  + Add new app icons
+  + Updated translations
+  + Really remove Brasero nautilus extension from application list.
+  + Don't add CD/DVD creator to Applications list (bgo#643984)
+- Changes from version 2.91.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 23 11:57:43 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.90:
+  + Fix packagekit integration
+  + bgo#642913: ‘NautilusMenuProviderIface’ has no member named
+    ‘get_toolbar_items’
+  + bgo#641407: libbrasero-media3.pc doesn't work
+  + Updated translations.
+- Changes from version 2.91.6:
+  + Some more changes to make a better use of GTK+3
+  + Brasero has been added to the utility and core categories.
+  + Warnings appearing with gcc 3.4.6 have been fixed.
+  + The search pane was removed as it has been made useless by the
+    fact the stock GtkFileChooser widget already integrates with
+    tracker.
+  + Fix build and require ICE in configure
+  + Updated translations.
+- Changes from version 2.91.5:
+  + bgo#631957: Brasero now relies on libnotify to fit better in
+    gnome-shell.
+  + bgo#638773: some more GTK+ 3 related changes
+  + Updated translations.
+- Changes from version 2.91.4:
+  + Some more changes to port brasero to the new GTK+3 API
+  + Updated translations.
+- Changes from version 2.91.3:
+  + Some changes to improve the nautilus plugin and various bug
+    fixes (including some to catch up with GTK+ 3 changes).
+  + Move the disc name entry into the nautilus bar
+  + Use gtk_paned_new() instead gtk_[h|v]paned_new()
+  + Various fixes
+  + Updated translations.
+- Changes from version 2.91.2:
+  + More changes to move to the new GTK+ 3.0 API
+  + Updated translations.
+- Changes from version 2.91.1:
+  + More changes towards GNOME3 and adapting to the new
+    GTK+ 3.0 API
+  + bgo#612980: Copy disc to ISO image always uses brasero.iso
+    by default
+  + bgo#631957: drop status icon use and removed the icon tray
+  + Removal of statusbar resize grip
+  + Check the destination volume free space when creating an
+    image earlier
+  + Speed up autoconfiguration of sessions
+  + Remove remaining expose-event signal use
+  + bgo#630651: Basero creating incomplete image (.ISO) files
+  + Updated translations.
+- Changes from version 2.91.0:
+  + Move to a GTK+ 3 build only
+  + Move to the new rendering scheme of GTK+ 3
+  + Improved the "choose your background dialog" in the cover
+    editor
+  + Removed the logo for the front page
+- Change BuildRequires to pkgconfig() ones:
+  + old ones: gconf2-devel, gstreamer010-devel,
+    gstreamer010-plugins-base-devel, libcanberra-devel,
+    nautilus-devel, totem-pl-parser-devel.
+  + pkgconfig() ones: gconf-2.0, gio-2.0, gstreamer-0.10,
+    gstreamer-plugins-base-0.10, gtk+-3.0, libcanberra,
+    libcanberra-gtk3, libnautilus-extension, libxml-2.0,
+    totem-plparser.
+- Remove libunique-devel BuildRequires and add pkgconfig(libnotify)
+  BuildRequires.
+- Rename libbrasero-burn1 to libbrasero-burn3-1 and
+  libbrasero-media1 to libbrasero-media3-1 following library name
+  changes.
+- Stop passing --with-gtk=2.0 to configure: we want GTK+ 3 and the
+  option is gone now.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:31:29 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+- Remove shared-mime-info Requires: if it's not there, then we
+  simply don't need to update the mime database.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:14:12 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + bgo#632576: Brasero segfaults just before it should start
+    burning
+  + bgo#630651: Basero creating incomplete image (.ISO) files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 27 22:22:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + bgo#630178: gtk_dialog_set_has_separator() is deprecated
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 08:57:06 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Revert to libunique from GApplication
+  + Completely switch away from dbus-glib to GDBus
+  + Some more debugging to find out about problems with encrypted
+    DVDs
+  + bgo#629190: minor issues in gdbus conversion.
+  + Fix Inhibit() d-bus parameters
+  + Use --with-gtk switch for gtk 2/3 selection
+  + Fix image checksuming that did not occur when GConf or GSetting
+    returned 0 as a value for the checksum type key
+  + Don't hardcode gconf gsettings backend
+  + Fix brasero plugin directory
+- Pass --with-gtk=2.0 instead of --disable-gtk3 to configure.
+
+-------------------------------------------------------------------
+Tue Aug 31 01:42:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + bgo#627687: Rhythmbox create audio CD does not work
+  + bgo#627005: Starting brasero with --device=/dev/sr0 floating
+                point exception
+  + bgo#625592: brasero dialog has _C mnemonic for two buttons
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 18 13:51:18 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Initial port to GDBus
+  + Bug Fixes:
+    - bgo#606010: crashes at audio CD insertion
+    - bgo#615959: Displays "starting to record" during whole burn
+      process
+    - bgo#617222: brasero can't copy audio cd (useless error
+      message)
+    - bgo#625592: brasero dialog has _C mnemonic for two buttons
+  + Updated translations.
+- Drop brasero-fix-nautilus-ext-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Aug  8 06:29:18 CEST 2010 - vuntz@opensuse.org
+
+- Cleanup update to version 2.31.5.
+- Add gsettings schema handling, with %glib2_gsettings_schema_*
+  macros, and remove --disable-schemas-install from configure since
+  it's gconf-specific.
+- Add brasero-fix-nautilus-ext-build.patch to fix build of nautilus
+  extension. Taken from git.
+- Pass --disable-gtk3 to configure to make sure we don't build
+  against GTK+ 3.
+- Rename libbrasero-burn0 to libbrasero-burn1 and libbrasero-media0
+  to libbrasero-media1 after library bump.
+
+-------------------------------------------------------------------
+Thu Jul 29 11:47:00 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.5:
+  + Features:
+    - Bump GTK+ and libcanberra to 3.0
+    - bgo#622332: Port to GApplication
+    - Allow to build with gtk2 and gtk3
+  + Bug Fixes:
+    - bgo#623484: No estimated drive speed shown
+    - Fix session logging for tool dialogs (sum+blank)
+    - bgo#623545: "Increase compatibility with Windows" only cuts
+      the length of ONE single filename to 64 characters
+    - Close any GtkFileChooserDialog if the user clicks to display
+      the side pane
+    - bgo#622968: Add File Selector mis-behaves: No Places pane.
+      Ctrl/click action wrong.
+    - Misc fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  8 15:48:18 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + Use GSettings instead of gconf
+  + bgo#621243: Brasero reports outdated cdrtools on cdrtools-3.00
+  + Minor fix for some drives when retrieving speed through page 2A
+  + bgo#559103: Never change window size because of the preview
+  + Updated translations.
+- Changes from version 2.31.3:
+  + bgo#586040: duplicated command listed in open-with dialog
+  + bgo#620589: Disk project doesn't save the disk titl
+  + Fix wrong report of speed with both cdrecord and wodim
+  + bgo#615959: Displays "starting to record" during whole burn
+    process.
+  + Updated translations.
+- Changes from version 2.31.1:
+  + Added support for Tracker 0.8.x
+  + Fixed lots of memleaks
+  + Fixed some search problems
+  + bgo#590648: Text in cover editor does not show up automatically
+  + bgo#617831: "Write to Disc" button sensitivity regression
+  + Fix flaw in mask that lead libburn plugin not to work (not to
+    be picked up actually) in some circumstances
+  + bgo#617494: Fails to burn ANY audio project
+  + bgo#564411: Move columns doesn't work
+  + bgo#618917: Brasero does not correctly handle double clicking
+    on column separators
+  + bgo#618942: Bad info when burning, high CPU usage and slow burn
+  + Change the priority for cdrdao and raised the one of cdda2wav
+    plugin
+  + Do not check for symlinks on cdda2wav so the plugin can use
+    icedax.
+  + bgo#598145: Brasero's failure with some file names
+  + bgo#613986: Pressing create audio cd does nothing
+  + bgo#602854: Empty project not available
+  + bgo#619366: can't actually save error logs
+  + Fix various crashes: bgo#616935, bgo#615526, bgo#615988,
+    bgo#597694
+  + Other bugs fixed: bgo#594716, bgo#608424
+  + Lots of misc fixes
+  + Updated translations.
+- Drop brasero-git-15eda787.patch.bz2, the entire patch came from
+  upstream and is thus included.
+- Remove gconf schema handling.
+- Remove explicit Requires of devel package: pkgconfig() ones will
+  automatically get added.
+- Move gir files to devel package.
+
+-------------------------------------------------------------------
+Fri May 14 10:45:26 UTC 2010 - dimstar@opensuse.org
+
+- bnc#599596: Starting with openSUSE 11.3, we use tracker in place
+  of beagle. As such, BuildRequire tracker-devel instead of
+  libbeagle-devel in this case.
+
+-------------------------------------------------------------------
+Tue May 11 10:24:03 UTC 2010 - dimstar@opensuse.org
+
+- Add brasero-git-15eda787.patch.bz2: fast-forward to git commit
+  15eda787 which solves:
+  + bgo#615526: brasero crashed with SIGSEGV in
+    brasero_data_project_remove_node()
+  + bgo#616935: Crash in brasero_data_project_node_removed at
+    brasero-data-project.c:1163 (Tracker part)
+  + Fixed a runtime warning related to cancelling tracker searches
+  + Fixes memory leaks.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:18:56 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + add support for Tracker 0.8.x
+  + brasero-rename.c: Fix signedness issues by assigning proper
+    types
+  + Harden code by checking for callback value being a
+    BRASERO_PROJECT
+  + bgo#578068: Brasero does not check for free space before
+    copying disc
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 28 12:19:12 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- Added Supplements clause to brasero-nautilus in order to trigger
+  automatic installation when selecting brasero and nautilus.
+
+-------------------------------------------------------------------
+Wed Apr 28 04:45:14 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- Split off brasero-nautilus.
+
+-------------------------------------------------------------------
+Mon Mar 29 22:09:47 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix a problem if multiple tracks were processed in a single
+    pass by a plugin then progress was not smooth
+  + Fix video options so that for SVCD we do have a proper default
+    for aspect ratio (set to 4:3)
+  + Fix two problem with video transcoding:
+    - a hang that was caused by buffers being too little
+    - progress reporting that did not always properly work
+  + Make soft autodetection.
+  + Update to latest GTK code
+  + bgo#611111 - brasero burn:/// hangs
+  + Use gtk_widget_style_attach () in realize implementations
+  + Fix new headers required by tracker >= 0.7.25.
+
+-------------------------------------------------------------------
+Fri Mar 12 12:10:51 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + bgo#608170: Drive selection widget unusable from GtkBuilder
+  + Add support for GtkBuilder interface to BraseroMediumSelection
+    widget
+  + Fix gobject-introspection shared libraries
+  + bgo#608719: nautilus crashed with signal 5
+    in brasero_burn_caps_get_default()
+  + Fix building libbrasero-burn with GObject Introspection in some
+    cases
+  + Fix memory leak where a GError was not propagated properly
+  + Ran autoupdate on configure.in to straight things up
+  + bgo#611373: messages in the Brasero Manual V2.2 are different
+    from the real
+  + Fix a test that could lead to read outside the allocated buffer
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 23 02:25:33 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + bgo##610186 - Use new tracker API.
+  + Updated Translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 02:41:50 CET 2010 - lmedinas@opensuse.org
+
+- Update to version 2.29.90:
+  + Fixed bgo#609016 - XML produced by saving is out of standards
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Jan 27 14:01:31 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  - bgo#604084 - Speed up nautilus extension startup
+  - bgo#605433 - [PATCH] Fix some leaks in the CAM code
+  - Set the max value for the song properties end point button
+    correctly
+  - bgo#607745 - Fix crash when shutting down with outstanding IO
+    jobs
+  - Set start and end points correctly when reading a project file
+  - bgo#607767 - integer overflow in
+    brasero_audio2cue_len_to_string
+  - bgo#607752 - audio track start and end points are overwritten
+    after being read from a project file
+  - bgo#603969 - CD/DVD creator dialog is REALLY unclear for
+    burning an ISO
+  - bgo#605314 - Use totem_pl_parser_save() for playlist saving
+  - Updated translations
+- Fix self-obsoletion of brasero-doc and gnomebaker.
+
+-------------------------------------------------------------------
+Wed Dec 23 11:22:43 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.4:
+  + bgo#602872 - User is unable to fast-forward neither rewing
+                 sound preview
+  + bgo#588406 - Allow user to zoom in/out in media previewer with
+                 mouse wheel
+  + bgo#603605 - .checksum.md5 ("file integrity check" plugin)
+                 broken when using "Increase compatibility with
+                 Windows"
+  + bgo#558440 - Convert from audio project to data project
+  + bgo#598924 - Brasero wouldn't let me rename files by pasting
+                 the new name
+  + bgo#590648 - Text in cover editor does not show up
+                 automatically
+  + bgo#581532 - Image Burning Setup dialog needs counter (second
+                 part)
+  + bgo#602888 - The files on new directory on Brasero project
+                 isn't saved correctly.
+  + bgo#603871 - [Audio project] Song order inverted when moving
+                 songs up in the tracklist
+  + bgo#568358 - Not accessibe error dialog in print preview
+  + Fixed memleaks
+  + Fixes for Video DVD
+  + Updated translations.
+- Pass --enable-introspection to configure, and add
+  gobject-introspection-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Dec  4 03:52:47 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + Bugs fixed:
+    - bgo#559664 - Add a configure switch for enabling/disabling
+      cdrdao support
+    - bgo#566898 - Enter sound disks' names automatically
+    - bgo#538060 - Brasero fails to read cue file when PATH
+      contains a non fully qualified path
+    - bgo#602566 - libbrasero-burn has broken headers
+    - Attempt at fixing bgo#602947 - brasero_drive_get_medium()
+      isn't sync
+    - bgo#602181 - Add a parameter to specify the drive you want to
+      use
+    - Make sure CD-TEXT from .cue files gets properly written
+    - bgo#594716 - Use accessor functions instead direct access.
+    - Move code to use GtkInfoBar
+    - Misc Bug Fixes
+  + Updated translations.
+- Changes from version 2.29.2:
+  + New Features:
+    - Integrate Brasero with PackageKit
+    - Gobject-introspection support for libbrasero-media and
+      libbrasero-burn
+    - Added Tracker support for searches besides Beagle
+  + Bugs Fixed:
+    - Fix compile failure using --disable-introspection see
+      bgo#602027
+    - Removed deprecated GLib symbols fixes bgo#601040
+    - bgo#601871 - Wrong remaining space when audio CD of size
+      greater than 70 min
+    - bgo#601496 - Select disc image selector allows to selecd
+      pictures
+    - bgo#601109 - burning disks with burn:// doesn't set the disk
+      label
+    - bgo#601259 - Problems with folder depth
+    - bgo#599655 - brasero crashed with SIGSEGV in
+      g_main_context_dispatch()
+    - bgo#588323 - crash in Disc Copier: Dragging a track from
+      Banshee
+    - bgo#600007 - Memory leaks in brasero
+    - bgo#600293 - Fails to build error: cannot convert to a
+      pointer type
+  + Update translations.
+- Changes from version 2.29.1:
+  + New features:
+    - new cdda2wav plugin to copy more accurately audio CDs
+    - support burning DTS wav files
+  + Improvements:
+    - multiple copies: now brasero will chain up copies on every
+      insertion
+    - lots of code cleanups
+    - new dialog when ejection did not work
+    - lots of strings changed (and hopefully improved)
+  + lots of small improvements
+- Add libcanberra-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Oct  8 18:46:54 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + fix problems with drive/medium management (file descriptor
+    leak preventing ejection, improved threading safety)
+  + fix problems with libburn/libisofs (rare case data corruption,
+    workaround TAO+dummy problem)
+  + some crashes fixed (596625 among others)
+  + memory leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:12:39 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Improve drives and media probing to make it safer
+  + bgo#594530 - BRASERO_MEDIA_TYPE_ALL_BUT_FILE doesn't math
+    ALL_BUT_FILE anymore
+  + bgo#594336 - Brasero audio CD creator fails to load FLAC/WAV
+    files without file type name extensions
+  + bgo#594417 - crashed with SIGSEGV in
+    g_type_instance_get_private()
+  + fix a potential data corruption with dvdcss and libisofs in
+    certain conditions 
+  + Updated translations.
+- Drop brasero-build-warnings.patch, upstream fixed.
+
+-------------------------------------------------------------------
+Wed Sep  9 05:07:29 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + some improvements when handling DVD-RW sequential
+  + bgo#593829 - Brasero gets stuck in a loop at "Getting size"
+    while burning another session on a multi-session disk
+  + bgo#578466 - Unable to overburn
+  + bgo#593314 - Brasero is failing to burn from sftp
+  + bgo#593492 - Compilation must be ordered by file name
+  + bgo#587122 - Copying DVD - "Error while reading video DVD (no
+    error)"
+  + bgo#592026 - brasero crashes when eject a medium
+  + bgo#592025 - brasero crashes on detecting src images on a NFS
+    path when preparing burning an image
+  + bgo#591880 - Image checksumming causes internal error
+  + bgo#591397 - Brasero Main window pops up after exiting from
+    Image Burning window.
+  + lots of small fixes and improvements
+  + Updated translations.
+- Add dbus-1-glib-devel Requires to devel package.
+- Add brasero-build-warnings.patch to fix build.
+
+-------------------------------------------------------------------
+Wed Aug 26 10:03:28 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.91:
+  + Use public API instead of libbrasero-burn private one; Also ref
+    the plugins in the list
+  + bgo#591880 -  Image checksumming causes internal error
+  + bgo#592723 -  Awkward translatable string
+  + bgo#590181 -  Use Brasero as desktop file Name Comment #5
+  + bgo#592574 -  DVDROM should be DVD-ROM
+  + bgo#590181 -  Use Brasero as desktop file Name Comment #5
+  + Fix OpenSolaris support after recent move to GIO instead of HAL
+  + bgo#590815 - build failure: error: possibly undefined macro:
+    _m4_text_wrap_  word
+  + bgo#591471 - crashes when handling basic command line options
+  + Improve logging for libburn plugin
+  + More API docs
+  + Misc Bugs fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 12:49:10 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.90:
+  + bgo#590385 - Fails to recognize blank disk media
+  + bgo#587690 - brasero crashed with SIGSEGV in
+    brasero_jacket_edit_freeze()
+  + bgo#590181 - Use Brasero as desktop file Name
+  + bgo#588902 - Port to SessionManager service
+  + bgo#589870 - nautilus crashed with SIGSEGV in
+    g_hash_table_lookup()
+  + bgo#579508 - Cover editor: Prepend 0 to track numbers
+  + bgo#586540 - crash in Open Folder: nautilus crashes after I...
+  + And more fixes...
+- Drop brasero-2.27.4-missing-include.patch: fixed upstream.
+- Do not change the name of the desktop file, and do not add
+  categories that are already there.
+
+-------------------------------------------------------------------
+Tue Aug  4 12:17:45 CEST 2009 - vuntz@novell.com
+
+- Add gconf2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jul 28 17:54:41 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.5:
+  + Fixed memleaks
+  + Lot's of bug fixes
+  + Added documentation to libbrasero-burn
+  + Fix bgo#588604 - pkgconfig file libbrasero-media.pc still
+    references hal
+  + Translation updates.
+- Removed unneeded hal-devel Requires in the devel package.
+
+-------------------------------------------------------------------
+Sun Jul 19 14:20:20 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.4:
+  + Hal support removed, now relies on GIO only for drives/media
+    probing
+  + New layout for size reporting in data/audio/video project
+  + Lot's of bug fixes
+  + Fixed some memleaks
+  + Bump libbrasero-media version to reflect changes
+  + bgo#582261 - brasero shows 0% done, while continues burning
+  + bgo#582513 - Bogus VIDEO_TS directory error if AUDIO_TS
+    directory present
+  + bgo#573805 - "Increase compatibility with Windows systems"?
+  + bgo#585190 - remove 0 from 03 % status
+  + bgo#586744 - Use AS_HELP_STRING for configure switches
+  + bgo#584793 - Poor language in warning dialog when attempting to
+    burn an audio CD onto a CDRW
+  + bgo#580617 - Brasero floods .xsession-errors log with
+    "Unknown (or already deleted) monitored directory" warnings
+  + bgo#563501 - Brasero burning window shouldn't try to show drive
+    speed while is converting audio files
+  + bgo#485719 - Burn dialog CD icon
+  + bgo#585481 - Deep hierarchy warning
+  + bgo#554070 - The need of a "replace all" and "replace none"
+    button
+  + bgo#582461 - Brasero hangs at normalizing tracks
+  + bgo#587284 - nautilus hangs every time
+  + bgo#574093 - Caret visible in instructions for project creation
+  + bgo#581742 - port from HAL to DeviceKit-disks
+  + bgo#573801 - Bad error message when burning empty burn:///
+  + bgo#573486 - Various i18n and string issues for good
+  + bgo#587399 - License clarification
+  + bgo#587554 - Unclear meaning of text
+  + bgo#582979 - brasero should not include Categories in mime
+    handler .desktop files
+  + bgo#586040 - duplicated command listed in open-with dialog
+  + bgo#573486 - Various i18n and string issues
+  + Translation updates.
+- Drop upstream included brasero-build-warnings.patch
+- Desktop files brasero-open-image, brasero-open-playlist and
+  brasero-open-project do no longer exist, so no handling
+  with update-desktop-files
+- Add brasero-2.27.4-missing-include.patch, bgo#589047
+
+-------------------------------------------------------------------
+Tue Jun 16 14:25:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + Fix a crash when there is no medium inserted
+  + Fix a crash when there is no error
+  + Display the size that would be used by the data to burn in the
+    combo box
+  + Fix image format retrieval which failed after several images
+    had been selected
+  + bgo#582519 - In nautilus copy disc should have a disc as
+    default target instead of an iso file
+  + Improvements to medium choosing combo
+  + bgo#554201 - Project size graph in stat
+  + bgo#583458 - brasero configure switches only disables options
+  + bgo#583649 - Wrong translatable strings in burn-job.c
+  + Add NetBSD support to libbrasero-media
+  + bgo#584538 - Make time unit formatting completely translatable
+  + bgo#582059 - Cover editor ignores background image style
+    setting in printout
+  + bgo#581639 - Cover editor shows background images scaled but on
+    printing the images are not.
+  + Remove joliet option from the burn option dialog (except for
+    nautilus extension) and ask the user in the data project if he
+    wants joliet or not
+  + bgo#584538 - Make time unit formatting completely translatable
+  + Updated translatins.
+- Update brasero-build-warnings.patch to remove part that is fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Jun 10 14:31:30 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Split burning backend into a new library called libbrasero-burn
+  + Split some utilities into a new library called libbrasero-utils
+  + Use Brasero as a single instance application using libunique
+  + Data spanning
+  + Memleak fixes
+  + Bug Fixes
+  + String fixes
+  + Use autogenerated Changelog via git
+  + Translation Updates
+- Add libunique-devel BuildRequires.
+- Pass --disable-static to configure.
+- Add brasero-build-warnings.patch to fix build warnings.
+
+-------------------------------------------------------------------
+Fri May  1 02:59:48 CEST 2009 - vuntz@novell.com
+
+- Call suse_update_desktop_file on brasero-nautilus.desktop.
+- Add glib2-devel, gtk2-devel, hal-devel Requires to devel package.
+
+-------------------------------------------------------------------
+Tue Apr 14 21:16:00 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + bgo#576439 – nautilus crash because of probable double g_free
+    in brasero_medium_get_css_feature
+  + bgo#575904 - Remove unneeded signal connection and rename
+    callback. Fixes crash on Rhythmbox playlist import.
+  + bgo#576564 – Fix crash when retrieving cue size for cdrdao
+    files
+  + bgo#576928 – Brasero crashes when pasting empty clipboard.
+  + bgo#573929 – nautilus crashed with SIGSEGV in start_thread()
+  + bgo#573859 – Several 'Make Cover' buttons in Disc Copy dialog
+  + bgo#573929 – Comment #9 Fix crash
+  + Fix a potential crash in the checksum dialog on error
+  + Fix the .desktop-file-as-state-file case;
+    egg_desktop_file_get_source() returns a URI, not a filename.
+  + bgo#578677 - Registered property name in
+    BraseroDriveSelectionClass is translated on runtime.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Mon Mar 16 03:27:05 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Fixed bgo#573790 - Make brasero nautilus extension show in
+    system menu.
+  + Fixed bgo#572267 - Disk and disc is confusing
+  + Fixed a possible crash.
+  + Renamed nautilus extension to CD/DVD Creator to avoid any
+    regression.
+  + Make TrayIcon more HIG friendly.
+  + Documentation update.
+  + Updated translations.
+- Remove AutoReqProv: it's default now.
+- Remove filesystem PreReq (it's too generic) and gconf2 PreReq
+  (it's covered by gconf_schemas_prereq)
+- Don't package omf files twice (they are in the lang package too).
+
+-------------------------------------------------------------------
+Fri Mar  6 16:07:08 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + Fixed Leaks
+  + bgo#571806 – Marging two messages
+  + bgo#572622 – Merge strings
+  + bgo#572621 – Missing translator comments
+  + bgo#572279 – Selecting image files also shows "picture" files
+  + bgo#573054 – Probably broken code
+  + bgo#572460 – Brasero does not trim long recent projects names
+  + bgo#568495 – Can't burn more than 29mb DVD
+  + bgo#573060 – exclusively open with O_EXCL isn't supported by
+    Solaris
+  + bgo#567822 – Can't blank DVD on FreeBSD
+  + bgo#573158 – Brasero reports 0 byte free for blank dvd discs
+  + Use GIO to get image sizes Allows to display size of an image
+    stored in burn://
+  + Work harder to get UTF-8 filenames.
+  + burn:// plugin is compulsory and therefore cannot be disabled.
+  + Fix a bug where the caps for DVD DL was sometimes used with
+    single ones.
+  + Return all results which led to a blocking exploration of
+    directories.
+  + Avoid a race condition with dbus.
+  + Some fixes for BD-RE.
+  + Allow formatting/long blanking of BD-RE.
+  + Improvements on DVD+/- R.
+  + Fix for multisession DVDs when the new session is beyond the 4
+    Gio boundary.
+  + Fix Desktop file.
+  + Code Cleanup.
+  + Fixed strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 22 09:25:42 CET 2009 - mboman@suse.de
+
+- Remove CFLAGS=$RPM_OPT_FLAGS -fstack-protector since it's default
+- Remove CFLAGS=-fno-strict-aliasing since it's not needed
+
+-------------------------------------------------------------------
+Fri Feb 20 16:54:47 CET 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Tue Feb 17 21:13:52 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.91.2:
+  + Build Fixes
+  + Fixes for joliet and symlinks handling.
+- Changes from version 2.25.91:
+  + bgo#571806 – Marging two messages
+  + bgo#570224 – Missing widgets while renaming multiple files.
+  + bgo#569204 – Language in Nautilus changed after Brasero 0.9.1 
+    installation
+  + bgo#570227 – Slicing tracks in audio project is not working 
+    correctly
+  + bgo#571218 – Brasero crashes from Cover Editor
+  + bgo#571776 – [regression] No possible to set media title when 
+    using the replacing nautilus-cd-burner 
+  + Cover editor improvements and mem leaks fixed
+  + Fixes for joliet and symlinks handling.
+  + Translation updates
+- Drop brasero-bgo569204-svn.patch included upstream 
+
+-------------------------------------------------------------------
+Thu Feb  5 08:16:22 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.90:
+  + synced version number with GNOME's
+  + growisofs has DAO turned off by default to avoid some issues
+  + several build issues fixed
+  + libbrasero-media licence move to GPL2 + restrictions is now
+    completed
+  + bgo#568204 – Brasero can't erase DVD+RW and speed issue
+  + bgo#567582 – Fails to burn a DVD iso
+  + bgo#568693 – Doesn't replace n-c-b properly
+  + bgo#567603 – Invalid GConf key when coping disk to image file
+  + bgo#560114 – seg fault when dragging files from user's
+    directory
+  + bgo#568898 – don't rely on GtkAction implementation details
+  + bgo#561006 – Unable to Mount Error
+  + bgo#562740 – brasero errors on inability to mount disk after
+    burning on a laptop
+  + bgo#569352 – File names get truncated
+  + bgo#569923 – Grammar issues
+  + bgo#569953 – Brasero fails to build outside source dir
+  + bgo#561626 – loading file info slow for audio projects
+- Split package and create libbrasero-media
+- Remove -doc package (put files in main and -devel package)
+- Add brasero-bgo569204-svn.patch to fix an issue where nautilus changes
+  language after brasero is installed.
+
+-------------------------------------------------------------------
+Thu Feb  5 03:42:47 CET 2009 - vuntz@novell.com
+
+- Add Requires on shared-mime-info to have update-mime-database
+  working.
+
+-------------------------------------------------------------------
+Sat Jan 31 08:50:34 EST 2009 - mboman@suse.de
+
+- Update to version 0.9.1:
+  + Main highlight is the new libbrasero-media which results from
+    the splitting brasero
+  + Some more work was done to make brasero work with other apps
+    like totem, rhythmbox and sound-juicer
+  + Nautilus extension was updated (new hint, uses
+    libbrasero-media)
+  + Fix bgo#566721 – Wrong LDFLAGS introduced into BRASERO_*_LIBS
+  + Fix bgo#567582 – Fails to burn a DVD iso
+  + Fix bgo#561451 – Cannot burn CDs with brasero
+  + Fix bgo#564748 – Brasero fails to burn DVDs
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Jan 25 01:10:56 CET 2009 - vuntz@novell.com
+
+- Call %suse_update_desktop_file on all desktop files. Part of
+  bnc#445728.
+- Directly call /sbin/ldconfig instead of using old macro.
+- Use fdupes.
+- Simplify file list.
+
+-------------------------------------------------------------------
+Sat Jan 10 00:56:28 CET 2009 - vuntz@novell.com
+
+- Add brasero-no-conflict-ncb.patch: there's a conflict between the
+  brasero nautilus extension and the nautilus-cd-burner extension.
+  Backport the patch from svn. This should fix bnc#464029.
+
+-------------------------------------------------------------------
+Tue Jan  6 23:51:42 WET 2009 - lmedinas@gmail.com
+
+- Update to version 0.9.0:
+  * Require GTK+ 2.14
+  * New option not to replace symlinks by their targets
+  * Many small and big improvement when brasero is spawned from an 
+  application plugin
+  * Improved session handling
+  * Many fixes for video project
+  * Misc Bug fixes see Changelog for complete list
+- Remove unneeded libgnomeui and eel dependency.
+
+-------------------------------------------------------------------
+Tue Dec 23 21:30:50 WET 2008 - lmedinas@gmail.com
+
+- Update to version 0.8.4:
+  * Bug fix release.
+  * Updated translations
+- Drop previous patches that were backports from this release.
+
+-------------------------------------------------------------------
+Wed Nov 12 18:03:28 UTC 2008 - lmedinas@gmail.com
+
+- Bump to Brasero 0.8.3
+  * Bug fix release.
+  * Add brasero-remove-oldtooltips.patch to remove
+  brasero-gtk-deprecated.patch.
+  * Add patch brasero-fix-discspace.patch, contains
+  important fixes for bgo #557561 #556449.
+  * Important bugs fixed.
+  * GUI revised.
+  * Enable new nautilus extension (depends of nautilus).
+
+-------------------------------------------------------------------
+Mon Sep 15 10:26:53 EDT 2008 - abockover@suse.de
+
+- Updated to Brasero 0.8.2
+  * Bug-fix-only release
+  * A number of crashers and data integrity bugs were fixed
+  * bgo#551678, bgo#544665, bgo#543377, bgo#550475, bgo#544416
+    bgo#549726, bgo#549570, bgo#549492, bgo#548547, bgo#546787
+    bgo#549299, bgo#547742, bgo#549368, bgo#549211, bgo#542103
+    bgo#548640, bgo#548985, bgo#548556, bgo#548137, bgo#538978
+    bgo#548538, bgo#548543, bgo#548098, bgo#546968, bgo#547112
+    bgo#547687, bgo#547751, bgo#543737, bgo#547616, bgo#547444, 
+    bgo#543715
+- Remove nautilus-cd-burner and libnotify-devel as BuildRequires
+  and do not pass --enable-notify (bnc#422913)
+
+-------------------------------------------------------------------
+Tue Aug 19 17:43:25 CEST 2008 - maw@suse.de
+
+- Own /usr/share/omf/brasero.
+
+-------------------------------------------------------------------
+Fri Aug 15 00:23:58 EDT 2008 - abockover@suse.de
+
+- Updated to Brasero 0.8.1
+  * New UI layout options
+  * Handful of bug fixes
+- Removed patches that have been merged upstream
+- Patch build to remove -DGTK_DISABLE_DEPRECATED
+- Created -doc package
+
+-------------------------------------------------------------------
+Sat Apr 26 01:06:46 CEST 2008 - maw@suse.de
+
+- Add brasero-368095-fix-mime-type.patch (bnc#368095).
+
+-------------------------------------------------------------------
+Thu Apr 17 18:11:13 CEST 2008 - rodrigo@suse.de
+
+- Removed fix-desktop-file.diff patch, we can do the same with
+  %suse_update_desktop_file.
+- Rename and tag remaining patch 
+
+-------------------------------------------------------------------
+Mon Feb 25 17:34:28 CET 2008 - maw@suse.de
+
+- Depend on totem-pl-parser-devel to build.
+
+-------------------------------------------------------------------
+Sun Jan 27 21:44:22 CET 2008 - abockover@suse.de
+
+- Updated to 0.7.1 release
+  * Lots of bugs fixed
+  * bgo#506063 - Fix to not fail miserably when burning a file > 4GB
+  * bgo#507316 - Allow making ISO when there is no blank media in the drive
+  * bgo#510620 - Brasero is not able to load a playlist in a Audio project
+  * bgo#508654 - Windows-compatibility doesn't truncate 64+ characters files
+  * Other bugs fixed: bgo#505785, bgo#506950, bgo#510022, 
+    bgo#510329, bgo#510479 
+
+-------------------------------------------------------------------
+Fri Jan 25 23:51:30 CET 2008 - abockover@suse.de
+
+- Updated to 0.7.0 release
+  * Lots of bugs fixed
+  * bgo#499591, bgo#502703, bgo#501091, bgo#504413, bgo#503659
+  * Fixed some memory leaks and a potential crasher
+  * Supports libbeagle >= 0.3.x
+
+-------------------------------------------------------------------
+Fri Jan 25 08:37:19 CET 2008 - aj@suse.de
+
+- Fix open call.
+- Fix buffer overflow.
+- Use -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Tue Dec 18 00:32:12 CET 2007 - abockover@suse.de
+
+- Updated to 0.6.90 release
+  * Burning backends are now plugins
+  * Enable/Disable backends via gconf and plugin UI
+  * Split tracks in audio CD mode
+  * Many UI changes for HIG compliance
+  * GNOME Power Manager support for inhibit when burning CDs
+  * Updates and fixes in the libburn backend
+  * Many bugs fixed in bugzilla
+
+-------------------------------------------------------------------
+Tue Sep 11 17:07:55 CEST 2007 - cthiel@suse.de
+
+- proper obsoltes/provides to gnomebaker
+
+-------------------------------------------------------------------
+Mon Sep 10 13:18:16 CEST 2007 - cthiel@suse.de
+
+- fix Obsoletes: gnomebaker <= 0.6.1
+
+-------------------------------------------------------------------
+Sat Sep  1 04:57:06 CEST 2007 - stbinner@suse.de
+
+- fix Name of .desktop file by moving description to GenericName
+
+-------------------------------------------------------------------
+Fri Aug 31 23:27:12 CEST 2007 - abockover@suse.de
+
+- Initial package for Brasero 0.6.1
+- Package added to 10.3 in response to BNC #302492
+

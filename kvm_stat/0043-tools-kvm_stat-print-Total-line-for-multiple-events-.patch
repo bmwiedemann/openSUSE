@@ -1,0 +1,35 @@
+From 7c8eaab8cfdf7f433f216d91be84b9639ca3366c Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Thu, 22 Feb 2018 12:16:30 +0100
+Subject: [PATCH 43/43] tools/kvm_stat: print 'Total' line for multiple events
+ only
+
+The 'Total' line looks a bit weird when we have a single event only. This
+can happen e.g. due to filters. Therefore suppress when there's only a
+single event in the output.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 6789af030a462708f937137e05eb12ea009fb348)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 97574f632ccd..313ebb4bec6b 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1209,7 +1209,7 @@ class Tui(object):
+             row += 1
+         if row == 3:
+             self.screen.addstr(4, 1, 'No matching events reported yet')
+-        else:
++        if row > 4:
+             tavg = int(round(tcur / sleeptime)) if tcur > 0 else ''
+             self.screen.addstr(row, 1, '%-40s %10d        %8s' %
+                                ('Total', total, tavg), curses.A_BOLD)
+-- 
+2.12.3
+

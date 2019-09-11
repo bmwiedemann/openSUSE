@@ -1,0 +1,162 @@
+From 22b646166eadfa939bb17f770811a34670145b4f Mon Sep 17 00:00:00 2001
+From: raveit65 <mate@raveit.de>
+Date: Wed, 10 Jul 2019 13:02:06 +0200
+Subject: plugins: drop libXxf86 dependency
+
+The X server hasn't implemented it in over 10 years.
+and it was dropped from debian since a long time.
+
+fixes https://github.com/mate-desktop/mate-settings-daemon/issues/284
+
+diff --git a/configure.ac b/configure.ac
+index 2753719..5140f40 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,12 +197,6 @@ dnl ---------------------------------------------------------------------------
+ dnl - Keyboard plugin stuff
+ dnl ---------------------------------------------------------------------------
+ 
+-AC_CHECK_X_LIB(Xxf86misc, XF86MiscQueryExtension, [
+-  AC_CHECK_X_HEADERS([X11/extensions/xf86misc.h],
+-      [XF86MISC_LIBS="-lXxf86misc"], :,
+-      [#include <X11/Xlib.h>])], : ,
+-      -lXxf86misc $x_libs)
+-AC_SUBST(XF86MISC_LIBS)
+ AC_CHECK_X_HEADERS([X11/extensions/XKB.h])
+ 
+ PKG_CHECK_MODULES(LIBMATEKBDUI, [libmatekbdui >= $LIBMATEKBD_REQUIRED_VERSION libmatekbd >= $LIBMATEKBD_REQUIRED_VERSION libxklavier >= 5.2])
+diff --git a/plugins/a11y-keyboard/Makefile.am b/plugins/a11y-keyboard/Makefile.am
+index 39fa42a..d4d69e5 100644
+--- a/plugins/a11y-keyboard/Makefile.am
++++ b/plugins/a11y-keyboard/Makefile.am
+@@ -61,7 +61,6 @@ liba11y_keyboard_la_LDFLAGS = 		\
+ 
+ liba11y_keyboard_la_LIBADD  = 		\
+ 	$(SETTINGS_PLUGIN_LIBS)		\
+-	$(XF86MISC_LIBS)		\
+ 	$(LIBNOTIFY_LIBS)		\
+ 	$(NULL)
+ 
+diff --git a/plugins/keyboard/Makefile.am b/plugins/keyboard/Makefile.am
+index 1d2c93e..bffab68 100644
+--- a/plugins/keyboard/Makefile.am
++++ b/plugins/keyboard/Makefile.am
+@@ -41,7 +41,6 @@ libkeyboard_la_LDFLAGS = 	\
+ 
+ libkeyboard_la_LIBADD  = 	\
+ 	$(SETTINGS_PLUGIN_LIBS)	\
+-	$(XF86MISC_LIBS)	\
+ 	$(LIBMATEKBDUI_LIBS)	\
+ 	$(NULL)
+ 
+diff --git a/plugins/keyboard/msd-keyboard-manager.c b/plugins/keyboard/msd-keyboard-manager.c
+index 4444c2f..92450a8 100644
+--- a/plugins/keyboard/msd-keyboard-manager.c
++++ b/plugins/keyboard/msd-keyboard-manager.c
+@@ -36,10 +36,6 @@
+ #include <gdk/gdk.h>
+ #include <gdk/gdkx.h>
+ 
+-#ifdef HAVE_X11_EXTENSIONS_XF86MISC_H
+-#include <X11/extensions/xf86misc.h>
+-#endif
+-
+ #ifdef HAVE_X11_EXTENSIONS_XKB_H
+ #include <X11/XKBlib.h>
+ #include <X11/keysym.h>
+@@ -83,31 +79,6 @@ G_DEFINE_TYPE (MsdKeyboardManager, msd_keyboard_manager, G_TYPE_OBJECT)
+ static gpointer manager_object = NULL;
+ 
+ 
+-#ifdef HAVE_X11_EXTENSIONS_XF86MISC_H
+-static gboolean xfree86_set_keyboard_autorepeat_rate(int delay, int rate)
+-{
+-        gboolean res = FALSE;
+-        int      event_base_return;
+-        int      error_base_return;
+-
+-        if (XF86MiscQueryExtension (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+-                                    &event_base_return,
+-                                    &error_base_return) == True) {
+-                /* load the current settings */
+-                XF86MiscKbdSettings kbdsettings;
+-                XF86MiscGetKbdSettings (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &kbdsettings);
+-
+-                /* assign the new values */
+-                kbdsettings.delay = delay;
+-                kbdsettings.rate = rate;
+-                XF86MiscSetKbdSettings (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &kbdsettings);
+-                res = TRUE;
+-        }
+-
+-        return res;
+-}
+-#endif /* HAVE_X11_EXTENSIONS_XF86MISC_H */
+-
+ #ifdef HAVE_X11_EXTENSIONS_XKB_H
+ static gboolean xkb_set_keyboard_autorepeat_rate(int delay, int rate)
+ {
+@@ -269,10 +240,6 @@ apply_settings (GSettings          *settings,
+ #ifdef HAVE_X11_EXTENSIONS_XKB_H
+                 rate_set = xkb_set_keyboard_autorepeat_rate (delay, rate);
+ #endif
+-#ifdef HAVE_X11_EXTENSIONS_XF86MISC_H
+-                if (!rate_set)
+-                        rate_set = xfree86_set_keyboard_autorepeat_rate (delay, rate);
+-#endif
+                 if (!rate_set)
+                         g_warning ("Neither XKeyboard not Xfree86's keyboard extensions are available,\n"
+                                    "no way to support keyboard autorepeat rate settings");
+diff --git a/plugins/media-keys/Makefile.am b/plugins/media-keys/Makefile.am
+index 3a41d85..80e9f22 100644
+--- a/plugins/media-keys/Makefile.am
++++ b/plugins/media-keys/Makefile.am
+@@ -50,12 +50,11 @@ libmedia_keys_la_CFLAGS = \
+ libmedia_keys_la_LDFLAGS = 		\
+ 	$(MSD_PLUGIN_LDFLAGS)
+ 
+-libmedia_keys_la_LIBADD  = 		\
+-	$(top_builddir)/plugins/common/libcommon.la			\
+-	$(SETTINGS_PLUGIN_LIBS)						\
+-    $(LIBMATEMIXER_LIBS)                     \
+-    $(LIBCANBERRA_LIBS)         \
+-	$(XF86MISC_LIBS)						\
++libmedia_keys_la_LIBADD  = \
++	$(top_builddir)/plugins/common/libcommon.la \
++	$(SETTINGS_PLUGIN_LIBS) \
++	$(LIBMATEMIXER_LIBS) \
++	$(LIBCANBERRA_LIBS) \
+ 	-lm
+ 
+ plugin_in_files = 		\
+@@ -91,7 +90,6 @@ test_media_window_LDADD = \
+ 	$(top_builddir)/plugins/common/libcommon.la			\
+ 	$(SETTINGS_DAEMON_LIBS)			\
+ 	$(SETTINGS_PLUGIN_LIBS)			\
+-	$(XF86MISC_LIBS)			\
+ 	$(GST_LIBS)				\
+ 	-lm
+ 
+@@ -119,13 +117,12 @@ test_media_keys_CFLAGS = \
+ 	$(AM_CFLAGS)
+ 
+ test_media_keys_LDADD = \
+-	$(top_builddir)/mate-settings-daemon/libmsd-profile.la		\
+-	$(top_builddir)/plugins/common/libcommon.la			\
+-	$(SETTINGS_DAEMON_LIBS)			\
+-	$(SETTINGS_PLUGIN_LIBS)			\
+-    $(LIBMATEMIXER_LIBS)         \
+-    $(LIBCANBERRA_LIBS)         \
+-	$(XF86MISC_LIBS)			\
++	$(top_builddir)/mate-settings-daemon/libmsd-profile.la \
++	$(top_builddir)/plugins/common/libcommon.la \
++	$(SETTINGS_DAEMON_LIBS) \
++	$(SETTINGS_PLUGIN_LIBS) \
++	$(LIBMATEMIXER_LIBS) \
++	$(LIBCANBERRA_LIBS) \
+ 	-lm
+ 
+ gtkbuilderdir = $(pkgdatadir)
+-- 
+cgit v0.10.2
+

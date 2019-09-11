@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-19 16:53:13.076262120 +0200
+
+Passing CFLAGS to configure.in has no effect because the flags are
+not propagated into the Makefile. Fix this. -g is included in
+configure's default flags, which is why it does not show up in
+Makefile.in anymore.
+---
+ Makefile.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: fondu-060102/Makefile.in
+===================================================================
+--- fondu-060102.orig/Makefile.in
++++ fondu-060102/Makefile.in
+@@ -13,7 +13,7 @@ HOST= @HOST@
+ DARWIN_CORE = $(if $(findstring apple-darwin,$(HOST)),/System/Library/Frameworks/CoreServices.framework/CoreServices,)
+ 
+ WFLAGS = -Wmissing-prototypes -Wunused -Wimplicit -Wreturn-type -Wparentheses -pedantic
+-CFLAGS = -g $(WFLAGS)
++CFLAGS = ${WFLAGS} @CFLAGS@
+ FONDUOBJS = fondu.o readnfnt.o fondups.o
+ UFONDOBJS = ufond.o ufondbdf.o ufondpfb.o ufondttf.o crctab.o
+ DFONT2RESOBJS = dfont2res.o crctab.o

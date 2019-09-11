@@ -1,0 +1,32 @@
+Index: src/xml_depyx.c
+===================================================================
+--- src/xml_depyx.c.orig
++++ src/xml_depyx.c
+@@ -105,6 +105,7 @@ pyxDePyx(char *file)
+ {
+    static char line[INSZ];
+    FILE *in = stdin;
++   int opened_in = 0;
+ 
+    if (strcmp(file, "-"))
+    {
+@@ -114,6 +115,7 @@ pyxDePyx(char *file)
+           fprintf(stderr, "error: could not open: %s\n", file);
+           exit(EXIT_BAD_FILE);
+        }
++       opened_in = 1;
+    }
+    
+    while (!feof(in))
+@@ -206,6 +208,11 @@ pyxDePyx(char *file)
+        }
+    }
+ 
++   if (opened_in)
++   {
++       fclose(in);
++   }
++
+    return EXIT_SUCCESS;
+ }
+ 

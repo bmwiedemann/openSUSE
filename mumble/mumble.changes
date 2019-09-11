@@ -1,0 +1,488 @@
+-------------------------------------------------------------------
+Fri Jul 12 23:30:49 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added patches to fix boo#1123334 (CVE-2018-20743), instability
+  and crash due to crafted message flooding
+  * added mumble-1.2.19-limit-amount-of-messages.patch (backported
+    version of upstream patch)
+  * added mumble-1.2.19-stricter-message-limit.patch (backported
+    version of upstream patch)
+- Cleaned spec file, removed old EOL openSUSE and Fedora versions
+
+-------------------------------------------------------------------
+Wed Jun 26 13:05:06 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- add mumble-pr-3623-protobuf37.patch to fix build against protobuf 3.7
+
+-------------------------------------------------------------------
+Wed Jun  5 12:16:31 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add add-speechd-include-path.patch to fix speechd include paths
+- Enable speechd everywhere now
+
+-------------------------------------------------------------------
+Sun Apr 14 15:34:43 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- update murmurd AppArmor profile
+  - update bash path for usrMerge (boo#1132350)
+  - use abstractions/openssl instead of a rule for openssl.cnf
+
+-------------------------------------------------------------------
+Fri Oct 19 04:29:34 UTC 2018 - Marguerite Su <i@marguerite.su>
+
+- build with -std=c++1z on TW since it applies -Wfatal-error that
+  conflicts with -std=c++98
+
+-------------------------------------------------------------------
+Wed Jan  3 19:22:57 UTC 2018 - kwalter@suse.com
+
+- Add 0001-AudioOutput-do-not-use-non-existant-template-version.patch
+  to fix tumbleweed compilation
+
+-------------------------------------------------------------------
+Thu Jun  8 06:30:23 UTC 2017 - alarrosa@suse.com
+
+- Add initialize-soundfile-format.patch to initilalize a variable so
+  it's not used later uninitialized. 
+
+-------------------------------------------------------------------
+Wed Feb  1 16:12:50 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Jan 29 15:12:44 UTC 2017 - mailaender@opensuse.org
+
+- update to 1.2.19:
+  * Murmur’s -limits command will now print output as it runs, instead of at exit. 
+
+-------------------------------------------------------------------
+Mon Dec 19 11:34:17 UTC 2016 - dmueller@suse.com
+
+- update to 1.2.18:
+  - mostly non-Linux fixes
+  - switch default compiler to use C++03
+
+-------------------------------------------------------------------
+Sun Sep 25 06:52:08 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 1.2.17
+  * Fixed a bug that could cause the Mumble log view to be
+    inacessible after receiving a specially crafted text message.
+  * The PulseAudio backend will now fall back to default device
+    if the chosen device is no longer present.
+  * Mumble now explicitly sends plain text notifications to KDE
+    and Freedesktop.org notification endpoints.
+  * Xbox button/controller names as shown by Mumble should now be
+    correct for controllers other than the first controller.
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Fri May 13 10:04:50 UTC 2016 - rpm@fthiessen.de
+
+- Fixed build on 13.1 by only adding (/var)/run/mumble-server
+  as temporary file only on newer openSUSE versions (> 1310)
+
+-------------------------------------------------------------------
+Fri May  6 05:40:36 UTC 2016 - mailaender@opensuse.org
+
+- mumble 1.2.16
+  * Mumble will no longer try to poll for changes in XInput button
+    state when no controllers are connected.
+  * The last references (public server list registration and crash
+    reporting) to the old domain name for the Mumble service host,
+    “mumble.hive.no”, have been changed to use “mumble.info” instead.
+  * The overlay blacklist from 1.3.0 snapshots has been backported.
+- add (/var)/run/mumble-server as temporary file for proper cleanup
+
+-------------------------------------------------------------------
+Sun Mar 13 20:38:44 UTC 2016 - astieger@suse.com
+
+- mumble 1.2.15:
+  * Add ability to disable the public server list
+  * Add ability to create and/or edit Mumble’s server list
+- includes changes from 1.2.14:
+  * Fix regression crash on exit for in overlay feature
+
+-------------------------------------------------------------------
+Mon Jan 11 14:30:24 UTC 2016 - astieger@suse.com
+
+- mumble 1.2.13:
+  * Fix Murmur DoS (Mumble-SA-2016-001), does not affect GNU/Linux
+- update upstream signing keyring
+
+-------------------------------------------------------------------
+Mon Jan  4 14:32:36 UTC 2016 - astieger@suse.com
+
+- mumble 1.2.12:
+  * The log would always scroll-to-bottom, even if manually
+    scrolled up to view a previous message. Scroll-to-bottom is now
+    only triggered if the log view has not manually scrolled by the
+    user.
+  * Fixed a bug where a stale overlay client could cause the Mumble
+    UI to freeze under some circumstances.
+  * Fixed a bug where CELT and Opus encoders were not properly
+    reset when using more than one frame per packet in Mumble. This
+    would previously cause noisy artifacts at the beginning of
+    transmissions.
+
+-------------------------------------------------------------------
+Mon Dec  14 20:49:12 UTC 2015 - rpm@fthiessen.de
+
+- Removed unneeded patch for SLE10: mumble-1.1.4-sle10glx.diff
+- Added patch from RandyBB (roman@priesol.net) to fix missing
+  semicolons in desktop file: mumble-1.2.11-desktop_fix.diff
+- Removed parts for outdated openSUSE versions, older then openSUSE
+  12.2 or SLE 11, from spec file
+
+-------------------------------------------------------------------
+Mon Dec 14 14:06:32 UTC 2015 - astieger@suse.com
+
+- update to 1.2.11:
+  * Fixed a bug where Mumble global shortcuts on X11 would not
+    release properly when Chrome/Chromium was the frontmost application.
+  * Fixed a bug where clients would automatically reconnect after
+    being kicked.
+  * Inserting an image in the chat should now always cause Mumble
+    to scroll correctly to the bottom of the log.
+  * Opening mumble:// URLs should now correctly allow people to
+    change channels if a URL is opened while Mumble is running.
+  * Fixed an issue where the “shortcut/linux/evdev/enable” config
+    option was not saved correctly, and overwritten when closing
+    Mumble.
+
+-------------------------------------------------------------------
+Tue Oct 13 16:09:18 UTC 2015 - astieger@suse.com
+
+- update to 1.2.10:
+  * no code change, other than to create another binary release
+    for platforms other than GNU/Linux with updated libraries
+
+-------------------------------------------------------------------
+Thu Jun 18 05:14:53 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.2.9 maintenance release
+- remove redundant clean section
+- add missing service_add_pre macro
+- gpg key has changed
+
+-------------------------------------------------------------------
+Wed Mar 18 20:41:11 UTC 2015 - rpm@fthiessen.de
+
+- Added speech-dispatcher support for openSUSE (Text-To-Speech)
+
+-------------------------------------------------------------------
+Mon Mar 16 11:34:46 UTC 2015 - dimstar@opensuse.org
+
+- Add pkgconfig(speexdsp) BuildRequires: its presence is checked
+  for by the build system.
+
+-------------------------------------------------------------------
+Thu Feb  5 14:53:12 UTC 2015 - lnussel@suse.de
+
+- remove gpg-offline from BuildRequires, now done by source validator
+  automatically
+
+-------------------------------------------------------------------
+Fri Nov 21 13:37:45 UTC 2014 - lnussel@suse.de
+
+- fix murmur-user-wrapper (bnc#906416)
+
+-------------------------------------------------------------------
+Sat Aug  9 05:49:31 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.2.8
+  + A PulseAudio issue that could cause the Mumble client
+    to crash on launch has been fixed.
+  + Various source-level issues that made the Mumble build
+    fail when built with Clang has been fixed.
+
+-------------------------------------------------------------------
+Tue Jul 29 10:49:24 UTC 2014 - mrueckert@suse.de
+
+- fix build for older distros like SLE 11
+  - disable xinput2 support on sle 11
+  - add a new bcond for systemd and use that throughout the spec
+    file for guarding systemd usage instead of spreading out the
+    if suse_version conditional all over the place.
+  - some systemd pieces were also done on none systemd distros.
+    move those into the systemd blocks.
+
+-------------------------------------------------------------------
+Sat Jun 14 15:27:40 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.2.7, minor bugfix
+
+-------------------------------------------------------------------
+Thu May 15 08:13:35 UTC 2014 - lnussel@suse.de
+
+- new bugfix release 1.2.6 fixes security issues (CVE-2014-3756,
+  bnc#877971, CVE-2014-3755, bnc#877969)
+
+-------------------------------------------------------------------
+Wed Mar 26 12:21:13 UTC 2014 - lnussel@suse.de
+
+- enable rc link also for systemd
+
+-------------------------------------------------------------------
+Thu Feb  6 13:30:52 UTC 2014 - lnussel@suse.de
+
+- new version 1.2.5 fixes security issues (CVE-2014-0044, CVE-2014-0045,
+  bnc#862527)
+
+-------------------------------------------------------------------
+Sat Jan 11 04:08:54 UTC 2014 - adler_187@yahoo.com
+
+- remove syslog.target, since it no longer exists in recent 
+  systemd versions (>202) and causes the service to fail to start
+  (bnc#855478)
+
+-------------------------------------------------------------------
+Thu Aug  1 09:23:58 UTC 2013 - lnussel@suse.de
+
+- clean up old macros
+
+-------------------------------------------------------------------
+Thu Jun  6 18:19:15 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.2.4: http://mumble.sourceforge.net/1.2.4
+  Obsoleted patches:
+	0001-fix-build-error-with-capability.h.diff
+	0001-fix-user-switching.diff
+	0001-open-log-file-early-so-log-dir-can-be-root-owned.diff
+	0001-if-service-name-is-empty-don-t-pass-an-empty-string.diff
+	0001-remove-CAP_NET_ADMIN.diff
+	0001-fix-bonjour-support-using-avahi-compat-lib.diff
+	mumble-1.2.3-nohardcodedcas.diff
+	0001-Explicitly-remove-file-permissions-for-settings-and-D.diff
+
+- systemd service file
+
+-------------------------------------------------------------------
+Wed Nov 28 20:46:55 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Wed Nov  7 20:33:31 UTC 2012 - opensuse@cboltz.de
+
+- install apparmor profile without x permissions
+
+-------------------------------------------------------------------
+Wed Nov  7 09:40:34 UTC 2012 - lnussel@suse.de
+
+- require lsb-release (bnc#785659)
+
+-------------------------------------------------------------------
+Mon Jun 25 14:58:45 UTC 2012 - lnussel@suse.de
+
+- allow reading /etc/ssl/openssl.cnf in apparmor profile (bnc#768692)
+- fix path to sed and grep due to usr move in 12.2
+
+-------------------------------------------------------------------
+Mon Feb 20 08:49:15 UTC 2012 - lnussel@suse.de
+
+- remove read permissions for other users on local sqlite database
+  as it may contain passwords (bnc#747833, CVE-2012-0863)
+
+-------------------------------------------------------------------
+Mon Feb 13 14:00:57 UTC 2012 - lnussel@suse.de
+
+- don't add built-in CA certificates (bnc#660784)
+
+-------------------------------------------------------------------
+Wed Jul  6 08:22:17 UTC 2011 - aj@suse.de
+
+- Use /usr/lib/tmpfiles.d instead of /etc/tmpfiles.d.
+
+-------------------------------------------------------------------
+Sat Jun 11 16:18:09 UTC 2011 - lnussel@suse.de
+
+- install mumble in libdir and put a symlink in bindir to make
+  loading libs from applicationDirPath work.
+
+-------------------------------------------------------------------
+Mon Apr 11 12:58:26 UTC 2011 - lnussel@suse.de
+
+- fix bonjour support
+
+-------------------------------------------------------------------
+Sun Apr  3 10:28:09 UTC 2011 - lnussel@suse.de
+
+- fix plugin path
+
+-------------------------------------------------------------------
+Thu Mar 24 13:43:05 UTC 2011 - lnussel@suse.de
+
+- add apparmor profile
+
+-------------------------------------------------------------------
+Wed Mar 23 17:26:38 UTC 2011 - lnussel@suse.de
+
+- fix bonjour registration
+
+-------------------------------------------------------------------
+Tue Mar  8 16:07:54 UTC 2011 - lnussel@suse.de
+
+- change log dir owner to root
+- clean up init script
+
+-------------------------------------------------------------------
+Mon Feb 21 13:19:50 UTC 2011 - lnussel@suse.de
+
+- avoid duplicate libcelt libs
+
+-------------------------------------------------------------------
+Mon Feb 21 10:07:20 UTC 2011 - lnussel@suse.de
+
+- new version 1.2.3
+  - Improved Voice Activity Detection
+  - Customizable Overlay with FPS counter
+  - Recording
+  - Priority speaker
+  - Updated CELT Codec to version 0.11.0
+
+-------------------------------------------------------------------
+Thu Jan 27 08:36:21 UTC 2011 - lnussel@suse.de
+
+- change license tag to BSD3c (bnc#667547)
+
+-------------------------------------------------------------------
+Thu Dec 23 13:28:42 UTC 2010 - lnussel@suse.de
+
+- fix build on sle11sp1
+
+-------------------------------------------------------------------
+Wed Dec 15 15:16:45 UTC 2010 - lnussel@suse.de
+
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Jul 16 08:03:31 UTC 2010 - lnussel@suse.de
+
+- fix crash with long user names (CVE-2010-2490)
+
+-------------------------------------------------------------------
+Fri Apr 23 14:47:01 UTC 2010 - lnussel@suse.de
+
+- actually enable pulseaudio
+
+-------------------------------------------------------------------
+Wed Feb 10 15:49:13 UTC 2010 - lnussel@suse.de
+
+- new version 1.2.2
+  * new user information dialog
+  * new toolbar
+   * Improved connect speed to large servers with lots of users and comments (needs updated server) through use of local caching of content
+   * Servers using trusted certificates are now highlighted in green throughout the GUI.
+   * CELT version bump; possible quality improvements as a result, on certain configurations
+   * LOTRO, L4D2, and ArmA2 plugins
+   * Replaced user-textures with avatars to make overlay more useful
+   * Better overlay system on Win32 using the pipe method
+   * Numerous GUI improvements, including consolidating and reorganizing the main window menus
+   * Logitech G15 fixes and improvements
+   * Made friend and server window icons skinnable (emblem-favorite.svg, etc, see Skinning)
+   * server side database upgrade bug (only occured when updating from 1.1.8 directly to 1.2.1)
+   * Bonjour LAN server discovery and resolving works again
+   * G15 activation problems
+   * memory leak on certain configurations
+
+-------------------------------------------------------------------
+Wed Jan 13 18:58:37 UTC 2010 - lnussel@suse.de
+
+- libcelt must be in /usr/lib/mumble rather than /usr/lib/mumble/plugins
+
+-------------------------------------------------------------------
+Sun Jan 10 12:22:08 UTC 2010 - lnussel@suse.de
+
+- enable ice for fedora 12
+
+-------------------------------------------------------------------
+Sun Jan 10 09:27:07 UTC 2010 - lnussel@suse.de
+
+- add patch to fix 1.1.8 ->  1.2.1 server migration
+
+-------------------------------------------------------------------
+Sat Jan  9 19:06:27 UTC 2010 - lnussel@suse.de
+
+- new version 1.2.0
+- add init script and user for server
+
+-------------------------------------------------------------------
+Sat Dec 12 09:48:14 UTC 2009 - lnussel@suse.de
+
+- fix certificate wizard page order for Qt 4.4
+
+-------------------------------------------------------------------
+Fri Dec 11 14:57:13 UTC 2009 - lnussel@suse.de
+
+- new version 1.2.0
+
+-------------------------------------------------------------------
+Tue Jul 28 08:06:07 UTC 2009 - lnussel@suse.de
+
+- fix gcc warning in overlay_gl that causes build failure in Factory
+
+-------------------------------------------------------------------
+Mon Mar 30 11:13:10 CEST 2009 - lnussel@suse.de
+
+- force use of bundled speex on 11.0 to fix build
+
+-------------------------------------------------------------------
+Fri Mar 27 15:43:39 CET 2009 - lnussel@suse.de
+
+- new version 1.1.8
+
+-------------------------------------------------------------------
+Tue Feb 24 14:22:24 CET 2009 - lnussel@suse.de
+
+- mark server config as %config
+
+-------------------------------------------------------------------
+Mon Feb 23 12:22:22 CET 2009 - lnussel@suse.de
+
+- new version 1.1.7
+
+-------------------------------------------------------------------
+Sun Jan 25 20:07:29 CET 2009 - lnussel@suse.de
+
+- filter glibc private symbols
+- cleanup
+
+-------------------------------------------------------------------
+Sat Jan 17 16:39:26 CET 2009 - lnussel@suse.de
+
+- add experimental patch to not use mice for shortcuts
+
+-------------------------------------------------------------------
+Fri Sep 19 11:43:32 CEST 2008 - lnussel@suse.de
+
+- new version 1.1.6
+
+-------------------------------------------------------------------
+Fri Sep  5 16:52:37 CEST 2008 - lnussel@suse.de
+
+- enable pulseaudio on openSUSE
+- change requirement for 10.3 qt4 bug workaround
+
+-------------------------------------------------------------------
+Sat Jun  7 13:38:04 CEST 2008 - anschneider@suse.de
+
+- support openSUSE 10.2
+
+-------------------------------------------------------------------
+Tue May 13 18:14:04 CEST 2008 - lnussel@suse.de
+
+- new version 1.1.4
+  * now with link plugin
+
+-------------------------------------------------------------------
+Wed Mar 19 17:42:53 CET 2008 - lnussel@suse.de
+
+- split off server package
+
+-------------------------------------------------------------------
+Fri Mar 14 10:49:24 CET 2008 - lnussel@suse.de
+
+- initial package version 1.1.3
+

@@ -1,0 +1,90 @@
+From f185eabfb4b529157cf7464b32beebeb8b944310 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 7 May 2019 15:33:51 +0100
+Subject: [PATCH] Do not crash when there are IPv6 established
+ connections (bsc#1130784)
+
+Add unit test for '_netlink_tool_remote_on'
+---
+ salt/utils/network.py            |  9 +++++----
+ tests/unit/utils/test_network.py | 16 ++++++++++++++++
+ 2 files changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/salt/utils/network.py b/salt/utils/network.py
+index c72d2aec41..3f0522b9a5 100644
+--- a/salt/utils/network.py
++++ b/salt/utils/network.py
+@@ -1457,7 +1457,7 @@ def _parse_tcp_line(line):
+ 
+ def _netlink_tool_remote_on(port, which_end):
+     '''
+-    Returns set of ipv4 host addresses of remote established connections
++    Returns set of IPv4/IPv6 host addresses of remote established connections
+     on local or remote tcp port.
+ 
+     Parses output of shell 'ss' to get connections
+@@ -1467,6 +1467,7 @@ def _netlink_tool_remote_on(port, which_end):
+     LISTEN     0      511                              *:80                              *:*
+     LISTEN     0      128                              *:22                              *:*
+     ESTAB      0      0                      127.0.0.1:56726                  127.0.0.1:4505
++    ESTAB      0      0             [::ffff:127.0.0.1]:41323         [::ffff:127.0.0.1]:4505
+     '''
+     remotes = set()
+     valid = False
+@@ -1486,14 +1487,14 @@ def _netlink_tool_remote_on(port, which_end):
+         elif 'ESTAB' not in line:
+             continue
+         chunks = line.split()
+-        local_host, local_port = chunks[3].split(':', 1)
+-        remote_host, remote_port = chunks[4].split(':', 1)
++        local_host, local_port = chunks[3].rsplit(':', 1)
++        remote_host, remote_port = chunks[4].rsplit(':', 1)
+ 
+         if which_end == 'remote_port' and int(remote_port) != port:
+             continue
+         if which_end == 'local_port' and int(local_port) != port:
+             continue
+-        remotes.add(remote_host)
++        remotes.add(remote_host.strip("[]"))
+ 
+     if valid is False:
+         remotes = None
+diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
+index ca627777a7..ecf7d7c45b 100644
+--- a/tests/unit/utils/test_network.py
++++ b/tests/unit/utils/test_network.py
+@@ -120,6 +120,14 @@ USER     COMMAND    PID   FD PROTO  LOCAL ADDRESS    FOREIGN ADDRESS
+ salt-master python2.781106 35 tcp4  127.0.0.1:61115  127.0.0.1:4506
+ '''
+ 
++LINUX_NETLINK_SS_OUTPUT = '''\
++State       Recv-Q Send-Q                                                            Local Address:Port                                                                           Peer Address:Port
++TIME-WAIT   0      0                                                                         [::1]:8009                                                                                  [::1]:40368
++LISTEN      0      128                                                                   127.0.0.1:5903                                                                                0.0.0.0:*
++ESTAB       0      0                                                            [::ffff:127.0.0.1]:4506                                                                    [::ffff:127.0.0.1]:32315
++ESTAB       0      0                                                                 192.168.122.1:4506                                                                       192.168.122.177:24545
++'''
++
+ IPV4_SUBNETS = {True: ('10.10.0.0/24',),
+                 False: ('10.10.0.0', '10.10.0.0/33', 'FOO', 9, '0.9.800.1000/24')}
+ IPV6_SUBNETS = {True: ('::1/128',),
+@@ -453,6 +461,14 @@ class NetworkTestCase(TestCase):
+                     remotes = network._freebsd_remotes_on('4506', 'remote')
+                     self.assertEqual(remotes, set(['127.0.0.1']))
+ 
++    def test_netlink_tool_remote_on(self):
++        with patch('salt.utils.platform.is_sunos', lambda: False):
++            with patch('salt.utils.platform.is_linux', lambda: True):
++                with patch('subprocess.check_output',
++                           return_value=LINUX_NETLINK_SS_OUTPUT):
++                    remotes = network._netlink_tool_remote_on('4506', 'local')
++                    self.assertEqual(remotes, set(['192.168.122.177', '::ffff:127.0.0.1']))
++
+     def test_generate_minion_id_distinct(self):
+         '''
+         Test if minion IDs are distinct in the pool.
+-- 
+2.17.1
+
+

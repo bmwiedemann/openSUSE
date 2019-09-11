@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Tue Jul 16 14:32:05 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.16.1
+  * feat: add property "full" "blurEnabled" for DBlurEffectWidget
+  * Fix: update style after apply dtk stylesheet
+  * Fix FramelessWindowHint caused qss won't apply
+  * Fix: don't full blur background of window if the DBlurEffectWidget::maskPath
+  * refactor: use commit count for the package version
+  * Fix build failures with Qt 5.13
+
+-------------------------------------------------------------------
+Sun Jul  7 14:39:26 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.15
+  * Fix repaint widget mask color when the color changed
+  * Fix always show menu button
+  * Fix always show button on none linux
+  * Fix hide the non-window type window titlebar menu button on initialize
+
+-------------------------------------------------------------------
+Fri Apr 19 06:27:05 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.12.1
+  * Add interfaces for custom qt theme config file path
+  * Add signal "screenDevicePixelRatioChanged" for DApplication
+  * Fix the dialog size abnormally on multi-screen
+
+-------------------------------------------------------------------
+Tue Apr 16 07:05:17 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.10 
+  * Fix crash at DApplicationPrivate::cancelNotification
+  * Fix cursor is always in busy state sometimes
+  * Fix wrong register ddesktopservices enum type
+  * Register qmetatype for SystemSoundEffect
+  * Fix minimize buttons of fix sized windows are disabled
+  * Fix build failed on Qt 5.6.x
+  * Move Q_DECL_DEPRECATED to front
+  * Fix titlebar not shown in some case
+  * add groupLeaderId/clientLeaderId interfaces for DWindowGroupLeader
+  * support all sound effect
+  * change permissions of DStackWidget's function
+  * Fix can not hide the window menu button
+  * Fix keep old enum order
+  * Fix can not scroll view on DSettingDialog by touchscreen
+  * Support touchscreen for DSettingDialog  * Move settings dialog radio to left
+  * Support connan build
+  * Fix doc for DTextButton
+  * Fix doc for DExpandGroup
+  * Fix return currentWorkspaceWindows is empty
+
+-------------------------------------------------------------------
+Thu Dec 20 13:36:47 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.9.11
+  * allowed set a expected icon size for DDialog
+  * DWindowManagerHelper: return all windowId and current workspace windowId
+  * Fix the dialog type window will be closed after pressing Super+D
+  * Fix workaround QTapAndHoldGesture comes late than right press in dde-daemon
+  * DPasswdEditAnimated: modify parent for tip widget
+  * dtabbar: horizontal dragging delays.
+  * set QTapAndHoldGesture::timeout in DApplication
+  * DWindowManagerHelper: add inteface: "windowManagerName" 
+  * DPasswdEditAnimated: add updateAlertPosition() func.
+  * DTickEffect: change scroll speed
+  * Fix passwdeditanimated: hide alert flash.
+
+-------------------------------------------------------------------
+Fri Nov  9 01:42:22 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.9.8
+  * Fixd bugs
+  * Updated features
+
+-------------------------------------------------------------------
+Tue Mar 27 08:11:59 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.7.2
+  * Add DAbstractDialog::move(int, int) and 
+    DAbstractDialog::setGeometry(int, int, int, int)
+  * Move the DAbstractDialog window is invalid
+  * Can not auto adjust dialog position
+  * Wait dbus call return
+
+-------------------------------------------------------------------
+Mon Mar 19 13:34:45 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.7.1 
+  * control single instance by env
+  * support hide group
+  * add DFileDialog
+  * dynamic website info in about dialog
+  * create cmake file by dtk_cmake
+  * support qt module
+  * update password edit style
+  * auto scroll when move/drag tab
+  * support new and legacy dman interface
+  * support set combobox data with QMap
+  * fixed the QPrintDialog theme to dlight
+  * support dynamic property
+  * fixed the width of the DTabBar add button to 48
+  * add buildDtkVersion/runtimeDtkVersion to DApplication
+  * parser correctly when version has '.is.' 
+  * follow parent/toplevelWidget flags 
+  * support configurable whether to redefine the window content when dxcb is
+    turned on
+  * add "target" argument for DTabBar::tabDroped
+  * auto hide title when fullscreen
+  * add propertys maskColor and flashColor of DTabBar 
+  * support drag tab to other for DTabBar 
+  * add DToast
+  * add window title 
+  * not set AA_DontCreateNativeWidgetSiblings if dxcb version greater then 1.1.5
+  * set version form changelog 
+  * add property "realWindowId" for DPlatformWindowHandle 
+  * add the property of the menu 
+  * add initialize text parameter.
+  * Fix reset short cut not show
+  * please read CHANGELOG.md to get more changes
+- Add dtkwidget-fix-lost-pkgconfig.patch, fix lost pkgconfig settings.
+
+-------------------------------------------------------------------
+Mon Mar 19 12:27:34 UTC 2018 - hillwood@opensuse.org
+
+- Split cmake-dtkwidget. 
+
+-------------------------------------------------------------------
+Thu Mar  1 13:36:10 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.6.1
+  * Fix bugs
+  * support new dman interface
+  * add DSuggestButton and DStyleOption
+  * not fixed font size of DDialog
+  * DTabBar add scroll buttons
+  * add the "dtkwidget_global.h" header file
+  * add the "DtkWidgets" header file
+  * add animation for DTabBar on drag move tabs
+  * support dual-click to make crumb
+  * add the DTabBar widget
+
+-------------------------------------------------------------------
+Thu Nov 30 08:20:27 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.0.5.2 
+  * add bordless window on mac 
+  * support DTK_TITLE_DRAG_WINDOW on mac
+  * use D_DECL_DEPRECATED
+  * add DFileChooserEdit light theme 
+  * show system menu on right mouse button press of DTitlebar 
+  * Fix window motif hints is error of DMainWindow 
+  * fix macos build failed 
+  * Fix popup system menu in window content
+  * Fix correct typos in multiple files 
+  * Fix windows build failed 
+  * Fix add DTK_DMAN_PORTAL support
+  * change the QGuiApplication::platformName() to "xcb" on dxcb platform
+  * isDXcbPlatform for new version dxcb plugin ([d8b5c040](d8b5c040))
+  *  DRegionMonitor: properly handle scale ([95766b45](95766b45))
+  *  DRegionMonitor: possible double freed object ([708a5fbe](708a5fbe))
+  * add shortcut to DMainWindow ([5e9d5b6c](5e9d5b6c))
+  * add F1 shortcut ([7e311564](7e311564))
+  * add setState to DImageButton ([fcf9c3ef](fcf9c3ef))
+  * optimize shift up/down keypress for DSimpleListView ([7019967f](7019967f))
+  * DTitlebar add disable API ([ea92fae9](ea92fae9))
+  * add embed mode ([266f4337](266f4337))
+  * add trash dbus interface ([b88efbb8](b88efbb8))
+  * change productIcon to QIcon ([2a914b51](2a914b51))
+  * Add DHiDPIHelper class ([0fdbcf60](0fdbcf60))
+  * daboutdialog deepin logo support hidpi ([405352f0](405352f0))
+  * Set AA_UseHighDpiPixmaps on DApplication ([e9fb9fcf](e9fb9fcf))
+  * add svgc ([fedb3860](fedb3860))
+  * lineedit support hidpi ([026ecb65](026ecb65))
+  * titlebar buttons support hidpi ([56b11074](56b11074))
+  * titlebar support hidpi ([dd537c17](dd537c17))
+  * add dbus singleton ([6ae2978f](6ae2978f))
+  * dpicturesequenceview support @2x files ([a299ef09](a299ef09))
+  * dvideowidget support set device ratio ([74eaa1d6](74eaa1d6))
+  * add DWaterProgress::setTextVisible ([a61d2e88](a61d2e88))
+  * add DSettingsWidgetFactory ([f14ff92f](f14ff92f))
+  * add radius set interface to pageindicator ([7bc360c0](7bc360c0))
+  * add border and shadow to DWaterProgress ([ecc4ba17](ecc4ba17))
+  *  DWaterProgress support hidpi ([94350b7f](94350b7f))
+  *  DArrowRectangle support hidpi ([d7d6a876](d7d6a876))
+  * Fix windows build failed ([1b40d6a7](1b40d6a7))
+  * Fix disable _q_onTopWindowMotifHintsChanged when use DTitlebar::setWindowFlags
+  * Fix draw pixmap size error on DTitlebar ([228fd523](228fd523))
+  * Fix DTitlebar button is hidden on the non DMainWindow windows 
+   ([7b131a72](7b131a72))
+  * Fix paint DBlurEffectWindow error if device pixel ratio is not 1
+    ([dff92b1b](dff92b1b))
+  * Fix min/maximize button is hidden on DMainWindow ([89279ac4](89279ac4))
+  * fix hidpi load icon size ([79e81f94](79e81f94))
+  * update DDialog message style ([2c6133c1](2c6133c1))
+  * Fix crash on multiple apps registered xmouseare ([dea8651f](dea8651f))
+  * Fix icon of DSearchEdit not clear on hidpi ([6ebada94](6ebada94))
+  * DSimpleListview arrow isn't visible ([b08e7f1c](b08e7f1c))
+  * DAboutDialog icon not supporting hidpi ([6ec60734](6ec60734))
+  * fix dtk-svgc crash if no font init ([83857265](83857265))
+  * fix settings dialog style ([797c3e35](797c3e35))
+  * dialog use same style as light ([9d7d4a61](9d7d4a61))
+  * fix windows build failed ([7f31ea48](7f31ea48))
+  * fix dialog size error on hidpi ([b9273c72](b9273c72))
+  * update translation ([0045c39e](0045c39e))
+  * crash if setIcon with svg ([9b577be3](9b577be3))
+  * remove useless image ([10c9607c](10c9607c))
+  * remove private header file ([61b375b2](61b375b2))
+  * dswitchbutton error calculation radius ([d742b169](d742b169))
+  * dimagebutton private not initialized ([146d893e](146d893e))
+  * DArrowRectangle: arrow position error ([592187fb](592187fb))
+  * DPasswordEdit: password edit icon out of content ([c1fe173a](c1fe173a))
+
+-------------------------------------------------------------------
+Fri Nov  3 14:47:10 UTC 2017 - dimstar@opensuse.org
+
+- Set Group for shared library package to 'System/Libraries'.
+
+-------------------------------------------------------------------
+Thu Nov  2 08:20:47 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.0.2
+  * Use librsvg-2.0
+  * Use dframeworkdbus
+  * Use QML
+
+-------------------------------------------------------------------
+Tue Oct  3 06:24:20 UTC 2017 - hillwood@opensuse.org
+
+- Change Group tag.
+
+-------------------------------------------------------------------
+Wed Sep 27 02:34:14 UTC 2017 - hillwood@opensuse.org
+
+- Initial package. 

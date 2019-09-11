@@ -1,0 +1,24 @@
+From 27af60d1c6373d74cabbb472d93cddd33aa6739d Mon Sep 17 00:00:00 2001
+From: l10n daemon script <scripty@kde.org>
+Date: Thu, 24 Jan 2019 02:58:58 +0100
+Subject: [PATCH 33/35] GIT_SILENT made messages (after extraction)
+
+---
+ kile.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kile.xml b/kile.xml
+index 0559ad5d..b50f6b15 100644
+--- a/kile.xml
++++ b/kile.xml
+@@ -26,6 +26,7 @@
+     <comment xml:lang="tr">Kile projesi</comment>
+     <comment xml:lang="uk">проект Kile</comment>
+     <comment xml:lang="zh_CN">Kile 工程</comment>
++    <comment xml:lang="zh_TW">Kile 專案</comment>
+     <glob pattern="*.kilepr"/>
+   </mime-type>
+ </mime-info>
+-- 
+2.20.1
+

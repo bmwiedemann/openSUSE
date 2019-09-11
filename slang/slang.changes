@@ -1,0 +1,424 @@
+-------------------------------------------------------------------
+Mon Sep 24 10:40:13 UTC 2018 - schwab@suse.de
+
+- overflow.patch: fix overflow checks not to depend on undefined behaviour
+
+-------------------------------------------------------------------
+Thu Mar 15 13:21:43 CET 2018 - ro@suse.de
+
+- handle s390 like s390x 
+
+-------------------------------------------------------------------
+Fri Mar  2 19:46:49 UTC 2018 - crrodriguez@opensuse.org
+
+- BuildRequire default libpng on the system, builds and test 
+  pass fine. (drops slang-libpng12-linker-flag.patch)
+
+-------------------------------------------------------------------
+Fri Feb  9 08:46:48 UTC 2018 - werner@suse.de
+
+- Add upstream commit 6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1 as
+  patch git-6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1.patch (boo#1079543)
+  * Added support for the new ncurses 32-bit terminfo database entries
+
+-------------------------------------------------------------------
+Fri Jun  9 09:10:36 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups. Trim filler wording from description.
+
+-------------------------------------------------------------------
+Wed May  3 18:53:06 UTC 2017 - astieger@suse.com
+
+- slang 2.3.1a:
+  * 24 bitcolor support for 64 bit systems
+  * various bug fixes and improvements
+- disable failing tests on i586 and s390x
+
+-------------------------------------------------------------------
+Sat Feb 28 19:06:46 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Remove upstreamed patch
+  * sprintf-bug-concerning-c-for-8-bit-character-in-non-.patch
+- Update to 2.3.0
+  * numerous changes, see included changes.txt for a detailed
+    list
+
+-------------------------------------------------------------------
+Tue Aug 26 12:20:26 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Jul  2 15:28:46 UTC 2014 - kkaempf@suse.com
+
+- fix for running in non-utf-8 environments (bnc#885624)
+  add sprintf-bug-concerning-c-for-8-bit-character-in-non-.patch
+
+- drop slang-2.2.2-makefile.patch, obsolete
+
+-------------------------------------------------------------------
+Thu May 24 13:27:53 UTC 2012 - gber@opensuse.org
+
+- update to version 2.2.4
+  - numerous changes, see the included changes.txt for a detailed
+    list
+- rebased slang-2.2.2.dif and renamed to slang.patch
+- rebased slang-2.2.2-autoconf.dif and renamed to
+  slang-autoconf.patch
+- rebased slang-2.2.2-libpng12-linker-flag.patch and renamed to
+  slang-libpng12-linker-flag.patch
+- rebased slang-2.2.2-fsuid.dif and renamed to slang-fsuid.patch
+- build oniguruma module on >= 12.1
+
+-------------------------------------------------------------------
+Fri Dec  2 19:20:43 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:32:55 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep 13 09:29:49 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Aug 17 15:44:19 UTC 2010 - gber@opensuse.org
+
+- disabled parallel build again, still broken
+
+-------------------------------------------------------------------
+Sat Aug 14 17:43:42 UTC 2010 - gber@opensuse.org
+
+- updated to version 2.2.2
+  + new languag features
+    * ternary expressions
+    * break and condition statements can now work on several levels
+      of loops
+    * multiline strings
+    * List_Type objects can now also be indexed using an array of
+      indices
+  + new modules: zlib, fork, sysconf
+  + new intrinsic functions: sumsq, expm1, log1p, list_to_array,
+    string_matches, _close, _fileno, dup2, getsid, killpg,
+    getpriority, setpriority, ldexp, frexp
+  + provides pkg-info file
+  + many bugfixes
+- split package to conform to library naming policy
+- rebased patches, removed obsolete slang-2.2.1-format.patch
+- added patch slang-2.2.2-makefile.patch from Fedora which fixes
+  shared libs permissions, the slang shared library symlink, and
+  parallel build dependency issues and removes rpath
+- build pcre, png, and zlib modules
+- removed incorrect license information
+- more accurate summary and description
+- further cleanup
+
+-------------------------------------------------------------------
+Thu Apr  8 13:41:31 CEST 2010 - meissner@suse.de
+
+- unbreak occasional build failures by disabling parallel make.
+
+-------------------------------------------------------------------
+Wed Jan 13 13:49:12 CET 2010 - meissner@suse.de
+
+- fixed better
+
+-------------------------------------------------------------------
+Tue Jan 12 20:15:12 UTC 2010 - coolo@novell.com
+
+- include headers to fix build
+
+-------------------------------------------------------------------
+Sat Dec 19 20:08:01 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Jun 27 15:56:41 CEST 2008 - schwab@suse.de
+
+- Work around autoconf limitation.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Jul 11 14:08:17 CEST 2007 - nadvornik@suse.cz
+
+- updated to 2.1.1:
+  * interpreter syntax enhancements
+  * many bugfixes
+- fixed some rpmlint warnings
+
+-------------------------------------------------------------------
+Mon May 28 17:22:16 CEST 2007 - nadvornik@suse.cz
+
+- do not package binaries in documentation directory
+
+-------------------------------------------------------------------
+Tue Jan 31 10:22:08 CET 2006 - nadvornik@suse.cz
+
+- fixed typo in locale code [#146603]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:31:33 CET 2006 - nadvornik@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Tue Jan  3 16:30:19 CET 2006 - nadvornik@suse.cz
+
+- updated to 2.0.5
+- fixed output of multibyte chars to bottom right corner [#134037]
+
+-------------------------------------------------------------------
+Mon Oct 17 11:11:08 CEST 2005 - nadvornik@suse.cz
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Thu Oct 13 17:11:13 CEST 2005 - nadvornik@suse.cz
+
+- updated documentation, specfile fixes
+
+-------------------------------------------------------------------
+Tue Oct 11 16:42:25 CEST 2005 - nadvornik@suse.cz
+
+- updated to 2.0.4
+  * upstream UTF-8 support
+
+-------------------------------------------------------------------
+Wed Feb 16 16:44:41 CET 2005 - nadvornik@suse.cz
+
+- fixed segfault in SLsmg_write_nwchars
+
+-------------------------------------------------------------------
+Thu Jan  6 16:02:05 CET 2005 - nadvornik@suse.cz
+
+- fixed segfault on negative column value
+
+-------------------------------------------------------------------
+Wed Mar 10 10:34:09 CET 2004 - nadvornik@suse.cz
+
+- removed symlinks pointing nowhere [#34927]
+
+-------------------------------------------------------------------
+Fri Feb 20 10:17:59 CET 2004 - nadvornik@suse.cz
+
+- used libdir macro
+
+-------------------------------------------------------------------
+Wed Feb 18 17:41:46 CET 2004 - sbrabec@suse.cz
+
+- Added all available UTF-8 patches from Debian and Redhat.
+
+-------------------------------------------------------------------
+Tue Feb 10 16:38:09 CET 2004 - nadvornik@suse.cz
+
+- compiled with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 18:46:14 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jul 25 12:03:14 CEST 2003 - nadvornik@suse.cz
+
+- updated to 1.4.9
+
+-------------------------------------------------------------------
+Wed May 28 11:51:30 CEST 2003 - nadvornik@suse.cz
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Thu Feb 13 11:50:23 CET 2003 - nadvornik@suse.cz
+
+- updated to 1.4.8
+
+-------------------------------------------------------------------
+Mon Jan 13 14:46:37 CET 2003 - nadvornik@suse.cz
+
+- updated to 1.4.7
+
+-------------------------------------------------------------------
+Mon Sep 23 11:12:34 CEST 2002 - nadvornik@suse.cz
+
+- removed the utf8 patch [#19941]
+
+-------------------------------------------------------------------
+Mon Sep 16 11:44:37 CEST 2002 - pthomas@suse.de
+
+- Check for availability of setfsuid/setfsgid and abort configuration
+  if not found. Include sys/fsuid.h to get setfsuid/setfsgid declared.
+- Redo the utf8 patch to also define _GNU_SOURCE to get wcwidth
+  declared.
+- Change configure.in to make the use of autoheader possible.
+- Make configure use a passed in ELF_CFLAGS.
+- Remove the unneeded -fno-strength-reduce from CFLAGS and ELF_CFLAGS.
+- devel package requires base package of same version.
+
+-------------------------------------------------------------------
+Tue Jul  9 14:21:09 CEST 2002 - nadvornik@suse.cz
+
+- fixed macro SLSMG_BUILD_CHAR in utf8 patch, it fixes the crash
+  of xjed [bug #16823]
+
+-------------------------------------------------------------------
+Fri May 31 15:03:35 CEST 2002 - nadvornik@suse.cz
+
+- updated to 1.4.5
+- created devel subpackage [bug #16241]
+- added html doc
+
+-------------------------------------------------------------------
+Wed Feb 20 17:49:24 CET 2002 - nadvornik@suse.cz
+
+- fixed color handling for tab character
+
+-------------------------------------------------------------------
+Wed Jan 30 12:50:58 CET 2002 - nadvornik@suse.cz
+
+- fixed conversion of control characters to printable form in
+  UTF-8 patch [bug #12894]
+
+-------------------------------------------------------------------
+Thu Jan 10 10:57:49 CET 2002 - nadvornik@suse.cz
+
+- used macros %{_lib} and %{_libdir}
+
+-------------------------------------------------------------------
+Fri Oct 26 10:05:49 CEST 2001 - pmladek@suse.cz
+
+- fixed displaying of long lines (#11919)
+    * the begin of the visible part of the line is tested now
+
+-------------------------------------------------------------------
+Wed Jun 13 17:18:43 CEST 2001 - schwab@suse.de
+
+- Fix use of %suse_update_config.
+
+-------------------------------------------------------------------
+Thu Jun  7 13:24:08 CEST 2001 - bjacke@suse.de
+
+- apply UTF-8 patch from http://www.rano.org/mutt/
+
+-------------------------------------------------------------------
+Wed Jun  6 11:46:38 CEST 2001 - nadvornik@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Mon Feb 26 15:45:11 CET 2001 - nadvornik@suse.cz
+
+- update to 1.4.4
+
+-------------------------------------------------------------------
+Mon Oct  9 09:45:54 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+
+-------------------------------------------------------------------
+Fri Sep 15 13:50:41 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.4.2
+- used suse_update_config
+
+-------------------------------------------------------------------
+Wed Jul 19 16:21:45 CEST 2000 - nadvornik@suse.cz
+
+- added libslang.so.1 symlink (Bug#: 3545)
+
+-------------------------------------------------------------------
+Thu May 18 15:44:41 CEST 2000 - nadvornik@suse.cz
+
+- changed Group tag
+
+-------------------------------------------------------------------
+Fri Mar 24 10:58:12 CET 2000 - nadvornik@suse.cz
+
+- added URL
+
+-------------------------------------------------------------------
+Mon Mar 13 13:53:46 CET 2000 - nadvornik@suse.cz
+
+- upgrade to version 1.4.0
+- removed Makefile.Linux
+- added BuildRoot
+
+-------------------------------------------------------------------
+Thu Oct  7 18:53:19 MEST 1999 - fehr@suse.de
+
+- recognize alternat xterm cursor sequences when doing line editing
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Wed Jul 21 12:10:18 MEST 1999 - fehr@suse.de
+
+- changed one patch slightly
+
+----------------------------------------------------------------------------
+Tue Jun 30 17:46:09 MEST 1998 - fehr@suse.de
+
+- integrate setuid security patches from Alan Cox in dif-file
+- change to version 1.2.2 
+
+----------------------------------------------------------------------------
+Tue Jun 30 16:26:27 MEST 1998 - fehr@suse.de
+
+- add security patches from Alan Cox (overflow, setuid, termdir)
+- add dynamic version of slang library
+- install documentation to /usr/doc/packages/slang
+
+----------------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+
+- update to version 0.99-38
+
+
+----------------------------------------------------------------------------
+Tue Nov 26 20:15:03 CET 1996 - florian@suse.de
+
+
+- update to version 0.99-37
+
+
+----------------------------------------------------------------------------
+Sat Nov 16 20:28:43 CET 1996 - florian@suse.de
+
+
+- update to version 0.99-36 and add bug-fixes from mutt
+
+
+----------------------------------------------------------------------------
+Sat Nov  2 17:35:11 CET 1996 - florian@suse.de
+
+
+- update to new version 0.99-35
+
+

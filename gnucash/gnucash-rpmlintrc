@@ -1,0 +1,7 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("gnucash.* devel-file-in-non-devel-package .*/usr/lib.*\.so")
+addFilter("gnucash.* non-executable-script .*/usr/share/gnucash/python/pycons/.*\.py")
+# Splitting the shared libs is not desired at the moment
+addFilter("gnucash.* shlib-policy-missing-suffix")

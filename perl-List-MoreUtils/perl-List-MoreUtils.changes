@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Tue Dec 12 06:29:54 UTC 2017 - coolo@suse.com
+
+- updated to 0.428
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.428	2017-12-11
+      - release 0.427_001 without further changes
+  
+  0.427_001	2017-11-06
+      - fix Issue#22 (Upgrading from LMU 0.416 to split XS/PP version will fail)
+        reported by Graham Knop (haarg), this time hopefully the right way,
+        repeated in RT#123310.
+      - fix Issue#29 (pairwise() PP implementation add tail undefs if arrays
+        sizes differs) reported by 0x62ash
+
+-------------------------------------------------------------------
+Fri Oct 13 05:27:58 UTC 2017 - coolo@suse.com
+
+- updated to 0.426
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.426	2017-10-12
+      - release 0.425_002 without further changes
+  
+  0.425_002	2017-10-05
+      - re-introduce Config::AutoConf
+        (https://rt.cpan.org/Ticket/Display.html?id=122875#txn-1745984)
+        for final satisfying RT#122875
+      - bump required version of List::MoreUtils::XS to 0.426, if XS is available
+  
+  0.425_001	2017-09-27
+      - fix broken arrayify prototype
+      - revert removal of old List::MoreUtils::XS parts
+
+-------------------------------------------------------------------
+Mon Sep 18 05:43:52 UTC 2017 - coolo@suse.com
+
+- updated to 0.425
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.425	2017-09-06
+      - release 0.424_001 as 0.425 with XS is META.* after 136:0 PASS:FAIL
+        on CPAN Tester Matrix
+  
+  0.424_001	2017-09-05
+      - Makefile.PL: modify PREREQ_PM instead of recommend dynamically
+  
+  0.423	2017-08-22
+      - sync version with List::MoreUtils::XS
+      - add examples for binsert/bremove (LMU::XS issue #1, Thanks to shawnlaffan)
+      - update tests to latest List::MoreUtils::XS
+      - recommend List::MoreUtils::XS 0.423
+  
+  0.420_001	2017-08-15
+      - add some new functions:
+        * qsort (XS only)
+        * binsert
+        * bremove
+        * listcmp
+        * arrayify (RT#17230)
+        * samples (RT#77562)
+        * minmaxstr (RT#106401)
+        * lower_bound
+        * upper_bound
+        * equal_range
+        * frequencies
+        * occurrences
+        * mode (RT#91991)
+        * zip6 (RT#42921)
+        * reduce_0
+        * reduce_1
+        * reduce_u
+      - improve tests
+      - make List::MoreUtils::XS independent from List::MoreUtils
+        Note that List::MoreUtils::XS doesn't guarantee API stability - this
+        feature is only provided through List::MoreUtils as frontend.
+      - improve Makefile.PL regarding some build artifacts
+
+-------------------------------------------------------------------
+Fri Apr  7 06:02:31 UTC 2017 - coolo@suse.com
+
+- updated to 0.419
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.419 2017-04-06
+      - Fix RT#120799: Makefile.PL fails due to unescaped paths interpolated
+        in regex pattern (thanks, A. Sinan Unur)
+
+-------------------------------------------------------------------
+Thu Mar 30 05:58:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.418
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.418 2017-03-29
+      - Clarify license conditions
+      - fix Changes version/date of 0.417_001
+  
+  0.417_001 2017-03-21
+      - Divorce List::MoreUtils and List::MoreUtils::XS
+      - Change license to Apache 2.0 to avoid code stealing without credits
+      - Don't support Perl 5.6 out of the box anymore
+      - fix RT#120235 - uniq examples are incorrect
+      - remove things which will be never done from TODO list as suggested
+        by Mark Aufflick in PR#18
+      - Apply patch from Yanick Champoux to avoid spelling checker complains
+
+-------------------------------------------------------------------
+Sat Oct  8 16:14:08 UTC 2016 - coolo@suse.com
+
+- updated to 0.416
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.416	2016-07-06
+      - Change the way how the XS part is loaded as a result of RT#115808
+      - Fix some spelling errors (fix RT#115807), thanks Salvatore Bonaccorso
+      - Requires XSLoader 0.22
+
+-------------------------------------------------------------------
+Thu May  5 09:30:24 UTC 2016 - coolo@suse.com
+
+- updated to 0.415
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.415	2016-05-01
+      - Release 0.414_001 as 0.415 without further changes
+  
+  0.414_001 2016-04-13
+      - fix RT#75727 - after's XS implementation call XSRETURN(-1) when it
+        doesn't find an element (2nd patch provided by Reini Urban,
+        regression test provided by Tony Cook)
+      - fix RT#113117 - XS's minmax() sometimes return undef (perl >= 5.20),
+        thanks PERLANCAR and SREZIC
+      - explicit test for thesis in RT#110998 - XS implementation of pairwise
+        fails with memory allocation error when there are more return values
+        than in original lists -- thesis is proven wrong
+      - efficiency improvements by bulk88
+      - improve some tests to get clearer reports
+      - distinguish between "Makefile.PL find's a .git directory" and
+        "Makefile.PL runs in maintainer mode"
+
+-------------------------------------------------------------------
+Sun Jun 14 08:17:22 UTC 2015 - coolo@suse.com
+
+- updated to 0.413
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.413	2015-06-10
+      - Fix compiling in c++ mode (depreciated, but some people seem to
+        require it). Solves RT#104690
+
+-------------------------------------------------------------------
+Wed May 20 08:25:44 UTC 2015 - coolo@suse.com
+
+- updated to 0.412
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.412	2015-05-19
+      - release 0.411_001 without further changes
+  
+  0.411_001	2015-05-11
+      - move generation of test endpoints to author stage as requested per issue/#9
+      - add a rough guide for contributors
+      - fix rt#103251 to avoid removing bundled stuff by accident
+      - Fix compilation errors under cl (Thanks to jddurand)
+
+-------------------------------------------------------------------
+Mon Apr 13 18:23:33 UTC 2015 - coolo@suse.com
+
+- updated to 0.410
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+-------------------------------------------------------------------
+Mon Dec 19 14:48:51 UTC 2011 - coolo@suse.de
+
+- update to 0.33:
+  - Updated can_xs to fix a bug in it
+
+-------------------------------------------------------------------
+Sun May 22 22:28:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.32:
+  * more accurate detection of XS support
+
+-------------------------------------------------------------------
+Fri Apr  1 11:06:39 UTC 2011 - coolo@novell.com
+
+- shortened description
+
+-------------------------------------------------------------------
+Thu Mar 31 12:40:18 UTC 2011 - coolo@novell.com
+
+- update to 0.30, see Changes for details (a lot)
+
+-------------------------------------------------------------------
+ Mar 17 08:24:00 UTC 2011 - cfarrell@novell.com
+
+- license update: GPL+ or Artistic
+  See README and MoreUtils.pm - "same terms as Perl" expands to GPL+ or Artistic
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:15 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:40:42 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 26 10:38:40 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added norootforbuild
+
+-------------------------------------------------------------------
+Mon Aug 20 15:55:29 CEST 2007 - mrueckert@suse.de
+
+- initial package
+

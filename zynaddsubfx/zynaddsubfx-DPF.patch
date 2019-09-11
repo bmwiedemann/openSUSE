@@ -1,0 +1,140 @@
+Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginInternal.hpp
+===================================================================
+--- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:33.215930513 +0200
+@@ -43,6 +43,7 @@ struct Plugin::PrivateData {
+ #endif
+ 
+     uint32_t   parameterCount;
++    uint32_t   parameterOffset;
+     Parameter* parameters;
+ 
+ #if DISTRHO_PLUGIN_WANT_PROGRAMS
+@@ -73,6 +74,7 @@ struct Plugin::PrivateData {
+           audioPorts(nullptr),
+ #endif
+           parameterCount(0),
++          parameterOffset(0),
+           parameters(nullptr),
+ #if DISTRHO_PLUGIN_WANT_PROGRAMS
+           programCount(0),
+@@ -91,6 +93,22 @@ struct Plugin::PrivateData {
+     {
+         DISTRHO_SAFE_ASSERT(bufferSize != 0);
+         DISTRHO_SAFE_ASSERT(d_isNotZero(sampleRate));
++
++#if defined(DISTRHO_PLUGIN_TARGET_DSSI) || defined(DISTRHO_PLUGIN_TARGET_LV2)
++        parameterOffset += DISTRHO_PLUGIN_NUM_INPUTS + DISTRHO_PLUGIN_NUM_OUTPUTS;
++# if DISTRHO_PLUGIN_WANT_LATENCY
++        parameterOffset += 1;
++# endif
++#endif
++
++#ifdef DISTRHO_PLUGIN_TARGET_LV2
++# if (DISTRHO_PLUGIN_IS_SYNTH || DISTRHO_PLUGIN_WANT_TIMEPOS || DISTRHO_PLUGIN_WANT_STATE)
++        parameterOffset += 1;
++#  if DISTRHO_PLUGIN_WANT_STATE
++        parameterOffset += 1;
++#  endif
++# endif
++#endif
+     }
+ 
+     ~PrivateData() noexcept
+@@ -283,6 +301,13 @@ public:
+         return fData->parameterCount;
+     }
+ 
++    uint32_t getParameterOffset() const noexcept
++    {
++        DISTRHO_SAFE_ASSERT_RETURN(fData != nullptr, 0);
++
++        return fData->parameterOffset;
++    }
++
+     uint32_t getParameterHints(const uint32_t index) const noexcept
+     {
+         DISTRHO_SAFE_ASSERT_RETURN(fData != nullptr && index < fData->parameterCount, 0x0);
+Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp
+===================================================================
+--- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:33.215930513 +0200
+@@ -331,7 +331,12 @@ public:
+ 
+     int dssi_get_midi_controller_for_port(const ulong port) noexcept
+     {
+-        const uint8_t midiCC = fPlugin.getParameterMidiCC(port);
++        const uint32_t parameterOffset = fPlugin.getParameterOffset();
++
++        if (port > parameterOffset)
++            return DSSI_NONE;
++
++        const uint8_t midiCC = fPlugin.getParameterMidiCC(port-parameterOffset);
+ 
+         if (midiCC == 0 || midiCC == 32 || midiCC >= 0x78)
+             return DSSI_NONE;
+Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLV2export.cpp
+===================================================================
+--- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:33.215930513 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * DISTRHO Plugin Framework (DPF)
+- * Copyright (C) 2012-2016 Filipe Coelho <falktx@falktx.com>
++ * Copyright (C) 2012-2017 Filipe Coelho <falktx@falktx.com>
+  *
+  * Permission to use, copy, modify, and/or distribute this software for any purpose with
+  * or without fee is hereby granted, provided that the above copyright notice and this
+@@ -608,7 +608,18 @@ void lv2_generate_ttl(const char* const
+ 
+             plugin.loadProgram(i);
+ 
+-            presetString  = "<" DISTRHO_PLUGIN_URI + presetSeparator + "preset" + strBuf + ">\n";
++            presetString = "<" DISTRHO_PLUGIN_URI + presetSeparator + "preset" + strBuf + ">\n";
++
++# if DISTRHO_PLUGIN_WANT_FULL_STATE
++            if (numParameters == 0 && numStates == 0)
++#else
++            if (numParameters == 0)
++#endif
++            {
++                presetString += "    .";
++                presetsString += presetString;
++                continue;
++            }
+ 
+ # if DISTRHO_PLUGIN_WANT_FULL_STATE
+             presetString += "    state:state [\n";
+@@ -631,12 +642,22 @@ void lv2_generate_ttl(const char* const
+                 presetString += "    ] .\n\n";
+ # endif
+ 
++            bool firstParameter = true;
++
+             for (uint32_t j=0; j <numParameters; ++j)
+             {
+-                if (j == 0)
++                if (plugin.isParameterOutput(j))
++                    continue;
++
++                if (firstParameter)
++                {
+                     presetString += "    lv2:port [\n";
++                    firstParameter = false;
++                }
+                 else
++                {
+                     presetString += "    [\n";
++                }
+ 
+                 presetString += "        lv2:symbol \"" + plugin.getParameterSymbol(j) + "\" ;\n";
+ 
+@@ -645,7 +666,7 @@ void lv2_generate_ttl(const char* const
+                 else
+                     presetString += "        pset:value " + String(plugin.getParameterValue(j)) + " ;\n";
+ 
+-                if (j+1 == numParameters)
++                if (j+1 == numParameters || (j+2 == numParameters && plugin.isParameterOutput(j+1)))
+                     presetString += "    ] .\n\n";
+                 else
+                     presetString += "    ] ,\n";

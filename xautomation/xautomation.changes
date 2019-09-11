@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Jun 10 20:15:24 UTC 2015 - nemysis@gmx.ch
+
+- license update: GPL-2.0+
+  No indication that this is GPL-2.0 (only)
+
+-------------------------------------------------------------------
+Tue Nov 18 14:37:11 UTC 2014 - nemysis@gmx.ch
+
+- Remove BuildRequires for fdupes, not need for it
+- Use %{_mandir}/man1/*.1%{ext_man} instead of more entries
+
+-------------------------------------------------------------------
+Mon Nov 17 22:47:56 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

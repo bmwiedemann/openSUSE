@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Aug  8 19:39:14 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Wed Feb  4 11:46:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.4.0
+  * Due to the change from CSS2 overflow to CSS3 overflow properties, the
+  computed style access functions for overflow properties have changed.
+  The overflow property is removed.  Added are overflow-x and overflow-y
+  properties.  (The overflow shorthand property now sets overflow-x and
+  overflow-y.)
+  This change affects the following functions:
+    Removed from   include/libcss/computed.h    --  css_computed_overflow()
+    Added to       include/libcss/computed.h    --  css_computed_overflow_x()
+    Added to       include/libcss/computed.h    --  css_computed_overflow_y()
+
+-------------------------------------------------------------------
+Fri Oct 31 00:11:46 UTC 2014 - crrodriguez@opensuse.org
+
+- libcss-buildopts.patch: Do not define BSD_SOURCE but 
+  GNU_SOURCE (fioxes build fail in factory)
+- use -std=gnu99 instead of -std=c99.
+- Disable -Werror
+
+-------------------------------------------------------------------
+Fri May 23 11:32:14 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri May 23 11:09:56 UTC 2014 - fstrba@suse.com
+
+- Initial import of libcss, inspired from Fedora package
+

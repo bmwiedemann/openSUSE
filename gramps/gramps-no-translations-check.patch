@@ -1,0 +1,12 @@
+--- gramps-5.0.0_orig/gramps/gui/grampsgui.py	2018-07-24 16:07:47.000000000 +0200
++++ gramps-5.0.0/gramps/gui/grampsgui.py	2018-07-28 10:14:23.804797101 +0200
+@@ -251,7 +251,8 @@
+         self._vm = ViewManager(dbstate,
+                                config.get("interface.view-categories"))
+ 
+-        if (lin()
++        # Disabled, as gramps/gettext fails to report correctly when bundle-lang packages are used (boo#941490)
++        if (False and lin()
+                 and glocale.lang != 'C'
+                 and not gettext.find(GTK_GETTEXT_DOMAIN)):
+             _display_gtk_gettext_message(parent=self._vm.window)

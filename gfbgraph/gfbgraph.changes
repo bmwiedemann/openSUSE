@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Mar  5 16:15:05 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:26 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jul 18 09:48:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.2.3:
+  + The major update in this version is the support fo the version
+    2.3 of the Facebook Graph API.
+  + The changes include:
+    - The tests has been improved to use the Facebook test API
+      (creating a test user).
+    - A node now can be linked to other (if allowed). This allow to
+      publish data to Facebook! For the moment just albums and
+      photos.
+    - bgo#752380: Updated the API of Facebook Graph to version 2.3
+      due deprecation of 1.0.
+    - The documentation has been polished and now respect parallel
+      installations.
+
+-------------------------------------------------------------------
+Mon Jan 20 17:52:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Now with development documentation thanks to gtk-doc.
+  + Also the node base class includes the modification date.
+
+-------------------------------------------------------------------
+Thu Dec 12 08:34:15 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.2.1.
+

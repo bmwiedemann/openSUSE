@@ -1,0 +1,114 @@
+---
+ examples/loadables/finfo.c   |    9 ++++-----
+ examples/loadables/head.c    |    2 --
+ examples/loadables/id.c      |    2 --
+ examples/loadables/mkdir.c   |    2 +-
+ examples/loadables/pathchk.c |    2 --
+ examples/loadables/print.c   |    2 +-
+ examples/loadables/tee.c     |    2 --
+ 7 files changed, 6 insertions(+), 15 deletions(-)
+
+--- examples/loadables/finfo.c
++++ examples/loadables/finfo.c	2018-09-20 08:07:43.739129083 +0000
+@@ -102,7 +102,7 @@ int	argc;
+ char	**argv;
+ {
+ 	register int	i;
+-	int	mode, flags, opt;
++	int	flags, opt;
+ 
+ 	sh_optind = 0;	/* XXX */
+ 	prog = base_pathname(argv[0]);
+@@ -334,13 +334,13 @@ int	flags;
+ 		else
+ 			printf("%ld\n", st->st_ctime);
+ 	} else if (flags & OPT_DEV)
+-		printf("%d\n", st->st_dev);
++		printf("%lu\n", (unsigned long)st->st_dev);
+ 	else if (flags & OPT_INO)
+ 		printf("%lu\n", (unsigned long)st->st_ino);
+ 	else if (flags & OPT_FID)
+-		printf("%d:%lu\n", st->st_dev, (unsigned long)st->st_ino);
++		printf("%lu:%lu\n", (unsigned long)st->st_dev, (unsigned long)st->st_ino);
+ 	else if (flags & OPT_NLINK)
+-		printf("%d\n", st->st_nlink);
++		printf("%lu\n", (unsigned long)st->st_nlink);
+ 	else if (flags & OPT_LNKNAM) {
+ #ifdef S_ISLNK
+ 		b = xmalloc(4096);
+@@ -390,7 +390,6 @@ finfo_builtin(list)
+ {
+   int c, r;
+   char **v;
+-  WORD_LIST *l;
+ 
+   v = make_builtin_argv (list, &c);
+   r = finfo_main (c, v);
+--- examples/loadables/head.c
++++ examples/loadables/head.c	2018-09-20 08:07:43.739129083 +0000
+@@ -99,8 +99,6 @@ head_builtin (list)
+   WORD_LIST *l;
+   FILE *fp;
+ 
+-  char *t;
+-
+   munge_list (list);	/* change -num into -n num */
+ 
+   reset_internal_getopt ();
+--- examples/loadables/id.c
++++ examples/loadables/id.c	2018-09-20 08:07:43.739129083 +0000
+@@ -64,8 +64,6 @@ static int id_flags;
+ static uid_t ruid, euid;
+ static gid_t rgid, egid;
+ 
+-static char *id_user;
+-
+ static int inituser ();
+ 
+ static int id_pruser ();
+--- examples/loadables/mkdir.c
++++ examples/loadables/mkdir.c	2018-09-20 08:07:43.739129083 +0000
+@@ -170,7 +170,7 @@ make_path (path, nmode, parent_mode)
+   while (*p == '/')
+     p++;
+ 
+-  while (p = strchr (p, '/'))
++  while ((p = strchr (p, '/')))
+     {
+       *p = '\0';
+       if (stat (npath, &sb) != 0)
+--- examples/loadables/pathchk.c
++++ examples/loadables/pathchk.c	2018-09-20 08:07:43.739129083 +0000
+@@ -292,10 +292,8 @@ validate_path (path, portability)
+   if (*path == '\0')
+     return 0;
+ 
+-#ifdef lint
+   /* Suppress `used before initialized' warning.  */
+   exists = 0;
+-#endif
+ 
+   /* Figure out the parent of the first element in PATH.  */
+   parent = xstrdup (*path == '/' ? "/" : ".");
+--- examples/loadables/print.c
++++ examples/loadables/print.c	2018-09-20 08:07:43.739129083 +0000
+@@ -77,7 +77,7 @@ print_builtin (list)
+ {
+   int c, r, nflag, raw, ofd, sflag;
+   intmax_t lfd;
+-  char **v, *pfmt, *arg;
++  char *pfmt;
+   WORD_LIST *l;
+ 
+   nflag = raw = sflag = 0;
+--- examples/loadables/tee.c
++++ examples/loadables/tee.c	2018-09-20 08:07:43.739129083 +0000
+@@ -70,8 +70,6 @@ tee_builtin (list)
+   FLIST *fl;
+   char *buf, *bp;
+ 
+-  char *t;
+-
+   reset_internal_getopt ();
+   append = nointr = 0;
+   tee_flist = (FLIST *)NULL;

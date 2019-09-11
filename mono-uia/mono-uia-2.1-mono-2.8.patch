@@ -1,0 +1,301 @@
+--- UIAutomationBridge/AssemblyInfo.cs
++++ UIAutomationBridge/AssemblyInfo.cs
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationBridge/AssemblyInfo.cs.in
++++ UIAutomationBridge/AssemblyInfo.cs.in
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationBridge/Makefile.am
++++ UIAutomationBridge/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/UIAutomationBridge.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- UIAutomationBridge/Makefile.in
++++ UIAutomationBridge/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/UIAutomationBridge.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- UIAutomationClient/AssemblyInfo.cs
++++ UIAutomationClient/AssemblyInfo.cs
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ 
+
+--- UIAutomationClient/AssemblyInfo.cs.in
++++ UIAutomationClient/AssemblyInfo.cs.in
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ 
+--- UIAutomationClient/Makefile.am
++++ UIAutomationClient/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/UIAutomationClient.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- UIAutomationClient/Makefile.in
++++ UIAutomationClient/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/UIAutomationClient.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- UIAutomationProvider/AssemblyInfo.cs
++++ UIAutomationProvider/AssemblyInfo.cs
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationProvider/AssemblyInfo.cs.in
++++ UIAutomationProvider/AssemblyInfo.cs.in
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationProvider/Makefile.am
++++ UIAutomationProvider/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/UIAutomationProvider.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- UIAutomationProvider/Makefile.in
++++ UIAutomationProvider/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/UIAutomationProvider.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- UIAutomationSource/AssemblyInfo.cs
++++ UIAutomationSource/AssemblyInfo.cs
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationSource/AssemblyInfo.cs.in
++++ UIAutomationSource/AssemblyInfo.cs.in
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationSource/Makefile.am
++++ UIAutomationSource/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/UIAutomationSource.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- UIAutomationSource/Makefile.in
++++ UIAutomationSource/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -lib:@expanded_libdir@/mono/accessibility -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/UIAutomationSource.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- UIAutomationTypes/AssemblyInfo.cs
++++ UIAutomationTypes/AssemblyInfo.cs
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationTypes/AssemblyInfo.cs.in
++++ UIAutomationTypes/AssemblyInfo.cs.in
+@@ -43,8 +43,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- UIAutomationTypes/Makefile.am
++++ UIAutomationTypes/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/UIAutomationTypes.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- UIAutomationTypes/Makefile.in
++++ UIAutomationTypes/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -lib:../bin -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/UIAutomationTypes.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- WindowsBase/AssemblyInfo.cs
++++ WindowsBase/AssemblyInfo.cs
+@@ -48,8 +48,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("/var/lib/hudson/jobs/_uia_tag_tarballs/workspace/UIAutomation/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- WindowsBase/AssemblyInfo.cs.in
++++ WindowsBase/AssemblyInfo.cs.in
+@@ -48,8 +48,6 @@
+ 
+ [assembly: NeutralResourcesLanguage ("en")]
+ [assembly: CLSCompliant (true)]
+-[assembly: AssemblyDelaySign (true)]
+-[assembly: AssemblyKeyFile ("@abs_top_srcdir@/winfx3.pub")]
+ 
+ [assembly: ComVisible (false)]
+ [assembly: AllowPartiallyTrustedCallers]
+--- WindowsBase/Makefile.am
++++ WindowsBase/Makefile.am
+@@ -2,7 +2,7 @@
+ EXTRA_DIST =  
+ 
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ 
+ ASSEMBLY = ../bin/WindowsBase.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+--- WindowsBase/Makefile.in
++++ WindowsBase/Makefile.in
+@@ -165,7 +165,7 @@
+ 	$(build_others_files) $(ASSEMBLY_WRAPPER_IN) $(EXTRAS) \
+ 	$(DATA_FILES) $(build_culture_res_files)
+ ASSEMBLY_COMPILER_COMMAND = gmcs
+-ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0
++ASSEMBLY_COMPILER_FLAGS = -lib:@expanded_libdir@/mono/2.0 -noconfig -codepage:utf8 -warn:4 -warnaserror -optimize+ -debug "-define:DEBUG" -d:NET_2_0 -delaysign+ -keyfile:@abs_top_srcdir@/winfx3.pub
+ ASSEMBLY = ../bin/WindowsBase.dll
+ ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ COMPILE_TARGET = library
+--- UIAutomationClient/System.Windows.Automation/ClientSideProviderDescription.cs
++++ UIAutomationClient/System.Windows.Automation/ClientSideProviderDescription.cs
+@@ -44,17 +44,24 @@
+ 			string imageName,
+ 			ClientSideProviderMatchIndicator flags)
+ 		{
+-			this.ClientSideProviderFactoryCallback = clientSideProviderFactoryCallback;
+-			this.ClassName = className;
+-			this.ImageName = imageName;
+-			this.Flags = flags;
++			this.clientSideProviderFactoryCallback = clientSideProviderFactoryCallback;
++			this.className = className;
++			this.imageName = imageName;
++			this.flags = flags;
+ 		}
+ 
+-		public string ClassName { get; private set; }
+-		public ClientSideProviderMatchIndicator Flags { get; private set; }
+-		public string ImageName { get; private set; }
+-		public ClientSideProviderFactoryCallback ClientSideProviderFactoryCallback { get; private set; }
+-	}
++		public string ClassName { get { return className; } }
++		public ClientSideProviderMatchIndicator Flags { get { return flags; } }
++		public string ImageName { get { return imageName; } }
++		public ClientSideProviderFactoryCallback ClientSideProviderFactoryCallback {
++			get { return clientSideProviderFactoryCallback; }
++		}
++		private string className;
++		private ClientSideProviderFactoryCallback clientSideProviderFactoryCallback;
++		private ClientSideProviderMatchIndicator flags;
++		private string imageName;
++
++ 	}
+ 
+ 	[Flags]
+ 	public enum ClientSideProviderMatchIndicator

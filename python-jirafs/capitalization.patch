@@ -1,0 +1,23 @@
+Index: jirafs-1.17.3/requirements.txt
+===================================================================
+--- jirafs-1.17.3.orig/requirements.txt
++++ jirafs-1.17.3/requirements.txt
+@@ -1,5 +1,5 @@
+ jira>=1.0.3
+ six>=1.9.0
+ blessings>=1.5.1,<2.0
+-prettytable>=0.7.2,<1.0
++PrettyTable>=0.7.2,<1.0
+ environmental-override>=0.1.2
+Index: jirafs-1.17.3/setup.py
+===================================================================
+--- jirafs-1.17.3.orig/setup.py
++++ jirafs-1.17.3/setup.py
+@@ -27,6 +27,7 @@ except ImportError:
+             if not req.startswith('-')
+             and not req.startswith('#')
+         ]
++    print(requirements)
+ 
+ 
+ class Tox(TestCommand):

@@ -1,0 +1,10 @@
+--- libloader-1.1.3/common_build.xml	2009-11-16 11:25:34.000000000 +0100
++++ libloader-1.1.3/common_build.xml	2017-09-11 17:54:15.582181335 +0200
+@@ -1352,6 +1352,7 @@
+              nodeprecatedlist="false"
+              nodeprecated="false"
+              packagenames="${javadoc.packagenames}"
++			 excludepackagenames="org.pentaho.reporting.libraries.resourceloader.modules.cache.ehcache,org.pentaho.reporting.libraries.resourceloader.modules.factory.svg,org.pentaho.reporting.libraries.resourceloader.modules.factory.wmf"
+              sourcepath="${src.dir}"
+              doctitle="${impl.title} documentation">
+       <link href="http://java.sun.com/j2se/${javac.source}.0/docs/api/" />

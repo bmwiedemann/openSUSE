@@ -1,0 +1,14 @@
+Description: Disable the JDK check
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/build.xml
++++ b/build.xml
+@@ -415,7 +415,7 @@
+ 
+ 
+     <!-- Prepares files and settings for compiling driver. -->
+-    <target name="init" depends="-compiler-check, -init-copy, -init-filter-license, -init-no-crypto">
++    <target name="init" depends="-init-copy, -init-filter-license, -init-no-crypto">
+         <!-- The following is needed for source distributions as the classpath can't be dynamically altered, and not having this directory present causes the
+              build to fail. -->
+         <available file="${com.mysql.jdbc.docs.sourceDir}" property="com.mysql.jdbc.docs.sourcesPresent" />

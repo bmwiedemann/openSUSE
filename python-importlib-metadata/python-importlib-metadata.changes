@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Wed Aug  7 14:15:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.19
+ * restrain over-eager egg metadata resolution.
+ * Add support for entry points with colons in the name.
+ * Parse entry points case sensitively. 
+ * Add a version constraint on the backport configparser package
+
+-------------------------------------------------------------------
+Wed Jul 31 12:49:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- This package is part of python 3.8 and we don't need to build
+  it there
+- Do not require importlib_resources on python3.7 where it is
+  part of core python
+
+-------------------------------------------------------------------
+Tue Jul  9 13:23:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fixup the requires for the SLE-12 build
+
+-------------------------------------------------------------------
+Tue Jul  9 11:19:45 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable python-pathlib2 build dependency for suse_version < 1500 to fix SLE-12 build
+
+-------------------------------------------------------------------
+Mon Jun  3 08:17:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove do-not-test-pip.patch as it seems no longer needed
+
+-------------------------------------------------------------------
+Mon Jun  3 08:11:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.17:
+  * Don't crash if there exists an EGG-INFO directory on sys.path.
+  * Update docstrings to match PEP 8. Closes #63.
+  * Merged modules into one module. Closes #62.
+  * Add support for eggs.  !65; Closes #19.
+  * Support generic zip files (not just wheels).  Closes #59
+  * Support zip files with multiple distributions in them.  Closes #60
+  * Fully expose the public API in importlib_metadata.__all__.
+  * The Distribution ABC is now officially part of the public API.
+  * Fixed support for older single file egg-info formats.  Closes #43.
+  * Fixed a testing bug when $CWD has spaces in the path.  Closes #50.
+  * Fixed issue where entry points without an attribute would raise an Exception.
+  * Removed unused name parameter from entry_points(). Closes #44.
+  * DistributionFinder classes must now be instantiated before being placed on sys.meta_path.
+
+-------------------------------------------------------------------
+Tue Feb 26 12:07:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing setuptools_scm dependency to fix generated egg.info
+
+-------------------------------------------------------------------
+Tue Feb 26 09:38:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Some packages request importlib_metadata to ease living provide
+  this symbol too
+
+-------------------------------------------------------------------
+Wed Feb  6 11:53:33 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add do-not-test-pip.patch so tests depending on pip are not used
+  (they fail when the tests are run without tox)
+
+-------------------------------------------------------------------
+Thu Jan 31 13:09:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by pygments-pytest

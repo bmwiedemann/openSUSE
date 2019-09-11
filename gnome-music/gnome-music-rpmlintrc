@@ -1,0 +1,4 @@
+# We supress this warning due to a single gir file that there is no
+# sense in splitting into a devel package.
+# /usr/share/gnome-music/gir-1.0/Gd-1.0.gir
+addFilter("devel-file-in-non-devel-package")

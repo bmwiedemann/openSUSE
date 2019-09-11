@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Tue Jul  7 14:38:20 UTC 2015 - meissner@suse.com
+
+- updated to final 0.7.1 version
+  - new automatic gamma correction
+- camsource-no_implicit_decls.diff: refreshed
+
+-------------------------------------------------------------------
+Mon Dec  1 12:46:50 UTC 2014 - meissner@suse.com
+
+- updated to 0.7.1
+  - Upgrade the internal v4l driver connection to v4l2
+  - Now able to build correkt Makefile, no manuel action in this case
+    required.
+  - Now runs under Raspbian Wheezy in Raspberry PI!
+  - Added function Browser Refresh, configurable via camsource.conf
+  - Add function sharpen (source pencam-2-0.67, via "The Gimp"),
+    configuarable via camsource.conf
+  - Add function saturate (same source), configurable via 
+    camsource.conf
+- dropped camsource-v4l1.patch: upstream
+- dropped camsource-no_label_at_end.diff: upstream
+
+-------------------------------------------------------------------
+Tue Jan 22 08:39:54 UTC 2013 - matwey.kornilov@gmail.com
+
+- An alternative fix for bnc#714439, we don't need any wrappers while
+  we can recompile apps from the sources
+- Add camsource-v4l1.patch
+- Drop camsource-v4l-2.6.38.patch
+- Drop camsource-rename.patch
+
+-------------------------------------------------------------------
+Sat Jan 19 13:08:56 UTC 2013 - mhrusecky@suse.com
+
+- used example as a default configuration file
+- added wrapper around libv4l to make it work again (bnc#714439)
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 22:34:32 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Jul  7 09:28:09 UTC 2011 - idonmez@novell.com
+
+- Add camsource-v4l-2.6.38.patch: use new v4l interface
+
+-------------------------------------------------------------------
+Thu Mar 26 15:33:38 CET 2009 - crrodriguez@suse.de
+
+- do not include static libraries 
+
+-------------------------------------------------------------------
+Sat May 26 23:46:29 CEST 2007 - ro@suse.de
+
+- split off devel package 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 23 01:23:35 CEST 2005 - ro@suse.de
+
+- fix implicit declaration 
+
+-------------------------------------------------------------------
+Tue Jul  5 18:50:54 CEST 2005 - pth@suse.de
+
+- Include standard headers where necessary.
+
+-------------------------------------------------------------------
+Mon Apr 18 19:13:24 CEST 2005 - pth@suse.de
+
+- Just return instead of jumping to the end of the block.
+
+-------------------------------------------------------------------
+Mon Aug 23 12:17:53 CEST 2004 - wengel@suse.de
+
+- removed example config file from /etc/
+
+-------------------------------------------------------------------
+Tue Jan  6 21:00:13 CET 2004 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Thu Dec 18 16:52:12 CET 2003 - wengel@suse.de
+
+- removed /etc/camsource configuration directory
+
+-------------------------------------------------------------------
+Thu Dec 18 11:46:47 CET 2003 - wengel@suse.de
+
+- initial package
+

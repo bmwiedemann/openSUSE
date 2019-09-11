@@ -1,0 +1,2937 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:57:54 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.19.0
+  - Switch to stestr
+  - Deprecate region enabled parameter
+  - refactor the getid method in keystoneclient/base.py
+  - Use python3 for functional tests
+  - import zuul job settings from project-config
+  - Add release note link in README
+  - Add Response class to return request-id to caller
+  - Add py36 tox environment
+  - Change openstack-dev to openstack-discuss
+  - Fix keystoneclient-devstack-functional job
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Add return-request-id-to-caller function(v3/contrib)
+  - Import legacy keystoneclient-dsvm-functional
+  - Add Python 3.6 classifier to setup.cfg
+  - add lib-forward-testing-python3 test job
+  - Make the functional test voting
+  - Convert functional tests to Zuulv3
+  - switch documentation job to new PTI
+  - Add return-request-id-to-caller function(v3)
+  - fix misspelling of 'default'
+  - Update hacking version
+  - Update IdentityProviderManager docstring
+  - Add release notes for return-request-id-to-caller
+  - add python 3.7 unit test job
+  - Use templates for cover and lower-constraints
+
+-------------------------------------------------------------------
+Mon Sep  3 08:53:21 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.17.0
+  - Add support for registered limits
+  - Add support for project-specific limits
+  - fix tox python3 overrides
+  - Update reno for stable/queens
+  - Update links in README
+  - Trivial: Update pypi url to new url
+  - Fix python3 test compat
+  - fix a typo in docstring
+  - Remove PyPI downloads
+  - Override find function in project
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:06:51 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 09:58:03 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.15.0 (bsc#1078607)
+  - Create doc/requirements.txt
+  - Add system role functionality
+  - Add CRUD support for application credentials
+  - Updated from global requirements
+  - Add project tags to keystoneclient
+
+-------------------------------------------------------------------
+Mon Jan 15 11:41:39 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.14.0
+  - Remove functional tests for v2.0 API
+  - Use generic user for both zuul v2 and v3
+  - Update reno for stable/pike
+  - Remove use of positional decorator
+  - Remove setting of version/release from releasenotes
+  - Adds bandit nosec flag to hashlib.sha1
+  - Handle UTC+00:00 in datetime strings
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Aug  7 09:16:53 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.13.0
+  - Update URLs in documents according to document migration
+  - Change locations of docs for intersphinx
+  - Moved release note to the correct path
+  - Use https for *.openstack.org references
+  - Bring back intersphinx reference to keystoneauth
+  - Switch from oslosphinx to openstackdocstheme
+  - Fix html_last_updated_fmt for Python3
+  - Add support for endpoint group CRUD
+  - Remove unused log
+  - Add support for endpoint group filtering
+  - Add support for specifying role ids when creating trust
+  - Fix 12 warnings when building keystoneclient docs
+  - Replace six.iteritems() with .items()
+  - Remove log translations in python-keystoneclient
+  - Update reno for stable/ocata
+  - Fix boto version strip regex
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Fix failing PY2 and PY3 gate jobs
+  - Stop using oslotest.mockpatch
+
+-------------------------------------------------------------------
+Fri Feb 10 15:48:05 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.10.0:
+  - remove hacking checks from keystoneclient
+  - Refactor test_domain_configs
+  - Support domain-specific configuration management
+  - Do not add last_request_id
+  - Only log application/json in session to start
+  - re-work inference rule bindings
+  - standardize release note page ordering
+  - Enable release notes translation
+  - Replace 'assertFalse(a in b)' with 'assertNotIn(a, b)'
+  - Remove deprecated 'data' credential argument
+  - Deprecate the generic client
+  - Use AUTH_INTERFACE object from keystoneauth
+  - X-Serivce-Token should be hashed in the log
+  - [doc] remove auth plugin docs
+  - Update reno for stable/newton
+  - Remove references to Python 3.4
+  - Add Constraints support
+  - Updated coverage configuration file
+  - Do not log binary data during request
+  - Show team and repo badges on README
+  - Prevent MemoryError when logging response bodies
+  - TrivialFix: Using assertIsNone() instead of assertEqual(None)
+  - Fix typo in httpclient.py
+  - Fix some spelling mistaks in base.py & auth.py
+  - Minor docstring fix in mappings.py
+  - Use exceptions from Keystoneauth
+  - Enable code coverage report in console output
+  - Increase readability of 'find()' method and small improvements
+  - Removes unnecessary utf-8 encoding
+  - Pass allow_expired to token validate
+  - Use assertIsNone(...) instead of assertEqual(None, ...)
+  - Refactor test_credentials
+  - Remove redundant variable declaration
+  - Fix missing service_catalog parameter in Client object
+  - Remove revocation event code
+  - Use fixtures from keystoneauth
+  - Fix non-ascii attributes
+  - skip failing functional test
+  - Fix Failing tests with openssl >= 1.1.0
+  - Refactor test_projects
+  - Remove unauthenticated functions
+  - Fix response body being omitted in debug mode incorrectly
+  - Allow Multiple Filters of the Same Key
+  - Import module instead of object
+  - Fix typo in access.py
+  - Correct output for Implied Roles
+  - Revert "Add auth functional tests"
+  - TrivialFix: Fixed typo in some files
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 31 13:15:31 UTC 2016 - tbechtold@suse.com
+
+update to version 3.5.0
+  * Add policy functional tests
+  * Follow up patch for Improve docs for v3 roles
+  * Improve docs for v3 roles
+  * Follow up patch for Improve docs for v3 domains
+  * Add project functional tests
+  * Fix no content return type doc
+  * Improve docs for v3 auth
+  * Follow up patch for Add ec2 functional tests
+  * Reuse Domain and Project resouce definitions
+  * Follow up patch for Improve docs for v3 ec2
+  * Do not send user ids as payload
+  * Add auth functional tests
+  * Improve docs for v3 endpoints
+  * Follow up patch for Improve docs for v3 services
+  * Add Python 3.5 classifier
+  * Add role functional tests
+  * Add endpoint functional tests
+  * Use assertEqual() instead of assertDictEqual()
+  * Correct test_implied_roles
+  * Add service functional tests
+  * Improve docs for v3 policies
+  * Move other-requirements.txt to bindep.txt
+  * Follow up patch for Improve docs for v3 policies
+  * Improve docs for v3 ec2
+  * Remove unused LOG
+  * Remove print in tests.functional.v3.test_implied_roles
+  * Add region functional tests
+  * Use the adapter instead of the client in tests
+  * Add ec2 functional tests
+  * Add credential functional tests
+  * Improve implied-role functional tests
+  * Improve docs for v3 tokens
+  * Improve docs for v3 credentials
+  * Improve docs for v3 regions
+  * Fix other-requirements.txt for deb based distros
+  * Add __ne__ built-in function
+  * Updated from global requirements
+  * Improve docs for v3 services
+
+-------------------------------------------------------------------
+Mon Jul 11 14:09:27 UTC 2016 - tbechtold@suse.com
+
+- update to 3.2.0:
+  * Updated from global requirements
+  * Update other-requirements.txt for Xenial
+  * Update README to comply with Identity V3
+  * List system dependencies for running common tests
+  * Follow up patch for Improve docs for v3 projects
+  * Improve docs for v3 projects
+  * Add group functional tests
+  * Improve docs for v3 groups
+  * Follow up patch for add domain functional tests
+  * Add domain functional tests
+  * Improve docs for v3 domains
+  * Use /v3/auth/projects and /v3/auth/domains
+  * Handle EmptyCatalog exception in list federated projects
+  * PEP257: Ignore D203 because it was deprecated
+  * import warnings in doc/source/conf.py
+  * Remove unused iso8601 requirement
+  * map fixtures to keystoneauth
+  * Update the home-page with developer documentation
+  * Add users functional tests
+  * Improve docs for v3 users
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Fixing D105 PEP257
+  * Fixing D200 PEP257 violation
+  * Fixing D202 and D203 PEP257 violation
+  * Fixing D204, D205, and D207 PEP257 violation
+  * Fixing D208 PEP257 violation
+  * httpclient: remove unused debug kwargs
+  * Fixing D211 PEP257 violation
+  * Fixing D301 PEP257 violation
+  * Add federation related tests
+  * [Trivial] Remove unnecessary executable privilge of unit test file
+  * Replace tempest-lib with tempest.lib
+  * Fix identity_providers docstring
+  * Fallback if Git repository is absent
+  * Fix D400 PEP257 violation
+  * Fix D401 PEP257 violation
+  * Updated example in README
+  * Removing bandit.yaml in favor of defaults
+  * Allow seeing full token response when debug enabled
+  * Enhance functional class to provide default info
+  * Remove keystone bash completion scripts for Keystone
+  * Remove doc references to the keystone CLI
+  * remove CLI from keystoneclient
+  * remove oslo-incubator apiclient
+  * Update reno for stable/mitaka
+  * Fix reference to ClientException
+  * Update Client examples to use sessions
+  * Change tests to pass session to Client
+  * Update developer docs for keystoneauth session
+  * Correct test running instructions
+  * Document session as an argument to v3.Client
+  * Link to AccessInfoV3 returned from get_raw_token_from_identity_service
+  * Tests stop using deprecated HTTPClient.get()
+- update _service and switch to upstream .spec file
+
+-------------------------------------------------------------------
+Thu Mar  3 15:20:57 UTC 2016 - tbechtold@suse.com
+
+- update to 2.3.1:
+  * Revert "Support `truncated` flag returned by identity service"
+  * Updated from global requirements
+  * Support `truncated` flag returned by identity service
+  * Updated from global requirements
+  * Support creation of domain specific roles
+  * Add back a bandit tox job
+  * Implied Roles
+  * add release notes for deprecated auth bits
+  * Updated from global requirements
+  * Updated from global requirements
+  * Make pep8 *the* linting interface
+  * Handle exception on UnicodeDecodError in logging of request
+  * Updated from global requirements
+  * Deprecate adapter
+  * Deprecate auth plugins from keystoneclient
+  * Deprecate Session
+  * Remove python 2.5 workaround
+  * Update keyring requirements
+  * Update translation setup
+  * Bandit profile updates
+  * Missing defaults in the create() method in the v2 ServiceManager
+  * Remove Babel from requirements.txt
+  * use positional library instead of utils
+  * Replace TestResponse with requests_mock
+  * Use positional library instead of local code
+  * Remove argparse from requirements
+  * Adds an option to include names in role assignment lists
+  * Updated from global requirements
+  * Remove bandit tox environment
+  * Mark password/secret options as secret
+  * Revert "Support `truncated` flag returned by keystone"
+  * Revert "Change default endpoint for Keystone v3 to public"
+  * Address hacking check H405
+  * add release notes for ksc 2.1.0
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix for the deprecated library function
+  * Implements base classes for functional tests
+  * Wrong usage of "a/an"
+  * Remove "deprecated" internal method
+  * Cleanup release note
+  * remove keystoneclient.apiclient.exceptions
+  * Support `truncated` flag returned by keystone
+  * Change default endpoint for Keystone v3 to public
+  * Updated from global requirements
+  * Make tests run against original client and sessions
+  * Seperate Client base test class
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Deprecate the baseclient.Client
+  * Replace textwrap with fast standard code
+  * Docstring: Mark optional parameter as optional
+  * Fix Resource.__eq__ mismatch semantics of object equal
+  * move hacking to tests folder
+  * remove venv bits from tools
+  * Add include_subtree to role_list_assignments call
+  * Updated from global requirements
+  * remove the default arguments "{}"
+  * Updated from global requirements
+  * remove oslo-incubator's memorycache
+  * WebOb not needed after auth_token removal
+  * Deprecated tox -downloadcache option removed
+  * Remove keystoneclient.middleware
+  * Updated from global requirements
+  * Updated from global requirements
+  * Put py34 first in the env order of tox
+  * Accept v2 params to v3 service create
+  * Delete python bytecode before every test run
+  * Remove hardcoded endpoint filter for update password
+  * Add release notes for keystoneclient
+  * Updated from global requirements
+  * remove unnecessary FakeLog class in test code
+  * No keystone Endpoint now gives a valid Error Message
+  * Removes py26 support
+  * Removes discover from test-reqs
+  * Fixes warning for positional arg in project create
+  * Updated from global requirements
+  * Swap the order of username deprecation
+  * Map keystoneclient exceptions to keystoneauth
+  * Last sync from oslo-incubator
+  * Updated from global requirements
+  * Add missing end single quote
+  * update incorrect docstring for regions
+  * Iterate over copy of session.adapters keys in Python2/3
+  * Add docstring validation
+  * Silence most of the deprecation spam
+  * Pull the endpoint from the Session
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Replace repeated assertion with the loss
+  * Mark abstractmethod bodies with nocover
+  * Docstring spelling and function-vs-method fixes
+  * pass on @abc.abstractmethods
+  * Updated from global requirements
+  * Fix typo that says V3 token only works for v2
+  * auto-generate release history
+  * Updated from global requirements
+  * Updated from global requirements
+- adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Oct  7 04:26:24 UTC 2015 - tbechtold@suse.com
+
+- update 1.7.2:
+  * Redirect on 303 in SAML plugin
+  * HTTPClient/region_name deprecation test updates
+  * Updated from global requirements
+  * Update .gitreview for stable/liberty
+- adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Sep 14 09:10:15 UTC 2015 - tbechtold@suse.com
+
+- update to 1.7.1:
+  * Adding back exception mapping for ConnectionError
+  * Update path to subunit2html in post_test_hook
+  * Deprecate create Discover without session
+  * Mask passwords when logging the HTTP response
+  * Updated from global requirements
+  * Update deprecation text for Session properties
+  * Proper deprecation for httpclient.USER_AGENT
+  * Deprecate create HTTPClient without session
+  * Fix Accept header in SAML2 requests
+  * Fixes missing socket attribute error during init_poolmanager
+  * Updated from global requirements
+  * Expose token_endpoint.Token as admin_token
+  * Proper deprecation for UserManager project argument
+  * Proper deprecation for CredentialManager data argument
+  * Deprecate create v3 Client without session
+  * Deprecate create v2_0 Client without session
+  * Proper deprecation for Session.get_token()
+  * Deprecate use of cert and key
+  * Proper deprecation for Session.construct()
+  * Deprecate ServiceCatalog.get_urls() with no attr
+  * Deprecate ServiceCatalog(region_name)
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Stop using .keys() on dicts where not needed
+  * Inhrerit roles project calls on keystoneclient v3
+  * Deprecate openstack.common.apiclient
+  * Move apiclient.base.Resource into keystoneclient
+  * oslo-incubator apiclient.exceptions to keystoneclient.exceptions
+  * Proper deprecation for HTTPClient session and adapter properties
+  * Proper deprecation for HTTPClient.request methods
+  * Proper deprecation for HTTPClient.tenant_id|name
+  * Proper deprecation for HTTPClient tenant_id, tenant_name parameters
+  * Updated from global requirements
+  * Clarify setting socket_options
+  * Remove check for requests version
+  * Updated from global requirements
+  * Fix tests passing user, project, and token
+  * Proper deprecation for httpclient.request()
+  * Proper deprecation for Dicover.raw_version_data unstable parameter
+  * Proper deprecation for Dicover.available_versions()
+  * Proper deprecation for is_ans1_token
+  * Proper deprecation for client.HTTPClient
+  * Proper deprecation for Manager.api
+  * Stop using Manager.api
+  * Proper deprecation for BaseIdentityPlugin trust_id property
+  * Proper deprecation for BaseIdentityPlugin username, password,
+    token_id properties
+  * Proper deprecations for modules
+  * Use UUID values in v3 test fixtures
+  * Proper deprecation for AccessInfo management_url property
+  * Proper deprecation for AccessInfo auth_url property
+  * Stop using deprecated AccessInfo.auth_url and management_url
+  * Proper deprecation for AccessInfo scoped property
+  * Proper deprecation for AccessInfo region_name parameter
+  * Deprecations fixture support calling deprecated function
+  * Set reasonable defaults for TCP Keep-Alive
+  * Updated from global requirements
+  * Remove unused time_patcher
+  * Make OAuth testcase use actual request headers
+  * Prevent attempts to "filter" list() calls by globally unique IDs
+  * Add get_token_data to token CRUD
+  * Updated from global requirements
+  * py34 not py33 is tested and supported
+  * Updated from global requirements
+  * Remove confusing deprecation comment from token_to_cms
+  * Fixes modules index generated by Sphinx
+  * Updated from global requirements
+  * Unit tests catch deprecated function usage
+  * Switch from deprecated oslo_utils.timeutils.strtime
+  * Switch from deprecated isotime
+  * Remove keystoneclient CLI references in README
+  * Update README.rst and remove ancient reference
+  * Remove unused images from docs
+  * Updated from global requirements
+  * Add openid connect client support
+  * Stop using tearDown
+  * Use mock rather than mox
+  * Remove unused setUp from ClientTest
+  * Updated from global requirements
+  * Iterate over copy of sys.modules keys in Python2/3
+  * Use random strings for test fixtures
+  * Stop using function deprecated in Python 3
+  * Use python-six shim for assertRaisesRegex/p
+  * tox env for Bandit
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Fri Jul 24 09:17:43 UTC 2015 - dmueller@suse.com
+
+- update to 1.6.0:
+  * Add EC2 CRUD credential support to v3 API
+  * A Default CLI plugin
+  * Fixed grammatical errors in the V2 Client API doc
+  * Fixe example code in Using Sessions page
+  * Fix auth required message translation
+  * Revert "Remove keystoneclient.middleware"
+  * Revert "Remove unused fixtures"
+  * Add docstrings for ``protocol`` parameter
+  * Typo in openstack client help
+  * Pass OS_* env vars fix for tox 2.0
+  * Remove unused fixtures
+  * Updated from global requirements
+  * Use 'mapping_id' instead of 'mapping' in federation protocol tests
+  * Use 'id' instead of 'protocol_id' in federation protocol tests
+  * Drop use of 'oslo' namespace package
+  * Don't autodoc the test suite
+  * Sync from oslo incubator
+  * Removes temporary fix for doc generation
+  * Ensure that failing responses are logged
+  * Prompt for password on CLI if not provided
+  * Adapter version is a tuple
+  * Remove keystoneclient.middleware
+  * Document non-standard encoding of the PKI token
+  * Add endpoint and service ids to fixtures
+  * Uncap library requirements for liberty
+  * Provide a means to get all installed plugins
+  * Fix s3_token middleware parsing insecure option
+  * Make process_header private
+  * Fix tests to work with requests<2.3
+  * Increase minimum token life required
+  * Update sample data with audit ids
+  * pep8 fix for CMS
+  * Inherited role domain calls on keystoneclient v3
+  * Add support to create ECP assertion based on a token
+  * Add support to create SAML assertion based on a token
+  * Allow requesting an unscoped Token
+  * Support discovery on the AUTH_INTERFACE
+  * Expose audit_id via AccessInfo
+  * Replace assertRaisesRegexp with assertRaisesRegex
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Jul 20 20:54:09 UTC 2015 - dmueller@suse.com
+
+- update to 1.3.2:
+  * Updated from global requirements and fix env variables passthrought
+
+-------------------------------------------------------------------
+Tue Jul  7 13:04:41 UTC 2015 - dmueller@suse.com
+
+- renaming to to %name-rpmlintrc
+
+-------------------------------------------------------------------
+Fri May 15 02:25:45 UTC 2015 - dmueller@suse.com
+
+- update to 1.3.1:
+  * Fix s3_token middleware parsing insecure option (bnc#928205, CVE-2015-1852)
+
+-------------------------------------------------------------------
+Fri Apr 24 10:58:02 UTC 2015 - tbechtold@suse.com
+
+- Use %{version} in source
+
+-------------------------------------------------------------------
+Thu Apr 23 20:14:44 UTC 2015 - tbechtold@suse.com
+
+- Switch to version 1.3.0
+
+-------------------------------------------------------------------
+Sat Apr 18 23:50:03 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post31:
+  * Inherited role domain calls on keystoneclient v3
+
+-------------------------------------------------------------------
+Fri Apr 17 23:50:20 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post29:
+  * Uncap library requirements for liberty
+  * Make process_header private
+
+-------------------------------------------------------------------
+Wed Apr 15 01:24:44 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post25:
+  * Fix s3_token middleware parsing insecure option (bnc#928205, CVE-2015-1852)
+
+-------------------------------------------------------------------
+Tue Apr 14 01:23:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post24:
+  * Fix tests to work with requests<2.3
+
+-------------------------------------------------------------------
+Fri Apr 10 01:24:53 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post23:
+  * Increase minimum token life required
+  * Update sample data with audit ids
+  * pep8 fix for CMS
+
+-------------------------------------------------------------------
+Thu Apr  9 01:21:36 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post18:
+  * Return None for missing trust_id in fixture
+  * Provide a generic auth plugin loader
+
+-------------------------------------------------------------------
+Tue Apr  7 01:23:22 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post14:
+  * Make non-import packages lazy
+
+-------------------------------------------------------------------
+Fri Apr  3 01:23:18 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post12:
+  * Add support to create ECP assertion based on a token
+  * Add support to create SAML assertion based on a token
+  * Don't autodoc the test suite
+
+-------------------------------------------------------------------
+Wed Apr  1 01:17:53 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post6:
+  * Allow requesting an unscoped Token
+
+-------------------------------------------------------------------
+Tue Mar 31 01:30:04 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post5:
+  * Expose audit_id via AccessInfo
+
+-------------------------------------------------------------------
+Sat Mar 28 01:27:07 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.3.0.post3:
+  * Replace assertRaisesRegexp with assertRaisesRegex
+  * Updated from global requirements
+  1.3.0
+
+-------------------------------------------------------------------
+Wed Mar 25 00:52:33 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post30:
+  * Improve feedback message in SSL error
+  * Add a FederatedBase v3 plugin
+
+-------------------------------------------------------------------
+Sat Mar 21 00:51:30 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post26:
+  * Deprecate keystone CLI
+  * Rename requests mock object in testing
+  * Add OS-SIMPLE-CERT support for v3
+
+-------------------------------------------------------------------
+Thu Mar 19 11:14:26 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post20:
+  * Clean arguments in test_federation.*.test_create()
+  * Allow passing logger object to request
+
+-------------------------------------------------------------------
+Thu Mar 19 00:53:46 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post17:
+  * Implements subtree_as_ids and parents_as_ids
+
+-------------------------------------------------------------------
+Wed Mar 18 00:51:51 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post15:
+  * Extract BaseAuth out of Auth Plugin
+  * Split v3 authentication file into module
+
+-------------------------------------------------------------------
+Tue Mar 17 00:53:54 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post13:
+  * Federation Service Providers CRUD operations
+  * Crosslink to other sites that are owned by Keystone
+
+-------------------------------------------------------------------
+Thu Mar 12 00:52:51 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post10:
+  * Fix time issue in AccessInfo test
+  * Creating parameter to list inherited role assignments
+
+-------------------------------------------------------------------
+Wed Mar 11 00:53:22 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post6:
+  * token signing support alternative message digest
+
+-------------------------------------------------------------------
+Fri Mar  6 00:53:09 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post4:
+  * Updated from global requirements
+  * Import functional CLI tests from tempest
+
+-------------------------------------------------------------------
+Fri Feb 27 00:53:10 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.2.0.post1:
+  * Allow handling multiple service_types
+  1.2.0
+
+-------------------------------------------------------------------
+Tue Feb 24 00:46:40 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post35:
+  * Make post_test_hook.sh executable
+  * Add default body for non-abstract empty methods
+  * Using correct keyword for region in v3
+
+-------------------------------------------------------------------
+Sat Feb 21 02:04:38 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post29:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Feb 14 02:03:56 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post28:
+  * Create functional test base
+  * Ignore all failures removing catalog when logging token
+  * Make remove_service_catalog private
+
+-------------------------------------------------------------------
+Fri Feb 13 02:01:26 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post23:
+  * Move tests to the unit subdirectory
+  * Fix a comment error in cms.py
+
+-------------------------------------------------------------------
+Wed Feb 11 02:01:59 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post19:
+  * Docs for v3 credentials
+  * Change hacking check to verify all oslo imports
+  * Change oslo.i18n to oslo_i18n
+  * Remove 404 link to novaclient in README
+  * Workflow documentation is now in infra-manual
+  * Change oslo.config to oslo_config
+  * Change oslo.serialization to oslo_serialization
+  * Switch from oslo.utils to oslo_utils
+  * Reference identity plugins from __init__.py
+
+-------------------------------------------------------------------
+Tue Feb 10 00:47:48 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.1.0.post1:
+  * Add data to example data
+  1.1.0
+  * Basic AccessInfo plugin
+  * Add get_headers interface to authentication plugins
+  * Add name parameter to NoMatchingPlugin exception
+
+-------------------------------------------------------------------
+Mon Feb  9 01:41:52 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post65:
+  * use right resource_class to create resource instance
+
+-------------------------------------------------------------------
+Sat Feb  7 01:40:49 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post63:
+  * Hierarchical multitenancy basic calls
+
+-------------------------------------------------------------------
+Tue Feb  3 01:43:51 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post62:
+  * Enable hacking rule E122 and H304
+  * Docstring usability improvements
+
+-------------------------------------------------------------------
+Mon Feb  2 01:35:03 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post58:
+  * Fix typo in Ec2Signer class docstring
+  * handles keyboard interrupt
+  * make req_ref doesn't require id
+  * Configure TCP Keep-Alive for certain Sessions
+  * Correct failures for check H238
+
+-------------------------------------------------------------------
+Sat Jan 31 01:34:47 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post48:
+  * Add validate token for v3
+  * Tests use keep_blank_values when parse_qs
+
+-------------------------------------------------------------------
+Fri Jan 30 10:48:53 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post44:
+  * Add validate token for v2.0
+  * Surface the user_id and project_id beyond the plugin
+  * Add auth plugin params to doc
+  * Allow v3 plugins to opt out of service catalog
+  * Add fetch revocations for v3
+  * Add fetch revocations for v2.0
+
+-------------------------------------------------------------------
+Thu Jan 29 01:31:02 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post33:
+  * fix enabled parameter of update doesn't default to None
+  * Updated service name to be optional in CLI
+  * Update requests-mock syntax
+
+-------------------------------------------------------------------
+Sat Jan 24 01:30:07 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post27:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jan 21 01:33:18 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post26:
+  * Enable hacking rule F821
+  * Fixes bootstrap tests
+  * Fix up types within API documentation
+
+-------------------------------------------------------------------
+Fri Jan 16 01:30:49 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post21:
+  * Add generic auth plugin documentation
+  * Correct failures for check W292
+  * Move to hacking 0.10
+
+-------------------------------------------------------------------
+Thu Jan 15 01:30:39 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post15:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Jan 12 01:27:02 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post14:
+  * Allow fetching user_id/project_id from auth
+
+-------------------------------------------------------------------
+Sat Jan 10 01:28:35 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post12:
+  * don't log service catalog in every token response
+  * Updated from global requirements
+  * Use a test fixture for mocking time
+
+-------------------------------------------------------------------
+Fri Jan  9 01:29:00 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post8:
+  * add clear definition of service list
+
+-------------------------------------------------------------------
+Tue Jan  6 01:32:49 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post6:
+  * Add get certificates for v2.0
+  * Use textwrap instead of home made implementation
+
+-------------------------------------------------------------------
+Thu Jan  1 01:30:41 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-1.0.0.post2:
+  1.0.0
+  * Document the auth plugins that are loadable by name
+
+-------------------------------------------------------------------
+Fri Dec 19 01:30:40 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.post64:
+  * Take plugin params from ENV rather than default
+  * get_endpoint should return the override
+
+-------------------------------------------------------------------
+Wed Dec 17 01:31:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.60.ge36852a:
+  * Updated from global requirements
+  * Document session usage first
+
+-------------------------------------------------------------------
+Fri Dec 12 01:30:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.57.gb9f17e3:
+  * Expose version matching functions to the public
+  * Add missing user-id option to generic.Password
+  * Log the CA cert with the debug statement
+
+-------------------------------------------------------------------
+Thu Dec 11 01:25:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.51.g05f146c:
+  * duplicate auth-url option returned by BaseGenericPlugin
+
+-------------------------------------------------------------------
+Wed Dec 10 01:26:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.49.ga60978e:
+  * Project ID in OAuth headers was missing
+
+-------------------------------------------------------------------
+Sat Dec  6 01:26:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.48.g28ea0a8:
+  * Pass all adapter parameters through to adapter
+  * Correct documenting constructor parameters
+  * Correct Session docstring
+
+-------------------------------------------------------------------
+Fri Dec  5 01:28:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.45.g6f2be13:
+  * Fix importing config module and classmethod params
+  * Make keystoneclient use an adapter
+
+-------------------------------------------------------------------
+Wed Dec  3 01:28:24 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.41.g41afe3c:
+  * Docstring cleanup for return type
+
+-------------------------------------------------------------------
+Tue Dec  2 01:27:56 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.39.g4a49d97:
+  * Replace magic numbers with named symbols
+  * Removes confusing _uuid property
+  * Curl statements to include globoff for IPv6 URLs
+  * Cleanup exception logging
+  * Remove middleware architecture doc
+  * Rename the client API docs
+  * Warn that keystone CLI is pending deprecation
+
+-------------------------------------------------------------------
+Fri Nov 28 01:31:53 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.25.g44409f0:
+  * Sync oslo-incubator to 1fc3cd47
+
+-------------------------------------------------------------------
+Thu Nov 27 01:32:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.23.gd54bd32:
+  * Remove useless log message
+
+-------------------------------------------------------------------
+Tue Nov 25 01:28:23 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.21.g8c63c9e:
+  * Correct typos in man page
+
+-------------------------------------------------------------------
+Thu Nov 20 14:39:21 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.19.gb71a0a2:
+  * Cleanup docs - raises class
+  * Reorder index links
+
+-------------------------------------------------------------------
+Sat Nov  8 12:52:30 UTC 2014 - dmueller@suse.com
+
+- fix requires 
+
+-------------------------------------------------------------------
+Sat Nov  8 01:27:51 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.15.g7780758:
+  * I18n
+
+-------------------------------------------------------------------
+Fri Nov  7 01:28:15 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.13.g1d72f2a:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Oct 30 07:22:08 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.12.g56649e5:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Oct 29 01:36:06 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.11.g3b766c5:
+  * Correct use of noqa
+
+-------------------------------------------------------------------
+Mon Oct 27 17:58:45 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.2.10.g20f488d:
+  * Prevent AttributeError if no authorization
+  0.11.2
+  * Use oslo_debug_helper and remove our own version
+  * Updated from global requirements
+  * set close_fds=True in Popen
+  * Fix mappings.Mapping docstring
+  * Remove warning about management token
+  * Doc cleanup, make concepts links
+  * Correct typos in using-sessions
+
+-------------------------------------------------------------------
+Fri Oct 17 00:23:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.23.g88cc4b6:
+  * Actually test interactive password prompt
+  * Explicit complaint about old OpenSSL when testing
+
+-------------------------------------------------------------------
+Thu Oct 16 00:20:35 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.19.ga417bf9:
+  * Docstrings should have :returns: everywhere
+  * Use oslo.utils and oslo.serialization
+
+-------------------------------------------------------------------
+Thu Oct  9 23:55:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.16.g89dc951:
+  * Log token with sha1
+
+-------------------------------------------------------------------
+Wed Oct  8 23:55:19 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.14.g1d1d92a:
+  * Extracting common code to private method
+
+-------------------------------------------------------------------
+Wed Oct  1 00:09:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.12.geee5bd6:
+  * Redact x-subject-token from response headers
+
+-------------------------------------------------------------------
+Tue Sep 30 00:08:35 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.10.g476a959:
+  * Update hacking to 0.9.x
+
+-------------------------------------------------------------------
+Mon Sep 29 11:53:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.8.ga104e1c:
+  * Change cms_sign_data to use sha256 message digest
+  * Change 'secrete' to 'secret'
+
+-------------------------------------------------------------------
+Wed Sep 24 23:54:47 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.1.4.g7684d95:
+  * Enumerate Projects with Unscoped Tokens
+  0.11.1
+  * Stop using intersphinx
+
+-------------------------------------------------------------------
+Tue Sep 23 23:52:13 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.11.0.3.g79d1eec:
+  * Fix auth_token for old oslo.config
+  * Do not iterate action.choices if it is none
+  0.11.0
+
+-------------------------------------------------------------------
+Sun Sep 21 23:51:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.116.g0b06683:
+  * Fix a doc_string error
+  * SAML2 federated authentication for ADFS
+  * Fix the condition expression for ssl_insecure (bnc#897103, CVE-2014-7144)
+
+-------------------------------------------------------------------
+Sat Sep 20 23:52:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.110.g6f9dff1:
+  * Updated from global requirements
+  * fix EC2 Signature Version 4 calculation, in the case of POST
+
+-------------------------------------------------------------------
+Sat Sep 20 00:31:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.107.g98b240f:
+  * Add support for endpoint policy
+
+-------------------------------------------------------------------
+Fri Sep 19 00:32:38 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.106.g118763c:
+  * Handle federated tokens
+
+-------------------------------------------------------------------
+Thu Sep 18 00:30:10 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.104.g4e4c757:
+  * Allow retrying some failed requests
+  * Versioned Endpoint hack for Sessions
+
+-------------------------------------------------------------------
+Tue Sep 16 00:29:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.101.g3305c7b:
+  * Sync with latest oslo-incubator
+
+-------------------------------------------------------------------
+Sat Sep 13 23:43:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.99.g27752d3:
+  * Pass kwargs to auth plugins
+
+-------------------------------------------------------------------
+Fri Sep 12 23:43:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.97.ga779dcc:
+  * Expose auth methods on the adapter
+
+-------------------------------------------------------------------
+Thu Sep 11 23:43:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.95.g01cabf6:
+  * fix typos
+  * Version independent plugins
+  * Allow passing None for username in v2.Password
+
+-------------------------------------------------------------------
+Wed Sep 10 23:43:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.89.g703b5fc:
+  * Distinguish between name not provided and incorrect
+
+-------------------------------------------------------------------
+Tue Sep  9 23:43:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.87.ga936700:
+  * Work toward Python 3.4 support and testing
+  * warn against sorting requirements
+  * Add version parameter to adapter
+  * Allow providing an endpoint_override to requests
+  * Handle invalidate in identity plugins correctly
+
+-------------------------------------------------------------------
+Mon Sep  1 00:34:38 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.78.g1643f7d:
+  * Fix test mistake with requests-mock
+
+-------------------------------------------------------------------
+Fri Aug 29 00:34:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.77.g4669556:
+  * Standardize AccessInfo token setting
+
+-------------------------------------------------------------------
+Wed Aug 27 00:33:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.75.g3f1da73:
+  * Hash for PKIZ
+  * Move fake session to HTTPClient
+  * Allow providing a default value to CLI loading
+
+-------------------------------------------------------------------
+Sat Aug 23 00:34:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.69.g62d4c71:
+  * Allow unauthenticated discovery
+  * Remove cruft from setup.cfg
+
+-------------------------------------------------------------------
+Fri Aug 22 00:32:37 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.65.g1ffc44f:
+  * Unsort pbr and hacking in requirements files
+  * Add v3scopedsaml entry to the setup.cfg
+
+-------------------------------------------------------------------
+Thu Aug 21 00:33:15 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.61.g4cc1763:
+  * Fix handling of deprecated opts in CLI
+  * Remove lxml as a forced depend
+  * Allow passing user_id to v2Password plugin
+
+-------------------------------------------------------------------
+Wed Aug 20 00:32:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.55.g6807959:
+  * Updated from global requirements
+  * Make auth plugins dest save to os_
+
+-------------------------------------------------------------------
+Mon Aug 18 16:22:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.52.g8adce96:
+  * Revert "Add oslo.utils requirement"
+  * Revert "Use oslo.utils"
+  * Use oslo.utils
+
+-------------------------------------------------------------------
+Sat Aug 16 00:39:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.48.ga7ba4c3:
+  * Add oslo.utils requirement
+
+-------------------------------------------------------------------
+Fri Aug 15 00:38:39 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.46.ge7eaec1:
+  * Allow registering individual plugin CONF options
+  * Individual plugin CLI registering
+
+-------------------------------------------------------------------
+Thu Aug 14 00:37:56 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.42.ge58b828:
+  * Convert shell tests to requests-mock
+  * Change unscoped token fallback to be session aware
+
+-------------------------------------------------------------------
+Mon Aug 11 12:28:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.40.g5785698:
+  * Remove intersphinx mappings
+  * Mark auth plugin options as secret
+  * move attributes of v3.client.Client into alphabetical order
+  * Isolate get_discovery function
+  * Fixes import grouping
+  * expose the revoke token for V3
+  * Mark the keystoneclient s3_token middleware deprecated
+  * Add docs for how to create an OAuth auth instance
+  * Control identity plugin reauthentication
+  * Use token and discovery fixture in identity tests
+  * List federated projects and domains
+  * Redact tokens in request headers
+  * Use keystoneclient.exceptions
+
+-------------------------------------------------------------------
+Sun Aug  3 23:47:05 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.15.g340fa60:
+  * use embedded URLs for hyperlinks in the README
+
+-------------------------------------------------------------------
+Sat Aug  2 23:47:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.13.g1a35101:
+  * Config fixture from oslo-incubator is not used
+  * Use config fixture from oslo.config
+
+-------------------------------------------------------------------
+Wed Jul 30 23:47:45 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.11.ga5f0e3c:
+  * Add an example of using v3 client with sessions
+
+-------------------------------------------------------------------
+Tue Jul 29 23:47:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.9.gb487f94:
+  * Convert httpretty to requests-mock
+  * Updated from global requirements
+  * Use oslosphinx to generate doc theme
+  * Example JSON files should be human-readable
+
+-------------------------------------------------------------------
+Sat Jul 26 00:09:38 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.1.3.g83bef74:
+  * Add the 'auth' interface type
+  0.10.1
+  * Calculate a suitable column width for positional arguments
+
+-------------------------------------------------------------------
+Fri Jul 25 00:09:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.0.11.ge58f799:
+  * Don't log sensitive auth data
+
+-------------------------------------------------------------------
+Thu Jul 24 08:33:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.10.0.9.g82e45a6:
+  * Reorder the old compatibility arguments
+  * Insert space between ``#`` and the comment
+  * Rename saml2_token_url to token_url
+  * Enforce authenticated=False in saml2 plugin
+  * Allow passing kwargs from managers to session
+  * Scope unscoped saml2 tokens
+  0.10.0
+
+-------------------------------------------------------------------
+Wed Jul 23 00:10:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.116.gc9ae9d1:
+  * Use immutable arg rather mutable arg
+
+-------------------------------------------------------------------
+Tue Jul 22 00:09:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.114.g32c94d8:
+  * Only conditionally import working keyring
+
+-------------------------------------------------------------------
+Fri Jul 18 00:11:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.112.g679689f:
+  * Fix mistakes in token fixtures
+  * remove useless part of error message
+  * Test that tenant list function can use auth_url
+  * Add v2 Token manager authenticate tests
+  * Sync with oslo-incubator fd90c34a9
+
+-------------------------------------------------------------------
+Wed Jul 16 23:40:31 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.102.g5daafe1:
+  * add deprecation warning for auth_token
+  * SAML2 ECP auth plugin
+  * Use jsonutils to load adapter response
+  * Provide an __all__ for auth module
+  * Docstrings for usability
+  * Add CRUD operations for Federated Protocols
+  * Ensure no double slash in get token URL
+  * Document authentication plugins
+  * Add invalidate doc string to identity plugin
+
+-------------------------------------------------------------------
+Sat Jul 12 00:11:19 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.84.g658b690:
+  * Allow loading auth plugins from CLI
+  * Plugin loading from config objects
+  * Pass user and roles manager to tenant manager
+  * Add V2 tenant user manager tests
+  * Pass roles manager to user manager
+  * Add trust users to AccessInfo and fixture
+
+-------------------------------------------------------------------
+Fri Jul 11 00:11:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.72.g3b73bcf:
+  * Direct move of the revoke model from keystone server
+  * Add tests without optional create endpoint params
+
+-------------------------------------------------------------------
+Thu Jul 10 00:12:02 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.68.gf312ae2:
+  * Add V2 user roles tests
+  * Add OAuth data to AccessInfo
+
+-------------------------------------------------------------------
+Wed Jul  9 00:10:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.64.ga1bc48c:
+  * Add CONTRIBUTING.rst
+
+-------------------------------------------------------------------
+Tue Jul  8 00:10:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.62.g2ae5b38:
+  * endpoint_id and service_id should be random uuid
+  * Keystoneclient create user API should have optional password
+
+-------------------------------------------------------------------
+Sat Jul  5 00:10:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.58.g3e88c35:
+  * Add profiling support to keystoneclient
+  * Modify oauth calls to expect urlencoded responses
+  * Add a fixture for Keystone version discovery
+
+-------------------------------------------------------------------
+Wed Jul  2 07:48:39 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.53.g548c15f:
+  * Session loading from CLI options
+  * Session loading from conf
+  * Adjust Python 2.6 OSerror-on-EPIPE workaround (bnc#879929)
+
+-------------------------------------------------------------------
+Wed Jul  2 07:48:06 UTC 2014 - dmueller@suse.com
+
+- remove 0001-Adjust-Python-2.6-OSerror-on-EPIPE-workaround.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 00:18:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.49.g90abb4c:
+  * Minor grammatical fix in doc
+
+-------------------------------------------------------------------
+Sun Jun 29 00:17:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.47.gcf7e8af:
+  * Updated from global requirements
+  * Correcting using-api-v2.rst
+  * Add issued handlers to auth_ref and fixtures
+
+-------------------------------------------------------------------
+Sat Jun 28 00:16:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.42.gf0be384:
+  * Make parameters in EndpointManager optional
+  * Session Adapters
+
+-------------------------------------------------------------------
+Wed Jun 25 00:21:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.38.g2927a75:
+  * Unversioned endpoints in service catalog
+  * Update keystoneclient code to account for hacking 0.9.2
+  * Doc build fails if warnings
+  * Imports to fix build warnings
+
+-------------------------------------------------------------------
+Sat Jun 21 00:15:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.30.g6c47b93:
+  * Rename v3._AuthConstructor to v3.AuthConstructor
+  * Add role ids to the AccessInfo
+
+-------------------------------------------------------------------
+Fri Jun 20 00:17:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.27.gb2a0c5b:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Jun 19 00:16:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.26.g8247200:
+  * auth_token _cache_get checks token expired
+
+-------------------------------------------------------------------
+Wed Jun 18 00:20:08 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.24.gf88a9c6:
+  * Using six.u('') instead of u''
+  * Added help text for the debug option
+
+-------------------------------------------------------------------
+Sun Jun 15 00:18:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.21.gf83115b:
+  * Session Documentation
+  * Set the iso8601 log level to WARN
+  * Refactor auth_token token cache members to class
+  * Don't use mock non-exist method assert_called_once
+
+-------------------------------------------------------------------
+Sat Jun 14 00:19:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.13.g03fbe59:
+  * Link to docstrings in using-api-v3
+  * Changes exception raised by v3.trusts.update()
+
+-------------------------------------------------------------------
+Wed Jun 11 23:57:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.12.g832d896:
+  * Add service_name to URL discovery
+  * Remove _factory methods from auth plugins
+  * Fix tests to use UUID strings rather than ints for IDs
+
+-------------------------------------------------------------------
+Tue Jun 10 23:56:55 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.7.gf083f7f:
+  * Make get_oauth_params conditional for specific oauthlib versions
+  * Add endpoint handling to Token/Endpoint auth
+
+-------------------------------------------------------------------
+Wed Jun  4 23:56:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.4.g53a175e:
+  * Changes exception raised by v3.trusts.update(
+  * Add role assignments as concept in Client API V3 docs
+
+-------------------------------------------------------------------
+Sat May 31 00:05:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.9.0.2.g04ded03:
+  0.9.0
+  * Clean up oauth auth plugin code
+  * Remove left over vim headers
+
+-------------------------------------------------------------------
+Fri May 30 13:12:32 UTC 2014 - dmueller@suse.com
+
+- add 0001-Adjust-Python-2.6-OSerror-on-EPIPE-workaround.patch (bnc#879929)
+
+-------------------------------------------------------------------
+Fri May 30 00:08:57 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.84.gf5c4581:
+  * Fix a misspelling in a comment
+  * Sync with oslo-incubator caed79d
+
+-------------------------------------------------------------------
+Thu May 29 00:08:39 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.81.gbaa7f37:
+  * Fix attributes ordering at v3/client.py
+  * Add support for extensions-list
+  * auth_token middleware hashes tokens with configurable algorithm
+  * Add /role_assignments endpoint support
+  * Authenticate via oauth
+  * Add description param to v3 service create/update
+  * Mark keystoneclient as being a universal wheel
+  * auth_token hashes PKI token once
+  * Sync with oslo-incubator 2640847
+  * Remove importutils from oslo config
+
+-------------------------------------------------------------------
+Wed May 28 00:07:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.62.g14ac8cd:
+  * replace string format arguments with function parameters
+  * add docstr to v2 shell module regarding CLI deprecation
+  * Move auth_token tests not requiring v2/v3 to new class
+  * Cached tokens aren't expired
+  * Move auth_token cache pool tests out of NoMemcache
+  * Make auth_token return a V2 Catalog
+
+-------------------------------------------------------------------
+Sun May 25 00:06:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.50.g82cf5d2:
+  * Fixed an aparent typo in the code
+  * Auth Plugin invalidation
+
+-------------------------------------------------------------------
+Fri May 23 00:07:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.47.g15bec1c:
+  * Updated from global requirements
+  * Move DisableModuleFixture to utils
+
+-------------------------------------------------------------------
+Tue May 20 23:56:38 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.45.gfb63cd4:
+  * Fixes an erroneous type check in a test
+  * Add mailmap entry
+
+-------------------------------------------------------------------
+Tue May 13 00:33:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.42.g3d6d749:
+  * Compressed Signature and Validation
+
+-------------------------------------------------------------------
+Fri May  9 00:35:07 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.41.ga95edc7:
+  * Regions Management
+
+-------------------------------------------------------------------
+Thu May  8 00:33:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.39.ga217ce0:
+  * OAuth request/access token and consumer support for oauth client API
+
+-------------------------------------------------------------------
+Wed May  7 00:33:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.37.g7432db1:
+  * Discovery URL querying functions
+  * Synced jsonutils from oslo-incubator
+
+-------------------------------------------------------------------
+Tue May  6 00:36:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.33.gf2adf27:
+  * Fix client fixtures
+
+-------------------------------------------------------------------
+Sun May  4 00:33:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.32.g570a9dc:
+  * fixed typos found by RETF rules
+
+-------------------------------------------------------------------
+Sat May  3 00:35:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.30.gf050dd9:
+  * Fix docstrings in keystoneclient
+  * auth_token configurable check of revocations for cached
+
+-------------------------------------------------------------------
+Fri May  2 00:35:38 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.27.g9b1feca:
+  * Remove unused AdjustedBaseAuthTokenMiddlewareTest
+  * auth_token test remove unused fake_app parameter
+  * Fix typo in BaseAuthTokenMiddlewareTest
+
+-------------------------------------------------------------------
+Sun Apr 27 00:23:37 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.24.g6be38bb:
+  * Deprecate admin_token option in auth_token
+
+-------------------------------------------------------------------
+Sat Apr 26 00:21:19 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.22.g5dd9017:
+  * Updated from global requirements
+  * Enhance tests for auth_token middleware
+  * Debug log when token found in revocation list
+
+-------------------------------------------------------------------
+Fri Apr 25 00:21:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.18.gf1ace5c:
+  * Limited use trusts
+  * Ensure that cached token is not revoked
+  * Fix the catalog format of a sample token
+  * Add new error for invalid response
+
+-------------------------------------------------------------------
+Thu Apr 24 00:21:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.10.g4481b65:
+  * remove universal_newlines
+
+-------------------------------------------------------------------
+Wed Apr 23 00:21:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.8.g0fe5509:
+  * replace double quotes with single
+
+-------------------------------------------------------------------
+Tue Apr 22 00:38:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.6.g3fd8e8f:
+  * Update docs for auth_token middleware config options
+
+-------------------------------------------------------------------
+Fri Apr 18 00:39:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.8.0.4.g0257237:
+  0.8.0
+  * CLI always configures logging
+  * Create a V3 Token Generator
+  * Implement endpoint filtering functionality on the client side
+  * Allow session to return an error response object
+
+-------------------------------------------------------------------
+Thu Apr 17 00:27:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.47.g474c110:
+  * Add service name to catalog
+
+-------------------------------------------------------------------
+Wed Apr 16 00:25:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.45.g6d70bad:
+  * Fix typo of ANS1 to ASN1
+  * Rename HTTPError -> HttpError
+  * Add CRUD operations for Federation Mapping Rules
+  * Prefer () to continue line per PEP8
+
+-------------------------------------------------------------------
+Tue Apr 15 00:27:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.37.ge7b5120:
+  * Don't use generic kwargs in v2 Token Generation
+  * Updated from global requirements
+  * Ensure JSON headers in Auth Requests
+
+-------------------------------------------------------------------
+Sun Apr 13 00:25:45 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.32.g0ae8e55:
+  * Use `HttpNotImplemented` in `tests.v3.test_trusts`
+
+-------------------------------------------------------------------
+Fri Apr 11 00:24:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.30.g419dfc6:
+  * Add CRUD operations for Identity Providers
+
+-------------------------------------------------------------------
+Thu Apr 10 00:23:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.28.gd43117a:
+  * Hash functions support different hash algorithms
+  * eliminate race condition fetching certs
+
+-------------------------------------------------------------------
+Wed Apr  9 00:23:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.25.g61322a3:
+  * Allow passing auth plugin as a parameter
+  * Reuse module `exceptions` from Oslo
+
+-------------------------------------------------------------------
+Fri Apr  4 09:17:13 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.21.gb24e41e:
+  * Create a test token generator and use it
+  * Split sample PKI token generation
+
+-------------------------------------------------------------------
+Thu Apr  3 00:53:23 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.18.gb6cdfff:
+  * Rename request_uri to identity_uri
+  * Tests should use identity_uri by default
+  * Sync config fixture object from oslo.incubator
+
+-------------------------------------------------------------------
+Wed Apr  2 00:59:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.12.gdd10381:
+  * Replace auth fragements with identity_uri
+
+-------------------------------------------------------------------
+Tue Apr  1 00:57:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.10.ge7a3058:
+  * Updated from global requirements
+  * use v3 api to get certificates
+  * Reference docstring for auth_token fields
+
+-------------------------------------------------------------------
+Sat Mar 29 01:44:02 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.1.4.g5d6137f:
+  0.7.1
+  * Remove releases.rst from keystone docs
+  * Use AccessInfo in auth_token middleware
+
+-------------------------------------------------------------------
+Thu Mar 27 01:42:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.7.0.4.g6a6c8d7:
+  * Adds to Keystone to convert V2 endpoints to V3
+  0.7.0
+  * Add 'methods' to all v3 test tokens
+
+-------------------------------------------------------------------
+Wed Mar 26 01:44:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.112.g16ca306:
+  * Improve language in update_password() validation error
+  * Handle URLs via the session and auth_plugins
+  * Add a method for changing a user's password in v3
+  * sanity check memcached availability before running tests against it
+  * Start using positional decorator
+  * Fix passing get_token kwargs to get_access
+  * Add a positional decorator
+  * Discover should support other services
+  * Enforce scope mutual exclusion for trusts
+
+-------------------------------------------------------------------
+Tue Mar 25 01:44:13 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.94.g82c1ec7:
+  * add functional test for cache pool
+  * Don't use a connection pool unless provided
+
+-------------------------------------------------------------------
+Sat Mar 22 01:41:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.91.g28c8439:
+  * add pooling for cache references (bnc#870102, CVE-2014-0105)
+
+-------------------------------------------------------------------
+Wed Mar 19 01:01:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.89.gb63bd9c:
+  * Docs link to middlewarearchitecture
+
+-------------------------------------------------------------------
+Tue Mar 18 10:23:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.88.g194b037:
+  * Fix doc build errors
+  * Generate module docs
+  * document that --pass can be required
+  * Rely on OSLO.config
+
+-------------------------------------------------------------------
+Sun Mar 16 01:02:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.80.g242ffeb:
+  * Revert "Add request/access token and consumer..."
+  * Revert "Authenticate via oauth"
+
+-------------------------------------------------------------------
+Sat Mar 15 01:04:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.78.gbb4c5ad:
+  * Authenticate via oauth
+  * Add request/access token and consumer support for keystoneclient
+  * Handle Token/Endpoint authentication
+  * Set the right permissions for signing_dir in tests
+
+-------------------------------------------------------------------
+Wed Mar 12 06:24:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.70.gf12afc6:
+  * Fix retry logic
+  * Fix state modifying catalog tests
+
+-------------------------------------------------------------------
+Tue Mar 11 01:06:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.66.g9408910:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Mar 10 16:14:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.65.gd01950e:
+  * Provide more data to AuthMethod plugins
+  * Remove reference to non-existent shell doc
+  * increase default revocation_cache_time
+  * Improve help strings
+  * Make keystoneclient not log auth tokens
+  * improve configuration help text in auth_token
+  * Log the command output on CertificateConfigError
+  * Privatize auth construction parameters
+  * Remove blank space after print
+  * Capitalize Client API title consistently
+  * Remove dependent module py3kcompat
+  * Fix keystone command man page
+  * Add link to the v3 client api doc
+
+-------------------------------------------------------------------
+Thu Mar  6 00:48:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.40.gb935741:
+  * Atomic write of certificate files and revocation list
+
+-------------------------------------------------------------------
+Mon Mar  3 11:16:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.39.g1935601:
+  * Remove http_handler config option in auth_token
+  * Use admin_prefix consistently
+  * demonstrate auth_token behavior with a simple echo service
+  * correct typo of config option name in error message
+  * refer to non-deprecated config option in help
+  * Add Python 3 classifiers
+
+-------------------------------------------------------------------
+Thu Feb 27 01:30:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.27.g3a6d47c:
+  * Remove redundant default value None for dict.get
+  * Create V3 Auth Plugins
+  * Create V2 Auth Plugins
+
+-------------------------------------------------------------------
+Mon Feb 24 00:59:08 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.21.g9e188e9:
+  * remove extra indentation
+  * Fix role_names call from V3 AccessInfo
+  * Ensure domains.list filtered results are correct
+
+-------------------------------------------------------------------
+Sat Feb 22 00:47:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.16.gdff54b8:
+  * Interactive prompt for create user
+
+-------------------------------------------------------------------
+Fri Feb 21 01:39:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.14.gbbd30ee:
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Test query-string for list actions with filter arguments
+  * Update middlewarearchitecture config options docs
+
+-------------------------------------------------------------------
+Thu Feb 20 01:08:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.8.g8e92cb2:
+  * Use Resource class from Oslo
+
+-------------------------------------------------------------------
+Wed Feb 19 00:47:15 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.6.gc67a602:
+  * Update reference to middlewarearchitecture doc
+
+-------------------------------------------------------------------
+Tue Feb 18 01:26:40 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.6.0.4.g4917f13:
+  * Fix references to auth_token in middlewarearchitecture doc
+  0.6.0
+  * Don't use private last_request variable
+
+-------------------------------------------------------------------
+Fri Feb 14 07:48:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-keystoneclient-0.5.1.50.g8b0c5ee:
+  * Using common method 'bool_from_string' from oslo strutils
+
+-------------------------------------------------------------------
+Thu Feb 13 08:45:06 UTC 2014 - speilicke@suse.com
+
+- Update to version python-keystoneclient-0.5.1.48.gef69e08:
+  * Remove vim header
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+- Fix dependencies
+
+-------------------------------------------------------------------
+Sat Feb  1 00:58:08 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.51:
+  + Python 3: fix tests/test_utils.py
+
+-------------------------------------------------------------------
+Fri Jan 31 01:11:47 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.49:
+  + Copy s3_token middleware from keystone
+  + Adjust import items according to hacking import rule
+  + Return role names by AccessInfo.role_names
+
+-------------------------------------------------------------------
+Wed Jan 29 01:11:02 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.43:
+  + Consistently support kwargs across all v3 CRUD Manager ops
+  + Fix discover command failed to discover keystone in ssl
+  + Python 3: Fix an str vs bytes issue in tempfile
+
+-------------------------------------------------------------------
+Tue Jan 28 01:33:17 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.38:
+  + Python 3: set webob.Response().body to a bytes value
+
+-------------------------------------------------------------------
+Mon Jan 27 00:36:45 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.36:
+  + Fix E12x warnings found by Pep8 1.4.6
+  + Fix discover command failed to read extension list issue
+  + Sync with global requirements
+
+-------------------------------------------------------------------
+Sat Jan 25 00:59:28 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.30:
+  + Python 3: fix the _calc_signature_* functions
+  + Fix typos in documents and comments
+
+-------------------------------------------------------------------
+Fri Jan 24 13:32:04 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.26:
+  + Replace assertTrue with explicit assertIsInstance
+  + Respect region name when processing domain URL
+  + Sort items in requirement related files
+  + Remove test_print_{dict,list}_unicode_without_encode
+
+-------------------------------------------------------------------
+Wed Jan 22 00:43:08 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.18:
+  + Tests cleanup temporary files
+  + auth_token tests close temp file descriptor
+
+-------------------------------------------------------------------
+Sat Jan 18 01:14:12 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.14:
+  + Clarify roles validation error messages
+
+-------------------------------------------------------------------
+Fri Jan 17 01:36:19 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.12:
+  + Fix incorrect assertTrue usage
+
+-------------------------------------------------------------------
+Thu Jan 16 12:35:09 UTC 2014 - dmueller@suse.com
+
+- fix requires 
+
+-------------------------------------------------------------------
+Thu Jan 16 01:21:44 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.10:
+  + Saner debug log message generation
+
+-------------------------------------------------------------------
+Wed Jan 15 00:44:37 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.2.8:
+  + Debug env for tox
+  + Updated from global requirements
+  + Verify token binding in auth_token middleware
+  + Make assertQueryStringIs usage simpler
+
+-------------------------------------------------------------------
+Mon Jan 13 01:28:17 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.145:
+  + Use install_venv from oslo to fix no post_process issue
+  + Removes use of timeutils.set_time_override
+  + auth_token tests use assertIs/Not/None
+
+-------------------------------------------------------------------
+Sun Jan 12 01:27:57 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.139:
+  + Controllable redirect handling
+  + Documents keystone v3 API usage - part 1
+  + Sync strutils from oslo
+  + Revert "Whitelist external netaddr requirement"
+  + Python 3: Use HTTPMessage.get() rather than HTTPMessage.getheader()
+
+-------------------------------------------------------------------
+Sat Jan 11 00:47:25 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.129:
+  + Add unit tests for generic/shell.py
+  + Fix auth_token middleware test invalid cross-device link issue
+
+-------------------------------------------------------------------
+Fri Jan 10 11:40:20 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.125:
+  + Prevent dictionary size from changing while iterating over its items
+  + Rename using-api.rst to using-api-v2.rst
+  + Do not try to call decode() on a text string
+
+-------------------------------------------------------------------
+Wed Jan  8 01:36:24 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.119:
+  + Fix error in v3 credentials create/update
+  + v3 test utils, don't modify input parameter
+  + Whitelist external netaddr requirement
+
+-------------------------------------------------------------------
+Mon Jan  6 00:51:04 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.113:
+  + Update requirements
+
+-------------------------------------------------------------------
+Sun Jan  5 00:40:55 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.111:
+  + Remove the 'cmp' keyword from a call to 'sort()'
+
+-------------------------------------------------------------------
+Fri Jan  3 00:40:43 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.109:
+  + Correctly handle auth_url/token authentication
+
+-------------------------------------------------------------------
+Thu Jan  2 18:15:57 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.107:
+  + Add service catalog to domain scoped token fixture
+  + Fix missed management_url setter in v3 client
+  + Don't install pre-release software with tox
+  + Rename tokenauth to authtoken in the doc
+  + HTTPretty: update to 0.7.1
+  + Move redirect handling to session
+  + Make _get_utf8_value Python3 compliant
+  + Use testresources for example files
+
+-------------------------------------------------------------------
+Sat Dec 21 01:38:41 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.91:
+  + Remove debug specific handling
+  + Rename instead of writing directly to revoked file
+
+-------------------------------------------------------------------
+Fri Dec 20 00:51:15 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.88:
+  + Avoid meaningless comparison that leads to a TypeError
+
+-------------------------------------------------------------------
+Thu Dec 19 01:31:06 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.86:
+  + Change assertEquals to assertIsNone
+
+-------------------------------------------------------------------
+Tue Dec 17 01:25:10 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.85:
+  + Fix --debug handling in the shell
+
+-------------------------------------------------------------------
+Sun Dec 15 01:00:02 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.83:
+  + Sync with latest module from oslo
+  + Python3: replace urllib by six.moves.urllib
+
+-------------------------------------------------------------------
+Sat Dec 14 00:48:54 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.79:
+  + Allow commit title messages to end with a period.
+
+-------------------------------------------------------------------
+Thu Dec 12 01:03:45 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.77:
+  + Sync global requirements to pin sphinx to sphinx>=1.1.2,<1.2
+  + Properly handle Regions in keystoneclient
+
+-------------------------------------------------------------------
+Tue Dec 10 01:23:17 UTC 2013 - cloud-devel@suse.de
+
+- Rebased patches:
+  + 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch dropped (merged upstream)
+
+-------------------------------------------------------------------
+Tue Dec 10 01:23:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.74:
+  + Warn user about unsupported API version
+  + keystoneclient requires an email address when creating a user
+  + Updates .gitignore
+  + Convert revocation list file last modified to UTC
+  + Fix typo in keystoneclient
+  + Remove unused simplejson requirement
+  + Discover supported APIs
+  + Add workaround for OSError raised by Popen.communicate()
+  + "publicurl" should be required on endpoint-create
+  + Bump hacking to 0.8
+  + Use assertIn where appropriate
+  + Updates .gitignore
+  + use six.StringIO for compatibility with io.StringIO in python3
+
+-------------------------------------------------------------------
+Tue Dec  3 00:52:49 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.49:
+  + Extract a base Session object
+  + Reorganize Service Catalog
+
+-------------------------------------------------------------------
+Fri Nov 29 09:38:42 UTC 2013 - dmueller@suse.com
+
+- refix 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 01:32:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.46:
+  + Do not format messages before they are logged
+
+-------------------------------------------------------------------
+Wed Nov 27 01:33:52 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.44:
+  + Fix trustee/trustor definitions
+  + Make HACKING.rst DRYer and turn into rst file
+
+-------------------------------------------------------------------
+Tue Nov 26 12:48:44 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.40:
+  + Encode the text before print it to console
+
+-------------------------------------------------------------------
+Tue Nov 26 10:59:37 UTC 2013 - speilicke@suse.com
+
+- Rebased patches:
+  + 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch (manually)
+- Update to version 0.4.1.38:
+  + Remove service type restriction from keystone client help text
+  + Fix curl debug output for requests with a body
+  + Quote URL in curl output to handle query params
+  + Opt-out of service catalog
+  + Migrate the keystone.common.cms to keystoneclient
+
+-------------------------------------------------------------------
+Mon Nov 25 14:23:05 UTC 2013 - dmueller@suse.com
+
+- switch to python-setuptools 
+
+-------------------------------------------------------------------
+Mon Nov 25 00:59:09 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.28:
+  + Update tox.ini to usedevelop
+  + Add --insecure to curl output if required
+  + Improved error message on connection failure
+  + Remove SERVICE_TOKEN and SERVICE_ENDPOINT env vars
+  + Add testresources test requirement
+
+-------------------------------------------------------------------
+Sat Nov 23 01:40:50 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.18:
+  + Revert "Merge "Avoid returning stale token via auth_token property""
+  + Update the management url for every fetched token
+  + Fix python3 incompatible use of urlparse
+
+-------------------------------------------------------------------
+Thu Nov 21 01:24:34 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.13:
+  + Avoid returning stale token via auth_token property
+
+-------------------------------------------------------------------
+Sun Nov 17 00:58:08 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.11:
+  + python3: Work around httpretty issue
+
+-------------------------------------------------------------------
+Fri Nov 15 17:33:50 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.9:
+  + Apply six for metaclass
+
+-------------------------------------------------------------------
+Wed Nov 13 11:32:43 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4.1.7:
+  + Make ROOTDIR determination more robust
+- Rebased patches:
+  + 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch (only offset)
+- Dropped patches:
+  + 0001-Make-ROOTDIR-determination-more-robust.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri Nov  1 01:16:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.5:
+  + PEP 8 Public and internal interfaces
+
+-------------------------------------------------------------------
+Thu Oct 17 20:10:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.4.1.4:
+  + Fix H202 assertRaises Exception
+  + Normalize datetimes to account for tz
+  + assertEquals is deprecated, use assertEqual (H602)
+  + Fixes print error for keystone action with non-English characters
+  + python3: Make iteritems py3k compat
+  + Allow v2 client authentication with trust_id
+  + Add AssertRequestHeaderEqual test helper and make use of it
+  + Updated from global requirements
+  + Replace OpenStack LLC with OpenStack Foundation
+  + Sync jsonutils from oslo
+  + python3: Refactor dict for python2/python3 compat
+
+-------------------------------------------------------------------
+Tue Oct  8 12:08:31 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.84:
+  + Log user info in auth_token middleware
+  + Add auth_uri in conf to avoid unnecessary warning
+  + Refactor for testability of an upcoming change
+
+-------------------------------------------------------------------
+Fri Sep 27 15:08:04 UTC 2013 - dmueller@suse.com
+
+- add 0001-Make-ROOTDIR-determination-more-robust.patch 
+
+-------------------------------------------------------------------
+Fri Sep 27 06:32:41 UTC 2013 - dmueller@suse.com
+
+- Update to version 0.3.2.78:
+  + Move tests in keystoneclient
+  + Fix misused assertTrue in unit tests
+
+-------------------------------------------------------------------
+Wed Sep 25 00:10:34 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.75:
+  + Modify keyring tests to test authentication
+  + Require oslo.config 1.2.0 final
+
+-------------------------------------------------------------------
+Thu Sep 19 23:51:37 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.72:
+  + Allow blank to email in user-update
+  + Change Babel to a runtime requirement
+
+-------------------------------------------------------------------
+Thu Sep 19 00:37:33 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.68:
+  + Decode the non-english username str to unicode
+
+-------------------------------------------------------------------
+Tue Sep 17 23:57:12 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.66:
+  + Convert tests to HTTPretty and reorganize
+
+-------------------------------------------------------------------
+Tue Sep 17 15:07:22 UTC 2013 - dmueller@suse.com
+
+- 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch 
+
+-------------------------------------------------------------------
+Tue Sep 17 00:21:17 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.64:
+  + Don't need to init testr explicitly
+
+-------------------------------------------------------------------
+Sat Sep 14 23:49:31 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.62:
+  + Deprecation warning should be 'pending'
+
+-------------------------------------------------------------------
+Sat Sep 14 00:12:03 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.60:
+  + Support client generate literal ipv6 auth_uri base on auth_host
+  + Replace HttpConnection in auth_token with Requests
+  + Set example timestamps to 2038-01-18T21:14:07Z
+
+-------------------------------------------------------------------
+Wed Sep 11 00:06:52 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.55:
+  + Allow Hacking 0.7.x or later
+
+-------------------------------------------------------------------
+Wed Sep  4 23:53:25 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.53:
+  + Deprecation warning for the CLI
+
+-------------------------------------------------------------------
+Mon Sep  2 09:59:38 UTC 2013 - dmueller@suse.com
+
+- update requires 
+
+-------------------------------------------------------------------
+Sun Sep  1 00:18:02 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.52:
+  + Remove testcase test_invalid_auth_version_request
+  + Correct keyword args in test cases
+
+-------------------------------------------------------------------
+Sat Aug 31 00:19:14 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.49:
+  + Replace auth_token middleware tests with httpretty
+  + Add apiclient.exceptions hierarchy
+  + Fixing potential NameErrors
+  + Standardize base.py with novaclient
+  + Fix and enable gating on F811
+
+-------------------------------------------------------------------
+Fri Aug 30 15:05:00 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.39:
+  + Fix and enable gating on F841
+  + Use OSLO jsonutils instead of json module
+  + python3: Transition to mox3 instead of mox
+  + Update oslo.config
+  + Sync py3kcompat from oslo-incubator
+  + python3: Use from future import unicode_literals
+
+-------------------------------------------------------------------
+Thu Aug 29 23:48:54 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.27:
+  + Remove duplicate method in AccessInfo
+  + Fix License Headers and Enable Gating on H102
+  + Fix and enable gating on H302: only import modules
+
+-------------------------------------------------------------------
+Wed Aug 28 23:53:06 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.21:
+  + remove the UUID check for userids
+  + Synchronize code from oslo
+
+-------------------------------------------------------------------
+Tue Aug 27 00:08:18 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.18:
+  + clearer error when authenticate called without auth_url
+  + Support older token formats for projects in accessinfo
+  + Use hashed token for invalid PKI token cache key
+  + Add domain attributes to accessinfo
+
+-------------------------------------------------------------------
+Sun Aug 25 00:08:13 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.10:
+  + Move flake8 option from run_tests.sh to tox.ini
+
+-------------------------------------------------------------------
+Fri Aug 23 23:55:11 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.2.8:
+  + Extract test token data from auth_token middleware
+  + Allow configure the number of http retries
+  + Add importutils and strutils from oslo
+  + Move all opens in auth_token to be in context
+  + Add unittests for exceptions.EmptyCatalog
+
+-------------------------------------------------------------------
+Thu Aug 22 23:45:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.77:
+  + Restore client.py for backward compatibility
+  + Initial Trusts support
+
+-------------------------------------------------------------------
+Wed Aug 21 00:15:55 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.73:
+  + Make auth_token middleware fetching respect prefix
+
+-------------------------------------------------------------------
+Sat Aug 17 00:02:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.72:
+  + Adds support for passing extra tenant attributes to keystone
+  + Fix and enable Gating on H404
+  + Fix a typo in fetch_revocation_list
+
+-------------------------------------------------------------------
+Fri Aug 16 00:10:26 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.67:
+  + Fixes files with wrong bitmode
+  + Don't cache tokens as invalid on network errors
+
+-------------------------------------------------------------------
+Thu Aug 15 00:01:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.63:
+  + python3: Add basic compatibility support
+  + Extract basic request call
+  + Add a get_data function to Service Catalog
+  + Refactor verify signing dir logic
+
+-------------------------------------------------------------------
+Tue Aug 13 23:42:21 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.55:
+  + flake8: enable H201, H202, H802
+  + Rename client.py to httpclient.py
+
+-------------------------------------------------------------------
+Mon Aug 12 23:56:26 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.52:
+  + Use flake8 in run_tests.sh and updated ignore flake8 rules with tox.ini
+
+-------------------------------------------------------------------
+Sat Aug 10 10:59:44 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.50:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Aug  9 00:01:29 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.49:
+  + Merge from Oslo-Incubator
+  + Make TestResponse properly inherit Response.
+
+-------------------------------------------------------------------
+Wed Aug  7 23:37:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.45:
+  + Fix test_request_no_token_dummy cms dependency.
+
+-------------------------------------------------------------------
+Wed Aug  7 00:02:56 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.3.1.44:
+  + Adds help in keystone_authtoken config opts
+  + auth_uri (public ep) should not default to auth_* values (admin ep)
+  + Pass the default_project_id when managing User.
+
+-------------------------------------------------------------------
+Mon Jul 22 12:01:07 UTC 2013 - bwiedemann@suse.de
+
+- Update from 0.3.1.15 to 0.3.1.24
+
+-------------------------------------------------------------------
+Tue Jul 16 00:00:28 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.13:
+  + Ec2Signer : Modify v4 signer to match latest boto
+
+-------------------------------------------------------------------
+Sat Jul 13 00:06:49 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.11:
+  + Sync install_venv_common from oslo
+  + Fix and enable gating on H402
+
+-------------------------------------------------------------------
+Fri Jul 12 00:08:42 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.8:
+  + Add name arguments to keystone command.
+
+-------------------------------------------------------------------
+Wed Jul 10 00:08:47 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.6:
+  + Remove endpoint.name attribute from v3 manager (bug 1191152)
+
+-------------------------------------------------------------------
+Tue Jul  9 10:19:21 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.4:
+  + Log cms_verify issues as warnings (not errors).
+
+-------------------------------------------------------------------
+Sat Jul  6 00:02:11 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.3.1.2:
+  + Fix auth_token.py bad signing_dir log message
+  + Flake8 should ignore build folder
+
+-------------------------------------------------------------------
+Mon Jul  1 09:09:48 UTC 2013 - speilicke@suse.com
+
+- Add 0001-Use-ServiceCatalog.factory-the-object-has-no-__init_.patch:
+  Backport of https://review.openstack.org/#/c/35103/
+
+-------------------------------------------------------------------
+Mon Jun 24 09:09:57 UTC 2013 - dmueller@suse.com
+
+- remove 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch 
+
+-------------------------------------------------------------------
+Mon Jun 17 10:17:53 UTC 2013 - speilicke@suse.com
+
+- Add 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch:
+  Backport of https://review.openstack.org/#/c/33239/
+
+-------------------------------------------------------------------
+Wed Jun 12 09:53:43 UTC 2013 - dmueller@suse.com
+
+- remove nose dependencies 
+
+-------------------------------------------------------------------
+Sat Jun  1 17:02:11 UTC 2013 - dmueller@suse.com
+
+- remove python-distribute dependency 
+
+-------------------------------------------------------------------
+Mon May 27 21:36:20 UTC 2013 - dmueller@suse.com
+
+- update requires from pip/test-requires 
+
+-------------------------------------------------------------------
+Mon May 27 09:39:27 UTC 2013 - speilicke@suse.com
+
+- Add new build dependencies:
+  + python-pbr
+  + python-d2to1
+
+-------------------------------------------------------------------
+Mon May 27 08:42:13 UTC 2013 - dmueller@suse.com
+
+- remove 0001-Pass-memcache_servers-as-array.patch
+  * merged upstream
+
+-------------------------------------------------------------------
+Thu Apr 25 14:27:54 UTC 2013 - dmueller@suse.com
+
+- add 0001-Pass-memcache_servers-as-array.patch 
+ 
+-------------------------------------------------------------------
+Fri Apr  5 12:18:29 CEST 2013 - berendt@b1-systems.de
+
+- added missing requirements
+  + python-oslo.config
+  + python-iso8601
+
+-------------------------------------------------------------------
+Mon Mar 18 10:33:06 UTC 2013 - speilicke@suse.com
+
+- Drop +git.$TIMESTAMP.$COMMITHASH version suffix
+
+--------------------------------------------------------------------
+Sun Mar 17 00:05:07 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.79+git.1363478707.d62bbdf:
+  + Switch to final 1.1.0 oslo.config release
+  + Make keystone client handle the response code 300.
+  + Make auth_token lazy load the auth_version.
+  + Use v2.0 api by default in auth_token middleware
+  + Retry http_request and json_request failure.
+  + update v3 domains - remove public/private namespace
+  + Doc info and other readability improvements
+
+--------------------------------------------------------------------
+Wed Mar 13 00:06:33 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.67+git.1363133193.d782a99:
+  + Fix auth-token middleware to understand v3 tokens
+
+--------------------------------------------------------------------
+Mon Mar 11 10:05:13 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.66+git.1362996313.ae36809:
+  + Sync memorycache and timeutils from oslo.
+  + Save test_auth_token_middleware from unlimited recursion
+  + Work better in server env with no keyrings
+  + Switch to oslo.config.
+  + Remove test dep on name of dir (bug 1124283)
+  + help text improvements
+
+--------------------------------------------------------------------
+Fri Mar  1 11:40:53 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.56+git.1362138053.3ce3fe8:
+  + Improve error message for missing endpoint
+
+--------------------------------------------------------------------
+Sun Feb 24 18:19:42 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.55+git.1361729982.58cb347:
+  + Added missing unit tests for shell.py
+  + Implements token expiration handling
+  + Use oslo-config-2013.1b3
+  + Fix selef to self in class.
+  + Update oslo-config version.
+
+-------------------------------------------------------------------
+Fri Feb 22 11:26:36 UTC 2013 - saschpe@suse.de
+
+- BuildRequire openstack-suse-macros instead of openstack-macros
+
+--------------------------------------------------------------------
+Mon Feb 18 09:50:05 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.46+git.1361181005.21d9952:
+  + Allow requests up to 0.8 and greater
+  + Add name arguments to keystone command.
+  + Fix debug with requests.
+  + Remove useless import
+  + Fix how python 2.6 doesn't have assertDictEqual
+  + If you specify the --debug argument, it doesn't show the body of a POST request. The body (string rep) is at 'data' in the kwargs dict. 'body' was deleted prior to this call.
+  + Update .coveragerc
+  + Allow configure auth_token http connect timeout.
+  + Use install_venv_common.py from oslo.
+  + sync README with "keystone help"
+
+-------------------------------------------------------------------
+Mon Feb 18 09:49:46 UTC 2013 - dmueller@suse.com
+
+- remove keystoneclient-requests-compat.patch:
+  * Merged upstream
+
+--------------------------------------------------------------------
+Mon Feb 11 15:11:44 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.28+git.1360595504.ff24716:
+  + Mark password config options with secret
+  + Update requests requirements
+  + Pin requests module more strictly.
+  + Treat HTTP code 400 and above as error.
+  + Fix incomplete sentence in help
+
+--------------------------------------------------------------------
+Mon Feb  4 12:05:48 UTC 2013 - dmueller@suse.com
+
+- Update to version 0.2.2.21+git.1359979548.92bf8a7:
+  + fix discrepancies seen in domain and credential, v3 - bug 1109349
+- Remove 0001-Fix-thinko-in-self.middleware.cert_file_missing.patch:
+  + Merged upstream
+
+--------------------------------------------------------------------
+Mon Jan 28 09:09:53 UTC 2013 - dmueller@suse.com
+
+- Update to version 0.2.2.16+git.1359364193.1cbda90:
+  + Fix STALE_TOKEN_DURATION usage
+  + Factorize endpoint retrieval in access
+  + Remove useless code
+  + Restore Python 2.6 compatibility
+  + Allow request timeout to be specified.
+  + Remove assertDictEqual for python 2.6 compatibility
+- Remove python-2.6-compat-in-tests.patch, 
+  0001-Restore-Python-2.6-compatibility.patch: Merged upstream
+
+-------------------------------------------------------------------
+Thu Jan 24 16:15:14 UTC 2013 - dmueller@suse.com
+
+- Add python-2.6-compat-in-tests.patch
+  * fix python 2.6 support (submitted upstream)
+
+-------------------------------------------------------------------
+Tue Jan 22 12:10:41 UTC 2013 - dmueller@suse.com
+
+- Add patches:
+  * 0001-Fix-thinko-in-self.middleware.cert_file_missing.patch
+  * 0001-Restore-Python-2.6-compatibility.patch
+  Fixes keystone middleware with SLE11
+
+-------------------------------------------------------------------
+Mon Jan 21 12:57:30 UTC 2013 - saschpe@suse.de
+
+- Add keystoneclient-requests-compat.patch and
+  replace support-requests-version-1.0.0.patch: Forward-compatibility
+  with requests >= 1.0.0
+
+-------------------------------------------------------------------
+Thu Jan 17 21:58:32 UTC 2013 - dmueller@suse.com
+
+- add support-requests-version-1.0.0.patch:
+  support python-requests also >= 1.0.0 
+
+--------------------------------------------------------------------
+Thu Jan 17 14:12:59 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 0.2.2.5+git.1358431979.3dfb843:
+  + Blueprint memcache-protection: enable memcache value encryption/integrity check
+  + Make WebOb version specification more flexible
+  + Warning message is not logged for valid token-less request.
+
+-------------------------------------------------------------------
+Thu Jan 17 14:08:20 UTC 2013 - vuntz@suse.com
+
+- Use version-regexp param for git_tarballs service to avoid
+  uselessly including the last git commit id twice.
+
+--------------------------------------------------------------------
+Mon Jan 14 12:23:20 UTC 2013 - saschpe@suse.de
+
+- Update to version 0.2.2.2.g4a232ac+git.1358162600.4a232ac:
+  + Use os.path to find ~/keystone-signing (bug 1078947)
+  + Remove iso8601 dep in favor of openstack.common
+  + Move iso8601 dependency from test- to pip-requires
+  + Pin requests to >=0.8.8.
+  + Use testtools instead of unittest for base classes.
+- Updated requirements
+
+-------------------------------------------------------------------
+Thu Jan 10 11:55:04 UTC 2013 - saschpe@suse.de
+
+- Recommend python-keyring
+
+-------------------------------------------------------------------
+Wed Jan  9 13:52:31 UTC 2013 - vuntz@suse.com
+
+- Add missing Requires on python-requests: without it, the keystone
+  executable won't even start.
+
+-------------------------------------------------------------------
+Mon Jan  7 12:44:14 UTC 2013 - saschpe@suse.de
+
+- Fix PKI example certs location for testsuite
+
+--------------------------------------------------------------------
+Mon Jan  7 08:27:30 UTC 2013 - saschpe@suse.de
+
+- Update to version 0.2.1.3.gd37a3fb+git.1357543650.d37a3fb:
+  + Add support for user groups
+  + Make it possible to debug by running module.
+  + remove unused import
+  + Bug 1052674: added support for Swift cache
+  + Add file 'ChangeLog' to MANIFEST.in
+  + Use requests module for HTTP/HTTPS
+  + Print to stderr when keyring module is missing.
+  + Prevent an uncaught exception from being rasied.
+  + modify ca-certificate default value
+  + URL-encode user-supplied tokens (bug 974319)
+  + Fix middleware logging for swift
+  + Fix keystoneclient user-list output order
+  + Misspelling error in README.rst
+  + Rename --no_cache to --os_cache.
+  + Make use_keyring False by default.
+  + bug-1040361: use keyring to store tokens
+  + Don't try to split a list of memcache servers
+  + Drop hashlib/hmac from pip-requires.
+  + Add --version CLI opt and __version__ module attr
+  + Add Ec2Signer utility class to keystoneclient
+  + Add command to allow users to change their own password
+  + updating PEP8 to 1.3.3
+  + Correct a misspelled in comments
+  + Remove Policy.endpoint_id reference
+  + Fix scoped auth for non-admins (bug 1081192)
+  + Throw validation response into the environment
+  + fixes auth_ref initialization error
+  + Update README and CLI help
+  + Add auth-token code to keystoneclient, along with supporting files
+  + Make initial structural changes to keystoneclient in preparation
+- Use --install-data=%{python_sitelib} to install novaclient/versioninfo
+  into the correct location (instead of %{_prefix})
+
+-------------------------------------------------------------------
+Wed Dec  5 09:30:38 UTC 2012 - saschpe@suse.de
+
+- Use @PARENT_TAG@ in _service file to automate versioning
+
+-------------------------------------------------------------------
+Thu Nov 15 09:17:10 UTC 2012 - saschpe@suse.de
+
+- Use openstack-macros
+- Run fdupes on HTML documentation
+
+-------------------------------------------------------------------
+Fri Nov  9 14:28:05 UTC 2012 - saschpe@suse.de
+
+- Downgrade version to new upstream scheme: 0.1.3 (bnc#787387)
+
+-------------------------------------------------------------------
+Thu Nov  8 10:39:13 UTC 2012 - saschpe@suse.de
+
+- Drop from_vcs build flag
+
+-------------------------------------------------------------------
+Tue Oct 30 10:14:40 UTC 2012 - saschpe@suse.de
+
+- Add Provides/Obsoletes for openSUSE-12.2 package name
+  (openstack-keystoneclient and python-python-keystoneclient)
+
+-------------------------------------------------------------------
+Fri Oct 12 13:26:06 UTC 2012 - vuntz@suse.com
+
+- Update to version 2012.2 (Folsom), which is really 0.1.3:
+  + See https://github.com/openstack/python-keystoneclient/commits/0.1.3
+- Install bash completion for 'keystone' binary
+- Buildrequire python-base instead of python-devel:
+  + Sufficient for Python-only modules (containing no C/C++ code)
+- Additional Buildrequires for documentation
+
+-------------------------------------------------------------------
+Mon Oct  1 09:28:18 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (6c127df):
+  + Fix PEP8 issues.
+  + fixing pep8 formatting for 1.0.1+ pep8
+  + Fixed httplib2 mocking (bug 1050091, bug 1050097)
+  + Require httplib2 version 0.7 or higher.
+  + removing deprecated commandline options
+  + Handle "503 Service Unavailable" exception.
+  + Fixes setup compatibility issue on Windows
+  + switching options to match authentication paths
+  + Add wrap option to keystone token-get for humans
+  + Allow empty description for tenants.
+  + pep8 1.3.1 cleanup
+
+-------------------------------------------------------------------
+Fri Aug 24 19:00:18 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (b391319):
+  + Add nosehtmloutput as a test dependency.
+
+-------------------------------------------------------------------
+Thu Aug 23 22:05:51 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (ad9dee5):
+  + Change underscores in new cert options to dashes
+  + splitting http req and resp logging also some pep8 cleanup in shell.py
+
+-------------------------------------------------------------------
+Thu Aug  2 16:27:37 UTC 2012 - rhafer@suse.de
+
+- Fixed dependencies, package required python-simplejson
+
+-------------------------------------------------------------------
+Sat Jul 28 08:32:28 UTC 2012 - cthiel@suse.com
+
+- add BuildRequires to python-httplib2, to fix documentation building 
+
+-------------------------------------------------------------------
+Sat Jul 28 08:30:58 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (dec8f77):
+  + Add '--insecure' commandline argument
+
+-------------------------------------------------------------------
+Sat Jul 28 08:29:09 UTC 2012 - cthiel@suse.com
+
+- remove insecure-commandline-argument.patch which has been merged upstream:
+  https://review.openstack.org/#/c/9582/ 
+
+-------------------------------------------------------------------
+Fri Jul 27 08:13:20 UTC 2012 - cthiel@suse.com
+
+- rebase insecure-commandline-argument.patch to master 
+- adapt doc paths for building from master
+
+-------------------------------------------------------------------
+Thu Jul 26 10:38:47 UTC 2012 - saschpe@suse.de
+
+- Require python-distribute, /usr/bin/keystone needs it
+
+-------------------------------------------------------------------
+Tue Jul 10 09:54:26 UTC 2012 - saschpe@suse.de
+
+- Add '--insecure' commandline argument to ignore (amongst others)
+  self-signed certificate errors
+
+-------------------------------------------------------------------
+Wed Jun 27 10:02:48 UTC 2012 - saschpe@suse.de
+
+- Change versioning scheme to $release+git.$AUTHORDATE.$COMMITREV
+- Simplify from_vcs macros
+
+-------------------------------------------------------------------
+Tue Jun 26 11:43:43 UTC 2012 - saschpe@suse.de
+
+- Consistent package summaries
+- Macro cleanup:
+  + Package is noarch except for SLE-11
+- Added rpmlintrc for non-issues
+- Use correct upstream URL
+- Remove empty %check section
+- The doc package should require the base package
+
+-------------------------------------------------------------------
+Thu May 24 11:03:22 MDT 2012 - jfehlig@suse.com
+
+- Add 'Requires: python >= 2.6.8'
+
+-------------------------------------------------------------------
+Fri Apr 20 09:52:05 UTC 2012 - bwiedemann@suse.com
+
+- add bash completion for keystone
+
+-------------------------------------------------------------------
+Thu Mar  1 15:45:04 UTC 2012 - bwiedemann@suse.com
+
+- rename /usr/bin/keystone-client to keystone (lp#910484)
+
+-------------------------------------------------------------------
+Thu Jan 26 14:59:37 UTC 2012 - rhafer@suse.de
+
+- rename /usr/bin/keystone to keystone-client to avoid conflict
+  with the openstack-keystone package (lp#910484)
+- created -doc subpackage
+
+-------------------------------------------------------------------
+Thu Jan 26 13:24:53 UTC 2012 - rhafer@suse.de
+
+- initial checkin
+

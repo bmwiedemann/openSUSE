@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue Jul 30 19:14:25 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.01.16
+  * Format pagemap_info by casting to uint64_t
+
+-------------------------------------------------------------------
+Sun Jul  7 18:37:25 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.01.15
+  * Fix spelling mistake
+  * Update copyright year
+  * Add project page to README
+  * Voidify some function returns and minor code clean up
+
+-------------------------------------------------------------------
+Mon Jul  9 17:49:30 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.01.14
+  * Makefile: remove .xz tarball on make clean rule
+  * debian/watch: change watch file to check for .xz
+  * Makefile: use xz compression for tarball
+  * Add .travis.yml to make dist rule
+  * Makefile: bump version
+  * Add kpage count stats
+  * Rename idx to avoid name shadowing with global function index
+  * Add travis yaml file
+
+-------------------------------------------------------------------
+Sun Jun 17 15:33:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.01.13
+  * Makefile: bump version
+  * Add some more constifications
+  * voidify function returns
+  * debian/copyright: use secure URI
+  * debian/control: update debhelper to >= 11
+  * debian/compat: update to 11
+  * debian/control: remove trailing empty line
+
+-------------------------------------------------------------------
+Thu Jan 11 19:46:58 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.01.12
+  * Makefile: bump version
+  * Makefile: Add -fPIC
+  * Fix build failure on ia64 when perf is not available
+  * Update copyright year
+
+-------------------------------------------------------------------
+Thu Dec 28 14:55:04 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.01.11
+  * Bump version
+  * Update Standards-Version to 4.1.2
+  * Print physical location rather than pfn
+
+-------------------------------------------------------------------
+Wed May 10 14:59:53 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.01.10
+  * Makefile: bump version
+  * fix shadowing offset variable
+  * fix shadowing map variable
+  * Makefile: Add PEDANTIC gcc flags
+
+- update to version 0.01.09
+  * Makefile: bump version
+  * Debian/control: update Standards-Version to 3.9.8
+  * Remove redundant statement, found using scan-build
+
+-------------------------------------------------------------------
+Thu Feb 18 10:59:15 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

@@ -1,0 +1,38 @@
+--- a/pytz/__init__.py
++++ b/pytz/__init__.py
+@@ -87,23 +87,7 @@ def open_resource(name):
+     for part in name_parts:
+         if part == os.path.pardir or os.path.sep in part:
+             raise ValueError('Bad path segment: %r' % part)
+-    zoneinfo_dir = os.environ.get('PYTZ_TZDATADIR', None)
+-    if zoneinfo_dir is not None:
+-        filename = os.path.join(zoneinfo_dir, *name_parts)
+-    else:
+-        filename = os.path.join(os.path.dirname(__file__),
+-                                'zoneinfo', *name_parts)
+-        if not os.path.exists(filename):
+-            # http://bugs.launchpad.net/bugs/383171 - we avoid using this
+-            # unless absolutely necessary to help when a broken version of
+-            # pkg_resources is installed.
+-            try:
+-                from pkg_resources import resource_stream
+-            except ImportError:
+-                resource_stream = None
+-
+-            if resource_stream is not None:
+-                return resource_stream(__name__, 'zoneinfo/' + name)
++    filename = os.path.join('/usr/share/zoneinfo', *name_parts)
+     return open(filename, 'rb')
+ 
+ 
+--- a/pytz/tzfile.py
++++ b/pytz/tzfile.py
+@@ -126,7 +126,7 @@ def build_tzinfo(zone, fp):
+ if __name__ == '__main__':
+     import os.path
+     from pprint import pprint
+-    base = os.path.join(os.path.dirname(__file__), 'zoneinfo')
++    base = '/usr/share/zoneinfo'
+     tz = build_tzinfo('Australia/Melbourne',
+                       open(os.path.join(base, 'Australia', 'Melbourne'), 'rb'))
+     tz = build_tzinfo('US/Eastern',

@@ -1,0 +1,273 @@
+-------------------------------------------------------------------
+Tue Feb 26 14:05:49 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Tue Oct 16 15:54:51 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:05:29 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Fri Apr  6 18:51:29 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Nov 17 12:54:55 CET 2016 - snwint@suse.de
+
+- parse new entry for permanent mac address (bsc#1007172)
+- 3.1.8
+
+-------------------------------------------------------------------
+Tue Feb 17 08:12:45 UTC 2015 - mvidner@suse.com
+
+- Changed .probe.version not to use a timestamp so that it passes
+  the build-compare check (boo#915938).
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Feb 13 13:43:56 UTC 2015 - lslezak@suse.cz
+
+- added VMware and VirtualBox VM detection (bnc#773323)
+  (paths .probe.is_vmware and .probe.is_vbox)
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Dec 18 19:57:31 UTC 2014 - lslezak@suse.cz
+
+- 3.1.5
+
+-------------------------------------------------------------------
+Wed Dec 17 14:29:07 UTC 2014 - schwab@suse.de
+
+- Handle arch_aarch64 in .probe.architecture
+
+-------------------------------------------------------------------
+Mon Nov 24 15:41:11 CET 2014 - aschnell@suse.de
+
+- added leading zeros for FCP LUNs (bsc#903069)
+- 3.1.4
+
+-------------------------------------------------------------------
+
+Mon Oct 20 12:06:05 UTC 2014 - lslezak@suse.cz
+
+- added Travis support (.travis.yml, testsuite build fix)
+
+-------------------------------------------------------------------
+Tue May 27 09:49:05 CEST 2014 - snwint@suse.de
+
+- make ethtool private flags tri-state: (unset, false, true)
+- 3.1.3
+
+-------------------------------------------------------------------
+Wed Apr 16 11:31:23 CEST 2014 - snwint@suse.de
+
+- update hardware agent to use the latest libhd flags (bnc #841170)
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Wed Sep 18 16:18:31 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Aug 13 11:15:23 UTC 2013 - lslezak@suse.cz
+
+- fixed build with yast2-devtools >= 3.0.3
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:29:23 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri Jun 14 08:19:55 UTC 2013 - mvidner@suse.com
+
+- removed obsolete dependencies on blocxx and openssl
+- 2.24.0
+
+-------------------------------------------------------------------
+Mon Mar 19 16:15:27 CET 2012 - aschnell@suse.de
+
+- fixed for gcc 4.7
+- 2.22.0
+
+-------------------------------------------------------------------
+Fri Nov 25 12:39:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Oct 10 15:46:12 UTC 2011 - lslezak@suse.cz
+
+- 2.21.0
+
+-------------------------------------------------------------------
+Thu Sep 29 15:08:59 UTC 2011 - lslezak@suse.cz
+
+- return joystick details (number of buttons and axes)
+
+-------------------------------------------------------------------
+Tue Sep 13 10:50:28 CEST 2011 - mvidner@suse.cz
+
+- Use pr_bios for .probe.bios so that smbios info is included
+  (bnc#425059, bnc#716081).
+- 2.17.2
+
+-------------------------------------------------------------------
+Wed Aug 13 14:44:56 CEST 2008 - aschnell@suse.de
+
+- fixed fibre channel resources
+- 2.17.1
+
+-------------------------------------------------------------------
+Fri Jul 18 14:45:43 CEST 2008 - aschnell@suse.de
+
+- added fibre channel resources (fate #304333)
+- 2.17.0
+
+-------------------------------------------------------------------
+Tue Feb  5 14:27:27 CET 2008 - fehr@suse.de
+
+- fixed testsuite
+- 2.16.1
+
+-------------------------------------------------------------------
+Tue Feb  5 12:23:05 CET 2008 - fehr@suse.de
+
+- make it possible to set flags on hwinfo probing mode.
+
+-------------------------------------------------------------------
+Mon Nov 26 10:19:23 CET 2007 - mvidner@suse.cz
+
+- Don't create /var/lib/hardware/LOCK with random mode.
+- 2.16.0
+
+-------------------------------------------------------------------
+Wed Jul 25 12:59:57 CEST 2007 - mzugec@suse.cz
+
+- Enable WPA probing (reverted patch) (#279938)
+- 2.15.8 
+
+-------------------------------------------------------------------
+Mon Jul 16 13:47:34 CEST 2007 - mvidner@suse.cz
+
+- Added .probe.fingerprint (F301952).
+- Re-enabled test suite.
+- 2.15.7
+
+-------------------------------------------------------------------
+Thu Jun 14 10:50:10 CEST 2007 - mvidner@suse.cz
+
+- Disable WPA probing so that the WiFi connection is not interrupted
+  (#279938).
+- 2.15.6
+
+-------------------------------------------------------------------
+Mon Jun 11 15:04:08 CEST 2007 - mzugec@suse.cz
+
+- Added modalias to the hardware item map
+- 2.15.5 
+
+-------------------------------------------------------------------
+Tue Jun  5 10:36:38 CEST 2007 - mvidner@suse.cz
+
+- Added sysfs_id to the hardware item map (#208854).
+- 2.15.4
+
+-------------------------------------------------------------------
+Thu Mar  1 16:57:43 CET 2007 - mvidner@suse.cz
+
+- Fixed a bug in the last change that converted nearly
+  all probes to disk probes.
+- 2.15.3
+
+-------------------------------------------------------------------
+Wed Feb 28 13:40:42 CET 2007 - jsrain@suse.cz
+
+- fixed more memory leaks when probing hardware (#249276)
+- 2.15.2
+
+-------------------------------------------------------------------
+Tue Feb 27 14:53:16 CET 2007 - jsrain@suse.cz
+
+- fixed memory leak when probing hardware (#249276)
+- 2.15.1
+
+-------------------------------------------------------------------
+Tue Feb 27 11:03:03 CET 2007 - mvidner@suse.cz
+
+- Added .probe.is_xen (#241564).
+- 2.15.0
+
+-------------------------------------------------------------------
+Tue Nov 14 11:24:32 CET 2006 - mvidner@suse.cz
+
+- Use pkg-config to determine libraries needed by hwinfo.
+- Convenience: enable compilation with hwinfo < 13.6.
+- Commented BuildRequires, removed unneeded hal-devel (required
+  transitively).
+- 2.14.0
+
+-------------------------------------------------------------------
+Fri Oct 13 01:10:33 CEST 2006 - ro@suse.de
+
+- do not link against libsysfs (not used anymore) 
+
+-------------------------------------------------------------------
+Tue Oct 10 12:40:29 CEST 2006 - fehr@suse.de
+
+- add info about driver_module to ycp map (#211225)
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Jul 31 16:22:30 CEST 2006 - fehr@suse.de
+
+- improve detection of modules dependencies of disks (#195116,#194111)
+- add info about external disks to ycp map (#150744)
+- 2.13.4
+
+-------------------------------------------------------------------
+Fri Feb  3 16:23:48 CET 2006 - jsuchome@suse.cz
+
+- reduced BuildRequires
+- 2.13.3
+
+-------------------------------------------------------------------
+Wed Jan 25 18:16:51 CET 2006 - mvidner@suse.cz
+
+- Added "formfactor" to .probe.system (#145485).
+- 2.13.2
+
+-------------------------------------------------------------------
+Mon Dec 19 14:20:58 CET 2005 - mvidner@suse.cz
+
+- yast2-core killed libp2ystdio, no need to link it.
+- Removed klibc from neededforbuild.
+- 2.13.1
+
+-------------------------------------------------------------------
+Thu Sep 29 10:36:28 2005 - visnov@suse.cz
+
+- Initial version split off from yast2-core
+- 2.13.0
+

@@ -1,0 +1,92 @@
+--- configure.in
++++ configure.in
+@@ -24,14 +24,9 @@
+ dnl
+ 
+ AC_INIT(src/wmmail.c)
++AM_INIT_AUTOMAKE(WMMail,0.70)
+ AC_PROG_MAKE_SET
+ 
+-PACKAGE=WMMail
+-AC_SUBST(PACKAGE)
+-
+-VERSION=0.70
+-AC_SUBST(VERSION)
+-
+ dnl
+ dnl  check for programs
+ dnl
+@@ -48,15 +43,40 @@
+ 
+ 
+ dnl
++dnl  check for header files
++dnl
++AC_HEADER_STDC
++AC_HEADER_DIRENT
++AC_CHECK_HEADERS(limits.h strings.h unistd.h)
++
++
++dnl
++dnl  check for typedef's, structures, and other compiler characteristics
++dnl
++AC_TYPE_OFF_T
++AC_TYPE_PID_T
++AC_TYPE_SIZE_T
++
++
++dnl
++dnl  check for library functions
++dnl
++AC_TYPE_SIGNAL
++AC_FUNC_VPRINTF
++AC_CHECK_FUNCS(socket strstr)
++
++
++
++dnl
+ dnl  look for X Window first before further lib checks
+ dnl
+ AC_PATH_X 
+ 
+-if test "$x_includes" != "NONE"; then
++if test -n "$x_includes" -a "$x_includes" != "NONE"; then
+         CFLAGS="$CFLAGS -I$x_includes"
+ fi
+ 
+-if test "$x_libraries" != "NONE"; then
++if test -n "$x_libraries" -a "$x_libraries" != "NONE"; then
+         LDFLAGS="$LDFLAGS -L$x_libraries"
+ fi
+ 
+@@ -183,30 +203,6 @@
+ 
+ 
+ dnl
+-dnl  check for header files
+-dnl
+-AC_HEADER_STDC
+-AC_HEADER_DIRENT
+-AC_CHECK_HEADERS(limits.h strings.h unistd.h)
+-
+-
+-dnl
+-dnl  check for typedef's, structures, and other compiler characteristics
+-dnl
+-AC_TYPE_OFF_T
+-AC_TYPE_PID_T
+-AC_TYPE_SIZE_T
+-
+-
+-dnl
+-dnl  check for library functions
+-dnl
+-AC_TYPE_SIGNAL
+-AC_FUNC_VPRINTF
+-AC_CHECK_FUNCS(socket strstr)
+-
+-
+-dnl
+ dnl create Makefile
+ dnl
+ AC_OUTPUT(Makefile src/config.h src/Makefile Defaults/Makefile \

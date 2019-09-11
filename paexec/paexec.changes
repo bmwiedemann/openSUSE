@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Mar 19 18:04:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Tue Mar 19 14:28:28 MSK 2019 - Aleksey Cheusov <cheusov@NetBSD.org>
+
+- Clean up spec file -- replace /usr/bin/env (as it is specified in
+  source code) with %{bindir}/.
+
+-------------------------------------------------------------------
+Mon Mar 18 14:17:28 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use url for source
+- Clean up spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 14 16:52:37 MSK 2019 - cheusov@NetBSD.org
+- Update to 1.1.1
+
+-------------------------------------------------------------------
+Sun Apr 30 00:00:01 MSK 2017 - cheusov@NetBSD.org
+- Adapted for OpenSuSE
+
+-------------------------------------------------------------------
+Sat Nov 29 00:00:01 MSK 2014 - cheusov@altlinux.org
+- Update to 1.0.1
+
+-------------------------------------------------------------------
+Sat Aug 31 00:00:01 MSK 2013 - mike@altlinux.org
+- rebuilt for Sisyphus (thanks upstream; closes: #29308)
+
+-------------------------------------------------------------------
+Sun Mar 10 00:00:01 MSK 2013 - mike@altlinux.org
+- 0.18.0
+
+-------------------------------------------------------------------
+Mon Nov 07 00:00:01 MSK 2011 - mike@altlinux.org
+- NMU: 0.16.1 built with:
+  + mk-configure 0.21.2
+  + libmaa 1.3.1
+  + runawk
+- spec cleanup
+
+-------------------------------------------------------------------
+Thu Apr 28 00:00:01 MSK 2011 - real@altlinux.org
+- Rebuilt with libmaa 1.3.0
+
+-------------------------------------------------------------------
+Tue Jun 15 00:00:01 MSK 2010 - real@altlinux.org
+- Initial build for Sisyphus

@@ -1,0 +1,47 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 20 09:47:47 2018 +0100
+Subject: slurmctld uses xdaemon_* for systemd
+Patch-mainline: Not yet
+Git-commit: 0f0c00a4a57d12be04d16f4646c186d3e5f03dd1
+References: bsc#1084125
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ slurm-18.08.3/src/slurmctld/controller.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+diff --git a/slurm-18.08.3/src/slurmctld/controller.c b/slurm-18.08.3/src/slurmctld/controller.c
+index a1762de..d123db3 100644
+--- a/src/slurmctld/controller.c
++++ b/src/slurmctld/controller.c
+@@ -260,7 +260,7 @@ static void *       _wait_primary_prog(void *arg);
+ /* main - slurmctld main function, start various threads and process RPCs */
+ int main(int argc, char **argv)
+ {
+-	int cnt, error_code, i;
++	int cnt, error_code, i, fd;
+ 	struct timeval start, now;
+ 	struct stat stat_buf;
+ 	struct rlimit rlim;
+@@ -326,7 +326,11 @@ int main(int argc, char **argv)
+ 
+ 	if (daemonize) {
+ 		slurmctld_config.daemonize = 1;
+-		if (xdaemon())
++		/*
++		 * Just start daemonizing if not in test mode
++		 */
++		fd = xdaemon_init();
++		if (fd == -1)
+ 			error("daemon(): %m");
+ 		log_set_timefmt(slurmctld_conf.log_fmt);
+ 		log_alter(log_opts, LOG_DAEMON,
+@@ -348,6 +352,9 @@ int main(int argc, char **argv)
+ 		_init_pidfile();
+ 		_become_slurm_user();
+ 	}
++	if (daemonize) {
++		xdaemon_finish(fd);
++	}
+ 
+ 	/*
+ 	 * Create StateSaveLocation directory if necessary.

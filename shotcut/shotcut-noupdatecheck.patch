@@ -1,0 +1,35 @@
+Index: shotcut-19.08.05/src/mainwindow.cpp
+===================================================================
+--- shotcut-19.08.05.orig/src/mainwindow.cpp	2019-08-05 01:31:16.000000000 +0200
++++ shotcut-19.08.05/src/mainwindow.cpp	2019-08-08 15:04:20.755437229 +0200
+@@ -3437,7 +3437,7 @@ void MainWindow::on_actionUpgrade_trigge
+             Settings.setAskUpgradeAutomatic(false);
+     }
+     showStatusMessage("Checking for upgrade...");
+-    m_network.get(QNetworkRequest(QUrl("http://check.shotcut.org/version.json")));
++    m_network.get(QNetworkRequest(QUrl("file:///usr/share/shotcut/version.json")));
+ }
+ 
+ void MainWindow::on_actionOpenXML_triggered()
+@@ -3594,7 +3594,7 @@ void MainWindow::onUpgradeCheckFinished(
+                     m_upgradeUrl = json.object().value("url").toString();
+                 showStatusMessage(action, 15 /* seconds */);
+             } else {
+-                showStatusMessage(tr("You are running the latest version of Shotcut."));
++                showStatusMessage(tr("Use Yast or zypper for updates."));
+             }
+             reply->deleteLater();
+             return;
+Index: shotcut-19.08.05/src/src.pro
+===================================================================
+--- shotcut-19.08.05.orig/src/src.pro	2019-08-05 01:31:16.000000000 +0200
++++ shotcut-19.08.05/src/src.pro	2019-08-08 15:04:20.771437826 +0200
+@@ -313,7 +313,7 @@ debug_and_release {
+ LIBS += -lCuteLogger
+ 
+ isEmpty(SHOTCUT_VERSION) {
+-    !win32:SHOTCUT_VERSION = $$system(date "+%y.%m.%d")
++    !win32:SHOTCUT_VERSION =  $$_VSTRING
+      win32:SHOTCUT_VERSION = adhoc
+ }
+ DEFINES += SHOTCUT_VERSION=\\\"$$SHOTCUT_VERSION\\\"

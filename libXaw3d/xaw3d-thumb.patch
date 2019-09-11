@@ -1,0 +1,970 @@
+---
+ include/X11/Xaw3d/Scrollbar.h  |    6 
+ include/X11/Xaw3d/ScrollbarP.h |    3 
+ include/X11/Xaw3d/SmeThreeD.h  |    3 
+ include/X11/Xaw3d/SmeThreeDP.h |    1 
+ include/X11/Xaw3d/ThreeD.h     |    3 
+ include/X11/Xaw3d/ThreeDP.h    |    1 
+ src/Layout.c                   |    2 
+ src/Paned.c                    |    6 
+ src/Scrollbar.c                |  533 ++++++++++++++++++++++++++++++-----------
+ src/SmeThreeD.c                |   19 +
+ src/ThreeD.c                   |    6 
+ 11 files changed, 436 insertions(+), 147 deletions(-)
+
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/Scrollbar.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/Scrollbar.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/Scrollbar.h
+@@ -92,6 +92,7 @@ SOFTWARE.
+  scrollRCursor	     Cursor		Cursor		XC_sb_right_arrow
+  scrollUCursor	     Cursor		Cursor		XC_sb_up_arrow
+  scrollVCursor	     Cursor		Cursor		XC_sb_v_double_arrow
++ scrollbarBackground ScrollbarBackground Pixel		XtDefaultForeground
+  sensitive	     Sensitive		Boolean		True
+  shown		     Shown		Float		0.0
+  thickness	     Thickness		Dimension	14
+@@ -99,6 +100,7 @@ SOFTWARE.
+  thumbProc	     Callback		XtCallbackList	NULL
+  topOfThumb	     TopOfThumb		Float		0.0
+  pickTop	     PickTop		Boolean		False
++ pushThumb	     PushThumb		Boolean		True
+  translations	     Translations	TranslationTable see source or doc
+  width		     Width		Dimension	thickness or length
+  x		     Position		Position	0
+@@ -113,11 +115,15 @@ SOFTWARE.
+ #define XtCMinimumThumb "MinimumThumb"
+ #define XtCShown "Shown"
+ #define XtCTopOfThumb "TopOfThumb"
++#define XtCScrollbarBackground "ScrollbarBackground"
+ #define XtCPickTop "PickTop"
++#define XtCPushThumb "PushThumb"
+ 
+ #define XtNminimumThumb "minimumThumb"
+ #define XtNtopOfThumb "topOfThumb"
++#define XtNscrollbarBackground "scrollbarBackground"
+ #define XtNpickTop "pickTop"
++#define XtNpushThumb "pushThumb"
+ 
+ typedef struct _ScrollbarRec	  *ScrollbarWidget;
+ typedef struct _ScrollbarClassRec *ScrollbarWidgetClass;
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/ScrollbarP.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/ScrollbarP.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/ScrollbarP.h
+@@ -66,6 +66,7 @@ typedef struct {
+     XtCallbackList thumbProc;	/* jump (to position) scroll */
+     XtCallbackList jumpProc;	/* same as thumbProc but pass data by ref */
+     Pixmap	  thumb;	/* thumb color */
++    Pixel 	  background;	/* background color */
+ #ifndef XAW_ARROW_SCROLLBARS
+     Cursor        upCursor;	/* scroll up cursor */
+     Cursor        downCursor;	/* scroll down cursor */
+@@ -91,9 +92,11 @@ typedef struct {
+     char          direction;	/* a scroll has started; which direction */
+ #endif
+     GC		  gc;		/* a (shared) gc */
++    GC		  bgc;		/* a (shared) gc for background */
+     Position	  topLoc;	/* Pixel that corresponds to top */
+     Dimension	  shownLength;	/* Num pixels corresponding to shown */
+     Boolean       pick_top;     /* pick thumb at top or anywhere*/
++    Boolean       push_thumb;   /* push thumb in or not */
+ 
+ } ScrollbarPart;
+ 
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/SmeThreeD.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/SmeThreeD.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/SmeThreeD.h
+@@ -46,6 +46,7 @@ SOFTWARE.
+  bottomShadowContrast BottomShadowContrast Int           40
+  userData             UserData             XtPointer     NULL
+  beNiceToColormap     BeNiceToColormap     Boolean       False
++ invertBorder         InvertBorder         Boolean       False
+ 
+ */
+ 
+@@ -63,6 +64,8 @@ SOFTWARE.
+ #define XtCBeNiceToColormap "BeNiceToColormap"
+ #define XtNbeNiceToColourmap "beNiceToColormap"
+ #define XtCBeNiceToColourmap "BeNiceToColormap"
++#define XtNinvertBorder "invertBorder"
++#define XtCInvertBorder "InvertBorder"
+ #define XtNuserData "userData"
+ #define XtCUserData "UserData"
+ 
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/SmeThreeDP.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/SmeThreeDP.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/SmeThreeDP.h
+@@ -43,6 +43,7 @@ typedef struct {
+     XtPointer	    user_data;
+     Boolean	    be_nice_to_cmap;
+     Boolean	    shadowed;
++    Boolean	    invert_border;
+   } SmeThreeDPart;
+ 
+ /* Full instance record declaration */
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/ThreeD.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/ThreeD.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/ThreeD.h
+@@ -45,6 +45,7 @@ SOFTWARE.
+  bottomShadowContrast BottomShadowContrast Int           40
+  userData             UserData             XtPointer     NULL
+  beNiceToColormap     BeNiceToColormap     Boolean       False
++ invertBorder	      InvertBorder	   Boolean	 False
+  relief               Relief               XtRelief      XtReliefRaised
+ 
+ */
+@@ -63,6 +64,8 @@ SOFTWARE.
+ #define XtCBeNiceToColormap "BeNiceToColormap"
+ #define XtNbeNiceToColourmap "beNiceToColormap"
+ #define XtCBeNiceToColourmap "BeNiceToColormap"
++#define XtNinvertBorder "invertBorder"
++#define XtCInvertBorder "InvertBorder"
+ #define XtNuserData "userData"
+ #define XtCUserData "UserData"
+ #define XtNrelief "relief"
+Index: libXaw3d-1.6.2/include/X11/Xaw3d/ThreeDP.h
+===================================================================
+--- libXaw3d-1.6.2.orig/include/X11/Xaw3d/ThreeDP.h
++++ libXaw3d-1.6.2/include/X11/Xaw3d/ThreeDP.h
+@@ -43,6 +43,7 @@ typedef struct {
+     GC		bot_shadow_GC;
+     XtPointer	user_data;
+     Boolean	be_nice_to_cmap;
++    Boolean	invert_border;
+     XtRelief	relief;
+   } ThreeDPart;
+ 
+Index: libXaw3d-1.6.2/src/Layout.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Layout.c
++++ libXaw3d-1.6.2/src/Layout.c
+@@ -509,7 +509,7 @@ LookupVariable (BoxPtr child, XrmQuark q
+ static double
+ Evaluate (LayoutWidget l, BoxPtr box, ExprPtr expr, double natural)
+ {
+-    double	left, right, down;
++    double	left = 0.0, right = 0.0, down = 0.0;
+     Widget	widget;
+     SubInfoPtr	info;
+ 
+Index: libXaw3d-1.6.2/src/Paned.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Paned.c
++++ libXaw3d-1.6.2/src/Paned.c
+@@ -1114,13 +1114,14 @@ ManageAndUnmanageGrips(PanedWidget pw)
+    managedP = managed_grips = (WidgetList) XtMalloc(alloc_size);
+    unmanagedP = unmanaged_grips = (WidgetList) XtMalloc(alloc_size);
+ 
+-   ForAllChildren(pw, childP)
++   ForAllChildren(pw, childP) {
+        if (IsPane(*childP) && HasGrip(*childP)) {
+ 	   if ( XtIsManaged(*childP) )
+ 	       *managedP++ = PaneInfo(*childP)->grip;
+ 	   else
+ 	       *unmanagedP++ = PaneInfo(*childP)->grip;
+        }
++   }
+ 
+    if (managedP != managed_grips) {
+        *unmanagedP++ = *--managedP;   /* Last grip is never managed */
+@@ -1615,7 +1616,7 @@ ChangeManaged(Widget w)
+    ResortChildren(pw);
+ 
+    pw->paned.num_panes = 0;
+-   ForAllChildren(pw, childP)
++   ForAllChildren(pw, childP) {
+        if ( IsPane(*childP) ) {
+ 	   if ( XtIsManaged(*childP) ) {
+ 	       Pane pane = PaneInfo(*childP);
+@@ -1627,6 +1628,7 @@ ChangeManaged(Widget w)
+ 	   else
+ 	       break;		/* This list is already sorted. */
+        }
++   }
+ 
+    SetChildrenPrefSizes( (PanedWidget) w, size);
+ 
+Index: libXaw3d-1.6.2/src/Scrollbar.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Scrollbar.c
++++ libXaw3d-1.6.2/src/Scrollbar.c
+@@ -134,14 +134,18 @@ static XtResource resources[] = {
+        Offset(scrollbar.thumb), XtRImmediate, (XtPointer) XtUnspecifiedPixmap},
+   {XtNforeground, XtCForeground, XtRPixel, sizeof(Pixel),
+        Offset(scrollbar.foreground), XtRString, XtDefaultForeground},
++  {XtNscrollbarBackground, XtCScrollbarBackground, XtRPixel, sizeof(Pixel),
++       Offset(scrollbar.background), XtRString, XtDefaultForeground},
+   {XtNshown, XtCShown, XtRFloat, sizeof(float),
+        Offset(scrollbar.shown), XtRFloat, (XtPointer)&floatZero},
+   {XtNtopOfThumb, XtCTopOfThumb, XtRFloat, sizeof(float),
+        Offset(scrollbar.top), XtRFloat, (XtPointer)&floatZero},
+   {XtNpickTop, XtCPickTop, XtRBoolean, sizeof(Boolean),
+-       Offset(scrollbar.pick_top), XtRBoolean, (XtPointer) False},
++       Offset(scrollbar.pick_top), XtRImmediate, (XtPointer) False},
+   {XtNminimumThumb, XtCMinimumThumb, XtRDimension, sizeof(Dimension),
+-       Offset(scrollbar.min_thumb), XtRImmediate, (XtPointer) 7}
++       Offset(scrollbar.min_thumb), XtRImmediate, (XtPointer) 7},
++  {XtNpushThumb, XtCPushThumb, XtRBoolean, sizeof(Boolean),
++       Offset(scrollbar.push_thumb), XtRImmediate, (XtPointer) True}
+ };
+ #undef Offset
+ 
+@@ -215,8 +219,7 @@ ScrollbarClassRec scrollbarClassRec = {
+     /* change_sensitive	*/	XtInheritChangeSensitive
+   },
+   { /* threeD fields */
+-    /* shadowdraw	*/	XtInheritXaw3dShadowDraw /*,*/
+-    /* shadowboxdraw	*/	/*XtInheritXaw3dShadowBoxDraw*/
++    /* shadowdraw	*/	XtInheritXaw3dShadowDraw
+   },
+   { /* scrollbar fields */
+     /* ignore		*/	0
+@@ -228,7 +231,7 @@ WidgetClass scrollbarWidgetClass = (Widg
+ 
+ #define NoButton -1
+ #define PICKLENGTH(widget, x, y) \
+-    ((widget->scrollbar.orientation == XtorientHorizontal) ? x : y)
++    ((widget->scrollbar.orientation == XtorientHorizontal) ? (x) : (y))
+ #define MIN(x,y)	((x) < (y) ? (x) : (y))
+ #define MAX(x,y)	((x) > (y) ? (x) : (y))
+ 
+@@ -248,6 +251,23 @@ ClassInitialize(void)
+ #endif
+ 
+ /*
++   Used to swap X and Y coordinates when the scrollbar is horizontal.
++ */
++static void swap_short(short *a, short *b)
++{
++    short tmp = *a;
++    *a = *b;
++    *b = tmp;
++}
++static void swap(Dimension *a, Dimension *b)
++{
++    Dimension tmp = *a;
++    *a = *b;
++    *b = tmp;
++}
++
++
++/*
+  The original Xaw Scrollbar's FillArea *really* relied on the fact that the
+  server was going to clip at the window boundaries; so the logic was really
+  rather sloppy.  To avoid drawing over the shadows and the arrows requires
+@@ -297,161 +317,371 @@ FillArea (ScrollbarWidget sbw, Position
+    erasing is done cleverly so that no flickering will occur. */
+ 
+ static void
+-PaintThumb (ScrollbarWidget sbw, XEvent *event)
++PaintThumb (ScrollbarWidget sbw, int pressed, int shadow)
+ {
+-    Dimension s                   = sbw->threeD.shadow_width;
+-    Position  oldtop              = sbw->scrollbar.topLoc;
+-    Position  oldbot              = oldtop + sbw->scrollbar.shownLength;
+-    Dimension margin              = MARGIN (sbw);
+-    Dimension tzl                 = sbw->scrollbar.length - margin - margin;
+-    Position newtop, newbot;
+-    Position  floor               = sbw->scrollbar.length - margin;
++    Dimension margin, tzl;
++    Position  floor;
++    Position  oldtop = sbw->scrollbar.topLoc;
++    Position  oldbot = oldtop + sbw->scrollbar.shownLength;
++    Position  newtop, newbot;
++    Dimension x, y;				/* upper-left corner of rectangle */
++    Dimension w, h;				/* size of rectangle */
++    Dimension sw = sbw->threeD.shadow_width;
++    Dimension th = sbw->scrollbar.thickness;
++    XPoint    ipt[4],opt[4];			/* inner and outer points of thumb */
++    XPoint    pt[4];				/* points used for drawing */
++    Display  *dpy = XtDisplay (sbw);
++    Window    win = XtWindow (sbw);
++    double    thumb_len;
++
++    margin = MARGIN (sbw);
++    tzl    = sbw->scrollbar.length - 2*margin;
++    floor  = sbw->scrollbar.length - margin;
+ 
+     newtop = margin + (int)(tzl * sbw->scrollbar.top);
+-    newbot = newtop + (int)(tzl * sbw->scrollbar.shown);
+-    if (sbw->scrollbar.shown < 1.) newbot++;
+-    if (newbot < newtop + (int)sbw->scrollbar.min_thumb +
+-                        2 * (int)sbw->threeD.shadow_width)
+-      newbot = newtop + sbw->scrollbar.min_thumb +
+-                        2 * sbw->threeD.shadow_width;
+-    if ( newbot >= floor ) {
+-	newtop = floor-(newbot-newtop)+1;
++    thumb_len = tzl * sbw->scrollbar.shown;
++    newbot = newtop + (int)thumb_len;
++    if ((thumb_len - (int)thumb_len) > 0.5) ++newbot;
++
++    if (newbot < newtop + (int)sbw->scrollbar.min_thumb + 2 * (int)sw)
++	newbot = newtop + sbw->scrollbar.min_thumb + 2 * sw;
++
++    if (newbot >= floor) {
++	newtop = floor - (newbot-newtop) + 1;
+ 	newbot = floor;
+     }
+ 
+     sbw->scrollbar.topLoc = newtop;
+     sbw->scrollbar.shownLength = newbot - newtop;
++
+     if (XtIsRealized ((Widget) sbw)) {
+-      /*  3D thumb wanted ?
+-       */
+-      if (s)
+-	  {
+-          if (newtop < oldtop) FillArea(sbw, oldtop, oldtop + s, 0);
+-          if (newtop > oldtop) FillArea(sbw, oldtop, MIN(newtop, oldbot), 0);
+-          if (newbot < oldbot) FillArea(sbw, MAX(newbot, oldtop), oldbot, 0);
+-          if (newbot > oldbot) FillArea(sbw, oldbot - s, oldbot, 0);
+-
+-          if (sbw->scrollbar.orientation == XtorientHorizontal)
+-	      {
+-	      _ShadowSurroundedBox((Widget)sbw, (ThreeDWidget)sbw,
+-		  newtop, s, newbot, sbw->core.height - s,
+-		  sbw->threeD.relief, TRUE);
+-	      }
+-	  else
+-	      {
+-	      _ShadowSurroundedBox((Widget)sbw, (ThreeDWidget)sbw,
+-		  s, newtop, sbw->core.width - s, newbot,
+-		  sbw->threeD.relief, TRUE);
+-	      }
+-	  }
+-      else
+-	  {
+-	  /*
+-	    Note to Mitch: FillArea is (now) correctly implemented to
+-	    not draw over shadows or the arrows. Therefore setting clipmasks
+-	    doesn't seem to be necessary.  Correct me if I'm wrong!
+-	  */
+-          if (newtop < oldtop) FillArea(sbw, newtop, MIN(newbot, oldtop), 1);
+-          if (newtop > oldtop) FillArea(sbw, oldtop, MIN(newtop, oldbot), 0);
+-          if (newbot < oldbot) FillArea(sbw, MAX(newbot, oldtop), oldbot, 0);
+-          if (newbot > oldbot) FillArea(sbw, MAX(newtop, oldbot), newbot, 1);
+-	  }
++	/* 3D? */
++	if (sw) {
++	    GC top, bot;
++	    GC back = sbw->scrollbar.bgc;
++	    GC fore = sbw->scrollbar.gc;
++
++	    if ((pressed && sbw->scrollbar.push_thumb) ^ sbw->threeD.invert_border) {
++		top = sbw->threeD.bot_shadow_GC;
++		bot = sbw->threeD.top_shadow_GC;
++	    } else {
++		top = sbw->threeD.top_shadow_GC;
++		bot = sbw->threeD.bot_shadow_GC;
++	    }
++
++	    /* the space above the thumb */
++	    x = sw;
++	    y = margin;
++	    w = th - sw * 2;
++	    h = newtop - y;
++	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
++		swap(&x, &y);
++		swap(&w, &h);
++	    }
++	    XFillRectangle(dpy, win, back, x, y, (unsigned int)w, (unsigned int)h);
++
++	    /* the space below the thumb */
++	    x = sw;
++	    y = newbot;
++	    w = th - sw * 2;
++	    h = tzl + margin - newbot;
++	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
++		swap(&x, &y);
++		swap(&w, &h);
++	    }
++	    XFillRectangle(dpy, win, back, x, y, (unsigned int)w, (unsigned int)h);
++
++	    /* Return here if only the shadows should be repainted */
++	    if (shadow) return;
++
++	    /* the thumb itself */
++	    x = sw * 2;
++	    y = newtop + sw;
++	    w = th - sw * 4;
++	    h = newbot - newtop - 2 * sw;
++	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
++		swap(&x, &y);
++		swap(&w, &h);
++	    }
++	    /* we can't use "w > 0" and "h > 0" because they are
++	    usually unsigned quantities */
++	    if (th - sw * 4 > 0 && newbot - newtop - 2 * sw > 0)
++            XFillRectangle(dpy, win, fore, x, y, (unsigned int)w, (unsigned int)h);
++
++	    /* the shades around the thumb
++
++	       o0 +--------------+ o3
++		  |\ i0      i3 /|
++   		  | +----------+ |
++  		  | |          | |
++		  | |          | |
++		  | |          | |
++		  | +----------+ |
++		  |/ i1      i2 \|
++	       o1 +--------------+ o2
++
++	     */
++	    opt[0].x = opt[1].x = sw;
++	    opt[0].y = opt[3].y = newtop;
++	    opt[2].x = opt[3].x = th - sw;
++	    opt[2].y = opt[1].y = newbot;
++
++	    ipt[0].x = ipt[1].x = opt[0].x + sw;
++	    ipt[0].y = ipt[3].y = opt[0].y + sw;
++	    ipt[2].x = ipt[3].x = opt[2].x - sw;
++	    ipt[2].y = ipt[1].y = opt[2].y - sw;
++
++	    /* make sure shades don't overlap */
++	    if (ipt[0].x > ipt[3].x)
++		ipt[3].x = ipt[2].x = ipt[1].x = ipt[0].x = (ipt[0].x + ipt[3].x) / 2;
++	    if (ipt[0].y > ipt[1].y)
++		ipt[3].y = ipt[2].y = ipt[1].y = ipt[0].y = (ipt[0].y + ipt[1].y) / 2;
++	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
++		int n;
++		for (n = 0; n < 4; n++) {
++		    swap_short(&ipt[n].x, &ipt[n].y);
++		    swap_short(&opt[n].x, &opt[n].y);
++		}
++	    }
++
++	    /* left */
++	    pt[0] = opt[0];
++	    pt[1] = opt[1];
++	    pt[2] = ipt[1];
++	    pt[3] = ipt[0];
++	    XFillPolygon (dpy, win, top, pt, 4, Convex, CoordModeOrigin);
++
++	    /* top */
++ 	    pt[0] = opt[0];
++	    pt[1] = opt[3];
++	    pt[2] = ipt[3];
++ 	    pt[3] = ipt[0];
++ 	    XFillPolygon (dpy, win, top, pt, 4, Convex, CoordModeOrigin);
++
++	    /* bottom */
++	    pt[0] = opt[1];
++	    pt[1] = opt[2];
++	    pt[2] = ipt[2];
++	    pt[3] = ipt[1];
++	    XFillPolygon (dpy, win, bot, pt, 4, Convex, CoordModeOrigin);
++
++	    /* right */
++	    pt[0] = opt[3];
++	    pt[1] = opt[2];
++	    pt[2] = ipt[2];
++	    pt[3] = ipt[3];
++	    XFillPolygon (dpy, win, bot, pt, 4, Convex, CoordModeOrigin);
++
++
++	} else {
++	    /* Return here if only the shadows should be repainted */
++	    if (shadow) return;
++
++	    /*
++	     * Note to Mitch: FillArea is (now) correctly implemented to
++	     * not draw over shadows or the arrows. Therefore setting clipmasks
++	     * doesn't seem to be necessary.  Correct me if I'm wrong!
++	     */
++            if (newtop < oldtop) FillArea(sbw, newtop, MIN(newbot, oldtop), 1);
++            if (newtop > oldtop) FillArea(sbw, oldtop, MIN(newtop, oldbot), 0);
++            if (newbot < oldbot) FillArea(sbw, MAX(newbot, oldtop), oldbot, 0);
++            if (newbot > oldbot) FillArea(sbw, MAX(newtop, oldbot), newbot, 1);
++	}
+     }
+ }
+ 
+ #ifdef XAW_ARROW_SCROLLBARS
+ static void
+-PaintArrows (ScrollbarWidget sbw)
+-{
+-    XPoint    pt[20];
+-    Dimension s   = sbw->threeD.shadow_width;
+-    Dimension t   = sbw->scrollbar.thickness;
+-    Dimension l   = sbw->scrollbar.length;
+-    Dimension tms = t - s, lms = l - s;
+-    Dimension tm1 = t - 1;
+-    Dimension lmt = l - t;
+-    Dimension lp1 = lmt + 1;
+-    Dimension sm1 = s - 1;
+-    Dimension t2  = t / 2;
+-    Dimension sa30 = (Dimension)(1.732 * s );  /* cotangent of 30 deg */
+-    Display   *dpy = XtDisplay (sbw);
+-    Window    win = XtWindow (sbw);
+-    GC        top = sbw->threeD.top_shadow_GC;
+-    GC        bot = sbw->threeD.bot_shadow_GC;
+-
++PaintArrows (ScrollbarWidget sbw, int toppressed, int botpressed)
++{
++    XPoint	ipt[6], opt[6];	/* inner and outer points */
++    XPoint	rpt[4];		/* the rectangle around arrows */
++    XPoint	tpt[6];		/* temporary for args to XFillPolygon */
++    Dimension	sw = sbw->threeD.shadow_width;
++    Dimension	th = sbw->scrollbar.thickness;
++    Dimension	len = sbw->scrollbar.length;
++    Display    *dpy = XtDisplay (sbw);
++    Window	win = XtWindow (sbw);
++    GC		top, bot;
++    GC		back = sbw->scrollbar.bgc;
++    GC		fore = sbw->scrollbar.gc;
+ 
+     if (XtIsRealized ((Widget) sbw)) {
+ 	/* 3D arrows?
+          */
+-	if (s) {
+-	    /* upper/right arrow */
+-	    pt[0].x = sm1;         pt[0].y = tm1;
+-	    pt[1].x = t2;          pt[1].y = sm1;
+-	    pt[2].x = t2;          pt[2].y = s + sa30;
+-	    pt[3].x = sm1 + sa30;  pt[3].y = tms - 1;
+-
+-	    pt[4].x = sm1;         pt[4].y = tm1;
+-	    pt[5].x = tms;         pt[5].y = tm1;
+-	    pt[6].x = t2;          pt[6].y = sm1;
+-	    pt[7].x = t2;          pt[7].y = s + sa30;
+-	    pt[8].x = tms - sa30;  pt[8].y = tms - 1;
+-	    pt[9].x = sm1 + sa30;  pt[9].y = tms - 1;
+-
+-	    /* lower/left arrow */
+-	    pt[10].x = tms;        pt[10].y = lp1;
+-	    pt[11].x = s;          pt[11].y = lp1;
+-	    pt[12].x = t2;         pt[12].y = lms;
+-	    pt[13].x = t2;         pt[13].y = lms - sa30;
+-	    pt[14].x = s + sa30;   pt[14].y = lmt + s + 1;
+-	    pt[15].x = tms - sa30; pt[15].y = lmt + s + 1;
+-
+-	    pt[16].x = tms;        pt[16].y = lp1;
+-	    pt[17].x = t2;         pt[17].y = lms;
+-	    pt[18].x = t2;         pt[18].y = lms - sa30;
+-	    pt[19].x = tms - sa30; pt[19].y = lmt + s + 1;
++	if (sw) {
++	    /*
++		The points are numbered like this:
++
++		r0 +---------+ r3
++		   |    ^ o2 |
++		   |   /|\   |   a = i0
++		   |  /c^ \  |   b = i1
++		   | / / \ \ |   c = i2
++		   |/a<--->b\|
++		o0 +---------+ o1
++		   |         |
++		   |         |
++		o3 +---------+ o4
++		   |\d<--->e/|
++		   | \ \ / / |   d = i3
++		   |  \fv /  |   e = i4
++		   |   \|/   |   f = i5
++		   |    v o5 |
++		r1 +---------+ r2
++	     */
++
++	    rpt[0].x = rpt[1].x = opt[0].x = opt[3].x = sw;
++	    ipt[0].x = ipt[3].x = sw * 2.5;
++	    opt[2].x = opt[5].x = ipt[2].x = ipt[5].x = th / 2;
++	    ipt[1].x = ipt[4].x = th - (int)(sw * 2.5);
++	    rpt[2].x = rpt[3].x = opt[1].x = opt[4].x = th - sw;
++
++	    rpt[0].y = rpt[3].y = opt[2].y = sw;
++	    ipt[2].y = sw * 3.2;
++	    ipt[0].y = ipt[1].y = th - sw;
++	    opt[0].y = opt[1].y = th;
++	    opt[3].y = opt[4].y = len - th;
++	    ipt[3].y = ipt[4].y = len - th + sw;
++	    ipt[5].y = len - (int)(sw * 3.2);
++	    rpt[1].y = rpt[2].y = opt[5].y = len - sw;
++
++            /* some ugly kludges to make them look right */
++	    opt[2].y--;
++	    opt[0].x--;
++	    ipt[2].y--;
++	    ipt[0].x--;
++
++            /* make sure shades don't overlap */
++	    if (ipt[0].x > ipt[1].x) {
++		Dimension tmp = (ipt[0].x + ipt[1].x) / 2;
++		ipt[4].x = ipt[3].x = ipt[1].x = ipt[0].x = tmp;
++	    }
++            if (ipt[0].y < ipt[2].y) {
++		ipt[2].y = ipt[1].y = ipt[0].y = (ipt[0].y + ipt[2].y) / 2;
++		ipt[5].y = ipt[4].y = ipt[3].y = (ipt[3].y + ipt[5].y) / 2;
++            }
+ 
+ 	    /* horizontal arrows require that x and y coordinates be swapped */
+ 	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
+ 		int n;
+-		int swap;
+-		for (n = 0; n < 20; n++) {
+-		    swap = pt[n].x;
+-		    pt[n].x = pt[n].y;
+-		    pt[n].y = swap;
++		for (n = 0; n < 6; n++) {
++		    swap(&ipt[n].x, &ipt[n].y);
++		    swap(&opt[n].x, &opt[n].y);
+ 		}
++		for (n = 0; n < 4; n++)
++		swap(&rpt[n].x, &rpt[n].y);
++	    }
++
++	    if (toppressed ^ sbw->threeD.invert_border) {
++		top = sbw->threeD.bot_shadow_GC;
++		bot = sbw->threeD.top_shadow_GC;
++	    } else {
++		top = sbw->threeD.top_shadow_GC;
++		bot = sbw->threeD.bot_shadow_GC;
++	    }
++
++	    /* top-left background */
++	    tpt[0] = rpt[0];
++	    tpt[1] = opt[0];
++	    tpt[2] = opt[2];
++	    XFillPolygon (dpy, win, back, tpt, 3, Convex, CoordModeOrigin);
++
++	    /* top-right background */
++	    tpt[0] = rpt[3];
++	    tpt[1] = opt[2];
++	    tpt[2] = opt[1];
++	    XFillPolygon (dpy, win, back, tpt, 3, Convex, CoordModeOrigin);
++
++	    /* the right shade */
++	    tpt[0] = opt[1];
++	    tpt[1] = opt[2];
++	    tpt[2] = ipt[2];
++	    tpt[3] = ipt[1];
++	    XFillPolygon (dpy, win, bot, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the left shade */
++	    tpt[0] = opt[2];
++	    tpt[1] = opt[0];
++	    tpt[2] = ipt[0];
++	    tpt[3] = ipt[2];
++	    XFillPolygon (dpy, win, top, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the bottom shade */
++	    tpt[0] = opt[0];
++	    tpt[1] = opt[1];
++	    tpt[2] = ipt[1];
++	    tpt[3] = ipt[0];
++	    XFillPolygon (dpy, win, bot, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the arrow itself */
++	    XFillPolygon (dpy, win, fore, ipt, 3, Convex, CoordModeOrigin);
++
++	    if (botpressed ^ sbw->threeD.invert_border) {
++		top = sbw->threeD.bot_shadow_GC;
++		bot = sbw->threeD.top_shadow_GC;
++	    } else {
++		top = sbw->threeD.top_shadow_GC;
++		bot = sbw->threeD.bot_shadow_GC;
+ 	    }
+-	    XFillPolygon (dpy, win, top, pt, 4, Complex, CoordModeOrigin);
+-	    XFillPolygon (dpy, win, bot, pt + 4, 6, Complex, CoordModeOrigin);
+-	    XFillPolygon (dpy, win, top, pt + 10, 6, Complex, CoordModeOrigin);
+-	    XFillPolygon (dpy, win, bot, pt + 16, 4, Complex, CoordModeOrigin);
++
++	    /* bottom-left background */
++	    tpt[0] = rpt[1];
++	    tpt[1] = opt[5];
++	    tpt[2] = opt[3];
++	    XFillPolygon (dpy, win, back, tpt, 3, Convex, CoordModeOrigin);
++
++	    /* bottom-right background */
++	    tpt[0] = rpt[2];
++	    tpt[1] = opt[4];
++	    tpt[2] = opt[5];
++	    XFillPolygon (dpy, win, back, tpt, 3, Convex, CoordModeOrigin);
++
++	    /* the left shade */
++	    tpt[0] = opt[3];
++	    tpt[1] = opt[5];
++	    tpt[2] = ipt[5];
++	    tpt[3] = ipt[3];
++	    XFillPolygon (dpy, win, top, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the right shade */
++	    tpt[0] = opt[5];
++	    tpt[1] = opt[4];
++	    tpt[2] = ipt[4];
++	    tpt[3] = ipt[5];
++	    XFillPolygon (dpy, win, bot, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the top shade */
++	    tpt[0] = opt[4];
++	    tpt[1] = opt[3];
++	    tpt[2] = ipt[3];
++	    tpt[3] = ipt[4];
++	    XFillPolygon (dpy, win, top, tpt, 4, Convex, CoordModeOrigin);
++
++	    /* the arrow itself */
++	    XFillPolygon (dpy, win, fore, ipt+3, 3, Convex, CoordModeOrigin);
+ 
+ 	} else {
+-	    pt[0].x = 0;      pt[0].y = tm1;
+-	    pt[1].x = t;      pt[1].y = tm1;
+-	    pt[2].x = t2;     pt[2].y = 0;
+-
+-	    pt[3].x = 0;      pt[3].y = lp1;
+-	    pt[4].x = t;      pt[4].y = lp1;
+-	    pt[5].x = t2;     pt[5].y = l;
++
++	    tpt[0] = opt[0];
++	    tpt[1] = opt[1];
++	    tpt[2] = opt[2];
++	    tpt[3] = opt[3];
++	    tpt[4] = opt[4];
++	    tpt[5] = opt[5];
+ 
+ 	    /* horizontal arrows require that x and y coordinates be swapped */
+ 	    if (sbw->scrollbar.orientation == XtorientHorizontal) {
+ 		int n;
+-		int swap;
+-		for (n = 0; n < 6; n++) {
+-		    swap = pt[n].x;
+-		    pt[n].x = pt[n].y;
+-		    pt[n].y = swap;
+-		}
++		for (n = 0; n < 6; n++)
++		    swap(&tpt[n].x, &tpt[n].y);
+ 	    }
+ 	    /* draw the up/left arrow */
+-	    XFillPolygon (dpy, win, sbw->scrollbar.gc,
+-			  pt, 3,
+-			  Convex, CoordModeOrigin);
++	    XFillPolygon (dpy, win, fore, tpt, 3, Convex, CoordModeOrigin);
++
+ 	    /* draw the down/right arrow */
+-	    XFillPolygon (dpy, win, sbw->scrollbar.gc,
+-			  pt+3, 3,
+-			  Convex, CoordModeOrigin);
++	    XFillPolygon (dpy, win, fore, tpt+3, 3, Convex, CoordModeOrigin);
++
+ 	}
+     }
+ }
+@@ -471,6 +701,7 @@ Destroy (Widget w)
+ 	XtRemoveTimeOut (sbw->scrollbar.timer_id);
+ #endif
+     XtReleaseGC (w, sbw->scrollbar.gc);
++    XtReleaseGC (w, sbw->scrollbar.bgc);
+ }
+ 
+ /*	Function Name: CreateGC
+@@ -487,9 +718,22 @@ CreateGC (Widget w)
+     XtGCMask mask;
+     unsigned int depth = 1;
+ 
++    /* make GC for scrollbar background */
++    if (sbw->threeD.be_nice_to_cmap ||
++	DefaultDepthOfScreen (XtScreen(w)) == 1) {
++	mask = GCTile | GCFillStyle;
++	gcValues.tile = sbw->threeD.bot_shadow_pxmap;
++	gcValues.fill_style = FillTiled;
++    } else {
++	mask = GCForeground;
++	gcValues.foreground = sbw->scrollbar.background;
++    }
++    sbw->scrollbar.bgc = XtGetGC(w, mask, &gcValues);
++
++    /* make GC for scrollbar foreground */
+     if (sbw->scrollbar.thumb == XtUnspecifiedPixmap) {
+         sbw->scrollbar.thumb = XmuCreateStippledPixmap (XtScreen(w),
+-					(Pixel) 1, (Pixel) 0, depth);
++					(Pixel) 0, (Pixel) 0, depth);
+     } else if (sbw->scrollbar.thumb != None) {
+ 	Window root;
+ 	int x, y;
+@@ -520,6 +764,9 @@ CreateGC (Widget w)
+     /* the creation should be non-caching, because */
+     /* we now set and clear clip masks on the gc returned */
+     sbw->scrollbar.gc = XtGetGC (w, mask, &gcValues);
++    gcValues.foreground = sbw->scrollbar.foreground;
++    gcValues.background = sbw->core.background_pixel;
++    mask = GCForeground | GCBackground;
+ }
+ 
+ static void
+@@ -610,8 +857,10 @@ SetValues(Widget current, Widget request
+     if (XtIsRealized (desired)) {
+ 	if (sbw->scrollbar.foreground != dsbw->scrollbar.foreground ||
+ 	    sbw->core.background_pixel != dsbw->core.background_pixel ||
+-	    sbw->scrollbar.thumb != dsbw->scrollbar.thumb) {
++	    sbw->scrollbar.thumb != dsbw->scrollbar.thumb ||
++	    sbw->scrollbar.background != dsbw->scrollbar.background) {
+ 	    XtReleaseGC (desired, sbw->scrollbar.gc);
++	    XtReleaseGC (desired, sbw->scrollbar.bgc);
+ 	    CreateGC (desired);
+ 	    redraw = TRUE;
+ 	}
+@@ -658,11 +907,14 @@ Redisplay(Widget w, XEvent *event, Regio
+ 	XRectInRegion (region, x, y, width, height) != RectangleOut) {
+ 	/* Forces entire thumb to be painted. */
+ 	sbw->scrollbar.topLoc = -(sbw->scrollbar.length + 1);
+-	PaintThumb (sbw, event);
++	PaintThumb (sbw, 0, 0);
++    } else {
++	/* Redraw the surounding shadows of the thumb */
++	PaintThumb (sbw, 0, 1);
+     }
+ #ifdef XAW_ARROW_SCROLLBARS
+     /* we'd like to be region aware here!!!! */
+-    PaintArrows (sbw);
++    PaintArrows (sbw, 0, 0);
+ #endif
+ 
+ }
+@@ -888,12 +1140,13 @@ NotifyScroll (Widget w, XEvent *event, S
+     if (PICKLENGTH (sbw,x,y) < sbw->scrollbar.thickness) {
+ 	/* handle first arrow zone */
+ 	call_data = -MAX (A_FEW_PIXELS, sbw->scrollbar.length / 20);
+-	XtCallCallbacks (w, XtNscrollProc, (XtPointer)(call_data));
++	XtCallCallbacks (w, XtNscrollProc, (XtPointer) call_data);
+ 	/* establish autoscroll */
+ 	sbw->scrollbar.timer_id =
+ 	    XtAppAddTimeOut (XtWidgetToApplicationContext (w),
+ 				(unsigned long) 300, RepeatNotify, (XtPointer)w);
+ 	sbw->scrollbar.scroll_mode = 1;
++	PaintArrows (sbw, 1, 0);
+     } else if (PICKLENGTH (sbw,x,y) > sbw->scrollbar.length - sbw->scrollbar.thickness) {
+ 	/* handle last arrow zone */
+ 	call_data = MAX (A_FEW_PIXELS, sbw->scrollbar.length / 20);
+@@ -903,6 +1156,7 @@ NotifyScroll (Widget w, XEvent *event, S
+ 	    XtAppAddTimeOut (XtWidgetToApplicationContext (w),
+ 				(unsigned long) 300, RepeatNotify, (XtPointer)w);
+ 	sbw->scrollbar.scroll_mode = 3;
++	PaintArrows (sbw, 0, 1);
+     } else if (PICKLENGTH (sbw, x, y) < sbw->scrollbar.topLoc) {
+ 	/* handle zone "above" the thumb */
+ 	call_data = - sbw->scrollbar.length;
+@@ -911,10 +1165,10 @@ NotifyScroll (Widget w, XEvent *event, S
+ 	/* handle zone "below" the thumb */
+ 	call_data = sbw->scrollbar.length;
+ 	XtCallCallbacks (w, XtNscrollProc, (XtPointer)(call_data));
+-    } else
+-	{
+-	/* handle the thumb in the motion notify action */
+-	}
++    } else {
++	/* but we need to re-paint it "pressed in" here */
++	PaintThumb (sbw, 1, 0);
++    }
+     return;
+ }
+ #else /* XAW_ARROW_SCROLLBARS */
+@@ -976,6 +1230,9 @@ EndScroll(Widget w, XEvent *event, Strin
+     /* no need to remove any autoscroll timeout; it will no-op */
+     /* because the scroll_mode is 0 */
+     /* but be sure to remove timeout in destroy proc */
++    /* release all buttons */
++    PaintArrows (sbw, 0, 0);
++    PaintThumb (sbw, 0, 0);
+ #else
+     XtVaSetValues (w, XtNcursor, sbw->scrollbar.inactiveCursor, NULL);
+     XFlush (XtDisplay (w));
+@@ -1044,7 +1301,7 @@ MoveThumb (Widget w, XEvent *event, Stri
+ #ifdef XAW_ARROW_SCROLLBARS
+     sbw->scrollbar.scroll_mode = 2; /* indicate continuous scroll */
+ #endif
+-    PaintThumb (sbw, event);
++    PaintThumb (sbw, 1, 0);
+     XFlush (XtDisplay (w));	/* re-draw it before Notifying */
+ }
+ 
+@@ -1131,6 +1388,6 @@ void XawScrollbarSetThumb (Widget w,
+     sbw->scrollbar.shown = (shown > 1.0) ? 1.0 :
+ 				(shown >= 0.0) ? shown : sbw->scrollbar.shown;
+ 
+-    PaintThumb (sbw, NULL);
++    PaintThumb (sbw, 0, 0);
+ }
+ 
+Index: libXaw3d-1.6.2/src/SmeThreeD.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/SmeThreeD.c
++++ libXaw3d-1.6.2/src/SmeThreeD.c
+@@ -71,6 +71,9 @@ static XtResource resources[] = {
+     {XtNborderWidth, XtCBorderWidth, XtRDimension, sizeof(Dimension),
+ 	XtOffsetOf(RectObjRec,rectangle.border_width), XtRImmediate,
+ 	(XtPointer)0}
++    ,
++    {XtNinvertBorder, XtCInvertBorder, XtRBoolean, sizeof(Boolean),
++	offset(sme_threeD.invert_border), XtRImmediate, (XtPointer) False},
+ };
+ 
+ #undef offset
+@@ -210,7 +213,7 @@ AllocTopShadowPixmap (Widget new)
+     Display		*dpy = XtDisplayOfObject (new);
+     Screen		*scn = XtScreenOfObject (new);
+     unsigned long	top_fg_pixel = 0, top_bg_pixel = 0;
+-    char		*pm_data;
++    char		*pm_data = NULL;
+     Boolean		create_pixmap = FALSE;
+ 
+     /*
+@@ -266,7 +269,7 @@ AllocBotShadowPixmap (Widget new)
+     Display		*dpy = XtDisplayOfObject (new);
+     Screen		*scn = XtScreenOfObject (new);
+     unsigned long	bot_fg_pixel = 0, bot_bg_pixel = 0;
+-    char		*pm_data;
++    char		*pm_data = NULL;
+     Boolean		create_pixmap = FALSE;
+ 
+     if (DefaultDepthOfScreen (scn) == 1) {
+@@ -562,8 +565,16 @@ _XawSme3dDrawShadows(Widget gw)
+ 
+ 	if (tdo->sme_threeD.shadowed)
+ 	{
+-	    top = tdo->sme_threeD.top_shadow_GC;
+-	    bot = tdo->sme_threeD.bot_shadow_GC;
++	    if (tdo->sme_threeD.invert_border)
++	    {
++		bot = tdo->sme_threeD.top_shadow_GC;
++		top = tdo->sme_threeD.bot_shadow_GC;
++	    }
++	    else
++	    {
++		top = tdo->sme_threeD.top_shadow_GC;
++		bot = tdo->sme_threeD.bot_shadow_GC;
++	    }
+ 	}
+ 	else
+ 	    top = bot = tdo->sme_threeD.erase_GC;
+Index: libXaw3d-1.6.2/src/ThreeD.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/ThreeD.c
++++ libXaw3d-1.6.2/src/ThreeD.c
+@@ -73,6 +73,8 @@ static XtResource resources[] = {
+     {XtNborderWidth, XtCBorderWidth, XtRDimension, sizeof(Dimension),
+ 	XtOffsetOf(RectObjRec,rectangle.border_width), XtRImmediate,
+ 	(XtPointer)0},
++    {XtNinvertBorder, XtCInvertBorder, XtRBoolean, sizeof(Boolean),
++	offset(threeD.invert_border), XtRImmediate, (XtPointer) False},
+     {XtNrelief, XtCRelief, XtRRelief, sizeof(XtRelief),
+ 	offset(threeD.relief), XtRString, (XtPointer) defRelief}
+ };
+@@ -637,7 +639,7 @@ _Xaw3dDrawShadows (Widget gw, XEvent *ev
+ 	GC		realbot = tdw->threeD.bot_shadow_GC;
+ 	GC		top, bot;
+ 
+-	if (out) {
++	if ((out ^ tdw->threeD.invert_border)) {
+ 	    top = tdw->threeD.top_shadow_GC;
+ 	    bot = tdw->threeD.bot_shadow_GC;
+ 	} else {
+@@ -774,7 +776,7 @@ _ShadowSurroundedBox(Widget gw, ThreeDWi
+ 	Window win = XtWindow(gw);
+ 	GC top, bot;
+ 
+-	if (out)
++	if ((out ^ tdw->threeD.invert_border))
+ 	{
+ 	    top = tdw->threeD.top_shadow_GC;
+ 	    bot = tdw->threeD.bot_shadow_GC;

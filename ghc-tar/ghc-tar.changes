@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Oct 19 13:14:47 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support ghc-8.6.1.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:43 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update tar to version 0.5.1.0.
+  * Add support for GHC 8.4.1 / base-4.11
+  * Add `Semigroup` instance for `Entries`
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:16:17 UTC 2016 - psimons@suse.com
+
+- Update to version 0.5.0.3 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed May  4 07:33:10 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.5.0.3
+* Fix tarbomb logic to ignore special PAX entries. Was breaking many valid tarballs.
+
+-------------------------------------------------------------------
+Sun May  1 15:57:19 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.5.0.2
+* Fix compatability when using ghc-7.4.x and directory >= 1.2.3
+
+-------------------------------------------------------------------
+Fri Jan 15 10:17:58 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.5.0.1
+* Change type of Index.serialise to be simply strict bytestring.
+* Preserve file timestamps on unpack
+
+-------------------------------------------------------------------
+Mon Jan 11 08:26:53 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.4.5.0
+* revert accidental minor API change in 0.4.x series (the type of the owner and
+        group name strings). The 0.4.3.0 and 0.4.4.0 releases contained the accidental
+         API change.
+* Add a handy foldlEntries function
+* Build and warning fixes for GHC 7.10 and 8.0
+* New Index module function toList to get all index entries
+* New Index function unfinalise to extend existing index
+        + 9x faster reading
+        + 9x faster index construction
+        + 24x faster index extension
+* More compact entry types, using ByteStrings
+* More Eq and Show instances
+* Greater QC test coverage
+* Fix minor bug in reading non-standard v7 format entries
+
+-------------------------------------------------------------------
+Thu Nov 19 11:00:23 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Mon Mar 25 22:26:25 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use correct tarball from upstream
+- Remove unused cruft from the specfile
+
+-------------------------------------------------------------------
+Wed Feb 27 12:18:11 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.7.0
+- Translations restored
+- Patches:
+  * gerbv-2.6.1-undefined-symbols.patch upstreamed
+  * gerbv-fix-install-sh-call.patch upstreamed
+  * gerbv-2.6.1-no-translation.patch upstreamed
+  * gerbv-no-build-time.patch removed, build date/time is now set
+    by OBS
+
+-------------------------------------------------------------------
+Tue Mar  3 12:49:46 UTC 2015 - dev@stellardeath.org
+
+- Backport commits 55e4460 and dd8f9fa from upstream that cures
+  the problem of an undefined symbol "screen" when using gerbv as
+  a library
+  * gerbv-2.6.1-undefined-symbols.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 11:46:11 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix desktop menu categories
+
+-------------------------------------------------------------------
+Tue Oct  7 21:24:37 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix build with automake 1.14
+  * gerbv-fix-install-sh-call.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 09:34:34 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.6.1
+  * Localization support
+- Disable localization due to missed files
+  * gerbv-2.6.1-no-translation.patch
+
+-------------------------------------------------------------------
+Thu Jan  3 21:24:02 UTC 2013 - dmitry_r@opensuse.org
+
+- Delete guile from requires
+- Delete compilation time from binary
+  * gerbv-no-build-time.patch
+
+-------------------------------------------------------------------
+Wed Dec 26 13:30:40 UTC 2012 - dmitry_r@opensuse.org
+
+- fix summary
+
+-------------------------------------------------------------------
+Tue Dec 25 17:45:28 UTC 2012 - dmitry_r@opensuse.org
+
+- spec file cleanup
+- split libgerbv to separate package
+
+-------------------------------------------------------------------
+Tue Dec 27 08:15:35 UTC 2011 - werner.ho@gmx.de
+
+- new version 2.6.0
+
+-------------------------------------------------------------------
+Sat Nov 19 12:08:10 UTC 2011 - werner.ho@gmx.de
+
+- new version 2.5.0
+- build fixes for openSUSE 12.1
+
+-------------------------------------------------------------------
+Sat Mar 06 00:00:00 UTC 2010 - werner.ho@gmx.de
+
+- new version 2.4.0
+
+-------------------------------------------------------------------
+Sun Oct 11 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.3.0
+
+-------------------------------------------------------------------
+Fri Feb 06 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.2.0
+
+-------------------------------------------------------------------
+Sat Dec 20 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- fixed desktop integration of openSUSE 11.1
+- directory fixes
+- call /sbin/ldconfig
+
+-------------------------------------------------------------------
+Sun Sep 21 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.1.0
+- removed support for older distributions
+- created additional devel package
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- fixed desktop integration
+
+-------------------------------------------------------------------
+Thu Mar 04 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.1
+- desktop integration
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.0
+
+-------------------------------------------------------------------
+Thu Nov 29 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- new version 1.0.3
+- removed msgstr_size patch
+
+-------------------------------------------------------------------
+Wed Feb 28 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- added msgstr_size patch
+
+-------------------------------------------------------------------
+Tue Aug 29 00:00:00 UTC 2006 - werner.ho@gmx.de
+
+- added libpng-devel: gkt2-devel of SuSE 9.3 didn't provide it
+
+-------------------------------------------------------------------
+Sun Aug 27 00:00:00 UTC 2006 - werner.ho@gmx.de
+
+- first spec file

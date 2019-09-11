@@ -1,0 +1,41 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Fri Sep 14 08:52:27 2018 -0600
+Subject: vnfs: Add --auto-agree-with-licenses to include-suse PKGR_CMD (#142)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 48c9ff5fdc53fcca2dcd4c87e99502ccab4fa3e1
+References: 
+
+When attempting to create an opensuse chroot, the wwmkchroot script
+would fail on packages that attempt to display a license and expect a
+response from the console.
+
+The zypper package manager has an option that automatically accepts
+package license agreements when present. Adding this option to the
+PKGR_CMD variable resolved the issue with mkchroot.
+
+Signed-of-by: John L. Jolly <jjolly@suse.com>---
+ vnfs/libexec/wwmkchroot/include-suse | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index 09a5c28..83ae343 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -71,12 +71,15 @@ prechroot() {
+ 
+         ZYP_MIRROR=$INSTALLDIRS
+     fi
++
+     declare -i cnt=0
+     $ZYP_CMD rr --all
+     for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
+         $ZYP_CMD ar $i repo-$((cnt++))
+     done
+-    PKGR_CMD="$ZYP_CMD install $PKGLIST"
++    
++    PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
++    
+     return 0
+ }
+ 

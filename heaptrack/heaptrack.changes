@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed May 23 15:06:59 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-compile-on-32bit.patch to make it build on 32bit
+  (kde#394330)
+- Don't install office-chart-area icon from breeze to hicolor
+  anymore, heaptrack comes with its own application icon now
+- Mark license files as %license instead of %doc
+- Install README.md as well, it contains instructions on how to use
+  it
+
+-------------------------------------------------------------------
+Wed May 23 13:40:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to version 1.1.0:
+  * Stability and performance improvements
+  * When extended debug information is available, stack traces now include inlined frames.
+  * Split debug information in separate files is now supported.
+  * Compressed debug information is properly handled.
+  * The embedded flamegraph view is now searchable.
+  * More details available on https://www.kdab.com/heaptrack-v1-1-0-release/
+- Remove patches, now upstream:
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Sat Sep  2 15:03:19 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build.patch to fix build with glibc 2.26 in Factory
+  (kde#383889)
+
+-------------------------------------------------------------------
+Wed Apr 19 18:22:16 UTC 2017 - fabian@ritter-vogt.de
+
+- Initial commit

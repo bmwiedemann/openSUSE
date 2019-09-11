@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Jul 31 08:43:48 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Nov  3 09:50:32 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * fix source url
+
+-------------------------------------------------------------------
+Fri Nov  3 00:59:18 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 8.59
+  + lib: add more defines for SignOnUi password dialog
+  + signond: inform SignOnUI when a session finishes
+  + RemotePluginProcess: don't use a thread for cancel
+  + Signond: fix a couple of textual issues
+  + signond: get rid of loadedPluginMethods() method
+  + plugins: don't use custom proxy implementation on Qt 5.5 and later
+  + signond: don't store duplicate data in SignonAuthSession
+  + signond: add configure option to enable backup
+  + signond: move backup implementation into separate class
+  + Remove Qt4 support
+  + Lib: hide debug output by default
+- update to version 8.58
+  + lib: add a couple of error codes for SignOn UI
+  + lib: reset the DBus proxy when registration failed
+  + signond: on identity update, don't reset missing fields
+  + signond: don't bypass the ACL if the identity has no owner
+  + signond: pass client AppId to SignOnUi
+  + signond: pass the client PID to SignOnUI
+- updated patches
+  + 0001_Multilib.patch
+- removed patches now included upstream
+  + fix-incomplete-type.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 13:58:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Add baselibs.conf to generate the -32bit packages
+
+-------------------------------------------------------------------
+Tue Sep  8 19:15:53 UTC 2015 - alarrosa@suse.com
+
+- Fix an "incomplete type" compilation error (fix-incomplete-type.patch)
+
+-------------------------------------------------------------------
+Thu Oct 30 23:03:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add signon package
+

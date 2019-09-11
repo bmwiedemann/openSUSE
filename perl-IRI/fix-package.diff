@@ -1,0 +1,14 @@
+Index: IRI-0.006/lib/IRI.pm
+===================================================================
+--- IRI-0.006.orig/lib/IRI.pm
++++ IRI-0.006/lib/IRI.pm
+@@ -76,7 +76,8 @@ Returns the respective component of the
+ 
+ =cut
+ 
+-package IRI {
++package IRI;
++{
+ 	use v5.14;
+ 	use warnings;
+ 	our $VERSION	= '0.006';

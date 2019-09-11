@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Wed Jan  2 10:48:33 UTC 2019 - badshah400@gmail.com
+
+- Update to version 7.0.4:
+  * Improved editor performance (gh#retext-project/retext#360).
+  * Support for Python-Markdown 3.0.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  2 05:38:29 UTC 2018 - Marguerite Su <i@marguerite.su>
+
+- Update to version 7.0.0
+  * The highlighter was improved. It got support for
+    reStructuredText links, field lists and for Markdown and
+    reStructuredText code spans.
+  * Added the text replace feature.
+  * Added the experimental renderer based on Qt WebEngine, in
+    addition to the existing Qt WebKit one.
+  * It is now possible to insert new table rows by pressing Return
+    in "Table editing mode". Additionally, pressing Shift+Return
+    will create a new row and a separator line
+  * The WebKit and WebEngine previewers can now detect links
+    to local HTML files and open the corresponding source file
+    in new tab if those are found.
+  * ReText can now automatically detect encoding of files using
+    the chardet module when it is installed.
+  * Several new configuration options were added.
+- upstream fixed boo#1040433
+  * ReText can't start from KDE Application launcher (kickoff)
+    but can from command line because sys.stdin.read() led
+    to a blockage
+- drop retext-add-appdata-description.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Jan 10 09:27:53 UTC 2017 - mpluskal@suse.com
+
+- Fix typo in patch
+
+-------------------------------------------------------------------
+Sat Jan  7 15:43:41 UTC 2017 - badshah400@gmail.com
+
+- Add retext-add-appdata-description.patch to add a helpful
+  description to the appdata file; changes taken from upstream.
+
+-------------------------------------------------------------------
+Sat May 14 14:12:40 UTC 2016 - mpluskal@suse.com
+
+- Update to version 6.0.0
+  * The live preview now automatically scrolls to match its 
+    sition with the editor (only for Markdown).
+  * Markup conversion is now performed in a background process, 
+    proving responsiveness of the editor.
+  * Images can now be copied and pasted into ReText (contributed by 
+    Bart Clephas).
+  * Added a button to quickly close the search bar.
+  * Added basic CSS styling for tables.
+  * Replaced the tags box with the new “Formatting” box for 
+    Markdown (contributed by Donato Marrazzo).
+  * Hitting return twice now ends the Markdown list.
+  * ReText now depends on version 2.0 or higher of pymarkups.
+  * The QtWebKit dependency is now optional (though still 
+    recommended).
+- Spec file cleanups
+  * Update dependencies
+  * Use pretty name for source archive
+  * Disable testsuite as it requires connection to Xserver
+
+-------------------------------------------------------------------
+Mon Dec 21 01:33:46 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.3.0:
+  + Tabs are now reorderable.
+  + All colors used in editor and highlighter are now configurable
+    via the configuration file.
+  + Links referencing other source files are now opened in ReText
+    as new tabs.
+  + Code refactoring: some code moved to the new tab.py module,
+    and some old hacks dropped.
+  + The ReText logo is now installed to the data directory.
+  + Appstream metadata updated to a newer format.
+  + The desktop file no longer hardcodes the executable path.
+- Changes from version 5.2.0:
+  + ReText now tries to load the icon theme from system settings
+    if Qt cannot auto-detect it.
+  + Added a GUI option to change the editor font.
+  + Added appdata file for appstream.
+- Drop custom desktop file and use upstream bundled file.
+- Package appdata.
+- Add post(un) scriptlets for updating icon theme cache and
+  desktop database.
+- Project moved to github, update URL and source location
+  accordingly.
+
+-------------------------------------------------------------------
+Tue Jun 30 19:12:23 UTC 2015 - mailaender@opensuse.org
+
+- update to version 5.1.0
+- enable test suite
+
+-------------------------------------------------------------------
+Mon Jun  8 19:29:35 UTC 2015 - mailaender@opensuse.org
+
+- update to version 5.0.2
+
+-------------------------------------------------------------------
+Tue Jan  6 10:37:50 UTC 2015 - kinfoo.dev@gmail.com
+
+- recommend Python Pygments for syntax highlight
+
+-------------------------------------------------------------------
+Fri Dec 19 20:55:34 UTC 2014 - mailaender@opensuse.org
+
+- update to version 5.0.1
+
+-------------------------------------------------------------------
+Sat Jul 26 16:29:31 UTC 2014 - mailaender@opensuse.org
+
+- update to version 5.0.0
+
+-------------------------------------------------------------------
+Sat Jun 14 19:30:40 UTC 2014 - mailaender@opensuse.org
+
+- update to version 4.1.3
+
+-------------------------------------------------------------------
+Wed Apr 16 09:29:11 UTC 2014 - mailaender@opensuse.org
+
+- update version 4.1.2
+- added GPG file verification
+
+-------------------------------------------------------------------
+Sat Sep 21 10:35:09 UTC 2013 - mailaender@opensuse.org
+
+- update version 4.1.1
+  * Added configuration dialog
+  * Added current line highlighting and line numbers support
+  * Added support for PyQt5 and PySide libraries
+  * Use new signals/slots syntax
+  * Added option to select file encoding
+  * Dropped support for Python 2 and support for running
+    without WebKit installed
+- adhere to https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Feb 24 14:12:35 UTC 2013 - i@marguerite.su
+
+- add link to %{_bindir}/%{name}
+- correct dependency name python-Markups
+
+-------------------------------------------------------------------
+Sat Feb  2 10:50:20 UTC 2013 - i@marguerite.su
+
+- update version 4.0.0
+  * Switch to pymarkups backend
+  * Switch to python3 by default
+  * Split retext.py to smaller files
+  * MathJax support
+  * Tab now inserts 4 spaces by default
+  * Automatic indentation of new lines
+  * External links are now opened in a web browser by default
+  * Support for per-document CSS stylesheets
+
+-------------------------------------------------------------------
+Tue Jul 31 17:49:22 UTC 2012 - i@marguerite.su
+
+- update version 3.1.0
+  * Spell checker suggestions
+  * Markup-specifing highlighting
+  * Re-written parser & document-type logic
+  * Lots of code clean-up
+
+-------------------------------------------------------------------
+Mon May 21 12:42:06 UTC 2012 - i@marguerite.su
+
+- update to 3.0.3
+  * Python 3 support
+  * Improved highlighter
+  * Export extensions
+  * Recent files menu
+  * Spell checking improvements
+  * Shortcuts for formatting
+  * WebKit engine improvements
+
+-------------------------------------------------------------------
+Sat Feb 18 06:48:40 UTC 2012 - i@marguerite.su
+
+- update to 3.0beta1
+
+-------------------------------------------------------------------
+Thu Dec 29 14:21:28 UTC 2011 - i@marguerite.su
+
+- update to 2.1.3
+
+-------------------------------------------------------------------
+Sat Nov 26 00:15:46 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (2.1.2)
+

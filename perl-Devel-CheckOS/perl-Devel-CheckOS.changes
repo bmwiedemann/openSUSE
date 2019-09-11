@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Wed Feb  7 15:24:31 UTC 2018 - coolo@suse.com
+
+- updated to 1.81
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.81    2018-01-23      Restore 5.6 and 5.8 compatibility;
+                          Cope better in tests when @INC is humungous
+
+-------------------------------------------------------------------
+Thu May 25 07:53:37 UTC 2017 - coolo@suse.com
+
+- updated to 1.80
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.80    2017-05-24      Fix bug where tests would fail if
+                            AUTOMATED_TESTING=1 on perl 5.26 and higher;
+                          For some reason that made it break on 5.8.9,
+                            but I don't really care
+
+-------------------------------------------------------------------
+Mon Oct 31 06:19:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.79
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.79    2016-10-30      Fix another minor bug
+                            (https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/17)
+  
+  1.78    2016-10-30      Fix an isue that made it uninstallable on some
+                            systems (https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/16)
+
+-------------------------------------------------------------------
+Sun Oct 23 05:18:58 UTC 2016 - coolo@suse.com
+
+- updated to 1.77
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.77    2016-10-21      Add MacOSX:v10_11 and ..._12
+
+-------------------------------------------------------------------
+Wed Apr 15 14:49:41 UTC 2015 - coolo@suse.com
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.76    2015-03-13      Add GNU Hurd
+  
+  1.75    2015-03-08      Add Minix and iOS;
+                          Correct ancient typo in Apple family that no-one
+                            has ever noticed because no-one uses 'classic'
+                            Mac OS;
+                          Various 'kwalitee' improvements from Dale Evans
+  
+  1.74    2015-03-04      Add Linux::Debian;
+                          Add MacOSX::v10_*;
+                          Add perl 5.6.2 support
+                            all the above thanks to Dale Evans
+  
+  1.73    2014-08-01      Add support for Android
+  
+  1.72    2014-04-16      Add support for Bitrig, an OpenBSD fork;
+                          Check $^O case-insensitively as some OSes
+                            aren't particularly consistent
+
+-------------------------------------------------------------------
+Tue Mar 18 07:54:44 UTC 2014 - coolo@suse.com
+
+- updated to 1.71
+      Bugfix, better tests for negative assertions
+      Add support for negative assertions in Devel::AssertOS
+
+-------------------------------------------------------------------
+Wed Apr 27 18:57:34 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.64
+ * Add support for GNU/kFreeBSD
+
+-------------------------------------------------------------------
+Fri Jan 21 19:32:45 UTC 2011 - coolo@novell.com
+
+- initial package 1.63
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,383 @@
+-------------------------------------------------------------------
+Fri Apr  7 06:31:51 UTC 2017 - coolo@suse.com
+
+- updated to 1.967015
+   see /usr/share/doc/packages/perl-Parse-RecDescent/Changes
+
+  
+  1.967015      Tue Apr  4 07:38:07 2017
+  
+      - Fix misuse of require to include MYMETA.pl, data is just
+        included in both Makefile.PL and Build.PL nowB. (RT.cpan.org
+        #120922, thanks Kent!)
+
+-------------------------------------------------------------------
+Sun Apr  2 06:28:59 UTC 2017 - coolo@suse.com
+
+- updated to 1.967014
+   see /usr/share/doc/packages/perl-Parse-RecDescent/Changes
+
+  
+  1.967014      Sat Apr  1 10:33:29 2017
+  
+      - Add a newline to package declaration lines in precompiled
+        parsers, to keep CPAN from indexing them. (RT.cpan.org #110404,
+        thanks Martin!)
+  
+      - Provide repository and bugtracker entries in
+        MYMETA.*. (RT.cpan.org #110403, thanks Martin!)
+  
+      - Update tests to handle '.' no longer being part of @INC in
+        perl-5.26.0. (RT.cpan.org #120415, thanks Jim!)
+
+-------------------------------------------------------------------
+Mon Sep 28 09:04:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.967013
+   see /usr/share/doc/packages/perl-Parse-RecDescent/Changes
+
+  
+  1.967013      Sun Sep 27 10:00:36 2015
+  
+      - Wrap Data::Dumper->Dump() to localize some $Data::Dumper::VARS
+        to control the dumped output. In particular,
+        Data::Dumper::Terse=1 was reported to break parser
+        generation. (RT.cpan.org #107355, thanks Sherrard!)
+
+-------------------------------------------------------------------
+Mon Sep 14 08:51:35 UTC 2015 - coolo@suse.com
+
+- updated to 1.967012
+   see /usr/share/doc/packages/perl-Parse-RecDescent/Changes
+
+-------------------------------------------------------------------
+Thu May 31 13:23:43 UTC 2012 - coolo@suse.com
+
+- updated to 1.967009
+     - Revised ExtUtils::MakeMaker build/configure version
+       requirements. (RT.cpan.org #74787, Thanks Paul!)
+
+     - Revised Text::Balanced prereq to require version 1.95,
+       necessary for t/skip.t to pass.
+       (RT.cpan.org #74787, Thanks Paul!)
+
+     - Removed unused version.pm prereq.
+
+     - Fix a circular reference memory leak caused by the use of
+       $AUTOLOAD in sub AUTOLOAD{} in the generated parser's
+       namespace.  Workaround documented in perl5 RT #110248.
+       Workaround a circular reference memory leak in ISA documented
+       by perl5 RT #92708.  A parser's DESTROY() method redefines all
+       subs before deleting the stash, to avoid circular references
+       between subrules. (RT #53710, thanks Andreas!)
+
+     - Parse::RecDescent::AUTOLOAD did not correctly handle
+       initializing the line counting mechanism when a reference to a
+       scalar was passed to the parser. (RT.cpan.org #27705, thanks
+       Justin!)
+
+     - Restore old _parserepeat calling convention.  Change a
+       parser's DESTROY method to check for $self->{_not_precompiled}
+       instead of $self->{_precompiled}. (Fix for RT #74593).
+
+
+-------------------------------------------------------------------
+Mon Feb 13 02:35:00 UTC 2012 - vcizek@suse.com
+
+- update to 1.967006
+    - Allow a global <skip:> directive that functions the same as
+      modifying $Parse::RecDescent::skip prior to compiling a
+      grammar. (Thanks Flavio!)
+
+    - *** NON-BACKWARDS COMPATIBLE CHANGE! *** A repetition directive
+      such as 'id(s /,/)' correctly creates a temporary @item variable
+      to hold the 'id's that are matched.  That @item variable is them
+      used to set the real $item[] entry for that repetition.  The
+      same treatment is now given to %item.  Formerly, in a production like:
+          id ',' id(s /,/)
+      matched against:
+          xxx, yyy, zzz
+      The $item{id} entry which should be 'xxx' is overwritten by
+      'yyy' and then 'zzz' prior to the action being executed.  Now
+      'yyy' and 'zzz' set $item{id}, but in the private %item, which
+      goes out of scope once the repetition match completes.
+
+    - ** EXPERIMENTAL ** When precompiling, optionally create a
+      standalone parser by including most of the contents of
+      Parse::RecDescent in the resulting Precompiled output.
+
+      - Accept an optional $options hashref to Precompile, which can
+        be used to specify $options->{-standalone}, which currently
+        defaults to false.
+
+      - The included Parse::RecDescent module is renamed to
+        Parse::RecDescent::_Runtime to avoid namespace conflicts with
+        an installed and use'd Parse::RecDescent.
+      - Add a new $_FILENAME global to Parse::RecDescent to make it
+        easy for the Precompile method to find the module.
+      - Remove the prototype from _generate.  It is not required, and
+        it caused t/precompile.t (which ends up re-definiing a lot of
+        Parse::RecDescent subroutines) to fail needlessly, as the
+        calls to _generate in Replace and Extend normally do not see
+        the prototype, but do when re-defined.
+      - Added ExtUtils::MakeMaker build/configure version
+        requirements. (RT.cpan.org #74787, Thanks POPEL!)
+
+-------------------------------------------------------------------
+Tue Jan 31 09:31:58 UTC 2012 - vcizek@suse.com
+
+- update to 1.967003
+    - Addressed RT.cpan.org #29966: regex with single backslash not
+      recognized.  Changed the definition of $TOKEN to handle
+      backslashes inside of regex patterns.
+    - Skip tests in t/reentry.t if Test::Warn isn't available.
+    - Remove the 'use 5.10' from t/skip_dynamic.t, it runs fine
+      against Perl 5.8.9.
+
+-------------------------------------------------------------------
+Mon Jan 30 02:34:17 UTC 2012 - vcizek@suse.com
+
+- added Test::Warn to BuildRequires
+- update to 1.967001
+  * 1.966_000  Mon Jun 27 08:32:50 2011
+    - Patched unnamed subrules, so that they actual fail when
+      not correctly specified (thanks Evgeniy!)
+    - Added skip tests (thanks Flavio)
+    - Added doc patch to make $skip semantics clearer (thanks Flavio!)
+    - Fixed POD description of <rightop:...> semantics (thanks Dirk!)
+  * 1.966_001  Mon Nov 14 10:34:52 2011
+    - Applied fix to restore skipped prefixes on match failure
+      (thanks Jeremy!)
+    - Removed formats to eliminate problems with filehandle duplication
+      in forked environments
+  * 1.966_002  Sun Jan 22 19:08:37 2012
+    - *** NON-BACKWARDS COMPATIBLE CHANGE! *** Change the caches for
+      $prevline and $thisline to be local to the parser, rather than
+      lexical vars in Parse::RecDescent.  This prevents previously
+      generated parsers from interfering with the line counts of
+      later parsers.
+    - removed trailing whitespace from all member files (cosmetic)
+    - new tests, updated MANIFEST
+    - Added Jeremy Braun as an author and current maintainer
+    - update file permissions
+    - fixed a few broken links in the pod
+  * 1.967001  Sat Jan 28 20:54:48 2012
+    - Addressed RT.cpan.org #28314: regex modifiers for tokens not
+      honored during regex syntax check. (Thanks SADAHIRO!)
+    - Fixed some POD typos
+    - Added message on how to turn off "default" hint value in the
+      default hint value ($::RD_HINT = 0). RT.cpan.org # #4898.
+    - Modified _write_ERROR to call formline twice to avoid repeated
+      $errorprefix.
+    - Collected match tracing messages into a common function which
+      takes into account positive/negative lookahead.
+    - Addressed RT.cpan.org #74258: RD_AUTOSTUB does not work with
+      precompiled parsers.  (Thanks Yuri!)
+    - Special-case $::RD_AUTOSTUB eq 1.  $::RD_AUTOSTUB's value is
+      ignored, and the unknown subrule 'rule' has a production
+      "rule: 'rule'", rather than "rule: '1'".
+    - Change Parse::RecDescent::new to call $self->Replace with only
+      the grammar as an argument.  That prevents the $compiling
+      argument to new() from being incorrectly interpreted as
+      $isimplicit.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:16 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 18 10:09:27 UTC 2010 - chris@computersalat.de
+
+- readd not obsolete patch (bnc#653512)
+  o patch was removed, cause of no longer needed for pass tests
+
+-------------------------------------------------------------------
+Tue Oct 19 19:43:18 UTC 2010 - chris@computersalat.de
+
+- remove obsolete 1.965001 patch
+
+-------------------------------------------------------------------
+Wed Oct 13 22:56:35 UTC 2010 - chris@computersalat.de
+
+- noarch pkg
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Fri Jul 16 15:08:46 CEST 2010 - anicka@suse.cz
+
+- update to 1.965001
+ * Updated version number because versioning is a neverending
+   nightmare in Perl 5 (thanks Matt)
+ * Removed all references to /opts version of perl interpreter
+ * Added Parse::RecDescent::redirect_reporting_to()
+   to enable ERROR, TRACE, and TRACECONTEXT filehandles to be 
+   easily redirected.
+
+-------------------------------------------------------------------
+Tue Feb 23 16:22:39 CET 2010 - anicka@suse.cz
+
+- update to 1.964
+ * Fixed bug with undefined $1 when parsing literals (thanks Dan!)
+ * Fixed premature namespace destruction bug with compiled grammars
+
+-------------------------------------------------------------------
+Mon Jan 25 13:40:39 CET 2010 - anicka@suse.cz
+
+- update to 1.963
+ * Fixed even subtler bug in leftop and rightop caused by removal 
+   of $&
+- clean Requires, Provides and Obsoletes
+
+-------------------------------------------------------------------
+Wed Jan 13 16:35:16 CET 2010 - anicka@suse.cz
+
+- update to 1.962.2
+ * Added: <warn> <hint> <trace_build> <trace_parse> <nocheck>
+ * Fixed assymmetrical push/pop on @lines tracker
+ * Bumped sub-version number hugely to fix CPAN indexing
+ * Remove all occurrences of $& so we don't affect other regular 
+   expressions.
+ * Perl 5.6.0 required for use of $+[0] and $-[0] for replacement
+   of $&.
+ * Fixed subtle bug in leftop and rightop caused by removal of $&
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Dec 10 19:58:51 UTC 2009 - chris@computersalat.de
+
+- cleanup spec
+  * sort tags
+  * fix build-/deps
+  * simply install/file section
+
+-------------------------------------------------------------------
+Mon Oct  6 15:19:46 CEST 2008 - anicka@suse.cz
+
+- update to 1.96.0 
+ * Updated README to reflect new status of Text::Balanced
+  (i.e. required but not included in the distribution)
+ * Fixed demo_logic
+ * Fixed autopropagation of arguments into repetitions
+ * Limited context info to 500 chars in traces
+ * Added option to select base namespace for autotreeing
+ * Improved formatting compatibility with 5.9.0
+ * Added support for $::RD_HINT = 0 to turn off hinting entirely
+ * Fixed bug in line handling
+ * Returned $return variable to documented behaviour
+  (i.e. setting return doesn't guarantee the match, only what is
+		returned if the match succeeds)
+ * Fixed nit in debugging of conditional regexes
+ * Moved expectation creation to compile-time
+ * Removed redundant inheritances (i.e. @ISA elements)
+  in internal namespace
+ * Added warning against C<return> in actions to "GOTCHAS"
+   documentation
+ * Added demo_another_Cgrammar.pl
+ * Documented parens
+ * Removed incorrect meta-grammar from docs
+ * Propagated correct Changes file
+ * Added: <warn> <hint> <trace_build> <trace_parse> <nocheck>
+
+-------------------------------------------------------------------
+Fri Dec 14 16:42:34 CET 2007 - anicka@suse.cz
+
+- update to 1.94 
+ * BACKWARDS INCOMPATIBLE CHANGE: The key of an %item entry for
+   a repeated subrule now includes the repetition specifier.
+ * Changed argument passing behaviour. If no arguments specified
+   for subrule, it is now passed current rule's @arg instead. To 
+   get old (no arguments) behaviour use: subrule[]
+ * Fixed bug in <reject> handling: failed to reject if $return
+   had been set.
+ * Added two useful demos of restructuring nested data
+ * Localized filehandles, like a good citizen should
+ * Misc doc bug fixes
+ * Fixed Text::Balance dependency in Makefile.PL
+ * Fixed bug that @itempos wasn't set up if referred to only in
+   an autoaction.
+ * Fixed truncation bug in tracing contexts
+ * Dramatically improved speed of line counting
+ * Made item(s) and item(s /,/) behave consistently wrt %item
+ * Added prototype <autorule:...> handling
+ * Added outer block markers for <perl_codeblock>
+ * Fixed multi*grammar precompilation (thanks Dominique)
+ * Added nesting level information to traces
+ * Fixed resetting of $text after an <uncommit> rule.
+ * Removed Text::Balanced from distribution (now a prereq only)
+ * Fixed fatal error with $tracelevel (thanks everyone)
+ * Replaced 'our' with 'use vars' to reinstate 5.005 compatibility.
+- enable tests
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon May 10 14:51:56 CEST 2004 - ro@suse.de
+
+- fix warning/error when used from yast2 (#39963)
+
+-------------------------------------------------------------------
+Sun Jan 11 12:26:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:34:57 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 12:04:13 CEST 2003 - ro@suse.de
+
+- install to vendor location 
+
+-------------------------------------------------------------------
+Tue Jul  1 12:58:30 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Tue May 13 01:40:58 CEST 2003 - ro@suse.de
+
+- use defattr 
+
+-------------------------------------------------------------------
+Thu Aug  8 18:50:16 CEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Mon Jul 29 14:27:26 CEST 2002 - mls@suse.de
+
+- update to version 1.80
+- don't pack Text::Balanced, it's included in perl-5.8
+
+-------------------------------------------------------------------
+Mon Feb 25 14:51:10 CET 2002 - ro@suse.de
+
+- use defattr (-,root,root) 
+- remove x-bits from files before build
+
+-------------------------------------------------------------------
+Tue Nov  7 12:27:56 CET 2000 - ro@suse.de
+
+- renamed package perl_prd to perl-Parse-RecDescent 
+- added build root
+
+-------------------------------------------------------------------
+Tue Jun  6 13:19:49 CEST 2000 - ro@suse.de
+
+- created package version 1.78 
+

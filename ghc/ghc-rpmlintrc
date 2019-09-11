@@ -1,0 +1,8 @@
+addFilter("devel-file-in-non-devel-package")
+addFilter("static-library-without-debuginfo")
+# ghc-compiler has devel-dependency
+addFilter("devel-dependency")
+# Regrettably, upstream does not provide man pages for all executables
+addFilter("no-manual-page-for-binary")
+# Prevent warning about ghc containing no binary (it is a metapackage)
+addFilter("no-binary")

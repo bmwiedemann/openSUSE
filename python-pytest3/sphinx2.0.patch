@@ -1,0 +1,24 @@
+From 134b957bf42ef92f892ace04651c87ab6d09999f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 14 Mar 2019 12:15:05 +0100
+Subject: [PATCH] Remove deprecated Sphinx directive add_description_unit()
+
+Partial solution for https://github.com/pytest-dev/pytest/issues/4912
+---
+ doc/en/conf.py             | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/4912.trivial.rst
+
+diff --git a/doc/en/conf.py b/doc/en/conf.py
+index 74a43596e..5daa15a06 100644
+--- a/doc/en/conf.py
++++ b/doc/en/conf.py
+@@ -335,7 +335,7 @@
+ def setup(app):
+     # from sphinx.ext.autodoc import cut_lines
+     # app.connect('autodoc-process-docstring', cut_lines(4, what=['module']))
+-    app.add_description_unit(
++    app.add_object_type(
+         "confval",
+         "confval",
+         objname="configuration value",

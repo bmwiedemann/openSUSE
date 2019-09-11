@@ -1,0 +1,70 @@
+From e430354b3628d250cba1e271ddc13024b4f59d8a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 24 Mar 2018 14:51:47 +0100
+Subject: [PATCH] Add suffix to the wayland session's name
+
+Sddm added the prefix previously, this is not the case anymore.
+---
+ plasmawayland.desktop.cmake | 46 +--------------------------------------------
+ 1 file changed, 1 insertion(+), 45 deletions(-)
+
+diff --git a/plasmawayland.desktop.cmake b/plasmawayland.desktop.cmake
+index 5d7db306..d2f98ee0 100644
+--- a/plasmawayland.desktop.cmake
++++ b/plasmawayland.desktop.cmake
+@@ -2,51 +2,7 @@
+ Exec=dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
+ TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
+ DesktopNames=KDE
+-Name=Plasma
+-Name[ar]=بلازما
+-Name[bs]=Plazma
+-Name[ca]=Plasma
+-Name[ca@valencia]=Plasma
+-Name[cs]=Plasma
+-Name[da]=Plasma
+-Name[de]=Plasma
+-Name[el]=Plasma
+-Name[en_GB]=Plasma
+-Name[es]=Plasma
+-Name[et]=Plasma
+-Name[eu]=Plasma
+-Name[fi]=Plasma
+-Name[fr]=Plasma
+-Name[gl]=Plasma
+-Name[he]=פלזמה
+-Name[hu]=Plasma
+-Name[id]=Plasma
+-Name[is]=Plasma
+-Name[it]=Plasma
+-Name[ja]=プラズマ
+-Name[ko]=Plasma
+-Name[lt]=Plasma
+-Name[nb]=Plasma
+-Name[nds]=Plasma
+-Name[nl]=Plasma
+-Name[nn]=Plasma
+-Name[pa]=ਪਲਾਜ਼ਮਾ
+-Name[pl]=Plazma
+-Name[pt]=Plasma
+-Name[pt_BR]=Plasma
+-Name[ru]=Plasma
+-Name[sk]=Plasma
+-Name[sl]=Plasma
+-Name[sr]=Плазма
+-Name[sr@ijekavian]=Плазма
+-Name[sr@ijekavianlatin]=Plasma
+-Name[sr@latin]=Plasma
+-Name[sv]=Plasma
+-Name[tr]=Plama
+-Name[uk]=Плазма
+-Name[x-test]=xxPlasmaxx
+-Name[zh_CN]=Plasma
+-Name[zh_TW]=Plasma
++Name=Plasma (Wayland)
+ Comment=Plasma by KDE
+ Comment[ar]=بلازما كدي
+ Comment[bs]=Plazma od strane KDe
+-- 
+2.16.2
+

@@ -1,0 +1,1292 @@
+-------------------------------------------------------------------
+Mon Mar 11 11:13:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 22:07:12 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.31.92:
+  + By mistake, 2.31.90 re-introduced a bug, as master didn't have
+    the revert for "atkimplementor: use the G_DEFINE_INTERFACE
+    macro to declare it as interface in the introspection".
+
+-------------------------------------------------------------------
+Wed Feb 13 19:59:41 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.31.90:
+  + AtkText: Add ScrollSubstringTo and ScrollSubstringToPoint
+    methods to AtkText.
+  + Build - meson:
+    - Make atk work as a subproject.
+    - Use an autotools compatible
+      compatibility_version/current_version on macOS.
+    - Fix usage of glib as a subproject dependency.
+    - Replace shared_library by library.
+  + Build - Visual Studio: Add build instructions for Visual
+    Studio, as now is done via Meson.
+  + Documentation:
+    - Move atk_relation_set_contains_target to correct doc section.
+    - Improve documentation for AtkText method return values.
+  + Misc: atkplug, atksocket: Fix -Wredundant-decls.
+  + Updated translations.
+- Add meson_test macro, run tests during build.
+
+-------------------------------------------------------------------
+Sun Sep  9 08:49:19 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix "atk 2.29.2 is reported not to work any more"
+    (glgo#GNOME/atk#1).
+
+-------------------------------------------------------------------
+Tue Aug 28 22:55:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.29.92:
+  + Improve the documentation slightly.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 19 22:49:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.29.2:
+  + Add ScrollTo and ScrollToPoint methods to AtkComponent.
+  + Build: Require a more recent version fo Meson, 0.46.0.
+  + Misc: Documentation, introspection, and versioning fixes.
+
+-------------------------------------------------------------------
+Wed Apr 25 10:51:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.29.1:
+  + Important note: this is the first release without autotools
+    support. From now on only meson would be supported.
+  + Bugfixing: Setting accessible-role does not work (bgo#794513).
+  + Build, autotools: Remove autotools support (bgo#795315).
+  + Build, meson:
+    - Fix linker options on Darwin (bgo#795065).
+    - Follow meson_options convention (bgo#795301).
+  + Updated translations.
+- Following upstream changes, pass docs=true and introspection=true
+  to meson.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:41:32 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Tue Mar 13 09:27:28 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.28.1:
+  + meson: fix version numbering. Roll new release to include it.
+- Drop atk-2.28.0.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Mar 12 09:19:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + bgo#791020: Remove list association from
+    ATK_ROLE_DESCRIPTION_{TERM,VALUE}.
+  + Updated translations.
+- Add atk-2.28.0.patch: Call it 2.28.0 in meson.build, same as the
+  tarball is called and what configure.ac defines.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:22:58 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  2 02:27:01 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.27.1:
+  + Build: meson, tracked by bug 785802:
+    - Add option to disable introspection.
+    - Fix .rc generation in Meson builds.
+  + Build (Visual Studio): Enhance security of x64 binaries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov  1 10:03:06 UTC 2017 - fezhang@suse.com
+
+- Update to version 2.26.1:
+  + Build: meson, tracked by bgo#785802
+    - Add option to disable introspection.
+    - Fix .rc generation in Meson builds.
+  + Build: (Visual Studio)
+    - Enhance security of x64 binaries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 10:44:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.26.0:
+  + Build: meson on Windows, tracked by bgo#785802 (not fully fixed
+    yet):
+    - Force-include msvc_recommended_pragmas.h on MSVC.
+    - tests: Fix build on pre-C99.
+    - meson: Build .rc file on Windows.
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Drop conditional gnome-common BuildRequires and autogen call,
+  drop other conditional tweaks for obsolete versions of openSUSE.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Fri Sep  8 22:18:56 UTC 2017 - jengelh@inai.de
+
+- Update package summaries and RPM category.
+  Replace old RPM macros by new constructs.
+  Avoid running fdupes across hardlink boundaries.
+
+-------------------------------------------------------------------
+Mon Aug 14 19:22:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.90:
+  + Bugfixing: bgo#689810: Move include guards out to enable GCC
+    optimisation.
+  + Build (meson):
+    - Keep the version in sync with Autotools.
+    - Add atkversion.h to introspection build.
+  + Build (visual studio):
+    - Adapt to the Python-field glib-genmarshal.
+    - Adapt to new glib-genmarshal command line.
+    - Use PythonDir instead of PythonPath.
+    - Integrate introspection builds.
+    - Don't build introspection by default.
+    - Make marshal generation more robust.
+  + Misc: Update AUTHORS file.
+
+-------------------------------------------------------------------
+Thu May 25 10:07:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.2:
+  + bgo#781715: Crash under atk_gobject_accessible_dispose().
+  + Build (general/autotools):
+    - Add ATK_UNAVAILABLE macro.
+    - Use template files for the ATK enumerations.
+    - Convert atkversion.h.in to UTF-8 encoding.
+    - Include the marshallers header, not the source.
+    - Add buildir to the docs directories.
+    - Update deprecation warnings symbols.
+    - Simplify GObject dependency discovery.
+  + Build (meson):
+    - Bug 782871: Add meson build system.
+    - Dist the Meson files.
+    - Use the appropriate soversion.
+    - Use the appropriate GETTEXT_PACKAGE.
+    - Install atk.h.
+    - Only depend on generated header.
+  + Cleaning:
+    - Remove atk.spec.in.
+    - Remove uninstalled pkg-config file.
+    - Remove unused script for bundling ATK on Windows.
+    - Remove ChangeLog.
+    - Remove local introspection.m4.
+  + Docs:
+    - Modernise the API reference:
+      . Use XInclude.
+      . Stop using SGML mode with XML files.
+      . Drop version.xml and use the gtk-doc package entities.
+    - Update the README mentioning Meson, Ninja, and cleaning a
+      little.
+    - Remove empty overrides file.
+  + Gobject introspection: Mark unbindable functions as 'skip.
+  + Misc: Update git ignore file.
+  + New Relations and Roles:
+    - bgo#748384: Add ATK_ROLE_FOOTNOTE
+    - bgo#781587: Add error-message, error-for, details and
+      details-for-relation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 17 23:17:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.24.0:
+  + Build, MSVC: Support Visual Studio 2017.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:17:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.23.4:
+  + Build, MSVC:
+    - Remove atk-install.props's on re-generation.
+    - Makefile.msvcproj, Makefile-newvs.am: Update from GLib.
+    - Move files to win32.
+  + Docs:
+    - Fix typo.
+    - bgo#772236: change id of the atkobject chapter needed
+      case-insensitive filesystems.
+  + Misc: Use Unicode apostrophe in a translatable string.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 13:50:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.22.0:
+  + Add more options to XGETTEXT_OPTIONS in po/Makevars.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 13 11:34:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.21.90:
+  + Add some missing argument (out) annotations (bgo#764883).
+  + Add Language headers to po files.
+  + MSVC/win32 fixes.
+- Move AUTHORS ChangeLog NEWS README to doc subpackage.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:31:41 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 11:37:56 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 12:12:21 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.19.92:
+  + Build improvements:
+    - bgo763212: Fix gettext domain after recent changes.
+    - Fix builddir ≠ srcdir in autogen.sh.
+    - MSVC builds: Re-arrange include paths.
+  + Cleaning: atkregistry: remove code not being compiled.
+  + Updated translations.
+- Re-enable translation-update-upstream BuildRequires and
+  executionion: upstream fixed the gettext domain to be atk10
+  again.
+
+-------------------------------------------------------------------
+Mon Feb 15 21:28:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.19.90:
+  + bgo#755548: atktablecell: use content of the pointer instead of
+    pointer itself.
+  + bgo#760323: Use upstream gettext intead glib-gettext.
+  + Build/MSVC/win32 improvements.
+  + Updated translations.
+- Disable translation-update-upstream BuildRequires and execution:
+  Upstream changed from atk10 to atk, for which we have no updated
+  translations. This in turn breaks the build.
+
+-------------------------------------------------------------------
+Mon Sep 21 15:18:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.18.0:
+  + Build: Improvements on MSVC Build infrastructure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 12:38:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.17.90:
+  + Documentation:
+    - Replace mentions of 'state-changed' with 'state-change'.
+    - Fixed some tiny typos.
+  + Build/win32 improvements:
+    - Use Pattern Rules on build/Makefile-newvs.am.
+    - Tidying and cleaning .vcxproj.filters generation. Fixes
+      bgo#748176: out-of-tree distcheck fails in build/win32.
+    - Removed GCC requirement.
+  + "install" Projects renamed to "atk-install".
+  + Misc: set proper file permission to source files.
+
+-------------------------------------------------------------------
+Fri May 15 10:54:20 UTC 2015 - dimstar@opensuse.org
+
+- Fix baselibs.conf: the package keyword is redundant.
+
+-------------------------------------------------------------------
+Fri Mar 20 23:43:41 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.16.0:
+  + Bug fixed: Fix a couple of GTK-Doc comment blocks
+    (bgo#746459).
+  + Visual Studio support:
+    - Speed Up Release Builds.
+    - Fix and improve .pdb Generation.
+    - "Install" .pdb Files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 08:47:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.15.91:
+  + autogen.sh: stop using deprecated gnome-autogen.sh.
+  + configure.ac: Stop using deprecated GNOME-specific autoconf
+    macros.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 28 15:33:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.15.4:
+  + AtkRole: bgo#742806: Add new roles for fractions, roots,
+    subscripts, and superscripts.
+
+-------------------------------------------------------------------
+Thu Dec 18 02:58:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.15.3:
+  + AtkState: Add ATK_STATE_READ_ONLY (bgo#665598).
+  + Bugs fixed:
+    - Unref STATE_TYPE class ref after using it at
+      state_type_get_name.
+    - AtkTable: Added missing ":" on one gi annotation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 28 19:01:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.15.2:
+  + AtkState:
+    - bgo#739981: Add ATK_ROLE_STATIC and clarify ATK_ROLE_TEXT.
+    - bgo#740152: Document the deprecation of ATK_STATE_ARMED.
+  + Documentation:
+    - bgo#740044: Fix some unclear language regarding
+      ATK_STATE_ACTIVE.
+    - bgo#740066: Improve documentation related to AtkState and
+      AtkStateSet.
+    - Extend atk_focus_tracker_notify deprecation documentation.
+    - Remove some in-code documentation, that is already part of
+      the docs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 18 18:02:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.15.1:
+  + Add ATK_STATE_HAS_TOOLTIP (bgo#407539).
+  + Documentation:
+    - Update README file.
+    - Update documentation to reflect an additional use case for
+      STATE_INDETERMINATE (bgo#737602).
+
+-------------------------------------------------------------------
+Mon Sep 22 14:41:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 12:48:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.13.90:
+  + GObject-introspection: some small changes needed by the MINGW
+    project.
+  + Doap file updated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 16 12:20:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.13.3:
+  + Fix GIR scanning for srcdir != buildir.
+  + Visual Studio support.
+  + Bugs fixed: bgo#729752, bgo#729922, bgo#730859.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul  5 13:01:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.13.2:
+  + Introspection:
+    - Add many missing "Returns: (nullable)" annotations
+      (bgo#72975).
+    - Fix GIR scanning for srcdir != builddir.
+  + Documentation: Adding further explanation on
+    atk_add_global_event_listener (bgo#729922).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  6 19:10:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.13.1:
+  + Use visibility attributes/__declspec (dllexport) to export
+    public symbols (bgo#728031).
+  + Add Simple Support for Visual Studio 2012 (bgo#691991).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 18:44:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 22:05:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.11.92:
+  + AtkValue:
+    - AtkValue heavily refactored. Available now so implementors
+      could start migration on next cycle (bgo#684576).
+    - Update atk.symbols, autotools for missing symbols and files
+      (bgo#726216).
+  + AtkTableCell: Added symbols to be exported at atk.symbols.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 10:33:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.11.90:
+  +  AtkComponent: Deprecate get_position and get_size in favor of
+     get_extents.
+  + AtkTable: Deprecate all index-based methods.
+  + AtkTableCell: bgo#651353: Add AtkTableCell.
+  + Documentation:
+    - Document that atk_component_contains has a default
+      implementation.
+    - Document AtkTableCell.
+    - Update AtkTable documentation after AtkTableCell addition.
+    - Document AtkRegistry (already existed but not properly
+      included on the documentation).
+    - API reference categorized (now easier to read).
+    - ATK overview added.
+    - Added some previously forgotten symbols (thanks to
+      atk-unused.txt).
+
+-------------------------------------------------------------------
+Tue Feb  4 17:22:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.11.6:
+  + AtkText:
+    - bgo#723292: Getting the localized role name fails for
+      ATK_ROLE_EDITBAR.
+    - bgo#653293: text-insert and text-remove are again detailed
+      signals. Document it.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 18:34:49 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.11.5:
+  + MSVC Builds: Rework Introspection Build and other miscellaneous
+    fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 17 19:33:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.4:
+  + AtkRole: add roles for description lists (bgo#720065).
+  + Deprecations:
+    - Deprecate table properties that depend on the row/column
+      number (bgo#476674).
+    - kill AtkMisc (bgo#652798).
+    - Deprecate connect/remove_property_change_handler.
+    - Deprecate atk_role_register.
+  + Documentation:
+    - improve documentation for AtkObject::property-change
+      (bgo#644747).
+    - Improved AtkUtil documentation.
+    - Updated new symbols sections on documentation.
+    - Not using GTK-Doc tag "Virtual" anymore, as is deprecated.
+  + Build fixes (bgo#644756, bgo#652965).
+  + Visual C++ Studio usage fixes.
+  + Misc bug fixes: bgo#572489, bgo#653293, bgo#720095.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 29 13:23:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.3:
+  + Need API to get the document's current page number and page
+    count (bgo#709214).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 19 19:31:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.2:
+  + AtkRole:
+    - bgo#709106: add media (audio and video) roles.
+    - bgo#712586: new ATK roles for ARIA roles (plus rating).
+  + AtkState:
+    - bgo#712576: add ATK_STATE_CHECKABLE.
+    - bgo#712581: add ATK_STATE_HAS_POPUP.
+  + AtkDocument:
+    - bgo#709106: add page-changed-signal.
+    - Deprecated atk_document_get_document and
+      atk_document_get_document_type.
+    - Added testdocument on tests directory.
+  + Documentation:
+    - Update documentation for selected_link method and property.
+    - Improve documentation of AtkAttribute and AtkAttributeSet.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 29 19:06:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.1:
+  + bgo#684667: Improve AtkObject::children-changed documentation.
+  + bgo#709351: new role ATK_ROLE_TITLE_BAR.
+  + bgo#710463: new role ATK_ROLE_BLOCK_QUOTE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 17:54:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.10.0:
+  + Documentation: improve documentation for
+    AtkObject::children-changed signal (bgo#684667).
+  + Visuall C++ Builds: Use Custom Build Rules.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 15:47:04 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.4:
+  + Deprecations:
+    - bgo#649575: Deprecate AtkObject::focus-event signal and all
+      related methods.
+    - bgo#653291: Deprecate 'text-changed' signal (in favour of
+      'text-insert' and 'text-remove').
+    - bgo#573539: Deprecate 'link-selected' property (at
+      AtkHyperlink).
+    - bgo#705580: Implement atk_text_get_string_at_offset and
+      deprecate old API.
+    - Remove 'text-update' signal (without deprecation, as was not
+      used and can be removed without breaking ABI/API).
+  + Tests:
+    - Refactored test suite.
+    - Split testrelation into testrelation and testrole.
+    - Execute all role tests, doesn't matter if one fails.
+  + Drop use of ATK_DISABLE_DEPRECATED guards in ATK.
+  + Updated documentations.
+  + Bugs fixed: bgo#684665, bgo#684705, bgo#491998, bgo#704092,
+    bgo#705290.
+
+-------------------------------------------------------------------
+Fri Jun 21 18:47:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.3:
+  + Removed pads from interfaces.
+  + Bugs fixed: bgo#697968, bgo#701503.
+
+-------------------------------------------------------------------
+Tue May 28 19:51:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.2:
+  + Updated documentations.
+  + Bugs fixed: bgo#699262, bgo#699368, bgo#699256, bgo#696466,
+    bgo#696409, bgo#700800.
+
+-------------------------------------------------------------------
+Tue Mar 26 11:45:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.0:
+  + Updated Visual C++ configuration files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 12:56:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.91:
+  + atkobject: added a explicit include to locale.h.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:49:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.90:
+  + Bugs fixed: bgo#694117.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:40:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.5:
+  + build: Use GNOME_COMPILE_WARNINGS
+  + atkhyperlink: Ensure we get even deprecated prototypes
+  + bgo#651343: add ATK_ROLE_LEVEL_BAR
+  + Prepare Visual Studio 2010 projects for Visual Studio 2012
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:29:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.4:
+  + Atk lacks any kind of version utilities (bgo#690379)
+  + AtkWindow requires documentation (bgo#656750).
+
+-------------------------------------------------------------------
+Sun Jan  6 12:27:04 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.7.3:
+  + Problems with the management of
+    ATK_STATE_SELECTABLE/ATK_STATE_SELECTED states at AtkObject
+    (bgo#689907)
+  + Port introspection fixes from Vala (bgo#686746).
+  + Add introspection support for Windows MSVC builds (bgo#689952)
+  + Other Visual C++ configuration files: Use MultiByte character
+    set.
+
+-------------------------------------------------------------------
+Sun Nov 25 18:12:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.7.2:
+  + Extend atk_add_global_event_listener in order to support signal
+    details (bgo#686801).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 18:54:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 19:14:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.91:
+  + Include C header information in GIR (bgo#635332)
+  + Added atk_relation_set_contains_target to atk.symbols
+    (bgo#672869)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 20:20:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.4:
+  + Required a method to check if a relationset contains a relation
+    taking into account relationship and target (bgo#672869).
+
+-------------------------------------------------------------------
+Tue Jun 26 17:59:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.3:
+  + Added extra doc on atk_remove_[key/global]_event_listener
+  + Fixed compilation with some gcc versions/combination of options
+  + Provide a default implementation for
+    atk_util_[add/remove]_global_event_listner
+  + "accessible-role" - invalid default value (bgo#478587).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:14:57 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.0:
+  + bgo#593220: Some typos in atktable signals (docs)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 15:25:33 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.95:
+  + bgo#671857: Add deprecation attributes to deprecated functions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 11 18:49:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.3.93:
+  + Revert "Using abstract atk_object_get_name to check
+    accessible-name notification" change made on 2.3.91. Related
+    to bmo#733712
+
+-------------------------------------------------------------------
+Tue Mar  6 08:03:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.91:
+  + bgo#665549: add sanity-check of atk_text_get_text
+  + bgo#668441: atk_action_get_keybinding docs are confusing and
+    need updating
+  + Using abstract atk_object_get_name to check accessible-name
+    notification
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:14:01 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.3.3:
+  + bgo#665870: About reducing accessible-name,
+    accessible-description change notifications
+  + Minor documentation updates.
+  + Updated Visual Studio configuration files.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Split typelib file into typelib-1_0-Atk-1_0 subpackage.
+- Add typelib-1_0-Atk-1_0 Requires to devel subpackage.
+- Remove glib2-devel Requires from devel subpackage: it will
+  automatically be added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Tue Sep 27 07:06:09 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 17:24:11 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.92:
+  + bgo#649577: atk_add_global_event_listener should only accept
+    ATK events
+  + Updated Visual Studio files due AtkWindow addition
+  + Minor documentation updates
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 17 13:29:59 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Enable atk-devel for all baselib arches
+
+-------------------------------------------------------------------
+Mon Sep  5 18:37:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.91:
+  + Documentation updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 20:51:39 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.1.5:
+  + bgo#638924: Add AtkWindow
+  + Fixing out of tree compilation on Win32
+  + Update README.txt
+  + Fixing release number of the new ATK roles added
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 25 07:52:45 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.0:
+  + bgo#654767: shlib downgrade at update atk-1.32.0 to atk-2.0.1
+  + bgo#651343: New ATK Roles
+  + Improved Visual C++ 2010 infrastructure
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:01:38 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.0.1:
+  + bgo#652205: Use const instead G_CONST_RETURN
+  + bgo#649307: Clarify AtkPlug and AtkSocket docs
+  + bgo#551489: Fix doc of atk_text_get_text_before_offset
+  + bgo#588083: Information about return value of some AtkText
+    methods can be clearer
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 12:26:54 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 23 10:14:34 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.91.92:
+  + bgo#638377: Add text_insert, text_remove, and text_update
+    signals
+  + Fix introspection for atk_text_get_bounded_ranges
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  1 14:12:00 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.33.6:
+  + Returns FALSE on atk_object_add_relationship if it is already
+    included
+  + bgo#640574: gobject-introspection annotation and documentation
+    fixes
+  + bgo#637663: Added atk_streamable_content_get_uri to
+    atk/atk.symbols
+  + Documentation fixes
+  + Build fixes
+  + Translation updates
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common and gtk-doc BuildRequires.
+  + Add call to ./autogen.sh.
+  + Enforce gtk-doc html generation by passing --enable-gtk-doc to
+    configure.
+
+-------------------------------------------------------------------
+Tue Dec 14 20:37:44 CET 2010 - vuntz@opensuse.org
+
+- Stop removing sr@Latn translation: it was added by
+  translation-update-upstream, and the script got fixed now.
+
+-------------------------------------------------------------------
+Tue Nov 16 14:37:23 UTC 2010 - coolo@novell.com
+
+- Remove sr@Latn as it's a duplicate of sr@latin and no valid
+  locale. It's added by translation-update-upstream.
+
+-------------------------------------------------------------------
+Mon Sep 27 11:17:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.32.0:
+  + bgo#616812: Implement AtkComponent for AtkPlug and AtkSocket.
+  + bgo#630097: include PANGO_UNDERLINE_ERROR in atktext.
+  + Code cleanups (including bgo#571622).
+  + Build fixes (including bgo#617851, bgo#621717).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:44:08 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+- Drop atk-gir-1.1.patch: we don't need it anymore, the gir file is
+  apparently regenerated.
+
+-------------------------------------------------------------------
+Tue Jul  6 23:26:44 UTC 2010 - dimstar@opensuse.org
+
+- Add atk-gir-1.1.patch to bump gir repository version to 1.1
+
+-------------------------------------------------------------------
+Tue Mar 30 01:40:47 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 15:09:04 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.29.92:
+  + bgo#608399: Correct the link of accessibility page.
+  + bgo#606888: Link libatk against libintl.
+  + Translation update.
+
+-------------------------------------------------------------------
+Tue Dec 22 13:21:54 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.29.4:
+  + Fixes: bgo#592146.
+- Add gobject-introspection-devel BuildRequires to enable
+  introspection support.
+- Remove empty atk package, and make libatk-1_0-0
+  Provides/Obsoletes it.
+
+-------------------------------------------------------------------
+Wed Dec 16 14:04:10 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+- Make doc subpackage a noarch package
+
+-------------------------------------------------------------------
+Wed Dec  2 12:28:51 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.29.3:
+  + Fixes: bgo#601552.
+
+-------------------------------------------------------------------
+Fri Nov 13 17:58:27 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.29.2:
+  + Fixes: bgo#569427.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 28 11:16:44 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 1.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 10 20:58:49 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.27.90:
+  + Fixes: bgo#575794, bgo#591105, bgo#489828.
+  + Translation update.
+
+-------------------------------------------------------------------
+Sun May  3 11:55:50 CEST 2009 - vuntz@novell.com
+
+- Don't remove .la files on openSUSE <= 11.1.
+
+-------------------------------------------------------------------
+Thu Apr 30 02:16:02 CEST 2009 - vuntz@novell.com
+
+- Pass --disable-static to configure and remove .la files.
+
+-------------------------------------------------------------------
+Mon Mar 16 18:33:49 CET 2009 - vuntz@novell.com
+
+- Update to version 1.26.0:
+  + Improve the documentation.
+  + Translation updates.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Dec 20 09:00:24 EST 2008 - mboman@suse.de
+
+- Update to version 1.25.2:
+  + Bugs Fixed: bgo#562204, bgo#505445, bgo#361757, bgo#478620, bgo#560156,
+    bgo#477708, bgo#478595, bgo#478583, bgo#480126.
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:53:56 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Sep 22 09:31:58 CDT 2008 - maw@suse.de
+
+- Update to version 1.24.0:
+  + Bug fixed: bgo#551474
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 31 17:46:33 CDT 2008 - maw@suse.de
+
+- Update to version 1.23.5:
+  + Bugs fixed: bgo#535704 and bgo#526752.
+
+-------------------------------------------------------------------
+Tue Jun 17 10:04:58 CEST 2008 - aj@suse.de
+
+- Do not build require gtk-doc.
+
+-------------------------------------------------------------------
+Tue May 13 21:43:46 CEST 2008 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Sun May 11 11:47:59 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit
+
+-------------------------------------------------------------------
+Tue Apr 29 16:57:53 CEST 2008 - cthiel@suse.de
+
+- obsolete atk-<arch> via baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Mar 13 13:12:14 CET 2008 - rodrigo@suse.de
+
+- Update to version 1.22.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Mar  3 17:24:35 CET 2008 - maw@suse.de
+
+- Update to version 1.21.92:
+  + Bug fixed: bgo#508846.
+
+-------------------------------------------------------------------
+Tue Jan 22 13:57:41 CST 2008 - maw@suse.de
+
+- Update to version 1.21.5:
+  + Bugs (bugzilla.gnome.org) fixed: #502840, #500978, and #477763
+- Split out a shared library subpackage.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:20:06 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.20.0:
+  * translation update
+
+-------------------------------------------------------------------
+Mon Aug  6 19:52:51 CEST 2007 - maw@suse.de
+
+- Split out a -lang subpackage
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Tue Jul 31 20:33:37 CEST 2007 - maw@suse.de
+
+- Update to version 1.19.6
+- Fix for bugzilla.gnome.org #460851
+- New API: atk_get_version.
+
+-------------------------------------------------------------------
+Thu Jul  5 19:08:04 CEST 2007 - maw@suse.de
+
+- Update to version 1.19.3
+- Fixes for bugzilla.gnome.org #434784, #382328, #418194, and
+  #413357.
+
+-------------------------------------------------------------------
+Wed Mar 21 12:16:45 CST 2007 - maw@suse.de
+
+- Update to version 1.18.0
+- Bugfixes, including bugzilla.gnome.org 367627, 398038, and
+  408527.
+
+-------------------------------------------------------------------
+Thu Mar  1 13:48:24 CET 2007 - sbrabec@suse.cz
+
+- Package be@latin translation (#248753).
+
+-------------------------------------------------------------------
+Fri Feb 16 11:28:19 CST 2007 - maw@suse.de
+
+- Update to version 1.17.0.
+
+-------------------------------------------------------------------
+Thu Dec  7 17:20:47 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Oct  2 19:02:54 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.12.3
+- Add missing signals to fix win32 build
+- New linguas: 'te' (Sunil Mohan Adapa), 'dz', 'ku' (Abel Cheung)
+- Implement AtkDocument signals
+- Update docs to include info on AtkDocument signals
+- Bugfixes: #357847, #340553, #346464, #352227
+
+-------------------------------------------------------------------
+Wed Aug 30 01:20:09 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.12.2
+- Documentation fixes
+- New language: Bengali
+
+-------------------------------------------------------------------
+Fri Jul 21 19:36:22 CEST 2006 - gekker@suse.de
+
+- Update to version 1.12.1
+  Changes in version 1.12.0: [ongoing]
+  * Added ATK_ROLE_FORM
+  * Added ATK_RELATION_DESCRIPTION_FOR, ATK_RELATION_DESCRIBED_BY
+
+  Changes in version 1.11.4:
+   * Enhanced documentation: gtk-doc API docs are
+     now at 100% coverage.
+   * allow for NULL in-params to AtkImage coordinate APIs.
+   * New langs: Georgian (ka)   Vladimir Sichinava
+                Oriya (or)      Gora Mohanty
+
+  Changes in version 1.11.3:
+   * Fix for localization bug #317458 from Kazuzi IWAMOTO.
+   * Included docs in tarball as appropriate.
+
+  Changes in version 1.11.0:
+   * Added new APIs - minor enhancements to AtkImage,
+   * AtkDocument, AtkObject, AtkComponent, AtkState.
+   * Significant API additions:  Added locale attribute to
+     AtkImage instances, and Document instances.
+   * Added the ability to assign weakly-typed attributes to
+     AtkObject as name-value pairs; also added similar
+     name-value pairs to AtkDocument for attributes which are
+     intended to be valid over the entire document.
+   * Minor documentation fixes (thanks to Bill Abt).
+   * Added 'tt' (Tatar) locale, Simos Xenitellis
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep  5 23:19:23 CEST 2005 - gekker@suse.de
+
+- Update to version 1.10.3
+
+-------------------------------------------------------------------
+Mon Sep  5 20:05:05 CEST 2005 - gekker@suse.de
+
+- Update to version 1.10.2 (GNOME 2.12)
+- Enable gtk-doc
+
+-------------------------------------------------------------------
+Tue Jun  7 18:45:16 CEST 2005 - gekker@suse.de
+
+- Update to version 1.10.1.
+
+-------------------------------------------------------------------
+Tue Mar  8 21:53:12 CET 2005 - gekker@suse.de
+
+- Update to version 1.9.1 (GNOME 2.10).
+
+-------------------------------------------------------------------
+Wed Dec 15 00:40:53 CET 2004 - gekker@suse.de
+
+-Update to 1.9.0
+
+-------------------------------------------------------------------
+Fri Nov 19 15:56:07 CET 2004 - gekker@suse.de
+
+- Update to 1.8.0
+
+-------------------------------------------------------------------
+Tue Oct 26 02:09:05 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Wed Aug 25 13:12:57 CEST 2004 - kukuk@suse.de
+
+- Avoid /bin/sh as PreRequire
+
+-------------------------------------------------------------------
+Thu Apr 15 18:03:47 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.6.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Sat Jan 10 20:47:18 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Oct 15 00:41:20 CEST 2003 - ro@suse.de
+
+- added c++ to neededforbuild
+
+-------------------------------------------------------------------
+Fri Oct 10 11:42:15 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.4.1.
+
+-------------------------------------------------------------------
+Mon Oct  6 14:29:56 CEST 2003 - kukuk@suse.de
+
+- Don't regenerate configure script new
+
+-------------------------------------------------------------------
+Fri Sep 26 14:25:04 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Fri Aug 15 15:01:30 CEST 2003 - sbrabec@suse.cz
+
+- Archive repacked to prevent high-UID failures.
+
+-------------------------------------------------------------------
+Mon Jul 14 19:43:00 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jul 14 13:58:31 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 12 14:26:48 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.2.4.
+- Require gnome-filesystem for atk-doc.
+
+-------------------------------------------------------------------
+Thu May 22 11:27:55 CEST 2003 - sbrabec@suse.cz
+
+- Require glib2-devel for atk-devel.
+
+-------------------------------------------------------------------
+Mon Feb 24 11:27:27 CET 2003 - sbrabec@suse.cz
+
+- Repacked atk-1.2.2.tar.bz2 (high UID and breaks Autobuild).
+
+-------------------------------------------------------------------
+Wed Jan 29 10:44:26 CET 2003 - hhetter@suse.de
+
+- updated to version 1.2.2
+
+-------------------------------------------------------------------
+Thu Jan 09 16:45:52 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 1.2.1.
+- Updated %files.
+
+-------------------------------------------------------------------
+Thu Aug 15 13:36:53 CEST 2002 - hhetter@suse.de
+
+- branch atk-doc
+
+-------------------------------------------------------------------
+Mon Aug  5 09:21:55 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.0.3, bugfix release for stable
+  series + documentation updates
+
+-------------------------------------------------------------------
+Tue Jun  4 08:59:12 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.0.2, bugfix release for stable
+  series
+
+-------------------------------------------------------------------
+Wed May 15 11:35:37 CEST 2002 - ro@suse.de
+
+- fix libdir usage
+
+-------------------------------------------------------------------
+Tue Apr 30 10:52:17 CEST 2002 - sf@suse.de
+
+- changed filelist form */lib to */%{_lib} to build on bilib archs
+
+-------------------------------------------------------------------
+Mon Apr  8 10:33:22 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.0.1
+
+-------------------------------------------------------------------
+Thu Jan 31 15:28:17 CET 2002 - hhetter@suse.de
+
+- updated to version 0.10 [gnome desktop alpha2]
+
+-------------------------------------------------------------------
+Fri Jan 11 11:07:31 CET 2002 - hhetter@suse.de
+
+- updated to version 0.8
+  * new functions
+  * numerous bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 27 12:26:27 CET 2001 - hhetter@suse.de
+
+- updated to version 0.7, changes include:
+  * Some restructuring of how change notification works, use not
+    properties in some cases.
+  * Various small API fixes and improvements
+  * Add key event hooks
+  * Documentation improvements
+
+-------------------------------------------------------------------
+Wed Nov 21 09:31:28 CET 2001 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform (atk0.6)
+- changed link order to build test libraries
+

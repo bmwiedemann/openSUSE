@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://gitlab.gnome.org/GNOME/totem-pl-parser.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/V_3_26_3</param>
+    <param name="versionformat">3.26.3</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

@@ -1,0 +1,23 @@
+From c452fda895ced17a87d6d06d7e12e14aecc0ae73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Tue, 4 Oct 2016 06:43:02 +0200
+Subject: [PATCH] Correct the icon location.
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 00afb7e..b0cc3a8 100755
+--- a/setup.py
++++ b/setup.py
+@@ -162,7 +162,7 @@
+          ['locale/de/LC_MESSAGES/paperwork.mo']),
+         (os.path.join(sys.prefix, 'share/applications'),
+          ['data/paperwork.desktop']),
+-        (os.path.join(sys.prefix, 'share/icons'),
++        (os.path.join(sys.prefix, 'share/icons/hicolor/scalable/apps'),
+          ['data/paperwork.svg']),
+     ],
+     scripts=[

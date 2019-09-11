@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Jun 29 12:28:55 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2.0.2.1 (fix aarch64 build):
+  * New Features and Bug Fixes
+    - updated SQLStatement::fetchColumns() to return an empty hash when no data is available (issue 1241)
+    - fixed a bug where DBI-SELECT-ROW-ERROR exceptions were being raised as MYSQL-SELECT-ROW-ERROR exceptions (issue 2542)
+  * Update from 2.0.2:    
+    - fixed formatting bugs in invalid value specification error messages
+    - updated configure to find and compile with MariaDB and Percona includes and libs
+    - placeholders and quotes in SQL comments are ignored
+    - fixed time column retrieval; the date component is now set to 1970-01-01
+    - fixed binary and varbinary column handling
+    - fixed the "optimal-numbers" option with decimal values with decimal points (issue 542)
+    - fixed returning result sets with duplicate column names (issue 832)
+- Switch source URL to github
+- Add aarch64 as 64-bit arch in spec file
+
+-------------------------------------------------------------------
+Mon Aug 31 03:29:24 UTC 2015 - normand@linux.vnet.ibm.com
+
+- add ppc64le as 64 bit architecture in spec file
+
+-------------------------------------------------------------------
+Thu Aug 21 15:13:21 UTC 2014 - petr@yarpen.cz
+
+- fixed license in spec file. GPL-2.0+ used only
+
+-------------------------------------------------------------------
+Fri Aug 15 16:19:34 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

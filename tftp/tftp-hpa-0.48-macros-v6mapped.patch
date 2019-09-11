@@ -1,0 +1,65 @@
+diff -up tftpd/tftpd.c.orig-v6map tftpd/tftpd.c
+--- tftpd/tftpd.c.orig-v6map	2012-12-11 17:06:53.156624476 +0100
++++ tftpd/tftpd.c	2012-12-11 17:13:08.705298341 +0100
+@@ -1263,6 +1263,21 @@ static void do_opt(const char *opt, cons
+ 
+ #ifdef WITH_REGEX
+ 
++#ifdef HAVE_IPV6
++static inline int is_v6_mapped(const union sock_addr* pa)
++{
++    const char v6_mapped[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++                               0x00, 0x00, 0xFF, 0xFF };
++
++    if (from.sa.sa_family != AF_INET6)
++        return 0;
++    if (memcmp(&pa->s6.sin6_addr.s6_addr, v6_mapped, sizeof(v6_mapped)))
++        return 0;
++
++    return 1;
++}
++#endif
++
+ /*
+  * This is called by the remap engine when it encounters macros such
+  * as \i.  It should write the output in "output" if non-NULL, and
+@@ -1274,10 +1289,20 @@ static int rewrite_macros(char macro, ch
+ {
+     char *p, tb[INET6_ADDRSTRLEN];
+     int l=0;
++    const union sock_addr *pfrom = &from;
++
++#ifdef HAVE_IPV6
++    union sock_addr ipv4_from;
++    if (is_v6_mapped(&from)) {
++        ipv4_from.si.sin_family = AF_INET;
++        memcpy(&ipv4_from.si.sin_addr, from.s6.sin6_addr.s6_addr + 12, 4);
++        pfrom = &ipv4_from;
++    }
++#endif
+ 
+     switch (macro) {
+     case 'i':
+-        p = (char *)inet_ntop(from.sa.sa_family, SOCKADDR_P(&from),
++        p = (char *)inet_ntop(pfrom->sa.sa_family, SOCKADDR_P(pfrom),
+                               tb, INET6_ADDRSTRLEN);
+         if (output && p)
+             strcpy(output, p);
+@@ -1287,14 +1312,14 @@ static int rewrite_macros(char macro, ch
+             return strlen(p);
+ 
+     case 'x':
+-        if (from.sa.sa_family == AF_INET) {
++        if (pfrom->sa.sa_family == AF_INET) {
+             if (output)
+                 sprintf(output, "%08lX",
+-                    (unsigned long)ntohl(from.si.sin_addr.s_addr));
++                    (unsigned long)ntohl(pfrom->si.sin_addr.s_addr));
+             l = 8;
+ #ifdef HAVE_IPV6
+         } else {
+-            unsigned char *c = (unsigned char *)SOCKADDR_P(&from);
++            unsigned char *c = (unsigned char *)SOCKADDR_P(pfrom);
+             p = tb;
+             for (l = 0; l < 16; l++) {
+                 sprintf(p, "%02X", *c);

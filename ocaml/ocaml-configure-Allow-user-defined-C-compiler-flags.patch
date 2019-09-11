@@ -1,0 +1,21 @@
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Tue, 29 May 2012 20:44:18 +0100
+Subject: configure: Allow user defined C compiler flags.
+
+---
+ configure |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/configure
++++ b/configure
+@@ -2002,6 +2002,10 @@ if $with_fpic; then
+   echo "#define CAML_WITH_FPIC" >> m.h
+ fi
+ 
++# Allow user defined C Compiler flags
++bytecccompopts="$bytecccompopts $CFLAGS"
++nativecccompopts="$nativecccompopts $CFLAGS"
++
+ # Finish generated files
+ 
+ cclibs="$cclibs $mathlib"

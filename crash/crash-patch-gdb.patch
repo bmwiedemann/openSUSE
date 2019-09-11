@@ -1,0 +1,32 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: Apply custom patches to gdb
+Patch-mainline: never
+
+Enhance the crash specfile to allow applying custom patches.
+
+Update jeffm 17 Sep 2014: What used to be in the series file is now in
+gdb-7.6-ppc64le-support.patch. We used to apply it unconditionally so
+we'll continue to do so.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ Makefile |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -263,8 +263,11 @@ gdb_unzip:
+ gdb_patch:
+ 	if [ -f ${GDB}.patch ] && [ -s ${GDB}.patch ]; then \
+ 		patch -p0 < ${GDB}.patch; cp ${GDB}.patch ${GDB}; fi
+-	if [ "${ARCH}" = "ppc64le" ] && [ -f ${GDB}-ppc64le-support.patch ]; then \
+-		patch -d ${GDB} -p1 -F0 < ${GDB}-ppc64le-support.patch ; \
++	patch -d ${GDB} -p1 -F0 < ${GDB}-ppc64le-support.patch ; \
++	if [ -f ${GDB}.series ]; then \
++		while read p; do \
++			patch -d ${GDB} -p1 -F0 < "$$p" ; \
++		done < ${GDB}.series ; \
+ 	fi
+ 	if [ "${ARCH}" = "x86_64" ] && [ "${TARGET}" = "PPC64" ] && [ -f ${GDB}-ppc64le-support.patch ]; then \
+ 		patch -d ${GDB} -p1 -F0 < ${GDB}-ppc64le-support.patch ; \

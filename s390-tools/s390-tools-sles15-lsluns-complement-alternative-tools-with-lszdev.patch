@@ -1,0 +1,104 @@
+Subject: [PATCH] [BZ 161888] lsluns: complement alternative tools with lszdev
+From: Jens Remus <jremus@linux.vnet.ibm.com>
+
+Description:  lsluns: Fix filter handling and documentation enhancements.
+Symptom:      lsluns lists all LUNs discovered in the FC SAN despite user
+              given filter(s) that do not match anything:
+                # lsluns -c 0.0.5080
+                    No valid combination found for adapter '0.0.5080'. Removing
+                    from resource list.
+                No valid parameters left, using all available resources in
+                system.
+                Scanning for LUNs on adapter 0.0.5090
+                ...
+
+              lsluns prints the message "No valid combination found for
+              {adapter|port} '...'. Removing from resource list." for every
+              adapter and port filter that does not contribute to the final
+              filtered results.
+
+              The formatting of the lsluns (8) man page is flawed.
+
+              lsluns is used in unexpected or even unsupported ways.
+Problem:      Scanning can be resource consumptive. So if a user already wants
+              to filter, possibly to reduce resource consumption, he does not
+              want to happen to scan everything and thus consume the worst case
+              of resources.
+
+              The message "No valid combination found for {adapter|port} '...'.
+              Removing from resource list." is potentially confusing. It is
+              unclear which combination is being referred to, especially if
+              only one single adapter or port filter was specified. There is
+              also no differentiation whether the denoted adapter or port
+              exists for its own or not. It just does not exist in the final
+              filtered results.
+
+              The formatting of the lsluns (8) man page is flawed.
+
+              The lsluns usage text and lsluns (8) man page lack the
+              information on the intended use cases, requirements, and
+              restrictions.
+Solution:     Print a message and exit when all filters match nothing.
+
+              Do not print confusing messages when a filter matches nothing.
+
+              Fix man page formatting.
+
+              Enhance usage text and man page. Clarify discovery use case,
+              relation to NPIV and to zfcp auto LUN scan. Point out
+              IBM Storwize configuration requirements. Document restriction to
+              zfcp-only systems.
+Reproduction: Use lsluns and specify adapter bus-ID and/or target port WWPN
+              filter(s) that do not match anything. Either specify inexistent
+              bus-IDs and/or WWPNs or invalid filter arguments.
+Upstream-ID:  e5f9279295780bd297f58cc23319878fadbc80f1
+Problem-ID:   161888
+
+Upstream-Description:
+
+              lsluns: complement alternative tools with lszdev
+
+              Signed-off-by: Steffen Maier <maier@linux.vnet.ibm.com>
+              Reviewed-by: Benjamin Block <bblock@linux.vnet.ibm.com>
+              Reviewed-by: Jens Remus <jremus@linux.vnet.ibm.com>
+              Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+
+
+Signed-off-by: Jens Remus <jremus@linux.vnet.ibm.com>
+---
+ zconf/lsluns   |    3 ++-
+ zconf/lsluns.8 |    7 +++++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+--- a/zconf/lsluns
++++ b/zconf/lsluns
+@@ -192,7 +192,8 @@ $PROGRAM_NAME -a [-c <busid>] ... [-p <w
+     This causes extra SAN traffic for each attached LUN.
+ 
+ For all other uses, such as listing attached LUNs or properties other than
+-encryption, use other tools such as "lszfcp -D" or "lsscsi -tv".
++encryption, use other tools such as "lszfcp -D" or "lsscsi -tv"
++or "lszdev zfcp-lun -ii".
+ 
+ Limit the listing by specifying one or more adapters (FCP device
+ bus-IDs) or target port WWPNs or both.
+--- a/zconf/lsluns.8
++++ b/zconf/lsluns.8
+@@ -48,7 +48,9 @@ For all other uses, such as listing atta
+ encryption, use other tools such as
+ .B lszfcp \-D
+ or
+-.BR "lsscsi \-tv" .
++.BR "lsscsi \-tv"
++or
++.BR "lszdev zfcp-lun \-ii" .
+ 
+ .SS Details on lsluns without -a option
+ 
+@@ -135,4 +137,5 @@ indicates that the device is encrypted.
+ 
+ .SH "SEE ALSO"
+ .BR lszfcp (8),
+-.BR lsscsi (8)
++.BR lsscsi (8),
++.BR lszdev (8)

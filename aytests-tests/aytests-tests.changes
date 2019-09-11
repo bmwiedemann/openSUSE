@@ -1,0 +1,654 @@
+-------------------------------------------------------------------
+Thu Sep 13 08:26:42 UTC 2018 - riafarov@suse.com
+
+- Check log messages in all log archives
+- 1.2.40
+
+-------------------------------------------------------------------
+Thu Aug 30 07:33:44 UTC 2018 - riafarov@suse.com
+
+- Look for unsupported sections message in all log files
+- 1.2.39
+
+-------------------------------------------------------------------
+Tue May 15 16:51:31 CEST 2018 - schubi@suse.de
+
+- Timing issue in systemctl: Dalay of service start.
+- Removed sles15_lvm_thin_pool from jenkins list because it cannot
+  run.
+- 1.2.38
+
+-------------------------------------------------------------------
+Mon Apr 16 15:13:14 CEST 2018 - schubi@suse.de
+
+- Removed libstorage-ng lock file /run/libstorage-ng/lock in order
+  to run "yast clone_system" while installation.
+- 1.2.37
+
+-------------------------------------------------------------------
+Thu Apr 12 15:17:58 UTC 2018 - igonzalezsosa@suse.com
+
+- Add a new scenario using a LVM setup with a thin pool
+  (bsc#1086596).
+- 1.2.36
+
+-------------------------------------------------------------------
+Tue Apr  3 06:54:16 UTC 2018 - riafarov@suse.com
+
+- Remove FW_LOG_ACCEPT_CRIT from lvm profile
+- 1.2.35
+
+-------------------------------------------------------------------
+Mon Mar 26 15:33:12 UTC 2018 - cwh@suse.com
+
+- Adapted btrfs_snapshots.sh to the new format used in fstab.
+- 1.2.34
+
+-------------------------------------------------------------------
+Mon Mar 12 14:57:40 CET 2018 - schubi@suse.de
+
+- Removed profile_sections.sh from sles_network.rb test due missing
+  firewall settings. Test sles.rb is already calling this check.
+- 1.2.33
+
+-------------------------------------------------------------------
+Wed Mar  7 12:04:13 CET 2018 - schubi@suse.de
+
+- Renaming base product name (SLES15 -> SLES) (bsc#1084259)
+- 1.2.32
+
+-------------------------------------------------------------------
+Wed Mar  7 09:32:05 CET 2018 - schubi@suse.de
+
+- Adapting firewall to SLES15.
+- 1.2.31
+
+-------------------------------------------------------------------
+Tue Mar  6 14:02:10 CET 2018 - schubi@suse.de
+
+- Adapted testcases. (tftp-server, removed ca-management,...)
+- 1.2.30
+
+-------------------------------------------------------------------
+Wed Feb 28 16:56:21 UTC 2018 - riafarov@suse.com
+
+- Adjust firewall.sh for firewalld
+- 1.2.29
+
+-------------------------------------------------------------------
+Wed Feb 28 12:39:39 UTC 2018 - riafarov@suse.com
+
+- Adjust lvm ay test for ntp and firewall changes
+- 1.2.28
+
+-------------------------------------------------------------------
+Wed Feb 22 12:17:07 UTC 2018 - riafarov@suse.com
+
+- Adjust tftp test for chrony
+- 1.2.27
+
+-------------------------------------------------------------------
+Thu Feb 22 09:58:17 UTC 2018 - igonzalezsosa@suse.com
+
+- Test whether AutoYaST is able to determine the proper filesystem
+  type when is missing in the profile (bsc#1075203).
+- 1.2.26
+
+-------------------------------------------------------------------
+Wed Feb 14 09:56:18 UTC 2018 - knut.anderssen@suse.com
+
+- Sort services check for SuSEFirewall2 profiles
+- 1.2.25
+
+-------------------------------------------------------------------
+Tue Feb  6 14:17:25 CET 2018 - schubi@suse.de
+
+- Adapted sles_network_without_hosts, sles_mini_network,
+  sles_insserv, storage_ng_automated_lvm,
+  storage_ng_automated_partitioning, storage_ng_lvm,
+  storage_ng_minimal, storage_ng_plain_partitions,
+  storage_ng_raid to SLES15.
+- 1.2.24
+
+-------------------------------------------------------------------
+Mon Feb  5 13:29:23 CET 2018 - schubi@suse.de
+
+- Corrected path of jenkins_tests.
+- 1.2.23
+
+-------------------------------------------------------------------
+Mon Feb  5 12:39:36 CET 2018 - schubi@suse.de
+
+- Added file jenkins_tests which contains the name of test cases.
+  These tests will be run continuously on the jenkins nodes.
+- 1.2.22
+
+-------------------------------------------------------------------
+Mon Feb  5 11:04:23 CET 2018 - schubi@suse.de
+
+- Adapting sles_network to SLES15.
+- 1.2.21
+
+-------------------------------------------------------------------
+Wed Jan 31 15:19:29 UTC 2018 - igonzalezsosa@suse.com
+
+- Test if partitions and logical volumes are shrinked when needed
+  (bsc#1078418).
+- 1.2.20
+
+-------------------------------------------------------------------
+Wed Jan 31 09:02:34 CET 2018 - schubi@suse.de
+
+- sles_network: Disabling pam_nologin while installing an image.
+- 1.2.19
+
+-------------------------------------------------------------------
+Tue Jan 30 10:43:24 CET 2018 - schubi@suse.de
+
+- Adapting to SLES15.
+- 1.2.18
+
+-------------------------------------------------------------------
+Mon Jan 22 17:09:14 CET 2018 - schubi@suse.de
+
+- Disabling pam_nologin while installing an image.
+- 1.2.17
+
+-------------------------------------------------------------------
+Wed Jan 17 17:11:29 UTC 2018 - knut.anderssen@suse.com
+
+- Fixed SuSEFirewall2 based profile (fate#323460)
+- 1.2.16
+
+-------------------------------------------------------------------
+Wed Jan 17 15:39:04 CET 2018 - schubi@suse.de
+
+- Adapting upgrade to SLES15.
+- 1.2.15
+
+-------------------------------------------------------------------
+Tue Jan 16 14:10:32 UTC 2018 - knut.anderssen@suse.com
+
+- Fix test for root ssh authorized_keys file once the postinstall
+  script moves the file to authorized_keys.aytests (bsc#1075830).
+- 1.2.14
+
+-------------------------------------------------------------------
+Mon Jan 15 10:50:31 CET 2018 - schubi@suse.de
+
+- Moved sles12 test to general sles test.
+- 1.2.13
+
+-------------------------------------------------------------------
+Tue Jan  9 07:34:43 UTC 2018 - knut.anderssen@suse.com
+
+- Check firewalld support (fate#323460) and SuSEFirewall2 profiles
+  backward compatibility.
+- 1.2.12
+
+-------------------------------------------------------------------
+Tue Dec 19 10:29:41 UTC 2017 - igonzalezsosa@suse.com
+
+- Check chrony suport (FATE#323432) and disklabel element handling
+  (bsc#1073307)
+- 1.2.11
+
+-------------------------------------------------------------------
+Tue Nov 28 11:21:04 UTC 2017 - knut.anderssen@suse.com
+
+- Check that ssh authorized keys for root are written and exported
+  correctly (bsc#1066342)
+- 1.2.10
+
+-------------------------------------------------------------------
+Tue Oct 10 14:13:39 CEST 2017 - schubi@suse.de
+
+- The user has defined that no subvolumes will be created.
+  (bnc#1059617)
+- 1.2.9
+
+-------------------------------------------------------------------
+Fri Sep 22 08:06:15 UTC 2017 - knut.anderssen@suse.com
+
+- Check that /etc/hosts is not blanked out if there is no <host>
+  section defined in the profile (bsc#1058396)
+
+-------------------------------------------------------------------
+Thu Aug 10 11:22:57 CEST 2017 - schubi@suse.de
+
+- Added testcase for classes. (bnc#1051483)
+- 1.2.8
+
+-------------------------------------------------------------------
+Mon Jul 31 12:37:54 UTC 2017 - knut.anderssen@suse.com
+
+- Check that default host entries are not removed from /etc/hosts
+  (bsc#1039851)
+- 1.2.7
+
+-------------------------------------------------------------------
+Fri Jul 21 10:33:18 UTC 2017 - mfilka@suse.com
+
+- Tests for running first stage only
+  - configuring DNS
+  - configuring Routing
+  - configuring /etc/hosts
+  - configuring NICs
+- 1.2.6
+
+-------------------------------------------------------------------
+Wed Jul 19 10:22:21 CEST 2017 - schubi@suse.de
+
+- Added syslinux to package selection of sles12_network test.
+  This is needed for kdump/bootmanager in second stage.
+- 1.2.5
+
+-------------------------------------------------------------------
+Mon Jul 17 16:59:22 CEST 2017 - schubi@suse.de
+
+- Added syslinux to package selection of sles12 test.
+  This is needed for kdump/bootmanager in second stage.
+
+-------------------------------------------------------------------
+Tue Jul 11 09:44:17 CEST 2017 - schubi@suse.de
+
+- Added testcase for ftp server (bnc#1047232)
+- 1.2.4
+
+-------------------------------------------------------------------
+Fri Jul  7 12:58:25 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a test to check RAID based installation with storage-ng
+  (fate#318196)
+- 1.2.3
+
+-------------------------------------------------------------------
+Wed Jul  5 10:49:22 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a test for checking that all sections are included when
+  cloning the system with storage-ng (fate#318196)
+- 1.2.2
+
+-------------------------------------------------------------------
+Wed Jun 28 11:43:09 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a test for customized partitioning using LVM (bsc#1044697).
+- 1.2.1
+
+-------------------------------------------------------------------
+Mon Jun 26 15:21:18 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a test to find out whether the profile was set according to
+  the profile (bsc#1023774)
+- 1.2.0
+
+-------------------------------------------------------------------
+Tue Jun 20 10:25:04 CEST 2017 - schubi@suse.de
+
+- Adding additional network device.
+- 1.1.13
+
+-------------------------------------------------------------------
+Fri Jun 16 15:16:20 UTC 2017 - igonzalezsosa@suse.com
+
+- Add test case for automated partitioning
+- Add test case for customized partitioning using the new
+  storage-ng layer. Currently, only plain partitions are supported
+  (bsc#1044697).
+- 1.1.12
+
+-------------------------------------------------------------------
+Wed Jun 14 09:35:15 CEST 2017 - schubi@suse.de
+
+- Report shrinked partitions if there is not enough space.
+  (bnc##1039528)
+- 1.1.11
+
+-------------------------------------------------------------------
+Mon Jun 12 16:17:28 CEST 2017 - schubi@suse.de
+
+- Added missed ntp_conf.sh
+- Fix in ntp.conf produces correct entries in AutoYaST configuration
+  file.(bnc#1040350)
+- 1.1.10
+
+-------------------------------------------------------------------
+Tue Jun  6 14:22:37 CEST 2017 - schubi@suse.de
+
+- Settings are written to /etc/ntp.conf correctly.(bnc#1040350)
+- 1.1.9
+
+-------------------------------------------------------------------
+Wed May 24 12:28:10 CEST 2017 - schubi@suse.de
+
+- Fixed tests for running under SLES12-SP3
+- 1.1.8
+
+-------------------------------------------------------------------
+Thu May 18 06:26:27 UTC 2017 - knut.anderssen@suse.com
+
+- bsc#1035908
+  - Added test to check that the installation doesn't crash with an
+    invalid registration URL but reports it instead.
+- 1.1.7
+
+-------------------------------------------------------------------
+Tue May 16 10:33:28 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a test case to check if storage-ng proposal settings are
+  overriden by the profile
+- 1.1.6
+
+-------------------------------------------------------------------
+Fri May 12 15:22:58 CEST 2017 - schubi@suse.de
+
+- Fix for sles12-sp2 build
+- 1.1.5
+
+-------------------------------------------------------------------
+Tue May  9 15:26:06 CEST 2017 - schubi@suse.de
+
+- Added testcase for storage-ng proposal (storage_ng_minimal)
+  This test needs rubygem-aytests (>= 1.0.41)
+- 1.1.4
+
+-------------------------------------------------------------------
+Wed Apr 12 07:48:50 UTC 2017 - mfilka@suse.com
+
+- bnc#1026027
+  - Check if yast still needs insserv
+- 1.1.3
+
+-------------------------------------------------------------------
+Tue Jan 24 10:42:01 UTC 2017 - igonzalezsosa@suse.com
+
+- Check that product renames information is read from libzypp
+  (FATE#321751)
+- 1.1.2
+
+-------------------------------------------------------------------
+Thu Dec 15 10:35:18 CET 2016 - schubi@suse.de
+
+- Downloading and executing post scripts.
+- 1.1.1
+
+-------------------------------------------------------------------
+Fri Nov  4 15:48:54 UTC 2016 - igonzalezsosa@suse.com
+
+- Bump package version to avoid conflicts with SLE-12-SP2
+  and SLE-12-SP2-CASP branches
+- 1.1.0
+
+-------------------------------------------------------------------
+Thu Nov  3 12:44:20 UTC 2016 - igonzalezsosa@suse.com
+
+- Add tests for Btrfs subvolumes handling (FATE#320342 and
+  FATE#317775)
+- 1.0.40
+
+-------------------------------------------------------------------
+Fri Oct 14 16:03:35 UTC 2016 - igonzalezsosa@suse.com
+
+- Set a timeout for all kind of messages
+- 1.0.38
+
+-------------------------------------------------------------------
+Thu Oct 13 12:11:24 UTC 2016 - igonzalezsosa@suse.com
+
+- Set errors and messages timeout during upgrade to SLE 12
+- 1.0.37
+
+-------------------------------------------------------------------
+Mon Sep 26 17:31:12 CEST 2016 - schubi@suse.de
+
+- Added Kdump tests (bnc#997448)
+- 1.0.36
+
+-------------------------------------------------------------------
+Mon Sep 19 14:16:02 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test to check that authorized_keys files are handled during
+  autoinstallation and autoupgrade (FATE#319471)
+- 1.0.35
+
+-------------------------------------------------------------------
+Mon Sep  5 14:27:28 CEST 2016 - schubi@suse.de
+
+- Checking user entries for duplicate UIDs or usernames.
+  (bnc#996823, bnc#995397)
+- 1.0.34
+
+-------------------------------------------------------------------
+Tue Aug 30 10:15:57 UTC 2016 - igonzalezsosa@suse.com
+
+- FATE#319716:
+  - Adapt upgrade scenario to use the fake registration server
+  - Fix test about disabling self-update
+- 1.0.33
+
+-------------------------------------------------------------------
+Mon Aug 29 14:47:56 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test about add_on_products.xml file handling
+  (bsc#992608, bsc#991935)
+- FATE#319716:
+  - Add the self-update test to the upgrade scenario
+  - Test whether the self-update feature can be disabled
+  - Fix self-update test through a fake registration server
+- 1.0.32
+
+-------------------------------------------------------------------
+Fri Aug 12 08:31:55 UTC 2016 - igonzalezsosa@suse.com
+
+- Check whether invalid languages are handled properly (bsc#991001)
+- 1.0.31
+
+-------------------------------------------------------------------
+Thu Aug 11 07:13:58 UTC 2016 - igonzalezsosa@suse.com
+
+- Adapt self-update test to support multiple URLs in log messages
+  (FATE#319716)
+- 1.0.30
+
+-------------------------------------------------------------------
+Wed Aug  3 09:01:25 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test case to check SCC/SMT support in self-update
+  (FATE#319716)
+- Add a test case to check certificates handling during
+  communication with registration servers (bsc#989787)
+- 1.0.29
+
+-------------------------------------------------------------------
+Mon Aug  1 10:50:08 CEST 2016 - schubi@suse.de
+
+- Added testcase for empty scripts. (bnc#986049)
+- 1.0.28
+
+-------------------------------------------------------------------
+Wed Jul 13 16:19:21 CEST 2016 - schubi@suse.de
+
+- sles12_network.xml: Fixed signature-handling in add-on products.
+- Version 1.0.27
+
+-------------------------------------------------------------------
+Wed Jul 13 14:09:43 UTC 2016 - igonzalezsosa@suse.com
+
+- Test that kernel arguments can be added to bootloader
+  configuration (related to bsc#968192)
+- Version 1.0.26
+
+-------------------------------------------------------------------
+Wed Jul 13 12:49:30 CEST 2016 - schubi@suse.de
+
+- unsupported_modules.sh: Fixed zgrep
+- Version 1.0.25
+
+-------------------------------------------------------------------
+ Jun 23 13:10:58 CEST 2016 - schubi@suse.de
+
+- Removing unneeded repository during the upgrade process.
+  (Connection to the http server could not exists anymore)
+- Version 1.0.24
+
+-------------------------------------------------------------------
+Mon Jun 20 15:36:58 CEST 2016 - schubi@suse.de
+
+- Reporting unsupported modules has been moved to first
+  installation stage.
+- Version 1.0.23
+
+-------------------------------------------------------------------
+Mon Jun 20 10:50:37 CEST 2016 - schubi@suse.de
+
+- Added ssh_import to expected AutoYaST file sections.
+- Version 1.0.22
+
+-------------------------------------------------------------------
+Wed Jun 15 16:33:21 CEST 2016 - schubi@suse.de
+
+- Enable network in minimal/rules testcase.
+- Version 1.0.21
+
+-------------------------------------------------------------------
+Fri May 20 14:44:48 CEST 2016 - schubi@suse.de
+
+- Fixed new layout/location of unsupported sections.
+  (bnc#955878)
+- Version 1.0.20
+
+-------------------------------------------------------------------
+Thu Apr 28 15:52:38 CEST 2016 - schubi@suse.de
+
+- Fixed section <signature-handling> in <add-on> section.
+- Version 1.0.19
+
+-------------------------------------------------------------------
+Mon Apr 11 09:09:22 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test to check that password fields in /etc/shadow are
+  not empty (bsc#973639, bsc#974220, bsc#971804 and bsc#965852)
+- Version 1.0.18
+
+-------------------------------------------------------------------
+Fri Apr  1 09:21:08 CEST 2016 - schubi@suse.de
+
+- Unify tests: Taking zgrep which can handle compressed AND
+  uncompressed files.
+- Version 1.0.17
+
+-------------------------------------------------------------------
+Thu Mar 24 16:11:57 CET 2016 - schubi@suse.de
+
+- Upgrade: Removing yast2-ca-management code from inst-sys which
+  has been added by the DUD.
+  (bnc#0)
+- Version 1.0.16
+
+-------------------------------------------------------------------
+Fri Mar 18 09:02:17 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test to check if AutoYaST rules were correctly evaluated
+  (bsc#963137).
+- Version 1.0.15
+
+-------------------------------------------------------------------
+Tue Feb 23 17:09:17 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test to check that packages notifications are shown
+  (bsc#943806)
+- Version 1.0.14
+
+-------------------------------------------------------------------
+Tue Feb 23 09:34:43 CET 2016 - schubi@suse.de
+
+- Fixed require paths.
+- Version 1.0.13
+
+-------------------------------------------------------------------
+Fri Feb 19 12:45:57 CET 2016 - schubi@suse.de
+
+- Reducing restarting service test to dbus service only in order
+  to run the tests on SLES-12-SP2 in openQA too.
+- Version 1.0.12
+
+-------------------------------------------------------------------
+Fri Feb 19 09:40:52 CET 2016 - schubi@suse.de
+
+- Creating uncommon user home directory (like /admin) has crashed
+  the installation (bnc#966867)
+- Version 1.0.11
+
+-------------------------------------------------------------------
+Thu Feb 11 09:59:56 UTC 2016 - igonzalezsosa@suse.com
+
+- Add a test to check that firewall settings are merged
+  during upgrade (related to bsc#963585).
+- Version 1.0.10
+
+-------------------------------------------------------------------
+Thu Jan 21 13:58:44 CET 2016 - schubi@suse.de
+
+- Checking if ca management has reported an error and has gone on.
+  (bnc#962328)
+- Version 1.0.9
+
+-------------------------------------------------------------------
+Thu Jan 21 09:41:48 CET 2016 - schubi@suse.de
+
+- LVM: Add tests for value "auto" for "size" parameter.
+  (bnc#962034)
+- Version 1.0.8
+
+-------------------------------------------------------------------
+Wed Jan 20 11:05:53 UTC 2016 - igonzalezsosa@suse.com
+
+- Add tests to check that obsolete and unsupported sections
+  are reported to the user (bsc#962526).
+- Version 1.0.7
+
+-------------------------------------------------------------------
+Tue Jan 19 10:32:19 UTC 2016 - igonzalezsosa@suse.com
+
+- Add tests to check the schema that was generated during
+  installation (/root/autoinst.xml).
+- Add a new test case which install additional YaST packages
+  to check the schema.
+- Version 1.0.6
+
+-------------------------------------------------------------------
+Thu Jan 14 12:49:07 CET 2016 - schubi@suse.de
+
+- Download and run AutoYaST init scripts.
+- Version 1.0.5
+
+-------------------------------------------------------------------
+Tue Dec 22 22:59:01 UTC 2015 - igonzalezsosa@suse.com
+
+- Fix basic SLES12 tests disabling network interface renaming
+- Replace MAC address with the variable {{MAC1}}
+- Version 1.0.4
+
+-------------------------------------------------------------------
+Tue Dec 22 08:14:24 UTC 2015 - igonzalezsosa@suse.com
+
+- Add tests to check udev network persistent rules (bsc#956605)
+- Version 1.0.3
+
+-------------------------------------------------------------------
+Tue Dec 22 00:50:05 UTC 2015 - igonzalezsosa@suse.com
+
+- Dependency on aytests is not mandatory anymore.
+- Version 1.0.2
+
+-------------------------------------------------------------------
+Mon Dec 21 09:03:08 UTC 2015 - igonzalezsosa@suse.com
+
+- Replaces %IP% for {{REPO1_URL}} variable in sles12.rb test.
+- Version 1.0.1
+
+-------------------------------------------------------------------
+Mon Dec 14 14:44:22 UTC 2015 - igonzalezsosa@suse.com
+
+- Initial version
+- Based on autoyast2-integrationtest by cwh

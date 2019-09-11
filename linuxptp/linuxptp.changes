@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Wed Jul 24 12:04:35 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Nov 26 12:43:06 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to stable release 2.0:
+  * Peer-to-Peer Transparent Clock support
+  * End-to-End Transparent Clock support
+  * Unicast support
+  * Support for all three Telecom Profiles
+    + T-REC-G.8265.1-201407
+    + T-REC-G.8275.1-201606
+    + T-REC-G.8275.2-201708
+- Changes for version 1.9.2:
+  * Fixed stack buffer overflow in the new NetSync Monitor code (since 1.9)
+  * Command line support for every configuration variable via long options
+  * IPoIB interface support
+  * Improved Delay Request performance at high message rates
+  * Improved UTC offset tracking
+  * Multiple TLV support
+  * NetSync Monitor protocol support
+  * Peer to peer one-step
+  * Support for bonded interfaces
+- No longer use _service
+
+-------------------------------------------------------------------
+Thu Feb  8 12:08:37 UTC 2018 - jbohac@suse.com
+
+- change the versioning scheme, resulting in version
+  1.8+git65.g303b08c 
+
+-------------------------------------------------------------------
+Thu Feb  8 08:51:50 UTC 2018 - mpluskal@suse.com
+
+- Update to version v1.8+git.20180101 (bsc#1050682):
+  * clock: Don't forward management requests to UDS port.
+  * Add an acknowledgment in the readme for Meinberg.
+  * phc2sys: update '-s' option
+  * sk: don't leak socket when reading of IB GUID fails.
+  * Add compile time sanity check for interface name lengths.
+  * phc_ctl: fix adj command to accept negative offset.
+  * port: return timestamping iface in port properties
+  * phc2sys: re-create clock clkid and servo when phc index changed
+  * phc2sys: split servo_add from function clock_add
+  * transport: pass struct interface to transport_open
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:15 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Jul 10 11:45:01 UTC 2017 - jengelh@inai.de
+
+- Remove future goals from description.
+
+-------------------------------------------------------------------
+Fri Jun 30 06:45:51 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Use kernel-devel instead full source
+
+-------------------------------------------------------------------
+Thu May 25 12:20:17 UTC 2017 - lpechacek@suse.com
+
+- upgraded to 1.8
+- new tools: timemaster, phc_ctl
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Thu Mar 27 12:16:20 UTC 2014 - lpechacek@suse.com
+
+- updated How To to mention ethtool (bnc#865358)
+
+-------------------------------------------------------------------
+Wed Mar 26 16:51:51 CET 2014 - jbohac@suse.cz
+
+- convert to systemd (bnc#865355)
+  - two separate services (ptp4l and phc2sys) instead of linuxptp
+  - two separate config files:
+    /etc/syscconfig/ptp4l and /etc/sysconfig/phc2sys instead of
+    /etc/sysconfig/linuxptp
+
+-------------------------------------------------------------------
+Tue Feb 18 18:59:56 CET 2014 - jbohac@suse.cz
+
+- upgraded to 1.4
+- fixed FSF address in init file
+
+-------------------------------------------------------------------
+Fri Jul 26 10:12:08 UTC 2013 - lpechacek@suse.com
+
+- added Linux PTP Howto
+
+-------------------------------------------------------------------
+Thu Jun  6 09:26:54 UTC 2013 - lpechacek@suse.com
+
+- adjusted sysconfig defaults to match changes made to phc2sys
+  behavior
+
+-------------------------------------------------------------------
+Wed Jun  5 16:00:18 CEST 2013 - jbohac@suse.cz
+
+- upgraded to 1.2.git74e70372
+
+-------------------------------------------------------------------
+Tue Apr 23 16:50:16 CEST 2013 - jbohac@suse.cz
+
+- upgraded to 1.2
+
+-------------------------------------------------------------------
+Mon Mar 25 15:44:25 UTC 2013 - lpechacek@suse.com
+
+- reviewed by Security (bnc#809336)
+
+-------------------------------------------------------------------
+Fri Mar 15 11:23:35 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No indication of a GPL version 2 only license. Also, use SPDX format
+  where possible
+
+-------------------------------------------------------------------
+Wed Mar  6 10:44:35 UTC 2013 - lpechacek@suse.com
+
+- upgraded to 1.1
+
+-------------------------------------------------------------------
+Fri Feb 15 05:37:47 UTC 2013 - lpechacek@suse.com
+
+- initial packaging
+

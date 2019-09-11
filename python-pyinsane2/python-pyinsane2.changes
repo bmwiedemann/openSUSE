@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Jul 30 13:36:39 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.0.13
+  - WIA: Support of Canon MG3051: Fix getting data from the drivers
+    (a Python byte buffer was reused instead of being duplicated)
+  - WIA: Support of Epson Perfection scanners: Handle resolution range correctly
+    (3 values provided instead of 2)
+  - Sane: Support of Epson DS-310: Do not try to set a value on an option that
+    can have only one value. Sane driver may return an error.
+  - WIA: Support of Epson WorkForce ES-300W:
+    * call to seek(0) wasn't handled properly
+    * scan must be done on root WIAItem
+  2018-03-05 : 2.0.12:
+  - Build method has been changed: Use now "make install" instead of
+    "python3 ./setup.py install"
+  - WIA: Add traces (from the C++ code, but using the Python logging module)
+  - WIA: Fix behavior regarding feeders (Brother MFC-7360N for instance)
+  2018-02-22 : 2.0.11:
+  - Add pyinsane2.__version__
+  - Sane: Normalize behavior between single and multi scan: Single scan must raise a StopIteration
+    after the first EOFError
+  - Sane/daemon: remove trace that reduced badly the performances
+  - Build: Add Makefile (if working directly on the Git version, please use now
+    'make install' instead of 'python3 ./setup.py install')
+  2017-07-11 : 2.0.10:
+  - Now works with 'setup.py develop' (thanks to Matthieu Coudron)
+  - WIA: Some drivers (Lexmark for instance) returns WIA_ERROR_PAPER_EMPTY when
+    calling transfer->Download() instead of returning a shorted image (like HP)
+  - MacOSX + Sane: disable dedicated process workaround (doesn't work)
+  - WIA: Minor optimisation (Use collections.deque() instead of list.pop())
+  - Sane/exit(): Exit gracefully
+  2016-12-06 : 2.0.9:
+  - Sane: Add workaround for scanners Samsung M288x: Option 'source' is actually
+    called 'doc-source'
+  2016-12-04 : 2.0.8:
+  - WIA: Set various options to default values to avoid problems when scanning
+  - WIA: Fix ADF support: clearly tell the driver we intend to scan pages one
+    by one (required for support of Brother MFC-7360N)
+  - WIA: Workaround: Prioritize source options over scanner options (required
+    for support of Brother MFC-7360N)
+  - WIA: Fix behavior of PyinsaneImageStream::Write() (required for support of
+    Brother MFC-7360N)
+  - Sane/Add workaround for Lexmark MFP: the option "resolution" is actually
+    called "scan-resolution"
+  - set_scanner_opt(): Fix the list of exceptions to catch when actually setting the option
+  - Windows/WIA: Fix: If scanning only one page, at the end of page, don't request the next page
+  - Windows/WIA: Make setting options more resilient to crappy drivers
+  - Windows/WIA: Add __str__() on most objects (useful for diagnostic)
+
+-------------------------------------------------------------------
+Sun Nov 20 08:40:30 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.0.6
+
+-------------------------------------------------------------------
+Sun Nov  6 18:32:29 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 2.0.2 generated with py2pack
+

@@ -1,0 +1,76 @@
+Index: output.c
+===================================================================
+--- output.c.orig
++++ output.c
+@@ -835,7 +835,7 @@ void top_sites_table(int flag)
+    while(cnt--)
+    {
+       /* calculate totals */
+-      switch ( (int)((HNODEPTR)(*pointer)->flag) )
++      switch ((*pointer)->flag)
+       {
+          case OBJ_REG:   h_reg++;  break;
+          case OBJ_GRP:   h_grp++;  break;
+@@ -1025,7 +1025,7 @@ void top_urls_table(int flag)
+    while (cnt--)
+    {
+       /* calculate totals */
+-      switch ( (int)((UNODEPTR)(*pointer)->flag) )
++      switch ((*pointer)->flag)
+       {
+          case OBJ_REG:  u_reg++;  break;
+          case OBJ_GRP:  u_grp++;  break;
+@@ -1228,12 +1228,12 @@ void top_entry_table(int flag)
+    cnt=a_ctr; pointer=u_array;
+    while (cnt--)
+    {
+-      if ( (int)((UNODEPTR)(*pointer)->flag) == OBJ_REG )
++      if ((*pointer)->flag == OBJ_REG )
+       {
+-         if ( (u_int64_t)(((UNODEPTR)(*pointer))->entry) )
+-            {  u_entry++; t_entry+=(u_int64_t)(((UNODEPTR)(*pointer))->entry); }
+-         if ( (u_int64_t)(((UNODEPTR)(*pointer))->exit)  )
+-            { u_exit++;   t_exit +=(u_int64_t)(((UNODEPTR)(*pointer))->exit);  }
++         if ((*pointer)->entry)
++            {  u_entry++; t_entry+=((*pointer))->entry; }
++         if ((*pointer)->exit  )
++            { u_exit++;   t_exit +=(*pointer)->exit;  }
+       }
+       pointer++;
+    }
+@@ -1332,7 +1332,7 @@ void top_refs_table()
+    while(cnt--)
+    {
+       /* calculate totals */
+-      switch ( (int)((RNODEPTR)(*pointer)->flag) )
++      switch ((*pointer)->flag)
+       {
+          case OBJ_REG:  r_reg++;  break;
+          case OBJ_HIDE: r_hid++;  break;
+@@ -1497,7 +1497,7 @@ void top_agents_table()
+    while(cnt--)
+    {
+       /* calculate totals */
+-      switch ( (int)((ANODEPTR)(*pointer)->flag) )
++      switch ((*pointer)->flag)
+       {
+          case OBJ_REG:   a_reg++;  break;
+          case OBJ_GRP:   a_grp++;  break;
+@@ -1650,7 +1650,7 @@ void top_search_table()
+    cnt=tot_num=a_ctr; pointer=s_array;
+    while(cnt--)
+    {
+-      t_val+=(u_int64_t)(((SNODEPTR)(*pointer))->count);
++      t_val+=(*pointer)->count;
+       pointer++;
+    }
+ 
+@@ -1764,7 +1764,7 @@ void top_users_table()
+    while(cnt--)
+    {
+       /* calculate totals */
+-      switch ( (int)((INODEPTR)(*pointer)->flag) )
++      switch ((*pointer)->flag)
+       {
+          case OBJ_REG:   i_reg++;  break;
+          case OBJ_GRP:   i_grp++;  break;

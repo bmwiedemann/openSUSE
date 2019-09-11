@@ -1,0 +1,546 @@
+-------------------------------------------------------------------
+Wed Jul  3 05:58:21 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.8.8
+  - Do not show "Rewrap on resize" option for vte>=0.58: it's been
+    deprecated, rewrapping on resize will always be enabled. (bxo#15562)
+  - Drop support of Unicode encodings other than UTF-8 (bxo#15377)
+  - Fix the size of drop-down window after it's been in fullscreen mode
+    (bxo#15240)
+  - Convert LF to CR when feeding text - this fixes pasting text to some
+    apps (see https://gitlab.gnome.org/GNOME/vte/issues/106)
+  - Save accelerators map on exit (bxo#15201)
+  - Add support for the Tab key in shortcuts (by default, GTK doesn't
+    allow that)
+  - Do not resize the window when it's vertically maximized (bxo#10551)
+  - Add action to switch to last active tab (bxo#15201)
+  - Respect Xfce monospace font setting (bxo#15202)
+  - Dropdown window was session saved and restored as a normal window if
+    it was the only one (bxo#11362)
+  - Preferences: Align controls on the General tab
+  - Implement "Unsafe Paste" dialog (bxo#13252)
+  - Enable Ctrl+(Shift)+Tab as Next/Prev Tab shortcuts (bxo#15092)
+  - Add an option to use system theme colors for text and background 
+    (bxo#14808)
+  - Search dialog improvements: Enable "Wrap around" by default; Make
+    "Find Next"/"Find Previous" menu items respect search settings; Make
+    buttons use menu item accelerators; Allow to set opacity (min 10%) 
+    (bxo#15124)
+  - Fix handling of OSC-10 escape sequence (bold text color) (bxo#15019)
+  - Refine the wording for "opacity not available" (bxo#14904)
+  - Add a space character after a dragged filename or URL (bxo#14849)
+  - Support monitoring of the terminalrc file even it's a symlink 
+    (bxo#14698)
+  - Fix the "Close tab" button: When the "Close tab" button got clicked in
+    the "Confirm close" dialog, the entire window (instead of just the
+    current tab) got closed (bxo#14645)
+  - Preferences: remove dependency on libxfce4ui
+  - Fix typo in the .desktop file (bxo#14594)
+  - Improve .desktop files for GNOME (bxo#14575)
+  - Fix a small typo in the manpage
+  - JIT compile regexes (taken from gnome-terminal). This allows to
+    recognize longer and more complex URLs.
+  - Update terminal regexes from gnome-terminal (regex: Allow apostrophes
+    in URLs, except when enclosed between them)
+  - Allow to move tabs between windows by dragging them onto the terminal
+    area
+  - When detaching a tab from a drop-down window, resize the new window to
+    the default geometry
+  - Reset activity indicator for the active tab when focusing window
+  - Distinguish terminal settings from the actual terminal entry in the
+    menu (bxo#14456)
+  - When closing an active tab, switch to the previously active one
+  - Tab title color feature improvements: add action, restore the color
+    when unclosing a tab, fix the color picker dialog's name, add Reset
+    button
+  - Some parts of the --help output were not translated
+  - Restore terminal colors when unclosing a tab
+  - Translation updates
+- Cleaned up spec file
+- Added bcond to build with git master sources
+
+-------------------------------------------------------------------
+Tue Feb 12 15:05:10 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fix issue with xfce4-terminal-settings.desktop entries boo#1125146
+- Dropped obsolete macros
+- Added %license macro
+
+-------------------------------------------------------------------
+Wed May 16 09:40:26 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.8.7.4
+  - Tab became active if unclosed to the left of the current tab
+  - Fix new tab being one pixel short under some GTK themes (e.g.
+    Greybird) which led to changing the window geometry and losing
+    a row (bxo#13263)
+  - Resolve deprecation of vte_terminal_match_set_cursor_type()
+  - Add --preferences command line option and corresponding .desktop
+    file: this allows to open a standalone Preferences dialog from
+    Xfce Settings (bxo#13249)
+  - Add command line options for setting text (foreground) and
+    background colors: --color-text and --color-bg (bxo#4887)
+  - Add "Copy Input" action: it shows a popover and allows to copy
+    the input to all tabs within the current window (bxo#10047)
+  - Update URLs to use https protocol
+  - Add info on accels.scm to the man page
+  - Reduce the Preferences dialog height
+  - First show the terminal and then update its settings (bxo#14322)
+  - Add command line option --active-tab which allows to specify
+    active tab within a window. It also allows to keep the active tab
+    when restoring a saved Xfce session.
+  - Convert "Relaunch" dialog to GtkInfoBar to make it less intrusive
+  - Add tooltips for "Set Title" popover elements
+  - Resolve the warnings gcc8 has introduced
+  - Translation updates
+- changes in 0.8.7.3
+  - Fix drop-down terminal hotkey (bxo#14289)
+  - Suppress gdk_keyboard_(un)grab deprecation warnings
+  - Restore "Allow bold text" option (bxo#14292)
+  - Fix app crash when running a non-existing command (bxo#14295)
+  - Correct foreground process check for async child spawn
+  - Add an option to disable "Relaunch" dialog pop-up (bxo#14287)
+- changes in 0.8.7.2
+  - Fix gdk_keyboard_(un)grab deprecation warnings
+  - Suppress gtk_status_icon_* deprecation warnings
+  - Use async spawn method for VTE >= 0.48 (bxo#14249)
+  - Fix handling of tabs reordering (bxo#14278)
+  - Update window actions and active tab indication on reordering tabs
+
+-------------------------------------------------------------------
+Wed May 16 05:16:06 UTC 2018 - bosim@opensuse.org
+
+- update to version 0.8.7.1:
+  * Fix Alt+n shortcuts for switching tabs; also, update tabs menu after
+    reordering tabs (bxo#14247, boo#1092655)
+
+-------------------------------------------------------------------
+Fri Mar  2 12:43:10 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.8.7:
+  * Update man page: add a note about config file changes being
+    picked up
+  * Update 'Read-Only' checkbox state when switching between tabs
+  * Use Ctrl+click to directly open color editor in Preferences (bxo#13715)
+  * Add a setting to control drop-down window vertical position (bxo#13722)
+  * Allow per-terminal configuration of 'scroll on output' mode
+  * Add "Copy as HTML" to Edit and context menus (VTE 0.50 required)
+  * Add support for utmp file updates (build using --with-utempter
+    parameter) (bxo#13710)
+  * Fix negative geometry offsets handling (bxo#13753)
+  * Focus the terminal after closing Set Title popover (bxo#13754)
+  * Request confirmation when closing window or tab which has a
+    running process (bxo#13781)
+  * Add an option to open new tab to the right of the current tab (bxo#13821)
+  * Fix VTE critical message when a terminal has no pty
+  * Allow to restart a process after it exited or was killed
+    (for -H/--hold) (bxo#13820)
+  * Expose default terminal directory setting to Preferences: if
+    set, will be used by new terminals; current directory will be
+    used otherwise. MiscDefaultWorkingDir renamed to DefaultWorkingDir.
+  * Make use of VTE 0.52 new vte_terminal_get_scroll_on_output() API
+  * Add new tab to the currently active window, not to the last open (bxo#13891)
+  * Move slim tabs setting to the Appearance tab
+  * Add Audible and Visual bells configuration to Preferences (bxo#13874)
+  * Disable move tab actions when MiscCycleTabs is false and the tab
+    is in the  leftmost or rightmost position (bxo#13892)
+  * Try to retrieve current working directory from VTE (bxo#13902)
+  * Fix BSD build by adding missing include
+  * Bump required GTK+ version to 3.20.8 to resolve the problem with
+    Set Title dialog that is using GtkPopover (bxo#13996)
+  * Do not escape URL as libxfce4ui now does it (bxo#12715)
+  * Expose "middle mouse click to open URLs" setting to Preferences
+  * Fix handling empty $DISPLAY env var which may happen under
+    Wayland (bxo#14092)
+  * Update regex definitions from gnome-terminal: Disallow terminating
+    semicolon in URLs, Allow balanced pairs of square brackets in URLs
+  * Remove man page translation files as Transifex doesn't take care
+    of them (bxo#12938)
+  * Add option to control text blinking (VTE 0.51.3) (bxo#14127)
+  * Add "Bold is bright" option; remove "Allow bold text" option
+    (VTE 0.51.3)
+  * Add cell spacing options (VTE 0.51.3) (bxo#14127)
+  * Allow underscores that are part of tab titles to be shown in the
+    tabs menu
+  * Don't copy working directory to $PWD for vte >= 0.51.90
+  * Resolve deprecations of GDK functions
+  * Translation updates
+- remove obsoleted 0001-Revert-Fix-handling-email-addresses.patch
+
+-------------------------------------------------------------------
+Mon Dec 11 17:31:21 UTC 2017 - seife+obs@b1-systems.com
+
+- add 0001-Revert-Fix-handling-email-addresses.patch (boo#1071961,
+  bxo#14076) the "Fix handling email addresses" commit in 0.8.6
+  actually broke email address handling.
+
+-------------------------------------------------------------------
+Wed Nov 22 18:56:02 UTC 2017 - seife+obs@b1-systems.com
+
+- Update to version 0.8.6:
+  - Fix handling email addresses
+  - Allow per-tab configuration of dynamic tytle mode and initial
+    title by adding --dynamic-tytle-mode and --initial-title
+    options (bxo#2908)
+  - Migrate tab 'Set Title' dialog to a gtk popover (bxo#13522)
+  - Add option to select cursor foreground (text) color
+  - Fix drop-down terminal ignoring 'move to monitor with pointer'
+    option (bxo#13666)
+  - Disable Ctrl+PgUp/PgDn shortcuts with only one tab (bxo#10469)
+  - Fix negative dimensions GTK warning when running terminal with
+    --tab option
+  - Update regexes from gnome-terminal
+  - Fix --tab option broken lately (bxo#13587)
+  - Fix drop-down window positioning when using --zoom option
+  - Translation updates
+
+-------------------------------------------------------------------
+Fri Jun 16 07:02:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.5.1:
+  * Fix font settings load (bxo#13574).
+
+-------------------------------------------------------------------
+Sat May 20 18:14:32 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 0.8.5.
+  * Do not change drop-down window size when zooming in/out.
+  * Create terminal of desired size instead of default size of
+    80x24: this allows to avoid resizing the terminal right after
+    creation.
+  * Use default terminal geometry when --geometry parameter is used
+    but its value only contains X and Y offsets.
+  * Improve label layout in preferences dialog: restrict max width
+    to 80 chars.
+  * Add --minimize command line option.
+  * Calculate screen dimensions properly when having multiple
+    monitors.
+  * Prevent clipboard from being filled with garbage.
+  * Resolve deprecation warnings: gtk_show_uri_on_window,
+    gdk_screen_make_display_name, gdk_screen_get_width/height.
+  * Silence most of deprecation warnings that are not resolved.
+  * Make Preferences dialog app-global - the same dialog window
+    will be used by multiple terminal windows.
+  * Remove large space to the left of tab text when the text is too
+    short (this allows tabs to be smaller).
+  * Gtk3 required version bumped to 3.16.0.
+  * Fix memory leaks.
+  * Close Find dialog when closing parent terminal window.
+  * Close Set Title dialog when closing its corresponding tab.
+  * Translation updates: Catalan, Chinese (Taiwan), German, Greek,
+    Hebrew, Kazakh, Lithuanian, Norwegian Bokmål, Polish,
+    Portuguese (Brasil), Russian, Serbian, Slovenian, Swedish,
+    Thai, Ukrainian.
+- Changes in 0.8.4.
+  * Fixes related to fullscreen state and showing/hiding window in
+    drop-down mode.
+  * Fix incorrect window positioning when started in fullscreen
+    state.
+  * Add a separate Show window borders setting for drop-down mode.
+  * Make Double click chars setting more compact in the UI.
+  * Do not force show drop-down window on screen size change.
+  * Background image improvements: scale huge images to 8K when
+    loading from file (this reduces memory consumption); print a
+    warning if failed to open an image.
+  * Expose Slim tabs setting to Preferences.
+  * Translation updates: Bulgarian, Chinese (China), Chinese
+    (Taiwan), Croatian, Czech, Danish, Dutch, Finnish, French,
+    Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål,
+    Polish, Portuguese, Russian, Slovak, Spanish, Ukrainian.
+
+-------------------------------------------------------------------
+Wed Jan 25 07:23:11 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 0.8.3.
+  * Fix incorrect initial position of a drop-down window under
+    Unity.
+  * min-height/width CSS properties not available in old GTK
+    versions.
+  * Remove redundant set_window_geometry_hints() call.
+  * Add Help button to Set Title dialog.
+  * GtkColorButton show-editor property only available starting
+    with GTK 3.20.
+  * Watch for screen size changes to update drop-down window size
+    or position accordingly. Size change signal is emitted when
+    monitor resolution is changed or another monitor is connected.
+  * Make slim tabs even more slim.
+  * Translation updates: Chinese (China), Lithuanian, Thai.
+- Changes in 0.8.2.
+  * Add hidden option MiscSlimTabs to override huge gtk3 tabs
+    style.
+  * Temporarily show menubar with F10 even if it's hidden.
+  * Add "Run custom command instead of shell" feature.
+  * Fix segfault on dragging last window tab to another window.
+  * Add option for ambigouos-width characters (narrow/wide).
+  * Don't show palette when editing palette colors in preferences.
+  * Fix move dropdown window to monitor with pointer behavior.
+  * When un-closing a tab, set it active if it was active when it
+    got closed.
+  * Set locale as vte encoding in case encoding is not set in prefs
+    (support for running 'LANG=charset xfce4-terminal').
+  * Allow to specify text selection background color.
+  * Allow to select system-wide monospace font in preferences.
+  * Fix Alt+n shortcuts when starting with several tabs.
+  * Add option to automatically copy selection to the clipboard.
+  * Support background image transparency.
+  * Fix deprecation warnings.
+  * Support setting drop-down status bar icon with --icon option.
+  * Fix terminal geometry hints for GTK < 3.19.5.
+  * Translation updates: Arabic, Bulgarian, Catalan, Chinese
+    (China), Chinese (Taiwan), Croatian, Czech, Danish, Deutsch,
+    Dutch, French, Hebrew, Italian, Japanese, Kazakh, Korean,
+    Lithuanian, Malay, Norwegian Bokmål, Polish, Portuguese,
+    Portuguese (Brazil), Russian, Slovak, Spanish, Swedish,
+    Ukrainian.
+
+-------------------------------------------------------------------
+Fri Nov  4 20:47:17 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.8.1.
+  * Fix Ctrl press recognition for opening URIs with Ctrl+click.
+  * Set preferences dialog type hint to make it show on top.
+  * Fix toggling fullscreen mode with F11 for a drop-down window.
+  * Allow setting of empty shortcut for goto-tab actions.
+  * Resolve window manager warning: Buggy client sent a
+    _NET_ACTIVE_WINDOW message with a timestamp of 0.
+  * Fix drop-down window visibility check.
+  * Resolve some deprecation warnings.
+  * Fix drop-down window not shown on different workspaces.
+  * Add MiscUseShiftArrowsToScroll hidden option to allow
+    Shift+arrows one-line scroll (off by default).
+  * Allow user-defined color palettes - should be located under
+    ~/.config/xfce4/terminal/colorschemes/.
+  * Set window hints properly; show columns/rows when resizing.
+  * Translation updates: Chinese (China), Croatian, English
+    (Australia), French, Kazakh, Lithuanian, Malay, Polish,
+    Spanish, Ukrainian.
+
+-------------------------------------------------------------------
+Sun Oct 23 19:30:03 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.8.0.
+  * Move context menu zoom actions to a sub-menu.
+  * Fix some build-time deprecation warnings.
+  * Fix hiding of dropdown terminal.
+  * Fix setting focus to dropdown window.
+  * Fix "Always keep window on top" setting that was ignored.
+  * Show missing action icons in dropdown mode.
+  * Add rewrap on resize control option to Preferences.
+  * Add --show/hide-scrollbar command line options.
+  * Implement background image support; add BackgroundImageShading
+    setting for background image mode.
+  * Remove "Scrolling single line" option as the functionality is
+    implemented by vte.
+  * Add mouse-wheel binding for zoom: Shift + Ctrl + wheel up/down
+    controlled by a hidden option MiscMouseWheelZoom - ON by
+    default.
+  * Do not set DISPLAY variable in non-X11 environments (e.g.
+    Wayland).
+  * Fix memory leak when showing preferences dialog.
+  * Fix menubar text not visible with some themes.
+  * Fix vte "resize-window" signal handler.
+  * Fix notebook widget transparency seen under Unity.
+  * Make vte transparency work in Gnome under both X11 and Wayland.
+  * Show warning and disable Opacity control in Preferences if
+    window manager does not support compositing.
+  * Fix tab activity indication.
+  * Fix geometry positioning when a negative offset is used.
+  * Quote all file names/URIs drag-and-dropped to the terminal.
+  * Fix cursor focus.
+  * Translation updates: Bulgarian, Chinese (Taiwan), Croatian,
+    Czech, Dutch, English (Australia), French, German, Hebrew,
+    Japanese, Korean, Lithuanian, Malay, Polish, Portuguese,
+    Portuguese (Brazil), Russian, Slovak, Spanish, Swedish, Thai,
+    Ukrainian.
+
+-------------------------------------------------------------------
+Tue Oct 11 20:49:46 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.6.92.
+  * Fix geometry setting (default ot provided via the command line
+    option) for GTK 3.20.5.
+  * Remove "Update utmp/wtmp records when command is launched"
+    setting since the feature has been removed from vte.
+  * Replace deprecated GtkTable with GtkGrid in Preferences.
+  * Disable Zoom-In/Out actions on reaching zoom limits.
+  * Do not allow Reset in Read-Only mode.
+- Changes in 0.6.91.
+  * Fix solarized light theme colors.
+  * Fix huge size of Set Title dialog under wayland.
+  * Support wayland (resolve crashes and warnings).
+  * Improve handling negative x/y geometry positions.
+  * Fix scrollbar/menubar/toolbar incorrectly shown in dropdown
+    mode after window has been minimized/restored.
+  * Add ability to save terminal contents to a file.
+  * Prepare for upcoming vte regex API change.
+  * Fix Vte-WARNING related to regex.
+  * Implement Read-Only mode (user input disabled).
+  * Fix input focus lost issue after exiting a console app (e.g.
+    nano).
+  * Fix cursor not blinking when fg color = bg color.
+  * Enable configuration of a new tab working directory:
+    MiscDefaultWorkingDir option. If it is set (non-empty value),
+    new tabs and windows will use the dir specified as their
+    working dir. Otherwise, the behavior remains as is (current dir
+    will be used).
+  * Do not un-close tab that was moved to another window.
+  * Properly enable/disable F1 shortcut.
+  * Fix Preferences window hidden in fullscreen mode.
+  * Do not un-close tab that was detached to create another window.
+  * Fix incorrect update of go-to-tab menu.
+  * Add Undo Close Tab functionality: stores closed tabs in
+    chronological order; restores working directory, position in
+    the tabbar, custom title.
+  * Add Close Other Tabs functionality.
+  * Make terminal always drop down from the top of the screen.
+  * Create Alt+digit shortcuts if they haven't been loaded from
+    config file.
+  * Fix dropdown window animation; remove viewport widget.
+  * Code cleanup: Do not declare or define a reserved identifier.
+  * Add urgent bell functionality: MiscBellUrgent option.
+  * When detaching a tab, make new window respect original
+    geometry.
+  * Fix possible buffer overwrite issue.
+  * Keep rows number constant when adding/removing widgets such as
+    toolbar or tabbar.
+  * Make a tab close button icon a bit smaller.
+  * Add ability to switch tabs with a mouse scroll wheel.
+  * Fix selection characters override.
+  * Fix resize logic with tab.
+  * Translation updates: Bulgarian, Catalan, Chinese (China),
+    Chinese (Taiwan), Croatian, Czech, Dutch, English (Australia),
+    German, Hebrew, Japanese, Korean, Portuguese (Brazil), Russian,
+    Serbian, Spanish, Swedish, Turkish, Ukrainian.
+
+-------------------------------------------------------------------
+Wed Aug 10 20:48:58 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.6.90.
+  * Migrate to GTK+3/VTE3.
+  * Fix closing wrong tabs with Ctrl+Shift+W.
+  * Make close tab shortcut work for single tab.
+  * Add Ctrl+Shift+PgUp/PgDn shortcuts to move tabs left/right.
+  * Add support for unlimited scrollback.
+  * Fix actions applied to wrong tab after closing another one.
+  * Update intltool.
+  * Add Ctrl+Shift+S hotkey to set title.
+  * Expose MiscTabCloseMiddleClick option to Preferences.
+  * Fix terminal window not moved to foreground when using --tab
+    option.
+  * Respect Display window borders setting in drop-down mode.
+  * Apply opacity setting by chaging background color alpha value.
+  * Prevent characters from being hidden by block cursor.
+  * Fix in drop-down mode, "100% width" isn't really 100%.
+  * Add ShortcutsNoHelpkey option to disable F1 (help) shortcut key
+    and expose it to Preferences.
+  * Add support for magnet links.
+  * Expose MiscMouseAutohide option to Preferences.
+  * Fix terminal crash when starting with --geometry.
+  * Add ability to zoom in/out by pressing Ctrl +/-; add --font and
+    --zoom command line options.
+  * Expand zoom level.
+  * Add hidden option MiscMiddleClickOpensUri to control whether
+    middle click opens URI: if FALSE, Ctrl + left click is used for
+    that; default is FALSE.
+  * Fix compilation for vte < 0.44.
+  * Remove emulation setting and input methods menu as they are not
+    supported by vte.
+  * Do not allow creating multiple Set Title dialog windows.
+  * Remove Help button and add icon to Close button in Set Title
+    dialog.
+  * Add an icon to the search dialog close button.
+  * Rename UI setting from Transparency to Opacity.
+  * Update terminal website address in the About dialog.
+  * Fix crash on moving a tab from one window to another.
+  * Add tooltip for the Find toolbar button.
+  * Add setting to allow cursor blinking to Preferences.
+  * Add setting to change cursor shape to Preferences.
+  * Fix typo in the preferences dialog.
+  * Add some new encodings taken from gnome-terminal.
+  * Fix crash on setting encoding.
+  * Fix detach tab functionality with GTK>=3.16.
+  * Fix segfault when right/middle click on tab bar.
+  * Translation updates: Arabic, Asturian, Bulgarian, Catalan,
+    Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
+    Dutch, English (Australia), Esperanto, Finnish, French, German,
+    Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian,
+    Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål,
+    Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+    Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+    Ukrainian.
+- Change BuildRequires: pkgconfig(gtk+-3.0), pkgconfig(vte-2.91).
+- Remove BuildRequires: fdupes, update-desktop-files.
+- Don't install ChangeLog (it is useless).
+- Clean up the spec.
+
+-------------------------------------------------------------------
+Fri Dec 27 10:50:14 UTC 2013 - gber@opensuse.org
+
+- update to version 0.6.3
+  - improve URL matching (bxo#7959, bxo#9800)
+  - fix encoding menu creation (bxo#10395)
+  - added light solarized colorscheme (bxo#10286)
+  - fixed wrong foreground color in solarized dark (bxo#10285)
+  - fix terminal session restore (bxo#9732)
+  - translation updates
+- drop obsolete
+  xfce4-terminal-fix-up-the-encoding-menu-creation.patch
+
+-------------------------------------------------------------------
+Wed Oct 23 18:58:44 UTC 2013 - lazy.kent@opensuse.org
+
+-  Add xfce4-terminal-fix-up-the-encoding-menu-creation.patch: Fix
+   up the encoding menu creation (bxo#10395).
+
+-------------------------------------------------------------------
+Sun May  5 19:21:38 UTC 2013 - gber@opensuse.org
+
+- update to version 0.6.2:
+  - autotools updates
+  - fix toolbars -> toolbar in docs
+  - check display for the real display, not display.screen
+  - display checking on drop-down windows
+  - fix format warning
+  - only call g_type_init on glib < 2.36
+  - translation updates
+
+-------------------------------------------------------------------
+Mon Mar 11 06:15:05 UTC 2013 - coolo@suse.com
+
+- also obsolete Terminal-doc or you get an error on update
+
+-------------------------------------------------------------------
+Tue Jan  1 15:27:05 UTC 2013 - gber@opensuse.org
+
+- update to version 0.6.1:
+  - add drop-down window support with --drop-down parameter, this
+    allows xfce4-terminal to start 1 game-console like window
+  - rename Go menu to Tabs
+  - load default Alt+N accelerators on first startup
+  - make single tab accelerator insensitive again
+  - rename clear scrollbar to reset
+  - fix crash when showing toolbar 2nd time
+  - don't check for version and help in parameters parsing
+  - remove Report Bug menu entry
+  - hide search dialog on delete to avoid crash
+  - set minimum tab label size to 10 chars
+  - make right-click tab menu more functional
+  - stop activity timeout when destroying a screen
+  - rename $TERM to emulation and use new preference to avoid
+    migration crashes
+  - fix the tab re-use option when running from shortcut
+  - allow underscore and + in email address
+  - use new GPL license address
+  - allow setting the geometry in the preferences
+  - translation updates
+
+-------------------------------------------------------------------
+Fri Dec 28 15:02:35 UTC 2012 - gber@opensuse.org
+
+- provide/obsolete Terminal-lang correctly
+
+-------------------------------------------------------------------
+Fri Dec 28 09:37:33 UTC 2012 - gber@opensuse.org
+
+- Terminal was renamed to xfce4-terminal
+

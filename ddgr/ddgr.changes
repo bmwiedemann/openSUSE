@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Mar 16 14:54:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.6:
+ - User interface revamped
+ - DDG instant answers
+ - Haiku OS clipboard support
+ - Packaging preparation for PyPI
+
+-------------------------------------------------------------------
+Sat Oct 13 11:18:39 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.5:
+ - Support xclip as a clipboard utility on *nix
+ - Support GNU Screen and tmux as clipboard fallback
+ - Support Termux clipboard on Android
+
+-------------------------------------------------------------------
+Wed May  2 06:10:01 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.4:
+ - Copy URL at omniprompt
+ - Check default stdout encoding at start
+ - New environment variable DISABLE_PROMPT_COLOR
+
+-------------------------------------------------------------------
+Mon Jan 15 21:39:37 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 1.2

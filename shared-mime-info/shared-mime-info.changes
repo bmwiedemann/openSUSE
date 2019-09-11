@@ -1,0 +1,951 @@
+-------------------------------------------------------------------
+Wed May  8 09:02:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Wed Apr 17 11:30:22 CEST 2019 - kukuk@suse.de
+
+- Move RPM macros file to correct directory in /usr
+
+-------------------------------------------------------------------
+Sun Mar 10 11:53:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12:
+  + Fix build from tarball.
+- Changes from version 1.11:
+  + Add mime-type for:
+    - reStructuredText.
+    - Groovy scripting language.
+    - Gradle build tool.
+    - Maven.
+    - WarpScript source code.
+    - zstd and tar.zst archives.
+  + Change the preferred suffix for image/jpeg from .jpeg to .jpg.
+  + Assign *.html to XHTML pages.
+  + Better detection for *.key files (Apple Keynote vs. GPG keys).
+  + Give weight to one of the appimage patterns.
+  + Tools:
+    - Link to GitLab for contributions and bug reports.
+    - Loads of memory and file descriptor leak fixes.
+  + Spec: Clarify the availability of C character escape support.
+- Update URL and use source service to checkout exact tag, upstream
+  have an ever changing tarball url, so we go with source checkout.
+- Following the above, add libtool BuildRequires and pass
+  autogen.sh, bootstraping is now needed.
+- Modernize spec.
+
+-------------------------------------------------------------------
+Wed Oct 24 06:27:46 UTC 2018 - sean@suspend.net
+
+- Update to version 1.10:
+  + Add mime-type for MJPEG raw streams
+  + Add MPEG-4 Ringtone mime-type
+  + Add mime-type for HEIF images
+  + Add application/vnd.sqlite3, application/x-sqlite2 IANA types
+  + Add application/pkcs8-encrypted
+  + Add application/vnd.yotube.yt
+  + Add audio/usac
+  + Add mime-types for raw floppy disk images
+  + Add aliases for SAP and HFE floppy image mime-types
+  + Use new application/vnd.comicbook-rar IANA type
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:36 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 11 14:14:36 CEST 2017 - sbrabec@suse.com
+
+- Drop obsolete mime-info-to-mime (boo#1062631).
+
+-------------------------------------------------------------------
+Mon Sep 18 11:51:57 UTC 2017 - aplazas@suse.com
+
+- Update to version 1.9:
+  + Add x-systemd-unit and x-dbus-service MIME types.
+  + Fix magic for application/x-java-keystore on little endian.
+  + Add mime-type for STL 3D models and GCODE.
+  + Add application/x-executable as a supertype of
+    application/ecmascript.
+  + Add shebang magic for gjs JavaScript files.
+  + Add a mimetype for Khronos texture files.
+  + Add a mime-type for Famicom Disk System images.
+  + Add "font" top level type, and use IANA registered type for
+    TTF, OTF, WOFF, TTC and WOFF2.
+  + Add OpenCL mime-type.
+  + Add text/x-python3 content type.
+  + Add Audible.com mime type.
+  + Add application/x-atari-lynx-rom.
+  + Add application/x-wonderswan-rom.
+  + Add application/x-virtual-boy-rom.
+  + Better JPEG 2000 MIME type support.
+  + Add support for GIMP data files (.gbr, .gih, .pat).
+  + Add an alias for Adobe Illustrator formats.
+  + Add *.mjs glob for Javascript.
+  + Rename application/x-trig to application/trig.
+  + Rename Panasonic RAW image mime-types to image/x-panasonic-rw*.
+  + Change the preferred suffix for image/x-tga from icb to tga.
+  + Correct "PostScript" capitalisation.
+  + Add mimetype for AppImage Type 2.
+  + Remove AppImage glob with different casing.
+
+-------------------------------------------------------------------
+Tue Jun 27 11:09:32 UTC 2017 - dimstar@opensuse.org
+
+- Replace %mime_database_post/postun with respective file triggers
+  in shared-mime-info: any file put into /usr/share/mime will
+  trigger the execution of the script. In order to not break the
+  macros short-term they are being redefined to %nil.
+- Drop redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Dec  7 11:37:38 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.8:
+  + Add Flatpak-related mime-types.
+  + Add mime-type for a number of Thomson-related disk (and
+    cassette) images.
+  + Add many audio and video mime-type aliases as used in VLC.
+  + Add mime-type for pdf.lz files.
+  + Write the correct length for literal and glob lists to the
+    cache.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Sun Sep 11 06:46:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.7:
+  + Add mime-types for a number of video games systems ROMS (Atari
+    7800, Atari 2600, Neo Geo Pocket, Sega CD/Mega-CD, Game Boy
+    Color, Genesis 32X, Sega SG-1000, Sega Game Gear, Sega Pico).
+  + Add mime-type for .tar.lz and tar.lz4 archives.
+  + Add mime-type for Jupyter Notebook files.
+  + Add Flatpak mime-types and add compatibility for xdg-app ones.
+  + Add *.dib glob to BMP images.
+  + Use official IANA mime-types for WMF and EMF images.
+  + Add application/raml+yaml mime-type.
+  + Add GPX mimetypes as found in the wild.
+  + Add application/vnd.squashfs and
+    application/vnd.snap mime-types.
+  + Add mime-type for IGES documents.
+  + Add mime-types for Sass CSS pre-processor files.
+..+.Add mime-type for Twig templates.
+  + Add alias application/nappdf for application/pdf.
+  + Add mimetype for AppImage.
+  + Add application/x-bsdiff mime-type.
+  + Add Gherkin feature specifications mime-type.
+  + Use official IANA registered type for
+    application/vnd.chess-pgn.
+  + Use new IANA registered type for application/geo+json.
+  + Use official IANA registered type for
+    application/vnd.comicbook+zip.
+  + Use official IANA registered type for application/vnd.rar.
+  + Use official IANA registered type for
+    application/vnd.framemaker.
+  + Improve VRML mime-type.
+  + Better MPEG-2 TS magic.
+  + Better magic for 669 tracker MOD files.
+  + Fix misdetection of zip files as their content.
+  + Fix multi-page DjVu detection by file.
+  + Fix TGA magic detection.
+  + Fixes related to AMR audio files.
+  + Remove "*.sg" glob for Sega Master System ROM types.
+- Drop 0001-Add-alias-application-nappdf-for-application-pdf.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:46:29 UTC 2016 - astieger@suse.com
+
+- Add alias application/nappdf to application/pdf (boo#984021)
+  0001-Add-alias-application-nappdf-for-application-pdf.patch
+
+-------------------------------------------------------------------
+Wed May  4 16:32:45 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+- Drop shared-mime-info-disable-fdatasync-in-installation.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar  1 23:19:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.6:
+  + Add XAR archive mime-type.
+  + Add GeoJSON mime-type.
+  + Add GPX mime-type.
+  + Add xdg-app mime-type.
+  + Add *.xht glob and magic for XHTML files.
+  + Bump priority of archive mime-types with long magics, to avoid
+    false positives when detecting files inside the archive itself.
+- Drop xz BuildRequires: this is already part of default build
+  setups for a long time.
+- Drop workaround for fdo#70366 (that is, no longer
+  export ac_cv_func_fdatasync=no).
+- Add PKGSYSTEM_ENABLE_FSYNC=0 to mime_database_post and
+  mime_database_postun macros, which is the upstream provided way
+  to opt-out of the fdatasync call. That variable is checked for
+  since version 1.4.
+- Add PKGSYSTEM_ENABLE_FSYNC=0 to post script (as we do can't use
+  the macros we install with the package there).
+
+-------------------------------------------------------------------
+Mon Dec 14 10:16:24 UTC 2015 - fezhang@suse.com
+
+- Disable fdatasync() during installation time or when
+  PKGSYSTEM_ENABLE_FSYNC is set (bsc#862596) (fdo#70366)
+  - Add shared-mime-info-disable-fdatasync-in-installation.patch
+
+-------------------------------------------------------------------
+Sat Nov 21 11:26:14 UTC 2015 - fezhang@suse.com
+
+- Backport the fix from openSUSE:Factory to fix the slow 
+  installation issue (bsc#862596) (fdo#70366) 
+
+-------------------------------------------------------------------
+Wed Sep 16 20:38:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.5:
+  + Fix compilation with glib < 2.26.
+  + Update DTD.
+  + Mime-type changes:
+    - Add more globs to console ROM files.
+    - Use "folder" generic-icon for inode/directory.
+    - Bump priority for ISO images glob matching to work  around
+      confusion around Wii image files.
+    - Add application/owl+xml.
+    - Add text/turtle.
+    - Use IANA registered image/vnd.zbrush.pcx for PCX.
+    - Add text/rust for Rust source code.
+    - Add application/ld+json as subclass of application/json.
+    - Add text/csv-schema.
+    - Add application/vnd.coffeescript.
+    - Make application/vnd.apple.mpegurl a subclass of text/plain.
+    - Make application/sdp a subclass of text/plain.
+    - Add application/jrd+json as subclass of application/json.
+    - Add MTM, MED, 699 and Ultratracker magic for
+      application/x-mod.
+    - Add Meson build definitions.
+    - Match newer versions of XCF files.
+    - Use IANA registered type for PKCS#12.
+    - Add application/x-doom-wad.
+    - Add Amiga disk image.
+    - Rename "Dreamcast ROM" to "Dreamcast GD-ROM".
+    - Add application/x-wii-wad.
+    - Add magic and tests to application/x-gameboy-rom.
+    - Add application/x-saturn-rom.
+    - Fix application/x-genesis-rom translation rules.
+    - Split up multi-page DjVu into its own mime-type.
+- Drop shared-mime-info-bump-priority-for-ISO-images.patch: Fixed
+  upstream (fdo#80877).
+
+-------------------------------------------------------------------
+Thu Feb 19 09:41:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.4:
+  + Add glob for low-resolution videos from GoPro.
+  + Add mime-type for partially downloaded files.
+  + Use IANA registered mime-type for Debian packages.
+  + Add another magic for OTF fonts.
+  + Add support for Adobe PageMaker.
+  + Remove the Apple iOS PNG variant.
+  + Add *.dbk glob for DocBook.
+  + Use IANA registered mime-type for Vivo.
+  + Remove obsolete application/x-gmc-link mime-type.
+  + Make application/x-wais-source a subclass of text/plain.
+  + Flip application/smil+xml and application/smil type/alias.
+  + Add Nintendo 64 ROM magic.
+  + Add qpress archive support.
+  + Add image/x-tiff-multipage mime-type.
+  + Rename "Microsoft icon" to "Windows icon".
+  + Add magic for ODB files.
+  + Use IANA registered text/markdown for Markdown.
+  + New mimetype for SCons scripts as subclass of x-python.
+  + Make application/pgp-encrypted a subclass of text/plain.
+  + Associate *.qmltypes and *.qmlproject files with the text/x-qml
+    mime type.
+  + Add text/x-genie mime type for Genie source code.
+  + Disable fdatasync() usage if PKGSYSTEM_ENABLE_FSYNC is set.
+  + Skip mime database update if packages are older than cache.
+  + Add "-n" option to update-mime-database to only update if
+    "newer".
+
+-------------------------------------------------------------------
+Thu Feb 19 02:51:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add shared-mime-info-bump-priority-for-ISO-images.patch
+  (fdo#80877, kde#337035, boo#904100)
+
+-------------------------------------------------------------------
+Tue Apr  8 23:10:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.3:
+  + Mime-type changes:
+    - Add Aliases for OpenOffice Base and StarWriter.
+    - Add Apple Keynote 5 mime-type.
+    - Add mimetype for compressed FictionBook2.
+    - Don't recognize all .asc files as application/pgp-encrypted.
+    - Add tree magic for the Kindle e-book reader.
+    - Add LZ4 archive type.
+    - Add PC Engine, GameCube and Wii "ROM" types.
+    - Add audio/x-opus+ogg mime-type.
+    - Add image/webp mime-type.
+    - Prefer application/vnd.ms-asf to video/x-ms-asf.
+    - Add application/x-riff mime-type.
+    - Add JSON mime-type.
+    - Add *.jsm glob for Javascript.
+    - Add magic and glob patterns for compressed x-spss-sav files.
+    - JavaScript and CSS are not subclasses of text/x-csrc.
+    - Remove *.CSSL glob for CSS files.
+  + Call g_type_init() only with older glib.
+  + Fix failures on NetBSD.
+  + Store MEDIA/SUBTYPE.xml files in lowercase.
+
+-------------------------------------------------------------------
+Sun Feb  9 18:53:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Export ac_cv_func_fdatasync=no before calling configure, to
+  workaround the issue described in fdo#70366, where fdatasync()
+  is called on each update-mime-database invocation
+
+-------------------------------------------------------------------
+Mon Sep 30 17:22:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2:
+  + Mime-type changes:
+    - Use IANA registered application/sql type for SQL.
+    - Add test for text/x-python.
+    - Added *.pyx as Pyrex/Cython variant of text/x-python.
+    - Lower the priority of the *png glob on Apple PNGs.
+    - Add magic for Kobo e-book reader.
+    - Add another magic for EPub books.
+    - Add missing globs and tests for OpenPGP files.
+    - Add MIME types for raw disk images.
+    - Add video/x-matroska-3d mime-type.
+    - Use application/vnd.adobe.flash.movie for SWF.
+    - Use application/vnd.nintendo.snes.rom for SNES ROMs,
+      associate *.sfc with them.
+    - Fix shebang matches for shell scripts.
+    - Remove *.ogv as a glob for Theora videos as they might not be
+      Theora.
+    - Improve detection of Perl scripts.
+    - Add more aliases for Photoshop images.
+    - Add Microsoft Publisher mime-type.
+    - Correct JPEG2000 definition.
+  + Check for errors when saving files, and ensure that files are
+    saved to disk before carrying on.
+  + Don't use access() to check for writability.
+  + Rename configure.in to configure.ac.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:13:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.1:
+  + Many mime-type changes
+  + Specification changes:
+    - Fix mimetype names used as examples.
+    - Document that the first extension is the main one.
+    - Fix missing plural.
+  + Honor NOCONFIGURE=1.
+  + Allow builders to not run make check by default.
+  + Fix build for platforms with executable extensions.
+  + Disable checks when cross compiling.
+  + Use non-installed update-mime-database in install-data-hook.
+  + Use native update-mime-database for install when cross
+    compiling.
+  + Add a local-test target to print mime in.
+- Pass --disable-default-make-check to configure: we prefer to
+  execute make check in the separate %check section.
+- Add a %check section and execute make check
+
+-------------------------------------------------------------------
+Sat Jul 21 17:45:55 UTC 2012 - dimstar@opensuse.org
+
+- Split out -lang package (bnc#645077). 
+
+-------------------------------------------------------------------
+Mon Feb 27 07:52:10 UTC 2012 - vuntz@opensuse.org
+
+- Change libxml2 PreReq to libxml2-2, after libxml2 packaging
+  split: we have PreReq for the libraries used by
+  update-mime-database.
+
+-------------------------------------------------------------------
+Sun Feb 26 13:57:54 UTC 2012 - vuntz@opensuse.org
+
+- Add libxml2-tools BuildRequires for xmllint, now that tools got
+  split from libxml2 package.
+
+-------------------------------------------------------------------
+Tue Jan 17 18:02:01 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0:
+  + Mime-type changes:
+    - Add root-XML for AbiWord, Atom, Dia, Dia shape,
+      KML, RDF, XSL FO, metalink, XMI, SMIL
+    - Add glob for VDR recordings
+    - Make PBM/PPM detection more permissive
+    - Fix magic for MP3 files without ID3
+    - Add application/vnd.visio mimetype
+    - Fix Amazon MP3 being detected as Qt Designer
+    - Add application/acrobat alias for PDF files
+    - Add support for detecting DVDs without VIDEO_TS dirs
+  + Test suite adjustments for xdgmime bug fixes
+
+-------------------------------------------------------------------
+Sun Oct  2 19:32:30 UTC 2011 - dimstar@opensuse.org
+
+- Add shared-mime-info to BuildIgnores: libgio-2_0-0 would drag it
+  in, but we can't require *self for build.
+
+-------------------------------------------------------------------
+Sun Sep 18 16:06:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.91:
+  + Mime-type Changes:
+    - Add WWF
+    - Add application/vnd.android.package-archive.
+    - Add root-XML for SVG
+    - Add Qt QML
+    - Add application/x-fictionbook
+    - Add application/x-mobipocket-ebook
+    - Add another alias for ASX playlists
+    - Add video/3gp, video/x-mpeg, video/x-mpeg2, video/divx, and
+      video/msvideo aliases
+    - Add MSOffice 12 and OOXML mime-types
+    - Add video/vnd.mpegurl
+    - Java class tweaks
+    - Add magic for Megadrive ROMs
+    - Add application/vnd.tcpdump.pcap
+    - Fix root-XML for XSL
+    - Add extension for Scheme text files
+    - Add extensions for VRML documents
+    - Loosen magic for FLTK fluid files
+    - Move application/x-reject to text/x-reject
+    - Add application/x-nzb
+    - Remove glob from text/x-uri
+    - Added a *.wsgi pattern for python scripts
+    - Add DVI, PKCS, RELAX NG, and S/MIME acronyms.
+    - Use text/vcard instead of deprecated text/directory for
+      vCards.
+    - Add text/x-markdown
+    - Add WebVTT
+    - Add *.php5 and *.phps as patterns for PHP
+    - Make dash scripts shell scripts
+    - Add application/x-iso9660-image alias for
+      application/x-cd-image
+    - Add text/x-scala mime type
+    - Add another magic for XSPF files
+    - Update CHM mime-type to application/vnd.ms-htmlhelp
+  + Other:
+    - Fix parallel build
+    - Update GPLv2 COPYING file
+    - Use XZ tarballs by default
+- Drop shared-mime-info-fix-parallel-build.patch: fixed upstream.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Jan 18 08:41:44 CET 2011 - vuntz@opensuse.org
+
+- Fix %mime_database_postun to not call update-mime-database twice.
+
+-------------------------------------------------------------------
+Tue Dec 14 19:07:26 CET 2010 - vuntz@opensuse.org
+
+- Just give up on the parallel build: it fails again. Since this
+  module is really small, it doesn't matter much anyway.
+- Re-enable call to translation-update-upstream: bnc#658999 has
+  been fixed.
+
+-------------------------------------------------------------------
+Sun Dec 12 12:53:36 CET 2010 - vuntz@opensuse.org
+
+- Add shared-mime-info-fix-parallel-build.patch to fix parallel
+  build.
+- Disable call to translation-update-upstream because it adds some
+  misnamed translations. See bnc#658999.
+
+-------------------------------------------------------------------
+Tue Dec  7 11:39:11 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.90:
+  + Mime-type Changes:
+    - Make application/epub+zip sub-class-of application/zip
+    - Make sure RAM files are not all treated as text
+    - Make CMakefiles a sub-class of text/plain
+    - Add new mime-type for Panasonic RW2 images
+    - Add XSL magic
+    - Add root-XML for XSL
+    - Add *.gem as a glob for tar archives
+    - Add test case for text/directory files
+    - Add go source code
+    - Add pdf.xz mime-type
+    - Add text/x-ooc source code
+    - Add Cobol source code
+  + Other:
+    - Don't error out on the x-scheme-handler/* mime-types
+    - Fix crasher when mime-magic is empty
+
+-------------------------------------------------------------------
+Thu Oct  7 14:09:38 CEST 2010 - vuntz@opensuse.org
+
+- Add rpm macros to update the mime database: %mime_database_post
+  and %mime_database_postun.
+- Update %post to never fail, and to not redirect the output to
+  /dev/null: if there is output, then it's important.
+
+-------------------------------------------------------------------
+Fri Oct  1 19:40:56 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.80:
+  + Mime-type Changes:
+    - Add magic for F4V (Flash) video files
+    - Add mime-type for Dia shapes
+    - Bump priority for KOffice magics to give them precedence over
+      gzip and zip
+    - Add mime-type for Verilog and SystemVerilog source files and
+      headers
+    - Add Qt Linguist translation file
+    - Add application/x-xspf+xml alias for XSPF playlists
+    - Use audio/flac for FLAC files, make audio/x-flac an alias of
+      it
+    - Add mime-type for HDF files
+    - Add mime-type for Mozilla Extension packages
+    - Add mime-type for text/cache-manifest
+    - Add YAML mime-type
+    - Add application/relax-ng-compact-syntax mime-type
+    - Add more tests for Matlab and Octave files
+    - Improve translator comments for VCD, SVCD and PictureCD
+    - Add application/pkcs8 mime-type
+    - Add audio and video WebM mime-types
+    - Add video/mp2t mime-type
+    - Use generic video icon for application/x-matroska
+    - Improve magic for Matroska files
+    - Add magic for audio/x-stm
+    - Update magic for Apple HTTP Streaming playlists
+    - Add Lrzip archive mime-type
+    - Fix PDF detection for some pesky files
+    - Add details about 3GPP and 3GPP2 files
+    - Add JavaFX video format
+    - Add Windows Imaging Format Disk Image mime-type
+    - Add application/x-apple-diskimage mime-type
+    - Add e-book reader content-type
+    - Add application/x-tex as an alias for text/x-tex
+    - Use application/oxps mime-type for XPS files
+    - Add magic to BibTeX files
+  + Other:
+    - Fix malformed D source test
+    - Avoid using ~/.local data when running the test suite
+    - Make sure that update-mime-info doesn't get called before
+      installed
+- Remove workaround for ar locale (which was renamed from ara):
+  fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug  7 15:01:19 CEST 2010 - vuntz@opensuse.org
+
+- Change glib2 PreReq to libglib-2_0-0. It's a bit ugly to
+  explicitly have to list those PreReq here, but libglib-2_0-0 is
+  much smaller than glib2, so that's an improvement, I guess.
+
+-------------------------------------------------------------------
+Wed Feb 17 20:02:08 CET 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (bnc#447180,
+  FATE#301344).
+
+-------------------------------------------------------------------
+Wed Feb 10 16:02:00 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.71:
+  + Mime-type Changes:
+    - Add magic for FLAC files
+    - Add ICC profiles
+    - Remove duplicate XUL definition
+    - Add IT8.7/2 profiles
+    - Add Apple's HTTP Live Streaming playlists
+    - Add application/pkix-crl
+    - Match *xsl and *xslt to application/xslt+xml
+    - Add *.eml glob for message/rfc822 messages
+    - Add
+      application/vnd.openxmlformats-officedocument.presentationml.slideshow
+    - Update MathML definition
+    - Add application/x-java-keystore and
+      application/x-java-jce-keystore
+    - Add OpenDocument test cases, flat XML file definitions
+    - Make D sources a sub-class of C sources
+  + Specification:
+    - Update version to 0.19
+- Work around misnamed arabic locale by renaming ara to ar.
+
+-------------------------------------------------------------------
+Fri Nov 13 13:24:37 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.70:
+  + Mime-type Changes:
+    - Add MXF video
+    - Add Google Earth XML files
+    - Add XZ arcgives
+    - Add SPSS formats
+    - Add OpenRaster images
+    - Add glob for OpenType fonts
+    - Add more MPEG-4 video container magic
+    - Add RealMediaFormat videos
+    - Add LZIP archives
+    - Add Kexi mime-types
+    - Add CBT comics
+    - Add Windows theme packs
+    - Add metalink
+    - Better glob for core files
+    - Better magic for graphviz files
+    - Add MRML, CVS, TSV acronyms
+    - Better definition for LZO archives
+    - Fix mime-type/magic for Java archives
+    - Fix MSWinURL magic
+    - Add tar.bz2 as a sub-class of
+      application/x-bzip-compressed-tar
+    - Split Win32 from Unix autostart detection
+    - Better magic for Cisco VPN files
+    - New magic for Word documents
+    - Better glob matching for Makefiles
+  + Specification:
+    - Add glob-deleteall and magic-deleteall support
+    - Add case-sensitive attribute support
+  + Other changes:
+    - fix make call on *BSDs
+    - Better error in update-mime-database when a directory doesn't
+      exist
+
+-------------------------------------------------------------------
+Sun Feb 22 00:48:09 CET 2009 - vuntz@novell.com
+
+- Update to version 0.60:
+  + Mime-type Changes:
+    - Add alias for SMIL
+    - Fix SMIL detection
+    - Add Annodex mime-type
+    - Only use .ogg for audio Ogg files
+    - Fix RDF mime-type
+    - Oasis mime-type fixes
+    - Make PICTURES match a picture CD but not "pictures"
+    - Add alias for application/zip
+    - Add Microsoft Document Imaging format
+    - Add magic for 7z archives
+    - Add cb7 comic book archives
+    - Add magic for XCF files
+    - Remove application/x-msi magic
+    - Add audio/x-gsm mime-type
+    - Add MS cab mime-type
+    - Add FictionBook mime-type
+    - Fix PKCS#12 bundles definition (not text files)
+    - Add PKCS#7 and PkiPath mime-types
+    - Add application/vnd.ms-wpl mime-type
+    - Add more aliases for media types
+    - Add alias for text/x-csv
+    - Fix comment for Gnucash files
+    - Make Javascript a sub-class of C
+    - Add *.vapi as a glob for Vala files
+    - Fix image/fits to match IANA
+    - Add Office 2007/OpenXML documents mime-types
+    - Add Pocket Word and AportisDoc document types
+    - Fix MS ICO, and Photoshop image to match IANA
+  + Other changes:
+    - Regenerate the pot file when needed
+    - Some clarifications in the spec
+    - Build fix when srcdir != builddir
+- Drop shared-mime-info-msi-no-magic.patch: fixed upstream.
+- Remove perl-XML-Parser BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct 15 14:38:52 CEST 2008 - sbrabec@suse.cz
+
+- Prevent OLE containers to be recognized as Windows Installer
+  package (bnc#430389, fdo#18072).
+
+-------------------------------------------------------------------
+Wed Aug 20 12:51:12 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 0.51:
+  * many new MIME types recognized
+  * improved magic
+  * improved translatability
+  * implemented tree content types, in the treemagic file
+  * remove several useless MIME types
+  * new algorighms in update-mime-database
+  * for more see NEWS file
+
+-------------------------------------------------------------------
+Mon Jan 28 14:20:13 CET 2008 - sbrabec@suse.cz
+
+- Added support for MOF files (#194558, Freedesktop#14278).
+
+-------------------------------------------------------------------
+Thu Dec 20 16:57:09 CET 2007 - jpr@suse.de
+
+- Update to 0.23
+* Mime-type Changes:
+- Add QTIF QuickTime image
+- Add SDP stream description
+- Add Vala source file
+- Add Atom feed, OPML
+- Add SAMI, MicroDVD, MPSub, SSA subtitles
+- Add audio/x-m4b as a sub-class of audio/mp4
+- Add *.aac as a suffix for MPEG-4 audio files
+- Add Compressed Flash detection, add FutureSplash support
+- Add *.asc as a suffix for PGP armoured keys
+- Add application/msword as a sub-class of application/x-ole-storage
+- Don't associate *.htm and *.html to Mozilla bookmarks
+- Add more aliases for PowerPoint and Word mime-types
+- Add *.vlc as a suffix for m3u files
+- Better magic for Word and Office documents
+- Split Windows Media Station playlists from ASX ones
+- Fix up JPEG 2000 mime-types
+* Other:
+- Add a testsuite in the CVS tree
+- Remove shared-mime-info-ufraw.patch, it was completely upstreamed
+
+-------------------------------------------------------------------
+Tue Dec 18 12:31:09 CET 2007 - ro@suse.de
+
+- fix filelist to silence rpm -V output 
+
+-------------------------------------------------------------------
+Fri Aug  3 21:59:54 CEST 2007 - maw@suse.de
+
+- Update to version 0.22:
+* Mime-type Changes:
+- Clean up the Netscape/Mozilla bookmarks mime-types
+- Fix Powerpoint magic detection
+- Add another magic matchlet to HTML
+- Add magic detection for OpenOffice.org files
+- Add MP2 audio, EMF mime-types
+- Add more aliases for 3GPP videos
+- Add magic detection to WMF
+- Add more suffixes for WordPerfect documents
+- Add mime-types for SIS/SISX archives
+- Add x-epoc media type
+- Add *.hxx as a suffix for C++ headers
+- Add Erlang mime-type
+- Add another Fortran magic detection
+- Add Plucker mime-type
+- Add winmail.dat files as TNEF files
+- Add WMLScript mime-type
+- Add JAD mime-type
+- Add iRiver PLA playlist mime-type
+- Add Nintendo DS ROM mime-type
+- Add video/avi as an alias for AVI files
+- Update Ogg mime-types to match Xiph's latest documents
+* Other:
+- Improve Window compatibility
+- Update the glib requirements
+
+shared-mime-info 0.21 (2007-04-18)
+* Mime-type Changes:
+- Add *.m2t as a pattern for MPEG-2 files
+- Add comments for the XMCD database and ARC mime-types
+- Fix comments for Adobe FrameMaker documents
+- Make application/m3u an alias for audio/x-mpegurl
+- Make audio/x-mpeg an alias for audio/mpeg
+- Add XPS to the mime-types
+- Fix RealVideo documents mime-types
+- Make application/x-shared-library-la a subclass of text/plain
+- Add TNEF to the mime-types
+- Add PAK archive to the mime-types
+- Add PSF, miniPSF, PSFlib, and gzipped PSF fonts to the mime-types
+- Add *.iso9660 as a pattern for ISO files
+- Add PKCS#10 certification requests to the mime-types
+- Add and correct loads of raw camera image types
+- Add magic for OpenOffice.org file types
+- Add KSysV init files to the mime-types
+- Add DirectDraw surface files to the mime-types
+- Add X11 cursor type to the mime-types
+- Fix magic for RTSPtext metalinks
+
+* Other:
+- Remove mention of ROX in the See Also section of the man page
+
+- Respin shared-mime-info-ufraw.patch
+
+-------------------------------------------------------------------
+Fri Apr  6 14:24:52 CEST 2007 - sbrabec@suse.cz
+
+- Disabled system-wide running of mime-info-to-mime (#150398).
+
+-------------------------------------------------------------------
+Mon Feb 19 15:44:32 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 0.20:
+  * Many new MIME types added (see NEWS for complete list).
+  * Move *.ram files to application/ram
+  * Use the preferred Matroska mime-types, includes Matroska audio
+  * Detect Makefile with a shebang at the start
+  * Make DIA a sub-class of application/xml
+  * Clean up PGP/GnuPG file types
+  * Avoid misdetecting Java files as C files
+  * Merge the application/vnd.palm and application/x-palm-database
+    mime-types
+  * Make mbox as a sub-class of text/plain
+  * Remove bogus magic for Targa files
+  * Clean up XSLT mime-types depending on version
+  * Move compressed SVG files to image/svg+xml-compressed
+  * Move compressed pcf (font) detection to application/x-font-pcf
+  * Fix CPIO description
+  * Don't abort when update-mime-database can't open a file
+  * Move the pkgconfig file to $(datadir)
+  * Skip the translation of update-mime-database.c
+  * Have a quiet output to update-mime-database by default
+- Updated RAW patch from Freedesktop#8170.
+
+-------------------------------------------------------------------
+Mon Jan  8 16:45:30 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Jan  3 19:25:52 CET 2007 - sbrabec@suse.cz
+
+- Use /usr/share/mime-info in mime-info-to-mime.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:43:56 CET 2006 - sbrabec@suse.cz
+
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Mon Oct 30 15:17:12 CET 2006 - sbrabec@suse.cz
+
+- Updated and fixed camera raw MIME types (freedesktop#8170).
+
+-------------------------------------------------------------------
+Thu Sep 14 11:31:39 CEST 2006 - sbrabec@suse.cz
+
+- Fixed camera raw MIME types (freedesktop#4117).
+
+-------------------------------------------------------------------
+Fri Sep  8 13:05:56 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.19:
+  * Add *.qtl to video/quicktime
+  * Add *.wax to audio/x-ms-asx
+  * Add *.mpga to audio/mpeg
+  * Add audio/x-ms-wma (Windows Media Audio)
+  * Add application/xspf+xml (XSPF playlist)
+  * Add a lot of subclassing information
+  * Fix the RSS mime-types
+  * Fix *.asx files' mime-type
+  * Avoid audio/x-ms-asx files being detected as HTML
+  * Avoid application/pdf files being detected as Matlab documents
+  * Clarify C, C++, C# and ObjC mime-types
+  * Add application/powerpoint and application/mspowerpoint as aliases for
+    Powerpoint
+  * Add VHDL mime-type
+  * Add application/mbox for the MBOX mailboxes
+  * Add text/x-txt2tags
+  * Remove *.dat as a glob for MPEG videos
+  * Add Monkey's Audio, AC3, and Musepack mime-types
+  * Fix matching Type1 fonts
+  * Remove useless application/octet-stream mime-type
+  * Add *.mo to application/x-gettext-translation
+  * Add loads of tracker audio files, console ROMs, raw images mime-types
+  * Fix QuickTime Media Links mime-types and detection
+  * Add audio/AMR and audio/AMR-WB mime-types and detection
+  * Add better TeX magic, and more globs
+  * Add better magic for patch files
+  * Fix .jar files' mime-types, and add better magic
+  * Fix magic for MPEG4 audio files
+  * Add an alias for .deb packages
+  * Add application/sieve mime-type
+  * Fix application/javascript's mime-type
+  * Fix text/csv's mime-type
+  * Add paths to the .pc file
+  * Translation update
+- Removed from gnome-patch-translation project, all strings are
+  upstreamed.
+
+-------------------------------------------------------------------
+Tue Apr 25 18:07:31 CEST 2006 - sbrabec@suse.cz
+
+- Fixed C* source code MIME type conflicts (#168763).
+
+-------------------------------------------------------------------
+Wed Mar 15 13:54:18 CET 2006 - sbrabec@suse.cz
+
+- Updated to a 0.17 release.
+- Use sub-class-of instead of alias for wma and wmv (156207#c10).
+- Support for gnome-patch-translation.
+
+-------------------------------------------------------------------
+Thu Mar  9 18:05:05 CET 2006 - jpr@suse.de
+
+- Update to cvs version to be more fine grained about wma, wmv, and
+ogg (#156210 and #156207)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  8 17:19:16 CET 2005 - sbrabec@suse.cz
+
+- Directories /usr/share/mime and /usr/share/mime/packages are now
+  owned by filesystem.
+
+-------------------------------------------------------------------
+Mon Sep 12 21:56:19 CEST 2005 - clahey@suse.de
+
+- Add docbook mime info entry (116605).
+
+-------------------------------------------------------------------
+Tue Mar 29 18:19:24 CEST 2005 - sbrabec@suse.cz
+
+- Fixed WMV files and typos.
+  http://bugs.freedesktop.org/show_bug.cgi?id=2051
+- Added missing Danish from CVS.
+
+-------------------------------------------------------------------
+Tue Mar 29 17:34:33 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.16.
+
+-------------------------------------------------------------------
+Mon Mar 21 18:13:26 CET 2005 - sbrabec@suse.cz
+
+- Updated to CVS version (#72797).
+
+-------------------------------------------------------------------
+Mon Feb 21 15:54:34 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.15.
+
+-------------------------------------------------------------------
+Tue Oct 19 00:35:09 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Mon Sep 20 14:59:42 CEST 2004 - ro@suse.de
+
+- added missing prereq for update-mime-database
+  which is called in postinstall
+
+-------------------------------------------------------------------
+Thu Sep 09 11:06:59 CEST 2004 - sbrabec@suse.cz
+
+- Fixed execute flag for mime-info-to-mime.
+
+-------------------------------------------------------------------
+Tue Sep 07 18:21:23 CEST 2004 - sbrabec@suse.cz
+
+- Added script mime-info-to-mime for conversion of GNOME mime-info to
+  shared-mime-info.
+
+-------------------------------------------------------------------
+Mon May 17 18:00:50 CEST 2004 - sbrabec@suse.cz
+
+- New SuSE package, version 0.14.
+

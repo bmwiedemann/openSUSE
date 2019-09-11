@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 Richard Hughes <richard@hughsie.com> -->
+<application>
+  <id type="codec">gstreamer-plugins-good</id>
+  <metadata_license>CC0</metadata_license>
+  <name>GStreamer Multimedia Codecs</name>
+  <summary>Multimedia playback for APE, AVI, FLAC, FLX, Flash, MKV, MP4, Speex, VP8, VP9 and WAV</summary>
+  <description>
+    <p>
+      This addon includes several good quality codecs that are well tested.
+      These codecs can be used to encode and decode media files where the
+      format is not patent encumbered.
+    </p>
+    <p>
+      A codec decodes audio and video for playback or editing and is also
+      used for transmission or storage.
+      Different codecs are used in video-conferencing, streaming media and
+      video editing applications.
+    </p>
+  </description>
+</application>

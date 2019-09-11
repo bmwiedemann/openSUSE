@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Mar  7 18:10:46 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with current octave versions:
+  Substitute gripes.h -> errwarn.h, functions gripe_* -> err_*
+
+-------------------------------------------------------------------
+Tue Jun  9 19:20:26 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 1.2.0
+  * The following functions have been removed since they are part
+    of Octave core since 3.8: strjoin, strsort (use sort)
+  * The function editdistance has been almost rewritten and will
+    perform much faster.
+  * Compatibility with Octave 4.0.0.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 1.1.0
+

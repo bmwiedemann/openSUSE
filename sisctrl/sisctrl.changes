@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:03:20 UTC 2017 - crrodriguez@opensuse.org
+
+- Remove build dependency on xorg-x11-devel 
+
+-------------------------------------------------------------------
+Wed Nov 30 10:40:30 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep 26 10:57:42 UTC 2011 - sndirsch@suse.com
+
+- fixed package license: GPL 2.0+ --> GPL 2.0 (bnc #720274)
+
+-------------------------------------------------------------------
+Sat Sep 24 16:30:58 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build by linking with libm 
+- Fix rpmlint warning "no-return-in-nonvoid-function"
+
+-------------------------------------------------------------------
+Tue Mar 10 10:33:38 CET 2009 - sndirsch@suse.de
+
+- define functions, which don't return anything, as void
+  (bnc #483401) 
+
+-------------------------------------------------------------------
+Tue Nov  7 17:48:00 CET 2006 - sndirsch@suse.de
+
+- added missing return value (Bug #218755) 
+
+-------------------------------------------------------------------
+Sun Jul 23 16:47:49 CEST 2006 - sndirsch@suse.de
+
+- fixed build for X.Org 7 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec  5 06:15:56 CET 2005 - sndirsch@suse.de
+
+- update to 2005-12-02 version
+
+-------------------------------------------------------------------
+Wed Nov 30 16:28:18 CET 2005 - sndirsch@suse.de
+
+- created package 
+

@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri Aug  9 13:19:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.10.0
+  * Eliot works with Dask 2.0.
+
+-------------------------------------------------------------------
+Fri Jun  7 10:27:11 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.9.0
+  * Python 2.7 is now in legacy support mode; the last major Eliot 
+    release supporting it is 1.7.0.
+  * Python 3.4 is no longer supported.
+  * eliot.use_asyncio_context() is no longer necessary.
+  * Eliot now supports Trio coroutines, as well as other frameworks 
+    that utilize Python 3.7's contextvars.
+  * If you call to_file()/FileDestination() with a non-writable 
+    file, an exception will be raised. This prevents logging from 
+    being silently swallowed when the program runs.
+  * If you log a NumPy array whose size > 10000, only a subset will 
+    be logged.
+
+-------------------------------------------------------------------
+Mon Apr  1 09:17:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Redownload archive as the upstream updated it on pypi
+
+-------------------------------------------------------------------
+Sun Mar 31 09:49:02 UTC 2019 - ecsos@opensuse.org
+
+- set minimum needed BuildRequires:
+  - python-hypothesis >= 3.47.0
+  - python-boltons >= 19.0.1
+
+-------------------------------------------------------------------
+Fri Mar 22 14:19:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Support for PyInstaller
+- Fix update alternatives
+
+-------------------------------------------------------------------
+Thu Feb 21 13:38:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop duplicated summary. Generalize description.
+- Avoid name repetition in summary (rpmlint).
+
+-------------------------------------------------------------------
+Tue Feb 19 15:09:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Remove BuildRoot
+- Add BuildArch: noarch
+- Explain why we skip a test
+
+-------------------------------------------------------------------
+Thu Feb  7 10:37:52 UTC 2019 - ecsos@opensuse.org
+
+- initial version 1.6.0

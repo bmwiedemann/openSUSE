@@ -1,0 +1,12 @@
+diff -Nru azure-cli-interactive-0.4.1.orig/setup.py azure-cli-interactive-0.4.1/setup.py
+--- azure-cli-interactive-0.4.1.orig/setup.py	2018-12-14 18:43:41.000000000 +0100
++++ azure-cli-interactive-0.4.1/setup.py	2019-02-25 12:30:21.178633229 +0100
+@@ -32,7 +32,7 @@
+ 
+ DEPENDENCIES = [
+     'azure-cli-core',
+-    'prompt_toolkit~=1.0.15'
++    'prompt_toolkit>=1.0.15'
+ ]
+ 
+ with open('README.rst', 'r', encoding='utf-8') as f:

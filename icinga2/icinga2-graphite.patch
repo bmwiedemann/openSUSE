@@ -1,0 +1,14 @@
+diff -Pdpru icinga2-2.9.1.orig/etc/icinga2/features-available/graphite.conf icinga2-2.9.1/etc/icinga2/features-available/graphite.conf
+--- icinga2-2.9.1.orig/etc/icinga2/features-available/graphite.conf	2018-07-24 12:48:12.000000000 +0200
++++ icinga2-2.9.1/etc/icinga2/features-available/graphite.conf	2018-09-26 11:50:37.417701228 +0200
+@@ -3,7 +3,10 @@
+  * performance data to a graphite tcp socket.
+  */
+ 
++library "perfdata"
++
+ object GraphiteWriter "graphite" {
+   //host = "127.0.0.1"
+   //port = 2003
++  //enable_send_thresholds = true
+ }

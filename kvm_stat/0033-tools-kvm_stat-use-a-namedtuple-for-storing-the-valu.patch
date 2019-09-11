@@ -1,0 +1,113 @@
+From bca7af24e4bc9bbfc085d95a8fcad6bb1593ae95 Mon Sep 17 00:00:00 2001
+From: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Date: Tue, 9 Jan 2018 13:27:02 +0100
+Subject: [PATCH 33/43] tools/kvm_stat: use a namedtuple for storing the values
+
+Use a namedtuple for storing the values as it allows to access the
+fields of a tuple via names. This makes the overall code much easier
+to read and to understand. Access by index is still possible as
+before.
+
+Signed-off-by: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Tested-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 006f1548ac13d67d21865416a0f4e8062df1a85f)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 27 +++++++++++++++------------
+ 1 file changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 1f78d3259a86..ee1297226145 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -33,7 +33,7 @@ import resource
+ import struct
+ import re
+ import subprocess
+-from collections import defaultdict
++from collections import defaultdict, namedtuple
+ 
+ VMX_EXIT_REASONS = {
+     'EXCEPTION_NMI':        0,
+@@ -803,6 +803,9 @@ class DebugfsProvider(Provider):
+         self.read(2)
+ 
+ 
++EventStat = namedtuple('EventStat', ['value', 'delta'])
++
++
+ class Stats(object):
+     """Manages the data providers and the data they provide.
+ 
+@@ -870,10 +873,10 @@ class Stats(object):
+         for provider in self.providers:
+             new = provider.read(by_guest=by_guest)
+             for key in new if by_guest else provider.fields:
+-                oldval = self.values.get(key, (0, 0))[0]
++                oldval = self.values.get(key, EventStat(0, 0)).value
+                 newval = new.get(key, 0)
+                 newdelta = newval - oldval
+-                self.values[key] = (newval, newdelta)
++                self.values[key] = EventStat(newval, newdelta)
+         return self.values
+ 
+     def toggle_display_guests(self, to_pid):
+@@ -1086,28 +1089,28 @@ class Tui(object):
+         total = 0.
+         for key in stats.keys():
+             if key.find('(') is -1:
+-                total += stats[key][0]
++                total += stats[key].value
+         if self._sorting == SORT_DEFAULT:
+             def sortkey((_k, v)):
+                 # sort by (delta value, overall value)
+-                return (v[1], v[0])
++                return (v.delta, v.value)
+         else:
+             def sortkey((_k, v)):
+                 # sort by overall value
+-                return v[0]
++                return v.value
+ 
+         tavg = 0
+         for key, values in sorted(stats.items(), key=sortkey, reverse=True):
+             if row >= self.screen.getmaxyx()[0] - 1:
+                 break
+-            if not values[0] and not values[1]:
++            if not values.value and not values.delta:
+                 break
+-            if values[0] is not None:
+-                cur = int(round(values[1] / sleeptime)) if values[1] else ''
++            if values.value is not None:
++                cur = int(round(values.delta / sleeptime)) if values.delta else ''
+                 if self._display_guests:
+                     key = self.get_gname_from_pid(key)
+                 self.screen.addstr(row, 1, '%-40s %10d%7.1f %8s' %
+-                                   (key, values[0], values[0] * 100 / total,
++                                   (key, values.value, values.value * 100 / total,
+                                     cur))
+                 if cur is not '' and key.find('(') is -1:
+                     tavg += cur
+@@ -1378,7 +1381,7 @@ def batch(stats):
+         s = stats.get()
+         for key in sorted(s.keys()):
+             values = s[key]
+-            print('%-42s%10d%10d' % (key, values[0], values[1]))
++            print('%-42s%10d%10d' % (key, values.value, values.delta))
+     except KeyboardInterrupt:
+         pass
+ 
+@@ -1395,7 +1398,7 @@ def log(stats):
+     def statline():
+         s = stats.get()
+         for k in keys:
+-            print(' %9d' % s[k][1], end=' ')
++            print(' %9d' % s[k].delta, end=' ')
+         print()
+     line = 0
+     banner_repeat = 20
+-- 
+2.12.3
+

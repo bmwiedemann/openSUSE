@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Sun Dec 23 19:07:51 UTC 2018 - rpm@fthiessen.de
+
+- Update to 3.3:
+  + Add Reconciliation definition to glossary (bgo#791169)
+  + None of the "GnuCash Tutorial and Concepts Guide" graphics
+    display (bgo#796800)
+  + Add information to Guide about file formats, esp. SQL.
+    (bgo#777893)
+  + Add tax tables to documentation.
+  + Document Filter/Closing transactions feature.
+- Recommend gnome-help, so GnuCash is able to retrieve and open
+  guide files (boo#1099804)
+
+-------------------------------------------------------------------
+Wed Sep 26 23:49:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.2:
+  + Missing images in Tutorial and Concepts Guide in PDF and Online
+    Help pages (bgo#796098).
+  + Void Reason Has No Visible Purpose (bgo#795980).
+- Changes from version 3.1:
+  + Update supported platforms for version 3.x.
+
+-------------------------------------------------------------------
+Fri Apr  6 19:06:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.0:
+  + Correct field format in python-import-fields.
+  + Clarify that creating a postponed SX will use the original
+    date.
+  + Remove 'Remainder To' from loan assistant page 2.
+  + Update partial date entry documentation based on new default
+    behaviour.
+  + Fix chm mapfile target and cleanfiles. The mapfile target would
+    fail if the directory was already built, apparently not
+    recognizing that its target was complete.
+  + Cleanfiles was missing several build targets.
+  + New Transaction Report section in Guide.
+  + Replace some screenshots with new ones reflecting Gtk3.
+  + Bugs fixed: bgo#122895, bgo#634181, bgo#608098, bgo#760407,
+    bgo#762088.
+  + Updated translations.
+- Changes from version 2.6.20:
+  + Link the referenced 'Simple Transaction Example' in
+    Transactions 'Opening Balances'.
+  + Add a link from '8.5.1. Loan Specifications' to '8.3.
+    Calculations' SX:XRO.
+  + Add Preference Online Quotes.
+  + Bugs fixed: bgo#793844, bgo#770132, bgo#770132, bgo#792756.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:30:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec 21 01:44:55 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.6.19:
+  + Help 10.2. Setting Preferences is outdated #105 (bgo#782423).
+  + Changing text in Help to reflect changes in Preferences
+    dialogs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov  5 14:39:39 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.6.18:
+  + The Italian Help translation, which uniquely uses a PO file,
+    is frozen at commit 78cfa76 because of lack of a translator to
+    maintain it.
+  + Begin a Russian translation of the Guide by Dimitry Mangul.
+  + Some spelling corrections in the German Guide.
+  + Bugs fixed: bgo#120940.
+- Change Source url to one that works correctly with source
+  services: the previous url was downloading a tarball called
+  "download"; in addition, the new url is also less clumsy
+  looking.
+
+-------------------------------------------------------------------
+Thu Jul 20 23:36:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.6.17:
+  + Improve internationalization of the Tutorial and Concepts
+    Guide.
+  + Bugs fixed: bgo#781711, bgo#781714.
+- Fix source url.
+
+-------------------------------------------------------------------
+Wed Mar 29 20:19:41 UTC 2017 - sfalken@opensuse.org
+
+- Update to version 2.6.16:
+  + Remove section "Changing the Register View" as better handled
+    in Guide section 4.2.
+  + Glossary: Transactions have at least 2 splits.
+  + Bugs Fixed: bgo#755174, bgo#769457, bgo#774658, bgo#777318
+    bgo#777287.
+
+-------------------------------------------------------------------
+Fri Feb 24 22:29:14 UTC 2017 - zaitor@opensuse.org
+
+- Fixup sourceurl and add proper tarball, the previous sub had the
+  tarball named download.
+
+-------------------------------------------------------------------
+Fri Jan 20 23:59:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.6.15:
+  + Fix resolution of screenshots.
+  + Bugs fixed: bgo#397135, bgo#633590, bgo#743671, bgo#755174,
+    bgo#770371, bgo#775592, bgo#775919.
+  + Updated translations.
+- Drop rarian-scrollkeeper-compat BuildRequires: No longer strictly
+  needed.
+- Drop libgnome BuildRequires: Previously added just for for dir
+  ownership. In stead just plainly own dirs in filelist.
+
+-------------------------------------------------------------------
+Thu Nov  3 07:44:43 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.6.14:
+  + Update the list of Finance::Quote methods to 1.38.
+  + Bugs fixed: bgo#115461, bgo#687290, bgo#769457, bgo#769746,
+    bgo#771230, bgo#769663.
+  + Updated translations.
+- Changes from version 2.6.13:
+  + Fix unclear statement re docbook stylesheets in README.
+  + Fix the very stale Release Schedule link in the Guide.
+  + Bugs fixed: bgo#637004, bgo#712764, bgo#751686, bgo#754239,
+    bgo#754239, bgo#765131.
+
+-------------------------------------------------------------------
+Mon Jun 27 22:27:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.6.12:
+  + Update instructions for updating quote prices by cron.
+  + Add links to where common report preferences are set.
+  + Setting number format details appear wrong in Help, section
+    10.3.4. Counters Book Options Tab.
+  + Update documentation for Invoice and Bill payments to reflect
+    the new features.
+  + Add missing sect Guide ch2.8: New book options in New Acct
+    Hierarchy.
+  + Remove Section 9.4.3 From Guide that offered simplistic advice
+    about money and life that does nothing to explain GnuCash
+    functionality or use.
+  + Add note to Guide section 2.3.3 For Column Widths.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 14:50:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.6.11:
+  + Kep documentation in sync for latest release.
+
+-------------------------------------------------------------------
+Wed Jul  8 20:53:46 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.7:
+  + Fix typo.
+  + Verbessere Erklärung Soll & Haben.
+  + Add source link and translator comment to
+    Help_txf-categories.xml.
+
+-------------------------------------------------------------------
+Tue Apr  7 20:49:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.6:
+  + Explain sorting by TXF code within Tax Form Sections.
+  + Insert Part designations and update the Basics Chapter.
+  + Document latest changes to the Advanced Portfolio Report.
+  + Remove obolete sections about "Cannot find default values" left
+    over from gconf.
+
+-------------------------------------------------------------------
+Wed Jan 28 16:33:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.5:
+  + Fix a path of freshly added XML files.
+  + Add some comments about translation to the German documents
+    where the translation wasn't updated to match the English
+    version.
+  + Apply &untranslated property in German translations.
+  + Fix bgo#739380: Release tarball build fails. Git builds OK.
+
+-------------------------------------------------------------------
+Tue Sep 30 19:47:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.4:
+  + Add sentence about manually editing payment information for
+    customers.
+  + Add warning and tip about account separator character.
+  + Correct field format in python-import-fields.
+  + Currency movements .. remain fully balanced if "Trading
+    Accounts" is enabled; "double entry" was not sufficient.
+  + Improve explanation that Credit does NOT decrease equity
+    accounts.
+  + Improve readability of "Credit does NOT decrease ...".
+  + New chapters in the German translation: Overview, Basics, and
+    Accounts.
+  + Reduced proportional width of description column to increase
+    overall font size for a 510 pixel width image.
+  + Remove a few discrepancies between the german guide overview
+    and other components.
+  + Update of translators in gnucash-guide-de.omf
+  + Updated documentation to explain how to tie dividends received
+    in cash to the appropriate stock holding.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  5 08:56:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.6.3:
+  + There have been no documentation changes since 2.6.2.
+
+-------------------------------------------------------------------
+Fri Mar 14 08:52:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.6.2:
+  + Help text for Employee section missing (bgo#547386).
+  + One error and some typos in documentation (bgo#723173).
+  + Dividends reinvested example text doesn't match graphic. Also
+    remove a useless figure and improve text (bgo#725013).
+  + Assorted typos and version number corrections.
+
+-------------------------------------------------------------------
+Tue Feb  4 15:12:20 CET 2014 - ro@suse.de
+
+- Drop kdelibs3-doc BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Sun Feb  2 17:50:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.1:
+  + First documention updates for credit notes.
+  + Adapt migration documentation to gsettings introduction.
+  + Move most of the text regarding business features from guide to
+    help, correct links and wording and many small improvements.
+  + Add information about the Business tab in book options window.
+  + Enable building Japanese PDF without requiring Debian or
+    downloading fonts from anywhere.
+  + Add Fedora font paths.
+  + Adjust image after update.
+  + Doc/guide/C: add cash account to accts-examples-organization2.
+  + Docs/guide/de: minor corrections of spelling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 22 20:11:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.0:
+  + Updated documentation for new GnuCash stable version 2.6.0:
+    - Update Preferences section.
+    - Menu and Toolbar references.
+    - Update Business Documentation: Bobby Ratliff.
+    - Budget Features: Bobby Ratliff.
+  + Update Copyrights, Author lists, and metadata.
+  + Add facility to publish docs as e-pubs.
+  + Bugs fixed: bgo#513122, bgo#604519, bgo#608932, bgo#633524,
+    bgo#638955, bgo#639264, bgo#661705, bgo#670354, bgo#672668,
+    bgo#684709, bgo#687476, bgo#688425, bgo#688579, bgo#688968,
+    bgo#691762, bgo#692917, bgo#693493, bgo#699430, bgo#700656,
+    bgo#702039, bgo#712308:, bgo#715161.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 11 12:41:18 UTC 2013 - dimstar@opensuse.org
+
+- Replace scrollkeeper BuildRequires with xsltproc and
+  rarian-scrollkeeper-compat: scrollkeeper has been replaced by
+  rarian. Scrollkeeper also pulled in xsltproc, but that was not
+  an entirely correct requirement.
+
+-------------------------------------------------------------------
+Tue Nov 20 20:15:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.4.2:
+  + New or improved documentation for "Data migration".
+  + New documentation formats: epub and mobi.
+  + Several small updates and fixes.
+  + Updated translations.
+- Drop gnucash-docs-fixup.patch: fixed upstream.
+- Drop libtool BuildRequires and call to autogen.sh, as we are
+  able to use the upstream tarball again.
+
+-------------------------------------------------------------------
+Fri Jul 20 20:27:18 UTC 2012 - dimstar@opensuse.org
+
+- Add a self created source tarball, directly exported from svn.
+  The upstream provided tarball misses a bunch of file (notably in
+  the german language), which are all in svn, but due them not
+  being listed in Makefile.am, make dist did not add them to the
+  tarball (Addresses part of bnc#771530).
+- Add gnucash-docs-fixup.patch: mark the missing files to be
+  installed as well.
+- Add libtool BuildRequires and call autogen.sh in build section,
+  as this tarball has not been preprocessed at all.
+
+-------------------------------------------------------------------
+Mon Sep 26 20:54:41 UTC 2011 - andrea.turrini@gmail.com
+
+- Fix typo in description.
+
+-------------------------------------------------------------------
+Thu Aug  4 14:00:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.4.1:
+  + Allow control over scrollkeeper omf file installation using
+    --disable-scrollkeeper as configure parameter.
+  + Other buildsystem fixes.
+- Clean spec-file using spec-cleaner.
+- Use grep -E instead of egrep to fix a rpmlint warning.
+
+-------------------------------------------------------------------
+Fri Jul 27 14:51:46 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.2.0:
+  * Documents gnucash 2.2.0.
+
+-------------------------------------------------------------------
+Wed Mar  7 23:29:03 CET 2007 - jhargadon@suse.de
+
+- removed Requires: yelp (#250500) 
+
+-------------------------------------------------------------------
+Fri Feb 16 15:40:54 CET 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 2.0.1 (#231168),
+

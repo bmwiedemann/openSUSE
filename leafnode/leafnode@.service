@@ -1,0 +1,7 @@
+[Unit]
+Description=Leafnode NNTP server
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/sbin/leafnode
+StandardInput=socket

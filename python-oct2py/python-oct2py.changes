@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Jul 23 20:26:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 5.0.4
+  * update example docs
+- Update to version 5.0.3
+  * switch to line_handler and add a carriage return test
+  * remove hardcoded email
+
+-------------------------------------------------------------------
+Wed May 29 20:26:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 5.0.2
+  * Removed the ``executable`` argument to ``Oct2Py`` in favor of using
+    environment variables because we need to instantiate the ``octave``
+    convenience instance at startup.
+  * Add a plot_backend kwarg for eval and clean up default backend selection.
+  * Add support for Pandas DataFrames and Series
+  * Remove unwanted octave-workspace files at exit
+  * Add a backend property to specify the graphics toolkit
+- Disable building for python2 since it has python3-only
+  dependencies
+
+-------------------------------------------------------------------
+Sun Mar 11 08:35:05 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use %license macro for license.
+
+-------------------------------------------------------------------
+Mon Aug 14 14:43:22 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

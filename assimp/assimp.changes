@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Apr 20 11:05:53 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflects its use.
+- Repackage original tarball with the test/models-nonbsd/
+  directory removed.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:38:19 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 3.3.1
+* Fix BlenderTesselator: offsetof operator
+* C++11 support
+* OpenGEX: add support for cameras and lights
+* Enable export by pyAssimp
+* Add functionality to perform a singlepost-processing step
+* Fix of many resource leaks in unittests and main lib
+
+-------------------------------------------------------------------
+Thu Jun 16 22:16:07 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2
+* Support for FBX 2013 and newer, binary and ASCII
+* Support for OGRE binary mesh and skeleton format
+* Updated BLEND support for newer Blender versions
+* Support for arbitrary meta data, used to hold FBX and DAE metadata
+* OBJ Export now produces smaller files
+* Meshes can now have names, this is supported by the major importers
+* Improved IFC geometry generation
+* M3 support has been removed
+* Experimental OpenGEX support
+
+-------------------------------------------------------------------
+Tue Sep  3 09:38:16 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed the build problem with docdir
+  moved samples/ to doc 
+
+-------------------------------------------------------------------
+Fri Feb  1 21:12:07 UTC 2013 - joop.boonen@opensuse.org
+
+- Improved the spec file, changed the names and cleaned the spec file 
+
+-------------------------------------------------------------------
+Mon Jul 30 00:00:00 CEST 2012 - sergey.shambir.auto@gmail.c
+
+- some improvements form *.spec at home:hcostelha repository
+
+-------------------------------------------------------------------
+Sun Jul 29 00:00:00 CEST 2012 - sergey.shambir.auto@gmail.c
+
+- initial package of version 3.0
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Bandwidth Monitor NG
+GenericName=Bandwidth Monitor
+Comment=Realtime Network Bandwidth Monitor
+Exec=bwm-ng
+Icon=bwm-ng
+Type=Application
+Categories=System;Monitor;
+Terminal=true
+StartupNotify=false
+

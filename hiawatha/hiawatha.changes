@@ -1,0 +1,570 @@
+-------------------------------------------------------------------
+Wed Jul 24 09:26:57 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Mar  4 20:13:01 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to version 10.9:
+  * Let's Encrypt script installed via CMake.
+  * Bugfix: Directory traversal when AllowDotFiles is enabled.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:37:47 UTC 2018 - fisiu@opensuse.org
+
+- Update to version 10.8.3:
+  * Several fixes in build system
+  * Added build system for nghttp2
+  * New style for directory index
+  * uri_depth added to XML for directory index
+
+-------------------------------------------------------------------
+Tue May  8 20:49:52 UTC 2018 - fisiu@opensuse.org
+
+- Update to version 10.8.1.:
+  * Removed support for secp192r1 and secp192k1 curves, to make it PCI DSS
+    compliant out of the box.
+  * Small improvements to Let's Encrypt ACMEv2 script.
+
+-------------------------------------------------------------------
+Mon Mar 26 21:47:26 UTC 2018 - fisiu@opensuse.org
+
+- Ship Let's Encrypt script within subpackage.
+
+-------------------------------------------------------------------
+Mon Mar 26 20:46:56 UTC 2018 - fisiu@opensuse.org
+
+- Add firewalld config files for Leap/SLE >= 15 and TW.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:59:45 UTC 2018 - fisiu@opensuse.org
+
+- Update to version 10.8:
+  * New Let's Encrypt script that supports ACME v2.
+  * Added Syslog option.
+  * Added GZipExtensions option.
+  * AllowDotFiles now used to show hidden files in directory listings.
+  * Removed support for static RSA ciphers.
+  * Hiawatha log format changed.
+  * Small improvements.
+  * Bugfix: certain characters in filenames disrupted directory index output.
+  * Bugfix: requesting non-regular files now results in a 403 instead of
+    blocking that thread.
+
+-------------------------------------------------------------------
+Sat Feb 17 20:21:12 UTC 2018 - fisiu@opensuse.org
+
+- Fix build with mbedtls 2.7.0.
+
+-------------------------------------------------------------------
+Tue Oct 24 19:48:10 UTC 2017 - fisiu@opensuse.org
+
+- Update to version 10.7:
+  * Connect to a Unix socket via a reverse proxy.
+  * Added BlockExtensions setting.
+  * Small improvements.
+  * Bugfix: error in handling renewal scripts in Let's Encrypt script.
+
+-------------------------------------------------------------------
+Sat Jun 17 08:33:13 UTC 2017 - fisiu@opensuse.org
+
+- Update to version 10.6:
+  * Added PublicKeyPins option.
+  * Added renewal-scripts to Let's Encrypt script.
+  * Small changes to CMake build system.
+  * Added CustomHeaderBackend option.
+  * Renamed CustomHeader option to CustomHeaderClient. Old name still works.
+  * Hiawatha ignores FileHashes and ReverseProxy for Let's Encrypt
+    authentication requests.
+  * Small improvements and bugfixes.
+
+-------------------------------------------------------------------
+Tue Nov 15 16:08:30 UTC 2016 - mpluskal@suse.com
+
+- Update to version 10.4:
+  * SkipCacheCookie option added.
+  * Added Systemd init script to Debian package.
+  * Small improvements and bugfixes.
+- Small packaging changes and requirements update
+
+-------------------------------------------------------------------
+Sun Oct  2 19:30:49 UTC 2016 - fisiu@opensuse.org
+
+- Build fails with mbedtls < 2.
+
+-------------------------------------------------------------------
+Sat Aug 27 11:43:20 UTC 2016 - mpluskal@suse.com
+
+- Update to version 10.3:
+  * PreventCSRF, PreventSQLi and PreventXSS improved.
+  * Prevention of MySQL data mining via SQL injection.
+  * Added revoke option to Let's Encrypt script.
+  * Hiawatha ignores RequireTLS for Let's Encrypt authentication
+    requests.
+  * Small bugfixes and improvements.
+  * Bugfix: possible HTTP request pipelining error after CSRF
+    prevented.
+- Changes for version 10.2:
+  * Added Let's Encrypt script (see extra/letsencrypt).
+  * Added support for requesting Let's Encrypt certificates (see
+    AccessList and PasswordFile settings in manual page).
+  * Small improvements.
+  * Bugfix: HideProxy not working for Forwarded header.
+- Changes for 10.1:
+  * Added Extensions setting.
+  * Added support for X-Sendfile header.
+  * mbed TLS updated to 2.2.1.
+  * Improved SQL injection detection.
+  * Small bugfixes and improvements.
+- Changes for 10.0:
+  * Usage of Directory sections changed.
+  * Added support for RFC 5785.
+  * Added support for GZip compression. Removed the UseGZfile
+    option.
+  * Added ECDSA support for TLS 1.0 and TLS 1.1.
+  * Replaced UrlToolkit Expire option with ExpirePeriod in
+    Directory section.
+  * Replaced IgnoreDotHiawatha option with UseLocalConfig.
+  * Removed the VolatileObject option.
+  * Improved SQL injection detection.
+  * mbed TLS updated to 2.2.0.
+  * Small improvements.
+- Changes for 9.15:
+  * Support for WebSockets via reverse proxy.
+  * UNIX socket support for connections to WebSockets.
+  * Responsive design for directory index and error message.
+  * mbed TLS updated to 2.1.2.
+  * Fixed mbed TLS linking in CMake configuration.
+  * ListenBacklog option added.
+  * Small bugfixes.
+- Changes for 9.14:
+  * mbed TLS updated to 2.0.0.
+  * Small bugfixes.
+  * Bugfix: crash when sending very large request to FastCGI
+    server.
+
+-------------------------------------------------------------------
+Sat Jun 20 09:28:30 UTC 2015 - mpluskal@suse.com
+
+- Fix rpmlint warnings
+  * add rcsymlink
+  * fix log directory permissions
+
+-------------------------------------------------------------------
+Mon Jun 15 22:07:08 UTC 2015 - fisiu@opensuse.org
+
+- Update to 9.13:
+  * Renamed SSLcertFile to TLScertFile.
+  * Renamed RequireSSL to RequireTLS.
+  * Renamed SSL_* CGI environment variables to TLS_*.
+  * Renamed UrlToolkit option UseSSL to UseTLS.
+  * Replaced MinSSLversion by MinTLSversion.
+  * LogTimeouts option added.
+  * Added 'skip directories' parameter to reverse proxy.
+  * Failed logins sent to Hiawatha Monitor.
+  * Small bugfix and improvements.
+
+-------------------------------------------------------------------
+Thu Feb 26 22:51:06 UTC 2015 - fisiu@opensuse.org
+
+- Update to 9.12:
+  * Bugfix: memory leak in SSL library.
+  * Small bugfix.
+
+-------------------------------------------------------------------
+Tue Feb  3 18:19:55 UTC 2015 - fisiu@opensuse.org
+
+- Update to 9.11:
+  * ChallengeClient option added.
+  * UrlToolkit options TotalConnections and OmitRequestLog added.
+  * Improvements to UrlToolkit and reverse proxy swap.
+  * UrlToolkit rules are also applied to PUT and DELETE.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Sun Jan 11 22:23:28 UTC 2015 - fisiu@opensuse.org
+
+- Update to 9.10:
+  * Support for banning bad clients who connect via a proxy.
+  * UrlToolkit option Do added. Changed how Call and Skip should be called.
+  * General UrlToolkit improvements. See config/toolkit.conf for syntax.
+  * Hiawatha now prefers reverse proxies with a scheme matching the one of the
+    client connection. See config/toolkit.conf for syntax.
+  * Hiawatha will now first process UrlToolkit rules before using ReverseProxy.
+  * Small bugfixes and improvements.
+
+-------------------------------------------------------------------
+Sat Dec 13 12:10:31 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.9:
+  * HTTPAuthToCGI option added.
+  * BanByCGI option added.
+  * Improved SSL ciphersuite selections.
+  * CAcertificates options added.
+  * Dropped support for SSL3.0.
+  * Small bugfixes and improvements.
+
+-------------------------------------------------------------------
+Sun Nov  2 22:37:08 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.8:
+  * Added support for websockets. WebSocket option added.
+  * SSL key and certificate checks added to wigwam.
+  * Small bugfixes and improvements.
+
+-------------------------------------------------------------------
+Wed Sep 10 16:04:57 UTC 2014 - jengelh@inai.de
+
+- Avoid generating libpolarssl.so.7, which led to "have choice
+  for libpolarssl.so.7: libpolarssl7 hiawatha" and make other
+  polarssl-using applications not run in practice because the
+  library is in a non-standard directory, yet discovered by rpm
+  as a provider.
+
+-------------------------------------------------------------------
+Sun Sep  7 23:29:36 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.7:
+  * UseToolkit now possible in .hiawatha file at root of website.
+  * Method option added to URL Toolkit.
+  * SetResourceLimit option added.
+  * ThreadKillRate option added.
+  * Improved SQL injection detection.
+  * Default value for DHsize set to 2048.
+  * PolarSSL updated to version 1.3.8.
+  * Memory allocation debugger module added.
+  * Small bugfixes and improvements.
+  * Bugfix: incorrect file hash printing by wigwam with directory as symlink.
+
+-------------------------------------------------------------------
+Sun Jun  8 21:10:58 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.6:
+  * Logfile rotation for access logfiles.
+  * HTTP Strict Transport Security header made optional for RequireSSL.
+  * Support for chunked transfer encoded requests (not for PUT).
+  * Support for improved server statistics in Hiawatha Monitor.
+  * The Hiawatha Monitor is now supported without the need for XSLT.
+  * PolarSSL updated to version 1.3.7.
+  * A few bugfixes as reported by Coverity.
+  * Bugfix: SQL injection detection was broken since 8.6.
+  * Bugfix: XSS detection didn't work for reverse proxy.
+  * Small bugfixes.
+
+-------------------------------------------------------------------
+Sun May 18 14:34:03 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.5:
+  * Added support for CGI statistics in Hiawatha Monitor.
+  * MonitorRequests and MonitorStatsInterval option removed.
+  * Added support for Origin HTTP header to prevent CSRF.
+  * EnforceFirstHostname option added.
+  * ScriptAlias option added.
+  * PolarSSL updated to version 1.3.6.
+  * Dropped support for PolarSSL 1.2.
+
+-------------------------------------------------------------------
+Mon Mar 24 23:25:24 UTC 2014 - fisiu@opensuse.org
+
+- Update to 9.4:
+  * Keep-Alive connections for reverse proxy made optional.
+  * ErrorXSLTfile option added.
+  * IgnoreDotHiawatha option added.
+  * RandomHeader option added.
+  * Dropped support for RC4.
+  * PolarSSL updated to version 1.3.4.
+  * Added support for Hyper Text Coffee Pot Control Protocol (RFC2324).
+  * Added SSL_CIPHER to CGI environment.
+  * Added Public/Private to UrlToolkit expire option.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Mon Feb 17 16:40:08 UTC 2014 - fisiu@opensuse.org
+
+- Add firewall rules for http and https.
+
+-------------------------------------------------------------------
+Thu Dec 12 22:04:38 UTC 2013 - fisiu@opensuse.org
+
+- Update to 9.3.1:
+  * Several bugfixes in reverse proxy.
+
+-------------------------------------------------------------------
+Thu Nov 21 21:16:09 UTC 2013 - fisiu@opensuse.org
+
+- Update to 9.3:
+  * PolarSSL updated to version 1.3.2.
+  * Added support for Elliptic Curve Cryptography.
+  * TunnelSSH option added.
+  * AnonymizeIP option added.
+  * Keep-alive connections for reverse proxy.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Tue Aug 13 22:56:19 UTC 2013 - fisiu@opensuse.org
+
+- Don't use cutom pid file in systemd service.
+- Fix logrotate config.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Aug  1 19:39:47 UTC 2013 - fisiu@opensuse.org
+
+- Update source URL.
+
+-------------------------------------------------------------------
+Mon Jun 24 13:11:42 UTC 2013 - fisiu@opensuse.org
+
+- Drop hiawatha.permissions file and related option. Use 0755 and
+  %verify(not mode) for %{_sbindir}cgi-wrapper.
+
+-------------------------------------------------------------------
+Sun Jun 23 16:58:59 UTC 2013 - fisiu@opensuse.org
+
+- Update to 9.2:
+  * Added support for compiling Hiawatha against the system's
+    default version (>=1.2.0) of the PolarSSL library.
+  * PolarSSL updated to version 1.2.8.
+  * Small bugfixes (memory leaks in error situations).
+  * Bugfix: virtual hostname selection for IPv6 with non-standard
+    port.
+
+-------------------------------------------------------------------
+Sun Jun  2 13:22:55 UTC 2013 - fisiu@opensuse.org
+
+- Update to 9.1:
+  * FileHashes option added.
+  * PolarSSL updated to version 1.2.7. Enabled ciphersuite
+    selection based on protocol version.
+  * Enabled accf_http support for FreeBSD. Thanks to Martin
+    Tournoij.
+  * ImageReferer option removed.
+  * Bugfix: incorrect BanOnFlooding behavior.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Thu Apr  4 17:44:17 UTC 2013 - fisiu@opensuse.org
+
+- Update to 9.0:
+  * Clients handled via thread pool instead of creating threads on
+    the fly.
+  * ThreadPoolSize option added.
+  * Header option added to URL Toolkit.
+  * Improved client SSL certificate handling. Environment variables
+    renamed.
+  * PolarSSL updated to version 1.2.6.
+  * Improved Reverse Proxy caching support for requests with URL
+    parameters.
+  * CacheMinFilesize option removed.
+  * DenyBot option removed. Use UrlToolkit's Header option instead.
+  * OldBrowser option removed from URL Toolkit. Use Header option
+    instead.
+  * Improved UrlToolkit rule testing in wigwam.
+  * Small bugfixes and improvements.
+
+-------------------------------------------------------------------
+Wed Mar 20 11:29:41 UTC 2013 - fisiu@opensuse.org
+
+- Run server as wwwrun user.
+
+-------------------------------------------------------------------
+Fri Mar  8 15:54:39 UTC 2013 - fisiu@opensuse.org
+
+- update to 8.8.1 (changes since 7.7):
+  * Bugfix: Incorrect size of buffer for poll() can lead to a crash when using
+    Tomahawk.
+  * Caching for Reverse Proxy. CacheRProxyExtensions option added.
+  * Basic HTTP authentication now supports the glibc2 version of crypt().
+  * Hostname in ImageReferer can now contain a wildcard.
+  * DenyBody matching is now case insensitive.
+  * PolarSSL updated to version 1.2.5.
+  * Support for HTTP Strict Transport Security (RFC 6797). Integrated in
+    RequireSSL option.
+  * DHsize option added.
+  * PolarSSL updated to version 1.2.3.
+  * CloudFlare headers placed in environment variables.
+  * Removed php-fcgi.
+  * Bugfix: slow page loading via Reverse Proxy.
+  * PolarSSL updated to version 1.2. Added support for TLS 1.2 and secure
+    renegotiation.
+  * Added support for Server Name Indication.
+  * MinSSLversion option added.
+  * ServerRoot option removed.
+  * Improved MacOS X package building script.
+  * Marked php-fcgi as deprecated. Use php-fpm instead.
+  * Improved Reverse Proxy.
+  * Changed error message style.
+  * Renamed Command Channel to Tomahawk.
+  * Return 403 instead of 401 upon correct password for HTTP authentication but
+    user not in right group.
+  * Bugfix: replaced select() with poll() to prevent crashes in case of large
+    amount of simultaneous connections. Thanks to Peter Bex.
+  * MaxServerLoad option added.
+  * PolarSSL updated to version 1.1.4.
+  * Bugfix: invalid reverse proxy request when URL parameters are present.
+  * Bugfix: memory leak in SSL library.
+  * Improved security for reverse proxy (works with PreventSQLi, etc).
+  * ReverseProxy option added.
+  * PolarSSL updated to version 1.1.3.
+  * WebDAVapp option added. Enables support for WebDAV applications like
+    ownCloud (http://owncloud.org/).
+  * Removed support for the OPTIONS method.
+  * AllowDotFiles option added.
+  * Global forks setting in php-fcgi.conf moved to Server setting.
+  * BanOnInvalidURL option added.
+  * PolarSSL updated to version 1.1.1.
+  * Bugfix: paths missing in default values and examples in manual pages.
+  * Replaced Autoconf with CMake. Many thanks to Sander Niemeijer.
+  * Replaced OpenSSL with PolarSSL. Many thanks to Paul Bakker.
+  * AllowedCiphers and DHparameters options removed.
+  * Added IE7 to UrlToolkit's OldBrowser list, removed IE5.
+  * MaxUrlLength option added, can return 414 Request-URI Too Long.
+  * Changed default value of TriggerOnCGIstatus to 'no'.
+  * Equalized format of logfiles.
+  * Extra checks added to php-fcgi.
+  * Improved SQL injection detection.
+  * Bugfix: memory leak in PreventSQLi routine.
+  * Bugfix: potential server freeze with 100% CPU in CGI output caching.
+  * Bugfix: null byte in HTTP header of cached CGI content.
+  * Control CGI output cache via X-Hiawatha-Cache and X-Hiawatha-Cache-Remove
+    CGI headers. See the CGI OUTPUT CACHE section in the manual page.
+  * BanOnWrongPassword now also triggers on wrong username.
+  * Bugfix: timeout issue with large POST requests on SSL connections.
+
+-------------------------------------------------------------------
+Mon Oct 10 00:00:00 CET 2011 - detlef@links2linux.de
+
+- new upstream version <7.7>
+
+  * First parameter of Alias can now contain subdirectories.
+  * Improved stability for connections with SSL client authentication.
+  * Bugfix: BanOnFlooding was broken.
+
+-------------------------------------------------------------------
+Tue Sep 06 00:00:00 CET 2011 - detlef@links2linux.de
+
+- new upstream version <7.6>
+
+  * PreventSQLi option rewritten.
+
+-------------------------------------------------------------------
+Thu Jun 02 00:00:00 CET 2011 - detlef@links2linux.de
+
+- new upstream version <7.5>
+
+  * OldBrowser option added to URL toolkit.
+  * Improved mimetype configuration.
+  * Do-not-track HTTP header support.
+  * Password file entries can now be created with Wigwam.
+  * Small bugfixes and improvements.
+  * Bugfix: sent one byte too few for Range -XX.
+  * Bugfix: possible crash when using PreventSQLi.
+
+-------------------------------------------------------------------
+Tue Apr 12 19:00:00 CET 2011 - detlef@links2linux.de
+
+- new upstream version <7.4.1>
+  * Bugfix: integer overflow in fetch_request() which could
+    lead to a server crash.
+
+-------------------------------------------------------------------
+Mon Nov 15 19:00:00 CET 2010 - detlef@links2linux.de
+
+- new upstream version <7.4>
+  * Connections per IP added to RequestLimitMask.
+  * NoExtensionAs made a per-host setting.
+  * Small bugfixes and improvements.
+  * Bugfix: usage of HideProxy caused Hiawatha to refuse new connections
+    after ConnectionsTotal connections.
+  * Bugfix: memory leak in XSLT module.
+
+-------------------------------------------------------------------
+Fri Jun 11 19:00:00 CET 2010 - detlef@links2linux.de
+
+- new upstream version <7.3>
+  * RequestLimitMask option added.
+  * URL parameters for ErrorHandler.
+  * Support for Haiku OS.
+  * Small security bugfixes.
+
+-------------------------------------------------------------------
+Thu Apr 22 04:00:00 CET 2010 - detlef@links2linux.de
+
+- new upstream version <7.2>
+  * URL toolkit code restructured.
+  * UseSSL option added to URL toolkit.
+  * Digest HTTP authentication works with htdigest(1) created password files.
+  * Small improvements.
+
+-------------------------------------------------------------------
+Mon Mar 29 14:00:00 CET 2010 - detlef@links2linux.de
+
+- new upstream version <7.1>
+  * Small bugfixes.
+  * Bugfix: deny access and redirect result via toolkit subroutine.
+  * Bugfix: broken flooding protection.
+
+-------------------------------------------------------------------
+Mon Feb 15 23:25:00 CET 2010 - detlef@links2linux.de
+
+- new upstream version <7.0>
+- added logrotate/init file.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:50:22 CET 2009 - mrueckert@suse.de
+
+- update to 6.11
+
+-------------------------------------------------------------------
+Thu May 29 18:49:29 CEST 2008 - mrueckert@suse.de
+
+- update to 6.7
+- added permissions file.
+
+-------------------------------------------------------------------
+Tue Nov 13 06:03:10 CET 2007 - mrueckert@suse.de
+
+- update to version 6.1
+  * Format of ConnectTo changed. Old format will be valid for a few
+    more releases.
+  * Changed some CGI environment variables after URL rewriting.
+  * Some URL rewrite checks included in Wigwam.
+  * TriggerOnCGIstatus option added.
+  * RequireResolveIP option removed.
+  * Bugfix: POST data larger then 64kB via FastCGI.
+
+-------------------------------------------------------------------
+Sat Oct 27 15:58:22 CEST 2007 - mrueckert@suse.de
+
+- update to version 6.0
+
+-------------------------------------------------------------------
+Fri Sep 28 05:39:52 CEST 2007 - mrueckert@suse.de
+
+- update to version 5.13
+
+-------------------------------------------------------------------
+Mon Sep  3 06:35:45 CEST 2007 - mrueckert@suse.de
+
+- update to version 5.12
+
+-------------------------------------------------------------------
+Wed Aug  8 05:38:49 CEST 2007 - mrueckert@suse.de
+
+- update to version 5.11
+
+-------------------------------------------------------------------
+Fri Jul 27 07:50:21 CEST 2007 - mrueckert@suse.de
+
+- update to version 5.10
+
+-------------------------------------------------------------------
+Sat May 12 22:13:14 CEST 2007 - mrueckert@suse.de
+
+- update to version 5.8
+

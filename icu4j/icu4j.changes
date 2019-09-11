@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Wed Feb 13 12:42:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * icu4j-63.1-java8compat.patch
+    + Prevent use of Jdk >= 9 functions
+- Clean up the file and sanitize osgi bundle versions
+
+-------------------------------------------------------------------
+Tue Nov 27 12:56:30 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Distribute also the charset and localespi jars along with their
+  pom files.
+- Install the jars also to %{_javadir}%{name} directory for
+  compatibility reasons.
+
+-------------------------------------------------------------------
+Fri Nov 23 16:03:18 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * improve-osgi-manifest.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 12:23:04 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 63.1
+  * updates to CLDR 34 locale data with many additions and
+    corrections, and some new languages. 
+  * adds API for number and currency range formatting, and API for
+    additional Unicode properties and for constructing custom
+	properties.
+  * includex data for testing readiness for the upcoming Japanese
+    calendar era.
+
+-------------------------------------------------------------------
+Fri Dec 22 13:11:47 UTC 2017 - fstrba@suse.com
+
+- Version update to 60.2
+  * jdk9 upstream fixes
+- Obsoleted patches:
+  * icu4j-jdk9.patch
+    - Obsoleted by upstream fixes
+  * icu4j-taglet.patch
+    - Obsoleted by removal of the old style taglet removal
+- Added patch:
+  * icu4j-jdk10plus.patch
+    - Fix build with jdk10 and possibly later jdks
+- Don't build the ICUTaglet, since it depends on removed APIs
+
+-------------------------------------------------------------------
+Fri Sep 29 06:29:50 UTC 2017 - fstrba@suse.com
+
+- Don't condition the maven defines on release version, but on 
+  _maven_repository being defined
+
+-------------------------------------------------------------------
+Mon Sep 18 10:17:38 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * icu4j-taglet.patch
+    + implement com.sun.tools.doclets.Taglet interface instead of
+      the deprecated
+      com.sun.tools.doclets.internal.toolkit.taglets.Taglet
+    + Fixes java.lang.ClassCastException with jdk9
+  * icu4j-jdk9.patch
+    + Extend the jdk9 test, so that it accepts versions that start
+      with 9
+    + Make source, target and encoding consistent all over the
+      build
+- Specify source and target level 1.6 in order to allow building
+  with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 10:40:23 UTC 2017 - tchvatal@suse.com
+
+- Version update to 58.1:
+  * Changes to keep in line with regular icu release
+- Obsoleted patch:
+  * java8-compatibility.patch
+
+-------------------------------------------------------------------
+Mon Mar 20 15:13:38 UTC 2017 - sknorr@suse.com
+
+- Needed as a dependency for FOP 2.1 (fate#322405)
+- Switch between maven-metadata/maven-fragments as appropriate
+  for SLE/openSUSE (fate#322405)
+
+-------------------------------------------------------------------
+Tue Jul 28 10:56:40 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 55.1:
+  * various bugfixes to match up regular icu-c
+- Add patch to build with jdk8:
+  * java8-compatibility.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:08 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Jan 20 16:00:47 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 54.1.1
+  * CLDR 26
+  * Unicode 7.0
+  * many more units
+  * Unihan in root collation
+  * new RBNF PluralFormat syntax
+  * dictionary-based break iterator for Burmese
+  * tech preview of FilteredBreakIterator using ULI break data
+
+-------------------------------------------------------------------
+Fri Jul 18 07:41:29 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 52.1:
+  * Match the 52.1 icu release.
+
+-------------------------------------------------------------------
+Fri Jun 27 13:55:19 UTC 2014 - tchvatal@suse.com
+
+- No need to depend on java-javadoc solves build for SLE11.
+- Tidy a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:44 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Sat Feb  2 15:42:06 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 50.1:
+  * Common Changes
+    - Unicode 6.2: Turkish Lira Sign, improved word & line segmentation
+    (BreakIterator) for symbols
+    - CLDR 22.1: Data coverage & quality improved across all major languages;
+      new short width type for weekday names; new zhuyin (Bopomofo) collation
+      for Chinese; improved data for CompactDecimalFormat & RBNF
+    - Time zone data: 2012h
+    - Ordinal-number support in MessageFormat & PluralRules (#9132)
+    - Deprecate setLocale(locale) in PluralFormat (#9249)
+    - Dictionary-based break iterators (word segmentation):
+      * Support Chinese & Japanese, use more compact dictionary format,
+        port all but Khmer support to Java (#9353)
+      * Update Khmer dictionary (#9311)
+    - Change Java util.ListFormat to text.ListFormatter and other updates,
+      use CLDR data (#9369, #9420), port to C++ (#7168)
+    - Add updated IBM-eucJP and IBM-5233 converter (#9262, #9259)
+  * ICU4C Specific Changes
+    - Improve number formatting performance (#9258)
+    - C++ GenderInfo: Effective combined gender of a list of people's genders
+      (#9598) (ported from Java)
+    - Thread safety support cannot be removed (see the Readme)
+    - Default compilers: Clang is now used if available (see the Readme)
+    - C++ Collator API cleanup (#9346, #9406, #9460), subclassing-API-breaking
+      changes (see the Readme)
+    - Add option to genrb tool for writing java resource bundle files (#9271)
+    - Time zone format APIs (#9338)
+  * ICU4J Specific Changes
+    - class DictionaryBasedBreakIterator was removed as part of the improvements
+      for dictionary-based break iteration; see the note in the readme
+    - Dangi (Korean Lunisolar) calendar (#9255)
+- Remove external manifest file: icu4j has moved to the IBM api
+- Add with_ecplise macros; working on it
+
+-------------------------------------------------------------------
+Wed Nov 28 08:50:17 UTC 2012 - p.drouand@gmail.com
+
+- Update to 4.8.1.1 :
+  * CLDR 2.0: The CLDR 2.0 release contains numerous improvements and
+    bug fixes approved by the CLDR committee, including much additional data for many languages.
+  * Explicit parent locale support in data imported from CLDR (#8031)
+  * MessageFormat and related classes (choice/plural/select) have been reimplemented, 
+    with several improvements and some incompatible changes. See the detail section below.
+  * Extended PluralFormat pattern syntax supports explicit-value forms and offsets. (#7858)
+  * Utility APIs in PluralRules (get some/all/unique keyword values)
+  * Time zone API to return a list of available canonical system time zone IDs (#8278)
+  * Time zone API to return a region (#8279)
+  * Collation: Full implementation & public API for script reordering
+  * Dictionary-type trie (#8167)
+  * GB18030-2005 update (#8274)
+  * Alphabetic Index support ported from ICU4J (#7538)
+  * X11 Compound Text encoding support ported from ICU4J (#7959)
+  * Appendable interface (#8314)
+  *Technology Preview: APIs for region information. The new class 
+   com.ibm.icu.util.Region provides mapping across different region/territory codes and 
+   containment relationship. (#8347)
+  * JDK Locale conversion to support JDK 7 new Locale fields (#8078)
+  * Technology Preview: TimeZoneFormat and TimeZoneNames. New classes designed for 
+    supporting CLDR time zone display name algorithm and data through public APIs. (#8342)  
+  * Known Issues
+    #8535 & #8537 (C only) Prebuilt binaries are usable on MinGW but the MinGW build is broken
+    #8571 (C only) U_HIDE_DRAFT_API does not operate on the correct set of APIs; might also affect 
+    U_HIDE_DEPRECATED_API, U_HIDE_INTERNAL_API and U_HIDE_SYSTEM_API
+- Deleted files :
+  * icu4j-4.4.2.pom : Now icu4j is enterly based on IBM Api
+-------------------------------------------------------------------
+Tue Jun 12 13:48:26 UTC 2012 - mvyskocil@suse.cz
+
+- update to 4.4.2.2 (sync with Fedora)
+  * CLDR 1.8
+  * Unicode 5.2
+  * compact resource bundle
+  * Java 5 syntax
+
+-------------------------------------------------------------------
+Tue Jun  2 15:17:28 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of icu4j (from jpackage5.0) 
+

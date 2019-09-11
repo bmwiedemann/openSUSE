@@ -1,0 +1,81 @@
+Use the C++ versions of the STDC headers.
+
+signed-of-by: pth@suse.de
+
+Index: tinystr.h
+===================================================================
+--- tinystr.h.orig	2010-03-23 06:16:36.000000000 +0100
++++ tinystr.h	2010-11-04 15:20:38.861503854 +0100
+@@ -39,8 +39,8 @@ distribution.
+ #ifndef TIXML_STRING_INCLUDED
+ #define TIXML_STRING_INCLUDED
+ 
+-#include <assert.h>
+-#include <string.h>
++#include <cassert>
++#include <cstring>
+ 
+ /*	The support for explicit isn't that universal, and it isn't really
+ 	required - it is used to check that the TiXmlString class isn't incorrectly
+Index: tinyxml.cpp
+===================================================================
+--- tinyxml.cpp.orig	2010-03-23 06:16:36.000000000 +0100
++++ tinyxml.cpp	2010-11-04 15:22:13.806257421 +0100
+@@ -22,7 +22,7 @@ must not be misrepresented as being the
+ distribution.
+ */
+ 
+-#include <ctype.h>
++#include <cctype>
+ 
+ #ifdef TIXML_USE_STL
+ #include <sstream>
+Index: tinyxml.h
+===================================================================
+--- tinyxml.h.orig	2010-03-23 06:16:36.000000000 +0100
++++ tinyxml.h	2010-11-04 15:21:12.619460632 +0100
+@@ -32,11 +32,11 @@ distribution.
+ #pragma warning( disable : 4786 )
+ #endif
+ 
+-#include <ctype.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <assert.h>
++#include <cctype>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cassert>
+ 
+ // Help out windows:
+ #if defined( _DEBUG ) && !defined( DEBUG )
+Index: tinyxmlparser.cpp
+===================================================================
+--- tinyxmlparser.cpp.orig	2010-03-23 06:16:36.000000000 +0100
++++ tinyxmlparser.cpp	2010-11-04 15:23:03.795078300 +0100
+@@ -22,8 +22,8 @@ must not be misrepresented as being the
+ distribution.
+ */
+ 
+-#include <ctype.h>
+-#include <stddef.h>
++#include <cctype>
++#include <cstddef>
+ 
+ #include "tinyxml.h"
+ 
+Index: xmltest.cpp
+===================================================================
+--- xmltest.cpp.orig	2010-03-23 06:16:36.000000000 +0100
++++ xmltest.cpp	2010-11-04 15:23:38.429189753 +0100
+@@ -8,7 +8,7 @@
+ 	#include <sstream>
+ 	using namespace std;
+ #else
+-	#include <stdio.h>
++	#include <cstdio>
+ #endif
+ 
+ #if defined( WIN32 ) && defined( TUNE )

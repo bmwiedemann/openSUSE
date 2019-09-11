@@ -1,0 +1,24 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Wed Sep 12 10:32:32 2018 -0600
+Subject: wwinit: Check for tftp(server) capability as well (#135)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: ca9a63ba96634240c4e1f19dd072a3173aa57fd4
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>---
+ cluster/libexec/wwinit/50-tftp.init | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/cluster/libexec/wwinit/50-tftp.init b/cluster/libexec/wwinit/50-tftp.init
+index 409126d..c721e21 100644
+--- a/cluster/libexec/wwinit/50-tftp.init
++++ b/cluster/libexec/wwinit/50-tftp.init
+@@ -20,7 +20,7 @@ fi
+ 
+ wwreqroot
+ 
+-if wwpackage_check tftp-server tftpd tftpd-hpa; then
++if wwpackage_check tftp-server tftpd "tftp(server)" tftpd-hpa; then
+     if wwservice_activate tftp.socket tftpd tftp tftpd-hpa; then
+         exit 0
+     fi

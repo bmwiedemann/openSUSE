@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+Thu Jun 27 19:10:58 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.0
+  * Fixed parsing of absolute paths containing '#' character
+  * Fixed open dialogs not showing all supported files
+  * Fixed subtitle text not respecting system font configuration
+  * Fixed waveform not rendering correctly/completely on some
+    formats
+  * Fixed waveform displaying subtitles at wrong times
+  * Fixed waveform not working with some
+  * Fixes to MPV, GStreamer and Xine video player backends
+  * Waveform scrolling is configurable
+  * PocketSphinx language models and VAD are configurable
+  * Added show status bar action to main window popup menu
+  * Improved (scripting) performance
+  * Spell checker will use translation text when it is selected
+  * Waveform and video docks can be hidden
+  * Split lines won't split text on spaces while there are
+    multiple lines
+  * Subtitle lines will always stay sorted by their time
+  * Improved fullscreen video player
+  * Added ability to step by frame
+  * Added play rate controls to video menu
+  * Updated Croatian translation
+  * Updated Italian translation
+  * Updated Russian translation
+
+- Dropped fix_build_with_qt5.11.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Jun 12 17:58:02 UTC 2018 - asterios.dramis@gmail.com
+
+- Added a patch (fix_build_with_qt5.11.patch), taken from upstream,
+  to fix build failure with Qt 5.11.
+
+-------------------------------------------------------------------
+Sun Feb 11 09:30:06 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.6.6
+  * Fixed open video dialog filters
+  * Fixed "Insert Line" on waveform adding at the wrong index -
+    thanks @qsniyg
+  * Added MMB seeking on waveform - thanks @qsniyg
+  * Fixed some compilation issues
+  * Updated translations - thanks @gogogogi, @muzena
+  * Fixed vobsub when opening from video file and symbol cache
+    filename
+  * Fixed subtitle loading times of huge files
+  * Improved vobsub text detection
+  * Fixed ASS rich text parsing on import subtitle stream action
+  * Replaced buggy mplayer vobsub import code with ffmpeg
+  * Fixed memory leaks/usage of WaveformWidget's scroll animation
+  * Optimized import subtitle stream from video action
+  * Replaced gstreamer with ffmpeg libraries in application core
+    usage
+  * Added abort button to speech recognition
+  * Waveform smooth scrolling
+  * Added join/split lines actions to waveform context menu
+  * Fixed some crashes, memory leaks and overall code cleanups
+  * Cleaned up settings widget and texts
+
+- Dropped subtitlecomposer-Qt56.patch (merged upstream)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Nov  3 08:36:25 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.6.5
+  add:
+  * Added support for binary subtitle formats
+  * fine control video playback speed
+  * controls for video playback speed
+  mod:
+  * GStreamer backend audio improvements.
+  * Moved open video actions under File menu
+  * More tolerant parsing of SubRip subtitles.
+  * Improved split lines command
+  * Updated Czech translation - thanks @goliashcz
+  * Updated Croatian translations - thanks @muzena
+  fix:
+  * Waveform widget dragging and speed improvements, fixed
+    buffer overflow
+  * WaveformWidget: zoom out wasn't working on movies without
+    audio
+  * Fixed cases where subtitle hide time would end up before
+    show time.
+  * Improved context menus.
+  * Fixed moving of anchored lines.
+  * Open subtitle wouldn't autoload video in some cases
+  * Open video now includes .divx and .webm extensions
+  * Tools menu scripts are filtered based on installed kross
+    interpreters
+  * Moved custom icons to more standard location, using
+    QIcon::fromTheme()
+  * Error Check > Absolute Duration config fields were changing
+    incorrect values.
+  * MPV Backend: fixed deprecated options, updated vo devices -
+    thanks @luzfcb
+  * better rendering on high DPI screens.
+  * MPV Backend: framerate/video length  wasn't reported to
+    subtitle composer anymore
+  * detection/handling of current playing line
+  * Parsing text containing <font> without color attribute
+  * compilation without xine - thanks @pinotree
+  * ASS parsing - thanks @Martchus
+
+- Added subtitlecomposer-Qt56.patch to be able to build against
+  Qt 5.6 on Leap
+
+-------------------------------------------------------------------
+Tue Jun 13 13:30:08 UTC 2017 - jengelh@inai.de
+
+- Reword vague description.
+
+-------------------------------------------------------------------
+Mon Oct 31 19:06:55 UTC 2016 - asterios.dramis@gmail.com
+
+- Update directories not owned by package to cover also
+  Factory/Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Jun 23 20:03:40 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 0.6.4:
+  * ADD: WaveformWidget: context menu 
+  * MOD: Updated German translations - thanks @Martchus
+  * MOD: Updated Croatian translations - thanks @muzena
+  * FIX: Inserting subtitle line would corrupt subtitle indexes
+  * FIX: Display audio of WebM/FLV files in waveform - thanks
+    @Martchus
+  From 0.6.3:
+  * ADD: WaveformWidget: customization settings page
+  * ADD: Speech recognition with PocketSphinx
+  * MOD: Waveform and Player widgets can be docked to any side of
+    the main window
+  * MOD: WaveformWidget: can be manually scrolled even if
+    autoscroll is enabled
+  * MOD: WaveformWidget: ability to drag whole subtitle line
+  * MOD: Updated croatian translation - thanks @muzena
+  * FIX: Video player fullscreen and icon display under was not
+    right under some desktop environments - thanks @Martchus
+  * FIX: WaveformWidget: when dragging subtitle borders (or
+    clicking near them), show/hide time was jumping to mouse
+    position
+  * FIX: po/Messages.sh will generate .po files compatible with Qt
+    Linguist, and will run from any path
+  * FIX: Build cleanups - thanks @pinotree
+  From 0.6.2:
+  * ADD: Ability to demux text streams from loaded video
+  * MOD: WaveformWidget: added scrollbar and manual scrolling mode,
+    improved zoom, widget state is loaded/saved
+  * MOD: WaveformWidget: double click will seek in video player
+  * MOD: WaveformWidget: subtitle show/hide time can be dragged
+  * MOD: Added default shortcut for play/pause video.
+  * MOD: Support for building with cmake older version than 3.3
+  * FIX: Changing player backend setting will reopen loaded video
+    in new player backend.
+  * FIX: Timeline after last anchored subtitle was scaled
+    incorrectly.
+  * FIX: WaveformWidget: optimizations and speed improvements
+  * FIX: Recent files list was not saved properly in some cases
+    (subtitle list full).
+  * FIX: WaveformWidget: fixed crash after closing subtitle
+  * FIX: WaveformWidget: editing of non-anchored lines is not
+    allowed
+  * FIX: StreamProcessor was not freeing it's resources.
+  * FIX: Updated configure and install scripts
+  * FIX: Removed "Decoder backend" entry from video player settings
+    page.
+  From 0.6.1:
+  * FIX: Anchor points syncing wasn't working right in some cases
+  From 0.6.0:
+  * ADD: Anchor points syncing
+  * ADD: Waveform widget.
+  * MOD: Improved precision of the Time class.
+  * MOD: GStreamerPlayerBackend will pause when reaching
+    end-of-stream instead of stopping/resetting player.
+  * MOD: Converted playerbackends to plugins
+  * MOD: updated German translation
+  * FIX: Video player widget will repaint background correctly.
+  * FIX: Code refactoring, cleanups and optimizations.
+  * FIX: fixed/enabled Drag & Drop
+  From 0.5.9:
+  * FIX: Improved error reporting during video open.
+  * MOD: Added italian translation.
+  From 0.5.8:
+  * ADD: MPV player support
+  * MOD: Replaced remaining KDE4 deprecated code, removed
+    KDELibs4Support dependency. Finalized KF5 porting.
+  * MOD: Update croatian translation and README.md
+  * MOD: Added option not to resume playback after subtitle
+    doubleclick if player is paused
+  * FIX: Gettext translations were not created during build
+    process.
+  * FIX: FindGStreamer.cmake was not searching for and including
+    arch-specific include dir
+  * FIX: Errors/Spelling in "Error Check" settings
+  * FIX: Build process fixes
+  * FIX: improved player/decoder backends, solved crashes when
+    switching backends
+  * FIX: Added option to antialias subtitles
+  * FIX: Phonon player backend was displaying embeded subtitles
+  * FIX: OBS (OpenSuse) package creation was failing
+- Updated build/runtime requirements to KF5/Qt5.
+- Added new build requirement mpv-devel.
+- Removed fdupes macro (not needed anymore).
+- Removed NULL-pointer.patch and
+  Find-platform-dependant-include-files-of-GStreamer.patch (fixed
+  upstream).
+
+-------------------------------------------------------------------
+Sun Jan  3 17:57:44 UTC 2016 - asterios.dramis@gmail.com
+
+- Added Find-platform-dependant-include-files-of-GStreamer.patch in
+  order to fix finding of platform-dependant include files of
+  GStreamer (fixes compilation failure).
+
+-------------------------------------------------------------------
+Sun Nov 16 23:30:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.5.7
+  * GStreamer 1.0 API support
+- Switch BuildRequires to reflect above change
+- Added NULL-pointer.patch from upstream, to resolve post-buid-check
+  failure
+
+-------------------------------------------------------------------
+Wed Dec  4 20:34:36 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 0.5.6
+  # Continuation of original package since initial author stopped development
+  * SubStation Alpha format fixes and color support
+  * source cleanup
+  From 0.5.5:
+  * text color support
+  * SubRip text color support
+  * reworked MicroDVD open/save
+  From 0.5.4:
+  * mplayer2 support
+  * mplayer VDPAU decoding support
+  * minor cmake build fixes
+- Added libicu-devel build requirement.
+- Removed all previous patches (fixed upstream).
+
+-------------------------------------------------------------------
+Sun Jan 29 15:08:50 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated no-copy-dt-needed-entries.patch to fix a new linking error with
+  libX11.
+
+-------------------------------------------------------------------
+Mon Dec  5 21:47:07 UTC 2011 - asterios.dramis@gmail.com
+
+- Added a patch (no-copy-dt-needed-entries.patch) to fix linking with
+  --no-copy-dt-needed-entries.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to GPL-2.0+ (SPDX style).
+
+-------------------------------------------------------------------
+Thu Jun  2 18:40:29 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Recommend instead of Suggest the subtitlecomposer-lang package.
+  * Added update-mime-database in %post/%postun scripts for the mime file
+    installed by the package.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Tue Jan 18 18:17:00 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Added a subtitlecomposer-lang package.
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Buildrequires:, %prep and %install sections.
+  * Fixed rpmlint warnings (devel-file-in-non-devel-package,
+    non-executable-script).
+  * Fixed rpm post build check about directories not owned by a package.
+- Add a patch to fix installation of python scripting examples.
+
+-------------------------------------------------------------------
+Thu Jun 24 08:17:49 UTC 2010 - cmorve69@yahoo.es
+
+- Fix compilation with GCC 4.5
+
+-------------------------------------------------------------------
+Sun Jul  5 01:35:46 CEST 2009 - cmorve69@yahoo.es
+
+- First version
+

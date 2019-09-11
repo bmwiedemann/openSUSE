@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Apr 24 08:42:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.9.13
+  New features:
+    Clearer warning message in fit reports when uncertainties should
+      but cannot be estimated, including guesses of which Parameters
+      to examine (#521, #543)
+    SplitLorenztianModel and split_lorentzian function (#523)
+    HTML representations for Parameter, MinimizerResult, and Model
+      so that they can be printed better with Jupyter (#524, #548)
+    support parallelization for differential evolution (#526)
+  Bug fixes:
+    delay import of matplotlib (and so, the selection of its backend)
+      as late as possible (#528, #529)
+    fix for saving, loading, and reloading ModelResults (#534)
+    fix to leastsq to report the best-fit values, not the values tried
+      last (#535, #536)
+    fix synchronization of all parameter values on Model.guess() (#539, #542)
+    improve deprecation warnings for outdated nan_policy keywords (#540)
+    fix for edge case in gformat() (#547)
+  Project managements:
+    using pre-commit framework to improve and enforce coding style (#533)
+    added code coverage report to github main page
+    updated docs, github templates, added several tests.
+    dropped support and testing for Python 3.4.
+- deleted patches
+  - lmfit-scipy.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Mar  5 14:57:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix spurious unit test errors.
+
+-------------------------------------------------------------------
+Fri Jan 18 10:24:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Apply patch to fix build with new scipy:
+  * lmfit-scipy.patch
+
+-------------------------------------------------------------------
+Fri Jan 18 10:19:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.12:
+  * make exceptions explicit
+  * use inspect.getfullargspec for Python3
+  * test-suite: use pytest features, improve coverage, fix mistakes
+
+-------------------------------------------------------------------
+Thu Mar 22 04:46:08 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

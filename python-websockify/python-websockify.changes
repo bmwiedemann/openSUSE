@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Mon Apr  8 14:33:03 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Fix PyJWT / jwcrypto dependency problem (boo#1131024)
+
+-------------------------------------------------------------------
+Wed Feb 13 09:25:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Execute tests
+- Switch to github tarball to get tests
+- Add patch to fix tests on python 3.6+:
+  * fix-tests-py3.6.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 14:34:16 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Add JWT token plugin feature.
+  Added patches:
+    u_added_jwt_tokens_capability.patch
+    PyJWT-token-plugin.patch: fate#325762
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Oct  2 21:43:19 UTC 2017 - jengelh@inai.de
+
+- Improve summaries.
+
+-------------------------------------------------------------------
+Mon Sep 25 08:37:21 UTC 2017 - msrb@suse.com
+
+- add u_Add-support-for-inetd.patch: fate#323880
+- add u_Fix-inetd-mode-on-python-2.patch: fate#323880
+
+-------------------------------------------------------------------
+Fri Aug 25 09:42:56 UTC 2017 - tbechtold@suse.com
+
+- use https for Source
+
+-------------------------------------------------------------------
+Fri Aug 25 07:57:23 UTC 2017 - tbechtold@suse.com
+
+- convert to singlespec
+- split data files into -common package
+
+-------------------------------------------------------------------
+Sat Jul 22 08:19:00 UTC 2017 - dmueller@suse.com
+
+- drop dependency on pyOpenSSL, seems unused (bsc#1049987)
+
+-------------------------------------------------------------------
+Mon May  2 20:48:32 UTC 2016 - dmueller@suse.com
+
+- update to 0.8.0:
+  * Make websockify properly terminate children on SIGTERM (#226)
+  * Remove logging in signal handlers (this can cause Python to hang under certain conditions) (#219)
+  * Make it easier to log to a file (#205)
+  * Add support for IPv6 addresses in tokens in the TokenFile token plugins (#197)
+  * Improve auth plugin framework to enable better support for HTTP auth (#194, #201)
+  * Fix bug in JSONTokenAPI token plugin (#192)
+  * Fix a missing variable in the exception handler (#178)
+  * Python 3 support fixes (#140, #155, #159)
+  * Generic token-parsing plugins support (#162)
+  * Generic authentication plugins support (#172)
+  * Fixed frame corruption on big-endian systems (#161)
+  * Support heartbeats (via PING) and automatic responses to PONG (#169)
+  * Automatically reject unmasked client frames by default (strict mode) (#174)
+  * Automatically restart interrupted select calls (#175)
+  * Make 'run' respect environment settings (including virtualenv) (#176)
+
+-------------------------------------------------------------------
+Mon Oct  5 08:04:04 UTC 2015 - hguo@suse.com
+
+- Add missing dependency on python-setuptools
+
+-------------------------------------------------------------------
+Sat Jul 25 10:48:31 UTC 2015 - seife+obs@b1-systems.com
+
+- fix non-SUSE build by conditionalizing "Recommends:" tag
+
+-------------------------------------------------------------------
+Thu May 14 13:45:46 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.6.1:
+  * PATCH RELEASE: Fixes a bug causing file_only to not be passed
+    properly
+- switch archive to zip (tar.gz not available on pypi)
+- add unzip as BuildRequires
+- remove unwanted shebang in python files
+- drop unneeded executable bit of web_socket.js
+
+-------------------------------------------------------------------
+Tue Sep 16 13:30:59 UTC 2014 - tbechtold@suse.com
+
+- update to version 0.6.0:
+  * **NOTE** : 0.6.0 will break existing code that sub-classes WebsocketProxy
+  * Refactor to use standard SocketServer RequestHandler design
+  * Fix zombie process bug on certain systems when using multiprocessing
+  * Add better unit tests
+  * Log information via python `logging` module
+
+
+-------------------------------------------------------------------
+Thu Oct 24 11:17:04 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Jul  3 11:53:13 UTC 2013 - dmueller@suse.com
+
+- update to 0.5.1: 
+  * use upstream einaros/ws (>=0.4.27) with websockify.js
+  * file_only and no_parent security options for WSRequestHandler
+  * Update build of web-socket-js (c0855c6cae)
+  * add include/web-socket-js-project submodule to gimite/web-socket-js
+    for DSFG compliance.
+  * drop Hixie protocol support
+
+-------------------------------------------------------------------
+Mon Apr 29 12:13:27 UTC 2013 - dmueller@suse.com
+
+- update to 0.4.1:
+  * add include/ directory and remove some dev files from source
+    distribution.
+  * use Buffer base64 support in Node.js implementation
+
+-------------------------------------------------------------------
+Fri Jan 18 10:00:42 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0 and MPL-2.0 and BSD-2-Clause and BSD-3-Clause
+  See LICENSE.txt
+
+-------------------------------------------------------------------
+Thu Jan 17 14:43:51 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

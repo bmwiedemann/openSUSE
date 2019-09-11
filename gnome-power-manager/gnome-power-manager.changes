@@ -1,0 +1,2011 @@
+-------------------------------------------------------------------
+Fri Mar  8 12:21:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Use newer meson features to avoid a build warning.
+  + Fix warnings and deprecations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 09:09:19 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Remove the CPU wakeups feature (it was broken anyway).
+  + Update translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Mar 20 17:22:08 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:19 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan 30 16:03:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0:
+  + trivial: Remove the build-api helper script.
+  + Remove po/Makevars.
+  + build: Install appstream metadata to non-deprecated location.
+  + Updated translations.
+- Drop gnome-patch-translation BuildRequires: We do not have any
+  patches, so not needed.
+- Drop gnome-applets-brightness and gnome-applets-inhibit-powersave
+  Obsoletes: No current openSUSE or SUSE have ever provided them.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Drop update-desktop-files BuildRequires and stop using
+  suse_update_desktop_file macro, no longer needed.
+- Pass enable-tests=false to meson, ensure we do not build the
+  tests.
+- Do minor spec cleanup.
+
+-------------------------------------------------------------------
+Tue Aug 15 13:20:46 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Switch to meson build system.
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:33:38 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 11 21:20:13 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:30:54 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Port away from intltool.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Mon Nov  7 10:02:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Rename the graph widget and sync changes from other projects.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 12 09:43:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:23:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:50:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 09:10:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Fix some files for flatpak support.
+  + Updated translations.
+- Rename .desktop/appdata following upstreams changes.
+
+-------------------------------------------------------------------
+Thu Apr 14 21:35:39 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 14:32:36 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Fix some software center metadata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 18:41:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Add a missing tag to the AppData file.
+  + trivial: Manually add kudos to the AppData file.
+  + Updated translations.
+- Update URL to new home.
+
+-------------------------------------------------------------------
+Fri Feb 12 14:46:08 UTC 2016 - fcrozat@suse.com
+
+- Bump BuildRequires(glib-2.0) to >= 2.45.8.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:49:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:26:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 28 00:11:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Add a symbolic variant of the application icon.
+- Do not call %icon_theme_cache_post(un) macros in %post/%postun
+  for the HighContrast icons, as they are removed.
+- Stop passing --disable-scrollkeeper to configure, no longer
+  needed nor recognized.
+- Stop passing V=1 to make, clutters up the buildlog, and debugging
+  is done locally anyway.
+- Remove conditional for obsolete versions of openSUSE.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:55:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:05:56 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:33:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 11:21:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Use a headerbar for the statistics UI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 12 11:18:12 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 10:09:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 08:53:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 13 12:55:27 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-icon-theme-devel BuildRequires and gnome-icon-theme
+  Requires: no longer required after the merging of the themes into
+  Awaita theme, which in turn is a dependency to GTK+ 3.0.
+
+-------------------------------------------------------------------
+Sat May 17 08:40:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 10:55:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Bugfix: ml: List of keywords must end with a colon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 13:05:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 12 20:13:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Port to the new upower API.
+- Changes from version 3.11.1:
+  + Upload some new 16:9 AppData screenshots.
+  + Rely on intltool >= 0.50 for GSettings translation.
+  + Translate the AppData file.
+  + Updated translations.
+- Drop gnome-power-manager-schedule-wakeups.patch: after being
+  disabled for 4 years and nobody caring, it's time to say goodbye.
+- Drop gnome-power-manager-new-upower-api.patch: fixed upstream.
+- Clean spec file from BUILD_FROM_VCS traces.
+
+-------------------------------------------------------------------
+Wed Dec 11 16:42:54 UTC 2013 - mgorse@suse.com
+
+- Add gnome-power-manager-new-upower-api.patch: port to UPower
+  0.99.
+
+-------------------------------------------------------------------
+Mon Oct 14 11:32:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Use the new 16:9 AppData screenshots.
+  + Add copyright information to the AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 09:50:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + No changes since version 3.9.92.
+
+-------------------------------------------------------------------
+Fri Sep 13 15:44:00 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + New Features: Add an AppData description for
+    gnome-power-statistics.
+  + Bugfix: Remove calls to g_type_init.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 13 10:00:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:48:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:21:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 16:58:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Add high contrast icons.
+  + Remove all the status icons as these have not been used for a
+    long time.
+  + Added keywords to .desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 16:43:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Added keywords to .desktop file.
+  + Don't use the deprecated INCLUDES in Makefile.am.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 13 18:52:26 UTC 2013 - zaitor@opensuse.org
+
+- Remove gnome-power-manager-notify-idle-sleep.patch, it now lives
+  in gnome-settings-daemon. 
+
+-------------------------------------------------------------------
+Tue Sep 25 14:10:13 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.6.0:
+  + Add support for unknown state.
+  + Terminate gnome-power-statistics when closing the window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 24 13:18:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Update gtk+ version requirements
+  + Remove -Werror for development builds
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 22 19:34:59 UTC 2012 - dimstar@opensuse.org
+
+- Replace docbook-utils BuildRequires with docbook-utils-minimal:
+  we really don't want to depend on a full texlive installation.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:22:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:56:03 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Compile the GtkBuilder file as a GResource to speed up startup.
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add explicit pkgconfig(glib-2.0) BuildRequires so it can be
+  versioned.
+
+-------------------------------------------------------------------
+Sat Jan  7 10:05:03 UTC 2012 - vuntz@opensuse.org
+
+- Really drop gnome-power-manager-distcheck-fix.patch: we don't use
+  this patch since last September.
+
+-------------------------------------------------------------------
+Mon Dec 19 12:39:26 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Merge changes from 3.2.1.
+  + Remove check for gnome-doc-utils.
+  + Updated translations.
+- Remove gnome-doc-utils-devel BuildRequires: dropped upstream.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Mon Oct 17 18:21:43 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Remove the deprecated g_thread_init
+  + Remove the deprecated pango_cairo_font_map_create_context
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:30:34 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:50:30 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Move keyboard brightness icon to g-s-d
+  + Remove NoDisplay=true from gnome-power-statistics
+  + Updated translations.
+- Do not call %icon_theme_cache_post(un) macros in %post/%postun
+  for the gnome icon theme as we don't install an icon there
+  anymore.
+
+-------------------------------------------------------------------
+Sun Sep  4 16:44:19 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + New Features:
+    - Remove gnome-power-backlight-helper as it's been moved to
+      g-s-d
+    - Remove the applet icons
+    - Remove the GConf migration script, there is nothing to
+      migrate
+    - Remove the gnome-power-manager application icon, it's no
+      longer used
+    - Remove the idle functionality as it's been moved to g-s-d
+    - Remove the suspend and hibernate icons, nothing uses them
+  + Bugfix:
+    - Fix a warning when opening gnome-power-statistics
+  + Updated translations.
+- Drop gnome-power-manager-distcheck-fix.patch: fixed upstream.
+- Remove now unneeded BuildRequires because of all the removed
+  features: libgnome-keyring-devel, libnotify-devel, polkit, xmlto.
+- Add explicit pkgconfig(gdk-3.0) BuildRequires, which got added.
+- Remove polkit Requires: there is no use of pkexec anymore in the
+  code.
+
+-------------------------------------------------------------------
+Tue Jul 26 19:45:36 CEST 2011 - sbrabec@suse.cz
+
+- Add gnome-power-manager-distcheck-fix.patch: fix distcheck
+  (bgo#655363).
+- Re-enable translation-update-upstream thanks to the above patch
+  (bnc#708187).
+
+-------------------------------------------------------------------
+Mon Jul 25 23:02:34 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Remove many features now handled in gnome-settings-daemon.
+  + Bugfix:
+    - Add Unity to OnlyShowIn
+    - Don't complete critical action if power is resumed
+    - Support VPATH builds and use recommended quoting
+    - Update app launcher icon (bgo#645536)
+  + Updated translations.
+- Remove now unneeded libcanberra-devel BuildRequires.
+- Add pkgconfig(gtk+-3.0) BuildRequires, which was implicit before.
+- Drop gnome-power-manager-no-fallback-to-hibernate.patch: the code
+  moved to gnome-settings-daemon, and there is no fallback to
+  hibernate there.
+- Mark gnome-power-manager-notify-idle-sleep.patch as needing a
+  rebase. It should actually be moved to gnome-settings-daemon (see
+  bnc#708182).
+- Stop passing --libexecdir to configure: we don't have any file
+  there anyway.
+- Comment out gnome-patch-translation support as patches with new
+  strings need to be rebased.
+- Comment out call to translation-update-upstream since it fails,
+  see bnc#708187.
+
+-------------------------------------------------------------------
+Mon Jul  4 11:44:05 CEST 2011 - vuntz@opensuse.org
+
+- Re-enable gnome-patch-translation support now that we have new
+  strings in patches again.
+
+-------------------------------------------------------------------
+Thu Jun 30 07:29:59 UTC 2011 - glin@novell.com
+
+- Rebase gnome-power-manager-notify-idle-sleep.patch and
+  gnome-power-manager-no-fallback-to-hibernate.patch
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings
+  directories.
+- Add gnome-icon-theme and polkit BuildRequires, that own some
+  directories.
+
+-------------------------------------------------------------------
+Thu Jun 16 15:31:42 CEST 2011 - vuntz@opensuse.org
+
+- Drop now unneeded pkgconfig(gconf-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:40:08 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Don't crash if there is no ConsoleKit session. [rh#699020]
+  + gnome-power-bugreport.sh: Use sysfs instead of hal if available
+  + Manually update the idle status property
+  + Query gnome-screensaver settings with GSettings
+  + Remove GpmTrayIcon
+  + Updated translations.
+- Drop gnome-power-manager-update-status-property.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon May 23 22:50:58 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.2:
+  + rh#650405: Don't set the master percentage in when the
+    backlight changes.
+  + bgo#648615: Remove the dependency on libgnome-control-center,
+    the prefs capplet is now seporate.
+  + Updated translations.
+- Remove pkgconfig(libgnome-control-center) BuildRequires.
+
+-------------------------------------------------------------------
+Thu May 12 06:53:45 UTC 2011 - glin@novell.com
+
+- Add gnome-power-manager-update-status-property.patch to update
+  session status manually. bnc#692794
+
+-------------------------------------------------------------------
+Mon Apr 25 16:27:49 CEST 2011 - vuntz@opensuse.org
+
+- Drop now unneeded libunique-devel, libwnck-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Apr 12 10:10:14 UTC 2011 - fcrozat@novell.com
+
+- Replace BuildRequires on gnome-panel-devel (there's no applet
+  anymore) with pkgconfig(gconf-2.0).
+
+-------------------------------------------------------------------
+Tue Apr  5 11:24:30 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + If we loose the DBus name, exit.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 29 14:53:24 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + Bugfix:
+    - Revert "Remove the 'interactive' option for power actions"
+    - Use /org/gnome as starting path for schemas
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 24 16:52:59 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + New Features:
+    - Add keyboard backlight support including dimming on idle and
+      keyboard control.
+    - Add on screen display of keyboard brightness level
+    - Unify osd popup dialog into separate file to avoid code
+      duplication.
+  + Bugfix:
+    - Change the default of backlight-battery-reduce to FALSE.
+    - Don't migrate the button settings for GSD in case the user
+      has used 'interactive'.
+    - Don't try to migrate backlight-battery-reduce
+    - Ensure we emit the BrightnessChanged DBus signal for the
+      brightness buttons.
+    - Fixed conversion from percentage to discrete. bgo#644143
+    - Fix omitted renamed file in POTFILES.in
+    - Fix up a translated comment in the schema. bgo#644013
+    - GSchema should be translatable
+    - Remove some icons that are no longer used
+    - Remove the 'interactive' option for power actions
+    - Use symbolic icon for the keyboard brightness OSD
+    - Use symbolic icons for brightness OSD
+  + Updated translations.
+- Changes from version 2.91.90:
+  + New Features:
+    - Force suspend on lid close if LidForceSleep is set to avoid a
+      melted laptop.
+  + Bugfix:
+     - Copy newer versions of osd window from
+       gnome-settings-daemon.
+     - Do not use g-p-m in XFCE
+     - Don't use gdk_display_get_pointer
+     - Fix the expand properties in gnome-power-statistics. Fixes
+       bgo#641766
+     - Fix typo in gnome-settings-daemon migration script
+     - Initialize the error before using in
+       gpm_backlight_dbus_method_call(). Fixes rh#676075.
+     - Never return NULL for the object path in GetPrimaryDevice
+       for the composite battery device. Fixes rh#676055.
+     - Use smaller icons in gnome-power-statistics
+     - Use symbolic icons in GNOME Shell
+- Changes from version 2.91.5:
+  + New Features:
+    - Ignore suspend on lid closed if we are docked
+    - Mark non-urgent notifications as transient
+- Changes from version 2.91.4:
+  + Bugfix:
+    - Fix crash due to unreffing floating GVariants
+    - Remove -DGTK_DISABLE_DEPRECATED pending GtkStyleContext port
+- Changes from version 2.91.3:
+  + New Features:
+    - Don't export a full text device description in the tuple.
+    - Move the power control panel to the gnome-control-center
+      project.
+    - Remove all the preferences options to do with the screen.
+    - Remove the CPU idle check before inactive sleep
+      functionality.
+    - Remove the DPMS mode selection.
+    - Remove the 'event-when-closed-battery' setting.
+- Changes from version 2.91.2:
+  + New Features:
+    - Add two methods to the DBus interface for gnome-shell
+    - Add two properties to the DBus interface for gnome-shell
+    - Split notify-low-power into -system and -device keys, so that
+      users can disable device notifications for faulty devices
+      attached to the computer and still get system events. Fixes
+      bgo#632029.
+  + Bugfix:
+    - Adapt to GtkObject removal in GTK3
+    - Add the X-GNOME-Settings-Panel category so the control center
+      panel is not in 'Other'.
+    - Alias 'always' to 'present' to ensure that migrating the
+      schema does not emit a warning.
+    - Allow 'gnome-power-statistics --device wakeups' to focus on
+      the correct entry.
+    - Do not fall back to a GtkMessageBox if using libnotify
+      failed. Fixes bgo#632334.
+    - Ensure correct values for Icon and Tooltip properties.
+    - Ensure parameters to g_variant_new are not NULL.
+    - Fix use of GVariant types and DBus signatures
+    - Handle the remote command line in gnome-power-statistics
+    - Lock the keyring before suspending as gnome-keyring with pam
+      support will automatically unlock on resume. Fixes
+      bgo#628290.
+    - Make session requested quit work and not crash
+    - Migrate from dbus-glib to GDBus
+    - Port from EggDebug to the built-in GLib logging framework.
+    - Port to libnotify 0.7.0
+    - Port to the new GtkApplication API.
+    - Remove the brightness applet as GNOME3 will not have the
+      ability to show applets at all.
+    - Require libnotify as a hard build time dep.
+    - The control center module name should be 'Power', not 'Power
+      Management'.
+    - Update gnome-settings-daemon copy pasted code
+    - Use correct DBus types for UPower data.
+- Changes from version 2.91.1:
+  + New Features:
+    - Support arbitrary time combo values
+    - Allow 'Do nothing' as an option as Xorg is still broken.
+      Fixes bgo#589736.
+  + Bugfix:
+    - Adjust dim timeout when necessary
+    - Convert EggConsolekit to use GDBus
+    - Do not autoscale the percentage graph in the history tab.
+      Fixes bgo#613984.
+    - Do not dist org.gnome.power.policy in the tarball
+    - Do not play games with string concatenating. Fixes
+      bgo#626191.
+    - Don't poke NetworkManager at suspend and resume
+    - Ensure the preferences menu item launches the control center.
+      Fixes rh#619231.
+    - Fix bgo#627711: Don't crash on systems which don't have
+      XBACKLIGHT.
+    - Make changes to the Power control center capplet to better
+      match the mockup.
+    - Remove last traces of DeviceKit-power.
+    - Remove the inhibit applet. It doesn't belong here anymore.
+    - Treat brightness-up when at max as a success.
+    - Use the correct backlight step value when using the legacy
+      fallback device.
+- Add pkgconfig(libgnome-control-center) BuildRequires for
+  configuration panel.
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+- Remove gnome-applets-brightness and -inhibit-powersave
+  subpackages: they are no longer provided upstream. Add Obsoletes
+  for them to the main package, to avoid potential upgrade issues.
+- Patches that need to be rebased:
+  + gnome-power-manager-notify-idle-sleep.patch
+  + gnome-power-manager-no-fallback-to-hibernate.patch
+- Drop gnome-power-manager-no-xfce.patch: fixed upstream.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common BuildRequires.
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Thu Feb 17 21:20:37 CET 2011 - vuntz@opensuse.org
+
+- Replace gnome-session Requires with gnome-session-core: we don't
+  need the full GNOME session, but simply the gnome-session
+  program.
+- Add gnome-power-manager-no-xfce.patch to not start
+  gnome-power-manager in XFCE since XFCE has xfce4-power-manager.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:11:17 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Dec 15 11:02:36 CET 2010 - vuntz@opensuse.org
+
+- Add polkit Requires since pkexec is used.
+- Own /usr/share/polkit-1 and /usr/share/polkit-1/actions to fix
+  build. We could instead add a polkit BuildRequires, but it's
+  really an abuse in this case, especially as we won't notice if it
+  will not be needed anymore.
+
+-------------------------------------------------------------------
+Mon Sep 27 17:31:20 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 17 09:36:43 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Only disable deprecated code for --enable-strict builds
+  + Remove last traces of DeviceKit-power
+  + Updated translations.
+- Remove sed hack to build with deprecated symbols.
+
+-------------------------------------------------------------------
+Wed Sep  1 12:20:08 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + brightness-applet: Add missing include
+  + inhibit-applet: Add missing include and re-enable deprecated
+    GDK functions
+  + bgo#613984: Do not autoscale the percentage graph in the
+    history tab
+  + Do not dist org.gnome.power.policy in the tarball
+  + bgo#627711: Don't crash on systems which don't have XBACKLIGHT
+  + Only connect the UpClient::device-added signal after the
+    coldplug
+  + Re-enable deprecated GDK functions for brightness applet
+  + Use the correct backlight step value when using the legacy
+    fallback device
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 18 18:44:15 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Deal with the deprecation of GtkNotebookPage
+  + Cast idle_time_in_msec to appropriate type
+  + Updated translations.
+- Remove gnome-power-manager-gtknotebook-deprectaed.patch, fixed
+  upstream.
+- Remove hack around po/POTFILES.in, no longer needed.
+- Add sed hack on configure to support building with gtk 2.21.6
+  building: we need some deprecated symbols.
+
+-------------------------------------------------------------------
+Wed Aug 18 08:56:15 UTC 2010 - dimstar@opensuse.org
+
+- Add gnome-power-manager-gtknotebook-deprectaed.patch to fix build
+  with gtk 2.21.6. Patch taken from upstream git.
+
+-------------------------------------------------------------------
+Sat Aug  7 00:49:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + New Features:
+    - Add new 6 hours period in power history stats
+    - Use device icons from the icon name specification
+  + Bugfix:
+    - Adjust dim timeout when necessary
+    - As we no longer have more than one backlight mechanism,
+      remove a ton of abstract code
+    - Backport support for new devices recognised in UPower
+    - Backport various translation fixes and translator comments
+      from git master
+    - Do not assume the lid is open at boot. bgo#622026
+    - Do not show gnome-power-statistics in the menus
+    - Do not show the prefs menu on LiveCD's and with GDM.
+      bgo#621674
+    - Don't treat percentage=0 as error condition
+    - Fix a crash when displaying the 'No GConf schema warning'
+    - Port from DeviceKit-power to UPower
+    - Provide a pkexec helper for systems that do not have
+      xbacklight capability
+    - Remove hardcoded paths from pkexec setup
+    - Remove the use of HAL from gnome-power-manager
+- Change DeviceKit-power-devel BuildRequires to
+  libupower-glib-devel.
+- Change DeviceKit-power Requires to upower.
+- Add small hack to remove non-existing file from po/POTFILES.in so
+  that translation-update-upstream doesn't fail.
+- Drop gnome-power-manager-manpage_generation.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Jun 11 10:06:20 UTC 2010 - dimstar@opensuse.org
+
+- Add gnome-power-manager-manpage_generation.patch: manpages that
+  are created contain output from the docbook2man command at
+  random positions in the text (bnc#613336)
+
+-------------------------------------------------------------------
+Wed May 26 11:41:45 CEST 2010 - vuntz@opensuse.org
+
+- Remove hal-devel BuildRequires: we don't use --enable-hal for
+  configure, so it won't get used anyway. And it should work fine
+  without hal now.
+
+-------------------------------------------------------------------
+Mon May  3 11:50:05 UTC 2010 - dimstar@opensuse.org
+
+- Do not explicitly require hal.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:28:17 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Only dim the screen on idle when on the active console
+  + Make EggConsoleKit a singleton
+  + Fix up a critical warning from the GpmScreensaver code
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 13:51:10 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Check for libpanel only if building the applets
+  + Check for XRR* functions using library version instead of proto
+    version
+  + Use pkg-config instead of autoconf macros to find X libs and
+    protos
+  + Declare GError in gpm_brightness_hal_init to fix build failure
+  + Do not set a charge warning if the device is on AC
+  + Do not use EggDbusProxy in GpmScreensaver
+  + Don't query the capabilities of the notification daemon
+  + Ensure we close any 'battery low' notifications when we switch
+    to being on AC
+  + Fix a problem where the critical action is not done in the case
+    of a UPS
+  + Fix a race condition where we can miss the idle reset alarm
+  + Fix up a translation using ngettext rather than assuming the
+    plural. Fixes bgo#612950
+  + Fix wrong suspends with docked laptops
+  + If a battery charge is low but not critical don't play the
+    sound meant for a critical charge event
+  + Play a sound loop if the charge of a laptop battery/ups reaches
+    a critical level. Fixes rh#470090
+  + Remove the pointy-finger status icon when the idletime code
+    fails to work correctly
+  + Replace devkit-power call with upower in
+    gnome-power-bugreport.sh
+  + Updated translations.
+- Update gnome-power-manager-notify-idle-sleep.patch after some
+  code changes.
+
+-------------------------------------------------------------------
+Mon Mar  1 22:27:23 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91:
+  + DeviceKit-disks is now called UDisks
+  + Ensure we clear all notification bubbles on resume
+  + Set the timeout for critical battery notification to never
+  + Increase the critical action timeout to 20 seconds
+  + When we're critically low, don't give a time as it's often
+    imprecise
+  + Updated translations.
+- Enable translation-update-upstream and gnome-patch-translation-*
+
+-------------------------------------------------------------------
+Wed Feb 10 23:20:58 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.2:
+  + New Features:
+    - Move the power management preferences into the hardware
+      section of the control center
+    - Use the name of 'Power' for the power management preferences
+      capplet
+  + Bugfix:
+    - Don't rely on the cached value of the lid status, to fix a
+      double suspend issue
+    - Add a flag to inhibit consolekit events just after we resumed
+    - Don't automatically suspend if there are suspend inhibits
+    - Do not exit if hal is not available
+    - Only connect to HAL if there is no xrandr backlight hardware
+    - Fix compile when using an ld that defaults to --as-needed
+    - Enable the help action in gnome-power-statistics. Fixes
+      bgo#607005
+    - Ensure the window is realized before we invalidate it. Fixes
+      bgo#604918
+    - Don't show the user a sleep failed link pointing to the quirk
+      site
+    - Show the device name even when using UPower
+- Do not change categories of gnome-power-preferences.desktop
+  anymore: this is done correctly upstream now.
+- Drop gnome-power-manager-ck-events-idle.patch: fixed upstream
+  another way.
+- Do not call autoreconf, since no patch we apply need this. Also
+  remove gnome-common BuildRequires.
+
+-------------------------------------------------------------------
+Wed Dec 23 11:02:01 CET 2009 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+- Remove en@shaw locale on openSUSE 11.2 and earlier to fix build.
+
+-------------------------------------------------------------------
+Tue Dec 15 13:35:15 CET 2009 - vuntz@opensuse.org
+
+- Update descriptions of packages.
+
+-------------------------------------------------------------------
+Tue Dec  8 21:27:08 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2.29.1:
+  + New features:
+    - Switch to a single menu design, rather than a seporate left
+      and right menu
+    - rh#427065 - Show the sleep failure as a modal dialog box
+    - Sets some tooltips for the gnome-power-preferences buttons
+    - Add a --device parameter to gnome-power-statistics so we can
+      set the device focus
+    - rh#596983 - When we click on a battery device in the context
+      menu, show the gnome-power-statistics dialog
+    - Use gnome-settings-daemon popup code
+  + Bugfixes:
+    - Use accessor functions instead direct access
+    - Remove HAL_LIBS/HAL_CFLAGS
+    - Remove obsolete check-foreground-console support
+    - Remove outdated information about DeviceKit from README
+    - Sync compiler warnings handling with DK-power
+    - Remove DBUS_SYS_DIR from configure summary
+    - Add GSEAL_ENABLE to CPPFLAGS
+    - rh#596963 - - Apparently 'whilst' is only a British English
+      thing. Change to 'while' throughout
+    - Remove the 'About' and 'Help' items from the status area
+      context menu
+    - Rename show_context_menu to show_actions as we're moving to a
+      mono-menu design
+    - Remove show_actions_in_menu GConf key as the menu items are
+      being removed eventually
+    - Remove the suspend and hibernate menu items
+    - Fix a bug where we try to match and refresh a virtual device,
+      which means g-p-s crashes on next start
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec  7 23:13:18 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.2:
+  + Updated translations.
+- Rebase gnome-power-manager-notify-idle-sleep.patch.
+
+-------------------------------------------------------------------
+Sat Nov 14 16:41:58 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Add missing indirection to return value of
+    DriveSetAllSpindownTimeouts call
+  + Fix failure error messages and comments
+  + Help the kernel through its sleep key confusion
+  + Improve configure summary wrt HAL
+  + Use separate variables for dbus and dbus-glib
+  + Remove devkit-power tool configure check
+  + Correctly set the focus on the last used device in
+    gnome-power-statistics
+  + Do not hide some radio buttons depending on the current machine
+    state
+  + Fix up all the issues reported by clang
+  + Don't try to match and refresh some devices, to stop g-p-s
+    crashing on virual devices
+  + DeviceKit-disks is expecting an int as a value, not a uint
+  + Throttle screensaver before suspend/hibernate
+  + Updated translations.
+- Respin gnome-power-manager-no-fallback-to-hibernate.patch to
+  apply without fuzz.
+
+-------------------------------------------------------------------
+Mon Oct  5 16:36:16 CEST 2009 - vuntz@opensuse.org
+
+- Add gnome-power-manager-ck-events-idle.patch to fix suspend
+  happening when coming back from suspend and the lid is closed. We
+  emit ConsoleKit events in the idle loop to suppress consecutive
+  events which were causing the bug. Fix bnc#540517.
+
+-------------------------------------------------------------------
+Tue Sep 22 15:20:14 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Bugfix:
+    - Use accessor functions instead direct access
+    - Only print the DeviceKit-power device data when debugging
+    - Use the correct interface name for DeviceKit-disks
+    - Use the correct gnome-screensaver path
+    - Use g_ptr_array_unref() in more places, which also fixes a
+      few small memory leaks
+    - Comment out the AuthRequest signal handling
+    - Change the default of show_actions_in_menu to FALSE
+    - bgo#593800 - Inhibit applet now will inhibit the session from
+      being marked IDLE
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:37:30 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + When building with hal, link gnome-power-manager against
+    libhal-glib
+  + Make notifications more reliable at session startup
+  + Fix a bug where the critical time was not displayed correctly
+  + Don't crash g-p-s when there are no devices
+  + Open the gnome-power-manager help, not the 'cheese' help
+  + Never, never, show 'Unknown time'. Fixes rh#520999
+  + Allow compile without HAL
+  + Remove small memory leak spotted using clang
+  + Assign the correct icon when the sleep fails
+  + Correct some shoddy error checking
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 14:12:46 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + Remove the depricated Encoding= lines from the desktop files.
+    Fixes bgo#590612
+  + Fix up quite a few translations
+  + Add the enumerated actions in a 64bit safe way. Fixes
+    bgo#590991
+  + Don't show the brightness OSD when system AC state changes
+  + Remove all the bodges from the IDLETIMER code now X is fixed
+  + Only show shutdown in the prefs GUI if ConsoleKit allows it
+  + Always show the battery status icons in the left click action
+  + Change the notification default for fully charged to FALSE for
+    bgo#592613
+  + Updated translations.
+- Respin gnome-power-manager-notify-idle-sleep.patch.
+- Remove DeviceKit-devel BuildRequires. Thanks Kay Sievers!
+
+-------------------------------------------------------------------
+Mon Aug  3 16:47:05 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + New Features:
+    - Claim org.freedesktop.Policy.Power on D-BUS
+    - Remove PolkitGnome code completely as PolicyKit 1.0 doesn't
+      need this
+    - Add a bodge to reset the idletime XAlarm when we are no
+      longer inhibited
+    - Add functionality to debug the idle code by setting
+      GPMIDLEDEBUG on the command line
+    - Use the same composited OSD for brightness notification.
+      Fixes rh#512968
+    - Add DeviceKit data to the bugreport script
+  + Bugfix:
+    - Fix pointer alignment to build on sparc
+    - gnome-power-bugreport.sh: add missing hasbang
+    - Show .desktop files in XFCE
+    - Make hotkeys work with modifiers
+    - Remove an unused include to fix compile
+    - Be more paranoid about setting idle in a race
+    - Remove some UI elements after UI review
+    - Correct the type of the fully-charged signal. Fixes
+      bgo#588259
+    - Don't ever fallback to the warning icon in the tray when
+      batteries are invalid
+    - Don't show a discharging battery notification on each
+      battery, just the global battery
+    - The composite battery is only fully charged if all batteries
+      are fully charged
+    - Remove GpmNotify, and do the notifications in a more sane
+      way. Fixes bgo#423186
+    - Constrain the user to a dropdown selection of times, as
+      freeform sliders are bad UI
+    - Add policy to show icon when low, rather than critically low.
+      Fixes bgo#589125
+    - Inhibit gnome-session in the applet, not gnome-power-manager
+    - Change the default to hibernate when critically low on
+      battery power
+    - When libnotify fails, fall back to modal dialogs
+    - Use enumerated values for the policy actions, and hide 'Do
+      nothing' unless specified in GConf
+    - Finally remove the CanSuspend and CanHibernate options, now
+      that gnome-session is ported
+    - Switch back to org.gnome.PowerManager as we don't adhere to
+      the shared spec anymore
+    - Compile common code with a noinst library to make compile
+      quicker, and reduce the compressed package size by 100kB
+    - Add a GConf key to show or hide the sleep quirk site
+    - Make the orange icons yellower. Fixes rh#512962
+    - Use the correct DBus signal types when watching gnome-session
+    - Save the caches value before we emit the inhibit and idle
+      signals
+    - Only show gnome-power-statistics in the context menu if it is
+      installed. Fixes rh#514249
+    - Only use libpanel-applet flags to build applets
+- Drop gnome-power-manager-desktop.patch: it's useless, and we use
+  suse_update_desktop_file to change categories now anyway.
+- Drop gnome-power-manager-reduce-deps.patch: fixed upstream.
+- Respin gnome-power-manager-notify-idle-sleep.patch.
+- Drop PolicyKit-gnome-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jul 29 13:55:39 CEST 2009 - vuntz@novell.com
+
+- Do not mark dbus service file as a config file: it's in datadir.
+
+-------------------------------------------------------------------
+Mon Jul 20 14:11:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Features:
+    - Enable pretty compiler output with new automake versions
+    - Use composite battery mode by default to fix multi-battery
+      laptops
+    - Add manager policy to change the disk spindown based on
+      timeouts set in GConf
+    - Add GConf keys for the disk spindown functionality
+    - Add preferences checkboxes for the disk spindown
+      functionality
+    - No longer support HAL legacy buttons
+    - Add support for recall data provided by DeviceKit-power
+  + Bugfixes:
+    - Prefix GTKBuilder files with gettext/glade
+    - Use gtk_show_uri i.s.o. gnome-open
+    - Remove -Wunitialized because it does not compile on Ubuntu
+      Jaunty
+    - Fix the category in the gnome-power-statistic desktop file.
+      Fixes rh#489041
+    - Make minimum size of th statistics graphs smaller. Fixes
+      rh#491426
+    - Don't show the feedback widget when the brightness changes,
+      only on key press and when interactive
+    - If we caught our idletime alarm, then remove from the filter
+    - Take the battery capacity into account when using multiple
+      batteries
+    - Ignore capacity readings of less than 1%
+    - Show a label to the user when there is no graph data
+    - Add statistics devices in visually pleasing order
+    - Use the composite device for getting the global system
+      warning icon
+    - Setup the reset event before we do the idle action, to
+      finally fix blanking
+    - Be more paranoid about setting idle in a race
+    - Remove three unused GConf keys
+    - Don't show the whole object path in the GUI, just show the ID
+    - Only print the DeviceKit device if we are using --verbose
+    - Remove a little bit more of our HAL dep, and use the
+      lid-is-present DK-p property
+    - Fix compile with DKP_DISABLE_DEPRECATED turned on
+    - Remove ambient light sensor support, and keyboard backlight
+      devices
+    - Support DKP_DEVICE_STATE_PENDING_x in more places
+  + Updated translations.
+- Remove non-existing --enable-legacy-buttons and
+  --enable-policykit options from configure.
+- Use libexecdir instead of prefix/lib.
+- Drop gnome-power-manager-call-SetPowerSave.patch: new
+  DeviceKit-power now calls pm-powersave when appropriate. Also
+  drop liblazy-devel BuildRequires.
+- Comment translation-update-upstream and
+  gnome-patch-translation-*: it's broken with this release.
+
+-------------------------------------------------------------------
+Tue Jun  2 17:35:25 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Features:
+    - Add DOAP file
+    - Connect to gnome-session and exit on logout
+    - Change the default lid close on AC policy to be suspend, not
+      blank
+    - Show the processor device if we have capability, not if we
+      have events
+    - Add support for the DeviceKit-power property lid-is-closed so
+      we can now run without --enable-legacy-buttons
+    - Convert from libglade to GtkBuilder
+    - Expose graph details as properties on the object, and
+      constrain time to user value. Fixes bgo#581910
+    - Add a composite device to GpmEngine so we can DTRT for
+      multiple primary batteries
+  + Bugfixes:
+    - Add desktop category to doap file
+    - Only setup the blanking timeout when a timeout is set. Fixes
+      rh#498041
+    - Attach the libnotify popups to the notification icon later
+    - Check whether xrandr-1.3 features are really supported by
+      xorg-server. Fixes bgo#582142
+    - Preload gconf tree /apps/gnome-power-manager recursively.
+      Fixes bgo#578545
+    - Fix the low capacity warning to fix rh#489832
+    - Rewrite the DPMS class to have 1% of the complexity
+    - Remove unused GConf keys
+    - Use ngettext for a 2.26.x era string. Fixes bgo#576128
+    - Unref the popup window when it's cleared. Fixes bgo#577901
+    - Ensure we clear the default DPMS timeout of 1200s. Should fix
+      bgo#576169
+    - Remove our local copy of libdevkit-power
+    - Convert a floating reference to prevent a GTK warning
+    - Use G_GINT64_FORMAT to fix compile on 64 bit computers
+    - Do the lid policy action on active-change. Fixes rh#497262
+    - Don't segfault if org.gnome.Session is not present on the
+      bus. Fixes bgo#581425
+    - Ensure we are on battery power before we take any of the low
+      power battery actions
+    - Remove the unused abstraction GpmAdapter, and use DkpClient
+      directly
+    - Remove the single use abstract GpmRefcount and use a local
+      timer
+    - Remove some methods on the DBus interface that have moved to
+      DeviceKit-power
+    - Remove the inhibit interface, and rely on gnome-session
+    - Use DeviceKit-power to get the can-suspend and can-hibernate
+      properties
+    - Handle return to NORMAL idle when lid closed a bit better
+    - Correct the polarity of the on-ac battery check when
+      inhibiting the screensaver
+    - Correct the logic for the fully charged and discharging
+      popups
+    - Don't try to keep closing the feedback widget
+    - Don't always show a single graph dot in
+      gnome-power-statistics
+  + Updated translations.
+- Respin gnome-power-manager-call-SetPowerSave.patch.
+- Remove libglade2-devel BuildRequires.
+- Change DeviceKit-power BuildRequires to DeviceKit-power-devel.
+- Update gnome-power-manager-call-SetPowerSave.patch: put back some
+  code that got removed in this release but that we need.
+
+-------------------------------------------------------------------
+Sun May  3 10:12:19 CEST 2009 - mboman@suse.de
+
+- Change BuildRequires from unique-devel to libunique-devel
+
+-------------------------------------------------------------------
+Wed Apr 22 18:02:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Fix the low capacity warning to fix rh#489832
+  + Convert a floating reference to prevent a GTK warning
+  + Backport DPMS and IDLETIME fixes from master to fix multiple
+    bugs
+  + Connect to gnome-session and exit on logout
+  + Use G_GINT64_FORMAT to fix compile on 64 bit computers
+  + Trivial build fix
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 12:35:10 CET 2009 - hmacht@suse.de
+
+- add gnome-power-manager-call-SetPowerSave.patch:
+   gpm-2.26 doesn't use hal anymore, but only uses DeviceKit-*.
+   However DeviceKit-power doesn't provide the same functionality
+   as hal yet. One thing is the SetPowerSave method which should be
+   called when AC adapter state changes. Without this temporary
+   patch, we'd kill battery runtime.
+
+-------------------------------------------------------------------
+Mon Mar 16 16:56:03 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 15 23:32:22 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + Many changes since 2.24 branch.
+  + The most important change is that gnome-power-manager now uses
+    DeviceKit-power.
+- Respin gnome-power-manager-notify-idle-sleep.patch and
+  gnome-power-manager-reduce-deps.patch.
+- Disable gnome-power-manager-schedule-wakeups.patch: needs to be
+  respinned, but it's a bit too complex, so I'll let the original
+  developer do it.
+- Drop gnome-power-manager-bnc446595-shutdown-dialog.patch: fixed
+  upstream.
+- Drop gnome-power-manager-system-policy.patch: fixed upstream
+  another way a long time ago.
+- Drop gpm-zh_CN-translation.patch: we want to use upstream
+  translations.
+- Drop gpm-icons.tar.bz2: those icons are not used since quite some
+  time, so stop installing them.
+- Pass --with-doc-dir, --enable-legacy-buttons and
+  --enable-policykit to configure.
+- Do not pass --with-dbus-services with default value to configure.
+- Remove unneeded BuildRequires: docbook_4, gstreamer010-devel,
+  libgnomeprintui-devel, libgnomeui-devel, notification-daemon,
+  scrollkeeper.
+- Remove unneeded Requires: PolicyKit, dbus-1, notification-daemon.
+- Replace gnome-screensaver with gnome-session in Requires:
+  gnome-power-manager now uses gnome-session for idle.
+- Add BuildRequires: DeviceKit-devel, DeviceKit-power,
+  gnome-keyring-devel, hal-devel, libcanberra-devel, unique-devel.
+- Add Requires: DeviceKit-power.
+- Remove AutoReqProv: it's default now.
+- Don't package omf files twice (they are in the lang package too).
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+- Re-enabled gnome-patch-translation support.
+
+-------------------------------------------------------------------
+Sat Feb 14 21:05:17 CET 2009 - mboman@suse.de
+
+  + bgo#562576, Battery profile is not saved correctly
+  + bgo#566115, Fails to build on sparc
+  + bgo#569100, When brightness is to 0, pressing one more
+    brightness causes hang
+  + bgo#566095, Don't step through each brightness state when we
+    fade modes
+  + bgo#562836, GPM OSD does not popup on machines that support
+    keys in HW but not in xrandr
+  + bgo#562900, gnome power manager keeps using xrandr backend
+    after failed calls
+  + Reset the event time after we resume so the duplicate key
+    detection code works correctly
+  + bgo#558670, Make "Make defaults" actually work
+  + Backport the duplicate button handling from trunk
+  + Don't apply policy when not active
+  + Allow configure to complete without PolicyKit
+  + Translation updates
+- Remove gnome-power-manager-pk-sensitive.patch. Fixed upstream
+- Remove gnome-power-manager-nocast.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Feb 10 21:05:17 CET 2009 - vuntz@novell.com
+
+- Remove non-upstream translations: they'll get out-of-date.
+
+-------------------------------------------------------------------
+Mon Feb  2 01:42:49 CET 2009 - vuntz@novell.com
+
+- Remove non-existing configure flags
+- Small cleanups
+
+-------------------------------------------------------------------
+Sun Jan 25 01:47:11 CET 2009 - vuntz@novell.com
+
+- Call %suse_update_desktop_file on all desktop files. Part of
+  bnc#445728.
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de 
+
+- Translations update. 
+
+-------------------------------------------------------------------
+Tue Dec 16 13:43:36 CET 2008 - hmacht@suse.de
+
+- gnome-power-manager-no-fallback-to-hibernate.patch: Do not fall
+  back to hibernation when suspend did not work (bnc#440410)
+
+-------------------------------------------------------------------
+Tue Dec  9 15:00:20 CET 2008 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Tue Dec  9 13:57:43 CET 2008 - ro@suse.de
+
+- remove unneccessary cast to fix build on ia64 
+
+-------------------------------------------------------------------
+Sat Dec  6 08:47:15 CET 2008 - mauro@suse.de 
+
+- Updated translations
+
+-------------------------------------------------------------------
+Tue Nov 25 12:29:54 CET 2008 - hmacht@suse.de
+
+- gnome-power-manager-bnc446595-shutdown-dialog.patch: Use the
+  shutdown menu when power button is pressed instead of the logout
+  menu (bnc#446595)
+
+-------------------------------------------------------------------
+Fri Nov  7 16:54:47 CET 2008 - vuntz@novell.com
+
+- Update gnome-power-manager-notify-idle-sleep.patch: better
+  strings, and use a default compatible for upstream (will change
+  the default in the branding package).
+
+-------------------------------------------------------------------
+Fri Nov  7 14:02:47 CET 2008 - hmacht@suse.de
+
+- gnome-power-manager-notify-idle-sleep.patch: notify user about auto
+  suspend when returning from sleep (bnc#439018)
+
+-------------------------------------------------------------------
+Tue Nov  4 11:03:23 CST 2008 - maw@suse.de
+
+- Split out panel applet subpackages: gnome-applets-brightness
+  and gnome-applets-inhibit-powersave (bnc#440797)
+- Add gnome-power-manager-reduce-deps.patch (bnc#440797).
+
+-------------------------------------------------------------------
+Fri Oct 31 14:54:20 CET 2008 - vuntz@novell.com
+
+- Add gnome-power-manager-pk-sensitive.patch to correctly set the
+  sensitivity of the "Make defaults" button in the preferences.
+  Fix bnc#435768.
+
+-------------------------------------------------------------------
+Thu Oct 23 08:19:48 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.1:
+  + Correct the name of the HAL PolicyKit methods
+  + Fix segfault with low battery
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 25 13:19:30 CEST 2008 - rodrigo@novell.com
+
+- Update to version 2.24.0:
+  + Fixed bgo#547502, gnome-power-manager won't configure
+  + Fixed bgo#547766, Crash in gpm_cell_array_update gpm-cell-array.c:273
+  + Fixed bgo#549789, "unknown" battery type untranslated
+  + Fixed bgo#549844, DBUS times out after longer suspends
+  + Fixed bgo#549854, gpm-cell.c not translator friendly
+  + Updated translations
+- Updated gnome-power-manager-system-policy.patch to use egg_debug
+
+-------------------------------------------------------------------
+Thu Sep 18 13:09:39 CEST 2008 - rodrigo@suse.de
+
+- Moved schemas-only gnome-power-manager-energy-star.patch to
+  gconf2-branding-openSUSE package
+
+-------------------------------------------------------------------
+Fri Sep 12 12:23:35 CEST 2008 - hmacht@suse.de
+
+- gnome-power-manager-energy-star.patch: Enable Energy Star
+   compliant default configuration (fate#304708)
+
+-------------------------------------------------------------------
+Thu Sep 11 12:23:34 CDT 2008 - gburt@suse.de
+
+- Add new patch gnome-power-manager-schedule-wakeups.patch that adds
+  a tab to the Preferences dialog, allowing configuration of automatic
+  wakeup from suspend and hibernate at a given time on given days.
+  Calculate the seconds-from-now to pass to HAL based on that
+  configuration.  Part of the changes needed for fate#302448.
+
+-------------------------------------------------------------------
+Tue Sep 02 01:03:08 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Fixed bgo#547502, gnome-power-manager won't configure
+  + Fixed bgo#547766, Crash in gpm_cell_array_update gpm-cell-array.c:273
+  + Fixed bgo#549789, "unknown" battery type untranslated
+  + Fixed bgo#549854, gpm-cell.c not translator friendly
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Aug 08 01:03:08 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.6:
+  - Fixed bgo#544298, gpm 2.23.3 fails to compile (Richard Hughes)
+  - Fixed bgo#546556, g-p-m unable to startup on Solaris Sparc because of
+    missing XRandr (Simon Zheng)
+  - Supress low battery warning on Eee as it's reported as non-rechargeable
+    (Matthew Garrett)
+  - Use polkit-simple to simplify the optional PolicyKit bits
+    Richard Hughes)
+  - Completely remove all traces of the skipping suppressed action warning
+    (Richard Hughes)
+  - Don't use a libnotify window for the battery information, use a
+    GtkDialog instead (Richard Hughes)
+
+-------------------------------------------------------------------
+Sat Jul 26 01:03:08 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.3:
+  + Fixed bgo#483144, Gconf key for battery brightness labeled incorrectly... (Richard Hughes)
+  + Fixed bgo#492132, policy timeout prevents computer from suspend (Richard Hughes)
+  + Fixed bgo#517914, Inconsistent colors of graphs (Richard Hughes)
+  + Fixed bgo#521686, Removing gnome_program_init removes session management (Richard Hughes)
+  + Fixed bgo#522078, aborts when suspend is chosen when running under GDM (Richard Hughes)
+  + Fixed bgo#522236, g-p-m should set a window type hint for the brightness feedback window (Richard Hughes)
+  + Fixed bgo#522336, Change Playbin state back to NULL on error and EOS : fix potential memory leak when using pulsaudio (Richard Hughes)
+  + Fixed bgo#523152, GetBrightness returns a INT not a UINT (Richard Hughes)
+  + Fixed bgo#524449, gnome-power-preferences gives a critical warning (Richard Hughes)
+  + Fixed bgo#526178, Should check user capability "CanShutdown" before providing shutdown option in combo box (simon.zheng)
+  + Fixed bgo#526349, gnome-power-bugreport.sh doesn't work on Solairs (simon.zheng)
+  + Fixed bgo#534335, cpu load calculation doesn't work on Solaris (simon.zheng)
+  + Fixed bgo#535271, XBACKLIGHT is very slow (Richard Hughes)
+  + Fixed bgo#536956, Should remove cpufreq_show gconf key (simon.zheng)
+
+-------------------------------------------------------------------
+Tue Jun 17 01:03:08 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.1:
+  + Fix a bunch of build warnings with glib trunk
+  + Use Unique to make g-p-p and g-p-s single instance
+  + Add a default button for GConf settings
+  + Remove all the hidden cpufreq code
+  + Use the same logic for xrandr as hal when we have a large
+    number of brightness steps
+  + Clear the brightness applet background properly so we can draw
+    on it later
+  + Remove the lid sounds. Everbody hates them
+  + Add new functionality allowing us to change the backlight
+    brightness using XRANDR
+  + Make the backlight do what the user expects rather than what
+    the policy says
+  + Bugs fixed: bgo#526178, bgo#526349, bgo#522236, bgo#522078,
+    bgo#517914, bgo#524449, bgo#108075, brc#444026, and brc#443069
+  + Updated translations
+- Respin gnome-power-manager-system-policy.patch
+- Drop obsolete patch: gnome-power-manager-initialize-vars.patch.
+
+-------------------------------------------------------------------
+Mon May 19 18:43:42 CEST 2008 - rodrigo@suse.de
+
+- Tag patches 
+
+-------------------------------------------------------------------
+Wed Apr  2 03:52:37 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Bugs fixed: bgo#517914, bgo#521686, bgo#522078, bgo#522236,
+    bgo#522336, bgo#523152, and bgo#524449
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 18 22:19:53 CET 2008 - maw@suse.de
+
+- Disable policykit support pending upstream fixes.
+
+-------------------------------------------------------------------
+Fri Mar 14 05:29:44 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Bugs fixed: bgi#514590 and bgo#520411
+  + Add some missing finaliser calls
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+- Removed outdated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:52:19 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Bugs fixed: bgo#507789, bgo#510068, bgo#512267, and bgo#514077
+  + Updated translations
+- Build with PolicyKit enabled.
+
+-------------------------------------------------------------------
+Wed Jan 30 16:31:15 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.21.1:
+  * Fixed bgo#13360, After loading gnome gpm starts but shows
+    nothing in tray icon despite option 
+  * Fixed bgo#474973, Lack of context to translate
+  * Fixed bgo#497298, The +/- buttons on the brightness applet
+    sometimes get stuck
+  * Fixed bgo#497298, Avoid float computation error
+  * Fixed bgo#497328, Incorrect documentation for --enable-checkfg
+  * Fixed bgo#496367, Work out the size of the label text to avoid
+    truncating numbers in other locales
+  * Correct much of the documentation in many different ways
+  * Use _NEVER for sleep problems notification, so that the user
+    can always see it
+  * Pass make distcheck on a desktop machine without a battery
+  * Fix the keyboard brightness up button
+  * Use the correct DBUS return types now HAL enforces the return type
+  * Rip out GpmWebcam
+  * Updated translations
+- Removed upstreamed patches
+
+-------------------------------------------------------------------
+Thu Nov 29 14:03:50 CET 2007 - rodrigo@suse.de
+
+- Added upstreamed patch to leave the sleep error notification up
+  until dismissed by the user (#241440)
+
+-------------------------------------------------------------------
+Thu Nov  8 14:10:23 CET 2007 - rodrigo@suse.de
+
+- Enable cpufreq settings by default (#222021) 
+
+-------------------------------------------------------------------
+Tue Oct  2 18:40:32 CEST 2007 - sreeves@suse.de
+
+- Fix for 310273 - brightness problems
+
+-------------------------------------------------------------------
+Tue Sep 18 18:28:46 CEST 2007 - maw@suse.de
+
+- Update to version 2.20.0:
+  + Fix for bugzilla.gnome.org #470481
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 12 17:45:40 CEST 2007 - rodrigo@suse.de
+
+- Disable PolicyKit, upstream is not ported to last release (#302413)
+
+-------------------------------------------------------------------
+Mon Sep 10 17:47:04 CEST 2007 - cthiel@suse.de
+
+- update to version 2.19.92
+  * Bugs (bugzilla.gnome.org)
+    #449274, Application specific icons are installed in the wrong directory
+    #462109, make distcheck fails on my laptop
+    #462347, Use new tooltip API of GTK 2.12
+    #467094, Typo 'the the' in two messages
+    #468509, Some grammar issues
+    #468825, Possible error in GUI text strings
+  * Updated translations
+
+-------------------------------------------------------------------
+Mon Sep 10 17:34:59 CEST 2007 - rodrigo@suse.de
+
+- Remove patch that calls Yast2 PM module (#302413)
+
+-------------------------------------------------------------------
+Tue Aug  7 22:57:44 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:14:21 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+  + Bugs (bugzilla.gnome.org) fixed: #405421, #436717, #445173,
+    #448570, #450154, #453853, #455148, #455499, #457414, #458609,
+    #458613, #459099, #459747, #406144, #411932, #413642, #422124,
+    #423289, #433367, #442425, #448570, #450154, #450362, #451241,
+    #452244, and #453721
+  + Updated translations
+- Add gnome-power-manager-initialize-vars.patch
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Mon Jul  9 21:39:48 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.3
+- Fixes for bugzilla.gnome.org #359089, #393388, #414032, #418605,
+  #419403, #437042, #437920, #428401, #438838,  #440409,
+  and #445173
+- Updated translations
+
+-------------------------------------------------------------------
+Thu Jun  7 14:33:45 CEST 2007 - sbrabec@suse.cz
+
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Mon May 14 17:33:37 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from Requires and BuildRequires
+  [#247450]
+
+-------------------------------------------------------------------
+Wed Apr 11 13:23:57 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.2
+- Fixes for b.g.o #422345 and #425000
+- Updated translations for various locales.
+
+-------------------------------------------------------------------
+Fri Mar 30 12:54:26 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- b.g.o 414311, 412345, 414010, 411592, 407613, 408705, 383653,
+  and 407613.
+
+-------------------------------------------------------------------
+Thu Mar  8 18:14:51 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91, which brings us:
+- General fixes:
+ - Fixed #402823, crash in Power Manager: It had crashed when I re...
+ - Fixed #406529, Crashed at login
+ - Fixed #400006, Brightness applet doesn't indicate whether it's working
+ - Fixed #400654, segfault on ppc architecture since upgrade to 2.17.90
+ - Fixed #402230, [Typo] Case after the string 'Status:'
+ - Fixed #403156, leak reported by valgrind
+ - Fixed #404929, Multiple mouse battery entries after suspend/resume cycle
+ - Fixed #405013, should provide the ability to halt/suspend/hibernate..
+- New translations:
+ - Updated fr: Stéphane Raimbault
+ - Updated zh_HK: Woodman Tuen
+ - Updated pt_BR: Leonardo Ferreira Fontenelle
+ - Updated ca: Jordi Mas
+ - Updated zh_TW: Woodman Tuen
+ - Updated sv: Daniel Nylander
+ - Updated ar: Djihed Afifi
+ - Updated th: Theppitak Karoonboonyanan
+ - Updated en_GB: David Lodge
+
+-------------------------------------------------------------------
+Wed Mar  7 14:55:34 CET 2007 - sbrabec@suse.cz
+
+- Updated BuildRequires: PolicyKit -> PolicyKit-devel.
+
+-------------------------------------------------------------------
+Mon Jan 22 13:27:04 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Enabled PolicyKit support.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:13:31 CET 2006 - sbrabec@suse.cz
+
+- Use translation compendium gnome-patch-translation (#220304).
+
+-------------------------------------------------------------------
+Tue Oct 31 19:48:23 CET 2006 - rodrigo@suse.de
+
+- Removed custom autostart installation directory patch. 
+
+-------------------------------------------------------------------
+Tue Oct 24 17:11:21 CEST 2006 - rodrigo@suse.de
+
+- Removed unneeded gnome-power-manager-disable-actions.patch.
+- Fixed gnome-power-manager-yast-settings.patch to match variable
+  names changes. 
+
+-------------------------------------------------------------------
+Mon Oct 16 21:16:39 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+- Update and re-enable gnome-power-manager-yast-settings.patch and
+  gnome-power-manager-disable-actions.patch
+
+-------------------------------------------------------------------
+Fri Oct 13 01:04:05 CEST 2006 - ro@suse.de
+
+- added gnome-doc-utils-devel to buildreq 
+
+-------------------------------------------------------------------
+Mon Oct  9 19:53:33 CEST 2006 - hmacht@suse.de
+
+- add temporary patch to grab org.freedesktop.Policy.Power system
+  interface on startup
+
+-------------------------------------------------------------------
+Tue Oct  3 22:09:39 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- Use the step value we computed (rather than one) to fix pressing
+         brightness-down on the Macbook Pro
+- Remove the FIXME to fix #334212. It's breaking more laptops that it
+         was intended to fix and also breaks my (already broken) iBook
+- Also ignore DBUS_GERROR_REMOTE_EXCEPTION as this prevents the
+         'HAL failed to suspend' when actually it suspended fine but the bus
+         timed out.
+- Fix a couple of small memory leaks where we don't free an icon name.
+ - Don't rescan buttons every minute. #356170.
+ - Fix hotplug add and remove of wireless mice.
+ - Add the new battery types so we don't print a warning with
+         newer than HAL 0.5.8.1
+ - Increase dep of libgnome to 2.14.0 because we are using
+         GNOME_PARAM_GOPTION_CONTEXT, which was introduced in 2-14
+- translation updates 
+
+-------------------------------------------------------------------
+Fri Sep 29 11:23:12 CEST 2006 - rodrigo@suse.de
+
+- Removed gnome-power-manager-powersave-dbus.patch, we don't connect
+  to the powersave daemon anymore.
+- Move the part of the patch to add the YAST button to its own file. 
+
+-------------------------------------------------------------------
+Thu Sep 14 20:35:52 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- Turn off Werror in configure. #352448
+- Be more specific for our device checks in the expanded device information
+   to fix the display of CSR properties. rh:203849
+- Fix some small memory leaks. (Paolo Borelli) #352858.
+- translation updates 
+
+-------------------------------------------------------------------
+Thu Aug 31 00:43:19 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- Fix a double free in the new smartcard code
+- Work round a compiler bug which caused compilation to fail when using a
+  high optimising setting
+- Beep to warn if the suspend or hibernate failed
+- Fix up the desktop files with the version number
+- Change the spelling of loose to lose throughout the project
+- Add a copy of the 24x24 icons instead of generating them at install time.
+  Doing clever tricks with imagemagick didn't work very well
+- Add a timed exit option to the daemon
+- translation updates 
+
+-------------------------------------------------------------------
+Wed Aug 23 18:58:41 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+- Turn on the monitor unconditionally, as we may be using a smart-card to
+   authenticate and DPMS might still be on
+- Hide the 'Device Information' window if we have no devices
+- Add in an extra battery charged check to avoid repetition in the battery
+   charged notification under some circumstances
+- Make gnome-screensaver connection more resilient to bus failures.
+- Poll all the buttons every minute to detect a silent lid close event.
+- Reset the action timer after an ac_adapter event has been received.
+- Add support for different DPMS sleep modes to support broken monitors
+- Make the precision of the power supply and power rate more reasonable.
+- Install the 24x24 icons to get rid of the fuzzyness of the tray icon in some
+   circumstances.
+- Fix a crasher where the g-s timeout was larger than the max range for
+   gnome-power-preferences. 
+
+-------------------------------------------------------------------
+Mon Jun 26 13:14:10 CEST 2006 - gekker@suse.de
+
+- Update translations for cs de es fr it ja pt_BR zh_CN zh_TW
+
+-------------------------------------------------------------------
+Fri Jun 16 22:00:06 CEST 2006 - gekker@suse.de
+
+- Update translations for hu
+
+-------------------------------------------------------------------
+Thu Jun  8 18:21:17 CEST 2006 - gekker@suse.de
+
+- Update translations for zh_CN for zsu (#179552)
+
+-------------------------------------------------------------------
+Tue Jun  6 16:15:42 CEST 2006 - rodrigo@suse.de
+
+- Fixed layout of baterry preferences page (#179110)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:47:55 CEST 2006 - rodrigo@suse.de
+
+- Added patch that makes gpm respond correctly to systray crashes
+  (#165471)
+
+-------------------------------------------------------------------
+Thu Apr 13 17:45:41 CEST 2006 - sbrabec@suse.cz
+
+- Call %suse_update_desktop_file.
+- Use new control-center Categories instead of old ones.
+- File list fix.
+
+-------------------------------------------------------------------
+Mon Apr  3 16:31:41 CEST 2006 - rodrigo@suse.de
+
+- Return NOT_YET_HANDLED for dbus messages we don't handle in the
+  powersave_filter_function (#162807).
+
+-------------------------------------------------------------------
+Fri Mar 31 16:04:18 CEST 2006 - rodrigo@suse.de
+
+- Added code to query the powersave daemon for suspend/hibernate
+  availability. And added a button to open yast power management
+  applet (#158105)
+
+-------------------------------------------------------------------
+Fri Mar 31 11:57:07 CEST 2006 - rodrigo@suse.de
+
+- Added gnome-power-manager-disable-actions.patch to disable
+  handling of powersave button events (#157477).
+
+-------------------------------------------------------------------
+Wed Mar 29 00:10:32 CEST 2006 - dobey@suse.de
+
+- Update icons tarball with 24x24 icons instead of 22x22, this
+  changed upstream for the 2.14 release to 24x24, so we need to
+  use this size to avoid blurry icons
+
+-------------------------------------------------------------------
+Mon Mar 27 23:56:31 CEST 2006 - rodrigo@suse.de
+
+- Updated gnome-power-manager-powersave-dbus.patch to handle
+  apropriate signals from powersave dbus interface (#157477)
+- Updated icons tarball with new art from UI team. 
+
+-------------------------------------------------------------------
+Mon Mar 20 14:38:44 CET 2006 - rodrigo@suse.de
+
+- Added gnome-power-manager-battery-removal.patch, fixes #158682.
+
+-------------------------------------------------------------------
+Tue Mar 14 12:34:37 CET 2006 - rodrigo@suse.de
+
+- Updated to latest upstream release, which fixes the HAL part of
+  #150042.
+- Updated gnome-screensaver-autostart.patch.
+
+-------------------------------------------------------------------
+Fri Mar  3 15:57:19 CET 2006 - rodrigo@suse.de
+
+- Updated to 2.13.92, which fixes several bugs (#140871, #153594)
+- Removed upstreamed patch.
+
+-------------------------------------------------------------------
+Mon Feb 27 15:09:41 CET 2006 - rodrigo@suse.de
+
+- Establish connection to D-BUS powersave interface (#6196)
+
+-------------------------------------------------------------------
+Tue Feb 21 19:04:51 CET 2006 - dobey@suse.de
+
+- Update new artwork
+- Fixes missing new artwork for a couple of status icons and about
+  box logo image
+
+-------------------------------------------------------------------
+Tue Feb 21 18:32:44 CET 2006 - dobey@suse.de
+
+- Add in new icon artwork
+
+-------------------------------------------------------------------
+Thu Feb  9 17:45:12 CET 2006 - jpr@suse.de
+
+- Pass extra param to prevent crash (#144346)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:55:18 CET 2006 - rodrigo@suse.de
+
+- Reenable libnotify support.
+
+-------------------------------------------------------------------
+Mon Jan 23 11:35:27 CET 2006 - rodrigo@suse.de
+
+- Use --sm-disable when running autostarted daemon. 
+
+-------------------------------------------------------------------
+Wed Jan 18 17:10:16 CET 2006 - gekker@suse.de
+
+- Disable scrollkeeper update during build
+
+-------------------------------------------------------------------
+Tue Jan 17 22:19:33 CET 2006 - mls@suse.de
+
+- xsltproc -> libxslt
+
+-------------------------------------------------------------------
+Tue Jan 17 14:42:50 CET 2006 - rodrigo@suse.de
+
+- Added xsltproc to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Jan 17 11:28:44 CET 2006 - rodrigo@suse.de
+
+- Updated to 0.3.4 releases.
+- Removed obsolete patch.
+- Fixed package dependencies and build problems.
+
+-------------------------------------------------------------------
+Mon Dec 12 15:51:06 CET 2005 - jpr@suse.de
+
+- Update to cvs snapshot to work with latest hal
+- Temporarily disable libnotify support
+
+-------------------------------------------------------------------
+Wed Nov  9 19:30:34 CET 2005 - rodrigo@suse.de
+
+- Added X-GNOME-Autostart-enabled flag to autostart .desktop file.
+- Made autostart .desktop file %config.
+
+-------------------------------------------------------------------
+Wed Nov  9 18:27:17 CET 2005 - rodrigo@suse.de
+
+- Added gnome-session-autostart.patch to include needed files for
+  autostart implementation. 
+
+-------------------------------------------------------------------
+Mon Oct 24 01:21:53 CEST 2005 - ro@suse.de
+
+- added hal to nfb 
+
+-------------------------------------------------------------------
+Tue Oct  4 21:13:45 CEST 2005 - rodrigo@suse.de
+
+- Added gnome-power-manager-desktop.patch, to show the icon in the
+  GNOME control center.
+
+-------------------------------------------------------------------
+Mon Oct  3 16:24:53 CEST 2005 - rodrigo@suse.de
+
+- Update to version 0.2.6.
+- Removed upstreamed patches.
+
+-------------------------------------------------------------------
+Thu Sep 22 22:29:17 CEST 2005 - gekker@suse.de
+
+- Use RPM_OPT_FLAGS
+- Fix uninitialized variables
+- Fix strict aliasing
+
+-------------------------------------------------------------------
+Thu Sep 22 11:55:57 CEST 2005 - rodrigo@suse.de
+
+- Update to version 0.2.4.
+- Added 64bit patch.
+
+-------------------------------------------------------------------
+Wed Sep 21 16:03:44 CEST 2005 - rodrigo@suse.de
+
+- Created template.
+

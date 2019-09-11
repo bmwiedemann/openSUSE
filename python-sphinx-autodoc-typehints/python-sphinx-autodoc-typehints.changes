@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Jul  3 09:13:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new sphinx:
+  * sphinx21.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 13:41:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not really needed devel dependency
+
+-------------------------------------------------------------------
+Sat Mar 23 14:37:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Remove patch setup-tests.patch, we are using pytest now.
+
+-------------------------------------------------------------------
+Wed Mar 20 21:12:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 1.6.0

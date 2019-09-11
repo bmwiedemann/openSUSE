@@ -1,0 +1,26 @@
+Index: rpmlint-rpmlint-1.11/FilesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/FilesCheck.py
++++ rpmlint-rpmlint-1.11/FilesCheck.py
+@@ -185,7 +185,7 @@ compr_regex = re.compile(compressions +
+ absolute_regex = re.compile(r'^/([^/]+)')
+ absolute2_regex = re.compile(r'^/?([^/]+)')
+ points_regex = re.compile(r'^\.\./(.*)')
+-doc_regex = re.compile(r'^/usr(/share|/X11R6)?/(doc|man|info)/|^/usr/share/gnome/help')
++doc_regex = re.compile(r'^/usr(/share|/X11R6)?/(doc|man|info)/|^/opt/kde3/share/doc|^/usr/share/gnome/help')
+ bin_regex = re.compile(r'^/(?:usr/(?:s?bin|games)|s?bin)/(.*)')
+ includefile_regex = re.compile(r'\.(c|h)(pp|xx)?$', re.IGNORECASE)
+ develfile_regex = re.compile(r'\.(a|cmxa?|mli?|gir)$')
+Index: rpmlint-rpmlint-1.11/I18NCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/I18NCheck.py
++++ rpmlint-rpmlint-1.11/I18NCheck.py
+@@ -30,7 +30,7 @@ INCORRECT_LOCALES = {
+     'en_UK': 'en_GB'}
+ 
+ package_regex = re.compile('-(' + '|'.join(LANGUAGES) + ')$')
+-locale_regex = re.compile('^(/usr/share/locale/([^/]+))/')
++locale_regex = re.compile(r'^(/(usr|opt/kde3|opt/gnome)/share/locale/([^/]+))/')
+ correct_subdir_regex = re.compile('^(([a-z][a-z]([a-z])?(_[A-Z][A-Z])?)([.@].*$)?)$')
+ lc_messages_regex = re.compile('/usr/share/locale/([^/]+)/LC_MESSAGES/.*(mo|po)$')
+ man_regex = re.compile('/usr(?:/share)?/man/([^/]+)/man[0-9n][^/]*/[^/]+$')

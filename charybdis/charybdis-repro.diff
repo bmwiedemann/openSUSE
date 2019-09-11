@@ -1,0 +1,60 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-01-10 13:49:08.979392329 +0100
+
+build: drop all pointless things that change during builds
+
+---
+ libratbox/src/version.c.SH |    6 +++---
+ src/version.c.SH           |    6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+Index: charybdis-charybdis-3.5.3/libratbox/src/version.c.SH
+===================================================================
+--- charybdis-charybdis-3.5.3.orig/libratbox/src/version.c.SH
++++ charybdis-charybdis-3.5.3/libratbox/src/version.c.SH
+@@ -17,7 +17,7 @@ fi
+ 
+ generation=`expr $generation + 1`
+ 
+-uname=`uname -a`
++uname=`uname -s`
+ 
+ creation=`date | \
+ awk '{if (NF == 6) \
+@@ -54,10 +54,10 @@ $spitshell >version.c <<!SUB!THIS!
+ 
+ #include "../include/serno.h"
+ 
+-const char *libratbox_generation = "$generation";
++const char *libratbox_generation = "1";
+ const char *libratbox_platform = "$uname";
+ const char *libratbox_serno = SERIALNUM;
+-const char *libratbox_creation = "$creation";
++const char *libratbox_creation = "";
+ 
+ const char *libratbox_infotext[] =
+ {
+Index: charybdis-charybdis-3.5.3/src/version.c.SH
+===================================================================
+--- charybdis-charybdis-3.5.3.orig/src/version.c.SH
++++ charybdis-charybdis-3.5.3/src/version.c.SH
+@@ -17,7 +17,7 @@ fi
+ 
+ generation=`expr $generation + 1`
+ 
+-uname=`uname -a`
++uname=`uname -s`
+ 
+ creation=`LC_ALL=C date | \
+ awk '{if (NF == 6) \
+@@ -52,8 +52,8 @@ $spitshell >version.c <<!SUB!THIS!
+ #include "patchlevel.h"
+ #include "serno.h"
+ 
+-const char *generation = "$generation";
+-const char *creation = "$creation";
++const char *generation = "1";
++const char *creation = "";
+ const char *platform = "$uname";
+ const char *ircd_version = PATCHLEVEL;
+ const char *serno = SERNO;

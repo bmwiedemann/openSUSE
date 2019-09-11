@@ -1,0 +1,67 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: Search debuginfo files in the original directory
+References: bnc#723639
+
+If debuginfo is in a separate file and the kernel image is compressed,
+then it should be found in the same directory as the original (compressed)
+image, not in the directory with the uncompressed image (TMPDIR).
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ symbols.c |   17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+Index: b/symbols.c
+===================================================================
+--- a/symbols.c
++++ b/symbols.c
+@@ -203,9 +203,9 @@ symtab_init(void)
+ 	 *  Pull a bait-and-switch on st->bfd if we've got a separate
+          *  .gnu_debuglink file that matches the CRC. Not done for kerntypes.
+ 	 */
+-	if (!(LKCD_KERNTYPES()) &&
+-	    !(bfd_get_file_flags(st->bfd) & HAS_SYMS)) {
+-		if (!check_gnu_debuglink(st->bfd))
++	if (!(LKCD_KERNTYPES())) {
++		if (!check_gnu_debuglink(st->bfd) &&
++		    !(bfd_get_file_flags(st->bfd) & HAS_SYMS))
+ 			no_debugging_data(FATAL);
+ 	}
+ 	
+@@ -267,13 +267,16 @@ check_gnu_debuglink(bfd *bfd)
+ 	char *contents;
+ 	int crc_offset;	
+ 	unsigned long crc32;
++	char *namelist;
+ 	char *dirname;
+ 	char *namelist_debug;
+         char **matching;
+ 
++	namelist = pc->namelist_orig ? pc->namelist_orig : pc->namelist;
++
+         sect = bfd_get_section_by_name(bfd, ".gnu_debuglink");
+ 	if (!sect) {
+-		error(INFO, "%s: no .gnu_debuglink section\n", pc->namelist);
++		error(INFO, "%s: no .gnu_debuglink section\n", namelist);
+ 		return FALSE;
+ 	}
+ 
+@@ -294,14 +297,14 @@ check_gnu_debuglink(bfd *bfd)
+ 			contents, crc32);
+ 
+   	if ((pc->debuginfo_file = (char *)
+-	    malloc(((strlen(pc->namelist) + strlen("/.debug/") +
++	    malloc(((strlen(namelist) + strlen("/.debug/") +
+ 	    + strlen(".debug") + strlen(" /usr/lib/debug/boot/ "))*10)
+ 	    + strlen(pc->namelist_debug ? pc->namelist_debug : " "))) == NULL)
+ 		error(FATAL, "debuginfo file name malloc: %s\n", 
+ 			strerror(errno));
+ 
+-	dirname = GETBUF(strlen(pc->namelist)+1);
+-	strcpy(dirname, pc->namelist);
++	dirname = GETBUF(strlen(namelist)+1);
++	strcpy(dirname, namelist);
+ 
+   	for (i = strlen(dirname)-1; i >= 0; i--)
+     	{

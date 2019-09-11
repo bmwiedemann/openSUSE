@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Oct 12 05:40:40 UTC 2017 - coolo@suse.com
+
+- fix build with perl 5.26
+
+-------------------------------------------------------------------
+Wed Dec  3 09:28:01 UTC 2014 - coolo@suse.com
+
+- updated to 0.05
+   add option to avoid automatic deployment (Phil Hallows)
+
+-------------------------------------------------------------------
+Thu Apr 21 04:57:08 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.04
+    * created by cpanspec 1.78.04
+

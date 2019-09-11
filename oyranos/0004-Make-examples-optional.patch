@@ -1,0 +1,40 @@
+From 11f4bd00308c24c3dcd3fbc6b696f5a85dbed274 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Jan 2017 00:32:42 +0100
+Subject: [PATCH 4/6] Make examples optional
+
+---
+ CMakeLists.txt     | 1 +
+ src/CMakeLists.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d0499f6..7107840 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,6 +33,7 @@ SET( OYRANOS_VERSION_MAJORMINOR "${OYRANOS_VERSION_MAJOR}.${OYRANOS_VERSION_MINO
+ 
+ include(GNUInstallDirs)
+ 
++option(ENABLE_EXAMPLES "Build example applications" ON)
+ option(ENABLE_TESTS "Build tests (requires static libs)" ON)
+ 
+ IF( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 76f3ccb..e513a5c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -307,7 +307,9 @@ ENDIF()
+ 
+ ADD_SUBDIRECTORY( tools )
+ 
+-ADD_SUBDIRECTORY( examples )
++IF(ENABLE_EXAMPLES)
++  ADD_SUBDIRECTORY( examples )
++ENDIF()
+ 
+ 
+ # versions for libraries
+-- 
+2.10.2
+

@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Fri May 17 17:14:08 UTC 2019 - Hardik Italia <hitalia@suse.com>
+
+- version update to 1.3.2
+  * Remove unnecessary IRI-flavored matchers from rfc3986.misc to speed up
+    import time on resource-constrained systems.
+    See also `GitHub #55`_
+
+-------------------------------------------------------------------
+Mon May  6 13:50:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.3.1
+  * Only apply IDNA-encoding when there are characters
+    outside of the ASCII character set.
+    See also `GitHub #52`_
+
+-------------------------------------------------------------------
+Thu Apr 25 10:34:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.3.0
+  * Add the ``IRIReference`` class which parses data according
+    to RFC 3987 and encodes into an ``URIReference``.
+    See also `GitHub #50`_
+- run tests
+
+-------------------------------------------------------------------
+Tue Mar  5 15:02:39 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.2.0:
+  * Update abnf_regexp.py
+  * Update uri.py
+  * Add test cases for 933d429f
+  * Allow percent-encoded bytes in host
+  * Remove unnecessary whitespace
+  * Correct name throughout the project
+  * Percent-encode % chars
+  * Minor tweak for cleaner logic
+  * Add test cases specifically for % detection
+  * Make package building Windows-friendly
+  * Tack on changes for #35
+  * Drop Python 3.3, add Python 3.6 and 3.7
+  * Update for new organization home
+  * Bump version to 1.2.0
+  * Use the encoding param in to_str and to_bytes
+
+-------------------------------------------------------------------
+Tue Dec 18 23:41:50 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 10 07:22:30 UTC 2017 - tbechtold@suse.com
+
+- update to 1.1.0:
+  * Bump version to 1.1.0
+  * Fix theme setting for documentation
+  * Exclude solitary line from coverage
+  * Note the version we added Validator in
+  * Fix documentation builds on RTD
+  * Add check_validity_of to vaildator docs
+  * Add some chars (!, =, etc) as allowed to the userinfo part of authority
+  * Add release notes for v1.1.0
+  * Add a separate testcase for special chars in userinfo and revert changes to other tests
+  * Add validation to eliminate URIReference.is_valid
+  * Add deprecation notices to old URIReference methods
+  * Make tests fail: add "%20!=" part to userinfo which is allowed as per RFC3986
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Sat Jun 10 07:55:28 UTC 2017 - dmueller@suse.com
+
+- update to 1.0.0:
+  * Add support for :rfc:`6874` - Zone Identifiers in IPv6 Addresses
+  * Add a more flexible and usable validation framework. See our documentation
+    for more information.
+  * Add an object to aid in building new URIs from scratch. See our
+    documentation for more information.
+  * Allow ``None`` to be used to eliminate components via ``copy_with`` for URIs
+    and ParseResults.
+
+-------------------------------------------------------------------
+Wed Aug 31 10:44:29 UTC 2016 - tbechtold@suse.com
+
+- update to 0.4.1:
+  - Normalize URIs constructed using ``ParseResult.from_parts`` and
+    ``ParseResultBytes.from_parts``
+  - Add ``ParseResult.from_parts`` and ``ParseResultBytes.from_parts`` class
+    methods to easily create a ParseResult
+  - When using regular expressions, use ``[0-9]`` instead of ``\d`` to avoid
+    finding ports with "numerals" that are not valid in a port
+  - Preserve empty query strings during normalization
+  - Read README and HISTORY files using the appropriate codec so rfc3986 can be
+    installed on systems with locale's other than utf-8 (specifically C)
+  - Replace the standard library's urlparse behaviour
+  - Update the regular name regular expression to accept all of the characters
+    allowed in the RFC. Closes bug #11 (Thanks Viktor Haag). Previously URIs
+    similar to "http://http-bin.org" would be considered invalid.
+- Use pypi.io for Source url
+
+-------------------------------------------------------------------
+Fri Aug 29 14:22:31 UTC 2014 - dmueller@suse.com
+
+- Initial package (0.2.0) 
+

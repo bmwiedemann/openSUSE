@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Apr 13 20:02:54 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180721
+	* worked on tests
+	* code clean up
+- fix broken build
+        * REMOVE    BuildRequires:  pkg-config
+        * ADD       BuildRequires:  pkgconfig
+
+-------------------------------------------------------------------
+Wed Feb 15 18:45:51 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170105
+	* worked on tests
+
+-------------------------------------------------------------------
+Mon Jan  5 23:21:53 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- remove extraneous buildrequires libcerror
+
+-------------------------------------------------------------------
+Thu Aug 14 08:25:05 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140105
+	* 2014 update
+
+-------------------------------------------------------------------
+Mon Jul 29 03:20:30 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20130609
+	* fix in .pc.in file
+	* fixes for stand-alone usage on netbsd
+	* fixes for stand-alone usage
+	* small changes
+	* updated dependencies
+	* fix for missing LOCALEDIR
+	* 2013 update
+- change to gz compression from xz
+
+-------------------------------------------------------------------
+Wed Apr  3 22:31:54 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20121224) for build.opensuse.org

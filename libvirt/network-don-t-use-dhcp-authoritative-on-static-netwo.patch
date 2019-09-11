@@ -1,0 +1,51 @@
+From 15c7f9a6e7678238ef06f5d805984addb6f8bcdb Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 15 Dec 2016 10:17:05 +0100
+Subject: [PATCH] network: don't use dhcp-authoritative on static networks
+
+"Static" DHCP networks are those where no dynamic DHCP range is
+defined, only a list of host entries is used to serve permanent
+IP addresses. On such networks, we don't want dnsmasq to reply
+to other requests than those statically defined. But
+"dhcp-authoritative" will cause dnsmasq to do just that.
+Therefore we can't use "dhcp-authoritative" for static networks.
+
+Fixes: 4ac20b3ae "network: add dnsmasq option 'dhcp-authoritative'"
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ src/network/bridge_driver.c                             | 9 ++++++++-
+ tests/networkxml2confdata/dhcp6host-routed-network.conf | 1 -
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+Index: libvirt-5.6.0/src/network/bridge_driver.c
+===================================================================
+--- libvirt-5.6.0.orig/src/network/bridge_driver.c
++++ libvirt-5.6.0/src/network/bridge_driver.c
+@@ -1528,7 +1528,14 @@ networkDnsmasqConfContents(virNetworkObj
+         if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
+             if (ipdef->nranges || ipdef->nhosts) {
+                 virBufferAddLit(&configbuf, "dhcp-no-override\n");
+-                virBufferAddLit(&configbuf, "dhcp-authoritative\n");
++		/*
++                 * Use "dhcp-authoritative" only for dynamic DHCP.
++                 * In a static-only network, it would cause dnsmasq
++                 * to reply to requests from other hosts than those
++                 * statically defined.
++                 */
++		if (ipdef->nranges || !ipdef->nhosts)
++                    virBufferAddLit(&configbuf, "dhcp-authoritative\n");
+             }
+ 
+             if (ipdef->tftproot) {
+Index: libvirt-5.6.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+===================================================================
+--- libvirt-5.6.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
++++ libvirt-5.6.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+@@ -10,7 +10,6 @@ bind-dynamic
+ interface=virbr1
+ dhcp-range=192.168.122.1,static
+ dhcp-no-override
+-dhcp-authoritative
+ dhcp-range=2001:db8:ac10:fd01::1,static,64
+ dhcp-hostsfile=/var/lib/libvirt/dnsmasq/local.hostsfile
+ addn-hosts=/var/lib/libvirt/dnsmasq/local.addnhosts

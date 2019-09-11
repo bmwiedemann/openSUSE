@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Mar 14 09:16:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Tweak spec, use modern macros where possible.
+
+-------------------------------------------------------------------
+Wed Mar 13 21:53:42 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Upstream URL has changed
+
+-------------------------------------------------------------------
+Wed Mar 13 19:56:15 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 0.5
+  * support for Kvantum themes
+  * support for QDBusTrayIcon
+  * fixed crash when opening native gtk dialog without parent
+  * Cinnamon settings Support
+  * Flatpak Settings Portal support
+  * Font scaling bug fixes
+
+-------------------------------------------------------------------
+Fri Feb 23 22:33:03 UTC 2018 - Markus S <kamikazow@opensuse.org>
+
+- Small licensing metadata fixes
+
+-------------------------------------------------------------------
+Thu Feb 22 16:12:25 UTC 2018 - fcrozat@suse.com
+
+- Initial package by Yuriy Gorodilin.
+- Remove BuildRequires on qt4, it is not needed.
+- Add Requires on adwaita-qt5.

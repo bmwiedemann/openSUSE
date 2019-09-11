@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Jan  9 11:57:49 UTC 2015 - dimstar@opensuse.org
+
+- Add eb BuildRequires: configure checks for the presence of
+  /etc/eb.conf.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:57 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Feb 15 12:14:48 CET 2011 - tiwai@suse.de
+
+- fix 64bit issues thar break UTF-8 locale support on 11.4;
+  patches ported from Fedora packages
+
+-------------------------------------------------------------------
+Mon Apr  2 01:53:39 CEST 2007 - ro@suse.de
+
+- added zlib-devel to buildreq 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun  9 18:18:28 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.6.1.
+
+-------------------------------------------------------------------
+Mon Aug 16 16:59:05 CEST 2004 - ro@suse.de
+
+- fix code aliasing issue
+
+-------------------------------------------------------------------
+Sun Jan 11 12:41:58 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 11:57:31 CET 2003 - mfabian@suse.de
+
+- I forgot "Prereq:       %install_info_prereq", sorry.
+
+-------------------------------------------------------------------
+Wed Feb 12 18:03:19 CET 2003 - mfabian@suse.de
+
+- use %install_info macro
+
+-------------------------------------------------------------------
+Fri Apr  5 21:08:20 CEST 2002 - mfabian@suse.de
+
+- update to eblook 1.5.1
+- use 'libtoolize --force' and 'autoreconf --force --install'
+
+-------------------------------------------------------------------
+Sat Oct 13 21:38:02 CEST 2001 - mfabian@suse.de
+
+- update to eblook 1.5
+
+-------------------------------------------------------------------
+Mon May  7 20:53:08 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue Sep 26 11:13:19 CEST 2000 - mfabian@suse.de
+
+- add "# neededforbuild automake" to make it build on SuSE 6.4
+
+-------------------------------------------------------------------
+Wed Jul 12 18:06:45 CEST 2000 - mfabian@suse.de
+
+- new package: eblook, Version 1.3
+

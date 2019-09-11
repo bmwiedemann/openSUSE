@@ -1,0 +1,49 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-07-17 16:15:32.890081276 +0200
+Upstream: tbd
+
+build: resolve libtool warnings
+
+libtoolize: Consider adding "AC_CONFIG_MACRO_DIR([m4])" to configure.ac and
+libtoolize: rerunning libtoolize, to keep the correct libtool macros in-tree.
+libtoolize: Consider adding "-I m4" to ACLOCAL_AMFLAGS in Makefile.am.
+
+The extra file in m4 is for making sure the directory exists.
+---
+ Makefile.am   |    2 ++
+ configure.ac  |    1 +
+ m4/.gitignore |    2 ++
+ 3 files changed, 5 insertions(+)
+
+Index: spandsp-0.0.6/Makefile.am
+===================================================================
+--- spandsp-0.0.6.orig/Makefile.am
++++ spandsp-0.0.6/Makefile.am
+@@ -16,6 +16,8 @@
+ ## License along with this program; if not, write to the Free Software
+ ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
++ACLOCAL_AMFLAGS = -I m4
++
+ AM_CFLAGS = $(COMP_VENDOR_CFLAGS)
+ AM_LDFLAGS = $(COMP_VENDOR_LDFLAGS)
+ 
+Index: spandsp-0.0.6/configure.ac
+===================================================================
+--- spandsp-0.0.6.orig/configure.ac
++++ spandsp-0.0.6/configure.ac
+@@ -45,6 +45,7 @@
+ 
+ AC_CONFIG_SRCDIR([src/tone_generate.c])
+ AC_CONFIG_AUX_DIR(config)
++AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_HEADERS([src/config.h:config-h.in])
+ AM_INIT_AUTOMAKE([1.9.5])
+ 
+Index: spandsp-0.0.6/m4/.gitignore
+===================================================================
+--- /dev/null
++++ spandsp-0.0.6/m4/.gitignore
+@@ -0,0 +1,2 @@
++/libtool.m4
++/lt*.m4

@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue May 16 19:18:47 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue May 2 00:00:00 UTC 2017 - fwdsbs.to.11df@xoxy.net
+
+- change pkgconfig-file generation logic - protect it from being broken by OBS source_validators
+- added csc-delay-sign.patch: use delay-sign flag when using roslyn "csc" compiler
+  * patch applied only when csc compiler detected
+- added support for compiling project with roslyn "csc" compiler (that will replace mcs in mono 5.0):
+  * manually sign affected assemlies before adding it to GAC
+
+-------------------------------------------------------------------
+Tue Nov 24 08:29:01 UTC 2015 - mailaender@opensuse.org
+
+- initial package based on the SRPM from Raphael Groner

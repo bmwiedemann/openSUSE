@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Jul 16 10:21:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 31
+   see /usr/share/doc/packages/perl-X11-Protocol-Other/Changes
+
+-------------------------------------------------------------------
+Sun Feb 17 15:46:40 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- clean spec file with `osc service localrun format_spec_file'
+- add *.changes file

@@ -1,0 +1,12 @@
+usr/bin/kopano-set-oof
+usr/lib/python*/*/kopano_cli/
+usr/sbin/kopano-cachestat
+usr/sbin/kopano-cli
+usr/sbin/kopano-fix-ipm-subtree
+usr/sbin/kopano-localize-folders
+usr/sbin/kopano-mailbox-permissions
+usr/sbin/kopano-recreate-systemfolders
+usr/sbin/kopano-search-upgrade-findroots.py
+usr/share/man/man1/kopano-set-oof.1
+usr/share/man/man8/kopano-cachestat.8
+usr/share/man/man8/kopano-mailbox-permissions.8

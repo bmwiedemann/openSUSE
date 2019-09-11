@@ -1,0 +1,32 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Subject: parted: dos: Wipe boot code only on x86
+Patch-mainline: no, custom SUSE patch
+---
+ libparted/labels/dos.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+Index: parted-3.2/libparted/labels/dos.c
+===================================================================
+--- parted-3.2.orig/libparted/labels/dos.c
++++ parted-3.2/libparted/labels/dos.c
+@@ -1285,6 +1285,12 @@ msdos_write (const PedDisk* disk)
+ 		return 0;
+ 	DosRawTable *table = (DosRawTable *) s0;
+ 
++/*
++ *  Some ARM devices, such as the OMAP3 series, have a buggy boot rom that
++ *  simply goes into nirvana if it finds non-0 in the first 4 bytes of the SD
++ *  card.
++ */
++#if defined(__x86_64__) || defined(__i386__)
+ 	/* either no bootrecord at all, or AIX IPL signature ... */
+ 	if ( (!table->boot_code[0]) ||
+ 			( table->boot_code[0] == (char) 0xc9 &&
+@@ -1295,6 +1301,7 @@ msdos_write (const PedDisk* disk)
+ 		memset (table->boot_code, 0, 512);
+ 		memcpy (table->boot_code, MBR_BOOT_CODE, sizeof (MBR_BOOT_CODE));
+ 	}
++#endif
+ 
+ 	/* If there is no unique identifier, generate a random one */
+ 	if (!table->mbr_signature)

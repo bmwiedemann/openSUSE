@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Mon Dec 11 12:54:50 UTC 2017 - dimstar@opensuse.org
+
+- Remove duplicate BuildArch: noarch: rpm 4.14 does not like this
+  duplictae anymore (and it serves no purpose).
+
+-------------------------------------------------------------------
+Mon Aug  7 12:11:40 UTC 2017 - werner@suse.de
+
+- Readd a fixed version of DirnameCheck() for security
+  that is allow access even if no path for the info files had
+  been requested
+
+-------------------------------------------------------------------
+Mon Aug  7 11:26:08 UTC 2017 - werner@suse.de
+
+- Avoid DirnameCheck() as it breaks the info2html (boo#1052383)
+- Avoid $* asignment with newer perl 
+
+-------------------------------------------------------------------
+Thu Nov 18 10:38:00 CET 2010 - werner@suse.de
+
+- Yet an other change of the decription
+ 
+-------------------------------------------------------------------
+Mon Nov 15 17:38:41 CET 2010 - werner@suse.de
+
+- Change decription to reflect current usage of info2html (bnc#653449)
+
+-------------------------------------------------------------------
+Mon Dec 17 11:26:28 CET 2007 - werner@suse.de
+
+- Add info3html.css to file list (bug #349033)
+
+-------------------------------------------------------------------
+Wed Aug 30 17:17:44 CEST 2006 - werner@suse.de
+
+- Update to version 2.0
+  * Output HTML is tidier now. CSS added.
+  * Minor bugfixes to the (de)escaping logic.
+  * Minor typoes in comments fixed.
+
+-------------------------------------------------------------------
+Fri Jul 14 08:06:08 CEST 2006 - olh@suse.de
+
+- rename bzip2 archive from .gz to .bz2
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 17 16:56:59 CEST 2005 - werner@suse.de
+
+- Add infocat script to cgi path (bug #127813)
+
+-------------------------------------------------------------------
+Tue Oct 11 17:16:25 CEST 2005 - dmueller@suse.de
+
+- build as nonroot 
+
+-------------------------------------------------------------------
+Wed Jun  8 17:54:42 CEST 2005 - werner@suse.de
+
+- Go forwared to version 1.4 and port our patches to
+
+-------------------------------------------------------------------
+Fri Apr 22 13:29:41 CEST 2005 - werner@suse.de
+
+- Avoid to be used with XSS attacks (bug #78956)
+
+-------------------------------------------------------------------
+Mon Apr 19 01:47:23 CEST 2004 - ro@suse.de
+
+- build with apache2
+
+-------------------------------------------------------------------
+Tue Jun 17 12:13:31 CEST 2003 - kukuk@suse.de
+
+- Remove directories already part of filesystem
+- Rename to info2html
+- Make a noarch package
+
+-------------------------------------------------------------------
+Wed Apr 16 09:55:43 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Aug  2 00:54:59 CEST 2002 - ro@suse.de
+
+- adapt server-root 
+
+-------------------------------------------------------------------
+Tue Mar 19 15:56:14 CET 2002 - ro@suse.de
+
+- removed requires http_daemon, since the script can be called
+  directly (konqueror knows "info:" url-type) 
+
+-------------------------------------------------------------------
+Wed Feb 20 17:53:53 CET 2002 - werner@suse.de
+
+- Fix bug #13659: allow ++ in base names
+
+-------------------------------------------------------------------
+Thu Dec 14 16:44:20 CET 2000 - werner@suse.de
+
+- Group tag
+
+-------------------------------------------------------------------
+Mon Jun 26 18:23:09 CEST 2000 - ro@suse.de
+
+- adapted to susehelp color layout 
+
+-------------------------------------------------------------------
+Tue Feb 22 21:37:55 CET 2000 - werner@suse.de
+
+- Make spaces (equal to %20i) between base info file and node name
+  working (e.g. a2ps)
+
+-------------------------------------------------------------------
+Tue Feb 22 16:39:09 CET 2000 - ro@suse.de
+
+- added /usr/share/xemacs/info 
+
+-------------------------------------------------------------------
+Sat Feb 12 17:44:04 CET 2000 - ro@suse.de
+
+- added /usr/share/info 
+
+-------------------------------------------------------------------
+Mon Sep 20 18:10:58 CEST 1999 - ro@suse.de
+
+- added requires http_daemon
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Thu Dec  3 20:20:45 MET 1998 - werner@suse.de
+
+ - Do not allow relative paths
+ - Do not allow other directories than those of the info path
+
+----------------------------------------------------------------------------
+Wed May 28 16:24:16 CEST 1997 - werner@suse.de
+
+moved /httpd to /usr/local/httpd
+
+----------------------------------------------------------------------------
+Fri Mar 21 14:07:43 MET 1997 - werner@suse.de
+
+ - New package info2html version 1.1
+   made some extensions to read tags too.

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Sep 18 10:55:31 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.0
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.0  2018-09-17
+    - Fixed a problem where subprocesses would show up in the worker list.
+
+-------------------------------------------------------------------
+Mon Sep  3 08:04:18 UTC 2018 - Marius Kittler <marius.kittler@suse.com>
+
+- Add package initially (version 0.03)

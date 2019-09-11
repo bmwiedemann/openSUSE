@@ -1,0 +1,22 @@
+--- sgml-tools-1.0.9/lib/dist/fmt_txt.pl	Mon Jun 29 21:59:17 1998
++++ sgml-tools-1.0.9/lib/dist/fmt_txt.pl	Mon Jun 29 21:59:17 1998
+@@ -81,11 +81,12 @@
+ {
+   my ($infile, $outfile) = @_;
+   my (@toc, @lines);
+-  if ($txt->{manpage})
+-    {
+-      copy ($infile, $outfile);
+-      return;
+-    }
++  #ke
++  #if ($txt->{manpage})
++  #  {
++  #    copy ($infile, $outfile);
++  #    return;
++  #  }
+ 
+   # note the conversion of `sdata_dirs' list to an anonymous array to
+   # make a single argument
+
+Diff finished at Wed Jun 19 14:10:25

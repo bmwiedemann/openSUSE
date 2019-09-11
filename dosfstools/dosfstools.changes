@@ -1,0 +1,528 @@
+-------------------------------------------------------------------
+Thu Jan 26 10:10:57 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.1:
+  * Now the default for mkfs for filesystems smaller than 512 MB is
+    64 / 32 sectors
+  * The parsing of octal character specifications for filenames in
+    the -u and -d 25 options of fsck now works.
+  * Fixed a possible fatlabel crash when writing a label to an
+    unlabelled filesystem
+  * Testsuite is now available
+
+-------------------------------------------------------------------
+Sat May  7 08:49:02 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.0
+  * Switch build system to autotools.
+  * Fixed data corruption errors in fsck.fat Writing to the third 
+    to last cluster on FAT12 with an odd number of clusters would 
+    corrupt the following cluster.
+  * The automatic alignment of data clusters that was added in 
+    3.0.8 and broken for FAT32 starting with 3.0.20 has been 
+    reinstated.
+- Small spec file cleanup
+- Drop no longer needed dosfstools-suse-dirs.patch
+
+-------------------------------------------------------------------
+Wed Jun  3 12:56:32 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.0.28
+  * mkfs.fat now allows choosing 0xF0 as the media byte which was 
+    previously rejected.
+  * mkfs.fat now supports the --invariant option to facilitate 
+    testing mkfs.fat itself.
+  * Bugs fixed in fsck.fat are a read one byte beyond the end of 
+    an allocated array when checking some FAT12 filesystems, and 
+    checking that the first cluster of a file as specified in the 
+    directory entry is not 1. 
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon May 11 11:53:20 UTC 2015 - pgajdos@suse.com
+
+- fix url
+
+-------------------------------------------------------------------
+Fri Jan 16 13:28:32 UTC 2015 - pgajdos@suse.com
+
+- updated to 3.0.27:
+  * fsck.fat: Don't print version string every time -v is 
+    encountered
+  * Fix attempt to rename root dir in fsck due to uninitialized 
+    fields
+  * Support long file names in volume labeling code
+- upstream changed
+
+-------------------------------------------------------------------
+Tue Sep 23 16:12:53 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Thu Jun 26 12:11:27 UTC 2014 - pgajdos@suse.com
+
+- added fsck.{v,}fat and mkfs.{v,}fat compat symlinks in /sbin
+  [bnc#884516]
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar 17 08:21:51 UTC 2014 - pgajdos@suse.com
+
+- updated to 3.0.26:
+  * Fix "odd" files created by frequent power-loss.
+
+-------------------------------------------------------------------
+Thu Mar  6 12:24:03 UTC 2014 - pgajdos@suse.com
+
+- updated to 3.0.25:
+  * Prevent corruption of FAT during fsck on 64 bit platforms.
+     unsigned long is 64 bit on x86-64, which means set_fat was writing two
+     entries, which corrupts the next entry. This can cause loss of data in
+     another file.
+  * Fixed remaining 64 bit build warnings.
+
+-------------------------------------------------------------------
+Mon Nov 25 08:32:14 UTC 2013 - pgajdos@suse.com
+
+- updated to 3.0.24:
+  * Fixed dosfsck on big endian platforms.
+
+-------------------------------------------------------------------
+Wed Oct 16 06:04:09 UTC 2013 - pgajdos@suse.com
+
+- updated to 3.0.23:
+  * Corrects clustersize to fix issues with EFI System Partitions.
+
+-------------------------------------------------------------------
+Mon Jul 29 08:59:44 UTC 2013 - pgajdos@suse.com
+
+- updated to 3.0.22:
+  * Improved boot compatiblity.
+
+-------------------------------------------------------------------
+Wed Jul 17 09:05:45 UTC 2013 - pgajdos@suse.com
+
+- updated to 3.0.21
+  * Minor miscellaneous cleanups.
+
+-------------------------------------------------------------------
+Thu Jun 13 13:46:58 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.0.20
+* This release updates default sectors per cluster for FAT32.
+- Remove ppc-reserved-sectors-fix.patch (implemented upstream)
+  (use -a switch to disable aligning structures)
+- Signature verification; more robust make install call
+
+-------------------------------------------------------------------
+Wed Jun 12 08:06:17 UTC 2013 - pgajdos@suse.com
+
+- update to 3.0.19:
+  * This release fixes  a  segfault with fortify.
+- removed dosfstools-system_id-overflow.patch
+
+-------------------------------------------------------------------
+Tue Jun 11 09:20:20 UTC 2013 - pgajdos@suse.com
+
+- update to 3.0.18:
+  * Adding initial i18n support for manpages with po4a.
+  * Renaming tools to sane namespace and keeping legacy symlinks in place.
+    | dosfslabel becomes fatlabel,
+    | dosfsck becomes fsck.fat,
+    | and mkdosfs becomes mkfs.fat.
+  * Correcting spelling typo in boot.c.
+  * dosfslabel: Do not read beyond string length (Closes: #709587).
+- refreshed both dosfstools-suse-dirs.patch and 
+  ppc-reserved-sectors-fix.patch
+- added dosfstools-system_id-overflow.patch
+
+-------------------------------------------------------------------
+Mon Jun  3 13:44:15 UTC 2013 - pgajdos@suse.com
+
+- update to 3.0.17:
+  * Fixing segfault in dosfslabel.
+  * Allow operation on SH4 CPUs.
+  * Finish cleanup of byteswap code.
+  * Fix offsetof definition.
+  * etc., see ChangeLog
+- refreshed ppc-reserved-sectors-fix.patch
+
+-------------------------------------------------------------------
+Mon Mar 25 15:24:47 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Mar  4 07:16:53 UTC 2013 - pgajdos@suse.com
+
+- update to 3.0.16: label fixes
+  * dropped upstreamed
+    - dosfstools-create-rootdir-label.patch
+    - dosfstools-dosfslabel-forbid-lowercase.patch
+    - dosfstools-dosfslabel-from-rootdir.patch
+    - dosfstools-fsck-file-name.patch
+    - dosfstools-mkdosfs-no-label.patch
+    - dosfstools-mkdosfs-uppercase-label.patch
+
+-------------------------------------------------------------------
+Mon Feb 25 07:01:42 UTC 2013 - pgajdos@suse.com
+
+- update to 3.0.15: bugfixes for device detection, root directory 
+  allocation, and messages about unicode filenames. 
+  * dropped dosfstools-filename-buffer-overflow.patch (upstreamed)
+  * dropped dosfstools-mdraid-partition.patch (upstreamed)
+  * refreshed dosfstools-suse-dirs.patch
+  * refreshed ppc-reserved-sectors-fix.patch
+    (will be dropped if not upstreamed)
+  * dosfstools-label.patch splitted to:
+    - dosfstools-create-rootdir-label.patch
+    - dosfstools-dosfslabel-forbid-lowercase.patch
+    - dosfstools-dosfslabel-from-rootdir.patch
+    - dosfstools-fsck-file-name.patch
+    - dosfstools-mkdosfs-no-label.patch
+    - dosfstools-mkdosfs-uppercase-label.patch
+    (will be upstreamed or dropped)
+
+-------------------------------------------------------------------
+Fri Oct 26 15:19:38 UTC 2012 - dvaleev@suse.com
+
+- hack to use just 1 sector for embedded devices. should be made 
+  into a flag, but this shouldn't break normal systems ...
+  lunchpad bug (746262)
+- fixes ppc boot from vfat (in case root on raid,lvm,ext4) 
+
+-------------------------------------------------------------------
+Fri Sep 28 11:18:14 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No indication that the authors restricted the package to GPL-3.0 (i.e.
+  "only"). Accordingly, GPL-3.0+ seems a better choice and is also the
+  choice made by Fedora
+
+-------------------------------------------------------------------
+Wed Feb  8 20:39:33 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Fri Sep 30 14:51:02 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Mar  8 18:13:53 CET 2011 - pgajdos@suse.cz
+
+- fixed fsck.vfat crashing [bnc#677236]
+
+-------------------------------------------------------------------
+Mon Dec 20 15:12:52 CET 2010 - pgajdos@suse.cz
+
+- fixed dosfslabel crashing and improved label handling in mkdosfs
+  and dosfslabel [bnc#657011]
+
+-------------------------------------------------------------------
+Mon Nov  1 12:15:33 CET 2010 - pgajdos@suse.cz
+
+- fixed:
+  * [bnc#639553] -- mkdosfs now detects md raid partition correctly
+  * [bnc#649046] -- install dosfslabel
+  * spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 13 11:31:10 CEST 2010 - pgajdos@suse.cz
+
+- updated to 3.0.10:
+  * LFN handling and false positives with bad filenames were 
+    corrected.
+
+-------------------------------------------------------------------
+Mon Feb  1 10:36:51 CET 2010 - pgajdos@suse.cz
+
+- updated to 3.0.9:
+  * A bug in aligning was fixed.
+
+-------------------------------------------------------------------
+Mon Jan 25 13:13:32 CET 2010 - pgajdos@suse.cz
+
+- new upstream
+  http://freshmeat.net/projects/dosfstools
+- updated to 3.0.8
+- removed upstreamed/obsoleted patches
+  * linuxfs.patch
+  * buffer.patch
+  * o_excl.patch
+  * mkdosfs-geo0.diff
+  * determine-sector-size.patch
+  * unsupported-sector-size.patch
+  * unaligned.patch
+- major changes:
+  * aligning structures to cluster boundaries, 
+    64bit and crosscompile fixes
+  * bugfix in dosfslabel, cleanups for FORTIFY_SOURCE
+  * bugfix in dosfsck on big-endian systems, 
+    bugfix in dosfck cluster handling
+  * bugfix and cleanup for VFAT patent avoidance 
+    kernel patch
+  * compatible with VFAT patent avoidance kernel 
+    patch, bugfix in dosfsck repair mode
+  * supporting limited-memory embedded systems
+  * fixes rare dosfsck corruption
+  * improves dosfsck cluster handling, fixes timing 
+    issues
+  * merged patches from various distributions
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:13 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Jun 24 15:15:31 CEST 2008 - pgajdos@suse.cz
+
+- added warning for creation msdos on filesystem with sector size 
+   greater than 4096 [fate#303325] (unsupported-sector-size.patch)
+
+-------------------------------------------------------------------
+Thu Sep  6 16:26:57 CEST 2007 - pgajdos@suse.cz
+
+- determine sector size of device automatically or if -S parameter
+  present, verify, that it's not under physical sector size
+  (determine-sector-size.patch) 
+
+-------------------------------------------------------------------
+Thu Aug  9 17:08:41 CEST 2007 - olh@suse.de
+
+- remove inclusion of asm/unaligned.h, use private copy of 
+  asm-generic/unaligned.h
+
+-------------------------------------------------------------------
+Thu Apr 26 12:14:35 CEST 2007 - lnussel@suse.de
+
+- remove obsolete subfs patch
+- fix handling of zero heads and sectors
+
+-------------------------------------------------------------------
+Wed Apr  4 10:29:59 CEST 2007 - pgajdos@suse.cz
+
+- added Supplements: filesystem(vfat) line to spec file 
+  [fate#301966]
+
+-------------------------------------------------------------------
+Tue Jan 30 14:04:38 CET 2007 - prusnak@suse.cz
+
+- mkdosfs now opens device with O_EXCL [#238687]
+
+-------------------------------------------------------------------
+Sat May 27 19:15:11 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:25:16 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Nov  7 16:15:50 CET 2005 - yxu@suse.de
+
+- fixed overflowing buffer problem 
+
+-------------------------------------------------------------------
+Mon Apr 11 11:49:11 CEST 2005 - mcihar@suse.cz
+
+- update to 2.11
+- use sys/mount.h instead of linux/fs.h, this fixes compilation with current GCC
+
+-------------------------------------------------------------------
+Tue Feb 15 16:53:10 CET 2005 - mcihar@suse.cz
+
+- deal with subfs (bug #50838)
+    - use /proc/mounts if available for deciding whether device is
+      mounted or not
+    - just issue warning if it is mounted as subfs
+
+-------------------------------------------------------------------
+Thu Aug 19 14:05:43 CEST 2004 - mcihar@suse.cz
+
+- merged some dosfsck fixes from FreeDOS
+
+-------------------------------------------------------------------
+Thu Jul 15 17:18:39 CEST 2004 - schwab@suse.de
+
+- Fix unaligned accesses [#40296].
+
+-------------------------------------------------------------------
+Wed Jun  2 00:50:55 CEST 2004 - ro@suse.de
+
+- avoid inclusion of linux/audit.h
+
+-------------------------------------------------------------------
+Thu Mar 18 15:47:09 CET 2004 - mcihar@suse.cz
+
+- fix dosfsck man page (pointed out in bug #34757)
+
+-------------------------------------------------------------------
+Mon Mar 08 19:46:55 CET 2004 - mcihar@suse.cz
+
+- fix broken dosfsck (bug #34757)
+
+-------------------------------------------------------------------
+Thu Jan 29 21:42:36 CET 2004 - mcihar@suse.cz
+
+- include more documentation
+
+-------------------------------------------------------------------
+Thu Jan 15 08:56:16 CET 2004 - kukuk@suse.de
+
+- Make compile with kernel 2.6.1 headers
+
+-------------------------------------------------------------------
+Thu Oct 23 16:56:31 CEST 2003 - schwab@suse.de
+
+- Don't define llseek to lseek64, creates infinite recursion.
+
+-------------------------------------------------------------------
+Tue Oct 14 12:04:31 CEST 2003 - mcihar@suse.cz
+
+- install links also for {fsck,mkfs}.vfat + man pages (bug #32284)
+
+-------------------------------------------------------------------
+Mon Sep 29 13:32:05 CEST 2003 - mcihar@suse.cz
+
+- updated to 2.10:
+ - dosfsck: various 64-bit fixes and removed some warnings by Michal
+   Cihar <mcihar@suse.cz>
+ - mkdosfs: better error message if called without parameters (also
+   suggested by Michal)
+
+-------------------------------------------------------------------
+Mon Jun 09 17:36:02 CEST 2003 - mcihar@suse.cz
+
+- new upstream version 2.9:
+ * dosfsck: Fix potential for "Internal error: next_cluster on bad cluster".
+ * dosfsck: When clearing long file names, don't overwrite the dir
+   entries with all zeros, but put 0xe5 into the first byte.
+   Otherwise, some OSes stop reading the directory at that point...
+ * dosfsck: in statistics printed by -v, fix 32bit overflow in number
+   of data bytes.
+ * dosfsck: fix an potential overflow in "too many clusters" check
+ * dosfsck: allow FAT size > 32MB.
+ * dosfsck: allow for only one FAT
+ * dosfsck: with -v, also check that last sector of the filesystem can
+   be read (in case a partition is smaller than the fs thinks)
+- realy working large file support
+- don't package obsolette documentation
+
+-------------------------------------------------------------------
+Wed Dec 04 11:05:49 CET 2002 - mcihar@suse.cz
+
+- don't allow -fPIC on i386 in CFLAGS, even on i386-debug, because
+  this package doesn't build with it
+
+-------------------------------------------------------------------
+Mon Dec  2 00:00:36 CET 2002 - ro@suse.de
+
+- include errno.h where needed 
+
+-------------------------------------------------------------------
+Tue Sep 10 13:43:16 CEST 2002 - mcihar@suse.cz
+
+- added -D_FILE_OFFSET_BITS=64 to CFLAGS to support larger files/partitions
+
+-------------------------------------------------------------------
+Tue May 21 01:44:36 CEST 2002 - ro@suse.de
+
+- extend 64bit ifdefs for new platforms 
+
+-------------------------------------------------------------------
+Fri Mar  1 16:16:48 CET 2002 - jantos@suse.cz
+
+- Fixed missing files in documentation (bug 13973)
+
+-------------------------------------------------------------------
+Fri Sep 14 16:37:41 CEST 2001 - schwab@suse.de
+
+- Fix crash if mkdosfs is called without arguments.
+
+-------------------------------------------------------------------
+Tue May 22 18:04:31 CEST 2001 - pblaha@suse.cz
+
+- fixed include files on ia64 
+
+-------------------------------------------------------------------
+Sun Apr  8 17:45:37 CEST 2001 - schwab@suse.de
+
+- Fix to build on ia64.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:11:41 CET 2001 - pblaha@suse.cz
+
+- update on 2.8 
+
+-------------------------------------------------------------------
+Mon Feb 12 07:58:30 CET 2001 - ro@suse.de
+
+- don't include linux/fs.h 
+
+-------------------------------------------------------------------
+Thu Jan 18 20:00:23 CET 2001 - schwab@suse.de
+
+- Add Obsoletes: dosfstls.
+
+-------------------------------------------------------------------
+Wed Jan 17 10:41:12 CET 2001 - pblaha@suse.cz
+
+- added message  "not enough memory to run dosfsck\n" 
+- if not free memory for malloc
+
+-------------------------------------------------------------------
+Fri Dec 22 10:14:48 CET 2000 - pblaha@suse.cz
+
+- upgrade on 2.6 and rename on dosfstools 
+
+-------------------------------------------------------------------
+Mon Dec  4 16:13:17 CET 2000 - sf@suse.de
+
+- corrected patch to compile on Alpha and ia64 
+
+-------------------------------------------------------------------
+Tue Nov 21 18:09:54 CET 2000 - uli@suse.de
+
+- worked around strncasecmp declaration conflict in mkdosfs.c
+
+-------------------------------------------------------------------
+Mon Nov 13 11:32:39 CET 2000 - ro@suse.de
+
+- hacked to compile on 2.4 includes 
+
+-------------------------------------------------------------------
+Thu Nov  2 11:44:12 CET 2000 - pblaha@suse.cz
+
+- update to version 2.4
+
+-------------------------------------------------------------------
+Mon Jun  5 18:33:32 CEST 2000 - schwab@suse.de
+
+- Fix llseek on ia64.
+
+-------------------------------------------------------------------
+Fri Jun  2 15:32:06 MEST 2000 - bubnikv@suse.cz
+
+- new package in SuSE, version 2.2
+- makes packages dosfsck and mkdosfs obsolette
+

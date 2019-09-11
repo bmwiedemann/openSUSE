@@ -1,0 +1,21 @@
+Fix directory traversal bugs
+
+arc archives do not contain directory hierarchies, only filenames, so refuse
+to operate on archives which have the directory-seperator inside filenames.
+
+BugLink: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=774527
+BugLink: https://bugzilla.redhat.com/show_bug.cgi?id=1179143
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+diff -up arc-5.21p/arcio.c~ arc-5.21p/arcio.c
+--- arc-5.21p/arcio.c~	2015-01-16 13:04:16.000000000 +0100
++++ arc-5.21p/arcio.c	2015-01-16 15:45:31.389010626 +0100
+@@ -109,6 +109,9 @@ readhdr(hdr, f)			/* read a header from
+ #if	_MTS
+ 	(void) atoe(hdr->name, strlen(hdr->name));
+ #endif
++	if (strchr(hdr->name, CUTOFF) != NULL)
++		arcdie("%s contains illegal filename %s", arcname, hdr->name);
++
+ 	for (i = 0, hdr->size=0; i<4; hdr->size<<=8, hdr->size += dummy[16-i], i++);
+ 	hdr->date = (short) ((dummy[18] << 8) + dummy[17]);
+ 	hdr->time = (short) ((dummy[20] << 8) + dummy[19]);

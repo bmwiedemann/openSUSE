@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Feb  4 19:20:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Oct 11 12:18:40 UTC 2018 - lars@linux-schulserver.de
+
+- re-introduce BuildRoot definition, as the build fails otherwise
+  on SLE-11-SP4
+
+-------------------------------------------------------------------
+Wed Mar 21 13:28:22 UTC 2018 - lars@linux-schulserver.de
+
+- add monitoring-plugins-apcupsd-power_status.patch :
+  "add obtaining power line status from plugin" - see
+  https://github.com/jkramarz/check_apcupsd/pull/1
+
+-------------------------------------------------------------------
+Wed Jul 30 19:16:02 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-apcupsd
+
+-------------------------------------------------------------------
+Sun Feb 10 16:07:33 UTC 2013 - lars@linux-schulserver.de
+
+- initial version 1.3

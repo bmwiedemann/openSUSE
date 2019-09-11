@@ -1,0 +1,76 @@
+From 3c55d5cdf3b037cc2ea3d94642ba18a548c3b091 Mon Sep 17 00:00:00 2001
+From: "Robert J. Gebis" <rjgebis@gmail.com>
+Date: Sat, 26 Aug 2017 11:58:09 -0500
+Subject: [PATCH] Added pkg-config file and .gitignore
+
+---
+ .gitignore         |  1 +
+ CMakeLists.txt     | 14 +++++++++++++-
+ cmake/snappy.pc.in | 10 ++++++++++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+ create mode 100644 cmake/snappy.pc.in
+
+Index: snappy-1.1.7/.gitignore
+===================================================================
+--- /dev/null
++++ snappy-1.1.7/.gitignore
+@@ -0,0 +1 @@
++build
+Index: snappy-1.1.7/CMakeLists.txt
+===================================================================
+--- snappy-1.1.7.orig/CMakeLists.txt
++++ snappy-1.1.7/CMakeLists.txt
+@@ -1,5 +1,8 @@
+ cmake_minimum_required(VERSION 3.1)
+-project(Snappy VERSION 1.1.7 LANGUAGES C CXX)
++
++set(SNAPPY_VER 1.1.7)
++
++project(Snappy VERSION ${SNAPPY_VER} LANGUAGES C CXX)
+ 
+ # BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to make
+ # it prominent in the GUI.
+@@ -52,6 +55,10 @@ configure_file(
+   "${PROJECT_BINARY_DIR}/config.h"
+ )
+ 
++configure_file(
++  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/snappy.pc.in"
++  "${CMAKE_CURRENT_BINARY_DIR}/snappy.pc")
++
+ # We don't want to define HAVE_ macros in public headers. Instead, we use
+ # CMake's variable substitution with 0/1 variables, which will be seen by the
+ # preprocessor as constants.
+@@ -141,6 +148,9 @@ if(SNAPPY_BUILD_TESTS)
+ endif(SNAPPY_BUILD_TESTS)
+ 
+ include(GNUInstallDirs)
++
++set(INSTALL_PKGCONFIG_DIR "${CMAKE_INSTALL_LIBDIR}/pkgconfig" CACHE PATH "Installation directory for pkgconfig (.pc) files")
++
+ install(TARGETS snappy
+   EXPORT SnappyTargets
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+@@ -172,3 +182,6 @@ install(
+     "${PROJECT_BINARY_DIR}/SnappyConfigVersion.cmake"
+   DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/Snappy"
+ )
++
++install(FILES ${PROJECT_BINARY_DIR}/snappy.pc
++        DESTINATION ${INSTALL_PKGCONFIG_DIR})
+Index: snappy-1.1.7/cmake/snappy.pc.in
+===================================================================
+--- /dev/null
++++ snappy-1.1.7/cmake/snappy.pc.in
+@@ -0,0 +1,10 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++libdir=@CMAKE_INSTALL_LIBDIR@
++includedir=@CMAKE_INSTALL_PREFIX@/include
++
++Name: snappy
++Description: Fast compressor/decompressor library.
++Version: @SNAPPY_VER@
++Libs: -L@CMAKE_INSTALL_LIBDIR@ -lsnappy
++Cflags: -I@CMAKE_INSTALL_PREFIX@/include

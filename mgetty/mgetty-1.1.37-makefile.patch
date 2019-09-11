@@ -1,0 +1,513 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -109,7 +109,8 @@ HOSTCC=$(CC)
+ #	    USTAT	  - ustat(), no statfs etc.
+ #
+ #CFLAGS=-Wall -O2 -pipe -DSECUREWARE -DUSE_POLL
+-CFLAGS=-O2 -Wall -pipe
++OPTFLAGS=-O2
++CFLAGS=-Wall $(OPTFLAGS) -pipe -DAUTO_PPP
+ #CFLAGS=-O -DSVR4
+ #CFLAGS=-O -DSVR4 -DSVR42
+ #CFLAGS=-O -DUSE_POLL
+@@ -123,6 +124,7 @@ CFLAGS=-O2 -Wall -pipe
+ #CFLAGS=-D_HPUX_SOURCE -Aa -DBSDSTATFS		# for HP-UX 9.x
+ #CFLAGS=-cckr -D__STDC__ -O -DUSE_READ 		# for IRIX 5.2 and up
+ 
++DESTDIR =
+ 
+ #
+ # LDFLAGS specify flags to pass to the linker. You could specify
+@@ -171,7 +173,7 @@ LIBS=
+ #
+ # if your systems doesn't have one, use the shell script that I provide
+ # in "inst.sh" (taken from X11R5). Needed on IRIX5.2
+-INSTALL=install -c -o bin -g bin
++INSTALL=install -c
+ #INSTALL=install -c -o root -g wheel		# NeXT/BSD
+ #INSTALL=/usr/ucb/install -c -o bin -g bin	# AIX, Solaris 2.x
+ #INSTALL=installbsd -c -o bin -g bin		# OSF/1, AIX 4.1, 4.2
+@@ -179,7 +181,7 @@ INSTALL=install -c -o bin -g bin
+ #
+ # prefix, where most (all?) of the stuff lives, usually /usr/local or /usr
+ #
+-prefix=/usr/local
++prefix=/usr
+ #
+ # prefix for all the spool directories (usually /usr/spool or /var/spool)
+ #
+@@ -199,7 +201,7 @@ LIBDIR=$(prefix)/lib/mgetty+sendfax
+ #
+ # where the configuration files (*.config, aliases, fax.allow/deny) go to
+ #
+-CONFDIR=$(prefix)/etc/mgetty+sendfax
++CONFDIR=/etc/mgetty+sendfax
+ #CONFDIR=/etc/default/
+ #
+ #
+@@ -227,20 +229,20 @@ FAX_OUT_USER=fax
+ #
+ #
+ # Where section 1 manual pages should be placed
+-MAN1DIR=$(prefix)/man/man1
++MAN1DIR=$(prefix)/share/man/man1
+ #
+ # Where section 4 manual pages (mgettydefs.4) should be placed
+-MAN4DIR=$(prefix)/man/man4
++MAN4DIR=$(prefix)/share/man/man4
+ #
+ # Section 5 man pages (faxqueue.5)
+-MAN5DIR=$(prefix)/man/man5
++MAN5DIR=$(prefix)/share/man/man5
+ #
+ # Section 8 man pages (sendfax.8)
+-MAN8DIR=$(prefix)/man/man8
++MAN8DIR=$(prefix)/share/man/man8
+ #
+ # Where the GNU Info-Files are located
+ #
+-INFODIR=$(prefix)/info
++INFODIR=$(prefix)/share/info
+ #
+ #
+ # A shell that understands bourne-shell syntax
+@@ -282,7 +284,7 @@ TKPERL=/usr/bin/tkperl
+ # please use the "mg.echo" program provided in the compat/ subdirectory.
+ # Set ECHO="mg.echo" and INSTALL_MECHO to mg.echo
+ #
+-ECHO="echo"
++ECHO="echo -e"
+ #
+ # INSTALL_MECHO=mg.echo
+ 
+@@ -592,37 +594,37 @@ install.bin: mgetty sendfax newslock \
+ #
+ # binaries
+ #
+-	-test -d $(BINDIR)  || ( ./mkidirs $(BINDIR)  ; chmod 755 $(BINDIR)  )
+-	$(INSTALL) -m 755 newslock $(BINDIR)
++	-test -d $(DESTDIR)$(BINDIR)  || ( ./mkidirs $(DESTDIR)$(BINDIR)  ; chmod 755 $(DESTDIR)$(BINDIR)  )
++	$(INSTALL) -m 755 newslock $(DESTDIR)$(BINDIR)
+ 
+-	-test -d $(SBINDIR) || ( ./mkidirs $(SBINDIR) ; chmod 755 $(SBINDIR) )
+-	if [ -f $(SBINDIR)/mgetty ] ; then \
+-		mv -f $(SBINDIR)/mgetty $(SBINDIR)/mgetty.old ; fi
+-	if [ -f $(SBINDIR)/sendfax ] ; then \
+-		mv -f $(SBINDIR)/sendfax $(SBINDIR)/sendfax.old ; fi
+-	$(INSTALL) -s -m 700 mgetty $(SBINDIR)
+-	$(INSTALL) -s -m 755 sendfax $(SBINDIR)
++	-test -d $(DESTDIR)$(SBINDIR) || ( ./mkidirs $(DESTDIR)$(SBINDIR) ; chmod 755 $(DESTDIR)$(SBINDIR) )
++	if [ -f $(DESTDIR)$(SBINDIR)/mgetty ] ; then \
++		mv -f $(DESTDIR)$(SBINDIR)/mgetty $(DESTDIR)$(SBINDIR)/mgetty.old ; fi
++	if [ -f $(DESTDIR)$(SBINDIR)/sendfax ] ; then \
++		mv -f $(DESTDIR)$(SBINDIR)/sendfax $(DESTDIR)$(SBINDIR)/sendfax.old ; fi
++	$(INSTALL) -s -m 700 mgetty $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -s -m 755 sendfax $(DESTDIR)$(SBINDIR)
+ #
+ # data files + directories
+ #
+-	test -d $(LIBDIR)  || \
+-		( ./mkidirs $(LIBDIR) &&  chmod 755 $(LIBDIR) )
+-	test -d $(CONFDIR) || \
+-		( ./mkidirs $(CONFDIR) && chmod 755 $(CONFDIR))
+-	test -f $(CONFDIR)/login.config || \
+-		$(INSTALL) -o root -m 600 login.config $(CONFDIR)/
+-	test -f $(CONFDIR)/mgetty.config || \
+-		$(INSTALL) -o root -m 600 mgetty.config $(CONFDIR)/
+-	test -f $(CONFDIR)/sendfax.config || \
+-		$(INSTALL) -o root -m 644 sendfax.config $(CONFDIR)/
+-	test -f $(CONFDIR)/dialin.config || \
+-		$(INSTALL) -o root -m 600 dialin.config $(CONFDIR)/
+-	test -f $(CONFDIR)/faxrunq.config || \
+-		$(INSTALL) -o root -m 644 faxrunq.config $(CONFDIR)/
++	test -d $(DESTDIR)$(LIBDIR)  || \
++		( ./mkidirs $(DESTDIR)$(LIBDIR) &&  chmod 755 $(DESTDIR)$(LIBDIR) )
++	test -d $(DESTDIR)$(CONFDIR) || \
++		( ./mkidirs $(DESTDIR)$(CONFDIR) && chmod 755 $(DESTDIR)$(CONFDIR))
++	test -f $(DESTDIR)$(CONFDIR)/login.config || \
++		$(INSTALL) -o root -m 600 login.config $(DESTDIR)$(CONFDIR)/
++	test -f $(DESTDIR)$(CONFDIR)/mgetty.config || \
++		$(INSTALL) -o root -m 600 mgetty.config $(DESTDIR)$(CONFDIR)/
++	test -f $(DESTDIR)$(CONFDIR)/sendfax.config || \
++		$(INSTALL) -o root -m 644 sendfax.config $(DESTDIR)$(CONFDIR)/
++	test -f $(DESTDIR)$(CONFDIR)/dialin.config || \
++		$(INSTALL) -o root -m 600 dialin.config $(DESTDIR)$(CONFDIR)/
++	test -f $(DESTDIR)$(CONFDIR)/faxrunq.config || \
++		$(INSTALL) -o root -m 644 faxrunq.config $(DESTDIR)$(CONFDIR)/
+ #
+ # test for outdated stuff
+ #
+-	-@if test -f $(LIBDIR)/mgetty.login ; \
++	-@if test -f $(DESTDIR)$(LIBDIR)/mgetty.login ; \
+ 	then \
+ 	    echo "WARNING: the format of $(LIBDIR)/mgetty.login has " ;\
+ 	    echo "been changed. Because of this, to avoid confusions, it's called " ;\
+@@ -632,29 +634,29 @@ install.bin: mgetty sendfax newslock \
+ #
+ # fax spool directories
+ #
+-	test -d $(spool) || \
+-		( mkdir $(spool) && chmod 755 $(spool) )
+-	test -d $(FAX_SPOOL) || \
+-		( mkdir $(FAX_SPOOL) && \
+-		  chown $(FAX_OUT_USER) $(FAX_SPOOL) && \
+-		  chmod 755 $(FAX_SPOOL) )
+-	test -d $(FAX_SPOOL_IN) || \
+-		( mkdir $(FAX_SPOOL_IN) && chmod 755 $(FAX_SPOOL_IN) )
+-	test -d $(FAX_SPOOL_OUT) || \
+-		  mkdir $(FAX_SPOOL_OUT)
+-	chown $(FAX_OUT_USER) $(FAX_SPOOL_OUT)
+-	chmod 755 $(FAX_SPOOL_OUT)
++	test -d $(DESTDIR)$(spool) || \
++		( mkdir $(DESTDIR)$(spool) && chmod 755 $(DESTDIR)$(spool) )
++	test -d $(DESTDIR)$(FAX_SPOOL) || \
++		( mkdir $(DESTDIR)$(FAX_SPOOL) && \
++		  chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL) && \
++		  chmod 755 $(DESTDIR)$(FAX_SPOOL) )
++	test -d $(DESTDIR)$(FAX_SPOOL_IN) || \
++		( mkdir $(DESTDIR)$(FAX_SPOOL_IN) && chmod 755 $(DESTDIR)$(FAX_SPOOL_IN) )
++	test -d $(DESTDIR)$(FAX_SPOOL_OUT) || \
++		  mkdir $(DESTDIR)$(FAX_SPOOL_OUT)
++	chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL_OUT)
++	chmod 755 $(DESTDIR)$(FAX_SPOOL_OUT)
+ #
+ # g3 tool programs
+ #
+ 	cd g3 && $(MAKE) install INSTALL="$(INSTALL)" \
+-				BINDIR=$(BINDIR) \
++				BINDIR=$(BINDIR) DESTDIR=$(DESTDIR) \
+ 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+ #
+ # fax programs / scripts / font file
+ #
+ 	cd fax && $(MAKE) install INSTALL="$(INSTALL)" \
+-				FAX_OUT_USER=$(FAX_OUT_USER) \
++				FAX_OUT_USER=$(FAX_OUT_USER) DESTDIR=$(DESTDIR) \
+ 				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
+ 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+ #
+@@ -663,7 +665,7 @@ install.bin: mgetty sendfax newslock \
+ 	if [ ! -z "$(INSTALL_MECHO)" ] ; then \
+ 	    cd compat ; \
+ 	    $(CC) $(CFLAGS) -o mg.echo mg.echo.c && \
+-	    $(INSTALL) -s -m 755 mg.echo $(BINDIR) ; \
++	    $(INSTALL) -m 755 mg.echo $(DESTDIR)$(BINDIR) ; \
+ 	fi
+ 
+ #
+@@ -671,19 +673,19 @@ install.bin: mgetty sendfax newslock \
+ #
+ install.doc:
+ 	cd doc ; $(MAKE) install INSTALL="$(INSTALL)" \
+-				MAN1DIR=$(MAN1DIR) \
+-				MAN4DIR=$(MAN4DIR) \
+-				MAN5DIR=$(MAN5DIR) \
+-				MAN8DIR=$(MAN8DIR) \
+-				INFODIR=$(INFODIR)
++				MAN1DIR=$(DESTDIR)$(MAN1DIR) \
++				MAN4DIR=$(DESTDIR)$(MAN4DIR) \
++				MAN5DIR=$(DESTDIR)$(MAN5DIR) \
++				MAN8DIR=$(DESTDIR)$(MAN8DIR) \
++				INFODIR=$(DESTDIR)$(INFODIR)
+ 
+ #
+ # WWW frontend stuff
+ #
+ install.www:
+ 	cd frontends/www ; $(MAKE) install.www INSTALL="$(INSTALL)" \
+-				BINDIR=$(BINDIR) \
+-				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
++				BINDIR=$(DESTDIR)$(BINDIR) \
++				LIBDIR=$(DESTDIR)$(LIBDIR) CONFDIR=$(DESTDIR)$(CONFDIR)
+ #
+ # voice extensions, consult the `voice' chapter in the documentation
+ #
+@@ -692,7 +694,7 @@ vgetty:
+ 	@$(MAKE) mgetty
+ 	cd voice; $(MAKE) CFLAGS="$(CFLAGS)" CC="$(CC)" LDFLAGS="$(LDFLAGS)" \
+ 	LN="$(LN)" MV="$(MV)" RM="$(RM)" \
+-	LIBS="$(LIBS)" \
++	LIBS="$(LIBS)" DESTDIR=$(DESTDIR) \
+ 	FAX_SPOOL_IN="$(FAX_SPOOL_IN)" CONFDIR="$(CONFDIR)" \
+ 	VARRUNDIR="$(VARRUNDIR)" \
+ 	SHELL="$(SHELL)" vgetty-all
+Index: callback/Makefile
+===================================================================
+--- callback/Makefile.orig
++++ callback/Makefile
+@@ -37,7 +37,7 @@ clean:
+ # install programs
+ #
+ install: all
+-	$(INSTALL) -s -m 700 -o root callback $(SBINDIR)
+-	$(INSTALL) -s -m 4711 -o root ct $(BINDIR)
++	$(INSTALL) -m 755 callback $(SBINDIR)
++	$(INSTALL) -m 4755 ct $(BINDIR)
+ 
+ # source modules
+Index: doc/Makefile
+===================================================================
+--- doc/Makefile.orig
++++ doc/Makefile
+@@ -79,7 +79,7 @@ install: $(MANSRC) mgetty.info
+ 		$(INSTALL) -m 644 $$i $(MAN8DIR) ; \
+ 	done
+ 	if [ -f mgetty.info ] ; then\
+-	    test -d $(INFODIR) || mkdir $(INFODIR) 2>/dev/null ; \
++	    test -d $(INFODIR) || mkdir -p $(INFODIR) 2>/dev/null ; \
+ 	    for i in mgetty.info* ; do \
+ 		$(INSTALL) -m 644 $$i $(INFODIR) ; \
+ 	    done ; \
+Index: fax/Makefile
+===================================================================
+--- fax/Makefile.orig
++++ fax/Makefile
+@@ -52,26 +52,29 @@ install: all
+ #
+ # programs / scripts
+ #
++	-test -d $(DESTDIR)$(BINDIR) || mkdir -p $(DESTDIR)$(BINDIR)
+ 	-for i in $(FAX_SCRIPTS); do \
+-		mv -f $(BINDIR)/$$i $(BINDIR)/$$i.old 2>/dev/null ; \
+-		$(INSTALL) -m 755 $$i $(BINDIR) ; \
++		mv -f $(DESTDIR)$(BINDIR)/$$i $(DESTDIR)$(BINDIR)/$$i.old 2>/dev/null ; \
++		$(INSTALL) -m 755 $$i $(DESTDIR)$(BINDIR) ; \
+ 	done
+-	$(INSTALL) -m 755 faxrunqd $(SBINDIR)
+-	$(INSTALL) faxq-helper $(LIBDIR)
+-	chown $(FAX_OUT_USER) $(LIBDIR)/faxq-helper
+-	chmod 4711 $(LIBDIR)/faxq-helper
++	$(INSTALL) -m 755 faxrunqd $(DESTDIR)$(SBINDIR)
++	$(INSTALL) faxq-helper $(DESTDIR)$(LIBDIR)
++	chmod 4711 $(DESTDIR)$(LIBDIR)/faxq-helper
+ #
+ # data files
+ #
+-	$(INSTALL) -m 644 cour25.pbm $(LIBDIR)
+-	$(INSTALL) -m 644 cour25n.pbm $(LIBDIR)
+-	-test -f $(CONFDIR)/faxheader || \
+-		$(INSTALL) -m 644 faxheader $(CONFDIR)
++	-test -d $(DESTDIR)$(LIBDIR) || mkdir -p $(DESTDIR)$(LIBDIR)
++	$(INSTALL) -m 644 cour25.pbm $(DESTDIR)$(LIBDIR)
++	$(INSTALL) -m 644 cour25n.pbm $(DESTDIR)$(LIBDIR)
++	-test -d $(DESTDIR)$(CONFDIR) || mkdir -p $(DESTDIR)$(CONFDIR)
++	-test -f $(DESTDIR)$(CONFDIR)/faxheader || \
++		$(INSTALL) -m 644 faxheader $(DESTDIR)$(CONFDIR)
+ #
+ # /etc/magic
+ #
+-	-@test -r /etc/magic && \
+-	    if grep "string.*P1" /etc/magic >/dev/null ; then : ; \
++	-test -d $(DESTDIR)/etc || mkdir -p $(DESTDIR)/etc
++	-@test -r $(DESTDIR)/etc/magic && \
++	    if grep "string.*P1" $(DESTDIR)/etc/magic >/dev/null ; then : ; \
+ 	    else \
+ 		echo "WARNING: no PBM magic (string P1) found in /etc/magic" ; \
+ 		echo "         maybe you should append the definitions in \`\`fax/etc-magic''." ; \
+@@ -79,4 +82,4 @@ install: all
+ #
+ # faxspool.rules sample file
+ #
+-	$(INSTALL) -m 644 faxspool.rules $(CONFDIR)/faxspool.rules.sample
++	$(INSTALL) -m 644 faxspool.rules $(DESTDIR)$(CONFDIR)/faxspool.rules.sample
+Index: g3/Makefile
+===================================================================
+--- g3/Makefile.orig
++++ g3/Makefile
+@@ -37,12 +37,12 @@ install: all
+ # install programs
+ #
+ 	for f in $(G3_PROGRAMS) ; do \
+-		$(INSTALL) -s -m 755 $$f $(BINDIR) ; \
++		$(INSTALL) -m 755 $$f $(DESTDIR)$(BINDIR) ; \
+ 	done
+ #
+ # make symlink for "g3topbm" (so third-party fax viewers won't fail)
+ #
+-	-cd $(BINDIR) ; \
++	-cd $(DESTDIR)$(BINDIR) ; \
+ 	test -x g3topbm || ln -s g32pbm g3topbm
+ 
+ 
+Index: login.cfg.in
+===================================================================
+--- login.cfg.in.orig
++++ login.cfg.in
+@@ -30,7 +30,7 @@
+ #  (Big advantage: tuucp can use the same passwd file for serial dial-in 
+ #   and tcp dial-in [uucico running as in.uucpd]). Works from 1.05 up.
+ #
+-#U*	uucp	@	/usr/lib/uucp/uucico -l -u @
++#U*	uucp	@	/usr/sbin/uucico -l -u @
+ 
+ #
+ # Use this one for fido calls (login name /FIDO/ is handled specially)
+@@ -57,7 +57,7 @@
+ #
+ #  NOTE4: max. 9 arguments allowed.
+ #
+-#/AutoPPP/ -	a_ppp	/usr/sbin/pppd auth -chap +pap login debug
++/AutoPPP/ -	a_ppp	/usr/sbin/pppd auth
+ 
+ #
+ #
+Index: policy.h-dist
+===================================================================
+--- policy.h-dist.orig
++++ policy.h-dist
+@@ -114,7 +114,7 @@
+ /* group id that the device is chown()ed to. If not defined, the
+  * primary group of "DEVICE_OWNER" is used.
+  */
+-#define DEVICE_GROUP	"modem"
++#define DEVICE_GROUP	"uucp"
+ 
+ /* access mode for the line while getty has it - it should be accessible
+  * by uucp / uucp, but not by others (imagine someone dialing into your
+@@ -256,7 +256,7 @@
+ 
+ /* if your system isn't listed above, change that line here */
+ #ifndef LOCK
+-#define LOCK "/usr/spool/uucp/LCK..%s"
++#define LOCK "/var/lock/LCK..%s"
+ #endif
+   
+ /* Set this to "1" if your system uses binary lock files (i.e., the pid
+@@ -370,7 +370,7 @@
+ /* incoming faxes will be chown()ed to this uid and gid.
+  * if FAX_IN_GROUP is undefined, the group of ...OWNER is used.
+  */
+-#define FAX_IN_OWNER	"uucp"
++#define FAX_IN_OWNER	"root"
+ /* #define FAX_IN_GROUP	"root" */
+ 
+ /* incoming faxes will be chmod()ed to this mode
+@@ -528,7 +528,7 @@
+  * If you don't adapt this for your needs, sendfax won't run (you can
+  * set it from the sendfax.config file, though)!
+  */
+-#define FAX_MODEM_TTYS	"tty4c:tty4d"
++#define FAX_MODEM_TTYS	"ttyS1:ttyS2"
+ 
+ /* Xon or not?
+  *
+@@ -564,14 +564,14 @@
+ #endif
+ 
+ #ifndef MAILER
+-# define MAILER		"/usr/lib/sendmail"
++# define MAILER		"/usr/sbin/sendmail"
+ # define NEED_MAIL_HEADERS
+ #endif
+ 
+ /* where to send notify mail about incoming faxes to
+  * (remember to create an mail alias if no such user exists!)
+  */
+-#define MAIL_TO		"faxadmin"
++#define MAIL_TO		"faxadm"
+ 
+ /* after a fax has arrived, mgetty can call a program for further
+  * processing of this fax.
+@@ -586,7 +586,7 @@
+  * If you don't want this type of service, do not define it at all
+  * Absolute path name has to be used here!
+  */
+-#define FAX_NOTIFY_PROGRAM "/usr/local/lib/mgetty+sendfax/new_fax"
++#define FAX_NOTIFY_PROGRAM "/etc/mgetty+sendfax/new_fax"
+ 
+ /* default minimum space required on spooling partition for receiving a FAX
+  * (in KILObytes)
+Index: samples/new_fax.mail
+===================================================================
+--- samples/new_fax.mail.orig
++++ samples/new_fax.mail
+@@ -10,8 +10,8 @@
+ # Revision 1.2  2000/07/16 21:18:08  gert
+ # add .gz to file names, for automatic unziping
+ #
+-MAILTO="you@yourhost.do.main"
+-MAILER=/usr/lib/sendmail
++MAILTO="root"
++MAILER=/usr/sbin/sendmail
+ 
+ PATH=$PATH:/usr/local/bin
+ G3TOPBM=g32pbm
+@@ -40,6 +40,7 @@ do
+ 	    echo "Subject: fax from $SENDER, page $P of $PAGES"
+ 	    echo "To: $MAILTO"
+ 	    echo ""
++	    # mimencode could be used instead of uuencode
+ 	    $G3TOPBM $STRETCH $FAX \
+ 	    | gzip -9 \
+ 	    | uuencode `basename $FAX`.pbm.gz
+Index: voice/Makefile
+===================================================================
+--- voice/Makefile.orig
++++ voice/Makefile
+@@ -6,6 +6,8 @@
+ # $Id: Makefile,v 1.9 2006/09/26 11:57:46 gert Exp $
+ #
+ 
++DESTDIR=
++
+ AR=ar
+ ARFLAGS=rc
+ RANLIB=ranlib
+@@ -83,35 +85,35 @@ vgetty-install: vgetty-all
+ 	@echo "  Installing the voice extensions"
+ 	@echo "  -------------------------------"
+ 	@echo ""
+-	$(INSTALL) -m 700 vgetty/vgetty $(SBINDIR)
+-	$(INSTALL) -m 755 vm/vm $(BINDIR)
++	$(INSTALL) -m 755 vgetty/vgetty $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -m 755 vm/vm $(DESTDIR)$(BINDIR)
+ 	for i in $(PVFTOOLS); \
+ 	do \
+-	     $(INSTALL) -m 755 pvftools/$$i $(BINDIR); \
++	     $(INSTALL) -m 755 pvftools/$$i $(DESTDIR)$(BINDIR); \
+ 	done
+-	$(INSTALL) -m 644 man/man1/zplay.1 $(MAN1DIR)
+-	$(INSTALL) -m 644 man/man1/pvf.1 $(MAN1DIR)
+-	$(INSTALL) -m 644 man/man8/vgetty.8 $(MAN8DIR)
++	$(INSTALL) -m 644 man/man1/zplay.1 $(DESTDIR)$(MAN1DIR)
++	$(INSTALL) -m 644 man/man1/pvf.1 $(DESTDIR)$(MAN1DIR)
++	$(INSTALL) -m 644 man/man8/vgetty.8 $(DESTDIR)$(MAN8DIR)
+ 	cd $(MAN1DIR); \
+ 	for i in $(PVFTOOLS); \
+ 	do \
+-	     $(RM) -f $$i.1; $(LN) -s pvf.1 $$i.1; \
++	     $(RM) -f $(DESTDIR)$(MAN1DIR)/$$i.1; $(LN) -s pvf.1 $(DESTDIR)$(MAN1DIR)/$$i.1; \
+ 	done
+-#	[ -d $(VOICE_DIR) ] || mkdir $(VOICE_DIR)
+-#	[ -d $(VOICE_DIR)/incoming ] || mkdir $(VOICE_DIR)/incoming
+-#	chown 0 $(VOICE_DIR)/incoming
+-#	chgrp $(PHONE_GROUP) $(VOICE_DIR)/incoming
+-#	chmod $(PHONE_PERMS) $(VOICE_DIR)/incoming
+-#	[ -d $(VOICE_DIR)/messages ] || mkdir $(VOICE_DIR)/messages
++#	[ -d $(DESTDIR)$(VOICE_DIR) ] || mkdir $(DESTDIR)$(VOICE_DIR)
++#	[ -d $(DESTDIR)$(VOICE_DIR)/incoming ] || mkdir $(DESTDIR)$(VOICE_DIR)/incoming
++#	chown 0 $(DESTDIR)$(VOICE_DIR)/incoming
++#	chgrp $(PHONE_GROUP) $(DESTDIR)$(VOICE_DIR)/incoming
++#	chmod $(PHONE_PERMS) $(DESTDIR)$(VOICE_DIR)/incoming
++#	[ -d $(DESTDIR)$(VOICE_DIR)/messages ] || mkdir $(DESTDIR)$(VOICE_DIR)/messages
+ #	for i in $(SHELLSCRIPTS); do \
+-#		$(INSTALL) -m 755 $$i $(VOICE_DIR) ;\
++#		$(INSTALL) -m 755 $$i $(DESTDIR)$(VOICE_DIR) ;\
+ #	done
+-#	[ -f $(VOICE_DIR)/.code ] || echo '12345' >$(VOICE_DIR)/.code
+-#	chgrp $(PHONE_GROUP) $(VOICE_DIR)/.code
+-#	chmod $(PHONE_PERMS) $(VOICE_DIR)/.code
+-#	chmod 660 $(VOICE_DIR)/.code
+-#	[ -f $(VOICE_DIR)/messages/Index ] || \
+-#	 echo 'put_filename_here' >$(VOICE_DIR)/messages/Index
++#	[ -f $(DESTDIR)$(VOICE_DIR)/.code ] || echo '12345' >$(DESTDIR)$(VOICE_DIR)/.code
++#	chgrp $(PHONE_GROUP) $(DESTDIR)$(VOICE_DIR)/.code
++#	chmod $(PHONE_PERMS) $(DESTDIR)$(VOICE_DIR)/.code
++#	chmod 660 $(DESTDIR)$(VOICE_DIR)/.code
++#	[ -f $(DESTDIR)$(VOICE_DIR)/messages/Index ] || \
++#	 echo 'put_filename_here' >$(DESTDIR)$(VOICE_DIR)/messages/Index
+ 
+ clean:
+ 	@echo "Cleaning..."

@@ -1,0 +1,691 @@
+-------------------------------------------------------------------
+Mon Jul 29 11:38:56 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 1.5.5:
+  * lbmap: Get rid of bpfService cache lock
+  * retry vm provisioning, increase timeout
+  * daemon: Remove svc-v2 maps when restore is disabled
+  * daemon: Do not remove revNAT if removing svc fails
+  * pkg/k8s: add conversion for DeleteFinalStateUnknown objects
+  * cli: fix panic in cilium bpf sha get command
+  * Retry provisioning vagrant vms in CI
+  * pkg/k8s: hold mutex while adding events to the queue
+  * Change nightly CI job label from fixed to baremetal
+  * test: set 1.15 by default in CI Vagrantfile
+  * daemon: Change loglevel of "ipcache entry owned by kvstore or agent"
+  * pkg/kvstore: add etcd lease information into cilium status
+  * pkg/k8s: do not parse empty annotations
+  * maps/lbmap: protect service cache refcount with concurrent access
+  * operator: add warning message if status returns an error
+  * pkg/kvstore: fix nil pointer in error while doing a transaction in etcd
+  * examples/kubernetes: bump cilium to v1.5.4
+  * bpf: Remove unneeded debug instructions to stay below instruction limit
+  * bpf: Prohibit encapsulation traffic from pod when running in encapsulation mode
+  * pkg/endpointmanager: protecting endpoints against concurrent access
+  * test: set k8s 1.15 as default k8s version
+  * CI: Clean VMs and reclaim disk in nightly test
+  * allocator: fix race condition when allocating local identities upon bootstrap
+  * identity: Initialize well-known identities before the policy repository.
+  * cilium: docker.go ineffectual assignment
+  * Disable automatic direct node routes test
+  * kubernetes-upstream: add seperate stage to run tests
+  * docs: update documentation with k8s 1.15 support
+  * test: run k8s 1.15.0 by default in all PRs
+  * test: test against 1.15.0
+  * vendor: update k8s to v1.15.0
+  * bpf: Set random MAC addrs for cilium interfaces
+  * endpoint: Set random MAC addrs for veth when creating it
+  * vendor: Update vishvananda/netlink
+  * mac: Add function to generate a random MAC addr
+  * test: remove unused function
+  * test: introduce `ExecShort` function
+  * docs: Clarify about legacy services enabled by default
+  * pkg/metrics: re-register newStatusCollector function
+  * CI: Clean workspace when all stages complete
+  * CI: Clean VMs and reclaim disk after jobs complete
+  * CI: Report last seen error in CiliumPreFlightCheck
+  * fqdn: correctly populate Source IP and Port in `notifyOnDNSMsg`
+  * test: do not overwrite context in `GetPodNamesContext`
+  * test: change `GetPodNames` to have a timeout
+  * test: make sure that `GetPodNames` times out after 30 seconds
+  * CI: Ensure k8s execs cancel contexts
+  * test: Fix NodeCleanMetadata by using --overwrite
+  * test: add timeout to `waitToDeleteCilium` helper function
+  * .travis: update travis golang to 1.12.5
+  * Don't set debug to true in monitor test
+  * pkg/lock: fix RUnlockIgnoreTime
+  * daemon: fix endpoint restore when endpoints are not available
+  * Preload vagrant boxes in k8s upstream jenkinsfile
+  * pkg/health: Fix IPv6 URL format in HTTP probe
+  * test: use context with timeout to ensure that Cilium log gathering takes <= 5 minutes
+  * k8s: Introduce test for multiple From/To selectors
+  * k8s: Fix policies with multiple From/To selectors
+  * test: create session and run commands asynchronously
+  * test: bump to k8s 1.14.3
+  * test: error out if no-spec policies is allowed in k8s >= 1.15
+  * test/provision: upgrade k8s 1.15 to 1.15.0-beta.2
+  * test: have timeout for `Exec`
+  * pkg/kvstore: introduced a dedicated session for locks
+  * pkg/kvstore: implement new *IfLocked methods for etcd
+  * kvstore/allocator: make the allocator aware of kvstore lock holding
+  * pkg/kvstore: add Comparator() to KVLocker
+  * pkg/kvstore: add new *IfLocked methods to perform txns
+  * test: bump k8s 1.13 to 1.13.7
+  * test: Enable IPv6 forwarding in test VMs
+  * docs: Remove architecture target links
+  * test: add serial ports to CI VMs
+  * *.Jenkinsfile: remove leftover failFast
+  * endpoint: make sure `updateRegenerationStatistics` is called within anonymous function
+  * Prepare for v1.5.3
+  * test: do not spawn goroutines to wait for canceled context in `RunCommandContext`
+  * node/store: Do not delete node key in kvstore on node registration failure
+  * kvstore/store: Do not remove local key on sync failure
+  * node: Delay handling of node delete events received via kvstore
+  * test/provision: bump k8s 1.12 to 1.12.9
+  * pkg/kvstore: do not always UpdateIfDifferent with and without lease
+  * Don't overwrite minRequired in WaitforNPods
+  * daemon: Don't log endpoint restore if IP alloc fails
+  * daemon: Refactor individual endpoint restore
+  * test: provide context which will be cancled to `CiliumExecContext`
+  * Jenkinsfile: backport all Jenkinsfile from master
+  * doc: Document regressions in 1.5.0 and 1.5.1
+  * Prepare for release v1.5.2
+  * test: Disable unstable K8sDatapathConfig Encapsulation Check connectivity with transparent encryption and VXLAN encapsulation
+  * Add kvstore quorum check to Cilium precheck
+  * pkg/kvstore: acquire a random initlock
+  * kvstore: Wait for kvstore to reach quorum
+  * ipcache: Fix automatic recovery of deleted ipcache entries
+  * tests, k8s: add monitor dump helper for debugging
+  * bugtool: add raw dumps of all lb and lb-related maps
+  * pkg/labels: ignore all labels that match the regex "annotation.*"
+  * docs: Add note about keeping enable-legacy-services
+  * docs: Add note about running preflight-with-rm-svc-v2.yaml
+  * examples: Add preflight DaemonSet for svc-v2 removal
+  * operator: Fix health check API
+  * doc: Add EKS node-init DaemonSet to mount BPF filesystem
+  * pkg/kvstore: perform update if value or lease are different
+  * kvstore/allocator: do not immediately delete master keys if unused
+  * pkg/kvstore: store Modified Revision number KeyValuePairs map
+  * kvstore/allocator: do not re-allocate localKeys
+  * kvstore/allocator: move invalidKey to cache.go
+  * kvstore/allocator: add lookupKey method
+  * allocator: Provide additional info message on key allocation and deletion
+  * allocator: Fix garbage collector to compare prefix
+  * allocator: Make GetNoCache() deterministic
+  * kvstore/allocator: protect concurrent access of slave keys
+  * kvstore/allocator: release ID from idpool on error
+  * kvstore/allocator: do not re-get slave key on allocation
+  * pkg/kvstore: Run GetPrefix with limit of 1
+  * allocator: Verify locally allocated key
+  * envoy: Prevent resending NACKed resources also when there are no ACK observers.
+  * endpoint: Guard against deleted endpoints in regenerate
+  * service: Reduce backend ID allocation space
+  * cilium: fix up source address selection for cluster ip
+  * CI: Log at INFO and above for all unit tests
+  * bpf: Fix dump parsers of encrypt and sockmap maps
+  * pkg/maps: use pointer in receivers for GetKeyPtr and GetValuePtr
+  * test: fix incorrect deletion statement for policy
+  * proxylib: Fix egress enforcement
+  * Recover from ginkgo fail in WithTimeout helper
+  * docs: move well known identities to the concepts section
+  * docs: update well-known-identities documentation
+  * add support for k8s 1.14.2
+  * test: add v1.15.0-beta.0 to the CI
+  * cni: Fix incorrect logging in failure case
+  * daemon: Make policymap size configurable
+  * Add jenkins stage for loading vagrant boxes
+  * bpf: Remove several debug messages
+  * Revert "pkg/bpf: add DeepCopyMapKey and DeepCopyMapValue"
+  * Revert "pkg/{bpf,datapath,maps}: use same MapKey and MapValue in map iterations"
+  * Revert "pkg/bpf: add newer LookupElement, GetNextKey and UpdateElement functions"
+  * Revert "pkg/bpf: use own binary which does not require to create buffers"
+  * Revert "maps/ctmap: add ctmap benchmark"
+  * bpf: force recreation of regular ct entry upon service collision
+  * pkg/endpoint: fix assignment in nil map on restore
+  * pkg/ipcache: initialize globalmap at import time
+  * test/provision: bump k8s testing to v1.13.6
+  * bpf: do propagate backend, and rev nat to new entry
+  * datapath: Redo backend selection if stale CT_SERVICE entry is found
+  * daemon/Makefile: rm -f on make clean for links
+  * CI: Consolidate Vagrant box information into 1 file
+  * cilium: encode table attribute in Route delete
+  * daemon: Remove stale maps only after restoring all endpoints
+  * envoy: Do not use deprecated configuration options.
+  * cilium: IsLocal() needs to compare both Name and Cluster
+  * daemon: Do not restore service if adding to cache fails
+  * daemon: Improve logging of service restoration
+  * doc: Adjust documentation with new dynamic gc interval
+  * ctmap: Introduce variable conntrack gc interval
+  * pkg/envoy: use proto.Equal instead comparing strings
+  * test: replace guestbook test docker image
+  * docs: give better troubleshooting for conntrack-gc-interval
+  * operator: fix concurrent access of variable in cnp garbage collection
+  * Bump vagrant box version for tests to 151
+  * cni: Fix unexpected end of JSON input on errors
+  * docs: add missing cilium-operator-sa.yaml for k8s 1.14 upgrade guide
+  * maps: Remove disabled svc v2 maps
+  * fqdn: DNSProxy does not fold similar DNS requests
+  * docs: fix architecture images' URL
+  * CI: Consolidate WaitforNPods and WaitForPodsRunning
+  * CI: WaitForNPods uses count of pods
+  * Dockerfile: update golang to 1.12.5
+  * metrics: add map_ops_total by default
+  * Bump vagrant box versions for tests
+  * Jenkins separate directories for parallel builds
+
+-------------------------------------------------------------------
+Fri Jun  7 13:36:27 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Switch container image URI from devel:kubic:containers to
+  openSUSE:Containers:Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Jun  7 13:34:10 CEST 2019 - ndas@suse.de
+
+- Update to version 1.5.3:
+  * pkg/kvstore: do not always UpdateIfDifferent with and without lease
+  * daemon: Refactor individual endpoint restore
+  * daemon: Don't log endpoint restore if IP alloc fails
+  * Don't overwrite minRequired in WaitforNPods
+  * node: Delay handling of node delete events received via kvstore
+  * kvstore/store: Do not remove local key on sync failure
+  * node/store: Do not delete node key in kvstore on node registration failure
+  * Jenkinsfile: backport all Jenkinsfile from master
+  * test/provision: bump k8s 1.12 to 1.12.9
+  * test: do not spawn goroutines to wait for canceled context in `RunCommandContext`
+  * test: provide context which will be cancled to `CiliumExecContext`
+
+-------------------------------------------------------------------
+Mon Jun  3 13:34:10 CEST 2019 - ndas@suse.de
+
+- Add cniVersion in cilium cni config
+
+-------------------------------------------------------------------
+Fri May 10 10:20:32 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.5.1:
+  * Important Bugfixes:
+    * Fix bug where Cilium would refuse to start if ipv6 netfilter
+      modules are unavailable.
+    * Warn when iptables modules are not available.
+    * Use all labels to restore endpoint identity to correctly
+      filter labels upon restart.
+    * Fix cases where multiple bindings are provided to CLI flags.
+  * New Functionality / Enhancements:
+    * Add node-init script to automatically restart pods managed by
+      kubenet on GKE
+    * Add functionality to enable or disable metrics for specific
+      subsystems
+    * bpf syscall metrics are disabled by default for performance
+    * Update node, node/status to allow for patch operations in
+      Cilium RBAC
+    * Patch, instead of update, node annotations for better
+      performance
+    * Annotate node status with NetworkUnavailable as false
+    * Performance increase by not allocating any memory when
+      iterating over BPF maps
+    * CLI now prints tunnel endpoint for RemoteEndpointInfo
+    * Try to register node forever in nodediscovery
+    * Remove unused buildqueue package
+  * Minor Bug Fixes:
+    * endpoint: do not serialize JSON for EventQueue field
+    * Avoid unlocked access of endpoint security identity when
+      calculating what rules select an endpoint
+    * Only dump bpf lb list if map exists
+    * Fix bug where endpoint state metrics get stuck with nonzero
+      endpoints in restoring state
+    * Do not init config when running with --cmdref parameter
+    * Improve separation between cilium-agent and cilium CLI
+    * Add cilium namespace to fqdn_gc_deletions_total metric
+    * Force preallocation for SNAT maps of LRU type
+    * Set BPF_F_NO_PREALLOC before comparing maps
+  * Operator:
+    * Improve cilium-operator bootstrap sequence (Start health API
+      earlier, add more logging to see where the operator blocks
+      on startup)
+    * Add ca-certificates to operator
+  * Documentation:
+    * Add upgrade guide from >=1.4.0 to 1.5
+    * Mention enable-legacy-services flag in upgrade docs
+    * Add k8s 1.14 to supported versions for testing
+    * Improve configmap documentation
+    * Document how to get started with MicroK8s, and provide example
+      YAMLs
+    * Fix typo in encryption algorithm: GMC -> GCM
+    * Fix up Ubuntu apt-get install command
+    * Minor fixes to AWS EKS and AWS Metadata filtering GSGs
+  * CI:
+    * Wait for endpoints to be ready after containers are created,
+      deleted
+    * Ensure that `go fmt` check always runs correctly in CI 
+    * Increase test suite timeouts to allow for cases where tests
+      take longer
+    * Do not set enable-legacy-services in v1.4 ConfigMap
+    * Update k8s testing versions to v1.11.10 and v1.12.8
+    * Make function provided to WithTimeout run asynchronously to
+      avoid test suites getting stuck
+- Add cilium-k8s-yaml package with Kubernetes yaml file to run
+  Cilium containers.
+
+-------------------------------------------------------------------
+Fri May 10 12:02:55 CEST 2019 - ndas@suse.de
+
+- Add missing gzip package, cilium does zgrep of /proc/config.gz
+
+-------------------------------------------------------------------
+Mon May 06 13:53:28 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.5.0:
+  * BPF programs templating which alows to inject information into
+    ELF files instead of compiling separate programs with separate
+    data for each endpoint.
+  * BPF-based masquerading support - a native BPF-based SNAT
+    engine.
+  * Optimizations for policy engine and load balancer.
+- Remove patches which are accepted upstream:
+  * cilium-allow-to-add-extra-go-build-flags.patch
+  * cilium-allow-to-specify-cni-install-dirs.patch
+
+-------------------------------------------------------------------
+Tue Apr 16 12:53:38 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Add cilium-operator package which provides the Kubernetes
+  operator that does garbage collector work for Cilium.
+- Do not require cilium and docker in cilium-init package.
+
+-------------------------------------------------------------------
+Fri Apr 12 10:51:14 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add cilium-init package, which provides the script for Cilium
+  init container.
+
+-------------------------------------------------------------------
+Fri Mar 29 15:59:38 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 1.4.2:
+  * Prepare for v1.4.2 release
+  * cilium: ipsec, zero cb[0] to avoid incorrectly encrypting
+  * contrib: Update backporting README
+  * contrib: Fix cherry-pick to avoid omitting parts of patch
+  * cilium: push decryption up so we can decrypt even if not endpoint
+  * cilium: populate wildcard src->dst policy for ipsec
+  * daemon: Remove old health EP state dirs in restore
+  * api: Return 500 when API handlers panic.
+  * ipcache: Protect from delete events for alive IP but mismatching key
+  * store: Protect from deletion of local key via kvstore event
+  * test: Wait for cilium to start in runtime provision
+  * contrib: fix extraction of cilium-docker binary
+  * contrib: Update rebase-bindata to use fix-sha.sh
+  * contrib: Add new script to auto-fix bpf.sha
+  * cherry-pick: Print sha when applying patch.
+  * check-stable: Sort PRs by merge date
+  * workloads: Don't spin up receive queue in periodic watcher
+  * workloads: Change watcher interval from 30 seconds to 5 minutes
+  * workloads: Synchroneous handling of container events
+  * endpoints: Add optional callback to WaitForPolicyRevision
+  * daemon: Track policy implementation delay by source
+  * agent: Wait to regenerate restore endpoints until ipcache has been populated
+  * ipcache: Provide WaitForInitialSync() to wait for kvstore sync
+  * pkg/kvstore: add 15 min TTL for the first session lease
+  * policy: Add missing import error metric calls
+  * endpoint: Fix ENABLE_NAT46 endpoint config validation
+  * endpoint: Fix and quieten endpoint revert logs
+  * test: Get rid of JoinEP flakes
+  * ctmap: Print source addresses in ctmap cli
+  * cilium: fix bailing out on auto-complete when v4/v6 ranges are specified
+  * test: Test upgrade from v1.3 to master
+  * doc: Fix --tofqdns-pre-cache reference
+  * doc: Fix delete pod commend in clustermesh guide
+  * bpf: Enable pipefail option in init.sh
+  * cilium: bpftool included DS reports error on bpf_sockops load
+  * cilium: sockmap remove socket.h dependency
+  * cilium: sockmap, convert BPF_ANY to BPF_NOEXIST
+  * 1: fix when have black hole route container pod CIDR can cause postIpAMFailure range is full
+  * pkg/kvstore: do not use default instance to create new instance module
+  * bpf: Do not account tx for CT_SERVICE
+  * cilium.io/v2: set DerivativePolicies json to derivativePolicies
+  * fqdn-poller: Ensure monitor events contain all data
+  * ctmap: Fix order of CtKey{4,6} struct fields
+  * release: fix uploadrev script to work with changes made after 1.3
+  * datapath: Fix nil dereference in logging statement
+  * Prepare 1.4.1 release
+  * k8s/utils: wrap kubernetes controller with ControllerSyncer
+  * k8s/utils: make the ControllerSynced fields public
+  * allocator: Wait until kvstore is connected before allocating global identities
+  * policy: Fix ipcache synchronization on startup
+  * cilium: ipsec, fix kube-proxy compatability
+  * cilium: ipsec, remove bogus mark set
+  * cilium: ipsec, zero CB_SRC_IDENTITY to ensure we don't incorrectly encrypt
+  * cilium: k8s watcher, push internal Cilium IPs through annotations
+  * policy: Add unit tests for ResolvePolicy() for L7 + ingress wildcards
+  * identity/cache: Allow using GetIdentityCache() without initializing allocator
+  * Change endpoint policy status map to regular map
+  * Minor disambiguation to 1.4 release/upgrade doc
+  * examples: Fix docker-compose mount points
+  * docs: Add note about triggering builds with net-next
+  * FQDN: Set always a empty ToCIDRSet in case of no entries in cache.
+  * docs: re write k8s setup for ipsec
+  * datapath/linux: log errors for ipsec setup
+  * linux/ipsec: decode ipsec keys from hex
+  * cilium preflight command for FQDN poller upgrade
+  * docs: Add FQDN Poller upgrade impact & instructions
+  * docs: Small changes to toFQDN and DNS sections
+  * docs: Move "Obtaining DNS Data" to L7 section
+  * cilium preflight container prepares tofqdn-pre-cache
+  * pkg/identity: add well known identity for cilium-etcd-operator
+  * pkg/kvstore: wait until etcd configuration files are available
+  * policy/api: generate missing deepcopy code
+  * vendor: fix Gopkg.lock
+  * datapath: Clean up stale ipvlan maps
+  * cilium, bpf: only account tx for egress direction
+  * examples: Update docker-compose examples
+  * lookup rule for the given IP family
+  * cilium-operator.Dockerfile: set `klog` logging values from cilium-operator
+  * datapath: Clean up config map on startup
+  * datapath: Fix map cleanup for CT maps
+  * Update k8s-install-gke.rst
+  * cilium-docker-plugin: set default CMD to /usr/bin/cilium-docker
+  * api/v1: remove requirements of labels in endpoints API
+  * apis/cilium.io: do not regenerate deepcopy for unnecessary structs
+
+-------------------------------------------------------------------
+Mon Mar 11 14:31:04 UTC 2019 - ndas@suse.de
+
+- Move cilium-docker files to cilium-cni
+
+-------------------------------------------------------------------
+Mon Mar  4 14:43:27 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add gcc as a runtime dependency. BPF programs need to have libgcc
+  and libgcc_s linked in.
+  https://github.com/cilium/cilium/issues/7273
+
+-------------------------------------------------------------------
+Mon Mar  4 10:38:19 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Provide an explanation why glibc-devel-32bit is needed.
+- Ship cilium-cni and cilium-docker in separate packages.
+
+-------------------------------------------------------------------
+Fri Mar  1 15:23:36 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add missing runtime dependencies which are needed to execute
+  scripts shipped with Cilium and to compile BPF programs.
+
+-------------------------------------------------------------------
+Wed Feb 27 15:52:38 UTC 2019 - ndas@suse.de
+
+- Fix license. BPF code templates are licensed under GPLv2 while
+  the rest is under Apache License, v2
+  (see https://github.com/cilium/cilium#license)
+
+  Cilium (the component licensed on Apache 2.0, written in Go) does
+  two things with BPF program sources (licensed on GPL-2.0):
+
+  * it executes llvm/clang to compile BPF program sources to object
+    files
+  * it executes tc (a utility which is a part of iproute2) to load
+    object files into the kernel
+
+  So, Cilium as a Go program only does execv calls on external
+  utilities (llvm and iproute2) to perform some actions on BPF
+  program sources and objects.
+
+-------------------------------------------------------------------
+Mon Feb 25 09:56:48 CET 2019 - ndas@suse.de
+
+- Add missing GPL2 License for eBPF source codes
+
+-------------------------------------------------------------------
+Wed Feb 13 10:09:55 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.4.0:
+  * doc: Fix key generation for encryption
+  * doc: Add validation and troubleshooting section to encryption
+    GSG
+  * datapath: Report IPsec route installation errors
+  * datapath: Fix IPsec with IPv4 or IPv6 disabled
+  * docs: Add ipvlan-based datapath limitations and requirements
+  * doc, configmap: add missing entries
+  * examples/kubernetes: Add tofqdns-enable-poller option
+  * doc: Minor update to encryption guide
+  * cilium: transparent encryption with ipsec getting started docs
+  * Note about apiserver outside of cluster
+- Add upstream patch which allows to set additional `go build`
+  flags
+  * cilium-allow-to-add-extra-go-build-flags.patch
+- Add upstream patch which allows to specify installation
+  directories for CNI files
+  * cilium-allow-to-specify-cni-install-dirs.patch
+- Make use of golang-packaging macros.
+- Add rc* symlinks.
+
+-------------------------------------------------------------------
+Thu Feb  7 12:46:51 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Run code checkers/linters only on openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Feb  6 14:30:47 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add devel package which contains a header and .so file.
+- Improve descriptions of all packages.
+- Set BINDIR, DESTDIR and LIBDIR variables properly instead of
+  manual installation of files in those destinations.
+- Install bash completion script.
+- Execute ldconfig in post and postun phases of the lib package.
+- Fix Source attribute.
+
+-------------------------------------------------------------------
+Tue Feb  5 17:44:40 CET 2019 - ndas@suse.de
+
+- Updated to 1.4-rc7
+   *pkg/datapath/ipcache: stop leaking FD
+   *pkg/fqdn: make any operation in the sourceRuleCopy
+   *daemon: change policyAdd message type from Info to Debug for dns policies
+   *pkg/endpoint: do not leak go routines if endpoint is disconnected
+   *pkg/endpoint: ignore negative time durations in metrics
+   *Endpoint: set a new context per endpoint regeneration
+   *endpoint: revert endpoint BPF config map update if regenerateBPF fails
+   *bpf: pin endpoint configuration map
+   *endpoint: Unlock endpoint to prevent deadlocks.
+   *daemon: Allow releasing builder while waiting for proxy ACKs
+   *endpoint: Make regenaration timeout greater than ExecTimeout
+   *endpoint: Eliminate ExecTimeout, ctx.
+   *daemon: Use sync.Once, rewamp comments.
+   *bpf: Fix node-port access to l7 proxy
+   *bpf: Templatize endpoint configuration
+   *maps: Add BPFConfigMap for endpoint configuration
+   *endpoint: Support dynamic BPF configuration
+   *bpf: Relax verifier in IPv6 drop case
+   *bpf: Fix tcp flag access
+   *bpf: Don't reset TCP timer on final ACK
+   *cilium: spelling: sha is an acronym replace with SHA
+   *bpf: Provide more specific drop reasons
+   *proxylib: Update proxylib.h with go 1.11
+   *agent: Fix invalid printf style invocations
+   *gitignore: Ingore cilium-ring-dump binary
+   *lbmap: Retrieve service ID when dumping BPF map
+   *service: Restore service IDs before connecting to Kubernetes apiserver
+   *service: Restore bpfservie cache on startup
+   *lbmap: Add unit test for getBackends()
+   *idpool: Factor out IDPool from allocator into package for reuse
+   *idpool: Fix leaseAvailableID() and slice out of bounds
+   *node: Don't insert own node into tunnel map
+   *bpf: Avoid routing loops for former local endpoint IPs
+   *test: Use cilium-etcd-operator
+   *clustermesh: Fix race when shutting down clustermesh
+   *clustermesh: Wait for controllers to be shutdown when closing
+   *cni: Synchroneous pod label retrieval on CNI add
+   *identity: Block createEndpoint() while identity is being resolved
+   *bpf: Remove source MAC address validation
+   *bpf: Remove destination MAC address verification
+   *agent: Ignore IPV4_GATEWAY=0x0 when restoring
+   - details changelogs are in https://github.com/cilium/cilium/projects/11
+- disable bash completion
+- added a new package libcilium1
+- build with go1.10(need fix for cgo alignchecker issue)
+
+
+-------------------------------------------------------------------
+Tue Sep  4 15:58:32 CEST 2018 - ndas@suse.de
+
+- change  00-cilium-cni.conf -> 10-cilium-cni.conf to keep sync with salt
+
+-------------------------------------------------------------------
+Mon Sep  3 14:06:13 CEST 2018 - ndas@suse.de
+
+- Use proper bash-completion dir
+- Updated to 1.2.1
+  *docker, bpf: add iproute2 version which works around missing af_alg
+  *docker, bpf: add bpftool for debugging and introspection
+  *test/k8sT: use specific commit for cilium/star-wars-demo YAMLs
+  *pkg/k8s: properly handle empty NamespaceSelector
+  *lxcmap: Improve error messages in DeleteElement()
+  *lxcmap: Fix always returning an error on delete
+  *ctmap: Mark IPv6 CT GC as completed on success
+  *endpoint: Fix endpoint regeneration failure metric
+  *Block locked code in TriggerPolicyUpdates
+  *Ignore non-existing link error in cni del
+  *fqdn: Strip toCIDRSet rules to be more resilient
+  *fqdn: Use UUIDs to manage rules
+  *fqdn: Inject IPs on initial rule insert
+  *xds: Ignore completion timeouts on resource upsert and delete
+  *endpoint: Log when BPF regeneration times out not because of Envoy
+  *endpoint: In BPF regeneration, create/remove listeners early
+  *doc: Restructure and simplify upgrade guide
+  *doc: Restructure installation guides
+  *doc: AWS EKS installation guide
+  *identity: Wait for initial set of security identities before restoring endpoints
+
+-------------------------------------------------------------------
+Wed Aug  8 12:06:50 CEST 2018 - ndas@suse.de
+
+- Updated to 1.2.0-rc1
+  * Inter cluster service routing
+  * BPF based flow aggregation
+  * BGP with kube-router 
+  more at https://github.com/cilium/cilium/releases/tag/v1.2.0-rc1
+- Add cilium group
+
+-------------------------------------------------------------------
+Mon Jun  4 16:04:59 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to simpler form 
+
+-------------------------------------------------------------------
+Mon Jun  4 09:50:42 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Wed Apr 25 10:54:45 CEST 2018 - ndas@suse.de
+
+- Updated to v1.0.0
+   Bugfixes Changes:
+    *etcd: Clear the etcd status error when connectivity is OK (3824, @rlenglet)
+    *ipcache: Fix ipcache deletion of old identities on update (3865, @rlenglet)
+    *bpf: Fix tracing message for egress policy (3806, @joestringer)
+    [- envoy-optional.patch]
+- use url for source
+
+-------------------------------------------------------------------
+Wed Apr 18 13:49:11 CEST 2018 - ndas@suse.de
+
+- skip doc, less depedency
+- remove libelf1, zypper/rpm should auto resolve
+- define _fillupdir if not so
+
+-------------------------------------------------------------------
+Mon Apr 16 18:14:11 CEST 2018 - ndas@suse.de
+
+- clean up spec file
+- use %fillup_only for cilium sysconfig
+- move cilium-cni to %{_libexecdir}/cni like all other cni-plugins
+
+-------------------------------------------------------------------
+Mon Apr 16 14:20:01 UTC 2018 - jengelh@inai.de
+
+- Combine %service_* macro calls to reduce generated code.
+- Trim filler wording from description.
+- Use modern tar invocation syntax.
+
+-------------------------------------------------------------------
+Mon Apr  9 11:42:11 UTC 2018 - mrostecki@suse.com
+
+- Updated to v1.0.0-rc10
+* API preparation for 1.0
+    Changed the base prefix of the API from /v1beta to /v1 tada. The API will become stable with the 1.0 release. This makes client binaries with version < 1.0.0-rc10.
+
+* Bugfixes Changes
+    policymap: Avoid using golang arrays in entry (#3506, @joestringer)
+    etcd: Run etcd version check in the background (#3499, @tgraf)
+    Test: Fix bugtool on kubernetes 1.7 (#3487, @eloycoto)
+    Fix L4-only policy egress to world and CIDR-only egress to world (#3486, @joestringer)
+    proxy: Use the same proxy map size as in BPF (#3485, @rlenglet)
+    bpf: Do not route packets from egress proxy back into cilium_host (#3473, @tgraf)
+    Continue to show timestamps in error cases in CiliumNetworkPolicy NodeStatus. (#3461, @aanm)
+    policy: Add missing EntitySlice autogen code (#3458, @raybejjani)
+    Fix l3-dependent L4/L7 rules applying to CIDR egress traffic (#3434, @joestringer)
+
+Other Changes
+    bugtool: add ip rule and cilium-health status commands (#3500, @ianvernon)
+    Policy: Kafka multi-topic request support (#3445, @manalibhutiyani)
+- build cilium without envoy
+  [+envoy-optional.patch]
+
+-------------------------------------------------------------------
+Fri Jan 19 14:02:21 CET 2018 - ndas@suse.de
+
+- Updated to v1.0.0-rc2
+*Major Changes
+
+    Tech preview of Envoy as Cilium HTTP proxy, adding HTTP2 and gRPC support. (#1580, @jrajahalme)
+    Introduce "cilium-health", a new tool for investigating cluster connectivity issues. (#2052, @joestringer)
+    cilium-agent collects and serves prometheus metrics (#2127, @raybejjani)
+    bugtool and debuginfo (#2044, @scanf)
+    Add nightly test infrastructure (#2212, @ianvernon)
+    Separate ingress and egress default deny modes with better control (#2156, @manalibhutiyani)
+    k8s: add support for IPBlock and Egress Rules with IPBlock (#2096, @ianvernon)
+    Kafka: Support access logging for Kafka requests/responses (#1870, @manalibhutiyani)
+    Added cilium endpoint log command that returns the endpoint's status log (#2060, @raybejjani)
+        Change endpoint status log in cilium endpoint get to show only the most recent log
+    Routes connecting the host to the Cilium IP space is now implemented as
+    individual route for each node in the cluster. This allows to assign IPs
+    which are part of the cluster CIDR to endpoints outside of the cluster
+    as long as the IPs are never used as node CIDRs. (#1888, @tgraf)
+    Standardized structured logging (#1801, #1828, #1836, #1826, #1833, #1834, #1827, #1829, #1832, #1835, @raybejjani)
+
+*Bugfixes Changes
+
+    Fix L4Filter JSON marshalling (#1871, @joestringer)
+    Fix swapped src dst IPs on Conntrack related messages on the monitor's output (#2228, @aanm)
+    Fix output of cilium endpoint list for endpoints using multiple labels. (#2225, @aanm)
+    bpf: fix verifier error in dameon debug mode with newer LLVM versions (#2181, @borkmann)
+    pkg/kvstore: fixed race in internal mutex map (#2179, @aanm)
+    Proxy ingress policy fix for LLVM 4.0 and greater. Resolves return code 500 'Internal Error' seen with some policies and traffic patterns. (#2162, @jrfastab)
+    Printing patch clang and kernel patch versions when starting cilium. (#2137, @aanm)
+    Clean up Connection Tracking entries when a new policy no longer allows it. #1667, #1823 (#2136, @aanm)
+    k8s: fix data race in d.loadBalancer.K8sEndpoints (#2129, @aanm)
+    Add internal queue for k8s watcher updates #1966 (#2123, @aanm)
+    k8s: fix missing deep copy when updating status (#2115, @aanm)
+    Accept traffic to Cilium in FORWARD chain (#2112, @tgraf)
+        Also clear the masquerade bit in the FORWARD chain to skip the masquerade rule installed by kube-proxy
+    Fix SNAT issue in combination with kube-proxy, when masquerade rule installed by kube-proxy takes precedence over rule installed by Cilium. (#2108, @tgraf)
+    Fixed infinite loop when importing CNP to kubernetes with an empty kafka version (#2090, @aanm)
+    Mark cilium pod as CriticalPod in the DaemonSet (#2024, @manalibhutiyani)
+    proxy: Provide identities { host | world | cluster } in SourceEndpoint (#2022, @manalibhutiyani)
+    In kubernetes mode, fixed bug that was allowing cilium to start up even if the kubernetes api-server was not reachable #1973 (#2014, @aanm)
+    Support policy with EndpointSelector missing (#1987, @raybejjani)
+    Implemented deep copy functionality when receiving events from kubernetes watcher #1885 (#1986, @aanm)
+    pkg/labels: Filter out pod-template-generation label (#1979, @michi-covalent)
+    bpf: Double timeout on building BPF programs (#1949, @raybejjani)
+    policy: add PolicyTrace msg to AllowsRLocked() when L4 policies not evaluated (#1939, @gnahckire)
+    Handle Kafka responses correctly (#1924, @manalibhutiyani)
+    bpf: Avoid excessive proxymap updates (#2210, @joestringer)
+    cilium-agent correctly restarts listening for CiliumNetworkPolicy changes when it sees decoding errors (#1899, @raybejjani)
+
+-------------------------------------------------------------------
+Wed Nov  8 12:46:02 CET 2017 - ndas@suse.de
+
+- Initial version 0.12

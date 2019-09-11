@@ -1,0 +1,149 @@
+---
+ bootparams.c     |   15 ++++-----------
+ x86_64/config.c  |   18 ++++++++++++++++++
+ x86_64/sysdeps.h |    5 ++++-
+ x86_64/system.c  |   30 +++++++++++++++++++++++++-----
+ 4 files changed, 51 insertions(+), 17 deletions(-)
+
+--- a/x86_64/system.c
++++ b/x86_64/system.c
+@@ -953,6 +953,11 @@ do_memmap:
+ #endif
+ 	if (e820_map_overflow && !e820_map_overflow_warned) {
+ 		CHAR8 *aem = (CHAR8 *)"add_efi_memmap";
++		UINTN al = strlena( aem) + 1;
++		UINTN cl = strlena( (CHAR8 *)cmdline);
++		INT8 autoadd = (x86_64_auto_add_efi_memmap() &&
++				(cl + al) < CMDLINE_MAXLEN);
++		CHAR16 *severity = (autoadd) ? L"Notice" : L"CAUTION";
+ 		e820_map_overflow_warned++;
+ 
+ #if DEBUG_CREATE_BOOT_PARAMS
+@@ -964,11 +969,26 @@ do_memmap:
+ 			goto do_memmap;
+ 		}
+ 
+-		Print(L"\nCAUTION: EFI memory map has %d more entr%a"
+-			" than E820 map supports.\n"
+-			"To access all memory, '%a' may be necessary.\n\n",
+-			e820_map_overflow, (e820_map_overflow==1)?"y":"ies",
+-			aem);
++		Print(L"\n%s: EFI memory map has %d more entr%a than E820 map"
++			" supports.\n", severity, e820_map_overflow,
++			(e820_map_overflow==1)?"y":"ies");
++
++		if (autoadd) {
++			strcpya( cmdline + cl, (CHAR8 *)" ");
++			strcpya( cmdline + cl + 1, aem);
++			Print(L"To allow access to all memory, '%a' has been"
++				" auto-added!\n\n", aem);
++			wait_timeout(30);
++			goto do_memmap;
++		}
++		if ((cl + al) >= CMDLINE_MAXLEN)
++			Print(L"But adding '%a' would exceed the maximum"
++				" command-line length", aem);
++		else
++			Print(L"But auto-adding of '%a' is disabled in"
++				" 'elilo.conf'", aem);
++		wait_timeout(60);
++		Print(L"\n\n");
+ 		goto do_memmap;
+ 	}
+ 	
+--- a/x86_64/config.c
++++ b/x86_64/config.c
+@@ -34,6 +34,7 @@
+ typedef struct {
+ 	UINTN legacy_free_boot;
+ 	UINTN text_mode;
++	CHAR16 add_efi_memmap[MAX_STRING];
+ } x86_64_global_config_t;
+ 
+ 
+@@ -42,10 +43,14 @@ typedef struct {
+ static x86_64_global_config_t x86_64_gconf;
+ 
+ static config_option_t sysdeps_global_options[]={
++	{OPT_STR,	OPT_GLOBAL, L"add-efi-memmap",
++			NULL,	NULL,	&x86_64_gconf.add_efi_memmap},
+ 	{OPT_BOOL,	OPT_GLOBAL, L"legacy-free",	NULL,	NULL,	&x86_64_gconf.legacy_free_boot}
+ };
+ 
+ static config_option_t sysdeps_image_options[]={
++	{OPT_STR,	OPT_IMAGE_SYS, L"add-efi-memmap",
++			NULL,	NULL,	x86_64_opt_offsetof(add_efi_memmap)},
+ 	{OPT_BOOL,	OPT_IMAGE_SYS, L"text-mode",	NULL,	NULL,	x86_64_opt_offsetof(text_mode)}
+ };
+ 
+@@ -89,6 +94,19 @@ x86_64_use_legacy_free_boot(VOID)
+ 	return x86_64_gconf.legacy_free_boot ? 1 : 0;
+ }
+ 
++INT8
++x86_64_auto_add_efi_memmap(VOID)
++{
++	if (elilo_opt.sys_img_opts) {
++		if (!StrCmp(elilo_opt.sys_img_opts->add_efi_memmap, L"false"))
++			return 0;
++		if (!StrCmp(elilo_opt.sys_img_opts->add_efi_memmap, L"auto"))
++			return 1;
++	}
++	if (!StrCmp(x86_64_gconf.add_efi_memmap, L"false"))
++		return 0;
++	return 1;
++}
+ 
+ INTN
+ x86_64_text_mode(VOID)
+--- a/x86_64/sysdeps.h
++++ b/x86_64/sysdeps.h
+@@ -365,6 +365,7 @@ extern UINTN rmswitch_size;
+ 
+ extern INTN x86_64_use_legacy_free_boot();
+ extern INTN x86_64_text_mode();
++extern INT8 x86_64_auto_add_efi_memmap();
+ 
+ /*
+  * How to jump to kernel code
+@@ -457,9 +458,11 @@ start_kernel(VOID *kentry, boot_params_t
+ 	/* Never come back to here. */
+ }
+ 
++#define MAX_STRING 512 /* ToDo: move to 'config.h' */
+ typedef struct sys_img_options {
+ 	UINT8 dummy;	 /* forces non-zero offset for first field */
+-	UINT8 text_mode; /* do not try to initialize Graphics Output Protocol */
++	UINT8 text_mode; /* don't try to initialize GraphicsOutputProtocol */
++	CHAR16 add_efi_memmap[MAX_STRING]; /* "false" | "auto" */
+ } sys_img_options_t;
+ 
+ #endif /* __ELILO_SYSDEPS_X86_64_H__ */
+--- a/bootparams.c
++++ b/bootparams.c
+@@ -93,21 +93,14 @@ create_boot_params(CHAR16 *args, memdesc
+ 	 */
+ 	Memset(bp, 0, BOOT_PARAM_MEMSIZE);
+ 
++	/*
++	 * Convert kernel command line args from UNICODE to ASCII
++	 * and put them where the kernel expects them:
++	 */
+ 	U2ascii(args, cp, cmdline_size);
+ 
+ 	if (sysdeps_create_boot_params(bp, cp, initrd, vmcode, cookie) == -1) return 0;
+ 
+-	/*
+-	 * Convert kernel command line args from UNICODE to ASCII and put them where
+-	 * the kernel expects them:
+-	 */
+-	while (1) {
+-		ch = *args++;
+-		if (!ch) break;
+-		*cp++ = ch;
+-	}
+-	*cp++ = '\0';
+-
+ 	return bp;
+ }
+ 

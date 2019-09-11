@@ -1,0 +1,527 @@
+-------------------------------------------------------------------
+Mon Jan 29 12:20:23 UTC 2018 - pgajdos@suse.com
+
+- added xcursor dependency [bsc#1077881]
+
+-------------------------------------------------------------------
+Tue Jul 25 00:37:09 UTC 2017 - jengelh@inai.de
+
+- Trim description, drop TM/R marks according to guidelines.
+
+-------------------------------------------------------------------
+Mon Jul 17 12:34:53 UTC 2017 - tchvatal@suse.com
+
+- Drop patch fltk-1.3.2-do_not_add_unneeded_extra_dependencies.patch
+  as upstream closed the ticked stating it is wrong
+- Add patch fltk-1.3.4-fltk_config.patch
+
+-------------------------------------------------------------------
+Thu Feb  9 14:40:05 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package %{_docdir}/fltk-devel in order to fix build
+  with RPM 4.13.0.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:29:09 UTC 2016 - pgajdos@suse.com
+
+- updated to 1.3.4: see CHANGES
+- remove fltk-1.3.3-do-not-use-internal-ABI.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Jan 26 12:33:38 UTC 2015 - dimstar@opensuse.org
+
+- Add fltk-1.3.3-do-not-use-internal-ABI.patch: do not use internal
+  function Fl_XFont_On_Demand::value(), which changes ABI based on
+  the configuration. Add a fl_core_font() getter for the same.
+
+-------------------------------------------------------------------
+Tue Jan 13 03:32:00 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.3.3
+  +Very much changes; please have a look on CHANGES file
+- Remove fltk-1.3.2-underlinking.patch; merged upstream
+
+-------------------------------------------------------------------
+Sat Oct 25 16:57:19 UTC 2014 - crrodriguez@opensuse.org
+
+- Correct -devel package dependencies
+* /usr/include/FL/x*.H needs x11 headers
+* /usr/include/FL/gl*.H needs gl headers.
+
+-------------------------------------------------------------------
+Tue Mar  5 17:27:54 UTC 2013 - jw@suse.com
+
+- added a fltk-devel-static subpackage to transport libfltk*.a 
+  as needed by Documentation:Tools/flpsed.
+
+-------------------------------------------------------------------
+Fri Jan 25 13:33:43 UTC 2013 - pgajdos@suse.com
+
+- by previous change, files of fltk maint package was moved to 
+  fltk-devel, keeping fltk empty; thus:
+  * libfltk1 obsoletes fltk
+  * fltk-devel provides fltk
+
+-------------------------------------------------------------------
+Thu Jan 10 16:16:08 UTC 2013 - reddwarf@opensuse.org
+
+- updated to 1.3.2:
+        - Removed unnecessary drawing calls (STR #2898)
+        - Fixed regression in FLTK 1.3.1 for unbundled Mac OS FLTK applications that
+          did not appear in dock nor have a menu bar (STR #2890).
+        - Fl_Table::clear() now calls table->clear() for consistency. (STR #2889)
+        - Fixed Fl_Scroll widget that fails under Mac OS X 10.8 and retina display (STR #2887).
+        - Prevents scrollbars from drawing when widget is sized too small to be visible (STR #2886).
+        - Documented how to make a Mac OS X FLTK application launchable by dropping files on its icon.
+        - Fixed a Mac-specific issue appeared with OS 10.8 (Mountain Lion): long delay before
+          opening when the application is started by dragging a file on the application icon.
+        - Fixed use of PNG image from im-memory data (STR #2884).
+        - Added static Fl_RGB_Image::max_size(size_t) to limit the maximum memory size allowed to
+          RGB images (STR #2881).
+- add fltk-1.3.2-do_not_add_unneeded_extra_dependencies.patch to avoid adding unneeded libraries
+  to the link command of dependent packages. Those libraries didn't even need to be installed.
+- remove automake BuildRequire
+- substitute %if crazyness for pkgconfig() style BuildRequires
+- correct libfltk1 group
+- get rid of the fltk package which only contained duplicated doc files, probably by a packaging accident
+- add fltk-1.3.2-verbose_build.patch
+- add fltk-1.3.2-underlinking-patch
+- remove fltk-as-needed.patch (integrated into fltk-1.3.2-underlinking-patch)
+- don't add -fno-strict-aliasing to CFLAGS. Upstream already does that
+- don't set glflags and fltkflags for make. I don't see it doing anything useful
+
+-------------------------------------------------------------------
+Tue Nov 20 13:01:32 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.3.1:
+        - Fixed utf_strncasecmp and utf_strcasecmp
+        - Moved all inline constructors into source file to avoid bad DLLs
+        - Fixed Fl_Widget::copy_label() and Fl_Window::copy_label() when
+          called with the old label() (STR #2836)
+        - Fixed Fl_Input_::maximum_size() documentation and replace() method
+          to honor maximum_size() as number of allowed characters (STR #2747).
+        - Fixed a potential crash if Fl_Double_Window::flush() was called
+          before show()
+        - Fixed regression (in FLTK 1.3.0) that could clear a radio
+          button by using the keyboard (space or shortcut) (STR #2748)
+        - Fixed fl_pie() drawing too small on X11 (STR #2703)
+        - Fixed Fl_Menu issue with unusual menu flags (STR #2680)
+        - Fixed Windows DLL import of fl_xid() (STR #2670)
+        - Added Fl::screen_work_area() functions that compute the work area
+          of a screen. These functions improve the positioning of menus.
+          Changed Fl::x(), Fl::y(), Fl::w(), Fl::h() functions
+          to return the origin and size of the work area of the main screen
+          (STR #2695 + 2697)
+        - Created the FL_SCREEN_CONFIGURATION_CHANGED event that is triggered
+          when a screen is added, removed, moved or when resolution is changed
+          (STR #2600)
+        - Improved the description of page size and orientation by
+          Fl_PostScript_File_Device.
+        - Added support for horizontal wheel movement under X11 and MSWindows Vista
+          and above (STR #2644).
+
+    1.3.1 ABI FEATURES
+          (To enable the following ABI features, put: #define FLTK_ABI_VERSION 10301
+          at the top of your FL/Enumerations.H and rebuild FLTK and your app)
+        - Fl_Tree optimized to support large trees (eg. 100k items):
+          Added _next_sibling and _prev_sibling to Fl_Tree_Item class,
+          and support methods.
+
+-------------------------------------------------------------------
+Thu Jul 26 07:05:50 UTC 2012 - coolo@suse.com
+
+- buildrequires on specific library sonames is breaking build
+
+-------------------------------------------------------------------
+Mon Feb 20 12:58:48 UTC 2012 - coolo@suse.com
+
+- let the devel package buildrequire xorg-x11-devel
+
+-------------------------------------------------------------------
+Thu Dec 22 07:52:43 UTC 2011 - pgajdos@suse.com
+
+- buildrequires automake
+
+-------------------------------------------------------------------
+Wed Dec 21 08:41:22 UTC 2011 - pgajdos@suse.com
+
+- fixed linking library with as-needed [bnc#736410]
+  * as-needed.patch
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Implement baselibs config
+
+-------------------------------------------------------------------
+Mon Jul 11 15:36:53 UTC 2011 - pgajdos@novell.com
+
+- updated to 1.3.0:
+    * Added UTF-8 Unicode support throughout FLTK and Fluid
+    * Added Fl_Tree widget for hierarchical views
+    * Added Fl_Table widget for widget layout
+    * Added Fl_Native_Filechooser as a widget and global options
+    * etc., see CHANGES
+    * removed upstreamed and unneeded patches
+
+-------------------------------------------------------------------
+Thu Aug 26 15:00:27 CEST 2010 - pgajdos@suse.cz
+
+- update to 1.1.10
+  changes since rc3
+  - Widgets now remove stale entries from the default callback
+    queue when they are deleted (STR #2302)
+  - Fixed selection bug in Fl_Int_Input (STR #2292)
+
+  for all changes see the /usr/share/doc/packages/fltk/CHANGES
+
+-------------------------------------------------------------------
+Wed Mar 31 21:17:46 UTC 2010 - john@redux.org.uk
+
+- Added support for building on Fedora, RHEL 5/CentOS 5 and
+ Mandriva.
+- Added patch for use of printf-style varags functions.
+- "cast" patch disabled for many build targets, as it caused the
+ builds to fail.
+
+-------------------------------------------------------------------
+Fri Dec 18 17:48:09 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Dec  1 13:32:31 CET 2009 - pgajdos@suse.cz
+
+- update to version 1.1.10rc3
+- splitted out libfltk1
+- some specfile cleanups
+
+-------------------------------------------------------------------
+Tue Aug  4 16:04:35 CEST 2009 - pgajdos@suse.cz
+
+- fixed link_gl.patch to build package
+
+-------------------------------------------------------------------
+Sat Jun 20 13:12:49 CEST 2009 - cmorve69@yahoo.es
+
+- add missing DT_NEEDEDs, fixes alsa-tools build with --as-needed
+
+-------------------------------------------------------------------
+Mon Jun  8 16:37:41 CEST 2009 - pgajdos@suse.cz
+
+- fixed build with new g++
+
+-------------------------------------------------------------------
+Tue Jul  1 12:07:31 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.1.9:
+  * Improved color contrast in secondary selection blocks
+    of Fl_Text_Display
+  * Fixed regression in callback handling
+  * Fixed wrong relative path when absolute path has a
+    trailing slash in fl_filename_relative
+  * Fixed multiple selction of files and directories in
+    Fl_File_Chooser
+
+-------------------------------------------------------------------
+Mon Apr  7 14:36:51 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.1.8:
+  * many buxfixes
+  * added documentation about the potential limitations
+    of Fl::grab on newer operating systems (STR #1747)
+  * FLUID checks for seperately declared callbacks to
+    avoid a bogus "extern" declaration (STR #1776)
+  * Added "protected" class memebrs in FLUID
+  * Double-clicking a widget in a FLUID layout will show
+    the item in the widget browser
+  * gl_font() support for Xft+X11 (STR #1809)
+  * Fl_Gl_Window::mode() needed to hide and show the window
+    when toggling stereo mode (STR #1846)
+  * Added Fl_Group::clip_children() methods to support
+    automatic clipping of child widget drawing (STR #1844)
+  * Fl_Browser_ and friends now support FL_WHEN_ENTER_KEY
+    for both Enter/Return and double-clicks (STR #1818)
+  * Fl_Help_View did not release the images it used (STR
+    #1817)
+  * Shared libraries would not build on 64-bit Linux
+    systems with an existing non-PIC FLTK installation
+    (STR #1791)
+- removed test dir with similar contents as examples dir
+
+-------------------------------------------------------------------
+Thu Aug 30 14:53:16 CEST 2007 - uli@suse.de
+
+- enable threads
+
+-------------------------------------------------------------------
+Mon Apr 16 18:05:22 CEST 2007 - pgajdos@suse.cz
+
+- update files from CVS in CinePaint project
+   * casting between (void*) and int cleanups
+   * see http://cinepaint.bigasterisk.com/FLTK
+
+-------------------------------------------------------------------
+Thu Oct  5 17:17:17 CEST 2006 - lmichnovic@suse.cz
+
+- fixed casting on 64bit arch (intptr_t.patch)
+- compiling with no-strict-aliasing 
+- fixed wrongly called ranlib with fixed libdir in variable 
+  (libdir.patch)
+
+-------------------------------------------------------------------
+Mon Aug  7 16:13:40 CEST 2006 - lmichnovic@suse.cz
+
+- fixed prefixes accordingly to new X.org 7.x, detecting prefix in X.org
+
+-------------------------------------------------------------------
+Fri Aug  4 13:38:02 CEST 2006 - postadal@suse.cz
+
+- updated to version 1.1.7
+  * added some new example programs
+  * adds many new improvements to the FLUID software (multi-level undo, 
+    syntax highlighting in all code fields, widget alignment and sizing 
+    guides, dialog templates, widget subclasses, and printing and testing 
+    of user interfaces)
+  * fixed many bugs
+- removed obsoleted patches: gcc3.1-fix.dif, cast-fix.diff 
+
+-------------------------------------------------------------------
+Mon Feb 13 14:30:42 CET 2006 - pnemec@suse.cz
+
+- Fixed class cast errors in testsuite.  
+
+-------------------------------------------------------------------
+Mon Feb  6 10:34:46 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+- Fix some testsuite errors.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 22:51:21 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 12 18:34:26 CET 2005 - postadal@suse.cz
+
+- updated to version 1.1.6
+- removed obsoleted patches: fltk-1.1.6-fix.dif and fltk-1.1.6-gcc34hack.patch
+
+-------------------------------------------------------------------
+Thu Jan 15 13:13:26 CET 2004 - meissner@suse.de
+
+- Upgraded to 1.1.4.
+- Added a hack so it compiles with gcc 3.4pre, remove when GCC 
+  bug 13696 is fixed.
+
+-------------------------------------------------------------------
+Sat Jan 10 15:30:02 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jun 13 10:38:32 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Fri Feb 14 12:45:41 CET 2003 - postadal@suse.cz
+
+- updated to version 1.1.3
+  * documentation update
+  * fixes
+
+-------------------------------------------------------------------
+Thu Jan 09 14:52:36 CET 2003 - postadal@suse.cz
+
+- updated to version 1.1.2 (a lot of fixes)
+- fixed undefined references to non-weak symbols
+
+-------------------------------------------------------------------
+Wed Jan  8 16:38:46 CET 2003 - ro@suse.de
+
+- fix configure.in 
+
+-------------------------------------------------------------------
+Wed Nov 20 17:57:39 CET 2002 - meissner@suse.de
+
+- Upgraded to 1.1.1, upgraded fltk-delete-fix.dif, fixed neededforbuild.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Sep 04 20:37:47 CEST 2002 - postadal@suse.cz
+
+- added %run_ldconfig macro [#18897] 
+
+-------------------------------------------------------------------
+Tue Aug 13 11:26:30 CEST 2002 - uli@suse.de
+
+- fixed installation on lib64 archs
+
+-------------------------------------------------------------------
+Mon Aug 12 18:03:59 CEST 2002 - postadal@suse.cz
+
+- update to version 1.1.0rc5
+  * a lot of fixes 
+
+-------------------------------------------------------------------
+Sun May  5 18:11:54 CEST 2002 - schwab@suse.de
+
+- Fix invalid delete.
+- Use $RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Apr 19 11:44:41 CEST 2002 - postadal@suse.cz
+
+- used macro %{_lib} and fixed Makefile
+- updated to 1.1.0b13
+  * Documentation updates
+  * Stereo OpenGL support
+  * Added support for Xft lib to provide anti-aliased text on X11
+  * Initial port of FLTK 2.0 drag-and-drop support
+
+-------------------------------------------------------------------
+Wed Apr 10 17:35:33 CEST 2002 - tiwai@suse.de
+
+- fixed workaround for gcc 3.1 in configure script.
+
+-------------------------------------------------------------------
+Mon Feb  4 12:20:39 CET 2002 - nadvornik@suse.cz
+
+- updated to 1.1.0b10
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:08 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Jan 14 17:49:01 CET 2002 - schwab@suse.de
+
+- Remove ia64 workaround.
+
+-------------------------------------------------------------------
+Mon Jan 14 13:23:57 CET 2002 - nadvornik@suse.cz
+
+- added fltk-config to filelist
+
+-------------------------------------------------------------------
+Tue Dec 11 16:58:13 CET 2001 - nadvornik@suse.cz
+
+- updated to 1.1.0b6
+- added libjpeg and libpng to neededforbuild
+
+-------------------------------------------------------------------
+Thu Nov  8 18:40:42 CET 2001 - tiwai@suse.de
+
+- updated to 1.1.0b5.
+  built now on gcc-3.0 / beta environment, too.
+
+-------------------------------------------------------------------
+Thu Nov  8 18:39:09 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild
+
+-------------------------------------------------------------------
+Thu Sep 27 15:12:25 CEST 2001 - dan@suse.cz
+
+- update to 1.1.0b1 that includes:
+        * added new widgets
+        * support for mouse wheels
+        * keyboard navigation to all widgets
+
+-------------------------------------------------------------------
+Mon Aug 27 18:10:41 CEST 2001 - kukuk@suse.de
+
+- split off devel subpackage
+
+-------------------------------------------------------------------
+Fri May 25 11:28:02 CEST 2001 - pblaha@suse.cz
+
+- update on 1.0.11 
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesaglu> to <xf86glu>
+- changed neededforbuild <mesaglu-devel> to <xf86glu-devel>
+
+-------------------------------------------------------------------
+Thu Mar  8 17:56:29 CET 2001 - pblaha@suse.cz
+
+- update on 1.0.10 
+
+-------------------------------------------------------------------
+Wed Mar  7 18:20:19 CET 2001 - ro@suse.de
+
+- added glu and glut packages 
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:41 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Mon Jul 10 23:27:04 CEST 2000 - mha@suse.de
+
+- new version: 1.0.9
+
+-------------------------------------------------------------------
+Tue Jun 20 15:01:55 CEST 2000 - schwab@suse.de
+
+- Lower opt level on ia64.
+
+-------------------------------------------------------------------
+Wed May 24 13:04:12 CEST 2000 - smid@suse.cz
+
+- fix to compile with new mesa
+
+-------------------------------------------------------------------
+Fri Apr 21 14:56:47 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Mon Feb 14 11:34:33 MET 2000 - mha@suse.de
+
+- update to 1.0.7
+
+-------------------------------------------------------------------
+Wed Sep 29 17:12:36 CEST 1999 - mha@suse.de
+
+- update to 1.0.6
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 20 12:03:07 MEST 1999 - mha@suse.de
+
+- removed call to "glXReleaseBuffersMESA", which only exists
+  in mesasoft, but not in any hardware-accelerated OpenGL library
+
+-------------------------------------------------------------------
+Mon Jul 19 17:39:21 MEST 1999 - bs@suse.de
+
+- added Check
+
+-------------------------------------------------------------------
+Mon Jul 19 14:42:25 MEST 1999 - mha@suse.de
+
+- new package: FLTK (pronounced "fulltick") is a LGPL'd C++ graphical
+  user interface toolkit for X (UNIX®), OpenGL, and WIN32 (Microsoft®
+  Windows® NT 4.0, 95, or 98)

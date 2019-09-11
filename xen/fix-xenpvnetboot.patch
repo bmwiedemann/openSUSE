@@ -1,0 +1,22 @@
+References: bsc#1138563
+
+--- xen-4.10.3-testing/tools/misc/xenpvnetboot.orig	2019-06-19 13:46:55.249857405 -0600
++++ xen-4.10.3-testing/tools/misc/xenpvnetboot	2019-06-19 13:57:43.148948352 -0600
+@@ -89,7 +89,7 @@ class Fetcher:
+         suffix = ''.join(random.sample(string.ascii_letters, 6))
+         local_name = os.path.join(self.tmpdir, 'xenpvboot.%s.%s' % (os.path.basename(filename), suffix))
+         try:
+-            return request.urlretrieve(url, local_name)
++            return request.urlretrieve(url, local_name)[0]
+         except Exception as err:
+             raise RuntimeError('Cannot get file %s: %s' % (url, err))
+ 
+@@ -284,7 +284,7 @@ Supported locations:
+         sys.exit(1)
+ 
+     sys.stdout.flush()
+-    os.write(fd, output)
++    os.write(fd, output.encode('utf-8'))
+ 
+ 
+ if __name__ == '__main__':

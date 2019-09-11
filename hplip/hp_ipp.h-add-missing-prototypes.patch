@@ -1,0 +1,36 @@
+From e69884e9581d3c6013389ac0efa4e3778dbbee68 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 21 Mar 2018 23:56:41 +0100
+Subject: [PATCH] hp_ipp.h: add missing prototypes
+
+---
+ protocol/hp_ipp.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/protocol/hp_ipp.h b/protocol/hp_ipp.h
+index 3853f8432dae..24daf8b37a9a 100644
+--- a/protocol/hp_ipp.h
++++ b/protocol/hp_ipp.h
+@@ -149,6 +149,7 @@ int auth_cancel_req = 0;  // 0--> authentication cancel is not requested,
+ 
+ 
+ http_t*    acquireCupsInstance();
++void _releaseCupsInstance();
+ const char *getCupsErrorString(int status);
+ void freePrinterList(printer_t *list);
+  
+@@ -162,6 +163,11 @@ ipp_t * usbDoRequest(ipp_t *request, char* device_uri);
+ ipp_t * networkDoRequest(ipp_t *request, char* device_uri);
+ ipp_t * getDeviceStatusAttributes(char* device_uri, int *count);
+ int     getCupsPrinters(printer_t **printer_list);
++int addCupsPrinter(char *name, char *device_uri, char *location, char *ppd_file,
++		   char *model, char *info);
++int delCupsPrinter(char *pr_name);
++int setDefaultCupsPrinter(char *pr_name);
++int controlCupsPrinter(char *pr_name, int op);
+ 
+ HPIPP_RESULT parseResponseHeader(char* header, int *content_length, int *chunked, int* header_size);
+ HPIPP_RESULT prepend_http_header(raw_ipp *raw_request);
+-- 
+2.16.1
+

@@ -1,0 +1,2 @@
+addFilter("explicit-lib-dependency .*-matplotlib")
+addFilter("wrong-file-end-of-line-encoding .*/site-packages/sk_dsp_comm/ca1thru37.txt")

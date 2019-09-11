@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Sat Aug 18 09:26:50 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.4.1:
+  * Ability to save and restore post drafts.
+  * Post publisher can grow much bigger.
+  * System notifications now include a button to show the
+    application.
+  * Properly bring the main window to the front when restoring from
+    the tray icon, and when clicking the "Show" button in a
+    notification (depends on your WM)..
+  * Fixes in the profile editor and image viewer.
+  * Other minor improvements.
+- Do not bother installing the appstream file to
+  /usr/share/appdata/ on openSUSE Leap 42.x or older.
+
+-------------------------------------------------------------------
+Fri Nov 10 09:40:52 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.0:
+  * The side panel can now be moved to any border of the window, by
+    dragging its title bar, after unlocking the panels from the
+    View menu.
+  * The toolbar can also be moved around, after unlocking.
+  * Files can be attached to a post via drag'n'drop from a
+    file manager.
+  * Dragging text from a website to the post composer works better
+    now.
+  * Several improvements in the formatting options of the
+    post/comment editor.
+  * Auto-switch from Fit mode to Full mode in image viewer when
+    using the mouse wheel.
+  * Finer zoom control.
+  * Posts with non-media attachments will show a matching icon from
+    the user's icon theme, based on MIME type (i.e. PDF icon,
+    TXT icon, etc).
+  * A proper file extension will be suggested when saving non-media
+    attachments to drive.
+  * Add an option to set window as "requiring attention" to notify
+    new posts, which usually results in the taskbar/dock entry
+    being highlighted (Configuration > Notifications, enabled by
+    default).
+  * Optional activity icons in the minor feeds.
+    (Configuration > Timelines, disabled by default).
+  * Several improvements in the account dialogue.
+  * Building with Qt 4 is no longer supported.
+  * Remove the libmagic dependency, since Qt 5 has methods for
+    mimetypes.
+  * Remove the QJSON dependency, since Qt 5 has methods to handle
+    JSON.
+  * Accepting username@localhost as valid Webfinger ID, for testers.
+  * Handle new HTML-based error messages sent by server since
+    Pump.io 4.0.
+  * Several cosmetic fixes.
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.3.7:
+  * Image viewer now supports dragging the image around with the
+    mouse, zooming with the wheel, and rotating animated images
+    correctly.
+  * Fix case-insensitive sorting of contacts in auto-completion
+    lists.
+  * Server version will be shown in the log.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.3.6 (changes since 1.3.4):
+  * Officially support building with Qt 5.
+  * Items highlighted due to filtering rules will show the reasons
+    for highlighting.
+  * After downloading an attachment, a button will appear, to open
+    the file using the default application from the user's desktop
+    environment.
+  * Add buttons to rotate images in the image viewer
+    (Ctrl+Left/Right keys).
+  * Some windows that used to block input to the rest of the
+    application, such as posts opened from the Meanwhile feed, will
+    be independent now.
+  * The colour setting for highlighted items is now enabled by
+    default.
+  * Several improvements in page selector.
+  * Fix corner case where timeline might update while a comment is
+    being composed, destroying it.
+  * HTTP redirections will be followed when loading images
+    (Qt 5 only).
+  * Duration of popup notifications is now configurable, and
+    notifications can be set to be persistent.
+  * Some input fields will show a button to clear them
+    (Qt 5 only).
+  * Add a Galician translation.
+  * Other small fixes.
+- Switch to Qt5.
+- Define $SOURCE_DATE_EPOCH for Dianara instead of manually
+  replacing __DATE__ and __TIME__.
+
+-------------------------------------------------------------------
+Tue Jun 28 17:12:57 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.4:
+  * Automatic timeline updates will avoid interrupting the user.
+  * Different snippet limits for regular and highlighted activities.
+  * Snippets set to 'Always' by default.
+  * More detailed new post notifications.
+  * Clicking "Comment" in posts will show an option to check for
+    comments, if the post doesn't have (or show) any comments yet.
+  * Filtering (searching) contact lists will show the number of
+    matches.
+  * Items in the list of configured filtering rules can be sorted
+    manually, via drag-and-drop.
+  * Fix a possible crash when pasting a URL which points to an image.
+  * Update a few links to pump.io sites.
+  * Minor visual fixes and other improvements.
+
+-------------------------------------------------------------------
+Tue Mar 22 19:24:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.3.3:
+  * When trying to follow a contact, the user ID is verified.
+  * The image viewer gained basic zoom capabilities.
+  * Timelines show thumbnails of embedded images, full size in the
+    viewer.
+  * When pasting text in a post or comment, proper links will be
+    made from URLs, even when the pasted text is rich format.
+  * Links created from the Format menu are verified to have a
+    proper scheme.
+  * Post publisher area can grow bigger.
+  * Configurable avatar sizes in comments and minor feeds.
+  * Better error handling when timelines fail to load.
+  * Add a AppData (AppStream) file.
+  * Fix some size issues in comments.
+  * Other small fixes and improvements.
+
+-------------------------------------------------------------------
+Sat Oct 31 10:21:56 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.3.2:
+  * Add a D-Bus interface, to control the applications from other
+    programs, such as scripts, using tools like qdbus or dbus-send.
+  * Option to list the newest users from your own pump.io server,
+    located under Neighbors, inside the Contacts tab.
+  * Welcome wizard, to guide new users.
+  * New privacy option: private likes.
+    Liking posts or comments will only inform the author.
+  * Support for non-https servers, using the --nohttps command line
+    parameter.
+  * Improve localisation support, and fix some issues with RTL
+    languages.
+  * JSON-based error messages from the server, which might have
+    Unicode symbols, are now shown correctly.
+  * Several minor fixes.
+  * Hebrew translation.
+- Remove dianara-remove-timestamp.patch and use a regexp instead.
+
+-------------------------------------------------------------------
+Sun Aug  2 17:02:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.3.1:
+  * Option to browse posts from a user (only for users on the same
+    server, for now).
+  * Option to set or change e-mail address for the account.
+  * Nick autocompleter now displays user ID, too.
+  * Proper links are made from URL's found anywhere, when pasting
+    plain text.
+  * Add a Privacy category in the settings, with a couple of new
+    options related to following people and managing lists.
+  * Button to configure account on status bar when account is not
+    configured.
+  * Option to scroll main timeline to the new stuff line on update.
+  * Enhance timeline page selector.
+  * Progress bar during program startup.
+  * Option to start application hidden in the system tray.
+  * Command line option to change the color of links:
+    --linkcolor=color (useful in GTK+ environments).
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Fri May  8 09:00:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.3.0:
+  * Enhanced timeline updates and pagination.
+    Timeline updates are much faster now, require less network
+    traffic, and don't mark previous posts as read every time a
+    feed is updated.
+  * Nickname autocompletion in post/comment composers.
+    Type '@' to get a list of names, then type the first characters.
+    When creating a note, this will add that contact to the "To"
+    list. In comments it will just be a simple link.
+  * Posts opened from the "+" button in the Meanwhile feed will be
+    able to load comments correctly much more often.
+  * Added a button to cancel an attachment in the publisher.
+  * The Favorites timeline will be scheduled for update when
+    liking or unliking things, so liking several posts in a few
+    minutes will only reload it once.
+  * Option to hide duplicated posts, that is, posts which were
+    already visible in the timeline and have been received again
+    due to sharing.
+  * Added setting to automatically set an initial post title from
+    the file name of an attachment.
+  * Option to choose the size of avatars for posts.
+  * Comment area in posts will use the space more efficiently.
+  * Option to make shared posts more obvious, with sharer's avatar.
+  * Option to highlight comments made by the author of a post, and
+    your own comments, with a subtle hint.
+  * Optional character counter in the publisher.
+  * Other new options in the settings dialog. Some were rearranged.
+  * The Account dialog will be locked when Dianara is already
+    authorized to use your account.
+  * Some highlighting colours are now enabled by default.
+  * Time of last timeline update will be shown on the menu bar.
+  * Attached images which fail to load (usually due to permissions)
+    will show a clear message.
+  * A demo notification will be shown when setting the notification
+    style.
+  * Command line option to ignore SSL errors. Use with care!
+  * Command line options now have short form alternatives like -c
+    or -d.
+  * Fix handling system shutdown; properly close at environment's
+    request.
+  * Fix loading of remote images when the URL has parameters, and
+    when the URL does not have a schema.
+  * Fix issues with initial width of comments.
+  * Fix handling cases when the tray icon is not available.
+  * Fix Ctrl+Shift+V, to paste without format, in comments.
+  * Fix flickering effect on some timestamps.
+  * Other small fixes.
+- Add dianara-remove-timestamp.patch.
+- Remove installation of translations as they are built-in.
+
+-------------------------------------------------------------------
+Tue Nov 16 21:09:23 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.2.5:
+  * Mentions and Actions feeds. Access them via keyboard with
+    Control+1/2/3 (Keyboard shortcut to reload Meanwhile feed has
+    been changed to F2).
+  * Made some of the labels expandable; they will show extra
+    information when clicked.
+  * Offer to insert links to image files as embedded images, when
+    pasting.
+  * Very long post titles will be cut when posting.
+  * Shared posts now show sharer's information in a wide line at
+    the top.
+  * Show warning when posting only to Followers, but having none.
+  * Added new configuration categories, and rearranged some
+    options.
+  * Added option to show post client information directly.
+  * Option to insert basic tables in messages.
+  * Avatar menus now sync their Follow/Unfollow option based on
+    global contact list changes.
+  * Added more fallback icons.
+  * Added Control+Enter shortcut for the "Done" button when
+    selecting specific recipients for a message.
+  * Enhancements in the experimental group support.
+  * Added a few changes to support GNU MediaGoblin's upcoming
+    Pump.io API.
+    You'll be able to use Dianara to post to MediaGoblin sites
+    once its 0.8.0 version is out.
+  * Added links to the Pump.io User Guide.
+    (https://github.com/e14n/pump.io/wiki/User-Guide)
+  * Fixed #4: some memory leaks, thanks to a patch by
+    Gregor Herrmann.
+  * Fixed wrong order in list of likes in posts.
+  * Fixed extra spaces inserted when creating links in the middle
+    of some existing text.
+  * Other small fixes.
+
+-------------------------------------------------------------------
+Tue Oct 28 10:48:50 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.2.4:
+  * Optional snippets in the Meanwhile feed, with configurable
+    character limit.
+  * Clicking the button that shows the page number at the bottom of
+    a timeline (or pressing Control+G) will open a window to jump
+    to any page.
+  * Menu option to enable/disable timeline auto-updating.
+  * New status bar icon indicates initialization stage and state of
+    auto-updates. Clicking it will also toggle the state of
+    auto-updates.
+  * Tray icon shows how many of the new messages are also
+    highlighted.
+  * Names of recipients are shown as links in the Publisher, so
+    hovering over them will show their addresses in the status bar.
+  * More logging, specifically during initial client registration
+    and the authorization token process.
+  * Settings dialog switched from tabs to stacked view, to have
+    more categories in the future.
+  * Added a TRANSLATING file, with instructions for new
+    translators.
+  * Fixed quoting texts containing "".
+  * Fixed long shutdown time.
+  * Lots of other small visual changes and fixes.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Sat Sep  6 16:06:11 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.2.3
+  * Configurable fonts.
+  * Ability to open the parent post for posts in the timelines, if they were
+    replies to something, such as a shared comment appearing in the timeline.
+  * Option to send a message to a contact directly from the avatar menu
+    and from the contact list.
+  * Show your user ID in popup notifications. Useful if you run more than one
+    instance of Dianara for different accounts.
+  * Show total number of items in timelines, in the tooltips of their tabs,
+    and the total number of pages with the current page number, at the bottom.
+  * Show how many Meanwhile items are highlighted, among those that are new.
+  * Some settings in Configure dialog have been rearranged.
+  * Filter comparison for "Activity description" removes links from it,
+    allowing for simpler rules.
+  * More details about post location, in the tooltip of the location name.
+  * Fixed Meanwhile feed growing very wide sometimes.
+  * Fixed Edit button not working on posts opened in separate window.
+  * Other bug fixes and minor changes.
+
+-------------------------------------------------------------------
+Sun Aug  3 16:47:20 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.2.2
+  * Proxy configuration support. Password is not stored securely, so you can
+    leave it empty and be prompted for it on startup.
+  * Animated images are now animated when viewed in the separate image viewer.
+  * Filters are now case insensitive, ie. "openfarmgame" matches "OpenFarmGame".
+  * Added a delay before reloading all comments after posting a reply.
+  * Enhanced initialization, so Dianara will keep on trying to get all initial
+    data (your profile, etc) if it fails initially.
+  * Basic Help window.
+  * Configurable "unread post" color.
+  * Show To/CC info in the timestamp tooltip of minor feed activities.
+  * The Normalize Text Colors option in posts works in most cases now.
+  * Link color is no longer specified, so other contacts will see links
+    in the color configured by them.
+  * New way to show attachments, including attached images.
+  * Better filename suggestions when saving attachments.
+  * Option to create bullet lists in the Format menu.
+  * More symbols in the Format > Symbols menu.
+  * Ask for confirmation when quitting Dianara if a post is being composed.
+  * Pressing Enter in title field jumps to message body. Likewise, pressing
+    the Up Arrow at the start of the message jumps to the title field.
+  * Better notification of authentication-related errors.
+  * Added some more fallback icons, for environments without (good) iconsets.
+  * Updated Italian translation, by Metal Biker.
+  * Partial updates to Polish translation by Derping Muffins and CyberKiller,
+    and German translation by Emvigo.
+  * Other small fixes.
+
+-------------------------------------------------------------------
+Thu May 22 06:32:48 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 1.2.1
+  * Upload of other media types (audio, video, misc files).
+    Keep in mind that most people won't be able to see these at the moment!
+    (Related Pump.io issue: https://github.com/e14n/pump.io/issues/1014)
+  * Nicer download of media attachments.
+  * New --config parameter, to use a different configuration on startup.
+    Using this, you can run 2 or 3 instances of Dianara for different accounts.
+  * System tray icon can be configured to show your avatar, or a custom image.
+  * Added an optional toolbar.
+  * Added some widgets to the status bar.
+  * Avatar button gets highlighted when hovering, to make it more obvious.
+  * New messages are highlighted with a gradient on the right side.
+  * Added partial German translation, by Emvigo.
+  * Some minor fixes.
+
+-------------------------------------------------------------------
+Wed Apr 16 14:27:24 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

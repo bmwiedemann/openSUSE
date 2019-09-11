@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Fri Aug 16 15:54:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing %service_* scriptlets
+
+-------------------------------------------------------------------
+Wed Jul 24 17:52:33 UTC 2019 - hiwatari.seiji@gmail.com
+
+- Update to 0.9.8
+	* Close log files when reusing a name. (pyroscope)
+	* Increased max timeout for tracker requests.
+	* Set max piece size 512mb.
+	* Switch to C++11 MRT RNG for random bytes. (lps-rocks)
+	* Added support for openssl 1.1.
+	* Fix honoring throttle.min_peers* settings in rtorrent. (chros)
+	* Improved failed tracker bencode parsing. (chros)
+	* Added example rtorrent.rc. (g0tmi1k)
+	* Added a temporary name filter. (Toff)
+	* Added 'log.close' command.
+	* Added 'd.tracker_announce.force' command.
+	* Added 'event.system.startup_done/shutdown' commands/events. (chros)
+	* Added 'd.custom.if_z' command. (pyroscope)
+	* Added 'd.multicall.filtered' command. (pyroscope)
+	* Added 'event.view.hide/show' commands. (pyroscope)
+
+- Update to 0.9.7
+	* Fixed ip filter memory usage. (sallyswiss/chros73)
+	* Add space to fmt str in log_gz_file_write. (pastly)
+	* Fix compilation issue with gcc v6.x and empty CXXFLAGS. (chros73)
+	* Fix BEP7 compatibility with IPv6 trackers and IPv4 peers.
+	* Include SCGI/XMLRPC example in rtorrent.rc. (ss23)
+	* Handle SIGHUP like SIGINT. (pyroscope)
+	* Fix Throttle args. (chros73)
+	* Fix missing ranlib - not defined but used. (duraki)
+	* Fix no // are at start of expanded paths. (pyroscope)
+	* Fix ncurses header include. (theirix)
+	* Fix segfault when viewing a magnet download in the leeching view. (slingamn)
+    
+- Remove rtorrent-vim package because it was made for the old (now discouraged) config syntax
+	* See: https://github.com/rakshasa/rtorrent/wiki/CONFIG-Template
+
+-------------------------------------------------------------------
+Mon Dec 11 23:27:20 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 0.9.6.g113
+  * Support for new libtorrent API regarding logging file
+    descriptors and IPv6 binds.
+
+-------------------------------------------------------------------
+Tue Jun  6 13:31:29 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 0.9.6.g93
+  * IPv6 support
+  * add support for the XDG base dir spec for rtorrent.rc
+  * daemonization support
+  * maximum supported filesize now 512 GB
+- Change from requiring libxmlrpc-c-devel to xmlrpc-c-devel
+  [boo#1042228]
+
+-------------------------------------------------------------------
+Sun Nov 15 11:05:42 UTC 2015 - mpluskal@suse.com
+
+- Enable xmlrpc on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Nov 13 11:35:23 UTC 2015 - tampakrap@opensuse.org
+
+- Update to new upstream release 0.9.6
+* Added 'log.open_file_pid' and 'log.open_gz_file_pid' commands
+  that appends the pid automatically.
+- Moved fully to github, change URL and Source accordingly
+
+-------------------------------------------------------------------
+Tue Aug  5 10:00:34 UTC 2014 - jengelh@inai.de
+
+- It is supposed to be packageand(vim:rtorrent)
+
+-------------------------------------------------------------------
+Sun Aug  3 08:40:33 UTC 2014 - tampakrap@opensuse.org
+
+- Add Supplements: packageand(vim,rtorrent), in order to trigger automatic
+  installation for users of both packages. Suggested by dimstar
+
+-------------------------------------------------------------------
+Sun Jul 27 00:09:19 UTC 2014 - tampakrap@opensuse.org
+
+- Add vim as BuildRequirement and Requirement for rtorrent-vim, so that it
+  doesn't own vim's directories
+
+-------------------------------------------------------------------
+Sat Jul 19 17:51:21 UTC 2014 - tampakrap@opensuse.org
+
+- Vim syntax file for rTorrent's config file, .rtorrent.rc
+  The files are taken from http://www.vim.org/scripts/script.php?script_id=2234
+
+-------------------------------------------------------------------
+Sat Jul 19 10:58:53 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.9.4
+* Added unordered curve to plot
+* Added 'network.listen.backlog{,.set}' commands
+* Added 'log.open_gz_file' option
+
+-------------------------------------------------------------------
+Fri Feb  8 04:21:18 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.9.3) for OpenSUSE

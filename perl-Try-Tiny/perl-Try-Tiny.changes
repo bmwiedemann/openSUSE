@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Tue Jan 23 07:18:07 UTC 2018 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.30      2017-12-21 07:23:03Z
+    - expand "when" test skippage to more perl versions
+
+-------------------------------------------------------------------
+Tue Dec 19 07:06:08 UTC 2017 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.29      2017-12-19 03:51:26Z
+    - skip tests of "when" and "given/when" usage for perl 5.27.7 *only* (see
+      RT#123908)
+
+-------------------------------------------------------------------
+Mon Jan  9 07:24:37 UTC 2017 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.28      2017-01-09 01:21:33Z
+    - enabled some tests of finally blocks that were disabled on 5.6, now that
+      that functionality works (since 0.13) (Pali, PR#4)
+
+-------------------------------------------------------------------
+Tue Aug 16 06:02:06 UTC 2016 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.27      2016-08-16 01:43:35Z
+    - repository moved to the github p5sagit organization (the primary is on
+      shadowcat, mirrored to github)
+    - no changes since 0.26
+  
+  0.26      2016-03-15 23:42:02Z (TRIAL RELEASE)
+    - switch from finalizers using an array to a hash, to resolve segfaults when
+      creating a pseudofork on MSWin before perl 5.20 (Graham Knop,
+      karenetheridge/Sub-Name/#3)
+  
+  0.25      2016-02-22 20:16:51Z (TRIAL RELEASE)
+    - "finally" blocks are now run for all methods of leaving the try block
+      (including via exit, goto)  (Lukas Mai, RT#112099)
+
+-------------------------------------------------------------------
+Fri Dec 11 10:21:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.24      2015-12-11 05:20:09Z
+    - fix prereq errors in 0.23
+  
+  0.23      2015-12-11 04:04:35Z
+    - fix syntax of example code (Rudolf Leermakers, PR#22)
+    - 'perl' removed from prerequisite recommendations, to avoid tripping up
+      CPAN clients (Graham Knop)
+    - Sub::Util is used preferentially to Sub::Name in most cases (Graham Knop,
+      PR#27)
+
+-------------------------------------------------------------------
+Wed Jul 23 21:32:47 UTC 2014 - mardnh@gmx.de
+
+- updated to 0.22
+
+-------------------------------------------------------------------
+Mon Apr 21 20:24:52 UTC 2014 - mardnh@gmx.de
+
+- updated to 0.21
+  - 0.21  2014-04-15
+    - also skip the test if Capture::Tiny is too old (Martin Popel, #17)
+  
+  - 0.20  2014-03-21
+    - documentation updates (Flimm, #15)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:34:21 UTC 2014 - coolo@suse.com
+
+- updated to 0.19
+  - fix an obscure issue with loading modules during global destruction
+    (ilmari, #11)
+  - documentation updates (anaxagoras, #12)
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:58 UTC 2013 - coolo@suse.com
+
+- updated to 0.18
+  - fix tests for pre-Test-More-0.88 (Paul Howarth, #10)
+  - work around [rt.perl #119311] which was causing incorrect error messages in
+    some cases during global destruction (Graham Knop, #9)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:57:46 UTC 2013 - coolo@suse.com
+
+- updated to 0.16
+  - remove accidental Sub::Name test dep
+  - optionally use Sub::Name to name the try/catch/finally blocks, if available
+    (Mark Fowler)
+  - also throw an exception for catch/finally in scalar context (RT#81070)
+  - fix tests failing on 5.6.x due to differing DESTROY semantics
+  - excise superfluous local($@) call - 7% speedup
+  - fix (fsvo) broken URLs (RT#55659)
+  - proper exception on erroneous usage of bare catch/finally (RT#81070)
+  - proper exception on erroneous use of multiple catch{} blocks
+  - clarify exception occuring on unterminated try block (RT#75712)
+  - fix the prototypes shown in docs to match code (RT#79590; thanks, Pushtaev
+    Vadim)
+  - warn loudly on exceptions in finally() blocks
+  - dzilify
+
+-------------------------------------------------------------------
+Tue Jun 11 09:35:47 UTC 2013 - coolo@suse.com
+
+- rebuild for perl 5.18
+
+-------------------------------------------------------------------
+Tue Jun  4 15:25:34 UTC 2013 - coolo@suse.com
+
+- updated to 0.12
+ - doc fixes
+
+-------------------------------------------------------------------
+Mon Sep 19 09:04:58 UTC 2011 - coolo@suse.com
+
+- updated to 0.11
+  - fix broken dist
+  - clarify some docs
+
+-------------------------------------------------------------------
+Tue May 17 12:12:23 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.09
+  - don't index Try::Tiny::ScopeGuard
+  - fix require vs use issue in blead (RT63410)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:56 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 18:04:16 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fixed deps
+  o fix License
+- noarch pkg
+
+-------------------------------------------------------------------
+Mon Nov  1 11:28:49 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.07:
+  * allow multiple finally blocks
+  * pass the error, if any, to finally blocks when called
+
+- changes from 0.05:
+  * documentation fixes and clarifications
+
+-------------------------------------------------------------------
+Mon Jan 25 08:18:26 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.04:
+  + Restore list context propagation for catch blocks
+  + Fix a bug where finally blocks weren't always invoked
+  + More documentation and tests (many people)
+  + Sets $@ to the previous value at the beginning of the eval, to 
+    allow the capture of an error stack when calling die.
+
+-------------------------------------------------------------------
+Sat Dec 26 21:40:19 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.02
+

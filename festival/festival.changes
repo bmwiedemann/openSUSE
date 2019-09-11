@@ -1,0 +1,300 @@
+-------------------------------------------------------------------
+Mon Dec 17 10:32:14 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not ignore errors from useradd/groupadd.
+
+-------------------------------------------------------------------
+Sat Nov 24 02:17:59 UTC 2018 - belphegor@belbel.or.jp
+
+- Update to version 2.5.0
+  * This update includes a solution for boo#1116808.
+  * But upstream seems not to provide a detailed changelog..
+- Changed upstream URL to http://festvox.org/festival/,
+  original URL http://www.cstr.ed.ac.uk/projects/festival/ seemed
+  not to be maintained anymore.
+
+-------------------------------------------------------------------
+Thu Nov 15 23:50:36 UTC 2018 - belphegor@belbel.or.jp
+
+- Removed sysvinit support according to the boo#1116010.
+  * Added systemd unit file
+  * Moved rcfestival to /usr/lib/festival/server
+
+-------------------------------------------------------------------
+Thu Nov 23 13:49:33 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Mar 14 16:22:33 UTC 2017 - dimstar@opensuse.org
+
+- Add PreReq: insserv-compat. insserv is no longer part of a
+  standard SUSE setup, since we have long switched to systemd.
+
+-------------------------------------------------------------------
+Thu Feb 12 19:52:04 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.4
+  * Updated HTS and CG engines
+  * Support for newer compilers
+  * Bug fixes galore. 
+  * Backwards compatibility with Festival 1.4.3
+  * English (British and American), Spanish and Welsh text to speech
+  * Externally configurable language independent modules:
+    - phonesets
+    - lexicons
+    - letter-to-sound rules
+    - tokenizing
+    - part of speech tagging
+    - intonation and duration 
+  * Waveform synthesizers:
+    - Multisyn unit selection engine
+    - HTS parametric synthesis engine
+    - Clustergen parametric synthesis engine
+    - Clunits unit selection engine
+    - diphone based: residual excited LPC (and PSOLA not for distribution)
+    - MBROLA database support.
+    - distributed under a free X11-type licence 
+  * Portable (Unix) distribution
+  * On-line documentation
+  * SABLE markup, Emacs, client/server, scripting interfaces. 
+- Update speech_tools-undefined-operation.patch 
+- Remove speech_tools-gcc47.patch; merged on upstream release
+- Add festvox_rablpc16k.tar.gz; new upstream english festvox
+
+-------------------------------------------------------------------
+Sun Jul 13 01:15:46 UTC 2014 - devel.openSUSE.org@gmail.com
+
+- Spec-file cleanup 
+
+-------------------------------------------------------------------
+Tue Apr  9 22:33:57 UTC 2013 - schwab@suse.de
+
+- Update config.guess/sub for speech_tools
+
+-------------------------------------------------------------------
+Mon Nov 19 18:44:35 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Sat Mar 17 13:23:04 UTC 2012 - dimstar@opensuse.org
+
+- Add speech_tools-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Jun 27 19:38:24 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.1:
+  + Integrated and updated support for HTS, Clustergen, Multisyn
+    and Clunits voices.
+  + Build fixes for newer gcc.
+  + Bug fixes galore.
+- Drop various patches that were needed to fix build issues
+  (generally caused by recent gcc): festival-1.95-gcc4.patch,
+  festival-1.96.patch, speech_tools-1.2.95-gcc4.patch,
+  speech_tools-1.2.95-gcc41.patch,
+  speech_tools-1.2.95-returnvalue.patch,
+  speech_tools-1.2.96-beta-const.patch,
+  speech_tools-1.2.96-beta.patch.
+- Rebase festival-no-LD_LIBRARY_PATH-extension.patch and
+  speech_tools-no-LD_LIBRARY_PATH-extension.patch, and change them
+  to not remove empty files (which introduces errors during the
+  build) by keeping an empty line in those files.
+- Add speech_tools-undefined-operation.patch, which contains the
+  only interesting bit left from speech_tools-1.2.95-gcc41.patch.
+
+-------------------------------------------------------------------
+Thu Sep 30 14:46:34 CEST 2010 - vuntz@opensuse.org
+
+- Add festival-safe-temp-file.patch: do not use the PID of the
+  process to create a temporary file. Mentioned in bnc#642507.
+
+-------------------------------------------------------------------
+Wed Sep 29 12:27:31 CEST 2010 - vuntz@opensuse.org
+
+- Add festival-no-LD_LIBRARY_PATH-extension.patch and
+  speech_tools-no-LD_LIBRARY_PATH-extension.patch: do not change
+  LD_LIBRARY_PATH to include a directory that can be used by
+  malicious users. Fix bnc#642507.
+
+-------------------------------------------------------------------
+Tue Jun  9 01:02:34 CEST 2009 - ro@suse.de
+
+- Add speech_tools-1.2.96-beta-const.patch to fix build: strchr
+  return value changed from char* to const char*
+
+-------------------------------------------------------------------
+Mon Jan 21 08:43:43 CET 2008 - mskibbe@suse.de
+
+- fix build problems with new gcc 
+
+-------------------------------------------------------------------
+Thu Sep 20 14:21:12 CEST 2007 - hvogel@suse.de
+
+- get rid of usermod %pre call
+- add group/useradd to prereq
+
+-------------------------------------------------------------------
+Fri Aug 31 09:47:51 CEST 2007 - mskibbe@suse.de
+
+- Bug 294691 - VUL-0: Festival: Privilege elevation 
+
+-------------------------------------------------------------------
+Mon Aug 27 10:51:16 CEST 2007 - mskibbe@suse.de
+
+- fix 64 bit build problem 
+
+-------------------------------------------------------------------
+Mon Jul 30 12:28:13 CEST 2007 - mskibbe@suse.de
+
+- update speech_tools to version 1.96-beta which
+  o fix a lot of bugs
+  o includes speech_tools-1.2.95-includes.patch
+  o fix VUL-0: Festival: Privilege elevation (#294691)
+
+-------------------------------------------------------------------
+Fri Mar 30 02:23:24 CEST 2007 - ro@suse.de
+
+- added ncurses-devel to buildreq 
+
+-------------------------------------------------------------------
+Mon Jan 29 12:40:23 CET 2007 - mskibbe@suse.de
+
+- festival-devel packages is incomplete (#230697) 
+
+-------------------------------------------------------------------
+Tue Oct 31 17:20:13 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Sep 13 17:38:04 CEST 2006 - mskibbe@suse.de
+
+- update to version 1.96 which
+  o compiles with gcc 4.0
+  o contains a lot of little bug fixes
+
+-------------------------------------------------------------------
+Tue Jul 18 11:42:07 CEST 2006 - mskibbe@suse.de
+
+- fix a problem that audsp cannot be open (#190100)
+
+-------------------------------------------------------------------
+Tue Mar 21 14:12:54 CET 2006 - hvogel@suse.de
+
+- define outidx [#158757] 
+
+-------------------------------------------------------------------
+Wed Mar  8 16:15:26 CET 2006 - cthiel@suse.de
+
+- PreReq %fillup_prereq, to make %post scripts work
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 14:02:23 CET 2006 - hvogel@suse.de
+
+- remove cmudict_extensions.scm because of license issues.
+- add init script for festival in server mode by Andreas Schneider.
+  [#143397] 
+- default allow connections from localhost for gnome-speech.
+  Patch by Fernando Herrera. [#144082] 
+
+-------------------------------------------------------------------
+Wed Jan 11 14:54:00 CET 2006 - hvogel@suse.de
+
+- split devel subpackage
+
+-------------------------------------------------------------------
+Wed Dec  7 11:21:30 CET 2005 - rguenther@suse.de
+
+- fix operator overloads returning references to temporary
+  objects
+
+-------------------------------------------------------------------
+Thu Nov  3 12:04:22 CET 2005 - rguenther@suse.de
+
+- fix gcc 4.1 compilation problems
+- build with -ffriend-injection
+
+-------------------------------------------------------------------
+Fri Sep  2 11:50:09 CEST 2005 - hvogel@suse.de
+
+- fix man page permissions [#114849]
+
+-------------------------------------------------------------------
+Wed Aug 31 15:12:20 CEST 2005 - hvogel@suse.de
+
+- add festival.el for emacs [#114380]
+
+-------------------------------------------------------------------
+Fri Aug 26 12:36:31 CEST 2005 - hvogel@suse.de
+
+- fix libdir path [#113090]
+
+-------------------------------------------------------------------
+Tue May 24 12:18:56 CEST 2005 - hvogel@suse.de
+
+- fix missing class types
+
+-------------------------------------------------------------------
+Thu May 19 15:50:15 CEST 2005 - hvogel@suse.de
+
+- add manpages
+- get rid of -Wall for g++
+- use optflags for gcc
+- package the saytime script
+- simplify install section
+- general sepcfile cleanup
+- fix some more include warnings
+
+-------------------------------------------------------------------
+Wed May 18 18:25:16 CEST 2005 - hvogel@suse.de
+
+- Update to version 1.95
+- fix the rest
+
+-------------------------------------------------------------------
+Fri May 13 17:29:11 CEST 2005 - yxu@suse.de
+
+- partly fixed for GCC4
+- still problems with function templates left 
+
+-------------------------------------------------------------------
+Mon Jan 10 14:34:25 CET 2005 - adrian@suse.de
+
+- install libraries and header files
+- do compile with -fPIC
+- do not build as root anymore
+
+-------------------------------------------------------------------
+Mon Apr 19 15:24:11 CEST 2004 - meissner@suse.de
+
+- fixed aliasing problem.
+
+-------------------------------------------------------------------
+Sat Mar 20 18:57:41 CET 2004 - meissner@suse.de
+
+- fixed paths to sample files #36618
+
+-------------------------------------------------------------------
+Mon Mar 15 17:20:58 CET 2004 - sbrabec@suse.cz
+
+- Removed obsolete mandir and infodir.
+
+-------------------------------------------------------------------
+Tue Feb 24 13:16:01 CET 2004 - hhetter@suse.de
+
+- include festival license in %doc 
+
+-------------------------------------------------------------------
+Thu Feb 19 13:28:47 CET 2004 - hhetter@suse.de
+
+- initial SUSE package 
+

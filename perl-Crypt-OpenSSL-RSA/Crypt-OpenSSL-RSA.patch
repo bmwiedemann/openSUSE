@@ -1,0 +1,13 @@
+Index: RSA.xs
+===================================================================
+--- RSA.xs.orig	2011-08-25 00:57:35.000000000 +0200
++++ RSA.xs	2011-11-29 16:23:42.703033157 +0100
+@@ -40,7 +40,7 @@ void croakSsl(char* p_file, int p_line)
+ 
+ #define CHECK_OPEN_SSL(p_result) if (!(p_result)) croakSsl(__FILE__, __LINE__);
+ 
+-#define PACKAGE_CROAK(p_message) croak("%s", (p_message))
++#define PACKAGE_CROAK(p_message) croak("%s:%d: %s", __FILE__, __LINE__, (p_message))
+ #define CHECK_NEW(p_var, p_size, p_type) \
+   if (New(0, p_var, p_size, p_type) == NULL) \
+     { PACKAGE_CROAK("unable to alloc buffer"); }

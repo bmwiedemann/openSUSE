@@ -1,0 +1,7 @@
+Alias /.well-known/acme-challenge @CHALLENGEDIR@
+<Directory "@CHALLENGEDIR@">
+   Options None
+   AllowOverride None
+   Require all granted
+   ForceType text/plain
+</Directory>

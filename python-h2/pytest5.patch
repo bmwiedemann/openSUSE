@@ -1,0 +1,24 @@
+From 04eb49ca8c7302a6dcb1f3b93994e928a260a12b Mon Sep 17 00:00:00 2001
+From: pgjones <philip.graham.jones@googlemail.com>
+Date: Sat, 20 Jul 2019 13:23:03 +0100
+Subject: [PATCH] Update dependencies
+
+Note that pytest>=5 cannot be used whilst Python 2 is still
+supported. This will pass with pytest==5.0.1 though.
+---
+ test/test_invalid_headers.py | 2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/test/test_invalid_headers.py b/test/test_invalid_headers.py
+index bff071b3..a3799507 100644
+--- a/test/test_invalid_headers.py
++++ b/test/test_invalid_headers.py
+@@ -204,7 +204,7 @@ def test_pseudo_headers_rejected_in_trailer(self, frame_factory):
+         # Raise exception if pseudo header in trailer
+         with pytest.raises(h2.exceptions.ProtocolError) as e:
+             c.receive_data(trailer)
+-        assert "pseudo-header in trailer" in str(e)
++        assert "pseudo-header in trailer" in str(e.value)
+ 
+         # Test appropriate response frame is generated
+         expected_frame = frame_factory.build_goaway_frame(

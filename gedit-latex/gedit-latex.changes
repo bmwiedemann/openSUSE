@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Tue Dec  5 19:54:37 UTC 2017 - dimstar@opensuse.org
+
+- Drop %py_requires: this package can't know what python version
+  gedit will want to use to interpret the plugins.
+- Conditionalize %glib2_gsettings_schema_post/postun handing for
+  suse_version < 1330 only: anything newer uses file triggers for
+  the schema compilation.
+
+-------------------------------------------------------------------
+Sun May 15 08:50:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Adapt to Gedit plugin API 3.12 and 3.14 (no later changes
+    needed).
+  + Move tools in tools menu, remove menus at deactivation.
+  + Fixed "New document" dialog.
+  + Suppress warnings related to missing actions.
+  + Fix to bug in tools dialog (deb#561683).
+  + Cope with a corrupted tools.xml (bgo#680869).
+  + Increase space request in jobs treeview.
+  + Use colors from scheme for highlighting text (bgo#691757).
+  + Remove unused colors from gsettings.
+  + Updated glade files and relative API calls.
+  + Fix/translate more strings (bgo#688388 and bgo#753235).
+  + Misc bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 19 09:09:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Port to python 3.
+  + Fixes to insert table / listing dialogs.
+  + Outline connect to editor now requires Double click.
+  + Remove some unused code, collapse some abstractions.
+  + Force the symbol sidebar to 4 items, least it be visible.
+  + Use Gtk.show_uri instead of system.
+  + Do not mark unused labels as warnings (bgo#691758).
+  + Fix "New Latex Document" dialog.
+  + Use snippets format for the autocompletion of builtin commands.
+  + Fix RadioMenuItem inizialization  (bgo#667096).
+  + Remove some useless imports.
+  + Prevent a crash when no job command is present.
+  + Don't create bottom panels every time when switching between
+    files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun 17 13:39:44 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.4.1:
+  + Misc bug fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:41:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Combined toolbar by default
+  + Support cleverref
+  + Support natbib
+  + Do not print debug log messages to stdout by default
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:50 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Nov 16 07:59:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Prevent crash of bibtex parser on quoted strings
+  + Initial port to GtkGrid
+  + Use gvfs-open instead of deprecated gnome-open
+  + Misc bugfixes
+  + Updated translations.
+- Changes from version 3.3.1:
+  + Remove the template system and use the snippets plugin instead
+  + Move all files in the base dir to the root dir
+  + Misc bugfixes
+  + Updated translations.
+- Add gvfs Requires to gedit-plugin-latex since we use gvfs-open.
+
+-------------------------------------------------------------------
+Wed Oct 19 17:03:16 UTC 2011 - zaitor@opensuse.org
+
+- Update to version 3.2.1:
+  + Properly show/hide toolbar.
+  + Prevent crash of bibtex parser on quoted strings.
+  + Updated translation.
+
+-------------------------------------------------------------------
+Thu Oct  6 12:46:00 UTC 2011 - vuntz@opensuse.org
+
+- Rename source package to gedit-latex from gedit-latex-plugin,
+  following upstream name.
+- Update to version 3.2.0:
+  + Fix slowness when loading and changing tabs
+  + Updated translations.
+- Changes from version 3.1.1:
+  + New Features
+    - Port to gobject-introspection and Gtk+3.
+    - Port to Gsettings.
+    - Use Autotools.
+    - Port to GtkBuilder.
+    - Make plugin translatable.
+    - Misc code cleaning.
+    - Logging cleanup.
+    - Handle newcommands.
+    - Add per-document preferences.
+  + Dropped features
+    - Custom spellchecker (replaced by spellcheck-plugin)
+    - LaTeX forward search (replaced by gedit-synctex)
+    - Livepreview (to be added back)
+    - Snippets (replaced by snippets plugin)
+    - Color prefs UI
+  + Bugfixes
+    - Finish the save operation before start compilation.
+    - Make the LaTeX postprocessor depend on the compiler exit
+      status.
+    - Add alert to the statusbar while the document is compiling.
+    - symbols:
+      . make the activation by double click, this make it more
+        similar to gucharmap.
+      . unselect icon when the focus is lost.
+    - Fix generating the POT file.
+    - Remove translatable attribute from gtk stock strings.
+    - Fix master document: use relative path.
+- Add intltool, pkgconfig(glib-2.0), pkgconfig(gtk+-3.0)
+  BuildRequires.
+- Create lang subpackage, and add Recommends for it in
+  gedit-plugin-latex subpackage.
+- Remove python-gtk, python-poppler and python-enchant Requires
+  from gedit-plugin-latex subpackage: those dependencies are all
+  gone (because of dropped features or move to introspection-based
+  bindings).
+- Add the GSettings schema machinery, with
+  %glib2_gsettings_schema_* macros.
+- Rewrite the %prep/%build/%install section now that the tarball
+  uses autotools.
+
+-------------------------------------------------------------------
+Mon Aug 15 11:53:20 CEST 2011 - ro@suse.de
+
+- detect gedit plugin path at build time
+
+-------------------------------------------------------------------
+Mon Aug 15 01:32:33 CEST 2011 - ro@suse.de
+
+- gedit plugin paths are now /gedit and no longer /gedit-2
+
+-------------------------------------------------------------------
+Fri Jan  7 10:58:40 CET 2011 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory:
+  + Use upstream tarball.
+  + Add missing dbus-1-python Requires.
+  + Change python-enchante Requires to Recommends.
+  + Add %py_requires.
+  + Add gedit BuildRequires for directory ownership.
+  + Set the license to GPLv3+.
+  + Improve summary and description.
+  + Build a gedit-plugin-latex that will provide
+    gedit-latex-plugin, to follow the package naming convention for
+    plugins.
+
+-------------------------------------------------------------------
+Sat Dec 18 05:54:18 UTC 2010 - nmarques@opensuse.org
+
+- Initial package from upstream release 0.2
+

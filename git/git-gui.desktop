@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Git Gui
+GenericName=Version Control GUI
+Comment=Git GUI
+Exec=git gui
+Icon=git-gui
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Development;RevisionControl;
+X-KDE-SubstituteUID=false

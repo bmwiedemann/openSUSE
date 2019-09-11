@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Thu Sep 24 17:46:49 CEST 2015 - tiwai@suse.de
+
+- Fix buffer overflow in aiff_open() (CVE-2015-6749, bsc#943795):
+  oggenc-Fix-large-alloca-on-bad-AIFF-input.patch
+
+-------------------------------------------------------------------
+Fri Mar  6 15:24:00 CET 2015 - tiwai@suse.de
+
+- Fix division by zero and integer overflow by crafted WAV files
+  (CVE-2014-9638, CVE-2014-9639, bnc#914439, bnc#914441):
+  vorbis-tools-oggenc-CVE-2014-9639.patch
+
+-------------------------------------------------------------------
+Tue Jan 27 18:04:18 CET 2015 - tiwai@suse.de
+
+- Fix segfault by a crafted raw file input (CVE-2014-9640,
+  bsc#914938):
+  vorbis-tools-r19117-CVE-2014-9640.patch
+
+-------------------------------------------------------------------
+Wed Dec 31 12:20:32 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Tue Jul 22 15:32:43 CEST 2014 - tiwai@suse.de
+
+- vcut-fix-segfault.diff: Fix segfault of vcut (bnc#888360)
+
+-------------------------------------------------------------------
+Fri Apr  5 09:54:32 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Sat Mar  2 11:44:16 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with automake-1.13.1
+
+-------------------------------------------------------------------
+Sun Nov 20 06:29:49 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Mar  6 22:59:51 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Fixed rpmlint warning "macro-in-comment".
+
+-------------------------------------------------------------------
+Sun Mar  6 13:56:27 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 1.4.0:
+  * Lots of changes (see CHANGES file).
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Changed License: to GPLv2.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Updates in Buildrequires: and %description sections.
+  * Added a vorbis-tools-lang package (based on rpmlint warning
+    "package-with-huge-translation").
+  * Updates in %build, %install and %files sections.
+- Removed the following patches (fixed upstream):
+  * vorbis-tools-1.1.1-bounds-check-fix.diff
+  * vorbis-tools-1.1.1-curl-7.16.diff
+  * vorbis-tools-config.diff
+  * vorbis-tools-flac-1.1.3.diff
+- Rebased the patch vorbis-tools-1.1.1-warning-fixes.diff (most are fixed
+  upstream and only one change is needed to fix rpm post-build-check failure).
+  Also renamed it to warning-fixes.diff.
+- Rebased the patch for cflags.
+
+-------------------------------------------------------------------
+Mon Apr 14 16:39:22 CEST 2008 - tiwai@suse.de
+
+- VUL-0: speex insufficient bounds checking (bnc#379098,
+  CVE-2008-1686)
+
+-------------------------------------------------------------------
+Wed Oct 31 14:28:59 CET 2007 - tiwai@suse.de
+
+- add support of FLAC 1.1.3 or later (#337916)
+- use find_lang
+
+-------------------------------------------------------------------
+Fri Feb  2 11:12:59 CET 2007 - mmarek@suse.cz
+
+- fix build with curl-7.16
+- fixed some more compiler warnings
+
+-------------------------------------------------------------------
+Mon Oct 16 00:28:47 CEST 2006 - schwab@suse.de
+
+- Make sure config.rpath is present.
+
+-------------------------------------------------------------------
+Wed Aug 23 18:18:11 CEST 2006 - tiwai@suse.de
+
+- build missing vcut command (#201242)
+
+-------------------------------------------------------------------
+Sat Apr  8 17:01:17 CEST 2006 - schwab@suse.de
+
+- Include "config.h" before using HAVE_* macros.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 18 15:39:18 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.1.1.
+- added flac-* and speex-* to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Jul  7 17:53:45 CEST 2005 - tiwai@suse.de
+
+- removed -fsigned-char option (#93888).
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Apr  8 18:53:38 CEST 2005 - tiwai@suse.de
+
+- fixed the build with the new gettext-0.14.3.
+
+-------------------------------------------------------------------
+Mon Jan 12 10:25:04 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jan  9 17:17:32 CET 2004 - tiwai@suse.de
+
+- updated to version 1.0.1.
+- enabled autoreconf again.
+
+-------------------------------------------------------------------
+Fri Jun  6 08:41:43 CEST 2003 - kukuk@suse.de
+
+- Remove wrong doc dir
+
+-------------------------------------------------------------------
+Mon Jul 22 10:52:00 CEST 2002 - tiwai@suse.de
+
+- updated to 1.0.
+
+-------------------------------------------------------------------
+Fri Jan  4 12:01:21 CET 2002 - tiwai@suse.de
+
+- updated to RC3.
+  sync with cvs 2002.01.04.
+  now encoding with low variable rates is supported.
+- added curl and curl-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Dec  4 11:26:25 CET 2001 - tiwai@suse.de
+
+- sync with cvs 2001.12.04.
+
+-------------------------------------------------------------------
+Wed Oct 24 18:00:49 CEST 2001 - tiwai@suse.de
+
+- sync with cvs 20011024.
+- removed explicit Requires to libraries.
+
+-------------------------------------------------------------------
+Mon Aug 13 16:57:40 CEST 2001 - tiwai@suse.de
+
+- updated to 1.0rc2 from cvs 20010813.
+
+-------------------------------------------------------------------
+Fri Jul 13 11:24:53 CEST 2001 - grimmer@suse.de
+
+- Fixed file list (using wildcards instead of shared directory
+  names)
+
+-------------------------------------------------------------------
+Mon Feb 26 17:44:29 CET 2001 - tiwai@suse.de
+
+- Updated to 1.0beta4.
+
+-------------------------------------------------------------------
+Wed Jan 31 12:40:06 CET 2001 - tiwai@suse.de
+
+- Initial version: 1.0beta3.
+

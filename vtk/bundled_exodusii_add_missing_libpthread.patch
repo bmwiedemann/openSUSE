@@ -1,0 +1,14 @@
+--- VTK-8.2.0/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt_orig	2019-02-14 23:22:45.209934041 +0100
++++ VTK-8.2.0/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt	2019-02-14 23:23:32.793799582 +0100
+@@ -297,8 +297,10 @@
+   "${CMAKE_CURRENT_BINARY_DIR}/include/exodusII_cfg.h"
+   "${CMAKE_CURRENT_BINARY_DIR}/include/exodus_config.h")
+ 
+-vtk_add_library(vtkexodusII ${sources} ${headers})
++vtk_add_library(vtkexodusII ${sources} ${headers})
++set_property(TARGET vtkexodusII PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_link_libraries(vtkexodusII PUBLIC ${vtknetcdf_LIBRARIES})
++target_link_libraries(vtkexodusII PUBLIC pthread)
+ if (NOT VTK_INSTALL_NO_DEVELOPMENT)
+   install(FILES
+     ${headers}

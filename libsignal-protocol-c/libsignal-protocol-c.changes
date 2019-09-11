@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed Feb 27 08:47:49 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- Added patch fix_bigendian.patch
+  (https://github.com/signalapp/libsignal-protocol-c/issues/124)
+
+-------------------------------------------------------------------
+Tue Feb 26 11:01:25 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- Removed patch libsignal-protocol-c-2.3.2-lib_ver.patch
+  This was the only change applied in tarball (see changelog below).
+
+-------------------------------------------------------------------
+Tue Feb 26 10:39:50 UTC 2019 - mvetter@suse.com
+
+- Update tarball. On new URL seems to be different.
+
+-------------------------------------------------------------------
+Tue Feb 26 08:30:24 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- Build and run tests
+- Update url
+
+-------------------------------------------------------------------
+Mon May 14 14:21:51 UTC 2018 - mvetter@suse.com
+
+- Add libsignal-protocol-c-2.3.2-lib_ver.patch:
+  Use 2.3.2 lib version.
+  See https://github.com/signalapp/libsignal-protocol-c/pull/110
+
+-------------------------------------------------------------------
+Mon May 14 08:48:32 UTC 2018 - mvetter@suse.com
+
+- Update to 2.3.2:
+  * Update curve25519 code based on upstream changes 
+  * Added support for building against OpenSSL 1.1
+  * Add ability to generate fingerprints from a collection of identity keys
+  * Add support for identity fingerprint format v1
+  * Update to latest protobuf definition for fingerprints
+  * Provide a pkg-config file for libsignal-protocol-c
+  * Explicitly require check 0.9.10+ for unit tests
+  * Various bug fixes
+  * For full list see:
+  https://github.com/signalapp/libsignal-protocol-c/compare/v2.3.1...v2.3.2
+
+-------------------------------------------------------------------
+Fri Mar 31 06:37:27 UTC 2017 - mvetter@suse.com
+
+- Remove libsignal-protocol-c-math-lib-shared-lib.patch:
+  Contained in new upstream release
+- Update to 2.3.1
+
+-------------------------------------------------------------------
+Fri Mar 31 06:34:59 UTC 2017 - mvetter@suse.com
+
+- Create seperate proper lib package
+
+-------------------------------------------------------------------
+Thu Mar 30 18:30:01 UTC 2017 - mvetter@suse.com
+
+- Remove: libsignal-protocol-c-link-math.patch:
+- Add libsignal-protocol-c-math-lib-shared-lib.patch:
+  Upstream added its own version of the mathlib patch, see
+  https://github.com/WhisperSystems/libsignal-protocol-c/issues/57
+  Additionally I requested library versioning, see:
+  https://github.com/WhisperSystems/libsignal-protocol-c/issues/59
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:36 UTC 2017 - mvetter@suse.com
+
+- Initial package for openSUSE in version 2.3.0
+- Adding libsignal-protocol-c-link-math.patch:
+  Link with Math library. Otherwise does not build

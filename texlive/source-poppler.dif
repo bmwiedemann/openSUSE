@@ -1,0 +1,31 @@
+---
+ texk/web2c/pdftexdir/pdftoepdf.cc |    4 ++++
+ texk/web2c/pdftexdir/pdftosrc.cc  |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+--- texk/web2c/pdftexdir/pdftoepdf.cc
++++ texk/web2c/pdftexdir/pdftoepdf.cc	2012-04-13 14:56:58.000000000 +0000
+@@ -31,6 +31,10 @@ with this program.  If not, see <http://
+ #include <string.h>
+ #include <ctype.h>
+ 
++extern "C" {
++#include <config.h>
++}
++
+ #ifdef POPPLER_VERSION
+ #include <dirent.h>
+ #include <poppler-config.h>
+--- texk/web2c/pdftexdir/pdftosrc.cc
++++ texk/web2c/pdftexdir/pdftosrc.cc	2012-04-13 14:59:10.000000000 +0000
+@@ -24,6 +24,10 @@ with this program.  If not, see <http://
+ #include <string.h>
+ #include <ctype.h>
+ 
++extern "C" {
++#include <config.h>
++}
++
+ #ifdef POPPLER_VERSION
+ #define GString GooString
+ #define xpdfVersion POPPLER_VERSION

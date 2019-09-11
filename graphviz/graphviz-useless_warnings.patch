@@ -1,0 +1,17 @@
+---
+ tclpkg/gv/Makefile.am |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: tclpkg/gv/Makefile.am
+===================================================================
+--- tclpkg/gv/Makefile.am.orig	2013-09-05 17:59:52.837755940 +0200
++++ tclpkg/gv/Makefile.am	2013-09-05 18:00:53.696332434 +0200
+@@ -20,6 +20,8 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/lib/cdt \
+ 	-I$(top_srcdir)/lib/pathplan
+ 
++AM_CXXFLAGS = -Wno-unused-label -Wno-unused-function \
++	      -Wno-unused-but-set-variable
+ LIBS = -lc
+ 
+ BASESOURCES = gv.cpp gv.i gv_builtins.c

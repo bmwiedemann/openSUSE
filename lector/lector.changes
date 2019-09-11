@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu May 23 07:38:04 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add python3-PyMuPDF as recommends
+
+-------------------------------------------------------------------
+Sat Mar 10 09:04:35 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add python3-xmltodict dependency
+- Version 0.5.1
+  * Bugfixes
+- Version 0.5
+  * fb2 support
+  * Comicbooks / PDFs: Double page mode, Manga mode, Image color inversion
+  * Search functionality
+  * Way better sidedock
+  * Seriously overhauled ToC generation for all filetypes. Now with more tree view
+  * Error logging - Error notifications
+  * Much better error handling
+  * UI improvements
+  * Bugfixes
+
+-------------------------------------------------------------------
+Sun Jun 10 11:04:00 UTC 2018 - jengelh@inai.de
+
+- Remove unrealized future plans.
+
+-------------------------------------------------------------------
+Fri Jun  1 20:03:06 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 0.4
+  * Text annotations
+  * Drag and drop support
+  * Better spacebar navigation
+  * More granular progress measurement
+  * Remove dependency on requests
+  * Redesign settings dialog
+  * In-built internet searching
+  * Miscellaneous UI Improvements
+  * Bugfixes
+  * Chinese (simplified) translation by jaccsr
+- Remove python3-requests
+
+-------------------------------------------------------------------
+Fri Jun  1 19:35:33 UTC 2018 - guoyunhebrave@gmail.com
+
+- Remove %verify macro and add %defattr macro
+- Use %fdupes macro
+
+-------------------------------------------------------------------
+Wed Apr 11 07:49:27 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 0.3.1
+  * Application icon and .desktop file
+  * Distraction free mode
+  * Internationalization support
+  * Context menus for reading views
+  * UI Improvements
+  * Bug fixes
+- Version 0.2.0
+  * Preliminary pdf support
+  * Ludicrous speed™ caching of image files in comics
+  * Included icon theme
+  * GUI improvements
+  * Bug fixes
+- Version 0.1.0
+  * First release

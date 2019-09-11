@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Fri Mar 22 13:38:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_unifdef-LBXPROXY_t-and-TEST_t.patch
+  * reverse apply in order to fix build of lbxproxy again ...
+
+-------------------------------------------------------------------
+Fri Mar 22 11:11:11 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.0
+  * This release drops a bunch of dead code, including support
+    only used by lbxproxy and pre-1.4.0 versions of libX11, as
+    well as support for obsolete SysV x86 platforms. It also
+    provides some bug fixes & other maintenance work.
+
+-------------------------------------------------------------------
+Tue May 30 09:43:50 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041610) 
+
+-------------------------------------------------------------------
+Tue Sep 23 13:29:14 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.5:
+  Here's a release of Xtrans that includes a bunch of const fixes
+  and a new Listen function which the X server wants to allow
+  -nolisten tcp by default.
+
+-------------------------------------------------------------------
+Fri Apr 25 00:34:39 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Remove superfluous Require
+
+-------------------------------------------------------------------
+Mon Mar 31 20:51:52 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.4:
+  + configure: Also add -D_DEFAULT_SOURCE to .pc cflags to shut up glibc warnings
+  + Increase UNIX socket buffer size
+  + Cast ctype(3) function arguments to unsigned char.
+  + Add missing headers for free() and strlen().
+
+-------------------------------------------------------------------
+Mon Jan 27 14:32:27 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.3:
+  + xtrans.m4: replace obsolete AC_HELP_STRING
+  + xtrans.m4: replace deprecated AC_HAVE_LIBRARY with AC_CHECK_LIB
+  + xtrans.m4: remove AC_TYPE_SIGNAL and Imake SIGNALRETURNSINT
+  + Add TransIsListening()
+  + Remove unused static inlines
+  + Fix alignment issues in FD passing code
+  + Don't restrict FD passing to Linux & Solaris
+  + Define TRANS_RECEIVED flag for transports
+  + Enable systemd socket activation
+
+-------------------------------------------------------------------
+Fri Nov  8 17:30:20 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.2:
+  Another round of fixes for the fd sending API's: improves portability,
+  fixes build failures on BSD & Solaris when building with the new API
+  disabled, and enables the new API for Solaris.
+  + Add stubs for send/recv fd functions in local transports
+  + Check if we need to define _XOPEN_SOURCE for struct msghdr.msg_control
+  + Allow XTRANS_SEND_FDS on Solaris as well
+  + Actually disable all of the FD passing code unless XTRANS_SEND_FDS is set
+  + Switch to CMSG_* macros for FD passing
+
+-------------------------------------------------------------------
+Thu Nov  7 16:27:19 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.1:
+  Here's a new 1.3.1 release of libXtrans. The only interesting change
+  is that it now requires applications to specify that they want FD
+  passing support by defining XTRANS_SEND_FDS; the X server will do that
+  only on Linux. When non-Linux FD passing support is integrated, we can
+  change what the X server does.
+- Add upstream patch to fix build:
+  + U_disable_all_of_the_FD_passing_code_unless_XTRANS_SEND_FDS_is_set.patch
+
+-------------------------------------------------------------------
+Sun Nov  3 00:46:57 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.0:
+  + configure: Remove AM_MAINTAINER_MODE
+  + Remove unused TLI ("STREAMSCONN") code from xtrans
+  + Docs: convert function synopses to docbook funcsynopsis markup
+  + autogen.sh: Implement GNOME Build API
+  + Remove 'Readv' interface
+  + Add APIs to send file descriptors through the network
+
+-------------------------------------------------------------------
+Fri Apr  5 07:58:19 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Tue Sep 25 08:58:07 UTC 2012 - sndirsch@suse.com
+
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Sun Apr 15 08:22:42 UTC 2012 - vuntz@opensuse.org
+
+- Rename source and binary package from xorg-x11-xtrans-devel to
+  xtrans.
+- Add Provides/Obsoletes for xorg-x11-xtrans-devel to smooth
+  upgrades.
+- Pass --docdir=%{_docdir}/xtrans to configure to install
+  xtrans.xml in the right doc directory, instead of
+  /usr/share/doc/xtrans/).
+
+-------------------------------------------------------------------
+Wed Apr 11 18:21:01 UTC 2012 - vuntz@opensuse.org
+
+- Update to xtrans 1.2.7:
+  + Lot of cleanups, both from manual inspection and from automated
+    static code analysis
+  + Bug fixes, including:
+    - fix some resource & memory leaks
+    - avoid buffer overrun in SocketReopen
+  + Remove decnet leftover
+  + Remove SUN specific code, let solaris create .X11-pipe with
+    sticky bit on
+  + Documentation & build configuration improvments
+- Include version of xtrans in the version of the package. For
+  instance, this will now be 7.6_1.2.7.
+- Add pkgconfig(xorg-macros) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Mar 22 00:00:04 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant sections/tags
+
+-------------------------------------------------------------------
+Wed Jan 11 11:35:24 UTC 2012 - sndirsch@suse.com
+
+- fixed build on factory
+- package build errors fixed 
+
+-------------------------------------------------------------------
+Tue Dec 21 02:52:02 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Tue Nov  9 06:10:24 UTC 2010 - sndirsch@novell.com
+
+- xtrans 1.2.6
+  * This minor release converts the libxtrans API documentation
+    from troff to DocBook/XML and updates it for the current state
+    of the code.
+    It also includes some minor bug fixes, and of course, the usual
+    recent collection of build configuration improvements and
+    janitorial cleanups.
+
+-------------------------------------------------------------------
+Sun Apr  4 16:05:52 CEST 2010 - sndirsch@suse.de
+
+- xtrans 1.2.5
+- adjusted p_xauth.diff
+- bumped version number to 7.5
+
+-------------------------------------------------------------------
+Mon Dec 14 16:59:45 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Sat Aug  1 10:34:34 CEST 2009 - sndirsch@suse.de
+
+- xtrans 1.2.4
+  * various fixes 
+- obsoletes xtrans-sig11.diff
+
+-------------------------------------------------------------------
+Thu Feb 26 03:00:17 CET 2009 - sndirsch@suse.de
+
+- xtrans 1.2.3 
+
+-------------------------------------------------------------------
+Sat Oct 25 11:28:30 CEST 2008 - sndirsch@suse.de
+
+- xtrans-sig11.diff
+  * Before accessing the string it needs to be checked if the
+    string isn't NULL. (Egbert Eich, bnc #419576)
+
+-------------------------------------------------------------------
+Thu Sep 11 14:23:02 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Fri Jul  4 05:06:31 CEST 2008 - sndirsch@suse.de
+
+- xtrans 1.2.1
+  * Connection failure for abstract socket is ECONNREFUSED, not
+    ENOENT.
+  * LocalClose() takes a ConnInfoPtr, not an fd
+  * Clear some pointer type mismatch warnings
+  * Ignore mkdir() errors when creating the abstract socket.
+  * Remove extraneous execute bit from .c file
+  * Launchd: This functionality has been moved into xorg-server
+
+-------------------------------------------------------------------
+Thu May  8 21:08:30 CEST 2008 - sndirsch@suse.de
+
+- xtrans 1.2
+  * Among other things, this release fixes the linux abstract
+    socket support which was broken in 1.1 (fdo bug#15677). Also
+    various bug fixes and win32 updates.
+
+-------------------------------------------------------------------
+Thu Mar  6 07:59:54 CET 2008 - sndirsch@suse.de
+
+- xtrans 1.1
+
+-------------------------------------------------------------------
+Sat Sep 29 12:24:36 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Fri Aug 24 15:38:22 CEST 2007 - sndirsch@suse.de
+
+- xtrans 1.0.4:
+  * Fix typo in Xtranslcl.c (sprintf with size argument should be
+    snprintf)
+
+-------------------------------------------------------------------
+Mon Dec 18 11:05:09 CET 2006 - sndirsch@suse.de
+
+- updated to release 1.0.3
+  * Makefile.am: make ChangeLog hook safer 
+
+-------------------------------------------------------------------
+Sat Oct 14 06:34:18 CEST 2006 - sndirsch@suse.de
+
+- updated to X.Org 7.2RC1 
+
+-------------------------------------------------------------------
+Thu Aug 17 11:00:50 CEST 2006 - sndirsch@suse.de
+
+- removed xorg-x11-xproto-devel from BuildRequires to improve 
+  autobuild deps
+
+-------------------------------------------------------------------
+Sat Aug  5 22:50:32 CEST 2006 - sndirsch@suse.de
+
+- p_xauth.diff:
+  * Let X authorization be tolerant to hostname changes (Bug #98627)
+
+-------------------------------------------------------------------
+Wed Aug  2 15:22:38 CEST 2006 - ro@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:45:37 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:50:04 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre 
+
+-------------------------------------------------------------------
+Thu Jun 22 11:02:00 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

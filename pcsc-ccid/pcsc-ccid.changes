@@ -1,0 +1,1078 @@
+-------------------------------------------------------------------
+Sun Aug 11 06:47:08 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Updated to version 1.4.31
+  * Add support of
+    ACS ACR1252 Reader
+    Aladdin R.D. JaCartaReader
+    Alcor Link AK9563
+    AvestUA AvestKey
+    Avtor SecureToken (idProduct: 0x0020)
+    Bit4id TokenME EVO v2
+    Bit4id miniLector AIR EVO
+    Bit4id miniLector Blue
+    Broadcom Corp 58200 (idProduct: 0x5843)
+    Broadcom Corp 58200 (idProduct: 0x5844)
+    Broadcom Corp 58200 (idProduct: 0x5845)
+    Certgate GmbH ONEKEY ID 2 USB
+    HID Global Crescendo Key 0x0028
+    HID Global Crescendo Key 0x0029
+    HID Global Crescendo Key 0x002B
+    HID Global Crescendo Key 0x002D
+    Identiv SCR3500 C Contact Reader
+    InfoCert WirelessKey
+    NXP PN7462AU CCID
+    Route1 MobiKEY Fusion3
+    SPECINFOSYSTEMS DIAMOND token
+  * Some minor improvements for debug
+
+-------------------------------------------------------------------
+Tue Jan 29 22:29:46 CET 2019 - sbrabec@suse.com
+
+- Update URL.
+
+-------------------------------------------------------------------
+Sat Sep 22 12:53:20 UTC 2018 - wr@rosenauer.org
+
+- Updated to version 1.4.30
+  * The project moved to https://ccid.apdu.fr/
+  * Add support of
+    ACS ACR33 ICC Reader
+    BIFIT ANGARA
+    Broadcom Corp 58200
+    Certgate GmbH AirID 2 USB
+    DC.Ltd DC4 5CCID READER
+    Genesys Logic CCID Card Reader
+    Genesys Logic Combo Card Reader
+    InfoThink IT-500U Reader
+    Spyrus Inc WorkSafe Pro (ProductID 0x3117)
+  * Disabled readers
+    REINER SCT cyberJack RFID standard
+  * Update reader names for
+    Fujitsu Keyboard KB100 SCR
+    Fujitsu Keyboard KB100 SCR eSIG
+    FujitsuTechnologySolutions GmbH Keyboard KB SCR2
+    Yubico YubiKey CCID
+    Yubico YubiKey FIDO+CCID
+    Yubico YubiKey OTP+CCID
+    Yubico YubiKey OTP+FIDO+CCID
+  * Fix libusb config descriptor leak
+  * Fix leaking an allocated bundle in case no matching reader was found
+
+-------------------------------------------------------------------
+Sun Feb 25 09:19:24 UTC 2018 - wr@rosenauer.org
+
+- Updated to version 1.4.29
+  * Add support of
+    Access IS NFC Smart Module (With idProduct 0x0164)
+    Bit4id Digital-DNA Key
+    Bit4id Digital-DNA Key BT
+    Bluink Ltd. Bluink CCID
+    Chicony HP Skylab USB Smartcard Keyboard
+    HID Global OMNIKEY 5023 Smart Card Reader
+    HID Global OMNIKEY 5027CK CCID CONFIG IF
+    KeyXentic Inc. KX906 Smart Card Reader
+    Spyrus Inc Rosetta USB
+    Spyrus Inc WorkSafe Pro
+    Watchdata USB Key (idProduct: 0x0418)
+  * The C3PO LTC31 v2 wrongly declares PIN support
+  * Remove extra EGT patch because it has bad side effects
+
+-------------------------------------------------------------------
+Sun Oct 15 09:00:53 UTC 2017 - wr@rosenauer.org
+
+- Updated to version 1.4.28
+  * Add support of
+    Athena IDProtect Flash
+    Elatec TWN4/B1.06/CPF3.05/S1SC1.32/P (Beta 3)
+    HID Global OMNIKEY 5122 Dual
+    HID Global OMNIKEY 5122 Smartcard Reader
+    IIT E.Key Crystal-1
+    KRONEGGER Micro Core Platform
+    KRONEGGER NFC blue Reader Platform
+    Ledger Nano S
+    REINER SCT cyberJack RFID standard
+    REINER SCT cyberJack one
+    SAFETRUST SABRE SCR
+    SafeNet eToken 5300
+    Unicept GmbH AirID USB Dongle
+    Watchdata USB Key
+    mCore SCard-Reader
+  * Disabled readers
+    Jinmuyu Electronics Co., Ltd. MR800
+  * Fix non-pinpad HID global devices
+  * udev rules
+    allow rule overwrite
+    disable USB autosuspend on C3PO LTC31 v1 reader
+  * some minor improvements
+
+-------------------------------------------------------------------
+Mon May 22 05:55:58 UTC 2017 - wr@rosenauer.org
+
+- Updated to version 1.4.27
+  * Add support of
+    ACS ACR1255U-J1
+    ACS CryptoMate (T2)
+    ANCUD CCID USB Reader & RNG
+    DUALi DE-620 Combi
+    FT CCID
+    FT CCID KB
+    FT U2F CCID KB
+    FT U2F CCID KBOARD
+    HID Global OMNIKEY 5422 Smartcard Reader
+    InfoThink IT-102MU Reader
+    Kapsch TrafficCom USB SAM reader
+    MK Technology KeyPass S1
+    Mulann PVT
+    Regula RFID Reader
+    Spyrus Inc PocketVault P-3X
+    Unicept GmbH AirID USB
+  * Add Microchip SEC1210 UART support (when connected on a serial port)
+  * Add Zero Length Packet (ZLP) support for Gemalto IDBridge CT30 and K30
+    enable the patch using ./configure --enable-zlp
+  * Add support of HID Omnikey 5422 as multi slot reader (for macOS)
+  * Escape command: signals buffer overflow instead of silently
+    truncating the buffer
+  * Fix a bug with multi readers and pcscd uses hotplug_libusb
+    (not the recommended configuration)
+  * Some minor improvements
+
+-------------------------------------------------------------------
+Sat Jan  7 17:49:06 UTC 2017 - wr@rosenauer.org
+
+- Updated to version 1.4.26
+  * Add support of
+    Bit4id Digital DNA Key
+    Bit4id tokenME FIPS v3
+    INGENICO Leo
+    appidkey GmbH ID60-USB
+  * PowerOn: the default algorithm is now 5V then 1.8V then 3V then fail.
+    It is still possible to change the initial voltage in the
+    Info.plist file.
+    Now, in any case, all the values are tried before failing.
+  * Negotiate maximum baud rate when bNumDataRatesSupported = 0
+  * Some minor improvements
+
+-------------------------------------------------------------------
+Mon Oct  3 06:31:24 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.4.25
+  * Add support of
+    Aladdin R.D. JaCarta (idProduct: 0x0402)
+    Broadcom Corp 5880 (idProduct: 0x5832)
+    Broadcom Corp 5880 (idProduct: 0x5833)
+    Broadcom Corp 5880 (idProduct: 0x5834)
+    ESMART Token GOST X2 ET1020-A
+    Feitian VR504 VHBR Contactless & Contact Card Reader
+    Feitian bR500
+    Gemalto K50
+    appidkey GmbH ID100-USB  SC Reader
+    appidkey GmbH ID50 -USB
+  * Remove suport of
+    Broadcom Corp 5880 (idProduct: 0x5800)
+    Broadcom Corp 5880 (idProduct: 0x5805)
+    KEBTechnology KONA USB SmartCard
+  * Fix crash with GemCore Pos Pro and GemCore Sim Pro
+  * Some minor improvements
+
+-------------------------------------------------------------------
+Mon May 30 06:36:05 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.4.24
+  * Add support of
+    Generic USB Smart Card Reader
+    Giesecke & Devrient GmbH StarSign CUT S
+    HID AVIATOR Generic
+  * better support of Elatec TWN4 SmartCard NFC
+  * better support of SCM SCL011
+  * fix SCARD_ATTR_VENDOR_IFD_SERIAL_NO attribute size
+  * fix a race condition on card events with multiple readers
+  * Some minor improvements
+
+-------------------------------------------------------------------
+Thu Apr 21 07:26:49 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.4.23
+  * Add support of
+    ACS ACR3901U ICC Reader
+    Alcor Micro AU9560
+    Cherry SmartTerminal XX44
+    HID Global OMNIKEY 3x21 Smart Card Reader
+    HID Global OMNIKEY 5022 Smart Card Reader
+    HID Global OMNIKEY 6121 Smart Card Reader
+    IonIDe Smartcard Reader reader
+    KACST HSID Reader
+    KACST HSID Reader Dual Storage
+    KACST HSID Reader Single Storage
+  * Remove support of
+    VMware Virtual USB CCID
+  * Fix a busy loop consuming 100% of CPU for some composite USB devices
+    impacted readers: Yubico Yubikey NEO U2F+CCID and Broadcom BCM5880
+  * Remove support of (unused) option DRIVER_OPTION_RESET_ON_CLOSE
+  * log libusb error name instead of decimal value
+  * Some minor improvements
+
+-------------------------------------------------------------------
+Sun Jan 10 19:43:54 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.4.22
+  * Add support of
+    Aktiv Rutoken PINPad 2
+    Aladdin R.D. JC-WebPass (JC600)
+    Aladdin R.D. JCR-770
+    Aladdin R.D. JaCarta
+    Aladdin R.D. JaCarta Flash
+    Aladdin R.D. JaCarta LT
+    Aladdin R.D. JaCarta U2F (JC602)
+    Athena ASEDrive IIIe Combo Bio PIV
+    Athena ASEDrive IIIe KB Bio PIV
+    GEMALTO CT1100
+    GEMALTO K1100
+    Hitachi, Ltd. Hitachi Biometric Reader
+    Hitachi, Ltd. Hitachi Portable Biometric Reader
+    Nitrokey Nitrokey Storage
+    THURSBY SOFTWARE TSS-PK1
+    Thursby Software Systems, Inc. TSS-PK7
+    Thursby Software Systems, Inc. TSS-PK8
+  * Patch for Microchip SEC1110 reader on Mac OS X (card events notification)
+  * Patch for Cherry KC 1000 SC (problem was with a T=1 card and case 2 APDU)
+  * Fix support of FEATURE_MCT_READER_DIRECT for the Kobil mIDentity visual reader
+  * Set timeout to 90 sec for PPDU (Pseudo APDU) commands. This
+    change allows the use of a Secure Verify command sent as a PPDU
+    through SCardTransmit().
+  * Fix a crash when reader reader initialization failed
+  * Fix initialization bug with Gemalto Pinpad reader on Mac OS X
+  * Some minor bugs fixed
+
+-------------------------------------------------------------------
+Sun Oct 25 09:39:20 UTC 2015 - wr@rosenauer.org
+
+- Updated to version 1.4.21
+  * Add support of
+    ACS ACR1252 Dual Reader
+    Chicony HP USB Smartcard CCID Keyboard JP
+    Chicony HP USB Smartcard CCID Keyboard KR
+    FT ePass2003Auto
+    Feitian bR301 BLE
+    Feitian iR301 (ProductID 0x0619)
+    Feitian iR301 (ProductID 0x061C)
+    Identiv @MAXX ID-1 Smart Card Reader
+    Identiv @MAXX Light2 token
+    Identiv CLOUD 2980 F Smart Card Reader
+    Identiv Identiv uTrust 4701 F Dual Interface Reader
+    Identiv SCR3500 A Contact Reader
+    Identiv SCR3500 B Contact Reader
+    Identiv SCR35xx USB Smart Card Reader
+    Identiv uTrust 2900 R Smart Card Reader
+    Identiv uTrust 2910 R Smart Card Reader
+    Identiv uTrust 2910 R Taglio SC Reader
+    Identiv uTrust 3512 SAM slot Token
+    Identiv uTrust 3522 embd SE RFID Token
+    Identiv uTrust 3700 F CL Reader
+    Identiv uTrust 3701 F CL Reader
+    Identive Identive CLOUD 4000 F DTC
+    Liteon HP SC Keyboard - Apollo (Liteon)
+    Liteon HP SC Keyboard - Apollo JP (Liteon)
+    Liteon HP SC Keyboard - Apollo KR (Liteon)
+    Nitrokey Nitrokey HSM
+    Nitrokey Nitrokey Pro
+    Nitrokey Nitrokey Start
+    Rocketek RT-SCR1
+    VASCO DIGIPASS 875
+    WatchCNPC USB CCID Key
+  * Remove support of
+    Crypto Stick Crypto Stick v1.4 is an old version of Nitrokey Nitrokey Pro
+    Free Software Initiative of Japan Gnuk Token is an old version
+    of Nitrokey Nitrokey Start
+  * Add Feitain R502 dual interface (composite) reader on Mac OS X
+  * display a human readable version of the error code returned by libusb
+  * Mac OS X: wait until libusb/the reader is ready
+  * some minor bugs fixed
+
+-------------------------------------------------------------------
+Wed Aug  5 14:09:02 UTC 2015 - wr@rosenauer.org
+
+- Updated to version 1.4.20
+  * Add support of
+    ACS ACR1251 Dual Reader
+    Access IS NFC Smart Module
+    BIFIT iToken
+    BLUTRONICS BLUDRIVE II CCID (idProduct: 0x1079)
+    Generic MultiCard Device
+    NXP Pegoda 2 N
+    SafeNet eToken 5100
+    SafeNet eToken 7300
+    Yubico Yubikey 4 CCID
+    Yubico Yubikey 4 OTP+CCID
+    Yubico Yubikey 4 OTP+U2F+CCID
+    Yubico Yubikey 4 U2F+CCID
+  * Depends on libusb version 1.0.9 instead of 1.0.8
+  * The O2 Micro Oz776 reader only supports 9600 bps
+- spec file cleanup
+- remove pgp validation from build (now handled via OBS)
+
+-------------------------------------------------------------------
+Wed May 13 08:34:02 UTC 2015 - wr@rosenauer.org
+
+- Updated to version 1.4.19
+  * Add support of
+    AK910 CKey (idProduct 0x0001)
+    AK910 CKey (idProduct 0x0011)
+    AK910 IDONE
+    Broadcom Corp 5880 (idProduct: 0x5804)
+    CASTLES EZCCID Smart Card Reader
+    Cherry KC 1000 SC
+    Cherry KC 1000 SC Z
+    Cherry KC 1000 SC/DI
+    Cherry KC 1000 SC/DI Z
+    Cherry TC 1300
+    Chicony USB Smart Card Keyboard
+    Elatec TWN4 SmartCard NFC
+    Feitian 502-CL
+    Feitian eJAVA Token
+    FujitsuTechnologySolutions GmbH Keyboard KB100 SCR
+    FujitsuTechnologySolutions GmbH Keyboard KB100 SCR eSIG
+    Hewlett-Packard HP lt4112 Gobi 4G Module
+    Identive SCT3522CC token
+    OMNIKEY AG 6121 USB mobile
+    PIVKey T800
+    REINER SCT tanJack Bluetooth
+    Watchdata USB Key
+  * Remove ZLP patch for Gemalto IDBridge CT30 and K30. The patch was
+    causing problems with the K50.  A new reader firmware (version F)
+    solved the problem so the patch is no more needed.
+  * Fix a memory leak in an error path
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Sat Sep 13 18:50:10 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.4.18
+  * Add support of
+    Cherry Cherry TC 1100
+    Cherry Smart Card Reader USB
+    Cherry Smartcard Keyboard G87-1xx44
+    FujitsuTechnologySolutions GmbH Keyboard KB SCR2
+    Lenovo Lenovo USB Smartcard Keyboard
+    Yubico Yubikey NEO OTP+U2F+CCID
+    Yubico Yubikey NEO U2F+CCID
+    eID_R6 001 X8
+  * fix support of Omnikey CardMan 3121
+  * reduce memory consumed when configured with --enable-embedded
+  * prepare the port to UEFI
+
+-------------------------------------------------------------------
+Thu Jun 12 14:53:27 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.4.17
+  * Add support of
+    Feitian R502
+    Free Software Initiative of Japan Gnuk Token
+    German Privacy Foundation Crypto Stick v2.0
+    HID Global veriCLASS Reader
+    HID OMNIKEY 5025-CL
+    Identive Technologies Multi-ISO HF Reader - USB
+    OMNIKEY 5421
+    OMNIKEY AG 3121 USB
+    udea MILKO V1.
+  * Fix support of O2 Micro Oz776. The reader is limited to 9600 bps
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Sun Mar 23 17:13:24 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.4.16
+  * Add support of
+    Crypto Stick Crypto Stick v1.4
+    Hewlett Packard USB Smartcard CCID Keyboard
+    IID AT90S064 CCID READER
+    INSIDE Secure VaultIC 405 Smart Object
+    INSIDE Secure VaultIC 441 Smart Object
+    Microchip SEC1110
+    Microchip SEC1210
+    Watchdata W5181
+  * Add support of DRIVER_OPTION_DISABLE_PIN_RETRIES
+    The Gemalto pinpad reader sends a VERIFY command with no PIN value
+    in order to retreive the remaining retries from the card. Some
+    cards (like the OpenPGP card) do not support this.
+    It is now possible to disable this behavior from the Gemalto Pinpad
+    and Covadis Véga Alpha.
+  * Add support of WTX received before SW during Secure Pin Entry Verify
+    The Swiss health care card sends a WTX request before returning
+    the SW code. If the reader is in TPDU and the card is in T=1 the
+    driver must manage the request itself.
+- added alternative key (E8F9C57E) to keyring
+
+-------------------------------------------------------------------
+Sat Feb 15 20:48:40 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.4.15
+  * Add support of
+    DUALi DRAGON NFC READER
+    Feitian bR301
+    Gemalto CR30 reader in serial communication
+    Gemalto Ezio Shield Pro SC
+    IIT E.Key Almaz-1C
+  * PIN_MODIFY_STRUCTURE & PIN_VERIFY_STRUCTURE: Fix calculation of
+    the command length after pcsc-lite 1.8.9 (October 2013) changed
+    the PCSC/reader.h header
+  * Add specific PIN min (0) & max (25) sizes for SmartTerminal ST-2xxx
+  * Do not get the data rates if bNumDataRatesSupported = 0
+  * Support Gemalto features for pinpad readers MinimumPINSize,
+    MaximumPINSize and bEntryValidationCondition are fetched from the
+    reader firmware
+  * disable (broken) pinpad for Fujitsu SmartCase KB SCR eSIG
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Tue Nov 26 11:07:53 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.14
+  * Add support of
+    Gemalto GemCore SIM Pro firmware 2.0 (using USB)
+  * report FEATURE_IFD_PIN_PROPERTIES only for pinpad readers
+  * Generalize the management of (old) readers with bDeviceClass = 0xFF
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Thu Oct 10 10:54:29 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.13
+  * Add support of
+    Access IS ePassport Reader
+    Planeta RC700-NFC CCID
+  * Add support of Windows value for CM_IOCTL_GET_FEATURE_REQUEST
+    Windows uses 0x313520 for SCARD_CTL_CODE(3400)
+    pcsc-lite uses 0x42000D48 for SCARD_CTL_CODE(3400)
+    RDP aplications (like rdesktop) will convert SCardControl()
+    commands from a Windows application (so using 0x313520) to pcsc-lite.
+  * fix multi-slot support for card movement notification
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Tue Aug 13 18:16:31 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.12
+  * Add support of
+    HID OMNIKEY 5127 CK
+    HID OMNIKEY 5326 DFR
+    HID OMNIKEY 5427 CK
+    Ingenico WITEO USB Smart Card Reader (Base and Badge)
+    SecuTech SecuTech Token
+  * Add support of card movement notifications for multi-slot readers
+  * Check libusb is at least at version 1.0.8
+  * Get the serialconfdir value from pcsc-lite pkg config instead of
+    using $(DESTDIR)/$(sysconfdir)/reader.conf.d/ if not specified
+    (pcsc-lite does not provide that information yet so the value
+    is set manually
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Wed Jun 12 12:39:58 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.11
+  * Add support of
+    Gemalto IDBridge CT30
+    Gemalto IDBridge K30
+    SCM Microsystems Inc. SCL010 Contactless Reader
+    SCM Microsystems Inc. SDI011 Contactless Reader
+    THRC reader
+  * Better management of time extension requests
+  * parse: better support of devices with bInterfaceClass = 0xFF
+  * udev rule file: Remove setting group to pcscd, remove support
+    of Linux kernel < 2.6.35 for auto power up management
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Sun Apr 21 16:02:52 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.10
+  * Add support of
+    ACS APG8201 USB Reader with PID 0x8202
+    GIS Ltd SmartMouse USB
+    Gemalto IDBridge K3000
+    Identive CLOUD 2700 F Smart Card Reader
+    Identive CLOUD 2700 R Smart Card Reader
+    Identive CLOUD 4500 F Dual Interface Reader
+    Identive CLOUD 4510 F Contactless + SAM Reader
+    Identive CLOUD 4700 F Dual Interface Reader
+    Identive CLOUD 4710 F Contactless + SAM Reader
+    Inside Secure AT90SCR050
+    Inside Secure AT90SCR100
+    Inside Secure AT90SCR200
+    SCR3310-NTTCom USB SmartCard Reader
+    SafeTech SafeTouch
+    SpringCard H512 Series
+    SpringCard H663 Series
+    SpringCard NFC'Roll
+    Yubico Yubikey NEO CCID
+    Yubico Yubikey NEO OTP+CCID
+  * Add support of time extension for Escape commands
+
+-------------------------------------------------------------------
+Wed Jan 16 18:13:59 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.4.9
+  * Add support of
+     Aktiv Rutoken PINPad In
+     Aktiv Rutoken PINPad Ex
+     REINER SCT cyberJack go
+  *  Info.plist: Correctly handle reader names containing &
+
+-------------------------------------------------------------------
+Wed Jan  9 18:27:19 CET 2013 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Thu Oct 18 09:06:54 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules directory location.
+
+-------------------------------------------------------------------
+Mon Oct  8 05:57:55 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.4.8:
+  * Add support of
+     SCR3310-NTTCom USB (was removed in version 1.4.6)
+     Inside Secure VaultIC 420 Smart Object
+     Inside Secure VaultIC 440 Smart Object
+  * Wait up to 3 seconds for reader start up
+  * Add support of new PC/SC V2 part 10 properties:
+     dwMaxAPDUDataSize
+     wIdVendor
+     wIdProduct
+  * Use helper functions from libPCSCv2part10 to parse the
+    PC/SC v2 part 10 features
+
+-------------------------------------------------------------------
+Tue Jun 26 14:49:22 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.4.7:
+  * Add support of
+     ACS ACR101 ICC Reader
+     ACS CryptoMate64
+     Alcor Micro AU9522
+     Bit4id CKey4
+     Bit4id cryptokey
+     Bit4id iAM
+     Bit4id miniLector
+     Bit4id miniLector-s
+     CCB eSafeLD
+     Gemalto Ezio Shield Branch
+     KOBIL Systems IDToken
+     NXP PR533
+  * KOBIL Systems IDToken special cases:
+     Give more time (3 seconds instead of 2) to the reader to answer
+     Hack for the Kobil IDToken and Geman eID card. The German eID
+     card is bogus and need to be powered off before a power on
+     Add Reader-Info-Commands special APDU/command
+     - Manufacturer command
+     - Product name command
+     - Firmware version command
+     - Driver version command
+  * Use auto suspend for CCID devices only (Closes Alioth bug
+    [#313445] "Do not activate USB suspend for composite devices:
+    keyboard")
+  * Fix some error management in the T=1 TPDU state machine
+  * some minor bugs removed
+  * some minor improvements added
+- do not call bootstrap since autoconf requirement is bleeding edge
+  and only works on Factory/12.2 - also seems to be unnecessary
+
+-------------------------------------------------------------------
+Sun Apr 15 08:40:16 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.4.6:
+  * Add support of Avtor SC Reader 371, Avtor SecureToken,
+    DIGIPASS KEY 202, Fujitsu SmartCase KB SCR eSIG,
+    Giesecke & Devrient StarSign CUT,
+    Inside Secure VaultIC 460 Smart Object,
+    Macally NFC CCID eNetPad reader, OmniKey 6321 USB,
+    SCM SDI 011, Teridian TSC12xxF, Vasco DIGIPASS KEY 101
+  * Remove support of readers without a USB CCID descriptor file
+    0x08E6:0x34C1:Gemalto Ezio Shield Secure Channel
+    0x08E6:0x34C4:Gemalto Ezio Generic
+    0x04E6:0x511A:SCM SCR 3310 NTTCom
+    0x0783:0x0008:C3PO LTC32 USBv2 with keyboard support
+    0x0783:0x9002:C3PO TLTC2USB
+    0x047B:0x020B:Silitek SK-3105
+  * Disable SPE for HP USB CCID Smartcard Keyboard. The reader is
+    bogus and unsafe.
+  * Fix a problem with ICCD type A devices. We now wait for device
+    ready
+  * Secure PIN Verify and PIN Modify: set the minimum timeout to
+    90 seconds
+  * Add support of wIdVendor and wIdProduct properties
+  * Add support of dwMaxAPDUDataSize
+  * Add support of Gemalto firmware features
+  * some minor bugs removed
+
+-------------------------------------------------------------------
+Fri Dec  2 16:35:03 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Oct 17 10:08:36 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.4.5:
+  * Add support of Alcor Micro AU9540, Ubisys 13.56MHz RFID (CCID),
+    BIFIT USB-Token iBank2key, BIFIT iBank2Key, Gemalto Ezio Shield
+    PinPad reader, Gemalto SA .NET Dual, Precise Sense MC reader
+    (with fingerprint), SDS DOMINO-Key TWIN Pro
+  * Add support of bPPDUSupport and FEATURE_CCID_ESC_COMMAND
+  * SCARD_ATTR_VENDOR_NAME and SCARD_ATTR_VENDOR_IFD_VERSION are
+    not the vendor name and version of the driver but of the IFD:
+    InterFace Device i.e. the smart card reader.  We then return the
+    USB iManufacturer string as SCARD_ATTR_VENDOR_NAME and USB
+    bcdDevice as SCARD_ATTR_VENDOR_IFD_VERSION
+  * reduce binary size by removing unused features from simclist
+  * Fix some warnings reported by Coverity
+
+-------------------------------------------------------------------
+Wed May 18 18:10:44 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.4.4:
+  * Add support of Gemalto Ezio Shield, Gemalto Ezio CB+, Gemalto Ezio
+    Shield Secure Channel, Gemalto Ezio Shield PinPad and Gemalto Ezio
+    Generic
+  * Activate USB automatic power suspend. The Linux kernel should
+    power off the reader automatically if it is not used (pcscd is not
+    running).
+  * Add support of TLV Properties wLcdMaxCharacters and wLcdMaxLines
+  * Add support of Neowave Weneo, Vasco DIGIPASS 920, SCM SCL011,
+    Feitian ePass2003 readers
+  * use :libudev: instead of :libhal: naming scheme
+  * Do not install RSA_SecurID_getpasswd and Kobil_mIDentity_switch
+    and the associated documentation.
+  * the Secure Pin Entry of the HP USB Smart Card Keyboard is bogus
+    so disable it
+  * Add support of Feitian SCR310 reader (also known as 301v2), ACS
+    APG8201 PINhandy 1, Oberthur ID-ONE TOKEN SLIM v2, new Neowave
+    Weneo token, Vasco DIGIPASS KEY 860, Vasco DIGIPASS KEY 200,
+    Xiring Leo v2, Xiring MyLeo, Aktiv Rutoken lite readers
+  * Add back support of "bogus" Oz776, REINER SCT and BLUDRIVE II
+  * disable use of interrupt card events for multi slots readers
+
+-------------------------------------------------------------------
+Wed Feb 16 14:13:52 CET 2011 - oneukum@suse.de
+
+- Added support for internal reader in HP laptops
+
+-------------------------------------------------------------------
+Wed Jan  5 17:13:38 CET 2011 - sbrabec@suse.cz
+
+- Updated to version 1.4.1:
+  * Security fix (bnc#661000, CVE-2010-4530).
+  * Migrated to libusb-1_0.
+  * udev support.
+  * Compatible with pcsc-lite-1.6.
+  * See ChangeLog for details.
+
+-------------------------------------------------------------------
+Wed Aug  5 16:59:22 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.3.11:
+  * Incompatible change: Remove support of Reiner-SCT cyberJack
+    pinpad(a) on request of Reiner-SCT. Use pcsc-cyberjack instead.
+  * Should work: Panasonic USB Smart Card Reader 7A-Smart, ATMEL
+    AT91SC192192CT-USB, Alcor Micro SCR001, Aktiv Rutoken ECP,
+    Synnix STD200, more Neowave Weneo tokens, Feitian SCR301
+    Raritan D2CIM-DVUSB VM/CCID
+  * New known firmware: Kobil EMV CAP, ACS ACR122U-WB-R with bogus
+    firmware < 2.06
+  * Broadcom 5880 should work a bit better
+  * Fixes for GemProx DU/SU and hacks for other Gemalto readers
+  * SCM SCL010 Contactless Reader is not supported
+  * Add support of FEATURE_MCT_READERDIRECT. Now only on the Kobil
+    TriB@nk reader.
+  * Support --disable-class argument to build a NON class driver.
+  * HAL support fixes.
+  * Add support of PIN_PROPERTIES_STRUCTURE structure and
+    FEATURE_IFD_PIN_PROPERTIES
+  * It is possible to configure composite devices to be seen as
+    multi-slots.
+  * Other fixes, improvement and updates.
+
+-------------------------------------------------------------------
+Tue Apr  7 15:30:02 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.3.10:
+  * Added a hack to support the bogus OpenGPG card.
+  * Should work: Precise Biometrics 200 MC, Precise Biometrics 250
+    MC, SafeNet IKey4000 used in different device, Atmel
+    AT98SC032CT, Neowave Weneo, MSI StarReader SMART, VMware Virtual
+    USB CCID reader, ACS ACR122U PICC Interface, HP MFP Smart Card
+    Reader, KONA USB SmartCard, SpringCard CrazyWriter, CSB6 Basic,
+    CSB6 Secure, CSB6 Ultimate, EasyFinger Standard, EasyFinger
+    Ultimate and Prox'N'Roll, Atmel AT91SO, Cherry SmartTerminal
+    ST-1200USB, Aladdin eToken PRO USB 72K Java.
+  * Differentiate between KOBIL mIDentity M and XL.
+  * Known readers: SpringCard Prox'N'Roll, CSB6 Basic, EasyFinger
+    Ultimate, CSB6 Ultimate, EasyFinger Standard, CrazyWriter, CSB6
+    Secure, Pro-Active CSB6 Ultimate is renamed SpringCard CSB6
+    Ultimate
+  * Unsupported: Broadcom 5880, jNet Technology jToken s1.
+  * Disabled support of the contcatless part of SDI010 and SCR331DI.
+  * Avoid a "Duplicate frame detected" error.
+  * Use a very long timeout for PowerUp since the card can be very
+    slow to send the full ATR (up to 30 seconds at 4 MHz)
+  * Driver will work in a multi-reader configuration.
+- Use modalias supplements instead of eID issuer locales.
+- Require pcsc-lite.
+- Removed custom hotplug support. Now integrated in pcsc-lite.
+
+-------------------------------------------------------------------
+Tue Jan 27 00:39:51 CET 2009 - ro@suse.de
+
+- added udev diretories to filelist to fix build
+
+-------------------------------------------------------------------
+Tue Jan  6 19:33:03 CET 2009 - sbrabec@suse.cz
+
+- Do not call autoreconf for SLE10.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:30:38 CET 2008 - sbrabec@suse.cz
+
+- On request of author reverted to libusb0 to prevent errors.
+  http://www.nabble.com/Re%3A-patch-for-libusb-0.9.3-libusb-os-linux_usbfs.c-p20421276.html
+
+-------------------------------------------------------------------
+Fri Sep  5 11:53:48 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 1.3.8:
+  * Fixes and code improvements.
+  * New readers that should work: Should work: Pro-Active CSB6
+    Ultimate, id3 Semiconductors CL1356A HID, Vasco DP905,
+    KEBTechnology KONA USB SmartCard, Precise Biometrics 250 MC,
+    Covadis.ch Alya and Vega-Alpha.
+
+-------------------------------------------------------------------
+Wed Apr  2 18:30:33 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 1.3.5:
+  * new supported devices
+  * documentation improves
+  * code changes
+  * for more see ChangeLog
+
+-------------------------------------------------------------------
+Thu Jul 26 15:50:24 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.3.0:
+  * code changes
+  * crash fixes
+  * firmware updates
+  * new command line tools
+
+-------------------------------------------------------------------
+Thu May 31 10:28:16 CEST 2007 - sbrabec@suse.cz
+
+- Build requires libusb-devel.
+
+-------------------------------------------------------------------
+Tue Feb 13 15:02:14 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 1.2.1:
+  * Support for non CCID generic readers.
+  * Supported O2Micro Oz7762.
+  * Support for SCARD_ATTR_VENDOR_IFD_VERSION,
+  * SCARD_ATTR_VENDOR_NAME and SCARD_ATTR_MAXINPUT tags used by
+    SCardGetAttrib(). Read SCARDGETATTRIB.txt for more.
+  * Support for OmniKey CardMan 5125, CardMan 1021, C3PO LTC32, Teo
+    by Xiring, HP USB Smartcard Reader.
+  * Support Extended APDU (up to 64KB) for readers in TPDU mode
+    or Extended APDU mode. This only works for T=1 cards.
+  * Support for C3PO LTC31 (new version), OmniKey CardMan 3021, HP
+    USB Smart Card Keyboard, Actividentity (ActiveCard) Activkey
+    Sim, id3 Semiconductors CL1356D and CL1356T, Alcor Micro AU9520
+  * Support the contactless interface of the SCR331-DI-NTTCOM
+  * Increased the USB timeout used for PIN verify/modify.
+  * Endian fixes.
+  * Other fixes.
+
+-------------------------------------------------------------------
+Fri Nov 24 13:52:31 CET 2006 - mjancar@suse.cz
+
+- set IFSC in the SetParameters when required (#223566)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:28:18 CEST 2006 - stark@suse.de
+
+- update to version 1.0.1
+  * add support for Axalto Reflex USB v3, SCM Micro SDI 010, Winbond
+    Electronics W81E381 chipset, Gemplus GemPC Card, Athena ASE IIIe
+    KB USB, OmniKey CardMan 3621
+  * improve support of Cherry XX44 keyboard for PIN verify and change
+    (circumvent firmware bugs)
+  * do not use LTPBundleFindValueWithKey() from pcscd since this
+    function has been removed from pcscd API
+  * use -fvisibility=hidden is available to limit the number of
+    exported symbols
+
+-------------------------------------------------------------------
+Sun Apr  2 00:11:54 CEST 2006 - sndirsch@suse.de
+
+- added missing locale provides (Bug #161867) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 08:59:37 CET 2006 - mjancar@suse.cz
+
+- move to separate source package
+
+-------------------------------------------------------------------
+Mon Jan  2 07:29:48 CET 2006 - stark@suse.de
+
+- removed obsolete hotplug stuff for cyberjack
+- Updated pcsc-lite to version 1.2.9-beta9
+- Updated CCID driver to 0.9.4
+- Updated GemPC driver to 1.0.0
+- package pkgconfig files to be able to build drivers outside 
+  the package
+
+-------------------------------------------------------------------
+Tue Dec 20 16:08:24 CET 2005 - ro@suse.de
+
+- removed unpackaged man-page symlinks 
+
+-------------------------------------------------------------------
+Tue Nov 29 11:59:15 CET 2005 - ro@suse.de
+
+- remove keeper from nfb (unused) 
+
+-------------------------------------------------------------------
+Mon Oct 10 13:02:47 CEST 2005 - stark@suse.de
+
+- Updated towitoko driver to 2.0.7 and install USB bundle
+
+-------------------------------------------------------------------
+Wed Sep 21 22:17:12 CEST 2005 - stark@suse.de
+
+- Repackaged CCID as bundle for USB usage (#116497)
+
+-------------------------------------------------------------------
+Tue Sep 20 06:24:30 CEST 2005 - stark@suse.de
+
+- handle old reader.conf in upgrade case
+- compile with -fno-strict-aliasing
+- fixed missing return in ctapi-cyberjack
+
+-------------------------------------------------------------------
+Sat Sep 17 11:46:52 CEST 2005 - stark@suse.de
+
+- Updated pcsc-lite to version 1.2.9beta8 (#116497)
+  * use /etc/reader.conf.d/
+  * adapted init script to create /etc/reader.conf
+- Updated cyberjack driver to version 2.0.9
+  * use rpath for cyberjack tools
+- Updated ccid driver to version 0.9.3 (#116497)
+- Use RPM_OPT_FLAGS everywhere
+- Fixed serious compiler warnings
+
+-------------------------------------------------------------------
+Mon Sep  5 15:25:59 CEST 2005 - skh@suse.de
+
+- fix off-by-one error in hotplug_libusb.c [#112964]
+
+-------------------------------------------------------------------
+Mon Aug 29 15:35:33 CEST 2005 - skh@suse.de
+
+- Remove unnecessary files from pcsc-acr38 again [#112927]
+
+-------------------------------------------------------------------
+Mon Aug 29 14:33:44 CEST 2005 - skh@suse.de
+
+- package ACR38 driver in correct bundle format [#112927]
+- remove orphaned /var/run/pcscd.pub when necessary [#112928]
+- update ACR38u driver to version 100705 to fix crash when reader
+  is plugged in [#112964]
+
+-------------------------------------------------------------------
+Tue Aug 16 14:15:41 CEST 2005 - skh@suse.de
+
+- Updated ACR38u driver to version 100703
+
+-------------------------------------------------------------------
+Tue Jul 26 17:47:53 CEST 2005 - okir@suse.de
+
+- Added ACR38u driver
+
+-------------------------------------------------------------------
+Tue Jul 26 13:29:37 CEST 2005 - okir@suse.de
+
+- Updated description in init script (#79287)
+
+-------------------------------------------------------------------
+Thu Jun 16 17:12:15 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS in 1 more driver
+- added includes to avoid implict declaration of memcpy and similar.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:12:49 CEST 2005 - ro@suse.de
+
+- make it build with gcc-4 
+
+-------------------------------------------------------------------
+Thu Mar 17 12:45:39 CET 2005 - okir@suse.de
+
+- Disable support for extended-apdus, it eats 32MB of memory (#73629)
+
+-------------------------------------------------------------------
+Thu Mar 10 11:49:25 CET 2005 - okir@suse.de
+
+- Fix default search location for USB bundles
+
+-------------------------------------------------------------------
+Fri Jan 21 15:11:43 CET 2005 - okir@suse.de
+
+- Updated to latest upstream version
+- Updated several drivers
+- Added CCID driver
+- Provide a more informative readers.conf file (#42620)
+
+-------------------------------------------------------------------
+Thu Jan 20 12:46:44 CET 2005 - ro@suse.de
+
+- drop subpackage gpr400 
+
+-------------------------------------------------------------------
+Wed Apr 28 18:20:35 CEST 2004 - ro@suse.de
+
+- compile formaticc with no-strict-aliasing
+- fix unused return type in musclecard.c
+
+-------------------------------------------------------------------
+Wed Mar 31 09:18:42 CEST 2004 - okir@suse.de
+
+- Properly install testpcsc, formaticc (#37625)
+- Build towitoko driver with --enable-win32-com
+
+-------------------------------------------------------------------
+Thu Mar 18 13:41:02 CET 2004 - okir@suse.de
+
+- cyberjack apps installed in /bin should be executable (#36409)
+
+-------------------------------------------------------------------
+Sat Jan 10 18:16:21 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Aug  5 14:53:48 CEST 2003 - mge@suse.de
+
+- merge ctapi-cyberjack into pcsc-lite: two additional
+  packages are created: ctapi-cyberjack and pcsc-cyberjack
+
+-------------------------------------------------------------------
+Thu Jun 26 01:17:52 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+- added directories to filelist
+
+-------------------------------------------------------------------
+Fri Nov 29 15:49:25 CET 2002 - okir@suse.de
+
+- added -fPIC when building eToken driver
+
+-------------------------------------------------------------------
+Fri Nov 29 10:14:46 CET 2002 - okir@suse.de
+
+- Updated to latest upstream version
+- Included driver for Aladdin eToken PRO
+- More GNU auto#*@! headaches
+- Various minor fixes
+
+-------------------------------------------------------------------
+Wed Aug 28 12:37:15 CEST 2002 - okir@suse.de
+
+- Moved shared objects to /usr/lib64 on ppc64/s390x (#18421)
+
+-------------------------------------------------------------------
+Mon Aug  5 14:27:44 CEST 2002 - olh@suse.de
+
+- fix initscript, Should-start: setserial hotplug
+
+-------------------------------------------------------------------
+Fri Aug  2 09:38:11 CEST 2002 - okir@suse.de
+
+- added PreReq for insserv_and_fillup
+
+-------------------------------------------------------------------
+Wed Jul 31 17:46:00 CEST 2002 - okir@suse.de
+
+- fixed build problem on s390x (force aclocal.m4 regen)
+
+-------------------------------------------------------------------
+Wed Jun 26 01:56:16 CEST 2002 - ro@suse.de
+
+- use -fPIC when building a shared lib 
+
+-------------------------------------------------------------------
+Wed Jun 12 13:26:14 CEST 2002 - okir@suse.de
+
+- fix for bug #15051 (hey, it's a palindrome bug:):
+  missing %doc DRIVERS file; misc silly binaries moved
+  out of /usr/bin
+
+-------------------------------------------------------------------
+Tue Apr 30 14:45:30 CEST 2002 - okir@suse.de
+
+- Fixed build problem introduced by previous patch
+
+-------------------------------------------------------------------
+Tue Apr 30 09:41:09 CEST 2002 - okir@suse.de
+
+- updated to latest upstream version
+- added drivers for these readers: Towitoko, Schlumberger Reflex 6x,
+  Gemplus GPR 400, GemPlus GemPC 410/430
+
+-------------------------------------------------------------------
+Tue Apr  9 01:37:41 CEST 2002 - ro@suse.de
+
+- fixed for latest automake/autoconf 
+
+-------------------------------------------------------------------
+Wed Feb 13 08:13:59 CET 2002 - stark@suse.de
+
+- spec-file cleanup
+- LSB compliant init-script 
+
+-------------------------------------------------------------------
+Mon Jan 14 12:54:01 CET 2002 - ro@suse.de
+
+- removed START_PCSCD 
+
+-------------------------------------------------------------------
+Wed Nov 14 08:49:11 CET 2001 - ro@suse.de
+
+- call aclocal
+
+-------------------------------------------------------------------
+Sun Aug 26 02:28:00 MET 2001 - mge@suse.de
+
+- updated to 1.0.0Beta
+- fixed /etc/init.d/pcscd status-handling (bug #9069)
+
+-------------------------------------------------------------------
+Thu Jun  7 02:27:01 CEST 2001 - ro@suse.de
+
+- fix broken Makefile.am 
+
+-------------------------------------------------------------------
+Mon Apr 23 00:32:27 MEST 2001 - mge@suse.de
+
+- update to 0.9.1
+
+-------------------------------------------------------------------
+Thu Apr 19 00:18:46 CEST 2001 - mge@suse.de
+
+- created package 
+

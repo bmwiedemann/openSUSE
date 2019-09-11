@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:49:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Nov 29 09:01:45 UTC 2017 - cbosdonnat@suse.com
+
+- Don't run the tests: those are too fragile
+
+-------------------------------------------------------------------
+Wed Jun 14 08:43:22 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0+git.1497381496.75b8b74:
+   * Remove the vendor folder and fix tests accordingly
+
+-------------------------------------------------------------------
+Thu May  4 09:19:08 UTC 2017 - cbosdonnat@suse.com
+
+- Created from git master

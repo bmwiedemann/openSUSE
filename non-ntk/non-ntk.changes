@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Wed Dec 13 15:45:48 UTC 2017 - edogawa@aon.at
+
+- Fix build (missing BuildReq: python)
+
+-------------------------------------------------------------------
+Thu Jun  9 14:46:06 CEST 2016 - tiwai@suse.de
+
+- Correct the license again to GPL-2.0+:
+  Some codes in non-ntk are in GPL-2.0+, and this restricts the
+  whole binary although many codes derived from FLTK are in LGPL /
+  SUSE-FLTK.
+
+-------------------------------------------------------------------
+Tue Mar 22 16:37:11 CET 2016 - tiwai@suse.de
+
+- Fix license to SUSE-FLTK
+
+-------------------------------------------------------------------
+Sat Feb 13 20:49:34 UTC 2016 - edogawa@aon.at
+
+- adapt fedora package to meet openSUSE/OBS conventions
+ 
+-------------------------------------------------------------------
+Tue Sep  3 00:00:00 UTC 2013 - brendan.jones.it@gmail.com
+
+- Add exceptions to LGPLv2 license
+- add desktop scriptlet post fluid
+
+-------------------------------------------------------------------
+Mon Sep  2 00:00:00 UTC 2013 - brendan.jones.it@gmail.com
+
+- Adjust license
+- Remove icon scriptlets
+- Correct BRs
+
+-------------------------------------------------------------------
+Thu Aug 29 00:00:00 UTC 2013 - brendan.jones.it@gmail.com
+
+- Correct license
+- Remove static libraries
+- Correct optflags and BRs
+
+-------------------------------------------------------------------
+Sat Aug 17 00:00:00 UTC 2013 - brendan.jones.it@gmail.com
+
+- Initial package
+

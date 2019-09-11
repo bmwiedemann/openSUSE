@@ -1,0 +1,30 @@
+Index: m4/audacity_checklib_libflac.m4
+===================================================================
+--- m4/audacity_checklib_libflac.m4.orig	2017-03-13 23:02:21.000000000 +0200
++++ m4/audacity_checklib_libflac.m4	2017-03-18 18:39:01.009659215 +0200
+@@ -13,21 +13,21 @@ AC_DEFUN([AUDACITY_CHECKLIB_LIBFLAC], [
+ 
+    dnl See if FLAC is installed in the system
+ 
+-   PKG_CHECK_MODULES([FLAC], [flac >= 1.3.0 flac++ >= 1.3.0],
++   PKG_CHECK_MODULES([FLAC], [flac >= 1.3.1 flac++ >= 1.3.1],
+                      [LIBFLAC_SYSTEM_AVAILABLE="yes"],
+                      [LIBFLAC_SYSTEM_AVAILABLE="no"])
+ 
+-   dnl Check for flac < 1.3.0
++   dnl Check for flac < 1.3.1
+    if test "$LIBFLAC_SYSTEM_AVAILABLE" = "no"; then
+       PKG_CHECK_MODULES([FLAC], [flac flac++],
+                         [LIBFLAC_SYSTEM_AVAILABLE="yes"],
+                         [LIBFLAC_SYSTEM_AVAILABLE="no"])
+-      dnl flac < 1.3.0 adds its own FLAC and FLAC++ subdirectories to the search
++      dnl flac < 1.3.1 adds its own FLAC and FLAC++ subdirectories to the search
+       dnl path and ships a assert.h file there. This assert.h overwrites the
+       dnl assert.h header from the C standard library. We need to strip /FLAC
+       dnl and /FLAC++ from the include paths to make the assert.h from the C
+       dnl standard library available again.
+-      [FLAC_CFLAGS=$(echo "$FLAC_CFLAGS" | sed 's@-I\([^ ]*\)/FLAC\(++\)\? @-I\1 @g')]
++      [FLAC_CFLAGS=$(echo "$FLAC_CFLAGS" | sed 's|-I\([^ ]*\)/FLAC\(++\)\?[ ]*|-I\1 |g')]
+    fi
+ 
+    if test "$LIBFLAC_SYSTEM_AVAILABLE" = "yes"; then

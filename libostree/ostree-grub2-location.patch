@@ -1,0 +1,13 @@
+Index: libostree-2018.8/src/boot/grub2/grub2-15_ostree
+===================================================================
+--- libostree-2018.8.orig/src/boot/grub2/grub2-15_ostree
++++ libostree-2018.8/src/boot/grub2/grub2-15_ostree
+@@ -39,7 +39,7 @@ set -e
+ # it's a lot better than reimplementing the config-generating bits of
+ # OSTree in shell script.
+ 
+-. /usr/share/grub/grub-mkconfig_lib
++. /usr/share/grub2/grub-mkconfig_lib
+ 
+ DEVICE=${GRUB_DEVICE_BOOT:-${GRUB_DEVICE}}
+ 

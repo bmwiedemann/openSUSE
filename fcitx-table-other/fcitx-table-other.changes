@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sat Dec  2 06:08:37 UTC 2017 - i@marguerite.su
+
+- update version 0.2.4
+  * [cmake] make directory before output
+- drop fcitx-table-other-0.2.3-make-directory-before-output.patch
+  upstreamed
+
+-------------------------------------------------------------------
+Mon Jun  9 05:05:23 UTC 2014 - i@marguerite.su
+
+- update version 0.2.3
+  * Adjust some default option
+- add patch: fcitx-table-other-0.2.3-make-directory-before-output.patch
+
+-------------------------------------------------------------------
+Sat Sep 15 21:22:03 UTC 2012 - i@marguerite.su
+
+- update version 0.2.1
+  * Translation update
+
+-------------------------------------------------------------------
+Tue Jun 19 15:07:28 UTC 2012 - i@marguerite.su
+
+- split packages by locales. 
+
+-------------------------------------------------------------------
+Mon Jun  4 15:05:35 UTC 2012 - i@marguerite.su
+
+- update version 0.2.0
+  * add more table from scim-table
+- fix sles builds.
+
+-------------------------------------------------------------------
+Sun May  6 23:28:11 UTC 2012 - i@marguerite.su
+
+- initial package 0.1.0
+  * Fork of ibus-table-others.
+

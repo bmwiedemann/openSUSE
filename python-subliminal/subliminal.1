@@ -1,0 +1,2509 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "SUBLIMINAL" "1" "Sep 03, 2016" "2.0.5" "subliminal"
+.SH NAME
+subliminal \- subliminal Documentation
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.sp
+Subliminal is a python 2.7+ library to search and download subtitles.
+It comes with an easy to use yet powerful CLI suitable for direct use or cron jobs.
+.SH DOCUMENTATION
+.SS Usage
+.SS CLI
+.sp
+Download English subtitles:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ subliminal download \-l en The.Big.Bang.Theory.S05E18.HDTV.x264\-LOL.mp4
+Collecting videos  [####################################]  100%
+1 video collected / 0 video ignored
+Downloading subtitles  [####################################]  100%
+Downloaded 1 subtitle
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+For cron usage, make sure to specify a maximum age (with \fB\-\-age\fP) so subtitles are searched for recent videos
+only. Otherwise you will get banned from the providers for abuse due to too many requests. If subliminal didn\(aqt
+find subtitles for an old video, it\(aqs unlikely it will find subtitles for that video ever anyway.
+.UNINDENT
+.UNINDENT
+.sp
+See cli for more details on the available commands and options.
+.SS Nautilus/Nemo integration
+.sp
+See the dedicated \fI\%project page\fP for more information.
+.SS High level API
+.sp
+You can call subliminal in many different ways depending on how much control you want over the process. For most use
+cases, you can stick to the standard API.
+.SS Common
+.sp
+Let\(aqs start by importing subliminal:
+.sp
+.nf
+.ft C
+>>> import os
+>>> from babelfish import *
+>>> from subliminal import *
+.ft P
+.fi
+.sp
+Before going further, there are a few things to know about subliminal.
+.SS Video
+.sp
+The \fBMovie\fP and \fBEpisode\fP classes represent a video,
+existing or not. You can create a video by name (or path) with \fBVideo.fromname\fP,
+use \fBscan_video()\fP on an existing file path to get even more information about the video or
+use \fBscan_videos()\fP on an existing directory path to scan a whole directory for videos.
+.sp
+.nf
+.ft C
+>>> video = Video.fromname(\(aqThe.Big.Bang.Theory.S05E18.HDTV.x264\-LOL.mp4\(aq)
+>>> video
+<Episode [\(aqThe Big Bang Theory\(aq, 5x18]>
+.ft P
+.fi
+.sp
+Here video information was guessed based on the name of the video, you can access some video attributes:
+.sp
+.nf
+.ft C
+>>> video.video_codec
+\(aqh264\(aq
+>>> video.release_group
+\(aqLOL\(aq
+.ft P
+.fi
+.SS Configuration
+.sp
+Before proceeding to listing and downloading subtitles, you need to configure the cache. Subliminal uses a cache to
+reduce repeated queries to providers and improve overall performance with no impact on search quality. For the sake
+of this example, we\(aqre going to use a memory backend.
+.sp
+.nf
+.ft C
+>>> my_region = region.configure(\(aqdogpile.cache.memory\(aq)
+.ft P
+.fi
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+Choose a cache that fits your application and prefer persistent over volatile backends. The \fBfile\fP backend is
+usually a good choice.
+See \fI\%dogpile.cache\(aqs documentation\fP for more details on backends.
+.UNINDENT
+.UNINDENT
+.sp
+Now that we\(aqre done with the basics, let\(aqs have some \fIreal\fP fun.
+.SS Listing
+.sp
+To list subtitles, subliminal provides a \fBlist_subtitles()\fP function that will return all found
+subtitles:
+.sp
+.nf
+.ft C
+>>> subtitles = list_subtitles([video], {Language(\(aqhun\(aq)}, providers=[\(aqpodnapisi\(aq])
+>>> subtitles[video]
+[<PodnapisiSubtitle \(aqZtAW\(aq [hu]>, <PodnapisiSubtitle \(aqONAW\(aq [hu]>]
+.ft P
+.fi
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+As you noticed, all parameters are iterables but only contain one item which means you can deal with a lot of
+videos, languages and providers at the same time. For the sake of this example, we filter providers to use only one,
+pass \fBproviders=None\fP (default) to search on all providers.
+.UNINDENT
+.UNINDENT
+.SS Scoring
+.sp
+It\(aqs usual you have multiple candidates for subtitles. To help you chose which one to download, subliminal can compare
+them to the video and tell you exactly what matches with \fBget_matches()\fP:
+.sp
+.nf
+.ft C
+>>> for s in subtitles[video]:
+\&...     sorted(s.get_matches(video))
+[\(aqepisode\(aq, \(aqformat\(aq, \(aqrelease_group\(aq, \(aqseason\(aq, \(aqseries\(aq, \(aqvideo_codec\(aq, \(aqyear\(aq]
+[\(aqepisode\(aq, \(aqformat\(aq, \(aqseason\(aq, \(aqseries\(aq, \(aqyear\(aq]
+.ft P
+.fi
+.sp
+And then compute a score with those matches with \fBcompute_score()\fP:
+.sp
+.nf
+.ft C
+>>> for s in subtitles[video]:
+\&...     {s: compute_score(s, video)}
+{<PodnapisiSubtitle \(aqZtAW\(aq [hu]>: 354}
+{<PodnapisiSubtitle \(aqONAW\(aq [hu]>: 337}
+.ft P
+.fi
+.sp
+Now you should have a better idea about which one you should choose.
+.SS Downloading
+.sp
+We can settle on the first subtitle and download its content using \fBdownload_subtitles()\fP:
+.sp
+.nf
+.ft C
+>>> subtitle = subtitles[video][0]
+>>> subtitle.content is None
+True
+>>> download_subtitles([subtitle])
+>>> subtitle.content.split(b\(aq\en\(aq)[2]
+b\(aqElszaladok a boltba\(aq
+.ft P
+.fi
+.sp
+If you want a string instead of bytes, you can access decoded content with the
+\fBtext\fP property:
+.sp
+.nf
+.ft C
+>>> subtitle.text.split(\(aq\en\(aq)[3]
+\(aqnéhány apróságért.\(aq
+.ft P
+.fi
+.SS Downloading best subtitles
+.sp
+Downloading best subtitles is what you want to do in almost all cases, as a shortcut for listing, scoring and
+downloading you can use \fBdownload_best_subtitles()\fP:
+.sp
+.nf
+.ft C
+>>> best_subtitles = download_best_subtitles([video], {Language(\(aqhun\(aq)}, providers=[\(aqpodnapisi\(aq])
+>>> best_subtitles[video]
+[<PodnapisiSubtitle \(aqZtAW\(aq [hu]>]
+>>> best_subtitle = best_subtitles[video][0]
+>>> best_subtitle.content.split(b\(aq\en\(aq)[2]
+b\(aqElszaladok a boltba\(aq
+.ft P
+.fi
+.sp
+We end up with the same subtitle but with one line of code. Neat.
+.SS Save
+.sp
+We got ourselves a nice subtitle, now we can save it on the file system using \fBsave_subtitles()\fP:
+.sp
+.nf
+.ft C
+>>> save_subtitles(video, [best_subtitle])
+[<PodnapisiSubtitle \(aqZtAW\(aq [hu]>]
+>>> os.listdir()
+[\(aqThe.Big.Bang.Theory.S05E18.HDTV.x264\-LOL.hu.srt\(aq]
+.ft P
+.fi
+.SS How it works
+.SS Providers
+.sp
+Subliminal uses multiple providers to give users a vast choice and have a better chance to find the best matching
+subtitles. Current supported providers are:
+.INDENT 0.0
+.IP \(bu 2
+Addic7ed
+.IP \(bu 2
+LegendasTV
+.IP \(bu 2
+NapiProjekt
+.IP \(bu 2
+OpenSubtitles
+.IP \(bu 2
+Podnapisi
+.IP \(bu 2
+Shooter
+.IP \(bu 2
+SubsCenter
+.IP \(bu 2
+TheSubDB
+.IP \(bu 2
+TvSubtitles
+.UNINDENT
+.sp
+Providers all inherit the same \fBProvider\fP base class and thus share the same API.
+They are registered on the \fBsubliminal.providers\fP entry point and are exposed through the
+\fBprovider_manager\fP for easy access.
+.sp
+To work with multiple providers seamlessly, the \fBProviderPool\fP exposes the same API but
+distributes it to its providers and \fBAsyncProviderPool\fP does it asynchronously.
+.SS Scoring
+.sp
+Rating subtitles and comparing them is probably the most difficult part and this is where subliminal excels with its
+powerful scoring algorithm.
+.sp
+Using \fI\%guessit\fP and \fI\%enzyme\fP, subliminal extracts
+properties of the video and match them with the properties of the subtitles found with the providers.
+.sp
+Equations in \fBsubliminal.score\fP give a score to each property (called a match). The more matches the video and
+the subtitle have, the higher the score computed with \fBcompute_score()\fP gets.
+.SS Libraries
+.sp
+Various libraries are used by subliminal and are key to its success:
+.INDENT 0.0
+.IP \(bu 2
+\fI\%guessit\fP to guess information from filenames
+.IP \(bu 2
+\fI\%enzyme\fP to detect embedded subtitles in videos and read other video metadata
+.IP \(bu 2
+\fI\%babelfish\fP to work with languages
+.IP \(bu 2
+\fI\%requests\fP to make human readable HTTP requests
+.IP \(bu 2
+\fI\%BeautifulSoup\fP to parse HTML and XML
+.IP \(bu 2
+\fI\%dogpile.cache\fP to cache intermediate search results
+.IP \(bu 2
+\fI\%stevedore\fP to manage the provider entry point
+.IP \(bu 2
+\fI\%chardet\fP to detect subtitles\(aq encoding
+.IP \(bu 2
+\fI\%pysrt\fP to validate downloaded subtitles
+.UNINDENT
+.SS CLI
+.SS subliminal
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Usage: subliminal [OPTIONS] COMMAND [ARGS]...
+
+  Subtitles, faster than your thoughts.
+
+Options:
+  \-\-addic7ed USERNAME PASSWORD    Addic7ed configuration.
+  \-\-legendastv USERNAME PASSWORD  LegendasTV configuration.
+  \-\-opensubtitles USERNAME PASSWORD
+                                  OpenSubtitles configuration.
+  \-\-subscenter USERNAME PASSWORD  SubsCenter configuration.
+  \-\-cache\-dir DIRECTORY           Path to the cache directory.  [default:
+                                  /home/user/.cache/subliminal]
+  \-\-debug                         Print useful information for debugging
+                                  subliminal and for reporting bugs.
+  \-\-version                       Show the version and exit.
+  \-\-help                          Show this message and exit.
+
+Commands:
+  cache     Cache management.
+  download  Download best subtitles.
+
+  Suggestions and bug reports are greatly appreciated:
+  https://github.com/Diaoul/subliminal/
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS subliminal download
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Usage: subliminal download [OPTIONS] PATH...
+
+  Download best subtitles.
+
+  PATH can be an directory containing videos, a video file path or a video
+  file name. It can be used multiple times.
+
+  If an existing subtitle is detected (external or embedded) in the correct
+  language, the download is skipped for the associated video.
+
+Options:
+  \-l, \-\-language LANGUAGE         Language as IETF code, e.g. en, pt\-BR (can
+                                  be used multiple times).  [required]
+  \-p, \-\-provider [addic7ed|legendastv|opensubtitles|podnapisi|shooter|subscenter|thesubdb|tvsubtitles]
+                                  Provider to use (can be used multiple
+                                  times).
+  \-r, \-\-refiner [metadata|omdb|tvdb]
+                                  Refiner to use (can be used multiple times).
+  \-a, \-\-age AGE                   Filter videos newer than AGE, e.g. 12h,
+                                  1w2d.
+  \-d, \-\-directory DIR             Directory where to save subtitles, default
+                                  is next to the video file.
+  \-e, \-\-encoding ENC              Subtitle file encoding, default is to
+                                  preserve original encoding.
+  \-s, \-\-single                    Save subtitle without language code in the
+                                  file name, i.e. use .srt extension. Do not
+                                  use this unless your media player requires
+                                  it.
+  \-f, \-\-force                     Force download even if a subtitle already
+                                  exist.
+  \-hi, \-\-hearing\-impaired         Prefer hearing impaired subtitles.
+  \-m, \-\-min\-score INTEGER RANGE   Minimum score for a subtitle to be
+                                  downloaded (0 to 100).
+  \-w, \-\-max\-workers INTEGER RANGE
+                                  Maximum number of threads to use.
+  \-z, \-\-archives / \-Z, \-\-no\-archives
+                                  Scan archives for videos (supported
+                                  extensions: .rar).  [default: True]
+  \-v, \-\-verbose                   Increase verbosity.
+  \-\-help                          Show this message and exit.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS subliminal cache
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Usage: subliminal cache [OPTIONS]
+
+  Cache management.
+
+Options:
+  \-\-clear\-subliminal  Clear subliminal\(aqs cache. Use this ONLY if your cache is
+                      corrupted or if you experience issues.
+  \-\-help              Show this message and exit.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Provider Guide
+.sp
+This guide is going to explain how to add a \fBProvider\fP to subliminal. You are encouraged
+to take a look at the existing providers, it can be a nice base to start your own provider.
+.SS Requirements
+.sp
+When starting a provider you should be able to answer to the following questions:
+.INDENT 0.0
+.IP \(bu 2
+What languages does my provider support?
+.IP \(bu 2
+What are the language codes for the supported languages?
+.IP \(bu 2
+Does my provider deliver subtitles for episodes? for movies?
+.IP \(bu 2
+Does my provider require a video hash?
+.UNINDENT
+.sp
+Each response of these questions will help you set the correct attributes for your
+\fBProvider\fP\&.
+.SS Video Validation
+.sp
+Not all providers deliver subtitles for \fBEpisode\fP\&. Some may require a hash.
+The \fBcheck()\fP method does validation against a \fBVideo\fP
+object and will return \fIFalse\fP if the given \fBVideo\fP isn\(aqt suitable. If you\(aqre not happy
+with the default implementation, you can override it.
+.SS Configuration
+.sp
+API keys must not be configurable by the user and must remain linked to subliminal. Hence they must be written
+in the provider module.
+.sp
+Per\-user authentication is allowed and must be configured at instantiation as keyword arguments. Configuration
+will be done by the user through the \fIprovider_configs\fP argument of the \fBlist_subtitles()\fP and
+\fBdownload_best_subtitles()\fP functions. No network operation must be done during instantiation,
+only configuration. Any error in the configuration must raise a
+\fBConfigurationError\fP\&.
+.sp
+Beyond this point, if an error occurs, a generic \fBProviderError\fP exception
+must be raised. You can also use more explicit exception classes \fBAuthenticationError\fP
+and \fBDownloadLimitExceeded\fP\&.
+.SS Initialization / Termination
+.sp
+Actual authentication operations must take place in the \fBinitialize()\fP method.
+If you need anything to be executed when the provider isn\(aqt used anymore like logout,
+use \fBterminate()\fP\&.
+.SS Caching policy
+.sp
+To save bandwidth and improve querying time, intermediate data should be cached when possible. Typical use case is
+when a query to retrieve show ids is required prior to the query to actually search for subtitles. In that case
+the function that gets the show id from the show name must be cached.
+Expiration time should be \fBSHOW_EXPIRATION_TIME\fP for shows and
+\fBEPISODE_EXPIRATION_TIME\fP for episodes.
+.SS Language
+.sp
+To be able to handle various language codes, subliminal makes use of \fI\%babelfish\fP
+Language and converters. You must set the attribute \fBlanguages\fP with a set of
+supported \fI\%Language\fP\&.
+.sp
+If you cannot find a suitable converter for your provider, you can \fI\%make one of your own\fP\&.
+.SS Querying
+.sp
+The \fBquery()\fP method parameters must include all aspects of provider\(aqs querying with
+primary types.
+.SS Subtitle
+.sp
+A custom \fBSubtitle\fP subclass must be created to represent a subtitle from the provider.
+It must have relevant attributes that can be used to compute the matches of the subtitle against a
+\fBVideo\fP object.
+.SS Score computation
+.sp
+To be able to compare subtitles coming from different providers between them, the
+\fBget_matches()\fP method must be implemented.
+.SS Unittesting
+.sp
+All possible uses of \fBquery()\fP,
+\fBlist_subtitles()\fP and \fBdownload_subtitle()\fP
+methods must have integration tests. Use \fI\%vcrpy\fP for recording and playback
+of network activity.
+Other functions must be unittested. If necessary, you can use \fI\%unittest.mock\fP to mock some functions.
+.SH API DOCUMENTATION
+.sp
+If you are looking for information on a specific function, class or method, this part of the documentation is for you.
+.SS Core
+.INDENT 0.0
+.TP
+.B subliminal.core.ARCHIVE_EXTENSIONS
+Supported archive extensions
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.core.ProviderPool(providers=None, provider_configs=None)
+A pool of providers with the same API as a single \fBProvider\fP\&.
+.sp
+It has a few extra features:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+Lazy loads providers when needed and supports the \fIwith\fP statement to \fI\%terminate()\fP
+the providers on exit.
+.IP \(bu 2
+Automatically discard providers on failure.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBproviders\fP (\fI\%list\fP) \-\- name of providers to use, if not all.
+.IP \(bu 2
+\fBprovider_configs\fP (\fI\%dict\fP) \-\- provider configuration as keyword arguments per provider name to pass when
+instanciating the \fBProvider\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B providers = None
+Name of providers to use
+.UNINDENT
+.INDENT 7.0
+.TP
+.B provider_configs = None
+Provider configuration
+.UNINDENT
+.INDENT 7.0
+.TP
+.B initialized_providers = None
+Initialized providers
+.UNINDENT
+.INDENT 7.0
+.TP
+.B discarded_providers = None
+Discarded providers
+.UNINDENT
+.INDENT 7.0
+.TP
+.B list_subtitles_provider(provider, video, languages)
+List subtitles with a single provider.
+.sp
+The video and languages are checked against the provider.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBprovider\fP (\fI\%str\fP) \-\- name of the provider.
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video to list subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to search for.
+.UNINDENT
+.TP
+.B Returns
+found subtitles.
+.TP
+.B Return type
+list of \fBSubtitle\fP or None
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B list_subtitles(video, languages)
+List subtitles.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video to list subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to search for.
+.UNINDENT
+.TP
+.B Returns
+found subtitles.
+.TP
+.B Return type
+list of \fBSubtitle\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B download_subtitle(subtitle)
+Download \fIsubtitle\fP\(aqs \fBcontent\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBsubtitle\fP (\fBSubtitle\fP) \-\- subtitle to download.
+.TP
+.B Returns
+\fITrue\fP if the subtitle has been successfully downloaded, \fIFalse\fP otherwise.
+.TP
+.B Return type
+\fI\%bool\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B download_best_subtitles(subtitles, video, languages, min_score=0, hearing_impaired=False, only_one=False, compute_score=None)
+Download the best matching subtitles.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBsubtitles\fP (list of \fBSubtitle\fP) \-\- the subtitles to use.
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video to download subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to download.
+.IP \(bu 2
+\fBmin_score\fP (\fI\%int\fP) \-\- minimum score for a subtitle to be downloaded.
+.IP \(bu 2
+\fBhearing_impaired\fP (\fI\%bool\fP) \-\- hearing impaired preference.
+.IP \(bu 2
+\fBonly_one\fP (\fI\%bool\fP) \-\- download only one subtitle, not one per language.
+.IP \(bu 2
+\fBcompute_score\fP \-\- function that takes \fIsubtitle\fP and \fIvideo\fP as positional arguments,
+\fIhearing_impaired\fP as keyword argument and returns the score.
+.UNINDENT
+.TP
+.B Returns
+downloaded subtitles.
+.TP
+.B Return type
+list of \fBSubtitle\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B terminate()
+Terminate all the \fI\%initialized_providers\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.core.AsyncProviderPool(max_workers=None, *args, **kwargs)
+Subclass of \fI\%ProviderPool\fP with asynchronous support for \fI\%list_subtitles()\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBmax_workers\fP (\fI\%int\fP) \-\- maximum number of threads to use. If \fINone\fP, \fI\%max_workers\fP will be set
+to the number of \fI\%providers\fP\&.
+.UNINDENT
+.INDENT 7.0
+.TP
+.B max_workers = None
+Maximum number of threads to use
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.check_video(video, languages=None, age=None, undefined=False)
+Perform some checks on the \fIvideo\fP\&.
+.sp
+All the checks are optional. Return \fIFalse\fP if any of this check fails:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fIlanguages\fP already exist in \fIvideo\fP\(aqs \fBsubtitle_languages\fP\&.
+.IP \(bu 2
+\fIvideo\fP is older than \fIage\fP\&.
+.IP \(bu 2
+\fIvideo\fP has an \fIundefined\fP language in \fBsubtitle_languages\fP\&.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video to check.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- desired languages.
+.IP \(bu 2
+\fBage\fP (\fI\%datetime.timedelta\fP) \-\- maximum age of the video.
+.IP \(bu 2
+\fBundefined\fP (\fI\%bool\fP) \-\- fail on existing undefined language.
+.UNINDENT
+.TP
+.B Returns
+\fITrue\fP if the video passes the checks, \fIFalse\fP otherwise.
+.TP
+.B Return type
+\fI\%bool\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.search_external_subtitles(path, directory=None)
+Search for external subtitles from a video \fIpath\fP and their associated language.
+.sp
+Unless \fIdirectory\fP is provided, search will be made in the same directory as the video file.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBpath\fP (\fI\%str\fP) \-\- path to the video.
+.IP \(bu 2
+\fBdirectory\fP (\fI\%str\fP) \-\- directory to search for subtitles.
+.UNINDENT
+.TP
+.B Returns
+found subtitles with their languages.
+.TP
+.B Return type
+\fI\%dict\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.scan_video(path)
+Scan a video from a \fIpath\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBpath\fP (\fI\%str\fP) \-\- existing path to the video.
+.TP
+.B Returns
+the scanned video.
+.TP
+.B Return type
+\fBVideo\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.scan_archive(path)
+Scan an archive from a \fIpath\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBpath\fP (\fI\%str\fP) \-\- existing path to the archive.
+.TP
+.B Returns
+the scanned video.
+.TP
+.B Return type
+\fBVideo\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.scan_videos(path, age=None, archives=True)
+Scan \fIpath\fP for videos and their subtitles.
+.sp
+See \fI\%refine()\fP to find additional information for the video.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBpath\fP (\fI\%str\fP) \-\- existing directory path to scan.
+.IP \(bu 2
+\fBage\fP (\fI\%datetime.timedelta\fP) \-\- maximum age of the video or archive.
+.IP \(bu 2
+\fBarchives\fP (\fI\%bool\fP) \-\- scan videos in archives.
+.UNINDENT
+.TP
+.B Returns
+the scanned videos.
+.TP
+.B Return type
+list of \fBVideo\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.refine(video, episode_refiners=None, movie_refiners=None, **kwargs)
+Refine a video using refiners\&.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+Exceptions raised in refiners are silently passed and logged.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- the video to refine.
+.IP \(bu 2
+\fBepisode_refiners\fP (\fI\%tuple\fP) \-\- refiners to use for episodes.
+.IP \(bu 2
+\fBmovie_refiners\fP (\fI\%tuple\fP) \-\- refiners to use for movies.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the \fBrefine()\fP functions.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.list_subtitles(videos, languages, pool_class=<class \(aqsubliminal.core.ProviderPool\(aq>, **kwargs)
+List subtitles.
+.sp
+The \fIvideos\fP must pass the \fIlanguages\fP check of \fI\%check_video()\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideos\fP (set of \fBVideo\fP) \-\- videos to list subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to search for.
+.IP \(bu 2
+\fBpool_class\fP (\fI\%ProviderPool\fP, \fI\%AsyncProviderPool\fP or similar) \-\- class to use as provider pool.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the provided \fIpool_class\fP constructor.
+.UNINDENT
+.TP
+.B Returns
+found subtitles per video.
+.TP
+.B Return type
+dict of \fBVideo\fP to list of \fBSubtitle\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.download_subtitles(subtitles, pool_class=<class \(aqsubliminal.core.ProviderPool\(aq>, **kwargs)
+Download \fBcontent\fP of \fIsubtitles\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBsubtitles\fP (list of \fBSubtitle\fP) \-\- subtitles to download.
+.IP \(bu 2
+\fBpool_class\fP (\fI\%ProviderPool\fP, \fI\%AsyncProviderPool\fP or similar) \-\- class to use as provider pool.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the provided \fIpool_class\fP constructor.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.download_best_subtitles(videos, languages, min_score=0, hearing_impaired=False, only_one=False, compute_score=None, pool_class=<class \(aqsubliminal.core.ProviderPool\(aq>, **kwargs)
+List and download the best matching subtitles.
+.sp
+The \fIvideos\fP must pass the \fIlanguages\fP and \fIundefined\fP (\fIonly_one\fP) checks of \fI\%check_video()\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideos\fP (set of \fBVideo\fP) \-\- videos to download subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to download.
+.IP \(bu 2
+\fBmin_score\fP (\fI\%int\fP) \-\- minimum score for a subtitle to be downloaded.
+.IP \(bu 2
+\fBhearing_impaired\fP (\fI\%bool\fP) \-\- hearing impaired preference.
+.IP \(bu 2
+\fBonly_one\fP (\fI\%bool\fP) \-\- download only one subtitle, not one per language.
+.IP \(bu 2
+\fBcompute_score\fP \-\- function that takes \fIsubtitle\fP and \fIvideo\fP as positional arguments,
+\fIhearing_impaired\fP as keyword argument and returns the score.
+.IP \(bu 2
+\fBpool_class\fP (\fI\%ProviderPool\fP, \fI\%AsyncProviderPool\fP or similar) \-\- class to use as provider pool.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the provided \fIpool_class\fP constructor.
+.UNINDENT
+.TP
+.B Returns
+downloaded subtitles per video.
+.TP
+.B Return type
+dict of \fBVideo\fP to list of \fBSubtitle\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.core.save_subtitles(video, subtitles, single=False, directory=None, encoding=None)
+Save subtitles on filesystem.
+.sp
+Subtitles are saved in the order of the list. If a subtitle with a language has already been saved, other subtitles
+with the same language are silently ignored.
+.sp
+The extension used is \fI\&.lang.srt\fP by default or \fI\&.srt\fP is \fIsingle\fP is \fITrue\fP, with \fIlang\fP being the IETF code for
+the \fBlanguage\fP of the subtitle.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video of the subtitles.
+.IP \(bu 2
+\fBsubtitles\fP (list of \fBSubtitle\fP) \-\- subtitles to save.
+.IP \(bu 2
+\fBsingle\fP (\fI\%bool\fP) \-\- save a single subtitle, default is to save one subtitle per language.
+.IP \(bu 2
+\fBdirectory\fP (\fI\%str\fP) \-\- path to directory where to save the subtitles, default is next to the video.
+.IP \(bu 2
+\fBencoding\fP (\fI\%str\fP) \-\- encoding in which to save the subtitles, default is to keep original encoding.
+.UNINDENT
+.TP
+.B Returns
+the saved subtitles
+.TP
+.B Return type
+list of \fBSubtitle\fP
+.UNINDENT
+.UNINDENT
+.SS Video
+.INDENT 0.0
+.TP
+.B subliminal.video.VIDEO_EXTENSIONS
+Video extensions
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.video.Video(name, format=None, release_group=None, resolution=None, video_codec=None, audio_codec=None, imdb_id=None, hashes=None, size=None, subtitle_languages=None)
+Base class for videos.
+.sp
+Represent a video, existing or not.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBname\fP (\fI\%str\fP) \-\- name or path of the video.
+.IP \(bu 2
+\fBformat\fP (\fI\%str\fP) \-\- format of the video (HDTV, WEB\-DL, BluRay, ...).
+.IP \(bu 2
+\fBrelease_group\fP (\fI\%str\fP) \-\- release group of the video.
+.IP \(bu 2
+\fBresolution\fP (\fI\%str\fP) \-\- resolution of the video stream (480p, 720p, 1080p or 1080i).
+.IP \(bu 2
+\fBvideo_codec\fP (\fI\%str\fP) \-\- codec of the video stream.
+.IP \(bu 2
+\fBaudio_codec\fP (\fI\%str\fP) \-\- codec of the main audio stream.
+.IP \(bu 2
+\fBimdb_id\fP (\fI\%str\fP) \-\- IMDb id of the video.
+.IP \(bu 2
+\fBhashes\fP (\fI\%dict\fP) \-\- hashes of the video file by provider names.
+.IP \(bu 2
+\fBsize\fP (\fI\%int\fP) \-\- size of the video file in bytes.
+.IP \(bu 2
+\fBsubtitle_languages\fP (\fI\%set\fP) \-\- existing subtitle languages.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B name = None
+Name or path of the video
+.UNINDENT
+.INDENT 7.0
+.TP
+.B format = None
+Format of the video (HDTV, WEB\-DL, BluRay, ...)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B release_group = None
+Release group of the video
+.UNINDENT
+.INDENT 7.0
+.TP
+.B resolution = None
+Resolution of the video stream (480p, 720p, 1080p or 1080i)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B video_codec = None
+Codec of the video stream
+.UNINDENT
+.INDENT 7.0
+.TP
+.B audio_codec = None
+Codec of the main audio stream
+.UNINDENT
+.INDENT 7.0
+.TP
+.B imdb_id = None
+IMDb id of the video
+.UNINDENT
+.INDENT 7.0
+.TP
+.B hashes = None
+Hashes of the video file by provider names
+.UNINDENT
+.INDENT 7.0
+.TP
+.B size = None
+Size of the video file in bytes
+.UNINDENT
+.INDENT 7.0
+.TP
+.B subtitle_languages = None
+Existing subtitle languages
+.UNINDENT
+.INDENT 7.0
+.TP
+.B exists
+Test whether the video exists
+.UNINDENT
+.INDENT 7.0
+.TP
+.B age
+Age of the video
+.UNINDENT
+.INDENT 7.0
+.TP
+.B classmethod fromguess(name, guess)
+Create an \fI\%Episode\fP or a \fI\%Movie\fP with the given \fIname\fP based on the \fIguess\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBname\fP (\fI\%str\fP) \-\- name of the video.
+.IP \(bu 2
+\fBguess\fP (\fI\%dict\fP) \-\- guessed data.
+.UNINDENT
+.TP
+.B Raise
+\fI\%ValueError\fP if the \fItype\fP of the \fIguess\fP is invalid
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B classmethod fromname(name)
+Shortcut for \fI\%fromguess()\fP with a \fIguess\fP guessed from the \fIname\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBname\fP (\fI\%str\fP) \-\- name of the video.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.video.Episode(name, series, season, episode, title=None, year=None, original_series=True, tvdb_id=None, series_tvdb_id=None, series_imdb_id=None, **kwargs)
+Episode \fI\%Video\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBseries\fP (\fI\%str\fP) \-\- series of the episode.
+.IP \(bu 2
+\fBseason\fP (\fI\%int\fP) \-\- season number of the episode.
+.IP \(bu 2
+\fBepisode\fP (\fI\%int\fP) \-\- episode number of the episode.
+.IP \(bu 2
+\fBtitle\fP (\fI\%str\fP) \-\- title of the episode.
+.IP \(bu 2
+\fByear\fP (\fI\%int\fP) \-\- year of the series.
+.IP \(bu 2
+\fBoriginal_series\fP (\fI\%bool\fP) \-\- whether the series is the first with this name.
+.IP \(bu 2
+\fBtvdb_id\fP (\fI\%int\fP) \-\- TVDB id of the episode.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the \fI\%Video\fP constructor.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B series = None
+Series of the episode
+.UNINDENT
+.INDENT 7.0
+.TP
+.B season = None
+Season number of the episode
+.UNINDENT
+.INDENT 7.0
+.TP
+.B episode = None
+Episode number of the episode
+.UNINDENT
+.INDENT 7.0
+.TP
+.B title = None
+Title of the episode
+.UNINDENT
+.INDENT 7.0
+.TP
+.B year = None
+Year of series
+.UNINDENT
+.INDENT 7.0
+.TP
+.B original_series = None
+The series is the first with this name
+.UNINDENT
+.INDENT 7.0
+.TP
+.B tvdb_id = None
+TVDB id of the episode
+.UNINDENT
+.INDENT 7.0
+.TP
+.B series_tvdb_id = None
+TVDB id of the series
+.UNINDENT
+.INDENT 7.0
+.TP
+.B series_imdb_id = None
+IMDb id of the series
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.video.Movie(name, title, year=None, **kwargs)
+Movie \fI\%Video\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBtitle\fP (\fI\%str\fP) \-\- title of the movie.
+.IP \(bu 2
+\fByear\fP (\fI\%int\fP) \-\- year of the movie.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the \fI\%Video\fP constructor.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B title = None
+Title of the movie
+.UNINDENT
+.INDENT 7.0
+.TP
+.B year = None
+Year of the movie
+.UNINDENT
+.UNINDENT
+.SS Subtitle
+.INDENT 0.0
+.TP
+.B subliminal.subtitle.SUBTITLE_EXTENSIONS
+Subtitle extensions
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.subtitle.Subtitle(language, hearing_impaired=False, page_link=None, encoding=None)
+Base class for subtitle.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBlanguage\fP (\fI\%Language\fP) \-\- language of the subtitle.
+.IP \(bu 2
+\fBhearing_impaired\fP (\fI\%bool\fP) \-\- whether or not the subtitle is hearing impaired.
+.IP \(bu 2
+\fBpage_link\fP (\fI\%str\fP) \-\- URL of the web page from which the subtitle can be downloaded.
+.IP \(bu 2
+\fBencoding\fP (\fI\%str\fP) \-\- Text encoding of the subtitle.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B provider_name = \(aq\(aq
+Name of the provider that returns that class of subtitle
+.UNINDENT
+.INDENT 7.0
+.TP
+.B language = None
+Language of the subtitle
+.UNINDENT
+.INDENT 7.0
+.TP
+.B hearing_impaired = None
+Whether or not the subtitle is hearing impaired
+.UNINDENT
+.INDENT 7.0
+.TP
+.B page_link = None
+URL of the web page from which the subtitle can be downloaded
+.UNINDENT
+.INDENT 7.0
+.TP
+.B content = None
+Content as bytes
+.UNINDENT
+.INDENT 7.0
+.TP
+.B encoding = None
+Encoding to decode with when accessing \fI\%text\fP
+.UNINDENT
+.INDENT 7.0
+.TP
+.B id
+Unique identifier of the subtitle
+.UNINDENT
+.INDENT 7.0
+.TP
+.B text
+Content as string
+.sp
+If \fI\%encoding\fP is None, the encoding is guessed with \fI\%guess_encoding()\fP
+.UNINDENT
+.INDENT 7.0
+.TP
+.B is_valid()
+Check if a \fI\%text\fP is a valid SubRip format.
+.INDENT 7.0
+.TP
+.B Returns
+whether or not the subtitle is valid.
+.TP
+.B Return type
+\fI\%bool\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B guess_encoding()
+Guess encoding using the language, falling back on chardet.
+.INDENT 7.0
+.TP
+.B Returns
+the guessed encoding.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B get_matches(video)
+Get the matches against the \fIvideo\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo\fP (\fBVideo\fP) \-\- the video to get the matches with.
+.TP
+.B Returns
+matches of the subtitle.
+.TP
+.B Return type
+\fI\%set\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.subtitle.get_subtitle_path(video_path, language=None, extension=\(aq.srt\(aq)
+Get the subtitle path using the \fIvideo_path\fP and \fIlanguage\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo_path\fP (\fI\%str\fP) \-\- path to the video.
+.IP \(bu 2
+\fBlanguage\fP (\fI\%Language\fP) \-\- language of the subtitle to put in the path.
+.IP \(bu 2
+\fBextension\fP (\fI\%str\fP) \-\- extension of the subtitle.
+.UNINDENT
+.TP
+.B Returns
+path of the subtitle.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.subtitle.guess_matches(video, guess, partial=False)
+Get matches between a \fIvideo\fP and a \fIguess\fP\&.
+.sp
+If a guess is \fIpartial\fP, the absence information won\(aqt be counted as a match.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- the video.
+.IP \(bu 2
+\fBguess\fP (\fI\%dict\fP) \-\- the guess.
+.IP \(bu 2
+\fBpartial\fP (\fI\%bool\fP) \-\- whether or not the guess is partial.
+.UNINDENT
+.TP
+.B Returns
+matches between the \fIvideo\fP and the \fIguess\fP\&.
+.TP
+.B Return type
+\fI\%set\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.subtitle.fix_line_ending(content)
+Fix line ending of \fIcontent\fP by changing it to 
+.
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B param bytes content
+content of the subtitle.
+.TP
+.B return
+the content with fixed line endings.
+.TP
+.B rtype
+bytes
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Providers
+.INDENT 0.0
+.TP
+.B class subliminal.providers.TimeoutSafeTransport(timeout, *args, **kwargs)
+Timeout support for \fBxmlrpc.client.SafeTransport\fP\&.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.ParserBeautifulSoup(markup, parsers, **kwargs)
+A \fBbs4.BeautifulSoup\fP that picks the first parser available in \fIparsers\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBmarkup\fP \-\- markup for the \fBbs4.BeautifulSoup\fP\&.
+.IP \(bu 2
+\fBparsers\fP (\fI\%list\fP) \-\- parser names, in order of preference.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.Provider
+Base class for providers.
+.sp
+If any configuration is possible for the provider, like credentials, it must take place during instantiation.
+.INDENT 7.0
+.TP
+.B Raise
+\fBConfigurationError\fP if there is a configuration error
+.UNINDENT
+.INDENT 7.0
+.TP
+.B languages = set()
+Supported set of \fI\%Language\fP
+.UNINDENT
+.INDENT 7.0
+.TP
+.B video_types = (<class \(aqsubliminal.video.Episode\(aq>, <class \(aqsubliminal.video.Movie\(aq>)
+Supported video types
+.UNINDENT
+.INDENT 7.0
+.TP
+.B required_hash = None
+Required hash, if any
+.UNINDENT
+.INDENT 7.0
+.TP
+.B initialize()
+Initialize the provider.
+.sp
+Must be called when starting to work with the provider. This is the place for network initialization
+or login operations.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+This is called automatically when entering the \fIwith\fP statement
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B terminate()
+Terminate the provider.
+.sp
+Must be called when done with the provider. This is the place for network shutdown or logout operations.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+This is called automatically when exiting the \fIwith\fP statement
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B classmethod check(video)
+Check if the \fIvideo\fP can be processed.
+.sp
+The \fIvideo\fP is considered invalid if not an instance of \fI\%video_types\fP or if the \fI\%required_hash\fP is
+not present in \fBhashes\fP attribute of the \fIvideo\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo\fP (\fBVideo\fP) \-\- the video to check.
+.TP
+.B Returns
+\fITrue\fP if the \fIvideo\fP is valid, \fIFalse\fP otherwise.
+.TP
+.B Return type
+\fI\%bool\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B query(*args, **kwargs)
+Query the provider for subtitles.
+.sp
+Arguments should match as much as possible the actual parameters for querying the provider
+.INDENT 7.0
+.TP
+.B Returns
+found subtitles.
+.TP
+.B Return type
+list of \fBSubtitle\fP
+.TP
+.B Raise
+\fBProviderError\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B list_subtitles(video, languages)
+List subtitles for the \fIvideo\fP with the given \fIlanguages\fP\&.
+.sp
+This will call the \fI\%query()\fP method internally. The parameters passed to the \fI\%query()\fP method may
+vary depending on the amount of information available in the \fIvideo\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- video to list subtitles for.
+.IP \(bu 2
+\fBlanguages\fP (set of \fI\%Language\fP) \-\- languages to search for.
+.UNINDENT
+.TP
+.B Returns
+found subtitles.
+.TP
+.B Return type
+list of \fBSubtitle\fP
+.TP
+.B Raise
+\fBProviderError\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B download_subtitle(subtitle)
+Download \fIsubtitle\fP\(aqs \fBcontent\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBsubtitle\fP (\fBSubtitle\fP) \-\- subtitle to download.
+.TP
+.B Raise
+\fBProviderError\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Addic7ed
+.INDENT 0.0
+.TP
+.B subliminal.providers.addic7ed.series_year_re = re.compile("^(?P<series>[ \e\ew\e\e\(aq.:(),&!?\-]+?)(?: \e\e((?P<year>\e\ed{4})\e\e))?$")
+Series header parsing regex
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.addic7ed.Addic7edSubtitle(language, hearing_impaired, page_link, series, season, episode, title, year, version, download_link)
+Addic7ed Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.addic7ed.Addic7edProvider(username=None, password=None)
+Addic7ed Provider.
+.INDENT 7.0
+.TP
+.B _get_show_ids()
+Get the \fBdict\fP of show ids per series by querying the \fIshows.php\fP page.
+.INDENT 7.0
+.TP
+.B Returns
+show id per series, lower case and without quotes.
+.TP
+.B Return type
+\fI\%dict\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B _search_show_id(series, year=None)
+Search the show id from the \fIseries\fP and \fIyear\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBseries\fP (\fI\%str\fP) \-\- series of the episode.
+.IP \(bu 2
+\fByear\fP (\fI\%int\fP) \-\- year of the series, if any.
+.UNINDENT
+.TP
+.B Returns
+the show id, if found.
+.TP
+.B Return type
+\fI\%int\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B get_show_id(series, year=None, country_code=None)
+Get the best matching show id for \fIseries\fP, \fIyear\fP and \fIcountry_code\fP\&.
+.sp
+First search in the result of \fI\%_get_show_ids()\fP and fallback on a search with \fI\%_search_show_id()\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBseries\fP (\fI\%str\fP) \-\- series of the episode.
+.IP \(bu 2
+\fByear\fP (\fI\%int\fP) \-\- year of the series, if any.
+.IP \(bu 2
+\fBcountry_code\fP (\fI\%str\fP) \-\- country code of the series, if any.
+.UNINDENT
+.TP
+.B Returns
+the show id, if found.
+.TP
+.B Return type
+\fI\%int\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS LegendasTv
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.type_map = {\(aqM\(aq: \(aqmovie\(aq, \(aqC\(aq: \(aqepisode\(aq, \(aqS\(aq: \(aqepisode\(aq}
+Conversion map for types
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.season_re = re.compile(\(aq \- (?P<season>\e\ed+)(\e\exaa|a|st|nd|rd|th) (temporada|season)\(aq, re.IGNORECASE)
+BR title season parsing regex
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.downloads_re = re.compile(\(aq(?P<downloads>\e\ed+) downloads\(aq)
+Downloads parsing regex
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.rating_re = re.compile(\(aqnota (?P<rating>\e\ed+)\(aq)
+Rating parsing regex
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.timestamp_re = re.compile(\(aq(?P<day>\e\ed+)/(?P<month>\e\ed+)/(?P<year>\e\ed+) \- (?P<hour>\e\ed+):(?P<minute>\e\ed+)\(aq)
+Timestamp parsing regex
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.legendastv.releases_key = \(aqsubliminal.providers.legendastv:releases|{archive_id}\(aq
+Cache key for releases
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.legendastv.LegendasTVArchive(id, name, pack, featured, link, downloads=0, rating=0, timestamp=None)
+LegendasTV Archive.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBid\fP (\fI\%str\fP) \-\- identifier.
+.IP \(bu 2
+\fBname\fP (\fI\%str\fP) \-\- name.
+.IP \(bu 2
+\fBpack\fP (\fI\%bool\fP) \-\- contains subtitles for multiple episodes.
+.IP \(bu 2
+\fBpack\fP \-\- featured.
+.IP \(bu 2
+\fBlink\fP (\fI\%str\fP) \-\- link.
+.IP \(bu 2
+\fBdownloads\fP (\fI\%int\fP) \-\- download count.
+.IP \(bu 2
+\fBrating\fP (\fI\%int\fP) \-\- rating (0\-10).
+.IP \(bu 2
+\fBtimestamp\fP (\fI\%datetime.datetime\fP) \-\- timestamp.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B id = None
+Identifier
+.UNINDENT
+.INDENT 7.0
+.TP
+.B name = None
+Name
+.UNINDENT
+.INDENT 7.0
+.TP
+.B pack = None
+Pack
+.UNINDENT
+.INDENT 7.0
+.TP
+.B featured = None
+Featured
+.UNINDENT
+.INDENT 7.0
+.TP
+.B link = None
+Link
+.UNINDENT
+.INDENT 7.0
+.TP
+.B downloads = None
+Download count
+.UNINDENT
+.INDENT 7.0
+.TP
+.B rating = None
+Rating (0\-10)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B timestamp = None
+Timestamp
+.UNINDENT
+.INDENT 7.0
+.TP
+.B content = None
+Compressed content as \fI\%rarfile.RarFile\fP or \fI\%zipfile.ZipFile\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.legendastv.LegendasTVSubtitle(language, type, title, year, imdb_id, season, archive, name)
+LegendasTV Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.legendastv.LegendasTVProvider(username=None, password=None)
+LegendasTV Provider.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBusername\fP (\fI\%str\fP) \-\- username.
+.IP \(bu 2
+\fBpassword\fP (\fI\%str\fP) \-\- password.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B search_titles(title)
+Search for titles matching the \fItitle\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBtitle\fP (\fI\%str\fP) \-\- the title to search for.
+.TP
+.B Returns
+found titles.
+.TP
+.B Return type
+\fI\%dict\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B get_archives(title_id, language_code)
+Get the archive list from a given \fItitle_id\fP and \fIlanguage_code\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBtitle_id\fP (\fI\%int\fP) \-\- title id.
+.IP \(bu 2
+\fBlanguage_code\fP (\fI\%int\fP) \-\- language code.
+.UNINDENT
+.TP
+.B Returns
+the archives.
+.TP
+.B Return type
+list of \fI\%LegendasTVArchive\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B download_archive(archive)
+Download an archive\(aqs \fI\%content\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBarchive\fP (\fI\%LegendasTVArchive\fP) \-\- the archive to download \fI\%content\fP of.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS NapiProjekt
+.INDENT 0.0
+.TP
+.B subliminal.providers.napiprojekt.get_subhash(hash)
+Get a second hash based on napiprojekt\(aqs hash.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBhash\fP (\fI\%str\fP) \-\- napiprojekt\(aqs hash.
+.TP
+.B Returns
+the subhash.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.napiprojekt.NapiProjektSubtitle(language, hash)
+NapiProjekt Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.napiprojekt.NapiProjektProvider
+NapiProjekt Provider.
+.UNINDENT
+.SS OpenSubtitles
+.INDENT 0.0
+.TP
+.B class subliminal.providers.opensubtitles.OpenSubtitlesSubtitle(language, hearing_impaired, page_link, subtitle_id, matched_by, movie_kind, hash, movie_name, movie_release_name, movie_year, movie_imdb_id, series_season, series_episode, filename, encoding)
+OpenSubtitles Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.opensubtitles.OpenSubtitlesProvider(username=None, password=None)
+OpenSubtitles Provider.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBusername\fP (\fI\%str\fP) \-\- username.
+.IP \(bu 2
+\fBpassword\fP (\fI\%str\fP) \-\- password.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.OpenSubtitlesError
+Base class for non\-generic \fI\%OpenSubtitlesProvider\fP exceptions.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.Unauthorized
+Exception raised when status is \(aq401 Unauthorized\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.NoSession
+Exception raised when status is \(aq406 No session\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.DownloadLimitReached
+Exception raised when status is \(aq407 Download limit reached\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.InvalidImdbid
+Exception raised when status is \(aq413 Invalid ImdbID\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.UnknownUserAgent
+Exception raised when status is \(aq414 Unknown User Agent\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.DisabledUserAgent
+Exception raised when status is \(aq415 Disabled user agent\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.providers.opensubtitles.ServiceUnavailable
+Exception raised when status is \(aq503 Service Unavailable\(aq.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.providers.opensubtitles.checked(response)
+Check a response status before returning it.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBresponse\fP \-\- a response from a XMLRPC call to OpenSubtitles.
+.TP
+.B Returns
+the response.
+.TP
+.B Raise
+\fI\%OpenSubtitlesError\fP
+.UNINDENT
+.UNINDENT
+.SS Podnapisi
+.INDENT 0.0
+.TP
+.B class subliminal.providers.podnapisi.PodnapisiSubtitle(language, hearing_impaired, page_link, pid, releases, title, season=None, episode=None, year=None)
+Podnapisi Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.podnapisi.PodnapisiProvider
+Podnapisi Provider.
+.UNINDENT
+.SS Shooter
+.INDENT 0.0
+.TP
+.B class subliminal.providers.shooter.ShooterSubtitle(language, hash, download_link)
+Shooter Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.shooter.ShooterProvider
+Shooter Provider.
+.UNINDENT
+.SS SubsCenter
+.INDENT 0.0
+.TP
+.B class subliminal.providers.subscenter.SubsCenterSubtitle(language, hearing_impaired, page_link, series, season, episode, title, subtitle_id, subtitle_key, downloaded, releases)
+SubsCenter Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.subscenter.SubsCenterProvider(username=None, password=None)
+SubsCenter Provider.
+.INDENT 7.0
+.TP
+.B _search_url_titles(title)
+Search the URL titles by kind for the given \fItitle\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBtitle\fP (\fI\%str\fP) \-\- title to search for.
+.TP
+.B Returns
+the URL titles by kind.
+.TP
+.B Return type
+\fI\%collections.defaultdict\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS TheSubDB
+.INDENT 0.0
+.TP
+.B class subliminal.providers.thesubdb.TheSubDBSubtitle(language, hash)
+TheSubDB Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.thesubdb.TheSubDBProvider
+TheSubDB Provider.
+.UNINDENT
+.SS TVsubtitles
+.INDENT 0.0
+.TP
+.B class subliminal.providers.tvsubtitles.TVsubtitlesSubtitle(language, page_link, subtitle_id, series, season, episode, year, rip, release)
+TVsubtitles Subtitle.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.providers.tvsubtitles.TVsubtitlesProvider
+TVsubtitles Provider.
+.INDENT 7.0
+.TP
+.B search_show_id(series, year=None)
+Search the show id from the \fIseries\fP and \fIyear\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBseries\fP (\fI\%str\fP) \-\- series of the episode.
+.IP \(bu 2
+\fByear\fP (\fI\%int\fP) \-\- year of the series, if any.
+.UNINDENT
+.TP
+.B Returns
+the show id, if any.
+.TP
+.B Return type
+\fI\%int\fP
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B get_episode_ids(show_id, season)
+Get episode ids from the show id and the season.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBshow_id\fP (\fI\%int\fP) \-\- show id.
+.IP \(bu 2
+\fBseason\fP (\fI\%int\fP) \-\- season of the episode.
+.UNINDENT
+.TP
+.B Returns
+episode ids per episode number.
+.TP
+.B Return type
+\fI\%dict\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Refiners
+.sp
+Refiners enrich a \fBVideo\fP object by adding information to it.
+.sp
+A refiner is a simple function:
+.INDENT 0.0
+.TP
+.B subliminal.refiners.refine(video, **kwargs)
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- the video to refine.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for refiners.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Metadata
+.INDENT 0.0
+.TP
+.B subliminal.refiners.metadata.refine(video, embedded_subtitles=True, **kwargs)
+Refine a video by searching its metadata.
+.sp
+Several \fBVideo\fP attributes can be found:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBresolution\fP
+.IP \(bu 2
+\fBvideo_codec\fP
+.IP \(bu 2
+\fBaudio_codec\fP
+.IP \(bu 2
+\fBsubtitle_languages\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+\fBembedded_subtitles\fP (\fI\%bool\fP) \-\- search for embedded subtitles.
+.UNINDENT
+.UNINDENT
+.SS TVDB
+.INDENT 0.0
+.TP
+.B subliminal.refiners.tvdb.refine(video, **kwargs)
+Refine a video by searching \fI\%TheTVDB\fP\&.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+This refiner only work for instances of \fBEpisode\fP\&.
+.UNINDENT
+.UNINDENT
+.sp
+Several attributes can be found:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBseries\fP
+.IP \(bu 2
+\fByear\fP
+.IP \(bu 2
+\fBseries_imdb_id\fP
+.IP \(bu 2
+\fBseries_tvdb_id\fP
+.IP \(bu 2
+\fBtitle\fP
+.IP \(bu 2
+\fBimdb_id\fP
+.IP \(bu 2
+\fBtvdb_id\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS OMDb
+.INDENT 0.0
+.TP
+.B subliminal.refiners.omdb.refine(video, **kwargs)
+Refine a video by searching \fI\%OMDb API\fP\&.
+.sp
+Several \fBEpisode\fP attributes can be found:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBseries\fP
+.IP \(bu 2
+\fByear\fP
+.IP \(bu 2
+\fBseries_imdb_id\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+Similarly, for a \fBMovie\fP:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBtitle\fP
+.IP \(bu 2
+\fByear\fP
+.IP \(bu 2
+\fBimdb_id\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Extensions
+.INDENT 0.0
+.TP
+.B class subliminal.extensions.RegistrableExtensionManager(namespace, internal_extensions, **kwargs)
+:class:~stevedore.extensions.ExtensionManager\(ga with support for registration.
+.sp
+It allows loading of internal extensions without setup and registering/unregistering additional extensions.
+.sp
+Loading is done in this order:
+.INDENT 7.0
+.IP \(bu 2
+Entry point extensions
+.IP \(bu 2
+Internal extensions
+.IP \(bu 2
+Registered extensions
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBnamespace\fP (\fI\%str\fP) \-\- namespace argument for :class:~stevedore.extensions.ExtensionManager\(ga.
+.IP \(bu 2
+\fBinternal_extensions\fP (\fI\%list\fP) \-\- internal extensions to use with entry point syntax.
+.IP \(bu 2
+\fB**kwargs\fP \-\- additional parameters for the :class:~stevedore.extensions.ExtensionManager\(ga constructor.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B registered_extensions = None
+Registered extensions with entry point syntax
+.UNINDENT
+.INDENT 7.0
+.TP
+.B internal_extensions = None
+Internal extensions with entry point syntax
+.UNINDENT
+.INDENT 7.0
+.TP
+.B register(entry_point)
+Register an extension
+.INDENT 7.0
+.TP
+.B Parameters
+\fBentry_point\fP (\fI\%str\fP) \-\- extension to register (entry point syntax).
+.TP
+.B Raise
+ValueError if already registered.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B unregister(entry_point)
+Unregister a provider
+.INDENT 7.0
+.TP
+.B Parameters
+\fBentry_point\fP (\fI\%str\fP) \-\- provider to unregister (entry point syntax).
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.extensions.provider_manager = <subliminal.extensions.RegistrableExtensionManager object>
+Provider manager
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.extensions.refiner_manager = <subliminal.extensions.RegistrableExtensionManager object>
+Refiner manager
+.UNINDENT
+.SS Score
+.sp
+This module provides the default implementation of the \fIcompute_score\fP parameter in
+\fBdownload_best_subtitles()\fP and \fBdownload_best_subtitles()\fP\&.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+To avoid unnecessary dependency on \fI\%sympy\fP and boost subliminal\(aqs import time, the
+resulting scores are hardcoded here and manually updated when the set of equations change.
+.UNINDENT
+.UNINDENT
+.sp
+Available matches:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+hash
+.IP \(bu 2
+title
+.IP \(bu 2
+year
+.IP \(bu 2
+series
+.IP \(bu 2
+season
+.IP \(bu 2
+episode
+.IP \(bu 2
+release_group
+.IP \(bu 2
+format
+.IP \(bu 2
+audio_codec
+.IP \(bu 2
+resolution
+.IP \(bu 2
+hearing_impaired
+.IP \(bu 2
+video_codec
+.IP \(bu 2
+series_imdb_id
+.IP \(bu 2
+imdb_id
+.IP \(bu 2
+tvdb_id
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.episode_scores = {\(aqresolution\(aq: 2, \(aqseries\(aq: 180, \(aqvideo_codec\(aq: 2, \(aqrelease_group\(aq: 15, \(aqformat\(aq: 7, \(aqhearing_impaired\(aq: 1, \(aqseason\(aq: 30, \(aqhash\(aq: 359, \(aqyear\(aq: 90, \(aqepisode\(aq: 30, \(aqaudio_codec\(aq: 3}
+Scores for episodes
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.movie_scores = {\(aqresolution\(aq: 2, \(aqvideo_codec\(aq: 2, \(aqrelease_group\(aq: 15, \(aqformat\(aq: 7, \(aqhearing_impaired\(aq: 1, \(aqhash\(aq: 119, \(aqyear\(aq: 30, \(aqtitle\(aq: 60, \(aqaudio_codec\(aq: 3}
+Scores for movies
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.equivalent_release_groups = ({\(aqDIMENSION\(aq, \(aqLOL\(aq}, {\(aqASAP\(aq, \(aqFLEET\(aq, \(aqIMMERSE\(aq})
+Equivalent release groups
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.get_equivalent_release_groups(release_group)
+Get all the equivalents of the given release group.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBrelease_group\fP (\fI\%str\fP) \-\- the release group to get the equivalents of.
+.TP
+.B Returns
+the equivalent release groups.
+.TP
+.B Return type
+\fI\%set\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.get_scores(video)
+Get the scores dict for the given \fIvideo\fP\&.
+.sp
+This will return either \fI\%episode_scores\fP or \fI\%movie_scores\fP based on the type of the \fIvideo\fP\&.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo\fP (\fBVideo\fP) \-\- the video to compute the score against.
+.TP
+.B Returns
+the scores dict.
+.TP
+.B Return type
+\fI\%dict\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.score.compute_score(subtitle, video, hearing_impaired=None)
+Compute the score of the \fIsubtitle\fP against the \fIvideo\fP with \fIhearing_impaired\fP preference.
+.sp
+\fI\%compute_score()\fP uses the \fBSubtitle.get_matches\fP method and
+applies the scores (either from \fI\%episode_scores\fP or \fI\%movie_scores\fP) after some processing.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBsubtitle\fP (\fBSubtitle\fP) \-\- the subtitle to compute the score of.
+.IP \(bu 2
+\fBvideo\fP (\fBVideo\fP) \-\- the video to compute the score against.
+.IP \(bu 2
+\fBhearing_impaired\fP (\fI\%bool\fP) \-\- hearing impaired preference.
+.UNINDENT
+.TP
+.B Returns
+score of the subtitle.
+.TP
+.B Return type
+\fI\%int\fP
+.UNINDENT
+.UNINDENT
+.SS Utils
+.INDENT 0.0
+.TP
+.B subliminal.utils.hash_opensubtitles(video_path)
+Compute a hash using OpenSubtitles\(aq algorithm.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo_path\fP (\fI\%str\fP) \-\- path of the video.
+.TP
+.B Returns
+the hash.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.hash_thesubdb(video_path)
+Compute a hash using TheSubDB\(aqs algorithm.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo_path\fP (\fI\%str\fP) \-\- path of the video.
+.TP
+.B Returns
+the hash.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.hash_napiprojekt(video_path)
+Compute a hash using NapiProjekt\(aqs algorithm.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo_path\fP (\fI\%str\fP) \-\- path of the video.
+.TP
+.B Returns
+the hash.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.hash_shooter(video_path)
+Compute a hash using Shooter\(aqs algorithm
+.INDENT 7.0
+.TP
+.B Parameters
+\fBvideo_path\fP (\fI\%string\fP) \-\- path of the video
+.TP
+.B Returns
+the hash
+.TP
+.B Return type
+\fI\%string\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.sanitize(string, ignore_characters=None)
+Sanitize a string to strip special characters.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.IP \(bu 2
+\fBstring\fP (\fI\%str\fP) \-\- the string to sanitize.
+.IP \(bu 2
+\fBignore_characters\fP (\fI\%set\fP) \-\- characters to ignore.
+.UNINDENT
+.TP
+.B Returns
+the sanitized string.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.sanitize_release_group(string)
+Sanitize a \fIrelease_group\fP string to remove content in square brackets.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBstring\fP (\fI\%str\fP) \-\- the release group to sanitize.
+.TP
+.B Returns
+the sanitized release group.
+.TP
+.B Return type
+\fI\%str\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.utils.timestamp(date)
+Get the timestamp of the \fIdate\fP, python2/3 compatible
+.INDENT 7.0
+.TP
+.B Parameters
+\fBdate\fP (\fI\%datetime.datetime\fP) \-\- the utc date.
+.TP
+.B Returns
+the timestamp of the date.
+.TP
+.B Return type
+\fI\%float\fP
+.UNINDENT
+.UNINDENT
+.SS Cache
+.INDENT 0.0
+.TP
+.B subliminal.cache.SHOW_EXPIRATION_TIME
+Expiration time for show caching
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.cache.EPISODE_EXPIRATION_TIME
+Expiration time for episode caching
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.cache.REFINER_EXPIRATION_TIME
+Expiration time for scraper searches
+.UNINDENT
+.INDENT 0.0
+.TP
+.B subliminal.cache.region
+The \fI\%CacheRegion\fP
+.UNINDENT
+.sp
+Refer to dogpile.cache\(aqs \fI\%region configuration documentation\fP to see how to configure the region
+.SS CLI
+.sp
+Subliminal uses \fI\%click\fP to provide a powerful CLI\&.
+.INDENT 0.0
+.TP
+.B class subliminal.cli.MutexLock(filename)
+\fI\%MutexLock\fP is a thread\-based rw lock based on \fI\%dogpile.core.ReadWriteMutex\fP\&.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.cli.Config(path)
+A \fI\%ConfigParser\fP wrapper to store configuration.
+.sp
+Interaction with the configuration is done with the properties.
+.INDENT 7.0
+.TP
+.B Parameters
+\fBpath\fP (\fI\%str\fP) \-\- path to the configuration file.
+.UNINDENT
+.INDENT 7.0
+.TP
+.B path = None
+Path to the configuration file
+.UNINDENT
+.INDENT 7.0
+.TP
+.B config = None
+The underlying configuration object
+.UNINDENT
+.INDENT 7.0
+.TP
+.B read()
+Read the configuration from \fI\%path\fP
+.UNINDENT
+.INDENT 7.0
+.TP
+.B write()
+Write the configuration to \fI\%path\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.cli.LanguageParamType
+\fI\%ParamType\fP for languages that returns a \fI\%Language\fP
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class subliminal.cli.AgeParamType
+\fI\%ParamType\fP for age strings that returns a \fI\%timedelta\fP
+.sp
+An age string is in the form \fInumber + identifier\fP with possible identifiers:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBw\fP for weeks
+.IP \(bu 2
+\fBd\fP for days
+.IP \(bu 2
+\fBh\fP for hours
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+The form can be specified multiple times but only with that idenfier ordering. For example:
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fB1w2d4h\fP for 1 week, 2 days and 4 hours
+.IP \(bu 2
+\fB2w\fP for 2 weeks
+.IP \(bu 2
+\fB3w6h\fP for 3 weeks and 6 hours
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Exceptions
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.Error
+Base class for exceptions in subliminal.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.ProviderError
+Exception raised by providers.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.ConfigurationError
+Exception raised by providers when badly configured.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.AuthenticationError
+Exception raised by providers when authentication failed.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.TooManyRequests
+Exception raised by providers when too many requests are made.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B exception subliminal.exceptions.DownloadLimitExceeded
+Exception raised by providers when download limit is exceeded.
+.UNINDENT
+.SH LICENSE
+.sp
+MIT
+.INDENT 0.0
+.IP \(bu 2
+genindex
+.IP \(bu 2
+modindex
+.IP \(bu 2
+search
+.UNINDENT
+.SH AUTHOR
+Antoine Bertin
+.SH COPYRIGHT
+2016, Antoine Bertin
+.\" Generated by docutils manpage writer.
+.

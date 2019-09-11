@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Wed Oct 24 16:30:45 UTC 2018 - sean@suspend.net
+
+- new upstream release 0.1.8
+  * Fixed UID shown instead of EUID
+
+-------------------------------------------------------------------
+Sun Dec 25 13:42:15 UTC 2016 - trcs@gmx.com
+
+- new upstream release 0.1.7
+  * Add icon to the about dialog
+  * Translation updates
+
+-------------------------------------------------------------------
+Mon Oct 20 19:14:16 UTC 2014 - trcs@gmx.com
+
+- new upstream release 0.1.6
+  * SF#477 Fix integer overflow on shorting by memory
+  * Add a Keywords line into lxtask.desktop file
+  * Add compilation notes into README file
+  * Use POSIX call sysconf(_SC_NPROCESSORS_ONLN) instead of 
+    Linux-only get_nprocs()
+  * Update text of GPL-2 (in the file COPYING)
+- removed lxtask-0.1.5-fix-license-in-copying-file.patch
+
+-------------------------------------------------------------------
+Tue Sep 16 13:40:23 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.1.5
+  * Fix compilation warning on 64 bit arch
+  * Fix wrapping on 32-bit architectures: CPU timers may exceed 32 
+    bit so use 64 bit
+  * Fixing FTBFS on kfreebsd (bug #585969 in Debian)
+  * use nprocs() function instead of /proc/cpuinfo
+  * [SF#620]Fix parsing command line containing ')'
+  * Update memory sizes to 64 bit and fix compilation warnings
+  * Add manual page lxtask.1
+  * Replace deprecated macro AC_PROG_INTLTOOL with IT_PROG_INTLTOOL
+  * [SF#607]Add AC_CONFIG_MACRO_DIR to configure.ac and ACLOCAL_
+    AMFLAGS to Makefile.am
+  * Use macro AM_MAINTAINER_MODE correct way - with ([enable])
+  * Add .gitignore file
+  * Move lxtask.desktop.in into data/ subdirectory
+  * Add --enable-debug option to configure script
+  * Don't use libtoolize in autogen.sh, lxtask is not a library
+  * Generate po/LINGUAS on the fly instead of manual generating
+  * Fix Makefile.am warning
+  * Remove gtk-doc stuff in autogen
+  * Fix autogen with new versions of automake
+  * Fix -1% CPU for processes on armhf
+  * Fix sort tasks by clicking the User Name
+  * Don't stop lxtask self
+  * Remove an unneccesary initilize
+  * Debian: Use ./autogen.sh before dh_auto_configure
+  * Fix integer overflow in memory show
+  * Remove column auto resize
+  * Support to show full cmdline
+  * Translation updates
+- disabled lxtask-automake-1.12.diff patch
+  * no autogen.sh present in the package
+- spec file cleanup
+- Split lang package
+- Added lxtask-0.1.5-fix-license-in-copying-file.patch
+  * Fix wrong FSF address
+
+-------------------------------------------------------------------
+Thu May  2 18:19:42 UTC 2013 - crrodriguez@opensuse.org
+
+- lxtask-automake-1.12.diff: allow future automake versions 
+  by simply not checking them in autogen.sh
+
+-------------------------------------------------------------------
+Wed Jun  6 18:19:24 UTC 2012 - pgajdos@suse.com
+
+- add libtool into BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun  6 17:51:26 UTC 2012 - pgajdos@suse.com
+
+- build with automake 1.12
+
+-------------------------------------------------------------------
+Thu Dec  1 17:06:45 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Sep 22 08:32:16 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in lxtask.spec
+
+-------------------------------------------------------------------
+Fri Apr 29 06:14:36 UTC 2011 - andrea@opensuse.org
+
+- New upstream version 0.1.4
+  * fixed memory leaks in task refresh
+  * Fix garbled text (Bug 2986070)
+  * Corrected Polish translation (bug: 3221298)
+  * added gtk3 compatibility
+- removed patch lxtask-0.1.3-code-cleanup.patch now upstream 
+
+-------------------------------------------------------------------
+Mon Mar 14 18:50:46 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Mon Jun  7 14:20:10 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Mon Apr 12 16:04:20 UTC 2010 - andrea@opensuse.org
+
+- added lxtask-0.1.3-code-cleanup.patch to fix compiler warnings 
+
+-------------------------------------------------------------------
+Mon Apr 12 12:27:49 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.3
+- remove lxtask-0.1.2-fix-po-file.patch 
+
+-------------------------------------------------------------------
+Tue Apr  6 14:20:18 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.2 
+- removed missing sentinel patch merged upstream
+- added lxtask-0.1.2-fix-po-file.patch to fix broken fa.po
+
+-------------------------------------------------------------------
+Tue Apr  6 08:56:27 UTC 2010 - andrea@opensuse.org
+
+- removed unsopported locales
+
+-------------------------------------------------------------------
+Sat Dec 12 16:00:02 UTC 2009 - andrea@opensuse.org
+
+- bzipped source code
+
+-------------------------------------------------------------------
+Thu Jul 14 16:00:02 UTC 2009 - andrea@opensuse.org
+
+- fixed missing sentinel warning
+
+-------------------------------------------------------------------
+Wed Jul 08 16:00:02 UTC 2009 - andrea@opensuse.org
+
+- New upstream version 0.1.1
+
+-------------------------------------------------------------------
+Fri May 22 16:00:02 UTC 2009 - andrea@opensuse.org
+
+- New package version 0.1

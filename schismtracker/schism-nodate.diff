@@ -1,0 +1,48 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Upstream: never
+
+Replace __DATE__ and __TIME__ with static text.
+
+Note: rpmlint will still complain when the static date that was
+encoded happens to be the current day. That is ok, since rpmlint
+uses just a heuristic - excessive rebuilds should not actually
+be happening.
+---
+ schism/version.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: schismtracker-20170910/schism/version.c
+===================================================================
+--- schismtracker-20170910.orig/schism/version.c
++++ schismtracker-20170910/schism/version.c
+@@ -90,6 +90,10 @@ Information at our disposal:
+ 
+ */
+ 
++/* update whenever you checkout */
++#define __HG_DATE__ "Apr  9 2011"
++#define __HG_TIME__ "00:00:00" /* screw this */
++
+ static int get_version_tm(struct tm *version)
+ {
+ 	char *ret;
+@@ -99,10 +103,6 @@ static int get_version_tm(struct tm *ver
+ 	if (ret && !*ret)
+ 		return 1;
+ 	/* Argh. */
+-	memset(version, 0, sizeof(*version));
+-	ret = strptime(__DATE__, "%b %e %Y", version);
+-	if (ret && !*ret)
+-		return 1;
+ 	/* Give up; we don't know anything. */
+ 	return 0;
+ }
+@@ -131,7 +131,7 @@ void ver_init(void)
+ 			"Schism Tracker %s", ver);
+ 	} else {
+ 		snprintf(top_banner_normal, sizeof(top_banner_normal) - 1,
+-			"Schism Tracker built %s %s", __DATE__, __TIME__);
++			"Schism Tracker");
+ 	}
+ 
+ 	top_banner_normal[sizeof(top_banner_normal) - 1] = '\0'; /* to be sure */

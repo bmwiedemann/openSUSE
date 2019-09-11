@@ -1,0 +1,656 @@
+-------------------------------------------------------------------
+Tue Mar 13 19:13:45 UTC 2018 - 9+suse@cirno.systems
+
+- Add explicit build time dependency on Python 3.x
+  (fixes TW build)
+
+-------------------------------------------------------------------
+Sat Feb 24 15:49:36 UTC 2018 - 9+suse@cirno.systems
+
+- Use systemd default ("control-group") KillMode for service
+  ("process" is not sufficient)
+
+-------------------------------------------------------------------
+Mon Jul 10 10:29:45 UTC 2017 - jengelh@inai.de
+
+- Remove storytelling from description.
+- Command and comment cleaning.
+
+-------------------------------------------------------------------
+Wed Jun 14 12:05:51 UTC 2017 - tchvatal@suse.com
+
+- Drop the xinetd service from the package
+  * We are switching to socket services, on this service it does
+    not make much sense to actually enable it like that thus
+    simply drom the xinetd binding
+- Remove always true version check
+
+-------------------------------------------------------------------
+Mon Feb 27 08:33:21 UTC 2017 - mcaj@suse.com
+
+- Version update to 3.5.1:
+  * purple: 
+     Fix crash on file transfer requests from unknown contacts. 
+     This was the result of an incomplete fix in the previous 
+     release and may result in remote DoS. Read the full security 
+     advisory at: https://bugs.bitlbee.org/ticket/1282
+  * After some investigation we decided to reclassify a crash fix 
+     from the previous release as a security issue. Read the full security 
+     advisory at: https://bugs.bitlbee.org/ticket/1281
+  * Included help.txt in the release tarball, which was missing in 
+     the previous release and resulted in adding python as a build 
+     dependency. The release tarball of 3.5.1 does not require python.
+
+-------------------------------------------------------------------
+Tue Jan 24 08:20:23 UTC 2017 - shshyukriev@suse.com
+
+- Version update to 3.5:
+ * ui:
+    "chat list": shows a list of existing server-side chatrooms.
+    With some protocols, this is often the only way to add new channels.
+    See 'help chat list' for details.
+    "plugins": lists the installed plugins and their versions
+    Add 'nick_lowercase' and 'nick_underscores' settings.
+    "handle_unknown" can be set per-account, not just globally
+ * jabber:
+    Add "always_use_nicks" channel setting, for non-anonymous MUCs (trac #415)
+    See 'help set always_use_nicks' for possible side effects.
+    Properly handle rejected file transfers
+    Don't send parts in a chat if someone is still connected from other devices
+    hipchat: support personal oauth tokens (manually generated ones)
+ * twitter:
+    Hide muted tweets / no-retweets, add mute/unmute commands
+    Show full version of extended tweets (with slightly more than 140 chars)
+ * purple:
+    Support setting chat room topics
+    Support for extra groupchat settings. Shows an error if any required ones are missing.
+     Look for purple_ prefixed settings in "chan #... set"
+    SIPE: persistent chats can be joined now, thanks to the "chat list" command
+     and the above ("purple_uri" channel setting)
+    Fix a file transfer crash bug (Mainly affected telegram)
+    Honor protocol flag to not require a password (used in hangouts, telegram)
+    Set the contacts' nicks to the %full_name for a few whitelisted protocols (hangouts, funyahoo, icq, line)
+    LINE: added a hack to save its auth token, to avoid re-auth every time
+    Show self-messages in groupchat backlogs (before join)
+ *yahoo:
+    Removed because they killed their old protocol on a two month notice.
+    Use EionRobb's funyahoo purple plugin, or better yet, don't use yahoo.
+ *Stuff for enterprise deployments:
+    Locked down accounts, useful when pregenerating user config files.
+    An account that is marked with the locked="true" attribute can't be removed
+    and its username/password can't be changed.
+    Locked down settings. Same as above, but for individual account settings.
+    AllowAccountAdd setting in bitlbee.conf, to disable adding new accounts.
+    PAM and LDAP authentication backends (not compiled by default)
+ *For packagers:
+    Enabled debug symbols in non-debug builds, disabled stripping by default.
+    This is closer to the default behavior of autotools,
+    and --debug=1 is mostly to set the DEBUG macro and disable optimization.
+ *For plugin devs:
+    Plugins should now include an "init_plugin_info" function which will be used
+    for ABI version checking in the future.
+    It's optional for now, but will be enforced later. 
+
+
+-------------------------------------------------------------------
+Sun Jun 19 22:14:19 UTC 2016 - jengelh@inai.de
+
+- Compact filelist
+
+-------------------------------------------------------------------
+Sat Jun 18 12:48:00 UTC 2016 - tchvatal@suse.com
+
+- Install devel files to be able to build plugins
+
+-------------------------------------------------------------------
+Sat Jun 18 12:43:33 UTC 2016 - tchvatal@suse.com
+
+- Drop sle11 support as we run it on sle12
+
+-------------------------------------------------------------------
+Sat Jun 18 12:37:27 UTC 2016 - tchvatal@suse.com
+
+- Version update to 3.4.2:
+  * irc: Self-messages (messages sent by yourself from other IM clients). IRCv3.1
+  * support and part of 3.2. Many important groupchat related bugfixes.
+  * jabber: Carbons, see help set carbons. Removed facebook XMPP, use
+  * bitlbee-facebook instead. SASL ANONYMOUS login, see help set anonymous.
+  * hipchat: Channels can now be added with chat add hipchat "channel name" which
+    tries to guess the channel JID. Read more
+  * skype: Show all messages as groupchats since we can't tell which ones are
+    private. This plugin is mostly-deprecated and mostly-broken, use the skypeweb
+  * purple plugin or msn instead.
+  * purple: Fix problems remembering SSL certificates as trusted. Groupchat related
+    fixes. Better error reporting. Fixed setting jabber away states.
+  * And lots of bugfixes / stability improvements.
+
+-------------------------------------------------------------------
+Sat Jun 18 12:36:01 UTC 2016 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner and remove sle10 support for readability
+
+-------------------------------------------------------------------
+Fri Jun 26 17:33:25 UTC 2015 - lmuelle@suse.com
+
+- update to 3.4.1:
+  msn:
+  + Upgraded protocol to MSNP21, works again (dx)
+  + Contact list management, groupchats and skype username logins won't work.
+    Next release!
+ jabber:
+  + Add "hipchat" protocol, for smoother login. Takes the same username as the
+    official client. Note that unlike the 'hip-cat' branch, this doesn't
+    preload channels. https://wiki.bitlbee.org/HowtoHipchat for details (dx)
+  + Fixed a bug when receiving topics set by people who left the channel (dx)
+  + Create fake users instead of showing "unknown participant" errors (dx)
+  + Gmail mail notifications support (Artem Savkov)
+  + Lowering xmpp presence priority on away (Artem Savkov)
+  twitter:
+  + Show quoted tweets/RTs with comment inline (wilmer)
+  + Added "url" command, can be used to quote tweets (wilmer)
+  + Make replies to self work (wilmer)
+  Building documentation is now done with a python script (both 2.x/3.x work)
+  Asciidoc/xsltproc/xmlto are no longer build dependencies (dx)
+- Require w3m at built time to generate the userguide in html format.
+
+-------------------------------------------------------------------
+Thu Jun 25 08:43:47 UTC 2015 - vmiklos@vmiklos.hu
+
+- Fix typo in systemd service
+
+-------------------------------------------------------------------
+Tue Jun 16 08:24:51 UTC 2015 - mcaj@suse.com
+
+- Enable sipe protocol (http://wiki.bitlbee.org/bitlbee-sipe)
+
+-------------------------------------------------------------------
+Thu Apr 23 18:45:03 UTC 2015 - lmuelle@suse.com
+
+- Let systemd start bitlbee in fork daemon mode by default.
+- Cleanup of the spec file, the init script, and the systemd configuration.
+
+-------------------------------------------------------------------
+Thu Apr 23 13:40:28 UTC 2015 - lmuelle@suse.com
+
+- Require util-linux-systemd at build time on post-13.1 systems.
+
+-------------------------------------------------------------------
+Wed Apr 22 19:41:55 UTC 2015 - lmuelle@suse.com
+
+- update to 3.4:
+  Some API/ABI changes. Recompiling third party plugins is required!
+  Important bugfixes:
+  * Fix memory leak when calling word_wrap() on groupchat messages (dx)
+  * Fix segfault after a file transfer is complete (dx)
+  * Fix bug where NSS would refuse to work in forkdaemon mode (dx)
+  * Fix several bugs with UTF8 nicks (dx)
+  * Fix some nasty deadlocks that appared mostly with libpurple (dx)
+  General changes:
+  * Add a 'pattern' parameter to the blist command, to filter it (tribut)
+  * Implemented /kick support, only supported by purple for now (jgeboski)
+  * Add a "special" state to show_users (mapped to the % prefix) (jgeboski)
+  * Improved support for cygwin, openbsd and darwin (jcopenha)
+  * Create temporary users instead of showing "Message from unknown
+    participant" (jgeboski)
+  purple:
+  * Local contact lists for gadugadu and whatsapp (dx)
+  * Add topic and name_hint to groupchats (seirl)
+  * Support for 'input' requests (such as telegram auth codes) (seirl)
+    Note that telegram-purple itself is rather unstable ATM, it may crash.
+  jabber:
+  * Handle compressed DNS responses in SRV lookup (jcopenha)
+  * Fix case sensitivity issues with JIDs (GRMrGecko, dx)
+  * Implement XEP-0203 style message timestamps (dx)
+  * Fix "Server claims your JID is X instead of Y" warnings (dx)
+  * Account-wide display_name setting, mostly for hipchat (dx)
+  twitter:
+  * Filter channels. Search by keyword/hashtag or a list of users (jgeboski)
+  * Fix bug in "reply" command which removed the first quote character (dx)
+  * Add "rawreply" command, like reply but bitlbee won't add @mention (WillP)
+  * Add support for The United States of America (favorite/fav aliases) (dx)
+  * Default show_old_mentions to 0 (dx)
+  * Start stream from last tweet on connect/reconnect (roger)
+  msn:
+  * Disabled module by default. The protocol we used (MSNP18) stopped working
+    last week. This is being worked on, but it's far from ready for release.
+- Remove obsoleted COPYING.patch
+
+-------------------------------------------------------------------
+Wed Apr 22 19:25:08 UTC 2015 - lmuelle@suse.com
+
+- Enhance the service file to start in daemon mode and as user bitlbee and
+  create a user group too while calling useradd on install; (boo#928228).
+
+-------------------------------------------------------------------
+Fri Dec  5 11:37:57 UTC 2014 - tampakrap@opensuse.org
+
+- Fix FSF address to make rpmlint happy
+
+-------------------------------------------------------------------
+Sun Nov  9 22:18:46 UTC 2014 - tampakrap@opensuse.org
+
+- Fix the postun to silence the rpmlint
+- Whitespace
+
+-------------------------------------------------------------------
+Wed Nov  5 17:47:50 UTC 2014 - tampakrap@opensuse.org
+
+- Add dependency for openSUSE >= 13.2
+- Remove user/group from systemd service file. Bitlbee can drop privileges to
+  the user if specified so in its config file.
+
+-------------------------------------------------------------------
+Fri Aug 29 19:42:15 UTC 2014 - mcaj@suse.com
+
+- I fixed build for SLE_11_SP3 via change if for suse_version in with_libotr if.
+  version 1100 is OpenSUSE 11.0 (very old ) but 1110 is SLE 11, see:
+  http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
+
+-------------------------------------------------------------------
+Wed Aug 20 07:46:50 UTC 2014 - tampakrap@opensuse.org
+
+- Version 3.2.2:
+ * The OTR plugin now uses libotr 4.0 (AKA libotr5 in debian based distros)
+ * Rejecting buddy requests in jabber won't accept them. Sorry for that.
+ * Purple builds can now enable built in protocols when configuring, by
+ * passing a parameter such as --jabber=1 to configure
+ * You can now use /oper to change passwords with "ac x set -del password"
+ * Complex unicode characters (non-BMP) now display correctly in twitter.
+ * A few init / build script / pkg-config fixes. Added "install-systemd"
+   make target.
+
+-------------------------------------------------------------------
+Wed Jun 18 14:11:16 UTC 2014 - mcaj@suse.com
+
+- Removed if for SLES9 - not need any more
+- Run spec-clean on the spec file. 
+
+-------------------------------------------------------------------
+Wed Jun 18 13:07:23 UTC 2014 - mcaj@suse.com
+
+- The PID directory is /var/run/bitlbee/ or /run/bitlbee/ depends on the version.
+- The PID directory is created via systemd or initd script, bacuse its in tmpfs.
+- Each BuildRequires is on one line to avoid duplicate packages.
+
+-------------------------------------------------------------------
+Tue Jun 17 13:05:14 UTC 2014 - mcaj@suse.com
+
+- I fixed systemd service sctipt to be able run under the user bitlbee.
+- The PID file is now /var/run/bitlbee/bitlbee.pid.
+- The directory /var/run/bitlbee/ is own by user bitlbee.
+- The build is also done for pid and sock under /var/run/bitlbee/.
+- The creating the user bitlbee is done via the command useradd now.
+- Information about creating new user on directory is accnouce via logger now.
+- Added copyrigth and credention to init and systemd service file.
+
+-------------------------------------------------------------------
+Fri Jun  6 12:32:29 UTC 2014 - mcaj@suse.com
+
+- Added init.d and systemd  to be able run the bitlbee as standard service.
+- Improved way how user bitlbee is add into system via rpm.
+- Fixed warning about wrong license:
+   its still "GNU General Public License version 2 (GPL v2)" but osc marks it 
+   via shorcut : GPL-2.0+
+
+-------------------------------------------------------------------
+Thu Jan 30 19:17:00 UTC 2014 - cs@suse.com
+
+- Modified spec to include --purple for building in SLE >= 11
+
+-------------------------------------------------------------------
+Fri Dec 13 10:54:08 UTC 2013 - cs@suse.com
+
+- update to 3.2.1:
+  * update to Twitter compat
+
+-------------------------------------------------------------------
+Mon Oct 21 11:53:48 UTC 2013 - tboerger@suse.de
+
+- Removed o flag for user creation, did'nt work on 12.3 anymore
+
+-------------------------------------------------------------------
+Tue Sep  3 19:51:41 UTC 2013 - jmcdonough@suse.com
+
+- Re-enable libotr2.  Later versions still don't work.
+
+-------------------------------------------------------------------
+Tue Jan 29 06:46:02 UTC 2013 - vmiklos@suse.com
+
+- update to 3.2:
+  * By far the most important change, a thorough update to the Twitter
+    module:
+    * Now using Twitter API 1.1,
+    * which means it's now using JSON instead of XML,
+    * which means access to the streaming API (Twitter only, other Twitter
+      API services don't seem to have it). No more 60-second polls, #twitter
+      looks even more like real IRC now!
+    * Also, the streaming API means nice things like receiving DMs.
+    * show_ids, already enabled by default for a while, now uses hexa-
+      decimal numbers, which means a 256-entry backlog instead of just 100.
+    * Added a mode=strict setting which requires everything to be a command.
+      The "post" command should then be used to post a Tweet.
+  * Jabber module bugfix that fixes connection issues with at least Google
+    Talk but reportedly some other servers (OpenFire?) as well.
+  * SSL modules improved a little bit. GnuTLS module now supports SNI and
+    session caching. Shouldn't change much, but hopefully reduces latency
+    and bandwidth usage a little bit.
+  * A bunch of other fixes/improvements here and there.
+
+-------------------------------------------------------------------
+Wed Sep  5 17:38:26 UTC 2012 - jmcdonough@suse.com
+
+- Fix OTR in post-12.2 systems to build using libotr2 as
+  libotr interface has changed
+
+-------------------------------------------------------------------
+Wed Sep  5 17:38:26 UTC 2012 - jmcdonough@suse.com
+
+- Fix build typo to enable OTR
+
+-------------------------------------------------------------------
+Mon Feb 20 08:32:10 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.0.5:
+  * SSL certificate verification (edit your bitlbee.conf to enable it)
+  * OAuth2 support in Jabber module (works with Google Talk, Facebook and MSN
+    Messenger)
+  * support for ad-hoc Jabber groupchats: just create a channel and start
+    inviting people, similar to how this works on other IM networks. Works fine
+    with GTalk, depends on a conference server being set up on other networks
+  * allow old-style Jabber login (non-SASL), this solves problems with some
+    old/buggy Jabber servers. (acc jabber set sasl off)
+  * use HTTPS for OAuth1 authentication traffic
+  * awareness of Twitter's t.co URL lengt^Wshortening when checking message
+    length
+  * fixed identi.ca OAuth support. OAuth will now always be used for both
+    Twitter and identi.ca accounts
+  * fix nick_format=%full_name with libpurple
+  * instead of "protocol(handle)", use the account tags introduced in 3.0 when
+    root wants to refer to an account (in log messages, queries, etc.)
+  * many small bugfixes, improvements, etc
+
+-------------------------------------------------------------------
+Sun Dec 18 00:57:26 UTC 2011 - darix@nordisch.org
+
+- update to 3.0.4
+  - Merged Skype support. This used to be a separate plugin, and it
+    still is, but by including it with BitlBee by default it will
+    be easier to keep it in sync with changes to BitlBee.
+  - Fixed a file descriptor leak bug that may have caused strange
+    behaviour in BitlBee sessions running for a long time.
+  - Now fetches Twitter mentions as well if the "fetch_mentions"
+    account setting is enabled.
+  - With t.co now all over Twitter, show the original (but
+    truncated) URL between <brackets>.
+  - Fixed MSN Messenger login issues ("timeout" while fetching
+    buddy list).
+  - Another (related) GnuTLS compatibility fix (now 2.13+?).
+
+-------------------------------------------------------------------
+Sun Jun 12 19:08:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.0.3:
+  * fixed Twitter compatibility
+  * Twitter: enable the show_ids setting to assign a two-digit short ID to
+    recent tweets to use for retweets and replies (so you can RT/reply to more
+    than just a person's last message)
+  * some other Twitter fixes/improvements
+  * "otr reconnect" command and some other fixes
+  * include "FLOOD=0/9999" in the 005/ISUPPORT line at login to hint the IRC
+    client that rate limiting is not required
+
+-------------------------------------------------------------------
+Tue Mar 08 10:35:15 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out userguide into -doc subpackage
+- update to 3.0.2:
+  * fixed MSN login issues with @msn.com accounts
+  * /CTCP support: you can CTCP VERSION Jabber contacts, and CTCP NUDGE MSN
+    contacts
+  * by default, leave Twitter turned on for libpurple builds
+  * allow using /OPER to identify/register as well (Password security hack)
+  * fixed proxy support with libpurple
+  * some minor changes/fixes
+
+-------------------------------------------------------------------
+Thu Nov 25 01:24:08 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.0.1:
+  * compatibility fixes with some IM protocols:
+    + fixed Jabber contacts never going offline
+    + fixed MSN login issues
+    + fixed big memory leak in the MSN SOAP code
+  * better handling of multiple control channels and set private=false
+  * using login.icq.com for ICQ logins again since AOL sold ICQ so it doesn't
+    live on the AIM servers anymore
+  * fixed ability to join password-protected Jabber rooms
+  * time out if logging into an account takes too long
+  * support for server-side Gadu-Gadu contact lists (via libpurple, there's
+    still no native gg support)
+  * allow omitting password when using "account add", the password can be
+    entered using /OPER to prevent echoing to screen and logs
+
+-------------------------------------------------------------------
+Fri Oct 22 13:50:48 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.0:
+  * major rewrite of the IRC core
+  * support was added for contact groups and multiple configurable channels
+  * major update of the MSN Messenger code
+  * some Twitter additions were made
+  * OTR encryption support was added
+  * many many more changes and fixes were done
+
+- changes from 1.3dev:
+  * complete rewrite of the IRC core, allowing the user to create multiple
+    control channels, each with a different set of users
+  * the ability to use libpurple as the IM backend (which adds support for many
+    more IM protocols)
+  * support for file transfers
+
+-------------------------------------------------------------------
+Sun Jul  4 19:20:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.2.8:
+  * add ability to use non-Twitter Twitter API services
+  * add ability follow/unfollow people
+  * some bugfixes concerning other IM protocols
+  * general cleanup
+
+-------------------------------------------------------------------
+Sat May 15 22:38:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.2.7:
+  * MSN support was fixed
+  * the Twitter module was updated to use OAuth (which is required
+    after June)
+  * several other fixes and feature additions were done
+
+-------------------------------------------------------------------
+Mon Apr 19 14:34:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.2.6:
+  * adds native support for Twitter
+  * some other minor feature additions and bug fixes were done
+
+-------------------------------------------------------------------
+Wed Mar 17 08:11:12 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.2.5:
+  * support was improved for non-away status messages
+  * support was improved for Facebook chat XMPP servers
+  * fixes were made for many bugs
+  * other small feature enhancements were done
+
+-------------------------------------------------------------------
+Mon Oct 19 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.2.4:
+  * Yahoo! support was fixed
+  * various stability and usability improvements were made
+- moved from Packman to openSUSE Build Service
+
+
+-------------------------------------------------------------------
+Sun Sep  7 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.2.3:
+  * fixes another account hijacking issue
+
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.2.2:
+  * SECURITY: fixes an account hijacking issue
+  * various other stability improvements
+
+
+-------------------------------------------------------------------
+Wed Jun 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * many bugfixes
+  * stability was improved
+  * the single-process daemon mode is now officially declared stable
+
+
+-------------------------------------------------------------------
+Tue Mar 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- fixed RPM Group
+
+
+-------------------------------------------------------------------
+Tue Mar 18 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sat Dec  8 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to Packman
+
+
+-------------------------------------------------------------------
+Mon Aug 20 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sun Jun 25 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Thu Apr 27 00:00:00 UTC 2006 - guru@unixtech.be
+
+- removed Packager and Distribution, injected by rpmmacros
+- use makeinstall instead of make install
+- added missing build dependency for libgcrypt-devel
+- added binary stripping for SUSE < 9.3
+- moved configure to build section
+
+
+-------------------------------------------------------------------
+Sat Apr  1 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Jan 16 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Dec  5 00:00:00 UTC 2005 - guru@unixtech.be
+
+- revamped spec file header section (y2pmbuild-ready)
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Nov  7 00:00:00 UTC 2005 - guru@unixtech.be
+
+- fixed wrong requires for useradd and groupadd
+
+
+-------------------------------------------------------------------
+Sat Nov  5 00:00:00 UTC 2005 - guru@unixtech.be
+
+- explicitely turn off stripping
+- turn off flood protection
+- added creating user and group "bitlbee"
+- changed xinetd user from nobody to bitlbee
+- fixed ownership of /var/lib/bitlbee to bitlbee:bitlbee
+
+
+-------------------------------------------------------------------
+Fri Nov  4 00:00:00 UTC 2005 - guru@unixtech.be
+
+- added --ipv6=1
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Nov  2 00:00:00 UTC 2005 - guru@unixtech.be
+
+- added upstream patch
+
+
+-------------------------------------------------------------------
+Tue Nov  1 00:00:00 UTC 2005 - guru@unixtech.be
+
+- added debuginfo support
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Feb 28 00:00:00 UTC 2005 - guru@unixtech.be
+
+- version 0.92
+
+
+-------------------------------------------------------------------
+Sun Sep 26 00:00:00 UTC 2004 - guru@unixtech.be
+
+- version 0.91
+
+
+-------------------------------------------------------------------
+Tue Jun 29 00:00:00 UTC 2004 - guru@unixtech.be
+
+- fixes to Yahoo protocol
+- version 0.90a
+
+
+-------------------------------------------------------------------
+Sun May 30 00:00:00 UTC 2004 - guru@unixtech.be
+
+- version 0.90
+
+
+-------------------------------------------------------------------
+Mon Mar 15 00:00:00 UTC 2004 - guru@unixtech.be
+
+- removed dependency to libsoup (not the case any more)
+
+
+-------------------------------------------------------------------
+Sun Mar 14 00:00:00 UTC 2004 - guru@unixtech.be
+
+- flood protection is enabled
+- version 0.85
+
+
+-------------------------------------------------------------------
+Tue Feb 17 00:00:00 UTC 2004 - guru@unixtech.be
+
+- first RPM
+
+

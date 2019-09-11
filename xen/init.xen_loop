@@ -1,0 +1,2 @@
+# Increase the number of loopback devices available for vm creation
+options loop max_loop=64

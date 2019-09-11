@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Dec  7 11:47:08 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure to run %fdupes correctly
+
+-------------------------------------------------------------------
+Wed Aug 16 21:32:37 UTC 2017 - dhall@wustl.edu
+
+- obsolete python-pmw
+
+-------------------------------------------------------------------
+Sun May  7 20:06:55 UTC 2017 - dhall@wustl.edu
+
+- Add py36.patch: Fix for python3.6
+  * https://sourceforge.net/p/pmw/patches/7/
+
+-------------------------------------------------------------------
+Sat May  6 23:47:52 UTC 2017 - dhall@wustl.edu
+
+- update to Pmw 2.0.1
+- add python3 compatibility
+
+-------------------------------------------------------------------
+Fri Mar 21 21:01:05 UTC 2014 - dhall@wustl.edu
+
+- update to Pmw 1.3.3b
+
+-------------------------------------------------------------------
+Sat Dec 15 02:49:50 UTC 2012 - dhall@wustl.edu
+
+- update to Pmw 1.3.3
+
+-------------------------------------------------------------------
+Tue Sep 25 02:24:02 UTC 2012 - dhall@wustl.edu
+
+- require python-tk
+
+-------------------------------------------------------------------
+Tue Aug 16 09:51:31 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Package documentation
+  * Version-checks around SUSE-specific macros
+
+-------------------------------------------------------------------
+Tue May 10 19:00:49 UTC 2011 - dhall@wustl.edu
+
+- add executable bits
+- patch out test backup file
+
+-------------------------------------------------------------------
+Tue May 10 18:41:49 UTC 2011 - dhall@wustl.edu
+
+-Pmw import 
+

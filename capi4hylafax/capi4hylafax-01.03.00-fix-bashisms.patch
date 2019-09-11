@@ -1,0 +1,41 @@
+---
+ setupconffile |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: capi4hylafax-01.03.00/setupconffile
+===================================================================
+--- capi4hylafax-01.03.00.orig/setupconffile
++++ capi4hylafax-01.03.00/setupconffile
+@@ -30,7 +30,7 @@ fi
+ #   functions
+ #
+ 
+-function test_for_number {
++test_for_number() {
+     numlen=`expr "$1" : "[0-9]\+"`
+     strlen=`expr length "$1"`
+     if [ 0$numlen -ne 0$strlen ]; then
+@@ -59,7 +59,7 @@ function ReadConfigFile {
+     done < $1
+ }
+ 
+-function WriteToConfigFile {
++WriteToConfigFile() {
+ sed "
+ /^ *FAXNumber *:/c\\
+     FAXNumber:                  $FaxNumber
+@@ -86,12 +86,12 @@ sed "
+     mv -f "$ConfigFileName.c2fax" "$ConfigFileName"
+ }
+ 
+-function rem_res {
++rem_res() {
+     rm -f res
+ }
+ 
+ 
+-function main_config_dialog {
++main_config_dialog() {
+ #
+ #   test for dialog
+ #

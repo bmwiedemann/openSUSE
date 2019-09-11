@@ -1,0 +1,73 @@
+## Path:        Network/Wondershaper
+## Description: Quality Of Service configuration
+## ServiceRestart: wondershaper
+## Type:        string
+#
+# This variable contains the device which should be
+# shaped.
+#
+WSHAPER_DEV=""
+
+## Type:           integer
+## ServiceRestart: wondershaper
+#
+# The download speed of your connection in kilobits.
+# Calculate like described in the README.
+#
+WSHAPER_DOWNLINK=""
+
+## Type:           integer
+## ServiceRestart: wondershaper
+#
+# The upload speed of your connection in kilobits.
+# Calculate like described in the README.
+#
+WSHAPER_UPLINK=""
+
+## Type:           integer
+## ServiceRestart: wondershaper
+#
+# Low priority source hosts. You can specify a single
+# host or a whole netmask.
+#
+WSHAPER_NOPRIOHOSTSRC=""
+
+## Type:           ip
+## ServiceRestart: wondershaper
+#
+# Low priority destination Hosts. You can specify a single
+# host or a whole netmask.
+#
+WSHAPER_NOPRIOHOSTDST=""
+
+## Type:           ip
+## ServiceRestart: wondershaper
+#
+# Low priority source ports on this machine.
+#
+WSHAPER_NOPRIOPORTSRC=""
+
+## Type:           ip
+## ServiceRestart: wondershaper
+#
+# Low priority destination ports on this machine.
+#
+WSHAPER_NOPRIOPORTDST=""
+
+## Type:        boolean
+## Default:     false
+#
+# This variable controls the amount of output of
+# /etc/init.d/wondershaper status.
+# Possible values are lowercase "true" or "false".
+#
+WSHAPER_VERBOSE_STATUS="false"
+
+## Type list(cbq,htb)
+## Default: "htb"
+## ServiceRestart: wondershaper
+#
+# Which type of queueing discipline should be used?
+# See man tc section 'CLASSFUL QDISCS' for further details.
+#
+WSHAPER_QDISC_TYPE="htb"

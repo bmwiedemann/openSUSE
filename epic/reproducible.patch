@@ -1,0 +1,43 @@
+commit 5b01b19fae8bc3fc6c3f27080a9337ddbaf8c619
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon Mar 12 11:14:20 2018 +0100
+
+    Allow to not store build host and user
+    
+    and use __DATE__ and __TIME__ macros which are overridable in gcc
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good.
+    
+    Note: this slightly changes the date format in the compile_info string
+
+diff --git a/source/info.c.sh.in b/source/info.c.sh.in
+index c7ff969..6df87b8 100644
+--- a/source/info.c.sh.in
++++ b/source/info.c.sh.in
+@@ -6,11 +6,10 @@
+ info_c_sum=`cksum @srcdir@/info.c.sh`
+ comp_host=`uname -n`
+ comp_user=$LOGNAME
+-comp_time=`date | \
+-awk '{if (NF == 6) \
+-         { print $1 " "  $2 " " $3 " "  $6 " at " $4 " " $5 } \
+-else \
+-         { print $1 " "  $2 " " $3 " " $7 " at " $4 " " $5 " " $6 }}'`
++if [ -n "$SOURCE_DATE_EPOCH" ] ; then
++    comp_host=reproducible
++    comp_user=reproducible
++fi
+ 
+ # Dump the C file...
+ cat > info.c << __E__O__F__
+@@ -27,8 +26,8 @@ cat > info.c << __E__O__F__
+ 
+ const char *compile_user = "$comp_user";
+ const char *compile_host = "$comp_host";
+-const char *compile_time = "$comp_time";
++const char *compile_time = __DATE__ " at " __TIME__;
+ const char *info_c_sum   = "$info_c_sum";
+-const char *compile_info = "Compiled by " USER "@$comp_host on $comp_time";
++const char *compile_info = "Compiled by " USER "@$comp_host on " __DATE__ " at " __TIME__;
+ 
+ __E__O__F__

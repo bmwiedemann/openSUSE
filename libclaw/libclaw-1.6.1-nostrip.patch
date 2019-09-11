@@ -1,0 +1,23 @@
+From 23fba075de84b2168677475cddd0f393073a3ab4 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Fri, 18 Sep 2009 15:32:32 +0200
+Subject: [PATCH] Do not strip libraries when linking them
+
+We do that after we construct -debuginfo package from the debugging
+symbols when building the RPM package.
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff -up libclaw-1.6.1/CMakeLists.txt.nostrip libclaw-1.6.1/CMakeLists.txt
+--- libclaw-1.6.1/CMakeLists.txt.nostrip	2011-04-18 11:46:48.552994197 -0400
++++ libclaw-1.6.1/CMakeLists.txt	2011-04-18 11:46:56.459896983 -0400
+@@ -192,7 +192,7 @@ target_link_libraries(claw_graphic ${CLA
+ # extra flags for the link
+ set_target_properties(
+  ${CLAW_LIBRARIES}
+- PROPERTIES LINK_FLAGS "-s -Wl,--as-needed" )
++ PROPERTIES LINK_FLAGS "-Wl,--as-needed" )
+ 
+ # all libraries
+ set( CLAW_ALL_LIBRARIES ${CLAW_LIBRARIES} ${CLAW_GRAPHIC_LIBRARIES})

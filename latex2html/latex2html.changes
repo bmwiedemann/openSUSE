@@ -1,0 +1,352 @@
+-------------------------------------------------------------------
+Mon Dec 31 07:58:03 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- updated to 2018
+  * config: avoid warning "untie attempted"
+  * Handle . not in @INC for images.pl and internals.pl
+  * fix \graphicspath with relative path in preamble
+    https://github.com/latex2html/latex2html/issues/40
+  * \providecommand should not redefine existing command
+  * Picture generation via dvipng
+  * KOI8-R, CP1251 and UTF-8 support for Russian 
+  * default to white background for rendering images.
+    if $LATEX_COLOR set, pass as transparency color to pstoimg.
+    https://bugs.debian.org/188024
+  * usepackage xcolor.  uses rgb black rather than cmyk black.
+    fixes eqns appearing as dark grey rather than black.
+  * Fix stray comment mark: Issue #19
+- altered patches
+  % latex2html-perl-bindir.diff
+  % latex2html-perl526.patch
+
+-------------------------------------------------------------------
+Sun Sep 24 09:32:42 UTC 2017 - coolo@suse.com
+
+- add latex2html-perl526.patch to work with perl 5.26
+
+-------------------------------------------------------------------
+Mon Jul 10 11:27:31 UTC 2017 - jengelh@inai.de
+
+- Fix descriptions.
+
+-------------------------------------------------------------------
+Wed Jul  5 07:14:59 UTC 2017 - tchvatal@suse.com
+
+- Version update to latest release 2017.2:
+  * Various small fixes
+- Sort out with spec-cleaner
+- Remove post/postun phases expecting suseconfig to be around
+
+-------------------------------------------------------------------
+Mon Nov 21 13:58:44 UTC 2016 - pgajdos@suse.com
+
+- updated to 2016:
+  * longtable: fix duplicate caption
+  * pstoimg: fix pstoimg -depth 24 -flip cw
+
+-------------------------------------------------------------------
+Wed Dec 16 15:01:36 UTC 2015 - pgajdos@suse.com
+
+- updated to 2015: apply patches from Debian
+D    latex2html-2012-backref-workaround.diff
+D    latex2html-2012-binmode.diff
+D    latex2html-2012-dest-dir.diff
+D    latex2html-2012-gsout.diff (upstreamed)
+D    latex2html-2012-match-multiline.diff (upstreamed)
+D    latex2html-2012-perl-bindir.diff
+D    latex2html-2012-share-dir.diff
+A    latex2html-backref-workaround.diff
+A    latex2html-binmode.diff
+A    latex2html-dest-dir.diff
+A    latex2html-perl-bindir.diff
+A    latex2html-share-dir.diff
+
+-------------------------------------------------------------------
+Mon Oct  6 15:35:19 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove BuildRequires on xorg-x11-*, noarch package 
+  does not require devel headers/libraries.
+
+-------------------------------------------------------------------
+Mon Mar 31 11:25:21 UTC 2014 - pgajdos@suse.com
+
+- fixed url
+
+-------------------------------------------------------------------
+Mon Nov 25 14:59:53 UTC 2013 - pgajdos@suse.com
+
+- updated to version 2012:
+  * fix warnings in perl 5.14
+  * build fixes
+- latex2html-2008.diff was split to share-dir.patch, local.pm 
+  (source) and latex2html.1 (source)
+- buildroot.diff was renamed to dest-dir.diff and that was extended
+  to install icons properly
+- fix-defined.patch was removed (upstreamed)
+- manual.ps.gz was removed
+
+-------------------------------------------------------------------
+Tue Sep 10 12:08:06 UTC 2013 - werner@suse.de
+
+- Use kpsepath to determine texmf main location
+
+-------------------------------------------------------------------
+Tue Jun 25 16:58:46 CEST 2013 - mls@suse.de
+
+- use \g syntax for \8 and \9 regexp backrefs to work around
+  a bug in perl-5.18
+
+-------------------------------------------------------------------
+Tue Jun 25 09:47:55 UTC 2013 - coolo@suse.com
+
+- add latex2html-fix-defined.patch from debian bug tracker to avoid
+  a warning
+- add apparmor's tex docu for better %check: testfile.tex
+
+-------------------------------------------------------------------
+Thu Apr 11 07:59:19 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Feb  4 14:37:25 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Mar 23 08:52:40 UTC 2011 - vcizek@novell.com
+
+- stopped using deprecated multiline matching (bnc#417982) 
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:24 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Jan 27 13:05:04 CET 2009 - pgajdos@suse.cz
+
+- splitted off doc package
+- fixed /usr/local/bin/perl -> /usr/bin/perl in scripts
+  * perl-bindir.diff
+
+-------------------------------------------------------------------
+Tue Jan 20 11:19:30 CET 2009 - pgajdos@suse.cz
+
+- updated to version 2008
+  * bug fixes
+
+-------------------------------------------------------------------
+Fri Nov 28 12:55:06 CET 2008 - ro@suse.de
+
+- drop some old requires and buildrequires 
+
+-------------------------------------------------------------------
+Tue Mar 18 11:40:48 CET 2008 - pgajdos@suse.cz
+
+- fixed build, *.sty files have moved to /usr/lib
+
+-------------------------------------------------------------------
+Fri Jun 15 10:10:29 CEST 2007 - pgajdos@suse.cz
+
+- removed out-dated url.sty [#283760]
+- using fdupes
+
+-------------------------------------------------------------------
+Fri Apr 20 16:34:31 CEST 2007 - aj@suse.de
+
+- Use texlive.
+
+-------------------------------------------------------------------
+Mon Feb 12 01:21:56 CET 2007 - ro@suse.de
+
+- fix build as non-root 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Feb 19 10:58:40 CET 2005 - ro@suse.de
+
+- fix gs version detection 
+
+-------------------------------------------------------------------
+Tue Jun  8 14:21:05 CEST 2004 - ke@suse.de
+
+- Add README.SuSE and document 'url' package incompatibility [#26127].
+
+-------------------------------------------------------------------
+Thu Mar 04 18:26:39 CET 2004 - tcrhak@suse.cz
+
+- install into /usr/share/latex2html instead of /usr/share/lib/latex2html
+  (bug #33641)
+
+-------------------------------------------------------------------
+Wed Oct 29 18:02:59 CET 2003 - tcrhak@suse.cz
+
+- use latex2html instead of l2h in the man page [bug #32559]
+- updated the man page
+
+-------------------------------------------------------------------
+Thu Aug 14 13:50:32 CEST 2003 - kukuk@suse.de
+
+- Fix filelist for pngicons subpackage
+
+-------------------------------------------------------------------
+Thu Jun 12 10:34:56 CEST 2003 - kukuk@suse.de
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Fri Mar 07 16:15:13 CET 2003 - tcrhak@suse.cz
+
+- open files in raw binmode - needed when in a UTF-8 locale
+  [bug #22982]
+
+-------------------------------------------------------------------
+Wed Jan 15 20:31:50 CET 2003 - tcrhak@suse.cz
+
+- update to version 2002.2.1
+- directory ...latex2html/icons now owned by
+  latex2html-pngicons, not latex2html
+- removed split-alias from latex2html-pngicons,
+  as it is required by latex2html
+
+-------------------------------------------------------------------
+Thu Oct 31 08:38:28 CET 2002 - ro@suse.de
+
+- fixed renaming issues with pngicons subpackage 
+
+-------------------------------------------------------------------
+Wed Oct 30 13:39:02 CET 2002 - mmj@suse.de
+
+- When l2hhtml is merged into here, this one should obsolete it
+
+-------------------------------------------------------------------
+Wed Oct 30 09:31:24 CET 2002 - mmj@suse.de
+
+- Rename to latex2html, and merge the l2hhtml package
+
+-------------------------------------------------------------------
+Thu Sep 12 10:27:47 MEST 2002 - mls@suse.de
+
+- made it understand DeclareRobustCommand
+
+-------------------------------------------------------------------
+Sun Aug 18 02:31:25 CEST 2002 - ro@suse.de
+
+- added ghostscript-x11-packages to neededforbuild (for gs) 
+
+-------------------------------------------------------------------
+Mon Mar 25 11:48:29 CET 2002 - ro@suse.de
+
+- l2h should require it's icons not vice versa 
+
+-------------------------------------------------------------------
+Sat Mar 23 17:19:11 CET 2002 - ro@suse.de
+
+- split off package l2h-pngicons 
+
+-------------------------------------------------------------------
+Mon Feb 18 14:13:01 CET 2002 - tcrhak@suse.cz
+
+- added libgimpprint to neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb  1 01:28:57 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Aug  2 17:23:20 CEST 2001 - utuerk@suse.de
+
+- added glib to Requires and neededforbuild 
+  to configure l2h to use png by default
+
+-------------------------------------------------------------------
+Thu Jul 26 10:11:39 CEST 2001 - kukuk@suse.de
+
+- fix needed for build
+
+-------------------------------------------------------------------
+Wed Jul 18 15:02:01 CEST 2001 - nadvornik@suse.cz
+
+- updated URL and README (bug #9386)
+
+-------------------------------------------------------------------
+Wed Mar  7 13:31:48 CET 2001 - cihlar@suse.cz
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Thu Dec  7 16:04:56 CET 2000 - nadvornik@suse.cz
+
+- added te_latex to Requires
+
+-------------------------------------------------------------------
+Fri Dec  1 11:45:44 CET 2000 - nadvornik@suse.cz
+
+- update to 99.2beta8
+
+-------------------------------------------------------------------
+Wed Aug 30 15:29:07 CEST 2000 - nadvornik@suse.cz
+
+- configured to use png by default
+
+-------------------------------------------------------------------
+Thu Aug  3 10:03:26 CEST 2000 - nadvornik@suse.cz
+
+- added man page
+- spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 20 17:20:35 CEST 1999 - ro@suse.de
+
+- added Requires: ghostscript_any
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug  2 15:44:57 MEST 1999 - ke@suse.de
+
+- update: version 99.1
+- the rc.config variables are gone.
+
+-------------------------------------------------------------------
+Wed Apr  7 11:57:08 MEST 1999 - ro@suse.de
+
+- fixed tex/latex link
+
+-------------------------------------------------------------------
+Thu Jul  2 11:08:20 MEST 1998 - ro@suse.de
+
+- fixed bash2-bug in SuSEconfig.l2h 
+
+-------------------------------------------------------------------
+Wed Mar 18 15:13:12 MET 1998 - ro@suse.de
+
+- added touch var/adm/SuSEconfig/run-texhash to %post
+
+----------------------------------------------------------------------------
+Tue Jun 10 14:49:49 MEST 1997 - maddin@suse.de
+
+- reordered the directory structure
+  - latex2html now sits partly in /var/lib/latex2html (writable part) and
+    /usr/lib/latex2html (read-only part)
+- made absolute links relative ones
+- removed some links
+- restructured /sbin/conf.d/SuSEconfig.l2h
+
+----------------------------------------------------------------------------
+Thu May 22 19:10:48 MEST 1997 - maddin@suse.de
+
+- first S.u.S.E. version 96-1.h
+- placed the package in /usr/lib/latex2html
+- documentation manual to separate package l2hhtml
+- variables in rc.config to configure the package

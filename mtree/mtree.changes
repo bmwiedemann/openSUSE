@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Thu Dec  7 23:03:25 UTC 2017 - archie.cobbs@gmail.com
+
+- Update to 1.0.4
+    + Fix build issue with OpenSSL 1.1.0 (issue #10)
+    + Added `-V' flag (issue #9)
+
+-------------------------------------------------------------------
+Sun Aug  2 16:28:18 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.3
+  * Display symlink, modification time, and file type changes if 
+    requested (contributed by Christophe Beauval)
+- Update project url (now hosted on github)
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb  8 18:39:09 UTC 2014 - archie@dellroad.org
+
+- Update to release 1.0.2 
+  + Fixed bug where `-I' flag was unrecognized (issue #2)
+
+-------------------------------------------------------------------
+Thu May 23 17:12:44 UTC 2013 - archie@dellroad.org
+
+- Update to release 1.0.1 
+  + Fixed potential crash when SHA256 enabled
+  + Added `-I' flag
+  + Portability fixes
+
+-------------------------------------------------------------------
+Tue May 21 15:57:01 UTC 2013 - archie@dellroad.org
+
+- Add patch to fix crash when SHA256 enabled 
+- Minor spec file tweaks
+
+-------------------------------------------------------------------
+Thu Jan 24 12:53:08 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  SPDX format
+
+-------------------------------------------------------------------
+Sat Jan 12 17:05:13 UTC 2013 - archie@dellroad.org
+
+- Fix rpmlint warnings:
+  + Use an approved Group
+  + Don't include INSTALL file
+- Fix man page %files specifications 
+
+-------------------------------------------------------------------
+Thu Nov 29 15:39:16 UTC 2012 - archie@dellroad.org
+
+- Spec file tweaks/cleanups 
+
+-------------------------------------------------------------------
+Fri Nov  5 20:02:04 UTC 2010 - archie@dellroad.org
+
+- Initial release 
+

@@ -1,0 +1,17 @@
+#! /bin/bash
+# Copyright (c) 1995-2002 SuSE Linux AG, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Tomas Crhak <http://www.suse.de/feedback>
+#
+# xlock wrapper, that will restart xlock in case it terminates
+# unexpectedly (some modes can segfault)
+
+trap '' `seq 1 63`
+trap SIGCHLD
+
+/usr/lib/xlock/xlock "$@"
+status=$?
+test $status -gt 128 -a $status -lt 192 \
+ && exec /usr/bin/xlock -mode blank
+exit $status

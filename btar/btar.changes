@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sat Jun 10 22:16:28 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add btar-librsync.patch to fix building with librsync >= 1.0.0
+
+-------------------------------------------------------------------
+Tue Jul 31 08:53:31 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.1.1:
+  * fixing a fd leak to filters: that broke often the parallelism of "-jN"
+
+-------------------------------------------------------------------
+Mon Jul 30 06:29:30 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.1:
+  * adding the -m capability to change the filters of a given btar file
+  * performance improvements (string manipulation)
+  * adding -U, to filter only the index/deleted
+  * fixing -H so, in case of extracting specific paths, it only attmepts to
+    delete files complying the pattern
+
+- changes from 1.0.0:
+  * adding a manual page
+  * store of the files deleted into differential archives
+
+-------------------------------------------------------------------
+Fri Mar 30 19:46:48 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.9.2:
+  * fixing a bug extracting files over 8.5GB
+  * fixing a bug extracting about leaking fds
+
+-------------------------------------------------------------------
+Sun Dec 11 23:00:23 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.9.1:
+  * added headers for it to build in platforms other than Linux
+  * fixing troubles with long file names when 'tar c | btar'
+  * avoid storing directories where no files changed, in differential archives
+
+-------------------------------------------------------------------
+Sat Dec 10 11:19:59 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.9)
+

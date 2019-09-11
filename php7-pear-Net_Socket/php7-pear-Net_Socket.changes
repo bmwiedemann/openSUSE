@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Thu Mar  1 07:00:43 UTC 2018 - ecsos@opensuse.org
+
+- fix rm -rf line in spec to remove .channels etc. in Factory also
+
+-------------------------------------------------------------------
+Mon Sep 11 11:50:25 UTC 2017 - jweberhofer@weberhofer.at
+
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Fri Aug 18 09:11:04 UTC 2017 - ecsos@opensuse.org
+
+- New upstream release 1.2.2
+  * Bug #21178: $php_errormsg is deprecated in PHP 7.2
+- changes from 1.2.1
+  * Fix BSD-2 licensing
+- changes from 1.2.0
+  * Change license to BSD-2 Clause
+  * Request #17526: License change
+- changes from 1.1.0
+  * Set minimum PHP version to 5.4.0
+  * Set minimum PEAR version to 1.10.1
+  * Bug #18262: Incomplete buffer sent with fwrite after bugfix #14619
+  * Bug #20113: package.xml does not validate
+  * Bug #21031: Warning on connection error(stream_socket_client)
+  * PR #7: Fix for "Maximum execution time of 30 seconds exceeded" error
+  * PR #8: Make PHP5 compatible
+
+- renamd package to php7-pear-Net_Socket
+
+-------------------------------------------------------------------
+Fri Nov  8 12:16:02 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 1.0.14
+  * Fix connecting when host is specified with protocol prefix e.g. ssl://
+- Changes between 1.0.10 an 1.0.13:
+  * Fix PHP warning and invalid handling of IPv6 addresses
+  * Fixed regression in handling of default (not set) timeout (Bug PEAR#19949)
+  * IPv6 sockets cannot be used (Bug PEAR#18231)
+  * Socket.php errors when sending large emails through Pear Mail (Bug PEAR#18281)
+  * 2nd argument of setTimeout() could be optional (Bug PEAR#18436)
+  * Setting timeout after connect() doesn't work correctly (Bug PEAR#18437)
+  * Wrong PHP version dependency and socket_* function aliases (Bug PEAR#18438)
+  * Incomplete gets() method description (Bug PEAR#19557)
+
+-------------------------------------------------------------------
+Fri Feb  1 13:22:27 UTC 2013 - aj@ajaissle.de
+
+- improved spec file to serve more build targets
+
+-------------------------------------------------------------------
+Tue Nov 27 18:43:50 UTC 2012 - Ralf Lang <lang@b1-systems.de>
+
+- SLE11 compat
+
+-------------------------------------------------------------------
+Mon Feb 13 10:53:34 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Jan 20 15:24:12 UTC 2011 - chris@computersalat.de
+
+- change to php_pear_gen_filelist macro
+
+-------------------------------------------------------------------
+Wed Jan 19 22:30:09 UTC 2011 - chris@computersalat.de
+
+- pkg rename php5-pear-Net_Socket
+- merge with php-pear-net_socket, php5-pear-net_socket
+- dr for php-pear-net_socket, php5-pear-net_socket
+- added php-macros
+- cleanup spec
+
+-------------------------------------------------------------------
+Sat Oct 16 22:46:50 UTC 2010 - Ralf Lang <lang@b1-systems.de>
+ 
+- updated to upstream version - 1.0.10
+  - Configurable newline sequence (PEAR Bug #14181)
+  - Make $size parameter to gets() optional (PEAR Bug #14433)
+  - Don't overwrite $errstr set by fsockopen (PEAR Bug #14448)
+  - Avoid an infinite loop if fwrite() returns 0 (PEAR Bug #14619)
+  - CS cleanup (PEAR Bug #14803)
+- for more info about changes see ChangeLog
+  http://pear.php.net/package/Net_Socket/download/All
+
+-------------------------------------------------------------------
+Sat May 30 18:13:55 CEST 2009 - chris@computersalat.de
+
+- fixed post script
+
+-------------------------------------------------------------------
+Fri May 22 00:33:58 CEST 2009 - chris@computersalat.de
+
+- beautify spec
+  o new spec header
+  o package rename due to package convention
+  o removed php4 stuff, deps
+  o added Provides and Obsoletes for old package names.
+    This should not break deps
+- added stuff to automatically create correct filelist
+  o tested against Factory (1120)
+  o opensuse >= 1100 complains about
+    "directory not owned by package"
+- some rpmlint fixes
+
+-------------------------------------------------------------------
+Fri Jul 18 00:27:24 UTC 2008 - suse-tux@gmx.de
+
+- updated to 1.0.9
+- major spec changes (registers module in PEARs database etc.)
+
+-------------------------------------------------------------------
+Thu Dec  7 19:29:06 UTC 2006 - suse-tux@gmx.de
+
+- use --packagingroot instead of --installroot
+
+-------------------------------------------------------------------
+Sat Jun 10 21:17:30 UTC 2006 - suse-tux@gmx.de
+
+- make spec file portable for all suse-versions
+- adapt name-tag to suse's php-pear-naming-style
+
+-------------------------------------------------------------------
+Mon Apr 17 03:37:49 UTC 2006 - suse-tux@gmx.de
+
+- rebuild on 10.1
+
+-------------------------------------------------------------------
+Mon Jan 23 03:09:19 UTC 2006 - suse-tux@gmx.de
+
+- initial build
+

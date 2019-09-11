@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Oct  3 03:28:55 UTC 2017 - coolo@suse.com
+
+- patch Makefile.PL to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu May 21 11:09:35 UTC 2015 - coolo@suse.com
+
+- translate previous change into cpanspec.yml
+
+-------------------------------------------------------------------
+Thu May 21 09:40:02 UTC 2015 - mailaender@opensuse.org
+
+- add a Debian compatible symlink with update-alternatives
+
+-------------------------------------------------------------------
+Fri Dec  9 08:41:49 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Nov 20 10:57:12 UTC 2011 - lnussel@suse.de
+
+- remove superfluous build deps. They come in via
+  inc/Module/Install/Metadata.pm but are optional.
+
+-------------------------------------------------------------------
+Thu Sep  1 10:35:54 UTC 2011 - coolo@suse.com
+
+- updated to 1.000031, tons of changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue May  4 12:49:22 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- added Authors
+
+-------------------------------------------------------------------
+Mon May  3 08:15:45 UTC 2010 - lnussel@suse.de
+
+- make noarch
+
+-------------------------------------------------------------------
+Thu Feb  7 15:13:51 CET 2008 - lnussel@suse.de
+
+- initial version 1.0.3
+

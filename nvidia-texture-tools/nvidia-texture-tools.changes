@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sun Jul 10 19:20:02 UTC 2016 - mpluskal@suse.com
+
+- Update project and download url
+- Cleanup spec file with spec-cleaner
+- Drop support for distributions without cmake macros as they are 
+  all out of support now.
+- Correct encoding of license files
+
+-------------------------------------------------------------------
+Sat Jul  2 19:23:58 UTC 2016 - meissner@suse.com
+
+- nvidia-texture-tools-gcc6.patch: replace some "return false;" by
+  "return NULL;" to have a pointer return.
+
+-------------------------------------------------------------------
+Fri Mar  6 17:05:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.8-1
+  * Fix float to fixed image conversion. Fixes issue 121.
+  * ColorBlock::isSingleColor compares only RGB channels. Fixes issue 115.
+  * Fix cmake build in msvc. Fixes issue 111.
+  * Better estimate principal component. Fixes issue 120.
+- Use %cmake macro for openSUSE > 12.3
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Thu Aug 30 09:29:11 UTC 2012 - pgajdos@suse.com
+
+- package builds also with libpng15
+
+-------------------------------------------------------------------
+Mon Jun 18 10:02:35 UTC 2012 - coolo@suse.com
+
+- use standard linux types instead of relying on own copies
+
+-------------------------------------------------------------------
+Wed Mar 21 23:15:59 UTC 2012 - dimstar@opensuse.org
+
+- Add nvidia-texture-tools-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Thu Feb 11 19:54:48 UTC 2010 - jengelh@medozas.de
+
+- add ExclusiveArch tag in specfile
+
+-------------------------------------------------------------------
+Wed Jul 15 11:51:22 CEST 2009 - meissner@suse.de
+
+- remove windows binaries from tarball bnc#522208
+
+-------------------------------------------------------------------
+Wed Jun 24 11:35:34 CEST 2009 - meissner@suse.de
+
+- initial import of version 2.0.6
+	- nvidia helper libraries for various texture operations

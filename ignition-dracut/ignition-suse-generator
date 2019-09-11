@@ -1,0 +1,17 @@
+#!/bin/bash
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+set -e
+
+UNIT_DIR="${1:-/tmp}"
+
+add_requires() {
+    local name="$1"; shift
+    local requires_dir="${UNIT_DIR}/ignition-files.service.requires"
+    mkdir -p "${requires_dir}"
+    ln -sf "../${name}" "${requires_dir}/${name}"
+}
+
+add_requires ignition-mount-initrd-fstab.service
+add_requires ignition-umount-initrd-fstab.service

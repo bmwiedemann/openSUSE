@@ -1,0 +1,281 @@
+#  -*- Mode: makefile; indent-tabs-mode: t -*- */
+# RPM macros for packages installing systemd unit files
+#
+###
+#
+# When a package install systemd unit files, it should use the following macros:
+#
+# add %systemd_requires in the specfile
+#
+# %pre
+# %service_add_pre demo.service demo1.service
+#
+# %post
+# %service_add_post demo.service demo1.service
+#
+# %preun
+# %service_del_preun demo.service
+#
+# %postun
+# %service_del_postun demo.service
+# %service_del_postun_without_restart demo.service
+#
+
+%_unitdir /usr/lib/systemd/system
+%_userunitdir /usr/lib/systemd/user
+%_presetdir /usr/lib/systemd/system-preset
+%_userpresetdir /usr/lib/systemd/user-preset
+%_udevhwdbdir /usr/lib/udev/hwdb.d
+%_udevrulesdir /usr/lib/udev/rules.d
+%_journalcatalogdir /usr/lib/systemd/catalog
+%_tmpfilesdir /usr/lib/tmpfiles.d
+%_sysusersdir /usr/lib/sysusers.d
+%_sysctldir /usr/lib/sysctl.d
+%_ntpunitsdir /usr/lib/systemd/ntp-units.d
+%_binfmtdir /usr/lib/binfmt.d
+%_systemdgeneratordir /usr/lib/systemd/system-generators
+%_systemdusergeneratordir /usr/lib/systemd/user-generators
+%_systemd_system_env_generator_dir /usr/lib/systemd/system-environment-generators
+%_systemd_user_env_generator_dir /usr/lib/systemd/user-environment-generators
+
+%systemd_requires \
+Requires(pre): systemd \
+Requires(post): systemd \
+Requires(preun): systemd \
+Requires(postun): systemd \
+%{nil}
+
+%systemd_ordering \
+OrderWithRequires(post): systemd \
+OrderWithRequires(preun): systemd \
+OrderWithRequires(postun): systemd \
+%{nil}
+
+%_restart_on_update_force() /usr/bin/systemctl try-restart %{*} || : %{nil}
+%_restart_on_update_never() : # Restart of %{*} skipped %{nil}
+
+%_restart_on_update() 									\
+	test -z "$DISABLE_RESTART_ON_UPDATE" -a -f /etc/sysconfig/services &&\\\
+		. /etc/sysconfig/services						\
+	test "$DISABLE_RESTART_ON_UPDATE" != yes -a "$DISABLE_RESTART_ON_UPDATE" != 1 &&\\\
+		/usr/bin/systemctl try-restart %{*} || :				\
+%{nil}
+
+%_stop_on_removal_force() /usr/bin/systemctl stop %{*} || : %{nil}
+%_stop_on_removal_never() : # Stop of %{*} skipped} %{nil}
+
+%_stop_on_removal()									\
+	test -z "$DISABLE_STOP_ON_REMOVAL" -a -f /etc/sysconfig/services &&\\\
+		. /etc/sysconfig/services						\
+	test "$DISABLE_STOP_ON_REMOVAL" != yes -a "$DISABLE_STOP_ON_REMOVAL" != 1 &&\\\
+		/usr/bin/systemctl stop %{*} || :					\
+%{nil}
+
+%service_add_pre()									\
+# disable migration if initial install under systemd					\
+[ -d /var/lib/systemd/migrated ] || mkdir -p /var/lib/systemd/migrated || :		\
+if [ $1 -eq 1 ]; then 							\
+	for service in %{?*} ; do							\
+		sysv_service="${service%%.*}"						\
+		touch "/var/lib/systemd/migrated/$sysv_service" || :			\
+	done										\
+else											\
+	for service in %{?*} ; do							\
+		# The tag file might have been left by a preceding			\
+		# update (see 1059627)							\
+		rm -f "/run/rpm-%{name}-update-$service-new-in-upgrade"			\
+											\
+		if [ ! -e "/usr/lib/systemd/system/$service" ]; then			\
+			touch "/run/rpm-%{name}-update-$service-new-in-upgrade"		\
+		fi									\
+	done										\
+	for service in %{?*} ; do							\
+		sysv_service="${service%%.*}"						\
+		if [ -e /var/lib/systemd/migrated/$sysv_service ]; then			\
+			continue							\
+		fi									\
+		if [ ! -x /usr/lib/systemd/systemd-sysv-convert ]; then			\
+			continue							\
+		fi									\
+		/usr/lib/systemd/systemd-sysv-convert --save $sysv_service || :		\
+	done										\
+fi											\
+%{nil}
+
+# On install, tell systemd to reload its unit files
+%service_add_post()									\
+[ -d /var/lib/systemd/migrated ] || mkdir -p /var/lib/systemd/migrated || :		\
+											\
+if [ -x /usr/bin/systemctl ]; then							\
+        /usr/bin/systemctl daemon-reload || :						\
+fi											\
+											\
+if [ $1 -eq 1 ]; then								\
+	if [ -x /usr/bin/systemctl ]; then						\
+		/usr/bin/systemctl preset %{?*} || :					\
+	fi										\
+elif [ $1 -gt 1 ]; then							\
+	for service in %{?*} ; do							\
+		if [ ! -e "/run/rpm-%{name}-update-$service-new-in-upgrade" ]; then	\
+			continue							\
+		fi									\
+		rm -f "/run/rpm-%{name}-update-$service-new-in-upgrade"			\
+		if [ ! -x /usr/bin/systemctl ]; then					\
+			continue							\
+		fi									\
+		/usr/bin/systemctl preset "$service" || :				\
+	done										\
+	for service in %{?*} ; do							\
+		sysv_service=${service%%.*}						\
+		if [ -e /var/lib/systemd/migrated/$sysv_service ]; then			\
+			continue							\
+		fi									\
+		if [ ! -x /usr/lib/systemd/systemd-sysv-convert ]; then			\
+			continue							\
+		fi									\
+		/usr/lib/systemd/systemd-sysv-convert --apply $sysv_service || :	\
+		touch /var/lib/systemd/migrated/$sysv_service || :			\
+	done										\
+fi											\
+%{nil}
+
+# On uninstall, disable and stop services
+#
+# Options used if not in an installation systems
+#  -f that is fore service stop in removal
+#  -n that do not touch active service
+# the default is to check for DISABLE_STOP_ON_REMOVAL environment
+# variable if not found use the value read from /etc/sysconfig/services
+#
+%service_del_preun(fn)									\
+if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
+	# Package removal, not upgrade							\
+	/usr/bin/systemctl --no-reload disable %{?*} || :				\
+	%{expand:%%_stop_on_removal%{-f:_force}%{!-f:%{-n:_never}} %{?*}}		\
+fi											\
+%{nil}
+
+# On uninstall, tell systemd to reload its unit files.
+# On update, tell systemd to reload its unit files but don't restart service.
+#
+%service_del_postun_without_restart()							\
+if [ $1 -eq 0 ]; then									\
+	# Package removal								\
+	for service in %{?*} ; do							\
+		sysv_service="${service%.*}"						\
+		rm -f "/var/lib/systemd/migrated/$sysv_service" || :			\
+	done										\
+fi											\
+if [ -x /usr/bin/systemctl ]; then							\
+	/usr/bin/systemctl daemon-reload || :						\
+fi											\
+%{nil}
+
+# On uninstall, tell systemd to reload its unit files
+#
+# Options used if not in an installation systems
+#  -f that is force service restart in removal (deprecated)
+#  -n that do not touch active service (depredacted)
+# the default is to check for DISABLE_RESTART_ON_UPDATE environment
+# variable if not found use the value read from /etc/sysconfig/services
+#
+%service_del_postun(fn)									\
+%service_del_postun_without_restart %{?*}						\
+if [ $1 -ge 1 ]; then									\
+	# Package upgrade, not uninstall						\
+	if [ -x /usr/bin/systemctl ]; then						\
+		%{expand:%%_restart_on_update%{-f:_force}%{!-f:%{-n:_never}} %{?*}}	\
+	fi										\
+fi											\
+%{nil}
+
+#
+# Upstream variants
+#
+
+%systemd_post()										\
+if [ $1 -eq 1 -a -x /usr/bin/systemctl ] ; then						\
+        # Initial installation								\
+        /usr/bin/systemctl --no-reload preset %{?*} || :				\
+fi											\
+%{nil}
+
+%systemd_user_post() %{expand:%systemd_post \\--global %%{?*}} 
+
+#
+# Options used if not in an installation systems
+#  -f that is fore service stop in removal
+#  -n that do not touch active service
+# the default is to check for DISABLE_STOP_ON_REMOVAL environment
+# variable if not found use the value read from /etc/sysconfig/services
+#
+%systemd_preun(fn)									\
+if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
+	# Package removal, not upgrade							\
+	/usr/bin/systemctl --no-reload disable %{?*} || :				\
+	%{expand:%%_stop_on_removal%{-f:_force}%{!-f:%{-n:_never}} %{?*}}		\
+fi											\
+%{nil}
+
+%systemd_user_preun()									\
+if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
+        # Package removal, not upgrade							\
+        /usr/bin/systemctl --global disable %{?*} || :		\
+fi											\
+%{nil}
+
+%systemd_postun()									\
+if [ -x /usr/bin/systemctl ]; then							\
+	/usr/bin/systemctl daemon-reload || :						\
+fi											\
+%{nil}
+
+%systemd_user_postun() %{nil}
+%systemd_user_postun_with_restart() %{nil}
+
+%systemd_postun_with_restart()								\
+if [ -x /usr/bin/systemctl ]; then							\
+	/usr/bin/systemctl daemon-reload || :						\
+fi											\
+if [ $1 -ge 1 -a -x /usr/bin/systemctl ]; then						\
+	# Package upgrade, not uninstall						\
+	/usr/bin/systemctl try-restart %{?*} || :					\
+fi											\
+%{nil}
+
+%udev_hwdb_update() \
+[ -x /usr/bin/udevadm ] && /usr/bin/udevadm hwdb --update || : \
+%{nil}
+
+%udev_rules_update() \
+[ -x /usr/bin/udevadm ] && /usr/bin/udevadm control --reload || : \
+%{nil}
+
+%journal_catalog_update() \
+[ -x /usr/bin/journalctl ] && /usr/bin/journalctl --update-catalog || : \
+%{nil}
+
+%tmpfiles_create() \
+[ -z "${TRANSACTIONAL_UPDATE}" -a -x /usr/bin/systemd-tmpfiles ] && \
+	/usr/bin/systemd-tmpfiles --create %{?*} || : \
+%{nil}
+
+%sysusers_create() \
+[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || : \
+%{nil}
+
+%sysusers_create_inline() \
+if [ -x /usr/bin/systemd-sysusers ]; then \
+	echo %{?*} | systemd-sysusers - || : \
+fi \
+%{nil}
+
+%sysctl_apply() \
+[ -x /usr/lib/systemd/systemd-sysctl ] && \
+	/usr/lib/systemd/systemd-sysctl %{?*} || : \
+%{nil}
+
+%binfmt_apply() \
+[ -x /usr/lib/systemd/systemd-binfmt ] && \
+	/usr/lib/systemd/systemd-binfmt %{?*} || : \
+%{nil}

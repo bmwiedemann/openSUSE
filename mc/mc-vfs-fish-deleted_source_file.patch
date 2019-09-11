@@ -1,0 +1,124 @@
+Index: mc-4.8.22/src/filemanager/file.c
+===================================================================
+--- mc-4.8.22.orig/src/filemanager/file.c
++++ mc-4.8.22/src/filemanager/file.c
+@@ -2662,6 +2662,8 @@ copy_file_file (file_op_total_context_t
+             continue;
+         if (temp_status == FILE_ABORT)
+             return_status = temp_status;
++        if (temp_status == FILE_SKIP)
++            return_status = temp_status;
+         if (temp_status == FILE_SKIPALL)
+             ctx->skip_all = TRUE;
+         break;
+@@ -2672,6 +2674,8 @@ copy_file_file (file_op_total_context_t
+         temp_status = file_error (TRUE, _("Cannot close target file \"%s\"\n%s"), dst_path);
+         if (temp_status == FILE_RETRY)
+             continue;
++        if (temp_status == FILE_SKIP)
++            return_status = temp_status;
+         if (temp_status == FILE_SKIPALL)
+             ctx->skip_all = TRUE;
+         return_status = temp_status;
+@@ -2698,10 +2702,10 @@ copy_file_file (file_op_total_context_t
+                 if (temp_status == FILE_SKIPALL)
+                 {
+                     ctx->skip_all = TRUE;
+-                    return_status = FILE_CONT;
++                    return_status = FILE_SKIPALL;
+                 }
+                 if (temp_status == FILE_SKIP)
+-                    return_status = FILE_CONT;
++                    return_status = FILE_SKIP;
+                 break;
+             }
+         }
+@@ -2719,10 +2723,10 @@ copy_file_file (file_op_total_context_t
+                     if (temp_status == FILE_SKIPALL)
+                     {
+                         ctx->skip_all = TRUE;
+-                        return_status = FILE_CONT;
++                        return_status = FILE_SKIPALL;
+                     }
+                     if (temp_status == FILE_SKIP)
+-                        return_status = FILE_CONT;
++                        return_status = FILE_SKIP;
+                     break;
+                 }
+             }
+Index: mc-4.8.22/src/vfs/fish/fishdef.h
+===================================================================
+--- mc-4.8.22.orig/src/vfs/fish/fishdef.h
++++ mc-4.8.22/src/vfs/fish/fishdef.h
+@@ -149,13 +149,19 @@
+ "FILESIZE=${FISH_FILESIZE}\n"                                             \
+ "#STOR $FILESIZE $FILENAME\n"                                             \
+ "echo \"### 001\"\n"                                                      \
++"touch $FILENAME 2>/dev/null\n"                                           \
++"if [ -f $FILENAME ]; then\n"                                             \
++"rm $FILENAME\n"                                                          \
+ "{\n"                                                                     \
+ "    while [ $FILESIZE -gt 0 ]; do\n"                                     \
+ "        cnt=`expr \\( $FILESIZE + 255 \\) / 256`\n"                      \
+ "        n=`dd bs=256 count=$cnt | tee -a \"${FILENAME}\" | wc -c`\n"     \
+ "        FILESIZE=`expr $FILESIZE - $n`\n"                                \
+ "    done\n"                                                              \
+-"}; echo \"### 200\"\n"
++"}; echo \"### 200\"\n"                                                   \
++"else\n"                                                                  \
++"    echo \"### 500\"\n"                                                  \
++"fi\n"
+ 
+ /* default 'appe'  script */
+ #define FISH_APPEND_DEF_CONTENT ""                                        \
+Index: mc-4.8.22/src/vfs/fish/helpers/chmod
+===================================================================
+--- mc-4.8.22.orig/src/vfs/fish/helpers/chmod
++++ mc-4.8.22/src/vfs/fish/helpers/chmod
+@@ -1,6 +1,7 @@
+ #CHMOD $FISH_FILEMODE $FISH_FILENAME
+-if chmod ${FISH_FILEMODE} "/${FISH_FILENAME}" 2>/dev/null; then
+-    echo "### 000"
+-else
++chmod ${FISH_FILEMODE} "/${FISH_FILENAME}" 2>/dev/null
++if [ $? -ne 0 ]; then
+     echo "### 500"
++else
++    echo "### 000"
+ fi
+Index: mc-4.8.22/src/vfs/fish/helpers/chown
+===================================================================
+--- mc-4.8.22.orig/src/vfs/fish/helpers/chown
++++ mc-4.8.22/src/vfs/fish/helpers/chown
+@@ -1,6 +1,7 @@
+ #CHOWN $FISH_FILEOWNER:$FISH_FILEGROUP $FISH_FILENAME
+-if chown ${FISH_FILEOWNER}:${FISH_FILEGROUP} "/${FISH_FILENAME}" ; then
+-    echo "### 000"
+-else
++chown ${FISH_FILEOWNER}:${FISH_FILEGROUP} "/${FISH_FILENAME}"
++if [ $? -ne 0 ]; then
+     echo "### 500"
++else
++    echo "### 000"
+ fi
+Index: mc-4.8.22/src/vfs/fish/helpers/send
+===================================================================
+--- mc-4.8.22.orig/src/vfs/fish/helpers/send
++++ mc-4.8.22/src/vfs/fish/helpers/send
+@@ -1,6 +1,9 @@
+ #STOR $FISH_FILESIZE $FISH_FILENAME
+ FILENAME="/${FISH_FILENAME}"
+ echo "### 001"
++touch $FILENAME 2>/dev/null
++if [ -f $FILENAME ]; then
++rm $FILENAME 2>/dev/null
+ {
+     > "${FILENAME}"
+     bss=4096
+@@ -15,3 +18,6 @@ echo "### 001"
+         FISH_FILESIZE=`expr $FISH_FILESIZE - $n`
+     done
+ }; echo "### 200"
++else
++    echo "### 500"
++fi

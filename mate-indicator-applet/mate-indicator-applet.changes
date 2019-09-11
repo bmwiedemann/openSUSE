@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * tomboykeybinder: Avoid gdk_error_trap_push/pop and gdk_flush.
+  * Migrate the language list to po/LINGUAS file
+  * Disable deprecation warnings for distcheck.
+  * tomboykeybinder: Avoid deprecated gdk_keymap_get_default.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Jun 18 21:00:15 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:20:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Switch to using Ayatana Indicators.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22.
+  * Support building against Ayatana Indicators.
+- Add mate-indicator-applet-gtk-3.20.patch: Restore GTK+ 3.20
+  support.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:20:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Add our copyright to the about dialogue.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Show new style indicator support status in summary.
+  * Build: Require mate-panel >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Build: Fix checking for the new style indicators support.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Jun 20 15:30:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * GTK+3: Add support for new style indicators (that load from
+    directory /usr/share/unity/indicators/.
+    It requires libindicator >= 12.10 and libido >= 13.10. Support
+    for older versions of libindicator is left intact.
+  * GTK+3: Allow indicators to receive mouse scroll event.
+- Rename package to mate-applet-indicator.
+- Provide indicator-renderer-gtk2.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * GTK+3: Fix several deprecations.
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Allow volume change with mouse scroll over sound indicator's
+    icon.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:45:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed May  6 07:37:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.0):
+  * Drop indicator-0.3 support.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Nov 23 16:50:11 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Add GTK3 support
+  + Fixed conflicts with GNOME's indicator-applet
+- Fix version requirements
+
+-------------------------------------------------------------------
+Wed Mar  5 12:52:36 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 21:38:38 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + Bugs fix release
+
+-------------------------------------------------------------------
+Thu Apr  4 11:11:37 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + no changes since 1.5.1
+
+-------------------------------------------------------------------
+Mon Mar 25 15:25:40 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.1
+  * include directly directly glib.h
+- Remove only-include-glib.h.patch; merged on upstream release
+
+-------------------------------------------------------------------
+Wed Feb 27 15:00:37 UTC 2013 - p.drouand@gmail.com
+
+- Initial release
+

@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Thu May  2 09:56:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix displaying proper logical name of network device bsc#1133923
+  * lswh-logical-name-iface.patch
+- Fix displaying correct version bsc##1130818
+  * lshw-display-latest-version.patch
+  * lshw-help-man.patch
+  * lshw-modified-time.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 09:34:43 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.18+git.20190324:
+  * merge Github PR44
+- Set correct version (bsc#1130818)
+
+-------------------------------------------------------------------
+Mon Jan  7 12:36:40 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.18+git.20190104:
+  * Resolves bsc#1120819 bsc#1093650 fate#326432
+  * various new HW enablement, including:
+    + improved support for latest PPC64LE
+    + DDR4
+- Drop no longer needed patches:
+  * lshw-cpuinfo.patch
+  * lshw-devtree_cpunodes.patch 
+  * lshw-devtree_machine_describtion.patch
+  * lshw-dimminfo.patch
+
+-------------------------------------------------------------------
+Wed Feb  7 15:58:41 UTC 2018 - mpluskal@suse.com
+
+- Drop not needed post macros
+- Add ppc enablement patches (bsc#1079846):
+  * lshw-cpuinfo.patch
+  * lshw-devtree_cpunodes.patch 
+  * lshw-devtree_machine_describtion.patch
+  * lshw-dimminfo.patch
+
+-------------------------------------------------------------------
+Tue May 30 14:34:04 UTC 2017 - mpluskal@suse.com
+
+- Recommend hwdata 
+
+-------------------------------------------------------------------
+Tue May  2 17:10:11 UTC 2017 - mpluskal@suse.com
+
+- Simplify dependencies and build
+- Split lang subpackage
+- Prepare for SLE submission (fate#322439)
+
+-------------------------------------------------------------------
+Mon Jun 20 11:25:53 UTC 2016 - mpluskal@suse.com
+
+- Small spec file cleanup
+- Do not ship pci/usb/oter id's as they are provided by other
+  packages as well
+- Disable parallel building as it seems to cause random linking
+  failures (boo#985111)
+
+-------------------------------------------------------------------
+Tue Apr 26 19:39:38 UTC 2016 - mpluskal@suse.com
+
+- Update to B.02.18
+  * no changelog available
+- Use pkgconfig style dependencies
+- Update dependencies
+- Build gui and cli at same time
+- Drop no longer needed patches
+  * lshw-gcc43.patch
+  * lshw-stack-corruption.patch
+
+-------------------------------------------------------------------
+Fri Jul 24 10:48:58 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Unconditionally build gui
+- Use proper scriplets for desktop files/icons
+- Update license information
+
+-------------------------------------------------------------------
+Wed Oct 16 20:13:46 UTC 2013 - xrigou@otenet.gr
+
+- Add a patch for a stack curruption introduced in B.02.17 and fixed
+  upstream (ticket #632)
+
+-------------------------------------------------------------------
+Tue Aug  6 19:05:34 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to B.02.17 (no detailed changelog available, minor bug fixes)
+
+-------------------------------------------------------------------
+Wed Jan 11 00:02:17 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to B.02.16:
+  * bug fixes
+  * code cleanup
+  * improved support for GPT-partitioned disks
+  * report physical sector size of hard disks
+  * rewrote GTK2 GUI for increased flexibility (use external UI file)
+  * updated data files
+
+-------------------------------------------------------------------
+Wed Oct  6 08:08:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to B.02.15:
+  * adds experimental support for dumping information into an SQLite database
+  * a French localization was added
+  * a number of bugs were fixed
+
+-------------------------------------------------------------------
+Wed Jun 16 13:44:55 UTC 2010 - pascal.bleser@opensuse.org
+
+- rework patch for Factory (with 0 fuzz)
+
+- repackage upstream tarball as .tar.bz2
+
+-------------------------------------------------------------------
+Sat Feb 14 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to B.02.14:
+  * fixes several bugs that caused lshw to hang while scanning the system
+  * improves portability
+  * adds support for detection of EXT4 volumes
+
+
+-------------------------------------------------------------------
+Sun May 11 00:00:00 UTC 2008 - guru@unixtech.be
+
+- moved to openSUSE Build Service
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sun Oct 14 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Oct 10 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to Packman
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Nov  8 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed May 10 00:00:00 UTC 2006 - guru@unixtech.be
+
+- added binary stripping on SUSE < 9.3
+- replaced /usr/share with _datadir
+- removed Packager and Distribution, injected by rpmmacros
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sun Mar  5 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new package
+
+

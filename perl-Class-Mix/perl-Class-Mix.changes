@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jul 31 05:13:05 UTC 2017 - coolo@suse.com
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-Class-Mix/Changes
+
+  version 0.006; 2017-07-30
+  
+    * no longer include a Makefile.PL in the distribution
+  
+    * in documentation, use four-column indentation for all verbatim
+      material
+  
+    * in META.{yml,json}, point to public bug tracker
+
+-------------------------------------------------------------------
+Fri Jan 22 12:58:38 UTC 2016 - ncutler@suse.com
+
+- initial package 0.005 was missing changes file
+- regenerated spec file using cpanspec 1.78.08
+

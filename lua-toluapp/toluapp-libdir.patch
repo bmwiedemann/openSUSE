@@ -1,0 +1,25 @@
+Index: tolua++-1.0.93/SConstruct
+===================================================================
+--- tolua++-1.0.93.orig/SConstruct
++++ tolua++-1.0.93/SConstruct
+@@ -31,6 +31,7 @@ opts.Add('tolua_lib', 'the resulting lib
+ opts.Add('TOLUAPP', 'the name of the tolua++ binary (to use with built_dev=1)', 'tolua++')
+ 
+ opts.Add('prefix', 'The installation prefix')
++opts.Add('libdir', 'The installation prefix for shlibs')
+ opts.Add('build_dev', 'Build for development (uses tolua to rebuild toluabind.c with the embeded scripts', 0)
+ opts.Add('build_failsafe', "Build using 'factory default' toluabind file (in case build_dev fails)", 0)
+ opts.Add('ENV', 'The environment variables')
+@@ -168,10 +169,10 @@ Default('all')
+ 
+ if env['prefix']:
+ 	env.Install(env['prefix']+'/bin', env.bin_target)
+-	env.Install(env['prefix']+'/lib', env.lib_target)
++	env.Install(env['libdir'], env.lib_target)
+ 	env.Install(env['prefix']+'/include', '#include/tolua++.h')
+ 
+-	env.Alias('install', [env['prefix']+'/bin', env['prefix']+'/include', env['prefix']+'/lib'])
++	env.Alias('install', [env['prefix']+'/bin', env['prefix']+'/include', env['libdir']])
+ else:
+ 	env.Command('install', [], print_install_error)
+ 	env.Depends('install', 'all')

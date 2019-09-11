@@ -1,0 +1,17 @@
+--- tls.c.orig
++++ tls.c
+@@ -880,14 +880,6 @@ ImportObjCmd(clientData, interp, objc, o
+ 
+     statePtr->ctx = ctx;
+ 
+-    /*
+-     * We need to make sure that the channel works in binary (for the
+-     * encryption not to get goofed up).
+-     * We only want to adjust the buffering in pre-v2 channels, where
+-     * each channel in the stack maintained its own buffers.
+-     */
+-    Tcl_SetChannelOption(interp, chan, "-translation", "binary");
+-    Tcl_SetChannelOption(interp, chan, "-blocking", "true");
+     dprintf("Consuming Tcl channel %s", Tcl_GetChannelName(chan));
+     statePtr->self = Tcl_StackChannel(interp, Tls_ChannelType(), (ClientData) statePtr, (TCL_READABLE | TCL_WRITABLE), chan);
+     dprintf("Created channel named %s", Tcl_GetChannelName(statePtr->self));

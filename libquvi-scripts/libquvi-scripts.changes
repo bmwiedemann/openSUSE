@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu Jul 27 12:54:32 UTC 2017 - dimstar@opensuse.org
+
+- Require the lua53-luasocket depending on suse_version > 1320.
+  Leap 42.3 was the last one to ship 'luasocket', after that, the
+  package was prepared for mutliple lua versions on the system.
+- Do not BuildRequire lua-devel/lua51-devel: libquvi has long been
+  ported to lua52 already. And we don't need the corresponding
+  lua-devel here.
+
+-------------------------------------------------------------------
+Wed Oct 29 12:36:16 UTC 2014 - olaf@aepfle.de
+
+- Package script dir to avoid failure due to empty sub package
+
+-------------------------------------------------------------------
+Mon Feb 10 20:35:30 UTC 2014 - dimstar@opensuse.org
+
+- Add luasocket Requires: Various scripts require lua sockets (like
+  youtube, bnc#863126).
+
+-------------------------------------------------------------------
+Mon Feb 10 19:37:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to 0.9.20131130:
+  + Many bugfixes. Please see NEWS for details.
+
+-------------------------------------------------------------------
+Wed Aug 14 08:04:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.20130805:
+  + Nearly two years of bugfixing and improvements. Please see NEWS
+    file for full details.
+- Drop libquvi-scripts-fix-youtube-lua.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Oct  2 15:37:37 UTC 2012 - malcolmlewis@opensuse.org
+
+- Add libquvi-scripts-fix-youtube-lua.patch: Fix new "signature"
+  parameter added to YouTube playback URLs (bnc#783140). 
+
+-------------------------------------------------------------------
+Mon Jan 23 09:28:47 UTC 2012 - vuntz@opensuse.org
+
+- Revert my previous change: libquvi doesn't work with lua 5.2, see
+  http://sourceforge.net/apps/trac/quvi/ticket/89. And we want to
+  build the scripts with the same version of lua as libquvi.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:34:24 UTC 2012 - vuntz@opensuse.org
+
+- Always build against lua-devel: lua 5.2 on 12.2/Factory doesn't
+  seem to be an issue.
+
+-------------------------------------------------------------------
+Wed Jan 11 10:22:34 UTC 2012 - pascal.bleser@opensuse.org
+
+- fix build on < factory
+- also package nsfw scripts, but into a separate subpackage
+
+-------------------------------------------------------------------
+Tue Jan 10 13:12:07 UTC 2012 - vuntz@opensuse.org
+
+- New package (version 0.4.2).
+- This is based on the quvi 0.2.19 package: quvi got split in three
+  modules upstream for 0.4.x.
+

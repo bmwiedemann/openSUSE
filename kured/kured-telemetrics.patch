@@ -1,0 +1,188 @@
+diff -urN kured-1.2.0.old/cmd/kured/main.go kured-1.2.0/cmd/kured/main.go
+--- kured-1.2.0.old/cmd/kured/main.go	2019-05-16 12:29:26.000000000 +0200
++++ kured-1.2.0/cmd/kured/main.go	2019-05-22 10:58:31.319997131 +0200
+@@ -9,7 +9,7 @@
+ 	"regexp"
+ 	"time"
+ 
+-	log "github.com/sirupsen/logrus"
++	"github.com/sirupsen/logrus"
+ 	"github.com/spf13/cobra"
+ 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+ 	"k8s.io/client-go/kubernetes"
+@@ -21,6 +21,7 @@
+ 	"github.com/weaveworks/kured/pkg/daemonsetlock"
+ 	"github.com/weaveworks/kured/pkg/delaytick"
+ 	"github.com/weaveworks/kured/pkg/notifications/slack"
++	"github.com/weaveworks/kured/pkg/notifications/telemetrics"
+ )
+ 
+ var (
+@@ -37,6 +38,9 @@
+ 	slackHookURL   string
+ 	slackUsername  string
+ 	podSelectors   []string
++        telemetricsEnabled bool
++        telemetricsLevel int
++
+ 
+ 	// Metrics
+ 	rebootRequiredGauge = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+@@ -44,6 +48,8 @@
+ 		Name:      "reboot_required",
+ 		Help:      "OS requires reboot due to software updates.",
+ 	}, []string{"node"})
++
++	log = logrus.New()
+ )
+ 
+ func init() {
+@@ -79,6 +85,11 @@
+ 	rootCmd.PersistentFlags().StringArrayVar(&podSelectors, "blocking-pod-selector", nil,
+ 		"label selector identifying pods whose presence should prevent reboots")
+ 
++	rootCmd.PersistentFlags().BoolVarP(&telemetricsEnabled, "telemetrics", "", false,
++		"Enable telemetrics messages")
++	rootCmd.PersistentFlags().IntVarP(&telemetricsLevel, "telemetrics-level", "", 2,
++		"Only telemetrics messages with this or a higher severity level are submitted")
++
+ 	if err := rootCmd.Execute(); err != nil {
+ 		log.Fatal(err)
+ 	}
+@@ -88,15 +99,15 @@
+ func newCommand(name string, arg ...string) *exec.Cmd {
+ 	cmd := exec.Command(name, arg...)
+ 
+-	cmd.Stdout = log.NewEntry(log.StandardLogger()).
++	cmd.Stdout = logrus.NewEntry(logrus.StandardLogger()).
+ 		WithField("cmd", cmd.Args[0]).
+ 		WithField("std", "out").
+-		WriterLevel(log.InfoLevel)
++		WriterLevel(logrus.InfoLevel)
+ 
+-	cmd.Stderr = log.NewEntry(log.StandardLogger()).
++	cmd.Stderr = logrus.NewEntry(logrus.StandardLogger()).
+ 		WithField("cmd", cmd.Args[0]).
+ 		WithField("std", "err").
+-		WriterLevel(log.WarnLevel)
++		WriterLevel(logrus.WarnLevel)
+ 
+ 	return cmd
+ }
+@@ -216,6 +227,9 @@
+ 			log.Warnf("Error notifying slack: %v", err)
+ 		}
+ 	}
++	if telemetricsEnabled {
++	        telemetrics.NotifyDrain(nodeID)
++	}
+ 
+ 	drainCmd := newCommand("/usr/bin/kubectl", "drain",
+ 		"--ignore-daemonsets", "--delete-local-data", "--force", nodeID)
+@@ -241,6 +255,9 @@
+ 			log.Warnf("Error notifying slack: %v", err)
+ 		}
+ 	}
++	if telemetricsEnabled {
++	        telemetrics.NotifyReboot(nodeID)
++	}
+ 
+ 	// Relies on hostPID:true and privileged:true to enter host mount space
+ 	rebootCmd := newCommand("/usr/bin/nsenter", "-m/proc/1/ns/mnt", "/bin/systemctl", "reboot")
+@@ -323,6 +340,13 @@
+ 	log.Infof("Reboot Sentinel: %s every %v", rebootSentinel, period)
+ 	log.Infof("Blocking Pod Selectors: %v", podSelectors)
+ 
++	if telemetricsEnabled {
++		hook, err := telemetrics.NewTelemetricsHook(telemetricsEnabled, telemetricsLevel)
++		if err == nil {
++			log.Hooks.Add(hook)
++		}
++	}
++
+ 	go rebootAsRequired(nodeID)
+ 	go maintainRebootRequiredMetric(nodeID)
+ 
+diff -urN kured-1.2.0.old/kured-ds.yaml kured-1.2.0/kured-ds.yaml
+--- kured-1.2.0.old/kured-ds.yaml	2019-05-16 12:29:26.000000000 +0200
++++ kured-1.2.0/kured-ds.yaml	2019-05-22 10:57:33.887998806 +0200
+@@ -57,3 +57,5 @@
+ #            - --reboot-sentinel=/var/run/reboot-required
+ #            - --slack-hook-url=https://hooks.slack.com/...
+ #            - --slack-username=prod
++#            - --telemetrics
++#            - --telemetrics-level=2
+diff -urN kured-1.2.0.old/pkg/notifications/telemetrics/telemetrics.go kured-1.2.0/pkg/notifications/telemetrics/telemetrics.go
+--- kured-1.2.0.old/pkg/notifications/telemetrics/telemetrics.go	1970-01-01 01:00:00.000000000 +0100
++++ kured-1.2.0/pkg/notifications/telemetrics/telemetrics.go	2019-05-22 10:57:33.887998806 +0200
+@@ -0,0 +1,70 @@
++package telemetrics
++
++import (
++        "os"
++        "os/exec"
++	"fmt"
++	"github.com/sirupsen/logrus"
++	"strconv"
++)
++
++func notify(severity int, message string) error {
++        // Relies on hostPID:true and privileged:true to enter host mount space
++        telemCmd := exec.Command("/usr/bin/nsenter", "-m/proc/1/ns/mnt",
++        "--", "/usr/bin/telem-record-gen", "-s", strconv.Itoa(severity), "-c",
++        "works.weave/kured/reboot", "--payload", message)
++        if err := telemCmd.Run(); err != nil {
++		fmt.Fprintf(os.Stderr, "Error invoking telm-record-gen command: %v", err)
++		return err
++        }
++	return nil
++}
++
++func NotifyDrain(nodeID string) error {
++	return notify(1, fmt.Sprintf("Draining node %s", nodeID))
++}
++
++func NotifyReboot(nodeID string) error {
++	return notify(1, fmt.Sprintf("Rebooting node %s", nodeID))
++}
++
++type TelemetricsHook struct {
++        enabled bool
++	min_level int
++}
++
++func NewTelemetricsHook(enabled bool, min_level int) (*TelemetricsHook, error) {
++	return &TelemetricsHook{enabled, min_level}, nil
++}
++
++func (hook *TelemetricsHook) Fire(entry *logrus.Entry) error {
++	switch entry.Level {
++	case logrus.PanicLevel, logrus.FatalLevel:
++		if hook.min_level <= 4 {
++			return notify (4, entry.Message)
++		}
++	case logrus.ErrorLevel:
++		if hook.min_level <= 3 {
++			return notify (3, entry.Message)
++		}
++	case logrus.WarnLevel:
++		if hook.min_level <= 2 {
++			return notify (2, entry.Message)
++		}
++	case logrus.InfoLevel:
++		if hook.min_level <= 1 {
++			return notify (1, entry.Message)
++		}
++	case logrus.DebugLevel, logrus.TraceLevel:
++		if hook.min_level == 0 {
++			return notify (1, entry.Message)
++		}
++	default:
++		return nil
++	}
++	return nil
++}
++
++func (hook *TelemetricsHook) Levels() []logrus.Level {
++	return logrus.AllLevels
++}

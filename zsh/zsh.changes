@@ -1,0 +1,1045 @@
+-------------------------------------------------------------------
+Mon Feb  4 13:15:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 5.7.1
+  * This release contains fixes for the two regressions reported
+    with VCS_Info and prompt colour sequences.
+
+-------------------------------------------------------------------
+Fri Jan 25 10:50:59 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 5.7
+  * Support for 24-bit true color terminals has been added.
+    Hex triplets can be used when specifying colours for prompts
+    and line editor highlighting. On 88 and 256 colour terminals,
+    a new zsh/nearcolor module allows colours specified with hex
+    triplets to be matched against the nearest available colour.
+  * The zsh/datetime module's strftime builtin now accepts an
+    argument specifying the nanoseconds time component; both
+    arguments can be omitted to use the current time.
+
+-------------------------------------------------------------------
+Fri Sep 21 09:29:03 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Unbreak Leap 42.3 compilation 
+
+-------------------------------------------------------------------
+Sun Sep 16 20:13:34 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 5.6.2
+  * Fix another SIGTTOU case.
+  * Fix SIGWINCH being ignored when zsh is not in the foreground.
+
+-------------------------------------------------------------------
+Tue Sep 11 06:54:09 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 5.6.1
+  * Fix packaging issue that broke runhelp
+  * Fix a regression with pipelines getting backgrounded and emitting SIGTTOU
+
+-------------------------------------------------------------------
+Tue Sep  4 15:51:31 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 5.6
+  * Fixes CVE-2018-0502 (bsc#1107296) and
+    CVE-2018-13259 (bsc#1107294)
+  * Switch to -fstack-protector-strong
+  * See included NEWS file for complete changes.
+- No longer manually install help files, make install handles it.
+- Workaround a regression upstream with help file generation by
+  removing Doc/help.txt before build.
+
+-------------------------------------------------------------------
+Fri May 11 13:25:20 UTC 2018 - kbabioch@suse.com
+
+- Update to 5.5.1
+  * fix for a configuration problem finding signal names from (some) recent
+    versions of glibc
+  * minor changes
+
+-------------------------------------------------------------------
+Thu Apr 12 11:38:08 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups.
+
+-------------------------------------------------------------------
+Wed Apr 11 07:45:35 UTC 2018 - kbabioch@suse.com
+
+- Update to 5.5
+  * The effect of the NO_INTERACTIVE_COMMENTS option extends into $(...)
+    and `...` command substitutions when used on the command line.
+  * Dropped patches, which are included upstream now:
+    - zsh-CVE-2018-1071.patch
+    - zsh-CVE-2018-1083.patch
+  * Fixes a buffer overflow in utils.c:checkmailpath() that can lead to
+    local arbitrary code execution (CVE-2018-1100 bnc#1089030)
+
+-------------------------------------------------------------------
+Tue Mar 27 09:34:00 UTC 2018 - kbabioch@suse.com
+
+- Added zsh-CVE-2018-1071.patch: Fixed a stack-based buffer overflow
+  in exec.c:hashcmd() (CVE-2018-1071 bnc#1084656)
+- Added zsh-CVE-2018-1083.patch: Fixed a stack-based buffer overflow
+  in gen_matches_files() at compctl.c (CVE-2018-1083 bnc#1087026)
+- Cleaned up spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 27 12:21:43 UTC 2018 - kbabioch@suse.com
+
+- Updated to 5.4.2
+  * The 'exec' and 'command' precommand modifiers, and options to
+    them, are now parsed after parameter expansion.
+  * Functions executed by ZLE widgets no longer have their standard
+    input closed, but redirected from /dev/null instead.
+  * There is an option WARN_NESTED_VAR, a companion to the existing
+    WARN_CREATE_GLOBAL that causes a warning if a function updates a
+    variable from an enclosing scope without using typeset -g.
+  * zmodload now has an option -s to be silent on a failure to find
+    a module but still print other errors.
+- Dropped patch merged upstream:
+  * fix-patchutils-completion.patch
+
+-------------------------------------------------------------------
+Sun Mar  5 14:40:13 UTC 2017 - rpm@fthiessen.de
+
+- Update to 5.3.1
+  * Fix typo in chflags completion
+  * Fixed invalid git commands completion
+  * VCS info system: vcs_info git: Avoid a fork.
+  * Fix handling of "printf -" and "printf --"
+- Removed upstream merged fix-printf.patch
+
+-------------------------------------------------------------------
+Tue Jan 10 16:27:19 UTC 2017 - jmatejek@suse.com
+
+- fix broken completion for filterdiff: fix-patchutils-completion.patch
+  (boo#1019130)
+
+-------------------------------------------------------------------
+Wed Dec 14 09:37:40 UTC 2016 - idonmez@suse.com
+
+- Update to zsh 5.3
+  * Unicode9 support, this needs support from your terminal to
+    work correctly.
+  * The new word modifier ':P' computes the physical path of the
+    argument.
+  * The output of "typeset -p" uses "export" commands or the "-g"
+    option for parameters that are not local to the current scope.
+  * vi-repeat-change can repeat user-defined widgets if the widget
+    calls zle -f vichange.
+  * The parameter $registers now makes the contents of vi register
+    buffers available to user-defined widgets.
+  * New vi-up-case and vi-down-case builtin widgets bound to gU/gu
+    (or U/u in visual mode) for doing case conversion.
+  * A new select-word-match function provides vim-style text objects
+    with configurable word boundaries using the existing
+    match-words-by-style mechanism.
+  * Support for the conditional expression [[ -v var ]] to test if a
+    variable is set for compatibility with other shells.
+  * The print and printf builtins have a new option -v to assign the
+    output to a variable.
+  * New x: syntax in completion match specifications make it possible
+    to disable match specifications hardcoded in completion functions.
+- Re-add custom zshrc and zshenv to unbreak compatibility with old
+  usage (boo#998858).
+- Add fix-printf.patch to fix a regression in printf.
+
+-------------------------------------------------------------------
+Thu Sep  8 13:25:28 UTC 2016 - idonmez@suse.com
+
+- Read /etc/profile as zsh again. 
+
+-------------------------------------------------------------------
+Tue Aug 30 14:13:40 UTC 2016 - mmanno@suse.com
+
+- Remove custom zshrc and zshenv as they might interfere with the users config
+- Remove unused zshprompt.pl
+- Move install outside loop in spec file, was executed too often
+
+-------------------------------------------------------------------
+Wed May 25 12:30:17 UTC 2016 - llua@gmx.com
+
+- Add CentOS [67] support
+
+-------------------------------------------------------------------
+Thu Dec 10 09:55:27 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Thu Dec  3 07:36:33 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.2
+  * The new module zsh/param/private can be loaded to allow the shell
+    to define parameters that are private to a function scope (i.e. are
+    not propagated to nested functions called within this function).
+  * The GLOB_STAR_SHORT option allows the pattern **/* to be shortened to
+    just ** if no / follows. so **.c searches recursively for a file whose
+    name has the suffix ".c".
+  * The effect of the WARN_CREATE_GLOBAL option has been significantly
+    extended, so expect it to cause additional warning messages about
+    parameters created globally within function scope.
+
+-------------------------------------------------------------------
+Thu Nov  5 15:51:37 UTC 2015 - idonmez@suse.com
+
+- Remove -Wl,-z,now it breaks module loading rh#1277996 
+
+-------------------------------------------------------------------
+Sat Sep 12 07:47:27 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.1.1
+  * Bug fixes for regressions in 5.1 release
+- Remove read1char_signals.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep  1 18:57:20 UTC 2015 - idonmez@suse.com
+
+- Add read1char_signals.patch to fix workers/36373 
+
+-------------------------------------------------------------------
+Tue Sep  1 06:36:57 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.1
+  * The print builtin has new options -x and -X to expand tabs.
+  * Several new command completions and numerous updates to others.
+  * Options to "fc" to segregate internal and shared history.
+  * All emulations including "sh" use multibyte by default; several
+    repairs to multibyte handling.
+  * ZLE supports "bracketed paste" mode to avoid interpreting pasted
+    newlines as accept-line.  Pastes can be highlighted for visibility
+    and to make it more obvious whether accept-line has occurred.
+  * Improved (though still not perfect) POSIX compatibility for getopts
+    builtin when POSIX_BUILTINS is set.
+  * New setopt APPEND_CREATE for POSIX-compatible NO_CLOBBER behavior.
+  * Completion of date values now displays in a calendar format when
+    the complist module is available.  Controllable by zstyle.
+  * New parameter UNDO_LIMIT_NO for more control over ZLE undo repeat.
+  * Several repairs/improvements to the contributed narrow-to-region
+    ZLE function.
+  * Many changes to child-process and signal handling to eliminate race
+    conditions and avoid deadlocks on descriptor and memory management.
+  * New builtin sysopen in zsh/system module for detailed control of
+    file descriptor modes. 
+- Remove printf-regress.patch, upstream.
+
+-------------------------------------------------------------------
+Sun Jun 14 12:55:42 UTC 2015 - idonmez@suse.com
+
+- Add printf-regress.patch to fix a printf regression boo#934175 
+
+-------------------------------------------------------------------
+Sun May 31 19:15:36 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.0.8
+  * Global aliases can be created for syntactic tokens such as command
+    separators (";", "&", "|", "&&", "||"), redirection operators, etc.
+  * There have been various further improvements to builtin handling
+    with the POSIX_BUILTINS option (off by default) for compatibility with
+    the POSIX standard.
+  * 'whence -v' is now more informative, and 'whence -S' shows you
+    how a full chain of symbolic links resolves to a command.
+  * The 'p' parameter flag now allows an argument to be specified
+    as a reference to a variable, e.g. ${(ps.$sep.)foo} to split $foo
+    on a string given by $sep.
+  * The option FORCE_FLOAT now forces variables, not just constants,
+    to floating point in arithmetic expressions.
+  * The type of an assignment in arithmetic expressions, e.g. the
+    type seen by the variable res in $(( res = a = b )), is now
+    more logical and C-like.
+  * The default binding of 'u' in vi command mode has changed to undo
+    multiple changes when invoked repeatedly. '^R' is now bound to redo
+    changes. To revert to toggling of the last edit use:
+    bindkey -a u vi-undo-change
+  * Compatibility with Vim has been improved for vi editing mode. Most
+    notably, Vim style text objects are supported and the region can be
+    manipulated with vi commands in the same manner as Vim's visual mode.
+  * Elements of the watch variable may now be patterns.
+  * The logic for retrying history locking has been improved.
+- Remove gcc5-fix.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sun May  3 07:36:02 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix openSUSE versions in osc completion
+  * zsh-osc-completion.patch
+
+-------------------------------------------------------------------
+Wed Apr 29 08:30:49 UTC 2015 - idonmez@suse.com
+
+- Add gcc5-fix.patch to fix signames.c generation with gcc5 
+
+-------------------------------------------------------------------
+Wed Apr 22 12:45:53 UTC 2015 - hvogel@opensuse.org
+
+- Nowadays more and more terminals set $TERM to xterm-256color
+  
+-------------------------------------------------------------------
+Tue Feb 10 08:27:53 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequire texi2html instead of texinfo: the packages have been
+  split completely now.
+
+-------------------------------------------------------------------
+Wed Jan 28 17:53:20 UTC 2015 - idonmez@suse.com
+
+- Add back rpm completion file (bnc#900424) 
+
+-------------------------------------------------------------------
+Wed Jan 14 09:57:47 UTC 2015 - idonmez@suse.com
+
+- Harden CFLAGS/LDFLAGS 
+
+-------------------------------------------------------------------
+Thu Oct  9 08:24:20 UTC 2014 - idonmez@suse.com
+
+- Update to version 5.0.7
+  * Small bugfixes
+  * Includes a security fix to disallow evaluation of the
+    initial values of integer variables imported from the environment
+- Remove zsh-fix-pcre-n.patch, fixed upstream
+
+-------------------------------------------------------------------
+Sun Sep  7 20:05:41 UTC 2014 - idonmez@suse.com
+
+- Add zsh-fix-pcre-n.patch to fix pcre_match() -n option 
+
+-------------------------------------------------------------------
+Thu Aug 28 19:14:23 UTC 2014 - idonmez@suse.com
+
+- Update to version 5.0.6
+  * See included ChangeLog
+- Remove zsh-update-zypper-completion.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed Aug  6 12:45:57 UTC 2014 - idonmez@suse.com
+
+- Rename Completion/openSUSE/Command/_SuSEconfig to _SUSEconfig
+  (bnc#888989 fate#316521)
+
+-------------------------------------------------------------------
+Fri Jan 17 09:42:03 UTC 2014 - idonmez@suse.com
+
+- Update zsh-update-zypper-completion.patch to v0.3
+
+-------------------------------------------------------------------
+Thu Jan 16 09:44:48 UTC 2014 - idonmez@suse.com
+
+- Add zsh-update-zypper-completion.patch to update zypper
+  completions, patch by Holger Macht and Thomas Mitterfellner.
+
+-------------------------------------------------------------------
+Tue Jan  7 08:40:21 UTC 2014 - idonmez@suse.com
+
+- Update to version 5.0.5
+  * Fixes a couple of regression in 5.0.4
+- Remove zsh-pipefix.patch, merged upstream
+
+-------------------------------------------------------------------
+Wed Dec 25 12:25:03 UTC 2013 - idonmez@suse.com
+
+- Update to version 5.0.4
+  * Small bugfix release
+- Add zsh-pipefix.patch to import pipe fixes from zsh.git
+- Remove upstream patches
+  * zsh-osc-suseversion.patch
+  * zsh-zypper-completion.patch
+
+-------------------------------------------------------------------
+Mon Apr 22 09:22:02 UTC 2013 - idonmez@suse.com
+
+- Don't set globdots it might lead to unexpected problems (bnc#815556) 
+
+-------------------------------------------------------------------
+Thu Mar 21 10:17:56 UTC 2013 - idonmez@suse.com
+
+- Fix custom completion support via /etc/zsh_completion.d (bnc#811356)
+- Add trim-unneeded-completions.patch to remove unneeded completions
+  when building for openSUSE
+
+-------------------------------------------------------------------
+Sun Jan 27 20:53:10 UTC 2013 - dmitry_r@opensuse.org
+
+- Fix zypper completion [bnc#752112]
+  * zsh-zypper-completion.patch
+- Fix osc completion (SUSE versions)
+  * zsh-osc-suseversion.patch
+
+-------------------------------------------------------------------
+Mon Dec 24 15:53:42 UTC 2012 - idonmez@suse.com
+
+- Update to version 5.0.2
+  * Numeric constants in mathematical contexts can contain
+    underscores.
+  * functions -T turns on tracing for specific functions.
+- See the included NEWS file for other changes.
+
+-------------------------------------------------------------------
+Fri Nov 16 03:49:21 UTC 2012 - crrodriguez@opensuse.org
+
+- Test suite runs flaky in qemu-arm, disable it for now. 
+
+-------------------------------------------------------------------
+Fri Oct 26 14:58:46 UTC 2012 - coolo@suse.com
+
+- buildrequire groff needed to build helpfiles
+
+-------------------------------------------------------------------
+Thu Aug  9 21:11:47 UTC 2012 - idonmez@suse.com
+
+- Version update to 5.0.0
+  * No real changes since 4.3.17
+
+-------------------------------------------------------------------
+Sun Jul 22 13:20:50 UTC 2012 - coolo@suse.com
+
+- we need tex2html too, which is provided by texinfo
+
+-------------------------------------------------------------------
+Thu Jul 19 07:58:15 UTC 2012 - coolo@suse.com
+
+- buildrequire makeinfo to fix build
+
+-------------------------------------------------------------------
+Mon Feb 27 09:11:27 UTC 2012 - idonmez@suse.com
+
+- Update to version 4.3.17
+  * Contains fixes for possible speed regression introduced 
+    in 4.3.15 (new option HASH_EXECUTABLES_ONLY)
+  * Improvements to (bash) completion and shell emulation mode 
+- Drop all the patches, all upstream
+
+-------------------------------------------------------------------
+Tue Feb  7 14:27:18 CET 2012 - hmacht@suse.de
+
+- add zsh-enable-openSUSE-completion-functions.patch: Enable
+  installation of openSUSE completion functions which are upstream
+
+-------------------------------------------------------------------
+Tue Jan 31 11:08:53 UTC 2012 - idonmez@suse.com
+
+- Update _osc completion 
+
+-------------------------------------------------------------------
+Sat Dec 31 10:44:15 UTC 2011 - idonmez@suse.com
+
+- Instead of disabling c02cond manually, add upstream patch to
+  automatically disable it on noatime mounted systems.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:27:59 UTC 2011 - idonmez@suse.com
+
+- Update to zsh 4.3.15
+  * Fix POSIX compatibility
+
+-------------------------------------------------------------------
+Wed Dec  7 13:28:25 UTC 2011 - idonmez@suse.com
+
+- Update to zsh 4.3.14
+  * Drop 74eed99c312de05e19b54ba6b5d37a0aeb4ba713.patch and
+    724fd07a67f135c74eba57e9f25fd342201ec722.patch, fixed upstream
+  * Fix for nanosecond timestamp support
+
+-------------------------------------------------------------------
+Mon Dec  5 09:40:23 UTC 2011 - idoenmez@suse.de
+
+- Fix license to be MIT, zsh seems to be using the "Modern" variant
+  of the license text.
+- Import git commits 74eed99c312de05e19b54ba6b5d37a0aeb4ba713 and
+  724fd07a67f135c74eba57e9f25fd342201ec722
+
+  * metafy() added null termination even if buffer was not modifiable
+  * Fix uninitialised memory after lexer realloc
+
+-------------------------------------------------------------------
+Wed Nov 30 21:49:26 UTC 2011 - idoenmez@suse.de
+
+- Update to zsh 4.3.13
+  * There are no significant feature changes to the shell itself, 
+    although many bug fixes and improvements to functions.
+  * See included ChangeLog for details
+- Drop zsh-4.3.12-ksh-emulation-syntax-checking.patch, 
+  fixed upstream
+
+-------------------------------------------------------------------
+Tue Nov 29 14:19:04 UTC 2011 - idoenmez@suse.de
+
+- Cleanup spec file
+- Make /bin/zsh a symlink to /usr/bin/zsh
+
+-------------------------------------------------------------------
+Mon Nov 28 08:36:51 UTC 2011 - idoenmez@suse.de
+
+- Update to 4.3.12-test3
+  * See included ChangeLog for details
+- Drop zsh-findproc.patch and zsh-kill-suspended-job.patch, fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Nov 24 09:00:37 UTC 2011 - idoenmez@suse.de
+
+- Add custom completion support via /etc/zsh_completion.d 
+- Fix build with new ncurses library
+
+-------------------------------------------------------------------
+Mon Aug  1 23:17:10 UTC 2011 - crrodriguez@opensuse.org
+
+- Enable pcre module 
+- Build against ncurses6w instead of plain old ncurses5
+
+-------------------------------------------------------------------
+Wed Jun 29 12:35:50 UTC 2011 - chris@computersalat.de
+
+- enable build for RHEL and friends (CentOS, Fedora)
+  o merge with 4.2.6 from RHEL
+  o add/rework RHEL patch (BZ-488943-ksh-emulation-syntax-checking)
+  o add several *.rhs files
+  o disable E01options test
+- add subpkg htmldoc
+- fix deps
+  o fdupes >= suse_version 1110
+
+-------------------------------------------------------------------
+Fri Jun 17 13:35:56 UTC 2011 - idonmez@novell.com
+
+- Add zsh-kill-suspended-job.patch: fix killing suspended jobs 
+- Add zsh-findproc.patch: fix findproc() to find stopped jobs
+
+-------------------------------------------------------------------
+Wed Jun  1 13:17:38 UTC 2011 - idonmez@novell.com
+
+- Update to zsh 4.3.12 
+- Dropped openSUSE specific completions, all are upstreamed now
+
+-------------------------------------------------------------------
+Tue Apr 26 15:43:10 UTC 2011 - idoenmez@novell.com
+
+- Enable make check 
+
+-------------------------------------------------------------------
+Thu Apr 21 09:19:55 UTC 2011 - idoenmez@novell.com
+
+- Disable zsh debug
+- Enable strict aliasing again 
+
+-------------------------------------------------------------------
+Wed Apr 20 12:07:36 UTC 2011 - idoenmez@novell.com
+
+- Update to 4.3.11-dev-2, many crash fixes 
+
+-------------------------------------------------------------------
+Tue Mar 15 13:40:24 UTC 2011 - ismail@namtrac.org
+
+- Fix crash with ${foo:0:} 
+
+-------------------------------------------------------------------
+Wed Dec 29 02:07:58 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to version 4.3.11
+* The completion system now has a style path-completion.
+* new "zsystem" builtin whose subcommands perform system level tasks
+* Added "D" and "Z" flag in parameter expansion
+* Lots of other bugfixes/improvements, see Changelog
+
+-------------------------------------------------------------------
+Tue Mar  9 11:50:17 CET 2010 - hmacht@suse.de
+
+- update completion for _osc:
+  - add new products openSUSE 11.2 and openSUSE 11.3
+  - add possibility to extend the list of projects and build
+    targets with user defined variables
+    $ZSH_OSC_BUILD_TARGETS_EXTRA and $ZSH_OSC_PROJECTS_EXTRA
+
+-------------------------------------------------------------------
+Wed Dec  2 18:14:17 UTC 2009 - coolo@novell.com
+
+- update patch to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Oct  8 16:22:43 UTC 2009 - coolo@novell.com
+
+- disable profiling for now
+
+-------------------------------------------------------------------
+Thu Aug 20 10:51:55 UTC 2009 - hvogel@novell.com
+
+- Fix zshrc. Lost some features by not including bash.bashrc
+
+-------------------------------------------------------------------
+Wed Aug  5 16:58:50 CEST 2009 - hvogel@suse.de
+
+- update to version 4.3.10
+  o The command "emulate <mode> -c ..." evaluates an expression in
+    a given emulation.
+  o The variable CORRECT_IGNORE gives a pattern that can be ignored
+    in spelling correction.
+  o The option POSIX_ALIASES improves compatibility of aliases with
+    other shells.
+  o The option COMBINING_CHARS has been added.  When it is set, the
+    line editor assumes the terminal is capable of displaying
+    zero-width combining characters (typically accents) correctly
+    as modifications to the base character, and will act accordingly.
+  o The option HIST_FCNTL_LOCK has been added to provide locking of
+    history files 
+  o The syntax ~[...] provides a dynamic form of directory naming,
+    supplementing the existing static ~name syntax.
+  o Patterns can now be used in incremental searches with new widgets
+  o Highlighting and colouring of sections of the command line is now
+    supported
+  o Colouring of prompts is now supported within the shell by prompt
+    escapes.
+  o Various changes have been added to make debugging of shell code
+    easier
+  o The "fc" builtin has been enhanced to make non-interactive use
+    possible and output consistent when the history is manipulated
+    with "print -s".
+  o The completion style accept-exact-dirs has been added
+  o cd, chdir, pushd and popd now take a -q option to suppress side effects
+- cleanup patches
+- use fdupes
+- install help files to versioned directory
+
+-------------------------------------------------------------------
+Fri Apr 24 14:15:13 CEST 2009 - hmacht@suse.de
+
+- add completion for osc (_osc)
+- add completion for zypper (_zypper)
+
+-------------------------------------------------------------------
+Thu Oct  2 10:14:01 CEST 2008 - hvogel@suse.de
+
+- globally disabling the test was the plan, not only on some archs
+
+-------------------------------------------------------------------
+Thu Sep 18 14:58:44 CEST 2008 - hvogel@suse.de
+
+- disable another test globally which keeps hanging
+
+-------------------------------------------------------------------
+Tue Jun 17 12:35:04 CEST 2008 - hvogel@suse.de
+
+- disable one test globally
+
+-------------------------------------------------------------------
+Thu Apr  3 15:03:30 CEST 2008 - hvogel@suse.de
+
+- update to 4.3.6
+  * Various bugfixes
+  * various buildfixes
+  * for calendar_show use kdialog rather than xmessage if in KDE
+  * clarify the message printed when compaudit finds problems
+  * improve compsys option handling
+  * add -q option to cd, chdir, pushd, popd
+  * wait shouldn't return immediately on a signal unless it's
+    trapped
+  * fix not enough space for ztrftime string with multibyte
+    characters
+
+-------------------------------------------------------------------
+Tue Mar 25 13:25:53 CET 2008 - hvogel@suse.de
+
+- Disable some tests on  s390, s390x, ppc and ppc64
+
+-------------------------------------------------------------------
+Thu Mar 20 14:46:44 CET 2008 - hvogel@suse.de
+
+- update to 4.3.5
+ * Various bugfixes
+ * stop tindent becoming negative, which causes infinite use of
+   memory; add debug test to see where it would become negative.
+ * make malloc(0) allocate a single byte instead of returning
+   invalid (and unfreeable) memory.
+ * fix race in POSIX signal blocking
+ * various completion fixes/updates, mostly git
+ * tidy up module interface and documentation
+ * more build tests
+ * The new extended globbing flag (#cN,M) behaves similarly to
+   the extended regular expression syntax {N,M}.
+ * The zsh/datetime module has been enhanced and a calendar function
+   system has been added along the lines of (but much enhanced from)
+ * A new module zsh/curses provides a builtin zcurses for access to
+   to the curses screen manipulation package.
+
+-------------------------------------------------------------------
+Mon Dec  3 15:40:31 CET 2007 - hvogel@suse.de
+
+- cleanup initialization files
+  * Dont source profile from zshenv. profile is not for interactive
+    shells [#343621]
+  * Instead source profile from zprofile so we dont loose the features
+    and its easy to get rid of it.
+  * Source bash.bashrc from zshrc to keep the features and make it
+    possible to get rid of it easier. 
+
+-------------------------------------------------------------------
+Wed Jul  4 16:14:30 CEST 2007 - hvogel@suse.de
+
+- update to version 4.3.4
+  * various bugfixes
+  * countless completion fixes
+  * some new completions
+  * various UTF8 fixes
+- remove autoresume option from default config [#287776]
+
+-------------------------------------------------------------------
+Fri Mar 30 12:33:28 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jul 14 14:58:53 CEST 2006 - mskibbe@suse.de
+
+- merged in patches from poeml (mruecker@suse.de)
+- rediffed patches for -p0 (mruecker@suse.de)
+- update to version 4.3.2 which (mruecker@suse.de)
+  o fix two minor build problems
+  o contains initial support for multibyte characters in the shell's line editor
+- only require libcap for build on 10.0 and older (mruecker@suse.de)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 21:04:55 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Dec  5 17:40:53 CET 2005 - hvogel@suse.de
+
+- clean up specfile
+- document profiling builds
+
+-------------------------------------------------------------------
+Mon Dec  5 16:27:20 CET 2005 - mmj@suse.de
+
+- Fix typo
+
+-------------------------------------------------------------------
+Mon Dec  5 14:33:02 CET 2005 - mmj@suse.de
+
+- Update to 4.2.6
+
+-------------------------------------------------------------------
+Wed Apr  6 14:15:06 CEST 2005 - mmj@suse.de
+
+- Update to 4.2.5
+
+-------------------------------------------------------------------
+Tue Mar 15 18:22:19 CET 2005 - mmj@suse.de
+
+- Fix Makefile completion by using the _make from an older zsh
+  version [#72875]
+
+-------------------------------------------------------------------
+Thu Feb 17 19:41:35 CET 2005 - poeml@suse.de
+
+- update yast2 completion to also complete *.ycp files
+
+-------------------------------------------------------------------
+Thu Feb  3 13:28:24 CET 2005 - mmj@suse.de
+
+- Update to 4.2.4
+
+-------------------------------------------------------------------
+Mon Jan 31 15:40:16 CET 2005 - ro@suse.de
+
+- adapt to texi2html changes 
+
+-------------------------------------------------------------------
+Wed Jan 26 13:45:16 CET 2005 - uli@suse.de
+
+- run configure with --with-tcsetpgrp as suggested by the fail log
+  (fixes s390*)
+
+-------------------------------------------------------------------
+Sat Jan 15 10:06:14 CET 2005 - mmj@suse.de
+
+- Update to zsh-4.2.3 which is a bugfix release not really affecting
+  us, but better keep up to date
+
+-------------------------------------------------------------------
+Wed Jan 12 15:57:01 CET 2005 - mmj@suse.de
+
+- Update to zsh-4.2.2
+
+-------------------------------------------------------------------
+Mon Dec 20 13:48:49 CET 2004 - poeml@suse.de
+
+- fix yast2 completion to work without /sbin in PATH [#49374]
+- fix yast2 and SuSEconfig completion to not show files from
+  working directory
+- update hwinfo completion
+
+-------------------------------------------------------------------
+Fri Aug 13 13:53:30 CEST 2004 - mmj@suse.de
+
+- Update to zsh-4.2.1
+
+-------------------------------------------------------------------
+Wed Jul 28 01:40:02 CEST 2004 - ro@suse.de
+
+- fix build of helpfiles after groff update
+
+-------------------------------------------------------------------
+Fri Mar 19 13:22:58 CET 2004 - mmj@suse.de
+
+- Update to zsh-4.2.0 final release
+
+-------------------------------------------------------------------
+Mon Mar  8 12:54:07 CET 2004 - mmj@suse.de
+
+- Update to zsh-4.2.0-pre-3
+
+-------------------------------------------------------------------
+Thu Feb 26 23:29:26 CET 2004 - mmj@suse.de
+
+- Update to zsh-4.2.0-pre-1
+
+-------------------------------------------------------------------
+Fri Jan 16 12:14:53 CET 2004 - mmj@suse.de
+
+- Use -fprofile-arcs when linking and -fno-strict-aliasing for
+  compiling.
+- Fix tail syntax
+
+-------------------------------------------------------------------
+Sat Oct 18 11:06:50 CEST 2003 - mmj@suse.de
+
+- Fix neededforbuild
+
+-------------------------------------------------------------------
+Thu Oct 16 16:57:31 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Tue Oct 14 22:31:53 CEST 2003 - jh@suse.de
+
+- Fix profiling lockup.  (we can not profile dl_closed modules yet)
+
+-------------------------------------------------------------------
+Thu Jun 19 14:40:56 CEST 2003 - mmj@suse.de
+
+- Update to 4.1.1
+- Enable profiling
+
+-------------------------------------------------------------------
+Thu May  8 19:03:39 CEST 2003 - mmj@suse.de
+
+- And do it even better, thanks Andreas Schwab.
+
+-------------------------------------------------------------------
+Thu May  8 16:13:31 CEST 2003 - mmj@suse.de
+
+- Use a better way of unaliasing 'which'. Thanks Ingo Lameter.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 15:44:40 CEST 2003 - mmj@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Fri Feb  7 13:26:51 CET 2003 - mmj@suse.de
+
+- Use %install_info macro
+- Clean up build root
+
+-------------------------------------------------------------------
+Thu Jan  9 12:56:34 CET 2003 - mmj@suse.de
+
+- Set the important option 'nopromptcr' to not screw output.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:06:31 CEST 2002 - mmj@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Fri Aug 16 12:16:52 CEST 2002 - mmj@suse.de
+
+- Move zsh binary to /bin [#17758]
+- Use proper libdir
+
+-------------------------------------------------------------------
+Thu Aug 15 11:30:34 CEST 2002 - poeml@suse.de
+
+- update completion for _yast{,2} and add one for _hwinfo
+
+-------------------------------------------------------------------
+Wed Aug 14 23:34:51 CEST 2002 - mmj@suse.de
+
+- Update to 4.0.6 which was released this fast b/c a termcap /
+  terminfo fix was forgotten together with a fix for _mount.
+
+-------------------------------------------------------------------
+Mon Aug 12 03:01:12 CEST 2002 - mmj@suse.de
+
+- Update to 4.0.5 which includes a lot more completion, modules and
+  bugfixes.
+
+-------------------------------------------------------------------
+Tue Jun  4 09:33:36 CEST 2002 - mmj@suse.de
+
+- Added the html documentation from the ZSH team.
+
+-------------------------------------------------------------------
+Tue Apr 16 12:28:17 CEST 2002 - mmj@suse.de
+
+- Fix to own %{_defaultdocdir}/zsh
+
+-------------------------------------------------------------------
+Mon Mar 11 12:11:31 MET 2002 - mmj@suse.de
+
+- Comment out a completion that a lot of people find broken
+
+-------------------------------------------------------------------
+Fri Feb 22 12:29:08 MET 2002 - mmj@suse.de
+
+- Added yast2 and SuSEconfig completion from poeml@
+
+-------------------------------------------------------------------
+Wed Feb 13 14:16:46 CET 2002 - stepan@suse.de
+
+- remove .orig and .rej files from patch set.
+
+-------------------------------------------------------------------
+Wed Jan 30 16:07:25 CET 2002 - mmj@suse.de
+
+- Moved /etc/zshrc and /etc/zshenv to this package. This is ok b/c
+  it is only specific zsh options.
+
+-------------------------------------------------------------------
+Thu Dec 13 11:34:05 CET 2001 - mmj@suse.de
+
+- Fix broken symlink from help/man1 -> ../Doc
+
+-------------------------------------------------------------------
+Sat Oct 27 16:43:54 CEST 2001 - mmj@suse.de
+
+- Update to 4.0.4
+
+-------------------------------------------------------------------
+Thu Oct 25 13:24:58 CEST 2001 - mmj@suse.de
+
+- Update to 4.0.3
+
+-------------------------------------------------------------------
+Tue Jun 26 19:58:05 CEST 2001 - mmj@suse.de
+
+- Update to the newly released 4.0.2
+
+-------------------------------------------------------------------
+Sat Jun  2 02:30:39 CEST 2001 - mmj@suse.de
+
+- Updated to the new stable release, zsh-4.0.1
+- Fixed build prob on beta-i386 and beta-ia64
+
+-------------------------------------------------------------------
+Tue May  8 19:14:24 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Sun Apr 15 22:02:45 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Fri Apr 13 01:13:46 CEST 2001 - mmj@suse.de
+
+- Updated to 4.0.1-pre-3
+
+-------------------------------------------------------------------
+Wed Mar 14 18:31:11 CET 2001 - mmj@suse.de
+
+- Updated to 4.0.1-pre-2
+
+-------------------------------------------------------------------
+Sun Feb 18 19:46:07 CET 2001 - mmj@suse.de
+
+- Updated to 4.0.1-pre-1
+
+-------------------------------------------------------------------
+Fri Dec 15 13:19:42 CET 2000 - werner@suse.de
+
+- Update to 3.1.9-dev-8
+
+-------------------------------------------------------------------
+Fri Oct  6 18:01:00 CEST 2000 - kukuk@suse.de
+
+- Change group tag
+
+-------------------------------------------------------------------
+Fri May 12 17:40:19 CEST 2000 - schwab@suse.de
+
+- Update config files.
+- Move docs to %{_defaultdocdir}.
+
+-------------------------------------------------------------------
+Thu Jan 27 17:05:36 CET 2000 - werner@suse.de
+
+- New zsh version 3.1.6-dev-16
+- Install html and info documentation
+- Enable run-help help library
+- Fix paths of perl and zsh scripts
+- Enable command line history
+- Enable command line complementation/correction
+
+-------------------------------------------------------------------
+Mon Dec  6 13:06:10 CET 1999 - schwab@suse.de
+
+- Fix errors from makeinfo
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Nov 17 14:22:20 MET 1998 - bs@suse.de
+
+- removed symlink /etc/zshrc -> profile (aaa_base contains a real zshrc now)
+
+----------------------------------------------------------------------------
+Fri Oct 10 15:23:30 MEST 1997 - florian@suse.de
+
+
+- update to version 3.0.5
+
+
+----------------------------------------------------------------------------
+Mon Jun 23 23:04:57 MEST 1997 - florian@suse.de
+
+
+- update to version 3.0.4
+
+
+
+----------------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+
+- update to version 3.0.2
+
+
+----------------------------------------------------------------------------
+Sat Nov  2 17:35:11 CET 1996 - florian@suse.de
+
+
+- update to version 3.0.1
+
+- added more documentation in binary package
+
+----------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
+
+new version 3.0.0

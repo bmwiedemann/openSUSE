@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:33:59 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.29.2
+  - Update hacking version
+  - Update mailinglist from dev to discuss
+  - fix tox python3 overrides
+  - Replace deprecated "auth_uri" by "www_authenticate_uri"
+  - Update unit test to reflect latest oslo.config
+  - Remove the remaining of the removed option
+  - Trivial: Update pypi url to new url
+  - Update reno for stable/rocky
+  - import zuul job settings from project-config
+  - Imported Translations from Zanata
+  - Remove stale pip-missing-reqs and pypy tox tests
+  - Clean up .gitignore references to personal tools
+  - Add release notes link to README
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - Switch to stestr
+- remove 0001-Update-unit-test-to-reflect-latest-oslo.config.patch (merged)
+
+-------------------------------------------------------------------
+Mon Sep  3 09:04:41 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.28.0
+  - set default python to python3
+  - Update reno for stable/queens
+  - Update links in README
+  - fix lower constraints and uncap eventlet
+  - Imported Translations from Zanata
+  - Updated from global requirements
+  - add lower-constraints job
+  - Document workaround for AccessDenied error
+- add 0001-Update-unit-test-to-reflect-latest-oslo.config.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 13:26:39 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 30 15:14:58 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.26.0
+  - Updated from global requirements
+  - Add bandit to pep8 job
+
+-------------------------------------------------------------------
+Mon Jan 15 11:58:51 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.25.0
+  - Remove -U from pip install
+  - Remove SIGUSR1 handler, which was deprecated after Ocata
+  - Update reno for stable/pike
+  - Remove psutil 1.x compat wrapping
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - Update the documentation link
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Aug  7 13:48:36 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.22.0
+  - Remove references to Python 3.4
+  - Remove log translations
+  - rearrange content to fit the new standard layout
+  - Update reno for stable/ocata
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - switch from oslosphinx to openstackdocstheme
+  - update the doc URL according to document migration
+
+-------------------------------------------------------------------
+Mon Feb 13 09:39:48 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.17.0:
+  - Add Constraints support
+  - Fix a typo
+  - Updated from global requirements
+  - Show team and repo badges on README
+  - Bump hacking dep
+  - Changed the home-page link
+  - Add reno for release notes management
+
+-------------------------------------------------------------------
+Fri Oct 14 14:01:48 UTC 2016 - tbechtold@suse.com
+
+- switch to stable/newton tarball in _service
+
+-------------------------------------------------------------------
+Wed Aug 31 13:12:29 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.14.0
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 10 12:26:13 UTC 2016 - tbechtold@suse.com
+
+- update to 1.13.0:
+  * Updated from global requirements
+  * Add Python 3.5 classifier and venv
+  * Use file modification events instead of signal handler
+  * Imported Translations from Zanata
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Remove direct dependency on babel
+- Update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Mon Apr  4 11:45:19 UTC 2016 - tbechtold@suse.com
+
+- update to 1.7.0:
+  * Updated from global requirements
+  * Update .gitreview for stable/mitaka
+
+-------------------------------------------------------------------
+Thu Mar  3 16:21:07 UTC 2016 - tbechtold@suse.com
+
+- update to 1.6.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Update translation setup
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Print the traceback if there was an exception in run(
+  * Rename signal handler argument to 'frame'
+  * Updated from global requirements
+  * Updated from global requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Drop python 2.6 support
+  * Updated from global requirements
+  * Remove Python 2.6 classifier
+  * Updated from global requirements
+  * Remove python 2.6 and cleanup tox.ini
+  * Fix Transition to SIGUSR2 in oslo.reports breaks upgrade
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix a typo in process.py
+  * remove extraneous coverage omit instruction
+- Adjust Requires
+
+-------------------------------------------------------------------
+Wed Oct 21 06:39:12 UTC 2015 - dmueller@suse.com
+
+- update to 0.7.0:
+  * No need for Oslo Incubator Sync
+  * Fix coverage configuration and execution
+  * How to use oslo.reports documentation
+  * add auto-generated api documentation
+  * clean up release notes in toctree
+  * add auto-generated docs for config options
+  * Add shields.io version/downloads links/badges into README.rst
+  * Updated from global requirements
+  * guru_meditation_report: Use SIGUSR2 instead of SIGUSR1
+
+-------------------------------------------------------------------
+Wed Sep  9 07:09:23 UTC 2015 - tbechtold@suse.com
+
+- update to 0.5.0:
+  * Updated from global requirements
+  * Add a configuration for the directory to generate gmr
+  * Fill README from information in the wiki
+  * Setup translations
+- Adjust Requires
+
+-------------------------------------------------------------------
+Mon Aug  3 10:02:51 UTC 2015 - tbechtold@suse.com
+
+- update to 0.3.0:
+  * Updated from global requirements
+  * Fix mock of open(
+  * Fix GMR break with new psutil versions
+  * Add oslo.utils dependency
+  * Add tox target to find missing requirements
+- Adjust Requires
+
+-------------------------------------------------------------------
+Mon Jul  6 11:40:06 UTC 2015 - rsalevsky@suse.com
+
+- initial package creation
+

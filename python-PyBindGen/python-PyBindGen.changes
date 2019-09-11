@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sun Jun 24 01:18:39 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to 0.19.0
+  Remove python-PyBindGen-r870.patch
+- Make package singlespec
+- Cleanup
+
+-------------------------------------------------------------------
+Thu May 15 10:57:55 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 0.17.0
+- Remove all patches. Have been applied upstream.
+- Add python-PyBindGen-r870.patch
+
+-------------------------------------------------------------------
+Sun Dec 22 14:11:30 UTC 2013 - reddwarf@opensuse.org
+
+- Add python-PyBindGen-r834.patch
+  * Fix build problem with the 'bool const &' param type
+
+-------------------------------------------------------------------
+Wed Sep  4 16:33:01 UTC 2013 - reddwarf@opensuse.org
+
+- Add python-PyBindGen-r831.patch
+  * Fixes UnboundLocalError in overloading.py
+
+-------------------------------------------------------------------
+Sat Jun  1 08:25:24 UTC 2013 - reddwarf@opensuse.org
+
+- Initial version
+

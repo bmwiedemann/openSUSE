@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2014-10-06 02:22:49.698825555 +0200
+
+Ensure that charybdis's copy of libratbox is uniquiely named to
+not conflict with ircd-ratbox's copy.
+
+---
+ libratbox/src/Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: charybdis-charybdis-3.5.1/libratbox/src/Makefile.am
+===================================================================
+--- charybdis-charybdis-3.5.1.orig/libratbox/src/Makefile.am
++++ charybdis-charybdis-3.5.1/libratbox/src/Makefile.am
+@@ -42,7 +42,7 @@ libratbox_la_SOURCES =			\
+ 	arc4random.c			\
+ 	version.c
+ 	
+-libratbox_la_LDFLAGS = @SSL_LIBS@ @GNUTLS_LIBS@ @MBEDTLS_LIBS@ -avoid-version -no-undefined -export-symbols export-syms.txt
++libratbox_la_LDFLAGS = @SSL_LIBS@ @GNUTLS_LIBS@ @MBEDTLS_LIBS@ -avoid-version -no-undefined -export-symbols export-syms.txt -release charybdis
+ libratbox_la_LIBADD = @SSL_LIBS@ @GNUTLS_LIBS@ @MBEDTLS_LIBS@
+ lib_LTLIBRARIES = libratbox.la
+ 

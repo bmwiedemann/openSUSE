@@ -1,0 +1,510 @@
+-------------------------------------------------------------------
+Wed Mar 27 11:32:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add systemd-rpm-macros and %systemd_ordering for %service_*.
+
+-------------------------------------------------------------------
+Wed Mar 27 10:36:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Remove consul/website from the deps - their license is fishy
+  and we don't need it to build telegraf
+
+-------------------------------------------------------------------
+Thu Nov 15 08:01:18 UTC 2018 - <nsinger@suse.com>
+
+- Enable PIE for build
+
+- Include systemd service file from upstream
+
+-------------------------------------------------------------------
+Thu Nov  1 07:54:17 UTC 2018 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to release 1.8.3
+  - Update deps package
+
+
+  * v1.8.3 [2018-10-30]
+
+    #4873: Add DN attributes as tags in x509_cert input to avoid series overwrite.
+    #4921: Prevent connection leak by closing unused connections in amqp output.
+    #4904: Use default partition key when tag does not exist in kinesis output.
+    #4901: Log the correct error in jti_openconfig.
+    #4937: Handle panic when ipmi_sensor input gets bad input.
+    #4930: Don't add unserializable fields to jolokia2 input.
+    #4866: Fix version check in postgresql_extensible.
+
+  * v1.8.2 [2018-10-17]
+  - Bugfixes
+
+    #4844: Update write path to match updated InfluxDB v2 API.
+    #4840: Fix missing timeouts in vsphere input.
+    #4851: Support uint fields in aerospike input.
+    #4854: Use container name from list if no name in container stats.
+    #4850: Prevent panic in filecount input on error in file stat.
+    #4846: Fix mqtt_consumer connect and reconnect.
+    #4849: Fix panic in logparser input.
+    #4869: Lower authorization errors to debug level in mongodb input.
+    #4875: Return correct response code on ping input.
+    #4874: Fix segfault in x509_cert input.
+
+  * v1.8.1 [2018-10-03]
+  - Bugfixes
+
+    #4750: Fix hardware_type may be truncated in sqlserver input.
+    #4723: Improve performance in basicstats aggregator.
+    #4747: Add hostname to TLS config for SNI support.
+    #4675: Don't add tags with empty values to opentsdb output.
+    #4765: Fix panic during network error in vsphere input.
+    #4766: Unify http_listener error response with InfluxDB.
+    #4769: Add UUID to VMs in vSphere input.
+    #4758: Skip tags with empty values in cloudwatch output.
+    #4783: Fix missing non-realtime samples in vSphere input.
+    #4799: Fix case of timezone/grok_timezone options.
+
+  * v1.8 [2018-09-21]
+  - New Inputs
+
+    activemq - Contributed by @mlabouardy
+    beanstalkd - Contributed by @44px
+    filecount - Contributed by @sometimesfood
+    file - Contributed by @maxunt
+    icinga2 - Contributed by @mlabouardy
+    kibana - Contributed by @lpic10
+    pgbouncer - Contributed by @nerzhul
+    temp - Contributed by @pytimer
+    tengine - Contributed by @ertaoxu
+    vsphere - Contributed by @prydin
+    x509_cert - Contributed by @jtyr
+
+  - New Processors
+
+    enum - Contributed by @KarstenSchnitter
+    parser - Contributed by @Ayrdrie & @maxunt
+    rename - Contributed by @goldibex
+    strings - Contributed by @bsmaldon
+
+  - New Aggregators
+
+    valuecounter - Contributed by @piotr1212
+
+  - New Outputs
+
+    azure_monitor - Contributed by @influxdata
+    influxdb_v2 - Contributed by @influxdata
+
+  - New Parsers
+
+    csv - Contributed by @maxunt
+    grok - Contributed by @maxunt
+    logfmt - Contributed by @Ayrdrie & @maxunt
+    wavefront - Contributed by @puckpuck
+
+  - New Serializers
+
+    splunkmetric - Contributed by @ronnocol
+
+  - Features
+
+    #4236: Add SSL/TLS support to redis input.
+    #4160: Add tengine input plugin.
+    #4262: Add power draw field to nvidia_smi plugin.
+    #4271: Add support for solr 7 to the solr input.
+    #4281: Add owner tag on partitions in burrow input.
+    #4259: Add container status tag to docker input.
+    #3523: Add valuecounter aggregator plugin.
+    #4307: Add new measurement with results of pgrep lookup to procstat input.
+    #4311: Add support for comma in logparser timestamp format.
+    #4292: Add path tag to tail input plugin.
+    #4322: Add log message when tail is added or removed from a file.
+    #4267: Add option to use of counter time in win perf counters.
+    #4343: Add energy and power field and device id tag to fibaro input.
+    #4347: Add http path configuration for OpenTSDB output.
+    #4352: Gather IPMI metrics concurrently.
+    #4362: Add mongo document and connection metrics.
+    #3772: Add enum processor plugin.
+    #4386: Add user tag to procstat input.
+    #4403: Add support for multivalue metrics to collectd parser.
+    #4418: Add support for setting kafka client id.
+    #4332: Add file input plugin and grok parser.
+    #4320: Improve cloudwatch output performance.
+    #3768: Add x509_cert input plugin.
+    #4471: Add IPSIpAddress syntax to ipaddr conversion in snmp plugin.
+    #4363: Add filecount input plugin.
+    #4485: Add support for configuring an AWS endpoint_url.
+    #4491: Send all messages before waiting for results in kafka output.
+    #4492: Add support for lz4 compression to kafka output.
+    #4450: Split multiple sensor keys in ipmi input.
+    #4364: Support StatisticValues in cloudwatch output plugin.
+    #4431: Add ip restriction for the prometheus_client output.
+    #3918: Add pgbouncer input plugin.
+    #2689: Add ActiveMQ input plugin.
+    #4402: Add wavefront parser plugin.
+    #4528: Add rename processor plugin.
+    #4537: Add message 'max_bytes' configuration to kafka input.
+    #4546: Add gopsutil meminfo fields to mem plugin.
+    #4285: Document how to parse telegraf logs.
+    #4542: Use dep v0.5.0.
+    #4433: Add ability to set measurement from matched text in grok parser.
+    #4565: Drop message batches in kafka output if too large.
+    #4579: Add support for static and random routing keys in kafka output.
+    #4539: Add logfmt parser plugin.
+    #4551: Add parser processor plugin.
+    #4559: Add Icinga2 input plugin.
+    #4351: Add name, time, path and string field options to JSON parser.
+    #4571: Add forwarded records to sqlserver input.
+    #4585: Add Kibana input plugin.
+    #4439: Add csv parser plugin.
+    #4598: Add read_buffer_size option to statsd input.
+    #4089: Add azure_monitor output plugin.
+    #4628: Add queue_durability parameter to amqp_consumer input.
+    #4476: Add strings processor.
+    #4536: Add OAuth2 support to HTTP output plugin.
+    #4633: Add Unix epoch timestamp support for JSON parser.
+    #4657: Add options for basic auth to haproxy input.
+    #4411: Add temp input plugin.
+    #4272: Add Beanstalkd input plugin.
+    #4669: Add means to specify server password for redis input.
+    #4339: Add Splunk Metrics serializer.
+    #4141: Add input plugin for VMware vSphere.
+    #4667: Align metrics window to interval in cloudwatch input.
+    #4642: Improve Azure Managed Instance support + more in sqlserver input.
+    #4682: Allow alternate binaries for iptables input plugin.
+    #4645: Add influxdb_v2 output plugin.
+
+  - Bugfixes
+
+    #3438: Fix divide by zero in logparser input.
+    #4499: Fix instance and object name in performance counters with backslashes.
+    #4646: Reset/flush saved contents from bad metric.
+    #4520: Document all supported cli arguments.
+    #4674: Log access denied opening a service at debug level in win_services.
+    #4588: Add support for Kafka 2.0.
+    #4087: Fix nagios parser does not support ranges in performance data.
+    #4088: Fix nagios parser does not strip quotes from performance data.
+    #4688: Fix null value crash in postgresql_extensible input.
+    #4681: Remove the startup authentication check from the cloudwatch output.
+    #4644: Support tailing files created after startup in tail input.
+    #4706: Fix csv format configuration loading.
+
+-------------------------------------------------------------------
+Tue Sep 18 06:45:26 UTC 2018 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to release 1.7.4
+  - Update deps package
+
+  * v1.7.4 [2018-08-29]
+  - Bugfixes
+
+    #4534: Skip unserializable metric in influxDB UDP output.
+    #4554: Fix powerdns input tests.
+    #4584: Fix burrow_group offset calculation for burrow input.
+    #4550: Add result_code value for errors running ping command.
+    #4605: Remove timeout deadline for udp syslog input.
+    #4601: Ensure channel closed if an error occurs in cgroup input.
+    #4544: Fix sending of basic auth credentials in http output.
+    #4526: Use the correct GOARM value in the armel package.
+
+  * v1.7.3 [2018-08-07]
+  - Bugfixes
+
+    #4434: Reduce required docker API version.
+    #4498: Keep leading whitespace for messages in syslog input.
+    #4470: Skip bad entries on interrupt input.
+    #4501: Preserve metric type when using filters in output plugins.
+    #3794: Fix error message if URL is unparseable in influxdb output.
+    #4059: Use explicit zpool properties to fix parse error on FreeBSD 11.2.
+    #4514: Lock buffer when adding metrics.
+
+  * v1.7.2 [2018-07-18]
+  - Bugfixes
+
+    #4381: Use localhost as default server tag in zookeeper input.
+    #4374: Don't set values when pattern doesn't match in regex processor.
+    #4416: Fix output format of printer processor.
+    #4422: Fix metric can have duplicate field.
+    #4389: Return error if NewRequest fails in http output.
+    #4335: Reset read deadline for syslog input.
+    #4375: Exclude cached memory on docker input plugin.
+
+  * v1.7.1 [2018-07-03]
+  - Bugfixes
+
+    #4277: Treat sigterm as a clean shutdown signal.
+    #4284: Fix selection of tags under nested objects in the JSON parser.
+    #4135: Fix postfix input handling multi-level queues.
+    #4334: Fix syslog timestamp parsing with single digit day of month.
+    #2910: Handle mysql input variations in the user_statistics collecting.
+    #4293: Fix minmax and basicstats aggregators to use uint64.
+    #4290: Document swap input plugin.
+    #4316: Fix incorrect precision being applied to metric in http_listener.
+
+  * v1.7 [2018-06-12]
+  - Release Notes
+
+    The cassandra input plugin has been deprecated in favor of the jolokia2
+    input plugin which is much more configurable and more performant.
+    There is an example configuration to help you get started.
+
+    For plugins supporting TLS, you can now specify the certificate and keys
+    using tls_ca, tls_cert, tls_key. These options behave the same as the,
+    now deprecated, ssl forms.
+
+  - New Inputs
+
+    aurora - Contributed by @influxdata
+    burrow - Contributed by @arkady-emelyanov
+    fibaro - Contributed by @dynek
+    jti_openconfig_telemetry - Contributed by @ajhai
+    mcrouter - Contributed by @cthayer
+    nvidia_smi - Contributed by @jackzampolin
+    syslog - Contributed by @influxdata
+
+  - New Processors
+
+    converter - Contributed by @influxdata
+    regex - Contributed by @44px
+    topk - Contributed by @mirath
+
+  - New Outputs
+
+    http - Contributed by @Dark0096
+    application_insights: Contribute by @karolz-ms
+
+  - Features
+
+    #3964: Add repl_oplog_window_sec metric to mongodb input.
+    #3819: Add per-host shard metrics in mongodb input.
+    #3999: Skip files with leading .. in config directory.
+    #4021: Add TLS support to socket_writer and socket_listener plugins.
+    #4025: Add snmp input option to strip non fixed length index suffixes.
+    #4035: Add server version tag to docker input.
+    #4044: Add support for LeoFS 1.4 to leofs input.
+    #4068: Add parameter to force the interval of gather for sysstat.
+    #3877: Support busybox ping in the ping input.
+    #4077: Add input plugin for McRouter.
+    #4096: Add topk processor plugin.
+    #4114: Add cursor metrics to mongodb input.
+    #3455: Add tag/integer pair for result to net_response.
+    #4010: Add application_insights output plugin.
+    #4167: Added several important elasticsearch cluster health metrics.
+    #4094: Add batch mode to mqtt output.
+    #4158: Add aurora input plugin.
+    #3839: Add regex processor plugin.
+    #4165: Add support for Graphite 1.1 tags.
+    #4162: Add timeout option to sensors input.
+    #3489: Add burrow input plugin.
+    #3969: Add option to unbound module to use threads as tags.
+    #4183: Add support for TLS and username/password auth to aerospike input.
+    #4190: Add special syslog timestamp parser to grok parser that uses current year.
+    #4181: Add syslog input plugin.
+    #4212: Print the enabled aggregator and processor plugins on startup.
+    #3994: Add static routing_key option to amqp output.
+    #3995: Add passive mode exchange declaration option to amqp consumer input.
+    #4216: Add counter fields to pf input.
+
+  - Bugfixes
+
+    #4018: Write to working file outputs if any files are not writeable.
+    #4036: Add all win_perf_counters fields for a series in a single metric.
+    #4118: Report results of dns_query instead of 0ms on timeout.
+    #4155: Add consul service tags to metric.
+    #2879: Fix wildcards and multi instance processes in win_perf_counters.
+    #2468: Fix crash on 32-bit Windows in win_perf_counters.
+    #4198: Fix win_perf_counters not collecting at every interval.
+    #4227: Use same flags for all BSD family ping variants.
+    #4266: Remove tags with empty values from Wavefront output.
+
+  * v1.6.4 [2018-06-05]
+  - Bugfixes
+
+    #4203: Fix snmp overriding of auto-configured table fields.
+    #4218: Fix uint support in cloudwatch output.
+    #4188: Fix documentation of instance_name option in varnish input.
+    #4195: Revert to previous aerospike library version due to memory leak.
+
+
+-------------------------------------------------------------------
+Sun May 27 09:31:27 UTC 2018 - tuukka.pasanen@ilmi.fi
+
+- Update to release 1.6.0
+  - Update deps package
+  * v1.6.3 [2018-05-21]
+  - Bugfixes
+    #4127: Fix intermittent panic in aerospike input.
+    #4130: Fix connection leak in jolokia2_agent.
+    #4136: Fix jolokia2 timeout parsing.
+    #4142: Fix error parsing dropwizard metrics.
+    #4149: Fix librato output support for uint and bool.
+    #4176: Fix waitgroup deadlock if url is incorrect in apache input.
+
+  * v1.6.2 [2018-05-08]
+  - Bugfixes
+
+    #4078: Use same timestamp for fields in system input.
+    #4091: Fix handling of uint64 in datadog output.
+    #4099: Ignore UTF8 BOM in JSON parser.
+    #4104: Fix case for slave metrics in mysql input.
+    #4110: Fix uint support in cratedb output.
+
+  * v1.6.1 [2018-04-23]
+  - Bugfixes
+
+    #3835: Report mem input fields as gauges instead counters.
+    #4030: Fix graphite outputs unsigned integers in wrong format.
+    #4043: Report available fields if utmp is unreadable.
+    #4039: Fix potential "no fields" error writing to outputs.
+    #4037: Fix uptime reporting in system input when ran inside docker.
+    #3750: Fix mem input "cannot allocate memory" error on FreeBSD based systems.
+    #4056: Fix duplicate tags when overriding an existing tag.
+    #4062: Add server argument as first argument in unbound input.
+    #4063: Fix handling of floats with multiple leading zeroes.
+    #4064: Return errors in mongodb SSL/TLS configuration.
+
+-------------------------------------------------------------------
+Tue Apr 24 08:20:46 UTC 2018 - mschnitzer@suse.com
+
+- Fix dependency package: The dependency package contained the
+  telegraf source code which has overwritten the patched files.
+
+-------------------------------------------------------------------
+Wed Apr 18 16:17:05 UTC 2018 - mschnitzer@suse.com
+
+- Release 1.6.0
+
+  * Release Notes
+
+    - The mysql input plugin has been updated fix a number of type convertion issues. This may cause a field type error when inserting
+      into InfluxDB due the change of types.
+
+    - To address this we have introduced a new metric_version option to control enabling the new format. For in depth recommendations on
+      upgrading please reference the mysql plugin documentation.
+
+    - It is encouraged to migrate to the new model when possible as the old version is deprecated and will be removed in a future version.
+
+    - The postgresql plugins now defaults to using a persistent connection to the database. In environments where TCP connections are
+      terminated the max_lifetime setting should be set less than the collection interval to prevent errors.
+
+    - The sqlserver input plugin has a new query and data model that can be enabled by setting query_version = 2. It is encouraged to
+      migrate to the new model when possible as the old version is deprecated and will be removed in a future version.
+
+    - An option has been added to the openldap input plugin that reverses metric name to improve grouping. This change is enabled
+      when reverse_metric_names = true is set. It is encouraged to enable this option when possible as the old ordering is deprecated.
+
+    - The new http input configured with data_format = "json" can perform the same task as the, now deprecated, httpjson input.
+
+  * New Inputs
+    http - Thanks to @grange74
+    ipset - Thanks to @sajoupa
+    nats - Thanks to @mjs & @levex
+
+  * New Processors
+    override - Thanks to @KarstenSchnitter
+
+  * New Parsers
+    dropwizard - Thanks to @atzoum
+
+  * Features
+    #3551: Add health status mapping from string to int in elasticsearch input.
+    #3580: Add control over which stats to gather in basicstats aggregator.
+    #3596: Add messages_delivered_get to rabbitmq input.
+    #3632: Add wired field to mem input.
+    #3619: Add support for gathering exchange metrics to the rabbitmq input.
+    #3565: Add support for additional metrics on Linux in zfs input.
+    #3524: Add available_entropy field to kernel input plugin.
+    #3643: Add user privilege level setting to IPMI sensors.
+    #2701: Use persistent connection to postgresql database.
+    #2846: Add support for dropwizard input format.
+    #3666: Add container health metrics to docker input.
+    #3687: Add support for using globs in devices list of diskio input plugin.
+    #2754: Allow running as console application on Windows.
+    #3703: Add listener counts and node running status to rabbitmq input.
+    #3674: Add NATS Monitoring Input Plugin.
+    #3702: Add ability to select which queues will be gathered in rabbitmq input.
+    #3726: Add support for setting bsd source address to the ping input.
+    #3346: Add Ipset input plugin.
+    #3719: Add TLS and HTTP basic auth to prometheus_client output.
+    #3618: Add new sqlserver output data model.
+    #3559: Add native Go method for finding pids to procstat.
+    #3722: Add additional metrics and reverse metric names option to openldap.
+    #3769: Add TLS support to the mesos input plugin.
+    #3546: Add http input plugin.
+    #3781: Add keep alive support to the TCP mode of statsd.
+    #3783: Support deadline in ping plugin.
+    #3765: Add option to disable labels in prometheus output for string fields.
+    #3808: Add shard server stats to the mongodb input plugin.
+    #3713: Add server option to unbound plugin.
+    #3804: Convert boolean metric values to float in datadog output.
+    #3799: Add Solr 3 compatibility.
+    #3797: Add sum stat to basicstats aggregator.
+    #3626: Add ability to override proxy from environment in http response.
+    #3853: Add host to ping timeout log message.
+    #3773: Add override processor.
+    #3814: Add status_code and result tags and result_type field to http_response input.
+    #3880: Added config flag to skip collection of network protocol metrics.
+    #3927: Add TLS support to kapacitor input.
+    #3496: Add HTTP basic auth support to the http_listener input.
+    #3452: Tags in output InfluxDB Line Protocol are now sorted.
+    #3631: InfluxDB Line Protocol parser now accepts DOS line endings.
+    #2496: An option has been added to skip database creation in the InfluxDB output.
+    #3366: Add support for connecting to InfluxDB over a unix domain socket.
+    #3946: Add optional unsigned integer support to the influx data format.
+    #3811: Add TLS support to zookeeper input.
+    #2737: Add filters for container state to docker input.
+
+  * Bugfixes
+    #1896: Fix various mysql data type conversions.
+    #3810: Fix metric buffer limit in internal plugin after reload.
+    #3801: Fix panic in http_response on invalid regex.
+    #3973: Fix socket_listener setting ReadBufferSize on tcp sockets.
+    #1575: Add tag for target url to phpfpm input.
+    #3868: Fix cannot unmarshal object error in DC/OS input.
+    #3648: Fix InfluxDB output not able to reconnect when server address changes.
+    #3957: Fix parsing of dos line endings in the smart input.
+    #3754: Fix precision truncation when no timestamp included.
+    #3655: Fix SNMPv3 connection with Cisco ASA 5515 in snmp input.
+    #3981: Export all vars defined in /etc/default/telegraf.
+    #4004: Allow grok pattern to contain newlines.
+
+-------------------------------------------------------------------
+Fri Mar 23 07:37:12 UTC 2018 - mschnitzer@suse.com
+
+- Release 1.5.3
+
+  * Bugfixes
+    #3729: Set path to / if HOST_MOUNT_PREFIX matches full path.
+    #3739: Remove userinfo from url tag in prometheus input.
+    #3778: Fix ping plugin not reporting zero durations.
+    #3807: Fix memory leak in postgresql_extensible.
+    #3697: Disable keepalive in mqtt output to prevent deadlock.
+    #3786: Fix collation difference in sqlserver input.
+    #3871: Fix uptime metric in passenger input plugin.
+    #3851: Add output of stderr in case of error to exec log message.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:27:05 UTC 2018 - mschnitzer@suse.com
+
+- Add feature_passive_amqp_exchange.patch:
+
+  * This patch allows to enable the exchange passive mode for the
+    AMQP consumer plugin. This is required for RabbitMQ servers
+	that rely on that (like the openSUSE ones)
+  * Upstream pull request is not possible because it requires you
+    to sign a CLA, but it's requested here:
+
+	https://github.com/influxdata/telegraf/issues/3785
+
+-------------------------------------------------------------------
+Thu Feb  8 07:31:00 UTC 2018 - mschnitzer@suse.com
+
+- Release 1.5.2
+
+  * Bugfixes
+    #3684: Ignore empty lines in Graphite plaintext.
+    #3604: Fix index out of bounds error in solr input plugin.
+    #3680: Reconnect before sending graphite metrics if disconnected.
+    #3693: Align aggregator period with internal ticker to avoid skipping metrics.
+    #3629: Fix a potential deadlock when using aggregators.
+    #3697: Limit wait time for writes in mqtt output.
+    #3698: Revert change in graphite output where dot in field key was replaced by underscore.
+    #3710: Add timeout to wavefront output write.
+    #3725: Exclude master_replid fields from redis input.

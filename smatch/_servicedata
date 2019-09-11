@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://repo.or.cz/smatch.git</param>
+          <param name="changesrevision">81e48d50010f2739557e39c22f43aec1005d77d3</param></service></servicedata>

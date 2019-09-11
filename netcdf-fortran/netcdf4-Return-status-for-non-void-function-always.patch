@@ -1,0 +1,44 @@
+From: Egbert Eich <eich@freedesktop.org>
+Date: Sat Sep 9 07:52:48 2017 +0200
+Subject: netcdf4: Return status for non-void function always
+Patch-mainline: to-be-posted
+Git-repo: https://github.com/Unidata/netcdf-fortran
+Git-commit: bae24a49b30779a4649ad93ca49c0989cc8ef3d8
+References: 
+
+In case of success, int inq_grps() and int nc_inq_numtypes() should
+retrun NC_NOERR instead of a random number. Remove tes on return
+status of the called function and return the status directly to the
+caller.
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ fortran/nf_lib.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/fortran/nf_lib.c b/fortran/nf_lib.c
+index 8e93f52..e081bc3 100755
+--- a/fortran/nf_lib.c
++++ b/fortran/nf_lib.c
+@@ -171,9 +171,7 @@ nc_inq_numgrps(int ncid, int *numgrps)
+ {
+  int ret;
+ 
+- if ((ret = nc_inq_grps(ncid, numgrps, NULL))) 
+-
+-    return ret;
++ return nc_inq_grps(ncid, numgrps, NULL);
+ }  
+  
+ extern int
+@@ -181,9 +179,7 @@ nc_inq_numtypes(int ncid, int *numtypes)
+ {
+  int ret;
+ 
+- if ((ret = nc_inq_typeids(ncid, numtypes, NULL))) 
+-
+-    return ret;
++ return nc_inq_typeids(ncid, numtypes, NULL);
+ }  
+  
+ #endif /*USE_NETCDF4*/

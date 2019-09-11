@@ -1,0 +1,379 @@
+-------------------------------------------------------------------
+Mon Aug 19 02:22:48 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+-Update to 4.6.7:
+	* First release of new logical imager tool
+	* VHD image writer fixes for out of space scenarios 
+-Update to 4.6.6:
+	* Acquisition deteails are set in DB for E01 files
+	* Fix NTFS decompression issue (from Joe Sylve)
+	* Image reading fix when cache fails (Joe Sylve)
+	* Fix HFS+ issue with large catalog files (Joe Sylve)
+	* Fix free memory issue in srch_strings (Derrick Karpo) 
+
+-------------------------------------------------------------------
+Fri Jan 18 06:43:11 UTC 2019 - seanlew@opensuse.org
+
+-Update to 4.6.5:
+        * HFX boundary check fix
+        * New fields for hash value and acquisitions details
+        * Store "created schema version" in case database
+        * New Java artifacts and attributes defined
+        * Fixed bug in SleuthkitCase.getContentById() 
+        * Fixed bug in LayoutFile.read() that could allow oob reading
+
+-------------------------------------------------------------------
+Fri Jan  4 13:50:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summaries.
+
+-------------------------------------------------------------------
+Fri Dec 21 09:54:58 UTC 2018 - atoptsoglou@suse.com
+
+-Update to 4.6.4:
+	*Java Code:
+	- Increase max statements in database to prevent errors under load
+	- Have a max timeout for SQLite retries 
+
+-Update to 4.6.3:
+	*C/C++ Code:
+	- Hashdb bug fixes for corrupt indexes and 0 hashes
+	- New code for testing power of number in ExtX code
+	*Java Code: 
+	- New class that allows generic database access
+	- New methods that check for duplicate artifacts
+	- Added caches for frequently used content 
+	*Database Schema: 
+	- Added Examiner table 
+	- Tags are now associated with Examiners
+	- Changed parent_path for logical files to be consistent with FS files.
+
+-Update to 4.6.2:
+	*C/C++ Code:
+	- Various compiler warning fixes
+	- Added small delay into image writer to not starve other threads
+	*Java Code: 
+	- Added more locking to ensure that handles were not closed while other threads were using them. 
+	- Added APIs to support more queries by data source
+	- Added memory-based caching when detecting if an object has children or not.
+
+-Update to 4.6.1:
+	*C/C++ Code:
+	- Lots of bounds checking fixes from Google's fuzzing tests.  Thanks Google.
+	- Cleanup and fixes from uckelman-sf and others
+	- PostgreSQL, libvhdi, & libvmdk are supported 
+	- Fixed display of NTFS GUID in istat - report from Eric Zimmerman. 
+	- NTFS istat shows details about all FILE_NAME attributes, not just the first.  report from Eric Zimmerman.
+	*Java Code:
+	- Reports can be URLs
+	- Reports are Content
+	- Added APIs for graph view of communications
+	- JNI library is extracted to name with user name in it to avoid conflicts
+	*Database:
+	- Version upgraded from to 8.0 because Reports are now Content
+
+-Update to 4.6.0:
+	*New Features
+	- New Communications related Java classes and database tables.
+	- Java build updates for Autopsy Linux build
+	- Blackboard artifacts are now Content objects in Java and part of tsk_objects table in database.
+	- Increased cache sizes.
+	- Lots of bounds checking fixes from Google's fuzzing tests.  Thanks Google.
+	- HFS fix from uckelman-sf.
+
+-Update to 4.5.0:
+	*New Features:
+	- Support for LZVN compressed HFS files (from Joel Uckelman)
+	- Use sector size from E01 (helps with 4k sector sizes)
+	- More specific version number of DB schema
+	- New Local Directory type in DB to differentiate with Virtual Directories
+	- All blackboard artifacts in DB are now 'content'. Attachments can now be children of their parent message.
+	- Added extension as a column in tsk_files table. 
+	*Bug Fixes:
+	- Faster resolving of HFS hard links
+	- Lots of fixes from Google Fuzzing efforts. 
+-------------------------------------------------------------------
+Thu Sep 14 22:07:19 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to 4.4.2
+	* usnjls tool for NTFS USN log (from noxdafox)
+	* Added index to mime type column in DB
+	* Use local SQLite3 if it exists (from uckelman-sf)
+	* Blackboard Artifacts have a shortDescription metho
+	* Fix for highest HFS+ inum lookup (from uckelman-sf)
+	* Fix ISO9660 crash
+	* various performance fixes and added thread safety checks
+- add files related to the new usnjls tool
+
+-------------------------------------------------------------------
+Sat Feb 25 20:30:33 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to 4.4.0
+	* Compiling in Windows now uses Visual Studio 2015
+	* tsk_loaddb now adds new files for slack space 
+		and JNI was upgraded accordingly.
+
+
+-------------------------------------------------------------------
+Fri Jul 29 23:02:03 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to 4.3.0
+	* PostgreSQL support (Windows only)
+	* Support for virtual machine formats via libvmdk and libvhdi (Windows only)
+	* Schema updates (data sources table, mime type, attributes store type)
+	* tsk_img_open can take externally created TSK_IMG_INFO
+	* New Release_ NoLibs Visual Studio target
+	* Various bug fixes
+
+-------------------------------------------------------------------
+Wed Feb  3 23:18:34 UTC 2016 - Greg.Freemyer@gmail.com
+
+- upgrade to 4.2.0
+	* ExFAT support added
+	* New database schema
+	* New Sqlite hash database
+	* Added secondary hash database index 
+	* Various bug fixes
+	* NTFS pays more attention to sequence and loads metadata only 
+	  if it matches. 
+- README.txt renamed README.md
+- patch sleuthkit-4.1.3-python-tsk.patch removed, now upstream
+
+-------------------------------------------------------------------
+Wed Aug 13 19:48:56 UTC 2014 - Greg.Freemyer@gmail.com
+
+- upgrade to 4.1.3
+	* fixed bug that could crash UFS/ExtX in inode_lookup.
+	* More bounds checking in ISO9660 code
+	* Image layer bounds checking
+	* Update version of SQLITE-JDBC
+	* changed how java loads navite libraries
+	* Config file for YAFFS2 spare area
+	* New method in image layer to return names
+	* Yaffs2 cleanup.
+	* Escape all strings in SQLite database
+	* SQlite code uses NTTFS sequence number to match parent IDs
+	* FILE_NAME times in timelines
+	* Cellebrite disk image auto-detect
+	* 64-bit windows targets
+	* Fixed bug with Sqlite code not using NTFS Sequence
+	* Jar files have native libraries in them
+- remove sleuthkit-4.1.0-UPSTREAM-crc.patch, now in upstream release
+- add sleuthkit-4.1.3-python-tsk.patch, needed by python-tsk
+
+-------------------------------------------------------------------
+Tue Oct 15 23:45:40 UTC 2013 - Greg.Freemyer@gmail.com
+
+- remove BuildRequires libaff - The format never got popular, and libewf is now recommended 
+- libaff is being dropped from factory
+
+-------------------------------------------------------------------
+Sat Jun 22 02:46:38 UTC 2013 - Greg.Freemyer@gmail.com
+
+- this upgrade breaks most packages that build against sleuthkit-devel
+- upgrade to 4.1.0
+  * New Features in Core:
+    Added YAFFS2 support (patch from viaForensics).
+    Added Ext4 support (patch from kfairbanks) 
+
+  * Framework:
+    Added Linux and MAC support.
+    Added L01 support.
+    Added APIs to find files by name, path and extension.
+    Removed deprecated TskFile::getAttributes methods.
+    moved code around for AutoBuild tool support. 
+
+  * Java Bindings:
+    added DerivedFile datamodel support
+    added a public method to Content to add ability to close() its tsk handle before the object is gc'd
+    added faster skip() and random seek support to ReadContentInputStream
+    refactored datamodel by pushing common methods up to AbstractFile
+    fixed minor memory leaks
+    improved regression testing framework for java bindings datamodel 
+
+  * -devel
+    proper soname handling requires fixes in packages linking to libtsk
+    /usr/include/tsk3 renamed /usr/include/tsk
+    libtsk3-9.so renamed libtsk-10.so due to proper soname handling
+    other include file changes
+
+- rm fiwalk patch, now in upstream
+- add crc.c patch, now in upstream git repo
+- sortr renamed sorter by upstream
+- upstream improved soname handling, reflect improvements
+- add the java bindings to sleuthkit-devel (Packaging not well tested)
+- resolves BNC#815061
+
+-------------------------------------------------------------------
+Sun Mar  3 18:10:35 UTC 2013 - Greg.Freemyer@gmail.com
+
+- Add obsoletes statement for fiwalk
+- add patch to support "fiwalk -m"
+
+-------------------------------------------------------------------
+Wed Feb 13 14:58:21 UTC 2013 - hpj@urpla.net
+
+- Version 4.0.2
+
+New Features in Core:
+
+    fiwalk is now included. 
+
+Bug Fixes in Core:
+
+    Fixed fcat to work on NTFS files (still doesn't support ADS though).
+    Fixed HFS+ support in tsk_loaddb / SQLite -- root directory was not added.
+    NTFS code now looks at all MFT entries when listing directory contents. It used to only look at unallocated entries for orphan files. This fixes an image that had allocated files missing from the directory b-tree.
+    NTFS code uses sequence number when searching MFT entries for all files.
+    Libewf detection code change to support v2 API more reliably (ID: 3596212).
+    NTFS $SII code could crash in rare cases if $SDS was multiple of block size. 
+
+Framework:
+
+    Added new API to TskImgDB that returns the base name of an image.
+    Numerous performance improvements to framework.
+    Removed requirement in framework to specify module extension in pipeline configuration file.
+    Added blackboard artifacts to represent both operating system and network service user accounts. 
+
+Java Bindings
+
+    More methods to query files
+    Methods to get current directory when being added to DB.
+    Modified class structure a bit
+    More lazy loading for children / parents.
+    Better exception throwing from C++ 
+
+- Version 4.0.1
+
+New Features:
+
+    More DOS partition types are displayed.
+    Added fcat tool that takes in file name and exports content (equivalent to using ifind and icat together).
+    performance improvements with FAT code (maps and dir_add)
+    performance improvements with NTFS code (maps)
+    added AONLY flag to block_walk
+    Updated blkls and blkcalc to use AONLY flag -- MUCH faster.
+
+Bug Fixes:
+
+    Fixed mactime issue where it could choose the wrong timezone that did not follow daylight savings times.
+    Fixed file size of alternate data streams in framework.
+    Incorporated memory leak fixes and raw device fixes from ADF Solutions. 
+
+-------------------------------------------------------------------
+Tue Oct  2 17:04:51 UTC 2012 - Greg.Freemyer@gmail.com
+
+- Version 4.0.0
+	- general release of the 4.0.0b1 beta release
+	- only tested by upstream in windows
+
+-------------------------------------------------------------------
+Thu Sep  6 21:30:48 UTC 2012 - Greg.Freemyer@gmail.com
+
+- Version 4.0.0b1
+	- Builds with libewf-20120813 (libewf v2)
+	- drop sleuthkit-gcc47.patch: upstreamed
+
+	4.0.0b1 has a lot of new features, including:
+	. Framework with first set of basic modules (hash calculation, hash lookup, entropy calculation, RegRipper, ZIP file extraction, extraction via name signatures, etc.) -- Windows-only
+	. Multithreaded support
+	. C++ wrapper classes
+	. JNI bindings and data model classes
+	. All non-set times are displayed as 0 instead of 1970.
+	. Only first file in split or E01 needs to be specified.
+	. EnCase Hashset support in hash tools.
+	. New table schema for loaddb database that supports more data types (carved, local files, etc.).
+
+
+-------------------------------------------------------------------
+Wed Apr 11 12:08:24 UTC 2012 - dimstar@opensuse.org
+
+- Add sleuthkit-gcc47.patch: Fix buffer overflow.
+
+-------------------------------------------------------------------
+Fri Oct 21 12:56:42 UTC 2011 - Greg.Freemyer@gmail.com
+
+- Add EnCase image support for reading
+	- Source code support was already present, this just involved linking libewf into the build
+
+-------------------------------------------------------------------
+Fri Oct  7 22:53:03 UTC 2011 - Greg.Freemyer@gmail.com
+
+- VERSION 3.2.3 
+	New Features:
+	- new TskAuto method (handleNotification()) that gets verbose messages that allow for debugging when the class makes decisions.
+	- DOS partitions are loaded even if an extended partition fails to load
+	- new TskAuto::findFilesInFs(TSK_FS_INFO *) method
+	- Need to only specify first E01 file and the rest are found
+	- Changed docs license to opensuse accepted one (by upstream)
+	- Unicode conversion routines fix invalid UTF-16 text during conversion
+	- Added '-d' to tsk_recover to specify directory to recover
+
+	Bug Fixes:
+	- Added check to fatfs_open to compare first sectors of FAT if we used backup boot sector and verify it is FAT32.
+	- More checks to make sure that FAT short names are valid ASCII
+	- 3406523: Mactime size sanity check
+	- 3393960: hfind reading of Windows input file
+	- 3316603: Error reading last blocks of RAW CD images
+	- Fixed bugs in how directories and files were detected in TskAuto
+
+-------------------------------------------------------------------
+Thu Aug  4 02:44:10 UTC 2011 - toganm@opensuse.org
+
+- Update sleuthkit-3.2.2.tar.gz 
+  * cleaned spec
+
+-------------------------------------------------------------------
+Mon Sep 13 17:12:04 UTC 2010 - toganm@dinamizm.com
+- Reworking the spec file 
+
+-------------------------------------------------------------------
+Mon Sep 13 16:36:53 UTC 2010 - toganm@opensuse.org
+-  Spec file corrections
+
+-------------------------------------------------------------------
+Mon Sep 13 2010 Togan Muftuoglu <toganm@opensuse.org> -3.1.3
+- Adaptation of spec file from fedora project
+- Update to 3.1.3
+
+Thu Apr 29 2010 Nicolas Chauvet <kwizart@fedoraproject.org> - 3.1.1-1
+- Update to 3.1.1
+
+Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.0.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.0.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+Tue Feb 10 2009 kwizart < kwizart at gmail.com > - 3.0.1-1
+- Update to 3.0.1 (final)
+
+Tue Oct 28 2008 kwizart < kwizart at gmail.com > - 3.0.0-1
+- Update to 3.0.0 (final)
+
+Fri Oct  3 2008 kwizart < kwizart at gmail.com > - 3.0.0-0.1.b4
+- Update to 3.0.0b4
+
+Tue Jun 17 2008 kwizart < kwizart at gmail.com > - 2.52-1
+- Update to 2.52
+- Remove merged patches
+- Remove clean unused-direct-shlib-dependencies 
+- Fix rpath at source.
+- Sort license within the spec
+- Move configure.ac to pkg-config detection
+- Remove Perl-Date-Manip installation
+
+Tue Mar 18 2008 kwizart < kwizart at gmail.com > - 2.51-1
+- Update to 2.51
+- Add libewf/afflib BR
+- Requires mac-robber external package.
+- Remove internal perl-Date-Manip.
+
+Fri Dec 28 2007 kwizart < kwizart at gmail.com > - 2.10-1
+- Update to 2.10
+
+Mon Oct 29 2007 kwizart < kwizart at gmail.com > - 2.09-1
+- Initial package for Fedora 
+  (inspired from Oden Eriksson mdk spec).
+
+

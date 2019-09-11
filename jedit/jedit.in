@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Runs jEdit
+#
+# You can specify which Java installation to use through the JAVA_HOME
+# environment variable. Otherwise, this will look for Java in the
+# system PATH.
+#
+# You can set a global value for JAVA_HOME in /etc/environment.
+
+if [ -z "$JAVA_HOME" ]; then
+	JAVA=`which java 2>/dev/null`
+	if [ -z "$JAVA" ]; then
+		echo "Failed to find the java virtual machine! Bailing..."
+		exit 1
+	fi
+else
+	JAVA="$JAVA_HOME/bin/java"
+fi
+
+exec "$JAVA" -jar @data/jedit.jar -reuseview "$@"

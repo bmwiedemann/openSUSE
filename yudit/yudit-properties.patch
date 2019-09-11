@@ -1,0 +1,13 @@
+Index: yudit-2.9.2/yudit.properties.in
+===================================================================
+--- yudit-2.9.2.orig/yudit.properties.in
++++ yudit-2.9.2/yudit.properties.in
+@@ -36,7 +36,7 @@ yudit.datapath=@YUDIT_DATA@/data
+ #
+ # This is where the .ttf (True Type font) files are
+ #
+-yudit.fontpath=@YUDIT_DATA@/fonts,/usr/share/yudit/data
++yudit.fontpath=/usr/share/fonts/truetype,/usr/X11R6/lib/X11/fonts/truetype,@YUDIT_DATA@/fonts,/usr/share/yudit/data
+ 
+ #
+ # This is where the .syn (Syntax Highlighting) files are

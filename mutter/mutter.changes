@@ -1,0 +1,3731 @@
+-------------------------------------------------------------------
+Wed Jul 24 20:49:24 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.32.2+43:
+  + metatest: Dispatch the destruction instead of sleeping after it
+  + window-x11: Remove double definition of MetaStack
+  + window-x11: Focus a window in the active workspace as
+    take-focus fallback
+  + meson: Bump meson requirement to 0.50.0
+  + window-x11: Use any focusable window as fallback delayed focus
+    window
+  + tests: Add "accept_take_focus" command
+  + test-client: Add x11 events GSource handler
+  + stack: Add a function to get a sorted list of focus candidates
+  + window-x11: Accept any focusable window as fallback focus
+  + window-x11: Don't double-check for unmanaging windows
+- Switch to git checkout via source service, upstream is lacking in
+  stable releases. In the future we will use a stable tag when
+  possible, but when upstream slacks off, we will use a checkout of
+  the stable branch.
+
+-------------------------------------------------------------------
+Wed May 29 17:29:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unneeded and unused libtool BuildRequires.
+
+-------------------------------------------------------------------
+Sun May 26 17:52:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Disable mouse keys with Numlock on.
+  + Fix crash when restarting on X11.
+  + Fix mapping of touchscreens that don't report dimensions.
+  + Fix spurious idle signals that prevent session unblank.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri May 24 08:57:35 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Update spec to reflect the rebase of
+  mutter-xwayland-create-xauthority.patch (bsc#1084737).
+
+-------------------------------------------------------------------
+Fri May 24 04:50:08 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update mutter-xwayland-create-xauthority.patch (bsc#1084737).
+
+-------------------------------------------------------------------
+Wed Apr 24 09:42:26 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133121).
+
+-------------------------------------------------------------------
+Thu Apr 18 10:36:55 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.32.1:
+  + Fix fallback app menu on wayland (glgo#GNOME/mutter#493).
+  + Fix elogind support (glgo#GNOME/mutter!491).
+  + Fix startup notifications not timing out
+  + (glgo#GNOME/mutter#501).
+  + Fix keyboard accessibility toggle from keys
+  + (glgo#GNOME/mutter!501, glgo#GNOME/mutter#529,
+  + glgo#GNOME/mutter!531).
+  + Fix touchscreen input on rotated displays
+  + (glgo#GNOME/mutter#514).
+  + Work around hangul text input bug (glgo#GNOME/mutter#1365).
+  + Fix blurry wallpaper scaling (glgo#GNOME/mutter!505).
+  + Fix placement of window menu when using fractional scaling
+  + (glgo#GNOME/mutter#527).
+  + Fix repaint issues of offscreen effects on secondary monitors
+  + (glgo#GNOME/mutter!511).
+  + Fix windows not getting focus after launch
+  + (glgo#GNOME/mutter#505).
+  + Properly advertise support for 'underscan' property
+  + (glgo#GNOME/mutter!507).
+  + Improve power-saving handling (glgo#GNOME/mutter!506).
+  + Fix moving windows by super+touch [Jonas D.; !495]
+  + Misc. bug fixes and cleanups: glgo#GNOME/mutter!478,
+    glgo#GNOME/mutter!475, glgo#GNOME/mutter!480,
+    glgo#GNOME/mutter!482, glgo#GNOME/mutter#490,
+    glgo#GNOME/mutter!488, glgo#GNOME/mutter#491,
+    glgo#GNOME/mutter#480, glgo#GNOME/mutter!477,
+    glgo#GNOME/mutter!496, glgo#GNOME/mutter!492,
+    glgo#GNOME/mutter!485, glgo#GNOME/mutter!515,
+    glgo#GNOME/mutter!519, glgo#GNOME/mutter!521,
+    glgo#GNOME/mutter!216, glgo#GNOME/mutter!538,
+    glgo#GNOME/mutter#541, glgo#GNOME/mutter#523.
+  + Updated translations.
+- Drop mutter-fix-meson50-build.patch: fixed upstream.
+- Rebase
+  mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch.
+
+-------------------------------------------------------------------
+Tue Mar 12 06:32:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Fix deadlock when cancelling a theme sound.
+  + Stop swizzling BGRA buffers (bye-bye inverted colors in
+    screenshots and animations).
+- Add mutter-fix-meson50-build.patch: Fix build with meson >= 0.50
+
+-------------------------------------------------------------------
+Tue Mar  5 06:16:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Fix flicker of apps that use multiple SHM buffers.
+  + Don't disable page flips after temporary failures.
+  + Improve redraw performance.
+  + Add cursor-mode support to window screencasting.
+  + Add back support for system-wide monitor configurations.
+  + Add fractional scaling support.
+  + Consider remapped keys when guessing keycode from keysym.
+  + Stop turning on-screen-keyboard off on focus changes.
+  + Fix crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Pass cogl_tests=false, clutter_tests=false and tests=false to
+  meson, we can now disable tests fully.
+
+-------------------------------------------------------------------
+Fri Feb 22 06:31:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Fix infinite loop in EDID matching.
+  + wayland:
+    - Don't reset in text-input state prematurely.
+    - Don't maximize windows if minimum size is too big.
+  + Fix crash when using "restore shortcuts" without focus window.
+  + Add flag parameter to grab accelerator API.
+  + Reuse old CRTC if possible to avoid flicker on hotplug.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + mutter-Avoid_double-free_crash.patch: cogl-auto-texture: Avoid
+    a double-free crash.
+  + mutter-clutter-offscreen-effect-fix.patch:
+    clutter-offscreen-effect: Disable if no texture.
+  + mutter-clutter-Avoid-rounding-compensation.patch: clutter:
+    Avoid rounding compensation when invalidating 2D actors.
+  + mutter-Fix-monitor-recording-on-HiDPI.patch: screen-cast: Fix
+    monitor recording on HiDPI.
+  + mutter-monitor-manager-Dont-use_switch-config.patch:
+    monitor-manager: Don't use switch-config when ensuring
+    configuration.
+
+-------------------------------------------------------------------
+Thu Feb 21 08:13:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Add bug fix patches from upstream stable branch:
+  + mutter-Avoid_double-free_crash.patch: cogl-auto-texture: Avoid
+    a double-free crash.
+  + mutter-clutter-offscreen-effect-fix.patch:
+    clutter-offscreen-effect: Disable if no texture.
+  + mutter-clutter-Avoid-rounding-compensation.patch: clutter:
+    Avoid rounding compensation when invalidating 2D actors.
+  + mutter-Fix-monitor-recording-on-HiDPI.patch: screen-cast: Fix
+    monitor recording on HiDPI.
+  + mutter-monitor-manager-Dont-use_switch-config.patch:
+    monitor-manager: Don't use switch-config when ensuring
+    configuration.
+
+-------------------------------------------------------------------
+Thu Feb 21 04:42:37 UTC 2019 - qkzhu@suse.com
+
+- Add mutter-Lower-HIDPI_LIMIT-to-144.patch: mutter will set
+  scaling factor to 2 when the monitor's dpi is greater than 144
+  (96*1.5) to keep GNOME's behavior consistent with YaST Installer
+  (fate#326682, bsc#1125467).
+
+-------------------------------------------------------------------
+Wed Feb 13 19:22:10 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Fix support of extended characters in on-screen keyboard.
+  + Improve selection of the primary GPU.
+  + Screen-cast cursor updates as PipeWire stream metadata.
+  + Fix rendering glitches in magnifier.
+  + Fix monitor recording on HiDPI.
+  + Honour secondary GPU supported pixel formats.
+  + Fall back to CPU copy path when using a software renderer.
+  + Remove fallback app menu.
+  + wayland: Add support for viewporter protocol.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Disable
+  mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch
+- Set api_minor define to 0.
+
+-------------------------------------------------------------------
+Wed Feb  6 21:56:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Fix translation-update-upstream call, needed after update of
+  translation-update-upstream in distro.
+
+-------------------------------------------------------------------
+Fri Jan 11 08:43:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  +  keybindings: Limit corner move to current monitor.
+  + xdg-output: Report rotated physical dimensions.
+  + Add continuous integration pipeline.
+  + Improve performance on secondary GPUs.
+  + Use the actual hardware refresh rate.
+  + Remove hide-titlebar-when-maximized support.
+  + wayland: Implement buffer transforms.
+  + Remove ability to externally set sync-to-vblank.
+  + Turn off touchscreens together with DPMS.
+  + Mipmap the wallpaper when shrinking.
+  + Implement RecordWindow method for screen-casts.
+  + Fix EGLStream texture downloading.
+  + Split out display-server-specific code from MetaWindowActor.
+  + Improve render performance on some KMS devices with software
+    GL.
+  + Fix damage area of transformed surfaces.
+  + Remove autotools support.
+  + Misc. bug fixes and cleanups: bgo#790207, bgo#765011,
+    bgo#786663 bgo#782344, bgo#781034, glgo#GNOME/mutter!309,
+    glgo#GNOME/mutter#272, glgo#GNOME/mutter#393,
+    glgo#GNOME/mutter#276, glgo#GNOME/mutter#404,
+    glgo#GNOME/mutter#104, glgo#GNOME/mutter!343,
+    glgo#GNOME/mutter#342, glgo#GNOME/mutter!356,
+    glgo#GNOME/mutter#414, glgo#GNOME/mutter#423,
+    glgo#GNOME/mutter!374, glgo#GNOME/mutter!382,
+    glgo#GNOME/mutter!383.
+- Drop patches fixed upstream mutter-fix-startup.patch and
+  mutter-monitor-manager-Don-t-use-switch-config-when-ensurin.patch
+- Bump api_major to 4 following upstreams changes.
+- Pass -Degl_device=true to meson, ensure we build egl support.
+- Pass -Dinstalled_tests=false to meson, running tests during build
+  are something we will look into later in the cycle.
+
+-------------------------------------------------------------------
+Sat Jan  5 01:22:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Fix handling of non-UTF8 encodings.
+  + Fix memory leaks introduced in 3.30.1.
+  + Fix regression when overriding workspace layout.
+  + Fix crash when restarting window manager.
+  + Add meson build support.
+  + Freeze clock when headless.
+  + Fix crash on monitor hotplug.
+  + Misc. bug fixes.
+- Drop
+  mutter-wayland-text-input-Ignore-text-input-state-commit-wh.patch
+  Fixed upstream.
+- Disable mutter-xwayland-create-xauthority.patch: Needs rebase.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Add xorg-x11-server, xorg-x11-server-wayland and
+  pkgconfig(gnome-settings-daemon) BuildRequires: New dependencies.
+- Set api_minor define to 0_0_0.
+
+-------------------------------------------------------------------
+Tue Dec 18 19:56:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Add two patches from fedora that have not been applied to the
+  stable branch:
+  + mutter-monitor-manager-Don-t-use-switch-config-when-ensurin.patch:
+    monitor-manager: Don't use switch-config when ensuring
+    configuration.
+  + mutter-wayland-text-input-Ignore-text-input-state-commit-wh.patch:
+    wayland/text-input: Ignore text-input state commit when not
+    focused.
+
+-------------------------------------------------------------------
+Wed Nov 14 09:26:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix handling of non-UTF8 encodings.
+  + Fix memory leaks introduced in 3.30.1.
+  + Work around hangul text input bug.
+  + Fix crash when restarting window manager.
+  + Fix crash on monitor hotplug.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  9 09:59:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Improve trackball detection (glgo#GNOME/mutter#258).
+  + Fix clipping of scaled surfaces (glgo#GNOME/mutter#300).
+  + Improve tracking of monitor switch configuration
+    (glgo#GNOME/mutter!213).
+  + Fix parent-relative positioning of constrained windows
+    (glgo#GNOME/mutter#332).
+  + Add clutter_input_method_forward_key() method
+    (glgo#GNOME/gnome-shell#531).
+  + Various crash fixes (glgo#GNOME/mutter#194,
+    glgo#GNOME/mutter#336).
+  + Misc. bug fixes: glgo#GNOME/gnome-shell#540,
+    glgo#GNOME/mutter#294, glgo#GNOME/mutter#221,
+    glgo#GNOME/mutter!229, glgo#GNOME/mutter#30 and
+    glgo#GNOME/mutter#331.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  6 01:49:53 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  1 23:53:35 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Avoid crash when a cursor is not found (glgo#GNOME/mutter#254).
+  + Fix screen rotation regression (glgo#GNOME/mutter#216).
+  + Handle requests to unmanaged windows gracefully
+    (glgo#GNOME/mutter#240).
+  + Move popups together with their parent (glgo#GNOME/mutter#274).
+  + Fix non-lowercase letters on virtual key devices
+    (glgo#GNOME/gnome-shell#135).
+  + Misc. bug fixes: glgo#GNOME/mutter#223, glgo#GNOME/mutter#192,
+    glgo#GNOME/mutter#279.
+  + Updated translations.
+- Drop mutter-left-right-rotation-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Aug 21 12:25:12 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.29.91:
+  + Various crash fixes (glgo#GNOME/mutter#255,
+    glgo#GNOME/mutter#223).
+  + Fix lock up with some DRI drivers (glgo#GNOME/mutter#127).
+  + Send correct button codes from virtual evdev devices.
+  + Improve grab-device clock updates on X11.
+  + Fix popups closing immediately on key down.
+  + Prevent clients from modifying the shared keymap (bgo#784206).
+  + Updated translations.
+- Drop mutter-pipewire-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 18 01:27:04 UTC 2018 - badshah400@gmail.com
+
+- Add mutter-left-right-rotation-fix.patch to fix blank screen
+  when rotating it left/right (boo#1105268,
+  glgo#gnome/mutter#216); patch taken from upstream bug report.
+
+-------------------------------------------------------------------
+Fri Aug  3 20:10:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Don't expose resolutions that are below the minimum
+    (bgo#793223).
+  + Remove support for preference overrides (bgo#786496).
+  + Various crash fixes: glgo#GNOME/mutter#189,
+    glgo#GNOME/mutter#70, glgo#GNOME/mutter#194,
+    glgo#GNOME/mutter#15, glgo#GNOME/mutter#130.
+  + Misc. bug fixes and cleanups: glgo#GNOME/mutter#131,
+    glgo#GNOME/mutter#245, glgo#GNOME/mutter!176.
+  + Updated translations.
+- Add mutter-pipewire-fix.patch, replace pkgconfig(libpipewire-0.1)
+  with pkgconfig(libpipewire-0.2) BuildRequires. Also add libtool
+  BuildRequires and pass autoreconf call.
+
+-------------------------------------------------------------------
+Wed Jul 25 03:50:39 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.4:
+  + Fix crash with parent-less modal dialogs
+    (glgo#GNOME/mutter#174).
+  + Preserve paint volumes where possible to optimize CPU usage
+    (bgo#782344).
+  + Updated translations.
+- Changes from version 3.29.3:
+  + Fix Korean Hangul support on wayland (glgo#GNOME/mutter#152).
+  + Improve support for proprietary Nvidia driver (bgo#790316).
+  + Only upload HW cursor sprite to the GPU that will display them
+    (glgo#GNOME/mutter#77).
+  + Improve EGLstream support (glgo#GNOME/mutter#2, bgo#782575).
+  + Misc. bug fixes: glgo#GNOME/mutter#160, bgo#786929, bgo#788834.
+  + Updated translations.
+- Rebase mutter-xwayland-create-xauthority.patch.
+
+-------------------------------------------------------------------
+Tue Jul 24 19:27:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Refresh openSUSE patches with quilt.
+
+-------------------------------------------------------------------
+Mon Jul 23 18:36:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3+20180719.62660bbd1:
+  + gpu-kms: Don't crash if drmModeGetResources returns NULL.
+  + Bump version to 3.28.3.
+  + monitor-manager: Add back warning messages.
+  + screen-cast-src: Allow negotiating the framerate.
+  + contraints: Do not constrain modals without parent.
+  + backends:
+    - Add logical monitor -> monitor -> output -> crtc ref chain.
+    - Move MetaOutput::crtc field into private struct.
+  + renderer-native: Don't crash if the FB surface can't be locked.
+  + device-manager-evdev:
+    - Add main seat to seats by default.
+    - Free the main seat on finalize.
+    - Set and unset the stage for the main seat too.
+  + clutter-device-evdev: Get devices from main seat if no real
+    seat is set.
+  + clutter-seat-evdev: Add function to get device by id.
+
+-------------------------------------------------------------------
+Fri Jul  6 11:38:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Add pkgconfig(libpipewire-0.1) BuildRequires and pass
+  enable-remote-desktop to configure, build remote-desktop support,
+  now that pipewire is available.
+
+-------------------------------------------------------------------
+Fri Jun 22 02:32:53 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.2:
+  + Fix size change animations on wayland (bgo#780292).
+  + Handle touch events on server-side titlebars (bgo#770185).
+  + Misc. bug fixes: glgo#GNOME/mutter#134, glgo#GNOME/mutter#124,
+    glgo#GNOME/mutter#138, glgo#GNOME/mutter#781471,
+    glgo#GNOME/mutter#150.
+
+-------------------------------------------------------------------
+Sun Jun  3 02:40:36 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + Fix various input-method regressions glgo#GNOME/mutter#65,
+    glgo#GNOME/mutter#74, glgo#GNOME/mutter#66,
+    glgo#GNOME/mutter#112).
+  + Take inhibitors into account for monitoring idle (bgo#705942).
+  + Misc. bug fixes: glgo#GNOME/mutter#83, glgo#GNOME/mutter#104,
+    glgo#GNOME/mutter#157, glgo#GNOME/mutter#130,
+    glgo#GNOME/mutter#21.
+  + Updated translations.
+- Drop:
+  + libtool BuildRequires, autogen execution and source service,
+    and use upstream tarball once more: the situation has been
+    normalized.
+  + intltool BuildRequires to follow upstream migration to Gettext.
+
+-------------------------------------------------------------------
+Mon May 28 17:34:20 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2+20180526.abc7ad8e9:
+  + wayland: Don't reset input focus on text commit.
+  + frames: Allow for unknown mouse buttons.
+  + wayland: update enter/leave output after effects.
+  + window-actor: add new signal "effects-completed".
+  + wayland: Compare geometries after chaining up.
+  + frames: Handle touch events.
+  + frames: Make 1st button/motion handlers take generic events.
+  + clutter/evdev: Don't ignore CAPS lock as modifier.
+  + clutter/evdev: ignore injected events from IM.
+  + wayland: Use cursor position in logical monitor.
+
+-------------------------------------------------------------------
+Thu May 17 15:18:48 UTC 2018 - hpj@suse.com
+
+- Enable remote desktop support:
+  + Add pkgconfig(libpipewire-1.0) BuildRequires.
+  + Pass --enable-remote-desktop to configure.
+
+-------------------------------------------------------------------
+Wed May 09 16:00:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2+20180507.41303bc01:
+  + Bump version to 3.28.2
+  + build: Adjust to filename changes
+  + build: Introspect some more types
+  + window-group: Remove undefined function declaration
+  + clutter: Don't reference invalid pc in gir
+  + screen-cast: Handle PipeWire errors more gracefully
+  + wayland/xdg-foreign: Fix child surface validation check
+  + wayland/xdg-foreign: Send immediate destroy event to correct
+    resource
+  + build: Don't fail immediately when logind is missing
+  + wayland: Check if state and size changed before calling
+    move_resize()
+  + wayland: Add function to query if window needs move or resize
+  + window: Let implementations finish state changes
+  + wayland: avoid a crash in is_effectively_synchronized()
+  + native: Restore previous EGL state after blitting onto
+    secondary GPU
+  + cogl: Do not unref a NULL object
+  + monitor-manager: Find active monitor when deriving global scale
+  + wayland: Let IM events go through
+  + backend: Don't center the pointers on monitor changes
+  + backends: Don't center the pointer on initialization
+  + xwayland: Don't abort if Xwayland crashes
+  + xwayland: use g_autoptr for GError in xserver_died
+  + theme, frames: Use surface device scale instead of cairo_scale
+  + wayland: Do not reset frame list when merging pending state
+  + clutter: Set slave=master in IM forwarded key events
+
+-------------------------------------------------------------------
+Wed Apr 18 12:17:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1+20180416.d3d5eb8e1:
+  + idle-monitor: Add ResetIdletime API, for testing purposes
+  + backend: Reset idle when lid is opened or resuming from suspend
+  + idle-monitor: Take idle inhibition into account
+  + x11: Allow XTest and core events to reset idletime
+  + backends: Remove X11 idle-monitor backend
+  + wayland: Plug surface pending state contents leak
+  + monitor-manager: fix output ids returned by GetResources
+  + native: Disable the use of KMS modifiers by default
+  + Updated translations.
+- Switch back to using git-checkout via source-service, upstream
+  seems unable to produce tarballs.
+- Following the above, add libtool BuildRequires and pass
+  autogen.sh to bootstrap.
+
+-------------------------------------------------------------------
+Thu Apr  5 19:30:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Pass --enable-gles2=yes to configure, build gles2 support in
+  cogl, disabled by default from upstream. We already had the
+  needed pkgconfig(glesv2) BuildRequires in place.
+
+-------------------------------------------------------------------
+Thu Mar 22 20:04:16 CET 2018 - hpj@suse.com
+
+- Retire mutter-xwayland-use-gdm-auth-file.patch in favor of
+  mutter-xwayland-create-xauthority.patch (bsc#1084737). We now
+  create the cookie in mutter itself.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:57:50 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Mar 14 01:58:11 CET 2018 - hpj@suse.com
+
+- Add mutter-xwayland-use-gdm-auth-file.patch (bsc#1084737): If
+  an Xauthority file was created for us by the display manager,
+  pass it to Xwayland -auth.
+
+-------------------------------------------------------------------
+Mon Mar 12 22:55:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.0:
+  + Fix xdg-foreign regression (glgo#mutter#63).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 17:29:02 UTC 2018 - dimstar@opensuse.org
+
+- Obsolete libmutter-1-0 by libmutter-2-0: Needed in order to make
+  upgrades work reliably. As libmutter is so closely tied to mutter
+  itself, we should probably consider in the future to fold it back
+  into the main package.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:26:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Add mutter_major and mutter_minor define, and set them to 2 and
+  0 respectively, make future sover bumps less painfull to
+  package.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:37:38 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Fix use of modifiers with multi-GPU systems.
+  + Add xdg-shell stable support (bgo#791938).
+  + Fix scaling of icons in titlebar buttons
+    (glgo#GNOME/mutter#23).
+  + Implement missing wacom functionality on X11
+    (glgo#GNOME/mutter#48).
+  + Force 8-bit RGB config (glgo#GNOME/mutter#2).
+  + Misc. bug fixes: glgo#GNOME/mutter#6, glgo#GNOME/mutter#27,
+    bgo#792203.
+  + Updated translations.
+- Drop mutter-force-rgb8.patch: fixed upstream.
+- Rename libmutter-1-0 subpackage to libmutter-2-0, following
+  upstreams sover bump.
+
+-------------------------------------------------------------------
+Thu Mar  1 03:27:51 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Fix handling of trackball settings on wayland (bgo#787804).
+  + Apply font settings on wayland (bgo645433).
+  + Fix keybindings getting mixed up with some layouts
+    (bgo#789300).
+  + Fix bluetooth mouse cursor disappearing after idle
+    (bgo#761067).
+  + Support platforms that export EGL_KHR_platform_gbm
+    (bgo#780668).
+  + Add keyboard accessibility support on wayland (bgo#788564).
+  + Fix missing cursor when using screen magnifier (bgo#754806).
+  + Fix external monitor shutting off on wayland when lid closes
+    (bgo#788915).
+  + Add xdg-output support (bgo#787363).
+  + Add Xwayland grab keyboard support (bgo#783342).
+  + Allow shortcut inhibition of the super key (bgo#790627).
+  + Take "panel orientation" drm_connector property into account
+    (bgo#782294).
+  + Fix focus window ending up below other windows on wayland
+    (bgo#780820).
+  + Fix maximized windows restoring to a tiny size on wayland
+    (bgo#783901).
+  + Fix tap-and-drag setting on X11 (bgo#775755).
+  + Fix handling of single-touch devices on wayland
+    (bgo#792005).
+  + Support tiled/compressed buffers (bgo#785779).
+  + Port screencast support to pipewire 0.1.8 (bgo#792854).
+  + Add support for third stylus button on newer tablets
+    (bgo#790033).
+  + Fix background corruption regression on nvidia (bgo#739178).
+  + Misc. bug fixes: bgo#789153, bgo#788493, bgo#784314,
+    bgo#789227, bgo#789223, bgo#789277, bgo#782344, bgo#789552,
+    bgo#789553, bgo#788695, bgo#789984, bgo#788764, bgo#789386,
+    bgo#784545, bgo#790336, bgo#790358, bgo#791022, bgo#791006,
+    bgo#789070, bgo#772218, bgo#791383, bgo#791809, bgo#776220,
+    bgo#791916, bgo#792281, bgo#790309, bgo#791371, bgo#792527,
+    bgo#792599, bgo#788834, bgo#792765, bgo#792062, bgo#645460,
+    bgo#792853, bgo#792818, bgo#789501, bgo#789961,
+    glgo#GNOME/mutter#2, glgo#GNOME/mutter#8, glgo#GNOME/mutter#12,
+    glgo#GNOME/mutter#10, glgo#GNOME/mutter#13,
+    glgo#GNOME/mutter#1, glgo#GNOME/mutter#26,
+    glgo#GNOME/mutter#28, glgo#GNOME/mutter#35,
+    glgo#GNOME/mutter#36, glgo#GNOME/mutter#38.
+- Rebase mutter-force-rgb8.patch.
+
+-------------------------------------------------------------------
+Thu Mar  1 03:27:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + Support hybrid GPU systems (bgo#785381).
+  + Fix monitor-manager not chaining up to the parent after new
+    implementation addition (bgo#788921).
+- Add BuildRequires: Mesa-libGLESv3-devel, new upstream
+  dependency; this is actually not detected by the configure
+  script, so builds end up failing at the make stage when the
+  headers are not installed (bgo#789192).
+- Stop using git-checkout via source service, return to upstream
+  released tarballs.
+- Following the above, drop libtool BuildRequires and stop passing
+  autogen.sh, no longer needed.
+
+-------------------------------------------------------------------
+Wed Feb 28 09:36:10 UTC 2018 - fcrozat@suse.com
+
+- Add mutter-force-rgb8.patch: force 8-bit RGB EGL config,
+  to prevent slowness when using Wayland with 10-bit display
+  (bsc#1081931 glgo#GNOME/mutter#2).
+
+-------------------------------------------------------------------
+Sun Feb 18 13:11:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2+20180207.4b2d21ff0:
+  + renderer/x11: Enable GPU memory purge error extension if
+    available (bgo#739178).
+  + cogl/x11/renderer: Silence introspection warning (bgo#739178).
+  + backends/x11: Preserve XI1 XDevice throughout
+    ClutterInputDevice lifetime (glgo#mutter#7).
+
+-------------------------------------------------------------------
+Wed Jan 31 23:20:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2+20180127.d32d358a6:
+  + monitor: Set MINIMUM_LOGICAL_HEIGHT to 480.
+  + Don't attempt to get monitor geometry on non-existent monitors.
+  + wayland:
+    - Shortcuts inhibitor requires a window.
+    - Ensure wl_shell_surfaces are set reactive.
+    - Only send full sequences of touch events to clients.
+  + input-settings/x11: Fix tap-and-drag libinput property name
+  + clutter/evdev: Ignore unknown touch points
+  + Revert "window: Raise and lower tile match in tandem"
+  + Updated translations.
+- Update _service url to new gitlab home.
+
+-------------------------------------------------------------------
+Thu Jan 04 20:35:43 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 3.26.2+20171231.0bd1d7cf0:
+  + Revert "window: Raise and lower tile match in tandem".
+  + wayland: Only send full sequences of touch events to clients.
+  + stage: Push framebuffer before setting up viewport.
+  + keybindings: Only add multiple keycodes from the same level.
+  + wayland-outputs: Delay wl_output destruction.
+  + monitor-manager-kms:
+    - Fix recently introduced build issue.
+    - poll() on KMS fd on EAGAIN.
+  + compositor: reset top_window_actor and remove it from windows
+    when destroyed.
+  + monitor-manager: Compare keys when checking whether a config is
+    complete.
+  + Updated translations.
+- Switch to git-checkout via source services.
+- Following the above, add intltool and libtool BuildRequires and
+  pass autogen.sh to bootstrap the generated tarball.
+- Pkgconfigy the BuildRequires, replace:
+  gobject-introspection-devel, libSM-devel, libX11-devel and
+  libXinerama-devel with pkgconfig(gobject-introspection-1.0),
+  pkgconfig(sm), pkgconfig(x11) and pkgconfig(xinerama).
+- Drop update-desktop-files BuildRequires and stop using
+  suse_update_desktop_file macro, no longer needed.
+- Drop pkgconfig(gbm) BuildRequires listed twice.
+- Run spec-cleaner, modernize spec, use make_build macro.
+
+-------------------------------------------------------------------
+Sat Nov  4 02:03:57 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.2:
+  + Work with clients that require older linux_dmabuf protocol
+    (bgo#788558).
+  + Prevent crash when closing maximized windows (bgo#788666).
+  + Use the correct monitor for HiDPI scaling of shell chrome 
+    (bgo#788820).
+  + Enable XWayland core dumps (bgo#789086).
+  + Fixes:
+    - Unredirection of fullscreen windows (bgo#788493).
+    - List of supported monitor scales on X11 (bgo#788901).
+    - Handling of trackball settings on wayland (bgo#787804).
+    - Miscellaneous:
+      . Multi-monitor regressions and crashes (bgo#788607,
+        bgo#788860, bgo#789153, bgo#786929, bgo#789501).
+      . Bug fixes: bgo#788572, bgo#788569, bgo#784314, bgo#789227,
+        bgo#789223, bgo#782344, bgo#789552, bgo#789553, bgo#789300.
+  + Updated translations.
+- Drop fixed upstream patches:
+  mutter-wayland-dma-buf-modifiers-fix.patch,
+  mutter-x11-Protect-XChangeProperty-call.patch,
+  mutter-handle-no-to-no-monitor.patch and
+  mutter-preferred-mode.patch.
+- Drop %glib2_gsettings_schema_requires macro: the functionality is
+  covered by file triggers now.
+- Point fdupes to the /usr directory instead of the build root,
+  which is a practice that must be avoided.
+
+-------------------------------------------------------------------
+Thu Oct 19 21:47:53 UTC 2017 - mgorse@suse.com
+
+- Add mutter-handle-no-to-no-monitor.patch: fix possible crash when
+  turning monitor off and on while logged in (bgo#788607).
+- Add mutter-preferred-mode.patch: fix a crash on some ATI (radeon)
+  configurations (bgo#789153).
+
+-------------------------------------------------------------------
+Tue Oct 10 13:03:00 UTC 2017 - zaitor@opensuse.org
+
+- Add mutter-wayland-dma-buf-modifiers-fix.patch: Don't send
+  modifiers to old clients (bgo#788558).
+- Add  mutter-x11-Protect-XChangeProperty-call.patch: Protect
+  XChangeProperty call with error traps (bgo#788666).
+
+-------------------------------------------------------------------
+Wed Oct  4 19:55:42 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Fix crash when respawning shortcut inhibitor dialog
+    (bgo#787568).
+  + Fix crash during monitor configuration migration (bgo#787668).
+  + Fix multihead regressions in X11 session (bgo#787477).
+  + Fix screen rotation regressions (bgo#787836).
+  + Fix keybindings not being resolved with non-latin layouts
+    (bgo#787016).
+  + Support snap packages for sandboxed app IDs (bgo#788217).
+  + Fix crash when reconnecting tablet device (bgo#787649).
+  + Support running headless (bgo#730551, bgo#787637).
+  + Support _NET_RESTACK_WINDOW and ConfigureRequest siblings
+    (bgo#786365).
+  + Fix monitor layout not being remembered across sessions
+    (bgo#787629).
+  + Make sure to export _NET_NUMBER_OF_DESKTOPS (bgo#760651).
+  + Allow resizing of tiled windows (bgo#645153).
+  + Export tiling information to clients (bgo#751857).
+  + Misc. bug fixes: bgo#787570, bgo#787715, bgo#787953,
+    bgo#788049, bgo#788199, bgo#788292, bgo#788197.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + mutter-wayland-fixes.patch.
+  + mutter-monitor-refresh-rate.patch.
+  + mutter-fix-kinetic-scrolling.patch.
+  + mutter-monitor-config-manager-rotation-fix.patch.
+  + mutter-fix-hidpi-scaling-x11.patch.
+  + mutter-bsc1052058-NET_RESTACK_WINDOW-Respect-sibling.patch.
+
+-------------------------------------------------------------------
+Mon Oct  2 11:57:00 CEST 2017 - vliaskovitis@suse.com
+
+- Add mutter-bsc1052058-NET_RESTACK_WINDOW-Respect-sibling.patch:
+  Implement _NET_RESTACK_WINDOW and respect sibling field of
+  XConfigureRequestEvent. This way X11 window stack operations work
+  as expected.
+  (bsc#1052058, bgo#786363, bgo#786365)
+
+-------------------------------------------------------------------
+Mon Sep 25 21:10:56 UTC 2017 - zaitor@opensuse.org
+
+- Add mutter-fix-hidpi-scaling-x11.patch: Fix hidpi scaling
+  regression when using X11 (bgo#788049).
+
+-------------------------------------------------------------------
+Mon Sep 25 11:21:03 UTC 2017 - badshah400@gmail.com
+
+- Add mutter-monitor-config-manager-rotation-fix.patch: Fix
+  transformation when rotating screen so that rotation by 90/270
+  deg don't show a black screen; patch taken from upstream git
+  (bgo#787836).
+
+-------------------------------------------------------------------
+Fri Sep 15 08:50:28 UTC 2017 - zaitor@opensuse.org
+
+- Add mutter-wayland-fixes.patch: Three bugfix commits from
+  upstream for wayland (bgo#787570, bgo#787568).
+- Add mutter-monitor-refresh-rate.patch: Fix refresh rate for some
+  users (bgo#787668).
+- Add mutter-fix-kinetic-scrolling.patch: Fix kinetic scrolling.
+
+-------------------------------------------------------------------
+Thu Sep 14 14:39:13 UTC 2017 - fezhang@suse.com
+
+- Drop SLE12 / Leap42 conditionals and build with wayland
+  unconditionally.
+
+-------------------------------------------------------------------
+Tue Sep 12 19:59:13 UTC 2017 - zaitor@opensuse.org
+
+- Add disabled pkgconfig(libpipewire-0.1) BuildRequires and 
+  --enable-remote-desktop configure flag, enable support for
+  remote desktop and screen cast when the dependency is available
+  in openSUSE.
+
+-------------------------------------------------------------------
+Tue Sep 12 19:33:28 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+- Changes from version 3.25.92:
+  + Add screencast and remote desktop support (bgo#784199).
+  + Support running with no attached monitors (bgo#730551).
+  + Add a vertical gradient effect to background actor (bgo#786618).
+  + Misc. bug fixes: bgo#786619, bgo#786677, bgo#772218, bgo#786918,
+    bgo#760670.
+  + Updated translations.
+- Drop mutter-no-mandatory-eglGetPlatformDisplayEXT.patch and
+  mutter-new-libgudev.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep  7 18:09:43 UTC 2017 - zaitor@opensuse.org
+
+- Add mutter-new-libgudev.patch: Fix build with new libgudev
+  (bgo#760670).
+
+-------------------------------------------------------------------
+Thu Aug 24 07:59:06 UTC 2017 - zaitor@opensuse.org
+
+- Add mutter-no-mandatory-eglGetPlatformDisplayEXT.patch: egl:
+  Don't require eglGetPlatformDisplayEXT. Trying to unilaterally
+  require eglGetPlatformDisplayEXT causes problems in scenarios
+  where this method is not available. Besides, this should only be
+  required on Wayland, so we can stop requiring it always and
+  simply let the eglGetPlatformDisplay() function error accordingly
+  when needed (bgo#786619).
+
+-------------------------------------------------------------------
+Tue Aug 22 08:20:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Reduce memory use of suspended instances (bgo#786299).
+  + Make supported scales determination saner (bgo#786474).
+  + Fix crash on inhibit-shortcuts dialog reponse (bgo#786385).
+  + Support libinput's tag-and-drag setting (bgo#775755).
+  + Avoid overlapping keybindings with multiple layouts
+    (bgo#786408).
+  + Fix non-transformed cursor on rotated monitors (bgo#786023).
+  + Avoid unnecessary work during background painting (bgo#783512).
+  + Misc. bug fixes: bgo#691611, bgo#786300, bgo#777732,
+    bgo#786568.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 21 12:40:17 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Add zwp_linux_dmabuf_v1 support (bgo#785262).
+  + Add (x)wayland shortcut inhibitor support (bgo#783342).
+  + Misc. bug fixes: bgo#785263, bgo#785347, bgo#767805.
+  + Updated translations.
+- Rename libmutter-0-0 subpackage to libmutter-1-0, following
+  upstreams soname change.
+
+-------------------------------------------------------------------
+Tue Aug  8 18:34:12 UTC 2017 - coolo@suse.com
+
+- libinput is needed also without wayland, so buildrequire
+  it unconditionally
+
+-------------------------------------------------------------------
+Thu Jul 20 13:25:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Do not throttle motion events on tablet tools (bgo#783535).
+  + Handle left-handed mode on pen/eraser devices (bgo#782027).
+  + Add wl_surface.damage_buffer() support (bgo#784080).
+  + Fix crash when moving across on-adjacent monitors (bgo#783630).
+  + Fix window moving/resizing via tablet tools (bgo#777333).
+  + Support fractional monitor scaling (bgo#765011).
+  + Keep override-redirect windows stacked on top (bgo#780485).
+  + Implement tablet rings/strips configuration (bgo#782033).
+  + Support tablet wheel events on wayland (bgo#783716).
+  + Move g-s-d xrandr functionality into mutter (bgo#781906).
+  + Misc. bug fixes: bgo#783502, bgo#784009, bgo#784223,
+    bgo#784272, bgo#784402, bgo#784881, bgo#762083, bgo#784867,
+    bgo#781723.
+- Drop desktop_database_post(un) and
+  glib2_gsettings_schema_post(un) from post(un), no longer needed
+  as we have file-triggers to take care of this for us now.
+
+-------------------------------------------------------------------
+Thu Jul 20 13:25:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Ignore hotplug-mode-update value on startup (bgo#783073).
+  + Implement configurable monitor scales on X11 (bgo#777732).
+  + Fix handling of tiled monitors (bgo#781723).
+  + Handle multiple keycodes for keysym (bgo#781223).
+  + Consider subsurfaces when grabbing (bgo#781811).
+  + Fix logic for HiPDPI scaling of TV outputs (bgo#777347).
+  + Fix handling of left-handed mode on pen/eraser devices
+    (bgo#782027).
+  + Fix output cycling in non-display-attached tablets (bgo#782032).
+  + Fix wacom cursor offset on wayland (bgo#784009).
+  + Handle EXIF orientation of backgrounds (bgo#783125).
+  + Misc. bug fixes: bgo#772218, bgo#783161, bgo#780407,
+    bgo#783113, bgo#783293, bgo#783505, bgo#781703.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 20 13:25:03 UTC 2017 - zaitor@opensuse.org
+
+- Move SLE only patches to patch number 1000 and above.
+- Rename mutter-bell.patch to mutter-SLE-bell.patch,
+  mutter-bsc984738-grab-display.patch to
+  mutter-SLE-bsc984738-grab-display.patch and
+  relax-some-constraints-on-CSD-windows-in-sle-classic.patch to
+  mutter-SLE-relax-some-constraints-on-CSD-windows.patch.
+
+-------------------------------------------------------------------
+Thu Jul 20 13:25:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Fix frame updates on hide-titlebar-when-maximized changes
+    (bgo#781862).
+  + Fix accessible screen coordinates on X11 (bgo#781902).
+  + Use less CPU when rendering fast-updating windows (bgo#782344).
+  + Compute geometry of clients that don't set one explicitly
+    (bgo#782213).
+  + Fix copy+paste of UTF8 strings between X11 and wayland
+    (bgo#782472).
+  + Fix non-wayland builds (bgo#780533).
+  + Add plugin vfunc to implement a custom force-quit dialog
+    (bgo#711619).
+  + Fix swapped red and blue channels in CoglTexture data
+    (bgo#779234).
+  + Fix build where libtool's link_all_deplibs defaults to 'no'
+    (bgo#782821).
+  + Fix glitches when opening a window maximized (bgo#781353,
+    bgo#782183).
+  + Fix wrong cursor after window underneath the pointer changed
+    (bgo#755164).
+  + Implement support for disable-while-typing option (bgo#764852).
+  + Emit size-change signal when tiling (bgo#782968).
+  + Misc. bug fixes: bgo#759085, bgo#780215, bgo#782156,
+    bgo#782152.
+  + Updated translations.
+- Drop mutter-monitor-fixes.patch and mutter-wayland-fixes.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 20 13:25:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Always sync window geometry on state changes (bgo#780292).
+  + Use EGL instead of GLX when drawing using GLES (bgo#771636).
+  + Scale relative motion deltas with monitor scale (bgo#778119).
+  + Use texture fallback when setting hardware cursor fails
+    (bgo#770020).
+  + Fix lock-up when using additional theme variants (bgo#780254).
+  + Rework low-level monitor configuration (bgo#777732).
+  + Fix building with GLES2 instead of GL (bgo#781398).
+  + Misc. bug fixes: bgo#780304, bgo#772218, bgo#781242,
+    bgo#781391.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 20 08:24:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.4:
+  + Fix wacom cursor offset on wayland (bgo#784009).
+  + Do not throttle motion events on tablet tools (bgo#783535).
+  + Handle left-handed mode on pen/eraser devices (bgo#782027).
+  + Fix crash when decreasing number of workspaces (bgo#784223,
+    boo#1045440).
+  + Fix crash when moving across on-adjacent monitors (bgo#783630).
+  + Fix window moving/resizing via tablet tools (bgo#777333).
+  + Improve stability of tablet plugs/unplugs (bgo#784881).
+  + Implement tablet rings/strips configuration (bgo#782033).
+  + Support tablet wheel events on wayland (bgo#783716).
+  + Misc. bug fixes: bgo#784402, bgo#784867, bgo#781723.
+  + Updated translations.
+- Add pkgconfig(libudev) BuildRequires: New explicit dependency.
+
+-------------------------------------------------------------------
+Thu Jul  6 10:39:29 CEST 2017 - vliaskovitis@suse.com
+
+- Add RGB16_565 format to support 16-bit color depth sessions
+  (FATE#323412, bgo#781704, bsc#1024748)
+  mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch
+
+-------------------------------------------------------------------
+Fri Jun 23 13:18:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.3:
+  + Fix handling of tiled monitors (bgo#781723).
+  + Fix swapped red and blue channels in CoglTexture data
+    (bgo#779234).
+  + Fix glitches when opening a window maximized (bgo#781353,
+    bgo#782183).
+  + Implement support for disable-while-typing option (bgo#764852).
+  + Consider subsurfaces when grabbing (bgo#781811).
+  + Fix handling of left-handed mode on pen/eraser devices
+    (bgo#782027).
+  + Fix output cycling in non-display-attached tablets
+    (bgo#782032).
+  + Fix wacom cursor offset on wayland (bgo#784009).
+  + Handle EXIF orientation of backgrounds (bgo#783125).
+  + Misc. bug fixes: bgo#782156, bgo#780407, bgo#757661,
+    bgo#783113, bgo#781703.
+- Drop mutter-monitor-fixes.patch and mutter-wayland-fixes.patch,
+  fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 18 19:03:09 UTC 2017 - zaitor@opensuse.org
+
+- Add upstream patches: mutter-monitor-fixes.patch: Various monitor
+  fixes from upstream stable git.
+  and mutter-wayland-fixes.patch: Various wayland fixes from
+  upstream stable git.
+
+-------------------------------------------------------------------
+Thu May 18 18:03:09 UTC 2017 - zaitor@opensuse.org
+
+- Add pkgconfig(libwacom) BuildRequires: Build advanced tablet
+  support.
+
+-------------------------------------------------------------------
+Thu May 11 15:29:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Don't crash when wayland clients commit to destroyed surfaces
+    (bgo#781391).
+  + Fix frame updates on hide-titlebar-when-maximized changes
+    (bgo#781862).
+  + Fix accessible screen coordinates on X11 (bgo#781902).
+  + Fix copy+paste of UTF8 strings between X11 and wayland
+    (bgo#782472).
+  + Fix non-wayland builds (bgo#780533).
+  + Misc. bug fixes: bgo#781242, bgo#780215, bgo#759085.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 15 21:44:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Always sync window geometry on state changes (bgo#780292).
+  + Use EGL instead of GLX when drawing using GLES (bgo#771636).
+  + Fix HiDPI detection on vertical monitor layouts (bgo#777687).
+  + Get double-click timing from desktop mouse settings
+    (bgo#771576).
+  + Scale relative motion deltas with monitor scale (bgo#778119).
+  + Use texture fallback when setting hardware cursor fails
+    (bgo#770020).
+  + Fix lock-up when using additional theme variants (bgo#780254).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 23 21:49:19 UTC 2017 - zaitor@opensuse.org
+
+- Add libmutter0 Obsoletes: Ease updates from older versions of
+  openSUSE (boo#1030759).
+
+-------------------------------------------------------------------
+Mon Mar 20 20:15:10 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 17:37:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Properly handle EGLOutput acquire errors (bgo#779112).
+  + Fix crash when a window closes during Alt+Tab (bgo#779483).
+  + Implement DnD handling code in wayland (bgo#765003).
+  + Fix fallout from pixel conversion optimization in 3.23.91
+    (bgo#779234).
+  + Fix mouse input stopping to work in applications (bgo#763246).
+  + Fix DnD between QT5 and GTK3 applications on wayland
+    (bgo#779757).
+  + Make EDID reading less fragile (bgo#779837).
+  + Add support for tablet grouping (bgo#779986).
+  + Misc. bug fixes and cleanups: bgo#779436, bgo#779001,
+    bgo#779745.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 15:42:55 UTC 2017 - zaitor@opensuse.org
+
+- Pass --enable-egl-device to configure, build egl support, we
+  already have the needed BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar  1 15:17:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Give libinput read-only access to /sys (bgo#778472).
+  + Allow edge-scrolling without 2-finger-scroll capable devices
+    (bgo#778554).
+  + Fullscreen windows on the requested monitor on wayland
+    (bgo#772525).
+  + Implement threaded swap_event fallback for NVIDIA driver
+    (bgo#779039).
+  + Avoid pixel conversions when storing textures from cairo
+    (bgo#779234).
+  + Misc. bug fixes: bgo#772218, bgo#776919, bgo#778831,
+    bgo#642652.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 18 13:13:17 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 3.23.90:
+  + Fix window menu placement with HiDPI (bgo#776055).
+  + Improve EGLStream support (bgo#773629).
+  + Start moving low-level monitor configuration into mutter
+    (bgo#777732).
+  + Fix erroneous key event repeats (bgo#774989).
+  + Don't hardcode seat ID in ClutterDeviceManager (bgo#778092).
+  + Fix "ghost" cursors in multi-monitor setups (bgo#771056).
+  + Use eglGetPlatformDisplay (bgo#772422).
+  + Fix erratic raise_or_lower behavior (bgo#705200).
+  + Fix coordinate mapping of absolute devices (bgo#774115).
+  + Show OSD on tablet mode switches (bgo#771098).
+  + Make mutter libs parallel installable (bgo#777317).
+  + Only apply keymap when not running nested (bgo#777800).
+  + Set right scale for tablet tool cursors on HiDPI (bgo#778474).
+  + Adjust server-side shadows to match Adwaita (bgo#744667).
+  + Misc. bug fixes bgo#774891, bgo#777389, bgo#777691,
+    bgo#778262, bgo#776543, bgo#778684, bgo#778699,
+    bgo#744667.
+- Rename sub-package libmutter0 to libmutter-0-0 to reflect
+  upstream library name change, making it paralell installable.
+- Remove
+  %global __provides_exclude_from ^%{_libdir}/mutter/.*.typelib$:
+  No longer needed as mutter is now paralell installable following
+  upstream changes.
+- Add explicit pkgconfig(gbm) BuildRequires that configure checks
+  for.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:02:15 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.3:
+  + Fix frequent freezes in multihead setups on wayland
+    (bgo#774557).
+  + Preserve root window mask on XSelectionRequest (bgo#776128).
+  + Misc. bug fixes: bgo#775478, bgo#774891, bgo#775986,
+    bgo#776036.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:02:14 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Stack docks below other windows on fullscreen monitors
+    (bgo#772937).
+  + Fix popup grabs blocking screen lock on wayland (bgo#771235).
+  + Handle touchpad pinch gestures with more than two fingers
+    (bgo#765937).
+  + Implement drawing tablet support on X11 (bgo#773779).
+  + Fix some Wine games starting minimized (bgo#774333).
+  + Fix switching between two finger- and edge scrolling on wayland
+    (bgo#771744).
+  + Implement support for EGLStream/EGLDevice (bgo#773629).
+  + Add size_changed vfunc to handle async client size changes
+    (bgo#770345).
+  + Change focus window on clicks with any modifiers (bgo#746642).
+  + Misc. bug fixes and cleanups: bgo#771067, bgo#774330,
+    bgo#774613, bgo#771297, bgo#774135, bgo#774827, bgo#774923.
+  + Updated translations.
+- Add pkgconfig(egl), pkgconfig(glesv2) and pkgconfig(xtst)
+  BuildRequires: new dependencies.
+- Drop meta-input-settings-x11.c: fixed upstream.
+- Rebase mutter-bell.patch and
+  relax-some-constraints-on-CSD-windows-in-sle-classic.patch.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:02:13 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.1:
+  + Fix handling of Escape shortcut in force-quit dialog
+    (bgo#737109).
+  + Improve pointer constraints support (bgo#771859).
+  + Really fix framebuffer capture origin offset (bgo#771502).
+  + Fix session going into idle mode immediately on startup
+    (bgo#772839).
+  + Fix mirror mode with stage views (bgo#773115).
+  + Fall back to X with connectors spread across multiple GPUs
+    (bgo#771442).
+  + Fix various crashes on wayland (bgo#771646, bgo#771858,
+    bgo#772929).
+  + Fix various placement issues on wayland (bgo#772729,
+    bgo#768039, bgo#771841, bgo#771841, bgo#773141).
+  + Misc. bug fixes: bgo#771019, bgo#773116, bgo#772914,
+    bgo#773210.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + mutter-screeenshot-coords.patch.
+  + mutter-scale-positioner-coordinates.patch.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:02:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Fix switching between two finger- and edge scrolling on wayland
+    (bgo#771744).
+  + Fix frequent freezes in multihead setups on wayland
+    (bgo#774557).
+  + Preserve root window mask on XSelectionRequest (bgo#776128).
+  + Fix window menu placement with HiDPI (bgo#776055).
+  + Fix HiDPI detection on vertical monitor layouts (bgo#777687).
+  + Fix erroneous key event repeats (bgo#774989).
+  + Fix "ghost" cursors in multi-monitor setups (bgo#771056).
+  + Use eglGetPlatformDisplay (bgo#772422).
+  + Fix erratic raise_or_lower behavior (bgo#705200).
+  + Extend tablet device checks (bgo#773779).
+  + Set right scale for tablet tool cursors on HiDPI (bgo#778474).
+  + Allow edge-scrolling without 2fg-scroll capable devices
+    (bgo#778554).
+  + Misc. bug fixes: bgo#771297, bgo#774135, bgo#775986,
+    bgo#777691, bgo#777470, bgo#778262, bgo#776919.
+  + Updated translations.
+- Drop mutter-x11-meta.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Dec  1 14:09:51 UTC 2016 - dimstar@opensuse.org
+
+- Add mutter-x11-meta.patch: Don't try setting unavailable scroll
+  methods; libinput acts really bad on it (bgo#775337, bgo#771744,
+  boo#1011356).
+
+-------------------------------------------------------------------
+Fri Nov 11 09:58:32 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + Really fix framebuffer capture origin offset (bgo#771502).
+  + Fix session going into idle mode immediately on startup
+    (bgo#772839).
+  + Fix mirror mode with stage views (bgo#773115).
+  + Improve pointer constraints support (bgo#771859).
+  + Stack docks below other windows on fullscreen monitors
+    (bgo#772937).
+  + Fix switching between two finger- and edge scrolling on wayland
+    (bgo#771744).
+  + Fix popup grabs blocking screen lock on wayland (bgo#771235).
+  + Fix various crashes on wayland (bgo#771646, bgo#771858).
+  + Fix various placement issues on wayland (bgo#768039,
+    bgo#771841, bgo#773141, bgo#772729).
+  + Misc. bug fixes: bgo#771019, bgo#773116, bgo#772914,
+    bgo#773210.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + mutter-screeenshot-coords.patch
+  + mutter-scale-positioner-coordinates.patch
+
+-------------------------------------------------------------------
+Fri Nov  4 21:38:00 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Tue Nov  1 10:09:57 UTC 2016 - zaitor@opensuse.org
+
+- Add mutter-fix-startup.patch: Fix slow startup notification for
+  some gtk3 apps when running on wayland (bgo#768531).
+
+-------------------------------------------------------------------
+Tue Oct 11 09:15:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Fix feedback loop between StClipboard and X11 bridge
+    (bgo#760745).
+  + Fall back gracefully if DRM plane rotation fails (bgo#772512).
+  + Approximate native monitor backend behavior to X (bgo#772176).
+  + Fix crash on VT switch on wayland (bgo#771646).
+  + Expose Flatpak ID for application matching (bgo#772613,
+    bgo#772614).
+- Drop mutter-fix-string-format.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 24 11:06:47 UTC 2016 - zaitor@opensuse.org
+
+- Add mutter-fix-string-format.patch: Fix string format build
+  error. Patch from upstream git.
+
+-------------------------------------------------------------------
+Fri Sep 23 21:24:33 UTC 2016 - zaitor@opensuse.org
+
+- Add more fixes to mutter-scale-positioner-coordinates.patch:
+  Still more fixes comming out of upstreams bug.
+
+-------------------------------------------------------------------
+Fri Sep 23 06:29:12 UTC 2016 - zaitor@opensuse.org
+
+- Add mutter-scale-positioner-coordinates.patch: wayland/xdg-shell:
+  Scale positioner coordinates, fix shrinking menus when on HiDPI
+  and wayland (bgo#771841).
+
+-------------------------------------------------------------------
+Wed Sep 21 13:20:08 UTC 2016 - dimstar@opensuse.org
+
+- Add mutter-screeenshot-coords.patch: yet another fix to take
+  screenshots of a specific area.
+
+-------------------------------------------------------------------
+Mon Sep 19 22:51:36 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Fix wayland crashes (bgo#771305, bgo#771345, bgo#770940,
+    bgo#771495).
+  + Fix display rotation on wayland (bgo#770672).
+  + Fix framebuffer capture origin offset (bgo#771502).
+  + Misc. bug fixes (bgo#770937, bgo#771536, bgo#771628,
+    bgo#771549).
+  + Updated translations.
+- Only apply mutter-bsc984738-grab-display.patch for SLE until it
+  can be verified that it's needed for 3.22.x too.
+
+-------------------------------------------------------------------
+Tue Sep 13 20:30:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Fix absolute pointer motion events on wayland (bgo#770557).
+  + Default to using stage views (bgo#770366).
+  + Fix animated cursors on wayland (bgo#749913).
+  + Fix various crashes on wayland (bgo#757568, bgo#770727,
+    bgo#770992).
+  + Fix screen capture for stage views not at (0, 0) (bgo#770127).
+  + Compress motion events instead of discarding them (bgo#771049).
+  + Fix XWayland pointer warp emulation (bgo#771050).
+  + Add common monitor modes in KMS backend (bgo#744544).
+  + Temporarily use g-s-d schemas for tablet configuration
+    (bgo#771315).
+  + Misc. bug fixes: bgo#770402, bgo#770647, bgo#770991,
+    bgo#770994, bgo#770929.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 10:54:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Add support for xdg-foreign protocol (bgo#769786).
+  + Support monitor rotation on wayland (bgo#745079).
+  + Port xdg-shell implementation to unstable v6 (bgo#769936).
+  + Handle unsupported buffer sizes more gracefully (bgo#770387).
+  + Use the same output naming logic as the X server on wayland
+    (bgo#770338).
+  + Fix replies in gnome-shell's chat notifications on wayland
+    (bgo#758167).
+  + Misc. bug fixes and cleanups: bgo#769276, bgo#769636,
+    bgo#770131, bgo#770324, bgo#769731.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 19 22:03:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Consider XDG_SESSION_TYPE when determining session type
+    (bgo#759388).
+  + Re-add support for edge scrolling on some touchpads
+    (bgo#768245).
+  + Support mouse and trackball acceleration profile (bgo#769179).
+  + Draw monitor contentn to individual framebuffer (bgo#768976).
+  + Support virtual input devices (bgo#765009).
+  + Set correct output scale on hotplug (bgo#769505).
+  + Bugs fixed: bgo#769014, bgo#769024, bgo#769054, bgo#769070,
+    bgo#769036, bgo#769305, bgo#769578, bgo#769800, bgo#769073.
+- Drop mutter-32bit-cogl-gles2-conflict-def.patch: Fixed upstream.
+- Drop intltool BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
+Thu Aug 18 19:07:19 UTC 2016 - zaitor@opensuse.org
+
+- Obsolete typelib-1_0-Meta-3_0 to ease updates.
+
+-------------------------------------------------------------------
+Wed Aug 17 20:43:03 UTC 2016 - dimstar@opensuse.org
+
+- Filter out private typelib provides. Providing those only breaks
+  other applications, as they won't be able to find our typelibs.
+
+-------------------------------------------------------------------
+Sun Aug  7 11:08:59 UTC 2016 - zaitor@opensuse.org
+
+- Drop typelib-1_0-Meta-3_0 subpackage, and package typelib in main
+  package with the other private libs. Following this, drop
+  typelib-1_0-Meta-3_0 Requires from devel package.
+
+-------------------------------------------------------------------
+Sat Jul 30 03:45:19 UTC 2016 - badshah400@gmail.com
+
+- Update to version 3.21.4:
+  + Fix missing frame border around GTK+ dialogs (bgo#745060).
+  + Improve X11 <-> wayland copy and paste interaction (bgo#768007).
+  + Add support for NV_robustness_video_memory_purge extension
+    (bgo#739178).
+  + Fix restoring the old focused window on restart (bgo#766243).
+  + Fix fullscreen windows on other monitors stealing focus after
+    closing a window (bgo#768221).
+  + Draw monitor content to individual framebuffer (bgo#768976).
+  + Provide screen capture API (bgo#768978).
+  + Bugs fixed: bgo#767969, bgo#768243, bgo#762407, bgo#767997,
+    bgo#768039, bgo#768977, bgo#768977.
+  + Updated translations.
+- Fix build on i586 with patch
+  mutter-32bit-cogl-gles2-conflict-def.patch taken from upstream
+  git (bgo#769014).
+
+-------------------------------------------------------------------
+Sat Jul 30 03:45:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Don't create invalid UTF-8 window description strings
+    (bgo#765535).
+  + Convert window titles and wm_class to UTF-8 (bgo#752788).
+  + Communicate tiled state to GTK+ on wayland (bgo#766860).
+  + Use kill() to force-quit unresponsive wayland clients
+    (bgo#767464).
+  + Fix window position when unmaximizing via DND on wayland
+    (bgo#764180).
+  + Avoid full window redraws when using extended frame sync
+    (bgo#767798).
+
+-------------------------------------------------------------------
+Sat Jul 30 03:45:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Clean up surface <-> shell interaction (bgo#763431).
+  + Fix grabbing random keys for disabled shortcuts (bgo#766270).
+  + Fix stacking of hidden windows on wayland (bgo#764844).
+  + Misc. bug fixes: bgo#766306, bgo#766326, bgo#751847,
+    bgo#763832, bgo#766528.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 30 03:45:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + Notify clients of pending modifier state changes (bgo#748526).
+  + Add get_is_builtin_display_on() method (bgo#765267).
+  + Fix 2-finger titlebar taps on wayland (bgo#764519).
+  + Merge clutter and cogl forks into mutter (bgo#760439).
+  + Misc. bug fixes: bgo#765058, bgo#765252, bgo#765062.
+  + Updated translations.
+- Drop pkgconfig(clutter-1.0), pkgconfig(cogl-1.0),
+  pkgconfig(clutter-egl-1.0), pkgconfig(clutter-wayland-1.0),
+  pkgconfig(clutter-wayland-compositor-1.0) BuildRequires:
+  Following upstream merging of clutter and cogl into mutter.
+- Add pkgconfig(json-glib-1.0) BuildRequires: New dependency.
+- Drop an obsolete clean section.
+- Remove mutter-tools Obsoletes: We dropped the package in version
+  3.9.90, no support for updates from openSUSE versions that old.
+
+-------------------------------------------------------------------
+Sat Jul 30 03:45:15 UTC 2016 - hpj@suse.com
+
+- Add mutter-bsc984738-grab-display.patch (bsc#984738, bgo#769387).
+
+-------------------------------------------------------------------
+Wed Jun 29 09:14:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Fix grabbing random keys for disabled shortcuts (bgo#766270).
+  + Crash fixes (bgo#751847, bgo#767969).
+  + Improve multi-monitor handling on wayland (bgo#766528).
+  + Don't create invalid UTF-8 window description strings
+    (bgo#765535).
+  + Convert window titles and wm_class to UTF-8 (bgo#752788).
+  + Use kill() to force-quit unresponsive wayland clients
+    (bgo#767464).
+  + Fix window position when unmaximizing via DND on wayland
+    (bgo#764180).
+  + Avoid full window redraws when using extended frame sync
+    (bgo#767798).
+  + Fix missing frame border around GTK+ dialogs (bgo#745060).
+  + Improve X11 <-> wayland copy and paste interaction
+    (bgo#768007).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 11 08:03:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Notify clients of pending modifier state changes (bgo#748526).
+  + Add get_is_builtin_display_on() method (bgo#765267).
+  + Fix 2-finger titlebar taps on wayland (bgo#764519).
+  + Misc. bug fixes: bgo#765058, bgo#765252, bgo#765062.
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Mon May  2 10:57:13 CEST 2016 - fcrozat@suse.com
+
+- Drop mutter-grab-display.patch, it has been fixed by upstream
+  differently.
+
+-------------------------------------------------------------------
+Wed Apr 13 17:48:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Constrain window move/resizes on wayland as on X11
+    (bgo#748819).
+  + Don't crash with invalid previous monitor configurations
+    (bgo#764286).
+  + Misc. bug fixes and cleanups: bgo#762828, bgo#764807.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 13 06:46:07 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Remove upstream patches: mutter-bnc879109-no-monitors-crash.patch
+- Refresh mutter-grab-display.patch, mutter-bell.patch,
+  relax-some-constraints-on-CSD-windows-in-sle-classic.patch
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:33 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Fix crash when using visual bell (bgo#763858).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:38:21 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Add system bell support on wayland (bgo#763284).
+  + Add gtk_surface.present to gtk-shell (bgo#763295).
+  + Handle DND drops on the root window (bgo#762104).
+  + Misc. bug fixes: bgo#762828, bgo#760745, bgo#763125,
+    bgo#762763, bgo#762661, bgo#762639, bgo#763159.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  4 13:48:48 UTC 2016 - fcrozat@suse.com
+
+- BuildRequires pkgconfig(libdrm), pkgconfig(libinput),
+  pkgconfig(libsystemd) are only needed when building native
+  backend, which is useful only under wayland and when running as
+  display server. Ensure they aren't pulled as BuildRequires when
+  wayland support is disabled. Add --enable-native-backend when
+  building wayland support.
+
+-------------------------------------------------------------------
+Thu Mar  3 19:39:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Add --nested CLI argument to fix nested wayland session
+    (bgo#758658).
+  + Fix stack - scene graph stacking synchronization issues
+    (bgo#755605).
+  + Rate-limit last-device changes to fix freezes (bgo#753527).
+  + Implement primary selection protocol (bgo#762560).
+  + Misc. bug fixes: bgo#762878, bgo#762716.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 19 18:23:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Release buffer after processing commit (bgo#761312,
+    bgo#761613).
+  + Implement pointer motion, locks and confinement on wayland
+    (bgo#744104).
+  + Add basic startup notification support on wayland (bgo#762268).
+  + Misc. bug fixes: bgo#760670, bgo#761543, bgo#752794,
+    bgo#761557.
+
+-------------------------------------------------------------------
+Fri Jan 22 08:32:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Fix updating stacking order when setting transient_for
+    (bgo#755606).
+  + Support screen rotation when supported by the driver
+    (bgo#745079).
+  + Protect against broken WM_CLASS property implementations
+    (bgo#759658).
+  + Handle wl_pointer v5 events on wayland (bgo#760637).
+  + Implement DND actions on wayland (bgo#760805).
+  + Misc. bug fixes: bgo#754711, bgo#756789, bgo#759297,
+    bgo#758613, bgo#760330, bgo#760476, bgo#759222, bgo#760670.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:40:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Correct refresh rate units on KMS/Wayland (bgo#758653).
+  + Fix crash when initial cursor position is not on a monitor
+    (bgo#756698).
+  + Fix crash when more CRTs are enabled than outputs connected
+    (bgo#751638).
+  + Fix touch pointer emulation on wayland (bgo#756754).
+  + Allow minimizing windows that don't advertise supporting it
+    (bgo#758186).
+  + Force 2-finger scroll by default if available (bgo#759304).
+  + Fix crash during XWayland initialization (bgo#751845).
+  + Ensure to send a ConfigureNotify to just mapped windows
+    (bgo#759492).
+  + Misc. bug fixes and cleanups: bgo#758239, bgo#758633,
+    bgo#755503, bgo#759374.
+  + Updated translations.
+- Add pkgconfig(wayland-protocols) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Nov 25 20:59:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Fix crash on monitor unplug (bgo#756796).
+  + Exit cleanly on initialization errors (bgo#757311).
+  + Allow to determine backend setting from session type
+    (bgo#741666).
+  + Fix DRM device detection for non-PCI devices (bgo#754911).
+  + Don't force placement of windows without buffer on wayland
+    (bgo#751887).
+  + Fix initialization of bypass compositor hint (bgo#758544).
+
+-------------------------------------------------------------------
+Tue Nov 24 22:38:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + wayland: Allow to trigger popups through keyboard/touch
+    (bgo#756296).
+  + Fix modifiers-only input source switching on Ubuntu
+    (bgo#756543).
+  + Misc. bug fixes: bgo#756675, bgo#756660, bgo#746420,
+    bgo#756548, bgo#756796, bgo#757101, bgo#757148.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 12 16:02:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Misc. crash fixes (bgo#756675, bgo#756660, bgo#757148,
+    bgo#756796).
+  + Fix modifiers-only input source switching on Ubuntu.
+  + Exit cleanly on initialization errors (bgo#757311).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 15 19:35:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Improve HiDPI support on wayland (bgo#755097).
+  + Fix doubly-scaled cursor on XWayland HiDPI (bgo#755099).
+  + Stop hiding titlebar buttons in dialogs (bgo#641630).
+  + Add support for fullscreen/unfullscreen animations
+    (bgo#707248).
+  + Misc. crash fixes: bgo#755096, bgo#754979, bgo#755490,
+    bgo#754357, bgo#745785, bgo#756642.
+  + Misc. bug fixes: bgo#743339, bgo#752047, bgo#756074,
+    bgo#756649.
+- Drop wayland-Dont-pre-multiply-root-cursor-sizes.patch and
+  wayland-Dont-scale-XWayland-pointer-cursor-sprites.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Oct  2 21:28:47 UTC 2015 - zaitor@opensuse.org
+
+- Add wayland-Dont-pre-multiply-root-cursor-sizes.patch and
+  wayland-Dont-scale-XWayland-pointer-cursor-sprites.patch: taken
+  from upstream git. Fixes for HiDPI under wayland (bgo#755099).
+
+-------------------------------------------------------------------
+Tue Sep 22 06:48:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Misc. fixes: bgo#753434.
+  + Updated translations.
+- Drop Revert-launcher-simplify-getting-session-dbus-proxy.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 19 11:08:06 UTC 2015 - zaitor@opensuse.org
+
+- Add Revert-launcher-simplify-getting-session-dbus-proxy.patch:
+  fix VT switching with wayland, patch from upstream git.
+
+-------------------------------------------------------------------
+Wed Sep 16 17:45:23 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Don't omit the background color for backgrounds that don't fill
+    the screen (bgo#754476).
+  + Fix up key state on FocusIn when running nested (bgo#753948).
+  + Find the right DRM device instead of hardcoding card0
+    (bgo#753434).
+  + Scale cursor on HiDPI screens (bgo#744932).
+  + Misc. fixes and cleanups (bgo#754545, bgo#754215, bgo#754621,
+    bgo#754715).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  3 19:13:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Send error on pointer-gesture protocol version mismatch
+    (bgo#753855).
+  + Misc. cleanups (bgo#744932).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 15:02:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Fix glitch with some fullscreen apps (bgo#753020).
+  + Fix screen update issue with NVidia driver (bgo#728464).
+  + Only call frame callbacks for surfaces that get drawn
+    (bgo#739163).
+  + Misc. bug fixes and cleanups: bgo#753222, bgo#752753,
+    bgo#753237, bgo#753380, bgo#744104, bgo#744932.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + build_fix_return_value_in_meta-sync-ring.c.patch
+  + compositor_add_support_for_GL_EXT_x11_sync_object.patch
+  + compositor_fix_GL_EXT_x11_sync_object_race_condition.patch
+  + compositor_handle_fences_in_the_frontend_X_connection.patch
+
+-------------------------------------------------------------------
+Thu Aug 13 13:15:16 UTC 2015 - idonmez@suse.com
+
+- Fix screen flickering on nvidia devices (bgo#728464).
+  + Add the following commits from the 3.16 branch:
+    - build_fix_return_value_in_meta-sync-ring.c.patch
+    - compositor_add_support_for_GL_EXT_x11_sync_object.patch
+    - compositor_fix_GL_EXT_x11_sync_object_race_condition.patch
+    - compositor_handle_fences_in_the_frontend_X_connection.patch
+- Added autoconf and automake BuildRequires and run autoreconf for
+  the patches above.
+
+-------------------------------------------------------------------
+Thu Jul 23 15:19:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + nested: Allow basic configuration of dummy outputs
+    (bgo#747089).
+  + Send wl_surface.enter and wl_surface.leave on output changes
+    (bgo#744453).
+  + Improve HiDPI handling on wayland (bgo#745655, bgo#744934).
+  + Implement compositor-side animated cursors (bgo#752342).
+  + Bugs fixed: bgo#750816, bgo#751884, bgo#752248, bgo#752551,
+    bgo#752552, bgo#752673, bgo#752674.
+- Drop mutter-devel-doc sub-package, removed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  6 18:25:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Add X11/wayland clipboard interaction (bgo#738312).
+  + Support VM monitor layout hints on wayland (bgo#750363).
+  + Bugs fixed: bgo#749994, bgo#750256, bgo#749716, bgo#748705,
+    bgo#750552, bgo#751036, bgo#750007, bgo#751136, bgo#750552,
+    bgo#751471, bgo#751715, bgo#750680.
+  + Updated translations.
++ Add pkgconfig(xrandr) BuildRequires: New optional dependency.
+
+-------------------------------------------------------------------
+Thu Jul  2 18:29:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Honor default value for click method setting (bgo#746290).
+  + Add X11/wayland clipboard interoperation (bgo#738312).
+  + Misc. bug fixes: bgo#749076, bgo#749711.
+
+-------------------------------------------------------------------
+Thu Jul  2 18:29:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Add public method to get neighboring monitor (bgo#633994).
+  + Apply the right settings to the right input devices
+    (bgo#747886).
+  + Fix scroll button setting (bgo#747967).
+  + Add support for modal hint on wayland (bgo#745720).
+  + Don't reset idle time for non-hardware events (bgo#748541).
+  + Misc. bug fixes (bgo#748478).
+
+-------------------------------------------------------------------
+Thu Jul  2 17:24:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Fix kill dialog not showing when first PING fails (bgo#749076).
+  + wayland: Reset idle time appropriately (bgo#749711,
+    bgo#749994).
+  + Fix crash when trying to focus a hidden window (bgo#751715).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 14 17:56:07 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix scroll button setting (bgo#747967).
+  + Don't reset idle time for non-hardware events (bgo#748541).
+  + Honor default value for click method setting (bgo#746290).
+  + Misc. bug fixes (bgo#748478).
+
+-------------------------------------------------------------------
+Wed Apr 15 15:22:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1.1:
+  + Prevent a crash when switching VTs or adding input devices
+    (bgo#747886).
+
+-------------------------------------------------------------------
+Wed Apr 15 06:20:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Add function to refresh all background instances (bgo#739178).
+  + Fix swapped scroll methods on wayland (bgo#746870).
+  + Manually activate stage to fix accessibility on wayland
+    (bgo#746670).
+  + Center pointer on primary monitor on startup (bgo#746896).
+  + wayland: Reword synchronized state application semantics
+    (bgo#743617).
+  + Ensure input settings are applied on startup (bgo#747434).
+  + Misc. bug fixes: bgo#744932, bgo#746509, bgo#746692,
+    bgo#746510, bo#746545, bgo#747263.
+  + Updated translations.
+- Add pkgconfig(xrender) BuildRequires: new verified dependency.
+- Drop mutter-nvidia-repaint-on-resume.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar 26 16:58:43 UTC 2015 - dimstar@opensuse.org
+
+- Change from simple %defines to %bcond_with/without, as this
+  allows to be set in prjconf without the need to patch the .spec
+  files.
+  + build_wayland has been replaced with the equivalent
+    %bcond_with, resp. %bcond_without, based on the value that was
+    originally set, resulting in no change for the build.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:31:42 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + wayland: Don't skip notifying about initial maximized state
+    (bgo#745303).
+  + Updated translations.
+- Add mutter-nvidia-repaint-on-resume.patch: Add a function to
+  refresh all background instances (boo#914149, bgo#739178).
+
+-------------------------------------------------------------------
+Wed Mar 18 08:41:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Ensure pointer visibility on monitor changes (bgo#745121,
+    bgo#745752).
+  + Fix geometry of shaded windows (bgo#746145).
+  + Take over cursor visibility handling from gsd (bgo#712775).
+  + Fix touch interaction on window decorations (bgo#745335).
+  + Add options for libinput_config_click_method (bgo#746290).
+  + Scale window decorations on HiDPI displays (bgo#744354).
+  + Misc. bug fixes: bgo#745163, bgo#746295, bgo#746098,
+    bgo#745734.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 01:19:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + wayland: Fix nested compositor mode (bgo#745401).
+  + wayland: Fix pointer constraining (bgo#727337).
+  + wayland: Fix input region on HiDPI (bgo#744933).
+  + Allow themes to style buttons differently based on function
+    (bgo#745108).
+  + Misc. bug fixes and cleanups: bgo#745141, bgo#745118,
+    bgo#745476, bgo#745442.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 20 20:36:15 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Initialize MetaOutput even when we can't get the EDID
+    (bgo#743412).
+  + Expose MetaMonitorManager to introspection (bgo#743745).
+  + Fix flash on unredirection (bgo#743858).
+  + Update xdg-shell implementation to v5 (bgo#744452).
+  + Do not try to use seat devices that aren't (yet) present
+    (bgo#744640).
+  + Add keybindings for switching to VT8-VT12 (bgo#744800).
+  + Misc bug fixes: bgo#743678, bgo#744500.
+
+-------------------------------------------------------------------
+Fri Feb 20 16:20:38 UTC 2015 - dimstar@opensuse.org
+
+- Add pkgconfig(gudev-1.0) and pkgconfig(gbm) BuildRequires in case
+  we're building with wayland support: Needed for the native (non
+  nested support).
+
+-------------------------------------------------------------------
+Fri Jan 23 21:24:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Use GTK+ theme for window decorations instead of metacity
+    (bgo#741917).
+  + Export the same EDID information on X11 and wayland
+    (bgo#742882).
+  + Apply input device configuration on wayland (bgo#739397).
+  + Implement pointer barriers on wayland (bgo#706655).
+  + Bugs fixed: bgo#741829, bgo#738630, bgo#737463, bgo#698995,
+    bgo#727893, bgo#742825, bgo#742824, bgo#742841, bgo#743173,
+    bgo#743189, bgo#743217, bgo#743254.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 19 17:04:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Don't leave left-over frames queued (bgo#738686).
+  + Set CRTC configuration even if it might be redundant
+    (bgo#740838).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 19 16:49:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Don't enable hiDPI on monitors with broken EDID (bgo##734839).
+  + Prevent crash applying monitor config for a closed lid
+    (bgo#739450).
+  + Fix "flicker" during startup transition (bgo#740377).
+  + Bugs fixed: bgo#731521, bgo#740133, bgo#738890.
+
+-------------------------------------------------------------------
+Fri Dec 19 16:44:35 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Use GResources for theme loading (bgo#736936).
+  + Fix headerbar drag getting stuck on xwayland (bgo#738411).
+- Drop following patches: mutter-black-screen-during-login.patch,
+  mutter-window-actor-unredirection-when-destroyed.patch,
+  mutter-empty-input-shapes-windows.patch,
+  mutter-left-over-queued-frames.patch,
+  mutter-dont-overwrite-send_frame_messages_timer.patch, all fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Dec 19 15:16:54 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.3:
+  + Fix crash when trying to unredirect a destroyed window
+    (bgo#740133).
+  + Fix "flicker" during startup transition (bgo#740377).
+  + Don't leave left-over frames queued (bgo#738686).
+  + Set CRTC configuration even if it might be redundant
+    (bgo#740838).
+- Drop upstreamed patches:
+  + mutter-black-screen-during-login.patch.
+  + mutter-window-actor-unredirection-when-destroyed.patch.
+  + mutter-empty-input-shapes-windows.patch.
+  + mutter-left-over-queued-frames.patch.
+  + mutter-dont-overwrite-send_frame_messages_timer.patch.
+
+-------------------------------------------------------------------
+Fri Dec 12 15:51:53 UTC 2014 - fcrozat@suse.com
+
+- Disable wayland on SLE12.
+- Remove BuildRequires pkgconfig(gbm), not needed unless building
+  native backend.
+
+-------------------------------------------------------------------
+Wed Dec  3 23:35:43 UTC 2014 - badshah400@gmail.com
+
+- Add post-release fixes from upstream:
+  + mutter-black-screen-during-login.patch: Disable ugly black
+    screen during login (bgo#740377).
+  + mutter-window-actor-unredirection-when-destroyed.patch:
+    window-actor: Do not request unredirection when destroyed
+    (bgo#740133).
+  + mutter-empty-input-shapes-windows.patch: window-x11: Fix
+    windows that set empty input shapes.
+  + mutter-left-over-queued-frames.patch: Fix problems resulting
+    in left-over queued frames (bgo#738686).
+  + mutter-dont-overwrite-send_frame_messages_timer.patch:
+    MetaWindowActor: don't overwrite send_frame_messages_timer
+    (bgo#738686).
+
+-------------------------------------------------------------------
+Wed Nov 12 20:53:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Prevent crash applying monitor config for a closed lid
+    (bgo#739450).
+  + Misc. fixes.
+
+-------------------------------------------------------------------
+Tue Nov 11 22:21:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1.5:
+  + Fix wayland hiDPI regression (bgo#739161).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 15 06:17:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Fix move-titlebar-onscreen function (bgo#736915).
+  + Fix stacking of the guard window (bgo#737233).
+  + Fix keycode lookup for non-default layouts (bgo#737134).
+  + Fix workspaces-only-on-primary handling (bgo#737178).
+  + Don't unstick sticky windows on workspace removal (bgo#737625).
+  + Do not auto-minimize fullscreen windows (bgo#705177).
+  + Upload keymap to newly added keyboard devices (bgo#737673).
+  + Apply keyboard repeat settings (bgo#728055).
+  + Don't send pressed keys on enter (bgo#727178).
+  + Fix build without wayland/native (bgo#738225).
+  + Send modifiers after the key event (bgo#738238).
+  + Fix unredirect heuristic (bgo#738271).
+  + Do not show system chrome over fullscreen windows (bgo#693991).
+  + Misc. bug fixes: bgo#737135, bgo#737581, bgo#738146,
+    bgo#738384.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:44:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Fix placement of popup windows on wayland (bgo#736812).
+  + Only increment serial once per event (bgo#736840).
+  + Fix window positioning regression with non-GTK+ toolkits
+    (bgo#736719).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 09:51:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Rewrite background code (bgo#735637, bgo#736568).
+  + Fix size in nested mode (bgo#736279).
+  + Fix destroy animation of background windows (bgo#735927).
+  + Wire keymap changes up to the wayland frontend (bgo#736433).
+  + Add a test framework and stacking tests [Owen; #736505]
+  + Simplify handling of the merged X and wayland stack
+    (bgo#736559).
+  + Fix cursor size on HiDPI (bgo#729337).
+  + Misc. bug fixes: bgo#735632, bgo#736589, bgo#736694.
+
+-------------------------------------------------------------------
+Mon Sep  8 08:58:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.91:
+  + Misc. bug fixes: bg0#735452.
+  + Updated translations.
+- Add pkgconfig(gbm) and pkgconfig(x11-xcb) BuildRequires: new
+  explicit dependencies.
+
+-------------------------------------------------------------------
+Wed Aug 20 07:50:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Only call XSync() once per frame (bgo#728464).
+  + Update capabilities on device list changes (bgo#733563).
+  + Make use of GLSL optional (bgo#733623).
+  + Handle gestures and touch events on wayland (bgo#733631).
+  + Add support for unminimize compositor effects (bgo#733789).
+  + Always set the frame background to None (bgo#734054).
+  + Add backend methods to handle keymaps (bgo#734301).
+  + Actually mark revalidated MetaTextureTower levels as valid
+    (bgo#734400).
+  + Rely on explicit -backward switcher keybindings instead of
+    <shift>-magic (bgo#732295, bgo#732385).
+  + Misc. bug fixes and cleanups: bgo#727178, bgo#734852,
+    bgo#734960.
+  + Updated translations.
+- Add pkgconfig(xkbfile), pkgconfig(xkeyboard-config),
+  pkgconfig(xkbcommon), pkgconfig(xkbcommon-x11) and
+  pkgconfig(xcb-randr) BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Thu Aug 14 08:35:16 UTC 2014 - idonmez@suse.com
+
+- Update mutter-bell.patch so it works on all cases (bnc#889218)
+
+-------------------------------------------------------------------
+Wed Jul 23 16:13:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Fix move/resize operations for wayland clients (bgo#731237).
+  + Add ::first-frame signal to MetaWindowActor (bgo#732343).
+  + Handle keysyms without the XF86 prefix (bgo#727993).
+  + Add touch gesture support.
+  + Fix a deadlock when exiting (bgo#733068).
+  + Add framework for restarting the compositor with nice visuals
+    (bgo#733026).
+  + Toggle seat capabilities on VT switch (bgo#733563).
+  + Misc bug fixes: bgo#732695, bgo#732350.
+  + Updated translations.
+- Replace pkgconfig(gio-2.0) BuildRequires with
+  pkgconfig(gio-unix-2.0), following upstreams change in configure.
+- Add pkgconfig(libinput) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Jul 12 19:01:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Improve behavior of window buttons with compositor menus
+    (bgo#731058).
+  + Implement touch support on wayland (bgo#724442).
+  + Update window shadows (bgo#731866).
+  + Keep windows on the preferred output (bgo#731760]).
+  + Misc bug fixes: bgo#729601, bgo#730681, bgo#731353, bgo#731332,
+    bgo#730527, bgo#662962.
+- Changes from version 3.13.2:
+  + Add basic HiDPI support on wayland (bgo#728902).
+  + Replace mutter-launch with logind integration (bgo#724604]).
+  + Move window menu into the compositor (bgo#726352).
+  + Fix delayed focus-follows-mouse support (bgo#730541).
+  + Support fallback app menu in window decorations (bgo#730752).
+  + Misc. bug fixes and cleanups: bgo#729732, bgo#729602,
+    bgo#726714.
+  + Updated translations.
+- Changes from version 3.13.1:
+  + Merge wayland branch.
+  + Don't prevent workspace switches for present_with_time()
+    (bgo#728018).
+  + Add shortcuts for switching to the last workspace (bgo#659288).
+  + Make move/resize menu items behave like the keybindings
+    (bgo#728617).
+  + Misc. bug fixes and cleanups: bgo#720631, bgo#727979,
+    bgo#728423, bgo#728395, bgo#729044.
+  + Updated translations.
+- Replace pkgconfig(xrender) BuildRequires with pkgconfig(xext),
+  following upstream changes.
+- Add BuildRequires for the newly merged Wayland support:
+  + pkgconfig(clutter-egl-1.0), pkgconfig(clutter-wayland-1.0),
+    pkgconfig(clutter-wayland-compositor-1.0) and
+    pkgconfig(wayland-server).
+- Add BuildRequires for session startup support using systemd:
+  + pkgconfig(libdrm) and pkgconfig(libsystemd).
+
+-------------------------------------------------------------------
+Wed Jul  9 11:53:15 UTC 2014 - cxiong@suse.com
+
+- Add relax-some-constraints-on-CSD-windows-in-sle-classic.patch:
+  CSD (Client Side Decoration) windows have invisible box wrapping
+  around them, which leads to some positioning issues as in this
+  bug report. Relax some constraints on window positioning for CSD
+  windows s.t. they can be placed at the very top of the monitor.
+  This fix works nicely for "sle-classic" as there is no top bar
+  any more, and is NOT applied in other GNOME sessions for reasons
+  stated in bgo#719772 (bnc#883491).
+
+-------------------------------------------------------------------
+Sat May 31 13:05:37 CDT 2014 - federico@suse.com
+
+- Add mutter-bnc879109-no-monitors-crash.patch:
+  Fixes a crash in Mutter when there are no usable monitors, such
+  as when a laptop is booted with the lid closed while on a docking
+  station, with the intent of plugging an external monitor later
+  (bnc#879109).
+
+-------------------------------------------------------------------
+Sat May 17 10:33:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Fix in-fullscreen state when moving between monitors
+    (bgo#728395).
+  + Fix crash when monitors change during suspend (bgo#725637).
+  + Misc. bugs fixed: bgo#728423, bgo#729732.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  7 18:54:54 CEST 2014 - sbrabec@suse.cz
+
+- Added support for gnome-patch-translation (2 strings).
+
+-------------------------------------------------------------------
+Sun Apr 27 23:49:47 UTC 2014 - dliang@suse.com
+
+- Update mutter-grab-display.patch to fix (bnc#873763)
+  remove the duplicated trap-pop.
+
+-------------------------------------------------------------------
+Wed Apr 16 06:59:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix opacity values from _NET_WM_WINDOW_OPACITY (bgo#727874).
+  + Misc. cleanups (bgo#720631).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  5 13:32:23 UTC 2014 - dimstar@opensuse.org
+
+- Move %{_datadir}/gtk-doc/html/meta/ to a separate devel-doc
+  package (in order to not conflict between mutter and
+  mutter-wayland).
+
+-------------------------------------------------------------------
+Fri Mar 28 08:40:54 UTC 2014 - dliang@suse.com
+
+- Add mutter-grab-display.patch (bnc#870285)
+  The oracle installer cannot display correctly.
+  The bug was introduced in 3.10.4 and is now fixed in upstream.
+
+-------------------------------------------------------------------
+Wed Mar 26 19:10:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 20 08:20:59 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Fix identification of CSD windows (bgo#723029).
+  + Add minimal handling of touch events (bgo#723552).
+  + Misc bug fixes and cleanups: bgo#723580, bgo#726352.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  6 07:52:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Don't use keysym to match keybindings (bgo#678001).
+  + Fix message tray icons showing up blank (bgo#725180).
+  + Improve keybinding lookups (bgo#725588).
+  + Fix dynamic updates of titlebar style properties (bgo#725751).
+  + Fix positioning of manually positioned windows (bgo#724049).
+  + Misc. bug fixes: bgo#724969, bgo#724402, bgo#722266,
+    bgo#725338.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 17:00:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Use correct output property for backlight control (bgo#723606).
+  + Fix double-scaling on high DPI resolutions (bgo#723931).
+  + Make tile previews a compositor effect (bgo#665758).
+  + Bugs fixed: bgo#722530, bgo#724257, bgo#724258, bgo#724364,
+    bgo#720631, bgo#707851, bgo#707897.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 16:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Fix CSD titlebars being placed off-screen (bgo#719772).
+  + Expose MetaWindow:skip-taskbar property (bgo#723307).
+  + Fix legacy tray icons showing up blank (bgo#721596).
+  + Fix configuration of cloned monitors (bgo#710610).
+  + Misc bug fixes and cleanups (bgo#720631, bgo#723468,
+    bgo#723563).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 15:00:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.4:
+  + Don't leave focus on windows that are being unmanaged
+    (bgo#711618).
+  + Reduce server grabs (bgo#721345, bgo#721709).
+  + Improve heuristic to determine display output name
+    (bgo#721674).
+  + Atomically unmaximize both directions (bgo#722108).
+  + Misc bug fixes (bgo#721517, bgo#721674).
+
+-------------------------------------------------------------------
+Thu Feb 20 14:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + xrandr: Use "hotplug_mode_update" property (bgo#707194).
+  + Fix position of attached dialogs for CSD windows (bgo#707194).
+  + Fix focus issues with external OSKs (bgo#715030).
+  + Add a MetaCullable interface (bgo#714706).
+  + Fix window group paint volume (bgo#719669).
+  + Fix frame extents problems (bgo#714707).
+  + Add shortcut to move windows between monitors (bgo#671054).
+  + Fix problems with focus tracking (bgo#720558).
+  + Misc. bug fixes and cleanups: bgo#712833, bgo#678989,
+    bgo#720106, bgo#720417, bgo#720630.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 13:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Fix resize operations using mouse-button-modifier (bgo#710251).
+  + Misc. fixes and cleanups (bgo#711731).
+
+-------------------------------------------------------------------
+Thu Feb 20 12:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Name the guard window (bgo#710346).
+  + Use new UPower API.
+  + Expose min-backlight-stea (bgo#710380).
+  + Don't focus the no-focus-window for globally active windows
+    (bgo#710296).
+  + Misc. fixes and cleanups: bgo#709776.
+  + Updated translations.
+- Drop mutter-use-new-upower-api.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 20 11:59:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.4:
+  + Fix CSD titlebars being placed off-screen (bgo#719772).
+  + Expose MetaWindow:skip-taskbar property (bgo#723307).
+  + Fix legacy tray icons showing up blank (bgo#721596).
+  + Fix configuration of cloned monitors (bgo#710610).
+  + Use correct output property for backlight control (bgo#723606).
+  + Bugs fixed: bgo#720630, bgo#723468, bgo#724258, bgo#724364.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 11:03:34 UTC 2014 - fcrozat@suse.com
+
+- Update mutter-bell.patch: correctly get gsetting from the right
+  schema [FATE#316042]
+
+-------------------------------------------------------------------
+Wed Feb  5 08:44:05 UTC 2014 - idonmez@suse.com
+
+- Add mutter-bell.patch to make audible bell work out of the box.
+  Implements FATE#316042
+
+-------------------------------------------------------------------
+Sat Jan 18 12:22:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.3:
+  + xrandr: Use "hotplug_mode_update" property (bgo#711216).
+  + Don't focus the no-focus-window for globally active windows
+    (bgo#710296).
+  + Fix window group paint volume (bgo#719669).
+  + Fix checks for KeyPress/ButtonPress (bgo#720545).
+  + Fix problems with focus tracking (bgo#720558).
+  + Don't leave focus on windows that are being unmanaged
+    (bgo#711618).
+  + Reduce server grabs (bgo#721345, bgo#721709).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 10 23:15:20 UTC 2013 - mgorse@suse.com
+
+- Add mutter-use-new-upower-api.patch: Support UPower 0.99.
+
+-------------------------------------------------------------------
+Thu Nov 14 17:31:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Fix resize operations using mouse-button-modifier (bgo#710251).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 16 06:50:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1.1:
+  + Don't assert that at least one output is connected
+    (bgo#709009).
+- Changes from version 3.10.1:
+  + Don't apply fullscreen workarounds to CSD windows (bgo#708718).
+  + Fix hangs during DND operations (bgo#709340).
+  + Use nearest-pixel interpolation when possible (bgo#708389).
+  + Fix tile previews getting stuck on right click during drags
+    (bgo#704759).
+  + Misc bug fixes: bgo#708420.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 25 17:51:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0.1:
+  + Fix bug when a window changed size twice in a single frame;
+    this can happen with GTK+ client-side decorations (bgo#708367).
+
+-------------------------------------------------------------------
+Tue Sep 24 07:49:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 06:56:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Don't create a dummy texture for the texture pipeline template
+    (bgo#707458).
+  + Remove holes generated by disabling the laptop lid
+    (bgo#707473).
+  + Don't require plugins to pass event to Clutter (bgo#707482).
+  + Add support for more cursor types (bgo#707919).
+  + Immediately fire idle watches that are already expired
+    (bgo#707302).
+  + Bugs fixed: bgo#707474, bgo#707563, bgo#707649, bgo#708070.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:46:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Drop man pages for removed utilities (bgo#706579).
+  + Add support for idle tracking (bgo#706005).
+  + Skip CRTC reconfigurations that have no effect (bgo#706672).
+  + Ignore skip-taskbar hints on parentless dialogs (bgo#673399).
+  + Don't save pixbuf data in user data (bgo#706777).
+  + Don't queue redraws for obscured regions (bgo#703332).
+  + Turn blending off when drawing entirely opaque regions
+    (bgo#706930).
+  + Check event timestamps before reconfiguring (bgo#706735).
+  + Misc bug fixes: bgo#706582, bgo#706598, bgo#706787,
+    bgo#706729, bgo#706825, bgo#707081, bgo#707090, bgo#707250,
+    bgo#707267.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 22 05:54:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Add support for _GTK_FRAME_EXTENTS (bgo#705766).
+  + Fix quick consecutive <super> presses breaking keyboard input
+    (bgo#666101).
+  + Work towards running as wayland compositor:
+    - Add DBus API for display configuration (bgo#705670,
+      bgo#706231, bgo#706233, bgo#706322, bgo#706382).
+    - Add abstraction layer for cursor tracking (bgo#705911).
+    - Add support for plugin modality under wayland (bgo#705917).
+  + Disable GTK+ scaling (bgo#706388).
+  + Disable blending while updating tower.
+  + Misc bug fixes and cleanups: bgo#703332, bgo#704437,
+    bgo#706207.
+  + Updated translations.
+- Add pkgconfig(upower-glib) and pkgconfig(gnome-desktop-3.0)
+  BuildRequires: new dependencies.
+- Drop now empty mutter-tools subpackage (empty, as the related
+  utilities were removed upstream.
+- Obsolete mutter-tools by the main package (not provided). This
+  helps for clean updates.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:30:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Don't select for touch events on the stage (bgo#697192).
+  + Don't queue redraws for obscured regions (bgo#703332).
+  + Export timestamp of global keybinding events (bgo#704858).
+  + Misc bug fixes and cleanups (bgo#703970).
+
+-------------------------------------------------------------------
+Wed Jul 10 18:56:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.4:
+  + Tweak window shadows (bgo#702141).
+  + Ignore our own focus events for focus prediction (bgo#701017).
+  + Add API to query if the stage is focused (bgo#700735).
+  + Add API to query the monitor for a given position.
+  + Don't force attached dialogs to be border-only (bgo#702764).
+  + Allow slicing of backgrounds to avoid texture size limits
+    (bgo#702283).
+  + Miscellaneous bug fixes and cleanups: (bgo#701224, bgo#702564).
+
+-------------------------------------------------------------------
+Thu Jun 20 10:31:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Ensure events are always reported to the grab window
+    (bgo#701219).
+  + Use new clutter_stage_set_paint_callback() function to prevent
+    dropping frames with frame synced toolkits (bgo#698794).
+
+-------------------------------------------------------------------
+Tue May 28 19:54:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Add meta_window_can_close() function (bgo#699269).
+  + Add support for string-array preferences (bgo#700223).
+  + Fix a potential race condition with _NET_WM_MOVERESIZE
+    (bgo#699777).
+  + Fix shade window action (bgo#693714).
+  + Remove overlay_group (bgo#700735).
+  + Improve tracking of the focus window (bgo#647706).
+  + Add API to freeze/unfreeze the keyboard (bgo#697001).
+  + Grab and emit a signal when XK_ISO_Next_Group is pressed
+    (bgo#697002).
+  + Other fixed bugs: bgo#699636, bgo#700735, bgo#697000.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  1 08:18:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Fix miscellaneous memory leaks (bgo#698710).
+  + Misc fixes and cleanups (bgo#698179, bgo#697758).
+
+-------------------------------------------------------------------
+Tue Apr 16 20:23:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix crash when getting default font (bgo#696814).
+  + Fix ungrabbing of keybindings (bgo#697003).
+  + Misc fixes and cleanups: bgo#697758.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 22:38:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Address major memory leak when changing backgrounds
+    (bgo#696157).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:04:19 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.92:
+  + Build and improve reference docs (bgo#676856, bgo#695641,
+    bgo#695935).
+  + Add tracking of whether there are fullscreen windows
+    (bgo#649748).
+  + Bugs fixed: bgo#695269, bgo#695711, bgo#694046, bgo#695813,
+    bgo#695881, bgo#676856, bgo#696053, bgo#682779, bgo#696089,
+    bgo#696091, bgo#696087.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 10:19:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Fix windows being treated as remote after hostname changes
+    (bgo#688716).
+  + Add meta_window_get_all_monitors() (bgo#646861).
+  + Add grab API for externally defined accelerators (bgo#643111).
+  + Make session registration an explicit step (bgo#694876).
+  + Avoid unnecessary stage redraws (bgo#694988, bgo#695006).
+  + Misc fixes: bgo#694801, bgo#694725, bgo#694641, bgo#694393,
+    bgo#678917, bgo#695093, bgo#694837, bgo#695135, bgo#694771,
+    bgo#694321.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 20:20:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Support _NET_WM_OPAQUE_REGION (bgo#679901).
+  + Add wrapper for XI2.3 pointer barriers (bgo#677215).
+  + Update style of resize popups (bgo#692741).
+  + Implement compositor <-> application frame synchronization
+    (bgo#685463).
+  + Handle animated backgrounds (bgo#682427).
+  + Add a new window group for override-redirect windows
+    (bgo#633620).
+  + Pass on pointer events on guard window to Clutter (bgo#681540).
+  + Show correct shortcut in window menus (bgo#694045).
+  + Don't put minimized windows at the back of alt-tab
+    (bgo#693991).
+  + Misc bug fixes and cleanups: bgo#692679, bgo#693354,
+    bgo#690581, bgo#693439, bgo#692718, bgo#693475, bgo#693482,
+    bgo#693540, bgo#690580, bgo#680990, bgo#693833, bgo#693922,
+    bgo#693854, bgo#694224.
+  + Updated translations.
+- Add pkgconfig(xi) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Feb 14 21:35:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Don't allow multiline window titles (bgo#683056).
+  + Make meta_window_located_on_workspace() public (bgo#691744).
+  + Request XI2.3 (bgo#692877).
+  + Add meta_window_set_icon_geometry() method (bgo#692997).
+  + Require XFixes 5.0 (bgo#677215).
+  + Change unredirection hints to match spec changes (bgo#693064).
+  + Improve unredict heuristicts (bgo#683786).
+  + Misc bug fixes and cleanups: bgo#691874, bgo#679901,
+    bgo#692952, bgo#693042.
+  + Updated translations.
+- Drop mutter-correctly-create-new-pixmap.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 14 20:35:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Add support to bypass compositor hints (bgo#683020)
+  + Make automaximization optional (bgo#680990)
+  + Add method for checking if the application is responding
+    (bgo#684340)
+  + Expose the xinput opcode (bgo#690590)
+  + Rebrand "minimize" as "hide" (bgo#682887)
+  + Misc bug fixes and cleanups: bgo#690454, bgo#690573,
+    bgo#690593, bgo#690956, bgo#691363, bgo#690609, bgo#690317,
+    bgo#689263.
+  + Updated translations.
+- Drop BUILD_FROM_VCS logic, as it's not used anyway.
+
+-------------------------------------------------------------------
+Thu Feb 14 19:35:03 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.3:
+  + Fix maximized windows jumping to other monitors (bgo#556696)
+  + Add 'switch-applications' keybinding (bgo#688913)
+  + Add a convenience method to focus the default window
+    (bgo#689652)
+  + Increase typical icon size to 96 (bgo#689651)
+  + Port to XInput2 (bgo#688779)
+  + Give dynamic keybindings a keybinding action (bgo#682315)
+  + Misc. fixes and cleanups (bgo#688777)
+  + Updated translations.
+- Drop mutter-stop-jumping-windows.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 14 18:35:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Fix spurious focus changes when showing desktop (bgo#686928)
+  + MetaPluginManager: don't send events to Clutter twice
+    (bgo#686406)
+  + Add the ability to add shader hooks to MetaBackgroundActor
+    (bgo#669798)
+  + Only process keyboard mapping events for the core X keyboard
+    (bgo#674859)
+  + Import keybinding files from Metacity (bgo#687672)
+  + Add compositor hook to process keybindings selectively
+    (bgo#688202)
+  + MetaBackgroundActor: add a setter for GLSL uniforms
+    (bgo#682536)
+  + Misc. fixes and cleanups: bgo#688182
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 14 17:35:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + screen: Ignore num-workspaces when using dynamic workspaces
+    (bgo#685439)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 14 16:35:03 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.6.3:
+  + Fix maximized windows jumping between monitors (bgo#556696).
+  + Fix windows turning black when redirected again (bgo #693042).
+  + Updated translations.
+- Drop mutter-stop-jumping-windows.patch and
+  mutter-correctly-create-new-pixmap.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb  8 22:04:46 UTC 2013 - badshah400@gmail.com
+
+- Add mutter-correctly-create-new-pixmap.patch to correctly create
+  a new pixmap when redirecting a window again; patch taken from
+  upstream git. Fixes bgo#693042.
+
+-------------------------------------------------------------------
+Mon Jan 21 23:43:46 UTC 2013 - zaitor@opensuse.org
+
+- Add mutter-stop-jumping-windows.patch, windows might in some
+  cases jump from one monitor to an other, this patch fixes this.
+  (bgo#556696).
+
+-------------------------------------------------------------------
+Tue Nov 13 12:12:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Only process keyboard mapping events for the core X keyboard
+    (bgo#674859)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 16 07:16:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix crash when opening large popup menus (bgo#681676)
+  + window: Don't move the desktop window after monitor hotplug
+    (bgo#681159)
+  + Expose MetaPlugin to introspection (bgo#671098)
+  + Optionally delay focus changes in focus-follows-mouse mode
+    (bgo#678169)
+  + Resize the guard window when the X screen is resized
+    (bgo#670396)
+  + display: Only manage the default X screen (bgo#648156)
+  + Misc cleanups (bgo#587255)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 06:46:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 13:50:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + screen: Allow NULL out arguments in meta_screen_get_size
+  + display: Add API to set wm_name / wm_keybindings (bgo#671010)
+  + Improve the not responding dialog (bgo#684306)
+  + Misc. bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 17:22:33 UTC 2012 - vuntz@opensuse.org
+
+- Split a mutter-data subpackage where we put data files (gsettings
+  schema, keybindings, etc.) that are needed by libmutter0:
+  + Without this, gnome-shell would not run if mutter is not
+    installed (which shouldn't be necessary).
+  + Move the use of %glib2_gsettings_schema_* macros from the main
+    subpackage to mutter-data.
+  + Add a Requires for mutter-data to libmutter0.
+- Split a typelib-1_0-Meta-3_0 metapackage:
+  + The typelib is private, but we have no other choice than a
+    subpackage:
+    - it makes no sense to ship it as part of the mutter subpackage
+      (since gnome-shell would then install it)
+    - we can't ship it as part of libmutter0 because of the fixed
+      dependencies it has.
+  + Of course, this is abusing the package conventions for
+    typelibs.
+  + Add a typelib-1_0-Meta-3_0 Requires to devel subpackage.
+- Move ownership of %{_libdir}/mutter/plugins/ directory to
+  libmutter0, since gnome-shell will need this directory too.
+
+-------------------------------------------------------------------
+Tue Sep  4 08:33:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Fix subtracting unredirected windows from visible region
+    (bgo#677116)
+  + Minor improvements and bugfixes (bgo#682648, bgo#682993)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  2 19:46:10 UTC 2012 - dimstar@opensuse.org
+
+- Split out libmutter0 to follow SLPP (bnc#706930).
+- Change mutter requires to libmutter0: it's all what's needed to
+  develop against this library.
+- Move /sbin/ldconfig calls from post/postun of the main package to
+  libmutter0.
+
+-------------------------------------------------------------------
+Tue Aug 21 15:01:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Fix logic for handling translations of the windows group
+    (bgo#681221)
+  + Handle painting inside a Clutter clone (bgo#681953)
+  + Update overlay-key on settings changes (bgo#681906)
+  + Add keybinding for overlay-key (bgo#665547)
+  + Minor fixes and improvements
+  + Updated translations.
+- Drop gnome-doc-utils-devel BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Tue Aug  7 09:21:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Fix flickering around windows when using window group
+    (bgo#681221)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 11:18:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Make it possible to reimplement move-to-workspace keybindings
+    from plugins (bgo#674104)
+  + Add a preference to ignore hide-titlebar-when-maximized hint
+    (bgo#678947)
+  + window: Also use hide-titlebar-when-maximized when tiled
+    (bgo#679290)
+  + Center modal dialogs on their parent instead (bgo#674499)
+  + Reduce amount of markup in translated messages (bgo#679660)
+  + Fix focus problem after closing a window with
+    focus-follows-mouse (bgo#675982)
+  + Handle changes of the attach-modal-dialogs preference
+    (bgo#679904)
+  + Do not restore tiling on unmaximize (bgo#677565)
+  + Bugs fixed: bgo#673824, bgo#679153)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 21:13:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Simplify plugin system [bgo#676855]
+  + meta-window-actor: Don't unredirect shaped windows [bgo#677657]
+  + screen: Add new public meta_screen_get_current_monitor API
+    [bgo#642591]
+  + frames: Increase the size of resize corners [bgo#677669]
+  + window: Make some window methods public [bgo#678126]
+  + Fix crash when running mutter stand-alone [bgo#678238]
+  + meta-window-actor: Fix potential crash in shaping code
+    [bgo#677977]
+  + Misc. fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun  7 20:21:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + keybindings: Remove 'toggle-recording' binding [bgo#674376]
+  + Switch to gtk-doc syntax [bgo#673752]
+  + shaped-texture: never slice shape mask texture [bgo#674731]
+  + Make Mutter stop relying on Cogl including a GL header
+    [bgo#672711]
+  + Make support for "XFree86" Xinerama mandatory [bgo#674727]
+  + meta_window_move_frame(): fix crash when frame is NULL
+    [bgo#675254]
+  + Fix memory leaks [bgo#672640]
+  + Code cleanups [bgo#671104, bgo#674876, bgo#676052]
+  + Look for themes in XDG user data dir [bgo#675316]
+  + Remove frame pixel caching [bgo#675111]
+  + stack: Ignore keep-on-top property on maximized windows
+    [bgo#673581]
+  + Misc. fixes
+  + Updated translations.
+- Drop mutter-fix-crash-when-frame-is-NULL.patch: fixed upstream.
+- Drop mutter-never-slice-shape-mask.patch: fixed upstream.
+- Drop mutter-use-cogl-texrect-api.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 31 14:25:43 UTC 2012 - fcrozat@suse.com
+
+- Add mutter-never-slice-shape-mask.patch,
+  mutter-use-cogl-texrect-api.patch: Fix window texturing on
+  hardware without ARB_texture_non_power_of_two (rh#813648,
+  bgo#674731, bgo#672711).
+
+-------------------------------------------------------------------
+Sat May  5 07:50:00 UTC 2012 - zaitor@opensuse.org
+
+- Add mutter-fix-crash-when-frame-is-NULL.patch: fixes crashes in
+  various extensions.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:37:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + API change: the meta_display_add_keybinding() function added in
+    3.4 wasn't usable from a GNOME Shell extension, so has been
+    changed to take a GSettings object rather than the name of a
+    schema [bgo#673014]
+  + Don't try to auto-maximize not-maximizable windows; this fixes
+    the problem with the Nautilus desktop window being
+    mis-positioned when enabled [bgo#673566]
+  + Fix a crash in the default plugin (not used in GNOME)
+    [bgo#673809]
+  + Make the <Super> key work when set as the mouse button modifier
+    [bgo#662476]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:00:23 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Fix crash when a full-screen window is opened [bgo#672797]
+  + Fix memory leaks [bgo#672640]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 21:37:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Automaximize large windows on map (bgo#671677).
+  + When unmaximizing windows, make sure the unminimized size
+    is signficantly less than the maximized size (bgo#671677).
+  + Don't offer maximize option for windows larger than the screen
+    (bgo#643606).
+  + Always focus the window immediately underneath without
+    restacking when closing a window (bgo#620744).
+  + Avoid drawing shadows when two windows are tiled together
+    (bgo#643075).
+  + Remove tooltips for window decorations (bgo#645101)
+  + Add org.gnome.mutter.dynamic-workspaces GSetting - when this is
+    set to true, workspace counts are never saved to GSettings,
+    avoiding pointless disk traffic for GNOME dynamic workspaces
+    (bgo#671568).
+  + Add ::grab-op-begin, ::grab-op-end signals to MetaDisplay
+    (bgo#670658).
+  + Add meta_display_get_ignored_modifier_mask() (bgo#665215).
+  + Remove pointless wrapper methods on MetaPlugin (bgo#671103).
+  + Fix frame drawing with 3.3.x GTK+ releases (bgo#671796).
+  + Build fixes.
+  + Bugs fixed: bgo#661256, bgo#667437, bgo#671087, bgo#671601,
+    bgo#672374.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 07:25:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Update for Cogl API changes
+  + Bug fixes (including bgo#659643)
+  + Build fixes
+  + Updated translations.
+- Change clutter-devel and gtk3-devel BuildRequires to
+  pkgconfig(clutter-1.0) and pkgconfig(gtk+-3.0).
+- Add explicit pkgconfig() BuildRequires: cairo, cogl-1.0, gio-2.0,
+  pango.
+
+-------------------------------------------------------------------
+Mon Feb 20 13:46:19 UTC 2012 - vuntz@opensuse.org
+
+- Add explicit libSM-devel, libX11-devel, libXext-devel,
+  libXinerama-devel, libXrandr-devel, pkgconfig(xcomposite),
+  pkgconfig(xcursor), pkgconfig(xdamage), pkgconfig(xfixes),
+  pkgconfig(xrender) BuildRequires: we need all of those, and some
+  are not implicitly brought in after the big xorg-x11 packaging
+  change.
+
+-------------------------------------------------------------------
+Wed Feb  8 06:45:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + MetaShapedTexture no longer is a ClutterTexture subclass
+    [bgo#660941]
+  + Add meta_shaped_texture_get_image() [bgo#660941]
+  + Cleanups [bgo#657639]
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Split non-essential tools to a mutter-tools subpackage.
+- Stop checking for non-supported versions of openSUSE (<= 11.1).
+- Stop passing --disable-schemas-install to configure: there is no
+  gconf schema anymore.
+- Stop changing libexecdir in configure: there is no need for that.
+
+-------------------------------------------------------------------
+Fri Jan 20 19:39:38 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Adapt to changes in GtkStateFlags
+  + Redo properties for applications menu corresponding to GTK+
+    changes - they are now _GTK_* not DBUS_*.
+  + Fix crash on gnome-shell restart when a modal dialog is open
+    [bgo#668299]
+  + Code cleanup [bgo#666039]
+  + Updated translations.
+- Drop mutter-fix-build-latest-gtk3.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 18 11:28:48 UTC 2012 - vuntz@opensuse.org
+
+- Add mutter-fix-build-latest-gtk3.patch: fix build caused by an
+  API change in GTK+ 3.3.8.
+
+-------------------------------------------------------------------
+Thu Jan  5 07:34:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Add keybindings for tiling to left or right [bgo#648700]
+  + Support GTK+'s hide-titlebar-when-maximized hint [bgo#665617]
+  + Load _DBUS_APPLICATION_ID, _DBUS_UNIQUE_NAME, _DBUS_OBJECT_PATH
+    property [bgo#664851]
+  + Handle changes to workspaces-only-on-primary GSetting
+    [bgo#664853]
+  + Don't use the Clutter default stage [bgo#664028]
+  + Fix compilation with --disable-introspection [bgo#661871]
+  + Fix problem where stage could end up mis-sized on startup with
+    multiple monitors
+  + Misc bug fixes [bgo#666015]
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Mon Dec 12 10:40:37 UTC 2011 - vuntz@opensuse.org
+
+- Drop mutter-clutter-1.10.patch: this actually breaks mutter as we
+  need a clutter patch too, which is not ready yet.
+- Pass --enable-compile-warnings=maximum to configure: the default
+  is error, and we don't want to have -Werror in our CFLAGS.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:43:50 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Move from GConf to GSettings for preferences [bgo#635378]
+  + meta_display_add_keybinding()/meta_display_remove_keybinding()
+    added to allow creating new keybindings at runtime [bgo#663428]
+  + Add suport for new _NET_WM_STATE_FOCUSED atom in _NET_WM_STATE
+    to allow applications to draw unfocused windows differently
+    [bgo#661427]
+  + Add meta_window_move_resize_frame() to allow specifying the
+    size and position of a window via the outside dimensions of the
+    window frame.
+  + Don't activate window tiling when moving in snap mode
+    [bgo#662270]
+  + Remove the ability to resize a window from the inner edge of
+    the titlebar [bgo#660129]
+  + Fix for deprecations in GTK+ [bgo#662574, bgo#662895]
+  + Bugs fixed: bgo#662895, bgo#642652, bgo#660941, bgo#662225
+  + Updated translations.
+- Add mutter-clutter-1.10.patch: Fix build with clutter 1.10.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires: new
+  dependency.
+- Drop gconf-devel BuildRequires: migration to GSettings completed.
+- Replace gconf schema packaging machinery with
+  %glib2_gsettings_schema_* macros.
+
+-------------------------------------------------------------------
+Tue Oct 18 07:41:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Allow keyboard window switching (alt-Tab) during drag-and-drop
+    [bgo#660457]
+  + Don't add invisible resize borders to fullscreen windows
+    [bgo#659854]
+  + Fix crash when toplevel windows were set to unexpected window
+    types [bgo#599988]
+  + Correct problems with windows moving when restarting or
+    switching window managers [bgo#660848]
+  + Fix interaction of tiled windows with multiple monitors
+    [bgo#657519]
+  + Make meta_display_unmanage_screen() public [bgo#660848]
+  + Fix problem with turning off window decorations on the fly
+    [bgo#660773]
+  + Fix spurious assertion failures with themes such as Nodoka
+    [bgo#661286]
+  + Misc bug fixes [bgo#660464, bgo#660854, bgo#662053]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:39:08 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Fix _NET_WM_FRAME_EXTENTS not to include invisible borders
+    [bgo#659848]
+  + Fix application-specified window placement (-geometry) for
+    invisible borders [bgo#659848]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 11:19:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Fix bug with unredirecting full-screen windows on
+    multi-monitor, notably affected gnome-screensaver [bgo#657869]
+  + Disable top resizing of attached dialogs [bgo#657795]
+  + Code cleanup
+  + Misc bug fixes [bgo#658069, bgo#659266, bgo#659523, bgo#659477]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 15 05:01:50 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91.1:
+  + Fix problem where certain application updates would get lost
+    [bgo#657071]
+  + Fix a problem where after resuming from the screensaver, things
+    got slow [bgo#658228]
+  + When a monitor is plugged or unplugged, keep existing windows
+    on their current monitor [bgo#645408]
+  + Remove 'Mutter' title from alerts such as
+    "The window '%s' is not responding"
+  + Remove pointless warning:
+     Received a _NET_WM_MOVERESIZE message for %s; these
+     messages lack timestamps and therefore suck.
+  + Misc bug fixes
+  + Build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  1 14:06:37 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90.1:
+  + Fix crash when no windows are open [bgo#657692]
+  + Fix annotations for new strictness in gobject-introspection
+  + Fix some errors with rounded frame drawing [bgo#657661]
+- Changes from version 3.1.90:
+  + Extend the draggable portion of window borders outside the
+    visible frame for easy resizing with thin borders. (New
+    draggable_border_width GConf key controls the total width of
+    visible and invisible borders.) [bgo#644930]
+  + Draw rounded window corners with antialising [bgo#628195]
+  + Unredirect override-redirect fullscreen windows, such as
+    full-screen 3D games to avoid any performance impact
+    [bgo#597014]
+  + Add :resizable and :above properties to MetaWindow.
+    [bgo#653858]
+  + Add MUTTER_DISABLE_FALLBACK_COLOR environment variable to allow
+    visualizing places where a color is missing for gtk:custom()
+    colors [bgo#656112]
+  + Don't attach modal dialogs to special windows like the desktop;
+    add meta_window_is_attached_dialog() [bgo#646761]
+  + Make MetaBackgroundActor public, allow creating multiple
+    instances (sharing a common texture), and add a :dim-factor
+    property [bgo#656433]
+  + Fix attached dialogs to not be resizable from the top and to be
+    position correctly [bgo#656619]
+  + Misc bug fixes [bgo#656335, bgo#657583]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 28 08:25:29 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + Use better, much more subtle shadow definitions [bgo#649374]
+  + Add the ability to use named GTK+ colors in theme files as
+    gtk:custom(name,fallback) [bgo#648709]
+  + Port from GdkColor to GdkRGBA and from GtkStyle to
+    GtkStyleContext [bgo#650586]
+  + Try to fix window bindings using the Super key [bgo#624869]
+  + Update to using more modern Cogl and Clutter APIs [bgo#654551,
+    bgo#654729, bgo#654730, bgo#655064]
+  + Fix for srcdir != builddir builds [bgo#624910]
+  + Make handling of focus appearance for attached dialogs more
+    robust [bgo#647712]
+  + Misc bug fixes: bgo#642957, bgo#649374, bgo#650661, bgo#654489,
+    bgo#654539.
+
+-------------------------------------------------------------------
+Sat Jul  2 09:31:10 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3.1:
+  + Back API version down to "3.0": the change to Meta-3.1.gir was
+    unintentional.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  1 09:04:24 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.3:
+  + bgo#645355: Support dark window theme variants for windows with
+    a dark widget theme; this is selected by the _GTK_THEME_VARIANT
+    property
+  + bgo#635268: Don't draw a shadow under windows with an alpha-
+    channel - this fixes transparency for GNOME Terminal
+  + bgo#649315: Add a MetaWindow:wm-class property for notification
+  + Add a MetaWindow:minimized property for notification
+  + bgo#627880: Fix handling of unusual window shapes that Wine was
+    setting causing some applications to draw wrong
+  + bgo#653121: Improve replacing another compositor and being
+    replaced: release compositor selection in the right order and
+    wait for compositors that get it wrong.
+  + bgo#652369: Remove behavior where left clicking on a window
+    border with the titlebar offscreen gave the window menu
+  + bgo#649202: Don't set the global default textdomain, since
+    Mutter is a library as well as an application
+  + Exit with the right (success or failure) exit status
+  + Code cleanup
+  + Other bugs fixed: bgo#649114, bgo#652507
+  + Updated translations.
+- Process %{_datadir}/gnome/wm-properties/mutter-wm.desktop with
+  suse_update_desktop_file to fix a rpmlint warning.
+
+-------------------------------------------------------------------
+Thu May 26 12:36:24 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.2.1:
+  + bgo#648828: When saving the session, use the "program name"
+    rather than harcoding mutter, fixing session saving for
+    gnome-shell.
+- Changes from version 3.0.2:
+  + bgo#647777: Fix a crash when running without XKB support
+  + bgo#649500, bgo#649504: Fix smallish memory leaks
+  + bgo#649299: Ignore mirrored monitors when listing monitors,
+    fixing drag-and-drop problems in GNOME Shell
+  + Don't allow side-by-side tiling of non-maximizable windows
+    like dialogs and utility windows
+  + bgo#648613: Fix interaction of _NET_WM_WINDOW_OPACITY with
+    window effects, making it work again with GNOME Shell
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 27 13:49:42 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + bgo#647662: if WM_CLIENT_MACHINE isn't set, don't assume a
+    window is remote; fixes behavior of Fox toolkit applications
+    under GNOME Shell.
+  + bgo#647613: fix cases where windows could get stuck drawing as
+    focused after an attached modal dialog was closed.
+  + Fix a bug where a window that is too big to be tiled
+    side-by-side would behave strangely when using the gesture of
+    dragging to the top to maximize.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:58:27 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Avoid crashing when you have a single window and try to move it
+    between workspaces. bgo#642957.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 29 08:23:06 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + bgo#645408: Fix bug where, when a monitor was hot-plugged, all
+    workspaces would collapse to a single workspace. (There are
+    still issues when a secondary monitor is hot-plugged to the
+    left of the primary monitor).
+  + bgo#645843: Fix a crash for the cycle_group action
+  + bgo#636904: Fix misdrawing of window shadows on some focus
+    changes.
+  + bgo#645590: Export meta_get_replace_current_wm() to allow
+    fixing a GNOME Shell bug with --replace.
+  + Updated translations.
+- Changes from version 2.91.92:
+  + Add a workspaces_only_on_primary preferences. When set, this
+    makes workspaces switching only apply to windows on the primary
+    monitor, while windows on other monitors are unaffected.
+  + Export API for monitor handling:
+      MetaScreen::monitors-changed signal
+      meta_screen_get_primary_monitor()
+      meta_window_is_on_primary_monitor()
+      meta_window_get_monitor()
+      MetaWindow::window-entered-monitor,
+      MetaWindow::window-left-monitor.
+      meta_window_move_to_monitor()
+  + Behavior improvements for attached modal dialogs:
+    - Allow dragging dragging on the titlebar to move the  parent
+    - Allow resizing
+    - Constrain to be on the current monitor
+  + Don't turn on XSMP autorestart
+  + Combine libmutter-wm and libmutter-private into a single
+    libmutter.
+  + Export methods to move and resize windows
+    meta_window_move(), meta_window_resize(),
+    meta_window_move_frame().
+  + Add a MUTTER_WM_CLASS_FILTER environment variable to allow
+    existing windows to be ignored when performance testing.
+  + Add a new compositor-based flash for visual bell
+  + Fix bug where application specified values for properties like
+    "skip taskbar" were sometimes ignored.
+  + Bug fixes.
+  + Build fixes
+- Changes from version 2.91.91:
+  + Build a libmutter-wm that contains all of the logic and that
+    can be linked to to create custom executables. The mutter
+    executable becomes a small stub linked to this library.
+  + Move installed headers files into a meta/ subdirectory instead
+    of polluting the toplevel namespace.
+  + Remove various unused complications:
+    - Ability to set the set of plugins via GConf
+    - Plugin 'params'
+    - meta_restart() and "mutter-message restart"
+  + Don't exit when we are requested to exit via XSMP, assume we'll
+    be killed along with the X server; this avoids visual artifacts
+    from unmanaging windows when logging out.
+  + Build fixes
+- Changes from version 2.91.90:
+  + Change <Alt>Above_Tab from being a cycle_group binding to
+    a switch_group binding
+  + Make plugin-loading failure fatal
+  + Add 'position-changed' signal to MetaWindowActor
+  + When 'live_hidden_previews' is enabled, position hidden
+    windows to allow the creation of workspace previews
+  + Fix bug with opacity of MetaBackgroundActor
+- Fix BuildRequires to use pkgconfig(libcanberra-gtk3)
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:53:09 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Fri Feb 11 12:31:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.6:
+  + Add meta_screen_override_window_layout() to let a plugin set
+    the workspace layout
+  + Add a 'size-changed' signal to MetaWindowActor
+  + Add meta_window_actor_is_destroyed()
+  + Fix problems with window tile previews when cancelling a move
+  + Port theme elements that use GTK+ drawing to use
+    GtkStyleContext instead of the deprecated GtkStyle.
+  + Fix compiler warnings that were causing compilation failures
+  + Misc bug fixes
+  + Updated translations.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common BuildRequires.
+  + Add call to ./autogen.sh.
+- Change libcanberra-devel BuildRequires to
+  pkgconfig(libcanberra-gtk).
+- Remove --with-gtk=3.0 configure option: it's always built against
+  GTK+ 3 now.
+
+-------------------------------------------------------------------
+Fri Jan 14 15:12:29 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.91.5:
+  + Add a Above_Tab key symbol that can be used in key bindings to
+    mean the key above the Tab key. This is now the default binding
+    for cycle_group in both Mutter and Metacity.
+  + Add new frame states for tiled-on-the-left and
+    tiled-on-the-right
+  + Add new background drawing functions that can be defined in a
+    theme for single buttons.
+  + Draw the right button backgrounds for all custom button layouts
+  + Remove vestigal --composite/--no-composite command line options
+  + Fix building on GLES
+  + Code cleanups
+  + Bugs fixed: bgo#613124, bgo#626875, bgo#629282, bgo#635569,
+    bgo#635683, bgo#635686, bgo#637330.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  7 19:33:37 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.91.4:
+  + Update for GTK+ 3 changes.
+  + Support maximizing a window by dragging to the top of the
+    screen in the same way you can tile by dragging to the edge of
+    the screen.
+  + Misc bug fixes.
+  + Bugs fixed: bgo#630548, bgo#636083, bgo#636301, bgo#636302,
+    bgo#636491, bgo#637802.
+  + Updated translations.
+- Drop mutter-gdk_functions.patch, mutter-gtk_states.patch,
+  mutter-port-testgradients-to-gtk3.patch: they're all fixed
+  upstream.
+- Move %{_libdir}/mutter/Meta-2.91.gir to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Dec 14 08:42:01 UTC 2010 - dimstar@opensuse.org
+
+- Add patches from upstream git to fix build with latest gtk3L:
+  + mutter-gdk_functions.patch: commit 8994e6
+  + mutter-port-testgradients-to-gtk3.patch: commit d74659
+  + mutter-gtk_states.patch: commit 544c8.
+
+-------------------------------------------------------------------
+Tue Nov 30 12:45:03 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.91.3:
+  + Better shadows:
+    - Shadows can be different for different window types and focus
+      states
+    - Shadows are larger by default, especially for the currently
+      active eindow
+    - Shadows for attached modal dialogs and menus are drawn not to
+      overlap the attachment point.
+    - Shadows follow the shape of shaped windows
+  + Optimization:
+    - Avoid repainting in situations when windows are potentially
+      restacked but aren't actually restacked.
+    - Pay attention to partial stage repaints in obscured window
+      calculations
+    - Better optimization of painting obscured shadows; turn off
+      shadows for maximized windows.
+    - Move background repainting into Mutter; doing it here rather
+      than in plugins allows not painting obscured parts of the
+      background.
+  + A new frame type 'attached' is added for attached modal dialogs
+    and can be referenced in theme files with a theme version 3.2.
+  + Fix updating key bindings when the keyboard layout changes
+  + Bug fixes
+  + Build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov  9 15:31:23 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.2:
+  + Remove support for GTK+ 2
+  + Adapt to deprecation of size_request deprecation in GTK+
+  + Include change from Metacity to fix confusion of mouse tracking
+    when double-clicking on title bar
+  + Fix bug with the the window menu getting stuck when you alt-Tab
+  + Bugs fixed: bgo#633133, bgo#633352, bgo#633398, bgo#633401
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 28 16:40:01 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.1:
+  + Default build is now GTK+ 3 build
+  + Mutter namespace prefix is removed, in favor of consistent
+    meta_ namespace prefixing. Naming changes:
+      MutterWindow              => MetaWindowActor
+      mutter_get_windows        => meta_get_window_actors
+      mutter_plugin_get_windows => meta_plugin_get_window_actors
+  + Add missing values in MetaKeyBindingAction; this fixes a
+    problem where key binding lookup wasn't working properly for
+    some key bindings.
+  + Remove keysym parameter to
+    meta_display_get_keybinding_action(); the function expected the
+    default keysym for the keycode to always be passed
+  + Clean up installed header files; in particular, theme-parser.h
+    is merged into a new public-only theme.h and private internals
+    are moved to theme-private.h.
+  + Fix problems with antialiased rendering of themes
+  + Fix problem with parsing color constants in themes
+  + Build fixes
+  + Miscellaneous bug fixes
+  + Fixed bugs: bgo#628401, bgo#628520, bgo#631487, bgo#632116,
+    bgo#632149, bgo#632155, bgo#632474, bgo#632494.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 14 16:31:48 CEST 2010 - vuntz@opensuse.org
+
+- Remove explicit Requires for clutter-devel and gtk2-devel in
+  devel package: they will automatically be added the pkgconfig()
+  way.
+
+-------------------------------------------------------------------
+Tue Oct  5 09:58:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.0:
+  + Enable side-by-side tiling via a gesture of dragging to the
+    left or right edge of the screen. (enabled with an
+    off-by-default GConf key)
+  + Allow breaking out of maximization/tiling using a
+    alt-middle-button window resize
+  + Add the ability to have modal dialogs attached to their parent
+    window (enabled with an off-by-default GConf key)
+  + Draw with Cairo rather than GDK
+  + Add compatibility for changes in GTK+ 3
+    - libmutter-private is now only installed for GTK+ 3 builds
+    - Theme parts of libmutter-private API are changed to take
+      cairo_t rather than GdkDrawable
+  + Update introspection build and annotations for new behavior of
+    g-ir-scanner
+  + Fix bug that caused window menu options not to work
+  + Fix misbehavior of Wine windows
+  + Fix crashes from missing error traps
+  + Build fixes
+  + Misc bug fixes
+  + Cleanups
+  + Updated translations.
+- Drop mutter-gdk-cairo.patch, mutter-no-gdk_display.patch,
+  mutter-gdk-keys.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 18 13:21:57 CEST 2010 - vuntz@opensuse.org
+
+- Add mutter-no-gdk_display.patch: stop using gdk_display that got
+  removed in recent GTK+ 3 versions.
+- Add mutter-gdk-keys.patch: update the code after some API changes
+  in GDK 3.
+
+-------------------------------------------------------------------
+Thu Sep  2 20:48:40 UTC 2010 - dimstar@opensuse.org
+
+- Add mutter-gdk-cairo.patch: replace GDK Drawing API with cairo.
+  This fixes building with GTK3 2.90.6.
+
+-------------------------------------------------------------------
+Wed Sep  1 15:32:49 CEST 2010 - vuntz@opensuse.org
+
+- Drop gir-repository BuildRequires: the introspection files that
+  were needed from there are now directly with the appropriate
+  libraries.
+
+-------------------------------------------------------------------
+Fri Jul 16 13:49:04 UTC 2010 - dimstar@opensuse.org
+
+- Update to 2.31.5:
+  + Support building with GTK+ 3.0
+  + Remove deprecated usages for compatibility with GTK+ 3.0
+  + Export a boxed type for MetaRectangle
+  + Allow disabling -Werror with --enable-compile-warnings=yes
+  + Build fixes
+- Build against GTK+ 3: use gtk3-devel BuildRequires instead of
+  gtk2-devel and pass --with-gtk=3.0 to configure.
+
+-------------------------------------------------------------------
+Mon Jul  5 20:40:09 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + Clean up MutterPlugin effect interface
+  + Track damage as the bounding box, a significant optimizations
+    for rapidly drawing clients
+  + Add meta_window_is_remote()
+  + Add meta_add_debug_topic() for turning on logging of specific
+    topics
+  + Fix bug with window unmaximization
+  + Bugs fixed:
+    - bgo#611838: expose sub-stage redraws by streaming raw updates
+      to ClutterX11TexturePixmap
+    - bgo#620585: Add meta_window_is_remote
+    - bgo#620860: function ‘meta_display_open’
+    - bgo#621082: MutterPluginManager should call
+      plugin->switch_workspace, when screen doesn't have any
+      window. Or function should be renamed.
+    - bgo#621413: Maximize/Unmaximize not behaving properly for
+      some non-gnome based programs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 28 21:53:59 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.2:
+  + Theme enhancements
+    - Add a flexible version mechanism for themes -
+      metacity-theme-3.xml is now supported, and can include
+      version="> 3.2" type attributes on the root element or
+      any subelement.
+    - Add frame_x_center/frame_y_center variables
+    - Allow a theme to turn on title ellipsization
+  + Performance enhancements:
+    - Stream raw damage updates to ClutterX11TexturePixmap
+      to enable partial stage updates when windos change
+    - Don't trap XErrors in meta_compositor_process_event
+  + Add meta_prefs_override_preference_location(); this allows
+    a plugin like GNOME Shell to redirect preferences to a
+    plugin-specific location.
+  + Support a _MUTTER_HINTS window property; this is a string
+    property holding key-value pairs with plugin-specific
+    interpretation
+  + Build with GSEAL_ENABLE
+  + Add meta_display_get_leader_window()
+  + Add meta_display_sort_windows_by_stacking
+  + Export
+     meta_display_get_last_user_time()
+     meta_display_xserver_time_is_before()
+     meta_window_foreach_ancestor(),
+     meta_window_foreach_transient()
+     meta_window_lower()
+     meta_window_raise()
+     meta_window_set_demands_attention()
+     meta_window_unset_demands_attention()
+  + Bug fixes
+  + Build fixes
+- Drop mutter-gcc45.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 19 09:01:56 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.1:
+  + Support and require Clutter 1.2
+  + Add meta_display_get_keybinding_action()
+  + Add meta_window_get_wm_class_instance()
+  + Remove workaround for bug fixed in intel driver Q2/2009 release
+  + Build fixes
+  + Updated translations.
+- Drop upstreamed patch mutter-cogl_texture-deprecated.patch.
+
+-------------------------------------------------------------------
+Thu Feb 25 21:32:53 UTC 2010 - dominique.leuenberger@tmf-group.com
+
+- Refresh mutter-cogl_texture-deprecated.patch to also take care
+  of cogl_material_[un]ref, which is deprecated with clutter
+  1.1.14.
+
+-------------------------------------------------------------------
+Fri Feb 19 11:17:36 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.0:
+  + Improve appearance of scaled down windows using mipmap
+    emulation
+  + Added signals: MetaDisplay::window-created,
+    MetaDisplay::window-marked-urgent,
+    MetaDisplay::window-demands-attention, MetaWindow::unmanaged
+  + Added properties: MetaWindow:demands-attention,
+    MetaWindow:urgent, MetaWindow:maximized-horizontally,
+    MetaWindow:maximized-vertically
+  + Fix nasty crash when workspace "struts" changed during a window
+    move
+  + Bug fixes
+  + Build fixes
+  + Merge Metacity changes since 2.26. Includes themable sound
+    support via libcanberra
+- BuildRequire libcanberra-devel for new themable sounds.
+- Add mutter-cogl_texture-deprecated.patch to fix build against
+  clutter 1.1.12. Reported upstream as bgo#610454.
+
+-------------------------------------------------------------------
+Wed Feb  3 20:31:43 CET 2010 - vuntz@opensuse.org
+
+- Add mutter-fix-build.patch and mutter-gl-no-cgl.patch to fix the
+  build with recent introspection data and with recent clutter.
+
+-------------------------------------------------------------------
+Wed Dec  2 12:04:17 CET 2009 - vuntz@opensuse.org
+
+- Update the way we remove the ha, la, ig locales for old versions
+  of openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct  8 18:47:29 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.0:
+  + Add meta_window_get_stable_sequence
+  + mutter_begin_modal_for_plugin(): Check result of
+    XGrabKeyboard()
+  + mutter_plugin_get_windows returns *Mutter*Window, not
+    MetaWindow
+  + Remove MetaAltTabHandler
+  + Use "later functions" to fix priority problems with Clutter
+    redraw
+  + Create the dummy timeline for repaint laters with an "infinite"
+    duration
+  + Added meta_window_get_transient_for_as_xid()
+  + Added workareas-changed signal
+  + Work around race condition focusing a window on a different
+    workspace
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 19:00:30 CEST 2009 - lmedinas@opensuse.org
+
+- Update to version 2.27.5:
+  + Fix bug in GConf schemas where the overview activation key was
+    specified as '<Super_L>' not 'Super_L'.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 03:16:24 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.4:
+  + See http://git.gnome.org/cgit/mutter/log/?id=2.27.4
+  + Add new API for plugins.
+  + Refer to monitors as "monitors" rather than "xineramas"
+  + Fix broken META_IS_SCREEN macro
+  + Fix owner and applyto for /apps/mutter/general/overlay_key
+    schema
+  + Make user-time a GObject property
+  + Use meta_window_set_user_time for setting user time
+    consistently
+  + Export a _GNOME_WM_KEYBINDINGS property
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 29 10:25:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + See http://git.gnome.org/cgit/mutter/log/?id=2.27.3
+  + Do not run effects during WM startup
+  + Remove meta_errors_register_foreign_display()
+  + Check the opacity of the right actor
+  + Always notify on title property change
+  + Avoid accessing freed memory when being replaced
+  + Fix alt-tab with urgent windows
+  + Enforce a policy of single-handling of key events
+  + Add a modal mode for plugins
+  + Fix custom-alt-tabs for single-handling of key events
+  + Check for NULL in meta_screen_tab_popup_destroy() instead of
+    asserting
+  + Unminimize windows passed to
+    meta_workspace_activate_with_focus()
+  + Add new API for plugins.
+  + Various minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 13 00:55:24 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Fix confusion about MetaPreview in introspection build
+  + Queue redraws on MutterWindow's MutterShapedTexture
+  + Pass event to clutter when the plugin doesn't have
+    xevent_filter
+  + Build using Clutter 1.0
+  + Don't explicitly set the size of the MutterWindow texture
+  + Pass through all scroll events to compositor
+  + Tolerate all standard _NET_WM_WINDOW_TYPE types for managed
+    windows
+  + Set up correct initial values for override redirect windows
+  + Add focus-window property to MetaDisplay
+  + Accessors for pid and name of client machine associated with
+    MetaWindow
+  + Added MetaWindow::window-type property
+  + Added public prototype for
+    meta_window_is_ancestor_of_transient()
+  + Avoid overflow when window maximum size hint is set to INT_MAX
+  + Fix check for zero-sized textures in MutterShaped texture
+  + Remove deprecated glib/gtk symbols
+  + Handle FocusIn events for override redirect windows correctly
+  + Elimitate use of arithmetic expansion for portability
+  + Don't allow override-redirect windows to be META_WINDOW_NORMAL
+  + Free MutterWindow description string in finalize() not
+    dispose()
+  + Take extra reference on the texture inside MutterWindow
+  + Use correct timestamp for focus stealing prevention
+  + Export meta_screen_get_startup_sequences, add change signal
+  + Fix use of uninitialized memory in edge-resistance.c
+  + Updated translations.
+- Drop mutter-build-fix.patch: fixed upstream.
+- Drop mutter-clutter-1.0.patch: fixed upstream.
+- Remove gnome-common BuildRequires and gnome-autogen.sh call.
+
+-------------------------------------------------------------------
+Mon Aug  3 12:04:51 CEST 2009 - vuntz@novell.com
+
+- Add mutter-clutter-1.0.patch to fix build with clutter 1.0.
+
+-------------------------------------------------------------------
+Tue Jul 21 21:12:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1, first official tarball.
+- Add mutter-build-fix.patch to fix build.
+
+-------------------------------------------------------------------
+Thu May 14 14:38:54 CEST 2009 - vuntz@novell.com
+
+- Update to git version as of May 14th.
+
+-------------------------------------------------------------------
+Mon May  4 02:36:08 CEST 2009 - vuntz@novell.com
+
+- Add tarball created from git, and mutter-rename.patch.bz2 to make
+  mutter parallel-installable with metacity.
+
+-------------------------------------------------------------------
+Fri May  1 19:12:10 CEST 2009 - vuntz@novell.com
+
+- Initial package, based on the metacity package.
+

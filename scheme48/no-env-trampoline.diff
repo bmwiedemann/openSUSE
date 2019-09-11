@@ -1,0 +1,13 @@
+We don't want to use env in the config because update-alternatives is handling the
+relevant binary.
+
+Index: scheme48/build/scheme48-config.in
+===================================================================
+--- scheme48.orig/build/scheme48-config.in	2013-03-13 10:14:08.000000000 +0100
++++ scheme48/build/scheme48-config.in	2013-03-13 10:14:08.000000000 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env scheme-srfi-7
++#! /usr/bin/scheme-srfi-7
+ 
+ ; Part of Scheme 48 1.9.  See file COPYING for notices and license.
+ 

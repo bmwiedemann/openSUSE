@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Apr 15 19:34:08 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181011
+        * Worked on cache value usage
+        * Worked on get/set value by identifier
+
+-------------------------------------------------------------------
+Thu Feb 16 22:04:29 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170111
+
+-------------------------------------------------------------------
+Thu Jan  8 22:09:17 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150104
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- remove %if for opensuse version.  Not needed now that libyal is consolidated in security:forensics
+- start using libcstring from OBS, not internal version
+
+-------------------------------------------------------------------
+Fri Aug 29 20:40:18 UTC 2014 - Greg.Freemyer@gmail.com
+
+- initial package in OBS (v0~20140601)
+

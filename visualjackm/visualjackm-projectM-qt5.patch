@@ -1,0 +1,96 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2017-07-25 20:19:47 +0200
+Subject: Build with Qt5
+
+Unofficial patch to build against Qt5 libraries
+
+Index: visualjackm/CMakeLists.txt
+===================================================================
+--- visualjackm.orig/CMakeLists.txt
++++ visualjackm/CMakeLists.txt
+@@ -1,15 +1,15 @@
+ project(VisualJackM)
+-cmake_minimum_required(VERSION 2.6)
+-find_package(Qt4 REQUIRED)
++cmake_minimum_required(VERSION 2.8.11)
+ 
+-include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
+-include_directories("/usr/include/libprojectM/")
+-#include_directories("/usr/include/libprojectM-qt/qprojectm_mainwindow.hpp")
++find_package(Qt5 COMPONENTS Core Gui OpenGL Widgets REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(projectM-Qt5 REQUIRED libprojectM-qt5 libprojectM-qt-qt5)
+ 
+ add_subdirectory(src)
+ 
+ set(VisualJackM_SRCS main.cpp)
+-qt4_automoc(${VisualJackM_SRCS})
+ 
+ add_executable(visualjackm ${VisualJackM_SRCS})
+-target_link_libraries(visualjackm ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} vjm projectM projectM-qt qjack jack)
++
++target_link_libraries(visualjackm Qt5::Widgets Qt5::OpenGL ${projectM-Qt5_LIBRARIES} vjm qjack)
++target_include_directories(visualjackm PRIVATE ${projectM-Qt5_INCLUDE_DIRS})
+Index: visualjackm/main.cpp
+===================================================================
+--- visualjackm.orig/main.cpp
++++ visualjackm/main.cpp
+@@ -1,6 +1,6 @@
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include <QtCore/QtGlobal>
+-#include <libprojectM-qt/qprojectm_mainwindow.hpp>
++#include <qprojectm_mainwindow.hpp>
+ #include <projectM.hpp>
+ #include "src/visualjackm.h"
+ 
+@@ -8,7 +8,7 @@ int main(int argc, char** argv)
+ {
+     QApplication app(argc, argv);
+ 
+-    VisualJackM * mainWindow = new VisualJackM("/usr/share/projectM/config.inp");
++    VisualJackM * mainWindow = new VisualJackM("/usr/share/projectM-qt5/config.inp");
+     mainWindow->show();
+ 
+     mainWindow->start();
+Index: visualjackm/src/visualjackm.h
+===================================================================
+--- visualjackm.orig/src/visualjackm.h
++++ visualjackm/src/visualjackm.h
+@@ -23,7 +23,7 @@
+ #include <QtCore/QtGlobal>
+ #include <qjack/qjackclient.h>
+ #include <qjack/qsignalinport.h>
+-#include <libprojectM-qt/qprojectm_mainwindow.hpp>
++#include <qprojectm_mainwindow.hpp>
+ 
+ class VisualJackM : public QProjectM_MainWindow
+ {
+Index: visualjackm/src/CMakeLists.txt
+===================================================================
+--- visualjackm.orig/src/CMakeLists.txt
++++ visualjackm/src/CMakeLists.txt
+@@ -1,7 +1,8 @@
+-include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
++include_directories(${projectM-Qt5_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
+ 
+ set(VisualJackM_lib_SRCS visualjackm.cpp)
+ 
+-qt4_automoc(${VisualJackM_lib_SRCS})
++set(CMAKE_AUTOMOC ON)
+ 
+ add_library(vjm ${VisualJackM_lib_SRCS})
++target_link_libraries(vjm Qt5::Widgets Qt5::OpenGL ${projectM-Qt5_LIBRARIES} qjack)
+Index: visualjackm/src/visualjackm.cpp
+===================================================================
+--- visualjackm.orig/src/visualjackm.cpp
++++ visualjackm/src/visualjackm.cpp
+@@ -20,7 +20,7 @@
+ #include "visualjackm.h"
+ 
+ VisualJackM::VisualJackM(QString configFile):
+-    QProjectM_MainWindow(configFile.toAscii().data(),0)
++    QProjectM_MainWindow(configFile.toLatin1().data(),0)
+ {
+     m_jClient = new QJack::QJackClient("VJM", this);
+ 

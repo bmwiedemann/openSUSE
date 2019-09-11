@@ -1,0 +1,30 @@
+                        Testform für ispell
+                        ===================
+
+30.05.2007: 3.3.02
+Maintainer: werner
+
+Vorraussetzungen:
+=================
+
+   Paket words könnte nicht schaden
+
+Starten:
+========
+
+   ispell <datei>
+   ispell -t <datei>  für LaTeX-Texte (german.sty-Encoding)
+   ispell -n <datei>  für nroff-Texte
+   ispell -Tlatin1 <datei>  für latin1-Texte
+
+ispell erkennt z.T. an den endungen, was für eine
+Kodierung verwendet wird (zB TeX).
+
+Genaueres in den man pages ispell(1), ispell(5), english(5),
+... in der Paketbeschreibung.
+
+Ergebnisse:
+===========
+
+   Hängt von der Richtigkeit der Wörterbücher ab.
+

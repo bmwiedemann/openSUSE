@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed Nov 28 10:04:42 UTC 2018 - mvetter@suse.com
+
+- Update to 11.2:
+  Additions:
+  * Added Source:setAirAbsorption and Source:getAirAbsorption.
+  * Added Body:setTransform and Body:getTransform.
+  Performance Improvements:
+  * Improved performance of love.graphics.draw slightly on iOS and Android.
+  Fixes:
+  * Fixed love.filesystem initialization on Windows 10 update 1809.
+  * Fixed various issues with running on macOS 10.14.
+  * Fixed compatibility with Lua 5.2 and 5.3.
+  * Fixed the explicit format + Data argument variant of love.data.decompress.
+  * Fixed love.joystick.setGamepadMapping not being able to change existing mappings.
+  * Fixed a crash on quit on Linux if a custom Cursor is active when quitting.
+  * Fixed a crash in the Data variant of Shader:send when it's called after love.window.setMode.
+  * Fixed a love.graphics.setCanvas error message to be less confusing.
+- Add love-11.2-return.patch: to make compiler happy
+- Remove love.mpg123.patch: don't see why needed anymore
+- Remove update-luasocket.patch: upstreamed
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun 24 18:04:51 UTC 2017 - rpm@fthiessen.de
+
+- Added update-luasocket.patch from upstream  to fix build with lua53
+
+-------------------------------------------------------------------
+Mon Apr 17 19:38:33 UTC 2017 - olaf@aepfle.de
+
+- Build with mpg123 unconditionally, add love.mpg123.patch
+- Run autoreconf
+- Add Requires(pre) as needed
+
+-------------------------------------------------------------------
+Sat Jan 21 12:22:55 UTC 2017 - prusnak@opensuse.org
+
+- Update to version 0.10.2
+
+-------------------------------------------------------------------
+Thu Jul 28 19:54:39 UTC 2016 - rpm@fthiessen.de
+
+- Dropped unneeded devel package
+- Removed now unneeded love-modplug.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 18:47:08 UTC 2016 - rpm@fthiessen.de
+
+- Update to version 0.10.1
+
+-------------------------------------------------------------------
+Thu Mar  5 07:33:55 UTC 2015 - stefan@fam-elser.de
+
+- update to version 0.9.2
+
+-------------------------------------------------------------------
+Sun Sep 14 18:56:23 UTC 2014 - mailaender@opensuse.org
+
+- update to version 0.9.1
+- added -devel package to solve the rpmlint error
+- added post script macros for desktop, icon and mime
+
+-------------------------------------------------------------------
+Sun Dec 15 01:51:50 UTC 2013 - prusnak@opensuse.org
+
+- updated to 0.9.0
+  * Added three new modules: love.window, love.math, and love.system.
+  * Reworked the love.joystick and love.thread modules.
+  * Added new features to love.graphics, including polygon meshes and vertex shaders.
+  * Integrated the ENet networking library via lua-enet.
+  * Renamed many functions to be more consistent with the rest of the API.
+  * Improved the performance of several APIs in love.graphics.
+  * And a lot more!
+- dropped remove-mpg123.patch (applied upstream)
+
+-------------------------------------------------------------------
+Sun Feb 17 12:33:32 UTC 2013 - jengelh@inai.de
+
+- Sanitize description to not read like an ad. Use project's
+  actual name with diacritic marks.
+- Use more robust make install call.
+
+-------------------------------------------------------------------
+Sun Apr 15 12:55:08 UTC 2012 - prusnak@opensuse.org
+
+- updated to 0.8.0 release
+- removed unneeded_deps.patch (applied upstream)
+
+-------------------------------------------------------------------
+Thu Mar 22 14:51:39 UTC 2012 - reddwarf@opensuse.org
+
+- make MP3 support optional
+- change licence to follow SPDX
+- remove unneded libmng-devel and libtiff-devel build dependencies
+- use pkgconfig() style build dependencies
+- remove love-modplug.patch for >= 12.1
+- force lua 5.1 and add autotools BT to fix Factory build
+
+-------------------------------------------------------------------
+Sun Mar 11 11:38:09 UTC 2012 - prusnak@opensuse.org
+
+- update to mercurial tip (upcoming 0.8.0)
+
+-------------------------------------------------------------------
+Tue Sep 13 17:57:56 UTC 2011 - jmatejek@suse.com
+
+- build fix - added devel dependencies for DevIL
+- standard group name
+
+-------------------------------------------------------------------
+Wed Jun 22 20:08:34 UTC 2011 - prusnak@opensuse.org
+
+- created package (version 0.7.2)
+

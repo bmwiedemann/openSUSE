@@ -1,0 +1,409 @@
+-------------------------------------------------------------------
+Mon Mar 26 12:24:17 UTC 2018 - dimstar@opensuse.org
+
+- Own %{_sysconfdir}/xinetd.d: filesystem won't own this directory
+  much longer (boo#1084457).
+
+-------------------------------------------------------------------
+Fri Apr  7 23:42:15 UTC 2017 - jengelh@inai.de
+
+- Combine %service_ calls as they contain a lot of shell.
+- Undo accidental linejoining of description.
+- Spell out UUCP in summary to fill it.
+- Use modern tar syntax and compact chmod syntax.
+
+-------------------------------------------------------------------
+Thu Apr  6 08:14:22 UTC 2017 - werner@suse.de
+
+- Split of xinetd configuration as its own package
+- Make sure that suucp.service does work with the suucp-server.conf 
+  as here stunnel should not be used in inetd mode nor can it
+  (currently) use socket forwarding done by systemd
+
+-------------------------------------------------------------------
+Tue Apr  4 17:53:18 UTC 2017 - werner@suse.de
+
+- Remove the usermode line as now we do not need to become member of
+  group lock 
+
+-------------------------------------------------------------------
+Tue Apr  4 16:02:31 UTC 2017 - werner@suse.de
+
+- Finalize the package that is
+  * use /var/lock/uucp for session locking 
+  * add dircategory "Networking tools" for uucp info
+  * reflect our current permission handling with chkstat
+
+-------------------------------------------------------------------
+Tue Apr  4 13:46:50 UTC 2017 - werner@suse.de
+
+- Add patch uucp-1.07-configure.patch
+  that is help configure script to find sigsetjmp 
+
+-------------------------------------------------------------------
+Sat Apr  1 11:58:35 UTC 2017 - werner@suse.de
+
+- Add some ACL group permissions for group uucp for /run/lock and
+  /run/lock/lockdev as otherwise we might fail
+
+-------------------------------------------------------------------
+Sat Apr  1 09:06:19 UTC 2017 - werner@suse.de
+
+- Add patch uucp-1.07-initgroups.patch to initialize further
+  groups to which user uucp might be belongs to
+
+-------------------------------------------------------------------
+Fri Mar 31 17:34:21 UTC 2017 - werner@suse.de
+
+- We should use now the suucp service port and not generic stunnel
+  not ssl for taylor uucp configuration
+- Also we now can allow to let stunnel execute uucico without
+  local connection over xinetd or systemd 
+
+-------------------------------------------------------------------
+Fri Mar 31 13:54:24 UTC 2017 - werner@suse.de
+
+- Provide both uucp/suucp xinetd *and* systemd activated service
+- Add patches
+  * address-wildcard-in-port.patch
+  * fix-proty-gcc33.patch
+  * uucp-1.07-sigfpe2.patch
+    to fix potential crashes with SIGFPE
+  * uucp-1.07-lfs.patch
+    to fix truncation of values on 32bit platforms where statvfs64
+    is being called on a lfs
+- Add xinetd.uucp and uucp.pam
+
+-------------------------------------------------------------------
+Thu Oct 27 11:32:24 CEST 2016 - kukuk@suse.de
+
+- Require user and group uucp
+
+-------------------------------------------------------------------
+Thu Jul 28 08:25:45 UTC 2016 - tchvatal@suse.com
+
+- Add example config to etc and dscribe what is needed for the
+  stunnel to work bnc#990849
+
+-------------------------------------------------------------------
+Thu Jun 16 12:29:55 UTC 2016 - tchvatal@suse.com
+
+- Switch from uucp xinetd to systemd activated service
+- Switch from suucp stunnel service to systemd service properly
+  initing the stunnel
+
+-------------------------------------------------------------------
+Thu Jun 16 12:12:00 UTC 2016 - tchvatal@suse.com
+
+- Split out from sendmail package
+- Cleanup to use proper deps and only depend on what's needed in which
+  scriptlet
+- Use %configure macro and friends
+- Use just make_install and describe what is going in the install phase
+
+-------------------------------------------------------------------
+Mon Mar  2 08:28:11 UTC 2015 - werner@suse.de
+
+- Make makeinfo less restrict 
+
+-------------------------------------------------------------------
+Tue Feb 24 19:25:15 UTC 2015 - dimstar@opensuse.org
+
+- Add uucp-texinfo-5.0.patch: Fix build with texinfo 5.0.
+
+-------------------------------------------------------------------
+Wed Sep 10 12:22:47 UTC 2014 - lnussel@suse.de
+
+- don't set LOCKDIR. uucp will properly use it's spool dir for system lock
+  files then. Serial lock files are handled by lockdev anyways (bnc#760079)
+- add a line of debug output in case serial locking failed
+
+-------------------------------------------------------------------
+Thu Nov 14 20:39:51 UTC 2013 - dvaleev@suse.com
+
+- Drop obsolted ftime (drop_ftime.patch) 
+  Broken under PowerKVM
+
+-------------------------------------------------------------------
+Fri May 31 06:17:50 UTC 2013 - coolo@suse.com
+
+- buildrequire makeinfo (automake 1.13 no longer requires it)
+
+-------------------------------------------------------------------
+Fri May 25 15:00:21 UTC 2012 - werner@suse.de
+
+- Job creation scheme (bnc#764107)
+
+-------------------------------------------------------------------
+Tue Mar 13 11:31:21 UTC 2012 - mweckbecker@suse.com
+
+- Add missing linkerflags to make it build w/ -fPIE properly  
+
+-------------------------------------------------------------------
+Tue Jan 24 17:17:07 UTC 2012 - werner@suse.de
+
+- Use -fPIE due bnc#743147
+
+-------------------------------------------------------------------
+Tue Jan 17 10:40:22 UTC 2012 - aj@suse.de
+
+- Remove suse_update_config usage.
+- Add autoconf and automake as build requirements.
+
+-------------------------------------------------------------------
+Thu Mar 10 13:32:16 CET 2011 - werner@suse.de
+
+- Change owner ship of /var/log/uucp to root and touch the log
+  files if not exists for user uucp (bnc#678432)
+ 
+-------------------------------------------------------------------
+Tue Mar  9 16:03:15 UTC 2010 - lnussel@suse.de
+
+- use lockdev (FATE#308360)
+
+-------------------------------------------------------------------
+Fri Dec 18 00:42:37 CET 2009 - jengelh@medozas.de
+
+- Enable parallel building
+
+-------------------------------------------------------------------
+Wed Jun 13 15:06:56 CEST 2007 - werner@suse.de
+
+- Recommend stunnel package (bug #254613)
+
+-------------------------------------------------------------------
+Fri Feb 16 16:10:27 CET 2007 - werner@suse.de
+
+- Split off uucp spec file from sendmail spec file
+- Require new rmail sub packages of sendmail
+
+-------------------------------------------------------------------
+Mon Feb 12 17:22:04 CET 2007 - werner@suse.de
+
+- Make it build nonroot
+
+-------------------------------------------------------------------
+Fri Jan 19 17:04:16 CET 2007 - werner@suse.de
+
+- Add uucp over ssh protocol and example to be able to use uucp
+  even with dynamic IP addresses on the client side.
+
+-------------------------------------------------------------------
+Thu Jun 22 16:13:51 CEST 2006 - werner@suse.de
+
+- Add a few manual pages missed (bug #187356)
+
+-------------------------------------------------------------------
+Tue Mar 14 16:47:09 CET 2006 - werner@suse.de
+
+- Remove contrib/uucomp.shar due broken license (bug #157791)
+
+-------------------------------------------------------------------
+Thu Oct 13 14:51:17 CEST 2005 - lmuelle@suse.de
+
+- Install example config files call and passwd with read write permissions for
+  user root, read only for group uucp, and non access at all for others.
+- Add pipe-stunnel port and stunnel example config files to
+  cfg_example/taylor_config/port.
+
+-------------------------------------------------------------------
+Mon Jun 20 14:07:19 CEST 2005 - werner@suse.de
+
+- In passwd example to not mix-up uucp host and uucp user
+
+-------------------------------------------------------------------
+Mon Jun 20 13:24:07 CEST 2005 - werner@suse.de
+
+- Make the comments in the taylor configurationb files more clear
+  and add a comment on the passwd file and add also an example for
+  the passwd file used for incomming calls.
+
+-------------------------------------------------------------------
+Tue Aug 31 18:14:39 CEST 2004 - werner@suse.de
+
+- Remove update message
+
+-------------------------------------------------------------------
+Tue Aug 31 14:18:49 CEST 2004 - werner@suse.de
+
+- Move forward to new update messages scheme
+
+-------------------------------------------------------------------
+Thu Jul 29 18:17:40 CEST 2004 - werner@suse.de
+
+- Fix autoconfig function definition
+
+-------------------------------------------------------------------
+Wed Sep 17 12:11:43 CEST 2003 - werner@suse.de
+
+- Change owner and permission of /var/spool/uucppublic (bug #31119)
+
+-------------------------------------------------------------------
+Mon Jun 30 16:28:38 CEST 2003 - werner@suse.de
+
+- Update to uucp 1.07
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr 14 17:52:49 CEST 2003 - werner@suse.de
+
+- Add /etc/uucp with user uucp and group uucp to file list of uucp
+  (bug #26301)
+
+-------------------------------------------------------------------
+Wed Mar  5 19:07:29 CET 2003 - werner@suse.de
+
+- Fix bug #24685: provide an xinetd config file for uucico
+
+-------------------------------------------------------------------
+Wed Feb 26 14:09:11 CET 2003 - werner@suse.de
+
+- Fix initial port struct settings by zero the mem area.
+
+-------------------------------------------------------------------
+Tue Feb 11 17:33:03 CET 2003 - werner@suse.de
+
+- Fix bug #23466: use install_info macro in spec
+
+-------------------------------------------------------------------
+Tue Jan 14 18:41:49 CET 2003 - werner@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Fri Aug 16 14:03:11 CEST 2002 - werner@suse.de
+
+- Add PreReq (bug #18012)
+
+-------------------------------------------------------------------
+Mon Aug 12 17:06:26 CEST 2002 - werner@suse.de
+
+- Move logrotate configure for uucp logs to new format
+
+-------------------------------------------------------------------
+Wed May  8 19:10:07 CEST 2002 - werner@suse.de
+
+- Add logrotate entry for uucp to /etc/logrotate.d/ (bug #15944)
+
+-------------------------------------------------------------------
+Fri Apr  5 01:52:54 CEST 2002 - ro@suse.de
+
+- autoconf: LIBOBJS vs AC_LIBOBJ
+
+-------------------------------------------------------------------
+Thu Oct 25 17:17:14 CEST 2001 - werner@suse.de
+
+- UUCP: Fix exploit in uuxqt
+
+-------------------------------------------------------------------
+Wed Jun  6 17:07:58 CEST 2001 - werner@suse.de
+
+- Make it work with new autoconf
+
+-------------------------------------------------------------------
+Wed Mar 21 19:19:31 CET 2001 - werner@suse.de
+
+- It's GNU source
+
+-------------------------------------------------------------------
+Thu Mar 15 01:08:35 CET 2001 - ro@suse.de
+
+- fixed neededforbuild for openldap
+
+------------------------------------------------------------------
+Tue Mar 13 15:11:08 CET 2001 - werner@suse.de
+
+- Fix manual page: do not handle CVS a pre processor
+
+------------------------------------------------------------------
+Tue Nov 28 16:31:39 CET 2000 - werner@suse.de
+
+- Set permissions and owner ship of /var/log/uucp/ to
+  0755 and uucp.uucp.
+
+------------------------------------------------------------------
+Tue May  9 13:47:59 CEST 2000 - werner@suse.de
+
+- Revisited uucpcfg
+  * Add english comments
+  * Add UUCP over TCP/IP example
+  * Comment out the examples (security: no backdoor)
+  * Add some speed ranges for port serial1
+
+------------------------------------------------------------------
+Fri Apr  7 17:46:26 CEST 2000 - werner@suse.de
+
+- Changes for uucp
+  * Avoid FPE error if baud rate is zero (uucico.c)
+  * Add some higher baud rates (i386, mostly ppc) (uucico.c)
+  * Avoid stall connection due ignored "CYM" command (trans.c)
+  * Avoid root owned stale locks
+  * Add grade patch for uucico from Debian
+  * Some minor and unchecked changes of the contrib's
+  * Use /var/log/uucp for logging (Tayler configuration)
+  * Change paths in manual pages and info files
+
+------------------------------------------------------------------
+Thu Mar 16 19:54:43 CET 2000 - werner@suse.de
+
+- Make UUCP docs readable for all
+
+-------------------------------------------------------------------
+Tue Feb 29 19:54:19 CET 2000 - schwab@suse.de
+
+- Fix size_t vs. socklen_t.
+
+-------------------------------------------------------------------
+Mon Feb 14 08:47:00 CET 2000 - ro@suse.de
+
+- removed Makefile.Linux
+- updated configure
+- move man,info to /usr/share using macro
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Feb 17 16:43:34 MET 1999 - ro@suse.de
+
+- added rmail and rmail.8 built from sendmail-sources
+- build from sendmail.spec
+
+-------------------------------------------------------------------
+Fri Jan  8 16:34:49 MET 1999 - bs@suse.de
+
+- incorporated uucpcfg
+
+-------------------------------------------------------------------
+Mon Dec 14 02:43:37 MET 1998 - bs@suse.de
+
+- created notify mail
+
+----------------------------------------------------------------------
+Sun Dec 13 13:51:55 MET 1998 - florian@suse.de
+
+do not use "-" to start options for "ps"
+move config dir to /etc/uucp
+cu is not suid uucp
+compiler falgs are set to sane values
+
+----------------------------------------------------------------------
+Fri Oct 25 16:47:30 MET DST 1996 - bs@suse.de
+
+var/spool/uucppublic/README changed
+
+----------------------------------------------------------------------
+Mon Sep  2 03:06:07 MET DST 1996
+
+don't use public writable directories
+
+----------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - bs@suse.de
+
+change from binary to ascii lockfiles

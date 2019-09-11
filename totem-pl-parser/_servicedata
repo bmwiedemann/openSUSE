@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://git.gnome.org/browse/totem-pl-parser</param>
+              <param name="changesrevision">0091a562f2299fc61943bf5b44ecd7c472288693</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.gnome.org/GNOME/totem-pl-parser.git</param>
+              <param name="changesrevision">9cb2d6e2c8eaf17d77e19493c6f1fac34893232b</param></service></servicedata>

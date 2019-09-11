@@ -1,0 +1,124 @@
+From 3e19339d0d22c76ac0fd17f1a59ca2ae1c03f93a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 3 Jun 2018 23:49:29 +0200
+Subject: [PATCH 1/3] Set SONAME in shared lib
+
+---
+ libraries/liblmdb/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index f254511f1..489a08976 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -38,7 +38,7 @@ mandir = $(datarootdir)/man
+ ########################################################################
+ 
+ IHDRS	= lmdb.h
+-ILIBS	= liblmdb.a liblmdb$(SOEXT)
++ILIBS	= liblmdb-$(SOVERSION)$(SOEXT)
+ IPROGS	= mdb_stat mdb_copy mdb_dump mdb_load
+ IDOCS	= mdb_stat.1 mdb_copy.1 mdb_dump.1 mdb_load.1
+ PROGS	= $(IPROGS) mtest mtest2 mtest3 mtest4 mtest5
+@@ -64,9 +64,9 @@ test:	all
+ liblmdb.a:	mdb.o midl.o
+ 	$(AR) rs $@ mdb.o midl.o
+ 
+-liblmdb$(SOEXT):	mdb.lo midl.lo
++liblmdb-$(SOVERSION)$(SOEXT):	mdb.lo midl.lo
+ #	$(CC) $(LDFLAGS) -pthread -shared -Wl,-Bsymbolic -o $@ mdb.o midl.o $(SOLIBS)
+-	$(CC) $(LDFLAGS) -pthread -shared -o $@ mdb.lo midl.lo $(SOLIBS)
++	$(CC) $(LDFLAGS) -pthread -shared -o $@ mdb.lo midl.lo $(SOLIBS) -Wl,-soname -Wl,liblmdb-$(SOVERSION).so
+ 
+ mdb_stat: mdb_stat.o liblmdb.a
+ mdb_copy: mdb_copy.o liblmdb.a
+-- 
+2.17.0
+
+From e4e77f24f0b45c308e4f774c67281d38dee0b060 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 3 Jun 2018 23:52:16 +0200
+Subject: [PATCH 2/3] Use shared library
+
+---
+ libraries/liblmdb/Makefile | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index 489a08976..d926df798 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -68,16 +68,16 @@ liblmdb-$(SOVERSION)$(SOEXT):	mdb.lo midl.lo
+ #	$(CC) $(LDFLAGS) -pthread -shared -Wl,-Bsymbolic -o $@ mdb.o midl.o $(SOLIBS)
+ 	$(CC) $(LDFLAGS) -pthread -shared -o $@ mdb.lo midl.lo $(SOLIBS) -Wl,-soname -Wl,liblmdb-$(SOVERSION).so
+ 
+-mdb_stat: mdb_stat.o liblmdb.a
+-mdb_copy: mdb_copy.o liblmdb.a
+-mdb_dump: mdb_dump.o liblmdb.a
+-mdb_load: mdb_load.o liblmdb.a
+-mtest:    mtest.o    liblmdb.a
+-mtest2:	mtest2.o liblmdb.a
+-mtest3:	mtest3.o liblmdb.a
+-mtest4:	mtest4.o liblmdb.a
+-mtest5:	mtest5.o liblmdb.a
+-mtest6:	mtest6.o liblmdb.a
++mdb_stat: mdb_stat.o
++mdb_copy: mdb_copy.o
++mdb_dump: mdb_dump.o
++mdb_load: mdb_load.o
++mtest:    mtest.o
++mtest2:	mtest2.o
++mtest3:	mtest3.o
++mtest4:	mtest4.o
++mtest5:	mtest5.o
++mtest6:	mtest6.o
+ 
+ mdb.o: mdb.c lmdb.h midl.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c mdb.c
+@@ -91,8 +91,8 @@ mdb.lo: mdb.c lmdb.h midl.h
+ midl.lo: midl.c midl.h
+ 	$(CC) $(CFLAGS) -fPIC $(CPPFLAGS) -c midl.c -o $@
+ 
+-%:	%.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
++%:	%.o | liblmdb-$(SOVERSION)$(SOEXT)
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -L. -llmdb-$(SOVERSION) -o $@
+ 
+ %.o:	%.c lmdb.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+-- 
+2.17.0
+
+From 85810167f7db0091e0937e5fb464f7f7868d36a8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 3 Jun 2018 23:52:43 +0200
+Subject: [PATCH 3/3] Build/install CFEngine extra tools
+
+---
+ libraries/liblmdb/Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index d926df798..b2e95a642 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -40,6 +40,7 @@ mandir = $(datarootdir)/man
+ IHDRS	= lmdb.h
+ ILIBS	= liblmdb-$(SOVERSION)$(SOEXT)
+ IPROGS	= mdb_stat mdb_copy mdb_dump mdb_load
++IPROGS  += lmdump lmmgr
+ IDOCS	= mdb_stat.1 mdb_copy.1 mdb_dump.1 mdb_load.1
+ PROGS	= $(IPROGS) mtest mtest2 mtest3 mtest4 mtest5
+ all:	$(ILIBS) $(PROGS)
+@@ -78,6 +79,8 @@ mtest3:	mtest3.o
+ mtest4:	mtest4.o
+ mtest5:	mtest5.o
+ mtest6:	mtest6.o
++lmmgr:	lmmgr.o
++lmdump: lmdump.o
+ 
+ mdb.o: mdb.c lmdb.h midl.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c mdb.c
+-- 
+2.17.0
+

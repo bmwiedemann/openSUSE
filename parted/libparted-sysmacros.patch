@@ -1,0 +1,23 @@
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Sat, 24 Mar 2018 17:37:02 +0000
+Subject: linux: Include <sys/sysmacros.h> for major() macro.
+Patch-mainline: v3.3
+Git-commit: ba5e0451b51c983e40afd123b6e0d3eddb55e610
+
+Since glibc 2.27 this header is required.
+
+Acked-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ libparted/arch/linux.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -42,6 +42,7 @@
+ #include <sys/file.h>
+ #include <scsi/scsi.h>
+ #include <assert.h>
++#include <sys/sysmacros.h>
+ #ifdef ENABLE_DEVICE_MAPPER
+ #include <libdevmapper.h>
+ #endif

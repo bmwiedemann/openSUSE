@@ -1,0 +1,25 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-readline62-ask-more-rh.patch
+
+;; Work around readline-6.2 incompatibility not asking for --more-- (BZ 701131).
+;;=fedora
+
+diff --git a/gdb/event-top.c b/gdb/event-top.c
+--- a/gdb/event-top.c
++++ b/gdb/event-top.c
+@@ -1179,6 +1179,13 @@ gdb_setup_readline (int editing)
+ {
+   struct ui *ui = current_ui;
+ 
++#ifdef NEED_RL_STATE_FEDORA_GDB
++  /* 6.2 regression: no longed asks for --more--
++     gdb.base/readline-ask.exp
++     https://bugzilla.redhat.com/show_bug.cgi?id=701131  */
++  RL_SETSTATE (RL_STATE_FEDORA_GDB);
++#endif
++
+   /* This function is a noop for the sync case.  The assumption is
+      that the sync setup is ALL done in gdb_init, and we would only
+      mess it up here.  The sync stuff should really go away over

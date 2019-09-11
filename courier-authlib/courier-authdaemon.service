@@ -1,0 +1,13 @@
+[Unit]
+Description=Courier Authentication Daemon
+After=syslog.target network.target
+
+[Service]
+EnvironmentFile=/etc/authlib/authdaemonrc
+PIDFile=/run/courier-authlib/pid
+ExecStart=/usr/sbin/courierlogger -pid=/run/courier-authlib/pid $LOGGEROPTS -start /usr/lib/courier-authlib/authdaemond
+ExecStop=/usr/sbin/courierlogger -pid=/run/courier-authlib/pid $LOGGEROPTS -stop /usr/lib/courier-authlib/authdaemond
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

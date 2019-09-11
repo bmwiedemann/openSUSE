@@ -1,0 +1,28 @@
+Index: src/widgets/NumericTextCtrl.cpp
+===================================================================
+--- src/widgets/NumericTextCtrl.cpp.orig	2018-09-20 16:35:07.000000000 +0200
++++ src/widgets/NumericTextCtrl.cpp	2018-10-02 15:40:50.555227216 +0200
+@@ -551,6 +551,7 @@ static const BuiltinFormatString Bandwid
+          case NumericConverter::BANDWIDTH:
+             return WXSIZEOF(BandwidthConverterFormats_);
+       }
++      return WXSIZEOF(BandwidthConverterFormats_);
+    }
+ }
+ 
+Index: lib-src/libnyquist/nyquist/xlisp/xlbfun.c
+===================================================================
+--- lib-src/libnyquist/nyquist/xlisp/xlbfun.c.orig	2018-09-20 16:35:07.000000000 +0200
++++ lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2018-10-02 15:35:59.076781229 +0200
+@@ -603,7 +603,10 @@ LVAL xcleanup(void)
+ {
+     xllastarg();
+     xlcleanup();
+-    /* compiler might (wrongly) complain there is no return value */
++    /* this point will never be reached because xlcleanup() does a
++    longjmp(). The return is added to avoid false positive
++    error messages from static analyzers and compilers */
++    return (NIL);
+ }
+ 
+ /* xtoplevel - special form 'top-level' */

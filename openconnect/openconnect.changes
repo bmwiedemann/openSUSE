@@ -1,0 +1,553 @@
+-------------------------------------------------------------------
+Sun May 19 13:53:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 8.0.3:
+  * Fix Cisco DTLSv1.2 support for AES256-GCM-SHA384.
+  * Fix recognition of OTP password fields.
+- Verify source signature
+
+-------------------------------------------------------------------
+Wed Jan 23 09:06:25 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Update to 8.02:
+  * Fix GNU/Hurd build.
+  * Discover vpnc-script in default packaged location on FreeBSD/OpenBSD.
+  * Support split-exclude routes for GlobalProtect.
+  * Fix GnuTLS builds without libtasn1.
+  * Fix DTLS support with OpenSSL 1.1.1+.
+  * Add Cisco-compatible DTLSv1.2 support.
+  * Invoke script with reason=attempt-reconnect before doing so.
+ 
+-------------------------------------------------------------------
+Fri Jan 11 12:55:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.01:
+  * Clear form submissions (which may include passwords) before freeing (CVE-2018-20319).
+  * Allow form responses to be provided on command line.
+  * Add support for SSL keys stored in TPM2.
+  * Fix ESP rekey when replay protection is disabled.
+  * Drop support for GnuTLS older than 3.2.10.
+  * Fix --passwd-on-stdin for Windows to not forcibly open console.
+  * Fix portability of shell scripts in test suite.
+  * Add Google Authenticator TOTP support for Juniper.
+  * Add RFC7469 key PIN support for cert hashes.
+  * Add protocol method to securely log out the Juniper session.
+  * Relax requirements for Juniper hostname packet response to support old gateways.
+  * Add API functions to query the supported protocols.
+  * Verify ESP sequence numbers and warn even if replay protection is disabled.
+  * Add support for PAN GlobalProtect VPN protocol (--protocol=gp).
+  * Reorganize listing of command-line options, and include information on supported protocols.
+  * SIGTERM cleans up the session similarly to SIGINT.
+  * Fix memset_s() arguments.
+  * Fix OpenBSD build.
+- Explicitely enable all the features as needed to stop build if
+  something is missing
+- Run tests
+- Folow the library packaging guidelines
+
+-------------------------------------------------------------------
+Thu Jul 19 02:26:31 UTC 2018 - sckang@suse.com
+
+- Modified spec file: only add this BuildRequires on Leap/SLE 15+
+  (fate#325553).
+  > BuildRequires:  pkgconfig(libpskc)
+
+-------------------------------------------------------------------
+Thu Jun  7 10:43:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(gconf-2.0) and pkgconfig(gtk+-2.0) BuildRequires:
+  Not needed, nor used.
+
+-------------------------------------------------------------------
+Tue Apr  3 15:12:37 UTC 2018 - fcrozat@suse.com
+
+- Add BuildRequires pkgconfig(libpcsclite/libpskc) to enable 
+  liboath (TOTP/HOTP) and yubikey support.
+
+-------------------------------------------------------------------
+Fri Dec  8 15:13:54 UTC 2017 - dimstar@opensuse.org
+
+- Add explicit python2-base and python2-xml BuildRequires: the
+  buildsystem checks for python2 and disables building the
+  documentation if not found. Buildinf the documentation in plus
+  depends on the xml modules.
+  So far we relied on other packages pulling in python2 for us.
+
+-------------------------------------------------------------------
+Mon Sep 25 01:48:32 UTC 2017 - sckang@suse.com
+
+- Drop vpnc dependency by including vpnc-script from vpnc package
+  (fate#323497).
+
+-------------------------------------------------------------------
+Fri Dec 16 15:40:34 UTC 2016 - i@marguerite.su
+
+- update to version 7.08 (bsc#1056389)
+  * Add SHA256 support for server cert hashes.
+  * Enable DHE ciphers for Cisco DTLS.
+  * Increase initial oNCP configuration buffer size.
+  * Improve support for point-to-point routing on Windows.
+  * Check for non-resumed DTLS sessions which may indicate a MiTM attack.
+  * Fix compatibility with Pulse Secure 8.2R5.
+  * Support DTLS automatic negotiation.
+  * Support --key-password for GnuTLS PKCS#11 PIN.
+  * Support automatic DTLS MTU detection with OpenSSL.
+  * Update OpenSSL to allow TLSv1.2, improve compatibility options.
+  * Remove --no-cert-check option. It was being (mis)used.
+  * Fix OpenSSL support for PKCS#11 EC keys without public key.
+  * Fix polling/retry on "tun" socket when buffers full.
+  * Fix AnyConnect server-side MTU setting.
+  * Fix ESP replay detection.
+  * Add certificate torture test suite.
+  * Support PKCS#11 PIN via pin-value= and --key-password for OpenSSL.
+  * Fix integer overflow issues with ESP packet replay detection.
+  * Add --pass-tos option as in OpenVPN.
+  * Support role selection form in Juniper VPN.
+  * Support DER-format certificates, add certificate format torture tests.
+  * For OpenSSL >= 1.0.2, fix certificate validation when only an
+    intermediate CA is specified with the --cafile option.
+  * Support Juniper "Pre Sign-in Message".
+- dropped juniper-fix-for-upstream-sources.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Oct  4 20:45:52 UTC 2016 - fativi@gmail.com
+
+- Upgraded to 7.07, included fix for Juniper vpn
+
+-------------------------------------------------------------------
+Tue Oct 04 15:36:27 UTC 2016 - fativi@gmail.com
+
+- Update to version 7.0.7
+  * More fixes for OpenSSL 1.1 build.
+  * Support Juniper "Post Sign-in Message".
+  * Add --protocol option.
+  * Fix ChaCha20-Poly1305 cipher suite to reflect final standard.
+  * Add ability to disable IPv6 support via library API.
+  * Set groups appropriately when using setuid().
+  * Automatic DTLS MTU detection.
+  * Support SSL client certificate authentication with Juniper servers.
+  * Revamp SSL certificate validation for OpenSSL and stop supporting OpenSSL older than 0.9.8.
+  * Fix handling of multiple DNS search domains with Network Connect.
+  * Fix handling of large configuration packets for Network Connect.
+  * Enable SNI when built with OpenSSL (1.0.1g or later).
+  * Add --resolve and --local-hostname options to command line.
+
+- juniper-fix-for-upstream-sources.patch included to fix upgraded Juniper servers
+  * Submitted to upstream, not yet included in release 
+
+
+-------------------------------------------------------------------
+Tue Mar 17 16:28:11 UTC 2015 - idonmez@suse.com
+
+- Update to version 7.0.6
+  * Fix openconnect.pc breakage after liboath removal.
+  * Refactor Juniper Network Connect receive loop.
+  * Fix some memory leaks.
+  * Add Bosnian translation.
+
+-------------------------------------------------------------------
+Wed Mar 11 15:47:53 UTC 2015 - idonmez@suse.com
+
+- Update to version 7.0.5
+  * Fix alignment issue which broke LZS compression on ARM etc.
+  * Support HTTP authentication to servers, not just proxies.
+  * Add SHA256/SHA512 support for OATH.
+  * Remove liboath dependency.
+  * Support DTLS v1.2 and AES-GCM with OpenSSL 1.0.2.
+  * Add OpenSSL 1.0.2 to known-broken releases (RT#3703, RT#3711).
+  * Fix build with OpenSSL HEAD (OpenSSL 1.1.x).
+  * Preliminary support for Juniper SSL VPN.
+
+-------------------------------------------------------------------
+Mon Jan 26 13:22:04 UTC 2015 - idonmez@suse.com
+
+- Update to Version 7.04
+  * Change default behaviour to enable only stateless compression.
+  * Add --compression argument and openconnect_set_compression_mode().
+  * Add support for LZS compression
+  * Add support for LZ4 compression
+- Add liblz4-devel dependency for LZ4 compression support.
+
+-------------------------------------------------------------------
+Wed Jan 14 11:46:54 UTC 2015 - idonmez@suse.com
+
+- Update to Version 7.03
+  * Clean up handling of incoming packets.
+  * Fix issue with two-stage (i.e. NetworkManager) connection to
+    servers with trick DNS (rh#1179681).
+  * Stop using static variables for received packets.
+
+-------------------------------------------------------------------
+Fri Dec 19 14:26:18 UTC 2014 - rsalevsky@suse.com
+
+- Update to Version 7.02
+  * Add PKCS#11 support for OpenSSL.
+  * Fix handling of select options in openconnect_set_option_value().
+
+-------------------------------------------------------------------
+Wed Dec 10 15:16:32 UTC 2014 - rsalevsky@suse.com
+
+- Update to Version 7.01
+  * Try harder to find a PKCS#11 key to match a given certificate.
+  * Handle 'Connection: close' from proxies correctly.
+  * Warn when MTU is set too low (<1280) to permit IPv6 connectivity.
+  * Add support for X-CSTP-DynDNS, to trigger DNS lookup on each reconnec
+
+-------------------------------------------------------------------
+Thu Dec  4 15:46:56 UTC 2014 - rsalevsky@suse.com
+
+- Update to Version 7.00
+  * Add support for GnuTLS 3.4 system: keys including Windows certificate store.
+  * Add support for HOTP/TOTP keys from Yubikey NEO devices.
+  * Add ---no-system-trust option to disable default certificate authorities.
+  * Improve libiconv and libintl detection.
+  * Stop calling setenv() from library functions.
+  * Support utun driver on OS X.
+  * Change library API so string ownership is never transferred.
+  * Support new NDIS6 TAP-Windows driver shipped with OpenVPN 2.3.4.
+  * Support using PSKC (RFC6030) token files for HOTP/TOTP tokens.
+  * Support for updating HOTP token storage when token is used.
+  * Support for reading OTP token data from a file.
+  * Add full character set handling for legacy non-UTF8 systems (including Windows).
+  * Fix legacy (i.e. not XML POST) submission of non-ASCII form entries (even in UTF-8 locales).
+  * Avoid retrying without XML POST, when we failed to even reach the server.
+  * Fix off-by-one in parameter substitution in error messages.
+  * Improve reporting when GSSAPI auth requested but not compiled in.
+  * Fix parsing of split include routes on Windows.
+  * Fix crash on invocation with --token-mode but no --token-secret.
+
+-------------------------------------------------------------------
+Tue Jul 15 14:09:29 UTC 2014 - darin@darins.net
+
+- Add token support via stoken
+
+-------------------------------------------------------------------
+Wed Jul  9 15:53:30 UTC 2014 - rsalevsky@suse.com
+
+- Update to Version 6.00
+	* Support SOCKS proxy authentication (password, GSSAPI).
+	* Support HTTP proxy authentication (Basic, Digest, NTLM and GSSAPI).
+	* Download XML profile in XML POST mode.
+	* Fix a couple of bugs involving DTLS rekeying.
+	* Fix problems seen when building or connecting without DTLS enabled.
+	* Fix tun error handling on Windows hosts.
+	* Skip password prompts when using PKCS#8 and PKCS#12 certificates with
+	  empty passwords.
+	* Fix several minor memory leaks and error paths.
+	* Update several Android dependencies, and make the download process more
+	  robust.
+
+-------------------------------------------------------------------
+Wed Mar  5 17:16:23 UTC 2014 - rsalevsky@suse.com
+
+- Update to Version 5.99
+	* Add RFC4226 HOTP token support.
+	* Tolerate servers closing connection uncleanly after HTTP/1.0 response
+	  (Ubuntu #1225276).
+	* Add support for IPv6 split tunnel configuration.
+	* Add Windows support with MinGW (tested with both IPv6 and Legacy IP with
+	  latest vpnc-script-win.js)
+	* Change library API to support updating the auth form when the authgroup
+	  is changed (Ubuntu #1229195).
+	* Change --os mac to --os mac-intel, to match the identifier used by Cisco
+	  clients.
+	* Add new API functions to support invoking the VPN mainloop directly from
+	  an application.
+	* Add JNI interface and sample Java application.
+	* Fix junk in --cookieonly output when CSD is enabled.
+	* Enable TOTP, stoken, and JNI support in the Android builds.
+	* Add --pfs option to enforce perfect forward secrecy.
+	* Enable elliptic curves with GnuTLS 3.2.9+, where there is a workaround for
+	  certain firewalls that fail with client hellos between 256 and 512 bytes.
+	* Add padding when sending password, to avoid leakage of password and
+	  username length.
+	* Add support for DTLS 1.2 and AES-GCM when connecting to ocserv.
+	* Add support for server name indication when compiled with GnuTLS 3.2.9+.
+
+-------------------------------------------------------------------
+Mon Feb 10 16:52:59 UTC 2014 - rsalevsky@suse.com
+
+- Update to version 5.03
+  * Fix crash on --authenticate due to freeing --cafile option in argv.
+
+- Update to version 5.02
+  * Fix XML POST issues with authgroups by falling back to old style login.
+  * Fix --cookie-on-stdin with cookies from ocserv.
+  * Fix reconnection to wrong host after redirect.
+  * Reduce limit of queued packets on DTLS socket, to fix VoIP latency.
+  * Fix Solaris build breakage due to missing <string.h> includes.
+  * Include path in <group-access> node.
+  * Include supporting CA certificates from PKCS#11 tokens (with GnuTLS 3.2.7+).
+  * Fix possible heap overflow if MTU is increased on reconnection (CVE-2013-7098).
+
+- Update to version 5.01
+  * Attempt to handle <client-cert-request> in aggregate auth mode.
+  * Don't include X-Aggregate-Auth: header in fallback mode.
+  * Enable AES256 mode for DTLS with GnuTLS (RH#955710).
+  * Add --dump-http-traffic option for debugging.
+  * Be more permissive in parsing XML forms.
+  * Use original URL when falling back to non-XML POST mode.
+  * Add --no-xmlpost option to revert to older, compatible behaviour.
+  * Close connection before falling back to non-xmlpost mode (RH#964650).
+  * Improve error handling when server closes connection (Debian #708928).
+
+- Update to version 5.00
+  * Use GnuTLS by default instead of OpenSSL.
+  * Avoid using deprecated gnutls_pubkey_verify_data() function.
+  * Fix compatibility issues with XML POST authentication.
+  * Fix memory leaks on realloc() failure.
+  * Fix certificate validation problem caused by hostname canonicalisation.
+  * Add RFC6238 TOTP token support using liboath.
+  * Replace --stoken option with more generic --token-mode and --token-secret options.
+
+- Update to version 4.99
+  * Add --os switch to report a different OS type to the gateway.
+  * Support new XML POST format.
+  * Add SecurID token support using libstoken.
+
+-------------------------------------------------------------------
+Mon Apr 29 21:09:47 UTC 2013 - robert.munteanu@gmail.com
+- Fix bnc#817152
+- Update to version 4.09
+  * Fix overflow on HTTP request buffers (CVE-2012-6128)
+  * Fix connection to servers with round-robin DNS with two-stage 
+    auth/connect.
+  * Impose minimum MTU of 1280 bytes.
+  * Fix some harmless issues reported by Coverity.
+  * Improve "Attempting to connect..." message to be explicit 
+    when it's connecting to a proxy.
+- Update to version 4.07
+  * Fix segmentation fault when invoked with -p argument.
+  * Fix handling of write stalls on CSTP (TCP) socket.
+- Update to version 4.06
+  *  Fix default CA location for non-Fedora systems with old GnuTLS.
+  *  Improve error handing when vpnc-script exits with error.
+  *  Handle PKCS#11 tokens which won't list keys without login.
+- Update to version 4.05
+  * Use correct CSD script for Mac OS X.
+  * Fix endless loop in PIN cache handling with multiple PKCS#11 
+    tokens.
+  * Fix PKCS#11 URI handling to preserve all attributes.
+  * Don't forget key password on GUI reconnect.
+  * Fix GnuTLS v3 build on OpenBSD.
+- Update to version 4.04
+  * Fix GnuTLS password handling for PKCS#8 files.
+- Update to version 4.03
+  *  Fix --no-proxy option.
+  * Fix handling of requested vs. received MTU settings.
+  * Fix DTLS MTU for GnuTLS 3.0.21 and newer.
+  * Support more ciphers for OpenSSL encrypted PEM keys, with 
+    GnuTLS.
+  * Fix GnuTLS compatibilty issue with servers that insist on 
+    TLSv1.0 or non-AES ciphers (RH#836558).
+- Update to version 4.02
+  * Fix build failure due to unconditional inclusion of 
+    <gnutls/dtls.h>.
+- Update to version 4.01
+  * Add support for OpenSSL's odd encrypted PKCS#1 files, for 
+    GnuTLS.
+  * Fix repeated passphrase retry for OpenSSL.
+  * Add keystore support for Android.
+  * Support TPM, and also additional checks on PKCS#11 certs, 
+    even with GnuTLS 2.12.
+  * Fix library references to OpenSSL's ERR_print_errors_cb() when built against GnuTLS v2.12.
+- Update to version 4.00
+  * Add support for OpenSSL's odd encrypted PKCS#1 files, for GnuTLS.
+  * Fix repeated passphrase retry for OpenSSL.
+  * Add keystore support for Android.
+  * Support TPM, and also additional checks on PKCS#11 certs, even with GnuTLS 2.12.
+  * Fix library references to OpenSSL's ERR_print_errors_cb() when built against GnuTLS v2.12.
+
+-------------------------------------------------------------------
+Tue Jun 19 08:30:53 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  No LGPL-2.1 "only" licenses found. Fedora also uses LGPL-2.1 "or later"
+  as license
+
+-------------------------------------------------------------------
+Mon Jun 18 17:49:29 UTC 2012 - toddrme2178@gmail.com
+
+- Fixes buffer overflow security vulnerability.  See:
+  * CVE-2012-3291
+  * BNC#767616
+- Update to version 3.99
+  * Enable native TPM support when built with GnuTLS.
+  * Enable PKCS#11 token support when built with GnuTLS.
+  * Eliminate all SSL library exposure through libopenconnect.
+  * Parse split DNS information, provide $CISCO_SPLIT_DNS 
+    environment variable to vpnc-script.
+  * Attempt to provide new-style MTU information to server (on 
+    Linux only, unless specified on command line).
+  * Allow building against GnuTLS, including DTLS support.
+  * Add --with-pkgconfigdir= option to configure for FreeBSD's 
+    benefit (fd#48743).
+- Update to version 3.20
+  * Cope with non-keepalive HTTP response on authentication success
+  * Fix progress callback with incorrect cbdata which caused KDE 
+    crash.
+- Update to version 3.19
+  * Add --config option for reading options from file.
+  * Improve OpenSSL DTLS compatibility to work on Ubuntu 10.04.
+  * Flush progress logging output promptly after each message.
+  * Add symbol versioning for shared library (on sane platforms).
+  * Add openconnect_set_cancel_fd() function to allow clean 
+    cancellation.
+  * Fix corruption of URL in openconnect_parse_url() if it 
+    specifies a port number.
+  * Fix inappropriate exit() calls from library code.
+  * Library namespace cleanup — all symbols now have the prefix 
+    openconnect_ on platforms where symbol versioning works.
+  * Fix --non-inter option so it still uses login information from 
+    command line.
+- Update to version 3.18
+  * Fix autohate breakage with --disable-nls... hopefully.
+  * Fix buffer overflow in banner handling.
+- Update to version 3.17
+  * Work around time() brokenness on Solaris.
+  * Fix interface plumbing on Solaris 10.
+  * Provide asprintf() function for (unpatched) Solaris 10.
+  * Make vpnc-script mandatory, like it is for vpnc
+  * Don't set Legacy IP address on tun device; let vpnc-script do 
+    it.
+  * Detect OpenSSL even without pkg-config.
+  * Stop building static library by default.
+  * Invoke vpnc-script with "pre-init" reason to load tun module if
+    necessary.
+- Update to version 3.16
+  * Fix build failure on Debian/kFreeBSD and Hurd.
+  * Fix memory leak of deflated packets.
+  * Fix memory leak of zlib state on CSTP reconnect.
+  * Eliminate memcpy() calls on packets from DTLS and tunnel device
+  * Use I_LINK instead of I_PLINK on Solaris to plumb interface for
+    Legacy IP.
+  * Plumb interface for IPv6 on Solaris, instead of expecting 
+    vpnc-script to do it.
+  * Refer to vpnc-script and help web pages in openconnect output.
+  * Fix potential crash when processing libproxy results.
+  * Be more conservative in detecting libproxy without pkg-config.
+- Add optional libproxy-devel buildrequires
+- Add new mandatory vpnc buildrequires
+- Package new documentation in doc package
+- Remove static devel libraries since this is the new upstream 
+  default
+
+-------------------------------------------------------------------
+Thu Jan  5 14:10:20 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 3.15
+  * Fix for reading multiple packets from Solaris tun device.
+  * Call bindtextdomain() to ensure that translations are found in install path.
+- Update to version 3.14
+  * Move executable to $prefix/sbin.
+  * Fix build issues on OSX, OpenIndiana, DragonFlyBSD, OpenBSD, FreeBSD & NetBSD.
+  * Fix non-portable (void *) arithmetic.
+  * Make more messages translatable.
+  * Attempt to make NLS support more portable (with fewer dependencies).
+- Update to version 3.13
+  * Add --cert-expire-warning option.
+  * Give visible warning when server dislikes client SSL certificate.
+  * Add localisation support.
+  * Fix build on Debian systems where dtls1_stop_timer() is not available.
+  * Fix libproxy detection.
+  * Enable a useful set of compiler warnings by default.
+  * Fix various minor compiler warnings.
+- Update to version 3.12
+  * Fix DTLS compatibility with ASA firmware 8.4.1(11) and above.
+  * Fix build failures on GNU Hurd, on systems with ancient OpenSSL, and on Debian.
+  * Add --pid-file option.
+  * Print SHA1 fingerprint with server certificate details.
+- spec file changes
+  * Package language files in a lang package
+  * Since the binary is in /usr/sbin, keep the manual as man8
+  * Package .a file in -devel package and have -devel package provide -devel-static
+
+-------------------------------------------------------------------
+Thu Aug 25 10:24:05 UTC 2011 - toddrme2178@gmail.com
+
+- Simplified man file installation
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Mon Aug  8 14:28:45 UTC 2011 - toddrme2178@gmail.com
+
+- Changed manuals to man1
+
+-------------------------------------------------------------------
+Sun Aug  7 23:05:10 UTC 2011 - toddrme2178@gmail.com
+
+- Removed %{?_smp_mflags}
+
+-------------------------------------------------------------------
+Sun Aug  7 18:40:53 UTC 2011 - toddrme2178@gmail.com
+
+- Removed unneeded libopenconnect.la file.
+- Minor formatting changes to several spec file macros
+
+-------------------------------------------------------------------
+Sun Aug  7 16:11:47 UTC 2011 - toddrme2178@gmail.com
+
+- Added upstream url to Source0: tag
+- Switched back to original tar.gz file
+
+-------------------------------------------------------------------
+Sun Aug  7 13:50:57 UTC 2011 - toddrme2178@gmail.com
+
+- Fixed license name
+- Fixed spec file header
+- Switched to %make_install macro
+- Added %doc macro for manual files
+- Removed norootforbuild
+
+
+-------------------------------------------------------------------
+Sun Aug  7 09:20:18 UTC 2011 - toddrme2178@gmail.com
+
+- Moved .so file to devel package
+
+
+-------------------------------------------------------------------
+Thu Aug  4 09:35:34 UTC 2011 - toddrme2178@gmail.com
+
+- Update to version 3.11
+  * Add Android.mk file for Android build support
+  * Add logging support for Android, in place of standard syslog().
+  * Switch back to using TLSv1, but without extensions.
+  * Make TPM support optional, dependent on OpenSSL ENGINE support.
+- Update to version 3.10
+  * Switch to using GNU autoconf/automake/libtool.
+  * Produce shared library for authentication.
+  * Improve library API to make life easier for C++ users.
+  * Be more explicit about requiring pkg-config.
+  * Invoke script with reason=reconnect on CSTP reconnect.
+  * Add --non-inter option to avoid all user input.
+- Update to version .02
+  * Install man page in make install target.
+  * Add openconnect_vpninfo_free() to libopenconnect.
+  * Clear cached peer_addr to avoid reconnecting to wrong host.
+- Update to version 3.01
+  * Add libxml2 to pkg-config requirements.
+- Update to version 3.00
+  * Create libopenconnect.a for GUI authentication dialog to use.
+  * Remove auth-dialog, which now lives in the network-manager-openconnect package.
+  * Cope with more entries in authentication forms.
+  * Add --csd-wrapper option to wrap CSD trojan.
+  * Report error and abort if CA file cannot be opened.
+- Update to version 2.26
+  * Fix potential crash on relative HTTP redirect.
+  * Use correct TUN/TAP device node on Android.
+  * Check client certificate expiry date.
+  * Implement CSTP and DTLS rekeying (both by reconnecting CSTP).
+  * Add --force-dpd option to set minimum DPD interval.
+  * Don't print webvpn cookie in debug output.
+  * Fix host selection in NetworkManager auth dialog.
+  * Use SSLv3 instead of TLSv1; some servers (or their firewalls) don't accept any ClientHello options.
+  * Never include address family prefix on script-tun connections.
+- Fix build errors and rpmlint errors
+
+
+-------------------------------------------------------------------
+Fri Aug  6 16:04:13 UTC 2010 - andrea@opensuse.org
+
+- New pacakge
+

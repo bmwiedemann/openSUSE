@@ -1,0 +1,1187 @@
+-------------------------------------------------------------------
+Thu Jun  6 20:43:34 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 5.0.5
+  Major changes from the Redis 5 series:
+
+  1. The new Stream data type.
+     https://redis.io/topics/streams-intro
+  2. New Redis modules APIs: Timers, Cluster and Dictionary APIs.
+  3. RDB now store LFU and LRU information.
+  4. The cluster manager was ported from Ruby (redis-trib.rb) to C
+     code inside redis-cli. Check `redis-cli --cluster help` for
+     more info.
+  5. New sorted set commands: ZPOPMIN/MAX and blocking variants.
+  6. Active defragmentation version 2.
+  7. Improvemenets in HyperLogLog implementations.
+  8. Better memory reporting capabilities.
+  9. Many commands with sub-commands now have an HELP subcommand.
+  10. Better performances when clients connect and disconnect
+      often.
+  11. Many bug fixes and other random improvements.
+  12. Jemalloc was upgraded to version 5.1
+  13. CLIENT UNBLOCK and CLIENT ID.
+  14. The LOLWUT command was added. http://antirez.com/news/123
+  15. We no longer use the "slave" word if not for API backward
+      compatibility.
+  16. Differnet optimizations in the networking layer.
+  17. Lua improvements:
+      - Better propagation of Lua scripts to replicas / AOF.
+      - Lua scripts can now timeout and get in -BUSY state in the
+        replica as well.
+  18. Dynamic HZ to balance idle CPU usage with responsiveness.
+  19. The Redis core was refactored and improved in many ways.
+
+  However the list above really does not do justice to the changes
+  of Redis 5 since the core was improved in many ways during the
+  development of the new version. However certain changes were back
+  ported into Redis 4 once they were sensed as safe, because many
+  improvements were hard to distinguish from fixes.
+
+  The most important user facing improvement is without doubts the
+  introduction of the new general purpose data type after years:
+  the streams.
+
+  Note that we worked to improve and fix streams till a few hours
+  ago, so while we are not aware of critical bugs in this release,
+  surely there is to handle it with some care for the first weeks.
+  Bug reporting will be highly appreciated and we are ready to work
+  immediately to release 5.0.1 once there is enough important stuff
+  to justify a new release (probably soon).
+
+  People not using the streams can have probably a better
+  production-ready experience with Redis 5, also because many
+  internals are shared with Redis 4 so the jump is not as big as it
+  was between 3.2 and 4 in terms of how things internally work.
+
+  Well, many thanks to the Redis community and the developers that
+  made this release possible, contributing bug reports, patches,
+  new features, working on the clients, sometimes debugging
+  problems for days. Also thank to everybody that adopted Redis for
+  their use cases making things work for users worldwide.
+
+  see installed /usr/share/doc/packages/redis/00-RELEASENOTES
+- refreshed patches to apply cleanly again:
+  redis-conf.patch
+  redis-enable-bactrace-on-x86-ia64-and_arm32_only.patch
+  reproducible.patch
+
+-------------------------------------------------------------------
+Mon Nov 26 16:27:53 UTC 2018 - Andrey Karepin <egdfree@opensuse.org>
+
+- update systemd unit file to fix redis shutdown immedaiate after start 
+
+-------------------------------------------------------------------
+Fri Sep  7 12:03:31 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- make sure that disabling/restarting servers works
+
+  https://nordisch.org/posts/hooking-up-instantiated-services-with-rpm/
+
+-------------------------------------------------------------------
+Thu Sep  6 19:03:06 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- make check && true -> make check || true
+  This was probably meant to catch an error in the test suite, but
+  with && it would only return true if it would return true
+  already.
+
+-------------------------------------------------------------------
+Thu Sep  6 17:01:14 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- added systemd unit file file redis-sentinel
+  - the unit file uses the same multiple instance mechanism as the
+    normal redis unit file
+
+    systemctl start redis-sentinel@default will look for
+
+    /etc/redis/sentinel-default.conf
+
+    and expects a pid file
+
+    /var/run/redis/sentinel-default.pid
+
+    Please make sure your sentinel config sets the pid file.
+
+  - adapted the default sentinel.conf.example to set the pid file
+    and the log file similar to the normal redis.conf:
+    /var/log/redis/sentinel-<instancename>.log
+    /var/run/redis/sentinel-<instancename>.pid
+
+    The unit file checks for the pid file so please adapt your
+    local sentinel configs.
+
+    Changed: redis-conf.patch
+  - adapt and restructure README.SUSE
+    - move the LimitNoFile to the service file itself so the user
+      do not have to manually do that step for every instance
+    - move the apache integration into its own section
+    - add section for redis-sentinel
+  - install sentinel example config with group write permissions
+    to indicate that the actually config needs to be writable.
+
+-------------------------------------------------------------------
+Thu Sep  6 15:08:28 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace some duplicate binaries with symlinks similar to what the
+  fedora package does
+
+-------------------------------------------------------------------
+Fri Aug 17 00:33:26 UTC 2018 - ilya@ilya.pp.ua
+
+- Refresh spec-file.
+- Update to 4.0.11
+  * https://raw.githubusercontent.com/antirez/redis/4.0.11/00-RELEASENOTES
+  * The disconnection time between the master and slave was reset
+    in an incorrect place, sometimes a good slave will not be able
+    to failover because it claims it was disconnected for too much
+    time from the master.
+  * A replication bug, rare to trigger but non impossible, is in
+    Redis for years. It was lately discovered at Redis Labs and
+    fixed by Oran Agra. It may cause disconnections,
+    desynchronizations and other issues.
+  * RANDOMKEY may go in infinite loop on rare situations. Now fixed.
+  * EXISTS now works in a more consistent way on slaves.
+  * Sentinel: backport of an option to deny a potential security
+    problem when the SENTINEL command is used to configure an
+    arbitrary script to execute.
+
+-------------------------------------------------------------------
+Wed Jul 11 17:08:01 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to have fixed hostname and date (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Jun 15 10:17:06 UTC 2018 - mrueckert@suse.de
+
+- update to 4.0.10 (boo#1097430) CVE-2018-11218 CVE-2018-11219
+  https://raw.githubusercontent.com/antirez/redis/4.0.10/00-RELEASENOTES
+  - Important security issues related to the Lua scripting engine.
+    Please check https://github.com/antirez/redis/issues/5017 for
+    more information.
+  - A bug with SCAN, SSCAN, HSCAN and ZSCAN, that may not return
+    all the elements.  We also add a regression test that can
+    trigger the issue often when present, and may in theory be able
+    to find unrelated regressions.
+  - A PSYNC2 bug is fixed: Redis should not expire keys when saving
+    RDB files because otherwise it is no longer possible to use
+    such RDB file as a base for partial resynchronization. It no
+    longer represents the right state.
+  - Compatibility of AOF with RDB preamble when the RDB checksum is
+    disabled.
+  - Sentinel bug that in some cases prevented Sentinel to detect
+    that the master was down immediately. A delay was added to the
+    detection.
+- refreshed patches to apply cleanly again
+  redis-conf.patch
+  redis-initscript.patch
+
+-------------------------------------------------------------------
+Tue Apr 17 16:13:17 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update redis-enable-bactrace-on-x86-and-ia64-only.patch to handle
+  arm and rename it to redis-enable-bactrace-on-x86-ia64-and_arm32_only.patch
+- Add redis-disable_integration_logging.patch to disable logging test
+  when backtrace is not enabled
+
+-------------------------------------------------------------------
+Thu Apr 12 13:13:49 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.9
+  * https://raw.githubusercontent.com/antirez/redis/4.0.9/00-RELEASENOTES
+  * Critical upgrade for users using AOF with the fsync policy set to "always".
+  * Latency monitor could report wrong latencies under certain conditions.
+  * AOF rewriting could fail when a backgronud rewrite is triggered and
+    at the same time the AOF is switched on/off.
+  * Redis Cluster crash-recovery safety improved.
+  * Redis Cluster has now the ability to configure certain slaves so that
+    they'll never attempt a failover.
+  * Keyspace notifications API in modules.
+  * RM_Call() is now faster by reusing the same client.
+  * Tracking of the percentage of keys already logically expired but yet
+    not evicted.
+
+-------------------------------------------------------------------
+Thu Feb  8 23:23:58 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.8
+  * Release notes: https://raw.githubusercontent.com/antirez/redis/4.0.8/00-RELEASENOTES
+  * Fix crash Redis Cluster instances during deletions.
+
+-------------------------------------------------------------------
+Sun Jan 28 15:24:25 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.7
+  * Release notes: https://raw.githubusercontent.com/antirez/redis/4.0.7/00-RELEASENOTES
+  * Many 32 bit overflows were addressed in order to allow to use Redis with
+    a very significant amount of data, memory size permitting.
+  * MEMORY USAGE fixed for the list type.
+  * Allow read-only scripts in Redis Cluster.
+  * Fix AOF pipes setup in edge case.
+  * AUTH option for MIGRATE.
+  * HyperLogLogs are no longer converted from sparse to dense in order
+    to be merged.
+  * Fix AOF rewrite dead loop under edge cases.
+  * Fix processing of large bulk strings (>= 2GB).
+  * Added RM_UnlinkKey in modules API.
+  * Fix Redis Cluster crashes when certain commands with a variable number
+    of arguments are called in an improper way.
+  * Fix memory leak in lazyfree engine.
+  * Fix many potentially successful partial synchronizations that end
+    doing a full SYNC, because of a bug destroying the replication
+    backlog on the slave. So after a failover the slave was often not able
+    to PSYNC with masters, and a full SYNC was triggered. The bug only
+    happened after 1 hour of uptime so escaped the unit tests.
+  * Improve anti-affinity in master/slave allocation for Redis Cluster
+    when the cluster is created.
+  * Improve output buffer handling for slaves, by not limiting the amount
+    of writes a slave could receive.
+
+-------------------------------------------------------------------
+Thu Jan  4 15:47:48 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.6
+  * Release notes: https://raw.githubusercontent.com/antirez/redis/4.0.6/00-RELEASENOTES
+  * PSYNC2: More errors in the fixes for PSYNC2 (CRITICAL).
+  * Quicklist: change the len of quicklist to unsigned long.
+  * Quicklist: fix the return value of quicklistCount.
+  * Refactoring: improve luaCreateFunction() API.
+  * Remove useless variable check from luaCreateFunction().
+  * Fix issue #4505, Lua RDB AUX field loading of existing scripts.
+  * Regression test for #4505 (Lua AUX field loading).
+  * DEBUG change-repl-id implemented.
+  * Buffer overflows occurring reading redis.conf CVE-2017-15047 (bsc#1061967)
+
+-------------------------------------------------------------------
+Wed Nov  1 09:01:44 UTC 2017 - mpluskal@suse.com
+
+- Update changelog with CVE reference
+
+-------------------------------------------------------------------
+Sun Oct  8 15:22:54 UTC 2017 - ilya@ilya.pp.ua
+
+- Drop SLE 11 support.
+- Refresh spec-file.
+- Update to 4.0.2
+  * Release notes: https://raw.githubusercontent.com/antirez/redis/4.0.2/00-RELEASENOTES
+  * Different replication fixes to PSYNC2, the new 4.0 replication engine.
+  * Modules thread safe contexts were introduced. They are an experimental
+    API right now, but the API is considered to be stable and usable when needed.
+  * SLOWLOG now logs the offending client name and address. Note that this is a
+    backward compatibility breakage in case old code assumes that the slowlog
+    entry is composed of exactly three entries.
+  * The modules native data types RDB format changed.
+  * The AOF check utility is now able to deal with RDB preambles.
+  * GEORADIUS_RO and GEORADIUSBYMEMBER_RO variants, not supporting the STORE option,
+    were added in order to allow read-only scaling of such queries.
+  * HSET is now variadic, and HMSET is considered deprecated
+    (but will be supported for years to come). Please use HSET in new code.
+  * GEORADIUS huge radius (>= ~6000 km) corner cases fixed,
+    certain elements near the edges were not returned.
+  * DEBUG DIGEST modules API added.
+  * HyperLogLog commands no longer crash on certain input (non HLL) strings.
+  * Fixed SLAVEOF inside MULTI/EXEC blocks.
+  * Many other minor bug fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:28:36 UTC 2017 - chris@computersalat.de
+
+- cleanup service file
+- add redis.sysctl file
+- update README.SUSE
+  * add info for socket usage per service
+  * add info for limits per service (LimitNOFILE=10240)
+
+-------------------------------------------------------------------
+Thu May 18 12:43:42 UTC 2017 - vsistek@suse.com
+
+- Update to version 3.2.9
+  * A few rarely harmful bugs were fixed.
+- Changes accumulated from 3.2.8
+  Two important bug fixes, the first of one is critical:
+  * Apparently Jemalloc 4.4.0 may contain a deadlock under
+    particular conditions. See 
+    https://github.com/antirez/redis/issues/3799.
+    We reverted back to the previously used Jemalloc versions and
+    plan to upgrade Jemalloc again after having more info about the
+    cause of the bug.
+  * MIGRATE could crash the server after a socket error. See for
+    reference: https://github.com/antirez/redis/issues/3796.
+
+-------------------------------------------------------------------
+Wed Feb  1 12:33:53 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.2.7
+  * This release fixes important security and correctness issues
+    (boo#1064980 CVE-2016-10517)
+
+-------------------------------------------------------------------
+Fri Jan 20 10:29:19 UTC 2017 - rmaliska@suse.com
+
+- update to redis 3.2.6
+  * fixes for GEORADIUS, BITFIELD and Redis Cluster minor fixes.
+- update 3.2.5
+  * This release only fixes a compilation issue due to the
+    missing -ldl at linking time.
+
+-------------------------------------------------------------------
+Mon Oct 24 08:39:02 UTC 2016 - astieger@suse.com
+
+- update to redis 3.2.4, including fixes for security issues:
+  * CVE-2016-8339: CONFIG SET client-output-buffer-limit Code
+                   Execution Vulnerability [boo#1002351]
+- bug fixes:
+  * TCP binding bug fixed when only certain addresses were available
+    for a given port
+  * improved crash report
+  * Fix for Redis Cluster redis-trib displaying of info after
+    creating a new cluster.
+
+-------------------------------------------------------------------
+Fri Aug  5 18:17:24 UTC 2016 - astieger@suse.com
+
+- redis 3.2.3:
+  * fix replication delay issue
+  * drop CVE-2013-7458.patch, upstream
+
+-------------------------------------------------------------------
+Sat Jul 30 12:30:02 UTC 2016 - jengelh@inai.de
+
+- Test for user/group existence before creating them.
+  Request shadow to be present for the scriptlet.
+
+-------------------------------------------------------------------
+Sat Jul 30 10:06:22 UTC 2016 - astieger@suse.com
+
+- Fix CVE-2013-7458: unsafe permissions of command line history
+  boo#991250, adding CVE-2013-7458.patch
+
+-------------------------------------------------------------------
+Sat Jul 30 09:59:59 UTC 2016 - astieger@suse.com
+
+- redis 3.2.2
+- Highlight bug fixes:
+  * Fix Redis server and Sentinel crashes
+  * Fix GEORADIUS errors in reported entries
+- New features:
+  * slaves support the slave-announce-ip and slave-announce-port
+    options.
+  * RDB check utlity is now part of Redis and uses the same RDB code
+  * redis-check-dump utility is now able to show certain information
+    about the RDB file including creating version and date.
+
+-------------------------------------------------------------------
+Wed Jun 29 12:14:42 UTC 2016 - rmaliska@suse.com
+
+- Update to 3.2.1
+* [FIX] Cleaned up spec file.
+* [FIX] Critical bug in Sentinel was hopefully fixed.
+* [FIX] BITFIELD bugs fixed.
+* [FIX] GEO commands fixes on syntax errors and edge cases.
+* [NEW] RESOTRE now accepts dumps generated by older Redis versions.
+* [NEW] Jemalloc now is configured to save you memory, for a problem a
+        change in the jemalloc configuration did not really survived when the
+        3.2.0 release was finalized.
+* [NEW] TTL and TYPE command no longer alter the last access time of a key, for
+        LRU evictions purposes. A new TOUCH command was introduced *just* to
+        update the access time of a key.
+* [FIX] A bug was fixed in redis-cli, that connected to the instance running on the
+        port 6379 if there was one, regardless of what was specified.
+* [NEW] TCP keep alive is now enabled by default. This should fix most ghost
+        connections problems without resulting in any practical change in otherwise
+        sane deployments.
+* [FIX] A Sentinel crash that could happen during failovers was fixed.
+* [NEW] avg_ttl reporting in INFO improved.
+* [NEW] Sentinel: improve handling of known Sentinel instances.
+* [NEW] Redis Cluster address update (via gossip section) processing improved
+        to avoid initiating inwanted handshakes.
+* [FIX] Critical bug fixed: There was a problem in the way a cluster instance 
+        loaded the AOF that could cause data written via scripts to be lost during 
+        reshardings.
+* [NEW] There is a new very powerful BITFIELD command. Check the documentation
+        here: http://redis.io/commands/BITFIELD
+* [NEW] CONFIG GET is allowed during the loading of the dataset.
+* [NEW] The DEBUG command have new features and can show an help with DEBUG HELP.
+* [NEW] redis-cli show hits about the commands arguments to the right.
+* [NEW] GEORADIUS got a STORE / STOREDIST option to store the result into a target
+        key (as as orted set) instead of reporting it to the user.
+* [NEW] Redis Cluster replicas migration now works in a slightly different way. In
+        the past a slave could migrate only to a master that used to have slaves
+        in the past (and if there was still trace of this information). Now instead
+        if a new slave gets at least a slot, and at least one other master in the
+        cluster has a slave, then the new master is considered a valid target for
+        replica migration. So if it will be orphaned and there is a spare slave
+        it will get one.
+* [NEW] CLUSTER SLOTS output now includes the node ID (in a backward compatible
+        manner).
+
+-------------------------------------------------------------------
+Wed Apr 20 16:53:03 UTC 2016 - mamorales@suse.com
+
+- Fix installation example in README.SUSE
+
+-------------------------------------------------------------------
+Wed Feb 17 12:17:41 UTC 2016 - eshmarnev@suse.com
+
+- Update to 3.0.7:
+* [FIX] Many fixes to MIGRATE multiple keys implementation.
+* [FIX] A Redis Cluster node crash was fixed because of wrong handling of
+        node->slaveof pointers.
+* [FIX] Fix redis-trib rebalance when nodes need to be left empty because
+        the specified weight is zero.
+* [FIX] MIGRATE: Never send -ASK redirections for MIGRATE when there are
+* [FIX] Lua debugger crash when printing too deeply nested objects.
+* [FIX] Redis-cli implementation of Lua debugging now allows to use the
+        SCRIPT DEBUG command directly, switching to debugging mode as needed.
+* [FIX] Redis-trib is now able to fix more errors. A new CLUSTER subcommand
+        called BUMPEPOCH was introduced in order to support new modes
+        for the "fix" subcommand.
+* [NEW] Redis proctected mode: this feature improves Redis security and makes
+        harder to run Redis in a configuration that is unsecure because no
+        firewalling was used in order to protect Redis from external accesses.
+* [NEW] Cluster/Sentinel tests now use OSX leak to perform leak detection
+        at the end of every unit.
+* [NEW] Detect and show server crashes during Cluster/Sentinel tests.
+* [NEW] More reliable Cluster/Sentinel test becuase of timing errors and
+        -LOADING errors. 
+* [FIX] lua_struct.c/getnum security issue fixed. 
+* [FIX] Redis Cluster replica migration fixed.
+* [FIX] Fix a race condition in processCommand() because of interactions
+        with freeMemoryIfNeeded(). 
+* [NEW] Backported from the upcoming Redis 3.2:
+        MIGRATE now supports an extended multiple-keys pipelined mode, which
+        is an order of magnitude faster. Redis Cluster now uses this mode
+        in order to perform reshardings and rebalancings.
+* [NEW] Backported from the upcoming Redis 3.2:
+        Redis Cluster has now support for rebalancing via the redis-trib
+        rebalance command. Demo here:
+* [NEW] Redis Cluster redis-trib.rb new "info" subcommand.
+* [NEW] Redis Cluster tests improved. 
+* [NEW] Log offending memory access address on SIGSEGV/SIGBUS 
+
+-------------------------------------------------------------------
+Sun Nov 22 09:18:54 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.0.5
+  * [FIX] MOVE now moves the TTL as well. A bug lasting forever... 
+		finally fixed thanks to Andy Grunwald that reported it.
+	* [FIX] Fix a false positive in HSTRLEN test.
+	* [FIX] Fix a bug in redis-cli --pipe mode that was not able to 
+		read back replies from the server incrementally. Now a mass 
+		import will use a lot less memory, and you can use --pipe to 
+		do incremental streaming.
+	* [FIX] Slave detection of master timeout.
+	* [NEW] Cluster: redis-trib fix can fix an additional case for 
+		opens lots.
+	* [NEW] Cluster: redis-trib import support for --copy and 
+		--replace options
+
+-------------------------------------------------------------------
+Thu Sep 24 22:26:22 UTC 2015 - mrueckert@suse.de
+
+- update to 3.0.4
+  Upgrade urgency: HIGH for Redis and Sentinel. However note that in
+                   order to fix certain replication bugs, the
+                   replication internals were modified in a very heavy
+                   way. So while this release is conceptually saner, it
+                   may contain regressions. For this reason, before the
+                   release, QA activities were performed by me (antirez)
+                   and Redis Labs and no evident bug was found.
+
+  - [FIX] A number of bugs related to replication PSYNC and the (yet
+    experimental) diskless replication feature were fixed. The bugs
+    could lead to inconsistency between masters and slaves. (Salvatore
+    Sanfilippo, Oran Agra fixed the issue found by Yuval Inbar)
+  - [FIX] A replication bug in the context of PSYNC partial
+    resynchonization was found and fixed. This bug happens even when
+    diskless replication is off in the case different slaves connect at
+    different times while the master is creating an RDB file, and later
+    a partial resynchronization is attempted by a slave that connected
+    not as the first one. (Salvatore Sanfilippo, Oran Agra)
+  - [FIX] Chained replication and PSYNC interactions leading to
+    potential stale chained slaves data set, see issue #2694. (Salvatore
+    Sanfilippo fixed an issue reported by "GeorgeBJ" user at Github)
+  - [FIX] redis-cli --scan iteration fixed when returned cursor
+    overflows 32 bit signed integer. (Ofir Luzon, Yuval Inbar)
+  - [FIX] Sentinel: fixed a bug during the master switch process, where
+    for a failed conditional check, the new configuration is rewritten,
+    during a small window of time, in a corrupted way where the master
+    is also reported to be one of the slaves. This bug is rare to
+    trigger but apparently it happens in the wild, and the effect is to
+    see a replication loop where the master will try to replicate with
+    itself.  A detailed explanation of the bug and its effects can be
+    found in the commit message here:
+    https://github.com/antirez/redis/commit/c20218eb5770b2cafb12bc7092313b8358fedc0a.
+    The bug was found by Jan-Erik Rediger using a static analyzer and
+    fixed by Salvatore Sanfilippo.
+  - [FIX] Sentinel lack of arity checks for certain commands.  (Rogerio
+    Goncalves, Salvatore Sanfilippo)
+  - [NEW] Replication internals rewritten in order to be more resistant
+    to bugs.  The replication handshake in the slave side was rewritten
+    as a non blocking state machine. (Salvatore Sanfilippo, Oran Agra)
+  - [NEW] New "replication capabilities" feature introduced in order to
+    signal from the master to the slave what are the features supported,
+    so that the master can choose the kind of replication to start
+    (diskless or not) when master and slave are of different versions.
+    (Oran Agra, Salvatore Sanfilippo)
+  - [NEW] Log clients details when SLAVEOF command is received.
+    (Salvatore Sanfilippo with inputs from Nick Craver and Marc
+    Gravell).
+
+-------------------------------------------------------------------
+Mon Sep  7 17:42:22 UTC 2015 - mrueckert@suse.de
+
+- update to 3.0.3
+  * [FIX] Fix blocking operations timeout precision when HZ is at
+          its default value (not increased) and there are thousands
+          of clients connected at the same time. This bug affected
+          Sidekiq users that experienced a very long delay for
+          BLPOP and similar commands to return for timeout. Check
+          commit b029ff1 for more info. (Salvatore Sanfilippo)
+  * [FIX] MIGRATE "creating socket: Invalid argument" error fix.
+          Check issues #2609 and #2612 for more info.
+          (Salvatore Sanfilippo)
+  * [FIX] Be able to connect to the master even when the slave is
+          bound to just the loopback interface and has no valid
+          public address in the network the master is reacahble.
+          (Salvatore Sanfilippo)
+  * [FIX] ZADD with options encoding promotion fixed. (linfangrong)
+  * [FIX] Reset aof_delayed_fsync on CONFIG RESETSTATS. (Tom Kiemes)
+  * [FIX] PFCOUNT key parsing in cluster fixed. (MOON_CLJ)
+  * [FIX] Fix Solaris compilation of Redis 3.0. (Jan-Erik Rediger)
+  * [NEW] Variadic EXISTS command. Now the command accepts multiple
+          arguments and returns the total count of existing keys.
+- added missing sentinel link
+
+-------------------------------------------------------------------
+Mon Jun 15 11:07:16 UTC 2015 - mrueckert@suse.de
+
+- also pass the bind address to the redis-cli for shutdown
+  (boo#835815)
+
+-------------------------------------------------------------------
+Sun Jun  7 02:25:12 UTC 2015 - mrueckert@suse.de
+
+- update to 3.0.2
+  * [FIX] Critical security issue fix by Ben Murphy:
+          http://t.co/LpGTyZmfS7
+  * [FIX] SMOVE reply fixed when src and dst keys are the same.
+          (Glenn Nethercutt)
+  * [FIX] Lua cmsgpack lib updated to support str8 type.
+          (Sebastian Waisbrot)
+  * [NEW] ZADD support for options: NX, XX, CH. See new doc at
+          redis.io.  (Salvatore Sanfilippo)
+  * [NEW] Senitnel: CKQUORUM and FLUSHCONFIG commands back ported.
+          (Salvatore Sanfilippo)
+
+
+-------------------------------------------------------------------
+Sat May 16 22:03:00 UTC 2015 - Led <ledest@gmail.com>
+
+- update to 3.0.1
+  * Sentinel memory leak due to hiredis fixed.
+  * Sentinel memory leak on duplicated instance.
+  * Redis crash on Lua reaching output buffer limits.
+  * Sentinel flushes config on +slave events.
+
+-------------------------------------------------------------------
+Thu Apr  2 11:07:42 UTC 2015 - mrueckert@suse.de
+
+- update to 3.0.0
+  >> What's new in Redis 3.0 compared to Redis 2.8?
+
+  * Redis Cluster: a distributed implementation of a subset of Redis.
+  * New "embedded string" object encoding resulting in less cache
+    misses. Big speed gain under certain work loads.
+  * AOF child -> parent final data transmission to minimize latency
+    due to "last write" during AOF rewrites.
+  * Much improved LRU approximation algorithm for keys eviction.
+  * WAIT command to block waiting for a write to be transmitted
+    to the specified number of slaves.
+  * MIGRATE connection caching. Much faster keys migraitons.
+  * MIGARTE new options COPY and REPLACE.
+  * CLIENT PAUSE command: stop processing client requests for a
+    specified amount of time.
+  * BITCOUNT performance improvements.
+  * CONFIG SET accepts memory values in different units (for
+    example you can use "CONFIG SET maxmemory 1gb").
+  * Redis log format slightly changed reporting in each line the
+    role of the instance (master/slave) or if it's a saving child
+    log.
+  * INCR performance improvements.
+
+  >> Refactoring changes (no new features nor bug fixes)
+
+  * Blocking operations full refactoring (blocked.c)
+  * Client output buffer memory tracking refactored.
+
+  for all the details see
+    /usr/share/doc/packages/redis/00-RELEASENOTES
+- refreshed redis-enable-bactrace-on-x86-and-ia64-only.patch to
+  apply cleanly
+
+-------------------------------------------------------------------
+Wed Apr  1 16:31:16 UTC 2015 - mrueckert@suse.de
+
+- make sure we do not daemonize
+
+-------------------------------------------------------------------
+Wed Apr  1 15:57:59 UTC 2015 - mrueckert@suse.de
+
+- finished systemd support
+
+-------------------------------------------------------------------
+Mon Mar 30 19:16:52 UTC 2015 - mrueckert@suse.de
+
+- update to 2.8.19
+  - Don't log admin commands in MONITOR. (antirez)
+  - List of commands flagged as admin commands modified. (antirez)
+  - Lua cmsgpack lib updated to latest version. (antirez)
+  - Add symlink to redis-sentinel during make install (Rhommel
+    Lamas)
+  - SORT: Don't sort Set elements if not needed. (antirez)
+  - Fix zero-ordering SORT when called against lists (Matt
+    Stancliff)
+  - Update redis_init_script.tpl (Ben Dowling)
+  - FIXED redis-benchmark's idle mode.With idle mode shouldn't
+    create write event (zhanghailei)
+  - zipmap.c: update comments above (Sun He)
+  - replaced // comments  #2150 (Deepak Verma)
+  - redis-benchmark AUTH command to be discarded after the first
+    send #2150 (azure provisioned user)
+  - sds.c: Correct two spelling mistakes in comments (Sun He)
+  - sds.c/sdscatvprintf: set va_end to finish va_list cpy (Sun He)
+  - sds.c: Correct some comments (Sun He)
+  - Update whatisdoing.sh (Serghei Iakovlev)
+  - Include stropts only if __sun is defined. (antirez)
+  - Fix implicit declaration of ioctl on Solaris (Jan-Erik Rediger)
+  - Silence _BSD_SOURCE warnings in glibc 2.20 and forward (Johan
+    Bergström)
+  - Mark whatisdoing.sh as deprecated in top-comment. (antirez)
+  - getting pid fixes (Serghei Iakovlev)
+  - sparkline.c: AddSample skip Empty label (Sun He)
+  - sparkline.c: mov label-ini into the AddSample Function (Sun He)
+  - Only ignore sigpipe in interactive mode (Jan-Erik Rediger)
+  - Simplify lua_cmsgpack macro and fix build on old Linux distros.
+    (antirez)
+
+-------------------------------------------------------------------
+Thu Feb 12 07:41:34 UTC 2015 - lang@b1-systems.de
+
+- redis requires sudo for the systemv-init script. 
+  As of openSUSE 13.2 sudo is not implicitly included in the dependency tree.
+
+-------------------------------------------------------------------
+Sat Dec  6 02:20:25 UTC 2014 - mrueckert@suse.de
+
+- update to 2.8.18
+  * [FIX] Linenoise updated to be more VT100 compatible. (Salvatore Sanfilippo)
+  * [FIX] A number of typos fixed inside comments. (Various authors)
+  * [FIX] redis-cli no longer quits after long timeouts. (Matt Stancliff)
+  * [FIX] Test framework improved to detect never terminating scripts, cleanup
+        instances on crashes. (Salvatore Sanfilippo)
+  * [FIX] PFCOUNT can be used on slaves now. (Salvatore Sanfilippo)
+  * [FIX] ZSCAN no longer report very small scores as 0. (Matt Stancliff,
+        Michael Grunder, Salvatore Sanfilippo)
+  * [FIX] Don't show the ASCII logo if syslog is enabled. Redis is now
+        an Enterprise Grade product. (Salvatore Sanfilippo)
+
+  * [NEW] EXPERIMENTAL: Diskless replication, for more info check the doc at
+        http://redis.io/topics/replication. (Salvatore Sanfilippo).
+  * [NEW] Transparent Huge Pages detection and reporting in logs and
+        LATENCY DOCTOR output. (Salvatore Sanfilippo)
+  * [NEW] Many Lua scripting enhancements: Bitops API, cjson upgrade and tests,
+        cmsgpack upgrade. (Matt Stancliff)
+  * [NEW] Total and instantaneous Network bandwidth tracking in INFO.
+  * [NEW] DEBUG POPULATE two args form implemented (old form still works).
+        The second argument is the key prefix. Default is "key:" (Salvatore
+        Sanfilippo)
+  * [NEW] Check that tcp-backlog is matched by /proc/sys/net/core/somaxconn, and
+        warn about it if not. (Salvatore Sanfilippo)
+  for the rest see /usr/share/doc/packages/redis/00-RELEASENOTES
+
+-------------------------------------------------------------------
+Sun Nov 09 23:34:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Mon Jul 28 09:10:30 UTC 2014 - mrueckert@suse.de
+
+- remove unused skip-aof-test.patch
+
+-------------------------------------------------------------------
+Fri Jul 25 14:58:33 UTC 2014 - mrueckert@suse.de
+
+- update to 2.8.13
+  * [FIX] CLIENT KILL minor backward compatibility fixes.
+    (Salvatore Sanfilippo)
+  * [FIX] Enable HAVE_ATOMIC for PowerPC. (Matt Stancliff)
+  * [FIX] More robust PSYNC and AOF rewrites tests.
+    (Salvatore Sanfilippo)
+  * [FIX] Solaris build fixed.
+    (Matt Stancliff, Salvatore Sanfilippo)
+  * [NEW] The new latency monitoring feature, as documented at
+          http://redis.io/topics/latency-monitor
+          (Salvatore Sanfilippo)
+  * [NEW] The COMMAND command, exposing the Redis command table
+          as an API. (Matt Stancliff)
+  * [NEW] Update used memory with C11 __atomic. (Matt Stancliff)
+- additional changes from 2.8.12
+  * [FIX / BREAKS BACKWARD COMPATIBILITY] Using SELECT inside Lua
+    scripts no longer makes the selected DB to be set in the
+    calling client.  So Lua can still use SELECT, but the client
+    calling the script will remain set to the original DB. Thix
+    fixes an issue with Redis replication of Lua scripts that
+    called SELECT without reverting the selected DB to the original
+    one. (Salvatore Sanfilippo)
+  * [FIX] Sentinel failover was instalbe if the master was detected
+    as available during the failover (especially during manual
+    failovers) because of an implementation error (lack of checking
+    of SRI_PROMOTED flag). (Salvatore Sanfilippo)
+  * [FIX] Cancel SHUTDOWN if initial AOF is being written.
+    (Matt Stancliff)
+  * [FIX] Sentinel: bind source address for outcoming connections.
+    (Matt Stancliff).
+  * [FIX] Less timing sensitive Sentinel tests.
+    (Salvatore Sanfilippo).
+  * [NEW] redis-cli --intrinsic-latency stopped with SIGINT still
+    reports stats (Matt Stancliff)
+  * [NEW] Sentinels broadcast an HELLO message ASAP after a
+    failover in order to reach a consistent state faster (before it
+    relied for periodic HELLO messages). (Salvatore Sanfilippo).
+  * [NEW] Jemalloc updated to 3.6.0. (Salvatore Sanfilippo)
+  * [NEW] CLIENT LIST speedup. (Salvatore Sanfilippo)
+  * [NEW] CLIENT LIST new unique incremental ID to every client.
+    (Salvatore Sanfilippo)
+  * [NEW] ROLE command added. (Salvatore Sanfilippo)
+  * [NEW] CLIENT KILL new form to kill by client type and ID (see
+    doc at redis.io for more info). (Salvatore Sanfilippo)
+  * [NEW] Sentinel now disconnects clients when instances are
+    reconfigured (see http://redis.io/topics/sentinel-clients).
+    (Salvatore Sanfilippo)
+  * [NEW] Hiredis update to latest version. (Matt Stancliff)
+
+- additional changes from 2.8.11
+  # UPGRADE URGENCY: HIGH if you use Lua scripting, LOW otherwise.
+  * [FIX] A previous fix for Lua -> Redis numerical precision
+    enhancement introduced a new problem. In Redis 2.8.10 commands
+    called from Lua passing a string that "looks like" a very large
+    number, may actually use as argument the string converted as a
+    float. This bug is now fixed.
+  * [FIX] Now commands other than *PUSH* adding elements to a list
+    will be able to awake clients blocked in a blocking POP
+    operation.
+  * [FIX] Cygwin compilation fixes.
+
+- additional changes from 2.8.10
+  # UPGRADE URGENCY: HIGH if you use min-slaves-to-write option.
+  * [FIX] IMPORTANT! A min-slaves-to-write option active in a slave
+    totally prevented the slave from acception the master stream of
+    commands.  This release includes testes for
+    min-slaves-to-write, and a fix for this issue.
+  * [FIX] Sometimes DEL returned 1 for already expired keys. Fixed.
+  * [FIX] Fix test false positive because new osx 'leaks' output.
+  * [FIX] PFCOUNT HLL cache invalidation fixed: no wrong value was
+    reported but the cache was not used at all, leading to lower
+    performances.
+  * [FIX] Accept(2) multiple clients per readable-event invocation,
+    and better processing of I/O while loading or busy running a
+    timedout script.  Basically now the LOADING / BUSY errors are
+    reported at a decent speed.
+  * [FIX] A softwaer watchdog crash fixed.
+  * [FIX] Fixed a Lua -> Redis numerical precision loss.
+  * [NEW] Lua scripting engine speed improved.
+  * [NEW] Sentinel generates one new event for humans to understand
+    better what is happening during a failover:
+    +config-update-from.  Also the time at which a failover will be
+    re-attempted is logged.
+- additional changes from 2.8.9
+  # UPGRADE URGENCY: LOW, only new features introduced, no bugs fixed.
+  * [NEW] The HyperLogLog data structure. You can read more about
+    it in this blog post. http://antirez.com/news/75
+  * [NEW] The Sorted Set data type has now support for
+    lexicographic range queries, check the new commands
+    ZRANGEBYLEX, ZLEXCOUNT and ZREMRANGEBYLEX, which are documented
+    at http://redis.io.
+
+- additional changes from 2.8.8
+  # UPGRADE URGENCY: HIGH for Redis, LOW for Sentinel. There is a
+    potentially critical bug fix causing data loss in Redis but it
+    requires a combination of disk full and the use of the SHUTDOWN
+    command.
+  * [FIX] Fixed data loss when SHUTDOWN was used with a disk full
+    condition.
+  * [FIX] Fixed a memory leak in the SORT syntax error processing.
+  * [FIX] When Sentinel down-after-milliseconds parameter is
+    modified at runtime now it gets propagated to all the slaves
+    and sentinel instances of the master.
+  * [FIX] `install_server.sh` script finally fixed.
+  * [FIX] Different fixes to maxclients handling.
+  * [NEW] Sentinels are now able to send update messages in a
+    peer-to-peer fashion even if no Redis instances are available.
+    Now the Sentinel liveness property that the most updated
+    configuration in a given partition is propagated to all the
+    Sentinels is extended to partitions without reachable
+    instances.
+  * [NEW] Sentinel safety properties are now ensured in a
+    crash-recovery system model since some state is persisted on
+    disk before replying to other nodes, and reloaded at startup.
+  * [NEW] Sentinel now uses CLIENT SETNAME so that it is easy to
+    identify Sentinels using CLIENT LIST among other clients.
+  * [NEW] Sentinel failure detection and reconnection code
+    improved.
+  * [NEW] Use all 24 bits (instead of 22) for the Redis objects LRU
+    field.  Note that the new LRU algorithm using eviction pools
+    was not backported from unstable for safery / code maturity
+    concerns.
+  * [NEW] Majory speedup for the INFO command (it is now 6 times
+    faster).
+  * [NEW] More Sentinel unit tests.
+  * [NEW] New command DEBUG ERROR returns the specified error.
+    Example: DEBUG ERROR "LOADING database". This is handy to write
+    Redis client libraries unit tests.
+  * [NEW] redis-cli now supports multi-line editing via updated
+    linenoise lib.
+  Thanks to Matt Stancliff and Jan-Erik Rediger for the work done
+  in the context of this release.
+- additional changes from 2.8.7
+  # UPGRADE URGENCY: LOW for Redis, LOW for Sentinel. However this
+    release adds new features so users may want to upgrade in order
+    to exploit the new functionalities.
+  * [FIX] Sometimes the absolute config file path was obtained in a
+    wrong way.  This happened when there was a "dir" directive
+    inside the config file and at the same time the configuration
+    file was given as a relative path to redis-server or
+    redis-sentinel executables.
+  * [FIX] redis-cli: Automatically enter --slave mode when SYNC or
+    PSYNC are called during an interactive session.
+  * [FIX] Sentinel "IDONTKNOW" error removed as it does not made
+    sense with the new Sentinel design. This error was actually a
+    fix for a design error in the first implementation of Sentinel.
+  * [FIX] Sentinel: added a missing exit() call to abort after
+    config file checks at startup. This error was introduced with
+    an improvement in a previous 2.8 release.
+  * [FIX] BITCOUNT: fixed unaligned access causing issues in sparc
+    and other archs not capable of dealing with unaligned accesses.
+    This also makes the code faster in archs where unaligned
+    accesses are allowed.
+  * [FIX] Sentinel: better nodes fail over start time
+    desynchronization to avoid split-brain during the voting
+    process needed to get authorization to fail over. This means
+    the system is less likely to need to retry and will fail over
+    faster. No changes in behavior / correctness.
+  * [FIX] Force INFO used_memory_peak to match peak memory. This
+    generated some confusion among users even if it was not an
+    actual bug.
+  * [NEW] Sentinel unit tests and framework. More tests needed and
+    units must be improved in order to have less false positives,
+    but it is a start and features a debugging console that is
+    useful to fix tests or to inspect bugs causing tests failures.
+  * [NEW] New Sentinel events: +/-monitor and +set used to monitor
+    when an instance to monitor is added or removed, or when a
+    configuration is modified via SENTINEL SET.
+  * [NEW] Redis-cli updated to use SCAN instead of random sampling
+    via RANDOMKEY in order to implement --bigkeys feature. Moreover
+    the implementation now supports pipelining and reports more
+    information at the end of the scan. Much faster, much better. A
+    special thank you to Michael Grunder for this improvement.
+  * [NEW] redis-cli now supports a new --intrinsic-latency mode
+    that is able to meter the latency of a system due to kernel /
+    hypervisor.  How to use it is explained at
+    http://redis.io/topics/latency.
+  * [NEW] New command BITPOS: find first bit set or clear in a
+    bitmap.
+  * [NEW] CONFIG REWRITE calls are now logged.
+
+-------------------------------------------------------------------
+Tue Mar  4 13:51:48 UTC 2014 - mrueckert@suse.de
+
+- update to 2.8.6
+  Redis 2.6 is mostly a strict subset of 2.8. However there are a 
+  few things that you should be aware of:
+  The following commands changed behavior:
+    * SORT with ALPHA now sorts according to local collation locale
+      if no STORE option is used.
+    * ZADD/ZINCRBY are now able to accept a bigger range of values
+      as valid scores, that is, all the values you may end having
+      as a result of calling ZINCRBY multiple times.
+    * Many errors are now prefixed by a more specific error code
+      instead of the generic -ERR, for example -WRONGTYPE, -NOAUTH, ...
+    * PUBLISH called inside Lua scripts is now correctly propagated
+      to slaves.
+  The following redis.conf and CONFIG GET / SET parameters changed:
+    * logfile now uses the empty string in order to log to standard
+      output, so 'logfile stdout' is now invalid, use 'logfile ""'
+      instead.
+  The following INFO fields changed format in a non-backward compatible way:
+    * The list of slaves in INFO is now in field=value format.
+  Replication:
+    Redis 2.8 can be used as slave for Redis 2.6, but doing this is
+    only a good idea for the short amount of time needed to upgrade
+    your servers.  We suggest to update both master and slaves at
+    about the same time.
+  For all the details see
+    /usr/share/doc/packages/redis/00-RELEASENOTES
+- updated redis-conf.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Thu Aug  8 12:50:55 UTC 2013 - mrueckert@suse.de
+
+- drop skip-aof-test.patch
+
+-------------------------------------------------------------------
+Thu Aug  8 02:07:54 UTC 2013 - mrueckert@suse.de
+
+- disable skip-aof-test.patch for now:
+  it seems adding procps to the buildrequires also fixed that test.
+
+-------------------------------------------------------------------
+Wed Aug  7 14:37:30 UTC 2013 - mrueckert@suse.de
+
+- build require procps to get "ps" which is needed for the cleanup
+  of the redis processes launched by the testsuite.
+
+-------------------------------------------------------------------
+Wed Aug  7 14:31:17 UTC 2013 - mrueckert@suse.de
+
+- update to 2.6.14
+  UPGRADE URGENCY: HIGH because of the following two issues:
+      * Lua scripting + Replication + AOF in slaves problem (see Issue #1164).
+      * AOF + expires possible race condition (see Issue #1079).
+
+  * [FIX] AOF bug: expire could be removed from key on AOF rewrite.
+  * [FIX] Allow writes from scripts called by AOF loading in read-only slaves.
+  * [FIX] Sentinel: parse new verison of INFO replication output correctly.
+  * [NEW] Reset masterauth if an empty string is configured.
+  
+  For the changes from 2.6.10-2.6.13 see
+  /usr/share/doc/packages/redis/00-RELEASENOTES
+- refreshed patches:
+  - redis-conf.patch:
+  - redis-enable-bactrace-on-x86-and-ia64-only.patch:
+    just to get rid of fuzz
+  - skip-aof-test.patch:
+    can not comment in the array like that. rather remove the
+    line.
+
+-------------------------------------------------------------------
+Thu Jul  4 16:10:47 UTC 2013 - dvaleev@suse.com
+
+- enable backtrace for x86 and ia64 only
+  redis-enable-bactrace-on-x86-and-ia64-only.patch
+
+-------------------------------------------------------------------
+Mon Jun 24 14:15:49 UTC 2013 - vjt@openssl.it
+
+- Make the logrotate script setuid/setgid to the redis user/group 
+
+-------------------------------------------------------------------
+Tue Jan 22 10:47:17 UTC 2013 - mrueckert@suse.de
+
+- update to 2.6.9 (bnc#798455)
+  Too many changes to list them here, please refer to
+  /usr/share/doc/packages/redis/00-RELEASENOTES
+- refreshed patches:
+  redis-conf.patch
+  skip-aof-test.patch
+- dropped patches:
+  redis-endian.patch
+  redis-2.4.15-linenoise-cflags.patch
+
+-------------------------------------------------------------------
+Tue Nov 20 07:40:52 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Thu Nov  8 16:12:21 UTC 2012 - vjt@openssl.it
+
+- Implement a multi-instance setup
+  * Allow for multiple configuration files of named instances
+    under /etc/redis
+  * Each instance has its own data directory
+    under /var/lib/redis/$INSTANCE
+  * Each instance has its own PID file
+    under /var/run/redis/$INSTANCE.pid
+  * Each instance has its own log files
+    under /var/log/redis/$INSTANCE.log
+  * Instances may be started or stopped individually passing a
+    second argument to the init script
+  * Do not create an active default.conf, rather use an
+    .example suffix
+
+-------------------------------------------------------------------
+Mon Jul 23 18:11:50 UTC 2012 - mrueckert@suse.de
+
+- update to 2.4.15
+  too many changes see
+  /usr/share/doc/packages/redis/00-RELEASENOTES
+- added redis-2.4.15-linenoise-cflags.patch
+  make sure we build the dependency with cflags
+- refreshed redis-endian.patch
+
+-------------------------------------------------------------------
+Fri Mar 23 13:35:46 UTC 2012 - dvaleev@suse.com
+
+- fix ppc and ppc64 build.
+  disable tests for powerpc for now
+
+-------------------------------------------------------------------
+Thu Nov 24 09:56:41 UTC 2011 - saschpe@suse.de
+
+- Correct the 'how to get it running' comment in %post
+
+-------------------------------------------------------------------
+Thu Nov 24 09:48:13 UTC 2011 - saschpe@suse.de
+
+- Don't use runlevel 4 in init script
+- Compile with RPM_OPT_FLAGS (PROG env var didn't cut it)
+- Remove outdated %clean section, bogus doc package (there are none)
+  and netcat runtime dependency (for init script?)
+- Set license to SDPX style
+
+-------------------------------------------------------------------
+Mon Oct 24 10:48:19 UTC 2011 - asn@cryptomilk.org
+
+- Updated to 2.4.1.
+- Fixed init script.
+
+-------------------------------------------------------------------
+Tue May 24 09:39:19 UTC 2011 - prusnak@opensuse.org
+
+- updated to 2.2.7
+  * Fixed bug #543-2 (the issue was reopened with a completely
+    different report) that caused Redis to randomly crash on list
+    push performed against lists with other clients blocked with BLPOP
+    (or variants).
+  (changes from 2.2.6)
+  * Fixed bug #543. If you saw Redis instances crashing on List
+    operations (only happening with a non-default max entry size
+    ziplist setting in redis.conf) it was almost certainly this
+    problem.
+  * Fixed a bug with replication where SLAVEOF NO ONE caused
+    a slave to close the connection with all its slaves.
+  (changes from 2.2.5)
+  * Fixed a crash occurring when loading an AOF containing
+    the SPOP command.
+
+-------------------------------------------------------------------
+Fri Apr 15 18:18:56 UTC 2011 - mrueckert@suse.de
+
+- update to 2.2.4
+  * Return value of OBJECT DEBUG against sorted sets fixed, now is
+    "skiplist".
+- additional changes from 2.2.3
+  * Fixed issue #503. MONITOR + QUIT (and other combinations) could
+    crash the server.
+  * OBJECT command implemented. See http://redis.io/commands/object
+  * Fixed a problem in redis-cli related to escapes in the form
+    "\x..".
+  * Fixed a minor memory leak in redis-cli
+  * Saved RDB on SIGTERM on archs where it was not working properly.
+- additional changes from 2.2.2
+  * AOF file descriptor leak after the first rewrite fixed.
+  * Return value of GETRANGE / SUBSTR is now an empty string if the
+    interval specified is not valid, or the key does not exist. Was
+    a null bulk reply before, but this is against the Redis way.
+- fix the path to the log file in the conf patch to match the rest
+  of the package
+- created log dir
+- changed home dir of the redis user from /var/run/redis to
+  /var/lib/redis. the old home dir wasnt created anyway.
+
+-------------------------------------------------------------------
+Wed Feb 23 18:10:17 UTC 2011 - jw@novell.com
+
+- updated to 2.2.1
+
+-------------------------------------------------------------------
+Mon Feb 21 01:02:57 UTC 2011 - jw@novell.com
+
+- collecting stuff from Virtualization:Cloud:OpenStack, home:jfding:nosql, home:qik
+
+-------------------------------------------------------------------
+Thu Jan 27 16:18:42 UTC 2011 - seife+obs@b1-systems.com
+
+- package log directory to fix server start
+
+-------------------------------------------------------------------
+Tue Jan 18 21:08:35 UTC 2011 - asn@cryptomilk.org
+
+- Added logging to /var/log/redis/redis.log.
+- Added log rotation.
+
+-------------------------------------------------------------------
+Thu Jan 13 10:34:35 UTC 2011 - jfding@gmail.com
+
+- Upgrade to latest stable 2.0.4
+
+-------------------------------------------------------------------
+Mon Jan 10 16:29:31 CET 2011 - asn@cryptomilk.org
+
+- Fixed creation of the pid file.
+
+-------------------------------------------------------------------
+Sun Jan  9 23:28:39 CET 2011 - asn@cynapses.org
+
+- bind only to localhost
+- reduce the logging level for production
+- silence the init script a bit
+
+-------------------------------------------------------------------
+Mon May 17 14:26:18 UTC 2010 - mrueckert@suse.de
+
+- dont run as root
+
+-------------------------------------------------------------------
+Mon May 17 14:10:31 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.2.6
+  fixes two critical replication bugs, and a few improvements.
+  - Fixed Issue 207
+    (http://code.google.com/p/redis/issues/detail?id=207) (broken
+    replication with binary arguments not in the last position with
+    the MSET command or any other command issued with new
+    multi-bulk protocol)
+  - Fixed Issue 174
+    (http://code.google.com/p/redis/issues/detail?id=174) (temp
+    names collisions producing broken slave-side .rdb files)
+  - Redis-cli backported from Redis master, with interactive mode,
+    line editing via the linenoise library, auth ability, and much
+    more.
+  - ZRANGEBYSCORE now supports WITHSCORES as well (backported from
+    master)
+  - A simplified version of redis-stat (from redis tools) added.
+- update to version 1.2.5
+  fixes a replication bug: multiple slaves connecting to the same
+  master could lead to random crashes or corruptions.
+- use PROF parameter to pass in optflags
+
+-------------------------------------------------------------------
+Sun Mar  7 17:21:53 UTC 2010 - prusnak@suse.cz
+
+- updated to 1.2.4
+- install config file, more fixes to initscript
+
+-------------------------------------------------------------------
+Fri Mar  5 06:12:24 EST 2010 - pzb@suse.de
+
+- Add BuildRoot to spec file to enable builds on old distros
+- Patch initscript to use netcat instead of nc i
+    (same command, different package)
+
+- Update to Redis 1.2.3
+  - The example init script was broken for a typo. Fixed.
+  - Support for large files in 32 bit targets, very important when saving 
+      very large databases or when using the Append Only File (when Redis 
+      was compiled for 64 bit target there was no problem).
+  - Now 'make 32bit' uses -m32 instead of Apple-specific -arch
+  - Stack trace fixed for some Linux targets
+
+-------------------------------------------------------------------
+Thu Jan 21 16:32:45 UTC 2010 - prusnak@suse.cz
+
+- created package
+

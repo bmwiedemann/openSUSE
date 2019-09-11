@@ -1,0 +1,329 @@
+--- libglade-convert.in	(original)
++++ libglade-convert.in	(refactored)
+@@ -45,7 +45,7 @@
+         if name == 'class':
+             self.wclass = value
+             return
+-        if self.properties.has_key(name):
++        if name in self.properties:
+             self.property_names.remove(name)
+             del self.properties[name]
+         if value == 'True': value = 'yes'
+@@ -53,19 +53,19 @@
+         self.property_names.append(name)
+         self.properties[name] = value
+     def __delitem__(self, name):
+-        if self.properties.has_key(name):
++        if name in self.properties:
+             self.property_names.remove(name)
+             del self.properties[name]
+         else:
+-            raise KeyError, "unknown property `%s'" % name
++            raise KeyError("unknown property `%s'" % name)
+     def has_prop(self, name):
+-        return self.properties.has_key(name)
++        return name in self.properties
+     def rename_prop(self, old_name, new_name):
+         if self.has_prop(old_name):
+             self[new_name] = self[old_name]
+             del self[old_name]
+     def remove_prop(self, name):
+-        if self.properties.has_key(name):
++        if name in self.properties:
+             self.property_names.remove(name)
+             del self.properties[name]
+             
+@@ -85,7 +85,7 @@
+         def __getitem__(self, name):
+             return self.properties[name]
+         def __setitem__(self, name, value):
+-            if self.properties.has_key(name):
++            if name in self.properties:
+                 self.property_names.remove(name)
+                 del self.properties[name]
+             if value == 'True': value = 'yes'
+@@ -93,19 +93,19 @@
+             self.property_names.append(name)
+             self.properties[name] = value
+         def __delitem__(self, name):
+-            if self.properties.has_key(name):
++            if name in self.properties:
+                 self.property_names.remove(name)
+                 del self.properties[name]
+             else:
+-                raise KeyError, "unknown property `%s'" % name
++                raise KeyError("unknown property `%s'" % name)
+         def has_prop(self, name):
+-            return self.properties.has_key(name)
++            return name in self.properties
+         def rename_prop(self, old_name, new_name):
+             if self.has_prop(old_name):
+                 self[new_name] = self[old_name]
+                 del self[old_name]
+         def remove_prop(self, name):
+-            if self.properties.has_key(name):
++            if name in self.properties:
+                 self.property_names.remove(name)
+                 del self.properties[name]
+                 
+@@ -114,27 +114,27 @@
+                 return
+ 
+             if self.internal_child:
+-                print '%s<child internal-child="%s">' % \
+-                      (indent, self.internal_child)
++                print('%s<child internal-child="%s">' % \
++                      (indent, self.internal_child))
+             else:
+-                print '%s<child>' % indent
++                print('%s<child>' % indent)
+             if self.widget.wclass == 'Placeholder':
+-                print '%s  <placeholder />' % indent
++                print('%s  <placeholder />' % indent)
+             else:
+                 self.widget.dump(indent + '  ')
+             if self.properties:
+-                print '%s  <packing>' % indent
++                print('%s  <packing>' % indent)
+                 for name in self.property_names:
+                     attrs = ''
+                     if name in translatable_properties:
+                         attrs += ' translatable="yes"'
+                     if name[:3] == 'cxx':
+                         attrs += ' agent="glademm"'
+-                    print '%s    <property name="%s"%s>%s</property>' % \
++                    print('%s    <property name="%s"%s>%s</property>' % \
+                           (indent, name, attrs,
+-                           self.properties[name].encode('utf-8'))
+-                print '%s  </packing>' % indent
+-            print '%s</child>' % indent
++                           self.properties[name].encode('utf-8')))
++                print('%s  </packing>' % indent)
++            print('%s</child>' % indent)
+ 
+     def add_child(self, widget, internal_child=None):
+         child = self.ChildDef(widget, internal_child)
+@@ -142,7 +142,7 @@
+         return child
+ 
+     def dump(self, indent):        
+-        print '%s<widget class="%s" id="%s">' %(indent, self.wclass, self.name)
++        print('%s<widget class="%s" id="%s">' %(indent, self.wclass, self.name))
+         want_newline = 0
+         for name in self.property_names:
+             attrs = ''
+@@ -154,41 +154,41 @@
+                 attrs += ' translatable="yes"'
+             if name[:3] == 'cxx':
+                 attrs += ' agent="glademm"'
+-            print '%s  <property name="%s"%s>%s</property>' % \
+-                  (indent, name, attrs, self.properties[name].encode('utf-8'))
++            print('%s  <property name="%s"%s>%s</property>' % \
++                  (indent, name, attrs, self.properties[name].encode('utf-8')))
+             want_newline = 1
+         if want_newline and (self.signals or self.accels or self.children):
+-            print
++            print()
+ 
+         want_newline = 0
+         for name, handler, object, after in self.signals:
+-            print '%s  <signal name="%s" handler="%s"' % (indent, name,
+-                                                          handler),
+-            if object: print 'object="%s"' % object,
+-            if after: print 'after="yes"',
+-            print '/>'
++            print('%s  <signal name="%s" handler="%s"' % (indent, name,
++                                                          handler), end=' ')
++            if object: print('object="%s"' % object, end=' ')
++            if after: print('after="yes"', end=' ')
++            print('/>')
+             want_newline = 1
+-        if want_newline and (self.accels or self.children): print
++        if want_newline and (self.accels or self.children): print()
+ 
+         want_newline = 0
+         for key, modifiers, signal in self.accels:
+-            print '%s  <accelerator key="%s" modifiers="%s" signal="%s" />' % \
+-                  (indent, key, modifiers, signal)
++            print('%s  <accelerator key="%s" modifiers="%s" signal="%s" />' % \
++                  (indent, key, modifiers, signal))
+             want_newline = 1
+-        if want_newline and self.children: print
++        if want_newline and self.children: print()
+ 
+         want_newline = 0
+         for child in self.children:
+-            if want_newline: print
++            if want_newline: print()
+             child.dump(indent + '  ')
+             want_newline = 1
+-        print '%s</widget>' % indent
++        print('%s</widget>' % indent)
+ 
+ 
+ # --- Code to parse the glade1 XML files into WidgetDef instances ---
+ 
+ def totext(nodelist):
+-    return string.join(map(lambda node: node.toxml(), nodelist), '')
++    return string.join([node.toxml() for node in nodelist], '')
+ 
+ def handle_signal(widget, signalnode):
+     name = None
+@@ -414,7 +414,7 @@
+ global_group_map = { }
+ 
+ def find_parent(type):
+-    if parent_table.has_key(type):
++    if type in parent_table:
+         return parent_table[type]
+     return ''
+ 
+@@ -585,7 +585,7 @@
+     'GNOMEUIINFO_MENU_GAME_TREE': (0, '_Game'),
+ }
+ def stock_menu_translate(old_name):
+-    if stock_menu_items.has_key(old_name):
++    if old_name in stock_menu_items:
+         return stock_menu_items[old_name]
+     else:
+         return (0, old_name)
+@@ -598,7 +598,7 @@
+ def fixup_as_type(widget, type):
+ 
+     if verbose:
+-        print >> sys.stderr, 'Fixing', widget['name'], 'up as', type
++        print('Fixing', widget['name'], 'up as', type, file=sys.stderr)
+ 
+     # table based property removals/renames
+     for name in global_obsolete_props:
+@@ -606,11 +606,11 @@
+     for old, new in global_renamed_props:
+         widget.rename_prop(old, new)
+ 
+-    if obsolete_props.has_key(type):
++    if type in obsolete_props:
+         for name in obsolete_props[type]:
+             widget.remove_prop(name)
+ 
+-    if renamed_props.has_key(type):
++    if type in renamed_props:
+         for old, new in renamed_props[type]:
+             widget.rename_prop(old, new)
+ 
+@@ -618,12 +618,12 @@
+         for childdef in widget.children:
+             childdef.rename_prop(old, new)
+ 
+-    if obsolete_child_props.has_key(type):
++    if type in obsolete_child_props:
+         for name in obsolete_child_props[type]:
+             for childdef in widget.children:
+                 childdef.remove_prop(name)
+ 
+-    if renamed_child_props.has_key(type):
++    if type in renamed_child_props:
+         for old, new in renamed_child_props[type]:
+             for childdef in widget.children:
+                 childdef.rename_prop(old, new)
+@@ -689,8 +689,8 @@
+                     del childdef.widget['child_name']
+                     childdef['type'] = 'tab'
+                 else:
+-                    print >> sys.stderr , 'Unknown child_name', \
+-                          childdef.widget['child_name']
++                    print('Unknown child_name', \
++                          childdef.widget['child_name'], file=sys.stderr)
+ 
+     if type == 'GtkFileSelection':
+         for childdef in widget.children:
+@@ -775,8 +775,7 @@
+                 del childdef.widget['child_name']
+                 
+                 try:
+-                    childdef = filter(lambda x: x.widget.has_prop('child_name'),
+-                                      childdef.widget.children)[0]
++                    childdef = [x for x in childdef.widget.children if x.widget.has_prop('child_name')][0]
+                 except IndexError:
+                     return 0
+                 childdef.widget['class'] = 'GtkHButtonBox'
+@@ -791,8 +790,7 @@
+                 del childdef.widget['child_name']
+                 
+             try:
+-                childdef = filter(lambda x: x.widget.has_prop('child_name'),
+-                                  childdef.widget.children)[0]
++                childdef = [x for x in childdef.widget.children if x.widget.has_prop('child_name')][0]
+             except IndexError:
+                 return 0
+             childdef.widget['class'] = 'GtkHButtonBox'
+@@ -881,7 +879,7 @@
+     # have the glade id of the root group widget.
+     if type == 'GtkRadioButton' or type == 'GtkRadioMenuItem':
+         if widget.has_prop ('group'):
+-            if global_group_map.has_key (widget['group']):
++            if widget['group'] in global_group_map:
+                 widget['group'] = global_group_map[widget['group']]
+             else:
+                 global_group_map[widget['group']] = widget['name']
+@@ -898,7 +896,7 @@
+                     elif childdef.widget['class'] == 'GtkRadioButton':
+                         childdef.widget['class'] = 'radio'
+                         if childdef.widget.has_prop('group'):
+-                            if global_group_map.has_key (childdef.widget['group']):
++                            if childdef.widget['group'] in global_group_map:
+                                 childdef.widget['group'] = global_group_map[childdef.widget['group']]
+                             else:
+                                 global_group_map[childdef.widget['group']] = childdef.widget['name']
+@@ -1135,8 +1133,8 @@
+ def check_widget(widget, requirelist=[]):
+     try:
+         error = bad_widgets[widget['class']]
+-        print >> sys.stderr , 'widget %s of class %s is %s.' % \
+-              (widget['name'], widget['class'], error)
++        print('widget %s of class %s is %s.' % \
++              (widget['name'], widget['class'], error), file=sys.stderr)
+         if error == 'removed':
+                 widget.mark_obsolete ()
+     except KeyError:
+@@ -1171,21 +1169,21 @@
+         fixup_widget(widgetdef)
+         check_widget(widgetdef, requireslist)
+ 
+-    print '<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->'
+-    print '<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >'
+-    print
+-    print '<glade-interface>'
++    print('<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->')
++    print('<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >')
++    print()
++    print('<glade-interface>')
+ 
+     for requirement in requireslist:
+-        print '  <requires lib="%s" />' % requirement
++        print('  <requires lib="%s" />' % requirement)
+     if requireslist:
+-        print
++        print()
+ 
+     indent = '  '
+     for widgetdef in widgets:
+         widgetdef.dump(indent)
+ 
+-    print '</glade-interface>'
++    print('</glade-interface>')
+     document.unlink() # only needed for python interpreters without cyclic gc
+ 
+ usage = 'usage: libglade-convert [--no-upgrade] [--verbose] oldfile.glade'
+@@ -1201,10 +1199,10 @@
+         elif opt == '--verbose':
+             verbose = 1
+         elif opt == '--help':
+-            print usage
++            print(usage)
+             sys.exit(0)
+     if len(args) != 1:
+-	print >> sys.stderr, usage
++	print(usage, file=sys.stderr)
+ 	sys.exit(1)
+     handle_file(args[0])
+ 

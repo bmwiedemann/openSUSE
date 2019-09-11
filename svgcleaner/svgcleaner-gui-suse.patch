@@ -1,0 +1,10 @@
+Index: svgcleaner-0.9.5/svgcleaner-gui-0.9.5/svgcleaner.desktop
+===================================================================
+--- svgcleaner.desktop.orig
++++ svgcleaner.desktop
+@@ -5,4 +5,4 @@
+ Exec=svgcleaner-gui
+ Icon=svgcleaner
+ Type=Application
+-Categories=Graphics;
++Categories=GNOME;Graphics;2DGraphics;RasterGraphics;

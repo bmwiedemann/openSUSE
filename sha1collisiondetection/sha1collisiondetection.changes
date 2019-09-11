@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Jan 31 17:48:45 CET 2018 - ro@suse.de
+
+- cleaner solution for the endian detection issue:
+  include the proper header file 
+
+-------------------------------------------------------------------
+Wed Jan 31 17:33:48 CET 2018 - ro@suse.de
+
+- add sha1collisiondetection-endian_detection.patch
+  fix detection of endianness at compile time 
+
+-------------------------------------------------------------------
+Fri Aug  4 15:18:33 CEST 2017 - tiwai@suse.de
+
+- Fix include header path to /usr/include/sha1dc/sha1.h as supposed
+  by upstream installation
+- Remove conflicts with libmd-devel, as we changed the header path
+
+-------------------------------------------------------------------
+Mon May 22 16:20:43 UTC 2017 - astieger@suse.com
+
+- better printing of errors, and allow hashing stdin
+  add sha1collisiondetection-1.0.3-io-fixes.patch
+
+-------------------------------------------------------------------
+Mon Apr 10 13:29:43 UTC 2017 - astieger@suse.com
+
+- update to 1.0.3:
+  * SIMD code removed
+  * performance improvements
+- package library
+- conflicts with libmd-devel
+
+-------------------------------------------------------------------
+Tue Feb 28 20:59:56 UTC 2017 - astieger@suse.com
+
+- CLI to check for SHA-1 collisions bsc#1026646 - CVE-2005-4900
+- initial package (cli only)
+
+

@@ -1,0 +1,999 @@
+-------------------------------------------------------------------
+Fri May 31 21:44:31 UTC 2019 - seanlew@opensuse.org
+
+- Version update to 12.0.5
+  * Complete support for PCP output formwat with sadf
+  * Includes simulation/test environment to run non-regression tests
+
+-------------------------------------------------------------------
+Wed Jan 23 11:13:24 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 12.0.3
+  * 2018/12/14: Version 12.0.3 - Sebastien Godard (sysstat<at>orange.fr)
+    * sadf: Fix out of bound reads security issues (CVE-2018-19416
+       and CVE-2018-19517).
+    * sadf: Fix possible infinite loop.
+    * [Todd Walton]: Clarify sadc manual page and FAQ on using
+      multiple -S keywords.
+    * Remove remap_struct() prototype from sa.h.
+    * [Steve Kay]: Use memcpy rather than strncpy, in order to
+      avoid truncation warning.
+    * [Steve Kay]: Cosmetic fixes in configure file.
+    * [Anatoly Pugachev]: Fix comment in sar.c.
+- Dropped patch fixed upstream:
+  * sysstat-12.0.2-CVE-2018-19416-and-CVE-2018-19517.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 13:02:58 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fixes:
+  * The remap_struct function in sa_common.c has an out-of-bounds
+    read during a memmove call [CVE-2018-19416, bsc#1117001]
+  * The remap_struct function in sa_common.c has an out-of-bounds read
+    during a memset call [CVE-2018-19517, bsc#1117260]
+  * Added patch sysstat-12.0.2-CVE-2018-19416-and-CVE-2018-19517.patch
+
+-------------------------------------------------------------------
+Mon Nov 12 11:34:17 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Run tests during build
+- Use explicit list of binaries in files section of spec file
+
+-------------------------------------------------------------------
+Tue Oct 16 10:10:52 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Up to 12.0.2: (fate#326576, bsc#1089883)
+  * This version mainly includes bugfixes
+- Dropped patches for SLE-12, fixed upstream:
+  * sysstat-10.2.1-iostat-sar-util.patch
+  * sysstat-10.2.1-sar-ifutil.patch
+  * sysstat-10.2.6-fix-json-with-file-utc-time.patch
+
+-------------------------------------------------------------------
+Tue Aug 14 07:03:04 UTC 2018 - tchvatal@suse.com
+
+- Version update to 12.0.1:
+  * sadf: SVG: Remove id tag from individual graphs. Use activities
+    identification numbers for id tags.
+  * sadf: SVG: Add new option "showtoc", which can be used to display
+    the list of activities for which there are graphs ("table of
+    contents").
+  * sadf: SVG: Improve output for softnet activity: Add a discontinuity in
+    graph when corresponding CPU is marked offline.
+  * sadf: SVG: Improve function used to assess SVG canvas height.
+  * sadf: SVG: Fix core dumped on buffers reallocation.
+  * sar/sadf: Devices list management code refactoring.
+  * sa_conv.c: Use write_all() function instead of write() to handle possible
+    signal interruptions.
+  * spec file updated: No longer create a debug package.
+  * Remove many warnings from gcc v7/v8.
+  * README file updated.
+  * Manual pages updated.
+
+-------------------------------------------------------------------
+Tue Aug 14 06:50:52 UTC 2018 - tchvatal@suse.com
+
+- Update to 11.6.5:
+  * sadf: SVG: Display graphs for swap utilization in packed mode.
+  * sadf: SVG: Don't take into account activities with no graphs when
+    calculating canvas height.
+  * sadf: SVG: Don't insert a gap in SVG output if an activity is not
+    displayed.
+  * sadf: SVG: Fix possible negative value in graphs coordinates.
+
+-------------------------------------------------------------------
+Thu Jun 21 10:45:22 UTC 2018 - tchvatal@suse.com
+
+- Version update to 11.6.4:
+  * The number of decimal places used by sysstat commands (sar, cifsiostat, iostat, mpstat and pidstat),
+  * The network interfaces, block devices and filesystems for which statistics shall be displayed by sar or sadf.
+
+-------------------------------------------------------------------
+Fri Apr 27 07:58:40 UTC 2018 - tchvatal@suse.com
+
+- Version update to 11.6.3:
+  * A possible crash related to the new binary format used by sar, which could
+    happen when buffers needed to be reallocated to accomodate more devices
+    added to the system,
+  * The %CPU value displayed by pidstat for processes using more than 100%
+    of a core.
+
+-------------------------------------------------------------------
+Thu Apr 26 15:12:43 UTC 2018 - fcrozat@suse.com
+
+- Remove Requires on update-desktop-files on subpackage, it is
+  useless.
+
+-------------------------------------------------------------------
+Thu Nov  2 09:36:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 11.6.1
+  * See provided CHANGES for detailed list of changes
+- Refresh patches:
+  * sysstat-8.0.4-pagesize.diff
+  * sysstat-8.0.4-sysconfdir.diff
+  * sysstat-8.1.6-sa1sa2lock.diff
+- Drop no longer needed
+  * sysstat-8.0.4-sysconfdir.diff
+
+-------------------------------------------------------------------
+Fri Mar 31 09:54:04 UTC 2017 - tchvatal@suse.com
+
+- Properly specify you want to be started by multi-user.target
+  bsc#1031674
+
+-------------------------------------------------------------------
+Sun Feb 19 10:21:16 UTC 2017 - tchvatal@suse.com
+
+- Update to 11.4.3 release
+  * check the CHANGES file for detailed informations, too long
+- Refresh patches:
+  * sysstat-8.0.4-sysconfdir.diff
+  * sysstat-8.1.6-sa1sa2lock.diff
+- Remove patch that was converted to sed:
+  * sysstat-9.0.4-no-build-date.patch
+
+-------------------------------------------------------------------
+Wed May 25 01:57:31 CEST 2016 - ro@suse.de
+
+- skip libsensors on s390/s390x 
+
+-------------------------------------------------------------------
+Mon Nov 16 17:41:10 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.0.8
+  * Fix possible NULL pointer dereference in SREALLOC macro (CID
+    #29706).
+  * sadc: Fix untrusted value used as argument (CID #29720).
+  * Update librdsensors.a target in Makefile.
+- Changes for 11.0.7
+  * [Peter Schiffer]: Fix problem with pidstat output values > 100%
+    for %CPU.
+  * [Alexis Solanas]: Fix issue with iostat not showing the full
+    device name.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Wed Sep  9 11:10:04 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.0.6
+  * Check /proc/net/snmp format to collect ICMP statistics at
+          their right positions.
+  * ioconf.c: Fix several ressource leaks.
+  * mpstat: Fix alignment output, really.
+  * [Sampsa Kiiskinen]: Fix bug in isag.
+  * iostat manual page updated.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Mon Jun 22 07:01:56 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.0.5
+  * [Peter Schiffer]: Fixed and simplified some math expressions 
+    in pr_stats.c.
+  * [Peter Schiffer]: ioconf.c: Check value of variable "major"
+    read from file.
+  * [Peter Schiffer]: ioconf.c: Use strncpy instead of strcpy.
+  * cifsiostat: Fixed possible integer overflowed argument.
+  * sar: Fixed untrusted loop bound.
+
+-------------------------------------------------------------------
+Sun May 17 11:09:27 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.0.4 
+  * Makefile: sysstat init script may sometimes be called rc.sysstat.
+    So use that name when needed.
+  * pidstat: Don't stop if gtime and cgtime fields are unavailable.
+  * Typos fixed in XSD document.
+  * [Peter Schiffer]: Replace spaces with tabs in Makefile.in.
+  * [Peter Schiffer]: Create appropriate directories in DESTDIR if
+    missing.
+  * [Peter Schiffer]: Fixed installation of systemd/cron files on
+    systems w/o systemd.
+  * [Peter Schiffer]: Don't look in weird places for programs during
+    configuration.
+  * [Peter Schiffer]: Portable way to detect 64 bit OS in configure
+    script.
+  * [Steve Kay]: Fix mpstat SCPU alignment output.
+  * Makefile: Call chkconfig only if $(COPY_ONLY) is set to no.
+  * sysstat(5) manual page updated.
+  * NLS updated.
+- Use scriplets for updating desktop files
+- Update patches
+
+-------------------------------------------------------------------
+Fri Feb 20 18:44:59 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update dependecies
+- Update to 11.0.3:
+  * Prefer xz compression program when compressing sa data files
+  * sadc: Fix possible race condition in signal handler code
+  * Fix description of %util in iostat and sar manual pages
+  * Make sure that no crontabs are activated when configure's 
+    option --enable-copy-only is used.
+
+-------------------------------------------------------------------
+Fri Jul 18 02:34:05 UTC 2014 - tabraham@suse.com
+
+- update to 11.0.0
+  * [Cedric Marie]: pidstat now displays task scheduling priority and policy (-R option).
+  * [Cedric Marie]: pidstat: Add option -G to filter processes by name.
+  * pidstat: Update variables type to be consistent with recent 3.x kernels.
+  * sadc/sar/sadf: The standard daily data files may now be named saYYYYMMDD instead of saDD. Option -D has been added to sar and sadc to tell them to write to data files under the name saYYYYMMDD.
+  * sadc/sar/sadf: Take into account alternate locations for standard daily data files.
+  * sa1 and sa2 scripts updated: Don't create a tree of directories any more if HISTORY is greater than 28. Use saYYYYMMDD data files instead.
+  * sa1 and sa2 scripts now take into account two new variables: SA_DIR (directory where sa and sar files are located) and ZIP (compression program to use).
+  * Make sysstat init script source the functions library.
+  * Fix possible buffer overflow.
+  * Small fix with sadc's option -S: It is now possible to enter several comma separated values.
+  * Don't install crontabs when using systemd timer units.
+  * Manual pages updated.
+  * FAQ updated.
+  * NLS updated. Galician and Hungarian translations added.
+  * CREDITS file updated.
+- removed sysstat-rename_nfsiostat.patch (deprecated)
+- refreshed the other patches
+
+-------------------------------------------------------------------
+Mon Apr 28 07:17:44 UTC 2014 - coolo@suse.com
+
+- remove %ghost in /var/run, see
+  http://lists.opensuse.org/opensuse-packaging/2014-04/msg00046.html
+
+-------------------------------------------------------------------
+Mon Jan 27 12:06:13 UTC 2014 - vcizek@suse.com
+
+- update to 10.2.1
+  * Added new --enable-copy-only option to configure script.
+    This option may be useful when creating sysstat package to
+    make sure that files are only copied to $DESTDIR and that
+    no service is activated (eg. for distro using systemd).
+  * pidstat: Add a new metric to pidstat I/O statistics:
+    per-task block I/O delays.
+  * Take $DESTDIR variable into account when installing sysstat
+    service used by systemd.
+  * sadf -H, sadf -j and sadf -x now also display the file
+    creation time.
+  * Use sizeof() instead of hardcoded size values.
+  * pidstat manual page updated.
+  * Cosmetic fixes.
+  * NLS updated.
+- rename nfsiostat to nfsiostat-sysstat because of a name collision
+  with a binary from nfs-utils (bnc#814447)
+  * added sysstat-rename_nfsiostat.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 12:05:12 UTC 2013 - vcizek@suse.com
+
+- update to 10.2.0
+  * This version mainly focuses on pidstat, with several bug fixes
+    and the addition of a new option (-v) enabling the user to
+    display the number of threads and file descriptors associated
+    with tasks.
+- refreshed some of the patches
+- move the lib64 patching from %prep (overwrites service unit on
+  every quilt setup)
+
+-------------------------------------------------------------------
+Wed Oct 23 15:56:10 UTC 2013 - p.drouand@gmail.com
+
+- Drop sysvinit support
+
+-------------------------------------------------------------------
+Fri Nov  9 15:36:58 UTC 2012 - vcizek@suse.com
+
+- fixed two typos in spec related to service unit, which prevented
+  succesful startup (bnc#783886)
+- service unit included hardcoded /usr/lib, so patching
+  sysstat.service to use correct libdir
+
+-------------------------------------------------------------------
+Tue Oct 16 12:59:50 UTC 2012 - vcizek@suse.com
+
+- increased the default number of days for how long will sysstat
+  keep the log files (fate#313767)
+
+-------------------------------------------------------------------
+Thu May 17 12:39:53 UTC 2012 - vcizek@suse.com
+
+- update to 10.0.5
+  * [Alain Chereau]: Options -g and -T added to iostat. These options
+    enable the user to display statistics for groups of devices.
+  * [Vitezslav Cizek]: sadc now overwrites its standard daily data
+    file when this file is from a past month.
+    - fixes bnc#758356
+  * sadf: Change time format from HH-MM-SS to HH:MM:SS in the
+    various reports displayed by sadf.
+  * XSD document updated: Added a maxOccurs indicator for the timestamp element.
+  * Added option --enable-collect-all to configure script. This
+    option tells sadc to collect all possible activities, including optional ones.
+  * [Peter Schiffer]: Set exit code to 0 for sa2 shell script.
+  * NLS updated. Croatian translation added.
+  * iostat and sadc manual pages updated.
+  * FAQ updated.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Mon Mar 12 17:27:04 UTC 2012 - tabraham@novell.com
+
+- update to 10.0.4
+  * [Andrey Borzenkov]: Don't take virtual devices into account in
+    sar -b results.
+  * [Peter Schiffer]: iostat didn't display target device
+    information when a symbolic link was specified as a parameter.
+    This is now fixed.
+  * The number of jiffies spent by a CPU in guest mode given by the
+    corresponding counter in /proc/stat may be slightly different
+    from that included in the user counter. Take this into account
+    when calculating current time interval value.
+  * configure script updated: Added --disable-stripping option.
+    Using this option tells configure to NOT strip object files.
+  * FAQ updated.
+  * sa1 manual page updated.
+  * NLS updated. Serbian translation added.
+
+- drop sysstat-do-not-strip.patch (use new configure option
+  --disable-stripping instead)
+
+-------------------------------------------------------------------
+Wed Feb 15 10:01:27 UTC 2012 - puzel@suse.com
+
+- pass '-S ALL' to first run of sadc after boot to properly
+  include disk and interrupt statistics in the reports (bnc#746517)
+
+-------------------------------------------------------------------
+Wed Nov 30 09:04:14 UTC 2011 - puzel@suse.com
+
+- update to sysstat-10.0.3 
+  * sadf: New output format added: JSON (JavaScript Object
+    Notation). This format can be displayed with sadf's option -j.
+  * [Jürgen Heinemann]: Fixed a bug in sadf XML output.
+  * [Jürgen Heinemann]: Fixed several bugs in DTD and XSD
+    documents.
+  * [Petr Uzel]: Fixed random crash with iostat when called with
+    option -N [NOVELL Bug#729130].
+  * sadf manual page updated.
+- drop sysstat-fix-iostat-crash.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Nov  9 12:25:47 UTC 2011 - puzel@suse.com
+
+- add sysstat-fix-iostat-crash.patch (bnc#729130) 
+
+-------------------------------------------------------------------
+Thu Oct 27 07:12:57 UTC 2011 - puzel@suse.com
+
+- Generate the reports before midnight and simplify the cron file
+  (bnc#720609) 
+
+-------------------------------------------------------------------
+Wed Oct 26 13:59:26 UTC 2011 - lnussel@suse.de
+
+- don't enable sysstat by default (bnc#725791)
+- don't use /var/lock (bnc#725785)
+
+-------------------------------------------------------------------
+Mon Oct 17 15:16:34 UTC 2011 - fcrozat@suse.com
+
+- Add systemd service for sysstat (bnc#723858).
+
+-------------------------------------------------------------------
+Mon Sep 19 08:04:02 UTC 2011 - puzel@suse.com
+
+- update to sysstat-10.0.2 
+  - see /usr/share/doc/packages/sysstat/CHANGES
+
+-------------------------------------------------------------------
+Thu Aug 11 07:31:36 UTC 2011 - puzel@novell.com
+
+- enable boot.sysstat service on new installation (bnc#711574) 
+
+-------------------------------------------------------------------
+Mon Jun 27 12:40:36 UTC 2011 - puzel@novell.com
+
+- update to sysstat-10.0.1 
+  - see /usr/share/doc/packages/sysstat/CHANGES for
+    full list of changes
+- update patches 
+- get rid of obsolete --disable-smp-race configure option
+- use --enable-debug-info configure option
+- install /var/lock/sa as ghost file
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar  7 11:36:37 UTC 2011 - puzel@novell.com
+
+- make /etc/sysstat/sysstat config(noreplae) (bnc#674719) 
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Oct 20 12:26:16 CEST 2010 - ro@suse.de
+
+- update to 9.0.6.1
+  * Because of a change in /proc/interrupts file format, mpstat
+    was no longer counting the proper number of interrupts. This
+    is now fixed.
+  * iostat manual page updated.
+  * NLS updated.
+
+- update to 9.0.6
+  * "sadf -x" now takes into account options -s and -e (which
+    specify a starting and ending time) and also interval and
+    count parameters [DEBIAN bug#546259].
+  * Option -C added to sadf. Use it to tell sadf to display comments
+    present in file (also works with XML format).
+  * sar and sadf sometimes didn't handle COMMENT records properly.
+    This is now fixed.
+  * XML output (displayed by sadf -x) modified for kernel tables
+    statistics.
+  * XSD and DTD documents updated.
+  * [Yibin Shen]: HZ variable was not explicitly set in sadc.c. This is now fixed.
+  * [Lans Carstensen]: sargraph added (sargraph is a shell script used to make graphs
+    based on sadf XML output).
+  * sadf manual page updated.
+  * FAQ updated.
+  * NLS updated.
+  * CREDITS file updated.
+
+- update to 9.0.5
+  * sysstat should now be able to pretty print device names whose
+    minor numbers are greater than or equal to 256. (Tests have
+    been made on a large 26TB RHEL5/PP Linux cluster.)
+  * sadc manual page updated.
+  * NLS updated.
+  * FAQ updated.
+
+-------------------------------------------------------------------
+Sun Aug 29 18:17:26 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not hardcode build dates, make build-compare happy
+
+-------------------------------------------------------------------
+Fri May 28 12:16:58 UTC 2010 - puzel@novell.com
+
+- add sysstat-do-not-strip.patch 
+
+-------------------------------------------------------------------
+Wed Aug  5 12:56:54 CEST 2009 - prusnak@suse.cz
+
+- updated to 9.0.4
+  * [Jonathan Kamens]: Fix double free/memory corruption bug
+    with sadc.
+  * [Jeroen Roovers]: Get entirely rid of implicit rule for
+    libsyscom.a in Makefile to fix a problem with parallel
+    execution.
+  * sysstat.ioconf configuration file updated.
+
+-------------------------------------------------------------------
+Wed Jun 10 12:56:04 CEST 2009 - prusnak@suse.cz
+
+- merge some changes from package in server:monitoring project
+
+-------------------------------------------------------------------
+Fri May 29 17:07:42 CEST 2009 - prusnak@suse.cz
+
+- updated to 9.0.3
+  * [Michael Blakeley]: Option -z added to iostat. This option
+    tells iostat to omit output for any devices for which there
+    was no activity during the sample period.
+  * [Tomasz Pala]: Fix mpstat where interrupt values should be
+    read as unsigned integers.
+  * sar -n ALL didn't select IPv6 statistics. This is now fixed.
+  * iostat, sar and mpstat manual pages updated.
+  * sadf -x now displays file creation date.
+  * XSD and DTD documents updated.
+  * NLS updated. Latvian translation added.
+  * CREDITS file updated.
+  * Code cleaned.
+- updated to 9.0.2
+  * sadc can now collect partition statistics in addition to disk ones.
+    Keywords XDISK and XALL have been added to -S option.
+  * Fixed a memory corruption in pidstat and iostat. This corruption
+    could happen when a list of comma-separated values following
+    option -p was entered on the command line.
+  * configure now takes into account a new variable named rcdir.
+    This variable may be used to specify the directory where
+    startup scripts will be installed.
+  * The value of directory for installing documentation files
+    can now be set with configure's --docdir option.
+  * Fixed a small bug in activity.c file, where there was a
+    missing semicolon between two fields.
+  * sar and sadc manual pages updated.
+  * NLS updated.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Mon Mar  9 10:14:52 CET 2009 - prusnak@suse.cz
+
+- updated to 9.0.1
+  * Fix a crash with sar where a pointer was freed twice.
+  * NLS updated.
+  * sar manual page updated.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Mon Mar  2 10:15:57 CET 2009 - prusnak@suse.cz
+
+- updated to 9.0.0
+  * Option -m added to sar. This option is intended to display
+    power management statistics. At the present time, only
+    CPU frequency statistics are available.
+  * sadc updated: Option "-S POWER" tells sadc to collect power
+    management statistics.
+  * sadf command updated to take into account power management
+    statistics.
+  * [Mike Harvey]: No longer truncate the interval of time to
+    32 bits, as this may cause some problems when displaying
+    average values statistics on machines with hundreds of CPU.
+  * read_uptime(): Cast values read from /proc/uptime to
+    unsigned long long.
+  * Fixed a small bug in sar where it didn't parse arguments
+    properly when some options were entered in a specific order.
+  * sadc and sar manual pages updated.
+  * XSD and DTD documents updated.
+  * FAQ updated.
+  * NLS updated.
+  * Code cleaned. Makefile cleaned.
+
+-------------------------------------------------------------------
+Fri Sep 26 16:02:42 CEST 2008 - prusnak@suse.cz
+
+- changed parameter "-d" to "-S ALL" in crontab to match the new syntax
+
+-------------------------------------------------------------------
+Mon Sep  8 15:07:26 CEST 2008 - prusnak@suse.cz
+
+- fixed german translation
+
+-------------------------------------------------------------------
+Tue Aug 19 11:45:59 CEST 2008 - prusnak@suse.cz
+
+- updated to 8.1.5:
+  - changes too numerous to list (see CHANGES file)
+- fix missing --boot parameter in init script [bnc#378874]
+- fixed disc statistics logging [bnc#407004]
+
+-------------------------------------------------------------------
+Thu Jun 26 15:58:11 CEST 2008 - werner@suse.de
+
+- No patch for SuSE stuff
+
+-------------------------------------------------------------------
+Thu Jun 19 12:47:26 CEST 2008 - werner@suse.de
+
+- Add missing Provides to the init script
+
+-------------------------------------------------------------------
+Wed Apr  2 13:30:33 CEST 2008 - prusnak@suse.cz
+
+- do not remove log files when package is updated [bnc#371994]
+
+-------------------------------------------------------------------
+Tue Jan  8 16:54:26 CET 2008 - prusnak@suse.cz
+
+- updated to 8.0.4:
+  * Removed a 'packed' attribute in pidstat.h that generated
+    a warning with gcc 4.1.1.
+*   Take account of all memory zone types when calculating
+    pgscank, pgscand and pgsteal displayed by sar -B.
+  * XML Schema added. Useful with sadf option -x.
+  * sadc and sadf manual pages updated.
+  * NLS updated: Dutch translation added.
+  * NLS updated: Brazilian Portuguese translation added.
+  * NLS updated: Vietnamese translation added.
+  * NLS updated: Kirghiz translation added.
+  * NLS updated: Added a PO template file in nls directory.
+    Makefile modified to enable PO files update.
+  * sccsid string now also includes package name and version number.
+  * Makefile updated: Startup links are named S01xxx instead of S03xxx
+    to be consistent with chkconfig values.
+  * Various spelling fixes.
+  * CREDITS file updated.
+
+-------------------------------------------------------------------
+Tue Nov 20 15:11:12 CET 2007 - prusnak@suse.cz
+
+- updated to 8.0.3
+  * mpstat and sar didn't parse /proc/interrupts correctly when
+    some CPUs had been disabled. This is now fixed.
+  * fixed a bug in pidstat where a confusion between PID and TID
+    could sometimes happen, resulting in erroneous statistics
+    values being displayed.
+  * iconfig script updated: Help for --enable-compress-manpg
+    parameter is now available, help for --enable-install-cron
+    parameter updated, added parameter cron_interval.
+  * sa2 shell script can now compress sar data files using bzip2.
+  * Makefile updated: Now also remove sysstat.crond.sample.in.
+    Documentation is installed in $prefix/share/doc/ instead of
+    $prefix/doc/ directory.
+  * isag updated
+  * FAQ updated
+  * CREDITS file updated
+  * sysstat's URL updated
+
+-------------------------------------------------------------------
+Tue Oct 30 11:19:17 CET 2007 - prusnak@suse.cz
+
+- updated to 8.0.2
+  * option -w added to pidstat. pidstat can now display task
+    switching activity
+  * fixed a memory leak in pidstat that was triggered when
+    reading stats for threads
+  * fixed a bug where device names were incorrectly displayed by
+    sar -d or sar -dp
+  * when using option -o, sar now saves by default all the
+    statistics into the file, including interrupts and disks
+    statistics (interrupts and disks statistics remain optional
+    when using sadc)
+
+-------------------------------------------------------------------
+Tue Oct 16 16:30:02 CEST 2007 - prusnak@suse.cz
+
+- added boot.clock to Require-Start in initscript [#333793]
+
+-------------------------------------------------------------------
+Tue Oct  2 17:04:04 CEST 2007 - prusnak@suse.cz
+
+- update to 8.0.1
+  * Option -t added to pistat. pidstat can now display stats for
+    every thread (TID) of a process.
+  * pidstat's option -T CHILD now reports global statistics for
+    selected tasks and all their children (and not only for the
+    children).
+  * pidstat now reads VSZ and RSS values from /proc/#/stat instead
+    of /proc/#/status.
+  * Fixed a rare parallel make issue creating archive libsyscom.a
+    [GENTOO bug #193208].
+  * pidstat manual page updated.
+  * SCCS identification string added to all commands.
+  * NLS updated.
+  * Code cleaned.
+  * CREDITS file updated.
+- altered pagesize.diff
+
+-------------------------------------------------------------------
+Tue Sep 25 12:13:56 CEST 2007 - prusnak@suse.cz
+
+- update to 8.0.0
+  * WARNING: Daily data files format has changed, and is *not*
+    compatible with the previous one! [0x216e]
+  * pidstat command improved. It is now able to report CPU and
+    page fault statistics for the child processes of a task.
+  * Option -T added to pidstat. This option tells pidstat if
+    statistics are to be reported for tasks (which is the default)
+    or for their children.
+  * Fixed a security flaw in sysstat startup script (CVE-2007-3852).
+  * Removed super*, dquot* and rtsig* fields from sar -v.
+    They were made obsolete in Linux kernels 2.6.
+  * Fields file-sz and inode-sz from sar -v renamed in file-nr
+    and inode-nr.
+  * Added field pty-nr (number of pseudo-terminals) to sar -v.
+  * Added field tcp-tw (number of sockets in TIME_WAIT state)
+    to sar -n SOCK.
+  * sar and sadf updated so that they can properly extract records
+    (with their options -s and -e) from a file containing data for
+    two consecutive days.
+  * Added option "--enable-install-isag" to "configure" to enable
+    the user to install isag script.
+  * Fixed a typo in iconfig script: The user was unable to specify
+    the crontab owner.
+  * Manual pages updated
+  * Sysstat DTD file updated
+  * isag updated
+
+-------------------------------------------------------------------
+Tue Jul 10 11:03:20 CEST 2007 - prusnak@suse.cz
+
+- update to 7.1.6
+  * new VM paging metrics added to sar
+  * options -x and -X have been removed from sar, use pidstat instead
+  * sar updated to avoid overflow when computing some average values
+
+-------------------------------------------------------------------
+Tue Jun 12 11:01:02 CEST 2007 - prusnak@suse.cz
+
+- updated to 7.1.5
+- dropped obsolete patches
+  * filelen.patch (included in update)
+
+-------------------------------------------------------------------
+Tue Jun  5 13:59:21 CEST 2007 - prusnak@suse.cz
+
+- fixed init-script and crontab files on 64bit archs [#280096]
+
+-------------------------------------------------------------------
+Wed May  2 11:26:28 CEST 2007 - prusnak@suse.cz
+
+- update to 7.1.4:
+  * added new command "pidstat" aimed at displaying per-process statistics
+  * added -N option to iostat
+    - option enables the user to query any device-mapper devices for their
+      registered device name
+  * fixed a small memory leak in readp_uptime() function
+  * stricter syntax checking for iostat
+  * sar -dp now displays the device as "devM-N" (instead of "nodev") when it
+    can't find its real name in sysstat.ioconf file
+  * iostat -t now also takes into account the value of environment
+    variable S_TIME_FORMAT
+  * manual pages now take into account variables defined by "configure"
+  * isag now takes into account variables defined by "configure"
+  * "configure" now determines automatically whether workaround for SMP race
+    is needed (SMP kernels 2.2.15 and older only)
+
+-------------------------------------------------------------------
+Tue Apr 17 15:07:33 CEST 2007 - prusnak@suse.cz
+
+- splitted isag utility to separate subpackage sysstat-isag
+  * users will not be forced to install gnuplot (and X stuff) if
+    they do not want to
+
+-------------------------------------------------------------------
+Tue Apr 17 14:26:30 CEST 2007 - prusnak@suse.cz
+
+- update to 7.1.3
+  * fixed bug in hotplug cpu support
+  * better support for keeping sar logfiles for more than one month
+  * code cleaned
+
+-------------------------------------------------------------------
+Tue Mar 13 11:52:17 CET 2007 - prusnak@suse.cz
+
+- update to 7.1.2
+  * autoconf support
+  * better hotplug CPU support
+    - no longer assuming that CPU#0 can never be disabled
+  * sar datafiles format changed to become more compact
+
+-------------------------------------------------------------------
+Thu Feb  8 12:13:29 CET 2007 - prusnak@suse.cz
+
+- changed spec file to build with #norootforbuild
+
+-------------------------------------------------------------------
+Wed Feb  7 14:44:11 CET 2007 - prusnak@suse.cz
+
+- update to 7.0.4
+  * fixed incorrect NFS client and server statistics for sar
+  * added hotplug CPU support to sar and mpstat
+  * added iostat NFS statistics
+- dropped obsoleted patches:
+  * sysstat-6.0.2-hz.diff
+
+-------------------------------------------------------------------
+Thu Dec  7 14:21:48 CET 2006 - prusnak@suse.cz
+
+- added procmail to Requires [#226503]
+
+-------------------------------------------------------------------
+Tue Aug  8 00:54:48 CEST 2006 - ro@suse.de
+
+- fix one more place with HZ usage 
+
+-------------------------------------------------------------------
+Fri Jul 28 13:38:24 CEST 2006 - olh@suse.de
+
+- sysstat bootscript depends on boot.rootfsck, optional $local_fs (#181972)
+
+-------------------------------------------------------------------
+Tue Apr 25 19:58:40 CEST 2006 - mjancar@suse.cz
+
+- use sysconf(_SC_CLK_TCK) to get correct HZ (#168604)
+
+-------------------------------------------------------------------
+Fri Mar 24 21:47:23 CET 2006 - anicka@suse.cz
+
+- fix bug in sysstat-6.0.2.diff [#155329]
+- package file /usr/lib/sa/sa2 
+
+-------------------------------------------------------------------
+Thu Jan 26 14:20:13 CET 2006 - mjancar@suse.cz
+
+- prune old files (#136703)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 18:56:41 CET 2006 - majncar@suse.cz
+
+- update to 6.0.2
+
+-------------------------------------------------------------------
+Thu Oct 13 20:31:16 CEST 2005 - mjancar@suse.cz
+
+- update to 6.0.1
+- split patches by subject
+
+-------------------------------------------------------------------
+Sat Apr  9 10:49:54 CEST 2005 - aj@suse.de
+
+- Compile with GCC4.
+
+-------------------------------------------------------------------
+Thu Feb 24 15:35:20 CET 2005 - mjancar@suse.cz
+
+- remove .cron from the crontab filename (#64225)
+
+-------------------------------------------------------------------
+Fri Sep 03 11:20:11 CEST 2004 - tcrhak@suse.cz
+
+- update to 5.0.6
+
+-------------------------------------------------------------------
+Mon Aug 09 08:07:09 CEST 2004 - tcrhak@suse.cz
+
+- update to 5.0.5
+
+-------------------------------------------------------------------
+Wed Jun 30 07:50:55 CEST 2004 - tcrhak@suse.cz
+
+- changed isag data file mask according to sa file naming
+  (patch mask, bug #41691)
+
+-------------------------------------------------------------------
+Tue Mar 30 13:50:57 CEST 2004 - tcrhak@suse.cz
+
+- fixed insecure tmp file handling in isag (bug #35103, patch isag)
+- do not install crontab directly into /etc/cron.d, but create/remove
+  symlink threre during start/stop in the init script (bug #33279)
+- added rcsysstat
+- fixed sa1 and sa2
+
+-------------------------------------------------------------------
+Wed Feb 18 16:12:09 CET 2004 - tcrhak@suse.cz
+
+- update to version 5.0.1
+
+-------------------------------------------------------------------
+Fri Sep 12 20:41:28 CEST 2003 - tcrhak@suse.cz
+
+- fix for systems with more than 32 cpus and a lot of memory
+  [bug #30561] patch bumper
+
+-------------------------------------------------------------------
+Wed Aug 20 18:05:44 CEST 2003 - tcrhak@suse.cz
+
+- added LSB comments to init script [bug #24541]
+
+-------------------------------------------------------------------
+Wed Jul 23 18:19:45 CEST 2003 - tcrhak@suse.cz
+
+- do not log running /usr/lib/sa/sa1 every 10 minutes [bug #27253]
+
+-------------------------------------------------------------------
+Mon Jun  2 00:59:13 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Mon Mar 10 11:05:14 CET 2003 - tcrhak@suse.cz
+
+- added isag script and man page
+- be more descriptive in an error message (patch msg)
+
+-------------------------------------------------------------------
+Thu Feb 27 11:46:59 CET 2003 - tcrhak@suse.cz
+
+- require $local_fs for start in init script [bug #24400]
+  (patch init)
+
+-------------------------------------------------------------------
+Mon Feb 17 17:52:00 CET 2003 - tcrhak@suse.cz
+
+- updated to version 4.0.7
+- moved helper binary and scripts
+  back to /usr/lib [bug #21713]
+
+-------------------------------------------------------------------
+Fri Sep 06 16:51:29 CEST 2002 - tcrhak@suse.cz
+
+- bug #18901:
+  - use proper libdir (lib/lib64) in cron, scripts and man pages
+  - in /etc/init.d/sysstat: no option b, test exit
+    status of sadc, remove lockfile and be verbose
+
+-------------------------------------------------------------------
+Tue Aug  6 10:31:20 CEST 2002 - kukuk@suse.de
+
+- Don't start programs in post-install
+- Add PreRequiers for insserv and fillup
+
+-------------------------------------------------------------------
+Thu Feb  7 10:16:38 CET 2002 - tcrhak@suse.cz
+
+- another %{_libdir} fix
+
+-------------------------------------------------------------------
+Thu Jan 31 11:29:26 CET 2002 - tcrhak@suse.cz
+
+- update to 4.0.3
+- refined scripts sa1 and sa2 to handle lockfile safe
+
+-------------------------------------------------------------------
+Fri Jan 18 12:39:45 CET 2002 - tcrhak@suse.cz
+
+- used macros %{_lib} and %{_libdir}
+
+-------------------------------------------------------------------
+Tue Dec 18 18:24:13 CET 2001 - tcrhak@suse.cz
+
+- update to version 4.0.2
+- fixed bug #12664
+- added dependecy on gnuplot
+- adapted spec to use fillup_and_insserv/insserv_cleanup staff
+
+-------------------------------------------------------------------
+Mon Aug 20 11:53:41 CEST 2001 - adostal@suse.cz
+
+- update to version 4.0.1
+- update patch 
+
+-------------------------------------------------------------------
+Tue May 15 14:44:39 CEST 2001 - pblaha@suse.cz
+
+- add file lock for scripts sa1 and sa2 for fix bug #7861 
+
+-------------------------------------------------------------------
+Thu May  3 15:15:16 CEST 2001 - pblaha@suse.cz
+
+- use sa.%Y_%m_%d format for sar command
+
+-------------------------------------------------------------------
+Sun Apr 15 20:59:03 CEST 2001 - schwab@suse.de
+
+- Use getpagesize() instead of PAGE_SHIFT.
+
+-------------------------------------------------------------------
+Thu Apr 12 10:27:11 CEST 2001 - pblaha@suse.cz
+
+- update on 4.0.0 
+
+-------------------------------------------------------------------
+Wed Mar 21 14:29:19 CET 2001 - schwab@suse.de
+
+- Use getpagesize() instead of PAGE_SHIFT.
+
+-------------------------------------------------------------------
+Thu Dec  7 08:36:24 CET 2000 - nadvornik@suse.de
+
+- fixed init script
+
+-------------------------------------------------------------------
+Wed Dec  6 14:03:56 CET 2000 - nadvornik@suse.cz
+
+- fixed sa1 and sa2 scripts
+- fixed cron files 
+
+-------------------------------------------------------------------
+Sat Dec  2 15:14:03 CET 2000 - smid@suse.cz
+
+- new version 3.3.2
+
+-------------------------------------------------------------------
+Thu Oct 19 13:47:07 CEST 2000 - smid@suse.cz
+
+- new version 3.3.1
+
+-------------------------------------------------------------------
+Thu Jun  8 08:59:28 CEST 2000 - nadvornik@suse.cz
+
+- fixed clean section
+
+-------------------------------------------------------------------
+Fri May  5 09:52:10 CEST 2000 - smid@suse.cz
+
+- upgrade to 3.2
+- buildroot added
+
+-------------------------------------------------------------------
+Tue Jan 18 22:42:06 CET 2000 - nashif@suse.de
+
+- Initial release (Version 2.2)
+

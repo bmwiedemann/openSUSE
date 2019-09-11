@@ -1,0 +1,1386 @@
+-------------------------------------------------------------------
+Mon Aug 12 10:39:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop inkscape and poppler-tools BuildRequires: No longer needed
+  since we do not build getting_started pdf anymore.
+
+-------------------------------------------------------------------
+Tue Mar 12 06:09:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+- Pass getting_started=false to meson, no longer build
+  getting-started pdf.
+
+-------------------------------------------------------------------
+Fri Mar  8 09:04:19 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-documents_books-common sub-package, now that
+  gnome-books is a separate package, it no longer makes sense. Also
+  add Obsoletes/Provides to smooth out upgrades.
+
+-------------------------------------------------------------------
+Sun Mar  3 17:48:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Bugs fixed:
+    - glgo#GNOME/gnome-documents!21, glgo#GNOME/gnome-documents#24.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 19:05:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Updated menus for 3.32 recommendations.
+  + Bugs fixed: glgo#GNOME/gnome-documents#11,
+    glgo#GNOME/gnome-documents#12, glgo#GNOME/gnome-documents#21,
+    glgo#GNOME/gnome-documents#30.
+  + Updated translations.
+- Changes from version 3.31.1:
+  + Allow libgdprivate-1.0.so to find libgd.
+  + Search: be more careful when constructing a GFile.
+  + build:
+    - Update to latest libgd.
+    - Ensure that the Git submodules are kept updated.
+    - Remove unused variable.
+  + Updated translations.
+- Drop gnome-books sub-package as it was split out into a separate
+  project. Keeping the common package for now, but that one will
+  probably be folded into the main package in the future.
+
+-------------------------------------------------------------------
+Fri Jan 18 20:00:03 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Allow libgdprivate-1.0.so to find libgd.
+  + Search: be more careful when constructing a GFile.
+  + build:
+    - Update to latest libgd.
+    - Ensure that the Git submodules are kept updated.
+    - Remove unused variable.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gnome-documents-build-Ensure-Git-submodules-are-updated.patch.
+  + gnome-documents-build-Remove-unused-variable.patch.
+
+-------------------------------------------------------------------
+Thu Dec 27 23:55:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches from stable branch:
+  + gnome-documents-build-Remove-unused-variable.patch: build:
+    Remove unused variable.
+  + gnome-documents-build-Ensure-Git-submodules-are-updated.patch:
+    build: Ensure that the Git submodules are kept updated.
+
+-------------------------------------------------------------------
+Wed Sep 12 19:45:13 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 3.30.0:
+  + Update the Git submodule URL after GitLab migration.
+  + Remove usage of conditional catch statements.
+  + Don't crash when selecting a local collection.
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Fri Aug 17 09:02:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Remove Autotools and various Meson improvements.
+  + Add OARS metadata.
+  + Initialize the getting started PDF only when presenting a UI,
+    and before any SPARQL has been submitted.
+  + Be nice to the garbage collector during shutdown (bsc#1063428).
+
+-------------------------------------------------------------------
+Thu Aug 16 18:27:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Insert the getting started PDF only when showing a window.
+  + Be nice to the garbage collector during shutdown (bsc#1063428).
+
+-------------------------------------------------------------------
+Tue Jul 24 07:17:27 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po %{name}" to the call.
+
+-------------------------------------------------------------------
+Wed Jun  6 20:17:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Avoid premature queries during startup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:22:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.0:
+  + Make the Meson build require libgepub-0.6.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:05:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace pkgconfig(libgepub) with pkgconfig(libgepub-0.6)
+  BuildRequires.
+- Replace update-desktop-files with desktop-file-utils
+  BuildRequires and drop usage of suse_update_desktop_file macro.
+- Pass explicit documentation=true and getting_started=true to
+  meson, ensure we build the features we want.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Thu Mar 22 03:27:52 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Port to Meson.
+- Add meson BuildRequires and replace configure/make/make_install
+  macros with meson/meson_build/meson_install.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:25:39 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:04 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb  3 02:18:28 UTC 2018 - luc14n0@linuxmail.org
+
+- Update Url tag to https://wiki.gnome.org/Apps/Documents: current
+  Documents' web page.
+- Drop glib2_gsettings_schema_requires macro now that it is no
+  longer needed since RPM File Triggers.
+- Adopt the use of %make_build macro rather than raw make command,
+  following the best practices.
+- Add fdupes and its macro for replacement of duplicated files with
+  links under the data directory.
+
+-------------------------------------------------------------------
+Fri Feb  2 10:36:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2:
+  + Use 'var' for symbols that are exported.
+  + Use the standard dialect of String.prototype.replace.
+  + Explicitly specify the Gepub API version.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  4 17:17:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 14 21:47:38 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 23 12:42:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Modernize the Autotools build and move away from Intltool.
+  + Updated translations.
+- Drop intltool BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Wed Aug 16 12:36:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Use Gepub 0.5.
+  + Use Tracker 2.0.
+  + Use 'var' for classes that are exported.
+  + Updated translations.
+- Drop gnome-documents-gepub-0_5.patch and
+  gnome-documents-use-tracker-2.0.patch: Fixed upstream.
+- Following the above, drop gnome-common BuildRequires and
+  autoreconf call, no longer needed as we do not carry any patches.
+- Drop obsolete post(un) handling, following macros removed:
+  glib2_gsettings_schema_post(un), desktop_database_post(un) and
+  icon_theme_cache_post(un).
+- Pass --enable-documentation to configure, ensure we are building
+  documentation.
+- Stop packaging AUTHORS NEWS and README, present in src rpm in any
+  case. However package COPYING, seems we lost it somewhere along
+  the way.
+
+-------------------------------------------------------------------
+Sat Jul 29 12:06:14 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-documents-use-tracker-2.0.patch: Use new tracker
+  version (bgo#785301).
+
+-------------------------------------------------------------------
+Fri Jul 21 17:39:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Use Tracker 2.0.
+  + Updated translations.
+- Replace pkgconfig(tracker-control-1.0) and
+  pkgconfig(tracker-sparql-1.0) with pkgconfig(tracker-control-2.0)
+  and pkgconfig(tracker-sparql-2.0) BuildRequires following
+  upstreams changes.
+- Rebase gnome-documents-gepub-0_5.patch.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:25:03 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-documents-gepub-0_5.patch: Build using libgepub 0.5.
+- Add gnome-common BuildRequires and call to autoreconf, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:25:02 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Show more info in epub preview, like number of chapters.
+  + Restore the accelerators for going back.
+  + Exit selection mode only after printing has begun.
+  + Use GtkRevealers for faders instead of Tweener.
+  + Enable printing only for documents that support it.
+  + Avoid CRITICALs if a primary instance is already present.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:25:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Distinguish multiple online sources from the same provider
+  + Unbreak previews of LOKDocView-supported documents from
+    OneDrive.
+  + Unreak caching of LOKDocView-supported documents from ownCloud.
+  + Support previews of encrypted PDFs from Google.
+  + Pass the right number of arguments to LOKDocView.View.new.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:20:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.3:
+  + Enable printing only for documents that support it.
+  + Avoid CRITICALs if a primary instance is already present.
+
+-------------------------------------------------------------------
+Thu May 11 16:01:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Unbreak previews of LOKDocView-supported documents from
+    OneDrive.
+  + Unreak caching of LOKDocView-supported documents from ownCloud.
+  + Support previews of encrypted PDFs from Google.
+  + Pass the right number of arguments to LOKDocView.View.new.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 17:03:17 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Use LOKDocView for pre-OOXML MS Office formats.
+  + Unbreak opening in external application.
+  + Fix regression that prevented comics from being previewed.
+  + Make sure that load jobs are cancelled.
+  + Fix double menus in fullscreened evince view.
+  + Support fullscreening the e-pub view.
+  + Don't leak the URI when thumbnailing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 22 16:47:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  2 15:45:18 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.91:
+  + Port user interactions and keybindings to GAction.
+  + Update theming for collection icons.
+  + Rewrite fullscreen controller code.
+  + Fix scrubbar preview positioning under Wayland.
+  + Stop using GdNotification.
+  + Add support for IANA-registered comicbook mime types.
+
+-------------------------------------------------------------------
+Mon Sep 19 19:53:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 12 11:30:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Some refactoring.
+  + Updated translations.
+- Drop gnome-documents-Gepub-0.4.patch: Fixed upstream. Following
+  this, drop gnome-common BuildRequires and autoreconf call, not
+  needed as we do not carry any patches anymore.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Wed Aug 31 12:56:21 UTC 2016 - dimstar@opensuse.org
+
+- Add gnome-documents-Gepub-0.4.patch: Build using libgepub 0.4.
+- Add gnome-common BuildRequires and call to autoreconf, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Tue Aug 23 11:59:45 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Add initial epub support in Books.
+  + Fix bookmarking.
+  + Fix continuous mode never being disabled.
+  + Don't offer to open in file-roller.
+  + Add fullscreen and nightmode to toolbar.
+  + Hide the "Present" menu item in Books.
+  + Don't select when focusing the search entry.
+  + Use GtkMenuButton in OverviewSearchbar.
+  + Don't show documents in the collection dialog.
+  + Updated translations.
+- Add pkgconfig(libgepub) BuildReqiures: New dependency for
+  initial epub support.
+
+-------------------------------------------------------------------
+Mon Aug 22 12:23:19 UTC 2016 - fezhang@suse.com
+
+- Drop pdf-converter-modify.patch.
+  Drop unoconv or libreoffice recommends:
+  Upstream uses LOKDocView instead of unoconv to handle ODF, OOXML,
+  etc now, see bgo#753686 for more details (bnc#902922).
+
+-------------------------------------------------------------------
+Wed Aug 17 09:54:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Don't select when focusing the search entry.
+  + Don't show documents in the collection dialog.
+  + Fix bookmarking.
+  + Fix continuous mode never being disabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 17 13:45:27 UTC 2016 - schwab@suse.de
+
+- Reenble dependency on libreofficekit for aarch64.
+
+-------------------------------------------------------------------
+Thu Apr 14 06:43:22 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20 Fate#318572
+
+-------------------------------------------------------------------
+Thu Mar 31 09:34:33 UTC 2016 - schwab@suse.de
+
+- Reinstate filtering of typelib(LOKDocView) requires on non-x86.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:23:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Better empty states.
+  + Fix LOKDocView crashes during start-up.
+  + Rename icons so that xdg-app bundles can be created.
+  + Theme fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  2 22:11:10 UTC 2016 - dimstar@opensuse.org
+
+- Stop filtering out typelib(LOKDocView) requires: openSUSE's
+  libreoffice package was updated to install the needed components
+  (boo#965296).
+
+-------------------------------------------------------------------
+Wed Jan 20 15:21:27 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Add full-text search.
+  + Use LOKDocView for handling ODF, OOXML, etc. files.
+  + Try not to open PDFs in GIMP.
+  + Updated translations.
+- Filter out automatic generated typelib(LOKDocView) requires: the
+  LO package in openSUSE does not yet provide the needed libraries
+  (boo#965296).
+
+-------------------------------------------------------------------
+Fri Dec 18 23:25:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.3:
+  + Change to selection mode when pressing ctrl+a.
+  + Don't hide navigation controls when hovering.
+  + Don't invert the content of Books in night-mode.
+  + Show a spinner while creating the first collection.
+  + Rename "Recent" view to "Documents" or "Books".
+  + Restore separate collections for Books and Documents.
+  + Add the ability to change the sort order of the view.
+  + Disable Print menu item when unsupported.
+  + Update the layout of the selection toolbar.
+  + Link preview searchbar with next and previous buttons.
+  + Add screenshots to AppData.
+  + Show DjVu files as being eBooks.
+  + Fix lost keypresses when searching in fullscreen.
+  + Fix possible warnings exiting fullscreen.
+  + Fix installation on some systems.
+  + Fix the background of tagged entries.
+  + Don't show an extra menu when the app menu is disabled.
+  + Add a help overlay.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 11 17:32:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Restore separate collections for Books and Documents.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 19 18:36:56 UTC 2015 - zaitor@opensuse.org
+
+- Pass --disable-static and --enable-getting-started to configure,
+  build the getting started pdf.
+- Because of the above, add inkscape and poppler-tools
+  BuildRequires, needed dependencies.
+
+-------------------------------------------------------------------
+Tue Oct 13 10:30:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Change to selection mode when pressing ctrl+a.
+  + Don't hide navigation controls when hovering.
+  + Don't invert the content of Books in night-mode.
+  + Show a spinner while creating the first collection.
+  + Fix the background of tagged entries.
+  + Don't show an extra menu when the app menu is disabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:22:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0.1:
+  + Fix syntax error in desktop file translation.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:04:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Update title if active collection is renamed.
+  + Fix tagged entry theming.
+  + Prevent nested collections.
+  + Align the source label.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 21 13:34:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + New collections dialog.
+  + Don't show the places dialog if there is only one page.
+  + Port to package.js.
+  + Unbreak activating documents from the search provider.
+  + Adapt the sharing dialog to work with latest Google Drive
+    changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  3 10:11:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Handle inability to load unsupported e-book formats.
+  + Use the trash while deleting.
+  + Fixed partially visible text in collections dialog.
+  + Hide "Contents" tab when no TOC is available.
+  + Prevent multiple about dialogs from opening.
+
+-------------------------------------------------------------------
+Mon Aug  3 10:10:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Collections are not displayed in the collections dialog.
+  + Fix the sharing dialog to work with the latest Google Drive
+    changes.
+  + Unbreak activating documents from the search provider.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 11:22:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Implement night mode in the content.
+  + Use the trash while deleting.
+  + Add placeholder text for PostScript files when the no TOC is
+    available.
+  + Restore the search criteria when we move back from the preview
+    or collection view to the search results.
+  + Adapt to changes in nao:identifier syntax for Google items.
+  + Unbreak loading Google and SkyDrive items from the cache.
+  + Prevent WebKit2 from blowing away our cache.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:27:12 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Fixed bugs and regressions caused by having separate views for
+    documents and collections.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 16:58:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Handle inability to load unsupported e-book formats.
+  + Fixed partially visible text in collections dialog.
+  + Prevent multiple about dialogs from opening.
+  + Make the overlaid preview controls work nicely on touchscreens.
+  + Stop search provider from spawning miners and setting the
+    tracker priority.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 20 09:06:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Separate views for documents and collections.
+  + Fix edge hit detection to use edge-reached instead of
+    edge-overshot.
+  + Add man page and AppData for Books.
+  + Documentation updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 28 18:12:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.2:
+  + Add support for "Night mode".
+  + Add new "Books" applications (Note that viewing ePub and Mobi
+    formats isn't implemented yet).
+  + Port to WebKit2.
+  + Fix some documents getting opened in the Archive Manager.
+  + Fix a number of interaction problems related to fullscreen and
+    controls.
+  + Use GTK+' search bar widget instead of our own.
+- Split gnome-books in a subpackage of its own (incl. post/postun
+  scriptlets).
+- Split common data into gnome-document_books-common subpackage.
+- Require gnome-document_books-common by gnome-documents and
+  gnome-books.
+
+-------------------------------------------------------------------
+Wed Jan 21 10:42:03 UTC 2015 - tyang@suse.com
+
+- Add patch pdf-converter-modify.patch for bnc#902922:
+  Replace the unoconv with libreoffice when converting files to
+  pdf format.
+
+-------------------------------------------------------------------
+Tue Nov 18 16:00:03 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Let the back button cancel an ongoing load operation.
+  + Replace "Load more" button with edge hit detection.
+  + Polish the presentation output chooser.
+  + Use symbolics for high contrast icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 21:56:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Disable SSLv3 to prevent POODLE attacks.
+
+-------------------------------------------------------------------
+Fri Oct 17 16:41:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Pass the correct arguments to pdf_loader_load_uri_async.
+  + Fix crash in places and bookmarks dialog.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Wed Sep 24 10:25:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 20:12:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Fix use of
+    gdata_documents_service_get_primary_authorization_domain.
+  + Fix drag and drop of items in the view.
+  + Update for new Adwaita/GTK style changes.
+  + Use schema_id instead of deprecated schema for GSettings.
+  + Updated translation
+
+-------------------------------------------------------------------
+Sun Sep  7 12:27:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Use a GtkPopover for the search options dropdown.
+  + Add a notification when an item is deleted.
+  + Fix HiDpi support in the preview floating window.
+  + Fix HiDpi support in the search entry tags.
+  + Fix handling of back key in preview mode.
+  + Fix RDF type of text and HTML files.
+  + Fix CSS style for latest GTK.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 22 11:01:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Appdata fixes.
+  + Single-binary setup for DBus activation.
+  + Update menu icon to use a hamburger instead of a gear.
+  + Disable bookmarking if metadata is unsupported.
+  + Update for new RefreshDB API.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  6 19:43:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Use X close buttons in presentation dialogs.
+  + Scale the thumbnails on HiDpi displays.
+  + Overlay scrub bar (slider) disappears while using it.
+  + Unbreak the contents and bookmarks dialog.
+  + Make the thumbnailing robust against theme failures.
+  + Prioritize relevant RDF types.
+  + Updated translation.
+
+-------------------------------------------------------------------
+Fri May  2 11:33:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Scale the thumbnails on HiDpi displays.
+  + Overlay scrub bar (slider) disappears while using it.
+  + Unbreak the contents and bookmarks dialog.
+  + Make the thumbnailing robust against theme failures.
+  + Prioritize relevant RDF types.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:42:26 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix crash when list view is destroyed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 13:27:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Use header bars in dialogs.
+  + Allow Enter to activate first search result.
+  + Don't make "edit" active for documents that can't be edited.
+  + Fix zoom in not working with certain keyboards.
+  + Fix multiple stacked indexing in-app notifications.
+  + Fix toolbar behavior for GTK changes.
+  + Fix possible crash due to UTF-8/bytes mismatch.
+  + Focus search entry after changing filters.
+  + Improve getting started turorial.
+  + Improve user help for 3.12.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Add user help.
+  + Point Getting Started to user help.
+  + Allow enter to activate first search item.
+  + Disable the sharing dialog for non-Google content.
+  + Use margin-{start,end} instead of deprecated
+    margin-{left,right}.
+  + Disable invalid UI controls in the preview toolbar.
+  + Handle the password dialog being deleted.
+  + Show the navigation bar after pointer movement.
+  + Updated translations.
+- Replace pkgconfig(tracker-miner-1.0) BuildRequires with
+  pkgconfig(tracker-control-1.0), following upstream.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Turn into a DBus activatable service.
+  + Switch to tracker 1.0 API.
+  + Fix toolbar item positions for new GTK.
+  + Remove "Loading..." from spinner box.
+  + Miscellaneous printing fixes.
+  + Update search bar style.
+- Replace pkgconfig(tracker-sparql-0.18) for
+  pkgconfig(tracker-sparql-1.0) BuildRequires following upstream
+  changes.
+- Desktopfile was renamed to org.gnome.Documents.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.5:
+  + Fix invalid thumbnails when downloading from remote sources.
+  + Casefold search strings instead of lowercasing.
+  + Protect against spurious view-as changed signals.
+  + Fix back key behavior in RTL locales.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Hide the search bar when moving from overview to preview.
+  + Move the Grid/List controls to the toolbar.
+  + Use GtkActionBar for the selection toolbar.
+  + Settings is the new name for gnome-control-center.
+  + Simplify the PreviewNavButtons show/hide code.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:03 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Fix CRITICALs when loading a document from Google or SkyDrive.
+  + Support building against Tracker 0.18.
+  + Standardize Help/About/Quit in the app menu.
+  + Updated translations.
+- Replace pkgconfig(tracker-{sparql,miner}-0.16) BuildRequires with
+  pkgconfig(tracker-{sparql,miner}-0.18): move to Tracker 0.18.
+
+-------------------------------------------------------------------
+Wed Mar 12 03:11:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Prepare for E4X removal.
+
+-------------------------------------------------------------------
+Tue Mar 11 13:24:37 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.2:
+  + Allow enter to activate first search item.
+  + Do not mix up ASCII and UTF8 characters.
+  + Show the navigation bar after pointer movement.
+  + Disable sharing and editing for non-Google content.
+  + Disable invalid UI controls in the preview toolbar.
+  + Handle the password dialog being deleted.
+  + Fix invalid thumbnails when downloading from remote sources.
+  + Protect against spurious view-as changed signals.
+  + Fix back key behavior in RTL locales.
+  + Casefold search strings instead of lowercasing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 13 16:18:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1 (bnc#849913):
+  + Update the URL of the website.
+  + Thumbnail Google content on freshly installed systems.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  1 19:02:30 UTC 2013 - dimstar@opensuse.org
+
+- Add dbus(org.gnome.OnlineMiners.GData) Recommends. Not a strict
+  runtime dependency, but being able to query the online miners is
+  clearly an advantage (needed for Google docs, SkyDrive).
+
+-------------------------------------------------------------------
+Tue Sep 24 12:05:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 18 13:52:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Don't fullscreen the window against the user's wish.
+  + Fix crash when window is closed.
+  + Rounded corners for the titlebar.
+  + Utilize intltool 0.50 gsettings support.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:41:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Remove emphasis on Cancel button.
+  + Fix presentation mode for GnomeRR API change.
+
+-------------------------------------------------------------------
+Tue Aug 20 17:24:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Use the new selection toolbar pattern.
+  + Use a GTK headerbar for titlebar.
+  + Add support for documents on an OwnCloud share.
+
+-------------------------------------------------------------------
+Wed Jul 10 17:29:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Support previewing of password-protected PDFs.
+  + Port to gnome-online-miners for remote accounts.
+
+-------------------------------------------------------------------
+Fri Jun 21 15:15:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Revamp Organize Collections view for new designs.
+  + Port to GtkListBox.
+  + Add tooltips for preview navbar buttons.
+  + Add page navigation with Left/Right buttons.
+  + Port the search provider to use serialized GIcons.
+  + Port to GtkHeaderBar, GtkStack and GtkRevealer.
+- Changes from version 3.8.3.1:
+  + Ignore Google documents without a thumbnail URI.
+- Changes from version 3.8.3:
+  + Show thumbnails for Google Documents.
+  + Add a manual page.
+  + Don't forward key events to search bar on error.
+  + Fix crash when trying to load links on a document that does not
+    support them.
+  + Fix crash when trying to search into a document that does not
+    support it.
+  + Fix hang when going back to overview after disabling a GOA
+    account while previewing or editing.
+  + Fix stray unoconv process when loading is cancelled in-flight.
+  + Fix <Primary>a not working in overview.
+  + Fix user input being incorrectly overwritten with the lowercase
+    version used internally.
+- Drop gnome-documents-WebKit-3.0.patch: fixed upstream.
+- Add gtk-doc BuildRequires: needed for the man page generation.
+
+-------------------------------------------------------------------
+Tue May 14 07:12:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2.1:
+  + Fix build.
+- Changes from version 3.8.2:
+  + Flip navigation buttons in RTL.
+  + Update to latest libgd.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 16 08:26:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Support rubberband selection in views.
+  + Fix default response in Properties.
+  + Fix prev/next page buttons not working in dual mode.
+  + Fix bugs when launched from a search provider result.
+  + Fix PDF from Google Drive not using the right document type.
+  + Fix icon for Google Drawings.
+  + Fix a crash when closing the preview soon after show.
+
+-------------------------------------------------------------------
+Sun Apr 14 10:33:21 UTC 2013 - dimstar@opensuse.org
+
+- Add tracker-miner-files Requires: local stored files are only
+  found if they are indexed by tracker; gnome-documents references
+  trackers glib schema and won't start without it available.
+
+-------------------------------------------------------------------
+Sat Apr 13 21:27:19 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-documents-WebKit-3.0.patch: Specify that we need
+  WebKit 3.0 (for typelib dependencies).
+
+-------------------------------------------------------------------
+Mon Mar 25 16:13:15 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 18:27:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Validate desktop file during make check
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 20:23:56 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Mon Mar  4 23:37:24 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.91:
+  + Install a translatable Getting Started with Documents tutorial
+    PDF.
+  + Use a linked style for the search dropdown button.
+  + Use a revealer animation for the search dropdown.
+  + Make page switch widgets insensitive for single-page documents.
+  + Fix search dropdown stuck after view mode switch.
+  + Fix back keybinding not working when going back from
+    collections.
+  + Fix mouse back button not working.
+  + Fix searchbar appearing when fullscreen in edit mode.
+- Add itstool BuildRequires: new dependency.
+- Add pkgconfig(tracker-miner-0.16) BuildRequires: new verified
+  dependency.
+
+-------------------------------------------------------------------
+Wed Feb 20 07:18:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Add a presentation mode.
+  + Add Previous/Next overlay buttons in preview.
+  + Add support to launch external links from documents.
+  + Add support for PDF documents from Google.
+  + Remove clutter and clutter-gtk dependencies.
+  + Fix a bug in the positioning of the preview overlay window.
+  + Lots of minor cleanups and bugfixes.
+- Drop pkgconfig(clutter-1.0) and pkgconfig(clutter-gtk-1.0)
+  BuildRequires, following upstream.
+
+-------------------------------------------------------------------
+Fri Feb  8 14:34:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Add an embedded edit mode for Google documents.
+  + Add a Bookmarks page in preview mode.
+  + Improve the error dialog layout.
+  + Use more human readable messages for GData errors.
+  + Don't use the dark theme in fullscreen preview.
+  + Add some padding around the preview navigation bar.
+  + Fix double search entry in fullscreen preview.
+  + Fix crash when going back from a Google document under some
+    circumstances.
+  + Fix double and misspelled indexing notifications.
+- Drop gnome-documents-nonvoid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jan 15 19:30:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Use a new page navigation bar in preview.
+  + Add a sharing dialog for GDocs.
+  + Use new automatic page sizing and page layout modes.
+  + Respect zoom limits for preview zoom actions.
+  + Install unoconv trough PackageKit when missing.
+  + Fix finding text in page when in fullscreen mode.
+  + Set a minimum size request for the main window.
+- Replace pkgconfig(tracker-sparql-0.14) BuildRequires with
+  pkgconfig(tracker-sparql-0.16), following upstream.
+
+-------------------------------------------------------------------
+Tue Jan  8 18:26:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Update search provider to org.gnome.Shell.SearchProvider2
+    interface.
+  + Perform application search when launched from a shell search
+    and "back" is pressed.
+  + Show page selector OSD also when not in fullscreen mode.
+  + Don't use a timeout logic for OSD preview controls, show/hide
+    them on click.
+  + Don't show document page numbers in toolbar.
+  + Don't activate fullscreen on double click.
+  + Use paging instead of a continuous mode to display documents.
+  + Make find bar buttons insensitive when there are no matches to
+    scroll.
+  + Remove white flashspot when switching window mode.
+  + Automatically fullscreen when maximized and a preview is
+    opened.
+  + Use unicode ellipsis instead of three ASCII periods.
+  + Don't show "New and Recent" in the toolbar all the time.
+  + Set versions for GJS imports.
+  + Simplify launch scripts.
+- Add gnome-documents-nonvoid.patch: Fix brp error regarding
+  missing return value.
+
+-------------------------------------------------------------------
+Sat Nov 24 22:59:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Query results from extra Tracker locations added by the user.
+  + Use a better label for the Load More button.
+  + Add a Properties entry to the preview gear menu.
+  + Pre-select find text in the preview searchbar.
+  + Fix a bug where two search bars would appear after leaving
+    fullscreen.
+
+-------------------------------------------------------------------
+Tue Nov 13 07:47:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Don't flicker overview when launching a preview from the search
+    provider.
+  + Don't start GOA miners for account types we don't have.
+  + Add keyboard accelerators for help, print and the gear menu.
+
+-------------------------------------------------------------------
+Mon Oct 15 21:17:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Add support for keyboard navigation and item activation.
+  + Performance improvements when new files are added to the store.
+  + Performance improvements when refreshing remote documents
+    provider sources.
+  + Fix detail label not ellipsizing in the main toolbar.
+  + Fix window titles for Organize and Properties dialogs.
+
+-------------------------------------------------------------------
+Mon Sep 24 20:47:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Make sure to stop the spinner animation when it fades out
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:52:42 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Add user documentation, and a Help item to the application
+    menu.
+  + Work around UTF-8 collation Tracker bug, fixes empty overview
+    in certain languages.
+  + Fix back button failing to display when going back to a
+    collection from the preview.
+  + Fix collection back navigation for nested collections.
+  + Fix accelerator labels not showing up in toolbar menus.
+  + Misc string fixes.
+
+-------------------------------------------------------------------
+Tue Sep  4 19:16:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Add a Select All/Select None menu to the selection mode toolbar
+  + Add a notification while Tracker is indexing the file system.
+  + Add a No Documents Found page when tracker returns empty
+    results.
+  + Fix persistance of document name change from the properties
+    dialog.
+  + Don't abort when failing to start miners.
+- Add pkgconfig(clutter-1.0) BuildRequires: New dependency
+  verified by configure.
+
+-------------------------------------------------------------------
+Tue Aug 21 20:19:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Add a Properties dialog for documents.
+  + Clear searches when the entry becomes hidden.
+  + Improve the selection toolbar appearance.
+  + Improve searchbar appearance.
+  + Port to use the libgd git submodule.
+
+-------------------------------------------------------------------
+Wed Aug  8 08:03:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.5:
+  + Add a find as you type implementation for Preview mode.
+  + Add a menu button with common actions in Preview mode.
+  + Add a Search button on the toolbar.
+  + Add Rotate and Zoom options in Preview.
+  + Move the search entry below the toolbar.
+  + Support Google Drawings.
+  + Remember documents' last page viewed.
+  + Fix thumbnails for non-serializable GIcons.
+  + Use GDataGoaAuthorizer from libgdata.
+  + Port some JS classes to GDBus.
+  + Split a GdMiner base class and share code between miners.
+  + Use GResource.
+- Drop pkgconfig(oauth) BuildRequires: Authorization is now handled
+  by libgdata (which, in fact pulls it in on its own).
+
+-------------------------------------------------------------------
+Tue Jul 17 09:47:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.4:
+  + Avoid leaking file descriptors when reading document thumbnails
+  + Set new use_layout flag_size on the GtkClutterEmbed.
+  + Don't hardcode /bin/bash in the launcher scripts.
+
+-------------------------------------------------------------------
+Tue Jun 26 18:13:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.3:
+  + Fix thumbnails not showing in fullscreen preview with recent
+    GTK.
+  + Use new GJS API to detect cancellations.
+  + Use GtkSearchEntry.
+  + Initial work on overview performance improvements.
+  + Lot of code refactoring.
+
+-------------------------------------------------------------------
+Thu Jun  7 15:51:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.2.1:
+  + Fix problem at startup
+  + Index entire SkyDrive root
+- Changes from version 0.5.2:
+  + Add support for Microsoft SkyDrive document sources using
+    libzapojit and gnome-online-accounts
+  + Port to Lang.Class
+  + Make "View As" app menu action insensitive when previewing
+  + Add missing tooltip text to Print button
+  + Switch to overview on Alt+Left/Backspace
+  + Toggle fullscreen in preview with F11
+  + Fix some layouting issues in RTL layouts
+- Add pkgconfig(zapojit-0.0) BuildRequires for the new SkyDrive
+  support.
+
+-------------------------------------------------------------------
+Tue May 15 12:49:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + Change about dialog string to Documents
+  + Use GTK OSD style class for selection toolbar
+  + Update CSS syntax for GTK master
+  + Fix thumbbar failing fade in in fullscreen under some
+    circumstances
+  + Add more keybindings in preview mode
+  + Don't store the active source in GSettings
+
+-------------------------------------------------------------------
+Mon May 14 20:08:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.4.2:
+  + Don't store the active source in GSettings.
+  + Make sure a collection is created when the text field name is
+    confirmed by clicking on the OK button.
+  + Make button press/release tracking code less strict.
+  + Fix "Open" button showing up for collections under some
+    circumstances.
+  + Fix thumbnails preview bar not fading in under some
+    circumstances.
+  + Fix toolbar button spacing in RTL layouts.
+  + Show the search entry when going back from preview to search
+    results.
+  + Hide the search entry when switching to a collection.
+  + Fix type filter not cleaning up when switching to a collection.
+  + Fix some critical warning.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:32:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.1:
+  + Support %Id conversion characters for formatted strings
+  + Cancel old queries from the Shell search provider
+  + Escape user input before pushing it down to Tracker
+  + Handle exceptions when calling Gtk.show_uri()
+  + Avoid segfaults in the miner when an error happens
+  + Don't crash for missing symbolic icons in the theme
+  + Update the license of some library components to LGPL v2+
+- Note that the license change of the library components doesn't
+  affect the application itself. So no license change for the
+  package.
+
+-------------------------------------------------------------------
+Wed Mar 28 07:58:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.0.1:
+  + Fix a crasher when switching to List view on certain systems
+
+-------------------------------------------------------------------
+Mon Mar 26 15:28:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + Fix crashes when clicking Back from preview under some
+    circumstances
+  + Fix spinner not moving out when going back to overview while a
+    document is still loading
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 22:41:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3.92:
+  + Improve startup query performance.
+  + Don't perform initial query when activated to preview a search
+    result.
+  + Remove items from selection when we get a delete event.
+  + Fix collections not showing up properly in Shell search
+    results.
+  + Don't refresh the Google cache when spawned as a Shell search
+    provider.
+  + Use a fixed icon size when spawned as a Shell search provider.
+  + Clear selection when exiting selection mode.
+  + Fix crasher in Shell search provider mode.
+  + Fix selection toolbar when changing selection.
+  + Fix text layout in grid view for RTL languages.
+  + Fix scrolling in preview page chooser to work with latest GTK.
+  + Fix crash and inconsistencies when trying to add a new
+    collection.
+  + Rely on Tracker 0.14's notification for DataContainer to track
+    collection changes/addition/deletions.
+- Really drop gnome-documents-tracker-0.14.patch.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:33:45 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.91:
+  + Add a thumbnail list OSD in preview
+  + Add support for DnD of items out of the view
+  + Add support for printing documents
+  + Use checkboxes to render selections
+  + Add an About dialog
+  + Display date/time information in list view
+  + Improve toolbar labels when searching or restricting search
+    criteria
+  + Add keywords to the desktop file for identification by desktop
+    shells
+  + Hide unavailable collections from the Organize collections
+    dialog
+  + Show source name for non-local collections in the Organize
+    dialog
+  + Don't fade out overlay controls when hovering over them in
+    preview
+  + Use ngettext() for plural strings where appropriate
+  + Don't allow circular references in collections
+  + Fix search by uppercase letters
+  + Scroll down on space bar press in preview
+
+-------------------------------------------------------------------
+Wed Feb 22 07:09:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.90:
+  + Ship a ShellSearchProvider DBus service
+  + Fix interaction with the "Load more" button
+  + Fix alignment of tags in GdTaggedEntry
+  + Fix selection mode toolbar not showing under some cicrumstances
+  + Support building against Tracker 0.14
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Drop gnome-documents-tracker-0.14.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  that were only needed for above patch.
+- Add gnome-shell BuildRequires, for ownership of the
+  %{_datadir}/gnome-shell/search-providers directory.
+- Create a gnome-shell-search-provider-documents subpackage, for
+  the new GNOME Shell search provider D-Bus service.
+
+-------------------------------------------------------------------
+Sun Feb 12 21:26:04 UTC 2012 - dimstar@opensuse.org
+
+- Add unoconv Recommends: it enables gnome-documents to view a
+  wider range of document.
+
+-------------------------------------------------------------------
+Thu Jan 19 09:41:33 UTC 2012 - vuntz@opensuse.org
+
+- Add support for tracker 0.13/0.14:
+  + Add gnome-documents-tracker-0.14.patch.
+  + Add gnome-common BuildRequires and call to gnome-autogen.sh,
+    needed for above patch.
+  + Change pkgconfig(tracker-sparql-0.12) BuildRequires to
+    pkgconfig(tracker-sparql-0.14).
+
+-------------------------------------------------------------------
+Tue Jan 17 07:55:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.4:
+  + Add a shell-style application menu.
+
+-------------------------------------------------------------------
+Tue Dec 20 12:52:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.3.3:
+  + Add a tagged entry implementation for search filtering
+  + Port to GtkApplication
+  + Split search into words
+  + Open previews from command line
+  + Hide titlebar when maximized
+  + Enter selection mode with Ctrl+Click
+  + Rewrite main view and toolbar with generic C classes
+  + Don't install libgdprivate in $libdir
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop pkgconfig(tracker-miner-0.12) BuildRequires: it got removed
+  in 0.3.2.
+- Remove /sbin/ldconfig from %post/%postun: no shared library is
+  installed anymore.
+
+-------------------------------------------------------------------
+Mon Nov 21 20:00:56 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.3.2:
+  + Initial support for Google Docs collections
+  + Initial support for user-defined collections
+  + Major UI revamp:
+    - removed the sidebar
+    - moved the search entry beneath the top bar in a hiding
+      container
+    - use single-click activation mode in the overview
+    - first implementation of a "Selection" mode
+    - animate state changes
+  + Improve query and loading speed
+  + Field selection support for search filtering (author, title)
+  + Fix loading of cached documents
+  + Many, many minor improvements and fixes
+- Drop gnome-documents-deprecated-mutex.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Nov 16 11:48:23 UTC 2011 - dimstar@opensuse.org
+
+- Add gnome-documents-deprecated-mutex.patch: Fix build with new
+  glib and its changed GThread API. Patch taken from upstram git,
+  commit id df80c63.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:15:37 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.1:
+  + Quote the file path before passing it out to unoconv.
+  + Remember window state and size across app restarts.
+  + Fix some UI flickering and useless refreshs.
+
+-------------------------------------------------------------------
+Mon Sep 26 15:33:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.0:
+  + Limit a printf scope to avoid conflicts with URI-escaped
+    strings in some locales
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 22 21:38:36 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.92:
+  + Listen to changes in the system GOA accounts configuration
+  + Support multiple GOA accounts
+  + Style symbolic emblems like in the mockups
+  + Remove deleted Google Docs from the DB when mining
+  + Update on the fly for changes in the tracker DB
+  + Add a compact context menu in preview mode
+  + Look for results in ~/Downloads as well
+  + Require Tracker 0.12.1
+
+-------------------------------------------------------------------
+Thu Sep  8 16:49:34 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.91:
+  + Hide/show documents on the fly for disabled GOA sources
+  + Add a fullscreen preview mode
+  + Extend search to look into document authors
+  + Add a hi-res application icon
+  + Use symbolic emblems
+  + Display more file details in list view
+  + Use a nicer thumbnail frame from Nautilus for document
+    thumbnails
+  + Sanitize and remove extensions from filenames
+  + Add keybindings for quit/fullscreen/search
+  + Fix parallel builds
+  + Add translator comments
+  + Fix license files and headers
+- Add pkgconfig(clutter-gtk-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Aug 30 13:15:22 CEST 2011 - vuntz@opensuse.org
+
+- Initial package (version 0.1.90).
+

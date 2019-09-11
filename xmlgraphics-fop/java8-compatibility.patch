@@ -1,0 +1,227 @@
+--- fop-2.1/src/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2016-01-07 15:13:29.000000000 +0100
++++ fop-2.1/src/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2018-12-06 23:18:14.815791853 +0100
+@@ -21,6 +21,7 @@
+ 
+ import java.io.IOException;
+ import java.io.OutputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.CharacterCodingException;
+@@ -68,7 +69,7 @@
+         if (bb.hasArray()) {
+             return getEncodedChars(bb.array(), bb.limit());
+         } else {
+-            bb.rewind();
++            ((Buffer)bb).rewind();
+             byte[] bytes = new byte[bb.remaining()];
+             bb.get(bytes);
+             return getEncodedChars(bytes, bytes.length);
+--- fop-2.1/src/java/org/apache/fop/area/AreaTreeParser.java	2016-01-07 15:13:29.000000000 +0100
++++ fop-2.1/src/java/org/apache/fop/area/AreaTreeParser.java	2018-12-06 23:18:14.815791853 +0100
+@@ -24,6 +24,7 @@
+ import java.awt.geom.Rectangle2D;
+ import java.io.FileNotFoundException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.CharBuffer;
+ import java.util.List;
+ import java.util.Map;
+@@ -322,7 +323,7 @@
+                 throws SAXException {
+             lastAttributes = new AttributesImpl(attributes);
+             Maker maker = makers.get(localName);
+-            content.clear();
++            ((Buffer)content).clear();
+             ignoreCharacters = true;
+             if (maker != null) {
+                 ignoreCharacters = maker.ignoreCharacters();
+@@ -353,7 +354,7 @@
+                     Maker maker = makers.get(localName);
+                     if (maker != null) {
+                         maker.endElement();
+-                        content.clear();
++                        ((Buffer)content).clear();
+                     }
+                     ignoreCharacters = true;
+                 } else {
+@@ -798,7 +799,7 @@
+                 boolean reversed = XMLUtil.getAttributeAsBoolean(lastAttributes, "reversed", false);
+                 int[][] gposAdjustments
+                     = XMLUtil.getAttributeAsPositionAdjustments(lastAttributes, "position-adjust");
+-                content.flip();
++                ((Buffer)content).flip();
+                 WordArea word = new WordArea(
+                     offset, level, content.toString().trim(), letterAdjust,
+                       null, gposAdjustments, reversed);
+@@ -818,7 +819,7 @@
+                 int offset = XMLUtil.getAttributeAsInt(lastAttributes, "offset", 0);
+                 //TODO the isAdjustable parameter is currently not used/implemented
+                 if (content.position() > 0) {
+-                    content.flip();
++                    ((Buffer)content).flip();
+                     boolean adjustable = XMLUtil.getAttributeAsBoolean(lastAttributes, "adj", true);
+                     int level = XMLUtil.getAttributeAsInt(lastAttributes, "level", -1);
+                     SpaceArea space = new SpaceArea(offset, level, content.charAt(0), adjustable);
+@@ -1207,17 +1208,17 @@
+                     // allocate a larger buffer and transfer content
+                     CharBuffer newContent
+                             = CharBuffer.allocate(this.content.position() + length);
+-                    this.content.flip();
++                    ((Buffer)(this.content)).flip();
+                     newContent.put(this.content);
+                     this.content = newContent;
+                 }
+                 // make sure the full capacity is used
+-                this.content.limit(this.content.capacity());
++                ((Buffer)(this.content)).limit(this.content.capacity());
+                 // add characters to the buffer
+                 this.content.put(ch, start, length);
+                 // decrease the limit, if necessary
+                 if (this.content.position() < this.content.limit()) {
+-                    this.content.limit(this.content.position());
++                    ((Buffer)(this.content)).limit(this.content.position());
+                 }
+             }
+         }
+--- fop-2.1/src/java/org/apache/fop/fo/FOText.java	2016-01-07 15:13:29.000000000 +0100
++++ fop-2.1/src/java/org/apache/fop/fo/FOText.java	2018-12-06 23:21:33.412845154 +0100
+@@ -20,6 +20,7 @@
+ package org.apache.fop.fo;
+ 
+ import java.awt.Color;
++import java.nio.Buffer;
+ import java.nio.CharBuffer;
+ import java.text.CharacterIterator;
+ import java.text.StringCharacterIterator;
+@@ -128,17 +129,17 @@
+                     newCapacity = requires;
+                 }
+                 CharBuffer newBuffer = CharBuffer.allocate(newCapacity);
+-                charBuffer.rewind();
++                ((Buffer)charBuffer).rewind();
+                 newBuffer.put(charBuffer);
+                 charBuffer = newBuffer;
+             }
+         }
+         // extend limit to capacity
+-        charBuffer.limit(charBuffer.capacity());
++        ((Buffer)charBuffer).limit(charBuffer.capacity());
+         // append characters
+         charBuffer.put(data, start, length);
+         // shrink limit to position
+-        charBuffer.limit(charBuffer.position());
++        ((Buffer)charBuffer).limit(((Buffer)charBuffer).position());
+     }
+ 
+     /**
+@@ -150,7 +151,7 @@
+         if (this.charBuffer == null) {
+             return null;
+         }
+-        this.charBuffer.rewind();
++        ((Buffer)(this.charBuffer)).rewind();
+         return this.charBuffer.asReadOnlyBuffer().subSequence(0, this.charBuffer.limit());
+     }
+ 
+@@ -163,9 +164,9 @@
+             // pointed to is really a different one
+             if (charBuffer != null) {
+                 ft.charBuffer = CharBuffer.allocate(charBuffer.limit());
+-                charBuffer.rewind();
++                ((Buffer)charBuffer).rewind();
+                 ft.charBuffer.put(charBuffer);
+-                ft.charBuffer.rewind();
++                ((Buffer)(ft.charBuffer)).rewind();
+             }
+         }
+         ft.prevFOTextThisBlock = null;
+@@ -197,7 +198,7 @@
+     /** {@inheritDoc} */
+     public void endOfNode() throws FOPException {
+         if (charBuffer != null) {
+-            charBuffer.rewind();
++            ((Buffer)charBuffer).rewind();
+         }
+         super.endOfNode();
+         getFOEventHandler().characters(this);
+@@ -224,7 +225,7 @@
+         }
+ 
+         char ch;
+-        charBuffer.rewind();
++        ((Buffer)charBuffer).rewind();
+         while (charBuffer.hasRemaining()) {
+             ch = charBuffer.get();
+             if (!((ch == CharUtilities.SPACE)
+@@ -232,7 +233,7 @@
+                     || (ch == CharUtilities.CARRIAGE_RETURN)
+                     || (ch == CharUtilities.TAB))) {
+                 // not whitespace
+-                charBuffer.rewind();
++                ((Buffer)charBuffer).rewind();
+                 return true;
+             }
+         }
+@@ -275,7 +276,7 @@
+             return;
+         }
+ 
+-        charBuffer.rewind();
++        ((Buffer)charBuffer).rewind();
+         CharBuffer tmp = charBuffer.slice();
+         char c;
+         int lim = charBuffer.limit();
+@@ -542,19 +543,19 @@
+         public void remove() {
+ 
+             if (this.canRemove) {
+-                charBuffer.position(currentPosition);
++                ((Buffer)charBuffer).position(currentPosition);
+                 // Slice the buffer at the current position
+                 CharBuffer tmp = charBuffer.slice();
+                 // Reset position to before current character
+-                charBuffer.position(--currentPosition);
++                ((Buffer)charBuffer).position(--currentPosition);
+                 if (tmp.hasRemaining()) {
+                     // Transfer any remaining characters
+-                    charBuffer.mark();
++                    ((Buffer)charBuffer).mark();
+                     charBuffer.put(tmp);
+-                    charBuffer.reset();
++                    ((Buffer)charBuffer).reset();
+                 }
+                 // Decrease limit
+-                charBuffer.limit(charBuffer.limit() - 1);
++                ((Buffer)charBuffer).limit(((Buffer)charBuffer).limit() - 1);
+                 // Make sure following calls fail, unless nextChar() was called
+                 this.canRemove = false;
+             } else {
+@@ -737,7 +738,7 @@
+      */
+     public void resetBuffer() {
+         if (charBuffer != null) {
+-            charBuffer.rewind();
++            ((Buffer)charBuffer).rewind();
+         }
+     }
+ 
+--- fop-2.1/src/java/org/apache/fop/fonts/MultiByteFont.java	2016-01-07 15:13:29.000000000 +0100
++++ fop-2.1/src/java/org/apache/fop/fonts/MultiByteFont.java	2018-12-06 23:18:14.815791853 +0100
+@@ -21,6 +21,7 @@
+ 
+ import java.awt.Rectangle;
+ import java.io.InputStream;
++import java.nio.Buffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+ import java.util.BitSet;
+@@ -686,7 +687,7 @@
+                 cb.put((char) cc);
+             }
+         }
+-        cb.flip();
++        ((Buffer)cb).flip();
+         return cb;
+     }
+ 

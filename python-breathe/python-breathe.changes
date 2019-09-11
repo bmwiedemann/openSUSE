@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Mar 19 14:57:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.12.0:
+  * More sphinx fixes
+- Remove merged patch sphinx18.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 14:17:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.11.1:
+  * Fixes for newer sphinx releases
+- Switch to github tarball for tests and license
+- Add patch to fix build with sphinx 1.8:
+  * sphinx18.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 18 16:51:24 UTC 2017 - toddrme2178@gmail.com
+
+- Fix provides/obsoletes
+
+-------------------------------------------------------------------
+Fri Sep  8 15:50:22 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

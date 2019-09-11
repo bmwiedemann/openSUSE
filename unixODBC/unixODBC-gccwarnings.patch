@@ -1,0 +1,74 @@
+Index: Drivers/nn/nndate.c
+===================================================================
+--- Drivers/nn/nndate.c.orig
++++ Drivers/nn/nndate.c
+@@ -16,6 +16,7 @@
+ #include	<nnconfig.h>
+ 
+ #include	<nndate.h>
++#include	"misc.h"
+ 
+ static char* month_name[] =
+ { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+Index: Drivers/nn/misc.h
+===================================================================
+--- /dev/null
++++ Drivers/nn/misc.h
+@@ -0,0 +1,7 @@
++#ifndef _MISC_H
++# define _MISC_H
++
++extern int upper_strneq(char *s1, char *s2, int n);
++
++
++#endif
+Index: Drivers/nn/connect.c
+===================================================================
+--- Drivers/nn/connect.c.orig
++++ Drivers/nn/connect.c
+@@ -13,7 +13,10 @@
+     GNU General Public License for more details.
+ **/
+ #include <config.h>
++#include <unistd.h>
++#include <sys/types.h>
+ #include "driver.h"
++#include "misc.h"
+ 
+ void*	nnodbc_getenverrstack(void* henv)
+ {
+Index: Drivers/nn/nntp.c
+===================================================================
+--- Drivers/nn/nntp.c.orig
++++ Drivers/nn/nntp.c
+@@ -19,6 +19,10 @@
+ #include    <string.h>
+ #include	<errno.h>
+ #include	<nntp.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++#include <unistd.h>
+ 
+ # include	"nntp.ci"
+ 
+@@ -36,6 +37,7 @@
+ #endif
+ 
+ #include	<nntp.h>
++#include	"misc.h"
+ 
+ typedef struct {
+ 	long	article_num;
+Index: Drivers/nn/nncol.c
+===================================================================
+--- Drivers/nn/nncol.c.orig
++++ Drivers/nn/nncol.c
+@@ -18,6 +18,7 @@
+ 
+ #include	<nncol.h>
+ #include	"nncol.ci"
++#include	"misc.h"
+ 
+ int	nnsql_getcolidxbyname( char* col_name )
+ {

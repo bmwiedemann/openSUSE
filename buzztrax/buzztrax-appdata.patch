@@ -1,0 +1,17 @@
+Index: buzztrax.appdata.xml.in
+===================================================================
+--- buzztrax.appdata.xml.in.orig
++++ buzztrax.appdata.xml.in
+@@ -1,9 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2014 Buzztrax team <buzztrax-devel@buzztrax.org> -->
+ <application>
+-  <id type="desktop">buzztrax-edit.desktop</id>
+-  <metadata_license>CC0</metadata_license>
++  <id type="desktop">buzztrax.desktop</id>
++  <metadata_license>CC0-1.0</metadata_license>
+   <project_license>LGPL-2.0+</project_license>
++  <name>Buzztrax Music Editor</name>
+   <_summary>Fully integrated music composer.</_summary>
+   <description>
+     <!-- don't translate 'tracker' -->

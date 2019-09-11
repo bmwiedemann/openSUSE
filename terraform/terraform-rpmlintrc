@@ -1,0 +1,2 @@
+addFilter (".*W: no-manual-page-for-binary.*")
+addFilter (".*W: position-independent-executable-suggested /usr/bin/terraform")

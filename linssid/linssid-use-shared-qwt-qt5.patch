@@ -1,0 +1,24 @@
+Index: linssid-3.6/linssid-app/linssid-app.pro
+===================================================================
+--- linssid-3.6.orig/linssid-app/linssid-app.pro
++++ linssid-3.6/linssid-app/linssid-app.pro
+@@ -4,7 +4,8 @@ TARGET = linssid
+ VERSION = 3.6
+ CONFIG -= debug_and_release app_bundle lib_bundle
+ CONFIG += release 
+-PKGCONFIG +=
++CONFIG += link_pkgconfig
++PKGCONFIG += Qt5Qwt6
+ QT = core gui widgets svg
+ SOURCES += AboutBox.cpp Getter.cpp MainForm.cpp main.cpp prefsDialog.cpp
+ HEADERS += AboutBox.h Custom.h Getter.h MainForm.h prefsDialog.h
+@@ -20,9 +21,7 @@ QMAKE_CXX = g++
+ DEFINES += 
+ INCLUDEPATH += /usr/include/boost
+ INCLUDEPATH += /usr/include/qt5
+-INCLUDEPATH += /usr/include/qwt
+ LIBS += -lboost_regex
+-LIBS += /usr/lib/libqwt-qt5.so.6
+ QMAKE_CXXFLAGS += -std=c++11
+ #
+ TARGET = linssid

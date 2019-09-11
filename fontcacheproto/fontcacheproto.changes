@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Sep 18 11:33:19 UTC 2014 - jengelh@inai.de
+
+- Update description and other metadata
+- Use full %configure for build, and remove CFLAGS (nothing is
+  compiled)
+- Make file list more compact
+
+-------------------------------------------------------------------
+Tue Apr 29 14:03:44 UTC 2014 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Tue Apr 29 13:34:30 UTC 2014 - cfarrell@suse.com
+
+- license update: BSD-2-Clause
+  See COPYING
+
+-------------------------------------------------------------------
+Wed Apr 23 23:27:33 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Created package fontcacheproto with initial version 0.1.3
+

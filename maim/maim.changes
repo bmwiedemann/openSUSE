@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Thu Nov  8 11:52:49 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- use correct cmake macros
+
+-------------------------------------------------------------------
+Wed Nov  7 15:25:40 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 5.5.2 [boo#1113605]
+  * maim respects _NET_FRAME_EXTENTS now, as well as XShape
+    clipping.
+
+-------------------------------------------------------------------
+Fri Jun 26 19:17:37 UTC 2015 - nemysis@gmx.ch
+
+- Update to 3.3.41, no changelog entry
+- Change Source0 Web URL, to have right maim-3.3.41.tar.gz
+- Add BuildRequires for cmake and gengetopt
+- Add BuildRoot
+- Use %{name} instead of maim
+- Switch to manual installation, because in Source isn't install command
+- Add Documentation
+- Add %changelog
+
+-------------------------------------------------------------------
+Mon Oct 20 10:47:44 UTC 2014 - rneuhauser@suse.cz
+
+- maim-2.3.17
+
+-------------------------------------------------------------------
+Fri Oct 17 12:50:18 UTC 2014 - rneuhauser@suse.cz
+
+- maim-2.2.13
+

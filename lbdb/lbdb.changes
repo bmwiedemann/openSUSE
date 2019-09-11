@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Wed Dec  9 12:57:52 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Thu Jan 29 23:25:58 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.39
+  * Use dh_autotools-dev (Closes: bdo#727289).
+  * Update packaged autotools files.
+  * Rebuild aclocal/autoconf.
+  * Change debian/source-format to 3.0 (native).
+  * Remove mutt-ja from Suggests, since this no longer exists.
+  * Upgrade build depenency to debhelper (>= 9).
+  * Change debian/compat to "9".
+  * Complete rewrite of debian/rules.
+  * Now uses hardening via debhelper.
+  * Add $CPPFLAGS to $CFLAGS to really use hardening.
+  * Upgrade to Standards-Version 3.9.5 (no changes).
+  * m_vcf: Optimize missing names handling (Closes: bdo#624590).
+  * Made debian/copyright machine readable.
+  * m_abook: fix formatting (Closes: bdo#681526).
+  * mutt-ldap-query: Add parameters for TLS and SASL_MECH (Closes: bdo#512074).
+  * Mention user mutt-ldap-query configuration files in lbdbq(1) man page
+    (Closes: bdo#534710).
+  * Update ABQuery build mechanism 
+- Remove obsolete AUTHORS section
+- Remove redundant %clean section
+- Do not package INSTALL file into doc directory
+  
+-------------------------------------------------------------------
+Thu Aug  1 12:32:54 UTC 2013 - lnussel@suse.de
+
+- new version 0.38
+  * m_evolution: Try to evaluate the location of
+    evolution-addressbook-export at runtime, since it is no longer
+    available in /usr/bin since evolution 2.30.1.2-3 
+    (Closes: #583851, #598380).
+  * m_vcf: Apply patch by Jamey Sharp <jamey@minilop.net> to support VCF
+    contacts without real name (Closes: #624590).
+  * vcquery: Apply patch by martin f krafft <madduck@debian.org> to search
+    in NICKNAME field, too. (Closes: #586300).
+- remove lbdb-0.32-evolution.diff
+
+-------------------------------------------------------------------
+Tue Feb  8 12:14:50 UTC 2011 - lnussel@suse.de
+
+- Suggest perl(Net::LDAP) (bnc#669969)
+
+-------------------------------------------------------------------
+Wed May 19 11:52:50 UTC 2010 - lnussel@suse.de
+
+- new version 0.37
+  * Fix bashisms in m_bbdb
+  * Fix query shell functions to catch non-zero exit status in case they
+    get invoked in set -e context.
+  * m_evolution: support line breaks and long lines.
+  * Fix documentation concerning the quotes on lbdbq call
+- fix path to evolution-addressbook-export
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:24 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Oct  2 12:15:55 CEST 2008 - lnussel@suse.de
+
+- new version 0.36
+  * Remove duplicate "See also: mutt" from lbdbq.man.
+  * Update configure using autconf 2.61.
+  * Apply charset conversation patch by Peter Colberg based on code by
+    Tobias Schlemmer.
+  * Remove duplicate declaration of $ignorant.
+  * Handle mail addresses in mutt_ldap_query correct. Thanks to Colin
+    Watson <cjwatson@debian.org> for providing a patch.
+  * Mention ldapi URIs in mutt_ldap_query man page.
+  * Protect "make distclean" by checking whether makefile exists.
+  * Upgrade to Standards-Version 3.8.0:
+    - Fix Homepage header in control file.
+  * Add copyright holders to debian/copyright file.
+  * Remove outdated override.Lintian.
+
+-------------------------------------------------------------------
+Fri Aug 10 15:17:15 CEST 2007 - lnussel@suse.de
+
+- new version 0.35.1
+  * supports ldaps
+
+-------------------------------------------------------------------
+Wed May 16 11:47:08 CEST 2007 - lnussel@suse.de
+
+- new version 0.34
+  * vcquery: avoid free() on unallocated memory if fullname is not set.
+  * vcquery: Use value of concatenated N fields if FN field is missing.
+- fix hostname lookup if multiple domains are listed in resolv.conf
+
+-------------------------------------------------------------------
+Mon Oct 16 12:10:07 CEST 2006 - lnussel@suse.de
+
+- new version 0.33
+  * Add SORT_OUTPUT=reverse_comment to do reverse sort by the third column
+    (most recent m_inmail timestamp at the top).
+  * Comment out LDAP_NICKS in lbdb.rc because this should only be an
+    example and if it is set there it overrides other LDAP settings
+
+-------------------------------------------------------------------
+Thu Aug 24 11:51:32 CEST 2006 - lnussel@suse.de
+
+- new version 0.32
+- fix path to evolution-addressbook-export
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon May  9 17:50:38 CEST 2005 - lnussel@suse.de
+
+- update to version 0.30
+
+-------------------------------------------------------------------
+Fri Feb 27 10:35:45 CET 2004 - lnussel@suse.de
+
+- run configure similar to the original debian package to reduce
+  neededforbuild and to fix evolution addressbook query
+- add gpg to default address query methods
+
+-------------------------------------------------------------------
+Thu Feb 26 19:01:28 CET 2004 - lnussel@suse.de
+
+- update to version 0.29
+
+-------------------------------------------------------------------
+Sun Feb  8 21:45:41 CET 2004 - lnussel@suse.de
+
+- update to version 0.28.2 
+- use %optflags, fix aliasing problems
+
+-------------------------------------------------------------------
+Wed Feb 12 16:46:30 CET 2003 - lnussel@suse.de
+
+- new version 0.26.2
+  * new ldap option $ignorant
+  * support for multiple abook address books
+
+-------------------------------------------------------------------
+Fri Aug 16 13:11:59 CEST 2002 - ro@suse.de
+
+- removed emtpy post/postun scripts (#17916)
+
+-------------------------------------------------------------------
+Thu Apr 25 13:23:11 CEST 2002 - lnussel@suse.de
+
+- new version 0.26
+- now uses m_getent instead of m_passwd (lbdb.rc.dif)
+- moved files from %{_prefix}/lib to %{_libdir}/lbdb
+
+-------------------------------------------------------------------
+Tue Jul 24 16:35:32 CEST 2001 - lnussel@suse.de
+
+- new version 0.25
+
+-------------------------------------------------------------------
+Tue Mar 20 16:47:42 CET 2001 - lnussel@suse.de
+
+- new version 0.24
+- added finger to neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb  7 10:22:35 CET 2001 - lnussel@suse.de
+
+- new version 0.23
+- neededforbuild: ypbind -> yp-tools
+
+-------------------------------------------------------------------
+Thu Nov 30 08:45:54 CET 2000 - ro@suse.de
+
+- neededforbuild: ypclient -> ypbind 
+
+-------------------------------------------------------------------
+Thu Oct 12 13:58:32 CEST 2000 - lnussel@suse.de
+
+- new version 0.21.1
+- cleaned up spec file
+- changed Group to Applications/Mail
+
+-------------------------------------------------------------------
+Tue Aug 29 09:24:34 CEST 2000 - lnussel@suse.de
+
+- initial check in
+

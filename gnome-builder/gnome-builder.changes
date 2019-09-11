@@ -1,0 +1,2276 @@
+-------------------------------------------------------------------
+Tue Jul 16 17:42:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.4:
+  + Be more graceful when used without version control.
+  + Fix initial selection in project-tree popovers.
+  + Prevent interactivity when opening a project from the greeter.
+  + Make about dialog transient/modal.
+  + Disable gdb self-inspection when launched outside of a
+    terminal.
+  + Fixes when run outside of a terminal (related to O_NOCTTY).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul  3 11:33:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add typelib(Jsonrpc) Requires: the template generation code
+  depends on this library. The dep could not be auto-detected, as
+  its addressed from within compiled .c code (boo#1138077).
+
+-------------------------------------------------------------------
+Thu Jun 13 21:30:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.3:
+  + Fixes for struct/enum when auto-formatting C headers.
+  + The application-id is now validated from the template
+    assistant.
+  + The buffer monitor has had a number of fixes for situations
+    involving external file modifications.
+  + LD_LIBRARY_PATH is now set under various conditions when
+    running applications from non-default prefixes.
+  + FreeDesktop notifications are now removed when the build
+    pipeline has been invalidated.
+  + Meson unit tests are reloaded when build.ninja changes.
+  + Auto-save will only activate if the file on disk has not been
+    modified.
+  + i18n/l10n improvements.
+  + The NPM plugin can now be disabled.
+  + Some missing shortcuts were added to they shortcuts dialog.
+  + The foundry is now unloaded when shutting down a project, this
+    fixed situations where build configurations were not saved.
+  + Glade priorities were lowered to ensure that the editor has
+    preference when opening .ui files.
+  + The meson plugin handles changes to introspection format more
+    gracefully.
+  + The makefile plugin now handles Makefile/makefile/GNUmakefile.
+  + Hardening of GDBusServer usage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 11 06:28:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Glade design view improvements.
+  + Improve CFLAGS and CXXFLAGS discovery with
+    compile_commands.json when a direct match is not found (such as
+    with headers).
+  + Improve symlink detection warning.
+  + Fix block selection in terminals.
+  + Enable VTE hyperlinks feature.
+  + NPM build system bug fixes and improvements.
+  + The diagnostic manager now properly tracks changes to a buffers
+    configured source language. This will improve diagnostic
+    detection in some situations.
+  + rofiles-fuse and flatpak-builder will attempt to retire their
+    corresponding host processes when flatpak is in use.
+  + Unit tests will now properly run when uninstalled.
+  + The unit tests panel now properly scrolls when a large amount
+    of content is provided to the PTY.
+  + The unit tests panel now allows for cancelling an ongoing unit
+    test.
+  + The file monitor now properly detects file changes when no
+    version control is in use.
+  + The clang plugin now discovers the location of the C++ standard
+    includes.
+  + Project template improvements.
+  + Folder selection is fixed when cloning a repository.
+  + menus.ui no longer is opened with the Glade design view by
+    default.
+  + "Open in Terminal" will now properly open a terminal from the
+    host system instead of expecting flatpak bundling.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  6 12:13:03 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop environment.pickle again to make package build reproducible
+
+-------------------------------------------------------------------
+Thu Apr 11 09:31:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Appdata updates.
+  + The project-tree now auto-resizes the column.
+  + Stability improvements to the flatpak plugin.
+  + The flatpak plugin now queries before installing dependencies.
+  + The code-index can be avoided by placing a ".noindex" file in
+    a directory.
+  + Transfer notifications have cancel buttons restored.
+  + Waf improvements.
+  + Flatpak uses fallback-x11 now instead of x11 by default.
+  + RLS support can now be disabled by disabling the plugin.
+  + A leak was fixed for semantic highlight indexes.
+  + Scroll improvements for the source code editor.
+  + Improved support for symlinks above the project directory.
+  + Support for podman's --preserve-fds option.
+  + Sourceview line number background drawing is improved.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 13 08:37:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Improve restoring cursor after loading buffer.
+  + Various API changes to avoid out-params with async functions.
+  + Styling tweaks for matching brackets.
+  + Updated documentation.
+  + Updated translations.
+- Add global __requires_exclude typelib\\(Ide\\): Filter out bogus
+  automatic requires.
+- Reenable doc subpackage, build fixed.
+
+-------------------------------------------------------------------
+Wed Mar  6 00:00:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Destroy various IdeObject after they are no longer needed
+    reducing memory usage a bit.
+  + Add missing shortcuts to shortcuts window.
+  + Fix various compiler warnings for release builds.
+  + Tweak builder-dark style-scheme for Adwaita changes.
+  + Allow project-tree to be used from editor workspace.
+  + Allow gnome: gitlab: and github: prefixes when using --clone.
+  + Unit Tests now have a VTE-based output panel when running.
+  + Initial support for waf build system.
+  + Cached build targets are invalidated when build config changes
+    which should help ensure that "Run" does not execute stale
+    binaries.
+  + Changing devices now properly invalidates the build manager.
+  + A rofiles-fuse wrapper is provided when building for Flatpak.
+  + Scrolling with j/k/up/down in Vim mode is less jarring at line
+    boundaries by avoiding additional scrolling.
+  + New jump list desktop actions are provided for GNOME shell.
+  + Avoid indexing large directories when not in project-mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 12:37:30 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Fix three-finger-swipe gesture in keyboard shortcuts.
+  + Respect sort-directories-first gsetting in project-tree.
+  + Icons for the newcomers initiative have updated.
+  + Loading of custom gtksourceview style schemes has been
+    restored.
+  + gnome-builder -e will now open a new editor window.
+  + Plugins can now add delay in "settling" the buffer before
+    saving.
+  + The git plugin will settle for updated line changes before the
+    buffer can be saved. This fixes an issue with trim-spaces
+    plugin not trimming all of the expected lines.
+  + Builder's flatpak-based fusermount wrapper was simplified. This
+    could use testing with regards to rofiles and flatpak-builder.
+  + Various search workflow improvements.
+  + The VCS file monitor now contains a sequence number that can be
+    used to optimize some additional work such as installing a
+    project. Builder will no longer install the project before each
+    project Run unless a file within the project tree has changed.
+    Projects that rely on external files will need to press "Build"
+    before "Run" if only external files have changed.
+  + Improvements to guessing language syntax when a buffer is
+    created.
+  + Add an experimental podman runtime provider. This is not
+    enabled by default and we do not recommend enabling it at this
+    time.
+  + Updated translations.
+- Changes from version 3.31.90:
+  + Appdata and icon updates.
+  + Many bugs found from refactoring fallout have been fixed.
+  + New plugin APIs have been added and some existing APIs tweaked
+    as we stabilize for release.
+  + Theme tweaks to match upcoming Adwaita changes.
+  + gdb improvements including use of fewer deprecated MI commands.
+  + The greeter has been redesigned and simplified.
+  + The git gutter now more accurately displays line information.
+  + Menus have been tweaked to more closely fit with GNOME 3.32
+    guidelines.
+  + The code indexer was redesigned to provide progress and
+    improved pausibility. We expect more changes before 3.32 to
+    reduce overhead of larger projects.
+  + Code indexers and ctags will delay initial indexing until a
+    user operation has occurred like saving a file or a successful
+    build.
+  + LSP conformance improvements.
+  + The project tree now provides some basic VCS information and
+    allows switching branches using the context menu. This exposed
+    a bug in libgit2-glib which has been fixed there too. We
+    recommend packagers ensure that bug fix has landed in their
+    libgit2-glib.
+  + Updated translations.
+- Changes from version 3.31.4:
+  + A large number of changes as part of refactoring the core of
+    Builder.
+  + Basic support for multiple workspace windows for a project.
+    Such is useful in multi-monitor setups.
+  + Add --clone, --greeter, --manifest, --editor command line
+    options.
+  + Opening files via .desktop mimetypes should no longer open a
+    project, only the source file.
+  + Various build system information has been coalesced into the
+    project tree.
+  + Many meson_options.txt changes including a number of plugin
+    options were simplified.
+  + Configuration view has been abstracted to allow plugins to
+    extend build preferences.
+- Add pkgconfig(gladeui-2.0) Buildrequires: New dependency.
+- Drop all options passed to meson apart from help, docs and
+  network_tests where we differ from upstream defaults, docs are
+  however currently disabled along with the docs sub-package, as it
+  breaks the build.
+
+-------------------------------------------------------------------
+Sun Jan 13 00:36:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.3:
+  + Shortcut fixes.
+  + Fix for possible heap corruption when unloading pages.
+  + Keep "flatpak build" quiet when communicating with gdb.
+  + Emit thread-selected when gdb has *stopped event.
+  + Gdb plugin now uses --frame and --thread.
+  + Fixes for rust hover provider via RLS.
+  + Gtk-Sharp template now uses updated SDK extension.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan  7 16:31:38 UTC 2019 - bjorn.lie@gmail.com
+
+- Replace pkgconfig(libvala-0.42) with libvala-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Nov  2 19:21:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fixes for tracking GNOME's Night Light setting.
+  + Fix running of Builder's unit tests without installing.
+  + Fix relative paths from .git gitdir.
+  + Fix gdb communication over chatty intermediate PTY.
+  + Allow gtksourceview-3.0 applications to use Builder
+    style-schemes.
+  + Icon fixes and improvements.
+  + More UI components display keyboard shortcuts.
+  + Saving files will now create the necessary directory structure.
+  + Buffers will mark themselves as "modified on disk" when the
+    backing file is deleted.
+  + Drop SSL/PKI overrides for Flatpak.
+  + Git plugin now updates status when the checkout directory
+    changes.
+  + Vim command-bar has improved results when listing
+    files/directories.
+  + Project creation and cloning wizards now update paths in
+    response to changes.
+  + ".in" filename suffix will be ignored when guessing syntax
+    language.
+  + You can specify what Ninja path to use using $NINJA in build
+    preferences.
+  + RLS is now restarted when Cargo.toml changes.
+  + Fuzzy matching completion results has been improved for some
+    corner-cases.
+  + Gtk-sharp3 template now builds correctly.
+  + Editor is properly focused when re-selecting open buffer from
+    global search.
+  + Various bug fixes to gstyle.
+  + Meson toolchain editing improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 23 18:53:56 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop environment.pickle to make package build reproducible
+
+-------------------------------------------------------------------
+Wed Sep 26 12:17:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Build fixes for distributions using --buildtype=release.
+  + Fixes to history tracking while loading a buffer.
+  + Include PACKAGE_VERSION in meson project templates.
+  + Fix Night-mode tracking to update style-scheme when
+    appropriate.
+  + Editor session tracking will now skip missing files during
+    restoration.
+  + The editor search bar now includes error state visibility
+    similar to gedit.
+  + Documentation improvements.
+  + CMake improvements when used from sub-directories.
+  + Empty C# and C/Vala CLI project templates were added.
+  + Fixes for `yyp` in Vim-mode at the end of a document.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 12:52:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Allow disabling interactive completion.
+  + Additional gobject snippets.
+  + Theme fixes for non-Adwaita themes.
+  + Build Config fixes when duplicating environments.
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Sep  4 00:57:10 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Workarounds for various network portal issues and HTTP url
+    opening.
+  + The clang plugin now supports renaming symbols within a file.
+  + Some snippet and rust completion improvements.
+  + The hover popover tries to handle more corner cases.
+  + "dW" now uses the proper full-word mode under vim emulation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 17 20:14:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + gdb breakpoint control improvements.
+  + Build system improvements for NixOS and Flatpak.
+  + Many memory safety and leak improvements.
+  + Icon installation has changed slightly. Please let us know if
+    you have issues on your distribution.
+  + A hover provider for language server protocol was added,
+    including for rls.
+  + The buffer manager now avoids highlighting while loading the
+    underlying buffers from storage.
+  + Terminals now use --login when using bash.
+  + SIGPIPE is disabled on startup.
+  + A new session manager that can restore your vertical and
+    horizontal splits.
+  + Applications can now talk to portals by default when using
+    flatpak.
+  + Improvements to embedded snippets language defaults.
+  + Avoid re-downloading of artifacts when possible.
+  + Updated translations.
+- Drop gnome-builder-fix-gtkdoc-overlooking-headers.patch: Fixed
+  upstream.
+- Add python3-Sphinx BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Aug  9 02:59:40 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.4:
+  + A new "interactive tooltip" based on GtkPopover has been added
+    to the editor along with plugin support for "hover providers"
+    which roughly matches the language server protocol.
+  + A number of performance issues have been fixed on large
+    projects.
+  + The todo plugin now uses "git grep" when available.
+  + Enable clang support for Objective-C.
+  + Avoid use of "async" keyword for Python 3.7 support.
+  + Use tooltips to display broken/unsatisfied build pipelines.
+  + Add support for a number of bundled mimetype icons and other
+    icon quality improvements.
+  + Additional license support in templates.
+  + Additional snippets for various languages.
+  + Improvements to character overwrite support in the editor.
+  + Various toolchain improvements.
+  + Various vim emulation improvements.
+  + A successful build/configure will cause diagnostics to be
+    reloaded in the open source code views.
+  + Simple support for gdb countpoints.
+  + SSH+git clone improvements when private keys are used.
+  + Updated translations.
+- Replace gtksourceview-3.0 and libvala-0.40 pkgconfig modules
+  BuildRequires with gtksourceview-4 and libvala-0.42 respectively,
+  to follow upstream changes.
+- Add gnome-builder-fix-gtkdoc-overlooking-headers.patch: provided
+  by upstream.
+
+-------------------------------------------------------------------
+Fri Jul 27 20:21:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.4:
+  + Improvements to C indenter.
+  + More safety improvements using IdeTask.
+  + Protections against pathological lines when parsing To-do's.
+  + To-do plugin now uses "git grep" when possible.
+  + Some guards against very large projects (Mesa, WebKit,
+    Chromium) were added. We still suggest disabling CTags on this
+    size of project.
+  + Diagnostics are re-processed after initial build pipeline
+    configure.
+  + Fix for loading a project based on a flatpak manifest
+    (gnome-builder -m).
+  + Fix for SSH authentication when no username is supplied.
+  + emacs-style modeline improvements on initial load of buffer.
+  + Cloning a project from a manifest will now detect some
+    situations where downloads can be avoided.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 21 22:02:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Fixes for a number of crashers and potential data loss.
+  + The editor more reliably restores cursor position.
+  + The todo plugin more aggresively ignores some common build
+    tooling directories.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 21 00:05:22 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.3:
+  + A new completion engine has been added, replacing the use of
+    GtkSourceCompletion.
+  + Helpers to format GNOME-style header function blocks has been
+    added.
+  + Initial support for the gradle and maven build system.
+  + Additional support for sysroots and toolchain selection.
+  + A memory leak of editor buffers has been fixed.
+  + The jedi plugin was updated to support more recent releases.
+  + The code indexer and other plugins will now ignore the
+    node_modules directory when the npm plugin has been loaded.
+  + You can now specify a branch name other than "master" when
+    cloning a git repository.
+  + Plugins in ~/.local/share/gnome-builder/plugins will have
+    higher priority which simplifies the process of creating and
+    testing new plugins out-of-tree such as when using Flatpak.
+  + Language server protocol conformance improvements.
+  + The snippet engine got improvements to reduce runtime memory
+    overhead.
+  + GCC Warnings were vastly increased this cycle.
+  + Updated translations.
+- Changes from version 3.29.2:
+  + Fixes for DTD and RNG processing in xml-pack plugin.
+  + Improvements to the vim-style search and replace command.
+  + A new IdeToolchain abstraction has been added to help with
+    systems where multiple toolchains can exist within a runtime.
+  + Various build systems have been migrated to toolchain support.
+  + Various memory leak fixes.
+  + Clang support has been moved out-of-process using the new
+    gnome-builder-clang subprocess. Clang-based auto-completion is
+    temporarily disabled until a future development release.
+  + Memory overhead of the clang plugin has been vastly reduced.
+  + The highlighter can now deal with delayed requests to load a
+    new highlight index.
+  + A spinloop was fixed when opening certain files with
+    double-click from the project tree.
+  + Updated translations.
+- Drop gnome-builder-fix-meson-gtk-doc-build-failure.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jun  2 03:17:35 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + A new threadpool and tasking engine has landed which provides
+    much more safety guarantees in how tasks are processed off
+    main-thread and results proxied back to the destination thread.
+  + Most subsystems have now been ported to IdeTask to take
+    advantage of the new threading engine.
+  + A new "Runtime Terminal" shell has been provided which is a
+    terminal in the runtime environment of the flatpak application.
+  + Builder tries harder to ignore minified JSON files when
+    performing various background work like TODO extraction.
+  + A new sysroot plugin has been added to allow building against
+    an alternate sysroot than that of the host system. We expect
+    further expansion in this area for toolchain selection in the
+    future.
+  + A new ctrl+shift+k keybinding has been added to jump to symbol
+    search within the current document.
+  + Flatpak "simple" build systems now run the commands from the
+    srcdir matching more closely to what flatpak-builder will do.
+  + XML plugin improvements for performance, stability and DTD
+    tracking.
+  + GDB integration now properly updates frames for the selected
+    thread.
+  + Various terminal improvements.
+  + Various memory leak fixes.
+  + Support for rofiles-fuse has been added to speed up flatpak
+    cachepoint generation.
+  + Updated translations.
+- Add:
+  + gtk-doc BuildRequires to allow building the docs and fix a bug
+    with the following patch.
+  + gnome-builder-fix-meson-gtk-doc-build-failure.patch provided by
+    upstream.
+
+-------------------------------------------------------------------
+Tue May 29 20:21:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + A leak of buffers when using semantic highlighting as been
+    fixed, which has the potential to significantly reduce memory
+    usage for some languages such as C.
+  + Various fixes with DTD validation.
+  + Various correctness fixes in API usage.
+  + The new task and threading engine has been backported which
+    provides a new layer of saftey for our threading usage.
+  + Various fixes for the flatpak plugin.
+  + Ctags tries to be more careful to avoid recursive mining and no
+    longer attempts to load ~/.tags.
+  + The clang plugin tries harder to cook cflags delivered to
+    libclang.
+  + A preferences menu item was added back to the perspective
+    selector. It still uses a dialog for preferences.
+  + The recent-projects plugin performs additional checks to avoid
+    recursive directory cleanup when that would result in deleting
+    some external data.
+  + A number of miscellaneous memory leaks have been plugged.
+  + When meson/ninja are not found, a message is displayed to the
+    user in the messages pane.
+  + The clang plugin will try to drop state as soon as possible to
+    help keep memory usage down.
+  + The npm modules now marks "node_modules" as an ignored pattern.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 02:42:20 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.1:
+  + Correctness fixes in the xml-pack plugin.
+  + gdb plugin now updates frames properly for selected thread.
+  + Some improvements in the emacs bindings.
+  + The meson plugin handles meson being run outside of the
+    builddir now when extracting targets and tests.
+  + Many fixes in the introspection usage which translates into
+    memory leak fixes for some plugins written in languages other
+    than C.
+  + Bug fixes for a number of build systems including cargo.
+  + The build pipeline is now invalidated when the branch changes.
+  + Right clicking on a project in the greeter now enters selection
+    mode.
+  + The VCS backend now unconditionally ignores minified JSON to
+    protect various subsystems from parsing unnecessary data.
+  + Safety fixes to the code-index, buffer manager, terminals, xml
+    parsing, and a number of other subsystems.
+  + The qemu plugin now checks for the 'F' option which is
+    required.
+  + File settings now support setting auto-indent in GSettings.
+  + primary+shift+k now activates the symbol search for the
+    document.
+  + Special handling of git worktrees has been added.
+  + Flatpak manifest "simple" build system types now run the
+    build-commands from the srcdir, as is done by flatpak-builder.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and suse_update_desktop_\
+  file: they are longer needed anymore.
+
+-------------------------------------------------------------------
+Sat Mar 17 10:42:35 UTC 2018 - dimstar@opensuse.org
+
+- Recommend flatpak: The application templates in Builder require
+  flatpak to operate correctly (boo#1085751).
+
+-------------------------------------------------------------------
+Wed Mar 14 10:56:44 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Undo/Redo improvements when using multiple cursors.
+  + Support for --device in flatpak finish-args. This fixes running
+    apps such as gnome-maps that require OpenGL support.
+  + Experimental support for deviced to connect to remote devices.
+  + The flatpak manifest configuration provide now supports
+    duplication, delete, and tracking changes in the source
+    repository.
+  + Builder requires enchant-2 now in coordination with gspell.
+  + The build pipeline now supports building alternate
+    architectures based upon the selected device architecture.
+  + A new deploy action has been added which allows pushing builds
+    to supported external devices.
+  + A new build pipeline phase "commit" has been added. This allows
+    separating the process of commiting a build to a flatpak-repo
+    from the process of exporting a binary such as a .flatpak.
+  + The flatpak build pipeline tries a number of strategies to
+    cleanup broken build directories.
+  + The omnibar provides some visual feedback about build
+    success/failure when a build advancing to certain build phases
+    completes.
+  + A new qemu plugin adds support for building for non-native
+    architectures using binfmt and qemu-user-static.
+  + A new "device" button has been added to the omnibar to select
+    the target device. We expect this to be used more in 3.30 but
+    has limited support in 3.28.
+- Replace pkgconfig(enchant) BuildRequires with
+  pkgconfig|(enchant-2): follow upstreams port to Enchant 2.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:23:03 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Licensing improvements to meson-templates.
+  + Improvements for Language Server Protocol compliance.
+  + The device manager has been improved to support selecting a
+    device externally to the build configuration. UI is not
+    currently exposed and may be in a future release.
+  + The build configuration no longer contains a device.
+  + A number of build pipeline changes were made to support
+    building for an architecture other than the host.
+  + The "local device" is now named "My Computer".
+  + System architecture has been hoisted into the device info which
+    allows to more easily support remove devices.
+  + The code index builder tries harder to avoid blocking the main
+    loop.
+  + A number of components were moved into the build pipeline to
+    more cleanly abstract device support.
+  + The mingw plugin was dropped as it no longer fits into our
+    design abstractions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:23 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 22 00:52:28 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.91:
+  + Various build fixes for some flatpak configurations.
+  + Don't follow through symlinks when building directory lists.
+    This fixes a spinloop some users saw when opening projects with
+    symlinks.
+  + Avoid adding trailing \n when the document already includes a
+    trailing \n.
+  + Builder now respects --own-name when spawning user projects.
+  + The editor gutter now provides tooltips with diagnostic
+    information.
+  + Some vim emulation improvements.
+  + Updated translations.
+- Add libsoup-2.4 and sysprof-2 pkgconfig modules BuildRequires to
+  avoid implicit dependencies.
+- Replace '+' in GPL/LGPL License tag to '-or-later' complying with
+  SPDX 3.0.
+
+-------------------------------------------------------------------
+Mon Feb  5 14:57:22 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Various fixes for FreeBSD and similar.
+  + The "Projects" directory is now translated and created using
+    the translated name when applicable. If "Projects" already
+    exists, it is used.
+  + Fixes and correctness improvements in the beautifier plugin.
+  + Fixes and correctness improvements in the xml plugin.
+  + A new "Clone Repository" app-menu item has been added.
+  + The code-indexer has been restructured to avoid threading in
+    the plugin API. Plugins are still free to use threads in their
+    implementation.
+  + A new golang language server client has been added with limited
+    support.
+  + Many leaks across a variety of plugins have been plugged.
+  + The flatpak plugin tries even harder to avoid building projects
+    immediate upon project load.
+  + The autotools plugin now checks for AC_INIT() inside
+    configure.ac to avoid being fooled by invalid tooling.
+  + The configuration manager and providers have been restructured
+    to avoid threading in plugin APIs.
+  + Writeback of configuration changes has been improved.
+  + The editor gutter handles text and icon size changes for zoom.
+  + The language server protocol client has gotten a number of
+    fixes.
+  + Preferences improvments.
+  + The terminal now supports grid selection again.
+  + Fixes for tab v spaces selection in the document properties
+    pane.
+  + We now support SDK extensions in flatpak and they will be
+    downloaded.
+  + A new template for Mono/C♯/Gtk♯ has been added.
+  + We try even harder to supress unwanted build notifications.
+  + The make plugin now supports a "run" target.
+  + A new PTY interceptor has been added so that we can extract
+    build warnings while also using a real PTY for the terminal
+    widget.
+  + Ctags now inserts snippets for completion, allowing for
+    parameters expansion.
+  + Clang plugin now uses language spacing settings when expanding
+    snippets. This allows for supression of spaces before opening
+    parens.
+  + Language defaults have been restored, and now properly set the
+    fallback settings we intended.
+  + We now log subprocess arguments when building.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Remove beautifier-plugin subpackage and add an Obseletes tag for
+  it as the plugin has been bundled into libgnome-builder-plugins.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + A new IdeVcsMonitor interface provides status tracking for
+    project files.
+  + The editor supports Drag'n'Drop to open files, also allowing
+    placement of the editor frame to the left/right/top/bottom of
+    an existing editor frame.
+  + A new message pane allows plugins to deliver information to
+    users, particular about failures which would otherwise be
+    silently dropped to the console.
+  + A number of improvements to subsystems for better error
+    tracking, memory leaks, and correctness fixes.
+  + The “hamburger” menu has been hidden by default, but will
+    automatically display if any plugins end up using it.
+  + Newcomers greeter section now displays the included programming
+    languages to help guide developers to projects they may want to
+    contribute to.
+  + The omnibar now includes a button to download dependencies.
+  + Unit tests are reloaded whenever the build pipeline is updated.
+  + Symbol Tree will now more reliably show document contents.
+  + Builder can now chain GCancellables together, meaning more
+    reliable cancellation of complex operations such as project
+    building.
+  + The build status panel can now display the build pipeline stages
+    and update them as the build progresses.
+  + The Clang plugin will more reliably work when used to build
+    against a host system from Builder shipped via Flatpak.
+  + Support for LLVM 5.0.
+  + Updated Translations.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Debugging with gdb has been improved to translate paths when
+    running inside of a mount namespace such as flatpak.
+  + A number of correctness fixes in plumbing and for memory leaks.
+  + A new build target provider interface has been added so the
+    project runner can support executing commands extracted from
+    systems such as flatpak.
+  + GNOME Night Light integration.
+  + Improved greeter sections with support removing data files.
+  + Builder will try to remove stale cache data at startup and
+    shutdown to help free some disk usage.
+  + Improved alignments for home/end shortcuts.
+  + You can now run Cargo-based projects using cargo run.
+  + The build pipeline tries to be more verbose for known error
+    messages in GLib by setting G_ENABLE_DIAGNOSTIC.
+  + Builder now uses --state-dir with flatpak-builder when version
+    >= 0.10.5 is detected.
+  + The project-tree now supports Drag'n'Drop, both internally and
+    using text/uri-list selections from external applications.
+  + An early preview of VCS status integration into the project
+    tree has been included in this release.
+  + Updated translations.
+- Pass the following with_*=true options to meson to ensure the
+  desired features are built: beautifier, cmake, flatpak, git,
+  jedi, jhbuild, meson, meson_templates, spellcheck and vala_pack.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Bug fixes:
+    - For the meson build system backend.
+    - In our compile_commands.json support.
+    - In our GJS integration.
+  + Meson project templates gained a Workaround for a glade bug.
+  + A newcomers plugin has been added which displays GNOME newcomer
+    projects on the greeter.
+  + Support was added for Yaml when using GNOME Code Assistance.
+  + Appdata now installs to the preferred location of the spec.
+  + We now use explicit export macros to simplify ABI management.
+    We still aren't ABI-stable.
+  + Our clang plugin now supports the KeepGoing option, to try
+    harder after encountering failures in includes.
+  + Support for code-indexing the Vala programming language.
+  + Global search can now be navigated with ctrl+n/p in Vim mode.
+  + You can now disable the "Open Pages" section of the sidebar
+    in preferences.
+  + The flatpak plugin no longer automatically updates project
+    dependencies when the build system activates for the first
+    time. You can manually update the dependencies from the
+    workbench menu.
+  + Basic support for unit testing in Meson-based projects.
+  + Subprocess PATH will now prefer /bin over /usr/bin.
+  + Support for project miners has been dropped.
+  + Updated translations.
+- Drop gnome-builder-header-installation-directory.patch: fixed
+  upstream.
+- Replace gnome-builder-plugin-cmake Recommends tag with Obsoletes:
+  the plugin got bundled into libgnome-builder-plugins.so.
+- Add a doc subpackage for the development documentation that got
+  restructured upstream and moved to
+  /usr/share/gtk-doc/html/libide.
+- Add non-executable-script and obsolete-not-provided warning
+  filters for some files in gnome-builder-rmplintrc: they are false
+  positives.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Add Obsoletes for the following gnome-builder-plugin-* plugins:
+  clang, ctags, devhelp, fpaste, gettext, code-assistance,
+  html-completion, mingw, symbol-tree, sysmon, todo and xml-pack.
+  Whether the plugin got removed or bundled into
+  libgnome-builder-plugins.so.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.1:
+  + A GJS symbol resolver and code-index has been added.
+  + Improved editor search that unifies mutliple search
+    implementations. Testing from early adopters would be
+    apreciated.
+  + Initial support for three-finger-swipe within the editor to
+    move documents to the left or right. Wayland-enabled compositor
+    required.
+  + Todo plugin now respects .gitignore and an off-by-one in line
+    number conversion has been fixed.
+  + Thread-safety improvements to version control API.
+  + Meson plugin has been ported to C and includes a number of
+    improvements.
+  + Performance improvements to both application startup and
+    project loading were made.
+  + Preferences has been moved out of the workbench to reduce
+    overhead and allow accessing from the application greeter.
+  + Some build pipeline operations were queued behind long running
+    operations. Builder will now try to flush those operations.
+  + IdeTransferManager has been moved to IdeApplicatoin. Fixing
+    some issues in the rustup plugin.
+  + Quick-highlight plugin has been rewritten to take advantage of
+    the new editor search feature.
+  + Updated translations.
+- Align Buildrequires with meson.build:
+  + Drop: bison, flex, gtk-doc, itstool, python3-devel
+    and pkgconfig(mm-common-util).
+  + Add: pkgconfig(libxml-2.0).
+- Add fdupes BuildRequires: removal of duplicates under /usr/share.
+- Add gnome-builder-header-installation-directory.patch: Fix
+  generated header installation directory, patch from upstream git
+  (bgo#789426).
+- Drop 'find' command for deletion of .la files: libtools is no
+  longer used.
+
+-------------------------------------------------------------------
+Fri Feb  2 10:31:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.4:
+  + A number of correctness and memory leaks were fixed in the
+    semantic highlighter, project tree, clang, rustup, vala-pack,
+    code-index, config manager and configs, and git.
+  + The meson plugin now uses "meson" "introspect" instead of the
+    legacy "mesonintrospect" utility.
+  + Fixes for deprecated API usage in Gtk+.
+  + Block selection has been fixed in the terminal plugin.
+  + Postbuild support in configurations was fixed to no longer
+    run prebuild commands a second time.
+  + The flatpak plugin now passes --command to build-finish. This
+    fixes an issue where the wrong binary would get activated when
+    exporting a project.
+  + Fixes for -Wincompatible-pointer-type changes from recently
+    upstreamed type propagation in g_object_ref().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 19 23:27:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.3:
+  + Various improvements to for developing against the host system
+    when running Builder from a flatpak.
+  + Builder will set more fallback environment variable when
+    running under flatpak to ensure subprocesses have a predictable
+    environment.
+  + Various fixes to the shortcut engine and how key-press are
+    captured.
+  + Fixes for invalid cast in LSP format provider.
+  + Various correctness and memory leak fixes.
+  + Symbol tree will try additional symbol resolvers if the first
+    one returned with an empty set.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov  2 07:04:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.26.2:
+  + Remove the related GPLv3+ section from LGPLv3+ COPYING.
+  + Additional protection against spurious build notifications.
+  + Be more defensive against spellcheck race conditions.
+  + Ensure indenter can be properly disabled and re-enabled.
+  + Improved translation of build paths provided by the build
+    system.
+  + With modern Clang versions, try harder to keep processing
+    after include failures.
+  + Load additional style schemes from
+    .local/share/gtksourceview-3.0 when running under flatpak.
+  + Ensure the search bar is above the floating minimap.
+  + Avoid double free when failing to load a git repository.
+  + Copyright snippets now prefer to use © over (C).
+  + Fix an off-by-one when jumping to todo line number.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 27 20:30:57 UTC 2017 - luc14n0@linuxmail.org
+
+- Add gnome-builder-plugin-fpaste Obsoletes: missing tag since
+  plugin has been removed.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:03:45 UTC 2017 - dimstar@opensuse.org
+
+- Correct version dependencies on libdazzle and template-glib: we
+  requrie version 3.26.1.
+
+-------------------------------------------------------------------
+Sun Oct  8 09:24:30 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Wed Oct  4 22:59:52 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Fixes:
+    - When using the XML editing extensions.
+    - Error propragation when loading git repositories.
+    - Home and End keys when in Vim normal mode.
+    - Various bugs in debugger.
+    - For various keyboard shortcut activation.
+    - The python indenter when using compose keys with e or f.
+    - (Re)selection of text when entering the search bar. This had
+      the side effect of it appearing that your search term was
+      silently being dropped after a few characters were typed.
+    - A leak of editor views which was caused by Python lambda's in
+      the html-preview plugin.
+  + Improvements:
+    - To Vim chords y$, yfX, de, db, and dw.
+    - When pasting from external clipboard content.
+  + Additions:
+    - Flathub repo to list of known Flatpak runtime sources, which
+      allows building against an org.kde.Sdk.
+    - A new condensed "omni gutter" to reduce the width of the
+      gutter in languages that support debugging.
+  + Builder:
+    - Now bundles uncrustify when built from Flatpak.
+    - No longer includes tracing in stable flatpak build.
+    - Builder will avoid showing the greeter when loading a project
+      using the `gnome-builder -p project_file` command line
+      argument. This speeds up direct loading of a project by about
+      half.
+    - Builder will attempt to use "gio trash" on the host when
+      running.
+  + The vsplit vim command now accepts a filename to open.
+  + Use GNotification instead of manual D-Bus RPCs.
+  + Significantly reduce chatter when notifying about builds.
+  + Unsaved file buffers now use atomic renames when interacting
+    with code diagnostic engines.
+  + The editor attempts to avoid propagating resize events to the
+    root window, which should help speed up the editor a fair
+    amount.
+  + Preferences loading has been delayed until project load time.
+    This helps reduce application startup time.
+  + The cursor now properly returns to the editor when leaving the
+    global search entry.
+  + The Fpaste plugin was removed as upstream API is changed too
+    drastically to keep this plugin working.
+  + Icons are now properly displayed in the document popover menu.
+  + Tweaks to various UI CSS styling.
+  + The debugger and profiler plugins now try harder to locate
+    sources through .Debug or .Sdk flatpak runtimes when libraries
+    missing debug symbols are encountered.
+  + Preferences now properly release their addins on destruction.
+  + The workbench was leaking addins on shutdown. They are now
+    properly released, and the window is hidden before releasing
+    addins to avoid showing widgets as they are destroyed.
+  + Updated translations.
+- Drop Fpaste plugin sub-package: Removed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 12 01:35:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Various fixes to the eslint plugin.
+  + Various documentation improvements.
+  + Remove unnecessary compression from various .ui files.
+  + Avoid the use of the "mips" constant to fix mips builds.
+  + Clear the stopped breakpoint if the debugger exits uncleanly.
+  + Fix a crash in the code-index plugin.
+  + Fix to ensure rows in the omnibar are recyclable.
+  + Fix for non-completing GTask in IdeBuffer.
+  + Fix color picker closing and defer panel creation.
+  + Fix a crash in .ui when creating style classes.
+  + Drop support for Vala versions older than 0.34
+  + Updated translations.
+- Pass with_docs=true to meson, ensure we build documentation.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:25:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + A new word completion provider that uses distance from cursor
+    for sorting.
+  + Documentation cards can now be shown using the
+    "request-documentation" keybinding signal in the code editor.
+  + A new code indexing engine that will index your project in the
+    background to improve search and code navigation features is
+    now included. Currently, only the clang plugin provides a
+    suitable indexer, but other languages will be supported in the
+    future.
+  + A global search provider using the fuzzy-search code-index
+    allows jumping to a function, class, and other language
+    features.
+  + A symbol resolver based on the code-index allows jumping
+    between source and declarations.
+  + Plugins can now register long running "pausable" operations
+    with the project context. The code-index supports this for
+    background indexing.
+  + A technology preview for debugger integration has landed.
+  + A reference debugger backend has been implemented using gdb.
+  + Builder now tries to reduce the number of shell notifications
+    it generates.
+  + A new history plugin is added to bring back lost history
+    functionality during the UI revamp.
+  + Documentation improvements.
+  + Various project templates have been improved.
+  + CSS style refinements.
+  + Clang completion provider improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 27 18:39:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.91:
+  + Build systems can now implement an optimized path to extract
+    build flags for multiple files at once. This will be useful for
+    upcoming code indexing features.
+  + Mkdir pipeline stages can now request that directories are
+    reaped at cleanup.
+  + The buffer manager can now protect against a single file being
+    requested multiple times while a previous load is in-flight.
+  + Various GAction fixes.
+  + A new documentation-card plugin has been included as part of
+    the Summer '17 GSoC work. It provides documentation on
+    functions from devhelp when you hover the mouse pointer over a
+    function or other type. It supports multiple backends, but only
+    Devhelp is currently implemented.
+  + A leak of various editor view plugins due to a bug in
+    IdeExtensionSetAdapter has been plugged.
+  + The beautifier plugin has been ported to the new UI design.
+  + The spellcheck plugin got numerous fixes from fallout during
+    the UI redesign.
+  + The XML plugin got a fix for a potential NULL deref.
+  + The volume monitor has been restored on the editor.
+  + Many widgets and plugins have been ported to the new shortcut
+    engine.
+  + The shortcut window should now work better on smaller screen
+    sizes.
+  + "Insert matching brance" has been moved to a per-language
+    setting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 16 07:29:29 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Indentation fixes when using the fallback indenter.
+  + Various UI changes as we progress on the UI revamp.
+  + Diagnostics checks now blocked until the buffer has fully
+    loaded.
+  + Highlight engine fixes for the recently added pause support.
+  + "Export" has been moved to a generic operation from the
+    omnibar.
+  + A crash in the diagnostics manager has been fixed due to
+    incorrect assertions at runtime.
+  + Many keyboard shortcut fixes.
+  + The search bar has had missing pieces from the revamp ported.
+    This includes better keyboard interactions.
+  + Search navigation has been restored from the source editor.
+  + Our BuilderBlocks font has been improved to support both lower
+    and upper-case glyphs.
+  + Builder no longer uses Gtk's setting for
+    sort-directories-first.
+  + Builder now supports a "run-opts" in .buildconfig files or
+    x-run-args in flatpak json files to pass arguments when running
+    the target application.
+  + The spellchecker has had a number of fixes that were broken
+    during the UI revamp.
+  + find-other-file will jump right to the matching file if only
+    one is matched. This more closely matches our previous
+    implementation.
+  + The build pipeline now recognizes filenames with _ in them when
+    generating diagnostics.
+- Drop gnome-builder-no-return-in-nonvoid.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul 24 07:57:14 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-builder-no-return-in-nonvoid.patch: Fix postbuild
+  checks, patch from upstream git (bgo#785287).
+- Add pkgconfig(template-glib-1.0) BuildRequires: New dependency.
+- Drop post(un) handling of glib2_gsettings_schema_post(un),
+  icon_theme_cache_post(un) and desktop_database_post(un), no
+  longer needed as we have file-triggers taking care of this now.
+
+-------------------------------------------------------------------
+Sat Jul 22 09:51:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.5:
+  + HTML Preview shortcut is fixed.
+  + Various keybindings have been improved in libdazzle.
+  + We now bundle the proper libdazzle version as a subproject.
+  + IdeSourceViewMode now holds a reference to the view and copies
+    all GValues when marshaling to the proxied closure.
+  + Focus tracking has been fixed for stacks in a single column.
+  + The focus-neighbor action works again, allowing ^w^w and other
+    Vim style keybindings to work correctly.
+  + Activation of F-keys while in vim "normal mode" has been fixed.
+  + Builder now depends on the proper version of GLib for access to
+    g_ptr_array_find_with_equal_func().
+  + MIT/X11 license has been updated to include a missing stanza.
+  + Cross-architecture printf fixes.
+
+-------------------------------------------------------------------
+Thu Jul 20 18:41:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + This release of Builder contains the largest UI change since
+    the creation of Builder. As this is mid-development cycle
+    towards GNOME 3.26, we anticipate breakage in this release.
+    However, we value the time that people put into testing things
+    for us and doubly so for those that file bugs.
+  + Generally, we try to keep the master branch fairly stable and
+    usable. This release will almost certainly have regressions due
+    to the nature of the redesign.
+  + A new keybinding engine is being used. It is very young but
+    maturing quickly. Great pain has been experienced to merge the
+    desires for features we need with the backwards compatability
+    to keep existing features working such as the Vim compatability
+    engine.
+  + A new layout engine has been added. It has a few tricks up it's
+    sleeve. It can animate widgets between grid locations. It also
+    can highlight the view header to match the primary contents of
+    the view. Under the hood, the implementation has been vastly
+    simplified.
+  + Over/under splits can now contain separate documents and you
+    are no longer limited to two.
+  + The project tree has been modified to look/feel more like a
+    listbox. Future releases of Builder will keep the project-tree,
+    but it will likely be disabled by default in favor of a
+    DzlStackList-based navigation.
+  + The TODO plugin has been ported to C. It goes through a
+    reasonable amount of effort to keep memory allocations
+    contiguous and footprint low.
+  + Spellcheck has been moved into a plugin.
+  + Color picker and spellcheck have been ported to use the new
+    "transient sidebar". They come into focus when it makes sense
+    for them to be visible based on context.
+  + The symbol panel has been moved into the document header. It
+    has also been styled to feel more like a listbox with hover
+    state.
+  + Devhelp browsing has been moved into the document header for
+    the devhelp documentation view. It's a little bare at first,
+    and we anticipate this to improve in future snapshots.
+  + The terminal supports the "primary-color" feature to style the
+    document header inline with the document content.
+  + The build panel has been redsigned. It is placed on the left
+    now to keep our workflow something like Left->Right.
+  + The global search has been replaced to fit with the mockups, on
+    the top-right corner of the window. We expect more improvements
+    to search in upcoming releases.
+  + The "new-document" button has been replaced with a menu for
+    various types of new documents.
+  + Many previous extension points now use menus.ui to populate
+    their menu content. This makes extending menus much more
+    consistent across Builder.
+  + Document preferences (tab size, spaces, language, etc) have
+    been moved into a transient sidebar. You can activate this with
+    the menu item from the document header.
+  + An "Open Pages" section has been added to the panel. It's not
+    yet clear if this will continue to be enabled by default or if
+    it will be a plugin that can be enabled.
+  + The beautifier plugin has yet to be ported to the new engine,
+    and therefore is disabled by default in this release.
+
+-------------------------------------------------------------------
+Thu Jun 22 21:03:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.3:
+  + The "egg" contrib package has been broken out into libdazzle.
+    If you do not have libdazzle, it will be built as a subproject.
+  + The "jsonrpc-glib" contrib package has been broken out into a
+    standalone project. It will be built as a subproject if you do
+    not have it installed.
+  + The "template-glib" contrib package has been broken out into a
+    standalone project. It will be built as a subproject if you do
+    not have it installed.
+  + Ctags completion priority has been lowered.
+  + Many internals have been moved to an updated libdazzle. This
+    includes lots of theming fixes as well as improved panels and
+    theming integration. Many search data structures were also
+    broken out into libdazzle.
+  + The search provider has been rewritten to use libdazzle and the
+    new suggestion entry. We expect more changes here before 3.26.
+  + Builder now uses GVFS metadata to store the cursor position.
+    This should improve the chances you end up on the right
+    position when re-opening a buffer.
+  + Panels now properly maintain their visibility state between
+    runs of Builder.
+  + The flatpak plugin now properly ignores runtimes ending in
+    ".Sources".
+  + Builder properly cleans up drafts fixing an issue where files
+    with encoding errors would continually re-open when restoring
+    Builder's internal state.
+  + A "counters" window has been added to aide in debugging.
+  + Builder now tries to do significantly less work while the
+    buffer is opening. This should speed up file-loading on larger
+    files.
+  + Various async operation priority have been lowered to avoid
+    stalling the Gtk main loop.
+  + UI files now strip their empty space which should reduce the
+    size of libide a small amount.
+  + IdePerspective now has a restore_state vfunc. This helps ensure
+    that the widget restores state after the UI has settled. This
+    can help avoid hickups in the UI at startup.
+  + Python Ide.py overrides now have helpers to log using
+    g_warning() etc. See Ide.warning(), Ide.debug(),
+    Ide.critical(), etc.
+  + Additional documentation.
+  + Updated Translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add pkgconfig(jsonrpc-glib-1.0) and pkgconfig(libdazzle-1.0)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Thu Jun  1 17:50:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Improvements to the Todo plugin.
+  + Support for multiple cursors in the text editor.
+  + Improvements to invalidations behind gtk container widgets.
+  + Use after free fixes.
+  + Memory leak fixes.
+  + JSON improvements in flatpak plugin.
+  + Llvm fixes for FreeBSD.
+  + Scroll improvements to build log.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 20 23:39:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + A new retab plugin to reindent your source code.
+  + Auto-save can now be configured.
+  + A new notification plugin to notify of build completion.
+  + Preview support for Sphinx.
+  + Improved jump support in the editor.
+  + The "install" action can be run from the command-bar to install
+    your project without running.
+  + Word completion minimum length can now be configured.
+  + Ctags improvements.
+  + A save button has been added to the Build Log.
+  + Release auto-save timeout after a manual save to reduce the
+    number of file-system operations.
+  + Allow jhbuild from alternate PATHs.
+  + Animation improvements, including support for animating based
+    on screen DPI and physical space. This has the potential to
+    make animations smoother, but may cause issues with
+    miss-reporting EDID information. Mitigations are provided.
+  + Do not download SDKs or dependencies when on metered
+    connections. This can be disabled in preferences.
+  + Bump vala requirement to 0.38.
+  + The editor now supports text-wrapping but is not enabled by
+    default due to the performance penalty.
+  + Plugins are discovered in ~/.local/share/gnome-builder/plugins,
+    even when distributed under Flatpak.
+  + Don't take into account failed or cancelled transfers when
+    calculating transfer progress.
+  + Various build tooling widgetry will become insensitive while
+    the build pipeline is not useable.
+  + Language Server Protocol improvements.
+  + Various memory leaks and bug fixes.
+  + Updated translations.
+- Replace pkgconfig(libvala-0.36) with pkgconfig(libvala-0.38)
+  BuildRequies following upstream changes.
+
+-------------------------------------------------------------------
+Wed May 10 21:09:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Various panel system fixes including "stuck on" panels.
+  + Some animation jitter has been resolved.
+  + Build buttons will be insensitive when build progress cannot be
+    made.
+  + Transfers while building will now fail when on metered
+    connections. A preference has been added to disable this
+    behavior.
+  + Snippets will now be reloaded when the current language
+    changes.
+  + The build log will try harder to scroll to the correct
+    position.
+  + The todo plugin is more defensive when the workbench is
+    destroyed.
+  + An assertion crash is fixed when the app-id is changed while a
+    build is in progress.
+  + A potential crash was fixed in the flatpak plugin when cleaning
+    up old runtimes.
+  + Ctags plugin has been fixed to use the proper path.
+  + Updated transitions.
+
+-------------------------------------------------------------------
+Mon Apr 24 17:11:11 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Support for live editing Sphinx documentation.
+  + The "install" action can be activated from the command bar to
+    install your project without running it.
+  + Fix error propagation in autotools and jsonrpc.
+  + Defer to ninja for installability of project.
+  + Various build system fixes.
+  + Lower diagnosis priority to improve UI interactivity.
+  + Fix hgih number FD mappings into worker processes.
+  + Always build with V=0 for less verbose builds.
+  + Translate paths for out-of-tree builds when handling
+    diagnostics.
+  + Allow pipeline stages to signify stdout should be checked for
+    errors.
+  + Allow network access from fallback flatpak launcher.
+  + Use flatpak-builder --run when possible.
+  + Use build-args from manifest when building with flatpak build.
+  + Various Rust RLS fixes.
+  + Floating ref fix for jsonrpc.
+  + Rustfmt support for Rust.
+  + Support for reformat-selection with gq in vim mode when
+    language supports it. C-c C-f in Emacs mode. Currently only
+    Rust/RLS support exists.
+  + Symbol Resolvers can now support locating all references to a
+    symbol so that the editor can move between them. Currently,
+    only Rust/RLS is supported. Ctrl+shift+space will display the
+    popup.
+  + Configurations will be properly "prepared" again when changing
+    runtimes so that a new --prefix may be applied.
+  + Flatpak manifest discovery has changed to breadth-first search.
+  + Flatpak'd versions of Builder will still look for plugins in
+    the host ~/.local/share/gnome-builder/plugins for consistency.
+  + Auto-save of buffer is dismissed when user initiated save
+    occurs.
+  + Various memory leaks have been plugged.
+  + File monitor improvements during rename events.
+  + The greeter will display the build system type to help users
+    transition to new build systems such as Meson.
+  + A menu item to launch a terminal in flatpak has been added.
+    While this is not flatpak specific, it is the general way users
+    think about it.
+  + Documentation improvements.
+  + Updated translations.
+- Add pkgconfig(enchant) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Mon Mar 20 10:07:32 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Many documentation improvements.
+  + Various Flatpak improvements:
+    - Support build-commands and post-install fields of json
+      manifest.
+    - Ensure GNOME remotes exist for additional code-paths.
+    - Refresh flatpak installations after installations.
+    - A number of correctness fixes in subprocess execution via
+      HostCommand.
+    - CCache support works again when building under Flatpak.
+  + Process supervisor tries harder to prevent flapping of
+    subprocess.
+  + HTML preview support for reStruccturedText.
+  + rustup improvements when running under Flatpak.
+  + phpize build system support.
+  + Help will more correctly detect access to the documentation
+    website before falling back to locally installed documentation.
+  + Jsonrpc-GLib has been updated to support a GVariant-based API
+    so plugins can upgrade IPC to an encoding format that reduces
+    memory-fragmentation.
+  + CTags support has been improved to be more efficient on larger
+    projects.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 12:20:15 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + A lot of -Wsign-compare compile fixes.
+  + Fix inconsistent field in priority heap.
+  + Ctags can now use ctags binary from the host.
+  + Various Rustup fixes when running in flatpak.
+  + Add support for gnome-code-assistance when running under
+    flatpak.
+  + Use Adwaita theme when under flatpak.
+  + Use names for cursors instead of old-style enums.
+  + Extract errors from vala compiler during builds.
+  + Extract errors from gmcs/mcs (mono) during builds.
+  + Much documentation has been added.
+  + Subprocess FD fixes when using the flatpak development service.
+  + EggTaskCache correctness improvements.
+  + Fallback to ninja to discover VALAFLAGS with older meson
+    releases.
+  + Various terminal improvements when under flatpak.
+  + Move flatpak downloads into downloads phase of build pipeline.
+  + Add support for exporting an App.flatpak.
+  + Add support for manually downloading dependencies.
+  + Clang will fallback to CFLAGS or CXXFLAGS from environment
+    variables.
+  + Make buildsystem will now use $MAKE environment variable if
+    specified.
+  + The clone dialog will now strip whitespace from URIs.
+  + Fixes in user-preferred-shell discovery.
+  + The build panel is now shown upon first build (but without
+    focus).
+  + Before exporting, flatpak-builder will now be used to finish
+    the build process and cleanup commands.
+  + Builder will notify the user if flatpak-builder is not
+    installed, as it is necessary for a good portion of the value
+    of Builder.
+  + Builder will look at manifest files to try to discover the
+    build system. This is useful when projects have multiple build
+    systems in transition.
+  + Much polish to flatpak runtime installations.
+  + Lots of Vala plugin fixes and cleanup due to recent Vala
+    changes.
+  + Autools project miner has reduced the depth of search to speed
+    up application startup. We intend to switch to a custom tracker
+    miner in a future release of Builder.
+  + Various fixes for Meson inside of a flatpak runtime.
+  + Fix cancellation of clone operations in the project greeter.
+  + Don't pass --require-version to `flatpak build` when running.
+  + Always use headerbar for about dialog.
+  + Fix hysteresis in animation for editor overview map.
+  + Various subprocess correctness improvements.
+  + Use the diagnostics range for the source location if not
+    specified.
+  + Support for a basic "make" build system has been added.
+  + Updated translations.
+- Recommend flatpak-builder: the flatpak plugin is part of the main
+  package and it thus makes sense to also recommend the -builder
+  for it.
+
+-------------------------------------------------------------------
+Tue Feb 28 14:20:01 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.91:
+  + Lots of transfer engine improvements..
+  + Omnibar styling changes.
+  + Support for flatpak has stabilized a great deal.
+  + New keyboard tooltips for various headerbar items.
+  + Search within the terminal using ctrl+shift+f.
+  + PTY fd ownership fixes for RustUp.
+  + File search now ignores white-space.
+  + libidemm and glibmm/gtkmm dependencies were dropped as nobody
+    was using them and it will slow our migration to meson.
+  + Various Jsonrpc improvements for language server communication.
+  + A new valgrind plugin for leak tracking when testing your
+    application.
+  + Meson improvements when running under flatpak.
+  + You can now start a new terminal inside the build runtime using
+    ctrl+alt+shift+t.
+  + Some new documentation is in the works, and available online at
+    https://builder.readthedocs.io. We would love your
+    contributions here.
+  + The Open Project dialog now defaults to allowing you to select
+    any project type with the default file filter.
+  + More source beautifiers, including one for makefiles.
+  + A workaround for a GObject type system deadlock as been added.
+    This works around an issue where the type system would race
+    initializing the GZlibDecompressor type from multiple threads.
+  + Build pipeline subprocess launchers now inherit the environment
+    configured from the build configuration.
+  + Makecache can now handle out-of-order responses from make for
+    lists of target binaries. This should improve Builder's ability
+    to run your project successfully.
+  + The Flatpak plugin no longer tries to build your project from
+    /run/build/$project due to breaking mtime and general
+    difficulty in keeping things consistent between subprocess
+    executions. This has the side-effect of reducing the
+    predictability of source location in debug symbols. But as
+    flatpak-builder should be used for release builds, this seems
+    fine.
+  + Various workbench UI improvements.
+  + Builder's Sysprof-based profiler can now profile applications
+    launched inside of mount-namespaces, such as Flatpak.
+  + Builder downloaded via Flatpak includes fixes for communicating
+    with GNOME Code Assistance from a host installation.
+  + Various memory leak fixes.
+  + Flatpak-based configurations have improved their
+    non-destructive write-back to disk upon changes.
+  + Autogen-based projects have simplified init scripts.
+  + Updated translations.
+- Drop gnome-builder-flatpak-plugin-fix-array-overflow.patch and
+  gnome-builder-flatpak-use-proper-sdk-name.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 23 00:41:36 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add gnome-builder-flatpak-use-proper-sdk-name.patch: fixes an
+  issue where an incorrect flatpak sdk name was being used.
+
+-------------------------------------------------------------------
+Fri Feb 17 07:17:51 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 3.23.90:
+  + A new IdeBuildPipeline which allows various plugins to hook
+    stages into the pipeline at given phases. This provides much
+    more flexability for plugins.
+  + Significant improvements to XML plugin including a symbol
+    resolver.
+  + The symbol tree has a new style which makes it easier to
+    browse.
+  + Support for semantic spellchecking, including comments and
+    strings.
+  + Meson support has been improved and now supports building
+    within flatpak runtimes.
+  + A new beautifier plugin to cleanup source using external
+    commands such as clang-format, indent, or xml-lint.
+  + The build panel now has support for colored output from
+    programs such as GCC.
+  + Configurations are now abstracted through
+    ConfigurationProviders so that plugins may provide
+    configurations. This means that flatpak json manifests are now
+    implemented as configurations.
+  + The build-tools plugin has been moved to libide and should be
+    removed from existing installations.
+  + Support for building with CMake and Ninja build system.
+  + Autotools, meson, cmake, ninja, cargo, flatpak, jhbuild plugins
+    have been rewritten to support the build pipeline.
+  + The terminal plugin now supports hyperlinks.
+  + Flatpak runtimes will be automatically downloaded using the new
+    transfers manager if it is missing and a build is required.
+  + A race condition in accessing CFLAGS for the project as
+    configured has been fixed due to the build pipeline.
+  + Plugins can register files that should be ignored in the
+    project tree.
+  + Ctags now uses a custom TMPDIR for when ctags needs to create
+    large files for use with sort. This is necessary as /tmp is
+    typically not persistent storage and the files can get quite
+    large for some projects like WebKit.
+  + Vim emulation improvements.
+  + Updated translations.
+- Add pkgconfig(gspell-1) BuildRequires for spelling support.
+- Add additional beautifier and cmake plugins as sub-packages:
+  + Add the -plugin* subpackages as Recommends for the main
+    gnome-builder package.
+  + Add gnome-builder Requires for new plugins.
+- Add gnome-builder-flatpak-plugin-fix-array-overflow.patch: fixes
+  an array overflow caused on 32-bit architectures only.
+
+-------------------------------------------------------------------
+Thu Dec 22 12:21:48 UTC 2016 - dimstar@opensuse.org
+
+- Replace pkgconfig(libvala-0.34) BuildRequires with
+  pkgconfig(libvala-0.36).
+
+-------------------------------------------------------------------
+Thu Dec 22 12:20:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.4:
+  + Some minor improvements to vala auto-completion.
+  + UI tweaks to project creation view for better discovery.
+  + Allow wider content in the file selection popover.
+  + Improve cache eviction when certain project files change.
+  + Allow talking to FileManager1 DBUS interface from flatpak.
+  + A handful of leak fixes.
+  + Improved unit tests.
+  + Avoid overzealous background project builds.
+  + Runtimes can now translate paths to files such as headers so
+    that the processes outside the runtime can access them.
+  + Allow libclang to parse files inside of Flatpak runtimes. This
+    ensures that autocompletion and diagnostics work when building
+    against org.gnome.Sdk.
+  + Autotools will discover gmake vs make from the runtime.
+  + A "clone and edit this flatpak" feature as been added using
+    the -m command line option. This integrates with some
+    GNOME-based compositors to allow an "edit this app" feature.
+  + Various build system improvements.
+  + Improved support for building flatpaks.
+  + Improved support for the meson build system.
+  + Builder depends on a newer VTE for various regex features and
+    now the build system configure check reflects that.
+  + Some vim improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 29 10:44:32 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.3:
+  + Fix Clang auto-copmletion snippet insertion and scoring.
+  + Various uninitialized and undefined behavior fixes.
+  + Language defaults are now installed.
+  + Support for building with llvm 3.9.
+  + Remove <> pairs when backspacing.
+  + Support added for building and runing Flatpak applications,
+    including from Builder distributed via Flatpak.
+  + flatpak-builder integration using json manifests.
+  + Project tree expands to previous location after refreshing
+    contents.
+  + Buffers are saved before performing build system install
+    operation.
+  + Show flatpak prebuild and postbuild output in Build Output
+    panel.
+  + Store app-id in buildconfig.
+  + Enter/Return has been re-enabled for auto-completion.
+  + Goto Line popover no longer uses popover animation/delay.
+  + Avoid over activation of ctags, clang and other completion
+    providers.
+  + Set LD_LIBRARY_PATH for Rust rls language server.
+  + Fallback to ptsname() when necessary.
+  + Workbench CSS style improvements.
+  + Fix tab to move between snippet chunks during auto-completion.
+  + TTY support for FreeBSD when spawning processes.
+  + A new Run Output panel has been added.
+  + Fix for insertion of certain input methods next to quotations.
+  + The editor now allows overwriting.
+  + The terminal now supports highlighting and activating URLs.
+  + Fixes for copy and paste commands in terminal.
+  + Support for compiling C code outside of autotools projects has
+    been improved to correctly discover standard include files.
+  + SSL and SSH improvements via Flatpak builds.
+  + Updated translations.
+- Add pkgconfig(flatpak) BuildRequires: Build flatpak support.
+
+-------------------------------------------------------------------
+Thu Nov 10 23:49:53 UTC 2016 - dimstar@opensuse.org
+
+- Drop pkgconfig(gjs-1.0) and pkgconfig(gjs-internal-1.0)
+  BuildRequires: GJS Scripting support was dropped in version 3.20.
+
+-------------------------------------------------------------------
+Wed Nov  2 18:57:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Flatpak builds of Builder can now target a Flatpak runtime when
+    building the project. More work is ongoing to support running
+    your project with flatpak runtimes.
+  + More RTL improvements.
+  + Lots of memory leak fixes found with ASAN.
+  + Builder will now cleanup the makecache directory for old
+    temporary files that could have been left behind.
+  + Flatpak breakout subprocess fixes to allow synchronous use from
+    main loop. This fixes potential lockups in Flatpak'd versions
+    of Builder.
+  + The diagnostic engine has been restructured to allow
+    out-of-band updates to diagnostics.
+  + Create-project now depends on git, as it uses git to initialize
+    a new project.
+  + GObject Introspection improvements.
+  + Improve performance of diagnostic creation under heavy use.
+    This fixes a main-loop stall when extracting thousands of
+    diagnostics from a project.
+  + Diagnostics panel has been changed to use GtkTreeView to
+    support larger lists of diagnostics as found in some projects.
+  + Add empty-state views for symbols and diagnostic panels.
+  + Sysprof support includes visualizers, zoom, and selectable
+    ranges.
+  + Ctags can now be used to build symbol trees, including Python.
+  + IdeSubprocessSupervisor has been added to allow plugins to
+    easily manage an external process.
+  + A client has been added for "Language Server Protocol" to make
+    writing language-server based plugins easy.
+  + Support for the Meson and Cargo build systems have been added.
+  + Run support with Meson will require 0.36.0 of Meson.
+  + Deprecation fixes for various deprecated gtk+ API.
+  + Runtimes have been improved to hook into the application build
+    process.
+  + Vim support has been improved to better support counts to
+    change operations.
+  + Build and runtime improvements for editorconfig.
+  + Handle alt+0..n properly during auto-completion.
+  + Builder now depends on json-glib-1.0. This was already likely
+    required via dependencies before, but now is explicit.
+  + 3.22.2 also includes a technology preview for Rust support. You
+    can try this out by installing Rust nightly and the “rustls”
+    package for integrated diagnostics, auto-completion, and
+    sybmol-tree support.
+  + Updated translations.
+- Add explicit pkgconfig(json-glib-1.0) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
+Sat Oct 15 11:41:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Lots of widget layout fixes for RTL languages such as Hebrew.
+  + Build system fixes (missing -lm on some platforms, fixes for
+    pipe2 on macOS).
+  + Use “getent passwd” to get the current passwd when discovering
+    preferred user shell.
+  + Load both user and system installed flatpak runtimes.
+  + Add support for Sysprof Visualizers (requires Sysprof 3.22.1)
+  + Add empty, failed, and recording states for Sysprof plugin.
+  + Prefer GtkNativeFileChooser when applicable.
+  + Support for running some GJS projects using autotools. In
+    particular we try to discover the “GJS template” Makefile.am
+    style.
+  + Fix gettext usage from Python plugins.
+  + The preferences perspective is now more tolerant of smaller
+    screen sizes such as 1280xH.
+  + Various UI polish.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 21:13:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Fixes improper invalidation of cache items like clang
+    translation units.
+  + New transfers API for plugins.
+  + Support for prebuild/postbuild commands in .buildconfig.
+  + Run terminals on the host system when contained in Flatpak.
+  + Teach runtimes to run on the host system when necessary.
+    Builder, when running under Flatpak, can support using your
+    host jhbuild now.
+  + Plugins can define if a process should run on the host with the
+    IdeSubprocessLauncher:run-on-host property.
+  + Various UI stablization fixes.
+  + Add Build and Run keybindings to Shortcut window.
+  + Fix running autotools targets with relative paths.
+  + Fix running projects using GSettings.
+  + Add Python Gnome project.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 15 08:30:52 UTC 2016 - dimstar@opensuse.org
+
+- Build using Vala 0.34: replace pkgconfig(libvala-0.32)
+  BuildRequires with pkgconfig(libvala-0.34).
+
+-------------------------------------------------------------------
+Thu Sep 15 08:05:56 UTC 2016 - zaitor@opensuse.org
+
+- Enable pkgconfig(sysprof-ui-2) BuildRequires again and stop
+  passing --disable-sysprof-plugin to configure. Review done.
+
+-------------------------------------------------------------------
+Mon Sep 12 11:21:07 UTC 2016 - dimstar@opensuse.org
+
+- Disable sysprof support for now until it passed security review
+  (boo#996111):
+  + Comment out pkgconfig(sysprof-ui-2) BuildRequires.
+  + Pass --disable-sysprof-plugin to configure.
+
+-------------------------------------------------------------------
+Fri Sep  2 19:06:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Build system improvements.
+  + A new "Quick Highlight" plugin to highlight words matching the
+    current selection.
+  + New snippets for GJS have been added.
+  + Incremental gstyle/colorpicker improvements.
+  + A new "Transfers API" has landed but is not yet used by any
+    components. This will be useful for plugins that involve
+    download or upload operations, such as those to a physical
+    device.
+  + SCSS files are mapped to CSS for gnome-code-assistance.
+  + Sysprof support is now automatically detected.
+  + The devhelp search provider has been removed as it was better
+    served via the Ctrl+Shift+F accelerator.
+  + Builder now prefers the project id (sanitized name) in more
+    places such as directory names which should improve building
+    some projects.
+  + The create-project workflow will now check to see if a
+    directory exists before progressing the workflow.
+  + The C, XML, and HTML indenters have been improved to respect
+    the language indentation settings for tab vs spaces and
+    indent-width.
+  + Updated translations.
+- Drop gnome-builder-fix-32bit-build.patch: Fixed upstream.
+- Disable jhbuild Requires in the jhbuild plugin. Many users prefer
+  to run jhbuild from a git checkout, no need to install our distro
+  jhbuild.
+
+-------------------------------------------------------------------
+Wed Aug 24 17:29:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Lots of new features have landed since we started down the road
+    to 3.22. Some of them are enumerated below.
+    - New search and replace implementation.
+    - New build bar which provides an overview of the build config,
+      VCS branch, and other important messages.
+    - A new sysprof-based profiler.
+    - Perspectives have been revamped and we've removed the sidebar
+      as we mentioned would happen before 3.20.
+    - Improved project templates.
+    - Support for configuration of version control systems.
+    - ‘ide’ has been renamed to ‘gnome-builder-cli’.
+    -  New build icon.
+    -  Vim improvements.
+    - New color picker plugin.
+    - Autotools plugin can now extract various build targets.
+    - New greeter design including revamped git clone,
+      file-chooser, and template wizard.
+- Drop intltool BuildRequires following upstream changes.
+- Add explicit pkgconfig(glib-2.0) BuildRequires and version it.
+- Add pkgconfig(mm-common-util) and pkgconfig(sysprof-ui-2)
+  BuildRequires: New dependencies.
+- Add gnome-builder-fix-32bit-build.patch: Fix build on 32 bit.
+
+-------------------------------------------------------------------
+Thu Jul 14 19:33:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + This release is mostly the same as 3.20.2 except that it has an
+    updated color palette for the Adwaita theme in GTK+ 3.21.1.
+
+-------------------------------------------------------------------
+Thu Jul 14 19:33:22 UTC 2016 - badshah400@gmail.com
+
+- Add Requires: python3-lxml to gnome-builder-plugin-jedi to
+  prevent the warning: "python3-lxml is not installed, no
+  documentation will be available in Python auto-completion".
+
+-------------------------------------------------------------------
+Thu May 26 00:21:13 UTC 2016 - sreeves@suse.com
+
+- Add to the SDK. Fate#319349
+
+-------------------------------------------------------------------
+Mon May 23 06:57:39 UTC 2016 - egeorget@openmailbox.org
+
+- Adding lang package as recommendation.
+
+-------------------------------------------------------------------
+Tue May 10 22:19:51 UTC 2016 - badshah400@gmail.com
+
+- Split out all optional plugins into their own sub-packages:
+  + Add all the -plugin* subpackages as Recommends for the main
+    gnome-builder package.
+  + Add appropriate Requires and Supplements for each plugin
+    subpackage where necessary.
+- Add BuildRequires on pkgconfig(libvala-0.32) and
+  pkgconfig(libdevhelp-3.0) to enable building the vala and
+  devhelp plugins respectively; package these in their own
+  sub-packages as well.
+- Add BuildRequires on gtk-doc to enable the building of api
+  reference.
+- Add Requires on python3-gobject-Gdk, which is required since it
+  was split off into its own sub-package from python3-gobject.
+- Remove a __pycache__ dir with an unnecessary python object code
+  inside without its accompanying source code to avoid an rpmling
+  warning.
+
+-------------------------------------------------------------------
+Mon May  9 20:24:35 UTC 2016 - sreeves@suse.com
+
+- Add to the SDK. Fate#319349
+- Change group to Development/Tools/Other
+- Remove MIT and CC0-1.0 from License.
+
+-------------------------------------------------------------------
+Fri May  6 14:52:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.4:
+  + Support for opening remote files has been re-introduced.
+  + Support for $CFLAGS, $CXXFLAGS, and $VALAFLAGS for projects
+    without autotools support.
+  + Automake VALAFLAGS extraction improvements.
+  + Fixes for an editorconfig build-system issue that caused
+    .editorconfig settings to be ignored.
+  + When generating ctags via automake, no longer perform a full
+    build.
+  + Various CSS style tweaks.
+  + Fix a leak of GtkMenu instances via the project tree.
+  + Autotools no longer performs an autogen when cleaning the
+    project.
+  + Build output was eroneously editable.
+  + Fix an unref of a non-owned object during symbol lookup.
+  + Allow disabling restoration of previous files as startup.
+  + Allow projects to exist in ~/.local, for those working on shell
+    extensions.
+  + Ensure the projects directory is available at startup.
+  + Ignore symlinks when mining ctags directories.
+  + Show better default values for number of build workers.
+  + Load gtksourceview style schemes from gedit directory.
+  + Support for reindent when multiple lines are selected.
+  + Vala integration will now load versioned and unversioned
+    vapi directories.
+  + Fix a hard to trigger infinite loop at shutdown due to
+    GDBusServer spinning trying to accept sockets.
+  + Various search improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 28 09:49:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + You can now select templates when creating a project, including
+    C, C++, and Vala languages.
+  + The Vala plugin now extracts --pkg command line arguments from
+    autotools projects.
+  + Various bug fixes to preferences and gsettings.
+  + Much more of builder is translatable now.
+  + Build for FreeBSD and OpenBSD.
+  + Fixes to vim movements.
+  + Many performance improvements to the editor.
+  + Support for LLVM 3.8.
+  + Fixes for ctrl+click on included headers to jump to header.
+  + Fix for infinite loop in worker thread when cloning from
+    unauthorized git repositories.
+  + Builder removes unnecessary widgets after starting up, lowering
+    the runtime overhead of the workbench.
+  + You can move rename files outside their current directory.
+  + Fixes for shorthand git URLs such as user@host:path.
+  + The global file search now handles renames and deletes of
+    project files.
+  + The project window now includes the title of the project to
+    help when multiple projects are open in GNOME Shell's overview.
+  + Some projects that could not be removed from the greeter can
+    now be removed.
+  + Updated translations.
+- Add autoconf, automake and libtool Requires: on upstreams
+  request for autotools support.
+
+-------------------------------------------------------------------
+Fri Apr  1 17:53:09 UTC 2016 - dimstar@opensuse.org
+
+- Enable two more plugins (boo#973678):
+  + html-preview: add pkgconfig(webkit2gtk-4.0) BuildRequires.
+  + terminal: add pkgconfig(vte-2.91) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar 23 09:20:12 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + More stylability controls using GtkSourceView style schemes.
+  + The ability to toggle case-sensitivity with search context
+    menus.
+  + VIM movement improvements.
+  + The ability to disable project miners at startup.
+  + Improvements to the clang completion engine.
+  + Show empty state screen when last document is closed.
+  + Show project tree when last document is closed.
+  + Various build system improvements.
+  + Improvements to Control+Click on symbols in the editor.
+  + Snippet parser improvements.
+  + Filtering improvements in symbol tree.
+  + Various bugs squashed in menu management.
+  + A new comment code plugin.
+
+-------------------------------------------------------------------
+Tue Feb 23 10:08:35 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + A new diagnostic provider for common gettext errors.
+  + Builder no longer bookmarks known temporary directories.
+  + The framework for User Help has landed.
+  + Terminal styling for Dark Mode has been fixed.
+  + Preferences layout was extracted into EggColumnLayout and fixed
+    various Height for Width issues.
+  + Preferences for disabling various diagnostic engines was added.
+  + Improvements to our shared library template.
+  + A configuration manager has been added to allow building
+    various project configurations. A configruation editor allows
+    you to create new and tweak existing configurations.
+  + Support building projects inside xdg-app runtime, using
+    "xdg-app build".
+  + Support for building inside of a jhbuild runtime.
+  + Various tooltips were added to the user interface.
+  + The line change gutter got support for rendering deleted lines.
+  + Ctags got support for coalescing similar completion results.
+  + Cursor location history and ctags were moved to .cache
+    directories.
+  + Libide, Egg, and Template-GLib headers are now installed to
+    $(includedir)/gnome-builder-@VERSION@. This allows building C
+    and vala plugins out of tree.
+  + Support for enabling pylint via GNOME Code Assistance was
+    added.
+  + You can search for projects in the greeter using the directory
+    name.
+  + An empty state splash was added to the editor.
+  + Various workarounds for recent changes in Vala.
+  + Various fixes to the command bar availability.
+  + Vim improvements.
+  + Plugins can remove preferences when unloading.
+- Add itstool BuildRequires: new dependency.
+- Add rpmlintrc file: filter out devel-file-in-non-devel-package:
+  gnome-builder being an IDE makes the whole purpoe of this package
+  to be "development", even if it is not named -devel.
+
+-------------------------------------------------------------------
+Wed Jan 27 22:22:10 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Perspectives have been implemented to allow for clearer
+    groupings of application features and plugins.
+  + Preferences has undergone substantial redesign. Preferences now
+    use a custom perspective rather than a dialog window.
+  + A new "ide" command exposing various Builder features to
+    command line users.
+  + Global search has gotten some style cleanup.
+  + Builders custom CSS was rewritten for recent gtk+ changes.
+  + A build panel has been added.
+  + A Todo plugin was added to track todo items.
+  + Perspectives can handle URI opening, allowing for perspectives
+    such as a "glade perspective" to handle opening .ui files.
+  + Builder-1.0.gir was dropped, in favor of Ide-1.0.gir.
+  + Embedded plugins and dependency solving now works.
+  + Plugin APIs were simplified.
+  + Multi-process separation support using IdeWorker. Plugins can
+    now easily move work to a subprocess and communicate via D-Bus.
+    Jedi has been ported to multi-process mode for Python
+    auto-completion.
+  + Lots of Vim-mode improvements.
+  + Vala plugin improvements.
+  + External plugins are now supported.
+  + Plugins can be loaded and unloaded.
+  + Loads of bug and build system fixes.
+  + Project greeter and project creation have been rewritten for
+    perspectives.
+  + Plugins now have automatic resources for menus.ui and css
+    themes.
+  + Various keybinding improvements.
+  + Control+click works for navigating to type definitions.
+  + scrolloffset has much improved and gained support for negative
+    values, which works in the opposite direction (top down).
+  + Search movements have been simplified.
+- Add bison, flex, pkgconfig(gobject-introspection-1.0) and
+  pkgconfig(pangoft2) BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:59:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Initial support for Vala. Until we move this out of process, we
+    do expect that things are a bit leaky. This plugin is written
+    in Vala and requires libvala-0.30. It supports autocompletion,
+    as-you-type error highlighting, a symbol tree, and jump to
+    definition. We would love for the vala community continue
+    helping make this plugin great.
+  + You can now write plugins in Vala. *.vapi are generated for
+    libide-1.0 and gnome-builder-1.0.
+  + Autocompletion, in most scenarios, will be much faster.
+  + Most autocompletion engines now support fuzzy completion. This
+    means that "gtkwidshow" will match "gtk_widget_show".
+  + A few crashers were fixed.
+  + --enable-*-plugin now works correctly.
+  + Content type loading was fixed so that Makefile.am are no longer
+    opened by totem.
+  + Python jedi completion has been improved.
+  + Fix some coverity warnings.
+  + A new button has been added to the editor to jump to the next
+    warning or error.
+  + The C indenter is a bit more friendly to alternate coding styles.
+  + Reindent line support has landed (tab in emacs, == in vim,
+    ctrl+alt+i as default).
+  + A new font for the overview map has been enabled. It is called
+    BuilderBlocks and is a generic block font based on Tofu.
+  + The ctags plugin can now defer tags generation to automakes
+    `make ctags`.
+  + You can now draw marks for spaces, tabs, newlines, non-breaking
+    whitespace, trailing and leading spaces.
+  + Improvements to the search workflow.
+  + Various vim and emacs compatability and stability improvements.
+  + Jedi completion proposals now show the correct word and lower
+    probability of functions that start with __.
+  + Symbol tree panel stability improvements.
+  + Updated translations.
+- Add pkgconfig(vapigen) BuildRequires: Build the new vala support.
+
+-------------------------------------------------------------------
+Mon Sep 21 06:31:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Buffer:
+    - release symbol resolver aggressively.
+    - disable device manager/mingw plugins by default.
+  + Cindent: ensure we don't loop forever looking for context.
+  + Counters:
+    - add vsdo fallback on linux and no rdtscp instruction.
+    - mask CPU bits from rdtscp instruction on x86_64.
+  + Editor:
+    - release underlying document aggressively to prevent leaks.
+    - <shift>k in vim mode to request documentation.
+    - add simple goto line popover, activate with ctr+i in gedit
+      mode.
+    - fix crash upon DnD to editor.
+  + Keybindings: use ctrl+alt+o for global search in gedit mode.
+  + Map-bin: ignore size adjustment when floating bar is not used.
+  + Plugins: show plugin greyed out if it is disabled.
+  + Search:
+    - disable progress bar in search results.
+    - fix popover bug when clearing search text.
+    - make the search entry more forgiving to smaller sizes.
+    - show more search results by default.
+  + Symbol-tree: fix cache timeout to use milliseconds.
+  + Theme: fix styling of view controls in stack header.
+  + View-stack: allow focusing the view stack by clicking on the
+    header.
+
+-------------------------------------------------------------------
+Thu Sep 17 06:02:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Progress on implementing UI designs.
+  + A new shortcuts dialog to help you discover features.
+  + A new plugin engine powered by Libpeas. Currently, only in-tree
+    plugins are supported. Plugins can be written in C or Python3.
+  + A new workspace layout with panels which can be extended by
+    plugins.
+  + Completion with support for GObject Introspection for Python3
+    using Jedi.
+  + Progress on device manager and CPU graphs.
+  + Symbol tree is now shown in a panel which reduces widget
+    overhead.
+  + Loading of previous buffers is faster.
+  + Read-only snippets viewer has been added to preferences.
+  + Read-only plugin viewer in preferences.
+  + Build systems can now be implemented as plugins.
+  + Support for Terminals using VTE.
+  + Editor overview map has been moved into GtkSourceView.
+  + Smart backspace has been moved into GtkSourceView.
+  + Builder gained printer support.
+  + Updated translations.
+- Add explicit pkgconfig(gtk+-3.0) BuildRequires.
+- Drop pkgconfig(libdevhelp-3.0) BuildRequires: no longer needed.
+- Add pkgconfig(libpeas-1.0) BuildRequires: new dependency.
+- Replace desktop-file-utils BuildRequires with
+  update-desktop-files in order to have suse_update_desktop_files
+  available.
+- use suse_update_desktop_files to add Builder.desktop to the
+  category IDE.
+
+-------------------------------------------------------------------
+Mon May 18 13:22:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + A new source code minimap, recently pushed upstream into
+    GtkSourceView.
+  + A new greeter based on recent design work.
+  + A new XML highlighter to highlight matching XML elements.
+  + Support for ctags-based auto-completion.
+  + High-performance, mutli-threaded counters that can be enabled
+    with --enable-rdtscp. These are disabled by default as they
+    require newer Intel Core i[357] features. ide-list-counters can
+    be used to extract them from a running or crashed process.
+  + The preferences interface has been vastly improved.
+  + Search improvements.
+  + A strftime format completion provider for Python.
+  + Additional emacs, vim, and default keybindings.
+  + Experimental support for building autotools projects with
+    mingw.
+  + Python auto-indenter improvements.
+  + Many CSS style improvements on Adwaita.
+  + Additional support for recursive-automake-based projects.
+  + Some features have made configurable with gsettings.
+  + Layered settings support for project vs global settings.
+  + Improved modelines support.
+  + Support for parsing DOAP files.
+  + Various memory leaks were plugged.
+  + Incremental highlighting has more aggressive invalidation.
+  + Various race conditions in autotools support were fixes.
+  + OpenBSD and FreeBSD build system fixes.
+  + Many translation improvements.
+  + libide-1.0.so and Ide-1.0.typelib are now installed to a
+    private directory.
+- Pass --disable-static to %configure, we do not need them.
+
+-------------------------------------------------------------------
+Thu Apr 16 23:20:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix double free in dummy vcs.
+  + Fix project tree loading in dummy vcs.
+  + Fix workbench action names in emacs mode.
+  + Improve sorting of filenames in project tree.
+  + Ensure loading of files matching content types supported by
+    GtkSourceLanguage.
+  + Enable project tree by default.
+  + Enable project tree icons by default.
+  + Add rename file in project tree.
+  + Add move to trash in project tree.
+  + Sort previously opened projects before projects discovered by
+    miners.
+  + Use sysconf() for page size (fixes building on OpenBSD).
+  + Various clang build fixes.
+  + Use arrow down instead of hamburger for search bar.
+  + Fix unicode in markdown live preview.
+- Changes from version 3.16.1:
+  + Improved project tree including support for creating files and
+    folders, opening with external programs based on content-type,
+    and file-manager integration.
+  + A new incremental semantic syntax highlighting engine.
+  + Semantic highlighting for C and C++ using Clang AST.
+  + Document selection popover to ease switching between documents.
+  + Symbols navigator for C and C++ files.
+  + Apply "Fix-It" for C and C++ as provided by Clang.
+  + Highlight build warnings in squiggly yellow lines.
+  + Improvements to dark theme.
+  + Improvements to Builder's style scheme for C and C++ languages.
+  + "Jump to definition" support for C and C++ languages.
+  + Ctrl+] or gd in vim mode, <alt>period in emacs mode.
+  + A new project selection and creation dialog on startup.
+  + Git clone support from new project dialog.
+  + "Find other file" similar to emacs to switch between source and
+    header files in C and C++.
+  + Improvements to scroll-offset which allows you to keep a given
+    number of lines above and below the cursor.
+  + Respect Gtk's "sort-directories-first" GSetting.
+  + Improvements to VIM mode including support for :bnext,
+    :bprevious, :buffers and :ls.
+  + Split support for HTML view.
+  + Build fixes for FreeBSD and OpenBSD.
+  + Support for editing "application/x-php" files.
+  + Support extraction of CFLAGS from out-of-tree, non-recursive
+    automake.
+  + A new symbolic icon.
+  + Improvements to handling of drafts.
+  + Improvements to autotools builders.
+  + Updated translations.
+- Drop gnome-builder-buildfixes.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar 26 14:45:19 UTC 2015 - dimstar@opensuse.org
+
+- Update License tag to: GPL-3.0+ and GPL-2.0+ and LGPL-3.0+ and
+  LGPL-2.1+ and MIT and CC-BY-SA-3.0 and CC0-1.0.
+
+-------------------------------------------------------------------
+Tue Mar 24 09:21:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + A beautiful new GtkSourceView theme influenced by design grid
+    paper.
+  + Integrated source editor based on GtkSourceView.
+  + Live diagnostics as you type for C, C++ via Clang.
+  + Live diagnostics as you type for Python, Ruby, CSS, JavaScript,
+    JSON, Vala, Go, and others via gnome-code-assistance.
+  + Highlighting of added/changed lines within the source editor.
+  + Robust Vim and Emacs emulation.
+  + Multiple views into single file. Both horizontal and vertical
+    splits are supported.
+  + Navigation history to jump back and forward within modified
+    files.
+  + Robust snippet engine including support for GLib 2.44 style
+    GObjects.
+  + Quick search to locate files within your project as well as
+    documentation in devhelp.
+  + Smart backspace to simplify using spaces instead of tabs.
+  + A command bar to execute internal GActions and Vim style
+    commands with autocompletion.
+  + An implementation of Vim's scrolloffset.
+  + Restoration of insertion cursor when reloading a file.
+  + Autocompletion based on current words in loaded buffers.
+  + Experimental support for autocompletion based on clang.
+  + Support for vim, emacs, and kate style modelines.
+  + Editorconfig support.
+  + Experimental read-only support for autoconf/automake based
+    build systems.
+  + Robust auto-indenters for GNU C89, Python, and XML.
+  + Experimental project tree (available via F9).
+  + Experimental support for building automake based projects.
+  + Keybinding replay for command repeat in Vim emulation.
+  + Autosaving of modified buffers, never lose a change.
+  + Scripting via Python (CPython) or JavaScript (Gjs) and GObject
+    Introspection.
+  + Dynamic power management when running on laptop battery.
+  + HTML and Markdown live preview.
+  + Autocompletion of g_date_time_format() format parameters.
+  + Type ahead search with rubberbanding.
+- Drop gnome-builder-build-32bit.patch: fixed upstream.
+- Add gnome-builder-buildfixes.patch: Build fixes, taken from git.
+
+-------------------------------------------------------------------
+Thu Feb  5 14:56:56 UTC 2015 - dimstar@opensuse.org
+
+- Add gnome-builder-build-32bit.patch: Fix build on 32bit systems.
+
+-------------------------------------------------------------------
+Wed Jan 21 12:06:57 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 3.15.4.1.
+

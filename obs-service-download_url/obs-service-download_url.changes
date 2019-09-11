@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Aug 09 10:06:55 UTC 2019 - marco.strigl@suse.com
+
+- Update to version 0.1.2:
+  * make download_url executable.
+  * GPL license file
+
+-------------------------------------------------------------------
+Mon Jul 10 13:23:08 UTC 2017 - adrian@suse.de
+
+- Update to version 0.1.1:
+
+-------------------------------------------------------------------
+Tue Dec 17 09:57:29 UTC 2013 - speilicke@suse.com
+
+- Factory prep: Fix spec/changes file naming, cleanup
+
+-------------------------------------------------------------------
+Wed Dec 29 13:47:57 UTC 2010 - adrian@suse.de
+
+- add option to specify the output file name
+
+-------------------------------------------------------------------
+Fri Jul 23 07:49:31 UTC 2010 - adrian@suse.de
+
+- added service file as needed for OBS 2.1
+
+-------------------------------------------------------------------
+Fri Jan 22 07:45:42 UTC 2010 - adrian@suse.de
+
+- initial version for supporting server side file downloads via curl
+

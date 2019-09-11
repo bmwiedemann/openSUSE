@@ -1,0 +1,659 @@
+-------------------------------------------------------------------
+Wed Jul 17 07:26:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the s390 patchset bsc#1137624:
+  * 410.patch
+
+-------------------------------------------------------------------
+Thu Jul 11 16:09:34 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Tweak zlib-power8-fate325307.patch to have type of crc32_vpmsum
+  conform to usage
+  bsc#1141059
+
+-------------------------------------------------------------------
+Tue Jul  2 07:22:36 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Jun  7 11:24:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not enable the previous patchset on s390 but just s390x
+  bsc#1137624
+
+-------------------------------------------------------------------
+Thu Jun  6 09:43:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patchset for s390 improvements jsc#SLE-5807 bsc#1136717:
+  * 410.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 14:11:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try to safely abort if we get NULL ptr bsc#1110304 bsc#1129576:
+  * zlib-power8-fate325307.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 14:51:07 UTC 2018 - tchvatal@suse.com
+
+- Add patch for fate#325307 zlib speedup on power8:
+  * zlib-power8-fate325307.patch
+
+-------------------------------------------------------------------
+Tue May 15 10:56:20 UTC 2018 - tchvatal@suse.com
+
+- Add patch to safeguard against negative values in uInt bsc#1071321:
+  * 0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
+
+-------------------------------------------------------------------
+Mon Jun 12 17:35:18 UTC 2017 - kah0922@gmail.com
+
+- Added 32bit minizip support
+
+-------------------------------------------------------------------
+Thu Jun  1 13:34:38 UTC 2017 - mpluskal@suse.com
+
+- Add gpg signature
+- Re-enable profiling
+
+-------------------------------------------------------------------
+Wed May 10 13:43:08 UTC 2017 - mpluskal@suse.com
+
+- Add s390 performance patch (fate#314093):
+  * zlib-1.2.11-optimized-s390.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 08:31:28 UTC 2017 - schwab@suse.de
+
+- baselibs.conf: add missing dependencies
+
+-------------------------------------------------------------------
+Mon Jan 16 09:57:59 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.2.11:
+  * Fix deflate stored bug when pulling last block from window
+  * Permit immediate deflateParams changes before any deflate input
+
+-------------------------------------------------------------------
+Tue Jan  3 07:41:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.2.10:
+  * Avoid warnings on snprintf() return value
+  * Fix bug in deflate_stored() for zero-length input
+  * Fix bug in gzwrite.c that produced corrupt gzip files
+  * Remove files to be installed before copying them in Makefile.in
+  * Add warnings when compiling with assembler code
+
+-------------------------------------------------------------------
+Mon Jan  2 09:08:50 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.2.9:
+  * Improve compress() and uncompress() to support large lengths
+  * Allow building zlib outside of the source directory
+  * Fix bug when level 0 used with Z_HUFFMAN or Z_RLE
+  * Fix bugs in creating a very large gzip header
+  * Add uncompress2() function, which returns the input size used
+  * Dramatically speed up deflation for level 0 (storing)
+  * Add gzfread() and gzfwrite(), duplicating the interfaces of fread() and fwrite()
+  * Add crc32_z() and adler32_z() functions with size_t lengths
+  * Many portability improvements
+- Drop patches included in upstream:
+  * zlib-bnc1003577.patch
+  * zlib-bnc1003579-part2.patch
+  * zlib-bnc1003579.patch
+  * zlib-bnc1003580.patch
+  * zlib-bnc1013882.patch
+- Drop zlib-1.2.7-improve-longest_match-performance.patch
+  * not accepted by upstream for two releases
+  * rebasing no longer possible
+
+-------------------------------------------------------------------
+Sun Dec  4 12:47:51 UTC 2016 - tchvatal@suse.com
+
+- Include fixes for bnc#1003580 bnc#1003579 bnc#1003577 bnc#1013882:
+  * zlib-bnc1003577.patch
+  * zlib-bnc1003579-part2.patch
+  * zlib-bnc1003579.patch
+  * zlib-bnc1003580.patch refreshed
+  * zlib-bnc1013882.patch CVE-2016-9843
+
+-------------------------------------------------------------------
+Thu Sep 24 20:21:46 UTC 2015 - jengelh@inai.de
+
+- Trim descriptions to fit target audience. Update RPM group
+  classification.
+
+-------------------------------------------------------------------
+Mon Jul 13 11:58:44 UTC 2015 - tchvatal@suse.com
+
+- Require zlib-devel in zlib-devel-static to fix previous change
+
+-------------------------------------------------------------------
+Tue Jun 30 11:30:37 UTC 2015 - tchvatal@suse.com
+
+- Bring back zlib-devel-static. Needed by binutils
+
+-------------------------------------------------------------------
+Wed Jun 24 09:01:59 UTC 2015 - tchvatal@suse.com
+
+- Remove zlib-devel-static, nothing should use libz.a anyway.
+- Package minizip library, everything using it should now pull
+  minizip-devel and unbundle it bnc#935864
+
+-------------------------------------------------------------------
+Thu Sep 25 08:04:55 UTC 2014 - tchvatal@suse.com
+
+- Install examples to cover another angle from bnc#890228
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul 29 12:37:19 UTC 2013 - mvyskocil@suse.com
+
+- zlib-format.patch, backport missing sle11 feature back to openSUSE
+  bnc#831880
+
+-------------------------------------------------------------------
+Sat May 11 11:51:40 UTC 2013 - idonmez@suse.com
+
+- Update to version 1.2.8
+  * Add new inflateGetDictionary() function
+  * Fix bug where gzopen() immediately followed by gzclose()
+    would write an empty file instead of an empty gzip stream.
+  * Fix bug in gzclose() when gzwrite() runs out of memory
+
+-------------------------------------------------------------------
+Tue Mar  5 10:00:58 UTC 2013 - mvyskocil@suse.com
+
+- libz1-32bit obsoletes zlib-32bit <= 1.2.7 (fixes bnc#806310)
+
+-------------------------------------------------------------------
+Sat Dec 15 18:56:05 UTC 2012 - schwab@linux-m68k.org
+
+- Add zlib-devel-static to baselibs.conf, needed for binutils testsuite
+- Migrate zlib-<targettype> to libz1-<targettype>
+
+-------------------------------------------------------------------
+Thu Nov 22 01:17:59 UTC 2012 - jengelh@inai.de
+
+- Replace %make_install by normal make install;
+  the former is a constant source of agony in older or non-SUSE.
+
+-------------------------------------------------------------------
+Mon Oct 22 05:10:48 UTC 2012 - coolo@suse.com
+
+- buildignore checks for now to get bootstrapping working
+
+-------------------------------------------------------------------
+Mon Oct 15 07:39:29 UTC 2012 - mvyskocil@suse.com
+
+- add longest_match performance patch (fate#314093)
+  * suggested by IBM, sent upstream
+- rename the main library package to libz1 according Shared
+  Library Policy
+- profiling build can be enabled via build --with profiling
+- use the human-readable package description from zlib.net
+- add rpmlintrc
+
+-------------------------------------------------------------------
+Mon May  7 12:34:45 UTC 2012 - joop.boonen@opensuse.org
+
+- Update to 1.2.7
+  * Fix bug in gzclose_w() when gzwrite() fails to allocate memory
+  * Add "x" (O_EXCL) and "e" (O_CLOEXEC) modes support to gzopen()
+  * Add gzopen_w() in Windows for wide character path names
+  * Fix type mismatch between get_crc_table() and crc_table
+- Passed the spec file through spec cleaner
+
+-------------------------------------------------------------------
+Thu Feb  9 16:17:55 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+
+-------------------------------------------------------------------
+Thu Dec 22 14:31:42 CET 2011 - meissner@suse.de
+
+- use configure options for library paths. Also fixes
+  the pkg-config file to not have /usr/local bnc#738169
+
+-------------------------------------------------------------------
+Wed Dec  7 15:29:27 UTC 2011 - coolo@suse.com
+
+- zlib has it's own spdx license, so use it :)
+
+-------------------------------------------------------------------
+Sat Nov 19 20:00:11 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not include the codename in soversion.
+
+-------------------------------------------------------------------
+Sat Nov 19 18:42:12 UTC 2011 - crrodriguez@opensuse.org
+
+- This is zlib 1.2.5.2 codename "motley"
+- Fix bug and add consts in contrib/puff [Oberhumer]
+- Fix static-only-build install in Makefile.in
+- Add libz.a dependency to shared in Makefile.in for parallel builds
+- Spell out "number" (instead of "nb") in zlib.h for total_in, total_out
+- Fix bug in zlib.h for _FILE_OFFSET_BITS set and _LARGEFILE64_SOURCE not
+- Add comment in zlib.h that adler32_combine with len2 < 0 makes no sense
+- Make NO_DIVIDE option in adler32.c much faster (thanks to John Reiser)
+- Fix zlib.h LFS support when Z_PREFIX used
+- Avoid deflate sensitivity to volatile input data
+- Avoid division in adler32_combine for NO_DIVIDE
+- Clarify the use of Z_FINISH with deflateBound() amount of space
+- Use u4 type for crc_table to avoid conversion warnings
+- Apply casts in zlib.h to avoid conversion warnings
+- Add OF to prototypes for adler32_combine_ and crc32_combine_ [Miller]
+- Improve inflateSync() documentation to note indeterminancy
+- Add deflatePending() function to return the amount of pending output
+- Check that pointers fit in ints when gzprint() compiled old style
+- Add dummy name before $(SHAREDLIBV) in Makefile [Bar-Lev, Bowler]
+
+-------------------------------------------------------------------
+Sun Nov 13 05:52:57 UTC 2011 - crrodriguez@opensuse.org
+
+-open file descriptors with O_CLOEXEC but only in the·
+  gzopen() case, not in gzdopen() as that would change
+  the calling application' semantics.
+  It is responsability of the caller to ensure O_CLOEXEC is used
+  in such scenario.
+
+-------------------------------------------------------------------
+Tue Oct  4 09:10:46 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro (not %configure, this is not
+  autoconf)
+
+-------------------------------------------------------------------
+Fri Aug 26 18:36:11 UTC 2011 - crrodriguez@opensuse.org
+
+- Use __attribute__ target in SSE optimized functions
+  so the compiler defines __MMX__ __SSE__ etc, this probably
+  only matters in 32 bit. what version to use is still
+  determined at runtime by cpuid.
+
+-------------------------------------------------------------------
+Mon Jun 27 11:05:47 UTC 2011 - dimstar@opensuse.org
+
+- bnc#652333: Change LICENSE text to not have version, which
+  changes too often and invalidates the text everytime.
+
+-------------------------------------------------------------------
+Mon May 30 19:38:43 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix two bugs that will break ia64 systems only.
+
+-------------------------------------------------------------------
+Fri May 27 09:13:31 UTC 2011 - mvyskocil@suse.cz
+
+- fix bnc#679345: zlib segfaults when passing NULL to gzopen
+  * return NULL checks back to gz_open
+
+-------------------------------------------------------------------
+Thu May 12 20:02:26 UTC 2011 - crrodriguez@opensuse.org
+
+- Update SSE patches, fixes bugs in PPC implementation
+- X86 improvements.
+
+-------------------------------------------------------------------
+Sat May  7 18:25:48 UTC 2011 - crrodriguez@opensuse.org
+
+- Update SSE2/MMX patches to their current version.
+  per request of the author.
+ * This are integrated now,including support for a number
+  of additional archs and fixes ARM patches bugs.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:02:50 UTC 2011 - crrodriguez@opensuse.org
+
+- Update SSE2/MMX patches tp version 3
+  now with comments,performance numbers,and ia64 support
+
+-------------------------------------------------------------------
+Wed Mar 30 19:47:30 UTC 2011 - crrodriguez@opensuse.org
+
+- Update SSE2/MMX patches to version 2.
+
+-------------------------------------------------------------------
+Tue Mar 15 22:38:32 UTC 2011 - crrodriguez@opensuse.org
+
+- Add highly experimental patches to use SSE2/SSSE3/MMX in zlib
+  this makes the library up to 6 times faster.
+
+-------------------------------------------------------------------
+Sun Jan  9 14:33:08 CET 2011 - meissner@suse.de
+
+- do not use compiler profile information, as the testsuite fails
+  when using it.
+
+-------------------------------------------------------------------
+Tue Dec 21 16:12:56 CET 2010 - meissner@suse.de
+
+- Add dependency to make it build in a parallel world.
+
+-------------------------------------------------------------------
+Tue Dec  7 17:18:43 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- use compiler profile information to make libz slightly faster.
+
+-------------------------------------------------------------------
+Tue Sep 21 21:48:23 UTC 2010 - dimstar@opensuse.org
+
+- Simplified version of zlib-lfs.patch. Should also resolve issues
+  arising with various combination of LFS derinfes.
+
+-------------------------------------------------------------------
+Tue Sep 14 20:10:13 UTC 2010 - dimstar@opensuse.org
+
+- Add zlib-lfs.patch: Fix Large File Support. Patch comes from the
+  zlib-devel mailinglist:
+  http://mail.madler.net/pipermail/zlib-devel_madler.net/2010-May/002303.html
+
+-------------------------------------------------------------------
+Tue Aug 10 16:04:54 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.5:
+  + fixes bugs in gzseek() and gzeof()
+- Changes from version 1.2.4:
+  + Fixed bugs in adler32_combine(), compressBound(), and
+    deflateBound()
+  + Wholesale replacement of gz* functions with faster versions
+  + As part of that, added gzbuffer(), gzoffset(), gzclose_r(), and
+    gzclose_w() functions
+  + Faster Z_HUFFMAN_ONLY and Z_RLE compression for images and
+    other specialized compression
+  + Added flush options Z_BLOCK to deflate() and Z_TREES to
+    inflate() for finer control
+  + Added inflateReset2() and inflateMark() functions, the latter
+    to aid in random access applications
+  + Added LFS (Large File Summit) support for 64-bit file offsets
+    and many other portability improvements
+  + Updated examples in examples/ and updated third-party
+    contributions in contrib/
+- Drop obsolete patches:
+  + zlib-1.2.1-make-test.patch
+  + zlib-1.2.1-vsnprintf.patch
+  + zlib-1.2.1-CFLAGS.dif
+  + zlib-1.2.3-686.patch
+  + zlib-1.2.3-visibility-support.patch
+- Rebased zlib-1.2.2-format.patch
+- Clean spec file using spec-cleaner.
+- BuildRequire to have proper pkgconfig() provides.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Dec 12 18:41:52 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Nov 24 16:23:32 UTC 2009 - crrodriguez@opensuse.org
+
+- refresh patches with fuzz=0
+
+-------------------------------------------------------------------
+Fri Apr 24 10:33:06 CEST 2009 - mseben@suse.cz
+
+- added LICENSE file, for GPL licensed contrib files, however
+  they are not used to build our zlib library (bnc#490107)
+- added zlib-1.2.3-686.patch - update license text (bnc#490107)
+
+-------------------------------------------------------------------
+Sat Mar 21 16:23:42 CET 2009 - crrodriguez@suse.de
+
+- there is one valid use case of static zlib in "qemu" package
+  split a -devel-static subpackage, please do not BuildRequire
+  this package unless you are 100% sure you need it, if in doubt
+  mail either the security team or me.
+
+-------------------------------------------------------------------
+Fri Feb 27 19:58:04 CET 2009 - crrodriguez@suse.de
+
+- add patch from gentoo that makes zlib to only export
+  its public API using GCC visibility features, this will
+  of course break wrong code that uses private symbols
+- exclude static zlib, at least temporarily, in order to clearly know
+  what is using it.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sat Jan 12 03:41:39 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* errors
+- do not delete buildroot on install section
+- run make test in the check section.
+
+-------------------------------------------------------------------
+Thu May  3 11:41:41 CEST 2007 - rguenther@suse.de
+
+- move documentation files to zlib-devel package
+
+-------------------------------------------------------------------
+Wed Jan 31 13:02:30 CET 2007 - ro@suse.de
+
+- remove libgz completely (obsolete long ago)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec 17 09:02:34 CET 2005 - kukuk@suse.de
+
+- Remove unpackaged libz.so symlink
+
+-------------------------------------------------------------------
+Wed Jul 20 10:52:46 CEST 2005 - meissner@suse.de
+
+- Upgraded to 1.2.3. Security fix is now in mainline.
+
+-------------------------------------------------------------------
+Mon Jul  4 10:03:17 CEST 2005 - meissner@suse.de
+
+- fixed memory corruption problem #94926, CAN-2005-2096.
+
+-------------------------------------------------------------------
+Fri Apr  1 09:34:23 CEST 2005 - kukuk@suse.de
+
+- Remove movage of setting CFLAGS
+
+-------------------------------------------------------------------
+Tue Mar 29 10:44:32 CEST 2005 - kukuk@suse.de
+
+- Update to 1.2.2.2
+- Fix compiling with gcc 3.3 and 4.0
+
+-------------------------------------------------------------------
+Mon Feb 28 10:03:18 CET 2005 - meissner@suse.de
+
+- Use __printf__ in format attribute to avoid printf defines.
+
+-------------------------------------------------------------------
+Wed Feb 23 13:11:56 CET 2005 - meissner@suse.de
+
+- supply format arguments to gzprintf().
+
+-------------------------------------------------------------------
+Tue Feb  8 10:13:30 CET 2005 - ro@suse.de
+
+- update to 1.2.2
+
+-------------------------------------------------------------------
+Wed Aug 25 14:39:49 CEST 2004 - ro@suse.de
+
+- updated crash patch to version from Dmitry (#44087)
+
+-------------------------------------------------------------------
+Mon Aug 23 15:54:02 CEST 2004 - ro@suse.de
+
+- added fix for crash on invalid input (#44087)
+
+-------------------------------------------------------------------
+Thu Dec  4 01:59:05 CET 2003 - ro@suse.de
+
+- update to 1.2.1
+
+-------------------------------------------------------------------
+Fri Nov 21 15:08:36 CET 2003 - kukuk@suse.de
+
+- Use RPM_OPT_FLAGS
+- Compile with no execstack
+
+-------------------------------------------------------------------
+Mon Oct 20 18:27:53 CEST 2003 - ro@suse.de
+
+- don't build as root
+
+-------------------------------------------------------------------
+Mon May 12 18:55:18 CEST 2003 - kukuk@suse.de
+
+- Add defattr
+
+-------------------------------------------------------------------
+Mon Mar  3 16:52:51 CET 2003 - ro@suse.de
+
+- do use vsnprintf
+
+-------------------------------------------------------------------
+Sun Feb 16 10:37:37 CET 2003 - olh@suse.de
+
+- no absolute symlinks for libz.so
+
+-------------------------------------------------------------------
+Thu Jul 25 08:40:28 CEST 2002 - kukuk@suse.de
+
+- Rename to zlib
+- Splitt off zlib-devel
+
+-------------------------------------------------------------------
+Fri Jul  5 12:50:05 MEST 2002 - bk@suse.de
+
+- enable make test
+
+-------------------------------------------------------------------
+Mon May 27 09:13:31 CEST 2002 - ro@suse.de
+
+- update to 1.1.4 including the previous security patch
+- Returned incorrect error (Z_MEM_ERROR) on some invalid data
+- Avoid accesses before window for invalid distances with inflate window
+  less than 32K.
+- force windowBits > 8 to avoid a bug in the encoder for a window size
+  of 256 bytes. (A complete fix will be available in 1.1.5).
+
+-------------------------------------------------------------------
+Mon Feb 25 14:37:54 CET 2002 - ro@suse.de
+
+- remove executable bits from manpage and include file
+
+-------------------------------------------------------------------
+Thu Feb  7 11:55:43 MET 2002 - draht@suse.de
+
+- prevent double free() (security problem) with
+  zlib-1.1.3-zfree.dif
+
+-------------------------------------------------------------------
+Tue Dec 11 15:40:35 CET 2001 - froh@suse.de
+
+- fixed specfile to use %_libdir for make install for
+  the sake of lib64 on S/390.  also updated old sparc64 %ifarch at
+  this point.
+
+-------------------------------------------------------------------
+Tue Dec  4 17:54:00 CET 2001 - ro@suse.de
+
+- added Provides zlib-devel for compatibility
+
+-------------------------------------------------------------------
+Tue May  1 18:12:26 CEST 2001 - kukuk@suse.de
+
+- Minor spec file fixes for sparc64
+
+-------------------------------------------------------------------
+Thu Dec  7 13:55:36 CET 2000 - kukuk@suse.de
+
+- Install only shared library in /%{_lib}
+
+-------------------------------------------------------------------
+Wed Dec  6 16:20:09 CET 2000 - ro@suse.de
+
+- install main lib in /%{_lib} not /usr/%{_lib}
+
+-------------------------------------------------------------------
+Mon Oct  2 20:25:01 CEST 2000 - kukuk@suse.de
+
+- Use %{_lib} macro
+
+-------------------------------------------------------------------
+Mon Sep 25 15:27:33 CEST 2000 - ro@suse.de
+
+- sorted
+
+-------------------------------------------------------------------
+Wed Apr  5 01:01:37 CEST 2000 - bk@suse.de
+
+- fixed BuildRoot support
+
+-------------------------------------------------------------------
+Mon Apr  3 15:12:01 MEST 2000 - bk@suse.de
+
+- added buildroot for build with dynamically linked rpm which uses libz(s390)
+
+-------------------------------------------------------------------
+Thu Jan 20 15:38:46 CET 2000 - aj@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 13 13:13:43 MEST 1999 - ro@suse.de
+
+- added zutil.h
+
+-------------------------------------------------------------------
+Thu Mar  4 10:03:38 MET 1999 - ro@suse.de
+
+- moved from /usr/X11R6 to usr
+- libgz is now only a link to libz
+- "libgz.so.1" is provided from specfile
+
+-------------------------------------------------------------------
+Tue Aug 25 17:11:04 MEST 1998 - ro@suse.de
+
+- update to 1.1.3
+
+-------------------------------------------------------------------
+Fri Mar 20 13:58:12 MET 1998 - ro@suse.de
+
+- update to 1.1.2
+
+-------------------------------------------------------------------
+Mon Mar  2 14:03:08 MET 1998 - ro@suse.de
+
+- update to 1.1.1
+
+-------------------------------------------------------------------
+Fri Feb 27 11:17:44 MET 1998 - ro@suse.de
+
+- update to version 1.0.9
+  created own specfile for easier maintenance
+  included man-pages
+

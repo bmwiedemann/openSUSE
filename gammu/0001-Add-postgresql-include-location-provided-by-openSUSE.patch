@@ -1,0 +1,25 @@
+From 5ab94874b60e6614dacad5453acb4552c73878ba Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Wed, 5 Jun 2019 10:35:01 +0200
+Subject: [PATCH] Add postgresql include location provided by openSUSE
+ distribution.
+
+---
+ cmake/FindPostgres.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/FindPostgres.cmake b/cmake/FindPostgres.cmake
+index 56435c060..5a19bbbfb 100644
+--- a/cmake/FindPostgres.cmake
++++ b/cmake/FindPostgres.cmake
+@@ -60,6 +60,7 @@ ELSE(WIN32)
+             /usr/local/postgresql/include/postgresql
+             /usr/include 
+             /usr/include/postgresql
++            /usr/include/pgsql
+             ${PG_TMP}
+             $ENV{POSTGRESQL_HOME}/include/server
+             $ENV{POSTGRESQL_HOME}/include
+-- 
+2.21.0
+

@@ -1,0 +1,96 @@
+Index: gdm-3.31.91/common/gdm-common.c
+===================================================================
+--- gdm-3.31.91.orig/common/gdm-common.c	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/common/gdm-common.c	2019-02-27 07:47:16.998264608 +0100
+@@ -632,6 +632,8 @@ gdm_get_script_environment (const char *
+ 
+         if (display_hostname) {
+                 g_hash_table_insert (hash, g_strdup ("REMOTE_HOST"), g_strdup (display_hostname));
++        } else {
++                g_hash_table_insert (hash, g_strdup ("XAUTHLOCALHOSTNAME"), gdm_gethostname ());
+         }
+ 
+         /* Runs as root */
+@@ -843,3 +845,14 @@ gdm_shell_expand (const char *str,
+         }
+         return g_string_free (s, FALSE);
+ }
++
++char *
++gdm_gethostname (void)
++{
++        char localhost[HOST_NAME_MAX + 1] = "";
++        if (gethostname (localhost, HOST_NAME_MAX) == 0) {
++                return g_strdup (localhost);
++        } else {
++                return g_strdup ("localhost");
++        }
++}
+Index: gdm-3.31.91/common/gdm-common.h
+===================================================================
+--- gdm-3.31.91.orig/common/gdm-common.h	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/common/gdm-common.h	2019-02-27 07:47:16.998264608 +0100
+@@ -56,6 +56,7 @@ char          *gdm_generate_random_bytes
+ gboolean       gdm_get_login_window_session_id (const char  *seat_id,
+                                                 char       **session_id);
+ gboolean       gdm_goto_login_session    (GError **error);
++char          *gdm_gethostname           (void);
+ 
+ GPtrArray     *gdm_get_script_environment (const char *username,
+                                            const char *display_name,
+Index: gdm-3.31.91/daemon/gdm-display-access-file.c
+===================================================================
+--- gdm-3.31.91.orig/daemon/gdm-display-access-file.c	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/daemon/gdm-display-access-file.c	2019-02-27 07:47:16.998264608 +0100
+@@ -441,13 +441,10 @@ _get_auth_info_for_display (GdmDisplayAc
+                  *
+                  * https://bugs.freedesktop.org/show_bug.cgi?id=43425
+                  */
+-                char localhost[HOST_NAME_MAX + 1] = "";
+                 *family = FamilyLocal;
+-                if (gethostname (localhost, HOST_NAME_MAX) == 0) {
+-                        *address = g_strdup (localhost);
+-                } else {
+-                        *address = g_strdup ("localhost");
+-                }
++               /* using the new function we create in the patch, to detect
++		* changes here, in the original code */
++		*address = gdm_gethostname ();
+         } else {
+                 *family = FamilyWild;
+                 gdm_display_get_remote_hostname (display, address, NULL);
+Index: gdm-3.31.91/daemon/gdm-launch-environment.c
+===================================================================
+--- gdm-3.31.91.orig/daemon/gdm-launch-environment.c	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/daemon/gdm-launch-environment.c	2019-02-27 07:47:16.998264608 +0100
+@@ -218,6 +218,11 @@ build_launch_environment (GdmLaunchEnvir
+                 g_hash_table_insert (hash, g_strdup ("GDM_SEAT_ID"), g_strdup (seat_id));
+         }
+ 
++        if (launch_environment->priv->x11_display_is_local) {
++                g_hash_table_remove (hash, "XAUTHLOCALHOSTNAME");
++                g_hash_table_insert (hash, g_strdup ("XAUTHLOCALHOSTNAME"), gdm_gethostname ());
++        }
++
+         g_hash_table_insert (hash, g_strdup ("RUNNING_UNDER_GDM"), g_strdup ("true"));
+ 
+         return hash;
+Index: gdm-3.31.91/daemon/gdm-session.c
+===================================================================
+--- gdm-3.31.91.orig/daemon/gdm-session.c	2019-02-27 07:47:16.990264560 +0100
++++ gdm-3.31.91/daemon/gdm-session.c	2019-02-27 07:47:16.998264608 +0100
+@@ -2683,6 +2683,14 @@ set_up_session_environment (GdmSession *
+                 }
+         }
+ 
++        if (self->display_is_local) {
++                char *hostname = gdm_gethostname ();
++                gdm_session_set_environment_variable (self,
++                                                      "XAUTHLOCALHOSTNAME",
++                                                      hostname);
++                g_free (hostname);
++        }
++
+         if (g_getenv ("WINDOWPATH") != NULL) {
+                 gdm_session_set_environment_variable (self,
+                                                       "WINDOWPATH",

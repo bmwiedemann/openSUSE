@@ -1,0 +1,13 @@
+Index: ld/ldmain.c
+===================================================================
+--- ld/ldmain.c.orig	2017-07-26 10:07:31.862559913 +0200
++++ ld/ldmain.c	2017-07-26 10:07:31.886560303 +0200
+@@ -302,6 +302,8 @@ main (int argc, char **argv)
+ #ifdef DEFAULT_NEW_DTAGS
+   link_info.new_dtags = DEFAULT_NEW_DTAGS;
+ #endif
++  if (getenv ("SUSE_ASNEEDED") && atoi(getenv ("SUSE_ASNEEDED")) > 0)
++    input_flags.add_DT_NEEDED_for_regular = TRUE;
+ 
+   ldfile_add_arch ("");
+   emulation = get_emulation (argc, argv);

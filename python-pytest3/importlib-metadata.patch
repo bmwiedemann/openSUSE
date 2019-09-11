@@ -1,0 +1,473 @@
+From 13f02af97d676bdf7143aa1834c8898fbf753d87 Mon Sep 17 00:00:00 2001
+From: Anthony Sottile <asottile@umich.edu>
+Date: Sat, 6 Apr 2019 17:32:47 -0700
+Subject: [PATCH] Switch to importlib-metadata
+
+---
+ changelog/5063.feature.rst       |   1 +
+ setup.py                         |   5 +-
+ src/_pytest/assertion/rewrite.py |  19 -----
+ src/_pytest/config/__init__.py   |  21 ++----
+ src/_pytest/outcomes.py          |  12 +--
+ testing/acceptance_test.py       |  31 +++-----
+ testing/test_assertion.py        |  56 +++++---------
+ testing/test_config.py           | 121 ++++++++++++-------------------
+ testing/test_entry_points.py     |  14 +---
+ 9 files changed, 95 insertions(+), 185 deletions(-)
+ create mode 100644 changelog/5063.feature.rst
+
+Index: pytest-3.10.1/setup.py
+===================================================================
+--- pytest-3.10.1.orig/setup.py
++++ pytest-3.10.1/setup.py
+@@ -8,20 +8,21 @@ from setuptools import setup
+ INSTALL_REQUIRES = [
+     "py>=1.5.0",
+     "six>=1.10.0",
+-    "setuptools",
++    "packaging",
+     "attrs>=17.4.0",
+     "more-itertools>=4.0.0",
+     "atomicwrites>=1.0",
+     'funcsigs;python_version<"3.0"',
+     'pathlib2>=2.2.0;python_version<"3.6"',
+     'colorama;sys_platform=="win32"',
++    "importlib-metadata>=0.12",
+ ]
+ 
+ 
+ # if _PYTEST_SETUP_SKIP_PLUGGY_DEP is set, skip installing pluggy;
+ # used by tox.ini to test with pluggy master
+ if "_PYTEST_SETUP_SKIP_PLUGGY_DEP" not in os.environ:
+-    INSTALL_REQUIRES.append("pluggy>=0.7")
++    INSTALL_REQUIRES.append("pluggy>=0.12")
+ 
+ 
+ def main():
+Index: pytest-3.10.1/src/_pytest/assertion/rewrite.py
+===================================================================
+--- pytest-3.10.1.orig/src/_pytest/assertion/rewrite.py
++++ pytest-3.10.1/src/_pytest/assertion/rewrite.py
+@@ -60,7 +60,6 @@ class AssertionRewritingHook(object):
+         self.session = None
+         self.modules = {}
+         self._rewritten_names = set()
+-        self._register_with_pkg_resources()
+         self._must_rewrite = set()
+         # flag to guard against trying to rewrite a pyc file while we are already writing another pyc file,
+         # which might result in infinite recursion (#3506)
+@@ -308,24 +307,6 @@ class AssertionRewritingHook(object):
+         tp = desc[2]
+         return tp == imp.PKG_DIRECTORY
+ 
+-    @classmethod
+-    def _register_with_pkg_resources(cls):
+-        """
+-        Ensure package resources can be loaded from this loader. May be called
+-        multiple times, as the operation is idempotent.
+-        """
+-        try:
+-            import pkg_resources
+-
+-            # access an attribute in case a deferred importer is present
+-            pkg_resources.__name__
+-        except ImportError:
+-            return
+-
+-        # Since pytest tests are always located in the file system, the
+-        #  DefaultProvider is appropriate.
+-        pkg_resources.register_loader_type(cls, pkg_resources.DefaultProvider)
+-
+     def get_data(self, pathname):
+         """Optional PEP302 get_data API.
+         """
+Index: pytest-3.10.1/src/_pytest/config/__init__.py
+===================================================================
+--- pytest-3.10.1.orig/src/_pytest/config/__init__.py
++++ pytest-3.10.1/src/_pytest/config/__init__.py
+@@ -11,10 +11,11 @@ import shlex
+ import sys
+ import types
+ import warnings
+-from distutils.version import LooseVersion
+ 
++import importlib_metadata
+ import py
+ import six
++from packaging.version import Version
+ from pluggy import HookimplMarker
+ from pluggy import HookspecMarker
+ from pluggy import PluginManager
+@@ -760,25 +761,17 @@ class Config(object):
+         modules or packages in the distribution package for
+         all pytest plugins.
+         """
+-        import pkg_resources
+-
+         self.pluginmanager.rewrite_hook = hook
+ 
+         if os.environ.get("PYTEST_DISABLE_PLUGIN_AUTOLOAD"):
+             # We don't autoload from setuptools entry points, no need to continue.
+             return
+ 
+-        # 'RECORD' available for plugins installed normally (pip install)
+-        # 'SOURCES.txt' available for plugins installed in dev mode (pip install -e)
+-        # for installed plugins 'SOURCES.txt' returns an empty list, and vice-versa
+-        # so it shouldn't be an issue
+-        metadata_files = "RECORD", "SOURCES.txt"
+-
+         package_files = (
+-            entry.split(",")[0]
+-            for entrypoint in pkg_resources.iter_entry_points("pytest11")
+-            for metadata in metadata_files
+-            for entry in entrypoint.dist._get_metadata(metadata)
++            str(file)
++            for dist in importlib_metadata.distributions()
++            if any(ep.group == "pytest11" for ep in dist.entry_points)
++            for file in dist.files
+         )
+ 
+         for name in _iter_rewritable_modules(package_files):
+@@ -822,7 +815,7 @@ class Config(object):
+ 
+         minver = self.inicfg.get("minversion", None)
+         if minver:
+-            if LooseVersion(minver) > LooseVersion(pytest.__version__):
++            if Version(minver) > Version(pytest.__version__):
+                 raise pytest.UsageError(
+                     "%s:%d: requires pytest-%s, actual pytest-%s'"
+                     % (
+Index: pytest-3.10.1/src/_pytest/outcomes.py
+===================================================================
+--- pytest-3.10.1.orig/src/_pytest/outcomes.py
++++ pytest-3.10.1/src/_pytest/outcomes.py
+@@ -8,6 +8,8 @@ from __future__ import print_function
+ 
+ import sys
+ 
++from packaging.version import Version
++
+ 
+ class OutcomeException(BaseException):
+     """ OutcomeException and its subclass instances indicate and
+@@ -165,15 +167,7 @@ def importorskip(modname, minversion=Non
+         return mod
+     verattr = getattr(mod, "__version__", None)
+     if minversion is not None:
+-        try:
+-            from pkg_resources import parse_version as pv
+-        except ImportError:
+-            raise Skipped(
+-                "we have a required version for %r but can not import "
+-                "pkg_resources to parse version strings." % (modname,),
+-                allow_module_level=True,
+-            )
+-        if verattr is None or pv(verattr) < pv(minversion):
++        if verattr is None or Version(verattr) < Version(minversion):
+             raise Skipped(
+                 "module %r has __version__ %r, required is: %r"
+                 % (modname, verattr, minversion),
+Index: pytest-3.10.1/testing/test_assertion.py
+===================================================================
+--- pytest-3.10.1.orig/testing/test_assertion.py
++++ pytest-3.10.1/testing/test_assertion.py
+@@ -136,12 +136,12 @@ class TestImportHookInstallation(object)
+     def test_pytest_plugins_rewrite_module_names_correctly(self, testdir):
+         """Test that we match files correctly when they are marked for rewriting (#2939)."""
+         contents = {
+-            "conftest.py": """
++            "conftest.py": """\
+                 pytest_plugins = "ham"
+             """,
+             "ham.py": "",
+             "hamster.py": "",
+-            "test_foo.py": """
++            "test_foo.py": """\
+                 def test_foo(pytestconfig):
+                     assert pytestconfig.pluginmanager.rewrite_hook.find_module('ham') is not None
+                     assert pytestconfig.pluginmanager.rewrite_hook.find_module('hamster') is None
+@@ -152,13 +152,13 @@ class TestImportHookInstallation(object)
+         assert result.ret == 0
+ 
+     @pytest.mark.parametrize("mode", ["plain", "rewrite"])
+-    @pytest.mark.parametrize("plugin_state", ["development", "installed"])
+-    def test_installed_plugin_rewrite(self, testdir, mode, plugin_state):
++    def test_installed_plugin_rewrite(self, testdir, mode, monkeypatch):
++        monkeypatch.delenv("PYTEST_DISABLE_PLUGIN_AUTOLOAD", raising=False)
+         # Make sure the hook is installed early enough so that plugins
+         # installed via setuptools are rewritten.
+         testdir.tmpdir.join("hampkg").ensure(dir=1)
+         contents = {
+-            "hampkg/__init__.py": """
++            "hampkg/__init__.py": """\
+                 import pytest
+ 
+                 @pytest.fixture
+@@ -167,7 +167,7 @@ class TestImportHookInstallation(object)
+                         assert values.pop(0) == value
+                     return check
+             """,
+-            "spamplugin.py": """
++            "spamplugin.py": """\
+             import pytest
+             from hampkg import check_first2
+ 
+@@ -177,46 +177,31 @@ class TestImportHookInstallation(object)
+                     assert values.pop(0) == value
+                 return check
+             """,
+-            "mainwrapper.py": """
+-            import pytest, pkg_resources
+-
+-            plugin_state = "{plugin_state}"
+-
+-            class DummyDistInfo(object):
+-                project_name = 'spam'
+-                version = '1.0'
+-
+-                def _get_metadata(self, name):
+-                    # 'RECORD' meta-data only available in installed plugins
+-                    if name == 'RECORD' and plugin_state == "installed":
+-                        return ['spamplugin.py,sha256=abc,123',
+-                                'hampkg/__init__.py,sha256=abc,123']
+-                    # 'SOURCES.txt' meta-data only available for plugins in development mode
+-                    elif name == 'SOURCES.txt' and plugin_state == "development":
+-                        return ['spamplugin.py',
+-                                'hampkg/__init__.py']
+-                    return []
++            "mainwrapper.py": """\
++            import pytest, importlib_metadata
+ 
+             class DummyEntryPoint(object):
+                 name = 'spam'
+                 module_name = 'spam.py'
+-                attrs = ()
+-                extras = None
+-                dist = DummyDistInfo()
++                group = 'pytest11'
+ 
+-                def load(self, require=True, *args, **kwargs):
++                def load(self):
+                     import spamplugin
+                     return spamplugin
+ 
+-            def iter_entry_points(group, name=None):
+-                yield DummyEntryPoint()
++            class DummyDistInfo(object):
++                version = '1.0'
++                files = ('spamplugin.py', 'hampkg/__init__.py')
++                entry_points = (DummyEntryPoint(),)
++                metadata = {'name': 'foo'}
+ 
+-            pkg_resources.iter_entry_points = iter_entry_points
++            def distributions():
++                return (DummyDistInfo(),)
++
++            importlib_metadata.distributions = distributions
+             pytest.main()
+-            """.format(
+-                plugin_state=plugin_state
+-            ),
+-            "test_foo.py": """
++            """,
++            "test_foo.py": """\
+             def test(check_first):
+                 check_first([10, 30], 30)
+ 
+Index: pytest-3.10.1/testing/test_config.py
+===================================================================
+--- pytest-3.10.1.orig/testing/test_config.py
++++ pytest-3.10.1/testing/test_config.py
+@@ -5,6 +5,8 @@ from __future__ import print_function
+ import sys
+ import textwrap
+ 
++import importlib_metadata
++
+ import _pytest._code
+ import pytest
+ from _pytest.config import _iter_rewritable_modules
+@@ -509,31 +511,25 @@ def test_options_on_small_file_do_not_bl
+ 
+ 
+ def test_preparse_ordering_with_setuptools(testdir, monkeypatch):
+-    pkg_resources = pytest.importorskip("pkg_resources")
+-
+-    def my_iter(group, name=None):
+-        assert group == "pytest11"
+ 
+-        class Dist(object):
+-            project_name = "spam"
+-            version = "1.0"
++    class EntryPoint(object):
++        name = "mytestplugin"
++        group = "pytest11"
+ 
+-            def _get_metadata(self, name):
+-                return ["foo.txt,sha256=abc,123"]
++        def load(self):
++            class PseudoPlugin(object):
++                x = 42
+ 
+-        class EntryPoint(object):
+-            name = "mytestplugin"
+-            dist = Dist()
++            return PseudoPlugin()
+ 
+-            def load(self):
+-                class PseudoPlugin(object):
+-                    x = 42
++    class Dist(object):
++        files = ()
++        entry_points = (EntryPoint(),)
+ 
+-                return PseudoPlugin()
++    def my_dists():
++        return (Dist,)
+ 
+-        return iter([EntryPoint()])
+-
+-    monkeypatch.setattr(pkg_resources, "iter_entry_points", my_iter)
++    monkeypatch.setattr(importlib_metadata, "distributions", my_dists)
+     testdir.makeconftest(
+         """
+         pytest_plugins = "mytestplugin",
+@@ -546,58 +542,45 @@ def test_preparse_ordering_with_setuptoo
+ 
+ 
+ def test_setuptools_importerror_issue1479(testdir, monkeypatch):
+-    pkg_resources = pytest.importorskip("pkg_resources")
+-
+-    def my_iter(group, name=None):
+-        assert group == "pytest11"
+-
+-        class Dist(object):
+-            project_name = "spam"
+-            version = "1.0"
+-
+-            def _get_metadata(self, name):
+-                return ["foo.txt,sha256=abc,123"]
+-
+-        class EntryPoint(object):
+-            name = "mytestplugin"
+-            dist = Dist()
+-
+-            def load(self):
+-                raise ImportError("Don't hide me!")
++    class DummyEntryPoint(object):
++        name = "mytestplugin"
++        group = "pytest11"
++        def load(self):
++            raise ImportError("Don't hide me!")
++
++    class Distribution(object):
++        version = "1.0"
++        files = ("foo.txt",)
++        entry_points = (DummyEntryPoint(),)
+ 
+-        return iter([EntryPoint()])
++    def distributions():
++        return (Distribution(),)
+ 
+-    monkeypatch.setattr(pkg_resources, "iter_entry_points", my_iter)
++    monkeypatch.setattr(importlib_metadata, "distributions", distributions)
+     with pytest.raises(ImportError):
+         testdir.parseconfig()
+ 
+ 
+ @pytest.mark.parametrize("block_it", [True, False])
+ def test_plugin_preparse_prevents_setuptools_loading(testdir, monkeypatch, block_it):
+-    pkg_resources = pytest.importorskip("pkg_resources")
+-
+     plugin_module_placeholder = object()
+ 
+-    def my_iter(group, name=None):
+-        assert group == "pytest11"
+-
+-        class Dist(object):
+-            project_name = "spam"
+-            version = "1.0"
+-
+-            def _get_metadata(self, name):
+-                return ["foo.txt,sha256=abc,123"]
+-
+-        class EntryPoint(object):
+-            name = "mytestplugin"
+-            dist = Dist()
++    class DummyEntryPoint(object):
++        name = "mytestplugin"
++        group = "pytest11"
++
++        def load(self):
++            return plugin_module_placeholder
++
++    class Distribution(object):
++        version = "1.0"
++        files = ("foo.txt",)
++        entry_points = (DummyEntryPoint(),)
+ 
+-            def load(self):
+-                return plugin_module_placeholder
++    def distributions():
++        return (Distribution(),)
+ 
+-        return iter([EntryPoint()])
+-
+-    monkeypatch.setattr(pkg_resources, "iter_entry_points", my_iter)
++    monkeypatch.setattr(importlib_metadata, "distributions", distributions)
+     args = ("-p", "no:mytestplugin") if block_it else ()
+     config = testdir.parseconfig(*args)
+     config.pluginmanager.import_plugin("mytestplugin")
+@@ -614,16 +597,21 @@ def test_plugin_preparse_prevents_setupt
+     "parse_args,should_load", [(("-p", "mytestplugin"), True), ((), False)]
+ )
+ def test_disable_plugin_autoload(testdir, monkeypatch, parse_args, should_load):
+-    pkg_resources = pytest.importorskip("pkg_resources")
+-
+-    def my_iter(group, name=None):
+-        raise AssertionError("Should not be called")
+-
++    class DummyEntryPoint(object):
++        project_name = name = "mytestplugin"
++        group = "pytest11"
++
++    class Distribution(object):
++        entry_points = (DummyEntryPoint(),)
++        files = ()
+     class PseudoPlugin(object):
+         x = 42
+ 
++    def distributions():
++        return (Distribution(),)
++
+     monkeypatch.setenv("PYTEST_DISABLE_PLUGIN_AUTOLOAD", "1")
+-    monkeypatch.setattr(pkg_resources, "iter_entry_points", my_iter)
++    monkeypatch.setattr(importlib_metadata, "distributions", distributions)
+     monkeypatch.setitem(sys.modules, "mytestplugin", PseudoPlugin())
+     config = testdir.parseconfig(*parse_args)
+     has_loaded = config.pluginmanager.get_plugin("mytestplugin") is not None
+Index: pytest-3.10.1/testing/test_entry_points.py
+===================================================================
+--- pytest-3.10.1.orig/testing/test_entry_points.py
++++ pytest-3.10.1/testing/test_entry_points.py
+@@ -2,16 +2,10 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import pkg_resources
+-
+-import pytest
+-
+-
+-@pytest.mark.parametrize("entrypoint", ["py.test", "pytest"])
+-def test_entry_point_exist(entrypoint):
+-    assert entrypoint in pkg_resources.get_entry_map("pytest")["console_scripts"]
++import importlib_metadata
+ 
+ 
+ def test_pytest_entry_points_are_identical():
+-    entryMap = pkg_resources.get_entry_map("pytest")["console_scripts"]
+-    assert entryMap["pytest"].module_name == entryMap["py.test"].module_name
++    dist = importlib_metadata.distribution("pytest")
++    entry_map = {ep.name: ep for ep in dist.entry_points}
++    assert entry_map["pytest"].value == entry_map["py.test"].value

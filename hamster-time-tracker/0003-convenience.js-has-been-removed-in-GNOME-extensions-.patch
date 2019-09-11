@@ -1,0 +1,25 @@
+From e3fadf3a419a4e6463ace40a335e9d399a10d9b2 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Mar 2019 14:28:28 +0100
+Subject: [PATCH 3/6] convenience.js has been removed in GNOME extensions >3.30
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index b298126..b1a6a7a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -56,7 +56,7 @@ collect:
+ 	mkdir -p $(BUILDDIR)
+ 	cp -R extension/* $(BUILDDIR)
+ 	cp -R data/* $(BUILDDIR)
+-	wget https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/master/lib/convenience.js -O $(BUILDDIR)/convenience.js
++	wget https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js -O $(BUILDDIR)/convenience.js
+ 
+ compile: collect
+ 	glib-compile-schemas $(BUILDDIR)/schemas
+-- 
+2.20.1
+

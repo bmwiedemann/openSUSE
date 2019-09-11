@@ -1,0 +1,33 @@
+Index: gnome-gmail-notifier-0.10.1/configure.ac
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/configure.ac
++++ gnome-gmail-notifier-0.10.1/configure.ac
+@@ -44,13 +44,13 @@ PKG_CHECK_MODULES(GGN, glib-2.0 >= $GLIB
+                        libnotify >= $LIBNOTIFY_REQUIRED
+                        libsoup-2.4 >= $LIBSOUP_REQUIRED
+                        libxml-2.0 >= $LIBXML2_REQUIRED
+-                       gstreamer-0.10 >= $GSTREAMER_REQUIRED
++                       gstreamer-1.0 >= $GSTREAMER_REQUIRED
+                        gnome-keyring-1 >= $GNOME_KEYRING_REQUIRED)
+ 
+ AC_SUBST(GGN_CFLAGS)
+ AC_SUBST(GGN_LIBS)
+ 
+-AC_PATH_PROG(GST_INSPECT, gst-inspect-0.10, no)
++AC_PATH_PROG(GST_INSPECT, gst-inspect-1.0, no)
+ if test x$GST_INSPECT = xno; then
+     AC_MSG_ERROR([Could not find a gst-inspect in your PATH])
+ fi
+Index: gnome-gmail-notifier-0.10.1/src/ggn-audio.c
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/src/ggn-audio.c
++++ gnome-gmail-notifier-0.10.1/src/ggn-audio.c
+@@ -114,7 +114,7 @@ static void ggn_audio_pad_added (GstElem
+   GstPad *sinkpad;
+ 
+   /* get the dynamic pad for the end of the chain. */
+-  sinkpad = gst_element_get_pad (convert, "sink");
++  sinkpad = gst_element_get_static_pad (convert, "sink");
+ 
+   /* link the two pads together. */
+   gst_pad_link (pad, sinkpad);

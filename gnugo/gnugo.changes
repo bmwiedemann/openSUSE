@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Sun Aug 23 05:33:42 UTC 2015 - i@marguerite.su
+
+- Update to version 3.9.1+git20130613.84a32e9:
+  + removed automake-1.4
+  + removed automake-1.4.patch from doc/Makefile.am
+  + reran automake to finish remove of automake-1.4
+  + Removed built joseki *.db files from EXTRA_DIST.
+  + gunnar_9_2.1. Remove tactical semeai reading. (#228)
+  + Change pieces to stones in board output in ascii mode.
+  + Avoid crashing due to registering an invalid loss move reason.
+
+-------------------------------------------------------------------
+Thu Feb 21 05:29:53 UTC 2013 - i@marguerite.su
+
+- Update to version 3.9.1
+  * small bug fixes and tunings.
+
+-------------------------------------------------------------------
+Fri Jan  8 17:01:51 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.8:
+  + many small improvements and tuning since 3.6
+  + experimental Monte Carlo mode (9x9 only)
+  + support for tiny boards
+  + GPL v3
+- Change License to GPL v3 or later.
+- Drop bugzilla-225902.patch: fixed upstream.
+- Remove unneeded BuildRequires: giflib-devel, glib-devel, krb5,
+  libpng-devel, libtiff-devel, openldap2-devel, xorg-x11-devel.
+- Do not call autoconf.
+- Use configure, make install macros, and bindir, datadir instead
+  of /usr/bin, /usr/share.
+
+-------------------------------------------------------------------
+Tue Dec 04 18:41:41 CET 2007 - mfabian@suse.de
+
+- remove openldap2 from BuildRequires.
+- use fdupes.
+
+-------------------------------------------------------------------
+Mon Apr  2 11:32:16 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Dec 05 19:21:04 CET 2006 - mfabian@suse.de
+
+- update to 3.7.10
+- fix Bugzilla #225902 ("comparison with string literal").
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb 04 18:24:19 CET 2005 - mfabian@suse.de
+
+- update to 3.7.2.
+- adapt XEmacs patch.
+
+-------------------------------------------------------------------
+Fri Jan 21 12:51:39 CET 2005 - mfabian@suse.de
+
+- add missing directories to file list to make it build on
+  SuSE 9.2.
+
+-------------------------------------------------------------------
+Thu Jan 20 16:50:35 CET 2005 - mfabian@suse.de
+
+- install Emacs-lisp files.
+- small fix for XEmacs to make at least the ASCII mode work with
+  XEmacs (graphical mode still doesn't work).
+
+-------------------------------------------------------------------
+Wed Dec  1 14:28:41 CET 2004 - adrian@suse.de
+
+- update to version 3.6
+
+-------------------------------------------------------------------
+Sat Jan 10 20:07:32 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct  6 09:24:10 CEST 2003 - adrian@suse.de
+
+- update to version 3.4
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 00:02:16 CET 2003 - mmj@suse.de
+
+- Add %install_info macros [#23416]
+
+-------------------------------------------------------------------
+Wed Jan 29 00:47:28 CET 2003 - ro@suse.de
+
+- fix build with gcc-3.3 (-Wp,-lang-c89 unsupported) 
+
+-------------------------------------------------------------------
+Tue Aug  6 16:32:43 CEST 2002 - adrian@suse.de
+
+- fix file conflicts
+
+-------------------------------------------------------------------
+Tue Aug  6 11:15:06 CEST 2002 - adrian@suse.de
+
+- update to version 3.2
+- use BuildRoot
+
+-------------------------------------------------------------------
+Wed May  9 23:35:22 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Nov  6 02:01:37 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Fri Mar 31 11:33:19 CEST 2000 - nadvornik@suse.cz
+
+- removed directories owned by aaa_dir
+- filelist cleanup
+
+-------------------------------------------------------------------
+Wed Feb 16 15:22:01 CET 2000 - uli@suse.de
+
+- fixed %files section
+
+-------------------------------------------------------------------
+Wed Feb 16 14:01:00 CET 2000 - kettner@suse.de
+
+- New version 2.6
+- moved man and info to /usr/share
+
+-------------------------------------------------------------------
+Thu Nov 25 15:53:33 CET 1999 - kettner@suse.de
+
+- New version 2.5.42
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.

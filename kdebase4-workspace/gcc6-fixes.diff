@@ -1,0 +1,48 @@
+--- kcontrol/randr/randroutput.cpp
++++ kcontrol/randr/randroutput.cpp
+@@ -202,12 +202,12 @@
+ 		m_connected = (event->connection == RR_Connected);
+ 		loadSettings(false);
+ 		if (!m_connected && currentCrtc != None)
+-			setCrtc(None);
++			setCrtc(NULL);
+ 	}
+ 
+ 	// check if we are still connected, if not, release the crtc connection
+ 	if(!m_connected && m_crtc->isValid())
+-		setCrtc(None);
++		setCrtc(NULL);
+ 
+ 	if(changed)
+ 		emit outputChanged(m_id, changed);
+@@ -267,7 +267,7 @@
+ RandRMode RandROutput::mode() const
+ {
+ 	if (!isConnected())
+-		return None;
++		return NULL;
+ 
+ 	if (!m_crtc)
+ 		return RandRMode();
+--- kwin/glxbackend.cpp
++++ kwin/glxbackend.cpp
+@@ -45,7 +45,7 @@
+     , window(None)
+     , fbconfig(NULL)
+     , glxWindow(None)
+-    , ctx(None)
++    , ctx(NULL)
+     , m_bufferAge(0)
+     , haveSwapInterval(false)
+ {
+--- libs/kephal/service/xrandr12/randroutput.cpp
++++ libs/kephal/service/xrandr12/randroutput.cpp
+@@ -227,7 +227,7 @@
+ RandRMode RandROutput::mode() const
+ {
+     if (!isConnected())
+-        return None;
++        return NULL;
+ 
+     if (!m_crtc)
+         return RandRMode();

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Apr 13 20:08:36 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181004
+	* Worked on suppressing fallthrough warnings
+
+-------------------------------------------------------------------
+Sun Oct  1 22:06:13 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170609
+	* applied 2017 updates
+	* worked on tests
+
+-------------------------------------------------------------------
+Thu Jan  8 17:18:59 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+
+-------------------------------------------------------------------
+Fri Aug 29 20:12:06 UTC 2014 - Greg.Freemyer@gmail.com
+
+- initial package (v0~20140105)
+

@@ -1,0 +1,86 @@
+From: Andreas Stieger <andreas.stieger@gmx.de>
+Date: Wed, 06 Mar 2013 00:05:08 +0000
+Subject: Remove volatile build information
+Upstream: never
+
+Prevent unneccessary rebuilds of binary packages differing only by date, time and build host.
+
+---
+ subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java |    4 ++--
+ subversion/libsvn_subr/opt.c                                                  |    8 ++------
+ subversion/libsvn_subr/version.c                                              |    4 ++--
+ subversion/tests/cmdline/getopt_tests_data/svn--version--verbose_stdout       |    1 -
+ subversion/tests/cmdline/getopt_tests_data/svn--version_stdout                |    1 -
+ 5 files changed, 6 insertions(+), 12 deletions(-)
+
+Index: subversion-1.11.1/subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
+===================================================================
+--- subversion-1.11.1.orig/subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java	2018-04-16 15:51:21.000000000 +0200
++++ subversion-1.11.1/subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java	2019-01-18 15:03:10.407588129 +0100
+@@ -144,10 +144,10 @@ public class BasicTests extends SVNTests
+         {
+             vx = client.getVersionExtended(false);
+             String result = vx.getBuildDate();
+-            if (result == null || result.trim().length() == 0)
++            if (result == null)
+                 throw new Exception("Build date empty");
+             result = vx.getBuildTime();
+-            if (result == null || result.trim().length() == 0)
++            if (result == null)
+                 throw new Exception("Build time empty");
+             result = vx.getBuildHost();
+             if (result == null || result.trim().length() == 0)
+Index: subversion-1.11.1/subversion/libsvn_subr/opt.c
+===================================================================
+--- subversion-1.11.1.orig/subversion/libsvn_subr/opt.c	2018-03-15 12:54:29.000000000 +0100
++++ subversion-1.11.1/subversion/libsvn_subr/opt.c	2019-01-18 15:03:10.407588129 +0100
+@@ -1085,12 +1085,8 @@ svn_opt__print_version_info(const char *
+   if (quiet)
+     return svn_cmdline_printf(pool, "%s\n", SVN_VER_NUMBER);
+ 
+-  SVN_ERR(svn_cmdline_printf(pool, _("%s, version %s\n"
+-                                     "   compiled %s, %s on %s\n\n"),
+-                             pgm_name, SVN_VERSION,
+-                             svn_version_ext_build_date(info),
+-                             svn_version_ext_build_time(info),
+-                             svn_version_ext_build_host(info)));
++  SVN_ERR(svn_cmdline_printf(pool, _("%s, version %s\n\n"),
++                             pgm_name, SVN_VERSION));
+   SVN_ERR(svn_cmdline_printf(pool, "%s\n", svn_version_ext_copyright(info)));
+ 
+   if (footer)
+Index: subversion-1.11.1/subversion/libsvn_subr/version.c
+===================================================================
+--- subversion-1.11.1.orig/subversion/libsvn_subr/version.c	2019-01-04 12:38:50.000000000 +0100
++++ subversion-1.11.1/subversion/libsvn_subr/version.c	2019-01-18 15:03:10.407588129 +0100
+@@ -139,8 +139,8 @@ svn_version_extended(svn_boolean_t verbo
+ {
+   svn_version_extended_t *info = apr_pcalloc(pool, sizeof(*info));
+ 
+-  info->build_date = __DATE__;
+-  info->build_time = __TIME__;
++  info->build_date = "";
++  info->build_time = "";
+   info->build_host = SVN_BUILD_HOST;
+   info->copyright = apr_pstrdup
+     (pool, _("Copyright (C) 2019 The Apache Software Foundation.\n"
+Index: subversion-1.11.1/subversion/tests/cmdline/getopt_tests_data/svn--version--verbose_stdout
+===================================================================
+--- subversion-1.11.1.orig/subversion/tests/cmdline/getopt_tests_data/svn--version--verbose_stdout	2015-05-11 14:35:49.000000000 +0200
++++ subversion-1.11.1/subversion/tests/cmdline/getopt_tests_data/svn--version--verbose_stdout	2019-01-18 15:03:10.407588129 +0100
+@@ -1,5 +1,4 @@
+ svn, version 1.9.0-dev (under development)
+-   compiled Feb 26 2014, 15:15:42 on x86_64-unknown-openbsd5.5
+ 
+ Copyright (C) 2012 The Apache Software Foundation.
+ This software consists of contributions made by many people;
+Index: subversion-1.11.1/subversion/tests/cmdline/getopt_tests_data/svn--version_stdout
+===================================================================
+--- subversion-1.11.1.orig/subversion/tests/cmdline/getopt_tests_data/svn--version_stdout	2015-05-11 14:35:49.000000000 +0200
++++ subversion-1.11.1/subversion/tests/cmdline/getopt_tests_data/svn--version_stdout	2019-01-18 15:03:10.407588129 +0100
+@@ -1,5 +1,4 @@
+ svn, version 1.9.0-dev (under development)
+-   compiled Feb 26 2014, 15:15:42 on x86_64-unknown-openbsd5.5
+ 
+ Copyright (C) 2014 The Apache Software Foundation.
+ This software consists of contributions made by many people;

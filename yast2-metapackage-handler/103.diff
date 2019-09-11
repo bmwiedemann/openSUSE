@@ -1,0 +1,21 @@
+Index: src/OneClickInstallWorkerFunctions.ycp
+===================================================================
+--- src/OneClickInstallWorkerFunctions.ycp	(revision 46099)
++++ src/OneClickInstallWorkerFunctions.ycp	(working copy)
+@@ -148,6 +148,7 @@
+ 			print(sformat(_("Marking package %1 for installation"),name));
+ 			//Prefer packages from repositories specified in the YMP
+ 			boolean inYmpRepos = false;
++			/*
+ 			foreach (integer id, (list<integer>)merge(sourceids,deduped_repos), 
+ 			{
+ 			 	y2debug("Looking for %1 in %2",name,id);
+@@ -163,6 +164,7 @@
+ 			});
+ 			if (!inYmpRepos)
+ 			 	y2debug("Didn't find %1 At ALL in any YMP repos",name);
++			*/
+ 			//If we didn't find it in the repos specified in the YMP try any repo.
+ 			if (!inYmpRepos && !Pkg::PkgInstall(name))
+ 			{
+

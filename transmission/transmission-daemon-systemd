@@ -1,0 +1,10 @@
+[Unit]
+Description=Transmission BT daemon
+After=network.target
+
+[Service]
+User=transmission
+ExecStart=/usr/bin/transmission-daemon -f --blocklist -g /var/lib/transmission/.config/transmission
+
+[Install]
+WantedBy=multi-user.target

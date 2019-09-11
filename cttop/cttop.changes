@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Nov  5 00:18:10 UTC 2015 - rpm@fthiessen.de
+
+- Fixed BuildRequires of ncurses to build on all openSUSE versions
+
+-------------------------------------------------------------------
+Thu Feb 26 14:18:59 UTC 2015 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (version 0.3.g25)

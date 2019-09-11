@@ -1,0 +1,24 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:40 +0200
+Subject: [PATCH] suse-speccheck-utf8.diff
+
+===================================================================
+---
+ SpecCheck.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: rpmlint-rpmlint-1.11/SpecCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/SpecCheck.py
++++ rpmlint-rpmlint-1.11/SpecCheck.py
+@@ -642,8 +642,8 @@ SPEC file to build a valid RPM package.'
+ ("Name:" tag). Either rename your package or the specfile.''',
+ 
+ 'non-utf8-spec-file',
+-'''The character encoding of the spec file is not UTF-8.  Convert it for
+-example using iconv(1).''',
++'''The character encoding of the spec file (or the merged bits from the .changes file)
++is not UTF-8.  Convert it for example using iconv(1).''',
+ 
+ 'use-of-RPM_SOURCE_DIR',
+ '''You use $RPM_SOURCE_DIR or %{_sourcedir} in your spec file. If you have to

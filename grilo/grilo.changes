@@ -1,0 +1,497 @@
+-------------------------------------------------------------------
+Wed Jul 17 10:05:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.9:
+  + grl-metadata-key: fix introspection.
+  + grl-inspect: Fix core keys extraction.
+
+-------------------------------------------------------------------
+Tue Jul 16 17:44:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.8:
+  + Add missing symbols to the docs.
+  + pls: Simplify thumbnail validity handling.
+  + media: Fix get_last_played annotation.
+  + Add metadata keys for MB Release ID and MB Release Group ID.
+  + Deprecates GRL_METADATA_KEY_MB_RELEASE_ID and
+    GRL_METADATA_KEY_MB_RELEASE_GROUP_ID.
+  + Removes obsolte GRL_CAPS_TYPE and GRL_OPERATION_OPTIONS_TYPE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 21 11:22:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.3.7:
+  + Fix crash in totem after emitting source-{add remove}.
+  +  Add grl_related_keys_{get,set}_int64 functions.
+  + Support transform GValue on grl_data_*_for_id().
+  + Add per Source configs on keyfile.
+  + Pattern matching for GRL_PLUGIN_RANKS.
+  + Documentation improvements.
+  + Removed Autotools supported.
+  + Updated translations.
+- Add meson BuildRequires and macros, switch to meson buildsystem
+  following upstreams changes.
+
+-------------------------------------------------------------------
+Fri Jul 27 18:34:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.3.6:
+  + Last release with Autotools included.
+  + Add support to build of grl-inspect with Python3.
+  + Bugs fixed: glgo#GNOME/grilo!1
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:23:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.3.5:
+  + Bugs fixed: glgo#GNOME/grilo!10, glgo#GNOME/grilo!9,
+    glgo#GNOME/grilo#4, glgo#GNOME/grilo#2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:17 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 24 16:12:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.3.4:
+  + Bugs fixed: bgo#707643, bgo#778612.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 14 23:33:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.3.3:
+  + Support for Meson build included.
+  + Updated Travis CI to use docker and support meson builds.
+  + Bugs fixed: bgo#771339, bgo#773422, bgo#774394, bgo#774578,
+    bgo#775950.
+  + Updated translations.
+- Drop grilo-fix-32bit-build.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 10 21:10:43 UTC 2016 - dimstar@opensuse.org
+
+- Add grilo-fix-32bit-build.patch: Fix build on i586 (bgo#769331).
+
+-------------------------------------------------------------------
+Sat Sep 10 20:51:40 UTC 2016 - dimstar@opensuse.org
+
+- Pass --disable-debug to configure: make use of fortified sources
+  as passed in our optflags (-D_FORTIFY_SOURCE=2).
+
+-------------------------------------------------------------------
+Sat Sep 10 15:38:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.3.2:
+  + Bugs fixed: bgo#766386, bgo#769331, bgo#769830.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 17 16:59:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.3.1:
+  + Added new keys: GRL_METADATA_KEY_ALBUM_DISC_NUMBER,
+    GRL_METADATA_KEY_COMPOSER, GRL_METADATA_KEY_ALBUM_ARTIST.
+  + Deprecated GRL_NET errors in favour of GRL_IO errors.
+  + Bugs fixed: bgo#732879, bgo##760426, bgo#760648, bgo#761820,
+    bgo#761868, bgo#763009, bgo#764077.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 21 17:58:11 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 0.3.0:
+  + "last-played-time" now is a GDateTime key, instead of string.
+  + Support builtin plugins.
+  + Get rid of XML plugin definitions.
+  + New way of defining plugins (GRL_PLUGIN_DEFINE).
+  + Plugins must be explicitly activated after loading them.
+  + Merge GrlMedia{Audio,Video,Image,Box} in GrlMedia.
+  + Updated translations.
+- Rename libgrilo-0_2-1 to libgrilo-0_3-0, typelib-1_0-Grl-0_2 to
+  typelib-1_0-Grl-0_3, libgrlnet-0_2-0 to libgrlnet-0_3-0,
+  libgrlpls-0_2 to libgrlpls-0_3, typelib-1_0-GrlNet-0_2 to
+  typelib-1_0-GrlNet-0_3, typelib-1_0-GrlPls-0_2 to
+  typelib-1_0-GrlPls-0_3 following upstreams soname bumps.
+
+-------------------------------------------------------------------
+Sat Dec 19 16:05:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.2.15:
+  + Support builtin plugins.
+  + Bugs fixed: bgo#747026, bgo#755368, bgo#755433, bgo#755516,
+    bgo#755702, bgo#758654, bgo#758655.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 16:38:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.2.14:
+  + Fix soname bump version.
+- Changes from version 0.2.13:
+  + Updated i18n
+  + Fixed tests
+  + Added GRL_CORE_ERROR_AUTHENTICATION_TOKEN
+  + Bugs fixed: bgo#745676, bgo#747029, bgo#747953, bgo#748455,
+    bgo#748550, bgo#748873, bgo#748896, bgo#749587, bgo#749887,
+    bgo#754093, bgo#754401.
+  + Updated translations.
+- Disable make check: as we installed to %{buildroot}, the plugins
+  cannot be found in the location configured (outside of
+  %{buildroot}).
+
+-------------------------------------------------------------------
+Tue Feb 17 19:47:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.2.12:
+  + Add man pages for grilo-test-ui and grl-launch.
+  + Modernized Vala bindings.
+  + Sources are network aware.
+  + Internal changes.
+  + Several fixes, including: bgo#724308, bgo#725148, bgo#730663,
+    bgo#732878, bgo#740113, bgo#740128, bgo#740186, bgo#740761,
+    bgo#740942, bgo#740943, bgo#741020, bgo#741081, bgo#741207,
+    bgo#741230, bgo#741315, bgo#741605, bgo#742645, bgo#743351,
+    bgo#743353, bgo#744168, bgo#744408.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 24 16:59:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.2.11:
+  + Fixes in build system.
+  + Generate AUTHORS file automatically-
+  + Added new keys: GRL_METADATA_KEY_TITLE_FROM_FILENAME,
+    GRL_METADATA_KEY_MB_ALBUM_ID.
+  + Added new tool: grl-launch, to run Grilo operations from
+    command line.
+  + Bugs fixed: bgo#706877, bgo#726698, bgo#727223, bgo#728812,
+    bgo#730003, bgo#730548, bgo#731282, bgo#733232, bgo#733285.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 12:31:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.10:
+  + Increase glib requirement to 2.34 or greater.
+  + Added new property in GrlSource: "source-tags".
+  + Added new signal in GrlRegistry: "metadata-key-added".
+  + Added new functions: grl_media_{set,get}_size().
+  + Added new key: GRL_METADATA_KEY_SIZE.
+  + Updated man page.
+  + Bugs fixed: bgo#629002, bgo#724019, bgo#724648, bgo#724658,
+    bgo#724660, bgo#724871, bgo#725419, bgo#726197, bgo#726340.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 18:29:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.2.9:
+  + Several fixes, including:
+    - Fix introspection scanner warnings (bgo#724620).
+    - Return an error when the entry media is of the wrong type
+      (bgo#724540).
+    - Remove check for libvala in configure.ac (bgo#724430).
+- Replace pkgconfig(libvala-0.24) for pkgconfig(vapigen) since
+  configure does not look for a particular version anymore.
+
+-------------------------------------------------------------------
+Tue Feb 11 08:16:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.8:
+  + Added support for Vala 0.22 and 0.24.
+  + Bump required libglib version to 2.32.
+  + Added new core function: grl_deinit().
+  + Added new property in GrlSource: "source-icon".
+  + Added a new library: Grilo Playlist, to handle playlists as
+    containers.
+  + Bugs fixed: bgo#657926, bgo#695303, bgo#709208, bgo#709651,
+    bgo#710185, bgo#722358, bgo#722398, bgo#722407, bgo#723077,
+    bgo#723191, bgo#723989, bgo#724018.
+  + Updated translations.
+- Pass --enable-grl-pls to configure to ensure playlist support is
+  being enabled.
+- Add pkgconfig(totem-plparser) BuildRequires: dependency for the
+  playlist support.
+- Drop grilo-libvala-0.22.patch and grilo-libvala-0.24.patch: fixed
+  upstream.
+- Drop gnome-common BuildRequires and call to gnome-autgen.sh: no
+  longer required, as we don't carry any patches.
+- Add libgrlpls-0_2-0 and typelib-1_0-GrlNet-0_2 subpackages: new
+  libraries.
+- Require libgrlpls-0_2-0 and typelib-1_0-GrlNet-0_2 by the
+  -devel package.
+
+-------------------------------------------------------------------
+Tue Jan 28 20:31:58 UTC 2014 - dimstar@opensuse.org
+
+- Switch to vala 0.24 for GNOME 3.12 target:
+  + Replace pkgconfig(libvala-0.22) BuildRequires with
+    pkgconfig(libvala-0.24), for the actual switch.
+  + Add grilo-libvala-0.24.patch: Add support for Vala 0.24.
+
+-------------------------------------------------------------------
+Wed Sep 18 06:33:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.7:
+  + Added Travis CI support for building.
+  + Bump required libsoup version to 2.4.
+  + Re-factored Grilo Net library and fixed several bugs.
+  + Show 'slow' keys in grl-inspect.
+  + Updates in documentation.
+  + dded new core function: grl_operation_set_data_full().
+  + Bugs fixed: bgo#700478, bgo#704804, bgo#705944, bgo#706132,
+    bgo#706412, bgo#706487, bgo#706491, bgo#706495, bgo#706805,
+    lp#1224410.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 18 21:35:24 UTC 2013 - zaitor@opensuse.org
+
+- Add grilo-libvala-0.22.patch: Add libvala 0.22 support.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the build system. 
+- Exchange pkgconfig(libvala-0.20) for pkgconfig(libvala-0.22)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Fri May 17 08:28:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.6:
+  + Fixed GrlNet cache.
+  + Added support for Vala 0.20.
+  + Improved test-ui.
+  + Some fixes, including bgo#696860, bgo#697175, bgo#700310,
+    bgo#700311.
+  + Added new functions in GrlConfig
+    - grl_config_get_api_token_secret().
+    - grl_config_set_api_token_secret().
+  + Improved grl-inspect
+    - Print list of available keys.
+    - Show more information about plugins.
+  + Updated translations.
+- Drop grilo-libvala-0.20.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to gnome-autogen.sh, as
+  we no longer carry any patches.
+- Create a -lang package.
+- Provide %{name} by libgrilo package, in order to have the -lang
+  package installable.
+- Recommend grilo-lang from libgrilo.
+
+-------------------------------------------------------------------
+Thu Apr 18 21:44:15 UTC 2013 - dimstar@opensuse.org
+
+- Add grilo-libvala-0.20.patch: Add libvala 0.20 support.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the build system.
+
+-------------------------------------------------------------------
+Tue Mar 19 19:38:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.5:
+  + Fixed compilation problem with gcc 4.2.
+  + Removed some warnings.
+  + Several changes in test-ui
+  + Bugs fixed: bgo#689577, bgo#690612, bgo#690613, bgo#692118,
+    bgo#692873, bgo#694390.
+
+-------------------------------------------------------------------
+Sun Dec  2 20:13:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.4:
+  + Fixed compilation problem with gcc 4.2.
+  + Improved documentation.
+  + Added support for boolean, float and datetime keys in filters.
+  + Some fixes in core, including:
+    - bgo#688301: docs: GrlMedia: Improve certificate/region
+      function docs.
+    - bgo#689053: grl-source: fix compare_queue_element function.
+
+-------------------------------------------------------------------
+Mon Nov 12 12:55:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.3:
+  + Added TMDb plugin in the Test UI program.
+  + grl_source_resolve() can be invoked with sources that do not
+    implement it
+  + grl_source_store_metadata() can be invoked with sources that do
+    not implement it
+  + Added support for mocking network answers, for testing purpose
+  + Added support for capturing network content, for testing
+    purpose
+  + Improved (de)serialization: support all metadata key types and
+    multi-valued elements
+  + Added new keys: GRL_METADATA_KEY_FAVOURITE,
+    GRL_METADATA_KEY_REGION, GRL_METADATA_KEY_KEYWORD,
+    GRL_METADATA_KEY_PERFORMER, GRL_METADATA_KEY_PRODUCER,
+    GRL_METADATA_KEY_DIRECTOR and GRL_METADATA_KEY_ORIGINAL_TITLE
+  + Sources can expose the type of media they can handle
+  + Improved documentation
+  + Bugs fixed: bgo#679686, bgo#685274, bgo#685861, bgo#685967,
+    bgo#686032, bgo#686033, bgo#686206, bgo#686271, bgo#687104.
+- Drop grilo-linking.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to gnome-autogen.sh, as
+  we no longer carry any patches.
+
+-------------------------------------------------------------------
+Wed Oct 17 08:28:12 UTC 2012 - dimstar@opensuse.org
+
+- Add grilo-linking.patch: Fix linking of GrlNet.gir.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the BuildSystem.
+
+-------------------------------------------------------------------
+Fri Oct  5 08:06:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Rename macro from GRL_CAPS_TYPE to GRL_TYPE_CAPS
+  + Sort entries in documentation
+  + net: Add possibility to set custom HTTP headers on requests
+    (bgo#680436)
+  + Several bug fixes.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:20:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.1:
+  + Use G_MODULE_BIND_LOCAL to load modules
+  + Less disturbances using warnings instead of errors
+  + Add option to disable Test UI
+  + Bugs fixed: bgo#681757, bgo#681983, bgo#681984, bgo#681992,
+    bgo#682024, bgo#682791, bgo#682793, bgo#682855, bgo#685161,
+    bgo#685169.
+- Drop grilo-int2pointer.patch: fixed upstream.
+- Replace pkgconfig(libvala-0.16) BuildRequires with
+  pkgconfig(libvala-0.18): As this package lives in the same
+  devel project as vala, we don't have to care too much about older
+  versions to be found in older openSUSE releases.
+- Pass --enable-vala to configure: this helps us to abort the build
+  early in case something does not work out as expected rather than
+  only at the end, when the files section does not match.
+
+-------------------------------------------------------------------
+Mon Aug 13 11:09:58 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.0:
+  + Merged GrlMediaSource and GrlMetadataSource in one GrlSource
+  + Improvements in the full resolution algorithm
+  + Added operation options and source capabilities
+  + Added filtering capabilities
+  + Changes in API names
+  + Added support for Vala 0.14 - 0.18
+  + Added support for Windows building
+  + Use GDateTime for date-based keys
+  + Use numbers to identify metadata keys
+  + Improvements in Grilo Net library
+  + Improvements in Vala bindings
+  + Improvements in documentation
+  + Improvements in the build system
+  + Bugs fixed: bgo#662748, bgo#662762, bgo#662763, bgo#665938.
+- Add grilo-int2pointer.patch: Fix brp errors, taken from git.
+- Rename libgrilo-0_1-0 to libgrilo-0_2-1, typelib-1_0-Grl-0_1 to
+  typelib-1_0-Grl-0_2, libgrlnet-0_1-0 to libgrlnet-0_2-0,
+  typelib-1_0-GrlNet-0_1 to typelib-1_0-GrlNet-0_2, following
+  upstreams soname bumps.
+
+-------------------------------------------------------------------
+Mon Aug 13 09:14:04 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.20:
+  + Test UI requires Gtk+ 3
+  + Fixes in the Test UI
+  + Improved documentation
+  + Bugs fixed: bgo#676822, bgo#676823, bgo#679674.
+
+-------------------------------------------------------------------
+Wed Jun  6 19:28:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.19:
+  + Fixes in the Test UI
+  + Improvements in Grilo Net library
+  + Added support for Vala 0.16 and 0.18
+  + Improvements in the build system
+  + Several fixes, including:
+    - bgo#662748: tracker plugin: support multiple resources in a
+      larger file
+    - bgo#665938: Do not dist gir_DATA
+    - bgo#672923: Make it possible to override the user-agent in
+      GrlNetWc
+- Drop grilo-vala-0_16.patch: fixed upstream
+- Drop gnome-commong BuildRequires and call to gnome-autogen.sh:
+  no longer needed, as we don't carry any patches anymore.
+- Drop xz BuildRequires as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Fri Jan 13 11:07:11 UTC 2012 - dimstar@opensuse.org
+
+- Change pkgconfig(libvala-0.14) BuildRequires to
+  pkgconfig(libvala-0.16)
+- Add grilo-vala-0_16.patch: Detect libvala 0.16
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the build system.
+
+-------------------------------------------------------------------
+Sat Dec 10 19:05:46 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.18:
+  + Added support for Windows builds
+  + Bugs fixed: bgo#662762, bgo#662763.
+- Drop grilo-no-wc-test.patch: fixed upstream
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  as we do no longer carry any patches.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that...
+  See bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Dec  8 22:44:46 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib files into their own subpackages:
+  typelib-1_0-Grl-0_1 and typelib-1_0-GrlNet-0_1.
+- Add typelib-1_0-Grl-0_1 and typelib-1_0-GrlNet-0_1 Requires to
+  devel subpackage.
+
+-------------------------------------------------------------------
+Sun Nov 27 20:17:00 UTC 2011 - dimstar@opensuse.org
+
+- Add grilo-no-wc-test.patch: wc-test fails to build with new glib.
+  Instead of fixing the build, we follow upstreams approch and drop
+  it.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  the patch modifies the build system.
+
+-------------------------------------------------------------------
+Mon Sep  5 15:32:24 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.17:
+  + Minor improvements in documentation
+  + Well-manage end of search/browse in splitted sources
+  + Minor fixes in build system
+  + Install XML files in the same place as libraries
+  + Restrict loading of a subset of plugins
+  + Added support for Vala 0.14
+  + Fixed some bugs, including: bgo#657549, bgo#657920.
+- Remove sed hack in %build to support vala 0.14: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug  3 18:15:43 UTC 2011 - dimstar@opensuse.org
+
+- Spec cleanup for inclusion into Factory.
+
+-------------------------------------------------------------------
+Thu Jul  7 15:24:30 UTC 2011 - cbosdonnat@novell.com
+
+- Added vala and gtk+3 dependencies
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jul  7 13:52:12 UTC 2011 - cbosdonnat@novell.com
+
+- Created initial packages with grilo 0.1.16
+

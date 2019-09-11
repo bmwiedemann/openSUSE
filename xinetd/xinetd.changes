@@ -1,0 +1,658 @@
+-------------------------------------------------------------------
+Thu Aug  2 10:24:30 UTC 2018 - tchvatal@suse.com
+
+- Update to 2.3.15.4:
+  * Small buildfixes from gentoo
+  * Various tiny tweaks from pullrequests
+
+-------------------------------------------------------------------
+Tue Feb  6 15:24:36 UTC 2018 - kukuk@suse.com
+
+- Move /etc/xinet.d directory from filesystem package to this one,
+  as this is no standard package anymore.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:46:40 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Aug 31 08:55:57 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.3.15.3:
+  * .2 skipped due to typo in configure.ac
+  * Various manpage fixes
+  * Fix for multiple log targets crashing xinetd bsc#1054532
+
+-------------------------------------------------------------------
+Thu Aug 31 08:34:52 UTC 2017 - tchvatal@suse.com
+
+- Expose XINETD_BIND_DELAY as sysconfig variable (bnc#972691)
+- Add patch xinetd-service-sysconfig.patch
+
+-------------------------------------------------------------------
+Fri May 12 10:16:56 UTC 2017 - tchvatal@suse.com
+
+- Use # rename for the URL to keep sane name
+
+-------------------------------------------------------------------
+Thu May 11 10:11:35 UTC 2017 - tchvatal@suse.com
+
+- Update to tagged release 2.3.15.1:
+  * Contains changes from bellow, just uses the tagged archive
+
+-------------------------------------------------------------------
+Thu May 04 10:07:43 UTC 2017 - tchvatal@suse.com
+
+- Update to version 2.3.15.1+git20170504.58c3611:
+  * Warn when not using tirpc and fix some quoting in configure.ac
+  * Fixup poll.h related warnings
+  * Fix compat with ipv6 to ipv4 fallback wrt bsc#1037552
+
+-------------------------------------------------------------------
+Fri Apr 21 08:02:58 UTC 2017 - tchvatal@suse.com
+
+- Update to version 2.3.15.1+git20170421.98c06ca:
+  * Call us 2.3.15.1 as per COPYING
+  * Fix typo in dirname for xinetd config files in etc
+  * Remove unused libwrap define and remove pedantic from cflags
+
+-------------------------------------------------------------------
+Fri Apr 21 07:45:24 UTC 2017 - tchvatal@suse.com
+
+- Update to version 2.3.15+git20170421.8a895f9:
+  * Drop the include of misc.h that was removed
+  * Never enable howl it is completely deprecated/dead
+  * Kill mdns/howl combo as the protocol is deprecated; not present even on debian stable
+  * Update CHANGELOG a bit
+  * Do not include malloc.h but rather stdlib.h
+  * Make osx failures fatal and run make distcheck only on linux.
+  * Both are just int, no need for unsigned
+  * timep is used only when not using POLL
+  * Fix copy&pasto in POLL code
+  * Howl was removed
+- Drop patches now merged in git:
+  * xinetd-2.3.14-strict-aliasing-fix.diff
+  * xinetd-2.3.14-nodeadlock-revisited.patch
+  * xinetd-CVE-2013-4342.patch
+  * xinetd-2.3.14-server_args-fix.diff
+  * xinetd-2.3.14-man.dif
+  * xinetd-2.3.14-ident-bind.patch
+  * xinetd-2.3.14-nodeadlock.diff
+  * xinetd-2.3.14-ipv6-ipv4-fallback.patch
+  * xinetd-2.3.14-file-limit.patch
+  * xinetd-2.3.14-honour_disable.patch
+  * xinetd-2.3.14-pie.patch
+  * xinetd-config.patch
+  * xinetd-deactivating-error.patch
+  * xinetd-2.3.14-retry-binds.patch
+  * xinetd-2.3.14-restore-nofile-limits.patch
+
+-------------------------------------------------------------------
+Wed Jun 15 12:29:38 UTC 2016 - tchvatal@suse.com
+
+- Add patch to fix bnc#972691 random bind fail:
+  * xinetd-2.3.14-retry-binds.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 08:33:14 UTC 2015 - tchvatal@suse.com
+
+- Update README.SUSE to put emphasis on systemd socket activation
+- Remove description of ipv6 support that is in xinetd since 2004+-
+- Clean-up the specfile a bit and update urls to something working
+  (github)
+- Change tarball to github one as the upstream site seems dead
+
+-------------------------------------------------------------------
+Fri Aug 29 07:59:05 UTC 2014 - fcrozat@suse.com
+
+- Update license tag to use SPDX 1.2.
+
+-------------------------------------------------------------------
+Sat Jun 14 10:58:10 UTC 2014 - tchvatal@suse.com
+
+- Drop xinetd.conf not used in spec and we use upstream one anyway.
+
+-------------------------------------------------------------------
+Fri Jun 13 13:16:38 UTC 2014 - tchvatal@suse.com
+
+- Revert the syslog target as it is obsolete.
+
+-------------------------------------------------------------------
+Fri Jun 13 08:36:19 UTC 2014 - tchvatal@suse.com
+
+- Fix error in logs when disabling service and reloading; bnc#870904
+  * xinetd-deactivating-error.patch
+
+-------------------------------------------------------------------
+Wed Jun 11 13:32:35 UTC 2014 - tchvatal@suse.com
+
+- Wait for the syslog target too.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:28:32 UTC 2014 - vcizek@suse.com
+
+- Add support for setting maximum number of open files (bnc#855685)
+  * added xinetd-2.3.14-file-limit.patch
+  * added xinetd-2.3.14-restore-nofile-limits.patch
+
+- fixes for security vulnerabilities
+  * CVE-2013-4342 (bnc#844230)
+    - xinetd ignores user and group directives for tcpmux services
+    - added xinetd-CVE-2013-4342.patch
+
+-------------------------------------------------------------------
+Mon Mar 17 17:44:18 UTC 2014 - mt@suse.de
+
+- Also removed obsolete syslog.target from start order (bnc#866433)
+
+-------------------------------------------------------------------
+Mon Mar 17 08:07:02 UTC 2014 - werner@suse.de
+
+- Make sure that xinetd service becomes real after network is up (bnc#866433) 
+
+-------------------------------------------------------------------
+Fri Apr 19 12:38:35 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.3.15
+ * If the address we're binding to is a multicast address, do the multicast join.
+ * Merge the Fedora patch to turn off libwrap processing on tcp rpc services.
+   Patch xinetd-2.3.12-tcp_rpc.patch.
+ * Merge the Fedora patch to add labeled networking.
+   Patch xinetd-2.3.14-label.patch r1.4.
+ * Merge the Fedora patch to fix getpeercon() for labeled networking in MLS environments.
+   Patch xinetd-2.3.14-contextconf.patch r1.1
+ * Merge the Fedora patch for int->ssize_t. Patch xinetd-2.3.14-ssize_t.patch r1.1
+ * Change compiler flags, -Wconversion generates excessive and unnecessary
+   warnings with gcc, particularly all cases of ntohs(uint16_t).
+   http://gcc.gnu.org/bugzilla/show_bug.cgi?id=6614 Additionally add -Wno-unused
+   to prevent unnecessary warnings regarding unused function parameters when the
+   function is a callback conforming to a standard interface.
+ * Merge patch from Thomas Swan regarding CVE-2012-0862
+- merged the SUSE xinetd.conf with the upstream one
+  this changes default target for logging - now the syslog is used
+  instead of /var/log/xinetd.log
+  * xinetd-config.patch
+- logrotate dependency has been dropped and config file is installed
+  in /usr/share/doc/packages/xinetd
+- drop rc.xinetd and add xinetd.service instead
+- add an entry to README.SUSE explaining the systemd socket activation
+
+-------------------------------------------------------------------
+Fri Apr  5 09:12:24 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Sat Sep 15 05:44:55 UTC 2012 - coolo@suse.com
+
+- fix typo in license string - it's SUSE-xinetd
+
+-------------------------------------------------------------------
+Tue May 29 13:11:23 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-xinedt
+  Use this license from license.opensuse.org until upstream SPDX accepts
+  xinetd into the official list
+
+-------------------------------------------------------------------
+Wed Dec 21 13:45:09 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:54 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Thu Nov 17 20:13:51 UTC 2011 - lchiquitto@suse.com
+
+- added xinetd-2.3.14-nodeadlock-revisited.patch: ignore SIGCONT
+  and avoid print in signal handler (bnc#726737)
+
+-------------------------------------------------------------------
+Wed Apr 21 08:55:03 UTC 2010 - mseben@novell.com
+
+- added ident-bind.patch : use right size of addresses in bind() call.
+  Also use getpeername addresses when connecting to ident service to
+  prevent address family mismatch between socket(),
+  bind() and connect() calls. (bnc#598305)
+
+-------------------------------------------------------------------
+Tue Jan 26 22:55:43 CET 2010 - jengelh@medozas.de
+
+- SPARC64 requires large PIE model
+
+-------------------------------------------------------------------
+Sun Dec 20 16:29:37 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Sep 15 15:00:38 CEST 2009 - mseben@novell.com
+
+- fixed rc.xinetd [bnc#457903]:
+  * rc-script start: check if xinetd isn't already running
+  * rc-script stop: wait until pid file has disappeared
+
+-------------------------------------------------------------------
+Sun Aug 17 08:57:22 CEST 2008 - aj@suse.de
+
+- Fix init script warnings.
+
+-------------------------------------------------------------------
+Fri Sep 14 14:09:28 CEST 2007 - ro@suse.de
+
+- add a pidfile for xinetd in rc-script (#300526) 
+
+-------------------------------------------------------------------
+Fri Aug 10 08:42:30 CEST 2007 - anosek@suse.cz
+
+- added description of the previous patch to README.SuSE
+
+-------------------------------------------------------------------
+Tue Aug  7 08:45:51 CEST 2007 - anosek@suse.cz
+
+- fixed: xinetd does not honour disable line
+  [#254613] (honour_disable.patch)
+  * As soon as we realize that the service is disabled
+    we don't continue parsing its config
+
+-------------------------------------------------------------------
+Wed Apr 18 13:41:48 CEST 2007 - anosek@suse.cz
+
+- improved description for YaST (rc.xinetd)
+
+-------------------------------------------------------------------
+Tue Dec 19 15:13:26 CET 2006 - prusnak@suse.cz
+
+- added "discard" to service files (and modified ipv6-ipv4-fallback.patch) [#222777]
+
+-------------------------------------------------------------------
+Mon Feb  6 12:52:41 CET 2006 - mmarek@suse.cz
+
+- fixed logrotate file rotating rotated files
+  [#120068, #147899]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 22 10:36:41 CET 2005 - mmarek@suse.cz
+
+- use 'FLAGS = IPv6 IPv4' in included service files
+- document the feature in xinetd.conf(5)
+
+-------------------------------------------------------------------
+Tue Nov 01 11:27:00 CET 2005 - mmarek@suse.de
+
+- updated to version 2.3.14, removed integrated patches:
+   * xinetd-2.3.13-gcc4.diff
+   * xinetd-2.3.13-ia64.dif
+   * xinetd-2.3.13-integer-overflow.diff
+   * xinetd-2.3.13-rlimit.diff
+- added option to fallback to IPv4 if IPv6 is not available [#127784]
+
+-------------------------------------------------------------------
+Mon Oct 10 10:19:50 CEST 2005 - mmarek@suse.cz
+
+- added upstream patch to fix integer overflow in handling of rlimit_*
+  attributes [#120730]
+
+-------------------------------------------------------------------
+Tue Oct  4 13:28:56 CEST 2005 - mmarek@suse.cz
+
+- Fix endless loop in xinetd/util.c [#118878] 
+
+-------------------------------------------------------------------
+Tue Aug 23 00:53:40 CEST 2005 - postadal@suse.cz
+
+- added logrotate to Requires 
+
+-------------------------------------------------------------------
+Tue Aug  9 16:55:35 CEST 2005 - postadal@suse.cz
+
+- fixed logrotate file [#95214]
+
+-------------------------------------------------------------------
+Fri Jun  3 10:34:31 CEST 2005 - kukuk@suse.de
+
+- Compile with -fpie/-pie
+
+-------------------------------------------------------------------
+Fri Apr  1 15:23:42 CEST 2005 - meissner@suse.de
+
+- lvalue problems fixed
+- fixed undefined argv copying behaviour.
+
+-------------------------------------------------------------------
+Wed Jan 26 13:24:54 CET 2005 - postadal@suse.cz
+
+- added logrotate file [#46353]
+
+-------------------------------------------------------------------
+Wed Nov 10 14:59:33 CET 2004 - postadal@suse.cz
+
+- added patch to avoid deadlock (LTC#9961, SUSE#43024)
+
+-------------------------------------------------------------------
+Thu Apr 22 12:58:10 CEST 2004 - postadal@suse.cz
+
+- added one second timeout during server startup for deciding if the process
+  started without error [#36175]
+
+-------------------------------------------------------------------
+Thu Feb 12 13:43:09 CET 2004 - postadal@suse.cz
+
+- updated to version 2.3.13
+- fixed code that broke strict aliasing
+
+-------------------------------------------------------------------
+Sun Jan 11 09:43:10 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Aug 07 17:29:09 CEST 2003 - postadal@suse.cz
+
+- updated to version 2.3.12
+- removed obsoleted pacthes (parse-fix, check_from_solar_designer,
+  used_valgrind_to_fix, close_listening_descriptor)
+- use new stop_on_removal/restart_on_upate macros
+
+-------------------------------------------------------------------
+Thu Jun 12 11:08:26 CEST 2003 - kukuk@suse.de
+
+- Remove /etc/xinetd.d from filelist, is in filesystem
+
+-------------------------------------------------------------------
+Mon Jun 02 13:32:05 CEST 2003 - postadal@suse.cz
+
+- updated to version 2.3.11 (fixed a lot of security bugs)
+  * TCPMUX parser updates
+  * remove RECORD logging option
+  * change Sclose to make sure it always closes the fd
+  * added better error handling to filelog.c
+  * error messages now go to syslog instead of stderr in strparse.c
+  * correct problems with bind specified in the default section
+  * correct banner to match man pages
+
+- removed obsoleted flag RECORD from xinetd.conf on line log_on_failure
+- removed obsoleted reuse option from rcxinetd script
+- added new fix from CVS (check_from_solar_designer, close_listening_descriptor
+  and used_valgrind_to_fix)
+
+-------------------------------------------------------------------
+Fri Mar 07 19:39:05 CET 2003 - postadal@suse.cz
+
+- fixed parsing of bad config file
+
+-------------------------------------------------------------------
+Thu Feb 20 17:23:56 CET 2003 - postadal@suse.cz
+
+- fixed spec (untar source6)
+
+-------------------------------------------------------------------
+Wed Feb 19 17:04:42 CET 2003 - postadal@suse.cz
+
+- fixed bug in parsing config file [#22876]
+- moved service files to xinetd-service_files.tar.bz2
+
+-------------------------------------------------------------------
+Mon Jan 13 11:00:08 CET 2003 - jderfina@suse.cz
+
+- upgrade to version 2.3.10.
+- Close the service descriptors on fork. This only matters for internal
+  forking services, since anything that calls exec() will get those closed
+  automagically. This will help reduce the file discriptors used by the daemon
+  when using some internal services.
+- Fix a numbering bug with xinetd's internal flag representation that was
+  manifesting its self as all services being disabled upon recieving a SIGUSR2
+  (hard reconfig)
+- and many others. See /usr/share/doc/packages/xinetd/CHANGELOG.
+
+-------------------------------------------------------------------
+Tue Oct 22 14:02:39 CEST 2002 - jderfina@suse.cz
+
+- updated to version 2.3.9
+- removed template for all services from xinetd.conf. Internal
+  services moved as separate files to /etc/xinetd.d/. All external
+  services must provide their configuration files to /etc/xinetd.d/.
+
+-------------------------------------------------------------------
+Mon Oct 07 16:11:23 CEST 2002 - jderfina@suse.cz
+
+- reconfig signal for xinetd is SIGHUP now. (#20527)                            
+- added /etc/xinetd.d/ for simpler work with services. (#20534)
+
+-------------------------------------------------------------------
+Wed Sep 18 11:27:52 CEST 2002 - jderfina@suse.cz
+
+- in rc.xinetd moved portmap and autofs from section Required-Start to
+  section X-UnitedLinux-Should-Start
+
+-------------------------------------------------------------------
+Fri Aug 16 16:20:55 CEST 2002 - postadal@suse.cz
+
+- added %insserv_prereq and %fillup_prereq to PreReq [#18018]
+
+-------------------------------------------------------------------
+Fri Aug 09 12:25:04 CEST 2002 - nadvornik@suse.cz
+
+- updated to 2.3.6
+  - merged ipv6 and ipv4 support
+  - uses ipv4 by default, ipv6 can be configured per service
+- removed obsolete patch xinetd-2.3.2-ipv4.dif
+
+-------------------------------------------------------------------
+Sat Jul 27 18:50:17 CEST 2002 - adrian@suse.de
+
+- do not source rc.config
+
+-------------------------------------------------------------------
+Thu Jun 20 10:48:13 CEST 2002 - postadal@suse.cz
+
+- added definition for an imapd service (bug #16682), 
+  service imapd is enabled by default 
+
+-------------------------------------------------------------------
+Tue Mar 12 09:05:34 CET 2002 - postadal@suse.cz
+
+- removed obsolete START_INETD variable [#14796]
+
+-------------------------------------------------------------------
+Mon Feb 25 17:07:57 CET 2002 - postadal@suse.cz
+
+- modified copyright in /etc/xinetd.conf & /etc/init.d/xinetd
+
+-------------------------------------------------------------------
+Fri Jan 11 11:23:50 CET 2002 - cihlar@suse.cz
+
+- fixed xinetd.conf to disable services with
+  specified "id" [#12799]
+
+-------------------------------------------------------------------
+Wed Dec 12 09:17:30 CET 2001 - cihlar@suse.cz
+
+- removed START_XINETD
+
+-------------------------------------------------------------------
+Thu Nov 15 09:33:24 CET 2001 - cihlar@suse.cz
+
+- added service nntp/leafnode to xinetd.conf
+
+-------------------------------------------------------------------
+Tue Sep 18 10:35:40 CEST 2001 - cihlar@suse.cz
+
+- updated to version 2.3.3:
+  1) Fixed the filelog problem of printing garbage
+  2) Fixed the RPC parser to correctly handle RPC version 
+     ranges again
+
+-------------------------------------------------------------------
+Mon Aug 20 09:17:21 CEST 2001 - cihlar@suse.cz
+
+- updated to version 2.3.2
+
+-------------------------------------------------------------------
+Thu Aug 16 10:23:27 CEST 2001 - cihlar@suse.cz
+
+- updated to version 2.3.1
+- removed obsolete audit patch
+
+-------------------------------------------------------------------
+Wed Aug  1 12:56:10 CEST 2001 - cihlar@suse.cz
+
+- updated to version 2.3.0
+- added audit patch
+- improved patch for kernels without ipv6
+  (per_source works now)
+- added FAQ
+
+-------------------------------------------------------------------
+Fri Jun 22 10:02:09 CEST 2001 - cihlar@suse.cz
+
+- stop daemon by killproc -QUIT, not -TERM
+
+-------------------------------------------------------------------
+Thu Jun 21 10:49:27 CEST 2001 - cihlar@suse.cz
+
+- fixed security bugs: owerflow, umask and added <=0
+  in srtx_* functions - diff of Sebastian Krahmer
+
+-------------------------------------------------------------------
+Thu Jun 14 07:25:26 CEST 2001 - cihlar@suse.cz
+
+- provides inet-daemon [#8675]
+
+-------------------------------------------------------------------
+Mon Jun  4 08:32:53 CEST 2001 - cihlar@suse.cz
+
+- fixed rcxinetd [#8631]
+
+-------------------------------------------------------------------
+Mon May 21 07:43:12 CEST 2001 - cihlar@suse.cz
+
+- fixed cast warnings on ia64
+- fixed includes
+
+-------------------------------------------------------------------
+Thu Apr 26 15:36:30 MEST 2001 - draht@suse.de
+
+- added option -reuse to start script to enable a restart of xinetd
+  without killing processes.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:41:50 CEST 2001 - cihlar@suse.cz
+
+- fixed init script by new skeleton
+
+-------------------------------------------------------------------
+Wed Mar 21 15:08:58 CET 2001 - cihlar@suse.cz
+
+- compile with -inet6
+- fixed to work with kernels without ipv6 [#6792]
+
+-------------------------------------------------------------------
+Thu Feb 15 10:19:32 CET 2001 - cihlar@suse.cz
+
+- moved whole files from dif
+- use ipop3d instead of popper in /etc/xinetd.conf [#6255]
+- use in.ftpd instead of wu.ftpd in /etc/xinetd.conf
+- improved startscript
+- added suse_update_config
+- use RPM_OPT_FLAGS
+- removed patch for ipv6 - it works better without it
+
+-------------------------------------------------------------------
+Wed Feb 14 13:52:38 CET 2001 - cihlar@suse.cz
+
+- applied patch for ipv6
+- bzipped sources
+
+-------------------------------------------------------------------
+Mon Jan  8 19:03:17 CET 2001 - smid@suse.cz
+
+- tcp wrapper support added
+
+-------------------------------------------------------------------
+Wed Dec  6 09:49:49 CET 2000 - smid@suse.cz
+
+- fixed typo in xinetd.conf [#4485]
+
+-------------------------------------------------------------------
+Tue Nov 28 18:01:09 CET 2000 - ro@suse.de
+
+- startscript fixed 
+
+-------------------------------------------------------------------
+Tue Jun 20 14:47:44 CEST 2000 - smid@suse.cz
+
+- upgrade to 2.1.8.8p3
+
+-------------------------------------------------------------------
+Tue May 16 10:34:16 CEST 2000 - smid@suse.cz
+
+- upgrade to 2.1.8.8p2
+- buildroot added
+
+-------------------------------------------------------------------
+Wed Mar  1 14:02:14 MET 2000 - choeger@suse.de
+
+- new version with ipv6 support and loadavg support
+
+-------------------------------------------------------------------
+Tue Jan  4 09:44:28 MET 2000 - choeger@suse.de
+
+- disabled ident service per default
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul  5 15:20:15 MEST 1999 - choeger@suse.de
+
+- changed to version 2.1.8.6b5, because 2.2.1 is no
+  longer maintained
+
+-------------------------------------------------------------------
+Thu Dec 10 19:34:37 MET 1998 - choeger@suse.de
+
+- added _correct_ symlink to /usr/sbin/rcxinetd :-)
+
+-------------------------------------------------------------------
+Thu Dec 10 18:40:36 MET 1998 - bs@suse.de
+
+- added symlink /usr/sbin/rxxinetd
+
+-------------------------------------------------------------------
+Wed Dec  9 17:46:25 MET 1998 - choeger@suse.de
+
+- made init-scripts complete
+
+-------------------------------------------------------------------
+Mon Nov 16 18:33:17 MET 1998 - ro@suse.de
+
+- added -lcrypt if available
+
+-------------------------------------------------------------------
+Thu Nov 12 16:27:00 MET 1998 - choeger@suse.de
+
+- security fix for /tmp racecondition
+
+----------------------------------------------------------------------------
+Wed Feb  4 15:45:36 MET 1998 - choeger@suse.de
+
+- v2.2.1 with optimated xinetd.conf
+
+----------------------------------------------------------------------------
+Fri Oct 31 13:08:39 MET 1997 - choeger@suse.de
+
+- new package, 2.2.1
+

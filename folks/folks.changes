@@ -1,0 +1,821 @@
+-------------------------------------------------------------------
+Fri Jan  4 00:30:47 UTC 2019 - bjorn.lie@gmail.com
+
+- Drop post(un) handling of glib2_gsettings_schema_post(un) for
+  libfolks-data subpackage, no longer needed.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:32 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 14 14:11:47 UTC 2017 - fezhang@suse.com
+
+- Drop build support of deprecated libsocialweb backend.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:01:43 UTC 2017 - jengelh@inai.de
+
+- Update summaries. Trim %if/%endif markers for package
+  declarations that are idempotent.
+
+-------------------------------------------------------------------
+Fri Jul 21 18:11:01 UTC 2017 - zaitor@opensuse.org
+
+- Replace pkgconfig(tracker-sparql-1.0) with
+  pkgconfig(tracker-sparql-2.0) BuildRequires.
+- Add folks-tracker.2.0.patch: Reference Tracker-2.0 from the .gir
+  file.
+
+-------------------------------------------------------------------
+Mon Jul  3 10:38:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.4:
+  + Various fixes for Vala compiler and VAPI changes in upstream
+    projects.
+  + Remove redundant locking.
+  + Disable unknown BlueZ devices by default; BlueZ devices must
+    now be explicitly enabled via a configuration file before they
+    will be queried for personas.
+  + Fix build with latest versions of valadoc.
+  + Bugs fixed: bgo#781485, bgo#720274, bgo#778005, bgo#773011.
+
+-------------------------------------------------------------------
+Thu Mar 16 10:04:18 UTC 2017 - dimstar@opensuse.org
+
+- Dummy changelog - fool repo-checker in seeing this is rebuilt.
+
+-------------------------------------------------------------------
+Tue Sep 20 23:00:43 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.11.3:
+  + Various small code fixes for newer Vala versions.
+  + Bugs fixed: bgo#758741, bgo#761192.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 20:12:49 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Nov 28 01:02:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.11.2:
+  + Various EDS unit test fixes, improvements and simplifications.
+  + Improve Telepathy error handling on connection failure of a CM
+    to avoid timeouts.
+  + Bugs fixed: bgo#751044.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 24 17:30:11 UTC 2015 - dimstar@opensuse.org
+
+- Dummy change: rebuild against evolution-data-server 3.18.0.
+
+-------------------------------------------------------------------
+Tue May 26 16:05:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.11.1:
+  + Usability fixes in folks-inspect.
+  + Various EDS unit test fixes.
+  + A few race condition fixes in the EDS backend.
+  + Bugs fixed: bgo#646808.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 14:00:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.11.0:
+  + Major changes:
+    - The --enable-tests configure option has been renamed to
+      --enable-modular-tests.
+    - Installed tests are now supported using
+      --enable-installed-tests.
+    - Add a vCard-like ExtendedInfo interface.
+    - Upgrade to new EDS address book timeout API.
+    - Add search-based retrieval of Individuals.
+  + Bugs fixed:
+    - bgo#641211: Add arbitrary-field interface for applications
+      to store trivial per-person data.
+    - bgo#743398: Add support for installed-tests.
+    - bgo#743934: FTBFS after EDS commit 884fb8d8.
+    - bgo#646808: Add search-based retrieval.
+  + Various API changes.
+- Bump module_version to 43, following upstream.
+
+-------------------------------------------------------------------
+Wed Jan 21 18:54:59 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 12 19:08:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.10.0:
+  + Remove useless use of the avatar cache in the EDS backend.
+  + Listen for primary store changes from GSettings.
+  + Bugs fixed: bgo#697695, bgo#731470, bgo#728520.
+- Add pkgconfig(tracker-sparql-1.0) BuildRequires and pass
+  --enable-tracker-backend to configure in order to build the
+  tracker backend.
+- Following above changes, add new sub-packages libfolks-tracker
+  and typelib-1_0-FolksTracker-0_6, and handle these in
+  post/postun.
+
+-------------------------------------------------------------------
+Mon Aug 18 18:02:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.8:
+  + Fix loading backends on distributions which install software in
+    loop mounted file systems, such as Tinycorelinux.
+  + Bugs fixed: bgo#732244, bgo#733891.
+
+-------------------------------------------------------------------
+Mon Aug 18 18:02:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.7.1:
+  + Major changes:
+    - Ensure Telepathy VAPI files are built after being cleaned.
+    - Rebuild distributed Telepathy VAPI files to be compatible
+      with Vala < 0.26.
+  + Bugs fixed: bgo#732080.
+- Changes from version 0.9.7:
+  + Major changes:
+    - Add a dummy backend.
+    - Vast numbers of fixes to the unit tests.
+    - Improvements to how Personas are transferred between
+      Individuals.
+    - Many build system cleanups.
+    - New website (https://wiki.gnome.org/Projects/Folks).
+    - Allow backend libraries to have separate LT versions from the
+      core library.
+    - Performance improvements in the BlueZ backend.
+    - Test suite for the BlueZ backend using python-dbusmock.
+  + Bugs fixed: bgo#648811, bgo#651672, bgo#705742, bgo#711544,
+    bgo#711827, bgo#712274, bgo#720707, bgo#722335, bgo#722579,
+    bgo#722892, bgo#723054, bgo#723187, bgo#723540, bgo#724058,
+    bgo#724339, bgo#724591, bgo#724809, bgo#726787, bgo#726973,
+    bgo#726980, bgo#727405, bgo#727944, bgo#730201, bgo#731175,
+    bgo#731325, bgo#731464.
+- Drop folks-bnc855848-individual-crash.patch: fixed upstream.
+- Bump module_version to 42, following upstream.
+
+-------------------------------------------------------------------
+Mon Aug 18 11:36:18 UTC 2014 - fcrozat@suse.com
+
+- Disable libsocialweb support after 13.1, it is no longer
+  supported (bnc#892161).
+
+-------------------------------------------------------------------
+Mon Aug 18 11:36:18 UTC 2014 - fcrozat@suse.com
+
+- Disable libsocialweb support for SLE12, it is no longer supported
+  (bnc#892161).
+
+-------------------------------------------------------------------
+Fri Apr 11 17:57:18 UTC 2014 - dimstar@opensuse.org
+
+- Introduce with_zeitgeist defines (currently set to 0) to easily
+  switch Zeitgeist integration on and off. At this moment, it is
+  crashing empathy on startup if switched on.
+
+-------------------------------------------------------------------
+Mon Jan 27 12:52:07 CST 2014 - federico@suse.com
+
+- Added folks-bnc855848-individual-crash.patch to fix bnc#855848.
+  Empathy would crash when using IRC channels; this fixes the crash.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:27:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.6:
+  + Major changes:
+    - Add a BlueZ backend.
+    - Use Vala to generate GIR files, fixing a number of bugs.
+    - Various build system and testing improvements.
+  + Avoid useless string copies when normalizing phone numbers.
+  + Bugs fixed: bgo#706683, bgo#706826, bgo#706857, bgo#705608,
+    bgo#697262, bgo#705403, bgo#679826, bgo#709674, bgo#697209,
+    bgo#710178, bgo#682698, bgo#710869, bgo#708059, bgo#685848,
+    bgo#711403, bgo#711406.
+- Do not pass --enable-vala to configure: the tarball has been
+  prepared with a recent enough version of vala, which we do not
+  have available yet (version 0.22.0.28).
+
+-------------------------------------------------------------------
+Tue Aug 27 06:41:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + Multiple IndividualAggregator instances are now not officially
+    supported.
+  + Bugs fixed: bgo#705289, bgo#706532.
+- Change module_version defines to 41.
+- Drop folks-return-value.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Aug  2 13:02:38 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.4:
+  + Fatal warnings are now turned off when distchecking.
+  + EDS dependency has been bumped to 3.9.1 to fix a Vala binding
+    issue.
+  + Various API changes.
+  + Bugs fixed: bgo#699865, bgo#703402, bgo#703450, bgo#703514,
+    bgo#703709, bgo#703830, bgo#704922, bgo#705196, bgo#703516,
+    bgo#701850.
+- Pass --disable-fatal-warnings to configure to be less strict.
+- Change module_version defines to 40.
+- Create new subpackage for the new typelibs:
+  + typelib-1_0-FolksEds-0_6
+  + typelib-1_0-FolksLibsocialweb-0_6
+  + typelib-1_0-FolksTelepathy-0_6.
+- Add folks-return-value.patch: return a value from
+  folks_small_set_copy().
+
+-------------------------------------------------------------------
+Mon Jul  8 07:47:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.3:
+  + Bugs fixed: bgo#683873, bgo#686715, bgo#698890, bgo#702490.
+- Changes from version 0.9.2:
+  + API changes: Add LocationDetails interface to specify a Persona
+    or Individual's geographical location.
+  + Bugs fixed: bgo#693333, bgo#694883, bgo#695628, bgo#695648,
+    bgo#695719, bgo#695381, bgo#696179, bgo#682903, bgo#694385,
+    bgo#700253.
+
+-------------------------------------------------------------------
+Mon Feb 18 08:46:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.1:
+  + Fix build with e-d-s master (bgo#694049).
+- Changes from version 0.9.0:
+  + Added an ofono backend.
+  + Ported to libgee 0.8.x
+  + Various API changes.
+  + Bugs fixed: bgo#682941, bgo#685084, bgo#686056, bgo#685250,
+    bgo#686674, bgo#686506, bgo#686693, bgo#685401, bgo#687050,
+    bgo#686673, bgo#688834, bgo#688923, bgo#689146, bgo#689859,
+    bgo#677633, bgo#685992, bgo#690989, bgo#690990, bgo#690876,
+    bgo#691167, bgo#686695, bgo#691382, bgo#691923, bgo#692122,
+    bgo#693435, bgo#673918, bgo#692951.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:21:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + Bugs fixed: bgo#684014, bgo#683390, bgo#672709, bgo#684954
+  + Updated translations.
+- Remove hack to remove x-bit from AUTHORS: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 12 07:01:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.4.1:
+  + Re-roll release with correct soversion.
+- Changes from version 0.7.4:
+  + Bugs fixed: bgo#664072, bgo#680335, bgo#681164, bgo#681346,
+    bgo#681420, bgo#681476, bgo#681726, bgo#682346, bgo#682572,
+    bgo#682719, bgo#682809, bgo#683093, bgo#683267, bgo#683319,
+    bgo#683390, bgo#683452.
+- Drop folks-new_vala.patch: fixed upstream.
+- Bump module_version to 37, following upstream changes.
+
+-------------------------------------------------------------------
+Sun Jul 29 20:30:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.3:
+  + bgo#629537: Support anti-linking
+  + Bugs fixed: bgo#652637, bgo#657456, bgo#660128, bgo#660236,
+    bgo#669158, bgo#674611, bgo#675223, bgo#678696, bgo#679116,
+    bgo#679618.
+- Bump module_version to 36, following upstreams changes.
+
+-------------------------------------------------------------------
+Tue Jul 17 10:05:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.2.2:
+  + Minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 29 17:26:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.2.1:
+  + bgo#678734: Add profiling API
+  + Bugs fixed: bgo#677166, bgo#678474, bgo#678781, bgo#678811,
+    bgo#679020.
+- Bump module_version to 35, following upstreams changes.
+
+-------------------------------------------------------------------
+Mon Jun 18 17:16:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.1:
+  + Port Folks to GSettings (bgo#647909)
+  + Bugs fixed: bgo#627403, bgo#663890, bgo#672709, bgo#674256,
+    bgo#675121, bgo#675292, bgo#676023.
+- Drop pkgconfig(gconf-2.0) BuildRequires: no longer needed after
+  the port to GSettings.
+- Add pkgconfig(zeitgeist-1.0) BuildRequires: new dependency.
+- Split a libfolks-data package, which contains the glib schema and
+  GConf conversion information. This package is required by
+  libfolks, but is split in order to allow parallel installation of
+  multiple libfolks<n> packages.
+
+-------------------------------------------------------------------
+Wed May 16 09:30:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.0:
+  + Folks now uses the Connection.ContactList Telepathy spec
+    instead of the deprecated Channel.ContactList. This means
+    legacy Connection Managers (notably telepathy-butterfly) are
+    not supported any more.
+  + API Changes:
+    - Add IndividualAggregator.look_up_individual().
+  + Bugs fixed:
+    - bgo#630822: Support Connection.Interface.ContactList API.
+    - bgo#658576: Need API to get a FolksIndividual from his ID.
+    - bgo#671662: Renamed alias of Facebook contact is not saved.
+- Bump module_version define to 33, following upstream change.
+
+-------------------------------------------------------------------
+Tue Apr 17 05:53:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.9:
+  + Forced quiescence timeout has been increased to 30s (from 5s)
+  + Updates and improvements to the Telepathy backend test suite
+  + Bugs fixed: bgo#672980.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:09:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.8:
+  + FOLKS_DEBUG has been removed in favour of G_MESSAGES_DEBUG (and
+    the bug where folks would set G_MESSAGES_DEBUG for any process
+    linked to it has been fixed)
+  + A --disable-fatal-warnings configure flag has been added for
+    non-developers
+  + Update favourite status of EDS contacts with membership of the
+    ‘Starred in Android’ Google Contacts group
+  + Improvements to linking suggestions (potential matches)
+  + Improvements to folks-inspect to make it a good command line
+    citizen
+  + Small API addition.
+  + Bugs fixed: bgo#660235, bgo#661490, bgo#669984, bgo#670191,
+    bgo#670347, bgo#670348, bgo#670523, bgo#670872, bgo#671499,
+    bgo#671714, bgo#671900, bgo#672373, bgo#672381.
+- Drop folks-libsocialweb-quiescent.patch: fixed upstream.
+- Bump module_version define to 32, following upstream change.
+
+-------------------------------------------------------------------
+Mon Mar  5 07:25:41 UTC 2012 - vuntz@opensuse.org
+
+- Add folks-libsocialweb-quiescent.patch: fix issue where the
+  libsocialweb backend caused empathy to not display contacts in
+  the contact list.
+
+-------------------------------------------------------------------
+Thu Feb 23 07:20:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.7:
+  + Small API additions.
+  + Bugs fixed: bgo#657063, bgo#659610, bgo#666310, bgo#666528,
+    bgo#666540, bgo#667410, bgo#667535, bgo#668415, bgo#670196.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Bump module_version define to 31, following upstream change.
+
+-------------------------------------------------------------------
+Wed Dec 21 12:35:22 UTC 2011 - vuntz@opensuse.org
+
+- Split typelib file into typelib-1_0-Folks-0_6 subpackage.
+- Add typelib-1_0-Folks-0_6 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Dec 14 08:10:25 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.6:
+  + Various API changes
+  + Bugs fixed: bgo#664158, bgo#663889, bgo#665039, bgo#665728,
+    bgo#665692, bgo#665376.
+- Replace License tag with spdx identifier (LGPL-2.1+).
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that...
+  See bnc#697467 for more details.
+- Bump module_version define to 30, following upstream change.
+
+-------------------------------------------------------------------
+Tue Nov 15 14:32:41 UTC 2011 - vuntz@opensuse.org
+
+- Really enable parallel build: fix typo smp_flags => smp_mflags.
+
+-------------------------------------------------------------------
+Sat Nov 12 20:08:39 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.5:
+  + Add favourites support to EDS backend.
+  + Behavior changes:
+    - PostalAddress.equal() now ignores PostalAddress.uid
+    - NoteFieldDetails.equal() now ignores NoteFieldDetails.uid
+  + Small API additions and deprecations.
+  + Bugs fixed: bgo#662285, bgo#662433, bgo#660908, bgo#662770,
+    bgo#662616, bgo#662274, bgo#662314, bgo#663798, bgo#659585.
+- Bump module_version define to 29, following upstream change.
+
+-------------------------------------------------------------------
+Tue Oct 18 20:35:53 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.4.1:
+  + Bugs fixed: bgo#662095.
+- Changes from version 0.6.4:
+  + Small API additions.
+  + Bugs fixed: bgo#660217, bgo#657602, bgo#660937, bgo#661475.
+- Bump module_version define, following upstream change.
+
+-------------------------------------------------------------------
+Tue Sep 27 09:01:17 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.3.2:
+  + Bugs fixed: bgo#660140, bgo#659041, bgo#660051.
+
+-------------------------------------------------------------------
+Sat Sep 24 09:27:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.3.1:
+  + Bugs fixed: bgo#658631, bgo#658002, bgo#659737.
+
+-------------------------------------------------------------------
+Mon Sep 19 06:36:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.3:
+  + Major changes:
+    - Cleanup of the definition of "writeable" which involves a
+      couple of API deprecations and additions, and some internal
+      re-working.
+    - Beginnings of standardising TYPE values for
+      AbstractFieldDetails
+  + Several API changes, see NEWS for details.
+  + Bugs fixed: bgo#658631, bgo#658331, bgo#658874, bgo#658730,
+    bgo#633781, bgo#657142, bgo#658002, bgo#657065, bgo#658323,
+    bgo#659095, bgo#659128, bgo#657141, bgo#658531, bgo#658328,
+    bgo#646847, bgo#658161, bgo#657738, bgo#653623.
+- Bump the module_version macro to reflect upstream change.
+
+-------------------------------------------------------------------
+Thu Sep  8 21:13:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.2.1:
+  + Bugs fixed: bgo#658580.
+
+-------------------------------------------------------------------
+Thu Sep  8 10:57:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.2:
+  + Several API changes, see NEWS for details.
+  + Bugs fixed: bgo#645056, bgo#653777, bgo#657635, bgo#657510,
+    bgo#656184, bgo#657971, bgo#657789, bgo#657282, bgo#657969,
+    bgo#657783, bgo#658411, bgo#656689.
+- Define a soversion macro so we can differentiate the major
+  version of the libraries and the version used to locate backends.
+
+-------------------------------------------------------------------
+Wed Aug 31 13:31:19 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.1:
+  + Bugs fixed: bgo#656659, bgo#655374, bgo#657067, bgo#657332.
+- Change vala-devel BuildRequires to vala, as we only need the vala
+  compiler.
+
+-------------------------------------------------------------------
+Sat Aug 13 20:47:40 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.0:
+  + Several API changes, see NEWS for details.
+  + Add EDS backend.
+  + Allow writing to properties of all personas.
+  + Add support for presence status from Telepathy.
+  + Bugs fixed: bgo#649925, bgo#646244, bgo#652463, bgo#652434,
+    bgo#648071, bgo#652472, bgo#629716, bgo#652660, bgo#652449,
+    bgo#653325, bgo#653746, bgo#638281, bgo#654509, bgo#652048,
+    bgo#652425, bgo#645549, bgo#650422, bgo#655019, bgo#650414,
+    bgo#652643, bgo#655510, bgo#654907, bgo#655745, bgo#649296,
+    bgo#652657, bgo#655008, bgo#653619, bgo#653679, bgo#653680,
+    bgo#655917, bgo#655374, bgo#655919, bgo#655920, bgo#653682,
+    bgo#655921, bgo#655922, bgo#648818, bgo#655609.
+- Enable the new E-D-S Backend:
+  + Add pkgconfig(libebook-1.2) and pkgconfig(libedataserver-1.2)
+    BuildRequires.
+  + Pass --enable-eds-backend to configure.
+  + Split out a libfolks-eds package.
+- Drop folks-fix-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jul  1 10:28:19 CEST 2011 - vuntz@opensuse.org
+
+- Add folks-fix-build.patch to fix the build. Taken from git.
+
+-------------------------------------------------------------------
+Fri Jun  3 10:40:54 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.5.2:
+  + bgo#650067: Tracker backend warns when setting a NULL avatar
+    (ie, unsetting the avatar)
+  + bgo#650268: build failure: "--vapidir=.: command not found"
+
+-------------------------------------------------------------------
+Thu May 26 23:23:04 CEST 2011 - vuntz@opensuse.org
+
+- Add pkgconfig(libsocialweb-client) BuildRequires to build the
+  libsocialweb backend, and create a libfolks-libsocialweb24
+  subpackage.
+- Add readline-devel BuildRequires to build inspector tool
+  (folks-inspect).
+- Add Url tag.
+
+-------------------------------------------------------------------
+Tue May 17 14:28:56 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + Add gobject-introspection support.
+  + Several API changes, see NEWS for details.
+  + Bugs fixed: bgo#645388, bgo#647562, bgo#647121, bgo#645684,
+    bgo#640092, bgo#648161, bgo#645186, bgo#648533, bgo#649790,
+    bgo#649088
+
+-------------------------------------------------------------------
+Thu May  5 21:24:54 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.5.0:
+  + Major changes:
+    - Add support to change primary (writeable) store either via
+      GConf or an env variable (bgo#645441).
+    - Add a tracker backend
+    - Add a libsocialweb backend
+    - Add the potential matches API
+      GConf or an env variable (bgo#645441).
+  + Several API additions.
+  + Bugs fixed: bgo#644968, bgo#644966, bgo#644527, bgo#645430,
+    bgo#645411, bgo#645475, bgo#645570, bgo#645989, bgo#645413,
+    bgo#645441, bgo#638280, bgo#646944, bgo#644867, bgo#647168,
+    bgo#646831, bgo#647298, bgo#646948.
+- Add pkgconfig(gconf-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 27 08:54:48 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.4.3:
+  + Bug fixes: bgo#645680, bgo#647562, bgo#647121.
+
+-------------------------------------------------------------------
+Mon Apr  4 15:42:47 UTC 2011 - dimstar@opensuse.org
+
+- BuildRequire vala-devel instead of vala-unstable (vala 0.12 has
+  been released).
+
+-------------------------------------------------------------------
+Thu Mar 24 09:10:03 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.4.2:
+  + fdo#645430: folks-inspect: Use LinkedHashSet to access
+    im-addresses.
+  + fdo#645411: folks-import segfaults on startup
+  + Crasher when removing Personas
+- Changes from version 0.4.1:
+  + Bugs fixed:
+    - fdo#644968: _update_phone_numbers() needs to create copies
+      of each List<FieldDetails>
+    - fdo#644966: _update_emails () needs to create copies of each
+      List<FieldDetails>
+    - Crasher when reconnecting a Telepathy account
+
+-------------------------------------------------------------------
+Wed Mar 16 14:57:51 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.4.0:
+  + API changes:
+    - Add RoleDetails interface
+    - Add BirthdayDetails interface
+    - Add NoteDetails interface
+    - Add PostalAddressDetails interface
+    - Rename Aliasable -> AliasDetails
+    - Rename AvatarOwner -> AvatarDetails
+    - Rename Emailable -> EmailDetails
+    - Rename Favouritable -> FavouriteDetails
+    - Rename GenderOwner -> GenderDetails
+    - Rename Groupable -> GroupDetails
+    - Rename IMable -> ImDetails
+    - Rename NameOwner -> NameDetails
+    - Rename Phoneable -> PhoneDetails
+    - Rename PresenceOwner -> PresenceDetails
+    - Rename Urlable -> UrlDetails
+  + Bugs fixed: fdo#642351, fdo#643241, fdo#643247, fdo#643201,
+    fdo#642866, fdo#642861, fdo#642493, fdo#642500, fdo#642501,
+    fdo#641210, fdo#643956, fdo#643954, fdo#643955, fdo#643957,
+    fdo#644457, fdo#644165
+- Bump module_version to 22.
+
+-------------------------------------------------------------------
+Thu Mar  3 14:48:37 CET 2011 - vuntz@opensuse.org
+
+- Create a lang package.
+- Move the keyfile backend to libfolks instead of
+  libfolks-telepathy.
+
+-------------------------------------------------------------------
+Thu Mar  2 18:31:08 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.3.6:
+  + This is just a repackaging of libfolks 0.3.5 with some
+    documentation comment version numbers fixed.
+- Changes from version 0.3.5:
+  + Major changes:
+    - Various API breaks and improvements, especially in the
+      IndividualAggregator
+    - Add various new interfaces: NameOwner, FieldDetails, Urlable,
+      GenderOwner, Phoneable and Emailable
+  + Bugs fixed: bgo#640901, bgo#641780, bgo#629078, bgo#642036.
+- Changes from version 0.3.4:
+  + Major changes:
+    - Add folks-inspect tool
+    - The use of the new LinkedHashSet type in the API may make
+      libgee a requirement for some clients (to take full advantage
+      of its class lineage).
+  + Bugs fixed: bgo#637240, bgo#638311, bgo#629083, bgo#629075,
+    bgo#638609, bgo#639195, bgo#639113, bgo#639742, bgo#640213,
+    bgo#627397.
+- Changes from version 0.3.3:
+  + Major changes:
+    - Fix some minor leaks
+    - Add support for building gtk-doc documentation for the C API
+    - Fix some related documentation problems
+    - Fix some Vala problems caused by differences between Vala
+      0.10 and 0.12
+    - Finish off renaming interfaces (this is an API break; see
+      below)
+    - Don't trust personas from IRC
+    - Handle invalid IM addresses more gracefully than with an
+      assertion failure
+    - Fix a linking problem with the user's individual when going
+      offline which could lead to infinite loops
+  + Bugs fixed: bgo#635178, bgo#635649, bgo#635703, bgo#635823,
+    bgo#636251, bgo#629526, bgo#627397, bgo#636714, bgo#637136.
+- Changes from version 0.3.2:
+  + Major changes:
+    - BackendStore.load_backends() now (un)loads backends which
+      have been (dis|en)abled since the last call
+    - FOLKS_BACKEND_DIR has been replaced by FOLKS_BACKEND_PATH. It
+      accepts any number of files and directories, separated by :
+    - Significantly clean up the build system
+  + Bugs fixed: bgo#629081, bgo#629862, bgo#628883, bgo#633718,
+    bgo#633080.
+- Changes from version 0.3.1:
+  + Major changes:
+    - Tpf.Persona.contact is now guaranteed to have the client type
+      feature
+  + Bugs fixed: bgo#630431, bgo#631864, bgo#632096, bgo#632163,
+    bgo#632564.
+- Changes from version 0.3.0:
+  + Major changes:
+    - Fixed some linking problems
+    - Added some missing documentation
+    - Fixed build problems introduced by switching to
+      gobject-introspection 0.9.6 (i.e. GIR format 1.2)
+    - Ensured IM addresses are normalised before being compared
+    - Made the folks-import build optional through a configure
+      argument
+    - Added support for a "self" individual
+    - Added support for generating and installing Devhelp format
+      documentation
+    - BackendStore.load_backends and the prepare() functions are
+      now idempotent
+    - Tpf.Persona.contact is now guaranteed to have the avatar
+      token and data features
+    - Tpf.Persona.contact is now guaranteed to have the
+      capabilities feature
+  + Bugs fixed: bgo#629452, bgo#626008, bgo#629311, bgo#629644,
+    bgo#629666, bgo#628970, bgo#629096, bgo#627402, bgo#629642,
+    bgo#629643, bgo#629006, bgo#629331, bgo#629008, bgo#630347.
+- Add intltool BuildRequires.
+- Change vala-devel BuildRequires to vala-unstable: we don't need
+  the devel files, and we need a newer vala.
+- Pass --enable-vala to configure.
+- Rename libfolks1 and libfolks-telepathy1 to follow library
+  soversion changes.
+
+-------------------------------------------------------------------
+Wed Nov 17 16:29:00 CET 2010 - vuntz@opensuse.org
+
+- Define a module_version variable for easier updates: upstream
+  changes the internal module version at each release, and it's
+  reflected in where files get installed.
+
+-------------------------------------------------------------------
+Wed Nov 10 13:10:49 UTC 2010 - coolo@novell.com
+
+- Own directories for our files.
+
+-------------------------------------------------------------------
+Fri Oct 29 17:15:44 EDT 2010 - vuntz@opensuse.org
+
+- Update to version 0.2.1:
+  + bgo#629642: individuals-changed emitted in the wrong order
+  + bgo#631864: Crash when empathy disconnects
+  + bgo#632564: assertion `EMPATHY_IS_CONTACT (contact)' failed in
+                individual_store_contact_sort
+  + bgo#632163: Folks key-file backend needs a way to point to a
+                specific .ini file
+- Rename libfolks0 to libfolks1 and libfolks-telepathy0 to
+  libfolks-telepathy1, following soversion change.
+
+-------------------------------------------------------------------
+Sat Sep 18 17:47:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.2.0:
+  + Build fixes for GIR 1.2 and Vala 0.10.
+  + Various linking fixes
+  + Normalize IM addresses written to the writeable backend
+  + Allow building the folks-import tool to be disabled
+
+-------------------------------------------------------------------
+Sat Sep 11 18:30:11 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.17:
+  + Add the framework for a test suite
+  + Add a test of an individual's properties
+  + Build clean-ups
+  + Add generated C files to GITIGNOREFILES
+  + Don't allow setting a Kf.Persona's alias to its current value
+  + Don't save the key file when loading Personas' aliases
+  + Add more debugging for aliases
+  + Fix saving the key file when it contains multi-byte characters
+  + Warn on key file parse errors, rather than explode
+  + Notify of Tpf.PersonaStore's Personas being removed when
+    disabling account
+  + bgo#628853: hangs if there's no relationships.ini file
+  + Block flushing of Kf.PersonaStore on any pending file
+    operations
+  + bgo#629084: add a folks-import tool, including Pidgin support
+- Add pkgconfig(libxml-2.0) BuildRequires to build the folks-import
+  tool.
+- Create a tools subpackage for folks-import, with a Supplements
+  for packageand(libfolks0:pidgin), since it will be useful for old
+  pidgin users.
+
+-------------------------------------------------------------------
+Wed Sep  1 19:29:18 UTC 2010 - dimstar@opensuse.org
+
+- Update to 0.1.16:
+  + bgo#628343: Add an environment variable to disable linking
+  + Depend on libgee < 0.7, due to API break.
+
+-------------------------------------------------------------------
+Fri Aug 27 14:58:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.15:
+  + Various introspection and parallel build fixes
+  + Ensure duplicate Individuals don't make their way into various
+    properties
+  + Make gobject-introspection a hard requirement
+  + Add an Individual.personas_changed signal to allow more
+    efficient client code
+  + Add trust levels to Individuals to allow the UI to determine
+    whether to allow linking to them
+  + Fix alias writing to the backends and improve selection of
+    aliases for Individuals
+
+-------------------------------------------------------------------
+Fri Aug 20 09:17:10 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.14.1:
+  + Bump vala version requirement.
+  + Depend upon a released version of Vala.
+
+-------------------------------------------------------------------
+Wed Aug 18 10:02:46 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.14:
+  + Fix calls to deprecated Gee.Map.remove()
+  + Build tp-lowlevel via gobject-introspection
+  + Use gen-introspect-0.10 instead of gen-introspect
+  + Detect Vala by special automake macro, not .pc file.
+- Replace pkgconfig(vala-1.0) BuildRequires with vala-devel.
+- Remove pkgconfig(telepathy-vala) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Aug 11 20:35:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.13:
+  + Silence more debug messages
+  + Add a key file backend and linking support
+  + Improve how we find the telepathy-glib Vala bindings
+  + Improve our syncing behaviour to not overwrite aliases, groups,
+    etc. as much as possible
+
+-------------------------------------------------------------------
+Sat Aug  7 01:31:14 CEST 2010 - vuntz@opensuse.org
+
+- Initial folks package, for version 0.1.12.
+

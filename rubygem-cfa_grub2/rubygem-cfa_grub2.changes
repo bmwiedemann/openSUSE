@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Thu Jun 20 13:10:26 UTC 2019 - Martin Vidner <mvidner@suse.com>
+
+- Dropped the changes_only argument of Default,DeviceMap#save
+  following the same change in BaseModel#save in cfa-1.0.0
+  because the merging was not working anyway (bsc#1137948)
+- Drop support for Ruby 2.2 and 2.3; add 2.6.
+- 2.0.0
+
+-------------------------------------------------------------------------
+Thu Aug 16 11:35:47 UTC 2018 - mfilka@suse.com
+
+- bnc#1053559
+  - fixed serial_console= to use new terminal= API
+- 1.0.1
+
+-------------------------------------------------------------------------
+Tue Jul 10 14:35:47 UTC 2018 - mfilka@suse.com
+
+- bnc#1053559
+  - backward incompatible change in API
+  - modified Grub2::Default#terminal and terminal= to handle multiple
+    values in GRUB_TERMINAL. Former one returns array (was string) of
+    strings since now. Later one expects array of strings as argument,
+    array items are joined into space separated value of the option.
+- 1.0.0
+
+-------------------------------------------------------------------------
+Thu Nov 30 14:35:47 UTC 2017 - jreidinger@suse.com
+
+- fix reading GRUB_TERMINAL (caused by fix for bsc#1068578)
+- 0.6.5
+
+-------------------------------------------------------------
+Thu Nov 30 07:45:45 UTC 2017 - jreidinger@suse.com
+
+- avoid crash if config file uses trailing comment (bsc#1068578)
+- 0.6.4
+
+-------------------------------------------------------------------
+Wed Aug  2 08:47:20 UTC 2017 - jreidinger@suse.com
+
+- do not share parsers to avoid use of wrong file content as cache
+  (bsc#1044409)
+- 0.6.3
+
+-------------------------------------------------------------------
+Wed Apr 19 11:50:04 UTC 2017 - jreidinger@suse.com
+
+- fix parsing grub.cfg with multi-level of submenus (bsc#1009025)
+- 0.6.2
+
+-------------------------------------------------------------------
+Wed Mar 29 09:13:56 UTC 2017 - jreidinger@suse.com
+
+- Fix switched xen hypervisor and xen kernel parameters
+  (bsc#1014136)
+- 0.6.1
+
+-------------------------------------------------------------------
+Mon Mar 20 13:52:28 UTC 2017 - jreidinger@suse.com
+
+- adapt to new cfa version (bsc#1023204)
+- 0.6.0
+
+-------------------------------------------------------------------
+Wed Dec  7 08:31:05 UTC 2016 - jreidinger@suse.com
+
+- Use correct configuration file for xen kernel parameters
+  (bsc#1012503)
+- 0.5.3
+
+-------------------------------------------------------------------
+Thu Oct 13 12:02:26 UTC 2016 - jreidinger@suse.com
+
+- fix dependency on cfa as it follows semantic versioning
+  (needed for bsc#877047)
+- 0.5.2
+
+-------------------------------------------------------------------
+Wed Jul 13 07:40:52 UTC 2016 - jreidinger@suse.com
+
+- Do not crash for submenu with double quotes (bnc#986005)
+- Filter out non-bootable menuentries ( a Snapper help label,
+  using double quotes )
+- 0.5.1
+
+-------------------------------------------------------------------
+Mon Jul 11 13:40:06 UTC 2016 - jreidinger@suse.com
+
+- extend grub.cfg model to construct also full path usable for
+  grub2-set-default (bnc#986005)
+- 0.5.0
+
+-------------------------------------------------------------------
+Thu May 12 08:20:09 UTC 2016 - jreidinger@suse.com
+
+- fix value for GRUB_ENCRYPTED_DISK attribute (bnc#976315)
+- 0.4.1
+
+-------------------------------------------------------------------
+Wed Mar 30 12:37:22 UTC 2016 - jreidinger@suse.com
+
+- add attribute GRUB_DEFAULT to /etc/default/grub model
+  (FATE#317701)
+- 0.4.0
+
+-------------------------------------------------------------------
+Thu Mar 24 12:43:34 UTC 2016 - jreidinger@suse.com
+
+- fix path to device.map in its model
+- 0.3.3
+
+-------------------------------------------------------------------
+Thu Mar 24 09:30:35 UTC 2016 - jreidinger@suse.com
+
+- do not modify data during grub_installdevice write (FATE#317701)
+- 0.3.2
+
+-------------------------------------------------------------------
+Tue Jan 19 08:54:02 UTC 2016 - jreidinger@suse.com
+
+- fix dependency on cfa
+- 0.3.1
+
+-------------------------------------------------------------------
+Wed Jan 13 13:13:25 UTC 2016 - jreidinger@suse.com
+
+- add attribute GRUB_HIDDEN_TIMEOUT to /etc/default/grub model
+- 0.3.0
+
+-------------------------------------------------------------------
+Mon Dec 28 08:47:57 UTC 2015 - jreidinger@suse.com
+
+- use new default file handler from base
+- 0.2.0
+
+-------------------------------------------------------------------
+Wed Dec 16 09:29:54 UTC 2015 - jreidinger@suse.com
+
+- initial package. Supports models for files:
+  - /etc/default/grub
+  - /boot/grub2/device.map
+  - /boot/grub2/grub.cfg
+  - /etc/default/grub_installdevice

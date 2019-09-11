@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Sun Jan 27 16:52:42 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.7.1
+  * Fix for C API call SoapySDRDevice_setIQBalance()
+  * Default logger can be restored by setting NULL handler
+    + Bumped API version to 0.7.1 for the NULL log handler option
+  * Add missing registerLogHandler() to python bindings
+  * Move visibility flags from project config to library scope
+
+-------------------------------------------------------------------
+Sat Nov 10 09:35:29 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.7.0
+  * Support parallel device factory construction/destruction
+  * Added error handling and return code to SoapySDRKwargs_set()
+  * Support list of module files in the search path
+  * Disable automatic module load when loadModule is used first
+  * Added --sparse print option to command line SoapySDRUtil
+  * Version reporting API and build support for loadable modules
+  * Added converter registry API for converting between sample types
+
+-------------------------------------------------------------------
+Fri Jun  8 10:06:58 UTC 2018 - wk@ire.pw.edu.pl
+
+- Update to version 0.6.1
+  * Handle null pointer in SoapySDRDevice_makeStrArgs()
+  * Added read stream status to rate testing application
+  * Fixed units for average byte rate in stream rate testing utility
+  * Separate ENABLE_PYTHON and ENABLE_PYTHON3 options for python support
+  * Moved cmake modules into subdirectory to hide them from cmake's
+    default project search path when cloned in user's home directory
+- Remove patch:
+  - 0001-Remove-whitespace-padding-from-PYTHON3_LIBRARIES-var.patch
+    (applied upstream)
+
+-------------------------------------------------------------------
+Mon Jan 15 20:27:40 UTC 2018 - mardnh@gmx.de
+
+- Add patch to avoid cmake bugs:
+  * 0001-Remove-whitespace-padding-from-PYTHON3_LIBRARIES-var.patch
+
+-------------------------------------------------------------------
+Sat Oct  7 18:43:05 UTC 2017 - mardnh@gmx.de
+
+- Build only against python3
+
+-------------------------------------------------------------------
+Wed Jun 28 11:09:43 UTC 2017 - jengelh@inai.de
+
+- Trim irrelevant filler wording from description.
+- RPM group corrections.
+
+-------------------------------------------------------------------
+Tue Jun 20 09:38:48 UTC 2017 - mpluskal@suse.com
+
+- Small spec file cleanup
+- Enable tests
+
+-------------------------------------------------------------------
+Fri May  5 09:58:21 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.6
+  Device C API changes:
+  * Device readI2C - make numBytes an in/out argument
+  * Device read/write registers switch to named variant
+  * Status return for Device C API calls with void return
+  General additions and changes:
+  * Added frequency corrections API for fine adjustments
+  * Added getSampleRateRange() API for continuous ranges
+  * Device factory table keys based on enumeration results
+  * Added optional step size to the range type
+  * Added rate testing to SoapySDRUtil application
+  * Added listSearchPaths() API and SoapySDRUtil print
+  * Added Kwargs type to/from markup string API calls
+  * Added read/writeRegisters() API for bulk register IO
+
+-------------------------------------------------------------------
+Thu Apr 13 18:23:11 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.5.4 (tagged release)
+  - renamed package from SoapySDR to soapy-sdr
+  - specfile cleanup
+
+-------------------------------------------------------------------
+Tue Jan 03 21:11:54 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.5.4.git1482113728.5e823fc:
+  * python: CMake override for PYTHON_INSTALL_DIR
+  * cmake: Fixes for SOAPY_SDR_MODULE_UTIL destination
+  * python: use cache type STRING for PYTHON_INSTALL_DIR
+  * soapy: changelog entry for 0.4.2 tag
+  * fix soapy device decl for a C compiler
+  * fixed missing memset for SoapySDRKwargs
+  * cleaner fix for the SoapySDRDevice decl
+  * soapy: updated lib version
+  * soapy: added channel-specific settings API
+  * soapy: fix SOAPY_SDR_SOVER variable cache
+  * soapy: changelog entry for channel settings API
+  * soapy: DLL path determines install root
+  * debian: rename to match SO version
+  * added getBandwidthRange() for continuous ranges
+  * C bindings return status, stash error message
+  * soapy: changelog entry for 0.4.3 tag
+  * Fix FindPython3Libs.cmake use of python3-config
+  * probe also prints channel settings
+  * probe indent for multi-line argInfo.description
+  * Added getChannelInfo(dir, channel) to Channel API
+  * Added buildkite script
+  * Added C functions for getChannelInfo
+  * Modified channel information printing in probe
+  * channel info api - docstrings and API define
+  * Bastille Networks copyright on changes
+  * added named register interface API
+  * Add known python version 3.5 to FindPython3Libs.cmake
+  * Moved time source calls to time API section
+  * cmake rpath handling enabled
+  * Added device factory lock to the python enumerate wrapper
+  * wait trigger flag for triggered streaming
+  * support NULL for empty SoapySDRKwargs list
+  * c++11 flags for cmake config
+  * make use of auto and ranged for loops
+  * make factory thread-safe with mutex
+  * remove factory lock from python bindings
+  * recursive mutex for nested factory calls
+  * use c++11 nullptr for null device/stream
+  * Deprecated setCommandTime, use setHardwareTime
+  * debian: updated packaging for soversion 0.5-2
+  * debian: override dh_auto_test
+  * debian: fix CMAKE_INSTALL_RPATH detection
+  * Fix "Ingore" typo in Device.cpp
+  * Substitute full license text in CMake scripts
+  * Give debian/rules execute permissions
+  * changelog entry for 0.4.4 tag
+  * changelog entry for 0.5.0 tag
+  * Added the ABI version to the modules directory
+  * Change logger to always use stderr by default
+  * changelog entry for logger stderr
+  * debian: allow any swig >= 2.0.0
+  * changelog entry for debian swig change
+  * Added SoapySDR_getLibVersion() and SOAPY_SDR_API_VERSION
+  * changelog entry for 0.5.1 tag
+  * python config hints
+  * build helpers for python development
+  * docs: update to Doxyfile 1.8.11
+  * docs: Fixes for Doxygen warnings
+  * debian: fixed lintian error for multiarch-support
+  * changelog entry for 0.5.2 tag
+  * added read write for block memory
+  * removed deprecated calls
+  * added def macro for memory block operation
+  * bump version and changelog entry
+  * fix regex for ABI version
+  * memory io: tweaks, warnings, comments
+  * moved macros to error helpers hdr
+  * improved catch macro for specified return
+  * try/catch for factory make
+  * try/catches for several device calls
+  * Added Kwargs type to/from markup string
+  * added missing cctype include
+  * try/catches for more device calls
+  * remaining try/catches
+  * changelog entry, API increment
+  * added SoapySDRDevice_lastStatus()
+  * appveyor: build maint branch as well
+  * cleanup warnings for some returns
+  * bump SOAPY_SDR_LIBVER to 0.5.3
+  * Status return for Device C API calls with void return
+  * C API - readI2C numBytes readback
+  * fix size_t python issue on arm 32-bit
+  * try/catch for remaining factory calls
+  * travis ci - maint/master whitelist
+  * Device read/write registers switch to named variant
+  * changelog entry for 0.5.3 tag
+  * debian: tweaks, exand desc, soapysdr-modules-all
+  * Windows: disable error pop-ups when DLLs not found
+  * Dynamic root environment variable to support snappy packages
+  * default SOAPY_SDR_ROOT supports empty prefix
+  * Added listSearchPaths() API and SoapySDRUtil print
+  * rate testing options
+  * work on rate test executor
+  * working rate test
+  * also record+print underflows
+  * changelog entry for rate testing app
+  * Added manpage for SoapySDRUtil
+  * man pages - installation rules and additional comments
+  * man pages - use pothosware email
+  * python: larger 1 second timeout in SimpleSiggen.py
+  * changelog entry for 0.5.4 tag
+  * fix merge cruft in changelog
+  * Fix for cache overwrite of PYTHON_INSTALL_DIR variable
+
+-------------------------------------------------------------------
+Tue Feb 16 22:41:43 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.4.1.git1455391782.aee78eb:
+  + soapy: changelog entry for 0.4.0 tag
+  + soapy: Added official modules to debian Recommends
+  + debian: fix upstream changelog and license install
+  + soapy: notes on stream timeout
+  + soapy: added section divider comments
+  + soapy: print version and sover in cmake summary
+  + soapy: Added readStreamStatus() to python bindings
+  + soapy: changelog entry for 0.4.1 tag
+  + python: increase timeout for the MeasureDelay demo
+  + set BW param for delay test
+  + python: simple siggen app
+
+-------------------------------------------------------------------
+Tue Dec 08 20:56:57 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.4.0.git1449600912.f724acc:
+  + soapy: should be using find_package(SWIG)
+  + S / U documentation (fixes #47)
+  + soapy: fix error C linkage
+  + soapy: Added defines for common stream formats
+  + soapy: use std::string in c++ formatToSize
+  + soapy: fix copypasta typo for compat defines
+  + soapy: compat define for format work
+  + soapy: individual feature enables for various build components
+  + soapy: make use of PROJECT_NAME variable in summary
+  + soapy: documentation about readStream() and active state
+  + soapy: Workaround for multiple null module load
+  + soapy: Added check for driver present to util
+  + soapy: suppress warning 4251 in msvc
+  + appveyor: disabled python bindings - link issue on VM
+  + travis: update to trusty, and build python3 as well
+  + travis: added unit testing for python3 bindings
+  + travis: fully quality python paths
+  + travis: fix prints for python3 style
+  + python: help FindPythonLibs with version string
+  + python: build with -threads to release GIL while blocking
+  + soapy: minor changes for subproject support
+  + soapy: same change for ConfigVersion file
+
+-------------------------------------------------------------------
+Fri Oct 30 21:00:14 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.4.0.git1446186919.aee4870:
+  + soapy: Set library SOVERSION using SOAPY_SDR_ABI_VERSION
+  + soapy: Added API to query available clock rates
+  + soapy: Added API to query AGC mode availability
+  + soapy: work on the arg into structs
+  + soapy: helper functions for arg info
+  + soapy: Added API to query stream argument info
+  + soapy: Added API to query setting argument info
+  + soapy: added calls to clear a list of args and infos
+  + soapy: Added API to query sensors meta info
+  + soapy: Added API to query tune argument info
+  + soapy: Added C++ typedef for list of Kwargs
+  + soapy: Added API to query native stream format
+  + soapy: CMAKE_BUILD_TYPE automatically defaults to Release
+  + soapy: Added setLogLevel() and default log threshold
+  + soapy: Missing virtual defs in Device.hpp
+  + soapy: no tuning options with single components
+  + soapy: New query information for SoapySDRUtil --probe
+  + soapy: improved prints for arg info
+  + soapy: rename settings print to other settings
+  + soapy: registry destructor removes entry
+  + soapy: new loader functions, and stash module path
+  + soapy: error reporting for load/unload modules
+  + soapy: get registration results from load
+  + soapy: common header for type converters
+  + soapy: loadModules() skips modules manually loaded
+  + soapy: changelog entry for loader work
+  + soapy: fix unsued result warning for vasprintf
+  + soapy: windows format string error message
+  + soapy: check that python versions match
+  + soapy: conditional check versions when available
+  + soapy: duplicate keys to fix (changed size during iteration)
+  + soapy: support simultaneous python2 and 3 builds
+  + soapy: tweaks for debian build
+  + soapy: duplicate keys to fix (changed size during iteration)
+  + soapy: readme for python3 directory
+  + soapy: when all else fails, use the python3-config executable
+  + soapy: added swig definition for arg info list
+  + soapy: swig adjustments for python3 stream buffers
+
+-------------------------------------------------------------------
+Mon Oct 12 17:55:31 UTC 2015 - mardnh@gmx.de
+
+- separate python package
+- specfile cleanup
+
+-------------------------------------------------------------------
+Sun Oct 11 21:44:23 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.3.0.git1444587967.7583091:
+  + soapy: removed git submodules from project (#24)
+  + soapy: Added GPIO API data direction modification mask
+  + soapy: direction register readback api
+  + soapy: separate calls for masked implementations
+  + soapy: channel sensors api
+  + soapy: error code to string function
+  + soapy: checks for frontend corrections support
+  + soapy: additions to chanelog file
+  + soapy: fix order of name param in readSensor
+  + soapy: update project number to v0.3.0
+  + soapy: fix comment copypasta in util app
+  + soapy: whitespace fix for setGainMode comments
+  + soapy: Util --probe option for detailed info summary
+  + soapy: skip probe print on empty bws
+  + soapy: linker flags should be appended
+  + soapy: changelog entry for 0.2.3 tag
+  + soapy: changelog entry for 0.3.0 tag
+  + soapy: Added -DSOAPY_SDR_ROOT=<path> option to build
+  + soapy: Fixed missing python bindings for Errors.hpp
+  + soapy: support in-tree SOAPY_SDR_ROOT as well
+  + soapy: changelog entry for 0.3.1 tag
+
+-------------------------------------------------------------------
+Sat Sep 19 21:05:18 UTC 2015 - mardnh@gmx.de
+
+- add support for airspy
+
+-------------------------------------------------------------------
+Mon Aug 10 18:22:54 UTC 2015 - mardnh@gmx.de
+
+- update to version 0.2.0.git20150810
+
+-------------------------------------------------------------------
+Wed Mar 18 08:23:22 UTC 2015 - mardnh@gmx.de
+
+- update to version 0.2.0.git20150318
+
+-------------------------------------------------------------------
+Sun Mar 15 22:56:19 UTC 2015 - mardnh@gmx.de
+
+- update to version 0.2.0.git20150315
+
+-------------------------------------------------------------------
+Sat Feb 28 18:14:36 UTC 2015 - mardnh@gmx.de
+
+- update to version 0.2.0.git20150228
+
+-------------------------------------------------------------------
+Sun Feb 22 18:48:01 UTC 2015 - mardnh@gmx.de
+
+- initial package, version 0.2.0.git20150222
+

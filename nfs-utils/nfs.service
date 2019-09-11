@@ -1,0 +1,23 @@
+[Unit]
+Description=Alias for NFS client
+# The systemd alias mechanism (using symlinks) isn't rich enough.
+# If you "systemctl enable" an alias, it doesn't enable the
+# target.
+# This service file creates a sufficiently rich alias for nfs-client
+# (which is the canonical upstream name)
+# "start", "stop", "restart", "reload" on this will do the same to nfs-client.
+# "enable" on this will only enable this service, but when it starts, that
+# starts nfs-client, so it is effectively enabled.
+# nfs-server.d/nfsserver.conf is part of this service.
+
+Requires= nfs-client.target
+PropagatesReloadTo=nfs-client.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+
+[Install]
+WantedBy=multi-user.target
+

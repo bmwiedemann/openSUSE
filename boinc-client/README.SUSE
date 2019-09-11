@@ -1,0 +1,123 @@
+
+#####################################################################################################################
+Exported from http://boinc.berkeley.edu/wiki/Installing_BOINC on May 15, 2010, see current version online.
+#####################################################################################################################
+
+Installing BOINC on openSUSE
+
+
+    * 1 Basic installation 
+    * 2 What the installer does 
+    * 3 Verify the installation 
+    * 4 Set up your accounts 
+    * 5 Optional setup hints 
+    * 6 Uninstallation 
+    * 7 Known problems 
+
+    Basic installation
+
+Installs BOINC Client as a daemon (autostarts the BOINC client at boot
+time) and puts a BOINC Manager icon on the applications menu. The steps
+are:
+
+   1. Open a terminal, enter |su|, give the root password when prompted.
+   2. Enter |zypper install boinc-client boinc-manager|
+      (be patient while the BOINC package downloads and installs).
+   3. Optional: after the installation is finished, enter
+      |/sbin/chkconfig boinc-client on|
+      to have Linux auto-start the boinc-client daemon at boot time.
+      (See Stop or start BOINC daemon after boot
+       page for helpful
+      commands for managing the daemon) 
+
+
+    What the installer does
+
+   1. Creates the daemon script at /etc/init.d/boinc-client.
+   2. Places the BOINC binaries (boinc-client, boinccmd, boinc-gui
+      and boincmgr) in /usr/bin/.
+   3. Creates /var/lib/boinc/ for BOINC data files and the slots and
+      projects directories.
+   4. Names the daemon boinc-client.
+   5. Creates a user named boinc. For security, boinc owns the BOINC
+      data directory (/var/lib/boinc/) and all the data files and
+      sub-directories it creates in the data directory. 
+
+
+    Verify the installation
+
+   1. If you elected to have Linux start the daemon at boot time (see
+      step 3 in section Basic installation), logout and reboot Linux now
+      and login under your normal user account.
+   2. If you elected to not have Linux start the daemon at boot time,
+      start the daemon manually with |/sbin/service boinc-client start|
+   3. Open a terminal and enter |ps aux | grep boinc| to print a partial
+      list of running processes. You should see |boinc-client --dir ...|
+      in that list, if not then something went wrong in the steps above. 
+
+
+    Set up your accounts
+
+To use the GUI to set up your accounts and monitor progress:
+
+    * Start "boincmgr" on the command line or select Applications ->
+      System Tools -> Boinc Manager from the GNOME menu.
+    * Select Advanced -> Select computer... from the Boinc Manager menu.
+    * Put "localhost" in for "Host name" and the contents of
+      /var/lib/boinc/gui_rpc_auth.cfg for "Password" and hit "OK". 
+
+If you do only the basic installation as described above, BOINC manager
+will not be able to automatically connect to the client. To connect the
+client you will be required to give the GUI RPC password every time you
+start BOINC manager. That is not a bug, it is a security feature to
+prevent other users from using the manager to manipulate the client,
+change your projects, etc.
+
+If you don't want to put the password every time you run the BOINC
+manager, you can:
+
+   1. disable the password at all [*not recommended*]
+      To make the GUI passwordless, do "echo >
+      /var/lib/boinc/gui_rpc_auth.cfg" (which replaces the contents of
+      the file with a newline) and then restart boinc-client (with e.g.
+      "/sbin/service boinc-client restart").
+   2. *with boinc-client-6.4.7-1.r17542svn and newer* it is enough if
+      you just add your user account into the "boinc" group, e.g. by
+      typing |/usr/sbin/usermod -G boinc -a username|
+   3. *with older versions* the procedure is a bit more complicated:
+      Boinc (the user named boinc) owns /var/lib/boinc/ and all the
+      files and directories in it so you will not be able to edit those
+      files easily from your regular user account. The steps below add
+      your username to the boinc group and adjust some permissions so
+      that BOINC manager will automatically connect to BOINC client
+      whenever you start the manager from your regular Linux user
+      account. Also you will be able to edit files in the BOINC
+      directory without becoming root. As you type in each command
+      below, substitute your Linux username wherever you see |username|.
+      Enter the following commands in a terminal, as root:
+         1. |/usr/sbin/usermod -A boinc username|
+         2. |chmod g+rw /var/lib/boinc|
+         3. |chmod g+rw /var/lib/boinc/*.*|
+         4. |ln -s /var/lib/boinc/gui_rpc_auth.cfg
+            /home/username/gui_rpc_auth.cfg|
+         5. |chown boinc:boinc /home/username/gui_rpc_auth.cfg| 
+
+
+    Uninstallation
+
+As root, in a terminal, enter
+
+ yum remove boinc-client boinc-manager
+
+
+    Known problems
+
+boinc-client sometimes has problems connecting to the network, if the
+network connection comes up after the client has already started. This
+is a known BOINC bug, which is filed as #707.
+
+In the meantime, you can fix this by restarting boinc-client. On the
+command line as root, do "/sbin/service boinc-client restart".
+Alternatively, from the GNOME menu, you can choose System ->
+Administration -> Services and then stop and start the boinc-client
+service.

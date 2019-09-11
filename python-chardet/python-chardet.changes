@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Wed Jul  3 08:32:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with pytest4:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Tue Feb 26 08:14:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid buildcycles
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 15 07:02:02 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix update-alternatives call in %postun.
+
+-------------------------------------------------------------------
+Wed Sep 20 21:47:30 UTC 2017 - dmueller@suse.com
+
+- add update-alternatives post-requires 
+
+-------------------------------------------------------------------
+Fri Aug 25 13:09:48 UTC 2017 - tbechtold@suse.com
+
+- Fix build for Leap-42.3
+
+-------------------------------------------------------------------
+Tue Aug 15 09:57:21 UTC 2017 - dmueller@suse.com
+
+- add update-alternative support for py2/py3 coinstallability
+
+-------------------------------------------------------------------
+Thu Jun 29 08:43:41 UTC 2017 - ecsos@opensuse.org
+
+- fix source link
+
+-------------------------------------------------------------------
+Sat Jun 10 08:39:04 UTC 2017 - dmueller@suse.com
+
+- update to 3.0.4
+
+-------------------------------------------------------------------
+Tue Mar 21 13:57:55 UTC 2017 - jmatejek@suse.com
+
+- do not use %py_ver, replace with %python_version
+
+-------------------------------------------------------------------
+Sun Mar 19 08:23:54 UTC 2017 - aloisio@gmx.com
+
+- Converted to single spec.
+
+-------------------------------------------------------------------
+Mon Jan 30 21:41:47 UTC 2017 - rjschwei@suse.com
+
+- Include in SLE 12 (bsc#1002895, FATE#321630)
+
+-------------------------------------------------------------------
+Mon May 11 05:49:58 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * added update alternative to prevent conflicts with python3 version
+  * add tests
+
+-------------------------------------------------------------------
+Tue Feb 10 23:45:01 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.3.0
+  * Added support for CP932 detection (thanks to @hashy)
+  * Fixed an issue where UTF-8 with a BOM would not be detected
+    as UTF-8-SIG (#8)
+  * Modified chardetect to use argparse for argument parsing
+  * Moved docs to a gh-pages branch. You can now access them
+    at http://chardet.github.io
+- Changelog on https://github.com/chardet/chardet/commits/2.3.0
+- Other minor changes
+
+-------------------------------------------------------------------
+Thu Oct 24 11:00:03 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Oct  2 03:09:41 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Jul 27 15:10:36 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Wed Dec 28 22:18:53 UTC 2011 - alexandre@exatati.com.br
+
+- Standard in spec file;
+- Remove CFLAGS and %clean section from spec file.
+
+-------------------------------------------------------------------
+Thu Dec  8 11:12:41 UTC 2011 - coolo@suse.com
+
+- the license seems to be LGPL-2.1+
+
+-------------------------------------------------------------------
+Sat Mar 26 02:11:35 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Mon Jan 25 14:35:35 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (2.0.1) for openSUSE.

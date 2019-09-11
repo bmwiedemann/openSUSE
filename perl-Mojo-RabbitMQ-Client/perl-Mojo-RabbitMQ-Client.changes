@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Fri Aug  9 13:51:32 UTC 2019 - Oliver Kurz <okurz@suse.com>
+
+- Add 0001-Prevent-warning-about-undefined-object-on-closed-cha.patch
+  Prevent warning about undefined object on closed channels
+
+-------------------------------------------------------------------
+Thu Jul 25 05:15:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.2.3
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.2.3 2019-07-24T21:06:16Z
+    - Clarified documentation #33, #34 (@AdamWill)
+
+-------------------------------------------------------------------
+Thu May 23 11:50:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- update to 0.2.2
+
+  0.2.2 2019-05-23T11:20:22Z
+    - Minor documentation fixes #32 (@sjn)
+    - fix around 30 memory leaks #31 (@kraih)
+
+-------------------------------------------------------------------
+Mon Jul 30 05:38:19 UTC 2018 - coolo@suse.com
+
+- updated to 0.2.1
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.2.1 2018-07-29T14:17:43Z
+    - Fixed POD syntax, spelling & grammar errors #27,#28 (@gregoa)
+    - Fixed POD error #26 (@manwar)
+
+-------------------------------------------------------------------
+Thu Jul 26 05:36:19 UTC 2018 - coolo@suse.com
+
+- updated to 0.2.0
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.2.0 2018-07-25T13:23:26Z
+    - Remove internal frame buffer handling, use Net::AMQP #11 (@kraih)
+
+-------------------------------------------------------------------
+Sat Feb 17 06:40:40 UTC 2018 - coolo@suse.com
+
+- updated to 0.1.0
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.1.0 2018-02-16T10:15:32Z
+    - Make Mojo::RabbitMQ::Client::Consumer use promises #23 (@christopherraa)
+    - Fix circular includes by #20 (@christopherraa)
+    - Start implementing Mojo::Promise, drop support for Mojolicious <7.53
+    - Implement DEBUG on Client as suggested in #11
+    - Fix early success event from ->publish #16
+    - Fix query parameter naming in Publisher
+    - Fix missing imports in Publisher #15
+    - Fix #14
+    - Implement Publisher API #5
+
+-------------------------------------------------------------------
+Sun Feb 19 07:00:00 UTC 2017 - coolo@suse.com
+
+- updated to 0.0.9
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.0.9 2017-02-18T11:07:56Z
+    - Proper implementation of URI parser PR#8 & #9
+    - Support for query parameter with aliases
+    - Add max_channels attribute to force maximum number of channels active
+    - Additional developer test for quick consumer
+    - Documentation changes
+
+-------------------------------------------------------------------
+Tue Jan 31 06:07:08 UTC 2017 - coolo@suse.com
+
+- updated to 0.0.8
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+  0.0.8 2017-01-30T12:13:18Z
+    - Fix issues with UTF-8 data corruption on SSL sockets PR#7
+    - Drop List::MoreUtils `none` in favour of core List::Util PR#4
+
+-------------------------------------------------------------------
+Sat Dec  3 06:45:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.0.7
+   see /usr/share/doc/packages/perl-Mojo-RabbitMQ-Client/Changes
+
+-------------------------------------------------------------------
+Mon Nov 28 11:05:12 UTC 2016 - dheidler@suse.com
+
+- Disable 32 bit (dep does not run on 32 bit)
+- Version 0.0.6 from cpan
+
+-------------------------------------------------------------------
+Mon Nov 28 09:29:10 UTC 2016 - dheidler@suse.com
+
+- Initial Package 
+

@@ -1,0 +1,21 @@
+diff -urEbwB jemmy-2.3.0.0/build.xml jemmy-2.3.0.0/build.xml
+--- jemmy-2.3.0.0/build.xml	2009-06-22 17:18:56.000000000 +0200
++++ jemmy-2.3.0.0/build.xml	2017-09-19 01:09:33.610773643 +0200
+@@ -42,7 +42,7 @@
+     <target name="compile" depends="java,timestamp">
+         <filter token="BUILD_NUMBER" value="${buildnumber}"/>
+         <mkdir dir="${build.classes.dir}"/>
+-        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on" source="1.5"/>
++        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on"/>
+         <copy file="${src.dir}/org/netbeans/jemmy/debug.timeouts" todir="${build.classes.dir}/org/netbeans/jemmy"/>
+         <copy file="${src.dir}/org/netbeans/jemmy/version_info" tofile="${build.classes.dir}/org/netbeans/jemmy/version_info" filtering="on"/>
+     </target>
+@@ -68,7 +68,7 @@
+     </target>
+     <target name="compile-tests" depends="compile">
+         <mkdir dir="${build.tests.dir}"/>
+-        <javac srcdir="${test.dir}" destdir="${build.tests.dir}" debug="on" source="1.4" classpath="../lib/junit-4.1.jar:${build.classes.dir}"/>
++        <javac srcdir="${test.dir}" destdir="${build.tests.dir}" debug="on" classpath="../lib/junit-4.1.jar:${build.classes.dir}"/>
+         <copy file="${test.dir}/org/netbeans/jemmy/testing/jemmy_012_prop1" tofile="${build.tests.dir}/org/netbeans/jemmy/testing/jemmy_012_prop1"/>
+         <copy file="${test.dir}/org/netbeans/jemmy/testing/jemmy_012_prop2" tofile="${build.tests.dir}/org/netbeans/jemmy/testing/jemmy_012_prop2"/>
+         <copy file="${test.dir}/org/netbeans/jemmy/testing/jemmy_013_prop1.jar" tofile="${build.tests.dir}/org/netbeans/jemmy/testing/jemmy_013_prop1.jar"/>

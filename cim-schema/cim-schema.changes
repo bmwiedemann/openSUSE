@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Wed Jan 10 12:45:03 UTC 2018 - kkaempf@suse.com
+
+- Upgrade to 2.50.0
+  As part of CIM 2.50.0, a number of enhancements and additions are
+  introduced throughout the Schema, including ongoing improvements to
+  support product and alliance partners and to support DMTF Profiles and
+  Management Initiatives.  Examples include updates to BIOS, printers,
+  standard messages, operating system state, modern power management
+  paradigms, virtualization and security. 
+  See https://www.dmtf.org/sites/default/files/cim/cim_schema_v2500/releasenotes.html
+
+-------------------------------------------------------------------
+Fri Jun 16 05:59:01 UTC 2017 - kkaempf@suse.com
+
+- Upgrade to version 2.49.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2490/releasenotes.html
+
+- Upgrade to version 2.48.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2480/releasenotes.html
+
+- Upgrade to version 2.47.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2470/releasenotes.html
+
+- Upgrade to version 2.46.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2460/releasenotes.html
+
+-------------------------------------------------------------------
+Fri Jan 22 19:11:56 UTC 2016 - kkaempf@suse.com
+
+- Upgrade to version 2.45.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2450/releasenotes.html
+
+-------------------------------------------------------------------
+Mon Jun 22 11:40:15 UTC 2015 - kstreitova@suse.com
+
+- Upgrade to version 2.44.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2440/releasenotes.html 
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 26 07:48:36 UTC 2015 - kkaempf@suse.com
+
+- Upgrade to version 2.43.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2430/releasenotes.html
+
+-------------------------------------------------------------------
+Thu Nov  6 13:16:53 UTC 2014 - kkaempf@suse.com
+
+- Upgrade to version 2.42.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2420/releasenotes.html
+
+- Upgrade to version 2.41.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2410/releasenotes.html
+
+-------------------------------------------------------------------
+Thu Apr 10 06:46:35 UTC 2014 - kkaempf@suse.com
+
+- Upgrade to version 2.40.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2400/releasenotes.html
+
+-------------------------------------------------------------------
+Thu Apr 10 06:46:09 UTC 2014 - kkaempf@suse.com
+
+- Upgrade to version 2.39.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2390/releasenotes.html
+
+-------------------------------------------------------------------
+Thu Sep 26 07:34:49 UTC 2013 - kkaempf@suse.com
+
+- Upgrade to version 2.38.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2380/releasenotes.html
+
+-------------------------------------------------------------------
+Fri Jun 28 07:14:52 UTC 2013 - kkaempf@suse.com
+
+- Provide cim-schema-experimental explicitly
+
+-------------------------------------------------------------------
+Wed Jun 26 07:26:48 UTC 2013 - kkaempf@suse.com
+
+- Upgrade to version 2.37.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2370/releasenotes.html
+
+-------------------------------------------------------------------
+Mon May  6 08:03:27 UTC 2013 - kkaempf@suse.com
+
+- switch to Experimental schema (for openlmi)
+
+-------------------------------------------------------------------
+Fri Apr 12 07:52:41 UTC 2013 - kkaempf@suse.com
+
+- Upgraded to version 2.36.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2360/releasenotes.html
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2351/releasenotes.html
+
+-------------------------------------------------------------------
+Wed Feb 20 09:39:47 UTC 2013 - kkaempf@suse.com
+
+- Upgraded to version 2.35.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2350/releasenotes.html
+
+-------------------------------------------------------------------
+Fri Feb 10 10:52:23 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-DMTF
+  Use SUSE- proprietary prefix until DMTF is accepted upstream at spdx.org
+
+-------------------------------------------------------------------
+Thu Oct 20 10:41:14 UTC 2011 - kkaempf@suse.com
+
+- Update to 2.30.0 (Final)
+  Correction to Processor Family name in Application/CIM_ArchitectureCheck.mof.mof
+  and Device/CIM_Processor.mof.mof
+
+-------------------------------------------------------------------
+Fri Sep 23 07:05:34 UTC 2011 - kkaempf@suse.com
+
+- Download location changed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 17 22:58:34 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Sep 15 10:43:56 UTC 2011 - kkaempf@suse.com
+
+- Upgraded to version 2.29.1
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2291/releasenotes.html
+
+- Upgraded to version 2.28.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2280/releasenotes.html
+
+
+-------------------------------------------------------------------
+Mon Jan  3 11:18:46 UTC 2011 - kkaempf@novell.com
+
+- Upgraded to version 2.27.0 (Final)
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2270/releasenotes.html
+
+-------------------------------------------------------------------
+Fri Jul 30 13:38:28 UTC 2010 - kkaempf@novell.com
+
+- Upgraded to version 2.26.0
+  * 2.26.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2260/releasenotes.html
+  * 2.25.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2250/releasenotes.html
+  * 2.24.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2240/releasenotes.html
+  * 2.23.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2230/releasenotes.html
+  * 2.22.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2220/releasenotes.html
+
+-------------------------------------------------------------------
+Tue May 26 14:23:44 CEST 2009 - mhrusecky@suse.cz
+
+- Upgraded to version 2.2.21.0
+  * 2.21.0 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2210/releasenotes.html
+  * 2.20.1 release notes can be found at
+    http://www.dmtf.org/standards/cim/cim_schema_v2201/releasenotes.html
+
+-------------------------------------------------------------------
+Thu Oct 23 16:22:35 MDT 2008 - bwhiteley@suse.de
+
+- Upgraded to cimv2.19.1Experimental (bnc#438509)
+ 
+-------------------------------------------------------------------
+Wed Sep  3 21:38:06 CEST 2008 - mmarek@suse.cz
+
+- don't clean buildroot in %%install
+
+-------------------------------------------------------------------
+Wed Aug  6 15:48:34 MDT 2008 - bwhiteley@suse.de
+
+- Upgraded to cimv2.19.0Experimental
+
+-------------------------------------------------------------------
+Wed May 14 17:26:26 MDT 2008 - bwhiteley@suse.de
+
+- Upgraded to cimv2.18Experimental
+
+-------------------------------------------------------------------
+Thu Jan 17 13:39:02 MST 2008 - bwhiteley@suse.de
+
+- Fixed order of includes so that it will import in pegasus.
+
+-------------------------------------------------------------------
+Tue Jan  8 14:06:27 MST 2008 - bwhiteley@suse.de
+
+- Updated to cimv2.17Experimental (#341800)
+
+-------------------------------------------------------------------
+Wed Nov 28 19:35:39 CET 2007 - bwhiteley@suse.de
+
+- Updated to cimv2.16Experimental (#341800)
+  Remove carriage returns from MOF files. 
+  Fix broken comment blocks in 2.16 schema. 
+
+-------------------------------------------------------------------
+Thu Mar 29 17:00:12 CEST 2007 - bwhiteley@suse.de
+
+- Added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar 28 01:07:22 CEST 2007 - bwhiteley@suse.de
+
+- Fixed inclusion of missing file (#258187)
+
+-------------------------------------------------------------------
+Tue Mar 13 13:46:54 MDT 2007 - bart@novell.com
+
+- Added some classes from 2.15 preliminary needed for Xen 
+  providers (#228365)
+
+-------------------------------------------------------------------
+Fri Jan 19 18:01:14 CET 2007 - bwhiteley@suse.de
+
+- update to schema version 2.14 (#228365)
+
+-------------------------------------------------------------------
+Mon Jan  8 21:30:40 CET 2007 - bwhiteley@suse.de
+
+- Combine all qualifiers back into one file (#232667)
+
+-------------------------------------------------------------------
+Wed Dec 20 00:18:31 CET 2006 - bwhiteley@suse.de
+
+- added loadmof.sh script. (#228349)
+
+-------------------------------------------------------------------
+Wed Dec 13 20:16:42 CET 2006 - bwhiteley@suse.de
+
+- Updated to schema version cimv2.13.1 (#228365)
+
+-------------------------------------------------------------------
+Sat Oct  7 05:31:13 CEST 2006 - bwhiteley@suse.de
+
+- Updated to schema version cimv2.13
+
+-------------------------------------------------------------------
+Tue May  9 01:08:09 CEST 2006 - bwhiteley@suse.de
+
+- Updated to schema version cimv2.12, required for SMASH 1.0 
+  compliance (#173777)
+
+-------------------------------------------------------------------
+Fri May  5 20:06:55 CEST 2006 - bwhiteley@suse.de
+
+- removed non-ascii char from CIM_DNSSettingData.mof (was breaking
+  some XML parsers) (#172939)
+
+-------------------------------------------------------------------
+Fri Feb 10 17:44:33 CET 2006 - bwhiteley@suse.de
+
+- fixed execute bit on directories (#149992)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 21:38:52 CET 2006 - bwhiteley@suse.de
+
+- Added a symlink cim-current so other packages don't have to hard-
+  code cim schema versions. 
+
+-------------------------------------------------------------------
+Tue Jan 10 21:11:46 CET 2006 - bwhiteley@suse.de
+
+- Update to v2.11 Experimental. 
+- Moved MOFs under /usr/share/mof
+
+-------------------------------------------------------------------
+Thu Jan 13 16:37:16 CET 2005 - nashif@suse.de
+
+- Update to v2.9 Final
+
+-------------------------------------------------------------------
+Tue Oct 12 17:34:33 CEST 2004 - nashif@suse.de
+
+- Update with cim v2.9
+
+-------------------------------------------------------------------
+Wed Feb 18 00:04:01 CET 2004 - nashif@suse.de
+
+- Fixed directory permissions
+- build as normal user
+
+-------------------------------------------------------------------
+Mon Feb 16 21:36:41 CET 2004 - nashif@suse.de
+
+- Updated to 2.8 final
+
+-------------------------------------------------------------------
+Thu Nov 27 20:38:47 CET 2003 - nashif@suse.de
+
+- Initial Release
+

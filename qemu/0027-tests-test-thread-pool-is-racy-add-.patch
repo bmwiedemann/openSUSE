@@ -1,0 +1,42 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 13 Apr 2018 11:46:47 -0600
+Subject: tests: test-thread-pool is racy - add some barriers
+
+I imagine there is more to be done to fix the memory consistency
+races here, but these added barriers at least let it pass on ppc64le,
+whereas before it would fail regularly there.
+
+[BR: minor edits to pass qemu's checkpatch script]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/test-thread-pool.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/test-thread-pool.c b/tests/test-thread-pool.c
+index 9cdccb3a47..2cbabaadd3 100644
+--- a/tests/test-thread-pool.c
++++ b/tests/test-thread-pool.c
+@@ -171,6 +171,7 @@ static void do_test_cancel(bool sync)
+     /* Cancel the jobs that haven't been started yet.  */
+     num_canceled = 0;
+     for (i = 0; i < 100; i++) {
++        smp_mb(); /* test is currently racy */
+         if (atomic_cmpxchg(&data[i].n, 0, 3) == 0) {
+             data[i].ret = -ECANCELED;
+             if (sync) {
+@@ -185,6 +186,7 @@ static void do_test_cancel(bool sync)
+     g_assert_cmpint(num_canceled, <, 100);
+ 
+     for (i = 0; i < 100; i++) {
++        smp_mb(); /* test is currently racy */
+         if (data[i].aiocb && data[i].n != 3) {
+             if (sync) {
+                 /* Canceling the others will be a blocking operation.  */
+@@ -201,6 +203,7 @@ static void do_test_cancel(bool sync)
+     }
+     g_assert_cmpint(active, ==, 0);
+     for (i = 0; i < 100; i++) {
++        smp_mb(); /* test is currently racy */
+         if (data[i].n == 3) {
+             g_assert_cmpint(data[i].ret, ==, -ECANCELED);
+             g_assert(data[i].aiocb == NULL);

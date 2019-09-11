@@ -1,0 +1,370 @@
+-------------------------------------------------------------------
+Fri Jun  7 13:57:01 UTC 2019 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- updated to version 0.56
+
+AsciiDoc:
+
+ * Fix Asciidoc unindented lists
+ * Make Asciidoc Tables nowrap and support current format
+ * Do not include table fences in pot file
+ * Add option to prevent translation of target of image blocks
+
+AsciiDoc:
+
+ * Introduce option tablecells to process cells in tables.
+ * Widen accepted characters in the term part of definition list
+
+po4a tool:
+
+ * Don't use single quotes to protect command line arguments, as it
+ fails on Windows
+
+Translations:
+
+New translation: Arabi.
+Updated: Dutch, French, Italian, Japanese, Norwegian Bokmål, Portuguese
+(Brazil) and Ukrainian.
+
+-------------------------------------------------------------------
+Tue Jan 29 16:15:19 UTC 2019 - elchevive@opensuse.org
+
+- updated to version 0.55
+
+AsciiDoc:
+
+ * Fix Asciidoc unindented lists
+ * Make Asciidoc Tables nowrap and support current format
+ * Do not include table fences in pot file
+ * Add option to prevent translation of target of image blocks
+ 
+Markdown:
+
+ * Improve markdown ruler parsing, and add test.
+ * Add markdown fenced code block parsing, and add test.
+
+Sgml:
+
+ * Avoid deprecated unescaped left brace in regex to get ready for Perl 5.32.
+(deb#903735)
+
+TransTractor:
+
+ * Ensure to split lines before addendum operation without loss or addition of
+newline. With this change, addendum behavior is more intuitive.(deb#518218)
+
+Wml:
+
+ * Fix longstanding error regarding comments at the beginning of a file.
+
+Xml, Docbook:
+
+ * Document XML tag behavior customization with example to help use case
+specific customization. (deb#515763)
+ * Debug output enhancement to help people understand what exactly happening
+inside po4a.
+ * Extensive POD and code comment additions and updates.
+
+po4a tool:
+
+ * Add pot_in feature to support the secondary master file for the base of
+POT/PO file generation.
+
+Test:
+
+ * Add XML test cases with po4a including addendum, tag customization, and
+pot_in feature.
+
+Translations:
+
+New translation to Chinese and Chinese Simplified
+Updated: Dutch, Estonian, French German, Italian, Norwegian Bokmål,
+Portuguese (Brazil), Russian, Spanish, Swedish, Ukrainian and Vietnamese.
+
+-------------------------------------------------------------------
+Tue Aug  7 17:12:31 UTC 2018 - elchevive@opensuse.org
+
+- updated to version 0.54
+- change links from Alioth (shutting down) to GitHub
+- disable t\09-html (dropped on next version - obsolete module)
+- new dependecy (perl-yaml-tiny) for new module Yaml
+
+Asciidoc:
+
+ * Fixed a bug that prevented the asciidoc module to parse correctly four
+characters table marks
+ * Handle macros with empty target
+ 
+Man:
+
+ * Support .MT and .ME macros for e-mail address markup (deb#900965)
+ * Support .OP, .SY, and .YS macros for command synopses
+ 
+po4a tool:
+
+ * po4a --keep-translations will not remove your existing translations
+if they fall below the threshold
+
+po4a-build tool:
+
+ * Remove it and all related shell scripts and makefile chunks. It is
+deprecated by the po4a tool since a long time
+ 
+Yaml:
+
+ * New module
+ * Fix the behavior with utf-8 files
+ * Add the references from the Yaml file to the po file
+
+Texinfo:
+
+ * Fix handling of spaces in menu descriptions (deb#758851)
+
+Text:
+
+
+ * Fix the parsing of fortunes files, which had been broken since
+v0.43. The handling has changed a bit, all msgids are now marked as
+"no-wrap", because the word wrap in fortunes files usually matters.
+ * Remove the option for parsing AsciiDoc. There has been a standalone
+module for nearly five years, released with v0.45
+ * Support pandoc's bibliographic information (title, author, date)
+at the beginning of a markdown file. Also fix a trailing newline
+in some markdown titles (deb#894977)
+
+Documentation:
+
+ * Fix many typos and other issues found
+ * Remove the last references to the alioth servers and mailing lists.
+
+Translations:
+
+Updated: Dutch, Estonian, French, German, Italian, Norwegian Bokmål,
+Portuguese, Portuguese (Brazil), Russian, Swedish, Ukrainian, and Vietnamese
+
+-------------------------------------------------------------------
+Mon Aug 28 19:43:27 UTC 2017 - elchevive@opensuse.org
+
+- updated to version 0.52
+
+Core:
+ * po4a-translate complains if the input po file is outdated (deb#637288).
+ * teach po4a-updatepo about the --porefs options that was already documented.
+ * rename --porefs values after msgmerge option's name: noline->file
+   and none->never. (deb#775708).
+
+po4a:
+ * New option --no-update to not touch the po files. (deb#599179)
+ * Checking po file is fine. Failing if the file does not exist isn't.
+   (deb#858934)
+ * Check the validity of po files before using them (deb#855431)
+
+AsciiDoc:
+ * Properly deal with item text missing its leading indent.
+ * Allow empty attribute lists, by bexelbie.
+ * Further bug fixing to handle the git documentation.
+ * Fix some bugs, around style macros
+ * Correctly handle list literal paragraph
+ 
+Man:
+ * Add support for the tab(<character>) global option inside .TS/.TE.
+   Also tidy up trailing newline handling in text blocks: Since that
+   trailing newling must be there, no need to translate it explicitly.
+   (deb#847754).
+   
+Text:
+ * Add an option to treat Key/Value pairs as verbatim
+ * Add a neverwrap option to prevent any wrapping (deb#824753)
+
+RubyDoc:
+ * New module by Francesco Poli (deb#827936)
+ 
+Wml:
+ * Make title translatable.
+
+XML:
+ * Add an option to escape all quotes, for android.
+ * Add an option to not wrap attributes.
+
+-------------------------------------------------------------------
+Thu Sep 15 14:46:28 UTC 2016 - elchevive@opensuse.org
+
+- updated to version 0.48
+- Remove BuildRequires if's for older versions (opensuse<=12.1)
+
+* Major changes in release 0.48
+
+SGML:
+ * Use OpenSP as an underlying engine instead of the deprecated SP
+   Thanks to Neil Roeth (deb#809477 and deb#280882)
+
+Translations:
+ * Update Japaneese.
+ * Fix formating issue in pt translation
+
+-------------------------------------------------------------------
+Fri Aug 28 17:36:42 UTC 2015 - elchevive@opensuse.org
+
+- updated to version 0.47
+
+* Major changes in release 0.47
+
+Man: 
+ * Fix: don't add supirious lines around \# lines (deb#786642)
+
+Documentation:
+ * Bugfix: poref is a command line option (deb#775707)
+
+Translations:
+ * Update Italian
+
+Other:
+ * Port our regex to Perl 5.22 (deb#788706)
+ 
+-------------------------------------------------------------------
+Thu May 21 12:05:27 UTC 2015 - elchevive@opensuse.org
+
+- updated to version 0.46
+
+* Major changes in release 0.46
+
+Man:
+ * Fix handling of preprocessor lines (deb#744366)
+ * Fix handling of tbl's textblocks (deb#748601)
+
+Sgml:
+ * Silence a warning about useless greediness modifier (deb#779435)
+
+Translations:
+ * Update Dutch, Vietnamese, and Brazilian Portuguese (deb#782393, deb#776896, and deb#735644)
+ 
+Documentation:
+ * Update Brazilian Portuguese (deb#735644)
+
+-------------------------------------------------------------------
+Wed Nov 19 19:40:02 UTC 2014 - bwiedemann@suse.com
+
+- fix download link
+
+-------------------------------------------------------------------
+Thu Jan 30 12:14:38 UTC 2014 - elchevive@opensuse.org
+
+- drop po4a-0.44-use-tempfile-correctly.patch
+- updated to version 0.45
+
+po4a:
+ * Fix usage of File::Temp::tempfile to allow using Perl >= 5.18.
+
+Asciidoc:
+ * Make it a standalone format.
+
+Docbook:
+ * Make <beginpage> inline.
+
+Ini:
+ * Add key parameter as an automatic comment.  This allows using
+   po4a-gettextize on ini files.
+
+LaTeX:
+ * Fix handling of optional parameters in newtheorem command.
+
+Po:
+ * Fix computation of timezone written into PO files.
+
+Sgml:
+ * Fix failing tests with recent Docbook DTD.
+
+-------------------------------------------------------------------
+Mon Jun 24 17:22:28 UTC 2013 - elchevive@opensuse.org
+
+- Add po4a-0.44-use-tempfile-correctly.patch to fix tempfile build
+  errors on Perl >-5.18 by replacing 'File::Temp->tempfile' with
+  'File::Temp::tempfile'
+- Source URL corrected
+
+-------------------------------------------------------------------
+Mon Apr 15 10:02:33 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Jan 27 08:52:38 UTC 2013 - coolo@suse.com
+
+- do not buildrequire texlive
+
+-------------------------------------------------------------------
+Sun Oct 21 16:05:41 UTC 2012 - elchevive@opensuse.org
+
+- update to version 0.44:
+Fix packaging issues with 0.43
+
+-------------------------------------------------------------------
+Fri Oct 19 23:10:50 UTC 2012 - elchevive@opensuse.org
+
+- update to version 0.43:
+
+po4a:
+ * Add --porefs option to change how file locations are written into
+   the POT file (and thus into the PO files also).
+
+po4a-updatepo po4a Po:
+ * Extend the --porefs option, add a new 'counter' value to replace
+   line number by an increasing counter.
+   An optional ",nowrap" or ",wrap" specifier can be added to tell
+   whether file locations are written on a single line or wrapped on
+   several lines.  Default is ",nowrap", it will be changed to ",wrap"
+   in a future release.
+
+Man:
+ * Make .UR/.UE macros inline.
+ * Add macros used in several NetBSD man pages: %I %U Brc Bro Lp Lk
+
+Text:
+ * Fix two line titles in AsciiDoc format.
+ * Let AsciiDoc format handle many more styles.
+ * Add support for automatic comments in AsciiDoc format.
+
+-------------------------------------------------------------------
+Thu May 17 11:55:30 UTC 2012 - elchevive@opensuse.org
+
+- update to version 0.42:
+po4a:
+ * Allow adding command-line options after config file.
+
+Text:
+ * Add support for control files.
+
+msguntypot:
+ * Do not remove obsolete entries from PO files.
+
+documentation translations updates
+ * New German translations
+ * Updated Spanish translations
+ * Updated French translations
+ * Updated Japanese translations
+ * Updated Polish translations
+
+-------------------------------------------------------------------
+Fri Mar 23 18:24:17 UTC 2012 - elchevive@opensuse.org
+
+- Reflect changes on libxslt package (-tool subpackage created)
+
+-------------------------------------------------------------------
+Wed Mar 21 13:45:36 UTC 2012 - elchevive@opensuse.org
+
+- Add perl_requires and libxslt1
+
+-------------------------------------------------------------------
+Mon Feb 13 14:34:29 UTC 2012 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Wed Jan 05 18:09:00 UTC 2011 - elchevive@opensuse.org
+
+- enable tests and split -lang package
+
+-------------------------------------------------------------------
+Tue Jan 04 20:13:00 UTC 2011 - elchevive@opensuse.org
+
+- initial packaging

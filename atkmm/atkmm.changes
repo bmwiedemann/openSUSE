@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Mon Dec  3 18:21:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.29.1:
+  + Build:
+    - Require C++17.
+    - Replace the Visual Studio project files with MSVC NMake
+      project files.
+    - Use glibmm-2.60 instead of glibmm-2.56.
+    - Change the ABI to atkmm-2.30.
+- Replace pkgconfig(glibmm-2.58) with pkgconfig(glibmm-2.60)
+  BuildRequires.
+- Drop pkgconfig(glibmm-2.60): Fixed upstream. Following this, also
+  drop libtool and mm-common as well as autogen.sh call, no longer
+  needed.
+- Bump soname following upstream changes.
+- Drop atkmm-glibmm-bump.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Apr 17 10:44:59 UTC 2018 - dimstar@opensuse.org
+
+- Export CXXFLAGS="-std=c++17" until upstream catches up. Required,
+  as libsigc++-3.0 moved to C++17.
+
+-------------------------------------------------------------------
+Sat Mar 31 11:52:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Add atkmm-glibmm-bump.patch, fix build with new glibmm2.
+- Following the above, add libtool and mm-common BuildRequires and
+  pass autogen.sh as the patch touches the buildsystem.
+- Also replace pkgconfig(glibmm-2.56) with pkgconfig(glibmm-2.58).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:02 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 24 22:44:16 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.27.1:
+  + Change ABI to atkmm-2.28.
+- Update '+' in GPL/LGPL License tags to '-or-later' and add GPL
+  version 2 and 3 to the preamble to comply with the copyrights.
+- Update packages descriptions to show more explictly subpackages'
+  content.
+- Drop unneeded standard BuildRoot tag declaration: RPM already
+  handles this itself.
+- Point fdupes to the data directory under the build root instead
+  of the build root directly, which is a practice that must be
+  avoided.
+- Rename shared library subpackage name to libatkmm-2_28-1 to
+  follow upstream change.
+- Recommends the documentation subpackage.
+
+-------------------------------------------------------------------
+Fri Aug 25 23:15:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.4:
+  + Build: Use glibmm-2.56 instead of glibmm-2.54. We have changed
+    the ABI name in glibmm.
+  + Text: Plug memory leaks in get_text_vfunc() and
+    get_selection_vfunc(). These vfuncs shall delete the returned
+    character array after it has been copied to a Glib::ustring
+    (bgo#783360).
+
+-------------------------------------------------------------------
+Sat May 20 11:59:42 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.3:
+  + Use C++11 enum classes instead of old-style enums, and put some
+    enums inside relevant class declarations:
+    - Relation: Change RelationType to Relation::Type.
+    - Text: Move enums into the class.
+  + Build: Windows: Visual Studio builds: Update glibmm ABI
+    version.
+- Changes from version 2.25.2:
+  + Build: Use glibmm-2.54 instead of glibmm-2.52.
+  +  (Murray Cumming)
+  + Replace uses of Glib::ArrayHandle<> and Glib::SListHandle<>
+    with vector.
+  + Visual Studio: Require Visual Studio 2017.
+
+-------------------------------------------------------------------
+Mon Dec  5 13:51:28 UTC 2016 - jengelh@inai.de
+
+- Rectify rpm groups.
+
+-------------------------------------------------------------------
+Mon Dec  5 12:01:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.25.1:
+  + This is the first release of the atkmm-2.26 API/ABI.
+  + Require C++14.
+  + Use glibmm-2.52 instead of glibmm-2.4.
+  + Fix silent builds (bgo#768797).
+- Rename libatkmm-1_6-1 to libatkmm-2_26-1, following upstreams
+  soname change.
+- Remove outdated condition for openSUSE 11.2 (make the doc package
+  unconditionally noarch).
+
+-------------------------------------------------------------------
+Fri Apr 15 06:48:12 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Nov 30 11:55:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.24.2:
+  + Regenerate with the latest glibmm.
+
+-------------------------------------------------------------------
+Wed Sep 30 10:47:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.24.1:
+  + Regenerate with the latest glibmm.
+- Changes from version 2.24.0:
+  + MSVC build fixes.
+
+-------------------------------------------------------------------
+Fri Sep  4 19:21:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.23.3:
+  + Rebuilt with latest glibmm, whose gmmproc generates C++ move
+    operations.
+
+-------------------------------------------------------------------
+Sat Jul 25 11:13:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.23.2:
+  + Use (and require) C++11.
+- Changes from version 2.23.1:
+  + Atk:
+    - Document: Add get/set_attribute() and deprecate
+      get_document() and get_document_type().
+    - Component: Deprecate add/remove_focus_handler, get_size() and
+      get_position().
+    - Add Range.
+    - Table:
+      . Deprecate get_column/row_at_index().
+      . Add a get_at() const version and deprecate get_index_at().
+    - Text:
+      . Deprecate get_text_before_offset(),
+        get_text_after_offset().
+      . Add get_string_at_offset(), deprecating other methods for
+        it.
+    - Value: Deprecate get_minimum/maximum_range() in favour or
+      get_range().
+  + Build: Update MSVC 2005, 2008 and 2010 Projects: Add "Install"
+    Project.
+
+-------------------------------------------------------------------
+Mon Apr 29 11:20:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.22.7:
+  + Remove the use of g_type_init() because it has been deprecated.
+
+-------------------------------------------------------------------
+Fri Feb  1 12:01:14 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:25 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 15 10:30:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.22.6:
+  + Add #includes needed with the latest glibmm.
+
+-------------------------------------------------------------------
+Sat Sep 17 13:31:13 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Add atkmm-devel to baselibs
+
+-------------------------------------------------------------------
+Thu Jul  7 22:39:53 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Sat Apr 30 11:29:42 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.22.5:
+  + bgo#645669: Install the m4 files even without
+    --enable-maintainer-mode, as with other modules.
+- Use source services: download_url and set_version.
+
+-------------------------------------------------------------------
+Wed Mar 23 15:38:14 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.22.4:
+  + Avoid a tarball dependency on mm-common.
+- Changes from version 2.22.3:
+  + a tarball regeneration due to a changed m4 macro in mm-common.
+
+-------------------------------------------------------------------
+Sun Jan  9 11:03:32 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.22.2:
+  + Install m4 files needed by recent versions of gtkmm when
+    building from git.
+
+-------------------------------------------------------------------
+Tue Dec  7 11:40:24 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.22.1:
+  + Distribute the GPL in the tarball, in addition to the LGPL,
+    because the Windows build uses a GPL builder tool.
+
+-------------------------------------------------------------------
+Tue Sep 28 00:45:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.22.0:
+  + Just increased version to show that it's an API/ABI-stable
+    release.
+
+-------------------------------------------------------------------
+Fri Aug  6 12:20:16 CEST 2010 - vuntz@opensuse.org
+
+- Initial package: the code got split from gtkmm2.
+

@@ -1,0 +1,26 @@
+From: Andreas Stieger <andreas.stieger@gmx.de>
+Subject: fix test failures in openSUSE Factory
+Date: Fri, 16 Aug 2013 22:59:41 +0100
+Upstream: no
+
+The test suite fails for factory comparing the output of two command runs.
+As only the content is relevant, not the order, sort befor diffing to fix.
+
+---
+ t/primary-prefix-invalid-couples.tap |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: automake-1.15.1/t/primary-prefix-invalid-couples.tap
+===================================================================
+--- automake-1.15.1.orig/t/primary-prefix-invalid-couples.tap
++++ automake-1.15.1/t/primary-prefix-invalid-couples.tap
+@@ -186,7 +186,9 @@ grep -v 'dir.* not a legitimate director
+ # Check that the same failures are present without the '--add-missing'
+ # option.
+ mv stderr stderr.old
++sort stderr.old -o stderr.old
+ AUTOMAKE_fails -d "automake error out on mismatched prefix/primary couples"
++sort stderr -o stderr
+ command_ok_ "... and with the same diagnostic of 'automake -a'" \
+             diff stderr.old stderr
+ 

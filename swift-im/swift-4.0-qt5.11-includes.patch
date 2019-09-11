@@ -1,0 +1,11 @@
+diff -urEbwB swift-4.0/Swift/QtUI/UserSearch/QtUserSearchWindow.h swift-4.0.new/Swift/QtUI/UserSearch/QtUserSearchWindow.h
+--- swift-4.0/Swift/QtUI/UserSearch/QtUserSearchWindow.h	2018-03-19 14:28:55.000000000 +0100
++++ swift-4.0.new/Swift/QtUI/UserSearch/QtUserSearchWindow.h	2018-06-12 12:01:32.980255186 +0200
+@@ -9,6 +9,7 @@
+ #include <set>
+ 
+ #include <QWizard>
++#include <QAbstractItemModel>
+ 
+ #include <Swiften/Base/Override.h>
+ 

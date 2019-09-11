@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<data>
+    <value type="dict">
+    <value type="string" key="sys.config.path">/etc/my.cnf</value>
+    <value type="string" key="sys.config.section">mysqld</value>
+    <value type="string" key="sys.mysqld.start">/usr/sbin/rcmysql start</value>
+    <value type="string" key="sys.mysqld.stop">/usr/sbin/rcmysql stop</value>
+    <value type="string" key="sys.mysqld.status">/usr/sbin/rcmysql status | grep running</value>
+    <value type="int" key="sys.usesudo">1</value>
+    <value type="int" key="sys.usesudostatus">0</value>
+    <value type="string" key="sys.sudo">/usr/bin/sudo -p EnterPasswordHere /bin/sh -c</value>
+    <value type="string" key="sys.system">Linux</value>
+  </value>
+</data>

@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 11168c7..12015cd 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -146,3 +146,8 @@ x11vnc_LDADD = \
+ 	@XI2_LIBS@ \
+ 	@CAIRO_LIBS@ \
+ 	$(LD_CYGIPC)
++
++CFLAGS_avahi.c = $(CFLAGS) -fstack-protector
++CFLAGS_connections.c = $(CFLAGS) -fstack-protector
++CFLAGS_uinput.c = $(CFLAGS) -fstack-protector
++CFLAGS_userinput.c = $(CFLAGS) -fstack-protector

@@ -1,0 +1,305 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:58:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Sun Aug 11 22:46:29 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.14.1 
+  * Release rebuild for libxfconf-0.deps
+
+-------------------------------------------------------------------
+Sun Aug 11 21:38:39 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.14.0
+  * Translation updates
+- Fixed up spec file 
+
+-------------------------------------------------------------------
+Thu Jun 27 14:56:46 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to Version 4.13.8
+  * Add support for GObject introspection and vala
+  * Tests: Explicitly handle error reply from Ping method call
+  * Disable perl bindings by default
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat May 18 11:24:16 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.13.7
+  - Bump glib version
+  - bxo#15122: xfconf: disable gsettings backend by default
+  - Fix compiler error -Wcast-function-type (GCC 8)
+  - Fix this use of "defined" may not be portable
+  - Update .gitignore
+  - Fix warnings reported by GCC 8 (bxo#15112)
+  - Added gdbus binding to gitignore, add post release git tag
+  - Translation updates
+- Fixed up dependencies
+
+-------------------------------------------------------------------
+Sat Apr 27 11:43:00 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 4.13.6
+  * Added .NOTPARALLEL to property change test (bxo#13840)
+  * Implement an optional GSettings backend
+- Changes from 4.13.5
+  * Fix make distcheck, (bxo#14082)
+  * Handle empty arrays by initializing the GValue to G_TYPE_PTR_ARRAY (bxo#13780)
+- Changes from 4.13.4
+  * Fix segfault in xfconf_cache_set_property_reply_handler when 
+    multiple calls are made (bug #13825)
+  * Allow to store empty arrays (bug #13791)
+  * Fix a path in xfconf_cache_set where the mutex isn't locked (bxo#13790)
+- Changes from 4.13.3
+  * Flush gdbus connection on xfconf_shutdown
+  * Correctly use xfconf_shutdown in xfconf-query
+  * Check for invalid GPtrArrays in the conversion
+    from GValue to GVariant.
+  * Fix some build issues in AM subdir-objects
+  * Fix some autogen.sh warnings
+    Better documentation processing.
+- Changes from 4.13.2
+  * Fix cache corruption due to a wrong g_value_unset call.
+  * Update API gtk documentation
+- Changes from 4.13.1
+  * Revert the bump of libxfconf version from 0 to 1,
+    to avoid massive changes in all xfce's components.
+- Changes from 4.13.0
+  * Port xfconf to gdbus
+  * Bump libxfconf version from 0 to 1.
+- Clean up spec file and dropped obsolete macros
+- Added conditional %bcond_with git for easier maintanance when using
+  git master branch
+
+-------------------------------------------------------------------
+Fri Sep 22 06:52:27 UTC 2017 - seife+obs@b1-systems.com
+
+- do not package ChangeLog, NEWS is enough
+
+-------------------------------------------------------------------
+Sat Nov 26 15:37:28 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 4.12.1
+  - add support for binding to GdkRGBAs (needed for gtk3 migration)
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Feb 28 21:18:19 UTC 2015 - gber@opensuse.org
+
+- update to version 4.12.0
+  - allow :.,[]{} characters in property and channel names
+    (bxo#11021)
+  - fix make check when including perl bindings in the build
+    (bxo#9556)
+  - remove unneeded files
+  - drop deprecated g_type_init() function
+  - simplify checks
+  - autotools updates
+  - use new glib 2.32 mutex api
+  - translation updates
+
+-------------------------------------------------------------------
+Thu Feb 19 09:58:18 UTC 2015 - gber@opensuse.org
+
+- update to version 4.11.0
+  - allow :.,[]{} characters in property and channel names
+    (bxo#11021)
+  - fix make check when including perl bindings in the build
+    (bxo#9556)
+  - remove unneeded files.
+  - drop deprecated g_type_init() function
+  - simplify checks
+  - autotools updates
+  - use new glib 2.32 mutex api
+  - translation updates
+
+-------------------------------------------------------------------
+Wed May  9 08:02:11 UTC 2012 - gber@opensuse.org
+
+- add versioned build dependency
+
+-------------------------------------------------------------------
+Sun Apr 29 07:56:26 UTC 2012 - gber@opensuse.org
+
+- update to version 4.10.0
+  - don't emit property-changed on canceled calls
+  - accept NULL as a string value
+  - check abicheck.sh to be more portable
+  - fix more deprecated g_value_set_char
+  - explicitly link against gthread
+  - drop deprecated g_mapped_file_free
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Apr 14 09:31:31 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.1
+  - use LT_PREREQ and LT_INIT
+  - UTF-8 check xfconf strings
+  - do not dup strings in xfconf_channel_set_string
+  - bump package dependency versions
+  - fix comment in perl package info
+  - don't use deprecated g_value_set_char
+  - translation updates
+- added xfconf-query manpage from Debian
+
+-------------------------------------------------------------------
+Sun Apr  8 09:32:57 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.0
+  - use sh as interpreter in tests
+  - add hook to skip the xfconf tests
+  - make the abicheck work on Solaris and PPC64
+  - fix licenses and use new FSF address
+  - fix compiler warnings on Solaris
+  - avoid GCC 4.6 compiler warning
+  - add toggle option to xfconf-query
+  - remove unusable import and export options from xfconf-query
+  - translate all error strings in xfconf-query
+  - cleanup Makefile.am files a bit
+  - improve --version output in xfconf-query
+  - cleanup #includes
+  - drop usage of the G_CONST_RETURN macro
+  - translation updates
+
+-------------------------------------------------------------------
+Thu Mar 29 20:55:58 UTC 2012 - gber@opensuse.org
+
+- corrected dependencies
+- split of -lang subpackage
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Dec 23 19:49:00 UTC 2011 - gber@opensuse.org
+
+- remove workarounds for 11.2
+- update to version 4.8.1
+  - fix double free crash
+  - allow installation of the helpers in a custom location
+  - translation updates
+- install xfconfd under %_libexecdir
+
+-------------------------------------------------------------------
+Mon Jan 17 10:38:52 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.0
+  - updated translations
+
+-------------------------------------------------------------------
+Tue Jan 11 16:11:03 UTC 2011 - gber@opensuse.org
+
+- make libxfconf-0-2-4 recommend xfconf
+
+-------------------------------------------------------------------
+Mon Dec 27 21:29:48 UTC 2010 - gber@opensuse.org
+
+- remove unecessary dynloader bs file
+- use perl symbol for perl dependencies
+- corrected groups
+- improved summaries/descriptions
+- added rpmlintrc
+
+-------------------------------------------------------------------
+Wed Dec 15 18:57:50 UTC 2010 - prusnak@opensuse.org
+
+- build perl bindings only on openSUSE 11.3 and newer
+
+-------------------------------------------------------------------
+Sun Dec  5 22:11:29 UTC 2010 - prusnak@opensuse.org
+
+- updated to 4.7.4
+  * Don't enable options with --disable-<option> (bug #6820).
+  * Updated translations: ug, sk, pt.
+
+-------------------------------------------------------------------
+Wed Dec  1 17:08:04 UTC 2010 - prusnak@opensuse.org
+
+- use pkgconfig symbol in BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 23 22:28:52 UTC 2010 - gber@opensuse.org
+
+- updated to 4.7.3
+  * Disable cache singletons and improve some code now we know the
+    tree is always empty during prefetch. This is only a
+    disadvantage when creating multiple new channels with the same
+    name, but in that case channels singletons should be used.
+  * Lots of memory leaks plugged. Valgrind log is clean now.
+  * Fix memory corruption during file loading and use mmap.
+  * Properly handle dirty channels in the daemon and avoid
+    excessive saving of channels.
+  * Disable unimplemented code in the properties cache.
+  * Steal values during cache prefetch to avoid a lot of copying.
+  * Updated translations: hu.
+  * Remove dangling nodes from the tree after a recursive remove.
+  * Use a seconds timeout to reduce system wakeups.
+  * Only print debug messages when compiled with debugging.
+  * Merge xml files in reversed order (bug #6079).
+  * Use g_strcmp0 for comparing strings.
+  * Bump glib depenency to 2.18.
+  * Silent the build.
+  * Updated translations: pt_BR, nl, gl, fi, ru.
+- cleanup
+  * added summaries and descriptions
+  * fixed build of Perl interface
+  * fixed dependencies
+
+-------------------------------------------------------------------
+Tue Feb  2 13:55:35 CET 2010 - prusnak@suse.cz
+
+- updated to 4.7.1
+  * Remove dangling nodes from the tree after a recursive remove.
+  * Use a seconds timeout to reduce system wakeups.
+  * Only print debug messages when compiled with debugging.
+  * Merge xml files in reversed order (bug #6079).
+  * Use g_strcmp0 for comparing strings.
+  * Bump glib depenency to 2.18.
+  * Silent the build.
+  * Updated translations: pt_BR, nl, gl, fi, ru.
+
+-------------------------------------------------------------------
+Wed Jan 13 12:36:55 UTC 2010 - prusnak@suse.cz
+
+- updated to 4.7.0
+  * Add prefetching and caching support to XfconfChannel. Should speed
+    things up a bit on app startup, and avoid blocking waiting on DBus
+    in other cases.
+  * New simpler (internal) handling of property bindings.
+  * Use new xdt macros, this requires xfce-dev-tools 4.7.2.
+  * New tests for object bindings.
+  * Updated translations: es, kk, ca, sv, hu, ro, gl, ja, cs, lv, ast,
+    zh_CN, ur, ur_PK, da, eu, pt.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:28:57 CEST 2009 - dominique-obs@leuenberger.net
+
+- Follow change of %%{_libexecdir}
+
+-------------------------------------------------------------------
+Mon Apr 27 13:53:24 CEST 2009 - prusnak@suse.cz
+
+- replaced libxfcegui4 with libxfce4util in BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 21 14:12:44 CEST 2009 - prusnak@suse.cz
+
+- updated to 4.6.1
+
+-------------------------------------------------------------------
+Mon Mar  9 10:04:17 CET 2009 - prusnak@suse.cz
+
+- fix package names according to shared library policy
+
+-------------------------------------------------------------------
+Fri Feb 27 14:17:02 CET 2009 - prusnak@suse.cz
+
+- updated to 4.6.0 (Xfce 4.6.0 release)
+
+-------------------------------------------------------------------
+Mon Aug 18 10:57:38 CEST 2008 - prusnak@suse.cz
+
+- created package (version 4.5.80)
+

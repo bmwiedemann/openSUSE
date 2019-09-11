@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon May 27 18:51:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.6:
+  + Fixed distcheck build by renewing tests certificates which had
+    been expired.
+  + Updated translations.
+- Changes from version 0.3.5:
+  + API additions.
+  + Force use of v3 REST API.
+  + Fix crash on 404.
+  + Fix persistent session with oVirt 3.6.
+  + Support for new storage format added in oVirt 4.1.
+  + New unified mode for parsing nodes using a single struct.
+  + Initial support for hosts/clusters/datacenters.
+  + Support for searching queries of collections.
+  + New nodes can be created with name/uuid only, but require
+    explicit refresh() call to retrieve attributes/subnodes.
+  + Improved error messages in case of error in async call.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:23:26 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries. Fix faulty disable-static
+  switch.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:01 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 13 15:34:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.3.4:
+  + API additions:
+    - ovirt_proxy_get_api().
+    - OvirtVmDisplay::ca-cert.
+    - OvirtCollection::resources.
+    - OvirtProxy::sso-token.
+  + Fixes to CA certificate handling.
+  + Fix crash when a REST API call returned multiple elements with
+    the same 'name' attribute.
+  + Various leak fixes.
+  + Improved API documentation.
+  + Fix GCancellable disconnection after async calls.
+  + Updated translations.
+- Add pkgconfig(gthread-2.0) BuildRequires and version it:
+  Configure checks for it.
+
+-------------------------------------------------------------------
+Wed Apr  8 19:16:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.3.3:
+  + Add support for SPICE proxy.
+  + Don't report REST call cancellations as an unexpected error.
+  + Access REST API through /ovirt-engine/api rather than /api as
+    the latter is deprecated.
+  + Parse status of storage domains.
+  + Add support for GOVIRT_DISABLE_HTTPS and GOVIRT_NO_SSL_STRICT
+    environment variable in order to make it easier to lower
+    security during development/testing.
+  + Fix compilation with older glibs.
+  + Fix mingw build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  9 17:05:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.3.2:
+  + Allow empty filenames in OvirtCdrom, this allows to remove the
+    current CD image from a VM.
+  + Parse leading '~' when handling commandline filenames.
+  + Implemented ovirt_resource_delete() and its async variant.
+  + Add translation support.
+  + Bug fixes.
+  + Updated translations.
+- Add intltool BuildRequires: New dependency.
+- Add lang macros, and package the new translations. Add Recommends
+  for the new lang package (and make libgovirt2 provide libgovirt,
+  so that the lang package is installable).
+
+-------------------------------------------------------------------
+Sun Sep  7 13:21:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.3.1:
+  + Handle cookies set by the oVirt instance in order to have some
+    'persistant' authentication through the JSESSIONID cookie.
+  + Add support for VM pools.
+  + Added ovirt_resource_refresh{_async} in order to refetch a
+    resource content remotely.
+  + Various leak/memory-handling related bug fixes.
+  + ovirt_proxy_new now expects a hostname without the https:// and
+    the /api part hostnames with http/https/api will still work
+    fine but will cause runtime warnings.
+
+-------------------------------------------------------------------
+Tue Nov 19 21:32:14 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.3.0:
+  + Add support for listing storage domains and the files they
+    contain.
+  + Add support for changing the CDRom available in a VM.
+  + Introduced an OvirtApi class which represents the toplevel
+    oVirt collection from which one can access VMs, storage
+    domains, ...
+  + Rework certificate handling, OvirtProxy now has a 'ssl-ca-file'
+    property that can be used to specify which CA certificate
+    should be used to validate remote certificates.
+  + Certificate checking is now enforced by default unless
+    OvirtProxy::ssl-strict is set to FALSE.
+  + ABI/API hasn't been broken, even though some functions were
+    deprecated.
+
+-------------------------------------------------------------------
+Tue Jul  9 08:07:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.0:
+  + Break ABI :(.
+  + Switch back to using GSimpleAsyncResult (from GTask) to gain
+    compatibility with older glib versions.
+  + Refactor internals to make it much easier to add support for
+    more REST collections.
+  + Parse more VM states from the OvirtVm resource.
+- Rename libgovirt1 subpackage to libgovirt2, following upstreams
+  soname change.
+
+-------------------------------------------------------------------
+Sun Jun 16 11:49:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.1.0:
+  + Add OvirtVmDisplay::host_subject property, this is required in
+    some cases to connect to a VM which is using SPICE.
+  + Add OvirtVmDisplay::smartcard and OvirtVmDisplay::allow-override
+    properties.
+  + Implement ovirt_vm_refresh_async().
+
+-------------------------------------------------------------------
+Sat Mar  9 22:48:00 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.0.3.
+

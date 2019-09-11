@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Sep 30 00:34:06 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change icon for C devel package. (boo#1039994)
+
+-------------------------------------------------------------------
+Mon Jul  3 12:15:39 UTC 2017 - tchvatal@suse.com
+
+- Remove ddd as it didn't have release in last 10 years and thus
+  we should not really promote it
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

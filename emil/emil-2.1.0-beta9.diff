@@ -1,0 +1,277 @@
+--- Makefile.in
++++ Makefile.in
+@@ -212,57 +212,11 @@
+ 	./emiltest Misc;
+ 
+ install: installdirs
+-	@if test -f emil ; then \
+-		if test -f $(bindir)/emil ; then \
+-			echo " " ;\
+-			echo "Saving $(bindir)/emil in $(bindir)/emil.bak" ; \
+-			mv $(bindir)/emil $(bindir)/emil.bak ; \
+-		fi ; \
+-		echo " " ;\
+-		echo "Installing emil as $(bindir)/emil" ; \
+-		$(INSTALL_PROGRAM) emil $(bindir)/emil ; \
+-	fi ;
+-	@if test -f emil.cf ; then \
+-		if test -f $(MAINCF) ; then \
+-			echo " " ;\
+-			echo "Keeping $(MAINCF) as is" ; \
+-			echo " " ;\
+-			echo "*********************************************" ;\
+-			echo "The syntax of emil.cf has changed somewhat." ;\
+-			echo "A new mailer field has been added." ;\
+-			echo "You should also check the Match lines in ./emil.cf" ;\
+-			echo "and include the ones not in your original" ; \
+-			echo "$(MAINCF)." ; \
+-			echo "*********************************************" ;\
+-		else \
+-			echo " " ;\
+-			echo "Installing emil.cf as $(MAINCF)" ; \
+-			$(INSTALL_DATA) emil.cf $(MAINCF) ; \
+-		fi ; \
+-	fi ;
+-	@if test -f charset/charsets.cpl ; then \
+-		if test -f $(CHARFILE) ; then \
+-			echo " " ;\
+-			echo "Keeping $(CHARFILE) as is" ; \
+-		else \
+-			echo " " ;\
+-			echo "Installing charset/charsets.cpl as $(CHARFILE)";\
+-			$(INSTALL_DATA) charset/charsets.cpl $(CHARFILE); \
+-			 chmod 444 $(CHARFILE) ; \
+-		fi ; \
+-	fi ;
+-	@if test -f emil.$(manext) ; then \
+-		echo " " ;\
+-		echo "Installing emil.$(manext) in $(mandir)/man$(manext)";\
+-		$(INSTALL_DATA) emil.$(manext) $(mandir)/man$(manext); \
+-	fi ;
+-	@if test -f emil.cf.$(manext) ; then \
+-		echo " " ;\
+-		echo "Installing emil.cf.$(manext) in $(mandir)/man$(manext)";\
+-		$(INSTALL_DATA) emil.cf.$(manext) $(mandir)/man$(manext); \
+-	fi ;
+-	@echo " " ;
+-	@echo "Installation done." ;
++	$(INSTALL_PROGRAM) emil $(bindir)/emil
++	$(INSTALL_DATA) emil.cf $(MAINCF)
++	$(INSTALL_DATA) charset/charsets.cpl $(CHARFILE)
++	$(INSTALL_DATA) emil.$(manext) $(mandir)/man$(manext)
++	$(INSTALL_DATA) emil.cf.$(manext) $(mandir)/man$(manext)
+ 
+ installdirs:
+ 	$(srcdir)/mkinstalldirs $(bindir) $(libdir) $(mandir)/man$(manext)
+--- getoption.y
++++ getoption.y
+@@ -309,7 +309,7 @@
+ 	struct	member_struct	* mm;
+ 	struct	config_struct	* gg;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+@@ -344,7 +344,7 @@
+ {
+ 	struct	config_struct	* gg;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+@@ -443,7 +443,7 @@
+ {
+ 	struct	mailer_struct	* mm;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+--- main.c
++++ main.c
+@@ -69,7 +69,7 @@
+ int     pseudo_route    = 0;
+ 
+ int	in_fd		= 0;
+-FILE	* out_fd	= stdout;
++FILE	* out_fd	= NULL;
+ FILE	* char_fd	= NULL;
+ FILE	* conf_fd	= NULL;
+ off_t   pz;
+@@ -84,6 +84,8 @@
+   char *cmailer = NULL;
+   char *member = NULL;
+ 
++  out_fd = stdout;
++
+ #ifdef	HAVE_GETPAGESIZE
+ 	pz = (off_t) getpagesize();
+ #elif	defined(hpux) || defined(_AUX_SOURCE)
+@@ -174,7 +176,7 @@
+ 		case	'6':	syslog_facility	= LOG_LOCAL6;	break;
+ 		case	'7':	syslog_facility	= LOG_LOCAL7;	break;
+ 		default:	
+-			sprintf(ebuf,"Invalid parameter to -f: %s",optarg);
++			snprintf(ebuf, sizeof(ebuf)-1,"Invalid parameter to -f: %s",optarg);
+ #ifdef DEBUG
+ 		  if (edebug)
+ 		    fprintf(stderr, ebuf);
+@@ -300,7 +302,7 @@
+ 		exit(EX_OK);
+ 		break;
+ 	default:
+-		sprintf(ebuf,"Invalid flag: -%c",c);
++		snprintf(ebuf, sizeof(ebuf)-1,"Invalid flag: -%c",c);
+ #ifdef DEBUG
+ 			if (edebug)
+ 			  fprintf(stderr, ebuf);
+@@ -356,7 +358,7 @@
+     {
+       mailer = get_mailer(cmailer);
+       if (mailer == NULL) {
+-	sprintf(ebuf, "Invalid mailer specification %s", optarg);
++	snprintf(ebuf, sizeof(ebuf)-1, "Invalid mailer specification %s", optarg);
+ #ifdef DEBUG
+ 	if (edebug)
+ 	  fprintf(stderr, ebuf);
+@@ -389,7 +391,7 @@
+       smtp_open(rmx);
+     }
+ #endif
+-  sprintf(ebuf,"mail from %s to %s via %s",sender,recipient,rmx);
++  snprintf(ebuf, sizeof(ebuf)-1,"mail from %s to %s via %s",sender,recipient,rmx);
+   logger(LOG_DEBUG,ebuf);
+ #ifdef DEBUG
+       if (edebug)
+@@ -442,7 +444,7 @@
+   if (source == NULL)
+     source = (struct config_struct *) getoption(sender, recipient, rmx); /* rmx?? smx */
+ 
+-  sprintf(ebuf,"sender group = %s, recipient group = %s",
++  snprintf(ebuf, sizeof(ebuf)-1,"sender group = %s, recipient group = %s",
+ 		source ? (source->name ? source->name : "unknown") : "Unknown",
+ 		target ? (target->name ? target->name : "unknown") : "Unknown"
+ 		);
+--- mime.c
++++ mime.c
+@@ -38,7 +38,7 @@
+ void
+ encode_mime(struct message *m)
+ {
+-  char buf[HDRLEN];
++  char *buf;
+   char *ct;
+   char *bb = NULL;
+ 
+@@ -56,18 +56,30 @@
+       if (match(m->sd->type, "TEXT"))
+ 	{
+ 	  if (m->td->charset != NULL)
+-	    sprintf(buf, "%s; charset=\"%s\"", ct, m->td->charset);
++	    {
++	      buf = malloc(strlen(ct) + strlen(m->td->charset) + strlen("; charset=\"\"") + 1);
++	      if (buf)
++		sprintf(buf, "%s; charset=\"%s\"", ct, m->td->charset);
++	    }
+ 	  else
+-	    sprintf(buf, "%s", ct);
++	    buf = NEWSTR(ct);
+ 	}
+       else
+ 	if (match(m->sd->type, "MULTIPART"))
+ 	  {
+ 	    bb = (char *)getmimebound();
+ 	    if (m->sd->applefile == AMDOUBLE)
+-	      sprintf(buf, "Multipart/AppleDouble; boundary=\"%s\"", bb);
++	      {
++		buf = malloc(strlen(bb) + strlen("Multipart/AppleDouble; boundary=\"\"") + 1);
++		if (buf)
++		  sprintf(buf, "Multipart/AppleDouble; boundary=\"%s\"", bb);
++	      }
+ 	    else
+-	      sprintf(buf,"%s; boundary=\"%s\"", ct, bb);
++	      {
++		buf = malloc(strlen(ct) + strlen(bb) + strlen("; boundary=\"\"") + 1);
++		if (buf)
++		  sprintf(buf,"%s; boundary=\"%s\"", ct, bb);
++	      }
+ 	    m->td->startbound = (char *)Yalloc(MIMEBOUNDLEN + 5);
+ 	    m->td->endbound = (char *)Yalloc(MIMEBOUNDLEN + 7);
+ 	    sprintf(m->td->startbound, "--%s", bb);
+@@ -75,21 +87,29 @@
+ 	  }
+ 	else
+ 	  {
+-	    sprintf(buf, "%s", ct);
++	    buf = NEWSTR(ct);
+ 	  }
+     }
+   else
+     /* Generic default */
+-    sprintf(buf, "Application/Octet-Stream");
++    buf = NEWSTR("Application/Octet-Stream");
+ 
+   if (m->td->encoding == EBINHEX)
+-    sprintf(buf, "application/mac-binhex40");
++    buf = NEWSTR("application/mac-binhex40");
+   
+-  if (m->sd->name != NULL)
++  if (m->sd->name != NULL && buf != NULL)
+     {
+-      sprintf(buf, "%s; name=\"%s\"", buf, m->sd->name);
++      char *newbuf = malloc(strlen(buf) + strlen(m->sd->name) + strlen("; name=\"\"") + 1);
++      if (newbuf != NULL)
++	{
++	  sprintf(newbuf, "%s; name=\"%s\"", buf, m->sd->name);
++	  free(buf);
++	  newbuf = buf;
++	}
+     }
+-  add_header(m, "Content-Type", buf, MIME);
++  if (buf != NULL)
++    add_header(m, "Content-Type", buf, MIME);
++  free(buf);
+   if (bb != NULL)
+     rm_header(m, "Content-Transfer-Encoding");
+   else
+--- uuencode.c
++++ uuencode.c
+@@ -83,7 +83,7 @@
+   int left;
+   unsigned long triple;
+   unsigned char *inb;
+-  char outb[256];
++  char *outb;
+ 
+   inbuf = m->td;
+   inbuf->offset = inbuf->bodystart;
+@@ -116,8 +116,13 @@
+   /* Start with uuencode preamble */
+   fix_filename(m);
+ 
+-  sprintf(outb,"begin 644 %s\n", m->sd->name);
+-  append_data(outbuf, outb, strlen(outb), pz);
++  outb = malloc(strlen(m->sd->name) + strlen("begin 644 \n") + 1);
++  if (outb != NULL)
++    {
++      sprintf(outb,"begin 644 %s\n", m->sd->name);
++      append_data(outbuf, outb, strlen(outb), pz);
++      free(outb);
++    }
+   outbuf->lineend += 1;
+   i = 0;
+   left = inbuf->bodyend - inbuf->offset;
+@@ -242,7 +247,7 @@
+       inb++;
+       inbuf->offset += 1;
+     }
+-  if ((i = sscanf(inb, "begin%*1[ ]%*3[0-7]%*1[ ]%s", filename)) != 1)
++  if ((i = sscanf(inb, "begin%*1[ ]%*3[0-7]%*1[ ]%511s", filename)) != 1)
+     {
+ #ifdef DEBUG
+       if (edebug)

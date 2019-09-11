@@ -1,0 +1,1059 @@
+-------------------------------------------------------------------
+Fri Jan 25 11:09:51 UTC 2019 - badshah400@gmail.com
+
+- Update to version 5.42.2:
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
+Mon Oct 22 11:35:30 UTC 2018 - badshah400@gmail.com
+
+- Update to version 5.42.1:
+  * MS Windows OS specific changes only, version bump without
+    changes for Linux.
+
+-------------------------------------------------------------------
+Mon Oct  1 11:30:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 5.42.0:
+  + Long list of changes, see
+    https://sourceforge.net/p/maxima/code/ci/master/tree/ChangeLog-5.42.md
+
+-------------------------------------------------------------------
+Fri Feb 16 12:48:35 UTC 2018 - dimstar@opensuse.org
+
+- Do not redefine __spec_install_post, so let's run the generic
+  spec_install_post handler, which happens to take care of debug
+  info and the like.
+- In order to not have the info files compressed (as this breaks
+  maxima internal help handlers), we redefine __os_install_post to
+  /usr/lib/rpm/brp-suse (skipping brp-compress).
+
+-------------------------------------------------------------------
+Thu Oct  5 08:39:38 UTC 2017 - badshah400@gmail.com
+
+- Update to version 5.41.0:
+  + Cross-compiling changes and improvements.
+  + Documentation changes and improvements.
+  + Build/installation improvements.
+  + Updates to examples.
+  + Changes and improvements to test system.
+  + Changes and updates to nightly builds and tests.
+  + Added the rules to build a snappy package.
+  + Windows installer improvements and fixes.
+  + Improvements to Windows maxima.bat.
+  + Debian build improvements.
+  + Compatibility improvements with diverse LISP compilers.
+  + Plotting improvements; improved GNUPLOT error handling.
+  + Code optimizations.
+  + Removed some old/unused code; cosmetic changes.
+  + New test cases.
+  + Bug fixes.
+- Reenable make check.
+
+-------------------------------------------------------------------
+Mon Jul 24 09:11:03 UTC 2017 - tchvatal@suse.com
+
+- Drop recode dependency because it's unmaintained fate#323644
+
+-------------------------------------------------------------------
+Sun Jun 11 15:00:10 UTC 2017 - badshah400@gmail.com
+
+- Update to version 5.40.0:
+  + Core:
+    - New functions encode_time and decode_time, with test cases.
+    - change O(n^2) method for flattening list to O(n) method.
+    - split totient into two parts
+    - optimized gcfactor and tried to make it easier to read.
+    - optimize gc squaring and inline gctime1
+    - inline gctimes.
+    - sped up psumsq.
+    - speeded up imodp.
+    - new implementation of ; is about a factor of 2 faster on
+      sbcl
+    - move jacbi and related functions from rat3c to numth
+    - sped up divsum by splitting it in two parts where the lower
+    - Numerous cross-compiling changes.
+    - Numerous documentation changes and improvements.
+    - Build/installation improvements.
+    - Many updates to examples.
+    - Many changes and improvements to test system.
+  + Share:
+    - add symplectic_ode package
+    - Add Kaplan-Meier's survival and empirical distribution
+      estimators
+    - Commit new version of COMA. Sent by Wilhelm Haager
+    - Check for a constant "variable" of integration in romberg
+      and bromberg
+    - Import ODEPACK fortran code.
+    - Julia() and mandelbrot() are modified to create
+      maxoutXXX.gnuplot
+    - plotdf: An option to change the arrow density. Patch from
+      themusicgod1.
+  + Bug fixes:
+    - fix bug 3291: ecl on Linux needs utf-8
+    - fix bug3300 Incorrect sha256sum output
+    - In rtest_translator, skip some tests which cause a crash
+      (bug #3291).
+    - Implement numerical evaluation for gamma_greek. Fixes SF bug
+      #3277.
+    - In tests for kill(props), work around bug #3289.
+    - In lsquares_mse, ensure temporary variable is assigned the
+      correct value. #3282.
+    - In lsquares_mse, ensure temporary variable is assigned the
+      correct value. #3282.
+    - In RISCHLOGEPROG, detect zero divisor. This fixes SF bug
+      #3274.
+    - Unlock :common-lisp package when compiling with SBCL. Fixes
+      SF bug #3271.
+    - Fix bug #2740: demo(romberg) fails
+    - Add test for bug #2295: Failure to evaluate definite
+      integral
+    - Add tests for bug #2314: Two different results for an
+      integral
+    - In tests for simplify_sum, add a few more tests from bug
+      report #3236.
+    - operatingsystem: Make chdir work with recent gcl versions.
+    - gcfactor(4/(%i+1)) gave an internal error in $bothcoef.
+    - Give informative error message when some index is not an
+      integer: "rat(-1) isn't an integer?"
+    - work around bug in gcl decode-universal-time.
+    - When evaluating float(diff(...)), apply float only to the
+      first argument.
+    - In GETL-LM-FCN-PROP, return NIL for argument which is not a
+      symbol.
+    - Remove built-in symbols from the list for user-defined
+      properties.
+    - Handle Lisp arrays in MQAPPLY expressions more carefully.
+    - Handle Lisp arrays in MQAPPLY expressions more carefully.
+    - A solve() enhancement by Richard Fateman that should fix a
+      zillion of bug tickets.
+    - Translate define and ":=" correctly by nuking the translator
+      property.
+    - Fix bernoulli and binomial pdfs when p=0 or p=1
+    - Fix bernoulli and binomial pdfs when p=0 or p=1
+- Drop maxima-makeinfo-errors.patch; incorporated upstream. 
+- Remove unnecessary hidden dir .gitattributes.
+- Add new mime, desktop and icon files to xmaxima file-list.
+- Add BuildRequires: bash-completion for proper dir permissions
+  for newly added bash-completion scripts.
+
+-------------------------------------------------------------------
+Mon Dec 19 09:07:36 UTC 2016 - badshah400@gmail.com
+
+- Update to version 5.39.0:
+  + New in Core: New functions firstn and lastn.
+  + Changes in core:
+    - Special variable clean-up
+    - Crosscompiling support
+    - Gnuplot 5.0 or newer versions
+    - Documentation updates
+    - function save: portable way to save "fast" arrays (hash
+      tables)
+    - functions timedate, parse_timedate: handle timezone offsets
+    - Floating point overflow handling
+    - Complex numericals
+    - Testsuite additions and improvements
+    - GIT fixes
+    - ODE improvements
+    - Load .wxm files from wxMaxima
+    - Temporary file handling improvements
+  + New in share:
+    - package decfp: decimal bigfloat package (thanks to Richard
+      Fateman)
+  + Changes in share:
+    - In some share test scripts, put reset() at the top
+    - package solver: rename solver.mac to Solver.mac
+    - package stringproc: new functions slessp, slesspignore,
+      sgreaterp, sgreaterpignore (string comparison)
+    - package charsets: several updates and improvements; still
+      work in progress
+    - package boolsimp: code clean-up; no functional changes
+    - package descriptive, functions continuous_freq,
+      discrete_freq: faster counting algorithm; accept arrays as
+      well as lists
+  + Bug fixes:
+    - Fixed bug #3258: diff with negative order in integrate
+    - Fix issue #3255 by changing how resimplification works
+    - In risplit, in preparation of fixing issue #3255 (logarc)
+    - Partial fix #3216: In package lapack, load without compile
+    - Fixed bug #3232: In ezunits, don't compile predicate
+      functions
+    - Fixed GCL bug #49689: Mark a known failure in rtest11
+    - Fixed bug #3213: Round when formatting bigfloats
+    - Another test for bug #3244.
+    - Fixed bug #3246: look-up entries for inv. trig
+      antiderivatives
+    - Fixed bug #3241: In MQAPPLY1, call AMPERCHK
+    - Fixed bug #3235: In RGRP, rephrase test for ECL
+    - Add tests from bug #3221
+    - Fixed bug #3221: elliptic_pi(n,z,m) wrong for z > %pi/2
+    - Fixed bug #453: algsys fails in simple case
+    - Add tests from SF bug 2059.
+    - Add tests from SF [bugs:2038] and [bugs:#2736]
+    - SF [bug:#1266][bug:#3208] Don't use $radcan when simplifying
+      in algsys.
+    - Fix SF [bugs:#3208]. Use sqrtdenest in algsys to simplify
+      partial solutions.
+    - [bugs:#3208] algsys.lisp:presultant: resimplify result
+    - share-subdirs.lisp is auto-generated and in version control,
+      which is afaik unavoidable for the lisp-only build system.
+      It also currently is out-of-sync with the repo => Updated
+      the repo version.
+    - Increase output when running
+      share/contrib/diffequations/tests
+    - SF bugs 3210 and 3212. Fix algsys regressions.
+    - Bug #2796 can't load ode2 with n declared constant
+    - Bug report ID: 1621 Wrong solution to ode2
+    - Fixed bug #2667: Distinguish trig function exponents in TeX
+    - In rtest_log, additional tests for SF bug #3105.
+    - Fixed bug #3148: Most of the change is in indentation
+    - Fixed bug #3194: No simplification of tan(x+n%pi) and
+      cot(x+n%pi)
+    - Fixed bug #3186 and other get_plot_option issues.
+    - Fixed bug #3022: Update the RPM spec file
+    - Fixed bug #3180: declare(foo, antisymmetric)
+    - Add test for SF bug #3090
+    - Add test for SF bug #3170
+    - Fixed bug #3144: Avoid unbounded recursion in PTIMES%E
+    - Fixed bug #3109: is(sin(x) <= 1) returns "unknown"
+    - Fixed bugs #3114, #3115: introduced by [647516] Fix
+      integrate(x=0,x)
+    - Partial fix to read_xpm.
+    - Correct documentation for rest
+    - Fix test for orderlessp transitive
+    - Fix in gcl-builds smismatch
+    - Fix in timedate, round TZ
+    - Remove redundant definition of copy from share/affine
+    - Another fix for summation of rational functions
+    - In package facexp, remove "&&" because
+    - Ensure that OPR-TABLE associates "{" with $SET
+    - Ran update_examples on Simplification.texi
+    - Fix uses of complex-float-numerical-eval-p
+    - Fix bug in running test files
+    - Partially fixed assumptions regarding products and powers
+    - Fix taylor testsuite failure bug introduced by [22f4fd]
+- Add maxima-makeinfo-errors.patch to fix makeinfo errors for
+  openSUSE <= 13.2 and Leap 42.1/2, apply it for all openSUSE
+  versions as this is useful to fix despite makeinfo being too
+  permissive for openSUSE > 13.2; sent upstream.
+- Drop conditionals for supporting long outdated versions of
+  openSUSE.
+- Upstream generally does not ship the ChangeLog corresponding to
+  the latest version, drop it from install completely.
+
+-------------------------------------------------------------------
+Wed May 18 13:01:01 UTC 2016 - badshah400@gmail.com
+
+- Update to version 5.38.1:
+  + Misc. bug fixes (aka no list of changes posted by upstream).
+
+-------------------------------------------------------------------
+Sun Apr  3 00:46:32 UTC 2016 - badshah400@gmail.com
+
+- Update to version 5.38.0:
+  + New in core:
+    - Images in the HTML manual now are automatically shrinked to
+      fit within the browser window, if neeeded.
+    - A singlepage HTML manual (doc/info/maxima_singlepage.html)
+    - Docu/Creating a release: Added a request to inform the
+      wxMaxima team that aims to make a simultaneous release.
+    - Commit charsets package as posted by Michel Talon
+    - Add configure option --enable-mathjax to enable usage of
+      MathJax in the html docs
+    - Add simple documentation for bf_fft and bf_inverse_fft.
+    - Added a small GUI for Windows users for selecting their
+      default Lisp interpreter.
+    - Allow setting the Lisp type (MAXIMA_LISP=...) using maximarc
+      on Windows.
+    - Try to exit gracefully if we are unable to connect to a server
+  + New items in share:
+    - draw: grid now not only accepts boolean values, but also a
+      list of 2 numbers.
+  + Changes in core:
+    - Documentation: Add example images for the draw options.
+    - Crosscompiling: update sbcl to the current version.
+    - Adjust the tolerances of two li[2] numerical tests
+    - Prevent the removal of the integervalued feature during a
+      reset()
+    - Work around bug in ecl that causes all tests to fail.
+    - Removed the --dynamic-space-size option for sbcl.
+    - Fix bug in utf-8-fix-start-end and improve
+      pseudo-unicode-support for GCL
+    - WIP: Bigfloat FFT routines.
+  + Changes in share:
+    - Split up implementation of FFT in a separate package
+    - Add the draw package to autoload updating the documentation
+    - First attempt to rework numericalio.lisp for greater speed
+      and memory efficiency.
+  + Bug fixes:
+    - Apply patch in bug report 3120.
+    - Fix #3105: li[s](1.0) doesn't simplify.
+    - Fix #3112: inaccurate zeta(n) for negative even n.
+    - Fix #3098: li[3] nuemrical evaluation.
+    - Fix SF bug report #3104: "limit(log(1 - exp(x)), x, 0,
+      plus), numer => stack overflow"
+    - Fix SF bug report #3103: "limit of li[..](...) with
+      numer:true infinite recursion"
+    - Fix SF bug #3102: "find_root(x,x,-1e300,1e300) => overflow"
+    - Fix SF bug report #3099: "Float read is single-precision,
+      though float() is double-precision"
+    - Fix bug #481: ('m)[1] (meval)
+    - Fixed bug #3075: '#3075 answer "3*false" from
+      "integrate(3*asinh(x),x,-inf,inf)"'
+    - Fixed bug #3081 'abs(...) -> "bfloat: attempted conversion
+      of floating-point infinity."'
+    - Fix #3069 limit(a/abs(x),x,0) crashes with stack overflow
+    - Fix bug:#3065.
+    - Fix bug #3058: Lingering assumptions after an interrupted
+      simpsum
+    - Add test for SF bug #2302: "'at' applied to definite
+      integral"
+    - A quick solution for Bug 3052
+    - Fix SF bug #3049: "set should act like list"
+    - Fix SF bug #3045: "Save command now fails to generate lisp
+      file"
+    - Fix bug #3044: opsubst crash
+    - Fix SourceForge bug #2159 - integration_with_logabs.
+    - Fix SF bug #3003: make pdf returns an error.
+    - Fix SourceForge bug #3017 - "integrate_use_rootsof" leads to
+      wrong result.
+    - Add tests to verify that SF bug #365 is fixed. Add tests for
+      related bug #3072
+    - Use per-maxima-instance filenames for draw and plot. Without
+      this simultaneous plotting from concurrent maxima instances
+      might result in name collisions.
+    - Allow sbcl to use enough memory to compile Lapack (linux+mac
+      only).
+    - Remove the two black lines at the border of the bounding box
+      that were introduced with gnuplot 5.0
+    - Fix integrate((4*x^3-x^2+4*x)^(-2/3)*(12*x^2-2*x+4),x);
+    - li[2] and li[3] fixes.
+    - Try to fix the trace output when the lisp_print trace option
+      is set.
+    - In MEVAL1, call GETCHARN only if argument is a symbol. Fixes
+      bug reported to mailing list 2016-01-06.
+
+-------------------------------------------------------------------
+Wed Nov 11 08:52:12 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.37.3:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep 18 20:58:26 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.37.2:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep  1 09:36:57 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.37.1 (List of changes includes fixes from
+  version 5.37.0):
+  + New items in core:
+    - new function with_default_2d_display: ensure pretty-printing
+      output.
+  + New items in share:
+    - new package cryptools: tools for cryptography.
+    - new package elliptic_curves: elliptic curves over prime
+      fields and binary fields.
+    - new function cgrind: output Maxima expressions as C code.
+    - package draw: new function vennplot (Venn diagrams).
+    - package stringproc: new functions flush_output, readbyte,
+      and writebyte.
+  + Changes in core:
+    - function gf_symmetric renamed to gf_balanced.
+  + Changes in share:
+    - functions md5sum, sha1sum, sha256sum and base64_decode:
+      accept and return numbers and octet lists as well as
+      strings.
+    - packages aes and aes2: provide flexible support for
+      different data types, e.g. octet lists.
+  + Bug fixes:
+    - [#3005]: Manual is wrong about "sqrt" and "radexpand".
+    - [#2998]: extra () in display2d:false output.
+    - [#2988]: documentation error in gf_manual.pdf.
+    - [#2987]: Some divergent integrals give error, some don't.
+    - [#2982]: Display of taylor series in wrong order.
+    - [#2980]: "rectform" causes infinite recursion depending on
+      variable name.
+    - [#2975]: number of distinct partitions gives wroing result.
+    - [#2972]: Wrong limits involving logs.
+    - [#2937]: dotscrules and antisymmetric.
+    - [#2936]: stack overflow in integrate.
+    - [#2934]: dotscrules and antisymmetric.
+    - [#2929]: misformatting in debugger help message.
+    - [#2905]: Assigning variable twice yields different results.
+    - [#2620]: atan2(y,x)+atan2(-y,x) doesnt always return 0.
+    - [#2230]: abs(x)^(2*int) doesn't simplify.
+    - [#2211]: rtest_sign #77.
+    - [#2183]: eigenvectors of a 10 x 10.
+    - [#1193]: ev doesn't bind functions safely.
+  + Unnumbered bugs:
+    - commit [6779ac0]: zn-nrt: root of zero should be zero.
+    - commit [b212487]: Fix up version variables so that
+      load(drawutils) succeeds.
+    - mailing list 2015-08-29: Documentation fails with error.
+    - mailing list 2015-08-27: Warnings from loading cartan package.
+    - mailing list 2015-08-25: Strange symmetry of acoth(x), area
+      cotangens hyperbolicus function (#552).
+    - mailing list 2015-08-17: trouble with GCL build.
+    - mailing list 2015-06-11: rationalize(0.1) and the manual.
+
+-------------------------------------------------------------------
+Wed Aug 19 12:06:28 UTC 2015 - dvaleev@suse.com
+
+- Exclude PowerPC64 architectures (no clisp available there yet)
+
+-------------------------------------------------------------------
+Tue Aug 18 10:25:22 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.37.0:
+  + Changes undocumented by upstream.
+- Disable %check because there seems to be an upstream issue with
+  make check in the Makefile causing build failures.
+
+-------------------------------------------------------------------
+Sun May 10 10:34:06 UTC 2015 - lars@linux-schulserver.de
+
+- update to 5.36.1
+  + Bug 2936: Stack overflow in integrate
+  + fixed Bugs in the draw package
+  + Problem in loading wxm files from the Explorer in Wxmaxima
+
+-------------------------------------------------------------------
+Fri Apr 17 13:02:36 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.36.0:
+  + New items in core:
+    - Function parse_timedate: parse time/date string 
+  + New items in share:
+    - Function lll: Lenstra-Lenstra-Lovasz algorithm
+  + Changes in core:
+    - at: remove variables in simplification 
+  + Other changes:
+    * package contrib_ode: update test suite 
+    * package ezunits: additional femto, pico, nano, and micro fractions
+    * package ezunits: apply rules more aggressively
+    * package maxima-odesolve: documentation
+    * package gentran: update
+    * package draw: geometric transformations for 2D implicit functions
+    * package coma: new version
+    * package maximaMathML: hook mechanism
+    * package noninteractive: new script expand_branches.mac
+  + Several bug fixes; see
+    http://sourceforge.net/p/maxima/code/ci/master/tree/ChangeLog-5.36
+    for the full list.
+- Specfile cleanup: remove empty %clean section.
+
+-------------------------------------------------------------------
+Wed Feb 18 15:42:14 UTC 2015 - dimstar@opensuse.org
+
+- Fix references to .info files in post/postun scriptlets.
+
+-------------------------------------------------------------------
+Thu Dec 25 14:36:34 UTC 2014 - badshah400@gmail.com
+
+- Uodate to version 5.35.1:
+  + Core:
+    - In evaluation, allow general expressions as operators
+    - Function supcontext: evaluate argument(s)
+    - Functions supcontext, newcontext: return made-up name if
+      none supplied
+    - Function powerseries: bug fixes
+  + Share:
+    - Eulix: numerical solution of ordinary differential
+      equations
+    - script hermite_reduce.mac: implement Rothstein-Trager
+      algorithm
+  + Documentation updates
+  + Bug fixes:
+    - #2847: limits of powers of constants
+    - #2845: Avoid initialization-time compile in commac.lisp 
+    - #2818: Problem with trigreduce
+    - #2816: Significant reduction in processing LaTeX output in
+      imaxima in new version
+    - #2815: abs_integrate leads to infinite recursion
+    - #2814: abs_integrate: integration of x*ceiling(x)
+    - #2800: a typo in mode_identity documentation
+    - #2774: desolve doesn't know how to interpret temporary
+      variables
+    - #2623: shortest_path
+    - #2575: Integration error: integrate(sqrt(k-k*cos(2*x)), x)
+    - #2371: limit((exp(a*x)-1)/(exp(a*x)+1),x,inf) fails
+    - mailing list 2014-11-26: Error in histogram and
+      continuous_freq
+    - mailing list 2014-09-01: SIGN1 strangeness, was: Problem
+      with bfloat
+- Package /usr/share/locale/pt/LC_MESSAGES/maxima.mo. 
+
+-------------------------------------------------------------------
+Mon Sep  8 22:19:30 UTC 2014 - badshah400@gmail.com
+
+- Update to version 5.34.1:
+  + Reorder components so that SCHATCHEN-COND macro is defined
+    before use
+  + Put ChangeLog-5.34 on list of files
+  + In $FLOAT, signal FLOATING-POINT-OVERFLOW if FLOAT returns
+    float inf; this fixes a bug in SIGN1, which expects that
+    $FLOAT always returns a finite number
+  + Removes dashed option from terminal commands
+  + Put clebsch_gordan.texi on list of Texinfo files
+  + Use <FOO> instead of dollar sign as separator in category
+    intermediate output; this is necessary to allow dollar sign as
+    an indexed item in documentation
+- Upstream now install ChangeLog file automatically, drop
+  external ChangeLog-5.34 file.
+
+-------------------------------------------------------------------
+Sat Aug 30 18:03:19 UTC 2014 - badshah400@gmail.com
+
+- Update to version 5.34.0:
+  + New items in core:
+    - function invert_by_gausselim: invert by Gaussian elimination
+      (used to be function invertmx)
+    - function invert_by_adjoint: invert by adjoint method (used
+      to be function invert)
+    - functions push, pop: now implemented in core
+  + New items in share:
+    - package coma: functions for control engineering
+    - function sha1sum (package stringproc): compute SHA1 hash
+    - engineering-format.lisp: change default float display format
+  + Changes in core:
+    - function invert: use adjoint method or Gaussian elimination
+      depending on size of matrix
+    - function tex: Define TeX properties for gamma_incomplete and
+      friends
+  + Bug fixes:
+    - #2785: dynamics package: plotting fails on evolution() and
+      other functions
+    - #2784: Ceiling gives error, without even an error message
+    - #2782: realroots(x*y) internal error
+    - #2776: Error when integrate sqrt
+    - #2775: powerseries of some log expressions
+    - #2772: powerseries of some trig expressions
+    - #2768: "notequal" tries to put multiprecision rational
+      numbers into floats
+    - #2765: powerseries of a derivative
+    - #2764: power series of 1 + x^n and regression tests in
+      rtest16.mac
+    - #2763: symmetricp(matrix) DOEs not work
+    - #2760: powerseries at infinty broken
+    - #2755: powerseries of natural exponential
+    - #2751: powerseries of bessel functions needlessly fail
+    - #2750: powerseries(x^x,x,0) gives Lisp error
+    - #2749: Float evaluation of sinh causes Lisp error instead of
+      overflowing to bigfloat
+    - #2746: scifac / gcfac crash
+    - #2745: limit with numer:true
+    - #2741: imaxima preamble broken for display in emacs
+    - #2738: Integrate encountered a Lisp error: The value 2 is
+      not of type LIST
+    - #2732: wrong answer for similar to gaussian integral
+    - #2726: integrate produces wrong answer for Gaussian Moments
+    - #2725: pochhammer(n,x) documentation
+    - #2721: maxima can't refresh plots in gnuplot_pipes format
+    - #2719: Matrix invert() behaviour
+    - #2718: imaxima LaTeX definitions conflict with amsmath
+    - #2717: plot2d treats linear and log plots inconsistently
+    - #2716: is allows more than one argument
+    - #2711: `i' is not local in `geosum'
+    - #2710: `rempart' from package `functs' fails
+    - #2707: `rowp' fails if `p' function is defined
+    - #2697: Inconsistent handling of Greek symbols
+    - #2683: Plot2d default terminal broken
+    - #2678: transform_xy rejects argument constructed with
+      make_transform
+    - #2677: [gnuplot_pm3d,false] does not disable pm3d
+    - #2621: "gamma limit error"
+    - #2526: abs_integrate fails on integrate(sqrt(x + sqrt(x)), x)
+  + unnumbered bugs:
+    - mailing list 2014-08-16: bind stack overflow in loop
+    - mailing list 2014-07-01: "rtest8.mac test failure"
+    - mailing list 2014-06-29: "rule issue"
+    - limit((atan(x)-(%pi/2))/(sin(10/x)),x,inf)
+    - ezgcd(p1,p2,...) => true when ratp returns true for any
+      argument
+- Packaging change: Source tarball does not include ChangeLog-5.34
+  by mistake, download from upstream git and package it
+  separately.
+
+-------------------------------------------------------------------
+Thu Apr  3 03:41:50 UTC 2014 - badshah400@gmail.com
+
+- Update to version 5.33.0:
+  + New in share:
+    - package alt-display: hook for nonstandard display functions
+    - package kovacicODE: Kovacic method for ordinary differential
+      equations
+    - package odes: several methods for ordinary differential
+      equations
+    - package trigtools: manipulating trigonometric function
+      expressions
+    - package sound: functions for audio synthesis
+  + Changes in core:
+    - promote result to bigfloat on floating point overflow
+    - variables declared to be irrational are considered real
+    - display floats with leading "0." instead of "." only
+    - function tex: accepts Lisp objects now
+    - functions expintegral_shi, expintegral_chi: limits
+    - functions hankel_1, hankel_2: numerically evaluate when the
+      order is complex
+    - function declare: rational and irrational properties
+      mutually exclusive
+    - functions get, put: when first argument is a string, assume
+      it is the name of an operator
+    - functions round, truncate: handle arguments of zeroa and
+      zerob
+    - functions for Galois fields: improve power tables and
+      introduce nth root
+    - operator @: TeX property
+  +  Other changes:
+    - package ezunits: TeX property for units conversion operator
+    - package maximaMathML: some updates
+    - package draw: support for gnuplot terminal canvas
+    - documentation: updating Brazilian Portuguese translation of
+      user manual
+  +  Bug fixes:
+    - 2703: plotting option legend causes an error
+    - 2702: plotting option adapt_depth causes an error
+    - 2701: plotting option logy causes an error
+    - 2700: plot option psfile causes an error
+    - 2699: nticks seems ignored
+    - 2696: *prompt-prefix* and *prompt-suffix* not inserted for
+      askinteger / asksign
+    - 2695: kill kills built-in properties of operator after
+      user-defined property
+    - 2687: call-arguments-limit easily exhaustable in tex1
+    - 2682: Function zeta fails numerically for large numbers that
+      aren't even integers
+    - 2681: solve_rec wrong result
+    - 2676: integral incorrect when variable is subscripted
+    - 2675: maxima will not do the simplest of definite integrals
+      and will not factor otherwise
+    - 2671: Since 4833b5 Maxima (with ECL at least) outputs
+      palette numbers gnuplot
+    - bug in gnuplot_term option
+    - bug in starplot
+    - bug in ratinterpol
+    - %e^^A should not simplify to %e^A
+    - %pi is now correctly rounded with high probability
+    - embedded plotting bug in XMaxima
+    - bug in single-label case for plotting option 'label'
+    - bug in comment indentation in Emacs
+    - $CONS and friends should treat lists the same as other
+      expressions
+    - mailing list 2014-02-27: "assigning to a list of structure
+      fields does not work" 
+
+-------------------------------------------------------------------
+Thu Jan  2 23:17:42 UTC 2014 - badshah400@gmail.com
+
+- Update to version 5.32.1:
+  + New share items contrib/odes and contrib/trigtools,
+    contributed by Aleksas Domarkas
+  + Fix starplot
+  + Fix a bug in gnuplot_term option: the value of gnuplot_term
+    option must be appended to "set term ", rather than being
+    passed directly to gnuplot
+  + Temporal fix until next wxMaxima release
+- Drop maxima-gnuplot-output-set-term.patch: patch incorporated
+  upstream.
+
+-------------------------------------------------------------------
+Fri Dec 27 23:00:17 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.32.0:
+  + Backward incompatible changes:
+    - share function graph2d: removed in favor of plot2d
+  + New items in core:
+    - function limit: limits for fresnel_c and fresnel_s
+    - function plot2d: adaptive plotting for parametric plots
+    - functions round, truncate: distribute over lists and other
+      aggregate types
+    - function zn_characteristic_factors: Shanks characteristic
+      factors
+  + New items in share:
+    - new package smath: glue code for SMath Studio (notebook
+      interface)
+    - new package logic: some functions for Boolean expressions
+    - package lapack: new function zheev (eigenvalues of Hermitian
+      matrix)
+  + Changes in core:
+    - function labels: make 'labels' an ordinary function (not
+      argument-quoting)
+    - plotting: more general color specification
+    - plotting: rework plot options machinery
+    - plotting: introduce some new options
+  + Bug fixes:
+    - 2668 Bigfloat Gamma Inaccurate for Small Inputs
+    - 2666 plotdf ignores first of [x, ...] or [y, ...] if there
+      are no other options
+    - 2662 Maxima manual adjust
+    - 2660 lapack puts binary files in
+      binary/binary-$foo/share/lapack/binary-$foo/lapack
+    - 2659 bug_report() directions for creating ticket need
+      updating
+    - 2649 Correction for $matrix evaluation
+    - 2639 limit asks about internal variable
+    - 2634 zgeev does not operate on real matrices
+    - 2633 ev(integrate,numer) gives strange result
+    - 2630 inverse_jacobi_cn(-2.0, 3.0) generates an error
+    - 2629 elliptic_kc(3.0) not accurate
+    - 2628 fourier elimination on equality
+    - 2624 Erroneous limit result
+    - 2615 Numeric evaluation of inverse Jacobi elliptic functions
+      is wrong for some inputs
+    - 2282 Problem in LISP with times function in sym
+    - unnumbered bugs:
+      + mailing list 2013-09-26: transcendental functions and
+        compilation
+      + mailing list 2007-04-02: fixes a bug in plot2d-discrete
+      + GCL bug #40646 fixed (problem actually in Maxima)
+      + workaround GCL bug #40154 (some float literals parsed
+        incorrectly)
+      + ensure that 'sign' does not make any changes to assume
+        database.
+      + fix Postscript plotting on windows
+      + fix limit(-(3*n^2 + 1)*(-1)^n/sqrt(n^5 + 8*n^3 + 8),n,inf);
+      + fix bug in ldisplay and ldisp: need to display %t label
+      + fix: inv_mod(0,1) should return false
+      + fix cyclic-p, gf-eval, gf-irr-p
+      + fix gf-cminus-b, gf-prim-p
+      + fix bug in computing (.75b0+%i*1.5b0)^(%i/4)
+      + fix "describe" returning wrong entry with texinfo version
+        5
+      + plots using the dumb gnuplot terminal were not being
+        displayed in the terminal when the gnuplot_pipes is used 
+- Add patch maxima-gnuplot-output-set-term.patch: the value of
+  gnuplot_term option must be appended to "set term ", rather than
+  being passed directly to gnuplot; patch taken from upstream git
+- Also package ChangeLog file for relevant version.
+
+-------------------------------------------------------------------
+Tue Nov 12 01:26:54 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.31.3:
+  + Guard against redefinition of macro with-compilation-unit (on
+    GCL)
+  + Fix Postscript plotting on windows
+  + Ensure that build works with non-GNU Make
+- Changes from version 5.31.2:
+  + Workaround incorrect float literal parsing by GCL
+   (bnc#850783).
+  + Use DESTDIR for building
+- Drop maxima-fix-DESTDIR.patch; incorporated upstream (also drop
+  autoconf and automake build requires required due to patch).
+
+-------------------------------------------------------------------
+Tue Sep 24 19:33:31 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.31.1:
+  + Bug fixes:
+    - sf#2627 - asksign / integrate fails in Maxima 5.30.0.
+
+-------------------------------------------------------------------
+Mon Sep  9 10:21:41 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.31.0:
+  + Core changes:
+    - Galois fields: revision, introduction of extension fields
+    - inverse_jacobi_sn: improve accuracy
+    - Bessel functions: integral of bessel_i, bessel_j of
+      arbitrary order
+    - Matrix functions: revise ModeMatrix, mat_function,
+      dispJordan, diag, JF
+    - signum: do not declare signum real- or integer-valued
+    - carg: declare carg real-valued
+    - Parser: add L, l, W, and w to list of exponent marker
+      characters
+  + Changes in share:
+    - Package stringproc: new functions readchar, md5sum, base64
+  + Bug fixes:
+    - sf#2622 - base64 type warnings
+    - sf#2619 - Function inverse_erf - error in numerical
+      evaluation
+    - sf#2612 - known_units() broken
+    - sf#2608 - quad_qags(x,x) generates a lisp error
+    - sf#2607 - lbfgs documentation is incomplete
+    - sf#2604 - fft.dem is out of date
+    - sf#2603 - fft documentation
+    - sf#2602 - lu_factor regression
+    - sf#2599 - cl-info error handling
+    - sf#2597 - logcontract and subscripted log
+    - sf#2594 - Incorrect integration of product of cosines
+    - sf#2591 - risch gives Lisp error for sinh expression
+    - sf#2583 - sign error for integrate(x^(8*%i-1),x);
+    - sf#2570 - Make acos(cos(x)) simplify to x when on correct
+      interval
+    - sf#2569 - translate rat(1,x) and rat([1]) incorrect
+    - sf#2536 - Lisp error in limit: \
+    - sf#2501 - %pi/8 is definitely not an integer
+    - sf#2475 - limit(x^(mu/x^g),x,inf) --> error
+    - "array-lambda error with 5.30.0"
+    - "defrule regression compare to version 5.29.1"
+    - Fix rk() when the independent variable's initial value is
+      nonzero
+    - Fix bug in asksign
+    - Fix wrong noun form returned for
+      jacobi_nc(elliptic_kc(m)/n,m)
+- Add maxima-fix-DESTDIR.patch to fix a regression from 5.30.0
+  that causes builds to fail; patch taken from upstream git.
+
+-------------------------------------------------------------------
+Sun Apr  7 01:17:15 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.30.0:
+  + List of changes not documented by upstream. 
+
+-------------------------------------------------------------------
+Mon Jan  7 07:46:32 UTC 2013 - badshah400@gmail.com
+
+- Update to version 5.29.1:
+  + Core:
+    - revised and extended functions for Galois fields
+  + Share:
+    - package draw: surfaces in spherical and cylindrical
+      coordinates
+    - package draw: new terminals epslatex and epslatex_standalone
+    - package draw: multipage terminals
+    - package stats: new function title_inference
+  + Other changes:
+    - improve derivative of gamma_incomplete and integral of psi
+    - define orthopoly_weight for assoc_legendre_p
+    - define legendre_p and assoc_legendre_p for negative degree
+    - minor revision of recurrences in orthopoly
+    - simplify treatment of "^" in translator
+    - test script for Laplace transform
+    - plot2d (launch Gnuplot) for ABCL and Allegro CL
+    - update documentation for packages draw and distrib
+    - improvements in Windows build machinery
+    - special variable clean-up
+    - remove some unused code
+  + Several bug fixes (see
+    http://sourceforge.net/p/maxima/code/ci/c5ba8f126174f597f4d986af77c2e02e966fa260/tree/ChangeLog-5.29
+    for a full list of bugs fixed).
+  + No ChangeLog-%{major-version} file in source tarball, hence
+    removed from package
+  + For SLE, package only %{libdir}/maxima and not 
+    %{libexecdir}/maxima, as packaging both leads to build errors.
+
+-------------------------------------------------------------------
+Sat Sep  8 11:25:11 UTC 2012 - idonmez@suse.com
+
+ - Add explicit build dependency on makeinfo & python
+
+-------------------------------------------------------------------
+Mon Aug 13 08:13:15 UTC 2012 - badshah400@gmail.com
+
+- Update to version 5.28.0:
+  + Backward-incompatible changes:
+    - package stats: removed function simple_linear_regression
+      (superseded by linear_regression) 
+  + Core:
+    - new function generalized_lambert_w
+    - new functions zn_mult_table, zn_power_table
+    - new functions for Galois fields: gf_set, gf_char, gf_prim,
+      etc.
+  + Share:
+    - package descriptive: new function principal_components
+    - package descriptive: new histogram style 'density'
+    - package stats: new function linear_regression
+  + Other changes:
+    - revise system for building Maxima on MS Windows
+    - function gamma_incomplete: improve accuracy for complex
+      bigfloats
+    - function expintegral_e: improved calculation for large
+      imaginary part
+  + Several bugs fixed: see ChangeLog-5.28 file installed in
+    /usr/share/doc/packages/maxima/ for a full list.
+
+-------------------------------------------------------------------
+Thu May 31 13:55:50 UTC 2012 - badshah400@gmail.com
+
+- Touch debugsources.list in the spec file to fix build failures
+  when the debuginfo flag is enabled (e.g. in openSUSE:Factory).
+
+-------------------------------------------------------------------
+Mon May 21 10:18:41 UTC 2012 - badshah400@gmail.com
+
+- Add copyright header to spec file. 
+
+-------------------------------------------------------------------
+Sat May 19 15:02:49 UTC 2012 - badshah400@gmail.com
+
+- Update to version 5.27.0:
+  + Backwards-incompatible changes:
+    - remove obsolete Cray Fortran translator
+    - rename topoly and to_poly_solver to to_poly and
+      to_poly_solve, respectively
+  + New items in core: new functions zn_order, zn_primroot_p,
+    zn_primroot, zn_log, chinese
+  + New items in share: package rkf45: Runge-Kutta-Fehlberg
+    4th-5th order numerical o.d.e. solver
+  + Other changes:
+    - functions bessel_i, bessel_j: results for imaginary
+      arguments
+    - function build_info: return a structure instead of just
+      printing its data
+    - function plot3d: allow 3-d parametric plots
+    - functions fortmx, f90mx: generate assignments to 1-d array
+      when argument is a list
+    - package ezunits: update values for physical constants
+    - revise and update documentation
+    - reorganization of directory maxima/share
+    - clean up source code by cutting out unused functions
+  + Several bugs fixed: see ChangeLog-5.27 file installed in
+    /usr/share/doc/packages/maxima/ for a full list.
+
+-------------------------------------------------------------------
+Sat Mar  3 18:58:58 UTC 2012 - alinm.elena@gmail.com
+
+- update to 5.26.0 
+
+
+-------------------------------------------------------------------
+Sun Sep 18 11:04:28 UTC 2011 - lars@linux-schulserver.de
+
+- update to 5.25.1
+- move from RPM group Development/Languages to RPM group 
+  Development/Languages/Other as suggested by rpmlint
+- enable german language
+- use Provides: locale(foo) to allow the locale dependend help
+  to be installed automatically
+- run checks 
+
+-------------------------------------------------------------------
+Sun Mar  6 14:18:00 UTC 2011 - lars@linux-schulserver.de
+
+- update to 5.23.2:
+  + Backwards-incompatible changes:
+  ++ package draw: changed names of some options:
+     file_bgcolor --> background_color
+     pic_width, pic_height, eps_width, eps_height, pdf_width, 
+     pdf_height --> dimensions
+     rot_horizontal, rot_vertical --> view
+  + new items in core:
+  ++ function bf_find_root: bigfloat version of find_root
+  ++ function find_root: recognize keyword arguments
+  + New items in share:
+  ++ package cobyla: import Fortran COBYLA (constrained optimization)
+  ++  package draw: new graphic objects 'errors' and 'region'
+
+-------------------------------------------------------------------
+Thu Jan  6 15:03:54 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Update to new version 5.23.0
+
+-------------------------------------------------------------------
+Sun Sep	19 15:43:00 CEST 2010 - werner.ho@gmx.de
+
+- new version 5.22.1
+
+-------------------------------------------------------------------
+Sun Dec 06 16:48:00 CEST 2009 - werner.ho@gmx.de
+
+- added gnuplot to Requires. fixes bug [561167]
+
+-------------------------------------------------------------------
+Sun Nov 15 16:48:00 CEST 2009 - werner.ho@gmx.de
+
+- fixed packaging bug (missing _libdir)
+
+-------------------------------------------------------------------
+Sun Oct 04 16:48:00 CEST 2009 - werner.ho@gmx.de
+
+- fixed wrong softlink to doc/html/header.hhp 
+  [Bug 543277] fdupes must not create symlinks for files that are
+  in different rpm packages
+
+-------------------------------------------------------------------
+Mon Sep 21 20:02:46 UTC 2009 - lars@linux-schulserver.de
+
+- update to 5.19.2
+
+-------------------------------------------------------------------
+Sat Apr 19 16:36:34 CEST 2009 - andrea@opensuse.org
+
+-update to 5.18.1
+
+-------------------------------------------------------------------
+Thu Dec 16 14:55:00 CEST 2008 - werner.ho@gmx.de
+
+- update to 5.16.3
+
+-------------------------------------------------------------------
+Thu Sep 25 15:10:05 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Fri Aug 22 05:52:25 CEST 2008 - lars@linux-schulserver.de
+
+- update to 5.16.2 
+
+-------------------------------------------------------------------
+Mon Apr 21 13:07:11 CEST 2008 - lars@linux-schulserver.de
+
+- update to 5.15.0:
+- also build es, pt and pt_BR language files
+- enable recode for charset conversion
+- zip the manpage
+- use fdupes
+- added rpmlintrc
+- pre-require info tools
+- make the %if statements more robust
+
+-------------------------------------------------------------------
+Wed Dec 26 23:03:42 CET 2007 - lars@linux-schulserver.de
+
+- update to 5.14.0
+- packaged for openSUSE-Education
+- added %defattr to %files
+
+-------------------------------------------------------------------
+Sat Sep 08 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+
+- updated to version 5.13.0
+
+-------------------------------------------------------------------
+Fri May 18 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+
+- updated to version 5.12.0
+- clisp >= 2.34.0 required
+
+-------------------------------------------------------------------
+Mon Jan 29 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+
+- updated to version 5.11.0
+
+-------------------------------------------------------------------
+Wed Nov 01 00:00:00 CET 2006 Leon Freitag <leon@links2linux.de>
+
+- updated to version 5.10.0
+
+-------------------------------------------------------------------
+Fri Mar 24 00:00:00 CET 2006 Leon Freitag <leon_fraitak@mail.ru>
+
+- Update to version 5.9.3
+
+-------------------------------------------------------------------
+Tue Feb  7 00:00:00 CET 2006 Leon Freitag <leon_fraitak@mail.ru>
+
+- Initial release for Packman
+
+-------------------------------------------------------------------
+Sat Jan  4 00:00:00 CET 2003 James Amundson <amundson@fnal.gov>
+
+- Added doc files
+- Added explicit clisp version
+- Added conditional to postun
+- Renamed exec_* packages to exec-*
+- Use rpm macros instead of hard-coded paths
+- Thanks to Rex Dieter for helpful suggestions
+
+-------------------------------------------------------------------
+Sun Sep  8 00:00:00 CET 2002 James Amundson <amundson@fnal.gov> 
+
+- Initial build.
+

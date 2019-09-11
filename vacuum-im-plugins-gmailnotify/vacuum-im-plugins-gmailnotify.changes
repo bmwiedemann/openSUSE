@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat Feb 24 10:34:43 UTC 2018 - egdfree@opensuse.org
+
+- port to Qt5
+
+-------------------------------------------------------------------
+Sat Mar 26 17:52:00 UTC 2016 - egdfree@opensuse.org
+
+- update source
+  * support Vacuum-SDK v37
+
+-------------------------------------------------------------------
+Fri Apr 24 16:57:50 UTC 2015 - egdfree@opensuse.org
+
+- update source
+  * support Vacuum-SDK v35
+
+-------------------------------------------------------------------
+Sun Aug 17 15:04:16 UTC 2014 - egdfree@opensuse.org
+
+- update source
+  * sync with last changes in vacuum-im
+
+-------------------------------------------------------------------
+Thu May  8 15:22:02 UTC 2014 - egdfree@opensuse.org
+
+- update to 1.0.5
+
+-------------------------------------------------------------------
+Mon May 27 17:32:46 UTC 2013 - egdfree@opensuse.org
+
+- fix in show mail list if subject is empty
+
+-------------------------------------------------------------------
+Tue Mar 26 17:09:10 UTC 2013 - egdfree@opensuse.org
+
+- sync source to changes in vacuum-sdk
+
+-------------------------------------------------------------------
+Sat Jan  5 12:06:50 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.4
+  * sync source to changes in vacuum-sdk
+
+-------------------------------------------------------------------
+Sun Sep 16 10:05:43 UTC 2012 - egdfree@opensuse.org
+
+- update source
+  * deleted fix_cmake_rules.patch: its now not needen
+
+-------------------------------------------------------------------
+Sun Jan 22 10:14:46 UTC 2012 - egdfree@opensuse.org
+
+- update to 1.0.2
+  * sync changes in INotifications (vacuum-im r1706)
+
+-------------------------------------------------------------------
+Mon Oct 10 16:11:06 UTC 2011 - egdfree@opensuse.org
+
+- update to 1.0.1
+  * sync to repository files
+
+-------------------------------------------------------------------
+Tue Aug 09 03:59:59 UTC 2011 - egdfree@opensuse.org
+
+- update
+  * sync changes in UI settings interface
+
+-------------------------------------------------------------------
+Wed Aug 03 04:16:46 UTC 2011 - egdfree@opensuse.org
+
+- update
+  * sync changes in IRostersView
+
+-------------------------------------------------------------------
+Tue Mar 15 16:00:29 UTC 2011 - egdfree@opensuse.org
+
+- update
+  * sync changes in INotifications
+
+-------------------------------------------------------------------
+Sun Feb 20 19:59:34 UTC 2011 egdfree@opensuse.org
+
+- initial release for openSUSE

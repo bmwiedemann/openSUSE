@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Fri Feb  9 12:39:22 UTC 2018 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(x11) not xorg-x11-devel 
+
+-------------------------------------------------------------------
+Fri Jan  6 10:56:13 UTC 2012 - pgajdos@suse.com
+
+- build also with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Sat Sep 17 10:54:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Nov 25 20:18:34 CET 2009 - meissner@suse.de
+
+- fixed fuzzy patches
+
+-------------------------------------------------------------------
+Wed Jan 30 21:35:12 CET 2008 - jw@suse.de
+
+- updated to 1.6.2
+  - adapt to current v4l2 api
+  - some minor fixes collected during the past years
+- upstreamed patches removed.
+
+-------------------------------------------------------------------
+Thu Jul  5 12:45:41 CEST 2007 - coolo@suse.de
+
+- put desktop file and icon into the package
+
+-------------------------------------------------------------------
+Tue Sep  5 14:35:51 CEST 2006 - jw@suse.de
+
+- fixed #203118, making -Wold-style-definition happy.
+
+-------------------------------------------------------------------
+Fri Jul 28 13:50:06 CEST 2006 - jw@suse.de
+
+- made xorg-safe.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul  7 20:34:40 CEST 2005 - jw@suse.de
+
+- revamped gcc4.diff into happy-abuild.diff
+  Avoid imlicit declarations and add RPM_OPT_FLAGS where needed.
+
+-------------------------------------------------------------------
+Mon Jul  4 12:29:25 CEST 2005 - jw@suse.de
+
+- added alevt-gcc4.diff, comparison is always true suppression.
+
+-------------------------------------------------------------------
+Tue Apr 19 14:52:21 CEST 2005 - jw@suse.de
+
+- changes by tsaupe@suse.de documented in usage and man.
+
+-------------------------------------------------------------------
+Thu Apr 14 19:16:57 CEST 2005 - jw@suse.de
+
+- added alevt-overflow.diff by tsaupe@suse.de
+
+-------------------------------------------------------------------
+Sun Jan 23 17:16:44 CET 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS, fixed compile error with gcc4.
+
+-------------------------------------------------------------------
+Fri Nov 19 11:30:18 CET 2004 - ro@suse.de
+
+- include icon in filelist 
+
+-------------------------------------------------------------------
+Tue Nov  9 18:24:42 CET 2004 - jw@suse.de
+
+- added http://www.baycom.org/~tom/alevt-dvb-demux.patch
+  suggested by tsaupe@suse.de
+
+-------------------------------------------------------------------
+Sun Jan 11 11:09:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct 13 14:23:37 CEST 2003 - jw@suse.de
+
+- make shall not sync (#32147)
+
+-------------------------------------------------------------------
+Sat Aug 16 15:33:50 CEST 2003 - adrian@suse.de
+
+- install desktop file from kappfinder
+
+-------------------------------------------------------------------
+Tue May 27 12:02:42 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon May 19 09:04:11 CEST 2003 - wengel@suse.de
+
+- update -> 1.6.1 (fixed bug in ui.c and more)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Jun  5 20:23:50 CEST 2002 - uli@suse.de
+
+- update -> 1.6.0 (png export, v4l2 interface & more)
+
+-------------------------------------------------------------------
+Wed Apr 24 12:48:43 CEST 2002 - uli@suse.de
+
+- fixed for lib64
+
+-------------------------------------------------------------------
+Wed Feb  7 12:00:50 CET 2001 - uli@suse.de
+
+- fixed for glibc 2.2.1
+
+-------------------------------------------------------------------
+Sat Dec  9 17:34:21 MET 2000 - nashif@suse.de
+
+- sorted group
+
+-------------------------------------------------------------------
+Fri Jun  2 10:35:51 CEST 2000 - kukuk@suse.de
+
+- Use doc macro
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jul 14 16:45:33 MEST 1999 - uli@suse.de
+
+ - New version 1.4.9
+
+-------------------------------------------------------------------
+Wed Jul 14 16:32:29 MEST 1999 - uli@suse.de
+
+ - Spec file created from alevt-1.4.9.tar.gz by autospec

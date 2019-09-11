@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Thu Nov  9 17:14:32 UTC 2017 - matthias.gerstner@suse.com
+
+- 0001-Fix-build-against-OpenSSL-1.1.0.patch: fix openssl 1.1.0 build in the
+  P11 code. Upstream has not reacted to a pull request to fix this for some
+  months now. This is my own patch (that doesn't violate C89 declaration rules
+  and is backward compatible to openssl. 1.0.x)).
+
+  For comparison see: https://sourceforge.net/p/trousers/tpm-tools/merge-requests/2/
+
+-------------------------------------------------------------------
+Wed Mar  1 10:56:33 UTC 2017 - meissner@suse.com
+
+- updated to 1.3.9.1 (FATE#321450)
+  - bugfixes after openssl 1.1 porting
+
+-------------------------------------------------------------------
+Sun Jan  1 05:21:10 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.3.9
+
+-------------------------------------------------------------------
+Fri Jun 19 16:03:22 UTC 2015 - crrodriguez@opensuse.org
+
+- Do not use -Werror. 
+
+-------------------------------------------------------------------
+Thu Apr  2 12:31:34 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove tpm-tools-rpmlintrc
+- Use automake and autoconf as recomended by upstream
+- Split library, devel adn pkcs11 package
+
+-------------------------------------------------------------------
+Thu Oct  2 21:52:42 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove a number of unused build requires, probably copy/paste 
+ error, never used.
+
+-------------------------------------------------------------------
+Tue Jun 12 14:29:53 UTC 2012 - meissner@suse.com
+
+- Updated to 1.3.8
+  - bugfixes
+  - pcr/nvram sealing options
+
+-------------------------------------------------------------------
+Wed Mar 14 13:34:35 UTC 2012 - meissner@suse.com
+
+- Updated to 1.3.7.1
+  - smaller bugfixes from last release
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:07 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Sep  8 16:53:21 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.7
+  - NVRAM support, new binaries: tpm_nvdefine tpm_nvinfo tpm_nvrelease
+    tpm_nvread tpm_nvwrite
+
+-------------------------------------------------------------------
+Tue Aug 30 14:50:07 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+
+-------------------------------------------------------------------
+Mon Jun 20 15:54:46 CEST 2011 - meissner@suse.de
+
+- Update to 1.3.6
+  - some unsealing fixes, do not unseal much
+
+-------------------------------------------------------------------
+Fri May 27 11:17:43 UTC 2011 - idonmez@novell.com
+
+- Disable gcc's new unused-but-set-variable warnings, these are just
+  noise as BIO_*(...) functions returns a value and needs to 
+  be handled 
+
+-------------------------------------------------------------------
+Mon Sep 27 07:54:30 CEST 2010 - meissner@suse.de
+
+- add opencryptoki support (bnc#641919)
+
+-------------------------------------------------------------------
+Thu Mar 18 11:50:00 CET 2010 - meissner@suse.de
+
+- updated to 1.3.5 upstream
+  - small bugfixes mostly, nothing new
+
+-------------------------------------------------------------------
+Thu Aug 27 15:28:58 CEST 2009 - meissner@suse.de
+
+- updated to 1.3.2 upstream.
+
+-------------------------------------------------------------------
+Wed Apr 16 11:57:34 CEST 2008 - meissner@suse.de
+
+- disable static
+- make check added, even if it does nothing currently.
+
+-------------------------------------------------------------------
+Tue Apr 15 16:12:55 CEST 2008 - meissner@suse.de
+
+- do not build static library for now.
+
+-------------------------------------------------------------------
+Fri Mar 28 12:01:10 CET 2008 - meissner@suse.de
+
+- Imported from buildservice
+- ingore rpmlint shared library errors, shared lib
+  is only used in here.
+
+-------------------------------------------------------------------
+Mon Aug 13 17:52:08 CEST 2007 - skh@suse.de
+
+- initial build service import with version 1.2.5.1
+
+-------------------------------------------------------------------
+Thu Nov 10 14:15 CET 2005 - draht@suse.de
+
+- initial package, version 1.1.0
+

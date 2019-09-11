@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sun Mar 10 19:57:13 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Run test suite
+- Add tldextract-tests-offline.patch
+  No internet connection on OBS build hosts; skip suffix list
+  snapshot diff
+- Update to 2.2.1
+  * Bugfixes
+    - Ignore case on punycode prefix check
+    - Drop support for EOL Python 2.6
+    - Improve sundry doc and README bits
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Apr 16 15:38:22 UTC 2018 - jengelh@inai.de
+
+- Update summary.
+
+-------------------------------------------------------------------
+Tue Feb  6 22:24:40 UTC 2018 - 9+suse@cirno.systems
+
+- Convert to singlespec, fix non-SPDX license tag
+- Add rpmlintrc for (required) hidden file
+- Add README.md to docs and use %license macro
+- Update to 2.2.0
+  * Bugfixes:
+    - Switch to explicit Python version check
+    - Work around `pkg_resources` missing
+    - Always close sessions
+  * Features:
+    - Add `fqdn` and `ipv4` convenience properties
+    - Add `cache_fetch_timeout` kwarg
+      and `TLDEXTRACT_CACHE_TIMEOUT` env var
+  * Misc:
+    - Document public vs. private domains
+    - Document support for Python 3.6
+
+-------------------------------------------------------------------
+Fri Jun 24 02:06:44 UTC 2016 - archie.cobbs@gmail.com
+
+- Correct license in spec file (MIT -> BSD) 
+
+-------------------------------------------------------------------
+Sun Jun 19 21:38:28 UTC 2016 - archie.cobbs@gmail.com
+
+- Fix homepage URL in specfile 
+
+-------------------------------------------------------------------
+Tue Jun 14 08:38:36 CDT 2016 - archie.cobbs@gmail.com
+
+- Initial creation of package, version 2.0.1
+

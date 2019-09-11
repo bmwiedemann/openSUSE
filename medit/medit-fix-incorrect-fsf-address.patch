@@ -1,0 +1,122 @@
+diff -Naur a/moo/mooedit/langs/classic.xml b/moo/mooedit/langs/classic.xml
+--- a/moo/mooedit/langs/classic.xml	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/classic.xml	2014-04-16 12:22:20.028767542 -0500
+@@ -16,8 +16,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ <style-scheme id="classic" _name="Classic" version="1.0">
+diff -Naur a/moo/mooedit/langs/cobalt.xml b/moo/mooedit/langs/cobalt.xml
+--- a/moo/mooedit/langs/cobalt.xml	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/cobalt.xml	2014-04-16 12:23:09.352077053 -0500
+@@ -15,8 +15,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ 
+  Theme based on the style of the same name from pastie.caboo.se
+diff -Naur a/moo/mooedit/langs/fcl.lang b/moo/mooedit/langs/fcl.lang
+--- a/moo/mooedit/langs/fcl.lang	2013-10-14 11:32:22.000000000 -0500
++++ b/moo/mooedit/langs/fcl.lang	2014-04-16 12:25:19.962199174 -0500
+@@ -18,8 +18,8 @@
+ 
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ <language id="fcl" _name="FCL" version="2.0" _section="Scientific">
+diff -Naur a/moo/mooedit/langs/medit.xml b/moo/mooedit/langs/medit.xml
+--- a/moo/mooedit/langs/medit.xml	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/medit.xml	2014-04-16 12:19:46.344579227 -0500
+@@ -17,8 +17,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ <style-scheme id="medit" _name="Medit" version="1.0">
+diff -Naur a/moo/mooedit/langs/msil.lang b/moo/mooedit/langs/msil.lang
+--- a/moo/mooedit/langs/msil.lang	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/msil.lang	2014-04-16 12:24:55.371046254 -0500
+@@ -17,7 +17,7 @@
+ 
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ -->
+ <!-- FIXME: find the correct mimetype -->
+diff -Naur a/moo/mooedit/langs/oblivion.xml b/moo/mooedit/langs/oblivion.xml
+--- a/moo/mooedit/langs/oblivion.xml	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/oblivion.xml	2014-04-16 12:23:43.590681605 -0500
+@@ -16,8 +16,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ 
+diff -Naur a/moo/mooedit/langs/pascal.lang b/moo/mooedit/langs/pascal.lang
+--- a/moo/mooedit/langs/pascal.lang	2013-12-06 18:53:08.000000000 -0600
++++ b/moo/mooedit/langs/pascal.lang	2014-04-16 12:21:23.996144945 -0500
+@@ -19,7 +19,7 @@
+ 
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ -->
+ <language id="pascal" _name="Pascal" version="2.0" _section="Sources">
+diff -Naur a/moo/mooedit/langs/protobuf.lang b/moo/mooedit/langs/protobuf.lang
+--- a/moo/mooedit/langs/protobuf.lang	2013-12-06 18:53:08.000000000 -0600
++++ b/moo/mooedit/langs/protobuf.lang	2014-04-16 12:24:11.447986615 -0500
+@@ -16,8 +16,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ <language id="proto" name="Protobuf" version="2.0" _section="Others">
+diff -Naur a/moo/mooedit/langs/tango.xml b/moo/mooedit/langs/tango.xml
+--- a/moo/mooedit/langs/tango.xml	2012-12-16 17:55:30.000000000 -0600
++++ b/moo/mooedit/langs/tango.xml	2014-04-16 12:25:44.027328281 -0500
+@@ -16,8 +16,8 @@
+ 
+  You should have received a copy of the GNU Library General Public
+  License along with this library; if not, write to the
+- Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- Boston, MA 02111-1307, USA.
++ Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
++ Boston, MA 02110-1301 USA.
+ 
+ -->
+ <style-scheme id="tango" _name="Tango" version="1.0">

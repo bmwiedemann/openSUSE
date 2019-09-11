@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon May 12 14:08:15 UTC 2014 - tchvatal@suse.com
+
+- Remove pointless commented lines.
+
+-------------------------------------------------------------------
+Fri Apr  5 10:14:48 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Apr 18 07:51:46 UTC 2012 - coolo@suse.com
+
+- only buildrequire the minimal set of docbook-utils, we only need
+  docbook2man
+
+-------------------------------------------------------------------
+Mon Mar 21 16:49:31 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Wed Feb 16 17:21:38 UTC 2011 - pcerny@novell.com
+
+- patch Makefile to install the manpage as not-executable
+
+-------------------------------------------------------------------
+Tue Nov 16 14:55:29 UTC 2010 - mvyskocil@suse.cz
+
+- use DESTDIR=%%buildroot on darix's advice 
+
+-------------------------------------------------------------------
+Thu Nov 11 14:08:59 UTC 2010 - mvyskocil@suse.cz
+
+- fixes bnc#650468 - network tunnel scripts reference tunctl by wrong path
+  * move tunctl binary to /sbin as is needed for boot
+
+-------------------------------------------------------------------
+Mon Aug  2 11:00:23 UTC 2010 - mvyskocil@suse.cz
+
+- fixes bnc#626582: tunctl has no manpage
+- used the tunctl 1.5 sources from tunctl.sf.net:
+  * man page from Debian
+  * contains SUSE patches (so obsolete them here)
+
+-------------------------------------------------------------------
+Thu May 29 16:22:25 CEST 2008 - mt@suse.de
+
+- Fixed swapped -n and -p options in tunctl-tun-support.diff
+
+-------------------------------------------------------------------
+Mon Apr 14 13:29:16 CEST 2008 - skh@suse.de
+
+- update to uml_utilities_20070815
+- adjusted uml-utilities-tunctl-tun-support.diff accordingly
+
+-------------------------------------------------------------------
+Wed Mar 12 14:38:58 CET 2008 - mt@suse.de
+
+- Moved tunctl from uml-utilities into a separate package,
+  adopted spec file and existing patches.
+- Implemented support of point-to-point tun interface type
+

@@ -1,0 +1,396 @@
+-------------------------------------------------------------------
+Thu May 16 13:23:19 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Add ada links on riscv64
+
+-------------------------------------------------------------------
+Fri May 10 07:23:58 UTC 2019 - rguenther@suse.com
+
+- Package default D compiler.
+
+-------------------------------------------------------------------
+Tue Apr 30 09:09:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Switch gcc to default 9.
+
+-------------------------------------------------------------------
+Wed Jun 13 07:13:07 UTC 2018 - rguenther@suse.com
+
+- Add gccgo symlink, add go and gofmt as alternatives to support
+  parallel install of golang.  [bnc#1096677]
+
+-------------------------------------------------------------------
+Tue Jun  5 10:19:50 UTC 2018 - rguenther@suse.com
+
+- Fix gcc-PIE spec to properly honor -no-pie at link time.
+  [bnc#1096008]
+
+-------------------------------------------------------------------
+Tue Mar  6 10:13:50 UTC 2018 - rguenther@suse.com
+
+- Switch gcc to default 8.
+
+-------------------------------------------------------------------
+Fri Jun  9 11:19:29 UTC 2017 - rguenther@suse.com
+
+- Fix gcc-devel guard to use %sle_version.  [bnc#1043590]
+
+-------------------------------------------------------------------
+Wed Jun  7 11:39:55 UTC 2017 - rguenther@suse.com
+
+- Guard gcc-devel so it is only built on Tumbleweed.
+- Remove bogus link to versioned g++.info file which doesn't exist.
+  Instead refer to gcc.info from the g++ info directory entry.
+  [bnc#922419]
+
+-------------------------------------------------------------------
+Tue Jun  6 09:55:59 UTC 2017 - mliska@suse.cz
+
+- Include gcov-tool and gcov-dump binaries.
+
+-------------------------------------------------------------------
+Thu Apr 13 08:52:35 UTC 2017 - rguenther@suse.com
+
+- Remove README in empty packages only required for SLE11 and older.
+- Remove now empty %build section.
+
+-------------------------------------------------------------------
+Tue Apr  4 07:16:09 UTC 2017 - rguenther@suse.com
+
+- Fix dependencies of libstdc++-devel-{32,64}-bit.
+
+-------------------------------------------------------------------
+Thu Mar 23 12:56:31 UTC 2017 - rguenther@suse.com
+
+- Switch gcc to default 7.
+- Remove unrelated README.packaging.
+
+-------------------------------------------------------------------
+Fri Feb 10 10:24:49 UTC 2017 - rguenther@suse.com
+
+- Enable Ada for s390x.
+
+-------------------------------------------------------------------
+Mon Jan 23 12:36:58 UTC 2017 - rguenther@suse.com
+
+- Remove java related packages, those are in a separate gcc-java now.
+
+-------------------------------------------------------------------
+Thu Aug 18 07:32:25 UTC 2016 - rguenther@suse.com
+
+- Add gcc-devel package.
+
+-------------------------------------------------------------------
+Wed Apr 27 11:11:52 UTC 2016 - rguenther@suse.com
+
+- Switch gcc to default 6.
+
+-------------------------------------------------------------------
+Thu Apr 14 11:01:22 UTC 2016 - rguenther@suse.com
+
+- Enable Ada for ppc64le and aarch64.
+
+-------------------------------------------------------------------
+Thu May 21 09:25:10 UTC 2015 - rguenther@suse.com
+
+- Properly query gcc-%gcc_suffix for paths.
+
+-------------------------------------------------------------------
+Tue May 19 12:11:27 UTC 2015 - rguenther@suse.com
+
+- Fix bogus requires to gcc5-c++-{32,64}bit.
+
+-------------------------------------------------------------------
+Fri May  8 13:00:15 UTC 2015 - rguenther@suse.com
+
+- Adjust for GCC 5 package renames.
+
+-------------------------------------------------------------------
+Mon Apr 20 10:24:01 UTC 2015 - rguenther@suse.com
+
+- Switch gcc to default 5.
+- Add gcc-go{,-32bit,-64bit} packages.
+
+-------------------------------------------------------------------
+Mon Mar  2 13:34:23 UTC 2015 - schwab@suse.de
+
+- Add gcc-ada-32bit and gcc-ada-64bit packages only if building Ada
+
+-------------------------------------------------------------------
+Wed Feb 25 14:21:45 UTC 2015 - rguenther@suse.com
+
+- Add gcc-ada-32bit and gcc-ada-64bit packages.
+
+-------------------------------------------------------------------
+Wed Feb  4 07:29:43 UTC 2015 - meissner@suse.com
+
+- add a gcc-PIE subpackage, which enables building PIE binaries
+  by default using the defaults.spec file. bsc#912298
+
+-------------------------------------------------------------------
+Mon Aug  4 13:29:20 UTC 2014 - rguenther@suse.com
+
+- Add libstdc++-devel-32bit and libstdc++-devel-64bit packages.
+  [bnc#890226]
+
+-------------------------------------------------------------------
+Fri Mar 21 12:29:29 UTC 2014 - rguenther@suse.com
+
+- Link to the system compiler LTO plugin from /usr/lib/bfd-plugins.
+
+-------------------------------------------------------------------
+Tue Feb  4 10:08:54 UTC 2014 - rguenther@suse.com
+
+- Remove gcc-z9 wrapper which is obsolete.
+
+-------------------------------------------------------------------
+Mon Dec  2 15:34:27 UTC 2013 - rguenther@suse.com
+
+- Move gcc-ar, gcc-nm and gcc-ranlib to the gcc package instead
+  of packaging them separately.
+
+-------------------------------------------------------------------
+Wed Jun 19 12:24:24 UTC 2013 - rguenther@suse.com
+
+- Package gcc-ar, gcc-nm and gcc-ranlib wrapping ar, nm and ranlib
+  in a plugin-aware fashion.
+
+-------------------------------------------------------------------
+Mon May 27 12:55:02 UTC 2013 - rguenther@suse.com
+
+- Switch gcc to default 4.8.
+
+-------------------------------------------------------------------
+Mon Jan  7 09:10:36 UTC 2013 - rguenther@suse.com
+
+- Re-enable Ada for ppc64.
+
+-------------------------------------------------------------------
+Thu Dec 13 14:15:21 UTC 2012 - rguenther@suse.com
+
+- Add BuildRequires to gcc$version, required for cc1 path detection.
+
+-------------------------------------------------------------------
+Wed Nov 28 14:03:29 UTC 2012 - rguenther@suse.com
+
+- Rework gcc-info.
+  * Install symlinks to the versioned info files and adjust
+    install_info calls.  [bnc#756182]
+  * Provide uninstall hook that removes the alias entries.
+
+-------------------------------------------------------------------
+Thu Oct  4 18:21:01 UTC 2012 - dmueller@suse.com
+
+- remove gcc-ada subpackage for those architectures that
+  don't have a gccXX-ada package
+
+-------------------------------------------------------------------
+Wed Apr 18 11:26:15 UTC 2012 - rguenther@suse.com
+
+- Switch gcc to default 4.7.
+
+-------------------------------------------------------------------
+Fri Jan 27 15:30:38 UTC 2012 - rguenther@suse.com
+
+- Change licenses to follow SPDX convention.
+
+-------------------------------------------------------------------
+Mon Sep 26 13:41:02 CEST 2011 - dmueller@suse.de
+
+- use the target gcc binary for finding the right cc1 path
+
+-------------------------------------------------------------------
+Wed May 11 08:15:44 UTC 2011 - rguenther@novell.com
+
+- Switch gcc to default 4.6.
+
+-------------------------------------------------------------------
+Thu Feb 10 10:06:12 UTC 2011 - rguenther@novell.com
+
+- Fix licenses to match those of the system compiler.  [bnc#670658]
+
+-------------------------------------------------------------------
+Tue Jan 25 10:36:30 UTC 2011 - rguenther@novell.com
+
+- Fix string quoting.  [bnc#666416]
+
+-------------------------------------------------------------------
+Wed Jan 12 11:53:29 UTC 2011 - rguenther@novell.com
+
+- Uglify spec file formatting.
+
+-------------------------------------------------------------------
+Fri Dec 10 11:53:06 UTC 2010 - rguenther@novell.com
+
+- Add info directory aliases for unversioned variants of the
+  GCC user manuals.  [bnc#635355]
+
+-------------------------------------------------------------------
+Mon Nov 29 12:24:23 UTC 2010 - rguenther@novell.com
+
+- Drop libffi packages.
+
+-------------------------------------------------------------------
+Fri Feb 26 11:30:14 CET 2010 - rguenther@novell.com
+
+- Fix gcc-c++-32bit and gcc-c++-64bit again.
+
+-------------------------------------------------------------------
+Thu Feb 25 14:01:36 CET 2010 - rguenther@suse.de
+
+- Drop c++_compiler provides from gcc-c++-32bit and gcc-c++-64bit.
+
+-------------------------------------------------------------------
+Thu Feb 25 13:03:44 CET 2010 - rguenther@suse.de
+
+- Re-add gcc-c++-32bit and gcc-c++-64bit packages.
+
+-------------------------------------------------------------------
+Tue Feb 16 15:45:20 UTC 2010 - coolo@novell.com
+
+- Switch gcc to default 4.5.
+
+-------------------------------------------------------------------
+Mon Apr 27 17:01:13 CEST 2009 - rguenther@suse.de
+
+- Switch gcc default to 4.4.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:03:38 CET 2009 - rguenther@suse.de
+
+- Enable links for classpath binaries and manpages again.
+
+-------------------------------------------------------------------
+Fri Jan  9 15:35:45 CET 2009 - rguenther@suse.de
+
+- On ppc64 obsolete gcc-objc-64bit by gcc-objc.
+
+-------------------------------------------------------------------
+Thu Dec  4 18:26:30 CET 2008 - matz@suse.de
+
+- Add new gcc-z9 package on s390 and s390x to change the
+  default -march and -mtune settings.
+
+-------------------------------------------------------------------
+Wed May  7 11:18:00 CEST 2008 - rguenther@suse.de
+
+- Make dependencies between the gcc subpackages versioned. [bnc#385305]
+
+-------------------------------------------------------------------
+Fri Nov 23 14:53:40 CET 2007 - rguenther@suse.de
+
+- Make gcc-gij dependency of gcc-java a recommendation, all java
+  tools are back to the gcc-java package.  Require libgcj-devel
+  from gcc-java.
+- Revert /lib/cpp changes.
+
+-------------------------------------------------------------------
+Fri Nov 16 16:15:54 CET 2007 - rguenther@suse.de
+
+- For now disable symlinking of binaries and manpages that
+  conflict with the classpath package.
+
+-------------------------------------------------------------------
+Tue Nov 13 14:38:25 CET 2007 - rguenther@suse.de
+
+- Make /lib/cpp traditional and avoid GCC and target specific
+  defines.
+
+-------------------------------------------------------------------
+Tue Oct 30 11:19:36 CET 2007 - rguenther@suse.de
+
+- Add gcc-gij dependency to gcc-java as it contains many of the
+  tools formerly packaged in the gcc-java package.
+
+-------------------------------------------------------------------
+Mon Sep 24 11:21:52 CEST 2007 - rguenther@suse.de
+
+- Switch gcc default to 4.3.
+
+-------------------------------------------------------------------
+Fri Jul 27 20:35:04 CEST 2007 - rguenther@suse.de
+
+- Fix typo.
+
+-------------------------------------------------------------------
+Tue Jul 24 11:14:03 CEST 2007 - rguenther@suse.de
+
+- Add 32bit and 64bit variants of gcc-gij.  [#293423]
+
+-------------------------------------------------------------------
+Fri Jul  6 15:10:24 CEST 2007 - rguenther@suse.de
+
+- Mark ppc64 as separate bi-32.
+
+-------------------------------------------------------------------
+Thu Jun 14 18:39:23 CEST 2007 - ro@suse.de
+
+- Do not mark README.packaging as NoSource. (again) 
+
+-------------------------------------------------------------------
+Fri Jun  8 16:19:40 CEST 2007 - rguenther@suse.de
+
+- Switch gcc default to 4.2.  [#275939]
+
+-------------------------------------------------------------------
+Tue Apr 24 18:35:21 CEST 2007 - rguenther@suse.de
+
+- Do not link to grmic and grmiregistry, they conflict with
+  the classpath package versions.
+
+-------------------------------------------------------------------
+Tue Jan 16 17:05:32 CET 2007 - rguenther@suse.de
+
+- Do not mark README.packaging as NoSource.
+
+-------------------------------------------------------------------
+Thu Nov  9 17:40:49 CET 2006 - rguenther@suse.de
+
+- Remove gcc-c++-32bit and gcc-c++-64bit packages.
+
+-------------------------------------------------------------------
+Tue Oct 31 15:03:02 CET 2006 - dmueller@suse.de
+
+- don't build as root
+
+-------------------------------------------------------------------
+Mon Oct 30 12:11:34 CET 2006 - rguenther@suse.de
+
+- Make gcc architecture dependent again.  [#215971]
+
+-------------------------------------------------------------------
+Thu Oct 26 11:40:43 CEST 2006 - rguenther@suse.de
+
+- Add dependencies to the gcc and non-32/64bit packages.  [#215217]
+
+-------------------------------------------------------------------
+Tue Sep 19 16:27:15 CEST 2006 - rguenther@suse.de
+
+- New gcc-gij package.
+
+-------------------------------------------------------------------
+Fri Aug 25 10:37:29 CEST 2006 - rguenther@suse.de
+
+- Add 32bit and 64bit support packages to gcc, gcc-c++, gcc-fortran,
+  gcc-objc and libffi-devel.
+
+-------------------------------------------------------------------
+Thu Aug 24 08:24:20 CEST 2006 - rguenther@suse.de
+
+- Make gcc require cpp to pull in /lib/cpp.
+
+-------------------------------------------------------------------
+Fri Aug 18 10:54:23 CEST 2006 - rguenther@suse.de
+
+- gcc obsoletes gcc-mudflap which is no longer.
+
+-------------------------------------------------------------------
+Mon Aug  7 11:28:34 CEST 2006 - rguenther@suse.de
+
+- Provide gcc-mudflap, gcc-info and gcc-locale packages [#197515].
+
+-------------------------------------------------------------------
+Fri Jul 14 14:46:31 CEST 2006 - rguenther@suse.de
+
+- New package.
+

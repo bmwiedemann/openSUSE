@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Jul  3 15:32:15 UTC 2017 - mrueckert@suse.de
+
+- add rpmlintrc as we run into rpmlint score limits because of the
+  C source files we ship.
+
+-------------------------------------------------------------------
+Mon Oct 13 12:06:49 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Feb 13 06:48:44 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Wed Mar 14 11:33:50 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.8.0:
+  * preserve encoding of original string under Ruby 1.9
+  * avoid warnings when monkey patching
+  * internal cleanups
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 01:26:47 UTC 2009 - prusnak@suse.cz
+
+- regenerate spec using gem2rpm with opensuse template
+
+-------------------------------------------------------------------
+Mon Dec 21 18:36:09 UTC 2009 - coolo@novell.com
+
+- rubygem(hoe) is not provided, use rubygem-hoe
+
+-------------------------------------------------------------------
+Sun Dec 20 17:51:02 UTC 2009 - coolo@novell.com
+
+- initial package
+

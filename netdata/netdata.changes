@@ -1,0 +1,1231 @@
+-------------------------------------------------------------------
+Mon Jul  8 20:13:44 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.16.0
+  Improvements:
+  * Health:
+    + Easily disable alarms, by persisting the silencers
+      configuration
+    + Repeating alarm notifications
+    + Simplified the health cmdapi tester - no setup/cleanup needed
+    + Αdd last_collected alarm to the x509check collector
+    + New alarm for abnormally high number of active processes.
+
+  * Security:
+    + SSL support in the web server and streaming/replication
+    + Support encrypted connections to OpenTSDB backends
+
+  * New collectors:
+    + Go.d collector modules for WMI, Dnsmasq DHCP leases
+      and Pihole
+    + Riak KV instances collector
+    + CPU performance statistics using Performance Monitoring Units
+      via the perf_event_open() system call. (perf plugin)
+
+  * Collector improvements:
+    + Handle different sensor IDs for the same element in the
+      freeipmi plugin
+    + Increase the cpu_limit chart precision in cgroup plugin
+    + Added userstats and deadlocks charts to the python mysql
+      collector
+    + Add perforce server process monitoring to the apps plugin
+
+  * Backends:
+    + Prometheus remote write backend
+
+  * DB engine improvements:
+    + Reduced memory requirements by 40-50%
+    + Reduced the number of pages needed to be stored and indexed
+      when using memory mode = dbengine, by adding empty page
+      detection
+
+  * Rebranding:
+    + Updated the netdata logo and changed links to point to the
+      new website
+
+  * Other:
+    + Pass the the cloud base url parameter to the notifications
+      mechanism, so that modifications to the configuration are
+      respected when creating the link to the alarm
+    + Improved logging, to be able to trace the
+      CRITICAL: main[main] SIGPIPE received. error
+
+  Bug fixes:
+  * Fixed ram_available alarm
+  * Stop monitoring /dev and /run in the disk space and inode
+    usage charts
+  * Fixed the monitoring of the “time” group of processes
+  * Fixed compilation error PERF_COUNT_HW_REF_CPU_CYCLES'
+    undeclared here in old Linux kernels (perf plugin)
+  * Fixed invalid XML page error (tomcat plugin)
+  * Remove obsolete monit metrics
+  * Fixed Failed to parse error in adaptec_raid
+  * Fixed cluster_health_nodes and cluster_stats_nodes charts in
+    the elasticsearch collector
+  * A modified slave chart's "name" was not properly transferred
+    to the master
+  * Netdata could run out of file descriptors when using the
+    new DB engine
+  * Fixed UI behavior when pressing the End key
+  * Fixed UI link to check the configuration file,
+    to open in a new tab
+  * Prevented Error: 'module' object has no attribute 'Retry'
+    messages from python collectors, by enforcing minimum version
+    check for the UrlService library
+  * Fixed typo that causes nfacct.plugin log messages to
+    incorrectly show freeipmi
+  * The daemon could get stuck during collection or during
+    shutdown, when using the new dbengine. Reduced new dbengine IO
+    utilization by forcing page alignment per dimension of chart.
+  * Properly handle timeouts/no response in dns_query_time
+    python collector
+  * When a collector restarted after having stopped for a long
+    time, the new dbengine would consume a lot of CPU resources.
+  * Fixed error Assertion old_state & PG_CACHE_DESCR_ALLOCATED'
+    failed` of the new dbengine. Eliminated a page cache descriptor
+    race condition
+  * tv.html failed to load the three left charts when accessed via
+    https. Turn tv.html links to https
+  * Change print level from error to info for messages about
+    clearing old files from the database
+  * Fixed warning regarding the x509check_last_collected_secs
+    alarms. Changed the template update frequency to 60s, to match
+    the chart’s update frequency
+  * Email notification header lines were not terminated with \r\n
+    as per the RFC
+  * Some log entries would not be caught by the python web_log
+    plugin. Fixed the regular expressions
+  * Corrected the date used in pushbullet notifications
+  * Fixed FATAL error when using the new dbengine with no direct
+    I/O support, by falling back to buffered I/O
+  * Fixed compatibility issues with varnish v4 (varnish collector)
+  * The total number of disks in mdstat.XX_disks chart was
+    displayed incorrectly.
+    Fixed the "inuse" and "down" disks stacking.
+  * The config option --disable-telemetry was being checked after
+    restarting netdata, which means that we would still send
+    anonymous statistics the first time netdata was started.
+    (NOTE: Telemetry is disabled by default on openSUSE.)
+  * Fixed apcupsd collector errors, by passing correct info to the
+    run function.
+  * apcupsd and libreswan were not enabled by default
+  * Fixed incorrect module name: energi to energid
+  * The nodes view did not work properly when a reverse proxy was
+    configured to access netdata via paths containing subpaths
+    (e.g. myserver/netdata)
+  * Fix error message PLUGINSD : cannot open plugins directory
+  * Corrected invalid links to web_log.conf that appear on the
+    agent UI
+  * Fixed ScaleIO collector endpoint paths
+  * Fixed web client timeout handling in the go.d plugin httpcheck
+    collector
+
+-------------------------------------------------------------------
+Tue May 21 12:37:08 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.15.0
+  Bug Fixes:
+  * Prowl notifications were not being sent, unless another
+    notification method was also active
+  * Fix exception handling in the python.d plugin
+  * The node applications group did not include all node processes.
+  * The nvidia_smi collector displayed incorrect power usage
+  * The python.d plugin would sometimes hang, because it lacked
+    a connect timeout
+  * The mongodb collector raised errors due to various KeyErrors
+  * The smartd_log collector would show incorrect temperature
+    values
+
+  Improvements:
+  * Support for aggregate node view
+  * Database engine
+  * New collector modules:
+    + Go.d collectors for OpenVPN, the Tengine web server and
+      ScaleIO (VxFlex OS) instances
+    + Monitor disk access latency like ioping does
+  * Energi Core daemon monitoring, suits other Bitcoin forks
+  * Collector improvements:
+    + Add docker swarm manager metrics to the go.d docker_engine
+      collector
+    + Implement unified cgroup cpu limit
+    + python.d.plugin: Allow monitoring of HTTP(S) endpoints which
+      require POST data and make the UrlService more flexible
+  * Support the AWS Kinesis backend for long-term storage
+  * Add a new "text-only" chart renderer
+  * API Improvements:
+    + Smarter caching of API calls. Do not cache alarms and info
+      api calls and extend no-cache headers.
+    + Extend the api/v1/info call response with system and
+      collector information
+    + k6 script for API load testing
+  * Kubernetes helmchart improvements:
+    + Added the init container, where sysctl params could be
+      managed, to bypass the Cannot allocate memory issue
+    + Better startup/shutdown of slaves and reduced memory usage
+      with liveness/readiness probes and default memory mode none
+    + Added the option of overriding the default settings for
+      kubelet, kubeproxy and coredns collectors via values.yaml
+    + Make the use of persistent volumes optional, add apiVersion
+      to fix linting errors and correct the location of the env
+      field
+
+-------------------------------------------------------------------
+Fri May  3 15:08:20 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.14.0
+The release introduces major additions to Kubernetes monitoring,
+with tens of new charts for Kubelet, kube-proxy and coredns
+metrics, as well as significant improvements to the netdata
+helm chart.
+
+Two new collectors were added, to monitor Docker hub and Docker
+engine metrics.
+
+Finally, v1.14 adds support for version 2 cgroups, OpenLDAP
+over TLS, NVIDIA SMI free and per process memory and configurable
+syslog facilities.
+
+  Bug Fixes:
+  * Fixed problem autodetecting failed jobs in python.d plugin.
+    It now properly restarts jobs that are being rechecked,
+    as soon as they are able to run.
+  * CouchdDB monitoring would stop sometimes with an exception.
+    Fixed the unhandled exception causing the issue.
+  * The netdata api deliberately returned http error 400 when
+    netdata ran in memory mode none. Modified the behavior to
+    return responses, regardless of the memory mode
+  * The python.d plugin sometimes does not receive SIGTERM when
+    netdata exits, resulting in zombie processes. Added a heartbeat
+    so that the process can exit on SIGPIPE.
+  * The new SMS Server Tools notifications did not handle errors
+    well, resulting in cryptic error messages.
+    Improved error handling.
+  * Fix segmentation fault in streaming, when two dimensions had
+    similar names.
+  * Kubernetes Helm Chart: Fixed incorrect use of namespaces in
+    ServiceAccount and ClusterRoleBinding RBAC fixes.
+  * Elastic search: The option to enable HTTPS was not included in
+    the config file, giving the erroneous impression that HTTPS was
+    not supported. The option was added.
+  * RocketChat notifications were not being sent properly.
+    Added default recipients for roles in the health alarm
+    notification configuration.
+
+  Improvements:
+  * go.d.plugin v0.4.0 : Docker Hub and k8s coredns collectors,
+    springboot2 URI filters support.
+  * go.d.plugin v0.3.1 : Add default job to run k8s_kubelet.conf,
+    k8s_kubeproxy, activemq modules
+  * go.d.plugin v0.3.0 : Docker engine, kubelet and kub-proxy
+    collectors. x509check module reading certs from file support
+  * Added unified cgroup support that includes v2 cgroups
+  * Disk stats: Added preferred disk id pattern, so that users can
+    see the id they prefer, when multiple ids appear for the same
+    device
+  * NVIDIA SMI: Added memory free and per process memory usage
+    charts to the collector
+  * OpenLDAP: Added TLS support, to allow monitoring of LDAPS.
+  * PHP-FPM: Add health check to raise alarms when the phpfm server
+    is unreachable
+  * PostgreSQL: Our configuration options to connect to a DB did
+    not support all possible option. Added option to connect to a
+    PostreSQL instance by defining a connection string (URI).
+  * python.d.plugin: There was no way to delete obsolete dimensions
+    in charts created by the python.d plugin. The plugin can now
+    delete dimension at runtime.
+  * netdata supports sending its logs to Syslog, but the facility
+    was hard-coded. We now support configurable Syslog facilities
+    in netdata.conf.
+  * Kubernetes Helm Chart improvements:
+    + Added serviceName in statefulset spec to align with the k8s
+      documentation
+    + Added preStart command to persist slave machine GUIDs,
+      so that pod deletion/addition during upgrades doesn't lose
+      the slave history.
+    + Disabled non-essential master netdata collector plugins to
+      avoid duplicate data
+    + Added preStop command to wait for netdata to exit gracefully
+      before removing the container
+    + Extended configuration file support to provide more control
+      from the helm command line
+    + Added option to disable Role-based access control
+    + Added liveness and readiness probes.
+
+-------------------------------------------------------------------
+Fri Mar 15 23:16:34 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.13.0
+  netdata has taken the first step into the world of Kubernetes,
+  with a beta version of a Helm chart for deployment to a k8s
+  cluster and proper naming of the cgroup containers.
+  We have big plans for Kubernetes, so stay tuned!
+
+  A major refactoring of the python.d plugin has resulted in a
+  dramatic decrease of the required memory, making netdata even
+  more resource efficient.
+
+  We also added charts for IPC shared memory segments and total
+  memory used.
+
+  Improvements:
+  * Kubernetes: Helm chart and proper cgroup naming
+  * python.d.plugin: Reduce memory usage with separate process
+    for initial module checking and loaders cleanup
+  * IPC shared memory charts
+  * mysql module add ssl connection support
+  * FreeIPMI: Have the debug option apply the internal freeipmi
+    debug flags
+  * Prometheus backend: Support legacy metric names for source=avg
+  * Registry: Allow deleting the host we are looking at
+  * SpigotMC: Use regexes for parsing.
+
+  Bug Fixes:
+  * Postgres: fix connection issues
+  * Proxmox container: Fix cgroup naming and use total_* memory
+    counters for cgroups
+  * proc.plugin and plugins.d: Fix memory leaks
+  * SpigotMC: Fix UnicodeDecodeError and py2 compatibility fix
+  * Fix non-obsolete dimension deletion
+  * UI: Fix incorrect icon for the streaming master
+  * Docker container names: Retry renaming when a name is not found
+  * apps.plugin: Don't send zeroes for empty process groups
+  * go.d.plugin: Correct sha256sum check
+  * Unbound module: Documentation corrected with troubleshooting
+    section.
+  * Streaming: Prevent UI issues upon GUID duplication between
+    master and slave netdata instances
+  * Linux power supply module: Fix missing zero dimensions
+  * Minor fixes around plugin_directories initialization
+
+- Update to v1.12.2
+  Bug Fixes:
+  * Zombie processes exist after restart netdata - add heartbeat
+    to python.d plugin
+  * RocketChat notifications not working
+  * SIGSEGV crash during shutdown of tc plugin
+  * CMake warning for nfacct plugin
+  Improvements:
+  * Oracledb python module
+  * Show streamed servers even for users that are not signed in
+
+-------------------------------------------------------------------
+Fri Feb 22 06:31:15 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Drop GPG signature (no longer used)
+- Drop spec compatibility with old distro versions
+- Drop netdata-automake-no-dist-xz.patch
+- Refresh netdata-smartd-log-path.patch
+- Update to v1.12.1
+  Fixes:
+  * Fix SIGSEGV at startup: Don't free vars of charts that do not
+    exist #5455
+  * Prevent invalid Linux power supply alarms during startup #5447
+  * Correct duplicate flag enum in health.h #5441
+  * Remove extra 'v' for netdata version from Server response
+    header #5440 and spec URL #5427
+  * apcupsd - Treat ONBATT status the same as ONLINE #5435
+  * Fix #5430 - LogService._get_raw_data under python3 fails on
+    undecodable data #5431
+  * Correct version check in UI #5429
+  * Fix ERROR 405: Cannot download charts index from server -
+    cpuidle handle newlines in names #5425
+  * Fix clock_gettime() failures with the CLOCK_BOOTTIME argument
+    #5415
+  * Use netnsid for detecting cgroup networks; #5413
+  * Python module sensors fix #5406
+  * Fix ceph.chart.py for Python3 #5396 (GaetanF)
+  * Fix warning condition for mem.available #5353
+  * cups.plugin: Support older versions #5350
+  Improvements:
+  * Add driver-type option to the freeipmi plugin #5384
+  * Add support of tera-byte size for Linux bcache. #5373
+  * Split nfacct plugin into separate process #5361
+  * Add cgroup cpu and memory limits and alarms #5172
+  * Add message queue statistics #5115
+- Update to v1.12.0
+  Key improvements:
+  * Introducing netdata.cloud, the free netdata service for all
+    netdata users
+  * High performance plugins with go.d.plugin (data collection
+    orchestrator written in Go)
+  * 7 new data collectors and 11 rewrites of existing data
+    collectors for improved performance
+  * A new management API for all netdata servers
+  * Bind different functions of the netdata APIs to different ports
+
+  Management API:
+  Netdata now has a management API. We plan to provide a full set
+  of configuration commands using this API.
+  In this release, the management API supports disabling or
+  silencing alarms during maintenance periods.
+  For more information about the management API, check
+  https://docs.netdata.cloud/web/api/health/#health-management-api
+
+  Anonymous statistics:
+  Anonymous usage information can be collected and sent to Google
+  Analytics. This functionality is disabled by default in openSUSE.
+  Remove /etc/netdata/.opt-out-from-anonymous-statistics to enable.
+
+  The statistics calculated from this information will be used for:
+  1. Quality assurance, to help us understand if netdata behaves as
+     expected and help us identify repeating issues for certain
+     distributions or environment.
+  2. Usage statistics, to help us focus on the parts of netdata
+     that are used the most, or help us identify the extend our
+     development decisions influence the community.
+
+  Information is sent to Netdata via two different channels:
+  * Google Tag Manager is used when an agent's dashboard is
+    accessed.
+  * The script anonymous-statistics.sh is executed by the Netdata
+    daemon, when Netdata starts, stops cleanly, or fails.
+
+  Both methods are controlled via the same opt-out mechanism.
+  For more information, check
+  https://docs.netdata.cloud/docs/anonymous-statistics/
+
+  Data collection:
+  This release introduces a new Go plugin orchestrator.
+  This plugin has its own github repo
+  (https://github.com/netdata/go-orchestrator). It is open-source,
+  using the same license and we welcome contributions.
+  The orchestrator can also be used to build custom data collection
+  plugins written in Go. We have used the orchestrator to write
+  many new Go plugins in our go.d plugin github repo.
+  For more information, check
+  https://github.com/netdata/go-orchestrator#go-orchestrator-wip
+
+  New data collectors:
+  * Activemq (Go)
+  * Consul (Go)
+  * Lighttpd2 (Go)
+  * Solr (Go)
+  * Springboot2 (Go)
+  * mdstat - nonredundant arrays (C)
+  * CUPS printing system (C)
+
+  High performance versions of older data collectors:
+  * apache (Go)
+  * dns_query (Go)
+  * Freeradius (Go)
+  * Httpcheck (Go)
+  * Lighttpd (Go)
+  * Portcheck (Go)
+  * Nginx (Go)
+  * cpufreq (C)
+  * cpuidle (C)
+  * mdstat (C)
+  * power supply (C)
+
+  Other improved data collectors:
+  * Fix the python plugin clock (collectors falling behind).
+  * adaptec_raid: add to python.d.conf.
+  * apcupsd: Detect if UPS is online.
+  * apps: Fix process statistics collection for FreeBSD.
+  * apps: Properly lookup docker container name when running in ECS
+  * fail2ban: Add 'Restore Ban' action.
+  * go_expavar: Don't check for duplicate expvars.
+  * hddtemp: Don't use disk model as dim name.
+  * megacli: add to python.d.conf.
+  * nvidia_smi: handle N/A values.
+  * postgres: Fix integer out of range error on Postgres 11,
+    fix locks count.
+  * proc: Don't show zero charts for ZFS filesystem.
+  * proc; Fix cached memory calculation.
+  * sensors: Don't ignore 0 RPM fans on start.
+  * smartd_log: check() unhandled exception: list index out of
+    range.
+  * SNMP: Gracefully ignore the offset if the value is not a number
+
+  Health Monitoring:
+  * Add Prowl notifications for iOS users.
+  * Show count of active alarms per state in email notifications.
+  * Show evaluated expression and expression variable values in
+    email notifications.
+  * Improve support for slack recipients (channels/users).
+  * Custom notifications: Fix bug with alarm role recipients.
+
+  Dashboards:
+  * Server filtering in my-netdata menu when signed in to
+    netdata.cloud
+  * All units are now IEC-compliant abbreviations (KiB, MiB etc.).
+  * GUI: Make entire row clickable in the registry menu showing
+    the list of servers.
+
+  Backends:
+  * Do not report stale metrics to prometheus.
+
+  Other:
+  * Treat DT_UNKNOWN files as regular files.
+  * API: Stricter rules for URL separators.
+- Update to v1.11.1
+  Improved internal database:
+  Overflown incremental values (counters) do not show a zero point
+  at the charts. Netdata detects the width (8bit, 16bit, 32bit,
+  64bit) of each counter and properly calculates the delta when
+  the counter overflows.
+
+  The internal database format has been extended to support values
+  above 64bit.
+
+  New data collection plugins:
+  * openldap, to collect performance statistics from OpenLDAP
+    servers.
+  * tor, to collect traffic statistics from Tor.
+  * nvidia_smi to monitor NVIDIA GPUs.
+
+  Improved data collection plugins:
+  * BUG FIX: network interface names with colon (:) in them were
+    incorrectly parsed and resulted in faulty data collection
+    values.
+  * BUG FIX: smartd_log has been refactored, has better python v2
+    compatibility, and now supports SCSI smart attributes
+  * cpufreq has been re-written in C - since this module if common,
+    we decided to convert to an internal plugin to lower the
+    pressure on the python ones. There are a few more that will be
+    transitioned to C in the next release.
+  * BUG FIX: sensors got some compatibility fixes and improved
+    handling for lm-sensors errors.
+
+  Health monitoring:
+  * BUG FIX: max network interface speed data collection was
+    faulty, which resulted in false-positive alarms on systems with
+    multiple interfaces using different speeds (the speed of the
+    first network interface was used for all network interfaces).
+    Now the interface speed is shown as a badge.
+  * alerta.io notifications got a few improvements
+  * BUG FIX: conntrack_max alarm has been restored (was not working
+    due to an invalid variable name referenced)
+
+  Registry (my-netdata menu):
+  * It has been refactored a bit to reveal the URLs known for each
+    node and now it supports deleting individual URLs.
+- Update to 1.11.0
+  * Stock config files are now in /usr/lib/netdata; use the
+    /etc/netdata/edit-config script to copy and edit them.
+  * The query engine of netdata has been re-written to support
+    query plugins. We have already added the following algorithms
+    that are available for alarm, charts and badges:
+    + stddev, for calculating the standard deviation on any
+      time-frame.
+    + ses or ema or ewma, for calculating the exponential weighted
+      moving average, or single/simple exponential smoothing on
+      any time-frame.
+    + des, for calculating the double exponential smoothing on any
+      time-frame.
+    + cv or rsd, for calculating the coefficient of variation for
+      any time-frame.
+
+  Fixed security issues:
+  * CVE-2018-18836 Fixed JSON Header Injection (an attacker could
+    send \n encoded in the request to inject a JSON fragment into
+    the response).
+  * CVE-2018-18837 Fixed HTTP Header Injection (an attacker could
+    send \n encoded in the request to inject an HTTP header into
+    the response).
+  * CVE-2018-18838 Fixed LOG Injection (an attacker could send \n
+    encoded in the request to inject a log line at access.log).
+  * CVE-2018-18839 Not fixed Full Path Disclosure, since these are
+    intended (netdata reports the absolute filename of web files,
+    alarm config files and alarm handlers).
+  * Fixed Privilege Escalation by manipulating apps.plugin or
+    cgroup-network error handling.
+  * Fixed LOG injection (by sending URLs with \n in them).
+
+  New data collection modules:
+  * rethinkdbs for monitoring RethinkDB performance
+  * proxysql for monitoring ProxySQL performance
+  * litespeed for monitoring LiteSpeed web server performance.
+  * uwsgi for monitoring uWSGI performance
+  * unbound for monitoring the performance of Unbound DNS servers.
+  * powerdns for monitoring the performance of PowerDNS servers.
+  * dockerd for monitoring the health of dockerd
+  * puppet for monitoring Puppet Server and Puppet DB.
+  * logind for monitoring the number of active users.
+  * adaptec_raid and megacli for monitoring the relevant raid
+    controller
+  * spigotmc for monitoring minecraft server statistics
+  * boinc for monitoring Berkeley Open Infrastructure Network
+    Computing clients.
+  * w1sensor for monitoring multiple 1-Wire temperature sensors.
+  * monit for collecting process, host, filesystem, etc checks
+    from monit.
+  * linux_power_supplies for monitoring Linux Power Supplies
+    attributes
+
+  Data collection orchestrators changes:
+  * node.d.plugin does not use the js command any more.
+  * python.d.plugin now uses monotonic clocks. There was a
+    discrepancy in clocks used in netdata that resulted in a shift
+    in time of python module after some time (it was missing 1 sec
+    per day).
+  * added MySQLService for quickly adding plugins using mysql
+    queries.
+  * URLService now supports self-signed certificates and supports
+    custom client certificates.
+  * all python.d.plugin modules that require sudo to collect
+    metrics, are now disabled by default, to avoid security alarms
+    on installations that do not need them.
+
+  Improved data collection modules:
+  * apps.plugin now detects changes in process file descriptors,
+    also fixed a couple of memory leaks. Its default configuration
+    has been enriched significantly, especially for IoT.
+  * freeipmi.plugin now supports option ignore-status to ignore
+    the status reported by given sensors.
+
+  * statsd.plugin (for collecting custom APM metrics)
+    + The charting thread has been optimized for lowering its CPU
+      consumption when several millions of metrics are collected.
+    + sets now report zeros instead of gaps when no data are
+      collected
+    + histograms and timers have been optimized for lowering their
+      CPU consumption to support several thousands of such metrics
+      are collected.
+    + histograms had wrong sampling rate calculations.
+    + gauges now ignore sampling rate when no sign is included in
+      the value.
+    + the minimum sampling rate supported is now 0.001.
+    + netdata statsd is now drop-in replacement for datadog statsd
+      (although statsd tags are currently ignored by netdata).
+
+  * proc.plugin (Linux, system monitoring)
+    + Unused interrupts and softirqs are not used in charts
+      (this saves quite some processing power and memory on systems
+      with dozens of CPU cores).
+    + fixed /proc/net/snmp parsing of IcmpMsg lines that failed on
+      a few systems.
+    + Veritas Volume Manager disks are now recognized and named
+      accordingly.
+    + Now netdata collects TcpExtTCPReqQFullDrop and re-organizes
+      metrics in charts to properly monitor the TCP SYN queue and
+      the TCP Accept queue of the kernel.
+    + Many charts that were previously reported as IPv4, were
+      actually reflecting metrics for both IPv4 and IPv6.
+      They have been renamed to ip.*.
+    + netdata now monitors SCTP.
+    + Fixed BTRFS over BCACHE sector size detection.
+    + BCACHE data collection is now faster.
+    + /proc/interrupts and /proc/softirqs parsing fixes.
+
+  * diskspace.plugin (Linux, disk space usage monitoring)
+    + It does not stat() excluded mount points any more (it was
+      interfering with kerberos authenticated mount points).
+    + several filesystems are now by default excluded from
+      disk-space monitoring, to avoid breaking suspend on
+      workstations.
+
+  * python.d.plugin PYTHON modules (applications monitoring)
+    + web_log module now supports virtual hosts, reports http/https
+      metrics, support squid logs
+    + nginx_plus module now handles non-continuous peer IDs
+    + ipfs module is optimized, the use of its Pin API is now
+      disabled by default and can enabled with a netdata module
+      option (using the IPFS Pin API increases the load on the
+      IPFS server).
+    + fail2ban module now supports IPv6 too.
+    + ceph module now checks permissions and properly reports
+      issues
+    + elasticsearch module got better error handling
+    + nginx_plus module now uses upstream ip:port instead of
+      transient id to identify dimensions.
+    + redis, now it supports Pika, collects evited keys, fixes
+      authentication issues reported and improves exception
+      handling.
+    + beanstalk, bug fix for yaml config loading.
+    + mysql, the % of active connections is now monitored,
+      query types are also charted.
+    + varnish, now it supports versions above 5.0.0
+    + couchdb
+    + phpfpm, now supports IPv6 too.
+    + apache, now supports IPv6 too.
+    + icecast
+    + mongodb, added support for connect URIs
+    + postgress
+    + elasticsearch, now it supports versions above 6.3.0,
+      fixed JSON parse errors
+    + mdstat , now collects mismatch_cnt
+    + openvpn_log
+
+  * node.d.plugin NODE.JS modules
+    + snmp was incorrectly parsing a new OID names as float.
+
+  * charts.d.plugin BASH modules
+    + nut now supports naming UPSes.
+
+  Health monitoring:
+  * Added variable $system.cpu.processors.
+  * Added alarms for detecting abnormally high load average.
+  * TCP SYN and TCP accept queue alarms, replacing the old softnet
+    dropped alarm that was too generic and reported many false
+    positives.
+  * system alarms are now enabled on FreeBSD.
+  * netdata now reads NIC speed and sets alarms on each interface
+    to detect congestion.
+  * Network alarms are now relaxed to avoid false positives.
+  * New bcache alarms.
+  * New mdstat alarms.
+  * New apcupsd alarms.
+  * New mysql alarms.
+  * New notification methods:
+    + rocket.chat
+    + Microsoft Teams
+    + syslog
+    + fleep.io
+    + Amazon SNS
+
+  Backends:
+  * Host tags are now sent to Graphite
+  * Host variables are now sent to Prometheus
+
+  Streaming:
+  * Each netdata slave and proxy now filter the charts that are
+    streamed. This allows exposing netdata masters to third parties
+    by limiting the number of charts available at the master.
+  * Fixed a bug in streaming slaves that randomly prevented them
+    to resume streaming after network errors.
+  * Fixed a bug that on slaves that sent duplicated chart names
+    under certain conditions.
+  * Fixed a bug that caused slaves to consume 100% CPU (due to a
+    misplaced lock) when multiple threads were adding dimensions
+    on the same chart.
+  * The receiving nodes of streaming (netdata masters and proxies)
+    can now rate-limit the rate of inbound streaming requests
+    received.
+  * Re-worked time synchronization between netdata slaves and
+    masters.
+
+  API:
+  * Badges that report time, now show "undefined" instead of
+    "never".
+
+  Dashboard:
+  * Added UTC timezone to the list of available time-zones.
+  * The dashboard was sending some non-HTTP compliant characters
+    at the URLs that made netdata dashboards break when used under
+    certain proxies.
+
+-------------------------------------------------------------------
+Tue Mar 27 20:06:12 UTC 2018 - 9+suse@cirno.systems
+
+- Remove _service
+- Add GPG signature
+- Use %license macro
+- Update to v1.10.0
+  * new plugins:
+    - BTRFS - monitor the allocations of BTRFS filesystems (netdata can now
+      properly detect when btrfs is going out of space)
+    - BCACHE - monitor the caching block layer that allows building hybrid
+      disks using normal HDDs and SSDs
+    - Ceph - monitor ceph distributed storage
+    - nginx plus - monitor the nginx+ web servers
+    - libreswan - monitor IPSEC tunnels
+    - Traefik - monitor traefik reverse proxies
+    - icecast - monitor icecast streaming servers
+    - ntpd - monitor NTP servers
+    - httpcheck - monitor any remote web server
+    - portcheck - monitor any remote TCP port
+    - spring-boot - monitor java spring boot applications
+    - dnsdist - monitor dnsdist name servers
+    - hugepages - monitor the allocation of Linux hugepages
+  * enhanced/improved plugins:
+    - statsd
+      + statsd dimensions now support the options the external plugin
+        dimensions support (currently the only usable option is hidden to add
+        the dimension, but make it hidden on the dashboard - a hidden
+        dimension can participate in various calculations, including alarms).
+      + statsd now reports the CPU usage of its threads at the netdata
+        section.
+      + statsd metrics are logged to access.log the first time they are
+        encountered.
+      + statsd metrics now accept the special value zinit to allow them get
+        initialized without altering their values (this is useful if you have
+        rare metrics that you need to initialize when netdata starts).
+      + statsd over TCP is now a lot faster - netdata can process up to 3.5mil
+        statsd metrics / second using just one core. Added options to control
+        the timeouts of TCP statsd connections.
+      + fixed the title and context of statsd private charts
+      + statsd private charts can now be hidden from the dashboard
+    - web_log
+      + Added web server response timings histogram
+    - containers monitoring
+      + netdata now monitors systemd-nspawn containers.
+      + netdata now renames charts of kubernetes containers.
+      + virsh is now called with -r to avoid prompting for password
+      + cgroup-network is now a lot more strict, preventing unauthorized
+        privilege escalation
+      + cgroup-network now searches for container processes in sub-cgroups
+        too - this improves the mapping of network interfaces to containers
+      + cgroup-network now works even when there are no veth interfaces
+        in the system
+    - system memory
+      + treat slab memory as cached
+      + added a new chart for monitoring the memory available for use,
+        before hitting swap
+      + netdata now monitors Linux hugepages and (transparent) hugepages
+    - diskspace
+      + support huge amounts of mountpoints - netdata was crashing with stack
+        overflow due to recursion - now it is a loop, so any number of mount
+        points is supported
+    - network interfaces
+      + moved tcp passive and active opens to a separate chart, to allow the
+        TCP issues dimensions scale better by default
+      + updated the information presented on TCP charts to match the latest
+        v4.15 kernel source
+    - postgres
+      + new charts:
+        checkpointer
+        bgwriter
+        autovacuum
+        replication delta
+        WAL archive
+        WAL
+        temporary files
+      + The postgres plugin now also works when postgres is in recovery mode.
+    - rabbitmq
+      + added Erlang run queue chart. This is useful in conjunction with the
+        existing Erlang processes chart to get a better overall idea of what's
+        going on in the Erlang VM.
+      + added rabbitmq information on the dashboard to complement the charts.
+    - apps.plugin
+      netdata prior to this version was detecting the user and group of
+      processes by examining the ownership of /proc/PID/stat. Unfortunately it
+      seems that the owneship of files in /proc do not change when the process
+      switches user. So, netdata could not detect the user and group of
+      processes that started as root and then switched to another user.
+
+      Now netdata reads /proc/PID/status:
+      + process ownship information is now accurate
+      + eliminated the need to read /proc/PID/statm (all the information of
+        /proc/PID/statm is available in /proc/PID/status)
+      + allowed netdata to read VmSwap, so a new chart has been added to
+        monitor the swap memory usage per process, user and group.
+      + The new plugin is 20% more expensive in terms of CPU. We tried hard
+        to optimize it, but this is as good as it can get.
+    - haproxy
+      + hrsp_1xx, hrsp_2xx, hrsp_3xx, hrsp_4xx, hrsp_5xx, hrsp_other,
+        hrsp_total for backands and frontends
+      + qtime, ctime, rtime, ttime metrics for backend servers
+      + backend servers In UP state
+    - uptime
+      + netdata now uses /proc/uptime when CLOCK_BOOTTIME does not report the
+        same uptime. In containers CLOCK_BOOTTIME reports the uptime of the
+        host, while /proc/uptime reports the uptime of the container, so now
+        netdata correctly reports the uptime of the container.
+    - ksm
+      + removed to_scan dimension
+      + the savings % reported by netdata was less than the actual - fixed it.
+    - mdstat
+      + various fixes to better monitor rebuild time and rate
+    - elasticsearch
+      + Added several charts for translog / indices segments statistics and
+        JVM buffer pool utilization, which are often helpful when evaluating
+        an elasticsearch node health
+    - apcupsd
+      + netdata now supports monitoring multiple APC UPSes.
+    - isc-dhcpd
+      + netdata now also supports monitoring IPv6 leases
+    - fronius
+      + added a new dimension solar_consumption
+      + added alarms
+    - stiebeleltron
+      + added alarms
+    - python.d
+      + python.d.plugin can now start even if /etc/netdata/python.d.conf
+        is missing
+      + python.d.plugin now has an internal run counter
+      + the unicode decoding of the plugin has been fixed
+      + the plugin now does not validate self-signed certificates
+      + the plugin can not revive obsolete charts
+    - charts.d
+      + charts.d.plugin BASH modules can now have custom number of retries in
+        case of data collection failures
+  * new alarm notifications plugins:
+    - alerta
+    - IRC
+  * web server:
+    - netdata now has a new internal web server that supports a fixed number
+      of threads - we call it static web server. This web server allows
+      netdata to work around memory fragmentation (since the treads are fixed,
+      the underlying memory allocators reuse the same memory arenas) and cpu
+      utilization (we can control the number of threads that will be used by
+      netdata). This is the default now.
+    - now the static threads web server reports the CPU usage of each of its
+      threads.
+    - the HTTP response headers now include the netdata version
+  * dashboard:
+    - the print button now respects the URL path netdata is hosted.
+    - dygraphs updated to the latest version - this fixes an issue that
+      prevented netdata charts from being interactive under certain conditions
+    - added dygraph theme logscale
+    - fontawesome updated to version 5
+    - d3 updated to the latest version (this broke c3 charts that require an
+      older version)
+    - added d3pie charts
+    - custom dashboards can now have alarms for specific roles (all, none,
+      one or more).
+    - allow stacked charts to zoom vertically when dimensions are selected
+    - netdata now has a global XSS protection
+    - netdata now uses intersectionObserver when available - this improves the
+      scrolling performance of the dashboard.
+    - prevent date, time and units from wrapping at the charts legends
+    - various units scaling improvements
+    - added data-common-colors="NAME" chart option for custom dashboards
+    - added wiki page for creating custom dashboards on Atlassian's Confluence
+    - prevented a double click on the charts' toolbox to select the text of
+      the buttons.
+    - fixed the alignment of dashboard icons
+    - added a simple js, called refresh-badges.js, to update badges on a
+      custom web page
+  * badges:
+    - netdata badges can now be scaled
+  * API:
+    - added gtime parameter, for group time. This is used to request from
+      netdata to return values in a different rate (i.e. gtime=60 on a X/sec
+      dimension, will return X/min).
+    - fixed a rounding bug in JSON generation
+    - the dimensions= parameter now supports simple patterns and added option
+      values match-ids and match-names to control which matches are executed
+      for dimensions.
+  * alarms:
+    - "system.swap" alarms now send notifications with a 30 seconds delay,
+      to work-around a kernel bug that incorrectly reports all swap as
+      instantly used under containers
+    - added alarm to predict the time a mount point will run out of inodes
+    - added alerta.io notifications
+    - added available memory alarm
+    - removed unsupported html tags from hipchat notifications.
+    - pagerduty notifications have been modified to avoid incident duplication
+    - alarm definitions can now use both chart IDs and chart names (prior to
+      this version only chart IDs were allowed).
+    - curl options (eg for disabling SSL certificates verification) for
+      alarm-notify.sh can now be defined in health_alarm_notify.conf.
+    - netdata can now send notifications to IRC channels
+  * backends:
+    - on netdata masters, allow filtering the hosts that will be sent to
+      backends with send hosts matching = * pattern.
+    - improved connection error handling and added retries to allow netdata
+      connect to certain backends that failed with EALREADY or EINPROGRESS.
+    - json backends now receive host tags (the tags have to be formatted in a
+      json friendly way)
+    - re-worked the alarm that triggers when backend data are lost,
+      to avoid flip-flops.
+    - prometheus backends:
+      + added URL option timestamps=yes|no to /api/v1/allmetrics to support
+        prometheus Pushgateway
+      + added netdata_info variable with the version of netdata
+      + renamed netdata_host_tags to netdata_host_tags_info (the old exists
+        but is deprecated and will be removed eventually)
+      + when prometheus uses average metrics, netdata remembers the last
+        access time the prometheus collected metrics, on a per host basis.
+  * metrics streaming between netdata:
+    - netdata masters and proxies now expose the version of the netdata
+      collecting the metrics, not their own. So, now a netdata master shows
+      on the dashboard and sends to backends the version of the netdata
+      collecting the metrics
+    - added stream.conf option multiple "connections = accept | deny" to allow
+      or deny multiple connection for the same netdata host. The default
+      remains "accept", but it is likely to be changed to no on future
+      versions.
+  * other:
+    - added global option gap when lost iterations to control the number of
+      iterations that should be lost to show a gap on the charts.
+    - various fixes/improvements related to netdata logs - the main change is
+      that now netdata logs the thread name that logged the message, providing
+      helpful insights about the thread that complained.
+    - re-worked the exit procedure of netdata to allow it cleanup properly -
+      sometimes netdata was deadlocked during exit, waiting forever - now
+      netdata always exits promptly
+    - fixed compilation on ancient gcc versions
+    - netdata was always setting itself to the idle process scheduling
+      priority, even when it was configured to do otherwise. Fixed it.
+
+-------------------------------------------------------------------
+Sun Dec 17 22:47:20 UTC 2017 - 9@cirno.systems
+
+- Update to v1.9.0
+  * new features:
+    - IP address ACLs
+    - auto-scaling units (KB → MB → GB → TB etc.)
+    - dashboard snapshots for any timeframe/resolution
+    - detection of TCP overflows and dropped connections
+    - detection of redis background save failures
+    - export dashboards to PDF
+    - flock.com and kavenegar.com alarm notifications
+    - highlighting timeframes on all charts by holding Ctrl or Alt
+    - monitoring of couchdb, powerdns, beanstalkd and dnsdist
+    - monitoring of libvirt VMs
+    - new alarms:
+      1. too many tcp orphan sockets
+      2. tcp memory that detects that the tcp stack is under memory pressure
+         or close to giving memory errors
+      3. too many tcp connections (for kernels that do not support dynamic
+         allocation of connections)
+    - timezone support
+    - unit conversion (temperatures, time, etc.)
+  * fixes/improvements:
+    - better/faster dashboard scrolling
+    - python.d.plugin rewritten
+      + supports option autodetection_retry: SECONDS
+      + the new URL service disables certificates checks by default,
+        to allow self-signed certificates to work without configuration.
+    - streaming:
+      + netdata proxies with more than 100 slaves had a timing issue that
+        caused them to crash randomly on slave reconnects. Parts of the code
+        have been rewritten to get rid of the timing issue.
+      + netdata slaves and proxies now have a protection that ensures they will
+        never use 100% CPU, even if the master is misbehaving.
+      + expired orphaned hosts are now removed from the my-netdata menu of the
+        dashboard.
+      + streaming functions can now be monitored via access.log
+      + streaming now transfers alarm variables too
+    - web_log plugin
+      + custom regex now supports parsing hostnames and IPs
+      + now parses lines with error 408 (request timeout - these are a special
+        case, since the request has not received by the web server, so the log
+        line is incomplete)
+      + now properly parses resp_length with value
+    - disks under Linux are renamed using /dev/disk/by-label. An option has been
+      added at netdata.conf to also allow renaming based on /dev/disk/by-id.
+    - chrony is now disabled by default, because there have been reports that
+      chronyc enters an infinite loop in CentOS and RHEL.
+    - tomcat improvements to support flavors of the tomcat server
+    - chart system.io (the total system Disk I/O) is now calculated by
+      aggregating the reads and writes of all physical disks. The previous
+      system.io chart (that is based on pgpgin and pgpgout from /proc/vmstat)
+      is now named system.pgpgio. The key difference is that the new system.io
+      now sees ZFS I/O, and it also correctly and accurately sums the real disk
+      bandwidth of RAID arrays.
+    - chart system.net (the total system network bandwidth) is now calculated
+      by aggregating the bandwidth of all physical network interfaces and is
+      common for both IPv4 and IPv6.
+    - tc (QoS) charts now sort the dimensions on the legends, the same way tc
+      reports them.
+    - mysql (and mariadb) got new charts for galera replication
+    - postgres versions <= 10 the WAL directory was named pg_xlog' and from 10
+      upwards has been renamed to pg_wal
+    - freeipmi.plugin got a command line option (can be given in netdata.conf)
+      to ignore certain sensor IDs that are faulty.
+    - minor openvpn_log, smartd, smartd_log, varnish, mdstat, dns_query_time,
+      isc_dhcpd, freeradius and node.d.plugin fixes/improvements
+    - netdata now supports multiple plugin directories. The setting is the same
+      in netdata.conf, plugins directory = "DIRECTORY1" "DIRECTORY2" ...,
+      up to 20 directories.
+    - netdata now supports alarms variables. Each plugin can now define host
+      global and chart local variables with static values that can be used in
+      alarms' expressions.
+    - dashboard:
+      + hover selection of charts is now faster on all browsers
+      + the dashboard is now fixed when a modal is open, preventing scrolling
+      + the dashboard now uses fontawesome 5.0.1 for icons
+      + chart names can now be searched with browser control-F
+      + netdata now detects libvirt VM network interfaces and moves them to the
+        VM section of the dashboard
+      + now shows the context, resolution and plugin/module of each chart in
+        tooltips
+      + should now put a lot less CPU pressure on the browser when the page
+        does not have focus
+    - statsd:
+      + metrics can now be added to statsd synthetic charts using patterns
+      + dimensions added to statsd synthetic charts can automatically be renamed
+        using a dictionary
+      + timers and histograms now report zeros when nothing is collected
+    - badges:
+      + fixed a bug in netdata badges that was incorrectly matching zero values
+        with the null color condition
+      + added API option display_absolute to allow badges use the signed value
+        for color evaluation, but present the absolute value
+    - alarms/notifications:
+      + warning emails sent by netdata are now a little bit more orange
+        (they were a bit greenish)
+      + fixed a bug in email notifications that was triggering a corrupted MIME
+        match by anti-spam solutions
+      + pushbullet notifications now track the devices, so that per-device
+        filtering at pushbullet is possible. Also improved the formatting a bit.
+      + correct priority of warnings for pushover notifications
+      + alarms can now use variables like this:
+        ${variable with spaces or +, -, *, / in it}
+    - other:
+      + access.log has been refactored to support monitoring all netdata
+        operations
+      + inodes monitoring is now by default disabled for mount points based on
+        filesystems that do not have a maximum inode threshold (such as cephfs)
+      + rabbitmq has been added to apps_groups.conf so that apps.plugin now
+        monitors (cpu, memory, disk I/O, sockets, etc) rabbitmq instances
+      + several email and log management apps have been added to email and logs
+        targets of apps_groups.conf
+      + ceph target added to apps_groups.conf to allow netdata to monitor Ceph
+      + refactored several internal data collection plugins to eliminate a few
+        hundreds of index lookups per second
+      + netdata.conf settings that are loaded from disk, but were the same with
+        the default ones, were generated commented when the server was asked to
+        return its config. Now all loaded settings are generated uncommented.
+      + netdata simple patterns can now extract the the wildcarded part of the
+        string they match (used in statsd synthetic charts)
+      + netdata simple patterns can allow escaping spaces by prefixing them
+        with a backslash
+- Update netdata-smartd-log-path.patch
+- Remove netdata-main-return.patch (fixed upstream)
+- Fix rpmlint env-script-interpreter warnings
+
+-------------------------------------------------------------------
+Sun Sep 17 19:25:13 UTC 2017 - 9@cirno.systems
+
+- Add return statement to main function (-Wreturn-type)
+  * netdata-main-return.patch
+
+-------------------------------------------------------------------
+Sun Sep 17 17:40:14 UTC 2017 - 9@cirno.systems
+
+- Update to v1.8.0
+  * fixed bugs:
+    - streaming slaves consuming 100% CPU
+    - missing alarm notifications on netdata masters
+    - API generating corrupted JSON
+    - crashing when starting on systems without writable disks
+    - python.d.plugin URLService did not support HTTP keep-alive
+    - streamed charts with duplicate names
+  * netdata enhancements:
+    - netdata can now listen on UNIX domain sockets
+    - systemd netdata.service now allows setting negative netdata
+      OOM score and restarts netdata if it crashes
+  * new plugins:
+    - CPU thermal throttling charts
+    - chrony plugin
+    - Stiebel Eltron plugin to collect metrics from heat pumps and
+      hot water installations from Stiebel Eltron ISG
+  * improved plugins:
+    - web_log bugfixes, enhancements and optimizations
+      (including squid logs)
+    - web_log now enables parsing HTTP/2 logs in custom_log_format
+    - redis bugfixes
+    - haproxy bugfixes
+    - elasticsearch bugfixes and optimizations
+    - rabbitmq bugfixes and optimizations
+    - mdstat bugfixes
+    - tomcat improvements
+    - mysql improvements
+    - dovecot improvements
+    - postgres improvements
+    - cpufreq fixed a bug that prevented accurate reporting of
+      CPU frequencies.
+    - cpuidle performance improvements (faster under load)
+    - fail2ban bugfixes
+    - SNMP plugin new uses latest net-snmp and the corrupted 64-bit
+      counters encountered under certain node.js versions is fixed
+  * dashboard improvements:
+    - easypiecharts and gauges can now render arbitrary ranges and
+      animate clockwise or counterclockwise
+    - container network interfaces are now moved to the container
+      section
+    - containers and VMs now have summary gauges on the dashboard
+    - traditionally netdata was using 1024 bits = 1 kilobit.
+      It is fixed: 1000 bits = 1 kilobit.
+    - netdata charts should now work on wordpress pages
+  * alarms and notifications:
+    - alarm-notify.sh now supports debug mode, showing the exact
+      commands it runs to send notifications,
+      when export NETDATA_ALARM_NOTIFY_DEBUG=1
+    - alarm-notify.sh now supports setting the sender email address
+      of the emails it sends
+    - emails sent by alarm-notify.sh now include headers to reduce
+      the possibility of them being scored as spam
+    - network related alarms got new thresholds and improved badges
+    - netdata now detects if the system has been suspended and
+      pauses all alarms for 60 seconds on resume, to prevent false
+      alarms
+    - netdata alarms now support filtering based on hostname and OS
+    - slack notifications now show the host that sent the alarm
+  * statsd:
+    - the number of fractional points supported by statsd is now
+      configurable (1 to 7)
+    - fixed: 95th percentile calculation on statsd histograms and
+      timers was incorrectly averaging the values
+    - fixed: statsd metrics with non-ASCII text were processed by
+      the statsd server, but were breaking JSON data generated by
+      netdata
+
+-------------------------------------------------------------------
+Thu Jul 27 00:14:57 UTC 2017 - 9@cirno.systems
+
+- Add download_files _service
+- update source tarball to match upstream copy
+
+-------------------------------------------------------------------
+Sun Jul 16 19:43:41 UTC 2017 - 9@cirno.systems
+
+- Update to v1.7.0
+  * netdata is now a fully featured statsd server
+  * improved metrics streaming and replication
+  * backend enhancements, including:
+    - host tags and metrics filtering on the netdata side
+    - rewritten prometheus support to utilize more prometheus
+      features and provide more flexibility and integration options
+  * now monitors ZFS, ElasticSearch, RabbitMQ, Go applications
+    (via expvar), samba, squid logs (with web_log plugin).
+  * improved dashboard loading times
+  * custom hook support for alarms
+- Update netdata-smartd-log-path.patch
+
+-------------------------------------------------------------------
+Sat Jul 15 21:49:52 UTC 2017 - plinnell@opensuse.org
+
+- mention patches added in last commit
+  * add netdata-automake-no-dist-xz.patch
+  * add netdata-logrotate-su.patch
+  * add netdata-smartd-log-path.patch
+
+-------------------------------------------------------------------
+Sun Jul  9 14:08:26 UTC 2017 - 9@cirno.systems
+
+- Adjust default smartd log path to openSUSE default
+
+-------------------------------------------------------------------
+Mon Jun 26 22:00:42 UTC 2017 - 9@cirno.systems
+
+- Update dependencies
+  * Enable more features
+  * Add soft dependencies
+- Build on all enabled SUSE flavors
+- Improve package description
+- Use upstream .service/init.d/logrotate files (virtually identical)
+- Fix permissions
+- Clean up %install section (more readable)
+- spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 24 00:56:31 UTC 2017 - jengelh@inai.de
+
+- Do not suppress errors from user/group creation.
+- Trim sensationalist wording from description.
+  Replace -exec rm by just -delete.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:08:57 CEST 2017 - ndas@suse.de
+
+- Add netdata-rpmlintrc for spec file.
+- Fix url and source link.
+
+-------------------------------------------------------------------
+Thu Apr 20 22:39:33 UTC 2017 - benedikt@g5r.eu
+
+- Update to version 1.6.0
+- Add systemd unit, init script and logrotate config from netdata git repo
+
+-------------------------------------------------------------------
+Tue Jan 24 16:30:57 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.5.0 (see included ChangeLog)
+- Added netdata-rpmlintrc
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Jun 17 16:22:05 UTC 2016 - nirmoy.das@suse.com
+
+- Upgraded to 1.2.0 
+
+-------------------------------------------------------------------
+Fri Apr  1 14:19:18 UTC 2016 - nirmoy.das@suse.com
+
+- Initial package, version: 1.0.1 
+

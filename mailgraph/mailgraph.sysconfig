@@ -1,0 +1,47 @@
+## Path:        Network/Mail/mailgraph
+## Description: Basic configuration of the mail statistic grapher
+## Type:        string
+## Default:     "-d -v"
+## Config:      mailgraph
+#
+##  -v, --verbose      be verbose about what you do
+##  -c, --cat          causes the logfile to be only read and not monitored
+##  -y, --year         starting year of the log file (default: current year)
+##      --host=HOST    use only entries for HOST (regexp) in syslog
+##  -d, --daemon       start in the background
+##  --ignore-localhost ignore mail to/from localhost (used for virus scanner)
+##  --ignore-host=HOST ignore mail to/from HOST regexp (used for virus scanner)
+##  --only-mail-rrd    update only the mail rrd
+##  --only-virus-rrd   update only the virus rrd
+##  --rbl-is-spam      count rbl rejects as spam
+##  --virbl-is-virus   count virbl rejects as viruses
+#
+## for systemd there needs to be a [SPACE] before first option
+#
+MAILGRAPH_OPTS="-v"
+
+## Type:        string
+## Default:     "/var/run/mailgraph.pid"
+## Config:      daemon-pid
+MAILGRAPH_PID="/var/run/mailgraph.pid"
+
+## Type:        string
+## Default:     "/var/lib/mailgraph"
+## Config:      daemon-rrd
+MAILGRAPH_RRD="/var/lib/mailgraph"
+
+## Type:        string
+## Default:     "/var/log/mailgraph/mailgraph.log"
+## Config:      daemon-log
+MAILGRAPH_LOG="/var/log/mailgraph/mailgraph.log"
+
+## Type:        string
+## Default:     "/var/log/mail"
+## Config:      -l, --logfile f
+MAILGRAPH_LOG_FILE="/var/log/mail"
+
+## Type:        string(syslog,rsyslog,metalog)
+## Default:     "syslog"
+## Config:      -l, --logtype t
+MAILGRAPH_LOG_TYPE="syslog"
+

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Feb 19 11:30:05 UTC 2018 - aloisio@gmx.com
+
+- Update to stable version 1.0, see
+  https://github.com/lzfse/lzfse/commits/lzfse-1.0 for details
+
+- Dropped _service
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Dec 18 12:50:14 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.0+git.20161117:
+  * Update API export to work for CMake and MSVC
+  * Fix label error
+  * Fix 64-bit check for MSVC
+  * Add some tests to verify the build.
+  * Add Travis CI support.
+  * Add AppVeyor builds.
+  * Don't rely on unaligned accesses in the LZVN encoder.
+  * Get Visual Studio 12 working.
+  * Replace #pragma mark with // MARK:
+  * Add const to tables in lzfse_internal.h
+
+-------------------------------------------------------------------
+Wed Aug 10 09:09:49 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.0+git.20160802:
+  * Add extern declarations for linking into C++ code.
+  * Avoid pointer arithmetic on void pointers
+  * Implement GCC bit scan builtins for MSVC
+  * Fix issues related to use of __attribute__
+  * Implement jump table as switch for non-GCC
+  * Use ptrdiff_t instead of ssize_t
+  * Add MSVC fixes for timing and file access
+  * Set _POSIX_C_SOURCE to 200112L for gettimeofday
+  * Set binary mode on stdin/stdout on Windows
+  * Update API export to work for CMake and MSVC
+
+-------------------------------------------------------------------
+Mon Jul 11 15:41:16 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.0+git.20160620:
+  * Allow LZVN to work with inputs shorter than 8 bytes.
+  * Converted readme to markdown, added some further information and fixed description of two files being mixed up
+  * lzfse_fse.h: correctly detect 64-bit stream for debug macro
+  * typo
+  * Fix fse_normalize_freq() when passed alphabet with no used symbols
+  * reformatted LICENSE
+  * merged nemequ changes; fixed end of stream reservation size in LZVN partial encoder; fixed Xcode project with updated README.md file
+
+-------------------------------------------------------------------
+Mon Jul 11 15:40:52 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 0.0
+

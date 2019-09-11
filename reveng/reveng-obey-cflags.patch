@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 761612c..0925d85 100755
+--- a/Makefile
++++ b/Makefile
+@@ -23,7 +23,7 @@
+ 
+ # C compiler and flags.  Adjust to taste.
+ CC = gcc
+-CFLAGS = -O3 -Wall -ansi -fomit-frame-pointer
++CFLAGS += -O3 -Wall -ansi -fomit-frame-pointer
+ # Binary optimiser
+ STRIP = strip
+ SFLAGS = --strip-unneeded

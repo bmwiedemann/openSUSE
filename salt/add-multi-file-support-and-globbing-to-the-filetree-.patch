@@ -1,0 +1,116 @@
+From 671bb9d48e120c806ca1f6f176b0ada43b1e7594 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Fri, 12 Oct 2018 16:20:40 +0200
+Subject: [PATCH] Add multi-file support and globbing to the filetree
+ (U#50018)
+
+Add more possible logs
+
+Support multiple files grabbing
+
+Collect system logs and boot logs
+
+Support globbing in filetree
+---
+ salt/cli/support/intfunc.py           | 49 ++++++++++++++++-----------
+ salt/cli/support/profiles/default.yml |  7 ++++
+ 2 files changed, 37 insertions(+), 19 deletions(-)
+
+diff --git a/salt/cli/support/intfunc.py b/salt/cli/support/intfunc.py
+index 2727cd6394..f15f4d4097 100644
+--- a/salt/cli/support/intfunc.py
++++ b/salt/cli/support/intfunc.py
+@@ -6,6 +6,7 @@ Internal functions.
+ 
+ from __future__ import absolute_import, print_function, unicode_literals
+ import os
++import glob
+ from salt.cli.support.console import MessagesOutput
+ import salt.utils.files
+ 
+@@ -13,7 +14,7 @@ import salt.utils.files
+ out = MessagesOutput()
+ 
+ 
+-def filetree(collector, path):
++def filetree(collector, *paths):
+     '''
+     Add all files in the tree. If the "path" is a file,
+     only that file will be added.
+@@ -21,22 +22,32 @@ def filetree(collector, path):
+     :param path: File or directory
+     :return:
+     '''
+-    if not path:
+-        out.error('Path not defined', ident=2)
+-    else:
+-        # The filehandler needs to be explicitly passed here, so PyLint needs to accept that.
+-        # pylint: disable=W8470
+-        if os.path.isfile(path):
+-            filename = os.path.basename(path)
+-            try:
+-                file_ref = salt.utils.files.fopen(path)  # pylint: disable=W
+-                out.put('Add {}'.format(filename), indent=2)
+-                collector.add(filename)
+-                collector.link(title=path, path=file_ref)
+-            except Exception as err:
+-                out.error(err, ident=4)
+-        # pylint: enable=W8470
++    _paths = []
++    # Unglob
++    for path in paths:
++        _paths += glob.glob(path)
++    for path in set(_paths):
++        if not path:
++            out.error('Path not defined', ident=2)
++        elif not os.path.exists(path):
++            out.warning('Path {} does not exists'.format(path))
+         else:
+-            for fname in os.listdir(path):
+-                fname = os.path.join(path, fname)
+-                filetree(collector, fname)
++            # The filehandler needs to be explicitly passed here, so PyLint needs to accept that.
++            # pylint: disable=W8470
++            if os.path.isfile(path):
++                filename = os.path.basename(path)
++                try:
++                    file_ref = salt.utils.files.fopen(path)  # pylint: disable=W
++                    out.put('Add {}'.format(filename), indent=2)
++                    collector.add(filename)
++                    collector.link(title=path, path=file_ref)
++                except Exception as err:
++                    out.error(err, ident=4)
++            # pylint: enable=W8470
++            else:
++                try:
++                    for fname in os.listdir(path):
++                        fname = os.path.join(path, fname)
++                        filetree(collector, [fname])
++                except Exception as err:
++                    out.error(err, ident=4)
+diff --git a/salt/cli/support/profiles/default.yml b/salt/cli/support/profiles/default.yml
+index 01d9a26193..3defb5eef3 100644
+--- a/salt/cli/support/profiles/default.yml
++++ b/salt/cli/support/profiles/default.yml
+@@ -62,10 +62,17 @@ general-health:
+   - ps.top:
+       info: Top CPU consuming processes
+ 
++boot_log:
++  - filetree:
++      info: Collect boot logs
++      args:
++        - /var/log/boot.*
++
+ system.log:
+   # This works on any file system object.
+   - filetree:
+       info: Add system log
+       args:
+         - /var/log/syslog
++        - /var/log/messages
+ 
+-- 
+2.19.0
+
+

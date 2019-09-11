@@ -1,0 +1,12 @@
+diff -urN libreoffice-4.1.0.0.beta1.old/solenv/bin/modules/installer/worker.pm libreoffice-4.1.0.0.beta1/solenv/bin/modules/installer/worker.pm
+--- libreoffice-4.1.0.0.beta1.old/solenv/bin/modules/installer/worker.pm	2013-05-27 14:04:19.186304208 +0200
++++ libreoffice-4.1.0.0.beta1/solenv/bin/modules/installer/worker.pm	2013-05-27 15:10:46.283303732 +0200
+@@ -377,7 +377,7 @@
+             symlink (readlink ("$sourcepath"), "$destdir$destination") || die "Can't symlink $destdir$destination -> " . readlink ("$sourcepath") . "$!";
+         }
+         else {
+-            copy ("$sourcepath", "$destdir$destination") || die "Can't copy file: $sourcepath -> $destdir$destination $!";
++            link ("$sourcepath", "$destdir$destination") || die "Can't hardlink file: $sourcepath -> $destdir$destination $!";
+             my $sourcestat = stat($sourcepath);
+             utime ($sourcestat->atime, $sourcestat->mtime, "$destdir$destination");
+             chmod (oct($unixrights), "$destdir$destination") || die "Can't change permissions: $!";

@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Mon May 22 13:45:33 UTC 2017 - werner@suse.de
+
+- s/decrementieren/dekrementieren/ for german dictionary (boo#1039305)
+
+-------------------------------------------------------------------
+Tue Feb 28 13:50:05 UTC 2017 - werner@suse.de
+
+- Use modern regular expressions for character sets in lisp
+  declarations for the dictionaries
+
+-------------------------------------------------------------------
+Thu Feb 13 09:22:44 UTC 2014 - werner@suse.de
+
+- Update polish dictionary to version 20140102 (bnc#857026)
+
+-------------------------------------------------------------------
+Tue Apr 23 20:51:12 UTC 2013 - dimstar@opensuse.org
+
+- Assume SUSE-Permissive for dutch and catalan: there are no
+  License information available.
+
+-------------------------------------------------------------------
+Tue Nov  6 10:58:00 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  Use a license from the spreadsheet linked at http://license.opensuse.org
+
+-------------------------------------------------------------------
+Wed Oct 31 11:04:29 UTC 2012 - mvyskocil@suse.com
+
+- unify the permissions of all files, to make fdupes working again (bnc#784670)
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Fri Aug 19 18:35:24 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in descriptions of dicts.spec
+- Added missing part of ispell-french description
+
+-------------------------------------------------------------------
+Tue Mar 16 18:36:59 CET 2010 - werner@suse.de
+
+- Remove igerman98 as we have now an own package (bnc#547549)
+
+-------------------------------------------------------------------
+Fri Dec 25 11:00:52 UTC 2009 - coolo@novell.com
+
+- remove authors from descriptions
+- use fdupes on /usr/src/dicts
+
+-------------------------------------------------------------------
+Mon Oct 19 17:12:04 CEST 2009 - werner@suse.de
+
+- Update igerman98 (bnc#547549)
+
+-------------------------------------------------------------------
+Fri Feb 13 01:08:42 CET 2009 - ro@suse.de
+
+- add rpmlintrc README.orig is explicitly wanted with that name
+
+-------------------------------------------------------------------
+Fri Jun 27 14:14:19 CEST 2008 - werner@suse.de
+
+- No Brazilian dict for Portuguese (bnc#404193)
+
+-------------------------------------------------------------------
+Wed Nov 28 14:48:44 CET 2007 - werner@suse.de
+
+- Make (x)emacs known about utf-8 encoding (Thanks Mario Natiello
+  for reported this).
+
+-------------------------------------------------------------------
+Thu Nov  8 13:37:34 CET 2007 - werner@suse.de
+
+- Emacs 22 does not accept ranges for 8bit characters (bug #339781)
+
+-------------------------------------------------------------------
+Mon May 15 15:51:51 CEST 2006 - werner@suse.de
+
+- Remove Slovak locale from Slovene ispell dict
+
+-------------------------------------------------------------------
+Fri Apr 21 15:20:01 CEST 2006 - werner@suse.de
+
+- Map nswiss to de_CH locale only (bug #168292)
+
+-------------------------------------------------------------------
+Wed Apr 12 17:31:28 CEST 2006 - werner@suse.de
+
+- Add to all languages an UTF-8 formatter if missed
+
+-------------------------------------------------------------------
+Wed Mar 29 16:09:33 CEST 2006 - werner@suse.de
+
+- Add locale provides (bug #161478)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul  1 13:48:54 CEST 2005 - werner@suse.de
+
+- Make it build-root and no norootforbuild
+
+-------------------------------------------------------------------
+Mon Dec 20 15:43:51 CET 2004 - werner@suse.de
+
+- The hash table ondisk format of the language files depend on the
+  architecture (little/big endiannes, pointer size) (bug #49407)
+- Add finnish dictionary
+- Add estinian dictionary
+
+-------------------------------------------------------------------
+Fri Mar 05 14:21:01 CET 2004 - ltinkl@suse.cz
+
+- updated the Czech ispell dict to the current version
+
+-------------------------------------------------------------------
+Tue Apr  8 17:18:47 CEST 2003 - werner@suse.de
+
+- Use `-k' option of sort
+
+-------------------------------------------------------------------
+Wed Mar  5 16:50:40 CET 2003 - ro@suse.de
+
+- fixed typo in specfile 
+
+-------------------------------------------------------------------
+Wed Mar  5 12:43:18 CET 2003 - werner@suse.de
+
+- Add rudimentary UTF-8 support for old deutsch dict
+
+-------------------------------------------------------------------
+Tue Jan 14 11:24:54 CET 2003 - werner@suse.de
+
+- Fix wrong order of mkdir and install call in igerman98
+
+-------------------------------------------------------------------
+Mon Dec 16 18:52:57 CET 2002  - werner@suse.de
+
+- Update to igerman98-20021114
+
+-------------------------------------------------------------------
+Wed Aug 14 18:37:10 CEST 2002 - werner@suse.de
+
+- Add brazilian dicts (bug #17694)
+
+-------------------------------------------------------------------
+Wed Jul 31 11:30:04 CEST 2002 - werner@suse.de
+
+- Update ispell-czech to 20020628
+
+-------------------------------------------------------------------
+Tue Jul 30 18:57:29 CEST 2002 - werner@suse.de
+
+- Rename package doc directories (bug #15804)
+
+-------------------------------------------------------------------
+Thu Apr 18 16:17:51 CEST 2002 - ro@suse.de
+
+- rename espanol tarball (wget does not like this name) 
+
+-------------------------------------------------------------------
+Wed Feb 20 14:53:54 CET 2002 - werner@suse.de
+
+- Avoid circular depndencies (bug #13609)
+
+-------------------------------------------------------------------
+Wed Feb 13 16:59:01 CET 2002 - werner@suse.de
+
+- Move all gziped tar's to bzip2
+- Correct tar uncompress option for bzip2
+
+------------------------------------------------------------------
+Thu Jan 24 13:44:34 CET 2002 - cihlar@suse.cz
+
+- Update of czech
+
+-------------------------------------------------------------------
+Tue Jan 22 19:44:44 CET 2002 - egmont@suselinux.hu
+
+- Rename packages to ispell-<language>
+
+-------------------------------------------------------------------
+Fri Sep 14 11:36:35 CEST 2001 - werner@suse.de
+
+- Update rus-ispell due to the much better Licence
+- Update of norsk and czech
+
+-------------------------------------------------------------------
+Thu Apr 19 11:31:38 CEST 2001 - werner@suse.de
+
+- Use LC_TYPE during sort for igerman and iswiss
+- At sort: use only characters between beginning and flag mark
+
+-------------------------------------------------------------------
+Sat Apr 14 20:52:29 CEST 2001 - bjacke@suse.de
+
+- updated new german dictionary
+- drop med-size of ingerman because it's useless
+
+-------------------------------------------------------------------
+Fri Mar 23 11:39:26 CET 2001 - werner@suse.de
+
+- Add some aliases for catala and espanol mainly for lyx
+
+-------------------------------------------------------------------
+Mon Dec 18 19:53:55 CET 2000 - werner@suse.de
+
+- Update of ispell-czech
+
+-------------------------------------------------------------------
+Wed Oct  4 18:52:51 CEST 2000 - werner@suse.de
+
+- Added conflict with frgutenb
+- Move to NOARCH
+
+-------------------------------------------------------------------
+Mon Jun  5 17:43:49 MEST 2000 - uli@suse.de
+
+- moved docs to /usr/share/doc
+
+-------------------------------------------------------------------
+Fri Feb 25 21:22:46 CET 2000 - werner@suse.de
+
+	- Add german accordingly to the new german spelling rules
+	- Add swiss german
+
+-------------------------------------------------------------------
+Sun Oct 17 22:08:10 CEST 1999 - werner@suse.de
+
+	- Add slovene
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------
+Mon Sep 20 18:07:18 CEST 1999 - ro@suse.de
+
+- added provides ispell_dictionary for subpackages
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Apr 16 00:00:14 CEST 1999 - werner@suse.de
+
+	- Add esperanto
+	- Russian: multiple other character are allowd during
+	  ispell session in emacs
+
+-------------------------------------------------------------------
+Wed Apr 14 23:53:39 CEST 1999 - werner@suse.de
+
+	- Add greek and russian
+
+-------------------------------------------------------------------
+Tue Apr 13 23:35:45 CEST 1999 - werner@suse.de
+
+	- Add czech and polish
+
+-------------------------------------------------------------------
+Mon Mar  8 20:26:33 MET 1999 - werner@suse.de
+
+	- Last clean up
+
+-------------------------------------------------------------------
+Fri Mar  5 18:56:38 MET 1999 - werner@suse.de
+
+	- Update danish and swedish
+	- Change source of norsk
+	- Add portugues, catalan
+
+-------------------------------------------------------------------
+Thu Mar  4 23:42:32 MET 1999 - werner@suse.de
+
+	- Preparing for a better (x)emacs interface: Use the new
+	  emacs lisp interface of the package ispell to create the
+	  spell menus modular on the fly in both emacs and xemacs
+	  Edit pulldown.
+
+-------------------------------------------------------------------
+Fri Nov 13 11:43:12 MET 1998 - bs@suse.de
+
+- fixed double %description
+
+-------------------------------------------------------------------
+Thu Nov 12 14:53:52 MET 1998 - bs@suse.de
+
+- fixed spec file for new rpm
+
+-------------------------------------------------------------------
+Mon Mar  9 17:01:08 MET 1998 - werner@suse.de
+
+- renamed ifrensh to ifrench
+
+-------------------------------------------------------------------
+Tue Feb 10 00:10:56 MET 1998 - werner@suse.de
+
+	- Update of frensh
+	- Add some languages:
+	   * German       (hk2-deutsch)
+	   * Danish       (idanish-1.2)
+	   * Spanish      (espa~nol-1.5)
+	   * French       (francais-IREQ-1.4)
+	   * Italian      (pre-alpha version)
+	   * Dutch        (dutch96/dutch96.aff 1.1)
+	   * Swedish      (iswedish-1.2)
+	   * Norwegian    (norsk)
+
+-------------------------------------------------------------------
+Wed Feb  4 11:42:49 MET 1998 - ro@suse.de
+
+- generated spec file 
+
+-------------------------------------------------------------------
+Thu Feb  6 21:23:19 MET 1997 - werner@suse.de
+
+	- hk2-deutsch integrated
+
+

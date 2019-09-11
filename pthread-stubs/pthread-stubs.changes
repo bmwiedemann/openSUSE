@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Mar 15 09:51:54 UTC 2017 - sndirsch@suse.com
+
+- release 0.4
+  * This new release stops providing stubs, but instead expects
+    libc to do so. On platforms where this is not the case, 
+    "-pthread" is injected via our pkg-config file instead. This
+    was done to make loading libpthread (indirectly) via dlopen()
+    work correctly in the presence of pthread-stubs.
+
+-------------------------------------------------------------------
+Wed Apr 30 15:04:05 UTC 2014 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Thu Apr 24 21:14:25 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Created package pthread-stubs with initial version 0.3
+

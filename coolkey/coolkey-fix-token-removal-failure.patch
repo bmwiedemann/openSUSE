@@ -1,0 +1,86 @@
+Fix insertion/removal detection
+
+pcsc now errors out of the SCardGetStatusChange call with
+SCARD_E_UNKNOWN_READER if any of the passed readers aren't known.
+This includes readers that were very recently forgotton about because
+a user just disconnected them.
+
+(See
+ http://anonscm.debian.org/viewvc/pcsclite/trunk/PCSC/src/winscard_clnt.c?r1=5858&r2=5881
+for the change to pcsc)
+
+Unfortunately, this means SECMOD_WaitForAnyTokenEvent will fail with a
+SC_NO_EVENT error if a user removes their smartcard at the wrong time.
+
+This patch changes coolkey to detect removed readers before calling
+SCardGetStatusChange, so that it can handle the removal itself.
+
+diff -up coolkey-1.1.0/src/coolkey/slot.cpp.fix coolkey-1.1.0/src/coolkey/slot.cpp
+--- coolkey-1.1.0/src/coolkey/slot.cpp.fix	2013-05-22 16:23:41.728846957 -0400
++++ coolkey-1.1.0/src/coolkey/slot.cpp	2013-05-22 17:09:59.813958927 -0400
+@@ -279,24 +279,22 @@ SlotList::updateReaderList()
+      * don't recognize.
+      */
+ 
+-    /* first though, let's check to see if any previously removed readers have 
+-     * come back from the dead. If the ignored bit has been set, we do not need
+-     * it any more.
+-    */
++    /* Iterate through all the readers to see if we need to make unavailable any
++     * freshly removed readers. Also, see if any previously removed
++     * readers have come back from the dead and don't need to be ignored.
++     */
+ 
+     const char *curReaderName = NULL;
+     unsigned long knownState = 0;
+     for(int ri = 0 ; ri < numReaders; ri ++)  {
+-       
+         knownState = CKYReader_GetKnownState(&readerStates[ri]);
+-        if( !(knownState & SCARD_STATE_IGNORE))  {
+-            continue;
+-        }
+- 
++
+         curReaderName =  CKYReader_GetReaderName(&readerStates[ri]); 
+         if(readerNameExistsInList(curReaderName,&readerNames)) {
+             CKYReader_SetKnownState(&readerStates[ri], knownState & ~SCARD_STATE_IGNORE); 
+-                 
++        } else {
++            if (!(knownState & SCARD_STATE_UNAVAILABLE))
++                CKYReader_SetKnownState(&readerStates[ri], knownState | SCARD_STATE_UNAVAILABLE | SCARD_STATE_CHANGED);
+         }
+     } 
+ 
+@@ -1238,6 +1236,32 @@ SlotList::waitForSlotEvent(CK_FLAGS flag
+ 	    throw;
+ 	}
+ 
++	/* Before round-tripping to the daemon for the duration of the
++	 * timeout, first see if we lost any readers, and pick a slot
++	 * from that set to return
++	 */
++	for (i=0; i < numReaders; i++) {
++	    unsigned long knownState = CKYReader_GetKnownState(&readerStates[i]);
++
++	    if ((knownState & SCARD_STATE_UNAVAILABLE) &&
++		(knownState & SCARD_STATE_CHANGED)) {
++		CKYReader_SetKnownState(&readerStates[i], knownState & ~SCARD_STATE_CHANGED);
++		readerListLock.releaseLock();
++		*slotp = slotIndexToID(i);
++		found = TRUE;
++		break;
++	    }
++	}
++
++	if (found) {
++	    break;
++	}
++
++	if (shuttingDown) {
++	    readerListLock.releaseLock();
++	    break;
++	}
++
+ 	if (myNumReaders != numReaders) {
+ 	    if (myReaderStates) {
+ 		delete [] myReaderStates;

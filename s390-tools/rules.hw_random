@@ -1,0 +1,2 @@
+# Rules to add hw_random node to maintain SLES11-SP1 backward compatibility
+KERNEL=="hwrng", SYMLINK+="hw_random"

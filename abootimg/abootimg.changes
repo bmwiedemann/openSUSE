@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sat Feb  6 11:38:12 UTC 2016 - mpluskal@suse.com
+
+- Use optflags when building
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 17 11:55:41 UTC 2012 - joop.boonen@opensuse.org
+
+- Corrected the license as it's both GPL-2.0+ and Apache-2.0 
+
+-------------------------------------------------------------------
+Fri Aug 31 13:53:41 UTC 2012 - joop.boonen@opensuse.org
+
+- Make clean as a binary already exists in the tarball
+- Added missing BuildRequires pkgconfig(blkid)
+
+-------------------------------------------------------------------
+Mon Aug 27 12:27:24 UTC 2012 - joop.boonen@opensuse.org
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Mon Jul 23 20:15:48 UTC 2012 - sleep_walker@suse.cz
+
+- fix permissions
+
+-------------------------------------------------------------------
+Mon Jul 23 18:59:25 UTC 2012 - sleep_walker@suse.cz
+
+- let there be abootimg!
+
+-------------------------------------------------------------------
+Mon Jul 23 14:01:23 UTC 2012 - sleep_walker@suse.cz
+
+- let there be abootimg!
+

@@ -1,0 +1,93 @@
+Subject: use openssl for sha1
+Upstream: no
+
+Index: libdiscid-0.6.2/Makefile.am
+===================================================================
+--- libdiscid-0.6.2.orig/Makefile.am
++++ libdiscid-0.6.2/Makefile.am
+@@ -33,7 +33,7 @@ pc_DATA = libdiscid.pc
+ 
+ discid_incdir = $(includedir)/discid
+ discid_inc_HEADERS = include/discid/discid.h
+-noinst_HEADERS = include/discid/discid_private.h src/base64.h src/sha1.h
++noinst_HEADERS = include/discid/discid_private.h src/base64.h
+ noinst_HEADERS += test/test.h src/unix.h src/ntddcdrm.h
+ 
+ 
+@@ -71,7 +71,7 @@ endif
+ 
+ lib_LTLIBRARIES = libdiscid.la
+ 
+-libdiscid_la_SOURCES = src/base64.c src/sha1.c src/disc.c
++libdiscid_la_SOURCES = src/base64.c src/disc.c
+ 
+ # use a (well defined) version number, rather than version-info calculations
+ libdiscid_la_LDFLAGS = -version-number @libdiscid_VERSION_LT@ -no-undefined
+@@ -95,6 +95,7 @@ if OS_GENERIC
+ libdiscid_la_SOURCES += src/disc_generic.c
+ endif
+ if OS_LINUX
++libdiscid_la_LIBADD  += -lcrypto
+ libdiscid_la_SOURCES += src/toc.c src/unix.c src/disc_linux.c
+ endif
+ #if OS_QNX
+Index: libdiscid-0.6.2/src/disc.c
+===================================================================
+--- libdiscid-0.6.2.orig/src/disc.c
++++ libdiscid-0.6.2/src/disc.c
+@@ -33,8 +33,8 @@
+ #include <string.h>
+ #include <assert.h>
+ #include <limits.h>
++#include <openssl/evp.h>
+ 
+-#include "sha1.h"
+ #include "base64.h"
+ 
+ #include "discid/discid.h"
+@@ -361,31 +361,35 @@ char *discid_get_version_string(void) {
+  * The DiscID is placed in the provided string buffer.
+  */
+ static void create_disc_id(mb_disc_private *d, char buf[]) {
+-	SHA_INFO	sha;
+-	unsigned char	digest[20], *base64;
+-	unsigned long	size;
++	unsigned char	*base64;
++	unsigned long 	size;
++	unsigned char	digest[EVP_MAX_MD_SIZE];
+ 	char		tmp[17]; /* for 8 hex digits (16 to avoid trouble) */
+ 	int		i;
++    EVP_MD_CTX 	*sha;
++	unsigned int 	sha_len;
+ 
+ 	assert(d != NULL);
+ 	assert(d->success);
+ 
+-	sha_init(&sha);
++	sha = EVP_MD_CTX_create();
++	EVP_DigestInit_ex(sha, EVP_sha1(), NULL);
+ 
+ 	sprintf(tmp, "%02X", d->first_track_num);
+-	sha_update(&sha, (unsigned char *) tmp, strlen(tmp));
++	EVP_DigestUpdate(sha, (unsigned char *) tmp, strlen(tmp));
+ 
+ 	sprintf(tmp, "%02X", d->last_track_num);
+-	sha_update(&sha, (unsigned char *) tmp, strlen(tmp));
++	EVP_DigestUpdate(sha, (unsigned char *) tmp, strlen(tmp));
+ 
+ 	for (i = 0; i < 100; i++) {
+ 		sprintf(tmp, "%08X", d->track_offsets[i]);
+-		sha_update(&sha, (unsigned char *) tmp, strlen(tmp));
++		EVP_DigestUpdate(sha, (unsigned char *) tmp, strlen(tmp));
+ 	}
+ 
+-	sha_final(digest, &sha);
+-
+-	base64 = rfc822_binary(digest, sizeof(digest), &size);
++	EVP_DigestFinal_ex(sha, digest, &sha_len);
++	EVP_MD_CTX_destroy(sha);
++ 
++	base64 = rfc822_binary(digest, sha_len , &size);
+ 
+ 	memcpy(buf, base64, size);
+ 	buf[size] = '\0';

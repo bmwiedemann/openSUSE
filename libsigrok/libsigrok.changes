@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Sun Oct 14 21:57:40 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.5.1
+  * New supported hardware:
+    + Logic analyzers: DreamSourceLab DSLogic Basic/Plus, Hantek 4032L,
+      IPDBG (ipdbg.org FPGA IP debugger), Meilhaus Logian-16L,
+      Saleae Logic Pro 16, ZEROPLUS Logic Cube LAP-C (16128+) / LAP-16032U
+    + Oscilloscopes: Agilent MSO7034A, Hantek DSO-2250, Rigol DS4000 series,
+      Siglent SDS1000/SDS2000 series
+    + Programmable power supplies: GW Instek GPD series,
+      HP 6631B/66332A/6633B/6634B, Korad KD3005P, RDTech DPS/DPH series,
+      Rigol DP711/DP712, RND KA3005P, Tenma 72-2540
+    + Electronic loads: ZKETECH EBD-USB
+    + Multimeters: EEVblog 121GW, Fluke 45, HP 3478A, MASTECH MS8250D,
+      Metex M-3860M, PeakTech 4390A, SparkFun 70C,
+      Victor DMMs with Mini-USB connector, Voltcraft VC-96
+  * Various fixes and improvements
+  * The API and ABI is backwards compatible with 0.5.0
+  * Move COPYING from devel to data subpackage, tag as %license
+
+-------------------------------------------------------------------
+Sat Jul  1 14:28:50 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Remove Obsoletes: libsigrok3. Obsoletes implies a conflict, so
+  there is no way in rpm to trigger deinstalation of deprecated
+  shared library packages.
+
+-------------------------------------------------------------------
+Sun Jun 18 19:33:16 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add Recommends: sigrok-firmware-fx2lafw
+  The fx2lafw is required for many USB logic analyzers, while
+  most other devices have a persistent firmware
+
+-------------------------------------------------------------------
+Wed Jun 14 17:17:56 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Delete obsolete fix_unknown_types_declarations.diff (openSUSE <= 13.1)
+
+-------------------------------------------------------------------
+Tue Jun 13 20:06:44 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.5.0
+  * New supported hardware:
+    - Logic analyzers:
+      - CWAV USBee ZX
+      - DreamSourceLab DSLogic and DSLogic Pro
+      - FTDI LA (simple, limited logic analyzer using FTDI chips directly)
+    - Oscilloscopes:
+      - Hameg HMO3524
+      - Hantek 6022BE
+      - LeCroy X-Stream series
+      - Rigol DS1074Z Plus
+      - Rigol DS1104Z Plus
+      - Rigol MSO2000A series
+      - Rocktech BM102
+      - Rohde&Schwarz HMO 1002
+      - Sainsmart DDS120
+    - Logic analyzers / oscilloscopes (but not MSOs):
+      - Hantek 6022BL
+    - Programmable power supplies:
+      - Agilent N5763A
+      - HP 6633A
+      - Rohde&Schwarz HMC8043
+    - Electronic loads:
+      - Arachnid Labs Re:load Pro
+    - Multimeters:
+      - Agilent U1241C/U1242C
+      - Fluke 289
+      - HP 3457A
+      - Keysight U1281/U1282
+      - Metrix MX56C
+      - PeakTech 3330
+    - Sound level meters:
+      - PCE PCE-322A
+    - LCR meters:
+      - PeakTech 2170
+    - Signal generators:
+      - Rohde&Schwarz SME0x series
+  * IANA registered mimetype: vnd.sigrok.session
+  * Bump soversions (libsigrok4, libsigrokcxx4)
+
+-------------------------------------------------------------------
+Mon Oct 24 14:29:59 UTC 2016 - jengelh@inai.de
+
+- Update summaries and descriptions
+
+-------------------------------------------------------------------
+Sat Oct 22 13:11:05 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add application/x-sigrok-dump mimetype and corresponding icons
+  to data subpackage
+
+-------------------------------------------------------------------
+Sun Apr 17 17:36:03 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add MM_DEVICE_IGNORE udev flag for all devices supported by libsigrok
+
+-------------------------------------------------------------------
+Sat Jan 30 12:05:22 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.4.0
+  * New supported hardware:
+    - Logic analyzers:
+      - AKIP-9101
+      - BeagleLogic
+      - LeCroy LogicStudio
+      - mcupro Logic16 clone
+      - Pipistrello OLS
+      - SysClk LWLA1016
+    - Oscilloscopes
+      - Rigol/Agilent DS1000Z series
+      - Yokogawa DLM2000 series
+      - Yokogawa DL9000 series
+      - Hung-Chang DSO-2100
+      - GW Instek GDS-800
+    - Multimeters
+      - Agilent U1241A/B
+      - Agilent U1242A/B
+      - Brymen BM25x series
+      - MASTECH MS8250B
+      - Metrahit 16T/16U/KMM2002
+      - PeakTech 3415
+      - Tenma 72-7730/72-7732/72-9380A
+      - Testo 435-4
+      - UNI-T UT372
+      - UNI-T UT71A/B/C/D/E
+      - Velleman DVM4100
+      - Voltcraft VC-870/VC-920/VC-940/VC-960
+      Programmable power supplies
+      - Fluke/Philips PM2800 series
+      - HP 663xx series
+      - Manson HCS-3xxx series
+      - Motech LPS-30x series
+      - Rigol DP800 series
+      - Korad KAxxxxP series (a.k.a Velleman LABPS3005D and others)
+    - AC/DC sources
+      - Agilent N5700A series (DC sources)
+      - Chroma 61600 series (AC sources)
+      - Chroma 62000 series (DC sources)
+    - Electronic loads
+      - Maynuo M97 (and compatibles)
+    - LCR meters
+      - DER EE DE-5000
+    - Scales
+      - KERN EW 6200-2NM
+    - BeagleBone Black capes
+      - BayLibre ACME (revA and revB)
+
+-------------------------------------------------------------------
+Sat Oct  3 01:36:52 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- fix build on openSUSE 13.1
+  * Add fix_unknown_types_declarations.diff
+- require libsigrok from libsigrokcxx with same version
+- update source from GIT
+
+-------------------------------------------------------------------
+Fri Sep 25 03:51:58 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Track GIT version (upcoming 0.4.0)
+  * build C++ binding (libsigrokcxx), needed for pulseview
+
+-------------------------------------------------------------------
+Wed Aug  6 15:55:52 UTC 2014 - dmitry_r@opensuse.org
+
+- Move udev rules to libsigrok-data due to SLPP
+
+-------------------------------------------------------------------
+Mon Jun  2 18:50:49 UTC 2014 - bugs@vdm-design.de
+
+- Sync spec file with libsigrok.spec from rmax
+
+-------------------------------------------------------------------
+Fri May 30 09:07:45 UTC 2014 - bugs@vdm-design.de
+
+- Update to version 0.3.0
+  * New supported hardware:
+    - Logic analyzers: 
+      - ChronoVu LA16
+      - Sysclk LWLA1034
+    - Oscilloscopes:
+      - Agilent DSO1000 series
+      - Hameg HMO compact series
+      - Rigol DS2000 series
+      - Rigol VS5000 series
+    - Multimeters:
+      - BBC Goerz Metrawatt M2110
+      - Brymen BM869
+      - Fluke 189
+      - Gossen Metrawatt MetraHIT 1x/2x series
+      - Tenma 72-7745/72-7750 (rebadged UNI-T UT60E/UT60G)
+      - UNI-T UT60G/UT61B/UT61C
+      - V&A VA40B
+      - Voltcraft M-3650CR/ME-42
+    - Thermometers:
+      - APPA 55II
+    - Programmable power supplies:
+      - Atten PPS3000 series
+      - Conrad DIGI 35 CPU
+  * Most important changes:
+    - We added support for channel groups (multiple channels of the device, that share some properties and are configured together).
+    - There's a generic SCPI backend now that drivers can use, supporting various transports: serial ports, USBTMC, TCP/RAW, TCP/Rigol, VXI, and librevisa.
+    - The session file format (*.sr) has changed and its version was bumped to 2.
+    - There's improved Windows support now for serial port and USB based devices, though it's partially still experimental! Please checkout the current list of known Windows issues, since there are some problems e.g. with the popular FX2 based devices (bug #343) and the Openbench Logic Sniffer (bug #205). Feedback, bug reports and patches are highly welcome!
+    -Various API improvements were also done, to allow for some of the new features and to ease future extendability. You can take a look at the API docs for more details.
+
+-------------------------------------------------------------------
+Mon Dec 16 09:16:23 UTC 2013 - bugs@vdm-design.de
+
+- Update to version 0.2.2
+ * New supported hardware:
+   - Logic analyzers:
+     - Saleae Logic16
+   - Thermometers:
+     - Center 309
+     - UNI-T UT325
+     - Voltcraft K204
+   - Multimeters:
+     - ISOTECH IDM103N
+     - Metex M-4650CR
+     - Norma DM950
+     - Voltcraft M-4650CR
+   - Energy meters:
+     - EDF Teleinfo
+ * New config keys:
+   - SR_CONF_VOLTAGE_THRESHOLD
+   - SR_CONF_EXTERNAL_CLOCK
+   - SR_CONF_SWAP
+   - SR_CONF_ENERGYMETER
+ * New config info types:
+   - SR_T_DOUBLE_RANGE
+ * New units:
+   - SR_UNIT_REVOLUTIONS_PER_MINUTE
+   - SR_UNIT_VOLT_AMPERE
+   - SR_UNIT_WATT
+   - SR_UNIT_WATT_HOUR
+ * New input modules:
+   - csv (comma-separated values)
+ * Bump required libzip version to >= 0.10.
+ * uni-t-dmm: This driver now requires the specification of the USB VID/PID
+   of the cable that is used. Example for sigrok-cli:
+    - Old: sigrok-cli --driver voltcraft-vc820 ...
+    - New: sigrok-cli --driver voltcraft-vc820:conn=1a86.e008 ...
+ * openbench-logic-sniffer:
+   - Initial test pattern support (SR_CONF_PATTERN_MODE).
+   - Initial external clock support (SR_CONF_EXTERNAL_CLOCK).
+   - Initial channel swap support (SR_CONF_SWAP).
+   - Various minor fixes and improvements.
+ * When a frontend adds a device instance to a running session, start
+   acquisition on it. This helps with the collectd use-case where devices
+   can be removed and added dynamically while a session is running.
+ * rigol-ds1xx2: Support newer Linux kernels with USBTMC in /sys/class/usbmisc.
+ * rigol-ds1xx2: Also detect the Rigol DS1152E/DS1152D.
+ * agilent-dmm: Fix a segfault happening in certain cases.
+ * output/analog: Support all currently known MQFLAGs.
+ * Fix a minor compile issue due to an incorrect #include.
+ * Fix two compile issues on FreeBSD (bug #185).
+ * es519xx: New generic parser for various Cyrustek DMM ICs.
+ * es51922/fs9721/fs9922/metex14: Use diode MQFLAG (bug #141).
+ * voltcraft-vc830: Fix diode mode handling (bug #142).
+ * Add the missing HACKING file to the tarball.
+ * README.devices: Updates/notes for newly added devices. 
+
+-------------------------------------------------------------------
+Sun Aug 11 16:04:01 UTC 2013 - bugs@vdm-design.de
+
+- Update to version 0.2.1
+ * New supported hardware:
+   - Logic analyzers:
+     - IKALOGIC Scanalogic-2
+     - IKALOGIC ScanaPLUS
+   - Sound level meters:
+     - CEM DT-8852
+     - Kecheng KC-330B
+   - Multimeters:
+     - UNI-T UT60A
+     - UNI-T UT60E
+     - Voltcraft M-3650D
+     - Voltcraft VC-830
+ * Drop the Tecpel DMM-8060 (doesn't have PC connectivity).
+ * New config keys:
+   - SR_CONF_SPL_WEIGHT_FREQ
+   - SR_CONF_SPL_WEIGHT_TIME
+   - SR_CONF_SPL_MEASUREMENT_RANGE
+   - SR_CONF_HOLD_MIN
+   - SR_CONF_HOLD_MAX
+   - SR_CONF_POWER_OFF
+   - SR_CONF_DATA_SOURCE
+ * New config info types:
+   - SR_T_UINT64_RANGE
+ * New error codes:
+   - SR_ERR_TIMEOUT
+ * Always link against libm, the math library (bug #115).
+ * Fix a bug in sr_si_string_u64() at al (bug #73).
+ * output/csv: Fix incorrect probe order.
+ * alsa: Fix a double-free issue (bug #129).
+ * zeroplus-logic-cube: Fix a bug in the driver cleanup code.
+ * ikalogic-scanalogic2: Use GET_REPORT (bug #130).
+ * uni-t-dmm: Fix a bug breaking the UNI-T UT61E (bug #136).
+ * Various internal consistency fixes and code cleanups.
+ * Improved Doxygen documentation.
+ * Fixed various memory leaks.
+
+-------------------------------------------------------------------
+Wed Jan 30 17:09:27 UTC 2013 - max@suse.com
+
+- Install udev rules to give local users access to sigrok devices.
+
+-------------------------------------------------------------------
+Wed Jan 16 15:02:09 UTC 2013 - max@suse.com
+
+- Initial build from cvs.
+

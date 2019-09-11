@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Jun  2 08:09:38 UTC 2017 - thipp@suse.de
+
+- Use full tarball and include %doc section 
+
+-------------------------------------------------------------------
+Fri Apr 28 17:58:54 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Only package and build golang.org/x/net/websocket. Otherwise, we were creating
+  a "dependency cycle" because we were building golang.org/x/net which depends
+  on golang.org/x/text, which depends on golang.org/x/tools, which depends on
+  golang.org/x/net/websocket, which will try to build golang.org/x/net.
+
+- Update to version 0.0.0+git20170424.da118f7:
+  * websocket: handle solicited and unsolicited Ping/Pong frames correctly
+  * websocket: don't send IPv6 zone identifier in outbound request, per RFC 6874
+  * websocket: Be explicit about goroutine safety
+  * websocket: remove redundant error handling
+  * websocket: fix Read behaviour in hybiFrameReader.Read
+  * websocket: use net.Dialer to open tcp connection
+  * websocket: limit incoming payload size
+  * websocket: use of crypto/rand package in test
+  * websocket: drop support for go1.4 or below
+  * websocket: mention the gorilla package
+
+-------------------------------------------------------------------
+Tue Feb 28 11:02:10 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170227.906cda9:
+  * publicsuffix: update table to latest list from publicsuffix.org
+  * internal/netreflect: don't build on go1.9 or above
+  * lif: drop support for go1.5
+  * route: drop support for go1.5
+  * ipv4, ipv6, internal/netreflect, bpf: fix the x/net build
+  * http2/hpack: remove hpack's constant time string comparison
+  * http2: replace fixedBuffer with dataBuffer
+  * http2: Add opt-in option to Framer to allow DataFrame struct reuse
+  * http2/hpack: speedup Encoder.searchTable
+  * http2: add configurable knobs for the server's receive window
+
+-------------------------------------------------------------------
+Mon Feb 27 15:45:16 UTC 2017 - thipp@suse.de
+
+- Initial commit
+- Add _service
+- Add rpmlintrc

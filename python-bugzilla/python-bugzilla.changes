@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Thu Aug 16 09:32:14 UTC 2018 - mcepl@suse.com
+
+- Update to 2.2.0:
+  - Port tests to pytest
+  - cli: --cert Client side certificate support (Tobias Wolter)
+  - cli: add ability to post comment while sending attachment (Jeff Mahoney)
+  - cli: Add --comment-tag option
+  - cli: Add info --active-components
+  - Add a raw Product.get wrapper API 
+
+-------------------------------------------------------------------
+Mon May  7 15:13:13 UTC 2018 - dimstar@opensuse.org
+
+- Fix conflict for python-bugzillatools: we have to take extra care
+  for the single-spec rewritter not to conflict with
+  python2-bugzillatools in the end (which does not exist).
+
+-------------------------------------------------------------------
+Wed May  2 07:10:38 UTC 2018 - tbechtold@suse.com
+
+- Add Conflicts for python-bugzillatools
+
+-------------------------------------------------------------------
+Mon Apr 30 15:00:32 UTC 2018 - jengelh@inai.de
+
+- Trim history lesson and rhetoric wording from %description.
+
+-------------------------------------------------------------------
+Wed Apr 25 10:36:02 UTC 2018 - tbechtold@suse.com
+
+- convert to singlespec
+- use pypi as source
+- update url
+
+-------------------------------------------------------------------
+Wed Apr 25 10:21:27 UTC 2018 - tbechtold@suse.com
+
+- update to 2.1.0:
+  - Support for bugzilla 5 API Keys (Dustin J. Mitchell)
+  - bugzillarc can be used to set default URL for the cli tool
+  - Revive update_flags wrapper
+  - Bug fixes and minor improvements
+  - Several fixes for use with bugzilla 5
+  - Bugzilla.bug_autorefresh now defaults to False
+  - Credentials are now cached in ~/.cache/python-bugzilla/
+  - bin/bugzilla was converted to argparse
+  - bugzilla query --boolean_chart option is removed
+  - Unify command line flags across sub commands
+- drop NovellBugzilla.patch (no longer needed)
+
+-------------------------------------------------------------------
+Thu Jul 14 13:09:51 UTC 2016 - jsegitz@novell.com
+
+- Update to version 1.2.2
+- Added NovellBugzilla.patch to ensure it works with SUSE internal
+  bugzilla. 
+
+-------------------------------------------------------------------
+Tue Sep 23 12:32:08 UTC 2014 - bwiedemann@suse.com
+
+- update nvlbugzilla.py to reflect that server now has ver 4.4
+
+-------------------------------------------------------------------
+Thu Jun 27 16:29:47 UTC 2013 - jmatejek@suse.com
+
+- update to 0.9.0
+  * CVE-2013-2191: Switch to pycurl to get SSL host and cert validation
+    (fixes bnc#825876)
+  * bugzilla: modify: add --dependson (Don Zickus)
+  * bugzilla: new: add --groups option (Paul Frields)
+  * bugzilla: modify: Allow setting nearly every bug parameter 
+- update to suse3 from gitorious
+  * remerged NovellBugzilla functionality
+    (upstream inclusion pending bnc#822053)
+
+-------------------------------------------------------------------
+Fri May 24 18:36:22 UTC 2013 - jmatejek@suse.com
+
+- update to 0.8.0
+  * support for Bugzilla 4 and above
+  * streamlined internals
+- update to suse2 from gitorious
+  * include all suse patches
+  * use osc's methods to parse .oscrc
+
+-------------------------------------------------------------------
+Wed May 22 12:13:06 UTC 2013 - speilicke@suse.com
+
+- Apply python-bugzilla-0.6.2-section.patch
+- Cleanup spec file
+- Package README
+
+-------------------------------------------------------------------
+Thu May 16 13:01:19 UTC 2013 - werner@suse.de
+
+- Fix UL sections that is check also for URL without final slash
+  this may fix bnc#807901 
+
+-------------------------------------------------------------------
+Thu Jan  3 17:33:50 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Tue Jan 31 17:07:33 UTC 2012 - jmatejek@suse.com
+
+- remove basic auth credentials from backtraces
+- Novell Bugzilla is the default when using bugzilla command line tool
+
+-------------------------------------------------------------------
+Fri Jan 27 17:53:03 UTC 2012 - jmatejek@suse.com
+
+- update to openSUSE-1 tag from openSUSE's git branch
+  * better handling of NovellBugzilla instances
+  * using HTTP basic auth instead of IChain
+
+-------------------------------------------------------------------
+Fri Jul 29 09:04:07 UTC 2011 - mvyskocil@suse.cz
+
+- update to 0.6.2, rebased all patches
+  * backport --outputformat feature from git
+
+-------------------------------------------------------------------
+Fri Jul 29 08:50:47 UTC 2011 - mvyskocil@suse.cz
+
+- add 0005-Add-Bugzilla34._query.patch fixing query command
+- add 0020-allow-various-bnc-instances-in-NovellBugzilla.patch
+
+-------------------------------------------------------------------
+Mon May 23 12:36:47 UTC 2011 - mvyskocil@suse.cz
+
+- update to 0.6.1
+  * many new parameters for bugzilla command-line tool like --target_milestone,
+  --private, --status, --assignee, et all
+  * add support for Bugzilla 36
+  * Unicode related fixes
+- SUSE specific fixes
+  * novell bugzilla support in getBugzillaClassForURL
+  * obfuscated password support in oscrc
+  * move novell bugzilla to 3.4
+  * xmlrpclib changes done in python 2.7 from master [bug#685842]
+- create suse branch for stashing SUSE specific changes
+  https://gitorious.org/opensuse/python-bugzilla/commits/suse
+
+-------------------------------------------------------------------
+Thu Jun 17 15:55:51 CEST 2010 - matejcik@suse.cz
+
+- recognize Novell bugzilla in default constructor
+
+-------------------------------------------------------------------
+Wed Aug 26 09:18:54 UTC 2009 - mvyskocil@suse.cz
+
+- Added a patch with support of obfuscated passwords introduced in osc-0.121 
+
+-------------------------------------------------------------------
+Wed Jul 22 08:52:01 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of python-bugzilla 0.5 with Novell Bugzilla patches
+

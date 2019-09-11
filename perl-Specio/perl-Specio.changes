@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Thu Nov  8 06:56:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.43
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.43     2018-10-26
+  
+  - Optimized compile-time operations to make Specio itself quicker to
+    load. Specio's load time is a non-trivial part of the load time of DateTime
+    (and presumably other things that use it). Based on
+    https://github.com/houseabsolute/DateTime.pm/issues/85. Reported by
+    versable.
+
+-------------------------------------------------------------------
+Sun Nov  5 07:02:33 UTC 2017 - coolo@suse.com
+
+- updated to 0.42
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.42     2017-11-04
+  
+  - The Perl library claimed it provided types named LaxVersionStr and
+    StrictVersionStr but they were really named LaxVersion and
+    StrictVersion. The names have now been fixed to match the documentation, so
+    they are LaxVersionStr and StrictVersionStr.
+  
+  
+  0.41     2017-11-04
+  
+  - Fixed checks for whether a class is loaded in light of upcoming optimization
+    in Perl 5.28. Fixed by Sprout (GH #12).
+
+-------------------------------------------------------------------
+Tue Aug 15 06:12:44 UTC 2017 - coolo@suse.com
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.40     2017-08-03
+  
+  - Fixed more bugs with {any,object}_{can,does,isa}_type. When passed a glob
+    (not a globref) they would die in their type check. On Perl 5.16 or earlier,
+    passing a number to an any_* type would also die.
+  
+  - Fixed subification overloading. If Sub::Quote was loaded, this would be
+    used, but any environment variables needed for the closure would not be
+    included. This broke enums, among other things.
+
+-------------------------------------------------------------------
+Thu Aug  3 06:12:28 UTC 2017 - coolo@suse.com
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.39     2017-08-02
+  
+  - Many bug fixes and improves to the types created by
+    {any,object}_{can,does,isa}_type. In some cases, an invalid value could
+    cause an exception in type check itself. In other cases, a value which
+    failed a type check would cause an exception when generating a message
+    describing the failure. These cases have all been fixed.
+  
+  - The messages describing a failure for all of these types have been improved.
+  
+  - You can now create anonymous *_does and *_isa types using the exports from
+    Specio::Declare.
+
+-------------------------------------------------------------------
+Sun Jul  2 06:13:44 UTC 2017 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.38     2017-07-01
+  
+  - Simplify checks for overloading to not call overload::Overloaded(). Just
+    checking the return value of overload::Method() is sufficient.
+
+-------------------------------------------------------------------
+Wed May 10 06:36:21 UTC 2017 - coolo@suse.com
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.37     2017-05-09
+  
+  - Possible fix for very weird failures seen under threaded Perls with some
+    modules that use Specio.
+
+-------------------------------------------------------------------
+Mon Feb 20 07:27:28 UTC 2017 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.36     2017-02-19
+  
+  - Inlined coercions would attempt to coerce for every type which matched the
+    value given, instead of stopping after the first type. Fixed by Graham Knop
+    (GH #11).
+  
+  - Inlined coercions did not include the inline environment variables needed by
+    the type from which the coercion was being performed. Fixed by Graham Knop
+    (GH #8).
+  
+  - When you use the same type repeatedly as coderef (for example, as a
+    constraint with Moo), it will only generated its subified form once, rather
+    than regenerating it each time it is de-referenced.
+  
+  - Added an API to Specio::Subs to allow you to combine type libraries and
+    helper subs in one package for exporting. See the Specio::Exporter docs for
+    more details.
+
+-------------------------------------------------------------------
+Mon Feb 13 13:07:06 UTC 2017 - coolo@suse.com
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.35     2017-02-12
+  
+  - Added Specio::Subs, a module which allows you to turn one or more library's
+    types into subroutines like is_Int() and to_Int().
+  
+  - Added an inline_coercion method to Specio constraints.
+  
+  
+  0.34     2017-01-29
+  
+  - Packages with Specio::Exporter as their parent can now specify additional
+    arbitrary subs to exporter. See the Specio::Exporter docs for details.
+  
+  - Importing the same library twice in a given package would throw an
+    exception. The second attempt to import is now ignored.
+  
+  - Added an alpha implementation of structured types. See
+    Specio::Library::Structured for details.
+  
+  
+  0.33     2017-01-24
+  
+  - Fixed a mistake in the SYNOPSIS for Specio::Declare. The example for the
+    *_isa_type helpers was not correct.
+  
+  - Removed the alpha warning from the docs. This is being used by enough of my
+    modules on CPAN that I don't plan on doing any big breaking changes without
+    a deprecation first.
+  
+  
+  0.32     2017-01-12
+  
+  - Fixed a bug in the inlining for types create by any_can_type() and
+    object_can_type(). This inlining mostly worked by accident because of some
+    List::Util XS magic, but this broke under the debugger. Reported by
+    Christian Walde (GH #6) and Chan Wilson
+    (https://github.com/houseabsolute/DateTime.pm/issues/49).
+
+-------------------------------------------------------------------
+Mon Nov  7 07:18:01 UTC 2016 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.31     2016-11-05
+  
+  - The stack trace contained by Specio::Exception objects no longer includes a
+    stack frames for the Specio::Exception package.
+  
+  - Made the inline_environment() and description() methods public on type and
+    coercion objects.
+
+-------------------------------------------------------------------
+Sun Oct 16 05:59:49 UTC 2016 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.30     2016-10-15
+  
+  - Fix a bug with the Sub::Quoted sub returned by $type->coercion_sub. If a
+    type had more than one coercion, the generated sub could end up coercing the
+    value to undef some of the time. Depending on hash key ordering, this could
+    end up being a heisenbug that only occured some of the time.
+
+-------------------------------------------------------------------
+Mon Oct 10 06:02:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.29     2016-10-09
+  
+  - Doc Specio::PartialDump because you may want to use it as part of the
+    failure message generation code for a type.
+
+-------------------------------------------------------------------
+Sat Oct  8 16:46:29 UTC 2016 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.28     2016-10-02
+  
+  - Added a Test::Specio module to provide helpers for testing Specio libraries.
+  
+  - Fixed another bug with a subtype of special types and inlining.
+  
+  
+  0.27     2016-10-01
+  
+  - Cloning a type with coercions defined on it would cause an exception.
+  
+  - Creating a subtype of a special type created by *_isa_type, *_can_type, or
+    *_does_type, or enum would die when trying to inline the type constraint.
+  
+  - Removed the never-documented Any type.
+  
+  - Added documentation for each type in Specio::Library::Builtins.
+  
+  
+  0.26     2016-09-24
+  
+  - Require Role::Tiny 1.003003. This should fix the test failures some
+    CPANTesters reported with this error:
+  
+      Can't resolve method "???" overloading "&{}" in package
+      "Specio::Constraint::Simple" at Specio::Constraint::Simple->new line 35.
+  
+  
+  0.25     2016-09-04
+  
+  - Calling {any,object}_{isa,does}_type repeatedly in a package with the same
+    class or role name would die. These subs are now special-cased to simply
+    return an existing type for the given name when they receive a single
+    argument (the name of the class or role). This could come up if you had two
+    attributes both of which required an object of the same type.
+
+-------------------------------------------------------------------
+Sat Oct  8 13:44:33 UTC 2016 - coolo@suse.com
+
+- initial package 0.24
+ * created by cpanspec 1.78.08
+

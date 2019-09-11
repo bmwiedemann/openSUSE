@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Fri May 31 12:36:25 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Dec 18 16:18:02 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 23:47:40 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.1
+
+-------------------------------------------------------------------
+Tue Oct 16 16:38:22 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Aug 20 15:13:16 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Fri Apr  6 18:53:08 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Aug 11 11:09:49 UTC 2017 - ancor@suse.com
+
+- Use yast2-storage-ng instead of yast2-storage (part of
+  fate#318196)
+- 3.3.0
+
+-------------------------------------------------------------------
+Tue Aug  1 13:23:03 UTC 2017 - lslezak@suse.cz
+
+- Added missing files to the RPM package, the recently added
+  source files were not installed and packaged into the final RPM
+  (bsc#1051340)
+- 3.2.1
+
+-------------------------------------------------------------------
+Wed Feb  8 09:33:32 UTC 2017 - cwh@suse.com
+
+- Removed outdated checks for unsupported system configuration
+  (fate#321535)
+- Included config defaults that are needed to make rear work on
+  SLE12 SP2 and current state of SP3 
+- 3.2.0
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:15 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Mon May 19 10:43:16 CEST 2014 - tgoettlicher@suse.de
+
+- Adapted dependency to rear
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 15:11:49 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:38:16 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Feb 25 10:40:10 CET 2013 - tgoettlicher@suse.de
+
+- Improved error message (bnc #804439)
+- Adapted version number to comply with YaST conventions
+- Version 2.17.0
+
+-------------------------------------------------------------------
+Fri Dec 28 18:14:38 CET 2012 - tgoettlicher@suse.de
+
+- reworked kernel module dialog
+- Version 0.0.10
+
+-------------------------------------------------------------------
+Thu Dec 20 18:40:46 CET 2012 - tgoettlicher@suse.de
+
+- improved code according to code review
+- Version 0.0.9
+
+-------------------------------------------------------------------
+Mon Nov 19 17:13:29 CET 2012 - tgoettlicher@suse.de
+
+- improved supportability checks
+
+-------------------------------------------------------------------
+Mon Oct  8 14:25:23 CEST 2012 - tgoettlicher@suse.de
+
+- initial check-in
+

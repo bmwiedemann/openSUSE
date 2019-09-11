@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Jun 19 07:28:43 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- export LANG=en_US.UTF-8 during %build and %install . This fixes
+  the build for older distros which fail with:
+  UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position \
+    1468: ordinal not in range(128)
+
+-------------------------------------------------------------------
+Tue Apr 23 11:54:16 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.14
+  * Add python_requires metadata to better allow tools like pip to 
+    install a correct version.
+  * Add support for Sphinx 2.0 on Python 3.
+  * Avoid unicode errors when the program command or output produced 
+    non-ASCII output and the configured prompt was a byte string.
+  * Drop support for Sphinx < 1.7.
+  * Fix tests on Sphinx >= 1.8.0.
+  * Fix deprecation warnings on Sphinx >= 1.8. 
+  * Explicitly set parallel_read_safe to true in the extension 
+    metadata.
+
+-------------------------------------------------------------------
+Fri Dec  7 21:06:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove wrong BR on python-sphinxcontrib
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 18 22:29:06 UTC 2017 - toddrme2178@gmail.com
+
+- Use new python-sphinxcontrib package to provide namespace
+  directory.
+
+-------------------------------------------------------------------
+Mon Sep 18 20:36:57 UTC 2017 - toddrme2178@gmail.com
+
+- Specify files to guarantee namespace package doesn't conflict
+  with python(2|3)-Sphinx
+
+-------------------------------------------------------------------
+Mon Apr 24 13:50:12 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 0.10
+- convert to singlespec package
+- change source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Mon Sep 16 09:03:22 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

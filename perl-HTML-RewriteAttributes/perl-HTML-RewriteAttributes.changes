@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:14:57 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu Jan 17 13:03:09 UTC 2013 - darin@darins.net
+
+- Update to version 0.05
+  * Resources: Preserve the media attribute when inlining CSS
+  * Resources: Avoid uninitialized warnings by checking the
+    attributes we expect 
+- Update source URL
+
+-------------------------------------------------------------------
+Tue Aug  2 18:57:38 UTC 2011 - them4z@googlemail.com
+
+- updated to 0.04
+    * created by cpanspec 1.78.05
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Sep  4 19:46:44 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Sat Dec 26 19:12:20 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.03
+

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Jan 17 00:56:07 UTC 2017 - jengelh@inai.de
+
+- Disable static library generation
+- Update RPM groups/description
+- Drop excessive pkgconfig Require
+
+-------------------------------------------------------------------
+Mon Jan  9 11:53:44 UTC 2017 - sebix+novell.com@sebix.at
+
+- add baselibs.conf to specfile
+
+-------------------------------------------------------------------
+Mon Jan  9 09:10:10 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix spec file (license, source URL, spec-cleaner)
+
+-------------------------------------------------------------------
+Tue Jan 31 12:21:43 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Remove dependency on licenses package (it's no longer there)
+
+-------------------------------------------------------------------
+Tue Jan 31 11:33:44 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Feb 17 19:25:08 UTC 2010 - pascal.bleser@opensuse.org
+
+- add baselibs.conf
+- add backwards compatibility patch to build with the curl that is
+  shipped with SLES 9
+
+-------------------------------------------------------------------
+Wed Feb 17 07:24:39 UTC 2010 - pascal.bleser@opensuse.org
+
+- new package (0.18.3)
+

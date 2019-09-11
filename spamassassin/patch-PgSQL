@@ -1,0 +1,20 @@
+--- lib/Mail/SpamAssassin/BayesStore/PgSQL.pm	2010-01-21 13:14:34.000000000 +0100
++++ lib/Mail/SpamAssassin/BayesStore/PgSQL.pm	2010-03-17 08:44:19.000000000 +0100
+@@ -941,7 +941,7 @@
+   }
+ 
+   my $escaped_token = _quote_bytea($token);
+-  my $sth = $self->{_dbh}->prepare("select put_tokens($self->{_userid}, $self->{_esc_prefix}'{$escaped_token}', $spam_count,$ham_count,$atime)");
++  my $sth = $self->{_dbh}->prepare("select put_tokens($self->{_userid}, $self->{_esc_prefix}'{$escaped_token}'::bytea[], $spam_count,$ham_count,$atime)");
+ 
+   unless (defined($sth)) {
+     dbg("bayes: _put_token: SQL error: ".$self->{_dbh}->errstr());
+@@ -1004,7 +1004,7 @@
+ 
+   my $tokenarray = join(",", map { '"' . _quote_bytea($_) . '"' } sort keys %{$tokens});
+ 
+-  my $sth = $self->{_dbh}->prepare("select put_tokens($self->{_userid}, $self->{_esc_prefix}'{$tokenarray}', $spam_count, $ham_count, $atime)");
++  my $sth = $self->{_dbh}->prepare("select put_tokens($self->{_userid}, $self->{_esc_prefix}'{$tokenarray}'::bytea[], $spam_count, $ham_count, $atime)");
+ 
+   unless (defined($sth)) {
+     dbg("bayes: _put_tokens: SQL error: ".$self->{_dbh}->errstr());

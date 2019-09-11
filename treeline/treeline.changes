@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Tue Feb 16 12:07:09 UTC 2016 - mkravec@suse.com
+
+- Update to version 2.0.2
+ * Bug Fixes:
+   - Fixed a major regression in 2.0.1 that broke data editors for
+     most specialized field types (number, math, boolean, choice, etc.)
+   - Reduce the amount of work that a single undo command removes
+     from editors in the data edit view.
+   - Fixed a bug that prevented setting the unique ID reference
+     field on a newly created data type.
+   - Preserve hard newlines in text fields when converting TreeLine
+     1.4.x files to this version.
+   - Fix problems preserving expand/collapse node states when
+     indenting and unindenting nodes.
+ * Updates:
+   - Added methods to the plugin interface that allow general
+     program options to be queried and changed.
+   - Improve text table import error messages by including the line
+     number where the problem is found.
+   - Modified the Treepad file import to use SpacedText fields to more
+     closely match Treepad formatting.
+   - An optional plugin was written that can export files to the
+     Treepad text file format.
+   - The TreeLine icon was replaced with a new one. Thanks to
+     David Reimer for contributing the artwork.
+   - The German and Portuguese GUI translations were updated.
+   - Updated the long text sample file to include the SpacedText field
+     type, and added a conditional equation to the math sample file.
+   - Updated the Math Field section of the documentation.
+
+-------------------------------------------------------------------
+Tue Apr  7 01:59:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.7
+  * No changelog available
+- Remove obsolete AUTHORS and %clean sections
+- Switch to python3; follow upstream changes
+  * Replace python dependencies with python3 ones
+  * Remove python-xml; xml is provided by python3 package
+
+-------------------------------------------------------------------
+Sun Sep 23 21:19:17 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.4.1:
+  + Fixed failures due to bad internal references when opening
+    encrypted files in multiple windows.
+  + Avoid corruption of user option settings after attempting to
+    automatically open an imported file as the last file used.
+  + Fix problems with imported files when the user sets new files
+    to be encrypted by default.
+  + Prompt the user for a password when copying types from an
+    encrypted TreeLine file.
+- Sources moved to upstream format, tar.gz
+- rpmlint: remove INSTALL in docs; escape macro in comment
+
+-------------------------------------------------------------------
+Sat Apr 16 23:05:56 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.4.0:
+  * remembering of previous directories for path-based fields
+  * addition of toolbar icons for window commands
+  * correction of a column control bug in HTML export
+  * ability to operate with multiple windows
+  * ability to update the same file from multiple windows
+  * command to add internal links to text
+  * new multiple-directory HTML export
+  * searchable help
+  * toolbar/shortcut reset buttons to undo customizations
+
+-------------------------------------------------------------------
+Thu Aug  6 10:14:17 UTC 2009 - joe@novell.com
+
+- update to 1.2.3
+- changes since 1.2.0:
+  - minor bug fixes
+  - updated German translations
+  - fixes to be compatible with Python 2.6
+
+-------------------------------------------------------------------
+Thu Jun 19 13:40:16 CEST 2008 - joe@suse.de
+
+- update to 1.2.0
+- fixed data loss issue when backup file is corrupt
+- fixed minor bug in Configure Data Types dialog
+
+-------------------------------------------------------------------
+Sun Apr  6 19:44:39 CEST 2008 - joe@suse.de
+
+- fix DOS EOL encoding in setup.py file
+
+-------------------------------------------------------------------
+Wed Feb 13 10:02:40 CET 2008 - joe@suse.de
+
+- update to 1.1.10
+- fix missing shebang and remove it from rpmlintrc exceptions
+
+-------------------------------------------------------------------
+Fri Nov  9 13:45:31 CET 2007 - lrupp@suse.de
+
+- fix rpmlint errors
+
+-------------------------------------------------------------------
+Wed Aug  8 14:43:00 CEST 2007 - joe@suse.de
+
+- update to 1.1.9
+- rewrite, moved to Qt 4.x and PyQt 4.x
+- basic ODF support
+
+-------------------------------------------------------------------
+Fri Aug 25 13:31:32 CEST 2006 - joe@suse.de
+
+- update to 1.0.0
+- fixed a problem with duplicate nodes showing up when pasting
+  multiple nodes on Windows
+- deriving types from other derived types is no longer allowed, since
+  it did not function properly
+- a problem with saving an encrypted file in the German version of
+  TreeLine has been fixed
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 13:06:39 CET 2005 - joe@suse.de
+
+- update to 0.14.0
+
+-------------------------------------------------------------------
+Wed Sep 21 13:40:26 CEST 2005 - joe@suse.de
+
+- fixed non-matching string in German translation
+
+-------------------------------------------------------------------
+Mon Aug 29 16:12:56 CEST 2005 - joe@suse.de
+
+- update to 0.13.0
+- German and French translations
+
+-------------------------------------------------------------------
+Mon Jul 11 09:11:07 CEST 2005 - joe@suse.de
+
+- update to 0.12.82a
+- first version that is prepared for localization 
+
+-------------------------------------------------------------------
+Wed May  4 17:32:26 CEST 2005 - joe@suse.de
+
+- update to 0.12.0
+- SUSE-specific patches are not needed any more
+- Desktop icon was missing; added one from the last release
+
+-------------------------------------------------------------------
+Sun Mar 13 13:54:43 CET 2005 - joe@suse.de
+
+- removing plain text files from supported mime types in .desktop
+  file
+
+-------------------------------------------------------------------
+Mon Feb 28 09:36:51 CET 2005 - joe@suse.de
+
+- update to 0.11.1
+- removing some SUSE-specific changes that are not necessary
+  any more
+
+-------------------------------------------------------------------
+Tue Feb  8 13:39:10 CET 2005 - joe@suse.de
+
+- update to 0.11.0
+- SUSE improvements (KDE icons)
+- .desktop files are included now
+- fixed dependencies
+
+-------------------------------------------------------------------
+Fri Jan 28 13:28:04 CET 2005 - joe@suse.de
+
+- update to 0.10.83
+- patch for documentation directory not needed any more because of
+  new option in install script
+
+-------------------------------------------------------------------
+Mon Jan 24 13:42:35 CET 2005 - joe@suse.de
+
+- initial checkin of TreeLine
+

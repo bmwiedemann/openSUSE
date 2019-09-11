@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu May 23 12:11:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from description.
+
+-------------------------------------------------------------------
+Wed May 22 05:06:25 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Fixup URL and Source
+
+-------------------------------------------------------------------
+Fri May 17 05:22:57 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package for openSUSE
+- Add upstream patch to add proper installability and library
+  versioning:
+  * fix-library-installation-and-versioning.patch

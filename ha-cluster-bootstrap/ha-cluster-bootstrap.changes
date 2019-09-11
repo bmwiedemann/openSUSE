@@ -1,0 +1,378 @@
+-------------------------------------------------------------------
+Tue Nov 28 14:11:14 UTC 2017 - kgronlund@suse.com
+
+- Switch to Python 3 (bsc#1070140) 
+
+-------------------------------------------------------------------
+Tue Jul 25 13:31:00 UTC 2017 - kgronlund@suse.com
+
+- Recommend sbd, resource-agents and fence-agents (bsc#1050427) 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:49:17 UTC 2017 - kgronlund@suse.com
+
+- Update to version 0.5:
+  * Clarify crmsh version that has bootstrap commands
+  * Include sleha- aliases for commands (bnc#862798)
+
+- Remove 0004-Warn-if-using-the-old-sleha-command-form-bnc-862798.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 08:41:43 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1481877541.6b06de6:
+  * Replace commands with stubs that call crmsh (fate#321114)
+  * Fix typoed variable name in error message
+
+-------------------------------------------------------------------
+Thu Oct 06 07:40:14 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1475739556.1088521:
+  * Better corosync defaults (bsc#1001164)
+
+-------------------------------------------------------------------
+Fri Jul 22 12:43:33 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1469191369.b497afa:
+  * Set pcmk_delay_max=30s for SBD resource (bsc#988356) (bsc#990213)
+
+-------------------------------------------------------------------
+Fri Jul 22 09:07:13 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1469178371.e8b668d:
+  * Reload corosync configuration if unicast (bsc#989809)
+  * Use ip route to find iface name over netstat which is deprecated
+
+-------------------------------------------------------------------
+Wed May 25 08:47:19 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1464165931.150e061:
+  + Don't configure no-quorum-policy=ignore, ever (bsc#981056)
+
+-------------------------------------------------------------------
+Wed Feb 24 08:49:46 UTC 2016 - kgronlund@suse.com
+
+- Update to version 0.4+git.1456303675.b6eb2b3:
+  + Corosync UDPU support (fate#320604) (fate#320605)
+
+-------------------------------------------------------------------
+Sat Oct 31 16:50:46 UTC 2015 - kgronlund@suse.com
+
+- Add recommends for hawk2 (bsc#952982)
+
+-------------------------------------------------------------------
+Fri Oct 30 14:42:53 UTC 2015 - kgronlund@suse.com
+
+- Drop recommends for hawk (bsc#952428) 
+
+-------------------------------------------------------------------
+Fri Sep 04 09:32:37 UTC 2015 - kgronlund@suse.com
+
+- Update to version 0.4+git.1441350120.8e9abbe:
+  + Sync entire /etc/booth directory (fate#319318)
+  + Check corosync.conf before access (bsc#943227)
+  + Use update over replace to avoid deleting DC attributes (bsc#890802)
+  + Update README with a bit more detail
+
+- Remove 0001-sync-entire-booth-directory-fate-319318.patch
+
+-------------------------------------------------------------------
+Fri Aug 28 10:25:54 UTC 2015 - kgronlund@suse.com
+
+- Update to version 0.4+git.1440306826.cf7cfcf:
+  - Patches are now merged upstream
+  - Remove 0001-Only-check-for-pseudy-tty-if-in-interactive-mode-bnc.patch
+  - Remove 0002-Add-administration-Virtual-IP-fate-318549.patch
+  - Remove 0003-Only-check-watchdog-if-potentially-using-SBD.patch
+  - Remove 0004-Remove-admin-IP-suggestion-as-it-is-confusing-bsc-93.patch 
+
+- Sync entire /etc/booth directory (fate#319318)
+- Add 0001-sync-entire-booth-directory-fate-319318.patch
+
+-------------------------------------------------------------------
+Mon Aug 24 07:18:08 UTC 2015 - kgronlund@suse.com
+
+- Require ha-cluster-webui instead of hawk (bsc#942723) 
+
+-------------------------------------------------------------------
+Mon Aug  3 13:10:19 UTC 2015 - kgronlund@suse.com
+
+- Remove admin IP suggestion as it is confusing (bsc#939351)
+- Add 0004-Remove-admin-IP-suggestion-as-it-is-confusing-bsc-93.patch 
+
+-------------------------------------------------------------------
+Thu May 21 08:01:56 UTC 2015 - kgronlund@suse.com
+
+- Only check for pseudo-tty if in interactive mode (bnc#892702)
+- Add administration Virtual IP (fate#318549)
+- Only check watchdog if potentially using SBD
+- Add 0001-Only-check-for-pseudy-tty-if-in-interactive-mode-bnc.patch
+- Add 0002-Add-administration-Virtual-IP-fate-318549.patch
+- Add 0003-Only-check-watchdog-if-potentially-using-SBD.patch
+
+-------------------------------------------------------------------
+Fri May 08 16:29:54 UTC 2015 - kgronlund@suse.com
+
+- Update to version 0.4+git.1430918556.6f42311:
+  + Patches merged upstream
+  + Exit with error if ha-cluster-join is called over ssh without -t (bnc#892702)
+- Remove 0001-Improved-IP-address-detection-algorithm-boo-920226.patch
+- Remove 0002-Use-crm_node-to-count-nodes-in-cluster-when-deciding.patch
+
+-------------------------------------------------------------------
+Tue Apr 21 11:10:39 UTC 2015 - kgronlund@suse.com
+
+- Updated IP address detection fix (boo#920226) 
+
+-------------------------------------------------------------------
+Tue Apr 21 05:59:07 UTC 2015 - kgronlund@suse.com
+
+- Improved IP address detection algorithm (boo#920226)
+- Use crm_node to count nodes in cluster when deciding
+  to reset no-quorum-policy=ignore (boo#923372)
+- Add 0001-Improved-IP-address-detection-algorithm-boo-920226.patch
+- Add 0002-Use-crm_node-to-count-nodes-in-cluster-when-deciding.patch
+ 
+
+-------------------------------------------------------------------
+Tue Sep 16 08:16:23 UTC 2014 - kgronlund@suse.com
+
+- Silence grep when checking SBD config (bnc#895992)
+- Drop merged patches:
+  + Remove 0001-sbd_init_with_new_style.patch
+  + Remove 0002-clean-up-multiline-warnings.patch
+- Upstream version cs:8459115
+
+-------------------------------------------------------------------
+Wed Aug 27 08:10:27 UTC 2014 - kgronlund@suse.com
+
+- Fix ha-cluster-init to init sbd configuration with new style (bnc#881484)
+- Clean up multiline warnings (bnc#885411)
+- Clean up patches:
+  - Added 0001-sbd_init_with_new_style.patch
+  - Added 0002-clean-up-multiline-warnings.patch
+  - Removed fix-ha-cluster-init-not-to-overwrite-sbd-conf-881484.patch
+  - Removed improve-ha-cluster-init-check-sbd-watchdog-bnc-881484.patch
+  - Removed fix-ha-cluster-init-sbd-with-new-style-bnc-881484.patch
+
+-------------------------------------------------------------------
+Tue Aug 19 11:58:43 UTC 2014 - kgronlund@suse.com
+
+- Use fdisk to limit partprobe to valid devices (bnc#885287)
+- Upstream version cs:8d38b0b 
+
+-------------------------------------------------------------------
+Fri Aug 15 12:01:14 UTC 2014 - kgronlund@suse.com
+
+- Support non-RSA SSH keys when joining node to existing cluster (bnc#878080)
+- Remove merged patches:
+  - 0001-Make-check-for-no-quorum-policy-ignore-slighty-less-.patch
+  - 0002-Add-etc-drbd.conf-to-csync2-configuration-bnc-881683.patch
+- Upstream version cs:d4cddcc
+
+-------------------------------------------------------------------
+
+Fri Jun 20 02:26:46 UTC 2014 - lwang@suse.com
+
+- used `sed` only change the values present
+  add: fix-ha-cluster-init-not-to-overwrite-sbd-conf-881484.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 10:50:30 UTC 2014 - lwang@suse.com
+
+- improve ha-cluster-init will check sbd watchdog, if watchdog not work,
+  confirm with user whether to use watchdog.
+  Add: improve-ha-cluster-init-check-sbd-watchdog-bnc-881484.patch- 
+
+-------------------------------------------------------------------
+Mon Jun 13 02:49:22 UTC 2014 - lwang@suse.com
+
+- fix cluster-init to init sbd configuration with new style(bnc#881484)
+  Add: fix-ha-cluster-init-sbd-with-new-style-bnc-881484.patch
+
+-------------------------------------------------------------------
+Mon Jun  9 08:57:56 UTC 2014 - kgronlund@suse.com
+
+- Make check for no-quorum-policy=ignore slighty less rigid
+- Add /etc/drbd.conf to csync2 configuration (bnc#881683)
+
+- Add 0001-Make-check-for-no-quorum-policy-ignore-slighty-less-.patch
+- Add 0002-Add-etc-drbd.conf-to-csync2-configuration-bnc-881683.patch
+
+-------------------------------------------------------------------
+Tue Apr  8 12:12:22 UTC 2014 - tserong@suse.com
+
+- Update NTP check to handle ntpd.service (bnc#872106)
+- Use `SuSEfirewall2 status` instead of `systemctl is-active` (bnc#869386)
+- Don't set sbd_device in crm config (bnc#863527)
+- Drop no-quorum-policy=ignore when adding third node
+- Upstream version cs:7f1629a
+
+-------------------------------------------------------------------
+Fri Mar 21 06:07:40 UTC 2014 - tserong@suse.com
+
+- Fix test for active firewall (bnc#869386)
+- Upstream version cs:2964f4e
+
+-------------------------------------------------------------------
+Wed Mar 19 09:20:37 UTC 2014 - tserong@suse.com
+
+- Update firewall rules correctly for corosync.conf (bnc#868986)
+- Upstream version cs:85bcef5
+
+-------------------------------------------------------------------
+Fri Mar  7 11:57:29 UTC 2014 - tserong@suse.com
+
+- Warn if /dev/watchdog not present
+- Set/clear two_node in corosync.conf (bnc#866435)
+- Ensure corosync and SBD config are marked dirty before syncing
+- Use `csync2 -R` to cleanup DB when removing node (bnc#867039)
+- Sync all config files across all nodes when adding new node (bnc#867048)
+- Upstream version cs:cc1daef
+
+-------------------------------------------------------------------
+Fri Feb 28 05:13:43 UTC 2014 - tserong@suse.com
+
+- Use netstat to guess at the default route interface (bnc#854172)
+- Don't add service section to corosync.conf (bnc#865041)
+- Set corosync logging to_logfile: no
+- Correctly detect unconfigured SBD when SBD_DEVICE="" (bnc#865260)
+- Upstream version cs:37debd0
+
+-------------------------------------------------------------------
+Tue Feb 18 06:05:35 UTC 2014 - tserong@suse.com
+
+- Run removal commands in bash shell to avoid prompts from zsh (bnc#862572)
+- Upstream version:6daed36
+
+- Add symlinks to sleha-* commands; warn of obsolescence if used (bnc#862798)
+  + Added warn-if-using-obsolete-sleha-command.patch
+
+-------------------------------------------------------------------
+Fri Feb 14 12:31:53 UTC 2014 - tserong@suse.com
+
+- Ensure SBD service is enabled if required (bnc#862765)
+- Upstream version cs:b11cac6
+
+-------------------------------------------------------------------
+Thu Dec 12 05:35:01 UTC 2013 - tserong@suse.com
+
+- Fix subnet match in network detection (bnc#854783)
+- Upstream version cs:f9adaaf
+
+-------------------------------------------------------------------
+Wed Oct  2 14:12:08 UTC 2013 - tserong@suse.com
+
+- Unify OCFS2 config with Hawk (bnc#821124) and remove o2cb
+- Upstream version cs:d194e13
+
+-------------------------------------------------------------------
+Thu Sep 26 12:13:15 UTC 2013 - tserong@suse.com
+
+- Trigger corosync config reload after node join/remove
+- Minor punctuation fixes for man pages
+- Send crm_mon stderr to /dev/null while waiting for cluster bringup
+- Warn on partprobe failure instead of hard error (bnc#840606)
+- Remove mention of openais from csync2 config
+- Don't mention openais when removing node
+- Decrement expected_votes when removing node
+- Upstream version cs:119bc91
+
+-------------------------------------------------------------------
+Fri Sep 13 14:06:43 UTC 2013 - tserong@suse.com
+
+- Expect corosync 2 with votequorum
+- Update csync2 database path for sqlite3
+- Use systemctl instead of rc* and chkconfig
+- Renamed from sleha-bootstrap to ha-cluster-bootstrap
+- Upstream version cs:f5ffd1c
+
+-------------------------------------------------------------------
+Thu Apr 18 09:31:55 UTC 2013 - xli@suse.com
+
+- Fix removing a unclean/offline node failed issue (bnc#810292) 
+
+-------------------------------------------------------------------
+Mon Apr 15 07:51:11 UTC 2013 - xli@suse.com
+
+- Fix the cib path incorrect issue (bnc#807700) 
+
+-------------------------------------------------------------------
+Thu Mar 28 02:32:23 UTC 2013 - xli@suse.com
+
+- Fix the start error message issue (bnc#807698) 
+
+-------------------------------------------------------------------
+Wed Mar 20 09:08:45 UTC 2013 - xli@suse.com
+
+- Fix the illegal option issue (bnc#805276)  
+
+-------------------------------------------------------------------
+Sat Dec 22 04:47:57 UTC 2012 - tserong@suse.com
+
+- Reload xinetd if running during init and join (bnc#774688)
+
+-------------------------------------------------------------------
+Fri Nov 16 05:29:21 UTC 2012 - xli@suse.com
+
+- Add sleha_remove script to complete sleha-init and sleha-join 
+  to allow the removal of a cluster node. 
+- Add man page sleha-remove.8 
+
+-------------------------------------------------------------------
+Mon Mar 19 11:53:29 UTC 2012 - tserong@suse.com
+
+- Ensure csync2.cfg is sync'd across whole cluster if >2 nodes (bnc#752831)
+
+-------------------------------------------------------------------
+Fri Mar 16 11:42:27 UTC 2012 - tserong@suse.com
+
+- Merge root's ssh known_hosts when joining a new node (bnc#752410)
+
+-------------------------------------------------------------------
+Wed Mar 14 06:57:24 UTC 2012 - tserong@suse.com
+
+- Booth config file is now /etc/booth/booth.conf
+
+-------------------------------------------------------------------
+Thu Mar  8 22:38:54 GMT 2012 - aspiers@suse.com
+
+- Fix init_firewall() to gracefully handle absence of corosync.conf
+- Split out network portion of log_start() into init_network()
+- Quieten service_is_on.
+
+-------------------------------------------------------------------
+Tue Feb 21 05:12:17 UTC 2012 - tserong@suse.com
+
+- Add /etc/sysconfig/booth to default csync2 file list
+
+-------------------------------------------------------------------
+Wed Nov  9 13:51:12 UTC 2011 - tserong@suse.com
+
+- Open ports in firewall for cluster comms (bnc#728038)
+- Fix file path in error message in crm_configure_load()
+
+-------------------------------------------------------------------
+Wed Oct 12 11:05:46 UTC 2011 - tserong@suse.com
+
+- Add ssh_test function to sleha-join
+- Fix "-c <host>" in sleha-join -h output
+- Allow seed address to be hostname or IP (not just IP)
+
+-------------------------------------------------------------------
+Thu Oct  6 03:29:19 UTC 2011 - tserong@suse.com
+
+- Force "dirty" files in sync when joining new node
+- Run partprobe on sleha-join cluster
+- Fix 1BM SBD partition size when using OCFS2 demo template
+
+-------------------------------------------------------------------
+Fri May 27 13:41:43 UTC 2011 - tserong@novell.com
+
+- Renamed to sleha-bootstrap
+
+-------------------------------------------------------------------
+Tue May 24 12:38:57 UTC 2011 - tserong@novell.com
+
+- Initial packaging for SLE 11 SP2
+

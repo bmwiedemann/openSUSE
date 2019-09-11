@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Mar  6 16:04:44 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- updated to 1.0.4
+  * Version 1.0 and future releases are not backward compatible
+    with pre-1.0 releases. There's currently no package in Factory
+    that requires perl(WebService::MusicBrainz), so the change
+    should be no problem.
+  * adapt dependencies to 1.0 release
+  * spec file cleanup
+
+-------------------------------------------------------------------
+Wed Mar 09 22:21:00 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.93)
+

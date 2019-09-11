@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sun Jun 18 17:42:43 UTC 2017 - dap.darkness@gmail.com
+
+- Added libclaw-1.7.4-gcc7.patch from Fedora.
+
+-------------------------------------------------------------------
+Mon Feb  6 18:02:06 UTC 2017 - jengelh@inai.de
+
+- Use knwon good source URL
+
+-------------------------------------------------------------------
+Mon Feb  6 17:08:30 UTC 2017 - jengelh@inai.de
+
+- Update descriptions and RPM groups.
+
+-------------------------------------------------------------------
+Sun Jun 26 11:34:31 UTC 2016 - dap.darkness@gmail.com
+
+- Added " -std=c++98" to CXXFLAGS to prevent build issue via gcc6.
+- Removed unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Sun May 15 23:35:48 UTC 2016 - rpm@fthiessen.de
+
+- Spec cleanup, now using cmake macros, fixed BuildRequires
+  and created -doc subpackage.
+
+-------------------------------------------------------------------
+Tue Aug 13 19:03:04 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+

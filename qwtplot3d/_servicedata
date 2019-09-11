@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/copasi/copasi-dependencies</param>
+    <param name="changesrevision">527adc603a454aefbfd87ecb998f56ed3b6359ab</param>
+  </service>
+</servicedata>

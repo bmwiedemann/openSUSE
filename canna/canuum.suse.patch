@@ -1,0 +1,42 @@
+--- Canna37p3/canuum/Imakefile
++++ Canna37p3/canuum/Imakefile
+@@ -1,14 +1,6 @@
+ /* $Id: Imakefile,v 1.8.2.4 2004/05/19 15:39:22 aida_s Exp $ */
+ #include "../Canna.conf"
+-#ifdef TermcapLibrary
+-TERMCAP_LIB = TermcapLibrary
+-#else
+-# if SystemV || SystemV4
+-TERMCAP_LIB = -lcurses
+-# else
+-TERMCAP_LIB = -ltermcap
+-# endif
+-#endif
++TERMCAP_LIB = -lncurses
+ #ifndef CanuumConfigureArgs
+ # define CanuumConfigureArgs --with-term-libs="$(TERMCAP_LIB)"
+ #endif
+@@ -17,9 +9,9 @@
+ INSTUGIDFLAGS = 
+      CANNASRC = $(CANNAROOT)/lib/canna16
+       DEFINES = -DCANNA -DJAPANESE $(SIGNAL_DEFINES) -DHAVE_CONFIG_H \
+-		-DCONFIG_TERMINFO -DUSE_LIBSPT
+-     INCLUDES = -I$(CANNAROOT)/include -I. `libspt-config --cflags`
+-SYS_LIBRARIES = $(TERMCAP_LIB) `libspt-config --libs`
++		-DCONFIG_TERMINFO
++     INCLUDES = -I$(CANNAROOT)/include -I.
++SYS_LIBRARIES = $(TERMCAP_LIB)
+ 
+          SRCS = header.c printf.c termio.c termcap.c \
+ 		screen.c cursor.c jhlp.c xutoj.c canna.c
+--- Canna37p3/canuum/jhlp.c
++++ Canna37p3/canuum/jhlp.c
+@@ -1997,7 +1997,7 @@
+ 
+   j_term_restore ();
+ 
+-#if !defined(USE_LIBSPT) && !defined(sgi)
++#if !defined(USE_LIBSPT) && !defined(sgi) &&  !defined(linux)
+   ptyname (nmbuf, ptynm, ptyno);
+   if (chown (nmbuf, 0, 0) == ERROR)
+     {

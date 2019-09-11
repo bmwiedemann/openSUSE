@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Wed Jul  5 14:59:37 UTC 2017 - tbechtold@suse.com
+
+- Add missing python-six BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul  5 13:35:11 UTC 2017 - tbechtold@suse.com
+
+- Add missing python-six Requires
+
+-------------------------------------------------------------------
+Fri Apr 14 17:05:33 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Thu Mar 30 18:54:06 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.3.2
+  * using :meth:`_traitname_default()` without the ``@default``
+    decorator is no longer deprecated.
+  * Passing ``config=True`` in traitlets constructors is no longer
+    deprecated.
+- Update to 4.3.1
+  * Compatibility fix for Python 3.6a1
+  * Fix bug in Application.classes getting extra entries when
+    multiple Applications are instantiated in the same process.
+- Update to 4.3.0
+  * Improve the generated config file output.
+  * Allow TRAITLETS_APPLICATION_RAISE_CONFIG_FILE_ERROR env to
+    override :attr:`Application.raise_config_file_errors`,
+    so that config file errors can result in exiting immediately.
+  * Avoid using root logger. If no application logger is registered,
+    the ``'traitlets'`` logger will be used instead of the root
+    logger.
+  * Change/Validation arguments are now Bunch objects, allowing
+    attribute-access, in addition to dictionary access.
+  * Reduce number of common deprecation messages in certain cases.
+  * Ensure command-line options always have higher priority than
+    config files.
+  * Add bounds on numeric traits.
+  * Improves various error messages.
+- Update to 4.2.2
+  * Partially revert a change in 4.1 that prevented IPython's
+    command-line options from taking priority over config files.
+- Update to 4.2.1
+  * Demotes warning about unused arguments in ``HasTraits.__init__``
+    introduced in 4.2.0 to DeprecationWarning.
+- Update to 4.2.0
+  * :class:`JSONFileConfigLoader` can be used as a context manager
+    for updating configuration.
+  * If a value in config does not map onto a configurable trait,
+    a message is displayed that the value will have no effect.
+  * Unused arguments are passed to ``super()`` in
+    ``HasTraits.__init__``, improving support for multiple
+    inheritance.
+  * Various bugfixes and improvements in the new API introduced
+    in 4.1.
+  * Application subclasses may specify
+    ``raise_config_file_errors = True``
+    to exit on failure to load config files,
+    instead of the default of logging the failures.
+- Update to 4.1
+  * Decorators are used, rather than magic method names, for
+    registering trait-related methods. See :doc:`using_traitlets`
+    and :doc:`migration` for more info.
+  * Deprecate ``Trait(config=True)`` in favor of
+    ``Trait().tag(config=True)``. In general, metadata is added
+    via ``tag`` instead of the constructor.
+  * Trait attributes initialized with ``read_only=True`` can only
+    be set with the ``set_trait`` method.
+    Attempts to directly modify a read-only trait attribute raises
+    a ``TraitError``.
+  * The directional link now takes an optional `transform`
+    attribute allowing the modification of the value.
+  * Various fixes and improvements to config-file generation
+    (fixed ordering, Undefined showing up, etc.)
+  * Warn on unrecognized traits that aren't configurable, to avoid
+    silently ignoring mistyped config.
+
+-------------------------------------------------------------------
+Thu Mar 30 18:53:09 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 
+
+-------------------------------------------------------------------
+Fri Aug 14 07:48:27 UTC 2015 - toddrme2178@gmail.com
+
+- Fix package naming consistency
+
+-------------------------------------------------------------------
+Thu Aug 13 13:57:00 UTC 2015 - toddrme2178@gmail.com
+
+- Update dependency names
+
+-------------------------------------------------------------------
+Tue Jul 21 13:34:20 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,17 @@
+--- kinput2-v3.1/lib/XimpProto.c.~1~	2002-10-03 11:35:28.000000000 +0200
++++ kinput2-v3.1/lib/XimpProto.c	2008-03-10 12:22:11.000000000 +0100
+@@ -1689,10 +1689,10 @@
+ 
+     /* data[0]-data[3]: Area.{x,y,width,height} */
+     if (mask & XIMP_STS_AREA_MASK) {
+-	data[0] = xsattr->areax = data[0];
+-	data[1] = xsattr->areay = data[1];
+-	data[2] = xsattr->areawidth = data[2];
+-	data[3] = xsattr->areaheight = data[3];
++	data[0] = xsattr->areax;
++	data[1] = xsattr->areay;
++	data[2] = xsattr->areawidth;
++	data[3] = xsattr->areaheight;
+     }
+     /* data[4]: Foreground */
+     if (mask & XIMP_STS_FG_MASK) {

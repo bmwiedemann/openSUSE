@@ -1,0 +1,124 @@
+From 6ac2afc0d7d8d51d4085767b901667393c11061b Mon Sep 17 00:00:00 2001
+From: Pablo De La Garza <pdelagarza@nvidia.com>
+Date: Thu, 23 Mar 2017 16:05:02 -0700
+Subject: xrandr: Add a "--filter" flag
+
+Flag can be set to "nearest" or "bilinear"
+
+Signed-off-by: Pablo De La Garza <pdelagarza@nvidia.com>
+[aplattner@nvidia.com: Fixed style and whitespace]
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+
+diff --git a/xrandr.c b/xrandr.c
+index 2aad946..2d4cb72 100644
+--- a/xrandr.c
++++ b/xrandr.c
+@@ -54,6 +54,11 @@ static Bool	automatic = False;
+ static Bool	properties = False;
+ static Bool	grab_server = True;
+ static Bool	no_primary = False;
++static int	filter_type = -1;
++
++static const char *filter_names[2] = {
++    "bilinear",
++    "nearest"};
+ 
+ static const char *direction[5] = {
+     "normal", 
+@@ -135,6 +140,7 @@ usage(void)
+            "      --scale <x>x<y>\n"
+            "      --scale-from <w>x<h>\n"
+            "      --transform <a>,<b>,<c>,<d>,<e>,<f>,<g>,<h>,<i>\n"
++           "      --filter nearest,bilinear\n"
+            "      --off\n"
+            "      --crtc <crtc>\n"
+            "      --panning <w>x<h>[+<x>+<y>[/<track:w>x<h>+<x>+<y>[/<border:l>/<t>/<r>/<b>]]]\n"
+@@ -285,6 +291,7 @@ typedef enum _changes {
+     changes_panning = (1 << 10),
+     changes_gamma = (1 << 11),
+     changes_primary = (1 << 12),
++    changes_filter = (1 << 13),
+ } changes_t;
+ 
+ typedef enum _name_kind {
+@@ -1311,6 +1318,10 @@ set_output_info (output_t *output, RROutput xid, XRROutputInfo *output_info)
+ 	    output->transform.params = NULL;
+ 	}
+     }
++    if (output->changes & changes_filter)
++    {
++	output->transform.filter = filter_names[filter_type];
++    }
+ 
+     /* set primary */
+     if (!(output->changes & changes_primary))
+@@ -2808,6 +2819,28 @@ main (int argc, char **argv)
+ 	    action_requested = True;
+ 	    continue;
+ 	}
++	if (!strcmp("--filter", argv[i])) {
++	    int t;
++
++	    if (!config_output) argerr ("%s must be used after --output\n", argv[i]);
++	    if (++i >= argc) argerr("%s requires an argument\n", argv[i-1]);
++
++	    filter_type = -1;
++	    for (t = 0; t < sizeof(filter_names) / sizeof(filter_names[0]); t++)
++	    {
++		if (!strcmp(filter_names[t], argv[i]))
++		{
++		    filter_type = t;
++		    break;
++		}
++	    }
++
++	    if (filter_type == -1) argerr("Bad argument: %s, for a filter\n", argv[i]);
++
++	    config_output->changes |= changes_filter;
++	    action_requested = True;
++	    continue;
++	}
+ 	if (!strcmp ("--crtc", argv[i])) {
+ 	    if (!config_output) argerr ("%s must be used after --output\n", argv[i]);
+ 	    if (++i >= argc) argerr ("%s requires an argument\n", argv[i-1]);
+-- 
+cgit v0.10.2
+
+
+From 8969b3c651eaae3e3a2370ec45f4eeae9750111d Mon Sep 17 00:00:00 2001
+From: Aaron Plattner <aplattner@nvidia.com>
+Date: Thu, 1 Jun 2017 15:45:59 -0700
+Subject: man: Document the new --filter option
+
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+Reviewed-by: Peter Hutterer <peter.hutterer@who-t.net>
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+
+diff --git a/man/xrandr.man b/man/xrandr.man
+index 55ea5dd..65ccc2a 100644
+--- a/man/xrandr.man
++++ b/man/xrandr.man
+@@ -155,7 +155,9 @@ parameters specify the border and default to 0. A width or height set to zero
+ disables panning on the according axis. You typically have to set the screen
+ size with \fI--fb\fP simultaneously.
+ .IP "\-\-transform \fIa\fP,\fIb\fP,\fIc\fP,\fId\fP,\fIe\fP,\fIf\fP,\fIg\fP,\fIh\fP,\fIi\fP"
+-Specifies a transformation matrix to apply on the output. Automatically a bilinear filter is selected.
++Specifies a transformation matrix to apply on the output.
++A bilinear filter is selected automatically unless the \-\-filter parameter is
++also specified.
+ The mathematical form corresponds to:
+ .RS
+ .RS
+@@ -201,6 +203,10 @@ As a special argument, instead of
+ passing a matrix, one can pass the string \fInone\fP, in which case the default
+ values are used (a unit matrix without filter).
+ .RE
++.IP "\-\-filter \fIfiltermode\fP"
++Chooses the scaling filter method to be applied when the screen is scaled or
++transformed.
++Can be either 'bilinear' or 'nearest'.
+ .IP "\-\-scale \fIx\fPx\fIy\fP"
+ Changes the dimensions of the output picture. Values superior to 1 will lead to
+ a compressed screen (screen dimension bigger than the dimension of the output
+-- 
+cgit v0.10.2

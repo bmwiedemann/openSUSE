@@ -1,0 +1,48 @@
+diff -ur libdv-1.0.0.orig/config.h.in libdv-1.0.0/config.h.in
+--- libdv-1.0.0.orig/config.h.in	2011-07-08 16:39:36.355076949 +0200
++++ libdv-1.0.0/config.h.in	2011-07-08 16:40:04.411076945 +0200
+@@ -39,8 +39,8 @@
+ /* Define if you have the `Xv' library (-lXv). */
+ #undef HAVE_LIBXV
+ 
+-/* Define to 1 if you have the <linux/videodev.h> header file. */
+-#undef HAVE_LINUX_VIDEODEV_H
++/* Define to 1 if you have the <libv4l1-videodev.h> header file. */
++#undef HAVE_LIBV4L1_VIDEODEV_H
+ 
+ /* Define to 1 if you have the <machine/endian.h> header file. */
+ #undef HAVE_MACHINE_ENDIAN_H
+diff -ur libdv-1.0.0.orig/configure.ac libdv-1.0.0/configure.ac
+--- libdv-1.0.0.orig/configure.ac	2011-07-08 16:39:36.354076949 +0200
++++ libdv-1.0.0/configure.ac	2011-07-08 16:40:20.147076945 +0200
+@@ -230,7 +230,7 @@
+ dnl Checks for header files.
+ AC_PATH_X
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h linux/videodev.h sys/soundcard.h \
++AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h libv4l1-videodev.h sys/soundcard.h \
+ endian.h machine/endian.h inttypes.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+diff -ur libdv-1.0.0.orig/libdv/enc_input.c libdv-1.0.0/libdv/enc_input.c
+--- libdv-1.0.0.orig/libdv/enc_input.c	2011-07-08 16:39:36.357076949 +0200
++++ libdv-1.0.0/libdv/enc_input.c	2011-07-08 16:44:24.458076915 +0200
+@@ -42,7 +42,7 @@
+ #include <math.h>
+ #endif
+ 
+-#if HAVE_LINUX_VIDEODEV_H
++#if HAVE_LIBV4L1_VIDEODEV_H
+ #define HAVE_DEV_VIDEO  1
+ #endif
+ 
+@@ -50,7 +50,8 @@
+ #define _DEVICE_H_
+ #define _LINUX_TIME_H
+ #include <sys/types.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <fcntl.h>

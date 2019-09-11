@@ -1,0 +1,26 @@
+From 5ed4ebe4fce32e32c75019aa4ac01b78e22c2e44 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Fri, 3 Nov 2017 14:46:39 +0100
+Subject: [PATCH 27/32] quote version_suffix in gem2rpm.yml.documentation to
+ avoid wrong package names
+
+---
+ gem2rpm.yml.documentation | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gem2rpm.yml.documentation b/gem2rpm.yml.documentation
+index fbed82e..bb4893d 100644
+--- a/gem2rpm.yml.documentation
++++ b/gem2rpm.yml.documentation
+@@ -9,7 +9,7 @@
+ # ## used by gem2rpm
+ # :license: MIT or Ruby
+ # ## used by gem2rpm and gem_packages
+-# :version_suffix: -x_y
++# :version_suffix: '-x_y'
+ # ## used by gem2rpm and gem_packages
+ # :disable_docs: true
+ # ## used by gem2rpm
+-- 
+2.20.1
+

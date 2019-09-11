@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Tue Mar  5 18:48:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.17.1 version
+  * Fixed test-suite and converted doctests to unit-tests (#339).
+  * Support for OWS Context (#483 thanks @allixender)
+  * Support for WCS 2.0.0 and 2.0.1 (#430, thanks @doclements)
+  * numerous bug-fixes, especially for WPS.
+- Rename to python-OWSLib to match python package naming guidelines.
+
+-------------------------------------------------------------------
+Wed Jan 17 16:18:09 UTC 2018 - bruno@ioda-net.ch
+
+- Packaging : Move to singlespec + spec-cleaner (date,URL)
+- Update to 0.16.0 version
+  + drop Python 2.6 support
+  + WFS: get schema auth params (karakostis)
+  + WFS: add sortby to GetFeature requests (drnextgis)
+  + CSW: add ows namespace to bounding box queries
+  + CSW: add feature catalogue support parsing
+  + CRS: support proj.4 CRS definitions (orhygine)
+  + fix namespaces (jsanchezfr)
+  + ISO GM03: fix bounding box handling
+  0.15.0
+  + WFS add doseq to WFS request qyery urlencode
+  + WFS handle non-existing bounding boxes in feature types
+  + SOS add support for authentication
+  + WMTS add support for styles
+  + ISO add support for gmd:locale
+  + GM03 add support for GM03 ISO metadata profile
+  + CRS catch invalid CRS codes
+  + WMS fix time dimension handling in Capabilities
+  + SWE various bug fixes
+  + WPS fix WPS DescribeProcess issue on DataType
+   fixed bbox lower/upper_corner conversion
+   added a test for wps BoundingBoxDataInput
+   added BoundingBoxDataInput and fix boundingbox parsing
+  + Misc
+   fix double '&&' in URL requests
+   add util.clean_ows_url function to remove basic service 
+   parameters from OWS base URLs
+  0.14.0
+  + WFS: add authentication (@pmauduit)
+  + WFS: fix parameter names for WFS2
+  + OWS: implement updateSequence support
+  + CSW: fix ref bug in CSW-T workflows
+  + WCS: fix 1.0.0 Capabilities OWS namespace handling
+
+-------------------------------------------------------------------
+Wed Sep 28 08:22:28 UTC 2016 - bruno@ioda-net.ch
+
+- Update to 0.13.0
+- Fix licence which is BSD-3-Clause
+- Fix source url to new https and pypi.io schema
+- Added requests as dependency 
+- Update Copyright year
+
+-------------------------------------------------------------------
+Sun Mar 13 13:09:41 UTC 2016 - bruno@ioda-net.ch
+
+- Update to 0.10.3 
+
+-------------------------------------------------------------------
+Sun Oct 25 08:51:33 UTC 2015 - bruno@ioda-net.ch
+
+- Packaging : 
+   Add missing runtime require python(3)-pyproj
+   Merge back the two package to one source build python3-owslib
+   become a link to. 
+
+-------------------------------------------------------------------
+Sat Oct 17 19:08:37 UTC 2015 - bruno@ioda-net.ch
+
+- Update to 0.9.2  
+
+-------------------------------------------------------------------
+Thu Sep  3 11:21:45 UTC 2015 - toddrme2178@gmail.com
+
+- Shouldn't be noarch in SLE 11
+
+-------------------------------------------------------------------
+Tue Jun 09 12:27:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.8.13
+
+-------------------------------------------------------------------
+Sun Nov 30 02:34:00 UTC 2014 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.8.10
+
+-------------------------------------------------------------------
+Tue Feb  4 12:46:41 UTC 2014 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.8.6
+
+-------------------------------------------------------------------
+Tue Sep 10 14:01:29 UTC 2013 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- added python-dateutil as required
+
+-------------------------------------------------------------------
+Thu Jun  6 19:23:49 UTC 2013 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.7.2
+
+-------------------------------------------------------------------
+Sat Mar 30 16:41:09 UTC 2013 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.7.1
+
+-------------------------------------------------------------------
+Wed Sep  5 21:00:22 UTC 2012 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- updated to 0.5.1
+
+-------------------------------------------------------------------
+Thu Jun 21 20:35:28 UTC 2012 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- fixed CentOS, RedHat and Scientific Linux builds
+
+-------------------------------------------------------------------
+Thu Jun 21 19:34:53 UTC 2012 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- initial release 0.5.0
+

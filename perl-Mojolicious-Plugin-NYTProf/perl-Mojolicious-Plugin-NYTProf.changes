@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Jul  1 18:06:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-NYTProf/Changes
+
+  0.22     2019-07-01
+          - Bump Mojolicious version requirement to 8.00
+          - Add nonblocking example to ExampleApp
+          - Document caveats with using async code with profiling
+
+-------------------------------------------------------------------
+Fri Oct 12 08:36:24 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 0.21
+  only rename pod file when it is installed
+
+-------------------------------------------------------------------
+Wed May 30 08:32:12 UTC 2018 - marius.kittler@suse.com
+
+- Rename README.pod to README-NYTProf.pod to prevent file conflict
+  with perl-Mojolicious-Plugin-RenderFile 
+
+-------------------------------------------------------------------
+Fri May 25 09:09:02 UTC 2018 - marius.kittler@suse.com
+
+- Add changes files

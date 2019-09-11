@@ -1,0 +1,621 @@
+-------------------------------------------------------------------
+Fri Jul 12 09:58:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.0
+  * Code updated to support Qt 5.13
+  * Fixed the conversion of the result of QNetworkCacheMetaData.attributes()
+- Drop reproducible.patch, merged upstream.
+
+-------------------------------------------------------------------
+Thu Jun  6 17:32:30 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Mon Jun  3 18:39:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.12.2
+  * Fixed QIcon(QIconEngine) to reflect that the engine is explicitly
+  shared between every copy of the icon.
+  * Eliminated a warning message from QObject::connect()
+  * Increased the number of QQuickItem types that can be registered
+    from 30 to 60.
+  * Fixed the QPolygon ctors
+  * Fixed pyuic's handling of 'sizePolicy' properties.
+  * Fixed pylupdate to handle empty strings at the end of a line so
+    that the line number remains correct.
+
+-------------------------------------------------------------------
+Thu Apr 18 17:53:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim name repetition from summary.
+
+-------------------------------------------------------------------
+Wed Apr 17 15:22:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Package .dist-info directory.  The bugs with it have been fixed
+  and some packages require it in order to properly detect that
+  pyqt5 is installed.
+
+-------------------------------------------------------------------
+Sat Apr  6 14:19:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.12.1
+  Fixed QIcon(QIconEngine) to reflect that the engine is explicitly
+  shared between every copy of the icon.
+- Prepare update-timeline.patch for Qt 5.13.0
+
+-------------------------------------------------------------------
+Mon Feb 11 09:03:27 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to final 5.12 version
+  * Support for Qt 5.12
+  * Details at https://www.riverbankcomputing.com/static/Downloads/PyQt5/ChangeLog
+- fix-sip-detection.patch is obsolete
+
+-------------------------------------------------------------------
+Thu Jan 10 08:44:02 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 5.12 development snapshot
+
+-------------------------------------------------------------------
+Wed Nov 14 13:33:59 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build Qt5NetworkAuth support in SLE, which doesn't have the
+  libqt5-qtnetworkauth package
+
+-------------------------------------------------------------------
+Thu Nov  8 17:44:05 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- python-enum34 is also required at runtime.
+
+-------------------------------------------------------------------
+Mon Oct 22 06:40:48 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure python-enum34 is installed when building packages
+  depending on python-qt5.
+
+-------------------------------------------------------------------
+Sun Oct 21 09:03:38 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fix-sip-detection.patch. Picked from the Fedora package
+
+-------------------------------------------------------------------
+Mon Sep 17 10:18:42 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.11.3
+  * Fixed a build problem with Python v2.
+  * Removed the checks for PyQt5.sip
+  * Fix issues with out of source builds
+
+-------------------------------------------------------------------
+Wed Aug  8 08:31:03 UTC 2018 - schwab@suse.de
+
+- No qtwebengine for riscv64 yet
+
+-------------------------------------------------------------------
+Mon Jul  2 15:45:48 UTC 2018 - christophe@krop.fr
+
+- Update to 5.11.2:
+  * Added support for Qt v5.11.0 and v5.11.1.
+  * Added support for Python v3.7.
+  * Enum members are also visible as attributes of the enum in order to emulate
+    the behaviour of Python enums.
+  * The connect() method of a bound signal now returns a QMetaObject.Connection
+    object that can be passed to the disconnect() method.
+  * Added the signatures attribute to unbound signals.
+  * Added QtCore.Q_ENUM() and QtCore.Q_FLAG().
+  * Python enums can now be used with Q_ENUM() etc.
+  * Added the missing QGuiApplication.inputMethod() method.
+  * Added the missing QGuiApplication.styleHints() method.
+  * Added the missing QSqlQuery.exec() overload for Python v3.
+  * Added glReadPixels().
+- Drop remove-qtest-waitforevents.patch. Fixed upstream.
+- Drop qt_quick_crash_fix.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Mon Jun 11 19:58:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Amend patch to mention even more Qt versions:
+  * update-timeline.patch
+
+-------------------------------------------------------------------
+Tue May 15 06:15:46 UTC 2018 - adrian@suse.de
+
+- fix URL
+- fix crash in Qt Quick when used with Cura (from upstream)
+  (regression in 5.10.1, qt_quick_crash_fix.patch)
+
+-------------------------------------------------------------------
+Thu May  3 07:49:19 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to remove use of internal Qt function:
+  * remove-qtest-waitforevents.patch
+
+-------------------------------------------------------------------
+Fri Apr 27 07:13:11 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to support Qt 5.9.4, 5.9.5 and Qt 5.11.0:
+  * update-timeline.patch
+- Refresh patch to work with -p1:
+  * disable-rpaths.diff
+
+-------------------------------------------------------------------
+Tue Apr 17 14:44:34 UTC 2018 - lbeltrame@kde.org
+
+- Remove source URL to workaround SourceForge's unreliability
+
+-------------------------------------------------------------------
+Tue Apr 17 01:23:38 UTC 2018 - termim@gmail.com
+
+- Update to version v5.10.1
+  * Added support for Qt v5.10.1.
+  * Added the missing qmlClearTypeRegistrations() to the QtQml module.
+  * Added the --disabled-feature option to configure.py.
+
+-------------------------------------------------------------------
+Fri Jan 26 08:49:11 UTC 2018 - aloisio@gmx.com
+
+- Update to version v5.10
+  * Added support for Qt v5.10.0.
+  * Added the QtNetworkAuth module.
+  version v5.9.2
+  * Added support for Qt v5.9.3.
+  * Added the QtAndroidExtras module.
+  version v5.9.1
+  * Added support for Qt v5.9.2.
+  * Added the --allow-sip-warnings option to configure.py.
+  * Removed the unimplemented -name option to pyrcc5.
+  * SIP v4.19.4 is required.
+
+- Dropped configure_py_Fix_handling_of_disabled_features.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Wed Oct 25 22:04:51 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- add configure_py_Fix_handling_of_disabled_features.patch
+  configure.py is broken if features are disabled, which e.g. happens
+  when building using GLEs Qt5 builds. Taken from upstream
+  developement snapshot.
+
+-------------------------------------------------------------------
+Fri Sep  1 15:59:06 UTC 2017 - mlin@suse.com
+
+- Disable WebKit and WebEngine on SLE15.
+
+-------------------------------------------------------------------
+Tue Aug 29 12:07:25 UTC 2017 - toddrme2178@gmail.com
+
+- Fix shebangs
+
+-------------------------------------------------------------------
+Mon Aug 28 21:04:21 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 5.9
+  * Added support for Qt v5.9.0 and v5.9.1.
+  * Improved detection of the destruction of QObject-based instances by C++.
+  * QFlags instances are now hashable.
+  * pyrcc5 now supports v2 of the resource file format.
+  * Added the interview.py, frozencolumn.py and storageview.py examples from
+    Hans-Peter Jansen.
+  * SIP v4.19.3 is required.
+- Remove reproducible.patch
+  Implemented upstream.
+
+-------------------------------------------------------------------
+Fri Jun  2 11:22:22 UTC 2017 - jengelh@inai.de
+
+- Trim redundant platform support mentions.
+
+-------------------------------------------------------------------
+Mon May 22 20:23:46 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build fully reproducible
+
+-------------------------------------------------------------------
+Tue May 16 17:57:51 UTC 2017 - toddrme2178@gmail.com
+
+- Fix issues with requires.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:59:55 UTC 2017 - mpluskal@suse.com
+
+- Move requirements for development package to correct place
+
+-------------------------------------------------------------------
+Sat Apr  8 13:57:45 UTC 2017 - hpj@urpla.net
+
+- Update to 5.8.2
+  * lib/configure.py:
+    Fixes for the OpenGL detection needed by the incompatible
+    configuration changes in Qt v5.8.0.
+  * qpy/QtCore/qpycore_chimera.cpp:
+    When parsing a Python type map list and dict to QVariantList and
+    QVariantMap.
+  * lib/LICENSE.commercial, lib/LICENSE.commercial.short,
+    lib/LICENSE.gpl, lib/LICENSE.gpl.short, lib/LICENSE.internal:
+    Remove the license copies that are now part of rb-tools.
+  * pyuic/uic/uiparser.py:
+    Fixed the margins of the top layout in a tab by pyuic.
+  * pyuic/uic/driver.py, pyuic/uic/exceptions.py,
+    pyuic/uic/properties.py, pyuic/uic/pyuic.py:
+    Improved the error handling of an unknown C++ class.
+  * sphinx/qml.rst:
+    Added explicit warnings about PyQt's ability to support QML to the
+    docs.
+  * PyQt5.msp:
+    Added a comment about why opengl_types.sip is included twice.
+  * PyQt5.msp:
+    Only enable QOpenGLTextureBlitter if OpenGL is supported.
+  * PyQt5.msp:
+    Avoid a deadlock when using asynchronous image providers in QML.
+
+- Update to 5.8.1
+  * qpy/QtCore/qpycore_chimera.cpp:
+    Special case a QVariant containing std::nullptr_t.
+  * METADATA.in:
+    Updated the Requires-Dist meta-data so it includes the values from
+    the release file.
+  * lib/configure.py:
+    Disable desktop OpenGL if OpenGLES v3 or v3.1 is detected.
+  * qpy/QtQml/qpyqml_register_type.cpp:
+    Fixed the handling of properties in Qml because of changes to the
+    internals in Qt v5.8.0.
+  * PyQt5.msp:
+    Fixed QLocale.toString() for Python v2.
+  * PyQt5.msp:
+    Anticipate that Qt v5.9.0 will be released before Qt v5.8.1 to avoid
+    problems building PyQt v5.9 against Qt v5.8.1.
+  * qpy/QtPrintSupport/qpyprintsupport_qlist.sip:
+    The QtPrintSupport mapped types are only included if printers are
+    supported.
+  * sphinx/pyqt_qvariant.rst:
+    Updated the docs regarding support for QVariant.
+  * qpy/QtQml/qpyqmlobject.cpp:
+    Fixed signals in QML registered types that are defined in a Python
+    sub-class of the registered type.
+
+-------------------------------------------------------------------
+Wed Mar 29 15:09:37 UTC 2017 - toddrme2178@gmail.com
+
+- Fix singlespec macro usage.  BuildRequires are shared between
+  python versions, only the requires should be specific to particular
+  python versions.
+
+-------------------------------------------------------------------
+Fri Mar 24 06:14:17 UTC 2017 - lbeltrame@kde.org
+
+- Temporarily undo some of the single spec changes to allow building
+  until a newer python-dbus is available
+
+-------------------------------------------------------------------
+Mon Mar  6 20:51:00 UTC 2017 - toddrme2178@gmail.com
+
+- Switch to single-spec version.
+- Add doc-file-dependency to rpmlintrc to handle the example files.
+
+-------------------------------------------------------------------
+Wed Feb 15 19:06:06 UTC 2017 - termim@gmail.com
+
+- Update to 5.8
+  * Added support for Qt v5.8.0.
+  * Added __fspath__() to QFileInfo.
+  * Added the --qml-debug option to configure.py. The --debug option
+    no longer enables the QML debugging infrastructure.
+  * Added the --link-full-dll option to configure.py.
+- Removed patches:
+  * disable_qml_debug.diff - fixed upstream
+  * fix_qreal_check.diff - not needed acording the package developer
+  * license.diff - fixed upstream
+  * obsolete_window_flag.diff - fixed upstream
+
+-------------------------------------------------------------------
+Tue Jan  3 19:30:49 UTC 2017 - termim@gmail.com
+
+- Update to 5.7.1
+  * added the QtWebEngine module
+  * added QRegion.setRects()
+  * added QtMac to the QtMacExtras module
+  * added support for QChartView and QWebEngineView to pyuic5.
+
+-------------------------------------------------------------------
+Wed Nov 30 07:07:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Add obsolete_window_flag.diff: remore declaration that was removed
+  in Qt 5.8 (it was WinCE-only)
+- Add license.diff: QLibrary::Licensee is deprecated in Qt 5.8, and
+  produce empty string. We know we are always building opensource
+  Qt.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:41:24 UTC 2016 - lbeltrame@kde.org
+
+- Remove Source URL, the validator doesn't work too well with
+  SourceForge
+
+-------------------------------------------------------------------
+Mon Nov 14 19:59:32 UTC 2016 - hpj@urpla.net
+
+- add patch to disable qml_debug: disable_qml_debug.diff.
+  Without this, the message "QML debugging is enabled. Only use
+  this in a safe environment."  appears on PyQt5 apps startup,
+  and allows qmljsdebugger to  connect via network.
+
+-------------------------------------------------------------------
+Tue Nov  8 15:21:49 UTC 2016 - hpj@urpla.net
+
+- make utils dependent on exact version
+
+-------------------------------------------------------------------
+Tue Jul 26 17:59:41 UTC 2016 - termim@gmail.com
+
+- Update to 5.7
+  * Added support for Qt v5.7.0.
+  * Removed patch pyqt5-fix-dbus-config.diff as applyed upstream
+
+-------------------------------------------------------------------
+Mon Jul  4 06:02:41 UTC 2016 - hpj@urpla.net
+
+- Update to 5.6
+  * Added full support for Qt v5.6.0.
+  * Python v3.5 wheels are available for 64-bit Linux, 64-bit OS X
+    and 32 and 64-bit Windows. (After this release Windows .exe
+    installers will no longer be produced.)
+  * Added the QtWebEngineCore module.
+  * Added the missing qt_set_sequence_auto_mnemonic() to QtGui.
+  * Added the missing MouseLock to QWebEnginePage.Feature.
+  * Added the missing WA_DontShowOnScreen.
+  * PEP 484 stub files are installed by default.
+  * Added the --import-from command line argument to pyuic5.
+  * Added the --no-stubs and --stubsdir options to configure.py.
+  * Added the --qtconf-prefix option to configure.py.
+- add PATCH-FIX-OPENSUSE pyqt5-fix-dbus-config.diff to fix build of
+  dbus bindings
+- supply %{optflags} to the QMAKE machinery
+- add libqt5-qtlocation-devel build dependency
+
+-------------------------------------------------------------------
+Sun Jun  5 00:20:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Drop unused libqt5-qtquick1-devel (Build)Requires
+
+-------------------------------------------------------------------
+Mon Mar  7 15:29:44 UTC 2016 - dvaleev@suse.com
+
+- Don't buildrequire libqt5-qtwebengine-devel for POWER and s390x
+
+-------------------------------------------------------------------
+Mon Feb  1 06:29:22 UTC 2016 - lbeltrame@kde.org
+
+- BuildRequire libqt5-qtconnectivity-devel to gain support for
+  QtBluetooth (bnc#964256)
+
+-------------------------------------------------------------------
+Fri Oct 30 18:17:37 UTC 2015 - termim@gmail.com
+
+- Update to 5.5.1
+  * added support for Qt v5.5.1
+  * added the --disable option to configure.py
+  * implemented __matmul__ and __imatmul__ for QMatrix4x4 and
+    QTransform.
+
+-------------------------------------------------------------------
+Fri Aug 14 03:40:56 UTC 2015 - termim@gmail.com
+
+- change required sip version to 4.16.9
+
+-------------------------------------------------------------------
+Mon Jul 20 15:39:53 UTC 2015 - termim@gmail.com
+
+- remove patch build-compare.diff as adapted in upstream
+- Update to 5.5
+  * Added full support for Qt v5.5.0.
+  * Added the QtLocation module.
+  * Added the QtNfc module.
+  * Added Qt.NoOpaqueDetection amd Qt.NoFormatConversion to QtCore.
+  * Added QMacToolBar and QMacToolBarItem to QtMacExtras.
+  * Added QProxyStyle to QtWidgets.
+- Update to 5.4.2
+  * Added support for Qt v5.4.2.
+  * Added QWIDGETSIZE_MAX to QtWidgets.
+  * Added the --no-python-dbus command line option to configure.py.
+- Update to 5.4.1
+  * Added support for Qt v5.4.1.
+  * Added the QMacCocoaViewContainer class.
+  * All OpenGL examples use QOpenGLWidget and no longer require
+    PyOpenGL.
+  * Added initial implementations of _QOpenGLFunctions_2_1 and
+    _QOpenGLFunctions_4_1_Core.
+  * QEvent.None is now QEvent.None_.
+  * Added missing QEvent.Type members that are now documented in Qt.
+  * Added the --license-dir option to configure.py.
+  * Installing into a virtual env should now work.
+  * pyuic5 and pyrcc5 no longer include a timestamp in the
+    generated code.
+
+-------------------------------------------------------------------
+Fri Jan 16 20:32:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Enable QtWebEngineWidgets and QtWebChannel integration
+- Update build-compare.diff
+- Drop fdupes usage due to unpredictable symlinking
+- Add rpmlintrc due to duplicates waste warnings: we rather have
+  a few bytes more than to republish same binaries due to fdupes
+
+-------------------------------------------------------------------
+Tue Dec 30 20:09:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4
+  * Major functional release that adds full support for Qt v5.4.0.
+  * Added the QtWebChannel module
+  * Added the QtWebEngineWidgets module
+  * Added the QtXml module.
+- Drop add_dep.patch, merged upstream
+- Bump python(3)-sip-devel (Build)Requires to 4.16.4
+
+-------------------------------------------------------------------
+Sat Oct 11 21:08:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2
+  * Added the Enginio module.
+  * Added the QJsonDocument and QJsonValue classes.
+  * QJsonObject is implemented as a Python dict.
+  * QJsonArray is implemented as a Python list.
+  * Added setUnifiedTitleAndToolBarOnMac() and
+    unifiedTitleAndToolBarOnMac() to QWidget.
+  * Added windowHandle() to QWidget.
+- Drop usage of rversion, use version directly
+- Disable disable-rpaths.diff, upstream removed RPATH usage in this
+  release
+
+-------------------------------------------------------------------
+Wed Sep 10 06:29:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added add_dep.patch: make the buildsystem know that QtPrintSUpport
+  module is needed for QtWebkitWidgets one, previously the build
+  only succeeded due to QTBUG-39249
+
+-------------------------------------------------------------------
+Sun Jul  6 00:59:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * minor bug-fix release
+
+-------------------------------------------------------------------
+Wed Jun 25 01:29:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Drop link-python.diff, it's unused
+
+-------------------------------------------------------------------
+Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3
+  * By default a Python slot is only invoked if the underlying C++
+    instance still exists.
+  * Added the no_receiver_check argument to connect().
+  * Added support for Qt v5.3.0.
+  * Added the QtQuickWidgets module.
+  * Added the QtWebSockets module.
+  * Added the --target_py_version, --sysroot and --no-tools option
+    to configure.py.
+  * Cross-compilation (specifically to iOS and Android) is now supported
+- Drop qglobal.patch, included in this release
+- Added libqt5-qtwebsockets-devel BuildRequires
+- Bump required python(3)-sip-devel version to 4.16
+
+-------------------------------------------------------------------
+Fri May 16 19:38:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added qglobal.patch, to resolve build failure with Qt 5.3 API
+
+-------------------------------------------------------------------
+Sun May  4 15:06:38 UTC 2014 - i@marguerite.su
+
+- added missing qtmultimedia/qtserialport/qtxmlpatterns modules.
+
+-------------------------------------------------------------------
+Fri Mar 21 22:36:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1
+  * Full support for Qt v5.2.1.
+  * Properties, signals and slots can now be defined in mixins
+    (i.e. non-QObject classes).
+  * Support for creating QSGGeometry.AttributeSet instances.
+  * Fundamental values may now be given whenever a QJSValue
+    is expected.
+  * Building PyQt5 as static libraries now works.
+  * Support for building without OpenGL.
+- Bump sip BuildRequire to current requirements (4.15.5). Also,
+  that is now minimal requires for devel subpackages
+- Rebase disable-rpaths.diff for this release
+- Disable fix_qreal_check.diff, for now the issue is fixed with
+  Qt >= 5.2
+- Drop checks for ancient releases
+
+-------------------------------------------------------------------
+Thu Feb  6 20:51:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added fix_qreal_check.diff, fixes build on arm
+
+-------------------------------------------------------------------
+Fri Jan 10 22:11:23 UTC 2014 - lbeltrame@kde.org
+
+- Use %ghost with files generated by update-alternatives
+
+-------------------------------------------------------------------
+Fri Jan 10 19:48:33 UTC 2014 - lbeltrame@kde.org
+
+- New upstream release 5.2:
+    - Full support for Qt5.2
+    - Support added for the QtBluetooth, QtPositioning, QtMacExtras,
+      QtWinExtras and QtX11Extras
+- Fix SNAFU in preun scriptlet (missing spaces)
+
+-------------------------------------------------------------------
+Tue Dec 17 03:00:16 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Move away from pkgconfig(...) BuildRequires and just use
+  libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+-------------------------------------------------------------------
+Mon Oct 21 17:01:45 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Fix Requires for the devel packages
+
+-------------------------------------------------------------------
+Sun Oct 20 12:04:00 UTC 2013 - lbeltrame@kde.org
+
+- Use alternatives to prevent conflicts between Python 2 and Python 3
+  tools
+
+-------------------------------------------------------------------
+Thu Oct 17 15:40:06 UTC 2013 - toddrme2178@gmail.com
+
+- New upstream release (5.1.1):
+  * Bugfixes
+- Rebase disable-rpaths.diff
+
+-------------------------------------------------------------------
+Sat Oct  5 07:19:57 UTC 2013 - lbeltrame@kde.org
+
+- New upstream release (5.1):
+  * Full support for Qt 5.1
+  * Support for QtSensors and QtSerialPort modules
+  * Almost complete set of bindings for OpenGL 2.0 and OpenGL ES/2
+- Bump required SIP version
+
+-------------------------------------------------------------------
+Wed Sep 11 18:43:53 UTC 2013 - lbeltrame@kde.org
+
+- New upstream release (5.0.1):
+  * Added the QtQuick module including the ability to create
+    Python Quick items from QML.
+  * Added the QtQml module including the ability to create Python objects from
+    QML.
+  * Added the QtMultimediaWidgets module.
+  * Completed the implementation of the QtMultimedia module including support
+    for cameras and radios.
+  * Added the remaining OpenGL classes to the QtGui module.
+  * Added the revision keyword argument to pyqtProperty().
+  * Added the revision and arguments keyword arguments to pyqtSignal().
+  * Added the revision keyword argument to pyqtSlot().
+  * Added the pyqt5qmlplugin plugin for qmlscene.
+  * The DBus main loop module has been renamed to dbus.mainloop.pyqt5
+    from dbus.mainloop.qt.
+  * Added the --no-qml-plugin and --qml-plugindir options to configure.py.
+  * Added many QtMultimedia, QML and QtQuick related examples.
+  * Classes now support co-operative multi-inheritance. (This may
+    introduce incompatibilities with PyQt v5.0.)
+- Drop mainloop_rename.diff (merged upstream)
+
+-------------------------------------------------------------------
+Tue Aug  6 16:14:36 UTC 2013 - lbeltrame@kde.org
+
+- Add Patch3 to fix the dbus mainloop lib name (already upstream)
+
+-------------------------------------------------------------------
+Mon Aug  5 17:00:28 UTC 2013 - lbeltrame@kde.org
+
+- Initial package for PyQt5.
+

@@ -1,0 +1,14 @@
+Dear SUSE user,
+
+conky is highly customizable monitor. It has to
+be configured for given system, though. Please
+refer to conky documentation at:
+
+https://github.com/brndnmtthws/conky
+http://conky.sourceforge.net/config_settings.html
+http://conky.sourceforge.net/variables.html
+
+As a start, you can generate basic configuration
+with `conkyconf' script provided with the package.
+
+See conkyconf --help.

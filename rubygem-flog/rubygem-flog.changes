@@ -1,0 +1,310 @@
+-------------------------------------------------------------------
+Thu Feb 15 05:31:22 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 4.6.2
+ see installed History.rdoc
+
+  === 4.6.2 / 2018-02-14
+  
+  * 1 bug fix:
+  
+    * Don't process stdin if cmdline args expand to nothing.
+
+-------------------------------------------------------------------
+Tue Feb 14 05:33:48 UTC 2017 - coolo@suse.com
+
+- updated to version 4.6.1
+ see installed History.rdoc
+
+  === 4.6.1 / 2017-02-08
+  
+  * 1 bug fix:
+  
+    * Fixed max line number in range report. AKA I'm an idiot.
+  
+  === 4.6.0 / 2017-02-01
+  
+  * 2 minor enhancements:
+  
+    * Bumped dependency on sexp_processor to 4.8 and up.
+    * Include new Sexp#line_max info for in_method so DSLs can record line span.
+
+-------------------------------------------------------------------
+Fri Jan 20 05:30:51 UTC 2017 - coolo@suse.com
+
+- updated to version 4.5.0
+ see installed History.rdoc
+
+  === 4.5.0 / 2017-01-19
+  
+  * 3 minor enhancements:
+  
+    * Added -t=N and --threshold N processing to FlogCLI.
+    * Added tweakable threshold to Flog (still defaults to 60%).
+    * Renamed Flog::THRESHOLD to Flog::DEFAULT_THRESHOLD (but kept an alias around).
+
+-------------------------------------------------------------------
+Sat Jan 14 05:31:51 UTC 2017 - coolo@suse.com
+
+- updated to version 4.4.1
+ see installed History.rdoc
+
+  === 4.4.1 / 2017-01-13
+  
+  * 1 bug fix:
+  
+    * Fixed scoring of Rational lits.
+
+-------------------------------------------------------------------
+Tue May 17 04:38:07 UTC 2016 - coolo@suse.com
+
+- updated to version 4.4.0
+ History.txt removed upstream
+
+-------------------------------------------------------------------
+Mon Feb  9 08:06:40 UTC 2015 - coolo@suse.com
+
+- updated to version 4.3.2
+ * 1 bug fix:
+   * Fixed rdoc url (phiggins)
+   * Fixed to_proc_normal scoring on ruby 2.2+. (teoljungberg)
+
+-------------------------------------------------------------------
+Wed Oct 15 09:16:20 UTC 2014 - coolo@suse.com
+
+- updated to version 4.3.0
+  * 1 minor enhancement:
+    * Added methods_only param to FlogTask. (jocranford)
+  
+  * 2 bug fixes:
+  
+    * Fixed grouping by class name. (guilhermesimoes)
+    * Removed dead rubyforge setting in Rakefile
+
+-------------------------------------------------------------------
+Sun Oct 12 11:06:27 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Wed Sep 10 13:59:44 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm.yml as source
+
+-------------------------------------------------------------------
+Wed Sep 10 09:32:05 UTC 2014 - mrueckert@suse.de
+
+- added a small scriptlet to fix the shebang line of the wrapper
+  script in the gem dir. the installed copy has it overwritten
+  but our she bang line checks the not installed copy too.
+- also added a gem2rpm.yml for later, but did not regenerate the
+  specfile just yet.
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:34 UTC 2013 - coolo@suse.com
+
+- updated to version 4.2.0
+* 3 minor enhancements:
+
+  * Added --extended / -e to put file:line output on next line (for rubymine & friends)
+  * Extracted MethodBasedSexpProcessor and pushed up to sexp_processor gem.
+  * Updated dependency on sexp_processor to ~> 4.4.
+
+-------------------------------------------------------------------
+Sat Sep  7 05:20:00 UTC 2013 - coolo@suse.com
+
+- updated to version 4.1.2
+ * 2 bug fixes:
+ 
+   * Don't even record a score if method stack is empty and user used --methods-only.
+   * Fixed Flog task's default method. (jasonrobertfox)
+
+-------------------------------------------------------------------
+Fri Jul 12 19:09:12 UTC 2013 - coolo@suse.com
+
+- updated to version 4.1.1
+ * 1 minor enhancement:
+   * Added max_method to delegators.
+ 
+ * 1 bug fix:
+   * Fixed FlogTask to use FlogCLI. (envygeeks)
+
+-------------------------------------------------------------------
+Mon May 13 08:11:28 UTC 2013 - coolo@suse.com
+
+- updated to version 4.1.0
+ * 3 minor enhancements:
+ 
+   * Cleaned up tests by adding assert_hash_in_epsilon. yay!
+   * Fixed method_location is now cleared on #reset. (makaroni4)
+   * to_proc_normal is now penalized based on RUBY_VERSION. Scores were benchmarked.
+ 
+ * 1 bug fix:
+ 
+   * Fixed code/home urls in readme/gem.
+
+-------------------------------------------------------------------
+Wed Apr 24 05:55:14 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.0
+ * 1 major enhancement:
+   * Renamed Flog#methods to #method_scores. (makaroni4)
+ 
+ * 4 minor enhancements:
+   * Added accessors for methods, scores. Now available for CIs! (makaroni4)
+   * Refactored calculations down to 2 methods: total_score and totals. (makaroni4)
+   * Refactored to #calculate, #threshold. (makaroni4)
+   * Track stack of nested sclass scopes for parser (pithyless)
+
+-------------------------------------------------------------------
+Sat Mar 23 08:05:09 UTC 2013 - coolo@suse.com
+
+- updated to version 3.2.3
+ * 1 bug fix:
+   * Don't blow up if a path doesn't exist or isn't readable.
+
+-------------------------------------------------------------------
+Wed Jan 23 06:30:36 UTC 2013 - coolo@suse.com
+
+- updated to version 3.2.2
+   * Fixed stupid error when run on empty file.
+
+-------------------------------------------------------------------
+Fri Dec 21 17:23:05 UTC 2012 - coolo@suse.com
+
+- updated to version 3.2.1
+  * Relaxed (and fixed) the ruby_parser dependency.
+
+-------------------------------------------------------------------
+Wed Dec 19 06:38:09 UTC 2012 - coolo@suse.com
+
+- updated to version 3.2.0
+ * 4 minor enhancements:
+ 
+   * Ensure rake/tasklib is loaded when defining FlogTask. (ferrous26)
+   * Fixed reporting / recording of methods in singleton class blocks. (mihu)
+   * Refactored error handling code to flog_ruby. Calls flog_ruby! for actual work
+   * Refactored ruby processing code to flog_ruby!
+ 
+ * 1 bug fix:
+ 
+   * Fixed flogging of || iters. (JacobNinja)
+
+-------------------------------------------------------------------
+Sat Nov 17 05:58:24 UTC 2012 - coolo@suse.com
+
+- updated to version 3.1.0
+ * 4 minor enhancements:
+ 
+   * --quiet option is now false by default, and changed to silence parse warnings.
+   * Added max_score and max_method. (aselder)
+   * FlogTask can now take a method to use to figure out score, allowing for total or max_score.
+   * Switched to capturing RubyParser::SyntaxError (RP 3.0 change).
+ 
+ * 2 bug fixes:
+ 
+   * Avoid redefined warning for File::RUBY19. (svendahlstrand)
+   * Fixed flog to default to RubyParser if not specified. Allows cleaner programmatic access.
+
+-------------------------------------------------------------------
+Sat Nov  3 07:55:51 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.0
+ * 1 minor enhancement:
+ 
+   * Added a timeout handler to skip when RubyParser times out on a large file
+ 
+ * 1 bug fix:
+ 
+   * Fixed handling of plain literals in masgn in args.
+ 
+ * 4 minor enhancements:
+ 
+   * Added .rake as a supported extension.
+   * Create a new parser for every file, preventing state barkification
+   * Extended DSL support to include hash args (eg task :blah => :dep).
+   * Extended DSL support to report nested names (eg namespace(blah)::task#woot)
+ 
+ * 1 bug fix:
+ 
+   * Fix for sexp structure changes (no arglists).
+ 
+ * 4 minor enhancements:
+ 
+   * Added --18 and --19 flags to specify parser. Defaults to hybrid.
+   * Explicitly use Ruby18Parser to remove deprecation warnings.
+   * Modified processor to deal with cleaner sexps from RP 3.x.
+   * Use File.binread (File.read in 1.8) to bypass encoding errors
+ 
+ * 2 bug fixes:
+ 
+   * Cleaned up some 1.9 warnings.
+   * Fixed failing tests against ruby_parser 3
+
+-------------------------------------------------------------------
+Fri Aug 10 15:25:46 UTC 2012 - coolo@suse.com
+
+- update to the latest gem2rpm template
+
+-------------------------------------------------------------------
+Sun Jul 22 12:33:43 UTC 2012 - coolo@suse.com
+
+- fix gem requires
+
+-------------------------------------------------------------------
+Wed Apr 11 09:44:24 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  See README.txt
+
+-------------------------------------------------------------------
+Mon Apr  9 18:37:18 UTC 2012 - coolo@suse.com
+
+- update to version 2.5.3
+    * class_stack now always pushes on symbols or strings for class names.
+    * Fixed klass_name returning an ugly mix of sexps and strings.
+    * Improved parse error output. (impurist)
+    * Added RegexpError to error handler.
+    * Improved error output and suggest --continue
+    * Record the flog score for the full class name, not just suffix. (dkubb)
+    * Fixed block_pass when passed a multi-level const (xavier)
+
+-------------------------------------------------------------------
+Mon Sep  6 14:36:04 UTC 2010 - mrueckert@suse.de
+
+- update to version 2.5.0
+  * Added plugin system. Define a module under Flog to extend it.
+  * Added special case penalty for wtf to_proc:
+    blah(&b = proc {...}) (benjaminb)
+  * Improved tests and test coverage.
+  * Unfactored & refactored report code. Much cleaner and  more
+    maintainable now.
+  * Fixed API change for FlogTask (andreacampi)
+  * Fixed bad edgecase handler for block_pass (benjaminb)
+
+-------------------------------------------------------------------
+Wed Aug  4 15:58:33 UTC 2010 - dmacvicar@novell.com
+
+- remove hoe as runtime dependency 
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 01:01:59 UTC 2009 - prusnak@suse.cz
+
+- updated to 2.4.0
+
+-------------------------------------------------------------------
+Tue Aug 11 14:10:54 CEST 2009 - dmacvicar@novell.com
+
+- package c13a0ebfa60a9385982cab0f9c4747a264d7c7ef git as
+  the official 2.1.2 gem is completely broken.
+
+-------------------------------------------------------------------
+Sun Jul 26 21:20:50 CEST 2009 - dmacvicar@suse.de
+
+- initial package for 2.1.2
+

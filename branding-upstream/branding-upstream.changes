@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Sep  2 20:57:52 CEST 2013 - sbrabec@suse.cz
+
+- Rename branding file to SUSE-brand (FATE#316269).
+
+-------------------------------------------------------------------
+Tue Feb  5 13:34:37 UTC 2013 - coolo@suse.com
+
+- bump version to 12.3
+
+-------------------------------------------------------------------
+Tue Sep 20 12:47:36 UTC 2011 - coolo@suse.com
+
+- bump version to 12.1
+
+-------------------------------------------------------------------
+Sat Sep 17 20:39:36 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Nov 24 16:31:46 UTC 2010 - coolo@novell.com
+
+- dump version to 11.4
+
+-------------------------------------------------------------------
+Sun Jun  6 06:40:29 UTC 2010 - coolo@novell.com
+
+- dump version to 11.3
+
+-------------------------------------------------------------------
+Mon Oct  6 15:49:44 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Wed Sep 17 17:51:19 CEST 2008 - sbrabec@suse.cz
+
+- New SuSE package (bnc#425390).
+

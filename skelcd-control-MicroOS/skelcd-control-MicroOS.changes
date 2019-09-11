@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Aug 02 13:17:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add /usr/local subvolume [boo#1143682]
+- Fix indentation
+- 20190802
+
+-------------------------------------------------------------------
+Wed Jun 19 13:55:23 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add /boot/writable subvolume [boo#1138725]
+- 20190619
+
+-------------------------------------------------------------------
+Thu Jun 13 14:57:51 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add srv as a subvolume [boo#1132436]
+- Select product on installation [boo#1124590]
+- 20190613
+
+-------------------------------------------------------------------
+Tue Apr 16 13:15:21 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Actually Fix MicroOS Container Host description [boo#1131975]
+- 20190416
+
+-------------------------------------------------------------------
+Tue Apr 09 12:13:52 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Fix MicroOS Container Host description [boo#1131975]
+- 20190409
+
+-------------------------------------------------------------------
+Fri Apr 05 12:47:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Use new patterns-microos pattern names [boo#1131700]
+- 20190405
+
+-------------------------------------------------------------------
+Wed Mar 13 15:03:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Inital Version
+- 20190313

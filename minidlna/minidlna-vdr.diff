@@ -1,0 +1,20 @@
+Index: utils.c
+===================================================================
+--- utils.c.orig	2017-05-17 22:55:17.000000000 +0200
++++ utils.c	2017-06-29 01:34:45.635284163 +0200
+@@ -400,6 +400,7 @@ is_video(const char * file)
+ #ifdef TIVO_SUPPORT
+ 		ends_with(file, ".TiVo") ||
+ #endif
++		ends_with(file, ".vdr") ||
+ 		ends_with(file, ".mov") || ends_with(file, ".3gp"));
+ }
+ 
+@@ -412,6 +413,7 @@ is_audio(const char * file)
+ 		ends_with(file, ".m4a") || ends_with(file, ".aac")  ||
+ 		ends_with(file, ".mp4") || ends_with(file, ".m4p")  ||
+ 		ends_with(file, ".wav") || ends_with(file, ".ogg")  ||
++		ends_with(file, ".vdr") ||
+ 		ends_with(file, ".pcm") || ends_with(file, ".3gp"));
+ }
+ 

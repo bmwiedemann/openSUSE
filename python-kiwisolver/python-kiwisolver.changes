@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Jul 24 08:28:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.0:
+  * prevent attempting a dual optimize on a dummy row PR #56 closes #15
+  * add dump and dumps methods to inspect the internal state of the solver PR #56
+  * test on Python 3.7 PR #51
+  * improvemnts to setup.py and tests PR #46 #50
+
+
+-------------------------------------------------------------------
+Wed Mar 28 15:28:16 UTC 2018 - jengelh@inai.de
+
+- Quantify speeds in description.
+
+-------------------------------------------------------------------
+Fri Mar 23 12:00:31 UTC 2018 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Switch to github archive to have tests
+
+-------------------------------------------------------------------
+Tue Feb 13 19:23:10 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.0.1
+  * allow unicode strings for variable name in Python 2
+  * allow unicode strings as strength specifiers in Python 2
+- Update to 1.0.0
+  * Allow anonymous variables (solver PR #32, wrappers PR #22)
+  * Solver: Define binary operators as free functions (PR #23)
+  * Wrappers: support for Python 3 (PR #13)
+  * Wrappers: drop distribute dependency in favor of setuptools (PR #22)
+  * Wrappers: add a comprehensive test suite
+- Implement single-spec version
+- Complete spec file rewrite.
+
+-------------------------------------------------------------------
+Fri Sep  4 10:51:30 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

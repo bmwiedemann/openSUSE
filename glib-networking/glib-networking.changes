@@ -1,0 +1,1078 @@
+-------------------------------------------------------------------
+Sun Jun  9 15:44:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.3:
+  + Fix clobbering of the thread-default main context after
+    certificate verification failure during async handshakes since
+    2.60.1.
+  + Fix GTlsDatabase initialization failures in OpenSSL backend due
+    to uninitialized memory use.
+  + Fix minor leak of ALPN protocols.
+
+-------------------------------------------------------------------
+Fri May  3 17:15:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.2:
+  + OpenSSL backend now defaults to system trust store.
+  + Fix client auth failure error with GnuTLS 3.6.7.
+- Drop 0001-gnutls-Handle-new-GNUTLS_E_CERTIFICATE_REQUIRED.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr  5 14:47:33 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Handle new GnuTLS error GNUTLS_E_CERTIFICATE_REQUIRED
+  + https://gitlab.gnome.org/GNOME/glib-networking/issues/70
+  + add 0001-gnutls-Handle-new-GNUTLS_E_CERTIFICATE_REQUIRED.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 05:52:06 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.1:
+  + Improve reliability of client auth failure tests.
+  + Fix excessive CPU usage after sync handshake.
+
+-------------------------------------------------------------------
+Tue Mar 12 21:17:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.0.1:
+  + Fix build with OpenSSL pkg-config unavailable.
+
+-------------------------------------------------------------------
+Mon Mar 11 15:58:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.0:
+  + This is the first stable release featuring the new OpenSSL
+    backend. Please be advised that this new backend is still
+    experimental and known to not work on some systems, including
+    Debian. Linux distributions are encouraged to stick to the
+    default build options, where OpenSSL is not yet enabled.
+  + Fix build with GnuTLS disabled.
+
+-------------------------------------------------------------------
+Tue Mar  5 06:12:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.59.92:
+  + GnuTLS: reject sync operations during handshake to avoid
+    deadlocks.
+  + Temporarily disable DTLS and OpenSSL tests due to bugs.
+
+-------------------------------------------------------------------
+Thu Feb 21 10:13:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.59.91:
+  + Update OpenSSL SSL struct when certificate is changed.
+  + Fix tests build when GnuTLS is disabled.
+  + Remove Fedora-specific PROFILE=SYSTEM default cipher list.
+  + Fix some problems with the connection tests.
+
+-------------------------------------------------------------------
+Thu Feb 14 21:44:07 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.59.90:
+  + This release adds an OpenSSL backend, obsoleting the
+    glib-openssl project.
+  + The OpenSSL backend seems to be mature, though it is less
+    well-tested for desktop usage than the GnuTLS backend. It will
+    remain disabled by default at build time due to the
+    GPL-incompatible nature of the OpenSSL license -- and the
+    GPLv2-incompatible nature of the Apache license that will be
+    used by future versions of OpenSSL -- and because the GnuTLS
+    backend is sufficient for Linux distros.
+  + Use the OpenSSL backend if you are building an embedded system
+    where (GPLv2+ or LGPLv3+) dependencies are unacceptable (e.g.
+    nettle or GMP, both dependencies of GnuTLS) and you are OK with
+    the GPL-incompatible OpenSSL license. If the OpenSSL backend is
+    enabled at build time, you should probably disable build of the
+    GnuTLS backend, or it will take precedence over the OpenSSL
+    backend at runtime.
+
+-------------------------------------------------------------------
+Tue Jan  8 13:15:44 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.59.2:
+  + Add support for application layer protocol negotiation.
+
+-------------------------------------------------------------------
+Sat Jan  5 19:46:33 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.59.1:
+  + This release removes the gnutls-pkcs11 backend, which was
+    disabled in 2.57.2, due to lack of any feedback whatsoever
+    regarding its disablement. If you think it is still useful to
+    you, given that the normal gnutls backend now supports PKCS#11,
+    speak up now.
+  + This release also includes several changes to properly support
+    TLS 1.3.
+  + Other changes:
+    - Perform certificate verification during, not after, TLS
+      handshake.
+    - Dramatically improve the reliability of the non-DTLS tests.
+      (DTLS is still having problems).
+    - Regenerate test certificates to prepare for OpenSSL support.
+    - Several meson build system improvements to prepare for
+      OpenSSL support.
+
+-------------------------------------------------------------------
+Wed Sep 26 16:33:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.58.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 29 00:27:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.57.92:
+  + Revert fixes for glgo#GNOME/glib-networking#4 and
+    glgo#GNOME/glib-networking#6 due to regression
+    glgo#GNOME/glib-networking#43.
+  + Fix installed tests glgo#GNOME/glib-networking!7.
+
+-------------------------------------------------------------------
+Mon Aug 13 08:47:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.57.90:
+  + Properly check for server errors in connection tests.
+  + Perform certificate verification during, not after, TLS
+    handshake.
+  + Avoid trailing dots in SNI hostnames.
+  + Send fallback SCSV with fallback connection attempts.
+  + Fail unsafe rehandshake attempts initiated by API request.
+
+-------------------------------------------------------------------
+Thu Jul 26 23:21:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.57.3:
+  + Fix memory leaks when calling
+    g_tls_connection_gnutls_get_certificate().
+  + Use .so for modules on macOS instead of dylib.
+  + Fix build with MSVCC.
+
+-------------------------------------------------------------------
+Wed Jun  6 00:16:09 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.57.2:
+  + No visible changes for the user.
+- Drop pkgconfig(p11-kit-1) BuildRequires: it's now not enabled by
+  default, and even when it was being enabled the backend would
+  only work if the env GIO_USE_TLS=gnutls-pkcs11 would be set.
+
+-------------------------------------------------------------------
+Sat Jun  2 03:00:57 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.57.1:
+  + Use GnuTLS system trust (bgo#753260).
+  + Fix criticals when child streams outlast the parent
+    GTlsConnection (bgo#792219).
+  + Fix crash when setting client cert without private key
+    (bgo#793712).
+
+-------------------------------------------------------------------
+Tue May 22 20:14:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.56.1:
+  + Fix build with PKCS#11 backend disabled (bgo#794292).
+  + Various meson build system fixes (bgo#794358 and bgo#794372).
+  + Tests are now compatible with GnuTLS 3.6 (bgo#794286).
+
+-------------------------------------------------------------------
+Tue Mar 20 17:31:22 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Sun Mar 11 10:04:19 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.56.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:49 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 13 15:03:10 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.55.90:
+  + Fix unit tests when SSLv3 is unavailable (bgo#782853).
+  + Allow static linking (bgo#791100).
+  + Fix issues found by coverity (bgo#792402).
+  + Remove TLS build option; it is now mandatory.
+  + Try to ensure that GnuTLS is only initialized if TLS is
+    actually used.
+  + Update use of GObject to follow current best practices.
+  + Use XDG_CURRENT_DESKTOP to determine which proxy module to
+    load.
+
+-------------------------------------------------------------------
+Sun Dec 17 02:46:47 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.55.2:
+  + Fix glib-pacrunner.service installation directory (bgo#790367).
+  + Updated translations.
+- Drop glib-networking-Fix-build-failure-on-64bit-platforms.patch:
+  fixed upstream.
+- Drop intltool BuildRequires as this is no longer used anymore
+  once upstream migrated to gettext long ago.
+- Add pkgconfig(glib-2.0) BuildRequires. Note that it was being
+  pulled with gio-2.0 pkgconfig module and used already as both of
+  them live in glib2-devel package.
+
+-------------------------------------------------------------------
+Mon Dec  4 14:23:47 UTC 2017 - dimstar@opensuse.org
+
+- Add pkgconfig(systemd) BuildRequires: new dependency after the
+  port to meson.
+
+-------------------------------------------------------------------
+Tue Nov 14 08:33:31 UTC 2017 - fezhang@suse.com
+
+- Update to version 2.55.1:
+  + Implement DTLS support (bgo#697908).
+  + Port to Meson build system (bgo#786639).
+  + Updated translations.
+- Add ca-certificates-mozilla BuildRequires: new dependency.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add glib-networking-Fix-build-failure-on-64bit-platforms.patch:
+  Fix a build failure (bgo#790367).
+
+-------------------------------------------------------------------
+Fri Oct 27 22:32:33 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.54.1:
+  + gnutls: Fix using different client certs for different
+    connections (bgo#781578).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 18:14:32 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.54.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 15:54:06 UTC 2017 - jengelh@inai.de
+
+- Replace old macros and fixup RPM group.
+
+-------------------------------------------------------------------
+Tue Aug 15 16:02:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.53.90:
+  + gnutls: Stop using %LATEST_RECORD_VERSION in priority string,
+    since that gives better compatibility with current gnutls /
+    current real world (bgo#782218).
+  + gnutls: Provide a better error message when a TLS alert is
+    received (bgo#782218).
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Mon Sep 19 17:20:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:15:52 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.49.90:
+  + Ported to use upstream gettext rather than
+    intltool/glib-gettext (bgo#768708).
+  + Updated po files for future gettext versions.
+  + Fixed translation lookup on Windows (bgo#765466).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 17 18:03:01 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20.2  Fate#318572
+
+-------------------------------------------------------------------
+Mon May  9 20:31:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.48.2:
+  + gnutls: Fixed an infinite loop if a server sent two identical
+    copies of its CA certificate (bgo#765317).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 26 13:16:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.48.1:
+  + Fixed translations in non-UTF-8 domains (bgo#765466).
+  + Fixed bash-ism in configure (bgo#765396).
+  + Updated translations.
+- Stop passing V=1 to make, we do debugging locally.
+- Add default http://www.gnome.org as Url: Silence rpmlint.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:45:06 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.48.0:
+  + New stable release. (No changes since 2.47.90).
+
+-------------------------------------------------------------------
+Tue Feb 16 10:28:48 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.47.90:
+  + gnutls: The non-PKCS#11 TLS plugin now uses gnutls's
+    certificate validation code directly, rather than attempting to
+    build a certificate chain itself first (bgo#753260 and others).
+  + gnutls: Fixed a leak when closing a connection during an
+    implicit handshake (bgo#736809).
+  + gnutls: Fixed "make check" without PKCS#11 support
+    (bgo#728977).
+  + gnutls: Various changes in preparation for DTLS support (but
+    not the actual DTLS support itself) (bgo#697908, bgo#735754).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 23:29:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.47.1:
+  + Added a systemd service file for glib-pacrunner (bgo#755740).
+
+-------------------------------------------------------------------
+Mon Oct 12 21:41:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.46.1:
+  + Fixed a certificate chain validation problem that affected
+    Facebook in Epiphany (bgo#750457).
+
+-------------------------------------------------------------------
+Mon Sep 21 15:41:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.46.0:
+  + Various minor cleanups and small memory leak fixes.
+  + Added a new test case for client certificate chain handling
+    (bgo#754129).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  1 18:31:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.45.1:
+  + tls/gnutls: Implement
+    g_tls_client_connection_copy_session_state(), to allow
+    implementing FTP-over-TLS in gvfs (bgo#745255).
+
+-------------------------------------------------------------------
+Mon Mar 23 14:22:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.44.0:
+  + Stable release, no changes since 2.43.92.
+
+-------------------------------------------------------------------
+Tue Mar 17 21:49:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.43.92:
+  + Fix TLS session caching when using session tickets
+    (bgo#745099).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:29:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.43.91:
+  + tls/gnutls: Removed a workaround for connecting to servers with
+    weak DH parameters, which was apparently only needed because
+    gnutls was prioritizing DHE over RSA (rh#1177964#c8).
+  + tls/gnutls: We now require gnutls 3.x again. (In fact, 2.42.1
+    and 2.43.1 accidentally used a 3.x-only function, so we already
+    required it, we were just failing to declare that fact).
+  + tls/tests: Skip certain tests when running against old gnutls
+    or GLib releases. (glib-networking 2.43.91 itself does not
+    require GLib 2.43, but one of the test cases does).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 19:27:08 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.43.1:
+  + The GTlsClientConnection "use-ssl3" property now falls back to
+    TLS 1.0 if SSL 3.0 has been disabled, rather than just failing.
+    Also, we now use the gnutls %LATEST_RECORD_VERSION option by
+    default (to allow connecting to certain servers that were
+    incorrectly patched for the POODLE attack), but also make sure
+    to remove that option in the fallback ("use-ssl3") mode (to
+    allow connecting to other servers that are differently broken)
+    (bgo#738633, bgo#740087).
+  + tls/gnutls: Miscellaneous warning, debugging, and leak fixes
+    (bgo#736757, bgo#736809, bgo#737106).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 17:31:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.42.1:
+  + The GTlsClientConnection "use-ssl3" property now falls back to
+    TLS 1.0 if SSL 3.0 has been disabled, rather than just failing.
+    Also, we now use the gnutls %LATEST_RECORD_VERSION option by
+    default (to allow connecting to certain servers that were
+    incorrectly patched for the POODLE attack), but also make sure
+    to remove that option in the fallback ("use-ssl3") mode (to
+    allow connecting to other servers that are differently broken).
+    (bgo#738633, bgo#740087).
+  + tls/gnutls: Miscellaneous warning, debugging, and leak fixes
+    (bgo#736757, bgo#736809, bgo#737106).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:23:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.42.0:
+  + New stable release. (No changes since 2.41.92).
+
+-------------------------------------------------------------------
+Mon Sep 15 16:20:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.41.92:
+  + tls/gnutls:
+    - Incorrectly-ordered certificate chains are now accepted
+      (bgo#683266).
+    - Closing an already-closed GTlsConnection now correctly
+      returns TRUE rather than G_IO_ERROR_CLOSED (bgo#735754).
+
+-------------------------------------------------------------------
+Tue Jul 22 14:08:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.41.4:
+  + tls/gnutls: certificates with IP address subject altnames are
+    now supported (bgo#726596).
+  + tls/tests: added a script to re-generate the certificates, and
+    regenerated them (since the key for the existing CA certificate
+    had been lost, so it wasn't possible to add new test
+    certificates, eg, for IP SAN) (bgo#733365).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 21:59:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.41.3:
+  + tls/gnutls: If a server's certificate includes an issuer chain,
+    we now send the entire chain to the client (bgo#724708).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:20:37 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.40.1:
+  + tls/gnutls: g_tls_backend_get_default_database() should never
+    return %NULL; if glib-networking was built without a
+    ca-certificates file, then the default GTlsDatabase should just
+    be empty (bgo#727282).
+
+-------------------------------------------------------------------
+Tue Mar 25 09:06:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.40.0:
+  + New stable release. No changes since 2.39.90.
+
+-------------------------------------------------------------------
+Wed Feb 19 16:23:17 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.39.90:
+  + tls/gnutls:
+    - Avoid trying to update a destroyed GSource (bgo#723774).
+    - Fix another flaky test (bgo#722336).
+  + tests: use the TAP driver.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 16 22:11:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.39.3:
+  + tls/tests: Fix one sporadic bug in the connection test
+    (bgo#720081) and make it properly fail rather than hanging
+    forever when another sporadic bug happens (which I don't
+    actually know the cause of) (bgo#719727).
+  + tls/gnutls: Fix for -Werror=format-nonliteral (bgo#720081).
+
+-------------------------------------------------------------------
+Thu Nov 21 13:49:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.39.1:
+  + tls/gnutls:
+    - Use g_tls_interaction_invoke_request_certificate()
+      when processing a certificate request (bgo#637257).
+    - Handle G_IO_ERROR_TIMED_OUT on a GTlsConnection correctly
+      rather than reporting "The specified session has
+      been invalidated for some reason" (bgo#710700).
+    - add a test for a fix made in glib (bgo#710691).
+
+-------------------------------------------------------------------
+Mon Nov 11 22:57:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.38.2 (bnc#849913):
+  + Fix to previous installed-tests fix, which resulted in some
+    files getting installed even when installed tests weren't
+    enabled (bgo#710197).
+- Drop "Cleanup wrongly installed /files directory".
+
+-------------------------------------------------------------------
+Tue Oct 15 14:30:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.38.1:
+  + glibpacrunner: Don't crash if there is an internal libproxy
+    error (rh#866927).
+  + tls/tests: Fix installed tests to not accidentally depend on
+    having the source tree still exist (bgo#709628).
+  + Updated translations.
+- Cleanup wrongly installed /files directory (bgo#710197).
+
+-------------------------------------------------------------------
+Tue Sep 24 07:45:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.38.0:
+  + New stable release (No changes since 2.37.5).
+
+-------------------------------------------------------------------
+Wed Aug 28 09:12:27 UTC 2013 - dimstar@opensuse.org
+
+- Revert the changes from Jul 11 to not use certs.pem:
+  + No longer pass --with-pkcs and --without-ca-certificate to
+    configure, but instead pass
+    --with-ca-certificates=/etc/ssl/ca-bundle.pem.
+  + Drop glib-networking-fix-no-cert-bundles.patch: the patch
+    causes side-effects, as discovered in bnc#825903).
+
+-------------------------------------------------------------------
+Tue Jul 30 07:06:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.5:
+  + gnutls: minimum version is now 2.12.8 (with 3.x preferred...).
+  + glib-networking now supports the --enable-installed-tests flag,
+    to install its test programs to run at other times (ie, after
+    updating glib).
+
+-------------------------------------------------------------------
+Thu Jul 11 21:11:29 UTC 2013 - dimstar@opensuse.org
+
+- Build using system pkcs#11 certificate store instead of using
+  /etc/ssl/certs.pem:
+  + Pass the following parameters to configure
+    --with-pkcs
+    --without-ca-certificate
+  + Add glib-networking-fix-no-cert-bundles.patch: do not fail if
+    no certificate bundle (anchor) is specified.
+
+-------------------------------------------------------------------
+Tue Jul  9 16:18:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.4:
+  + bgo#701377: proxy/gnome: further improve GNOME session
+    detection.
+  + bgo#701693: gnutls: don't crash if $G_TLS_GNUTS_PRIORITY is
+    invalid.
+
+-------------------------------------------------------------------
+Tue May 28 19:52:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.2:
+  + proxy/gnome: Improve session-type detection to include
+    gnome-classic and anything else starting with "gnome"
+    (bgo#700607).
+  + proxy/libproxy: make SOCKS work when using the async API
+    (bgo#699359).
+  + proxy/tests: make the libproxy test program use the just-built
+    plugin rather than the installed one (bgo#700286).
+  + proxy/tests: fix to not error out if neither proxy module is
+    built (bgo#700628).
+  + tls/tests: fix a sporadic crash.
+
+-------------------------------------------------------------------
+Wed May  1 08:16:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.1:
+  + gnutls:
+    - bgo#695062: Fixed a hang while rehandshaking with gnutls 3.x.
+    - bgo#697754: Fixed a handshaking crash in multithreaded use.
+  + proxy/gnome:
+    - Fix "automatic" mode, which was mistakenly being treated as
+      "none".
+    - bgo#698936: Use this in Unity sessions as well as GNOME ones.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 16 13:48:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.36.1:
+  + gnutls: Fixed a bug that could cause hangs and/or bursts of CPU
+    usage in some cases (bgo#696881).
+  + gnutls: Fixed CFLAGS when building with gnutls in a different
+    prefix (bgo#696519).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 13:11:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 18:52:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.35.9:
+  + Fixed one kind of handshake failure to return the correct error
+    code under gnutls 3.x (bgo#694812).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 13:50:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.35.8:
+  + proxy/gnome: ported to new GSimpleProxyResolver, and added more
+    tests.
+  + gnutls: Fixed a small per-connection leak (bgo#693718).
+  + tls/tests: Fixed several race conditions that caused spurious
+    failures (bgo#693720).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:01:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.35.6:
+  + proxy/gnome: Fixed several bugs:
+    - Multithreaded usage could result in crashes.
+    - In "automatic" mode, synchronous lookups would obey
+      ignore-hosts, but asynchronous lookups would not.
+    - lookup_async() would never notice if the proxy settings
+      switched from "automatic" to "manual" or "none" (and would
+      make a synchronous D-Bus call when switching in the other
+      direction).
+    - If given an invalid URI, lookup_async() would return a
+      successful result (and leak the GError that it was supposed
+      to have returned), and lookup() would return both the error
+      and the proxy (leaking one or the other, depending on how
+      the caller behaved).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 10:09:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.35.4:
+  + proxy/gnome: The tests should now work correctly even if run
+    from a non-GNOME environment.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 18:12:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.35.3:
+  + build: The TLS tests are now not built if you are building
+    without gnutls support.
+  + gnutls: Several handshaking fixes:
+    - Fix a hang when doing a synchronous close() immediately
+      after cancelling an asynchronous handshake() (which would
+      happen in libsoup if you cancelled a message at the right
+      time) (bgo#688751)
+    - Avoid an assertion when an implicit handshake fails
+      (bgo#689274)
+    - Fixed GTlsServerConnection:authentication-mode to work
+      again, and added a regression test for this (bgo#689259)
+    - Return the appropriate error
+      (G_TLS_ERROR_CERTIFICATE_REQUIRED) when a handshake fails
+      because the server required a certificate but none was
+      provided, and added a test for this (bgo#689260)
+    - Make g_io_stream_close() finish successfully after a failed
+      handshake (bgo#689260)
+    - Make g_io_stream_close() finish successfully before a
+      handshake (bgo#689271)
+  + gnutls: Updated to be aware of G_IO_ERROR_BROKEN_PIPE in glib
+    2.35.3, which needs to be converted to G_TLS_ERROR_NOT_TLS in
+    some cases. (Previously this error showed up as just
+    G_IO_ERROR_FAILED.)
+  + proxy/gnome: This is now only used in GNOME login sessions (as,
+    essentially, a more efficient version of the libproxy GNOME
+    backend); in non-GNOME sessions, gio will now fall back to the
+    libproxy plugin, allowing environment variables or other
+    libproxy settings backends to be used.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 16 09:24:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + Update for glib 2.35.1; remove g_type_init() calls and port to
+    GTask.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 15 18:31:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.2:
+  + build: it no longer tries to build the TLS tests if gnutls is
+    not available.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 17:56:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:57:28 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.33.14:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 13:52:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.33.12:
+  + gnutls: Revert the addition of the certificate-bytes and
+    private-key-bytes properties to GTlsCertificateGnutls, since
+    they were reverted in glib (bgo#682081)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 07:38:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.33.10:
+  + gnutls:
+    - Improved the certificate verifying code to deal with the case
+      of a CA being reissued with the same key but a different
+      signature algorithm. (bgo#681299)
+    - Fixed an uninitialized variable in
+      g_tls_connection_gnutls_close(). (bgo#681636)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 07:00:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.33.8:
+  + gnutls:
+    - If a GTlsConnection gets an error when handshaking, it will
+      now continue to return that error message on future I/O
+      attempts, rather than behaving in an undefined manner
+    - You can now read from a GTlsConnection's input stream and
+      write to its output stream at the same time (either in
+      different threads, or asynchronously in a single thread).
+      (bgo#660252)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 26 08:22:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.33.3:
+  + Updated autogen.sh (in particular to support automake 1.12)
+    (bgo#675261)
+  + gnutls: fix the use-system-certdb property on
+    GTlsConnectionGnutls
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 16 18:13:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.33.2:
+  + gnutls: simplify using new glib pollable stream methods
+  + proxy/gnome: fix a bug that made it impossible to use SOCKS
+    without also having a separate http proxy.
+
+-------------------------------------------------------------------
+Tue May 15 14:32:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.32.3:
+  + proxy/gnome: Fix SOCKS to work when no http proxy is set
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 05:50:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.32.1:
+  + gnutls: Added /etc/ssl/ca-bundle.pem to the list of files to
+    check for to use as the default CA list (bgo#673944)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:06:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 15:25:19 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.31.22:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:08:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.31.20:
+  + gnutls: Fixed a linking problem on some platforms when PKCS#11
+    is enabled (bgo#670956)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 14:39:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.31.16:
+  + gnutls: Fixed a TLS handshaking bug that in particular caused
+    lots of crashes in epiphany (bgo#658771)
+  + tls/tests: Fixed a bug in the pkcs11-pin test that could cause
+    it to spuriously fail
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:16:20 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + gnutls:
+    - Support gnutls built against nettle instead of gcrypt
+      (bgo#657306)
+    - Implement TLS session caching for GTlsServerConnection
+      (bgo#636574)
+  + tls/tests: Explicitly request the memory GSettings backend, to
+    avoid warnings in partial jhbuild environments.
+  + proxy/gnome: Update to use GInetAddressMask.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:34:27 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.31.2:
+  + gnutls:
+    - Added gnutls-pkcs11 backend, which uses gnutls 2.12.8 and
+      p11-kit (a new optional dependency) to provide access to
+      PKCS#11 tokens. At the moment, this is only enabled if you
+      set GIO_USE_TLS=gnutls-pkcs11 in the environment (bgo#656361)
+    - GTlsCertificateGnutls can now read unencrypted PKCS#8 keys
+      (which show "BEGIN PRIVATE KEY" in PEM form) in addition to
+      the previously-supported PKCS#1 keys ("BEGIN RSA PRIVATE
+      KEY").
+  + Updated translations.
+- Add pkgconfig(p11-kit-1) BuildRequires. New dependency.
+
+-------------------------------------------------------------------
+Tue Nov 15 14:15:53 UTC 2011 - dimstar@opensuse.org
+
+- Really enable parallel build: fix typo smp_flags => smp_mflags.
+
+-------------------------------------------------------------------
+Thu Oct 27 21:17:41 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.31.0:
+  + Integrate fixes from 2.30.1.
+  + gnutls:
+    - Bumped required GNUTLS version to 2.11.0 and updated code for
+      that (bgo#656903).
+    - Added another G_TLS_ERROR_NOT_TLS (aka "dumb server, try
+      falling back from TLS to SSLv3") case, when the handshake
+      completes but then packets after that don't decrypt
+      correctly (bgo#662104).
+    - Made sure that GTlsConnection:peer-certificate and
+      :peer-certificate-errors get set even when the peer
+      certificate is rejected.
+  + proxy/gnome: build fixes (bgo#662203, bgo#662085).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 18 06:23:19 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.30.1:
+  + Fixed a crash when passing a NULL GCancellable to
+    g_tls_connection_close_async() (bgo#659786)
+  + Fixed ignore_hosts handling in GProxyResolverGnome (bgo#655581)
+  + Fixed handling of self-signed CA certificates in
+    GTlsDatabaseGnutls (bgo#660508)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 22:22:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:08:59 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.29.92:
+  + gnutls:
+    - Fixed a problem when linking against GNUTLS 3.0, where
+      connections would sometimes return the error "The TLS
+      connection was non-properly terminated". (bgo#659233)
+    - Plugged a few memory leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 31 09:53:01 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.29.18:
+  + gnutls:
+    - fixed two rehandshaking bugs; one in which a client would
+      erroneously report an error after successfully rehandshaking
+      (bgo#653645), and one where initiating an asynchronous
+      rehandshake on the server side would send illegal packets and
+      cause the client to disconnect.
+    - made GTlsDatabaseGnutls and GTlsFileDatabaseGnutls properly
+      cancellable
+    - fixed the client-side session cache to not share session IDs
+      between different virtual hosts on the same IP address, which
+      caused problems with some servers. (bgo#581342)
+  + tls: Fixed up the tls test program so it can be run from "make
+    check"
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:07:12 UTC 2011 - dimstar@opensuse.org
+
+- Add libgcrypt-devel BuildRequires: gnutls used to bring this in
+  as a dependency for us.
+
+-------------------------------------------------------------------
+Tue Aug 16 04:31:36 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.29.15:
+  + bgo#636572: gnutls: implement GTlsDatabase
+  + bgo#652284: gnutls: override minimum key length, to allow
+    connecting to HTTP servers with very small keys
+  + bgo#581342: gnutls: use %COMPAT mode, which makes GNUTLS behave
+    more like OpenSSL/NSS/Windows in a few ways, making it work
+    with certain broken HTTP servers.
+  + gnutls: fixed a crash when passed a NULL GError.
+
+-------------------------------------------------------------------
+Wed Jul  6 23:14:21 CEST 2011 - vuntz@opensuse.org
+
+- Change rpm query to look for the real package containing gio to
+  use the new gio virtual name, that is now provided by the package
+  containing the gio library. This is better than the query on the
+  library filename, which might change later.
+- Also properly escape the queryformat, since we need to double the
+  % characters in a .spec file.
+
+-------------------------------------------------------------------
+Tue Jul  5 08:23:04 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.29.9:
+  + Optimized GDBus usage in PACRunner.
+  + Fixed a race condition in GProxyResolverGnome.
+  + Changed configure to --enable-maintainer-mode by default,
+    to match glib.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 17 02:17:16 CEST 2011 - vuntz@opensuse.org
+
+- Fix build after glib libraries moved back to %{_libdir}.
+
+-------------------------------------------------------------------
+Mon May 23 23:12:28 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.28.7:
+  + Fixed a race condition in GProxyResolverGnome that caused
+    problems when making simultaneous connections from multiple
+    threads.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 04 13:58:22 UTC 2011 - alinm.elena@gmail.com
+
+- Add gsettings-desktop-schemas Requires as the proxy schemas are
+  used.
+
+-------------------------------------------------------------------
+Wed Apr 27 11:19:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.6.1:
+  + Fixed a bug in the gnutls backend introduced in 2.28.6
+
+-------------------------------------------------------------------
+Tue Apr 26 14:56:58 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.6:
+  + Fixed some links in the gnutls backend.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 11:52:29 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 13:09:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.4:
+  + Added a new proxy backend, GProxyResolverGnome, that uses
+    GSettings and the network proxy schemas from
+    gsettings-desktop-schemas to provide proxy information (and
+    using a new D-Bus service provided by the libproxy backend to
+    provide PAC/WPAD support).
+  + Updated translations.
+- Changes from version 2.28.0:
+  + Build fix.
+  + Updated translations.
+- Add dbus-1 and pkgconfig(gsettings-desktop-schemas)
+  BuildRequires. dbus-1 is only needed for directory ownership.
+
+-------------------------------------------------------------------
+Mon Feb 14 18:03:20 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Jan  8 00:15:42 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.27.90:
+  + Fixed configure script to actually error out if installed glib
+    version is too old
+  + gnutls:
+    - updated GTlsClientConnectionGnutls for :accepted-cas type
+      change
+    - fixed an uninitialized variable
+
+-------------------------------------------------------------------
+Wed Dec 22 10:17:33 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.27.5:
+  + gnutls:
+    - finish implementing GTlsRehandshakeMode, which was present
+      but non-functional in 2.27.4
+    - updates for glib TLS API changes
+    - fix some async bugs that caused the main loop to spin
+    - implement a client-side session cache, to speed up handshakes
+  + Compile with gcc warnings by default
+
+-------------------------------------------------------------------
+Tue Dec  7 11:21:55 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.27.4:
+  + Add GNUTLS-based implementation of GTlsBackend.
+- Add pkgconfig(gnutls) BuildRequires, and pass
+  --with-ca-certificates=/etc/ssl/ca-bundle.pem to configure.
+
+-------------------------------------------------------------------
+Wed Oct 13 22:50:58 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.26.0:
+  + No changes, just a version bump.
+- Update spec file after move of glib libraries to /lib: we are
+  checking the name of the package providing libgio by looking at
+  the provider of the file.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:34:59 CEST 2010 - vuntz@opensuse.org
+
+- Add missing Requires for glib2-tools to glib-networking in
+  baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:32:52 CEST 2010 - vuntz@opensuse.org
+
+- Initial packaging (version 2.25.0)
+

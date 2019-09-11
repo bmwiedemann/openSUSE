@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Mon Nov 13 13:47:00 UTC 2017 - vcizek@suse.com
+
+- Disable SSLv2/3 to fix build with OpenSSL 1.1 (bsc#1067188)
+  * add Crypt-SSLeay-use_TLS_instead_of_SSL.patch
+
+-------------------------------------------------------------------
+Sat Sep 23 15:17:55 UTC 2017 - coolo@suse.com
+
+- add no-dot-inc.patch inherited from gentoo to build with perl 5.26
+- remove Crypt-SSLeay-0.58.patch not applied for a long time
+
+-------------------------------------------------------------------
+Wed Apr 15 14:53:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.72
+   see /usr/share/doc/packages/perl-Crypt-SSLeay/Changes
+
+  0.70    2014-04-24 14:53:43 UTC
+  
+  - RT #94974: I forgot that `return` just returns from the code block for
+    `catch`, not the subroutine so `filter_libs` was still trying to link
+    against various libraries even when Devel::CheckLib was not installed.
+  
+  0.68    2014-04-24 14:13:07 UTC
+  
+  - Previous release did not bump version number in Net::SSL even though there
+    was a minor change. Correct that oversight.
+  
+  0.66    2014-04-24 14:00:42 UTC
+  
+  - Various minor fixes to C code
+  - Various fixes to the distribution such as manifest files, additional
+    tests, bundled module etc
+  - Address RT bugs #94828 and #79212
+  
+  0.65_14 2014-04-16 23:55:42 UTC
+  
+  - REMINDER: make test WILL FAIL if your OpenSSL is vulnerable to Heartbleed.
+  
+  - Add additional functions exposing information that can be obtained via
+    SSLeay_version.
+  
+  0.65_13 2014-04-15 22:22:43 UTC
+  
+  - Work in progress
+  
+  - Add ability to query OpenSSL version, add test whether OpenSSL library
+    being used is vulnerable to the Heartbleed bug.
+  
+  - Assorted fixes to Makefile.PL, most importantly to fix build problems with
+    Strawberry Perl.
+  
+  0.65_08 2014-04-10 13:40:08 UTC
+  
+  - Work in progress
+  
+  - In Makefile.PL, use assert_lib to find the libraries against which we can
+    actually link rather than passing a big bowl of libs to WriteMakefile.
+    Bail out early if we can't link against any of the candidate libraries.
+  
+  0.65_07 2014-04-10 12:38:06 UTC
+  
+  - Work in progres
+  
+  - Make sure t/02-live.t actually uses Net::SSL.
+  
+  0.65_06 2014-04-10 10:35:14 UTC
+  
+  - Work in progress
+  
+  - Address RT bugs #88786, #88269, #78848, and #79477
+  
+  - Makefile.PL now respects live-tests and no-live-tests, and allows library
+    and header locations to be specified via the command line arguments
+    libpath and incpath, respectively.
+  
+  - These options can also be specified using the environment variables
+  
+          CRYPT_SSLEAY_LIVE_TEST_WANTED
+          OPENSSL_LIB
+          OPENSSL_INC
+  
+  - Also fixed a number of embarrasing logic errors and typos in Makefile.PL
+    which were introduced in previous 0.65_xx versions.
+  
+  0.65_05 2014-04-04 12:38:21 UTC
+  
+  - Work in progress
+  
+  - Reorganize Makefile.PL to allow incpath and libpath command line
+    arguments. This attempts to address RT #88786, #88269, #79477, and #78848.
+    This was supposed to be the next step immediately after drastically
+    specifying Makefile.PL. But never got done.
+  
+  - Also add encoded version number to openssl-version output.
+  
+  0.65_04 2014-04-02 18:03:11 UTC
+  
+  - Work in progress
+  
+  - Address pull requests from GitHub and bug reports on RT. These address RT
+    issues #83764, #86425, #86819, #62133, #82715, #90803
+
+- disable Crypt-SSLeay-0.58.patch as it works without and it's unclear what it
+  wants to achieve
+
+-------------------------------------------------------------------
+Mon Jun  3 16:03:46 UTC 2013 - coolo@suse.com
+
+- updated to 0.64
+  - Drastically simplify Makefile.PL to resolve RT bugs #61249, #61324,
+    #63553, #68208, and #68084.
+  
+  - Forgot to update Changes for 0.63, so this version overrides that.
+  
+  - Trying to distinguish between good vs bad zero returns from underlying
+    SSL_read/SSL_write broke stuff (see RT bug #78695). Revert to previous
+    behavior.
+  
+  - Completely re-organize Makefile.PL. I hope these changes will help take
+    care of RT bugs #61324, #61249, #63553, and #68084 etc. This is not
+    necessarily finished, but I want to see what happens on CPAN Testers at
+    this point before making a few other minor changes.
+  
+  - Release 0.59_03 as 0.60 so distributions can pick up various fixes. The most
+    important one seems to be bug RT #70565. This should take care of bug RT
+    #77167
+  
+  - SSL_read and SSL_write now try to handle incomplete reads/writes (see bug RT
+    RT #64054). The current test suite does is not very comprehensive, so caution
+    is recommended at this point. Also, if you have good test cases, I would love
+    to incorporate them into the distribution.
+  
+  - Bump version number and upload to CPAN.
+  
+  - Forgot to update Changes for 0.59_01. The following is a combined list of
+    the more important fixes incorporated in both.
+  
+  - Bug RT #64054: Handle incomplete reads/writes better
+  
+  - Bug RT #73754: Add LWP::Protocol::https to PREREQ_PM
+  
+  - Bug RT #73755: Crypt-SSLeay does not verify hosts (yet). Don't let that
+    cause a failure during tests.
+  
+  - Streamline t/02-live.t using Try::Tiny and done_testing
+  
+  - Plus assorted related small changes.
+  
+  - L<text|scheme:...> is not supported in POD for 5.8.5 and earlier.
+  - TODOs in POD should stand out
+  - Add /boot/common/ssl and some other directories to unix_ssl_dirs (see bug
+    #60936).
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:48 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:22 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 15:55:13 UTC 2010 - chris@computersalat.de
+
+- update to 0.58
+  - Bump version number for Crypt::SSLeay to 0.58 and Net::SSL to 2.85 in
+    preparation for release.
+  - Fix typo in POD is SSLeay.pm s/PEM0encoded/PEM encoded/ (checked
+    http://github.com/gitpan/Crypt-SSLeay/blob/9a1582ee1e4d132ae7cf9497bb83144786425d73/SSLeay.pm)
+  - Update Changes and TODO. Regenerate README and META.yml. Update package
+    author. Minor POD fixes.
+  - for more info please see Changes file
+- reworked patch
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Tue Oct 19 08:31:37 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Tue Jan 13 14:35:00 CET 2009 - mrueckert@suse.de
+
+- fix rpmlint warnings
+  - repackage as tar.bz2
+  - make certs nonexecutable
+  - remove outdated conditionals on suse_version 820
+- enable testsuite (bnc#465698)
+
+-------------------------------------------------------------------
+Thu Apr  3 16:10:44 CEST 2008 - ug@suse.de
+
+- version to 0.57
+- Honour both $ENV{NO_PROXY} and $ENV{no_proxy} in
+  Net::SSL::proxy_connect_helper. (Bug #29371 reported by Jan Dubois).
+- $@ construction used in Net::SSL::connect was messed up, which could
+  lead to sub-optimal error reporting. (Bug #29372 reported by Jan
+  Dubois).
+- Ensure no proxification is used in t/01-connect.t (which might be the
+  reason for all the spurious smoke failures). Bug #29373 reported by,
+  you guessed it, Jan Dubois).
+- Silence a dubious fopen() warning in SSLeay.xs.
+- s/Netware/NetWare/ in Net/SSL.pm platform check
+- Improvements to Makefile.PL for dealing with platforms where openssl
+  is installed with ./include and ./lib as sibling directories rather
+  than child directories. This should allow the code to configure and
+  build "out of the box" on Solaris (and probably other proprietary
+  platforms).
+- Don't carp in LICENSE key addition code in Makefile.PL
+
+-------------------------------------------------------------------
+Mon Jul 16 11:56:35 CEST 2007 - ug@suse.de
+
+- version update to 0.56
+  - too many changes. See Changes file for details
+
+-------------------------------------------------------------------
+Wed Oct 25 09:21:19 CEST 2006 - ug@suse.de
+
+- openssl-devel removed from "Requires"
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Nov 12 15:45:42 CET 2005 - schwab@suse.de
+
+- Fix crash due to API change in SSL library [#129911].
+
+-------------------------------------------------------------------
+Wed Sep 28 22:09:46 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Sep  1 16:25:43 CEST 2003 - ug@suse.de
+
+- initial package
+

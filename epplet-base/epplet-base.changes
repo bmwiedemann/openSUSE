@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Wed Sep 27 17:36:52 UTC 2017 - dimstar@opensuse.org
+
+- Drop esound-devel BuildRequires: esound has been obsoleted by a
+  couple sound servers by now
+
+-------------------------------------------------------------------
+Mon Nov 24 03:23:53 UTC 2014 - simon@simotek.net
+
+- Update summary and description to indicate that this package only 
+  works for enlightenment DR16, it won't run on e17 and later
+
+-------------------------------------------------------------------
+Mon Aug 18 03:24:14 UTC 2014 - jengelh@inai.de
+
+- Drop unused build-time requirements
+
+-------------------------------------------------------------------
+Mon Mar 26 20:08:49 UTC 2012 - dimstar@opensuse.org
+
+- Add epplet-base-linking.patch: Fix linking.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:59 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Jan 11 16:02:55 CET 2010 - vuntz@opensuse.org
+
+- Remove unneeded gtk-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jan  8 12:14:25 CET 2010 - ro@suse.de
+
+- remove unused imlib-devel from buildrequires (imlib2 is used) 
+
+-------------------------------------------------------------------
+Thu Apr 16 01:19:25 CEST 2009 - ro@suse.de
+
+- buildfix: refresh patches 
+
+-------------------------------------------------------------------
+Fri Jun 13 08:28:20 CEST 2008 - crrodriguez@suse.de
+
+- disable unusable static libraries 
+
+-------------------------------------------------------------------
+Thu Apr 17 21:19:04 CEST 2008 - matejcik@suse.cz
+
+- update to 0.10
+  * mostly cleanup and bugfixes
+
+-------------------------------------------------------------------
+Thu Dec 14 02:28:15 CET 2006 - ro@suse.de
+
+- move from usr/X11R6 to usr 
+
+-------------------------------------------------------------------
+Fri Sep  8 15:54:12 CEST 2006 - pnemec@suse.cz
+
+- fix gcc warning in E-memwatch plugin
+
+-------------------------------------------------------------------
+Fri Jul 28 15:43:49 CEST 2006 - ro@suse.de
+
+- added Mesa-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Wed Jul 12 15:22:59 CEST 2006 - pnemec@suse.cz
+
+- updated to version 0.9
+  cleaned specs and configs
+  fixed memory leaks
+- added patch to fix not included library
+  (epplets-unsuficient_include.patch)
+  
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 11:43:05 CEST 2005 - pnemec@suse.cz
+
+- fix gcc warnings
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr 27 01:21:31 CEST 2004 - ro@suse.de
+
+- use -fno-strict-aliasing 
+
+-------------------------------------------------------------------
+Sat Jan 10 15:33:14 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jun 16 14:00:02 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Mon Sep 23 19:22:52 CEST 2002 - pmladek@suse.cz
+
+- added alsa and alsa-devel to neededforbuild because of esound
+
+-------------------------------------------------------------------
+Fri Jul 26 21:29:36 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed May  8 17:44:00 CEST 2002 - mfabian@suse.de
+
+- use %{_lib} to make it build on x86_64
+
+-------------------------------------------------------------------
+Thu Apr 25 00:17:19 CEST 2002 - ro@suse.de
+
+- fix for automake-1.6 (remove duplicated lines in Makefile.am) 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed May  9 22:55:27 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Thu Feb  1 14:35:29 CET 2001 - violiet@suse.de
+
+- added SuSE series: xap
+
+-------------------------------------------------------------------
+Sat Jan 27 13:46:53 CET 2001 - violiet@suse.de
+
+- NEW epplet-base package version to 0.5
+
+

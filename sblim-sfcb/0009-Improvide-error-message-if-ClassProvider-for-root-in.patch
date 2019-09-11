@@ -1,0 +1,26 @@
+From af5e74b557ed996747489c8da0e7184576fdf229 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 16 Jun 2014 15:35:41 +0200
+Subject: [PATCH 09/25] Improvide error message if ClassProvider for
+ root/interop can't start
+
+---
+ providerMgr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/providerMgr.c b/providerMgr.c
+index 05677b3c3e40..6ffe582fb106 100644
+--- a/providerMgr.c
++++ b/providerMgr.c
+@@ -1026,7 +1026,7 @@ processProviderMgrRequests()
+   if (exFlags & 2) {
+     rc=startUpProvider("root/interop", "$ClassProvider$",0);
+     if (rc != 0 ) {
+-      mlogf(M_ERROR,M_SHOW,"--- ClassProvider failed to start, rc:%d\n",rc);
++      mlogf(M_ERROR,M_SHOW,"--- ClassProvider failed to start for root/interop, rc:%d\n",rc);
+       sigprocmask(SIG_SETMASK, &old_mask, NULL);
+       _SFCB_RETURN();
+     }
+-- 
+2.15.0
+

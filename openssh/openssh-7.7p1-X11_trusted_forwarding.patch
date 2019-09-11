@@ -1,0 +1,47 @@
+# HG changeset patch
+# Parent  d25c96855fd67e997e25ec1198d953af33eb289c
+# enable trusted X11 forwarding by default in both sshd and sshsystem-wide
+# configuration
+# bnc#50836 (was suse #35836)
+Enable Trusted X11 forwarding by default, since the security benefits of
+having it disabled are negligible these days with XI2 being widely used.
+
+Index: openssh-7.8p1/ssh_config
+===================================================================
+--- openssh-7.8p1.orig/ssh_config
++++ openssh-7.8p1/ssh_config
+@@ -17,9 +17,20 @@
+ # list of available options, their meanings and defaults, please see the
+ # ssh_config(5) man page.
+ 
+-# Host *
++Host *
+ #   ForwardAgent no
+ #   ForwardX11 no
++
++# If you do not trust your remote host (or its administrator), you
++# should not forward X11 connections to your local X11-display for
++# security reasons: Someone stealing the authentification data on the
++# remote side (the "spoofed" X-server by the remote sshd) can read your
++# keystrokes as you type, just like any other X11 client could do.
++# Set this to "no" here for global effect or in your own ~/.ssh/config
++# file if you want to have the remote X11 authentification data to 
++# expire after twenty minutes after remote login.
++    ForwardX11Trusted yes
++
+ #   PasswordAuthentication yes
+ #   HostbasedAuthentication no
+ #   GSSAPIAuthentication no
+Index: openssh-7.8p1/sshd_config
+===================================================================
+--- openssh-7.8p1.orig/sshd_config
++++ openssh-7.8p1/sshd_config
+@@ -84,7 +84,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+-#X11Forwarding no
++X11Forwarding yes
+ #X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PermitTTY yes

@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Fri Jul 12 12:39:06 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1+git37.828aa1a8:
+  * Make 24px home folder consistent with 16px
+  * Make 16-24px Music folder blue for better contrast on dark background
+
+-------------------------------------------------------------------
+Sat Jul 06 08:01:40 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1+git35.4527964c:
+  * Added nm-applet wired symbolic icon
+  * New thunderbird icon
+  * Updated software-updater icons to match symbolic icons color codes
+- Changed source archive to xz
+
+-------------------------------------------------------------------
+Sat Jun 22 07:41:18 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1+git29.525caef4:
+  * Also inherit the upstream elementary theme (Fixes #157)
+  * Add some missing symbolic icons for blueman and blueberry
+  * Added transmission symbolic icon
+  * Add preferences-color and xfce4-color-settings icons
+  * added new software-updater symbolic icons
+  * fixed blueman-disabled symbolic icon
+  * Drop dangling symlinks
+  * Also add Thunar toolbar icons to -darker variant
+  * Improve symbolic icons for Thunar
+- Changed source file name to follow guidelines ("+" instead of "~")
+
+-------------------------------------------------------------------
+Fri Apr 19 08:43:58 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1~git20.f4968df2:
+  * Added 24px system-software-update monochrome icons
+  * Removed apps/48/system-software-update.svg from Darker variant
+  
+-------------------------------------------------------------------
+Mon Apr 15 10:08:26 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1~git17.6118c6a9:
+  * Adding symlink to appropriate update icon for gpk
+  * Fix gradients and shadows of software-update icons
+  * software-update-icons: Fixed 16px icons to match 22px design
+  * Add approved 'monochrome' panel icons for software updater 
+    and update CONTRIBUTORS
+  * Fix last remaining blue folders (gh#shimmerproject/elementary-xfce#127)
+
+-------------------------------------------------------------------
+Sat Feb 09 16:50:45 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1~git12.5a5d511b:
+  * added blueberry tray icons
+
+-------------------------------------------------------------------
+Mon Jan 28 17:47:51 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1~git11.25ff77b0:
+  * Ensure we're inheriting Adwaita (gh#shimmerproject/elementary-xfce#139)
+  * Respect the CC variable, if defined.
+  * Avoid race condition when using parallelization.
+  * Add symlinks for media-flash-sd
+
+-------------------------------------------------------------------
+Thu Dec 20 08:41:56 UTC 2018 - maurizio.galli@gmail.com
+
+- Update to version 0.13.1~git6.c377da86:
+  * Add yast specific package-* icons
+
+- Renamed version 
+
+-------------------------------------------------------------------
+Wed Nov 14 00:49:42 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.13.1+20181113.14732d1b:
+  * No longer inherit from the gnome icon theme
+    (gh#shimmerproject/elementary-xfce#136)
+    
+- Added Requires adwaita-icon-theme and hicolor-icon-theme
+
+-------------------------------------------------------------------
+Tue Nov 13 17:24:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove conjecture and first-person grammar from description.
+
+-------------------------------------------------------------------
+Tue Nov 13 11:05:52 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.13.1+20181112.4a4d7c9f:
+  * Reorganize Authors, License and Contributors files 
+    (gh#shimmerproject/elementary-xfce#135)
+  * Update bluetooth icon from upstream
+  * More vacuuming
+  * Update Network and Power settings from upstream
+  * Update view-refresh from upstream
+  * Add new network icons for dark panels
+  * Add 22px wireless icons
+  * Start transition to new wireless icon
+  * More vacuuming
+  * Recolor the remaining blue folder icons 
+    (gh#shimmerproject/elementary-xfce#127)
+  
+- removed patch as no longer needed (gh#shimmerproject/elementary-xfce#135)
+- fixed spec file to remove duplicates
+
+-------------------------------------------------------------------
+Mon Nov 12 06:25:09 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- switched source to master branch 
+
+-------------------------------------------------------------------
+Sun Nov 11 09:02:43 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- revert previous changes
+- created patch to move doc files in the correct location in the source
+
+-------------------------------------------------------------------
+Sat Nov 10 09:27:59 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- fixed doc files and license file issues in source tar.gz in spec file 
+
+-------------------------------------------------------------------
+Sat Nov 10 05:59:42 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- run spec-cleaner 
+
+-------------------------------------------------------------------
+Sat Nov 10 05:21:48 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- initial build 

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Fri Apr  5 13:47:10 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Jan  5 16:48:53 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 21:24:07 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Apr  4 18:06:43 CEST 2005 - werner@suse.de
+
+- Harden message function to avoid buffer overflows  (bug #75721)
+
+-------------------------------------------------------------------
+Wed Jun 16 16:59:59 CEST 2004 - werner@suse.de
+
+- Add some paper names and sizes (bug #42105)
+
+-------------------------------------------------------------------
+Sun Jan 11 12:07:50 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jul 11 16:09:24 CEST 2003 - garloff@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue May 27 09:31:15 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon Sep 16 18:50:43 CEST 2002 - sbrabec@suse.cz
+
+- Added psutils-flip.dif patch, which implements page flipping to
+  pstops.
+
+-------------------------------------------------------------------
+Fri Aug 30 14:58:40 CEST 2002 - werner@suse.de
+
+- Add comment what to use if psmerge fails
+
+-------------------------------------------------------------------
+Thu Dec 14 17:11:22 CET 2000 - werner@suse.de
+
+- Group tag
+
+-------------------------------------------------------------------
+Mon May 29 17:03:58 CEST 2000 - kukuk@suse.de
+
+- Use doc macro
+
+-------------------------------------------------------------------
+Mon Jan 24 19:28:10 CET 2000 - werner@suse.de
+
+	- Fix getafm
+	- Avoid SIGSEGV in psselect with empty page range
+	- Fix man page of pstops
+	- Use RPM_OPT_FLAGS
+	- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Sun Nov 16 18:22:38 MET 1997 - werner@suse.de
+	- Update to new version
+	- Fix some programs
+	  * epsffit.c (make showpage work even if inner graphics redefine showpage)
+	  * psnup.c (remove nasty compile warnings)
+	  * psutil.c (POSIX conform file position check even if pipes are used)

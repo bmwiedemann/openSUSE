@@ -1,0 +1,5 @@
+addFilter("file-not-in-%lang")
+# Empty model.py files should be kept around:
+addFilter("zero-length")
+# Bash completion isn't config:
+addFilter("non-conffile-in-etc /etc/bash_completion.d/django_bash_completion*")

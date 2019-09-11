@@ -1,0 +1,11 @@
+addFilter("devel-file-in-non-devel-package")
+addFilter('wrong-script-interpreter.*rackup')
+
+# as we bundle locally we have many files from other sources (gems)
+addFilter("W: .* /srv/velum/vendor/*")
+
+addFilter("env-script-interpreter")
+
+# also filter some known velum hidden files
+addFilter("W: hidden-file-or-dir /srv/velum/.*")
+addFilter("W: version-control-internal-file /srv/velum/.*")

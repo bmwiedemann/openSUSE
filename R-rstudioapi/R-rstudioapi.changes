@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Dec 28 17:13:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Trim bias from description.
+
+-------------------------------------------------------------------
+Thu Dec 20 19:36:44 UTC 2018 - mailaender@opensuse.org
+
+- Update to version 0.8
+
+-------------------------------------------------------------------
+Thu Apr  5 16:45:44 UTC 2018 - darin@darins.net
+
+- removed Recommends/BuildRequires based on Suggests
+
+-------------------------------------------------------------------
+Sat Dec 16 13:31:34 UTC 2017 - mailaender@opensuse.org
+
+- Fix dependencies
+- Enable packaging checks
+
+-------------------------------------------------------------------
+Sun Dec  3 07:59:48 UTC 2017 - flyos@mailoo.org
+
+- Update to 0.7
+
+-------------------------------------------------------------------
+Thu Oct  9 15:22:56 UTC 2014 - darin@darins.net
+
+- fix packaging
+
+-------------------------------------------------------------------
+Thu Apr 17 05:52:09 UTC 2014 - darin@darins.net
+
+- initial packaging
+

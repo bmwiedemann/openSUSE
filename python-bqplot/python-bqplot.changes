@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Jul 27 03:09:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.11.6
+  * Update for JupyterLab 1.0
+  * added cells for updating display_format and font_style
+  * adding labels to cells natively
+  * cleaned up code which makes selections
+  * cleanup and added an example with 'freeze_tooltip_location'
+  * added option to freeze/unfreeze tooltip location
+  * changed selected_stroke to orangered
+  * fixed paths to data files
+  * centering the labels
+
+-------------------------------------------------------------------
+Tue May 14 16:35:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.11.5
+  * silence brush events on selected_changed
+- Update to version 0.11.4
+  * Scatter label color now follow theme
+  * Fixup color axis domain
+  * Fixup election example notebook
+- Update to version 0.11.3
+  * Fixup interaction layer wrt typed fields
+  * Set # of axis ticks for DateScale by width
+  * fixed an issue where 'selected' wasn't getting updated on empty brush
+  * Revise outlier selection method
+  * Fix d3 selections
+  * not setting default labels in lieu of empty labels
+  * increased pie label font size to 12px
+  * Make fill_opcities work with fill=inside
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Sat Dec 22 07:01:21 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.11.2
+  * Merge pull request #742 from ChakriCherukuri/pyplot_fix
+  * fixed an issue with marker strings (default_colors renamed to colors)
+  * use trait instead of setter
+  * fix: empty brush updates brush.selected
+  * Don't squeeze array because of single stacked bar
+  * apply selected styles on redraw
+  * Listen to colorscale changes in GridHeatMap
+  * Adding extrapolation option for ColorScale
+  * Do light/dark styling with JupyterLab theming system.
+  * add auto_detect_outliers property to front-end model 
+
+-------------------------------------------------------------------
+Fri Sep 28 04:06:40 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.11.1
+  * Fixup notebook links
+  * Fixup marker update in Scatter plot
+  * package-lock update
+
+-------------------------------------------------------------------
+Wed Apr 25 20:11:40 UTC 2018 - toddrme2178@gmail.com
+
+- Don't need to manually enable extension.
+
+-------------------------------------------------------------------
+Sun Apr 22 03:46:31 UTC 2018 - toddrme2178@gmail.com
+
+- Double-check target directory.
+
+-------------------------------------------------------------------
+Fri Apr 20 20:19:32 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

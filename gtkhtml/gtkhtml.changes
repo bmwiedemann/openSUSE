@@ -1,0 +1,1544 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:32:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec 14 14:55:46 UTC 2017 - dimstar@opensuse.org
+
+- Update package-name BuildRequires with their pkgconfig()
+  equivalents and align with configure's checks:
+  + Removed enchant-devel, gtk3-devel, iso-codes-devel,
+    libsoup-devel
+  + Add pkgconfig(enchant), pkgconfig(gtk+-3.0), pkgconfig(cairo),
+    pkgconfig(gail-3.0), pkgconfig(iso-codes),
+    pkgconfig(libsoup-2.4).
+- Drop xz BuildRequires: xz has been implicit for a long time
+  already.
+
+-------------------------------------------------------------------
+Fri Apr 15 01:29:55 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Sep 21 11:51:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 4.10.0:
+  + No code/translation changes.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:22:20 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 4.9.92:
+  + bgo#729020: Drop gnome-icon-theme dependency.
+  + bgo#729414: Correct spelling typos in devel docs and code
+    comments.
+  + bgo#729944: UTF-8 characters are not always encoded correctly.
+  + bgo#732499: Use named colors from themes.
+
+-------------------------------------------------------------------
+Mon Oct 13 10:39:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 4.8.5:
+  + bgo#537825: Text cursor not erased when moved to new position.
+  + bgo#737340: theme_text_color is no longer in gtk 3.14.
+
+-------------------------------------------------------------------
+Mon Aug 11 12:56:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.8.4:
+  + Miscellaneous: Add forgotten chain-up-s to parent's
+    constructed() method.
+
+-------------------------------------------------------------------
+Wed Jul 16 12:10:53 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 4.8.3:
+  + Remove usages of deprecated gtk_widget_ensure_style().
+  + Remove unused and obsolete gtkhtml-zip.in.
+  + bgo#732499: Use named colors from themes.
+
+-------------------------------------------------------------------
+Wed Jul  2 16:49:07 UTC 2014 - zaitor@opensuse.org
+
+- Add baselibs.conf to spec as source1, following new distro
+  policy.
+
+-------------------------------------------------------------------
+Tue Jul  1 17:31:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 4.8.2:
+  + bgo#729414: Correct spelling typos in devel docs and code
+    comments.
+  + bgo#729944: UTF-8 characters are not always encoded correctly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  2 16:01:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.8.1:
+  + Drop gnome-icon-theme dependency (bgo#729020).
+- Drop gnome-icon-theme BuildRequires: Following upstream changes.
+
+-------------------------------------------------------------------
+Mon Mar 24 13:33:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 4.8.0:
+  + Adjust to gtk+ a11y changes.
+  + Updated translations.
+- Drop gtkhtml-a11y-refactor.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 26 23:15:32 UTC 2014 - mgorse@suse.com
+
+- Add gtkhtml-a11y-refactor.patch -- fix atk classes to work with
+  modern gtk (bgo#669441).
+
+-------------------------------------------------------------------
+Wed Jul 24 18:41:02 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 4.6.6:
+  + Bug Fixes: bgo#699574: gtk_selection_owner_set() breaks mouse
+    wheel scrolling.
+  + Other Changes:
+    - Paste of HTML text removes leading/trailing whitespaces.
+    - Skip \n and \r from whitespace recognition on HTML text
+      paste.
+    - Underline and strikeout lines out of its position in a
+      printout.
+    - Paragraph style drawn incorrectly after font style change.
+    - Wrong cursor position after paste of text with <div></div>.
+
+-------------------------------------------------------------------
+Sun May 12 13:43:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.6.5:
+  + Bug Fixes:
+    - bgo#691362: Return correct enum type 'PangoDirection' in
+      'get_pango_base_direction'.
+    - bgo#699757: Crash in gtkhtml_spell_checker_get_suggestions().
+
+-------------------------------------------------------------------
+Sun Feb 17 20:52:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.6.4:
+  + Schedule actions with higher idle priority (bgo#683867).
+- Drop gtkhtml-schedule-higher-priority-actions.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Feb  9 15:15:13 UTC 2013 - badshah400@gmail.com
+
+- Add gtkhtml-schedule-higher-priority-actions.patch to schedule
+  actions with higher idle priority (bgo#683867).
+
+-------------------------------------------------------------------
+Mon Feb  4 23:06:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.6.3:
+  + bgo#689476: Slow composer open (emoticon and color widget
+    leaks).
+  + Fix a memory leak (GtkhtmlFaceAction instance).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 13 13:20:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.6.2:
+  + Fix Crash on edit of an empty HTML signature (bgo#690029).
+
+-------------------------------------------------------------------
+Mon Nov 12 12:46:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 23 09:34:20 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 4.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  2 12:19:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.5.91:
+  + Bug fixed: Cannot insert a link before another one (bgo#681495)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 14 11:56:06 UTC 2012 - dimstar@opensuse.org
+
+- Upadte to version 4.5.5:
+  + Add tooltips for editor toolbar items (bgo#681087)
+  + Remove GDK_THREADS_ENTER and GDK_THREADS_LEAVE macros
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 14 11:35:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.5.3:
+  + bgo#676218: Using Emoticon picker blocks input in composer
+  + bgo#678479: Leading spaces in first line of <pre> are ignored
+- Changes from version 4.5.2:
+  + bgo#672582: Fix selection behavior inside <iframe>
+  + bgo#675871: Hide gnu make extensions warnings for automake 1.12
+  + bgo#676218: Using the color Picker blocks any input for
+    composer.
+
+-------------------------------------------------------------------
+Tue Aug 14 10:38:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.5.1:
+  + bgo#671434: GtkhtmlEditor does not use the primary toolbar
+    style.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 14 09:06:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.4.4:
+  + Leading spaces in first line of <pre> are ignored (bgo#678479).
+
+-------------------------------------------------------------------
+Mon Jun 18 07:17:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.4.3:
+  + Using the color Picker blocks any input for composer
+    (bgo#676218).
+
+-------------------------------------------------------------------
+Mon May 14 09:40:42 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 4.4.2:
+  + bgo#672582: Fix selection behavior inside <iframe>
+
+-------------------------------------------------------------------
+Tue Apr 17 06:04:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 4.4.1:
+  + bgo#666850: Grab focus on context menu popup in editor
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 07:53:02 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 4.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 18:12:42 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 4.3.92:
+  + Suppress deprecation warnings.
+  + Updated translation.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:25:51 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 4.3.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:18:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 4.3.5:
+  + bgo#668215: Selection not highlighted with recent gtk+
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 08:49:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.3.3:
+  + Remove *_DISABLE_SINGLE_INCLUDES macros.
+  + Remove all *_DISABLE_DEPRECATED_FLAGS.
+- Remove --disable-deprecated-warning-flags option from configure:
+  it's gone now.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Mon Nov 21 08:51:27 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 4.3.2:
+  + Remove unnecessary g_thread_init() calls.
+
+-------------------------------------------------------------------
+Fri Oct 28 07:45:32 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 4.3.1.1:
+  + Work around libgthread shenanigans in GLib 2.31
+- Changes from version 4.3.1:
+  + Bugs fixed: bgo#626922, bgo#660983
+  + Other Changes:
+    - Let GtkFileChooser track its own last-used-folder.
+    - Use GtkWidget::style_updated signal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 16 17:41:50 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.2.1:
+  + bgo#660983: Distribute gtkhtml-editor.xml in tarballs
+  + Updated translations.
+- Drop our copy of gtkhtml-editor.xml as source now that it's in
+  the tarball.
+
+-------------------------------------------------------------------
+Thu Oct  6 15:43:28 UTC 2011 - vuntz@opensuse.org
+
+- Add iso-codes Recommends to libgtkhtml-editor-4_0-0 since the
+  iso-codes data is used at runtime (but gtkhtml can survive
+  without it).
+
+-------------------------------------------------------------------
+Wed Oct  5 12:49:20 UTC 2011 - vuntz@opensuse.org
+
+- Build and package the glade catalog (bnc#689575):
+  + Manually ship gtkhtml-editor.xml as a source, since it's
+    missing from the tarball.
+  + Add pkgconfig(gladeui-2.0) BuildRequires.
+  + Pass --with-glade-catalog to configure.
+  + Create glade-catalog-gtkhtml subpackage.
+
+-------------------------------------------------------------------
+Sun Sep 25 23:03:14 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 14:32:12 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.92:
+  + bgo#659217: Crash when disposing GtkHTML when it's still filled
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 16:25:33 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:19:50 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.90.1:
+  + bgo#657764: Explicitly link gtkhtml against libm
+
+-------------------------------------------------------------------
+Tue Aug 30 16:35:17 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 09:22:21 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 4.1.5:
+  + bgo#655277: Remove 'No such language' runtime warning
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 24 11:49:08 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.4:
+  + bgo#655002: GtkHTML still gets font settings from GConf
+  + Updated translations.
+- Remove gconf2-devel BuildRequires and add
+  pkgconfig(gsettings-desktop-schemas) BuildRequires instead,
+  following dependency changes.
+- Add gsettings-desktop-schemas Requires, since the GSettings
+  schemas are needed at runtime too.
+
+-------------------------------------------------------------------
+Mon Jul  4 11:52:16 CEST 2011 - vuntz@opensuse.org
+
+- Rename source package from gtkhtml2 to gtkhtml, to follow
+  upstream name (bnc#696409).
+- Add appropriate Provides/Obsoletes for the devel subpackage, and
+  add Provides/Obsoletes for gtkhtml2 to libgtkhtml-4_0-0.
+- Update to version 4.1.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:02:52 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.2:
+  + Add 'Copy Image' Option On Inline Email Images (bgo#601541)
+  + Code cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 26 22:33:09 CEST 2011 - vuntz@opensuse.org
+
+- Update package names in baselibs.conf.
+
+-------------------------------------------------------------------
+Thu May 19 18:36:48 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 4.1.1:
+  + bgo#593572: Lack of feedback when there are no search hits.
+  + Work around an accessibility crash.
+  + Require gladeui-2.0 for Glade catalogs.
+  + Updated translations.
+- Replace Obsoletes <= with < to fix an rpmlint warning.
+
+-------------------------------------------------------------------
+Tue Apr 26 15:03:57 UTC 2011 - fcrozat@novell.com
+
+- Update to version 4.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:17:21 UTC 2011 - fcrozat@novell.com
+
+- Update to version 4.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:18:13 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.91.92:
+  + bgo#644166: Add style class to primary toolbars
+  + Updated translations.
+- Changes from version 3.91.91:
+  + bgo#614480: Avoid using G_TYPE_INSTANCE_GET_PRIVATE repeatedly.
+- Changes from version 3.91.90:
+  + Miscellaneous Fixes:
+    - Bump GTK+ requirement to 3.0.
+  + Bug Fixes:
+    - bgo#641833: Cleanups and fixes for compiler warnings.
+    - bgo#642656: Screen flickers black in body when replying
+      email.
+    - bgo#641765: Fix warnings from GCC 4.6.
+- Changes from version 3.91.6:
+  + Miscellaneous Fixes:
+    - Add preview in Insert Image dialog.
+    - No GtkWidget::extension-events property in Gtk3.
+    - Adapt to recent GTK+ changes.
+    - Fix drawing with gtk3.
+    - Adapt to new GtkScrollable interface.
+    - Drop support for gtk+-2.0.
+  + Bug Fixes:
+    - bgo#640533: Incorrect rendering with inner frames.
+    - bgo#635571: Adapt size_request to gtk-3.0 change.
+- Changes from version 3.91.5:
+  + Other Changes:
+    - Fix version mismatch in gtkhtml-editor.pc.in.
+    - GtkhtmlComboBox: Fix runtime warnings with GTK3.
+  + bgo#402693: Sending centered or right-aligned text doubles the
+    spacing.
+- Changes from version 3.91.4:
+  + Miscellaneous Fixes:
+    - Replace erroneous gtkhtml version with editor API version.
+    - Bump gtkhtml API version to accomodate api break.
+  + Bug Fixes: bgo#612344.
+- Changes from version 3.91.3:
+  + Bug Fixes:
+    - bgo#635576: gtkhtml-editor-test link failure.
+    - bgo#634578: Highlighting text in preview renders it
+      invisible.
+- Changes from version 3.91.2:
+  + Bug Fixes: bgo#632601, bgo#632596, bgo#640072.
+- Changes from version 3.91.1:
+  + Bug Fixes: bgo#631321.
+  + Disable deprecation warnings in DISTCHECK_CONFIGURE_FLAGS.
+- Changes from version 3.91.0:
+  + Update to work with latest GTK+.
+  + Bug Fixes:
+    - bgo#630360: Crash when inserting html file in composer.
+- Add macros to handle more easily soname and version change
+  across specfile
+- Change BuildRequires from gtk2-devel to gtk3-devel
+- Create additional subpackage libgtkhtml-editor-4_0-0
+
+-------------------------------------------------------------------
+Mon Nov 29 10:21:40 UTC 2010 - andrea@opensuse.org
+
+- added baselibs.conf to build -32bit library to make 3rd party
+  applications works correctly
+
+-------------------------------------------------------------------
+Tue Nov 16 09:36:08 CET 2010 - dimstar@opensuse.org
+
+- Update to version 3.32.1:
+  + bgo#630360: Crash when inserting html file in composer
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 28 18:25:10 EDT 2010 - vuntz@opensuse.org
+
+- Changes libgtkhtml-3_14-19 to have a gtkhtml-3_14 Provides
+  instead of gtkhtml2-3_14 Provides. This makes the lang package
+  installable.
+
+-------------------------------------------------------------------
+Sat Oct 16 16:33:51 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libgtkhtml-3_14-19 subpackage.
+  + Add Provides/Obsoletes for gtkhtml2 to libgtkhtml-3_14-19.
+- Update summaries and descriptions.
+- Rename the lang package to gtkhtml-3_14-lang, to match the name
+  of the mo files.
+- Remove explicit devel Requires in devel subpackage: they will be
+  added automatically the pkgconfig() way.
+
+-------------------------------------------------------------------
+Mon Sep 27 16:36:11 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 15:38:20 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.31.92:
+  + Build fixes.
+  + bgo#613774: GtkHTMLStream should be freed by unref
+  + bgo#623265: Various memory leaks
+  + bnc#615511: Encoded question mark issues.
+  + bnc#463936: Table insertion issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 30 09:11:58 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 3.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 11:07:00 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 3.31.90:
+  + Add an option for disabling deprecated warning flags. We would
+    handle the deprecated gdk gc past evolution-2.32
+  + Remove GTK_DEST_DEFAULT_MOTION flag.
+  + Remove -DGDK_DISABLE_DEPRECATED
+  + bgo#605335: Alignment of horizontal rules is not saved
+  + bgo#626090: Only set -fno-strict-aliasing for GCC
+  + Updated translations.
+- Pass --disable-deprecated-warning-flags to configure, to fix
+  build with gtk 2.21.6 and newer.
+
+-------------------------------------------------------------------
+Fri Aug  6 02:41:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.31.6:
+  + bgo#625171 - Crash while pasting text with links
+  + bgo#610797 - Improve UTF-8 text sanitizing
+  + bgo#624315 - Skip spelling update when no content set
+  + Updated translations.
+- Changes from version 3.31.5:
+  + bgo#624149 - Check for NULL after
+                 gtkhtml_editor_run_open_dialog()
+  + Work around sudden disapperance of GdkRegion in GTK+ 2.90.5.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 13 09:28:45 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 3.31.4:
+  + bgo#444709 - Add support for multimedia keys
+  + bgo#344076 - Crash after closing an inline view of text
+                 attachment
+  + bgo#607324 - Crash doing table editing
+  + Remove bogus drag destination targets
+  + Split target lists for drag source and drag destination
+  + Build with gtk3 and have backward compatibility
+  + Updated translations.
+- Changes from version 3.31.3:
+  + Updated translations.
+- Changes from version 3.31.2:
+  + bgo#220672 - Excessive autosaving uses lots of resources
+  + bgo#512468 - Wrap Lines keeps spaces in quoted text
+  + bgo#597111 - Line wrap only acts on current paragraph
+                 regardless selection
+  + bgo#615294 - Does not compile with -DGSEAL_ENABLE
+  + bgo#618368 - Doesn't make all pasted links clickable
+  + Updated translations.
+- Changes from version 3.31.1:
+  + bgo#575038 - Cursor/caret mode breaks magic spacebar
+  + bgo#247302 - Wrong letter color with HTML content rendering
+  + bgo#615205 - Translations not working in Emoticons and
+                 Find/Replace dialogs.
+  + bgo#602634 - Not fully supported list types
+  + bgo#461203 - Do not select text on drop abort
+  + bgo#551554, bgo#514611, bgo#325121
+  + Use gtk_accessible_get_widget() if available.
+  + Fix most GSEAL issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 29 09:56:39 IST 2010 - lakhil@novell.com
+
+- Update to version 3.30.1:
+   + Updated translations
+
+-------------------------------------------------------------------
+Mon Mar 29 23:53:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.30.0:
+  + bgo#612168 - Crash while pasting over a selection
+  + bgo#613181 - Mistakenly removed statement
+  + Remove redundant "DISABLE_DEPRECATED" flags.
+  + Work around recent GTK+ deprecations.
+  + Fix configure output for iso-codes check.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 12 12:14:53 CET 2010 - dimstar@opensuse.org
+
+- Update to version 3.29.92.1:
+  + Work around GTK_WIDGET_STATE deprecation so the tarball
+    successfully builds against GTK+ 2.19.7.
+- Drop gtkhtml2-gtk2.19.7.patch.
+
+-------------------------------------------------------------------
+Mon Mar  8 10:08:27 CET 2010 - dimstar@opensuse.org
+
+- Update to version 3.29.92:
+  + Work around recent GTK+ deprecations.
+  + Updated translations.
+- Add gtkhtml2-gtk2.19.7.patch to fix build with gtk 2.19.7.
+  Reported and sent upstream as bgo#612426.
+
+-------------------------------------------------------------------
+Mon Feb 22 20:34:54 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.29.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  8 07:50:58 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 3.29.90:
+  + Warn on console when finalizing HTMLEngine with opened streams
+  + Disable strict aliasing optimization
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Jan 25 19:10:58 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.29.6:
+  + bgo#600754 - Check for enchant >= 1.1.7
+  + bgo#606167 - Crash on composer Link editing
+  + bgo#591463 - Build fixes
+  + bgo#494986 - Clicking URL moves view to the top in caret mode
+  + Add gtkhtml_editor_insert_text()
+  + Fix dead assignments found by clang.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 00:01:00 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 3.29.5:
+  + bgo#606244 - Remove usage of deprecated GTK+ symbols
+  + bgo#604561 - Copy popup action shown with no text selected
+  + bgo#605587 - draw_spell_error() doesn't restore GC fill style
+  + Allow overriding the HTML widget in GtkhtmlEditor
+  + Remove duplicate policy supplied by EWebView
+  + Change GtkHTML::url-requested to G_SIGNAL_RUN_LAST
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 23 12:35:56 CET 2009 - vuntz@opensuse.org
+
+- Update to version 3.29.4:
+  + bgo#366035 - Header expander image drag drop crash
+  + bgo#603342 - Memory leak fix
+  + Support remote locations when inserting files into editor.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec  7 14:38:26 CET 2009 - vuntz@opensuse.org
+
+- Remove workaround for en@shaw on 11.3.
+
+-------------------------------------------------------------------
+Wed Dec  2 10:20:31 CET 2009 - dimstar@opensuse.org
+
+- Update to version 3.29.3:
+  + Updated translations
+- Changes from version 3.29.2:
+  + bgo#471687 - Crash selecting mail content
+  + bgo#600042 - Hyperlink dialog doesn't allow more hyperlinks
+  + Allow "select-all" command in read-only mode
+  + Add gtk_html_unselect_all() for clearing selections
+- Changes from version 3.29.1
+  + bgo#598635 - Not all hyperlinks are ctrl-clickable in mail
+    composer
+  + bgo#598567 - Can only insert local image files
+  + bgo#580142 - Email with PRE HTML Tags Should Wrap When Printed
+  + bgo#598159 - Context popup clears a selection
+  + bgo#344008 - Broken context-sensitive spell check
+  + bgo#593570 - Text entry not focused when find dialog shown
+- Drop gtkhtml2-crash-editing.patch, upstream fixed.
+- Remove en@shaw locale folder; bnc#559206.
+
+-------------------------------------------------------------------
+Sun Oct  4 23:08:52 CEST 2009 - vuntz@opensuse.org
+
+- Add gtkhtml2-crash-editing.patch taken from git to fix a crash.
+
+-------------------------------------------------------------------
+Mon Sep 28 17:32:58 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 03:41:13 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 3.27.92:
+  + bgo#593570 - Text entry not focused when find dialog shown
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 17:26:19 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 10 21:23:01 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.90:
+  + Bug Fixes:
+    - bgo#586076 - [external-editor] Pass cursor pos to vim - new
+      API
+    - bgo#589039 - Error in frameset append
+    - bgo#340212 - Using Ctrl+Backspace copies to clipboard
+  + Other Fixes:
+    - Enforce including only top-level GLib and GTK+ headers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 28 16:53:44 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 3.27.5:
+  + Bug Fixes:
+    - bgo#584243 - Crash when replacing a mispelled word
+  + Other Fixes:
+    - Fix some build tool warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:49:28 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.4:
+  + Bug Fixes:
+    - bgo#585959: Add G_THREAD dependency for the test binary
+    - bgo#586809: Enable "silent rules" automake 1.11 option
+    - bgo#582505: Use GtkBuilder instead of libglade
+  + Other Fixes:
+    - Work around deprecation of g_mapped_file_free().
+    - Remove INSTALL from source control.
+    - Makefile cleanups.
+    - Remove markup from translatable strings
+    - Use AM_CPPFLAGS instead of INCLUDE in all Makefile.am.
+    - Require automake 1.9.
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jun 15 23:19:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.3:
+  + bgo#584762: support cookies if libsoup>2.26
+  + bgo#582784: Get rid of deprecated libgnome(ui)
+  + Killing libgnome by removing libgnome function by equivalent
+    glib functions
+  + Code cleanup
+- Remove libgnomeui-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed May 27 12:24:51 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.2:
+  + bgo#578213 - The -q of grep should not use in Solaris
+  + bgo#578394 - HTML images cannot be scaled to more than 100 px
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  5 17:50:13 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.27.1:
+  + bgo#494986 - Do not block view update when cursor changed in
+    any frame of the whole hierarchy.
+  + bgo#581228 - tarball does not provide gtkhtml-editor
+  + bgo#580946 - Remove usage of deprecated gtk api
+  + bgo#494986 - Do not centre to cursor position on click over URL
+    and draw event.
+  + bgo#571743 - Kill the deprecated html-editor component and
+    remove any trace of it from the build files.  Buh bye, Bonobo.
+  + bgo#576684 - implement pixel sized font units in
+    gtk_html_set_fonts and html_painter_alloc_font
+  + bgo#574335 - Use a proper format string ("%s") for g_warning.
+  + bgo#573046 - Get rid of deprecated GTK_CHECK_*
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 21:24:30 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.26.1.1:
+  + bgo#573046: Replace deprecated GTK_CHECK_* with G_TYPE_CHECK_*
+    equivalents
+  + bgo#574335: Use proper format strings ("%s")
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 16:27:00 CET 2009 - vuntz@novell.com
+
+- Update to version 3.26.0:
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  7 00:37:41 CET 2009 - vuntz@novell.com
+
+- Update to version 3.25.92:
+  + bgo#549838 : Revert workarounds for HTML entities
+  + bgo#569365 : Do not draw a cursor without a window
+  + bgo#570276 : Change Word Wrap accelerator to CtrlK
+  + bgo#570728 : Use gtk_show_uri in html-editor
+  + bgo#571621 : Replace a g_assert() with g_return_if_fail()
+  + bgo#571654 : Clear also primary selection
+  + bgo#571738 : Remove unused libart_lgpl includes
+  + Updated translations.
+- Remove AutoReqProv: it's default now.
+- Remove -fno-strict-aliasing from compilation flags.
+
+-------------------------------------------------------------------
+Mon Feb 16 23:59:16 CET 2009 - mboman@suse.de
+
+- Update to version 3.25.91:
+  + bgo#569365 : Do not draw a cursor without a window
+  + bgo#570276 : Change Word Wrap accelerator to CtrlK, since
+    CtrlBackspace doesn't work apparently
+  + Added smileys in translator comments to be easier to translate
+    without referring to source code
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Tue Feb  3 11:46:39 EST 2009 - mboman@suse.de
+
+- Update to version 3.25.90:
+  + bnc#464064 : Evolution crashed - pressing ctrl+z (undo) in
+    composer window  
+  + bnc#465432 : Deleting Text In Table Deletes To End Of String  
+  + bgo#532165 : Do not crash when factory gone
+  + bgo#567697 : Do not strip invalid entities, rather return them
+    back as text
+  + bgo#567733 : Handle the "popup-menu" signal
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Feb  1 19:42:47 EST 2009 - mboman@suse.de
+
+- Update to version 3.25.5:
+  + bgo#564529 : Fix what we can with GSEAL_ENABLE defined
+  + bgo#565491 : Preserve up to one leading space when parsing HTML
+  + bgo#565491 : Preserve leading space only when in the editing mode
+  + bgo#565493 : Ignore the action activation if 'ignore_style_change' is set
+  + bgo#566014 : New 'default-transparent' boolean property
+  + bgo#567130 : Use the localization domain when initializing the Glade UI
+  + Translation updates
+- Remove bnc-443551-background-table-colors.patch. Fixed upstream
+- Remove bnc-449966-gtkhtml-replace-dialog.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Sun Jan 25 13:40:49 CET 2009 - vuntz@novell.com
+
+- Really remove bgo-555388-undo-table.patch,
+  bgo-565493-ignore-style-change.patch,
+  bnc-465432-delete-table-text.patch.
+- Remove bnc-464064-table-goes-null.patch that was left after some
+  merge.
+- gail-devel does not exist anymore (it's included in gtk2).
+- Remove useless BuildRequires on perl-XML-Parser.
+
+-------------------------------------------------------------------
+Wed Jan 21 12:47:49 CET 2009 - psankar@suse.de
+
+- bnc-464064-table-goes-null.patch: Undo causing tables to go null 
+
+-------------------------------------------------------------------
+Fri Jan 16 11:33:25 CET 2009 - psankar@suse.de
+
+Patches backported from upstream to improve stability
+
+bgo-555388-undo-table.patch - Undo on composer hangs evolution
+bgo-565493-ignore-style-change.patch - Do no lose formatting on style change
+bnc-465432-delete-table-text.patch - Allow to delete text in tables
+
+-------------------------------------------------------------------
+Fri Jan 09 08:18:09 CET 2009 - mboman@suse.de
+
+- Pruned changes from the factory submission: 
+  + Remove bgo-330452-spell-suggestions.patch. Fixed upstream
+  + Remove bgo-562323-insert-link.patch. Fixed upstream
+  + Remove bgo-564248-gtkhtml-copy-paste-images.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Wed Jan  7 08:18:09 CET 2009 - abharath@suse.de
+
+- Patches added
+  + bgo#330452 - bgo-330452-spell-suggestions.patch - Automatic spell 
+		 check suggestions should be first level menu option.
+  + bgo#562323 - bgo-562323-insert-link.patch - Evolution inserts 
+		 a link incorrectly.
+  + bgo#564248 - bgo-564248-gtkhtml-copy-paste-images.patch - Support 
+		 Copy And Paste Of Images.
+  + bnc#449966 - bnc-449966-gtkhtml-replace-dialog.patch - Unlocalised
+		 Text on the Replace Dlg in Evolution.
+  + bnc#443551 - bnc-443551-background-table-colors.patch - Evolution 
+		 does not use selected background color inside table.
+
+-------------------------------------------------------------------
+Tue Jan  6 08:05:17 EST 2009 - mboman@suse.de
+
+- Update to version 3.25.4:
+  + bgo#536625: Free the string returned by html_tokenizer_next_token() 
+  + bgo#552357: Fixes invalid reads and memory usage
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Dec 23 11:36:25 IST 2008 - msuman@suse.de
+
+- Update to version 3.25.3:
+  + Bugs fixed: bgo#330452, bgo#338921, bgo#555420, bgo#562323, 
+    bgo#472517, bgo#552357, bgo#553995, bgo#555388, bgo#563841
+  + Updated translations
+- Dropped: 
+  + gtkhtml-im-crash.patch - fixed upstream
+- Use proper RPM macros in the spec file, remove unnecessary 'Requires'
+
+-------------------------------------------------------------------
+Fri Nov  7 09:55:54 CET 2008 - psankar@suse.de
+
+- Push gtkhtml 3.24.1.1 tarball 
+  + Bug fixes: bgo #338921
+
+  + Translation changes
+
+-------------------------------------------------------------------
+Tue Oct 21 19:42:05 EST 2008 - mboman@suse.de
+
+- Update to version 3.24.1:
+  + bgo#546155: Composer crash after pasting text and deleting parts of it
+  + bgo#548540: Spellchecker reports possessive plurals (e.g. "horses'") as
+    misspelled
+  + bgo#554326: Critical warning when opening new composer and have preset
+    a signature
+  + bgo#554424: Spellchecker breaks after enabling more languages
+  + bgo#554849: Unlocalized strings in Compose mail dialog
+  + bgo#556239: Inline spell-check not redone after changing the language
+  + Translation updates
+- Remove gtkhtml-spellcheck.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Oct  7 18:05:32 CEST 2008 - sbrabec@suse.cz
+
+- Fix spell checker if more languages are active (bgo#554424).
+
+-------------------------------------------------------------------
+Mon Sep 22 13:03:22 CDT 2008 - maw@suse.de
+
+- Update to version 3.24.0:
+  + Bugs fixed: bgo#423395 and bgo#549232
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 11 23:58:04 CDT 2008 - maw@suse.de
+
+- Update to version 3.23.92:
+  + Bug fixed: bgo#516680
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 04 19:46:39 CEST 2008 - mboman@novell.com
+
+- Update to version 3.23.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 28 19:46:39 CEST 2008 - maw@suse.de
+
+- Update to version 3.23.90:
+  + Bugs fixed: bgo#540794 and bgo#543318
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  5 13:07:07 CDT 2008 - maw@suse.de
+
+- Update to version 3.23.6:
+  + Bugs fixed: bgo#244888, bgo#408707, bgo#423395, bgo#446894,
+    bgo#493783, bgo#538703, bgo#539289, bgo#540342, bgo#540929,
+    bgo#542567, and bgo#545559
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 19 00:48:34 CEST 2008 - maw@suse.de
+
+- Update to version 3.23.4:
+  + Bugs fixed: bgo#533741, bgo#536635, and bgo#537397
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 16 23:09:30 CEST 2008 - maw@suse.de
+
+- Update to version 3.23.3:
+  + Bugs fixed: bgo#524338, bgo#525996, bgo#266206, bgo#339093,
+    bgo#458369, bgo#483745, bgo#512046, bgo#520711, bgo#525977, and
+    bgo#526152
+  + Several useless widget labels are no longer translated
+  + Updated translations
+- Drop obsolete patch: bgo-524338-mail-flicker.diff.
+
+-------------------------------------------------------------------
+Wed May 21 21:27:53 IST 2008 - msuman@suse.de
+
+- Added 
+  + bgo-524338-mail-flicker.diff (Srinivasa Ragavan) (bnc#377784)
+
+-------------------------------------------------------------------
+Thu Apr 10 00:56:26 CEST 2008 - maw@suse.de
+
+- Update to version 3.18.1:
+  + Bug fixed: bgo#520711
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 14 03:22:44 CET 2008 - maw@suse.de
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 18:51:34 CET 2008 - maw@suse.de
+
+- Update to version 3.17.92:
+  + Bug fixed: bgo#391730
+  + Misc. compilation fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 31 19:44:34 CET 2008 - maw@suse.de
+
+- Update to version 3.17.90.1:
+  + Support for Anchors (Frame/IFRAME)
+  + Bugs fixed: bnc#371011, bnc#431190, bnc#447122, bnc#489456,
+    bnc#491210, and bnc#505819
+  + libsoup updates
+  + Build fixes
+  + Updated translations
+- Add gtkhtml-g_strfunc.patch.
+
+-------------------------------------------------------------------
+Mon Jan 14 20:24:39 CET 2008 - maw@suse.de
+
+- Update to version 3.17.5:
+  + Bugs (bugzilla.gnome.org) fixed: #317823, #447122, #467791,
+    #493709, #498089, and #504051
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 18 16:34:11 CST 2007 - maw@suse.de
+
+- Update to version 3.17.4:
+  + Bugs (bugzilla.gnome.org) fixed: #501724, #271551, #435620,
+    #494170, #495073, #500398, #318592, #334675, #431606, #478670,
+    #258374, #349046, #434631, #485700, #487841, and #488167
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 16:10:36 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.16.0:
+  * updated translations
+
+-------------------------------------------------------------------
+Mon Sep 10 17:34:27 CEST 2007 - maw@suse.de
+
+- Update to version 3.15.92:
+  + Bug (bugzilla.gno,e.org) fixed: #470451
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 29 17:45:01 CEST 2007 - maw@suse.de
+
+- Update to version 3.15.91:
+  + Bugs (bugzilla.gnome.org) fixed: #262907, #270487, #343994,
+    #346004, #419350, #352646, #373648, #394182, #407365, #426496,
+    #432914, and #455799
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 10 09:25:01 CEST 2007 - ro@suse.de
+
+- move version line up in specfile (before first use) 
+
+-------------------------------------------------------------------
+Wed Aug  8 00:23:15 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Aug  1 00:15:04 CEST 2007 - mauro@suse.de
+
+- Update to version 3.15.6
+- bugzilla.gnome.org fixed: #380534, #455444.
+
+-------------------------------------------------------------------
+Fri Jul 20 18:29:08 CEST 2007 - maw@suse.de
+
+- Update to version 3.15.5
+- bugzilla.gnome.org bugs fixed: 
+	#347347: Emit correct signal when moving caret in composer window
+	 (Yi Jin)
+	#438945: Emit correct signal when using Ctrl+Backspace in composer
+	 window (Yi Jin)
+	#446894: Clean up printing in Evolution's Mailer (Matthew Barnes)
+	#449995: Glade data should not get deleted when running "make
+	 distclean" (Yi Jin)
+	#453320: Emit correct signal when deleting text (Li Yuan)
+	#443219: Crash when definding frames with out inner frames (Milan Crha)
+	#444104: Removed space after trailing slash, fixes build problem
+	 with automake 1.6. (Nickolay V. Shmyrev)
+	#407363: Added mnemonic for paste quotation menuitem (Bharathi
+	 Gauthaman)
+	#347347 - Make message "object:text-caret-moved" generated when 
+	 user hits left/right key with shift key held down (Yi Jin)
+	#331813 - Fix URL highlighting of sip/h323 addresses (Gilles
+	 Dartiguelongue)
+	#420493 - Setting the width of a rule doesn't take effect (Ebby
+	 Wiselyn)
+	#349773 - Support searching UTF-8 strings. (Xiurong Simon Zheng)
+	#410317 - Memory leak fixes (nix)
+	#374869 - On Caret mode, message scrolls to the bottom of the
+	 list. (Sankar P)
+	#419350 - fix emoticons use (Sebastien Bacher)
+- Updated translations
+
+-------------------------------------------------------------------
+Wed Apr 11 10:30:57 CDT 2007 - maw@suse.de
+
+- Update to version 3.14.1
+- Fixes for bugzilla.gnome.org #374869 and #419350
+- Updated translations for the gl, dz, eu, and es locales.
+
+-------------------------------------------------------------------
+Thu Mar 22 11:04:30 CST 2007 - maw@suse.de
+
+- Update to version 3.14.0
+- intltool update.
+
+-------------------------------------------------------------------
+Mon Feb 19 15:08:20 CST 2007 - maw@suse.de
+
+- Update to version 3.13.91
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Wed Jan  3 14:03:21 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Jan  3 14:02:53 CET 2007 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Thu Dec 28 23:17:12 CET 2006 - jhargadon@suse.de
+
+- removed unneeded libtool files (#223688) 
+
+-------------------------------------------------------------------
+Mon Nov 20 17:50:00 CET 2006 - vvaradhan@novell.com
+
+- update to version 3.12.2
+- translation updates
+- Fixes:
+	License updates
+	350981 - crash in htmlgdkpainter.c
+
+-------------------------------------------------------------------
+Fri Oct 13 18:40:52 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Tue Oct  3 18:52:40 CEST 2006 - jhargadon@suse.de
+
+- update to version 3.12.1
+- translation updates 
+
+-------------------------------------------------------------------
+Mon Sep  4 19:06:16 CEST 2006 - aj@suse.de
+
+- Update to final version 3.12.0:
+  Adds gtkhtml-missing_include.patch.
+
+-------------------------------------------------------------------
+Thu Aug 31 22:53:44 CEST 2006 - jhargadon@suse.de
+
+- update to version 3.11.92
+- translation updates 
+
+-------------------------------------------------------------------
+Tue Aug 22 01:12:31 CEST 2006 - jhargadon@suse.de
+
+- update to version 3.11.91
+- updates to translations
+- Font rendering now with Cairo
+- many bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 27 16:22:52 CEST 2006 - vvaradhan@novell.com
+
+- Fixes (bnc)
+	127570 New mail takes about 20 sec
+
+-------------------------------------------------------------------
+Mon Mar 20 15:15:34 CET 2006 - vvaradhan@novell.com
+
+- Fixes (bgo)
+	334814 Wrong html generation of bullet list
+- Removed gtkhtml-warnings.patch: the above patch fixes compiler 
+  warnings as well.
+
+-------------------------------------------------------------------
+Mon Mar 13 18:28:40 CET 2006 - vvaradhan@novell.com
+
+- Fix gtkhtml2.spec to look for appropriate tarball
+
+-------------------------------------------------------------------
+Mon Mar 13 16:28:23 CET 2006 - vvaradhan@novell.com
+
+- Update to version 3.10.0 - Fixes (bgo)
+	332807  Copy contact to address book causes 
+		Evolution to crash.
+	323450 	Possible cleanups for gtkhtml
+	331528 	Warning from Evolution with a11y enabled
+	331546 	Critical warning and crash when clicking on a 
+		link with a11y enabled
+	203003 	tags incorrectly discarded in textarea blocks	
+
+-------------------------------------------------------------------
+Tue Feb 28 14:38:32 CET 2006 - sbrabec@suse.cz
+
+- Build with optimization.
+
+-------------------------------------------------------------------
+Mon Feb 27 17:39:42 CET 2006 - vvaradhan@novell.com
+
+- Update to version 3.9.92
+- Fixes: (in bgo)
+	326366: crash on startup (critical warning)
+	274400: Html-editor crashes when editing a specific html file.
+	327850: Evolution crashes with Redo operation twice in paste 
+		quatations.
+	328270: Evolution crashes when deleting table cells copied 
+		from some special html file
+	330382: Evolution hangs when navigating mails with both RTL 
+		and LTR texts in caret mode
+	301015: Crash on ctrl-shift-D then ctrl-shift-left when 
+		composing email
+	318973: Caret Mode broken
+	300429: Copy paste Issue, in Compose Dialog
+	318697: Auto email-link creation causing rendering error 
+		(extra character)
+	274499: Crash on opening Find dialog with Ctrl-F
+	310990: does not find the first instance of the search-text 
+		if there are more than one instance
+	313662: evolution crashed rendering a message
+	328322: sftp URLs get highlighted as ftp URLs
+	328522: Evolution crashes when click on the find buttons
+	240320: copy+paste whole text part into composer creates table
+
+	(plus few more...)	
+	
+-------------------------------------------------------------------
+Mon Feb 13 00:39:42 CET 2006 - ro@suse.de
+
+- add missing include statement to silence compiler warning
+
+-------------------------------------------------------------------
+Fri Feb 10 12:25:47 CET 2006 - vvaradhan@novell.com
+
+- Update to version 3.9.90
+
+-------------------------------------------------------------------
+Sat Feb  4 18:05:26 CET 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 23:42:59 CET 2005 - gekker@suse.de
+
+- Update to version 3.8.2
+
+-------------------------------------------------------------------
+Wed Oct 12 18:48:32 CEST 2005 - gekker@suse.de
+
+- Update to version 3.8.1
+
+-------------------------------------------------------------------
+Mon Sep  5 10:10:40 CEST 2005 - mmj@suse.de
+
+- Update to version 3.8.0 (GNOME 2.12)
+
+-------------------------------------------------------------------
+Thu Aug 25 22:14:36 CEST 2005 - gekker@suse.de
+
+- Update to version 3.7.7
+- Remove upstreamed patch 
+
+-------------------------------------------------------------------
+Sat Aug 13 07:49:28 CEST 2005 - aj@suse.de
+
+- Add lzo and lzo-devel to nfb.
+
+-------------------------------------------------------------------
+Fri Aug 12 00:37:49 CEST 2005 - gekker@suse.de
+
+- Update to version 3.7.6 
+
+-------------------------------------------------------------------
+Mon Aug  1 17:27:08 CEST 2005 - gekker@suse.de
+
+- Update to version 3.7.5 
+
+-------------------------------------------------------------------
+Sat Jul 23 00:12:04 CEST 2005 - gekker@suse.de
+
+- Update to version 3.7.4
+- Fix unintialized variables
+- Fix Requires: for -devel 
+
+-------------------------------------------------------------------
+Tue Jun 28 23:55:21 CEST 2005 - gekker@suse.de
+
+- Update to version 3.7.2 
+
+-------------------------------------------------------------------
+Wed Jun  1 18:55:13 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Fri Mar 18 16:40:37 CET 2005 - gekker@suse.de
+
+- Fixes for html-editor (x73409, x73821) 
+
+-------------------------------------------------------------------
+Wed Mar 16 07:18:00 CET 2005 - gekker@suse.de
+
+- Update to version 3.6.1 
+
+-------------------------------------------------------------------
+Tue Mar  8 22:45:52 CET 2005 - gekker@suse.de
+
+- update to version 3.6.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Wed Mar  2 16:54:21 CET 2005 - gekker@suse.de
+
+- Update to version 3.5.7 
+
+-------------------------------------------------------------------
+Wed Feb  9 18:08:36 CET 2005 - gekker@suse.de
+
+- Update to version 3.5.6 
+
+-------------------------------------------------------------------
+Sat Feb  5 21:22:41 CET 2005 - gekker@suse.de
+
+- Update to version 3.5.5 
+
+-------------------------------------------------------------------
+Mon Jan 31 16:13:27 CET 2005 - sbrabec@suse.cz
+
+- Added IM crash patch from Hiroyuki Ikezoe (#50247).
+
+-------------------------------------------------------------------
+Fri Jan 14 22:28:58 CET 2005 - clahey@suse.de
+
+- Updated to version 3.5.3.
+
+-------------------------------------------------------------------
+Thu Jan  6 21:14:09 CET 2005 - gekker@suse.de
+
+- Update to version 3.5.2 
+
+-------------------------------------------------------------------
+Tue Dec  7 17:27:22 CET 2004 - gekker@suse.de
+
+- update to version 3.2.4 (Ximian 70057) 
+
+-------------------------------------------------------------------
+Mon Nov 29 19:09:44 CET 2004 - gekker@suse.de
+
+- Updated to version 3.2.3
+- Removed patch for #67707, included in new version 
+
+-------------------------------------------------------------------
+Tue Nov  2 18:09:04 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Fri Oct  8 22:03:33 CEST 2004 - dobey@suse.de
+
+- Apply patch to fix bug #67707 in bugzilla.ximian.com
+
+-------------------------------------------------------------------
+Thu Sep 23 21:13:27 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.2.2
+
+-------------------------------------------------------------------
+Mon Sep 13 21:42:08 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.2.1
+
+-------------------------------------------------------------------
+Fri Aug 27 18:02:05 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.2.0
+
+-------------------------------------------------------------------
+Fri Aug 13 22:05:54 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.1.20
+- Added deps to gtkhtml2-devel package
+
+-------------------------------------------------------------------
+Thu Aug  5 20:30:03 CEST 2004 - dobey@suse.de
+
+- Added build deps for gnutls libs from libsoup
+
+-------------------------------------------------------------------
+Tue Aug  3 17:09:54 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.1.19
+
+-------------------------------------------------------------------
+Wed Jul 28 19:57:42 CEST 2004 - dobey@suse.de
+
+- Updated to version 3.1.18
+
+-------------------------------------------------------------------
+Tue Jul 13 19:05:20 CEST 2004 - clahey@suse.de
+
+- Updated to version 3.1.17.
+
+-------------------------------------------------------------------
+Fri Jun  4 22:45:20 CEST 2004 - clahey@suse.de
+
+- Updated to version 3.1.16.
+
+-------------------------------------------------------------------
+Fri Jun  4 03:51:51 CEST 2004 - mibarra@suse.de
+
+- Updated to version 3.1.15 
+
+-------------------------------------------------------------------
+Sat May 22 03:51:29 CEST 2004 - mibarra@suse.de
+
+- Updated to version 3.1.14.
+
+-------------------------------------------------------------------
+Tue May 18 02:39:04 CEST 2004 - clahey@suse.de
+
+- Updated to version 3.1.12.
+
+-------------------------------------------------------------------
+Mon Mar  8 11:17:14 CET 2004 - hhetter@suse.de
+
+- updated to version 3.0.10 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:46:17 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Aug 05 18:21:26 CEST 2003 - sbrabec@suse.cz
+
+- Needed package rename soup2 -> libsoup.
+
+-------------------------------------------------------------------
+Mon Aug  4 08:55:16 CEST 2003 - hhetter@suse.de
+
+- let autoreconf install missing files
+- updated to version 3.0.8 
+
+-------------------------------------------------------------------
+Fri Jul 25 01:19:23 CEST 2003 - hhetter@suse.de
+
+- build with intend 
+
+-------------------------------------------------------------------
+Fri Jul 18 13:28:11 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 3.0.7.
+
+-------------------------------------------------------------------
+Mon Jul 14 15:41:11 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jul 03 18:38:03 CEST 2003 - sbrabec@suse.cz
+
+- Devel file must depend on gtkhtml2, not gtkhtml.
+
+-------------------------------------------------------------------
+Mon Jun 30 01:43:31 CEST 2003 - ro@suse.de
+
+- use find_lang
+- added directory to filelist 
+
+-------------------------------------------------------------------
+Wed Jun 04 15:18:42 CEST 2003 - sbrabec@suse.cz
+
+- Package renamed to gtkhtml2.
+- Updated to version 3.0.4.
+
+-------------------------------------------------------------------
+Tue May 27 16:05:10 CEST 2003 - sbrabec@suse.cz
+
+- Require gnome-spell2 (installing spell component is optional, but
+  highly recommended).
+
+-------------------------------------------------------------------
+Mon May 26 18:07:23 CEST 2003 - sbrabec@suse.cz
+
+- Fixed libtool linking problems.
+
+-------------------------------------------------------------------
+Fri May 23 15:30:42 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version of branch 3.
+

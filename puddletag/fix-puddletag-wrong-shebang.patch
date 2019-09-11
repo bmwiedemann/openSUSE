@@ -1,0 +1,32 @@
+diff -Naur puddletag-1.0.5/puddlestuff/puddleobjects.py puddletag-1.0.5-new/puddlestuff/puddleobjects.py
+--- puddletag-1.0.5/puddlestuff/puddleobjects.py	2014-07-21 19:26:46.000000000 +0200
++++ puddletag-1.0.5-new/puddlestuff/puddleobjects.py	2015-10-29 18:17:27.285098845 +0100
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -Naur puddletag-1.0.5/puddlestuff/puddlesettings.py puddletag-1.0.5-new/puddlestuff/puddlesettings.py
+--- puddletag-1.0.5/puddlestuff/puddlesettings.py	2013-09-15 18:07:07.000000000 +0200
++++ puddletag-1.0.5-new/puddlestuff/puddlesettings.py	2015-10-29 18:18:18.544101955 +0100
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ 
+ import sys, resource, os
+diff -Naur puddletag-1.0.5/puddlestuff/puddletag.py puddletag-1.0.5-new/puddlestuff/puddletag.py
+--- puddletag-1.0.5/puddlestuff/puddletag.py	2014-04-13 16:41:31.000000000 +0200
++++ puddletag-1.0.5-new/puddlestuff/puddletag.py	2015-10-29 18:19:45.537107233 +0100
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ import sys, os
+ from puddlestuff.puddleobjects import (PuddleConfig, PuddleDock, winsettings,
+diff -Naur puddletag-1.0.5/puddlestuff/webdb.py puddletag-1.0.5-new/puddlestuff/webdb.py
+--- puddletag-1.0.5/puddlestuff/webdb.py	2014-05-04 19:15:31.000000000 +0200
++++ puddletag-1.0.5-new/puddlestuff/webdb.py	2015-10-29 18:17:59.124100776 +0100
+@@ -1,4 +1,3 @@
+-#! /usr/bin/env python
+ # -*- coding: utf-8 -*-
+ import glob, os, pdb, sys, traceback
+ 

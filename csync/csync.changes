@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Tue Oct 30 20:29:59 UTC 2018 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add fix-missing-const.patch: Fix a compile error on Leap 15.1 
+  Fixes boo#1113889
+
+-------------------------------------------------------------------
+Mon Jun 29 15:01:58 UTC 2015 - tjcw@physics.org
+
+- Fix build break by changing __FUNCTION__ to __func__
+  * csync_log.h.patch 
+
+-------------------------------------------------------------------
+Mon Mar 16 11:26:51 UTC 2015 - dimstar@opensuse.org
+
+- Fix popd usage: since bash 4.3, it only takes a numeric argument.
+
+-------------------------------------------------------------------
+Mon Jun 30 19:58:35 UTC 2014 - freitag@owncloud.com
+
+- BuildRequire pkg-config to make cmake find its libraries again. 
+
+-------------------------------------------------------------------
+Fri Sep 13 12:19:12 UTC 2013 - jmcdonough@suse.com
+
+- Update to version 0.50.0.
+  * Added an owncloud module
+  * Added a backup mode to the reconciler
+  * Added new logging framework (removed log4c dependency)
+  * Added new config parser (removed iniparser dependency)
+  * Added capabilities for modules
+  * Added content checking in conflict case
+  * Improved database performance and integrity checks
+  * Improved error reporting
+- Add fix-cmake-on-pre-12.patch: Fix building on older systems
+ 
+-------------------------------------------------------------------
+Tue Feb 16 17:06:35 CET 2010 - anschneider@exsuse.de
+
+- Build always with libssh support.
+
+-------------------------------------------------------------------
+Mon Feb 15 12:39:40 CET 2010 - anschneider@exsuse.de
+
+- Update to version 0.44.0.
+  * Migrated sftp module to libssh 0.4.
+  * Added more cache entries to the default config.
+  * Added missing requirements.
+  * Fixed build warnings.
+  * Fixed some memory leaks using sftp attributes.
+  * Some code cleanups.
+
+-------------------------------------------------------------------
+Sun Jan 31 22:00:21 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 25 13:03:17 CEST 2009 - anschneider@exsuse.de
+
+- Update to version 0.43.0.
+  * Added SFTP support with libssh 0.3.
+  * Added possibility to pass userdata to the auth function.
+  * Added a better version function.
+  * Fixed CMake build.
+  * Fixed CMake find modules.
+  * Fixed some flaws in cstd functions.
+  * Documented all public functions.
+
+-------------------------------------------------------------------
+Fri Apr 17 09:16:25 CEST 2009 - anschneider@exsuse.de
+
+- Fix Fedora build.
+- Change the way how to set CFLAGS.
+
+-------------------------------------------------------------------
+Thu Feb 26 13:33:41 CET 2009 - anschneider@suse.de
+
+- Update to version 0.42.0
+  * Small fix in the userguide.
+
+-------------------------------------------------------------------
+Fri Jan 23 14:48:46 CET 2009 - anschneider@suse.de
+
+- Update to version 0.42.0 rc3
+  * Added checks for unix extensions.
+  * Added more documentation to the userguide.
+  * Fixed loading of plugins.
+  * Fixed call for deletion functions.
+  * Normalize the path to <hostname>/<path> for the statedb filename.
+  * More change name of client options to be more descriptive.
+- Add recommends for the plugins.
+
+-------------------------------------------------------------------
+Thu Jan  8 15:29:13 CET 2009 - anschneider@suse.de
+
+- Fix loading of plugins.
+- Add requires to the plugins.
+
+-------------------------------------------------------------------
+Thu Jan  8 15:27:52 CET 2009 - anschneider@suse.de
+
+- Update to version 0.42.0 rc2
+  * Reduced syscalls
+  * Fixed a bug in the state database
+  * Fixed libsmbclient support
+  * Completed userguide
+
+-------------------------------------------------------------------
+Fri Dec  5 14:59:29 CET 2008 - anschneider@suse.de
+
+- Update to version 0.42.0 rc1
+   libcsync:
+   * Reduced calls of syscall functions.
+   * Added own function to create a temporary filename.
+   * Fixed libsmbclient 3.0.x support.
+
+-------------------------------------------------------------------
+Wed Sep 10 11:27:43 CEST 2008 - anschneider@suse.de
+
+- Created a subpackage for each plugin and for the user guide
+- Update to version 0.42.0 beta1
+  libcsync:
+  * Added a sftp module using libssh
+  * Added user guide (just a start)
+  * Added testcase for update detection
+  * Added a function to parse an uri to cstdlib
+  * Updated the manpage
+  * Fixed some segfaults in cstdlib
+  * Fixed some memory leaks
+
+  csync:
+  * Improved the auth callback
+
+-------------------------------------------------------------------
+Thu Jul  3 14:49:28 CEST 2008 - anschneider@suse.de
+
+- Set the right group for the different packages
+
+-------------------------------------------------------------------
+Wed Jul  2 11:03:35 CEST 2008 - anschneider@suse.de
+
+- Update to version 0.42.0 alpha4
+  libcsync:
+  * Added the possibility to run csync completely without a journal
+  * Improved chmod calls during propagation. Most of the time we use the
+    default mode and don't need to call chmod.
+  * Improved the exclude list handling in the file tree walker. This
+    increased the speed of the update detection.
+  * Fixed csync on PPC
+  * Fixed serveral small bugs
+
+  csync:
+  * Added commandline option to run csync completely without a journal
+
+-------------------------------------------------------------------
+Fri Jun 27 18:07:24 CEST 2008 - anschneider@suse.de
+
+- Fixed csync on PPC
+
+-------------------------------------------------------------------
+Wed Jun 25 14:45:15 CEST 2008 - anschneider@suse.de
+
+- Update to version 0.42.0 alpha3
+  libcsync:
+  * Added a tree merger to write a complete journal
+  * Added support to run csync without a journal
+  * Fixed kerberos support in csync_smb module
+  * Fixed closing of files after the copy
+  * Fixed update detection to detect special files (fifo, pipes,
+    char devices, ..)
+  * Fixed O_NOATIME flag on open() if we don't have the permission
+
+  csync:
+  * Add a variable to run csync completely without a journal
+
+-------------------------------------------------------------------
+Tue Jun 17 15:21:49 CEST 2008 - anschneider@suse.de
+
+- Fix update detection for special files (fifo, char device, ..)
+- Fix propagation for files the user doesn't own
+
+-------------------------------------------------------------------
+Mon Jun 16 13:56:58 CEST 2008 - anschneider@suse.de
+
+- Update to version 0.41.92 (0.42.0 alpha2)
+  libcsync:
+   * Peformance improvements
+   * Add more directories to the standard exclude file
+   * Bugfixes
+
+-------------------------------------------------------------------
+Wed Jun  4 11:43:51 CEST 2008 - anschneider@suse.de
+
+- Build for redhat based distributions
+
+-------------------------------------------------------------------
+Mon Jun  2 13:04:14 CEST 2008 - anschneider@suse.de
+
+- Update to version 0.41.91 (0.42.0 alpha1)
+
+-------------------------------------------------------------------
+Mon May  5 15:02:15 CEST 2008 - anschneider@suse.de
+
+- Initial verison 0.41.90
+

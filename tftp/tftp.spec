@@ -1,0 +1,128 @@
+#
+# spec file for package tftp
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
+Name:           tftp
+Version:        5.2
+Release:        0
+Summary:        Trivial File Transfer Protocol (TFTP)
+License:        BSD-3-Clause
+Group:          Productivity/Networking/Ftp/Clients
+Url:            http://www.kernel.org/pub/software/network/tftp/
+Source:         http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.bz2
+Source3:        tftp.service
+Source4:        tftp.socket
+Source5:        tftp.sysconfig
+Patch0:         tftp-hpa-0.43_include_sys_params.patch
+Patch1:         tftp-hpa-0.46_colon_check.patch
+Patch4:         tftp-hpa-0.49-fortify-strcpy-crash.patch
+Patch5:         tftp-hpa-0.48-tzfix.patch
+Patch6:         tftp-multi-addresses.patch
+Patch7:         tftp-hpa-0.48-macros-crash.patch
+Patch8:         tftp-hpa-0.48-macros-v6mapped.patch
+Patch43:        tftp-config_h.patch
+BuildRequires:  autoconf
+BuildRequires:  pkgconfig
+BuildRequires:  shadow
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  tcpd-devel
+Requires:       netcfg
+Requires(pre):  pwdutils
+Recommends:     inet-daemon
+Conflicts:      atftp
+Provides:       tftp(client)
+Provides:       tftp(server)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  binutils-devel
+
+%description
+The Trivial File Transfer Protocol (TFTP) is normally used only for
+booting diskless workstations and for getting or saving network
+component configuration files.
+
+%prep
+%setup -q -n %{name}-hpa-%{version}
+%patch0
+%patch1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7
+%patch8
+%patch43 -p1
+
+%build
+autoreconf -fi
+%configure \
+  --enable-largefile \
+  --with-tcpwrappers \
+  --with-remap \
+  --with-ipv6
+make %{?_smp_mflags}
+
+%install
+%make_install INSTALLROOT=%{buildroot} MANDIR="%{_mandir}"
+install -d -m 0755 %{buildroot}/srv/tftpboot
+
+# Install systemd unit / socket (As an alternativ to xinetd activation)
+install -d %{buildroot}%{_unitdir}
+install -m 0644 %{SOURCE3} %{SOURCE4} %{buildroot}%{_unitdir}
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.tftp
+ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%pre
+# This group/user is shared with atftp, so please
+# keep this in sync with atftp.spec
+# add group
+%{_sbindir}/groupadd -r tftp 2>/dev/null || :
+# add user
+%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
+  -r -s /bin/false tftp 2>/dev/null || :
+
+%service_add_pre %{name}.service %{name}.socket
+
+%post
+%service_add_post %{name}.service %{name}.socket
+%{fillup_only -n tftp}
+
+%preun
+%service_del_preun %{name}.service %{name}.socket
+
+%postun
+%service_del_postun %{name}.service %{name}.socket
+
+%files
+%defattr(-,root,root)
+%doc README README.security tftpd/sample.rules
+%{_bindir}/tftp
+%{_sbindir}/in.tftpd
+%{_sbindir}/rctftp
+%{_mandir}/man1/tftp.1%{ext_man}
+%{_mandir}/man8/in.tftpd.8%{ext_man}
+%{_mandir}/man8/tftpd.8%{ext_man}
+%{_unitdir}/tftp.service
+%{_unitdir}/tftp.socket
+
+%dir %attr(0755,tftp,tftp) /srv/tftpboot
+%{_fillupdir}/sysconfig.tftp
+
+%changelog

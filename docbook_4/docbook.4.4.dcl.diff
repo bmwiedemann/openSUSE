@@ -1,0 +1,13 @@
+--- docbook_4/docbook-sgml-4.4/docbook.dcl.~1~	2017-10-17 08:26:00.675876558 +0200
++++ docbook_4/docbook-sgml-4.4/docbook.dcl	2017-10-17 08:26:30.895997614 +0200
+@@ -61,8 +61,8 @@
+ 	NAMING
+ 		LCNMSTRT ""
+ 		UCNMSTRT ""
+-		LCNMCHAR ".-_"
+-		UCNMCHAR ".-_"
++		LCNMCHAR ".-_:"
++		UCNMCHAR ".-_:"
+ 		NAMECASE
+ 			GENERAL YES
+ 			ENTITY  NO

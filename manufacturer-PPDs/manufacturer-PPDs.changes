@@ -1,0 +1,331 @@
+-------------------------------------------------------------------
+Mon Dec 11 16:29:17 UTC 2017 - dimstar@opensuse.org
+
+- Fix build with RPM 4.14. When grep finds no match, it returns
+  with retval=1, which in turn is interpreted by RPM as 'failure'.
+  Old RPM versions had a logic error and 'sometimes' did not cancel
+  when a command returned 1, this issue is fixed with RPM 4.14 (and
+  in turn asks of us to be more specific in some cases what we
+  want).
+
+-------------------------------------------------------------------
+Mon Nov 27 13:47:48 CET 2017 - jsmeix@suse.de
+
+- Removed all recode remainders in spec file: Since a long time
+  calling 'recode ibmpc..lat1 $PPD' does not work and fails with
+  'recode: $PPD failed: Ambiguous output in step CR-LF..data'
+  so that it had no effect since a long time (boo#1053646).
+
+-------------------------------------------------------------------
+Fri Nov 24 21:10:42 CET 2017 - sbrabec@suse.com
+
+- Drop broken recode support (FATE#323644).
+
+-------------------------------------------------------------------
+Sat Apr 29 18:34:07 UTC 2017 - bwiedemann@suse.com
+
+- Call 'gzip -n -9' to make build more reproducible
+  and have smaller results.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:57:22 UTC 2013 - coolo@suse.com
+
+- Update license to new format.
+
+-------------------------------------------------------------------
+Fri Mar 30 17:51:11 CEST 2012 - jsmeix@suse.de
+
+- Empty the changelog section in the spec file.
+
+-------------------------------------------------------------------
+Fri May 29 12:27:36 CEST 2009 - jsmeix@suse.de
+
+- Removed all TurbolinuxJapanesePPDs because all contain
+  "cupsomatic" as "cupsFilter" but "cupsomatic" is outdated
+  since a long time and no longer included in our up-to-date
+  foomatic-filters version 4.0.1 package. It might work to
+  create a symbolic link "cupsomatic -> foomatic-rip"
+  in the /usr/lib[64]/cups/filter/ directory to still use
+  outdated "cupsomatic" PPDs even with a current foomatic-rip
+  but it was not tested to what extent this might work.
+
+-------------------------------------------------------------------
+Fri Sep  5 10:19:29 CEST 2008 - jsmeix@suse.de
+
+- Keep all PPDs even if cupstestppd FAILs.
+  With each CUPS version upgrade cupstestppd finds more
+  and more errors so that more and more PPDs would be
+  no longer included in the RPM which have been included
+  before which results a regression.
+  As far as we know there have been no problems at all because of
+  not strictly compliant PPDs in so that it is much better
+  to provide all PPDs so that the matching printers can be used
+  than to be rigorous regarding compliance to the PPD spec.
+
+-------------------------------------------------------------------
+Tue Sep 18 12:12:58 CEST 2007 - jsmeix@suse.de
+
+- Add a line-feed to the end of all PPDs to fix those PPDs where
+  it is missing. See Novell/Suse Bugzilla bug #309832:
+  Unix/Linux text files must end with a line-feed.
+  Otherwise reading the last line results EOF and then some
+  programs may ignore the last line.
+
+-------------------------------------------------------------------
+Wed Sep 12 15:52:21 CEST 2007 - jsmeix@suse.de
+
+- Ignore cupstestppd FAILs because of errors in UIConstraints
+  and/or NonUIConstraints which are detected since cupstestppd
+  in CUPS > 1.2.7 (i.e. since openSUSE 10.3).
+  See Novell/Suse Bugzilla bug #309822: When this bug is fixed,
+  cupstestppd would no longer result zero exit code.
+  In the long run the PPDs should be fixed but as far as we know
+  there have been no problems because of such UIConstraints errors
+  so that it should be o.k. let those PPDs pass even if they are
+  not strictly compliant.
+
+-------------------------------------------------------------------
+Mon Nov 27 14:33:19 CET 2006 - jsmeix@suse.de
+
+- Re-enable the TurbolinuxJapanesePPDs for the alc4000 driver
+  in Ghostscript which seems to work now.
+- Remove a duplicate Okidata-DP_5000 TurbolinuxJapanesePPD.
+
+-------------------------------------------------------------------
+Tue Nov  7 10:49:05 CET 2006 - jsmeix@suse.de
+
+- Fixed Ricoh-DDP_92_PS.ppd and Ricoh-DDP_92_PS.plainPS.ppd
+  (removed a trailing " *HKTrimming" from UIConstraints).
+
+-------------------------------------------------------------------
+Fri Oct 20 12:52:06 CEST 2006 - jsmeix@suse.de
+
+- Fix bugs in HP PPDs ("* PageRegion" must be "*PageRegion").
+- Check and warn for duplicate NickName entries.
+
+-------------------------------------------------------------------
+Wed Oct 18 15:15:55 CEST 2006 - jsmeix@suse.de
+
+- Updated PPDs from the following manufacturers
+  to the newest available from LinuxPrinting.org:
+  HP, OCE, Sharp, Kyocera, Ricoh-family (Ricoh, Gestetner,
+  Infotec, Lanier, NRG, Savin), Brother, Oki,
+  but Epson cannot be updated because of non-free license.
+- Added Toshiba PPDs (under GPL with additional permission).
+
+-------------------------------------------------------------------
+Mon Jul 17 15:53:50 CEST 2006 - jsmeix@suse.de
+
+- Several new fixes for errors in PPDs which are detected by the
+  new CUPS 1.2 cupstestppd.
+
+-------------------------------------------------------------------
+Wed Apr 26 11:54:00 CEST 2006 - jsmeix@suse.de
+
+- Fixed PPDs for "LaserJet 5Si" and "LaserJet 5MP"
+  (see Suse bugzilla bug #164991).
+
+-------------------------------------------------------------------
+Fri Mar 17 14:40:50 CET 2006 - aj@suse.de
+
+- Build as noarch.
+
+-------------------------------------------------------------------
+Thu Mar 16 14:48:30 CET 2006 - jsmeix@suse.de
+
+- Updated Kyocera PPDs to the newest from LinuxPrinting.org
+- Updated Sharp PPDs to the newest from LinuxPrinting.org
+
+-------------------------------------------------------------------
+Fri Mar 10 10:30:00 CET 2006 - jsmeix@suse.de
+
+- Corrected the filed seperator in 1284DeviceID for some
+  Kyocera PPDs (see Suse bugzilla bug #156524).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 14:12:52 CET 2006 - jsmeix@suse.de
+
+- Updated PPDs if a newer version is available.
+- Added one PPD for Epson and many for Ricoh family.
+- Added Brother PPDs (under GPL).
+- Removed duplicate Sharp PPDs.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:50:21 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Sep 12 12:57:18 CEST 2005 - jsmeix@suse.de
+
+- Several HP PPDs contain "600x600x2dpi" which is not allowed
+  according to the Adobe PPD specification section 5.9
+  and which is therefore simply replaced by "600x1200dpi"
+  (see Suse bugzilla bug #116393).
+
+-------------------------------------------------------------------
+Thu Sep  1 14:53:42 CEST 2005 - jsmeix@suse.de
+
+- Additional Oce PPDs.
+
+-------------------------------------------------------------------
+Mon Aug 29 14:23:52 CEST 2005 - jsmeix@suse.de
+
+- Removed a few non-working PPDs.
+
+-------------------------------------------------------------------
+Mon Aug 22 11:35:34 CEST 2005 - jsmeix@suse.de
+
+- Mark the Ricoh family PCLXL PPDs to be "(recommended)"
+  so that YaST selects them preferred because those models
+  do not understand PostScript by default but only optionally.
+
+-------------------------------------------------------------------
+Thu Aug 18 11:34:33 CEST 2005 - jsmeix@suse.de
+
+- Added 136 pxlmono driver (PCLXL resp. "PXL") Ricoh PPD files
+  (i.e. for Ricoh, Gestetner, Infotec, Lanier, NRG, and Savin).
+
+-------------------------------------------------------------------
+Mon Jul  4 14:42:07 CEST 2005 - jsmeix@suse.de
+
+- New and revised HP PPDs:
+  Now all "PASS" cupstestppd without any warning.
+- Additional Ricoh family PPDs. The Ricoh family is:
+  Ricoh, Gestetner, Infotec, Lanier, NRG, and Savin.
+- Additional Epson PPDs.
+
+-------------------------------------------------------------------
+Thu Mar 17 15:41:02 CET 2005 - jsmeix@suse.de
+
+- Removed non-working PPDs:
+  TurbolinuxJapanesePPDs/*alc4000* do no longer work
+  because Epson's alc* Ghostscript devices do no longer work
+  together with old cupsomatic and new Ghostscript 8.x and
+  hp/hp_color_LaserJet_9500.ppd and hp/HP_Designjet_*.ppd
+  have non working '*cupsFilter: .../hppostprocessing' entries.
+
+-------------------------------------------------------------------
+Mon Mar  7 14:19:56 CET 2005 - jsmeix@suse.de
+
+- Added Ricoh PPDs:
+  Ricoh's PPDs appear under the brand names
+  Ricoh, Gestetner, Infotec, Lanier, NRG, and Savin.
+- All PPDs from Ricoh are under MIT license.
+- Updated Sharp PPDs.
+
+-------------------------------------------------------------------
+Fri Feb 18 14:37:06 CET 2005 - jsmeix@suse.de
+
+- Updated HP PPDs:
+  Fixed a few bugs and several warnings in HP's PPDs.
+- Updated Sharp PPDs:
+  Our special patched cupstestppd does no longer fail
+  because of 'Bad Duplex choice' (is now only a warning).
+- Updated Kyocera PPDs.
+
+-------------------------------------------------------------------
+Thu Sep 16 13:58:52 CEST 2004 - jsmeix@suse.de
+
+- Updated Oki PPDs
+- Because of a bug in cupstestppd in CUPS version 1.1.21
+  (see http://www.cups.org/str.php?L903)
+  cupstestppd fails for most PPDs from Sharp.
+  Therefore I tested Sharp's PPDs manually and package them
+  without an automated test by cupstestppd.
+
+-------------------------------------------------------------------
+Tue Aug 24 16:47:30 CEST 2004 - jsmeix@suse.de
+
+- Updated HP's PPDs (all under MIT license).
+- Fixed a few bugs and several warnings in HP's PPDs.
+- Removed all the "ugly hacking stuff" (see Thu Mar 25 12:14:20)
+  because this is no longer needed because in next SUSE LINUX
+  version YaST has a button to let the user choose between
+  the usual PPD selection via manufacturer and model name
+  and a plain list of PPDs by NickName and filename (bug 37486).
+
+-------------------------------------------------------------------
+Mon Jun 14 15:27:48 CEST 2004 - jsmeix@suse.de
+
+- added Oki PPDs
+- PPDs from Oki under GPL
+- Addendum regarding the changelog entry Thu Mar 4 10:35:12:
+    The mentioned prefix was removed by EPSON a few days later.
+    Therefore the EPSON PPDs are under the normal MIT license.
+
+-------------------------------------------------------------------
+Thu Mar 25 12:14:20 CET 2004 - jsmeix@suse.de
+
+- added ugly hacking stuff because we must have consistent values
+  for the *Manufacturer and *ModelName entries in all our packages
+  (cups, cups-drivers, cups-drivers-stp and manufacturer-PPDs)
+
+-------------------------------------------------------------------
+Mon Mar 22 13:52:24 CET 2004 - jsmeix@suse.de
+
+- fix trivial bugs for particular PPDs (e.g. epson/epl5800.ppd)
+
+-------------------------------------------------------------------
+Fri Mar 19 16:49:19 CET 2004 - jsmeix@suse.de
+
+- added special Japanese PPDs from Turbolinux
+  (those PPDs have been formerly in the cups-drivers package
+   but such PPDs belong to the manufacturers-PPDs package)
+
+-------------------------------------------------------------------
+Mon Mar 15 15:54:30 CET 2004 - jsmeix@suse.de
+
+- removed HP's old version PPDs with different file name
+  (according to the directory-date at linuxprinting.org)
+
+-------------------------------------------------------------------
+Thu Mar  4 16:39:56 CET 2004 - jsmeix@suse.de
+
+- added 'LanguageVersion: English' testing
+- corrected the testing loops ('continue' instead of 'break')
+
+-------------------------------------------------------------------
+Thu Mar  4 15:28:25 CET 2004 - jsmeix@suse.de
+
+- added Kyocera PPDs (only the English version)
+- PPDs from Kyocera under MIT license
+
+-------------------------------------------------------------------
+Thu Mar  4 10:35:12 CET 2004 - jsmeix@suse.de
+
+- added EPSON PPDs
+- PPDs from EPSON under MIT license with the following prefix:
+    Permission is hereby granted for redistribution of this
+    file, provided that copyright notice is intact and the
+    contents of this license agreement are not altered in
+    any way from it original form.
+
+-------------------------------------------------------------------
+Fri Feb 27 09:49:18 CET 2004 - jsmeix@suse.de
+
+- added Sharp PPDs
+- PPDs from Sharp under GPL
+
+-------------------------------------------------------------------
+Mon Feb 23 16:10:28 CET 2004 - jsmeix@suse.de
+
+- change default media size entries to A4
+
+-------------------------------------------------------------------
+Fri Feb 20 14:29:30 CET 2004 - jsmeix@suse.de
+
+- added license testing
+
+-------------------------------------------------------------------
+Wed Feb 18 16:04:00 CET 2004 - jsmeix@suse.de
+
+- initial version
+- PPDs from HP under MIT license
+- PPDs from OCE under MIT license
+

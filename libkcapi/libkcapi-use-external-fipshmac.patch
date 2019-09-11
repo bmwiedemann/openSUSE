@@ -1,0 +1,44 @@
+Index: libkcapi-0.13.0/apps/Makefile
+===================================================================
+--- libkcapi-0.13.0.orig/apps/Makefile
++++ libkcapi-0.13.0/apps/Makefile
+@@ -65,27 +65,26 @@ install:
+ 	install -d ${DESTDIR}$(BINDIR)/
+ 	install -m 0755 $(NAME) -D -t ${DESTDIR}$(BINDIR)/
+ 	install -m 0755 sha1sum -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/sha1sum
++	fipshmac ${DESTDIR}$(BINDIR)/sha1sum
+ 	install -m 0755 sha224sum -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/sha224sum
++	fipshmac ${DESTDIR}$(BINDIR)/sha224sum
+ 	install -m 0755 sha256sum -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/sha256sum
++	fipshmac ${DESTDIR}$(BINDIR)/sha256sum
+ 	install -m 0755 sha384sum -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/sha384sum
++	fipshmac ${DESTDIR}$(BINDIR)/sha384sum
+ 	install -m 0755 sha512sum -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/sha512sum
++	fipshmac ${DESTDIR}$(BINDIR)/sha512sum
+ 	install -m 0755 fipscheck -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/fipscheck
++	fipshmac ${DESTDIR}$(BINDIR)/fipscheck
+ 	install -m 0755 fipshmac -D -t ${DESTDIR}$(BINDIR)/
+-	./fipshmac ${DESTDIR}$(BINDIR)/fipshmac
++	fipshmac ${DESTDIR}$(BINDIR)/fipshmac
+ 	install -m 0755 sha1hmac -D -t ${DESTDIR}$(BINDIR)/
+-	./sha512hmac sha1hmac > ${DESTDIR}$(BINDIR)/.sha1hmac.hmac
++	fipshmac ${DESTDIR}$(BINDIR)/sha1hmac
+ 	install -m 0755 sha224hmac -D -t ${DESTDIR}$(BINDIR)/
+-	./sha512hmac sha224hmac > ${DESTDIR}$(BINDIR)/.sha224hmac.hmac
++	fipshmac ${DESTDIR}$(BINDIR)/sha224hmac
+ 	install -m 0755 sha256hmac -D -t ${DESTDIR}$(BINDIR)/
+-	./sha512hmac sha256hmac > ${DESTDIR}$(BINDIR)/.sha256hmac.hmac
++	fipshmac ${DESTDIR}$(BINDIR)/sha256hmac
+ 	install -m 0755 sha384hmac -D -t ${DESTDIR}$(BINDIR)/
+-	./sha512hmac sha384hmac > ${DESTDIR}$(BINDIR)/.sha384hmac.hmac
++	fipshmac ${DESTDIR}$(BINDIR)/sha384hmac
+ 	install -m 0755 sha512hmac -D -t ${DESTDIR}$(BINDIR)/
+-	./sha512hmac sha512hmac > ${DESTDIR}$(BINDIR)/.sha512hmac.hmac
+-
++	fipshmac ${DESTDIR}$(BINDIR)/sha512hmac

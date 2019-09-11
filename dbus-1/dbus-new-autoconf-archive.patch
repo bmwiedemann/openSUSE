@@ -1,0 +1,43 @@
+Index: dbus-1.12.12/Makefile.am
+===================================================================
+--- dbus-1.12.12.orig/Makefile.am
++++ dbus-1.12.12/Makefile.am
+@@ -51,4 +51,4 @@ DISTCHECK_CONFIGURE_FLAGS = \
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ 
+ # Add rules for code-coverage testing, as defined by AX_CODE_COVERAGE
+-@CODE_COVERAGE_RULES@
++include $(top_srcdir)/aminclude_static.am
+Index: dbus-1.12.12/bus/Makefile.am
+===================================================================
+--- dbus-1.12.12.orig/bus/Makefile.am
++++ dbus-1.12.12/bus/Makefile.am
+@@ -306,4 +306,4 @@ systemduserunit_DATA = \
+ endif
+ 
+ # Add rules for code-coverage testing, as defined by AX_CODE_COVERAGE
+-@CODE_COVERAGE_RULES@
++include $(top_srcdir)/aminclude_static.am
+Index: dbus-1.12.12/dbus/Makefile.am
+===================================================================
+--- dbus-1.12.12.orig/dbus/Makefile.am
++++ dbus-1.12.12/dbus/Makefile.am
+@@ -329,7 +329,7 @@ test_dbus_SOURCES=				\
+ test_dbus_LDADD = libdbus-internal.la
+ 
+ # Add rules for code-coverage testing, as defined by AX_CODE_COVERAGE
+-@CODE_COVERAGE_RULES@
++include $(top_srcdir)/aminclude_static.am
+ 
+ clean-local:
+ 	$(AM_V_at)rm -fr ./.dbus-keyrings
+Index: dbus-1.12.12/test/Makefile.am
+===================================================================
+--- dbus-1.12.12.orig/test/Makefile.am
++++ dbus-1.12.12/test/Makefile.am
+@@ -672,4 +672,4 @@ $(installable_test_meta_with_config): %_
+ 	) > $@.tmp && mv $@.tmp $@
+ 
+ # Add rules for code-coverage testing, as defined by AX_CODE_COVERAGE
+-@CODE_COVERAGE_RULES@
++include $(top_srcdir)/aminclude_static.am

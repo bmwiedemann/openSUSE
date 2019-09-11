@@ -1,0 +1,13 @@
+Index: rubber-1.4/setup.py
+===================================================================
+--- rubber-1.4.orig/setup.py
++++ rubber-1.4/setup.py
+@@ -34,7 +34,7 @@ files_with_substitutions = (
+ manual_basename = os.path.join ("doc", "rubber.")
+ doc_recipes = (
+     ("html", ("makeinfo", "--html", "--no-split")),
+-    ("info", ("makeinfo", "--info")),
++    ("info", ("makeinfo",)),
+     ("pdf",  ("texi2dvi", "--pdf", "--quiet", "--tidy")),
+     ("txt",  ("makeinfo", "--plaintext")),
+ )

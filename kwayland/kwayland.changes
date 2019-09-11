@@ -1,0 +1,921 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:49 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Use wayland-protocols
+
+-------------------------------------------------------------------
+Fri Jul 19 11:45:26 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+- Drop conditionals for no longer supported distribution versions
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Include a description
+  * Proof of concept of a wayland protocol to allow the keystate dataengine to work
+  * Use new logging category directory
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Allow compositors to send discrete axis values
+  * Use QVariant::fromValue directly
+  * Implement set_window_geometry
+  * Implement wl_surface::damage_buffer
+
+-------------------------------------------------------------------
+Wed May 15 18:16:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Add CriticalNotification window type to PlasmaShellSurface protocol
+  * Implement wl_eglstream_controller Server Interface
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * it compiles fine without foreach
+  * Hopefully fix flaky remote access test
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Only commit XdgOutput::done if changed
+  * FakeInput: add support for pointer move with absolute coordinates
+  * Add explicit SurfaceInterface::commited signal
+  * Add missing XdgShellPopup::ackConfigure
+  * Update copy paste error in XdgShellPopupStable member vars
+  * [server] Add surface data proxy mechanism
+  * [server] Add selectionChanged signal
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * [server] Generate correct touch ids
+  * [autotests] Stabilize testWindowmanagement
+  * Make XdgTest spec compliant
+  * Add option to use wl_display_add_socket_auto
+  * [server] Send initial org_kde_plasma_virtual_desktop_management.rows
+  * Add rows info to the plasma virtual desktop protocol
+  * [client] Wrap wl_shell_surface_set_{class,title}
+  * Guard resource deletion in OuptutConfiguration::sendApplied
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Add clarifying about using both KDE's ServerDecoration and XdgDecoration
+  * Update @since information
+  * Xdg Decoration Support
+  * Fix XDGForeign Client header installs
+  * [server] Touch drag support
+  * [server] Allow multiple touch interfaces per client
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Autogenerate logging file + fix categories file
+  * Use new syntax
+  * Remove virtual keyword
+  * Use lambdas instead of std::bind()
+  * Add VirtualDesktops to PlasmaWindowModel
+  * Update PlasmaWindowModel test to reflect VirtualDesktop changes
+  * Cleanup windowInterface in tests before windowManagement is destroyed
+  * Delete the correct item in removeDesktop
+  * Cleanup Virtual Desktop Manager list entry in PlasmaVirtualDesktop destructor
+  * Correct version of newly added PlasmaVirtualDesktop interface
+  * [server] Text input content hint and purpose per protocol version
+  * [server] Put text-input (de-)activate, en-/disable callbacks in child classes
+  * [server] Put set surrounding text callback with uint in v0 class
+  * Remove qt include prefix
+  * Cleanup comment typos
+  * [server] Put some text-input v0 exclusive callbacks in v0 class
+  * normalize signal/slot
+  * Fix build with Qt <5.10 (no support for QCOMPARE(uint, int)
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Fix build with Qt <5.10 (no support for QCOMPARE(uint, int)
+  * Add KWayland virtual desktop protocol
+  * Add unit test for subsurface input mask detection
+  * Guard data source being deleted before processing dataoffer receive event (kde#400311)
+  * [server] Respect input region of sub-surfaces on pointer surface focus
+  * [test/xdgtest] Create/destroy popup on click
+  * [xdgshell] Add positioner constraint adjustment flag operators
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:40 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Don't silently error if damage is sent before buffer
+  * [server] Do not return early on fail in touchDown fall back code
+  * Minor: Add a few nullptrs
+  * Minor: Include Qt dirs as SYSTEM includes
+  * Minor: Fix CMake AUTOMOC warning
+  * Fix minor EBN issues
+  * [server] Fix remote access buffer handling when output not bound
+  * [autotests] Compare booleans to booleans
+  * Fix minor EBN issues
+  * [server] Do not try to create data offers without source
+  * [server] Abort drag start on correct conditions and without posting error
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Sync set/send/update methods
+  * Add serial number and EISA ID to OutputDevice interface
+  * Fix unit test
+  * Output device color curves correction
+  * Fix memory management in WaylandOutputManagement
+  * Isolate every test within WaylandOutputManagement
+  * OutputManagement fractional scaling
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:27 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Cleanup RemoteAccess buffers on aboutToBeUnbound instead of object destruction
+  * Support cursor hints on locked pointer
+  * Reduce unnecessary long wait times on failing signal spies
+  * Fix selection and seat auto tests
+  * Populate shell version documentation
+  * Fix compiler warning about virtual overloads in XdgShell
+  * Replace remaining V5 compat global includes
+  * Add XDG WM Base support to our XDGShell API
+  * Make XDGShellV5 co-compilable with XDGWMBase
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Fix some of cppcheck warnings
+  * [server] Send frame event instead of flush on relative pointer motion (kde#395815)
+  * Fix XDGV6 popup test
+  * Fix stupid copy paste bug in XDGShellV6 Client
+  * Do not cancel old clipboard selection if it is same as the new one. (kde#395366)
+  * Fix compiler warning about hidden virtual overloads
+  * Honor BUILD_TESTING
+  * Fix some spelling issues suggested by new linter tool
+  * Add the arclint file in kwayland
+  * Fix 'unused parameter' warnings
+  * Documentation fix
+  * [server] Small code cleanup in SurfaceInterface
+  * Fixup @since for skip switcher API
+- Dropped patches, now upstream:
+  * 0001-Do-not-cancel-old-clipboard-selection-if-it-is-same-.patch
+
+-------------------------------------------------------------------
+Thu Jun 21 17:11:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix copy-paste from GTK3 applications (boo#1097606):
+  * 0001-Do-not-cancel-old-clipboard-selection-if-it-is-same-.patch
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * [autotests] Fix surface destroy test
+  * Use override
+  * Increase org_kde_plasma_shell interface version
+  * Add "SkipSwitcher" to API
+  * Set @since version number for XDGOutput
+  * Add XDG Output Protocol
+
+-------------------------------------------------------------------
+Sun May 13 21:03:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Improve protocols documentation
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:06 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Add Remote Access interface to KWayland
+  * [server] Add support for the frame semantics of Pointer version 5 (kde#389189)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Implement releasing of client-freed output
+  * [server] Properly handle the situation when the DataSource for a drag gets destroyed (kde#389221)
+  * [server] Don't crash when a subsurface gets commited whose parent surface got destroyed (kde#389231)
+- Dropped patches, now upstream:
+  * 0001-server-Don-t-crash-when-a-subsurface-gets-commited-w.patch
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Fix typo
+
+-------------------------------------------------------------------
+Tue Feb  6 16:00:45 UTC 2018 - lbeltrame@kde.org
+
+- Add 0001-server-Don-t-crash-when-a-subsurface-gets-commited-w.patch
+  * Upstream fix to prevent kwin from crashing when opening
+    systemsettings (kde#389231)
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:21 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Minor doxygen change to group new bind/create methods
+  * Fix naming inconsistency
+  * Resolve some merge issues
+  * Unit test for Server Decoration Palette
+  * Create interface for passing server decoration palettes
+  * Explicitly include std::bind functions
+  * [server] Add a method IdleInterface::simulateUserActivity
+  * Fix regression caused by backward compatibility support in data source
+  * Fix @since version tags
+  * Add support for version 3 of data device manager interface (kde#386993)
+  * Scope exported/imported objects to the test
+  * Fix ASAN warning on TestXdgForeign
+  * Replace QCOMPARE(nullptr) with QVERIFY
+  * Fix error in WaylandSurface::testDisconnect
+  * Explicit QCOMPARE(QString,QString)
+  * Add explicit AppMenu protocol
+  * Fix ASAN warnings in XDGForeignV2Interface
+  * Fix exlude generated file from automoc feature
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Fix testWaylandFullscreenShell.
+  * Expose wl_display_set_global_filter as a virtual method
+  * Fix kwayland-testXdgShellV6.
+  * Add support for zwp_idle_inhibit_manager_v1
+  * [server] Support inhibiting the IdleInterface
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * [client] Drop the checks for platformName being "wayland"
+  * Don't duplicate connect to wl_display_flush
+  * don't qcompare with nullptr
+  * Wayland foreign protocol
+  * Revert "Expose wl_display_set_global_filter as a virtual method"
+  * Expose wl_display_set_global_filter as a virtual method
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Only send OutputConfig sendApplied / sendFailed to the right resource
+  * Add missing command macro
+  * Don't crash if a client (legally) uses deleted global contrast manager
+  * Don't crash if a client (legally) uses a deleted global
+  * Update @since docs
+  * Missing licenses
+  * Support XDG v6
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Treat input RGB buffers as premultiplied
+  * Update SurfaceInterface outputs when an output global gets destroyed
+  * KWayland::Client::Surface track output destruction
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+  * Avoid sending data offers from an invalid source. (kde#383054)
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:39 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Make unittest independent from the location of the executable.
+  * autotests: prepare for CMAKE_RUNTIME_OUTPUT_DIRECTORY being set
+  * Destroy all kwayland objects created by registry when it is destroyed
+  * Emit connectionDied if the QPA is destroyed
+  * [client] Track all created ConnectionThreads and add API to access them
+  * [server] Send text input leave if focused surface gets unbound
+  * [server] Send pointer leave if focused surface gets unbound
+  * Drop unused variable
+  * [client] Properly track enteredSurface in Keyboard
+  * [server] Send keyboard leave when client destroys the focused surface (kde#382280)
+  * check Buffer validity (kde#381953)
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * [autotests/server] Check whether test is run as root
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Autotests: solve warning for QProcess::ProcessState metatype registration
+  * Fix for TestQtSurfaceExtension in path with spaces
+  * API dox: add some minimal docs to more class to have them covered by doxygen
+  * API dox: add some minimal docs to class to have them covered by doxygen
+  * API dox: Use doxygen notation to have comments used
+  * API dox: fix @link usage
+  * add requestToggleKeepAbove/below
+  * Keep QIcon::fromTheme in main thread
+  * Remove pid changedSignal in Client::PlasmaWindow
+  * add pid to plasma window management protocol
+
+-------------------------------------------------------------------
+Mon May 15 13:53:17 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Validate surface is valid when sending TextInput leave event
+  * Fix autotests on the FreeBSD CI.
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Add support for wl_shell_surface::set_popup and popup_done
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Fri Apr  7 07:26:47 UTC 2017 - alarrosa@suse.com
+
+- Drop fix-wayland-1.3-dependency.diff which isn't needed anymore
+  since SLE12 SP2.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:09 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:34:26 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:44:09 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:05:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * [client] Fix nullptr dereference in ConfinedPointer
+    and LockedPointer
+  * [client] Install pointerconstraints.h
+  * [server] Fix regression in
+    SeatInterface::end/cancelPointerPinchGesture
+  * Implementation of PointerConstraints protocol
+  * [server] Reduce overhead of pointersForSurface
+  * Return SurfaceInterface::size in global compositor space
+  * [tools/generator] Generate enum FooInterfaceVersion on
+    server side
+  * [tools/generator] Wrap wl_fixed request args in
+    wl_fixed_from_double
+  * [tools/generator] Generate implementation of
+    client side requests
+  * [tools/generator] Generate client side resource factories
+  * [tools/generator] Generate callbacks and listener
+    on client side
+  * [tools/generator] Pass this as q pointer to
+    Client::Resource::Private
+  * [tools/generator] Generate Private::setup(wl_foo *arg)
+    on client side
+  * Implementation of PointerGestures protocol
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Wed Nov 16 06:30:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Rebase fix-wayland-1.3-dependency.diff
+
+-------------------------------------------------------------------
+Sat Nov  5 22:12:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Improved relocatability of CMake export
+  * [tools] Fix generation of wayland_pointer_p.h
+  * [tools] Generate eventQueue methods only for global classes
+  * [server] Fix crash on updating focused keyboard surface
+  * [server] Fix possible crash on creation of DataDevice
+  * [server] Ensure we have a DataSource on the DataDevice
+    in setSelection
+  * [tools/generator] Improve resource destruction on server side
+  * Add request to have focus in a PlasmaShellSurface of Role Panel
+  * Add auto-hiding panel support to PlasmaShellSurface interface
+  * Support passing generic QIcon through PlasmaWindow interface
+  * [server] Implement the generic window property
+    in QtSurfaceExtension
+  * [client] Add methods to get ShellSurface from a QWindow
+  * [server] Send pointer events to all wl_pointer resources
+    of a client
+  * [server] Don't call wl_data_source_send_send if
+    DataSource is unbound
+  * [server] Use deleteLater when a ClientConnection gets destroyed
+    (kde#370232)
+  * Implement support for the relative pointer protocol
+  * [server] Cancel previous selection from SeatInterface::setSelection
+  * [server] Send key events to all wl_keyboard resources of a client
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 13:00:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * [server] Don't send key release for not pressed keys and
+    no double key press (kde#366625)
+  * [server] When replacing the clipboard selection previous
+    DataSource needs to be cancelled (kde#368391)
+  * Add support for Surface enter/leave events
+  * [client] Track all created Outputs and add static get method
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:54:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Make linux/input.h compile time optional
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Wed Aug 10 09:56:58 UTC 2016 - alarrosa@suse.com
+
+- Rebase fix-wayland-1.3-dependency.diff
+
+-------------------------------------------------------------------
+Sun Aug  7 21:57:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * [client] Use a QPointer for the enteredSurface in Pointer
+  * Expose Geometry in PlasmaWindowModel
+  * Add a geometry event to PlasmaWindow
+  * [src/server] Verify that surface has a resource before sending pointer enter
+  * Add support for xdg-shell
+  * [server] Properly send a selection clear prior to keyboard focus enter
+  * [server] Handle no XDG_RUNTIME_DIR situation more gracefully
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:06:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Add a parent_window event to Plasma Window interface
+  * Properly handle destroying a Pointer/Keyboard/Touch resource
+  * [server] Delete dead code: KeyboardInterface::Private::sendKeymap
+  * [server] Add support for setting the clipboard selection
+    DataDeviceInterface manually
+  * [server] Ensure that Resource::Private::get returns nullptr
+    if passed a nullptr
+  * [server] Add resource check in QtExtendedSurfaceInterface::close
+  * [server] Unset SurfaceInterface pointer in referenced objects
+    when being destroyed
+  * [server] Fix error message in QtSurfaceExtension Interface
+  * [server] Introduce a Resource::unbound signal emitted from
+    unbind handler
+  * [server] Don't assert when destroying a still
+    referenced BufferInterface
+  * Add destructor request to org_kde_kwin_shadow and
+    org_kde_kwin_shadow_manager
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:28:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * [client] Don't check resource version for PlasmaWindow
+  * Introduce an initial state event into Plasma Window protocol
+  * [server] Trigger error if a transient request tries to parent
+    to itself
+  * [server] Properly handle the case that a PlasmaWindow is unmapped
+    before client bound it
+  * [server] Properly handle destructor in SlideInterface
+  * Add support for touch events in fakeinput protocol and interface
+  * [server] Standardize the destructor request handling for Resources
+  * Implement wl_text_input and zwp_text_input_v2 interfaces
+  * [server] Prevent double delete of callback resources
+    in SurfaceInterface
+  * [server] Add resource nullptr check to ShellSurfaceInterface
+  * [server] Compare ClientConnection instead of wl_client
+    in SeatInterface
+  * [server] Improve the handling when clients disconnect
+  * server/plasmawindowmanagement_interface.cpp - fix -Wreorder warning
+  * [client] Add context pointer to connects in PlasmaWindowModel
+  * Many fixes related to destruction
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * KWayland is now part of KDE Frameworks
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:32:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Wed Dec 23 17:35:00 UTC 2015 - alarrosa@suse.com
+
+- Add fix-wayland-1.3-dependency.diff again, rebased to apply correctly
+  now that there are wayland packages for SLE12 updated with the new
+  requirements from wayland 1.7
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:31:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+- Drop no longer applicable fix-wayland-1.3-dependency.diff
+
+-------------------------------------------------------------------
+Sun Nov  8 18:36:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Thu Oct 29 16:31:11 UTC 2015 - alarrosa@suse.com
+
+- Added fix-wayland-1.3-dependency.diff -> changed requirements for
+  SLE12, where an older wayland version has been patched to support
+  the required features from wayland 1.3.0 needed by kwayland
+
+-------------------------------------------------------------------
+Sun Oct  4 10:43:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Thu Sep 10 17:17:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:51:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Merge the two shlib packages into one main one
+
+-------------------------------------------------------------------
+Sun Jun 28 18:31:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:29:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Added pkgconfig(egl) BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+
+-------------------------------------------------------------------
+Fri Feb 20 02:43:56 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Drop 0001-Do-not-find-unused-Wayland-components.patch, upstreamed
+- Build the server shlib
+
+-------------------------------------------------------------------
+Thu Dec 11 17:59:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+
+-------------------------------------------------------------------
+Mon Nov  3 19:48:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Do-not-find-unused-Wayland-components.patch to drop
+  not needed BuildRequires, pkgconfig(wayland-egl)
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+
+-------------------------------------------------------------------
+Thu Sep 25 22:38:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * Minor API improvements since last update
+
+-------------------------------------------------------------------
+Mon Sep 22 22:08:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate KWayland package - KDE bindings for Wayland protocol and
+  library
+

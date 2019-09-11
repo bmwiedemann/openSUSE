@@ -1,0 +1,22 @@
+From b0d19f6945477bac922767d12a3c57a6e80cebe3 Mon Sep 17 00:00:00 2001
+From: Michael Walter <michael.walter@gmail.com>
+Date: Wed, 10 Dec 2014 23:05:36 -0800
+Subject: [PATCH] Improve window title (file name before program name).
+
+---
+ src/xo-misc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: xournal-0.4.8.2016/src/xo-misc.c
+===================================================================
+--- xournal-0.4.8.2016.orig/src/xo-misc.c
++++ xournal-0.4.8.2016/src/xo-misc.c
+@@ -1639,7 +1639,7 @@ void update_file_name(char *filename)
+     return;
+   }
+   p = xo_basename(filename, FALSE);
+-  g_snprintf(tmp, 100, _("Xournal - %s"), p);
++  g_snprintf(tmp, 100, _("%s - Xournal"), p);
+   gtk_window_set_title(GTK_WINDOW (winMain), tmp);
+   new_mru_entry(filename);
+ 

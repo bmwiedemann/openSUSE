@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Tue Jun 18 09:46:13 UTC 2019 - frede@b1-systems.de
+
+- Add patch screenfetch-empty_fb_fix.patch Fix error when /proc/fb
+  is empty. (Backport from Master)
+
+-------------------------------------------------------------------
+Mon Aug 13 09:00:26 UTC 2018 - mpluskal@suse.com
+
+- Fix shebang
+
+-------------------------------------------------------------------
+Thu Aug  2 07:56:06 UTC 2018 - mpluskal@suse.com
+
+- Recommend lsb-release as it is needed for correct detection of
+  distribution (boo#1103527)
+
+-------------------------------------------------------------------
+Fri Nov 24 19:45:26 UTC 2017 - afaerber@suse.de
+
+- Require bc to avoid error on startup
+
+-------------------------------------------------------------------
+Wed May 10 12:19:05 UTC 2017 - mpluskal@suse.com
+
+- Update to stable release 3.8.0
+  * Additional Intel GPU checks
+  * Gentoo release check (whether it's stable/testing/experimental)
+  * Chromebrew detection for Chrome OS pkgs
+  * OpenBSD fixes
+  * Manjaro logo updated
+	* Added Fux logo
+
+-------------------------------------------------------------------
+Sun Jan 29 20:12:27 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.7.0+git.20170127:
+  * Add SwagArch to detectpkgs()
+  * Add SwagArch to infoDisplay()
+  * New distro: Parrot Security (close #425)
+  * add GrombyangOS distro
+  * Fixed RAM display, corrected OpenBSD section for sub-100MiB output.
+  * Added OpenBSD kernel version detection.
+  * Patch number added to OpenBSD kernel version.
+  * Install instructions: Fedora now uses DNF
+  * screenfetch-dev: fixed theme & font name for BunsenLabs desktop.
+  * screenfetch-dev: added GTK3 theme detection for BunsenLabs.
+
+-------------------------------------------------------------------
+Sun Oct 09 12:45:30 UTC 2016 - mpluskal@suse.com
+
+- Update to version 3.7.0+git.20161002:
+  * ChromeOS/ChromiumOS instruction added
+  * Update README.mkdn
+  * Disable line wrapping by default
+  * document `-w' command in README.mkdn
+  * document `-w' command in manpage
+  * Update CHANGELOG
+  * show CPU temperature
+  * Update Solus logo
+  * No longer gets iTerm's font while in Terminal.app
+
+-------------------------------------------------------------------
+Sat Aug 27 09:20:47 UTC 2016 - mpluskal@suse.com
+
+- Update to version 3.7.0+git.20160826 (boo#995916):
+  * silence gsettings if schema wasn't found
+  * handle s390 processor IDs and print the marketing name (close #359)
+  * New Manjaro logo (closes #373)
+  * manpage: MSYS -> MSYS2
+  * rename MSYS to MSYS2
+  * Add new GNU/Linux distro ROSA
+  * corrected screenfetch.1 from distro ROSA
+  * Update CHANGELOG
+  * identify DE on Windows >= 8 as "Mordern UI/Metro"
+  * implement explaination for Crux Linux
+  * correct detection of SLES
+- Add _service and use git snapshot as stable release is outdated
+
+-------------------------------------------------------------------
+Sat Jul 16 19:16:00 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jul  5 19:25:45 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Tue Jul 28 08:18:21 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.7.0
+  * Fixing package detection in apt/dpkg distros
+  * Fix xmonad detection
+  * Add detection for Sabayon, Haiku, Logos and Chapeau
+  * Add ChromeOS logo (without distro detection)
+  * Add an option to supply custom ASCII art
+  * Combine GTK 2/3 themes if they are the same
+  * Reimplement '-d' (allows for setting what information is 
+    displayed on the command line)
+
+-------------------------------------------------------------------
+Fri Nov 28 18:41:17 UTC 2014 - mpluskal@suse.com
+
+- Update to 3.6.5:
+	- Added missing Evolve OS package detection.
+	- Added Evolve OS detection. No ASCII yet.
+	- Added imgur to configured upload hosts
+	- Fine tuned more of the upload function.
+ +v3.6.2
+	- Added upload support via -u flag
+	- Added pre-configured hosts for -u uploading: teknik, pomf, hmp, and mediacrush
+	- Added a configurable section for an scp upload to a specified destination
+	- Removed -m flag
+ +v3.6.0
+	- Added PowerPC support for OS X
+	- Added support for Korora and Void Linux
+	- Readme: added installation instruction for Debian
+
+ +v3.5.0
+	- update list of supported systems
+	- Fix Parabola pkg detection.
+	- Adding support for the echinus (dwm fork) WM.
+	- Add 2bwm support.
+	- Various Parabola GNU/Linux-libre aesthetic fixes.
+	- Adding NetBSD to supported distros in --help.
+	- Fix OpenBSD total RAM output.
+	- Un-camelCase the *box WMs, matching the documentation for the *box WMs.
+	- Added support for Windows 8.1 (Cygwin)
+	- Removed resolution from screenfetch when resolution cannot be found (Win8.1 cygwin)
+	- Fix detection of PowerPC G3 to be more exact instead of triggering on UltraSparcs
+	- Fixing shrx's URL.
+	- add manpage
+	- update header license text to GPLv3
+	- Red Hat Linux -> Red Hat Enterprise Linux
+	- Fix Parabola in --help.
+	- improved GPU detection formatting, fixed dual GPU detection formatting
+	- Fixes for OS X
+	- Fix Arch Linux detection for updated lsb_release
+	- Fix for Debian
+	- Added support for Raspbian, Antergos and KaOS
+	- Fixes for Cinnamon
+	- Fix for Android being detected if getprop exists. Disabling Android support until I figure out a better detection method.
+	- Redirect STDERR to function to make errors prettier.
+	- Commenting gsettings usage for GTK3 theme detection. Causes glib core dump in some places. Removed until I figure out why.
+- Add missing dependencies (xdpyinfo and xprop)
+ 
+
+-------------------------------------------------------------------
+Wed Nov 12 19:18:04 UTC 2014 - mpluskal@suse.com
+
+- Rename project
+
+-------------------------------------------------------------------
+Sun Nov  9 16:45:40 UTC 2014 - mpluskal@suse.com
+
+- Repackage from  home:andisugandi
+

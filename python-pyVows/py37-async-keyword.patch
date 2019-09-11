@@ -1,0 +1,42 @@
+--- pyVows-2.1.0/pyvows/runner/utils.py.orig	2019-02-21 10:04:05.498271976 +0700
++++ pyVows-2.1.0/pyvows/runner/utils.py	2019-02-21 10:04:56.462676610 +0700
+@@ -34,10 +34,10 @@
+     # check for decorated topic function
+     if hasattr(topic_function, '_original'):
+         # _wrapper_type is 'async_topic' or 'capture_error'
+-        async = (getattr(topic_function, '_wrapper_type', None) == 'async_topic')
++        async_ = (getattr(topic_function, '_wrapper_type', None) == 'async_topic')
+         topic_function = topic_function._original
+     else:
+-        async = False
++        async_ = False
+  
+     code = get_code_for(topic_function)
+  
+@@ -48,7 +48,7 @@
+     expected_args = code.co_argcount - 1
+  
+     # taking the callback argument into consideration
+-    if async:
++    if async_:
+         expected_args -= 1
+  
+     # prepare to create `topics` list
+--- pyVows-2.1.0/tests/async_vows.py.orig	2019-02-21 10:07:12.347754104 +0700
++++ pyVows-2.1.0/tests/async_vows.py	2019-02-21 10:07:25.163855622 +0700
+@@ -15,13 +15,13 @@
+ #-------------------------------------------------------------------------------------------------
+ 
+ def asyncFunc(pool, callback):
+-    def async():
++    def async_():
+         time.sleep(0.1)
+         return 10
+ 
+     def get_value(value):
+         callback(value, 20, kwarg=30, kw2=40)
+-    pool.apply_async(async, callback=get_value)
++    pool.apply_async(async_, callback=get_value)
+ 
+ #-------------------------------------------------------------------------------------------------
+ 

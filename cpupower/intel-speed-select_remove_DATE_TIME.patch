@@ -1,0 +1,12 @@
+Index: intel-speed-select-1.0/isst-config.c
+===================================================================
+--- intel-speed-select-1.0.orig/isst-config.c	2019-07-17 00:15:29.000000000 +0200
++++ intel-speed-select-1.0/isst-config.c	2019-07-17 17:53:30.371832405 +0200
+@@ -1521,7 +1521,6 @@ static void usage(void)
+ static void print_version(void)
+ {
+ 	fprintf(outf, "Version %s\n", version_str);
+-	fprintf(outf, "Build date %s time %s\n", __DATE__, __TIME__);
+ 	exit(0);
+ }
+ 

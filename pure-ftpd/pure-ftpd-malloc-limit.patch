@@ -1,0 +1,188 @@
+Index: pure-ftpd-1.0.47/src/bsd-glob.c
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/bsd-glob.c	2017-08-18 23:47:43.000000000 +0000
++++ pure-ftpd-1.0.47/src/bsd-glob.c	2019-03-01 17:42:28.494514013 +0000
+@@ -107,9 +107,6 @@ typedef unsigned short Char;
+ #define M_SET           META('[')
+ #define ismeta(c)       (((c)&M_QUOTE) != 0)
+ 
+-#ifndef GLOB_LIMIT_MALLOC
+-# define GLOB_LIMIT_MALLOC       65536
+-#endif
+ #ifndef GLOB_MAX_STARS
+ # define GLOB_MAX_STARS          3
+ #endif
+@@ -160,7 +157,7 @@ static int check_stars(const char *patte
+ 
+ static int
+ glob_(const char *pattern, int flags, int (*errfunc)(const char *, int),
+-      glob_t *pglob, unsigned long maxfiles, int maxdepth)
++      glob_t *pglob, unsigned long maxfiles, int maxdepth, unsigned long maxmemory)
+ {
+     const unsigned char *patnext;
+     int c;
+@@ -172,6 +169,7 @@ glob_(const char *pattern, int flags, in
+     }
+     pglob->gl_maxdepth = maxdepth;
+     pglob->gl_maxfiles = maxfiles;
++    pglob->gl_maxmemory = maxmemory;
+     patnext = (unsigned char *) pattern;
+     if (!(flags & GLOB_APPEND)) {
+         pglob->gl_pathc = 0;
+@@ -226,15 +224,15 @@ int
+ glob(const char *pattern, int flags, int (*errfunc) (const char *, int),
+      glob_t * pglob)
+ {
+-    return glob_(pattern, flags, errfunc, pglob, (unsigned long) -1, 0);
++    return glob_(pattern, flags, errfunc, pglob, (unsigned long) -1, 0, GLOB_LIMIT_MALLOC);
+ }
+ 
+ int
+ sglob(char *pattern, int flags, int (*errfunc) (const char *, int),
+-      glob_t * pglob, unsigned long maxfiles, int maxdepth)
++      glob_t * pglob, unsigned long maxfiles, int maxdepth, unsigned long maxmemory)
+ {
+     simplify(pattern);
+-    return glob_(pattern, flags, errfunc, pglob, maxfiles, maxdepth);
++    return glob_(pattern, flags, errfunc, pglob, maxfiles, maxdepth, maxmemory);
+ }
+ 
+ /*
+@@ -766,7 +764,7 @@ nospace:
+             statv[pglob->gl_offs + pglob->gl_pathc] = NULL;
+         } else {
+             limitp->glim_malloc += sizeof(**statv);
+-            if (limitp->glim_malloc >= GLOB_LIMIT_MALLOC) {
++            if (limitp->glim_malloc >= pglob->gl_maxmemory) {
+                 errno = 0;
+                 return GLOB_NOSPACE;
+             }
+@@ -793,7 +791,7 @@ nospace:
+     }
+     pathv[pglob->gl_offs + pglob->gl_pathc] = NULL;
+ 
+-    if ((newn * sizeof(*pathv)) + limitp->glim_malloc > GLOB_LIMIT_MALLOC) {
++    if ((newn * sizeof(*pathv)) + limitp->glim_malloc > pglob->gl_maxmemory) {
+         errno = 0;
+         return GLOB_NOSPACE;
+     }
+Index: pure-ftpd-1.0.47/src/bsd-glob.h
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/bsd-glob.h	2019-03-01 17:42:01.264591838 +0000
++++ pure-ftpd-1.0.47/src/bsd-glob.h	2019-03-01 17:42:05.016581083 +0000
+@@ -38,6 +38,7 @@ struct stat;
+ typedef struct {
+     unsigned long gl_maxfiles;  /* Maximum number of results */
+     int gl_maxdepth;            /* Maximum depth */
++    unsigned long gl_maxmemory; /* Maximum memory allocated */
+         int gl_pathc;           /* Count of total paths so far. */
+         int gl_matchc;          /* Count of paths matching pattern. */
+         int gl_offs;            /* Reserved at beginning of gl_pathv. */
+@@ -84,14 +85,14 @@ typedef struct {
+ 
+ #ifdef DISABLE_GLOBBING
+ # define glob(A, B, C, D) (GLOB_NOSYS)
+-# define sglob(A, B, C, D, E, F) (GLOB_NOSYS)
++# define sglob(A, B, C, D, E, F, G) (GLOB_NOSYS)
+ # define globfree(A) (void) 0
+ #else
+ # ifndef USELESS_FOR_PUREFTPD
+ int glob(const char *, int, int (*)(const char *, int), glob_t *);
+ # endif
+ int sglob(char *, int, int (*)(const char *, int),
+-          glob_t *, unsigned long, int);
++          glob_t *, unsigned long, int, unsigned long);
+ void globfree(glob_t *);
+ #endif
+ 
+Index: pure-ftpd-1.0.47/src/ftpd.c
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/ftpd.c	2019-03-01 17:42:01.266591832 +0000
++++ pure-ftpd-1.0.47/src/ftpd.c	2019-03-01 17:42:05.018581078 +0000
+@@ -5988,11 +5988,14 @@ int pureftpd_start(int argc, char *argv[
+         }
+         case 'L': {
+             int ret;
++            unsigned int tmp_glob_memory;
+ 
+-            ret = sscanf(optarg, "%u:%u", &max_ls_files, &max_ls_depth);
+-            if (ret != 2 ||
+-                max_ls_files < 1U || max_ls_depth < 1U) {
++            ret = sscanf(optarg, "%u:%u:%u", &max_ls_files, &max_ls_depth, &tmp_glob_memory);
++            if (ret < 2 || ret > 3 ||
++                max_ls_files < 1U || max_ls_depth < 1U || tmp_glob_memory < 1U) {
+                 die(421, LOG_ERR, MSG_CONF_ERR ": " MSG_ILLEGAL_LS_LIMITS ": %s" , optarg);
++            } else if (ret == 3) {
++                max_glob_memory = tmp_glob_memory * 1024;
+             }
+             break;
+         }
+Index: pure-ftpd-1.0.47/src/ftpd.h
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/ftpd.h	2019-03-01 17:42:01.267591830 +0000
++++ pure-ftpd-1.0.47/src/ftpd.h	2019-03-01 17:42:05.019581075 +0000
+@@ -536,6 +536,9 @@ Your platform has a very large PATH_MAX,
+ #ifndef DEFAULT_MAX_LS_DEPTH
+ # define DEFAULT_MAX_LS_DEPTH 5U
+ #endif
++#ifndef GLOB_LIMIT_MALLOC
++# define GLOB_LIMIT_MALLOC 524288U    /* Memory limit for globbing */
++#endif
+ #ifndef GLOB_TIMEOUT
+ # define GLOB_TIMEOUT 17                   /* Max user time for a 'ls' to complete */
+ #endif
+Index: pure-ftpd-1.0.47/src/globals.h
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/globals.h	2019-03-01 17:42:01.267591830 +0000
++++ pure-ftpd-1.0.47/src/globals.h	2019-03-01 17:42:05.019581075 +0000
+@@ -69,6 +69,7 @@ GLOBAL(signed char resolve_hostnames, 1)
+ GLOBAL0(int allow_anon_mkdir);
+ GLOBAL(unsigned int max_ls_files, DEFAULT_MAX_LS_FILES);
+ GLOBAL(unsigned int max_ls_depth, DEFAULT_MAX_LS_DEPTH);
++GLOBAL(unsigned int max_glob_memory, GLOB_LIMIT_MALLOC);
+ GLOBAL0(char *fortunes_file);
+ GLOBAL0(char host[NI_MAXHOST]);
+ GLOBAL0(int replycode);
+Index: pure-ftpd-1.0.47/src/ls.c
+===================================================================
+--- pure-ftpd-1.0.47.orig/src/ls.c	2019-03-01 17:42:01.267591830 +0000
++++ pure-ftpd-1.0.47/src/ls.c	2019-03-01 17:42:05.019581075 +0000
+@@ -927,7 +927,7 @@ void donlist(char *arg, const int on_ctr
+             memset(&g, 0, sizeof g);
+             a = sglob(arg,
+                       opt_a ? (GLOB_PERIOD | GLOB_LIMIT) : GLOB_LIMIT,
+-                      NULL, &g, max_ls_files + 2, max_ls_depth * 2);
++                      NULL, &g, max_ls_files + 2, max_ls_depth * 2, max_glob_memory);
+             alarm(0);
+             if (a == 0) {
+                 char **path;
+Index: pure-ftpd-1.0.47/man/pure-ftpd.8.in
+===================================================================
+--- pure-ftpd-1.0.47.orig/man/pure-ftpd.8.in	2019-03-01 17:42:01.268591827 +0000
++++ pure-ftpd-1.0.47/man/pure-ftpd.8.in	2019-03-01 17:42:05.019581075 +0000
+@@ -9,7 +9,7 @@
+ pure\-ftpd \- simple File Transfer Protocol server
+ 
+ .SH "SYNOPSIS"
+-.B pure\-ftpd [\-0] [\-1] [\-2] [\-4] [\-6] [\-a gid] [\-A] [\-b] [\-B] [\-c clients] [\-C cnx/ip] [\-d [\-d]] [\-D] [\-e] [\-E] [\-f facility] [\-F fortunes file] [\-g pidfile] [\-G] [\-H] [\-i] [\-I] [\-j] [\-J ciphers] [\-k percentage] [\-K] [\-l authentication[:config file]] [\-L max files:max depth] [\-m maxload] [\-M] [\-n maxfiles:maxsize] [\-N] [\-o] [\-O format:log file] [\-p first:last] [\-P ip address or host name] [\-q upload:download ratio] [\-Q upload:download ratio] [\-r] [\-R] [\-s] [\-S [address,][port]] [\-t upload bandwidth:download bandwidth] [\-T upload bandwidth:download bandwidth] [\-u uid] [\-U umask files:umask dirs] [\-v bonjour name] [\-V ip address] [\-w] [\-W] [\-x] [\-X] [\-y max user sessions:max anon sessions] [\-Y tls behavior] [\-z] [\-Z]
++.B pure\-ftpd [\-0] [\-1] [\-2] [\-4] [\-6] [\-a gid] [\-A] [\-b] [\-B] [\-c clients] [\-C cnx/ip] [\-d [\-d]] [\-D] [\-e] [\-E] [\-f facility] [\-F fortunes file] [\-g pidfile] [\-G] [\-H] [\-i] [\-I] [\-j] [\-J ciphers] [\-k percentage] [\-K] [\-l authentication[:config file]] [\-L max files:max depth[:maxmemory]] [\-m maxload] [\-M] [\-n maxfiles:maxsize] [\-N] [\-o] [\-O format:log file] [\-p first:last] [\-P ip address or host name] [\-q upload:download ratio] [\-Q upload:download ratio] [\-r] [\-R] [\-s] [\-S [address,][port]] [\-t upload bandwidth:download bandwidth] [\-T upload bandwidth:download bandwidth] [\-u uid] [\-U umask files:umask dirs] [\-v bonjour name] [\-V ip address] [\-w] [\-W] [\-x] [\-X] [\-y max user sessions:max anon sessions] [\-Y tls behavior] [\-z] [\-Z]
+ 
+ .br
+ Alternative style:
+@@ -330,11 +330,12 @@ and
+ .I README.MySQL
+ files for info about the built\-in LDAP and SQL directory support.
+ .TP
+-.B \-L max files:max depth
++.B \-L max files:max depth[:max memory limit]
+ Avoid denial\-of\-service attacks by limiting the number of displayed files
+-in a 'ls' and the maximum depth of a recursive 'ls'. Defaults are 2000:5
+-(2000 files displayed for a single 'ls' and walk through 5 subdirectories
+-max).
++in a 'ls', the maximum depth of a recursive 'ls' and optional memory limit
++for globbing in kilobytes. Defaults are 2000:5:512 (2000 files displayed
++for a single 'ls', walk through 5 subdirectories max and limit allocated
++memory for evaluation wildcard characters by 'ls' to 524288 bytes).
+ .TP
+ .B \-m load
+ Do not allow anonymous users to download files if the load is above

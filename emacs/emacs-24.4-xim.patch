@@ -1,0 +1,16 @@
+---
+ src/xfns.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- src/xfns.c
++++ src/xfns.c	2016-09-19 09:10:35.504833294 +0000
+@@ -2237,8 +2237,8 @@ static XIMStyle best_xim_style (XIMStyle
+ 
+ static const XIMStyle supported_xim_styles[] =
+ {
+-  XIMPreeditPosition | XIMStatusArea,
+   XIMPreeditPosition | XIMStatusNothing,
++  XIMPreeditPosition | XIMStatusArea,
+   XIMPreeditPosition | XIMStatusNone,
+   XIMPreeditNothing | XIMStatusArea,
+   XIMPreeditNothing | XIMStatusNothing,

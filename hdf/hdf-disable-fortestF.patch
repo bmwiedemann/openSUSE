@@ -1,0 +1,16 @@
+Index: hdf-4.2.11/hdf/fortran/CMakeTests.cmake
+===================================================================
+--- hdf-4.2.11.orig/hdf/fortran/CMakeTests.cmake
++++ hdf-4.2.11/hdf/fortran/CMakeTests.cmake
+@@ -109,7 +109,7 @@
+ 
+   add_test (NAME fortest COMMAND $<TARGET_FILE:fortest>)
+ 
+-  add_test (NAME fortestF COMMAND $<TARGET_FILE:fortestF>)
++#  add_test (NAME fortestF COMMAND $<TARGET_FILE:fortestF>)
+   set (passRegex "All Fortran Interface Tests Passed")
+-  SET_PROPERTY (TEST fortestF PROPERTY PASS_REGULAR_EXPRESSION "${passRegex}")
+-    
+\ No newline at end of file
++#  SET_PROPERTY (TEST fortestF PROPERTY PASS_REGULAR_EXPRESSION "${passRegex}")
++    

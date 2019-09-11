@@ -1,0 +1,134 @@
+# HG changeset patch
+# Parent  089f4fba0112d410a1bfa74398941f076681d446
+new option UsePAMCheckLocks to enforce checking for locked accounts while
+UsePAM is used
+
+bnc#708678, FATE#312033
+
+Index: openssh-7.8p1/auth.c
+===================================================================
+--- openssh-7.8p1.orig/auth.c
++++ openssh-7.8p1/auth.c
+@@ -112,7 +112,7 @@ allowed_user(struct passwd * pw)
+ 		return 0;
+ 
+ #ifdef USE_SHADOW
+-	if (!options.use_pam)
++	if (!options.use_pam || options.use_pam_check_locks)
+ 		spw = getspnam(pw->pw_name);
+ #ifdef HAS_SHADOW_EXPIRE
+ 	if (!options.use_pam && spw != NULL && auth_shadow_acctexpired(spw))
+@@ -132,7 +132,7 @@ allowed_user(struct passwd * pw)
+ #endif
+ 
+ 	/* check for locked account */
+-	if (!options.use_pam && passwd && *passwd) {
++	if ((!options.use_pam || options.use_pam_check_locks) && passwd && *passwd) {
+ 		int locked = 0;
+ 
+ #ifdef LOCKED_PASSWD_STRING
+Index: openssh-7.8p1/servconf.c
+===================================================================
+--- openssh-7.8p1.orig/servconf.c
++++ openssh-7.8p1/servconf.c
+@@ -83,6 +83,7 @@ initialize_server_options(ServerOptions
+ 
+ 	/* Portable-specific options */
+ 	options->use_pam = -1;
++	options->use_pam_check_locks = -1;
+ 
+ 	/* Standard Options */
+ 	options->num_ports = 0;
+@@ -259,6 +260,8 @@ fill_default_server_options(ServerOption
+ 	/* Portable-specific options */
+ 	if (options->use_pam == -1)
+ 		options->use_pam = 0;
++	if (options->use_pam_check_locks == -1)
++		options->use_pam_check_locks = 0;
+ 
+ 	/* Standard Options */
+ 	if (options->num_host_key_files == 0) {
+@@ -459,7 +462,7 @@ fill_default_server_options(ServerOption
+ typedef enum {
+ 	sBadOption,		/* == unknown option */
+ 	/* Portable-specific options */
+-	sUsePAM,
++	sUsePAM, sUsePAMChecklocks,
+ 	/* Standard Options */
+ 	sPort, sHostKeyFile, sLoginGraceTime,
+ 	sPermitRootLogin, sLogFacility, sLogLevel,
+@@ -509,8 +512,10 @@ static struct {
+ 	/* Portable-specific options */
+ #ifdef USE_PAM
+ 	{ "usepam", sUsePAM, SSHCFG_GLOBAL },
++	{ "usepamchecklocks", sUsePAMChecklocks, SSHCFG_GLOBAL },
+ #else
+ 	{ "usepam", sUnsupported, SSHCFG_GLOBAL },
++	{ "usepamchecklocks", sUnsupported, SSHCFG_GLOBAL },
+ #endif
+ 	{ "pamauthenticationviakbdint", sDeprecated, SSHCFG_GLOBAL },
+ 	/* Standard Options */
+@@ -1250,6 +1255,9 @@ process_server_config_line(ServerOptions
+ 	case sUsePAM:
+ 		intptr = &options->use_pam;
+ 		goto parse_flag;
++	case sUsePAMChecklocks:
++		intptr = &options->use_pam_check_locks;
++		goto parse_flag;
+ 
+ 	/* Standard Options */
+ 	case sBadOption:
+Index: openssh-7.8p1/servconf.h
+===================================================================
+--- openssh-7.8p1.orig/servconf.h
++++ openssh-7.8p1/servconf.h
+@@ -181,6 +181,7 @@ typedef struct {
+ 	char   *adm_forced_command;
+ 
+ 	int	use_pam;		/* Enable auth via PAM */
++	int	use_pam_check_locks;	/* internally check for locked accounts even when using PAM */
+ 
+ 	int	permit_tun;
+ 
+Index: openssh-7.8p1/sshd_config.0
+===================================================================
+--- openssh-7.8p1.orig/sshd_config.0
++++ openssh-7.8p1/sshd_config.0
+@@ -961,6 +961,14 @@ DESCRIPTION
+              If UsePAM is enabled, you will not be able to run sshd(8) as a
+              non-root user.  The default is no.
+ 
++     UsePAMCheckLocks
++             When set to ``yes'', the checks whether the account has been
++             locked with `passwd -l' are performed even when PAM authentication
++             is enabled via UsePAM.  This is to ensure that it is not possible
++             to log in with e.g. a public key (in such a case PAM is used only
++             to set up the session and some PAM modules will not check whether
++             the account is locked in this scenario). The default is ``no''.
++
+      VersionAddendum
+              Optionally specifies additional text to append to the SSH
+              protocol banner sent by the server upon connection.  The default
+Index: openssh-7.8p1/sshd_config.5
+===================================================================
+--- openssh-7.8p1.orig/sshd_config.5
++++ openssh-7.8p1/sshd_config.5
+@@ -1613,6 +1613,18 @@ is enabled, you will not be able to run
+ as a non-root user.
+ The default is
+ .Cm no .
++.It Cm UsePAMCheckLocks
++When set to 
++.Dq yes
++, the checks whether the account has been locked with
++.Pa passwd -l
++are performed even when PAM authentication is enabled via 
++.Cm UsePAM .
++This is to ensure that it is not possible to log in with e.g. a
++public key (in such a case PAM is used only to set up the session and some PAM
++modules will not check whether the account is locked in this scenario). The
++default is 
++.Dq no .
+ .It Cm VersionAddendum
+ Optionally specifies additional text to append to the SSH protocol banner
+ sent by the server upon connection.

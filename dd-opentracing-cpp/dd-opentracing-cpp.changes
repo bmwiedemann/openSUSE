@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Aug 06 17:14:17 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.0.1:
+  * Fix compile errors when built by some tasks on Envoy CI
+    (gh#DataDog/dd-opentracing-cpp#106).
+- Changes from version 1.0.0:
+  * Features:
+    + Add code changes needed to support Datadog Synthetics.
+    + Add code for trace analytics.
+    + Add code for DD_TRACE_REPORT_HOSTNAME, used when the agent
+      is on a different host.
+    + Add code for DD_ENV to set the env attribute of traces.
+    + Add support for trace analytics controlled by environment
+      variables.
+  * Fixes:
+    + Revert nginx implementation to use nginx-opentracing.
+    + Add tags for manual_keep and manual_drop.
+    + Remove a redundant move, fix build with GCC 9.
+    + Workaround for integration test failure.
+    + Missing header in BUILD.bazel.
+    + Outdated examples removed.
+    + README improvements.
+- Changes from version 0.4.3:
+  * Supports nginx-opentracing v0.8.0, updates other dependencies.
+  * Updates documentation.
+- Changes from version 0.4.2:
+  * Minor improvement to operation_name_override behaviour.
+- Changes from version 0.4.1:
+  * Inject/extract methods can be configured with env vars.
+- Build against nlohmann_json-devel provided by distribution
+  instead of the version embedded in tarball.
+
+-------------------------------------------------------------------
+Fri Jan 11 13:55:01 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to version 0.4.0:
+  * Add test for header whitelist
+  * Fix propagation header whitelist
+  * Add missing docker-compose.yml file in C++ example
+  * Allow to use custom libdir and includedir in cmake
+  * Add SOVERSION in cmake
+
+-------------------------------------------------------------------
+Tue Dec 11 18:12:43 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Call ldconfig on post-(un)installation.
+
+-------------------------------------------------------------------
+Tue Dec 11 13:38:13 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial release - 0.3.8

@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Oct 24 14:05:56 UTC 2018 - sean@suspend.net
+
+- Update to version 1.7
+  * fix socket fd missing for O_CLOEXEC
+  * Fix issue where not sending all IPs to an interface
+  * typo in ndptool.c fixed
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:41 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun May 22 12:31:47 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6 (bsc#979645 CVE-2016-3698):
+  * libndp: reject redirect and router advertisements from 
+    non-link-local
+  * libndp: validate the IPv6 hop limit
+- Changes for version 1.5:
+  * ndptool: validate the IPv6 hop limit
+- Small spec file adjustement:
+  * Used spec-cleaner
+  * Make building more verbose
+  * Update describtion of subpackages
+  * Use correct cathegory for subpackage
+
+-------------------------------------------------------------------
+Mon Jan  5 14:35:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.4:
+  + libndp: fix buffer overflow in ndp_msg_opt_dnssl_domain().
+
+-------------------------------------------------------------------
+Wed Jul  9 22:24:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.3:
+  + libndp: fix [cppcheck] Undefined behavior: Variable 'buf' is
+    used as parameter and destination in s[n]printf().
+- No longer bootstrap: the tarball is complete.
+- Remove libtool, automake and autoconf BuildRequires: no longer
+  needed.
+
+-------------------------------------------------------------------
+Wed Jul  9 14:47:29 UTC 2014 - dimstar@opensuse.org
+
+- Minor cleanups for inclusion into Factory:
+  + Shared Library packages must only contain libraries (move
+    binary file and man page to main package).
+  + Adjust RPM Groups: Productivity/Networking/Other for the main
+    package and System/Libraries for the shared library package.
+
+-------------------------------------------------------------------
+Sat Feb  8 10:51:36 UTC 2014 - meissner@suse.com
+
+- library for neighbour discovery, for later use by NetworkManager
+

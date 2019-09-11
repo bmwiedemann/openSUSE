@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/flatpak/flatpak.git</param>
+              <param name="changesrevision">f70978b4ad892cca6837153a3a1f7bc33ac347e8</param></service></servicedata>

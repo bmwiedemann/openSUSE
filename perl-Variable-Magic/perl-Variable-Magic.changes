@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Sun Nov  5 07:12:25 UTC 2017 - coolo@suse.com
+
+- updated to 0.62
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.62    2017-11-04 16:35 UTC
+          + Fix : [RT #123314] : Compatibility with CV-in-stash optimisation
+                  Thanks Father Chrysostomos for reporting and contributing a
+                  patch.
+
+-------------------------------------------------------------------
+Tue Feb 14 07:57:29 UTC 2017 - coolo@suse.com
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.61    2017-01-24 15:30 UTC
+          + Fix : [RT #115792] : Latest blead stack unwind work causes infloop
+                  in a test.
+                  A change in how the core frees temporary values after eval
+                  interacted badly with Variable::Magic and caused infinite loops
+                  when a free callback was attached to a wizard. This change was
+                  temporarily reverted, but is going to be reinstated, and
+                  Variable::Magic is now able to play nicely when this happens.
+                  Thanks Peter Rabbitson for reporting and David Mitchell for
+                  providing a fix.
+
+-------------------------------------------------------------------
+Wed Sep  7 06:18:52 UTC 2016 - coolo@suse.com
+
+- updated to 0.60
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.60    2016-09-06 22:30 UTC
+          + Chg : A large chunk of boilerplate XS code, which is also used in
+                  other XS modules, has been factored out of the main .xs file
+                  to a collection of .h files in the xsh subdirectory.
+          + Fix : [RT #128989] : Bleadperl v5.25.3-266-g1d7e644 breaks V::M.
+                  Len magic is no longer called for negative array indices
+                  fetches, so the relevant tests are now skipped.
+                  Thanks Andreas Koenig for reporting.
+
+-------------------------------------------------------------------
+Tue Oct  6 09:19:29 UTC 2015 - coolo@suse.com
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.59    2015-10-05 19:05 UTC
+          + Chg : The magic callbacks are now always executed in a new stack.
+                  This should have no negative impact (performance-wise or
+                  behaviour-wise) on your code, but may actually fix some obscure
+                  bugs.
+          + Fix : [RT #107294] : Crash during install of Variable-Magic-0.58
+                  running "t\18-opinfo.t".
+                  A recent change in the core implementation of transliterations
+                  caused an undefined behaviour when it interacted with this
+                  module, which resulted in visible stack corruption on Win32
+                  perls compiled with MSVC when the op_info feature was enabled.
+                  This was fixed by using a separate stack for the magic
+                  callbacks.
+                  Thanks Peter Stokes for reporting and providing greatly
+                  helpful feedback.
+          + Fix : The object op_info feature will now handle correctly Unicode
+                  transliteration, multideref and custom ops.
+
+-------------------------------------------------------------------
+Wed Jul 22 09:30:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.58
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.58    2015-07-21 16:00 UTC
+          + Add : If a non-len magic callback returns a reference, it will now
+                  only be freed at the end of the statement that caused the
+                  magic to trigger. This allows the user to attach free magic
+                  (or a plain destructor) to a token returned from the callbacks
+                  in order to defer an action after the magic is processed by
+                  perl.
+          + Fix : Test failures of threads tests on systems with harsh resource
+                  constraints causing the threads to exit() during run.
+
+-------------------------------------------------------------------
+Fri Apr 17 16:52:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.57
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.57    2015-04-17 15:20 UTC
+          + Chg : The new environment variable to enable thread tests on older
+                  perls is PERL_FORCE_TEST_THREADS. Note that this variable
+                  should only be turned on by authors.
+          + Fix : Segfaults when the module is loaded by several threads (or
+                  Windows emulated processes) ran in parallel.
+          + Fix : Segfaults when the module is loaded in a thread, which spawns
+                  itself a new thread, and that child thread outlives its parent.
+          + Fix : Small memory leaks of structures required for thread safety.
+          + Fix : Update the Windows ActivePerl + gcc 3.4 workaround for
+                  ExtUtils::MakeMaker 7.04. Thanks Christian Walde for reporting
+                  and feedback on this issue.
+          + Tst : The global destruction test will now be exercised on any perl
+                  that has DEBUGGING set.
+          + Tst : Optional capturing tests in t/17-ctl.t that were only run when
+                  Capture::Tiny was present were converted to an IPC::Open3
+                  based helper and will now be run everywhere.
+
+-------------------------------------------------------------------
+Tue Apr 14 19:30:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.56    2015-03-11 15:15 UTC
+          + Fix : [RT #101410] : Install fails in blead
+                  Even though the change that caused this error was reverted from
+                  blead, lvalue uses of ERRSV have been removed from this module
+                  so that there will be no breakage when this change is possibly
+                  reintroduced in the following months.
+                  Thanks Dave Rolsky for reporting.
+          + Tst : $ENV{$Config{ldlibpthname}} is now preserved on all platforms,
+                  which will address failures of t/17-ctl.t with unusual
+                  compilers (like icc) that link all their compiled objects to
+                  their own libraries.
+          + Tst : The global destruction test is now only run on perl 5.13.4 and
+                  higher, and only if either Perl::Destruct::Level is installed
+                  or PERL_DESTRUCT_LEVEL is set and the perl is a debugging perl.
+                  This will solve rare crashes of t/15-self.t on perl 5.13.3 and
+                  older.
+  
+  0.55    2014-10-20 23:45 UTC
+          + Fix : [RT #99319] : t/18-opinfo.t: test failure due to change in
+                  perl 5 blead
+                  The new METHOP op class added in perl 5.21.5 is now supported.
+                  Thanks James E Keenan for reporting.
+  
+  0.54    2014-09-22 17:30 UTC
+          + Add : The new constant VMG_COMPAT_CODE_COPY_CLONE evaluates to true
+                  if your perl calls 'copy' magic when a magical code prototype
+                  is cloned, which is currently the case for perl 5.17.0 and
+                  above.
+          + Fix : [RT #90205] : copy magic on subs puts raw CV in $_[3]
+                  $_[3] will now contain a reference to the cloned code when
+                  'copy' magic is called for a coderef.
+                  Thanks Lukas Mai for reporting.
+          + Fix : t/35-stash.t has been taught about perl 5.21.4.
+          + Fix : Tests using run_perl() in t/17-ctl.t will no longer fail on
+                  Android.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:37 UTC 2013 - coolo@suse.com
+
+- updated to 0.53
+        This is a maintenance release. The code contains no functional change.
+        Satisfied users of version 0.52 can skip this update.
+        + Fix : [RT #86338] : typo fix.
+                Thanks dsteinbrunner@pobox.com for the patch.
+        + Tst : Author tests are no longer bundled with this distribution.
+                They are only made available to authors in the git repository.
+
+-------------------------------------------------------------------
+Mon Jun 10 11:00:00 UTC 2013 - coolo@suse.com
+
+- updated to 0.52
+         + Add : The new constant VMG_COMPAT_SCALAR_NOLEN evaluates to true
+                 when your perl does not call 'len' magic for scalars, which
+                 is the case for perl 5.17.4 and above.
+                 This fixes RT #80388.
+         + Tst : t/35-stash.t has been taught about perl 5.17.4.
+         + Tst : Author tests overhaul.
+         + Fix : It is now safe to call dispell() from inside 'free', 'copy' and
+                 'uvar' callbacks to dispell the magic currently in use.
+                 Thanks Clinton Gormley for reporting.
+         + Fix : Exceptions thrown from inside a 'free' callback are now always
+                 consistently propagated outside of the callback. They used to
+                 be lost when the 'free' callback was invoked at the end of an
+                 eval block or string.
+         + Fix : The 'reset RMG flag' workaroundn used to allow wizards with
+                 both 'uvar' and 'clear' magics to be cast onto a hash, has been
+                 made thread-safe.
+         + Fix : Less memory is leaked when a wizard is freed during global
+                 destruction, or when an exception is thrown from a 'free'
+                 callback.
+         + Fix : [RT #77991] : t/17-ctl.t fails on perl 5.14 and 5.16.
+                 This was actually an issue with ActivePerl, and this test
+                 has learned to cope with it.
+                 Thanks Gisle Aas for reporting.
+         + Tst : t/35-stash.t has been taught about perl 5.17.1.
+         + Doc : Many clarifications.
+         This is a maintenance release. The code contains no functional change.
+         Satisfied users of version 0.48 can skip this update.
+         + Fix : [RT #77644] : t/17_ctl.t fails in test 44 since 5.17.0.
+                 This test has been taught about perl 5.17.0.
+                 Thanks Reini Urban for reporting.
+         + Tst : t/99-kwalitee.t will be skipped when only problematic versions
+                 of its dependencies are available.
+
+-------------------------------------------------------------------
+Sat Feb 25 06:32:19 UTC 2012 - coolo@suse.com
+
+- updated to 0.48
+   + Add : You can now pass a reference to undef as the magic callback in
+           order to install a no-op callback.
+           Thanks Florian Ragwitz for the suggestion.
+
+-------------------------------------------------------------------
+Mon Dec 19 16:24:34 UTC 2011 - coolo@suse.de
+
+- update to 0.47
+  + Add : The new constant VMG_COMPAT_HASH_DELETE_NOUVAR_VOID evaluates
+          to true when "delete $hash{key}" does not call 'delete' uvar
+          magic in void context.
+  + Chg : The MAGIC tokens created by this module no longer use the
+          mg_private member for storing a "magical" signature.
+  + Fix : Triggering magic in a thread on a variable cloned from the main
+          interpreter, and when the wizard already went out of scope,
+          will not segfault anymore.
+  + Opt : The pointer table is no longer needed to ensure thread safety.
+          The size of the object code is about 8% smaller for threaded
+          perls.
+  + Tst : Threads tests will not fail anymore if resources constraints
+          prevent the system from creating all the required threads.
+
+-------------------------------------------------------------------
+Mon Jan 24 09:57:07 UTC 2011 - jw@novell.com
+
+- update to 0.46
+        + Fix : [RT #64866] : Assertion failure with perl 5.13.9.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep 27 09:25:05 UTC 2010 - jw@novell.com
+
+- update to 0.44
+        + Fix : Broken linkage on Windows with gcc 3.4, which appears in
+                particular when using ActivePerl's default compiler suite.
+        + Tst : Threads tests are now only run on perl 5.13.4 and higher.
+        + Rem : Support for development perls from the 5.11 branch but older
+                than the 5.11.0 release was removed. This could cause more
+                recent setups to fail.
+
+-------------------------------------------------------------------
+Tue Jun 29 13:39:23 UTC 2010 - jw@novell.com
+
+- osc pull the recreated spec from factory to d:l:p
+
+-------------------------------------------------------------------
+Mon Jun 28 10:37:50 UTC 2010 - jw@novell.com
+
+- update to version 0.43
+    + Add : The new constant VMG_COMPAT_GLOB_GET tells you whether get magic
+      is called for globs. It's true starting perl 5.13.2.
+    + Chg : All callbacks are now called within an eval-like context.
+      Only free callbacks used to be called that way.
+    + Fix : Some exceptions thrown from a free callback could be lost.
+    + Fix : Croak messages could sometimes be repeated several times.
+    + Fix : t/41-clone.t segfaulting with perl 5.13.2.
+
+-------------------------------------------------------------------
+Thu Jun  3 20:16:29 UTC 2010 - chris@computersalat.de
+
+- update to 0.42
+  + Fix : Test failures with perl 5.13.
+  + Tst : Improve coverage.
+- recreated by cpanspec 1.78
+  o parallel build
+  o perl-macros
+
+-------------------------------------------------------------------
+Fri Apr  2 17:24:51 UTC 2010 - chris@computersalat.de
+
+- update to version 0.41
+  + Doc : Tweaks and fixups.
+          Thanks Shlomi Fish.
+  + Fix : Compatibility with the soon-to-be-released perl 5.12.0.
+  + Fix : Correctly propagate the errors thrown when variable destruction
+          happens at compile-time and not from inside eval STRING.
+          Thanks Florian Ragwitz and Ash Berlin for reporting.
+- spec mods
+  o fixed header
+  o sort TAGS
+  o chenges Url
+  o fixed deps
+    when 'Requires perl = version' then BuildRequires perl !
+  o added perl-macros
+  o updated description
+  o macro usage
+
+-------------------------------------------------------------------
+Fri Jan  8 15:32:07 UTC 2010 - jw@novell.com
+
+- updated to 0.40
+
+-------------------------------------------------------------------
+Tue Jul 15 16:24:28 CEST 2008 - jw@suse.de
+
+- initial check in 0.19
+

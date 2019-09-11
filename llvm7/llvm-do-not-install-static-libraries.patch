@@ -1,0 +1,125 @@
+This has similar effect as simply deleting the static libraries which we don't
+want after installation. By not copying them in the first place we reduce the
+disk usage during installation.
+
+Index: llvm-7.0.1.src/cmake/modules/AddLLVM.cmake
+===================================================================
+--- llvm-7.0.1.src.orig/cmake/modules/AddLLVM.cmake
++++ llvm-7.0.1.src/cmake/modules/AddLLVM.cmake
+@@ -654,10 +654,19 @@ macro(add_llvm_library name)
+         set_property(GLOBAL PROPERTY LLVM_HAS_EXPORTS True)
+       endif()
+ 
+-      install(TARGETS ${name}
+-              ${export_to_llvmexports}
+-              ${install_type} DESTINATION ${install_dir}
+-              COMPONENT ${name})
++      if(ARG_SHARED)
++        install(TARGETS ${name}
++                ${export_to_llvmexports}
++                ${install_type} DESTINATION ${install_dir}
++                COMPONENT ${name})
++      else()
++        if(NOT LLVM_BUILD_LLVM_DYLIB)
++          install(TARGETS ${name}
++                  ${export_to_llvmexports}
++                  ${install_type} DESTINATION ${install_dir}
++                  COMPONENT ${name})
++        endif()
++      endif()
+ 
+       if (NOT CMAKE_CONFIGURATION_TYPES)
+         add_llvm_install_targets(install-${name}
+Index: llvm-7.0.1.src/lld-7.0.1.src/cmake/modules/AddLLD.cmake
+===================================================================
+--- llvm-7.0.1.src.orig/lld-7.0.1.src/cmake/modules/AddLLD.cmake
++++ llvm-7.0.1.src/lld-7.0.1.src/cmake/modules/AddLLD.cmake
+@@ -17,13 +17,6 @@ macro(add_lld_library name)
+       set_property(GLOBAL PROPERTY LLD_HAS_EXPORTS True)
+     endif()
+ 
+-    install(TARGETS ${name}
+-      COMPONENT ${name}
+-      ${export_to_lldtargets}
+-      LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
+-      ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX}
+-      RUNTIME DESTINATION bin)
+-
+     if (${ARG_SHARED} AND NOT CMAKE_CONFIGURATION_TYPES)
+       add_llvm_install_targets(install-${name}
+         DEPENDS ${name}
+Index: llvm-7.0.1.src/lldb-7.0.1.src/cmake/modules/AddLLDB.cmake
+===================================================================
+--- llvm-7.0.1.src.orig/lldb-7.0.1.src/cmake/modules/AddLLDB.cmake
++++ llvm-7.0.1.src/lldb-7.0.1.src/cmake/modules/AddLLDB.cmake
+@@ -60,10 +60,12 @@ function(add_lldb_library name)
+           LIBRARY DESTINATION ${out_dir}
+           ARCHIVE DESTINATION ${out_dir})
+       else()
+-        install(TARGETS ${name}
+-          COMPONENT ${name}
+-          LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
+-          ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++        if(NOT LLVM_BUILD_LLVM_DYLIB)
++          install(TARGETS ${name}
++            COMPONENT ${name}
++            LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
++            ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++        endif()
+       endif()
+       if (NOT CMAKE_CONFIGURATION_TYPES)
+         add_llvm_install_targets(install-${name}
+Index: llvm-7.0.1.src/polly-7.0.1.src/cmake/polly_macros.cmake
+===================================================================
+--- llvm-7.0.1.src.orig/polly-7.0.1.src/cmake/polly_macros.cmake
++++ llvm-7.0.1.src/polly-7.0.1.src/cmake/polly_macros.cmake
+@@ -42,12 +42,22 @@ macro(add_polly_library name)
+     llvm_config(${name} ${LLVM_LINK_COMPONENTS})
+   endif( LLVM_LINK_COMPONENTS )
+   if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY OR ${name} STREQUAL "LLVMPolly")
+-    install(TARGETS ${name}
+-      EXPORT LLVMExports
+-      LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
+-      ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++    if (MODULE OR SHARED_LIBRARY)
++      install(TARGETS ${name}
++        EXPORT LLVMExports
++        LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
++        ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++      set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS ${name})
++    else()
++      if(NOT LLVM_BUILD_LLVM_DYLIB)
++        install(TARGETS ${name}
++          EXPORT LLVMExports
++          LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
++          ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++        set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS ${name})
++      endif()
++    endif()
+   endif()
+-  set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS ${name})
+ endmacro(add_polly_library)
+ 
+ macro(add_polly_loadable_module name)
+Index: llvm-7.0.1.src/polly-7.0.1.src/lib/CMakeLists.txt
+===================================================================
+--- llvm-7.0.1.src.orig/polly-7.0.1.src/lib/CMakeLists.txt
++++ llvm-7.0.1.src/polly-7.0.1.src/lib/CMakeLists.txt
+@@ -74,7 +74,7 @@ set_target_properties(PollyCore PROPERTI
+ # LLVM_POLLY_LINK_INTO_TOOLS=ON, its dependencies like PollyISL are linked as
+ # well.
+ add_polly_library(Polly $<TARGET_OBJECTS:PollyCore>)
+-target_link_libraries(Polly PUBLIC
++target_link_libraries(Polly PRIVATE
+   ${ISL_TARGET}
+ )
+ 
+@@ -143,7 +143,7 @@ else ()
+   # hosts. This is not the case for bugpoint. Use LLVM_POLLY_LINK_INTO_TOOLS=ON
+   # instead which will automatically resolve the additional dependencies by
+   # Polly.
+-  target_link_libraries(LLVMPolly PUBLIC ${ISL_TARGET})
++  target_link_libraries(LLVMPolly PRIVATE ${ISL_TARGET})
+   if (GPU_CODEGEN)
+     target_link_libraries(LLVMPolly PUBLIC PollyPPCG)
+   endif ()

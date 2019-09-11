@@ -1,0 +1,25 @@
+From: Antoine Belvire <antoine.belvire@laposte.net>
+Date: Thu, 1 Oct 2014
+Subject: Fix wrong attempt to unlock mutex that was not locked
+Reference: boo#904322
+Upstream: reported, fixed in development branch
+
+With recent versions of glib, radiotray crashes at startup,
+trying to unlock a mutex that was not locked.
+
+This patch fixes the issue by adding missing gdk.threads_enter()
+call in SysTray.py. It matches to Ed Bruck's commit #88d3c67 in
+the radiotray's development tree.
+
+Index: src/SysTray.py
+===================================================================
+--- src/SysTray.py.orig
++++ src/SysTray.py
+@@ -183,6 +183,7 @@ class SysTray(object):
+         
+     def run(self):
+         gtk.gdk.threads_init()
++        gtk.gdk.threads_enter()
+         gtk.main()
+ 
+ 

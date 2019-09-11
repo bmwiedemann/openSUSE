@@ -1,0 +1,24 @@
+Special for screen and its new TERM setting like TERM=screen.xterm-256color
+
+---
+ readline-7.0/bind.c |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+--- lib/readline/bind.c
++++ readline-7.0/bind.c	2018-09-28 11:22:31.001503017 +0000
+@@ -1209,6 +1209,15 @@ parser_if (args)
+ 	 `$if term=sun-cmd' into their .inputrc. */
+       _rl_parsing_conditionalized_out = _rl_stricmp (args + 5, tname) &&
+ 					_rl_stricmp (args + 5, rl_terminal_name);
++
++      /* Skip the prefix `screen.' if any to use the underlying bindings */
++      if (_rl_parsing_conditionalized_out &&
++	  _rl_strnicmp (rl_terminal_name, "screen.", 7) == 0)
++	{
++	  _rl_parsing_conditionalized_out = _rl_stricmp (args + 5, tname + 7) &&
++					    _rl_stricmp (args + 5, rl_terminal_name + 7);
++	}
++
+       xfree (tname);
+     }
+ #if defined (VI_MODE)

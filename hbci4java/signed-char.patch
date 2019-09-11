@@ -1,0 +1,53 @@
+Index: hbci4java-2.5.12.hibiscus.2.6.18/chipcard/src/include/ctapi-tools.h
+===================================================================
+--- hbci4java-2.5.12.hibiscus.2.6.18.orig/chipcard/src/include/ctapi-tools.h
++++ hbci4java-2.5.12.hibiscus.2.6.18/chipcard/src/include/ctapi-tools.h
+@@ -45,7 +45,7 @@ typedef struct CTAPI_ERROR {
+     size_t             reqLen;
+     unsigned char      response[300];
+     size_t             resLen;
+-    char               ret;
++    signed char        ret;
+     unsigned short int status;
+ } CTAPI_ERROR;
+ 
+@@ -57,7 +57,7 @@ typedef struct CTAPI_MapInt2String {
+ 
+ // error codes
+ typedef struct CTAPI_MapChar2String {
+-    char        code;
++    signed char code;
+     const char* msg;
+ } CTAPI_MapChar2String;
+ 
+@@ -141,7 +141,7 @@ bool               CTAPI_initCTAPI(CTAPI
+ unsigned short int CTAPI_performWithCT(const char *name,unsigned short int lenIn,unsigned char *command,unsigned short int *lenOut,unsigned char *response);
+ unsigned short int CTAPI_performWithCard(const char *name,unsigned short int lenIn,unsigned char *command,unsigned short int *lenOut,unsigned char *response);
+ 
+-char*              CTAPI_getErrorString(char status);
++char*              CTAPI_getErrorString(signed char status);
+ char*              CTAPI_getStatusString(unsigned short int status);
+ bool               CTAPI_isOK(unsigned short int status);
+ 
+Index: hbci4java-2.5.12.hibiscus.2.6.18/chipcard/src/lowlevel/ctapi-tools.cpp
+===================================================================
+--- hbci4java-2.5.12.hibiscus.2.6.18.orig/chipcard/src/lowlevel/ctapi-tools.cpp
++++ hbci4java-2.5.12.hibiscus.2.6.18/chipcard/src/lowlevel/ctapi-tools.cpp
+@@ -67,7 +67,7 @@ char* CTAPI_getStatusString(unsigned sho
+     return ret; 
+ }
+ 
+-char* CTAPI_getErrorString(char status)
++char* CTAPI_getErrorString(signed char status)
+ {
+     CTAPI_MapChar2String *codes=(CTAPI_MapChar2String*)CTAPI_errorMsgs;
+     
+@@ -133,7 +133,7 @@ static unsigned short int perform(unsign
+     memcpy(CTAPI_error.request,command,lenIn);
+     CTAPI_error.reqLen=lenIn;
+ 
+-    char err;
++    signed char err;
+     int  retries=3;
+     while (retries--) { 
+         err=(*datafunc)(ctnum,&dad,&sad,lenIn,command,&lenOut_return,response_local);

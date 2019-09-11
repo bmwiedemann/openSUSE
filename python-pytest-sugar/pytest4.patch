@@ -1,0 +1,31 @@
+From 681461f488260eb8c4c9db4530b9572af058477e Mon Sep 17 00:00:00 2001
+From: Daniel Hahler <git@thequod.de>
+Date: Mon, 11 Feb 2019 22:08:41 +0100
+Subject: [PATCH] Fix print_failure for pytest 4.2
+
+Fixes https://github.com/Frozenball/pytest-sugar/issues/170.
+---
+ pytest_sugar.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/pytest_sugar.py b/pytest_sugar.py
+index 6dbe70f..c479dab 100644
+--- a/pytest_sugar.py
++++ b/pytest_sugar.py
+@@ -616,11 +616,13 @@ def print_failure(self, report):
+                 self.write_line(line)
+             else:
+                 msg = self._getfailureheadline(report)
+-                if not hasattr(report, 'when'):
++                # "when" was unset before pytest 4.2 for collection errors.
++                when = getattr(report, "when", "collect")
++                if when == "collect":
+                     msg = "ERROR collecting " + msg
+-                elif report.when == "setup":
++                elif when == "setup":
+                     msg = "ERROR at setup of " + msg
+-                elif report.when == "teardown":
++                elif when == "teardown":
+                     msg = "ERROR at teardown of " + msg
+                 self.write_line('')
+                 self.write_sep("―", msg)

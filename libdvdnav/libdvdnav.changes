@@ -1,0 +1,196 @@
+-------------------------------------------------------------------
+Wed Aug 14 08:05:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Remove not really needed patch:
+  * libdvdnav-strict-aliasing.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 18:11:05 UTC 2019 - olaf@aepfle.de
+
+- Point URL to videolan.org
+
+-------------------------------------------------------------------
+Sat Jan 27 13:24:31 UTC 2018 - j.lorenzen@kabelmail.de
+
+- Update to version 6.0.0:
+  * fix crashes on some DVD on describe_title call
+  * fix various crashes related to PGC validity
+  * fix compilation issues
+  * fix API return codes
+- Add gpg signature
+
+-------------------------------------------------------------------
+Tue Aug 30 15:45:33 UTC 2016 - olaf@aepfle.de
+
+- BuildRequire dvdread >= 5.0.2
+  libdvdnav-dvdread.patch
+
+-------------------------------------------------------------------
+Fri Feb 06 13:34:47 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 5.0.3:
+  + added dvdnav_open_stream to read from external read/seek callbacks
+  + fixed reading DVD label regression
+
+-------------------------------------------------------------------
+Mon Jan 26 12:24:34 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 5.0.2:
+  + fixed 2 wrong asserts (lp#1236939, lp#570790)
+  + fixed 2 crashes (in dvdnav_get_position and dvdnav_get_position
+   _in_title)
+
+-------------------------------------------------------------------
+Wed Dec 17 22:50:47 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Update to version 5.0.1:
+  + removed assert on unknown VM commands, fixing playback of
+    some DVDs
+  + fixed a double free in dvdnav_free_dup
+  + fixed an integer overflow, a data race condition and return
+    inconsistency
+
+- Version 5.0.0:
+  + Android support
+  + fixed numerous crashes, assertions and corruptions
+  + rewrite of the build-system, including silent rules
+  + clean code, simplify and remove warnings
+  + fix compilation in C++ applications
+  + removal of remap .MAP files unused feature
+  + remove the dvdnavmini library
+  + fix compilation on OS/2 and Hurd
+
+-------------------------------------------------------------------
+Mon Mar 10 19:33:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 4.2.1:
+  + Fixed failed assertion on menu-less DVDs.
+  + Fixed playback issues on multi-angle DVDs.
+  + Fixed crash when playing a DVD from different region than
+    currently set in the DVD drive.
+  + Fixed segfaults when reading certain DVDs (including "Jack
+    Reacher", "Ghost Protocol", "Inside Man", "Tangled" and
+    "The Dictator").
+
+-------------------------------------------------------------------
+Sat Dec  3 23:14:39 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 4.2.0:
+  * added dvdnav_get_serial_string() function
+  * fixed ifo leak in dvdnav_describe_chapters()
+  * added dvdnav_get_video_resolution() to retrieve video resolution
+  * added dvdnav_program_play() & dvdnav_current_title_program() for
+    more reliable playback
+  * fixed deadlock between dvdnav_reset() and dvd_clear()
+  * fixed pthread_mutex_destroy macro for Win32
+  * fixed numerous assertion failures occuring when playing DVDs with
+    new "copy protection" schemes
+  * fixed forward seeks to always move forward
+
+-------------------------------------------------------------------
+Sun Nov 13 09:15:40 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+ 
+- added 32bit compatibility libraries
+
+-------------------------------------------------------------------
+Thu Jan 27 14:51:30 UTC 2011 - davejplater@gmail.com
+
+- Added Requires: pkg-config to get the .pc file to build.
+
+-------------------------------------------------------------------
+Fri Nov 20 13:29:11 UTC 2009 - crrodriguez@opensuse.org
+
+- libdvdnav4-4.1.3 contains libdvdnav.so.4.1.2 binaries  [bnc#503753]
+
+-------------------------------------------------------------------
+Wed Sep 10 11:06:40 CEST 2008 - hvogel@suse.de
+
+- update to 4.1.3
+  * fixes regarding potential memory and resource leaks
+  * added pkg-config support
+- branch library subpackage
+
+-------------------------------------------------------------------
+Tue Jul  1 13:47:30 CEST 2008 - hvogel@suse.de
+
+- update to version 4.1.2, switching to version from mplayerhq
+  * multiple build system fixes
+  * added dvdnav_describe_title_chapters(title) to get title
+    and chapters duration
+  * added dvdnav_audio_stream_channels() to return number
+    of channels
+  * fixed dvdnav_time_search() in multi-angle dvds (but it still
+    needs improvements)
+  * added dvdnav_audio_stream_format() to identify the codec used
+    in audio streams
+  * starting DVD playback at specific title/part positions with
+    dvdnav_{title,part}_play() works again
+  * fixed error "Expected NAV packet but none found." occuring
+    sometimes on resume from menu
+
+-------------------------------------------------------------------
+Wed Jan 10 13:50:43 CET 2007 - hvogel@suse.de
+
+- fix possible strncat overflow
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 16:44:17 CET 2005 - hvogel@suse.de
+
+- add -fno-strict-aliasing to CFLAGS
+
+-------------------------------------------------------------------
+Fri Sep  3 14:05:50 CEST 2004 - hvogel@suse.de
+
+- update to version 0.1.10 
+
+-------------------------------------------------------------------
+Mon Jan 12 12:16:47 CET 2004 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Jan 11 10:01:01 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Oct 23 14:41:41 CEST 2003 - stepan@suse.de
+
+- update to 0.1.9, needed by gnome 2.4
+
+-------------------------------------------------------------------
+Sun Jun  1 16:24:28 CEST 2003 - ro@suse.de
+
+- add aclocal file to devel filelist 
+
+-------------------------------------------------------------------
+Fri Feb 14 13:29:56 CET 2003 - stepan@suse.de
+
+- update to v0.1.4, needed by vdr-plugins
+
+-------------------------------------------------------------------
+Sun Feb  2 19:17:40 CET 2003 - adrian@suse.de
+
+- fix requires
+
+-------------------------------------------------------------------
+Sat Nov  2 23:50:35 CET 2002 - stepan@suse.de
+
+- include dvdnavconfig (needed by MPlayer et al)
+
+-------------------------------------------------------------------
+Mon Oct 21 16:24:26 CEST 2002 - stepan@suse.de
+
+- initial release
+

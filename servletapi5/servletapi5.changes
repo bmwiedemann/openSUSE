@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Oct  3 10:43:13 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * java150_build.patch
+    - Don't hardcode the source and target levels, specify them on
+      command line instead
+- Don't build with java-1_5_0-gcj-compat, since it is bound to go
+- Specify source and target level 1.6 in order to allow building
+  with jdk9
+
+-------------------------------------------------------------------
+Mon Jul 21 10:38:49 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner.
+- Fix update-alternatives code
+
+-------------------------------------------------------------------
+Fri Aug 23 11:38:55 UTC 2013 - mvyskocil@suse.com
+
+- drop javadoc package 
+
+-------------------------------------------------------------------
+Mon Nov  8 12:03:08 UTC 2010 - mvyskocil@suse.cz
+
+- Build ignore xml-commons-1.3-jaxp-apis 
+
+-------------------------------------------------------------------
+Mon Jul 28 17:21:57 CEST 2008 - coolo@suse.de
+
+- yet another package to ignore
+
+-------------------------------------------------------------------
+Mon Jul 28 09:09:08 CEST 2008 - coolo@suse.de
+
+- build without openjdk to avoid cycle
+
+-------------------------------------------------------------------
+Mon Sep 25 15:33:26 CEST 2006 - dbornkessel@suse.de
+
+- java150 fixes: added target="1.4" and source="1.4" 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:12:09 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Thu Sep 16 15:58:38 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Thu Sep  2 16:45:46 CEST 2004 - skh@suse.de
+
+- Initial package created with version 5.0.18 (JPackage 1.5)
+

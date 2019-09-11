@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Thu Aug  3 05:21:36 UTC 2017 - coolo@suse.com
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  0.40 2017-08-01
+      BUG FIXES:
+          - fix tied hash test on blead perl (5.27.3)
+            https://rt.perl.org/Ticket/Display.html?id=131824
+            Thanks Jim Keenan, Dave Mitchell and Zefram for reporting
+            and debugging!
+
+-------------------------------------------------------------------
+Sun Apr 16 05:23:15 UTC 2017 - coolo@suse.com
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  0.39 2016-04-15
+      BUG FIXES:
+          - display '-' as a string, not a number (Ivan Bessarabov)
+          - display "123
+" as a string, not a number (Ivan Bessarabov)
+          - fix test failures on newer perls (Sergey Aleynikov)
+      OTHER:
+          - document availability of np() on Data::Printer::Filter (Olaf Alders)
+
+-------------------------------------------------------------------
+Sun Feb  7 09:50:21 UTC 2016 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  0.38 2016-01-28
+      BUG FIXES:
+          - removed Test::Most unlisted dependency
+            (thanks Marco Masetti for reporting)
+  
+  0.37 2016-01-28
+      NEW FEATURES:
+          - Support for displaying scalar's unicode flag
+            (Michael Conrad)
+      BUG FIXES:
+          - Fixed test failure due to leaking environment variables
+            (Thomas Sibley)
+          - class_method only works if it's actually something we can call
+            (RenatoCRON)
+          - Attempt to fix a taint error on old Win32 systems
+            (Baldur Kristinsson)
+          - Prevent some 5.8 errors caused by the version module
+            (Baldur Kristinsson)
+          - Data::Printer::Filter should imports np() as well
+            (Olaf Alders)
+          - Multiline property is now properly propagated
+            (Adam Rosenstein)
+      OTHER:
+          - Removed some trailing whitespaces (Ivan Bessarabov)
+          - Extended tests for finding trailing whitespaces (Ivan Bessarabov)
+          - Documented caveat of using p() in variable declarations (vividsnow)
+          - Documented that the 'DB' filter supports DBIx::Class (Olaf Alders)
+          - New .gitignore file (David Lowe)
+          - Updated .travis.yml (Ivan Bessarabov)
+
+-------------------------------------------------------------------
+Sun Jun  7 08:23:48 UTC 2015 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  0.36 2015-05-29
+      Bumping 0.35_01 to stable. Below is the (repeated) changelog,
+      with the single addition of the 'scalar_quotes' patch.
+  
+      BACKWARDS-INCOMPATIBLE CHANGE
+          - p()'s return value now defaults to 'pass'. Please see
+            https://github.com/garu/Data-Printer/issues/16 for the
+            full discussion. THIS WILL BREAK CODE RELYING ON p() TO
+            RETURN A STRING. To fix your code, please set 'return_value'
+            to 'dump' explicitly, or use the experimental np() function.
+  
+      NEW HIGHLY EXPERIMENTAL FEATURE:
+          - np(), a version of p() that always returns the string instead
+            of printing it.
+  
+      NEW FEATURES:
+          - Add 'escape_chars' to allow \x{...} printing for chars
+            (patch by Mark Fowler)
+          - 'scalar_quotes' let you specify the quote to use when,
+            well, quoting (Ivan Bessarabov)
+          - Class::Date support in the DateTime filter (Ivan Bessarabov)
+  
+      BUG FIXES:
+          - fixed crash in esoteric classes (github issue #41, thanks
+            Ivan Bessarabov for reporting)
+          - removed support for Digest::Haval256, as it can't really be
+            observed without damaging the original data. If future versions
+            provide a clone() function, it can be added again.
+          - Being extra loud when rc files fail to load (RT#89203, thanks
+            Caleb Cushing for reporting).
+          - Prevents PERL5OPT from interfering with deparse tests (github
+            issue #55, thanks David Precious for reporting)
+  
+      OTHER:
+          - more tests
+          - new external filter indexed: PDL
+  
+  0.35_01 2014-12-22
+      BACKWARDS-INCOMPATIBLE CHANGE
+          - p()'s return value now defaults to 'pass'. Please see
+            https://github.com/garu/Data-Printer/issues/16 for the
+            full discussion. THIS WILL BREAK CODE RELYING ON p() TO
+            RETURN A STRING. To fix your code, please set 'return_value'
+            to 'dump' explicitly, or use the experimental np() function.
+  
+      NEW HIGHLY EXPERIMENTAL FEATURE:
+          - np(), a version of p() that always returns the string instead
+            of printing it.
+  
+      NEW FEATURES:
+          - Add 'escape_chars' to allow \x{...} printing for chars
+            (patch by Mark Fowler)
+          - Class::Date support in the DateTime filter (Ivan Bessarabov)
+  
+      BUG FIXES:
+          - fixed crash in esoteric classes (github issue #41, thanks
+            Ivan Bessarabov for reporting)
+          - removed support for Digest::Haval256, as it can't really be
+            observed without damaging the original data. If future versions
+            provide a clone() function, it can be added again.
+          - Being extra loud when rc files fail to load (RT#89203, thanks
+            Caleb Cushing for reporting).
+          - Prevents PERL5OPT from interfering with deparse tests (github
+            issue #55, thanks David Precious for reporting)
+  
+      OTHER:
+          - more tests
+          - new external filter indexed: PDL
+
+-------------------------------------------------------------------
+Wed Jan  8 14:03:40 UTC 2014 - ncutler@suse.com
+
+- updated to latest upstream version 0.35; for details see
+  http://cpansearch.perl.org/src/GARU/Data-Printer-0.35/Changes
+- provided a more verbose description
+- fixed two RPMLINT warnings
+
+-------------------------------------------------------------------
+Mon Sep 17 14:26:54 UTC 2012 - coolo@suse.com
+
+- initial package 0.33
+    * created by cpanspec 1.78.06
+

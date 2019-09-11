@@ -1,0 +1,431 @@
+-------------------------------------------------------------------
+Wed Jan 24 11:36:21 UTC 2018 - jengelh@inai.de
+
+- Remove %__-type macro indirections. Fix SRPM group.
+- Use %_smp_mflags for parallel build.
+- Drop pointless --with-pic (no effect since --disable-static).
+
+-------------------------------------------------------------------
+Wed Jan 17 09:32:25 UTC 2018 - kbabioch@suse.com
+
+- Add CVE-2016-6328.patch: Fix integer overflow in parsing MNOTE
+  entry data of the input file (bnc#1055857)
+- Add CVE-2017-7544.patch: Fix vulnerable out-of-bounds heap read
+  vulnerability (bnc#1059893)
+
+-------------------------------------------------------------------
+Mon Aug  7 15:10:07 UTC 2017 - meissner@suse.com
+
+- add a libexif-devel-biarch for building with -m32
+
+-------------------------------------------------------------------
+Tue Aug 26 11:37:30 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Fri May 30 15:00:27 UTC 2014 - opensuse@dstoecker.de
+
+- fix description to be UTF-8
+
+-------------------------------------------------------------------
+Mon May 26 20:55:15 UTC 2014 - crrodriguez@opensuse.org
+
+- Do not include timestamps in files (libexif-build-date.patch) 
+
+-------------------------------------------------------------------
+Sun May 25 20:14:49 UTC 2014 - crrodriguez@opensuse.org
+
+- Use LFS_CFLAGS in 32 bit systems. 
+
+-------------------------------------------------------------------
+Thu Jul 12 20:02:18 UTC 2012 - meissner@suse.com
+
+- updated to 0.6.21
+  * Fixed some buffer overflows in exif_entry_format_value()
+    This fixes CVE-2012-2814.  Reported by Mateusz Jurczyk of
+    Google Security Team
+  * Fixed an off-by-one error in exif_convert_utf16_to_utf8()
+    This can cause a one-byte NUL write past the end of the buffer.
+    This fixes CVE-2012-2840
+  * Don't read past the end of a tag when converting from UTF-16
+    This fixes CVE-2012-2813. Reported by Mateusz Jurczyk of
+    Google Security Team
+  * Fixed an out of bounds read on corrupted input
+    The EXIF_TAG_COPYRIGHT tag ought to be, but perhaps is not,
+    NUL-terminated.
+    This fixes CVE-2012-2812. Reported by Mateusz Jurczyk of
+    Google Security Team
+  * Fixed a buffer overflow problem in exif_entry_get_value
+    If the application passed in a buffer length of 0, then it would
+    be treated as the buffer had unlimited length.
+    This fixes CVE-2012-2841
+  * Fix a buffer overflow on corrupt EXIF data.
+    This fixes bug #3434540 and fixes part of CVE-2012-2836
+    Reported by Yunho Kim
+  * Fix a buffer overflow on corrupted JPEG data
+    An unsigned data length might wrap around when decremented
+    below zero, bypassing sanity checks on length.
+    This code path can probably only occur if exif_data_load_data()
+    is called directly by the application on data that wasn't parsed
+    by libexif itself.
+    This solves the other part of CVE-2012-2836
+  * Fixed some possible division-by-zeros in Olympus-style makernotes
+    This fixes bug #3434545, a.k.a. CVE-2012-2837
+    Reported by Yunho Kim
+
+  * lots and lots of translations updates.
+  * added more Canon lenses.
+  * changed "knots" to "nautical miles"
+
+-------------------------------------------------------------------
+Thu Dec 23 12:24:10 UTC 2010 - aj@suse.de
+
+- Provide/obsolete old libexif package name so that upgrade and
+  dependencies from other packages continue to work.
+
+-------------------------------------------------------------------
+Fri Dec 17 15:41:00 CET 2010 - meissner@suse.de
+
+- updated to 0.6.20
+  * New translations: bs, tr
+  * Updated translations: be, cs, da, de, en_GB, en_CA, it, ja, nl, pl, pt_BR,
+    pt, ru, sk, sq, sr, sv, vi, zh_CN
+  * Fixed some problems in the write-exif.c example program
+  * Stop listing -lm as a required library for dynamic linking in libexif.pc
+  * Turned on the --enable-silent-rules configure option
+  * Changed a lot of strings to make the case of the text more consistent
+  * exif_entry_dump() now displays the correct tag name for GPS tags
+  * Fixed some invalid format specifiers that caused problems on some platforms
+  * Display rational numbers with the right number of significant figures
+- shared library packaging policy , new package libexif12
+
+-------------------------------------------------------------------
+Sat Apr 24 09:49:02 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Dec 24 14:37:16 CET 2009 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sun Nov 15 15:03:53 CET 2009 - meissner@suse.de
+
+- updated to 0.6.19
+  * Fixed a heap buffer overflow during tag format conversion
+  * Updated and new translations
+  * Now using a binary search to make searching through the tag table faster
+
+- updated to 0.6.18
+  * Updated and new translations
+  * Added some example programs
+  * libexif is now thread safe when the underlying C library is thread safe
+    and when each object allocated by libexif isn't used by more than one
+    thread simultaneously
+  * Expanded the Doxygen API documentation
+  * Access to the raw EXIF data through the ExifEntry structure members is
+    now officially documented
+  * Fixed some Olympus/Sanyo MakerNote interpretations
+  * Added support for Epson MakerNotes
+  * Fixed bug #1946138 to stop ignoring CFLAGS in the sqrt configure test
+  * Added remaining GPS tags from the EXIF 2.2 spec to the tag table
+  * Fixed the interpretation of some tags as being optional in IFD 1
+    (to match the EXIF 2.2 spec) which stops them from being erroneously
+    removed from a file when EXIF_DATA_OPTION_IGNORE_UNKNOWN_TAGS is set
+  * Changed exif_tag_get_support_level_in_ifd() to return a value when possible
+    when the data type for the given EXIF data is unknown. This will cause
+    tags to be added or deleted when tag fixup is requested even, without a
+    data type being set.
+  * Added support for writing Pentax and Casio type2 MakerNotes
+  * Improved display of Pentax and Casio type2 MakerNotes
+  * Completely fixed bug #1617997 to display APEX values correctly
+  * Stopped some crashes due to read-beyond-buffer accesses in MakerNotes
+  * Don't abort MakerNote parsing after the first invalid tag
+  * Sped up exif_content_fix()
+  * Fixed negative exposure values in Canon makernotes (bug #2797280)
+  * New API entry point: exif_loader_get_buf()
+
+-------------------------------------------------------------------
+Mon Jan 26 21:46:50 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sat Nov  8 17:09:07 CET 2008 - meissner@suse.de
+
+- updated to 0.6.17 (rc1/final)
+  * Updated translations: cs, de, pl, sk, vi
+  * New translations: nl, se, en_CA
+  * Enabled sv translation by default
+  * Bug fixes: #1773810, #1774626, #1536244, CVE-2007-6351, CVE-2007-6352,
+    #2071600 and others
+  * Enhanced support of Canon and Olympus makernotes
+  * Added support for Fuji and Sanyo makernotes
+  * Added support for the NO_VERBOSE_TAG_STRINGS and NO_VERBOSE_TAG_DATA
+    macros to reduce size for embedded applications
+  * Added support for more tags
+
+-------------------------------------------------------------------
+Fri Sep 19 11:39:13 CEST 2008 - meissner@suse.de
+
+- updated dutch translation
+- crash fix if exiftag not present
+
+-------------------------------------------------------------------
+Fri Jul 25 23:34:11 CEST 2008 - meissner@suse.de
+
+- fixed eog and gimp crashes bnc#404475, bnc#406299
+
+-------------------------------------------------------------------
+Mon Apr 28 10:52:57 CEST 2008 - meissner@suse.de
+
+- fixed endless loop problem in exif_content_remove_entry()
+  bnc#380716
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 17 10:15:32 CET 2008 - meissner@suse.de
+
+- updated to current CVS
+	- stability fixes in memory handling
+	- bugfixes
+
+-------------------------------------------------------------------
+Wed Jan  9 14:27:30 CET 2008 - meissner@suse.de
+
+- updated to current version
+	- fixed security issues (CVE-2007-6351/CVE-2007-6352) #348748
+	- various small fixes
+	- fuji maker notes support
+
+-------------------------------------------------------------------
+Mon Sep 10 09:55:03 CEST 2007 - kukuk@suse.de
+
+- Update Canon maker note section for newer models
+
+-------------------------------------------------------------------
+Sun Sep  9 15:05:07 CEST 2007 - kukuk@suse.de
+
+- Fix exposure time rounding error [#223752]
+
+-------------------------------------------------------------------
+Mon Aug 20 11:24:54 CEST 2007 - meissner@suse.de
+
+- merged stability bugfixes from upstream 0.6.16.2.
+
+-------------------------------------------------------------------
+Wed Jun 13 09:22:59 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.6.16
+	- fixed a integer overflow security problem
+
+-------------------------------------------------------------------
+Wed May 23 17:42:12 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.6.15
+	- fixes from Coverity scans
+	- czech and slowak translation
+	- some new maker notes
+	- win xp metadata
+	- enhanced doxygen documentation
+- run make check
+- rpmlint fixes
+
+-------------------------------------------------------------------
+Fri Mar  2 08:43:00 CET 2007 - meissner@suse.de
+
+- the doxygen generation does not like parallel make.
+
+-------------------------------------------------------------------
+Thu Mar  1 17:25:19 CET 2007 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Tue Feb 27 23:13:40 CET 2007 - dmueller@suse.de
+
+- split off devel package
+
+-------------------------------------------------------------------
+Tue Oct 17 17:20:08 CEST 2006 - meissner@suse.de
+
+- Lots of Makernote enhancements, for both Canon and Nikon.
+- Updated german translation.
+
+-------------------------------------------------------------------
+Wed Sep 27 11:34:42 CEST 2006 - meissner@suse.de
+
+- fixed compilation problem (min -> MIN, max -> MAX)
+
+-------------------------------------------------------------------
+Wed Sep 27 10:44:07 CEST 2006 - meissner@suse.de
+
+- updgraded to current versions
+	- bugfixes
+	- some more Canon MakerNote entries added
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 08:48:25 CET 2006 - meissner@suse.de
+
+- applied fix for crash in bad exif data #144008
+
+-------------------------------------------------------------------
+Mon Jan 16 16:22:36 CET 2006 - meissner@suse.de
+
+- use -fstack-protector.
+
+-------------------------------------------------------------------
+Tue Jan  3 14:46:53 CET 2006 - meissner@suse.de
+
+- Upgraded to 0.6.13 final.
+
+-------------------------------------------------------------------
+Mon Oct 10 17:48:23 CEST 2005 - meissner@suse.de
+
+- Updated to current CVS, dropped old patches.
+	- german translation mostly done (by myself)
+	- bugfix for crash in COPYRIGHT tag handling #118991
+
+-------------------------------------------------------------------
+Wed Aug 31 13:47:30 CEST 2005 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Merged fixes from HEAD CVS, almost only Canon Maker Note
+  related. This also fixes #114360
+
+-------------------------------------------------------------------
+Thu Jul 21 18:02:04 CEST 2005 - meissner@suse.de
+
+- Upgraded to latest CVS snapshot.
+- Build doxygen documentation.
+
+-------------------------------------------------------------------
+Fri Apr  1 13:57:38 CEST 2005 - meissner@suse.de
+
+- fixed libexif.pc to make exif users compile again.
+
+-------------------------------------------------------------------
+Thu Mar 31 14:18:18 CEST 2005 - meissner@suse.de
+
+- upgraded to 0.6.13 CVS.
+- fixed one gcc4 problem.
+- no executeable stack needed.
+
+-------------------------------------------------------------------
+Mon Mar  7 16:33:33 CET 2005 - meissner@suse.de
+
+- fixed another bug which might lead to a crash.
+
+-------------------------------------------------------------------
+Thu Jan 13 12:31:20 CET 2005 - meissner@suse.de
+
+- Fixed lots of bugs which could lead to crashes.
+
+-------------------------------------------------------------------
+Mon Oct 18 08:32:34 CEST 2004 - meissner@suse.de
+
+- Upgraded to 0.6.12 CVS (right after 0.6.11 release).
+- outsourcing memory management possible.
+- lots of bugfixes.
+
+-------------------------------------------------------------------
+Thu Jul 29 12:44:18 CEST 2004 - meissner@suse.de
+
+- Updated to 0.6.10 (CVS HEAD):
+- lots of fixes in makernotes and general stability.
+- changed ABI of 1 function to pass length, so it cannot
+  overflow its buffer.
+- new SO major version of library (libexif5 includes the
+  old SO major version as compat).
+
+-------------------------------------------------------------------
+Thu Jun 17 17:13:26 CEST 2004 - meissner@suse.de
+
+- Handle size of maker notes correctly during save,
+  do not overwrite random memory. #41520
+
+-------------------------------------------------------------------
+Mon Feb 23 18:07:18 CET 2004 - meissner@suse.de
+
+- downgrade to 0.5.12 release, since the newer ones contains
+  ABI changes which have not yet migrated to all the tools.
+
+-------------------------------------------------------------------
+Mon Feb 23 13:55:29 CET 2004 - meissner@suse.de
+
+- Upgraded to upstream 0.5.13:
+	- bugfixes and some new features.
+	- merged with libmnote
+
+-------------------------------------------------------------------
+Wed Oct 15 13:25:31 CEST 2003 - meissner@suse.de
+
+- don't build as root.
+
+-------------------------------------------------------------------
+Wed Aug  6 09:44:50 CEST 2003 - meissner@suse.de
+
+- Upgreaded to upstream 0.5.12:
+	- fixed endless loops and crashes on invalid exif data.
+	- translation updates.
+
+-------------------------------------------------------------------
+Mon Jul 21 11:04:18 CEST 2003 - meissner@suse.de
+
+- Upgraded to upstream 0.5.10.
+
+-------------------------------------------------------------------
+Tue May 13 10:49:42 CEST 2003 - meissner@suse.de
+
+- Upgraded to current CVS 0.5.9 (just some bugfixes).
+- Package translations too.
+
+-------------------------------------------------------------------
+Wed Jan  8 10:42:03 CET 2003 - meissner@suse.de
+
+- Upgraded to upstream 0.5.9.
+
+-------------------------------------------------------------------
+Mon Dec  2 14:18:39 CET 2002 - meissner@suse.de
+
+- Upgraded to upstream 0.5.7.
+
+-------------------------------------------------------------------
+Mon Nov 18 13:21:46 CET 2002 - meissner@suse.de
+
+- Upgraded to 0.5.6 in preparation of gphoto2-2.1.1.
+
+-------------------------------------------------------------------
+Wed Jul 24 12:50:54 CEST 2002 - meissner@suse.de
+
+- Upgraded to 0.5.3. Do not include static libraries.
+
+-------------------------------------------------------------------
+Mon Feb 11 15:37:22 CET 2002 - meissner@suse.de
+
+- make sure we do not include -I/usr/include into the cflags got from pkgconfig
+  or we confuse gcc 3 -Wall -Werror
+
+-------------------------------------------------------------------
+Mon Feb  4 17:46:43 CET 2002 - meissner@suse.de
+
+- JPEG/EXIF tag parsing library for use by gphoto / gtkam
+  (EXIF tags store EXtended InFormation of images taking by digital cameras)
+

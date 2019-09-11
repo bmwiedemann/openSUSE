@@ -1,0 +1,16 @@
+---
+ share/pkgs/scribble-lib/help/search.rkt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- share/pkgs/scribble-lib/help/search.rkt
++++ share/pkgs/scribble-lib/help/search.rkt	2019-03-28 07:38:19.695803840 +0000
+@@ -43,7 +43,8 @@
+       (let* ([path (build-path (find-user-doc-dir) sub)]
+              [path (if (file-exists? path) path (build-path (find-doc-dir) sub))])
+         (notify path)
+-        (if (file-exists? path)
++        (if (and (file-exists? path)
++                 (file-exists? (build-path (find-doc-dir) "docindex.sqlite")))
+           (send-url/file path #:fragment fragment #:query query)
+           (let ([part (lambda (pfx x) (if x (string-append pfx x) ""))])
+             (send-url (string-append

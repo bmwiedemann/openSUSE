@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Sun Mar  1 17:54:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.7.0
+  * ar-translit.mim: Arabic input method based on Roman transliteration.
+  * latn1-pre.mim: Latin input method simulating "US International Keyboard".
+  * ssymbol.mim, lsymbol.mim: Input method for various symbols.
+  * fallback-input-method: Comma separated fallback input method names.
+
+-------------------------------------------------------------------
+Sun Dec 15 11:52:38 UTC 2013 - i@marguerite.su
+
+- add provides/obsoletes as coolo told.
+  * from 1.6.5, m17n-db will replace m17n-contrib completely
+
+-------------------------------------------------------------------
+Tue Dec 10 22:14:19 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.6.5
+  * New icon files
+  * New input method
+  * MIM/as-inscript.mim, MIM/as-phonetic.mim, MIM/ath-phonetic.mim,
+	MIM/be-kbd.mim, MIM/bla-phonetic.mim, MIM/bn-disha.mim,
+	MIM/bn-inscript.mim, MIM/bn-probhat.mim, MIM/bo-ewts.mim,
+	MIM/cr-western.mim, MIM/cs-kbd.mim, MIM/eo-h-f.mim, MIM/eo-h.mim,
+	MIM/eo-plena.mim, MIM/eo-q.mim, MIM/eo-vi.mim, MIM/eo-x.mim,
+	MIM/gu-inscript.mim, MIM/gu-phonetic.mim, MIM/hi-inscript.mim,
+	MIM/hi-phonetic.mim, MIM/hi-remington.mim, MIM/hi-vedmata.mim,
+	MIM/ii-phonetic.mim, MIM/iu-phonetic.mim, MIM/kn-inscript.mim,
+	MIM/kn-kgp.mim, MIM/kn-typewriter.mim, MIM/ks-inscript.mim,
+	MIM/ks-kbd.mim, MIM/mai-inscript.mim, MIM/math-latex.mim,
+	MIM/ml-inscript.mim, MIM/ml-mozhi.mim, MIM/ml-swanalekha.mim,
+	MIM/mr-inscript.mim, MIM/mr-itrans.mim, MIM/mr-phonetic.mim,
+	MIM/ne-rom.mim, MIM/ne-trad.mim, MIM/nsk-phonetic.mim,
+	MIM/oj-phonetic.mim, MIM/or-inscript.mim, MIM/or-phonetic.mim,
+	MIM/pa-anmollipi.mim, MIM/pa-inscript.mim, MIM/pa-jhelum.mim,
+	MIM/pa-phonetic.mim, MIM/ps-phonetic.mim, MIM/ru-translit.mim,
+	MIM/sa-iast.mim, MIM/sd-inscript.mim, MIM/si-phonetic-dynamic.mim,
+	MIM/si-singlish.mim, MIM/si-sumihiri.mim, MIM/si-trans.mim,
+	MIM/ta-inscript.mim, MIM/ta-phonetic.mim, MIM/ta-tamil99.mim,
+	MIM/ta-typewriter.mim, MIM/ta-vutam.mim, MIM/tai-sonla.mim,
+	MIM/te-apple.mim, MIM/te-inscript.mim, MIM/te-pothana.mim,
+	MIM/te-rts.mim, MIM/te-sarala.mim, MIM/ur-phonetic.mim,
+	MIM/uz-kbd.mim, MIM/vi-han.mim, MIM/vi-nom-vni.mim,
+	MIM/vi-nom.mim, MIM/yi-yivo.mim, MIM/zh-pinyin-vi.mim,
+	MIM/zh-zhuyin.mim: Merged from the m17n-contrib package.
+  * MIM/yi-yivo.mim: Add various maps.
+  * and more...
+
+  
+
+-------------------------------------------------------------------
+Mon Jul  1 04:14:12 UTC 2013 - i@marguerite.su
+
+- update version 1.6.4
+  * MIM/am-sera.mim: Correct the mapping of "a" from U+12A3 to U+12A0.
+  * MIM/si-wijesekera.mim:
+    Add alt-gr mappings (G- ) to correspond to alt mappings (A- ).
+
+-------------------------------------------------------------------
+Wed Mar  6 06:11:55 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jan 31 17:30:48 CET 2012 - tiwai@suse.de
+
+- updated to version 1.6.3:
+  Minor bugs fixed and several new input methods added.
+
+-------------------------------------------------------------------
+Tue Aug  2 17:14:06 CEST 2011 - tiwai@suse.de
+
+- updated to version 1.6.2: bug fix release;
+  see ChangeLog for details
+- clean up spec file
+
+-------------------------------------------------------------------
+Thu Apr 22 17:43:33 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.6.1:
+  * corresponding to m17n-lib-1.6.0, a few bug fixes
+
+-------------------------------------------------------------------
+Fri Dec 18 00:40:01 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon Nov 17 23:26:40 CET 2008 - mfabian@suse.de
+
+- bnc#429430: change ar-kbd input method to agree with
+  http://en.wikipedia.org/wiki/Image:KB_Arabic.svg
+  ([] and {} are reverted).
+
+-------------------------------------------------------------------
+Mon Oct 27 15:44:48 CET 2008 - mfabian@suse.de
+
+- update to m17n-db 1.5.3.
+  • bugfixes
+  • New input method sa-harvard-kyoto.mim (Sanskrit)
+- bzip2 sources.
+
+-------------------------------------------------------------------
+Thu Feb 28 14:14:28 CET 2008 - schwab@suse.de
+
+- Update to m17n-db 1.5.1.
+  * A new FLT is added.
+    COMBINING.flt (For combining diacritical marks)
+    CHAM-GENERIC.flt (For Cham script)
+  * A new input method is added.
+    vi-tcvn.mim (Vietnamese)
+    cmc-kbd.mim (Cham)
+
+-------------------------------------------------------------------
+Thu Aug 02 11:49:05 CEST 2007 - mfabian@suse.de
+
+- make package noarch, move m17n-db.pc file to datadir
+  (/usr/share/pkgconfig/m17n-db.pc).
+
+-------------------------------------------------------------------
+Wed Aug 01 19:46:14 CEST 2007 - mfabian@suse.de
+
+- update to 1.4.0:
+  • Several new input methods are added.
+     da-post.mim (Danish)
+     bo-ewts.mim (Tibetan)
+     fr-azerty.mim (French)
+  • New database for language names.
+
+-------------------------------------------------------------------
+Tue Jan 09 12:51:16 CET 2007 - mfabian@suse.de
+
+- update to 1.3.4:
+  • several new input methods were added:
+     grc-mizuochi.mim (Greek)
+     ja-trycode.mim (Japanese)
+     ru-phonetic.mim (Russian)
+     si-wijesekera-preedit.mim (Sinhala)
+     th-kesmanee-2.mim, th-pattachote.mim th-pattachote-2.mim (Thai)
+     th-tis820.mim th-tis820-2.mim (Thai)
+     ug-kbd.mim (Uyghur)
+     zh-bopomofo.mim (Chinese bopomofo, renamed from bopo-kbd.mim)
+  • several new FLTs were added:
+     LAOO-OTF.flt (Lao)
+     THAI-OTF.flt (Thai)
+
+-------------------------------------------------------------------
+Mon Aug 28 15:22:47 CEST 2006 - mfabian@suse.de
+
+- update to 1.3.3.20060828:
+  • several new input methods are added
+   (ru-phonetic.mim (Russian)).
+
+-------------------------------------------------------------------
+Tue Jun 20 12:35:14 CEST 2006 - mfabian@suse.de
+
+- update to 1.3.3.20060620:
+  + m17n-db.pc file has been added
+  + a few minor bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 10:29:01 CET 2006 - mfabian@suse.de
+
+- update to 1.3.0.20060113.
+
+-------------------------------------------------------------------
+Fri Jan 13 09:10:48 CET 2006 - mfabian@suse.de
+
+- update to 1.3.0.
+
+-------------------------------------------------------------------
+Tue Dec 28 12:24:34 CET 2004 - mfabian@suse.de
+
+- update to 1.2.0.
+
+-------------------------------------------------------------------
+Fri Dec 24 10:39:04 CET 2004 - mfabian@suse.de
+
+- update to 1.1.0.20041223
+- add a latin-prefix input method which behaves like the
+  latin-9-prefix input method in Emacs.
+
+-------------------------------------------------------------------
+Tue Aug 17 12:28:46 CEST 2004 - mfabian@suse.de
+
+- update to 1.1.0.
+
+-------------------------------------------------------------------
+Mon Aug 16 18:54:09 CEST 2004 - mfabian@suse.de
+
+- new package: m17n-db, version 1.0.2.

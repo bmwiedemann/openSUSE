@@ -1,0 +1,287 @@
+-------------------------------------------------------------------
+Thu Feb 15 12:38:18 UTC 2018 - rguenther@suse.com
+
+- Remove setBadness from avr-libc-rpmlintrc, filter also errors
+
+-------------------------------------------------------------------
+Tue Dec 12 14:50:31 UTC 2017 - kkaempf@suse.com
+
+- fix Leap 42.x build: define gcc_version 7
+
+-------------------------------------------------------------------
+Tue Dec 12 14:39:35 UTC 2017 - rguenther@suse.com
+
+- Adjust sysroot to /usr/avr/sys-root as agreed upon by gcc and binutils.
+
+-------------------------------------------------------------------
+Tue Dec 12 14:27:02 UTC 2017 - rguenther@suse.com
+
+- Fix gcc dependences to use %gcc_version.
+- Remove install dependences on cross-avr-gcc and cross-avr-binutils.
+
+-------------------------------------------------------------------
+Tue Dec 12 09:12:18 UTC 2017 - kkaempf@suse.com
+
+- build with cross-avr-gcc7-bootstrap (bsc#1072028)
+
+-------------------------------------------------------------------
+Sat Dec  9 09:31:40 UTC 2017 - kkaempf@suse.com
+
+- build with cross-avr-gcc7
+
+-------------------------------------------------------------------
+Thu Dec  7 10:11:42 UTC 2017 - kkaempf@suse.com
+
+- symlink /opt/cross/avr/bin to /usr/avr/bin to make gcc use
+  avr-as instead of as.
+
+-------------------------------------------------------------------
+Mon Feb  6 14:03:54 UTC 2017 - duwe@suse.com
+
+- update to 2.0.0
+- remove old gcc-4.7 spec file
+- fix prefix
+- update some self tests to v2.0 tree structure
+
+-------------------------------------------------------------------
+Wed Jun 17 18:10:22 CEST 2015 - sbrabec@suse.com
+
+- Update to version 1.8.1.
+- Drop patches:
+  * 41-avr-libc-1.7.1-xmega32X1.patch: introduces just empty header
+  * 42-avr-libc-1.7.1-xmega128b1.patch: now upstreamed
+- Add PDF doc.
+- Add GPG keys.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Tue May 26 18:31:34 UTC 2015 - seife+obs@b1-systems.com
+
+- add hack to add -pipe to avr-gcc calls
+  this avoids changing temporary filenames embedded in binaries and
+  thus continous republishing due to changed binaries
+
+-------------------------------------------------------------------
+Sat Dec  8 15:58:52 UTC 2012 - jw@suse.com
+
+- update to 1.8.0, bugfix release, including:
+  PSTR() now has const, to be compatible with gcc-4.7.0
+  savannah32698-power.patch upstreamed, removed.
+- updated logicp to 1.02 to heal poisoned 
+  SIG_UART_RECV ==> UART_RX_vect and friends.
+- added avr-libc-gcc47.spec to build with the new compiler.
+
+-------------------------------------------------------------------
+Tue Feb  7 16:09:06 UTC 2012 - max@suse.com
+
+- Make the dependency on cross-avr-binutils unversioned.
+
+-------------------------------------------------------------------
+Mon Mar  7 20:27:09 UTC 2011 - jw@novell.com
+
+- testcase for tn4313 added, non-fatal. Still fails due to missing gcc binutils support
+- added savannah32698-power.patch
+- update to 1.7.1
+  This is primarily a bugfix release, and particularly, it fixes the infamous
+  delay.h bug that caused the delay algorithm to be way off
+  (https://savannah.nongnu.org/bugs/?30363).
+
+-------------------------------------------------------------------
+Mon Nov 29 12:48:07 UTC 2010 - jw@novell.com
+
+- fixed bnc#233520
+
+-------------------------------------------------------------------
+Tue Jun 22 16:12:34 CEST 2010 - max@suse.de
+
+- update to 1.7.0
+  * New architecture: avrtiny10
+  * New devices: atmega3000, attiny84a, atmega325a, atmega3250a,
+    atmega329a, atmega3290a, attiny4, attiny5, attiny9, attiny10,
+    attiny20, attiny40, ATxmega128A1U, ATxmega64A1U
+  * countless bugfixes and other improvements
+
+-------------------------------------------------------------------
+Tue Mar 23 18:27:57 UTC 2010 - jw@novell.com
+
+- moved avr-example sub package into an own package.
+  logicp remains here as a pre-install self-test.
+
+-------------------------------------------------------------------
+Sun Mar  7 00:45:06 UTC 2010 - jw@novell.com
+
+- do not require cross-acr-gcc44, we have removed the version number from the package.
+
+-------------------------------------------------------------------
+Mon Mar  1 22:38:53 UTC 2010 - jw@novell.com
+
+- update to 1.6.8
+  * Added iox128a1u.h iom16hva2.h iom16hvb.h iom169pa.h iom649p.h iom64hve.h
+    iotn261a.h iotn461a.h iotn861a.h iom324pa.h iotn10.h iotn4.h iotn5.h iotn9.h
+    iom16a.h iom88pa.h iom644pa.h iotn24a.h iotn44a.h iotn2313a.h iotn4313.h
+    iom8u2.h iom16u2.h iom32u2.h iox192d3.h
+  * Add support for new devices: ATmega16HVA2, ATmega16HVB, ATmega48A,
+    ATmega88A, ATmega168A, ATmega328, ATmega164A, ATmega324A, ATmega644A,
+    ATmega165A, ATmega169A, ATmega645A, ATmega6450A, ATmega649A,
+    ATmega6490A, ATmega6490P, ATmega645P, ATmega6450P, ATmega329PA.
+    ATtiny2313A, ATtiny4313, ATtiny24A, ATtiny44A, ATmega644PA, ATmega88PA,
+    ATmega16A, ATtiny261A, ATtiny861A, ATtiny461A, ATmega64HVE, ATmega169PA,
+    ATmega649P, ATmega324PA.  ATmega8U2, ATmega16U2, and ATmega32U2.
+    ATxmega192D3.
+  * Add new functions: strtok_P() and strtok_rP(). memccpy_P().
+  * Fix some tests to run with host computer.
+  * several bugfixes.
+
+-------------------------------------------------------------------
+Sun Feb  7 19:45:35 UTC 2010 - jw@novell.com
+
+- updated avr_isp.pl to 0.9h, 
+  this now better handles a lrger range of dongles.
+
+-------------------------------------------------------------------
+Fri Jan 22 15:14:43 CET 2010 - jw@suse.de
+
+- moved /usr/share/doc/avr-libc to /usr/share/doc/packages/avr-libc .
+- populated /usr/bin/avr* symlinks, adding /opt/cross/bin to PATH no longer needed.
+- added an 00_index.html to the user_manual.
+
+-------------------------------------------------------------------
+Tue Jan 19 12:56:05 CET 2010 - jw@suse.de
+
+- rediffed patch to remove fuzz.
+  pampered rpmlint warnings.
+
+-------------------------------------------------------------------
+Sun Aug  9 23:45:30 CEST 2009 - jw@suse.de
+
+- updated avr_common.mk to no longer rename dir if under svn
+- update to 1.6.7, 
+  new devices  xmega192D3,mega8U2,mega16U2,ATmega32U2.
+  various bugfixes. see
+  http://cvs.savannah.gnu.org/viewvc/*checkout*/avr-libc/avr-libc/ChangeLog
+
+-------------------------------------------------------------------
+Sat Aug  8 01:14:24 CEST 2009 - jw@suse.de
+
+- updated avr_isp.pl to survive (unsigned char) casts, 
+  and give better diagnostics in case something else fails.
+
+-------------------------------------------------------------------
+Thu May 21 01:47:09 CEST 2009 - jw@suse.de
+
+- added a symlink so that html doku finds its examples.
+
+-------------------------------------------------------------------
+Sun Apr 26 15:07:32 CEST 2009 - jw@suse.de
+
+- updated to 1.6.6
+  Too many small changes to list here. See
+  http://cvs.savannah.gnu.org/viewvc/*checkout*/avr-libc/avr-libc/ChangeLog
+
+-------------------------------------------------------------------
+Wed Jan 30 22:05:17 CET 2008 - jw@suse.de
+
+- update to 1.6.1
+  * The fplib/math library is completely rewritten.
+  * Functions of numbers to ascii conversion are completely rewritten.
+  * Test suite is added to the Avr-libc project.
+  * A few new util's headers: util/atomic.h, util/setbaud.h.
+  * Many new devices added, many revised.
+
+-------------------------------------------------------------------
+Sat Oct 13 16:26:13 CEST 2007 - bwalle@suse.de
+
+- update to 1.4.6
+  o Exclude 64-bit types for -mint8 (obsoletes no64bit_int.patch)
+  o varios bugfixes (upstream #18115, #18385, #18509, #18662,
+    #18686, #18688, #18726, #18899, #18903, #18915, #19009, #19050,
+    #19060, #19134, #19135, #19280, #19281, #19445, #19495, #19650,
+    #19666 #19841)
+  o new devices: AT90USB82, AT90USB162, ATmega325P, ATmega3250P,
+    ATmega329P, ATmega3290P, AT90PWM1, ATmega8HVA, ATmega16HVA
+  o The "largedemo" has been ported to the ATtiny2313.
+  o Integrate a copy of the license file into the documentation.
+  o Include an alphabetical index of all globals
+  o Added 'avr25' architecture.
+  o new functions (memchr_P, memcmp_P, memmem, memmem_P, memrchr,
+    memrchr_P, strcasestr, strcasestr_P, strchrnul, strchrnul_P,
+    strchr_P, strcspn, strcspn_P, strpbrk, strpbrk_P, strrchr_P,
+    strsep_P, strspn, strspn_P)
+  o Optimized functions (atoi, atol, strchr, strcmp, strcmp_P,
+    strlwr, strrev, strsep, strstr, strstr_P, strupr)
+
+-------------------------------------------------------------------
+Thu Apr  5 18:06:00 CEST 2007 - jw@suse.de
+
+- gzipped manpages to make rpmlint happy.
+  user-manual moved *into* /usr/share/doc/packages/avr-libc.
+
+-------------------------------------------------------------------
+Mon Jan 15 21:42:33 CET 2007 - jw@suse.de
+
+- 64bit datatypes on 64bit hosts only fail with -mint8
+  Now properly ifdefed.
+
+-------------------------------------------------------------------
+Tue Jan  9 13:36:04 CET 2007 - jw@suse.de
+
+- update to 1.4.5
+  ATmega165P/169P support. Fixes to the HD44780 driver.
+  Power Management API. New "asmdemo" example.
+  sleep.h: Fix the entry for the ATtiny2313.
+  new devices: ATmega2560, ATmega2561.
+  fp_split.S: Pop 3 bytes for avr6
+  Bugs fixed: 15512 16125 16411 16434 16441 
+        16868 17068 17470 17551 17591 17608 
+- make test now tests 3 CPUs
+
+-------------------------------------------------------------------
+Tue Jan  9 01:08:50 CET 2007 - jw@suse.de
+
+- compiling and linking my logicp application 
+  as a simple selftest.
+- avr-64bit datatypes fail on 64bit hosts.
+
+-------------------------------------------------------------------
+Tue May 30 15:31:39 CEST 2006 - jw@suse.de
+
+- update to 1.4.4
+  added /opt/cross/share/man/man3/* and /opt/cross/share/doc symlink
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 11:52:14 CET 2006 - jw@suse.de
+
+- update to 1.4.2
+
+-------------------------------------------------------------------
+Wed Nov 23 20:50:07 CET 2005 - jw@suse.de
+
+- upstreamed patches removed.
+- update to 1.4.0
+
+-------------------------------------------------------------------
+Wed Oct  5 12:00:13 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Aug 17 17:15:39 CEST 2005 - jw@suse.de
+
+- update to 1.2.5, fixes many things for atmega48
+  e.g. [#105226].
+
+-------------------------------------------------------------------
+Tue May 17 11:44:26 CEST 2005 - jw@suse.de
+
+- removed dependency on uisp.
+
+-------------------------------------------------------------------
+Wed May 11 00:21:51 CEST 2005 - jw@suse.de
+
+- initial version: avr-libc-1.2.3
+

@@ -1,0 +1,22 @@
+From 5c90769ff3d683790fad754a6a3757d46bd2e392 Mon Sep 17 00:00:00 2001
+From: Andrey Ponomarenko <andrewponomarenko@yandex.ru>
+Date: Sat, 24 Feb 2018 00:06:28 +0300
+Subject: [PATCH 2/3] Fixed license file.
+
+---
+ LICENSE | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/LICENSE b/LICENSE
+index 89ff95a..8000a6f 100644
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,4 +1,4 @@
+- GNU LESSER GENERAL PUBLIC LICENSE
++                  GNU LESSER GENERAL PUBLIC LICENSE
+                        Version 2.1, February 1999
+ 
+  Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+-- 
+2.22.0
+

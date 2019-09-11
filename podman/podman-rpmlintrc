@@ -1,0 +1,4 @@
+addFilter (".* W: explicit-lib-dependency libcontainers-common")
+addFilter (".* W: explicit-lib-dependency libcontainers-image")
+addFilter (".* W: explicit-lib-dependency libcontainers-storage")
+addFilter (".* W: missing-call-to-setgroups-before-setuid")

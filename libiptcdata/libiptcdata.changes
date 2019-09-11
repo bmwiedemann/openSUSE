@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:07:54 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Trim description for secondary packages a bit.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:29 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  1 12:45:41 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Sun Feb 27 13:39:45 UTC 2011 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Wed Apr 28 11:57:07 UTC 2010 - dimstar@opensuse.org
+
+- BuildRequire pkg-config in order to have pkgconfig() provides.
+
+-------------------------------------------------------------------
+Tue Jul 21 16:04:47 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 1.0.4:
+  + Fixed multilib conflict from documentation in -devel rpm
+  + Added Italian translation
+
+-------------------------------------------------------------------
+Fri Mar 27 11:29:07 CET 2009 - vuntz@novell.com
+
+- Update to version 1.0.3:
+  + Fix for python saving so it does not fail when /tmp is a
+    different filesystem.
+  + Fix python crash on unknown datasets.
+  + Clean up iptc_dataset_dump output.
+  + Added German translation.
+- Remove AutoReqProv: it's default now.
+- Don't set CFLAGS to the default value.
+- Use standard configure, with --disable-static.
+- Don't remove $RPM_BUILD_ROOT in install (it's automatically
+  done).
+- Use makeinstall.
+- Remove .la files.
+- Create a lang package for translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 11:51:08 CET 2008 - rodrigo@suse.de
+
+- Update to version 1.0.2:
+  * Compatibility improvements for Picasa: The IPTC version and
+    encoding are no longer stored by default in saved IPTC output
+    because these fields confuse Picasa
+  * APP13 data block is stored closer to the beginning of the file
+  * Minor Python compile fix
+
+-------------------------------------------------------------------
+Mon Oct  8 18:53:00 CEST 2007 - maw@suse.de
+
+- Split off a libiptcdata0 subpackage
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Jan 31 00:58:16 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Tue Jan 23 01:47:26 CET 2007 - ro@suse.de
+
+- drop requires for gnome-filesystem 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 13:40:57 CET 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 0.2.1.
+

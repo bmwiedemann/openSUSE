@@ -1,0 +1,162 @@
+% deco-guitar.fmt
+
+% This file provides some guitar fingerings
+
+% == PostScript routines ==
+
+% -- guitar chords
+postscript /slw05{0.5 setlinewidth}!
+postscript /slw06{0.6 setlinewidth}!
+postscript /slw09{0.9 setlinewidth}!
+postscript /guitar{           % usage: x y guitar
+postscript    gsave exch 10 sub exch 8 add T
+postscript    slw06 0 24 M 20 0 RL stroke
+postscript    0 0 M 20 0 RL 0 6 M 20 0 RL
+postscript    0 12 M 20 0 RL 0 18 M 20 0 RL
+postscript    0 0 M 0 24 RL 4 0 M 0 24 RL 8 0 M 0 24 RL
+postscript    12 0 M 0 24 RL 16 0 M 0 24 RL 20 0 M 0 24 RL
+postscript    stroke slw05}!
+postscript /gdot{newpath 1.4 0 360 arc fill}!
+postscript /gx{28 M -1.3 -1.3 RM 2.6 2.6 RL 0 -2.6 RM -2.6 2.6 RL stroke}!
+postscript /go{28 newpath 1.5 0 360 arc stroke}!
+postscript /fr2{1.8 setlinewidth -1 24 M 22 0 RL stroke slw05
+postscript     -12 20 M /Helvetica-Italics 8 selectfont (fr2) show}!
+% -- main C chords
+postscript /C{                % usage: x y C
+postscript    guitar
+postscript    0 gx 20 go
+postscript    16 21 gdot 8 15 gdot 4 9 gdot
+postscript    grestore}!
+postscript /Cm{
+postscript    guitar fr2
+postscript    0 gx
+postscript    4 21 gdot 20 21 gdot slw09 4 21 M 16 0 RL stroke
+postscript    16 15 gdot 8 9 gdot 12 9 gdot
+postscript    grestore}!
+postscript /C7{
+postscript    guitar
+postscript    0 gx
+postscript    16 21 gdot 8 15 gdot 4 9 gdot 12 9 gdot
+postscript    grestore}!
+% -- main D chords
+postscript /D{
+postscript    guitar
+postscript    0 gx 4 gx 8 go
+postscript    12 15 gdot 20 15 gdot 16 9 gdot
+postscript    grestore}!
+postscript /Dm{
+postscript    guitar
+postscript    0 gx 4 gx 8 go
+postscript    20 21 gdot 12 15 gdot 16 9 gdot
+postscript    grestore}!
+postscript /D7{
+postscript    guitar
+postscript    0 gx 4 gx 8 go
+postscript    16 21 gdot 12 15 gdot 20 15 gdot
+postscript    grestore}!
+% -- main E chords
+postscript /E{
+postscript    guitar
+postscript    0 go 16 go 20 go
+postscript    12 21 gdot 4 15 gdot 8 15 gdot
+postscript    grestore}!
+postscript /Em{
+postscript    guitar
+postscript    0 go 12 go 16 go 20 go
+postscript    4 15 gdot 8 15 gdot
+postscript    grestore}!
+postscript /E7{
+postscript    guitar
+postscript    0 go 20 go
+postscript    12 21 gdot 4 15 gdot 8 15 gdot 16 9 gdot
+postscript    grestore}!
+% -- main F chords
+postscript /F{
+postscript    guitar
+postscript    0 21 gdot 20 21 gdot slw09 0 21 M 20 0 RL stroke
+postscript    12 15 gdot 4 9 gdot 8 9 gdot
+postscript    grestore}!
+postscript /Fm{
+postscript    guitar
+postscript    0 21 gdot 20 21 gdot slw09 0 21 M 20 0 RL stroke
+postscript    4 9 gdot 8 9 gdot
+postscript    grestore}!
+postscript /F7{
+postscript    guitar fr2
+postscript    0 gx 4 gx
+postscript    8 21 gdot 16 15 gdot 12 9 gdot 20 9 gdot
+postscript    grestore}!
+% -- main G chords
+postscript /G{
+postscript    guitar
+postscript    4 15 gdot 0 9 gdot 20 9 gdot
+postscript    grestore}!
+postscript /Gm{
+postscript    guitar fr2
+postscript    0 21 gdot 20 21 gdot slw09 0 21 M 20 0 RL stroke
+postscript    4 9 gdot 8 9 gdot
+postscript    grestore}!
+postscript /G7{
+postscript    guitar
+postscript    20 21 gdot 4 15 gdot 0 9 gdot
+postscript    grestore}!
+% -- main A chords
+postscript /A{
+postscript    guitar
+postscript    0 go 4 go 20 go
+postscript    8 15 gdot 12 15 gdot 16 15 gdot
+postscript    grestore}!
+postscript /Am{
+postscript    guitar
+postscript    0 go 4 go 20 go
+postscript    16 21 gdot 8 15 gdot 12 15 gdot
+postscript    grestore}!
+postscript /A7{
+postscript    guitar
+postscript    0 go 4 go 12 go 20 go
+postscript    8 15 gdot 16 15 gdot
+postscript    grestore}!
+% -- main B chords
+postscript /B{
+postscript    guitar
+postscript    0 gx
+postscript    4 15 gdot 20 15 gdot slw09 4 15 M 16 0 RL stroke
+postscript    8 3 gdot 12 3 gdot 16 3 gdot
+postscript    grestore}!
+postscript /Bm{
+postscript    guitar
+postscript    0 gx
+postscript    4 15 gdot 20 15 gdot slw09 4 15 M 16 0 RL stroke
+postscript    16 9 gdot 8 3 gdot 12 3 gdot
+postscript    grestore}!
+postscript /B7{
+postscript    guitar
+postscript    0 gx 16 go
+postscript    8 21 gdot 4 15 gdot 12 15 gdot 20 15 gdot
+postscript    grestore}!
+
+% == Decoration definitions ==
+
+deco C  3 C  36 0 0
+deco Cm 3 Cm 36 0 0
+deco C7 3 C7 36 0 0
+deco D  3 D  36 0 0
+deco Dm 3 Dm 36 0 0
+deco D7 3 D7 36 0 0
+deco E  3 E  36 0 0
+deco Em 3 Em 36 0 0
+deco E7 3 E7 36 0 0
+deco F  3 F  36 0 0
+deco Fm 3 Fm 36 0 0
+deco F7 3 F7 36 0 0
+deco G  3 G  36 0 0
+deco Gm 3 Gm 36 0 0
+deco G7 3 G7 36 0 0
+deco A  3 A  36 0 0
+deco Am 3 Am 36 0 0
+deco A7 3 A7 36 0 0
+deco B  3 B  36 0 0
+deco Bm 3 Bm 36 0 0
+deco B7 3 B7 36 0 0
+
+% -- End of file deco-guitar.fmt

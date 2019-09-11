@@ -1,0 +1,26 @@
+From a9d31f9f8356fba3fc49ead5afdfd8cca5a4a535 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Tue, 12 Jun 2012 08:54:23 +0200
+Subject: [PATCH] dhcp-4.1.1-P1-lpf-bind-msg-fix
+References: bnc#617795
+
+---
+ common/lpf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/lpf.c b/common/lpf.c
+index 44f5f54..82c8b76 100644
+--- a/common/lpf.c
++++ b/common/lpf.c
+@@ -94,7 +94,7 @@ int if_register_lpf (info)
+ 		if (errno == ENOPROTOOPT || errno == EPROTONOSUPPORT ||
+ 		    errno == ESOCKTNOSUPPORT || errno == EPFNOSUPPORT ||
+ 		    errno == EAFNOSUPPORT || errno == EINVAL) {
+-			log_error ("socket: %m - make sure");
++			log_error ("bind: %m - make sure");
+ 			log_error ("CONFIG_PACKET (Packet socket) %s",
+ 				   "and CONFIG_FILTER");
+ 			log_error ("(Socket Filtering) are enabled %s",
+-- 
+1.8.4
+

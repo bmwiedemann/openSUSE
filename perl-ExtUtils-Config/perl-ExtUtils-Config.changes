@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Apr 14 21:09:56 UTC 2015 - coolo@suse.com
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-ExtUtils-Config/Changes
+
+  0.008     2014-06-25 11:37:13-04:00 America/Nassau
+            Remove set, clear, clone methods
+
+-------------------------------------------------------------------
+Wed Jun  5 10:51:48 UTC 2013 - coolo@suse.com
+
+- initial package 0.007
+    * created by cpanspec 1.78.06
+

@@ -1,0 +1,71 @@
+Change the built-in default socket directory to be /var/run/postgresql.
+For backwards compatibility with (probably non-libpq-based) clients that
+might still expect to find the socket in /tmp, also create a socket in
+/tmp.  This is to resolve communication problems with clients operating
+under systemd's PrivateTmp environment, which won't be using the same
+global /tmp directory as the server; see bug #825448.
+
+Note that we apply the socket directory change at the level of the
+hard-wired defaults in the C code, not by just twiddling the setting in
+postgresql.conf.sample; this is so that the change will take effect on
+server package update, without requiring any existing postgresql.conf
+to be updated.  (Of course, a user who dislikes this behavior can still
+override it via postgresql.conf.)
+
+
+Index: postgresql-10beta2/src/bin/pg_upgrade/test.sh
+===================================================================
+--- postgresql-10beta2.orig/src/bin/pg_upgrade/test.sh
++++ postgresql-10beta2/src/bin/pg_upgrade/test.sh
+@@ -150,6 +150,12 @@ done
+ EXTRA_REGRESS_OPTS="$EXTRA_REGRESS_OPTS --port=$PGPORT"
+ export EXTRA_REGRESS_OPTS
+ 
++# we want the Unix sockets in $temp_root
++PGHOST=$temp_root
++export PGHOST
++
++POSTMASTER_OPTS="$POSTMASTER_OPTS -c unix_socket_directories='$PGHOST'"
++
+ # enable echo so the user can see what is being executed
+ set -x
+ 
+Index: postgresql-10beta2/src/backend/utils/misc/guc.c
+===================================================================
+--- postgresql-10beta2.orig/src/backend/utils/misc/guc.c
++++ postgresql-10beta2/src/backend/utils/misc/guc.c
+@@ -3427,7 +3427,7 @@ static struct config_string ConfigureNam
+ 		},
+ 		&Unix_socket_directories,
+ #ifdef HAVE_UNIX_SOCKETS
+-		DEFAULT_PGSOCKET_DIR,
++		DEFAULT_PGSOCKET_DIR ", /tmp",
+ #else
+ 		"",
+ #endif
+Index: postgresql-10beta2/src/bin/initdb/initdb.c
+===================================================================
+--- postgresql-10beta2.orig/src/bin/initdb/initdb.c
++++ postgresql-10beta2/src/bin/initdb/initdb.c
+@@ -1031,7 +1031,7 @@ setup_config(void)
+ 
+ #ifdef HAVE_UNIX_SOCKETS
+ 	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = '%s'",
+-			 DEFAULT_PGSOCKET_DIR);
++			 DEFAULT_PGSOCKET_DIR ", /tmp");
+ #else
+ 	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = ''");
+ #endif
+Index: postgresql-10beta2/src/include/pg_config_manual.h
+===================================================================
+--- postgresql-10beta2.orig/src/include/pg_config_manual.h
++++ postgresql-10beta2/src/include/pg_config_manual.h
+@@ -181,7 +181,7 @@
+  * here's where to twiddle it.  You can also override this at runtime
+  * with the postmaster's -k switch.
+  */
+-#define DEFAULT_PGSOCKET_DIR  "/tmp"
++#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"
+ 
+ /*
+  * This is the default event source for Windows event log.

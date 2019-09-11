@@ -1,0 +1,326 @@
+-------------------------------------------------------------------
+Sat Jun  8 04:46:29 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add argus-client-fix-build.patch to properly fail build on errors
+  and avoid these (boo#1102408)
+
+-------------------------------------------------------------------
+Sat Mar 17 14:14:35 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner and remove not-needed code
+- Fix build on Tumbleweed by stating more dependencies
+
+-------------------------------------------------------------------
+Wed Sep 28 09:17:22 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 3.0.8.2
+  * Please read the ChangeLog
+
+-------------------------------------------------------------------
+Tue Dec 16 22:17:38 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 3.0.8
+  + Please read the ChangeLog
+- Adapt patches to upstream changes
+  argus-clients-3.0.6-fclose.patch > argus-clients-3.0.8-fclose.patch 
+  
+-------------------------------------------------------------------
+Fri May 25 13:01:58 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  COPYING is actually GPL-3.0 but majority of source files are GPL-2.0+ and
+  presence of include/argus/CflowdFlowPdu.h (GPL-2.0) means binary is
+  GPL-2.0 anyway (upstream aware of this). See also bnc#739260
+
+-------------------------------------------------------------------
+Mon May 21 10:38:02 UTC 2012 - idonmez@suse.com
+
+- Fix build 
+
+-------------------------------------------------------------------
+Wed Apr 25 10:14:17 UTC 2012 - vdziewiecki@suse.com
+
+- update to 3.0.6 - bnc#739260 - Multiple licensing problems with
+  argus-client 3.0.0 
+- remove obsolete argus-clients-3.0.0-leak-fix.patch.
+
+-------------------------------------------------------------------
+Tue Dec 20 11:26:41 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Sat Sep 17 12:11:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Mar  8 00:39:29 CET 2010 - ro@suse.de
+
+- drop autoreconf for now 
+
+-------------------------------------------------------------------
+Thu Sep 17 10:30:58 CEST 2009 - mseben@novell.com
+
+- added leak-fix.patch (bnc#537485)
+
+-------------------------------------------------------------------
+Thu Aug 27 10:14:31 CEST 2009 - mseben@novell.com
+
+- added patch to fclose.patch : fix missing fclose (bnc#533450) 
+
+-------------------------------------------------------------------
+Thu Aug 13 20:19:27 UTC 2009 - mseben@novell.com
+
+- fclose.patch : fix missing fclose (bnc#523355)
+- removed chmod a+x support/System/magic
+
+-------------------------------------------------------------------
+Fri Sep 12 08:39:48 CEST 2008 - anosek@suse.cz
+
+- updated to version 3.0.0
+  - please look at /usr/share/doc/packages/argus-client/doc/CHANGES
+    to see the changes
+- disabled patches:
+  makefile.patch
+  strict-aliasing.patch
+  codecleanup.patch
+  ncurses.patch
+  fixes-1.patch
+  png.patch
+- added overflow.patch
+
+-------------------------------------------------------------------
+Fri Mar 30 12:46:15 CEST 2007 - ssommer@suse.de
+
+- add flex,bison,ncurses-devel to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 10 12:19:30 CET 2006 - ro@suse.de
+
+- fix manpage permissions 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 18:42:59 CET 2006 - mmarek@suse.cz
+
+- create PNGs instead of GIFs in ragraph
+  [#141230] (png.patch)
+
+-------------------------------------------------------------------
+Thu Oct 13 09:43:18 CEST 2005 - mmarek@suse.cz
+
+- fixed more strict aliasing warnings
+
+-------------------------------------------------------------------
+Tue Sep 20 14:45:32 CEST 2005 - mmarek@suse.cz
+
+- fixed Makefile to abort on errors subdirectories
+- fixed gcc warnings
+
+-------------------------------------------------------------------
+Tue Apr 12 12:32:07 CEST 2005 - pth@suse.de
+
+- Clean up the code.
+- Use ncurses instead of curses.
+
+-------------------------------------------------------------------
+Thu Aug 19 14:27:50 CEST 2004 - postadal@suse.cz
+
+- updated to version 2.0.6 (fixes 1)
+
+- splitted in two new (sub)packages (argus-server, argus-client)
+
+-------------------------------------------------------------------
+Thu Mar 18 11:59:23 CET 2004 - postadal@suse.cz
+
+- fixed permissions of man pages and documentation [#36325]
+
+-------------------------------------------------------------------
+Thu Feb 12 01:25:38 CET 2004 - ro@suse.de
+
+- adapt to change in libpcap: include moved to pcap_bpf.h
+
+-------------------------------------------------------------------
+Sat Jan 10 21:25:02 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Aug 25 09:21:51 CEST 2003 - postadal@suse.cz
+
+- modified init script
+- added sysconfig metadata [#28836]
+- use new stop_on_removal/restart_on_upate macros
+
+-------------------------------------------------------------------
+Mon Jun  2 15:33:58 CEST 2003 - ro@suse.de
+
+- fixed rcargus symlink 
+
+-------------------------------------------------------------------
+Fri Jan 03 14:14:28 CET 2003 - postadal@suse.cz
+
+- added metadata in sysconfig template
+
+-------------------------------------------------------------------
+Wed Aug 21 14:35:56 CEST 2002 - ro@suse.de
+
+- fix build on ppc64 
+
+-------------------------------------------------------------------
+Fri Aug 16 13:17:06 CEST 2002 - postadal@suse.cz
+
+- added %insserv_prereq and %fillup_prereq to PreReq [#17787]
+
+-------------------------------------------------------------------
+Tue Aug  6 19:55:24 CEST 2002 - adrian@suse.de
+
+- remove tcpdump man page again
+  (fixes file conflict with tcpdump package)
+
+-------------------------------------------------------------------
+Tue Jul 30 12:21:48 CEST 2002 - postadal@suse.cz
+
+- udate to version 2.0.5
+  * multithreaded, configuration files, syslog support, secure access
+  * record changes
+  * a lot of new features for server and client
+ 
+-------------------------------------------------------------------
+Wed Jul 24 10:57:44 CEST 2002 - kukuk@suse.de
+
+- Replase rc.config with sysconfig/argus in README.SuSE
+
+-------------------------------------------------------------------
+Wed Jul 24 10:57:07 CEST 2002 - kukuk@suse.de
+
+- Don't parse rc.config
+
+-------------------------------------------------------------------
+Mon Feb 25 16:44:50 CET 2002 - postadal@suse.cz
+
+- modified copyright in /etc/init.d/argus
+
+-------------------------------------------------------------------
+Tue Jan 15 15:51:46 CET 2002 - egmont@suselinux.hu
+
+- removed colons from startup/shutdown messages
+
+-------------------------------------------------------------------
+Mon Jan 14 08:47:40 CET 2002 - cihlar@suse.cz
+
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Thu Dec 13 01:43:20 CET 2001 - ro@suse.de
+
+- moved rc.config.d -> sysconfig 
+
+-------------------------------------------------------------------
+Tue Dec 11 15:46:05 CET 2001 - cihlar@suse.cz
+
+- source /etc/rc.config.d/argus.rc.config in init script
+- fixed to remove variables which are in 
+  /etc/rc.config.d/argus.rc.config now from /etc/rc.config
+
+-------------------------------------------------------------------
+Mon Dec 10 09:58:22 CET 2001 - cihlar@suse.cz
+
+- removed START_ARGUS
+
+-------------------------------------------------------------------
+Fri Nov 23 12:52:01 CET 2001 - cihlar@suse.cz
+
+- Fixed Url
+
+-------------------------------------------------------------------
+Mon Aug 13 11:52:11 CEST 2001 - cihlar@suse.cz
+
+- really removed whole files from patches
+- fixed README.SuSE
+
+-------------------------------------------------------------------
+Thu Jul 26 07:40:48 CEST 2001 - cihlar@suse.cz
+
+- removed tcpdump man page
+
+-------------------------------------------------------------------
+Tue Jul 24 14:40:45 CEST 2001 - cihlar@suse.cz
+
+- fixed to compile on ia64
+- fixed includes
+- added BuildRoot
+- use suse_update_config
+- removed whole files from patches
+- added Url
+- bzipped sources
+
+-------------------------------------------------------------------
+Mon Jul  2 14:29:10 CEST 2001 - choeger@suse.de
+
+- bugfix: init script was not LSB compliant, Bugzilla ID#8969
+- update to version 1.8.1
+
+-------------------------------------------------------------------
+Fri Dec  1 01:59:07 CET 2000 - ro@suse.de
+
+- use normal tcpd (wrapper-lib)
+- fixed startscript 
+
+-------------------------------------------------------------------
+Wed Mar  1 13:22:19 MET 2000 - choeger@suse.de
+
+- added mandir
+
+-------------------------------------------------------------------
+Tue Feb 15 14:19:22 CET 2000 - aj@suse.de
+
+- fix headers for sparc
+
+-------------------------------------------------------------------
+Thu Sep 16 12:08:30 CEST 1999 - uli@suse.de
+
+- fixed headers for PPC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul 12 01:47:14 MEST 1999 - ro@suse.de
+
+- libpcap is an extra package now
+
+-------------------------------------------------------------------
+Thu Apr 22 02:14:35 MEST 1999 - ro@suse.de
+
+- fixed for alpha (ip_hl like other little-endian)
+
+-------------------------------------------------------------------
+Wed Dec  9 15:38:19 MET 1998 - choeger@suse.de
+
+- completed new init-script
+
+-------------------------------------------------------------------
+Mon Nov 23 16:55:50 MET 1998 - choeger@suse.de
+
+- new version and new init-script
+
+-------------------------------------------------------------------
+Wed Oct  7 00:56:08 MEST 1998 - ro@suse.de
+
+- dont redeclare sys_errlist or strcpy for glibc
+- dont cast to a char* where you're not supposed to
+
+-------------------------------------------------------------------
+Mon May  4 10:57:49 MEST 1998 - choeger@suse.de
+
+- new package 1.7.beta.1b
+

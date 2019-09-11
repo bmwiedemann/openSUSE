@@ -1,0 +1,78 @@
+# HG changeset patch
+# User John Donoghue
+# Date 1441300743 14400
+#      Thu Sep 03 13:19:03 2015 -0400
+# Node ID eeb20b3c6074e8932e40b14c9f99985340ceeca5
+# Parent  dedf92d61d33525da3f71a635979c447defb438a
+Check for ls-oct-ascii.h, ls-oct-text.h (Bug #45856)
+
+src/configure.ac: check for ls-oct-ascii.h, ls-oct-text.h and set HAVE_XXXX variables accordingly.
+
+src/ov-galois.cc: include either ls-oct-ascii.h, ls-oct-text.h dependong on HAVE_XXXX variables
+
+diff -r dedf92d61d33 -r eeb20b3c6074 src/configure.ac
+--- a/src/configure.ac	Sat Apr 04 12:20:33 2015 -0400
++++ b/src/configure.ac	Thu Sep 03 13:19:03 2015 -0400
+@@ -99,5 +99,21 @@
+   PKG_CPPFLAGS="$PKG_CPPFLAGS -DHAVE_OCTAVE_BASE_VALUE_PRINT_CONST=1"
+ fi
+ 
++comm_save_CXXFLAGS=$CXXFLAGS
++CXXFLAGS="$CXXFLAGS $comm_CXXFLAGS"
++AC_LANG_PUSH(C++)
++AC_CHECK_HEADER([octave/ls-oct-ascii.h], [PKG_CPPFLAGS="$PKG_CPPFLAGS -DHAVE_OCTAVE_ASCII_H=1"], [], 
++[
++#include <octave/config.h>
++#incude <octave/ov.h>
++])
++AC_CHECK_HEADER([octave/ls-oct-text.h], [PKG_CPPFLAGS="$PKG_CPPFLAGS -DHAVE_OCTAVE_TEXT_H=1"], [], 
++[
++#include <octave/config.h>
++#include <octave/ov.h>
++])
++AC_LANG_POP(C++)
++CXXFLAGS=$comm_save_CXXFLAGS
++
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+diff -r dedf92d61d33 -r eeb20b3c6074 src/ov-galois.cc
+--- a/src/ov-galois.cc	Sat Apr 04 12:20:33 2015 -0400
++++ b/src/ov-galois.cc	Thu Sep 03 13:19:03 2015 -0400
+@@ -30,7 +30,12 @@
+ #include <octave/ov.h>
+ #include <octave/pr-output.h>
+ 
+-#include <octave/ls-oct-ascii.h>
++
++#if defined(HAVE_OCTAVE_TEXT_H)
++#  include <octave/ls-oct-text.h>
++#else
++#  include <octave/ls-oct-ascii.h>
++#endif
+ 
+ #include "galois.h"
+ #include "ov-galois.h"
+# HG changeset patch
+# User John Donoghue
+# Date 1448402937 18000
+#      Tue Nov 24 17:08:57 2015 -0500
+# Node ID e8b6bae07002b9e94bfc104b1e844963ccaa5f41
+# Parent  eeb20b3c6074e8932e40b14c9f99985340ceeca5
+define OV_REP_TYPE it it is not defined (Bug #46521)
+
+* src/ov-galois.h: define OV_REP_TYPE if not defined already
+
+diff -r eeb20b3c6074 -r e8b6bae07002 src/ov-galois.h
+--- a/src/ov-galois.h	Thu Sep 03 13:19:03 2015 -0400
++++ b/src/ov-galois.h	Tue Nov 24 17:08:57 2015 -0500
+@@ -44,6 +44,10 @@
+ #endif
+ #endif
+ 
++#if ! defined (OV_REP_TYPE)
++#  define OV_REP_TYPE octave_base_value
++#endif
++
+ class octave_value_list;
+ class tree_walker;
+ 

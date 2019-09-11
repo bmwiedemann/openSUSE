@@ -1,0 +1,452 @@
+-------------------------------------------------------------------
+Mon Aug  5 03:42:13 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Update gnomesu-pam.pamd: Include the pam_keyinit.so module in
+  /etc/pam.d/gnomesu-pam to support kernel keyrings (boo#1144048).
+
+-------------------------------------------------------------------
+Tue Apr  2 23:05:23 CEST 2019 - sbrabec@suse.com
+
+- Update to version 2.0.3:
+  * Make gnomesu honor /etc/default/su settings for PATH
+    (boo#1131339).
+  * Updated translations.
+- Sync PAM configuration with su.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:57 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jun 30 09:05:29 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.0.2:
+  * Automate the package building in travis on github
+  * Fix the version stored in configure.ac
+
+-------------------------------------------------------------------
+Thu Jun 22 19:52:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.0.1:
+  * Update translations
+
+-------------------------------------------------------------------
+Fri Apr 15 01:56:00 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop libgnomesu-exit-with-parent.patch: now included in tarball.
+
+-------------------------------------------------------------------
+Thu Sep 10 18:34:33 CEST 2015 - sbrabec@suse.com
+
+- Include lost SLE11 fix from hpj@novell.com:
+  * Add libgnomesu-exit-with-parent.patch, to make child process
+    exit if parent does. Part of bnc#578284.
+
+-------------------------------------------------------------------
+Thu Sep 10 17:02:27 CEST 2015 - sbrabec@suse.com
+
+- Update to version 2.0.0 maintained by openSUSE:
+  * Obsolete all SUSE patches
+    (libgnomesu-better-pam-handling.patch,
+    libgnomesu-bnc440970-safe-path.patch
+    libgnomesu-drop-libgnomeui.patch, libgnomesu-gtk3.patch
+    libgnomesu-check-setuid-retval.patch,
+    libgnomesu-ia64-crash.patch, libgnomesu-i18n.patch,
+    libgnomesu-libtool.patch, libgnomesu-makefile.patch,
+    libgnomesu-modernize.patch, libgnomesu-no-gconf.patch,
+    libgnomesu-no-manual-memory-cleaning.patch,
+    libgnomesu-remove-prior-cookie.patch,
+    libgnomesu-reorder-pam-init.patch,
+    libgnomesu-set-xdg_runtime_dir.patch,
+    libgnomesu-startup-notification.patch
+    libgnomesu-suid_flags.patch, libgnomesu-unsetenv.patch,
+    libgnomesu-use-pam_xauth.patch,
+    libgnomesu-1.0.0-spin-mainloop.patch,
+    libgnomesu-1.0.0-xauth-nolookup.patch, libgnomesu-64bit.patch)
+  * Include lost SLE11 fix from hpj@novell.com:
+    Add patch to make child process exit if parent does. Part of
+    bnc#578284.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Fri Feb  6 10:43:53 UTC 2015 - dimstar@opensuse.org
+
+- Add libgnomesu-set-xdg_runtime_dir.patch: explicitly set
+  XDG_RUNTIME_DIR for the new user (boo#908167).
+
+-------------------------------------------------------------------
+Thu Feb  5 07:10:43 UTC 2015 - coolo@suse.com
+
+- Use rm -f to avoid rm asking back with strict umasks.
+
+-------------------------------------------------------------------
+Sat Sep 21 14:51:40 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Thu Mar  7 23:32:34 UTC 2013 - dimstar@opensuse.org
+
+- Enhance libgnomesu-gtk3.patch: add #undef GTK_DISABLE_DEPRECATED
+  in order to allow usage of deprecated symbols (e.g. GTK_TABLE).
+
+-------------------------------------------------------------------
+Thu Sep  6 12:27:29 UTC 2012 - tittiatcoke@gmail.com
+
+- Add a Supplements for gnome-session and xdg-utils, to ensure that
+  gnomesu is automatically installed when the user installs GNOME.
+  Until now, we were relying on the patterns.
+
+-------------------------------------------------------------------
+Fri Feb 24 10:15:30 UTC 2012 - vuntz@opensuse.org
+
+- Add libgnomesu-suid_flags.patch: respect SUID_CFLAGS/SUID_LDFLAGS
+  when building the suid binary gnomesu-pam-backend.
+- Set SUID_CFLAGS to -fPIE and SUID_LDFLAGS to -pie in %build. This
+  fixes bnc#743139.
+
+-------------------------------------------------------------------
+Sun Nov 13 09:16:53 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit BuildRequires to avoid implicit
+  dependency from prjconf.
+
+-------------------------------------------------------------------
+Tue Jul 19 13:19:41 CEST 2011 - vuntz@opensuse.org
+
+- Add libgnomesu-no-gconf.patch: use GSettings instead of gconf to
+  find the preferred terminal; this is needed for GNOME 3
+  integration.
+- Add libgnomesu-gtk3.patch: port to GTK+ 3.
+- Change gtk2-devel BuildRequires to gtk3-devel.
+- Remove now unneeded gconf2-devel BuildRequires.
+- Add gsettings-desktop-schemas Requires, since the use of
+  GSettings require the schema to be installed.
+- Remove explicit Requires for glib2-devel and gtk2-devel in devel
+  subpackage: if needed, they will automatically be added the
+  pkgconfig() way.
+
+-------------------------------------------------------------------
+Mon May 30 10:34:59 CEST 2011 - vuntz@opensuse.org
+
+- Add libgnomesu-check-setuid-retval.patch: really handle return
+  value of the setuid() call, to avoid a root exploit if it fails
+  because of rlimits. Fix bnc#695627 and CVE-2011-1946.
+
+-------------------------------------------------------------------
+Thu May  5 19:28:04 CEST 2011 - vuntz@opensuse.org
+
+- Use %{_libexecdir} instead of %{_prefix}/lib.
+- Do not use %run_permissions in %post of libgnomesu0 since there
+  is no file with specific permissions there. Instead use the more
+  specific %set_permissions in %post of the main package.
+- Note that the permissions PreReq and the %verifyscript were for
+  the main package already.
+
+-------------------------------------------------------------------
+Tue Feb 15 11:57:31 CET 2011 - vuntz@opensuse.org
+
+- Add libgnomesu-use-pam_xauth.patch: with the pam backend, we
+  should stop playing with xauth ourselves and let pam_xauth handle
+  this. It turns out it's already configured to do so in
+  gnomesu-pam.pamd, but we're hiding things to it.
+- Add libgnomesu-reorder-pam-init.patch: in the pam backend, we
+  want to initialize everything in the right order, and we use the
+  coreutils/su code as reference for this.
+
+-------------------------------------------------------------------
+Wed Jan 26 14:56:11 CET 2011 - vuntz@opensuse.org
+
+- Update libgnomesu-modernize.patch: define an icon for the
+  Continue button. It will only be shown if user configures the
+  desktop to show icons for buttons. Fix bnc#639203.
+
+-------------------------------------------------------------------
+Tue Aug 31 10:00:02 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Sat Aug  7 11:00:20 CEST 2010 - vuntz@opensuse.org
+
+- Update libgnomesu-modernize.patch to fix build with recent GTK+.
+
+-------------------------------------------------------------------
+Fri Jun  4 01:26:05 CEST 2010 - vuntz@opensuse.org
+
+- Add libgnomesu-no-manual-memory-cleaning.patch to fix some bad
+  code that tries to remove passwords from memory the wrong way.
+  GTK+ already does this for us. As a side-effect, this fixes
+  bnc#351917.
+
+-------------------------------------------------------------------
+Wed Apr 14 19:01:30 CEST 2010 - sbrabec@suse.cz
+
+- Fixed translatability (bnc#582085).
+- Add libgnomesu-remove-prior-cookie.patch (bnc#477638) from SLE11
+  (hpj@novell.com).
+
+-------------------------------------------------------------------
+Sat Mar 13 21:05:52 UTC 2010 - dimstar@opensuse.org
+
+- Modernize libgnomesu-modernize.patch not to use deprecated
+  GTK symbols.
+
+-------------------------------------------------------------------
+Wed Mar 10 17:38:46 CET 2010 - sbrabec@suse.cz
+
+- Upstream of libgnomesu is dead. Move translation to a separate
+  LCN project and migrate from gnome-patch-translation to
+  translation-update-upstream (bnc#562162#c2).
+
+-------------------------------------------------------------------
+Thu Dec  3 10:42:02 CET 2009 - vuntz@opensuse.org
+
+- Rebase libgnomesu-bnc440970-safe-path.patch to apply without
+  fuzz.
+
+-------------------------------------------------------------------
+Mon Sep 28 15:52:00 CEST 2009 - vuntz@opensuse.org
+
+- Use gnome-patch-translation for new strings added by patch. Part
+  of bnc#541653.
+- Use spec-cleaner to clean the spec file.
+
+-------------------------------------------------------------------
+Wed Jul 15 17:54:25 CEST 2009 - vuntz@novell.com
+
+- Add libgnomesu-bnc440970-safe-path.patch to fix bnc#440970:
+  instead of resetting PATH to a default value that we can't get
+  right, just remove the unsafe values.
+
+-------------------------------------------------------------------
+Wed May 20 18:28:00 CEST 2009 - vuntz@novell.com
+
+- Drop useless update-polish-patch.sh script.
+
+-------------------------------------------------------------------
+Wed May 13 03:34:23 CEST 2009 - vuntz@novell.com
+
+- Tag patches.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Thu Apr 30 18:05:22 CEST 2009 - vuntz@novell.com
+
+- Remove .la files.
+
+-------------------------------------------------------------------
+Thu Mar 19 04:14:23 CET 2009 - vuntz@novell.com
+
+- Make gnomesu handle "gnomesu -- gnomesu -- ls". We used to end up
+  with a leading "--" in a command we were spawning, which doesn't
+  work. This is an update to libgnomesu-drop-libgnomeui.patch,
+  which was wrong for this.
+  Fix bnc#486644.
+
+-------------------------------------------------------------------
+Wed Feb  4 06:10:44 CET 2009 - vuntz@novell.com
+
+- Add libgnomesu-drop-libgnomeui.patch to drop libgnomeui
+  dependency.
+- Remove BuildRequires on libgnomeui and replace it with
+  BuildRequires on gconf2-devel and gtk2-devel.
+
+-------------------------------------------------------------------
+Tue Feb  3 14:55:27 CET 2009 - schwab@suse.de
+
+- Remove broken casts:
+  Add libgnomesu-ia64-crash.patch to fix crash on ia64 because of
+  broken casts.
+
+-------------------------------------------------------------------
+Sat Jan 31 06:44:13 CET 2009 - vuntz@novell.com
+
+- Add libgnomesu-better-pam-handling.patch to handle PAM errors
+  during authentication better, so the user has a better feedback.
+  Hopefully fixes bnc#430883.
+
+-------------------------------------------------------------------
+Sat Jan 31 03:37:06 CET 2009 - vuntz@novell.com
+
+- Add libgnomesu-startup-notification.patch to forward the startup
+  notification information when there's no need for authentication
+  dialog. The main use case is the yast2 control center, where we
+  are already root. Fix bnc#458651.
+- Use sr@latin instead of sr@Latn.
+- Remove checks for old versions of openSUSE.
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de
+
+- Translations update.
+
+-------------------------------------------------------------------
+Sun Dec 28 02:23:04 EST 2008 - abockover@novell.com
+
+- Patch to "modernize" gnomesu in the image of PolicyKit-gnome
+  * Fix bnc#462073
+  * GNOME HIG compliant
+  * Uses the GTK icon theme
+
+-------------------------------------------------------------------
+Sat Dec  6 09:09:20 CET 2008 - mauro@suse.de
+
+- Translation update.
+
+-------------------------------------------------------------------
+Thu Nov  6 22:50:48 CET 2008 - vuntz@novell.com
+
+- Add libgnomesu-unsetenv.patch to unset the
+  DBUS_SESSION_BUS_ADDRESS environment variable. Fix bnc#428963.
+
+-------------------------------------------------------------------
+Thu Oct  9 19:49:39 CDT 2008 - hpj@novell.com
+
+- Remove libgnomesu-1.0.0-ensure-xauthority-env.patch. It breaks
+  with the xauth location used by the new gdm.
+
+-------------------------------------------------------------------
+Fri Oct  3 22:10:15 CEST 2008 - vuntz@novell.com
+
+- Run intltoolize so that the translations get installed. It seems
+  the new intltool broke this.
+
+-------------------------------------------------------------------
+Wed Oct  3 22:05:01 CEST 2007 - maw@suse.de
+
+- Split out a libgnomesu0 shared library package.
+
+-------------------------------------------------------------------
+Fri Sep 28 21:23:18 CEST 2007 - maw@suse.de
+
+- Add libgnomesu-1.0.so-polish as a source file and copy
+  it to the po/ directory (#302300).
+
+-------------------------------------------------------------------
+Tue Aug  7 20:49:09 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Mar 21 17:09:36 CET 2007 - jhargadon@suse.de
+
+- added a patch to fix the library path for 64 bit packages.
+
+-------------------------------------------------------------------
+Tue Jan  2 17:45:31 CET 2007 - sbrabec@suse.cz
+
+- Fixed invalid Makefile expansion.
+
+-------------------------------------------------------------------
+Fri Dec 22 14:09:44 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Jun 20 17:30:24 CEST 2006 - sbrabec@suse.cz
+
+- Updated translations from upstream (179651#c15).
+
+-------------------------------------------------------------------
+Fri May 26 11:58:09 CEST 2006 - zsu@suse.de
+
+- bugzilla #169082. Call _() to translate label string "_Password:"
+
+-------------------------------------------------------------------
+Thu May 18 16:59:44 CEST 2006 - ro@suse.de
+
+- add setuid bit to gnomesu-pam-backend in level secure (#175616)
+
+-------------------------------------------------------------------
+Thu May  4 23:36:24 CEST 2006 - danw@suse.de
+
+- stick the command label in a scrolledwindow in case it's really
+  really long. #161044
+
+-------------------------------------------------------------------
+Thu May  4 20:55:48 CEST 2006 - hpj@suse.de
+
+- Add patch to ensure that XAUTHORITY is always set in the child
+  environment. Fixes Novell bug #172494.
+
+-------------------------------------------------------------------
+Fri Mar 31 21:36:22 CEST 2006 - danw@suse.de
+
+- Don't mark the error text as "selectable", since that will make
+  it focusable as well and mess up the tab order. #162600
+
+-------------------------------------------------------------------
+Tue Mar 21 00:41:07 CET 2006 - hpj@suse.de
+
+- Add patch to make it spin the main loop while waiting for the
+  child to exit. Fixes Novell bug #156445.
+
+-------------------------------------------------------------------
+Mon Jan 30 14:57:10 CET 2006 - ro@suse.de
+
+- reduce BuildRequires as far as possible
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 18 00:28:25 CEST 2005 - hpj@suse.de
+
+- Fixed the nlist/nmerge patch to actually work (#119600).
+
+-------------------------------------------------------------------
+Fri Oct 14 03:49:35 CEST 2005 - hpj@suse.de
+
+- Run xauth nlist/nmerge instead of list, prevents DNS lookups
+  (#119600).
+
+-------------------------------------------------------------------
+Tue Sep 20 18:26:20 CEST 2005 - sbrabec@suse.cz
+
+- Removed references to build directory in installed .la files.
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Thu Jun  9 17:22:16 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.0.0.
+- Set permissions properly (#75823).
+- Removed crypt backend (#75823).
+
+-------------------------------------------------------------------
+Mon May 16 13:21:09 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.9.7.
+
+-------------------------------------------------------------------
+Thu May 12 18:25:23 CEST 2005 - sbrabec@suse.cz
+
+- Provide and obsolete xsu (#75823).
+- Fixed crash on x86_64.
+- Build and install PAM backend.
+- Fixed backend permissions.
+
+-------------------------------------------------------------------
+Fri Apr 15 13:45:59 CEST 2005 - sbrabec@suse.cz
+
+- Simplified neededforbuild.
+- Added devel documentation.
+
+-------------------------------------------------------------------
+Tue Feb  8 15:11:37 CET 2005 - hhetter@suse.de
+
+- package without setuid bits for now (#50436)
+
+-------------------------------------------------------------------
+Thu Feb  3 09:08:02 CET 2005 - hhetter@suse.de
+
+- initial SUSE package
+

@@ -1,0 +1,32 @@
+Add support for ENCRYPT_METHOD_NIS used by pam: modules/pam_unix/pam_unix_passwd.c.
+
+Index: lib/getdef.c
+===================================================================
+--- lib/getdef.c.orig
++++ lib/getdef.c
+@@ -85,6 +85,7 @@ static struct itemdef def_table[] = {
+ 	{"CREATE_HOME", NULL},
+ 	{"DEFAULT_HOME", NULL},
+ 	{"ENCRYPT_METHOD", NULL},
++	{"ENCRYPT_METHOD_NIS", NULL},
+ 	{"ENV_PATH", NULL},
+ 	{"ENV_ROOTPATH", NULL},
+ 	{"ENV_SUPATH", NULL},
+Index: etc/login.defs
+===================================================================
+--- etc/login.defs.orig
++++ etc/login.defs
+@@ -187,10 +187,13 @@ CHFN_RESTRICT		rwh
+ # If set to DES, DES-based algorithm will be used for encrypting password (default)
+ # Overrides the MD5_CRYPT_ENAB option
+ #
++# ENCRYPT_METHOD_NIS is used by pam_unix_passwd.so.
++#
+ # Note: If you use PAM, it is recommended to use a value consistent with
+ # the PAM modules configuration.
+ #
+ #ENCRYPT_METHOD DES
++#ENCRYPT_METHOD_NIS DES
+ 
+ #
+ # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Dec  3 18:32:18 UTC 2017 - arun@gmx.de
+
+- update to version 0.4.1:
+  * New config option USE_SESSION_FOR_NEXT to enable storing next url
+    in session instead of url. #330
+  * Accept int seconds along with timedelta for
+    REMEMBER_COOKIE_DURATION. #370
+  * New config option FORCE_HOST_FOR_REDIRECTS to force host for
+    redirects. #371
+
+-------------------------------------------------------------------
+Fri Sep  8 18:54:27 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

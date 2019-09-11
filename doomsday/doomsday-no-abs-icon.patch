@@ -1,0 +1,35 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: 2015-03-30T09:15:11
+
+Do not use absolute paths to icons. [Application containerization
+requires the icons to be below /usr/share/icons or
+/usr/share/pixmaps, but the specfile will take care of that.]
+
+
+---
+ doomsday/apps/client/doomsday-engine.desktop.in |    3 +--
+ doomsday/tools/shell/doomsday-shell.desktop.in  |    3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+Index: doomsday-2.0.0/doomsday/apps/client/doomsday-engine.desktop.in
+===================================================================
+--- doomsday-2.0.0.orig/doomsday/apps/client/doomsday-engine.desktop.in
++++ doomsday-2.0.0/doomsday/apps/client/doomsday-engine.desktop.in
+@@ -6,5 +6,4 @@ Categories=Game;ActionGame;
+ Exec=${CMAKE_INSTALL_PREFIX}/bin/doomsday
+ Terminal=false
+ Type=Application
+-Icon=${CMAKE_INSTALL_PREFIX}/${DENG_INSTALL_DATA_DIR}/deng-logo-256.png
+-
++Icon=deng-logo-256.png
+Index: doomsday-2.0.0/doomsday/tools/shell/doomsday-shell.desktop.in
+===================================================================
+--- doomsday-2.0.0.orig/doomsday/tools/shell/doomsday-shell.desktop.in
++++ doomsday-2.0.0/doomsday/tools/shell/doomsday-shell.desktop.in
+@@ -6,5 +6,4 @@ Categories=Game;ActionGame;
+ Exec=${CMAKE_INSTALL_PREFIX}/bin/doomsday-shell
+ Terminal=false
+ Type=Application
+-Icon=${CMAKE_INSTALL_PREFIX}/${DENG_INSTALL_DATA_DIR}/deng-shell-logo-256.png
+-
++Icon=deng-shell-logo-256.png

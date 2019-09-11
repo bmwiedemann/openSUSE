@@ -1,0 +1,62 @@
+Index: apache-tomcat-9.0.19-src/java/org/apache/jasper/compiler/JDTCompiler.java
+===================================================================
+--- apache-tomcat-9.0.19-src.orig/java/org/apache/jasper/compiler/JDTCompiler.java
++++ apache-tomcat-9.0.19-src/java/org/apache/jasper/compiler/JDTCompiler.java
+@@ -312,18 +312,18 @@ public class JDTCompiler extends org.apa
+                              CompilerOptions.VERSION_1_7);
+             } else if(opt.equals("1.8")) {
+                 settings.put(CompilerOptions.OPTION_Source,
+-                             CompilerOptions.VERSION_1_8);
++                             "1.8"); // CompilerOptions.VERSION_1_8
+             // Version format changed from Java 9 onwards.
+             // Support old format that was used in EA implementation as well
+             } else if(opt.equals("9") || opt.equals("1.9")) {
+                 settings.put(CompilerOptions.OPTION_Source,
+-                             CompilerOptions.VERSION_9);
++                             "9"); // CompilerOptions.VERSION_9
+             } else if(opt.equals("10")) {
+                 settings.put(CompilerOptions.OPTION_Source,
+-                             CompilerOptions.VERSION_10);
++                             "10"); // CompilerOptions.VERSION_10
+             } else if(opt.equals("11")) {
+                 settings.put(CompilerOptions.OPTION_Source,
+-                             CompilerOptions.VERSION_11);
++                             "11"); // CompilerOptions.VERSION_11
+             } else if(opt.equals("12")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.
+@@ -377,26 +377,26 @@ public class JDTCompiler extends org.apa
+                         CompilerOptions.VERSION_1_7);
+             } else if(opt.equals("1.8")) {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform,
+-                             CompilerOptions.VERSION_1_8);
++                             "1.8"); // CompilerOptions.VERSION_1_8
+                 settings.put(CompilerOptions.OPTION_Compliance,
+-                        CompilerOptions.VERSION_1_8);
++                        "1.8"); // CompilerOptions.VERSION_1_8
+             // Version format changed from Java 9 onwards.
+             // Support old format that was used in EA implementation as well
+             } else if(opt.equals("9") || opt.equals("1.9")) {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform,
+-                             CompilerOptions.VERSION_9);
++                             "9"); // CompilerOptions.VERSION_9
+                 settings.put(CompilerOptions.OPTION_Compliance,
+-                        CompilerOptions.VERSION_9);
++                        "9"); // CompilerOptions.VERSION_9
+             } else if(opt.equals("10")) {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform,
+-                        CompilerOptions.VERSION_10);
++                        "10"); // CompilerOptions.VERSION_10
+                 settings.put(CompilerOptions.OPTION_Compliance,
+-                        CompilerOptions.VERSION_10);
++                        "10"); // CompilerOptions.VERSION_10
+             } else if(opt.equals("11")) {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform,
+-                        CompilerOptions.VERSION_11);
++                        "11"); // CompilerOptions.VERSION_11
+                 settings.put(CompilerOptions.OPTION_Compliance,
+-                        CompilerOptions.VERSION_11);
++                        "11"); // CompilerOptions.VERSION_11
+             } else if(opt.equals("12")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.

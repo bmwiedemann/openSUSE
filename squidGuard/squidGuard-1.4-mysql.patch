@@ -1,0 +1,13 @@
+Index: squidGuard.1.4-beta/configure
+===================================================================
+--- squidGuard.1.4-beta.orig/configure
++++ squidGuard.1.4-beta/configure
+@@ -4402,7 +4402,7 @@ echo "${ECHO_T}no" >&6; }
+     fi
+   else
+ 
+-    for i in lib lib/mysql; do
++    for i in lib64 lib64/mysql lib lib/mysql; do
+       str="$MYSQL_DIR/$i/libmysqlclient.*"
+       for j in `echo $str`; do
+         if test -r $j; then

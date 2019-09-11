@@ -1,0 +1,32 @@
+diff --git a/serviceproviders.xml b/serviceproviders.xml
+index 013894e..4025cf4 100644
+--- a/serviceproviders.xml
++++ b/serviceproviders.xml
+@@ -3141,13 +3141,6 @@ conceived.
+ 			<balance-top-up>
+ 				<ussd replacement="CODE">*101*CODE#</ussd>
+ 			</balance-top-up>
+-			<apn value="internet.t-d1.de">
+-				<plan type="postpaid"/>
+-				<usage type="internet"/>
+-				<password>t-d1</password>
+-				<dns>193.254.160.1</dns>
+-				<dns>193.254.160.130</dns>
+-			</apn>
+ 			<apn value="internet.t-mobile">
+ 				<plan type="postpaid"/>
+ 				<usage type="internet"/>
+@@ -3164,6 +3157,13 @@ conceived.
+ 				<mmsc>http://mms.t-mobile.de/servlets/mms</mmsc>
+ 				<mmsproxy>172.28.23.131:8008</mmsproxy>
+ 			</apn>
++			<apn value="internet.t-d1.de">
++				<plan type="postpaid"/>
++				<usage type="internet"/>
++				<password>t-d1</password>
++				<dns>193.254.160.1</dns>
++				<dns>193.254.160.130</dns>
++			</apn>
+ 		</gsm>
+ 	</provider>
+ 	<provider>

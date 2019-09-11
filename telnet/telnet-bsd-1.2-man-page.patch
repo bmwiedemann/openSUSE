@@ -1,0 +1,12 @@
+--- telnet/telnet.1
++++ telnet/telnet.1
+@@ -609,7 +609,8 @@
+ in the
+ user's home directory is opened.  Lines beginning with a ``#'' are
+ comment lines.  Blank lines are ignored.  Lines that begin
+-without white space are the start of a machine entry.  The
++without white space are the start of a machine entry, use DEFAULT 
++as machine name to match every connection.  The
+ first thing on the line is the name of the machine that is
+ being connected to.  The rest of the line, and successive
+ lines that begin with white space are assumed to be

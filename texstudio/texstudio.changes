@@ -1,0 +1,267 @@
+-------------------------------------------------------------------
+Wed May 20 09:49:21 UTC 2019 - info@ebner-markus.de
+
+- Update to version 2.12.16
+  * mainly a bug fix release.
+  * most notable change is flickerfree update of pdf
+
+-------------------------------------------------------------------
+Wed May 15 10:21:00 UTC 2019 - info@ebner-markus.de
+
+- Update to version 2.12.14
+  * fix bug that not all available GUI languages are shown
+  * tweak fuzzy completer
+  * fix template presentation
+- Update to version 2.12.12
+  * improve macro handling, provide gui that directly downloads macros from github.com/texstudio-org/texstudio-macro
+  * add fuzzy completion mode
+  * add cwls
+  * fix rare bug that the character appear reverse order
+  * bug fixes
+
+-------------------------------------------------------------------
+Mon Jul 16 06:54:57 UTC 2018 - mpluskal@suse.com
+
+- Use source url
+- Drop conditionals for older distros, they fail to build anyways
+- Use spec-cleaner to modernise spec file
+
+-------------------------------------------------------------------
+Sun Jul 15 11:57:43 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to version 2.12.10
+  * bug fixes
+  * fix structure view with Qt >5.10
+- Update to version 2.12.8
+  * improved tokenizer for syntax checking and completion
+  * pressing Ctrl+F while the editor search has focus opens the
+    extended search, i.e., you'll get extended search by pressing
+    Ctrl+F twice
+  * automatically insert math delimiters ($) when inserting a math
+    command outside of a math env (can be turned off, default on)
+  * change copy behavior of multiple cursors from selection order
+    to line order
+  * file list is now a transparent popup window: closes when clicked
+    outside
+  * combine file conflict and show diff dialog
+  * fix file watcher not recognizing multiple changes to a file in
+    quick succession
+  * improved detection of package names when opening texdoc
+  * new symbol panel layout
+  * some touch scrolling on certain panels
+  * updated synctex and poppler libraries for pdf viewer
+  * fix undo when a snippet is inserted and a selection is inserted
+    as well
+  * fix some parts of the editor background may not be drawn in the
+    correct color
+  * build for OSX High Sierra
+  * various other fixes
+
+-------------------------------------------------------------------
+Thu Jan  4 15:35:35 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Unbreak build on Leap 42.x, make_jobs is only provided by macros.qt5
+
+-------------------------------------------------------------------
+Wed Jan  3 13:37:25 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Disable crash handler on aarch64/armv6l/armv7l, aarch64 is
+  not implemented and armv6l/armv7l is broken
+- use %qmake5 macro to supply CXXFLAGS and also CFLAGS
+
+-------------------------------------------------------------------
+Tue Aug 22 19:25:53 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 2.12.6
+  * Minor changes
+
+-------------------------------------------------------------------
+Sun Feb 06 22:08:00 UTC 2017 - opensuse@kulawiak.de
+
+- Update to version 2.12.2
+  * PDF shortcuts are now changable
+  * improved user interface: optimized layout, some new icons, some changes of color
+  * warn if file-saving fails
+  * Support LanguageTool json API (needed for LanguageTool > 3.5)
+
+-------------------------------------------------------------------
+Sun Oct 30 10:56:12 UTC 2016 - opensuse@kulawiak.de
+
+- Update to version 2.11.2
+  * major performance speedup
+  * speed up pasting into large documents (factor 100x)
+  * add comment toggle
+  * improved search panel layout
+  * improved bracket detection for \todo highlighting (bug 1789)
+  * improved parsing of section titles (bug 1817)
+  * bugfixes and minor changes, see included CHANGELOG.txt for details
+  
+-------------------------------------------------------------------
+Sun Jun  5 12:58:07 UTC 2016 - dmitry_r@opensuse.org
+
+- Set minimal required memory for building: 2500 Mb
+
+-------------------------------------------------------------------
+Sat Jun  4 17:19:47 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.11.0
+  * support two editors next to each other
+  * new tabular wizard
+  * support multi-line commands
+  * add scrollbar marks for search and bookmarks
+  * add command option --no-session
+  * bugfixes and minor changes, see included CHANGELOG.txt for details
+
+-------------------------------------------------------------------
+Tue Feb  9 14:19:04 UTC 2016 - mail@bernhard-voelker.de
+
+- Update to version 2.10.8:
+  * bugfix release, see included CHANGELOG.txt for details
+
+-------------------------------------------------------------------
+Wed Jan 13 17:01:54 UTC 2016 - mail@bernhard-voelker.de
+
+- Update to version 2.10.6
+  * bugfix release, see included CHANGELOG.txt for details
+
+-------------------------------------------------------------------
+Mon Oct 26 21:59:42 UTC 2015 - lorddarthfener@gmail.com
+
+- Update to version 2.10.4
+  * bugfix release, see included CHANGELOG.txt for details
+
+-------------------------------------------------------------------
+Sun Sep 20 00:11:48 UTC 2015 - lorddarthfener@gmail.com
+
+- Update to version 2.10.2
+  * new and improved LaTeX parser
+  * improved search results window
+  * open password protected pdfs
+  * improved UI scaling
+  * temporary highlight target text of go to definition
+  * bugfixes
+
+-------------------------------------------------------------------
+Thu Apr 30 18:39:07 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.9.4
+  * bugfix release, see included CHANGELOG.txt for details
+- Build with Qt5 for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Sat Mar 14 17:37:04 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.9.0
+  * link overlays for urls
+  * close editor tab by pressing middle mouse button
+  * support optional filename argument in txs:///view-pdf-internal
+  * add "expand/collapse all documents" to context menu of structure
+  * add tabulary support
+  * windowed pdf viewer now supports --no-focus argument
+  * improved detection of label name for "Insert \ref to Next Label"
+  * improved context detection for preview
+  * improved search for texdoc location
+  * improved log parsing including support for LaTeX3 warnings and errors
+  * resize with soft line warp: keep vertical cursor position constant
+  * support .tikz files (treated like .tex files)
+  * bugfixes
+
+-------------------------------------------------------------------
+Thu Feb 26 10:58:38 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.8, mostly bugfixes, see CHANGELOG.txt
+- Drop texstudio-correct-doc-location.patch
+
+-------------------------------------------------------------------
+Fri Jun 20 12:48:53 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.8.0
+  * completion and syntax check on keyval options, e.g.
+    \includegraphics (graphicx!)
+  * search and replace over several documents improved
+  * improved parser for log files (better detection of filenames)
+  * todo-style commands (e.g. \todo{}) are added to the list of todos
+  * the keyboard modifier key for the context menu (spellcheck
+    suppression) is configurable via texstudio.ini
+    "Editor/ContextMenuKeyboardModifiers"
+  * improved auto-hide toolbars feature in embedded viewer
+  * users can overwrite the default language definitions and add own ones
+  * makeglossaries support
+  * allow quoted filenames in include-like commands to support
+    filenames and directories containing spaces
+  * updated LaTeX reference manual
+  * several bugfixes
+
+-------------------------------------------------------------------
+Fri Apr  4 05:49:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.7.0
+  * added Edit -> Text Operations (To Lowercase / To Uppercase / To Titlecase)
+  * added list of recent sessions
+  * speedup of saving for large documents
+  * added recognition in filetree for import subimport importfrom
+    and subimportfrom (Thanks to Steven Vandekerckhove)
+  * added button to stop a running compilation
+  * the dictionary search path can now contain of multiple directories
+  * Dictionaries in the OpenOffice/LibreOffice Extension format
+    (*.oxt) can now be imported
+  * Updated the latex reference manual to to a recent version
+  * new option for maximum image tooltip width
+  * new option "Reference commands in context menu"
+  * new options for additional search paths in editor logic
+  * new option for automatic encoding detection: make latex and
+    character based detection selectable separately
+  * new options for pdf highlight color and duration
+  * find dialog: search in all loaded documents i.e. also in hidden
+  * improved synchonization PDF -> source
+  * support "% !BIB = biber" syntax for compatibility with TeXShop
+    and TeXWorks
+  * added several new cwl files
+  * several bugfixes
+- Set correct documentation location
+  * texstudio-correct-doc-location.patch
+
+-------------------------------------------------------------------
+Wed Jun  12 14:01:31 UTC 2013 - jsundermeyer@sf.net
+
+- release (2.6.0)
+
+-------------------------------------------------------------------
+Fri Mar  29 14:01:31 UTC 2013 - jsundermeyer@sf.net
+
+- fix potential crash (2.5.2)
+
+-------------------------------------------------------------------
+Wed Dec  5 14:01:31 UTC 2012 - jsundermeyer@sf.net
+
+- bug fixes (2.5.2)
+
+-------------------------------------------------------------------
+Sat Dec  1 14:01:31 UTC 2012 - mailaender@opensuse.org
+
+- spec file cleanup, fixed some RPMlint warnings
+
+-------------------------------------------------------------------
+Wed Nov 21 11:52:28 UTC 2012 - benito@benibela.de
+
+- update to version 2.5.1
+
+-------------------------------------------------------------------
+Fri Oct 28 11:52:28 UTC 2012 - benito@benibela.de
+
+- update to version 2.5
+
+-------------------------------------------------------------------
+Fri Aug 31 11:52:28 UTC 2012 - benito@benibela.de
+
+- update to version 2.4
+
+-------------------------------------------------------------------
+Wed Feb 06 11:52:28 UTC 2012 - benito@benibela.de
+
+- update to version 2.3
+
+-------------------------------------------------------------------
+Wed Jul 20 21:52:28 UTC 2011 - benito@benibela.de
+
+- initial release of version 2.2

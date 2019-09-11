@@ -1,0 +1,33 @@
+From 52762a217fdc702e3f8ed869d1d8ccf30babed05 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20=27sil2100=27=20Zemczak?=
+ <lukasz.zemczak@ubuntu.com>
+Date: Mon, 17 Jul 2017 12:36:01 +0200
+Subject: [PATCH] _ped's *_flag_get_name methods now throw a PartedException
+ instead of ValueError on unsupported flags.
+
+---
+ tests/test__ped_ped.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test__ped_ped.py b/tests/test__ped_ped.py
+index 79046ab..e7ce116 100755
+--- a/tests/test__ped_ped.py
++++ b/tests/test__ped_ped.py
+@@ -48,7 +48,7 @@ def runTest(self):
+             self.assertNotEqual(_ped.partition_flag_get_name(attr), "", "Could not get name for flag _ped.%s" % f)
+ 
+         self.assertRaises(ValueError, _ped.partition_flag_get_name, -1)
+-        self.assertRaises(ValueError, _ped.partition_flag_get_name, 1000)
++        self.assertRaises(_ped.PartedException, _ped.partition_flag_get_name, 1000)
+ 
+ class PartitionFlagGetByNameTestCase(unittest.TestCase):
+     def runTest(self):
+@@ -82,7 +82,7 @@ def runTest(self):
+             self.assertNotEqual(_ped.disk_flag_get_name(f), "", "Could not get name for flag %s" % f)
+ 
+         self.assertRaises(ValueError, _ped.disk_flag_get_name, -1)
+-        self.assertRaises(ValueError, _ped.disk_flag_get_name, 1000)
++        self.assertRaises(_ped.PartedException, _ped.disk_flag_get_name, 1000)
+ 
+ class DiskFlagGetByNameTestCase(unittest.TestCase):
+     def runTest(self):

@@ -1,0 +1,39 @@
+Index: h5py-2.9.0/h5py/tests/common.py
+===================================================================
+--- h5py-2.9.0.orig/h5py/tests/common.py
++++ h5py-2.9.0/h5py/tests/common.py
+@@ -20,13 +20,7 @@ from six import unichr
+ import numpy as np
+ import h5py
+ 
+-if sys.version_info[0] == 2:
+-    try:
+-        import unittest2 as ut
+-    except ImportError:
+-        raise ImportError( "unittest2 is required to run tests with Python 2")
+-else:
+-    import unittest as ut
++import unittest as ut
+ 
+ 
+ # Check if non-ascii filenames are supported
+Index: h5py-2.9.0/h5py/tests/old/test_h5t.py
+===================================================================
+--- h5py-2.9.0.orig/h5py/tests/old/test_h5t.py
++++ h5py-2.9.0/h5py/tests/old/test_h5t.py
+@@ -10,6 +10,7 @@
+ from __future__ import absolute_import
+ 
+ import sys
++import unittest
+ 
+ import numpy as np
+ from six import PY2, text_type
+@@ -211,6 +212,7 @@ class TestTypeFloatID(TestCase):
+ 
+ 
+ class TestDeprecation(TestCase):
++    @unittest.skipIf(PY2, "Py2 unittest doesn't support assertWarnsRegex")
+     def test_deprecation_available_ftypes(self):
+         warning_message = ("Do not use available_ftypes, this is not part of "
+             "the public API of h5py. See "

@@ -1,0 +1,815 @@
+-------------------------------------------------------------------
+Tue Jun  4 05:54:22 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1.1:
+  *  swaybar now includes touch support - tapping to activate
+     hotspots and dragging across to cycle through workspaces
+  *  You can now manually inhibit idle notifications (DPMS) when a
+     certain criteria is active via inhibit_idle
+  *  Keybindings can now be unconfigured at runtime via
+     unbind{sym,code,switch}
+  *  workspace {prev,next}_on_output --create will create the
+     next workspace instead of wrapping to the start
+  *  Output subpixel layouts can now be explicitly configured
+  *  i3bar's short_text properties in the JSON protocol are
+     now supported
+  *  swaybar now supports an "overlay" mode, which shows the bar
+     on top of other windows and doesn't process input events
+  *  Switch devices (like lid switches) are now supported and
+     can be bound to actions via bindswitch
+  *  swaymsg now supports a -p/--pretty option for explicitly
+     enabling pretty-printing
+  * More details: https://github.com/swaywm/sway/releases/tag/1.1
+- Remove sway-1.0-flow.patch: upstreamed
+  See https://github.com/swaywm/sway/issues/3862
+- Remove sway-1.0-scdocpath.patch: scdoc pkconfig files is fixed
+  See bsc#1128844
+- Update sway-1.0-include.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 08:19:39 UTC 2019 - mvetter@suse.com
+
+- Update to 1.0:
+  * We have completely overhauled the codebase. Some behaviors were changed
+    to match i3 behavior, in breaking ways. There are likely many bugs we
+    don't know about. Your millage may vary.
+  * swaygrab has been removed. For screenshots, try grim, and for video
+    capture try wlstream[2]
+  * This release depends on wlroots 0.5 and drops the dependency on wlc.
+  * This release depends on scdoc for generating man pages, and drops
+    the dependency on asciidoc.
+  * Experimental Nvidia support has been deprecated since its inception,
+    and has now been removed entirely. Please use nouveau and consider future
+    purchases from GPU vendors that support open source. Other proprietary
+    drivers are also unsupported.
+  * swaylock is now distributed separately
+  * swayidle, a new idle management daemon, is available separately
+  * 100% i3 compatible*
+  * 100% i3 IPC compatible*
+  * 100% i3-gaps compatible
+  * 100% i3bar compatible
+  * swayidle, a daemon for managing DPMS and idle activity (e.g. automatic
+    lock after a timeout), has been added - man swayidle to get started
+  * swaynag, an i3-nagbar replacement, has been added, with additional
+    features not supported by i3-nagbar - man swaynag to get started
+  * bindsym --locked now adds keybindings which work when the screen is
+    locked
+  * Command blocks are now generic and work with any command
+  * Window opacity can now be adjusted with the opacity command
+  * border csd now enables client-side decorations explicitly
+  * Atomic layout updates ensure that, when resizing windows and adjusting
+    your layout, you never see an invalid frame with partially drawn clients
+  * Urgency hints from Xwayland are now supported
+  * Output damage tracking significantly improves CPU performance and power
+    usage
+  * Hardware cursors are now supported, improving performance
+  * The Wayland, x11, and headless backends are now supported for end-user
+    use, enabling nested and headless sway sessions
+  * On-screen keyboards like virtboard[6] are now supported
+  * Moving tiled windows with the mouse now behaves like the proposed i3 
+    feature
+  * Pointer constraints allow video games and other applications to grab
+    your pointer
+  * Xwayland is now started only when the first X11 client is started
+- Add sway-1.0-scdocpath.patch: workaround for bsc#1128844 
+- Add sway-1.0-include.patch: fix includes path
+- Add sway-1.0-flow.patch: fix https://github.com/swaywm/sway/issues/3862
+
+-------------------------------------------------------------------
+Mon Feb 18 10:31:48 UTC 2019 - mvetter@suse.com
+
+- Update to 1.0 RC 2
+- Remove sway-1.0-version.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Feb 04 10:29:17 UTC 2019 - mvetter@suse.com
+
+- Update to 1.0 RC 1
+- Add sway-1.0-version.patch: We dont have git.
+  See https://github.com/swaywm/sway/pull/3578
+
+-------------------------------------------------------------------
+Wed May 16 10:44:26 UTC 2018 - rzl@l2f.inesc-id.pt
+
+- Update to 0.15.2
+  - Fix non-compliant KDE tray icons
+  - Fix tray items setting and updating icons
+  - Fix various tray segfaults and memory leaks
+  - Fix menu placement
+  - Popups no longer interfere with swaylock
+  - Fixed an invalid free in workspace logic
+  - Send forward/backward mouse buttons to i3bar event listeners
+  - Accomodate for empty i3bar blocks
+  - Gracefully handle status line errors in swaybar
+  - Fix memory leaks and sadness throughout
+  - Correctly handle i3bar min_width specification
+  - Minor scratchpad fixes
+  - Man page improvements
+
+-------------------------------------------------------------------
+Sat Dec 30 18:26:55 UTC 2017 - adam@mizerski.pl
+
+- cleanup spec file
+  - update urls
+  - fix macro usage
+  - add some vesion numbers to requirements
+  - add ImageMagick and ffmpeg dependency required by swaygrab
+
+-------------------------------------------------------------------
+Thu Dec 28 05:09:52 UTC 2017 - avindra@opensuse.org
+
+- bump to 0.15.1
+  - Update to json-c 0.13
+  - Documentation corrections
+  - Portability fixes
+  - Output scale now preserved upon reloads/hotplugs
+  - Closing fullscreen windows in nested containers no longer
+    crashes
+  - swaygrab more gracefully handles errors
+  - Fixes to some minor tray issues
+  - Fix security grants for swaylock -f
+  - Clear password buffer after checking it in swaylock
+- partial cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  9 19:19:33 UTC 2017 - aavindraa@gmail.com
+
+- bump to 0.15.0
+   Changes
+    * Default wallpapers are now in /usr/share/backgrounds/sway
+    * README translated into 9 more languages
+
+   New Features
+    * Improved clipboard support via swaymsg commands
+    * Raspberry Pi support
+    * swaylock indicator size is now configurable
+    * swaybar now supports scroll events over IPC
+
+   Bugs Fixed
+    * IPC now uses nonblocking I/O
+    * Tray icon theme parsing support handles getline failure
+    * Correctly handle empty security policies
+    * Fix zsh completion for swaylock
+    * Use after free in bindsym fixed
+    * Pointer accuracy bugs fixed via wlc
+    * swaybar crash with invalid SNI names fixed
+    * Race condition in kill command fixed
+    * swaygrab no longer uses the shell to execute subprocesses
+    * An issue with variables set via set $xyz was fixed
+    * A number of bugs with the output command were fixed
+    * Fixed move to workspaces with spaces in their names
+    * Skip dotfiles when loading security configuration
+    * Several issues with the scratchpad were fixed
+    * swaygrab now handles permissions errors more gracefully
+    * swaybar click events had an extra comma
+    * FreeBSD compatability fixes
+    * Fix tray when dbus is not present
+
+-------------------------------------------------------------------
+Tue Jun 20 06:44:34 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.14 rc1 prerelease
+
+-------------------------------------------------------------------
+Tue May  9 08:40:14 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.13
+   Changes
+    * The new_window and new_float commands are deprecated in favor of
+      default_border and default_floating_border. A similar change is
+      expected from i3. (@zandrmartin - #1105)
+    * 444 is now an acceptable file mode for security configs (@jnsaff
+      - #1117)
+    * Any executable that is not owned by root will receive the
+      default security policy regardless of any additional configured
+      permissions (@JerziKaminsky)
+
+   New features
+    * i3-style marks are now supported (@4e554c4c - #1145 & #1155)
+    * You may now configure the color of swaylock UI elements via the
+      command line (@4e554c4c - #1078)
+    * Floating containers may now be moved with the move command
+      (@4e554c4c - #1092)
+    * swaymsg pretty-prints its output if stdout is a tty (@SirCmpwn -
+      #1146)
+    * [criteria] command has been implemented (@4e554c4c - #1149)
+    * nvidia proprietary driver support has been implemented in wlc
+      (@vially - Cloudef/wlc#245) and sway was updated as necessary
+      (@SirCmpwn - #1147)
+    * Security policies can now refer to symlinked executables
+      (@JerziKaminsky - #1173)
+    * Version string can now be specified at build time (@snoack -
+      #1194)
+
+   Bugs fixed
+    * Missing swaylock security settings were added (@SirCmpwn - 21ad45b)
+    * -Werror issues on the latest gcc have been corrected (@Fale - #1086)
+    * The codebase is more POSIXly correct and does not rely on
+      GNUisms (@SirCmpwn - 9aed9d9)
+    * Issues building against a local copy of wlc has been fixed
+      (@snoack - #1115)
+    * A problem with keyboard code in sway's Wayland clients was fixed
+      (@zandrmartin - #1121)
+    * Focus could be stolen from fullscreen windows under some
+      conditions (@zandrmartin - #1126)
+    * Spaces are now permitted in workspace names (@4e554c4c - #1101)
+    * Issues with workspace assignment have been corrected
+      (@zandrmartin - #1105)
+    * Man page typos fixed (@johnchen902 - #1113)
+    * Crashiness with move [next|prev] was fixed (@oranenj - #1130)
+    * Regular expressions are now handled with PCRE for better i3
+      compatibility (@ascent12 - #1151)
+    * Dangling file descriptors on IPC client termination was fixed
+      (@SirCmpwn, @ascent12 - #1153)
+    * libcap is now explicitly required in our CMakeLists.txt
+      (@JerziKaminsky - #1150)
+    * move [to] scratchpad did not support the "to" syntax (@wasamasa
+      - #1180)
+    * Windows leaving the scratchpad are now sized to match i3
+      behavior (@wasamasa - #1181)
+    * Specifying fewer than 5 colors with client.* now matches i3
+      behavior (@SirCmpwn - #1201)
+
+
+-------------------------------------------------------------------
+Wed May  3 07:10:35 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.13-rc1 prerelease
+
+-------------------------------------------------------------------
+Wed Apr 19 08:18:02 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.13-rc1 prerelease
+
+-------------------------------------------------------------------
+Tue Mar 14 10:08:58 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.12.1
+   Bugs Fixed
+    Workspace output assignment issues (@zandrmartin - #1105)
+    Typo in sway(5) (@johnchen902 - #1113)
+
+-------------------------------------------------------------------
+Thu Mar  9 10:46:24 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.12
+   Changes
+    /etc/sway/security has been moved to
+      /etc/sway/security.d/00-defaults and users are now encouraged to
+      add their own security configurations as additional files in
+      /etc/sway/security.d/. Maintainers of software that integrates
+      with sway and require special permissions are encouraged to ship
+      security configs in this directory as well (@SirCmpwn - #1080)
+    If not specified at build time, LD_LIBRARY_PATH will be unset,
+      rather than defaulting to /usr/lib (@Hummer12007 - #1050)
+    Default backgrounds have been losslessly re-compressed and should
+      reduce the package weight if enabled (@Jesin - #1032)
+    Previously undocumented features (swaygrab -f and
+      hide_edge_borders) are now covered by their respective manuals
+      (@Hummer12007, @ametisf - #1073, #1051)
+    Environment logging now occurs prior to compositor initialization,
+      which helps diagnose certain kinds of problems (@SirCmpwn -
+      41f7aaa)
+
+   New Features
+    New automatic layouts unique to sway have been implemented that
+      behave like similar features in WMs like Awesome. See sway(5) and
+      look for layout auto for details. (@willakat - #1024)
+    Sway now supports gamma adjustment, which you can take advantage
+      of with a patched redshift (@SirCmpwn - #1019)
+    IPC features can now be secured on a per-application basis - see
+      sway-security(7) (@SirCmpwn - #1080)
+    focused is now available in window criteria (@Hummer12007 - #1053)
+    output [left|right] now matches i3's wrapping behavior (@dkess -
+      #1048)
+    XWayland window instances are now shown in title bars if necessary
+      (@Hummer12007 - #1052)
+    hide_edge_borders smart is now implemented, following i3 4.13
+      (@ametisf - #1044)
+
+   Bugs Fixed
+    Issues compiling sway on gcc 7 have been resolved (@Fale - #1086)
+    Capabilities are more carefuly handled when transitioning from
+      euid 0 to a normal user, which fixes some problems on systems
+      without logind (@Hummer12007 - #1043)
+    xdg-shell v6 support has been fleshed out in both wlc and sway,
+      which should fix things like broken right click menus on GTK apps
+      (@Hummer12007 - #1070, #1055)
+    Floating windows were created with the incorrect geometry, which
+      has been corrected (@zandrmartin - #1075)
+    Image scaling specified at the swaylock command line was ignored,
+      and now works correctly (@zandrmartin - #1017)
+    Inconsistencies with workspace layouts in IPC messages between i3
+      and sway were corrected (@Hummer12007 - #1030)
+    Workspaces with spaces in their names are now supported more
+      consistently with i3 (@4e554c4c - #1011)
+
+-------------------------------------------------------------------
+Tue Feb 28 21:26:33 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.12-rc2 pre-release
+
+-------------------------------------------------------------------
+Sat Dec 31 13:17:32 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.11
+   Changes
+    Sway now depends on libcap on Linux
+    Moving between containers now wraps according to i3 behavior
+    Alpha blending is now done with CAIRO_OPERATOR_SOURCE
+    bar pango_markup defaults to false, following i3 change
+    -Denable-binding-event is no longer available - see sway-security(7)
+    New floating windows now spawn in the center of the screen
+
+   New Features
+    Clicking titlebars now focuses that window
+    Changing focus between floating containers is now supported
+    Numeric character references in bar are now supported
+    Pango markup in workspaces names is now supported
+    Input device configuration can now enable left_handed
+    Improvements to logging
+    New bar colors following new i3 features - see sway-bar(5)
+    New security-related features - see sway-security(7)
+
+   Bugs Fixed
+    Errors in swaybar's hidpi rendering were corrected
+    Bug fixed where IPC events were emitted before IPC initialization
+    Segfault during edge case on workspace switching was fixed
+    An IPC tree response compatability issue was corrected
+    Buggy font selection issues were fixed in swaylock
+    Fixes to scale factor in text scaling
+    Issue creating a sibling of a floating window fixed
+    Some commands were not matched during command matching
+    Indicator border no longer shown on floating windows
+    An issue with for_window [] move scratchpad was fixed
+    You can now move empty workspaces
+    Fixes with default workspace layouts
+    layout toggle split behavior fixed for tabbed/stacked layouts
+    When swaylock exited, it would not focus whatever you were using
+     before
+
+-------------------------------------------------------------------
+Wed Oct 26 10:09:45 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.10
+   New Features
+    sway now runs on FreeBSD! (thanks @yohanesu75!)
+    swaymsg now pretty prints the JSON response (thanks @acrisci!)
+    The application class is displayed in titlebars if the title is
+      missing (thanks @thejan2009!)
+    Disabling outputs at runtime might work (thanks @thejan2009!)
+    i3's indicator border color feature is now supported (thanks
+      @guiniol, @thejan2009!)
+    Input device names in input configurations now support * (thanks
+      @SirCmpwn!)
+    Initial support for HiDPI was added to swaybar, swaybg, and
+      swaylock (thanks @SirCmpwn, @thejan2009!)
+    Moving views across an output's edge is now supported (thanks
+      @mikkeloscar!)
+    swaygrab can now screenshot the focused container via -f (thanks
+      @zandrmartin!)
+
+   Bugs Fixed
+    A security issue was fixed - you are affected if you have users on
+      your system that use sway but do not have root access - details in
+      #884 (thanks @Fale!)
+    A number of changes were made to IPC for better i3 compatability
+      (thanks @acrisci, @zandrmartin!)
+    An uninitialized variable fixed the default config for wrap_scroll
+      (thanks @minus7!)
+    Color parsing previously could cause values to clamp and lose
+      information (thanks @progandy!)
+    workspace back_and_forth and workspace_auto_back_and_forth had
+      issues getting along (thanks @thejan2009!)
+    Weirdness in edge cases with moving windows was fixed (thanks
+      @Hummer12007!)
+    Edge case in workspace handling during view creation was fixed
+      (thanks @thejan2009!)
+    A problem with move container to workspace was fixed (thanks
+      @thejan2009!)
+    Null pointer dereference during config load edge case was fixed
+      (thanks @kb100!)
+    The behavior of hide_edge_borders was fixed (thanks
+      @lukaslihotzki!)
+    Fullscreen windows previously had input priority over swaylock
+      (thanks @SirCmpwn!)
+    The behavior of pango markup on swaybar was fixed (thanks
+      @zandrmartin!)
+    swaybar previously couldn't switch between workspaces with spaces
+      in their names (thanks @thejan2009!)
+    swaybars could be loaded before all outputs were loaded, which
+      could cause a segfault (thanks @RyanDwyer!)
+    An IPC-related segfault during initialization was fixed (thanks
+      @gutsoo!)
+    Possible use-after-free in focus handling was fixed (thanks
+      @zandrmartin!)
+
+   Changes
+    Some improvements were made to the default config (thanks
+      @mayhewj, @goetzc, @zandrmartin!)
+    Some internal refactoring around focus (thanks @acrisci!)
+    Some internal refactoring around commands (thanks @zandrmartin!)
+    Improvements were made to man pages (thanks @minus7, @mmlb!)
+    pango_markup in your bar config now defaults to false, following
+      the same change in i3 (thanks @Hummer12007!)
+
+-------------------------------------------------------------------
+Wed Oct  5 08:11:28 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.10-rc2
+
+-------------------------------------------------------------------
+Tue Sep 27 20:50:05 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.10-rc1
+   check GIT commit messages for complete changelog   
+
+-------------------------------------------------------------------
+Sun Jul 31 15:51:31 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.9
+   New Features
+    Experimental HiDPI support. Add scale 2 to your output line, see
+      sway(5) for details and #797 for status (thanks @SirCmpwn and the
+      wlc team!)
+    Mouse support for swaybar (thanks @deklov!)
+    New bar command wrap_scroll [yes|no] allows you to wrap when
+      scrolling through workspaces with swaybar (thanks @SirCmpwn!)
+    Windows that have a parent (i.e. most dialog windows) are now
+      floated by default (thanks @SirCmpwn!)
+    The IPC get_tree message is implemented (thanks @zandrmartin!)
+    IPC window events have been implemented (thanks @Hummer12007!)
+    Swaylock has a new -f option which will cause it to fork into the
+      background (which matches i3lock's behavior) (thanks
+      @SethBarberee!)
+    The focus child i3 command has been implemented (thanks @acrisci!)
+    Spawned processes now keep track of what workspace was active when
+      they were started and will open subsequent windows there (thanks
+      @zandrmartin!)
+    Backgrounds can now be a solid color (thanks @zandrmartin!)
+
+   Bugs Fixed
+    A crash could occur in tabbed/stacking parent checks (thanks
+      @Hummer12007!)
+    Strange split{h|v} regressions were corrected (thanks
+      @Hummer12007!)
+    A corner case with tacked/stabbed containers as the default layout
+      was fixed (thanks @thejan2009!)
+    An edge case that could cause crashes when destroying workspaces
+      was fixed (thanks @Hummer12007!)
+    An error with the move position command was fixed (thanks
+      @deklov!)
+    Event bitmasks in the IPC server were incorrect and fixed (thanks
+      @Hummer12007!)
+    A regression and a bug in hide_edge_borders was fixed (thanks
+      @zandrmartin and @thejan2009!)
+    A bug with smart_gaps and outer gaps 0 was fixed (thanks
+      @thejan2009!)
+    floating_scroll events are no longer passed through to windows
+      (thanks @thejan2009!)
+    IPC command results are encapsulated in a JSON array to match i3
+      behavior (thanks @acrisci!)
+    focus parent no longer attempts to focus anything higher than a
+      workspace (thanks @acrisci!)
+    Window titles are now rendered appropriately when a parent of them
+      is focused (thanks @acrisci!)
+    Windows spawned on empty workspaces with the tabbed/stacked
+      layouts could spawn with 0x0 geometry (thanks @thejan2009!)
+    Killing a container now kills all of its children (thanks
+      @thejan2009!)
+    Edge cases with various border styles in tabbed/stacked were fixed
+      (thanks @thejan2009!)
+    Edge cases with tabbed/stacked layouts on layout switch were fixed
+      (thanks @thejan2009!)
+    Focus handling was improved to better handle cases when containers
+      were being focused (thanks @acrisci!)
+    Floating containers cache their size when being fullscreened and
+      return to that size when unfullscreened (thanks @zandrmartin!)
+
+   Changes
+    The mouse cursor used over the wallpaper and bar can be customized
+      with the SWAY_CURSOR_THEME and SWAY_CURSOR_SIZE environment
+      variables (thanks @SirCmpwn!)
+    SIGSERV and SIGABORT are no longer handled. We just let the core
+      dump happen, which we'll be asking you to upload for us when
+      reporting crashes (thanks @SirCmpwn!)
+    Title bars of containers are now constructed based on their
+      children's app IDs instead of their titles, which matches i3
+      behavior more or less (thanks @thejan2009!)
+    Log messages are now timestamped (thanks @acrisci!)
+    Some performance improvements in the form of more timely window
+      arrangement calls were made (thanks @zandrmartin!)
+    Various improvements to the documentation (thanks lots of people)
+
+-------------------------------------------------------------------
+Mon Jun 20 20:03:32 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.8
+   New Features
+    You can clear the password buffer in swaylock with ESC or C-u
+    swaylock now supports the --no-unlock-indicator option
+    Floating views now have sane (and configurable) minimum and
+      maximum sizes
+    Escaping line breaks in your configuration file is now supported
+    Using exec to launch applications now opens their windows on the
+      workspace they were exec-d on (thanks @zandrmartin!) - note: does
+      not presently work with x clients
+
+   Bugs Fixed
+    When hotplugging an output, workspace assignment rules are
+      re-enforced
+    Spaces in quoted output command arguments now behave properly
+    Changing focus into an output with a fullscreen view now behaves
+      correctly
+    A number of IPC-related memory leaks were closed
+    A segfault was fixed involving an edge case of include with *
+    Your wallpaper is now updated on config file reload
+    hide_edge_borders with smart_gaps enabled now behaves correctly
+
+   Changes
+    Creating a variable via set without the leading $ is automatically
+      corrected to include it
+    When hotplugging outputs, workspaces are now sorted correctly and
+      maintain their sort order on replug
+    The documentation was corrected to remove the (currently
+      unimplemented) left/right bar placement options
+    Missing layout modes (stacking and tabbed) were documented in
+      sway(5)
+    The assign command was documented in sway(5)
+    Several other small improvements to the man pages were made
+
+- drop 0001-Match-definition-with-declaration.patch
+
+-------------------------------------------------------------------
+Mon May 23 12:57:09 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.7
+   New Features
+    Bind actions to $mod+[scroll whell] via floating_scroll (thanks @Hummer12007!)
+    Set the acceleration profile for input devices via accel_profile (thanks @tajjada!)
+
+   Bugs Fixed
+    Window titles are updated when the application requests it (thanks @mikkeloscar!)
+    Screwing with the border settings on tabbed and stacking layouts caused breakage (thanks @tajjada!)
+    Several memory leaks, double frees, etc were fixed (thanks @neosilky!)
+    Several double closes, buffer overflows, etc were fixed (thanks @1ace!)
+    Many other small bugs were fixed (thanks @mikkeloscar, @xerpi, @1ace!)
+    Some typos were found and fixed in the man pages (thanks @cyberhuman!)
+
+   Changes
+    The hardcoded $mod+scroll actions introduced in sway 0.4 has been removed.
+    You can now use a relative path to your wallpaper (thanks @Hummer12007!)
+    ZSH completions are no longer included in the default build
+    Cairo and Pango are now required dependencies (previously they
+     were only required if you wanted swaybg or swaybar support)
+
+- match definition with declaration using patch
+   0001-Match-definition-with-declaration.patch
+
+-------------------------------------------------------------------
+Sun May  1 18:22:53 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to release 0.6
+   New Features
+     Tabbed & stacking layouts
+     Pango markup on swaybar
+
+   Bugs Fixed
+     bindcode was incorrectly implemented and was corrected
+     Window borders no longer render under transparent fullscreen windows
+     swaylock's PAM configuration has been fixed on Debian derivatives
+     A double free issue was discovered and fixed
+
+   Changes
+     Some improvements were made to the build process
+     Several clang warnings were squelched
+     Small fixes were made to the default config
+- dropping patches
+    CMake-fixes.patch
+    mark_static.patch
+    respect_flags.patch
+
+-------------------------------------------------------------------
+Thu Apr 28 18:48:25 UTC 2016 - sleep_walker@opensuse.org
+
+- with huge help of scarabeus_iv all the workarounds were removed and
+  fixes were already accepted by upstream - until next release we'll
+  live with:
+    CMake-fixes.patch
+    mark_static.patch
+    respect_flags.patch
+
+-------------------------------------------------------------------
+Thu Apr 28 11:48:25 UTC 2016 - sleep_walker@opensuse.org
+
+- Xwayland was split from xorg-x11-server into separate subpackage
+  xorg-x11-server-wayland - let's fix this requirement
+
+-------------------------------------------------------------------
+Thu Apr 21 21:35:24 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to release 0.5
+- do not mark zsh completion scripts as configuration
+- add LICENSE README.md CONTRIBUTING.md HACKING.md to the package
+
+-------------------------------------------------------------------
+Sat Apr 16 06:39:15 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (2016-04-11, 9412dc7)
+   tagged as version 0.4
+   for complete list of changes check GIT log
+
+-------------------------------------------------------------------
+Sat Feb 27 10:37:44 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (2016-02-27, e19e32c)
+   fixed some crashes
+   Removed p as a valid CLI option
+   IPC and view related improvements
+
+-------------------------------------------------------------------
+Thu Feb  4 16:11:57 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (2016-01-29, 6793648)
+   swaylock and swaybar improvements and fixes
+   zsh completion for swaylock
+
+-------------------------------------------------------------------
+Wed Jan 20 13:35:53 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (2016-01-19, a6b1998)
+   libinput related improvements
+   IPC related improvements
+   implemented bindsym --release
+- add zsh completion files
+- cheat also with path to libinput.h
+
+-------------------------------------------------------------------
+Wed Jan  6 20:51:43 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-12-06, 8f5de70)
+   layout related work
+   swaybar development
+   ...
+
+-------------------------------------------------------------------
+Fri Dec 18 00:17:18 UTC 2015 - sleep_walker@opensuse.org
+
+- remove %cmake macro
+   -DBUILD_SHARED_LIBS:BOOL=ON is causing linker problems
+
+-------------------------------------------------------------------
+Thu Dec 17 23:03:44 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-12-17, 89341c0)
+   (automatically triggered)
+- add pam-devel among dependencies
+
+-------------------------------------------------------------------
+Thu Dec 17 22:55:48 UTC 2015 - sleep_walker@opensuse.org
+
+- remove cmake-fix.patch and generate_coredump.patch
+- add wayland-util.h path into CPATH as well
+- add gdk-pixbuf among dependencies
+
+-------------------------------------------------------------------
+Thu Dec 17 09:42:59 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-12-16, 3a82936)
+   swaybg related stuff
+   swaybar related initial stuff
+   fix some crash
+
+-------------------------------------------------------------------
+Thu Nov 26 09:34:53 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-11-25, 206606b)
+   Call swaybg without invoking a shell
+   swaybg: implement scaling modes
+   swaybg: check for exact number of arguments
+   criteria: Code formatting.
+   config: print line number
+   config: remove trailing whitespace
+- workaround upstream problem with header configuration using CPATH
+
+-------------------------------------------------------------------
+Mon Nov 23 18:39:43 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-11-22, cb11364)
+   output related improvements
+   handling background
+   much more
+
+-------------------------------------------------------------------
+Tue Nov 17 15:03:47 UTC 2015 - sleep_walker@opensuse.org
+
+- drop generate_coredump.patch
+
+-------------------------------------------------------------------
+Tue Nov 17 14:22:32 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-11-16, 0120256)
+   Track pid of child process from exec
+   output: Support multiple adjacent outputs.
+   cmd_output: Replace existing config if called multiple times.
+   Update README
+   HACKING.md: Add code overview section.
+   We somewhat more wlc_point now
+   We wlc_point now
+   Check the client_setup() return value
+   ipc: Store socketname in SWAYSOCK. Fixes `--get-socketpath`.
+   New screenshot for README
+   Clean up some things better in wayland clients
+   Revert "Try ~/.i3/config earlier than /etc/sway/config"
+   Try ~/.i3/config earlier than /etc/sway/config
+   ipc: Put socket into proper user runtime dir.
+   Fix man page installs
+   Clean up CMake stuff
+   cmake: run git in the source directory
+   common: create a static library
+   cmake: clean up installation rules
+   cmake: clean up definition settings
+   cmake: manipulate CMAKE_MODULE_PATH as a list
+   cmake: set the output directory once
+   cmake: simplify manpage generation
+   cmake: use string(TIMESTAMP)
+   cmake: bump requirement to 3.1.0
+   We don't need to implement strdup
+   Further refinement of wayland client support
+   Start fleshing out wayland client implementation
+   Start working on IPC for get_pixels
+   Add new swaybg dependencies
+   Add swaybg executable
+   Add new dependencies for wayland clients
+   Fix gaps for views being incorrect
+   Fix some IPC issues
+   Add file and line number to log in Debug build
+   Add some documentation comments
+   Include header declaring ipc_event_workpace(2)
+   Learn "gaps edge_gaps <on|off|toggle>".
+   commands: gaps: Re-arrange windows after changing default gaps.
+   commands: gaps: Always apply default gaps config.
+   commands: gaps: Accept zero value.
+   sway.5.txt: Clarify gaps documentation.
+   commands: gaps: Refactor, expected_syntax.
+   commands: Learn 'move workspace to output <direction|name>'.
+   commands: Learn 'move <container|window> to output <direction|name>'.
+
+-------------------------------------------------------------------
+Mon Nov  2 19:55:01 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-11-02, 0833fa0)
+  - fix ipc_event_workspace() related crashes
+
+-------------------------------------------------------------------
+Sun Nov  1 19:27:18 UTC 2015 - sleep_walker@opensuse.org
+
+- generate_coredump.patch: generate coredump instead of graceful
+  termination
+
+-------------------------------------------------------------------
+Fri Oct 30 11:26:12 UTC 2015 - sleep_walker@opensuse.org
+
+- Add -DCMAKE_BUILD_TYPE=Debug to obtain more information about
+  problems
+
+-------------------------------------------------------------------
+Thu Oct 29 01:33:49 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (2015-10-28, 239f4bd)
+
+-------------------------------------------------------------------
+Tue Oct 27 16:05:21 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot (eb847a1, 2015-10-25)
+  - fixes & features
+
+-------------------------------------------------------------------
+Thu Oct  8 15:24:47 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot
+  - fixes child process handling correctly (this time for sure :)
+
+-------------------------------------------------------------------
+Thu Oct  8 08:29:16 UTC 2015 - sleep_walker@opensuse.org
+
+- new git snapshot
+  - fixes ending zombie processes correctly
+
+-------------------------------------------------------------------
+Sun Oct  4 10:51:53 UTC 2015 - sleep_walker@opensuse.org
+
+- xkbcommon-fix.patch and install-path.patch were accepted by upstream
+  and so they can be dropped from here
+
+-------------------------------------------------------------------
+Wed Sep 30 11:59:50 UTC 2015 - sleep_walker@opensuse.org
+
+- xkbcommon-fix.patch (use xkbcommon header include path)
+- install-path.patch (don't assume we're building from the same path)
+
+-------------------------------------------------------------------
+Fri Aug 21 19:17:00 UTC 2015 - sleep_walker@suse.cz
+
+- let there be sway!
+

@@ -1,0 +1,20 @@
+Support gettext >= 0.20, which now forbids AM_GNU_GETTEXT without
+intlsymbol argument.
+
+[no-libtool] was the default choice (use of intl/ in-package
+directory).
+
+Now only [external] is supported (use libintl library).
+--
+diff -up e2fsprogs-1.45.2/configure.ac.orig e2fsprogs-1.45.2/configure.ac
+--- e2fsprogs-1.45.2/configure.ac.orig
++++ e2fsprogs-1.45.2/configure.ac
+@@ -873,7 +873,7 @@ AC_SUBST(GETTEXT_PACKAGE)
+ AC_SUBST(PACKAGE)
+ AC_SUBST(VERSION)
+ 
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ dnl
+ dnl End of configuration options
+ dnl

@@ -1,0 +1,58 @@
+.\" Copyright (C) 2009  Benjamin Drung <bdrung@ubuntu.com>
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer
+.\"    in this position and unchanged.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3. The name of the author may not be used to endorse or promote products
+.\"    derived from this software without specific prior written permission
+.\" 
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+.\" IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+.\" OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+.\" IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+.\" INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+.\" NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+.\" DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+.\" THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+.\" (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+.\" THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.TH XMMS2-RIPPER 1 "2009-07-05"
+.SH NAME
+xmms2-ripper \- dumps the audio currently played to stdout
+.SH SYNOPSIS
+.B xmms2-ripper
+.SH DESCRIPTION
+This manual page documents briefly the
+.B xmms2-ripper
+command. This manual page was written for the Debian distribution
+because the original program does not have a manual page.
+.PP
+.B XMMS2 
+is a redesign of the XMMS (http://www.xmms.org) music player. It features a
+client-server model, allowing multiple (even simultaneous!) user interfaces,
+both textual and graphical. All common audio formats are supported using
+plug-ins. On top of this, there is a flexible media library to organize your
+music.
+.PP
+.B xmms2-ripper
+is visualization client for
+.B XMMS2.
+Instead of visualizing the audio data, it encodes the data to Ogg/Vorbis and
+writes them to the standard output. The output should be redirected to a file
+or to another program.
+.SH OPTIONS
+This program does not offer any options.
+.SH SEE ALSO
+.BR xmms2 (1),
+http://xmms2.xmms.org.
+.SH AUTHORS
+xmms2-ripper was written by the XMMS2 Team.
+.PP
+This manual page was written by Benjamin Drung <bdrung@ubuntu.com>, for the
+Debian project (and may be used by others).

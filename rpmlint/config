@@ -1,0 +1,1378 @@
+# -*- python -*-
+# vim: syntax=python sw=4 ts=4 sts=4 et
+# Configuration for the rpmlint utility.
+# Loaded before ~/.rpmlintrc
+# $Id: config,v 1.39 2003/12/22 11:20:55 flepied Exp $
+
+# This line is mandatory to access the configuration functions
+from Config import *
+from Filter import addDetails
+
+# Additionale path to look for checks
+
+#addCheckDir("~/mandrake/rpmlint")
+
+# Configure the checks if you don't want the default ones
+
+allChecks()
+
+addCheck("CheckBuildRoot")
+addCheck("CheckExecDocs")
+addCheck("CheckPkgConfig")
+addCheck("CheckCommonFiles")
+addCheck("DuplicatesCheck")
+addCheck("LibraryPolicyCheck")
+addCheck("CheckIconSizes")
+#addCheck("CheckStaticLibraries")
+addCheck("BrandingPolicyCheck")
+addCheck("CheckSUIDPermissions")
+# polkit-default-privs would need to be installed always
+addCheck("CheckPolkitPrivs")
+addCheck("CheckDBUSServices")
+addCheck("CheckDBusPolicy")
+addCheck("CheckFilelist")
+addCheck("KMPPolicyCheck")
+addCheck("CheckUpdateAlternatives")
+addCheck("BashismsCheck")
+addCheck("CheckLogrotate")
+addCheck("CheckPAMModules")
+addCheck("CheckRCLinks")
+addCheck("CheckSystemdInstall")
+addCheck("TmpFilesCheck")
+addCheck("CheckSysVinitOnSystemd")
+
+# stuff autobuild takes care about
+addFilter('.*invalid-version.*')
+addFilter('.*invalid-packager.*')
+addFilter('.*not-standard-release-extension.*')
+#addFilter('.*non-standard-group.*')
+addFilter('.*invalid-buildhost.*')
+addFilter('.*executable-in-library-package.*')
+addFilter('.*non-versioned-file-in-library-package.*')
+addFilter('.*incoherent-version-in-name.*')
+addFilter('.*invalid-vendor.*')
+addFilter('.*invalid-distribution.*')
+addFilter('.*hardcoded-path-in-buildroot-tag.*')
+addFilter('.*no-buildroot-tag.*')
+addFilter('.*cross-directory-hard-link.*')
+
+# Configuration options used by the checks
+
+#setOption("Vendor", "MySelf")
+#setOption("Distribution", "MyDistrib")
+setOption("UseBzip2", 0)
+setOption("UseUTF8", 1)
+#setOption("ReleaseExtension", None)
+#setOption("ValidGroups", ("Group1", "Group2"))
+#setOption("KernelModuleRPMsOK", 0)
+setOption("CompressExtension", None)
+setOption('UseVarLockSubsys', False)
+setOption('UseVersionInChangelog', False)
+setOption("BadnessThreshold", 1000)
+
+# keep in sync with https://en.opensuse.org/openSUSE:Package_group_guidelines
+setOption('ValidGroups', [
+    'Amusements/Games/3D/Other',
+    'Amusements/Games/3D/Race',
+    'Amusements/Games/3D/Shoot',
+    'Amusements/Games/3D/Simulation',
+    'Amusements/Games/Action/Arcade',
+    'Amusements/Games/Action/Breakout',
+    'Amusements/Games/Action/Other',
+    'Amusements/Games/Action/Race',
+    'Amusements/Games/Action/Shoot',
+    'Amusements/Games/Board/Card',
+    'Amusements/Games/Board/Chess',
+    'Amusements/Games/Board/Other',
+    'Amusements/Games/Board/Pool',
+    'Amusements/Games/Board/Puzzle',
+    'Amusements/Games/Logic',
+    'Amusements/Games/Other',
+    'Amusements/Games/RPG',
+    'Amusements/Games/Strategy/Other',
+    'Amusements/Games/Strategy/Real Time',
+    'Amusements/Games/Strategy/Turn Based',
+    'Amusements/Teaching/Language',
+    'Amusements/Teaching/Mathematics',
+    'Amusements/Teaching/Other',
+    'Amusements/Toys/Background',
+    'Amusements/Toys/Clocks',
+    'Amusements/Toys/Graphics',
+    'Amusements/Toys/Other',
+    'Amusements/Toys/Screensavers',
+    'Development/Languages/C and C++',
+    'Development/Languages/Fortran',
+    'Development/Languages/Haskell',
+    'Development/Languages/Java',
+    'Development/Languages/Lua',
+    'Development/Languages/NodeJS',
+    'Development/Languages/OCaml',
+    'Development/Languages/Other',
+    'Development/Languages/Perl',
+    'Development/Languages/Python',
+    'Development/Languages/Ruby',
+    'Development/Languages/Rust',
+    'Development/Languages/Scheme',
+    'Development/Languages/Tcl',
+    'Development/Libraries/C and C++',
+    'Development/Libraries/Cross',
+    'Development/Libraries/GNOME',
+    'Development/Libraries/Haskell',
+    'Development/Libraries/Java',
+    'Development/Libraries/KDE',
+    'Development/Libraries/Other',
+    'Development/Libraries/Parallel',
+    'Development/Libraries/Perl',
+    'Development/Libraries/Python',
+    'Development/Libraries/Rust',
+    'Development/Libraries/Tcl',
+    'Development/Libraries/X11',
+    'Development/Libraries/YaST',
+    'Development/Sources',
+    'Development/Tools/Building',
+    'Development/Tools/Debuggers',
+    'Development/Tools/Doc Generators',
+    'Development/Tools/GUI Builders',
+    'Development/Tools/IDE',
+    'Development/Tools/Navigators',
+    'Development/Tools/Other',
+    'Development/Tools/Version Control',
+    'Documentation/Howto',
+    'Documentation/HTML',
+    'Documentation/Man',
+    'Documentation/NodeJS',
+    'Documentation/Other',
+    'Documentation/SUSE',
+    'Hardware/Camera',
+    'Hardware/Fax',
+    'Hardware/ISDN',
+    'Hardware/Joystick',
+    'Hardware/Mobile',
+    'Hardware/Modem',
+    'Hardware/Other',
+    'Hardware/Palm',
+    'Hardware/Printing',
+    'Hardware/Psion',
+    'Hardware/Radio',
+    'Hardware/Scanner',
+    'Hardware/TV',
+    'Hardware/UPS',
+    'Hardware/Wifi',
+    'Metapackages',
+    'Productivity/Archiving/Backup',
+    'Productivity/Archiving/Compression',
+    'Productivity/Clustering/Computing',
+    'Productivity/Clustering/HA',
+    'Productivity/Databases/Clients',
+    'Productivity/Databases/Servers',
+    'Productivity/Databases/Tools',
+    'Productivity/File utilities',
+    'Productivity/Graphics/3D Editors',
+    'Productivity/Graphics/Bitmap Editors',
+    'Productivity/Graphics/CAD',
+    'Productivity/Graphics/Convertors',
+    'Productivity/Graphics/Other',
+    'Productivity/Graphics/Vector Editors',
+    'Productivity/Graphics/Viewers',
+    'Productivity/Graphics/Visualization/Graph',
+    'Productivity/Graphics/Visualization/Other',
+    'Productivity/Graphics/Visualization/Raytracers',
+    'Productivity/Hamradio/Fax',
+    'Productivity/Hamradio/Logging',
+    'Productivity/Hamradio/Morse',
+    'Productivity/Hamradio/Other',
+    'Productivity/Hamradio/Packet',
+    'Productivity/Hamradio/Psk31',
+    'Productivity/Hamradio/Satellite',
+    'Productivity/Multimedia/CD/Grabbers',
+    'Productivity/Multimedia/CD/Players',
+    'Productivity/Multimedia/CD/Record',
+    'Productivity/Multimedia/Other',
+    'Productivity/Multimedia/Sound/Editors and Convertors',
+    'Productivity/Multimedia/Sound/Midi',
+    'Productivity/Multimedia/Sound/Mixers',
+    'Productivity/Multimedia/Sound/Players',
+    'Productivity/Multimedia/Sound/Utilities',
+    'Productivity/Multimedia/Sound/Visualization',
+    'Productivity/Multimedia/Video/Editors and Convertors',
+    'Productivity/Multimedia/Video/Players',
+    'Productivity/Networking/AOLInstantMessenger',
+    'Productivity/Networking/Archie',
+    'Productivity/Networking/Boot/Clients',
+    'Productivity/Networking/Boot/Servers',
+    'Productivity/Networking/Boot/Utilities',
+    'Productivity/Networking/Diagnostic',
+    'Productivity/Networking/DNS/Servers',
+    'Productivity/Networking/DNS/Utilities',
+    'Productivity/Networking/Email/Clients',
+    'Productivity/Networking/Email/Mailinglists',
+    'Productivity/Networking/Email/Servers',
+    'Productivity/Networking/Email/Utilities',
+    'Productivity/Networking/File-Sharing',
+    'Productivity/Networking/Ftp/Clients',
+    'Productivity/Networking/Ftp/Servers',
+    'Productivity/Networking/ICQ',
+    'Productivity/Networking/Instant Messenger',
+    'Productivity/Networking/IRC',
+    'Productivity/Networking/LDAP/Clients',
+    'Productivity/Networking/LDAP/Servers',
+    'Productivity/Networking/LDAP/Utilities',
+    'Productivity/Networking/Napster',
+    'Productivity/Networking/News/Clients',
+    'Productivity/Networking/News/Servers',
+    'Productivity/Networking/News/Utilities',
+    'Productivity/Networking/NFS',
+    'Productivity/Networking/NIS',
+    'Productivity/Networking/Novell',
+    'Productivity/Networking/Other',
+    'Productivity/Networking/PPP',
+    'Productivity/Networking/Radius/Clients',
+    'Productivity/Networking/Radius/Servers',
+    'Productivity/Networking/Routing',
+    'Productivity/Networking/Samba',
+    'Productivity/Networking/Security',
+    'Productivity/Networking/SSH',
+    'Productivity/Networking/System',
+    'Productivity/Networking/Talk/Clients',
+    'Productivity/Networking/Talk/Servers',
+    'Productivity/Networking/Web/Browsers',
+    'Productivity/Networking/Web/Frontends',
+    'Productivity/Networking/Web/Proxy',
+    'Productivity/Networking/Web/Servers',
+    'Productivity/Networking/Web/Utilities',
+    'Productivity/Office/Dictionary',
+    'Productivity/Office/Finance',
+    'Productivity/Office/Management',
+    'Productivity/Office/Organizers',
+    'Productivity/Office/Other',
+    'Productivity/Office/Spreadsheets',
+    'Productivity/Office/Suite',
+    'Productivity/Office/Word Processor',
+    'Productivity/Other',
+    'Productivity/Publishing/DocBook',
+    'Productivity/Publishing/HTML/Editors',
+    'Productivity/Publishing/HTML/Tools',
+    'Productivity/Publishing/Other',
+    'Productivity/Publishing/PDF',
+    'Productivity/Publishing/Presentation',
+    'Productivity/Publishing/PS',
+    'Productivity/Publishing/SGML',
+    'Productivity/Publishing/TeX/Base',
+    'Productivity/Publishing/TeX/Fonts',
+    'Productivity/Publishing/TeX/Frontends',
+    'Productivity/Publishing/Texinfo',
+    'Productivity/Publishing/TeX/Utilities',
+    'Productivity/Publishing/Troff',
+    'Productivity/Publishing/Word',
+    'Productivity/Publishing/XML',
+    'Productivity/Scientific/Astronomy',
+    'Productivity/Scientific/Chemistry',
+    'Productivity/Scientific/Electronics',
+    'Productivity/Scientific/Math',
+    'Productivity/Scientific/Other',
+    'Productivity/Scientific/Physics',
+    'Productivity/Security',
+    'Productivity/Telephony/Clients',
+    'Productivity/Telephony/H323/Clients',
+    'Productivity/Telephony/H323/Servers',
+    'Productivity/Telephony/H323/Utilities',
+    'Productivity/Telephony/Servers',
+    'Productivity/Telephony/SIP/Clients',
+    'Productivity/Telephony/SIP/Servers',
+    'Productivity/Telephony/SIP/Utilities',
+    'Productivity/Telephony/Utilities',
+    'Productivity/Text/Convertors',
+    'Productivity/Text/Editors',
+    'Productivity/Text/Spell',
+    'Productivity/Text/Utilities',
+    'System/Base',
+    'System/Benchmark',
+    'System/Boot',
+    'System/Console',
+    'System/Daemons',
+    'System/Emulators/Other',
+    'System/Emulators/PC',
+    'System/Fhs',
+    'System/Filesystems',
+    'System/GUI/GNOME',
+    'System/GUI/KDE',
+    'System/GUI/LXDE',
+    'System/GUI/Other',
+    'System/GUI/XFCE',
+    'System/I18n/Chinese',
+    'System/I18n/Japanese',
+    'System/I18n/Korean',
+    'System/Kernel',
+    'System/Libraries',
+    'System/Localization',
+    'System/Management',
+    'System/Monitoring',
+    'System/Packages',
+    'System/Shells',
+    'System/Sound Daemons',
+    'System/X11/Displaymanagers',
+    'System/X11/Fonts',
+    'System/X11/Icons',
+    'System/X11/Servers/XF86_3',
+    'System/X11/Servers/XF86_4',
+    'System/X11/Terminals',
+    'System/X11/Utilities',
+    'System/YaST',
+])
+
+setOption('StandardGroups', (
+    'aegis',
+    'antivir',
+    'arangodb',
+    'at',
+    'audio',
+    'avahi',
+    'bacula',
+    'beagleindex',
+    'bigsister',
+    'bitlbee',
+    'bin',
+    'bird',
+    'bitcoin',
+    'boinc',
+    'casaauth',
+    'cdrom',
+    'ceph',
+    'chef',
+    'chrony',
+    'citadel',
+    'colord',
+    'console',
+    'coroqnetd',
+    'crowbar',
+    'cwbconv',
+    'daemon',
+    'davfs2',
+    'dba',
+    'ddclient',
+    'dehydrated',
+    'dialout',
+    'disk',
+    'distcc',
+    'dosemu',
+    'dovecot',
+    'elasticsearch',
+    'epmd',
+    'festival',
+    'ffums',
+    'firebird',
+    'firejail',
+    'floppy',
+    'fonehome',
+    'ftp',
+    'games',
+    'gdm',
+    'geronimo',
+    'grafana',
+    'guixbuild',
+    'haclient',
+    'haldaemon',
+    'hsqldb',
+    'icecast',
+    'icecream',
+    'icinga',
+    'icingacmd',
+    'ifdrwww',
+    'intermezzo',
+    'iouyap',
+    'jboss',
+    'jenkins',
+    'jetty5',
+    'jonas',
+    'kmem',
+    'kolab',
+    'kolab-n',
+    'kolab-r',
+    'kvm',
+    'ldap',
+    'libstoragemgmt',
+    'lightdm',
+    'lighttpd',
+    'localham',
+    'locate',
+    'logstash',
+    'lp',
+    'lxdm',
+    'mail',
+    'maildrop',
+    'mailman',
+    'man',
+    'mdom',
+    'memcached',
+    'messagebus',
+    'minetest',
+    'mktex',
+    'modem',
+    'mumble-server',
+    'mysql',
+    'nagcmd',
+    'nagios',
+    'named',
+    'news',
+    'nginx',
+    'nobody',
+    'nogroup',
+    'novell_nogroup',
+    'novlxtier',
+    '_nsd',
+    'ntadmin',
+    'ntop',
+    'ntp',
+    'oinstall',
+    'openvswitch',
+    'ovirtagent',
+    'ceilometer',
+    'cinder',
+    'glance',
+    'heat',
+    'keystone',
+    'nova',
+    'neutron',
+    'swift',
+    'trove',
+    'otrs',
+    'pcp',
+    'pcpqa',
+    'pdns',
+    'pegasus',
+    'pkcs11',
+    'polipo',
+    'polkituser',
+    'postfix',
+    'postgres',
+    'pound',
+    'powersave',
+    'privoxy',
+    'prosody',
+    'prometheus',
+    'public',
+    'pulse',
+    'pulse-access',
+    'pulse-rt',
+    'puppet',
+    'qemu',
+    'quagga',
+    'quasselcore',
+    'rabbitmq',
+    'radiusd',
+    'root',
+    'sabayon-admin',
+    'salt',
+    'sapdb',
+    'sddm',
+    'sensu',
+    'shadow',
+    'shibd',
+    'singularity',
+    'siproxd',
+    '_sks',
+    'slurm',
+    'snort',
+    'sogo',
+    'squid',
+    'sshd',
+    'suse-ncc',
+    'svn',
+    'synapse',
+    'sys',
+    'systemd-journal',
+    'systemd-journal-gateway',
+    'tape',
+    'tftp',
+    'tomcat',
+    'tomcat4',
+    'tor',
+    'tox',
+    'trusted',
+    'tryton',
+    'ts-shell',
+    'tss',
+    'tty',
+    'unbound',
+    'users',
+    'utmp',
+    'uucp',
+    'uuidd',
+    'vacation',
+    'varnish',
+    'video',
+    'vnc',
+    'vscan',
+    'wheel',
+    'wireshark',
+    'www',
+    'xok',
+    'xrootd',
+    'xymon',
+    'zeroinst',
+    'zkeyadm',
+    'znc',
+    'zope',
+    ))
+
+setOption('StandardUsers', (
+    'aegis',
+    'amanda',
+    'aodh',
+    'arangodb',
+    'asterisk',
+    'at',
+    'avahi',
+    'bacula',
+    'barbican',
+    'beagleindex',
+    'bigsister',
+    'bin',
+    'bird',
+    'bitcoin',
+    'bitlbee',
+    'boinc',
+    'casaatsd',
+    'casaatvd',
+    'casaauth',
+    'ceilometer',
+    'ceph',
+    'chef',
+    'chrony',
+    'cinder',
+    'citadel',
+    'cntlm',
+    'colord',
+    'cop',
+    'coroqnetd',
+    'crowbar',
+    'cyrus',
+    'daemon',
+    'davfs2',
+    'ddclient',
+    'dehydrated',
+    'designate',
+    'dhcpd',
+    'distcc',
+    'dovecot',
+    'dpbox',
+    'dvbdaemon',
+    'ec2-api',
+    'elasticsearch',
+    'epmd',
+    'fax',
+    'festival',
+    'fetchmail',
+    'ffums',
+    'firebird',
+    'fonehome',
+    'ftp',
+    'games',
+    'gdm',
+    'geronimo',
+    'glance',
+    'gnats',
+    'gnocchi',
+    'gnump3d',
+    'grafana',
+    'hacluster',
+    'haldaemon',
+    'heat',
+    'hsqldb',
+    'icecast',
+    'icecream',
+    'icinga',
+    'intermezzo',
+    'iodined',
+    'irc',
+    'ironic',
+    'jabber',
+    'jboss',
+    'jetty5',
+    'jenkins',
+    'jonas',
+    'keystone',
+    'kolab',
+    'kolab-n',
+    'kolab-r',
+    'ldap',
+    'libstoragemgmt',
+    'lightdm',
+    'lighttpd',
+    'logstash',
+    'lp',
+    'lxdm',
+    'magnum',
+    'mail',
+    'mailman',
+    'man',
+    'manila',
+    'mdnsd',
+    'mdom',
+    'mednafen',
+    'memcached',
+    'messagebus',
+    'minetest',
+    'mpd',
+    'mumble-server',
+    'murano',
+    'mysql',
+    'nagios',
+    'named',
+    'neutron',
+    'news',
+    'nginx',
+    'nova',
+    'novell_nobody',
+    'novlifdr',
+    'novlxregd',
+    'novlxsrvd',
+    '_nsd',
+    'ntop',
+    'ntp',
+    'octavia',
+    'openvswitch',
+    'oracle',
+    'otrs',
+    'ovirtagent',
+    'partimag',
+    'pcp',
+    'pcpqa',
+    'pdns',
+    'pegasus',
+    'polipo',
+    'polkitd',
+    'polkituser',
+    'pop',
+    'postfix',
+    'postgres',
+    'postgrey',
+    'pound',
+    'privoxy',
+    'prosody',
+    'prometheus',
+    'pulse',
+    'puppet',
+    'qemu',
+    'quagga',
+    'quasselcore',
+    'rabbitmq',
+    'radiusd',
+    'radvd',
+    'root',
+    '_rmt',
+    'sabayon-admin',
+    'sahara',
+    'salt',
+    'sapdb',
+    'sddm',
+    'sensu',
+    'shibd',
+    'siproxd',
+    '_sks',
+    'slurm',
+    'snort',
+    'sogo',
+    'squid',
+    'sshd',
+    'statd',
+    'suse-ncc',
+    'svn',
+    'swift',
+    'synapse',
+    'systemd-journal-gateway'
+    'tftp',
+    'tomcat',
+    'tomcat4',
+    'tor',
+    'toxcmd',
+    'trove',
+    'tryton',
+    'tss',
+    'ulogd',
+    'upsd',
+    'unbound',
+    'uucp',
+    'uuidd',
+    'vacation',
+    'varnish',
+    'vdr',
+    'vnc',
+    'vscan',
+    'wnn',
+    'wwwrun',
+    'xrootd',
+    'xymon',
+    'yastws',
+    'zaqar',
+    'zeroinst',
+    'znc',
+    'zope',
+    ))
+
+addDetails('non-standard-uid',
+'''A file in this package is owned by an unregistered user id.
+To register the user, please branch the devel:openSUSE:Factory:rpmlint rpmlint package, 
+add the user to the "config" file and send a submitrequest.
+''',
+'non-standard-gid',
+'''A file in this package is owned by an unregistered group id.
+To register the group, please branch the devel:openSUSE:Factory:rpmlint rpmlint package, 
+add the group to the "config" file and send a submitrequest.
+''',
+'no-changelogname-tag',
+'''There is no changelog. Please insert a '%changelog' section heading in your
+spec file and prepare your changes file using e.g. the 'osc vc' command.''',
+)
+
+setOption('DanglingSymlinkExceptions',
+      (['/usr/share/doc/licenses/', 'licenses'],
+       ['consolehelper$', 'usermode-consoleonly'],
+))
+
+setOption("DBUSServices.WhiteList", (
+    "cups.conf", # bnc#515977
+    #
+    # the following are not audited. We accept them as legacy for now
+    #
+    # upower
+    "org.freedesktop.UPower.service",
+    "org.freedesktop.UPower.conf",
+    # PackageKit
+    "org.freedesktop.PackageKit.conf",
+    # PackageKit
+    "org.freedesktop.PackageKit.service",
+    # NetworkManager-pptp
+    "nm-pptp-service.conf",
+    # gdm
+    "gdm.conf",
+    # udisks2 (bnc#742751)
+    "org.freedesktop.UDisks2.service",
+    "org.freedesktop.UDisks2.conf",
+    # scmon
+    "com.novell.Pkcs11Monitor.conf",
+    # systemd (bnc#641924)
+    "org.freedesktop.systemd1.service",
+    "org.freedesktop.systemd1.conf",
+    "org.freedesktop.hostname1.service",
+    "org.freedesktop.hostname1.conf",
+    "org.freedesktop.login1.conf",
+    "org.freedesktop.login1.service",
+    "org.freedesktop.timedate1.conf",
+    "org.freedesktop.timedate1.service",
+    "org.freedesktop.locale1.conf",
+    "org.freedesktop.locale1.service",
+    # gconf2
+    "org.gnome.GConf.Defaults.service",
+    "org.gnome.GConf.Defaults.conf",
+    # system-config-printer (bnc#694640)
+    "com.redhat.NewPrinterNotification.conf",
+    "com.redhat.PrinterDriversInstaller.conf",
+    # rtkit
+    "org.freedesktop.RealtimeKit1.conf",
+    "org.freedesktop.RealtimeKit1.service",
+    # wpa_supplicant
+    "fi.epitest.hostap.WPASupplicant.service",
+    # bnc#681116
+    "fi.w1.wpa_supplicant1.service",
+    "wpa_supplicant.conf",
+    # kdebase4-workspace
+    "org.kde.fontinst.service",
+    "org.kde.kcontrol.kcmkdm.conf",
+    "org.kde.fontinst.conf",
+    "org.kde.ksysguard.processlisthelper.service",
+    "org.kde.kcontrol.kcmclock.service",
+    "org.kde.kcontrol.kcmclock.conf",
+    "org.kde.kcontrol.kcmkdm.service",
+    "org.kde.ksysguard.processlisthelper.conf",
+    # pulseaudio
+    "pulseaudio-system.conf",
+    # avahi
+    "avahi-dbus.conf",
+    "org.freedesktop.Avahi.service",
+    # hp-drive-guard
+    "hp-drive-guard-dbus.conf",
+    # NetworkManager
+    "nm-dispatcher.conf",
+    "org.freedesktop.nm_dispatcher.service",
+    # bnc#747780
+    "org.freedesktop.NetworkManager.conf",
+    # bnc#681128
+    "org.freedesktop.NetworkManager.service",
+    # bluez (bnc#768062)
+    "bluetooth.conf",
+    "org.bluez.service",
+    # dnsmasq
+    "dnsmasq.conf",
+    # gypsy
+    "Gypsy.conf",
+    "org.freedesktop.Gypsy.service",
+    # pommed
+    "pommed.conf",
+    # NetworkManager-openvpn
+    "nm-openvpn-service.conf",
+    # kdelibs4
+    "org.kde.auth.conf",
+    # polkit
+    "org.freedesktop.PolicyKit1.conf",
+    "org.freedesktop.PolicyKit1.service",
+    # dconf
+    "ca.desrt.dconf.service",
+    # cups-pk-helper
+    "org.opensuse.CupsPkHelper.Mechanism.service",
+    "org.opensuse.CupsPkHelper.Mechanism.conf",
+    # fwzs
+    "org.opensuse.zoneswitcher.service",
+    "org.opensuse.zoneswitcher.conf",
+    # yum
+    "yum-updatesd.conf",
+    # NetworkManager-vpnc
+    "nm-vpnc-service.conf",
+    # NetworkManager-strongswan, bnc#656222
+    "nm-strongswan-service.conf",
+    # mumble, bnc#660784
+    "mumble-server.conf",
+    # kdebase4-runtime, bnc#672145
+    "org.kde.powerdevil.backlighthelper.service",
+    "org.kde.powerdevil.backlighthelper.conf",
+    # urfkill (bnc#688328) 
+    "org.freedesktop.URfkill.service",
+    "org.freedesktop.URfkill.conf",
+    # account services (bnc#676638)
+    "org.freedesktop.Accounts.service",
+    "org.freedesktop.Accounts.conf",
+    # colord (bnc#698250)
+    "org.freedesktop.ColorManager.service",
+    "org.freedesktop.ColorManager.conf",
+    # lightdm (bnc#708205)
+    "org.freedesktop.DisplayManager.conf",
+    # sddm (boo#897788)
+    "sddm_org.freedesktop.DisplayManager.conf",
+    # NetworkManager-openvpn (bnc#732915)
+    "nm-openconnect-service.conf",
+    # snapper (bnc#759391)
+    "org.opensuse.Snapper.conf",
+    "org.opensuse.Snapper.service",
+    # autofs-udisk interaction (bnc#782691)
+    "org.freedesktop.AutoMount.conf",
+    # NetworkManager-iodine (bnc#781071)
+    "nm-iodine-service.conf",
+    # new ModemManager (bnc#798273)
+    "org.freedesktop.ModemManager1.conf",
+    "org.freedesktop.ModemManager1.service",
+    # fprintd 0.4.1 (finger print dbus service) (bnc#792095)
+    "net.reactivated.Fprint.service",
+    "net.reactivated.Fprint.conf",
+    # wicked network management (bnc#783932)
+    "network-nanny.conf",
+    "wicked-dhcp4.conf",
+    "wicked-dhcp6.conf",
+    "wicked-autoip4.conf",
+    "wicked.conf",
+    ## next revision of names (old ones could go)
+    "org.opensuse.Network.conf",
+    "org.opensuse.Network.AUTO4.conf",
+    "org.opensuse.Network.DHCP6.conf",
+    "org.opensuse.Network.DHCP4.conf",
+    "org.opensuse.Network.Nanny.conf",
+    # systemd machined service (bnc#828207)
+    "org.freedesktop.machine1.service",
+    "org.freedesktop.machine1.conf",
+    # systemd importd service (bnc#964935)
+    "org.freedesktop.import1.service",
+    "org.freedesktop.import1.conf",
+    # GeoClue2 DBUS Service (bnc#838360)
+    "org.freedesktop.GeoClue2.service",
+    "org.freedesktop.GeoClue2.conf",
+    # GeoClue2 DBUS Service more (bnc#862216)
+    "org.freedesktop.GeoClue2.Agent.conf",
+    # mate dbus serice (bnc#831404)
+    "org.mate.SettingsDaemon.DateTimeMechanism.service",
+    "org.mate.SettingsDaemon.DateTimeMechanism.conf",
+    # tuned DBUS service (bnc#787379, bnc#1007279)
+    "com.redhat.tuned.conf",
+    # bluez (bnc#768062)
+    "bluetooth.conf",
+    "org.bluez.service",
+    # kwallet (bnc#849739)
+    "org.kde.kcontrol.kcmkwallet.conf",
+    "org.kde.kcontrol.kcmkwallet.service",
+    # kwallet (bnc#1033296)
+    "org.kde.kcontrol.kcmkwallet5.conf",
+    "org.kde.kcontrol.kcmkwallet5.service",
+    # neard (bnc#837978)
+    "org.neard.conf",
+    # policycoreutils (bnc#848550, bnc#878631)
+    "org.selinux.service",
+    # oFono (bnc#862354)
+    "ofono.conf",
+    # libKF5Auth4 (bnc#864716)
+    "org.kde.kf5auth.conf",
+    # firewalld (bnc#907625)
+    "FirewallD.conf",
+    # systemd networkd (bnc#918799)
+    "org.freedesktop.network1.conf",
+    "org.freedesktop.network1.service",
+    # realmd (bnc#916766)
+    "org.freedesktop.realmd.service",
+    "org.freedesktop.realmd.conf",
+    # teamd (bnc#941993)
+    "org.libteam.teamd.conf",
+    # cinnamon settings daemon (bsc#951830)
+    "org.cinnamon.SettingsDaemon.DateTimeMechanism.conf",
+    "org.cinnamon.SettingsDaemon.DateTimeMechanism.service",
+    # thermald (bsc#954771)
+    "org.freedesktop.thermald.conf",
+    "org.freedesktop.thermald.service",
+    # drbdmanage (bsc#956811)
+    "org.drbd.drbdmanaged.conf",
+    "org.drbd.drbdmanaged.service",
+    # iio-sensor-proxy (bsc#939191)
+    "net.hadess.SensorProxy.conf",
+    # openattic (bsc#972478)
+    "openattic.conf",
+    "openattic.service",
+    # TEMPORARY APPROVAL ONLY (meissner 20160519) tcmu-runner (bsc#978903)
+    "tcmu-runner.conf",
+    "org.kernel.TCMUService1.service",
+    # sysprof (bsc#996111)
+    "org.gnome.Sysprof2.service",
+    "org.gnome.Sysprof2.conf",
+    # flatpak (bsc#984817)
+    "org.freedesktop.Flatpak.SystemHelper.service",
+    "org.freedesktop.Flatpak.SystemHelper.conf",
+    # systemd resolver, but dont add automatically to nsswitch.conf! (bsc#917781)
+    "org.freedesktop.resolve1.conf",
+    "org.freedesktop.resolve1.service",
+    # powerdevil discretegpuhelper (bsc#1019748)
+    "org.kde.powerdevil.discretegpuhelper.conf",
+    "org.kde.powerdevil.discretegpuhelper.service",
+    # rebootmgr (bsc#1019644)
+    "org.opensuse.RebootMgr.conf",
+    # blueman (bsc#987141)
+    "org.blueman.Mechanism.conf",
+    "org.blueman.Mechanism.service",
+    # os-autoinst (bsc#1032649)
+    "org.opensuse.os_autoinst.switch.conf",
+    # thunderbolt (bsc#1033554)
+    "thunderbolt.conf",
+    "thunderbolt.service",
+    # backintime (bsc#1007723, bsc#1032717)
+    "net.launchpad.backintime.serviceHelper.conf",
+    "net.launchpad.backintime.serviceHelper.service",
+    # switchroo-control (bsc#1034309)
+    "net.hadess.SwitcherooControl.conf",
+    # openqa (bsc#1039290)
+    "org.opensuse.openqa.conf",
+    # pam_dbus (bsc#1039709). Take care to
+    # never enable/integrate this by default (see bsc comments)
+    "pam_dbus.conf",
+    # tpm2-abrmd (bnc#1049694)
+    "tpm2-abrmd.conf",
+    "com.intel.tss2.Tabrmd.service",
+    # nfs-ganesha (bsc#997880)
+    "org.ganesha.nfsd.conf",
+    "nfs-ganesha.service",
+    # NetworkManager-l2tp (bsc#846337)
+    "nm-l2tp-service.conf",
+    # fwupd (bsc#932807)
+    "org.freedesktop.fwupd.conf",
+    "org.freedesktop.fwupd.service",
+    # connman (bsc#1057697)
+    "connman-nmcompat.conf",
+    "connman.conf",
+    "connman-vpn-dbus.conf",
+    "net.connman.vpn.service",
+    # kcmsddm (bsc#1065563)
+    "org.kde.kcontrol.kcmsddm.conf",
+    "org.kde.kcontrol.kcmsddm.service",
+    # usbauth (bsc#1066877)
+    "org.opensuse.usbauth.conf",
+    # kalarm (bnc#1087714, renamed from kalarmrtcwake)
+    "org.kde.kalarm.rtcwake.conf",
+    "org.kde.kalarm.rtcwake.service",
+    # NetworkManager-libreswan (bnc#1089340)
+    "nm-libreswan-service.conf",
+    # libratbag (bnc#1076467)
+    "org.freedesktop.ratbag1.service",
+    "org.freedesktop.ratbag1.conf",
+    # xpra (bsc#1102836)
+    "xpra.conf",
+    # iwd (bsc#1108037)
+    "net.connman.iwd.service",
+    "iwd-dbus.conf",
+    # NetworkManager-fortisslvpn (bsc#1109938)
+    "nm-fortisslvpn-service.conf",
+    # systemd-timesyncd (bsc#1111254)
+    "org.freedesktop.timesync1.service",
+    "org.freedesktop.timesync1.conf",
+    # keepalived (bsc#1015141)
+    "org.keepalived.Vrrp1.conf",
+    # boltd (bsc#1119975)
+    "org.freedesktop.bolt.conf",
+    "org.freedesktop.bolt.service",
+    # certmonger (bsc#1129452)
+    "org.fedorahosted.certmonger.service",
+    "certmonger.conf",
+))
+
+setOption("PAMModules.WhiteList", (
+    # pam_p11
+    "pam_p11_opensc.so",
+    "pam_p11_openssh.so",
+    # pam_krb5
+    "pam_krb5.so",
+    "pam_krb5afs.so",
+    # ecryptfs-utils
+    "pam_ecryptfs.so",
+    # gnome-keyring-pam
+    "pam_gnome_keyring.so",
+    # pwdutils-rpasswd
+    "pam_rpasswd.so",
+    # samba-winbind
+    "pam_winbind.so",
+    # pam-modules
+    "pam_homecheck.so",
+    "pam_pwcheck.so",
+    "pam_unix2.so",
+    # pam_smb
+    "pam_smb_auth.so",
+    # ConsoleKit
+    "pam_ck_connector.so",
+    # pam_ssh
+    "pam_ssh.so",
+    # libcgroup1
+    "pam_cgroup.so",
+    # pam_fprint
+    "pam_fprint.so",
+    # pam_mount
+    "pam_mount.so",
+    # pam_ccreds
+    "pam_ccreds.so",
+    # pam_radius
+    "pam_radius_auth.so",
+    # pam_pkcs11
+    "pam_pkcs11.so",
+    # nss-pam-ldapd
+    "pam_ldap.so",
+    # pam_passwdqc
+    "pam_passwdqc.so",
+    # pam_userpass
+    "pam_userpass.so",
+    # pam_apparmor
+    "pam_apparmor.so",
+    # pam_ldap
+    "pam_ldap.so",
+    # cryptconfig
+    "pam_cryptpass.so",
+    # opie
+    "pam_opie.so",
+    # pam
+    "pam_access.so",
+    "pam_cracklib.so",
+    "pam_debug.so",
+    "pam_deny.so",
+    "pam_echo.so",
+    "pam_env.so",
+    "pam_exec.so",
+    "pam_faildelay.so",
+    "pam_filter.so",
+    "pam_ftp.so",
+    "pam_group.so",
+    "pam_issue.so",
+    "pam_keyinit.so",
+    "pam_lastlog.so",
+    "pam_limits.so",
+    "pam_listfile.so",
+    "pam_localuser.so",
+    "pam_loginuid.so",
+    "pam_mail.so",
+    "pam_mkhomedir.so",
+    "pam_motd.so",
+    "pam_namespace.so",
+    "pam_nologin.so",
+    "pam_permit.so",
+    "pam_pwhistory.so",
+    "pam_rhosts.so",
+    "pam_rootok.so",
+    "pam_securetty.so",
+    "pam_selinux.so",
+    "pam_sepermit.so",
+    "pam_shells.so",
+    "pam_stress.so",
+    "pam_succeed_if.so",
+    "pam_tally.so",
+    "pam_tally2.so",
+    "pam_time.so",
+    "pam_timestamp.so",
+    "pam_tty_audit.so",
+    "pam_umask.so",
+    "pam_unix.so",
+    "pam_unix_acct.so",
+    "pam_unix_auth.so",
+    "pam_unix_passwd.so",
+    "pam_unix_session.so",
+    "pam_userdb.so",
+    "pam_warn.so",
+    "pam_wheel.so",
+    "pam_xauth.so",
+    # systemd
+    "pam_systemd.so",
+    # sssd
+    "pam_sss.so",
+    # pam_mktemp
+    "pam_mktemp.so",
+    # pam_csync
+    "pam_csync.so",
+    # samba
+    "pam_smbpass.so",
+    # pam_chroot
+    "pam_chroot.so",
+    # pam_snapper (bnc#815383)
+    "pam_snapper.so",
+    # pam_mate_keyring.so (bnc#831404)
+    "pam_mate_keyring.so",
+    # pam_gdm (bsc#1004346)
+    "pam_gdm.so",
+    # pam_slurm (bsc#1007053)
+    "pam_slurm.so",
+    # pam_slurm_adopt (bsc#1116758)
+    "pam_slurm_adopt.so",
+    # pam_script (bsc#1039848)
+    "pam_script.so",
+    # pam_yubico (bsc#1087060)
+    "pam_yubico.so",
+    # pam_oath (bsc#1089114)
+    "pam_oath.so",
+    # pam_p11 (bsc#1123916)
+    "pam_p11.so"
+))
+
+# Output filters
+addFilter(r'.*spurious-bracket-in-.*')
+addFilter(r'.*one-line-command-in-.*')
+addFilter(' dir-or-file-in-opt ') # handled by CheckFilelist.py
+addFilter(' dir-or-file-in-usr-local ') # handled by CheckFilelist.py
+addFilter(' non-standard-dir-in-usr ') # handled by CheckFilelist.py
+addFilter('incoherent-version-in-changelog')
+addFilter(' no-signature')
+addFilter(' symlink-crontab-file') #bnc591431
+addFilter(' without-chkconfig')
+addFilter(r'unstripped-binary-or-object.*\.ko')
+addFilter(' no-chkconfig')
+addFilter(' subsys-not-used')
+addFilter(r' dangerous-command.*')
+addFilter(r' setuid-binary.*')
+addFilter(r'.*FSSTND-dir-in-var /var/adm/.*')
+addFilter('subdir-in-bin /sbin/conf.d/')
+addFilter(r'.* nss_db non-standard-dir-in-var db')
+addFilter('non-standard-dir-in-usr openwin')
+addFilter('ibcs2 non-standard-dir-in-usr i486-sysv4')
+addFilter('shlibs5 non-standard-dir-in-usr i486-linux-libc5')
+addFilter('explicit-lib-dependency libtool')
+
+# filesystem package needs special exceptions
+addFilter(r'^filesystem\..*: dir-or-file-in-var-run')
+addFilter(r'^filesystem\..*: dir-or-file-in-var-lock')
+addFilter(r'^filesystem\..*: dir-or-file-in-var-tmp')
+addFilter(r'^filesystem\..*: dir-or-file-in-var-run')
+addFilter(r'^filesystem\..*: dir-or-file-in-var-lock')
+addFilter(r'^filesystem\..*: dir-or-file-in-usr-tmp')
+addFilter(r'^filesystem\..*: dir-or-file-in-tmp')
+addFilter(r'^filesystem\..*: dir-or-file-in-mnt')
+addFilter(r'^filesystem\..*: dir-or-file-in-home')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /root/.gnupg')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /root/.gnupg')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /etc/skel/.config')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /etc/skel/.local')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /tmp/.X11-unix')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /tmp/.ICE-unix')
+addFilter(r'^filesystem\..*: hidden-file-or-dir /etc/skel/.fonts')
+addFilter(r'^filesystem\..*: suse-filelist-forbidden-fhs23')
+addFilter(r'^filesystem\..*: suse-filelist-forbidden-opt')
+addFilter(r'^filesystem\..*: non-standard-uid /var/lib/nobody nobody')
+addFilter(r'^filesystem\..*: missing-dependency-to-cron')
+# has arch specific dirs in /usr
+addFilter(r'^filesystem\..*: no-binary')
+
+# suppress any errors about internal packages
+addFilter(r'^qa\S+: [EWI]:')
+addFilter(r'^\S*(?:INTERNAL|internal)\.\S+: [EWI]:')
+
+
+# exceptions for devel-files
+addFilter(r'devel-file-in-non-devel-package.*/boot/vmlinuz-.*autoconf.h')
+addFilter(r'devel-file-in-non-devel-package.*/usr/src/linux-')
+addFilter(r'devel-file-in-non-devel-package.*/usr/share/systemtap')
+addFilter(r'kde4-kapptemplate\.\S+:.*devel-file-in-non-devel-package')
+addFilter(r'kdesdk3\.\S+:.*devel-file-in-non-devel-package')
+addFilter(r'-(?:examples|doc)\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'java\S+-demo\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'avr-libc\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'dietlibc\.\S+ \w: devel-file-in-non-devel-package')
+addFilter(r'cross-.*devel-file-in-non-devel-package')
+addFilter(r'cmake.*devel-file-in-non-devel-package')
+addFilter(r'gcc\d\d.*devel-file-in-non-devel-package')
+addFilter(r'OpenOffice_org-sdk\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'wnn-sdk\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'ocaml\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'xorg-x11-server-sdk\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r'linux-kernel-headers\.\S+: \w: devel-file-in-non-devel-package')
+addFilter(r' devel-file-in-non-devel-package.*-config')
+addFilter(r'libtool\.\S+: \w: devel-file-in-non-devel-package')
+
+addFilter(r'update-desktop-files\.\S+: \w: untranslated-desktop-file')
+addFilter(r'sdb.* dangling-relative-symlink /usr/share/doc/sdb/.*/gifs ../gifs')
+addFilter('kernel-modules-not-in-kernel-packages')
+# SUSE kmp's don't need manual depmod (bnc#456048)
+addFilter('module-without-depmod-postin')
+addFilter('postin-with-wrong-depmod')
+addFilter('module-without-depmod-postun')
+addFilter('postun-with-wrong-depmod')
+#
+addFilter('configure-without-libdir-spec')
+addFilter('conffile-without-noreplace-flag /etc/init.d')
+addFilter('use-of-RPM_SOURCE_DIR')
+addFilter('use-tmp-in-')
+addFilter('symlink-contains-up-and-down-segments /var/lib/named')
+addFilter('no-ldconfig-symlink')
+addFilter(r'aaa_base\.\S+: \w: use-of-home-in-%post')
+addFilter('description-line-too-long')
+addFilter('hardcoded-library-path')
+# addFilter('incoherent-subsys')
+# doesn't seem to make sense
+addFilter('invalid-ldconfig-symlink')
+addFilter('invalid-soname')
+addFilter('library-not-linked-against-libc')
+addFilter('only-non-binary-in-usr-lib')
+addFilter('outside-libdir-files')
+# we want these files
+addFilter(' perl-temp-file ')
+addFilter(r' hidden-file-or-dir .*/\.packlist')
+addFilter(r' hidden-file-or-dir .*/\.directory')
+addFilter(r'perl-.*no-binary')
+addFilter(' no-major-in-name ')
+# we check for that already
+addFilter('dangling-relative-symlink')
+addFilter(' lib-package-without-%mklibname')
+addFilter(' requires-on-release')
+addFilter(' non-executable-script /etc/profile.d/')
+addFilter(' non-executable-script /var/adm/fillup-templates/')
+addFilter(' init-script-name-with-dot ')
+addFilter(r'.* statically-linked-binary /sbin/ldconfig')
+addFilter(r'.* statically-linked-binary /sbin/init')
+addFilter(r'valgrind.* statically-linked-binary')
+addFilter(r'ldconfig-post.*/ddiwrapper/wine/')
+addFilter(r'glibc\.\S+: \w: statically-linked-binary /usr/sbin/glibc_post_upgrade')
+addFilter(' symlink-should-be-relative ')
+addFilter(' binary-or-shlib-defines-rpath .*ORIGIN')
+addFilter(r'libzypp.*shlib-policy-name-error.*libzypp')
+addFilter(r'libtool.*shlib-policy.*')
+
+# stuff that is currently too noisy, but might become relevant in the future
+addFilter(' prereq-use')
+addFilter(' file-not-utf8')
+addFilter(' tag-not-utf8')
+addFilter(' setup-not-quiet')
+addFilter(' no-cleaning-of-buildroot ')
+addFilter(' mixed-use-of-spaces-and-tabs ')
+addFilter(' prereq-use ')
+# an issue with OBS, works with autobuild
+addFilter(' no-packager-tag')
+addFilter(' unversioned-explicit-provides ')
+addFilter(' unversioned-explicit-obsoletes ')
+addFilter(' no-%clean-section')
+addFilter(' service-default-enabled ')
+addFilter(' non-standard-dir-perm ')
+addFilter(' conffile-without-noreplace-flag ')
+addFilter(' non-standard-executable-perm ')
+addFilter(' jar-not-indexed ')
+addFilter(' uncompressed-zip ')
+addFilter(' %ifarch-applied-patch ')
+addFilter(' read-error ')
+addFilter(' init-script-without-chkconfig-postin ')
+addFilter(' init-script-without-chkconfig-preun ')
+addFilter(' postin-without-chkconfig ')
+addFilter(' preun-without-chkconfig ')
+addFilter(' no-dependency-on locales')
+addFilter(' incoherent-version-in-name')
+addFilter(' binary-or-shlib-defines-rpath')
+addFilter(' executable-marked-as-config-file')
+addFilter(' log-files-without-logrotate')
+addFilter(' hardcoded-prefix-tag')
+addFilter(' no-documentation')
+addFilter(' multiple-specfiles')
+addFilter(' apache2-naming-policy-not-applied')
+addFilter(' no-default-runlevel ')
+addFilter(' setgid-binary ')
+addFilter(' non-readable ')
+addFilter(' manpage-not-bzipped ')
+addFilter(' postin-without-ghost-file-creation ')
+# bug 287090
+addFilter(' file-in-usr-marked-as-conffile')
+addFilter(' non-remote_fs-dependency.*/boot')
+
+# exceptions for non-devel-buildrequires
+addFilter(' non-devel-buildrequires apache2-mod_perl')
+addFilter(' non-devel-buildrequires ksh')
+addFilter(' non-devel-buildrequires perl')
+addFilter(' non-devel-buildrequires php5')
+addFilter(' non-devel-buildrequires postfix')
+addFilter(' non-devel-buildrequires python')
+addFilter(' non-devel-buildrequires ruby')
+addFilter(' non-devel-buildrequires valgrind')
+addFilter(' non-devel-buildrequires yasm')
+addFilter(' non-devel-buildrequires tcl')
+
+addFilter(r'beagle-index\.\S+: \w: (non-devel|unnecessary)-buildrequires')
+addFilter(r'collect-desktop-files\.\S+: \w: (non-devel|unnecessary)-buildrequires')
+addFilter(r'installation-images\.\S+: \w: (non-devel|unnecessary)-buildrequires')
+
+# exceptions for filelist checks
+addFilter(r'nfs-client\.\S+: \w: suse-filelist-forbidden-backup-file /var/lib/nfs/sm.bak ')
+addFilter(r'perl\.\S+: \w: suse-filelist-forbidden-perl-dir ')
+addFilter(r'info\.\S+: \w: info-dir-file .*/usr/share/info/dir')
+
+# fillup is known to break SuSEfirewall's sysconfig file on many
+# systems as people tend to break up long lines into several ones.
+# This bug remains unfixed since years (bnc#340926).
+# So we have to avoid fillup and therefore break the SUSE policy
+addFilter(r'SuSEfirewall2\.\S+: \w: suse-filelist-forbidden-sysconfig.*/etc/sysconfig/SuSEfirewall2')
+
+# these packages are used for CD creation and are not supposed to be
+# installed. It's still a dirty hack to make an exception. The
+# packages should either be built in a separate project with
+# different config or file be put somewhere below /opt/suse/*
+addFilter(r'(?:dosutils|skelcd|installation-images|yast2-slide-show|instlux|skelcd-.*|patterns-.*)\.\S+: \w: suse-filelist-forbidden-fhs23 /CD1')
+
+# suboptimal library packaging
+addFilter(' non-devel-buildrequires graphviz')
+addFilter(' non-devel-buildrequires ImageMagick')
+addFilter(' non-devel-buildrequires aspell')
+addFilter(' non-devel-buildrequires autotrace')
+addFilter(' non-devel-buildrequires gettext')
+addFilter(' non-devel-buildrequires devhelp')
+addFilter(' non-devel-buildrequires libxml2')
+addFilter(' non-devel-buildrequires libxslt')
+addFilter(' non-devel-buildrequires recode')
+
+# Too noisy, and usually not something downstream packagers can fix
+addFilter(' incorrect-fsf-address ')
+addFilter(' no-manual-page-for-binary ')
+addFilter(r' static-library-without-debuginfo /usr/lib(?:64)?/ghc-[\d\.]+/')
+
+# the libre mess
+addFilter(r'libre(?:ssl|office|cad)[^\:]+: \w: shlib-policy-')
+
+# many places have shorter paths
+addFilter(' non-coherent-filename ')
+
+# mandriva specific stuff that we don't want
+addFilter(' invalid-build-requires ')
+addFilter(' no-provides ')
+
+# bash completion files are not scripts, do not require them marked as %config
+addFilter('W: non-conffile-in-etc /etc/bash_completion.d/')
+
+# config ends here
+

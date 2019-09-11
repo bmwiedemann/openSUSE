@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Apr 24 14:56:10 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.4:
+  * This minor maintenance release provides the recent round of
+    build configuration improvements and janitorial cleanups.
+
+-------------------------------------------------------------------
+Sat Apr 14 20:44:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.3:
+  + Build system fixes.
+  + Bugs fixed: fdo#24206, fdo#24242
+- Remove AUTHORS and NEWS from %doc section: they are no longer
+  shipped in the tarball, as they were empty anyway.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xkbprint from xorg-x11. Initial version: 1.0.2.
+

@@ -1,0 +1,29 @@
+--- flip.c
++++ flip.c
+@@ -184,7 +184,7 @@
+ 			data = (void *)((uchar *)data + 1);
+ 			type = *(char *)data;
+ 			data = (void *)((uchar *)data + 1);
+-			if( (char)type>=0 ) {
++			if( type>=0 ) {
+ 				/* copy ptype words */
+ 				type <<= 1;
+ 				memcpy( index + x, data, type );
+@@ -217,7 +217,7 @@
+ char *index;
+ uchar packets;
+ int index_x;
+-char type;
++signed char type;
+ /*	puts( "delta fli" ); */
+ 	line = *(short int *)data;
+ 	data = (void *)((short int *)data + 1);
+@@ -254,7 +254,7 @@
+ static void dcd_byte_run( struct FLI *fli, char *data ) {
+ int lines;
+ int width;
+-char type;
++signed char type;
+ int index;
+ int index_x;
+ /* 	puts( "byte run" ); */

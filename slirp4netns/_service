@@ -1,0 +1,16 @@
+<services>
+
+<service name="tar_scm" mode="disabled">
+<param name="url">https://github.com/rootless-containers/slirp4netns.git</param>
+<param name="scm">git</param>
+<param name="filename">slirp4netns</param>
+<param name="versionformat">0.3.2</param>
+<param name="revision">v0.3.2</param>
+</service>
+
+<service name="recompress" mode="disabled">
+<param name="file">*.tar</param>
+<param name="compression">xz</param>
+</service>
+
+</services>

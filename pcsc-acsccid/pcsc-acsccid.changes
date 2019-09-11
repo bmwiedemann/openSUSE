@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Thu Jul 25 07:16:38 UTC 2019 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.7.
+  * Add the following readers support:
+    ACR3201 ICC Reader
+    CryptoMate EVO
+  * Fix APG8201 response timeout issue.
+  * Do not build simclist with (unused) file dump option.
+
+-------------------------------------------------------------------
+Wed Jan  2 06:12:01 UTC 2019 - godfrey.chung@acs.com.hk
+
+- Added missing devices to Enhances:.
+  * ACM1252U-Z2ACE    (VID: 072F, PID: 225B)
+  * ACM1252U-Z2ACE BL (VID: 072F, PID: 225C)
+
+-------------------------------------------------------------------
+Tue Oct 30 09:07:25 UTC 2018 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.6.
+  * Add the following readers support:
+    ACR1252 CL Reader           (ACM1252U-Z2ACE)
+    ACR1252 USB FW_Upgrade v100 (ACM1252U-Z2ACE BL)
+  * Enable TLV properties for APG8201-B2 in IFDHControl().
+  * Enable TLV properties for APG8201-B2 in process_spe_ppdu().
+  * Fix ACR39U T=0 APDU problem in CmdXfrBlockTPDU_T0().
+  * Return 6B 80 for supported readers in CCID_Receive().
+  * Remove extra_egt() causing problems.
+  * Fix undefined symbol yylex.
+  * Set the status to absent if SAM reset failed in IFDHPowerICC().
+  * Fix libusb config descriptor leak.
+  * Fix leaking an allocated bundle in case no matching reader was found.
+  * Enable ICC extended APDU for ACR1281U-C1 >= v526.
+  * Add IOCTL_SMARTCARD_TOGGLE_CARD_STATE for SAM slot.
+- Replaced acsccid-1.1.5-polling-unplug.patch with
+  acsccid-1.1.6-polling-unplug.patch.
+
+-------------------------------------------------------------------
+Wed Sep 12 09:40:35 UTC 2018 - godfrey.chung@acs.com.hk
+
+- Backported to SLE 11.
+  * Set libusb version to 1.0.8.
+  * Set pcsc-lite version to 1.4.102.
+  * Added acsccid-1.1.5-libhal.patch: Fix the compatibility with libhal.
+  * Added acsccid-1.1.5-polling-thread.patch: Add polling thread support for
+    slot status.
+  * Added acsccid-1.1.5-polling-unplug.patch: Let pcsc-lite delay the polling if
+    the reader is unplugged.
+  * Added acsccid-1.1.5-libusb-1.0.8.patch: Fix the compatibility with libusb
+    1.0.8.
+
+-------------------------------------------------------------------
+Wed Oct 25 03:57:55 UTC 2017 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.5.
+  * Add the following readers support:
+    ACR1252IMP 1S CL Reader
+    AMR220 Reader
+    APG8201-B2
+  * Fix ACR39U memory card problem.
+  * Rename ACR3901U ICC Reader to ACR3901 ICC Reader.
+  * PowerOn: use automatic voltage selection when needed.
+  * PowerOn: move from 1.8V to 5V if 1.8V is not supported.
+  * PowerOn: always try every possible voltage values.
+  * udev rule: allow rule overwrite.
+
+-------------------------------------------------------------------
+Fri Dec 16 04:32:29 UTC 2016 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.4.
+
+-------------------------------------------------------------------
+Thu Jun 23 07:27:59 UTC 2016 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.3.
+
+-------------------------------------------------------------------
+Fri Feb 19 03:36:40 UTC 2016 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.2.
+
+-------------------------------------------------------------------
+Fri Nov  6 06:22:00 UTC 2015 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.1.
+
+-------------------------------------------------------------------
+Mon Dec 15 06:44:45 UTC 2014 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.1.0.
+
+-------------------------------------------------------------------
+Thu Jul  3 07:58:55 UTC 2014 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.8.
+
+-------------------------------------------------------------------
+Tue Jun 17 02:06:55 UTC 2014 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.7.
+
+-------------------------------------------------------------------
+Wed Apr 23 09:54:35 UTC 2014 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.6.
+
+-------------------------------------------------------------------
+Thu Sep  5 02:49:25 UTC 2013 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.5.
+
+-------------------------------------------------------------------
+Thu Oct 18 08:52:59 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules.d directory location.
+
+-------------------------------------------------------------------
+Mon Jun 25 08:37:33 UTC 2012 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.4.
+
+-------------------------------------------------------------------
+Fri Jan 13 09:37:09 UTC 2012 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.3.
+- Updated copyright.
+- Added USB IDs of readers.
+- Removed acsccid-1.0.2-pcscd-autostart.patch.
+- Removed pcsc-lite-1_7_3.patch.
+- Included ChangeLog from upstream.
+
+-------------------------------------------------------------------
+Wed Jun 22 13:11:05 UTC 2011 - wr@rosenauer.org
+
+- fix compatibility with pcsc-lite >= 1.7.3
+
+-------------------------------------------------------------------
+Wed Jun 22 03:16:13 UTC 2011 - godfrey.chung@acs.com.hk
+
+- Updated to version 1.0.2 (22/6/2011):
+  * Fix non-redistributable reference manual problem.
+- Updated Url and Source.
+
+-------------------------------------------------------------------
+Fri Apr 29 04:00:51 UTC 2011 - godfrey.chung@acs.com.hk
+
+- Created package.
+- Based on pcsc-ccid.spec.
+

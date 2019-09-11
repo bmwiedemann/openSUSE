@@ -1,0 +1,13 @@
+[Unit]
+Description=Jabber/XMPP Server
+After=network-online.target mysql.service
+
+[Service]
+Type=forking
+PIDFile=/run/prosody/prosody.pid
+ExecStart=/usr/bin/prosodyctl start
+ExecStop=/usr/bin/prosodyctl stop
+
+[Install]
+WantedBy=multi-user.target
+Alias=org.prosody.service

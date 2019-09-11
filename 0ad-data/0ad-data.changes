@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue Dec 25 12:18:12 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.23b:
+  See https://play0ad.com/re-release-of-0-a-d-alpha-23-ken-wood/
+
+-------------------------------------------------------------------
+Fri May 18 12:21:27 UTC 2018 - mvetter@suse.com
+
+- Use upstream site to download because sourceforge tarball is
+  broken.
+
+-------------------------------------------------------------------
+Fri May 18 09:12:19 UTC 2018 - mvetter@suse.com
+
+- Update to 0.0.23:
+  + Sync with the game engine.
+
+-------------------------------------------------------------------
+Wed Nov  7 13:42:58 UTC 2017 - adam@mizerski.pl
+
+- Fixed license string.
+
+-------------------------------------------------------------------
+Fri Jul 28 10:46:45 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.22.0:
+  + Sync with the game engine.
+
+-------------------------------------------------------------------
+Wed Dec  7 00:12:52 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.21.0
+
+-------------------------------------------------------------------
+Tue Aug 30 09:58:43 UTC 2016 - rpm@fhiessen.de
+
+- Use system provided fonts
+- Use correct licenses for the License tag.
+
+-------------------------------------------------------------------
+Fri Jun 17 13:32:08 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add _constraints file for ppc64 builder
+
+-------------------------------------------------------------------
+Sat Apr  2 13:37:49 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.0.20
+
+-------------------------------------------------------------------
+Fri Nov 27 09:53:03 UTC 2015 - mvetter@suse.com
+
+- Update to version 0.0.19
+
+-------------------------------------------------------------------
+Thu Apr  2 08:32:53 UTC 2015 - opensuse@oeschti.de
+
+- Update to version 0.0.18
+
+-------------------------------------------------------------------
+Mon Oct 13 19:17:58 UTC 2014 - opensuse@dstoecker.de
+
+- update to version 0.0.17
+
+-------------------------------------------------------------------
+Tue May 20 11:14:51 UTC 2014 - adrian@suse.de
+
+- Update to 0.0.16.
+
+-------------------------------------------------------------------
+Sat Jan  4 20:22:00 UTC 2014 - aj@ajaissle.de
+
+- Update to 0.0.15.
+
+-------------------------------------------------------------------
+Tue Sep 10 17:58:44 UTC 2013 - mailaender@opensuse.org
+
+- Update to 0.0.14.
+- Assets are CC licensed http://play0ad.com/game-info/project-overview/ 
+
+-------------------------------------------------------------------
+Wed Apr  3 16:06:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.0.13.
+
+-------------------------------------------------------------------
+Thu Mar 21 14:10:45 UTC 2013 - joop.boonen@opensuse.org
+
+- Updated the License 
+
+-------------------------------------------------------------------
+Sun Dec 16 21:55:40 UTC 2012 - philip@zaynar.co.uk
+
+- Update to 0.0.12
+- Remove obsolete unused Debian build scripts
+
+-------------------------------------------------------------------
+Sun Oct 14 10:56:21 UTC 2012 - philip@zaynar.co.uk
+
+- Update to 0.0.11
+- New version number scheme
+
+-------------------------------------------------------------------
+Wed May 16 20:14:34 UTC 2012 - philip@zaynar.co.uk
+
+- Update to r11863
+
+-------------------------------------------------------------------
+Thu Mar 15 17:35:49 UTC 2012 - philip@zaynar.co.uk
+
+- Update to r11339
+
+-------------------------------------------------------------------
+Fri Dec 23 19:53:20 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r10803
+
+-------------------------------------------------------------------
+Sat Sep 17 12:03:28 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r10288
+
+-------------------------------------------------------------------
+Sun Jul 10 12:17:14 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9786
+
+-------------------------------------------------------------------
+Fri May 20 14:07:52 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9530
+
+-------------------------------------------------------------------
+Fri Mar 11 16:52:07 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9049
+
+-------------------------------------------------------------------
+Fri Dec 10 23:40:26 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r8832
+
+-------------------------------------------------------------------
+Sun Oct 17 22:15:45 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r8413
+
+-------------------------------------------------------------------
+Sun Aug 15 15:29:40 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r7970
+
+-------------------------------------------------------------------
+Wed Jul 21 23:34:17 UTC 2010 - bitshuffler@opensuse.org
+
+- Initial package
+

@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Tue Jun 18 08:43:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.3:
+  * Add support for PEP 570 (positional-only keyword parameters)
+
+-------------------------------------------------------------------
+Mon Apr 29 07:58:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.2:
+  * Add support for Python 3.8.
+
+-------------------------------------------------------------------
+Mon Mar  4 16:51:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * many bugfixes all around and support for new pythons
+- Merged all our patches:
+  * python-Genshi-bug-602-python35-support.patch
+  * python-Genshi-bug-602-python35-support-python27-fix.patch
+  * python-genshi-py3-escape-sequence-doctest.patch
+  * python-genshi-py37-stopiteration.patch
+  * python-Genshi-0.7-disable-speedups-for-python34.patch
+  * python-Genshi-0.7-isstring-helper.patch
+  * python-Genshi-0.7-python34-ast-support.patch
+  * python-Genshi-0.7-sanitizer-test-fixes.patch
+  * changeset_r1242.diff
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug  7 07:48:29 UTC 2018 - tchvatal@suse.com
+
+- Add patches to build on python 3.7:
+  * python-genshi-py3-escape-sequence-doctest.patch
+  * python-genshi-py37-stopiteration.patch
+
+-------------------------------------------------------------------
+Tue Apr  6 17:08:45 UTC 2017 - jmatejek@suse.com
+
+- always build as arch-dependent
+- build docs as a single noarch package
+
+-------------------------------------------------------------------
+Tue Apr  6 17:08:35 UTC 2017 - aloisio@gmx.com
+
+- Added python-Genshi-0.7-disable-speedups-for-python34.patch,
+  python-Genshi-0.7-isstring-helper.patch,
+  python-Genshi-0.7-python34-ast-support.patch,
+  python-Genshi-0.7-sanitizer-test-fixes.patch,
+  python-Genshi-bug-602-python35-support.patch,
+  python-Genshi-bug-602-python35-support-python27-fix.patch
+- Enabled tests
+
+-------------------------------------------------------------------
+Thu Apr  6 15:53:52 UTC 2017 - toddrme2178@gmail.com
+
+- Update singlespec build
+- Use pypi download url
+
+-------------------------------------------------------------------
+Mon Dec 19 17:34:46 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+
+-------------------------------------------------------------------
+Fri Jul 24 20:36:31 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build on non-SUSE distributions
+
+-------------------------------------------------------------------
+Tue Feb 17 10:53:23 UTC 2015 - opensuse@dstoecker.de
+
+- backport fix for bug 566 (pop from empty) from 0.7 devel (changeset_r1242.diff)
+
+-------------------------------------------------------------------
+Tue Oct 22 14:31:18 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 0.7
+ * Add support for Python 3.1, 3.2 and 3.3 (via 2to3) and for PyPy. The
+   majority of the coding was done in a sprint run by the Cape Town Python
+   Users Group with financial assistance from the Python Software Foundation.
+ * Default input and output encodings changed from UTF-8 to None (i.e. unicode
+   strings).
+ * Skip Mako benchmarks if Mako isn't installed (rather than failing
+   completely).
+- Update to 0.6.1
+ * Security fix to enhance sanitizing of CSS in style attributes. Genshi's
+   `HTMLSanitizer` disallows style attributes by default (this remains
+   unchanged) and warns against such attacks in its documentation, but
+   the provided CSS santizing is now less lacking (see #455).
+ * Fix for error in how `HTMLFormFiller` would handle `textarea` elements if
+   no value was not supplied form them.
+ * The `HTMLFormFiller` now correctly handles check boxes and radio buttons
+   with an empty `value` attribute.
+ * Template `Context` objects now have a `.copy` method.
+ * Added a simple `tox.ini` file for using tox to test against multiple
+   verions of Python.
+ * Fix for bug in `QName` comparison (see #413).
+ * Fix for bug in handling of trailing events in match template matches
+   (see #399).
+ * Fix i18n namespace declaration in documentation (see #400).
+ * Fix for bug in caching of events in serializers by no longer caching
+   `(TEXT, Markup)` events (see #429).
+ * Fix handling of `None` by `Markup.escape` in `_speedups.c` (see #439).
+ * Fix handling of internal state by match templates (relevant when multiple
+   templates match the same part of the stream, see #370).
+ * Fix handling of multiple events between or on either side of start and end
+   tags in translated messages (see #404).
+ * Fix test failures caused by changes in HTMLParser in Python 2.7 (see #501).
+ * Fix infinite loop in interplotation lexing that was introduced by a change
+   in Python 2.7's tokenizer (see #540).
+ * Fix handling of processing instructions without data (see #368).
+ * Updated MANIFEST.in so as not to rely on build from Subersion 1.6.
+
+-------------------------------------------------------------------
+Thu Sep  1 14:29:31 UTC 2011 - saschpe@suse.de
+
+- Renamed to python-Genshi (from python-Genshi)
+- Changed license to BSD-3-Clause (SPDX style) from BSD3c
+- Fixed doc-file-dependency rpmlint issue
+
+-------------------------------------------------------------------
+Thu Mar  3 09:16:11 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup
+  * Proper SUSE changes file and removed changelog from spec
+  * Added proper license header
+  * Package files COPYING, README.txt and docs and examples
+- Split of documentation package
+
+-------------------------------------------------------------------
+Sun Apr 25 18:02:50 UTC 2010 - bitdealer@gmail.com
+
+- Updated to 0.6
+
+-------------------------------------------------------------------
+Mon Aug  4 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- Updated to 0.5.1
+
+-------------------------------------------------------------------
+Thu Feb 28 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- Fixed build errors
+- Updated to 0.4.4
+
+-------------------------------------------------------------------
+Mon Oct 15 00:00:00 UTC 2007 - nix@opensuse.org
+
+- Clean up spec file and change name to python-geneshi
+
+-------------------------------------------------------------------
+Sun Jul 22 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- Initial package

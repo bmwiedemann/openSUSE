@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/open-iscsi/tcmu-runner.git</param>
+    <param name="subdir"></param>
+    <param name="filename">tcmu-runner</param>
+    <param name="versionformat">1.4.0</param>
+    <param name="revision">v1.4.0</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">tcmu-runner*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

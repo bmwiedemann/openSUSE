@@ -1,0 +1,21 @@
+
+[    9s] bench.o: In function `BMK_benchMem':
+[    9s] /home/abuild/rpmbuild/BUILD/lz4-1.8.0/programs/bench.c:221: undefined reference to `LZ4_XXH64'
+
+---
+ lib/xxhash.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lz4-1.9.1/lib/xxhash.h
+===================================================================
+--- lz4-1.9.1.orig/lib/xxhash.h
++++ lz4-1.9.1/lib/xxhash.h
+@@ -107,7 +107,7 @@ typedef enum { XXH_OK=0, XXH_ERROR } XXH
+ #    define XXH_PUBLIC_API static
+ #  endif
+ #else
+-#  define XXH_PUBLIC_API   /* do nothing */
++#  define XXH_PUBLIC_API __attribute__((visibility("default"))) /* do nothing */
+ #endif /* XXH_INLINE_ALL || XXH_PRIVATE_API */
+ 
+ /*! XXH_NAMESPACE, aka Namespace Emulation :

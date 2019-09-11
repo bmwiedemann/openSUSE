@@ -1,0 +1,226 @@
+From ae6975fdf9721494ca37315956b85fcd38dcf888 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arno=20T=C3=B6ll?= <debian@toell.net>
+Date: Fri, 20 Jul 2012 13:17:55 +0200
+Subject: [PATCH 01/12] add istgtcontrol manpage
+
+Add the manpages for the istgtcontrol.1 command. Modified files:
+* doc/istgtcontrol.1.in - new file
+* doc/Makefile.in - change Makefile to make use of the manpage
+Forwarded: Yes
+Applied-Upstream: not yet
+Last-Update: 2010-10-07
+---
+ doc/Makefile.in       |  22 +++++---
+ doc/istgtcontrol.1.in | 140 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 154 insertions(+), 8 deletions(-)
+ create mode 100644 doc/istgtcontrol.1.in
+
+diff --git doc/Makefile.in doc/Makefile.in
+index 407f234..ad333be 100644
+--- doc/Makefile.in
++++ doc/Makefile.in
+@@ -22,23 +22,25 @@ MKDIR_P  = @MKDIR_P@
+ 
+ source   = 
+ header   = 
+-document = QUICKSTART QUICKSTART.jp istgt.1.in
++document = QUICKSTART QUICKSTART.jp
+ sample   = 
++MANPAGES = $(patsubst %.1.in, %.1, $(wildcard *.1.in))
+ 
+ DISTDIR = $(top_srcdir)/`cat $(top_srcdir)/distdir`
+ DISTFILES = Makefile.in \
+ 	$(header) $(source) \
+ 	$(document) $(sample)
++DISTFILES += $(MANPAGES)
+ 
+ #########################################################################
+ 
+ .PHONY: all install install-doc install-dirs install-doc-dirs
+-all: istgt.1
++all: $(MANPAGES)
+ 
+-istgt.1:
++$(MANPAGES):
+ 	$(SED) -e 's:%%PREFIX%%:$(prefix):g' \
+ 		-e 's:%%CONFIGDIR%%:$(configdir):g' \
+-		-e 's:%%MEDIADIR%%:$(mediadir):g' < istgt.1.in > $@
++		-e 's:%%MEDIADIR%%:$(mediadir):g' < $(patsubst %.1, %.1.in, $@) > $@
+ 
+ dist: $(DISTFILES)
+ 	$(MKDIR_P) $(DISTDIR)/$(subdir)
+@@ -48,9 +50,13 @@ dist: $(DISTFILES)
+ 	done
+ 
+ install: install-dirs
+-	$(INSTALL) -m 0644 istgt.1 $(DESTDIR)$(mandir)/man1/
+-	-rm -f $(DESTDIR)$(mandir)/man1/istgt.1.gz
+-	gzip -9 $(DESTDIR)$(mandir)/man1/istgt.1
++	set -e
++	for file in $(MANPAGES) ; \
++	do \
++		$(INSTALL) -c -m 0644 $$file $(DESTDIR)$(mandir)/man1/ ; \
++		rm -f $(DESTDIR)$(mandir)/man1/$$file.gz ; \
++		gzip -9 $(DESTDIR)$(mandir)/man1/$$file ; \
++	done
+ 
+ install-doc: install-doc-dirs
+ 	$(INSTALL) -m 0644 $(top_srcdir)/README $(DESTDIR)$(datadir)/doc/istgt/
+@@ -66,7 +72,7 @@ install-doc-dirs:
+ 
+ .PHONY: clean distclean depend
+ clean:
+-	-rm -f istgt.1
++	-rm -f $(MANPAGES)
+ 	-rm -f a.out *.o *.core
+ 	-rm -f *~
+ 
+diff --git doc/istgtcontrol.1.in doc/istgtcontrol.1.in
+new file mode 100644
+index 0000000..e5f843c
+--- /dev/null
++++ doc/istgtcontrol.1.in
+@@ -0,0 +1,140 @@
++.TH istgtcontrol 1 "Oct 07, 2011" "istgtcontrol"
++.SH NAME
++istgtcontrol \- istgt iSCSI target command utility
++.SH SYNOPSIS
++.B istgtcontrol
++[options] <command> [<file>]
++.SH DESCRIPTION
++\fBistgtcontrol\fP is a command and control utility for \fBistgt\fP(1).
++It can be used to query and change the status of a local or remote
++\fBistgt\fP instance.
++.PP
++\fBistgtcontrol\fP supports the commands denoted below to interact with
++the \fBistgt\fP instance. By default it connects and authenticates to
++the iSCSI target portal specified in the \fBistgtcontrol.conf\fP
++configuration file and uses CHAP credentials denoted there, if any.
++Both can be overridden by using the respecitve command line arguments.
++.SH COMMANDS
++
++\fBistgtcontrol\fP understands the following commands which can be
++forwarded to \fBistgt\fP:
++
++.TP
++.BI "noop"
++Do not actually do anything, but test responsiveness of the portal and
++test CHAP credentials only.
++.TP
++.BI "version"
++Retrieve the \fBistgt\fP version number providing the iSCSI
++portal \fBistgtcontrol\fP connected to.
++.TP
++.BI "list"
++List all, or the specified targets only, which shared by the portal.
++.TP
++.BI "load"
++Load a new media to the specified unit. This command issues the same
++command as if a drive tray had been closed on a SCSI device.
++
++.TP
++.BI "unload"
++Unload a media from the specified unit. This command issues the same
++command as if the drive tray had been opened from a SCSI device.
++
++.TP
++.BI "change" " \fIfile\fP"
++Change the loaded media by the specified unit. This command is
++equivalent as if a new media (for example a DVD-ROM or tape cartridge) had
++been inserted in the SCSI drive. The "\fIfile\fP" argument is interpreted
++as filename to be loaded.
++
++.TP
++.BI "reset"
++Reset the specified LUN of the portal.
++.TP
++.BI "info"
++Display all connections of the portal
++
++.SH OPTIONS
++.TP
++.BI \-c " \fIconfig\fP"
++Use specified file as configuration file instead of the default file.
++.TP
++
++.BI -h " \fIhost\fP"
++Override the target portal by the specified host name or IP address. This
++defaults to "localhost" if no other host was specified in the
++configuration file.
++.TP
++.BI -p " \fIport\fP"
++Override the target portal port by the specified port number. This defaults
++to "3261" if no other port was specified in the configuration file.
++.TP
++.BI -t " \fItarget\fP"
++Specifies the target IQN which should be affected by the command given.
++There may be a default given in the configuration file. The keyword
++"\fIall\fP" is accepted by some commands and matches all exported volumes.
++.TP
++.BI -l " \fIlun\fP"
++Specifies the target LUN which should be affected by the command given.
++This defaults to "0" unless another default was provided in the configuration
++file.
++.TP
++.BI -f " \fIflags\fP"
++Specifies flags passed to the portal when loading a new media. This
++defaults to "ro". Supported \fIflags\fP are: "ro", "rw", "extend" and
++"dynamic".
++.TP
++.BI -s " \fIsize\fP"
++Specifies the size of the meda to be loaded. The default is to auto-detect the
++media size.
++.TP
++.BI -q
++Quiet mode, supress non-critical outputs.
++.TP
++.BI -v
++Verbose mode, gives more output during operations.
++.TP
++.BI -A " \fImethod\fP"
++Sets the preferred authentication method for logging in to the portal. This
++overrides any method specified in the configuration file. Supported
++methods are either CHAP/Mutual or CHAP/Auto.
++.TP
++.BI -U " \fIuser\fP"
++Sets the user to authenticate on the portal. This overrides any username
++specified in the configuration file.
++.TP
++.BI -S " \fIsecret\fP"
++Set the secret used to authenticate on the portal. This overrides any
++secret specified in the configuration file.
++.TP
++.BI -M " \fImuser\fP"
++Set the mutual authentication user. This overrides any user specified in
++the configuration file.
++.TP
++.BI -R " \fImsecret\fP"
++Set the mutual authentication secret. This overrides any secret
++specified in the configuration file.
++.TP
++.BI -H
++Display a brief usage summary and exit.
++.TP
++.BI -V
++Display the \fBistgtcontrol\fP version number and exit.
++.TP
++
++
++.SH FILES
++.PD 0
++.TP
++.I %%CONFIGDIR%%/istgtcontrol.conf
++Configuration file
++
++.PD
++.SH SEE ALSO
++\fBistgt\fP(1)
++.PD
++.SH AUTHORS
++Daisuke Aoyama <aoyama@peach.ne.jp>
++
++This manual page was written by Arno Töll (<debian@toell.net>) for the Debian
++GNU/kFreeBSD system (but may be used by others).
+-- 
+2.1.2
+

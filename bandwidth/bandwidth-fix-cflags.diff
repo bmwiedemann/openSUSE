@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index a611d75..a115b46 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,9 +19,8 @@
+ # The author may be reached at veritas@comcast.net.
+ #============================================================================
+ 
+-CFLAGS= -O6 
+-CFLAGS= -g
+-CC=gcc -Wall
++CFLAGS+= -g -Wall
++CC=gcc
+ LD=gcc 
+ SRC=main.c 
+ OBJ=main.o

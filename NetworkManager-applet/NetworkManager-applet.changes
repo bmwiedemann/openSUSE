@@ -1,0 +1,1501 @@
+-------------------------------------------------------------------
+Tue Jun 18 06:16:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase feature-app-indicator-desktop-file.patch (boo#1138523).
+
+-------------------------------------------------------------------
+Wed Jun  5 17:06:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Revert back to pkgconfig(appindicator3-0.1) BuildRequires: We do
+  not want to pull mate desktop into staging. Sub with
+  pkgconfig(ayatana-appindicator3-0.1) BuildRequires was rejected.
+
+-------------------------------------------------------------------
+Wed May 29 18:37:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.22:
+  + The applet's secret agent can now utilize external UI mode for
+    VPN plugins that support it.
+  + The Wi-Fi-related items in the applet menu are now sorted more
+    reasonably.
+  + Various improvements to the Mobile Wizard and Certificate
+    Chooser usability.
+  + Render a QR code in the applet's connection info dialog.
+  + Improved the applet's info dialog appearance.
+  + Updated translations.
+- Disable feature-app-indicator-desktop-file.patch: Needs rebase.
+- Rebase
+  NetworkManager-gnome-bsc1003069-default-agent-owned-secrets.patch
+  with quilt.
+- Rename lang subpackage following openSUSE
+  translation-update-upstream changes.
+
+-------------------------------------------------------------------
+Tue May 14 09:56:53 UTC 2019 - maurizio.galli@gmail.com
+
+- Build against Ayatana Indicators instead as it's considered 
+  the new upstream
+
+-------------------------------------------------------------------
+Fri Feb  8 17:33:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.8.20:
+  + Build of libnm-gtk, a libnm-glib compatibility library, is
+    disabled by default. It can be enabled by passing
+    --with-libnm-gtk to configure script. Nobody should need it by
+    now. Users that still use this are encouraged to let us know
+    before the libnm-glib support is removed for good.
+  + Improve the mobile broadband wizard.
+  + Fix a bug in the wifi dialog that made widgets disappear when
+    selecting a different device.
+  + Support secret agent hints needed when using IWD as wireless
+    backend.
+  + Updated translations.
+- Drop nm-applet-revert-no-show-all.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Nov  7 08:13:17 UTC 2018 - sckang@suse.com
+
+- Add nm-applet-revert-no-show-all.patch: libnma: fix wrongly
+  showing hidden GUI elements (bsc#1106705,
+  glgo#GNOME/network-manager-applet#20).
+
+-------------------------------------------------------------------
+Fri Sep  7 15:53:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.18:
+  + libnma:
+    - Fix wrongly showing hidden GUI elements, which causes
+      connection editing to behave wrong
+      (glgo#GNOME/network-manager-applet!20).
+    - c-e: Fix translation issues in GUI due to missing gettext
+      domain (bgo#792285).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 18:49:33 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.16:
+  + Fix various issues that causes GtkApplication to quit at the
+    wrong time.
+  + Read the Mobile Providers database from a build-time determined
+    location.
+  + Modernize Gtk+ 3.0 use in preparations for Gtk+ 4.0.
+  + Updated translations.
+- Add pkgconfig(mobile-broadband-provider-info) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
+Mon Jun 25 14:27:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.14:
+  + Fix an applet crash on disconnect.
+  + Fix VPN icons in AppIndicator mode.
+  + Provide (limited) secret agent service even when a keyring is
+    unavailable.
+  + Fix saving of connections with "always ask" EAP secrets.
+  + Register editor windows as GtkApplication windows, so that the
+    editor quits at the right time with --edit option.
+  + The AppStream metadata is now in /usr/share/metainfo as
+    recommended by the specification.
+  + Updated translations.
+- Drop nma-fix-applet-segfault.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jun 17 17:49:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Add nma-fix-applet-segfault.patch: NMNetworkMenuItem: Don't
+  double-free priv->dupes, fix segfault on startup (boo#1097908,
+  glgo#GNOME/network-manager-applet#2).
+
+-------------------------------------------------------------------
+Mon May 28 15:12:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.12:
+  + Allow creation of PPPoE connection without a parent interface.
+  + Add an option to set a connection as Metered.
+  + Make the form layout consistent with GNOME UI style.
+  + Convert editor into a GtkApplication with an app menu.
+  + Fix a potential crash in the certificate picker with no
+    modules.
+  + Fix build warnings with GCC 8.
+  + Support building against Ayatana AppIndicator.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + 0001-shared-compat-fix-memory-handling-of-nm_setting_vpn_.patch
+  + 0002-shared-compat-fix-memory-handling-of-nm_setting_vpn_.patch
+
+-------------------------------------------------------------------
+Sat Apr 14 19:54:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Following changes in NetworkManager:
+  + Pass libnm_gtk=false and without-libnm-gtk to meson/configure.
+  + Drop no longer needed pkgconfig(NetworkManager),
+    pkgconfig(libnm-glib), pkgconfig(libnm-glib-vpn) and
+    pkgconfig(libnm-util) BuildRequires.
+  + Drop no longer built subpackages: libnm-gtk%%{sover},
+    typelib-1_0-NMGtk-1_0 and libnm-gtk-devel.
+  + No longer handle libnm-gtk%%{sover} in post(un).
+  + Drop currently disabled
+    nm-applet-probe-radius-server-cert.patch: Obsolete since patch
+    is no longer present in NetworkManager, following this, drop
+    define with_cacert_patch and conditionals.
+
+-------------------------------------------------------------------
+Wed Mar 28 16:53:43 UTC 2018 - sflees@suse.de
+
+- Re enable appindicator in autotools BuildRequires
+- Add feature-app-indicator-desktop-file.patch to launch the startup
+  application with appindicator support and add a delay to ensure
+  that the desktop's systray service is running beforehand.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:53:43 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:36 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 12 07:28:10 UTC 2018 - fstrba@suse.com
+
+- Add
+  0001-shared-compat-fix-memory-handling-of-nm_setting_vpn_.patch
+  and
+  0002-shared-compat-fix-memory-handling-of-nm_setting_vpn_.patch:
+  fix crashes due to double frees.
+
+-------------------------------------------------------------------
+Wed Dec 27 17:09:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.8.10:
+  + Don't request secrets for Bluetooth connections. Works around a
+    bug in GNOME Shell secret agent.
+  + Fix a bug that caused invalid connections to be non-editable
+    (and thus not fixable).
+- Changes from version 1.8.8:
+  + Fix loading of secrets when editing a VPN connection.
+  + Fixes to the experimental Meson support.
+  + Updated translations.
+- Update options passed to meson following upstream changes:
+  + Denable-appindicator to Dappindicator.
+  + Denable-selinux to Dselinux.
+- Pass explicit Dintrospection=true to meson, ensure we build with
+  introspection support.
+- Clean up spec.
+- Drop
+  0001-build-meson-fix-typo-in-generation-of-libnm-gtk.pc.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec 27 15:59:35 UTC 2017 - dimstar@opensuse.org
+
+- Allow for easy switch between meson and autoconf, using
+  bcond_with (default to autoconf for now): Switch back to autoconf
+  build system: meson is not ready and breaks nm-connection-editor
+  (incompletely linked resources, boo#1072789).
+  + In case of autoconf, add libtool BuildRequires, call autoreconf
+    and use configure/make/mak_install.
+
+-------------------------------------------------------------------
+Mon Dec 18 10:14:19 UTC 2017 - sckang@suse.com
+
+- Drop nm-applet-migration-tool.patch: Not needed anymore.
+
+-------------------------------------------------------------------
+Mon Dec 18 10:06:36 UTC 2017 - dimstar@opensuse.org
+
+- Re-introduce lost -Denable-appindicator meson parameter: with the
+  migration to meson this was lost (but is still supported).
+
+-------------------------------------------------------------------
+Wed Nov  8 11:32:55 UTC 2017 - dimstar@opensuse.org
+
+- Migrate build system to meson:
+  + Add meson and gtk-doc BuildRequires.
+  + Replace configure/make/make_install logic with
+    meson/meson_build/meson_install.
+- Disable glib_schema, icon_theme and desktop_database post/postun
+  scriptlets for suse_version >= 1330: handled by file triggers.
+- Add
+  0001-build-meson-fix-typo-in-generation-of-libnm-gtk.pc.patch:
+  Fix typo in generation of libnm-gtk.pc (bgo#790056).
+
+-------------------------------------------------------------------
+Wed Nov  8 11:20:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.8.6:
+  + Added an option to build with Meson build system.
+  + Fixed a possible crash after editing Wi-Fi connections.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 29 14:49:51 UTC 2017 - olaf@aepfle.de
+
+- Obsolete also debuginfo subpackages of the packages marked as
+  Obsoletes in this specfile (bsc#1045678)
+
+-------------------------------------------------------------------
+Fri Sep 22 16:49:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.4:
+  + nm-c-e:
+    - Major rework of the nm-connection-editor UI.
+    - Add support for MACsec.
+    - Add support for new PPPoE connections not limited to
+      ethernet.
+    - Add support for bridge's group-forward-mask property.
+  + applet:
+    - Fix nm-applet's status icon when a VPN has the default route.
+    - Always center dialogs on the screen.
+  + libnma: Fix handling empty password for certificate chooser.
+  + Various bugfixes and minor improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 21 08:43:47 UTC 2017 - fcrozat@suse.com
+
+- Only BuildRequire pkgconfig(dbusmenu-gtk3-0.4) when building
+  with appindicator support.
+
+-------------------------------------------------------------------
+Fri Jun 23 19:50:06 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.8.2:
+  + It is now possible to secure the connections that use TLS, TTLS
+    and PEAP authentications by specifying a Domain name to verify
+    the remote certificate subject against.
+  + The TTLS and PEAP EAP methods now utilize the certificate
+    chooser that is capable of choosing an object from a PKCS#11
+    token.
+  + When activating a VPN connection, the routes to the VPN server
+    are now added whichever device has a default route regardless
+    of its kind.
+  + The applet now lists the Wi-Fi network connection profiles even
+    if they are enslaved to another connection.
+  + Fixed a crash after editing a connection with 802.1x security
+    setting.
+- Changes from version 1.8.0:
+  + Warn editor users if certificates have wrong SELinux labels.
+  + Added a PKCS#11 capable certificate chooser to EAP-TLS.
+  + Request Wi-Fi scan when showing the menu and update the scan
+    result list dynamically.
+  + Prevent the use from opening a file open dialog if they don't
+    have permission to edit connections (e.g. in the login manager
+    session) (CVE-2017-6590).
+  + Fix broken libnma's pygobject library.
+  + Add version macros to libnma..
+  + Updated translations.
+- Pass --without-selinux to configure.
+- Replace pkgconfig(libsecret-unstable) BuildRequires with
+  pkgconfig(libsecret-1), following upstream.
+- Add pkgconfig(gcr-3) and pkgconfig(gck-1) BuildRequires: new
+  dependencies for the PKCS#11 enabled certificate chooser.
+- Drop nm-applet-dialog-check-permissions.patch: fixed upstream.
+- Rebase
+  NetworkManager-gnome-bsc1003069-default-agent-owned-secrets.patch.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:41:38 UTC 2017 - fezhang@suse.com
+
+- Rebase nm-applet-migration-tool.patch.
+- Rebase nm-applet-dialog-check-permissions.patch.
+
+-------------------------------------------------------------------
+Tue Mar  7 10:37:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.6:
+  + Avoid unnecessarily requesting permission to access firewalld.
+  + Warn when editing a connection that has properties we don't
+    recognize. Useful when running with newer NetworkManager
+    daemon.
+  + API documentation for libnma is now built.
+  + Added build options to enable LTO and section garbage
+    collection.
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 00:03:48 UTC 2017 - zaitor@opensuse.org
+
+- Rename libnma-data to nma-data: It's the correct thing to do and
+  also it silences rpmlint. Add Obsoletes and Provides to ease
+  updates.
+
+-------------------------------------------------------------------
+Tue Feb 14 23:54:26 UTC 2017 - zaitor@opensuse.org
+
+- Drop network-manager-applet-no-firewalld.patch: No longer gives a
+  warning, so we do not need to carry this one anymore
+  (boo#1025349).
+
+-------------------------------------------------------------------
+Wed Feb  1 20:58:55 UTC 2017 - zaitor@opensuse.org
+
+- Add libnma-data Requires to the main package.
+- Move %glib2_gsettings_schema_requires and post(un) handling to
+  libnma-data where these now live.
+
+-------------------------------------------------------------------
+Wed Jan 25 22:01:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Added the capability to start inport of a VPN connection from
+    the command line with "nm-connection-editor --import" option.
+  + Allow editing of Ethernet link properties, such as link speed
+    or duplex setting.
+  + Added support for creating and editing IP tunnel connections.
+  + Added support for editing Proxy setting whe built with
+    NetworkManager 1.6 or newer.
+  + Added support for TTLS/MSCHAPV2 method.
+  + Improved the cloned MAC address selection.
+  + Lot of bug fixes.
+  + Updated translations.
+- Rebase network-manager-applet-no-firewalld.patch.
+- Drop libnm-gtk-data sub package, no longer built. Following this
+  add libnm-gtk-data Obsoletes to libnm-gtk package, and remove
+  Requires.
+- Drop nm-applet-support-ttls-mschapv2.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 10:43:17 UTC 2017 - zaitor@opensuse.org
+
+- Move schema files to common sub package libnma-data.
+
+-------------------------------------------------------------------
+Thu Dec  1 15:29:32 UTC 2016 - dimstar@opensuse.org
+
+- Disable appindicator support on SLE: the required dependencies
+  are not available.
+
+-------------------------------------------------------------------
+Sat Nov  5 19:54:55 UTC 2016 - zaitor@opensuse.org
+
+- Package libnma-data as noarch.
+
+-------------------------------------------------------------------
+Sat Oct  1 09:12:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Change the summary to something less GNOME-specific.
+- Don't install the ChangeLog file.
+- Replace the following BuildRequires for their pkgconfig
+  equivalent: gobject-introspection-devel, gtk3-devel and
+  libnotify-devel for: pkgconfig(gobject-introspection-1.0),
+  pkgconfig(gtk+-3.0), pkgconfig(libnotify).
+- Drop dbus-1-devel and dbus-1-glib-devel BuildRequires: We already
+  have pkgconfig(dbusmenu-gtk3-0.4) that pulls in all the dbus
+  devel packages.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:45:06 UTC 2016 - zaitor@opensuse.org
+
+- Rename package to NetworkManager-applet aligning slightly more
+  close to upstream name.
+- Provide/Obsolete old name NetworkManager-gnome.
+- Run spec-cleaner to modernise spec file. Following this, add
+  pkgconfig BuildRequires.
+- Rename NetworkManager-gnome-no-firewalld.patch to
+  network-manager-applet-no-firewalld.patch, align with new package
+  name.
+- Drop nm-icons.nm-icons.tar.gz as source package and handling of
+  it in spec, not needed anymore.
+- Stop using suse-update-desktop files for nm-applet.desktop file,
+  no longer needed.
+- Stop passing --disable-migration to configure, no longer needed,
+  nor regcognized.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:35:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.4.2:
+  + Removed UI property that required gtk3 >= 3.16
+  + Added a workaround for broken strict matching with old Jansson
+    versions.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Added support for multiple VPN connections.
+  + Added new pages for changing team and team-port configurations.
+  + Improved error reporting in the wireless security page.
+  + A single VPN plugins now supports the creation of multiple
+    connection types.
+  + Fixed some crashes.
+- Add pkgconfig(jansson) BuildRequires: new dependency for team
+  support.
+- Rebase NetworkManager-gnome-no-firewalld.patch.
+- No longer rename org.gnome.nm-connection-editor.appdata.xml to
+  nm-connection-editor.appdata.xml: this is fixed in the tarball
+  already.
+- Drop nm-applet-fix-export-button-not-sensible.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:36 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Connecting to multiple VPNs from the applet is now possible.
+  + A minor crash bugfix.
+  + Updated translations.
+- Drop NetworkManager-wrongly-placed-brace.patch: Fixed upstream.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Stop packaging AUTORS and README, they are empthy files.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:35 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + Appdata: fix the screenshot url.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:34 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.93 (1.2-rc1):
+  + Updated translations.
+- Changes from version 1.1.92:
+  + Numerous crasher and memory leak bugs were fixed.
+- Add pkgconfig(dbusmenu-gtk3-0.4) BuildRequires: new dependency
+  for AppIndicator integration.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:33 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.91:
+  + Port to GDBus.
+  + Bugs fixed: bgo#686357, bgo#760866, bgo#760946, bgo#760966,
+    bgo#762421, rh#1279937, rh#1284671.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:32 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.90:
+  + Ported to libnm.
+  + Added new libnm-based client library (libnma).
+  + Add support for libappindicator.
+- Add pkgconfig(libnm) BuildRequires: new dependency.
+- Disable nm-applet-private-connection.patch: needs rebase.
+- Rebase NetworkManager-gnome-no-firewalld.patch.
+- Flip with_cacert_patch off (set to 0): patch needs rebase.
+- Split the .ui files out of libnm-gtk0 into libnm-gtk-data, as
+  those files violate the SLPP, making it impossible to install
+  multiple versions of libnm-gtk.
+- Split out new subpackage for the new libnma library:
+  + libnma0, libnma-data, libnma-devel, typelib-1_0-NMA-1_0.
+- Unconditionally pass --with-appindicator to configure: this
+  support is now upstream supported. Remove 2nd spec file and
+  traces of the dual-spec setup.
+- Drop nm-applet-app-indicator.patch: no longer needed.
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:31 UTC 2016 - hpj@suse.com
+
+- Add NetworkManager-gnome-bsc1003069-default-agent-owned-secrets.patch
+  (bsc#1003069).
+
+-------------------------------------------------------------------
+Wed Sep  7 11:12:31 UTC 2016 - sckang@suse.com
+
+- Drop nm-applet-fix-missing-translation.patch: This patch leads to
+  conflict between accelerate keys. And it won't fix the missing
+  translations, since the problem comes from those untranslated
+  POs.
+- Add nm-applet-migration-tool.patch: Build and autostart migration
+  tool to migrate old VPN settings (bsc#952123, bsc#1001137,
+  bsc#1000648).
+- Add nm-applet-fix-export-button-not-sensible.patch: Pick upstream
+  commit 324f17354146242307687c75908cba0362606c8c to fix
+  sensitivity of "Export" button for VPN (bsc#991607).
+- Add nm-applet-dialog-check-permissions.patch: Check permissions
+  before showing 802.1x wifi new-connection dialog, upstream commit
+  38303e04 (bsc#1028792, CVE-2017-6590).
+- Add nm-applet-support-ttls-mschapv2.patch: Add support for plain
+  MSCHAPV2 as inner authentication method when using TTLS as outer
+  authentication method (bsc#1009019, bgo#768489).
+
+
+-------------------------------------------------------------------
+Mon Aug 29 02:31:42 UTC 2016 - sckang@suse.com
+
+- Drop nm-applet-build-don-t-try-to-build-bluetooth-widget-with-bluez5.patch:
+  Fixed in upstream.
+
+-------------------------------------------------------------------
+Mon Jul 25 09:08:12 UTC 2016 - sckang@suse.com
+
+- Add nm-applet-fix-missing-translation.patch: Fix missing
+  translation in ce-page-team.ui(bsc#988533).
+
+-------------------------------------------------------------------
+Mon May 23 09:43:03 UTC 2016 - dimstar@opensuse.org
+
+- Add NetworkManager-wrongly-placed-brace.patch: fix wrongly placed
+  brace.
+
+-------------------------------------------------------------------
+Wed Apr 13 10:54:22 UTC 2016 - sckang@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop nm-applet-build-don-t-try-to-build-bluetooth-widget-with-newer.patch:
+  Fixed in upstream.
+- Rebase nm-applet-build-don-t-try-to-build-bluetooth-widget-with-bluez5.patch.
+- Rebase nm-applet-probe-radius-server-cert.patch.
+- Rebase nm-applet-private-connection.patch.
+- Add NetworkManager-appindicator.changes.
+- Add NetworkManager-appindicator.spec.
+- Add NetworkManager-gnome-no-firewalld.patch.
+- Add nm-applet-app-indicator.patch.
+- Add nm-icons-appindicator.tar.gz.
+- Add pre_checkin.sh.
+
+-------------------------------------------------------------------
+Thu Apr  7 08:23:41 UTC 2016 - sckang@suse.com
+
+- Add nm-applet-build-don-t-try-to-build-bluetooth-widget-with-bluez5.patch
+  + BlueZ 5 supported is default, disable the bluetooth plugin
+    when BlueZ 5 is used.(bnc#876552)
+  + Add bluez Requires
+
+-------------------------------------------------------------------
+Wed Dec 23 21:24:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.10:
+  + Bluetooth page in connection editor is now populated with
+    available Bluetooth devices.
+  + Fix a possible agent crash when cancelling the secrets request.
+  + Updated translations.
+- Rebase nm-applet-private-connection.patch.
+
+-------------------------------------------------------------------
+Mon Dec  7 10:50:05 UTC 2015 - dimstar@opensuse.org
+
+- Split nm-connection-editor into a separate package
+  (NetworkManager-connection-editor), which is then recommended by
+  NetworkManager-gnome and NetworkManager-appindicator. The VPN
+  plugins should then require connection editor, as that's what
+  they're actually extending. As a result,
+  NetworkManager-appindicator users would receive the option to
+  install those plugins without conflicts.
+
+-------------------------------------------------------------------
+Sun Nov 22 14:02:51 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.8:
+  + Added hotspot support to the editor.
+  + Password widgets now emits a signal for secret flag changes.
+  + The connection validation errors are now communicated in a
+    tooltip.
+  + The editor is now able to edit the VLAN flags.
+  + Several bug fixes.
+  + Updated translations.
+- Rebase nm-applet-probe-radius-server-cert.patch.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:07:12 UTC 2015 - dimstar@opensuse.org
+
+- Align the name of the appdata file with the desktop file: rename
+  org.gnome.nm-connection-editor.appdata.xml to
+  nm-connection-editor.appdata.xml
+
+-------------------------------------------------------------------
+Wed Sep 16 17:25:59 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata to fix build in Leap 42.1.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:25:16 UTC 2015 - simon@simotek.net
+
+- Add dual spec file for building appindicator support
+- Add nm-applet-app-indicator.patch: introduce appindicator
+  support.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:25:16 UTC 2015 - simon@simotek.net
+
+- Update to version 1.0.6:
+  + Added option to set MTU of Team devices.
+  + Added AppData for nm-connection-editor.
+  + Build fixes.
+  + Updated Czech, Polish and Hungarian translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:52:54 UTC 2015 - dimstar@opensuse.org
+
+- Toggle with_cacert_patch to 1: the patch has been rebased.
+
+-------------------------------------------------------------------
+Wed Jul 15 11:45:35 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + Setting MTU for a bond device is now supported.
+  + Connecting to a wireless network from the NetworkManager applet
+    no longer results in an attempt to create system-wide
+    connections. This fixes the ability to connect to a wireless
+    network for non-privileged user.
+  + The master interface name is used instead of master connection
+    UUID for slave connections created with nm-connection-editor.
+    This fixes compatibility of the ifcfg configuration files with
+    the legacy network service.
+  + It is now possible to specify an interface name instead of a
+    MAC address when editing a connection using
+    nm-connection-editor.
+  + The WWAN connections now have IPv6 enabled by default.
+  + libnm-gtk includes functions for password storage selection,
+    which eases implementation of password GUI for VPN plugins and
+    other users.
+- Rebase nm-applet-probe-radius-server-cert.patch and
+  nm-applet-probe-radius-server-cert.patch.
+- Toggle with_cacert_patch to 0: the cacert patch is currently
+  disabled in NetworkManager (boo#938198).
+
+-------------------------------------------------------------------
+Wed May  6 07:58:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + The applet is no longer started in GNOME 3.
+  + STP controls are no longer displayed if STP is disabled.
+  + Improved accessibility for screen reader users.
+  + Multiple bugs fixed, including crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 12 10:30:50 UTC 2015 - dimstar@opensuse.org
+
+- Add with_cacert_patch condition. When enabled:
+  + Add NetworkManager(cacert-patch) Requires
+  + Apply nm-applet-probe-radius-server-cert.patch
+  + This needs to be toggled whenever NetworkManager is updated
+    and the nm-probe-radius-server-cert.patch there is not rebased
+    yet.
+
+-------------------------------------------------------------------
+Tue Mar 10 03:06:20 UTC 2015 - glin@suse.com
+
+- Refresh and enable nm-applet-probe-radius-server-cert.patch
+
+-------------------------------------------------------------------
+Tue Jan 27 10:32:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + Added support for editing Bluetooth mobile broadband
+    connections.
+  + Added support for IPv6 mobile broadband connections.
+  + Allow IPv6-only configuration for more connection types.
+  + The applet and editor are no longer shown in GNOME 3, which has
+    its own network indicator and control panel.
+- Rebase NetworkManager-gnome-no-firewalld.patch.
+- Disable nm-applet-probe-radius-server-cert.patch for now: needs
+  rebase (possibly only in NetworkManager itself).
+
+-------------------------------------------------------------------
+Tue Sep 30 22:34:01 UTC 2014 - dimstar@opensuse.org
+
+- Add NetworkManager-gnome-no-firewalld.patch: Allow to build
+  without firewalld integration (which openSUSE does not offer,
+  boo#897636).
+- Pass --without-firewalld to configure, to disable integration.
+
+-------------------------------------------------------------------
+Tue Aug 19 10:37:17 UTC 2014 - acho@suse.com
+
+- Added patches:
+  - Add nm-applet-build-don-t-try-to-build-bluetooth-widget-with-newer.patch
+    + Since the plugin API no longer exists(bnc#876552).
+  - Add nm-applet-build-network-manager-applet-add-rules-for-BlueZ-.patch
+    + BlueZ 5 supported is default,
+      disable the bluetooth plugin when BlueZ 5 is used(bnc#876552).
+    + Add bluez Requires
+
+-------------------------------------------------------------------
+Tue Jul 15 09:51:28 UTC 2014 - glin@suse.com
+
+- Rebase nm-applet-probe-radius-server-cert.patch.
+
+-------------------------------------------------------------------
+Wed Jul  9 20:29:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.10.0:
+  + Added controls for IPv6 privacy extensions.
+  + Added support for VPN hints for new/additional secrets during
+    connection.
+  + Added support for Data Center Bridging and FibreChannel over
+    Ethernet configuration.
+  + Improved connections to new hidden WiFi networks.
+  + Allow slaves VLANs/slaves of more device types.
+  + Added support for changing password flags.
+  + Passwords/secrets now default to user-agent storage instead of
+    system-wide storage.
+  + Added support for editing Team connections.
+  + Rework CA certificate warnings to be less annoying.
+- Rebase nm-applet-private-connection.patch.
+- Disable nm-applet-probe-radius-server-cert.patch: needs further
+  investigation.
+
+-------------------------------------------------------------------
+Fri Apr 25 08:20:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.8.10:
+  + Fixed the applet to not show the PIN unlock dialog even if the
+    PIN was saved in the keyring.
+  + Fixed a GSettings-related warning when using GLib 2.40.
+
+-------------------------------------------------------------------
+Fri Apr  4 12:02:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.8.9:
+  + Changed the default configuration of WPA Enterprise EAP
+    certificate lookup to not use the system CA store by default,
+    since this turns out to be a bad default.
+  + We no longer try to build the bluetooth widget when using newer
+    versions of gnome-bluetooth (that no longer support plugins).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 24 13:00:09 UTC 2013 - dimstar@opensuse.org
+
+- Drop gnome-bluetooth-devel BuildRequires: on GNOME 3.11.x, the
+  bluetooth widget is no longer supported.
+
+-------------------------------------------------------------------
+Mon Nov 11 18:28:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.8.8:
+  + nm-applet is now started under GNOME 3 again (but never acts as
+    a "secret agent" under GNOME Shell). This fixes the lack of
+    password dialogs in some GNOME-3-based sessions (bgo#709410),
+    and fixes the lack of a mobile broadband PIN unlock dialog
+    under GNOME Shell.
+  + Fixed a warning when closing the VPN import/export dialogs.
+  + Made nm-applet use g_debug(); set G_MESSAGES_DEBUG=nm-applet to
+    see logging now.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  1 10:35:42 UTC 2013 - glin@suse.com
+
+- Rebase nm-applet-private-connection.patch for 0.9.8.4
+  (bnc#751211)
+- Add nm-applet-probe-radius-server-cert.patch to probe the
+  certificate the RADIUS server (bnc#574266)
+
+-------------------------------------------------------------------
+Fri Sep 13 17:20:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.8.4:
+  + Fix handling of bonding mode and VLAN parent fields in editor.
+  + Fix crash when failing to read secrets from the keyring.
+  + nm-applet is no longer autostarted under GNOME.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 11 17:55:18 UTC 2013 - dimstar@opensuse.org
+
+- Add dbus(org.freedesktop.secrets) Requires (bnc#828387).
+
+-------------------------------------------------------------------
+Fri Jun 21 13:02:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.8.2:
+  + Conversion from gnome-keyring to libsecret; libsecret is now
+    required to build.
+  + Editor no longer overwrites master interface name with the
+    master UUID.
+  + Fix crashes when using ModemManager 0.7/0.8.
+  + Fix allowed values for VLAN ID and MTU in the editor.
+  + Preserve existing PPP LCP echo failure and interval values.
+  + Ensure Bridge STP checkbox values are saved.
+  + Hide BSSID for Wi-Fi Ad-Hoc connections (it's autocreated by
+    the kernel).
+  + Ensure IPv6 next-hop/gateway values are sane.
+  + Fix problems with the MAC address combo box on various pages.
+  + Only request secrets from the user when allowed to.
+  + Fix running with GTK+ 2.x.
+  + Fix signal icons to work with newer libpng.
+  + Don't show Wi-Fi Security combo when not required.
+  + Improve applet icon size handling.
+  + Show more helpful errors when VPN plugins are not installed.
+  + Updated translations.
+- Replace gnome-keyring-devel BuildRequires with
+  pkgconfig(libsecret-unstable), following upstreams port to
+  libsecret.
+
+-------------------------------------------------------------------
+Fri Feb 22 19:46:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.9.8.0:
+  + Add manpages for nm-applet and nm-connection-editor.
+- Stop passing --disable-more-warnings to configure, it builds fine
+  without it now.
+- Exchange NetworkManager-devel BuildRequires for
+  pkgconfig(NetworkManager), pkgconfig(libnm-glib),
+  pkgconfig(libnm-glib-vpn) and pkgconfig(libnm-util)
+  BuildRequires, following what configure checks for.
+
+-------------------------------------------------------------------
+Sat Feb  9 21:38:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.7.997:
+  + Ensure AP mode connections are treated as Hotspot too.
+  + Build fixes.
+  + Editor fixes.
+  + Editor: hide widgets that aren't supported for VPNs on the
+    general page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 20:44:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.7.995:
+  + Rework connection editor main UI to better support different
+    connection types
+  + Add connection editor support for WiMAX, Infiniband, Bond, and
+    VLAN connections
+  + Suggest "seen BSSIDs" for WiFi BSSID entry
+  + Add connection editor support for autoconnect VPN connections
+  + Add a "General" page to the connection editor and move general
+    options to it
+  + Fix GNOME Bluetooth plugin for recent versions of GNOME
+    Bluetooth and the GNOME Control Center
+  + Add LTE and HSPA+ icons to the applet
+  + Fix connection editor command-line passing to already-running
+    instance
+  + Suppress nm-applet notifications when GNOME Shell is running
+  + Ensure 802.1x passwords default to "agent owned" and not
+    system-wide
+  + Default to using system CA certificates for new connections
+  + Add support for ModemManager 0.7/0.8
+  + Fix a crash when editing IP addresses with the XIM input
+    framework
+  + Fix handling of connection Zone when firewalld is active
+  + Fix saving a connection when ignoring a missing CA certificate
+- Add pkgconfig(mm-glib) BuildRequires: dependency for ModemManager
+  support.
+- Add pkgconfig(gudev-1.0) BuildRequires: new depdendency.
+- Add gobject-introspection-devel BuildRequires: new dependency.
+- Split new subpackage typelib-1_0-NMGtk-1_0.
+
+-------------------------------------------------------------------
+Mon Feb  4 19:54:42 UTC 2013 - dimstar@opensuse.org
+
+- Fix nm-applet-private-connection.patch: Allow to select a BT
+  paired devices a PAN/NAP device. Without this fix,
+  gnome-control-center crashes at that moment.
+
+-------------------------------------------------------------------
+Sat Oct 27 09:01:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.6.4:
+  + Better cooperation with GNOME Shell
+  + Fix connection editing from external tools when the editor is
+    already open
+  + Backport new libnm-gtk API to work with recent GNOME Control
+    Center versions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 13 08:41:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.6.2:
+  + Fix GNOME Bluetooth plugin DUN modem detection and setup.
+
+-------------------------------------------------------------------
+Tue Aug  7 18:20:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.6.0:
+  + Only handle VPN secrets for GNOME Shell 3.3 and lower.
+
+-------------------------------------------------------------------
+Tue Jul 24 07:33:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.5.96:
+  + Recognize PKCS#12 certificates imported from Firefox
+  + Pre-fill CDMA username/password in the mobile broadband wizard.
+
+-------------------------------------------------------------------
+Fri Jun 29 06:57:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.5.95:
+  + Fixed UI mnemonics.
+  + Various crash and stability fixes.
+  + Allow appending DNS servers and domains in automatic addressing
+    mode.
+  + Fix defaults for PPP echo values.
+  + Show IPv6 addressing page for VPN plugins that support it.
+  + Port to GSettings and split out 0.8 -> 0.9 migration code into
+    standalone tool.
+- Pass --disable-migration to configure: no supported openSUSE
+  version has NetworkManager <= 0.8 anymore, so we do not need the
+  migration tool.
+- Replace gconf schema handling macros with glib variants.
+- Drop gconf2-devel BuildRequires: without the migration tool,
+  there is no need to access gconf anymore.
+
+-------------------------------------------------------------------
+Thu Jun 28 21:19:01 UTC 2012 - dimstar@opensuse.org
+
+- Add nm-applet-private-connection.patch: Create private
+  connections if the user is not authorized.
+  Some distributions do not allow the normal user to create a
+  system connection without the polkit authentication. This commit
+  checks the polkit policy and creates private connections if the
+  user is not authorized. [bnc#751211].
+- Add polkit-devel BuildRequires, as the above patch makes use
+  of it.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the build system.
+
+-------------------------------------------------------------------
+Sat Mar 24 09:54:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.9.4.1:
+  + No change compared to 0.9.4.1.
+- Changes from version 0.9.4.0:
+  + Do not run our own secret agent when GNOME Shell is running.
+  + Several bug fixes.
+  + Updated translations.
+- Drop NetworkManager-gnome-OnlyShowIn.patch: this was implemented
+  with NotShowIn upstream.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:29:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.9.3.997:
+  + More flexible build-time warnings with
+    --enable-more-warnings=[yes|no|error]
+  + Removed unused PolicyKit configure check
+  + Lazily initialize the notification service for faster startup
+  + Fix various memory leaks
+  + Warn user if CA certificate is left blank in the editor for
+    802.1x
+  + Disabled creation of WPA-protected Ad-Hoc WiFi networks due to
+    kernel bugs
+- Remove polkit-devel BuildRequires: removed upstream.
+
+-------------------------------------------------------------------
+Fri Mar  2 19:21:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.3.995:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 18 16:11:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.3.990:
+  + Fix interaction of single-connection edit mode with PolicyKit
+  + Add EAP-FAST support
+  + Make editor connection list sortable
+  + Ensure mobile broadband provider list is sensitized correctly
+- Drop NetworkManager-gnome-link-gkr.patch: fixed upstream.
+- Remove call to autoreconf: it was only needed for above patch.
+
+-------------------------------------------------------------------
+Wed Feb  8 20:49:26 UTC 2012 - dimstar@opensuse.org
+
+- Add NetworkManager-gnome-link-gkr.patch: Fix linking with
+  gnome-keyring in a gconf-helpers test program.
+- Add call to autoreconf in %prep, as above patch touches the build
+  system.
+
+-------------------------------------------------------------------
+Sat Nov 12 19:21:46 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.2.0:
+  + Updated translations.
+- Pass --disable-more-warnings to configure to allow building with
+  gtk+ 3.3.
+- Really enable parallel build: fix typo smp_flags => smp_mflags.
+
+-------------------------------------------------------------------
+Mon Oct 31 17:32:22 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.1.95:
+  + Select user's home directory by default for VPN import
+  + Show VPN details in the Connection Information dialog
+  + Allow auto-unlocking of GSM modems
+  + Fix crash of Bluetooth widget after pairing
+- Drop NetworkManager-gnome-bluetooth-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct 28 13:58:51 UTC 2011 - badshah400@gmail.com
+
+- Replace category SystemSetup by X-SuSE-ServiceConfiguration to
+  suppress rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Oct 26 16:58:41 UTC 2011 - badshah400@gmail.com
+
+- Modified categories in .desktop file so that it is grouped with
+  "System" applications in the desktop menus (bnc#714333)
+
+-------------------------------------------------------------------
+Thu Oct 13 13:24:27 UTC 2011 - vuntz@opensuse.org
+
+- Add NetworkManager-gnome-bluetooth-crash.patch: fix some crash in
+  gnome-control-center when disabling bluetooth.
+
+-------------------------------------------------------------------
+Wed Sep 21 19:06:48 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.1.90:
+  + New private library for wireless and mobile dialogs
+  + iso-codes package used for translated country names in the
+    mobile broadband wizard
+- Add pkgconfig(iso-codes) BuildRequires and iso-codes Requires for
+  the new use of iso-codes.
+- Create libnm-gtk0 and libnm-gtk-devel subpackages, for the new
+  library.
+
+-------------------------------------------------------------------
+Sat Sep 17 09:52:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Sep  7 08:36:15 UTC 2011 - vuntz@opensuse.org
+
+- Remove NetworkManager-glib BuildRequires: we don't need an
+  explicit BuildRequires for libraries.
+- Remove libglade2-devel, libgudev-1_0-devel, libiw-devel
+  BuildRequires: they are unneeded.
+- Change dbus-1-glib BuildRequires to dbus-1-glib-devel: we're
+  interested in the devel subpackage.
+
+-------------------------------------------------------------------
+Tue Aug 23 09:16:05 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.0:
+  + Fix compatibility with GTK+ <= 2.22.
+  + Change "Device MAC address" to combo box with an entry.
+  + Default to IPv6 Auto for manually created connections.
+  + Enable registration state home/roaming notifications for CDMA.
+  + Fix various VPN secret saving issues.
+
+-------------------------------------------------------------------
+Thu Jun  9 14:37:22 UTC 2011 - fcrozat@novell.com
+
+- Update to 0.8.9997:
+  + don't allow inserting 0.0.0.0 as destination and netmask for
+    IPv4 routes.
+  + Fix crash when connection is invalid.
+  + Complete openconnect migration support.
+  + handle PKCS#8 private keys.
+  + filter APN entry characters in mobile-wizard.
+  + allow _ as APN character.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  4 12:20:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.999:
+  + Give modems more time to unlock themselves after PIN entry
+  + Fix creation of 802.1x-enabled connections in the applet
+  + Don't crash gnome-bluetooth on some failures when creating new
+    DUN connections
+  + Much better handling of IP addresses in the editor
+  + Updated translations.
+- Drop NetworkManager-gnome-fix-wpa-e.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon May  2 14:54:50 UTC 2011 - fcrozat@novell.com
+
+- Add NetworkManager-gnome-fix-wpa-e.patch: fix WPA-Enterprise
+  support (bgo#646210) (git)
+
+-------------------------------------------------------------------
+Tue Apr  5 13:46:07 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.998 (0.9.0-rc1):
+  + Bugs fixed: bgo#646043, bgo#646643.
+  + Updated translations.
+- Rebase NetworkManager-gnome-OnlyShowIn.patch
+
+-------------------------------------------------------------------
+Sun Mar 20 16:28:06 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.997 (0.9 beta3):
+  + Mostly bugfixes.
+
+-------------------------------------------------------------------
+Wed Mar 16 11:22:48 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.996 (0.9 beta2):
+  + don't require glib 2.26
+  + deb#615082, lp#725041: fixes for new dnsmasq
+  + crash fixes
+  + ifupdown plugin fixes
+  + save connection timestamps in /var not /etc
+  + install time fixes for Arch Linux
+  + libnm-glib crash and correctness fixes
+  + fix display of SSIDs in applet tooltips
+  + build fixes and cleanups
+  + import existing user connections
+- Summary from 0.8.995 (0.9 beta1)
+  + simpler, easier, more flexible, and cooler applets.
+  + Fast User Switching.
+  + WiMAX support.
+  + System connections by default.
+  + More flexible system administration.
+  + Scales down to smaller devices.
+- Rebase NetworkManager-gnome-OnlyShowIn.patch
+- Change gtk2-devel BuildRequires to gtk3-devel.
+- Stop removing %{_sysconfdir}/dbus-1/system.d/nm-applet.conf
+  ourselves: it's not installed anymore.
+
+-------------------------------------------------------------------
+Mon Feb 14 16:14:49 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:54:56 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Thu Dec 23 12:52:06 UTC 2010 - gber@opensuse.org
+
+- updated NetworkManager-gnome-OnlyShowIn.patch in order to start
+  nm-applet under Xfce as well
+
+-------------------------------------------------------------------
+Sat Nov  6 14:57:07 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.2:
+  + Hide mobile broadband PIN code when it's entered
+  + Ensure Enable Wireless and Enable Networking always correctly
+    sensitized
+  + Fix handling of slow mobile broadband devices when entering a
+    PIN
+  + Startup performance improvements
+  + Easier keyboard navigation of the connection editor
+  + Show VPN connection notification even if VPN provides none
+  + Fix handling of VPN secrets when moving connections from system
+    to user
+  + Updated translations.
+- Drop upstream fixed patches:
+  + NetworkManager-gnome-fix-new-glib.patch
+  + Drop NetworkManager-gnome-remove-bad-category.patch
+- Split out -lang package.
+
+-------------------------------------------------------------------
+Mon Sep  6 14:30:30 CEST 2010 - vuntz@opensuse.org
+
+- Add NetworkManager-gnome-remove-bad-category.patch to remove a
+  category that should not exist upstream anyway. Instead, add
+  X-SuSE-ControlCenter-Hardware to nm-connection-editor.desktop
+  later on with suse_update_desktop_file.
+
+-------------------------------------------------------------------
+Mon Aug  9 13:12:11 CEST 2010 - vuntz@opensuse.org
+
+- Do not add -fno-strict-aliasing to CFLAGS: it's not needed
+  anymore.
+- Remove non-existing --with-notify configure option.
+- Re-enable parallel build.
+
+-------------------------------------------------------------------
+Mon Jul 26 11:48:26 UTC 2010 - dimstar@opensuse.org
+
+- Upodate to version 0.8.1:
+  + Bluetooth Dial-Up Networking
+  + Mobile Broadband Status: signal strength, roaming, and access
+    technology display
+  + Enhanced IPv6 support
+  + Updated translations
+- Pass --disable-maintainer-mode to configure to allow building
+  with latest gtk.
+
+-------------------------------------------------------------------
+Mon Jun 21 22:13:20 UTC 2010 - dimstar@opensuse.org
+
+- Require mobile-broadband-provider-info for DUN capabilities. The
+  BT plugin crashes when selecting DUN without this package
+  available.
+
+-------------------------------------------------------------------
+Fri Apr 23 09:50:02 UTC 2010 - bili@novell.com
+
+- Add a general frontend dbus configuration in NetworkManager
+  so delete the conf in nm-applet, bili@novell.com(bnc#476502).
+
+-------------------------------------------------------------------
+Sun Apr 18 01:40:10 UTC 2010 - crrodriguez@opensuse.org
+
+- Requires timezone package
+
+-------------------------------------------------------------------
+Tue Feb 23 15:50:09 CET 2010 - vuntz@opensuse.org
+
+- Rename 0002-Autostart-nm-applet-in-GNOME-session-only.patch to
+  NetworkManager-gnome-OnlyShowIn.patch, and add LXDE to
+  OnlyShowIn.
+- This is based on work by Andrea Florio <andrea@opensuse.org>
+
+-------------------------------------------------------------------
+Tue Feb 23 09:07:54 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + rh#494641 - Add --help to explain what nm-applet is/does
+  + core: clearer failure message when an applet is already running
+  + dun: refactor gnome bluetooth plugin to use bluetooth client
+  + rh#556763 - wired: don't crash when getting 802.1x settings
+    from the user
+  + rh#557007 - info: don't crash on various D-Bus property errors
+  + core: fix clearing secrets when updating connections
+  + rh#541353 - link nm-connection-editor with libm for ceil()
+  + gsm: fix secret request when connection has multiple secrets
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 11 09:31:37 CET 2010 - vuntz@opensuse.org
+
+- Change again gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+
+-------------------------------------------------------------------
+Thu Jan 21 18:43:19 UTC 2010 - tambet@novell.com
+
+- Upgrade to the latest upstream 0.8 branch:
+  + New popup menu UI.
+  + Ability to manually disconnect active devices.
+  + Rework PolicyKit support.
+  + Now it's possible to disable (somewhat annoying) notifications
+  + Require newer glib and remove cut+pasted code for things that are now in
+    glib (GChecksum, )
+  + Certificate handling improvements.
+  + Add lockdown support for "Create new wireless network..."
+  + New wizard for GSM/CDMA connection setup
+  + Translation updates.
+  + Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Dec 23 11:44:55 CET 2009 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+
+-------------------------------------------------------------------
+Fri Sep 25 20:35:28 UTC 2009 - andrea@opensuse.org
+
+- Replaced 0002-Autostart-nm-applet-in-GNOME-session-only.patch
+  with 0002-Autostart-nm-applet-in-GNOME-LXDE-session-only.patch:
+  Add LXDE to OnlyShowIn, as LXDE uses the gtk2 NetworkManager.
+
+-------------------------------------------------------------------
+Fri Sep  4 07:06:20 UTC 2009 - tambet@novell.com
+
+- Fix the 802.1x wired authentication dialog to use the entered
+  secrets (bnc #525401).
+
+-------------------------------------------------------------------
+Tue Aug 25 07:59:02 UTC 2009 - tambet@novell.com
+
+- The ModemManager API signatures have been changed for some calls,
+  adjust the calling code (bnc #533261).
+
+-------------------------------------------------------------------
+Thu Jun 11 04:33:10 CEST 2009 - vuntz@novell.com
+
+- Remove libgnomeui-devel BuildRequires, which isn't needed.
+
+-------------------------------------------------------------------
+Wed May 27 09:06:00 EEST 2009 - tambet@novell.com
+
+- Update to 0.7.1.
+
+-------------------------------------------------------------------
+Tue Apr 28 17:41:09 CEST 2009 - vuntz@novell.com
+
+- Add -fno-strict-aliasing to CFLAGS to fix build with gcc 4.4.
+
+-------------------------------------------------------------------
+Sun Feb  1 01:12:46 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Sun Jan 25 02:11:25 CET 2009 - vuntz@novell.com
+
+- Call %suse_update_desktop_file on all desktop files. Part of
+  bnc#445728.
+
+-------------------------------------------------------------------
+Mon Jan 12 10:47:03 EET 2009 - michael.meeks@novell.com
+
+- Hide all "Show Password" widgets from the UI.
+
+-------------------------------------------------------------------
+Fri Jan  9 10:55:14 EET 2009 - tambet@novell.com
+
+- Hide characters entered to the PIN request entry (bnc #456722).
+- Add widgets to allow choosing CA from system "database"
+  (bnc #456050).
+
+-------------------------------------------------------------------
+Wed Dec  3 13:29:41 EET 2008 - tambet@novell.com
+
+- Rebase from the official NetworkManager 0.7.0 release:
+  + Update translations: de, sv.
+
+-------------------------------------------------------------------
+Fri Nov 21 14:42:46 EET 2008 - tambet@novell.com
+
+- Fix conversion of NM 0.6 vpnc connections with custom routes.
+- Add support for PKCS#12 certificates.
+- Fix a bunch of non-accurate warnings.
+- Lot's of small bug fixes.
+- Updated translations: es, hu, pl.
+
+-------------------------------------------------------------------
+Fri Nov 14 12:21:33 EET 2008 - tambet@novell.com
+
+- Fix private key handling.
+
+-------------------------------------------------------------------
+Mon Nov  3 14:56:06 EET 2008 - tambet@suse.de
+
+- Use the accessors provided by NM instead of poking the private
+  structures directly for settings. (a.k.a make it built with the
+  latest NetworkManager again.)
+
+-------------------------------------------------------------------
+Fri Oct 24 13:03:12 EEST 2008 - tambet@suse.de
+
+- Updated connection editor UI.
+- List certificates with '.cer' and '.crt' extensions too.
+- Update translations: be, cs, de, es, fi, fr, he, hu, nb, pl, sk, sv.
+
+-------------------------------------------------------------------
+Fri Oct 10 12:17:30 EEST 2008 - tambet@suse.de
+
+- Upgrade from upstream:
+  + Correct translatables in the UI (bgo #554193).
+  + Accept more delimiters for DNS servers and searches.
+  + Update translations: es, et, fi, hu, nb, sv
+
+-------------------------------------------------------------------
+Fri Sep 26 16:09:35 EEST 2008 - tambet@suse.de
+
+- Upgrade from upstream:
+  + Fix some memory leaks.
+  + Fix names & constants to accurately reflect the network
+     technologies (bgo #551361).
+  + Fix some issues with upgrading gconf data (bgo #553465).
+  + Handle VPN login failures (bnc #395564).
+  + Updated translations: fr fi lt sv eu cs it.
+-------------------------------------------------------------------
+Fri Sep 12 16:04:15 EEST 2008 - tambet@suse.de
+
+- Add a progress dialog for GSM modem scanning.
+- Update from the SVN:
+  + Fix a crasher bug in connection editor (bnc #426661).
+  + Fix a bug causing to not store secrets in keyring.
+  + Update translations: fi, he, nl.
+
+-------------------------------------------------------------------
+Fri Sep 12 16:04:15 EEST 2008 - tambet@suse.de
+
+- Bring up to date with SVN.
+- Add a patch to make use of ModemManager. That allows us to use
+  more advanced features like signal quality monitoring, scanning,
+  and seeing more information about modems.
+- Require NetworkManager >= 0.7.0.r4060 since '0.7.0' is too vague.
+- Build fixes required to compile with newer kernels.
+
+-------------------------------------------------------------------
+Fri Aug  1 15:42:03 EEST 2008 - tambet@suse.de
+
+- Bring up to date with SVN again.
+
+-------------------------------------------------------------------
+Mon Jun 30 17:36:09 CEST 2008 - tambet@suse.de
+
+- Bring up to date with SVN again.
+
+-------------------------------------------------------------------
+Wed May 28 17:23:54 CEST 2008 - sbrabec@suse.cz
+
+- Do not call gtk-update-icon-cache (bnc#395056).
+
+-------------------------------------------------------------------
+Fri May 23 14:42:20 CEST 2008 - tambet@suse.de
+
+- Show error dialog if updating, adding, or removing connection fails in
+  connection editor.
+- Implement changing connection type in connection editor (bnc #390170).
+- Update GConf connections after all the changes are done to avoid invalid
+  connection states while in between changes.
+- Add a "DHCP with manual DNS settings" IP4 configuration method.
+
+-------------------------------------------------------------------
+Fri May  9 13:37:35 CEST 2008 - tambet@suse.de
+
+- Upgrade to the latest SVN:
+  Use PolicyKit to restrict system connections editing.
+  Implement PIN code requesting for GSM devices.
+  Implement system connections editing.
+  Allow adding new connections in the connection editor.
+  Improve connection editor pages.
+  Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 11 12:24:02 CEST 2008 - tambet@suse.de
+
+- Upgrade to the latest SVN:
+  Rework the wireless security handling to support wired 802.1x.
+  Implement wired 802.1x authentication.
+  Remove the iwlib dependecy.
+  Implement DSL handling.
+  Implement editing in connection editor for most of the connection types.
+  Add the WEP key index selector.
+  Add an ID to connections to handle connection name changes correctly.
+  Bug fixes.
+
+-------------------------------------------------------------------
+Thu Mar 13 23:58:45 CET 2008 - tambet@suse.de
+
+- Upgrade to the latest SVN:
+  Support for multiple active devices.
+  Adapt NetworkManager API changes.
+- Don't autostart nm-applet in KDE (bnc #367258).
+- Disable "Add" and "Edit" buttons in connection editor - these aren't
+  implemented yet and only crash the editor (bnc #368750).
+
+-------------------------------------------------------------------
+Fri Feb 29 23:40:06 CET 2008 - tambet@suse.de
+
+- Upgrade to the latest SVN.
+
+-------------------------------------------------------------------
+Mon Feb  4 17:35:18 CET 2008 - tambet@suse.de
+
+- Update to the latest SVN.
+
+-------------------------------------------------------------------
+Fri Jan 11 22:54:25 CET 2008 - maw@suse.de
+
+- Remove unnecessary Requires
+- Parallel build is broken, so don't build in parallel.
+
+-------------------------------------------------------------------
+Wed Nov 28 11:33:24 CET 2007 - tambet@suse.de
+
+- New spec file, split from NetworkManager.
+
+

@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Mon Oct  2 13:26:56 UTC 2017 - mpluskal@suse.com
+
+- Some packaging cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon May 18 10:30:00 UTC 2015 - mpluskal@suse.com
+
+- Fix incorrect includes (boo#929450)
+  * speexdsp-fixbuilds-774c87d.patch
+
+-------------------------------------------------------------------
+Sun Apr  5 00:55:44 UTC 2015 - dmueller@suse.com
+
+- disable unchecked use of NEON extension 
+
+-------------------------------------------------------------------
+Mon Mar 16 21:00:41 UTC 2015 - jengelh@inai.de
+
+- Use the tilde versioning scheme (like the "speex" package).
+  Improve group classification.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:54:22 UTC 2015 - tchvatal@suse.com
+
+- Define libname to have the declaration only on one line
+- Align the Conflict lines
+
+-------------------------------------------------------------------
+Mon Feb 23 14:47:33 UTC 2015 - mpluskal@suse.com
+
+- Split package to two separate packages
+  * speexdsp contains libraries 
+  * speex contains tools
+- Update to 1.2rc3:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Fri Apr  5 11:21:38 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Thu Nov 24 10:20:31 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep  3 23:58:01 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build date in binaries... 
+
+-------------------------------------------------------------------
+Fri Jun 25 17:41:30 CEST 2010 - dmueller@suse.de
+
+- obsolete old -XXbit packages
+
+-------------------------------------------------------------------
+Thu Jan 14 12:58:49 UTC 2010 - chris@computersalat.de
+
+- fix build for SLE_10
+  autoreconf for suse_version >= 1100
+- spec
+  o sort TAGS
+  o macros
+    rm > {__rm}
+    version > {version} ....
+
+-------------------------------------------------------------------
+Thu Jan  7 18:59:26 UTC 2010 - lnussel@suse.de
+
+- split off libspeex1 and libspeexdsp1 according to library
+  packaging policy
+- include actual tarball version in package version
+- don't package README's for embedded cpus
+
+-------------------------------------------------------------------
+Fri Dec 18 13:11:17 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Aug  6 13:39:30 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.2rc1:
+  * support for acoustic echo cancellation with multiple mics
+    and speakers.
+  * add an API to decorrelate loudspeaker signals
+  * fixes for a few bugs in the echo canceller, jitter buffer and
+    preprocessor
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Jan 11 16:31:58 CET 2008 - tiwai@suse.de
+
+- updated to version 1.2beta3:
+  * all the non-codec components (preprocessor, echo cancellation,
+    jitter buffer) have been moved to a new libspeexdsp library
+  * a new jitter buffer algorithm
+  * resampler improvements/fixes
+  * libspeex can be built without any floating point support
+
+-------------------------------------------------------------------
+Tue Aug 14 17:00:55 CEST 2007 - tiwai@suse.de
+
+- fix the bug in resampler code (signed/unsigned mismatch)
+- move man pages to the main package
+- a bit clean up of spec file
+
+-------------------------------------------------------------------
+Thu May 24 14:38:03 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.2beta2:
+  * reduced RAM requirement
+  * A new resampler module
+  * improved / fixed echo canceller
+  * improved preprocessor
+  * early TriMedia support (incomplete)
+- removed static library and *.la files
+
+-------------------------------------------------------------------
+Tue Apr 10 19:25:21 CEST 2007 - tiwai@suse.de
+
+- split shared library to libspeex sub package.
+
+-------------------------------------------------------------------
+Thu Oct 12 17:55:52 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.2beta1:
+  * Improvement of encoder/decoder quality
+  * Enhander improvements (now on by default)
+  * Input/output high-pass filters
+  * Fixing minor regressions in previous 1.1.x releases
+  * Reduced memory usage
+  * Reduced CPU usage
+
+-------------------------------------------------------------------
+Wed Aug  9 14:44:19 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 1.1.12:
+  * echo canceller converted to fixed-point
+  * Improvements to the experimental Vorbis-based masking model
+  * several bug fixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  4 15:00:01 CEST 2005 - tiwai@suse.de
+
+- fix the type-punning.
+- add check of return value from fread().
+
+-------------------------------------------------------------------
+Tue Jun 14 11:46:05 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.5.
+
+-------------------------------------------------------------------
+Thu Sep 16 13:12:13 CEST 2004 - tiwai@suse.de
+
+- fixed speex.m4 for the recent autoconf.
+
+-------------------------------------------------------------------
+Thu Aug  5 12:12:04 CEST 2004 - tiwai@suse.de
+
+- updated to version 1.0.4.
+
+-------------------------------------------------------------------
+Mon Jan 12 10:52:21 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jan  9 17:53:38 CET 2004 - tiwai@suse.de
+
+- updated to version 1.0.3.
+
+-------------------------------------------------------------------
+Fri Jun  6 18:32:08 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Mon Jun  2 10:56:03 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Mar 27 16:37:10 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0 final.
+
+-------------------------------------------------------------------
+Thu Jan 30 14:44:51 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0rc2.
+
+-------------------------------------------------------------------
+Fri Jan 17 17:07:05 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0rc1.
+
+-------------------------------------------------------------------
+Wed Nov 27 16:14:56 CET 2002 - tiwai@suse.de
+
+- initial version: 1.0beta3
+

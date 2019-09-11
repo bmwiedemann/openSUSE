@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:23:33 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed May  4 10:33:50 UTC 2016 - dvaleev@suse.com
+
+- Add URL to git repo
+
+-------------------------------------------------------------------
+Wed May 04 10:29:21 UTC 2016 - dvaleev@suse.com
+
+- Update to version 2016.05.04:
+  Move to git and _service generated sources
+
+-------------------------------------------------------------------
+Tue May  3 22:04:25 UTC 2016 - dvaleev@suse.com
+
+- Produce appstream-util compatible output
+
+ - Convert <aplication> element into <component type="desktop"
+ - Don't wrap with contents, contents is only valid for appdata.xml
+ - Save as .appdata.xml
+ - Don't get information from .desktop. Info provided with .appdata
+   should be sufficient
+
+-------------------------------------------------------------------
+Wed Feb  3 11:36:04 UTC 2016 - dimstar@opensuse.org
+
+- brp-extract-appdata.pl: also handle metainfo.xml files (component
+  addons and fonts).
+
+-------------------------------------------------------------------
+Mon May  4 12:39:13 UTC 2015 - dimstar@opensuse.org
+
+- Sort the array of icons to be added to appdata.xml: this has the
+  nice side-effect that the resulting appdata.xml are reproducible.
+
+-------------------------------------------------------------------
+Wed Apr  8 13:59:13 UTC 2015 - dimstar@opensuse.org
+
+- Bump appstream metadata to version 0.8, in order to attempt to
+  get more often valid metadata. The general structure for
+  AppStream version 0.6+ is wrapped in <component></components>
+  (<application was up to version 0.5). As we wrap simple 'appdata'
+  we can actually simply replace application=>component (stuff that
+  was introduced later would already have to be component anyway).
+
+-------------------------------------------------------------------
+Mon Feb  2 14:15:07 CET 2015 - mls@suse.de
+
+- add workaround so that components generate valid xml
+
+-------------------------------------------------------------------
+Thu Feb 27 12:18:20 CET 2014 - mls@suse.de
+
+- rewrite brp-extract-appdata.pl and create-appdata-xml.pl so that
+  it does not invent appdata files, but just patches the missing
+  information into the files
+
+-------------------------------------------------------------------
+Thu Jan  9 11:36:56 UTC 2014 - coolo@suse.com
+
+- do not mount or umount /proc - the build script handles that
+
+-------------------------------------------------------------------
+Mon Sep 30 19:09:47 UTC 2013 - dimstar@opensuse.org
+
+- Two minor fixes in brp-extract-appdata.pl:
+  + Perl treats variables case sensitive: be consistent with
+    $basedir.
+  + Allow Icon= in .desktop files to have a file extension.
+
+-------------------------------------------------------------------
+Mon Sep 30 10:45:22 UTC 2013 - dimstar@opensuse.org
+
+- Change icon type from local to cached: 'local' means the icon
+  lives in the installed filesystem; meta data provided icons land
+  in the appstream icon cache.
+
+-------------------------------------------------------------------
+Tue Sep 24 16:38:46 UTC 2013 - dimstar@opensuse.org
+
+- Make the appdata.xml contain full icon names, incl. suffix; speed
+  up gnome-software startup for not having to guess what we know
+  here already.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:55:24 UTC 2012 - aj@suse.de
+
+- Mount /proc in post-build-check to avoid rpm warnings.
+
+-------------------------------------------------------------------
+Mon Mar 19 08:31:40 UTC 2012 - coolo@suse.com
+
+- remove the icon tag if there is no icon
+
+-------------------------------------------------------------------
+Thu Mar 15 09:54:39 UTC 2012 - coolo@suse.com
+
+- fix XML structure of generated files
+
+-------------------------------------------------------------------
+Sun Mar 11 17:51:36 UTC 2012 - coolo@suse.com
+
+- add required perl modules
+
+-------------------------------------------------------------------
+Wed Mar  7 09:25:17 UTC 2012 - coolo@suse.com
+
+- adding extract-icons.pl script to be called for kiwi products
+
+-------------------------------------------------------------------
+Thu Mar  1 11:15:36 UTC 2012 - coolo@suse.com
+
+- make the brp script a perl script too and let it find icons
+
+-------------------------------------------------------------------
+Wed Feb 22 08:10:13 UTC 2012 - coolo@suse.com
+
+- changed my mind - use rpmname as part of the xml filename
+  to simplify all kind of tasks
+
+-------------------------------------------------------------------
+Mon Feb 20 09:17:55 UTC 2012 - coolo@suse.com
+
+- fix two desktop files in one rpm
+
+-------------------------------------------------------------------
+Fri Feb 17 08:32:07 UTC 2012 - coolo@suse.com
+
+- do not output nodisplay=true .desktop files
+- avoid empty <applications/>
+
+-------------------------------------------------------------------
+Fri Feb 17 08:25:36 UTC 2012 - coolo@suse.com
+
+- remove /usr/share/applications/ prefix
+
+-------------------------------------------------------------------
+Thu Feb 16 19:47:04 UTC 2012 - coolo@suse.com
+
+- fix output filename
+
+-------------------------------------------------------------------
+Thu Feb 16 13:07:10 UTC 2012 - coolo@suse.com
+
+- adding an escape function to please vuntz
+
+-------------------------------------------------------------------
+Tue Feb 14 10:52:01 UTC 2012 - coolo@suse.com
+
+- initial package
+

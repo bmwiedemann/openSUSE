@@ -1,0 +1,26 @@
+---
+ configure.in |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: progsreiserfs-0.3.0.5/configure.in
+===================================================================
+--- progsreiserfs-0.3.0.5.orig/configure.in
++++ progsreiserfs-0.3.0.5/configure.in
+@@ -2,6 +2,8 @@
+ AC_PREREQ(2.50)
+ AC_INIT(include/reiserfs/reiserfs.h)
+ AC_CANONICAL_HOST
++AC_USE_SYSTEM_EXTENSIONS
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ dnl Versioning
+ dnl Making releases:
+@@ -82,7 +84,7 @@ CFLAGS="$CFLAGS -D_REENTRANT"
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AC_PROG_RANLIB
++LT_INIT
+ 
+ AC_SYS_LARGEFILE
+ 

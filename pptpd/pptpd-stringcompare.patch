@@ -1,0 +1,26 @@
+--- bcrelay.c
++++ bcrelay.c
+@@ -382,12 +382,12 @@
+                         return 1;
+                 }
+   }
+-  if (ifin == empty) {
++  if (!strlen(ifin)) {
+        syslog(LOG_INFO,"Incoming interface required!");
+        showusage(argv[0]);
+        _exit(1);
+   }
+-  if (ifout == empty && ipsec == empty) {
++  if (!strlen(ifout) && !strlen(ipsec)) {
+        syslog(LOG_INFO,"Listen-mode or outgoing or IPsec interface required!");
+        showusage(argv[0]);
+        _exit(1);
+@@ -875,7 +875,7 @@
+     // IPSEC tunnels are a fun one.  We must change the destination address
+     // so that it will be routed to the correct tunnel end point.
+     // We can define several tunnel end points for the same ipsec interface.
+-    } else if (ipsec != empty && strncmp(ifs.ifc_req[i].ifr_name, "ipsec", 5) == 0) {
++   } else if (strlen(ipsec) && strncmp(ifs.ifc_req[i].ifr_name, "ipsec", 5) == 0) {
+       if (strncmp(ifs.ifc_req[i].ifr_name, ipsec, 6) == 0) {
+         struct hostent *hp = gethostbyname(ipsec+7);
+         ioctl(s, SIOCGIFINDEX, &ifs.ifc_req[i]);

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Apr 11 10:46:24 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.1
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+- Switch to implicit namespace packages on Python 3 (PEP 420)
+  + Create an empty python_sitelib directory on Python 3
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Sep  7 08:09:48 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Move LICENSE.txt from %doc to %license section
+
+-------------------------------------------------------------------
+Mon Jan 22 14:46:03 UTC 2018 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 2.0.0

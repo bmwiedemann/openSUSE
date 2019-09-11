@@ -1,0 +1,69 @@
+From 367fd5731a8c68225cb870aa656ea0ce677fe040 Mon Sep 17 00:00:00 2001
+From: Tulio Magno Quites Machado Filho <tuliom@linux.ibm.com>
+Date: Fri, 8 Feb 2019 10:33:09 -0200
+Subject: [PATCH] Include asm/ptrace.h when accessing ucontext_t
+
+In some architectures (e.g. powerpc, powerpc64 and powerpc64le), the
+macro that specifies the position of the program counter is defined in
+header asm/ptrace.h.
+
+When glibc bug 21457 got fixed in version 2.27, header sys/ucontext.h
+stopped including signal.h, which indirectly removed asm/ptrace.h too.
+
+Signed-off-by: Tulio Magno Quites Machado Filho <tuliom@linux.ibm.com>
+---
+ m4/pc_from_ucontext.m4 | 12 +++++++++++-
+ src/getpc.h            |  3 +++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/m4/pc_from_ucontext.m4 b/m4/pc_from_ucontext.m4
+index c9224bc6..7114bd0d 100644
+--- a/m4/pc_from_ucontext.m4
++++ b/m4/pc_from_ucontext.m4
+@@ -20,6 +20,7 @@ AC_DEFUN([AC_PC_FROM_UCONTEXT],
+      AC_CHECK_HEADERS(sys/ucontext.h)       # ucontext on OS X 10.6 (at least)
+    fi
+    AC_CHECK_HEADERS(cygwin/signal.h)        # ucontext on cywgin
++   AC_CHECK_HEADERS(asm/ptrace.h)           # get ptrace macros, e.g. PT_NIP
+    AC_MSG_CHECKING([how to access the program counter from a struct ucontext])
+    pc_fields="           uc_mcontext.gregs[[REG_PC]]"  # Solaris x86 (32 + 64 bit)
+    pc_fields="$pc_fields uc_mcontext.gregs[[REG_EIP]]" # Linux (i386)
+@@ -53,14 +54,23 @@ AC_DEFUN([AC_PC_FROM_UCONTEXT],
+                                            How to access the PC from a struct ucontext)
+                         AC_MSG_RESULT([$pc_field])
+                         pc_field_found=true)
+-       elif test "x$ac_cv_header_sys_ucontext_h" = xyes; then
++       elif test "x$ac_cv_header_asm_ptrace_h" = xyes -a "x$ac_cv_header_sys_ucontext_h" = xyes; then
+          AC_TRY_COMPILE([#define _GNU_SOURCE 1
++                         #include <asm/ptrace.h>
+                          #include <sys/ucontext.h>],
+                         [ucontext_t u; return u.$pc_field == 0;],
+                         AC_DEFINE_UNQUOTED(PC_FROM_UCONTEXT, $pc_field,
+                                            How to access the PC from a struct ucontext)
+                         AC_MSG_RESULT([$pc_field])
+                         pc_field_found=true)
++       elif test "x$ac_cv_header_sys_ucontext_h" = xyes; then
++         AC_TRY_COMPILE([#define _GNU_SOURCE 1
++                        #include <sys/ucontext.h>],
++                        [ucontext_t u; return u.$pc_field == 0;],
++                        AC_DEFINE_UNQUOTED(PC_FROM_UCONTEXT, $pc_field,
++                                           How to access the PC from a struct ucontext)
++                        AC_MSG_RESULT([$pc_field])
++                        pc_field_found=true)
+        elif test "x$ac_cv_header_ucontext_h" = xyes; then
+          AC_TRY_COMPILE([#define _GNU_SOURCE 1
+                          #include <ucontext.h>],
+diff --git a/src/getpc.h b/src/getpc.h
+index 163873ea..9605363b 100644
+--- a/src/getpc.h
++++ b/src/getpc.h
+@@ -56,6 +56,9 @@
+ //#define _XOPEN_SOURCE 500
+ 
+ #include <string.h>         // for memcmp
++#ifdef HAVE_ASM_PTRACE_H
++#include <asm/ptrace.h>
++#endif
+ #if defined(HAVE_SYS_UCONTEXT_H)
+ #include <sys/ucontext.h>
+ #elif defined(HAVE_UCONTEXT_H)

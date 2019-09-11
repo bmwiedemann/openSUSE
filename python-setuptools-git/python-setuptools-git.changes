@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:54:13 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 31 06:54:17 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 1.2:
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu Aug 24 13:54:33 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Sat May 16 13:26:27 UTC 2015 - p.drouand@gmail.com
+
+- Remove obsolete hacks of when python2 and 3 specfiles where in the
+  place
+
+-------------------------------------------------------------------
+Tue May 12 15:46:14 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.1:
+  * no changelog available
+- add test dependency git-core
+- run the tests during build
+
+-------------------------------------------------------------------
+Thu Oct 24 11:14:18 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Apr 12 11:13:01 UTC 2013 - toddrme2178@gmail.com
+
+- Added requires and buildrequires python3.  It will not work 
+  properly without them on openSUSE < 12.3
+- Cleanup some macros
+
+-------------------------------------------------------------------
+Mon Jan 21 15:38:52 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 14 10:45:12 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 1.0b1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Nov 19 14:54:59 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Public-Domain
+  SPDX format (or SUSE version thereof)
+
+-------------------------------------------------------------------
+Tue May  3 22:08:54 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 0.4.2:
+  - Sorry, no changelog.
+- Package renamed from python-setuptools_git to
+  python-setuptools-git.
+
+-------------------------------------------------------------------
+Thu Aug 13 19:17:33 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.3) for openSUSE.
+

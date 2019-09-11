@@ -1,0 +1,994 @@
+diff --git a/configure.ac b/configure.ac
+index e1462834..b5ac133c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -499,7 +499,6 @@ dnl Replacing AC_PROG_LIBTOOL with AC_CHECK_PROG because LIBTOOL
+ dnl was NOT being expanded all the time thus causing things to fail.
+ AC_CHECK_PROGS(LIBTOOL, glibtool libtool libtool15 libtool13)
+ 
+-AM_PATH_PYTHON
+ AC_CHECK_PROGS(MAKE, gmake make)
+ AC_PATH_PROGS(HTML2TXT, lynx w3m)
+ AC_PATH_PROGS(HELP2MAN, help2man)
+@@ -1375,7 +1374,6 @@ lib/Makefile							\
+       lib/plugins/lrm/Makefile					\
+          lib/plugins/lrm/dbus/Makefile				\
+       lib/plugins/stonith/Makefile				\
+-         lib/plugins/stonith/ribcl.py				\
+          lib/plugins/stonith/external/Makefile			\
+             lib/plugins/stonith/external/drac5			\
+             lib/plugins/stonith/external/kdumpcheck		\
+diff --git a/lib/plugins/stonith/Makefile.am b/lib/plugins/stonith/Makefile.am
+index fc007f21..d57f0c19 100644
+--- a/lib/plugins/stonith/Makefile.am
++++ b/lib/plugins/stonith/Makefile.am
+@@ -211,5 +211,3 @@ suicide_la_LDFLAGS	= -export-dynamic -module -avoid-version
+ suicide_la_LIBADD	= $(top_builddir)/lib/stonith/libstonith.la 
+ 
+ stonithscriptdir        =  $(stonith_plugindir)/stonith2
+-
+-stonithscript_SCRIPTS  	= ribcl.py 
+diff --git a/lib/plugins/stonith/external/dracmc-telnet b/lib/plugins/stonith/external/dracmc-telnet
+index 78c01453..b78b2e25 100644
+--- a/lib/plugins/stonith/external/dracmc-telnet
++++ b/lib/plugins/stonith/external/dracmc-telnet
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # vim: set filetype=python
+ #######################################################################
+ #
+@@ -23,6 +23,7 @@
+ #
+ # History:
+ #   2009-10-12  First release.
++#   2017-12-14  Port to Python 3 (Kristoffer Gronlund <kgronlund@suse.com>)
+ #
+ # Copyright (c) 2009 Novell, Inc.
+ # All Rights Reserved.
+@@ -55,6 +56,18 @@ import subprocess
+ 
+ LOGINRETRIES = 10
+ 
++
++def is_program(prog):
++    """Is this program available?"""
++    def isexec(filename):
++        return os.path.isfile(filename) and os.access(filename, os.X_OK)
++    for p in os.getenv("PATH").split(os.pathsep):
++        f = os.path.join(p, prog)
++        if isexec(f):
++            return f
++    return None
++
++
+ class TimeoutException(Exception):
+     def __init__(self, value=None):
+         Exception.__init__(self)
+@@ -69,71 +82,73 @@ class DracMC(telnetlib.Telnet):
+         self._timeout = 4
+         self._loggedin = 0
+         self._history = []
+-        self._appl = os.path.basename(sys.argv[0])
+         self._server = args[0]
+ 
+-    def _get_timestamp(self):
++    def _get_timestamp(self) -> str:
+         ct = time.time()
+-        msecs = (ct - long(ct)) * 1000
++        msecs = (ct - int(ct)) * 1000
+         return "%s,%03d" % (time.strftime("%Y-%m-%d %H:%M:%S",
+                             time.localtime(ct)), msecs)
+ 
+-    def write(self, buffer):
+-        self._history.append(self._get_timestamp() + ': WRITE: ' + repr(buffer))
++    def write(self, buffer: bytes) -> None:
++        self._history.append(self._get_timestamp() + ': WRITE: ' + repr(buffer.decode('ascii')))
+         telnetlib.Telnet.write(self, buffer)
+ 
+-    def read_until(self, what, timeout=2):
++    def read_until(self, what: bytes, timeout:int=2) -> bytes:
+         line = telnetlib.Telnet.read_until(self, what, timeout)
+-        self._history.append(self._get_timestamp() + ': READ : ' + repr(line))
+-        if not line.endswith(what):
+-            raise TimeoutException("Timeout while waiting for '%s'." % (what, ))
++        line = line
++        linestr = line.decode('ascii')
++        self._history.append(self._get_timestamp() + ': READ : ' + repr(linestr))
++        whatstr = what.decode('ascii')
++        if not linestr.endswith(whatstr):
++            raise TimeoutException("Timeout while waiting for '%s'." % (whatstr, ))
+         return line
+ 
+-    def login(self, user, passwd):
++    def login(self, user: bytes, passwd: bytes):
+         time.sleep(0.3)
+         try:
+-            line = self.read_until('Login: ', self._timeout)
++            line = self.read_until(b'Login: ', self._timeout)
+             self.write(user)
+-            self.write('\r')
+-            line = self.read_until('Password: ', self._timeout)
++            self.write(b'\r')
++            line = self.read_until(b'Password: ', self._timeout)
+             self.write(passwd)
+-            self.write('\r')
+-        except:
+-            self.write("\r")
+-            line = self.read_until('Login: ', self._timeout)
++            self.write(b'\r')
++        except (EOFError, TimeoutException):
++            self.write(b'\r')
++            line = self.read_until(b'Login: ', self._timeout)
+             self.write(user)
+-            self.write('\r')
+-            line = self.read_until('Password: ', self._timeout)
++            self.write(b'\r')
++            line = self.read_until(b'Password: ', self._timeout)
+             self.write(passwd)
+-            self.write('\r')
++            self.write(b'\r')
+         try:
+-            line = self.read_until('DRAC/MC:', self._timeout)
+-        except:
+-            self.write("\r")
+-            line = self.read_until('DRAC/MC:', self._timeout)
++            line = self.read_until(b'DRAC/MC:', self._timeout)
++        except (EOFError, TimeoutException):
++            self.write(b'\r')
++            line = self.read_until(b'DRAC/MC:', self._timeout)
+ 
+     def hardreset(self):
+-        self.write('serveraction -s %s hardreset\r' % self._server)
+-        line = self.read_until('OK', 10)
+-        line = self.read_until('DRAC/MC:', self._timeout)
+-            
++        self.write('serveraction -s {} hardreset\r'.format(self._server).encode('ascii'))
++        line = self.read_until(b'OK', 10)
++        line = self.read_until(b'DRAC/MC:', self._timeout)
++
+     def powercycle(self):
+-        self.write('serveraction -s %s powercycle\r' % self._server)
+-        line = self.read_until('OK', 10)
+-        line = self.read_until('DRAC/MC:', self._timeout)
++        self.write('serveraction -s {} powercycle\r'.format(self._server).encode('ascii'))
++        line = self.read_until(b'OK', 10)
++        line = self.read_until(b'DRAC/MC:', self._timeout)
+ 
+     def on(self):
+-        self.write('serveraction -s %s powerup\r' % self._server)
+-        line = self.read_until('OK', 10)
+-        line = self.read_until('DRAC/MC:', self._timeout)
++        self.write('serveraction -s {} powerup\r'.format(self._server).encode('ascii'))
++        line = self.read_until(b'OK', 10)
++        line = self.read_until(b'DRAC/MC:', self._timeout)
+ 
+     def off(self):
+-        self.write('serveraction -s %s powerdown\r' % self._server)
+-        line = self.read_until('OK', 10)
+-        line = self.read_until('DRAC/MC:', self._timeout)
++        self.write('serveraction -s {} powerdown\r'.format(self._server).encode('ascii'))
++        line = self.read_until(b'OK', 10)
++        line = self.read_until(b'DRAC/MC:', self._timeout)
+ 
+     def exit(self):
+-        self.write('exit\r')
++        self.write(b'exit\r')
+ 
+     def get_history(self):
+         return "\n".join(self._history)
+@@ -150,9 +165,6 @@ class DracMCStonithPlugin:
+         self._required_cmds_list = self._required_cmds.split()
+         self._optional_cmds_list = self._optional_cmds.split()
+ 
+-        # who am i
+-        self._appl = os.path.basename(sys.argv[0])
+-
+         # telnet connection object
+         self._connection = None
+ 
+@@ -168,14 +180,17 @@ class DracMCStonithPlugin:
+             except IndexError:
+                 self._parameters[name] = ''
+ 
+-    def _get_timestamp(self):
++    def _get_timestamp(self) -> str:
+         ct = time.time()
+-        msecs = (ct - long(ct)) * 1000
++        msecs = (ct - int(ct)) * 1000
+         return "%s,%03d" % (time.strftime("%Y-%m-%d %H:%M:%S",
+                             time.localtime(ct)), msecs)
+ 
+     def _echo_debug(self, *args):
+-        subprocess.call("ha_log.sh debug '%s'" % ' '.join(args), shell=True)
++        if is_program("ha_log.sh"):
++            subprocess.call("ha_log.sh debug '{}'".format(' '.join(args)), shell=True)
++        elif os.environ.get("DRACMC_DEBUG") == "yes":
++            print('debug :', ' '.join(args))
+ 
+     def echo(self, *args):
+         what = ''.join([str(x) for x in args])
+@@ -185,7 +200,10 @@ class DracMCStonithPlugin:
+         self._echo_debug("STDOUT:", what)
+ 
+     def echo_log(self, level, *args):
+-        subprocess.call("ha_log.sh %s '%s'" % (level,' '.join(args)), shell=True)
++        if is_program("ha_log.sh"):
++            subprocess.call("ha_log.sh {} '{}'".format(level, ' '.join(args)), shell=True)
++        elif os.environ.get("DRACMC_DEBUG") == "yes":
++            print(level, ':', ' '.join(args))
+ 
+     def _get_connection(self):
+         if not self._connection:
+@@ -198,9 +216,9 @@ class DracMCStonithPlugin:
+                 try:
+                     c.open(self._parameters['cyclades_ip'],
+                            self._parameters['cyclades_port'])
+-                    c.login(self._parameters['username'],
+-                            self._parameters['password'])
+-                except Exception, args:
++                    c.login(self._parameters['username'].encode('ascii'),
++                            self._parameters['password'].encode('ascii'))
++                except Exception as args:
+                     if "Connection reset by peer" in str(args):
+                         self._echo_debug("Someone is already logged in... retry=%s" % tries)
+                         c.close()
+@@ -362,7 +380,7 @@ class DracMCStonithPlugin:
+             func = getattr(self, cmd, self.not_implemented)
+             rc = func()
+             return(rc)
+-        except Exception, args:
++        except Exception as args:
+             self.echo_log("err", 'Exception raised:', str(args))
+             if self._connection:
+                 self.echo_log("err", self._connection.get_history())
+diff --git a/lib/plugins/stonith/external/ibmrsa-telnet b/lib/plugins/stonith/external/ibmrsa-telnet
+index adb2a3eb..ea57c75d 100644
+--- a/lib/plugins/stonith/external/ibmrsa-telnet
++++ b/lib/plugins/stonith/external/ibmrsa-telnet
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # vim: set filetype=python
+ #######################################################################
+ #
+@@ -53,6 +53,18 @@ import time
+ import telnetlib
+ import subprocess
+ 
++
++def is_program(prog):
++    """Is this program available?"""
++    def isexec(filename):
++        return os.path.isfile(filename) and os.access(filename, os.X_OK)
++    for p in os.getenv("PATH").split(os.pathsep):
++        f = os.path.join(p, prog)
++        if isexec(f):
++            return f
++    return None
++
++
+ class TimeoutException(Exception):
+     def __init__(self, value=None):
+         Exception.__init__(self)
+@@ -61,59 +73,59 @@ class TimeoutException(Exception):
+     def __str__(self):
+         return repr(self.value)
+ 
++
+ class RSABoard(telnetlib.Telnet):
+     def __init__(self, *args, **kwargs):
+         telnetlib.Telnet.__init__(self, *args, **kwargs)
+         self._timeout = 10
+         self._loggedin = 0
+         self._history = []
+-        self._appl = os.path.basename(sys.argv[0])
+ 
+-    def _get_timestamp(self):
++    def _get_timestamp(self) -> str:
+         ct = time.time()
+-        msecs = (ct - long(ct)) * 1000
++        msecs = (ct - int(ct)) * 1000
+         return "%s,%03d" % (time.strftime("%Y-%m-%d %H:%M:%S",
+                             time.localtime(ct)), msecs)
+ 
+-    def write(self, buffer, nolog = False):
++    def write(self, buffer: bytes, nolog = False) -> None:
+         self._history.append(self._get_timestamp() + ': WRITE: ' +
+-            (nolog and '******' or repr(buffer)))
++            (nolog and '******' or repr(buffer.decode('ascii'))))
+         telnetlib.Telnet.write(self, buffer)
+ 
+-    def expect(self, what, timeout=20):
++    def expect(self, what: bytes, timeout=20):
+         line = telnetlib.Telnet.expect(self, what, timeout)
+-        self._history.append(self._get_timestamp() + ': READ : ' + repr(line))
++        self._history.append(self._get_timestamp() + ': READ : ' + repr(line.decode('ascii')))
+         if not line:
+-            raise TimeoutException("Timeout while waiting for '%s'." % (what, ))
++            raise TimeoutException("Timeout while waiting for '%s'." % (what.decode('ascii'), ))
+         return line
+ 
+-    def login(self, user, passwd):
++    def login(self, user: bytes, passwd: bytes):
+         time.sleep(1)
+-        line = self.expect(['\nlogin : ', '\nusername: '], self._timeout)
++        line = self.expect([b'\nlogin : ', b'\nusername: '], self._timeout)
+         self.write(user)
+-        self.write('\r')
+-        line = self.expect(['\nPassword: ', '\npassword: '], self._timeout)
++        self.write(b'\r')
++        line = self.expect([b'\nPassword: ', b'\npassword: '], self._timeout)
+         self.write(passwd, nolog = True)
+-        self.write('\r')
+-        line = self.expect(['\nsystem>', '> '], self._timeout)
++        self.write(b'\r')
++        line = self.expect([b'\nsystem>', b'> '], self._timeout)
+ 
+     def reset(self):
+-        self.write('power cycle\r')
+-        line = self.expect(['\nok'], self._timeout)
+-        line = self.expect(['\nsystem>', '> '], self._timeout)
++        self.write(b'power cycle\r')
++        line = self.expect([b'\nok'], self._timeout)
++        line = self.expect([b'\nsystem>', b'> '], self._timeout)
+ 
+     def on(self):
+-        self.write('power on\r')
+-        line = self.expect(['\nok'], self._timeout)
+-        line = self.expect(['\nsystem>', '> '], self._timeout)
++        self.write(b'power on\r')
++        line = self.expect([b'\nok'], self._timeout)
++        line = self.expect([b'\nsystem>', b'> '], self._timeout)
+ 
+     def off(self):
+-        self.write('power off\r')
+-        line = self.expect(['\nok'], self._timeout)
+-        line = self.expect(['\nsystem>', '> '], self._timeout)
++        self.write(b'power off\r')
++        line = self.expect([b'\nok'], self._timeout)
++        line = self.expect([b'\nsystem>', b'> '], self._timeout)
+ 
+     def exit(self):
+-        self.write('exit\r')
++        self.write(b'exit\r')
+ 
+     def get_history(self):
+         return "\n".join(self._history)
+@@ -130,9 +142,6 @@ class RSAStonithPlugin:
+         self._required_cmds_list = self._required_cmds.split()
+         self._optional_cmds_list = self._optional_cmds.split()
+ 
+-        # who am i
+-        self._appl = os.path.basename(sys.argv[0])
+-
+         # telnet connection object
+         self._connection = None
+ 
+@@ -149,7 +158,7 @@ class RSAStonithPlugin:
+ 
+     def _get_timestamp(self):
+         ct = time.time()
+-        msecs = (ct - long(ct)) * 1000
++        msecs = (ct - int(ct)) * 1000
+         return "%s,%03d" % (time.strftime("%Y-%m-%d %H:%M:%S",
+                             time.localtime(ct)), msecs)
+ 
+@@ -164,7 +173,10 @@ class RSAStonithPlugin:
+         self._echo_debug("STDOUT:", what)
+ 
+     def echo_log(self, level, *args):
+-        subprocess.call(('ha_log.sh', level) +  args)
++        if is_program("ha_log.sh"):
++            subprocess.call("ha_log.sh {} '{}'".format(level, ' '.join(args)), shell=True)
++        elif os.environ.get("IBMRSA_DEBUG") == "yes":
++            print(level, ':', ' '.join(args))
+ 
+     def _get_connection(self):
+         if not self._connection:
+@@ -173,8 +185,8 @@ class RSAStonithPlugin:
+                   (self._parameters['ip_address'],))
+             c.open(self._parameters['ip_address'])
+             self._echo_debug("Connection established")
+-            c.login(self._parameters['username'],
+-                    self._parameters['password'])
++            c.login(self._parameters['username'].encode('ascii'),
++                    self._parameters['password'].encode('ascii'))
+             self._connection = c
+ 
+     def _end_connection(self):
+@@ -305,7 +317,7 @@ class RSAStonithPlugin:
+             func = getattr(self, cmd, self.not_implemented)
+             rc = func()
+             return(rc)
+-        except Exception, args:
++        except Exception as args:
+             self.echo_log("err", 'Exception raised:', str(args))
+             if self._connection:
+                 self.echo_log("err", self._connection.get_history())
+diff --git a/lib/plugins/stonith/external/riloe b/lib/plugins/stonith/external/riloe
+index 412873f5..9610162b 100644
+--- a/lib/plugins/stonith/external/riloe
++++ b/lib/plugins/stonith/external/riloe
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ #
+ # Stonith module for RILOE Stonith device
+ #
+@@ -17,6 +17,8 @@
+ # Extended by Jochen Roeder <jochen.roeder@novell.com> 
+ # to enable access via proxies
+ #
++# Ported to Python 3 by Kristoffer Gronlund <kgronlund@suse.com>
++#
+ # This library is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU Lesser General Public
+ # License as published by the Free Software Foundation; either
+@@ -35,12 +37,27 @@ import os
+ import socket
+ import subprocess
+ import xml.dom.minidom
+-import httplib
++import http.client as httplib
+ import time
+ import re
+ 
++
++def is_program(prog):
++    """Is this program available?"""
++    def isexec(filename):
++        return os.path.isfile(filename) and os.access(filename, os.X_OK)
++    for p in os.getenv("PATH").split(os.pathsep):
++        f = os.path.join(p, prog)
++        if isexec(f):
++            return f
++    return None
++
++
+ def log_msg(level,msg):
+-    subprocess.call("ha_log.sh %s '%s'" % (level,msg), shell=True)
++    if is_program("ha_log.sh"):
++        subprocess.call("ha_log.sh %s '%s'" % (level,msg), shell=True)
++    elif os.environ.get("RILOE_DEBUG") == "yes":
++        print("{} {}".format(level, msg))
+ def my_err(msg):
+     log_msg("err", msg)
+ def my_warn(msg):
+@@ -163,12 +180,12 @@ info = {
+ }
+ 
+ if cmd in info:
+-    print info[cmd]
++    print(info[cmd])
+     sys.exit(0)
+ 
+ if cmd == 'getconfignames':
+     for arg in [ "hostlist", "ilo_hostname", "ilo_user", "ilo_password", "ilo_can_reset", "ilo_protocol", "ilo_powerdown_method", "ilo_proxyhost", "ilo_proxyport"]:
+-        print arg
++        print(arg)
+     sys.exit(0)
+ 
+ if not rihost:
+@@ -332,11 +349,11 @@ def open_ilo(host):
+             proxy_connect='CONNECT %s:%s HTTP/1.1\r\n'%(host,443)
+             user_agent='User-Agent: python\r\n'
+             proxy_pieces=proxy_connect+user_agent+'\r\n'
+-            proxy.sendall(proxy_pieces)
++            proxy.sendall(proxy_pieces.encode('ascii'))
+             response=proxy.recv(8192) 
+             status=response.split()[1]
+             if status!=str(200):  
+-                fatal("Error status=: %s" %(response))
++                fatal("Error status=: %s" %(response.decode('ascii')))
+             import ssl
+             sock = ssl.wrap_socket(proxy) 
+             h=httplib.HTTPConnection('localhost')
+@@ -344,13 +361,13 @@ def open_ilo(host):
+             return h
+         else:
+             return httplib.HTTPSConnection(host)
+-    except socket.gaierror, msg:
++    except socket.gaierror as msg:
+         fatal("%s: %s" %(msg,host))
+-    except socket.sslerror, msg:
++    except socket.sslerror as msg:
+         fatal("%s for %s" %(msg,host))
+-    except socket.error, msg:
++    except socket.error as msg:
+         fatal("%s while talking to %s" %(msg,host))
+-    except ImportError, msg:
++    except ImportError as msg:
+         fatal("ssl support missing (%s)" %msg)
+ 
+ def send_request(req,proc_f):
+@@ -363,8 +380,8 @@ def send_request(req,proc_f):
+     t_begin = time.time()
+     c = open_ilo(rihost)
+     try:
+-        c.send(req+'\r\n')
+-    except socket.error, msg:
++        c.send((req+'\r\n').encode('ascii'))
++    except socket.error as msg:
+         fatal("%s, while talking to %s" %(msg,rihost))
+     t_end = time.time()
+     my_debug("request sent in %0.2f s" % ((t_end-t_begin)))
+@@ -376,8 +393,8 @@ def send_request(req,proc_f):
+             reply = c.sock.recv(1024)
+             if not reply:
+                 break
+-            result.append(reply)
+-        except socket.error, msg:
++            result.append(reply.decode('ascii'))
++        except socket.error as msg:
+             if msg[0] == 6: # connection closed
+                 break
+             my_err("%s, while talking to %s" %(msg,rihost))
+@@ -393,7 +410,7 @@ def send_request(req,proc_f):
+             reply = re.sub("<(RIBCL.*)/>", r"<\1>", reply)
+         try:
+             doc = xml.dom.minidom.parseString(reply)
+-        except xml.parsers.expat.ExpatError,msg:
++        except xml.parsers.expat.ExpatError as msg:
+             fatal("malformed response: %s\n%s"%(msg,reply))
+         rc = proc_f(doc)
+         doc.unlink()
+diff --git a/lib/plugins/stonith/external/vcenter b/lib/plugins/stonith/external/vcenter
+index 38ba36e3..0a26fdd4 100755
+--- a/lib/plugins/stonith/external/vcenter
++++ b/lib/plugins/stonith/external/vcenter
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # External STONITH module for VMWare vCenter/ESX
+ #
+diff --git a/lib/plugins/stonith/ribcl.py.in b/lib/plugins/stonith/ribcl.py.in
+deleted file mode 100644
+index 0733bb24..00000000
+--- a/lib/plugins/stonith/ribcl.py.in
++++ /dev/null
+@@ -1,100 +0,0 @@
+-#!@PYTHON@
+-
+-
+-#
+-# This library is free software; you can redistribute it and/or
+-# modify it under the terms of the GNU Lesser General Public
+-# License as published by the Free Software Foundation; either
+-# version 2.1 of the License, or (at your option) any later version.
+-# 
+-# This library is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-# Lesser General Public License for more details.
+-# 
+-# You should have received a copy of the GNU Lesser General Public
+-# License along with this library; if not, see <http://www.gnu.org/licenses/>
+-#
+-
+-import sys
+-import socket
+-from httplib import *
+-from time import sleep
+-
+-
+-argv = sys.argv
+-
+-
+-try:
+-        host = argv[1].split('.')[0]+'-rm'
+-        cmd = argv[2]
+-except IndexError:
+-        print "Not enough arguments"
+-        sys.exit(1)
+-
+-
+-login = [ '<RIBCL VERSION="1.2">',
+-          '<LOGIN USER_LOGIN="Administrator" PASSWORD="********">' ]
+-
+-
+-logout = [ '</LOGIN>', '</RIBCL>' ]
+-
+-
+-status = [ '<SERVER_INFO MODE="read">', '<GET_HOST_POWER_STATUS/>',
+-           '</SERVER_INFO>' ]
+-
+-
+-reset = [ '<SERVER_INFO MODE="write">', '<RESET_SERVER/>', '</SERVER_INFO>' ]
+-
+-
+-off = [ '<SERVER_INFO MODE = "write">', '<SET_HOST_POWER HOST_POWER  = "N"/>',
+-          '</SERVER_INFO>' ]
+-
+-
+-on = [ '<SERVER_INFO MODE = "write">', '<SET_HOST_POWER HOST_POWER  = "Y"/>',
+-          '</SERVER_INFO>' ]
+-
+-
+-todo = { 'reset':reset, 'on':on, 'off':off, 'status':status }
+-
+-
+-acmds=[]
+-try:
+-        if cmd == 'reset' and host.startswith('gfxcl'):
+-                acmds.append(login + todo['off'] + logout)
+-                acmds.append(login + todo['on'] + logout)
+-        else:   
+-                acmds.append(login + todo[cmd] + logout)
+-except KeyError:
+-        print "Invalid command: "+ cmd
+-        sys.exit(1)
+-
+-
+-try:
+-        for cmds in acmds:
+-
+-
+-                c=HTTPSConnection(host)
+-                c.send('<?xml version="1.0"?>\r\n')
+-                c.sock.recv(1024)
+-
+-
+-                for line in cmds:
+-                        c.send(line+'\r\n')
+-                        c.sock.recv(1024)
+-
+-
+-                c.close()
+-                sleep(1)
+-
+-
+-except socket.gaierror, msg:
+-        print msg
+-        sys.exit(1)
+-except socket.sslerror, msg:
+-        print msg
+-        sys.exit(1)
+-except socket.error, msg:
+-        print msg
+-        sys.exit(1)
+-
+diff --git a/lib/plugins/stonith/riloe.c b/lib/plugins/stonith/riloe.c
+deleted file mode 100644
+index 50583428..00000000
+--- a/lib/plugins/stonith/riloe.c
++++ /dev/null
+@@ -1,337 +0,0 @@
+-/*
+- * Stonith module for RILOE Stonith device
+- *
+- * Copyright (c) 2004 Alain St-Denis <alain.st-denis@ec.gc.ca>
+- *
+- * Mangled by Zhaokai <zhaokai@cn.ibm.com>, IBM, 2005
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version.
+- * 
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Lesser General Public License for more details.
+- * 
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with this library; if not, see <http://www.gnu.org/licenses/>
+- *
+- */
+-
+-#define	DEVICE	"Compaq RILOE"
+-#include "stonith_plugin_common.h"
+-
+-#define PIL_PLUGIN              riloe
+-#define PIL_PLUGIN_S            "riloe"
+-#define PIL_PLUGINLICENSE 	LICENSE_LGPL
+-#define PIL_PLUGINLICENSEURL 	URL_LGPL
+-#include <pils/plugin.h>
+-
+-static StonithPlugin *	riloe_new(const char *);
+-static void		riloe_destroy(StonithPlugin *);
+-static int		riloe_set_config(StonithPlugin *, StonithNVpair *);
+-static const char * const *	riloe_get_confignames(StonithPlugin * );
+-static const char *	riloe_getinfo(StonithPlugin * s, int InfoType);
+-static int		riloe_status(StonithPlugin * );
+-static int		riloe_reset_req(StonithPlugin * s, int request, const char * host);
+-static char **		riloe_hostlist(StonithPlugin  *);
+-
+-static struct stonith_ops riloeOps ={
+-	riloe_new,		/* Create new STONITH object		*/
+-	riloe_destroy,		/* Destroy STONITH object		*/
+-	riloe_getinfo,		/* Return STONITH info string		*/
+-	riloe_get_confignames,	/* Return STONITH info string		*/
+-	riloe_set_config,	/* Get configuration from NVpairs	*/
+-	riloe_status,		/* Return STONITH device status		*/
+-	riloe_reset_req,	/* Request a reset 			*/
+-	riloe_hostlist,		/* Return list of supported hosts 	*/
+-};
+-
+-PIL_PLUGIN_BOILERPLATE2("1.0", Debug)
+-static const PILPluginImports*  PluginImports;
+-static PILPlugin*               OurPlugin;
+-static PILInterface*		OurInterface;
+-static StonithImports*		OurImports;
+-static void*			interfprivate;
+-
+-PIL_rc
+-PIL_PLUGIN_INIT(PILPlugin*us, const PILPluginImports* imports);
+-
+-PIL_rc
+-PIL_PLUGIN_INIT(PILPlugin*us, const PILPluginImports* imports)
+-{
+-	/* Force the compiler to do a little type checking */
+-	(void)(PILPluginInitFun)PIL_PLUGIN_INIT;
+-
+-	PluginImports = imports;
+-	OurPlugin = us;
+-
+-	/* Register ourself as a plugin */
+-	imports->register_plugin(us, &OurPIExports);  
+-
+-	/*  Register our interface implementation */
+- 	return imports->register_interface(us, PIL_PLUGINTYPE_S
+-	,	PIL_PLUGIN_S
+-	,	&riloeOps
+-	,	NULL		/*close */
+-	,	&OurInterface
+-	,	(void*)&OurImports
+-	,	&interfprivate); 
+-}
+-
+-#define RILOE_COMMAND   STONITH_MODULES "/ribcl.py"
+-
+-/*
+- *	Riloe STONITH device.  We are very agreeable, but don't do much :-)
+- */
+-
+-struct pluginDevice {
+-	StonithPlugin	sp;
+-	const char *	pluginid;
+-	const char *	idinfo;
+-	char **		hostlist;
+-	int		hostcount;
+-};
+-
+-static const char * pluginid = "RiloeDevice-Stonith";
+-static const char * NOTriloeID = "Riloe device has been destroyed";
+-
+-#include "stonith_config_xml.h"
+-
+-static const char *riloeXML = 
+-  XML_PARAMETERS_BEGIN
+-    XML_HOSTLIST_PARM
+-  XML_PARAMETERS_END;
+-
+-static int
+-riloe_status(StonithPlugin  *s)
+-{
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	ERRIFWRONGDEV(s,S_OOPS);
+-	return S_OK;
+-}
+-
+-
+-/*
+- *	Return the list of hosts configured for this RILOE device
+- */
+-
+-static char **
+-riloe_hostlist(StonithPlugin  *s)
+-{
+-	struct pluginDevice*	nd;
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	ERRIFWRONGDEV(s,NULL);
+-	nd = (struct pluginDevice*) s;
+-	if (nd->hostcount < 0) {
+-		LOG(PIL_CRIT
+-		,	"unconfigured stonith object in %s", __FUNCTION__);
+-		return(NULL);
+-	}
+-
+-	return OurImports->CopyHostList((const char * const*)nd->hostlist);
+-}
+-
+-/*
+- *	Parse the config information, and stash it away...
+- */
+-
+-static int
+-RILOE_parse_config_info(struct pluginDevice* nd, const char * info)
+-{
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	if (nd->hostcount >= 0) {
+-		return(S_OOPS);
+-	}
+-
+-	nd->hostlist = OurImports->StringToHostList(info);
+-	if (nd->hostlist == NULL) {
+-		LOG(PIL_CRIT,"StringToHostList() failed");
+-		return S_OOPS;
+-	}
+-	for (nd->hostcount = 0; nd->hostlist[nd->hostcount]; nd->hostcount++) {
+-		strdown(nd->hostlist[nd->hostcount]);
+-	}
+-	return(S_OK);
+-}
+-
+-
+-/*
+- *	Pretend to reset the given host on this Stonith device.
+- *	(we don't even error check the "request" type)
+- */
+-static int
+-riloe_reset_req(StonithPlugin * s, int request, const char * host)
+-{
+-	char cmd[4096];
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	ERRIFWRONGDEV(s,S_OOPS);
+-	
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-	
+-	snprintf(cmd, sizeof(cmd), "%s %s reset", RILOE_COMMAND, host);
+-	
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "command %s will be executed", cmd);
+-	}
+-
+-	if (system(cmd) == 0) {
+-		return S_OK;
+-	} else {
+-		LOG(PIL_CRIT, "command %s failed", cmd);
+-		return(S_RESETFAIL);
+-	}
+-}
+-
+-/*
+- *	Parse the information in the given string,
+- *	and stash it away...
+- */
+-static int
+-riloe_set_config(StonithPlugin* s, StonithNVpair *list)
+-{
+-	StonithNamesToGet	namestocopy [] =
+-	{	{ST_HOSTLIST,	NULL}
+-	,	{NULL,		NULL}
+-	};
+-	struct pluginDevice*	nd;
+-	int rc;
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	ERRIFWRONGDEV(s,S_OOPS);
+-	nd = (struct pluginDevice*) s;
+-	
+-	if ((rc = OurImports->CopyAllValues(namestocopy, list)) != S_OK) {
+-		return rc;
+-	}
+-	
+-	rc = RILOE_parse_config_info(nd , namestocopy[0].s_value);
+-	FREE(namestocopy[0].s_value);
+-	return rc;
+-}
+-
+-/*
+- *  Return the  Stonith plugin configuration parameter
+- */
+-static const char* const *
+-riloe_get_confignames(StonithPlugin* p)
+-{
+-	static const char *	RiloeParams[] = {ST_HOSTLIST, NULL };
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	return RiloeParams;
+-}
+-
+-/*
+- * Return STONITH info string
+- */
+-
+-static const char *
+-riloe_getinfo(StonithPlugin * s, int reqtype)
+-{
+-	struct pluginDevice* nd;
+-	const char * ret;
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	ERRIFWRONGDEV(s,NULL);
+-	/*
+-	 *	We look in the ST_TEXTDOMAIN catalog for our messages
+-	 */
+-	nd = (struct pluginDevice *)s;
+-
+-	switch (reqtype) {
+-		case ST_DEVICEID:
+-			ret = nd->idinfo;
+-			break;
+-		case ST_DEVICEDESCR:
+-			ret = "Compaq RILOE STONITH device\n"
+-			"Very early version!";
+-			break;
+-		case ST_DEVICEURL:
+-			ret = "http://www.hp.com/";
+-			break;
+-		case ST_CONF_XML:		/* XML metadata */
+-			ret = riloeXML;
+-			break;
+-		default:
+-			ret = NULL;
+-			break;
+-	}
+-	return ret;
+-}
+-
+-/*
+- *	RILOE Stonith destructor...
+- */
+-static void
+-riloe_destroy(StonithPlugin *s)
+-{
+-	struct pluginDevice* nd;
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	VOIDERRIFWRONGDEV(s);
+-	nd = (struct pluginDevice *)s;
+-
+-	nd->pluginid = NOTriloeID;
+-	if (nd->hostlist) {
+-		stonith_free_hostlist(nd->hostlist);
+-		nd->hostlist = NULL;
+-	}
+-	nd->hostcount = -1;
+-	FREE(nd);
+-}
+-
+-/* Create a new Riloe Stonith device.  Too bad this function can't be static */
+-static StonithPlugin *
+-riloe_new(const char *subplugin)
+-{
+-	struct pluginDevice*	nd = ST_MALLOCT(struct pluginDevice);
+-
+-	if (Debug) {
+-		LOG(PIL_DEBUG, "%s:called.", __FUNCTION__);
+-	}
+-
+-	if (nd == NULL) {
+-		LOG(PIL_CRIT, "out of memory");
+-		return(NULL);
+-	}
+-	memset(nd, 0, sizeof(*nd));
+-	nd->pluginid = pluginid;
+-	nd->hostlist = NULL;
+-	nd->hostcount = -1;
+-	nd->idinfo = DEVICE;
+-	nd->sp.s_ops = &riloeOps;
+-
+-	return &(nd->sp);
+-}

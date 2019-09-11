@@ -1,0 +1,286 @@
+-------------------------------------------------------------------
+Thu Dec 27 21:51:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Add the missing python2-cairo dependency.
+
+-------------------------------------------------------------------
+Sat Nov 17 14:12:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.4.3:
+  * Fix support for write-only directory.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:02:55 UTC 2018 - felix.gerling@suse.com
+
+- Update to version 0.9.4.2:
+  * Improved desktop notifications and added buttons for quick
+    responses
+  * Improved display on small displays
+  * Added support for write-only folder.
+  * Fixes for better compatibility with NixOS
+  * Added missing dependencies to AppImage
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.4:
+  * Requires Syncthing v0.14.48 or later.
+  * python-inotify is no longer needed.
+  * Warning message is displayed in terminal when status icon
+    cannot be used.
+  * Added --nofinddaemon option to setup.py.
+  * Removed Autostart option on GNOME.
+  * Replaced deprecated configuration values.
+  * Missing icons when starting from the syncthing-gtk.py script.
+
+-------------------------------------------------------------------
+Mon Mar 17 19:32:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.3.1:
+  * Fix a connection error when HTTPS is enabled.
+  * Fix connection issues when a directory has space in ID.
+  * Add a fallback for loading QR code when http gvfs backend is
+    not available.
+  * Fix an icon in the about dialogue not showing.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Feb 23 21:12:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.3:
+  * Should fix problems with random crashes, out-of-date directory
+    states and UI breaking after laptop is resumed from sleep.
+  * Add a link to the "file downloaded" notification.
+  * Add UI Settings to the status icon menu.
+  * Add support for AppImage.
+  * Fix Nautilus integration not working with latest Nautilus
+    versions.
+  * Fix status icon being invisible.
+  * Fix symlinks not counted files.
+- Rebase syncthing-gtk-fix-config-read.patch.
+
+-------------------------------------------------------------------
+Fri Oct 27 16:01:24 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.7 (changes since 0.9.2.5):
+  * Fix not being able to set dynamic and non-dynamic device
+    addresses at one.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:30:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.5:
+  * Change wording in notification for better clarity.
+  * Add a config-only option to disable status icon animation.
+  * Add a -o argument, dumps captured Syncthing daemon output to
+    stdout.
+  * Add an argument to disable the status icon.
+  * Fix filesystem watching failing on directories with space in
+    id.
+  * 1st run wizard now stores the password hash directly instead of
+    leaving hashing to Syncthing.
+  * Switch to timeout_add_seconds for inotify polling.
+  * Add a Polish translation.
+
+-------------------------------------------------------------------
+Mon Feb  6 10:12:42 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.4:
+  * Fix some typos.
+  * Update translations.
+- Remove the hack to change execution bits: not really needed.
+
+-------------------------------------------------------------------
+Tue Dec 27 15:05:20 UTC 2016 - sor.alexei@meowr.ru
+
+- Add syncthing-gtk-fix-config-read.patch: Fix configuration read
+  with non-ASCII locales.
+
+-------------------------------------------------------------------
+Mon Nov 28 13:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.3:
+  * Fix Portuguese language missing in language settings.
+
+-------------------------------------------------------------------
+Sat Sep 10 23:34:18 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.2:
+  * Support for directory labels in notifications.
+  * Not sending 'Host' header breaks Syncthing 0.14.6 or newer.
+  * Add Brazilian Portuguese translation.
+
+-------------------------------------------------------------------
+Tue Aug 30 13:16:24 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.2.1 (changes since 0.9.1):
+  * Add black and white icons theme, selectable in UI settings.
+  * New directory ID is pre-filled with auto-generated ID.
+  * Add a man page.
+  * Add Spanish translation.
+  * Fix error message about incompatible nodes being repeated
+    infinitely.
+  * Fix File Pull Order defaulting to nothing.
+  * Fix "Override remote changes" option not doing anything.
+  * 'tcp://' is prepended to dynamic address in directory editor.
+  * Add more error details when '404/Not Found' error is generated.
+
+-------------------------------------------------------------------
+Sat Jul 23 16:15:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.1:
+  * Now compatible with Syncthing v0.14.x.
+  * Display notification when .sync-conflict file is created.
+  * Handle error message about outdated syncthing on remote device.
+  * Rename Chinese localisation directory.
+
+-------------------------------------------------------------------
+Sat Jun 25 19:16:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.0.3:
+  * Better cookie handling when no username nor API key is set.
+  * Update about dialog with link to author's Patreon page.
+
+-------------------------------------------------------------------
+Thu May 26 17:01:14 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.0.2:
+  * Fix UI Settings crashes on small screen.
+  * Fix Daemon Settings crash.
+
+-------------------------------------------------------------------
+Tue May 17 17:13:51 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.0.1 (changes since 0.8.3):
+  * Syncthing 0.13 and above API.
+  * Add support for directory labels.
+  * Add support for Identification of Connections from
+    Unknown Devices.
+  * Add label that notifies user when changed setting needs
+    syncthing-gtk restart.
+  * Add 'File Pull Order' and 'Minimum Free Disk Space' fields to
+    directory editor.
+  * Change formatting in speed limit fields.
+  * Fix updater extracting systemd units.
+  * Add Chinese, Russian and Lithuanian localisations.
+
+-------------------------------------------------------------------
+Sun May  8 17:40:19 UTC 2016 - badshah400@gmail.com
+
+- Add Requires: python-gobject-Gdk, since this was split out of
+  python-gobject into its own sub-package and should now be
+  required by all GUI applications. 
+
+-------------------------------------------------------------------
+Sun Apr 17 06:01:14 UTC 2016 - sor.alexei@meowr.ru
+
+- Remove {caja,nemo,nautilus}-extension-syncthing-gtk:
+  syncthing-gtk handles that by itself (boo#975873).
+
+-------------------------------------------------------------------
+Fri Mar 25 15:09:10 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.3 (boo#976937):
+  * Add "Advanced" tab into UI Settings with options to change
+    Syncthing daemon arguments and environment variables.
+  * Fix handling Syncthing restarting.
+  * Fix repository with space in ID not refreshing correctly.
+
+-------------------------------------------------------------------
+Fri Jan 22 17:07:22 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.2:
+  * Fix about window not showing in some languages.
+  * Support timestamps with GTM+0 or without timezone.
+  * And two random, mostly harmless error messages.
+
+-------------------------------------------------------------------
+Mon Dec 14 17:54:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.1 (changes since 0.8):
+  * Fix Syncthing version of remote node not shown.
+  * Missing definition causing UI problems and Appreport madness
+    on Ubuntu.
+  * Update syncthing-inotify version to 0.6.7.
+  * Add support for download placeholders in Nautilus plugin.
+  * Add localisation support with translations for Czech, German,
+    and Slovak languages.
+- Add syncthing-gtk-lang package.
+- Create {caja,nemo,nautilus}-extension-syncthing-gtk packages with
+  Caja, Nemo, and Nautilus plugins.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8:
+  * Syncthing 0.12 and above API.
+  * No 'ignore' button on Unknown device message.
+
+-------------------------------------------------------------------
+Mon Oct 12 06:54:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.6.1:
+  * Fix missing image definition causes crash with some GLib
+    versions.
+
+-------------------------------------------------------------------
+Mon Oct  5 14:45:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.6:
+  * Fix crash on too old and too recent glib.
+  * Fix inotify (filesystem watcher) not being aware of created
+    directories.
+  * Fix Caja / Nautilus plugin ignoring some files until view is
+    refreshed.
+
+-------------------------------------------------------------------
+Wed Sep  2 17:21:42 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.5.1 (changes since 0.7.4.1):
+  * Better support for dark GTK+ themes.
+  * Fix showing stopped folders as "up-to-date".
+  * Fix notification icon missing on i3wm.
+
+-------------------------------------------------------------------
+Tue Jul 28 15:54:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.4.1:
+  * Add scrollbars around directory list and device list, fixing
+    display on small screens.
+  * Fix starting syncthing-gtk.py from a directory with unicode
+    characters in path.
+  * Move filemanager emblems to where specification expects them.
+  * Fix invalid links and typos.
+
+-------------------------------------------------------------------
+Tue Jun 30 20:52:36 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.4:
+  * Add displaying "(watch)" next to directory's rescan interval if
+    filesystem watching is enabled.
+  * Add support for extenal and trashcan versioning.
+  * Add --nostdownloader argument to setup.py, for disabling
+    Syncthing updater on "compile" time.
+  * Fix compatibility with non-GNU nice command.
+  * Fix filesystem watcher not reporting files with space in path.
+- Disable Syncthing updater.
+
+-------------------------------------------------------------------
+Thu Jun 11 21:32:11 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.3:
+  * Fix IPv6 address cut out in 'Add new device' dialog.
+  * Fix broken filesystem watcher.
+
+-------------------------------------------------------------------
+Mon Jun  1 13:20:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.2 (changes since 0.7.1.1):
+  * Fix first run wizard crashing because of missing icon.
+  * Add support for Exherbo's filesystem layout.
+  * Add support for small screens.
+
+-------------------------------------------------------------------
+Tue May 19 16:21:34 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

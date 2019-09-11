@@ -1,0 +1,1737 @@
+-------------------------------------------------------------------
+Wed Jul 10 10:16:16 UTC 2019 - Anna Maresova <anicka@suse.com>
+
+- changed: parted-fix-crash-due-to-improper-partition-number-in.patch
+  Changed the patch to behave in the same way like before last change
+  for numbers with leading zeroes.
+
+-------------------------------------------------------------------
+Mon Jul  1 14:14:36 UTC 2019 - Anna Maresova <anicka@suse.com>
+
+- port fixes for various bugs from upstream (bsc#1136245)
+ - add: libparted-dasd-correct-the-offset-where-the-first-pa.patch
+   4126d02, correct the offset where the first partition begins. 
+   This patch implements libparted-dasd-do-not-use-first-tracks.patch 
+ - remove: libparted-dasd-do-not-use-first-tracks.patch
+ - add: parted-fix-crash-due-to-improper-partition-number-in.patch
+   149f009, fix crash due to improper partition number input,
+   changed call to strtol, use base 0 to fit our parted-type.patch
+ - modify: parted-type.patch (removed ui.c part)
+ - add: parted-check-the-name-of-partition-first-when-to-nam.patch
+   d7a2ff1, check the name of partition first when to name a partition
+ - add: libparted-dasd-add-test-cases-for-the-new-fdasd-func.patch 
+   c11f5c0, 571e078, add test cases for the new fdasd functions
+ - add: libparted-dasd-add-an-exception-for-changing-DASD-LD.patch
+   ee2c0c2, add an exception for changing DASD-LDL partition table
+ - add: libpartd-dasd-improve-flag-processing-for-DASD-LDL.patch
+   1545d6d, improve flag processing for DASD-LDL
+ - add: clean-the-disk-information-when-commands-fail-in-int.patch
+   5a61f15, clean the disk information when commands fail in 
+   interactive mode
+ - add: parted-ui-remove-unneccesary-information-of-command.patch
+   0b7946a, remove unneccesary information of command line
+ - add: parted-fix-wrong-error-label-jump-in-mkpart.patch
+   af150f6, fix wrong error label jump in mkpart
+ - refresh: libparted-dasd-unify-vtoc-handling-for-cdl-ldl.patch
+   4f25d54, unify vtoc handling for cdl/ldl
+ - refresh: libparted-dasd-update-and-improve-fdasd-functions.patch
+   db37c8c, update and improve fdasd functions
+ - refresh: libparted-dasd-add-new-fdasd-functions.patch
+   b9e1281, add new fdasd functions
+
+-------------------------------------------------------------------
+Wed Aug  1 14:49:47 UTC 2018 - sparschauer@suse.de
+
+- libparted: Include <sys/sysmacros.h> for major() macro with
+  glibc >= 2.27
+  - add: libparted-sysmacros.patch
+
+-------------------------------------------------------------------
+Thu May 24 15:57:24 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Tue Feb 20 15:11:35 UTC 2018 - sparschauer@suse.de
+
+- libparted: Canonicalize /dev/md/ paths (bsc#1078820)
+  - add: libparted-canonicalize-dev-md-paths.patch
+  - add: tests-add-helper-require_swap_.patch
+  - add: tests-add-dev-md-check-to-t6100.patch
+
+-------------------------------------------------------------------
+Mon Feb 19 16:01:51 UTC 2018 - sparschauer@suse.de
+
+- libparted: Fix partition device naming for all devices
+  (bsc#1078820, bsc#1081547)
+  - The "_part%d" suffix which has been used for SLE10 compatibility
+    is wrong now as the kernel does not use that any more and
+    uses "p%d" instead.
+  - amend: libparted-partition-naming.patch
+  - refresh: libparted-fix-nvme-partition-naming.patch
+  - refresh: libparted-fix-NVDIMM-partition-naming.patch
+
+-------------------------------------------------------------------
+Fri Jan 26 15:22:20 UTC 2018 - sparschauer@suse.de
+
+- libparted: dasd: Use BLKRRPART only when needed (bsc#1065197,
+  bsc#1067435)
+  - add: libparted-use-BLKRRPART-only-when-needed.patch
+
+-------------------------------------------------------------------
+Fri Dec 22 17:23:25 CET 2017 - sparschauer@suse.de
+
+- Amend patch headers (no functional change)
+
+-------------------------------------------------------------------
+Tue Dec 19 17:23:10 UTC 2017 - sparschauer@suse.de
+
+- fatresize: Fix getting the device name from partition name
+  (boo#959181)
+  - add: fatresize-fix-getting-dev-name.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 09:26:23 UTC 2017 - sebastian.parschauer@suse.com
+
+- Fix the resizepart and rm command (bsc#1058667)
+  - fix asking for the partition end for resizepart in interactive mode
+    when the partition is busy
+  - allow resizepart shrinking and rm of busy partitions in script mode
+    by adding the --ignore-busy option
+  - allow growing busy partitions in script mode by default
+  - print a warning when shrinking a non-busy partition in script mode
+  - fix help text printing of long options without short option
+  - remove: parted-do-not-warn-when-shrinking-in-script-mode.patch
+  - add: parted-add-ignore-busy-option.patch
+  - add: parted-fix-resizepart-and-rm-command.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 17:17:40 CET 2017 - sparschauer@suse.de
+
+- Escape printed device path in machine mode (bsc#1066467)
+  - add: parted-escape-printed-device-path.patch
+
+-------------------------------------------------------------------
+Mon Oct 23 18:18:36 CEST 2017 - sparschauer@suse.de
+
+- Add support for NVDIMM devices (bsc#1064446)
+  - add: libparted-Add-support-for-NVDIMM-devices.patch
+  - add: libparted-fix-NVDIMM-partition-naming.patch)
+
+-------------------------------------------------------------------
+Wed Sep 20 10:00:07 UTC 2017 - sparschauer@suse.de
+
+- Prepare to fix the resizepart command (bsc#1058667)
+  - add: libparted-BLKPG_RESIZE_PARTITION-uses-bytes.patch
+  - add: libparted-fix-udev-cookie-leak.patch
+  - add: tests-check-extended-partition-length.patch
+
+-------------------------------------------------------------------
+Wed Sep 13 13:54:45 UTC 2017 - sparschauer@suse.de
+
+- Make SUSE parted pass all tests in upstream test suite
+  - add: tests-set-optimal-blocks-for-scsi_debug.patch
+  - add: tests-increase-scsi_debug-tmo.patch
+  - add: tests-use-wait_for_dev_to_-functions.patch
+  - add: tests-wait_for_-loop.patch
+  - add: tests-update-t0220-t0280-for-swap-flag.patch
+  - add: tests-adapt-to-SUSE.patch
+
+-------------------------------------------------------------------
+Wed Sep 13 10:30:16 CEST 2017 - sparschauer@suse.de
+
+- Fix partition naming for dm devices not ending in a digit and
+  also fix resizing of dm partitions (bsc#1056508)
+  - amend: libparted-partition-naming.patch
+
+-------------------------------------------------------------------
+Thu Aug 24 16:51:37 CEST 2017 - sparschauer@suse.de
+
+- Drop using deprecated configure option "--disable-Werror"
+- Drop (SUSE specific) support for hybrid pMBR (gpt_sync_mbr
+  label) (fate#317849, bsc#1041322)
+  - remove: parted-gpt-mbr-sync.patch
+  - remove: libparted-ppc-prepboot-in-syncmbr.patch
+  - remove: parted-workaround-windows7-gpt-implementation.patch
+  - refresh patches
+- libparted: Fix starting CHS in protective MBR (bsc#969165)
+  - add: libparted-fix-starting-CHS-in-protective-MBR.patch
+
+-------------------------------------------------------------------
+Tue Aug 15 17:21:02 CEST 2017 - sparschauer@suse.de
+
+- Fix s390x --wipesignatures regression caused by fate#320525
+  (bsc#1047031)
+  - amend: parted-implement-wipesignatures-option.patch
+  - refresh: 0002-dasd-enhance-device-probing.patch
+
+-------------------------------------------------------------------
+Fri Aug 11 16:15:08 CEST 2017 - sparschauer@suse.de
+
+- Amend parsing of empty GPT partition names to require quoted
+  empty strings '""' or "''" (bsc#1023818, boo#1032562)
+  - amend: parted-mkpart-allow-empty-gpt-part-name.patch
+
+-------------------------------------------------------------------
+Thu Aug 10 16:44:57 CEST 2017 - sparschauer@suse.de
+
+- parted: mkpart: Allow empty string "" for the GPT partition name
+  in script mode (bsc#1023818, boo#1032562)
+  - add: parted-mkpart-allow-empty-gpt-part-name.patch
+
+-------------------------------------------------------------------
+Thu Jun 15 20:28:08 CEST 2017 - sparschauer@suse.de
+
+- Add a swap flag for dasd/gpt and handle it like gdisk/fdasd
+  (bsc#1044536, fate#314888)
+  - add: parted-mkpart-set-a-swap-flag-if-available.patch
+  - add: libparted-set-swap-flag-on-GPT-partitions.patch
+  - add: libparted-dasd-add-swap-flag-handling-for-DASD-CDL.patch
+
+-------------------------------------------------------------------
+Wed May 24 17:15:17 CEST 2017 - sparschauer@suse.de
+
+- Fix printing DASD/CDL partition flags "lvm" and "raid"
+  (bsc#1040163, fate#314888)
+  - add: libparted-dasd-improve-lvm-raid-flag-handling.patch
+
+-------------------------------------------------------------------
+Tue May 16 15:28:47 CEST 2017 - sparschauer@suse.de
+
+- Enhance fdasd detection and probing (bsc#935127, fate#320525)
+  - add: 0001-fdasd-geometry-handling-updated-from-upstream-s390-t.patch
+  - add: 0002-dasd-enhance-device-probing.patch
+  - add: 0003-parted-fix-build-error-on-s390.patch
+  - add: 0004-fdasd.c-Safeguard-against-geometry-misprobing.patch
+  - add: 0005-libparted-Remove-fdasd-geometry-code-from-alloc_meta.patch
+  - refresh: libparted-dasd-update-and-improve-fdasd-functions.patch
+  - refresh: libparted-dasd-add-new-fdasd-functions.patch
+
+-------------------------------------------------------------------
+Thu May 11 12:53:20 CEST 2017 - sparschauer@suse.de
+
+- Add support for RAM drives for not erasing them when printing
+  their partitions (bsc#1006834)
+  - add: libparted-Add-support-for-RAM-drives.patch
+
+-------------------------------------------------------------------
+Tue May  2 10:45:37 CEST 2017 - sparschauer@suse.de
+
+- Use latest fdasd/vtoc code base from s390-tools (fate#321531)
+  - add: libparted-dasd-unify-vtoc-handling-for-cdl-ldl.patch
+  - add: libparted-dasd-update-and-improve-fdasd-functions.patch
+  - add: libparted-dasd-add-new-fdasd-functions.patch
+
+-------------------------------------------------------------------
+Thu Apr 27 17:37:19 CEST 2017 - sparschauer@suse.de
+
+- libparted: Don't warn if the HDIO_GET_IDENTITY ioctl isn't
+  supported (bsc#964012, bsc#1001967)
+  - add: libparted-dont-warn-if-no-HDIO_GET_IDENTITY.patch
+- Amend patch description:
+  - libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
+
+-------------------------------------------------------------------
+Tue Aug  9 14:36:20 CEST 2016 - sparschauer@suse.de
+
+- Sync with SLES-12 SP2 for bsc#979275
+  - amend: libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
+
+-------------------------------------------------------------------
+Tue Aug  9 14:04:47 CEST 2016 - sparschauer@suse.de
+
+- Correctly flush caches before reading from the device
+  (bsc#989751)
+  - amend: libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
+  - refresh: libparted-Add-support-for-NVMe-devices.patch
+
+-------------------------------------------------------------------
+Sat Jun 18 07:08:01 UTC 2016 - jengelh@inai.de
+
+- install_info should run in %preun; otherwise the files to operate
+  are gone already.
+- Drop with-pic: only useful for static libs (which are not built)
+
+-------------------------------------------------------------------
+Tue Jun 14 11:09:20 UTC 2016 - puzel@suse.com
+
+- Detect NVMe devices and fix the nvme partition naming scheme
+  (bsc#982169)
+  - libparted-Add-support-for-NVMe-devices.patch
+  - libparted-fix-nvme-partition-naming.patch
+
+-------------------------------------------------------------------
+Thu May 26 10:46:38 UTC 2016 - puzel@suse.com
+
+- Update parted-implement-wipesignatures-option.patch:
+  - Move functionality to libparted (bsc#980834)
+- libparted: open the device RO and lazily switch to RW only if
+  necessary (bsc#979275)
+  - libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
+
+-------------------------------------------------------------------
+Wed May 18 07:23:08 UTC 2016 - puzel@suse.com
+
+- implement --wipesignatures option (bsc#943623, fate#319893)
+  - parted-implement-wipesignatures-option.patch
+
+-------------------------------------------------------------------
+Fri Mar 11 11:20:12 UTC 2016 - puzel@suse.com
+
+- libparted: Use read only when probing devices on linux
+  - libparted-Use-read-only-when-probing-devices-on-linu.patch
+  (bsc#967375)
+
+-------------------------------------------------------------------
+Thu Sep 10 09:18:30 UTC 2015 - fvogt@suse.com
+
+- Update parted-gpt-mbr-sync.patch to fix bsc#945068
+  Basically just a copy of gpt_alloc with minor modifications now 
+
+-------------------------------------------------------------------
+Tue May 26 11:21:37 UTC 2015 - puzel@suse.com
+
+- Remove 'udevadm' from Requires; parted no longer calls 'udevadm
+  settle'
+
+-------------------------------------------------------------------
+Thu May 21 06:42:51 UTC 2015 - puzel@suse.com
+
+- Add note to specfile to remove parted-resize-alias-to-resizepart.patch
+  compatibility patch once bnc#931765 is resolved.
+
+-------------------------------------------------------------------
+Tue May  5 13:39:24 UTC 2015 - puzel@suse.com
+
+- Do not warn about shrinking a partition if script mode is used
+  (bnc#929189)
+  - add: parted-do-not-warn-when-shrinking-in-script-mode.patch
+
+-------------------------------------------------------------------
+Wed Feb 11 15:01:56 UTC 2015 - puzel@suse.com
+
+- Update to parted-3.2; Notable changes:
+  - Added new partition type flag, esp, to set the type to 0xEF on
+    MS-DOS.  Also aliased to boot on GPT to set the UEFI ESP GUID.
+  - You can now choose to ignore errors about partitions that
+    overlap, or are longer than the disk.  This allows you to use
+    parted to repair the problem.
+  - When attempting to manipulate a mounted partition, parted now
+    issues a warning that you can choose to ignore, instead of an
+    error.
+  - When creating a loop label, it automatically comes with a
+    partition using the whole disk.
+  - parted -l no longer lists device-mapper devices other than
+    dmraid whole disks.
+  - Added new Linux-specific partition GUID type code
+    (0FC63DAF-8483-4772-8E79-3D69D8477DE4) for Linux filesystem
+    data on GPT disks.  This type code is now assigned as the
+    default partition type code for new partitions holding Linux
+    filesystems.
+  - Added new "msftdata" flag to identify partitions holding NTFS
+    or FAT filesystems on GPT disks.  This flag corresponds to a
+    GPT type code of EBD0A0A2-B9E5-4433-87C0-68B6B72699C7
+    ("Microsoft Basic Data").  Since Linux filesystem partitions
+    formerly used this type code, this flag may optionally be set
+    on Linux partitions to make the partition table type codes
+    match former configurations in case the new Linux filesystem
+    type code causes problems with some utility.  Note that this
+    flag cannot be removed from NTFS or FAT partitions within
+    parted except by setting a competing flag, such as "boot"
+    (which sets the type code used by EFI System partitions) or
+    "msftres" (which sets the "Microsoft Reserved" type code).
+  - Many bugfixes (see /usr/share/doc/packages/parted/NEWS)
+- merge parted-fix-cciss-partition-naming.patch,
+  libparted-fix-mmcblk-partition-name.patch,
+  fix-dm-partition-name.patch
+  into libparted-partition-naming.patch
+- Add parted-resize-alias-to-resizepart.patch
+- Add libparted-avoid-libdevice-mapper-warnings.patch
+- drop patches (in upstream):
+  - fix-error-informing-the-kernel.patch
+  - Fix-help-text-for-disk_-set-toggle.patch
+  - libparted-Avoid-dasd-as-default-disk-type-while-probe.patch
+  - libparted-add-support-for-EAV-DASD-partitions.patch
+  - libparted-add-support-for-implicit-FBA-DASD-partition.patch
+  - libparted-copy-pmbr_boot-when-duplicating-GPT-disk.patch
+  - libparted-initialize-dasd-part-type.patch
+  - libparted-mklabel-to-support-EAV-DASD.patch
+  - libparted-mklabel-to-support-EDEV-DASD.patch
+  - parted-Add-Intel-Rapid-Start-Technology-partition.patch
+  - parted-GPT-add-support-for-PReP-GUID.patch
+  - parted-btrfs-support.patch
+  - parted-resize-command.patch
+- drop do-not-create-dm-nodes.patch: Not needed anymore since
+  parted DM handling has been reworked.
+- modified more-reliable-informing-the-kernel.patch: No longer
+  call 'udevadm settle' as it was causing issues.
+- add patches from upstream (post-3.2):
+  - lib-fs-resize-prevent-crash-resizing-FAT16.patch
+  - libparted-device-mapper-uses-512b-sectors.patch
+  - parted-dont-crash-in-disk_set-when-disk-label-not-found.patch
+- refresh patches
+
+-------------------------------------------------------------------
+Fri Nov 14 09:18:50 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Thu Sep 11 10:30:04 UTC 2014 - puzel@suse.com
+
+- Add an "implicit_partition_table" disk flag to mark
+  FBA DASD disks with fake partition (bnc#894585)
+  - libparted-dasd-implicit-partition-disk-flag.patch
+- refresh following patches to fix build:
+  - parted-type.patch
+  - parted-mac.patch
+  - parted-Add-Intel-Rapid-Start-Technology-partition.patch
+
+-------------------------------------------------------------------
+Sat Sep  6 21:47:27 UTC 2014 - andreas.stieger@gmx.de
+
+- Keyring contained no less than 374 public keys.
+  Replace with project members only keyring from project page.
+
+-------------------------------------------------------------------
+Mon Aug 18 15:28:56 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Jul 25 15:43:42 UTC 2014 - puzel@suse.com
+
+- Fix a bug where cylinders can be treated by parted as exact
+  location, which prevents it from adjusting partition/start end.
+  (bnc#880369)
+  - libparted-make-sure-not-to-treat-percentages-and-cyls-as-exact.patch
+
+-------------------------------------------------------------------
+Fri Jul 18 10:10:07 UTC 2014 - puzel@suse.com
+
+- Make informing the kernel by BLKRRPART (specific to s390) more
+  robust by sleeping between every retry and by placing
+  exclusive file lock on the blockdevice (bnc#886005)
+  - libparted-make-BLKRRPART-more-robust.patch
+
+-------------------------------------------------------------------
+Wed Jul 16 13:14:09 UTC 2014 - puzel@suse.com
+
+- Improve DASD label handling; backport following patches
+  from upstream (bnc#887333):
+  - libparted-add-support-for-implicit-FBA-DASD-partition.patch
+  - libparted-add-support-for-EAV-DASD-partitions.patch
+  - libparted-mklabel-to-support-EAV-DASD.patch
+  - libparted-Avoid-dasd-as-default-disk-type-while-probe.patch
+  - libparted-mklabel-to-support-EDEV-DASD.patch
+
+-------------------------------------------------------------------
+Thu May 29 12:55:29 UTC 2014 - puzel@suse.com
+
+- Allow bigger snap radius if cylinders are used as units
+  (bnc#879387):
+  - add: libparted-allow-bigger-snap-radius-if-cylinders-are-used.patch
+
+-------------------------------------------------------------------
+Tue May 20 10:27:17 UTC 2014 - puzel@suse.com
+
+- Fix the help text to show *disk* flags instead of partition flags
+  (bnc#872054):
+ - add: Fix-help-text-for-disk_-set-toggle.patch
+
+-------------------------------------------------------------------
+Tue Apr 29 13:06:09 UTC 2014 - puzel@suse.com
+
+- Support setting boot flag in pMBR (bnc#872054):
+  - drop: revert-gpt-add-commands-to-manipulate-pMBR-boot-flag.patch 
+  - add: libparted-copy-pmbr_boot-when-duplicating-GPT-disk.patch
+  - refresh patches
+
+-------------------------------------------------------------------
+Mon Feb 17 13:32:19 UTC 2014 - puzel@suse.com
+
+- Fixup last commit - call BLKRRPART only for DASDs
+- added patches:
+  * libparted-use-BLKRRPART-for-DASD.patch.patch
+- removed patches:
+  * revert-libparted-remove-now-worse-than-useless-_kern.patch
+  * revert-linux-remove-DASD-restriction-on-_disk_sync_p.patch
+-------------------------------------------------------------------
+Fri Feb 14 08:30:06 UTC 2014 - puzel@suse.com
+
+- Use BLKRRPART on DASD disks (instead of BLKPG_*) (bnc#862139) 
+- added patches:
+  * revert-libparted-remove-now-worse-than-useless-_kern.patch
+  * revert-linux-remove-DASD-restriction-on-_disk_sync_p.patch
+
+-------------------------------------------------------------------
+Thu Feb 13 15:40:56 UTC 2014 - puzel@suse.com
+
+- reserve first 2 tracks on DASD disks for metadata (bnc#862138)
+  * add: libparted-dasd-do-not-use-first-tracks.patch
+- initialize memory for newly allocated partition (bnc#862138)
+  * add: libparted-initialize-dasd-part-type.patch
+
+-------------------------------------------------------------------
+Fri Jan 24 13:17:34 UTC 2014 - puzel@suse.com
+
+- include new fatresize(8) utility
+- added patches:
+  * parted-fatresize-autoconf.patch
+
+-------------------------------------------------------------------
+Wed Jan 22 16:15:13 UTC 2014 - puzel@suse.com
+
+- Do not fail when shrinking the partition in non-interactive mode.  
+- modified patches:
+  * parted-resize-command.patch
+
+-------------------------------------------------------------------
+Wed Jan  8 15:32:34 UTC 2014 - puzel@suse.com
+
+- update to parted-3.1 (fate#316110)
+- changes in parted-3.1:
+  * Changes in behavior
+    - Floppy drives are no longer scanned on linux: they cannot be
+      partitioned anyhow, and some users have a misconfigured BIOS
+      that claims to have a floppy when they don't, and scanning
+      gets hung up.
+    - parted: the mkpart command has changed semantics with regard
+      to specifying the end of the partition.  If the end is
+      specified using units of MiB, GiB, etc., parted subtracts one
+      sector from the specified value.  With this change, it is now
+      possible to create partitions like 1MiB-2MiB, 2MiB-3MiB and
+      so on.
+  * Many bugfixes (see changelog)
+- changes in parted-3.0:
+  * Changes in behavior
+    - Remove all FS-related (file system-related) sub-commands;
+      these commands are no longer recognized because they were all
+      dependent on parted "knowing" too much about file system:
+      mkpartfs, mkfs, cp, move, check.
+    - 'resize' command changed semantics:
+      it no longer resizes the filesystem, but only moves end
+      sector of the partition
+- libparted-devel contains libparted-fs-resize library 
+- add ability to change size of the partition (ignoring contained
+  filesystem) with 'resize' command; this command has different
+  semantics than the former 'resize' command which upstream
+  decided to drop
+  - parted-resize-command.patch (fate#316110)
+- when using syncmbr on POWER, make the first partition type 0x41
+  (PReP boot) (bnc#797485)
+  - add libparted-ppc-prepboot-in-syncmbr.patch
+- support for PReP GUID (bnc#797485)
+  - parted-GPT-add-support-for-PReP-GUID.patch
+- Build requires makeinfo
+- drop fix-function-def.patch (not needed)
+- drop parted-stdio.h.patch (not needed)
+- drop parted-use-ext-range.patch (upstream)
+- drop fix-nilfs2-probe-function.patch (upstream)
+- drop parted-improve-loop-support.patch (upstream)
+- drop always-resize-part.dif (FS support removed)
+- merged following hybrid pMBR patches:
+  parted-gpt-mbr-sync.patch,
+  parted-gpt-sync-mbr-label.patch,
+  parted-fix-gpt-sync-on-BE-systems.patch
+
+-------------------------------------------------------------------
+Mon Dec 30 09:15:06 UTC 2013 - puzel@suse.com
+
+- Fix partition device names on MMC devices (bnc#847580)
+  - libparted-fix-mmcblk-partition-name.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 08:27:12 UTC 2013 - mlin@suse.com
+
+- Add parted-Add-Intel-Rapid-Start-Technology-partition.patch:
+  * Add Intel Fast Flash(iFFS) partition type support for Intel Rapid
+    Start Technology. Added type 0x84 on MS-DOS and 
+    D3BFE2DE-3DAF-11DF-BA40-E3A556D89593 on GPT disk type.
+
+-------------------------------------------------------------------
+Mon Apr 22 15:06:02 UTC 2013 - puzel@suse.com
+
+- fix hybrid pMBR (gpt_sync_mbr) on BE systems (bnc#809205)
+  - parted-fix-gpt-sync-on-BE-systems.patch 
+- detect btrfs filesystem (bnc#810779)
+  - parted-btrfs-support.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 12:24:12 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add GPG checking
+
+-------------------------------------------------------------------
+Wed Nov 21 10:32:05 UTC 2012 - puzel@suse.com
+
+- add fix-error-informing-the-kernel.patch:
+  Informing the kernel about partition changes still fails if first
+  logical partition starts right after the extended partition. Fix
+  it.
+
+-------------------------------------------------------------------
+Thu Sep 27 13:40:56 UTC 2012 - puzel@suse.com
+
+- add parted-workaround-windows7-gpt-implementation.patch
+  (bnc#781688) 
+
+-------------------------------------------------------------------
+Fri Jul 27 09:14:44 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Tue Jul  3 13:31:20 UTC 2012 - puzel@suse.com
+
+- copy dummy bootcode to MBR only on x86 because it can cause
+  problems to certain ARM machine (bnc#769789)
+  - add: dummy-bootcode-only-for-x86.patch
+
+-------------------------------------------------------------------
+Tue Apr 17 13:59:13 UTC 2012 - puzel@suse.com
+
+- fix informing the kernel about partitions on cciss devices
+  (bnc#757225)
+  - add: parted-fix-cciss-partition-naming.patch
+
+-------------------------------------------------------------------
+Fri Dec 30 08:42:23 UTC 2011 - puzel@suse.com
+
+- fix crash in nilfs2 probe function if there is tiny (1s)
+  partition on the disk (bnc#735763)
+  - fix-nilfs2-probe-function.patch
+
+-------------------------------------------------------------------
+Sun Nov 20 06:27:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct 26 17:22:16 UTC 2011 - puzel@suse.com
+
+- improve loop support, fix geometry reporting on loopback devices:
+  parted-improve-loop-support.patch (bnc#726603)
+
+-------------------------------------------------------------------
+Mon Sep 26 08:41:49 UTC 2011 - puzel@suse.com
+
+- improve parted-gpt-sync-mbr-label.patch: do not
+  sync partitions that can not be represented by the DOS label
+  (bnc#710402)
+
+-------------------------------------------------------------------
+Wed Sep  7 15:05:08 UTC 2011 - puzel@suse.com
+
+- change do-not-create-dm-nodes.patch so that parted does
+  not remove dm partition mappings and leaves the job up
+  to kpartx -u called via udev
+  (bnc#712177, bnc#679780)
+
+-------------------------------------------------------------------
+Mon Sep  5 12:08:48 UTC 2011 - puzel@suse.com
+
+- add parted-use-ext-range.patch (bnc#715695) 
+
+-------------------------------------------------------------------
+Thu Aug 25 10:22:09 UTC 2011 - puzel@novell.com
+
+- add parted-gpt-sync-mbr-label.patch (bnc#710402) 
+  - this patch implements support for special label 'gpt-sync-mbr'
+
+-------------------------------------------------------------------
+Tue Aug 16 09:07:50 UTC 2011 - puzel@novell.com
+
+- update parted-gpt-mbr-sync.patch so that it no longer
+  creates synced partitions one sector shorter (bnc#700465)
+
+-------------------------------------------------------------------
+Sun Jul 31 01:50:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Use ncursesw6 instead of plain-old ncurses5 
+- Disable automake silent rules
+
+-------------------------------------------------------------------
+Thu May 19 13:05:08 UTC 2011 - puzel@novell.com
+
+- update to parted-2.4 
+ * Bug fixes
+  - parted no longer allows the modification of certain in-use
+    partitions.  In particular, before this fix, parted would
+    permit removal or modification of any in-use partition on a
+    dmraid and any in-use partition beyond the 15th on a regular
+    scsi disk.
+  - Improve support of DASD devices on the s390 architecture.
+    Parted now supports all DASD types (CKD and FBA), DASD formats
+    (CDL, LDL, CMS non-reserved, and CMS reserved), and DASD
+    drivers (ECKD, FBA, and DIAG) in all combinations supported by
+    the Linux kernel.  As before, only CDL format on CKD DASD using
+    the ECKD driver is supported for read-write operations (create,
+    delete, move, re-size, etc.).  However, the implicit partition
+    present on LDL- and CMS-formatted disks is now correctly
+    recognized for read-only operations.  In detail:
+    - parted now correctly handles LDL-format disks with a block
+      size other than 4096 (bug fix)
+    - parted now recognizes the CMS disk format, both reserved and
+      non-reserved (enhancement)
+    - parted now supports FBA DASD devices (enhancement)
+    - parted now supports the DIAG driver when running in a virtual
+      machine under z/VM (enhancement)
+  - libparted: raise the limit on the maximum start sector and the
+    maximum number of sectors in a "loop" partition table from 2^32
+    to 2^64.
+  - libparted once again recognizes a whole-disk FAT partition
+  - libparted now recognizes scsi disks with a high major (128-135)
+    as scsi disks
+  - an msdos partition table on a very small device (smaller than
+    one cylinder) is now recognized.
+  - libparted: zero-length devices (other than files) are ignored
+    rather than throwing an exception.
+  - libparted: gpt label creation can no longer divide by zero with
+    a defective device or when a concurrent writer modifies the
+    PE-size bytes in the small interval between the write and
+    subsequent read of the primary GPT header.
+ * Changes in behavior
+  - "parted $dev print" now prints information about the device
+    (model, size, transport, sector size) even when it fails to
+    recognize the disk label.
+  - specifying partition start or end values using MiB, GiB, etc.
+    suffixes now makes parted do what I want, i.e., use that
+    precise value, and not some other that is up to 500KiB or
+    500MiB away from what I specified.  Before, to get that
+    behavior, you would have had to use carefully chosen values
+    with units of bytes ("B") or sectors ("s") to obtain the same
+    result, and with sectors, your usage would not be portable
+    between devices with varying sector sizes.  This change does
+    not affect how parted handles suffixes like KB, MB, GB, etc.
+- drop always_print_geom.diff (merged upstream)
+
+-------------------------------------------------------------------
+Thu Dec  9 09:44:33 UTC 2010 - puzel@novell.com
+
+- add more-reliable-informing-the-kernel.patch (bnc#657360) 
+
+-------------------------------------------------------------------
+Tue Nov  9 12:16:04 UTC 2010 - puzel@novell.com
+
+- updated always_print_geom.diff to print also physical/logical
+  sector size (patch by Arvin Schnell)
+
+-------------------------------------------------------------------
+Fri Sep 17 14:47:04 UTC 2010 - puzel@novell.com
+
+- package according to shared library policy: split libparted0
+- add build dependencies on libblkid and libuuid
+
+-------------------------------------------------------------------
+Fri Sep 17 13:47:05 UTC 2010 - puzel@novell.com
+
+- fix always-resize-part.dif (bnc#639579) 
+
+-------------------------------------------------------------------
+Wed Aug 11 08:45:56 UTC 2010 - puzel@novell.com
+
+- update parted-type.patch (bnc#630009)
+
+-------------------------------------------------------------------
+Thu Jul  8 11:43:17 UTC 2010 - puzel@novell.com
+
+- update to parted-2.3
+  - parted now recognizes ATA over Ethernet (AoE) devices
+  - parted now recognizes Linux Software RAID Arrays
+  - libparted has a new partition flag to check for diagnostic 
+    (aka recovery or reserved) partitions: PED_PARTITION_DIAG
+  - When libparted deferenced a /dev/mapper/foo symlink, it would 
+    keep the resulting /dev/dm-N name and sometimes use it later,
+    even though it had since become stale and invalid. 
+    It no longer stores the result of dereferencing a /dev/mapper
+    symlink.
+  - libparted's msdos_partition_is_flag_available function now
+    always reports that the "hidden" flag is not available for 
+    an extended partition. Similarly, 
+    msdos_partition_get_flag(p,PED_PARTITION_HIDDEN) always
+    returns 0 for an extended partition.
+  - libparted uses a more accurate heuristic to distinguish between
+    ext4 and ext3 partitions.
+  - libparted now properly checks the return value of dm_task_run
+     when operating on devicemapper devices.
+  - allow using ped_device_cache_remove(dev) followed by a (later)
+    ped_device_destroy() without corrupting the device cache.
+  - when creating an ext2 file system, Parted no longer creates an
+    invalid one when its size is 2TiB or larger.
+- drop etherd_support.diff (included upstream)
+- drop parted-remove-experimental-warning.patch (included upstream)
+- drop make-align-check-work-in-interactive-mode.patch 
+  (included upstream)
+- drop parted-no-inttypes-include (not needed)
+- refresh all remaining patches
+
+-------------------------------------------------------------------
+Wed Jun 30 11:12:03 UTC 2010 - puzel@novell.com
+
+- update make-align-check-work-in-interactive-mode.patch to
+  be consistent with upstream
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu May 27 15:36:51 UTC 2010 - puzel@novell.com
+
+- add make-align-check-work-in-interactive-mode.patch (bnc#608704) 
+
+-------------------------------------------------------------------
+Fri Apr  2 08:41:02 UTC 2010 - puzel@novell.com
+
+- add parted-remove-experimental-warning.patch
+- refresh always_print_geom.diff to apply at correct function
+
+-------------------------------------------------------------------
+Fri Feb 26 17:56:05 UTC 2010 - puzel@novell.com
+
+- update to parted-2.2
+ - Changes in behavior
+  - The default alignment (--align option) for newly created
+    partitions has been changed to optimal.
+ - New features
+  - The ped_device_get_*_alignment() functions now return a sane
+    default value instead of NULL when the so called topology
+    information is incomplete.  The default minimum alignment aligns
+    to physical sector size, the default optimal alignment is 1MiB,
+    which is what vista and windows 7 do.
+ - Bug fixes
+  - Parted no longer uses a physical sector size of 0 or of any
+    other value smaller than the logical sector size.
+  - dos: creating an HFS or HFS+ partition in an msdos partition
+    table used to set the partition type to 0x83.  That is wrong.
+    The required number is 0xaf, and that is what is used now.
+  - gpt: read-only operation could clobber MBR part of hybrid
+    GPT+MBR table [bug introduced in parted-2.1]
+  - gpt: a read-only operation like "parted $dev print" would
+    overwrite $dev's protective MBR when exactly one of the primary
+    and backup GPT tables was found to be corrupt.  [bug introduced
+    prior to parted-1.8.0]
+  - sun: the version, sanity and nparts VTOC fields were ignored by
+    libparted.  Those fields are properly initialized now. The
+    nparts (number of partitions) field is initialized to 8 (max.
+    number of sun partitions) rather that to a real number of
+    partitions. This solution is compatible with Linux kernel and
+    Linux fdisk.
+  - libparted: try harder to inform kernel of partition changes.
+    Previously when editing partitions, occasionally the kernel
+    would fail to be informed of partition changes.  When this
+    happened future problems would occur because the kernel had
+    incorrect information.  For example, if this problem arose when
+    resizing or creating a new partition, then an incorrect
+    partition size might be displayed or a user might encounter a
+    failure to format or delete a newly created partition,
+    respectively.
+  - libparted: committing a disk that was returned by
+    ped_disk_duplicate would always result in ped_disk_clobber being
+    called (and thus the first and last 9KiB of the disk being
+    zeroed), even if the duplicated disk, was not returned by
+    ped_disk_fresh().
+- drop do-not-install-test-programs.patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Wed Feb 17 16:33:01 UTC 2010 - puzel@novell.com
+
+- add do-not-install-test-programs.patch
+  - avoid deleting this in specfile
+
+-------------------------------------------------------------------
+Mon Feb  1 13:34:10 UTC 2010 - puzel@novell.com
+
+- update to parted-2.1 (noteworthy changes)
+ * New features
+  - new --align=<align> commandline option which can have the
+    following values: 
+     - none: Use the minimum alignment allowed by the disk type 
+     - cylinder: Align partitions to cylinders (the default) 
+     - minimal:  Use minimum alignment as given by the disk
+       topology information 
+     - optimal:  Use optimum alignment as given by the disk
+       topology information 
+    The minimal and optimal values will use layout information
+    provided by the disk to align the logical partition table
+    addresses to actual physical blocks on the disks. The minimal
+    value uses the minimum alignment needed to align the partition
+    properly to physical blocks, which avoids performance
+    degradation. Where as the optimal value uses a multiple of the
+    physical block size in a way that guarantees optimal
+    performance.  The min and opt values will only work when
+    compiled with libblkid >= 2.17 and running on a kernel >=
+    2.6.31, otherwise they will behave as the none --align value.
+  - Parted now supports disks with sector size larger than 512 bytes.
+    Before this release, parted could operate only on disks with a 
+	sector size of 512 bytes. However, disk manufacturers are 
+	already making disks with an exposed hardware sector size of 
+	4096 bytes. Prior versions of parted cannot even read a 
+	partition table on such a device, not to mention create or 
+	manipulate existing partition tables. Due to internal design 
+	and time constraints, the following less-common partition 
+	table types are currently disabled:
+    - amiga, bsd, aix, pc98
+  - new command "align-check TYPE N" to determine whether the
+	starting sector of partition N is
+	TYPE(minimal|optimal)-aligned for the disk.  The same
+	libblkid and kernel version requirements apply as for --align
+ * Bug fixes
+  - parted can once again create partition tables on loop devices.
+  - improved >512-byte sector support
+  - gpt tables are more rigorously checked
+  - improved dasd disk support
+  - handle device nodes created by lvm built with udev 
+    synchronisation enabled properly.
+  - when printing tables, parted no longer truncates flag names
+  - Partitions in a GPT table are no longer assigned the
+	"microsoft reserved partition" type.  Before this change,
+	each partition would be listed with a type of "msftres" by
+	default.
+ * Notice
+  - Parted stopped using BLKPG_* ioctls to inform the kernel
+	about changes of the partition table. The consequence of this
+	change is that parted alone can no longer inform the kernel
+	about changes to partition table on a disk where some of the
+	partitions are mounted.    
+- build requires check-devel and pkg-config
+- drop parted-1.8.3.dif - fixed by adding pkg-config and check-devel
+  to BuildRequires
+- drop parted.tty.patch, parted.no-O_DIRECT.patch,
+  do-not-discard-bootcode-in-extended-partition.patch,
+  avoid-unnecessary-open-close.patch, 
+  do-not-unnecessarily-open-part-dev.patch
+  - fixed upstream
+- drop fix-tests.sh - make check disabled in specfile
+- drop fix-error-informing-the-kernel.patch,
+  fix-race-call-udevadm-settle.patch,
+  retry-blkpg-ioctl.patch, use-ext-range.patch
+  - affected code removed as part of the BLKPG to BLKRRPART
+    switch
+- clean up specfile
+
+-------------------------------------------------------------------
+Mon Feb  1 12:22:54 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Mon Jan 25 15:54:17 UTC 2010 - puzel@novell.com
+
+- use-ext-range.patch (bnc#567652) 
+
+-------------------------------------------------------------------
+Thu Dec  3 14:10:59 UTC 2009 - puzel@novell.com
+
+- avoid-unnecessary-open-close.patch, 
+  do-not-unnecessarily-open-part-dev.patch,
+  fix-race-call-udevadm-settle.patch,
+  retry-blkpg-ioctl.patch (bnc#539521)
+
+-------------------------------------------------------------------
+Wed Oct  7 14:12:15 UTC 2009 - puzel@novell.com
+
+- do-not-create-dm-nodes.patch (bnc#501773) 
+
+-------------------------------------------------------------------
+Fri Jul 31 10:20:05 CEST 2009 - puzel@novell.com
+
+- update to parted-1.9.0
+ * bugfixes:
+   * parted now preserves the protective MBR (PMBR) in GPT type
+     labels.
+   * gpt_read now uses SizeOfPartitionEntry instead of the size
+	 of GuidPartitionEntry_t. This ensures that *all* of the
+	 partition entries are correctly read.
+   * mklabel (interactive mode) now correctly asks for
+	 confirmation, when replacing an existent label, without
+	 outputting an error message.
+   * resize now handles FAT16 file systems with a 64k cluster.
+	 This configuration is not common, but it is possible.
+   * parted now ignores devices of the type /dev/md* when
+	 probing.  These types of devices should be handled by the
+	 device-mapper capabilities of parted.
+   * The parted documentation now describes the differences in
+	 the options passed to mkpart for the label types.
+ * changes in behavior
+   * In libparted, the linux-swap "filesystem" types are now
+	 called "linux-swap(v0)" and "linux-swap(v1)" rather than
+	 "linux-swap(old)" and "linux-swap(new)" as in parted 1.8, or
+	 "linux-swap" as in older versions; "old" and "new" generally
+	 make poor names, and v1 is the only format supported by
+	 current Linux kernels. Aliases for all previous names are
+	 available.
+- drop following patches as they were merged upstream/are no 
+  longer needed:
+  * 2TB_size_overflow.diff
+  * disable_FAT_check.diff
+  * do-not-automatically-correct-GPT.patch
+  * dont-require-dvh-partition-name.patch
+  * fix-array-overflow.patch
+  * fix-corrupted-gpt-crash.patch
+  * fix-dasd-probe.patch
+  * fix-dvh-update.patch
+  * fix-improper-data-conversion.patch
+  * fix-make-install-failure.patch
+  * gnulib.diff
+  * parted-cmd-arg-fix.patch
+  * parted-fdasd-compile-fixes
+- remove FAT16 stuff from fat16_hfs_fix.dif, rename it hfs_fix.dif
+- add fix-tests.sh
+  * adjust testsuite so that it succeeds with our patchset
+- update all patches to remove fuzz, renumber patches
+- change license to GPL v3
+- parted-type.patch: fix output of flags
+
+
+-------------------------------------------------------------------
+Wed Jul  1 12:13:42 CEST 2009 - puzel@novell.com
+
+- add libsepol-devel to BR: (fix build) 
+
+-------------------------------------------------------------------
+Wed Jun 17 15:43:33 CEST 2009 - puzel@suse.cz
+
+- add fix-make-install-failure.patch (fix build) 
+- add fix-array-overflow.patch (fixes warning)
+- split -lang subpackage
+
+-------------------------------------------------------------------
+Tue Apr  7 02:55:54 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Tue Mar 10 12:12:02 CET 2009 - puzel@suse.cz
+
+- fix-multipath-part-name.patch replaced with 
+  fix-dm-partition-name.patch (bnc#471440)
+
+-------------------------------------------------------------------
+Wed Feb 18 11:22:22 CET 2009 - puzel@suse.cz
+
+- do-not-automatically-correct-GPT.patch (bnc#436825) 
+
+-------------------------------------------------------------------
+Tue Feb 10 11:21:52 CET 2009 - puzel@suse.cz
+
+- dont-require-dvh-partition-name.patch (bnc#471703) 
+
+-------------------------------------------------------------------
+Mon Feb  9 13:20:38 CET 2009 - puzel@suse.cz
+
+- parted-cmd-arg-fix.patch (bnc#473207) 
+
+-------------------------------------------------------------------
+Fri Jan 23 13:15:14 CET 2009 - puzel@suse.cz
+
+- do-not-discard-bootcode-in-extended-partition.patch (bnc#467576) 
+
+-------------------------------------------------------------------
+Fri Jan 23 09:08:07 CET 2009 - puzel@suse.cz
+
+- fix-error-informing-the-kernel.patch (bnc#449183)
+
+-------------------------------------------------------------------
+Thu Jan 22 12:53:26 CET 2009 - puzel@suse.cz
+
+- fix-multipath-part-name.patch (bnc#447591) 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Nov 26 13:59:06 CET 2008 - puzel@suse.cz
+
+- fix-dasd-probe.patch (bnc#438681) 
+
+-------------------------------------------------------------------
+Fri Nov  7 21:58:52 CET 2008 - puzel@suse.cz
+
+- fix-corrupted-gpt-crash.patch (bnc#439910)
+- fix-dvh-update.patch (bnc#397210)
+
+-------------------------------------------------------------------
+Wed Nov  5 12:42:57 CET 2008 - puzel@suse.cz
+
+- disabled largest_partition_number.patch (bnc#440141) 
+
+-------------------------------------------------------------------
+Mon Oct 20 11:27:45 CEST 2008 - puzel@suse.cz
+
+- fix improper data conversion (bnc#435702) 
+
+-------------------------------------------------------------------
+Tue Oct  7 10:55:11 CEST 2008 - puzel@suse.cz
+
+- updated largest_partition_number.patch (bnc#428992)
+
+-------------------------------------------------------------------
+Thu Aug 28 18:38:02 CEST 2008 - kukuk@suse.de
+
+- Kill *.la file
+
+-------------------------------------------------------------------
+Mon Aug 25 15:08:51 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Thu Aug 21 11:34:51 CEST 2008 - agraf@suse.de
+
+- fix the GPT sync to work properly on Macs
+
+-------------------------------------------------------------------
+Mon Aug 11 16:27:24 CEST 2008 - agraf@suse.de
+
+- make GPT sync more compatible:
+  - don't sync on IA64
+  - always add a partition with partition type 0xee, so Linux is happy
+  - protect the EFI System Partition if available
+
+-------------------------------------------------------------------
+Tue Jul 22 13:27:27 CEST 2008 - hare@suse.de
+
+- Fix fdasd.c compilation
+- Don't include broken inttypes.h
+
+-------------------------------------------------------------------
+Fri Jul 18 10:03:52 CEST 2008 - agraf@suse.de
+
+- add GPT sync, so whenever the GPT is modified, fake MBR entries
+  for the first 4 partitions will be created. This fixes booting
+  from disks > 2TB and makes booting a Mac possible (bnc#220839)
+
+-------------------------------------------------------------------
+Tue Jul  8 12:08:30 CEST 2008 - puzel@suse.cz
+
+- added largest_partition_number.patch 
+  * fixes computation of largest partition number (bnc#397210)
+
+-------------------------------------------------------------------
+Fri May  9 17:19:58 CEST 2008 - schwab@suse.de
+
+- Fix gnulib macro and use autoreconf.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 24 09:37:13 CET 2008 - ro@suse.de
+
+- fix typo in specfile 
+
+-------------------------------------------------------------------
+Thu Mar 20 15:46:12 CET 2008 - meissner@suse.de
+
+- fix buildrequires
+- change from loading libreiserfs dynamically to just link it
+  (avoids adding libreiserfs-devel + deps to the system)
+  FATE#303510
+- enable device mapper linking (I very much doubt it was intended to
+  be disabled)
+
+-------------------------------------------------------------------
+Sun Mar 16 06:53:23 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang rpmlint warnings 
+
+-------------------------------------------------------------------
+Tue Jan 15 12:12:17 CET 2008  - fehr@suse.de
+
+- Add patch 2TB_size_overflow.diff developed by Jim Meyering 
+  <meyering@redhat.com> to properly handle cases of overflow over
+  2TB limit in msdos label (#352484)
+
+-------------------------------------------------------------------
+Mon Aug 13 15:07:28 CEST 2007 - fehr@suse.de
+
+- Update to new version 1.8.8
+    Properly detect 'ext2 fs too small' cases.
+    Read an msdos partition table from a device with 2K sectors.
+    Correct handling of HeaderSize field in GPT labels.
+    Fix block number used when checking for ext2 fs state.
+    Add detection support for Xen virtual block devices (/dev/xvd*).
+    Fixed exception handling in mkpart and mkpartfs commands.
+    Fix invalid command line argument handling.
+    Close memory leaks in parted.c and table.c.
+
+-------------------------------------------------------------------
+Fri Jul 13 11:38:09 CEST 2007 - olh@suse.de
+
+- do not open with O_DIRECT (#290087)
+
+-------------------------------------------------------------------
+Thu Jul  5 12:55:37 CEST 2007 - sassmann@suse.de
+
+- fix parted to generate parseable output (#289049)
+    added check to test if tty is availabe, if no tty is available
+    readline functions are omitted
+
+-------------------------------------------------------------------
+Thu Jun 21 17:25:54 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Sun May 13 19:25:16 CEST 2007 - olh@suse.de
+
+- restore mkpart linux-swap syntax (#274080)
+
+-------------------------------------------------------------------
+Thu May 10 14:01:52 CEST 2007 - fehr@suse.de
+
+- Update to new version 1.8.7
+    Fix primary partition cylinder alignment error for DOS disk labels
+    Avoid segfault due to a double free on reiserfs support
+    Fix script mode (-s) for mkfs command in parted
+    Fix off-by-one bug in parted when displaying information about the disk
+
+-------------------------------------------------------------------
+Wed May  2 11:30:23 CEST 2007 - olh@suse.de
+
+- remove unused check-devel from buildrequires to allow build in sles10
+
+-------------------------------------------------------------------
+Tue Mar 27 12:47:56 CEST 2007 - sbrabec@suse.cz
+
+- Require check-devel.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:56:10 CET 2007 - fehr@suse.de
+
+- Update to new version 1.8.6
+    Revert the implementation of the linux-swap(new) and linux-swap(old) types.
+
+- Update to new version 1.8.5
+    Add po translations
+
+- Update to new version 1.8.4
+    Minor bug fix release for 1.8.3 to fix build issues on various platforms
+
+-------------------------------------------------------------------
+Mon Mar 19 14:12:12 CET 2007 - fehr@suse.de
+
+- Update to new version 1.8.3
+    libparted:
+    - Sync the linux-swap header according to the Linux kernel sources.
+    - Enable support for swsusp partitions and the ability to differentiate
+      between old and new versions of linux-swap partitions.
+    - Preserve starting sector for primary NTFS 3.1 partitions on DOS disklabel.
+    - Handle 2048-byte logical sectors in linux_read().
+    - Don't assume logical sector size is <= 512B on AIX.
+    - Detect HFS write failure.
+    - Added HFS+ resize support.
+    parted/partprobe:
+    - Use fputs() and putchar() in place for printf(), when possible.
+    - Detect/report stdout write errors.
+    - Accept the --version and --help options.
+    - Fix memory leaks in parted(8).
+
+-------------------------------------------------------------------
+Wed Mar  7 15:47:21 CET 2007 - fehr@suse.de
+
+- make resize of ext2/3 under YaST2 work again (#249674)
+
+-------------------------------------------------------------------
+Tue Feb 20 13:06:44 CET 2007 - fehr@suse.de
+
+- make mklabel in scripted mode work again
+
+-------------------------------------------------------------------
+Mon Jan 15 11:51:21 CET 2007 - fehr@suse.de
+
+- Update to new version 1.8.2
+    libparted:
+    - Add the ped_device_cache_remove() function to remove a device from the
+      cache.  This is necessary for some things that use libparted, including
+      pyparted.
+    - Fix a segfault in ped_assert() where the wrong pointer is freed in the
+      backtrace handler.
+    - Only call _disk_warn_loss(disk) in do_mklabel() if disk is not NULL.
+      Fixes a segfault when initializing new volumes.
+    - Dynamically allocate space for exception messages.
+    - Output a backtrace when catching SEGV_MAPPER or a general SIGSEGV.
+
+    parted:
+    - Destroy all objects before return when called with --list or --all option.
+    - Zero sized device is shown as 0.00B and not -0.00kB.
+    - Implement 'print devices' command.
+    - Alias 'print list' to 'print all'.
+    - Alias 'mktable' to 'mklabel'.
+
+-------------------------------------------------------------------
+Tue Dec  5 11:11:59 CET 2006 - fehr@suse.de
+
+- Update to new version 1.8.1
+  libparted
+    Rework backtrace support
+    Disable ext2fs resize for now, tell user to use resize2fs
+    GPT fixes
+    Prevent SIGFPE when FAT sector size is 0
+    DASD support for IBM zSeries systems
+    AIX disk label support
+    Detect Promise SX8 storage devices
+    Macintosh (ppc and x86) disk label improvements
+    Add support binary units (MiB, KiB, GiB)
+    Fix geometry read problems on 64-bit Macs
+    Add support for /dev/mapper devices via libdevmapper library
+    Detect Apple_Boot partition types correctly on MacOS X 10.4 systems
+  parted
+    Fix loop in print_all().
+    Introduce the -list command-line switch.
+    Warn before mklabel and mkfs.
+    Proper print when there are no extended partitions, but partition names.
+
+-------------------------------------------------------------------
+Tue Nov  7 13:46:13 CET 2006 - ro@suse.de
+
+- fix manpage permissions 
+
+-------------------------------------------------------------------
+Fri Jul 21 11:15:27 CEST 2006 - olh@suse.de
+
+- keep kernel interface to extended partition on Linux
+
+-------------------------------------------------------------------
+Tue Jul 18 09:04:11 CEST 2006 - olh@suse.de
+
+- build with make -j
+  add parted-mac_data-init.patch
+  add parted-mac-set-type-corruption.patch (#192082)
+
+-------------------------------------------------------------------
+Mon May 29 16:15:21 CEST 2006 - fehr@suse.de
+
+- Update to new version 1.7.1
+  libparted: bug fixes related to linking, HFS, ext2, the Mac disk label
+  parted: signal handling bug fix
+
+-------------------------------------------------------------------
+Thu May 18 12:40:04 CEST 2006 - fehr@suse.de
+
+- Update to new version 1.7.0
+  libparted:
+  * support for Apple GUIDs to GPT code
+  * probe /dev/hd? before /dev/sd?
+  * prefer /sys/block to /proc/partitions where possible
+  * fix of ext2 "strange layout" bug (EXPERIMENTAL)
+  * handling of sector sizes not equal to 512
+  * added ped_device_get_constraint to support device-dependent constraints
+
+  parted:
+  * new formatter for "print" command
+  * SIGSEGV handler
+  * fixed "rescue" command core dump
+  * fixes for 'mkpart' and 'mkpartfs' and 'print'
+  * position and size of partitions are displayed with up to two
+    digits after the decimal dot (depending on the unit and value)
+
+  manual:
+  * cut down substantially.
+    Lots of general content will be moved to the GNU Storage Guide.
+
+-------------------------------------------------------------------
+Tue Apr 25 12:52:33 CEST 2006 - fehr@suse.de
+
+- Update to new version 1.7.0rc5
+
+-------------------------------------------------------------------
+Mon Mar  6 15:07:05 CET 2006 - schwab@suse.de
+
+- Fix format string.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec  6 14:47:16 CET 2005  - fehr@suse.de
+
+- update to new version 1.6.25.1
+
+-------------------------------------------------------------------
+Wed Nov  9 17:51:06 CET 2005  - fehr@suse.de
+
+- update to new version 1.6.25
+- make parted correctly refuse to resize inconsistent fat 
+  filesystems even if env var YAST_IS_RUNNING is set (#132967)
+
+-------------------------------------------------------------------
+Thu Sep  8 16:15:51 CEST 2005 - fehr@suse.de
+
+- fix wrong permissions of brazilian man page (#114849)
+
+-------------------------------------------------------------------
+Mon Aug 15 17:00:04 CEST 2005 - fehr@suse.de
+
+- update to new version 1.6.24
+
+-------------------------------------------------------------------
+Wed Aug  3 18:04:19 CEST 2005 - fehr@suse.de
+
+- make parted print BIOS geometry also if no disk label is present
+  (#100444)
+
+-------------------------------------------------------------------
+Thu Jul 28 11:34:35 CEST 2005 - fehr@suse.de
+
+- update to new version 1.6.23
+
+-------------------------------------------------------------------
+Thu Jul 19 16:37:13 CEST 2005 - pkirsch@suse.de
+
+- fix fat16 minimum requirements
+- fix mac partition handling
+
+-------------------------------------------------------------------
+Thu Apr  7 16:47:33 CEST 2005 - fehr@suse.de
+
+- update to new version 1.6.22
+
+-------------------------------------------------------------------
+Wed Mar 16 14:57:55 CET 2005  - fehr@suse.de
+
+- prevent shifted start sect when resizing with unknown fs (#73008)
+
+-------------------------------------------------------------------
+Mon Jan 17 11:04:06 CET 2005  - fehr@suse.de
+
+- fix typo in input_sector.patch
+- update to new version 1.6.21
+
+-------------------------------------------------------------------
+Thu Jan 13 19:30:31 CET 2005  - fehr@suse.de
+
+- allow creation of partitions by exact sector number (#49276)
+
+-------------------------------------------------------------------
+Tue Jan 11 15:55:35 CET 2005  - fehr@suse.de
+
+- update to new version 1.6.20
+
+-------------------------------------------------------------------
+Mon Nov 29 12:52:46 CET 2004  - fehr@suse.de
+
+- update to new version 1.6.19
+- add reiserfs to needforbuild 
+
+-------------------------------------------------------------------
+Mon Nov 22 13:04:06 CET 2004  - fehr@suse.de
+
+- update to new version 1.6.18
+
+-------------------------------------------------------------------
+Mon Nov  8 12:23:48 CET 2004  - fehr@suse.de
+
+- update to new version 1.6.16
+
+-------------------------------------------------------------------
+Tue Oct 26 17:34:49 CEST 2004 - fehr@suse.de
+
+- add patch by SGI for documentation of dvh-disklabel (#47611)
+
+-------------------------------------------------------------------
+Wed Sep 29 12:49:24 CEST 2004 - fehr@suse.de
+
+- add support for ATA over ethernet 
+- add support for partitioning device-mapper devices (for dmraid)
+
+-------------------------------------------------------------------
+Mon Sep 20 11:27:45 CEST 2004 - fehr@suse.de
+
+- update to new version 1.6.15
+
+-------------------------------------------------------------------
+Thu Sep 16 14:39:40 CEST 2004 - fehr@suse.de
+
+- greatly simplify always-resize-part.dif by using 
+  ped_constraint_exact
+
+-------------------------------------------------------------------
+Wed Sep 15 14:31:48 CEST 2004 - fehr@suse.de
+
+- prevent unwanted modifying of partition start and end due to 
+  alignment constraints during resize (#45013, #44699)
+
+-------------------------------------------------------------------
+Mon Sep  6 14:02:14 CEST 2004 - fehr@suse.de
+
+- update to new version 1.6.14
+
+-------------------------------------------------------------------
+Mon Sep  6 11:50:37 CEST 2004 - fehr@suse.de
+
+- update to new version 1.6.13
+
+-------------------------------------------------------------------
+Mon Aug 16 11:00:02 CEST 2004 - fehr@suse.de
+
+- update to new version 1.6.12
+
+-------------------------------------------------------------------
+Mon Apr 26 13:11:08 CEST 2004 - fehr@suse.de
+
+- update to new version 1.6.11
+
+-------------------------------------------------------------------
+Wed Mar 31 15:40:43 CEST 2004 - meissner@suse.de
+
+- Detect viodasd virtual disks on iSeries. #37521
+
+-------------------------------------------------------------------
+Sat Jan 10 15:37:29 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Oct 20 17:02:46 CEST 2003 - fehr@suse.de
+
+- fix printing of partitions larger than 1TB in size (#32319)
+  
+-------------------------------------------------------------------
+Fri Sep 12 10:02:43 CEST 2003 - fehr@suse.de
+
+- extend parted to handle User-mode virtual block devices (#30375)
+  
+-------------------------------------------------------------------
+Mon Sep  8 15:56:38 CEST 2003 - fehr@suse.de
+
+- do not warning about too new GPT version if running under YaST2
+  and too new version is 0x00010200 (#29563)
+  
+-------------------------------------------------------------------
+Mon Jul 28 11:20:02 CEST 2003 - fehr@suse.de
+
+- update to new version 1.6.6
+
+-------------------------------------------------------------------
+Thu Jun 19 21:27:33 CEST 2003 - ro@suse.de
+
+- build with current gettext
+
+-------------------------------------------------------------------
+Thu Jun 12 15:14:32 CEST 2003 - fehr@suse.de
+
+- add missing dir to filelist
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Mar 20 16:21:20 CET 2003  - fehr@suse.de
+
+- display also partitions of type Apple_Free on Macintosh
+
+-------------------------------------------------------------------
+Mon Feb 24 10:27:08 CET 2003  - fehr@suse.de
+
+- update to new version 1.6.5 
+
+-------------------------------------------------------------------
+Mon Feb 17 12:21:05 CET 2003  - fehr@suse.de
+
+- Use env var YAST_IS_RUNNING instead if YAST2_RUNNING for checking
+  if parted is called by YAST2
+
+-------------------------------------------------------------------
+Fri Feb  7 15:19:46 CET 2003  - fehr@suse.de
+
+- Use %install_info macro
+
+-------------------------------------------------------------------
+Mon Feb  3 14:35:20 CET 2003 - fehr@suse.de
+
+- disable check for string "FAT" in boot sector since it makes 
+  parted fail on some IDE disks with TurboLinux installed (#19401)
+    
+-------------------------------------------------------------------
+Tue Dec 10 10:52:42 CET 2002 - fehr@suse.de
+
+- update to new version 1.6.4
+
+-------------------------------------------------------------------
+Mon Nov 18 16:38:27 CET 2002 - schwab@suse.de
+
+- Add AM_GNU_GETTEXT_VERSION.
+
+-------------------------------------------------------------------
+Mon Sep 23 18:11:04 CEST 2002 - meissner@suse.de
+
+- recognize AIX IPL signatures in MSDOS labels and mark these labels
+  invalid. Also overwrite the AIX IPL signature on "mklabel" (#20039).
+
+-------------------------------------------------------------------
+Mon Sep  2 15:44:17 CEST 2002 - fehr@suse.de
+
+- fix bug occuring sometimes when resizing reiserfs from YaST2
+  (bug was in patch always-resize-part.dif)
+  
+-------------------------------------------------------------------
+Tue Aug 13 11:18:27 CEST 2002 - fehr@suse.de
+
+- update to parted 1.6.3
+  
+-------------------------------------------------------------------
+Thu Aug  8 08:42:34 CEST 2002 - fehr@suse.de
+
+- add patch to ignore /proc/sys/kernel/real-root-dev and do a stat
+  on "/" instead. real-root-dev does not always contain a valid
+  entry
+
+-------------------------------------------------------------------
+Tue Aug  6 14:08:43 CEST 2002 - meissner@suse.de
+
+- redid patch for partition ids on MAC with some API additions
+  to make it 64bit clean.
+
+-------------------------------------------------------------------
+Thu Aug  1 11:57:35 CEST 2002 - fehr@suse.de
+
+- add patch by Marcus Meissner to show partition type on MACs
+
+-------------------------------------------------------------------
+Thu Jul 25 19:06:20 CEST 2002 - fehr@suse.de
+
+- add patch by Marcus Meissner to show and set partition id on dos 
+  label
+
+-------------------------------------------------------------------
+Tue Jul 16 11:11:21 CEST 2002 - schwab@suse.de
+
+- Update to parted 1.6.2, needed for ia64.
+
+-------------------------------------------------------------------
+Tue Jul  2 15:49:47 CEST 2002 - meissner@suse.de
+
+- rerun auto* tools
+
+-------------------------------------------------------------------
+Thu Jun 27 11:18:53 CEST 2002 - fehr@suse.de
+
+- make setting flags lvm and raid to off work
+
+-------------------------------------------------------------------
+Mon Jun 10 12:55:00 CEST 2002 - fehr@suse.de
+
+- add patch to resize also partitions with unkown fs under YaST2
+
+-------------------------------------------------------------------
+Tue May  7 13:04:28 CEST 2002 - fehr@suse.de
+
+- update to 1.4.24
+- add patch to be verbose when resizing fat under YaST2
+
+-------------------------------------------------------------------
+Tue May  7 12:53:46 CEST 2002 - ro@suse.de
+
+- fixed specfile: no macro allowed in Version: line
+
+-------------------------------------------------------------------
+Fri Apr 26 13:34:03 CEST 2002 - coolo@suse.de
+
+- use %_libdir
+
+-------------------------------------------------------------------
+Mon Sep  3 17:33:29 CEST 2001 - kkaempf@suse.de
+
+- update to 1.4.18
+  compiles now with gcc 3.x and new autoconf/automake.
+  support for ext3.
+  lots of minor fixes, see ChangeLog in source.
+
+-------------------------------------------------------------------
+Thu May 10 17:55:18 CEST 2001 - freitag@suse.de
+
+- Added documentation to filelist, Bug# 6115 
+
+-------------------------------------------------------------------
+Thu May 10 01:02:44 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Apr 30 17:39:26 MEST 2001 - tom@suse.de
+
+- Change to new version 1.4.11
+  Removed configure patch (not needed anymore)
+  Removed gettextize (doesn't build)
+  Changed shared libraries to new state in file list
+
+-------------------------------------------------------------------
+Thu Apr 12 17:23:04 CEST 2001 - ro@suse.de
+
+- gettextize for new gettext 
+
+-------------------------------------------------------------------
+Wed Apr  4 16:19:29 CEST 2001 - kukuk@suse.de
+
+- Add shared libraries to filelist for intel
+
+-------------------------------------------------------------------
+Fri Mar 23 15:16:38 CET 2001 - schwab@suse.de
+
+- Fix configure check for sizeof off_t.
+- Enable shared libs for x86 now that llseek.c rubbish is not
+  needed any more.
+
+-------------------------------------------------------------------
+Fri Feb 23 11:52:57 CET 2001 - uli@suse.de
+
+- enabled shared libs for non-x86 archs (see libparted/llseek.c for
+  explanation why this doesn't work for x86)
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Fri Jan 12 20:13:33 MET 2001 - tom@suse.de
+
+- update to version 1.4.6
+
+-------------------------------------------------------------------
+Wed Jan  3 20:11:02 MET 2001 - tom@suse.de
+
+- update to version 1.4.5
+
+-------------------------------------------------------------------
+Mon Dec  4 19:16:51 CET 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Fri Dec  1 15:11:14 MET 2000 - tom@suse.de
+
+- update to version 1.4.4
+
+-------------------------------------------------------------------
+Tue Nov 21 14:20:36 CET 2000 - tom@suse.de
+
+- update to version 1.4.2
+
+-------------------------------------------------------------------
+Thu Nov  9 09:58:25 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Tue Oct 10 15:56:16 MEST 2000 - tom@suse.de
+
+- initial version, GNU parted 1.2.9
+

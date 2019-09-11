@@ -1,0 +1,4 @@
+Name: preinstall-latex
+BuildRequires: texlive-latex
+#!BuildIgnore: brp-trim-desktopfiles
+#!BuildIgnore: cputype-armv6

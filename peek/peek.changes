@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Sat Jul 20 03:37:44 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- add peek-1.3.1-fix-double-free-tcache2.patch
+  * avoid double free when passing string array to async functions
+  * should be removed next release
+
+-------------------------------------------------------------------
+Sun Sep  9 22:22:05 UTC 2018 - hellcp@mailbox.org
+
+- update to version 1.3.1
+  Fixes some color issues with the new VP9 encoding and rebuilds Ffmpeg for Flatpak and AppImage to fully support the VP9 encoding.
+
+  * fix: Use yuv420p for VP9 encoding (#299)
+  * fix: Disable animations and transitions on recording view overlays (#208)
+  * i18n: Updated French and Russian translations
+  * packaging: Build ffmpeg with vp9_superframe for Flatpak and AppImage (#300, #301)
+- changes from 1.3.0
+  * feat: Use VP9 instead of VP8 for WebM recording (#293)
+  * feat: libx264 is no longer required when just recording GIF / APNG with FFmpeg back end
+  * feat: Removed avconv / libav backend and ImageMagick post processor
+  * misc: Added sources for DBus interfaces (#296)
+  * fix: Fixed lossy artifacts increasing GIF size when using gnome-shell recorder (#288)
+  * fix: Fixed countdown sometimes appearing in recording (#208)
+  * fix: Do not freeze window size on Xfce (#269)
+  * i18n: Fixed names of Chinese localization files (#294)
+  * i18n: Updated translations for Basque, Chinese (Simplified), Lithuanian,
+  * Norwegian Bokmål, Russian, Serbian, Ukrainian
+  * packaging: Removed Snapcraft build and Snap packages (#245, #270)
+
+- changes from 1.2.2
+  * feat: Option to enable/disable desktop notifications after saving (#21)
+  * fix: Do not use H.264 baseline profile if libx264 was compiled with 10bit (#248)
+  * fix: Recording 1fps with Ffmpeg does not fail anymore (#249)
+  * i18n: Updated translations for Arabic, Basque, Chinese (Simplified), Czech,
+  * Dutch, Esperanto, German, Norwegian Bokmål, Polish, Portuguese (Brazil),
+  * Russian, Swedish
+  
+- changes from 1.2.1
+  * i18n: Updated translations for Arabic, Czech, Esperanto, French, Lithuanian, Norwegian Bokmål, Polish and Serbian
+
+- changes from 1.2.0
+  * feat: Quick format selection in headerbar (#174)
+  * feat: GIF conversion with gifski if installed for improved quality (#212, #179)
+  * feat: GIF quality level can be set in preferences, if gifski is available (#212)
+  * feat: GIF conversion with FFmpeg as default instead of ImageMagick (#125)
+  * feat: Display elapsed time in headerbar (#214)
+  * feat: Display an animated spinner while post processing (#58)
+  * feat: Support APNG as output format (#108)
+  * feat: Command line parameter --no-headerbar (#203)
+  * feat: Show dialog with error details on recording errors (#49)
+  * fix: Temporary files get unique name again (was broken in #161)
+  * fix: Quitting application does not interrupt rendering (#189)
+  * fix: Much smaller temporary file sizes
+  * fix: Recording could be stopped before it had actually started
+  * fix: Do not load local settings schema in release builds
+  * fix: On Plasma with Breeze theme Peek window was hard to resize (#199)
+  * i18n: Added Chinese (Traditional), Neapolitan
+  * i18n: Updated translations for Czech, Dutch, Esperanto, German, Italian,
+  * Lithuanian, Norwegian Bokmål, Polish, Serbian, Swedish
+  * build: libkeybinder is now optional
+  * package: Reduced file size for Snap packages
+
+- changes from 1.1.0
+  * feat: Transparent recording area without compositor (#147, #7)
+  * fix: Unusual default permissions (#161)
+  * fix: Explicitly set ImageMagick resource limits (#112, #125)
+  * i18n: Updated translations for Basque, Chinese (Simplified), Czech, Dutch,
+  * French, German, Lithuanian, Russian, Serbian, Spanish, Swedish, Polish,
+  * Portuguese (Brazil)
+  * build: New flag DISABLE_GNOME_SHELL to disable gnome-shell recorder
+  * build: New flag DISABLE_OPEN_FILE_MANAGER to disable file manager integration
+  * build: Use CMake GNUInstallDirs variables
+  * package: Updated dependencies for Flatpak and Snap packages
+  * package: Stable Snap package depending on gnome-platform 3.26 (#84)
+
+-------------------------------------------------------------------
+Sun Aug  6 16:12:18 UTC 2017 - mailaender@opensuse.org
+
+- ImageMagick and ffmpeg changed to runtime (not build) dependencies
+
+- update to version 1.0.3
+  * package: Fixed installing man page
+
+- changes from version 1.0.2
+  * feat: Finish saving file when closing window while rendering (#142)
+  * feat: Highlight file when launching Dolphin file manager
+  * recording: Use raw video for recording GIF with GNOME Shell recorder (this is identical to how FFmpeg recorder works) (#116)
+  * fix: Failed to record MP4 when dimensions where not divisible by 2 (#141)
+  * fix: Make sure recording starts after countdown is hidden (#146)
+  * fix: Closing window while recording could leave temp files behind
+  * fix: KDE Plasma and XFCE were showing an empty button in notification
+  * fix: Place close button on the left on all desktops configured this way (#129)
+  * fix: Cinammon showing notification with icon
+  * i18n: Indonesian and Serbian translation
+  * i18n: Updated translations for Basque, Esperanto, French, Portuguese (Brazil), Russian and Ukrainian
+  * docs: Added man page (#136)
+
+- changes from version 1.0.1
+  * recording: Use H.264 baseline profile for MP4 for increased browser compatibility (#111)
+  * recording: For WebM GNOME Shell recorder use same quality settings as with FFmpeg encoder
+  * ui: Show only the most recent "file saved" notification to avoid spamming the desktop with notifications.
+  * fix: Set temporary directory for ImageMagick
+  * fix: Always launch with GDK_BACKEND=x11 for Wayland
+  * fix: Detect if global menus are disabled in Unity when running as Flatpak / Snap package
+  * i18n: Updated translations for Arabic, Czech, Russian and Spanish
+  * i18n: New translations for Basque and Esperanto
+
+- changes from version 1.0
+  * recording: Support GNOME Shell screencast DBus service. Allows recording under GNOME Shell with XWayland (#33)
+  * recording: Support WebM and MP4 as output format (#73)
+  * recording: Added option to not record mouse cursor
+  * recording: Default frame rate is now 10fps
+  * ui: Recording can be started / stopped via configurable keyboard shortcut (#23)
+  * ui: Add --start, --stop and --toggle command line parameters to control the recording
+  * ui: Add --backend command line parameter to manually choose recording backend (gnome-shell, ffmpeg or avcodec for now)
+  * ui: Hide button label on small window width. Allows for smaller recording area.
+  * misc: Use org.freedesktop.FileManager1 DBus service for launching file manager.
+  * fix: Fixed a possible race condition that could lead to empty or broken files (#1)
+  * fix: Moving Peek partially outside the visible area does no longer break the recording. Instead the recording area is clipped to the visible part (#64)
+  * fix: Starting recording in maximized window relocated the window on Ubuntu Unity (#74)
+  * fix: When canceling the file chooser also stop the background processing of the image (#96)
+  * i18n: Many updated translations, with Czech, Dutch, German, Lithuanian,
+  * Polish and Swedish 100% completed
+  * package: Provide AppStream data
+  * docs: Much improved README
+
+- changes from version 0.9.1
+  * i18n: Fixed Czech, Croatian, Korean, Dutch and Chinese (Simplified) not getting installed
+
+- changes from version 0.9.0:
+  * ui: Fix problem of app menu not available on certain desktop configurations (#6)
+  * ui: Fix display of desktop notifications on Ubuntu Unity (#55)
+  * ui: Close button is displayed left on Ubuntu Unity (#67)
+  * ui: Workaround for gray borders under unity (#11)
+  * ui: Smaller border around recording area
+  * recording: Add resolution downsampling option (#32)
+  * recording: Minimal frame rate is now 1fps
+  * recording: Smaller temporary files by using libx264rgb instead of huffyuv (#2)
+  * recording: Support for avconf, if ffmpeg is unavailable (#56)
+  * i18n: Chinese (Simplified) translation
+  * i18n: Croatian translation
+  * i18n: Czech translation
+  * i18n: Dutch translation
+  * i18n: Italian translation
+  * i18n: Korean translation
+  * i18n: Norwegian Bokmål translation
+  * i18n: Portuguese (Brazil) translation
+  * i18n: Swedish translation
+  * fix: Fix possible crash when loading schema from local folder
+  * fix: Fix temp file deletion warning
+  * docs: Update installation instructions
+  * docs: Added FAQs
+
+-------------------------------------------------------------------
+Sat Jan 28 09:19:09 UTC 2017 - jengelh@inai.de
+
+- Trim irrelevant parts from description
+
+-------------------------------------------------------------------
+Fri Jan 27 18:55:49 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 0.8, upstream changes:
+  * ui: Change button text while rendering (#24)
+  * ui: Add a --version command line argument
+  * ui: Show file choose directly after recording stops. This way
+  * rendering and choosing the file take place in parallel (#30)
+  * recording: Correctly scale recording area on HiDPI screens (#20)
+  * i18n: Arabic translation
+  * i18n: Catalan translation
+  * i18n: French translation
+  * i18n: Lithuanian translation
+  * i18n: Polish translation
+  * i18n: Portuguese (Portugal) translation
+  * i18n: Russian translation
+  * i18n: Spanish translation
+  * i18n: Ukrainian translation
+  * misc: Added generic name and sub category to desktop file
+  * misc: Added uninstall target, so source installations can be uninstalled
+  * with make uninstall (#28)
+  * fix: Fix DBUS service file if installed to location other than /usr (#13)
+  * fix: Locales not loaded if not installed to /usr due to missing locale path
+
+-------------------------------------------------------------------
+Sun Sep  4 14:32:05 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.7.2
+

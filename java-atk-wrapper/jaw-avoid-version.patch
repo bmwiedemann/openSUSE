@@ -1,0 +1,35 @@
+--- java-atk-wrapper-0.33.2/configure.ac	2015-07-07 13:52:28.000000000 +0200
++++ java-atk-wrapper-0.33.2/configure.ac	2017-10-26 17:40:12.668221042 +0200
+@@ -9,17 +9,6 @@
+ m4_pattern_allow([AM_PROG_AR])
+ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+ 
+-# Before making a release, the LT_VERSION string should be modified.
+-# The string is of the form C:R:A.
+-# - If interfaces have been changed or added, but binary compatibility has
+-#   been preserved, change to C+1:0:A+1
+-# - If binary compatibility has been broken (eg removed or changed interfaces)
+-#   change to C+1:0:0
+-# - If the interface is the same as the previous version, change to C:R+1:A
+-
+-LIB_ATK_WRAPPER_LT_VERSION=5:0:0
+-AC_SUBST(LIB_ATK_WRAPPER_LT_VERSION)
+-
+ # jni
+ AC_CONFIG_HEADERS([config.h])
+ 
+@@ -51,14 +40,7 @@
+ ])
+ AC_SUBST(JAW_LIBS)
+ 
+-case "${target_os}" in
+-cygwin*)
+   LIB_ATK_WRAPPER_LD_FLAGS="-avoid-version -no-undefined"
+-  ;;
+-*)
+-  LIB_ATK_WRAPPER_LD_FLAGS="-version-info $LIB_ATK_WRAPPER_LT_VERSION -no-undefined"
+-  ;;
+-esac
+ AC_SUBST(LIB_ATK_WRAPPER_LD_FLAGS)
+ 
+ # java wrapper

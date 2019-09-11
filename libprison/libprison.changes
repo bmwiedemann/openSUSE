@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Sep 11 14:40:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf, needed for kdebase4-workspace-libs-32bit
+
+-------------------------------------------------------------------
+Tue Jun 17 16:14:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.1.1
+  * Fixed internal library versioning
+
+-------------------------------------------------------------------
+Sun Mar 16 18:29:52 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to version 1.1.0
+  * Added API to query and set the foreground and background colors
+  * Adapt datamatrixbarcode to be able to use colors
+  * Implemented Code39 barcodes (Thanks to Geoffry Song)
+
+-------------------------------------------------------------------
+Sun Nov 25 10:47:22 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (%make_install doesn't exist)
+
+-------------------------------------------------------------------
+Fri Mar  2 01:46:58 UTC 2012 - crrodriguez@opensuse.org
+
+- Build with fvisibility-inlines-hidden , in this case 
+  this saves only dozen symbol table entries.
+
+-------------------------------------------------------------------
+Sun May  8 16:26:10 UTC 2011 - cgiboudeaux@gmx.com
+
+- Add libprison
+

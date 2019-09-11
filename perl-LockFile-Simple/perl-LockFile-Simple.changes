@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Jul 26 18:33:49 UTC 2013 - coolo@suse.com
+
+- updated to 0.208
+ Fix deprecated defined(@array) for Perl 5.16
+
+-------------------------------------------------------------------
+Thu Jul 14 07:13:31 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:19 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:24 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:52 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:44 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Thu Mar 26 10:09:20 CET 2009 - lars@linux-schulserver.de
+
+- initial version 0.207
+

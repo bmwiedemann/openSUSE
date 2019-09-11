@@ -1,0 +1,118 @@
+--- lib/Canna.c
++++ lib/Canna.c
+@@ -97,14 +97,17 @@
+ static int PreeditString();
+ static int StatusString();
+ 
+-static initializeCannaConnection();
+-static toJapaneseMode();
+-static void convend();
+-static changeTextForCanna();
+-static copyInWchar();
+-static fixProcForCanna();
+-static shiftRight(), shiftLeft(), shiftLeftAll();
+-static ibufInitialize(), freeIBuf();
++static void initializeCannaConnection(CannaObject obj);
++static int toJapaneseMode(CannaObject obj);
++static void convend(CannaObject obj);
++static int changeTextForCanna(caddr_t cldata, wcKanjiStatus *ksp);
++static int copyInWchar(wchar *, int, wchar **, int *, int*);
++static void fixProcForCanna(caddr_t, wchar *, int);
++static void shiftRight(iBuf *);
++static void shiftLeft(iBuf *);
++static void shiftLeftAll(iBuf *);
++static void ibufInitialize(CannaObject);
++static int freeIBuf(iBuf *);
+ 
+ #ifdef KC_SETLISTCALLBACK
+ #ifdef CANNA_LIST_Convert
+@@ -638,7 +641,7 @@
+ 
+ static int nCannaContexts = 0;
+ 
+-static
++static void
+ initializeCannaConnection(obj)
+ CannaObject obj;
+ {
+@@ -844,7 +847,7 @@
+ 
+  */
+ 
+-static
++static int
+ changeTextForCanna(cldata, ksp)
+ caddr_t cldata;
+ wcKanjiStatus *ksp;
+@@ -1022,7 +1025,7 @@
+ 
+  */
+ 
+-static
++static int
+ copyInWchar(ws, wlen, wsbuf, wssize, wslen)
+ wchar *ws;
+ int wlen;
+@@ -1063,7 +1066,7 @@
+ 
+  */
+ 
+-static
++static void
+ fixProcForCanna(cldata, fixedstr, fixedlen)
+ caddr_t cldata;
+ wchar *fixedstr;
+@@ -1091,7 +1094,7 @@
+ 
+  */
+ 
+-static
++static void
+ shiftRight(ib)
+ iBuf *ib;
+ {
+@@ -1120,7 +1123,7 @@
+ 
+  */
+ 
+-static
++static void
+ shiftLeft(ib)
+ iBuf *ib;
+ {
+@@ -1146,7 +1149,7 @@
+ 
+  */
+ 
+-static
++static void
+ shiftLeftAll(ib)
+ iBuf *ib;
+ {
+@@ -1174,7 +1177,7 @@
+    ibufInitialize -- ibuf の初期化処理
+  */
+ 
+-static
++static void
+ ibufInitialize(obj)
+ CannaObject obj;
+ {
+@@ -1205,7 +1208,7 @@
+ 
+  */
+ 
+-static
++static int
+ freeIBuf(ib)
+ iBuf *ib;
+ {
+@@ -1231,7 +1234,7 @@
+   return 0;
+ }
+ 
+-static
++static int
+ toJapaneseMode(obj)
+ CannaObject obj;
+ {

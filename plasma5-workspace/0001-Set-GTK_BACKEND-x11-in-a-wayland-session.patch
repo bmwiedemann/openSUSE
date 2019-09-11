@@ -1,0 +1,28 @@
+From 654c5d9a21b641bd45e183ee30d7cb21ba314d35 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 24 Mar 2018 12:15:10 +0100
+Subject: [PATCH] Set GTK_BACKEND=x11 in a wayland session
+
+Works around missing window decorations and broken config file reading.
+---
+ startkde/startplasmacompositor.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/startkde/startplasmacompositor.cmake b/startkde/startplasmacompositor.cmake
+index dcb473a4..1ebd126a 100644
+--- a/startkde/startplasmacompositor.cmake
++++ b/startkde/startplasmacompositor.cmake
+@@ -118,6 +118,10 @@ else
+     export QT_WAYLAND_FORCE_DPI=96
+ fi
+ 
++# GTK3 uses the wayland backend by default, but its implementation is not correct
++# enough to work well here. Window decorations are missing, for instance.
++export GDK_BACKEND=x11
++
+ # Get a property value from org.freedesktop.locale1
+ queryLocale1() {
+     qdbus-qt5 --system org.freedesktop.locale1 /org/freedesktop/locale1 "$1"
+-- 
+2.20.1
+

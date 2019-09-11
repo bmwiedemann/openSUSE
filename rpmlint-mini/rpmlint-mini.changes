@@ -1,0 +1,475 @@
+-------------------------------------------------------------------
+Tue Aug 13 11:44:23 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update desktop-file-utils to 0.24 release
+  + Allow desktop file spec version 1.2.
+  + Add Budgie, Deepin, Enlightenment and Pantheon to list of
+    registered desktop environments.
+  + Sort output lines internally to conserve reproducibility.
+  + Use pledge(2) on OpenBSD to limit capabilities.
+  + Fix missing ; when appending to a list not ending with one.
+  + Add font as valid media type.
+  + Fix broken emacs blocking compile.
+
+-------------------------------------------------------------------
+Mon Feb 25 13:58:53 UTC 2019 - matthias.gerstner@suse.com
+
+- Add dependency to new polkit-whitelisting subpackage of polkit-default-privs
+  and embed the JSON file for polkit rules.d whitelistings. This is necessary
+  for the upcoming implementation of a new rpmlint-check to cover files in
+  /etc/polkit-1/rules.d and /usr/share/polkit-1/rules.d (bsc#1125314).
+- For this we will also need the json python module, since the new whitelist
+  will be in the JSON format.
+
+-------------------------------------------------------------------
+Wed Dec 26 13:35:59 UTC 2018 - matwey.kornilov@gmail.com
+
+- Add imp and pickle to rpmlint-deps.txt
+  they are required by python-construct=2.9
+  which is required by python-pybeam=0.5
+
+-------------------------------------------------------------------
+Sun Jul 15 19:34:27 UTC 2018 - jslaby@suse.com
+
+- python is 3.7, so update rpmlint-deps.txt (use ? instead of minor
+  version)
+
+-------------------------------------------------------------------
+Mon Dec  4 16:00:06 UTC 2017 - dimstar@opensuse.org
+
+- rpmlint-deps.txt: Follow changes from rpm and copy _rpm*.so
+  instead of _rpm.so (the name is newly extended with .cpython).
+
+-------------------------------------------------------------------
+Wed Nov  1 12:51:43 UTC 2017 - dmueller@suse.com
+
+- set locale to C.utf8 to avoid non-ascii warnings
+
+-------------------------------------------------------------------
+Tue Oct 24 13:03:02 UTC 2017 - jengelh@inai.de
+
+- Update descriptions. Use better-performing find invocations.
+
+-------------------------------------------------------------------
+Mon Oct 16 11:48:37 UTC 2017 - dmueller@suse.com
+
+- don't include a copy of libmagic (bsc#976406)
+
+-------------------------------------------------------------------
+Thu Oct 12 14:30:13 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Use wildcard for sysconfigdata architecture in rpmlint-deps.txt
+- Use wildcard for abi in rpmlint-deps.txt, e.g. armv7hl is gnueabihf
+
+-------------------------------------------------------------------
+Tue Oct 10 11:40:49 UTC 2017 - dmueller@suse.com
+
+- also import ElementTree
+- include pybeam also for lib64 architectures
+
+-------------------------------------------------------------------
+Thu Sep 28 12:32:54 UTC 2017 - dmueller@suse.com
+
+- rebuild against rpmlint 1.10
+  drops: rpmlint-deps.patch
+- Switch to Python 3.x
+
+-------------------------------------------------------------------
+Fri May 26 07:10:46 UTC 2017 - matwey.kornilov@gmail.com
+
+- Add rpmlint-deps.patch:
+  Revert 'Adapt rpmlint-deps.txt for python-construct >= 2.8'
+  for Leap 42.x
+
+-------------------------------------------------------------------
+Wed Feb  1 10:39:09 UTC 2017 - meissner@suse.com
+
+- buildignore ourselves to allow better bootstrapping.
+
+-------------------------------------------------------------------
+Wed Jan 18 12:51:56 UTC 2017 - matwey.kornilov@gmail.com
+
+- Adapt rpmlint-deps.txt for python-construct >= 2.8
+
+-------------------------------------------------------------------
+Fri Dec  9 12:08:04 UTC 2016 - dimstar@opensuse.org
+
+- Configure appdata_checker: pass --nonet in plus: as OBS has no
+  internet access, every appdata file containing screenshots would
+  be marked as 'failed' otherwise.
+
+-------------------------------------------------------------------
+Fri Oct 28 16:17:29 UTC 2016 - dmueller@suse.com
+
+- update desktop-file-utils to 0.23:
+  + Accept version 1.1 desktop files.
+  + Add Cinnamon, EDE and LXQt to the list of registered desktop
+    environments (fdo#73497, fdo#56353, fdo#79561).
+  + Allow multipart/related MIME type; it's used for MHTML
+    (fdo#93376).
+  + Ensure DBusActivatable filenames conform to reverse-DNS
+    notation (fdo#66904).
+  + Downgrade trailing semicolons to optional (fdo#76902).
+  + Fix buffer over-read (fdo#94303).
+
+-------------------------------------------------------------------
+Wed Apr 20 13:04:40 UTC 2016 - werner@suse.de
+
+- Also copy magic and magic.mgc to /opt/testing to have the
+  correct magic files for the used libmagic around.
+  Use the environment variable MAGIC to hel the wrapper to
+  to find the magic file for its libmagic (boo#976406)
+
+-------------------------------------------------------------------
+Mon Feb 22 07:48:27 UTC 2016 - dmueller@suse.com
+
+- raise version to 1.8
+
+-------------------------------------------------------------------
+Mon Apr 20 15:33:21 UTC 2015 - lnussel@suse.de
+
+- add lib-dynload/unicodedata.so required by rpmlint 1.6
+
+-------------------------------------------------------------------
+Sat Apr 26 13:17:39 UTC 2014 - matwey.kornilov@gmail.com
+
+- package dependencies of ErlangCheck.py:
+  - python-pybeam
+  - python-construct
+  - python-six
+  note, that ErlangCheck.py is not enabled by default
+  
+-------------------------------------------------------------------
+Thu Oct  3 08:56:55 UTC 2013 - dmueller@suse.com
+
+- repackage libedit0 dependency of dash 
+
+-------------------------------------------------------------------
+Wed Oct  2 09:03:19 UTC 2013 - lnussel@suse.de
+
+- dash is in /usr/bin now
+
+-------------------------------------------------------------------
+Tue Sep 24 16:00:15 UTC 2013 - dmueller@suse.com
+
+- no longer install rpmgroups.config
+
+-------------------------------------------------------------------
+Mon Sep  2 08:32:51 UTC 2013 - dmueller@suse.com
+
+- update to desktop-file-validate 0.22:
+  - add DBusActivatable key to allowed keys
+  - warn about OnlyShowIn in Action groups
+  - allow validating multiple desktop files
+  - improve help output
+  - update man page
+
+-------------------------------------------------------------------
+Fri Jun 28 16:16:25 UTC 2013 - dmueller@suse.com
+
+- update to desktop-file-validate 0.21:
+  - update to current version of menu specification (Vincent):
+    - only print hint if no main category is present, not an error
+    - make Science a main category
+    - add new registered categories: Adult, Feed, Humanities, Maps,
+      Shooter, Spirituality, XFCE
+    - update related categories
+    - add TDE to list of registered OnlyShowIn
+  - accept and validate GNOME3/GSettings for AutostartCondition (Vincent)
+  - output hint if more than one main category is present (Vincent)
+  - output hint about suggested related categories (Vincent)
+
+-------------------------------------------------------------------
+Wed Jun 26 14:20:21 UTC 2013 - dmueller@suse.com
+
+- fix build against python 2.7.5 
+
+-------------------------------------------------------------------
+Wed Jan  2 12:48:55 UTC 2013 - dmueller@suse.com
+
+- bump version to 1.4
+
+-------------------------------------------------------------------
+Sun Oct 28 09:06:47 UTC 2012 - coolo@suse.com
+
+- fix build by passing rpmlint :)
+
+-------------------------------------------------------------------
+Sun Oct 28 05:33:05 UTC 2012 - coolo@suse.com
+
+- let it require cpio - the same as with rpmlint
+
+-------------------------------------------------------------------
+Wed Sep 12 08:34:30 UTC 2012 - dmueller@suse.com
+
+- update to desktop-file-validate 0.20 (bnc#779850):
+  - add MATE and Razor to list of registered environments (Vincent)
+  - validate Desktop Actions (Giovanni Campagna, Vincent)
+
+-------------------------------------------------------------------
+Fri Feb 24 13:42:16 UTC 2012 - giecrilj@stegny.2a.pl
+
+- add documentation
+
+-------------------------------------------------------------------
+Wed Dec 21 11:02:56 CET 2011 - dmueller@suse.de
+
+- update desktop-file-validate to 0.19:
+   - add Unity to list of registered environments
+   - deal with various zz-application/zz-winassoc-XXX mime types
+   - mark all zz-application/* MIME types as aliases
+   - add support for updated Keywords key
+   - accept x-scheme-handler/* mime types
+
+-------------------------------------------------------------------
+Tue Nov 29 12:17:48 UTC 2011 - lnussel@suse.de
+
+- install licenses.config
+
+-------------------------------------------------------------------
+Mon Oct 24 11:39:18 CEST 2011 - dmueller@suse.de
+
+- add the new abuild build path to the search dir list 
+
+-------------------------------------------------------------------
+Thu Aug 18 22:17:22 CEST 2011 - dmueller@suse.de
+
+- bump version to 1.3 (matching rpmlint update)
+
+-------------------------------------------------------------------
+Fri Jul  8 16:18:47 UTC 2011 - dmueller@novell.com
+
+- fix magic detection after the file update to 5.07 
+
+-------------------------------------------------------------------
+Fri May 20 11:08:25 CEST 2011 - dmueller@suse.de
+
+- bump version to 1.2 (matching rpmlint update)
+
+-------------------------------------------------------------------
+Wed May 11 13:15:25 UTC 2011 - lnussel@suse.de
+
+- include pie.config
+
+-------------------------------------------------------------------
+Tue Apr 19 08:46:32 UTC 2011 - lnussel@suse.de
+
+- allow adding configs via RPMLINT_MINI_CONFIG
+
+-------------------------------------------------------------------
+Mon Apr 18 12:31:41 UTC 2011 - lnussel@suse.de
+
+- add missing deps
+
+-------------------------------------------------------------------
+Fri Apr 15 21:27:18 CEST 2011 - dmueller@suse.de
+
+- bump version to 1.1 (matching rpmlint update)
+
+-------------------------------------------------------------------
+Thu Mar 10 14:46:57 UTC 2011 - lnussel@suse.de
+
+- rlwarn was renamed to warn
+
+-------------------------------------------------------------------
+Sun Nov 21 16:24:44 UTC 2010 - coolo@novell.com
+
+- fix lib requirements of libglib
+
+-------------------------------------------------------------------
+Thu Nov 11 08:53:06 CET 2010 - dmueller@suse.de
+
+- bump version to 1.0 (match rpmlint update)
+
+-------------------------------------------------------------------
+Mon Sep 27 13:36:25 CEST 2010 - dmueller@suse.de
+
+- bump version to 0.99 (match rpmlint update)
+- buildrequire glib2-devel-static (new package split)
+
+-------------------------------------------------------------------
+Mon Sep 20 11:01:31 CEST 2010 - dmueller@suse.de
+
+- fix build against autoconf 2.67
+  + update to desktop-file-utils 0.17:
+    - accept chemical/* mime types as valid types
+    - make icon names with an extension for Icon key a non-fatal
+      error
+    - check that a main category is included in the Categories
+    - check that categories required by another one are present
+    - do not always show warnings about KDE specific uses
+    - check that the Comment does not look like the Name and the
+      GenericName
+    - display error about multiple keys with the same name earlier
+    - improve MIME type check to make sure that the MIME types are
+      valid
+    - add LXDE in the list of registered OnlyShowIn values
+    - add "warning" to error strings to make them easily greppable
+    - handle AutostartCondition key, as proposed for the autostart
+      specification and used in GNOME
+    - accept empty Categories key as valid
+    - make new errors non-fatal to give some time to maintainers to
+      fix their .desktop file after a release of desktop-file-utils
+    - plug leak
+    - code cleanups
+
+-------------------------------------------------------------------
+Sun Sep 12 23:33:34 CEST 2010 - dmueller@suse.de
+
+- fix build against python 2.7
+
+-------------------------------------------------------------------
+Tue Aug  3 13:16:11 CEST 2010 - dmueller@suse.de
+
+- add string_escape to dependencies, needed by checkbashisms
+
+-------------------------------------------------------------------
+Tue Jul 20 09:29:26 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- include dash and checkbashisms needed by BashismsCheck
+
+-------------------------------------------------------------------
+Mon Mar 29 11:47:51 CEST 2010 - dmueller@suse.de
+
+- update dependency list for rpmlint 0.95 / rpm 4.8.0
+
+-------------------------------------------------------------------
+Fri Feb 26 09:49:20 UTC 2010 - lnussel@suse.de
+
+- fix polkit check
+
+-------------------------------------------------------------------
+Thu Feb 25 14:27:35 UTC 2010 - lnussel@suse.de
+
+- configure CheckPolkitPrivs
+
+-------------------------------------------------------------------
+Thu Jan 21 14:11:47 UTC 2010 - lnussel@suse.de
+
+- remove error prone package-rpmlintrc.diff. Instead have rpmlint
+  execute a file via standard means which in turn reads custom
+  configs
+
+-------------------------------------------------------------------
+Wed Jan 13 13:59:27 UTC 2010 - lnussel@suse.de
+
+- add rpmgroups.config
+
+-------------------------------------------------------------------
+Mon Sep 28 13:21:20 UTC 2009 - lnussel@suse.de
+
+- include python-magic to fix e.g. the 'no-binary' check (bnc#539042)
+
+-------------------------------------------------------------------
+Wed Sep 16 18:42:48 CEST 2009 - mrueckert@suse.de
+
+- fix build with rpmlint 0.90
+
+-------------------------------------------------------------------
+Mon Aug 24 12:00:44 UTC 2009 - lnussel@suse.de
+
+- fix build with rpmlint 0.87
+
+-------------------------------------------------------------------
+Fri Jan 23 15:01:16 CET 2009 - lnussel@suse.de
+
+- include StringIO.pyo, needed by xml module used by the dbus policy
+  check to print useful errors
+
+--------------------------------------------------------------------
+Thu Dec 11 14:08:21 CET 2008 - lnussel@suse.de
+
+- add python-xml parts needed for PolicyKit checks
+
+-------------------------------------------------------------------
+Sat Sep 27 17:15:45 CEST 2008 - adrian@suse.de
+
+- fix dependencies of python again (bnc#430381)
+- add self check to avoid breakage in future
+
+-------------------------------------------------------------------
+Mon Sep  8 12:56:22 CEST 2008 - ro@suse.de
+
+- next try to get a working rpmlint again 
+
+-------------------------------------------------------------------
+Mon Sep  8 10:59:12 CEST 2008 - dmueller@suse.de
+
+- fix build again
+
+-------------------------------------------------------------------
+Fri Aug  8 00:01:16 CEST 2008 - dmueller@suse.de
+
+- fix build for python 2.6
+
+-------------------------------------------------------------------
+Thu Jul 24 11:58:01 CEST 2008 - dmueller@suse.de
+
+- support even OBS style of building
+
+-------------------------------------------------------------------
+Mon Jun 30 13:19:56 CEST 2008 - schwab@suse.de
+
+- Fix syntax error.
+
+-------------------------------------------------------------------
+Sat Jun 28 00:44:55 CEST 2008 - dmueller@suse.de
+
+- ignore warnings in the test package
+
+-------------------------------------------------------------------
+Mon Mar 10 16:09:33 CET 2008 - dmueller@suse.de
+
+- update desktop-file-validate to 0.14
+  * for changelog, see desktop-file-utils package
+
+-------------------------------------------------------------------
+Wed Feb 13 15:59:23 CET 2008 - dmueller@suse.de
+
+- update to (also) build rpmlint 0.82
+
+-------------------------------------------------------------------
+Thu Nov 22 18:22:40 CET 2007 - dmueller@suse.de
+
+- add missing utf8 module (#343642) 
+
+-------------------------------------------------------------------
+Mon Oct 29 12:56:30 CET 2007 - dmueller@suse.de
+
+- update to (also) build rpmlint 0.81
+- update desktop-file-validate to 0.14 
+
+-------------------------------------------------------------------
+Thu Jun 21 23:55:01 CEST 2007 - dmueller@suse.de
+
+- refresh patches
+
+-------------------------------------------------------------------
+Thu Jun  7 14:19:04 CEST 2007 - dmueller@suse.de
+
+- update desktop-file-validate to 0.13
+- fix build for lib64 archs
+
+-------------------------------------------------------------------
+Wed Jun  6 17:14:53 CEST 2007 - dmueller@suse.de
+
+- add static copy of desktop-file-validate to fix
+  the rpmlint check for desktop files
+
+-------------------------------------------------------------------
+Tue Jun  5 01:13:56 CEST 2007 - dmueller@suse.de
+
+- remove source files to reduce size
+- read $RPM_SOURCE_DIR/%{name}-%{version}-rpmlintrc as well
+
+-------------------------------------------------------------------
+Thu May 24 16:45:56 CEST 2007 - dmueller@suse.de
+
+- read $RPM_SOURCE_DIR/rpmlintrc as well to allow
+  package specific overrides
+
+-------------------------------------------------------------------
+Tue May 15 17:59:43 CEST 2007 - dmueller@suse.de
+
+- Initial package 
+

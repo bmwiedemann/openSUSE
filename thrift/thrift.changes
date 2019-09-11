@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Mon Apr 15 19:38:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim descriptions for a bit of size reduction and diversify summaries.
+- Remove %if..%endif guards that do not affect the build result.
+
+-------------------------------------------------------------------
+Mon Apr 15 13:53:13 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Split shared libraries to subpackages
+- Small packaging cleanups
+
+-------------------------------------------------------------------
+Wed Apr 10 11:35:09 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update keyring file
+
+-------------------------------------------------------------------
+Mon Apr  8 17:58:45 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix Python 3 package, which consisted of only a broken egg-info
+- Add missing runtime dependencies of Python 2 and 3 packages,
+  and add Recommends and Suggests for the same
+- Use %license
+- Add %doc and %license to the Python and Perl packages
+- Fix Provides/Obsoletes of the old python package
+- Update to 0.12.0:
+  (full log https://github.com/apache/thrift/blob/0.12.0/CHANGES)
+  * New Languages:
+    + Common LISP (cl)
+    + Swift
+    + Typescript (nodets)
+  * Deprecated Languages:
+    + Cocoa
+  * Breaking changes:
+    + Rust enum variants are now camel-cased instead of uppercased
+      to conform to Rust naming conventions
+    + Support for golang 1.6 and earlier has been dropped
+    + PHP now uses PSR-4 loader by default instead of class maps
+    + method signatures changed in the compiler's t_oop_generator
+    + The C GLib compiler handling of namespaces has been improved
+
+-------------------------------------------------------------------
+Fri May  4 13:19:34 UTC 2018 - mrostecki@suse.com
+
+- Update to 0.11.0:
+  https://github.com/apache/thrift/blob/master/CHANGES#L10-L297
+
+-------------------------------------------------------------------
+Fri Nov 10 13:50:10 UTC 2017 - mpluskal@suse.com
+
+- Enable python3 support as well
+- Use naming of python subpackages that is consistent with current
+  Factory conventions
+
+-------------------------------------------------------------------
+Wed Jun 14 07:19:46 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.10.0:
+  * lots of changes, see provided CHANGES for details
+  * fixes building with recent openss (boo#1042675)
+- Switch from qt4 to qt5
+
+-------------------------------------------------------------------
+Thu Feb  2 15:08:22 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jun 13 17:34:49 UTC 2016 - mpluskal@suse.com
+
+- Fix a typo in changelog
+
+-------------------------------------------------------------------
+Sat Apr 16 21:39:16 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.9.3
+  * numerous changes, see provided CHANGES for details
+
+-------------------------------------------------------------------
+Thu Mar  5 21:11:12 UTC 2015 - mpluskal@suse.com
+
+- Simplify buildconditions
+
+-------------------------------------------------------------------
+Mon Mar  2 18:44:32 UTC 2015 - mpluskal@suse.com
+
+- Disable building of static library
+- Do not manually set LDFLAGS
+
+-------------------------------------------------------------------
+Mon Mar  2 14:23:16 UTC 2015 - mpluskal@suse.com
+
+- Remove obsolete patches
+  * 0001-Add-missing-limits-header.patch  
+  * 0002-TNonblockingServer-TLibEventTransport.patch  
+  * 0003-TDenseProtocol.patch
+- Update library name to match shlib naming policy
+- Update to 0.9.2
+  * numerous changes, see provide CHANGES for details
+
+-------------------------------------------------------------------
+Sat Feb 22 20:05:26 UTC 2014 - opensuse@dstoecker.de
+
+- enable perl and python packages
+- remove extension patches
+
+-------------------------------------------------------------------
+Thu Feb 20 20:49:32 UTC 2014 - opensuse@dstoecker.de
+
+- update to 0.9.1
+
+-------------------------------------------------------------------
+Wed Sep 25 08:54:20 UTC 2013 - d.desai@rtsgroup.net
+
+- number of bytes written to transport and number of bytes
+  returned from write() method was not same. Fixed this 
+  problem in TDenseProtocol.
+
+-------------------------------------------------------------------
+Thu Aug 15 15:15:51 UTC 2013 - o.herrmann217@googlemail.com
+
+- Extended 0002-TNonblockingServer-TLibEventTransport.patch to
+  properly close TConnection when a client disconnects while
+  still receiving updates from libevent. 
+
+-------------------------------------------------------------------
+Wed Aug  7 12:07:33 UTC 2013 - d.desai@rtsgroup.net
+
+- Fixed multiple crashes in TNonblockingServer to work with lib_event.
+
+-------------------------------------------------------------------
+Fri Jun 21 11:12:57 UTC 2013 - o.herrmann217@googlemail.com
+
+- Changed 0002-TNonblockingServer-TLibEventTransport.patch to
+  install new header file with automake.
+
+-------------------------------------------------------------------
+Thu Jun 20 21:12:12 UTC 2013 - o.herrmann217@googlemail.com
+
+- Replaced std::tr1::bind with boost::bind in TNonblockingServer
+  to fix compilation error on RHEL 5.
+
+-------------------------------------------------------------------
+Thu Jun 20 11:51:54 UTC 2013 - o.herrmann217@googlemail.com
+
+- Removed BuildRequires for boost-static
+
+-------------------------------------------------------------------
+Thu Jun 20 11:13:43 UTC 2013 - o.herrmann217@googlemail.com
+
+- Created new patch for integrating external libevent clients in
+  TNonblockingServer.
+- Removed 0003-TNonblokingServer-release-handler-on-close.patch. 
+  It is now part of 0002-TNonblockingServer-TLibEventTransport.patch
+
+-------------------------------------------------------------------
+Tue May 14 07:40:45 UTC 2013 - d.desai@rtsgroup.net
+
+- Reverted changes for dependency of openssl for sles_11.
+
+-------------------------------------------------------------------
+Tue May 14 07:02:05 UTC 2013 - d.desai@rtsgroup.net
+
+- Added dependency of openssl for sles_11.
+
+-------------------------------------------------------------------
+Mon May 13 15:30:08 UTC 2013 - d.desai@rtsgroup.net
+
+- Created patch 0003 to release handler on close in
+  TNonblockingServer
+
+-------------------------------------------------------------------
+Thu May  9 12:23:02 UTC 2013 - o.herrmann217@googlemail.com
+
+- Fixed reset of smart pointer in patch 0002
+
+-------------------------------------------------------------------
+Thu May  9 11:16:57 UTC 2013 - o.herrmann217@googlemail.com
+
+- Created patch 0002 to access event_base from libevent in
+  TNonblockingServer
+
+-------------------------------------------------------------------
+Wed Jan 23 18:26:38 UTC 2013 - d.desai@rtsgroup.net
+
+- Removed boost version
+
+-------------------------------------------------------------------
+Wed Jan 23 14:51:46 UTC 2013 - o.herrmann217@googlemail.com
+
+- Build with --hash-style=sysv 
+
+-------------------------------------------------------------------
+Sun Dec  2 13:58:46 UTC 2012 - o.herrmann217@googlemail.com
+
+- Striped one directory in patch 0001 
+
+-------------------------------------------------------------------
+Sun Dec  2 13:41:57 UTC 2012 - o.herrmann217@googlemail.com
+
+- Patch for missing limit headers 
+
+-------------------------------------------------------------------
+Sun Dec  2 12:40:06 UTC 2012 - o.herrmann217@googlemail.com
+
+- Call make with -j1 to fix compile problem temporally 
+
+-------------------------------------------------------------------
+Tue Nov 27 21:58:37 UTC 2012 - jblunck@opensuse.org
+
+- Update to 0.9.0
+
+-------------------------------------------------------------------
+Fri Jul 30 17:26:10 UTC 2010 - dmacvicar@novell.com
+
+- initial package for 0.2.0 
+

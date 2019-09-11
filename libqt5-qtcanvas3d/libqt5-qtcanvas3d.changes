@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Thu Apr 18 07:26:37 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 14 08:47:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Fri Feb  1 08:39:29 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.12.1/?h=v5.12.1
+
+-------------------------------------------------------------------
+Thu Dec  6 13:35:18 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:16:19 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:38:50 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:24:23 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct 26 07:20:18 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:22:25 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 18:55:08 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct  2 07:33:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+
+-------------------------------------------------------------------
+Fri Sep 21 07:58:45 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Tue Jun 19 10:49:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Tue May 22 15:09:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Tue May  8 10:59:06 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:55:14 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:13:32 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:07 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:38 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:54:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:27:55 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+
+-------------------------------------------------------------------
+Wed Feb 14 15:44:15 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtcanvas3d.git/plain/dist/changes-5.10.1/?h=v5.10.1
+
+-------------------------------------------------------------------
+Fri Dec  8 23:11:07 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:05 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:12:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:10 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:33 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtcanvas3d.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:19 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:19 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Sun Oct  8 13:56:05 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+
+Sat Jul  1 08:08:36 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Wed May 31 07:05:06 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+
+-------------------------------------------------------------------
+Wed Dec 14 16:05:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sat Jun 11 18:41:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Activate libqt5-qtcanvas3d package

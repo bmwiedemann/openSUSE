@@ -1,0 +1,907 @@
+-------------------------------------------------------------------
+Thu Jun 20 09:32:49 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1138796).
+
+-------------------------------------------------------------------
+Tue Jun  4 10:43:46 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update License tag to GPL-3.0-or-later, as requested by legal
+  review.
+
+-------------------------------------------------------------------
+Tue May 21 12:48:24 UTC 2019 - matz@suse.com
+
+- Add fix-bsc-1110929.diff [bsc#1110929]
+
+-------------------------------------------------------------------
+Tue May  7 07:49:14 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-tests-Don-t-printf-a-known-NULL-symname.patch in order to
+  fix boo#1120864.
+
+-------------------------------------------------------------------
+Tue Feb 19 10:22:29 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add elfutils.keyring and verify signature.
+
+-------------------------------------------------------------------
+Mon Feb 18 07:47:27 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.176
+
+  build: Add new --enable-install-elfh option.
+         Do NOT use this for system installs (it overrides glibc elf.h).
+
+  backends: riscv improved core file and return value location support.
+
+  Fixes CVE-2019-7146, CVE-2019-7148, CVE-2019-7149, CVE-2019-7150,
+        CVE-2019-7664, CVE-2019-7665
+
+-------------------------------------------------------------------
+Fri Nov 16 13:28:34 UTC 2018 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.175
+
+  readelf: Handle mutliple .debug_macro sections.
+           Recognize and parse GNU Property, NT_VERSION and
+           GNU Build Attribute ELF Notes.
+
+  strip: Handle SHT_GROUP correctly.
+         Add strip --reloc-debug-sections-only option.
+         Handle relocations against GNU compressed sections.
+
+  libdwelf: New function dwelf_elf_begin.
+
+  libcpu: Recognize bpf jump variants BPF_JLT, BPF_JLE, BPF_JSLT
+          and BPF_JSLE.
+
+  backends: RISCV handles ADD/SUB relocations.
+            Handle SHT_X86_64_UNWIND.
+
+  Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
+
+- remove disable-backtrace-dwarf-test.patch patch - the test
+  works now
+
+-------------------------------------------------------------------
+Fri Sep 21 09:33:25 UTC 2018 - Martin Liška <mliska@suse.cz>
+
+- Add disable-backtrace-dwarf-test.patch in order to work around:
+  https://sourceware.org/bugzilla/show_bug.cgi?id=23673.  
+
+-------------------------------------------------------------------
+Mon Sep 17 10:21:35 UTC 2018 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.174
+
+  libelf, libdw and all tools now handle extended shnum and
+  shstrndx correctly.
+
+  elfcompress: Don't rewrite input file if no section data needs
+               updating. Try harder to keep same file mode bits
+               (suid) on rewrite.
+
+  strip: Handle mixed (out of order) allocated/non-allocated
+         sections.
+
+  unstrip: Handle SHT_GROUP sections.
+
+  backends: RISCV and M68K now have backend implementations to
+            generate CFI based backtraces.
+
+-------------------------------------------------------------------
+Wed Aug 15 12:37:46 UTC 2018 - antoine.belvire@opensuse.org
+
+- Don't make elfutils recommend elfutils-lang as elfutils-lang
+  already supplements elfutils.
+
+-------------------------------------------------------------------
+Thu Aug  9 11:29:31 UTC 2018 - tchvatal@suse.com
+
+- Fix typo in the recommends name bsc#1104264
+
+-------------------------------------------------------------------
+Tue Jul  3 08:27:56 UTC 2018 - mliska@suse.cz
+
+- Update to version 0.173
+
+  More fixes for crashes and hangs found by afl-fuzz. In particular various
+  functions now detect and break infinite loops caused by bad DIE tree cycles.
+
+  readelf: Will now lookup the size and signedness of constant value types
+           to display them correctly (and not just how they were encoded).
+
+  libdw: New function dwarf_next_lines to read CU-less .debug_line data.
+         dwarf_begin_elf now accepts ELF files containing just .debug_line
+         or .debug_frame sections (which can be read without needing a DIE
+         tree from the .debug_info section).
+         Removed dwarf_getscn_info, which was never implemented.
+
+  backends: Handle BPF simple relocations.
+            The RISCV backends now handles ABI specific CFI and knows about
+            RISCV register types and names.
+
+- add cfi-fix.patch: make build green on arm target
+
+-------------------------------------------------------------------
+Tue Jun 12 08:04:52 UTC 2018 - mliska@suse.cz
+
+- Update to versio 0.172
+
+  No functional changes compared to 0.171.
+
+  Various bug fixes in libdw and eu-readelf dealing with bad DWARF5 data.
+  Thanks to running the afl fuzzer on eu-readelf and various testcases.
+
+-------------------------------------------------------------------
+Sun Jun 10 09:35:13 UTC 2018 - schwab@suse.de
+
+- disable-tests-with-ptrace.patch: Rediff
+
+-------------------------------------------------------------------
+Mon Jun  4 07:19:12 UTC 2018 - mliska@suse.cz
+
+- Update to version 0.171
+
+  DWARF5 and split dwarf, including GNU DebugFission, are supported now.
+  Data can be read from the new DWARF sections .debug_addr, .debug_line_str,
+  .debug_loclists, .debug_str_offsets and .debug_rnglists.  Plus the new
+  DWARF5 and GNU DebugFission encodings of the existing .debug sections.
+  Also in split DWARF .dwo (DWARF object) files.  This support is mostly
+  handled by existing functions (dwarf_getlocation*, dwarf_getsrclines,
+  dwarf_ranges, dwarf_form*, etc.) now returning the data from the new
+  sections and data formats.  But some new functions have been added
+  to more easily get information about skeleton and split compile units
+  (dwarf_get_units and dwarf_cu_info), handle new attribute data
+  (dwarf_getabbrevattr_data) and to keep references to Dwarf_Dies
+  that might come from different sections or files (dwarf_die_addr_die).
+
+  Not yet supported are .dwp (Dwarf Package) and .sup (Dwarf Supplementary)
+  files, the .debug_names index, the .debug_cu_index and .debug_tu_index
+  sections. Only a single .debug_info (and .debug_types) section are
+  currently handled.
+
+  readelf: Handle all new DWARF5 sections.
+           --debug-dump=info+ will show split unit DIEs when found.
+           --dwarf-skeleton can be used when inspecting a .dwo file.
+     Recognizes GNU locviews with --debug-dump=loc.
+
+  libdw: New functions dwarf_die_addr_die, dwarf_get_units,
+         dwarf_getabbrevattr_data and dwarf_cu_info.
+         libdw will now try to resolve the alt file on first use of
+         an alt attribute FORM when not set yet with dwarf_set_alt.
+         dwarf_aggregate_size() now works with multi-dimensional arrays.
+
+  libdwfl: Use process_vm_readv when available instead of ptrace.
+
+  backends: Add a RISC-V backend.
+
+  There were various improvements to build on Windows.
+  The sha1 and md5 implementations have been removed, they weren't used.
+
+- Remove patches: elfutils-0.170-Wpackednotaligned.patch,
+  elfutils-0.170-stripnothing.patch, gcc8-disable-test.patch 
+- make package with V=1 to print verbose command line
+
+-------------------------------------------------------------------
+Tue May 29 08:03:20 UTC 2018 - mliska@suse.cz
+
+- Add gcc8-disable-test.patch in order to fix boo#1084637: temporarily
+  disable a test-case.
+
+-------------------------------------------------------------------
+Thu Mar 22 16:36:10 UTC 2018 - schwab@suse.de
+
+- disable-tests-with-ptrace.patch: Rediff
+
+-------------------------------------------------------------------
+Fri Mar  9 09:21:05 UTC 2018 - rguenther@suse.com
+
+- Update to version 0.170
+  libdw: Added new DWARF5 attribute, tag, character encoding, language code,
+         calling convention, defaulted member function and macro constants
+         to dwarf.h.
+	 New functions dwarf_default_lower_bound and dwarf_line_file.
+	 dwarf_peel_type now handles DWARF5 immutable, packed and shared tags.
+	 dwarf_getmacros now handles DWARF5 .debug_macro sections.
+  strip: Add -R, --remove-section=SECTION and --keep-section=SECTION.
+  backends: The bpf disassembler is now always build on all platforms.
+- Includes changes in 0.169
+  backends: Add support for EM_PPC64 GNU_ATTRIBUTES.
+            Frame pointer unwinding fallback support for i386, x86_64, aarch64.
+  translations: Update Polish translation.
+- Remove obsolete 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch 
+  and ppc-machine-flags.patch
+- Add elfutils-0.170-stripnothing.patch to robustify test and avoid a FAIL.
+- Add elfutils-0.170-Wpackednotaligned.patch to fix build with GCC 8.
+  (boo#1084637)
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:31 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Sat Aug 26 13:40:57 UTC 2017 - jengelh@inai.de
+
+- Restore obsolete on libebl.
+
+-------------------------------------------------------------------
+Tue Aug  1 11:41:15 UTC 2017 - jengelh@inai.de
+
+- Update package descriptions.
+- Rename libebl1 to libebl-plugins as these are not linked,
+  but dlopened using their unversioned libebl_$ARCH.so name.
+- Have libelf1 require libebl-plugins (libebl.a, which does the
+  dlopen call, is staticly built into libelf1). This is necessary
+  for pahole to display its results. [boo#1049871]
+
+-------------------------------------------------------------------
+Sun Jun 18 12:45:19 UTC 2017 - schwab@linux-m68k.org
+
+- ppc-machine-flags.patch: support EM_PPC machine flags
+- disable-tests-with-ptrace.patch: disable more tests
+
+-------------------------------------------------------------------
+Sun May 28 07:44:17 UTC 2017 - jengelh@inai.de
+
+- Update Git-Clone URL
+
+-------------------------------------------------------------------
+Thu Apr 27 07:43:44 UTC 2017 - mliska@suse.cz
+
+- Add 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch
+  unconditionally in the spec file. As we can't support binary diff,
+  a newly added test-case is removed from the patch.
+
+-------------------------------------------------------------------
+Tue Apr 25 14:46:06 UTC 2017 - mliska@suse.cz
+
+- Add 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch:
+  fix .gnu.attributes checking on ppc64{,le}.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:16:26 UTC 2017 - jengelh@inai.de
+
+- Add missing ldconfig calls for libasm1
+
+-------------------------------------------------------------------
+Fri Mar 31 19:02:31 UTC 2017 - bwiedemann@suse.com
+
+- make tests pass when user does not want debuginfo (boo#1031556)
+
+-------------------------------------------------------------------
+Thu Mar 30 08:07:10 UTC 2017 - rguenther@suse.com
+
+- Update to version 0.168:
+  libelf: gelf_newehdr and gelf_newehdr now return void *.
+  libdw: dwarf.h corrected the DW_LANG_PLI constant name (was DW_LANG_PL1).
+  readelf: Add optional --symbols[=SECTION] argument to select section name.
+- Includes changes from 0001-Add-GCC7-Wimplicit-fallthrough-support-fixes.patch
+  and 0001-ar-Fix-GCC7-Wformat-length-issues.patch.
+- Remove elfutils-0.137-dwarf-header-check-fix.diff which is no longer
+  required after a debugedit fix.
+
+-------------------------------------------------------------------
+Fri Dec  9 12:19:24 UTC 2016 - mliska@suse.cz
+
+- Add 0001-Add-GCC7-Wimplicit-fallthrough-support-fixes.patch: fix
+  new warning introduced in GCC 7.
+- Add 0001-ar-Fix-GCC7-Wformat-length-issues.patch: fix -Wformat-length
+  warning introduced in GCC 7.
+
+-------------------------------------------------------------------
+Tue Aug 30 15:14:51 UTC 2016 - matz@suse.com
+
+- Update to version 0.167:
+  libasm: Add eBPF disassembler for EM_BPF files.
+  backends: Add m68k and BPF backends.
+  ld: Removed.
+  dwelf: Add ELF/DWARF string table creation functions. dwelf_strtab_init,
+         dwelf_strtab_add, dwelf_strtab_add_len, dwelf_strtab_finalize,
+         dwelf_strent_off, dwelf_strent_str and dwelf_strtab_free.
+  Support compressed sections from binutils 2.27.
+- Remove patch elfutils-0.166-elfcmp-comp-gcc6.patch: included upstream.
+
+-------------------------------------------------------------------
+Mon Jul 11 09:16:14 UTC 2016 - schwab@suse.de
+
+- disable-tests-with-ptrace.patch: disable tests that use ptrace when
+  running under qemu-linux-user
+
+-------------------------------------------------------------------
+Mon Jun 27 12:26:22 UTC 2016 - fcrozat@suse.com
+
+- Update to version 0.166:
+  + config: The default program prefix for the installed tools is now
+  eu-. Use configure --program-prefix="" to not use a program
+  prefix.
+  + Various bugfixes.
+- Drop elfutils-0.164-dt-ppc-opt.patch and
+  elfutils-0.164-gcc6.patch (merged upstream)
+- Add patch elfutils-0.166-elfcmp-comp-gcc6.patch: fix
+  self-comparison error with GCC 6.
+- Changes from 0.165:
+  + Add eu-elfcompress
+  + Add pkg-config files for libelf and libdw.
+
+-------------------------------------------------------------------
+Sat Apr 16 03:41:22 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  add elfutils-0.164-gcc6.patch
+
+-------------------------------------------------------------------
+Sat Feb 27 07:36:03 UTC 2016 - normand@linux.vnet.ibm.com
+
+- rename dt-ppc-opt.patch as elfutils-0.164-dt-ppc-opt.patch
+  and add reference to upstream commit id
+
+-------------------------------------------------------------------
+Tue Dec 15 14:59:54 UTC 2015 - schwab@suse.de
+
+- dt-ppc-opt.patch: add support for DT_PPC_OPT
+
+-------------------------------------------------------------------
+Fri Nov 20 10:15:34 UTC 2015 - idonmez@suse.com
+
+- Update to version 0.164
+  Drop the following patches, fixed upstream:
+    * elfutils-portability-0.163.patch
+    * elfutils-revert-portability-scanf.patch
+    * elfutils-uninitialized.diff
+    * libebl-prototype-fix.diff
+
+  Changelog:
+  - strip, unstrip: 
+    * Handle ELF files with merged strtab/shstrtab tables.
+    * Handle missing SHF_INFO_LINK section flags.
+  - libelf: 
+    * Use int64_t for offsets in libelf.h instead of loff_t.
+  - libdw: 
+    * dwarf.h Add preliminary DWARF5 DW_LANG_Haskell.
+  - libdwfl:
+    * dwfl_standard_find_debuginfo now searches any subdir of the binary
+      path under the debuginfo root when the separate debug file couldn't
+      be found by build-id.
+    * dwfl_linux_proc_attach can now be called before any Dwfl_Modules
+      have been reported.
+- Implement %check
+
+-------------------------------------------------------------------
+Fri Sep 11 17:13:14 UTC 2015 - tonyj@suse.com
+
+- Update to version 0.163
+  Drop patch elfutils-fix-dir-traversal-vuln-in-ar-extraction.patch
+  Drop patch elfutils-0.148-dont-crash.diff (fixed by 9ceebe69)
+  Drop patch elfutils-portability-0.161.patch
+  Add patch elfutils-portability-0.163.patch
+
+  Changelog:
+  0.163:
+   - Bug fixes only, no new features.
+  0.162:
+   -libdw: Install new header elfutils/known-dwarf.h.
+       dwarf.h Add preliminary DWARF5 constants DW_TAG_atomic_type,
+       DW_LANG_Fortran03, DW_LANG_Fortran08. dwarf_peel_type now also
+       handles DW_TAG_atomic_type.
+   - addr2line: Input addresses are now always interpreted as hexadecimal
+           numbers, never as octal or decimal numbers.
+           New option -a, --addresses to print address before each entry.
+           New option -C, --demangle to show demangled symbols.
+           New option --pretty-print to print all information on one line.
+   - ar: CVE-2014-9447 Directory traversal vulnerability in ar extraction.
+   - backends: x32 support.
+
+-------------------------------------------------------------------
+Wed Feb 11 01:28:52 UTC 2015 - tonyj@suse.com
+
+- Make ebl modversion predictable to allow build-compare (bnc#916043)
+
+-------------------------------------------------------------------
+Wed Jan  7 21:19:10 UTC 2015 - tonyj@suse.com
+
+- CVE-2014-9447: elfutils: Directory traversal vulnerability (bnc#911662)
+  Add patch: elfutils-fix-dir-traversal-vuln-in-ar-extraction.patch
+
+-------------------------------------------------------------------
+Wed Jan  7 00:45:34 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.161
+  + libdw: New function dwarf_peel_type. dwarf_aggregate_size now uses
+       dwarf_peel_type to also provide the sizes of qualified types.
+       dwarf_getmacros will now serve either of .debug_macro and
+       .debug_macinfo transparently.  New interfaces
+       dwarf_getmacros_off, dwarf_macro_getsrcfiles,
+       dwarf_macro_getparamcnt, and dwarf_macro_param are available
+       for more generalized inspection of macros and their parameters.
+       dwarf.h: Add DW_AT_GNU_deleted, DW_AT_noreturn, DW_LANG_C11,
+       DW_LANG_C_plus_plus_11 and DW_LANG_C_plus_plus_14.
+- Remove merged patches
+  + elfutils-robustify.patch
+  + elfutils-no-po-test-build.diff
+  + elfutils-check-for-overflow-before-calling-malloc-to-uncompress-data.patch
+- Refreshed patch (from Fedora sources)
+  + elfutils-portability.patch > elfutils-portability-0.161.patch
+- Add a lang subpackage
+  
+-------------------------------------------------------------------
+Wed Oct 15 15:06:23 UTC 2014 - jengelh@inai.de
+
+- Update homepage URL and improve RPM group classification
+
+-------------------------------------------------------------------
+Thu Jun 19 21:08:35 UTC 2014 - tonyj@suse.com
+
+- Package changes file to support local rpmbuild (bnc#879011)
+
+-------------------------------------------------------------------
+Tue Apr 15 18:56:25 UTC 2014 - tonyj@suse.com
+
+- Fix integer overflow in check_section (CVE-2014-0172, bnc#872785)
+  Add patch: elfutils-check-for-overflow-before-calling-malloc-to-uncompress-data.patch
+
+-------------------------------------------------------------------
+Sat Mar 22 17:19:48 UTC 2014 - jengelh@inai.de
+
+- SPARC build requires the large PIC model (or else build fails)
+
+-------------------------------------------------------------------
+Tue Jan 28 19:22:04 UTC 2014 - tonyj@suse.com
+
+- Update to 0.158:
+  - libdwfl: 
+    - dwfl_core_file_report has new parameter executable.
+    - New functions dwfl_module_getsymtab_first_global,
+       dwfl_module_getsym_info and dwfl_module_addrinfo.
+    - Added unwinder with type Dwfl_Thread_Callbacks, opaque types
+       Dwfl_Thread and Dwfl_Frame and functions dwfl_attach_state,
+       dwfl_pid, dwfl_thread_dwfl, dwfl_thread_tid, dwfl_frame_thread,
+       dwfl_thread_state_registers, dwfl_thread_state_register_pc,
+       dwfl_getthread_frames, dwfl_getthreads, dwfl_thread_getframes
+       and dwfl_frame_pc.
+  - addr2line: New option -x to show the section an address was found in.
+  - stack: New utility that uses the new unwinder for processes and cores.
+  - backends: Unwinder support for i386, x86_64, s390, s390x, ppc and ppc64.
+     aarch64 support.
+
+-------------------------------------------------------------------
+Wed Nov 13 12:12:20 UTC 2013 - sweet_f_a@gmx.de
+
+- update to 0.157:
+  libdw: Add new functions dwarf_getlocations, dwarf_getlocation_attr
+           and dwarf_getlocation_die.
+  readelf: Show contents of NT_SIGINFO and NT_FILE core notes.
+  addr2line: Support -i, --inlines output option.
+  backends: abi_cfi hook for arm, ppc and s390.
+- update to 0.156:
+  lib: New macro COMPAT_VERSION_NEWPROTO.
+  libdw: Handle GNU extension opcodes in dwarf_getlocation.
+  libdwfl: Fix STB_GLOBAL over STB_WEAK preference in dwfl_module_addrsym.
+           Add minisymtab support.
+           Add parameter add_p_vaddr to dwfl_report_elf.
+           Use DT_DEBUG library search first.
+  libebl: Handle new core note types in EBL.
+  backends: Interpret NT_ARM_VFP.
+            Implement core file registers parsing for s390/s390x.
+  readelf: Add --elf-section input option to inspect an embedded ELF file.
+           Add -U, --unresolved-address-offsets output control.
+           Add --debug-dump=decodedline support.
+           Accept version 8 .gdb_index section format.
+           Adjust output formatting width.
+           When highpc is in constant form print it also as address.
+           Display raw .debug_aranges. Use libdw only for decodedaranges.
+  elflint: Add __bss_start__ to the list of allowed symbols.
+  tests: Add configure --enable-valgrind option to run all tests under valgrind.
+         Enable automake parallel-tests for make check.
+  translations: Updated Polish translation.
+  Updates for Automake 1.13.
+- remove elfutils-aarch64.patch and elfutils-sizeof-pointer-memaccess.patch
+  (fixed by upstream)
+- rebase elfutils-robustify.patch and elfutils-portability.patch, they are
+  provided by ustream
+
+-------------------------------------------------------------------
+Tue Jun 18 16:05:13 UTC 2013 - schwab@suse.de
+
+- elfutils-sizeof-pointer-memaccess.patch: Fix sizeof-pointer-memaccess
+  warnings
+
+-------------------------------------------------------------------
+Tue Mar 26 12:56:03 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Nov 28 09:37:52 UTC 2012 - adrian@suse.de
+
+- add elfutils-aarch64.patch to support aarch64
+- update to 0.155
+
+  libelf: elf*_xlatetomd now works for cross-endian ELF note data.
+  	elf_getshdr now works consistently on non-mmaped ELF files after
+  	calling elf_cntl(ELF_C_FDREAD).
+  	Implement support for ar archives with 64-bit symbol table.
+  	[g]elf[32|64]_offscn() do not match SHT_NOBITS sections at OFFSET.
+  
+  libdw: dwarf.h corrected the DW_LANG_ObjC constant name (was DW_LANG_Objc).
+         Any existing sources using the old name will have to be updated.
+         Add DW_MACRO_GNU .debug_macro type encodings constants, DW_ATE_UTF
+         and DW_OP_GNU_parameter_ref to dwarf.h.
+         Experimental support for DWZ multifile forms DW_FORM_GNU_ref_alt
+         and DW_FORM_GNU_strp_alt.  Disabled by default.  Use configure
+         --enable-dwz to test it.
+         dwarf_highpc function now handles DWARF 4 DW_AT_high_pc constant form.
+         Fix bug using dwarf_next_unit to iterate over .debug_types.
+  
+  elflint: Now accepts gold linker produced executables.
+  
+  readelf: Add .debug_macro parsing support.
+  	 Add .gdb_index version 7 parsing support.
+  	 Recognize DW_OP_GNU_parameter_ref.
+  
+  backends: Add support for Tilera TILE-Gx processor.
+  
+  translations: Updated Ukrainian translation.
+  
+  The license is now GPLv2/LGPLv3+ for the libraries and GPLv3+ for stand-alone
+  programs. There is now also a formal CONTRIBUTING document describing how to
+  submit patches.
+
+-------------------------------------------------------------------
+Mon Oct  8 09:48:59 UTC 2012 - schwab@linux-m68k.org
+
+- Fix baselibs.conf: elfutils-devel -> libelf-devel
+
+-------------------------------------------------------------------
+Thu Sep 20 13:18:51 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0-with-OSI-exception
+  Use a license available on the spreadsheet linked at
+  license.opensuse.org
+
+-------------------------------------------------------------------
+Wed May 30 17:41:41 UTC 2012 - sweet_f_a@gmx.de
+
+- avoid automake dependency 
+
+-------------------------------------------------------------------
+Thu Mar 15 08:49:20 UTC 2012 - aj@suse.de
+
+- Update to 0.153:
+  * Fix building with gcc 4.7
+  *  New --disable-werror for portability.
+  * Support for .zdebug sections
+  * type_units and DW_AT_GNU_odr_signature support
+  * low level support DW_OP_GNU_entry_value and DW_TAG_GNU_call_site
+- Revert scanf changes in portability patch since C99 gives %a a new 
+  meaning.
+
+-------------------------------------------------------------------
+Fri Dec  2 08:59:33 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0-with-osi-exception
+  elfutils is GPL-2.0 (only) with an exception for osi approved licenses.
+  Also, use SPDX format
+
+-------------------------------------------------------------------
+Thu Dec  1 11:22:12 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Add elfutils-devel to baselibs
+
+-------------------------------------------------------------------
+Tue May 24 15:32:28 UTC 2011 - crrodriguez@opensuse.org
+
+- Remote timestamps on binaries, breaks build compare
+- Add missing build requires on zlib, bzip2 and lzma .
+
+-------------------------------------------------------------------
+Wed Apr 27 00:35:22 UTC 2011 - tonyj@novell.com
+
+- Upgrade to 0.152, upstream changelog:
+  - Various build and warning nits fixed for newest GCC and Autoconf.
+  - libdwfl: Yet another prelink-related fix for another regression.
+             Look for Linux kernel images in files named with compression
+             suffixes.
+  - elfcmp: New flag --ignore-build-id to ignore differing build ID bits.
+	    New flag -l/--verbose to print all differences.
+
+-------------------------------------------------------------------
+Fri Jan 21 22:02:25 UTC 2011 - tonyj@novell.com
+
+- Update to 0.151
+- Upstream changelog for 0.151/0.150
+  - libdwfl: Fix for more prelink cases with separate debug file. 
+  - eu-strip: New flag --strip-sections to remove section headers entirely.
+  - libdwfl: Remove bogus assert. 
+  - libdw: Fix for handling huge .debug_aranges section. 
+  - libdwfl: Fix for handling prelinked DSO with separate debug file. 
+  - findtextrel: Fix diagnostics to work with usual section ordering.
+  - libebl: i386 backend fix for multi-register integer return value location
+
+-------------------------------------------------------------------
+Sat Sep 18 00:00:44 UTC 2010 - tonyj@novell.com
+
+- Update to 0.149
+- Upstream changelog
+  - libdwfl: Fix Linux kernel module search when dwfl_build_id_find_elf and
+    dwfl_build_id_find_debuginfo close fd on success
+  - readelf: Use symbolic printing for FDE initial_location address
+  - readelf: Print .debug_loc/.debug_ranges with cognizance of actual DIE 
+    pointers into them.
+  - readelf: Fix crash in .debug_loc with garbage data.
+  - readelf: Fix DW_OP_call_ref printing for version 2 CUs.
+  - Handle DW_OP_GNU_implicit_pointer.
+  - Add dwfl_dwarf_line, addr2line -F to print out more line info bits.
+  - Add missing size entries for ELF_T_LIB and ELF_T_GNUHASH.
+  - Fix dwarf_formref_die DW_FORM_ref_sig8 hash table insertion.
+  - Consider .gdb_index as a debugging section
+  - Misc intendation, typo, translation and cleanup fixes
+
+-------------------------------------------------------------------
+Mon Sep 13 11:32:58 UTC 2010 - coolo@novell.com
+
+- add small patch to avoid crash in systemtap while building preload
+
+-------------------------------------------------------------------
+Thu Aug 26 03:32:26 CEST 2010 - tonyj@suse.de
+
+- Update to 0.148
+- Upstream changelog
+  - libdw: Accept DWARF 4 format: new functions dwarf_next_unit, 
+    dwarf_offdie_types.  New functions dwarf_lineisa, 
+    dwarf_linediscriminator, dwarf_lineop_index.
+  - libdwfl: Fixes in core-file handling, support cores from PIEs. 
+    	 When working from build IDs, don't open a named file that mismatches.
+  - readelf: Handle DWARF 4 formats.
+
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue May 11 20:01:23 UTC 2010 - tonyj@novell.com
+
+- update to version 0.147 (fix bnc#588293)
+- dropped patches for 10.3 and older
+- dropped elfutils-0.97-ftruncate-mmap-fix, libelf-ignore-NOBITS, test and
+  build patches. According to jbl these were mistakenly checked in from
+  home:janblunck:debuginfo:libs/elfutils and the purpose of this project is 
+  no longer known. Absense of any patch header makes confirmation difficult.
+
+- Upstream changelog:
+  0.147
+  - libdw: Fixes in CFI handling, best possible handling of bogus CFA
+    ops.
+  - libdwfl: Ignore R_*_NONE relocs, works around old (binutils) ld -r
+    bugs.
+  
+  0.146
+  - libdwfl: New function dwfl_core_file_report.
+  
+  0.145
+  - Fix build with --disable-dependency-tracking.
+  - Fix build with most recent glibc headers.
+  - libelf: More robust to bogus section headers.
+  - libdw: Fix CFI decoding.
+  - libdwfl: Fix address bias returned by CFI accessors.   Fix core
+    file module layout identification.
+  - readelf: Fix CFI decoding.
+  
+  0.144
+  - libelf: New function elf_getphdrnum.  Now support using more than
+    65536 program headers in a file.
+  - libdw: New function dwarf_aggregate_size for computing (constant)
+    type        sizes, including array_type cases with nontrivial
+    calculation.
+  - readelf: Don't give errors for missing info under -a.
+    Handle Linux "VMCOREINFO" notes under -n.
+  
+  0.143
+  - libdw: Various convenience functions for individual attributes now
+    use dwarf_attr_integrate to look up indirect inherited
+    attributes.  Location expression handling now supports
+    DW_OP_implicit_value.
+  - libdwfl: Support automatic decompression of files in XZ format,
+    and of Linux kernel images made with bzip2 or LZMA (as well
+    as gzip).
+
+-------------------------------------------------------------------
+Wed Feb 10 12:21:51 CET 2010 - rguenther@suse.de
+
+- Fix uninitialized variable.
+
+-------------------------------------------------------------------
+Sat Dec 12 18:13:13 CET 2009 - jengelh@medozas.de
+
+- Enable parallel building
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Aug 20 13:13:21 CEST 2009 - rguenther@suse.de
+
+- Fix elfutils-old-scanf-fix.diff patch.
+
+-------------------------------------------------------------------
+Thu Aug 13 16:11:47 CEST 2009 - tiwai@suse.de
+
+- updated to 0.142:
+  - Fix handling filling caps between sections in libelf
+  - Add elf_getshdrnum alias for elf_getshnum and elf_getshdrstrndx
+    alias for elf_getshstrndx and deprecate original names.
+  - Add support for STB_GNU_UNIQUE
+  - Add -N option to readelf, speeds up DWARF printing without
+    address->name lookups
+  - Add support for decoding DWARF CFI into location description
+    form to libdw.
+    Some new DWARF 3 expression operations.
+    Basic handling of some new encodings slated for DWARF 4.
+
+-------------------------------------------------------------------
+Wed Apr 29 17:49:28 CEST 2009 - tiwai@suse.de
+
+- updated to 0.141:
+  - libebl: sparc backend fixes
+      some more arm backend support
+  - libdwfl: fix dwfl_module_build_id for prelinked DSO case
+      fixes in core file support dwfl_module_getsym interface
+      improved for non-address symbols
+  - eu-strip: fix infinite loop on strange inputs with -f
+  - eu-addr2line: take -j/--section=NAME option for binutils
+      compatibility (same effect as '(NAME)0x123' syntax already
+      supported)
+
+-------------------------------------------------------------------
+Thu Feb 19 15:39:39 CET 2009 - tiwai@suse.de
+
+- Update to 0.139
+  - libcpu: Add Intel SSE4 disassembler support
+  - readelf: Implement call frame information and exception
+             handling dumping.
+             Add -e option.  Enable it implicitly for -a.
+  - elflint: Check PT_GNU_EH_FRAME program header entry.
+  - libdwfl: Support automatic gzip/bzip2 decompression of ELF
+             files.
+- updated to 0.140:
+  - libelf: Fix regression in creation of section header.
+  - Misc bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 27 14:34:17 CET 2009 - tiwai@suse.de
+
+- revert the ET_DYN address fix patch; causing a regression
+  (bnc#468814)
+
+-------------------------------------------------------------------
+Wed Jan  7 15:01:10 CET 2009 - tiwai@suse.de
+
+- Fix the header size check in dwarf_getsrclines() (bnc#455992)
+- Backport the fix for ET_DYN addresses
+
+-------------------------------------------------------------------
+Tue Dec 16 13:48:38 CET 2008 - tiwai@suse.de
+
+- Fix dwfl_getmodules(), assert in systemtap (bnc#448331)
+- Fix libebl1 dependency
+- Fix crashes of elfutils binaries, backports from upstream
+
+-------------------------------------------------------------------
+Tue Nov 25 13:12:04 CET 2008 - tiwai@suse.de
+
+- fix libdwfl regression with realloc DWFL->lookup_module in
+  the fix patch (bnc#448331, likely bnc#445783)
+
+-------------------------------------------------------------------
+Tue Oct 28 20:33:17 CET 2008 - tiwai@suse.de
+
+- added baselibs.conf for 32bit libs (bnc#439582)
+
+-------------------------------------------------------------------
+Tue Oct  7 15:07:28 CEST 2008 - tiwai@suse.de
+
+- renamed to libebl1
+- provides libasm1 package
+- fix provides and obsolets of libebl1
+- updated to version 0.137:
+  * libdwfl: bug fixes
+
+-------------------------------------------------------------------
+Tue Aug 26 17:52:21 CEST 2008 - tiwai@suse.de
+
+- updated to version 0.135:
+  * libdwfl: bug fixes
+- updated to version 0.134:
+  * libdwfl, libelf: bug fixes
+- updated to version 0.133:
+  * readelf, elflint, libebl: SHT_GNU_ATTRIBUTE section handling
+    (readelf -A)
+  * libdwfl: bug fixes and optimization in relocation handling
+- updated to version 0.132:
+  * libcpu: Implement x86 and x86-64 disassembler.
+  * libasm: Add interface for disassembler.
+- fixed post scripts
+
+-------------------------------------------------------------------
+Fri Feb 29 19:17:35 CET 2008 - dmueller@suse.de
+
+- fix build for older distributions
+
+-------------------------------------------------------------------
+Mon Jan 28 14:24:36 CET 2008 - tiwai@suse.de
+
+- fix compile errors regarding missing prototypes.
+
+-------------------------------------------------------------------
+Tue Nov 20 14:47:20 CET 2007 - tiwai@suse.de
+
+- fix off64_t in libelf.h again...
+
+-------------------------------------------------------------------
+Tue Nov 20 10:36:32 CET 2007 - tiwai@suse.de
+
+- updated to version 0.131
+  * libdw: DW_FORM_ref_addr support
+     dwarf_formref entry point now deprecated
+     bug fixes for oddly-formatted DWARF
+  * libdwfl: bug fixes in offline archive support
+     apply partial relocations for dwfl_module_address_section
+     on ET_REL
+  * libebl: powerpc backend support for Altivec registers
+
+-------------------------------------------------------------------
+Mon Oct 22 18:40:18 CEST 2007 - tiwai@suse.de
+
+- fix comiple errors regarding missing off64_t definitions
+  in libelf.h
+
+-------------------------------------------------------------------
+Mon Oct 22 15:18:07 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.129:
+  readelf: new options --hex-dump (or -x), --strings (or -p)
+- updated to version 0.130
+  * readelf: -p option can take an argument like -x for one
+    section
+  * libelf: new function elf_getdata_rawchunk, replaces
+    gelf_rawchunk;
+    new functions gelf_getnote, gelf_getauxv, gelf_update_auxv
+  * libdwfl: new functions dwfl_build_id_find_elf,
+    dwfl_build_id_find_debuginfo, dwfl_module_build_id,
+    dwfl_module_report_build_id;
+    support dynamic symbol tables found via phdrs;
+    dwfl_standard_find_debuginfo now uses build IDs when available
+  * libebl: backend improvements for sparc, alpha, powerpc
+
+-------------------------------------------------------------------
+Thu Oct  4 15:28:43 CEST 2007 - rguenther@suse.de
+
+- fix build with gcc-4.3, same patch as for the copy in rpm
+
+-------------------------------------------------------------------
+Wed Jul  4 12:20:22 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.128
+  * auto-tool fixes
+
+-------------------------------------------------------------------
+Mon Jun 11 01:05:12 CEST 2007 - ro@suse.de
+
+- use __attribute__ ((gnu_inline)) to fix build with gcc-4.2
+
+-------------------------------------------------------------------
+Mon May 21 12:19:46 CEST 2007 - tiwai@suse.de
+
+- initial packages, built from elfutils-0.127.
+  A problematic file regarding the license is removed from the
+  tarball.
+

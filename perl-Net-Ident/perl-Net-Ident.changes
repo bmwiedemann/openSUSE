@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Apr 14 19:27:52 UTC 2015 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Net-Ident/Changes
+
+  1.24 Sun Dec 14 2014
+      - RT 79165 - Fix for Strawberry Perl
+      - Tidy code base for conformity of future patches
+
+-------------------------------------------------------------------
+Wed Mar 27 14:24:38 UTC 2013 - stefan.jakobs@rus.uni-stuttgart.de
+
+- remove 'BuildRequires: perl-macros' from spec file, because perl
+  included in openSUSE > 1210 deprecates perl-macros which causes a
+  build failure.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:36 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 27 11:53:54 UTC 2010 - chris@computersalat.de
+
+- update to 1.23
+  - Setting values for read only tied hash %! is illegal. removing code.
+- 1.22 Fri Jun 11 09:00:00 CST 2010
+  - Remove Apache (mod_perl) as a dep for this module
+- 1.21 Fri Jun 11 01:00:00 CST 2010
+  - Move sub around to fix prototyping bug.
+  - Remove broken ident hosts from list so tests don't break. Right now
+    i know of no working public ident hosts. Patches welcome!
+  - Update Makefile.PL with new options
+  - Add META.yml to module
+  - use %! to determine if error was EINPROGRESS to function in other languages
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Mar 21 00:36:09 UTC 2010 - chris@computersalat.de
+
+- initial package 1.20
+

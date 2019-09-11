@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Mon Feb 25 10:24:52 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Don't rename a widget or a class without a full refactoring
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Jan 31 10:06:16 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Don't use automatic string conversions
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+    - Remove QUIET from find_package
+  * Moved translations from lxqt-l10n back to lxqt-globalkeys
+    - Removed obsolete translation fuctionality
+    - Added translation promo in README.md
+  * Deleted superfluous *cs_CZ.desktop files
+  * Translation updates
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 14:59:20 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * Triggering shortcuts with meta keys
+  * Register meta keys for shortcuts
+  * Daemon triggers on KeyRelease
+  * Avoid polluting the the x11 shortcut map.
+
+-------------------------------------------------------------------
+Mon Oct 23 10:52:06 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * fix deadlock - don't accept keyPress when processing dbus call (#56)
+  * Added Lithuanian language
+  * lxqt-config-globalkeys: set Qt::AA_UseHighDpiPixmaps to true
+  * Added QCommandLineParser and basic cli interface to lxqt-config-globalkeys
+  * Adeed LXQT_GLOBALKEYS_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode (#51)
+  * Added autostart and xdg to CMakeLists.txt
+  * changed xdg/CmakeLists.txt
+  * fixed xdg/CMakeLists.txt renamed config to xdg - merge preparation
+  * Use const iterators
+  * globalkeys: Open "empty" browser on activation
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update AUTHORS
+  * Open https://duckduckgo.com instead of google.com as default
+  * Update desktop entries and Replace fr_FR by fr
+  * lxqt-rc.xml: Change default config install path
+  * Settings Openbox updated.
+  * Screenshot (Shift+Print), file manager (ctl+Alt+e) and web browser (Ctl+atl+i) key shortcuts added.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Adds double quotes to everything that may break
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -> LXQt stringchanges LxQt -> LXQt
+  * Add session.conf and windowmanagers.conf.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel & lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove post and postun
+
+-------------------------------------------------------------------
+Thu Feb 23 18:07:30 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Added *da.desktop
+  * Use the lxqt-build-tools/lxqt_create_portable_headers
+  * Use the new lxqt-build-tools package
+  * Create lxqt-config-globalkeyshortcuts_fr.desktop
+  * Remove cpack (#41)
+
+-------------------------------------------------------------------
+Sat Sep 24 21:00:58 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * Add README.md
+  * Add Catalan translation
+  * daemon: Use QDBusServiceWatcher
+  * Fix typo in German translation for desktop file (#38)
+  * build: Use external translations
+  * ts-files removal (#35)
+  * Improve foreach iterator use
+  * daemon/core: Optimize Core startup string stuff
+  * Client: Fix memory leak (static data)
+  * Fix untranslated string in French translation
+  * fix reseting the state of the edit dialog
+  * Default configs from /etc/xdg/lxqt must be loaded.
+  * static_cast<error_t>, fixes FTBFS for the Hurd
+  * lxqt-globalkeys is LGPL only, there are no GPL files in it
+  * Update italian translation, remove country-specific variant
+  * Italian translation update
+  * Update Russian translation Remove ru_RU files
+  * Update French translation
+  * client: Fix typo in pkg-config dependencies
+  * upd: lxqt-config-globalkeyshortcuts_hu.ts
+  * Fix warning
+- Add keyring
+
+-------------------------------------------------------------------
+Fri Nov  6 15:06:06 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now
+
+-------------------------------------------------------------------
+Fri Feb 20 20:03:54 UTC 2015 - sfalken@opensuse.org
+
+- Updated %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 19:33:20 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch
+- Dropped -qt5 package naming, as none of the internal library
+  names use -qt5 in 0.9.0.  Added Obsoletes and Conflicts, in the
+  odd chance that lxqt-globalkeys-0.7.0 and lxqt-globalkeys >=0.8.0
+  are installed on the same system.  Which should never happen.
+  lxqt-0.9.0 is not likely to be pushed to 13.2, and liblxqt can no
+  longer be built against Qt4.
+
+-------------------------------------------------------------------
+Tue Feb  3 11:16:45 UTC 2015 - dvaleev@suse.com
+
+- aarch64 ppc64 ppc64le have /usr/lib64 too 
+
+-------------------------------------------------------------------
+Sun Jan 25 23:31:22 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora builds 
+
+-------------------------------------------------------------------
+Sat Oct 25 11:16:57 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 18:34:01 UTC 2014 - andrea@opensuse.org
+
+- spec file working - split out libraries subpackages  
+
+-------------------------------------------------------------------
+Tue May 13 16:14:49 UTC 2014 - sfalken@opensuse.org
+
+- Specfile Cleanup 
+
+-------------------------------------------------------------------
+Mon May 12 15:42:42 UTC 2014 - sfalken@opensuse.org
+
+- Removed fedora specfile, split into subproject
+  Del:  lxqt-globalkeys-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sat May 10 20:26:03 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on openSUSE specfile 
+
+-------------------------------------------------------------------
+Fri May  9 23:14:46 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  lxqt-globalkeys-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 16:13:01 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  lxqt-globalkeys-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Wed Apr  2 14:37:47 UTC 2014 - sfalken@opensuse.org
+
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+
+-------------------------------------------------------------------
+Wed Apr  2 04:37:01 UTC 2014 - sfalken@opensuse.org
+
+- Removed patch, as it didn't accomplish the desired effect
+  Deleted: 0001_lxqt_globalkey_desktop.patch 
+
+-------------------------------------------------------------------
+Wed Apr  2 04:20:15 UTC 2014 - sfalken@opensuse.org
+
+- Added patch to correct .desktop file
+  Add: 0001_lxqt_globalkey_desktop.patch 
+
+-------------------------------------------------------------------
+Wed Apr  2 03:36:54 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-globalkeys.spec
+  Add: lxqt-globalkeys.changes 
+

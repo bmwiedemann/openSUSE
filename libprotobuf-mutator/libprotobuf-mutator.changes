@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Dec 12 12:35:32 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to version 20181127:
+  * Surrounded modifications to the "check" target with tests for
+    LIB_PROTO_MUTATOR_TESTING
+  * cmake: Add PKG_CONFIG_PATH option
+  * cmake: Set SOVERSION property for shared libraries
+  * cmake: Define LIBRARY DESTINATION for install targets
+- Remove cmake-install-library-installation.patch - patch released
+  upstream
+- Remove cmake-pkg-config-path.patch - patch released upstream
+- Remove cmake-soversion.patch - patch released upstream
+
+-------------------------------------------------------------------
+Wed Oct 24 09:49:23 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial release - 20181101
+- Add cmake-install-library-installation.patch - fixes make install
+- Add cmake-pkg-config-path.patch - allows to specify path where
+  pkgconfig file is installed
+- Add cmake-soversion.patch - required to build libraries with
+  soversion

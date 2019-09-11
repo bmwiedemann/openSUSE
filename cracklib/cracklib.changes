@@ -1,0 +1,536 @@
+-------------------------------------------------------------------
+Thu Feb 22 15:10:30 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Sat Nov 11 04:46:42 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.9.6
+  * fix issue with sort and locale
+  * some particularly bad cases to the cracklib small dictionary
+  * updates to cracklib-words (adds a bunch of other dictionary lists)
+  * migration to github
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 12 16:31:23 UTC 2016 - dimstar@opensuse.org
+
+- Only buildrequire and call translation-update-upstream on SLE:
+  the package in openSUSE is a dummy and is empty.
+
+-------------------------------------------------------------------
+Wed Aug 17 12:32:43 UTC 2016 - hguo@suse.com
+
+- Add patch 0004-overflow-processing-long-words.patch
+  to fix a new buffer overflow identified together with bsc#992966.
+
+-------------------------------------------------------------------
+Mon Aug 15 12:01:52 UTC 2016 - hguo@suse.com
+
+- Relabel patches:
+  cracklib-magic.diff -> 0001-cracklib-magic.diff
+  cracklib-2.9.2-visibility.patch -> 0002-cracklib-2.9.2-visibility.patch
+- Add patch 0003-overflow-processing-gecos.patch
+  to fix a buffer overflow in GECOS parser (bsc#992966 CVE-2016-6318)
+
+-------------------------------------------------------------------
+Tue Aug 18 13:00:24 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.9.5
+  * fix matching against first password in dictionary (Anton Dobkin)
+- Changes for 2.9.4 
+  * remove doubled prototype
+- Changes for 2.9.3 
+  * expose additional functions externally
+
+-------------------------------------------------------------------
+Fri Apr  3 09:01:41 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove old ppc provides/obsoletes
+
+-------------------------------------------------------------------
+Sun Jan  4 13:38:51 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.9.2
+  + support build of python support outside of source tree
+  + fix bug in Python string distance calculation 
+  + fix bug #16 / debian bug 724570 - broken optimization with packlib
+    prevblock
+- Adapt patch to upstream changes
+  + cracklib-visibility.patch > cracklib-2.9.2-visibility.patch
+  
+-------------------------------------------------------------------
+Sat Jun  8 09:28:35 UTC 2013 - mc@suse.com
+
+- update to version 2.9.0
+  * add new FascistCheckUser function
+- remove translation-fix.dif
+  * text changed - get translation via translation-update-upstream
+  
+-------------------------------------------------------------------
+Tue Jan 29 08:32:56 UTC 2013 - dmueller@suse.com
+
+- update to 2.8.22:
+  - add words from "The Top 500 Worst Passwords of All Time"
+  - python 3 support (not yet packaged)
+
+-------------------------------------------------------------------
+Mon Jan  2 11:47:06 CET 2012 - mc@suse.de
+
+- fix broken chinese translation (bnc#726059)
+
+-------------------------------------------------------------------
+Fri Dec 30 22:56:19 UTC 2011 - meissner@suse.com
+
+- do not run update-po to make build-compare work.
+  (Likely added for translation-update-upstream, but this should just
+   change the .po files, no need for a .pot change?)
+
+-------------------------------------------------------------------
+Wed Nov 30 09:47:03 UTC 2011 - coolo@suse.com
+
+- add automake and libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 23:57:49 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add cracklib-devel to baselibs
+
+-------------------------------------------------------------------
+Wed May 18 11:41:07 CEST 2011 - meissner@suse.de
+
+- ppc64 has different symbols in nm output.
+
+-------------------------------------------------------------------
+Mon Mar  7 12:53:17 UTC 2011 - cdenicolo@novell.com
+
+- license update: LGPLv2.1
+  Project has changed license to LGPLv2.1
+
+-------------------------------------------------------------------
+Mon Feb 14 17:35:37 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Oct 30 22:56:15 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Support GCC visibility 
+
+-------------------------------------------------------------------
+Thu Oct 21 18:49:22 CEST 2010 - ro@suse.de
+
+- update to 2.8.18
+  - make sure python lib builds against build dir instead of system
+    installed libs
+- update to 2.8.17
+  - updated Hindi translation
+  - fixed NLS issue in cracklib-check
+  - add Ukrainian translation
+  - fix segmentation fault in Python extension
+  - add -Wall to AM_CFLAGS to discover possible programming errors
+  - updated Wei Liu (zh_CN) translation
+  - fixed NLS support in python module compilation
+- removed patch:
+  datarootdir.patch (old buildfix, not needed anymore)
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Jun 25 17:53:22 CEST 2010 - dmueller@suse.de
+
+- obsolete the old package
+
+-------------------------------------------------------------------
+Fri Mar  5 08:53:10 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Mar  4 15:43:02 UTC 2010 - coolo@novell.com
+
+- update to version 2.8.16
+    update licensing information in Python extension (Jan Dittberner)
+    make translations work in Python extension (Jan Dittberner)
+    fix Python extension compilation warning (Jan Dittberner)
+    add a long description to Python extension (Jan Dittberner)
+    add Hindi translation (Rajesh Ranjan)
+    add Korean translation (Eunju Kim)
+    updated Russian translation (Yulia Poyarko)
+    fix filename output in Python exceptions (Nalin Dahyabhai)
+    fix format strings in util/packer.c (Mike Frysinger)
+    improvement to rules based checking in fascist.c for better checking of closely related letter pairs (Ben Karsin)
+    allow building of Python extension outside source folder (Jan Dittberner)
+    fix type on Python extension's trove classifier
+    reflect license change discussion that was never actually implemented in the repository and update to LGPL
+    Added Assamese translation (Amitakhya Phukan)
+    Added Bengali India translation (Runa Bhattacharjee)
+    Added Gujarati translation (Ankit Patel)
+    Added Kannada translation (shankysringeri)
+    Added Malayalam translation (Ani Peter)
+    Added Marathi translation (Sandeep Shedmake)
+    Added Oriya translation (Manoj Giri)
+    Added Russian translation (Anton Dobkin)
+    Added Tamil translation (I. Felix)
+    Added Telugu translation (Krishna Babu)
+    Updated Polish translation (Piotr Drąg)
+    Updated Panjabi translation (A S Alam)
+    optimize order of commands in util/cracklib-format (Jan Dittberner, Debian)
+    fix several CC warnings (Jan Dittberner, Debian)
+    add a function GetDefaultCracklibDict() to libcrack
+    bump library revision
+    add python/setup.py.in to allow building eggs
+- removed old translations
+- split libcrack2 package out
+
+-------------------------------------------------------------------
+Sun Dec 13 01:37:26 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed May 20 13:17:17 CEST 2009 - mc@suse.de
+
+- update to version 2.8.13
+  * Compressed dictionary support and better python module 
+- remove zlib patch which is now upstream.
+
+-------------------------------------------------------------------
+Sat Apr  4 20:58:08 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Wed Feb  4 17:15:21 CET 2009 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov 21 12:53:33 CET 2008 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Wed Nov  5 15:02:11 CET 2008 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Sep  1 17:21:20 CEST 2008 - mc@suse.de
+
+- do not zip the dict by default. A check takes too long.
+  The support for zip'ed dicts is still available
+
+-------------------------------------------------------------------
+Fri Jun 20 16:46:23 CEST 2008 - mc@suse.de
+
+- implement reading compressed password databases
+  (FATE#303536)
+- compress password database
+
+-------------------------------------------------------------------
+Fri Jun  6 09:59:27 CEST 2008 - mc@suse.de
+
+- update i18n files 
+
+-------------------------------------------------------------------
+Fri May  9 11:49:28 CEST 2008 - mc@suse.de
+
+- update i18n files
+
+-------------------------------------------------------------------
+Mon Apr 14 12:21:37 CEST 2008 - mc@suse.de
+
+- update i18n files 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 18 14:49:33 CET 2008 - schwab@suse.de
+
+- Don't use autopoint.
+
+-------------------------------------------------------------------
+Tue Feb 12 14:13:11 CET 2008 - mc@suse.de
+
+- update to version 2.8.12
+  * minor bugfixes
+- update localization files 
+
+-------------------------------------------------------------------
+Fri Sep 21 09:32:12 CEST 2007 - mc@suse.de
+
+- update localization files 
+
+-------------------------------------------------------------------
+Fri Aug 31 10:11:50 CEST 2007 - mc@suse.de
+
+- update localization files 
+
+-------------------------------------------------------------------
+Mon Aug 20 10:01:44 CEST 2007 - mc@suse.de
+
+- update localization files 
+
+-------------------------------------------------------------------
+Tue Jun  5 16:36:40 CEST 2007 - mc@suse.de
+
+- update i18n 
+
+-------------------------------------------------------------------
+Thu May  3 16:02:49 CEST 2007 - mc@suse.de
+
+- add translations from Novell  
+
+-------------------------------------------------------------------
+Mon Apr 23 11:57:08 CEST 2007 - mc@suse.de
+
+- added cracklib-dict-small and splitted the full dictionary
+  into a seperate package. [#265733]
+- cracklib requires cracklib-dict 
+
+-------------------------------------------------------------------
+Mon Apr 16 13:37:30 CEST 2007 - mc@suse.de
+
+- update to version 2.8.10
+  * better hanlding of cracklist dictionary paths in 
+    python binding. 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:26:02 CEST 2006 - mc@suse.de
+
+- update to version 2.8.9
+- ChangeLog, configure.in: bump version numbers, skipped a couple
+  due to packaging/disting issues with sf
+- lib/packlib.c: also close wfp fd if it was opened
+
+-------------------------------------------------------------------
+Wed Jul  5 10:54:20 CEST 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Mon Jun 12 11:58:34 CEST 2006 - kukuk@suse.de
+
+- Update sl_SI translation
+
+-------------------------------------------------------------------
+Mon Mar 27 16:52:29 CEST 2006 - kukuk@suse.de
+
+- Update pl and fi translations
+
+-------------------------------------------------------------------
+Mon Mar  6 13:24:30 CET 2006 - kukuk@suse.de
+
+- Add km and uk translations, update fi translation
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 18 14:25:37 CET 2005 - kukuk@suse.de
+
+- Update to 2.8.6 (merge locale and compile fixes)
+
+-------------------------------------------------------------------
+Wed Oct  5 16:36:57 CEST 2005 - kukuk@suse.de
+
+- Fix installing of translations
+
+-------------------------------------------------------------------
+Thu Sep 29 16:34:13 CEST 2005 - kukuk@suse.de
+
+- Update to official 2.8.5
+- Fix warnings about undeclared functions
+
+-------------------------------------------------------------------
+Mon Aug 29 16:30:21 CEST 2005 - kukuk@suse.de
+
+- Add translations for fi, sl_SI and el
+
+-------------------------------------------------------------------
+Thu Aug 25 18:03:28 CEST 2005 - kukuk@suse.de
+
+- Add pl translation
+
+-------------------------------------------------------------------
+Tue Aug 23 13:45:54 CEST 2005 - kukuk@suse.de
+
+- Remove support for broken 64bit indexes from
+  magic entry [Bug #106007]
+
+-------------------------------------------------------------------
+Fri Aug 19 16:39:30 CEST 2005 - kukuk@suse.de
+
+- Add Novell Tier1 translations
+
+-------------------------------------------------------------------
+Wed Aug 17 11:37:52 CEST 2005 - kukuk@suse.de
+
+- Add translations for da, lt, nb, pa and pt
+- Fixes #105413
+
+-------------------------------------------------------------------
+Tue Jul 26 12:05:14 CEST 2005 - kukuk@suse.de
+
+- Update to internal version 2.8.3.0.2 (based on CVS)
+
+-------------------------------------------------------------------
+Thu Jun 23 15:48:14 CEST 2005 - kukuk@suse.de
+
+- Update to internal version 2.8.3.0.1 (based on CVS)
+
+-------------------------------------------------------------------
+Fri Jun  3 15:19:02 CEST 2005 - kukuk@suse.de
+
+- Update to version 2.8.3
+- Fix compiler warnings
+
+-------------------------------------------------------------------
+Sat Apr  2 10:00:19 CEST 2005 - kukuk@suse.de
+
+- Remove words from neededforbuild
+
+-------------------------------------------------------------------
+Fri Apr  1 13:53:38 CEST 2005 - kukuk@suse.de
+
+- Update to version 2.8.2
+
+-------------------------------------------------------------------
+Tue Feb 15 01:34:10 CET 2005 - ro@suse.de
+
+- fix Makefile (no need to add Makefile to ar archive)
+
+-------------------------------------------------------------------
+Mon Jan 26 15:10:30 CET 2004 - kukuk@suse.de
+
+- Use reentrant getpwuid function
+- Revert last change
+
+-------------------------------------------------------------------
+Sun Jan 18 11:40:34 CET 2004 - meissner@suse.de
+
+- Compile with -fPIC.
+
+-------------------------------------------------------------------
+Fri Jan 16 11:03:50 CET 2004 - kukuk@suse.de
+
+- Add italian translation
+
+-------------------------------------------------------------------
+Wed Jan  7 16:19:40 CET 2004 - kukuk@suse.de
+
+- Add translation for hu
+
+-------------------------------------------------------------------
+Mon Dec 15 17:23:58 CET 2003 - kukuk@suse.de
+
+- Add translation for nl
+
+-------------------------------------------------------------------
+Tue Dec  9 16:03:05 CET 2003 - kukuk@suse.de
+
+- Add translations for es and fr
+
+-------------------------------------------------------------------
+Mon Dec  1 10:35:35 CET 2003 - kukuk@suse.de
+
+- Fix all compiler warnings
+- Add german translation
+
+-------------------------------------------------------------------
+Fri Nov 21 14:42:52 CET 2003 - kukuk@suse.de
+
+- Compile with no execstack
+- Build as normal user
+
+-------------------------------------------------------------------
+Fri Sep 19 12:49:29 CEST 2003 - kukuk@suse.de
+
+- Add czech translation
+
+-------------------------------------------------------------------
+Mon Aug 25 13:08:38 CEST 2003 - kukuk@suse.de
+
+- Add slovak translation
+
+-------------------------------------------------------------------
+Mon Jul 28 15:42:47 CEST 2003 - kukuk@suse.de
+
+- Make similar error messages unique
+
+-------------------------------------------------------------------
+Tue May 27 10:55:25 CEST 2003 - kukuk@suse.de
+
+- Make crack.h header C++ conform
+- Build static library
+- Create cracklib-devel sub package
+
+-------------------------------------------------------------------
+Mon May 12 18:45:19 CEST 2003 - kukuk@suse.de
+
+- Add defattr
+
+-------------------------------------------------------------------
+Thu May  8 19:04:08 CEST 2003 - kukuk@suse.de
+
+- Add patch which allows translation of cracklib messages
+
+-------------------------------------------------------------------
+Tue Aug 13 11:41:40 CEST 2002 - ademar@conectiva.com.br
+
+- Added several en wordlists and pt_BR and es dictionaries
+
+-------------------------------------------------------------------
+Fri May 11 11:46:26 CEST 2001 - schwab@suse.de
+
+- Fix portability bugs.
+
+-------------------------------------------------------------------
+Tue Oct  3 21:59:30 CEST 2000 - kukuk@suse.de
+
+- Use gcc for creating shared library
+- Add support for 32/64bit library path
+
+-------------------------------------------------------------------
+Wed May 31 15:36:27 CEST 2000 - kukuk@suse.de
+
+- Use new URL, add Group tag
+
+-------------------------------------------------------------------
+Mon Nov 15 14:54:44 MET 1999 - kukuk@suse.de
+
+- Remove ldconfig calls
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue May  4 13:55:52 MEST 1999 - kukuk@suse.de
+
+- initial version of cracklib

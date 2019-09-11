@@ -1,0 +1,2801 @@
+-------------------------------------------------------------------
+Tue Jul 16 07:52:48 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable -Werror=return-type for now.
+- Use %make_build for parallel build.
+
+-------------------------------------------------------------------
+Fri Apr 12 16:33:57 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added hp-uiscan application
+- Updated URLs and source URLs
+- Updated/rebased hplip-misc-missing-includes-and-definitions.patch
+- Added hplip-remove-imageprocessor.diff which fully removes references
+  to the closed source ImageProcessor. Thanks to Didier Raboud from Debian.
+- Addded hplip-orblite-return-null.diff to let a function return NULL
+  insetad of nothing.
+
+- update to 3.19.3
+  Added support for the following new Printers:
+  * HP Color LaserJet Managed E65150dn
+  * HP Color LaserJet Managed E65160dn
+  * HP Color LaserJet Managed Flow MFP E67660z
+  * HP Color LaserJet Managed MFP E67650dh
+  * HP Color LaserJet Managed MFP E77422a
+  * HP Color LaserJet Managed MFP E77422dn
+  * HP Color LaserJet Managed MFP E77422dv
+  * HP Color LaserJet Managed MFP E77428dn
+  * HP Color LaserJet Managed MFP E87640 du
+  * HP Color LaserJet Managed MFP E87650du
+  * HP Color LaserJet Managed MFP E87660du
+  * HP DesignJet T1708 PostScript
+  * HP DesignJet T1708dr PostScript
+  * HP DesignJet Z6 24in
+  * HP DesignJet Z6 44in
+  * HP DesignJet Z6dr 44in
+  * HP DesignJet Z9 24in
+  * HP DesignJet Z9 44in
+  * HP DesignJet Z9dr 44in
+  * HP Ink Tank 115
+  * HP Ink Tank 310
+  * HP Ink Tank Wireless 410
+  * HP LaserJet Managed E60155dn
+  * HP LaserJet Managed E60165dn
+  * HP LaserJet Managed E60175dn
+  * HP LaserJet Managed Flow MFP E62665h
+  * HP LaserJet Managed Flow MFP E62665z
+  * HP LaserJet Managed Flow MFP E62675z
+  * HP LaserJet Managed MFP E62655dn
+  * HP LaserJet Managed MFP E62665hs
+  * HP LaserJet Managed MFP E82540du
+  * HP LaserJet Managed MFP E82550du
+  * HP LaserJet Managed MFP E82560du
+  * HP LaserJet MFP E72425a
+  * HP LaserJet MFP E72425dn
+  * HP LaserJet MFP E72425dv
+  * HP LaserJet MFP E72430dn
+  * HP LaserJet Pro M118dw
+  * HP LaserJet Pro M118dw
+  * HP LaserJet Pro M119dw
+  * HP LaserJet Pro M119dw
+  * HP LaserJet Pro MFP M148dw
+  * HP LaserJet Pro MFP M148dw
+  * HP LaserJet Pro MFP M148fdw
+  * HP LaserJet Pro MFP M148fdw
+  * HP LaserJet Pro MFP M149dw
+  * HP LaserJet Pro MFP M149dw
+  * HP LaserJet Pro MFP M149fdw
+  * HP LaserJet Pro MFP M149fdw
+  * HP OfficeJet All-in-One 9010
+  * HP OfficeJet Pro All-in-One 9010 
+  * HP OfficeJet Pro All-in-One 9020
+  * HP PageWide 755dn
+  * HP PageWide 755dn
+  * HP PageWide MFP 774dn
+  * HP PageWide MFP 774dn
+  * HP PageWide MFP 774dns
+  * HP PageWide MFP 774dns
+  * HP PageWide MFP 779dn
+  * HP PageWide MFP 779dn
+  * HP PageWide MFP 779dns
+  * HP PageWide MFP 779dns
+  * HP PageWide XL 4100 MFP
+  * HP PageWide XL 4100 Printer
+  * HP PageWide XL 4600 Printer
+  * HP PageWide XL 4600PS MFP
+  * HP Scanjet Enterprise 7500 Flatbed Scanner
+  * HP Scanjet Enterprise 7500 Flatbed Scanner
+  * HP Smart Tank 350
+  * HP Smart Tank Wireless 450
+  * HP Tango
+  * HP Tango X
+
+  Added support for the following new ScanJet Device:
+  * HP Scanjet Pro 2000 S1
+  * HP Scanjet Pro 2500 f1
+
+  Support for Phase 1 Scan features for
+  * Digital Sender Flow 8500 fn2
+  * ScanJet 5000 
+  * ScanJet 7500
+  * Scanjet Ent flow 7000s3
+  * Scanjet Ent. Flow N9120 fn2
+  * Scanjet Pro 3000s3
+  * Scanjet Pro 3500f1
+  * Scanjet Pro 4500fn1
+  
+  User can use ScanJet feature by using hp-uiscan tool. Following 
+  features are introduced for ScanJet:
+  * Straighten page content
+  * Auto Orient
+  * Crop to content on page
+  * Misfeed(multipick) detection
+  * Delete blank page
+  * Separate the document based on blank page or barcode
+  * Page merge
+  * Mixed document feed
+  * Document merge
+  * Crushed page scan
+  * Image enhancement
+  * PunchHole Removal
+  * ColorDropOut/ColorRemoval
+  * Background Noise Removal
+  * Background Color Removal
+  * BMP File format Support
+  * Searchable PDF
+  * Smaller file size for PDF and JPEG
+
+  Basic Booklet Printing Support for the following devices:
+  * HP LaserJet Managed MFP E82540-50-60 dn-du-z
+  * HP Color LaserJet Managed MFP E87640-50-60 dn-du-z
+  * HP Color LaserJet Managed MFP E77422a-dv-dn
+  * HP Color LaserJet Managed MFP E77428dn
+  * HP LaserJet MFP E72425a-dv-dn
+  * HP LaserJet MFP E72430dn 
+
+  Limitations:
+  * HPLIP does not support HP ScanJet Pro 2500 f1 device on OpenSuse
+    Linux distribution.
+  * Multipick feature not supported in below devices:
+    HP Scanjet Pro 2000 S1
+    HP Scanjet Pro 2500 f1
+
+  Fixes:
+  * hp-check crashes with FileNotFoundError using python3.7
+
+-------------------------------------------------------------------
+Tue Apr  9 20:11:02 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Remove dependency on python3-pillow on SLE (bsc#1131613), and 
+  remove the hp-scan tool that needs it. "scanimage" must be used
+  instead. 
+
+-------------------------------------------------------------------
+Mon Mar 11 11:36:36 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- don't mark /usr/lib/udev/rules.d/56-hpmud.rules as config file,
+  fixes rpmlint warning (override it by copying it to
+  /etc/udev/rules.d).
+
+-------------------------------------------------------------------
+Fri Mar  8 00:00:15 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix hp-toolbox exiting after 10s under GNOME (bsc#1112331)
+  * removed ui5-systemtray.py-make-children-exit-if-no-systray-f.patch
+  Patch "ui5-systemtray-wait-only-10s-for-system-tray.patch" is
+  sufficient to fix the logout problem (bsc#1112331, lp#1721534)
+
+-------------------------------------------------------------------
+Fri Feb  8 17:45:07 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+ - Fix hang during GNOME session logout (bsc#1112331, lp#1721534)
+ * added ui5-systemtray.py-make-children-exit-if-no-systray-f.patch
+ * added ui5-systemtray-wait-only-10s-for-system-tray.patch
+
+-------------------------------------------------------------------
+Tue Aug 28 11:37:58 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- removed Fix-scanning-with-python-pillow-4.2.0.patch as resolved
+  upstream. Closes boo#1096755
+- removed hplip-mdns.patch and hplip-mdns-retry-query.patch, since
+  upstream further improved the code in this area
+
+-------------------------------------------------------------------
+Thu Aug  2 13:38:51 UTC 2018 - hpj@urpla.net
+
+- update to 3.18.7 avoided due to newly added ImageProcessor.so blob
+
+- update to 3.18.6:
+  Added Support for the following new Printers:
+  - HP DesignJet Z6810 42in PostScript
+  - HP DesignJet Z6810 60in PostScript
+  - HP DesignJet Z6610 60in PostScript
+
+- update to 3.18.5:
+  Added Support for the following new Printers:
+  - HP DesignJet T1700 PostScript
+  - HP DesignJet T1700dr PostScript
+  - HP Color LaserJet Pro M253a
+  - HP Color LaserJet Pro M254dn
+  - HP Color LaserJet Pro M254n
+  - HP Color LaserJet Pro M254dne
+  - HP Color LaserJet Pro M254nw
+  - HP Color LaserJet Pro M254dw
+  - HP Color LaserJet Pro M254cnw
+  - HP Color LaserJet Pro M253nw
+  - HP Color LaserJet Pro M253cnw
+  - HP Color LaserJet Pro M254cdw
+  - HP Color LaserJet Pro MFP M180nw
+  - HP Color LaserJet Pro MFP M181fw
+  - HP Color LaserJet Pro MFP M179fw
+  - HP Color LaserJet Pro MFP M179cfw
+  - HP Color LaserJet Pro MFP M181fnw
+  - HP Color LaserJet Pro MFP M181cfw
+  - HP Color LaserJet Pro MFP M180n
+  - HP Color LaserJet Pro MFP M178cn
+  - HP Color LaserJet Pro MFP M178n
+  - HP Color LaserJet Pro MFP M180cn
+  - HP Color LaserJet Pro MFP M281fdw
+  - HP Color LaserJet Pro MFP M279fdw
+  - HP Color LaserJet Pro MFP M281cdw
+  - HP Color LaserJet Pro MFP M281fdn
+  - HP Color LaserJet Pro MFP M281dne
+  - HP Color LaserJet Pro MFP M278dn
+  - HP Color LaserJet Pro MFP M280nw
+  - HP Color LaserJet Pro MFP M278nw
+  - HP Color LaserJet Pro MFP M278cw
+  - HP Color LaserJet Pro MFP M280cnw
+  - HP Color LaserJet Pro MFP M280c2
+  - HP Color LaserJet Pro M154a
+  - HP Color LaserJet M153a
+  - HP Color LaserJet M153b
+  - HP Color LaserJet M154b
+  - HP Color LaserJet M154nw
+  - HP Color LaserJet M153nw
+  - HP Color LaserJet M153cnw
+  - HP Color LaserJet M153c1
+  - HP Color LaserJet M154cnw
+  - HP Color LaserJet M154c1
+  - HP PageWide Managed Color P75250dn
+  - HP PageWide Managed Color MFP P77940dns
+  - HP PageWide Managed Color MFP P77940dn
+  - HP PageWide Managed Color MFP P77940dn+
+  - HP PageWide Managed Color MFP P77950dns
+  - HP PageWide Managed Color MFP P77950dn
+  - HP PageWide Managed Color MFP P77950dn+
+  - HP PageWide Managed Color MFP P77960dns
+  - HP PageWide Managed Color MFP P77960dn
+  - HP PageWide Managed Color MFP P77960dn+
+  - HP PageWide Managed Color MFP P77440dn
+  - HP PageWide Managed Color Flow MFP E77950z
+  - HP PageWide Managed Color Flow MFP E77950zs
+  - HP PageWide Managed Color Flow MFP E77950z+
+  - HP PageWide Managed Color Flow MFP E77960z
+  - HP PageWide Managed Color Flow MFP E77960zs
+  - HP PageWide Managed Color Flow MFP E77960zts
+  - HP PageWide Managed Color Flow MFP E77960z+
+
+- update to 3.18.4:
+  Added Support for the following new Printers:
+  - HP LaserJet Pro MFP M28a
+  - HP LaserJet Pro MFP M29a
+  - HP LaserJet Pro MFP M30a
+  - HP LaserJet Pro MFP M31a
+  - HP LaserJet Pro MFP M30c
+  - HP LaserJet Pro MFP M31c
+  - HP LaserJet Pro MFP M28w
+  - HP LaserJet Pro MFP M29w
+  - HP LaserJet Pro MFP M30w
+  - HP LaserJet Pro MFP M31w
+  - HP LaserJet Pro MFP M30cw
+  - HP LaserJet Pro MFP M31cw
+  - HP LaserJet Pro M14a
+  - HP LaserJet Pro M15a
+  - HP LaserJet Pro M16a
+  - HP LaserJet Pro M17a
+  - HP LaserJet Pro M14c
+  - HP LaserJet Pro M17c
+  - HP LaserJet Pro M14w
+  - HP LaserJet Pro M15w
+  - HP LaserJet Pro M16w
+  - HP LaserJet Pro M17w
+  - HP LaserJet Pro M14cw
+  - HP LaserJet Pro M17cw
+  Added Support for the following new Distros:
+  - Ubuntu 18.04 Beta Version (64 bit)
+  - Debian 9.2 (32 bit and 64 bit)
+  - Debian 9.3 (32 bit and 64 bit)
+  - Debian 9.4 (32 bit and 64 bit)
+
+- update to 3.18.3:
+  Added Support for the following new Printers:
+  - HP DesignJet Z2600 PostScript
+  - HP DesignJet Z5600 PostScript
+  - HP PageWide XL 8000ps Printer
+  - HP PageWide XL 8000 Blueprinter
+  - HP PageWide XL 5000 Printer
+  - HP PageWide XL 5000 MFP
+  - HP PageWide XL 5000 Blueprinter
+  - HP PageWide XL 4500 Printer
+  - HP PageWide XL 4500 MFP
+  - HP PageWide XL 4000 Printer
+  - HP PageWide XL 4000 MFP
+  - HP PageWide XL 5100ps
+  - HP PageWide XL 5100ps MFP
+  - HP PageWide XL 5100ps MFP Blueprinter
+  - HP PageWide XL 6000ps
+  - HP PageWide XL 6000ps MFP
+  Added Support for the following new Distros:
+  - Manjaro Linux 17.1.4 (64 bit)
+  - Fedora 27 (64 bit)
+  - Linux Mint 18.3 (32 bit and 64 bit)
+  Launchpad fixes:
+  - 1736221 : hplip-3.17.11 source tarball contains compiled 
+    binaries
+  - 1741214 : scan.py - scans cannot be saved as JPEG since 
+    python-pillow-4.2.0
+
+- update to 3.17.11:
+  Added Support for the following new Distros:
+  - Ubuntu 17.10 (64bit)
+  Other requirement:
+  - Class Driver support
+
+- update to 3.17.10:
+  Added Support for the following new Scanners:
+  - HP Scanjet Enterprise Flow N9120 fn2 Document Scanner
+  - HP Digital Sender Flow 8500 fn2 Document Capture Workstation
+  Added Support for the following new Distros:
+  - Debian 9.1
+
+- refresh patches
+- adjust mdns.c changes 
+  (which looses newly added _uscan._tcp.local queries, but requires
+  interface changes)
+- fix build due to unexpanded ppd/hpcups/*.ppd.gz usage in Makefile
+
+-------------------------------------------------------------------
+Sun Jun 24 05:22:01 UTC 2018 - bwiedemann@suse.com
+
+- require python3-Pillow for hp-scan to work (bsc#1100511)
+
+-------------------------------------------------------------------
+Tue Jun 12 13:24:15 UTC 2018 - mwilck@suse.com
+
+- Fix scanning with python-pillow 4.2.0 (boo#1096755, #lp1741214)
+  * added Fix-scanning-with-python-pillow-4.2.0.patch
+
+-------------------------------------------------------------------
+Thu Jun  7 06:50:26 UTC 2018 - mwilck@suse.com
+
+- Fix bug in hpijs-avoid-segfault-in-DJGenericVIP-DJGenericVIP.patch:
+  default behavior of DJ9xxVIP device must not be changed 
+
+-------------------------------------------------------------------
+Fri Jun  1 15:18:19 UTC 2018 - mwilck@suse.com
+
+- avoid segfault in DJGenericVIP::DJGenericVIP() (boo#1094141, 
+  lp#1774660)
+  * added hpijs-avoid-segfault-in-DJGenericVIP-DJGenericVIP.patch
+
+-------------------------------------------------------------------
+Thu Mar 22 08:44:17 UTC 2018 - mwilck@suse.com
+
+- photocard.py: fixed broken import statement (bsc#1071255) 
+  * added photocard-fix-import-error-for-pcardext.patch
+  * spec file: fixed dependency for dbus-1-python
+
+-------------------------------------------------------------------
+Wed Mar 21 23:52:02 UTC 2018 - mwilck@suse.com
+
+- Use python3 on tumbleweed and SLE15/Leap15 (bsc#1071255)
+  * add pcardext-python3-fixes.patch
+  * add hplip-misc-missing-includes-and-definitions.patch
+  * hp_ipp.h-add-missing-prototypes.patch
+  * spec file: replace "/usr/bin/env python" and "/usr/bin/python" with
+    desired interpreter
+  * spec file: add py2/py3 selection macros
+  * spec file: dropped python-openssl build dependency (not needed anymore)
+
+-------------------------------------------------------------------
+Thu Oct 12 21:03:40 UTC 2017 - mgorse@suse.com
+
+- Add no-systray-failure-message.patch: don't display an error if
+  unable to find a system tray (boo#1061211). 
+
+-------------------------------------------------------------------
+Wed Oct  4 14:28:17 UTC 2017 - mwilck@suse.com
+
+- Version update to 3.17.9:
+  * Added support for the following new printers: 
+    - HP OfficeJet Pro 7720 Wide Format All-in-One
+    - HP DeskJet AMP All-in-One Printer
+    - HP OfficeJet 5220 All-in-One Printer
+    - HP OfficeJet 5230 All-in-One Printer
+    - HP OfficeJet 5232 All-in-One Printer
+    - HP ENVY Photo 6220 All-in-One Printer
+    - HP ENVY Photo 6232 All-in-One Printer
+    - HP ENVY Photo 7120 All-in-One Printer
+    - HP ENVY Photo 7134 All-in-One Printer
+    - HP ENVY Photo 7820 All-in-One Printer
+    - HP ENVY 5020 All-in-One Printer
+    - HP ENVY 5032 All-in-One Printer
+    - HP DeskJet Ink Advantage 3735 All-in-One
+    - HP ENVY Photo 6234 All-in-One Printer
+    - HP ENVY Photo 6230 All-in-One Printer
+    - HP AMP 130 All-in-One Printer
+    - HP OfficeJet Pro 7730 Wide Format All-in-One
+    - HP ENVY Photo 7155 All-in-One Printer
+    - HP ENVY Photo 7164 All-in-One Printer
+    - HP ENVY Photo 7155 All-In-One Printer
+    - HP ENVY Photo 7800 All-In-One Printer
+    - HP ENVY Photo 6200 All-In-One Printer
+    - HP ENVY Photo 7130 All-in-One Printer
+    - HP ENVY Photo 7830 All-in-One Printer
+    - HP ENVY Photo 7120 All-in-One Printer
+    - HP ENVY Photo 7820 All-in-One Printer
+    - HP ENVY Photo 7855 All-in-One Printer
+    - HP DeskJet Ink Advantage 5075 All-in-One Printer
+    - HP PageWide Enterprise Color 765dn
+    - HP PageWide Managed Color E75160dn
+    - HP PageWide Enterprise Color MFP 780dn
+    - HP PageWide Enterprise Color Flow MFP 785f
+    - HP PageWide Enterprise Color Flow MFP 785zs
+    - HP PageWide Enterprise Color Flow MFP 785z+
+    - HP PageWide Managed Color MFP E77650dn
+    - HP PageWide Managed Color MFP E77650dns
+    - HP PageWide Managed Color MFP E77660dn
+    - HP PageWide Managed Color Flow MFP E77650z
+    - HP PageWide Managed Color Flow MFP E77650zs
+    - HP PageWide Managed Color Flow MFP E77650z+
+    - HP PageWide Managed Color Flow MFP E77660z
+    - HP PageWide Managed Color Flow MFP E77660zs
+    - HP PageWide Managed Color Flow MFP E77660z+
+ * from 3.17.7:
+    - HP DeskJet Ink Advantage 2635 All-in-One
+    - HP DeskJet Ink Advantage 2636 All-in-One
+    - HP DeskJet Ink Advantage 2675 All-in-One
+    - HP DeskJet Ink Advantage 2676 All-in-One
+    - HP DeskJet Ink Advantage 2677 All-in-One
+    - HP DeskJet Ink Advantage 2678 All-in-One
+    - HP DeskJet 2620 All-in-One
+    - HP DeskJet 2621 All-in-One
+    - HP DeskJet 2622 All-in-One
+    - HP DeskJet 2623 All-in-One
+    - HP DeskJet Ink Advantage 2200 All-in-One
+    - HP DeskJet 3722 All-in-One
+    - HP DeskJet Ink Advantage 3789 All-in-One
+    - HP DeskJet Ink Advantage 3790 All-in-One
+
+-------------------------------------------------------------------
+Fri Aug 25 17:29:47 UTC 2017 - fvogt@suse.com
+
+- Default to Qt5 on SLE 15 as well to avoid Qt4 with dependency on
+  openSSL 1.0
+
+-------------------------------------------------------------------
+Tue Jul 11 13:29:58 UTC 2017 - mwilck@suse.com
+
+- Version Upgrade to 3.17.6:
+  * Added support for the following new printers: 
+    - HP LaserJet Enterprise M607n
+    - HP LaserJet Enterprise M607dn
+    - HP LaserJet Enterprise M608n
+    - HP LaserJet Enterprise M608dn
+    - HP LaserJet Enterprise M608x
+    - HP LaserJet Enterprise M608dh
+    - HP LaserJet Enterprise M609dn
+    - HP LaserJet Enterprise M609x
+    - HP LaserJet Managed E60055dn
+    - HP LaserJet Managed E60065dn
+    - HP LaserJet Managed E60065x
+    - HP LaserJet Managed E60075dn
+    - HP LaserJet Managed E60075x
+    - HP LaserJet Enterprise MFP M631dn
+    - HP LaserJet Enterprise Flow MFP M631h
+    - HP LaserJet Enterprise MFP M631z
+    - HP LaserJet Enterprise Flow MFP M632z
+    - HP LaserJet Enterprise MFP M632fht
+    - HP LaserJet Enterprise MFP M632h
+    - HP LaserJet Enterprise Flow MFP M633z
+    - HP LaserJet Enterprise MFP M633fh
+    - HP LaserJet Managed MFP E62555dn
+    - HP LaserJet Managed Flow MFP E62565h
+    - HP LaserJet Managed MFP E62565hs
+    - HP LaserJet Managed Flow MFP E62565z
+    - HP LaserJet Managed Flow MFP E62575z
+    - HP Color LaserJet Enterprise M652dn
+    - HP Color LaserJet Enterprise M652n
+    - HP Color LaserJet Enterprise M653dn
+    - HP Color LaserJet Enterprise M653dh
+    - HP Color LaserJet Enterprise M653x
+    - HP Color LaserJet Managed E65050dn
+    - HP Color LaserJet Managed E65060dn
+    - HP Color LaserJet Managed MFP E67550dh
+    - HP Color LaserJet Managed Flow MFP E67560z
+    - HP Color LaserJet Enterprise MFP M681dh
+    - HP Color LaserJet Enterprise MFP M681f
+    - HP Color LaserJet Enterprise Flow MFP M681z
+    - HP Color LaserJet Enterprise Flow MFP M681f
+    - HP Color LaserJet Enterprise Flow MFP M682z
+    - HP PageWide Managed P77750z Multifunction Printer
+    - HP Pagewide Pro 750dn
+    - HP Pagewide Pro 750dw
+    - HP PageWide Pro 772dw Multifunction Printer
+    - HP PageWide Managed P77740zs Multifunction Printer
+    - HP PageWide Managed P77750zs Multifunction Printer
+    - HP PageWide Managed P75050dn Printer
+    - HP LaserJet Pro MFP M25a
+    - HP LaserJet Pro MFP M25nw
+    - HP LaserJet Pro MFP M26a
+    - HP LaserJet Pro MFP M26nw
+    - HP LaserJet Pro MFP M27c
+    - HP LaserJet Pro MFP M27cnw
+ * Bug fixes (launchpad):
+    - 1690515 - DeskJet 3775 - scanner not found
+    - 1690516 - Head alignment dont work (HPLIP 3.17.4)
+
+-------------------------------------------------------------------
+Sun Apr 30 04:11:16 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build more reproducible
+
+-------------------------------------------------------------------
+Fri Apr 28 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- Version upgrade to 3.17.4:
+  * Added Support for the Following New Printers:
+    - HP LaserJet Managed Flow MFP E77822z Printer
+    - HP LaserJet Managed MFP E77822dn Printer
+    - HP LaserJet Managed Flow MFP E77825z Printer
+    - HP LaserJet Managed MFP E77825dn Printer
+    - HP LaserJet Managed Flow MFP E77830z Printer
+    - HP LaserJet Managed MFP E77830dn Printer
+    - HP LaserJet Managed Flow MFP E87640z Printer
+    - HP LaserJet Managed MFP E87640dn Printer
+    - HP LaserJet Managed Flow MFP E87650z Printer
+    - HP LaserJet Managed MFP E87650dn Printer
+    - HP LaserJet Managed Flow MFP E87660z Printer
+    - HP LaserJet Managed MFP E87660dn Printer
+    - HP LaserJet Managed Flow MFP E82540z Printer
+    - HP LaserJet Managed MFP E82540dn Printer
+    - HP LaserJet Managed Flow MFP E82550z Printer
+    - HP LaserJet Managed MFP E82550dn Printer
+    - HP LaserJet Managed Flow MFP E82560z Printer
+    - HP LaserJet Managed MFP E82560dn Printer
+    - HP LaserJet Managed Flow MFP E72525z Printer
+    - HP LaserJet Managed MFP E72525dn Printer
+    - HP LaserJet Managed Flow MFP E72530z Printer
+    - HP LaserJet Managed MFP E72530dn Printer
+    - HP LaserJet Managed Flow MFP E72535z Printer
+    - HP LaserJet Managed MFP E72535dn Printer
+    - HP LaserJet Pro  M203d Printer
+    - HP LaserJet Pro  MFP M130a Printer
+    - HP LaserJet Pro  MFP M130nw Printer
+    - HP LaserJet Pro  MFP M130fn Printer
+    - HP LaserJet Pro  MFP M130fw Printer
+    - HP LaserJet Pro  MFP M227d Printer
+    - HP LaserJet Pro  MFP M227fdn Printer
+    - HP LaserJet Ultra MFP M230 sdn Printer
+
+-------------------------------------------------------------------
+Mon Mar 13 08:51:52 UTC 2017 - fvogt@suse.com
+
+- Use Qt5 on Tumbleweed and Leap >= 42.2 (bsc#1018734)
+
+-------------------------------------------------------------------
+Thu Mar  2 11:21:02 CET 2017 - jsmeix@suse.de
+
+- Support most recent HP printing devices for SLE12 by upgrading
+  HPLIP to the version that we have currently (as of this writing)
+  in openSUSE Factory and this is in use on openSUSE Tumbleweed
+  see https://fate.suse.com/322305 (fate#322305).
+  In general regarding version upgrades for printer drivers
+  see https://en.opensuse.org/SDB:Installing_a_Printer
+
+-------------------------------------------------------------------
+Thu Feb  9 17:20:28 UTC 2017 - Mathias.Homann@opensuse.org
+
+- Version upgrade to 3.16.11:
+  * Added Support for the Following New Printers:
+    - HP LaserJet M101-M106 Printer
+    - HP LaserJet Pro M203-M206 Printer
+    - HP LaserJet Pro MFP M227-M231 Printer
+    - HP LaserJet Pro MFP M129-M134
+  * Added support for the following new Distro's:
+    - OpenSuse 42.2
+    - Fedora 25
+
+-------------------------------------------------------------------
+Wed Nov 23 20:19:53 UTC 2016 - martin.wilck@suse.com
+
+- Fixed SLES12 SP2 build problem in
+  %files section for /usr/lib/udev/rules.d
+
+------------------------------------------------------------------.
+Fri Nov 18 11:23:38 UTC 2016 - jweberhofer@weberhofer.at
+
+- Version upgrade to 3.16.10:
+  * Added Support for the Following New Printers:
+    - HP officejetPro7740 wide  Format All in one
+    - HP Office jet 6950 All-in-One printer
+    - HP ScanJet Pro 3000 s3 Sheet-feed Scanner
+    - HP ScanJet Enterprise Flow 5000 s4 Sheet-feed Scanner
+    - HP Scanjet Entrprise Flow 7000 s3 sheetfeed Scanner
+    - HP Color LaserJet Pro MFP M277c6
+  * Notes to follow:
+    - For scanjets scan using command "hp-scan --adf --size=size_name"
+    - "hp-scan --help" for all size_name
+
+-------------------------------------------------------------------
+Tue Oct 18 03:56:26 UTC 2016 - jweberhofer@weberhofer.at
+
+- Version upgrade to 3.16.9:
+  * Added Support for the Following New Printers:
+    - HP OfficeJet Pro 8732M All-in-One Printer
+    - HP OfficeJet 8702 All-in-One Printer
+    - HP OfficeJet 6960 All-in-One Printer
+    - HP PageWide 377dw Multifunction Printer
+    - HP PageWide 352dw Printer
+    - HP PageWide Managed Color MFP E58650 series
+    - HP PageWide Managed Color E55650 series
+
+-------------------------------------------------------------------
+Wed Sep 14 17:38:31 UTC 2016 - fcastelli@suse.com
+
+- Version upgrade to 3.16.8:
+  * Added Support for the Following New Printers:
+    - HP OfficeJet Pro 6970 All-in-One Printer
+    - HP OfficeJet Pro 6960 All-in-One Printer
+    - HP OfficeJet 250 Mobile All-in-One
+    - HP DeskJet 3700 All-in-One
+    - HP DeskJet Ink Advantage 3700 All-in-One
+  * Significant changes:
+    - Modified the GUI representation of Secure PIN Printing
+  * Added support for the following new Distro's:
+    - Linux Mint 18
+    - Fedora 24
+    - Debian 8.5
+
+- Version upgrade to 3.16.7:
+  * Added Support for the Following New Printers:
+    - HP  Officejet Pro 8730
+    - HP Officejet Pro 8210 Printer
+    - HP Pagewide P55250
+    - HP Pagewide MFP P57750
+    - HP Pagewide Color 556
+    - HP Pagewide Color MFP 586
+    - HP Pagewide Color flow MFP 586
+    - HP DeskJet Ink Advantage Ultra 5730 All-in-One Printer
+    - HP Color Laserjet MFP M377 fnw
+
+* change-udev-rules.diff: the patch didn't apply because of some formatting
+  issues. `quilt` fixed them automatically.
+
+-------------------------------------------------------------------
+Fri Aug 26 15:13:30 UTC 2016 - martin.wilck@suse.com
+
+- Fixed device communication/detection problems with mdns/Bonjour
+  * added hplip-mdns.patch (MDNS send/receive on every iterface)
+  * added hplip-mdns-retry-query.patch (MDNS retry)
+  See https://bugs.launchpad.net/hplip/+bug/1616861
+
+-------------------------------------------------------------------
+Mon Jun  6 07:06:46 UTC 2016 - jweberhofer@weberhofer.at
+
+- rebased change-udev-rules.diff and 
+  add_missing_includes_and_define_GNU_SOURCE.patch
+- Version upgrade to 3.16.5
+  * Added Support for the Following New Printers:
+    - HP OfficeJet 200 Mobile Printer Series
+    - HP OfficeJet Pro 8710 All-in-One Printer
+    - HP OfficeJet Pro 8715 All-in-One Printer
+    - HP OfficeJet Pro 8740 All-in-One Printer
+    - HP OfficeJet Pro 8720 All-in-One Printer
+    - HP OfficeJet Pro 8725 All-in-One Printer
+    - HP LaserJet Pro M501n
+    - HP LaserJet Pro M501dn
+  * Qt5 support is available. For more information check the following link
+    http://hplipopensource.com/node/376
+
+- Version upgrade to 3.16.3
+  * Added Support for the Following New Printers:
+    - HP PageWide Pro 577dw Multifunction Printer
+    - HP PageWide Pro 577z Multifunction Printer
+    - HP PageWide Pro 552dw Printer
+    - HP PageWide Pro 452dw Printer
+    - HP PageWide Pro 452dn Printer
+    - HP PageWide Pro 477dw Multifunction Printer
+    - HP PageWide Pro 477dn Multifunction Printer
+    - HP DeskJet GT 5810 All-in-One Printer
+    - HP DeskJet GT 5820 All-in-One Printer 
+  * fixed issue: Traceback error occurs when ESC button is hit upon the promt 
+    for root/superuser credentials while installing hp-plugin.
+
+- Version upgrade to 3.16.2
+  * Significant Change: Queue configuration using 'hp-setup' command is no more
+    supported for HP ScanJets. Scan frontends like xsane, hp-scan, scanimage,
+    simplescan will automatically detect usb and network ScanJets.
+  * Added Support for the Following New Printers:
+    - HP ScanJet Pro 4500 fn1 Network scanner
+    - HP LaserJet Pro MFP M127fs
+    - HP DeskJet Ultra Ink Advantage 2029 Printer
+    - HP DeskJet Ink Advantage Ultra 2529 All-in-One Printer
+  * Issues fixed:
+    - /usr/lib/sane/libsane-hpaio.so.1: undefined symbol: mdns_probe_nw_scanners
+      (Launchpad #1521687)
+    - udev: 56-hpmud.rules should not run usb_id for all USB devices out there
+      (Launchpad #1537467)
+    - Upgrade to HPLIP-3.15.11 fails (Launchpad: #1517494)
+    - HPLIP installation fails with non-english locale (Launchpad: #1536762)
+    - hp-plugin hangs on 'su' (Launchpad: #1483820)
+    - hp-plugin infinite loop (Launchpad: #1484916)
+    - hp-plugin not working - stuck on permission (Launchpad: #1510950)
+    - HP plugin installation hangs after accepting license (Launchpad: #1502025)
+    - Debian 8's hplip version is 3.14.6, not 3.15.2 (Launchpad: #1534404)
+    - Laserjet Pro MFP M127fs is not supported (Launchpad: #1532451)
+
+-------------------------------------------------------------------
+Wed Dec  9 10:55:45 UTC 2015 - tchvatal@suse.com
+
+- Fix build on SLE11 by removing not required and wrongly installed
+  selinux support config
+- Remove another nested conditions that are the same
+
+-------------------------------------------------------------------
+Tue Dec  8 20:09:01 UTC 2015 - tchvatal@suse.com
+
+- Do not bother with fsf address fix, if they move again or if the
+  package update it we would needlessly fail
+- Do not bother with one condition that is equal to the following one
+
+-------------------------------------------------------------------
+Thu Nov 19 11:25:19 UTC 2015 - ecsos@opensuse.org
+
+- Version upgrade to 3.15.11:
+  Significant Changes:
+    - Provided custom apparmor profiles and selinux policy for 
+      HPLIP.
+    - Supported auto-discovery of network scanners.
+  Added Support for the Following New Printers:
+    HP Color LaserJet Pro MFP M274n
+    HP LaserJet Enterprise M506 series
+    HP Laserjet Enterprise M506n
+    HP Laserjet Enterprise M506dn
+    HP Laserjet Enterprise M506x
+    HP Laserjet Enterprise M506dh
+    HP Color Laserjet Pro M452dn
+    HP Color Laserjet Pro M452dw
+    HP Color Laserjet Pro M452nw
+    HP Laserjet Pro MFP M426fdn
+    HP Laserjet Pro MFP M426fdw
+    HP Laserjet Pro MFP M427dn
+    HP Laserjet Pro MFP M427fdw
+    HP Laserjet Pro MFP M426dw
+    HP Laserjet Pro MFP M427dw
+    HP Laserjet Enterprise MFP M527dn
+    HP Laserjet Enterprise MFP M527f
+    HP Laserjet Enterprise Flow MFP M527c
+    HP Laserjet Enterprise Flow MFP M527z
+    HP Color LaserJet Enterprise MFP M577 Series
+    HP Color LaserJet Enterprise MFP M577dn
+    HP Color LaserJet Enterprise MFP M577f
+    HP Color LaserJet Enterprise Flow MFP M577z
+    HP Color LaserJet Enterprise Flow MFP M577c
+    HP LaserJet Pro M402-M403 series
+    HP LaserJet Pro M402-M403 n-dn series
+    HP LaserJet Pro M402dw
+    HP LaserJet Pro M402n
+    HP LaserJet Pro M402dn
+    HP LaserJet Pro M402d
+    HP LaserJet Pro M403n
+    HP LaserJet Pro M403dw
+    HP LaserJet Pro M403dn
+    HP LaserJet Pro M403d
+    HP Color Laserjet Pro MFP M477fnw
+    HP Color Laserjet Pro MFP M477fdn
+    HP Color Laserjet Pro MFP M477fdw
+    HP Envy 5543 All-in-One Printer
+    HP Envy 5544 All-in-One Printer
+    HP Envy 5546 All-in-One Printer
+    HP Envy 5542 e-All-in-One Printer
+    HP DeskJet 2134 All-in-One Printer
+    HP DeskJet 3633 All-in-One Printer
+    HP DeskJet 3634 All-in-One Printer
+    HP OfficeJet 4654 All-in-One Printer
+    HP ENVY 4524 All-in-One Printer
+    HP ENVY 4523 All-in-One Printer
+    HP ENVY 4520 All-in-One Printer
+    HP DeskJet Ink Advantage Ultra 4720 All-in-One Printer series
+    HP DeskJet Ink Advantage Ultra 4729 All-in-One Printer
+    HP DeskJet Ink Advantage 5640 All-in-One Printer series
+    HP DeskJet Ink Advantage 5645 All-in-One Printer
+    HP DeskJet Ink Advantage 4675 All-in-One
+    HP DeskJet Ink Advantage 4676 All-in-One
+    HP DeskJet Ink Advantage 4535 All-in-One
+    HP DeskJet Ink Advantage 4536 All-in-One
+    HP DeskJet Ink Advantage 5570 All-in-One
+    HP DeskJet Ink Advantage 5575 All-in-One
+    HP Scanjet Pro 3500 f1 Flatbed Scanner
+    HP ENVY 5531 e-All-in-One Printer
+    HP ENVY 5532 e-All-in-One Printer
+    HP ENVY 5534 e-All-in-One Printer
+    HP ENVY 5536 e-All-in-One Printer
+    HP ENVY 5539 e-All-in-One Printer
+  Added support for the following new Distro's:
+    - Ubuntu 15.10
+    - Fedora 23
+    - OpenSUSE 42.1
+  Issues fixed:
+    - Provided knowledge base article to unblock the ports and 
+      enable SLP and mDNS services using opensuse firewall utility 
+      at http://hplipopensource.com/node/375
+- remove patch104: do_not_open_mdns_port.diff, no more needed
+  because since HPLIP 3.15.11 there is no longer "open_mdns_port=..."
+  in distros.dat for any "SUSE" distribution
+- insert check for Leap so Leap can use his own cups
+- insert check for 13.2 and Leap for udev-dirs because of 
+  rpmlint-error: directory not owned by package
+- fix rpmlint-error: incorrect fsf-address
+
+-------------------------------------------------------------------
+Wed Oct  7 15:59:10 CEST 2015 - jsmeix@suse.de
+
+- Dropped support for the outdated foomatic-rip-hplip via
+  a symbolic link from /usr/lib/cups/filter/foomatic-rip-hplip
+  to /usr/bin/foomatic-rip for foomatic-filters or to
+  /usr/lib/cups/filter/foomatic-rip for cups-filters-foomatic-rip
+  so that "BuildRequires cups-filters-foomatic-rip" can be dropped
+  (cf. the entry dated "Thu Sep 18 10:31:14 CEST 2014" below)
+  which makes it "just build" again if suse_version > 1310 without
+  the need for more and more oversophisticated hacks.
+
+-------------------------------------------------------------------
+Tue Oct  6 14:20:10 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 3.15.9:
+  Added Support for the Following New Printers:
+    HP DeskJet Ink Advantage 2136 All-in_One Printer
+    HP DeskJet Ink Advantage 3836 All-in_One
+    HP Deskjet 2545 All-in-One Printer
+    HP ENVY 4510 All-in-One Printer series
+    HP ENVY 4512 All-in-One Printer
+    HP ENVY 4516 All-in-One Printer
+    HP ENVY 4520 All-in-One Printer series
+    HP ENVY 4520 All-in-One Printer
+    HP ENVY 4522 All-in-One Printer
+    HP Envy 5540 All-in-One Printer series
+    HP Envy 5540 All-in-One Printer
+    HP Envy 5545 All-in-One Printer
+    HP OfficeJet 4650 All-in-One Printer series
+    HP OfficeJet 4650 All-in-One Printer
+    HP OfficeJet 4652 All-in-One Printer
+    HP OfficeJet 4655 All-in-One Printer
+    HP OfficeJet 6820 e-All-in-One  Printer
+  Some bug fixes - in particular:
+    Fixed hplip plugin failure with hplip-3.15.7.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Version upgrade to 3.15.7:
+  Added Support for the Following New Printers:
+    HP Deskjet 1110 Printer
+    HP Deskjet 1111 Printer
+    HP Deskjet 1112 Printer
+    HP DeskJet 2131 All-in-One Printer
+    HP Deskjet Ink Advantage 1110 Printer
+    HP Deskjet Ink Advantage 1115 Printer
+    HP Deskjet Ink Advantage 1118 Printer
+    HP DeskJet Ink Advantage 2130 All-in_One Printer
+    HP DeskJet Ink Advantage 2135 All-in_One Printer
+    HP DeskJet Ink Advantage 2138 All-in_One Printer
+    HP DeskJet Ink Advantage 3630 All-in-One Printer
+    HP DeskJet Ink Advantage 3635 All-in-One Printer
+    HP DeskJet Ink Advantage 3636 All-in-One Printer
+    HP DeskJet Ink Advantage 3638 All-in-One Printer
+    HP DeskJet Ink Advantage 3830 All-in-One Printer
+    HP DeskJet Ink Advantage 3835 All-in-One Printer
+    HP OfficeJet 3830 All-in-One Printer
+    HP OfficeJet 3832 All-in-One Printer
+    HP OfficeJet 3834 All-in-One Printer
+    HP Officejet 7510 Wide Format e-All-in-One Printer
+  Some bug fixes - in particular:
+    Fixed insecure binary driver verification (CVE-2015-0839).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- hplip-3.15.6.CVE-2015-0839.patch is obsolete since
+  version 3.15.7 because it is fixed in the source.
+
+-------------------------------------------------------------------
+Wed Jun 24 11:48:49 CEST 2015 - jsmeix@suse.de
+
+- hplip-3.15.6.CVE-2015-0839.patch uses 0xlong key ID
+  (instead of the short key ID) for downloading the key
+  see https://bugs.launchpad.net/hplip/+bug/1432516
+  (CVE-2015-0839 bsc#933191).
+- Version upgrade to 3.15.6:
+  Added Support for the Following New Printers:
+    HP DeskJet 2130 All-in-One Printer series
+    HP DeskJet 2132 All-in-One Printer
+    HP Deskjet 2546B All-in-One Printer
+    HP Deskjet 2546P All-in-One Printer
+    HP Deskjet 2546R All-in-One Printer
+    HP DeskJet 3630 All-in-One Printer series
+    HP DeskJet 3632 All-in-One
+    HP Officejet 5744 e-All-in-One
+  Some bug fixes - in particular:
+    udev rules wrongly match on monitor hub, wrong invocation
+    of systemd unit, changes config files in udev rules
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- change-udev-rules.diff: Adapted for HPLIP 3.15.6.
+
+-------------------------------------------------------------------
+Tue May 19 17:04:45 CEST 2015 - jsmeix@suse.de
+
+- Disabled build for parallel port because parallel port support
+  was disabled by default by upstream HPLIP at least since 2011
+  and is deprecated by upstream HPLIP since 2013,
+  see https://bugs.launchpad.net/bugs/750796
+  and http://hplipopensource.com/node/217
+  furthermore parallel port support gets more or less abandoned
+  by upstream projects in general, see "Parallel port printers"
+  at https://en.opensuse.org/SDB:Installing_a_Printer
+- Version upgrade to 3.15.4:
+  Significant Changes:
+    HPLIP Plugin support for ARMv6,ARMv7 and aarch64 architectures
+  Added Support for the Following New Printers:
+    HP Color LaserJet Pro M252dw
+    HP Color LaserJet Pro M252n
+    HP Color LaserJet Pro MFP M277n
+    HP Color LaserJet Pro MFP M277dw
+    HP Color LaserJet Enterprise M553n
+    HP Color LaserJet Enterprise M553dn
+    HP Color LaserJet Enterprise M553x
+    HP Color LaserJet Enterprise M553dh
+    HP Color LaserJet Enterprise M552dn
+    HP LaserJet Enterprise M604n
+    HP LaserJet Enterprise M604dn
+    HP LaserJet Enterprise M605dn
+    HP LaserJet Enterprise M605n
+    HP LaserJet Enterprise M605x
+    HP LaserJet Enterprise M606x
+    HP LaserJet Enterprise M606dn
+  Some bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- add_missing_includes_and_define_GNU_SOURCE.patch adds
+  missing '#include <...>' and missing '#define _GNU_SOURCE'
+  see https://bugs.launchpad.net/hplip/+bug/1456590
+- Using again plain 'make' instead of 'make %{?_smp_mflags}'
+  (cf. the entry below dated "Sun Apr 20 09:48:39 UTC 2014")
+  and plain 'make ... install' instead of
+  'make ... install %{?_smp_mflags}' to avoid random obscure
+  build failures with errors like "libtool: install: error: relink
+  `cupsext.la' with the above command before installing it", cf.
+  http://lists.gnu.org/archive/html/automake/2010-03/msg00039.html
+
+-------------------------------------------------------------------
+Wed Mar 18 16:51:06 CET 2015 - jsmeix@suse.de
+
+- Make it build for SLE12 with traditional CUPS 1.5.4 to ensure
+  it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4 because
+  for SLE12 by default CUPS 1.7.5 is provided and alternatively
+  CUPS 1.5.4 is provided in the "legacy" module, cf.
+  https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/
+
+-------------------------------------------------------------------
+Fri Feb 27 11:45:02 CET 2015 - jsmeix@suse.de
+
+- HPLIP's Python module cupsext has a build-time dependancy on the
+  CUPS version (see https://bugs.launchpad.net/hplip/+bug/1423220).
+  Therefore it BuildRequires the CUPS version as provided in the
+  openSUSE/SLE versions. When it was built with CUPS > 1.5 it must
+  require CUPS > 1.5 during run-time. In contrast when it was built
+  with CUPS < 1.6 then cupsext is built in a backward compatible
+  way that works with any CUPS version.
+  This replaces the "minimal version requirement on cups" from the
+  entry below dated "Thu Feb 19 12:05:05 UTC 2015" and obsoletes
+  the "Kill sle11 support" from the previous entry so that HPLIP
+  should work again for SLE11 SLE12 and recent openSUSE versions
+  (boo#918387).
+- Again BuildRequires sane-backends-devel if suse_version > 1130
+  and BuildRequires sane-backends otherwise that was removed via
+  one of the previous entries to make it again build for SLE11.
+- Run udev_rules_update that BuildRequires systemd-rpm-macros
+  only if suse_version > 1130 to make it again build for SLE11.
+- For SLE11 redefine _libexecdir to be "/usr/lib" in any case
+  because on SLE11 x86_64 it evaluates to "/usr/lib64" which
+  is wrong in particular for CUPS filters and backends, cf.
+  https://bugzilla.opensuse.org/show_bug.cgi?id=575544#c2
+- Again using the RPM scriplets as in previous versions with
+  its various suse_version dependant stuff to make it again
+  build for SLE11.
+- Using '-p /bin/bash' in RPM scriplets to enforce bash
+  to be fail safe against issue with possible bashisms.
+
+-------------------------------------------------------------------
+Thu Feb 19 12:30:19 UTC 2015 - tchvatal@suse.com
+
+- Cleanup-with spec-cleaner
+- Kill sle11 support as per min cups requirement
+- Add patch to put udev rules to usr as it is required:
+  * hplip-udev-rules-in-usr.patch
+- Also run udev rules update in post for the above rules
+
+-------------------------------------------------------------------
+Thu Feb 19 12:05:05 UTC 2015 - tchvatal@suse.com
+
+- Add minimal version requirement on cups (currently 1.7) bnc#918387
+
+-------------------------------------------------------------------
+Wed Feb 11 21:07:28 UTC 2015 - tchvatal@suse.com
+
+- Drop gpg-offline usage as we do it as service on obs side if
+  required files are present in the package
+
+-------------------------------------------------------------------
+Wed Feb 11 20:58:47 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 3.15.2:
+  * python3 support (not enabled to work on older distros now)
+  * Support for KF5 systemtray
+  * Fixed issues:
+    + 1388126 - Doesn't build against libjpeg-turbo 1.3.90
+    + 1395676 - hpcups crashes if DEVICE_URI not set in environment
+    + 1388007 - Incorrect call to hpmudext.device_open
+    + 1187055 - plugin download fails if python links to python3
+    + 802999  - Incorrect IEEE 1284 Device IDs for many models
+  * For more info see http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Mon Oct 27 12:15:11 CET 2014 - jsmeix@suse.de
+
+- change-udev-rules.diff: Adapted for HPLIP 3.14.10.
+- Version upgrade to 3.14.10:
+  Added Support for the Following New Printers:
+    HP Deskjet 2541 All-in-One Printer
+    HP Envy 4501 e-All-in-One
+    HP Envy 4503 e-All-in-One
+    HP Envy 4505 e-All-in-One
+    HP Envy 4507 e-All-in-One
+    HP Envy 4508 e-All-in-One
+    HP ENVY 5534 e-All-in-One Printer
+    HP Envy 5640 e-All-in-One
+    HP Envy 5642 e-All-in-One
+    HP Envy 5643 e-All-in-One
+    HP Envy 5644 e-All-in-One
+    HP Envy 5660 e-All-in-One
+    HP Envy 5665 e-All-in-One
+    HP Envy 7640 e-All-in-One
+    HP Envy 7645 e-All-in-One
+    HP LaserJet Pro MFP M125r
+    HP LaserJet Pro MFP M125ra
+    HP LaserJet Pro M201n Printer
+    HP LaserJet Pro M201dw Printer
+    HP LaserJet Pro M202n Printer
+    HP LaserJet Pro M202dw Printer
+    HP LaserJet Pro MFP M225rdn
+    HP LaserJet Pro MFP M225dw
+    HP LaserJet Pro MFP M225dn
+    HP LaserJet Pro MFP M226dw
+    HP LaserJet Pro MFP M226dn
+    HP LaserJet Enterprise MFP M630dn
+    HP LaserJet Enterprise MFP M630f
+    HP LaserJet Enterprise MFP M630h
+    HP LaserJet Enterprise Flow MFP M630z
+    HP Officejet 5740 e-All-in-One
+    HP Officejet 5742 e-All-in-One
+    HP Officejet 5745 e-All-in-One
+    HP OfficeJet 8040 e-All-in-One
+    HP OfficeJet 6810 e-All-in-One  Printer Series
+    HP OfficeJet 6812 e-All-in-One  Printer
+    HP OfficeJet 6815 e-All-in-One  Printer
+    HP Officejet 7612 Wide Format e-All-in-One Printer
+    HP OfficeJet Pro 6230 ePrinter
+    HP OfficeJet Pro 6830 e-All-in-one
+    HP OfficeJet Pro 6835 e-All-in-one
+    HP OfficeJet Pro 8616 e-All-in-One Printer
+  Some bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Thu Oct 16 15:37:28 CEST 2014 - jsmeix@suse.de
+
+- Make and install Python compiled bytecode files
+  (.pyc compiled python and .pyo optimized compiled python)
+  because normal users do not have write permissions to the
+  install location /usr/share/hplip/ so that for normal users
+  Python would recompile the sources every time,
+  see https://en.opensuse.org/openSUSE:Packaging_Python
+- Hardlink .pyc and .pyo when they have same content but
+  do not run "fdupes buildroot/_datadir/hplip" because
+  fdupes will link any files with same content there
+  which can have unexpected side-effects (cf. bnc#784670).
+- Removed RPM preun script that had deleted leftover .pyc
+  and .pyo files if made during run-time (see the entry below
+  dated Fri Feb 16 11:52:28 CET 2007) because now those files
+  are provided in the package.
+- Removed trailing whitespaces in RPM changelog file.
+
+-------------------------------------------------------------------
+Thu Sep 18 10:31:14 CEST 2014 - jsmeix@suse.de
+
+- From openSUSE 13.2 on explicitly
+  "BuildRequires cups-filters-foomatic-rip"
+  to avoid that foomatic-filters is used for build
+  in the "Printing" development project (where foomatic-filters
+  intentionally exists also for openSUSE_13.2 and openSUSE_Factory)
+  which would not match what is used for build in openSUSE:13.2 or
+  openSUSE:Factory (where foomatic-filters is intentionally dropped
+  and replaced by cups-filters-foomatic-rip). Using the matching
+  package for build results that the backward compatibility link
+  /usr/lib/cups/filter/foomatic-rip-hplip points to a foomatic-rip
+  executable that is used by default on the runtime system.
+
+-------------------------------------------------------------------
+Mon Sep 15 11:43:09 CEST 2014 - jsmeix@suse.de
+
+- PPDs that require a proprietary plugin from HP must be moved to
+  the hplip main-package because the proprietary plugin from HP
+  must be downloaded and installed by using HP's "hp-plugin" tool
+  that belongs to the hplip main-package. Accordingly PPDs that
+  require a proprietary plugin from HP are in a new directory
+  /usr/share/cups/model/manufacturer-PPDs/hplip-plugin
+  that belongs to the hplip main-package (bnc#876690).
+
+-------------------------------------------------------------------
+Tue Jun 10 11:34:10 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 3.14.6:
+  Added Support for the Following New Printers:
+    HP DesignJet Z6600 PostScript
+    HP DesignJet Z6800PS Photo
+    HP DesignJet D5800 60-in Production Printer
+    HP DesignJet T3500 36-in Production eMFP
+    HP Designjet T7200 42-in Production Printer
+    HP Deskjet 2543 All-in-One Printer
+    HP Deskjet 2549 All-in-One Printer
+    HP OfficeJet Pro 8640 e-All-in-One Printer
+    HP OfficeJet Pro 8660 e-All-in-One Printer
+  Fixed Avahi discovery method in hp-toolbox.
+  Some other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Wed May  7 13:49:16 CEST 2014 - jsmeix@suse.de
+
+- Moved the hpcupsfax filter to the hplip-hpijs sub-package
+  because the HP-Fax*hpcups PPDs in the hplip-hpijs sub-package
+  that use that filter work technically correct when only the
+  hplip-hpijs RPM is installed regardless that in practice
+  queues with a HP-Fax*hpcups PPD usually use the hpfax backend
+  Python script that belongs to the hplip main-package because
+  it imports HPLIP Python modules.
+- Moved the hpps filter to the hplip main-package because the PPDs
+  for various printers that use that filter do not work when only
+  the hplip-hpijs RPM is installed because the hpps Python script
+  imports HPLIP Python modules from the hplip main-package.
+  Accordingly moved the PPDs that use the hpps filter
+  to the hplip main-package (bnc#876690).
+
+-------------------------------------------------------------------
+Wed Apr 23 10:26:50 CEST 2014 - jsmeix@suse.de
+
+- Fix how the link /usr/lib/cups/filter/foomatic-rip-hplip
+  that points to foomatic-rip is installed depending on
+  which package provides foomatic-rip. In foomatic-filters
+  foomatic-rip is installed as /usr/bin/foomatic-rip
+  but in cups-filters-foomatic-rip it is installed
+  as /usr/lib/cups/filter/foomatic-rip.
+
+-------------------------------------------------------------------
+Sun Apr 20 09:48:39 UTC 2014 - tchvatal@suse.com
+
+- Enable parallel build via "make %{?_smp_mflags}".
+
+-------------------------------------------------------------------
+Wed Apr  9 16:02:02 CEST 2014 - jsmeix@suse.de
+
+- do_not_open_mdns_port.diff: Adapted for HPLIP 3.14.4.
+- Version upgrade to 3.14.4:
+  Added Support for the Following New Printers:
+    HP Color LaserJet Enterprise M651dn Printer
+    HP Color LaserJet Enterprise M651n Printer
+    HP Color LaserJet Enterprise M651xh Printer
+    HP Color LaserJet Enterprise Multifunction M680dn Printer
+    HP Color LaserJet Enterprise Multifunction M680f Printer
+    HP Color LaserJet Enterprise Flow Multifunction M680z Printer
+    HP Color Laserjet Pro MFP M476dw
+    HP Color Laserjet Pro MFP M476nw
+    HP Color Laserjet Pro MFP M476dn
+    HP Designjet T795 44-in ePrinter
+    HP DeskJet 1511 All-in-One Printer
+    HP DeskJet 1011 Printer
+    HP LaserJet Pro MFP M128fn
+    HP LaserJet Pro MFP M128fp
+    HP LaserJet Pro MFP M128fw
+    HP LaserJet Pro M701a Printer
+    HP LaserJet Pro M701n Printer
+    HP LaserJet Pro M706n Printer
+    HP Officejet Enterprise Color X555dn Printer
+    HP Officejet Enterprise Color X555xh Printer
+    HP Officejet Enterprise Color X585dn Multifunction Printer
+    HP Officejet Enterprise Color X585f Multifunction Printer
+    HP Officejet Enterprise Color Flow X585z Multifunction Printer
+    HP OfficeJet Pro 8610 e-All-in-One Printer
+    HP OfficeJet Pro 8615 e-All-in-One Printer
+    HP OfficeJet Pro 8620 e-All-in-One Printer
+    HP OfficeJet Pro 8625 e-All-in-One Printer
+    HP OfficeJet Pro 8630 e-All-in-One Printer
+    HP OfficeJet 4631 e-All-in-One Printer
+    HP OfficeJet 4634 e-All-in-One printer
+    HP OfficeJet 4636 e-All-in-One Printer
+  Fixed hp-logcapture (captured personal information), see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- change-udev-rules.diff: Adapted for HPLIP 3.14.3.
+- Version upgrade to 3.14.3:
+  Added Support for the Following New Printers:
+    HP Deskjet Ink Advantage 4640 e-All-in-One Printer series
+    HP Deskjet Ink Advantage 4645 e-All-in-One Printer
+    HP Deskjet Ink Advantage 4646 e-All-in-One Printer
+    HP Deskjet Ink Advantage 4648 e-All-in-One Printer
+    HP LaserJet Pro MFP M125a
+    HP LaserJet Pro MFP M125nw
+    HP LaserJet Pro MFP M125rnw
+    HP LaserJet Pro MFP M126a
+    HP LaserJet Pro MFP M126nw
+    HP LaserJet Pro MFP M127fp
+  Fixed hpcups filter crash.
+  Run hp-firmware from udev separately.
+  Some other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Version upgrade to 3.14.1:
+  Added digital signature validation in HPLIP upgrade feature.
+  CVE-2013-6427: insecure auto update feature.
+  CVE-2013-6402: insecure temporary file handling in pkit.py.
+- The whole HPLIP upgrade feature is still disabled, see the
+  entry dated "Wed Dec  4 14:25:51 CET 2013" below.
+
+-------------------------------------------------------------------
+Wed Dec  4 14:25:51 CET 2013 - jsmeix@suse.de
+
+- disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for
+  security reasons (bnc#853405). To upgrade HPLIP an openSUSE
+  software package manager like YaST or zypper should be used.
+
+-------------------------------------------------------------------
+Tue Nov 26 19:33:01 UTC 2013 - mailaender@opensuse.org
+
+- Version upgrade to 3.13.11:
+  Added Support for the Following New Printers:
+    HP Color LaserJet Pro MPF M176 series
+    HP Color LaserJet Pro MPF M176n
+    HP Color LaserJet Pro MPF M177 series
+    HP Color LaserJet Pro MPF M177fw
+    HP Color LaserJet Enterprise M750 Printer series
+    HP Color LaserJet Enterprise M750n
+    HP Color LaserJet Enterprise M750dn
+    HP Color LaserJet Enterprise M750xh
+    HP Color LaserJet Enterprise M855 Printer series
+    HP Color LaserJet Enterprise M855dn Printer
+    HP Color LaserJet Enterprise M855xh Printer
+    HP Color LaserJet Enterprise M855x+ Printer
+    HP Color LaserJet Enterprise flow M880 Multifunction Printer series
+    HP Color LaserJet Enterprise flow M880z Multifunction Printer
+    HP Color LaserJet Enterprise flow M880z+ Multifunction Printer
+    HP LaserJet Pro MFP M127 series
+    HP LaserJet Pro MFP M127fn
+    HP LaserJet Pro MFP M127fw
+    HP Officejet 2620 All-in-One
+    HP Officejet 2621 All-in-One
+    HP Officejet 2622 All-in-One
+  Added Pin Printing support for HP LaserJet m5035 MFP device
+- Added a devel package
+- Update the .desktop database on install/uninstall
+- Use .desktop files provided by upstream
+
+-------------------------------------------------------------------
+Wed Oct 16 15:36:08 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.10:
+  Several more supported printers and all-in-one devices.
+  Fix for CVE-2013-4325i (insecure Polkit use).
+  Users will not be added to "lp" group, users will be prompted
+  to provide necessary authentication (see the entry
+  dated "Tue Jul  9 16:18:35 CEST 2013" below).
+  Added firmware upload functionality during 'hp-setup'.
+  Some other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- change-udev-rules.diff: Adapted for HPLIP 3.13.10.
+- disable-chgrp_lp.diff is obsolete since version 3.13.10
+  because it is fixed in the source.
+- neither-add_user_to_group-nor-open_mdns_port.diff is replaced by
+  do_not_open_mdns_port.diff because the "add_user_to_group" issue
+  is fixed in the source since version 3.13.10 but the
+  "open_mdns_port" issue still exists.
+- deactivate-add_group-function.diff is obsolete since 3.13.10
+  because there is no longer that "chgrp" stuff in HPLIP.
+
+-------------------------------------------------------------------
+Thu Sep 12 10:47:40 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.9:
+  Several more supported printers and all-in-one devices.
+  Some bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- fix-uninitialized-variables.diff is obsolete since
+  version 3.13.9 because it is fixed in the source.
+
+-------------------------------------------------------------------
+Tue Sep 10 14:44:46 CEST 2013 - jsmeix@suse.de
+
+- change-udev-rules.diff: Added rule that only uploads firmware
+  into printers that need it by calling only hp-firmware, see
+  https://bugs.launchpad.net/bugs/1220628
+
+-------------------------------------------------------------------
+Wed Sep  4 10:09:00 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.8:
+  Added support for Avahi network printer browsing.
+  Using SLP protocol by default to browse printer in hp-setup.
+  Some more supported printers and all-in-one devices.
+  Some bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Jul 23 14:28:37 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.7:
+  A few more supported printers and all-in-one devices.
+  Some bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- hplip-3.9.8-CVE-2010-4267.patch is no longer needed because
+  it is fixed in the upstream sources in HPLIP version 3.13.7
+  (see the entry dated "Thu Jan 13 16:29:01 CET 2011" below).
+
+-------------------------------------------------------------------
+Tue Jul  9 16:18:35 CEST 2013 - jsmeix@suse.de
+
+- deactivate-add_group-function.diff deactivates the add_group
+  function that would add the groups ('lp') to user which would
+  cause security issues see https://bugs.launchpad.net/bugs/1197416
+  that would happen in any case via a fallback command in an "else"
+  clause even if this functionality was explicitly disabled in
+  distros.dat via neither-add_user_to_group-nor-open_mdns_port.diff
+- neither-add_user_to_group-nor-open_mdns_port.diff
+  deactivates add_user_to_group and open_mdns_port
+  in distros.dat for SUSE distros to avoid security issues
+  when normal users get added to system groups 'lp' and 'sys'
+  see https://bugs.launchpad.net/bugs/1197416
+  and https://bugs.launchpad.net/bugs/1112306 and
+  to avoid security issues when ports in the firewall get opened
+  see https://bugs.launchpad.net/bugs/426161
+- Adapted change-udev-rules.diff so that it applies to
+  the HPLIP 3.13.6 sources.
+- no-hplip_cron.diff is no longer needed because there is
+  no longer any "cron" stuff in HPLIP version 3.13.6
+- Version upgrade to 3.13.6:
+  A few more supported printers and all-in-one devices.
+  Fix for firmware download during plug and play.
+  Supported CUPS 1.6 IPP Private Structure changes.
+  Some other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Version upgrade to 3.13.5:
+  Several more supported printers and all-in-one devices.
+  Added 56-hpmud.rules and removed 56-hpmud_support,
+  86-hpmud_plugin, 56-hpmud_add_printer, 55-hpmud
+  and 40-hplip rules.
+  Added hplip-printer@.service to support systemd services
+  in udev for OpenSUSE 12.3.
+  Some other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Apr 16 12:05:38 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.4:
+  Several more supported printers and all-in-one devices.
+  Fixed toolbox.py crash (KeyError in is_auto_installer_support).
+  Several other bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Thu Mar 14 15:13:09 UTC 2013 - meissner@suse.com
+
+- use URLs in Source tags
+- added gpg signature checking to %prep.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:23:11 CET 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.3:
+  Mainly a bugfix release.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Wed Mar  6 09:41:02 CET 2013 - jsmeix@suse.de
+
+- Removed hp-systray.wrapper because the reason for it
+  is no longer in compliance with HPLIP upstream intentions
+  (see SUSE Bugzilla bnc#649280 starting at comment#10).
+
+-------------------------------------------------------------------
+Fri Feb 15 15:31:28 CET 2013 - jsmeix@suse.de
+
+- Version upgrade to 3.13.2:
+  Several more supported printers and all-in-one devices
+  (in particular several "HP Officejet Pro X..." models).
+  New self diagnose and healing utility "hp-doctor"
+  but "hp-check-plugin" is no longer provided.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Adapted change-udev-rules.diff disable-chgrp_lp.diff
+  and no-hplip_cron.diff for HPLIP 3.13.2.
+
+-------------------------------------------------------------------
+Thu Jan 24 14:51:24 CET 2013 - jsmeix@suse.de
+
+- Create /var/log/hp/tmp/ directory that is needed by hp-sendfax
+  as a workaround until HPLIP upstream implemented it correctly
+  see https://bugs.launchpad.net/bugs/1016507 (bnc#800312).
+
+-------------------------------------------------------------------
+Thu Nov 29 15:27:51 CET 2012 - jsmeix@suse.de
+
+- Version upgrade to 3.12.11:
+  Several more supported printers and all-in-one devices
+  (in particular several "HP LaserJet Enterprise" models).
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- fix-no-return-in-nonvoid-function.diff is no longer needed
+  because it is now completely fixed in the upstream sources.
+- disable-chgrp_lp.diff replaces no-chgrp_lp_hplip_Logdir.diff
+  and does basically the same but is adapted for HPLIP 3.12.11.
+- Adapted no-hplip_cron.diff for HPLIP 3.12.11.
+
+-------------------------------------------------------------------
+Wed Oct 10 14:23:14 CEST 2012 - jsmeix@suse.de
+
+- Bugfix version upgrade to 3.12.10a:
+  The 'a' does not mean 'alpha' but "first bugfix of 3.12.10".
+  Fixed crash in HP Device Manager and System Tray due to
+  ValueError exception in HPLIP upgrade functionality, see
+  https://bugs.launchpad.net/hplip/+bug/1064889 (bnc#784173).
+- Added "chmod a+x ... usr/share/hplip/fax/pstotiff" because
+  "make install" installs it only with -rw-r--r-- permissions
+  so that when the CUPS filter usr/lib/cups/filter/pstotiff
+  which is a link to usr/share/hplip/fax/pstotiff is called,
+  it cannot execute usr/share/hplip/fax/pstotiff, see
+  https://bugs.launchpad.net/hplip/+bug/1064247 (bnc#783810).
+
+-------------------------------------------------------------------
+Fri Oct  5 11:51:35 CEST 2012 - jsmeix@suse.de
+
+- Version upgrade to 3.12.10:
+  Perhaps HP binary plugin installation failure fixed upstream
+  see https://bugs.launchpad.net/hplip/+bug/1048732
+  A few more supported printers and all-in-one devices.
+  A few bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Thu Oct  4 13:37:56 CEST 2012 - jsmeix@suse.de
+
+- no-hplip_cron.diff deactivates the "cron" stuff in Makefile.am
+  because it lets build fail on SLE11 products (possibly an
+  autoconf issue) and we (SUSE) do not allow to install files
+  like /etc/cron.daily/hplip_cron via RPMs. Instead hplip_cron
+  is provided as /usr/share/doc/packages/hplip/hplip_cron
+- The /var/lib/hp directory is created everywhere except on
+  openSUSE 12.2 and later versions (perhaps also an autoconf
+  issue) so that it is created in the install section if it
+  does not exist as a simple and fail-safe workaround
+  see https://bugs.launchpad.net/bugs/1018303
+  and (bnc#780413).
+- Adapted change-udev-rules.diff so that it applies to
+  the HPLIP 3.12.9 sources.
+
+-------------------------------------------------------------------
+Fri Sep 28 12:42:33 UTC 2012 - mmeister@suse.com
+
+- Adapted fix-no-return-in-nonvoid-function.diff because
+  HP's upstream fix is insufficient (not 64-bit safe),
+  see https://bugs.launchpad.net/hplip/+bug/1017496
+- Adapted no-chgrp_lp_hplip_Logdir.diff so that it
+  applies to the HPLIP 3.12.9 sources.
+
+------------------------------------------------------------------
+Fri Sep 28 08:20:55 UTC 2012 - mmeister@suse.com
+
+- Version upgrade to 3.12.9:
+  User can collect logs by running 'hp-logcapture' command
+  for any issue in print/scan/fax functionality.
+  Logs get stored in /var/log/hp/tmp.
+  Several more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Thu Jun 28 12:00:28 CEST 2012 - jsmeix@suse.de
+
+- Provide the /var/lib/hp directory that is required in particular
+  by hp-plugin (see https://bugs.launchpad.net/hplip/+bug/1018303)
+  in the hplip-hpijs package to be on the safe side because
+  hplip-hpijs is the minimal (printing-only) way to use HPLIP.
+
+-------------------------------------------------------------------
+Mon Jun 25 15:56:54 UTC 2012 - mail@philipp-wagner.com
+
+- Add libusb 1.0 as dependency. If necessary building with
+  libusb 0.1 would be possible as well by setting a configure
+  flag.
+
+-------------------------------------------------------------------
+Mon Jun 25 14:42:59 UTC 2012 - mail@philipp-wagner.com
+
+- fix-no-return-in-nonvoid-function.diff fixes compiler warnings
+  causing a no-return-in-nonvoid-function error during the build.
+  An upstream bug report is open at
+  https://bugs.launchpad.net/hplip/+bug/1017496
+
+-------------------------------------------------------------------
+Mon Jun 25 09:47:53 UTC 2012 - mail@philipp-wagner.com
+
+- Upgraded to version 3.12.6:
+  'hp-check' tool when run with "--fix" option resolves missing
+  dependencies/groups/plugin and disable SELinux.
+  Added PIN to PRINT support for HP Color LaserJet CM4540 MFP.
+  libusb-1.0 support added.
+  Several more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Apr 24 13:51:03 CEST 2012 - jsmeix@suse.de
+
+-  hplip.SuSEfirewall2 is no longer provided
+   (see SUSE Bugzilla bnc#757354 comment #10).
+
+-------------------------------------------------------------------
+Thu Apr 12 15:14:18 CEST 2012 - jsmeix@suse.de
+
+- Upgraded to version 3.12.4:
+  Uninstall Support: User can uninstall complete HPLIP package
+  by running "hp-uninstall" command.
+  Upgrade Support: Settings can be configured using
+  "hp-systray -> settings -> Update settings" for notification
+  of newer version of HPLIP release. User can also upgrade to
+  latest version by running "hp-upgrade" command.
+  Queue Analyzer: Print/Fax queues can be analyzed by
+  running "hp-diagnose-queues" command or by clicking
+  on "Diagnose Queues" from toolbox.
+  Several more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Removed hp-toolbox.wrapper because the reason for it
+  is no longer valid (see SUSE Bugzilla bnc#755820).
+- Added "BuildRequires: python-cups" to get special
+  RPM Provides tags for the printers supported by
+  this package (see SUSE Bugzilla bnc#735865).
+
+-------------------------------------------------------------------
+Wed Feb  8 10:22:30 CET 2012 - jsmeix@suse.de
+
+- Upgraded to version 3.12.2:
+  Fixed digital signature mismatch issue for plugin download.
+  Removed unsupported features (Water Mark overlay, Job Storage,
+  PIN 2 Print) from the PS PPDs.
+  Several more supported printers and all-in-one devices.
+  A few bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Thu Jan 12 17:24:22 CET 2012 - jsmeix@suse.de
+
+- Upgraded to version 3.11.12:
+  Auto-detection and installation of missing plug-ins.
+  Designed tool to detect the missing plugin files and intimate
+  user about it and giving the path forward to install it.
+  SYSFS is replaced by ATTRS in udev rules.
+  Uses D-Bus from separate threads without locking.
+  Several more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- change-udev-rules.diff changes ATTRS to ATTR (bnc#436085).
+- no-chgrp_lp_hplip_Logdir.diff deactivates
+  the "chgrp lp -R /var/log/hp" in Makefile.am because
+  during install this results "Operation not permitted".
+  This is done in the files section via attr(0774,root,lp)
+  where mode 0774 matches to what is set in Makefile.am.
+
+-------------------------------------------------------------------
+Fri Oct 28 06:08:53 UTC 2011 - badshah400@gmail.com
+
+- Install icons of various sizes in hicolor icon directory for
+  better appearance in gnome-shell (bnc#713902).
+- Add hicolor-icon-theme BuildRequires to own the hicolor icon
+  directory correctly and install icons in there
+- Use appropriate icon theme macros in post scripts
+- Modified hplip.desktop to use these hicolor icons
+- In hplip.desktop replace the category "Settings" by "System" to
+  make it appear under the correct group "System Tools" rather
+  than "Others" in desktop menus.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:01 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Thu Oct 13 13:57:46 UTC 2011 - vuntz@opensuse.org
+
+- Split the sane driver in a hplip-sane subpackage, so that it's
+  not necessary to install the full hplip tools to use an
+  all-in-one HP printer. See bnc#723870.
+
+-------------------------------------------------------------------
+Tue Oct  4 12:44:11 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to version 3.11.10:
+  Fixed insecure tmp file handling in hpcupsfax.cpp CVE-2011-2722
+  see https://bugs.launchpad.net/hplip/+bug/809904 (bnc#704608).
+  New tech classes for HP OfficeJet Pro 8100,
+  HP Deskjet 3070 B611 series and HP Photosmart 7510 e-All-in-One.
+  Added new subtech class for HP Photosmart 6510 e-All-in-one.
+  Modified the error message which was displayed in case
+  of missing .asc file for manual plug-in install.
+  Several more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Fri Aug 12 10:36:13 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to version 3.11.7:
+  A few more supported printers and all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451)
+  plus a leftover in CVE-2004-0801 (bnc#59233)
+  foomatic-rip-hplip is no longer installed and foomatic-rip
+  from the foomatic-filters RPM is used instead and the
+  "cupsFilter" entries in the PPDs are changed accordingly.
+  To be backward compatible with PPDs in /etc/cups/ppd/
+  for existing print queues a compatibility link
+  /usr/lib/cups/filter/foomatic-rip-hplip
+  which points to foomatic-rip is installed.
+- The DefaultPageSize in the PPDs is no longer set to A4
+  if A4 is an available PageSize choice but left "as is"
+  because the DefaultPageSize in the PPD templates in
+  /usr/share/cups/model/ does not matter because the cupsd
+  sets the DefaultPageSize for PPDs in /etc/cups/ppd/
+  by default according to the locale that the cupsd runs in or
+  according to a DefaultPaperSize entry in /etc/cups/cupsd.conf.
+- No longer "Correcting or removing non-working PPDs..."
+  because none of those cases which were fixed still exist
+  (i.e. all those cases are meanwhile fixed upstream).
+
+-------------------------------------------------------------------
+Fri May 13 12:20:10 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to version 3.11.5:
+  Added LEDM ADF Scan support.
+  Added LEDM Wireless support.
+  Some more supported printers and all-in-one devices.
+  It may fix the inverted/wrong color problem in HPCUPS
+  (see Novell/openSUSE Bugzilla bnc #692905).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Mar 29 16:24:36 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to version 3.11.3a:
+  Fixed hp-plugin plugin download error (no Suse bug), see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Fri Mar 18 11:29:09 CET 2011 - jsmeix@suse.de
+
+- Upgraded to version 3.11.3:
+  New device class StingrayOJ for HP OfficeJet 100 Mobile L411.
+  New filter hpps (HP PS filter for PostScript printers) currently
+  only used via hp-officejet_pro_8000_enterprise_a811a-ps.ppd.gz
+  Some more supported printers and all-in-one devices.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Feb  1 16:19:21 CET 2011 - jsmeix@suse.de
+
+- Updated to version 3.11.1:
+  New encapsulation format for LJZJStream class.
+  Alignment of cartridges over LEDM (Low End Data Model).
+  LEDM dynamic scan resolution.
+  New fax protocol (Low End Data Model) support.
+  ADF and color scan for some HP LaserJet Pro and MFP devices.
+  Some more supported all-in-one devices.
+  Many bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Adapted change-udev-rules.diff for version 3.11.1
+  because the "DesignJet product (0x03f0xx14)" was added.
+
+-------------------------------------------------------------------
+Thu Jan 13 16:29:01 CET 2011 - jsmeix@suse.de
+
+-  hplip-3.9.8-CVE-2010-4267.patch fixes a remote buffer overflow
+   (CVE-2010-4267 and Novell/Suse Bugzilla bnc#336658).
+
+-------------------------------------------------------------------
+Wed Dec 29 15:52:56 UTC 2010 - gber@opensuse.org
+
+- Use more appropriate categories for hplip.desktop
+  'Settings HardwareSettings Printing' instead of 'System Monitor'
+
+-------------------------------------------------------------------
+Fri Dec  3 10:42:05 CET 2010 - jsmeix@suse.de
+
+- Removed explicite RPM requirement for pyxml. At least since
+  openSUSE 11.1 and SLE11 pyxml is no longer required (pyxml was
+  required e.g. for openSUSE 10.3 and SLE10, see the entry below
+  dated "Wed Apr  2 14:40:57 CEST 2008") but meanwhile python-xml
+  alone is sufficient for "import xml.parsers.expat"
+  (see Novell/openSUSE Bugzilla bnc#656779 comment #3).
+- Added "Obsoletes: hplip-hpcups" because HPLIP does not work
+  if the openSUSE packages hplip and hplip-hpijs are installed
+  together with a leftover PackMan package hplip-hpcups
+  (see Novell/openSUSE Bugzilla bnc#515005 comment #17).
+- Do not pollute the build log file with zillions of meaningless
+  messages while "General tests and adjustments for all PPDs"
+  (compare the OpenPrintingPPDs.spec file).
+
+-------------------------------------------------------------------
+Wed Oct 27 16:34:11 CEST 2010 - jsmeix@suse.de
+
+- Added hp-systray.wrapper which is called
+  via /etc/xdg/autostart/hplip-systray.desktop
+  to increase desktop startup speed so that the purpose
+  of this hp-systray.wrapper is different to the
+  entry below dated "Tue Apr  8 14:56:53 CEST 2008".
+  hp-systray.wrapper tests via "lpstat" if a 'hp:/...'
+  print queue exists and exits otherwise.
+  This avoids that hp-systray with all its Python stuff must be
+  loaded when the desktop starts up only to let hp-systray do
+  its built-in test and exit if there is no HPLIP print queue
+  (see Novell/openSUSE Bugzilla bnc#649280).
+- Updated to version 3.10.9:
+  New Scan protocol (Low End Data Model) support.
+  Many more supported all-in-one devices.
+  Many bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.10.6:
+  New protocol support (LEDM) for device status over Network
+  and USB.
+  Some more supported all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.10.5:
+  Fixed "libusb couldn't open USB device, Permission denied"
+  error message in openSUSE.
+  Several more supported all-in-one devices.
+  Several bug fixes.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Wed Sep 15 08:58:09 UTC 2010 - aj@suse.de
+
+- Change BuildRequires for sane-backends devel split.
+
+-------------------------------------------------------------------
+Thu Apr  1 12:40:47 CEST 2010 - jsmeix@suse.de
+
+- Updated to version 3.10.2:
+  The hpcups driver is again updated to better align with
+  the product specifications for various printer models.
+  Several more supported all-in-one devices.
+  Several bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.9.12:
+  The hpcups driver is updated to better align with the
+  product specifications for various printer models.
+  Several more supported printers.
+  Several bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.9.10:
+  The hpcups driver has been re-written. It does no longer do
+  bi-directional IO. Printer specific settings are no longer
+  hard coded, but are controlled by the PPD file.
+  Many more supported printers and all-in-one devices.
+  Several bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- hpcups.drv.in-3.9.8-reorder.patch and
+  hpcups-ppds-3.9.8-reorder.tar.bz2 are obsolete
+  because it is fixed in the source.
+- create_hal_global_fdi_from_hpmud_rules is obsolete
+  because HAL is no longer used to manage ACLs
+  (see Novell/Suse Bugzilla bnc#542473 comment#13).
+- change-udev-rules.diff fixes now also 56-hpmud_support.rules
+  (see for example Novell/Suse Bugzilla bnc#577035) and
+  it should trigger udev's generic ACL support for SANE
+  via 'ENV{libsane_matched}="yes"' in 55-hpmud.rules
+  (see Novell/Suse Bugzilla bnc#542473 comment#14).
+  Perhaps the latter could be better achieved with the
+  configure option --enable-udev-acl-rules (default=no)
+  which installs 40-hplip.rules instead of 55-hpmud.rules
+  but this was not at all tested up to now and it is
+  likely not backward compatible (e.g. for openSUSE 11.2).
+
+-------------------------------------------------------------------
+Thu Oct 15 15:52:41 CEST 2009 - jsmeix@suse.de
+
+- Also moved /usr/share/hplip/data/models/models.dat
+  and /etc/hp/hplip.conf to the hplip-hpijs sub-package
+  so that the "hp" backend can autodetect printers
+  (see Novell/Suse Bugzilla bnc#546856 comment#10).
+
+-------------------------------------------------------------------
+Thu Oct 15 11:14:28 CEST 2009 - jsmeix@suse.de
+
+- In the hplip-hpijs sub-package made weak package dependencies
+  even weaker to avoid bloating of minimal installations. Now
+  the hplip-hpijs sub-package only "Enhances: ghostscript_any"
+  and "Suggests: hplip" (see Novell/Suse Bugzilla bnc#546893).
+- Enlarged hplip-hpijs to be useful for a CUPS print queue.
+  Moved the following files from the hplip main package
+  to the hplip-hpijs sub-package: cups/backend/hp,
+  cups/filter/foomatic-rip-hplip, cups/filter/hpcac,
+  cups/filter/hpcups, cups/filter/hplipjs,
+  and all PPD files (see Novell/Suse Bugzilla bnc#546856).
+
+-------------------------------------------------------------------
+Wed Sep 16 14:59:30 CEST 2009 - jsmeix@suse.de
+
+- hpcups.drv.in-3.9.8-reorder.patch addresses two issues
+  in the 3.9.8 hpcups.drv.in file from which dynamic PPDs
+  are generated.
+  It re-orders common paper sizes so that normal, fullbleed
+  and duplex papers sizes are grouped together in the PPD.
+  It changes the LJColor device class from RGBW to RGB
+  color space. The K band was not being printed by hpcups.
+- The hpcups-ppds-3.9.8-reorder.tar.bz2 source file contains
+  the matching static PPDs which are fixed according to what
+  hpcups.drv.in-3.9.8-reorder.patch fixes for dynamic PPDs.
+
+-------------------------------------------------------------------
+Thu Aug  6 10:48:36 CEST 2009 - jsmeix@suse.de
+
+- The hplip.SuSEfirewall2 source file provides support
+  to open UDP ports 5353(mdns) and 427(svrloc) for mDNS support
+  according to the init-suse-firewall in the tar ball
+  (see Novell/Suse Bugzilla bnc#528819).
+- Updated to version 3.9.8:
+  Added mDNS/Bonjour support.
+  Enabled mDNS as the default network search mechanism.
+  Added front-end support for mDNS/Bonjour in setup.
+  Added hpmud support for mDNS.
+  The tar ball provides a init-suse-firewall init script
+  for mDNS support which is not included in the RPM.
+  Fixed wificonfig associate issue when called from hp-setup.
+  Added 40-hplip.rules to the tar ball for distros with
+  udev ACL support. Use configure option --enable-udev-acl-rules
+  to install 40-hplip.rules instead of 55-hpmud.rules.
+  Fixed Normal Grayscale on DJ8xx and DJ8x5 for HPCUPS.
+  Added -lsane link option for libsane-hpaio in Makefile.
+  Many more supported printers and all-in-one devices.
+  Many bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Wed Jul  1 10:28:04 CEST 2009 - jsmeix@suse.de
+
+- Fixed hp-toolbox.wrapper by adding "..." quotation when
+  calling 'test -x "$( type -p whatever )"' because
+  when 'type -p whatever' fails calling 'test -x' without
+  an explicite empty argument would result true
+  (see Novell/Suse Bugzilla bnc#503322 comment#6).
+- fix_gcc44_glib.diff is obsolete since version 3.9.6b
+  because it is fixed in the source.
+- Updated to version 3.9.6b:
+  The new native CUPS driver (HPCUPS) is now the default
+  printer driver. HPCUPS provides new paper sizes for borderless
+  and duplex so that there are now HPCUPS PPDs with exact
+  printable regions for normal, borderless and duplex paper sizes
+  which should fix https://bugs.launchpad.net/hplip/+bug/173857
+  For now HPIJS (and its matching foomatic-rip-hplip PPDs)
+  are still included (HPIJS can co-exist with HPCUPS).
+  A new utility 'hp-wificonfig' can pre-configure wifi-capable
+  printers on a wireless network. Once pre-configured, a queue
+  for the printer can be set up as usual using hp-setup.
+  Renamed hp-devicesetup to hp-devicesettings.
+  Added CUPS filter hpcupsfax and new hpcups fax PPDs.
+  Bumped libhpmud.so.0.0.4 to libhpmud.so.0.0.5.
+  Integrated --enable-lite-build (default=no) into configure.in
+  which can be used to get a minimal print/scan only build with
+  limited Plugin support (Novell/Suse provides the "full" build).
+  Many more supported printers and all-in-one devices.
+  Many bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Tue Jun  2 14:46:19 CEST 2009 - jsmeix@suse.de
+
+- fix_gcc44_glib.diff fixes GCC/glibc issues, here in particular
+  "invalid conversion from 'const char*' to 'char*'" errors.
+  The upstream bug report is
+  https://bugs.launchpad.net/hplip/+bug/382720
+
+-------------------------------------------------------------------
+Tue May  5 14:54:42 CEST 2009 - jsmeix@suse.de
+
+- force-qt4-for-hp-systray-desktop.diff is obsolete because
+  configure uses --enable-qt4 by default now which obsoletes
+  also "Recommends: python-qt" (only python-qt4 is required).
+- Updated to version 3.9.4b:
+  A few bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.9.4:
+  Added PolicyKit support. Command line tools like hp-setup,
+  hp-plugin, etc. are now run as regular user.
+  Added GPG digital signature support to the HPLIP plug-in
+  to validate that the plug-in is not corrupted and authentic.
+  Added native CUPS driver support (hpcups) currently for
+  testing only and added static PPDs for hpcups.
+  Some more supported printers and all-in-one devices
+  (in particular a few Designjet PostScript printers).
+  Many bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 3.9.2:
+  Qt4 now default UI.
+  Support policy change. End of support date is added to
+  all HPLIP supported devices, for details see
+  http://hplipopensource.com/node/314
+  New file /var/lib/hp/hplip.state for runtime variable data.
+  Removed any variable data from /etc/hp/hplip.conf.
+  Some more supported printers and all-in-one devices.
+  Major bug fixing on Qt4 solution (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 2.8.12:
+  From this release forward, all PPD files - even for devices
+  that require a binary plug-in - will reside in the tarball
+  (the "plugin PPDs" are moved into hpijs.drv).
+  Preview (alpha) release of the Qt4 version of HPLIP.
+  Replaced "MODE 0666" udev device permissions with
+  "console permissions via HAL".
+  No new supported devices.
+  Several bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 2.8.10:
+  Bumped libhpmud version for new plugin attribute.
+  Many more supported printers and all-in-one devices.
+  Several bug fixes (no Suse bugs).
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+- Updated to version 2.8.9:
+  Added Qt4 configure option but Qt3 is the default.
+  Many bug fixes (no Suse bugs).
+  Several more supported printers, in particular
+  some Compact Photo (QuickConnect) printers.
+  For details see
+  http://hplipopensource.com/hplip-web/release_notes.html
+
+-------------------------------------------------------------------
+Wed Dec  3 17:30:47 CET 2008 - lnussel@suse.de
+
+- use "usb" instead of "usb_device" (bnc#438867)
+
+-------------------------------------------------------------------
+Wed Dec  3 11:18:55 CET 2008 - jsmeix@suse.de
+
+- Moved /etc/hal/fdi/policy/10osvendor/70-hpmud.fdi
+  to /usr/share/hal/fdi/information/20thirdparty/70-hpmud.fdi
+  (see Novell/Suse Bugzilla bnc#438867).
+
+-------------------------------------------------------------------
+Tue Nov 18 11:48:39 CET 2008 - jsmeix@suse.de
+
+- Let suse_update_desktop_file add X-SuSE-translate key
+  to /etc/xdg/autostart/hplip-systray.desktop so that we can
+  update its translations with translation-only packages
+  (see Novell/Suse Bugzilla bnc#445738).
+
+-------------------------------------------------------------------
+Tue Oct 21 14:49:39 CEST 2008 - jsmeix@suse.de
+
+- Changed change-udev-rules.diff to jump to the end
+  if SUBSYSTEM!="usb" and replaced SYSFS by ATTR
+  (see Novell/Suse Bugzilla bnc#436085).
+
+-------------------------------------------------------------------
+Tue Sep 16 08:35:58 CEST 2008 - jsmeix@suse.de
+
+- Added "Recommends: hplip" to hplip-hpijs because when only
+  hplip-hpijs is there, it should tell the dependency resolver
+  that for usual functionality, hplip should be installed
+  too (if possible).
+
+-------------------------------------------------------------------
+Thu Sep 11 08:28:02 CEST 2008 - jsmeix@suse.de
+
+- force-qt4-for-hp-systray-desktop.diff forces Gnome and KDE
+  to execute hp-systray as "hp-systray --qt4" via
+  /etc/xdg/autostart/hplip-systray.desktop so that
+  hp-systray docks to the notification tray of the desktops.
+  Because of this the python-qt4 RPM is now required
+  (see Novell/Suse Bugzilla bnc#377575).
+  This additional requirement should be no problem because
+  in an upcoming release HPLIP is converted over to Qt4, see
+  https://bugs.launchpad.net/hplip/+bug/231978/comments/7
+  and then the "Recommends: python-qt" can be dropped
+  (see the entry below) but currently only hp-systray
+  can be used with Qt4.
+
+-------------------------------------------------------------------
+Wed Sep 10 12:06:32 CEST 2008 - jsmeix@suse.de
+
+- Do no longer have a hard RPM requirement for python-qt
+  (now there is only "Recommends: python-qt") to be able
+  to provide hplip even on a distribution without python-qt.
+  Without python-qt all GUI stuff would fail but
+  several /usr/bin/hp-* tools have a command line
+  option to run in non-graphical mode so that the basic driver
+  functionality still works even without python-qt.
+- Have versioned "Obsoletes" for hpijs-standalone to meet our
+  policies even if the real intention is that any installed
+  version of hpijs-standalone is replaced and explain the
+  unversioned "Obsoletes" for hplip17 and hplip17-hpijs
+  (see Novell/Suse Bugzilla bnc#251830).
+
+-------------------------------------------------------------------
+Tue Sep  9 14:33:28 CEST 2008 - jsmeix@suse.de
+
+- The configure option disable-foomatic-xml-install
+  does no longer exist.
+- Updated to version 2.8.7:
+  Some bug fixes (no Suse bugs).
+  Some more supported printers.
+  For details see release_notes.html
+- Updated to version 2.8.6b:
+  Replaced the doc directory with an abbreviated web document
+  (there is no longer hpijs.html and device_classes.html).
+  Redesigned the proprietary plugin support. There is now only
+  one plugin that is valid for each HPLIP release, see
+  https://answers.launchpad.net/hplip/+question/30595
+  Changed the hpijs.drv to support multiple products via
+  multiple "Product" entries in the PPD but see
+  https://bugs.launchpad.net/hplip/+bug/235148
+  Several bug fixes (no Suse bugs).
+  Many more supported printers.
+  For details see release_notes.html
+- Updated to version 2.8.5:
+  Major toolbox (HP Device Manager) revamp/refresh.
+  More dbus support (live status updating).
+  hp-systray will exit if no HPLIP installed queues found which
+  obsoletes HPLIP-2.8.4-systray_exit_if_no_device_2.patch
+  Many bug fixes (no Suse bugs).
+  Several more supported printers.
+  For details see release_notes.html
+
+-------------------------------------------------------------------
+Fri Sep  5 10:10:27 CEST 2008 - jsmeix@suse.de
+
+- Keep all PPDs even if cupstestppd FAILs.
+  With each CUPS version upgrade cupstestppd finds more
+  and more errors so that more and more PPDs would be
+  no longer included in the RPM which have been included
+  before which results a regression.
+  As far as we know there have been no problems at all because of
+  not strictly compliant PPDs in HPLIP so that it is much better
+  to provide all PPDs so that the matching printers can be used
+  than to be rigorous regarding compliance to the PPD spec.
+
+-------------------------------------------------------------------
+Thu Sep  4 13:03:51 CEST 2008 - jsmeix@suse.de
+
+- Changed the "Conflicts: hpijs-standalone" in hplip-hpijs
+  to "Obsoletes: hpijs-standalone" regardless of any version.
+  hplip-hpijs and hpijs-standalone both contain /usr/bin/hpijs
+  so that both packages have a RPM conflict.
+  But when the minimalist hpijs-standalone is to be replaced
+  by the full-featured hplip, hplip requires hplip-hpijs
+  and this should silently supersede hpijs-standalone
+  regardless of any version (see Novell/Suse Bugzilla bnc#388149).
+
+-------------------------------------------------------------------
+Thu Aug 14 19:05:17 CEST 2008 - jsmeix@suse.de
+
+- Removed the hplip init script which is obsolete since
+  version 2.8.4 where hpssd is gone and replaced by
+  hp-systray, see Novell/Suse Bugzilla bnc#390663.
+
+-------------------------------------------------------------------
+Tue Apr 29 12:21:17 CEST 2008 - jsmeix@suse.de
+
+- Added RPM requirement for python-gobject2 because the dbus stuff
+  in HPLIP requires the Python module gobject but there is no
+  automated RPM requirement for python-gobject2, see
+  https://answers.launchpad.net/hplip/+question/30741
+
+-------------------------------------------------------------------
+Thu Apr 10 15:55:42 CEST 2008 - jsmeix@suse.de
+
+- HPLIP-2.8.4-systray_exit_if_no_device_2.patch lets hp-systray
+  exit if the HPLIP driver seems to be not in use (i.e. if there
+  is neither a 'hp:/...' nor a 'hpfax:/...' print queue), see
+  https://bugs.launchpad.net/hplip/+bug/213938
+  This patch obsoletes the whole hp-systray.wrapper stuff,
+  see the entry below and Novell/Suse Bugzilla bnc#377885.
+
+-------------------------------------------------------------------
+Tue Apr  8 14:56:53 CEST 2008 - jsmeix@suse.de
+
+- Added hp-systray.wrapper which is a wrapper for hp-systray
+  which runs it only if there is a 'hp:/...' print queue
+  and changed /etc/xdg/autostart/hplip-systray.desktop
+  to run the wrapper, see Novell/Suse Bugzilla bnc#377885.
+
+-------------------------------------------------------------------
+Thu Apr  3 15:59:09 CEST 2008 - jsmeix@suse.de
+
+- Updated to version 2.8.4:
+  Elimination of all persistent startup daemons.
+  The last daemon hpssd has been replaced with hp-systray.
+  All interprocess communication uses now dbus.
+  Therefore dbus-1-python version 0.80 or greater is required.
+  PC send fax requires dbus and a running hp-systray to operate
+  but hp-toolbox and hp-sendfax launch hp-systray automatically
+  and there is also /etc/xdg/autostart/hplip-systray.desktop.
+  When no HPLIP tools are running (e.g. hp-toolbox),
+  and the user closes or disables hp-systray,
+  there will be no HPLIP processes running whatsoever.
+  Many bug fixes (no Suse bugs).
+  One more supported LaserJet ZJStream printers (M1120),
+  one OfficeJet (J6400), and two Photosmart (C4340, B8800)
+  where the latter has a new printer device class (PSB9100).
+  For details see release_notes.html
+- Adapted the hplip init script to provide backward compatibility:
+  It still exists to avoid that printer/scanner setup tools fail
+  when they try to enable the "hplip" service but all it does
+  is to stop a possibly running hpssd.
+
+-------------------------------------------------------------------
+Wed Apr  2 14:40:57 CEST 2008 - jsmeix@suse.de
+
+- Exchanged create_hal_global_fdi_from_models.dat with
+  create_hal_global_fdi_from_hpmud_rules which creates the
+  global HAL 70-hpmud.fdi file during build-time from the
+  55-hpmud.rules file to be in sync with the udev rules file
+  and to make sure to have all possible HPLIP device IDs, see
+  https://bugs.launchpad.net/ubuntu/+source/hplip/+bug/195782
+- Require the exact matching version of the hpijs sub-package
+  to have the correct libhpip and libhpmud installed.
+- Require pyxml to have the xml.parsers.expat Python module,
+  see https://answers.launchpad.net/hplip/+question/25696
+
+-------------------------------------------------------------------
+Tue Feb 26 12:25:45 CET 2008 - jsmeix@suse.de
+
+- Static "hpijs" PPD files via enable-foomatic-ppd-install
+  require foomatic-rip-hplip via their cupsFilter entries
+  so that enable-foomatic-rip-hplip-install is also needed.
+  See https://answers.launchpad.net/hplip/+question/25654
+  and see Novell/Suse Bugzilla bnc#364419.
+
+-------------------------------------------------------------------
+Thu Feb 21 14:35:36 CET 2008 - jsmeix@suse.de
+
+- create_hal_global_fdi_from_models.dat creates the
+  global HAL 70-hpmud.fdi file during build-time from the
+  models.dat file (see Novell/Suse Bugzilla bnc#336658).
+- Built version 2.8.2 in the traditional way with readymade
+  PPD files in /usr/share/cups/model/manufacturer-PPDs/hplip/
+  (i.e. without hpijs.drv and foomatic-rip-hplip)
+- Updated to version 2.8.2:
+  HPIJS PPD files are now created with the CUPS DDK instead of
+  the foomatic database. Dynamic PPD files are now supported
+  via the hpijs.drv file.
+  Added foomatic-rip-hplip support. Foomatic-rip-hplip is for
+  distros that do not have the latest foomatic-rip which is
+  required for drv support.
+  Updated the krgb patch for gpl ghostscript 8.61.
+  Updated the "hp" backend to return only hplip supported devices
+  during device discovery. If the device is not in models.dat
+  the "hp" backend will exclude it.
+  Changed margins to 0.125 inch from 0.
+  Bumped libhpmud from 0.0.1 to 0.0.2 for support_type
+  in hpmud_query_model().
+  Several bug fixes (no Suse bugs).
+  Several more supported printers (some more ZJStream printers).
+- Updated to version 2.7.12:
+  Added PJL support to "hp" backend which provides in-band
+  printer status.
+  Bumped libhpmud from 0.0.0 to 0.0.1 for statustype support
+  in hpmud_query_model().
+  Several bug fixes (no Suse bugs).
+  Several more supported LaserJet printers, one ZJStream printer,
+  one LJm1005 printer with binary-only plugin (LaserJet M1005 MFP).
+
+-------------------------------------------------------------------
+Fri Nov  9 14:29:44 CET 2007 - jsmeix@suse.de
+
+- Changed rchplip (i.e. /etc/init.d/hplip):
+  Added "$local_fs $remote_fs $syslog" to Required-Start
+  to be on the safe side and added a line "export HOME=/tmp"
+  to mitigate Novell/Suse Bugzilla bnc#339443.
+
+-------------------------------------------------------------------
+Tue Oct 23 14:24:27 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 2.7.10:
+  New LJZjsMono printer device class for ZJStream printers.
+  ZJStream printers require JBIG which has issues
+  (see Novell/Suse Bugzilla bnc#263181). Therefore the support
+  for ZJStream printers is provided only via a binary-only plugin
+  which is downloaded by "hp-setup" from the HP web-site only after
+  the user has accepted the license terms.
+  Applied patch for issue CVE-2007-5208 (hpssd command injection)
+  Several bug fixes (no Suse bugs).
+  Two more supported Photosmart and Officejet printers.
+  For details see release_notes.html
+- Updated to version 2.7.9:
+  Made the default udev 55-hpmud.rules file more permissive
+  (ie: MODE=0666) so that also device status works for any user.
+  This looks sufficiently secure by default because the
+  55-hpmud.rules matches now only for those USB product IDs
+  which belong to HP printers and all-in-one devices so that
+  other HP USB devices like keyboard, mouse, and mass storage
+  devices won't get MODE=0666 by accident.
+  All known product-ids that HPLIP/HPIJS supports have been
+  added to the model.dat file.
+  Many bug fixes (no Suse bugs).
+  Some more supported Photosmart and Officejet printers.
+  For details see release_notes.html
+
+-------------------------------------------------------------------
+Tue Sep 18 12:18:25 CEST 2007 - jsmeix@suse.de
+
+- Add a line-feed to the end of all PPDs to fix those PPDs where
+  it is missing. See Novell/Suse Bugzilla bnc#309832:
+  Unix/Linux text files must end with a line-feed.
+  Otherwise reading the last line results EOF and then some
+  programs may ignore the last line.
+
+-------------------------------------------------------------------
+Wed Sep 12 16:17:46 CEST 2007 - jsmeix@suse.de
+
+- Ignore cupstestppd FAILs because of errors in UIConstraints
+  and/or NonUIConstraints which are detected since cupstestppd
+  in CUPS > 1.2.7 (i.e. since openSUSE 10.3).
+  See Novell/Suse Bugzilla bnc#309822: When this bug is fixed,
+  cupstestppd would no longer result zero exit code.
+  In the long run the PPDs should be fixed but as far as we know
+  there have been no problems because of such UIConstraints errors
+  so that it should be o.k. let those PPDs pass even if they are
+  not strictly compliant.
+
+-------------------------------------------------------------------
+Tue Aug  7 11:51:36 CEST 2007 - jsmeix@suse.de
+
+- Changed /etc/udev/rules.d/55-hpmud.rules (via a change in
+  change-udev-rules.diff) from OWNER="root" GROUP="lp" MODE="0660"
+  to OWNER="root" GROUP="lp" MODE="0664" (i.e. allow read
+  permissions for HP USB device files for normal users).
+  Reason: Without read permissions even a simple command
+  like "lsusb" cannot list HP USB devices to normal users
+  which could cause unnecessary confusion.
+  Furthermore have only read permissions for HP USB device files
+  for normal users is in compliance to the default assumptions
+  in upstream HPLIP and it should be sufficiently secure because
+  for retrieving data from the device a matching request must be
+  sent to the device which requires write permissions.
+
+-------------------------------------------------------------------
+Thu Aug  2 12:05:18 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 2.7.7:
+  Many bug fixes (no Suse bugs).
+  Some more supported Photosmart printers.
+  For details see release_notes.html
+- fix-printing-white-spaces-and-empty-lines.diff is no longer
+  needed because the bug is now fixed in the source.
+
+-------------------------------------------------------------------
+Thu Jul 26 09:15:21 CEST 2007 - jsmeix@suse.de
+
+- Changed change-udev-rules.diff so that 55-hpmud.rules matches
+  also against the new SUBSYSTEM=="usb" but keep "usb_device"
+  for backward compatibility (Novell/Suse Bugzilla bnc#294161).
+
+-------------------------------------------------------------------
+Fri Jul  6 10:26:21 CEST 2007 - jsmeix@suse.de
+
+- fix-printing-white-spaces-and-empty-lines.diff fixes printing
+  white spaces and empty lines according to a mail from HP
+  on the hplip-help@lists.sourceforge.net list.
+
+-------------------------------------------------------------------
+Tue Jul  3 11:54:28 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 2.7.6:
+  No more start-up daemons:
+  hpiod is replaced by new direct device I/O (via hpmud library),
+  hpssd (for device status) still exists but is started by default
+  as a daemon by the first user who needs it which is not nice
+  because this results a random user which runs hpssd therefore
+  we (i.e. Novell/Suse) still provide /etc/init.d/hplip which
+  is used to start hpssd as before during system boot.
+  Many bug fixes (no Suse bugs) and some enhancements.
+  Some more supported Photosmart, Color LaserJet, and DeskJet
+  printers.
+  For details see release_notes.html
+
+-------------------------------------------------------------------
+Thu Jun 21 15:46:12 CEST 2007 - jsmeix@suse.de
+
+- Added stop_on_removal to preun, insserv_cleanup to postun,
+  and ldconfig to post and postun for the hpijs sub-package.
+
+-------------------------------------------------------------------
+Thu May 24 01:46:16 CEST 2007 - ro@suse.de
+
+- Added libusb-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Fri Apr 27 14:28:27 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 1.7.4a:
+  Resolved a build issue that caused a couple missing files
+  in the 1.7.4 release and a fix for hp-check (no Suse bugs).
+
+-------------------------------------------------------------------
+Mon Apr 23 13:50:13 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 1.7.4:
+  Many bug fixes (no Suse bugs).
+  Some more supported DeskJet printers.
+  For details see release_notes.html
+
+-------------------------------------------------------------------
+Mon Mar 26 08:53:51 CEST 2007 - jsmeix@suse.de
+
+- Updated to version 1.7.3:
+  Many bug fixes (no Suse bugs).
+  No new supported models but enhancements for some models.
+  For details see release_notes.html
+
+-------------------------------------------------------------------
+Thu Mar  1 13:34:43 CET 2007 - jsmeix@suse.de
+
+- Updated to version 1.7.2:
+  Several more supported Officejet Pro devices.
+  New OJProKx50 device class (derived from DJGenericVIP).
+  Major hp-toolbox upgrade/redesign.
+  Many bug fixes (no Suse bugs).
+  fix-buffer-overflow.patch and hplip-1.7.1-1.patch are no longer
+  needed because the bugs are now fixed in the sources.
+
+-------------------------------------------------------------------
+Fri Feb 16 11:52:28 CET 2007 - jsmeix@suse.de
+
+- Added a fix for fat.c to fix-buffer-overflow.patch
+  to aviod access when array subscript is above array bounds
+  (Suse Bugzilla bnc#243047).
+- Remove all byte-compiled Python .pyc (and perhaps .pyo)
+  files which are created at run-time in /usr/share/hplip/
+  via preun script (Suse Bugzilla bnc#244451).
+
+-------------------------------------------------------------------
+Mon Feb  5 14:24:24 CET 2007 - jsmeix@suse.de
+
+- fix-buffer-overflow.patch fixes a too small string buffer
+  which overflows in line 310 in ljcolor.cpp.
+- Moved the hpijs man page to the hplip-hpijs sub-package
+  so that there is no same file in hplip and hpijs-standalone
+  (hplip-hpijs and hpijs-standalone conflict with each other).
+
+-------------------------------------------------------------------
+Thu Feb  1 15:02:59 CET 2007 - jsmeix@suse.de
+
+- hplip-1.7.1-1.patch from HP fixes Deskjet D4100/D4160
+  christmas-tree (firmware hangs up with flashing LEDs)
+  on second print job.
+- Removed /usr/bin/hpijs.without-libcups from hplip-hpijs
+  to get rid of confusing RPM package requirements (hplip-hpijs
+  requires cups-libs because of /usr/bin/hpijs).
+- Created new package hpijs-standalone and hpijs-standalone.spec
+  for a special version of /usr/bin/hpijs which neither needs
+  a HPLIP library nor a CUPS library to run it.
+
+-------------------------------------------------------------------
+Wed Jan 31 13:50:12 CET 2007 - jsmeix@suse.de
+
+- Removed explicite fstack-protector-all from CFLAGS and CXXFLAGS
+  because fstack-protector will be enabled by default.
+
+-------------------------------------------------------------------
+Mon Jan 29 15:40:16 CET 2007 - jsmeix@suse.de
+
+- Package 'sane' was renamed to 'sane-backends'.
+  Adapted it so that it works with 'sane-backends'.
+
+-------------------------------------------------------------------
+Thu Jan 25 14:53:05 CET 2007 - jsmeix@suse.de
+
+- Updated to version 1.7.1:
+  Many bug fixes (no Suse bugs).
+  No new supported models but enhancements for several models.
+  For details see release_notes.html
+- Removed the fix for uninitialized file pointer in api/model.c
+  from fix-uninitialized-variables.diff because it is now
+  fixed in the sources.
+
+-------------------------------------------------------------------
+Fri Jan 19 16:01:20 CET 2007 - jsmeix@suse.de
+
+- Added fix for uninitialized file pointer in api/model.c to
+  fix-uninitialized-variables.diff (Suse Bugzilla bnc#236709).
+
+-------------------------------------------------------------------
+Fri Jan 12 15:13:35 CET 2007 - jsmeix@suse.de
+
+- Since version 1.6.12 /usr/bin/hpijs is linked with libcups
+  so that the package hplip-hpijs could be no longer installed
+  without at least the package cups-libs. Therefore an additional
+  special /usr/bin/hpijs.without-libcups is built which does not
+  require the CUPS library.
+
+-------------------------------------------------------------------
+Wed Dec 20 14:45:25 CET 2006 - jsmeix@suse.de
+
+- Updated to version 1.6.12:
+  Three more supported LaserJet printers.
+  Many bug fixes (no Suse bugs).
+  For details see release_notes.html
+  Added SANE_DEBUG_HPAIO support for the hpaio SANE backend.
+  The new models.dat file replaces the .xml files. The hplip_api
+  can be used to get model attributes without running the HPLIP
+  daemons. See hplip_api.h for reference (this affects the Suse
+  Bugzilla bugs bnc#184798 and bnc#184824).
+- Fixed hp-toolbox.wrapper to catch 'error' regardless of the case
+  (see Suse Bugzilla bnc#229620).
+
+-------------------------------------------------------------------
+Tue Oct 17 09:59:50 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 1.6.10:
+  Several more supported LaserJet printers.
+  Many bug fixes (no Suse bugs).
+- Fixed typo in keyword in some LaserJet PPDs
+  ("* PageRegion" -> "*PageRegion").
+
+-------------------------------------------------------------------
+Mon Sep 18 11:02:03 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 1.6.9:
+  Added support CD/DVD label printing (ie: PS D5100).
+  Several more supported Photosmart printers.
+  Many bug fixes (no Suse bugs).
+
+-------------------------------------------------------------------
+Mon Sep 11 12:14:32 CEST 2006 - jsmeix@suse.de
+
+- Using generalised cupsext* and pcardext* in the files section
+  (instead of explicit only cupsext.so and pcardext.so)
+  so that it works now both for Python 2.4 and 2.5
+  (the latter installs additional *.egg-info files).
+
+-------------------------------------------------------------------
+Mon Sep  4 12:00:12 CEST 2006 - jsmeix@suse.de
+
+- Exchanged the hard RPM requirement for ghostscript_any by a
+  supplements entry for hplip-hpijs so that there is no longer
+  a mutual (cyclic) hard RPM dependency between hplip-hpijs
+  and ghostscript-library.
+
+-------------------------------------------------------------------
+Thu Aug  3 11:37:07 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 1.6.7:
+  Changed from dynamic IP ports to static IANA IP ports
+  for hpiod (2208) and hpssd (2207).
+  Two more supported Photosmart printers.
+  Several bug fixes (no Suse bugs).
+
+-------------------------------------------------------------------
+Mon Jul 17 13:52:36 CEST 2006 - jsmeix@suse.de
+
+- Fixed PPDs which contain "1284DeviceId" which must be
+  "1284DeviceID" (detected by new CUPS 1.2 cupstestppd).
+
+-------------------------------------------------------------------
+Wed Jun 28 14:47:47 CEST 2006 - jsmeix@suse.de
+
+- Updated to maintenance release 1.6.6a:
+  This provides various minor fixes and enhancements.
+  For details see doc/release_notes.html in the source
+  or /usr/share/doc/packages/hplip/release_notes.html
+
+-------------------------------------------------------------------
+Mon Jun 19 13:46:28 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 1.6.6:
+  HPLIP has reached 1.0 status.
+  With this release a date encoded revision number x.y.m is used:
+  x = major release number, y = year (6=2006), m = month (6=June)
+  Correct URLs in HTML docs (obsoletes fix-doc-hrefs.diff).
+  Removed DeviceOpen from hp backend. This fixes two problems:
+  1) usblp will no longer be removed for device discovery
+  2) device discovery will no longer cause Inkjets to power-up.
+  Added hpaio.desc file for SANE.
+  Several more supported printers.
+- Cleaned up build (simplified spec file):
+  Changed install dir for PPDs and doc in Makefile.am.
+  Using configure without rpm-install.
+  Using configure with --disable-cups-install.
+  Links to work around inconsistent naming of python scripts
+  and links to hpfax backend and its associated PPD file
+  are no longer needed.
+
+-------------------------------------------------------------------
+Fri Jun  9 12:19:59 CEST 2006 - jsmeix@suse.de
+
+- Added man page for /usr/bin/hpijs (hpijs.1.gz).
+- Fixed wrong URLs in HTML documentation (fix-doc-hrefs.diff).
+- Added links to work around inconsistent naming of python scripts.
+- Added links to hpfax backend and its associated PPD file
+  to make them available as usual for CUPS setup tools.
+
+-------------------------------------------------------------------
+Mon May 22 14:04:20 CEST 2006 - jsmeix@suse.de
+
+- Fixed typo (missing '"') in hplip-init-script.diff
+
+-------------------------------------------------------------------
+Fri May 19 13:04:46 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 0.9.11:
+  Revised and updated documentation.
+  Some more supported all-in-one devices and printers.
+  Several bug fixes (no Suse bugs).
+- Updated to version 0.9.10:
+  Several bug fixes (no Suse bugs).
+- Updated to version 0.9.9:
+  Uses libusb for all USB I/O.
+  CUPS USB DeviceURIs must be changed from
+  "hp:/hp_model?device=/dev/usb/lpX" (no longer supported)
+  to "hp:/hp_model?serial=xxxxxxxx".
+  One more supported all-in-one device.
+  Several bug fixes (no Suse bugs).
+- Updated to version 0.9.8:
+  New PC send fax support via special CUPS backend (hpfax)
+  and special HP-Fax-hplip.ppd PPD file
+  and a new send fax UI (hp-sendfax).
+  Some more supported printers.
+  Several bug fixes (no Suse bugs).
+
+-------------------------------------------------------------------
+Wed Apr 26 12:11:00 CEST 2006 - jsmeix@suse.de
+
+- Fixed PPDs for "LaserJet 5Si" and "LaserJet 5MP"
+  (see Suse Bugzilla bnc#164991).
+
+-------------------------------------------------------------------
+Fri Feb 24 14:11:01 CET 2006 - jsmeix@suse.de
+
+- Fixed an array index underflow (for LJ1010, LJ1012)
+  in ljfastraster.cpp (Suse Bugzilla bnc#152720).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 11:13:05 CET 2006 - jsmeix@suse.de
+
+- Set compiler flag "-fstack-protector-all" to build it with
+  "Stack Protector" via a so called "canary" (requires gcc >= 4.1)
+
+-------------------------------------------------------------------
+Wed Jan  4 16:08:08 CET 2006 - jsmeix@suse.de
+
+- Moved /usr/lib[64]/libhpip.* library files to the hplip-hpijs
+  sub-package because /usr/bin/hpijs requires libhpip but for
+  special cases (e.g. for a minimal printing system) it should
+  be possible to use only HPIJS without the rest of HPLIP.
+
+-------------------------------------------------------------------
+Tue Jan  3 14:52:07 CET 2006 - jsmeix@suse.de
+
+- Updated to version 0.9.7
+  including the additional hplip-0.9.7-2.patch from HP.
+
+-------------------------------------------------------------------
+Thu Dec 22 15:29:13 CET 2005 - ro@suse.de
+
+- requires: PyQt -> python-qt
+
+-------------------------------------------------------------------
+Thu Dec  1 16:01:58 CET 2005 - jsmeix@suse.de
+
+- Removed unneeded KDE packages from "neededforbuild" since
+  the new package python-qt was split from kdebindings3-python
+  (see Suse Bugzilla bnc#135250).
+
+-------------------------------------------------------------------
+Mon Nov 28 11:30:30 CET 2005 - jsmeix@suse.de
+
+- Replaced requirement for the package kdebindings3-python
+  by a generic requirement for the RPM capability PyQt
+  to avoid needless dependencies to KDE libraries
+  (see Suse Bugzilla bnc#135250).
+
+-------------------------------------------------------------------
+Tue Nov 22 12:31:52 CET 2005 - jsmeix@suse.de
+
+- Added -fno-strict-aliasing to the CXXFLAGS to avoid problems
+  in ljfastraster.cpp (line 1213) and hpijs.cpp (lines 86, 223).
+
+-------------------------------------------------------------------
+Fri Nov 18 15:55:05 CET 2005 - jsmeix@suse.de
+
+- Updated to version 0.9.6
+
+-------------------------------------------------------------------
+Wed Sep 21 16:58:51 CEST 2005 - jsmeix@suse.de
+
+- Updated to version 0.9.5
+  including the additional hplip-0.9.5-3.patch from HP.
+
+-------------------------------------------------------------------
+Mon Sep 12 14:02:17 CEST 2005 - jsmeix@suse.de
+
+- Several PPDs contain "600x600x2dpi" which is not allowed
+  according to the Adobe PPD specification section 5.9
+  and which is therefore simply replaced by "600x1200dpi"
+  (see Suse Bugzilla bnc#116393).
+
+-------------------------------------------------------------------
+Mon Aug 29 17:09:07 CEST 2005 - jsmeix@suse.de
+
+- Removed a non-working PPD.
+- Fix "... is used uninitialized ..." warning.
+
+-------------------------------------------------------------------
+Tue Jul 26 17:33:13 CEST 2005 - jsmeix@suse.de
+
+- Updated to version 0.9.4
+- Removed obsolete fixes for missing class prototypes.
+- Removed obsolete fixes for HP_Business_Inkjet_3000.ppd
+- Added a fix for condrestart in /etc/init.d/hplip
+
+-------------------------------------------------------------------
+Tue May 31 17:07:13 CEST 2005 - jsmeix@suse.de
+
+- Updated to version 0.9.3
+
+-------------------------------------------------------------------
+Tue May 24 10:48:26 CEST 2005 - jsmeix@suse.de
+
+- Fixed missing class prototypes, otherwise it fails with
+  "error: ISO C++ forbids declaration of 'xxx' with no type".
+
+-------------------------------------------------------------------
+Tue May 17 14:10:49 CEST 2005 - jsmeix@suse.de
+
+- Fix "... is used uninitialized ..." warnings.
+
+-------------------------------------------------------------------
+Wed May  4 12:14:09 CEST 2005 - jsmeix@suse.de
+
+- Updated to version 0.9.2 which does no longer need
+  the "fix C" (i.e. hplip-0.8.8.diff) from below.
+
+-------------------------------------------------------------------
+Sun Apr 10 12:13:29 CEST 2005 - coolo@suse.de
+
+- fix C
+
+-------------------------------------------------------------------
+Tue Mar 22 11:59:00 CET 2005 - jsmeix@suse.de
+
+- Added PreReq.
+
+-------------------------------------------------------------------
+Thu Mar 17 10:53:11 CET 2005 - jsmeix@suse.de
+
+- Fixed a bug in HP-DeskJet_3740-hpijs.ppd.gz:
+  According to hpijs_readme.html the DeskJet 3740 belongs to the
+  DJ3320 device class.
+
+-------------------------------------------------------------------
+Tue Mar  8 11:59:09 CET 2005 - jsmeix@suse.de
+
+- Added %suse_update_desktop_file stuff for hp-toolbox.
+- Moved %{_libdir}/libsane-hpaio.* to %{_libdir}/sane/
+  instead of creating symlinks (see Tue Mar 1 11:15:33).
+
+-------------------------------------------------------------------
+Tue Mar  1 11:15:33 CET 2005 - jsmeix@suse.de
+
+- Added python-xml to RPM requirements because otherwise
+  hpssd (i.e. /usr/share/hplip/hpssd.py) doesn't work.
+- Create symlinks (via '%triggerin -- sane') to all
+  %{_libdir}/libsane-hpaio.* so that SANE will find them.
+- Added kdebindings3-python to RPM requirements because otherwise
+  hp-toolbox (i.e. /usr/share/hplip/toolbox) doesn't work.
+
+-------------------------------------------------------------------
+Tue Feb 22 10:48:35 CET 2005 - jsmeix@suse.de
+
+- Changed default media size from Letter to A4
+  if this is an available choice in the PPD.
+
+-------------------------------------------------------------------
+Tue Feb 15 16:57:52 CET 2005 - jsmeix@suse.de
+
+- Updated to version 0.8.8, for details see ChangeLog and
+  http://hpinkjet.sourceforge.net/updates.php
+- Removed the "compatibility"-links because they are not needed.
+- Fixed basic stuff in the init script (needs further improvement).
+- Source should be x86_64 clean (SUSE patch no longer needed).
+
+-------------------------------------------------------------------
+Tue Feb  1 17:06:20 CET 2005 - jsmeix@suse.de
+
+- Updated to version 0.8.7, for details see ChangeLog and
+  http://hpinkjet.sourceforge.net/updates.php
+- Added triggerin and postun scripts to add and remove
+  the SANE backend "hpaio" in /etc/sane.d/dll.conf
+- Replaced hplip-0.8.4-models.xml.diff by
+  hplip-0.8.7-models.xml.diff because the "HP LaserJet 1220"
+  is now in the models.xml file but the entry is buggy.
+
+-------------------------------------------------------------------
+Tue Jan 25 15:40:55 CET 2005 - jsmeix@suse.de
+
+- Branched the sub-package hplip-hpijs which contains only
+  the plain HPIJS binary so that Ghostscript can require
+  only this sub-package (without all the other stuff).
+- Added a link to the toolbox program to have it accessible
+  via the user's PATH.
+- Added the usual 'rc'-link to the runlevel script.
+- Added the following RPM requirements regarding printing:
+  hplip requires hplip-hpijs and foomatic-filters
+  hplip-hpijs requires ghostscript_any
+  (There are no RPM requirements regarding scanning because
+   HPLIP will be also used for plain printers.)
+- Exchanged the destructive line for the cupsd in the runlevel script
+  because cupsd runs as user lp and dies in case of a SIGHUP.
+
+-------------------------------------------------------------------
+Tue Jan 18 14:36:29 CET 2005 - jsmeix@suse.de
+
+- patch hplip-0.8.4-models.xml.diff adds the "HP LaserJet 1220"
+  to the list of known models of the SANE backend "hpaio"
+
+-------------------------------------------------------------------
+Wed Jan 12 11:23:00 CET 2005 - sf@suse.de
+
+- add --libdir=%_libdir to build on multilib archs
+- add patch for cups search path for backends
+
+-------------------------------------------------------------------
+Thu Dec  2 12:21:55 CET 2004 - jsmeix@suse.de
+
+- initial version
+

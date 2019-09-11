@@ -1,0 +1,744 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+
+-------------------------------------------------------------------
+Fri Jul 19 11:37:54 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- No code changes since 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * ensure to search also in the legacy location
+  * search in the new location for knsrc files
+
+-------------------------------------------------------------------
+Fri May 24 18:17:49 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.58.2
+  * New bugfix release
+- Changes since 5.58.1:
+  * ensure to search also in the legacy location
+
+-------------------------------------------------------------------
+Wed May 15 18:26:08 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.1
+  * New bugfix release
+- Changes since 5.58.0:
+  * search in the new location for knsrc files
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * use more appropriate plasma-specific icon for plasma category
+  * use plasma icon as icon for plasma notification category
+  * It compiles fine without foreach
+  * It compiles without deprecated method (qt5.13)
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * No code changes since 5.55.0
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * No code changes since 5.54.0
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Add option BUILD_KPACKAGE_INSTALL_HANDLERS to skip building install handlers
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * No code changes since 5.51.0
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:45 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * make sure that it builds with strict compile flags
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * [KStyle] Use dialog-question for question icon
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:43 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Remove check
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:02:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Add override
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * CMakeLists.txt - not necessary to search for Qt5 Xml
+  * kpackage-install-handlers/kns/CMakeLists.txt - link to Qt::Xml following changes in knewstuff
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * We depend against qt5.7
+  * Support downloading the 2nd or 3rd download link from a KNS product (kde#385429)
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Make KStandardGuiItem::discard match QDialogButtonBox::Discard
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Return high-resolution line edit clear icon
+  * Fix accepting dialogs with ctrl+return when buttons are renamed
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:14 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * None
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * cmake: use ecm_add_test more
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May 15 13:53:12 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Fri Apr  7 18:07:03 UTC 2017 - fabian@ritter-vogt.de
+
+- Enable AppStreamQt only for Leap 42.2+ and TW
+- Enable cmake(packagekitqt5)
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Mon Feb 13 08:42:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Build with AppStream-Qt again, right version now available
+
+-------------------------------------------------------------------
+Thu Feb  9 09:22:42 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:37:26 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Thu Dec 15 16:05:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Drop fix-appstream-detection.patch - just don't build with
+  APPSTREAM-QT until we have the right version available
+
+-------------------------------------------------------------------
+Thu Dec 15 15:27:31 UTC 2016 - lbeltrame@kde.org
+
+- Add fix-appstream-detection.patch: fix AppstreamQt vs
+  AppStreamQt detection
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Find QDBus, needed by appstream kpackage handler
+  * Let KPackage have dependencies from packagekit & appstream
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:07:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:48:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:46:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:49:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Remove unused dependencies and translation handling
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Remove platformtheme plugin as it's in plasma-integration
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Fallback to QCommonStyle implementation of standardIcon
+  * Set a default menu close timeout
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:54:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Remove possible file-name in KDEPlatformFileDialog::setDirectory()
+  * Don't filter by name if we have mime types
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:58:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:02:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Add plasmoid installation failed to plasma_workspace.notifyrc
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+- Drop upstreamed 0001-Don-t-add-extra-KDE-SNI-actions-in-our-systemtray-qp.patch
+
+-------------------------------------------------------------------
+Sun Nov  8 16:57:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Set default value for WheelScrollLines
+  * Fix WheelScrollLines settings with Qt >= 5.5 (kde#291144)
+  * Switch to Noto font for Plasma 5.5
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+- Added 0001-Don-t-add-extra-KDE-SNI-actions-in-our-systemtray-qp.patch
+  (kde#354991)
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Fix random file dialog not showing up problem. (kde#350758)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+- Drop 0001-Fix-random-file-dialog-not-showing-up-problem.patch, upstreamed
+
+-------------------------------------------------------------------
+Fri Oct  2 19:22:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-random-file-dialog-not-showing-up-problem.patch
+  (kde#350758)
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Also propagate window titles for folder-only file dialogs
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Fix crash in directories-only file dialog
+  * Don't rely on options()->initialDirectory() for Qt < 5.4
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Use the correct initialDirectory for the KDirSelectDialog
+  * Make sure the scheme is specified when overriding the start
+    url value
+  * Only accept existing directories in FileMode::Directory mode
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:45:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Fix native file dialogs from widgets QFileDialog:
+    ** File dialogs opened with exec() and without parent were
+    opened, but any user-interaction was blocked in a way that no
+    file could be selected nor the dialog closed.
+    ** File dialogs opened with open() or show() with parent were
+    not opened at all.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+- Drop 0001-Fix-native-file-dialogs-from-widgets-QFileDialog.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Fri Apr 17 00:56:19 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add the kde-oxygen-fonts Requires to correct subpackage
+- Add 0001-Fix-native-file-dialogs-from-widgets-QFileDialog.patch
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Fix possible crash when destroying a QSystemTrayIcon
+    (triggered by e.g. Trojita), kde#343976
+  * Fix native modal file dialogs in QML, kde#334963
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sat Feb 28 18:50:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebuild against Qt 5.4.1
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fix updating of single click setting at runtime
+  * Multiple fixes to the systemtray integration
+  * Only install color scheme on toplevel widgets
+    (to fix QQuickWidgets)
+  * Update XCursor settings on X11 platform
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+- Drop patches merged upstream:
+  0005-Properly-check-for-systray-being-available.patch,
+  0007-Use-activate-on-single-click-setting-from-QPlatformT.patch,
+  0001-Update-XCursor-settings.patch,
+  0004-Only-install-color-scheme-on-toplevel-widgets.patch and
+  0008-Implement-SystemTrayMenuItem-setMenu-correctly.patch
+
+-------------------------------------------------------------------
+Fri Jan 30 02:06:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-Update-XCursor-settings.patch,
+  0005-Properly-check-for-systray-being-available.patch (kde#339707),
+  0004-Only-install-color-scheme-on-toplevel-widgets.patch,
+  0007-Use-activate-on-single-click-setting-from-QPlatformT.patch
+  (kde#343418) and
+  0008-Implement-SystemTrayMenuItem-setMenu-correctly.patch
+- Added pkgconfig(x11) and pkgconfig(xcursor) BuildRequires, needed
+  for 0001-Update-XCursor-settings.patch
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Fix handling of palette change events (kde#336813)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+- Split the integration plugin into separate package
+- Make sure that the plugin uses exact libQt5Gui5 version it was
+  compiled against, due to usage of private Qt headers
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Implement standardButtonText().
+  * Fix restoring the view mode and sizes in the file dialog
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Implement support for setting custom labels in file dialogs
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Fixed for compilation with Qt 5.4
+  * Fixed a few standard shortcuts
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Drop patches merged upstream:
+  0001-default-to-breeze.patch and 0002-colorscheme-in-General.patch
+
+-------------------------------------------------------------------
+Wed Sep 24 19:02:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-default-to-breeze.patch and 0002-colorscheme-in-General.patch
+  from upstream: adjust correct default widget theme, and makes
+  colorscheme be read from correct kconfig section
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * Frameworkintegration: the file dialog now remembers its size
+    correctly, and works better with remote URLs.
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Add frameworkintegration-plugin Provides
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+- Drop 0001-Ensure-the-xcb-connection-gets-flushed-before-the-ev.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add 0001-Ensure-the-xcb-connection-gets-flushed-before-the-ev.patch
+  (kde#334858)
+- Added baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:14:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+- BuildRequire libQt5Gui-private-headers-devel >= 5.2.0, as rest
+  of Qt modules
+- Require kde-oxygen-fonts, it is now official font of KDE Workspaces
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init frameworkintegration package
+

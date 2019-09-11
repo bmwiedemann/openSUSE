@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Tue Oct 16 19:40:49 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %license
+
+-------------------------------------------------------------------
+Fri Dec 15 18:15:44 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.3.0
+  * some improvements for Btrfs, F2FS, NTFS file systems
+  * first bits of new LUKS2 on-disk format support, now KDE
+    Partition Manager can display LUKS2 labels. More LUKS2 work
+    will follow in KPM 3.4.
+  * There were changes in how LVM devices are detected which might
+    be interesting if you use Calamares installer. In that case,
+    you also need at least Calamares 3.1.8. Older versions will not
+    compile against KPMcore 3.3.
+  * KPMcore library now only depends on just three Tier 1
+    Frameworks (I18n, CoreAddons, WidgetsAddons) instead of Tier 3
+    (although, we will later require Tier 2 KAuth too)
+- Drop fix-build-with-older-parted.patch, it cannot be built on
+  Leap 42 anymore anyway because it needs newer Qt5 and blkid
+
+-------------------------------------------------------------------
+Sun Oct  1 18:25:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Oct  1 12:03:27 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.2.0
+  * Added support for UDF file system (this change requires
+    util-linux 2.30). While adding support for UDF, the following
+    general improvements were made:
+    + KPM now supports setting label for file systems where it can
+      only be done during initial formating (e.g. nilfs2 or udf)
+    + File system label widget (QLineEdit) now validates its input
+      for certain file systems (at the moment only FAT and UDF),
+      not just maximum label length.
+  * Detection support for ISO9660 file system
+  * kpmcore now has lighter KDE Frameworks dependencies, KIO is no
+    longer necessary, KIconThemes dependency moved from kpmcore to
+    Partition Manager
+  * kpmcore now has its own fstab parser and writer. Before we
+    used to rely on glibc but it had no support for reading fstab
+    comments, etc.
+- Update build requirements
+
+-------------------------------------------------------------------
+Wed Jul  5 15:22:01 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.2
+  * Fix a possible null pointer dereference when glibc's getlogin
+    function failed to return username of current user
+
+-------------------------------------------------------------------
+Mon Jun 19 14:03:29 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.1
+  * Disables plasma removable device automounting before doing any
+    tasks.
+
+-------------------------------------------------------------------
+Fri Jun  2 12:16:24 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.0
+  * Fix some crashes when attempting to run without admin
+    privileges
+  * Improve support for changing file system labels online
+  * Fix creation of LUKS volumes on some systems with NVMe disks
+  * Require Qt 5.7
+  * Detect Virtio KVM devices
+- Remove INSTALL file from the package to fix an rpmlint warning
+
+-------------------------------------------------------------------
+Sun Feb  5 22:34:16 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.3
+  * some fixes for LUKS encrypted LVM logical volumes
+
+-------------------------------------------------------------------
+Fri Jan  6 18:58:22 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.2
+  * some "used space" fixes that are essential for Calamares
+
+-------------------------------------------------------------------
+Wed Jan  4 12:09:33 UTC 2017 - fabian@ritter-vogt.de
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  2 13:37:44 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.1
+  * fixes a bug in partition resizing widget that might lead to a
+    data loss
+
+-------------------------------------------------------------------
+Mon Dec 19 17:46:05 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 3.0.0
+- Update fix-build-with-older-parted.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 13:44:28 UTC 2016 - wbauer@tmo.at
+
+- Update to 2.2.1
+- Adjust build requirements
+- Add fix-build-with-older-parted.patch to fix build on 13.2 and
+  Leap 42
+- Remove fix-build.diff, it's not needed anymore
+
+-------------------------------------------------------------------
+Sun Jun 19 06:53:18 UTC 2016 - jacobwinski@gmail.com
+
+- Update to 2.2.0.
+- Update shared library name in spec file to reflect SONAME.
+- Update spec description to fix desc shorter than summary error.
+- Update patch so that it applies to new version.
+
+-------------------------------------------------------------------
+Sun Apr  3 17:16:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 2.1.1
+
+-------------------------------------------------------------------
+Mon Jan 18 09:47:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial version 2.0.0
+

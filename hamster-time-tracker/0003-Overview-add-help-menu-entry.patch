@@ -1,0 +1,47 @@
+From 11b2401cc8fdc1de5331bdcd73a91c8d8aafc657 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Mar 2019 21:06:59 +0100
+Subject: [PATCH 3/6] Overview: add "help" menu entry
+
+Find a way to display hamster's help.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ src/hamster/overview.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/hamster/overview.py b/src/hamster/overview.py
+index fa0d808..c61c521 100755
+--- a/src/hamster/overview.py
++++ b/src/hamster/overview.py
+@@ -90,6 +90,8 @@ class HeaderBar(gtk.HeaderBar):
+         self.system_menu.append(self.menu_export)
+         self.menu_prefs = gtk.MenuItem(label=_("Tracking Settings"))
+         self.system_menu.append(self.menu_prefs)
++        self.menu_help = gtk.MenuItem(label=_("Help"))
++        self.system_menu.append(self.menu_help)
+         self.system_menu.show_all()
+ 
+ 
+@@ -434,6 +436,7 @@ class Overview(Controller):
+ 
+         self.header_bar.menu_prefs.connect("activate", self.on_prefs_clicked)
+         self.header_bar.menu_export.connect("activate", self.on_export_clicked)
++        self.header_bar.menu_help.connect("activate", self.on_help_clicked)
+ 
+ 
+         self.window.connect("key-press-event", self.on_key_press)
+@@ -538,6 +541,10 @@ class Overview(Controller):
+         # The timeout will stop if returning False
+         return True
+ 
++    def on_help_clicked(self, menu):
++        gtk.show_uri(gdk.Screen().get_default(), "help:hamster-time-tracker",
++                     gdk.CURRENT_TIME)
++
+     def on_prefs_clicked(self, menu):
+         dialogs.prefs.show(self)
+ 
+-- 
+2.20.1
+

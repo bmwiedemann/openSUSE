@@ -1,0 +1,251 @@
+From 41599f8f6ea96ef69c45e0392c06ef1906d5acda Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Jan 2017 00:59:09 +0100
+Subject: [PATCH 5/6] Make static libs optional
+
+---
+ CMakeLists.txt                        |  5 +++++
+ src/liboyranos/CMakeLists.txt         | 22 +++++++++++++++++-----
+ src/liboyranos_config/CMakeLists.txt  | 20 +++++++++++++++-----
+ src/liboyranos_core/CMakeLists.txt    | 18 +++++++++++++++---
+ src/liboyranos_modules/CMakeLists.txt | 21 ++++++++++++++++-----
+ src/liboyranos_object/CMakeLists.txt  | 21 ++++++++++++++++-----
+ 6 files changed, 84 insertions(+), 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7107840..130fd68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,8 +34,13 @@ SET( OYRANOS_VERSION_MAJORMINOR "${OYRANOS_VERSION_MAJOR}.${OYRANOS_VERSION_MINO
+ include(GNUInstallDirs)
+ 
+ option(ENABLE_EXAMPLES "Build example applications" ON)
++option(ENABLE_STATIC_LIBS "Build static libs" ON)
+ option(ENABLE_TESTS "Build tests (requires static libs)" ON)
+ 
++IF( ENABLE_TESTS )
++  SET(ENABLE_STATIC_LIBS ON)
++ENDIF()
++
+ IF( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+   SET(PLATFORM "OSX")
+ ELSEIF( ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+diff --git a/src/liboyranos/CMakeLists.txt b/src/liboyranos/CMakeLists.txt
+index ba550e6..0e031b7 100644
+--- a/src/liboyranos/CMakeLists.txt
++++ b/src/liboyranos/CMakeLists.txt
+@@ -68,10 +68,6 @@ ADD_LIBRARY( ${PROJECT_NAME} SHARED ${SOURCES} ${CHEADERS_OBJECT_IMAGING_PUBLIC}
+ TARGET_LINK_LIBRARIES (
+    ${PROJECT_NAME}
+    ${PROJECT_NAME}Config ${PROJECT_NAME}Modules ${PROJECT_NAME}Object ${PROJECT_NAME}Core ${EXTRA_LIBS} )
+-ADD_LIBRARY( oyranos-static STATIC ${SOURCES} ${CHEADERS_OBJECT_IMAGING_PUBLIC} )
+-TARGET_LINK_LIBRARIES (
+-   oyranos-static
+-   oyranos_config-static oyranos_modules-static oyranos_object-static oyranos_core-static ${EXTRA_LIBS} )
+ 
+ # OS X Framework
+ FOREACH( policy ${SETTINGS_PUBLIC} )
+@@ -95,7 +91,7 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME} PROPERTIES
+ #  DEBUG_POSTFIX -d
+ )
+ 
+-INSTALL( TARGETS       ${PROJECT_NAME} oyranos-static
++INSTALL( TARGETS       ${PROJECT_NAME}
+          RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK     DESTINATION ${FRAMEWORK_DIR}
+          LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -104,6 +100,22 @@ INSTALL( TARGETS       ${PROJECT_NAME} oyranos-static
+          RESOURCE      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/settings
+        )
+ 
++IF(ENABLE_STATIC_LIBS)
++  ADD_LIBRARY( oyranos-static STATIC ${SOURCES} ${CHEADERS_OBJECT_IMAGING_PUBLIC} )
++  TARGET_LINK_LIBRARIES (
++    oyranos-static
++    oyranos_config-static oyranos_modules-static oyranos_object-static oyranos_core-static ${EXTRA_LIBS} )
++
++  INSTALL(TARGETS       oyranos-static
++          RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR}
++          FRAMEWORK     DESTINATION ${FRAMEWORK_DIR}
++          LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++          RESOURCE      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/settings
++        )
++ENDIF()
++
+ # install for all but app bundles
+ INSTALL( FILES       ${SETTINGS_PUBLIC}
+          DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/settings
+diff --git a/src/liboyranos_config/CMakeLists.txt b/src/liboyranos_config/CMakeLists.txt
+index 0e223c2..5e81c0e 100644
+--- a/src/liboyranos_config/CMakeLists.txt
++++ b/src/liboyranos_config/CMakeLists.txt
+@@ -80,10 +80,6 @@ ADD_LIBRARY( ${PROJECT_NAME}Config SHARED ${SOURCES} )
+ TARGET_LINK_LIBRARIES (
+    ${PROJECT_NAME}Config
+    ${PROJECT_NAME}Modules ${PROJECT_NAME}Object ${PROJECT_NAME}Core ${EXTRA_LIBS_CONFIG} ${EXTRA_LIBS_CS} )
+-ADD_LIBRARY( oyranos_config-static STATIC ${SOURCES} )
+-TARGET_LINK_LIBRARIES (
+-   oyranos_config-static
+-   oyranos_modules-static oyranos_object-static oyranos_core-static ${EXTRA_LIBS_CONFIG} ${EXTRA_LIBS_CS} )
+ 
+ # OS X Framework
+ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Config PROPERTIES
+@@ -96,7 +92,7 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Config PROPERTIES
+ #  DEBUG_POSTFIX -d
+ )
+ 
+-INSTALL( TARGETS ${PROJECT_NAME}Config oyranos_config-static
++INSTALL( TARGETS ${PROJECT_NAME}Config
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -104,3 +100,17 @@ INSTALL( TARGETS ${PROJECT_NAME}Config oyranos_config-static
+          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
+ 
++IF(ENABLE_STATIC_LIBS)
++  ADD_LIBRARY( oyranos_config-static STATIC ${SOURCES} )
++  TARGET_LINK_LIBRARIES (
++    oyranos_config-static
++    oyranos_modules-static oyranos_object-static oyranos_core-static ${EXTRA_LIBS_CONFIG} ${EXTRA_LIBS_CS} )
++
++  INSTALL( TARGETS oyranos_config-static
++          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
++          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++        )
++ENDIF()
+diff --git a/src/liboyranos_core/CMakeLists.txt b/src/liboyranos_core/CMakeLists.txt
+index 078a4ce..73aa3c3 100644
+--- a/src/liboyranos_core/CMakeLists.txt
++++ b/src/liboyranos_core/CMakeLists.txt
+@@ -38,8 +38,6 @@ SET( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_CORE}" )
+ 
+ ADD_LIBRARY( ${PROJECT_NAME}Core SHARED ${SOURCES} )
+ TARGET_LINK_LIBRARIES ( ${PROJECT_NAME}Core ${EXTRA_LIBS_CORE} )
+-ADD_LIBRARY( oyranos_core-static STATIC ${SOURCES})
+-TARGET_LINK_LIBRARIES ( oyranos_core-static ${EXTRA_LIBS_CORE} )
+ 
+ # OS X Framework
+ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Core PROPERTIES
+@@ -52,7 +50,7 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Core PROPERTIES
+ #  DEBUG_POSTFIX -d
+ )
+ 
+-INSTALL( TARGETS ${PROJECT_NAME}Core oyranos_core-static
++INSTALL( TARGETS ${PROJECT_NAME}Core
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -61,6 +59,20 @@ INSTALL( TARGETS ${PROJECT_NAME}Core oyranos_core-static
+          RESOURCE DESTINATION ${FRAMEWORK_DIR}
+        )
+ 
++IF(ENABLE_STATIC_LIBS)
++  ADD_LIBRARY( oyranos_core-static STATIC ${SOURCES})
++  TARGET_LINK_LIBRARIES ( oyranos_core-static ${EXTRA_LIBS_CORE} )
++
++  INSTALL( TARGETS oyranos_core-static
++          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
++          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++          RESOURCE DESTINATION ${FRAMEWORK_DIR}
++        )
++ENDIF()
++
+ IF( USE_GETTEXT )
+   MESSAGE( "-- OY_LINGUAS: ${OY_LINGUAS}" )
+   IF(APPLE)
+diff --git a/src/liboyranos_modules/CMakeLists.txt b/src/liboyranos_modules/CMakeLists.txt
+index ded32e7..0f33788 100644
+--- a/src/liboyranos_modules/CMakeLists.txt
++++ b/src/liboyranos_modules/CMakeLists.txt
+@@ -118,10 +118,6 @@ ADD_LIBRARY( ${PROJECT_NAME}Modules SHARED ${SOURCES} )
+ TARGET_LINK_LIBRARIES (
+    ${PROJECT_NAME}Modules
+    ${PROJECT_NAME}Object ${PROJECT_NAME}Core ${EXTRA_LIBS} )
+-ADD_LIBRARY( oyranos_modules-static STATIC ${SOURCES} )
+-TARGET_LINK_LIBRARIES (
+-   oyranos_modules-static
+-   oyranos_object-static oyranos_core-static ${EXTRA_LIBS} )
+ 
+ # OS X Framework
+ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Modules PROPERTIES
+@@ -134,10 +130,25 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Modules PROPERTIES
+ #  DEBUG_POSTFIX -d
+ )
+ 
+-INSTALL( TARGETS ${PROJECT_NAME}Modules oyranos_modules-static
++INSTALL( TARGETS ${PROJECT_NAME}Modules
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
++
++IF(ENABLE_STATIC_LIBS)
++  ADD_LIBRARY( oyranos_modules-static STATIC ${SOURCES} )
++  TARGET_LINK_LIBRARIES (
++    oyranos_modules-static
++    oyranos_object-static oyranos_core-static ${EXTRA_LIBS} )
++
++  INSTALL( TARGETS oyranos_modules-static
++          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
++          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++        )
++ENDIF()
+diff --git a/src/liboyranos_object/CMakeLists.txt b/src/liboyranos_object/CMakeLists.txt
+index 0e0e7c9..a11e6aa 100644
+--- a/src/liboyranos_object/CMakeLists.txt
++++ b/src/liboyranos_object/CMakeLists.txt
+@@ -87,10 +87,6 @@ ADD_LIBRARY( ${PROJECT_NAME}Object SHARED ${SOURCES} )
+ TARGET_LINK_LIBRARIES (
+    ${PROJECT_NAME}Object
+    ${PROJECT_NAME}Core ${EXTRA_LIBS_CORE} )
+-ADD_LIBRARY( oyranos_object-static STATIC ${SOURCES} )
+-TARGET_LINK_LIBRARIES (
+-   oyranos_object-static
+-   oyranos_core-static ${EXTRA_LIBS_CORE} )
+ 
+ # OS X Framework
+ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Object PROPERTIES
+@@ -103,10 +99,25 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Object PROPERTIES
+ #  DEBUG_POSTFIX -d
+ )
+ 
+-INSTALL( TARGETS ${PROJECT_NAME}Object oyranos_object-static
++INSTALL( TARGETS ${PROJECT_NAME}Object
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
++
++IF(ENABLE_STATIC_LIBS)
++  ADD_LIBRARY( oyranos_object-static STATIC ${SOURCES} )
++  TARGET_LINK_LIBRARIES (
++    oyranos_object-static
++    oyranos_core-static ${EXTRA_LIBS_CORE} )
++
++  INSTALL( TARGETS oyranos_object-static
++          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
++          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++        )
++ENDIF()
+-- 
+2.10.2
+

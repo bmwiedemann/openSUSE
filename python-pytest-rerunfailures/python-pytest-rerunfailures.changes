@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Mar 28 13:28:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0:
+  * Drop support for pytest version 3.8 and 3.9.
+  * Add support for pytest version 4.2 and 4.3.
+  * Fixed #83 issue about ignored pytest_runtest_logfinish hooks
+
+-------------------------------------------------------------------
+Fri Feb 15 09:52:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests really
+- Update to 6.0:
+  * Drop support for pytest version 3.6 and 3.7.
+  * Add support for pytest version 4.0 and 4.1.
+  * Fixed #77 regression issue introduced in 4.2 related to the rerun attribute on the test report. (#77) (Thanks to @RibeiroAna for the PR).
+
+-------------------------------------------------------------------
+Thu Nov 15 00:19:30 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

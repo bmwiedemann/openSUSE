@@ -1,0 +1,660 @@
+-------------------------------------------------------------------
+Sat Mar 16 22:37:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Added Mallard 1.1 to supported list for conditionals.
+
+-------------------------------------------------------------------
+Mon Mar 11 15:05:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 14 22:22:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Refresh colors for new GNOME HIG colors.
+  + Support for Mallard 1.1 hi element.
+  + Initial work on Mallard 1.2 stack element.
+  + Added ui-expander-preview style for expanders.
+  + Converted xsldoc docs to Ducktype.
+
+-------------------------------------------------------------------
+Wed Sep 26 15:01:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Updated translations.
+- Changes from version 3.30.0:
+  + Added stock sidebar support.
+  + Added mallard:if/1.0 to supported feature tokens.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 19:22:28 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Implemented th/@scope attribute.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 16:46:26 UTC 2018 - jengelh@inai.de
+
+- Fix RPM group.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:28:43 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license
+
+-------------------------------------------------------------------
+Tue Feb  6 14:14:02 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Typo fixes in docs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 19 09:56:15 UTC 2017 - aplazas@suse.com
+
+- Update to version 3.27.1:
+  + Massive backwards incompatible updates to stylesheets.
+  + Changed color parameters and added color computations.
+  + Used more HTML5 elements like article, header, footer.
+  + Switched to flexbox for large parts of the layout.
+  + Implemented more granular content centering.
+  + Added stub for sidebars.
+  + Dropped external icons in favor of recolorable inline SVGs.
+  + Removed jQuery.
+  + Switched syntax highlighter to highlight.js.
+  + Dropped experimental Mallard facet support.
+  + Added default colorings for syntax highlighting.
+  + Added a number of new modes and stub templates for
+    customizations.
+  + Updated the section highlighting for location.hash.
+  + Fixed lang:C Mallard test token.
+  + Added support for generic Mallard div element, MEP-0005.
+  + Began adding support for DocBook automatic indexes.
+  + Added support for DocBook stepalternatives and result.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 15 21:14:38 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Apr 12 10:53:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:16:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 14 23:18:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to 3.19.90:
+  + Move linktrails stubs to common for all source formats to use.
+  + Allow Mallard example to be a formal element with title.
+  + Added html.js.script template for easier site overrides.
+  + Don't force xref attributes on links in Mallard cache.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 14:31:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fixed broken selector entity in DocBook chunker.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:16:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 10:46:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated localization templates, removing unused code.
+  + Dropped db.chunk.chunks parameter in favor of selector entity.
+  + Improvements to API docs.
+
+-------------------------------------------------------------------
+Tue Jul 21 09:32:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul  1 11:27:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.3:
+  + Support external info links topic, guide, and seealso.
+  + Support for Mallard Sites in cache generator.
+  + Drop P. prefix for parameter pages in docs.
+
+-------------------------------------------------------------------
+Thu May 28 09:36:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Embed Mallard+SVG directly in HTML5 instead of using <object>.
+  + Added a top-level dita2html XSLT driver file.
+  + Fixed a few XSLT validity errors.
+  + Correctly handle image-only links in Mallard.
+  + Set HTML5 DOCTYPE for non-XHTML output.
+
+-------------------------------------------------------------------
+Tue Apr 14 00:43:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Fixed Mallard link content when it's only an image.
+  + Make sure TTML spans are displayed inline (bgo#746550).
+
+-------------------------------------------------------------------
+Tue Mar 24 08:56:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Stable release, no changes since 3.15.92.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:46:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Removed indenting of subsections.
+  + Added support for Mallard th element.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:16:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:23:52 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 08:25:53 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 17:57:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Added "hidden" style hint on page and section titles.
+  + Added "norwich" style on links elements.
+
+-------------------------------------------------------------------
+Mon Feb  3 18:49:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Use <kdb> to fix DocBook keycap styling (bgo#709943).
+  + Removed the completely unused code watermark image.
+  + Made Mallard transform robust against multiple desc elements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 18:02:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Don't assign ARIA role "button" for expander headers
+    (bgo#719571).
+
+-------------------------------------------------------------------
+Mon Nov 18 19:27:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Added common template html.syntax.class for syntax brush.
+  + Only check for xmllint/xsltproc when needed (bgo#700670).
+
+-------------------------------------------------------------------
+Tue Oct 15 14:30:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Fixed use of links styles on page and section elements.
+
+-------------------------------------------------------------------
+Mon Sep 23 19:12:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 06:36:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Added support for DocBook conditional processing.
+  + Fixed RTL issues in link trails for Mallard, DocBook, and DITA.
+  + Added "lead" style hint for paragraphs in Mallard and DocBook.
+  + Allow experimental role attribute on Mallard links element.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:11:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Style work on previous and next links.
+  + Use fixed positioning for ui overlays.
+  + Use nicer close buttons on ui overlays.
+  + Added html.class.attr and html.class.attr.mode.
+  + Fixed issued with HTML tables in DocBook.
+  + Added "center" and "button" style hints to links element.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 14 07:14:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 07:11:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + Added "center" style hint for block title and desc.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 16:23:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Added style hints for new Getting Started designs.
+  + Fixed incorrect automatic link role for guide links.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 21:27:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 14 17:58:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Support for Mallard conditional language test tokens.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan  7 19:21:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Added style="continues" for Mallard lists and steps
+  + Better handling of broken internal Mallard links
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 24 13:59:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + MathML support for Mallard and DocBook.
+  + Audio and video support for DocBook.
+  + Ability to set poster image for video.
+  + TTML subtitles for audio and inline media.
+  + Updated media controls.
+  + Fixed #hash auto-expanding and colorizing.
+  + Translator and publisher credits.
+  + Use quote char on :before for blockquote.
+  + ARIA landmark roles.
+  + Changed marker for expanders.
+  + Switched ui:expanded to non-experimental.
+  + Experimental Mallard UI overlays.
+  + Dropped unused DocBook utility XSLT.
+  + Use itstool "join mode" for translations.
+  + More experimental thumbnail link styles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 19:52:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 21:17:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 21:21:40 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 15:11:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:37:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Added support for depth attribute on section links
+  + Improved various bits of the build process
+  + Corrected jQuery.Syntax license info
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 15 13:56:53 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Fixed invalid translations (bgo#675905)
+  + Fixed handling of inline markup in translation messages
+  + Removed old and incorrect code referencing old parameters
+  + Fixed Mallard if:if for "maybe" values
+  + Removed custom DocBook keys in favor of db.id.key
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 05:55:24 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 18:50:32 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 18:28:58 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Be more flexible with revisions for editor banner.
+  + Don't auto-link Python symbols when syntax highlighting.
+  + Fixed private templates and stylesheet variables in xsldoc.
+  + Use common links template for topic, guide, seealso, facets.
+  + Support for profile-checking in TTML.
+  + Support for xml:lang and xml:space in TTML.
+  + Support for TTML br element.
+  + Support for TTML dur attribute.
+  + Support for h and m time units in TTML.
+  + Support for Mallard block content in TTML.
+  + Dropped unused DocBook chunking params.
+  + Handle DocBook literallayout with class="monospaced".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:35:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Use series link titles for series links
+  + Fixed facet link-handling, broken by HTML changes
+  + Style tweaks for mobile rendering
+  + Implemented new Conditionals extension
+  + Initial support for new ui:thumb extension
+  + Added customization stubs for Mallard linking
+  + Added support for DocBook bridgehead element
+  + Don't output empty About footer
+  + Changed mal2html.section.mode to named template
+  + Made copyright notices localizable (DocBook and Mallard)
+  + Strip query string from email address in tooltip
+  + Alignment fixed for DocBook synopfragment
+  + Fixed handling of DocBook biblioset
+  + Fixed handling of DocBook indexdiv
+  + Basic support for DocBook task element
+  + Support for DocBook package element
+  + Support for DocBook sidebar element
+  + Use common formatting for DocBook example and procedure
+  + Changed some XSLT key names and made public
+  + Set language attributes on HTML body
+  + Moved gettext stylesheet into common
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 17 14:14:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Customized rendering for mobile devices
+  + Changed how :first-child margin-top is set
+  + Changed div.all to div.page
+  + Copy page/section attributes to cache
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Dec 13 13:09:58 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Nov 21 16:51:43 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.1:
+  + Made linktrails more extensible for customizations
+  + Added new 'About' footer to HTML output
+  + Moved Yelp's location.hash formatting to yelp-xsl
+  + Updated style for key/keycap elements
+  + Style work on post-content links, no header
+  + Fall back to correct link title for sort titles
+  + Strip links from descs in link blocks
+  + Added html.top.custom and html.bottom.custom
+  + Added html.header.custom and html.footer.custom
+  + Correctly set ARIA controls for expanders
+  + Use the correct type for "prevnext" links elements
+  + Simplifications to DocBook bibliography handling
+  + Cleaned up DocBook block and title output templates
+  + Moved DocBook links templates to db2html-links
+  + Replaced db2html-autotoc with simpler section links
+  + Fixed DocBook footnote handling
+  + Use html.lang.attrs consistently in DocBook
+  + Removed special-case code in Mallard cache stylesheet
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:08:24 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Fixed editor-mode badges for final pages and pkgversion.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 22:13:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 14:30:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.6:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 05:50:41 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.5:
+  + Experimental Mallard extension for API references
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 17:46:37 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.4:
+  + Speed improvements for Mallard processing
+  + Added if:supports to conditional processing
+  + Added "button" style for links
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  2 17:18:45 CEST 2011 - vuntz@opensuse.org
+
+- Add pkg-config BuildRequires: nothing brings it in anymore as
+  this package has small dependencies. Fix build on Factory.
+
+-------------------------------------------------------------------
+Mon Jul 25 21:18:56 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Experimental support for ui:expanded expanders
+  + Changed steps and note visuals, less yellow now
+  + Cleaned up some links handling, some API changes
+  + Added accessible titles on notes in DocBook and Mallard
+    (bgo#613267)
+  + Mallard media type attribute defaults to 'image', per spec
+  + Fixed seeie/seealsoie formatters in DocBook
+  + Fixed the link text for DocBook glossentry links
+  + Fixed formatting of DocBook inline quotes
+  + Add PI to suppress DocBook section links (bgo#346397)
+  + Experimental Mallard Glossaries extension
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:50:27 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Changed formatting of notes
+  + Style tweaks to linkdivs and link trails
+  + Fixed localization for bibliographies, citations, comments
+  + Trim link trails that are longer forms of other trails
+  + Added experimental ui:expanded support for notes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 24 08:57:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + Improvements to the JS/CSS for videos and TTML
+  + Changed gettext infrastructure, use itstool
+  + Improvements and cleanup to DocBook code
+  + Implemented experimental Mallard conditional processing
+  + Updated to jQuery.syntax 3.0, custom layout file
+  + Don't embed div in a tag for linkdivs
+  + Added title attribute to HTML output for all links
+  + Updated translations.
+- Changes from version 3.0.2:
+  + Updated translations.
+- Add itstool BuildRequires.
+- Drop yelp-xsl-update-jquery-syntax.patch: fixed upstream.
+- Drop the lang package:tThe .mo files are not used by anything;
+  the *.po are merged into the xml files (see bgo#650942).
+- Obsolete the lang subpackage, since we don't ship translations in
+  .mo files anymore.
+
+-------------------------------------------------------------------
+Tue May 17 15:23:46 UTC 2011 - fcrozat@suse.com
+
+- Add yelp-xsl-update-jquery-syntax.patch: Update jquery.syntax to
+  3.0 release, which is MIT licensed.  bnc#693971 bgo#650308
+- Update License tag to add MIT license.
+- Call autoreconf, needed by yelp-xsl-update-jquery-syntax.patch.
+
+-------------------------------------------------------------------
+Tue Apr 26 14:05:53 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Fixed page sorting for groups on mal:links.
+  + Various small CSS tweaks.
+  + Fixed how JavaScript is included
+  + Fixed cache behavior with roled link titles
+  + bgo#645947: added floatstart and floatend hints.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:57:58 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + no code change since 2.91.92.
+
+-------------------------------------------------------------------
+Tue Mar 22 13:23:49 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Use trail link title for link trails
+  + Fix note icon craziness with nested inner divs
+  + Added special fanciness for the gnome-help index
+  + Added the 'bold' and 'nodesc' links styles
+  + Corrected handling of media style attribute
+  + Put links element in Mallard 1.0 namespace
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 09:34:06 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.91:
+  + Support ubiquitous linking on media
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 22 16:25:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.90:
+  + Get link roles right for topic links
+  + Full support for the links element
+  + Made magic image scaling perform better
+  + Use HTML <h*> elements for block titles, for a11y
+  + Correct link trails separators for RTL
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 12 19:16:45 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.91.9:
+  + Added magic image scaling for figures
+  + Added support for experimental series links
+  + Fixed previous and next links for DocBook and Mallard
+  + Enabled syntax highlighting in DocBook
+  + Changes to html.js and html.css to make them easier to override
+  + Added editor_mode status badges to linklist links
+  + Improvements to link filtering with facets
+  + Prevent key and keyseq from line-wrapping
+
+-------------------------------------------------------------------
+Sun Dec 19 17:08:29 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.8:
+  + Fixed non-well-formed XML in XSLT file
+
+-------------------------------------------------------------------
+Fri Dec 17 10:30:29 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.7:
+  + Added support for Mallard Facets extension
+  + Fixed incorrect handling of topic link groups
+  + Added automatic syntax highlighting using jQuery.Syntax
+  + Implemented sidebar style for notes
+  + Added support for line numbering in Mallard code blocks
+
+-------------------------------------------------------------------
+Mon Nov 15 11:42:53 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.6:
+  + Added support for TTML captions for Mallard media.
+  + Common section links styling for DocBook and Mallard.
+  + Implemented e:links for Mallard sections.
+  + Implement @style='linklist' for Mallard guide links.
+  + Implemented e:links for Mallard topic links.
+  + Normalize space for title sort keys.
+  + Load cache file relative to page file.
+
+-------------------------------------------------------------------
+Fri Aug  6 10:35:34 CEST 2010 - vuntz@opensuse.org
+
+- Enable parallel build.
+- Do not mark as %doc some files in /usr/share/yelp-xsl/ that are
+  not docs.
+
+-------------------------------------------------------------------
+Mon Jul 19 07:45:49 UTC 2010 - dimstar@opensuse.org
+
+- Initial package of yelp-xsl, version 2.31.5.
+

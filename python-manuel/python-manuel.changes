@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jan  9 22:20:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Drop unnecessary Require.
+
+-------------------------------------------------------------------
+Wed Jan  2 12:30:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.10.1:
+  * Support for pypy3
+  * Support for python 3.7
+
+-------------------------------------------------------------------
+Wed Feb 28 11:19:29 UTC 2018 - hpj@urpla.net
+
+- update to version 1.9.0:
+  * You can now use Manuel with the nose and pytest test runners by
+    defining Manuel tests inside unittest.TestCase classes.
+  * Added support for Python 3.5 and Python 3.6.
+  * Dropped support for Python 2.6
+- add a fixed conf.py in order to properly build the docs (again)
+
+-------------------------------------------------------------------
+Fri Jun 23 13:49:07 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Thu May  7 11:52:21 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.8.0:
+  * Fixed ResourceWarnings under Python 3.
+  * Added support for PyPy and Python 3.4.
+  * Drop official support for Python 3.1 and 3.2.
+  * Fix odd ImportError problems when used with tox and coverage.
+  * Fix parsing of reST codeblock options with hyphens.
+- rename documentation files .txt to .rst: changed upstream
+
+-------------------------------------------------------------------
+Sat Aug  3 20:23:18 UTC 2013 - hpj@urpla.net
+
+- version 1.7.2: initial build
+

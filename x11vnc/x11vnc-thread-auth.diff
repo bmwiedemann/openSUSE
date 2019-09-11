@@ -1,0 +1,50 @@
+diff --git a/src/screen.c b/src/screen.c
+index 21e2eed..d5d42e4 100644
+--- a/src/screen.c
++++ b/src/screen.c
+@@ -4363,6 +4363,37 @@ if (0 && dt > 0.0) fprintf(stderr, "dt: %.5f %.4f\n", dt, dnowx());
+ 	return msec;
+ }
+ 
++/*
++ * Terrible hack for the multithreaded x11vnc ...
++ * But we get the client confused if we start sending stuff in our
++ * main loop prior to it being initialized properly. So wait.
++ * It's polling :-(
++ */
++static void _mt_wait_for_client() {
++	time_t start = time(0);
++	while (!client_count) {
++		if (first_conn_timeout && time(0) - start > first_conn_timeout)
++			return;
++		usleep(100*1000);
++	}
++	while (1) {
++		rfbClientIteratorPtr iter;
++		rfbClientPtr cl;
++		iter = rfbGetClientIterator(screen);
++		while( (cl = rfbClientIteratorNext(iter)) ) {
++			//ClientData *cd = (ClientData *) cl->clientData;
++			if (cl->state == RFB_NORMAL) {
++				rfbReleaseClientIterator(iter);
++				return;
++			}
++		}
++		rfbReleaseClientIterator(iter);
++		if (first_conn_timeout && time(0) - start > first_conn_timeout)
++			return;
++		usleep(100*1000);
++	}
++}
++
+ /*
+  * main x11vnc loop: polls, checks for events, iterate libvncserver, etc.
+  */
+@@ -4374,6 +4405,7 @@ void watch_loop(void) {
+ 	if (use_threads && !started_rfbRunEventLoop) {
+ 		started_rfbRunEventLoop = 1;
+ 		rfbRunEventLoop(screen, -1, TRUE);
++        _mt_wait_for_client();
+ 	}
+ 
+ 	while (1) {

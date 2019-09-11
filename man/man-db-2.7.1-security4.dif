@@ -1,0 +1,43 @@
+---
+ src/mandb.c |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+--- src/mandb.c
++++ src/mandb.c	2018-11-23 12:50:40.139688661 +0000
+@@ -442,18 +442,27 @@ static int mandb (struct dbpaths *dbpath
+ 	int ret, amount;
+ 	char *dbname;
+ 	int should_create;
++	int fd;
+ 
+ 	dbname = mkdbname (catpath);
+ 	database = xasprintf ("%s/%d", catpath, getpid ());
+ 
++	/* Just for the case that catpath isn't a system catpath */
++	drop_effective_privs ();
++	fd = open (database, O_WRONLY | O_CREAT | O_EXCL, 0644);
++	regain_effective_privs ();
++	if (fd < 0)
++		error (FATAL, errno, _("can't create a temporary filename"));
++	close(fd);
++
+ 	if (!quiet) 
+ 		printf (_("Processing manual pages under %s...\n"), manpath);
+ 
+ 	if (!STREQ (catpath, manpath)) {
+ 		char *cachedir_tag;
+-		int fd;
+ 		int cachedir_tag_exists = 0;
+ 
++		drop_effective_privs ();
+ 		cachedir_tag = xasprintf ("%s/CACHEDIR.TAG", catpath);
+ 		fd = open (cachedir_tag, O_RDONLY);
+ 		if (fd < 0) {
+@@ -476,6 +485,7 @@ static int mandb (struct dbpaths *dbpath
+ 				chown_if_possible (cachedir_tag);
+ 			check_chmod (cachedir_tag, DBMODE);
+ 		}
++		regain_effective_privs ();
+ 		free (cachedir_tag);
+ 	}
+ 

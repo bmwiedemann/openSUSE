@@ -1,0 +1,11 @@
+--- default.filter
++++ default.filter
+@@ -375,7 +375,7 @@
+ s/\x84/,,/g
+ s/\x85/.../g
+ #s/\x88/^/g
+-#s-\x89- �/같-g
++#s-\x89- 째/째째-g
+ s/\x8B/</g
+ s/\x8C/Oe/g
+ s/\x91/`/g

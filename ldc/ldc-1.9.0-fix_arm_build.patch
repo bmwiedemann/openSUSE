@@ -1,0 +1,12 @@
+--- ldc-1.9.0-src.orig/runtime/druntime/src/ldc/arm_unwind.c	2018-06-05 15:47:25.521618323 +0200
++++ ldc-1.9.0-src/runtime/druntime/src/ldc/arm_unwind.c	2018-06-06 09:44:20.368786818 +0200
+@@ -26,7 +26,8 @@ _Unwind_Ptr _d_eh_GetIP(_Unwind_Context
+ #ifdef __GLIBC__
+ _Unwind_Ptr _d_eh_GetIPInfo(_Unwind_Context *context, int *ptr)
+ {
+-    return _Unwind_GetIPInfo(context, ptr);
++    *ptr = 0;
++    return _Unwind_GetIP(context);
+ }
+ #endif
+ 

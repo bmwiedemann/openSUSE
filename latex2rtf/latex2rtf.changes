@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Thu Dec  7 11:12:05 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Sat Jul  1 11:03:18 UTC 2017 - stathisagrapidis@gmail.com
+
+- Version bump to 2.3.16.
+  Changelog:
+  * Added check for buffer overflow in l2rshell.cpp
+    during construction of command line for latex2rt.exe
+  * Released as v.2.3.16
+  * Fixed ukrainian.cfg
+  * Updated version info for l2rshell
+  * Released as v.2.3.15
+  * Fixed bug when \int was followed by \frac
+  * Fixed bug when \int was followed by \left or \right
+  * Released as v.2.3.14
+  * Added support for package bm, supporting \bm (bold math)
+  * Fixed bug in main.c line 368: comparison changed to using
+    strcmp() (was =)
+  * Released as v.2.3.13
+  * Updated documentation for installation under unix
+  * Changed variable PREFIX to DESTDIR in MAKEFILE
+  * Added error message if output file is equal to input file
+  * Fixed windows gui shell handling of output file choice
+  * Released as v.2.3.12
+
+-------------------------------------------------------------------
+Thu Aug  4 21:25:47 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 2.3.11a.
+  Changelog:
+  * Increased malloc size for character array by one to allow
+    terminating null character in definitions.c line 157,
+    graphics.c line 1882, tables.c line 1548 and line 1561.
+  * Released as v.2.3.11.
+- Remove unneeded patches:
+    * `latex2rtf-fix-memory-leak.patch`
+    * `texinfo5.patch`
+
+-------------------------------------------------------------------
+Thu Jun  2 18:48:00 UTC 2016 - ronisbr@gmail.com
+
+- Add patch ` latex2rtf-fix-memory-leak.patch` to fix a memory leak
+  in `abbreviate` function. For more information, see:
+
+    https://sourceforge.net/p/latex2rtf/mailman/message/35132586/
+
+-------------------------------------------------------------------
+Sun Jan 10 19:17:28 UTC 2016 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Jan 10 18:27:56 UTC 2016 - ronisbr@gmail.com
+
+- Fix permissions of doc directory.
+- Remove unnecessary %check section.
+
+-------------------------------------------------------------------
+Sun Jan 10 16:08:43 UTC 2016 - ronisbr@gmail.com
+
+- Change license to GPL-2.0+ and add doc/copying.txt as per
+  babelworx request.
+
+-------------------------------------------------------------------
+Mon Dec 28 21:21:11 UTC 2015 - ronisbr@gmail.com
+
+- Change patch `fix_latex2rtf_info.patch` to
+  `fix_latex2rtf_texi.patch`.
+    * The info page is now built during the build process. Thus,
+      the new patch fix the .texi file so that the build process
+      create the correct info page.
+- Run spec-cleaner.
+- Remove white spaces in `latex2rtf.changes`.
+- Version bump to 2.3.10.
+  Changelog:
+    * Version 2.3.10 fixes a bug (potential vulnerability in
+      processing the LaTeX command \keywords{})
+    * Version 2.3.9 switches to the recent version of Ghostscript.
+      Use eps2eps from Ghostscript instead of from MikTeX
+      distribution. Therefore changed the order of program folders
+      in PATH setting in l2rshell.exe (windows GUI) as well as in
+      l2rprep.bat Modified latex2png script for compatibility with
+      Ghostscript 9.14 and newer (gs 9.14 and newer use a different
+      eps2eps script producing better quality eps files on the
+      expense of containing binary stuff)
+
+-------------------------------------------------------------------
+Mon Sep  7 17:47:29 UTC 2015 - ronisbr@gmail.com
+
+- The patch `texinfo5.patch` must also be applied for texinfo 6.
+  Otherwise, latex2rtf build will fail for Tumbleweed and Factory.
+
+-------------------------------------------------------------------
+Fri Apr 24 14:19:41 UTC 2015 - ronisbr@gmail.com
+
+- Fix the permissions of directory /usr/share/latex2rtf/cfg
+
+-------------------------------------------------------------------
+Fri Apr 24 12:50:47 UTC 2015 - ronisbr@gmail.com
+
+- Add ToDo and credits to the documentation.
+
+-------------------------------------------------------------------
+Fri Apr 24 12:05:02 UTC 2015 - ronisbr@gmail.com
+
+- Add texinfo as a build requirement.
+
+-------------------------------------------------------------------
+Fri Apr 24 04:03:04 UTC 2015 - ronisbr@gmail.com
+
+- Add a patch (texinfo5.patch) to fix building of latex2rtf using
+  makeinfo 5. This patch was obtained from Gentoo ebuild of
+  latex2rtf.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:11:47 UTC 2015 - ronisbr@gmail.com
+
+- latex2rtf 2.3.8
+

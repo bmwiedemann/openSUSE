@@ -1,0 +1,1077 @@
+-------------------------------------------------------------------
+Tue May 28 20:31:35 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.12.3
+  * Bug fixes:
+    * Fixed regression causing unhashable data to cause errors in streams
+    * Ensure that hv.help handles non-HoloViews objects
+    * Ensure that DataLink handles data containing NaNs
+    * Ensure that bokeh backend handles Cycle of markers
+    * Fix for using opts method on DynamicMap
+    * Ensure that bokeh backend handles DynamicMaps with variable length
+      NdOverlay
+    * Fix default width/height setting for HeatMap
+    * Ensure that dask imports handle modularity
+    * Fixed regression in xarray data interface
+    * Ensure that RGB hover displays the integer RGB value
+    * Ensure that param streams handle subobjects
+- update to version Version 1.12.2
+  + Enhancements:
+    *  Add styles argument to draw tool streams to allow cycling colors
+  and other styling when drawing glyphs
+    *  Add ability to define alpha on (data)shade operation
+    * Ensure that categorical plots respect Dimension.values order
+  + Compatibility:
+    * Compatibility with Plotly 3.8
+  + Bug fixes:
+    * Ensure that bokeh server plot updates have the exclusive Document
+      lock
+    * Ensure that Dimensioned streams are inherited on `__mul__`
+    * Ensure that bokeh hover tooltips are updated when dimensions change
+    * Fix DynamicMap.event method for empty streams
+    * Fixed handling of datetimes on Path plots
+    * Ensure that resampling operations do not cause event loops
+  + Backward compatibility:
+    * Added color cycles on Violin and BoxWhisker elements due to earlier
+      regression
+
+-------------------------------------------------------------------
+Mon Apr 22 19:12:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.12.1
+  * Add support for passing in parameter instances as streams
+- update to version 1.12.0
+  + Features:
+    * New plot options for controlling layouts including a responsive mode
+      as well as improved control over aspect using the newly updated bokeh
+      layout engine.
+    * Added a succinct and powerful way of creating DynamicMaps from
+      functions and methods via the new `.apply` method.
+  + Enhancements:
+    * Added a number of new plot options including a clabel param for
+      colorbars, exposed Sankey font size and added a radius for bokeh
+      nodes.
+    * Switched notebook output to use an HTML mime bundle instead of
+      separate HTML and JS components.
+    * Improved support for style mapping constant values via
+      `dim.categorize`  
+  + Bug fixes:
+    * Fixes for colorscales and colorbars
+    * Other miscellaneous fixes
+- Update to version 1.11.3
+  + Bug fixes:
+    * All unused Options objects are now garbage collected fixing the last
+      memory leak
+    * Ensured updating of size on matplotlib charts does not error
+    * Fix casting of datetimes on dask dataframes
+    * Ensure that calling redim does not break streams and links
+    * Ensure that matplotlib polygon plots close the edge path
+    * Fixed bokeh ArrowPlot error handling colorbars
+    * Fixed bug in angle conversion on the VectorField if invert_axes
+    * Ensure that all non-Annotation elements support empty constructors
+    * Fixed bug handling out-of-bounds errors when using tap events on
+      datetime axis
+  + Enhancements:
+    * Apply Labels element offset using a bokeh transform allowing Labels
+      element to share data with original data
+    * Allow using datetimes in xlim/ylim/zlim
+    * Optimized rendering of TriMesh wireframes
+    * Add support for datetime formatting when hovering on Image/Raster
+    * Added Tiles element from GeoViews
+  
+-------------------------------------------------------------------
+Sat Feb  2 17:11:31 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.11.2:
+  * Bug fixes:
+    + Compatibility with pandas 0.24.0 release (#3433)
+    + Fixed timestamp selections on streams (#3427)
+    + Fixed persisting options during clone on Overlay (#3435)
+    + Ensure cftime datetimes are displayed as a slider (#3413)
+  * Enhancements:
+    + Allow defining hook on backend load (#3429)
+    + Improvements for handling graph attributes in
+      Graph.from_networkx (#3432)
+
+-------------------------------------------------------------------
+Tue Jan 22 22:09:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable tests again, they still aren't working.
+- Fix incomplete conversion from wheel to tar.gz
+
+-------------------------------------------------------------------
+Mon Jan 21 08:35:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to normal tarball and enable tests
+
+-------------------------------------------------------------------
+Sun Jan 20 04:52:38 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.11.1:
+  * Bug fixes:
+    + Fixed bug plotting adjoined histograms in matplotlib (#3377)
+    + Fixed bug updating bokeh RGB alpha value (#3371)
+    + Handled issue when colorbar limits were equal in bokeh (#3382)
+    + Fixed bugs plotting empty Violin and BoxWhisker elements (#3397,
+      #3405)
+    + Fixed handling of characters that have no uppercase on Layout
+      and Overlay objects ((#3403)
+    + Fixed bug updating Polygon plots in bokeh (#3409)
+  * Enhancements:
+    + Provide control over gridlines ticker and mirrored axis ticker
+      by default (#3398)
+    + Enabled colorbars on CompositePlot classes such as Graphs,
+      Chords etc. (#3397)
+    + Ensure that xarray backend retains dimension metadata when
+      casting element (#3401)
+    + Consistently support clim options (#3382)
+  * Documentation:
+    + Completed updates from .options to .opts API in the
+      documentation
+      ([#3364]((https://github.com/ioam/holoviews/pull/3364), #3367
+
+-------------------------------------------------------------------
+Tue Jan  8 19:20:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.11.0
+  + Features:
+    * Generalized support for style mapping using `dim` transforms
+      ([2152](https://github.com/ioam/holoviews/pull/2152))
+    * Added alternative to opts magic with tab-completion
+      ([#3173](https://github.com/ioam/holoviews/pull/3173))
+    * Added support for Polygons with holes and improved contours
+      operation ([#3092](https://github.com/ioam/holoviews/pull/3092))
+    * Added support for Links to express complex interactivity in JS
+      ([#2832](https://github.com/ioam/holoviews/pull/2832))
+    * Plotly improvements including support for plotly 3.0
+      ([#3194](https://github.com/ioam/holoviews/pull/3194)), improved
+      support for containers
+      ([#3255](https://github.com/ioam/holoviews/pull/3255)) and support
+      for more elements
+      ([#3256](https://github.com/ioam/holoviews/pull/3256))
+    * Support for automatically padding plots using new `padding` option
+      ([#2293](https://github.com/ioam/holoviews/pull/2293))
+    * Added `xlim`/`ylim` plot options to simplify setting axis ranges
+      ([#2293](https://github.com/ioam/holoviews/pull/2293))
+    * Added `xlabel`/`ylabel` plot options to simplify overriding axis
+      labels ([#2833](https://github.com/ioam/holoviews/issues/2833))
+    * Added `xformatter`/`yformatter` plot options to easily override tick
+      formatter ([#3042](https://github.com/ioam/holoviews/pull/3042))
+    * Added `active_tools` options to allow defining tools to activate on
+      bokeh plot initialization
+      ([#3251](https://github.com/ioam/holoviews/pull/3251))
+    * Added `FreehandDraw` stream to allow freehand drawing on bokeh plots
+      ([#2937](https://github.com/ioam/holoviews/pull/2937))
+    * Added support for `cftime` types for dates which are not supported
+      by standard datetimes and calendars
+      ([#2728](https://github.com/ioam/holoviews/pull/2728))
+    * Added top-level `save` and `render` functions to simplify exporting
+      plots ([#3134](https://github.com/ioam/holoviews/pull/3134))
+    * Added support for updating Bokeh bokeh legends
+      ([#3139](https://github.com/ioam/holoviews/pull/3139))
+    * Added support for indicating directed graphs with arrows
+      ([#2521](https://github.com/ioam/holoviews/issues/2521))
+  + Enhancements:
+    * Improved import times
+      ([#3055](https://github.com/ioam/holoviews/pull/3055))
+    * Adopted Google style docstring and documented most core methods and
+      classes ([#3128](https://github.com/ioam/holoviews/pull/3128)
+  + Bug fixes:
+    * GIF rendering fixed under Windows
+      ([#3151](https://github.com/ioam/holoviews/issues/3151))
+    * Fixes for hover on Path elements in bokeh
+      ([#2472](https://github.com/ioam/holoviews/issues/2427),
+      [#2872](https://github.com/ioam/holoviews/issues/2872))
+    * Fixes for handling TriMesh value dimensions on rasterization
+      ([#3050](https://github.com/ioam/holoviews/pull/3050))
+  + Deprecations:
+    * `finalize_hooks` renamed to `hooks`
+      ([#3134](https://github.com/ioam/holoviews/pull/3134))
+    * All `*_index` and related options are now deprecated including
+      `color_index`, `size_index`, `scaling_method`, `scaling_factor`,
+      `size_fn` ([#2152](https://github.com/ioam/holoviews/pull/2152))
+    * Bars `group_index`, `category_index` and `stack_index` are deprecated in
+      favor of stacked option
+      ([#2828](https://github.com/ioam/holoviews/issues/2828))
+    * iris interface was moved to GeoViews
+      ([#3054](https://github.com/ioam/holoviews/pull/3054))
+    * Top-level namespace was cleaned up
+      ([#2224](https://github.com/ioam/holoviews/pull/2224))
+    * `ElementOpration`, `Layout.display` and `mdims` argument to `.to`
+      now fully removed
+      ([#3128](https://github.com/ioam/holoviews/pull/3128))
+    * `Element.mapping`, `ItemTable.values`, `Element.table`,
+      `HoloMap.split_overlays`, `ViewableTree.from_values`,
+      `ViewableTree.regroup` and `Element.collapse_data` methods now
+      marked for deprecation
+      ([#3128](https://github.com/ioam/holoviews/pull/3128))
+- Switch to wheel
+
+-------------------------------------------------------------------
+Tue Oct 30 03:06:55 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.10.8:
+  * Enhancements:
+    + Add support for labels, choord, hextiles and area in .to
+      interface (#2924)
+    + Allow defining default bokeh themes as strings on Renderer
+      (#2972)
+    + Allow specifying fontsize for categorical axis ticks in bokeh
+      (#3047)
+    + Allow hiding toolbar without disabling tools (#3074)
+    + Allow specifying explicit colormapping on non-categorical data
+      (#3071)
+    + Support for displaying xarray without explicit coordinates
+      (#2968)
+  * Fixes:
+    + Ensured that objects are garbage collected when using linked
+      streams (#2111)
+    + Allow dictionary data to reference values which are not
+      dimensions (#2855, #2859)
+    + Fixes for zero and non-finite ranges in datashader operation
+      (#2860, #2863, #2869)
+    + Fixes for CDSStream and drawing tools on bokeh server (#2915)
+    + Fixed issues with nans, datetimes and streaming on Area and
+      Spread elements (#2951, c55b044)
+    + General fixes for datetime handling (#3005, #3045, #3075)
+    + Fixed handling of curvilinear and datetime coordinates on
+      QuadMesh (#3017, #3081)
+    + Fixed issue when inverting a shared axis in bokeh (#3083)
+    + Fixed formatting of values in HoloMap widgets (#2954)
+    + Fixed setting fontsize for z-axis label (#2967)
+  * Compatibility:
+    + Suppress warnings about rcParams in matplotlib 3.0 (#3013,
+      #3058, #3104)
+    + Fixed incompatibility with Python <=3.5 (#3073)
+    + Fixed incompatibility with bokeh >=1.0 (#3051)
+  * Documentation:
+    + Completely overhauled the FAQ (#2928, #2941, #2959, #3025)
+
+-------------------------------------------------------------------
+Tue Oct  9 17:10:40 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Requires pyviz-comms
+
+-------------------------------------------------------------------
+Thu Jul 12 15:59:46 UTC 2018 - arun@gmx.de
+
+- update to version 1.10.7:
+  * Fix datashader aggregation of empty and zero-range data (#2860,
+    #2863)
+  * Disable validation for additional, non-referenced keys in the
+    DictInterface (#2860)
+  * Fixed frame lookup for non-overlapping dimensions (#2861)
+  * Fixed ticks on log Colorbar if low value <= 0 (#2865)
+
+-------------------------------------------------------------------
+Sun Jul  1 19:13:57 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * removed devel requirement
+  * use %{python_sitelib}/holoview* insted of  %{python_sitelib}/* in %files
+
+-------------------------------------------------------------------
+Sun Jul  1 17:44:47 UTC 2018 - arun@gmx.de
+
+- update to version 1.10.6:
+  * Enhancements:
+    + Added the ability to specify color intervals using the
+      color_levels plot options (#2797)
+    + Allow defining port and multiple websocket origins on
+      BokehRenderer.app (#2801)
+    + Support for datetimes in Curve step interpolation (#2757)
+    + Add ability to mute legend by default (#2831)
+    + Implemented ability to collapse and concatenate gridded data
+      (#2762)
+    + Add support for cumulative histogram and explicit bins (#2812)
+  * Fixes:
+    + Dataset discovers multi-indexes on dask dataframes (#2789)
+    + Fixes for datashading NdOverlays with datetime axis and data
+      with zero range (#2829, #2842)
+
+-------------------------------------------------------------------
+Sun Jun 24 01:15:45 UTC 2018 - arun@gmx.de
+
+- update to version 1.10.5:
+  * Enhancements:
+    + Graph.from_networkx now extracts node and edge attributes from
+      networkx graphs (#2714)
+    + Added throttling support to scrubber widget (#2748)
+    + histogram operation now works on datetimes (#2719)
+    + Legends on NdOverlay containing overlays now supported (#2755)
+    + Dataframe indexes may now be referenced in .to conversion
+      (#2739)
+    + Reindexing a gridded Dataset without arguments now behaves
+      consistently with NdMapping types and drops scalar dimensions
+      making it simpler to drop dimensions after selecting (#2746)
+  * Fixes:
+    + Various fixes for QuadMesh support including support for
+      contours, nan coordinates and inverted coordinates (#2691,
+      #2702, #2771)
+    + Fixed bugs laying out complex layouts in bokeh (#2740)
+    + Fix for adding value dimensions to an xarray dataset (#2761
+  * Compatibility:
+    + Addressed various deprecation warnings generated by pandas 0.23
+      (#2699, #2725, #2767)
+
+- changes from version 1.10.4:
+  * Enhancement:
+    + Allow setting alpha on Image/RGB/HSV and Raster types in bokeh
+      (#2680)
+  * Fixes:
+    + Fixed bug running display multiple times in one cell (#2677)
+    + Avoid sending hover data unless explicitly requested (#2681)
+    + Fixed bug slicing xarray with tuples (#2674)
+
+-------------------------------------------------------------------
+Thu May 10 15:13:10 UTC 2018 - arun@gmx.de
+
+- update to version 1.10.3:
+  * Enhancement:
+    + The dimensions of elements may now be changed allowing updates
+      to axis labels and table column headers (#2666)
+  * Fixes:
+    + Fix for labelled plot option (#2643)
+    + Optimized initialization of dynamic plots specifying a large
+      parameter space (#2646)
+    + Fixed unicode and reversed axis slicing issues in
+      XArrayInterface (#2658, #2653)
+    + Fixed widget sorting issues when applying dynamic groupby
+      (#2641)
+  * API:
+    + The PlotReset reset parameter was renamed to resetting to avoid
+      clash with a method (#2665)
+    + PolyDraw tool data parameter now always indexed with 'xs' and
+      'ys' keys for consistency (#2650)
+
+-------------------------------------------------------------------
+Tue May  1 05:32:25 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.10.2
+  + Enhancement:
+    * Exposed Image hover functionality for upcoming bokeh 0.12.16 release
+      ([#2625](https://github.com/ioam/holoviews/pull/2625)) 
+  + Fixes:
+    * Minor fixes for newly introduced elements and plots including Chord
+      ([#2581](https://github.com/ioam/holoviews/issues/2581)) and
+      RadialHeatMap
+      ([#2610](https://github.com/ioam/holoviews/issues/2610)
+    * Fixes for .options method including resolving style and plot option
+      clashes ([#2411](https://github.com/ioam/holoviews/issues/2411)) and
+      calling it without arguments
+      ([#2630](https://github.com/ioam/holoviews/pull/2630))
+    * Fixes for IPython display function
+      ([#2587](https://github.com/ioam/holoviews/issues/2587)) and
+      display_formats
+      ([#2592](https://github.com/ioam/holoviews/issues/2592))
+  + Deprecations:
+    * BoxWhisker and Bars ``width`` bokeh style options and Arrow
+      matplotlib ``fontsize`` option are deprecated
+      ([#2411](https://github.com/ioam/holoviews/issues/2411))
+
+-------------------------------------------------------------------
+Tue Apr 24 15:09:27 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.10.1
+  * Fixed static HTML export of notebooks (#2574)
+  * Ensured Chord element allows recurrent edges (#2583)
+  * Restored behavior for inferring key dimensions order from XArray Dataset (#2579)
+  * Fixed Selection1D stream on bokeh server after changes in bokeh 0.12.15 (#2586)
+
+-------------------------------------------------------------------
+Wed Apr 18 15:58:43 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.10.0
+  + JupyterLab support:
+    * Full compatibility with JupyterLab when installing the jupyterlab_holoviews extension (#687)
+  + New components:
+    * Added Sankey element to plot directed flow graphs (#1123)
+    * Added TriMesh element and datashading operation to plot small and large irregular meshes (#2143)
+    * Added a Chord element to draw flow graphs between different nodes (#2137, #2143)
+    * Added HexTiles element to plot data binned into a hexagonal grid (#1141)
+    * Added Labels element to plot a large number of text labels at once (as data rather than as annotations) (#1837)
+    * Added Div element to add arbitrary HTML elements to a Bokeh layout (#2221)
+    * Added PointDraw, PolyDraw, BoxEdit, and PolyEdit streams to allow drawing, editing, and annotating glyphs on a Bokeh plot, and syncing the resulting data to Python (#2268)
+  + Features:
+    * Added radial HeatMap option to allow plotting heatmaps with a cyclic x-axis (#2139)
+    * All elements now support declaring bin edges as well as centers allowing Histogram and QuadMesh to become first class Dataset types (#547)
+    * When using widgets, their initial or default value can now be set via the Dimension.default parameter (#704)
+    * n-dimensional Dask arrays are now supported directly via the gridded dictionary data interface (#2305)
+  + Enhancements:
+    * Improvements to exceptions (#1127)
+    * Toolbar position and merging (via a new merge_toolbar option) can now be controlled for Layout and Grid plots (#1977)
+    * Bokeh themes can now be applied at the renderer level (#1861)
+    * Dataframe and Series index can now be referenced by name when constructing an element (#2000)
+    * Option-setting methods such as .opts, .options and hv.opts now allow specifying the backend instead of defaulting to the current backend (#1801)
+    * Handled API changes in streamz 0.3.0 in Buffer stream (#2409)
+    * Supported GIF output on windows using new Matplotlib pillow animation support (#385)
+    * Provided simplified interface to rasterize most element types using datashader (#2465)
+    * Bivariate element now support levels as a plot option (#2099)
+    * NdLayout and GridSpace now consistently support * overlay operation (#2075)
+    * The Bokeh backend no longer has a hard dependency on Matplotlib (#829)
+    * DynamicMap may now return (Nd)Overlay with varying number of elements (#1388)
+    * In the notebook, deleting or re-executing a cell will now delete the plot and clean up any attached streams (#2141)
+    * Added color_levels plot option to set discrete number of levels during colormapping (#2483)
+  + Fixes:
+    * Layout and Overlay objects no longer create lower-case nodes on attribute access (#2331)
+    * Dimension.step now correctly respects both integer and float steps (#1707)
+    * Fixed timezone issues when using linked streams on datetime axes (#2459)
+  + Changes affecting backwards compatibility:
+    * Image elements now expect and validate regular sampling (#1869); for genuinely irregularly sampled data QuadMesh should be used.
+    * Tabular elements will no longer default to use ArrayInterface, instead preferring pandas and dictionary data formats (#1236)
+    * Cycle/Palette values are no longer zipped together; instead they now cycle independently (#2333)
+    * The default color Cycle was expanded to provide more unique colors (#2483)
+    * Categorical colormapping was made consistent across backends, changing the behavior of categorical Matplotlib colormaps (#2483)
+    * Disabled auto-indexable property of the Dataset baseclass, i.e. if a single column is supplied no integer index column is added automatically (#2522)
+
+-------------------------------------------------------------------
+Sun Mar  4 09:55:21 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Say some more about the
+  implementation.
+
+-------------------------------------------------------------------
+Fri Mar  2 23:15:31 UTC 2018 - arun@gmx.de
+
+- update to version 1.9.5:
+  * Enhancements:
+    + Added .options method for simplified options setting. (#2306)
+  * Fixes:
+    + Allow plotting bytes datausing the bokeh backend in python3
+      (#2357)
+    + Allow .range to work on data with heterogeneous types in Python
+      3 (#2345)
+    + Fixed bug streaming data containing datetimes using
+      bokeh>=0.12.14 (#2383)
+
+-------------------------------------------------------------------
+Thu Mar  1 15:56:50 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Version 1.9.4
+  + Fixes:
+    * Compatibility with recent versions of dask and pandas
+    * Fixed bug referencing columns containing non-alphanumeric characters
+      in bokeh Tables
+    * Fixed issue in regrid operation
+    * Fixed issue when using datetimes with datashader when processing
+      ranges
+- Update to Version 1.9.3
+  + Enhancements:
+    * Optimized rendering of stream based OverlayPlots
+    * Added ``merge_toolbars`` and ``toolbar`` options to control
+      toolbars on ``Layout`` and Grid plots
+    * Optimized rendering of ``VectorField``
+    * Improvements to documentation
+    * Improved bokeh ``Table`` formatting
+    * Added support for handling datetime.date types
+    * Add support for pre- and post-process hooks on operations
+  + Fixes:
+    * Fix for bokeh server widgets
+    * Fix using event based streams on bokeh server
+    * Switched to drawing ``Distribution``, ``Area`` and ``Spread``
+      using patch glyphs in bokeh fixing legends
+    * Fixed categorical coloring of ``Polygons``/``Path`` elements in
+      matplotlib
+    * Fixed bug computing categorical datashader aggregates
+    * Allow using ``Empty`` object in ``AdjointLayout``
+  + API Changes:
+    * Renamed ``Trisurface`` to ``TriSurface`` for future consistency
+- Update to Version 1.9.2
+  + Enhancements:
+    * Improved the Graph element, optimizing the constructor
+      and adding support for defining a `edge_color_index`
+    * Added support for adding jitter to bokeh Scatter and Points plots
+  + Fixes:
+    * Ensure dimensions, group and label are inherited when casting
+      Image to QuadMesh
+    * Handle compatibility for bokeh version >= 0.12.11
+    * Fixed broken bokeh ArrowPlot
+    * Fixed Pointer based streams on datetime axes
+    * Allow constructing and plotting of empty Distribution and
+      Bivariate elements
+    * Added support for hover info on bokeh BoxWhisker plots
+    * Fixed bug attaching streams to (Nd)Overlay types
+- Update to Version 1.9.1
+  + Enhancements:
+    * Exposed min_alpha parameter on datashader shade and datashade
+      operations
+  + Fixes:
+    * Fixed broken bokeh server linked stream throttling
+    * Fixed bug in bokeh callbacks preventing linked streams using
+      bokeh's on_event callbacks from working
+    * Fixed insufficient validation issue for Image and bugs when
+      applying regrid operation to xarray based Images
+    * Fixed handling of dimensions and empty elements in univariate_kde
+      and bivariate_kde operations
+- Update to Version 1.9.0
+  + Features:
+    * The kdim and vdim keyword arguments are now positional making the
+      declaration of elements less verbose (e.g. Scatter(data, 'x',
+      'y'))
+    * Added Graph, Nodes, and EdgePaths elements adding support for
+      plotting network graphs
+    * Added datashader based regrid operation for fast Image and RGB
+      regridding
+    * Added support for binary transport when plotting with bokeh,
+      providing huge speedups for dynamic plots
+    * Added Pipe and Buffer streams for streaming data support
+    * Add support for datetime axes on Image, RGB and when applying
+      datashading and regridding operations
+    * Added Distribution and Bivariate as first class elements which can
+      be plotted with matplotlib and bokeh without depending on seaborn
+    * Completely overhauled support for plotting geometries with Path,
+      Contours and Polygons elements including support for coloring
+      individual segments and paths by value
+  + Enhancements:
+    * Add support for adjoining all elements on matplotlib plots
+    * Improved exception handling for data interfaces
+    * Add groupby argument to histogram operation
+    * Add support for reverse sort on Dataset elements
+    * Added support for invert_x/yaxis on all elements
+  + Fixes:
+    * Fixed a bug in matplotlib causing the first frame in gif and mp4
+      getting stuck
+    * Fixed various issues with support for new nested categorical axes
+      in bokeh
+    * A large range of other bug fixes too long to list here.
+  + Changes affecting backwards compatibility:
+    * The contours operation no longer overlays the contours on top of
+      the supplied Image by default and returns a single
+      Contours/Polygons rather than an NdOverlay of them
+    * The values of the Distribution element should now be defined as a
+      key dimension
+    * The seaborn interface was removed in its entirety being replaced
+      by first class support for statistics elements such as
+      Distribution and Bivariate
+    * Since kdims and vdims can now be passed as positional arguments
+      the bounds argument on Image is no longer positional.
+    * The datashade and shade cmap was reverted back to blue due to issues
+      with the fire cmap against a white background.
+    * Dropped all support for bokeh versions older than 0.12.10
+    * histogram operation now returns Histogram elements with less
+      generic value dimension and customizable label
+- Update to Version 1.8.4
+  + Fixes:
+    * Fixes to register BoundsXY stream.
+    * Fix for Bounds streams on bokeh server.
+    * Compatibility with matplotlib 2.1
+    * Fixed bug in scrubber widget and support for scrubbing discrete
+      DynamicMaps
+    * Various fixes for compatibility with bokeh 0.12.9
+    * Fixes for setting QuadMesh ranges.
+    * Fixes for inverting Image/RGB/Raster axes in bokeh.
+- Disable unit tests.  They freeze.
+
+-------------------------------------------------------------------
+Thu Aug 17 16:37:58 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to Version 1.8.3
+  + Features:
+    * Add support for setting the bokeh sizing_mode as a plot option
+  + Fixes:
+    * Handle StopIteration on DynamicMap correctly.
+    * Fix bug with linked streams on empty source element
+    * Compatibility with latest datashader 0.6.0 release
+    * Fixed missing HTML closing tag in extension
+    * Various fixes and improvements for documentation
+- Update to Version 1.8.2
+  + Feature:
+    * Added support for groupby to histogram operation.
+  + Fixes:
+    * Fixed problem with HTML export due to new extension logos.
+    * Replaced deprecated ``__call__`` usage with opts method throughout codebase.
+    * Fixed pip installation.
+    * Fixed miscellaneous bugs
+- Update to Version 1.8.1
+  + Feature:
+    * All enabled plotting extension logos now shown
+  + Fixes:
+    * Updated search ordering when looking for holoviews.rc
+    * Fixed lower bound inclusivity bug when no upper bound supplied
+    * Raise SkipRendering error when plotting nested layouts
+    * Added safety margin for grid axis constraint issue
+    * Fixed bug when using +framewise
+    * Fixed handling of Spacer models in sparse grid
+    * Renamed Bounds to BoundsXY for consistency
+    * Fixed bokeh log axes with axis lower bound &lt;=0
+    * Set default datashader cmap to fire
+    * Set SpikesPlot color index to None by default
+    * Documentation fixes
+- Update to Version 1.8.0
+  + Major features:
+    * Completely overhauled the documentation and website
+    * Replaced dependency on bkcharts with new Bokeh bar plot
+      and bokeh BoxWhisker plot
+    * Added support for drawing the `Arrow` annotation in bokeh
+    * Added periodic method DynamicMap to schedule recurring events
+    * Cleaned up the API for deploying to bokeh server
+    * Validation of invalid backend specific options
+    * Added utilities and entry points to convert notebooks to scripts
+      including magics
+    * Added support for rendering to png in bokeh backend
+    * Made matplotlib and bokeh styling more consistent and dropped custom
+      matplotlib rc file
+    * Added `iloc` and `ndloc` method to allow integer based indexing on
+      tabular and gridded datasets
+    * Added option to restore case sensitive completion order by setting
+      `hv.extension.case_sensitive_completion=True` in python or via
+      holoviews.rc file
+  + Other new features and improvements:
+    * Optimized datashading of `NdOverlay`
+    * Expose last `DynamicMap` args and kwargs on Callable
+    * Allow colormapping `Contours` Element
+    * Add support for fixed ticks with labels in bokeh backend
+    * Added a `clim` parameter to datashade controlling the color range
+    * Add support for wrapping xarray DataArrays containing dask arrays
+    * Added support for aggregating to target `Image` dimensions in
+      datashader `aggregate` operation
+    * Added top-level hv.extension and `hv.renderer` utilities
+    * Added support for `Splines` defining multiple cubic splines in bokeh
+    * Add support for redim.label to quickly define dimension labels
+    * Add `BoundsX` and `BoundsY` streams
+    * Added support for adjoining empty plots
+    * Handle zero-values correctly when using `logz` colormapping option
+      in matplotlib
+    * Define a number of `Cycle` and `Palette` defaults across backends
+    * Many other small improvements and fixes
+  + Changes affecting backwards compatibility:
+    * Renamed `ElementOperation` to `Operation`
+    * Removed `stack_area` operation in favor of `Area.stack` classmethod
+    * Removed all mpld3 support
+    * Added `opts` method on all types, replacing the now-deprecated
+      `__call__` syntax to set options
+    * Styling changes for both matplotlib and bokeh, which can be reverted
+      for a notebook with the `config` option of `hv.extension`. For
+      instance, `hv.extension('bokeh', config=dict(style_17=True))`
+- Update to Version 1.7.0
+  + Major features and improvements:
+    * Interactive Streams API
+    * Dynamic Callable API
+    * Simpler and more powerful DynamicMap
+    * Fully general support for Bokeh events
+    * Datashader operations
+    * Support for Bokeh apps and Bokeh Server
+    * Working with renderers interactively outside the notebook
+    * Support for Matplotlib 2.0
+    * Support for Bokeh 0.12.2, 0.12.3, 0.12.4, and 0.12.5.
+    * Many new features for the Bokeh backend: widgets editable, selection
+      colors and interactive legends, GridSpace axes,
+      categorical axes and colormapping, computing
+      plot size, GridSpaces inside Layouts, Layout/Grid
+      titles, histogram with live colormapping, colorbars,
+      finalize_hooks, labelled and show_frame options, styling
+      hover glyphs, hiding legends on BarPlot, VectorField plot,
+      Histograms now have same color cycle as mpl.
+    * Implemented convenience redim methods to easily set dimension
+    ranges, values etc.
+    * Made methods on and operations applied to DynamicMap lazy
+    * Improved documentation.
+    * Improved error handling, including
+      re-enabling option system keyword validation.
+    * Improved testing.
+  + Other new features and improvements:
+    * Operations for timeseries, downsample_columns, 
+      interpolate_curve, and stacked_area.
+    * Dataset types can be declared as empty by passing an empty list
+    * Plot or style options for Curve interpolation transposing
+    layouts, multiple paths, and norm for ColorbarPlot.
+    * Improved options inheritance for more intuitive behavior.
+    * Image interface providing similar functionality for Image and
+    non-Image types (making GridImage obsolete).
+    * dask data interface.
+    * xarray aggregate/reduce.
+    * Indicate color clipping and control clipping colors.
+    * Better datetime handling.
+    * Gridmatrix diagonal types.
+    * log option for histogram operation.
+    * Perceptually uniform fire colormap.
+    * Support for adjoining overlays.
+    * coloring weighted average in SideHistogram.
+    * HeatMap allows displaying multiple values on hover.
+    * Allow casting Image to QuadMesh.
+    * Unused columns are now preserved in gridded groupby.
+    * Optimizations and fixes for constructing Layout/Overlay types.
+    * DynamicMap fixes.
+    * Bokeh-backend fixes including handling of empty frames,
+      faster updates, hover tool fixes, and many more.
+    * Matplotlib-backend fixes and improvements.
+    * Many other small improvements and fixes.
+  + Changes affecting backwards compatibility:
+    * Automatic coloring and sizing on Points now disabled.
+    * Deprecated max\_branches output magic option.
+    * Deprecated GridImage.
+    * Deprecated NdElement.
+    * Deprecated DFrame conversion methods.
+    * Banner text removed from notebook\_extension().
+    * Bokeh's matplotlib compatibility module removed.
+    * ls as matplotlib linestyle alias dropped.
+    * mdims argument of conversion interface renamed to groupby.
+    * Replaced global alias state with Dimension.label.
+    * DynamicMap only update ranges when set to framewise
+    * Deprecated DynamicMap sampled, bounded, open and generator modes
+    * Layout.display method is now deprecated
+    * Layout fix for matplotlib figures with non-square aspects introduced
+      in 1.6.2, now enabled by default.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:20:14 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 1.6.2
+  * Optimized bokeh event messaging, reducing the average json payload
+    by 30-50% (PR `#807 <https://github.com/ioam/holoviews/pull/807>`_).
+  * Fixes for correctly handling NdOverlay types returned by DynamicMaps
+    (PR `#814 <https://github.com/ioam/holoviews/pull/814>`_).
+  * Added support for datetime64 handling in matplotlib and support for
+    datetime formatters on Dimension.type_formatters (PR `#816
+    <https://github.com/ioam/holoviews/pull/816>`_).
+  * Fixed handling of constant dimensions when slicing xarray datasets
+    (PR `#817 <https://github.com/ioam/holoviews/pull/817>`_).
+  * Fixed support for passing custom dimensions to iris Datasets (PR
+    `#818 <https://github.com/ioam/holoviews/pull/818>`_).
+  * Fixed support for add_dimension on xarray interface (PR `#820
+    <https://github.com/ioam/holoviews/pull/820>`_).
+  * Improved extents computation on matplotlib SpreadPlot (PR `#821
+    <https://github.com/ioam/holoviews/pull/821>`_).
+  * Bokeh backend avoids sending data for static frames and empty events
+    (PR `#822 <https://github.com/ioam/holoviews/pull/822>`_).
+  * Added major layout fix for figures with non-square aspects, reducing
+    the amount of unnecessary whitespace (PR `#826
+    <https://github.com/ioam/holoviews/pull/826>`_). Disabled by default
+    until 1.7 release but can be enabled with::
+- Update to 1.6.1
+  * Bug fix release following the 1.6 major release with major bug
+    fixes for the grid data interfaces and improvements to the
+    options system.
+  * Ensured that style options incompatible with active backend are
+    ignored (PR #802).
+  * Added support for placing legends outside the plot area in
+    bokeh (PR #801).
+  * Fix to ensure bokeh backend does not depend on pandas
+    (PR #792).
+  * Fixed option system to ensure correct inheritance when
+    redefining options (PR #796).
+  * Major refactor and fixes for the grid based data backends
+    (iris, xarray and arrays with coordinates) ensuring the data
+    is oriented and transposed correctly (PR #794).
+- update to version 1.6.0:
+  * Made VectorFieldPlot more general with support for independent
+    coloring and scaling (PR #701).
+  * Iris interface now allows tuple and dict formats in the
+    constructor (PR #709.
+  * Added support for dynamic groupby on all data interfaces (PR
+    #711).
+  * Added an xarray data interface (PR #713).
+  * Addded the redim method to all Dimensioned objects making it easy
+    to quickly change dimension names and attributes on nested objects
+    #715).
+  * Added support for batching plots (PR #715).
+  * Support for bokeh 0.12 release (PR #725).
+  * Added support for logz option on bokeh Raster plots (PR #729).
+  * Bokeh plots now support custom tick formatters specified via
+    Dimension value_format (PR #728).
+- Update to version 1.5.0
+  + A major release with a large number of new features including
+    new data interfaces for grid based data, major improvements for
+    DynamicMaps and a large number of bug fixes. 
+  + Features and improvements:
+    * Added a grid based data interface to explore n-dimensional gridded
+      data easily.
+    * Added data interface based on iris Cubes.
+    * Added support for dynamic operations and overlaying of DynamicMaps.
+    * Added support for applying groupby operations to DynamicMaps.
+    * Added dimension value formatting in widgets.
+    * Added support for indexing and slicing with a function.
+    * Improved throttling behavior on widgets.
+    * Major refactor of matplotlib plotting classes to simplify
+      implementing new Element plots.
+    * Added Renderer.last_plot attribute to allow easily debugging or
+      modifying the last displayed plot.
+    * Added bokeh QuadMeshPlot.
+  + Bug fixes:
+    * Fixed overlaying of 3D Element types.
+    * Fix for bokeh hovertools with dimensions with special characters.
+    * Fixed bugs in seaborn Distribution Element.
+    * Fix for inverted Raster.reduce method.
+    * Fixed Store.add_style_opts method.
+    * Fixed bug preventing simultaneous logx and logy plot options.
+  + Backwards compatibility:
+    * Renamed ``Columns`` type to ``Dataset``.
+- update to version 1.4.3:
+  * Added a DynamicMap Tutorial to explain how to explore very large
+    or continuous parameter spaces in HoloViews (PR #470).
+  * Various fixes and improvements for DynamicMaps including slicing
+    (PR #488) and validation (PR #483) and serialization (PR #483)
+  * Widgets containing matplotlib plots now display the first frame
+    from cache providing at least the initial frame when exporting
+    DynamicMaps (PR #486)
+  * Fixed plotting bokeh plots using widgets in live mode, after
+    changes introduced in latest bokeh version (commit 1b87c91e9).
+  * Fixed issue in coloring Point/Scatter objects by values (Issue
+    #467).
+  * The behavior of the scaling_factor on Point and Scatter plots has
+    changed now simply multiplying area or width (as defined by the
+    scaling_method). To disable scaling points by a dimension set
+    size_index=None.
+  * Removed hooks to display 3D Elements using the BokehMPLRawWrapper
+    in bokeh (PR #477)
+  * Renamed the DynamicMap mode closed to bounded (PR #477)
+- update to version 1.4.2:
+  * Over the past month since the 1.4.1 release, we have improved our
+    infrastructure for building documentation, updated the main
+    website and made several additional usability improvements.
+  * Documentation changes:
+    + Major overhaul of website and notebook building making it much
+      easier to test user contributions (Issue #180, PR #429)
+    + Major rewrite of the documentation (PR #401, PR #411)
+    + Added Columnar Data Tutorial and removed most of Pandas
+      Conversions as it is now supported by the core.
+  * Fixes and improvements:
+    + Major improvement for grid based layouts with varying aspects
+      (PR #457)
+    + Fix for interleaving %matplotline inline and holoviews plots
+      (Issue #179)
+    + Matplotlib legend z-orders and updating fixed (Issue #304, Issue
+      #305)
+    + color_index and size_index plot options support specifying
+      dimension by name (Issue #391)
+    + Added Area Element type for drawing area under or between
+      Curves. (PR #427)
+    + Fixed issues where slicing would remove styles applied to an
+      Element. (Issue #423, PR #439)
+    + Updated the title_format plot option to support a {dimensions}
+      formatter (PR #436)
+    + Improvements to Renderer API to allow JS and CSS requirements
+      for exporting standalone widgets (PR #426)
+    + Compatibility with the latest Bokeh 0.11 release (PR #393)
+- update to version 1.4.1:
+  * New features:
+    + Improved help system. It is now possible to recursively list all
+      the applicable documentation for a composite object. In addition,
+      the documentation may now be filtered using a regular expression
+      pattern. (PR #370)
+    + HoloViews now supports multiple active display hooks making it
+      easier to use nbconvert. For instance, PNG data will be embedded
+      in the notebook if the argument display_formats=['html','png'] is
+      supplied to the notebook_extension. (PR #355)
+    + Improvements to the display of DynamicMaps as well as many new
+      improvements to the Bokeh backend including better VLines/HLines
+      and support for the Bars element. (PR #367 , PR #362, PR #339).
+    + New Spikes and BoxWhisker elements suitable for representing
+      distributions as a sequence of lines or as a box-and-whisker
+      plot. (PR #346, PR #339)
+    + Improvements to the notebook_extension. For instance, executing
+      hv.notebook_extension('bokeh') will now load BokehJS and
+      automatically activate the Bokeh backend (if available).
+    + Significant performance improvements when using the groupby
+      operation on HoloMaps and when working with highly nested
+      datastructures. (PR #349, PR #359)
+  * Notable bug fixes:
+    + DynamicMaps are now properly integrated into the style system
+      and can be customized in the same way as HoloMaps. (PR #368)
+    + Widgets now work correctly when unicode is used in the dimension
+      labels and values (PR #376).
+- update to version 1.4.0:
+  * Major new features:
+    + Data API: The new data API brings an extensible system of to add
+      new data interfaces to column based Element types. These
+      interfaces allow applying powerful operations on the data
+      independently of the data format. The currently supported
+      datatypes include NumPy, pandas dataframes and a simple
+      dictionary format. (PR #284)
+    + Backend API: In this release we completely refactored the
+      rendering, plotting and IPython display system to make it easy to
+      add new plotting backends. Data may be styled and pickled for each
+      backend independently and renderers now support exporting all
+      plotting data including widgets as standalone HTML files or with
+      separate JSON data.
+    + Bokeh backend: The first new plotting backend added via the new
+      backend API. Bokeh plots allow for much faster plotting and
+      greater interactivity. Supports most Element types and layouts and
+      provides facilities for sharing axes across plots and linked
+      brushing across plots. (PR #250)
+    + DynamicMap: The new DynamicMap class allows HoloMap data to be
+      generated on-the-fly while running a Jupyter IPython notebook
+      kernel. Allows visualization of unbounded data streams and smooth
+      exploration of large continuous parameter spaces. (PR #278)
+  * Other features:
+    + Easy definition of custom aliases for group, label and Dimension
+      names, allowing easier use of LaTeX.
+    + New Trisurface and QuadMesh elements.
+    + Widgets now allow expressing hierarchical relationships between
+      dimensions.
+    + Added GridMatrix container for heterogeneous Elements and
+      gridmatrix operation to generate scatter matrix showing
+      relationship between dimensions.
+    + Filled contour regions can now be generated using the contours
+      operation.
+    + Consistent indexing semantics for all Elements and support for
+      boolean indexing for Columns and NdMapping types.
+    + New hv.notebook_extension function offers a more flexible
+      alternative to %load_ext, e.g. for loading other extensions
+      hv.notebook_extension(bokeh=True).
+  * Experimental features:
+    + Bokeh callbacks allow adding interactivity by communicating
+      between bokehJS tools and the IPython kernel, e.g. allowing
+      downsampling based on the zoom level.
+  * Notable bug fixes:
+    + Major speedup rendering large HoloMaps (~ 2-3 times faster).
+    + Colorbars now consistent for all plot configurations.
+    + Style pickling now works correctly.
+  * API Changes:
+    + Dimension formatter parameter now deprecated in favor of
+      value_format.
+    + Types of Chart and Table Element data now dependent on selected
+      interface.
+    + DFrame conversion interface deprecated in favor of Columns
+      pandas interface.
+
+-------------------------------------------------------------------
+Fri Jul 10 08:10:21 UTC 2015 - toddrme2178@gmail.com
+
+- Update to version 1.3.2
+  + Minor bugfix release to address a small number of issues:
+  + Features:
+    * Added support for colorbars on Surface Element (1cd5281).
+    * Added linewidth style option to SurfacePlot (9b6ccc5).
+  + Bug fixes:
+    * Fixed inversion inversion of y-range during sampling (6ff81bb).
+    * Fixed overlaying of 3D elements (787d511).
+    * Ensuring that underscore.js is loaded in widgets (f2f6378).
+    * Fixed Python3 issue in Overlay.get (8ceabe3).
+- Update to version 1.3.1
+  + Minor bugfix release to address a number of issues that weren't caught
+    in time for the 1.3.0 release with the addition of a small number of
+    features
+  + Features:
+    * Introduced new ``Spread`` element to plot errors and confidence
+      intervals (30d3184).
+    * ``ErrorBars`` and ``Spread`` elements now allow most Chart
+      constructor types (f013deb).
+  + Bug fixes:
+    * Fixed unicode handling for dimension labels (061e9af).
+    * Handling of invalid dimension label characters in widgets (a101b9e).
+    * Fixed setting of fps option for MPLRenderer video output (c61b9df).
+    * Fix for multiple and animated colorbars (5e1e4b5).
+    * Fix to Chart slices starting or ending at zero (edd0039).
+- Update to version 1.3.0
+  + Since the last release we closed over 34 issues and have made 380
+    commits mostly focused on fixing bugs, cleaning up the API and
+    working extensively on the plotting and rendering system to
+    ensure HoloViews is fully backend independent.
+  + Highlights/Features:
+    * Allowed display of data structures which do not match the
+      recommended nesting hierarchy (67b28f3, fbd89c3).
+    * Dimensions now sanitized for ``.select``, ``.sample`` and
+      ``.reduce`` calls (6685633, 00b5a66).
+    * Added ``holoviews.ipython.display`` function to render (and display)
+      any HoloViews object, useful for IPython interact widgets (0fa49cd).
+    * Table column widths now adapt to cell contents (be90a54).
+    * Defaulting to matplotlib ticking behavior (62e1e58).
+    * Allowed specifying fixed figure sizes to matplotlib via
+      ``fig_inches`` tuples using (width, None) and (None, height) formats
+      (632facd).
+    * Constructors of ``Chart``, ``Path`` and ``Histogram`` classes now support
+      additional data formats (2297375).
+    * ``ScrubberWidget`` now supports all figure formats (c317db4).
+    * Allowed customizing legend positions on ``Bars`` Elements (5a12882).
+    * Support for multiple colorbars on one axis (aac7b92).
+    * ``.reindex`` on ``NdElement`` types now support converting between
+      key and value dimensions allowing more powerful conversions. (03ac3ce)
+    * Improved support for casting between ``Element`` types (cdaab4e, b2ad91b,
+      ce7fe2d, 865b4d5).
+    * The ``%%opts`` cell magic may now be used multiple times in the same
+      cell (2a77fd0)
+    * Matplotlib rcParams can now be set correctly per figure (751210f).
+    * Improved ``OptionTree`` repr which now works with eval (2f824c1).
+    * Refactor of rendering system and IPython extension to allow easy
+      swapping of plotting backend (#141)
+    * Large plotting optimization by computing tight ``bbox_inches`` once
+      (e34e339).
+    * Widgets now cache frames in the DOM, avoiding flickering in some
+      browsers and make use of jinja2 template inheritance. (fc7dd2b)
+    * Calling a HoloViews object without arguments now clears any
+      associated custom styles. (9e8c343)
+  + API Changes
+    * Renamed key_dimensions and value_dimensions to kdims and vdims
+      respectively, while providing backward compatibility for passing
+      and accessing the long names (8feb7d2).
+    * Combined x/y/zticker plot options into x/y/zticks parameters which
+      now accept an explicit number of ticks, an explicit list of tick
+      positions (and labels), and a matplotlib tick locator.
+    * Changed backend options in %output magic, ``nbagg`` and ``d3`` are
+      now modes of the matplotlib backend and can be selected with
+      ``backend='matplotlib:nbagg'`` and ``backend='matplotlib:mpld3'``
+      respectively. The 'd3' and 'nbagg' options remain supported but will
+      be deprecated in future.
+    * Customizations should no longer be applied directly to ``Store.options``;  
+      the ``Store.options(backend='matplotlib')`` object should be
+      customized instead.  There is no longer a need to call the
+      deprecated ``Store.register_plots`` method.
+- update to version 1.2.0:
+  * Highlights/Features:
+    - Added new ErrorBars Element (f2b276b)
+    - Added Empty pseudo-Element to define empty placeholders in
+      Layouts (35bac9f1d)
+    - Added support for changing font sizes easily (0f54bea)
+    - Support for holoviews.rc file (79076c8)
+    - Many major speed optimizations for working with and plotting
+      HoloViews data structures (fe87b4c, 7578c51, 5876fe6, 8863333)
+    - Support for GridSpace with inner axes (93295c8)
+    - New aspect_weight and tight Layout plot options for more
+      customizability of Layout arrangements (4b1f03d, e6a76b7)
+    - Added bgcolor plot option to easily set axis background color
+      (92eb95c)
+    - Improved widget layout (f51af02)
+    - New OutputMagic css option to style html output (9d42dc2)
+    - Experimental support for PDF output (1e8a59b)
+    - Added support for 3D interactivity with nbagg (781bc25)
+    - Added ability to support deprecated plot options in %%opts
+      magic.
+    - Added DrawPlot simplifying the implementation of custom plots
+      (38e9d44)
+  * API changes:
+    - Path and Histogram support new constructors (7138ef4, 03b5d38)
+    - New depth argument on the relabel method (f89b89f)
+    - Interface to Pandas improved (1a7cd3d)
+    - Removed xlim, ylim and zlim to eliminate redundancy.
+    - Renaming of various plot and style options including:
+      + figure_* to fig_*
+      + vertical_spacing and horizontal_spacing to vspace and hspace
+        respectively
+      + Deprecation of confusing origin style option on RasterPlot
+    - Overlay.__getitem__ no longer supports integer indexing (use get
+      method instead)
+  * Important bug fixes:
+    - Important fixes to inheritance in the options system (d34a931,
+      71c1f3a7)
+    - Fixes to the select method (df839bea5)
+    - Fixes to normalization system (c3ef40b)
+    - Fixes to Raster and Image extents, __getitem__ and sampling.
+    - Fixed bug with disappearing adjoined plots (2360972)
+    - Fixed plot ordering of overlaid elements across a HoloMap
+      (c4f1685)
+- update to version 1.1.0:
+  * Highlights:
+    + Support for nbagg as a backend (09eab4f1)
+    + New .hvz file format for saving HoloViews objects (bfd5f7af)
+    + New Polygon element type (d1ec8ec8)
+    + Greatly improved Unicode support throughout, including support
+      for unicode characters in Python 3 attribute names (609a8454)
+    + Regular SelectionWidget now supports live rendering (eb5bf8b6)
+    + Supports a list of objects in Layout and Overlay constructors
+      (5ba1866e)
+    + Polar projections now supported (3801b76e)
+  * API changes (not backward compatible):
+    + xlim, ylim, zlim, xlabel, ylabel and zlabel have been deprecated
+      (081d4123)
+    + Plotting options show_xaxis and show_yaxis renamed to xaxis and
+      yaxis, respectively (13393f2a).
+    + Deprecated IPySelectionWidget (f59c34c0)
+  * In addition to the above improvements, many miscellaneous bug fixes were made.
+  
+-------------------------------------------------------------------
+Thu Apr  9 18:29:42 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

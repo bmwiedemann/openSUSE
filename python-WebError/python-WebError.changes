@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Jun 28 14:34:52 UTC 2018 - mcepl@suse.com
+
+- Add Provides: python2-WebError (to allow function of Pylons)
+
+-------------------------------------------------------------------
+Tue Jun 26 19:35:03 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC file (still py2k-only, so no change to the singlespec)
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:57 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Jun 17 07:47:15 UTC 2013 - speilicke@suse.com
+
+- Add python-ordereddict build dep for SLE
+
+-------------------------------------------------------------------
+Sun Oct  7 16:42:15 UTC 2012 - os-dev@jacraig.com
+
+- Add build dependencies for WebTest and nose to fix test failure.
+
+-------------------------------------------------------------------
+Mon Mar 12 21:34:07 UTC 2012 - saschpe@gmx.de
+
+- Simplify macro usage
+- Re-enable testsuite
+
+-------------------------------------------------------------------
+Fri Sep  2 07:41:45 UTC 2011 - saschpe@suse.de
+
+- Disabled %check section to fix SLE build
+
+-------------------------------------------------------------------
+Thu Sep  1 14:48:15 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

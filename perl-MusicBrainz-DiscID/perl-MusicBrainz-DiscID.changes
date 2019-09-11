@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Mar 12 11:59:19 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Rebuilt spec file with latest cpanspec
+
+-------------------------------------------------------------------
+Wed Mar  6 16:57:46 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Removed API docs from spec file
+- Added dependencies on XSLoader and Carp
+
+-------------------------------------------------------------------
+Wed Mar  6 16:31:41 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- initial package 0.04
+ * created by cpanspec 1.78.08

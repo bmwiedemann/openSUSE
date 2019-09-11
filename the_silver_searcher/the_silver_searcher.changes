@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Mon Aug 13 09:10:41 UTC 2018 - astieger@suse.com
+
+- update to 2.2.0:
+  * Add support for Idris, APL, J, D, TLA+, Isabelle, Coq, jinja2,
+    PDB, Naccess, thrift, pug, terraform, devicetree, stata
+  * Updates support for Haskell
+
+-------------------------------------------------------------------
+Wed Sep 27 15:35:34 UTC 2017 - astieger@suse.com
+
+- update to 2.1.0:
+  * Make '-A n -B n' act like '-C n' by printing blank lines
+  * Stream decompress zipped files
+
+-------------------------------------------------------------------
+Mon Jul 24 07:37:04 UTC 2017 - astieger@suse.com
+
+- update to 2.0.0:
+  * Added file types: Haxe (hx), JSP tag and fragment files
+  * No longer read from .agignore, .ignore is the canonical file
+  * Add --print-all-files options to print all files searched
+  * Add support for inverting ignore rules (e.g. !blah.txt)
+  * Fix heap buffer overflow when searching an absolute path
+    bsc#1050057
+  * documentation updates
+
+-------------------------------------------------------------------
+Wed May 24 14:27:46 UTC 2017 - astieger@suse.com
+
+- update to 1.0.3:
+  * add log, elm, twig file types
+  * *.js now ignores *.min.js, add .es6 to js file type
+
+-------------------------------------------------------------------
+Mon Dec  5 08:26:41 UTC 2016 - astieger@suse.com
+
+- update to 1.0.2:
+ * updated for platforms other than Linux
+
+-------------------------------------------------------------------
+Mon Nov 28 09:20:39 UTC 2016 - astieger@suse.com
+
+- update to 1.0.1:
+  * faster substring search
+  * fix context line printing when reading from a pipe
+  * ignore local-domain socket just like named pipes
+  * updates of common file extensions
+  * add zsh completion function 
+
+-------------------------------------------------------------------
+Thu Sep 29 09:55:32 UTC 2016 - astieger@suse.com
+
+- update to 0.33.0:
+  * Fix --word-regexp not applying to alternates
+  * The preferred ignore file is .ignore, .agignore is deprecated
+
+-------------------------------------------------------------------
+Wed May 18 10:32:20 UTC 2016 - idonmez@suse.com
+
+- Update to version 0.32.0
+  * Add support for Fish, Chapel, Factor, Kotlin, Julia, TypeScript,
+    RDoc, Velocity, RestructuredText, TOML, BitBake, Bro file types.
+  * Various bugfixes.
+
+-------------------------------------------------------------------
+Sat Sep 19 12:27:24 UTC 2015 - fcrozat@suse.com
+
+- Update to version 0.31.0:
+ * Improve bash completion.
+ * Add support for Elixir, Mako, Racket and Standard ML file types.
+ * various bugfixes.
+
+-------------------------------------------------------------------
+Fri May 15 23:29:41 UTC 2015 - astieger@suse.com
+
+- update to version 0.30.0:
+  * --one-device option
+  * language types and filter updates
+  * performance improvements
+  * bug fixes
+- use bootstrapped upstream release tarballs, do not re-bootstrap
+- add source signature and signing key
+- update bash completion location
+
+-------------------------------------------------------------------
+Mon Jan 12 14:26:05 UTC 2015 - multyrealm@gmail.com
+
+- Update to version 0.28.0
+
+-------------------------------------------------------------------
+Fri Jan 31 14:54:11 UTC 2014 - fcrozat@suse.com
+
+- Update to version 0.19.2:
+  + Improve output
+- Changes from 0.19.1:
+  + Don't print two slashes at the start of a path
+- Changes from 0.19.0:
+- Changes from 0.18.1:
+  + performance fixes
+  + fix infinite loop in EOF detection
+  + Handle '-i' before '-g' or '-G' properly
+  + fix build without lzma
+- Switch to .tar.gz as they are generated directly by github.
+- Replace %{_prefix}/data by %{_datadir} in specfile.
+
+-------------------------------------------------------------------
+Mon Nov  4 09:08:51 UTC 2013 - fcastelli@suse.com
+
+- Update to version 0.18:
+  * Fix UTF-8 detection.
+  * Add support for LZMA and XZ compressed files.
+  * better parse gitignore config.
+  * Various bugfixes.
+- Cleaned up specfile.
+
+-------------------------------------------------------------------
+Tue Apr 23 14:19:48 UTC 2013 - fcastelli@suse.com
+
+- Fix building on SLE.
+
+-------------------------------------------------------------------
+Tue Apr 23 10:18:23 UTC 2013 - fcastelli@suse.com
+
+- fix spec file: use right group
+
+-------------------------------------------------------------------
+Tue Apr 23 09:17:43 UTC 2013 - fcastelli@suse.com
+
+- packaged version 0.14
+

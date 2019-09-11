@@ -1,0 +1,34 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: Bug1143286 libcaca configure ac chg for lto
+Date: Thu, 01 Aug 2019 11:43:35 +0200
+
+Bug1143286 libcaca configure ac chg for lto
+
+bypass to avoid  PowerPC/ARM build failures
+now that LTO is default build option for openSUSE.
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ configure.ac |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: libcaca-da28e9684ef445ac8d42745644336b8a75c01855/configure.ac
+===================================================================
+--- libcaca-da28e9684ef445ac8d42745644336b8a75c01855.orig/configure.ac
++++ libcaca-da28e9684ef445ac8d42745644336b8a75c01855/configure.ac
+@@ -145,13 +145,13 @@ AC_TRY_COMPILE([#include <windows.h>],[S
+  [AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING(for fsin/fcos)
+-AC_TRY_COMPILE([],[double x; asm volatile("fsin; fcos":"=t"(x):);],
++AC_TRY_LINK([],[double x; asm volatile("fsin; fcos":"=t"(x):);],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_FSIN_FCOS, 1, [Define to 1 if you have the ‘fsin’ and ‘fcos’ instructions.])],
+  [AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING(for fldln2/fxch/fyl2x)
+-AC_TRY_COMPILE([],[double x; asm volatile("fldln2; fldln2; fxch; fyl2x":"=t"(x):);],
++AC_TRY_LINK([],[double x; asm volatile("fldln2; fldln2; fxch; fyl2x":"=t"(x):);],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_FLDLN2, 1, [Define to 1 if you have the ‘fldln2’ and other floating point instructions.])],
+  [AC_MSG_RESULT(no)])

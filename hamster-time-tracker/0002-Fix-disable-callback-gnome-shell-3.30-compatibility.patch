@@ -1,0 +1,25 @@
+From d748dccc794b9efbc8f81018be5b2a78d7d975c7 Mon Sep 17 00:00:00 2001
+From: Hedayat Vatankhah <hedayat.fwd@gmail.com>
+Date: Wed, 19 Dec 2018 15:24:42 +0330
+Subject: [PATCH 2/6] Fix disable callback: gnome shell 3.30 compatibility
+
+---
+ extension/extension.js | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 065dfc7..65ac623 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -193,8 +193,6 @@ function Controller(extensionMeta) {
+             global.log('Shutting down hamster-shell-extension.');
+             this._removeWidget(this.placement);
+             Main.panel.menuManager.removeMenu(this.panelWidget.menu);
+-            GLib.source_remove(this.panelWidget.timeout);
+-            this.panelWidget.actor.destroy();
+             this.panelWidget.destroy();
+             this.panelWidget = null;
+             this.apiProxy = null;
+-- 
+2.20.1
+

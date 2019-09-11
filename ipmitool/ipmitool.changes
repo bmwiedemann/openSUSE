@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Wed Sep 26 07:49:44 UTC 2018 - trenn@suse.de
+
+- Update to latest git HEAD revision of 1.8.18 version
+    commit 6f336d04f14b420822902dca7ef595cd49847d21
+    Date:   Mon Sep 24 15:41:00 2018 +0200
+- Change git repo and URL in spec from sourceforge to github
+- Add download of iana pen list via _service
+  from www.iana.org which is used to
+  create a C include file at build time (lib/ipmi_pen_list.inc.c)
+Downloaded file added:
+A enterprise-numbers
+- Add possiblity to create the include file from an already
+  downloaded, local file
+A create_pen_list_from_local_file.patch
+
+-------------------------------------------------------------------
+Fri Jul 27 14:50:26 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jun 28 14:58:47 UTC 2018 - josef.moellers@suse.com
+
+- Make bmc-snmp-proxy into a (sub)package of its own.
+  [fate#322044, ipmitool.spec]
+
+-------------------------------------------------------------------
+Fri Oct  6 13:26:36 UTC 2017 - josef.moellers@suse.com
+
+- Added missing references.
+  [bsc#1041374,bsc#976123,bsc#988443,bsc#989985,bsc#968105,
+   bsc#948540,fate#321578,fate#321579,fate#320439]
+
+-------------------------------------------------------------------
+Thu Jul 27 18:58:24 UTC 2017 - tchvatal@suse.com
+
+- Switch to OBS service to generate the tarball and changelog
+  automatically from git "osc service dr"
+- Update to version git checkout 20170406.ecb4cfb:
+  * Prevent autoreconf from complaining about missing NEWS
+  * Add git hash and dirty mark to ipmitool version
+- Remove patch ipmitool_1_8_18_ecb4cfbff855_to_HEAD.patch as the
+  patch is directly in the tarball
+- Rename patch:
+  ipmitool_adjust_suse.paths to ipmitool_adjust_suse_paths.patch
+- Drop the --pic switch as it was only for static library
+- Reduce the suse_version for 1210 check to switch systemd on as
+  the package is not building on sle11 anyway
+  * properly depend on systemd-rpm-macros and not full systemd
+- Enable switch for file-security to be more strict on open files
+
+-------------------------------------------------------------------
+Wed Jul  5 14:07:41 UTC 2017 - trenn@suse.de
+
+- Update to latest git HEAD revision of 1.8.18 version
+  commit ecb4cfbff855bb24099f2a80a6dd558518702c7d
+All these patches are now included in one big revision (1.8.18) to
+HEAD patch:
+D    0001-fix-typo.patch
+D    0002-added-microTCA-major-version.patch
+D    0003-replaced-removed-defines-which-are-already-present-i.patch
+D    0004-fix-typo.patch
+D    0006-ID-461-OpenSSL-1.1-compatibility-error-storage-size-.patch
+D    0007-ID-461-Make-compiler-happier-about-changes-related-t.patch
+D    0008-ID-474-Compile-fix-on-nonlinux-systems.patch
+D    0009-Add-bootstrap-support-for-Mac.patch
+D    0013-ID-478-ekanalyzer-Fixed-decoding-of-FRU-fields.patch
+D    0014-ID-479-ekanalyzer-fix-processing-of-custom-mfg.-fiel.patch
+D    0015-ID-477-fru-Fix-decoding-of-non-text-data-in-get_fru_.patch
+D    0017-ID-480-ipmitool-coredumps-in-EVP_CIPHER_CTX_init.patch
+
+This is the big revision (1.8.18) to HEAD patch:
+A    ipmitool_1_8_18_ecb4cfbff855_to_HEAD.patch
+
+- Note: the tarball has been generated with git archive from the git
+  repo. It slightly differs (.gitignore and configure.ac) from what
+  was in osc before. No idea why, but the change is tiny and does not matter.
+
+-------------------------------------------------------------------
+Fri Apr 28 15:22:39 UTC 2017 - trenn@suse.de
+
+- Lower prio of message from error to debug (bsc#948540)
+A hpm_x_compatibility_msg_is_debug_only.patch
+
+-------------------------------------------------------------------
+Tue Mar 28 16:41:02 UTC 2017 - trenn@suse.de
+
+- Update to latest git HEAD version adding quite some fixes (fate#321578)
+* Add:
+0001-fix-typo.patch
+0002-added-microTCA-major-version.patch
+0003-replaced-removed-defines-which-are-already-present-i.patch
+0004-fix-typo.patch
+0006-ID-461-OpenSSL-1.1-compatibility-error-storage-size-.patch
+0007-ID-461-Make-compiler-happier-about-changes-related-t.patch
+0008-ID-474-Compile-fix-on-nonlinux-systems.patch
+0009-Add-bootstrap-support-for-Mac.patch
+0013-ID-478-ekanalyzer-Fixed-decoding-of-FRU-fields.patch
+0014-ID-479-ekanalyzer-fix-processing-of-custom-mfg.-fiel.patch
+0015-ID-477-fru-Fix-decoding-of-non-text-data-in-get_fru_.patch
+0017-ID-480-ipmitool-coredumps-in-EVP_CIPHER_CTX_init.patch
+
+
+-------------------------------------------------------------------
+Wed Jan 25 12:23:27 UTC 2017 - felix.gerling@suse.com
+
+- Update to latest version: 1.8.18 (fate#321579)
+D	0001-Incorporate-upstream-comments-to-289-add-whitespace.patch
+
+-------------------------------------------------------------------
+Tue May  3 13:08:43 UTC 2016 - trenn@suse.de
+
+- Update to latest version: 1.8.17
+D    ipmitool-1.8.10-implicit-fortify-decl.patch
+D    ipmitool-1_8_16_HEAD.patch
+D    latest_compile_fixes.patch
+D    ipmitool-sol_memleak.patch
+D    ipmitool-1_8_15_HEAD.patch
+- Remove whitespace changes from:
+M    0001-Incorporate-upstream-comments-to-289-add-whitespace.patch
+
+-------------------------------------------------------------------
+Thu Feb 25 11:57:55 UTC 2016 - trenn@suse.de
+
+- Update to latest ipmitool source code
+  commit 9020b67347f46554009591ae91e4fa8875c65dfa
+  Date:   Tue Jan 12 21:16:37 2016 +0500
+- Fix memleak: bnc#968105
+Add: ipmitool-sol_memleak.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 20:34:19 CET 2016 - ro@suse.de
+
+- do not use systemd macros for non-systemd distributions 
+
+-------------------------------------------------------------------
+Wed Oct 14 16:02:43 UTC 2015 - trenn@suse.de
+
+- Update to latest ipmitool source code
+  commit 999cd0ad9192b19ec57574e7aca111571f4d21d8
+  Date:   Fri Mar 6 09:03:05 2015 -0600
+  and throw away patches that went mainline.
+* Remove: fix_dell_oem_exitcode
+
+-------------------------------------------------------------------
+Wed Mar 11 15:21:40 UTC 2015 - trenn@suse.de
+
+- Add correct exit code on Dell specific commands which did not get mainline
+  yet (bnc#886184)
+* Add patch: fix_dell_oem_exitcode
+
+-------------------------------------------------------------------
+Thu Jan 15 13:56:40 UTC 2015 - trenn@suse.de
+
+- Update to latest ipmitool sources.
+  This is version 1.8.15 (git tag: IPMITOOL_1_8_15) plus mainline patches up
+  to commit 708be8bc450f907cddb6d9e4b83aee6ba67b7d04
+  Date:   Fri Jan 9 12:48:35 2015 +0100
+* Add: latest_compile_fixes.patch
+* Add: ipmitool-1_8_15_HEAD.patch
+* Remove: automake-1.13.patch
+* Remove: sdradd_close_file_handle.patch
+* Remove: ipmitool-1.8.10-implicit-fortify-decl.patch
+
+-------------------------------------------------------------------
+Thu Mar  6 11:50:59 UTC 2014 - trenn@suse.de
+
+- Update to latest git head and do not split up version 1.8.13.tar.bz2 tarball
+  and patch to latest git HEAD.
+  Reason is that all files in the repository got moved up one directory level
+  by git commit:
+  c18ec02f3304ce2a889a50e378f07a4168af3884
+  Date:   Wed Feb 5 17:30:32 2014
+  Move all files one level up in the file hierarchy, to avoid the useless
+  ipmitool directory.
+  
+  We want the latest git head asap, because otherwise additionally needed
+  patches will never patch cleanly in mainline and our repo and would always
+  need adjusting.
+  I asked for a new version tag mainline. As soon this happened, the
+  tarball name should again match with the exact mainline git tag.
+  Remove/Delete:
+  ipmitool_update_to_git_head_31_01_2014_b0aad15d67007c74b.patch
+
+- Incorporate patch on request from Dell: fate#315996
+  Add: 0001-Incorporate-upstream-comments-to-289-add-whitespace.patch
+
+-------------------------------------------------------------------
+Thu Feb 13 23:27:01 UTC 2014 - trenn@suse.de
+
+- Added 3 services:
+    1) exchange-bmc-os-info - fate#315999
+       Shows SLES string as OS in the service processor info
+    2) bmc-snmp-proxy - fate#316000 
+       Exports sel (BMC Error log) via snmpd
+    3) ipmievd - fate#316002
+       Logs sel to syslog
+1. and 2. are very Dell specific and should not get enabled by default
+3. got converted to a native systemd service. Still needs autoconf
+   adjusting to get send mainline
+1. and 2. have somewhat bigger Init V init scripts and time was not
+   enough to convert them. Therefore they were added via insserv
+   and friends as well
+
+   Add ipmitool_adjust_suse.paths
+
+- Updated to latest git version:
+  Add ipmitool_update_to_git_head_31_01_2014_b0aad15d67007c74b.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 06:38:02 UTC 2013 - kkaempf@suse.com
+
+- Update to 1.8.13
+  Changes: many, see
+  http://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.13/
+
+- drop patches included upstream
+  * compile-fixes.patch
+  * ekanalyzer_fix_wrong_type_comparison.patch
+  * increase_possible_fw_file_size.patch
+  * ipmitool-bigendian.patch
+  * old-gcc-options.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 13:36:07 UTC 2013 - tchvatal@suse.com
+
+- Run format_spec_file so it is up par with others.
+
+-------------------------------------------------------------------
+Wed May 15 12:04:25 UTC 2013 - kkaempf@suse.com
+
+- fix GCC 4.3 build
+  * Adds patch: old-gcc-options.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 11:29:30 UTC 2013 - dvaleev@suse.com
+
+- fix build on BE arches (ipmitool-bigendian.patch) 
+
+-------------------------------------------------------------------
+Thu Feb 28 13:25:09 UTC 2013 - kkaempf@suse.com
+
+- Adapt to Automake 1.13
+
+-------------------------------------------------------------------
+Thu Feb 28 12:28:56 UTC 2013 - kkaempf@suse.com
+
+- Version 1.8.12 released 2012-08-09
+  Changes: many, see
+  http://ipmitool.cvs.sourceforge.net/viewvc/ipmitool/ipmitool/ChangeLog?revision=1.37&view=markup&pathrev=IPMITOOL_1_8_12
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:55 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:10 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue May  4 15:58:27 CEST 2010 - meissner@suse.de
+
+- add a missing return value in one error branch.
+
+-------------------------------------------------------------------
+Thu Mar  4 01:59:27 CET 2010 - ro@suse.de
+
+- fix one more no-return-in-nonvoid-function issue in ipmievd.c
+
+-------------------------------------------------------------------
+Thu Sep 17 17:15:02 CEST 2009 - trenn@suse.de
+
+- Fixed several compiler warnings (bnc#371131, bnc#480347, bnc#439490,
+  bnc#525831, bnc#534909) and quite some more.
+
+-------------------------------------------------------------------
+Tue Sep 15 17:45:24 CEST 2009 - trenn@suse.de
+
+- Update to version 1.8.11
+- Fix segfault when doing firmware upgrades with too big FW files
+- Be more verbose why a firmware update does not match
+
+-------------------------------------------------------------------
+Tue Oct 14 18:21:55 CEST 2008 - crrodriguez@suse.de
+
+- fix implicit-fortify-decl errors 
+
+-------------------------------------------------------------------
+Fri Sep 26 13:55:29 CEST 2008 - duwe@suse.de
+
+- fix ugly code and sloppy programming found by RPMlint
+
+-------------------------------------------------------------------
+Fri Sep 12 16:42:17 CEST 2008 - duwe@suse.de
+
+- update to version 1.8.10 as requested in FATE#304431
+  + remove fixes now in mainline
+
+-------------------------------------------------------------------
+Thu Jan 17 15:28:30 CET 2008 - duwe@suse.de
+
+- Fix bugs 298222 and 144023 (arg checking and POH scaling)
+
+-------------------------------------------------------------------
+Thu Mar  8 12:58:37 CET 2007 - duwe@suse.de
+
+- add new compile fixes
+
+-------------------------------------------------------------------
+Wed Mar  7 14:02:54 CET 2007 - duwe@suse.de
+
+- update to 1.8.9, fixing ipmievd crashing.
+  This was requesten in Bug#246456
+
+-------------------------------------------------------------------
+Fri Oct 13 15:07:13 CEST 2006 - duwe@suse.de
+
+- update to today's CVS state
+  * might fix SoL issues (Fate #30911) 
+
+-------------------------------------------------------------------
+Tue Oct 10 15:51:47 CEST 2006 - duwe@suse.de
+
+- update to 1.8.8 mainly various fixes:
+  version 1.8.8
+        * Fix segfaults in sensor data repository list
+        * Fix ipmievd to open interface before daemonizing
+        * Fix IPMIv1.5 authtype NONE to ignore supplied password
+        * Fix cipher suite display bug in lan print
+        * Fix typo in IPMIv2 SOL output when sending break
+        * Fix improper LUN handling with Tyan SOL
+        * Add LUN support to OpenIPMI interface
+        * Add support for Kontron OEM commands
+        * Update to Kontron Firmware Update command
+  version 1.8.7
+        * Remove nuclear clause from license
+        * Add Sun OEM command for blades
+        * Increase argument size for raw commands in shell/exec
+        * Fix handling of LUNs for LAN interfaces
+        * Add IPMIv2 SOL loopback test
+        * Add support for IBM OEM SEL messages
+        * Disable file paranoia checks on read files by default
+        * Support IPMIv2 SOL on older Intel boxes
+        * Display message and exit if keepalive fails during SOL
+        * Add support for setting VLAN id and priority
+        * Add support for FreeBSD OpenIPMI-compatible driver
+        * Add support for IPMIv2 Firmware Firewall
+        * Fix gcc4 compile warnings
+        * Make ipmievd generate pidfile
+        * Add initscripts for ipmievd
+
+-------------------------------------------------------------------
+Mon May 29 13:14:22 CEST 2006 - kukuk@suse.de
+
+- Fix type conversion bug in ipmi_pef.c [#173658]
+
+-------------------------------------------------------------------
+Fri May 26 16:40:00 CEST 2006 - schwab@suse.de
+
+- Add readline-devel to BuildRequires to enable shell command.
+- Fix use of channel_info bitfield.
+- Fix byte swapping.
+
+-------------------------------------------------------------------
+Mon Feb 13 15:17:19 CET 2006 - kukuk@suse.de
+
+- Update to ipmitool 1.8.6 [#134708,#131823]
+  - Fix memory corruption when sending encrypted SOL traffic
+  - Add keepalive timer to IPMIv2 SOL sessions
+  - Raise privilege level after creating IPMIv2 session
+  - Add support for settable SOL escape character with -e option
+  - Add support for Kg BMC key for IPMIv2 authentication with -k option
+  - Add support for Tyan IPMIv1.5 SOL with tsol command
+  - Add support for PICMG devices
+  - Add support for OEM SEL event parsing
+  - Add support for command bridging over lan and lanplus interfaces
+  - New 'chassis selftest' command
+  - Many bufxies and patches from contributors
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 23:06:33 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Sep 19 09:07:21 CEST 2005 - kukuk@suse.de
+
+- Fix missing return value
+
+-------------------------------------------------------------------
+Thu Aug  4 11:54:33 CEST 2005 - kukuk@suse.de
+
+- Initial release (FeatureID #165)
+

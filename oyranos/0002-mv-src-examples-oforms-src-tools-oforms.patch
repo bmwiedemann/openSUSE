@@ -1,0 +1,162 @@
+From 193a69b22f8b382889876dc3ea1d50d9c5cd8b8c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Jan 2017 01:16:08 +0100
+Subject: [PATCH 2/6] mv src/examples/oforms src/tools/oforms
+
+So far, oforms is located within examples, but oyranos-icc in tools
+depends on it. It seems that oforms should rather be in tools as well.
+---
+ src/examples/CMakeLists.txt                        | 27 ----------------------
+ src/tools/CMakeLists.txt                           | 26 +++++++++++++++++++++
+ src/{examples => tools}/oforms/CMakeLists.txt      |  0
+ .../oforms/oyranos-xforms-fltk.1                   |  0
+ .../oforms/oyranos-xforms-modules.1                |  0
+ src/{examples => tools}/oforms/oyranos-xforms.1    |  0
+ .../oforms/oyranos_forms_cmd_line.c                |  0
+ .../oforms/oyranos_forms_fltk.cxx                  |  0
+ .../oforms/oyranos_widgets_fltk.cxx                |  0
+ .../oforms/oyranos_widgets_fltk.h                  |  0
+ src/{examples => tools}/oforms/oyranos_xforms.c    |  0
+ .../oforms/oyranos_xforms.makefile                 |  0
+ .../oforms/oyranos_xforms_fltk.cxx                 |  0
+ .../oforms/oyranos_xforms_modules.c                |  0
+ 14 files changed, 26 insertions(+), 27 deletions(-)
+ rename src/{examples => tools}/oforms/CMakeLists.txt (100%)
+ rename src/{examples => tools}/oforms/oyranos-xforms-fltk.1 (100%)
+ rename src/{examples => tools}/oforms/oyranos-xforms-modules.1 (100%)
+ rename src/{examples => tools}/oforms/oyranos-xforms.1 (100%)
+ rename src/{examples => tools}/oforms/oyranos_forms_cmd_line.c (100%)
+ rename src/{examples => tools}/oforms/oyranos_forms_fltk.cxx (100%)
+ rename src/{examples => tools}/oforms/oyranos_widgets_fltk.cxx (100%)
+ rename src/{examples => tools}/oforms/oyranos_widgets_fltk.h (100%)
+ rename src/{examples => tools}/oforms/oyranos_xforms.c (100%)
+ rename src/{examples => tools}/oforms/oyranos_xforms.makefile (100%)
+ rename src/{examples => tools}/oforms/oyranos_xforms_fltk.cxx (100%)
+ rename src/{examples => tools}/oforms/oyranos_xforms_modules.c (100%)
+
+diff --git a/src/examples/CMakeLists.txt b/src/examples/CMakeLists.txt
+index 14598e3..89cd4de 100644
+--- a/src/examples/CMakeLists.txt
++++ b/src/examples/CMakeLists.txt
+@@ -74,33 +74,6 @@ IF( FLTK_FOUND )
+   INSTALL (TARGETS oyranos-config-fltk DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+-
+-ADD_SUBDIRECTORY( oforms )
+-
+-# oFORMS for a Oyranos CLI renderer and parser
+-ADD_EXECUTABLE( oyranos-xforms oforms/oyranos_xforms.c )
+-TARGET_LINK_LIBRARIES( oyranos-xforms
+-                  ${OY_OFORMS_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-xforms DESTINATION ${CMAKE_INSTALL_BINDIR})
+-
+-# oFORMS for a Oyranos FLTK renderer and parser
+-IF( FLTK_FOUND )
+-  ADD_EXECUTABLE( oyranos-xforms-fltk
+-                  oforms/oyranos_forms_fltk.cxx
+-                  oforms/oyranos_widgets_fltk.cxx
+-                  oforms/oyranos_xforms_fltk.cxx
+-                )
+-  TARGET_LINK_LIBRARIES ( oyranos-xforms-fltk ${PROJECT_NAME} ${EXTRA_LIBS}
+-                  ${OY_OFORMS_LIB} ${FLTK_LIBRARIES} ${XRANDR_LIBRARIES} )
+-  INSTALL (TARGETS oyranos-xforms-fltk DESTINATION ${CMAKE_INSTALL_BINDIR})
+-ENDIF()
+-
+-# oFORMS for a Oyranos module generation
+-ADD_EXECUTABLE( oyranos-xforms-modules oforms/oyranos_xforms_modules.c )
+-TARGET_LINK_LIBRARIES( oyranos-xforms-modules
+-             ${PROJECT_NAME} ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-xforms-modules DESTINATION ${CMAKE_INSTALL_BINDIR})
+-
+ # Tutorial 1
+ ADD_EXECUTABLE( tutorial1 tutorial1.c )
+ TARGET_LINK_LIBRARIES( tutorial1
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index 237b508..1edf0d0 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -34,6 +34,32 @@ IF( CAIRO_FOUND )
+   INSTALL (TARGETS oyranos-profile-graph DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
++ADD_SUBDIRECTORY( oforms )
++
++# oFORMS for a Oyranos CLI renderer and parser
++ADD_EXECUTABLE( oyranos-xforms oforms/oyranos_xforms.c )
++TARGET_LINK_LIBRARIES( oyranos-xforms
++                  ${OY_OFORMS_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
++INSTALL (TARGETS oyranos-xforms DESTINATION ${CMAKE_INSTALL_BINDIR})
++
++# oFORMS for a Oyranos FLTK renderer and parser
++IF( FLTK_FOUND )
++  ADD_EXECUTABLE( oyranos-xforms-fltk
++                  oforms/oyranos_forms_fltk.cxx
++                  oforms/oyranos_widgets_fltk.cxx
++                  oforms/oyranos_xforms_fltk.cxx
++                )
++  TARGET_LINK_LIBRARIES ( oyranos-xforms-fltk ${PROJECT_NAME} ${EXTRA_LIBS}
++                  ${OY_OFORMS_LIB} ${FLTK_LIBRARIES} ${XRANDR_LIBRARIES} )
++  INSTALL (TARGETS oyranos-xforms-fltk DESTINATION ${CMAKE_INSTALL_BINDIR})
++ENDIF()
++
++# oFORMS for a Oyranos module generation
++ADD_EXECUTABLE( oyranos-xforms-modules oforms/oyranos_xforms_modules.c )
++TARGET_LINK_LIBRARIES( oyranos-xforms-modules
++             ${PROJECT_NAME} ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
++INSTALL (TARGETS oyranos-xforms-modules DESTINATION ${CMAKE_INSTALL_BINDIR})
++
+ # color conversion
+ ADD_EXECUTABLE( oyranos-icc "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_convert.c" )
+ TARGET_LINK_LIBRARIES( oyranos-icc ${PROJECT_NAME} ${EXTRA_LIBS} oyranos_forms_cmd_line-static )
+diff --git a/src/examples/oforms/CMakeLists.txt b/src/tools/oforms/CMakeLists.txt
+similarity index 100%
+rename from src/examples/oforms/CMakeLists.txt
+rename to src/tools/oforms/CMakeLists.txt
+diff --git a/src/examples/oforms/oyranos-xforms-fltk.1 b/src/tools/oforms/oyranos-xforms-fltk.1
+similarity index 100%
+rename from src/examples/oforms/oyranos-xforms-fltk.1
+rename to src/tools/oforms/oyranos-xforms-fltk.1
+diff --git a/src/examples/oforms/oyranos-xforms-modules.1 b/src/tools/oforms/oyranos-xforms-modules.1
+similarity index 100%
+rename from src/examples/oforms/oyranos-xforms-modules.1
+rename to src/tools/oforms/oyranos-xforms-modules.1
+diff --git a/src/examples/oforms/oyranos-xforms.1 b/src/tools/oforms/oyranos-xforms.1
+similarity index 100%
+rename from src/examples/oforms/oyranos-xforms.1
+rename to src/tools/oforms/oyranos-xforms.1
+diff --git a/src/examples/oforms/oyranos_forms_cmd_line.c b/src/tools/oforms/oyranos_forms_cmd_line.c
+similarity index 100%
+rename from src/examples/oforms/oyranos_forms_cmd_line.c
+rename to src/tools/oforms/oyranos_forms_cmd_line.c
+diff --git a/src/examples/oforms/oyranos_forms_fltk.cxx b/src/tools/oforms/oyranos_forms_fltk.cxx
+similarity index 100%
+rename from src/examples/oforms/oyranos_forms_fltk.cxx
+rename to src/tools/oforms/oyranos_forms_fltk.cxx
+diff --git a/src/examples/oforms/oyranos_widgets_fltk.cxx b/src/tools/oforms/oyranos_widgets_fltk.cxx
+similarity index 100%
+rename from src/examples/oforms/oyranos_widgets_fltk.cxx
+rename to src/tools/oforms/oyranos_widgets_fltk.cxx
+diff --git a/src/examples/oforms/oyranos_widgets_fltk.h b/src/tools/oforms/oyranos_widgets_fltk.h
+similarity index 100%
+rename from src/examples/oforms/oyranos_widgets_fltk.h
+rename to src/tools/oforms/oyranos_widgets_fltk.h
+diff --git a/src/examples/oforms/oyranos_xforms.c b/src/tools/oforms/oyranos_xforms.c
+similarity index 100%
+rename from src/examples/oforms/oyranos_xforms.c
+rename to src/tools/oforms/oyranos_xforms.c
+diff --git a/src/examples/oforms/oyranos_xforms.makefile b/src/tools/oforms/oyranos_xforms.makefile
+similarity index 100%
+rename from src/examples/oforms/oyranos_xforms.makefile
+rename to src/tools/oforms/oyranos_xforms.makefile
+diff --git a/src/examples/oforms/oyranos_xforms_fltk.cxx b/src/tools/oforms/oyranos_xforms_fltk.cxx
+similarity index 100%
+rename from src/examples/oforms/oyranos_xforms_fltk.cxx
+rename to src/tools/oforms/oyranos_xforms_fltk.cxx
+diff --git a/src/examples/oforms/oyranos_xforms_modules.c b/src/tools/oforms/oyranos_xforms_modules.c
+similarity index 100%
+rename from src/examples/oforms/oyranos_xforms_modules.c
+rename to src/tools/oforms/oyranos_xforms_modules.c
+-- 
+2.10.2
+

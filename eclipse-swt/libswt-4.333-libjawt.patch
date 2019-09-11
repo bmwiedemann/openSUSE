@@ -1,0 +1,12 @@
+--- libswt-4.333/build.sh	2013-09-11 10:41:54.000000000 +0200
++++ libswt-4.333/build.sh	2017-10-07 00:11:25.119470543 +0200
+@@ -501,6 +501,9 @@
+ 	if [ -f ${JAVA_HOME}/jre/lib/${AWT_ARCH}/libjawt.* ]; then
+ 		AWT_LIB_PATH=${JAVA_HOME}/jre/lib/${AWT_ARCH}
+ 		export AWT_LIB_PATH
++	elif [ -f ${JAVA_HOME}/lib/libjawt.* ]; then
++		AWT_LIB_PATH=${JAVA_HOME}/lib
++		export AWT_LIB_PATH
+ 	else
+ 		AWT_LIB_PATH=${JAVA_HOME}/jre/bin
+ 		export AWT_LIB_PATH

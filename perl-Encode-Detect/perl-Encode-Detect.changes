@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Mar 27 14:24:38 UTC 2013 - stefan.jakobs@rus.uni-stuttgart.de
+
+- remove 'BuildRequires: perl-macros' from spec file, because perl
+  included in openSUSE > 1210 deprecates perl-macros which causes a
+  build failure.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:32 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:11 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Apr  6 22:01:14 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o added Header
+  o sort TAGS
+  o added Url
+  o build/install with ./Build
+  o moved changelog to changes file
+- added perl-macros
+
+-------------------------------------------------------------------
+Thu Aug 28 14:20:03 UTC 2008 - jfunk@funktronics.ca
+
+- Initial release 1.01
+

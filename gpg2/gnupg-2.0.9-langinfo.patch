@@ -1,0 +1,17 @@
+# fix [bnc#305725] - non latin characters displayed incorrectly by pinentry
+---
+# jnlib/utf8conv.c |    1 +
+# 1 file changed, 1 insertion(+)
+#
+Index: gnupg-2.1.0/common/utf8conv.c
+===================================================================
+--- gnupg-2.1.0.orig/common/utf8conv.c	2014-10-11 19:45:14.000000000 +0200
++++ gnupg-2.1.0/common/utf8conv.c	2014-11-07 11:35:05.491413258 +0100
+@@ -198,6 +198,7 @@ set_native_charset (const char *newset)
+ #else /*!HAVE_W32_SYSTEM && !HAVE_ANDROID_SYSTEM*/
+ 
+ #ifdef HAVE_LANGINFO_CODESET
++	  setlocale(LC_ALL, "");
+       newset = nl_langinfo (CODESET);
+ #else /*!HAVE_LANGINFO_CODESET*/
+       /* Try to get the used charset from environment variables.  */

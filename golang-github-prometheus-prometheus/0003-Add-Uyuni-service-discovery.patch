@@ -1,0 +1,1996 @@
+From 757642fdefcc3a6f08d36d5db9ff5e9b46104193 Mon Sep 17 00:00:00 2001
+From: Joao Cavalheiro <jcavalheiro@suse.de>
+Date: Wed, 22 May 2019 16:39:25 +0100
+Subject: [PATCH] Add Uyuni service discovery
+
+---
+ discovery/config/config.go                        |   3 +
+ discovery/manager.go                              |   6 +
+ discovery/uyuni/uyuni.go                          | 219 ++++++++++
+ vendor/github.com/kolo/xmlrpc/LICENSE             |  19 +
+ vendor/github.com/kolo/xmlrpc/README.md           |  89 ++++
+ vendor/github.com/kolo/xmlrpc/client.go           | 170 ++++++++
+ vendor/github.com/kolo/xmlrpc/client_test.go      | 141 +++++++
+ vendor/github.com/kolo/xmlrpc/decoder.go          | 473 ++++++++++++++++++++++
+ vendor/github.com/kolo/xmlrpc/decoder_test.go     | 234 +++++++++++
+ vendor/github.com/kolo/xmlrpc/encoder.go          | 171 ++++++++
+ vendor/github.com/kolo/xmlrpc/encoder_test.go     |  58 +++
+ vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml |   6 +
+ vendor/github.com/kolo/xmlrpc/request.go          |  57 +++
+ vendor/github.com/kolo/xmlrpc/response.go         |  52 +++
+ vendor/github.com/kolo/xmlrpc/response_test.go    |  84 ++++
+ vendor/github.com/kolo/xmlrpc/test_server.rb      |  25 ++
+ vendor/github.com/kolo/xmlrpc/xmlrpc.go           |  19 +
+ 17 files changed, 1826 insertions(+)
+ create mode 100644 discovery/uyuni/uyuni.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/LICENSE
+ create mode 100644 vendor/github.com/kolo/xmlrpc/README.md
+ create mode 100644 vendor/github.com/kolo/xmlrpc/client.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/client_test.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/decoder.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/decoder_test.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/encoder.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/encoder_test.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
+ create mode 100644 vendor/github.com/kolo/xmlrpc/request.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/response.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/response_test.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/test_server.rb
+ create mode 100644 vendor/github.com/kolo/xmlrpc/xmlrpc.go
+
+diff --git a/discovery/config/config.go b/discovery/config/config.go
+index 820de1f7..27d8c0cc 100644
+--- a/discovery/config/config.go
++++ b/discovery/config/config.go
+@@ -27,6 +27,7 @@ import (
+ 	"github.com/prometheus/prometheus/discovery/openstack"
+ 	"github.com/prometheus/prometheus/discovery/targetgroup"
+ 	"github.com/prometheus/prometheus/discovery/triton"
++	"github.com/prometheus/prometheus/discovery/uyuni"
+ 	"github.com/prometheus/prometheus/discovery/zookeeper"
+ )
+ 
+@@ -58,6 +59,8 @@ type ServiceDiscoveryConfig struct {
+ 	AzureSDConfigs []*azure.SDConfig `yaml:"azure_sd_configs,omitempty"`
+ 	// List of Triton service discovery configurations.
+ 	TritonSDConfigs []*triton.SDConfig `yaml:"triton_sd_configs,omitempty"`
++	// List of Uyuni service discovery configurations.
++	UyuniSDConfigs []*uyuni.SDConfig `yaml:"uyuni_sd_configs,omitempty"`
+ }
+ 
+ // Validate validates the ServiceDiscoveryConfig.
+diff --git a/discovery/manager.go b/discovery/manager.go
+index 1dbdecc8..ac621f3e 100644
+--- a/discovery/manager.go
++++ b/discovery/manager.go
+@@ -37,6 +37,7 @@ import (
+ 	"github.com/prometheus/prometheus/discovery/marathon"
+ 	"github.com/prometheus/prometheus/discovery/openstack"
+ 	"github.com/prometheus/prometheus/discovery/triton"
++	"github.com/prometheus/prometheus/discovery/uyuni"
+ 	"github.com/prometheus/prometheus/discovery/zookeeper"
+ )
+ 
+@@ -406,6 +407,11 @@ func (m *Manager) registerProviders(cfg sd_config.ServiceDiscoveryConfig, setNam
+ 			return triton.New(log.With(m.logger, "discovery", "triton"), c)
+ 		})
+ 	}
++	for _, c := range cfg.UyuniSDConfigs {
++		add(c, func() (Discoverer, error) {
++			return uyuni.NewDiscovery(c, log.With(m.logger, "discovery", "uyuni")), nil
++		})
++	}
+ 	if len(cfg.StaticConfigs) > 0 {
+ 		add(setName, func() (Discoverer, error) {
+ 			return &StaticProvider{TargetGroups: cfg.StaticConfigs}, nil
+diff --git a/discovery/uyuni/uyuni.go b/discovery/uyuni/uyuni.go
+new file mode 100644
+index 00000000..60f741a5
+--- /dev/null
++++ b/discovery/uyuni/uyuni.go
+@@ -0,0 +1,219 @@
++// Copyright 2017 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++package uyuni
++
++import (
++	"context"
++	"fmt"
++	"net/http"
++	"time"
++
++	"github.com/go-kit/kit/log"
++	"github.com/go-kit/kit/log/level"
++	"github.com/kolo/xmlrpc"
++	"github.com/pkg/errors"
++	"github.com/prometheus/common/model"
++
++	"github.com/prometheus/prometheus/discovery/refresh"
++	"github.com/prometheus/prometheus/discovery/targetgroup"
++)
++
++const (
++	uyuniLabel             = model.MetaLabelPrefix + "uyuni_"
++	uyuniLabelEntitlements = uyuniLabel + "entitlements"
++)
++
++// DefaultSDConfig is the default Uyuni SD configuration.
++var DefaultSDConfig = SDConfig{
++	RefreshInterval: model.Duration(1 * time.Minute),
++}
++
++// SDConfig is the configuration for Uyuni based service discovery.
++type SDConfig struct {
++	Host            string         `yaml:"host"`
++	User            string         `yaml:"username"`
++	Pass            string         `yaml:"password"`
++	RefreshInterval model.Duration `yaml:"refresh_interval,omitempty"`
++}
++
++// Uyuni API Response structures
++type clientRef struct {
++	Id   int    `xmlrpc:"id"`
++	Name string `xmlrpc:"name"`
++}
++
++type clientDetail struct {
++	Id           int      `xmlrpc:"id"`
++	Hostname     string   `xmlrpc:"hostname"`
++	Entitlements []string `xmlrpc:"addon_entitlements"`
++}
++
++type exporterConfig struct {
++	Enabled bool `xmlrpc:"enabled"`
++}
++
++type formulaData struct {
++	NodeExporter     exporterConfig `xmlrpc:"node_exporter"`
++	PostgresExporter exporterConfig `xmlrpc:"postgres_exporter"`
++}
++
++// UnmarshalYAML implements the yaml.Unmarshaler interface.
++func (c *SDConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
++	*c = DefaultSDConfig
++	type plain SDConfig
++	err := unmarshal((*plain)(c))
++
++	if err != nil {
++		return err
++	}
++	if c.Host == "" {
++		return errors.New("Uyuni SD configuration requires a Host")
++	}
++	if c.User == "" {
++		return errors.New("Uyuni SD configuration requires a Username")
++	}
++	if c.Pass == "" {
++		return errors.New("Uyuni SD configuration requires a Password")
++	}
++	if c.RefreshInterval <= 0 {
++		return errors.New("Uyuni SD configuration requires RefreshInterval to be a positive integer")
++	}
++	return nil
++}
++
++// Attempt to login in SUSE Manager Server and get an auth token
++func Login(rpcclient *xmlrpc.Client, user string, pass string) (string, error) {
++	var result string
++	err := rpcclient.Call("auth.login", []interface{}{user, pass}, &result)
++	return result, err
++}
++
++// Logout from SUSE Manager API
++func Logout(rpcclient *xmlrpc.Client, token string) error {
++	err := rpcclient.Call("auth.logout", token, nil)
++	return err
++}
++
++// Get client list
++func ListSystems(rpcclient *xmlrpc.Client, token string) ([]clientRef, error) {
++	var result []clientRef
++	err := rpcclient.Call("system.listSystems", token, &result)
++	return result, err
++}
++
++// Get client details
++func GetSystemDetails(rpcclient *xmlrpc.Client, token string, systemId int) (clientDetail, error) {
++	var result clientDetail
++	err := rpcclient.Call("system.getDetails", []interface{}{token, systemId}, &result)
++	return result, err
++}
++
++// List client FQDNs
++func ListSystemFQDNs(rpcclient *xmlrpc.Client, token string, systemId int) ([]string, error) {
++	var result []string
++	err := rpcclient.Call("system.listFqdns", []interface{}{token, systemId}, &result)
++	return result, err
++}
++
++// Get formula data for a given system
++func getSystemFormulaData(rpcclient *xmlrpc.Client, token string, systemId int, formulaName string) (formulaData, error) {
++	var result formulaData
++	err := rpcclient.Call("formula.getSystemFormulaData", []interface{}{token, systemId, formulaName}, &result)
++	return result, err
++}
++
++// Discovery periodically performs Uyuni API requests. It implements
++// the Discoverer interface.
++type Discovery struct {
++	*refresh.Discovery
++	client     *http.Client
++	interval   time.Duration
++	sdConfig   *SDConfig
++	logger     log.Logger
++}
++
++// NewDiscovery returns a new file discovery for the given paths.
++func NewDiscovery(conf *SDConfig, logger log.Logger) *Discovery {
++	d := &Discovery{
++		interval: time.Duration(conf.RefreshInterval),
++		sdConfig: conf,
++		logger: logger,
++	}
++	d.Discovery = refresh.NewDiscovery(
++		logger,
++		"uyuni",
++		time.Duration(conf.RefreshInterval),
++		d.refresh,
++	)
++	return d
++}
++
++func (d *Discovery) refresh(ctx context.Context) ([]*targetgroup.Group, error) {
++
++	config := d.sdConfig
++	apiUrl := config.Host + "/rpc/api"
++
++	rpcclient, _ := xmlrpc.NewClient(apiUrl, nil)
++
++	token, err := Login(rpcclient, config.User, config.Pass)
++	if err != nil {
++		return nil, errors.Wrap(err, "Unable to login to SUSE Manager API")
++	}
++
++	clientList, err := ListSystems(rpcclient, token)
++	if err != nil {
++		return nil, errors.Wrap(err, "Unable to get list of systems")
++	}
++
++	tg := &targetgroup.Group{
++		Source: config.Host,
++	}
++
++	if len(clientList) == 0 {
++		fmt.Printf("\tFound 0 systems.\n")
++	} else {
++		for _, client := range clientList {
++			fqdns := []string{}
++			formulas := formulaData{}
++			details, err := GetSystemDetails(rpcclient, token, client.Id)
++			if err != nil {
++				level.Error(d.logger).Log("msg", "Unable to get system details","clientId", client.Id, "err", err)
++				continue;
++			}
++			// Check if system is to be monitored
++			for _, v := range details.Entitlements {
++				if v == "monitoring_entitled" {
++					fqdns, err = ListSystemFQDNs(rpcclient, token, client.Id)
++					formulas, err = getSystemFormulaData(rpcclient, token, client.Id, "prometheus-exporters")
++					if (formulas.NodeExporter.Enabled) {
++						labels := model.LabelSet{}
++						addr := fmt.Sprintf("%s:%d", fqdns[len(fqdns)-1], 9100)
++						labels[model.AddressLabel] = model.LabelValue(addr)
++						tg.Targets = append(tg.Targets, labels)
++					}
++					if (formulas.PostgresExporter.Enabled) {
++						labels := model.LabelSet{}
++						addr := fmt.Sprintf("%s:%d", fqdns[len(fqdns)-1], 9187)
++						labels[model.AddressLabel] = model.LabelValue(addr)
++						tg.Targets = append(tg.Targets, labels)
++					}
++				}
++			}
++
++			level.Debug(d.logger).Log("msg", "Found system", "host", details.Hostname, "entitlements", fmt.Sprintf("%+v", details.Entitlements), "FQDN", fmt.Sprintf("%+v", fqdns), "formulas", fmt.Sprintf("%+v", formulas))
++		}
++	}
++	Logout(rpcclient, token)
++	return []*targetgroup.Group{tg}, nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/LICENSE b/vendor/github.com/kolo/xmlrpc/LICENSE
+new file mode 100644
+index 00000000..8103dd13
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/LICENSE
+@@ -0,0 +1,19 @@
++Copyright (C) 2012 Dmitry Maksimov
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in
++all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++THE SOFTWARE.
+diff --git a/vendor/github.com/kolo/xmlrpc/README.md b/vendor/github.com/kolo/xmlrpc/README.md
+new file mode 100644
+index 00000000..8113cfcc
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/README.md
+@@ -0,0 +1,89 @@
++[![GoDoc](https://godoc.org/github.com/kolo/xmlrpc?status.svg)](https://godoc.org/github.com/kolo/xmlrpc)
++
++## Overview
++
++xmlrpc is an implementation of client side part of XMLRPC protocol in Go language.
++
++## Status
++
++This project is in minimal maintenance mode with no further development. Bug fixes
++are accepted, but it might take some time until they will be merged.
++
++## Installation
++
++To install xmlrpc package run `go get github.com/kolo/xmlrpc`. To use
++it in application add `"github.com/kolo/xmlrpc"` string to `import`
++statement.
++
++## Usage
++
++    client, _ := xmlrpc.NewClient("https://bugzilla.mozilla.org/xmlrpc.cgi", nil)
++    result := struct{
++      Version string `xmlrpc:"version"`
++    }{}
++    client.Call("Bugzilla.version", nil, &result)
++    fmt.Printf("Version: %s\n", result.Version) // Version: 4.2.7+
++
++Second argument of NewClient function is an object that implements
++[http.RoundTripper](http://golang.org/pkg/net/http/#RoundTripper)
++interface, it can be used to get more control over connection options.
++By default it initialized by http.DefaultTransport object.
++
++### Arguments encoding
++
++xmlrpc package supports encoding of native Go data types to method
++arguments.
++
++Data types encoding rules:
++
++* int, int8, int16, int32, int64 encoded to int;
++* float32, float64 encoded to double;
++* bool encoded to boolean;
++* string encoded to string;
++* time.Time encoded to datetime.iso8601;
++* xmlrpc.Base64 encoded to base64;
++* slice encoded to array;
++
++Structs decoded to struct by following rules:
++
++* all public field become struct members;
++* field name become member name;
++* if field has xmlrpc tag, its value become member name.
++
++Server method can accept few arguments, to handle this case there is
++special approach to handle slice of empty interfaces (`[]interface{}`).
++Each value of such slice encoded as separate argument.
++
++### Result decoding
++
++Result of remote function is decoded to native Go data type.
++
++Data types decoding rules:
++
++* int, i4 decoded to int, int8, int16, int32, int64;
++* double decoded to float32, float64;
++* boolean decoded to bool;
++* string decoded to string;
++* array decoded to slice;
++* structs decoded following the rules described in previous section;
++* datetime.iso8601 decoded as time.Time data type;
++* base64 decoded to string.
++
++## Implementation details
++
++xmlrpc package contains clientCodec type, that implements [rpc.ClientCodec](http://golang.org/pkg/net/rpc/#ClientCodec)
++interface of [net/rpc](http://golang.org/pkg/net/rpc) package.
++
++xmlrpc package works over HTTP protocol, but some internal functions
++and data type were made public to make it easier to create another
++implementation of xmlrpc that works over another protocol. To encode
++request body there is EncodeMethodCall function. To decode server
++response Response data type can be used.
++
++## Contribution
++
++See [project status](#status).
++
++## Authors
++
++Dmitry Maksimov (dmtmax@gmail.com)
+diff --git a/vendor/github.com/kolo/xmlrpc/client.go b/vendor/github.com/kolo/xmlrpc/client.go
+new file mode 100644
+index 00000000..3aa86ce2
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/client.go
+@@ -0,0 +1,170 @@
++package xmlrpc
++
++import (
++	"errors"
++	"fmt"
++	"io/ioutil"
++	"net/http"
++	"net/http/cookiejar"
++	"net/rpc"
++	"net/url"
++	"sync"
++)
++
++type Client struct {
++	*rpc.Client
++}
++
++// clientCodec is rpc.ClientCodec interface implementation.
++type clientCodec struct {
++	// url presents url of xmlrpc service
++	url *url.URL
++
++	// httpClient works with HTTP protocol
++	httpClient *http.Client
++
++	// cookies stores cookies received on last request
++	cookies http.CookieJar
++
++	// responses presents map of active requests. It is required to return request id, that
++	// rpc.Client can mark them as done.
++	responses map[uint64]*http.Response
++	mutex     sync.Mutex
++
++	response *Response
++
++	// ready presents channel, that is used to link request and it`s response.
++	ready chan uint64
++
++	// close notifies codec is closed.
++	close chan uint64
++}
++
++func (codec *clientCodec) WriteRequest(request *rpc.Request, args interface{}) (err error) {
++	httpRequest, err := NewRequest(codec.url.String(), request.ServiceMethod, args)
++
++	if codec.cookies != nil {
++		for _, cookie := range codec.cookies.Cookies(codec.url) {
++			httpRequest.AddCookie(cookie)
++		}
++	}
++
++	if err != nil {
++		return err
++	}
++
++	var httpResponse *http.Response
++	httpResponse, err = codec.httpClient.Do(httpRequest)
++
++	if err != nil {
++		return err
++	}
++
++	if codec.cookies != nil {
++		codec.cookies.SetCookies(codec.url, httpResponse.Cookies())
++	}
++
++	codec.mutex.Lock()
++	codec.responses[request.Seq] = httpResponse
++	codec.mutex.Unlock()
++
++	codec.ready <- request.Seq
++
++	return nil
++}
++
++func (codec *clientCodec) ReadResponseHeader(response *rpc.Response) (err error) {
++	var seq uint64
++
++	select {
++	case seq = <-codec.ready:
++	case <-codec.close:
++		return errors.New("codec is closed")
++	}
++
++	codec.mutex.Lock()
++	httpResponse := codec.responses[seq]
++	codec.mutex.Unlock()
++
++	if httpResponse.StatusCode < 200 || httpResponse.StatusCode >= 300 {
++		return fmt.Errorf("request error: bad status code - %d", httpResponse.StatusCode)
++	}
++
++	respData, err := ioutil.ReadAll(httpResponse.Body)
++
++	if err != nil {
++		return err
++	}
++
++	httpResponse.Body.Close()
++
++	resp := NewResponse(respData)
++
++	if resp.Failed() {
++		response.Error = fmt.Sprintf("%v", resp.Err())
++	}
++
++	codec.response = resp
++
++	response.Seq = seq
++
++	codec.mutex.Lock()
++	delete(codec.responses, seq)
++	codec.mutex.Unlock()
++
++	return nil
++}
++
++func (codec *clientCodec) ReadResponseBody(v interface{}) (err error) {
++	if v == nil {
++		return nil
++	}
++
++	if err = codec.response.Unmarshal(v); err != nil {
++		return err
++	}
++
++	return nil
++}
++
++func (codec *clientCodec) Close() error {
++	if transport, ok := codec.httpClient.Transport.(*http.Transport); ok {
++		transport.CloseIdleConnections()
++	}
++
++	close(codec.close)
++
++	return nil
++}
++
++// NewClient returns instance of rpc.Client object, that is used to send request to xmlrpc service.
++func NewClient(requrl string, transport http.RoundTripper) (*Client, error) {
++	if transport == nil {
++		transport = http.DefaultTransport
++	}
++
++	httpClient := &http.Client{Transport: transport}
++
++	jar, err := cookiejar.New(nil)
++
++	if err != nil {
++		return nil, err
++	}
++
++	u, err := url.Parse(requrl)
++
++	if err != nil {
++		return nil, err
++	}
++
++	codec := clientCodec{
++		url:        u,
++		httpClient: httpClient,
++		close:      make(chan uint64),
++		ready:      make(chan uint64),
++		responses:  make(map[uint64]*http.Response),
++		cookies:    jar,
++	}
++
++	return &Client{rpc.NewClientWithCodec(&codec)}, nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/client_test.go b/vendor/github.com/kolo/xmlrpc/client_test.go
+new file mode 100644
+index 00000000..b429d4f8
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/client_test.go
+@@ -0,0 +1,141 @@
++// +build integration
++
++package xmlrpc
++
++import (
++	"context"
++	"runtime"
++	"sync"
++	"testing"
++	"time"
++)
++
++func Test_CallWithoutArgs(t *testing.T) {
++	client := newClient(t)
++	defer client.Close()
++
++	var result time.Time
++	if err := client.Call("service.time", nil, &result); err != nil {
++		t.Fatalf("service.time call error: %v", err)
++	}
++}
++
++func Test_CallWithOneArg(t *testing.T) {
++	client := newClient(t)
++	defer client.Close()
++
++	var result string
++	if err := client.Call("service.upcase", "xmlrpc", &result); err != nil {
++		t.Fatalf("service.upcase call error: %v", err)
++	}
++
++	if result != "XMLRPC" {
++		t.Fatalf("Unexpected result of service.upcase: %s != %s", "XMLRPC", result)
++	}
++}
++
++func Test_CallWithTwoArgs(t *testing.T) {
++	client := newClient(t)
++	defer client.Close()
++
++	var sum int
++	if err := client.Call("service.sum", []interface{}{2, 3}, &sum); err != nil {
++		t.Fatalf("service.sum call error: %v", err)
++	}
++
++	if sum != 5 {
++		t.Fatalf("Unexpected result of service.sum: %d != %d", 5, sum)
++	}
++}
++
++func Test_TwoCalls(t *testing.T) {
++	client := newClient(t)
++	defer client.Close()
++
++	var upcase string
++	if err := client.Call("service.upcase", "xmlrpc", &upcase); err != nil {
++		t.Fatalf("service.upcase call error: %v", err)
++	}
++
++	var sum int
++	if err := client.Call("service.sum", []interface{}{2, 3}, &sum); err != nil {
++		t.Fatalf("service.sum call error: %v", err)
++	}
++
++}
++
++func Test_FailedCall(t *testing.T) {
++	client := newClient(t)
++	defer client.Close()
++
++	var result int
++	if err := client.Call("service.error", nil, &result); err == nil {
++		t.Fatal("expected service.error returns error, but it didn't")
++	}
++}
++
++func Test_ConcurrentCalls(t *testing.T) {
++	client := newClient(t)
++
++	call := func() {
++		var result time.Time
++		client.Call("service.time", nil, &result)
++	}
++
++	var wg sync.WaitGroup
++	for i := 0; i < 100; i++ {
++		wg.Add(1)
++		go func() {
++			call()
++			wg.Done()
++		}()
++	}
++
++	wg.Wait()
++	client.Close()
++}
++
++func Test_CloseMemoryLeak(t *testing.T) {
++	expected := runtime.NumGoroutine()
++
++	for i := 0; i < 3; i++ {
++		client := newClient(t)
++		client.Call("service.time", nil, nil)
++		client.Close()
++	}
++
++	var actual int
++
++	// It takes some time to stop running goroutinges. This function checks number of
++	// running goroutines. It finishes execution if number is same as expected or timeout
++	// has been reached.
++	func() {
++		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
++		defer cancel()
++
++		for {
++			select {
++			case <-ctx.Done():
++				return
++			default:
++				actual = runtime.NumGoroutine()
++				if actual == expected {
++					return
++				}
++			}
++		}
++	}()
++
++	if actual != expected {
++		t.Errorf("expected number of running goroutines to be %d, but got %d", expected, actual)
++	}
++}
++
++func newClient(t *testing.T) *Client {
++	client, err := NewClient("http://localhost:5001", nil)
++	if err != nil {
++		t.Fatalf("Can't create client: %v", err)
++	}
++
++	return client
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/decoder.go b/vendor/github.com/kolo/xmlrpc/decoder.go
+new file mode 100644
+index 00000000..d4dcb19a
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/decoder.go
+@@ -0,0 +1,473 @@
++package xmlrpc
++
++import (
++	"bytes"
++	"encoding/xml"
++	"errors"
++	"fmt"
++	"io"
++	"reflect"
++	"strconv"
++	"strings"
++	"time"
++)
++
++const (
++	iso8601        = "20060102T15:04:05"
++	iso8601Z       = "20060102T15:04:05Z07:00"
++	iso8601Hyphen  = "2006-01-02T15:04:05"
++	iso8601HyphenZ = "2006-01-02T15:04:05Z07:00"
++)
++
++var (
++	// CharsetReader is a function to generate reader which converts a non UTF-8
++	// charset into UTF-8.
++	CharsetReader func(string, io.Reader) (io.Reader, error)
++
++	timeLayouts     = []string{iso8601, iso8601Z, iso8601Hyphen, iso8601HyphenZ}
++	invalidXmlError = errors.New("invalid xml")
++)
++
++type TypeMismatchError string
++
++func (e TypeMismatchError) Error() string { return string(e) }
++
++type decoder struct {
++	*xml.Decoder
++}
++
++func unmarshal(data []byte, v interface{}) (err error) {
++	dec := &decoder{xml.NewDecoder(bytes.NewBuffer(data))}
++
++	if CharsetReader != nil {
++		dec.CharsetReader = CharsetReader
++	}
++
++	var tok xml.Token
++	for {
++		if tok, err = dec.Token(); err != nil {
++			return err
++		}
++
++		if t, ok := tok.(xml.StartElement); ok {
++			if t.Name.Local == "value" {
++				val := reflect.ValueOf(v)
++				if val.Kind() != reflect.Ptr {
++					return errors.New("non-pointer value passed to unmarshal")
++				}
++				if err = dec.decodeValue(val.Elem()); err != nil {
++					return err
++				}
++
++				break
++			}
++		}
++	}
++
++	// read until end of document
++	err = dec.Skip()
++	if err != nil && err != io.EOF {
++		return err
++	}
++
++	return nil
++}
++
++func (dec *decoder) decodeValue(val reflect.Value) error {
++	var tok xml.Token
++	var err error
++
++	if val.Kind() == reflect.Ptr {
++		if val.IsNil() {
++			val.Set(reflect.New(val.Type().Elem()))
++		}
++		val = val.Elem()
++	}
++
++	var typeName string
++	for {
++		if tok, err = dec.Token(); err != nil {
++			return err
++		}
++
++		if t, ok := tok.(xml.EndElement); ok {
++			if t.Name.Local == "value" {
++				return nil
++			} else {
++				return invalidXmlError
++			}
++		}
++
++		if t, ok := tok.(xml.StartElement); ok {
++			typeName = t.Name.Local
++			break
++		}
++
++		// Treat value data without type identifier as string
++		if t, ok := tok.(xml.CharData); ok {
++			if value := strings.TrimSpace(string(t)); value != "" {
++				if err = checkType(val, reflect.String); err != nil {
++					return err
++				}
++
++				val.SetString(value)
++				return nil
++			}
++		}
++	}
++
++	switch typeName {
++	case "struct":
++		ismap := false
++		pmap := val
++		valType := val.Type()
++
++		if err = checkType(val, reflect.Struct); err != nil {
++			if checkType(val, reflect.Map) == nil {
++				if valType.Key().Kind() != reflect.String {
++					return fmt.Errorf("only maps with string key type can be unmarshalled")
++				}
++				ismap = true
++			} else if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				var dummy map[string]interface{}
++				valType = reflect.TypeOf(dummy)
++				pmap = reflect.New(valType).Elem()
++				val.Set(pmap)
++				ismap = true
++			} else {
++				return err
++			}
++		}
++
++		var fields map[string]reflect.Value
++
++		if !ismap {
++			fields = make(map[string]reflect.Value)
++
++			for i := 0; i < valType.NumField(); i++ {
++				field := valType.Field(i)
++				fieldVal := val.FieldByName(field.Name)
++
++				if fieldVal.CanSet() {
++					if fn := field.Tag.Get("xmlrpc"); fn != "" {
++						fields[fn] = fieldVal
++					} else {
++						fields[field.Name] = fieldVal
++					}
++				}
++			}
++		} else {
++			// Create initial empty map
++			pmap.Set(reflect.MakeMap(valType))
++		}
++
++		// Process struct members.
++	StructLoop:
++		for {
++			if tok, err = dec.Token(); err != nil {
++				return err
++			}
++			switch t := tok.(type) {
++			case xml.StartElement:
++				if t.Name.Local != "member" {
++					return invalidXmlError
++				}
++
++				tagName, fieldName, err := dec.readTag()
++				if err != nil {
++					return err
++				}
++				if tagName != "name" {
++					return invalidXmlError
++				}
++
++				var fv reflect.Value
++				ok := true
++
++				if !ismap {
++					fv, ok = fields[string(fieldName)]
++				} else {
++					fv = reflect.New(valType.Elem())
++				}
++
++				if ok {
++					for {
++						if tok, err = dec.Token(); err != nil {
++							return err
++						}
++						if t, ok := tok.(xml.StartElement); ok && t.Name.Local == "value" {
++							if err = dec.decodeValue(fv); err != nil {
++								return err
++							}
++
++							// </value>
++							if err = dec.Skip(); err != nil {
++								return err
++							}
++
++							break
++						}
++					}
++				}
++
++				// </member>
++				if err = dec.Skip(); err != nil {
++					return err
++				}
++
++				if ismap {
++					pmap.SetMapIndex(reflect.ValueOf(string(fieldName)), reflect.Indirect(fv))
++					val.Set(pmap)
++				}
++			case xml.EndElement:
++				break StructLoop
++			}
++		}
++	case "array":
++		slice := val
++		if checkType(val, reflect.Interface) == nil && val.IsNil() {
++			slice = reflect.ValueOf([]interface{}{})
++		} else if err = checkType(val, reflect.Slice); err != nil {
++			return err
++		}
++
++	ArrayLoop:
++		for {
++			if tok, err = dec.Token(); err != nil {
++				return err
++			}
++
++			switch t := tok.(type) {
++			case xml.StartElement:
++				var index int
++				if t.Name.Local != "data" {
++					return invalidXmlError
++				}
++			DataLoop:
++				for {
++					if tok, err = dec.Token(); err != nil {
++						return err
++					}
++
++					switch tt := tok.(type) {
++					case xml.StartElement:
++						if tt.Name.Local != "value" {
++							return invalidXmlError
++						}
++
++						if index < slice.Len() {
++							v := slice.Index(index)
++							if v.Kind() == reflect.Interface {
++								v = v.Elem()
++							}
++							if v.Kind() != reflect.Ptr {
++								return errors.New("error: cannot write to non-pointer array element")
++							}
++							if err = dec.decodeValue(v); err != nil {
++								return err
++							}
++						} else {
++							v := reflect.New(slice.Type().Elem())
++							if err = dec.decodeValue(v); err != nil {
++								return err
++							}
++							slice = reflect.Append(slice, v.Elem())
++						}
++
++						// </value>
++						if err = dec.Skip(); err != nil {
++							return err
++						}
++						index++
++					case xml.EndElement:
++						val.Set(slice)
++						break DataLoop
++					}
++				}
++			case xml.EndElement:
++				break ArrayLoop
++			}
++		}
++	default:
++		if tok, err = dec.Token(); err != nil {
++			return err
++		}
++
++		var data []byte
++
++		switch t := tok.(type) {
++		case xml.EndElement:
++			return nil
++		case xml.CharData:
++			data = []byte(t.Copy())
++		default:
++			return invalidXmlError
++		}
++
++		switch typeName {
++		case "int", "i4", "i8":
++			if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				i, err := strconv.ParseInt(string(data), 10, 64)
++				if err != nil {
++					return err
++				}
++
++				pi := reflect.New(reflect.TypeOf(i)).Elem()
++				pi.SetInt(i)
++				val.Set(pi)
++			} else if err = checkType(val, reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64); err != nil {
++				return err
++			} else {
++				i, err := strconv.ParseInt(string(data), 10, val.Type().Bits())
++				if err != nil {
++					return err
++				}
++
++				val.SetInt(i)
++			}
++		case "string", "base64":
++			str := string(data)
++			if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				pstr := reflect.New(reflect.TypeOf(str)).Elem()
++				pstr.SetString(str)
++				val.Set(pstr)
++			} else if err = checkType(val, reflect.String); err != nil {
++				return err
++			} else {
++				val.SetString(str)
++			}
++		case "dateTime.iso8601":
++			var t time.Time
++			var err error
++
++			for _, layout := range timeLayouts {
++				t, err = time.Parse(layout, string(data))
++				if err == nil {
++					break
++				}
++			}
++			if err != nil {
++				return err
++			}
++
++			if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				ptime := reflect.New(reflect.TypeOf(t)).Elem()
++				ptime.Set(reflect.ValueOf(t))
++				val.Set(ptime)
++			} else if _, ok := val.Interface().(time.Time); !ok {
++				return TypeMismatchError(fmt.Sprintf("error: type mismatch error - can't decode %v to time", val.Kind()))
++			} else {
++				val.Set(reflect.ValueOf(t))
++			}
++		case "boolean":
++			v, err := strconv.ParseBool(string(data))
++			if err != nil {
++				return err
++			}
++
++			if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				pv := reflect.New(reflect.TypeOf(v)).Elem()
++				pv.SetBool(v)
++				val.Set(pv)
++			} else if err = checkType(val, reflect.Bool); err != nil {
++				return err
++			} else {
++				val.SetBool(v)
++			}
++		case "double":
++			if checkType(val, reflect.Interface) == nil && val.IsNil() {
++				i, err := strconv.ParseFloat(string(data), 64)
++				if err != nil {
++					return err
++				}
++
++				pdouble := reflect.New(reflect.TypeOf(i)).Elem()
++				pdouble.SetFloat(i)
++				val.Set(pdouble)
++			} else if err = checkType(val, reflect.Float32, reflect.Float64); err != nil {
++				return err
++			} else {
++				i, err := strconv.ParseFloat(string(data), val.Type().Bits())
++				if err != nil {
++					return err
++				}
++
++				val.SetFloat(i)
++			}
++		default:
++			return errors.New("unsupported type")
++		}
++
++		// </type>
++		if err = dec.Skip(); err != nil {
++			return err
++		}
++	}
++
++	return nil
++}
++
++func (dec *decoder) readTag() (string, []byte, error) {
++	var tok xml.Token
++	var err error
++
++	var name string
++	for {
++		if tok, err = dec.Token(); err != nil {
++			return "", nil, err
++		}
++
++		if t, ok := tok.(xml.StartElement); ok {
++			name = t.Name.Local
++			break
++		}
++	}
++
++	value, err := dec.readCharData()
++	if err != nil {
++		return "", nil, err
++	}
++
++	return name, value, dec.Skip()
++}
++
++func (dec *decoder) readCharData() ([]byte, error) {
++	var tok xml.Token
++	var err error
++
++	if tok, err = dec.Token(); err != nil {
++		return nil, err
++	}
++
++	if t, ok := tok.(xml.CharData); ok {
++		return []byte(t.Copy()), nil
++	} else {
++		return nil, invalidXmlError
++	}
++}
++
++func checkType(val reflect.Value, kinds ...reflect.Kind) error {
++	if len(kinds) == 0 {
++		return nil
++	}
++
++	if val.Kind() == reflect.Ptr {
++		val = val.Elem()
++	}
++
++	match := false
++
++	for _, kind := range kinds {
++		if val.Kind() == kind {
++			match = true
++			break
++		}
++	}
++
++	if !match {
++		return TypeMismatchError(fmt.Sprintf("error: type mismatch - can't unmarshal %v to %v",
++			val.Kind(), kinds[0]))
++	}
++
++	return nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/decoder_test.go b/vendor/github.com/kolo/xmlrpc/decoder_test.go
+new file mode 100644
+index 00000000..3701d50a
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/decoder_test.go
+@@ -0,0 +1,234 @@
++package xmlrpc
++
++import (
++	"fmt"
++	"io"
++	"io/ioutil"
++	"reflect"
++	"testing"
++	"time"
++
++	"golang.org/x/text/encoding/charmap"
++	"golang.org/x/text/transform"
++)
++
++type book struct {
++	Title  string
++	Amount int
++}
++
++type bookUnexported struct {
++	title  string
++	amount int
++}
++
++var unmarshalTests = []struct {
++	value interface{}
++	ptr   interface{}
++	xml   string
++}{
++	// int, i4, i8
++	{0, new(*int), "<value><int></int></value>"},
++	{100, new(*int), "<value><int>100</int></value>"},
++	{389451, new(*int), "<value><i4>389451</i4></value>"},
++	{int64(45659074), new(*int64), "<value><i8>45659074</i8></value>"},
++
++	// string
++	{"Once upon a time", new(*string), "<value><string>Once upon a time</string></value>"},
++	{"Mike & Mick <London, UK>", new(*string), "<value><string>Mike &amp; Mick &lt;London, UK&gt;</string></value>"},
++	{"Once upon a time", new(*string), "<value>Once upon a time</value>"},
++
++	// base64
++	{"T25jZSB1cG9uIGEgdGltZQ==", new(*string), "<value><base64>T25jZSB1cG9uIGEgdGltZQ==</base64></value>"},
++
++	// boolean
++	{true, new(*bool), "<value><boolean>1</boolean></value>"},
++	{false, new(*bool), "<value><boolean>0</boolean></value>"},
++
++	// double
++	{12.134, new(*float32), "<value><double>12.134</double></value>"},
++	{-12.134, new(*float32), "<value><double>-12.134</double></value>"},
++
++	// datetime.iso8601
++	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12Z</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12-01:00"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12-01:00</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12+01:00"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12+01:00</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12Z</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12-01:00"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12-01:00</dateTime.iso8601></value>"},
++	{_time("2013-12-09T21:00:12+01:00"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12+01:00</dateTime.iso8601></value>"},
++
++	// array
++	{[]int{1, 5, 7}, new(*[]int), "<value><array><data><value><int>1</int></value><value><int>5</int></value><value><int>7</int></value></data></array></value>"},
++	{[]interface{}{"A", "5"}, new(interface{}), "<value><array><data><value><string>A</string></value><value><string>5</string></value></data></array></value>"},
++	{[]interface{}{"A", int64(5)}, new(interface{}), "<value><array><data><value><string>A</string></value><value><int>5</int></value></data></array></value>"},
++
++	// struct
++	{book{"War and Piece", 20}, new(*book), "<value><struct><member><name>Title</name><value><string>War and Piece</string></value></member><member><name>Amount</name><value><int>20</int></value></member></struct></value>"},
++	{bookUnexported{}, new(*bookUnexported), "<value><struct><member><name>title</name><value><string>War and Piece</string></value></member><member><name>amount</name><value><int>20</int></value></member></struct></value>"},
++	{map[string]interface{}{"Name": "John Smith"}, new(interface{}), "<value><struct><member><name>Name</name><value><string>John Smith</string></value></member></struct></value>"},
++	{map[string]interface{}{}, new(interface{}), "<value><struct></struct></value>"},
++}
++
++func _time(s string) time.Time {
++	t, err := time.Parse(time.RFC3339, s)
++	if err != nil {
++		panic(fmt.Sprintf("time parsing error: %v", err))
++	}
++	return t
++}
++
++func Test_unmarshal(t *testing.T) {
++	for _, tt := range unmarshalTests {
++		v := reflect.New(reflect.TypeOf(tt.value))
++		if err := unmarshal([]byte(tt.xml), v.Interface()); err != nil {
++			t.Fatalf("unmarshal error: %v", err)
++		}
++
++		v = v.Elem()
++
++		if v.Kind() == reflect.Slice {
++			vv := reflect.ValueOf(tt.value)
++			if vv.Len() != v.Len() {
++				t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
++			}
++			for i := 0; i < v.Len(); i++ {
++				if v.Index(i).Interface() != vv.Index(i).Interface() {
++					t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
++				}
++			}
++		} else {
++			a1 := v.Interface()
++			a2 := interface{}(tt.value)
++
++			if !reflect.DeepEqual(a1, a2) {
++				t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
++			}
++		}
++	}
++}
++
++func Test_unmarshalToNil(t *testing.T) {
++	for _, tt := range unmarshalTests {
++		if err := unmarshal([]byte(tt.xml), tt.ptr); err != nil {
++			t.Fatalf("unmarshal error: %v", err)
++		}
++	}
++}
++
++func Test_typeMismatchError(t *testing.T) {
++	var s string
++
++	encoded := "<value><int>100</int></value>"
++	var err error
++
++	if err = unmarshal([]byte(encoded), &s); err == nil {
++		t.Fatal("unmarshal error: expected error, but didn't get it")
++	}
++
++	if _, ok := err.(TypeMismatchError); !ok {
++		t.Fatal("unmarshal error: expected type mistmatch error, but didn't get it")
++	}
++}
++
++func Test_unmarshalEmptyValueTag(t *testing.T) {
++	var v int
++
++	if err := unmarshal([]byte("<value/>"), &v); err != nil {
++		t.Fatalf("unmarshal error: %v", err)
++	}
++}
++
++const structEmptyXML = `
++<value>
++  <struct>
++  </struct>
++</value>
++`
++
++func Test_unmarshalEmptyStruct(t *testing.T) {
++	var v interface{}
++	if err := unmarshal([]byte(structEmptyXML), &v); err != nil {
++		t.Fatal(err)
++	}
++	if v == nil {
++		t.Fatalf("got nil map")
++	}
++}
++
++const arrayValueXML = `
++<value>
++  <array>
++    <data>
++      <value><int>234</int></value>
++      <value><boolean>1</boolean></value>
++      <value><string>Hello World</string></value>
++      <value><string>Extra Value</string></value>
++    </data>
++  </array>
++</value>
++`
++
++func Test_unmarshalExistingArray(t *testing.T) {
++
++	var (
++		v1 int
++		v2 bool
++		v3 string
++
++		v = []interface{}{&v1, &v2, &v3}
++	)
++	if err := unmarshal([]byte(arrayValueXML), &v); err != nil {
++		t.Fatal(err)
++	}
++
++	// check pre-existing values
++	if want := 234; v1 != want {
++		t.Fatalf("want %d, got %d", want, v1)
++	}
++	if want := true; v2 != want {
++		t.Fatalf("want %t, got %t", want, v2)
++	}
++	if want := "Hello World"; v3 != want {
++		t.Fatalf("want %s, got %s", want, v3)
++	}
++	// check the appended result
++	if n := len(v); n != 4 {
++		t.Fatalf("missing appended result")
++	}
++	if got, ok := v[3].(string); !ok || got != "Extra Value" {
++		t.Fatalf("got %s, want %s", got, "Extra Value")
++	}
++}
++
++func Test_decodeNonUTF8Response(t *testing.T) {
++	data, err := ioutil.ReadFile("fixtures/cp1251.xml")
++	if err != nil {
++		t.Fatal(err)
++	}
++
++	CharsetReader = decode
++
++	var s string
++	if err = unmarshal(data, &s); err != nil {
++		fmt.Println(err)
++		t.Fatal("unmarshal error: cannot decode non utf-8 response")
++	}
++
++	expected := "Р›.Рќ. РўРѕР»СЃС‚РѕР№ - Р’РѕР№РЅР° Рё РњРёСЂ"
++
++	if s != expected {
++		t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", expected, s)
++	}
++
++	CharsetReader = nil
++}
++
++func decode(charset string, input io.Reader) (io.Reader, error) {
++	if charset != "cp1251" {
++		return nil, fmt.Errorf("unsupported charset")
++	}
++
++	return transform.NewReader(input, charmap.Windows1251.NewDecoder()), nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/encoder.go b/vendor/github.com/kolo/xmlrpc/encoder.go
+new file mode 100644
+index 00000000..d585a7d3
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/encoder.go
+@@ -0,0 +1,171 @@
++package xmlrpc
++
++import (
++	"bytes"
++	"encoding/xml"
++	"fmt"
++	"reflect"
++	"sort"
++	"strconv"
++	"time"
++)
++
++type encodeFunc func(reflect.Value) ([]byte, error)
++
++func marshal(v interface{}) ([]byte, error) {
++	if v == nil {
++		return []byte{}, nil
++	}
++
++	val := reflect.ValueOf(v)
++	return encodeValue(val)
++}
++
++func encodeValue(val reflect.Value) ([]byte, error) {
++	var b []byte
++	var err error
++
++	if val.Kind() == reflect.Ptr || val.Kind() == reflect.Interface {
++		if val.IsNil() {
++			return []byte("<value/>"), nil
++		}
++
++		val = val.Elem()
++	}
++
++	switch val.Kind() {
++	case reflect.Struct:
++		switch val.Interface().(type) {
++		case time.Time:
++			t := val.Interface().(time.Time)
++			b = []byte(fmt.Sprintf("<dateTime.iso8601>%s</dateTime.iso8601>", t.Format(iso8601)))
++		default:
++			b, err = encodeStruct(val)
++		}
++	case reflect.Map:
++		b, err = encodeMap(val)
++	case reflect.Slice:
++		b, err = encodeSlice(val)
++	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
++		b = []byte(fmt.Sprintf("<int>%s</int>", strconv.FormatInt(val.Int(), 10)))
++	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
++		b = []byte(fmt.Sprintf("<i4>%s</i4>", strconv.FormatUint(val.Uint(), 10)))
++	case reflect.Float32, reflect.Float64:
++		b = []byte(fmt.Sprintf("<double>%s</double>",
++			strconv.FormatFloat(val.Float(), 'f', -1, val.Type().Bits())))
++	case reflect.Bool:
++		if val.Bool() {
++			b = []byte("<boolean>1</boolean>")
++		} else {
++			b = []byte("<boolean>0</boolean>")
++		}
++	case reflect.String:
++		var buf bytes.Buffer
++
++		xml.Escape(&buf, []byte(val.String()))
++
++		if _, ok := val.Interface().(Base64); ok {
++			b = []byte(fmt.Sprintf("<base64>%s</base64>", buf.String()))
++		} else {
++			b = []byte(fmt.Sprintf("<string>%s</string>", buf.String()))
++		}
++	default:
++		return nil, fmt.Errorf("xmlrpc encode error: unsupported type")
++	}
++
++	if err != nil {
++		return nil, err
++	}
++
++	return []byte(fmt.Sprintf("<value>%s</value>", string(b))), nil
++}
++
++func encodeStruct(val reflect.Value) ([]byte, error) {
++	var b bytes.Buffer
++
++	b.WriteString("<struct>")
++
++	t := val.Type()
++	for i := 0; i < t.NumField(); i++ {
++		b.WriteString("<member>")
++		f := t.Field(i)
++
++		name := f.Tag.Get("xmlrpc")
++		if name == "" {
++			name = f.Name
++		}
++		b.WriteString(fmt.Sprintf("<name>%s</name>", name))
++
++		p, err := encodeValue(val.FieldByName(f.Name))
++		if err != nil {
++			return nil, err
++		}
++		b.Write(p)
++
++		b.WriteString("</member>")
++	}
++
++	b.WriteString("</struct>")
++
++	return b.Bytes(), nil
++}
++
++var sortMapKeys bool
++
++func encodeMap(val reflect.Value) ([]byte, error) {
++	var t = val.Type()
++
++	if t.Key().Kind() != reflect.String {
++		return nil, fmt.Errorf("xmlrpc encode error: only maps with string keys are supported")
++	}
++
++	var b bytes.Buffer
++
++	b.WriteString("<struct>")
++
++	keys := val.MapKeys()
++
++	if sortMapKeys {
++		sort.Slice(keys, func(i, j int) bool { return keys[i].String() < keys[j].String() })
++	}
++
++	for i := 0; i < val.Len(); i++ {
++		key := keys[i]
++		kval := val.MapIndex(key)
++
++		b.WriteString("<member>")
++		b.WriteString(fmt.Sprintf("<name>%s</name>", key.String()))
++
++		p, err := encodeValue(kval)
++
++		if err != nil {
++			return nil, err
++		}
++
++		b.Write(p)
++		b.WriteString("</member>")
++	}
++
++	b.WriteString("</struct>")
++
++	return b.Bytes(), nil
++}
++
++func encodeSlice(val reflect.Value) ([]byte, error) {
++	var b bytes.Buffer
++
++	b.WriteString("<array><data>")
++
++	for i := 0; i < val.Len(); i++ {
++		p, err := encodeValue(val.Index(i))
++		if err != nil {
++			return nil, err
++		}
++
++		b.Write(p)
++	}
++
++	b.WriteString("</data></array>")
++
++	return b.Bytes(), nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/encoder_test.go b/vendor/github.com/kolo/xmlrpc/encoder_test.go
+new file mode 100644
+index 00000000..ca4ac706
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/encoder_test.go
+@@ -0,0 +1,58 @@
++package xmlrpc
++
++import (
++	"testing"
++	"time"
++)
++
++var marshalTests = []struct {
++	value interface{}
++	xml   string
++}{
++	{100, "<value><int>100</int></value>"},
++	{"Once upon a time", "<value><string>Once upon a time</string></value>"},
++	{"Mike & Mick <London, UK>", "<value><string>Mike &amp; Mick &lt;London, UK&gt;</string></value>"},
++	{Base64("T25jZSB1cG9uIGEgdGltZQ=="), "<value><base64>T25jZSB1cG9uIGEgdGltZQ==</base64></value>"},
++	{true, "<value><boolean>1</boolean></value>"},
++	{false, "<value><boolean>0</boolean></value>"},
++	{12.134, "<value><double>12.134</double></value>"},
++	{-12.134, "<value><double>-12.134</double></value>"},
++	{738777323.0, "<value><double>738777323</double></value>"},
++	{time.Unix(1386622812, 0).UTC(), "<value><dateTime.iso8601>20131209T21:00:12</dateTime.iso8601></value>"},
++	{[]interface{}{1, "one"}, "<value><array><data><value><int>1</int></value><value><string>one</string></value></data></array></value>"},
++	{&struct {
++		Title  string
++		Amount int
++	}{"War and Piece", 20}, "<value><struct><member><name>Title</name><value><string>War and Piece</string></value></member><member><name>Amount</name><value><int>20</int></value></member></struct></value>"},
++	{&struct {
++		Value interface{} `xmlrpc:"value"`
++	}{}, "<value><struct><member><name>value</name><value/></member></struct></value>"},
++	{
++		map[string]interface{}{"title": "War and Piece", "amount": 20},
++		"<value><struct><member><name>amount</name><value><int>20</int></value></member><member><name>title</name><value><string>War and Piece</string></value></member></struct></value>",
++	},
++	{
++		map[string]interface{}{
++			"Name":  "John Smith",
++			"Age":   6,
++			"Wight": []float32{66.67, 100.5},
++			"Dates": map[string]interface{}{"Birth": time.Date(1829, time.November, 10, 23, 0, 0, 0, time.UTC), "Death": time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)}},
++		"<value><struct><member><name>Age</name><value><int>6</int></value></member><member><name>Dates</name><value><struct><member><name>Birth</name><value><dateTime.iso8601>18291110T23:00:00</dateTime.iso8601></value></member><member><name>Death</name><value><dateTime.iso8601>20091110T23:00:00</dateTime.iso8601></value></member></struct></value></member><member><name>Name</name><value><string>John Smith</string></value></member><member><name>Wight</name><value><array><data><value><double>66.67</double></value><value><double>100.5</double></value></data></array></value></member></struct></value>",
++	},
++}
++
++func Test_marshal(t *testing.T) {
++	sortMapKeys = true
++
++	for _, tt := range marshalTests {
++		b, err := marshal(tt.value)
++		if err != nil {
++			t.Fatalf("unexpected marshal error: %v", err)
++		}
++
++		if string(b) != tt.xml {
++			t.Fatalf("marshal error:\nexpected: %s\n     got: %s", tt.xml, string(b))
++		}
++
++	}
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml b/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
+new file mode 100644
+index 00000000..1d5e9bfc
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="cp1251" ?>
++<methodResponse>
++	<params>
++		<param><value><string>Л.Н. Толстой - Война и Мир</string></value></param>
++	</params>
++</methodResponse>
+\ No newline at end of file
+diff --git a/vendor/github.com/kolo/xmlrpc/request.go b/vendor/github.com/kolo/xmlrpc/request.go
+new file mode 100644
+index 00000000..acb8251b
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/request.go
+@@ -0,0 +1,57 @@
++package xmlrpc
++
++import (
++	"bytes"
++	"fmt"
++	"net/http"
++)
++
++func NewRequest(url string, method string, args interface{}) (*http.Request, error) {
++	var t []interface{}
++	var ok bool
++	if t, ok = args.([]interface{}); !ok {
++		if args != nil {
++			t = []interface{}{args}
++		}
++	}
++
++	body, err := EncodeMethodCall(method, t...)
++	if err != nil {
++		return nil, err
++	}
++
++	request, err := http.NewRequest("POST", url, bytes.NewReader(body))
++	if err != nil {
++		return nil, err
++	}
++
++	request.Header.Set("Content-Type", "text/xml")
++	request.Header.Set("Content-Length", fmt.Sprintf("%d", len(body)))
++
++	return request, nil
++}
++
++func EncodeMethodCall(method string, args ...interface{}) ([]byte, error) {
++	var b bytes.Buffer
++	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>`)
++	b.WriteString(fmt.Sprintf("<methodCall><methodName>%s</methodName>", method))
++
++	if args != nil {
++		b.WriteString("<params>")
++
++		for _, arg := range args {
++			p, err := marshal(arg)
++			if err != nil {
++				return nil, err
++			}
++
++			b.WriteString(fmt.Sprintf("<param>%s</param>", string(p)))
++		}
++
++		b.WriteString("</params>")
++	}
++
++	b.WriteString("</methodCall>")
++
++	return b.Bytes(), nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/response.go b/vendor/github.com/kolo/xmlrpc/response.go
+new file mode 100644
+index 00000000..6742a1c7
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/response.go
+@@ -0,0 +1,52 @@
++package xmlrpc
++
++import (
++	"regexp"
++)
++
++var (
++	faultRx = regexp.MustCompile(`<fault>(\s|\S)+</fault>`)
++)
++
++type failedResponse struct {
++	Code  int    `xmlrpc:"faultCode"`
++	Error string `xmlrpc:"faultString"`
++}
++
++func (r *failedResponse) err() error {
++	return &xmlrpcError{
++		code: r.Code,
++		err:  r.Error,
++	}
++}
++
++type Response struct {
++	data []byte
++}
++
++func NewResponse(data []byte) *Response {
++	return &Response{
++		data: data,
++	}
++}
++
++func (r *Response) Failed() bool {
++	return faultRx.Match(r.data)
++}
++
++func (r *Response) Err() error {
++	failedResp := new(failedResponse)
++	if err := unmarshal(r.data, failedResp); err != nil {
++		return err
++	}
++
++	return failedResp.err()
++}
++
++func (r *Response) Unmarshal(v interface{}) error {
++	if err := unmarshal(r.data, v); err != nil {
++		return err
++	}
++
++	return nil
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/response_test.go b/vendor/github.com/kolo/xmlrpc/response_test.go
+new file mode 100644
+index 00000000..55095c24
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/response_test.go
+@@ -0,0 +1,84 @@
++package xmlrpc
++
++import (
++	"testing"
++)
++
++const faultRespXml = `
++<?xml version="1.0" encoding="UTF-8"?>
++<methodResponse>
++  <fault>
++    <value>
++      <struct>
++        <member>
++          <name>faultString</name>
++          <value>
++            <string>You must log in before using this part of Bugzilla.</string>
++          </value>
++        </member>
++        <member>
++          <name>faultCode</name>
++          <value>
++            <int>410</int>
++          </value>
++        </member>
++      </struct>
++    </value>
++  </fault>
++</methodResponse>`
++
++func Test_failedResponse(t *testing.T) {
++	resp := NewResponse([]byte(faultRespXml))
++
++	if !resp.Failed() {
++		t.Fatal("Failed() error: expected true, got false")
++	}
++
++	if resp.Err() == nil {
++		t.Fatal("Err() error: expected error, got nil")
++	}
++
++	err := resp.Err().(*xmlrpcError)
++	if err.code != 410 && err.err != "You must log in before using this part of Bugzilla." {
++		t.Fatal("Err() error: got wrong error")
++	}
++}
++
++const emptyValResp = `
++<?xml version="1.0" encoding="UTF-8"?>
++<methodResponse>
++	<params>
++		<param>
++			<value>
++				<struct>
++					<member>
++						<name>user</name>
++						<value><string>Joe Smith</string></value>
++					</member>
++					<member>
++						<name>token</name>
++						<value/>
++					</member>
++				</struct>
++			</value>
++		</param>
++	</params>
++</methodResponse>`
++
++
++func Test_responseWithEmptyValue(t *testing.T) {
++	resp := NewResponse([]byte(emptyValResp))
++
++	result := struct{
++		User string `xmlrpc:"user"`
++		Token string `xmlrpc:"token"`
++	}{}
++
++	if err := resp.Unmarshal(&result); err != nil {
++		t.Fatalf("unmarshal error: %v", err)
++	}
++
++	if result.User != "Joe Smith" || result.Token != "" {
++		t.Fatalf("unexpected result: %v", result)
++	}
++}
+diff --git a/vendor/github.com/kolo/xmlrpc/test_server.rb b/vendor/github.com/kolo/xmlrpc/test_server.rb
+new file mode 100644
+index 00000000..1b1ff876
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/test_server.rb
+@@ -0,0 +1,25 @@
++# encoding: utf-8
++
++require "xmlrpc/server"
++
++class Service
++  def time
++    Time.now
++  end
++
++  def upcase(s)
++    s.upcase
++  end
++
++  def sum(x, y)
++    x + y
++  end
++
++	def error
++		raise XMLRPC::FaultException.new(500, "Server error")
++	end
++end
++
++server = XMLRPC::Server.new 5001, 'localhost'
++server.add_handler "service", Service.new
++server.serve
+diff --git a/vendor/github.com/kolo/xmlrpc/xmlrpc.go b/vendor/github.com/kolo/xmlrpc/xmlrpc.go
+new file mode 100644
+index 00000000..8766403a
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/xmlrpc.go
+@@ -0,0 +1,19 @@
++package xmlrpc
++
++import (
++	"fmt"
++)
++
++// xmlrpcError represents errors returned on xmlrpc request.
++type xmlrpcError struct {
++	code int
++	err  string
++}
++
++// Error() method implements Error interface
++func (e *xmlrpcError) Error() string {
++	return fmt.Sprintf("error: \"%s\" code: %d", e.err, e.code)
++}
++
++// Base64 represents value in base64 encoding
++type Base64 string
+-- 
+2.16.4
+

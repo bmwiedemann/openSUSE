@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Wed Apr  5 14:17:02 UTC 2017 - mcaj@suse.com
+
+- added perl-ExtUtils-MakeMaker to Build requires
+  that fixed build for SLE-12-SP2 and openSUSE leap 42.x
+
+-------------------------------------------------------------------
+Wed Nov 23 15:01:18 UTC 2016 - coolo@suse.com
+
+- remove GDGraph-trim_miter.diff as still not upstream
+
+-------------------------------------------------------------------
+Wed Nov 23 06:29:46 UTC 2016 - coolo@suse.com
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+  1.54 21 Nov 2016
+  
+  - Disable two Y axes alignment when any y[12]_{min,max}_value is defined
+    RT#62665
+
+-------------------------------------------------------------------
+Sat Jul  9 05:19:18 UTC 2016 - coolo@suse.com
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+  1.53 08 Jul 2016
+  
+  - Fix 'Illegal division by zero' when x_min_value and x_max_value
+    are defined and x_tick_number set to 'auto' RT#73185
+    Thanks to Bob Rogers, https://github.com/ruz/GDGraph/pull/12
+
+-------------------------------------------------------------------
+Sun Feb  7 10:00:57 UTC 2016 - coolo@suse.com
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+  1.52 28 Jan 2016
+  
+  - y1_min_range and y2_min_range instead of min_range_1 and min_range_2,
+    niether were documented before.
+  - Update documentation in regards to all *_min_range options available.
+
+-------------------------------------------------------------------
+Sat Jan  2 09:46:15 UTC 2016 - coolo@suse.com
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+-------------------------------------------------------------------
+Sat May  2 09:21:57 UTC 2015 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+  1.49
+  
+  - fix to Z-axis color filling in 3D pie charts (Debian Bug #489184)
+  - bump ExtUtils::MakeMaker dependency
+  - tiny improvement in the code of the samples
+
+-------------------------------------------------------------------
+Tue Oct  1 16:19:21 UTC 2013 - darin@darins.net
+
+- update to 1.48
+  * no code changes, just release enginering cleanup
+  * adjust MANIFEST.SKIP file so MANIFEST can be generated
+    once again
+  * ship sample58.pl file, so `make samples` stop failing
+  * mention the current and past maintainers in META files
+    as authors
+  * use newer CPAN::Meta and ExtUtils::MakeMaker, older
+    versions generated META files without runtime prerequisites
+
+-------------------------------------------------------------------
+Thu Apr 28 09:15:17 UTC 2011 - vcizek@novell.com
+
+- license correction (same as Perl)
+- added new dependencies (bnc#676080)
+- spec renewal
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:02 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Apr 27 00:25:58 CEST 2007 - ro@suse.de
+
+- update to 1.44
+  - Added GD::Graph::hbars, to create horizontal bar charts.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:11:10 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Thu Mar  3 18:58:09 CET 2005 - ro@suse.de
+
+- added trim_miter patch from Juergen 
+
+-------------------------------------------------------------------
+Tue Aug 24 14:19:25 CEST 2004 - ro@suse.de
+
+- updated neededforbuild (needing ImageMagick in testsuite)
+
+-------------------------------------------------------------------
+Thu Jul 29 00:40:44 CEST 2004 - ro@suse.de
+
+- update to 1.43
+
+-------------------------------------------------------------------
+Thu Sep 25 18:34:11 CEST 2003 - ro@suse.de
+
+- created package version 1.39 
+

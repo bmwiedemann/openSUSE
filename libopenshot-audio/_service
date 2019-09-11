@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/OpenShot/libopenshot-audio.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.1.7</param>
+    <param name="version">0.1.7</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

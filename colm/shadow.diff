@@ -1,0 +1,74 @@
+---
+ src/bytecode.c  |   15 ++++++++-------
+ src/loadcolm.cc |    2 ++
+ src/parsetree.h |    4 ++++
+ 3 files changed, 14 insertions(+), 7 deletions(-)
+
+Index: colm-0.13.0.5/src/bytecode.c
+===================================================================
+--- colm-0.13.0.5.orig/src/bytecode.c
++++ colm-0.13.0.5/src/bytecode.c
+@@ -28,6 +28,7 @@
+ #include <string.h>
+ #include <stdbool.h>
+ #include <stdio.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <signal.h>
+ 
+@@ -54,12 +55,12 @@
+ #if SIZEOF_LONG == 4
+ 
+ 	#define read_type( type, i ) do { \
+-		word_t w; \
+-		w = ((word_t) *instr++); \
+-		w |= ((word_t) *instr++) << 8; \
+-		w |= ((word_t) *instr++) << 16; \
+-		w |= ((word_t) *instr++) << 24; \
+-		i = (type) w; \
++		word_t _w; \
++		_w = ((word_t) *instr++); \
++		_w |= ((word_t) *instr++) << 8; \
++		_w |= ((word_t) *instr++) << 16; \
++		_w |= ((word_t) *instr++) << 24; \
++		i = (type)(uintptr_t) _w; \
+ 	} while(0)
+ 
+ 	#define read_type_p( Type, i, p ) do { \
+@@ -83,7 +84,7 @@
+ 		_w |= ((word_t) *instr++) << 40; \
+ 		_w |= ((word_t) *instr++) << 48; \
+ 		_w |= ((word_t) *instr++) << 56; \
+-		i = (type) _w; \
++		i = (type)(uintptr_t) _w; \
+ 	} while(0)
+ 
+ 	#define read_type_p( type, i, p ) do { \
+Index: colm-0.13.0.5/src/loadcolm.cc
+===================================================================
+--- colm-0.13.0.5.orig/src/loadcolm.cc
++++ colm-0.13.0.5/src/loadcolm.cc
+@@ -2219,6 +2219,8 @@ struct LoadColm
+ 			typeRef = walkReferenceTypeRef( paramVarDef.reference_type_ref() );
+ 			type = ObjectField::ParamRefType;
+ 			break;
++		default:
++			throw int(43);
+ 		}
+ 		
+ 		return addParam( paramVarDef.id().loc(), type, typeRef, id );
+Index: colm-0.13.0.5/src/parsetree.h
+===================================================================
+--- colm-0.13.0.5.orig/src/parsetree.h
++++ colm-0.13.0.5/src/parsetree.h
+@@ -2456,6 +2456,10 @@ struct ObjectMethod
+ 		generic(0)
+ 	{
+ 		this->paramUTs = new UniqueType*[numParams];
++		if (types == NULL) {
++			memset(this->paramUTs, 0, sizeof(UniqueType*)*numParams );
++			return;
++		}
+ 		memcpy( this->paramUTs, types, sizeof(UniqueType*)*numParams );
+ 	}
+ 

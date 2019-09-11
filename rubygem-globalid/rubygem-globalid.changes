@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Jan 14 08:04:04 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 0.4.2
+
+  * Allow configuration in initialisers 3c8f909
+  * Clear to_global_id memoization on dup #109
+  * Adds hash equality #108
+
+-------------------------------------------------------------------
+Thu Oct 26 10:02:21 UTC 2017 - coolo@suse.com
+
+- updated to version 0.4.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Apr 17 04:32:22 UTC 2017 - coolo@suse.com
+
+- updated to version 0.4.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 27 04:29:42 UTC 2016 - coolo@suse.com
+
+- updated to version 0.3.7
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Aug  5 04:31:13 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.6
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr  9 04:31:18 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.5
+
+-------------------------------------------------------------------
+Fri Feb 13 05:29:47 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.3
+
+-------------------------------------------------------------------
+Tue Feb 10 08:10:22 UTC 2015 - coolo@suse.com
+
+- initial package (version 0.3.2)
+

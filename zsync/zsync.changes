@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Dec  6 13:06:18 UTC 2011 - coolo@suse.com
+
+- zsync is distributed under Artistic-2.0
+
+-------------------------------------------------------------------
+Tue Aug  2 01:42:50 CEST 2011 - ro@suse.de
+
+- fix license entry in spec file (bnc#675835) 
+
+-------------------------------------------------------------------
+Wed Oct 20 12:20:01 CEST 2010 - ro@suse.de
+
+- update to 0.6.2
+  - fix for using zsync client on files >2GB on 32bit systems.
+  - fix redirect handling.
+  - improve some edge cases dealing with unusual seed data patterns.
+  - optimise by stopping reading seed files if target file is complete.
+  - fix infinite loop in zsyncmake when given a truncated (invalid) .gz
+  - fix --disable-profile to configure.
+
+-------------------------------------------------------------------
+Fri Sep  3 21:35:12 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build date in binaries 
+
+-------------------------------------------------------------------
+Tue Aug 11 20:26:15 UTC 2009 - dmacvicar@suse.de
+
+- update to 0.6.1
+
+------------------------------------------------------------------
+Wed Mar 25 11:04:14 CET 2009 - dmacvicar@suse.de
+
+- update to 0.6
+
+

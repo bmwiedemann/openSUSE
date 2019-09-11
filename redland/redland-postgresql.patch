@@ -1,0 +1,57 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -727,30 +727,26 @@ else
+   AC_MSG_RESULT(no)
+ fi
+ 
+-AC_ARG_WITH(postgresql, [  --with-postgresql(=CONFIG|yes|no)  Location of pg_config (default=auto)], pg_config="$withval", postgresql_config="")
+-if test "X$pg_config" != "Xno"; then
+-  if test "X$pg_config" != "Xyes" ; then
+-    PG_CONFIG=$pg_config
+-  fi
+-  pg_config=yes
+-fi
+-if test $pg_config = yes -a "X$PG_CONFIG" = "X" ; then
+-  AC_CHECK_PROGS(PG_CONFIG, pg_config)
++
++AC_ARG_WITH(postgresql, [  --with-postgresql(=yes|no) Enable PostgreSQL store (default=auto)], with_postgresql="$withval", with_postgresql="auto")
++
++if test "X$with_postgresql" != Xno; then
++  PKG_CHECK_MODULES([POSTGRESQL],[libpq],[
++    POSTGRESQL_VERSION=`$PKG_CONFIG libpq --modversion`
++    with_postgresql=yes
++  ],[with_postgresql=no])
+ fi
+ 
+ AC_MSG_CHECKING(for postgresql library)
+-if test "X$PG_CONFIG" != X ; then
+-  postgresql_version=`$PG_CONFIG --version | sed -e 's/^.* //'`
+-  storages_available="$storages_available postgresql($postgresql_version)"
++if test "X$with_postgresql" != Xno ; then
++  storages_available="$storages_available postgresql($POSTGRESQL_VERSION)"
+   postgresql_storage_available=yes
++  AC_MSG_RESULT(yes - version $POSTGRESQL_VERSION)
+ 
+-  AC_MSG_RESULT(yes - version $postgresql_version)
+-  
+-  CPPFLAGS="$LIBRDF_CPPFLAGS -I`$PG_CONFIG --includedir`"
++  CPPFLAGS="$LIBRDF_CPPFLAGS $POSTGRESQL_CFLAGS"
+   AC_CHECK_HEADERS(libpq-fe.h)
+   CPPFLAGS="$LIBRDF_CPPFLAGS"
+-  
+-  LIBS="$LIBRDF_LIBS -L`$PG_CONFIG --libdir` -lpq"
++  POSTGRESQL_CPPFLAGS="$POSTGRESQL_CFLAGS"
+ else
+   AC_MSG_RESULT(no)
+ fi
+@@ -1082,8 +1078,8 @@ if test $tstore_storage  = yes; then
+   TSTORE_LIBS="`$TSTORE_CONFIG --libs` `$PKG_CONFIG glib --libs`"
+ fi
+ if test $postgresql_storage  = yes; then
+-  POSTGRESQL_CPPFLAGS="-I`$PG_CONFIG --includedir`"
+-  POSTGRESQL_LIBS="-L`$PG_CONFIG --libdir` -lpq"
++  POSTGRESQL_CPPFLAGS="`$PKG_CONFIG libpq --cflags`"
++  POSTGRESQL_LIBS="`$PKG_CONFIG libpq --libs`"
+ fi
+ if test $virtuoso_storage  = yes; then
+   VIRTUOSO_CPPFLAGS="$ODBC_CFLAGS"

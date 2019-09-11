@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Wed Oct 11 14:39:40 UTC 2017 - vcizek@suse.com
+
+- remove openssl 1.1 incompatible headers from the -devel package
+  (bsc#1055277#c8)
+
+-------------------------------------------------------------------
+Mon Oct  9 14:50:42 UTC 2017 - vcizek@suse.com
+
+- Drop option --enable-openssl which doesn't work with OpenSSL 1.1
+  (bsc#1055277)
+  * this drops GCM support
+
+-------------------------------------------------------------------
+Tue Aug  1 12:28:27 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.6.0
+  * Fix incorrect result of rdb_increment on overflow
+  * Cipher type cleanup for AES.
+    When libSRTP is compiled with OpenSSL and the AES 256 ICM
+    cipher is used with RTCP, an incorrect initialization vector
+    is formed. This change will break backwards compatibility
+    with older versions (1.5, 2.0) of libSRTP when using the AES
+    256 ICM cipher with OpenSSL for RTCP.
+  * Sequence number incorrectly masked for AES GCM IV.
+
+-------------------------------------------------------------------
+Mon Nov 21 23:10:26 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Fri Mar  4 07:46:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.5.4:
+  * Use BE byte ordering of RTCP trailer.
+  * Allow zero length payload on unprotect.
+
+-------------------------------------------------------------------
+Fri Jan 22 18:36:01 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.5.3
+* Maintenance release, including fix for CVE-2015-6360.
+
+-------------------------------------------------------------------
+Wed Jul 29 09:49:32 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libsrtp1-32bit, as needed by
+  libmediastreamer_voip4-32bit.
+
+-------------------------------------------------------------------
+Sun Mar 15 16:35:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.5.2.
+- Remove srtp-soname.diff as upstream now defines ABI in filenames
+  correctly.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Jan  3 18:49:15 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.5.0
+* Add support for OpenSSL crypto
+* Add support for AES-GCM crypto suites.
+* Add user data API to allow user to associate additional data
+  with a SRTP context.
+- Replace libsrtp-automake.patch by simpler srtp-soname.diff
+
+-------------------------------------------------------------------
+Thu Aug 28 06:03:05 UTC 2014 - jengelh@inai.de
+
+- Relax build restrictions for SLE11 (needs BuildRequires xz to
+  even start, and we can drop dist-xz from the suggestive patch
+  so that automake ~1.10)
+
+-------------------------------------------------------------------
+Tue Aug 26 21:16:21 UTC 2014 - jengelh@inai.de
+
+- Update project metadata, and patch description
+
+-------------------------------------------------------------------
+Wed Sep 18 18:46:49 CEST 2013 - sbrabec@suse.cz
+
+- Upgrade to the latest git snapshot of the version 1.4.5 from the
+  new Cisco GIT repository:
+  * support for Encrypted Key Transport (EKT)
+  * AES-256 support
+  * support for packet retransmission
+  * API and ABI changes to support new features
+  * many bug, crash and memory corruption fixes
+  * several security fixes (CVE-2013-2139, bnc#828009)
+- Increment shared library version, there are incompatible API and
+  ABI changes.
+- Rename the package to libsrtp, as did the upstream
+- Port and rename srtp-automake.diff to libsrtp-automake.patch.
+- Fix headers to not point to private not installed files
+  (bnc#839475).
+
+-------------------------------------------------------------------
+Wed Oct 31 20:11:34 UTC 2012 - jengelh@inai.de
+
+- Fold the pkgconfig file into srtp-automake.diff
+- Have libsrtp-devel depend on library package
+
+-------------------------------------------------------------------
+Thu Oct 31 13:18:09 UTC 2012 - mailaender@opensuse.org
+
+- Have the package provide a pkg-config file, and run ldconfig
+  for the library package
+
+-------------------------------------------------------------------
+Tue Oct 25 15:45:56 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant %clean section
+- Add automake patch so as to properly create shared libraries
+
+-------------------------------------------------------------------
+Tue Mar  8 16:01:11 UTC 2011 - chris@computersalat.de
+
+- spec-cleaner
+- remove author from description
+- rpmlint: wrong-file-end-of-line-encoding
+
+-------------------------------------------------------------------
+Sat Aug  8 12:45:35 UTC 2009 - alexandre@exatati.com.br
+
+- Version update to 1.4.4 and bzipped source.
+  o sorry but CHANGES file is outdated
+
+-------------------------------------------------------------------
+Mon Jan 28 16:05:24 CET 2008 - sbrabec@suse.cz
+
+- Generate package named srtp-devel.
+
+-------------------------------------------------------------------
+Wed Jun  6 01:27:06 CEST 2007 - ro@suse.de
+
+- suppress devel file warnings, we only have a static lib here 
+
+-------------------------------------------------------------------
+Wed Jun 28 17:30:46 CEST 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 1.4.2.

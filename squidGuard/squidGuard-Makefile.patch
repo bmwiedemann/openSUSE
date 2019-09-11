@@ -1,0 +1,115 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -15,9 +15,9 @@ LIBS = @LIBS@
+ RM = rm -f
+ MKINSTALLDIRS = mkdir -p
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = $(exec_prefix)/bin
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
+ infodir = $(prefix)/info
+ logdir = @sg_logdir@
+ configfile = @sg_config@
+@@ -47,34 +47,28 @@ install:	install-build install-conf
+ 
+ install-conf:
+ 	@echo Installing configuration file  ;
+-	@if [ ! -d $(prefix)/squidGuard ]; then \
+-		$(MKINSTALLDIRS) $(prefix)/squidGuard ; \
+-		echo Created directory $(prefix)/squidGuard ; \
+-		chown -R $(SQUIDUSER) $(prefix)/squidGuard || exit 1  ; \
+-		echo Assigned $(prefix)/squidGuard to user $(SQUIDUSER) ; \
++	@if [ ! -d $(DESTDIR)$(prefix)/squidGuard ]; then \
++		$(MKINSTALLDIRS) $(DESTDIR)$(prefix)/squidGuard ; \
++		echo Created directory $(DESTDIR)$(prefix)/squidGuard ; \
+ 	fi ; 
+-	@if [ ! -d $(dbhomedir) ]; then \
+-		$(MKINSTALLDIRS) $(dbhomedir) ; \
+-		echo Created directory $(dbhomedir) ; \
+-		chown -R $(SQUIDUSER) $(dbhomedir) || exit 1 ; \
+-		echo Assigned $(dbhomedir) to user $(SQUIDUSER) ; \
++	@if [ ! -d $(DESTDIR)$(dbhomedir) ]; then \
++		$(MKINSTALLDIRS) $(DESTDIR)$(dbhomedir) ; \
++		echo Created directory $(DESTDIR)$(dbhomedir) ; \
+ 	fi ; 
+-	@if [ ! -d $(logdir) ]; then \
+-		$(MKINSTALLDIRS) $(logdir) ; \
+-		echo Created directory $(logdir) ; \
+-		chown -R $(SQUIDUSER) $(logdir) || exit 1 ; \
+-		echo Assigned $(logdir) to user $(SQUIDUSER) ; \
++	@if [ ! -d $(DESTDIR)$(logdir) ]; then \
++		$(MKINSTALLDIRS) $(DESTDIR)$(logdir) ; \
++		echo Created directory $(DESTDIR)$(logdir) ; \
+ 	fi ; 
+-	@if [ ! -d `dirname $(configfile)` ]; then \
++	@if [ ! -d `dirname $(DESTDIR)$(configfile)` ]; then \
+ 		umask 022 ; \
+-		mkdir -p `dirname $(configfile)` ; \
+-		echo No configuration directory found. Created `dirname $(configfile)`. ; \
++		mkdir -p `dirname $(DESTDIR)$(configfile)` ; \
++		echo No configuration directory found. Created `dirname $(DESTDIR)$(configfile)`. ; \
+ 	fi;
+-	@if test ! -f $(configfile); then \
+-		cp samples/sample.conf $(configfile) || exit 1  ; \
++	@if test ! -f $(DESTDIR)$(configfile); then \
++		cp samples/sample.conf $(DESTDIR)$(configfile) || exit 1  ; \
+ 		echo Copied sample squidGuard.conf ; \
+-		chmod 644 $(configfile) || exit 1 ; \
+-		echo $(configfile) is now readable ; \
++		chmod 644 $(DESTDIR)$(configfile) || exit 1 ; \
++		echo $(DESTDIR)$(configfile) is now readable ; \
+ 		echo The initial configuration is complete. ; \
+ 	else \
+ 		echo Configuration file found. Not changing anything ; \
+@@ -84,7 +78,7 @@ install-conf:
+ 	@echo ;
+ 
+ install-build:
+-	@echo Installing squidGuard 
++	@echo Installing squidGuard in $(bindir) 
+ 	@if [ ! -d $(bindir) ]; then \
+ 		$(MKINSTALLDIRS) $(bindir) ; \
+ 	fi ; \
+Index: src/Makefile.in
+===================================================================
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -31,11 +31,11 @@ top_srcdir = @top_srcdir@
+ srcdir     = @srcdir@
+ VPATH      = @srcdir@
+ 
+-prefix	= @prefix@
+-exec_prefix = @exec_prefix@
+-bindir	= $(exec_prefix)/bin
+-logdir	= @sg_logdir@
+-cfgdir	= @sg_cfgdir@
++prefix	= $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir	= $(DESTDIR)@bindir@
++logdir	= $(DESTDIR)@sg_logdir@
++cfgdir	= $(DESTDIR)@sg_cfgdir@
+ infodir	= $(prefix)/info
+ 
+ OBJS	= main.o sgLog.o sgDb.o HTParse.o sgDiv.o sgFree.o y.tab.o lex.yy.o
+@@ -122,12 +122,13 @@ uninstall::	 uninstall.bin
+ 
+ install.bin:: squidGuard
+ 	@echo making $@ in `basename \`pwd\``
+-	@$(MKDIR) $(bindir) $(logdir) $(cfgdir)
+-	$(INSTALL_PROGRAM) squidGuard $(bindir)/squidGuard
++	@$(MKDIR) $(DESTDIR)$(bindir) $(DESTDIR)$(logdir) $(DESTDIR)$(cfgdir)
++	@echo installing squidGuard in $(DESTDIR)$(bindir)/squidGuard
++	$(INSTALL_PROGRAM) squidGuard $(DESTDIR)$(bindir)/squidGuard
+ 
+ uninstall.bin::
+ 	@echo making $@ in `basename \`pwd\``
+-	$(RM) $(bindir)/squidGuard
++	$(RM) $(DESTDIR)$(bindir)/squidGuard
+ 
+ update::
+ 	@echo making $@ in `basename \`pwd\``

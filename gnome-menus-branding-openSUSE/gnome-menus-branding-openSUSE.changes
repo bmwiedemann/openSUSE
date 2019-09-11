@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Thu Jan  3 20:07:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Rebase gnome-menus-branding-remove-X-SuSE-ControlCenter.patch.
+
+-------------------------------------------------------------------
+Wed Feb 28 18:34:18 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Oct 12 16:00:12 UTC 2015 - zaitor@opensuse.org
+
+- Bump version to 42.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Sat Aug 23 16:10:12 UTC 2014 - zaitor@opensuse.org
+
+- Bump version to 13.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct  3 19:18:02 UTC 2013 - dimstar@opensuse.org
+
+- Rebased gnome-menus-branding-remove-X-SuSE-ControlCenter.patch
+  on top of gnome-menus 3.10.0.
+
+-------------------------------------------------------------------
+Sun Sep  8 07:43:12 UTC 2013 - zaitor@opensuse.org
+
+- Bump version to 13.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Wed Mar  6 15:43:24 UTC 2013 - dimstar@opensuse.org
+
+- Rebase gnome-menus-branding-remove-X-SuSE-ControlCenter.patch on
+  top of gnome-menus 3.7.90.
+
+-------------------------------------------------------------------
+Wed May 23 07:50:26 UTC 2012 - vuntz@opensuse.org
+
+- Bump version to 12.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:57:49 UTC 2011 - vuntz@opensuse.org
+
+- Remove %{release} from the gnome-menus versioned Requires, to not
+  have to rebuild this package each time gnome-menus rebuilds to
+  keep it installable.
+
+-------------------------------------------------------------------
+Fri Jul 22 13:18:09 CEST 2011 - vuntz@opensuse.org
+
+- Drop gnome-menus-branding-settings.menu source: we do not install
+  a settings.menu file, since upstream doesn't ship one either.
+  Fix bnc#703818.
+
+-------------------------------------------------------------------
+Thu Jul  7 10:13:17 CEST 2011 - vuntz@opensuse.org
+
+- Change License tag from BSD3c to LGPLv2.1+: since we base our
+  branding on the one from upstream, we inherit the license.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:40:24 CEST 2011 - vuntz@opensuse.org
+
+- Bump version to 12.1.
+- Add a Requires for gnome-menus, since the branding package is
+  useless without it.
+- Update summary and description.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Wed Apr 27 16:02:06 CEST 2011 - vuntz@opensuse.org
+
+- Update gnome-menus-branding-remove-X-SuSE-ControlCenter.patch:
+  instead of excluding X-SuSE-ControlCenter-* categories, simply
+  exclude X-SuSE-YaST. We might still want to see .desktop files
+  with X-SuSE-ControlCenter-* in Other as the control center won't
+  display them anymore.
+
+-------------------------------------------------------------------
+Wed Apr 27 14:26:20 CEST 2011 - fcrozat@novell.com
+
+- Update gnome-menus-branding-remove-X-SuSE-ControlCenter.patch:
+  Ensure YaST launcher is visible in System category.
+
+-------------------------------------------------------------------
+Fri Oct  8 11:48:24 CEST 2010 - vuntz@opensuse.org
+
+- Bump version to 11.4.
+
+-------------------------------------------------------------------
+Tue Sep 21 17:23:27 CEST 2010 - vuntz@opensuse.org
+
+- Drop gnome-menus-branding-Hidden.directory: this is needed for
+  the applications.menu file from desktop-data-openSUSE. But it's
+  weird to have the file in a different package. Instead, we'll fix
+  desktop-data-openSUSE to use a file it already ships.
+
+-------------------------------------------------------------------
+Mon Sep 13 14:35:55 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-menus-branding-remove-X-SuSE-ControlCenter.patch: this
+  removes the desktop files with X-SuSE-ControlCenter-* categories
+  from the Applications menu. They should just appear in the
+  control center.
+- Rename gnome-menus-branding.changes to
+  gnome-menus-branding.changes.in.
+
+-------------------------------------------------------------------
+Sat Jan 16 02:52:50 CET 2010 - vuntz@opensuse.org
+
+- Merge openSUSE and SLED branding packaging, and generate the
+  packages from the same sources.
+- Change version to 11.3.
+- Rename gnome-menus-branding-openSUSE-COPYING to
+  gnome-menus-branding-COPYING,
+  gnome-menus-branding-openSUSE-Hidden.directory to
+  gnome-menus-branding-Hidden.directory and
+  gnome-menus-branding-openSUSE-settings.menu to
+  gnome-menus-brandingsettings.menu.
+- Make sure to provide the right version of gnome-menus-branding,
+  based on the version of the gnome-menus package.
+- Remove update-desktop-files BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jul 30 04:59:29 CEST 2009 - vuntz@novell.com
+
+- Update gnome-menus-branding-openSUSE-settings.menu:
+  + make it closer to the gnomecc.menu from upstream
+  + remove usage of old X-Ximian categories that are not in use
+    anymore
+  + remove some of the previously included YaST tools, they don't
+    make sense most of the time there.
+
+-------------------------------------------------------------------
+Sun Jan 25 12:54:31 CET 2009 - vuntz@novell.com
+
+- Remove duplicate category in settings.menu
+- Remove old hack to keep some preferences.menu compatibility file.
+  It should not be needed anymore with the packages we have now.
+
+-------------------------------------------------------------------
+Tue Nov  4 12:03:01 CET 2008 - vuntz@novell.com
+
+- Upstream has changed the way settings.menu is used for 2.24, so
+  kill preferences.menu and just use settings.menu now.
+- Keep preferences.menu as a link to settings.menu, since we don't
+  want to break anything because of this.
+- Conflicts with other branding providers.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jul 31 17:02:20 CEST 2008 - sbrabec@suse.cz
+
+- New SuSE package (fate#303889).
+

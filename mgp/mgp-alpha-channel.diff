@@ -1,0 +1,302 @@
+---
+ draw.c        |   35 +++++++++++++++++++++++++-
+ image/image.h |    1 
+ image/new.c   |    4 ++
+ image/zoom.c  |   78 ++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 4 files changed, 109 insertions(+), 9 deletions(-)
+
+--- a/draw.c
++++ b/draw.c
+@@ -1966,6 +1966,13 @@ obj_image_color(image, bimage, d, inithi
+ 	return i;
+ }
+ 
++static Pixel impose_pixel(Pixel fore, Pixel back, byte a)
++{
++	return RGB_TO_TRUE(TRUE_RED(fore) * a + TRUE_RED(back) * (255 - a),
++			   TRUE_GREEN(fore) * a + TRUE_GREEN(back) * (255 - a),
++			   TRUE_BLUE(fore) * a + TRUE_BLUE(back) * (255 - a));
++}
++
+ static Image *
+ obj_image_trans(image, x, y)
+ 	Image *image;
+@@ -1980,6 +1987,7 @@ obj_image_trans(image, x, y)
+ 	int trans;
+ 	u_int bw, bh, bx, by;
+ 	int inithist;
++	byte *alpha = NULL;
+ 
+ 	if (!COMPLEX_BGIMAGE) {
+ 		if (back_color[caching] != xcol.pixel) {
+@@ -1999,6 +2007,19 @@ obj_image_trans(image, x, y)
+ 			n = RGB_TO_TRUE(xcol.red, xcol.green, xcol.blue);
+ 			pl = image->pixlen;
+ 			p = image->data;
++			if (image->alpha) {
++				alpha = image->alpha;
++				for (j = 0; j < image->height; j++) {
++					for (i = 0; i < image->width; i++, p += pl) {
++						byte a = *alpha++;
++						if (a == 255)
++							continue;
++						d = impose_pixel(memToVal(p, pl), n, a);
++						valToMem(d, p, pl);
++					}
++				}
++				break;
++			}
+ 			for (j = 0; j < image->height; j++) {
+ 				for (i = 0; i < image->width; i++, p += pl) {
+ 					if (memToVal(p, pl) == d)
+@@ -2024,6 +2045,8 @@ obj_image_trans(image, x, y)
+ 	}
+ 	pl = image->pixlen;
+ 	p = image->data + image->width * j * pl;
++	if (image->type == ITRUE && image->alpha)
++		alpha = image->alpha + image->width * j;
+ 	bpl = bgpixmap[bgindex].image->pixlen;
+ 	pd = -1;
+ 	n = 0;	/* for lint */
+@@ -2040,6 +2063,16 @@ obj_image_trans(image, x, y)
+ 				b = bgpixmap[bgindex].image->data + 
+ 					bgpixmap[bgindex].image->width * by * bpl;
+ 			}
++			if (alpha) {
++				byte a = *alpha++;
++				if (a == 255)
++					continue;
++				d = impose_pixel(memToVal(p, pl),
++						 memToVal(b, bpl), a);
++				valToMem(d, p, pl);
++				continue;
++			}
++
+ 			if (memToVal(p, pl) != trans)
+ 				continue;
+ 			d = memToVal(b, bpl);
+@@ -2099,7 +2132,7 @@ obj_draw_image(target, x, y, obj, page)
+ 		}
+ 		freeImage(timage);
+ 	}
+-	if (image->trans >= 0)
++	if (image->trans >= 0 || image->alpha)
+ 		image = obj_image_trans(image, x, y);
+ 	obj->data.image.image = image;	/* to free later */
+ 	ximageinfo= imageToXImage(display, screen, visual, depth, image,
+--- a/image/image.h
++++ b/image/image.h
+@@ -90,6 +90,7 @@ typedef struct {
+   unsigned int  depth;  /* depth of image in bits if IRGB type */
+   unsigned int  pixlen; /* length of pixel if IRGB type */
+   byte         *data;   /* data rounded to full byte for each row */
++  byte         *alpha;  /* optional alpha channel */
+   int		trans;	/* transparent index in rgb */
+ } Image;
+ 
+--- a/image/new.c
++++ b/image/new.c
+@@ -119,6 +119,7 @@ Image *newBitImage(width, height)
+   linelen= (width / 8) + (width % 8 ? 1 : 0); /* thanx johnh@amcc.com */
+   image->data= (unsigned char *)lcalloc(linelen * height);
+   image->trans = -1;
++  image->alpha = NULL;
+   return(image);
+ }
+ 
+@@ -141,6 +142,7 @@ Image *newRGBImage(width, height, depth)
+   image->pixlen= pixlen;
+   image->data= (unsigned char *)lmalloc(width * height * pixlen);
+   image->trans = -1;
++  image->alpha = NULL;
+   return(image);
+ }
+ 
+@@ -157,6 +159,7 @@ Image *newTrueImage(width, height)
+   image->depth= 24;
+   image->pixlen= 3;
+   image->data= (unsigned char *)lmalloc(width * height * 3);
++  image->alpha = NULL;
+   image->trans = -1;
+   return(image);
+ }
+@@ -171,6 +174,7 @@ void freeImageData(image)
+   if (!TRUEP(image))
+     freeRGBMapData(&(image->rgb));
+   lfree(image->data);
++  lfree(image->alpha);
+ }
+ 
+ void freeImage(image)
+--- a/image/zoom.c
++++ b/image/zoom.c
+@@ -58,6 +58,7 @@ static void resize_image(oimage, image)
+   int i, j;
+   byte *line1, *line2;
+   byte *destptr;
++  byte *adest = NULL;
+   unsigned int srclinelen;
+   unsigned int pixlen;
+   Pixel v[4];
+@@ -68,6 +69,12 @@ static void resize_image(oimage, image)
+   pixlen= oimage->pixlen;
+   srclinelen= oimage->width * pixlen;
+   destptr = image->data;
++  if (oimage->trans != -1 || oimage->alpha) {
++    image->trans = -1;
++    lfree(image->alpha);
++    image->alpha = lmalloc(image->width * image->height);
++    adest = image->alpha;
++  }
+   cy = 0;
+   xstep = (double)oimage->width / (double)image->width;
+   ystep = (double)oimage->height / (double)image->height;
+@@ -84,6 +91,8 @@ static void resize_image(oimage, image)
+     line2 = oimage->data + srclinelen * y2;
+     cx = 0;
+     for (i = image->width; i > 0; i--) {
++      byte a[4];
++      memset(a, 0xff, 4);
+       x1 = cx;
+       if (x1 >= maxx) {
+ 	x1 = x2 = maxx;
+@@ -93,9 +102,25 @@ static void resize_image(oimage, image)
+ 	xoff = cx - x1;
+       }
+       v[0] = memToVal(line1 + pixlen * x1, pixlen);
++      if (v[0] == oimage->trans) {
++	v[0] = 0;
++	a[0] = 0;
++      }
+       v[1] = memToVal(line1 + pixlen * x2, pixlen);
++      if (v[1] == oimage->trans) {
++	v[1] = 0;
++	a[1] = 0;
++      }
+       v[2] = memToVal(line2 + pixlen * x1, pixlen);
++      if (v[2] == oimage->trans) {
++	v[2] = 0;
++	a[2] = 0;
++      }
+       v[3] = memToVal(line2 + pixlen * x2, pixlen);
++      if (v[3] == oimage->trans) {
++	v[3] = 0;
++	a[3] = 0;
++      }
+       r = (TRUE_RED(v[0]) * (1 - xoff) +
+ 	   TRUE_RED(v[1]) * xoff) * (1 - yoff) +
+ 	(TRUE_RED(v[2]) * (1 - xoff) +
+@@ -111,6 +136,21 @@ static void resize_image(oimage, image)
+       v[0] = rgb8_to_true(r, g, b);
+       valToMem(v[0], destptr, pixlen);
+       destptr += pixlen;
++
++      if (adest) {
++	if (oimage->alpha) {
++	  byte *alpha1 = oimage->alpha + oimage->width * y1;
++	  byte *alpha2 = oimage->alpha + oimage->width * y2;
++	  a[0] = alpha1[x1];
++	  a[1] = alpha1[x2];
++	  a[2] = alpha2[x1];
++	  a[3] = alpha2[x2];
++	}
++
++	*adest++ = (byte)((a[0] * (1 - xoff) + a[1] * xoff) * (1 - yoff) +
++			  (a[2] * (1 - xoff) + a[3] * xoff) * yoff);
++      }
++
+       cx += xstep;
+     }
+     cy += ystep;
+@@ -125,6 +165,7 @@ static Image *reduced_image(oimage, widt
+ {
+   Image *dest;
+   byte *destptr;
++  byte *adest = NULL;
+   unsigned int srclinelen;
+   unsigned int i, j;
+   unsigned int factorx = oimage->width / width;
+@@ -145,23 +186,41 @@ static Image *reduced_image(oimage, widt
+ 
+   dest = newTrueImage(width, height);
+   destptr = dest->data;
++  if (oimage->trans) {
++    dest->alpha = (unsigned char *)lmalloc(width * height);
++    adest = dest->alpha;
++  }
+ 
+   srclinelen = oimage->width * oimage->pixlen;
+ 
+   for (j = 0; j < oimage->height; j += factory) {
+     for (i = 0; i < oimage->width; i += factorx) {
+-      unsigned int r, g, b, div, x, y;
++      unsigned int r, g, b, a, div, x, y;
+       Pixel v;
+ 
+-      r = g = b= 0;
++      r = g = b = a = 0;
+       div = 0;
+       for (y = 0; y < factory && j + y < oimage->height; y++) {
+ 	byte *src = oimage->data + srclinelen * (j + y);
++	byte *asrc = NULL;
++	if (oimage->alpha)
++	  asrc = oimage->alpha + oimage->width * (j + y);
+ 	for (x = 0; x < factorx && i + x < oimage->width; x++) {
+ 	  v = memToVal(src + pixlen * (i + x), pixlen);
+-	  r += TRUE_RED(v);
+-	  g += TRUE_GREEN(v);
+-	  b += TRUE_BLUE(v);
++	  if (asrc) {
++	    if (*asrc) {
++	      r += TRUE_RED(v);
++	      g += TRUE_GREEN(v);
++	      g += TRUE_BLUE(v);
++	    }
++	    a += *asrc;
++	    asrc++;
++	  } else if (v != oimage->trans) {
++	    r += TRUE_RED(v);
++	    g += TRUE_GREEN(v);
++	    b += TRUE_BLUE(v);
++	    a += 0xff;
++	  }
+ 	  div++;
+ 	}
+       }
+@@ -171,6 +230,8 @@ static Image *reduced_image(oimage, widt
+       v = rgb8_to_true(r, g, b);
+       valToMem(v, destptr, pixlen);
+       destptr += pixlen;
++      if (adest)
++	*adest++ = a / div;
+     }
+   }
+   return dest;
+@@ -287,7 +348,7 @@ Image *zoom(oimage, xzoom, yzoom, verbos
+   case ITRUE:
+     if (!RGBP(oimage)) {
+       Image *tmpimage = NULL;
+-      if (smooth_scaling && oimage->transparent == -1 &&
++      if (smooth_scaling &&
+ 	  (oimage->width / xwidth > 1 || oimage->height / ywidth > 1)) {
+ 	tmpimage = reduced_image(oimage, xwidth, ywidth);
+ 	if (tmpimage->width == xwidth && tmpimage->height == ywidth) {
+@@ -296,7 +357,7 @@ Image *zoom(oimage, xzoom, yzoom, verbos
+ 	}
+       }
+       image= newTrueImage(xwidth, ywidth);
+-      if (smooth_scaling && oimage->transparent == -1) {
++      if (smooth_scaling) {
+ 	resize_image(tmpimage ? tmpimage : oimage, image);
+ 	if (tmpimage)
+ 	  freeImage(tmpimage);
+@@ -333,7 +394,8 @@ Image *zoom(oimage, xzoom, yzoom, verbos
+ 
+   if (image) {
+       image->title= dupString(buf);
+-      image->trans = oimage->trans;
++      if (!image->alpha)
++	image->trans = oimage->trans;
+   }
+   lfree((byte *)xindex);
+   lfree((byte *)yindex);

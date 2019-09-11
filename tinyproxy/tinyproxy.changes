@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Tue Jan  6 10:12:12 UTC 2015 - jengelh@inai.de
+
+- Provide service file instead of script
+
+-------------------------------------------------------------------
+Mon Dec 29 20:34:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.8.4
+* Fix crash (infinite loop) when logfile writing fails
+* Allow listening on multiple families when no Listen is
+  provided in config.
+* Fix CONNECT requsts with IPv6 literal addresses as host.
+* Fix invalid free when connecting to ipv6 literal address
+* Limit the number of headers per request to prevent DoS
+- Remove 110-seeding.diff (merged upstream), 110-headerlimit.diff
+  (solved upstream)
+
+-------------------------------------------------------------------
+Fri Mar 14 11:18:41 UTC 2014 - boris@steki.net
+
+- Remove stray chunk headers that can cause /usr/bin/patch to fail
+
+-------------------------------------------------------------------
+Thu Jul  4 00:07:06 UTC 2013 - jengelh@inai.de
+
+- Add 110-seeding.diff, 110-headerlimit.diff to address
+  CVE-2012-3505 (bnc#776506)
+- Refresh tinyproxy-conf.patch to be in -p1 format rather than -p0
+
+-------------------------------------------------------------------
+Wed Feb 22 23:08:32 UTC 2012 - chris@computersalat.de
+
+- fix init script
+  * TINYPROXY_CFG=/etc/tinyproxy.conf
+  * create PID DIR
+- fix logrotate script
+  * compress, dateext .....
+- add user, group tinyproxy
+- add conf patch
+- add missing logdir
+- add missing rc_link
+- fix pre/post
+
+-------------------------------------------------------------------
+Fri Dec  2 10:15:30 UTC 2011 - chris@computersalat.de
+
+- spec-cleaner
+- fix build for suse_version 1110
+  * define missing _initdir macro
+
+-------------------------------------------------------------------
+Mon Sep 19 08:51:04 UTC 2011 - toganm@opensuse.org
+
+- Update to 1.8.3 version
+  changed source format to bz2  
+* Fix upstream proxy support
+* Fix FilterURLs with transparent proxy support
+* Fix bug in ACL netmask generation
+
+-------------------------------------------------------------------
+Fri Jul 29 12:04:39 UTC 2011 - toganm@opensuse.org
+
+- added /etc/init.d/tinyproxy
+- added tinyproxy logrotate 
+
+-------------------------------------------------------------------
+Mon Jul 18 12:44:15 UTC 2011 - jengelh@medozas.de
+
+- Initial package
+

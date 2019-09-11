@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Wed Jun  5 07:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make the deadline for tests even larger, on slow obs bots
+  it takes 1300:
+  * python-vdirsyncer-shift-deadline.patch
+
+-------------------------------------------------------------------
+Thu May 16 22:35:41 UTC 2019 - ranand@suse.com
+
+- Skip flaky test test_legacy_status 
+
+-------------------------------------------------------------------
+Tue May  7 05:47:52 UTC 2019 - pgajdos@suse.com
+
+- added patches
+  default deadline (200ms) is too short for obs
+  + python-vdirsyncer-shift-deadline.patch
+
+-------------------------------------------------------------------
+Mon May  6 13:36:29 UTC 2019 - pgajdos@suse.com
+
+- fix tests again https://github.com/pimutils/vdirsyncer/issues/793
+- modified patches
+  % python-vdirsyncer-fix-tests.patch (extended)
+
+-------------------------------------------------------------------
+Sat Apr  6 22:18:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Wrap description.
+
+-------------------------------------------------------------------
+Fri Mar 29 13:31:30 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.16.7
+  Fixes for Python 3.7
+- added patches
+  https://github.com/pimutils/vdirsyncer/pull/779
+  + python-vdirsyncer-fix-tests.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 08:05:01 UTC 2018 - mimi.vx@gmail.com
+
+- fix vdirsyncer.timer service
+
+-------------------------------------------------------------------
+Wed Jul  4 06:23:48 UTC 2018 - dmacvicar@suse.de
+
+- Add systemd unit and timer from upstream git
+- Make package python3 only
+- Update to version 0.16.6
+  * Documentation building no longer needs a working installation
+    of vdirsyncer.
+- Changes from version 0.16.5
+  * click-log 0.3 is required.
+  * All output will now happen on stderr (because of the upgrade of ``click-log``).
+- Changes from version 0.16.4
+  * Fix tests for new Hypothesis version. (Literally no other change included)
+- Changes from version 0.16.3
+  * First version with custom Debian and Ubuntu packages. See :gh:`663`.
+  * Remove invalid ASCII control characters from server responses. See :gh:`626`.
+  * Python 3.3 is no longer supported. See :ghpr:`674`.
+- Changes from version 0.16.2
+  * Fix crash when using daterange or item_type filters in
+    :storage:`google_calendar`, see :gh:`657`.
+  * Fixes for new version ``0.2.0`` of ``click-log``. The version
+    requirements for the dependency ``click-log`` changed.
+- Changes from version 0.16.1
+  * Removed remoteStorage support, see :gh:`647`.
+  * Fixed test failures caused by latest requests version, see :gh:`660`.
+
+-------------------------------------------------------------------
+Tue Jul  4 12:30:14 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.16.0
+  * Strip METHOD:PUBLISH added by some calendar providers, see
+    :gh:`502`.
+  * Fix crash of Google storages when saving token file.
+  * Make DAV discovery more RFC-conformant, see :ghpr:`585`.
+  * Vdirsyncer is now tested against Xandikos, see :ghpr:`601`.
+  * Subfolders with a leading dot are now ignored during
+    discover for filesystem storage. This makes it easier to combine
+    it with version control.
+  * Statuses are now stored in a sqlite database. Old data is
+    automatically migrated. Users with really large datasets should
+    encounter performance improvements. This means that sqlite3 is
+    now a dependency of vdirsyncer.
+  * Vdirsyncer is now licensed under the 3-clause BSD license,
+    see :gh:`610`.
+  * Vdirsyncer now includes experimental support for EteSync,
+    see :ghpr:`614`.
+  * Vdirsyncer now uses more filesystem metadata for determining
+    whether an item changed. You will notice a possibly heavy CPU/IO
+    spike on the first sync after upgrading.
+  * Packagers: Reference systemd.service and systemd.timer unit
+    files are provided. It is recommended to install these as
+    documentation if your distribution is systemd-based.
+
+- Provides vdirsyncer only for python3.
+
+-------------------------------------------------------------------
+Fri Jun 30 16:34:31 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.15.0 (see changelog.rst)
+- Renamed to python-vdirsyncer
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri Feb 26 13:16:42 UTC 2016 - tbechtold@suse.com
+
+- Require python-python-dateutil. package was renamed
+
+-------------------------------------------------------------------
+Wed Nov  5 09:40:34 UTC 2014 - seiler@b1-systems.de
+
+- added needed python-requests-toolbelt dependency
+
+-------------------------------------------------------------------
+Tue Nov  4 14:24:36 UTC 2014 - seiler@b1-systems.de
+
+- initial commit
+

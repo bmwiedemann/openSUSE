@@ -1,0 +1,67 @@
+From 99705b2d8649640a880a9d67c614362da2e8ca05 Mon Sep 17 00:00:00 2001
+From: Antony Dovgal <tony@daylessday.org>
+Date: Fri, 14 Oct 2011 00:07:35 +0400
+Subject: [PATCH 2/5] add switch to disable showing msg txt
+
+---
+ src/pidgin-libnotify.c |   23 ++++++++++++++++++-----
+ 1 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/src/pidgin-libnotify.c b/src/pidgin-libnotify.c
+index 9e2194d..27f81a0 100644
+--- a/src/pidgin-libnotify.c
++++ b/src/pidgin-libnotify.c
+@@ -56,6 +56,11 @@ get_plugin_pref_frame (PurplePlugin *plugin)
+                             "/plugins/gtk/libnotify/newmsg",
+                             _("New messages"));
+ 	purple_plugin_pref_frame_add (frame, ppref);
++	
++	ppref = purple_plugin_pref_new_with_name_and_label (
++                            "/plugins/gtk/libnotify/newmsgtxt",
++                            _("Show new messages text"));
++	purple_plugin_pref_frame_add (frame, ppref);
+ 
+ 	ppref = purple_plugin_pref_new_with_name_and_label (
+                             "/plugins/gtk/libnotify/newconvonly",
+@@ -404,18 +409,25 @@ notify_msg_sent (PurpleAccount *account,
+ 		return;
+ 
+ 	blocked = purple_prefs_get_bool ("/plugins/gtk/libnotify/blocked");
+-	if (!purple_privacy_check(account, sender) && blocked)
++	if (blocked && !purple_privacy_check(account, sender))
+ 		return;
+ 
+ 	tr_name = truncate_escape_string (best_name (buddy), 25);
+ 
+-	title = g_strdup_printf (_("%s says:"), tr_name);
+-	body = purple_markup_strip_html (message);
++	if (purple_prefs_get_bool("/plugins/gtk/libnotify/newmsgtxt")) {
++		title = g_strdup_printf (_("%s says:"), tr_name);
++		body = purple_markup_strip_html (message);
++
++		notify (title, body, buddy);
+ 
+-	notify (title, body, buddy);
++		g_free (title);
++	} else {
++		title = _("new message received");
++		body = g_strdup_printf (_("from %s"), tr_name);
+ 
++		notify (title, body, buddy);
++	}
+ 	g_free (tr_name);
+-	g_free (title);
+ 	g_free (body);
+ }
+ 
+@@ -581,6 +593,7 @@ init_plugin (PurplePlugin *plugin)
+ 
+ 	purple_prefs_add_none ("/plugins/gtk/libnotify");
+ 	purple_prefs_add_bool ("/plugins/gtk/libnotify/newmsg", TRUE);
++	purple_prefs_add_bool ("/plugins/gtk/libnotify/newmsgtxt", TRUE);
+ 	purple_prefs_add_bool ("/plugins/gtk/libnotify/blocked", TRUE);
+ 	purple_prefs_add_bool ("/plugins/gtk/libnotify/newconvonly", FALSE);
+ 	purple_prefs_add_bool ("/plugins/gtk/libnotify/signon", TRUE);
+-- 
+1.7.3.4
+

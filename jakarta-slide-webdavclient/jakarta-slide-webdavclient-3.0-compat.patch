@@ -1,0 +1,21 @@
+--- ./commandline/src/java/org/apache/webdav/cmd/Slide.java.sav	2006-04-21 10:32:26.000000000 -0400
++++ ./commandline/src/java/org/apache/webdav/cmd/Slide.java	2006-04-21 10:38:01.000000000 -0400
+@@ -23,8 +23,7 @@
+ 
+ package org.apache.webdav.cmd;
+ 
+-
+-import org.apache.commons.httpclient.contrib.ssl.*;
++import org.apache.commons.httpclient.protocol.SSLProtocolSocketFactory;
+ import org.apache.commons.httpclient.protocol.Protocol;
+ 
+ 
+@@ -79,7 +78,7 @@
+                     case 's':
+                         Protocol.registerProtocol("https", 
+                                                   new Protocol("https",
+-                                                               new EasySSLProtocolSocketFactory(), 
++                                                               new SSLProtocolSocketFactory(), 
+                                                                443));
+                         break;
+                     default:

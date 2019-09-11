@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Jul 15 16:24:19 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1563206570.e00d3964:
+  * Make the websocket server tests less noisy
+  * docker: Add back 'Test::Compile' as needed for os-autoinst
+  * spec: Fix invalid '%perl' introduced with 3aadc34c
+  * Test handling worker job status changes
+  * Fix passing --no-cleanup worker CLI option
+  * fetchneedles: Use subshells efficiently for dir changes
+  * fetchneedles: Fix indention
+  * fetchneedles: Prevent noisy output about auto-packing git repos
+  * Ensure query in jobs API does not become too big
+  * Remove group name from job templates example
+  * Adapt order of job template example
+  * Remove dead auth tests from a DBus refactoring 4 years ago
+  * Give the authentication routes plugins will use names and test them
+  * Improve and simplify compile check
+  * Add Test::Strict to Docker container
+  * Allow plugins to add links to the menu
+  * Allow any suffix for TAP source files
+  * .travis.yml: Make documentation generation an explicit job, only on master
+  * .travis.yml: Give readable names to test jobs
+  * .travis.yml: Put handling of cache dir together
+  * Extend filter for new/updated admin table rows
+  * Make log messages of worker tests less verbose
+  * generate-documentation: Fix wrong script path introduced by 81df2fd
+  * docs: Fix quotes and apostrophes for asciidoctor/github style
+  * .travis.yml: Workaround flaky tests with 'travis_test'
+  * Test kvm module, only if it is not built-in
+  * Make containers non-x86 archs friendly and update to leap 15.1
+  * Remove another useless prototype and an unused function from OpenQA::Utils
+  * Remove obsolete prototypes
+  * Polish worker code
+  * travis_test: Fix typo in 'python3-future'
+  * Explicitly specify perl module 'Module::Pluggable' to fix warning
+  * openqa-clone-job: Improve handling --from parameter
+  * README: Clarify how releases are made
+  * Adjust testrules.yml to changed worker tests
+  * Post upload progress after ignoring known images
+  * Remove dead code for handling known images
+  * Improve formatting of comments for WebUIConnection attributes
+  * Remove leftovers from interactive mode
+  * Fix reporting number of images to send to liveview handler
+  * Allow stopping worker during job setup
+  * Rename OpenQA::Worker::Client to OpenQA::Worker::WebUIConnection
+  * Improve use of attributes in worker code
+  * Log specific message if ignoring job while already busy
+  * Enable verbose option in compile check
+  * Restructure worker
+  * travis_test: Add dependencies for 'python-scripts'
+  * Add YAML diff to jobtemplate_create events
+

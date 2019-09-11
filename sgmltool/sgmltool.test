@@ -1,0 +1,40 @@
+Install the following packages:
+
+- jade_dsl
+- tetex
+- gs
+- sgmltool
+
+
+1)
+    cd /tmp
+    sgml2html /usr/doc/packages/sgmltool/guide.sgml 
+
+and check the guide*html files.
+
+
+2)
+
+    cd /tmp
+    sgml2txt /usr/doc/packages/sgmltool/guide.sgml
+
+-- some error message may occur (sgml-tools 1.0.3) -- and check
+guide.txt.
+
+
+3)
+
+    cd /tmp
+    sgml2latex --output=tex /usr/doc/packages/sgmltool/guide.sgml
+
+and check guide.tex; right now (sgml-tools 1.0.3) the LaTeX backend
+looks a little bit broken.
+
+
+4)
+    cd /tmp
+    sgml2rtf /usr/doc/packages/sgmltool/guide.sgml
+
+and check guide.rtf and guide-0.rtf; viewable, but could be better
+(sgml-tools 1.0.3)...
+

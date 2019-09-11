@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Dec 16 22:07:05 UTC 2013 - sleep_walker@suse.cz
+
+- change to use pkgconfig dependencies
+
+-------------------------------------------------------------------
+Sun Dec  1 00:04:46 UTC 2013 - simon@simotek.net
+
+- build against efl 1.8.0 packages
+
+-------------------------------------------------------------------
+Mon Apr 22 05:02:19 UTC 2013 - sleep_walker@suse.cz
+
+- bump to 0.2.3
+  Changelog:
+  Mines count and board size are now defined in the edje theme
+  Big code refactoring/improvement by Cedric Bail:
+   - most of the layout done with edje
+   - use eina iterators to walk the matrix
+   - use ecore getopt
+   - add support for QuickLaunch
+
+  New theme:
+   - default-big (20x10, 24 mines)
+
+  New translation:
+   - polish
+
+
+-------------------------------------------------------------------
+Thu Feb 28 16:18:00 UTC 2013 - sleep_walker@suse.cz
+
+- bump to 0.2.2
+
+-------------------------------------------------------------------
+Fri Jan 11 22:51:57 UTC 2013 - sleep_walker@suse.cz
+
+- adapt for Factory
+
+-------------------------------------------------------------------
+Sun Nov 25 01:10:47 UTC 2012 - sleep_walker@suse.cz
+
+- use efl instead of separate packages
+
+-------------------------------------------------------------------
+Sat Nov 24 01:59:27 UTC 2012 - sleep_walker@suse.cz
+
+- simplify make install
+
+-------------------------------------------------------------------
+Wed Sep 19 09:06:39 UTC 2012 - sleep_walker@suse.cz
+
+- add autoreconf for all but mandriva_2009.1 (which seems to be too old)
+
+-------------------------------------------------------------------
+Wed Sep 19 08:31:24 UTC 2012 - sleep_walker@suse.cz
+
+- make install for fedora, centos, mandriva
+
+-------------------------------------------------------------------
+Mon Sep 17 14:24:29 UTC 2012 - sleep_walker@suse.cz
+
+- fix desktop file
+
+-------------------------------------------------------------------
+Thu Sep 13 21:04:23 UTC 2012 - sleep_walker@suse.cz
+
+- let there be elemines 
+

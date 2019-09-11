@@ -1,0 +1,91 @@
+.TH zfcp_host_configure "8" "February 2013" "s390-tools"
+.SH NAME
+zfcp_host_configure \- Configures or deconfigures a zFCP host bus adapter (HBA).
+.SH SYNOPSIS
+.B zfcp_host_configure ccwid online
+.SH DESCRIPTION
+.B zfcp_host_configure
+is intended to make it easy to persistently add and remove IBM zFCP adapters. In addition to bringing the adapter online or offline, it will also create or delete the necessary udev rules for the adapter.
+.SH PARAMETERS
+.IP ccwid
+The device number of the zFCP adapter. Takes the form x.y.ssss where
+.RS
+.B x
+is always 0 until IBM creates something that uses that number.
+.RE
+.RS
+.B y
+is the logical channel subsystem (lcss) number. Most often this is 0, but it could be non-zero.
+.RE
+.RS
+.B ssss
+is the four digit subchannel address of the device, in hexidecimal, with leading zeros. If entered in upper/mixed case, this is automatically converted to lower case.
+.RE
+.IP online
+Either a literal 1 to bring the adapter online or a literal 0 to take it offline
+.SH FILES
+.I /etc/udev/rules.d/51-zfcp-<ccwid>.rules
+.RS
+This file provides the udev rules necessary to activate a specific zFCP adapter and the LUNs associated with it. Rules relating to the LUNs are added by the zfcp_disk_configure(8) script.
+.RE
+.SH ENVIRONMENT
+.IP DEBUG
+If set to "yes" some minimal debugging information is output during execution.
+.SH DIAGNOSTICS
+The following messages may be issued on stdout:
+.IP
+.B /sysfs not present
+.RS
+The sysfs file system could not be found in /proc/mounts, so there's nothing the script can do. Return code 1 is set.
+.RE
+.IP
+.B No CCW device specified
+.RS
+This message should never be seen, since the script checks to make sure there are exactly two parameters specified. I.e., it is a sanity check. If it is seen, please open a bug report. Return code 1 is set.
+.RE
+.IP
+.B Invalid device status $ONLINE
+.RS
+A value other than 0 or 1 was specified for the second parameter, online. Return code 2 is set.
+.RE
+.IP
+.B No device ${CCW_CHAN_ID}
+.RS
+If a non-existent <ccwid> was specified for the first parameter. Remember the x.y.ssss format is necessary. Return code 3 is set.
+.RE
+.IP
+.B Could not load module ${MODULE}
+.RS
+The zfcp.ko module failed to load. Try "dmesg" to see if there is any indication why. Return code 4 is set.
+.RE
+.IP
+.B Could not activate adapter, status $wwpn_status
+.RS
+An attempt was made to bring the adapter online, which failed. The $wwpn_status value comes from /sys/bus/ccw/devices/$CCW_CHAN_ID/status. The adapter is explicitly set offline. Return code 5 is set.
+.RE
+.IP
+.B Could not change status of device ${CCW_CHAN_ID} to 0
+.RS
+An attempt was made to take the adapter offline, which failed. Return code 5 is set.
+.RE
+
+If environment variable DEBUG is set to "yes," the following messages may be issued on stdout:
+.IP
+.B zFCP adapter ${CCW_CHAN_ID} already in status ${ONLINE}
+.RS
+An attempt was made to bring the adapter online when it was already online, or take it offline when it was already offline.
+.RE
+.IP
+.B Configuring device ${CCW_CHAN_ID}
+.RS
+Just a little bit of verbosity, since it just indicates that we got past certain error checks and will now try to do something useful.
+.RE
+.IP
+.B zFCP adapter at ${CCW_CHAN_ID} deactivated
+.RS
+Another bit of verbosity, which means that the adapter was taken offline and the udev rules deleted.
+.RE
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.
+.SH SEE ALSO
+zfcp_disk_configure(8), zfcp_san_disc(8)

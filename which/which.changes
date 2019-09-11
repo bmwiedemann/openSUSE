@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Mar 19 11:57:56 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Tue Jun  7 12:16:07 UTC 2016 - tchvatal@suse.com
+
+- Move installinfo scriptlet to preun so it won't fail
+
+-------------------------------------------------------------------
+Wed Sep  9 12:31:06 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Correct usage of info scriplets
+
+-------------------------------------------------------------------
+Sun Mar 22 18:10:34 UTC 2015 - astieger@suse.com
+
+- GNU which 2.21:
+  * Upgraded code from bash to version 4.3 (now uses eaccess).
+  * Fixed a bug related to getgroups / sysconfig that caused Which
+    not to see more than 64 groups for a single user
+  * Build system maintenance.
+- Update project and source URL to GNU project
+
+-------------------------------------------------------------------
+Sun Jan 20 19:24:06 UTC 2013 - jengelh@inai.de
+
+- Split "which" off util-linux

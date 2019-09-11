@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">2.8.dev.29+git.%ct.%h</param>
+    <param name="url">git://github.com/SUSE/nfs-ganesha.git</param>
+    <param name="revision">ses6</param>
+    <param name="filename">nfs-ganesha</param>
+    <param name="scm">git</param>
+    <param name="package-meta">no</param>
+    <param name="subdir">src</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">bz2</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">nfs-ganesha</param>
+  </service>
+</services>

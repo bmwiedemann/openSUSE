@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Feb  3 09:53:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- Add COPYING as documentation file, not as license file
+
+-------------------------------------------------------------------
+Fri Jan 27 19:29:53 UTC 2017 - sebix+novell.com@sebix.at
+
+- Add COPYING as license file
+
+-------------------------------------------------------------------
+Fri Jan 13 20:49:10 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove glib2 as build requirement
+
+-------------------------------------------------------------------
+Sun Jan  8 13:55:48 UTC 2017 - sebix+novell.com@sebix.at
+
+- run spec-cleaner
+- add baselibs.conf to specfile
+
+-------------------------------------------------------------------
+Fri Jan 16 12:36:10 UTC 2015 - jengelh@inai.de
+
+- Avoid building static libraries.
+  Improve RPM group classification. Feed it through the spec washer.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:35:03 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Feb 17 19:36:12 UTC 2010 - pascal.bleser@opensuse.org
+
+- add baselibs support
+- add patch to build with older curl on SLES 9
+
+-------------------------------------------------------------------
+Wed Mar 25 11:08:15 CET 2009 - dominique@leuenberger.net
+
+- Initial package of 0.2.2 for openSUSE

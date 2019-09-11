@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Mon Apr  8 08:54:19 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2:
+  mu:
+  * Substantial (algorithmic) speed-up of message-threading
+  * The query-parser now generates better queries for wildcard
+    searches, by using the Xapian machinery for that (when available)
+    rather than tranforming into regexp queries
+  * The perl backend is hardly used and will be removed; for now we
+    just disable it in the build
+  * Allow outputing messages in json format, closely following the sexp
+    output. This adds an (optional) dependency on the Json-Glib library
+  mu4e:
+  * Bump the minimal required emacs version to 24.4. This was already
+    de-facto true, now it is enforced
+  * In mu4e-bookmarks, allow the `:query` element to take a function
+    (or lambda) to dynamically generate the query string.
+  * There is a new message-view for mu4e, based on the Gnus' article-view.
+    This bring a lot of (but not all) of the very rich Gnus article-mode
+    feature-set to mu4e, such as S/MIME-support, syntax-highlighting.
+    Enable it with: (setq mu4e-view-use-gnus t)
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Mar  5 10:18:39 UTC 2019 - mvetter@suse.com
+
+- bsc#1111950: Build lib in paralell the rest on one core
+
+-------------------------------------------------------------------
+Mon Feb  5 12:34:06 UTC 2018 - mvetter@suse.com
+
+- Update to 1.0:
+  mu:
+  * New, custom query parser which replaces Xapian's 'QueryParser'
+    both in mu and mu4e. Existing queries should still work, but the
+    new engine handles non-alphanumeric queries much better.
+  * Support regular expressions in queries
+  * cfind: ensure nicks are unique
+  * auxiliary programs invoked from mu/mu4e survive terminating the
+    shell / emacs
+  mu4e:
+  * Allow for rewriting message bodies
+  * Toggle-menus for header settings
+  * electric-quote-(local-)mode work when composing emails
+  *  Respect format=flowed and delsp=yes for viewing plain-text
+     messages
+  * Added new mu4e-split-view mode: single-window
+  * Add menu item for `untrash'.p
+  * Unbreak abbrevs in mu4e-compose-mode
+  * Allow forwarding messages as attachments
+    (`mu4e-compose-forward-as-attachment')
+  *  Default to 'skip duplicates' and 'include headers' in
+     headers-view, which should be good defaults for most users. Can
+     be customized using `mu4e-headers-skip-duplicates' and
+     `mu4e-headers-include-related', respectively.
+  * Many bug fixed (see github for all the details).
+  * Updated documentation
+- Remove upstreamed mu4e-1.0-alpha3-gh1168.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 10:43:22 UTC 2018 - dmacvicar@suse.de
+
+- Add patch mu4e-1.0-alpha3-gh1168.patch
+  * Fix for https://github.com/djcb/mu/issues/1168
+- Make automake version requirement (1.14) explicit
+
+-------------------------------------------------------------------
+Mon Dec 18 11:05:36 UTC 2017 - mvetter@suse.com
+
+- Update to 1.0-alpha3:
+  * parser: promote single value to a range for range-fields 
+  * mu: support 'raw' query (internally) 
+  * mu: handle funny msgids 
+  * mu4e: improve msgid quoting 
+  * mu4e: fix typo in mu4e~docid-msgid-param 
+
+-------------------------------------------------------------------
+Mon Nov 13 09:36:13 UTC 2017 - mvetter@suse.com
+
+- Update to 1.0-alpha2:
+  * Ensure mu4e-view-mode-hook run after text insertion
+  * mu4e: fix bug preventing mu4e-headers-change-sorting to sort by list
+  * mu4e: add mu4e-query-rewrite-functio
+  * proc: ensure query string is utf-8
+  * documentation fixes
+
+-------------------------------------------------------------------
+Sun Oct 29 17:43:47 UTC 2017 - mvetter@suse.com
+
+- Update to 1.0-alpha0:
+  * mu4e: add mu4e-msg-changed-hook to mu4e-index-updated-hook globally
+  * mu4e: Fix outdated docstring for `mu4e-headers-actions'
+  * Add some improvements in attachment actions
+  * mu4e: killing instead of interrupting update process
+  * Use re-search-forward to find message signatures 
+  * mu4e: Add possibility to forward messages as attachments 
+  * mu: add 'tickle' command, for renaming messages
+  * mu4e: allow for message body rewriting
+  * mu4e: mu4e-message: allow for bodyless messages
+  * mu4e: show inline text/plain as attachment
+  * mu4e: don't require user-agent string 
+  * mu4e: Added new mu4e-split-view mode: single-window
+  * mu: include signers in signature report
+  * mu4e: display signers in signature header
+  * bug fixes and documentation updates
+
+-------------------------------------------------------------------
+Thu Oct 26 13:21:38 UTC 2017 - dimstar@opensuse.org
+
+- Change gmime-devel BuildRequires to pkgconfig((gmime-2.6): do not
+  care for actual package names, but for relevant symbols. In this
+  specific case, gmime-devel was upgraded to version 3.0, with a
+  2.6 compatibility package being present next to it.
+
+-------------------------------------------------------------------
+Tue Apr 11 09:58:12 UTC 2017 - jengelh@inai.de
+
+- Fix typographical issues with dots and apostrophes.
+
+-------------------------------------------------------------------
+Fri Apr  7 16:46:16 UTC 2017 - mvetter@suse.com
+
+- Use proper license (GPL-3.0+)
+
+-------------------------------------------------------------------
+Thu Apr  6 07:22:53 UTC 2017 - mvetter@suse.com
+
+- Add package mu4e (emacs+mu based email client)
+- Change in BuildRequires:
+  * Add emacs-nox >= 23, then mu4e gets automatically build
+  * Add makeinfo, to handle info files
+
+-------------------------------------------------------------------
+Thu Mar  2 15:16:46 UTC 2017 - mvetter@suse.com
+
+- Initial package of version 0.9.18 for openSUSE

@@ -1,0 +1,54 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-10-18 02:50:14.858914703 +0200
+Upstream: tbd
+
+---
+ Makefile.am   |   13 +++++++++++++
+ configure.ac  |    8 ++++++++
+ fparser.pc.in |   10 ++++++++++
+ 3 files changed, 31 insertions(+)
+
+Index: fparser-4.5.0/Makefile.am
+===================================================================
+--- /dev/null
++++ fparser-4.5.0/Makefile.am
+@@ -0,0 +1,11 @@
++# -*- Makefile -*-
++
++lib_LTLIBRARIES = libfparser.la
++
++libfparser_la_SOURCES = fparser.cc fpoptimizer.cc
++libfparser_la_LDFLAGS = -release ${PACKAGE_VERSION}
++
++include_HEADERS = fparser.hh
++
++pkgconfigdir = ${libdir}/pkgconfig
++pkgconfig_DATA = fparser.pc
+Index: fparser-4.5.0/configure.ac
+===================================================================
+--- /dev/null
++++ fparser-4.5.0/configure.ac
+@@ -0,0 +1,8 @@
++AC_INIT([fparser], [4.5.2])
++AC_CONFIG_SRCDIR([extrasrc/fpaux.hh])
++AM_INIT_AUTOMAKE([-Wall foreign])
++AC_DISABLE_STATIC
++LT_INIT
++AC_PROG_CXX
++AC_CONFIG_FILES([Makefile fparser.pc])
++AC_OUTPUT
+Index: fparser-4.5.0/fparser.pc.in
+===================================================================
+--- /dev/null
++++ fparser-4.5.0/fparser.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: fparser
++Description: Library for parsing mathematical equations
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lfparser
++Cflags: -I${includedir}

@@ -1,0 +1,16 @@
+diff -Naur eiciel-0.9.12.1-orig/src/xattr_manager.hpp eiciel-0.9.12.1/src/xattr_manager.hpp
+--- eiciel-0.9.12.1-orig/src/xattr_manager.hpp	2014-08-20 10:06:00.000000001 +0200
++++ eiciel-0.9.12.1/src/xattr_manager.hpp	2018-07-19 23:56:41.945902210 +0200
+@@ -26,7 +26,10 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
++#ifndef ENOATTR
++#define ENOATTR ENODATA
++#endif
+ 
+ #include <string>
+ #include <cstring>
+

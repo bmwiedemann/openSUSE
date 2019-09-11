@@ -1,0 +1,810 @@
+-------------------------------------------------------------------
+Fri Mar 22 17:16:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add adobe-sourcecodepro-fonts Recommends: New default font for
+  monospace was added for version 3.32.x.
+
+-------------------------------------------------------------------
+Thu Mar 21 06:54:42 UTC 2019 - Chingkai <qkzhu@suse.com>
+
+- Rebase gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 06:26:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 18:52:19 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Drop legacy build systems.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 09:30:00 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 20:01:00 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Updated default monospace font.
+  + More meson build fixes.
+  + Updated translations.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Drop obsolete gnome-common and intltool BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan 15 08:51:49 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.0.2:
+  + Fixed generation of enums XML on meson builds.
+  + Convert post-install script to python.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  4 20:13:11 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.0.1:
+  + Brown paper bag release, included several fixes to meson build.
+- Changes from version 3.31.0:
+  + Add settings to inhibit microphone/camera.
+  + Change tablets'/touchscreens' "display" setting to "output" one
+    with different semantics.
+  + Added meson build support.
+  + Changed default clock settings.
+  + Added XF86Keyboard keybinding to cycle the keyboard layout.
+- Disable gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch
+  Needs rebase.
+- Add gnome-common BuildRequires and bootstrap tarball.
+- Replace glib2-devel with pkgconfig(gio-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Nov 12 07:16:13 UTC 2018 - qkzhu@suse.com
+
+- Add gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+  + Add settings for org.gnome.desktop.background.lockdialog
+    This key is for the background of lockDialogGroup which makes login
+    and lock background configurable. The default behavior will be
+    retained to what it is currently.
+  + This patch is required by a patch in GNOME Shell
+    gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  (fate#324570, glgo#GNOME/gnome-shell#680).
+
+-------------------------------------------------------------------
+Wed Sep  5 23:46:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Set default background image for screen lock to an existing
+    one.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:03:33 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:54:14 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:23 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  7 22:58:05 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Add setting about whether to allow volume above 100%.
+  + Change default click method for touchpads, from Windows-style
+    soft-button areas, to Mac-style two-finger right-click. This
+    does not change the settings for trackpoints or touchpads that
+    don't support multi-touch.
+  + Add tertiary button action for Wacom styli.
+- Remove unneeded %clean section: RPM does this work itself
+  nowadays.
+- Adopt the use of %make_build macro rather than raw make command,
+  following the best practices.
+- Drop gnome-common BuildRequires and autogen.sh call: they are no
+  longer needed/used.
+
+-------------------------------------------------------------------
+Wed Oct 25 01:14:56 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.1:
+  + Add a gsettings key to show/hide weekday.
+  + gschema: Fix gettext-domain.
+  + Updated translations.
+- Drop %glib2_gsettings_schema_* post/postun/requires macros:
+  functionality now covered by file triggers.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:32:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Update GConf convert scripts to cater for peripherals.
+  + Win32 build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 12:14:02 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:10:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Use more fancy characters in translatable strings.
+  + Fix "<super>s" shortcut being used for 2 separate actions.
+
+-------------------------------------------------------------------
+Wed Jan 11 15:43:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.3:
+  + Add "Disable while typing" touchpad setting.
+  + Add a gsetting to back Gtk/EnablePrimaryPaste.
+  + Add "tap-and-drag" for touchpads.
+
+-------------------------------------------------------------------
+Tue Sep 20 11:07:59 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 19 22:01:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + Add tablet/stylus/pad schemas.
+  + Add mouse/trackpad accel profile keys.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 21 22:46:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Add a setting to store input sources MRU list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 28 11:53:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Add a setting to enable weekdates in calendars.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 13 09:39:27 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Remove gsettings-desktop-schemas-bnc872820-wm-button-layout.patch
+  upstreamed.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:03:33 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 09:55:02 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Add a setting to enable caret mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 21:27:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Update desktop file IDs for search providers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 17 13:15:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Remove scroll-method key, and add edge-scroll-enabled key
+    for touchpads.
+  + Revert natural scrolling being applies to non-touchpad devices
+    by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 26 12:40:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Add setting to show battery percentage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 20 15:39:13 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Add instructions and scripts for building on Win32.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 15:36:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:25:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fix typographical errors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 00:34:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Use system font in titlebar by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:50:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:43:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Add a way to turn off "PC-style" right-click for touchpads.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 14:22:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Use intltool to translate GSettings schema files directly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 20 07:02:12 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Adopt peripherals' gschemas from gnome-settings-daemon.
+  + Change the default focus-tracking key.
+  + Update docs for
+    org.gnome.desktop.wm.preferences.raise-on-click.
+  + Deprecate window manager theme key.
+  + Add report-technical-problems key to privacy.
+
+-------------------------------------------------------------------
+Wed Oct 15 15:26:39 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Disable default action on middle-click on titlebar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 25 21:02:15 CDT 2014 - federico@suse.com
+
+- Add gsettings-desktop-schemas-bnc872820-wm-button-layout.patch:
+  This lets us have the correct defaults for the window manager's
+  button layout, for the default session mode (i.e. not Classic)
+  (bnc872820).
+
+-------------------------------------------------------------------
+Mon Sep 22 17:04:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Disable location service by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 13:18:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 19:14:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.91:
+  + Add a whitelist in addition to a black list for search
+    providers.
+
+-------------------------------------------------------------------
+Mon Aug 18 11:29:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Add Location settings.
+  + Add default bindings for "backward" keyboard shortcuts.
+  + Windows build bug fix.
+  + Fix location of the default backgrounds.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:21:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.2:
+  + Switch default icon theme to Adwaita.
+  + Remove minimize and maximize from default button layout.
+- Changes from version 3.13.1:
+  + Add switch to last/first workspace keybindings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 14:35:44 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 14:57:14 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 18 15:35:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Disable 'send-software-usage-stats' by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 13:39:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Add 'send-software-usage-stats' key.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  4 09:38:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Extend app folder schema.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 17:59:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Add an app folder setting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 20 20:39:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Add 'Always on Top' key.
+  + Add keybindings to move windows between monitors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 16 06:49:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + New default lock screen background. Please update
+    gnome-backgrounds to 3.10.1 as well.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 26 07:17:18 UTC 2013 - dimstar@opensuse.org
+
+- Drop gnome-backgrounds Recommends: the KDE team is unhappy that
+  we try to install an error free GNOME desktop. The requirement
+  is no longer very important though, as glib2-branding-openSUSE
+  adds an override file, setting the lockscreen wallpaper to a
+  openSUSE branded one. Thus, only users of the upstream branding
+  package will be hit badly.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:57:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 18:03:07 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-backgrounds Recommends: the default lock screen
+  wallpaper (Sunset.png) referenced by the schema is in this
+  package.
+
+-------------------------------------------------------------------
+Mon Sep  2 19:24:00 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.91:
+  + Add datetime schema.
+  + Set a different lock screen background by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 15:48:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Add settings for focus/caret tracking.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:29:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Remove settings for deprecated gtk-settings.
+  + Remove application-based option, deprecated in mutter.
+
+-------------------------------------------------------------------
+Fri Jun 21 12:06:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 28 19:53:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Add remember-app-usage key to privacy schema.
+  + Add alternative shortcut for toggling the overview.
+  + Add always-show-universal-access-status key to a11y schema.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 14 11:35:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Fix description of "sort-order" key in the search providers
+    schema.
+  + Don't migrate metacity themes from GNOME 2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 11:48:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 18:41:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 15 17:56:08 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Tue Mar  5 14:32:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Add keys for the screensaver wallpaper.
+  + Remove the obsolete draw-background key.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 12:23:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Add the IPv6 localhost to the default ignored hosts for proxy.
+  + Make Alt-Tab be synonymous with the default shell switcher.
+  + Lower default idle delay to 300 seconds.
+
+-------------------------------------------------------------------
+Tue Feb  5 16:34:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Rename resident-in-lock-screen key.
+  + Use the Super key for workspace and application switcher
+    shortcuts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 13:09:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Clarify definition of resident-in-lock-screen.
+  + Add a 'per-window' key to the input sources schema.
+  + Use Super+H (for hide) as the default value for minimise.
+  + Add show-full-name-in-top-bar to privacy schemas.
+  + Rename show-full-name lock screen key to
+    show-full-name-in-top-bar.
+  + Mark a number of keys as deprecated and obsolete.
+
+-------------------------------------------------------------------
+Tue Jan  8 18:24:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Add lockdown mode key for user-accounts.
+  + Add trash, temp files and recent files related settings.
+  + Add schemas for notification filtering.
+  + Add new "switch-application" keybinding, so that
+    the "switch-windows" keybinding can be kept for the legacy mode
+  + Add new switch-input-source keybinding.
+- Changes from version 3.7.2:
+  + Add a schema for desktop search providers (bgo#687489)
+  + Add a schema for privacy settings (bgo#688578)
+  + Add a show-full-name setting for the lock screen
+  + Quote a11y feature names (bgo#687292)
+  + Remove unneeded XML escaping (bgo#687291)
+  + Fix a typo (bgo#686861)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 12:15:59 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 10:37:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 23:08:50 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Change default list of input sources to be empty, so the
+    default layout is inherited from the current settings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 20:35:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Add option to show all the available input sources in the UI
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 20:42:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Add xkb-options key to input-sources
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 20:15:47 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Add colour saturation setting for the magnifier.
+  + Change default keyboard shortcut for "Maximise".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 19:24:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Add show-notifications setting (bgo#677640).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  8 14:35:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + bgo#607797: Change the default mouse-button-modifier to Super
+  + bgo#645665: Add brightness and contrast preferences
+  + bgo#676101: Add input-sources schema
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 15 13:56:05 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:16:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:17:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 20:01:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Adjust default bindings for maximize/restore.
+  + Make evolution launch the correct component.
+  + Update default background URI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 18:29:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Update introspection dependency
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:17 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Nov 26 13:06:51 UTC 2011 - dimstar@opensuse.org
+
+- Add gobject-introspection-devel BuildRequires in order to get
+  GDEsktopEnums-3.0.gir built, which is needed by mutter 3.3.2 now.
+- Stop building package as noarch: the resulting typelib file are
+  arch dependent.
+
+-------------------------------------------------------------------
+Tue Nov 22 21:53:25 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Add shared wm schemas
+  + Updated translations.
+- Drop gsettings-desktop-schemas-x-content-software.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Oct 24 11:44:38 UTC 2011 - vuntz@opensuse.org
+
+- Add gsettings-desktop-schemas-x-content-software.patch: fix
+  autostart for media containing software.
+
+-------------------------------------------------------------------
+Mon Sep 26 10:36:18 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 14:31:27 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Enable maintainer mode by default
+  + Don't migrate the icon-theme from GConf
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  6 05:48:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Add org.gnome.desktop.interface.{clock-show-seconds,
+    clock-show-date}
+  + Improve documentation for org.gnome.system.proxy
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Jul  5 07:48:15 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Add org.gnome.system.locale schema
+  + Remove org.gnome.desktop.default-applications.at remains
+  + Add some ranges to magnifier schemas
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Apr 27 11:52:02 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Don't migrate background-related keys
+  + Don't migrate custom GTK+ color schemes and various GTK+ tweaks
+    keys.
+- Drop gsettings-desktop-schemas-overoptimistic-convert.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr  8 16:05:15 UTC 2011 - dimstar@opensuse.org
+
+- Add gsettings-desktop-schemas-overoptimistic-convert.patch:
+  Remove some questionable conversions.
+
+-------------------------------------------------------------------
+Mon Apr  4 16:45:42 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:42:10 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Use picture-uri instead of picture-filename (bgo#633983)
+  + Remove at mobility schema conversion
+  + Use seconds instead of minutes in idle and lock times
+  + Remove idle and screensaver settings form the conversion
+- Changes from version 2.91.91:
+  + Disable toolkit-accessibility by default.
+  + Add "disable-log-out" to lockdown.
+  + Remove mobility configuration, we only support caribou's.
+    on-screen keyboard.
+  + Remove default-applications.browser schema from conversion
+    script.
+  + Remove unused "use-custom-font" setting.
+  + Add "text-scaling-factor" key.
+  + Remove obsolete screensaver settings.
+
+-------------------------------------------------------------------
+Thu Mar  3 16:18:34 CET 2011 - vuntz@opensuse.org
+
+- Add cantarell-fonts Recommends, since it's the default font in
+  the schemas.
+
+-------------------------------------------------------------------
+Tue Feb 22 13:32:16 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.1.7:
+  + Change org.gnome.desktop.session/idle-delay to a uint
+  + Move gnome-screensaver settings here
+  + Remove "status-bar-meter-on-right" setting
+  + Remove duplicated "idle-delay" key
+  + Remove web browser default preference
+  + Make sure all the schemas are translatable
+  + Use Cantarell 11pt as the default UI font
+  + Add magnifier schemas from gnome-shell
+  + Fix schemas path in a11y schemas
+  + Add "session-name" to org.gnome.desktop.session
+  + Rename "accessibility" key to "toolkit-accessibility"
+  + Remove AT visual preference, we only support orca as a screen
+    reader
+  + Remove the duplicate on-screen keyboard startup key
+- Create lang subpackage.
+
+-------------------------------------------------------------------
+Tue Feb  8 13:51:20 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.1.5:
+  + Add org.gnome.desktop.session schema
+  + Add automatic-mnemonics key to org.gnome.desktop.interface
+  + Fix paths for org.gnome.desktop.default-applications.office
+    settings
+
+-------------------------------------------------------------------
+Fri Jan 14 13:17:20 UTC 2011 - fcrozat@novell.com
+
+- Adapt source service support to handle missing autogen.sh
+
+-------------------------------------------------------------------
+Tue Jan 11 14:14:19 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.1.4 :
+  + Add thumbnailer schemas
+  + Don't show icons on the desktop by default
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common BuildRequires.
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Thu Dec 23 12:50:14 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.3:
+  + Add a key for the clock format
+  + Disable migration of GTK+ and cursor themes
+  + Change default background gradient colours
+
+-------------------------------------------------------------------
+Wed Dec  8 10:27:44 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.2:
+  + Add new media-handling schemas taken from Nautilus
+- Changes from version 0.1.1:
+  + Misc. schema updates
+- Changes from 0.1.0:
+  + Relicense to LGPLv2+
+  + Set things up for translation
+  + Add a GConf conversion script
+  + Misc. schema updates
+- Change license tag to LGPLv2+.
+- Remove pkgconfigdir override on %makeinstall: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct  7 19:08:14 UTC 2010 - dimstar@opensuse.org
+
+- Initial package, version 0.0.1.
+

@@ -1,0 +1,151 @@
+#!/bin/bash
+
+exit_code=1
+
+function usage
+{
+  echo "Check for directives in apache configuration (including"
+  echo "potentially reachable .htaccess files)"
+  echo ""
+  echo "Usage: $0 [options]"
+  echo ""
+  echo "       options: "
+  echo "              -s string    system configuration root"
+  echo "                           [default: $system_conf_root]"
+  echo "              -d string    directives to search"
+  echo "                           [default: $check_directives]"
+  echo "              -n string    htaccess file name(s)"
+  echo "                           [default: $htaccess_names]"
+  echo "              -q           do not print where directive(s) was found"
+  echo "              -v           as -v plus trace and matched lines"
+  echo "              -h           this help"
+  echo ""
+  echo "Return Value:  0    at least one occurence found in apache config"
+  echo "               1    no occurence found"
+  echo "               2    wrong arguments"
+  echo ""
+  echo "Example: "
+  echo "   $ $0 -s '/etc/apache2/default-server.conf' -n '.htaccess .htconfig' -d 'Require' -v"
+  echo "   Checking /etc/apache2/default-server.conf .. FOUND"
+  echo "   Checking /srv/www/htdocs/foo/.htaccess .. FOUND"
+  echo "   Checking /etc/apache2/conf.d/gitweb.conf .. FOUND"
+  echo "   $"
+}
+
+
+function find_directives_in_file
+{
+  file=$1
+
+  pattern=$(echo $check_directives | 
+    sed 's:\([^ \t]\+\):\\b\1\\b:g' |
+    sed 's:\s\+:\\|:g')
+
+  output=$(cat $file |  sed 's:#.*::' | grep -i "$pattern")
+  if [ $? -eq 0 ]; then 
+    [ $verbosity -ge 1 ] && echo "    Checking $file .. FOUND"
+    [ $verbosity -ge 2 ] && echo "    Output: [$output]"
+    exit_code=0
+  else
+    [ $verbosity -ge 2 ] && echo "    Checking $file .. NOT FOUND"
+  fi
+}
+
+function check_conf_file
+{
+  conf_file=$1
+
+  [ $verbosity -ge 2 ] && echo "CONFIG FILE: $conf_file"
+
+  find_directives_in_file $conf_file
+
+  # check all directories with AllowOverride not None 
+  # for .htaccess files
+  directories=$(grep -i '<directory' $conf_file | 
+    sed 's:#.*::' | 
+    sed 's:.*<directory\s*\([^ \t]*\)\s*>:\1:I' | 
+    tr -d '"')
+
+  find_names=$(echo $htaccess_names | 
+    sed 's:^\s\+::' | 
+    sed 's:\s\+$::' | 
+    sed 's:\s\+: -o -name :g' | 
+    sed 's:^:-name :')
+
+  for dir in $directories; do
+    [ $verbosity -ge 2 ] && echo "  Directory: $dir"
+
+    allow_override=$(grep -i -Pzo "(?s)<directory[\s\"]*$dir.*?</directory>" $conf_file | 
+      sed 's:#.*::'| 
+      grep AllowOverride)
+
+    [ $verbosity -ge 2 ] && echo "    override: $allow_override"
+
+    shopt -s nocasematch
+    if [[ ! $allow_override =~ allowoverride.*none ]]; then
+      for htfile in $(find $dir $find_names); do
+        find_directives_in_file $htfile
+      done
+    fi 
+    shopt -u nocasematch
+  done
+
+  # check all Include or IncludeOptional files recursively
+  include_files=$(grep '^\s*Include' $conf_file | 
+    sed 's:#.*::' | 
+    sed 's:Include[^ ]*\s\+::' | 
+    tr '\n' ' ')
+  [ $verbosity -ge 2 ] && echo "  Include Files: [$include_files]"
+
+  for ifile in $include_files; do
+    if [ -f $ifile ]; then
+      check_conf_file $ifile
+    fi
+  done
+}
+
+system_conf_root="/etc/apache2/httpd.conf"
+check_directives="allow deny order satisfy"
+htaccess_names=".htaccess"
+verbosity=1
+
+while getopts ":hs:d:n:vq" opt; do
+  case $opt in
+    s)
+      system_conf_root=$OPTARG
+      ;;
+    d)
+      check_directives=$OPTARG 
+      ;;
+    n)
+      htaccess_names=$OPTARG
+      ;;
+    q)
+      verbosity=0
+      ;;
+    v)
+      verbosity=2
+      ;;
+    h)
+      usage
+      exit 0
+      ;;
+    \?)
+      echo "ERROR: Invalid option: -$OPTARG" >&2
+      usage
+      exit 2
+      ;;
+    :)
+      echo "ERROR: Option -$OPTARG requires an argument." >&2
+      usage
+      exit 2
+      ;;
+  esac
+done
+
+check_conf_file $system_conf_root
+
+exit $exit_code
+
+
+

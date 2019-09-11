@@ -1,0 +1,13 @@
+--- MAKE_INC/make.linux	2016-05-22 17:58:44.000000000 +0200
++++ MAKE_INC/make.linux.patched	2019-02-08 10:35:38.740265921 +0100
+@@ -21,8 +21,8 @@
+ #
+ #  The name of the libraries to be created/linked to
+ #
+-SuperLUroot	= $(HOME)/Dropbox/Codes/SuperLU/SuperLU
+-SUPERLULIB   	= $(SuperLUroot)/lib/libsuperlu_5.1.a
++SuperLUroot	= @superlu_home@
++SUPERLULIB	= @superlu_lib@
+ 
+ #BLASLIB   	= $(SuperLUroot)/lib/libblas.a
+ 

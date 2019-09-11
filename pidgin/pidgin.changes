@@ -1,0 +1,2494 @@
+-------------------------------------------------------------------
+Tue Apr 17 12:50:20 UTC 2018 - dimstar@opensuse.org
+
+- Drop pkgconfig(NetworkManager) BuildRequires and Requires: this
+  legacy symbol is no longer maintained and pidgin is not yet
+  ready to move to libnm. As a side-effect, we no longer depend on
+  NM for all situations, even if the system were to run wicked.
+- Replace --enable-nm configure parameter with --disable-nm.
+
+-------------------------------------------------------------------
+Thu Apr 12 07:43:51 UTC 2018 - fezhang@suse.com
+
+- Add pidgin-enable-sni-gnutls.patch: Enable SNI for gnutls to
+  avoid SSL handshake failure, patch written by Tiago Herrmann
+  (therrmann@suse.com) (bsc#1086439, pidgin.im#17300).
+
+-------------------------------------------------------------------
+Thu Mar 15 16:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Instead of removing the libjabber.so, liboscar.so symlinks, move
+  them to the devel package.
+
+-------------------------------------------------------------------
+Fri Mar  9 23:20:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.13.0:
+  + libpurple:
+    * Unified string comparison.
+    * Properlly shell escape URI's when opening them.
+    * Fix a one byte buffer overread in function
+      purple_markup_linkify.
+    * Fix an issue were utf8 was incorrectly truncated which could
+      lead to crashes as we were potentially feeding garbage into
+      glib/gtk.
+  + libgnt:
+    * Partially fix building against curses 6.0 with opaque
+      structs set (pidgin.im#16764).
+    * Fix a crash when resizing the window (pidgin.im#16680).
+  + General:
+    * Fix a bashism in autotools (pidgin.im#16836).
+  + XMPP:
+    * Show XEP-0066 OOB URLs in any message, not just headlines.
+    * Fix a user after free (pidgin.im#17200).
+    * Remove pipelining from BOSH connections (pidgin.im#17025).
+    * Don't try to TLS already secured BOSH connections
+      (pidgin.im#17270).
+  + IRC:
+    * Fix "Registration timeout" on SASL auth with InspIRCd
+      servers (and possibly others not based on
+      charybdis/ratbox/ircd-seven).
+    * Fix issues with plugins that modify outgoing messages (such
+      as the custom PART/QUIT feature of the IRC More plugin).
+    * Fix IRC buffer handling (pidgin.im#12562).
+    * Properly handle AUTHENTICATE as a normal command with server
+      prefix.
+    * Fix a crash caused by a use after free of the MOTD.
+    * Fix an out of bounds read in irc_nick_skip_mode.
+    * Fix a write of a single byte before the start of a buffer in
+      irc_parse_ctcp.
+  + Pidgin:
+    * Better support for dark themes (pidgin.im#12572).
+    * Fix IPv6 links by not escaping []'s. (pidgin.im#16391).
+    * Only write buddy icons to the cache if they're not already
+      cached.
+    * Rejoin persistent chats after reconnect (pidgin.im#15687).
+    * Make the WIN32 Transparency plugin work on all platforms
+      (pidgin.im#3124).
+    * Ensure search results buttons are labelled.
+    * Fix matching unicode emoticons (pidgin.im#17232).
+    * Correctly update mute/unmute status when the remote side
+      mutes/unmutes us (pidgin.im#17273).
+    * Rework the status icon blinking to not use deprecated API
+      (pidgin.im#17174).
+    * Do not allow adding a buddy to protocols that don't have an
+      add_buddy callback.
+  + Finch:
+    * Fix handling of search results (pidgin.im#17238).
+  + Voice & Video:
+    * Port backend-fs to newer api for farstream relay-info
+      property (pidgin.im#17274).
+- Rebase pidgin-ncurses-6.0-accessors.patch.
+- Remove pidgin-2.10.11-purple-remote-python3.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Mar  6 21:35:58 UTC 2018 - mgorse@suse.com
+
+- Add pidgin-2.10.11-purple-remote-python3.patch: port
+  purple-remote to python 3 (bsc#1084147).
+- Export PYTHON=python3 in %build.
+- Adjust scripts to invoke python3, not python2.
+
+-------------------------------------------------------------------
+Tue Mar  6 20:12:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Drop support for SLE 11 and openSUSE older than 42.x.
+- Remove pidgin-gnome-keyring.patch: was only useful for SLE 11.
+
+-------------------------------------------------------------------
+Tue Mar  6 15:52:11 UTC 2018 - dimstar@opensuse.org
+
+- Update pidgin-ncurses-6.0-accessors.patch to cope with ncurses
+  enabling opaque-panels. Pidgin should not access internal
+  structures of ncurses.
+
+-------------------------------------------------------------------
+Sat Dec 29 14:06:45 UTC 2017 - sor.alexei@meowr.ru
+
+- Remove pidgin-crash-missing-gst-registry.patch: is useless now
+  and is potentially harmful.
+- Merge pidgin-nonblock-common2.patch to
+  pidgin-nonblock-common.patch.
+
+-------------------------------------------------------------------
+Tue Nov 21 08:06:04 UTC 2017 - fezhang@suse.com
+
+- Add purple-import-empathy Recommends for SLE15 (FATE#322984).
+
+-------------------------------------------------------------------
+Tue Nov  7 11:10:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Correct the licence to GPL-2.0.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:25:45 UTC 2017 - mpluskal@suse.com
+
+- Explicitly require python2
+
+-------------------------------------------------------------------
+Sat Jul 22 06:37:17 UTC 2017 - tchvatal@suse.com
+
+- Drop dependency over silc-toolkit-devel as we want to remove
+  it from the distribution
+
+-------------------------------------------------------------------
+Fri Mar 10 21:14:24 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.12.0 (FATE#323136):
+  + libpurple:
+    - Fix an out of bounds memory read in
+      purple_markup_unescape_entity (CVE-2017-2640, bsc#1028835).
+    - Fix the use of uninitialised memory if running
+      non-debug-enabled versions of glib.
+    - Update AIM dev and dist ID's to new ones that were assigned
+      by AOL.
+    - TLS certificate verification now uses SHA-256 checksums.
+    - Fix the SASL external auth for Freenode (boo#1009974).
+    - Remove the MSN protocol plugin. It has been unusable and
+      dormant for some time.
+    - Remove the Mxit protocol plugin. The service was closed at
+      the end ofSeptember 2016.
+    - Remove the MySpaceIM protocol plugin. The service has been
+      defunct for a long time (pidgin.im#15356).
+    - Remove the Yahoo! protocol plugin. Yahoo has completely
+      reimplemented their protocol, so this version is no longer
+      operable as of August 5th, 2016.
+    - Remove the Facebook (XMPP) account option. According to
+      https://developers.facebook.com/docs/chat the XMPP Chat API
+      service ended April 30th, 2015.
+    - Fix gnutls certificate validation errors that mainly
+      affected Google.
+  + General:
+    - Replace instances of d.pidgin.im with developer.pidgin.im and
+      update the urls to use https (pidgin.im#17036).
+  + IRC:
+    - Fix an issue of messages being silently cut off at 500
+      characters. Large messages are now split into parts and sent
+      one by one (pidgin.im#4753).
+- Rebase pidgin-nonblock-common.patch.
+- Remove pidgin-sasl-skip-external.patch.
+- Remove pidgin-NLD-smiley-theme.tar.bz2, deprecated.
+- Remove pidgin-Tango-smiley-theme.tar.bz2, deprecated
+
+-------------------------------------------------------------------
+Thu Dec  8 12:14:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Make libpurple require libpurple-branding.
+- Correctly remove *.so files for plugins
+  (fixes devel-file-in-non-devel-package).
+- Rename libpurple-meanwhile to libpurple-plugin-sametime.
+- Remove generation of a plugin list to package, simply add it all
+  in %files with exclusions.
+
+-------------------------------------------------------------------
+Wed Dec  7 16:36:52 UTC 2016 - sor.alexei@meowr.ru
+
+- Build with GStreamer 1.x on SLE 12 SP2.
+- Apply pidgin-use-default-alsa.patch for SLE 12+ only properly.
+- Provide libpurple-branding-upstream for SLE 11 as well.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:33:32 UTC 2016 - fezhang@suse.com
+
+- Add pidgin-sasl-skip-external.patch:
+  Backport upstream commit 6106566. Makes Freenode and other
+  servers that prefer SASL EXTERNAL fingerprint authentication
+  work again (bsc#1009974).
+
+-------------------------------------------------------------------
+Fri Jul 22 19:13:38 UTC 2016 - jengelh@inai.de
+
+- Drop additional pkgconfig require (already implicitly detected),
+  but explicitly buildrequire it for /usr/lib/rpm/pkgconfigdeps.sh.
+
+-------------------------------------------------------------------
+Mon Jul  4 16:39:43 UTC 2016 - fezhang@suse.com
+
+- Update to GNOME 3.20.2  Fate#318572
+  + Drop pidgin-CVE-2014-3695 (bsc#902409): fixed upstream.
+  + Drop pidgin-CVE-2014-3696 (bsc#902410): fixed upstream.
+  + Drop pidgin-CVE-2014-3698 (bsc#902408): fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 21 12:02:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 2.11.0:
+  + General:
+    - 2.10.12 was accidentally released with new additions to the
+      API and should have been released as 2.11.0. Unfortunately,
+      we did not catch the mistake until after 2.10.12 was released,
+      but we're fixing it now.
+      See ChangeLog.API for more information.
+    - Include the Mozilla certificate bundle. This fixes connecting
+      to servers with certificates from Let's Encrypt.
+    - Remove all 1024-bit CAs.
+  + libpurple:
+    - media: Fix an issue with ximagesink displaying only a corner
+      cut-out of a larger webcam video.
+    - mediamanager: Update output window destruction so that it
+      reflects recent changes in the media pipeline structure.
+    - Ported Instantbird's CommandUiOps to libpurple.
+  + Pidgin:
+    - Fix pidgin.im#14962.
+    - Fix alignment of incoming right-to-left messages in protocols
+      that don't support rich text.
+    - Fix a potential crash while exiting Pidgin.
+  + AIM: Add support for the newer kerberos-based authentication of
+    AIM 8.x.
+  + ICQ: Stop truncating passwords to 8 characters like old ICQ
+    clients did (pidgin.im#16692).
+    If you actually needed this, truncate your password manually by
+    pressing backspace a few times.
+  + IRC: Base64-decode SASL messages before passing to libsasl
+    (pidgin.im#16268).
+  + MXit:
+    - Fix a buffer overflow (TALOS-CAN-0120).
+    - Fix a remote out-of-bounds read (TALOS-CAN-0123, TALOS-CAN-0140).
+    - Fix a remote out-of-band read (TALOS-CAN-0138, TALOS-CAN-0135).
+    - Fix an invalid read (TALOS-CAN-0118).
+    - Fix a remote buffer overflow vulnerability (TALOS-CAN-0119).
+    - Fix a directory traversal issue (TALOS-CAN-0128).
+    - Fix a remote denial of service vulnerability that could result
+      in a null pointer dereference (TALOS-CAN-0133).
+    - Fix a remote denial of service that could result in an
+      out-of-bounds read (TALOS-CAN-0134).
+    - Fix multiple remote buffer overflows (TALOS-CAN-0136).
+    - Fix a remote null pointer dereference (TALOS-CAN-0137).
+    - Fix a remote code execution issue discovered (TALOS-CAN-0142).
+    - Fix a remote denial of service vulnerability in contact mood
+      handling (TALOS-CAN-0141).
+    - Fix a remote out-of-bounds write vulnerability
+      (TALOS-CAN-0139).
+    - Fix a remote out-of-bounds read (TALOS-CAN-0143).
+- Clean pidgin-gnome-keyring.patch up a bit.
+
+-------------------------------------------------------------------
+Sat Jan  2 09:45:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.10.12:
+  + General:
+    - purple-url-handler now works with Python 3.x.
+    - Fix an issue where transient startup statuses could be
+      deleted (pidgin.im#16762).
+  + Pidgin: The shout smile now matches the default theme.
+  + Gadu-Gadu: Update internal libgadu to version 1.12.1.
+- Use tarball signing.
+- Rebase pidgin-gnome-keyring.patch.
+- Remove pidgin-2.10.11-add-dtmf-support.patch,
+  pidgin-2.10.11-gst-references.patch,
+  pidgin-2.10.11-send-video-enum.patch,
+  pidgin-2.10.11-application-media.patch,
+  pidgin-2.10.11-init-media-optional.patch,
+  pidgin-2.10.11-fix-sound-play-fd-leak.patch,
+  pidgin-2.10.11-private-media.patch and
+  pidgin-port-to-gst-1.0.patch: added upstream.
+
+-------------------------------------------------------------------
+Wed Sep  9 08:19:54 UTC 2015 - dimstar@opensuse.org
+
+- Add pidgin-ncurses-6.0-accessors.patch: Fix build with NCurses
+  6.0 with WINDOW_OPAQUE set to 1 (pidgin.im#16764).
+
+-------------------------------------------------------------------
+Fri Aug 28 15:48:41 UTC 2015 - sor.alexei@meowr.ru
+
+- Add pidgin-2.10.11-fix-sound-play-fd-leak.patch: fix a file
+  desriptor leak while playing sound files
+  (pidgin.im#16752, boo#942818).
+- Remove GConf schemas generation: GConf is considered obsolete.
+- Make perl dependency less strict.
+
+-------------------------------------------------------------------
+Mon Aug 17 09:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Fix build with earlier openSUSE.
+
+-------------------------------------------------------------------
+Tue Aug 11 17:16:56 UTC 2015 - zaitor@opensuse.org
+
+- Add a Recommends: gstreamer-plugins-good, this plugin provides
+  wav support that pidgin needs.
+
+-------------------------------------------------------------------
+Tue Jun 30 14:50:50 UTC 2015 - dimstar@opensuse.org
+
+- Re-attempt port to GStreamer 1.0 (based on work by David):
+  + Add patches, from upstream:
+    - pidgin-port-to-gst-1.0.patch
+    - pidgin-2.10.11-gst-references.patch
+    - pidgin-2.10.11-add-dtmf-support.patch
+    - pidgin-2.10.11-application-media.patch
+    - pidgin-2.10.11-init-media-optional.patch
+    - pidgin-2.10.11-send-video-enum.patch
+    - pidgin-2.10.11-private-media.patch
+  + Replace gstreamer-0_10-devel and
+    gstreamer-0_10-plugins-base-devel BuildRequires with
+    pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-video-1.0) and
+    pkgconfig(farstream-0.2).
+  + Switch --disable-vv configure paramter to --enable-vv.
+  + Pass --with-gstreamer=1.0 to configure.
+
+-------------------------------------------------------------------
+Tue Jan 20 10:04:54 UTC 2015 - tbehrens@suse.com
+
+- Remove pidgin-ssl-cache.patch: testing with the usual suspects in
+  irc land suggests this workaround is no longer necessary
+
+-------------------------------------------------------------------
+Fri Nov 28 10:22:16 UTC 2014 - dimstar@opensuse.org
+
+- Add patches to address CVE issues:
+  + pidgin-CVE-2014-3698: bnc#902408: remote information leak via
+    crafted XMPP message.
+  + pidgin-CVE-2014-3696: bnc#902410: denial of service parsing
+    Groupwise server message.
+  + pidgin-CVE-2014-3695: bnc#902409: crash in MXit protocol
+    plug-in.
+
+-------------------------------------------------------------------
+Mon Nov 24 10:55:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.10.11:
+  + General:
+    - Fix handling of Self-Signed SSL/TLS Certificates when using
+      the NSS plugin (pidgin.im#16412).
+    - Improve default cipher suites used with the NSS plugin
+      (pidgin.im#16262).
+    - Add NSS Preferences plugin which allows the SSL/TLS Versions
+      and cipher suites to be configured (pidgin.im#8061).
+  + Gadu-Gadu:
+    - Fix a bug that prevented plugin to load when compiled without
+      GnuTLS (pidgin.im#16431).
+    - Fix build for platforms without AF_LOCAL definition
+      (pidgin.im#16404).
+  + MSN:
+    - Fix broken login due to server change (pidgin.im#16451,
+      pidgin.im#16455).
+    - Fail early when buddy list is unavailable instead of wasting
+      bandwidth endlessly re-trying.
+
+-------------------------------------------------------------------
+Thu Oct 25 11:12:27 UTC 2014 - sor.alexei@meowr.ru
+
+- Remove pidgin-mono-buildfix.patch: Mono bindings are deprecated
+  upstream and no plugin exists making use of them.
+- Rebase pidgin-gnome-keyring.patch.
+- Make openSUSE 11.1 (SLE 11) minimal requirement.
+- Remove obsoletions of gaim: incredibly old.
+- Move Tango and NLD emoticons to separate packages.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Fri Oct 24 10:07:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.10.10:
+  + General:
+    - Check the basic constraints extension when validating
+      SSL/TLS certificates. This fixes a security hole that allowed
+      a malicious man-in-the-middle to impersonate an IM server or
+      any other https endpoint. This affected both the NSS and
+      GnuTLS plugins (CVE-2014-3694, boo#902495).
+    - Allow and prefer TLS 1.2 and 1.1 when using the NSS plugin
+      for SSL (im#15909).
+  + libpurple3 compatibility:
+    - Encrypted account passwords are preserved until the new one
+      is set.
+    - Fix loading Google Talk and Facebook XMPP accounts.
+  + Windows-Specific Changes: Don't allow overwriting arbitrary
+    files on the file system when the user installs a smiley theme
+    via drag-and-drop (CVE-2014-3697).
+  + Finch: Fix build against Python 3 (im#15969).
+  + Gadu-Gadu: Updated internal libgadu to version 1.12.0.
+  + Groupwise: Fix potential remote crash parsing server message
+    that indicates that a large amount of memory should be
+    allocated (CVE-2014-3696, boo#902410).
+  + IRC: Fix a possible leak of unencrypted data when using /me
+    command with OTR (im#15750).
+  + MXit: Fix potential remote crash parsing a malformed emoticon
+    response (CVE-2014-3695, boo#902409).
+  + XMPP:
+    - Fix potential information leak where a malicious XMPP server
+      and possibly even a malicious remote user could create a
+      carefully crafted XMPP message that causes libpurple to send
+      an XMPP message containing arbitrary memory (CVE-2014-3698,
+      boo#902408).
+    - Fix Facebook XMPP roster quirks (im#15041, im#15957).
+  + Yahoo: Fix login when using the GnuTLS library for TLS
+    connections (im#16172, boo#874606).
+- Drop pidgin-gstreamer1.patch: causes crashes and Video still does
+  not work (boo#853038). Drop BuildRequires conditions switching to
+  GStreamer 1.0.
+- Rebase pidgin-crash-missing-gst-registry.patch.
+
+-------------------------------------------------------------------
+Thu Jul 10 18:23:54 CEST 2014 - tiwai@suse.de
+
+- Add pidgin-use-default-alsa.patch:
+  Use ALSA as default for avoiding broken volume control of pa sink
+  (bnc#886670).
+
+-------------------------------------------------------------------
+Wed Jul  6 23:00:00 UTC 2014 - tbehrens@suse.com
+
+- Add pidgin-ssl-cache.patch: Disable caching the SSL Session keys,
+  as some (broken) IRC servers are not willing to re-use them upon
+  a disconnect.
+
+-------------------------------------------------------------------
+Sun Jun 22 17:20:00 UTC 2014 - meissner@suse.com
+
+- ca-certificates-mozilla is present since 11.4, but lets use
+  12.3 as base.
+
+-------------------------------------------------------------------
+Thu Jun 19 08:27:50 UTC 2014 - fcrozat@suse.com
+
+- Replaces (BuildRequires) of openssl-certs with
+  ca-certificates-mozilla starting with SLE12 and openSUSE 13.2.
+
+-------------------------------------------------------------------
+Fri Mar 28 11:50:49 UTC 2014 - cxiong@suse.com
+
+- Fix crash when GST registry cache file is missing
+  + add pidgin-crash-missing-gst-registry.patch according to the
+    GST doc, "gst_init" should be called before any other calls.
+    See (bnc#866455). See (pidgin.im#16224) for the upstream bug
+    report.
+
+-------------------------------------------------------------------
+Mon Feb  3 13:15:03 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.10.9:
+  + Fix problems logging into some servers including jabber.org and
+    chat.facebook.com (pidgin.im#15879).
+
+-------------------------------------------------------------------
+Wed Jan 29 20:55:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.10.8:
+  + General: Python build scripts and example plugins are now
+    compatible with Python 3 (pidgin.im#15624).
+  + libpurple:
+    - Fix potential crash if libpurple gets an error attempting to
+      read a reply from a STUN server (CVE-2013-6484).
+    - Fix potential crash parsing a malformed HTTP response
+      (CVE-2013-6479).
+    - Fix buffer overflow when parsing a malformed HTTP response
+      with chunked Transfer-Encoding (CVE-2013-6485).
+    - Better handling of HTTP proxy responses with negative
+      Content-Lengths.
+    - Fix handling of SSL certificates without subjects when
+      using libnss.
+    - Fix handling of SSL certificates with timestamps in the
+      distant future when using libnss (pidgin.im#15586).
+    - Impose maximum download size for all HTTP fetches.
+  + Pidgin:
+    - Fix crash displaying tooltip of long URLs (CVE-2013-6478).
+    - Better handling of URLs longer than 1000 letters.
+    - Fix handling of multibyte UTF-8 characters in smiley themes
+      (pidgin.im#15756).
+  + AIM: Fix untrusted certificate error.
+  + AIM and ICQ: Fix a possible crash when receiving a malformed
+    message in a Direct IM session.
+  + Gadu-Gadu:
+    - Fix buffer overflow with remote code execution potential.
+      Only triggerable by a Gadu-Gadu server or a
+      man-in-the-middle (CVE-2013-6487).
+    - Disabled buddy list import/export from/to server.
+    - Disabled new account registration and password change
+      options.
+  + IRC:
+    - Fix bug where a malicious server or man-in-the-middle
+      could trigger a crash by not sending enough arguments with
+      various messages (CVE-2014-0020).
+    - Fix bug where initial IRC status would not be set correctly.
+    - Fix bug where IRC wasn't available when libpurple was
+      compiled with Cyrus SASL support (pidgin.im#15517).
+  + MSN:
+    - Fix NULL pointer dereference parsing headers in MSN
+      (CVE-2013-6482).
+    - Fix NULL pointer dereference parsing OIM data in MSN
+      (CVE-2013-6482).
+    - Fix NULL pointer dereference parsing SOAP data in MSN
+      (CVE-2013-6482).
+    - Fix possible crash when sending very long messages. Not
+      remotely-triggerable.
+  + MXit:
+    - Fix buffer overflow with remote code execution potential
+      (CVE-2013-6487).
+    - Fix sporadic crashes that can happen after user is
+      disconnected.
+    - Fix crash when attempting to add a contact via search
+      results.
+    - Show error message if file transfer fails.
+    - Fix compiling with InstantBird.
+    - Fix display of some custom emoticons.
+  + SILC: Correctly set whiteboard dimensions in whiteboard
+    sessions.
+  + SIMPLE: Fix buffer overflow with remote code execution
+    potential (CVE-2013-6487).
+  + XMPP:
+    - Prevent spoofing of iq replies by verifying that the
+      'from' address matches the 'to' address of the iq request
+      (CVE-2013-6483).
+    - Fix crash on some systems when receiving fake delay
+      timestamps with extreme values (CVE-2013-6477).
+    - Fix possible crash or other erratic behavior when selecting a
+      very small file for your own buddy icon.
+    - Fix crash if the user tries to initiate a voice/video session
+      with a resourceless JID.
+    - Fix login errors when the first two available auth mechanisms
+      fail but a subsequent mechanism would otherwise work when
+      using Cyrus SASL (pidgin.im#15524).
+    - Fix dropping incoming stanzas on BOSH connections when we
+      receive multiple HTTP responses at once (pidgin.im#15684).
+  + Yahoo!:
+    - Fix possible crashes handling incoming strings that are not
+      UTF-8 (CVE-2012-6152).
+    - Fix a bug reading a peer to peer message where a remote user
+      could trigger a crash (CVE-2013-6481).
+  + Plugins:
+    - Fix crash in contact availability plugin.
+    - Fix perl function Purple::Network::ip_atoi.
+    - Add Unity integration plugin.
+  + Windows specific fixes: (CVE-2013-6486, pidgin.im#15520,
+    pidgin.im#15521, bgo#668154).
+- Drop pidgin-irc-sasl.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jan 24 12:56:48 UTC 2014 - dimstar@opensuse.org
+
+- Obsolete pidgin-facebookchat: the package is no longer maintained
+  and pidgin as built-in support for Facebook Chat.
+
+-------------------------------------------------------------------
+Thu Jan  9 11:52:43 CET 2014 - ro@suse.de
+
+- Protect buildrequires for mono-devel with with_mono macro.
+
+-------------------------------------------------------------------
+Sun Mar 24 17:07:27 UTC 2013 - dimstar@opensuse.org
+
+- Add pidgin-gstreamer1.patch: Port to GStreamer 1.0. Only enabled
+  on openSUSE 13.1 and newer.
+- On openSUSE 13.1 and newer, use gstreamer-devel and
+  gstreamer-plugins-base-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Mar 10 13:57:49 UTC 2013 - dimstar@opensuse.org
+
+- Add pidgin-irc-sasl.patch: link irc module to SASL. Allows the
+  IRC module to be loaded (bnc#806975).
+
+-------------------------------------------------------------------
+Fri Feb 15 09:26:24 UTC 2013 - christoph.miebach@web.de
+
+- Update to version 2.10.7 (bnc#804742):
+  + Alien hatchery:
+    - No changes
+  + General:
+    - The configure script will now exit with status 1 when
+      specifying invalid protocol plugins using the
+      --with-static-prpls and --with-dynamic-prpls arguments.
+     (pidgin.im#15316)
+  + libpurple:
+    - Fix a crash when receiving UPnP responses with abnormally
+      long values. (CVE-2013-0274)
+    - Don't link directly to libgcrypt when building with GnuTLS
+      support. (pidgin.im#15329)
+    - Fix UPnP mappings on routers that return empty <URLBase/>
+      elements in their response. (pidgin.im#15373)
+    - Tcl plugin uses saner, race-free plugin loading.
+    - Fix the Tcl signals-test plugin for savedstatus-changed.
+      (pidgin.im#15443)
+  + Pidgin:
+    - Make Pidgin more friendly to non-X11 GTK+, such as
+      MacPorts' +no_x11 variant.
+  + Gadu-Gadu:
+    - Fix a crash at startup with large contact list. Avatar
+      support for buddies will be disabled until 3.0.0.
+      (pidgin.im#15226, pidgin.im#14305)
+  + IRC:
+    - Support for SASL authentication. (pidgin.im#13270)
+    - Print topic setter information at channel join.
+      (pidgin.im#13317)
+  + MSN:
+    - Fix SSL certificate issue when signing into MSN for some
+      users.
+    - Fix a crash when removing a user before its icon is loaded.
+      (pidgin.im#15217)
+  + MXit:
+    - Fix a bug where a remote MXit user could possibly specify a
+      local file path to be written to. (CVE-2013-0271)
+    - Fix a bug where the MXit server or a man-in-the-middle could
+      potentially send specially crafted data that could overflow
+      a buffer and lead to a crash or remote code execution.
+      (CVE-2013-0272)
+    - Display farewell messages in a different colour to
+      distinguish them from normal messages.
+    - Add support for typing notification.
+    - Add support for the Relationship Status profile attribute.
+    - Remove all reference to Hidden Number.
+    - Ignore new invites to join a GroupChat if you're already
+      joined, or still have a pending invite.
+    - The buddy's name was not centered vertically in the
+      buddy-list if they did not have a status-message or mood
+      set.
+    - Fix decoding of font-size changes in the markup of received
+      messages.
+    - Increase the maximum file size that can be transferred to
+      1 MB.
+    - When setting an avatar image, no longer downscale it to
+      96x96.
+  + Sametime:
+    - Fix a crash in Sametime when a malicious server sends us an
+      abnormally long user ID. (CVE-2013-0273)
+  + Yahoo!:
+    - Fix a double-free in profile/picture loading code.
+      (pidgin.im#15053)
+    - Fix retrieving server-side buddy aliases. (pidgin.im#15381)
+  + Plugins:
+    - The Voice/Video Settings plugin supports using the sndio
+      GStreamer backends. (pidgin.im#14414)
+    - Fix a crash in the Contact Availability Detection plugin.
+      (pidgin.im#15327)
+    - Make the Message Notification plugin more friendly to
+      non-X11 GTK+, such as MacPorts' +no_x11 variant.
+  + Windows-Specific Changes:
+    - Compile with secure flags (pidgin.im#15290)
+    - Installer downloads GTK+ Runtime and Debug Symbols more
+      securely. (pidgin.im#15277)
+    - Updates to a number of dependencies, some of which have
+      security related fixes. (pidgin.im#14571, pidgin.im#15285,
+      pidgin.im#15286)
+      . ATK 1.32.0-2
+      . Cyrus SASL 2.1.25
+      . expat 2.1.0-1
+      . freetype 2.4.10-1
+      . gettext 0.18.1.1-2
+      . Glib 2.28.8-1
+      . libpng 1.4.12-1
+      . libxml2 2.9.0-1
+      . NSS 3.13.6 and NSPR 4.9.2
+      . Pango 1.29.4-1
+      . SILC 1.1.10
+      . zlib 1.2.5-2
+    - Patch libmeanwhile (sametime library) to fix crash.
+      (pidgin.im#12637)
+
+-------------------------------------------------------------------
+Fri Oct 12 13:07:50 UTC 2012 - dimstar@opensuse.org
+
+- Fix build on openSUSE < 12.2: inverted %if needs some brackets
+  if it's a more complex statement.
+
+-------------------------------------------------------------------
+Tue Oct  9 10:05:59 UTC 2012 - dimstar@opensuse.org
+
+- Introduce with_evolution defines, which enables/disables the
+  evolution plugin conditionally (only available on openSUSE<=12.2)
+  as pidgin does not yet support GNOME 3.6 (pidgin.im#15353)
+  + if with_evolution is not defined (false/0):
+    - evolution-data-server BuildRequires is being skipped
+    - Do not pass --with-gevolution to configure.
+    - Do not build the -evolution sub package
+    - Obsolete pidgin-evolution from the main package.
+- Pass --disable-vv to configure, as farstream 0.2 support is not
+  avaialble yet.
+
+-------------------------------------------------------------------
+Sun Jul  8 22:26:05 UTC 2012 - christoph.miebach@web.de
+
+- Update to version 2.10.6:
+  + Pidgin:
+    - Fix a bug that requires a triple-click to open a conversation
+      window from the buddy list.
+
+-------------------------------------------------------------------
+Fri Jul  6 08:26:22 UTC 2012 - christoph.miebach@web.de
+
+- Update to version 2.10.5:
+  + libpurple:
+    - Add support for GNOME3 proxy settings.
+  + Pidgin:
+    - Fix a crash that may occur when trying to ignore a user who
+      is not in the current chat room.
+  + MSN:
+    - Fix building with MSVC on Windows (broken in 2.10.4).
+  + MXit:
+    - Fix a buffer overflow vulnerability when parsing incoming
+      messages containing inline images. (CVE-2012-3374)
+- Rebase pidgin-gnome-keyring.patch.
+
+-------------------------------------------------------------------
+Mon May  7 08:52:26 UTC 2012 - christoph.miebach@web.de
+
+- Update to version 2.10.4:
+  + General:
+    - Support building against Farstream in addition to Farsight.
+  + IRC:
+    - Disable periodic WHO timer. IRC channel user lists will no
+      longer automatically display away status, but libpurple will
+      be much kinder to the network.
+    - Print unknown numerics to channel windows if we can associate
+      them.
+   + MSN:
+     - Fix a possible crash when receiving messages with certain
+       characters or character encodings.
+   + XMPP:
+     - Fix a possible crash when receiving a series of specially
+       crafted file transfer requests. (CVE-2012-2214)
+   + Windows-Specific Changes:
+     - Words added to spell check dictionaries are saved across
+       restarts of Pidgin.
+- Drop pidgin-port-to-farstream.patch: fixed upstream
+
+-------------------------------------------------------------------
+Mon Mar 26 11:57:18 UTC 2012 - christoph.miebach@web.de
+
+- Update to version 2.10.3:
+  + MSN:
+    - Fix buddies not going offline.
+
+-------------------------------------------------------------------
+Fri Mar 23 11:29:23 UTC 2012 - vuntz@opensuse.org
+
+- Finish transition from farsight2 to farstream in 12.2:
+  + Update pidgin-port-to-farstream.patch to latest version of the
+    patch.
+  + Add farstream-devel BuildRequires on openSUSE > 12.1, now that
+    farstream is in Factory.
+  + Stop passing --disable-vv to configure on > 12.1.
+- Pass --disable-schemas-install to configure: this should be used
+  when packaging applications with gconf schemas.
+
+-------------------------------------------------------------------
+Wed Mar 14 11:12:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.10.2:
+  + General:
+    - Fix compilation when using binutils 2.22 and new GDK pixbuf.
+    - Fix compilation of the MXit protocol plugin with GLib 2.31.
+  + Pidgin:
+    - Add support for the GNOME3 Network dialog.
+    - Fix rare crash.
+    - Add support for the GNOME3 Default Application dialog for
+      configuring the Browser.
+  + libpurple:
+    - Support new connection states and signals for NetworkManager
+      0.9+.
+  + AIM and ICQ:
+    - Fix a possible crash when receiving an unexpected message
+      from the server.
+    - Allow signing on with usernames containing periods and
+      underscores.
+    - Allow adding buddies containing periods and underscores.
+    - Don't try to format ICQ usernames entered as email addresses.
+      This gets rid of an "Unable to format username" error at
+      login.
+  + MSN:
+    - Fix possible crashes caused by not validating incoming
+      messages as UTF-8.
+    - Support new protocol version MSNP18.
+    - Fix messages to offline contacts.
+  + Plugins:
+    - The autoaccept plugin will no longer reset the preference for
+      unknown buddies to "Auto Reject" in certain cases.
+  + Windows-Specific Changes.
+- Drop pidgin-nm09-more.patch: fixed upstream.
+- Drop pidgin-glib-2.31.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 21 10:52:59 UTC 2012 - vuntz@opensuse.org
+
+- On 12.2, add explicit libSM-devel, libXScrnSaver-devel,
+  libXext-devel, pkgconfig(x11) BuildRequires, to avoid issues
+  after the big xorg-x11 packaging change.
+- Get ready for transition from farsight2 to farstream in 12.2:
+  + Only use farsight2-devel on <= 12.1 (and > 11.1).
+  + Pass --disable-vv to configure on > 12.1 (and < 11.2), to
+    disable voice/video support.
+  + Add pidgin-port-to-farstream.patch, that we only apply on 12.2
+    and later: port pidgin to farstream.
+
+-------------------------------------------------------------------
+Sat Dec 10 21:27:20 UTC 2011 - gankov@opensuse.org
+
+- Update to version 2.10.1:
+  + AIM and ICQ:
+    - Fix remotely-triggerable crashes by validating strings in a
+      few messages related to buddy list management.
+  + Bonjour:
+    - IPv6 fixes
+  + Gadu-Gadu:
+    - Fix problems linking against GnuTLS.
+  + IRC:
+    - Fix a memory leak when admitting UTF-8 text with a non-UTF-8
+      primary encoding.
+  + Jabber:
+    - Fix crashes and memory leaks when receiving malformed voice
+      and video requests.
+  + Sametime:
+    - Separate "username" and "server" when adding new Sametime
+      accounts.
+    - Fix compilation in Visual C++.
+  + SILC:
+    - Fix CVE-2011-3594, by UTF-8 validating incoming messages
+      before passing them to glib or libpurple.
+  + Yahoo!:
+    - Fetch buddy icons in some cases where we previously weren't.
+
+-------------------------------------------------------------------
+Mon Nov 28 23:24:22 UTC 2011 - dimstar@opensuse.org
+
+- Add pidgin-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Sun Nov 27 06:44:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Aug 22 10:31:57 CET 2011 - christoph.miebach@web.de
+
+- Update to version 2.10.0:
+  + Pidgin:
+    - Make the max size of incoming smileys a pref instead of
+      hardcoding it.
+    - Added a plugin information dialog to show information for
+      plugins that aren't otherwise visible in the plugins dialog.
+    - Fix building with GTK+ earlier than 2.14.0 (GTK+ 2.10 is
+      still the minimum supported)
+  + libpurple:
+    - Fix a potential crash in the Log Reader plugin when reading
+      QIP logs.
+    - Fix a large number of strcpy() and strcat() invocations to
+      use strlcpy() and strlcat(), etc., forestalling an entire
+      class of string buffer overrun bugs.
+    - Change some filename manipulations in filectl.c to use
+      MAXPATHLEN instead of arbitrary length constants.
+    - Fix endianness-related crash in NTLM authentication
+  + Gadu-Gadu:
+    - Fixed searching for buddies in public directory.
+    - Better status message handling.
+    - Merged two buddy blocking methods.
+    - Fix building of the bundled libgadu library with older
+      versions of GnuTLS. (patch plucked from upstream)
+  + ICQ:
+    - Fix crash selecting Tools->Set Mood when you're online with
+      an ICQ account that is configured as an AIM account.
+  + IRC:
+    - Fix a crash when remote users have certain characters in
+      their nicknames.
+    - Fix the handling of formatting following mIRC ^O
+    - Fix crash when NAMES is empty.
+  + MSN:
+    - Fix incorrect handling of HTTP 100 responses when using the
+      HTTP connection method. This can lead to a crash.
+    - Fix seemingly random crashing.
+    - Fix a crash when the account is disconnected at the time we
+      are doing a SB request.
+  + XMPP:
+    - Do not generate malformed XML ("</>") when setting an empty
+      mood.
+    - Fix the /join <room> behavior.  (Broken when adding support
+      for <room>@<server>)
+  + Yahoo!/Yahoo! JAPAN:
+    - Fix coming out of idle while in an unavailable state
+    - Fix logging into Yahoo! JAPAN.
+  + Windows-Specific Changes:
+    - Open an explorer.exe window at the location of the file when
+      clicking on a file link instead of executing the file,
+      because executing a file can be potentially dangerous.
+- Drop pidgin-b1dfad7fa45e394c213a97053d7ed5926c69901d.patch
+  (multiple display of room members): the patch was taken from
+  upstream and as such is included in the current tarball.
+
+-------------------------------------------------------------------
+Wed Jul  6 17:13:47 CEST 2011 - vuntz@opensuse.org
+
+- Update summary and description of the main package and libpurple.
+- Remove libpurple-lang Recommands from main package, as we know it
+  already depend on libpurple, which will bring libpurple-lang.
+- Create a libpurple-branding-upstream package (on 12.1 and later
+  only):
+  + this contains %{_sysconfdir}/purple/prefs.xml, which is the
+    pidgin-prefs.xml we ship as source. This only includes
+    documentation on how to change the default configuration.
+  + this will let people know how to change the default
+    configuration of libpurple, and potentially other clients.
+  + since there is potentially also pidgin-related content in the
+    same file, we also make libpurple-branding-upsream act as
+    pidgin-branding-upstream (with Provides, Conflicts, Supplements
+    that are usual for a branding package).
+- Make libpurple own %{_sysconfdir}/purple/, which is where the
+  default configuration lives.
+
+-------------------------------------------------------------------
+Tue Jul  5 14:13:18 UTC 2011 - seife+obs@b1-systems.com
+
+- Add patch to fix "multiple display of room members in MUC"
+  http://developer.pidgin.im/ticket/14351, bnc#703584.
+- Export V=1 before make to enable verbose build of all code, not
+  only some of the subdirs.
+
+-------------------------------------------------------------------
+Fri Jun 24 11:51:57 CET 2011 - christoph.miebach@web.de
+
+- Update to version 2.9.0:
+  + Pidgin:
+    - Fix a potential remote denial-of-service bug related to
+      displaying buddy icons.
+    - Significantly improved performance of larger IRC channels
+      (regression introduced in 2.8.0).
+    - Fix Conversation->Add on AIM and MSN.
+    - Entries in the chat user list are sorted properly again. This
+      was inadvertenly broken in 2.8.0.
+  + Finch:
+    - Fix logging in to ICQ.
+  + libpurple:
+    - media: Actually use the specified TCP port from the TURN
+      configuration to create a TCP relay candidate.
+  + AIM and ICQ:
+    - Fix crashes on some non-mainstream OSes when attempting to
+      printf("%s", NULL).
+  + Plugins:
+   - The Evolution Integration plugin compiles again.
+- Drop pidgin-gevolution-fix-build.patch: the patch was taken from
+  upstream and as such is included in the current tarball.
+
+-------------------------------------------------------------------
+Fri Jun 17 03:56:41 CEST 2011 - vuntz@opensuse.org
+
+- Add pidgin-nm09-more.patch: correctly handle state changes in
+  NetworkManager 0.9.
+- Add pidgin-gevolution-fix-build.patch: this fixes the build of
+  the evolution integration. So drop all the %build_evo machinery.
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Tue Jun  7 16:55:34 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.8.0:
+  + General:
+    - Implement simple silence suppression for voice calls,
+      preventing wasted bandwidth for silent periods during a call.
+    - Added the DigiCert High Assurance CA-3 intermediate CA,
+      needed for validation of the Facebook XMPP interface's
+      certificate.
+    - Removed the QQ protocol plugin. It hasn't worked in a long
+      time and isn't being maintained.
+  + Pidgin:
+    - Duplicate code cleanup.
+    - Voice/Video call window adapts correctly to adding or
+      removing streams on the fly.
+    - Don't cancel an ongoing call when rejecting the addition of a
+      stream to the existing call.
+    - Pidgin plugins can now override tab completion and detect
+      clicks on usernames in the chat userlist.
+    - Fix the tooltip being destroyed when it is full of
+      information and cover the mouse
+  + libpurple:
+    - media:
+      . Allow obtaining active local and remote candidates.
+      . Allow getting/setting video capabilities.
+      . Allow adding/removing streams on the fly.
+      . Allow libpurple and plugins to set SDES properties for RTP
+        conferences.
+      . Add support for using TCP relaying with TURN
+    - Simple Silence Suppression is optional per-account.
+    - Fix purple-url-handler being unable to find an account.
+    - Support new connection states in NetworkManager 0.9.
+    - When removing a buddy, delete the pounces associated with it.
+    - proxy: Add new "Tor/Privacy" proxy type that can be used to
+      restrict operations that could leak potentially sensitive
+      data (e.g. DNS queries).
+  + AIM:
+    - Fix setting icons with dimensions greater than 64x64 pixels
+      by scaling them down to at most 64x64.
+  + Gadu-Gadu:
+    - Allow showing your status only to buddies.
+    - Suppress blank messages that happen when receiving inline
+      images.
+    - Fix sending inline images to remote users, don't crash when
+      trying to send large (> 256kB) images.
+    - Support typing notifications.
+    - Optional SSL connection support for GNUTLS users
+    - Don't count received messages or statuses when determining
+      whether to send a keepalive packet.
+    - Support XML events, resulting in immediate update of other
+      users' buddy icons.
+    - Accept poorly formatted URLs from other third-party clients
+      in the same manner as the official client.
+  + ICQ:
+    - Fix setting icons with dimensions greater than 64x64 pixels
+      by scaling them down to at most 64x64.
+    - Fix unsetting your mood when "None" is selected.
+    - Ignore Daylight Saving Time when performing calculations
+      related to birthdays.
+    - It is now possible to specify multiple encodings on the
+      Advanced tab of an ICQ account's settings by using a
+      comma-delimited list.
+  + IRC:
+    - Add "authserv" service command.
+  + MSN:
+    - Fix a hard-to-exploit crash in the MSN protocol when using
+      the HTTP connection method.
+  + MXit:
+    - Support for an Invite Message when adding a buddy.
+    - Fixed bug in splitting-up of messages that contain a lot of
+      links.
+    - Fixed crash caused by timer not being disabled on disconnect.
+    - Clearing of the conversation window now works.
+    - When receiving an invite you can display the sender's profile
+      information, avatar image, invite message.
+    - The Change PIN option was moved into separate action.
+    - New profile attributes added and shown.
+    - Added the ability to view and invite your Suggested Friends,
+      and to search for contacts.
+    - Also display the Status Message of offline contacts in their
+      profile information.
+  + XMPP:
+    - Remember the previously entered user directory when searching
+    - Correctly handle a buddy's unsetting his/her vCard-based
+      avatar.
+    - Squash one more situation that resulted in duplicate entries
+      in the roster
+  + Plugins:
+    - The Voice/Video Settings plugin now includes the ability to
+      test microphone settings.
+    - Fix a crash when handling some saved settings in the
+      Voice/Video Settings plugin.
+- Drop pidgin-nm09.patch: fixed upstream.
+- Disable building of evolution plugin for Factory, with a
+  build_evo define. The plugin is currently not compatible with
+  evolution 3.1.x.
+- Add explicit gconf2-devel BuildRequires: it was implicitly
+  brought before, but it is really needed.
+
+-------------------------------------------------------------------
+Fri Apr 22 10:24:15 UTC 2011 - fcrozat@novell.com
+
+- Add pidgin-nm09.patch: fix compatibility with NM 0.9.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:18:38 UTC 2011 - dimstar@opensuse.org
+
+- bnc#659001: mhr language got added to the base system. Do not own
+  folders on openSUSE > 1140.
+
+-------------------------------------------------------------------
+Fri Mar 11 22:46:57 CET 2011 - christoph.miebach@web.de
+
+- Update to version 2.7.11
+  + General:
+    - Our bundled libgadu should now build on HP-UX.
+    - Fix some instances of file transfers never completing.
+  + Pidgin:
+    - Sort by Status no longer causes buddies to move around when
+      you click them.
+    - Fix embedding in the system tray on older GTK+ releases (such
+      as on CentOS 5.5 and older Fedora).
+    - No longer require libstartup-notification for startup
+      notification support. GTK+ has included support for years, so
+      use it instead.
+  + AIM:
+    - Fix a bug where some buddies from your buddy list might not
+      show up. Affected non-English ICQ users the most.
+    - Send keepalives for all types of network connections. Will
+      hopefully make chat rooms more reliable.
+  + MSN:
+    - Fix bug that prevented added buddies to your buddy list in
+      certain circumstances.
+  + XMPP:
+    - Fix building on platforms with an older glib (inadvertantly
+      broken in 2.7.10).
+    - Don't treat the on-join status storms as 'new arrivals'.
+    - Extend the /join command to support room JIDs, enabling you
+      to join a room on any server.
+    - Add support for receiving a limited amount of history when
+      joining a room (not currently supported by Pidgin and Finch).
+  + Yahoo!/Yahoo! JAPAN:
+    - Fix CVE-2011-1091, denials of service caused by NULL pointer
+      dereferences due to improper handling of malformed YMSG
+      packets.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:06:29 CET 2011 - vuntz@opensuse.org
+
+- Add pidgin-fix-perl-build.patch to fix the build: some change
+  upstream was apparently wrong, and we'll need to investigate this
+  later.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:42:22 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Thu Feb 02 11:06:57 CET 2011 - christoph.miebach@web.de
+
+- Update to version 2.7.10
+  + General:
+    - Force video sources to all have the same capabilities. This
+      reduces the number of times video must be scaled down, saving
+      CPU time.
+    - Starting multiple video calls and ending one no longer causes
+      the other calls to stop sending audio and video.
+    - Perl bindings now respect LDFLAGS.
+    - Added AddTrust External Root CA.
+    - Resolve some issues validating X.509 certificates signed off
+      the CAcert Class 3 intermediate cert when using the GnuTLS
+      SSL/TLS plugin.
+  + Gadu-Gadu:
+    - Don't drop whole messages when text is colored.
+  + Groupwise:
+    - Don't show two windows when using "Get Info" on a buddy.
+  + IRC:
+    - Don't send ISON messages longer than 512 bytes.
+  + libpurple:
+    - Stop sending audio when placing a call on hold.
+    - Stop translating gpointers to ints in the dbus API. This
+      removes functions from the dbus API.
+    - Fix D-Bus introspection calls that omit the interface
+      parameter.
+    - Fixed bugs in purple_str_to_time() that caused the most
+      recent 'make check' failures.
+    - Correct an issue that caused some UIs other than Pidgin or
+      Finch to leave a buddy in the "is typing" state.
+    - Fix potential information disclosure issues in the Cipher
+      code.
+  + Pidgin:
+    - Support using the Page Up and Page Down keys on the numeric
+      keypad in the conversation window.
+    - Fix a few memory leaks.
+    - Support rendering strikethrough when received as in-line CSS.
+    - Editable comboboxes are now more friendly to some GTK+
+      themes.
+  + Plugins:
+    - The Voice/Video Settings plugin no longer resets selected
+      devices to defaults.
+    - The Voice/Video Settings plugin no longer crashes when a
+      stored device name is not found in the list of available
+      devices.
+    - The Autoaccept plugin now allows disabling filename escaping.
+    - The Autoaccept plugin now allows choosing Reject/Ask/Accept
+      for non-buddies.
+  + QQ:
+    - QQ2008 is now the default protocol version.
+  + XMPP:
+    - Don't crash when receiving an unexpected/invalid jingle
+      transport type.
+    - Handle Connection: Close headers for BOSH, when the server
+      does not terminate the connection itself.
+    - Improved parsing for DIGEST-MD5, which should resolve issues
+      connecting to some jabberd2 servers. This corrects an issue
+      parsing one-character or empty elements.
+  + Yahoo!/Yahoo! JAPAN:
+    - Fix a crash when an account disconnects before a p2p session
+      is completely set up.
+- Drop pidgin-dbus-invalid-gpointer.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec 27 10:04:57 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.7.9:
+  + MSN:
+    - Fix a crash when receiving short packets related to P2Pv2.
+
+-------------------------------------------------------------------
+Mon Dec 20 12:33:08 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.7.8:
+  + General:
+    - Fix the exceptions in purple-remote on Python 2.6+.
+  + Pidgin:
+    - When a conversation has reached the maximum limit on the
+      number of smileys, display the text representation of the
+      smiley properly when it contains HTML-escapable characters
+      (e.g. "<3" was previously displayed as "&lt;3").
+    - Drop dependency on GdkGC and use Cairo instead.
+    - New UI hack to assist in first-time setup of Facebook
+      accounts.
+    - Don't hide the buddy list if there is no notification area in
+      which to put the icon.
+  + libpurple:
+    - Fix multipart parsing when '=' is included in the boundary
+      for purple_mime_document_parse.
+  + AIM and ICQ:
+    - Buddies who unset their status message will now be correctly
+      shown without a message in your buddy list.
+  + Gadu-Gadu:
+    - Updated our bundled libgadu and minimum requirement for
+      external libgadu to 1.9.0.
+  + MSN:
+    - Stop showing ourselves in the list of endpoints that can be
+      disconnected.
+    - Allow full-size display names, by not escaping (most)
+      non-English characters.
+    - Fix receiving messages from users on Yahoo and other
+      federated services.
+    - Correctly remove old endpoints from the list when they sign
+      out.
+    - Add option to disable connections from multiple locations.
+    - Correctly update your own display name in the buddy list.
+    - Correctly show ourselves as offline in the buddy list when
+      going invisible.
+    - Correctly update your own icon in the buddy list.
+    - Remove struct packing for better portability.
+  + XMPP:
+    - Terminate Jingle sessions with unsupported content types.
+- Own the directories for the mhr locale, until bnc#659001 is
+  resolved.
+
+-------------------------------------------------------------------
+Tue Nov 30 07:51:09 UTC 2010 - dimstar@opensuse.org
+
+- Drop pidgin-nonblock-aim.patch: Does not apply and seems
+  obsoleted. Part of bnc#569271.
+
+-------------------------------------------------------------------
+Thu Nov 25 13:29:36 UTC 2010 - christoph.miebach@web.de
+
+- Update to version 2.7.7:
+  + General:
+    - Allow multiple CA certificates to share the same
+      Distinguished Name (DN). Partially fixes remaining MSN
+      issues.
+    - The GNUTLS SSL plugin now discards any certificate (and all
+      subsequent certificates) in a chain if it did not sign the
+      previous certificate. Partially fixes remaining MSN issues.
+    - Open requests related to a file transfer are now closed when
+      the request is cancelled locally.
+  + AIM and ICQ:
+    - AIM should now connect if "Use clientLogin" is turned off and
+      the "Server" field is set to anything other than
+      "login.oscar.aol.com" or "slogin.oscar.aol.com".
+    - Fix a crash on connection loss.
+
+-------------------------------------------------------------------
+Tue Nov 23 11:37:36 UTC 2010 - lchiquitto@novell.com
+
+- Update to version 2.7.6:
+  + General:
+    - Included Microsoft Internet Authority 2010 and Microsoft
+      Secure Server Authority 2010 intermediate CA certificates to
+      our bundle.  This fixes the "Unable to validate certificate"
+      error for omega.contacts.msn.com (bnc#655477).
+  + Pidgin:
+    - Avoid a use-after-free race condition in the media code
+      (when there's an error reported by GStreamer).
+  + AIM and ICQ:
+    - SSL option has been changed to a tri-state menu with choices
+      for "Don't Use Encryption", "Use Encryption if Available",
+      and "Require Encryption".
+    - Fix some possible clientLogin URL issues introduced in
+      version 2.7.5.
+    - Don't show a "<URL>: Ok" connection error when using
+      clientLogin.
+    - Cleaned up some debug output for improved readability.
+  + MSN:
+    - Added support for MSNP16, including Multiple Points of
+      Presence (MPOP) which allows multiple simultaneous sign-ins.
+    - Added extended capabilities support (none implemented).
+    - Merged the work done on the Google SoC (major rewrite of SLP
+      code)
+    - Reworked the data transfer architecture.
+      (http://developer.pidgin.im/wiki/SlpArchitecture)
+    - Lots of little changes.
+    - Don't process zero-length DC messages.
+    - Fixed a bunch of memory leaks.
+    - Prevent a use-after-free condition.
+  + XMPP:
+    - Avoid a double-free in the Google Relay (V/V) code.
+    - Avoid double error message when failing a file transfer.
+    - Password-related information is printed out for SASL
+      authentication when the PURPLE_UNSAFE_DEBUG environment
+       variable is set.
+    - Authentication mechanisms can now be added by UI's or other
+      plugins with some work. This is outside the API/ABI rules!
+    - Fixed a few printf("%s", NULL) crashes for broken OSes.
+  + Windows-Specific Changes:
+    - Build the Pidgin Theme Editor plugin (finally).
+    - Untarring (for themes) now works for non-ASCII destination
+      paths.
+
+-------------------------------------------------------------------
+Thu Nov 10 12:30:42 CEST 2010 - christoph.miebach@web.de
+
+- Update to version 2.7.5:
+  + General:
+    - Added Verisign Class 3 Public CA - G2 root CA.
+  + Pidgin:
+    - Properly differentiate between bn and bn_IN in the
+      Translation Information dialog.
+  + AIM and/or ICQ:
+    - Display the "Authorize buddy?" mini dialog when the requester
+      has an empty nickname.
+    - New ICQ accounts default to proper ICQ servers.  Old
+      accounts using one of the old default servers will be
+      silently migrated to use the proper servers.
+    - ICQ accounts using clientLogin now use the correct ICQ
+      servers.  This is separate from the server settings
+      mentioned above.
+    - '<' should no longer cause ICQ status messages to be
+      truncated in some locations.
+    - Fix sending messages to chat rooms.
+  + Bonjour:
+    - Don't crash when attempting to log into a Bonjour account
+      and init failed.
+  + Windows-Specific Changes:
+    - Quote the path stored in the registry when the
+      "run at startup" option in the Windows Pidgin Options plugin
+      is used.
+- Disable mono plugins on openSUSE 11.4. It does not work and is
+  unmaintained by upstream (they are surprised it builds).
+
+-------------------------------------------------------------------
+Fri Oct 22 17:27:42 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.7.4:
+  + General:
+    - Fix search path for Tk when compiling on Debian Squeeze.
+    - purple-remote now expects and produces UTF-8.
+    - Add Deutsche Telekom, Thawte Primary, and Go Daddy Class 2
+      root CAs
+    - Fix CVE-2010-3711 by properly validating return values from
+      the purple_base64_decode() function before using them.
+    - Fix two local crash bugs by properly validating return values
+      from the purple_base16_decode() function before using them.
+  + libpurple:
+    - Fall back to an ordinary request if a UI does not support
+      showing a request with an icon. Fixes receiving MSN file
+      transfer requests including a thumbnail in Finch.
+    - Fix an invalid memory access when removing UPnP mappings that
+      could cause sporadic crashes, most notably when MSN Direct
+      Connections are enabled.
+    - Add a sentence to the certificate warning for expired
+      certificates suggesting the user check their computer's date
+      and time.
+  + Pidgin:
+    - Add support for the Gadu-Gadu protocol in the gevolution
+      plugin to provide Evolution integration with contacts with
+      Gadu-Gadu IDs.
+    - Remap the "Set User Mood" shortcut to Control-D, which does
+      not conflict with the previous shortcut for Get Buddy Info on
+      the selected buddy.
+    - Add a plugin action menu (under Tools) for the Voice and
+      Video Settings plugin.
+    - Use GRegex for the debug window where available. This brings
+      regex filtering to the debug window on Windows.
+    - Add Google Chrome and Chromium to the list of possible
+      browsers on non-Windows systems.
+    - The "Manual" browser option is now stored as a string. It is
+      no longer necessary to specify a full path to the browser
+      command.
+    - The Send To menu can now be used if the active account in the
+      conversation becomes disabled or inactive.
+    - xdg-open is now the default browser for new users on
+      non-Windows platforms.
+  + XMPP:
+    - Unify the connection security-related settings into one
+      dropdown.
+    - Fix a crash when multiple accounts are simultaneously
+      performing SASL authentication when built with Cyrus SASL
+      support.
+    - Restore the ability to connect to XMPP servers that do not
+      offer Stream ID.
+    - Added support for using Google's relay servers when making
+      voice and video calls to Google clients.
+    - Fix detecting file transfer proxies advertised by the server.
+    - Advertise support for Google Talk's JID Domain Discovery
+      extension in all cases again (changed in 2.7.0), not just
+      when the domain is "gmail.com" or "googlemail.com"
+    - Improved handling of adding oneself to your buddy list when
+      using Non-SASL (legacy) authentication.
+    - Generate a connection error instead of just stalling when
+      the _xmppconnect TXT record returns results, but none of them
+      result in a valid BOSH URI.
+  + Yahoo/Yahoo JAPAN:
+    - Stop doing unnecessary lookups of certain alias information.
+      This solves deadlocks when a given Yahoo account has a
+      ridiculously large (>500 buddies) list and may improve login
+      speed for those on slow connections.
+    - Fix sending SMS messages. The lookup host changed on us.
+    - Improvements for some file transfer scenarios, but not all.
+- Drop pidgin-browser-default.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Aug 15 18:49:24 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.7.3:
+  + For a complete overview of changes, see NEWS file. Here are
+    some highlights (excluding many bug fixes).
+  + Pidgin:
+    - Re-arrange media window to make it more netbook-friendly.
+  + Finch:
+    - Rebindable 'suggest-next-page' and 'suggest-prev-page'
+      actions for textboxes.
+    - Rebindable 'dropdown' action for comboboxes.
+  + MSN:
+    - Support for web-based buddy icons.
+  + MXit:
+    - Many improvements.
+  + Yahoo/Yahoo JAPAN:
+    - Proxy handling improvements.
+    - Fix file transfers that get stuck with "Waiting for transfer
+      to begin".
+- Changes from version 2.7.2:
+  + Fix crashes, including CVE-2010-2528.
+- Changes from version 2.7.1:
+  + Pidgin:
+    - Restore the tray icon's blinking functionality.
+  + MSN:
+    - Support for direct connections, enabling faster file
+      transfers, smiley and buddy icon loading.
+  + MXit:
+    - Add the standard MXit emoticons.
+    - Increment protocol version to v6.0.
+- Changes from version 2.7.0:
+  + Pidgin:
+    - Add UI for sending attentions (buzz, nudge) on supporting
+      protocols.
+    - Make the search dialog unobtrusive in the conversation
+      window.
+    - The Recent Log Activity sort method for the Buddy List now
+      distinguishes between no activity and a small amount of
+      activity in the distant past.
+    - Add a menu set mood globally for all mood-supporting
+      accounts.
+    - Default binding of Ctrl+Shift+v to 'Paste as Plain Text' in
+      conversation windows.
+    - The 'Message Timestamp Formats' plugin allows changing the
+      timestamp format from the timestamps' context menu in
+      conversation log, and allows forcing 12-hour timestamps.
+    - Show file transfer thumbnails for images on supporting
+      protocols (MSN).
+  + Bonjour: Add support for IPv6.
+  + AIM and ICQ:
+    - X-Status (Custom ICQ status icon) support.
+    - Support sending and receiving HTML-formatted messages for
+      ICQ.
+  + MSN:
+    - Support for version 9 of the MSN protocol has been removed.
+    - Support file transfer thumbnails (previews) for images.
+    - Fix CVE-2010-1624.
+  + Finch:
+    - New action 'history-search', with default binding ctrl+r, to
+      search the entered string in the input history.
+- Drop upstream included patches:
+  + pidgin-directconn-argfix.patch
+  + pidgin-oscar-clientlogin.patch
+  + pidgin-oscar-portability.patch
+  + pidgin-bnc550170-qq-2008only.patch (bnc#569271)
+  + includes.patch (bnc#569271#6)
+- Add pidgin-mono-buildfix.patch: fix build of mono plugin loader.
+- Remove the conditional checks for openSUSE 10.2 and 10.3,
+  simplifying the spec file a lot.
+- Pass --enable-gevolution to configure to actually activate the
+  plugin
+- Split out pidgin-evolution package containing the evo plugin.
+
+-------------------------------------------------------------------
+Tue Mar 30 21:41:02 UTC 2010 - dimstar@opensuse.org
+
+- Add pidgin-oscar-clientlogin.patch to fix connection issues
+  to OSCAR networks (ICQ). Patch from upstream commit
+  0e3079d15adeb12c1e57ceaf5bf037f9b71c8abd.
+
+-------------------------------------------------------------------
+Tue Mar  2 11:23:06 UTC 2010 - dimstar@opensuse.org
+
+- Add pidgin-oscar-portability.patch to fix build / portability
+  issues. Reported upstream at
+  http://developer.pidgin.im/ticket/11484.
+
+-------------------------------------------------------------------
+Wed Feb 17 08:57:31 CET 2010 - pgajdos@suse.cz
+
+- Updated to version 2.6.6:
+  + libpurple:
+    - Fix a quirk in purple_markup_html_to_xhtml that caused some
+      messages to be improperly converted to XHTML.
+    - Set "controlling-mode" correctly when initializing a media
+      session. Fixes receiving voice calls from Psi.
+    - When looking up DNS records, use the type of record returned
+      by the server (instead of the type we asked for) to determine
+      how to process the record.
+    - Fix an issue with parsing XML attributes that contain
+      "&lt;br&gt;". See ChangeLog.API for more details.
+  + General:
+    - Correctly disable all missing dependencies when using the
+      --disable-missing-dependencies option.
+  + Gadu-Gadu:
+    - Fix display of avatars after a server-side change.
+  + AIM:
+    - Allow setting and displaying icons between 1x1 and 100x100
+      pixels. Previously only icons between 48x48 and 50x50 were
+      allowed.
+  + MSN:
+    - Fix CVE-2010-0277, a possible remote crash when parsing an
+      incoming SLP message.
+    - File transfer requests will no longer cause a crash if you
+      delete the file before the other side accepts.
+    - Received files will no longer hold an extra lock after
+      completion, meaning they can be moved or deleted without
+      complaints from your OS.
+    - Buddies who sign in from a second location will no longer
+      cause an unnecessary chat window to open.
+    - Support setting an animated GIF as a buddy icon.
+    - Numerous code cleanups and memory savings.
+  + MySpace:
+    - Fix a leak and crash when retrieving buddy icons.
+  + XMPP:
+    - Less likely to send messages to a contact's idle/inactive
+      resource. Previously, if a message was received from a
+      specific resource, responses would be sent to that resource
+      until either it went offline or a message is received from
+      another resource. Now, messages are sent to the bare JID upon
+      receipt of any presence change from the contact.
+    - Added support for the SCRAM-SHA-1 SASL mechanism. This is
+      only available when built without Cyrus SASL support.
+    - When getting info on a domain-only (server) JID, show uptime
+      (when given by the result of the "last query") and don't show
+      status as offline.
+    - Fix getting info on your own JID.
+    - Wrap XHTML messages in <p>, as described in XEP-0071, for
+      compatibility with some clients.
+    - Don't do an SRV lookup for a STUN server associated with the
+      account if one is already set globally in prefs.
+    - Don't send custom smileys larger than the recommended maximum
+      object size specified in the BoB XEP. This prevents a client
+      from being disconnected by servers that dislike overly-large
+      stanzas.
+    - Fix receiving messages without markup over an Openfire BOSH
+      connection (forcibly put the stanzas in the jabber:client
+      namespace).
+    - The default value for the file transfer proxies is
+      automatically updated when an account connects, if it is
+      still the old (broken) default (from 'proxy.jabber.org' to
+      'proxy.eu.jabber.org').
+    - Fix an issue where libpurple created duplicate buddies if the
+      roster contains a buddy in two groups that differ only by
+      case (e.g. "XMPP" and "xmpp") (or not at all).
+  + Yahoo:
+    - Don't send <span> and </span> tags.
+    - Support PingBox. PingBoxes will appear as pbx/PingBoxName.
+  + Pidgin:
+    - Fix CVE-2010-0423, a denial of service attack due to the
+      parsing of large numbers of smileys.
+    - Correctly size conversation and status box entries when the
+      interior-focus style property is diabled.
+    - Correctly handle a multiline text field being required in a
+      request form.
+    - Search friends by email-addresses in the buddy list.
+    - Allow dropping an image on Custom Smiley window to add a new
+      one.
+    - Prompt for confirmation when clearing a whiteboard (doodle)
+      session.
+    - Use the "hand" cursor when hovering over usernames in chat
+      history to indicate that the username is an actionable item.
+    - Double-clicking usernames in chat history will open an IM
+      with that user.
+    - Put an icon on the "Filter" button in the debug window.
+    - Don't treat "/messages/like/this " as commands.
+    - Explicitly mark user interaction when inserting smilies from
+      the toolbar so "Undo" correctly removes these smilies.
+    - Clicking "New" or "Saved" in the status selector menu while
+      typing a status message no longer keeps the status entry area
+      stuck in "typing" mode forever.
+    - Show tooltips for ellipsized conversation tabs. On older
+      systems, tooltips will show for all tabs.
+    - The File Transfers and Debug Window windows are no longer
+      created as dialogs. These windows should now have minimize
+      buttons in many environments in which they were previously
+      missing (including Windows).
+    - Smiley themes with Windows line endings no longer cause theme
+      descriptions not to be displayed in the theme selector.
+  + Finch:
+    - Fix CVE-2010-0420, a possible remote crash when handling chat
+      room buddy names.
+    - Rebindable 'move-first' and 'move-last' actions for tree
+      widgets. So it is possible to jump to the first or last entry
+      in the buddy list (and other such lists) by pressing home or
+      end key (defaults)
+
+-------------------------------------------------------------------
+Thu Jan 14 19:12:02 CET 2010 - sbrabec@suse.cz
+
+- Updated to version 2.6.5:
+  + libpurple:
+    - TLS certificates are actually stored to the local cache once
+      again (accepting a name mismatch on a certificate should now
+      be remembered)
+  + General:
+    + Build-time fixes for Solaris.
+  + AIM and ICQ:
+    - Messages from some mobile clients are no longer displayed as
+      Chinese characters (broken in 2.6.4)
+  + MSN:
+    - Fix an issue allowing a remote user to download arbitrary
+      files from a libpurple client. (CVE-2010-0013, bnc#567799)
+  + XMPP:
+    - Do not crash when attempting to register for a new account on
+      Windows.
+    - Fix file transfer with clients that do not support Entity
+      Capabilities (e.g. Spark)
+- Disabled GNOME keyring integration for openSUSE (bnc#566286).
+
+-------------------------------------------------------------------
+Mon Jan  4 13:06:04 CET 2010 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel on 11.3 and later, following the module
+  split upstream.
+
+-------------------------------------------------------------------
+Wed Dec 16 14:49:51 CET 2009 - vuntz@opensuse.org
+
+- Fix build in Factory by not owning /usr/share/locale/ms_MY which
+  is now owned by the filesystem package.
+
+-------------------------------------------------------------------
+Sun Dec  6 03:40:23 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.6.4:
+  + libpurple:
+    - Actually emit the hold signal for media calls.
+    - Fix building the GnuTLS plugin with older versions of GnuTLS.
+    - Fix DNS TXT query resolution.
+    - Don't send Proxy-Authorization headers to HTTP proxy servers
+      until we've received a "407 Proxy Authentication Required"
+      response from the server.
+    - Added "MXit" protocol plugin, supported and maintained by the
+      MXit folks themselves.
+  + General:
+    - New 'plugins' sub-command to 'debug' command (i.e. '/debug
+      plugins') to announce the list of loaded plugins.
+    - Always rejoin open chats after an account reconnects.
+  + AIM and ICQ:
+    - Better rate limit calculations and other improvements.
+    - More detailed error messages when messages fail to send.
+    - The simultaneous login account option is respected when using
+      the clientLogin authentication method.
+    - Fix offline message retrieval (broken in 2.6.3)
+    - Fix handling of markup on some messages (broken in 2.6.2)
+    - Fix SSL when clientLogin is enabled.
+    - Fix sending and receiving Unicode characters in a Direct IM
+  + MSN:
+    - Fix various crashes.
+    - Don't forget display names for buddies.
+    - Fix more FQY 240 connection errors.
+    - Cache our own friendly name as the server no longer does that
+      for us.
+  + XMPP:
+    - Fix some crashes.
+    - Users connecting to Google Talk now have an "Initiate Chat"
+      context menu option for their buddies.
+    - Resolve an issue when connecting to iChat Server when no
+      resource is specified.
+    - Try to automatically find a STUN server by using an SRV
+      lookup on the account's domain, if no prefs is set for this.
+    - Only show the "send a file" option if the buddy supports one
+      of the file transfer methods supported by libpurple.
+    - Keep the avatar on the server if one is not set locally.
+  + Yahoo:
+    - Fix sending /buzz.
+    - Fix blocking behavior for federated (MSN/OCS/Sametime)
+      service users.
+    - Add support for adding OCS and Sametime buddies. OCS users
+      are added as "ocs/user@domain.tld" and Sametime users are
+      added as "ibm/sametime_id".
+  + Finch:
+    - The TinyURL plugin now creates shorter URLs for long
+      non-conversation URLs, e.g. URLs to open Inbox in Yahoo/MSN
+      protocols, or the Yahoo Captcha when joining chat rooms.
+    - Fix displaying umlauts etc. in non-utf8 locale.
+  + Pidgin:
+    - The userlist in a multiuser chat can be styled via gtkrc.
+    - Add a hold button to the media window.
+    - Fix a bug where the conversation backlog stops scrolling in a
+      very busy chat room.
+    - In the Conversation "Send To" menu, offline buddies appear
+      grayed out (but are still selectable).
+  + Pidgin Preference and Preference Window Changes:
+    - General reorganization of the preference window.
+    - Removed the "Use font from theme" and "Conversation Font"
+      preferences. This can be controlled from the Pidgin GTK+
+      Theme Control plugin.
+    - The Browser and Proxy tabs show appropriate GNOME-specific
+      messages and allow launching the correct applications to
+      change the relevant GNOME preferences if found.
+- Do not use the Tango and NLD icon themes for 11.2 and later. This
+  was discussed with Jakub Steiner.
+
+-------------------------------------------------------------------
+Fri Dec  4 18:37:47 CET 2009 - sbrabec@suse.cz
+
+- Fixed openssl-certs dependency problem in SLE10.
+
+-------------------------------------------------------------------
+Thu Nov 26 17:58:29 CET 2009 - sbrabec@suse.cz
+
+- Single spec for all SUSE products in all build systems.
+- Updated to Pidgin 2.6.3:
+  * Fix a crash when performing DNS queries on Unixes that use the
+    blocking DNS lookups.
+  * Fixed incorrect Oscar memory access by a specially crafted SIM
+    IM client contacts message (bnc#548072, pidgin#10481,
+    CVE-2009-3615).
+  * Fix blocking and other privacy list problems.
+- Migrate all QQ accounts to QQ2008 (bnc#550170).
+- Update may include these security fixes:
+- Fixed XMPP crash when receiving a message with a custom smiley
+  from a client that doesn't actually support custom smileys.
+  (bnc#536602, CVE-2009-3085)
+  http://www.pidgin.im/news/security/index.php?id=37
+- Fixed MSN remote denial of service via handwritten Ink message
+  (bnc#536602, pidgin#10159, CVE-2009-3084)
+  http://www.pidgin.im/news/security/index.php?id=38
+- Fixed MSN remote denial of service via an SLP invite message that
+  lacks certain required fields (bnc#536602, pidgin#10048,
+  CVE-2009-3083)
+  http://www.pidgin.im/news/security/index.php?id=39
+- Fixed IRC TOPIC message DoS (bnc#537214, IS-2009-001,
+  CVE-2009-2703, Bugtraq#36277).
+  http://www.pidgin.im/news/security/index.php?id=40
+- Fixed incorrect Oscar memory access by a specially crafted SIM IM
+  client contacts message (bnc#548072, pidgin#10481,
+  CVE-2009-3615).
+  http://www.pidgin.im/news/security/index.php?id=41
+- Re-added NLD artwork by Hans Petter Jansson (hpj@novell.com).
+
+-------------------------------------------------------------------
+Tue Oct 20 09:36:10 CEST 2009 - dimstar@opensuse.org
+
+- Add pidgin-bnc548072.patch, fixes crash with oscar (ICQ) protocol
+  bnc#548072.
+
+-------------------------------------------------------------------
+Wed Sep 23 19:48:37 UTC 2009 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep  9 18:00:15 CEST 2009 - vuntz@opensuse.org
+
+- Remove Tango and NLD themes: the upstream theme is following the
+  tango guidelines now.
+
+-------------------------------------------------------------------
+Mon Sep 07 13:39:00 BST 2009 - riggwelter@opensuse.org
+
+- Update to version 2.6.2
+  + libpurple
+    - Fix --disable-avahi to actually disable it in configure, as
+      opposed to just making the warning non-fatal.
+    - Fix using GNOME proxy settings properly.
+  + IRC:
+    - Fix parsing of invalid TOPIC messages. (CVE-2009-2703)
+  + MSN:
+    - Sending custom smileys in chats is now supported.
+    - Ink messages are now saved when using the HTML logger.
+    - Fix a crash when receiving some handwritten messages.
+    - Fix a crash when receiving certain SLP invite messages.
+    - Chats with multiple people should no longer spontaneously
+      disconnect.
+  + XMPP:
+    - Prompt the user before cancelling a presence subscription.
+    - Escape status messages that have HTML entities in the Get
+      Info dialog.
+    - Fix connecting to XMPP domains with no SRV records from
+      Pidgin on Windows.
+    - Fix typing notifications with Pidgin 2.5.9 or earlier.
+    - Fix connecting using BOSH and legacy authentication (XEP-0078).
+    - Adding buddies of the form "romeo@.../Resource" are handled
+      properly. In addition, it is no longer possible to add
+      buddies of the form "room@.../User", where room@... is a MUC.
+    - Don't crash when receiving "smileyfied" XHTML-IM from clients
+      that don't support bits of binary (ie. when getting an empty
+      <data/> in return)
+    - Fix bug where SSL/TLS was not required even though the
+      "require SSL/TLS" preference checked when connecting to
+      servers that use the older iq-based authentication.
+      (CVE-2009-3026)
+  + Yahoo!:
+    - Accounts now have "Use account proxy for SSL connections"
+      option.
+  + Finch
+    - Properly detect libpanel on OpenBSD.
+    - Remove IO watches in gnt_quit.
+  + Pidgin
+    - Fix the auto-personize functionality in the Buddy List.
+    - Set the window icon for the media window to an icon
+      corresponding to the type of call (headphone or webcam).
+    - Customized sound files are no longer reset whenever opening
+      the Preferences dialog.
+    - The buddy list should now immediately refresh upon changing
+      the icon theme.
+
+-------------------------------------------------------------------
+Tue Aug 25 18:07:03 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.6.1:
+  * Voice and Video support.
+  * Theme support.
+  * Yahoo: Separate plugin for Yahoo Japan, SMS support.
+  * XMPP: voice and video support, service discovery, support for
+    BOSH, idle time reporting, attention support, in-band bytestreams
+    file transfer as, custom smiley support, updated support for buddy
+    icons.
+  * Support for IDN.
+  * Several security fixes (CORE-2009-0727, CVE-2009-2694,
+    bnc#527100).
+
+-------------------------------------------------------------------
+Fri Aug  7 03:04:45 CEST 2009 - vuntz@novell.com
+
+- Split the support for tcl plugins in libpurple-tcl, to not force
+  installation of tcl.
+
+-------------------------------------------------------------------
+Wed Jul  1 18:48:31 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.5.8:
+  * ICQ:
+    + Fix misparsing a web message as an SMS message.
+  * MSN:
+    + Increase NS command history size to prevent crashes on buddy
+      lists that have a lot of buddies on other networks like
+      Yahoo!
+  * MySpace:
+    + Accounts with empty buddy lists are now properly marked as
+      connected.
+    + Fix receiving messages from users of MySpace IM's web client.
+  * Yahoo:
+    + Fixed phantom online buddies.  They should now properly
+      disappear when signing out.
+    + Fixed the crashes some users were seeing with
+      cn.scs.msg.yahoo.com in 2.5.7.
+    + Fixed compiling on systems with glib 2.4.x or older.
+    + Fixed an issue with file transfers.  This may not resolve all
+      issues, but it should resolve at least some of the most
+      common ones.
+    + The pager server will automatically update to
+      scsa.msg.yahoo.com if the user empties the field or if it is
+      scs.msg.yahoo.com.  This should ease the pain of transition
+      to the new login method.
+  * XMPP:
+    + Fix an incompatibility betweeen Prosody and libpurple
+      clients.
+
+-------------------------------------------------------------------
+Mon Jun 22 22:50:52 CEST 2009 - claes.backstrom@fsfe.org
+
+- Add pidgin-fix-installation.patch to fix build with automake 1.11
+
+-------------------------------------------------------------------
+Sun Jun 21 14:15:33 CEST 2009 - claes.backstrom@fsfe.org
+
+- Update to version 2.5.7:
+  + Yahoo Protocol 16 support, including new HTTPS login method;
+    this should fix a number of login problems that have recently
+    cropped up.
+  + Only display the AIM "Unable to Retrieve Buddy List" message
+    once per connection.
+  + Blocking MSN users not on your buddy list no longer disconnects
+    you.
+  + When performing operations on MSN, assume users are on the
+    MSN/Passport network if we don't get network ID's for them.
+
+-------------------------------------------------------------------
+Wed May 20 13:20:41 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.5.6:
+  + libpurple:
+    - Improve sleep behavior by aggregation of longer timeouts on
+      second boundaries to allow better power saving.
+    - Fix various crashes on exit.
+    - Make XML parsing more resilient to interactions with other
+      libraries. This, along with the fix for libxml2 bgo#564217,
+      fixes the crashes on connect in XMPP with recent
+      gst-plugins-bad.
+    - Many security related fixes.
+  + IRC:
+    - Correctly handle WHOIS for users who are joined to a large
+      number of channels.
+    - Notify the user if a /nick command fails, rather than trying
+      fallback nicks.
+  + MSN:
+    - Fix a race condition causing occasional Pidgin crashes.
+    - Fix some errors about the friendly name changing too fast
+      caused by MSN/Yahoo integration buddies.
+  + XMPP:
+    - Less likely to pop up a new conversation window in disregard
+      of the "Hide new IM conversations" preference.
+  + Yahoo:
+    - Fix a crash when sending very long messages.
+    - Fix a bug where UTF-8 status messages get garbled when going
+      idle.
+
+-------------------------------------------------------------------
+Mon Apr  6 11:58:28 CEST 2009 - vuntz@novell.com
+
+- Respin pidgin-gnome-keyring.patch that doesn't apply with new
+  patch package.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Mar 12 19:33:41 CET 2009 - sbrabec@suse.cz
+
+- Updated to version 2.5.5:
+  libpurple:
+  * Fix a crash when removing an account with an unknown protocol id.
+  * Beta support for SSL connections for AIM and ICQ accounts.  To
+    enable, check the "Use SSL" option from the Advanced tab when
+    editing your AIM or ICQ account. (Paul Aurich)
+  * Fix a memory leak in SILC. (Luke Petre)
+  * Fix some string handling in the SIMPLE prpl, which fixes some buddy name
+    handling and other issues. (Paul Aurich, Marcus Sundberg)
+  * Implement support for resolving DNS via the SOCKS4 proxy (SOCKS4a).
+  ICQ:
+  * Fix retrieval of status messages from users of ICQ 6.x, Miranda, and
+    other libpurple clients. (Daniel Ljungborg)
+  * Change client ID to match ICQ Basic 14.34.3096.  This fixes publishing
+    of buddy icons and available messages.
+  * Properly publish status messages for statuses other than Available.
+    ICQ 6.x users can now see these status messages. (Daniel Ljungborg)
+  * Fix receipt of messages from the mobile client Slick. (David Jedelsky)
+  MSN:
+  * Fix transfer of buddy icons, custom smileys, and files from the
+    latest Windows Live Messenger 9 official client. (Thomas
+    Gibson-Robinson)
+  * Large (multi-part) messages are now correctly re-combined.
+  * Federated/Yahoo! buddies should now stop creating sync issues at
+    every signin.  You may need to remove duplicates in the Address
+    Book.  See the FAQ for more information.  Thanks to Jason Lingohr
+    for lots of debugging and testing.
+  * Messages from Yahoo! buddies are no longer silently dropped.
+  * We now save and use the CacheKey for ABCH SOAP requests.
+  * Don't try to parse Personal Status Messages or Current Media if they
+    don't exist.
+  * Convert from ISO-8859-1 encoding to UTF-8 when no charset is specified
+    on incoming messages.  This should fix some issues with messages from
+    older clients.
+  * Force sending the font "Segoe UI" if outgoing formatting doesn't specify
+    a font already.
+  * Queue callbacks when token updates are in progress to prevent two token
+    update attempts from trampling each other.
+  * Fixed a crash on Windows when removing a buddy's alias.
+  * Update the Address Book when buddies' friendly names change.  This
+    prevents seeing an outdated alias or not seeing an alias at all for
+    buddies who are offline when you sign in.
+  * Update tokens for FindMembership and ABFindAll SOAP requests.
+  * We no longer try to send empty messages.  This could happen when a
+    message contained only formatting and that formatting was not supported
+    on MSN.
+  * Buddies on both the Allow and Block list are now automatically
+    removed from the Allow list.  Users with this problem will now no
+    longer receive an ADL 241 error.  The problematic buddy should now
+    appear on the buddy list and can be removed or unblocked as desired.
+  XMPP:
+  * Resources using __HOSTNAME__ substitution will now grab only the short
+    hostname instead of the FQDN on systems which put the FQDN in the
+    hostname. (Matěj Cepl)
+  * No longer send a 'to' attribute on an outgoing stanza when we haven't
+    received one.  This fixes a registration bug as described in ticket
+    pidgin#6635.
+  Pidgin:
+  * Tooltip windows now appear below the mouse cursor. (Kosta Arvanitis)
+  * Tooltip windows now disappear on keypress events. (Kosta Arvanitis)
+  * Tooltip windows no longer linger when scrolling the buddy list. (Kosta
+    Arvanitis)
+  Finch:
+  * Allow rebinding keys to change the focused widget (details in the
+    man-page, look for GntBox::binding)
+
+-------------------------------------------------------------------
+Thu Feb 19 16:45:49 CET 2009 - sbrabec@suse.cz
+
+- Default browser is xdg-open, not mozilla (bnc#472219).
+- libpurple: Requires openssl-certs.
+
+-------------------------------------------------------------------
+Tue Feb 10 21:07:28 CET 2009 - vuntz@novell.com
+
+- Remove non-upstream translations: they'll get out-of-date.
+
+-------------------------------------------------------------------
+Sun Feb  1 18:13:23 EST 2009 - mboman@suse.de
+
+- Update to version 2.5.4:
+  + libpurple
+    * Fix a connection timeout with empty Gadu-Gady buddy lists
+    * Don't ignore namespace information when parsing XMPP data
+    * Fix a crash that occurred when retrieving certain Offline
+      Messages on MSN.
+    * Extended purple-url-handler to handle "gtalk" URI's
+    * Fix the hang on exit in Network Location Awareness for
+      Windows XP and Windows Vista
+  + MSN
+    * Change Contact Server to temporarily fix connection
+      problems
+  + XMPP
+    * Support for XEP-0191 blocking
+    * Don't put SASL PLAIN or IQ Auth passwords in debug logs
+    * Fix removal of avatars (both PEP and vCard), we weren't
+      removing them correctly before
+  + Pidgin
+    * Fix a crash in the Add Account dialog when changing
+      protocols under certain circumstances
+  + Finch
+    * Redirect stderr outputs to the debug window
+    * Fix rebinding actions with the arrow-keys and tab
+  + Windows-specific changes
+    * Fix the "Hang on Exit" issue that a number of users
+      encountered
+    * Updated GTK+ to 2.14.6
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Jan 24 14:38:38 CET 2009 - vuntz@novell.com
+
+- Mark pidgin-nonblock-aim.patch as PATCH-NEEDS-REBASE since it's
+  not applied.
+- Remove libao-devel and perl-XML-Parser BuildRequires.
+- Remove tests for non-supported versions of openSUSE.
+- Don't rename sr@latin to sr@Latn since @latin is the right way.
+- Enable parallel build.
+- Consolidate removing of la files in one place.
+- Recompress pidgin-po.tar.gz with bzip2.
+- Remove pidgin-64bit-buildhack.patch which wasn't used anymore.
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de
+
+- Translations update.
+
+-------------------------------------------------------------------
+Tue Jan  6 12:11:13 EST 2009 - jpr@novell.com
+
+- Fix keyring patch so the keyring paths actually get used
+  (bnc #327391)
+
+-------------------------------------------------------------------
+Wed Dec 31 09:23:03 IST 2008 - msuman@suse.de
+
+- Update to version 2.5.3:
+  + Misc. bug fixes
+  + Custom smileys for the XMPP protocol
+- Spec file cleanup for a few RPMLINT warnings.
+
+-------------------------------------------------------------------
+Tue Nov 25 10:22:44 CET 2008 - ro@suse.de
+
+- comment out libpurple2-mono on ppc64 for the moment to fix
+  build (no native mono on ppc64)
+
+-------------------------------------------------------------------
+Fri Oct  3 23:26:52 CEST 2008 - vuntz@novell.com
+
+- Fix build:
+  + add pam-devel buildrequires
+  + don't specify the nss/nspr include path, so that they get
+    automatically detected with pkg-config. Else, the build fails.
+
+-------------------------------------------------------------------
+Tue Sep  9 13:30:52 CDT 2008 - maw@suse.de
+
+- Update to version 2.5.1:
+  + Misc. bug fixes, including MSN login and AIM tooltips.
+
+-------------------------------------------------------------------
+Thu Aug 28 17:27:57 CEST 2008 - maw@suse.de
+
+- Require pcre-devel to build.
+
+-------------------------------------------------------------------
+Fri Aug 22 12:18:41 CEST 2008 - sbrabec@suse.cz
+
+- Update to version 2.5.0:
+  * number of bug fixed and good stuff
+  * MSNP protocol 15 support and many improvements
+  * custom smileys (MSN)
+  * Configure option --with-system-ssl-certs (openSUSE new default)
+  * Add SSL Certificates support to the NSS SSL plugin.
+    (bnc#415679, CVE-2008-3532, pigdin#6500)
+  * Fixed XMPP endless loops.
+  * IRC /ctcp command
+  * Allow for auto-detection of incoming UTF-8 formatted text.
+  * Improved visibility of Custom buddy icons feature.
+  * Resize down large incoming custom smileys.
+  * Alias based offer to add new buddies into the same contact.
+  * Minor smiley style update.
+  * Group and Chat buddy list entries can now be given custom buddy
+    icons.
+  * Finch menu improvements and tab-completion for commands in
+    conversation windows.
+  * Finch support for '/msgcolor' command.
+
+-------------------------------------------------------------------
+Tue Jul 15 13:54:12 CEST 2008 - sbrabec@suse.cz
+
+- Update to version 2.4.3:
+  * Setting your buddy icon once again works for Yahoo! accounts.
+  * Fixes in the Yahoo! protocol to prevent a double free, crashes
+    on aliases, and alias functionality.
+  * Fix crashes in the bonjour protocol.
+  * Always use UTF-8 for Yahoo! (needed for Yahoo! Japan)
+  * Fix a crash when the given jabber id is invalid.
+  * Make the IRC "unknown message" debugging messages UTF-8 safe.
+  * Fix connecting to ICQ.
+  * Fix a memleak when handling jabber xforms.
+  * Various memory leak fixes.
+  * Fix MSN malformed SLP message integer overflow (bnc#406416,
+    CVE-2008-2927, RedHat#453764)
+- Fix of MSN file transfer failed receiver file open DoS
+  (bnc#404163, pidgin#6246, CVE-2008-2955, BUGTRAQ:20080626 Pidgin
+  2.4.1 Vulnerability, FRSIRT:ADV-2008-1947, SECUNIA:30881)
+
+-------------------------------------------------------------------
+Mon Jun 30 20:32:10 CEST 2008 - maw@suse.de
+
+- Update to version 2.4.2:
+  + Usability imprvements in typing notification, buddy icon, and
+    imput area size
+  + Memory leaks
+  + MSN buddy list synchronisation improvements
+  + For a blow-by-blow account, see
+    http://developer.pidgin.im/query?status=closed&milestone=2.4.2
+- Respin the following patches: pidgin-gnome-keyring.patch and
+  pidgin-check.patch.
+
+-------------------------------------------------------------------
+Wed May  7 16:43:39 CEST 2008 - coolo@suse.de
+
+- also provide gaim-devel to fix update
+
+-------------------------------------------------------------------
+Wed Apr  2 19:43:07 CEST 2008 - maw@suse.de
+
+- Update to version 2.4.1:
+  + http://developer.pidgin.im/query?status=closed&milestone=2.4.1
+  + libpurple:
+    * Treat AIM Unicode messages as UTF-16 rather than UCS-2; this
+      should have no functional effect, other than continued
+      support on systems which have dropped UCS-2 conversions
+    * Add support for setting buddy icons on Gadu-Gadu
+    * Fix a crash when clearing the buddy icon for an account on
+      XMPP
+    * Fix a crash during login for some ICQ accounts
+    * Prefer more available resources on XMPP when priorities are
+      equal
+    * Fix incorrectly marking some Yahoo! contacts as blocked
+    * Improved handling of UTF-8 group names on ICQ (beret)
+    * Fix a crash when starting if you have a Zephyr account
+    * Increase XMPP ping timeout to 120 seconds, to prevent poor
+      network connections from timing out unnecessarily
+    * Don't crash on XMPP forms with empty default values
+    * Fix issues with CHAP authentication for SOCKS5 proxies
+  + Pidgin:
+    * Remove a workaround for older versions gstreamer that was
+      causing crashes on some non-Linux systems such as HPUX
+    * Fix some cases of the conversation input entry area being
+      1 pixel high
+    * Fix for displaying channel & buddy names in conversation
+      window when they have '&' in them
+    * Some memory leak fixes, especially in the Text Replacement
+      plugin
+    * Rectangular but non-square buddy icons have rounded corners
+      in the buddy list
+   + Finch:
+     * Fix compiling with Glib older than 2.6
+     * Ensure existing conversations selected from the 'Send IM'
+       dialog are given focus
+     * Move the tooltip on the left of the buddylist if there's
+       not enough room on the right to show it.
+
+-------------------------------------------------------------------
+Thu Mar  6 19:34:19 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Mon Mar  3 13:30:23 CET 2008 - sbrabec@suse.cz
+
+- Update to version 2.4.0:
+  - Backend
+  *  Added support for offline messages for AIM accounts
+  *  Fixed various problems with loss of status messages when going
+     or returning from idle on MySpaceIM
+  *  Bonjour protocol now uses Avahi instead of Howl
+  *  Partial support for viewing ICQ status notes
+  *  Support for /notice on IRC
+  *  Support for Yahoo! Messenger 7.0+ file transfer method
+  *  Support for retrieving full names and addresses from the
+     address book on Yahoo! Japan
+  *  The AIM/ICQ server-side preference for "allow others to see me
+     as idle" is no longer unconditionally set to "yes"
+  *  Fix SSL certificate checks for renewed certificates
+  *  Fix the ability to set vCard buddy icons on Google Talk/XMPP
+  *  D-Bus fixes on 64bit
+  *  Fixed retrieval of buddy icons and setting of server-side
+     aliases on Yahoo! and Yahoo! Japan with a HTTP proxy server
+  *  Fixed an MSN bug that would leave you appearing offline when
+     transferred to different server
+  - Pidgin frontend
+  *  Input text area in conversation windows auto-resizes
+  *  Added the ability to theme conversation name colors through
+     the GTK+ theme
+  *  Fixed having multiple alias edit areas in the infopane
+  *  Save the conversation "Enable Logging" option per-contact
+  *  Typing notifications are now shown in the conversation area
+  - Finch frontend
+  *  More colors is now used
+  *  The default keybinding for dump-screen is now M-D
+  *  New navigating between the higlighted windows bindings alt+tab
+     and alt+shift+tab
+  *  Recently signed on (or off) buddies blink in the buddy list
+  *  New action 'Room List' in the action list can be used
+  *  The 'Grouping' plugin can be used for alternate grouping
+  *  Added a log viewer
+  *  Added the ability to block/unblock buddies
+  *  Fixed a bug preventing finch working on x86_64
+
+-------------------------------------------------------------------
+Wed Jan  9 23:16:51 CET 2008 - maw@suse.de
+
+- Fix installation of Serbian (Latin script) translation data.
+
+-------------------------------------------------------------------
+Sat Dec  8 09:05:30 GMT 2007 - james@usr-local-bin.org
+
+- Update to version 2.3.1:
+  + http://developer.pidgin.im/query?status=closed&milestone=2.3.1
+  + libpurple:
+    * Fixed a number of MSN bugs introduced in 2.3.0, resolving
+      problems connecting to MSN and random local display name
+      changes
+    * Going idle on MySpaceIM will no longer clear your status and
+      message.
+    * Idle MySpaceIM buddies should now appear online at login.
+    * Fixed crashes in XMPP when discovering a client's capabilities
+    * Don't set the current tune title if it's NULL (XMPP/Google
+      Talk)
+    * Don't allow buddies to be manually added to Bonjour
+    * Don't advertise IPv6 on Bonjour because we don't support it
+    * Compile fixes for FreeBSD and Solaris
+    * Update QQ client version so some accounts can connect again
+    * Do not allow ISON requests to stack in IRC, preventing
+      flooding IRC servers when temporary network outages are
+      restored
+    * Plug several leaks in the perl plugin loader
+    * Prevent autoaccept plugin overwriting existing files
+
+-------------------------------------------------------------------
+Sat Dec  1 13:38:28 CST 2007 - maw@suse.de
+
+- Update to version 2.3.0:
+  + http://developer.pidgin.im/query?status=closed&milestone=2.3.0
+  + libpurple:
+    * real usernames shown in system log
+    * honor a PURPLE_DISABLE_DEPRECATED define to allow plugins to
+      catch deprecated functions earlier rather than later.
+    * Thanks to a patch from Intel, the Bonjour prpl now supports file
+      transfers using XEP-0096 and XEP-0065.  This should enable file
+      transfers between libpurple clients and Gajim clients, but will not
+      work with iChat or Adium as they use a different file transfer
+      implementation.
+    * XMPP password changes that return errors no longer cause the saved
+      password to be changed.
+    * XMPP file transfer support has been enhanced to support sending
+      files through a proxy when the server supports discovering a
+      a bytestream proxy.  This should make file transfers much more
+      reliable.  The next release will add support for manually specifying
+      a proxy when the server doesn't advertise one.
+  + pidgin:
+    * If a plugin says it can't be unloaded, we now display an error and
+      remove the plugin from the list of saved plugins so it won't load
+      at the next startup.  Previously, we were ignoring this case, which
+      could lead to crashes.
+    * Mark dialog windows as transient for appropriate parent windows to
+      help window managers do the right thing  (Gabriel Schulhof)
+    * Connection errors are now reported in mini-dialogs inside the buddy
+      list, rather than as buttons in the buddy list and with dialog
+      boxes.  If several accounts are disabled when you sign on elsewhere,
+      you can now re-enable them all with a single click.
+    * Added tooltips to the Room List window to show full topics
+    * Added buttons in preferences to access GNOME network and browser
+      preferences configuration dialogs when running under GNOME
+    * If you alias a buddy to an alias that is already present within
+      a particular group, we now offer to merge the buddies into the
+      same contact.
+    * A music emblem is now displayed in the buddy list for a buddy if we
+      know she is listening to some soothing music.
+    * Added a 'Move to' menu in buddy list context menu for moving buddies
+      to other groups as an alternative to dragging.
+    * Group headings are now marked via an underline instead of a
+      different color background.
+    * It is now possible to mark a chat on your buddy list as "Persistent"
+      so you do not leave the chat when the window or tab is closed.
+    * The auto-join option for chats is now listed in the "Add Chat"
+      dialog along with the new persistence option.
+    * Closing an IM no longer immediately closes your conversation.  It
+      will now remain active for a short time so that if the conversation
+      resumes, the history will be retained.  A preference has been added
+      to toggle this behavior.
+    * The "Smiley" menu has been moved to the top-level of the toolbar.
+    * Pidgin's display is now saved with the command line for session
+      restoration.  (David Mohr)
+    * ICQ Birthday notifications are shown as buddy list emblems.
+    * Plugin actions are now available from the docklet context menu
+      in addition to the Tool menu of the buddy list.
+    * The manual page has been heavily rewritten to bring it in line
+      with current functionality.
+  + Finch:
+    * If a plugin says it can't be unloaded, we now display an error and
+      remove the plugin from the list of saved plugins so it won't load
+      at the next startup.  Previously, we were ignoring this case, which
+      could lead to crashes.
+    * It's possible to bind key-strokes to specific menuitems in the windows.
+      Read the 'Menus' section in the man-page for details.
+    * 'transpose-chars' operation for the entry boxes. The default key-binding
+      is ctrl+t.
+    * 'yank' operation for the entry boxes. The default binding is ctrl+y.
+- Updated build requirements.
+
+-------------------------------------------------------------------
+Tue Nov 13 21:29:06 CET 2007 - maw@suse.de
+
+- Add pidgin-directconn-argfix.patch.
+
+-------------------------------------------------------------------
+Thu Nov  8 22:38:28 CET 2007 - maw@suse.de
+
+- Update to version 2.2.2 (thanks to James, Ivan, and Michel for
+  the good work in GNOME:Community!)
+  + New protocol plugins
+  + XMPP enhancements
+  + Certificate management
+  + Various and sundry fixes and UI improvements
+- Remove obsolete pidgin-stringcompare.patch
+- Update pidgin-nonblock-common.patch.
+
+-------------------------------------------------------------------
+Wed Oct 24 18:14:52 CEST 2007 - sbrabec@suse.cz
+
+- Fixed build by providing of lang package in older products.
+
+-------------------------------------------------------------------
+Tue Oct 23 18:22:05 CEST 2007 - sbrabec@suse.cz
+
+- Fixed BuildRequires in Build Service.
+
+-------------------------------------------------------------------
+Mon Oct  1 12:18:31 CEST 2007 - sbrabec@suse.cz
+
+- libpurple requires dbus-1-python (#329734).
+
+-------------------------------------------------------------------
+Wed Sep 12 19:14:26 CEST 2007 - mauro@suse.de
+
+- Update to version 2.1.1
+  + Fixed bug bnc #308639
+
+-------------------------------------------------------------------
+Thu Sep  6 18:56:24 CEST 2007 - sbrabec@suse.cz
+
+- Dropped gaim-compat package, fixed provides/obsoletes (#296952).
+
+-------------------------------------------------------------------
+Fri Aug 17 02:06:21 CEST 2007 - ro@suse.de
+
+- fix requires: require libpurple-lang instead of pidgin-lang
+
+-------------------------------------------------------------------
+Tue Aug 14 15:57:04 CEST 2007 - maw@suse.de
+
+- Use %lang_package -n libpurple instead.
+
+-------------------------------------------------------------------
+Sat Aug 11 15:35:07 CEST 2007 - coolo@suse.de
+
+- split out pidin-lang as required by other packages
+
+-------------------------------------------------------------------
+Mon Aug  6 20:45:54 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun
+- Split out -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:40:14 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.1.0:
+  * start with new UI concepts
+  * largely re-designed conversation window
+  * fixed some ICQ internationalization issues
+  * enable using SILC Toolkit 1.1
+  * lots of bug fixed
+
+-------------------------------------------------------------------
+Mon Jul 30 23:11:07 CEST 2007 - maw@suse.de
+
+- Change some obsoletes and provides stuff.
+
+-------------------------------------------------------------------
+Tue Jul 24 00:17:19 CEST 2007 - maw@suse.de
+
+- Add includes.patch, fixing the build when new versions of
+  evolution-data-server are installed.
+
+-------------------------------------------------------------------
+Tue Jun 12 01:54:48 CEST 2007 - ro@suse.de
+
+- avoid string compare with char literal (use strcmp)
+
+-------------------------------------------------------------------
+Thu May 31 11:21:27 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.0.1:
+  * Over 100 bugs fixed.
+
+-------------------------------------------------------------------
+Mon May 28 16:08:27 CEST 2007 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Tue May 15 18:35:19 CEST 2007 - sbrabec@suse.cz
+
+- Compile with SILC protocol support.
+- Integrated patches ported by Martin Szulecki.
+- Fixed NSS/NSPR detection.
+- Split gaim compatibility binaries.
+- Removed obsolete media files.
+
+-------------------------------------------------------------------
+Mon May 14 17:52:45 CEST 2007 - sbrabec@suse.cz
+
+- Fixed autoreconf.
+- Fixed Provides/Obsoletes.
+- Require basic SASL plugins required for Jabber.
+
+-------------------------------------------------------------------
+Thu May 10 18:41:44 CEST 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 2.0.0 (successor of gaim).
+  Spec file based on work of James Ogley.
+

@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Fri Apr  5 17:10:22 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Add a volume control applet alongside a GtkStatusIcon one.
+  * Ensure volume icon is always correctly scaled.
+  * Ensure volume slider is always perpendicular to the panel.
+  * Enable a mute menuitem for the output.
+  * Add widget name volume-applet to panel-applet.
+  * Update translations.
+- Rebase mate-media-gtk-3.20.patch.
+- Disable the volume control status icon and keep the applet one.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Disable deprecation warnings for distcheck.
+  * Ignore PulseAudio "monitor" inputs when displaying mic icon.
+  * gvc-mixer-dialog.c: Avoid deprecated gtk_widget_override_font.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * volume-control-dialog: Avoid deprecated GtkAlignment.
+  * applet: Improve volume increments.
+  * Avoid deprecated gdk_screen_get_monitor_,
+    gdk_screen_get_height() functions.
+  * applet: Use GdkSeat.
+  * gvc-applet: Don't try to increase refcount of a NULL object.
+  * gvc-combo-box: Fix signal arguments.
+- Add mate-media-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20
+  support.
+
+-------------------------------------------------------------------
+Tue Nov  7 11:14:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * applet: Restore the icon for the "Sound Preferences" menu item.
+  * applet: Make keyboard work in pop ups.
+  * Refresh the tray icon on icon theme change.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Jun 17 20:00:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * mixer-dialogue: Remove style class .frame from a
+    scrolledwindow.
+  * applet: Show volume in popup even when muted.
+  * applet: Round volume in popup of status icon.
+  * applet: Fix minor rounding mistakes.
+  * Enable deprecation warnings by default.
+  * Restore Polish translation credits from GNOME.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require libmatemixer >= 1.10 and libmate-desktop >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Port from libunique to GApplication and GtkApplication.
+  * Some cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Aug 14 11:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * GTK+3: Add CSS name gvc-level-bar.
+  * Make distcheck use currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * GTK+3: add css name GvcMixerDialog for Gtk 3.20.
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * GTK+3: Fix several deprecations.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Gtk3: Don't remove slider background (fixes background in some
+    themes).
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Wed Oct 14 06:17:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Multiple fixes in manpages.
+  * GTK+3: Fix missing icons with custom icon theme.
+  * GTK+3: Add style classes for slider and menu for volume-applet.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon May  4 21:20:07 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * No changes since version 1.9.2
+
+-------------------------------------------------------------------
+Sun Nov 23 16:40:59 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.2 (unstable) 
+  + Do not create the volume slider when not supported by the
+    libmatemixer backend
+  + Remove the add_effects_control function as it does the same as
+    bar_set_stream_control
+  + Move the widget construction code from constructor to its own
+    function
+  + Remove some extraneous variables and improve debugging messages
+  + Bugs fixed
+
+-------------------------------------------------------------------
+Tue Nov 11 17:30:39 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  + Removed PulseAudio dependency
+- Remove pkgconfig(libpulse) and "--enable-pulse" configue option;
+  pulseaudio dependency has been dropped by upstream
+- Add libmatemixer-devel build requirement; new dependency
+
+-------------------------------------------------------------------
+Sun Oct 26 14:59:59 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Removed gst-mixer and gst-mixer-applet
+  + mate-volume-control: Port from PulseAudio to libmatemixer
+  + mate-volume-control: Allow selecting input and output connectors
+  + mate-volume-control: Speaker test widget now contains a Close button
+  + mate-volume-control: Device and stream lists are now sorted
+  + mate-volume-control-applet: Do not show icons when on a vertical panel
+  + mate-volume-control-applet: Allow clicking in the popup window
+
+-------------------------------------------------------------------
+Wed Mar  5 12:12:19 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+- Remove useless require; never been dependencies
+  + gladeui-1.0
+  + glib-2.0
+  + gobject-2.0
+- Remove gstreamer-* require as we don't build with gstreamer support
+
+-------------------------------------------------------------------
+Thu Feb 20 12:54:00 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + no changes since 1.7.1
+
+-------------------------------------------------------------------
+Fri Feb 14 15:43:29 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1 (unstable)
+  + pulse: Middle click on applet toggles mute state
+    Closes #20 (https://github.com/mate-desktop/mate-media/issues/20)
+  + update translations
+
+-------------------------------------------------------------------
+Wed Jan 22 12:29:40 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.0
+  + use yelp-tools instead of mate-doc-utils
+  + mate-volume-control: Allow applications list to be scrolled
+    Closes #31 (https://github.com/mate-desktop/mate-media/issues/31)
+  + add/update files in POTFILES.in and fix make check
+  + add GTK3 support
+  + just use MATE_COMPILE_WARNINGS(maximum) and remove custom macros
+  + make tar.xz instead of tar.bz2
+  + add option to enable deprecated
+  + enable deprecated in DISTCHECK_CONFIGURE_FLAGS
+    The problem is that without the Gstatic*Mutex the gstreamer mixer
+    fails to build. This is because Gstatic*Mutex is deprecated in glib
+    but still in use by gstreamer 0.10. To have make distcheck work we
+    enable it here.
+  + add --enable-deprecated and put it in DISTCHECK_CONFIGURE_FLAGS
+  + fix Sun GNOME Documentation Team references
+  + disable all deprecated flags
+- Replace mate-doc-utils requirement with yelp-utils; upstream use
+  this one to build help documentation
+
+-------------------------------------------------------------------
+Wed Jan  1 16:31:48 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + Add/update files in POTFILES.in and fix make check
+  + Remove autogenerated files
+  + Remove unused m4 files
+  + just use MATE_COMPILE_WARNINGS(maximum) and remove custom macros
+  + Generate ChangeLog from git log
+  + Make tar.xz instead of tar.bz2
+  + Add option to enable deprecated
+  + Enable deprecated in DISTCHECK_CONFIGURE_FLAGS
+    The problem is that without the Gstatic*Mutex the gstreamer mixer
+    fails to build. This is because Gstatic*Mutex is deprecated in glib
+    but still in use by gstreamer 0.10To have make distcheck work we
+    enable it here.
+  + gstreamer: Middle click on applet toggles mute state
+  + display gst-mixer and mate-volume-control also in multimadia menu
+  + Fix Sun GNOME Documentation Team references
+
+-------------------------------------------------------------------
+Thu Sep 19 22:40:09 UTC 2013 - p.drouand@gmail.com
+
+- Remove old Provides/Obsoletes entries as we don't need it here
+- Unversion lang package requirement
+
+-------------------------------------------------------------------
+Thu Apr  4 11:13:19 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + fix OnlyShowIn in mate-volume-control-applet.desktop
+
+-------------------------------------------------------------------
+Sat Mar 23 13:51:04 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.2
+  + fix typo in configure.ac
+  + fix mixer applet build in configure and makefile
+  + fix FSF adress in COPYING file
+  + fix categories in desktop files
+  + fix gst-mixer compilation errors the right way
+  + remove ^L's from COPYING.gst-mixer
+  + fix deprecations
+  + AC_CONFIG_HEADERS to please automake 1.13
+  + update mate-volume-control.desktop.in.in
+    - choose a unique name
+    - add generic name
+- Remove obsolete patchs; merged on upstream release
+  + mate-media-1.5.1-fix_categories.patch
+  + mate-media-1.5.1-update_COPYING.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 19:19:00 UTC 2013 - nmo.marques@gmail.com
+
+- Add 'pulseaudio-utils' to Reqs; otherwise if pulseaudio isnt
+  properly installed, no applet on menu.
+
+-------------------------------------------------------------------
+Wed Feb 27 23:53:31 CST 2013 - hillwood@linuxfans.org
+
+- Drop GStreamer mixer support.
+
+-------------------------------------------------------------------
+Sun Dec  9 15:49:08 UTC 2012 - nmo.marques@gmail.com
+
+- Update to verison 1.5.1
+  + fix mixer applet build in configure and makefile
+  + fix typo in configure.ac
+  + add gst-mixer-applet (moved from mate-applets package)
+  + fix FSF addresses
+- Split GStreamer mixer applet from main package and add
+  libmatepanelapplet-4.0 to BRs
+- Drop previous patches (1.5.0)
+- Add mate-media-1.5.1-fix_categories.patch: fix desktop file
+  categories, upstreamed
+- Add mate-media-1.5.1-update_COPYING.patch: update COPYING,
+  upstreamed
+
+-------------------------------------------------------------------
+Thu Nov  8 00:02:12 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + migration from mateconf-2.0 to gsettings
+- Add dbus-1 to BRs 
+- Supress devel and glade3 packages; no longer provides, leaving
+  obsolets/provides behind to remove stuff from users
+
+-------------------------------------------------------------------
+Sun Sep  9 18:02:25 UTC 2012 - nmo.marques@gmail.com
+
+- Spec file cleanups and rpmlint warnings/errors fixing
+
+-------------------------------------------------------------------
+Mon Aug 28 10:39:17 CST 2012 - hillwood@linuxfans.org
+
+- initial package from version 1.4.0

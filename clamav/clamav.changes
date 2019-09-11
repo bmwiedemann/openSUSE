@@ -1,0 +1,1676 @@
+-------------------------------------------------------------------
+Tue Aug  6 15:34:08 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to version 0.101.3:
+  * bsc#1144504: ZIP bomb causes extreme CPU spikes
+
+-------------------------------------------------------------------
+Wed Mar 27 17:30:05 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- Update to version 0.101.2 (bsc#1130721)
+  * CVE-2019-1787:
+    An out-of-bounds heap read condition may occur when scanning PDF
+    documents. The defect is a failure to correctly keep track of the number
+    of bytes remaining in a buffer when indexing file data.
+  * CVE-2019-1789:
+    An out-of-bounds heap read condition may occur when scanning PE files
+    (i.e. Windows EXE and DLL files) that have been packed using Aspack as a
+    result of inadequate bound-checking.
+  * CVE-2019-1788:
+    An out-of-bounds heap write condition may occur when scanning OLE2 files
+    such as Microsoft Office 97-2003 documents. The invalid write happens when
+    an invalid pointer is mistakenly used to initialize a 32bit integer to
+    zero. This is likely to crash the application.
+  * CVE-2019-1786:
+    An out-of-bounds heap read condition may occur when scanning malformed
+    PDF documents as a result of improper bounds-checking.
+  * CVE-2019-1785:
+    A path-traversal write condition may occur as a result of improper
+    input validation when scanning RAR archives.
+  * CVE-2019-1798:
+    A use-after-free condition may occur as a result of improper error
+    handling when scanning nested RAR archives.
+
+- added clamav-max_patch.patch to fix build
+- dropped clamav-freshclam-exit.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 17:30:15 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to version 0.101.1:
+  * Add missing headers to fix build of packages against libclamav.
+- Add missing include for str.h to libclamav/others_common.c
+  (clamav-str-h.patch)
+
+-------------------------------------------------------------------
+Thu Oct  4 09:04:01 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Update to version 0.100.2:
+  * bsc#1110723, CVE-2018-15378: Vulnerability in ClamAV's MEW
+    unpacking feature that could allow an unauthenticated, remote
+    attacker to cause a denial of service (DoS) condition on an
+    affected device.
+  * bsc#1103040, CVE-2018-14680, CVE-2018-14681, CVE-2018-14682:
+    more fixes for embedded libmspack.
+  * Make freshclam more robust against lagging signature mirrors.
+  * On-Access "Extra Scanning", an opt-in minor feature of
+    OnAccess scanning on Linux systems, has been disabled due to a
+    known issue with resource cleanup OnAccessExtraScanning will
+    be re-enabled in a future release when the issue is
+    resolved. In the mean-time, users who enabled the feature in
+    clamd.conf will see a warning informing them that the feature
+    is not active. For details, see:
+    https://bugzilla.clamav.net/show_bug.cgi?id=12048
+- Restore exit code compatibility of freshclam with versions before
+  0.100.0 when the virus database is already up to date
+  (bsc#1104457, clamav-freshclam-exit.patch).
+
+-------------------------------------------------------------------
+Tue Jul 31 08:43:39 UTC 2018 - max@suse.com
+
+- bsc#1101654: Disable YARA support for licensing reasons
+  (clamav-disable-yara.patch).
+- Do not ignore errors from useradd et al.
+- Unclutter the spec file.
+
+-------------------------------------------------------------------
+Wed Jul 25 16:23:09 UTC 2018 - mpluskal@suse.com
+
+- Update dendencies (pcre2, libjson-c and systemd)
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul 17 14:21:35 UTC 2018 - security@suse.com
+
+- fix library-without-ldconfig warnings on libclammspack
+
+-------------------------------------------------------------------
+Tue Jul 10 08:06:33 UTC 2018 - egdfree@opensuse.org
+
+- Update to version 0.100.1
+  * CVE-2018-0360: HWP integer overflow, infinite loop
+    vulnerability (bsc#1101410)
+  * CVE-2018-0361: PDF object length check, unreasonably long time
+    to parse relatively small file (bsc#1101412) 
+  * Buffer over-read in unRAR code due to missing max value checks
+    in table initialization
+  * Libmspack heap buffer over-read in CHM parser
+  * PDF parser bugs
+  * Add HTTPS support for clamsubmit
+  * Fix for DNS resolution for users on IPv4-only machines where
+    IPv6 is not available or is link-local only
+
+-------------------------------------------------------------------
+Thu Apr 26 15:35:15 UTC 2018 - max@suse.com
+
+- Update to version 0.100.0 (bsc#1089502):
+  * Add interfaces to the Prelude SIEM open source package for
+    collecting ClamAV virus events.
+  * Support libmspack internal code or as a shared object
+    library. The internal library is the default and includes
+    modifications to enable parsing of CAB files that do not
+    entirely adhere to the CAB file format.
+  * Link with OpenSSL 1.1.0.
+  * Deprecate of the AllowSupplementaryGroups parameter
+    statement in clamd, clamav-milter, and freshclam.
+    Use of supplementary is now in effect by default.
+  * Deprecate internal LLVM code support.
+  * Compute and check PE import table hash (a.k.a. "imphash")
+    signatures.
+  * Support file property collection and analysis for MHTML files.
+  * Raw scanning of PostScript files.
+  * Fix clamsubmit to use the new virus and false positive
+    submission web interface.
+  * Optionally, flag files with the virus
+    "Heuristic.Limits.Exceeded" when size limitations are exceeded.
+  * Improved decoders for PDF files.
+  * Reduced number of compile time warnings.
+  * Improved support for C++11.
+  * Improved detection of system installed libraries.
+  * Fixes to ClamAV's Container system and the introduction of
+    Intermediates for more descriptive signatures.
+  * Improvements to clamd's On-Access scanning capabilities
+    for Linux.
+  * Obsoletes clamav-fix_newer_zlib.patch
+- Update key ring and add signature file.
+- Turn off LLVM for now, because the bundled copy is deprecated,
+  the versions we have are too new and the performance gain over
+  the  byte code interpreter are negligable, according to upstream.
+- Move pkgconfig stuff from main to devel package.
+- Re-introduce removed options as deprecated, so that clamd and
+  freshclam don't exit on startup with an old config file
+  (clamav-obsolete-config.patch).
+- Put libclammspack0 into its own subpackage to follow the letter
+  of the shlib packaging policy, even though it really makes no
+  sense here.
+
+-------------------------------------------------------------------
+Wed Mar  7 13:15:11 UTC 2018 - max@suse.com
+
+- Update to security release 0.99.4 (bsc#1083915):
+  * CVE-2012-6706
+  * CVE-2017-6419
+  * CVE-2017-11423
+  * CVE-2018-1000085 (bsc#1082858)
+  * CVE-2018-0202
+- Obsolete patches:
+  * clamav-CVE-2012-6706.patch
+  * clamav-gcc47.patch
+
+-------------------------------------------------------------------
+Wed Feb 14 12:21:39 UTC 2018 - max@suse.com
+
+- bsc#1045490, CVE-2012-6706: VMSF_DELTA filter in libclamunrar
+  allows arbitrary memory write (clamav-CVE-2012-6706.patch).
+- Buildrequire curl-devel to enable clamsubmit.
+
+-------------------------------------------------------------------
+Tue Feb 13 08:50:55 UTC 2018 - varkoly@suse.com
+
+- bsc=983938 `After=syslog.target` left-overs in several unit files
+
+-------------------------------------------------------------------
+Fri Jan 26 15:19:33 UTC 2018 - vcizek@suse.com
+
+- Update to security release 0.99.3 (bsc#1077732)
+  * CVE-2017-12376 (ClamAV Buffer Overflow in handle_pdfname Vulnerability)
+  * CVE-2017-12377 (ClamAV Mew Packet Heap Overflow Vulnerability)
+  * CVE-2017-12379 (ClamAV Buffer Overflow in messageAddArgument Vulnerability)
+    - these vulnerabilities could have allowed an unauthenticated,
+      remote attacker to cause a denial of service (DoS) condition
+      or potentially execute arbitrary code on an affected device.
+  * CVE-2017-12374 (ClamAV use-after-free Vulnerabilities)
+  * CVE-2017-12375 (ClamAV Buffer Overflow Vulnerability)
+  * CVE-2017-12378 (ClamAV Buffer Over Read Vulnerability)
+  * CVE-2017-12380 (ClamAV Null Dereference Vulnerability)
+    - these vulnerabilities could have allowed an unauthenticated,
+      remote attacker to cause a denial of service (DoS) condition on an affected device.
+  * CVE-2017-6420 (bsc#1052448)
+    - this vulnerability allowed remote attackers to cause a denial of service
+      (use-after-free) via a crafted PE file with WWPack compression.
+  * CVE-2017-6419 (bsc#1052449)
+    - ClamAV allowed remote attackers to cause a denial of service
+      (heap-based buffer overflow and application crash) or possibly
+      have unspecified other impact via a crafted CHM file.
+  * CVE-2017-11423 (bsc#1049423)
+    - The cabd_read_string function in mspack/cabd.c in libmspack 0.5alpha
+      allowed remote attackers to cause a denial of service
+      (stack-based buffer over-read and application crash) via a crafted CAB file.
+  * CVE-2017-6418 (bsc#1052466)
+    - ClamAV 0.99.2 allowed remote attackers to cause a denial
+      of service (out-of-bounds read) via a crafted e-mail message.
+- drop clamav-0.99.2-openssl-1.1.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Nov 28 08:30:04 UTC 2017 - meissner@suse.com
+
+- clamav-0.99.2-openssl-1.1.patch: fixed build against openssl 1.1
+
+-------------------------------------------------------------------
+Tue Sep  5 23:30:39 UTC 2017 - jengelh@inai.de
+
+- Implement shared library guideline.
+
+-------------------------------------------------------------------
+Mon Aug 21 13:41:14 UTC 2017 - fvogt@suse.com
+
+- Add clamav-fix_newer_zlib.patch from ubuntu packages to fix build with
+  zlib 1.2.11 (boo#1041201)
+
+-------------------------------------------------------------------
+Tue Aug  1 18:40:35 CEST 2017 - ro@suse.de
+
+- pass --disable-zlib-vcheck to fix build in factory 
+
+-------------------------------------------------------------------
+Mon May 29 14:25:26 UTC 2017 - astieger@suse.com
+
+- provide and obsolete clamav-nodb to trigger it's removal in Leap
+  bsc#1040662
+
+-------------------------------------------------------------------
+Thu Oct 13 07:56:56 UTC 2016 - fweiss@suse.com
+
+- Add enable-timestamps option to disable time
+  dependent macros if passed to configure.
+  (bsc#1001154, clamav-disable-timestamps.patch)
+
+-------------------------------------------------------------------
+Wed Aug  3 08:46:11 UTC 2016 - max@suse.com
+
+- boo#991812: Remove obsolete dependency on latex2html-pngicons.
+
+-------------------------------------------------------------------
+Thu Jul 21 14:09:26 UTC 2016 - jengelh@inai.de
+
+- Trim useless words from description and fix spellos.
+  Test for user/group existence before adding and always show
+  errors when they occur.
+
+-------------------------------------------------------------------
+Thu Jun 30 13:42:20 UTC 2016 - fweiss@suse.com
+
+- Added BuildRequires systemd-rpm-macros
+- Added %ghost entry for /run/clamav
+- Use /run instead of /var/run because it is a symlink nowadays
+  (clamav-tmpfiles.conf)
+
+-------------------------------------------------------------------
+Thu Jun 23 07:30:49 UTC 2016 - fweiss@suse.com
+
+- Update to version 0.99.2 (bsc#978459)
+  * 7z: fix for FolderStartPackStreamIndex array index heck
+  * print all CDBNAME entries for a zip file when using the -z
+    flag.
+  * try to minimize the err cleanup path
+  * clamunrar: notice if unpacking comment failed
+  * signature manual update.
+  * use temp var for realloc to prevent pointer loss.
+  * fix debug VI hex truncation
+  * freshclam: avoid random data in mirrors.dat.
+  * libclamav: print raw certificate metadata
+  * freshclam manager check return code of strdup.
+  * additional suppress IP notification when using proxy
+  * fix download and verification of *.cld through PrivateMirrors
+  * suppress IP notification when using proxy
+  * remove redundant mempool assignment
+  * divide out dumpcerts output for better readability
+  * fix dconf and option handling for nocert and dumpcert
+  * patch by Jim Morris to increase clamd's soft file descriptor to
+        its potential maximum on 64-bit systems
+  * Move libfreshclam config to m4/reorganization.
+  * adding libfreshclam
+  * Add 'cdb' datafile to sigtools list of datafile types.
+  * NULL pointer check.
+  * malloc() NULL pointer check.
+  * clamscan 'block-macros' option.
+  * initialize cpio name buffer
+  * initialize mspack decompression buffers
+  * prevent memory allocations on used pointers (folder objects)
+  * prevent memory allocations on used pointers (boolvectors)
+  * initialize ARJ metadata structures
+  * change cli_malloc with cli_calloc
+  * check packSizes prior to dereference
+  * fixed inconsistent folder state on failure
+  * pre-check on (*unpackSizes) dereference
+  * fix on pre-checks on dereferenced array
+  * pre-checks on dereferenced array size values (not =0)
+  * adding sanity checks to 7z header parsing
+  * fixed mew source read issue
+  * documentation update on targets
+  * filetype consistency
+  * move llvm option flag handling to new m4 file
+  * hwp5.x: fix for streams without names
+
+- bsc#958451: Remove updateclamconf, because it breaks
+  configurations that have multiple occurances of the same keyword.
+
+  Henceforth the configuration files have to be merged manually, if
+  a ClamAV update adds or removs options.
+
+-------------------------------------------------------------------
+Fri Jun 17 10:07:51 UTC 2016 - martin.liska@suse.com
+
+- Change default C++ std to -std=gnu++98.
+
+-------------------------------------------------------------------
+Thu Mar  3 11:30:10 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.99.1
+ * hwp5.x: fix for streams without names
+ * libclamav: yara: avoid unaliged access to 64bit variable
+ * patch by Mark Allan to add show-progress option to freshclam.
+ * added 'CustomXML' as trigger for likely OOXML
+ * ClamAV 0.99.1 beta1 release.
+ * add scanning options for scanning xml-based documents
+   (MSXML, OOXML, HWPML) and HWP3
+ * add dconfs for XDP, MBR, GPT, APM, OOXML, MSXML, and HWP formats
+ * hwp: scan decompressed data on limits exceeded
+ * Fix for signature name length<3 in .ign & .ign2 CVD files.
+ * Change RTF file magic from '{\rtf' to '{\rt'
+ * zeroing out buffer at allocation to avoid writing uninitialized
+   bytes to a file
+ * adding check for compressed input stream
+ * clean up and boost accuracy to detecting OOXML documents
+ * Fix crash when using pcre statistics due to inconsistent memory
+   management function calls
+ * adding check to verify a valid number of rounds for rijndael aes
+   encryption/decryption
+ * fixing edge case revealed by unit testing
+ * let html be scanned raw when --scan-html=no is in effect.
+ * fix crash due to memory overlay with crafted 7z files.
+ * fixing off by one OOB write in htmlnorm
+ * fixing autoit OOB bufferread
+ * sigtool: adding support for decoding cdb sigs
+ * fix embedded http links.
+ * fix regression crash on sid 1005597703 due to uninitialzed
+   (i.e., garbage initialized) structure.
+ * corrects mso stream prefix value for big endian processors.
+ * ooxml_hwp: add support for filetyping and preclassification
+ * hwpole2: new filetype and handler for hwp embedded ole2 files
+ * fixing possible oob dereference when parsing mbox files
+ * adding explicit wwunpack oob checks
+ * fixing edge case where a null terminator was unintentionally
+   written into an adjacent buffer.
+ * hwpml: use msxml_parser callback scanner for binary data
+ * msxml_parser: add callback-based scanning mechanism
+ * HWPML: added hwpml_keys for hwpml parsing
+ * add HMPML filetype, tab fixes in filetype.c
+ * Hwp3.x: inflate compressed segment and offset tracking
+ * Hwp3.x file header parsing and preclass
+ * pcre: fixed minimum pcre version check
+ * fix detection of libcheck without pkg-config file
+ * add HWP5 filetype tracking to preclassification
+ * add HWP 3.x internal filetypes
+ * add hwp5 contents to preclass set
+ * proper identification of HWP file format
+ * strengthen file typing for OOXML.
+ * normalization of whitelist signatures
+ * github issue #9 - wrong length & offset.
+
+-------------------------------------------------------------------
+Fri Dec 25 19:22:23 UTC 2015 - meissner@suse.com
+
+- now can handle regexp using signatures using pcre bsc#960237
+
+-------------------------------------------------------------------
+Thu Dec  3 14:17:02 UTC 2015 - max@suse.com
+
+- Version 0.99 fixes bsc#957728.
+
+-------------------------------------------------------------------
+Wed Dec  2 13:23:40 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.99
+  * Processing of YARA rules(some limitations- see signatures.pdf).
+  * Support in ClamAV logical signatures for many of the features
+    added for YARA, such as Perl Compatible Regular Expressions,
+    alternate strings, and YARA string attributes. See signatures.pdf
+    for full details.
+  * New and improved on-access scanning for Linux. See the recent blog
+    post and clamdoc.pdf for details on the new on-access capabilities.
+  * A new ClamAV API callback function that is invoked when a virus 
+    is found. This is intended primarily for applications running in 
+    all-match mode. Any applications using all-match mode must use 
+    the new callback function to record and report detected viruses.    
+  * Configurable default password list to attempt zip file decryption.
+  * TIFF file support.
+  * Upgrade Windows pthread library to 2.9.1.
+  * A new signature target type for designating signatures to run
+    against files with unknown file types.
+  * Improved fidelity of the "data loss prevention" heuristic
+    algorithm. Code supplied by Bill Parker.
+  * Support for LZMA decompression within Adobe Flash files.
+  * Support for MSO attachments within Microsoft Office 2003 XML files.
+  * A new sigtool option(--ascii-normalize) allowing signature authors
+    to more easily generate normalized versions of ascii files.
+  * Windows installation directories changed from \Program Files\Sourcefire\
+    ClamAV to \Program Files\ClamAV or \Program Files\ClamAV-x64.
+- Refactor a little the specfile; remove some obsolete conditional
+  macros, as clamav doesn't build for SLE11 anyway
+- Remove clamav-sles9.patch; sles9 is not supported for a while
+
+-------------------------------------------------------------------
+Wed Jul  1 12:17:04 UTC 2015 - mpluskal@suse.com
+
+- Make clamd and clamav-milter services depend on freshclam as
+  they need it
+
+-------------------------------------------------------------------
+Mon May  4 13:39:49 UTC 2015 - max@suse.com
+
+- Version 0.98.7 fixes several security issues (bsc#929192) and
+  other bug fixes/improvements:
+  * Fix crash in upx decoder with crafted file. Discovered and
+    patch supplied by Sebastian Andrzej Siewior. CVE-2015-2170.
+  * Fix infinite loop condition on crafted y0da cryptor
+    file. Identified and patch suggested by Sebastian Andrzej
+    Siewior. CVE-2015-2221.
+  * Fix crash on crafted petite packed file. Reported and patch
+    supplied by Sebastian Andrzej Siewior. CVE-2015-2222.
+  * Fix an infinite loop condition on a crafted "xz" archive file.
+    This was reported by Dimitri Kirchner and Goulven Guiheux.
+    CVE-2015-2668.
+  * Apply upstream patch for possible heap overflow in Henry
+    Spencer's regex library. CVE-2015-2305.
+  * Fix false negatives on files within iso9660 containers. This
+    issue was reported by Minzhuan Gong.
+  * Fix a couple crashes on crafted upack packed file. Identified
+    and patches supplied by Sebastian Andrzej Siewior.
+  * Fix a crash during algorithmic detection on crafted PE file.
+    Identified and patch supplied by Sebastian Andrzej Siewior.
+  * Fix compilation error after ./configure --disable-pthreads.
+    Reported and fix suggested by John E. Krokes.
+  * Fix segfault scanning certain HTML files. Reported with sample
+    by Kai Risku.
+  * Improve detections within xar/pkg files.
+  * Improvements to PDF processing: decryption, escape sequence
+    handling, and file property collection.
+  * Scanning/analysis of additional Microsoft Office 2003 XML
+    format.
+
+-------------------------------------------------------------------
+Thu Feb  5 10:29:02 UTC 2015 - max@suse.com
+
+- Version 0.98.6 fixes several security issues:
+  * bsc#916217, CVE-2015-1461: Remote attackers can have
+    unspecified impact via Yoda's crypter or mew packer files.
+  * bsc#916214, CVE-2015-1462: Unspecified impact via acrafted upx
+    packer file.
+  * bsc#916215, CVE-2015-1463: Remote attackers can cause a denial
+    of service via a crafted petite packer file.
+  * bsc#915512, CVE-2014-9328: heap out of bounds condition with
+    crafted upack packer files.
+- Obsoletes clamav-soname.patch
+
+-------------------------------------------------------------------
+Fri Jan 30 15:19:34 UTC 2015 - max@suse.com
+
+- Don't need sendmail for building clamav-milter anymore,
+  sendmail-devel is enough (bnc#915414).
+
+-------------------------------------------------------------------
+Fri Jan 23 14:03:18 UTC 2015 - max@suse.com
+
+- bnc#914505: Config file merging and temp file creation got moved
+  to %pre by mistake. Put them back to %post.
+- Restore the updateclamconf script (bnc#908731).
+- Fix a step backwards in the soname version from 0.98.4 to 0.98.5
+  (https://bugzilla.clamav.net/show_bug.cgi?id=11193,
+  clamav-soname.patch).
+
+-------------------------------------------------------------------
+Thu Jan  1 21:34:01 UTC 2015 - meissner@suse.com
+
+- build with PIE 
+
+-------------------------------------------------------------------
+Wed Nov 19 14:54:58 UTC 2014 - max@suse.com
+
+- Version 0.98.5:
+  * Support for the XDP file format and extracting, decoding, and
+    scanning PDF files within XDP files.
+  * Addition of shared library support for LLVM versions 3.1 - 3.5
+    for the purpose of just-in-time(JIT) compilation of ClamAV
+    bytecode signatures.
+  * Enhancements to the clambc command line utility to assist
+    ClamAV bytecode signature authors by providing introspection
+    into compiled bytecode programs.
+  * Resolution of many of the warning messages from ClamAV
+    compilation.
+  * Improved detection of malicious PE files.
+  * Security fix for ClamAV crash when using 'clamscan -a'.
+  * Security fix for ClamAV crash when scanning maliciously
+    crafted yoda's crypter files (bnc#906077, CVE-2013-6497).
+  * ClamAV 0.98.5 now works with OpenSSL in FIPS compliant
+    mode (bnc#904207).
+  * Fix server socket setup code in clamd (bnc#903489).
+- Change updateclamconf to prefer the state of the old config
+  file even for commented-out options (bnc#903719).
+
+-------------------------------------------------------------------
+Sun Nov 09 02:31:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Thu Jun 26 15:25:33 UTC 2014 - max@suse.com
+
+- Version 0.98.4:
+  * Fix infinite loop in clamdscan when clamd is not running.
+  * Fix buffer underruns when handling multi-part MIME email
+    attachments.
+  * Fix onfiguration of OpenSSL on various platforms.
+  * Fix linking issues with libclamunrar.
+
+-------------------------------------------------------------------
+Thu Jun 12 13:30:02 UTC 2014 - max@suse.com
+
+- Fix dangling symlink in documentation (bnc#872682).
+- Remove init scripts and complete systemd integration.
+- Remove %ghost entry for /var/run/clamav.
+
+-------------------------------------------------------------------
+Thu May  8 15:02:40 UTC 2014 - max@suse.com
+
+- Version 0.98.3:
+  * Support for common raw disk image formats using 512 byte
+    sectors, specifically GPT, APM, and MBR partitioning.
+  * Experimental support of OpenIOC files. ClamAV will now extract
+    file hashes from OpenIOC files residing in the signature
+    database location, and generate ClamAV hash signatures. ClamAV
+    uses no other OpenIOC features at this time. No OpenIOC files
+    will be delivered through freshclam. See openioc.org and
+    iocbucket.com for additional information about OpenIOC.
+  * All ClamAV sockets (clamd, freshclam, clamav-milter, clamdscan,
+    clamdtop) now support IPV6 addresses and configuration
+    parameters.
+  * Use OpenSSL file hash functions for improved performance.
+    OpenSSL is now prerequisite software for ClamAV 0.98.3.
+  * Improved detection of malware scripts within image files.
+  * Change to circumvent possible denial of service when processing
+    icons within specially crafted PE files. Icon limits are now in
+    place with corresponding clamd and clamscan configuration
+    parameters. This issue was reported by Joxean Koret.
+  * Improvements to the fidelity of the ClamAV pattern matcher, an
+    issue reported by Christian Blichmann.
+  * Opt-in collection of statistics. Statistics collected are:
+    sizes and MD5 hashes of files, PE file section counts and
+    section MD5 hashes, and names and counts of detected
+    viruses. Enable statistics collection with the --enable-stats
+    clamscan flag or StatsEnabled clamd configuration parameter.
+  * Improvements to ClamAV build process, unit tests, and platform
+    support.
+  * Improve error handling in freshclam.
+  * ClamAV 0.98.3 also includes miscellaneous bug fixes and
+    documentation improvements.
+- clamav-fan-syscalls.patch isn't needed anymore because ClamAV
+  now uses sys/fanotify.h .
+
+-------------------------------------------------------------------
+Wed Apr 23 10:59:43 UTC 2014 - dmueller@suse.com
+
+- do not disable security checks in configure. That would be
+  insecure
+- use DFP_64bit also for aarch64
+
+-------------------------------------------------------------------
+Thu Mar 13 15:41:18 UTC 2014 - boris@steki.net
+
+- initial systemd support unit files 
+
+-------------------------------------------------------------------
+Wed Feb 19 07:02:06 UTC 2014 - meissner@suse.com
+
+- add fanotify systemcalls for power, s390 and arm 
+
+-------------------------------------------------------------------
+Tue Feb  4 14:19:01 UTC 2014 - max@suse.com
+
+- Improve handling of /var/run/clamav.
+
+-------------------------------------------------------------------
+Fri Jan 24 15:40:03 UTC 2014 - max@suse.com
+
+- Version 0.98.1 (bnc#841815):
+  * remove copy of wxWidgets (halves the size of the tarball).
+  * Decompression and scanning of files in "Xz" compression
+    format.
+  * Extraction, decompression, and scanning of files within Apple
+    Disk Image (DMG) format.
+  * Extraction, decompression, and scanning of files within
+    Extensible Archive (XAR) format.  XAR format is commonly used
+    for software packaging, such as PKG and RPM, as well as
+    general archival.
+  * Improvements and fixes to extraction and scanning of ole
+    formats.
+  * Option to force all scanned data to disk.
+  * Various improvements to ClamAV configuration, support of third
+    party libraries, and unit tests.
+- Rediff clamav-conf.patch
+
+-------------------------------------------------------------------
+Sun Dec 15 16:03:46 UTC 2013 - uweigand@de.ibm.com
+
+- fix build failures on ppc64le:
+  * fanotify is only supported on x86 platforms
+  * building tomsfastmath on (non-x86) 64-bit platforms requires -DFP_64BIT
+
+-------------------------------------------------------------------
+Sat Sep 28 07:35:34 UTC 2013 - meissner@suse.com
+
+- Version 0.98 (bnc#841815)
+ * code quality fixes on libclamav, clamd, sigtool, clamav-milter, clamconf and clamdtop
+ * code quality fixes on libclamav, libclamunrar and freshclam
+ * valgrind suppression rules for dl_catch_error complaints
+ * bb #8385: PDF ASCII85Decode zero-length fix
+ * libclamav: SCAN_ALL mode fixes
+ * bb #7436: elf64 header early exit
+ * iso9660: iso_scan_file rewrite
+- use source urls, add gpg signature retrieval.
+
+-------------------------------------------------------------------
+Mon Apr 29 14:32:07 UTC 2013 - meissner@suse.com
+
+- mirror the amavisd-new change of /var/spool/amavis bnc#663726
+
+-------------------------------------------------------------------
+Sun Apr 28 08:08:14 UTC 2013 - ecsos@schirra.net
+
+- Version 0.97.8 (bnc#816865)
+  * libclamav: Bugs reported by Felix Groebert of the Google Security Team
+
+-------------------------------------------------------------------
+Wed Mar 20 17:32:19 UTC 2013 - max@suse.com
+
+- Version 0.97.7 (bnc#809945)
+  * several hardening fixes.
+
+-------------------------------------------------------------------
+Mon Jan 14 14:42:03 UTC 2013 - mmeister@suse.com
+
+- pids and sockets of clamd and freshclam now reside in /var/run
+  instead of /var/lib (bnc#770395)
+- modified pid path in clamd's, freshclam's and clamav-milter's
+  init scripts 
+
+-------------------------------------------------------------------
+Mon Jan  7 13:40:31 UTC 2013 - max@suse.com
+
+- Remove the clamav-db subpackage. ClamAV installations should
+  fetch current versions of the virus database directly from
+  upstream. If there really is need for a packaged database, it
+  should be in a separate package.
+- Remove scripts do deal with very old (before 2008) config and
+  database file formats.
+
+-------------------------------------------------------------------
+Sat Jan  5 01:53:56 UTC 2013 - andreas.stieger@gmx.de
+
+- update daily.cvd to ver. 16364 
+  released on 04 Jan 2013 20:37 :0500 (sig count: 492103)
+- add cvd signature verification to %check section
+- make Release field of clamav-db package contain cvd file versions
+
+-------------------------------------------------------------------
+Fri Sep 28 09:30:25 UTC 2012 - max@suse.com
+
+- 0.97.6 also fixes bnc#780181.
+
+-------------------------------------------------------------------
+Wed Sep 19 08:07:55 UTC 2012 - toganm@opensuse.org
+
+- update to 0.97.6
+  * libclamav: bb#5751 - cl_scansis() may returan a file descriptor
+    instead of a valid return code 
+
+-------------------------------------------------------------------
+Thu Jul 26 11:41:02 UTC 2012 - dmueller@suse.com
+
+- avoid make check on qemu build
+
+-------------------------------------------------------------------
+Thu Jun 21 16:09:25 UTC 2012 - max@suse.com
+
+- The CVEs below correspont to: bnc#753611, bnc#753613, bnc#753610.
+
+-------------------------------------------------------------------
+Tue Jun 19 00:31:03 UTC 2012 - andreas.stieger@gmx.de
+
+- update to 0.95.5 [bnc#767574]
+- addresses possible evasion cases in some archive formats
+- CVE-2012-1457: allows to bypass malware detection via a TAR archive
+  entry with a length field that exceeds the total TAR file size
+- CVE-2012-1458: allows to bypass malware detection via a crafted
+  reset interval in the LZXC header of a CHM file
+- CVE-2012-1459: allows to bypass malware detection via a TAR archive
+  entry with a length field corresponding to that entire entry, plus
+  part of the header of the next entry
+- also addresses stability issues in portions of the bytecode engine
+- update clamav-conf.patch for moved lines
+- add a definitions snapshot as {main,daily}.cvd no longer in tarball
+- fix file-contains-date-and-time rpmlint warning
+
+-------------------------------------------------------------------
+Sat Mar 17 19:36:17 UTC 2012 - dimstar@opensuse.org
+
+- Add clamav-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sat Mar 17 14:18:48 UTC 2012 - toganm@opensuse.org
+
+- New version 0.97.4 
+ * libclamav/bytecode.c: reset to BYTECODE_AUTO mode at db reload
+   so that we don't fail to re-enable or re-disable it again
+   (bb#3789)
+ * misc: performance improvement for HP-UX PA-RISC - patch from 
+   Michael Pelletier <michael.v.pelletier*raytheon.com>
+   (bb#3926)
+ * libclamav/pe.c: parse vinfo where varfileinfo occours before
+   stringfileinfo (bb#3062)
+ * clamd: add support for on-access scanning on OS X with ClamAuth
+   (beta)
+ * libclamav/bytecode_api*: Fix Sparc crash (bb #4324)
+ * libclamav: fix bytecode whitelisting
+ * libclamav: fix macro detection in OLE2BlockMacros (bb#4269)
+ * libclamav/readdb.c: allow comments in all db files (bb#3930)
+ * libclamav/scanners.c: use lsigs when scanning vba data (bb#3922)
+ * libclamav/matcher-hash.c: Fix SIGBUS on PA-RISC (big-endian)
+   architectures (bb #3894). 
+
+-------------------------------------------------------------------
+Tue Oct 18 09:17:51 UTC 2011 - max@suse.com
+
+- New version 0.97.3 (bnc#724856, CVE-2011-3627):
+  * freshclam/manager.c: fix error when compiling without DNS
+    support (bb#3056)
+  * libclamav/pdf.c: flag and dump PDF objects with /Launch
+    (bb #3514)
+  * libclamav/bytecode.c,bytecode_api.c: fix recursion level crash
+    (bb #3706).
+  * docs: clarify behavior of --scan-*/Scan* options (bb#3134)
+  * libclamav/bytecode_vm.c: fix opcode 20 error (bb #3100)
+  * freshclam: fix pidfile removal (bb#3499)
+  * libclamav/pdf.c:  fix incorrect blocking of some encrypted PDF
+    with empty user passwords. (bb #3364)
+  * sigtool/sigtool.c: fix calculation of max signature length
+
+-------------------------------------------------------------------
+Tue Jul 26 08:55:27 UTC 2011 - max@novell.com
+
+- New version 0.97.2 (bnc#708263):
+  * libclamav/matcher-hash.c: off by one read in cli_hm_scan
+    (bb#2818, CVE-2011-2721).
+  * libclamav/pdf.c: fix encrypted pdf detection (bb #2988)
+  * clamav-milter/clamfi.c: fix typo in error message (bb#3040)
+  * libclamav/lzma_iface.c: shut up huge alloc warns for 7z/lzma
+    (bb#2913)
+  * libclamav/c++/bytecode2llvm.cpp: fix use of unaddressable data
+    in bytecode_watchdog.
+  * libclamav/phishcheck.c: fix safebrowsing detection on certain
+    URLs
+
+-------------------------------------------------------------------
+Thu Jun  9 10:04:22 UTC 2011 - max@novell.com
+
+- New version 0.97.1 (bnc#698999):
+  * libclamav/mew.c: harden boundary check on e8/e9 fixup
+  * libclamav/matcher-hash.c: in hm_sort don't swap an item with
+    itself (bb#2818)
+  * freshclam/manager.c: fix return code of Rfc2822DateTime()
+    (bb#2809)
+  * libclamav/pdf.c: better detection for encrypted PDFs
+    (bb #2448)
+  * libclamav/c++: add support for building with external LLVM 2.9,
+    and drop external 2.8 support
+  * clamd: log request ip address for instream scans #bb2592
+  * libclamav/c++/llvm/lib/Target/X86/X86InstrInfo.td: bb #2763
+    don't assert on AVX chips (Intel Core i5 and i7)
+  * sigtool: properly normalize html files (bb#2764)
+  * sigtool/sigtool.c: fix formatting of hash dbs (bb#2765)
+  * freshclam: add mirror statistics mechanism
+  * libclamav/pe_icons.c: don't sigbus on sparc (bb#2695)
+  * libclamav/pe.c: reset corrupted status before bytecode
+    hooks (bb#2544)
+  * sigtool, freshclam: put .info on top of container to speed
+    up loading
+  * sigtool: fix --verify-cdiff
+  * sigtool: allow arbitrary names for --build
+  * clamdscan: fix file exclusion (bb#2579)
+  * clamd: add new option ClamukoExcludeUID (bb#2260)
+  * libclamav/elf.c: fix incorrect detection of Broken.Executable
+    (bb#2580)
+  * shared/output.c: fix empty lines in syslog (bb#2578)
+  * clamd: update description of ReadTimeout (bb#2565)
+  * clamd: add new config option BytecodeUnsigned (bb#2537);
+    drop "None" from BytecodeSecurity
+  * clamscan: add new switch --bytecode-unsigned and drop
+    --bytecode-trust-all
+  * sigtool/sigtool.c: improve handling of bytecode.info (bb#2292)
+  * libclamav/others.c: make sure TLS key is initializer
+    (bb #2588).
+  * configure: check for enable_extended_FILE_stdio (bb #2542)
+  * sigtool/sigtool.c: handle all signature formats with
+    --(list|find)-sigs (bb#2534)
+
+-------------------------------------------------------------------
+Wed Feb  9 09:20:42 UTC 2011 - max@novell.com
+
+- Security update 0.9.7 (bnc#673753):
+  ClamAV 0.97 brings many improvements, including complete Windows
+  support, support for signatures based on SHA1 and SHA256, better
+  error detection, as well as speed and memory optimizations. The
+  complete list of changes is available in the ChangeLog file. For
+  upgrade notes and tips please see:
+  https://wiki.clamav.net/Main/UpgradeNotes097
+
+-------------------------------------------------------------------
+Wed Dec  1 17:42:03 UTC 2010 - max@novell.com
+
+- New version 0.96.5 (bnc#656548):
+  * libclamav/pdf.c: fix crashes (bb #2358, bb #2380, bb #2396).
+  * libclamav/pe_icons.c: off by one while (bb#2344)
+  * libclamav: fix detection of embedded executables
+  * libclamav/matcher-ac.c: fix offset handling for sigs with {x-y}
+  * freshclam/manager.c: fix error path infinite loop (bb#2389)
+  * freshclam: improve mirror management
+  * libclamav: fix possible use of uninitialized values (bb#2291)
+  * libclamav: Set the unreliability flag on (un)packed files
+    (bb#2307)
+  * libclamav/c++: Update embedded copy of LLVM to version 2.8
+    (bb #2327)
+  * freshclam: make query format backward compatible
+  * freshclam: get detection stats directly from clamd (bb#2312)
+  * libclamav/cache.c,c++/bytecode2llvm.cpp}: make cl_load thread
+    safe (bb #2333).
+  * freshclam: load database in subprocess (bb #2147).
+  * clamd: add new commands DETSTATS and DETSTATSCLEAR
+    (part of bb#2312)
+  * libclamav/7z.c: fix file descriptor leak (bb #2347)
+  * clamd, libclamavll: add ability to logg messages from libclamav
+    (bb #1965)
+  * libclamav/builtin_bytecodes.h: Don't disable JIT on pentium4
+    (bb #2345)
+  * clamav-for-windows: displace clamav-for-windows to a separate
+    solution and directory
+  * clamd: add new option OLE2BlockMacros (requested by Mike)
+  * freshclam: DatabaseCustomURL: add support for
+    If-Modified-Since
+  * freshclam: add initial support for DatabaseCustomURL
+
+-------------------------------------------------------------------
+Thu Oct 28 16:34:29 CEST 2010 - max@suse.de
+
+- New version: 0.96.4 (bnc#649631):
+  * sigtool/sigtool.c: don't use of sizeof() for malloc'ed buffer
+    (bb#2283)
+  * shared/cdiff.c, sigtool/sigtool.c: fix error path double frees
+    (bb#2280, bb#2281)
+  * See /usr/share/doc/packages/clamav/ChangeLog for the full list
+    of changes.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:32:10 UTC 2010 - max@novell.com
+
+- New version: 0.96.3 (bnc#640812):
+  * libclamav/nsis/bzlib.cld sys: port upstream fixes for
+    CVE-2010-0405, check for buggy bzip2 (bb#2230, bb#2231).
+  * libclamav/pdf.c: Add missing boundscheck to pdf code
+    (bb #2226).
+  * libclamav/c++/bytecode2llvm.cpp: workaround crash due to gcc
+    stack alignment requirements (bb #2270).
+  * libclamav/pdf.c, pe.c, bytecode*: Fix bytecode virusname
+    reporting (bb #2255).
+  * clamav-milter/netcode.c: fix error path fd leak when
+    connection succeeds but ping fails (bb#2259).
+  * libclamav/bytecode.c: properly skip bytecodes with long lines.
+  * unit_tests: add VI unit tests
+  * libclamav: versioninfo hashset was not properly cached
+    (bb#2065).
+  * libclamav/pe.c: add BC_PE_ALL hook (bb #2237).
+  * libclamav/c++/{bytecode2llvm,ClamBCRTChecks}.cpp: avoid false
+    'Verification error' messages (bb #2239).
+  * freshclam/freshclam.c: fix handling of relative paths with
+    --datadir (bb#2240).
+  * clamd/clamd.c: limit RLIMIT_DATA to 2GB on 32-bit processes
+    (bb #1941).
+  * libclamav/regex/regexec.c: fix regex when
+    sizeof(void*) != sizeof(long) (bb #2232).
+  * libclamav/pdf.c: improve handling of pdf objects (bb #2216).
+  * libclamav/pe_icons.c: support special case where icon is
+    encoded as 32bpp but it really carries alpha as a mask... well
+    go figure. (bb#2221)
+  * libclamav/mpool.c: permanently disable debug mode (bb#2222).
+  * libclamav: allow logical sigs to be used as file type sigs
+    (bb#2228).
+  * libclamav/c++/detect.cpp: don't warn on x86_64 vs i386
+    mismatches (bb #2214).
+  * sigtool/sigtool.c: fix EOL matching in --find-sigs (bb#2164).
+  * libclamav/bytecode_detect.c: prevent fclose(NULL) on SELinux
+    (bb #2200).
+
+-------------------------------------------------------------------
+Wed Sep 15 16:27:51 CEST 2010 - max@suse.de
+
+- BuildRequire python-devel instead of python, so that we get the
+  unittest module needed for "make check".
+
+-------------------------------------------------------------------
+Mon Aug 16 18:42:40 CEST 2010 - max@suse.de
+
+- New version: 0.96.2
+- This version brings a new PDF parser, performance and memory
+  improvements, and a number of bugfixes and minor enhancements.
+  This upgrade is recommended for all users.
+
+-------------------------------------------------------------------
+Wed May 19 17:58:18 CEST 2010 - max@suse.de
+
+- New version: 0.96.1:
+ * libclamav/7z/Archive/7z/7zIn.c: fix possible(?) null dereference
+   reported by clang (bb#1909).
+ * libclamav/pe_icons.c: properly round down when scaling (bb#2031)
+ * libclamav/pdf.c: bb #2016
+ * libclamav/readdb.c: properly reject .info files passed on
+   cmdline (bb#2025)
+ * libclamav/matcher-bm.c: fix offset check (bb#2032)
+ * libclamav/fmap.c: fix bug introduced in clamav-0.96-51-g3e3b587.
+ * libclamav/pe.c: properly resume stringtable loop (bb#2027)
+   Note: 0.96 is NOT affected as the min VI sig has got FL=53
+ * unit_tests: add bytecode.cvd load test
+ * docs/man: add clamav.milter.conf.5
+ * libclamav: Use mpool in win32 (well, sort of) as the mighty crt
+   allocator
+ * libclamav/fmap.c: make oof need stfu (bb#2000)
+ * libclamav/bytecode.c: handle global gep parameter correctly (bb
+   #1955)
+ * libclamav/c++/llvm: Update to LLVM 2.7 release.
+ * libclamav/bytecode*, unit_tests: add new unit tests for bytecode
+   API and fix bugs.
+ * libclamav/c++: Relax bounds checks. Was rejecting correct code.
+ * libclamav/filtering.c: fix handling of alternates and negated
+   alternates (bb #2004)
+ * libclamav/readdb.c: read the entire .cbc files, fix loading of
+   bytecode.cvd
+ * freshclam: fix handling of temporary files
+ * freshclam: add new option TestDatabases
+ * tools: make sure the libclamav version is high enough (bb#2013)
+ * sigtool/sigtool.c: fix error msg (bb#2002)
+ * clamdscan: respect ExcludePath in --fdpass mode (bb#1923)
+ * libclamav/c++/llvm/test: Fix make check failure on x86-32 (bb
+   #1942)
+ * clamdscan: respect ExcludePath in --fdpass mode (bb#1923)
+ * libclamav/readdb.c: add checks to enforce lsig compatibility
+   with 0.95.x (bb# 2008)
+ * clamscan/manager.c: don't closedir(NULL) (bb #2010)
+ * libclamav/c++/configure: add check that correct libstdc++
+   version is used (bb #1971)
+ * libclamav/cache.c: support building without pthreads (bb #1897).
+ * libclamav/bytecode*: add match_offsets support.
+ * shared/output.c: workaround FreeBSD's file locking issue
+   (bb#1918)
+ * freshclam/notify.c: fix warning message (bb#1972)
+ * libclamav: make lsigs working in cli_scanscript() (bb#1998)
+ * libclamav/fmap.c: nicely handle EINTR
+ * libclamav: no ERROR on void mapping (bb#1968)
+ * libclamav/matcher-ac.c: fix counting of subsig matches (bb#2001)
+ * clamav-milter: add VirusAction (bb#1867)
+ * libclamav/c++/llvm/include/llvm/ADT/SmallVector.h: Fix crash
+   with -ftree-vectorize/-O3(bb #1984).
+ * libclamav: fix some limit settings (bb#1973)
+ * bytecode: min/max functionality level support.
+ * libclamav/others.c: bump f-level
+ * libclamav/matcher-ac.c: fix handling of VI/MACRO special offsets
+   (bb#1957)
+ * configure: fix Apple-style universal build (bb #1988).
+ * libclamav/fmap.c: downgrade warning when the kernel doesn't want
+   a map back
+ * libclamav: avoid loading duplicate databases (bb#1962)
+ * clamconf: print information about platform and build.
+ * libclamav/c++/configure: disable gcc 3.4.6 by default, you can
+   still use it with --enable-llvm (bb #1935).
+ * docs/man/freshclam.conf.5.in: document LogFileMaxSize (bb#1960)
+ * freshclam/manager.c: add support for X-HostID to allow custom
+   UserAgent
+ * libclamav/bytecode.c: fix cli_unlink warnings (bb #1956).
+ * clambc, clamd,clamdtop,libclamav,unit_tests: fix compiler
+   warnings (bb #1872,
+ * libclamav/c++: allow building with gcc 3.4.6 (bb #1934).
+ * unit_tests/check_common.sh: fix make check on AIX (bb #1917).
+ * freshclam/manager.c: better handle daylight saving time changes
+   (bb#1920)
+ * libclamav/pe.c: more relaxed vinfo parser - try to mimic winxp's
+ * sigtool: handle .idb files
+ * libclamav/matcher.c: return proper virus name in icon detector
+   (bb#1933)
+ * libclamav/c++/bytecode2llvm.cpp: Fix load of multiple unsigned
+   bytecodes (bb #1924)
+ * contrib/split-tarball.sh: update to work with 0.96
+ * libclamav/Makefile.{am,in}: Fix unit test failure with
+   non-English locale (bb #1922)
+ * libclamav/c++/llvm/lib/Support/Allocator.cpp: Fix
+   SpecificBumpPtrAllocator destructor iteration.
+ * libclamav/c++/llvm/lib/ExecutionEngine/JIT/JIT.cpp: Fix the
+   previous PowerPC workaround to not crash when not using the JIT.
+ * libclamav/c++/{bytecode2llvm.cpp,llvm/lib/ExecutionEngine/JIT/JIT.cpp,
+   llvm/lib/Target/PowerPC/PPCISelLowering.cpp}: Workaround LLVM
+   JIT PowerPC relocation bug (bb #1921).
+ * unit_tests: Fix matchwithread.cbc
+
+-------------------------------------------------------------------
+Wed Apr 14 15:59:45 CEST 2010 - max@suse.de
+
+- Extended the libmilter compatibility patch for SLES9.
+- Explicitly disabling LLVM for versions older than SLES10 and
+  archs other than i586 and x86_64.
+
+-------------------------------------------------------------------
+Mon Apr 12 11:42:39 CEST 2010 - max@suse.de
+
+- Leave it up to configure to decide whether the arch supports JIT
+  compiling through LLVM (currntly only x86 and x86_64).
+
+-------------------------------------------------------------------
+Wed Apr  7 19:17:05 CEST 2010 - max@suse.de
+
+- ClamAV 0.96 introduces new malware detection mechanisms and
+  other significant improvements to the scan engine.
+  The key features are:
+
+  * The Bytecode Interpreter: the interpreter built into LibClamAV
+    allows the signature writers to create and distribute very
+    complex detection routines and remotely enhance the scanner’s
+    functionality.
+
+  * Heuristic improvements: improve the PE heuristics detection
+    engine by adding support of bogus icons and fake PE header
+    information. In a nutshell, ClamAV can now detect malware that
+    tries to disguise itself as a harmless application by using
+    the most common Windows program icons.
+
+  * Signature Improvements: logical signature improvements to
+    allow more detailed matching and referencing groups of
+    signatures. Additionally, improvements to wildcard matching on
+    word boundaries and newlines.
+
+  * Support for new archives: 7zip, InstallShield and CPIO.
+    LibClamAV can now transparently unpack and inspect their
+    contents.
+
+  * Support for new executable file formats: 64-bit ELF files and
+    OS X Universal Binaries with Mach-O files. Additionally, the
+    PE module can now decompress and inspect executables packed
+    with UPX 3.0.
+
+  * Support for DazukoFS in clamd
+
+  * Performance improvements: overall performance improvements and
+    memory optimizations for a better overall resource utilization
+    experience.
+
+-------------------------------------------------------------------
+Thu Mar 11 16:21:19 CET 2010 - max@suse.de
+
+- New version: 0.96rc1
+- Added gcc-c++ to BuildRequires to enable the JIT compiler.
+
+-------------------------------------------------------------------
+Tue Feb  9 14:29:29 CET 2010 - prusnak@suse.cz
+
+- build -db subpackage as noarch
+
+-------------------------------------------------------------------
+Thu Oct 29 11:32:57 CET 2009 - max@suse.de
+
+- Bugfix release 0.95.3 (bnc#550929)
+- Changes include:
+  * Fix various error path leaks.
+  * Drop hardcoded offset limits for embedded objects.
+  * Fix matching of logical sigs.
+  * Fix handling of broken .ldb sigs.
+  * Improve handling of PDF files.
+  * Work around possible race condition during db updates.
+  * Fix detection of encrypted zip files embedded into other files.
+  * Properly handle clamd disconnection in clamav-milter.
+
+-------------------------------------------------------------------
+Wed Jun 17 12:27:48 CEST 2009 - max@suse.de
+
+- clamav-sles9.patch: smfi_insheader() doesn't exist in libmilter
+  on SLES9, so we revert a recent change that introduced its
+  usage to improve the handling of DomainKeys Identified Mail.
+
+-------------------------------------------------------------------
+Mon Jun 15 12:17:33 CEST 2009 - max@suse.de
+
+- Security release: 0.95.2 (bnc#511963).
+
+-------------------------------------------------------------------
+Tue Apr 14 16:04:26 CEST 2009 - max@suse.de
+
+- Security release: 0.95.1 (bnc#493562)
+
+-------------------------------------------------------------------
+Mon Apr  6 17:14:47 CEST 2009 - max@suse.de
+
+- Version 0.95 also fixes two security issues:
+  bnc#491935 and bnc#491938.
+- Removed unneeded tcpd build dependency.
+- Removed obsolete configure switches.
+- ncurses-devel is needed for building clamtop.
+- Patched clamav-milter up to the latest upstream version to fix
+  the non-detection of virus code outside of attachments.
+  (bnc#445137)
+- Improved rcclamd to print a more instructive message when the
+  virus database files are missing.
+
+-------------------------------------------------------------------
+Tue Mar 24 18:33:34 CET 2009 - max@suse.de
+
+- New version 0.95 (bnc#488317):
+
+  * clamav-milter got rewritten. Standalone mode got dropped and
+    using multiple instances of clamd in parallel got added for
+    load sharing and fail-safety. The command lin
+
+  * Changes to the libclamav API will make future changes less
+    likely, but require adjustment of applications linking to
+    libclamav.
+
+  * Numerous other bug fixes and improvements.
+
+  * libGMP is no longer needed.
+
+- Drop support for versions older than 9.1/SLES9.
+
+- Improve init script of clamav-milter (bnc#445137).
+
+-------------------------------------------------------------------
+Mon Dec  1 16:32:27 CET 2008 - max@suse.de
+
+- New version 0.94.2 fixes recursion limits in JPEG scanning code
+  (bnc#450207).
+
+-------------------------------------------------------------------
+Tue Nov 11 11:24:28 CET 2008 - max@suse.de
+
+- Version 0.94.1 also fixes bnc#443311.
+- Disabled valgrind tests again, as they show false positives with
+  current glibc.
+
+-------------------------------------------------------------------
+Fri Nov  7 16:12:37 CET 2008 - max@suse.de
+
+- New bugfix release: 0.94.1:
+  * daily.ign was overwriting local.ign
+  * vba_extract.c: get_unicode_name off-by-one
+  * Don't execute special events twice in interactive mode
+  * Fix leak on rare error path in clamd/scanner.c.
+  * Fix URL parsing in phishing checks.
+  * Improve the javascript scanner.
+  * Fixes to bzip2 uncompression.
+  * Properly close descriptors before forking in clamav-milter.
+  * enable ScanPDF by default
+  * Testsuite improvements
+  * Many more minor bug fixes.
+- Fix pid file format of clamav-milter.
+- Improve clamav-milter configuration and init script (bnc#347684).
+- Suppressing valgrind error on iconv_open.
+
+-------------------------------------------------------------------
+Mon Sep 29 13:58:15 CEST 2008 - max@suse.de
+
+- Limit valgrind to i586 and x86_64.
+
+-------------------------------------------------------------------
+Wed Sep  3 09:26:12 CEST 2008 - max@suse.de
+
+- Added check-devel and valgrind to BuildRequires for 10.3 and
+  newer to support the new unit testing feature. This does not
+  add new runtime dependencies.
+
+- New version: 0.94:
+
+  * fix out-of-memory null dereferenc (bb#1141)
+
+  * fix possible invalid memory access (bb#1089)
+
+  * fix error path memleaks and fd leaks (bb#1141)
+
+  * Logical Signatures: The logical signature technology uses
+    operators such as AND, OR and NOT to allow the combination
+    of more than one signature into one entry in the signature
+    database resulting in more detailed and flexible pattern
+    matching.
+
+  * Anti-phishing Technology: Users can now change the priority
+    and reporting of ClamAV's heuristic anti-phishing scanner
+    within the detection engine process.
+
+  * Disassembly Engine: The initial version of the disassembly
+    engine improves ClamAV's detection abilities.
+
+  * PUA Detection: Users can now decide which PUA signatures
+    should be loaded
+
+  * Data Loss Prevention (DLP): This version includes a new
+    module that, when enabled, scans data for the inclusion of
+    US formated Social Security Numbers and credit card numbers.
+
+  * IPv6 Support: Freshclam now supports IPv6
+
+  * Improved Scanning of Scripts: The normalization of scripts
+    now covers JavaScript
+
+  * Improved QA and Unit Testing: The improved QA process now
+    includes API testing and new library of test files in
+    various formats that are tested on a wide variety of systems.
+
+-------------------------------------------------------------------
+Tue Jul  8 14:44:33 CEST 2008 - max@suse.de
+
+- New version 0.93.3 (bnc#406994):
+  * make sigtool compatible with the new OLE2 scan scheme (bb#1086)
+  * add missing checks for recv() failures (bb#1079)
+  * add missing check for file open failure (bb #1083).
+  * fix handling of nodes which also match single bytes (bb#1054)
+  * libclamav: faster loading of uncompressed .cld files, also
+    fixes bb#1064
+  * freshclam/manager.c: add missing closesocket on error path
+    (bb #1073).
+
+-------------------------------------------------------------------
+Mon Jun 16 15:57:42 CEST 2008 - max@suse.de
+
+- Security update 0.93.1 (bnc#399302, CVE-2008-2713)
+- Improved clamav-milter configuration and init script (bnc#382907)
+
+-------------------------------------------------------------------
+Fri Apr 18 19:04:35 CEST 2008 - max@suse.de
+
+- Convert the database to the new format instead of running
+  freshclam to re-fetch it (bnc#380787).
+- Added main.cld and daily.cld as %ghost
+- Refined the logic in %post of clamav-db as to when the dist
+  files need to get copied over.
+
+-------------------------------------------------------------------
+Tue Apr 15 13:07:00 CEST 2008 - max@suse.de
+
+- Security update 0.93 (bnc#350987, bnc#368963).
+- CVE-2007-6595: symlink attack on temporary files
+- CVE-2007-6596: recognize Base64 UUEncoded archives
+- CVE-2008-1100: Buffer overflow in the cli_scanpe function.
+- Remove bogus dependencies from libclamav.pc (bnc#196236)
+- Run freshclam on update before restarting clamd to convert the
+  database into the new format.
+
+-------------------------------------------------------------------
+Wed Feb 13 12:12:56 CET 2008 - max@suse.de
+
+- Security update 0.92.1: (bnc#361374)
+  * CVE-2008-0318: libclamav PE File Integer Overflow Vulnerability
+  * CVE-2008-0728: heap corruption
+
+-------------------------------------------------------------------
+Tue Jan 15 21:21:41 CET 2008 - aj@suse.de
+
+- Fix open call to build again.
+
+-------------------------------------------------------------------
+Fri Dec 14 14:56:29 CET 2007 - max@suse.de
+
+- Security update 0.92 (#343277):
+  * CVE-2007-6335 - MEW PE File Integer Overflow
+  * CVE-2007-6336 - Off-by-one error in LZX_READ_HUFFSYM()
+  * CVE-2007-6337 - bzlib issue
+- Make clamd error out if /dev/null can't be opened (#300019).
+
+-------------------------------------------------------------------
+Mon Nov  5 16:50:30 CET 2007 - max@suse.de
+
+- Added sendmail and sendmail-devel to BuildRequires.
+- Enabled clamav-milter and added an init script for it.
+  (fate#302362)
+
+-------------------------------------------------------------------
+Tue Aug 21 18:55:36 CEST 2007 - max@suse.de
+
+- Bugfix update 0.91.2.
+- Fixes some NULL dereferences and variable initialisation problems
+- Fix some rpmlint warnings in init scripts.
+
+-------------------------------------------------------------------
+Thu Aug  9 11:06:45 CEST 2007 - max@suse.de
+
+- Inform the user that to use Clamuko, clamd needs to run as root,
+  so that it can read the files it needs to scan (#201730).
+
+-------------------------------------------------------------------
+Tue Jul 17 13:39:44 CEST 2007 - max@suse.de
+
+- Stability and bugfix update: 0.91.1 (#292297)
+- Run ldconfig on (un)installation.
+- Make %check conditional to fix building on SLES8.
+
+-------------------------------------------------------------------
+Sun Jul 15 00:24:08 CEST 2007 - lrupp@suse.de
+
+- add zlib-devel to build requires
+- suppress some false positives from rpmlint
+- added %check section and remove unneeded INSTALL file from %doc
+
+-------------------------------------------------------------------
+Wed Jul 11 17:27:51 CEST 2007 - max@suse.de
+
+- Update to version 0.91 (#289830)
+- improved handling of .mdb files (fixes long startup times)
+- Adds anti-phishing support
+- unpacker for NSIS (Nullsoft Scriptable Install System)
+  self-extracting archives
+- unpacker for ASPack 2.12
+- new implementation of the Aho-Corasick pattern matcher providing
+  better detection for wildcard enabled signatures
+- support for nibble matching and floating offsets
+- extraction of PE files embedded into other executables
+- better handling of PE & UPX
+- removed dependency on libcurl (improves stability)
+- many other improvements and bugfixes
+
+-------------------------------------------------------------------
+Thu May 31 16:45:25 CEST 2007 - max@suse.de
+
+- Security update: 0.90.3 (#279536)
+- libclamav/unsp.c: fix end of buffer calculation (bb#464)
+- libclamav/others.c: use strict permissions (0600) for temporary files
+  created in cli_gentempstream() (bb#517).
+- libclamav/unrar/unrar.c: heap corruption causing DoS with corrupted
+  rar archive, better handle truncated files
+- libclamav/phishcheck.c: isURL() regex execution hangs on Solaris
+- libclamav/ole2_extract.c: detect block list loop (bb#466)
+
+-------------------------------------------------------------------
+Fri Apr 13 11:48:12 CEST 2007 - max@suse.de
+
+- Security update: 0.90.2 (#264189)
+- CVE-2007-1997: CAB File Unstore Buffer Overflow Vulnerability
+- CVE-2007-1745: file descriptor leak in CHM handler
+- File descriptor leaks in libclamav/pdf.c and libclamav/lockdb.c
+
+-------------------------------------------------------------------
+Mon Mar  5 16:00:56 CET 2007 - max@suse.de
+
+- Extended the database presence check in rcclamd to accept the
+  main.inc directory in addition to the main.cvd file, because
+  freshclam can delete the file during a scripted update.
+
+-------------------------------------------------------------------
+Fri Mar  2 14:38:54 CET 2007 - max@suse.de
+
+- Update to version 0.90.1 (#250566)
+- Some bug fixes and code improvements
+- Bumps the version of libclamav's soname, which should have been
+  done in 0.90 already.
+
+-------------------------------------------------------------------
+Tue Feb 20 14:55:04 CET 2007 - max@suse.de
+
+- Update to version 0.90 (#246214) to fix two Vulnerabilities:
+  - CAB File Denial of Service (CVE-2007-0897)
+  - MIME Parsing Directory Traversal (CVE-2007-0898)
+- Other changes of 0.90 include:
+  - Changed config file syntax (automatic conversion is done by the
+    RPM on update)
+  - New unpacker for RAR3, RAR2 and RAR1
+  - Rewritten unpackers for Zip and CAB files
+  - Support for RAR-SFX, Zip-SFX and CAB-SFX archives
+  - New PE parsing model
+  - Support for PE32+ (64-bit) executables
+  - Support for MD5 signatures based on PE sections (.mdb)
+  - ELF file parser
+  - Support for Sensory Networks' NodalCore hardware acceleration
+    technology
+  - Algorithmic detection can be controlled with CL_SCAN_ALGORITHMIC
+  - Support for new obfuscators: SUE, Y0da Cryptor, CryptFF
+  - Support for new packers: NsPack, wwpack32, MEW, Upack
+  - Support for SIS files (SymbianOS packages)
+  - Support for PDF and RTF files
+  - TCP and local sockets can be operated simultaneously
+  - New command: MULTISCAN (scan directory with multiple threads)
+- There where also some API/ABI changes which might affect packages
+  that link against libclamav. Affected functions are: cl_loaddb,
+  cl_loaddir and cl_scanbuff.
+- Cleaned up daemonizing of clamd and freshclam.
+
+-------------------------------------------------------------------
+Tue Dec 12 12:20:34 CET 2006 - max@suse.de
+
+- Security update: 0.88.7 (#227827, CVE-2006-5874)
+  - handle consecutive errors in base64 decoding
+  - honour recursion limit when scanning email messages
+  - clamscan: new option --mail-max-recursion
+  - libclamav/untar.c: honour archive limits
+
+-------------------------------------------------------------------
+Tue Nov  7 15:58:32 CET 2006 - max@suse.de
+
+- Add homedir of user vscan to the package (FATE300731).
+
+-------------------------------------------------------------------
+Mon Nov  6 12:17:53 CET 2006 - max@suse.de
+
+- Bugfix release: 0.88.6 (#218313)
+- freshclam: apply timeout patch from Everton da Silva Marques
+  (new options: ConnectTimeout and ReceiveTimeout)
+- clamd: change stack size at the right place (closes bug#103)
+- libclamav/petite.c: sanity check the number of rebuilt sections
+  (speeds up handling of malformed files)
+
+-------------------------------------------------------------------
+Tue Oct 17 15:26:12 CEST 2006 - max@suse.de
+
+- Bugfix release 0.88.5 fixes two serious security issues.
+  #212898, CVE-2006-4182, CVE-2006-5295
+
+-------------------------------------------------------------------
+Tue Aug  8 11:02:28 CEST 2006 - lnussel@suse.de
+
+- New version 0.88.4 fixes heap overflow in UPX decoder
+
+-------------------------------------------------------------------
+Thu Jul  6 16:02:15 CEST 2006 - max@suse.de
+
+- Bugfix release 0.88.3:
+  - fix possible false matches of alternatives
+  - Large binhex files were not being handled gracefully.
+  - fix zero allocation warning
+- Added bc and pkgconfig to BuildRequires to fix curl version
+  detection.
+- Prevent a file conflict on the database files when main and db
+  packages of different versions are installed.
+- Renamed clamav.conf to clamd.conf for SLES9.
+- Added the db subpackage to SLES9.
+- Bugzilla: 190647
+
+-------------------------------------------------------------------
+Tue May  2 11:31:54 CEST 2006 - max@suse.de
+
+- New version: 0.88.2
+- Fixes a buffer overflow in freshclam's get_database function
+  (CVE-2006-1989, Bug #171496).
+
+-------------------------------------------------------------------
+Mon Apr 10 10:26:49 CEST 2006 - meissner@suse.de
+
+- Fixed several implicit warnings which lead to failures
+  on 64bit platforms.
+
+-------------------------------------------------------------------
+Tue Apr  5 14:50:00 CEST 2006 - max@suse.de
+
+- New version: 0.88.1, fixes several security issues:
+  CVE-2006-1614, CVE-2006-1615, CVE-2006-1630, bug #164039.
+
+-------------------------------------------------------------------
+Thu Feb  9 15:30:43 CET 2006 - max@suse.de
+
+- Removed unneeded dependencies from the init script to break a 
+  dependency loop.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 13:08:57 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Thu Jan 12 16:53:26 CET 2006 - max@suse.de
+
+- Added gcc-4.1 stack protection (-fstack-protector).
+
+-------------------------------------------------------------------
+Mon Jan  9 19:41:07 CET 2006 - max@suse.de
+
+- New version: 0.88 (Bug #142298).
+
+-------------------------------------------------------------------
+Mon Nov  7 17:44:21 CET 2005 - lnussel@suse.de
+
+- Security update: version 0.87.1 (#132305, CVE-2005-3239,
+  CVE-2005-3303)
+
+-------------------------------------------------------------------
+Mon Sep 19 12:18:45 CEST 2005 - max@suse.de
+
+- New version: 0.87 (bug #117648).
+
+-------------------------------------------------------------------
+Mon Jul 25 12:22:09 CEST 2005 - max@suse.de
+
+- New version: 0.86.2
+
+-------------------------------------------------------------------
+Thu Jul 14 17:37:09 CEST 2005 - max@suse.de
+
+- New version: 0.86.1
+
+-------------------------------------------------------------------
+Tue Jun 21 15:33:53 CEST 2005 - max@suse.de
+
+- New version: 0.86
+
+-------------------------------------------------------------------
+Tue May 17 11:21:27 CEST 2005 - max@suse.de
+
+- New version: 0.85.1 (Bug #81264).
+
+-------------------------------------------------------------------
+Wed May 11 18:28:03 CEST 2005 - max@suse.de
+
+- New version: 0.85 (Bug #81264).
+
+-------------------------------------------------------------------
+Tue May  3 11:33:01 CEST 2005 - max@suse.de
+
+- New version: 0.84 (Bug #81264).
+- Added and special-cased the patch that is needed for 9.1/SLES9.
+
+-------------------------------------------------------------------
+Fri Mar 11 16:34:24 CET 2005 - max@suse.de
+
+- Fixed %doc file list (wildcards matched too much).
+
+-------------------------------------------------------------------
+Mon Feb 28 14:31:56 CET 2005 - max@suse.de
+
+- New version: 0.83
+
+-------------------------------------------------------------------
+Mon Feb  7 16:45:47 CET 2005 - max@suse.de
+
+- New version: 0.82
+
+-------------------------------------------------------------------
+Thu Jan 27 12:22:11 CET 2005 - max@suse.de
+
+- New version: 0.81
+
+-------------------------------------------------------------------
+Thu Nov 11 14:56:06 CET 2004 - max@suse.de
+
+- pkgconfig files go to libdir rather than /usr/lib.
+
+-------------------------------------------------------------------
+Thu Nov 11 11:02:01 CET 2004 - coolo@suse.de
+
+- fixing file list for debug packages
+
+-------------------------------------------------------------------
+Wed Nov  3 15:38:26 CET 2004 - max@suse.de
+
+- Fixed path to freshclam in init script, and rcfreshclam link.
+
+-------------------------------------------------------------------
+Mon Oct 18 17:36:31 CEST 2004 - max@suse.de
+
+- Updated to the final 0.80 release.
+
+- Added a runlevel script for freshclam.
+
+-------------------------------------------------------------------
+Mon Oct 11 18:39:37 CEST 2004 - max@suse.de
+
+- Updated to 0.80rc4.
+
+-------------------------------------------------------------------
+Wed Sep 29 15:04:36 CEST 2004 - max@suse.de
+
+- Updated to 0.80rc3. The README says:
+  "This release candidate eliminates possible false positive alerts
+  in UPX/FSG compressed files and clarifies behaviour of default
+  actions in clamd and freshclam."
+
+- This also eliminates the need to patch configure.in in order to
+  recognize resolv.
+
+-------------------------------------------------------------------
+Thu Sep 23 15:54:11 CEST 2004 - max@suse.de
+
+- Updated to 0.80rc2 which fixes a critical bug in the handling of
+  empty lines in text/plain emails.
+
+- Build with curl support.
+
+- Fixed building of shared libraries instead of static.
+
+- Removed unneeded %run_ldconfig calls.
+
+- Fixed file lists.
+
+- Check for main.cvd instead of daily.cvd on daemon startup.
+
+-------------------------------------------------------------------
+Mon Sep 20 17:44:02 CEST 2004 - max@suse.de
+
+- Updated to version 0.80rc which adds support for more file
+  formats, and HTML parsing. See the README file for details.
+
+- Added a warning to the init script if no virus database is
+  installed.
+
+-------------------------------------------------------------------
+Thu Aug  5 10:38:15 CEST 2004 - max@suse.de
+
+- New version: 0.75.1
+- Moved the virus database files into a subpackage, as they are
+  large and not needed if the database is kept up to date with
+  freshclam.
+
+-------------------------------------------------------------------
+Fri Jul 23 15:37:13 CEST 2004 - max@suse.de
+
+- New version: 0.75
+
+-------------------------------------------------------------------
+Thu Jul  8 19:31:41 CEST 2004 - max@suse.de
+
+- Added -fno-strict-aliasing to CFLAGS.
+
+-------------------------------------------------------------------
+Mon Jul  5 17:12:50 CEST 2004 - max@suse.de
+
+- New version: 0.74
+
+-------------------------------------------------------------------
+Tue Jun 15 17:06:58 CEST 2004 - max@suse.de
+
+- New version: 0.73
+
+-------------------------------------------------------------------
+Mon Apr 26 18:17:35 CEST 2004 - max@suse.de
+
+- New version: 0.70
+- Changes the format of the virus definition file.
+
+-------------------------------------------------------------------
+Mon Feb 16 16:01:01 CET 2004 - max@suse.de
+
+- New version: 0.67
+- Added support for tcpd (/etc/hosts.{allow,deny}).
+- Obsoletes clamav-manager.patch.
+
+-------------------------------------------------------------------
+Fri Feb 13 18:26:01 CET 2004 - max@suse.de
+
+- New version: 0.66
+- Fixes a remote DoS vulnerability (Bug #34412).
+
+-------------------------------------------------------------------
+Tue Jan 27 12:19:51 CET 2004 - max@suse.de
+
+- New package: ClamAV Anti-Virus Toolkit
+

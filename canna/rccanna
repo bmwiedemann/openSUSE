@@ -1,0 +1,97 @@
+#! /bin/sh
+# Copyright (c) 1996, 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+#
+# Author: Thomas Wedekind <wede@suse.de>, 2000
+#         Mike Fabian <mfabian@suse.de>, 2000
+#
+# /etc/init.d/canna
+#
+### BEGIN INIT INFO
+# Provides:       canna
+# Required-Start: $network $named $remote_fs
+# Required-Stop:  $network $named $remote_fs
+# Default-Start:  3 5
+# Default-Stop:
+# Description:   Canna Kanji Server used for input of Japanese
+### END INIT INFO
+
+. /etc/rc.status
+
+CANNA_BIN=/usr/sbin/cannaserver
+test -x $CANNA_BIN || exit 5
+
+# First reset status of this service
+rc_reset
+
+case "$1" in
+    start)
+        echo -n "Starting Canna Kanji Server"
+        if test -e /tmp/.iroha_unix ; then
+                rm -rf /tmp/.iroha_unix 2> /dev/null
+		mkdir /tmp/.iroha_unix || exit 1;
+        fi
+        # Our cannaserver contains a security patch to run in a chroot jail
+        # This security patch changed the option syntax a little bit:
+        #
+        # -m            unchanged
+        # -p num        unchanged (listen on alternative port)
+        # -s            was: -syslog (enable syslog logging)
+	# -i            was: -inet (enable use of inet socket)
+	# -6            was: -inet6
+        # -d            unchanged (enable debugging)
+        # -l level      unchanged (set log level)
+        # -u user       changed: jail user instead of userID.
+        # -r dir        new (jail directory)
+        #
+        startproc -u root -t 1 $CANNA_BIN -u wnn -r /var/lib/canna > /dev/null 2>&1
+        rc_status -v    
+        ;;
+    stop)
+        echo -n "Shutting down Canna Kanji Server"
+        killproc -TERM $CANNA_BIN
+        rc_status -v
+        if test -e /tmp/.iroha_unix ; then
+                rm -rf /tmp/.iroha_unix 2> /dev/null
+        fi
+        ;;
+    try-restart)
+        $0 status >/dev/null && $0 restart
+        rc_status
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        rc_status
+        ;;
+    force-reload)
+        $0 stop  &&  $0 start
+        rc_status
+        ;;
+    reload)
+        rc_failed 3
+        rc_status -v
+        ;;
+    status)
+        echo -n "Checking for Canna Kanji Server: "
+        checkproc $CANNA_BIN
+        rc_status -v
+        ;;
+    full-status)
+        $0 status
+        rc_status
+        if test -x /usr/bin/cannastat ; then
+            /usr/bin/cannastat
+        else
+            echo "Full status not available, can't start \`/usr/bin/cannastat'."
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|try-restart|restart|force-reload|reload|status|full-status}"
+        exit 1
+        ;;
+esac
+
+rc_exit
+
+
+

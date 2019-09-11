@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sat Oct 22 15:29:43 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.0.14
+  * Deprecated TTF_GetFontKerningSize() which takes font glyph
+    indices and added TTF_GetFontKerningSizeGlyphs() which
+    takes characters
+
+-------------------------------------------------------------------
+Sun Jan 10 17:23:29 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 2.0.13
+  * Fixed bug rendering text starting with a glyph with negative starting offset
+  * Fixed regression loading non-scalable fonts
+  * TTF_GetFontKerningSize() gets kerning between two characters, not two glyph indices
+
+-------------------------------------------------------------------
+Thu Jan  8 09:58:33 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL_ttf package
+

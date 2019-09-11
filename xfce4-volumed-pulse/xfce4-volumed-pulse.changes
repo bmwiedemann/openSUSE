@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Feb 17 11:36:19 UTC 2018 - seife+obs@b1-systems.com
+
+- update to 0.2.3:
+  * Switch to Gtk3 by default
+  * Set the transient hint on audio notifications
+- partially applied spec-cleaner hints
+
+-------------------------------------------------------------------
+Mon Jan 30 11:30:28 UTC 2017 - jengelh@inai.de
+
+- Remove redundant %clean again
+
+-------------------------------------------------------------------
+Sun Nov 27 19:28:10 UTC 2016 - seife+obs@b1-systems.com
+
+- enable libnotify support
+- enable verbose build for gcc parameter checking
+- package NEWS file instead of ChangeLog
+
+-------------------------------------------------------------------
+Sat Nov 26 16:46:02 UTC 2016 - seife+obs@b1-systems.com
+
+- initial package, version 0.2.2
+

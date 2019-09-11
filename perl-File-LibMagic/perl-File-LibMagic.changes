@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Mon Oct 23 05:19:59 UTC 2017 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-File-LibMagic/Changes
+
+  1.16     2017-10-22
+  
+  - Added a doc note on installing the required dependencies on Red Hat. RT
+    #110796.
+  
+  - Fix tests on macOS. Based on PR #7 from Tom Wyant.
+
+-------------------------------------------------------------------
+Wed May 31 07:34:37 UTC 2017 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-File-LibMagic/Changes
+
+  1.15     2015-09-19
+  
+  - Fix the Makefile.PL so that we don't install the LibMagic.xs and typemap
+    files. Based on a patch from Petr Pisar. RT #107081.
+  
+  
+  1.14     2015-09-16
+  
+  - Fixed handling of extra include dirs passed to Makefile.PL via the -I
+    flag. This wasn't working properly in previous releases. Reported by Andy
+    Jack. GH #6.
+  
+  
+  1.13     2015-07-12
+  
+  - Fix failing tests with some versions of libmagic. PR #5 by E. Choroba.
+  
+  
+  1.12     2015-03-07
+  
+  - The constructor now accepts named params. In addition to a magic_file param,
+    it now accepts follow_symlinks and uncompress params. These do what you'd
+    expect, tell the object to follow symlinks and/or uncompress files when
+    getting info from them. The old single parameter constructor is still
+    supported, but is no longer documented.
+  
+  - The old APIs are now called "discouraged" rather than "deprecated" in the
+    documentation. I have no plan to remove these APIs any time soon or to make
+    them warn, so "deprecated" was too strong a word.
+  
+  - Changed a test to hopefully skip rather than fail on OpenBSD systems.
+  
+  
+  1.11     2015-03-01
+  
+  - The info_from_handle() method did not handle binary data correctly, which
+    could lead to incorrect results.
+  
+  - The info_from_*() methods returned a full mime type with encoding in the
+    "mime_type" key rather than just the mime type alone.
+  
+  - Allow File::LibMagic->new() to accept an array reference containing multiple
+    magic file paths.
+
+-------------------------------------------------------------------
+Fri Feb 20 12:53:24 UTC 2015 - lnussel@suse.de
+
+- updated to 1.10
+
+  * Added yet another OO API to File::LibMagic. This provides a simpler and more
+    future-proof API which can be expanded on later. The new methods are
+    info_from_string(), info_from_filename(), and info_from_handle(). The latter
+    method allows you to get info about an open filehandle. These new methods
+    return the description, MIME type, and character encoding in one call. This
+    addresses RT #54843 and partially addresses RT #99470.
+  * Switched from using Devel::CheckLib to Config::AutoConf with the hope that
+    the latter will work with more compilers. Requested by Jens Rehsack. RT
+    #46543.
+  * Switched the primary git repo to github
+    (https://github.com/autarch/File-LibMagic).
+  * A File::LibMagic object would not close one of the handles it might have
+    opened, leading to leaks. Reported by Alexander Zaitsev. RT #93512.
+
+-------------------------------------------------------------------
+Mon Dec  2 16:46:29 UTC 2013 - jw@suse.com
+
+- link to removed, the package does not exist in Factory.
+- Fixed source url for version 1.00
+
+-------------------------------------------------------------------
+Tue Sep  3 14:42:58 UTC 2013 - jw@suse.com
+
+- update to 1.00, pulled from cpan
+
+-------------------------------------------------------------------
+Mon Feb 20 08:44:28 UTC 2012 - coolo@suse.com
+
+- regenerate with cpanspec
+- disable tests as they rely on specific version of libmagic's text
+  output
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:22 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Jul  2 10:58:13 UTC 2010 - chris@computersalat.de
+
+- spec mods
+  o added header
+  o cleanup
+
+-------------------------------------------------------------------
+Tue Jun 29 13:02:49 UTC 2010 - jw@novell.com
+
+- Sorry that 11.2 did not check the RPM-Group. fixed.
+
+-------------------------------------------------------------------
+Sat Jun 26 15:59:51 UTC 2010 - jw@novell.com
+
+- cleaned up spec-file, added example subdir
+  My tests show, that this is the best of all. File::MimeInfo::Magic comes second.
+  Thanks Christos!
+
+-------------------------------------------------------------------
+Sat Jun 26 13:21:30 UTC 2010 - jw@novell.com
+
+- initial check in, 0.96
+  File::Type, File::MMagic, File::MMagic::XS, File::MimeInfo::Magic need some more competition
+

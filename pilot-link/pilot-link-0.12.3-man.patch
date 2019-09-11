@@ -1,0 +1,10 @@
+--- doc/Makefile.am
++++ doc/Makefile.am
+@@ -1,7 +1,5 @@
+-if BUILD_XML
+ if ENABLE_XSLTPROC
+ SUBDIRS = xml man
+-endif
+ else
+ SUBDIRS = man
+ endif

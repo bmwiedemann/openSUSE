@@ -1,0 +1,960 @@
+-------------------------------------------------------------------
+Sun Jul  8 18:04:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(libnm-glib) BuildRequires: Balsa switched from
+  libnm-glib to GNetworkMonitor in version 2.5.2.
+- Drop pkgconfig(libsecret-1) BuildRequires: Not used, as we are
+  not passing --with-libsecret to configure (upstream default is
+  not using it).
+- Stop passing --enable-smime, --with-gtkspell and --with-ssl to
+  configure, no longer recognized.
+- Replace pkgconfig(gtkspell3-3.0) with pkgconfig(gspell-1)
+  BuildRequires and pass --with-spell-checker=gspell to configure.
+  This also allows for dropping conditionals for
+  pkgconfig(enchant-2) and pkgconfig(enchant) BuildRequires.
+- Replace openssl-devel with pkgconfig(openssl) BuildRequires,
+  align with what configure checks for.
+
+-------------------------------------------------------------------
+Thu Jun 28 18:41:24 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.5.6:
+  + Fix scroll on click issue.
+  + Display time stamps of date-only RFC 5545 iCalendar events.
+  + Disable reply-to-group when the message is not from an
+    RFC-2369-compliant mail list.
+  + Mitigate EFail vulnerability for Webkit2.
+- Fix a typo that breaks build in released version:
+  + Add balsa-2.5.6-fix-build-breaker-typo.patch (picked from
+    upstream).
+
+-------------------------------------------------------------------
+Sat Apr  7 10:16:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.5.5:
+  + Crypto performance improvements.
+  + Updates to match glib-2.56 API changes.
+  + Fix use-after-free bugs.
+  + Improve replying to HTML-only messages.
+  + Low level networking re-done.
+  + Multiple bugfixes.
+- Drop balsa-build-ssl-1.1.patch: Fixed upstream.
+- Run spec-cleaner, modernize spec.
+- Add pkgconfig(gnutls) and python3-html2text BuildRequires: New
+  dependencies.
+- Drop conditional compface BuildRequires.
+- Add conditional for pkgconfig(enchant) and new
+  pkgconfig(enchant-2) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 25 21:54:52 UTC 2018 - jengelh@inai.de
+
+- Replace untrue description.
+
+-------------------------------------------------------------------
+Thu Jan 18 09:40:43 UTC 2018 - zaitor@opensuse.org
+
+- Clean up spec:
+  + Drop old and unused pre_checkin.sh for TOUCHSCREEN_OPTIMIZATION
+    and all conditionals related to it (base_name et al.).
+  + Fixup compface BuildRequires to only be for non-openSUSE.
+  + Drop translation-update-upstream BuildRequires and macro.
+
+-------------------------------------------------------------------
+Sun Dec  3 21:38:14 UTC 2017 - zaitor@opensuse.org
+
+- Add balsa-build-ssl-1.1.patch: Fix build with new openssl 1.1.0.
+
+-------------------------------------------------------------------
+Sun Aug 20 19:25:56 UTC 2017 - zaitor@opensuse.org
+
+- Drop obsolete pkgconfig(unique-1.0) BuildRequires: No longer
+  needed, nor used.
+
+-------------------------------------------------------------------
+Wed Mar  8 18:46:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.5.3:
+  + More bugfixes and ports.
+
+-------------------------------------------------------------------
+Sat Oct  8 18:52:51 UTC 2016 - zaitor@opensuse.org
+
+- Fix build for Leap 42.1 and 42.2, via tweaking conditional for
+  compface/compface-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jun  2 07:53:30 UTC 2015 - zaitor@opensuse.org
+
+- Drop conditional pkgconfig(webkit2gtk-3.0) BuildRequires, as
+  balsa now only supports webkit2gtk-4.0.
+- Stop passing no longer recognized options:
+  --disable-scrollkeeper and --with-unique. Also remove a few
+  obsolete conditionals.
+
+-------------------------------------------------------------------
+Mon Jun  1 09:34:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.5.2:
+  + Silence some autoconf and automake complaints.
+  + Clean up store-address dialog.
+  + Do not use header bar in GtkMessageDialog, it does nothing.
+  + Use headerbars.
+  + Deprecation cleanups.
+  + Abandon buttons with both an icon and text, and use a symbolic
+    icon where we keep the icon.
+  + Enable the request of Delivery Status Notifications.
+  + Disable SSLv3, with an option in the code to override, and
+    enable TLSv1.1 and 1.2.
+  + balsa.appdata.xml: new appdata file.
+  + Fix S/MIME sending and Outlook2007 reception (bgo#720423).
+- Drop balsa-support-webkit2gtk-4.0.patch: fixed upstream.
+- Drop libtool BuilfRequires and call to autoreconf, as we no
+  longer carry any patches.
+
+-------------------------------------------------------------------
+Tue Dec 16 20:40:32 UTC 2014 - zaitor@opensuse.org
+
+- Make comface-devel BuildRequires only for releases newer than
+  13.2, the split never made it into release.
+
+-------------------------------------------------------------------
+Thu Oct  9 14:49:04 UTC 2014 - dimstar@opensuse.org
+
+- Starting with openSUSE 13.2, compface was split into a -devel and
+  library package. Conditionally BuildRequires compface-devel
+  (openSUSE >= 1320).
+
+-------------------------------------------------------------------
+Tue Sep  9 13:34:34 UTC 2014 - zaitor@opensuse.org
+
+- Add balsa-support-webkit2gtk-4.0.patch: Support building with
+  webkit2gtk3 (bgo#736493).
+- Add conditional pkgconfig(webkit2gtk-4.0) BuildRequires for
+  versions newer than 1310 as the above patch adds support for it.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Wed May  1 21:04:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.5.1:
+  + Mew message header widget.
+  + WebkitGtk2 widget integration.
+  + Ported to GNetworkMonitor.
+  + Yet another documentation port.
+  + Initial config assistant improvements.
+- Change --with-html-widget=webkit configure parameter to
+  --with-html-widget=webkit2, to switch to WebKit2.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port to the new documentation infrastructure.
+- Drop balsa-gtksourceview.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Apr  6 19:24:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.5.0:
+  + Making gtk3 build the official one.
+- Rework BuildRequires for the large rewrite/port to GTK3:
+  + Removed: pkgconfig(gconf-2.0), pkgconfig(gmime-2.4),
+    pkgconfig(gnome-keyring-1), pkgconfig(gtk+-2.0),
+    pkgconfig(gtksourceview-2.0), pkgconfig(gtkspell-2.0),
+    pkgconfig(libbonobo-2.0), pkgconfig(libcanberra-gtk),
+    pkgconfig(libgnome-2.0), pkgconfig(libgnomeui-2.0),
+    pkgconfig(webkit-1.0)
+  + Added: pkgconfig(gtk+-3.0), pkgconfig(gtksourceview-3.0),
+    pkgconfig(gtkspell3-3.0), pkgconfig(libcanberra-gtk3),
+    pkgconfig(libsecret-1), pkgconfig(webkitgtk-3.0).
+- Add balsa-gtksourceview.patch: Fix build with gtksourceview 3.8.
+
+-------------------------------------------------------------------
+Tue Feb 26 20:54:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.4.14:
+  + Drop legacy gnome-icons-theme dependency.
+  + Updated translations.
+- Remove pkgconfig(gnome-icon-theme) BuildRequires, following
+  upstream changes.
+
+-------------------------------------------------------------------
+Wed Oct 31 12:06:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.4.13:
+  + Fix long-line POP3 bug.
+  + Bugs fixed: bgo#684124.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 25 08:33:45 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.12:
+  + New crypto implementation.
+  + Build with GMime 2.6.0.
+  + Various other code changes.
+  + Updated translations.
+- Drop balsa-gmime-2_6.patch: fixed upstream.
+- Remove libtool BuildRequires and call to bootstrap.sh as they
+  were only needed for above patch.
+- Remove hack to rename sr@Latn translation to sr@latin: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Jan 12 08:49:00 UTC 2012 - dimstar@opensuse.org
+
+- Build openSUSE > 12.1 against gmime 2.6: Conditionally change
+  pkgconfig(gmime-2.4) BuildRequires to pkgconfig(gmime-2.6).
+- Add balsa-gmime-2_6.patch: Allow building against gmime 2.6.
+- Add libtool BuildRequires and call to bootstrap.sh as the patch
+  above touches the build system.
+
+-------------------------------------------------------------------
+Fri Nov 25 10:08:03 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.4.11:
+  + more userfrendly view of filters' conditions
+  + Bugs fixed: bgo#659390
+  + Updated translations.
+- Drop balsa-fix-linking.patch: fixed upstream.
+- Remove call to gnome-autogen.sh and gnome-common BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep 21 01:14:16 UTC 2011 - suse-tux@gmx.de
+
+- Add balsa-fix-linking.patch: correctly link to the
+  javascriptcoregtk library. This fixes the build.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for patch above.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:21:06 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.4.10:
+  + Preserve identity order.
+  + Trivial gtkhtml-3.15 support.
+  + Improve interaction with unique.
+  + Bugs fixed: bgo#636801, bgo#636805, bgo#647695.
+- Drop balsa-fix-scrollkeeper.patch: fixed upstream.
+- Drop balsa-mail-handler.patch: fixed upstream.
+- Drop balsa-new-autotools.patch: fixed upstream.
+- Drop balsa-message-searchbar-off.patch: fixed upstream.
+- Remove call to autoreconf as we don't have any patch anymore.
+
+-------------------------------------------------------------------
+Fri Apr 15 18:06:56 CEST 2011 - sbrabec@suse.cz
+
+- Do not open message boxes with search bar (bgo#647695).
+
+-------------------------------------------------------------------
+Mon Mar 21 20:10:45 CET 2011 - sbrabec@suse.cz
+
+- Support touchscreen version of balsa.
+- Fixed URL.
+- Added desktop file integration patch (bgo#645444).
+- Fixed libnotify for 11.3 and older.
+
+-------------------------------------------------------------------
+Sat Feb 12 16:53:52 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Dec  8 20:45:19 CET 2010 - vuntz@opensuse.org
+
+- Cleanup previous changes to packages.
+- Add explicit intltool BuildRequires.
+- Add balsa-fix-scrollkeeper.patch to not have to manually remove
+  the scrollkeeper files.
+- Drop manpage_url_syntax.patch, as it's actually not needed.
+
+-------------------------------------------------------------------
+Mon Nov 22 17:12:21 UTC 2010 - nmo.marques@gmail.com
+
+- Update BuildRequires to use the pkgconfig() way:
+  + Old ones: NetworkManager-devel, gconf2-devel, glib2-devel,
+    gmime-2_4-devel, gnome-icon-theme-devel, gtk2-devel,
+    gtksourceview-devel, gtkspell-devel, libcanberra-devel,
+    libgnome-devel, libgnomeui-devel,
+    libgnome-keyring-devel/gnome-keyring-devel, libnotify-devel,
+    libunique-devel, libwebkit-devel, libxml2-devel, sqlite-devel.
+  + New pkgconfig() ones: enchant, gconf-2.0, glib-2.0, gmime-2.4,
+    gnome-icon-theme, gnome-keyring-1, gtk+-2.0, gtksourceview-2.0,
+    gtkspell-2.0, libbonobo-2.0, libcanberra-gtk, libgnome-2.0,
+    libgnomeui-2.0, libnm-glib, libnotify, libxml-2.0, sqlite3,
+    unique-1.0, webkit-1.0.
+- Add manpage_url_syntax.patch to fix man page syntax issue.
+
+-------------------------------------------------------------------
+Sat Nov 20 20:37:33 CET 2010 - nmo.marques@gmail.com
+
+- Update to version 2.4.9:
+  + Compile against new GTK, libnotify libs.
+- Remove scrollkeeper files: we don't need them.
+
+-------------------------------------------------------------------
+Sun Aug 22 12:36:49 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.4.8:
+  + QUOTA and MYRIGHTS IMAP extension support.
+  + bug fixes: bgo#625695, bgo#620221, bgo#623910, bgo#623740,
+               bgo#618979, bgo#579479, bgo#613998
+  + various memory leaks plugged.
+
+-------------------------------------------------------------------
+Sun Feb 14 12:58:24 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.4.7:
+  + infinite loop (deb#568298).
+  + avoid crashes when manually verifing GPG signature.
+  + new user pref to control quoting text.
+- Replace --without-gtkhtml --with-webkit configure options with
+  --with-html-widget=webkit.
+
+-------------------------------------------------------------------
+Thu Jan 28 12:52:54 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.4.6:
+  + add forgotten part of filter comparison patch.
+  + fix occasional IMAP failures on compressed connections.
+- Pass --without-gtkhtml to configure to explicitly disable
+  gtkhtml, and avoid a bug in the configure script.
+
+-------------------------------------------------------------------
+Mon Jan 25 14:22:58 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.4.5:
+  + Update menus only if necessary.
+  + Fix build.
+
+-------------------------------------------------------------------
+Sun Jan 24 21:01:05 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.4.3:
+  + IMAP compression (COMPRESS=DEFLATE) when supported by server
+  + Making opening attachment easier by saving them in a directory
+  + Downloadable images when using Webkit html widget
+  + Faster opening of the compose window.
+  + Text searching enabled in the WebKit html viewer.
+  + Options to hide toolbars and other parts of the UI (useful on
+    netbooks etc).
+  + For laptop/wifi users: not trying to reach POP3 servers while
+    disconnected, and instead checking immediately on reconnection.
+
+-------------------------------------------------------------------
+Mon Jan  4 12:32:07 CET 2010 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel on 11.3 and later, following the module
+  split upstream.
+- Change the way we rename sr@Latn locale to sr@latin, so we don't
+  have to call autoreconf.
+- Do not manually change the CFLAGS: it's not needed anymore.
+
+-------------------------------------------------------------------
+Sun Dec  6 21:28:08 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2.4.2:
+  + searching in HTML parts.
+  + improved webkit support.
+  + NetworkManager events intercepted to reconnect to IMAP servers.
+  + compatibility with recent openssl.
+  + compatibility with  gtk version >= 2.18
+  + improved Mac OS X integration.
+  + bug fixes.
+  + Better translations.
+- Add NetworkManager-devel BuildRequires.
+- Removed docbook_4, perl-XML-Parser BuildRequires.
+- Remove traces of balsa-gnome-icon-theme.patch, it's included
+  upstream.
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Oct 23 15:03:07 CEST 2009 - sbrabec@suse.cz
+
+- Fallback to gnome-icon-theme, do not expect that system theme
+  will do it (bgo#596309).
+
+-------------------------------------------------------------------
+Wed Aug 19 22:26:56 CEST 2009 - beineri@opensuse.org
+
+- Add an already translated GenericName to .desktop file.
+
+-------------------------------------------------------------------
+Mon Aug 10 18:08:25 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.4.1:
+  * Continuing cleanup work: removing obsolete library calls.
+  * partial workaround for the deadlock in xcb library code.
+  * experimental use of libcanberra for sound.
+  * many small bugfixes.
+
+-------------------------------------------------------------------
+Fri Jul 17 10:53:50 CEST 2009 - coolo@novell.com
+
+- build with large file support
+
+-------------------------------------------------------------------
+Tue Jun 30 14:34:25 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.4.0:
+  * GMime-2.4, GLib-2.16, and Gtk-2.14 required.
+  * Prefers libunique over BonoboActivation.
+  * VCALENDAR and VEVENT handling.
+  * deprecation cleanup.
+  * message threading improvements and fixes.
+  * Use GIO library when available.
+  * Improve GMail IMAP compatibility.
+  * porting to most recent GTK versions.
+  * documentation ported to gnome-doc format.
+  * partial translations of the manual to German and Spanish.
+  * gnome-keyring is used if available (experimental).
+  * initial experimental support for WebKit.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Feb 11 01:19:39 CET 2009 - ro@suse.de
+
+- use sr@latin instead of sr@Latn
+
+-------------------------------------------------------------------
+Mon Oct 13 17:31:55 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.3.25:
+  * composing format=flowed messages with spaces pasted in works
+    better.
+  * allow to explicitly specify a GPG key id for an identity.
+- Latest GTK+ deprecated GLib wrapper functions => removed
+  GTK_DISABLE_DEPRECATED.
+
+-------------------------------------------------------------------
+Tue Jul 15 14:46:37 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.3.25:
+  * GMail compatibility.
+  * notification in GNOME panel are optional now.
+  * wrapping of flowed text improved.
+  * lots of various bug fixes.
+  * Support for accessing files over gnome-vfs (smb, ssh mounts,
+    etc.)
+  * maildir tree scanning fixes.
+  * Rudimentary support for sending text/html messages.
+  * UIDPLUS IMAP extension support.
+
+-------------------------------------------------------------------
+Mon Apr  7 16:26:05 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.3.23:
+    * Suppport for IMAP MULTIAPPEND extension for faster uploading
+      of message batches to and from IMAP servers.
+    * improved scanning of mailbox trees.
+    * GtkSourceView2 support.
+
+-------------------------------------------------------------------
+Mon Jan 14 15:56:08 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 2.3.22:
+  * new address edition widget in the compose window.
+  * compose window displays languages available for spell checking.
+  * more new icons.
+  * migration from GnomeUI to GtkUIManager
+  * Rubrica address book support.
+  * Several bugs fixed.
+
+-------------------------------------------------------------------
+Tue Dec  4 15:02:01 CET 2007 - sbrabec@suse.cz
+
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Thu Nov  1 18:40:45 CET 2007 - sbrabec@suse.cz
+
+- Build feature complete with gtksourceview18.
+
+-------------------------------------------------------------------
+Thu Sep 20 16:08:52 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.3.20:
+  * fix buffer overflow (#474366)
+  * avoid sending messages twice under certain conditions
+  * more build fixes
+  * reflow improvements
+  * Build problems against steaming-hot GNOME fixed
+  * Make BINARY and ESEARCH IMAP extensions usage more robust
+
+-------------------------------------------------------------------
+Thu Sep 20 16:06:58 CEST 2007 - sbrabec@suse.cz
+
+- Fixed IMAP4 stack overflow (#326732, GNOME#474366).
+
+-------------------------------------------------------------------
+Mon Aug  6 19:55:16 CEST 2007 - maw@suse.de
+
+- Split out a -lang subpackage.
+
+-------------------------------------------------------------------
+Fri Aug  3 16:45:12 CEST 2007 - maw@suse.de
+
+- Build without gtksourceview support (#297259).
+
+-------------------------------------------------------------------
+Fri Jul 27 20:07:02 CEST 2007 - maw@suse.de
+
+- Add dont-disable-deprecated.patch.
+
+-------------------------------------------------------------------
+Mon Jul  9 19:04:33 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.3.17:
+  * APOP server signature verification and few other capabilitites
+  * supports GtkPrint, LDAP referrals, IMAP BINARY
+  * few more performance fixes and new features
+  * number of bug fixes
+
+-------------------------------------------------------------------
+Thu May 10 13:58:01 CEST 2007 - pgajdos@suse.cz
+
+- fixed warning of new gcc: comparsion with string literal
+- string-literal-send2.patch
+
+-------------------------------------------------------------------
+Wed May  9 17:45:59 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from BuildRequires and Requires
+  [#247450] 
+
+-------------------------------------------------------------------
+Tue Feb 20 18:36:44 CET 2007 - mvaner@suse.cz
+
+- Comparison with string literal (bug #229781)
+  - string-literal-send.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 19:28:37 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Oct 20 14:20:13 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.3.13:
+  * nicer icons.
+  * do not reference freed memory in mbox driver.
+  * assure messages are properly signed after identity change.
+  * Ctrl-N goes over unread messages in all mailboxes.
+  * Redone Preference Manager.
+  * support better slow LDAP servers.
+  * use better real estate when displaying message counts.
+  * local mailbox opening acceleration.
+  * composed message saving and postponing UI improvements.
+  * fix mailbox locking regressions.
+  * GtkSpell improvements.
+  * bug fixes
+
+-------------------------------------------------------------------
+Sun Aug  6 12:04:03 CEST 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Wed Jun 14 17:24:54 CEST 2006 - schwab@suse.de
+
+- Fix syntax error in configure script.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 17:11:25 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.3.8.
+- Enabled GtkSpell and Compface.
+
+-------------------------------------------------------------------
+Sat Jan 14 23:26:50 CET 2006 - kukuk@suse.de
+
+- Add gpgme-devel to nfb
+
+-------------------------------------------------------------------
+Tue Nov  8 20:16:11 CET 2005 - sbrabec@suse.cz
+
+- Use sqlite3.
+
+-------------------------------------------------------------------
+Mon Sep 26 01:26:19 CEST 2005 - ro@suse.de
+
+- added LDAP_DEPRECATED to CFLAGS 
+
+-------------------------------------------------------------------
+Mon Aug 29 11:49:02 CEST 2005 - ro@suse.de
+
+- added "--ignore-theme-index" to gtk-update-icon-cache call 
+
+-------------------------------------------------------------------
+Fri Jul 15 17:30:33 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.3.4.
+
+-------------------------------------------------------------------
+Tue Mar  1 17:20:04 CET 2005 - sbrabec@suse.cz
+
+- Fixed for latest gmime.
+
+-------------------------------------------------------------------
+Tue Feb  1 17:13:46 CET 2005 - sbrabec@suse.cz
+
+- Turned on sqlite support.
+
+-------------------------------------------------------------------
+Tue Feb  1 15:59:15 CET 2005 - ro@suse.de
+
+- do not define GNOME_DISABLE_DEPRECATED
+- do not define GTK_DISABLE_DEPRECATED 
+
+-------------------------------------------------------------------
+Wed Jan 19 01:59:32 CET 2005 - ro@suse.de
+
+- do not define -DGNOME_VFS_DISABLE_DEPRECATED 
+
+-------------------------------------------------------------------
+Thu Jan 06 14:10:45 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.6.
+
+-------------------------------------------------------------------
+Tue Nov 23 12:21:56 CET 2004 - ro@suse.de
+
+- added db-devel to neededforbuild (for <= 9.0)
+- fix build with heimdal for (<= 9.2)
+
+-------------------------------------------------------------------
+Mon Nov 22 00:59:09 CET 2004 - ro@suse.de
+
+- run autoreconf and fix build with mit-kerberos
+
+-------------------------------------------------------------------
+Fri Nov 19 16:11:20 CET 2004 - ro@suse.de
+
+- postfix is in neededforbuild, so skip sendmail 
+
+-------------------------------------------------------------------
+Thu Nov 18 15:43:38 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages (might need more work)
+
+-------------------------------------------------------------------
+Tue Oct 26 02:09:30 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Oct 12 17:37:28 CEST 2004 - sbrabec@suse.cz
+
+- Use gnutls instead of openssl (#44438).
+
+-------------------------------------------------------------------
+Fri Sep 03 14:18:11 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.2.4.
+
+-------------------------------------------------------------------
+Mon Jul 26 01:27:21 CEST 2004 - ro@suse.de
+
+- added libgpg-error to neededforbuild
+
+-------------------------------------------------------------------
+Mon May 24 16:14:36 CEST 2004 - ro@suse.de
+
+- don't DEPRECATE gtk and gnome
+- re-generate Balsa-Stubs.c
+
+-------------------------------------------------------------------
+Thu Mar 25 16:48:42 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Thu Feb 05 16:47:56 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.16.
+
+-------------------------------------------------------------------
+Sat Jan 10 14:12:46 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Aug 12 14:15:36 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Thu Aug 07 14:43:11 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.13.
+- Turned on all optional features.
+
+-------------------------------------------------------------------
+Wed Jul 30 08:43:38 CEST 2003 - hhetter@suse.de
+
+- build with libesmtp support 
+
+-------------------------------------------------------------------
+Mon Jul 14 14:43:41 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 05 23:27:36 CEST 2003 - ltinkl@suse.cz
+
+- updated to version 2.0.11
+	* considerably improved GPG support
+	* text wrapping improvements
+	* charset encoding validation and conversion improvements
+	* minor LDAP fixes (large directories, non-US-ASCII characters)
+
+-------------------------------------------------------------------
+Mon Feb 17 11:14:21 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.8.
+
+-------------------------------------------------------------------
+Tue Feb 11 12:51:55 CET 2003 - sbrabec@suse.cz
+
+- Update to version 2.0.7 (GNOME 2).
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+
+-------------------------------------------------------------------
+Fri Nov 01 19:45:11 CET 2002 - pmladek@suse.cz
+
+- fixed to use new aspell (pspell was merged into new aspell)
+- removed CPP, CXX hacks from configure.ac
+
+-------------------------------------------------------------------
+Wed Oct 09 17:27:23 CEST 2002 - tcrhak@suse.cz
+
+- added alsa and alsa-devel to neededforbuild
+- replaced LIBOBJS by AC_LIBOBJ in libmutt/configure.in
+
+-------------------------------------------------------------------
+Wed Oct 02 14:53:29 CEST 2002 - nadvornik@suse.cz
+
+- removed libPropList from neededforbuild
+
+-------------------------------------------------------------------
+Tue Aug 13 11:37:02 CEST 2002 - hhetter@suse.de
+
+- fix neededforbuild 
+
+-------------------------------------------------------------------
+Mon Aug  5 19:01:23 CEST 2002 - prehak@suse.cz
+
+- update to version 1.2.4
+- added openssl and openssl-devel to neededforbuild
+
+-------------------------------------------------------------------
+Fri Jun 21 00:32:44 CEST 2002 - ro@suse.de
+
+- use "-a -f" for automake
+
+-------------------------------------------------------------------
+Wed Apr  3 12:00:52 CEST 2002 - tcrhak@suse.cz
+
+- build with new automake/autoconf
+
+-------------------------------------------------------------------
+Fri Mar 15 11:58:12 CET 2002 - tcrhak@suse.cz
+
+- added dirs to filelist:
+  %{prefix}/share/gnome/help/balsa
+  %{prefix}/share/sounds/balsa
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Fri Nov 30 15:08:32 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbktls> to <docbook-toys>
+
+-------------------------------------------------------------------
+Tue Nov 20 23:58:02 CET 2001 - ro@suse.de
+
+- added freetype2 to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Nov 19 18:37:34 CET 2001 - ro@suse.de
+
+- up to 1.2.3
+- build with automake 1.5 
+
+-------------------------------------------------------------------
+Fri Aug 17 09:56:09 CEST 2001 - adostal@suse.cz
+
+- update to version 1.1.7
+- create pspell patch and ia64 patch
+- fixed specfile (neededforbuild, build, install) 
+
+-------------------------------------------------------------------
+Fri Aug 10 02:31:06 CEST 2001 - ro@suse.de
+
+- fixed specfile to build 
+
+-------------------------------------------------------------------
+Tue Jun 26 18:20:25 CEST 2001 - ro@suse.de
+
+- fix to build with new autoconf and c++-ed pspell 
+
+-------------------------------------------------------------------
+Wed May 23 11:17:09 CEST 2001 - pblaha@suse.cz
+
+- fix cast warning on ia64 
+
+-------------------------------------------------------------------
+Thu Mar 29 17:22:40 CEST 2001 - pblaha@suse.cz
+
+- fix compilation with pspell 
+
+-------------------------------------------------------------------
+Sun Feb 25 18:28:47 MET 2001 - egger@suse.de
+
+- Remove unnecessary dependencies from #neededforbuild,
+  especially imlib-config. 
+
+-------------------------------------------------------------------
+Tue Jan 30 23:35:00 CET 2001 - ro@suse.de
+
+- changed neededforbuild <imlibcfe> to <imlib-config>
+
+-------------------------------------------------------------------
+Mon Jan  1 16:25:49 MET 2001 - egger@suse.de
+
+- Cleaned up specfile.
+- Recompressed with bzip2. 
+
+-------------------------------------------------------------------
+Wed Nov 15 12:35:48 CET 2000 - ro@suse.de
+
+- fixed neededforbuild for libPropList
+
+-------------------------------------------------------------------
+Wed Nov 15 10:38:04 CET 2000 - hhetter@suse.de
+
+- update to version 1.0.0 
+
+-------------------------------------------------------------------
+Mon Nov  6 02:13:30 CET 2000 - ro@suse.de
+
+- fixed typos 
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Tue Sep 19 16:23:12 MEST 2000 - egger@suse.de
+
+- Tweaked #neededforbuild again. 
+
+-------------------------------------------------------------------
+Tue Sep 19 10:49:47 MEST 2000 - egger@suse.de
+
+- Updated to version 0.9.5
+- Tweaked specfile.
+- Buildproofed on i386. 
+
+-------------------------------------------------------------------
+Fri Sep 15 14:22:59 CEST 2000 - ro@suse.de
+
+- fixed to compile 
+
+-------------------------------------------------------------------
+Tue Sep  5 20:57:18 MEST 2000 - egger@suse.de
+
+- Updated to version 0.9.4.
+
+-------------------------------------------------------------------
+Tue Aug 29 17:35:04 CEST 2000 - egger@suse.de
+
+- Updated to version 0.9.3.
+
+-------------------------------------------------------------------
+Wed Jul 12 15:03:58 CEST 2000 - smid@suse.cz
+
+- man page location changed (bugzilla #3099)
+
+-------------------------------------------------------------------
+Thu Jul  6 17:06:12 MEST 2000 - pthomas@suse.de
+
+- use absolute path for man page symlink
+
+-------------------------------------------------------------------
+Fri Jun  9 12:37:09 MEST 2000 - smid@suse.cz
+
+- upgrade to 0.8.0
+
+-------------------------------------------------------------------
+Thu Apr 13 12:35:03 CEST 2000 - smid@suse.cz
+
+- upgrade to 0.6.0
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jul 14 11:02:20 MEST 1999 - ke@suse.de
+
+- use libungif instead of libgif.
+- use proplst and proplstd instead of wmaker.
+
+-------------------------------------------------------------------
+Tue Jul 13 12:42:22 MEST 1999 - bs@suse.de
+
+- use gtk and glib instead of gtkn and glibn
+
+-------------------------------------------------------------------
+Fri Feb 19 14:12:14 MET 1999 - ke@suse.de
+
+- use sysconfdir=/etc/opt/gnome.
+
+-------------------------------------------------------------------
+Fri Feb 19 01:01:06 MET 1999 - ro@suse.de
+
+- added esound and audiofil to neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb 12 13:36:17 MET 1999 - ke@suse.de
+
+- #neededforbuild indent.
+- rebuilt orbit's files.
+
+-------------------------------------------------------------------
+Thu Jan 28 17:22:36 MET 1999 - ke@suse.de
+
+- New package: initial version 0.4.9 (recommeded and prepared by ray).
+

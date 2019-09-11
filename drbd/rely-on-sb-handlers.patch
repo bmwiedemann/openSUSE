@@ -1,0 +1,96 @@
+diff -Naur drbd-9.0.15+git.c46d2790.orig/drbd/drbd_state.c drbd-9.0.15+git.c46d2790/drbd/drbd_state.c
+--- drbd-9.0.15+git.c46d2790.orig/drbd/drbd_state.c	2019-01-10 13:10:28.152414247 +0800
++++ drbd-9.0.15+git.c46d2790/drbd/drbd_state.c	2019-01-10 13:10:38.140407675 +0800
+@@ -251,6 +251,27 @@
+ 	return rv;
+ }
+ 
++static bool is_sb_handlers_configured(struct drbd_connection *connection)
++{
++   bool configured = false;
++
++    enum drbd_after_sb_p after_sb_0p = -1;
++    enum drbd_after_sb_p after_sb_1p = -1;
++    enum drbd_after_sb_p after_sb_2p = -1;
++
++    after_sb_0p = rcu_dereference(connection->transport.net_conf)->after_sb_0p;
++    after_sb_1p = rcu_dereference(connection->transport.net_conf)->after_sb_1p;
++    after_sb_2p = rcu_dereference(connection->transport.net_conf)->after_sb_2p;
++
++   if (after_sb_2p != 0 || after_sb_0p != 0 || after_sb_1p != 0) {
++       drbd_info(connection, "Split-brain handler configured, rely on it.\n");
++       configured = true;
++   }
++
++   return configured;
++}
++
++
+ bool resource_is_suspended(struct drbd_resource *resource, enum which_state which)
+ {
+ 	bool rv = resource->susp_user[which] || resource->susp_nod[which];
+@@ -1465,7 +1486,8 @@
+ 			if (!nc || nc->two_primaries)
+ 				continue;
+ 			if (connection->peer_role[NEW] == R_PRIMARY)
+-				return SS_TWO_PRIMARIES;
++				if (!is_sb_handlers_configured(connection))
++					return SS_TWO_PRIMARIES;
+ 		}
+ 	}
+ 
+@@ -1500,10 +1522,10 @@
+ 		nc = rcu_dereference(connection->transport.net_conf);
+ 		two_primaries = nc ? nc->two_primaries : false;
+ 		if (peer_role[NEW] == R_PRIMARY && peer_role[OLD] != R_PRIMARY && !two_primaries) {
+-			if (role[NOW] == R_PRIMARY)
++			if (role[NOW] == R_PRIMARY && !is_sb_handlers_configured(connection))
+ 				return SS_TWO_PRIMARIES;
+ 			idr_for_each_entry(&resource->devices, device, vnr) {
+-				if (device->open_ro_cnt)
++				if (device->open_ro_cnt && !is_sb_handlers_configured(connection))
+ 					return SS_PRIMARY_READER;
+ 			}
+ 		}
+@@ -3785,8 +3807,10 @@
+ 		mask = NODE_MASK(connection->peer_node_id);
+ 		if ((resource->twopc_reply.primary_nodes & mask) &&
+ 		    !(connection->transport.net_conf->two_primaries)) {
+-			rv = SS_TWO_PRIMARIES;
+-			break;
++			if (!is_sb_handlers_configured(connection)){
++				rv = SS_TWO_PRIMARIES;
++				break;
++			}
+ 		}
+ 	}
+ 	rcu_read_unlock();
+@@ -3829,10 +3853,13 @@
+ 			rcu_read_lock();
+ 			nc = rcu_dereference(connection->transport.net_conf);
+ 			two_primaries = nc ? nc->two_primaries : false;
+-			rcu_read_unlock();
+ 
+-			if (!two_primaries)
++			if (!two_primaries && !is_sb_handlers_configured(connection)) {
++				rcu_read_unlock();
+ 				return SS_TWO_PRIMARIES;
++			}
++
++			rcu_read_unlock();
+ 		}
+ 
+ 		return SS_SUCCESS;
+@@ -3859,8 +3886,10 @@
+ 		nc = rcu_dereference(connection->transport.net_conf);
+ 		if (!nc->two_primaries &&
+ 		    NODE_MASK(connection->peer_node_id) & reply->primary_nodes) {
+-			rv = SS_PRIMARY_READER;
+-			break;
++			if (!is_sb_handlers_configured(connection)){
++				rv = SS_PRIMARY_READER;
++				break;
++			}
+ 		}
+ 	}
+ 	rcu_read_unlock();

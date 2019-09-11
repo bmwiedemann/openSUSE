@@ -1,0 +1,48 @@
+From ed2524fb2798f8f55adfe64ba622a1193fc84865 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Fri, 23 Feb 2018 18:36:43 +0100
+Subject: [PATCH] Fix some python2 exclusive code to work also with python3
+
+This allows the skill to run under python2 and python3
+---
+ __init__.py | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git mycroft-youtube/__init__.py mycroft-youtube.new/__init__.py
+index 04437ff..84b55ef 100755
+--- mycroft-youtube/__init__.py
++++ mycroft-youtube.new/__init__.py
+@@ -1,14 +1,19 @@
+ # -*- coding: utf-8 -*-
+ 
++import sys
+ import time
+-import urllib
+ from os.path import dirname
+ 
+-import urllib2
+ from adapt.intent import IntentBuilder
+ from bs4 import BeautifulSoup
+ from firebase import firebase
+ from mycroft.skills.core import MycroftSkill
++if sys.version_info[0] < 3:
++    from urllib import quote
++    from urllib2 import urlopen
++else:
++    from urllib.request import urlopen
++    from urllib.parse import quote
+ 
+ __author__ = 'augustnmonteiro'
+ 
+@@ -29,9 +34,9 @@ def initialize(self):
+         self.register_intent(youtube, self.youtube)
+ 
+     def search(self, text):
+-        query = urllib.quote(text)
++        query = quote(text)
+         url = "https://www.youtube.com/results?search_query=" + query
+-        response = urllib2.urlopen(url)
++        response = urlopen(url)
+         html = response.read()
+         soup = BeautifulSoup(html)
+         for vid in soup.findAll(attrs={'class': 'yt-uix-tile-link'}):

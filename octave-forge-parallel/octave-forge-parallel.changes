@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Sat Mar  9 15:19:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Spec file cleanup, remove %defattr, correct bugzilla link
+- Require gnutls >= 3.4.0
+- Update URL: and Source: to use https://
+
+-------------------------------------------------------------------
+Sat Mar  9 13:14:19 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Add octave-forge-parallel-build-with-octave5.patch to fix
+  building against octave >= 5; patch taken from upstream
+  mercurial repo commits. Add automake and autoconf to
+  BuildRequires since patch touches build files.
+
+-------------------------------------------------------------------
+Thu Aug 16 15:18:06 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.1.3:
+  * Fixed building with newer gnutls versions.
+  * Fixed building with Octave 4.0.
+  * Change formal dependency on Octave to versions >= 4.0.
+
+-------------------------------------------------------------------
+Wed Jun  6 06:40:51 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.1.2:
+  * Octave 4.4 compatibility.
+
+-------------------------------------------------------------------
+Mon Oct 31 20:48:41 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.1.1
+  * Compatibility with Octave 4.2.
+  * Links to core Octave documentation work now in html version of
+    package documentation.
+
+-------------------------------------------------------------------
+Fri Jun 10 15:55:46 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.1.0
+  * Added general package documentation, accessible with function
+    'parallel_doc'.
+  * Fixed handling of argument and output dimensions in netcellfun and
+    netarrayfun.
+  * In connecting a cluster, package version and connection protocol
+    are checked. Will work only with packages from this version
+    upwards.
+  * Variables are transferred more efficiently.
+  * If cluster functions are to be disabled at configure time, this
+    has to be done always explicitely now.
+
+-------------------------------------------------------------------
+Fri Oct 30 21:02:29 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.0.3
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Aug 13 10:42:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.0.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Jul 14 19:30:05 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.0.0
+  * 'parcellfun' and 'pararrayfun' accept an option "CumFunc" for
+    cumulative results.
+  * Fix handling of option "UniformOutput" with option "Vectorized" in
+    'pararrayfun'.
+  * Function 'connect()' has been renamed to 'pconnect()' since the
+    previous name is used by the control package.
+  * New functions 'netcellfun' and 'netarrayfun' for remote parallel
+    execution.
+  * New convenience function 'rfeval' for single remote function
+    execution.
+  * New function 'install_vars' to distribute named variables over the
+    parallel cluster.
+  * The value returned by pconnect and the variable 'sockets' held by
+    pserver, holding the network connections, are now opaque. Indexing
+    the connections in this value should work as with the matrix used
+    before.
+  * Connections can be based on TLS-SRP, which is now the default. New
+    function parallel_generate_srp_data generates authorization data.
+  * Parallel cluster commands hanging in system calls (e.g. trying to
+    read data that was not sent) can be interrupted with Ctrl-C
+    (invalidating the network connections in most cases, so that
+    information within server memory will be lost).
+  * New functions 'network_get_info' and 'network_set'.
+  * Within a particular parallel network, servers are supposed to be
+    unique now. But a server can be a part of several parallel
+    networks, and successful connection attempts of such overlapping
+    networks should now be possible even if initiated from different
+    client machines or client processes at the same time.
+  * Removed deprecated bw_... group of functions.
+
+-------------------------------------------------------------------
+Fri Mar 13 17:43:26 UTC 2015 - dmitry_r@opensuse.org
+
+- Updte to version 2.2.1
+  * The bw_... group of functions has been deprecated and will be
+    removed in the future.
+  * Made compatible with Octave 4.0.
+  * Made parcellfun/pararrayfun a bit more stable.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.2.0
+

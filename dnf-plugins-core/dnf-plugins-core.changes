@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri May 24 02:56:30 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.7
+  + Fix: copr disable command traceback (rh#1693551)
+  + [doc] state repoid as repo identifier of config-manager (rh#1686779)
+  + Fix download of src when not the latest requested (rh#1649627)
+- Add missing dependencies on dateutil and distro Python modules
+- Drop backported fixes that are part of this release
+  * 0001-Fix-copr-disable-command-traceback-RhBug-1693551.patch
+  * 0002-doc-state-repoid-as-repo-identifier-of-config-manage.patch
+
+-------------------------------------------------------------------
+Fri Apr 26 12:42:24 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix for copr disable command traceback (rh#1693551)
+  * Patch: 0001-Fix-copr-disable-command-traceback-RhBug-1693551.patch
+- Backport doc fix to state repoid as repo identifier for config-manager (rh#1686779)
+  * Patch: 0002-doc-state-repoid-as-repo-identifier-of-config-manage.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 15:48:42 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.6
+  + [download] Do not download src without ``--source`` (rh#1666648)
+  + Use improved config parser that preserves order of data
+  + [leaves] Show multiply satisfied dependencies as leaves
+  + [download] Fix downloading an rpm from a URL (rh#1678582)
+  + [download] Fix problem with downloading src pkgs (rh#1649627)
+- Drop backported fixes that are part of this release
+  * 0001-Fix-traceback-when-local-rpm-url-is-passed.patch
+  * 0002-reposync-fix-up-path-traversal-prevention.patch
+  * 0003-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+- Restore needs-restarting files to the dnf-utils package
+- Add conflicts to zypper < 1.14.26 to dnf-utils package to prevent file conflicts
+
+-------------------------------------------------------------------
+Mon Feb 11 01:08:46 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Temporarily drop needs-restarting files from dnf-utils until
+  zypper splits them out into zypper-needs-restarting subpackage
+  (gh#openSUSE/zypper#254)
+- Add conflicts to yum-changelog and zypper-needs-restarting to
+  dnf-utils
+
+-------------------------------------------------------------------
+Thu Feb  7 07:49:25 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Rebase to version 4.0.3:
+  + Compatible with DNF 4.0.0+
+  + Reworked COPR plugin
+  + New changelogs and repodiff plugins/subcommands
+- Drop Python 2 subpackages
+- Drop unneeded patches:
+  * 0001-copr-Add-openSUSE-support.patch
+  * dnf-plugins-core-2.1.5-Fix-detection-of-Python-2.patch
+- Backport fixes from upstream to build and run plugins
+  * 0001-Fix-traceback-when-local-rpm-url-is-passed.patch
+  * 0002-reposync-fix-up-path-traversal-prevention.patch
+  * 0003-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+
+-------------------------------------------------------------------
+Mon Apr 23 21:10:27 UTC 2018 - ngompa13@gmail.com
+
+- Enable COPR plugin with openSUSE support backported (rh#1570418)
+  * Add patch: 0001-copr-Add-openSUSE-support.patch
+
+-------------------------------------------------------------------
+Sat Jan 20 14:12:56 UTC 2018 - ngompa13@gmail.com
+
+- Fix build-time detection of Python 2
+  * Add patch: dnf-plugins-core-2.1.5-Fix-detection-of-Python-2.patch
+
+-------------------------------------------------------------------
+Tue Oct 10 12:34:40 UTC 2017 - ngompa13@gmail.com
+
+- Update to version 2.1.5:
+  + Fix issues with the '--arch' in 'dnf download' (rh#1476834)
+  + Fix 'dnf repoclosure' when used with '--check' and '--best'
+  + Use preconfigure hook from DNF for 'local' plugin
+- Split lang data into lang subpackage
+
+-------------------------------------------------------------------
+Sun Aug 13 23:59:25 UTC 2017 - ngompa13@gmail.com
+
+- Initial package based on Mageia package

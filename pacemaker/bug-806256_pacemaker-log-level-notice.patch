@@ -1,0 +1,45 @@
+commit b802c689cdad03a185c5c6689741e2a4db8d5924
+Author: Gao,Yan <ygao@suse.com>
+Date:   Thu Mar 14 09:41:53 2013 +0800
+
+    Log: Change some messages to notice level (bnc#806256)
+
+Index: pacemaker-1.1.18+20180430.c0d7ba798/daemons/controld/controld_membership.c
+===================================================================
+--- pacemaker-1.1.18+20180430.c0d7ba798.orig/daemons/controld/controld_membership.c
++++ pacemaker-1.1.18+20180430.c0d7ba798/daemons/controld/controld_membership.c
+@@ -414,7 +414,7 @@ crm_update_quorum(gboolean quorum, gbool
+         crm_xml_add(update, XML_ATTR_DC_UUID, fsa_our_uuid);
+ 
+         fsa_cib_update(XML_TAG_CIB, update, call_options, call_id, NULL);
+-        crm_debug("Updating quorum status to %s (call=%d)", quorum ? "true" : "false", call_id);
++        crm_notice("Updating quorum status to %s (call=%d)", quorum ? "true" : "false", call_id);
+         fsa_register_cib_callback(call_id, FALSE, NULL, cib_quorum_update_complete);
+         free_xml(update);
+ 
+Index: pacemaker-1.1.18+20180430.c0d7ba798/daemons/controld/controld_transition.c
+===================================================================
+--- pacemaker-1.1.18+20180430.c0d7ba798.orig/daemons/controld/controld_transition.c
++++ pacemaker-1.1.18+20180430.c0d7ba798/daemons/controld/controld_transition.c
+@@ -187,7 +187,7 @@ do_te_invoke(long long action,
+             transition_graph = create_blank_graph();
+             return;
+         }
+-        crm_info("Processing graph %d (ref=%s) derived from %s", transition_graph->id, ref,
++        crm_notice("Processing graph %d (ref=%s) derived from %s", transition_graph->id, ref,
+                  graph_input);
+ 
+         te_reset_job_counts();
+Index: pacemaker-1.1.18+20180430.c0d7ba798/daemons/fenced/fenced_remote.c
+===================================================================
+--- pacemaker-1.1.18+20180430.c0d7ba798.orig/daemons/fenced/fenced_remote.c
++++ pacemaker-1.1.18+20180430.c0d7ba798/daemons/fenced/fenced_remote.c
+@@ -578,7 +578,7 @@ remote_op_timeout(gpointer userdata)
+         return FALSE;
+     }
+ 
+-    crm_debug("Action %s (%s) for %s (%s) timed out",
++    crm_notice("Action %s (%s) for %s (%s) timed out",
+               op->action, op->id, op->target, op->client_name);
+ 
+     if (op->phase == st_phase_on) {

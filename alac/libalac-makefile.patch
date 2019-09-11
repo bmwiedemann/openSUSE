@@ -1,0 +1,55 @@
+Index: codec/makefile
+===================================================================
+--- codec/makefile.orig
++++ codec/makefile
+@@ -1,6 +1,10 @@
+ # libalac make
+ 
+-CFLAGS = -g -O3 -c
++VERSION = 0.3
++SONAME = 0
++
++OPTFLAGS = -g -O3
++CFLAGS = $(OPTFLAGS) -fPIC -c
+ LFLAGS = -Wall
+ CC = g++
+ 
+@@ -42,9 +46,16 @@ dp_enc.o \
+ matrix_dec.o \
+ matrix_enc.o
+ 
++all:	libalac.a libalac.so.$(VERSION)
++
+ libalac.a:	$(OBJS)
+ 	ar rcs libalac.a $(OBJS)
+ 
++libalac.so.$(VERSION):	$(OBJS)
++	$(CC) $(OPTFLAGS) -shared -Wl,-soname,libalac.so.$(SONAME) -o libalac.so.$(VERSION) $(OBJS)
++	ln -s libalac.so.$(VERSION) libalac.so.$(SONAME)
++	ln -s libalac.so.$(SONAME) libalac.so
++
+ EndianPortable.o : EndianPortable.c
+ 	$(CC) -I $(INCLUDES) $(CFLAGS) EndianPortable.c
+ 
+Index: convert-utility/makefile
+===================================================================
+--- convert-utility/makefile.orig
++++ convert-utility/makefile
+@@ -1,6 +1,7 @@
+ # alacconvert make
+ 
+-CFLAGS = -g -O3 -c
++OPTFLAGS = -g -O3
++CFLAGS = $(OPTFLAGS) -fPIC -c
+ LFLAGS = -Wall -L$(CODECDIR) -lalac
+ CC = g++
+ 
+@@ -30,7 +31,7 @@ CAFFileALAC.o
+ 
+ alacconvert:	$(OBJS)
+ 	(cd $(CODECDIR); $(MAKE))
+-	$(CC) $(LFLAGS) $(OBJS) -o alacconvert
++	$(CC) $(OBJS) -o alacconvert $(LFLAGS)
+ 
+ main.o : main.cpp
+ 	$(CC) -I $(INCLUDES) $(CFLAGS) main.cpp

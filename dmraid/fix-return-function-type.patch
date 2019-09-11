@@ -1,0 +1,13 @@
+diff --git a/1.0.0.rc16/tools/dmevent_tool.c b/1.0.0.rc16/tools/dmevent_tool.c
+index 8562098..cffb5ab 100644
+--- a/1.0.0.rc16/tools/dmevent_tool.c
++++ b/1.0.0.rc16/tools/dmevent_tool.c
+@@ -123,7 +123,7 @@ void _test_user_id(void)
+ }
+ 
+ /* Increment option counters. */
+-static _process_opt(int opt, const char *cmd)
++static void _process_opt(int opt, const char *cmd)
+ {
+ 	struct opt_def_struct {
+ 		const char opt;		/* Option character. */

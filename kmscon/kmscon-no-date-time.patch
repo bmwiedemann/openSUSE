@@ -1,0 +1,33 @@
+From: <adam@mizerski.pl>
+
+Remove __DATE__ and __TIME__. build-compare doesn't like them.
+
+---
+ src/kmscon_module_interface.h |    4 ++--
+ src/log.c                     |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- kmscon-7_git201309121138.orig/src/shl_log.c
++++ kmscon-7_git201309121138/src/shl_log.c
+@@ -504,6 +504,6 @@ void log_print_init(const char *appname)
+ 	if (!appname)
+ 		appname = "<unknown>";
+ 	log_format(LOG_DEFAULT_CONF, NULL, LOG_NOTICE,
+-		   "%s Revision %s %s %s", appname,
+-		   shl_git_head, __DATE__, __TIME__);
++		   "%s Revision %s ", appname,
++		   shl_git_head);
+ }
+--- kmscon-7_git201309121138.orig/src/kmscon_module_interface.h
++++ kmscon-7_git201309121138/src/kmscon_module_interface.h
+@@ -60,8 +60,8 @@ struct kmscon_module {
+ 	struct kmscon_module module = { \
+ 		.info = { \
+ 			.githead = shl_git_head, \
+-			.date = __DATE__, \
+-			.time = __TIME__, \
++			.date = "??? ?? ????", \
++			.time = "??:??:??", \
+ 			.init = _init, \
+ 			.load = _load, \
+ 			.unload = _unload, \

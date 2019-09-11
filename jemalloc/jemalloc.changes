@@ -1,0 +1,851 @@
+-------------------------------------------------------------------
+Tue Aug  6 07:01:04 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.1:
+  * Bug fixes:
+  * Fix a severe virtual memory leak on Windows. This regression
+    was first released in 5.0.0.
+  * Fix size 0 handling in posix_memalign(). This regression
+    was first released in 5.2.0.
+  * Fix the prof_log unit test which may observe unexpected
+    backtraces from compiler optimizations. The test was first added in 5.2.0.
+  * Fix the declaration of the extent_avail tree.
+    This regression was first released in 5.1.0.
+  * Fix an incorrect reference in jeprof.
+    This functionality was first released in 3.0.0.
+  * Fix an assertion on the deallocation fast-path.
+    This regression was first released in 5.2.0.
+  * Fix the TLS_MODEL attribute in headers.
+    This regression was first released in 5.0.0.
+  * Optimizations and refactors:
+  * Implement opt.retain on Windows and enable by default on 64-bit.
+  * Optimize away a branch on the operator delete path.
+  * Add format annotation to the format generator function.
+  * Refactor and improve the size class header generation.
+  * Remove best fit.
+  * Avoid blocking on background thread locks for stats.
+
+- Remove disable-test_prof_log_many_traces-test.patch.
+
+-------------------------------------------------------------------
+Wed Apr 24 09:47:28 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133136).
+
+-------------------------------------------------------------------
+Thu Apr  4 11:20:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop static library package, nothing seems to use it.
+- Remove openSUSE 11.1 build support.
+
+-------------------------------------------------------------------
+Thu Apr  4 09:44:44 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add disable-test_prof_log_many_traces-test.patch in order
+  to workaround https://github.com/jemalloc/jemalloc/issues/1477.
+
+-------------------------------------------------------------------
+Wed Apr  3 08:35:44 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.0:
+  * New features:
+  * Implement oversize_threshold, which uses a dedicated arena
+    for allocations crossing the specified threshold to reduce
+    fragmentation.
+  * Add extents usage information to stats.
+  * Log time information for sampled allocations.
+  * Support 0 size in sdallocx.
+  * Output rate for certain counters in malloc_stats.
+  * Add mallctl interfaces:
+  * opt.oversize_threshold
+  * stats.arenas.<i>.extent_avail
+  * stats.arenas.<i>.extents.<j>.n{dirty,muzzy,retained}
+  * stats.arenas.<i>.extents.<j>.{dirty,muzzy,retained}_bytes
+  * Optimizations and refactors:
+  * Refactor the TSD module.
+  * Implement opt.oversize_threshold which uses a dedicated arena
+    for requests crossing the threshold, also eagerly purges the
+    oversize extents. Default the threshold to 8 MiB.
+  * Improve error handling for THP state initialization.
+  * Refactor and optimize the tcache fill / flush paths.
+  * Optimize sync / lwsync on PowerPC.
+  * Bypass extent_dalloc() when retain is enabled.
+  * Lower the default number of background threads to 4 (when the
+    feature is enabled).
+  * Use arena index for arena-matching checks.
+  * Avoid forced decay on thread termination when using
+    background threads.
+  * Disable muzzy decay by default.
+  * Only initialize libgcc unwinder when profiling is enabled.
+  * Bug fixes:
+  * Fix background thread index issues with max_background_threads.
+  * Fix stats output for opt.lg_extent_max_active_fit.
+  * Properly trigger decay on tcache destroy.
+  * Detect whether explicit extent zero out is necessary with
+    huge pages or custom extent hooks, which may change the purge
+    semantics.
+  * Fix a side effect caused by extent_max_active_fit combined
+    with decay-based purging, where freed extents can accumulate
+    and not be reused for an extended period of time.
+  * Fix a missing unlock on extent register error handling.
+  * Incompatible changes:
+  * Remove --with-lg-page-sizes.
+
+- Change URL of the project.
+
+-------------------------------------------------------------------
+Tue Oct 30 15:44:20 UTC 2018 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Disable profiling on ppc until boo#1105633 get fixed
+
+-------------------------------------------------------------------
+Sat Sep 29 09:27:31 UTC 2018 - Manu Maier <mmanu84@outlook.de>
+
+- Disable profiling on armv6 until boo#1105633 get fixed
+
+-------------------------------------------------------------------
+Wed Aug 22 13:48:06 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Disable profiling on armv7 until boo#1105633 get fixed
+
+-------------------------------------------------------------------
+Thu May 10 08:51:13 UTC 2018 - mliska@suse.cz
+
+- Update to version 5.1.0:
+  * remove patches: 0001-ARM-Don-t-extend-bit-LG_VADDR-to-compute-high-addres.patch
+  and 0001-remove-CPU_SPINWAIT.patch.
+
+  New features:
+    * Implement transparent huge page support for internal metadata. (@interwq)
+    * Add opt.thp to allow enabling / disabling transparent huge pages for all mappings. (@interwq)
+    * Add maximum background thread count option. (@djwatson)
+    * Allow prof_active to control opt.lg_prof_interval and prof.gdump. (@interwq)
+    * Allow arena index lookup based on allocation addresses via mallctl. (@lionkov)
+    * Allow disabling initial-exec TLS model. (@davidtgoldblatt, @KenMacD)
+    * Add opt.lg_extent_max_active_fit to set the max ratio between the size of the active extent selected (to split off from) and the size of the requested allocation. (@interwq, @davidtgoldblatt)
+    * Add retain_grow_limit to set the max size when growing virtual address space. (@interwq)
+    * Add mallctl interfaces:
+    * arena.<i>.retain_grow_limit (@interwq)
+    * arenas.lookup (@lionkov)
+    * max_background_threads (@djwatson)
+    * opt.lg_extent_max_active_fit (@interwq)
+    * opt.max_background_threads (@djwatson)
+    * opt.metadata_thp (@interwq)
+    * opt.thp (@interwq)
+    * stats.metadata_thp (@interwq)
+
+  Portability improvements:
+    * Support GNU/kFreeBSD configuration. (@paravoid)
+    * Support m68k, nios2 and SH3 architectures. (@paravoid)
+    * Fall back to FD_CLOEXEC when O_CLOEXEC is unavailable. (@zonyitoo)
+    * Fix symbol listing for cross-compiling. (@tamird)
+    * Fix high bits computation on ARM. (@davidtgoldblatt, @paravoid)
+    * Disable the CPU_SPINWAIT macro for Power. (@davidtgoldblatt, @marxin)
+    * Fix MSVC 2015 & 2017 builds. (@rustyx)
+    * Improve RISC-V support. (@EdSchouten)
+    * Set name mangling script in strict mode. (@nicolov)
+    * Avoid MADV_HUGEPAGE on ARM. (@marxin)
+    * Modify configure to determine return value of strerror_r. (@davidtgoldblatt, @cferris1000)
+    * Make sure CXXFLAGS is tested with CPP compiler. (@nehaljwani)
+    * Fix 32-bit build on MSVC. (@rustyx)
+    * Fix external symbol on MSVC. (@maksqwe)
+    * Avoid a printf format specifier warning. (@jasone)
+    * Add configure option --disable-initial-exec-tls which can allow jemalloc to be dynamically loaded after program startup. (@davidtgoldblatt, @KenMacD)
+    * AArch64: Add ILP32 support. (@cmuellner)
+    * Add --with-lg-vaddr configure option to support cross compiling. (@cmuellner, @davidtgoldblatt)
+
+  Optimizations and refactors:
+    * Improve active extent fit with extent_max_active_fit. This considerably reduces fragmentation over time and improves virtual memory and metadata usage. (@davidtgoldblatt, @interwq)
+    * Eagerly coalesce large extents to reduce fragmentation. (@interwq)
+    * sdallocx: only read size info when page aligned (i.e. possibly sampled), which speeds up the sized deallocation path significantly. (@interwq)
+    * Avoid attempting new mappings for in place expansion with retain, since it rarely succeeds in practice and causes high overhead. (@interwq)
+    * Refactor OOM handling in newImpl. (@wqfish)
+    * Add internal fine-grained logging functionality for debugging use. (@davidtgoldblatt)
+    * Refactor arena / tcache interactions. (@davidtgoldblatt)
+    * Refactor extent management with dumpable flag. (@davidtgoldblatt)
+    * Add runtime detection of lazy purging. (@interwq)
+    * Use pairing heap instead of red-black tree for extents_avail. (@djwatson)
+    * Use sysctl on startup in FreeBSD. (@trasz)
+    * Use thread local prng state instead of atomic. (@djwatson)
+    * Make decay to always purge one more extent than before, because in practice large extents are usually the ones that cross the decay threshold. Purging the additional extent helps save memory as well as reduce VM fragmentation. (@interwq)
+    * Fast division by dynamic values. (@davidtgoldblatt)
+    * Improve the fit for aligned allocation. (@interwq, @edwinsmith)
+    * Refactor extent_t bitpacking. (@rkmisra)
+    * Optimize the generated assembly for ticker operations. (@davidtgoldblatt)
+    * Convert stats printing to use a structured text emitter. (@davidtgoldblatt)
+    * Remove preserve_lru feature for extents management. (@djwatson)
+    * Consolidate two memory loads into one on the fast deallocation path. (@davidtgoldblatt, @interwq)
+
+  Bug fixes (most of the issues are only relevant to jemalloc 5.0):
+    * Fix deadlock with multithreaded fork in OS X. (@davidtgoldblatt)
+    * Validate returned file descriptor before use. (@zonyitoo)
+    * Fix a few background thread initialization and shutdown issues. (@interwq)
+    * Fix an extent coalesce + decay race by taking both coalescing extents off the LRU list. (@interwq)
+    * Fix potentially unbound increase during decay, caused by one thread keep stashing memory to purge while other threads generating new pages. The number of pages to purge is checked to prevent this. (@interwq)
+    * Fix a FreeBSD bootstrap assertion. (@strejda, @interwq)
+    * Handle 32 bit mutex counters. (@rkmisra)
+    * Fix a indexing bug when creating background threads. (@davidtgoldblatt, @binliu19)
+    * Fix arguments passed to extent_init. (@yuleniwo, @interwq)
+    * Fix addresses used for ordering mutexes. (@rkmisra)
+    * Fix abort_conf processing during bootstrap. (@interwq)
+    * Fix include path order for out-of-tree builds. (@cmuellner)
+
+  Incompatible changes:
+    * Remove --disable-thp. (@interwq)
+    * Remove mallctl interfaces:
+    * config.thp (@interwq)
+
+  Documentation:
+    * Add TUNING.md. (@interwq, @davidtgoldblatt, @djwatson)
+
+-------------------------------------------------------------------
+Sat Feb 10 09:52:38 UTC 2018 - guillaume@opensuse.org
+
+- Disable THP for ARM (32 bits). This fix build by passing all 
+  tests successfully
+
+-------------------------------------------------------------------
+Wed Oct  4 09:19:52 UTC 2017 - mliska@suse.cz
+
+- Add 0001-ARM-Don-t-extend-bit-LG_VADDR-to-compute-high-addres.patch:
+  fixes #979.
+
+-------------------------------------------------------------------
+Tue Sep 12 10:28:43 UTC 2017 - mliska@suse.cz
+
+- Add 0001-remove-CPU_SPINWAIT.patch:
+  revert 701daa5298b3befe2aff05ce590533165abb9ba4 in order to fix #761.
+
+-------------------------------------------------------------------
+Tue Sep 12 08:12:04 UTC 2017 - mliska@suse.cz
+
+- Update to version 5.0.1
+   Bug fixes:
+     * Update decay->nunpurged before purging, in order to avoid potential
+       update races and subsequent incorrect purging volume.
+       ([37]@interwq)
+     * Only abort on dlsym(3) error if the failure impacts an enabled
+       feature (lazy locking and/or background threads). This mitigates an
+       initialization failure bug for which we still do not have a clear
+       reproduction test case. ([38]@interwq)
+     * Modify tsd management so that it neither crashes nor leaks if a
+       thread's only allocation activity is to call free() after TLS
+       destructors have been executed. This behavior was observed when
+       operating with GNU libc, and is unlikely to be an issue with other
+       libc implementations. ([39]@interwq)
+     * Mask signals during background thread creation. This prevents
+       signals from being inadvertently delivered to background threads.
+       ([40]@jasone, [41]@davidtgoldblatt, [42]@interwq)
+     * Avoid inactivity checks within background threads, in order to
+       prevent recursive mutex acquisition. ([43]@interwq)
+     * Fix extent_grow_retained() to use the specified hooks when the
+       arena.<i>.extent_hooks mallctl is used to override the default
+       hooks. ([44]@interwq)
+     * Add missing reentrancy support for custom extent hooks which
+       allocate. ([45]@interwq)
+     * Post-fork(2), re-initialize the list of tcaches associated with
+       each arena to contain no tcaches except the forking thread's.
+       ([46]@interwq)
+     * Add missing post-fork(2) mutex reinitialization for
+       extent_grow_mtx. This fixes potential deadlocks after fork(2).
+       ([47]@interwq)
+     * Enforce minimum autoconf version (currently 2.68), since 2.63 is
+       known to generate corrupt configure scripts. ([48]@jasone)
+     * Ensure that the configured page size (--with-lg-page) is no larger
+       than the configured huge page size (--with-lg-hugepage).
+       ([49]@jasone)
+
+   New features:
+     * Implement optional per-CPU arena support; threads choose which
+       arena to use based on current CPU rather than on fixed
+       thread-->arena associations. ([59]@interwq)
+     * Implement two-phase decay of unused dirty pages. Pages transition
+       from dirty-->muzzy-->clean, where the first phase transition relies
+       on madvise(... MADV_FREE) semantics, and the second phase
+       transition discards pages such that they are replaced with
+       demand-zeroed pages on next access. ([60]@jasone)
+     * Increase decay time resolution from seconds to milliseconds.
+       ([61]@jasone)
+     * Implement opt-in per CPU background threads, and use them for
+       asynchronous decay-driven unused dirty page purging. ([62]@interwq)
+     * Add mutex profiling, which collects a variety of statistics useful
+       for diagnosing overhead/contention issues. ([63]@interwq)
+     * Add C++ new/delete operator bindings. ([64]@djwatson)
+     * Support manually created arena destruction, such that all data and
+       metadata are discarded. Add MALLCTL_ARENAS_DESTROYED for accessing
+       merged stats associated with destroyed arenas. ([65]@jasone)
+     * Add MALLCTL_ARENAS_ALL as a fixed index for use in accessing
+       merged/destroyed arena statistics via mallctl. ([66]@jasone)
+     * Add opt.abort_conf to optionally abort if invalid configuration
+       options are detected during initialization. ([67]@interwq)
+     * Add opt.stats_print_opts, so that e.g. JSON output can be selected
+       for the stats dumped during exit if opt.stats_print is true.
+       ([68]@jasone)
+     * Add --with-version=VERSION for use when embedding jemalloc into
+       another project's git repository. ([69]@jasone)
+     * Add --disable-thp to support cross compiling. ([70]@jasone)
+     * Add --with-lg-hugepage to support cross compiling. ([71]@jasone)
+     * Add mallctl interfaces (various authors):
+          + background_thread
+          + opt.abort_conf
+          + opt.retain
+          + opt.percpu_arena
+          + opt.background_thread
+          + opt.{dirty,muzzy}_decay_ms
+          + opt.stats_print_opts
+          + arena.<i>.initialized
+          + arena.<i>.destroy
+          + arena.<i>.{dirty,muzzy}_decay_ms
+          + arena.<i>.extent_hooks
+          + arenas.{dirty,muzzy}_decay_ms
+          + arenas.bin.<i>.slab_size
+          + arenas.nlextents
+          + arenas.lextent.<i>.size
+          + arenas.create
+          + stats.background_thread.{num_threads,num_runs,run_interval}
+          + stats.mutexes.{ctl,background_thread,prof,reset}.{num_ops,num_
+            spin_acq,num_wait,max_wait_time,total_wait_time,max_num_thds,n
+            um_owner_switch}
+          + stats.arenas.<i>.{dirty,muzzy}_decay_ms
+          + stats.arenas.<i>.uptime
+          + stats.arenas.<i>.{pmuzzy,base,internal,resident}
+          + stats.arenas.<i>.{dirty,muzzy}_{npurge,nmadvise,purged}
+          + stats.arenas.<i>.bins.<j>.{nslabs,reslabs,curslabs}
+          + stats.arenas.<i>.bins.<j>.mutex.{num_ops,num_spin_acq,num_wait
+            ,max_wait_time,total_wait_time,max_num_thds,num_owner_switch}
+          + stats.arenas.<i>.lextents.<j>.{nmalloc,ndalloc,nrequests,curle
+            xtents}
+          + stats.arenas.i.mutexes.{large,extent_avail,extents_dirty,exten
+            ts_muzzy,extents_retained,decay_dirty,decay_muzzy,base,tcache_
+            list}.{num_ops,num_spin_acq,num_wait,max_wait_time,total_wait_
+            time,max_num_thds,num_owner_switch}
+
+   Portability improvements:
+     * Improve reentrant allocation support, such that deadlock is less
+       likely if e.g. a system library call in turn allocates memory.
+       ([72]@davidtgoldblatt, [73]@interwq)
+     * Support static linking of jemalloc with glibc. ([74]@djwatson)
+
+   Optimizations and refactors:
+     * Organize virtual memory as "extents" of virtual memory pages,
+       rather than as naturally aligned "chunks", and store all metadata
+       in arbitrarily distant locations. This reduces virtual memory
+       external fragmentation, and will interact better with huge pages
+       (not yet explicitly supported). ([75]@jasone)
+     * Fold large and huge size classes together; only small and large
+       size classes remain. ([76]@jasone)
+     * Unify the allocation paths, and merge most fast-path branching
+       decisions. ([77]@davidtgoldblatt, [78]@interwq)
+     * Embed per thread automatic tcache into thread-specific data, which
+       reduces conditional branches and dereferences. Also reorganize
+       tcache to increase fast-path data locality. ([79]@interwq)
+     * Rewrite atomics to closely model the C11 API, convert various
+       synchronization from mutex-based to atomic, and use the explicit
+       memory ordering control to resolve various hypothetical races
+       without increasing synchronization overhead. ([80]@davidtgoldblatt)
+     * Extensively optimize rtree via various methods:
+          + Add multiple layers of rtree lookup caching, since rtree
+            lookups are now part of fast-path deallocation. ([81]@interwq)
+          + Determine rtree layout at compile time. ([82]@jasone)
+          + Make the tree shallower for common configurations.
+            ([83]@jasone)
+          + Embed the root node in the top-level rtree data structure,
+            thus avoiding one level of indirection. ([84]@jasone)
+          + Further specialize leaf elements as compared to internal node
+            elements, and directly embed extent metadata needed for
+            fast-path deallocation. ([85]@jasone)
+          + Ignore leading always-zero address bits
+            (architecture-specific). ([86]@jasone)
+     * Reorganize headers (ongoing work) to make them hermetic, and
+       disentangle various module dependencies. ([87]@davidtgoldblatt)
+     * Convert various internal data structures such as size class
+       metadata from boot-time-initialized to compile-time-initialized.
+       Propagate resulting data structure simplifications, such as making
+       arena metadata fixed-size. ([88]@jasone)
+     * Simplify size class lookups when constrained to size classes that
+       are multiples of the page size. This speeds lookups, but the
+       primary benefit is complexity reduction in code that was the source
+       of numerous regressions. ([89]@jasone)
+     * Lock individual extents when possible for localized extent
+       operations, rather than relying on a top-level arena lock.
+       ([90]@davidtgoldblatt, [91]@jasone)
+     * Use first fit layout policy instead of best fit, in order to
+       improve packing. ([92]@jasone)
+     * If munmap(2) is not in use, use an exponential series to grow each
+       arena's virtual memory, so that the number of disjoint virtual
+       memory mappings remains low. ([93]@jasone)
+     * Implement per arena base allocators, so that arenas never share any
+       virtual memory pages. ([94]@jasone)
+     * Automatically generate private symbol name mangling macros.
+       ([95]@jasone)
+
+   Incompatible changes:
+     * Replace chunk hooks with an expanded/normalized set of extent
+       hooks. ([96]@jasone)
+     * Remove ratio-based purging. ([97]@jasone)
+     * Remove --disable-tcache. ([98]@jasone)
+     * Remove --disable-tls. ([99]@jasone)
+     * Remove --enable-ivsalloc. ([100]@jasone)
+     * Remove --with-lg-size-class-group. ([101]@jasone)
+     * Remove --with-lg-tiny-min. ([102]@jasone)
+     * Remove --disable-cc-silence. ([103]@jasone)
+     * Remove --enable-code-coverage. ([104]@jasone)
+     * Remove --disable-munmap (replaced by opt.retain). ([105]@jasone)
+     * Remove Valgrind support. ([106]@jasone)
+     * Remove quarantine support. ([107]@jasone)
+     * Remove redzone support. ([108]@jasone)
+     * Remove mallctl interfaces (various authors):
+          + config.munmap
+          + config.tcache
+          + config.tls
+          + config.valgrind
+          + opt.lg_chunk
+          + opt.purge
+          + opt.lg_dirty_mult
+          + opt.decay_time
+          + opt.quarantine
+          + opt.redzone
+          + opt.thp
+          + arena.<i>.lg_dirty_mult
+          + arena.<i>.decay_time
+          + arena.<i>.chunk_hooks
+          + arenas.initialized
+          + arenas.lg_dirty_mult
+          + arenas.decay_time
+          + arenas.bin.<i>.run_size
+          + arenas.nlruns
+          + arenas.lrun.<i>.size
+          + arenas.nhchunks
+          + arenas.hchunk.<i>.size
+          + arenas.extend
+          + stats.cactive
+          + stats.arenas.<i>.lg_dirty_mult
+          + stats.arenas.<i>.decay_time
+          + stats.arenas.<i>.metadata.{mapped,allocated}
+          + stats.arenas.<i>.{npurge,nmadvise,purged}
+          + stats.arenas.<i>.huge.{allocated,nmalloc,ndalloc,nrequests}
+          + stats.arenas.<i>.bins.<j>.{nruns,reruns,curruns}
+          + stats.arenas.<i>.lruns.<j>.{nmalloc,ndalloc,nrequests,curruns}
+          + stats.arenas.<i>.hchunks.<j>.{nmalloc,ndalloc,nrequests,curhch
+            unks}
+
+   Bug fixes:
+     * Improve interval-based profile dump triggering to dump only one
+       profile when a single allocation's size exceeds the interval.
+       ([109]@jasone)
+     * Use prefixed function names (as controlled by
+       --with-jemalloc-prefix) when pruning backtrace frames in jeprof.
+       ([110]@jasone)
+
+
+-------------------------------------------------------------------
+Fri Mar 10 19:50:27 UTC 2017 - idonmez@suse.com
+
+- Update to version 4.5.0
+  New features:
+  * Add --disable-thp and the opt.thp mallctl to provide opt-out
+    mechanisms for transparent huge page integration.
+  * Restructure *CFLAGS configuration, so that CFLAGS behaves
+    typically, and EXTRA_CFLAGS provides a way to specify e.g. 
+    -Werror during building, but not during configuration.
+  Bug fixes:
+  * Fix DSS (sbrk(2)-based) allocation. This regression was first
+    released in 4.3.0.
+  * Handle race in per size class utilization computation.
+    This functionality was first released in 4.0.0.
+  * Fix lock order reversal during gdump.
+  * Fix/refactor tcache synchronization. This regression was
+    first released in 4.0.0.
+  * Fix various JSON-formatted malloc_stats_print() bugs.
+    This functionality was first released in 4.3.0.
+  * Fix huge-aligned allocation. This regression was first
+    released in 4.4.0.
+  * When transparent huge page integration is enabled, detect
+    what state pages start in according to the kernel's current
+    operating mode, and only convert arena chunks to non-huge
+    during purging if that is not their initial state. 
+    This functionality was first released in 4.4.0.
+  * Fix lg_chunk clamping for the --enable-cache-oblivious
+    --disable-fill case. This regression was first released 
+    in 4.0.0.
+
+-------------------------------------------------------------------
+Sun Dec  4 12:07:44 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.4.0
+  Optimizations:
+  * Add extent serial numbers and use them where appropriate as a
+    sort key that is higher priority than address, so that the
+    allocation policy prefers older extents. This tends to improve
+    locality (decrease fragmentation) when memory grows downward.
+  * Refactor madvise(2) configuration so that MADV_FREE is detected
+    and utilized on Linux 4.5 and newer.
+  * Mark partially purged arena chunks as non-huge-page.
+    This improves interaction with Linux's transparent huge page
+    functionality.
+
+  Bug fixes:
+  * Fix size class computations for edge conditions involving
+    extremely large allocations. This regression was first
+    released in 4.0.0.
+  * Remove overly restrictive assertions related to the cactive
+    statistic. This regression was first released in 4.1.0.
+
+-------------------------------------------------------------------
+Tue Nov  8 06:52:55 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.3.1
+  * Fix a severe virtual memory leak. This regression was first
+    released in 4.3.0. 
+
+-------------------------------------------------------------------
+Sat Nov  5 05:46:39 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.3.0
+  New features:
+  * Add "J" (JSON) support to malloc_stats_print().
+  * Add Cray compiler support.
+
+  Optimizations:
+  * Add/use adaptive spinning for bootstrapping and radix tree node
+    initialization.
+
+  Bugfixes:
+  * Fix large allocation to search starting in the optimal size
+    class heap, which can substantially reduce virtual memory churn
+    and fragmentation.  This regression was first released in 4.0.0. 
+  * Fix stats.arenas.<i>.nthreads accounting.
+  * Fix and simplify decay-based purging.
+  * Make DSS (sbrk(2)-related) operations lockless, which resolves
+    potential deadlocks during thread exit.
+  * Fix over-sized allocation of radix tree leaf nodes.
+  * Fix over-sized allocation of arena_t (plus associated stats) data
+    structures.
+  * Fix EXTRA_CFLAGS to not affect configuration.
+  * Fix a Valgrind integration bug.
+  * Disallow 0x5a junk filling when running in Valgrind.
+  * Fix a file descriptor leak on Linux.  This regression was
+    first released in 4.2.0.
+  * Fix static linking of jemalloc with glibc.
+  * Use syscall(2) rather than {open,read,close}(2) during boot on Linux.
+    This works around other libraries' system call wrappers performing
+    reentrant allocation.
+  * Fix OS X default zone replacement to work with OS X 10.12.
+  * Fix cached memory management to avoid needless commit/decommit
+    operations during purging, which resolves permanent virtual
+    memory map fragmentation issues on Windows.
+  * Fix TSD fetches to avoid (recursive) allocation.  This is relevant to
+    non-TLS and Windows configurations.
+  * Fix malloc_conf overriding to work on Windows.
+  * Forcibly disable lazy-lock on Windows (was forcibly *enabled*).
+
+-------------------------------------------------------------------
+Thu Jun  9 07:26:13 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.2.1
+  * Fix bootstrapping issues for configurations that require
+    allocation during tsd initialization (e.g. --disable-tls).
+  * Fix gettimeofday() version of nstime_update().
+  * Fix Valgrind regressions in calloc() and chunk_alloc_wrapper().
+  * Fix potential VM map fragmentation regression.
+  * Fix opt_zero-triggered in-place huge reallocation zeroing.
+  * Fix heap profiling context leaks in reallocation edge cases. 
+
+-------------------------------------------------------------------
+Fri May 13 06:58:21 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.2.0
+  * Add the arena.<i>.reset mallctl, which makes it possible to
+    discard all of an arena's allocations in a single operation.
+  * Add the stats.retained and stats.arenas.<i>.retained statistics.
+  * Add the --with-version configure option.
+  * Support --with-lg-page values larger than actual page size.
+  * Use pairing heaps rather than red-black trees for various hot
+    data structures.
+  * Streamline fast paths of rtree operations.
+  * Optimize the fast paths of calloc() and [m,d,sd]allocx().
+  * Decommit unused virtual memory if the OS does not overcommit.
+  * Specify MAP_NORESERVE on Linux if [heuristic] overcommit is active,
+    in order to avoid unfortunate interactions during fork(2).
+  * Fix chunk accounting related to triggering gdump profiles.
+  * Link against librt for clock_gettime(2) if glibc < 2.17.
+  * Scale leak report summary according to sampling probability.
+
+-------------------------------------------------------------------
+Wed May  4 07:30:43 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.1.1
+  * Fix hashing functions to avoid unaligned memory accesses
+    (and resulting crashes). This is relevant at least to some
+    ARM-based platforms.
+  * Fix fork()-related lock rank ordering reversals. These reversals
+    were unlikely to cause deadlocks in practice except when heap
+    profiling was enabled and active.
+  * Fix various chunk leaks in OOM code paths.
+  * Fix malloc_stats_print() to print opt.narenas correctly.
+  * Fix a variety of test failures that were due to test fragility
+    rather than core bugs.
+- Remove disable_oom_test.patch, fixed upstream.
+- Run testsuite in parallel where possible
+
+-------------------------------------------------------------------
+Wed Apr 20 12:11:43 UTC 2016 - jslaby@suse.com
+
+- add disable_oom_test.patch
+
+-------------------------------------------------------------------
+Mon Feb 29 08:27:44 UTC 2016 - idonmez@suse.com
+
+- Update to version 4.1.0
+  New features:
+  * Implement decay-based unused dirty page purging, a major optimization
+    with mallctl API impact. This is an alternative to the existing ratio-based
+    unused dirty page purging, and is intended to eventually become the sole 
+    purging mechanism. New mallctls:
+    + opt.purge
+    + opt.decay_time
+    + arena.<i>.decay
+    + arena.<i>.decay_time
+    + arenas.decay_time
+    + stats.arenas.<i>.decay_time
+  * Add --with-malloc-conf, which makes it possible to embed a default options
+    string during configuration. This was motivated by the desire to specify 
+    --with-malloc-conf=purge:decay , since the default must remain purge:ratio
+    until the 5.0.0 release.
+  * Make *allocx() size class overflow behavior defined. The maximum size
+    class is now less thanPTRDIFF_MAX to protect applications against numerical
+    overflow, and all allocation functions are guaranteed to indicate errors 
+    rather than potentially crashing if the request size exceeds the maximum size class.
+  * jeprof:
+    + Add raw heap profile support.
+    + Add --retain and --exclude for backtrace symbol filtering.
+
+  Optimizations:
+  * Optimize the fast path to combine various bootstrapping and configuration
+    checks and execute more streamlined code in the common case.
+  * Use linear scan for small bitmaps (used for small object tracking). 
+   In addition to speeding up bitmap operations on 64-bit systems, this reduces
+   allocator metadata overhead by approximately 0.2%.
+  * Separate arena_avail trees, which substantially speeds up run tree operations.
+  * Use memoization (boot-time-computed table) for run quantization. Separate 
+    arena_avail trees reduced the importance of this optimization.
+  * Attempt mmap-based in-place huge reallocation. This can dramatically speed up
+    incremental huge reallocation.
+
+  Incompatible changes:
+  * Make opt.narenas unsigned rather than size_t.
+
+  Bug fixes:
+  * Fix stats.cactive accounting regression.
+  * Handle unaligned keys in hash(). This caused problems for some ARM systems.
+  * Refactor arenas array. In addition to fixing a fork-related deadlock, 
+    this makes arena lookups faster and simpler.
+  * Move retained memory allocation out of the default chunk allocation function,
+    to a location that gets executed even if the application installs a custom chunk
+    allocation function. This resolves a virtual memory leak.  
+  * Fix a potential tsd cleanup leak.
+  * Fix run quantization. In practice this bug had no impact unless applications
+    requested memory with alignment exceeding one page. 
+  * Fix LinuxThreads-specific bootstrapping deadlock. (Cosmin Paraschiv) 
+  * jeprof:
+    + Don't discard curl options if timeout is not defined. (@djwatson)
+    + Detect failed profile fetches. (@djwatson)
+ * Fix stats.arenas.<i>.{dss,lg_dirty_mult,decay_time,pactive,pdirty} for --disable-stats case.
+
+-------------------------------------------------------------------
+Sun Feb 14 18:27:08 UTC 2016 - olaf@aepfle.de
+
+- Fix build/test in SLE_11 by using gcc48
+
+-------------------------------------------------------------------
+Sat Oct 24 18:07:12 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.0.4
+  * Fix xallocx(..., MALLOCX_ZERO to zero the last full trailing page
+    of large allocations that have been randomly assigned an offset of
+    0 when --enable-cache-oblivious configure option is enabled.
+
+-------------------------------------------------------------------
+Wed Sep 25 08:31:08 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.0.3
+  * See included ChangeLog for complete changes.
+
+-------------------------------------------------------------------
+Mon Mar 31 16:53:49 UTC 2014 - idonmez@suse.com
+
+- Update to 3.6.0
+  * Fix a regression in arena_chunk_alloc() that caused crashes
+    during small/large allocation if chunk allocation failed.
+  * Fix backtracing for gcc intrinsics-based backtracing by specifying
+    -fno-omit-frame-pointer to gcc.
+  *  Use dss allocation precedence for huge allocations as well as
+    small/large allocations.
+  * Testsuite fixes
+- Drop jemalloc-fix-backtracing.patch, merged upstream.
+
+-------------------------------------------------------------------
+Mon Mar 31 09:21:34 UTC 2014 - idonmez@suse.com
+
+- Enable profiling
+- Add jemalloc-fix-backtracing.patch to fix profiling tests on x86
+  (the failures were triggered due to profiling support.)
+
+-------------------------------------------------------------------
+Wed Feb 26 17:17:33 UTC 2014 - idonmez@suse.com
+
+- Update to version 3.5.1
+  * Fix junk filling for mremap(2)-based huge reallocation.
+  * Unit test fixes
+- Remove jemalloc-fix-32bit-tests.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 29 12:24:21 UTC 2014 - idonmez@suse.com
+
+- Add jemalloc-fix-32bit-tests.patch to fix test failures on i586
+
+-------------------------------------------------------------------
+Fri Jan 24 12:02:33 UTC 2014 - idonmez@suse.com
+
+- Update to version 3.5.0
+  * Add the *allocx() API, which is a successor to the experimental *allocm()
+    API.  The *allocx() functions are slightly simpler to use because they have
+    fewer parameters, they directly return the results of primary interest, and
+    mallocx()/rallocx() avoid the strict aliasing pitfall that
+    allocm()/rallocx() share with posix_memalign().  Note that *allocm() is
+    slated for removal in the next non-bugfix release.
+  * Add support for LinuxThreads.
+
+  * Unless heap profiling is enabled, disable floating point code and don't link
+    with libm.  This, in combination with e.g. EXTRA_CFLAGS=-mno-sse on x64
+    systems, makes it possible to completely disable floating point register
+    use.  Some versions of glibc neglect to save/restore caller-saved floating
+    point registers during dynamic lazy symbol loading, and the symbol loading
+    code uses whatever malloc the application happens to have linked/loaded
+    with, the result being potential floating point register corruption.
+  * Report ENOMEM rather than EINVAL if an OOM occurs during heap profiling
+    backtrace creation in imemalign().  This bug impacted posix_memalign() and
+    aligned_alloc().
+  * Fix a file descriptor leak in a prof_dump_maps() error path.
+  * Fix prof_dump() to close the dump file descriptor for all relevant error
+    paths.
+  * Fix rallocm() to use the arena specified by the ALLOCM_ARENA(s) flag for
+    allocation, not just deallocation.
+  * Fix a data race for large allocation stats counters.
+  * Fix a potential infinite loop during thread exit.  This bug occurred on
+    Solaris, and could affect other platforms with similar pthreads TSD
+    implementations.
+  * Don't junk-fill reallocations unless usable size changes.  This fixes a
+    violation of the *allocx()/*allocm() semantics.
+  * Fix growing large reallocation to junk fill new space.
+  * Fix huge deallocation to junk fill when munmap is disabled.
+  * Change the default private namespace prefix from empty to je_, and change
+    --with-private-namespace-prefix so that it prepends an additional prefix
+    rather than replacing je_.  This reduces the likelihood of applications
+    which statically link jemalloc experiencing symbol name collisions.
+  * Add missing private namespace mangling (relevant when
+    --with-private-namespace is specified).
+  * Add and use JEMALLOC_INLINE_C so that static inline functions are marked as
+    static even for debug builds.
+  * Add a missing mutex unlock in a malloc_init_hard() error path.  In practice
+    this error path is never executed.
+  * Fix numerous bugs in malloc_strotumax() error handling/reporting.  These
+    bugs had no impact except for malformed inputs.
+  * Fix numerous bugs in malloc_snprintf().  These bugs were not exercised by
+    existing calls, so they had no impact.
+
+-------------------------------------------------------------------
+Tue Oct 22 09:28:50 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.4.1
+  * Fix a race in the "arenas.extend" mallctl that could cause memory
+    corruption of internal data structures and subsequent crashes.
+  * Fix Valgrind integration flaws that caused Valgrind warnings about
+    reads of uninitialized memory in:
+    + arena chunk headers
+    + internal zero-initialized data structures
+  * Preserve errno during the first allocation.  A readlink(2) call
+    during initialization fails unless /etc/malloc.conf exists,
+    so errno was typically set during the first allocation prior to this fix.
+  * Fix compilation warnings reported by gcc 4.8.1
+
+-------------------------------------------------------------------
+Thu Jun  6 10:52:02 UTC 2013 - idonmez@suse.com
+
+- Rename pprof to pprof-jemalloc to prevent conflict with gperftools
+
+-------------------------------------------------------------------
+Wed Jun  5 14:49:45 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.4.0
+  * Support for aarch64
+  * Fix race-triggered deadlocks in chunk_record()
+
+-------------------------------------------------------------------
+Thu Mar  7 20:50:35 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.3.1
+  * Fix a locking order bug that could cause deadlock during fork
+    if heap profiling were enabled.
+  * Fix a chunk recycling bug that could cause the allocator to lose
+    track of whether a chunk was zeroed.
+  * Fix TLS-related memory corruption that could occur during thread
+    exit if the thread never allocated memory.  Only the quarantine
+    and prof facilities were susceptible.
+  * Internal reallocation of the quarantined object array leaked
+    the old array.
+  * Reallocation failure for internal reallocation of the quarantined
+    object array (very unlikely) resulted in memory corruption.
+  * Fix Valgrind integration to annotate all internally allocated
+    memory in a way that keeps Valgrind happy about internal data
+    structure access.
+  * Fix building for s390 systems.
+- Implement %check
+
+-------------------------------------------------------------------
+Thu Jan 24 11:56:49 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.3.0
+  * Add clipping support to lg_chunk option processing.
+  * Add the --enable-ivsalloc option.
+  * Add the --without-export option.
+  * Add the --disable-zone-allocator option.
+  * Fix "arenas.extend" mallctl to output the number of arenas.
+  * Fix chunk_recycyle() to unconditionally inform Valgrind that
+    returned memory is undefined.
+  * Fix build break on FreeBSD related to alloca.h.
+
+-------------------------------------------------------------------
+Wed Nov 14 23:32:04 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.0
+* Fix deadlock in the "arenas.purge" mallctl.
+- Update to new upstream release 3.1.0
+* Auto-detect whether running inside Valgrind, thus removing the
+  need to manually specify MALLOC_CONF=valgrind:true.
+* Disable tcache by default if running inside Valgrind, in order to
+  avoid making unallocated objects appear reachable to Valgrind.
+* Fix heap profiling crash if sampled object is freed via realloc(p, 0).
+
+-------------------------------------------------------------------
+Tue Sep  4 04:46:02 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.0.0
+* Implement Valgrind support, redzones, and quarantine.
+* Add support for additional architectures: MIPS, SH4, Tilera
+* Add nallocm(), which rounds a request size up to the nearest size
+  class without actually allocating.
+* Implement aligned_alloc()
+* Add the "thread.tcache.enabled" and "opt.prof_final" mallctls.
+* Update pprof (from gperftools 2.0).
+* (For more, see the ChangeLog file in this RPM package.)
+
+-------------------------------------------------------------------
+Thu Oct 13 00:00:00 UTC 2011 - tony@daylessday.org
+
+- Add a patch to generate jemalloc.sh during configure
+
+-------------------------------------------------------------------
+Wed Oct 12 00:00:00 UTC 2011 - tony@daylessday.org
+
+- Initial package (version 2.2.3) for build.opensuse.org

@@ -1,0 +1,14 @@
+Index: libmpack-lua-1.0.6/lmpack.c
+===================================================================
+--- libmpack-lua-1.0.6.orig/lmpack.c
++++ libmpack-lua-1.0.6/lmpack.c
+@@ -689,6 +689,7 @@ static void lmpack_unparse_enter(mpack_p
+         node->tok = mpack_pack_nil();
+         break;
+       }
++    /* Fallthrough */
+     default:
+       luaL_error(L, "can't serialize object");
+   }
+
+%changelog

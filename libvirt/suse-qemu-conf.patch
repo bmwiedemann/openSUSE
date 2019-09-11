@@ -1,0 +1,75 @@
+SUSE adjustments to qemu.conf
+
+This patch contains SUSE-specific adjustments to the upstream
+qemu.conf configuration file. In the future, it might make
+sense to separate these changes into individual patches (e.g.
+suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
+etc.), but for now they are all lumped together in this
+single patch.
+
+Index: libvirt-5.6.0/src/qemu/qemu.conf
+===================================================================
+--- libvirt-5.6.0.orig/src/qemu/qemu.conf
++++ libvirt-5.6.0/src/qemu/qemu.conf
+@@ -420,10 +420,19 @@
+ # isolation, but it cannot appear in a list of drivers.
+ #
+ #security_driver = "selinux"
++#security_driver = "apparmor"
+ 
+ # If set to non-zero, then the default security labeling
+ # will make guests confined. If set to zero, then guests
+-# will be unconfined by default. Defaults to 1.
++# will be unconfined by default. Defaults to 0.
++#
++# SUSE Note:
++# Currently, Apparmor is the default security framework in SUSE
++# distros.  If Apparmor is enabled on the host, libvirtd is
++# generously confined but users must opt-in to confine qemu
++# instances.  Change this to a non-zero value to enable default
++# Apparmor confinement of qemu instances.
++#
+ #security_default_confined = 1
+ 
+ # If set to non-zero, then attempts to create unconfined
+@@ -670,11 +679,22 @@
+ #relaxed_acs_check = 1
+ 
+ 
+-# In order to prevent accidentally starting two domains that
+-# share one writable disk, libvirt offers two approaches for
+-# locking files. The first one is sanlock, the other one,
+-# virtlockd, is then our own implementation. Accepted values
+-# are "sanlock" and "lockd".
++# SUSE note:
++# Two lock managers are supported: lockd and sanlock.  lockd, which
++# is provided by the virtlockd service, uses advisory locks (flock(2))
++# to protect virtual machine disks.  sanlock uses the notion of leases
++# to protect virtual machine disks and is more appropriate in a SAN
++# environment.
++#
++# For most deployments that require virtual machine disk protection,
++# lockd is recommended since it is easy to configure and the virtlockd
++# service can be restarted without terminating any running virtual
++# machines.  sanlock, which may be preferred in some SAN environments,
++# has the disadvantage of not being able to be restarted without
++# first terminating all virtual machines for which it holds leases.
++#
++# Specify lockd or sanlock to enable protection of virtual machine disk
++# content.
+ #
+ #lock_manager = "lockd"
+ 
+Index: libvirt-5.6.0/src/qemu/qemu_conf.c
+===================================================================
+--- libvirt-5.6.0.orig/src/qemu/qemu_conf.c
++++ libvirt-5.6.0/src/qemu/qemu_conf.c
+@@ -287,7 +287,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
+ 
+     cfg->clearEmulatorCapabilities = true;
+ 
+-    cfg->securityDefaultConfined = true;
++    cfg->securityDefaultConfined = false;
+     cfg->securityRequireConfined = false;
+ 
+     cfg->keepAliveInterval = 5;

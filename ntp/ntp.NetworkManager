@@ -1,0 +1,19 @@
+#! /bin/sh
+#
+# ntp dispatcher script for NetworkManager
+#
+# Dominique Leuenberger <dimstar@suse.de>
+#
+
+case "$2" in
+    up)
+        # Call netconfig in to reconfigure NTPd with the current time servers
+        netconfig modify -s NetworkManager -m ntp <<-EOT
+NTPSERVERS='$DHCP4_NTP_SERVERS'
+EOT
+        ;;
+    *)
+        exit 0      
+        ;;
+esac
+

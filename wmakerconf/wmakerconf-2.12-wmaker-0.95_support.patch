@@ -1,0 +1,87 @@
+Index: src/menu.c
+===================================================================
+--- src/menu.c.orig
++++ src/menu.c
+@@ -500,10 +500,10 @@ revert_and_exit (GtkWidget *w, gpointer
+  *  No return value.
+  */
+ {
+-   if (!WMWritePropListToFile (orig_wmaker, orig_wmaker_fname, YES))
++   if (!WMWritePropListToFile(orig_wmaker, orig_wmaker_fname))
+       warning (_("Can't revert to backupfile of `WindowMaker'. "
+ 		 "Please manually revert from file WindowMaker.bak."));
+-   if (orig_rootmenu && !WMWritePropListToFile (orig_rootmenu, orig_rootmenu_fname, YES))
++   if (orig_rootmenu && !WMWritePropListToFile(orig_rootmenu, orig_rootmenu_fname))
+       warning (_("Can't revert to backupfile of `WMRootMenu'. "
+ 		 "Please manually revert from file WMRootMenu.bak."));
+    gtk_main_quit ();
+Index: src/rootmenu.c
+===================================================================
+--- src/rootmenu.c.orig
++++ src/rootmenu.c
+@@ -365,7 +365,7 @@ save_rootmenu (void)
+ 		       node_freeitem, NULL);
+       g_node_destroy (node);
+ 
+-      if (WMWritePropListToFile (menu, filename, YES))
++      if (WMWritePropListToFile(menu, filename))
+       {
+ 	 menu_changed = NO;
+ 	 message (_("Window Maker root menu file '%s' saved."), filename);
+Index: src/themebrowser.c
+===================================================================
+--- src/themebrowser.c.orig
++++ src/themebrowser.c
+@@ -2705,7 +2705,7 @@ save_theme_backend (GtkWidget *widget, g
+ 	 oldfiles = g_list_remove (oldfiles, tmp);
+ 	 Free (tmp);
+       }
+-      if (!WMWritePropListToFile (theme, stylename, YES))
++      if (!WMWritePropListToFile(theme, stylename))
+       {
+ 	 dialog_popup (DIALOG_ERROR, NULL, NULL,
+ 		       _("Can't save theme file\n`%s'\n"
+Index: src/window.c
+===================================================================
+--- src/window.c.orig
++++ src/window.c
+@@ -1069,7 +1069,7 @@ save_config_file (GtkWidget *widget, gpo
+ 	 WMReleasePropList (all_keys);
+       }
+ 
+-      if (WMWritePropListToFile (newwm, orig_wmaker_fname, YES))
++      if (WMWritePropListToFile(newwm, orig_wmaker_fname))
+       {
+ 	 changed = NO;
+ 	 message (_("Window Maker config file '%s' saved."),
+Index: src/wmconfig.c
+===================================================================
+--- src/wmconfig.c.orig
++++ src/wmconfig.c
+@@ -216,7 +216,7 @@ main (int argc, char **argv)
+ 	 /*
+ 	  *  Generate backup file "'path'.bak"
+ 	  */
+-	 if (WMWritePropListToFile (orig_rootmenu, new, YES))
++	 if (WMWritePropListToFile(orig_rootmenu, new))
+ 	    message (_("Backupfile `%s' generated."), new);
+ 	 else
+ 	    error (_("Can't write backupfile `%s'."), new);
+@@ -280,7 +280,7 @@ main (int argc, char **argv)
+    if (!windowmaker)
+    {
+       windowmaker = global_windowmaker;
+-      if (WMWritePropListToFile (windowmaker, orig_wmaker_fname, YES))
++      if (WMWritePropListToFile(windowmaker, orig_wmaker_fname))
+ 	 warning (_("New WindowMaker configuration file `%s' created."),
+ 		  orig_wmaker_fname);
+       else
+@@ -294,7 +294,7 @@ main (int argc, char **argv)
+       /*
+        *  Generate backup file "'path'.bak"
+        */
+-      if (WMWritePropListToFile (windowmaker, new, YES))
++      if (WMWritePropListToFile(windowmaker, new))
+ 	 message (_("Backupfile `%s' generated."), new);
+       else
+ 	 error (_("Can't write backupfile `%s'."), new);

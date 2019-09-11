@@ -1,0 +1,13 @@
+Index: librtas-2.0.1/Makefile.am
+===================================================================
+--- librtas-2.0.1.orig/Makefile.am
++++ librtas-2.0.1/Makefile.am
+@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
+ EXTRA_DIST = README COPYING.LESSER
+ EXTRA_DIST += doc/doxygen.rtas doc/doxygen.rtasevent Changelog
+ 
+-docdir = $(datadir)/doc/@PACKAGE@
++docdir = $(datadir)/doc/packages/@PACKAGE@
+ doc_DATA = README COPYING.LESSER
+ 
+ pkgconfigdir = $(libdir)/pkgconfig

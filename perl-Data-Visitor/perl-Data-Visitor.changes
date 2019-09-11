@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Jul 18 16:03:40 UTC 2013 - coolo@suse.com
+
+- updated to 0.30
+   - doy/data-visitor should probably be the canonical repository at this
+     point
+
+   - The class callbacks to be run for an object are now chosen once, at the
+     start of visiting that object. Previously, it always looked through the
+     entire list of callbacks every time, in a loop in which the object in
+     question could be changed by the callback. Since the class callbacks are
+     only partially ordered, this lead to differences in whether a callback
+     would be called or not based on hash order. reported by Robin Smidsrød.
+
+-------------------------------------------------------------------
+Mon Feb 27 08:47:42 UTC 2012 - coolo@suse.com
+
+- updated to 0.28
+   - convert to dzil
+   - bump namespace::clean dep
+   - better error message if Data::Alias isn't found
+   - doc fixes
+
+-------------------------------------------------------------------
+Thu Jul 14 10:35:45 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:42 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:40 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sat Jul 24 23:39:14 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.27)
+

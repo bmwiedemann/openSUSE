@@ -1,0 +1,17 @@
+Index: net-snmp-5.7.2/local/tkmib
+===================================================================
+--- net-snmp-5.7.2.orig/local/tkmib
++++ net-snmp-5.7.2/local/tkmib
+@@ -27,10 +27,9 @@ instructions.
+ 
+ if (!$havetk) {
+     print "
+-ERROR:  You don't have the Tk module installed.  You should be able to
+-install this by running (as root):
++ERROR:  You don't have the Tk module installed.
+ 
+-    perl -MCPAN -e 'install Tk'
++    Please install the perl-Tk package.
+ ";
+ }
+ 

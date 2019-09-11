@@ -1,0 +1,1327 @@
+-------------------------------------------------------------------
+Thu May 16 10:16:10 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- add cronie-1.5.4-always_create_pid_file.patch to always create
+  a pid file even when the cron daemon does not fork. The PID file
+  is useful to avoid running multiple "cron -n" instances at once
+  [bsc#1133100]
+
+-------------------------------------------------------------------
+Fri Mar 29 13:50:01 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 1.5.4
+  * crond: Fix regression from previous release. Only first job
+    from a crontab was being run [bsc#1130746]
+- add cronie-1.5.4-dont_abort_loading_crontab.patch to not abort
+  loading crontab prematurely in case of error
+
+-------------------------------------------------------------------
+Sun Mar 17 10:37:44 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 1.5.3
+  * Fix CVE-2019-9704 [bnc#1128937] and CVE-2019-9705 [bnc#1128935]
+    to avoid local DoS of the crond
+  * crontab: Make crontab without arguments fail
+  * crond: In PAM configuration include system-auth instead of
+    password-auth
+  * crond: In the systemd service file restart crond if it fails
+  * crond: Use the role from the crond context for system job
+    contexts
+  * Multiple small cleanups and fixes.
+- refresh cronie-nheader_lines.diff and  cronie-pam_config.diff
+
+-------------------------------------------------------------------
+Wed Feb  6 15:47:40 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- cron.service: No limit on the number of processes spawned by cron 
+  shall be imposed.
+
+-------------------------------------------------------------------
+Tue Oct 30 13:14:10 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- cronie-pam_config.diff: When crond is started with the -n
+  switch like it does with systemd, the manual explicitly
+  instructs to disable the pam_loginuid module.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:04:46 UTC 2018 - kstreitova@suse.com
+
+- update to 1.5.2
+  * cronnext: New useful utility to find out time of the next job
+    run.
+  * crond: Avoid creating PID files when crond doesn't fork.
+  * crontab: Do not try to replace the crontab with a directory.
+  * crond: Log startup even when started in non-forking mode.
+  * Multiple small cleanups and fixes.
+- update Source address
+- remove cronie-1.4.7-disable_logging.patch and restore the
+  original cronie behaviour (a line starting with a dash in
+  normal user's crontab is handled as incorrect), there was enough
+  time for crontab migration. Manpage part of the patch was applied
+  upstream
+- remove cronie-nofork-nopid.patch (applied upstream)
+- pack cronnext utility
+- call autoreconf
+
+-------------------------------------------------------------------
+Thu Nov 30 12:43:52 UTC 2017 - rbrown@suse.com
+
+- Requires mail as it's really needed by cron-crons script, not
+  smtp_daemon [bsc#1070565] [bsc#1064834] 
+
+-------------------------------------------------------------------
+Mon Nov 27 09:48:27 UTC 2017 - jsegitz@suse.com
+
+- Ensure that /etc/cron.{hourly,daily,weekly,monthly} have proper
+  permissions and owner. This is racy but prevents some LPE vectors
+
+-------------------------------------------------------------------
+Fri Nov 24 17:25:56 UTC 2017 - kstreitova@suse.com
+
+- Requires smtp_daemon (not just Recommends) as it's needed by
+  run-crons script [bsc#1064834] 
+
+-------------------------------------------------------------------
+Thu Nov 23 13:39:47 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Aug 21 09:31:32 CEST 2017 - kukuk@suse.de
+
+- Require group trusted if we use them
+
+-------------------------------------------------------------------
+Tue Mar 28 09:18:55 UTC 2017 - kstreitova@suse.com
+
+- update to 1.5.1
+  * crontab: Use temporary file name that is ignored by crond.
+  * crond: Inherit PATH from the crond environment if -P option
+    is used.
+  * crond: Remove hardcoded "system_u" SELinux user, use the
+    SELinux user
+    of the running crond.
+  * anacron: Small cleanups and fixes.
+  * crond: Fix longstanding race condition on repeated crontab
+    modification.
+- refresh cronie-pam_config.diff 
+- get rid of %{name} macros in the patch names
+- use %{ext_man} macro for anacron man pages
+- fedorahosted.org was retired on March 1st, 2017
+  * update Url and Source address
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:29 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 30 14:35:34 UTC 2016 - kstreitova@suse.com
+
+- remove the omc xml config that is useless nowdays
+
+-------------------------------------------------------------------
+Thu Sep  8 10:24:43 UTC 2016 - tchvatal@suse.com
+
+- Add fix for bnc#983925 to run crons even when not on AC_POWER
+  * Nowdays it does not make much sense to not run crons when on
+    battery and actually it can even confuse people
+
+-------------------------------------------------------------------
+Wed Jul  1 20:11:18 UTC 2015 - crrodriguez@opensuse.org
+
+- cron.service: Use KillMode=process like upstream does. 
+
+-------------------------------------------------------------------
+Thu Jun 25 19:13:40 UTC 2015 - crrodriguez@opensuse.org
+
+- revert last change, it is a bug in sssd.service, fixed in 
+  SR#313709
+
+-------------------------------------------------------------------
+Thu Jun 25 13:39:16 UTC 2015 - jmatejek@suse.com
+
+- add support for MAILFROM, MAIL_CONFIG and different mailer binaries
+  in run-crons (bnc#812367, bnc#366762)
+
+-------------------------------------------------------------------
+Tue Jun 23 08:27:40 UTC 2015 - tchvatal@suse.com
+
+- Start cron after sssd.service bnc#926961
+
+-------------------------------------------------------------------
+Mon Jun 22 14:21:25 UTC 2015 - tchvatal@suse.com
+
+- Redo the post/pre update approach to fix migration from SLE11.
+  Should fix bnc#919028
+
+-------------------------------------------------------------------
+Fri Jun 19 14:51:05 UTC 2015 - kstreitova@suse.com
+
+- update to 1.5.0
+  * crond: Job environment variables are set also when executing
+    sendmail.
+  * crond: Adding duplicate orphans on reload is now prevented.
+  * crond: The regular crond shutdown is now logged.
+  * crontab: PAM is not called in crontab command if the caller's 
+    uid is 0.
+  * crond: PAM is not called from crond for system cron jobs
+    (/etc/crontab, /etc/cron.d) which are run for uid 0.
+  * crond: The existence of an user is checked at time when job is
+    run and not when the crontab is parsed on database reload. 
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jun  4 00:51:52 UTC 2015 - crrodriguez@opensuse.org
+
+- cron.service: Start After=nss-user-lookup.target not
+  after ypbind.service nscd.service
+-cron.service: Crons run at wall-time, order after time-sync.target
+
+-------------------------------------------------------------------
+Sun Nov 09 03:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre scripts
+
+-------------------------------------------------------------------
+Mon Sep 22 09:39:02 UTC 2014 - kstreitova@suse.com
+
+ - fixes bnc#833240: the first occurance of "/etc/anacrontab"
+replaced with "/etc/crontab" in the manpage file
+ - version updated to 1.4.12
+   * various small bugfixes
+
+-------------------------------------------------------------------
+Thu Sep 11 13:59:08 UTC 2014 - kstreitova@suse.com
+
+- clean up with spec-cleaner 
+
+-------------------------------------------------------------------
+Thu Sep 11 13:51:44 UTC 2014 - kstreitova@suse.com
+
+- fix dangling symlink on sbin/service 
+
+-------------------------------------------------------------------
+Fri Aug  1 14:32:37 UTC 2014 - vcizek@suse.com
+
+- add sysconfig.cron that used to be provided by aaa_base (bnc#860058)
+
+-------------------------------------------------------------------
+Mon Jun 16 13:51:14 UTC 2014 - vdziewiecki@suse.com
+
+-Add an option to manually reload cron. 
+
+-------------------------------------------------------------------
+Thu Jan 30 13:57:03 UTC 2014 - vdziewiecki@suse.com
+
+-Restart the service if it crashes 
+
+-------------------------------------------------------------------
+Thu Jan 23 21:08:55 UTC 2014 - aj@ajaissle.de
+
+- Leave /usr/sbin/rccron in as link to /sbin/service
+
+-------------------------------------------------------------------
+Sun Oct 20 14:50:52 UTC 2013 - p.drouand@gmail.com
+
+- Remove old sysvinit hacks; none target distributions use sysvinit
+
+-------------------------------------------------------------------
+Wed Sep 25 16:02:13 UTC 2013 - vdziewiecki@suse.com
+
+- Update to 1.4.11
+- I removed these patches: cronie-1.4.8-bug_756197.diff
+bug-786096_cronie-fdleak.diff, since those issuas appear to have
+been addressed upstream.
+-------------------------------------------------------------------
+Tue Sep 10 21:30:58 UTC 2013 - crrodriguez@opensuse.org
+
+- define PIDIDIR to "/run" instead of the (outdated) definition 
+  coming from glibc "paths.h"
+- systemd: there is no mail-transfer-agent target anymore, services
+  must be ordered After= a list of possible MTA.
+
+-------------------------------------------------------------------
+Sun Apr 14 02:14:21 UTC 2013 - crrodriguez@opensuse.org
+
+- Ordering units after syslog.target is no longer recommended. 
+
+-------------------------------------------------------------------
+Fri Mar 22 08:35:17 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Feb  7 12:19:58 UTC 2013 - meissner@suse.com
+
+- fixed the file descriptor leak correctly (bnc#786096,bnc#802345)
+
+-------------------------------------------------------------------
+Mon Feb  4 14:20:48 UTC 2013 - fcrozat@suse.com
+
+- Regenerate cronie-pam_config.diff, last line of the patch was not
+  properly added, causing bnc#801553.
+
+-------------------------------------------------------------------
+Mon Nov 12 13:44:06 UTC 2012 - vdziewiecki@suse.com
+
+-Fix Bug 786096 - VUL-1: cron: does not close file descriptors before invocation of commands 
+
+-------------------------------------------------------------------
+Sun Oct 28 18:31:20 UTC 2012 - crrodriguez@opensuse.org
+
+- DO not require sysvinit(syslog), the journal is enough 
+
+-------------------------------------------------------------------
+Thu Oct 18 10:26:33 UTC 2012 - coolo@suse.com
+
+- buildrequire systemd by pkgconfig provide to get systemd-mini
+  in build environments (to break cycle)
+
+-------------------------------------------------------------------
+Wed Aug 15 00:48:54 UTC 2012 - crrodriguez@opensuse.org
+
+- When the cron daemon does not fork, as it is the case
+  when using systemd, pid files are useless. avoid creating 
+  them in the first place. 
+
+-------------------------------------------------------------------
+Mon Jun 25 10:38:29 UTC 2012 - coolo@suse.com
+
+- the recommends for postfix was from a time when smtp_daemon
+  was required, now that smtp_daemon is recommended, the recommend
+  for postfix is between useless and harmful - so reduce it to a suggests
+
+-------------------------------------------------------------------
+Wed May 30 14:49:41 UTC 2012 - sweet_f_a@gmx.de
+
+- remove useless autmake dependency 
+
+-------------------------------------------------------------------
+Tue Apr 10 14:28:34 UTC 2012 - tabraham@novell.com
+
+- added cronie-1.4.8-bug_756197.diff to remove references to anacron
+  in crontab.5
+
+-------------------------------------------------------------------
+Wed Jan 18 15:15:14 UTC 2012 - tabraham@novell.com
+
+- removed cronie-1.4.7-syslog_output.patch deprecated by this update
+
+- Update to 1.4.8
+  + Cron writes job output to syslog incorrectly. When cron is
+    invoked in a way to print job output to syslog, it does print
+    only the first character of the output
+  + Check orphanded crontabs for adoption
+  + Unify logging in case SyslogOutput with the rest of crond
+  + The charset of anacron's mail is always ANSI_X3.4-1968. There
+    are no setlocale in anacron's source
+  + Cronie disables inotify when the /etc/crontab file does not
+    exist at startup. Existance of crontab and directories wasn't
+    controlled before creating inotify watches.
+
+-------------------------------------------------------------------
+Wed Nov 30 14:54:08 UTC 2011 - aj@suse.de
+
+- Add dependency on ypbind and nscd (bnc#732356)
+- Do not install generic INSTALL file.
+- Use set_permissions for newer distros.
+
+-------------------------------------------------------------------
+Wed Nov 30 09:47:40 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov 29 17:07:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Cron started before network is up [bnc#733275] 
+
+-------------------------------------------------------------------
+Fri Oct  7 12:11:17 UTC 2011 - fcrozat@suse.com
+
+- Ensure service_add_post is called in %post and not verify.
+
+-------------------------------------------------------------------
+Thu Sep 29 09:17:49 UTC 2011 - fcrozat@suse.com
+
+- Use systemd macros to register cron.service.
+
+-------------------------------------------------------------------
+Sun Sep 18 00:00:19 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Jul 11 10:28:40 UTC 2011 - vcizek@novell.com
+
+- changed run-parts to run-crons in anacron (bnc#689494)
+
+-------------------------------------------------------------------
+Mon Jun  6 08:51:11 UTC 2011 - vcizek@novell.com
+
+- mention possibility of disabling logging to syslog in the crontab 
+  manual
+- to keep compatibility with 11.3, execute the command despite 
+  an unprivileged user tries to disable logging (bnc#698549)
+
+-------------------------------------------------------------------
+Wed May 11 08:27:14 UTC 2011 - vcizek@novell.com
+
+- corrected job output via syslog (bnc#692871)
+
+-------------------------------------------------------------------
+Wed Apr 27 16:56:21 UTC 2011 - vcizek@novell.com
+
+- update to 1.4.7
+  many bugs fixed (including bnc#690166)
+
+-------------------------------------------------------------------
+Thu Feb 24 12:33:31 UTC 2011 - vcizek@novell.com
+
+- bnc#662433 again:
+  added quiet option to pam config, in order to avoid logging,
+  when /etc/cron.allow is missing
+
+-------------------------------------------------------------------
+Thu Jan  6 15:25:44 UTC 2011 - vcizek@novell.com
+
+- fix for bnc#662433 :
+  Accounts with disabled user login, but listed in /etc/cron.allow 
+  were unable to run cron jobs
+
+-------------------------------------------------------------------
+Fri Dec 10 12:46:12 UTC 2010 - aj@suse.de
+
+- cron.service needs to be after mta.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:16:31 UTC 2010 - coolo@novell.com
+
+- prereq init script syslog
+
+-------------------------------------------------------------------
+Tue Nov  9 15:38:33 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- use full RELRO here. 
+
+-------------------------------------------------------------------
+Mon Nov  8 13:15:59 UTC 2010 - aj@suse.de
+
+- Fix rpm group of cronie-anacron
+
+-------------------------------------------------------------------
+Mon Nov  8 12:52:17 UTC 2010 - aj@suse.de
+
+- Fix package list.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Oct 27 09:04:54 UTC 2010 - aj@suse.de
+
+- Add cron.service for systemd.
+
+-------------------------------------------------------------------
+Wed Oct 27 08:31:19 UTC 2010 - mseben@gmail.com
+
+- Update to cronie 1.4.6
+  * man/anacron.8, man/anacrontab.5, man/cron.8, man/crontab.1,
+    man/crontab.5: Rewrite of man pages & correction
+  * man/bitstring.3: Remove useless man page
+  * Check clustering before un/watch function
+  * Remove cluster support from inotify_database
+  * The crontab command uses "-c" and "-n" instead of "-h"
+
+-------------------------------------------------------------------
+Mon Oct 25 11:08:38 UTC 2010 - coolo@novell.com
+
+- use cronie_version not cron's version for anacron
+
+-------------------------------------------------------------------
+Thu Oct 21 19:32:39 UTC 2010 - cristian.rodriguez@opensuse.org
+
+-  Update to cronie 1.4.5_git201010210619
+   * Fix broken ifdef HAS_FCHOWN
+   * Cronie supports "clustering" now.
+ 
+-------------------------------------------------------------------
+Wed Oct 13 17:42:15 UTC 2010 - mseben@gmail.com
+
+- added scriptlets and subpackage cron for propper update
+
+-------------------------------------------------------------------
+Thu Aug 26 01:34:34 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to cronie 1.4.5
+- drop upstreamed patches in particular minuslog and pam_conv.
+- cronie can work without sendmail now, if absent syslog is used.
+
+-------------------------------------------------------------------
+Wed Apr  7 18:50:23 UTC 2010 - mseben@novell.com
+
+- added crond_pid.diff to finaly fix cron.pid issue which breaks 
+  init script 
+
+-------------------------------------------------------------------
+Thu Mar 25 14:28:30 UTC 2010 - mseben@novell.com
+
+- updated to version 1.4.4
+	* src/crontab.c: CVE-2010-0424 -- crontab -e crontab file timestamp
+      race condition
+    * configure.ac: Dynamic shared libraries -laudit There is need to 
+	  add -laudit into gcc options because now it's no found automatically. 
+    * man/anacrontab.5: Make man page more readable based on #564206.
+    * crond.sysconfig, cronie.init: CRON_VALIDATE_MAILRCPTS was removed,
+      because it was not used anyway.
+    * src/do_command.c, src/funcs.h, src/security.c: With NFS homes
+      can't be job executed, because root can't access this directory.
+    * man/cron.8, src/do_command.c: Disable mailing output.
+    * man/cron.8, src/cron.c, src/do_command.c, src/globals.h: Output
+      could be redirectered to syslog.
+    * src/security.c: Cron doesn't use environment values from
+      /etc/security/pam_env.conf.  This was fixed by moving pam_setcred
+       into first part of authentication of pam.
+    * cronie.init: Initscript: if unprivileged user stop deamon, it
+      should return 4.
+    * cronie.init: Initscript: if unprivileged user restart deamon, it
+      should return 4.
+    * src/security.c: This function will be probably removed from
+      libselinux, so it is added into source code here.
+    * pam/crond: One line was missing in pam authentication. rhbz#533189
+    * Makefile.am, configure.ac: Autotools - Makefile includes
+      dailyjobs, configure has new version.
+
+-------------------------------------------------------------------
+Fri Feb 19 13:58:34 UTC 2010 - mseben@novell.com
+
+- added race-mtime_new.patch : to fix crontab -e crontab file 
+  timestamp race condition (bnc#580800) (CVE-2010-0424)
+
+-------------------------------------------------------------------
+Wed Feb  3 22:03:53 UTC 2010 - mseben@novell.com
+
+- added nheader_lines.diff : ignore top three lines of comments in 
+  crontab file when user use crontab -e
+- added $RPM_OPT_FLAGS to build stage
+
+-------------------------------------------------------------------
+Sat Dec 19 18:13:04 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Dec 17 07:28:54 UTC 2009 - mseben@novell.com
+
+- added subpackage cronie-anacron
+
+-------------------------------------------------------------------
+Wed Dec  9 12:24:49 UTC 2009 - mseben@novell.com
+
+- added pam_conv.diff to add pam conversationfrom function
+- added pam_config.diff to add pam config file from old cron
+- added Provides: cron = 4.2, Obsoletes: cron <= 4.1
+- added SPOOL_DIR="/var/spool/cron/tabs" to build section to correct
+  tabs dir for users
+
+-------------------------------------------------------------------
+Tue Dec  8 17:03:14 UTC 2009 - mseben@novell.com
+
+- added minuslog.diff and remove_old_system.diff 
+  from cron package
+
+-------------------------------------------------------------------
+Mon Dec  7 22:49:49 UTC 2009 - crrodriguez@opensuse.org
+
+- enable anacron build
+- enable audit support
+- cleanup spec file a bit
+
+-------------------------------------------------------------------
+Sat Dec  5 21:36:57 UTC 2009 - mseben@novell.com
+
+- switch to cronie 1.4.3, see project page :
+  https://fedorahosted.org/cronie/ 
+- anacron and audit support disabled for now
+- /usr/sbin/cron renamed to /usr/sbin/crond
+
+-------------------------------------------------------------------
+Fri Nov 27 10:08:49 UTC 2009 - mseben@novell.com
+
+- added initgroups_check.patch : verify return value of 
+  initgroups (bnc#537178) (CVE-2006-2607)
+
+-------------------------------------------------------------------
+Wed Nov 18 17:18:44 UTC 2009 - mseben@novell.com
+
+- added pam conversion function (reworked pam.diff) fate#306386
+
+-------------------------------------------------------------------
+Wed Nov 18 14:39:49 UTC 2009 - mseben@novell.com
+
+- modified run-crons script : added support for new SEND_OUTPUT_ON_NO_ERROR
+  sysconfig option to block status mails from cron jobs with empty
+  output (fate#305279)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:11 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Oct 14 18:28:22 CEST 2009 - ro@suse.de
+
+- init script: remove "-p $PIDFILE" from startproc call
+  (until startproc does allow to combine -f and -p again) 
+
+-------------------------------------------------------------------
+Fri Aug 22 16:42:20 CEST 2008 - prusnak@suse.cz
+
+- added -DWITH_SELINUX to DEFS
+
+-------------------------------------------------------------------
+Thu Aug 21 01:52:40 CEST 2008 - ro@suse.de
+
+- remove outdated options from fillup_and_insserv call 
+
+-------------------------------------------------------------------
+Wed Aug 20 15:20:06 CEST 2008 - mkoenig@suse.de
+
+- enable SELinux support [fate#303662] 
+
+-------------------------------------------------------------------
+Wed Aug 13 15:25:44 CEST 2008 - mkoenig@suse.de
+
+- fix init script tags 
+
+-------------------------------------------------------------------
+Wed Jan 16 10:46:36 CET 2008 - mskibbe@suse.de
+
+- Fate #301837: CRON XLM Service Description Document
+
+-------------------------------------------------------------------
+Tue Jan  8 13:16:38 CET 2008 - coolo@suse.de
+
+- let cron recommend postfix, so that the package solver knows
+  that one of the smtp_daemons is preferred by the distribution
+  in case the user has no further input on this (#351027)
+
+-------------------------------------------------------------------
+Wed Dec 12 10:56:51 CET 2007 - mkoenig@suse.de
+
+- remove old *system* entries before database reload to avoid
+  comparing wrong mtimes. [#344667]
+
+-------------------------------------------------------------------
+Mon Dec 10 13:19:01 CET 2007 - mkoenig@suse.de
+
+- prevent cron.monthly running twice in a month [#338474] 
+
+-------------------------------------------------------------------
+Wed Dec  5 15:47:53 CET 2007 - mkoenig@suse.de
+
+- revert last change, it was wrong [#346150] 
+
+-------------------------------------------------------------------
+Wed Nov 28 12:10:12 CET 2007 - mkoenig@suse.de
+
+- fix calculation of time difference in run-crons script 
+
+-------------------------------------------------------------------
+Tue Nov 27 17:03:55 CET 2007 - mkoenig@suse.de
+
+- fix problem with DAILY_TIME set to 00:00 
+
+-------------------------------------------------------------------
+Wed Nov  7 10:57:07 CET 2007 - mkoenig@suse.de
+
+- add %fillup_prereq and %insserv_prereq to Prereq
+
+-------------------------------------------------------------------
+Tue Oct 16 14:17:35 CEST 2007 - mkoenig@suse.de
+
+- move ac power test to the beginning of the run_crons script,
+  to avoid creation of the tmpdir [#333751]
+
+-------------------------------------------------------------------
+Tue Jun 19 18:48:21 CEST 2007 - dmueller@suse.de
+
+- cron should depend on smtp
+
+-------------------------------------------------------------------
+Wed Jun 13 17:56:42 CEST 2007 - mkoenig@suse.de
+
+- fix another cron.daily run twice bug [#283218]
+
+-------------------------------------------------------------------
+Thu Mar 29 15:31:22 CEST 2007 - mkoenig@suse.de
+
+- Restrict hardlink check to avoid potential DOS attacks [#258372] 
+
+-------------------------------------------------------------------
+Fri Mar  9 12:47:22 CET 2007 - mkoenig@suse.de
+
+- use pid file for start/stop [#248163]
+
+-------------------------------------------------------------------
+Tue Feb 16 10:31:20 CET 2007 - mkoenig@suse.de
+
+- avoid duplicate source of sysconfig [#244513]
+- fix bug in run-crons, which lets cron.daily run twice
+  for certain values of DAILY_TIME [#244977]
+
+-------------------------------------------------------------------
+Mon Feb 12 17:39:11 CET 2007 - mkoenig@suse.de
+
+- load database right after daemon awakes [#243020] 
+
+-------------------------------------------------------------------
+Fri Feb  9 11:40:30 CET 2007 - mkoenig@suse.de
+
+- use norootforbuild 
+
+-------------------------------------------------------------------
+Tue Feb  6 17:00:40 CET 2007 - mkoenig@suse.de
+
+- set PAM_TTY [#242586] 
+
+-------------------------------------------------------------------
+Wed Sep 27 14:27:22 CEST 2006 - mkoenig@suse.de
+
+- relax requirements on crontab permissions [#207645]
+
+-------------------------------------------------------------------
+Fri Sep  1 14:22:21 CEST 2006 - kukuk@suse.de
+
+- Add pam_loginuid.so to PAM config
+
+-------------------------------------------------------------------
+Wed Aug 23 11:39:42 CEST 2006 - mkoenig@suse.de
+
+- fixed segfault bug [#199153] 
+
+-------------------------------------------------------------------
+Mon May 29 16:49:48 CEST 2006 - kssingvo@suse.de
+
+- fixed priviledge escalation bug CVE-2006-2607 (bugzilla#178863)
+
+-------------------------------------------------------------------
+Tue Mar 28 12:01:31 CEST 2006 - hvogel@suse.de
+
+- really enable PAM [#160426]
+
+-------------------------------------------------------------------
+Sat Mar 11 15:00:45 CET 2006 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Tue Feb 28 17:40:43 CET 2006 - hvogel@suse.de
+
+- add $network to Should-Start of the init script to avoid
+  cron starting before network [#151141]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 14:08:14 CET 2006 - mmj@suse.de
+
+- Build with -fstack-protector
+
+-------------------------------------------------------------------
+Mon Jan 16 12:40:06 CET 2006 - mmj@suse.de
+
+- Make editors which do not modify original also work [#143209]
+
+-------------------------------------------------------------------
+Mon Jan 16 11:50:40 CET 2006 - mmj@suse.de
+
+- Add the possibility to log also successful jobs, and introduce
+  sysconfig variables to control this [#135619]
+
+-------------------------------------------------------------------
+Mon Jan 16 11:34:00 CET 2006 - mmj@suse.de
+
+- Send mail as user executing the cronjob [#140905]
+
+-------------------------------------------------------------------
+Sat Jan 14 22:21:42 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 11 14:17:23 CET 2006 - mlasars@suse.de
+
+- changed run-crons to run cron.daily at a designated
+  time (#114761).  
+
+-------------------------------------------------------------------
+Tue Dec  6 14:18:20 CET 2005 - mmj@suse.de
+
+- Make sure SELinux is disabled
+
+-------------------------------------------------------------------
+Thu Aug 25 13:56:56 CEST 2005 - kukuk@suse.de
+
+- Fix permission of installed PAM config file
+
+-------------------------------------------------------------------
+Fri Jun 17 02:52:33 CEST 2005 - mmj@suse.de
+
+- Compile with -fpie, link with -pie
+
+-------------------------------------------------------------------
+Wed Jun 15 11:25:56 CEST 2005 - mmj@suse.de
+
+- Remove LAuS
+
+-------------------------------------------------------------------
+Thu May 12 17:26:33 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS -Wno-comment
+
+-------------------------------------------------------------------
+Wed Apr 27 10:36:49 CEST 2005 - mmj@suse.de
+
+- use find -cmin instead of -ctime in run-crons [#80435]
+- use /etc/cron.{allow,deny} instead of
+  /var/spool/cron/{allow,deny} [#80273]
+
+-------------------------------------------------------------------
+Mon Mar  7 14:32:07 CET 2005 - mmj@suse.de
+
+- ignore .svn directories [#71052]
+
+-------------------------------------------------------------------
+Mon Mar  7 11:43:59 CET 2005 - mmj@suse.de
+
+- rm commands in /etc/crontab are redundant [#71017]
+
+-------------------------------------------------------------------
+Fri Feb 25 15:47:30 CET 2005 - ro@suse.de
+
+- explicitly set permissions for /var/spool/cron{,/tabs} 
+
+-------------------------------------------------------------------
+Wed Jan 12 12:16:00 CET 2005 - kukuk@suse.de
+
+- Add PAM support
+
+-------------------------------------------------------------------
+Mon Jan 10 11:46:55 CET 2005 - mmj@suse.de
+
+- Don't source /etc/rc.status twice [#49673]
+
+-------------------------------------------------------------------
+Fri Oct  1 15:48:21 CEST 2004 - mmj@suse.de
+
+- Add the old SuSE patch to be able to specify a "-" before a cron-
+  tab entry and then disable logging [#45611]
+
+-------------------------------------------------------------------
+Thu Sep 30 13:04:16 CEST 2004 - mmj@suse.de
+
+- Add correct permissions handling
+- Fix swap_uids_back() function
+
+-------------------------------------------------------------------
+Wed Sep 22 10:12:49 CEST 2004 - mmj@suse.de
+
+- Remove selinux support since it's broken at the moment [#45611]
+
+-------------------------------------------------------------------
+Tue Sep 14 17:32:59 CEST 2004 - mmj@suse.de
+
+- Make run-crons up to date with laptops ac stuff [#45248]
+
+-------------------------------------------------------------------
+Tue Sep 14 01:17:01 CEST 2004 - ro@suse.de
+
+- make laus stuff conditional
+
+-------------------------------------------------------------------
+Tue Aug 31 16:18:52 CEST 2004 - mmj@suse.de
+
+- Remove update functionality from the last millenium
+- Clean out notify mails [#44347]
+- Clean up spec file a bit
+
+-------------------------------------------------------------------
+Tue Aug 31 07:45:27 CEST 2004 - mmj@suse.de
+
+- Add patch to be more relaxed with permissions [#44304] [#44470]
+
+-------------------------------------------------------------------
+Wed Aug 25 11:04:26 CEST 2004 - thomas@suse.de
+
+- added laus patch 
+
+-------------------------------------------------------------------
+Tue Aug 24 19:20:32 CEST 2004 - mmj@suse.de
+
+- New cron has slightly changed semantics, so invoke process_crontab
+  correctly and make system crontabs works again
+
+-------------------------------------------------------------------
+Mon Aug 23 20:19:10 CEST 2004 - mmj@suse.de
+
+- Add missing hunk to control when we reload the db
+- Remove laus and laus-devel from neededforbuild for now
+- Use same pathnames as before
+
+-------------------------------------------------------------------
+Mon Aug 23 14:33:33 CEST 2004 - mmj@suse.de
+
+- Call make in %build allthough make install implies it's built
+
+-------------------------------------------------------------------
+Mon Aug 23 11:50:42 CEST 2004 - mmj@suse.de
+
+- Update to vixie cron 4.1:
+  o Adapt many Fedora patches including what we had in our
+    cron-3.0.1 patches
+  o Add SELinux support
+  o Add debugging info
+- LAuS support for now disabled, will be enabled later
+
+-------------------------------------------------------------------
+Tue Apr  6 07:06:26 CEST 2004 - kukuk@suse.de
+
+- fix permissions of crontab
+
+-------------------------------------------------------------------
+Fri Mar 26 14:39:45 CET 2004 - thomas@suse.de
+
+- cosmetic changes in spec file (inspired by mmj)
+- ironed out hunk shift due to changed line offset in laus
+  patch
+
+-------------------------------------------------------------------
+Wed Mar 24 17:41:58 CET 2004 - thomas@suse.de
+
+- made LAuS support work on x86_64
+
+-------------------------------------------------------------------
+Tue Mar 23 16:53:23 CET 2004 - thomas@suse.de
+
+- added LAuS patch
+
+-------------------------------------------------------------------
+Thu Oct  2 11:09:58 CEST 2003 - fehr@suse.de
+
+- fix wrong nice level of cron scripts (#31961)
+
+-------------------------------------------------------------------
+Thu Sep 18 02:03:17 CEST 2003 - ro@suse.de
+
+- fix typo in run-crons (#31216)
+
+-------------------------------------------------------------------
+Tue Aug 26 17:30:59 CEST 2003 - mmj@suse.de
+
+- Don't do it all in the 0'th hour, but the 4th
+
+-------------------------------------------------------------------
+Sat Aug 16 19:23:05 CEST 2003 - kukuk@suse.de
+
+- Modify /etc/crontab only if we need to move cron directory
+- Try to restart daemon on update
+
+-------------------------------------------------------------------
+Thu Jul  3 17:44:44 CEST 2003 - fehr@suse.de
+
+- fix bug in handling of monthly script in /usr/lib/cron/run-crons
+  (#27704)
+- adapt sigcld handling for new kernel (#26011)
+
+-------------------------------------------------------------------
+Tue May 27 04:53:46 CEST 2003 - sndirsch@suse.de
+
+- /usr/lib/cron/run-crons: added missing "-n" to specify nice level
+
+-------------------------------------------------------------------
+Tue May  6 10:32:36 CEST 2003 - fehr@suse.de
+
+- Fix bug in quoting patch (#26675)
+
+-------------------------------------------------------------------
+Wed Apr 16 09:15:19 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon Mar 24 10:37:25 CET 2003 - fehr@suse.de
+
+- Add improved version of cron_number_check.patch from Gernot Payer
+
+-------------------------------------------------------------------
+Thu Mar 20 15:36:35 CET 2003 - fehr@suse.de
+
+- Fix wrong check for number, thanks to Gernot Payer <gpayer@suse.de>
+  (#25680)
+
+-------------------------------------------------------------------
+Fri Feb 28 09:31:00 CET 2003 - fehr@suse.de
+
+- Fix quoting problem with % in crontab, thanks to Klaus G. Wagner
+  <kgw@suse.de> (#17713)
+
+-------------------------------------------------------------------
+Thu Feb 13 13:46:50 CET 2003 - mmj@suse.de
+
+- Do not own /etc/cron.d* since we might want to use other cron
+  versions.
+
+-------------------------------------------------------------------
+Tue Nov  5 14:07:54 CET 2002 - ro@suse.de
+
+- fixed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Nov  5 14:06:57 CET 2002 - ro@suse.de
+
+- fixed typo in run-crons script (ouput->output) (#21497) 
+
+-------------------------------------------------------------------
+Thu Aug 15 12:11:42 CEST 2002 - fehr@suse.de
+
+- add PreReq tag to spec file
+
+-------------------------------------------------------------------
+Mon Aug  5 09:25:02 CEST 2002 - kukuk@suse.de
+
+- Use $time instead of xntpd
+- Make sendmail/postfix "Should-Start"
+
+-------------------------------------------------------------------
+Wed Jul  3 01:23:41 MEST 2002 - draht@suse.de
+
+- crontab(1) must not leak fd for /var/spool/cron/deny and/or
+  /var/spool/cron/allow to the user's editor (security).
+
+-------------------------------------------------------------------
+Thu Apr 25 15:19:31 CEST 2002 - fehr@suse.de
+
+- added newline to run-cron output (#15796)
+
+-------------------------------------------------------------------
+Fri Mar  1 14:46:16 CET 2002 - egmont@suselinux.hu
+
+- fix month/day interval in manpage
+
+-------------------------------------------------------------------
+Thu Feb 21 10:46:21 CET 2002 - ro@suse.de
+
+- logger is in /bin, adapt run-crons script 
+
+-------------------------------------------------------------------
+Mon Feb  4 11:36:37 CET 2002 - fehr@suse.de
+
+- fix reload option of init-script (#13026)
+
+-------------------------------------------------------------------
+Thu Jan 24 10:15:55 CET 2002 - ro@suse.de
+
+- modified fillup_and_insserv call (perl-hack not needed here)
+
+-------------------------------------------------------------------
+Fri Jan 18 00:45:15 CET 2002 - ro@suse.de
+
+- fixed initscript comments 
+
+-------------------------------------------------------------------
+Thu Jan 10 14:24:52 CET 2002 - ro@suse.de
+
+- removed test for CRON variable from init script 
+
+-------------------------------------------------------------------
+Wed Dec 12 17:07:57 CET 2001  - fehr@suse.de
+
+- fix wrong sigchld handling (thanks to Philip Willoughby)
+- changed to new init script handling
+
+-------------------------------------------------------------------
+Fri Sep 28 16:39:59 CEST 2001 - ro@suse.de
+
+- removed duplicate trap in run-crons (#11472) 
+
+-------------------------------------------------------------------
+Thu Sep 13 16:23:03 CEST 2001 - ro@suse.de
+
+- updated run-crons (feedback from volker_apelt, thanks)
+
+-------------------------------------------------------------------
+Fri Sep  7 18:00:38 CEST 2001 - schwab@suse.de
+
+- Instead of closing std{in,out,err} redirect them to /dev/null.
+
+-------------------------------------------------------------------
+Wed Aug 15 11:30:47 CEST 2001 - fehr@suse.de
+
+- add log messages when one of the /etc/cron/cron.* scripts fails
+  (thanks for suggestion by Steffen Dettmer)
+
+-------------------------------------------------------------------
+Mon May  7 19:00:55 MEST 2001 - draht@suse.de
+
+- Added security patch for a wrong setuid() call.
+
+-------------------------------------------------------------------
+Tue Apr 24 11:06:31 CEST 2001 - ro@suse.de
+
+- added rc-link 
+
+-------------------------------------------------------------------
+Mon Apr 23 16:59:30 CEST 2001 - ro@suse.de
+
+- added updated startscript and rc.config variable 
+
+-------------------------------------------------------------------
+Thu Apr 12 14:02:35 CEST 2001 - werner@suse.de
+
+- Close stdin, stdout, and stderr on forking of the daemon.
+
+-------------------------------------------------------------------
+Wed Feb 14 14:55:26 MET 2001 - fehr@suse.de
+
+- add patch to prevent buffer overflow with usernames longer than
+  19 characters
+
+-------------------------------------------------------------------
+Tue Feb  6 10:13:27 MET 2001 - fehr@suse.de
+
+- Make it compile with new glibc
+- remove calls to fax utilities and texpire from default crontab
+
+-------------------------------------------------------------------
+Tue Dec 12 17:07:17 CET 2000 - werner@suse.de
+
+- Add cron.hourly because we provide /etc/cron.hourly/
+- Remove lock files not at same time but with a quater offset
+- Don't run *.rpmorig, *.rpmnew, *.rmpsave, *.swap, *.bak, *~, #*
+- Don run a script if it is already running
+- Remove `echo' to enable DTS patch of Thomas
+
+-------------------------------------------------------------------
+Fri Dec  8 11:35:16 MET 2000  - fehr@suse.de
+
+- fix bug introduced in last change
+
+-------------------------------------------------------------------
+Mon Nov 20 16:02:06 MET 2000  - fehr@suse.de
+
+- add security patch from Daniel Jacobowitz to cron
+- prevent cron.daily called twice when changing from DST to normal (#998)
+
+-------------------------------------------------------------------
+Wed Nov 15 18:15:59 MET 2000  - fehr@suse.de
+
+- add most of the patches of Chris D. Faulhaber (jedgar@fxp.org) (#4249)
+
+-------------------------------------------------------------------
+Tue Sep  5 16:49:14 MEST 2000 - fehr@suse.de
+
+- make sematic of cron.monthly clearer. It is now executed on the
+  first check in run-crons executed in a month but at most once
+  per month. Older semantic was to execute every 30 days which
+  resulted in being called twice per month when month has 31 days
+  and first execution was on 1st day of month. (#3850)
+
+-------------------------------------------------------------------
+Fri Jul 21 14:20:45 MEST 2000 - fehr@suse.de
+
+- fix the use of ifdef __linux__ (everywhere else __linux is used)
+
+-------------------------------------------------------------------
+Wed May 31 10:39:17 MEST 2000 - fehr@suse.de
+
+- Start script with "nice -15"
+
+-------------------------------------------------------------------
+Mon May 22 15:44:36 CEST 2000 - kukuk@suse.de
+
+- Fix post install section
+
+-------------------------------------------------------------------
+Tue May 16 15:47:56 CEST 2000 - kukuk@suse.de
+
+- Move /var/cron -> /var/spool/cron (FHS 2.1)
+
+-------------------------------------------------------------------
+Sun Feb 27 15:48:47 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Jan 24 19:25:24 CET 2000 - uli@suse.de
+
+- added -D__linux to cope with gcc 2.95
+
+-------------------------------------------------------------------
+Thu Dec  2 12:27:05 CET 1999 - bs@suse.de
+
+- removed CDR_PROG section from run-crons. this leads to problems in
+  some network environments.
+
+
+-------------------------------------------------------------------
+Mon Sep 20 17:58:32 CEST 1999 - ro@suse.de
+
+- added Requires smtp_daemon
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug 30 10:13:42 MEST 1999 - kukuk@suse.de
+
+- always use fork instead of vfork
+
+-------------------------------------------------------------------
+Fri Aug 27 17:23:30 MEST 1999 - fehr@suse.de
+
+- prevent sendmail from being called as root
+
+-------------------------------------------------------------------
+Thu Aug 26 11:49:44 MEST 1999 - fehr@suse.de
+
+- fixed some possible buffer overflow exploits
+
+-------------------------------------------------------------------
+Fri Jul 23 18:02:55 MEST 1999 - bs@suse.de
+
+- redirect stderr of apm call to /dev/null
+
+-------------------------------------------------------------------
+Thu Jul 15 17:12:49 MEST 1999 - bs@suse.de
+
+- don't run cron jobs via run-cron if
+  o  a cd writer is running
+  o  laptop is AC-offline
+
+- /etc/crontab:  
+  o  don't log every start of run-crons
+  o  run faxclean only once a day
+
+-------------------------------------------------------------------
+Mon Mar 29 18:12:24 MEST 1999 - ro@suse.de
+
+- added cron.d feature from debian-cron 
+
+-------------------------------------------------------------------
+Mon Feb  1 13:11:13 MET 1999 - bs@suse.de
+
+- merged beta and stable version
+- added entries in crontab to delete lastrun files, to let cronjobs be started
+  at night.
+
+-------------------------------------------------------------------
+Fri Jan  8 16:15:54 MET 1999 - bs@suse.de
+
+- changed run-crons to work around finds 'strange behavior'
+
+-------------------------------------------------------------------
+Fri Dec 18 15:33:59 MET 1998 - ro@suse.de
+
+- use SIGCHLD instead of SIGCLD 
+
+
+-------------------------------------------------------------------
+Tue Dec 15 01:06:31 MET 1998 - bs@suse.de
+
+- fixed xargs in run-crons
+
+-------------------------------------------------------------------
+Mon Dec 14 13:25:24 MET 1998 - bs@suse.de
+
+- fixed bug in run-crons
+
+-------------------------------------------------------------------
+Mon Dec 14 05:10:31 MET 1998 - bs@suse.de
+
+- added /etc/cron.* feature.
+
+-------------------------------------------------------------------
+Tue Nov 17 20:42:58 MET 1998 - bs@suse.de
+
+- added texpire to crontab.
+- use noreplace for config files.
+
+-------------------------------------------------------------------
+Thu Sep 10 16:39:44 MEST 1998 - bs@suse.de
+
+- fixed problem with non existing var/cron/tabs/root.
+
+-------------------------------------------------------------------
+Mon Sep  7 11:53:57 MEST 1998 - bs@suse.de
+
+- fixed check for /var/cron/tabs/root in %post section
+
+----------------------------------------------------------------------------
+Mon Jul  7 13:17:08 CEST 1997 - florian@suse.de
+
+
+- warn if cron.daily is still in /var/cron/tabs/root
+
+- start cron.daily 10 minutes earlier, so that duplicate
+  entries don't overlap :-(
+
+
+
+----------------------------------------------------------------------------
+Thu Jun  5 11:08:05 MEST 1997 - florian@suse.de
+
+
+- use /etc/crontab instead of /var/cron/tabs/root
+
+
+----------------------------------------------------------------------------
+Fri May 16 01:31:24 CEST 1997 - bs@suse.de
+
+- removed *.new -> orig stuff behavior, since is not neded for rpm.
+
+----------------------------------------------------------------------------
+Wed Apr 30 15:57:14 CEST 1997 - florian@suse.de
+
+
+- fix screen output ifrom ALLOW_FILE to DENY_FILE
+
+- do not include syslog.c anymore, libc is fixed
+
+- disable debugging compile time switch
+
+- add some security patches
+
+
+----------------------------------------------------------------------------
+Thu Feb 27 12:30:11 CET 1997 - bs@suse.de
+
+added crontab entries for hylafax.
+
+----------------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+
+- syslogging works even if syslogd is restarted
+
+
+----------------------------------------------------------------------
+Wed Nov 13 03:08:18 MET 1996 - bs@suse.de
+
+- beautified man page
+- store crontab.root.new in /root instead of /tmp
+
+----------------------------------------------------------------------
+Tue Sep 24 09:27:17 MET DST 1996 - bs@suse.de
+
+- atrun aus crontab fur root rausgenommen.

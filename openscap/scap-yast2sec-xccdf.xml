@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SUSE-Security-Benchmark-YaST2" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.1 xccdf-1.1.4.xsd" resolved="0">
+  <status date="2012-07-24">draft</status>
+  <title>Hardening Linux Kernel</title>
+  <description>
+    The Linux kernel is at the heart of every Linux system. With its extensive configuration
+    options, it comes to no surprise that specific settings can be enabled to further harden
+    your system.
+    <h:br />
+    <h:br />
+    In this guide, we focus on Linux kernel configuration entries that support additional
+    hardening of your system, as well as the configuration through the <h:em>syctl</h:em>
+    settings.
+  </description>
+  <version>1</version>
+  <model system="urn:xccdf:scoring:default"/>
+  <model system="urn:xccdf:scoring:flat"/>
+  <Profile id="Default">
+    <title>Default vanilla kernel hardening</title>
+    <description>
+      Profile matching all standard (vanilla-kernel) hardening rules
+    </description>
+	<select idref="rule-sysctl-ipv4-forward" selected="true" /> 
+	<select idref="rule-sysctl-ipv4-tcpsyncookies" selected="true" /> 
+	<select idref="rule-sysctl-ipv6-all-forward" selected="true" /> 
+	<select idref="rule-sysctl-ipv6-default-forward" selected="true" /> 
+	<select idref="rule-kernel-syncookies" selected="true" /> 
+	<select idref="rule-pwd-maxdays" selected="true" /> 
+	<select idref="rule-pwd-mindays" selected="true" /> 
+	<select idref="rule-pwd-warnage" selected="true" /> 
+	<select idref="rule-pwd-minlen" selected="true" /> 
+	<select idref="rule-pwd-remember" selected="true" /> 
+	<select idref="rule-authc-faildelay" selected="true" /> 
+	<select idref="rule-authc-faildelayexist" selected="true" /> 
+	<select idref="rule-authc-xdmcp-remote" selected="true" /> 
+	<select idref="rule-authc-xdmcp-root" selected="true" /> 
+	<select idref="rule-usermgmt-uidmin" selected="true" /> 
+	<select idref="rule-usermgmt-uidmax" selected="true" /> 
+	<select idref="rule-usermgmt-gidmin" selected="true" /> 
+	<select idref="rule-usermgmt-gidmax" selected="true" /> 
+	<select idref="rule-misc-sysrq" selected="true" /> 
+	<select idref="rule-misc-hashalgo_md5" selected="true" /> 
+	<select idref="rule-misc-hashalgo_des" selected="true" /> 
+	<select idref="rule-misc-perm-check" selected="true" /> 
+	<select idref="rule-misc-sig-check" selected="true" /> 
+	<select idref="rule-srvc-dhcpd-chroot" selected="true" /> 
+	<select idref="rule-srvc-dhcpd-uid" selected="true" /> 
+	<select idref="rule-srvc-dhcpd6-chroot" selected="true" /> 
+	<select idref="rule-srvc-dhcpd6-uid" selected="true" /> 
+	<select idref="rule-srvc-update-restart" selected="true" /> 
+	<select idref="rule-srvc-remove-stop" selected="true" /> 
+  </Profile>
+	<!-- @@GEN START rule-sysctl-ipv4-forward --> 
+<Rule id="rule-sysctl-ipv4-forward" selected="false">
+  <title>sysctl net.ipv4.ip_forward must be 0</title>
+  <description>sysctl net.ipv4.ip_forward must be 0</description>
+  <fix>echo 0 &gt; /proc/sys/net/ipv4/ip_forward</fix>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:2" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-sysctl-ipv4-forward -->
+	<!-- @@GEN START rule-sysctl-ipv4-tcpsyncookies --> 
+<Rule id="rule-sysctl-ipv4-tcpsyncookies" selected="false">
+  <title>sysctl net.ipv4.tcp_syncookies must be 1</title>
+  <description>sysctl net.ipv4.tcp_syncookies must be 1</description>
+  <fix>echo 1 &gt; /proc/sys/net/ipv4/tcp_syncookies</fix>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:3" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-sysctl-ipv4-tcpsyncookies -->
+	<!-- @@GEN START rule-sysctl-ipv6-all-forward --> 
+<Rule id="rule-sysctl-ipv6-all-forward" selected="false">
+  <title>sysctl net.ipv6.conf.all.forwarding must be 0</title>
+  <description>sysctl net.ipv6.conf.all.forwarding must be 0</description>
+  <fix>echo 0 &gt; /proc/sys/net/ipv6/conf/all/forwarding</fix>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:4" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-sysctl-ipv6-all-forward -->
+	<!-- @@GEN START rule-sysctl-ipv6-default-forward --> 
+<Rule id="rule-sysctl-ipv6-default-forward" selected="false">
+  <title>sysctl net.ipv6.conf.default.forwarding must be 0</title>
+  <description>sysctl net.ipv6.conf.default.forwarding must be 0</description>
+  <fix>echo 0 &gt; /proc/sys/net/ipv6/conf/default/forwarding</fix>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:5" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-sysctl-ipv6-default-forward -->
+	<!-- @@GEN START rule-kernel-syncookies --> 
+<Rule id="rule-kernel-syncookies" selected="false">
+  <title>kernel config CONFIG_SYN_COOKIES must be y</title>
+  <description>kernel config CONFIG_SYN_COOKIES must be y</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:6" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-kernel-syncookies -->
+	<!-- @@GEN START rule-pwd-maxdays --> 
+<Rule id="rule-pwd-maxdays" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^PASS_MAX_DAYS.*99999</title>
+  <description>file /etc/login.defs must have a line that matches ^PASS_MAX_DAYS.*99999</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:9" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-pwd-maxdays -->
+	<!-- @@GEN START rule-pwd-mindays --> 
+<Rule id="rule-pwd-mindays" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^PASS_MIN_DAYS.*0</title>
+  <description>file /etc/login.defs must have a line that matches ^PASS_MIN_DAYS.*0</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:10" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-pwd-mindays -->
+	<!-- @@GEN START rule-pwd-warnage --> 
+<Rule id="rule-pwd-warnage" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^PASS_WARN_AGE.*7</title>
+  <description>file /etc/login.defs must have a line that matches ^PASS_WARN_AGE.*7</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:11" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-pwd-warnage -->
+	<!-- @@GEN START rule-pwd-minlen --> 
+<Rule id="rule-pwd-minlen" selected="false">
+  <title>file /etc/pam.d/common-password must have a line that matches minlen=6</title>
+  <description>file /etc/pam.d/common-password must have a line that matches minlen=6</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:12" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-pwd-minlen -->
+	<!-- @@GEN START rule-pwd-remember --> 
+<Rule id="rule-pwd-remember" selected="false">
+  <title>file /etc/pam.d/common-password must have a line that matches remember=</title>
+  <description>file /etc/pam.d/common-password must have a line that matches remember=</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:13" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-pwd-remember -->
+	<!-- @@GEN START rule-authc-faildelay --> 
+<Rule id="rule-authc-faildelay" selected="false">
+  <title>file /etc/login.defs may not have a line that matches ^FAIL_DELAY.*0</title>
+  <description>file /etc/login.defs may not have a line that matches ^FAIL_DELAY.*0</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:16" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-authc-faildelay -->
+	<!-- @@GEN START rule-authc-faildelayexist --> 
+<Rule id="rule-authc-faildelayexist" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^FAIL_DELAY</title>
+  <description>file /etc/login.defs must have a line that matches ^FAIL_DELAY</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:17" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-authc-faildelayexist -->
+	<!-- @@GEN START rule-authc-xdmcp-remote --> 
+<Rule id="rule-authc-xdmcp-remote" selected="false">
+  <title>file /etc/sysconfig/displaymanager must have a line that matches ^DISPLAYMANAGER_REMOTE_ACCESS.*no</title>
+  <description>file /etc/sysconfig/displaymanager must have a line that matches ^DISPLAYMANAGER_REMOTE_ACCESS.*no</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:18" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-authc-xdmcp-remote -->
+	<!-- @@GEN START rule-authc-xdmcp-root --> 
+<Rule id="rule-authc-xdmcp-root" selected="false">
+  <title>file /etc/sysconfig/displaymanager must have a line that matches ^DISPLAYMANAGER_ROOT_LOGIN_REMOTE.*no</title>
+  <description>file /etc/sysconfig/displaymanager must have a line that matches ^DISPLAYMANAGER_ROOT_LOGIN_REMOTE.*no</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:19" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-authc-xdmcp-root -->
+	<!-- @@GEN START rule-usermgmt-uidmin --> 
+<Rule id="rule-usermgmt-uidmin" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^UID_MIN.*1000</title>
+  <description>file /etc/login.defs must have a line that matches ^UID_MIN.*1000</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:22" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-usermgmt-uidmin -->
+	<!-- @@GEN START rule-usermgmt-uidmax --> 
+<Rule id="rule-usermgmt-uidmax" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^UID_MAX.*60000</title>
+  <description>file /etc/login.defs must have a line that matches ^UID_MAX.*60000</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:23" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-usermgmt-uidmax -->
+	<!-- @@GEN START rule-usermgmt-gidmin --> 
+<Rule id="rule-usermgmt-gidmin" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^GID_MIN.*1000</title>
+  <description>file /etc/login.defs must have a line that matches ^GID_MIN.*1000</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:24" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-usermgmt-gidmin -->
+	<!-- @@GEN START rule-usermgmt-gidmax --> 
+<Rule id="rule-usermgmt-gidmax" selected="false">
+  <title>file /etc/login.defs must have a line that matches ^GID_MAX.*60000</title>
+  <description>file /etc/login.defs must have a line that matches ^GID_MAX.*60000</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:25" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-usermgmt-gidmax -->
+	<!-- @@GEN START rule-misc-sysrq --> 
+<Rule id="rule-misc-sysrq" selected="false">
+  <title>sysctl kernel.sysrq must be 0</title>
+  <description>sysctl kernel.sysrq must be 0</description>
+  <fix>echo 0 &gt; /proc/sys/kernel/sysrq</fix>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:29" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-misc-sysrq -->
+	<!-- @@GEN START rule-misc-hashalgo_md5 --> 
+<Rule id="rule-misc-hashalgo_md5" selected="false">
+  <title>file /etc/default/passwd may not have a line that matches ^CRYPT_FILES=md5</title>
+  <description>file /etc/default/passwd may not have a line that matches ^CRYPT_FILES=md5</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:30" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-misc-hashalgo_md5 -->
+	<!-- @@GEN START rule-misc-hashalgo_des --> 
+<Rule id="rule-misc-hashalgo_des" selected="false">
+  <title>file /etc/default/passwd may not have a line that matches ^CRYPT_FILES=des</title>
+  <description>file /etc/default/passwd may not have a line that matches ^CRYPT_FILES=des</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:31" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-misc-hashalgo_des -->
+	<!-- @@GEN START rule-misc-perm-check --> 
+<Rule id="rule-misc-perm-check" selected="false">
+  <title>file /etc/sysconfig/security must have a line that matches ^CHECK_PERMISSIONS.*set</title>
+  <description>file /etc/sysconfig/security must have a line that matches ^CHECK_PERMISSIONS.*set</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:32" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-misc-perm-check -->
+	<!-- @@GEN START rule-misc-sig-check --> 
+<Rule id="rule-misc-sig-check" selected="false">
+  <title>file /etc/sysconfig/security must have a line that matches ^CHECK_SIGNATURES.*yes</title>
+  <description>file /etc/sysconfig/security must have a line that matches ^CHECK_SIGNATURES.*yes</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:33" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-misc-sig-check -->
+	<!-- @@GEN START rule-srvc-dhcpd-chroot --> 
+<Rule id="rule-srvc-dhcpd-chroot" selected="false">
+  <title>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD_RUN_CHROOTED.*yes</title>
+  <description>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD_RUN_CHROOTED.*yes</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:38" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-dhcpd-chroot -->
+	<!-- @@GEN START rule-srvc-dhcpd-uid --> 
+<Rule id="rule-srvc-dhcpd-uid" selected="false">
+  <title>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD_RUN_AS.*dhcpd</title>
+  <description>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD_RUN_AS.*dhcpd</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:39" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-dhcpd-uid -->
+	<!-- @@GEN START rule-srvc-dhcpd6-chroot --> 
+<Rule id="rule-srvc-dhcpd6-chroot" selected="false">
+  <title>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD6_RUN_CHROOTED.*yes</title>
+  <description>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD6_RUN_CHROOTED.*yes</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:40" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-dhcpd6-chroot -->
+	<!-- @@GEN START rule-srvc-dhcpd6-uid --> 
+<Rule id="rule-srvc-dhcpd6-uid" selected="false">
+  <title>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD6_RUN_AS.*dhcpd</title>
+  <description>file /etc/sysconfig/dhcpd must have a line that matches ^DHCPD6_RUN_AS.*dhcpd</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:41" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-dhcpd6-uid -->
+	<!-- @@GEN START rule-srvc-update-restart --> 
+<Rule id="rule-srvc-update-restart" selected="false">
+  <title>file /etc/sysconfig/services must have a line that matches ^DISABLE_RESTART_ON_UPDATE.*yes</title>
+  <description>file /etc/sysconfig/services must have a line that matches ^DISABLE_RESTART_ON_UPDATE.*yes</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:42" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-update-restart -->
+	<!-- @@GEN START rule-srvc-remove-stop --> 
+<Rule id="rule-srvc-remove-stop" selected="false">
+  <title>file /etc/sysconfig/services must have a line that matches ^DISABLE_STOP_ON_REMOVAL.*yes</title>
+  <description>file /etc/sysconfig/services must have a line that matches ^DISABLE_STOP_ON_REMOVAL.*yes</description>
+  <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <check-content-ref name="oval:de.suse.suse121:def:43" href="scap-yast2sec-oval.xml" />
+  </check>
+</Rule>
+	<!-- @@GEN END rule-srvc-remove-stop -->
+</Benchmark>

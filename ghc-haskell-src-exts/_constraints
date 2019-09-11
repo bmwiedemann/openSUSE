@@ -1,0 +1,16 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">7</size>
+      </memory>
+      <disk>
+        <size unit="G">2</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>
+

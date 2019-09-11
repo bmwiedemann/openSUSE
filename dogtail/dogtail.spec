@@ -1,0 +1,83 @@
+#
+# spec file for package dogtail
+#
+# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+Name:           dogtail
+Version:        0.9.0
+Release:        0
+Summary:        GUI test tool and automation framework
+License:        GPL-2.0
+Url:            http://dogtail.fedorahosted.org/
+Source0:        http://fedorahosted.org/released/dogtail/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dogtail-wnck-3.0.patch fcrozat@suse.com -- ensure Wnck 3.0 typelib is required
+Patch0:         dogtail-wnck-3.0.patch
+BuildRequires:  desktop-file-utils
+BuildRequires:  gobject-introspection
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-devel
+BuildRequires:  update-desktop-files
+Requires:       hicolor-icon-theme
+Requires:       python-atspi
+Requires:       python-cairo
+Requires:       python-gobject
+Requires:       python-imaging
+Requires:       rpm-python
+Requires:       xinit
+%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
+Requires:       python-gobject-Gdk
+%endif
+BuildArch:      noarch
+
+%description
+GUI test tool and automation framework that uses assistive technologies to
+communicate with desktop applications.
+
+%prep
+%setup -q
+%patch0 -p1
+
+%build
+python ./setup.py build
+
+%install
+python ./setup.py install -O2 --root=%{buildroot} --record=%{name}.files
+rm -rf %{buildroot}/%{_docdir}/dogtail
+rm -f %{buildroot}/%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
+find examples -type f -exec chmod 0644 \{\} \;
+desktop-file-install %{buildroot}/%{_datadir}/applications/sniff.desktop \
+  --dir=%{buildroot}/%{_datadir}/applications \
+%suse_update_desktop_file -G "UI test application" -r %{buildroot}/%{_datadir}/applications/sniff.desktop Development Profiling
+
+%post
+%icon_theme_cache_post
+
+%postun
+%icon_theme_cache_postun
+
+%files
+%defattr(-,root,root)
+%{_bindir}/*
+%{python_sitelib}/dogtail/
+%{_datadir}/applications/*
+%{_datadir}/dogtail/
+%{_datadir}/icons/hicolor/*/apps/%{name}*.*
+%doc COPYING
+%doc README
+%doc NEWS
+%doc %{_datadir}/doc/dogtail
+
+%changelog

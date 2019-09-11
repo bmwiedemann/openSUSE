@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Feb 22 08:47:00 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 6.11, announce message:
+
+  Tweaked to run either on Python2 pr Python3.
+
+-------------------------------------------------------------------
+Thu Jan 28 19:00:40 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 6.10, announce message:
+
+  Ported to Python 3.
+
+- Remove patch ski-6.9-ski.desktop.patch, use instead
+  ski-ski.desktop.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 18:42:53 UTC 2015 - nemysis@gmx.ch
+
+- Remove obsolete patch ski-6.8-Makefile.patch, Upstream have
+  accepted changes
+
+-------------------------------------------------------------------
+Sat Mar 14 18:27:13 UTC 2015 - nemysis@gmx.ch
+
+- Remove obsolete patch ski-6.8-ski.desktop.patch, use instead
+ ski-6.9-ski.desktop.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 18:02:22 UTC 2015 - nemysis@gmx.ch
+
+- Update to 6.9, announce message:
+  BSD port patch.
+
+- Remove obsolete patch sky-6.8-Makefile.patch,
+  Upstream have accepted changes
+
+-------------------------------------------------------------------
+Mon Dec 22 22:45:57 UTC 2014 - nemysis@gmx.ch
+
+- Use for patches %{name}-version instead of %{name}-%{version}
+
+-------------------------------------------------------------------
+Sun Dec 21 14:00:45 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

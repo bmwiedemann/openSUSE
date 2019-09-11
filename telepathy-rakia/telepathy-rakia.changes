@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:40:17 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  2 20:43:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + No code changes since 0.7.5.
+
+-------------------------------------------------------------------
+Thu Sep 12 20:37:52 UTC 2013 - zaitor@opensuse.org
+
+- Drop hack: export LIBS="-lgio-2.0" before %configure, fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Sep 11 08:31:51 UTC 2013 - firebird209@gmail.com
+
+- Update to version 0.7.5:
+  + Enhancements:
+    - fdo#49725: Use the same compiler and linker warnings as
+      telepathy-glib.
+    - fdo#49732: Stop using deprecated telepathy-glib
+      functionality.
+    - fdo#62839: Stop using deprecated Automake functionality.
+  + Bugfixes:
+    - Advertise support for the Messages interface so recent
+      Empathy will be willing to handle our Text channels.
+    - Link successfully with strict linkers.
+    - fdo#49725: Compile and run tests successfully under
+      Automake 1.13.
+    - fdo#49725: Output the error message if GLib, GObject, GIO,
+      libdbus or dbus-glib is missing.
+    - fdo#64285: Fix highly-parallel builds.
+    - fdo#49725: Suppress deprecation warnings from GLib > 2.30.
+    - fdo#63119: Isolate regression tests better.
+    - fdo#54972: Initialize libdbus to be thread-safe.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:47:07 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Tue May  8 23:49:49 UTC 2012 - alinm.elena@gmail.com
+
+- intial commit telepathy-rakia 0.7.4 (2012-05-08)
+

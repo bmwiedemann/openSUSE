@@ -1,0 +1,39 @@
+--- a/Mailman/Defaults.py.in
++++ b/Mailman/Defaults.py.in
+@@ -83,8 +83,8 @@ MAILMAN_URL = 'http://www.gnu.org/softwa
+ #     add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
+ #
+ # because otherwise the default mappings won't be correct.
+-DEFAULT_EMAIL_HOST = '@MAILHOST@'
+-DEFAULT_URL_HOST = '@URLHOST@'
++DEFAULT_EMAIL_HOST = '(unused)'
++DEFAULT_URL_HOST = '(unused)'
+ DEFAULT_URL_PATTERN = 'http://%s/mailman/'
+ 
+ # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
+@@ -1604,8 +1604,8 @@ if EXEC_PREFIX == '${prefix}':
+ CGIEXT = '@CGIEXT@'
+ 
+ # Group id that group-owns the Mailman installation
+-MAILMAN_USER = '@MAILMAN_USER@'
+-MAILMAN_GROUP = '@MAILMAN_GROUP@'
++MAILMAN_USER = 'mailman'
++MAILMAN_GROUP = 'mailman'
+ 
+ # Enumeration for Mailman cgi widget types
+ Toggle      = 1
+--- a/misc/Makefile.in
++++ b/misc/Makefile.in
+@@ -47,9 +47,9 @@ SCRIPTSDIR=	$(prefix)/scripts
+ 
+ SHELL=		/bin/sh
+ PYTHONLIBDIR=	$(prefix)/pythonlib
+-SETUPINSTOPTS=	--install-lib $(DESTDIR)$(PYTHONLIBDIR) \
+-		--install-purelib $(DESTDIR)$(PYTHONLIBDIR) \
+-		--install-data $(DESTDIR)$(PYTHONLIBDIR)
++SETUPINSTOPTS=	--root=$(DESTDIR) --install-lib $(PYTHONLIBDIR) \
++		--install-purelib $(PYTHONLIBDIR) \
++		--install-data $(PYTHONLIBDIR)
+ SETUPCMD=	setup.py --quiet install $(SETUPINSTOPTS)
+ PKGDIR= 	$(srcdir)
+ 

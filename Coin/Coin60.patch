@@ -1,0 +1,132 @@
+--- bin/coin-config.orig	2016-08-17 13:02:59.568658348 +0200
++++ bin/coin-config	2016-08-17 13:03:20.664658624 +0200
+@@ -76,14 +76,14 @@
+   esac
+ done
+ 
+-if test -f $prefix/share/Coin/conf/coin-$alternate.cfg; then
+-  configfile="$prefix/share/Coin/conf/coin-$alternate.cfg"
++if test -f $prefix/share/Coin60/conf/coin-$alternate.cfg; then
++  configfile="$prefix/share/Coin60/conf/coin-$alternate.cfg"
+   . $configfile
+-elif test -f $prefix/share/Coin/conf/coin-default.cfg; then
+-  configfile="$prefix/share/Coin/conf/coin-default.cfg"
++elif test -f $prefix/share/Coin60/conf/coin-default.cfg; then
++  configfile="$prefix/share/Coin60/conf/coin-default.cfg"
+   . $configfile
+ else
+-  echo >&2 "$me: no default Coin config available in $prefix/share/Coin/conf/"
++  echo >&2 "$me: no default Coin config available in $prefix/share/Coin60/conf/"
+   exit 1
+ fi
+ 
+--- data/shaders/vsm/Makefile.am.or	2016-08-17 13:05:10.148660057 +0200
++++ data/shaders/vsm/Makefile.am	2016-08-17 13:05:21.908660211 +0200
+@@ -13,7 +13,7 @@
+ if MAC_FRAMEWORK
+ shadersvsmdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/shaders/vsm
+ else
+-shadersvsmdatadir = $(datadir)/Coin/shaders/vsm
++shadersvsmdatadir = $(datadir)/Coin60/shaders/vsm
+ endif
+ 
+ dist_shadersvsmdata_DATA = \
+--- data/shaders/lights/Makefile.am.orig	2016-08-17 13:05:44.376660505 +0200
++++ data/shaders/lights/Makefile.am	2016-08-17 13:05:54.140660633 +0200
+@@ -16,7 +16,7 @@
+ if MAC_FRAMEWORK
+ shaderslightsdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/shaders/lights
+ else
+-shaderslightsdatadir = $(datadir)/Coin/shaders/lights
++shaderslightsdatadir = $(datadir)/Coin60/shaders/lights
+ endif
+ 
+ dist_shaderslightsdata_DATA = \
+--- data/scxml/navigation/Makefile.am.orig	2016-08-17 13:06:12.928660879 +0200
++++ data/scxml/navigation/Makefile.am	2016-08-17 13:06:22.396661002 +0200
+@@ -6,7 +6,7 @@
+ if MAC_FRAMEWORK
+ scxmldefdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/scxml/navigation
+ else
+-scxmldefdatadir = $(datadir)/Coin/scxml/navigation
++scxmldefdatadir = $(datadir)/Coin60/scxml/navigation
+ endif
+ 
+ dist_scxmldefdata_DATA = \
+--- ./src/misc/CoinResources.cpp.orig	2016-08-17 13:07:30.384661892 +0200
++++ ./src/misc/CoinResources.cpp	2016-08-17 13:07:48.508662130 +0200
+@@ -192,7 +192,7 @@
+         handle->filenotfound = TRUE;
+         break;
+       }
+-      filename.sprintf("%s/share/Coin/%s", coindirenv, resloc + 5);
++      filename.sprintf("%s/share/Coin60/%s", coindirenv, resloc + 5);
+ #endif // !COIN_MACOSX_FRAMEWORK
+       if (COIN_DEBUG && 0) {
+         SoDebugError::postInfo("CoinResources::get", "trying to load '%s'.",
+--- Makefile.am.orig	2016-08-17 13:08:34.724662734 +0200
++++ Makefile.am	2016-08-17 13:08:15.776662486 +0200
+@@ -53,7 +53,7 @@
+ m4datadir = $(datadir)/aclocal
+ dist_m4data_DATA = cfg/coin.m4
+ 
+-cfgdatadir = $(datadir)/Coin/conf
++cfgdatadir = $(datadir)/Coin60/conf
+ cfgdata_DATA = coin-@CONFIG@.cfg
+ 
+ if MAC_FRAMEWORK
+--- Makefile.in.orig	2016-08-17 13:46:41.424692665 +0200
++++ Makefile.in	2016-08-17 13:47:05.040692974 +0200
+@@ -1426,7 +1426,7 @@
+ 
+ @BUILD_LIBRARY_TRUE@m4datadir = $(datadir)/aclocal
+ @BUILD_LIBRARY_TRUE@dist_m4data_DATA = cfg/coin.m4
+-@BUILD_LIBRARY_TRUE@cfgdatadir = $(datadir)/Coin/conf
++@BUILD_LIBRARY_TRUE@cfgdatadir = $(datadir)/Coin60/conf
+ @BUILD_LIBRARY_TRUE@cfgdata_DATA = coin-@CONFIG@.cfg
+ @BUILD_LIBRARY_TRUE@@MAC_FRAMEWORK_TRUE@frameworkdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources
+ @BUILD_LIBRARY_TRUE@@MAC_FRAMEWORK_TRUE@frameworkdata_DATA = Info.plist version.plist
+--- data/draggerDefaults/Makefile.in.orig	2016-08-17 13:47:25.012693235 +0200
++++ data/draggerDefaults/Makefile.in	2016-08-17 13:47:33.528693347 +0200
+@@ -358,7 +358,7 @@
+ 	$(BUILT_SOURCES) \
+ 	iv2h.sh
+ 
+-@MAC_FRAMEWORK_FALSE@draggerdefdatadir = $(datadir)/Coin/draggerDefaults
++@MAC_FRAMEWORK_FALSE@draggerdefdatadir = $(datadir)/Coin60/draggerDefaults
+ @MAC_FRAMEWORK_TRUE@draggerdefdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/draggerDefaults
+ dist_draggerdefdata_DATA = \
+ 	translate1Dragger.iv \
+--- ./data/scxml/navigation/Makefile.in.orig	2016-08-17 13:47:54.300693619 +0200
++++ ./data/scxml/navigation/Makefile.in	2016-08-17 13:48:02.304693723 +0200
+@@ -331,7 +331,7 @@
+ target_cpu = @target_cpu@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+-@MAC_FRAMEWORK_FALSE@scxmldefdatadir = $(datadir)/Coin/scxml/navigation
++@MAC_FRAMEWORK_FALSE@scxmldefdatadir = $(datadir)/Coin60/scxml/navigation
+ @MAC_FRAMEWORK_TRUE@scxmldefdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/scxml/navigation
+ dist_scxmldefdata_DATA = \
+ 	examiner.xml
+--- ./data/shaders/lights/Makefile.in.orig	2016-08-17 13:48:21.704693977 +0200
++++ ./data/shaders/lights/Makefile.in	2016-08-17 13:48:32.288694116 +0200
+@@ -341,7 +341,7 @@
+ 	$(BUILT_SOURCES) \
+ 	glsl2h.sh
+ 
+-@MAC_FRAMEWORK_FALSE@shaderslightsdatadir = $(datadir)/Coin/shaders/lights
++@MAC_FRAMEWORK_FALSE@shaderslightsdatadir = $(datadir)/Coin60/shaders/lights
+ @MAC_FRAMEWORK_TRUE@shaderslightsdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/shaders/lights
+ dist_shaderslightsdata_DATA = \
+ 	PointLight.glsl \
+--- ./data/shaders/vsm/Makefile.in.orig	2016-08-17 13:48:51.936694373 +0200
++++ ./data/shaders/vsm/Makefile.in	2016-08-17 13:48:59.080694467 +0200
+@@ -338,7 +338,7 @@
+ 	$(BUILT_SOURCES) \
+ 	glsl2h.sh
+ 
+-@MAC_FRAMEWORK_FALSE@shadersvsmdatadir = $(datadir)/Coin/shaders/vsm
++@MAC_FRAMEWORK_FALSE@shadersvsmdatadir = $(datadir)/Coin60/shaders/vsm
+ @MAC_FRAMEWORK_TRUE@shadersvsmdatadir = $(MAC_FRAMEWORK_PREFIX)/$(MAC_FRAMEWORK_NAME).framework/Versions/$(MAC_FRAMEWORK_VERSION)/Resources/shaders/vsm
+ dist_shadersvsmdata_DATA = \
+ 	VsmLookup.glsl

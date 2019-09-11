@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:00:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.1.0:
+  * See provided NEWS for list of all changes
+
+-------------------------------------------------------------------
+Mon Apr  1 18:05:00 UTC 2019 - Kai Pastor <dg0yt@darc.de>
+
+- Fix datumgrid packaging
+
+-------------------------------------------------------------------
+Mon Mar 25 08:54:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable tests
+- Fix previous changelog entry
+
+-------------------------------------------------------------------
+Mon Mar 11 13:34:36 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.0.0 and datumgrid 1.7
+  * See provided NEWS for list of all changes
+
+-------------------------------------------------------------------
+Wed Sep 19 09:56:08 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.2.0 and datumgrid 1.7
+  * See provided NEWS for list of all changes
+
+-------------------------------------------------------------------
+Thu Jul 12 08:45:57 UTC 2018 - mpluskal@suse.com
+
+- Update to version 5.1.0 and datumgrid 1.7
+  * See provided NEWS for list of all changes
+
+-------------------------------------------------------------------
+Sun Oct  2 09:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- Update to 4.9.3
+   o update to new datumgrid version 1.6
+
+-------------------------------------------------------------------
+Fri Sep 30 21:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- Switch download link to OSGeo server
+
+-------------------------------------------------------------------
+Mon Jul  4 14:01:52 UTC 2016 - mpluskal@suse.com
+
+- Update project and download url
+- Small spec file cleanups
+
+-------------------------------------------------------------------
+Sun Sep 27 14:47:51 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.9.2
+   o proj_def.dat was missing from source distribution
+     see https://github.com/OSGeo/proj.4/issues/274 for more detail
+   o Update Geodesic library from GeographicLib
+   o Remove setlocale() use in pj_init_ctx()
+   o Renamed PVALUE in pj_param.c to prevent clash with Windows
+
+-------------------------------------------------------------------
+Sat May  9 08:44:45 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.9.1
+  o 4.9.0RC2 release was abandoned because it was not promoted in a
+    timely fashion. Subsequent maintenance of tickets has continued,
+    and a new 4.9.1 release was issued in its place.
+  o Implement inverse solution for Winkel Tripel from Drazan Tutic #250
+  o More CMake configuration tweaks. The CMake configuration is probably
+    not at feature parity with the autotools builds at this point but it
+    is converging #256
+  o Tweak initialization ordering around setlocal which may have caused
+    issues #237
+  o Support out-of-tree autoconf builds more completely #247
+  o Fix NaN handling by geod_inverse and geod_polygon_addedge #251 & #253
+  o Update config.sub and config.guess #257
+  o Adapt Charles Karney's CMake patches for smoother build #258
+  o Define default PROJ_LIB location for CMake compilation #261
+  o Fix Windows compilation on PJ_aitoff.c
+  o Align CMake SOVERSION with autotools #263
+  o Regenerate nad/epsg with GDAL r28536 to avoid precision loss in TOWGS84
+    parameters, e.g. on Amersfoort / RD EPSG:4289 (#260)
+  o Add CMake project-config.cmake scripts (#264 from Charles Karney)
+  o Dial back test sensitivity #255  
+- Changes for 4.9.0
+  o Implement CMake as an option for building PROJ.4
+  o Implement new virtual file api (projFileAPI) so that all access to grid
+    shift and init files can be hooked.
+  o Replace geodesic implementation with one from Charles Karney and add a
+    supported public interface (geodesic.h).
+  o Upgraded to EPSG 8.5.
+  o Removed old (deprecated) Java bindings in favor of the new api introduced
+    in 4.8.0.
+  o Implement the calcofi (Cal Coop Ocean Fish Invest Lines/Stations) projection
+  o Install projects.h again for applications that want access to internal
+    structures and functions despite the inherent fragility.
+  o Various bug fixes and cleanup.
+  o Added the CalCOFI pseudo-projection, #135
+  
+-------------------------------------------------------------------
+Sun Mar  8 09:59:50 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Cleanup dependecies
+- Use url for source
+- Update url
+
+-------------------------------------------------------------------
+Fri Apr 20 12:09:29 UTC 2012 - tzotsos@opensuse.org
+
+- minor fix to install projects.h needed in devel package.
+
+-------------------------------------------------------------------
+Wed Mar 14 08:57:02 UTC 2012 - dassau@gbd-consult.de
+
+- update to version 4.8.0
+	- Added the Natural Earth projection.
+	- Added HEALPIX, rHEALPIX and Icosahedral Snyder Equal Area projections.
+	- nad2bin now produces "CTable2" format grid shift files by default which
+  	  are platform independent.
+	- nad2nad removed, use cs2cs for datum shift operations.
+	- projects.h no longer installed as a public include file.  Please try to
+  	  only use proj_api.h.
+	- Add pj_get_spheroid_defn() accessor.
+	- Added an alternate version of pj_init() that takes a projCtx (execution
+ 	  context) structure to address multithreading issues with error management
+  	  and to provide a support for application hookable error reporting and
+  	  logging.
+	- Upgrade to EPSG 7.9.  Some changes in ideal datum selection.
+	- JNI bindings reworked, org.proj4.Projections deprecated in favor of
+  	  org.proj4.PJ.
+	- Added preliminary vertical datum support.
+	- Fix various multithreading issues, particular in datum grid handling code.
+	- Added support for the +axis= option for alternate axis orientations as
+	  part of a coordinate system (used for TM South Orientated support).
+	- +proj=omerc implementatioin replaced with code from libproj4.  +rot_conv
+	  flag no longer works, and some coordinate systems (ie. Malaysian) will
+	  need to use +gamma instead.  "epsg" init file updated accordingly. 
+- Added BuildRequires pkg-config
+- Added %{_libdir}/pkgconfig/proj.pc
+-------------------------------------------------------------------
+Thu Aug 18 11:25:37 UTC 2011 - idonmez@novell.com
+
+- Remove wrong -static-devel package 
+
+-------------------------------------------------------------------
+Thu Aug 18 11:15:07 UTC 2011 - otto.dassau@gmx.de
+
+- added a static devel package, because GRASS and QGIS don't find 
+  the external PROJ.4 data directory anymore
+
+-------------------------------------------------------------------
+Sat Mar 19 00:00:00 UTC 2011 - Otto Dassau 4.7.0
+
+- removed debug_package
+
+-------------------------------------------------------------------
+Tue Nov 24 00:00:00 UTC 2009 - Otto Dassau 4.7.0
+
+- update to new proj4 version
+- update to new datumgrid version 1.5
+
+-------------------------------------------------------------------
+Sun Oct 19 00:00:00 UTC 2008 - dl9pf@gmx.de
+
+- change spec to build on factory
+
+-------------------------------------------------------------------
+Wed Sep 17 00:00:00 UTC 2008 - Otto Dassau 4.6.1
+
+- version update
+
+-------------------------------------------------------------------
+Wed Jul  9 00:00:00 UTC 2008 - Otto Dassau 4.6.0
+
+- update and rpmlind fixes
+
+-------------------------------------------------------------------
+Mon Aug 13 00:00:00 UTC 2007 - Dirk Stöcker 4.5.0
+
+- adapted to BuildService
+
+-------------------------------------------------------------------
+Fri Jan  5 00:00:00 UTC 2007 - Otto Dassau 4.5.0
+
+- moved *.so from files devel to files
+
+-------------------------------------------------------------------
+Tue Dec 19 00:00:00 UTC 2006 - Otto Dassau 4.5.0
+
+- rebuilt for SuSE 10.2
+
+-------------------------------------------------------------------
+Wed Jan 25 00:00:00 UTC 2006 - Otto Dassau 4.4.9
+
+- rebuilt for SuSE 10.0 and added devel package
+
+-------------------------------------------------------------------
+Thu Nov 17 00:00:00 UTC 2005 - Markus Neteler 4.4.9
+
+- upgraded to Mandriva 2006
+
+-------------------------------------------------------------------
+Fri Aug  5 00:00:00 UTC 2005 - Otto Dassau 4.4.9
+
+- Applied for Mandrake 10.1 RPM
+

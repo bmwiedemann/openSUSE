@@ -1,0 +1,41 @@
+---
+ lisp/textmodes/flyspell.el |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+--- lisp/textmodes/flyspell.el
++++ lisp/textmodes/flyspell.el	2016-09-19 09:22:48.535025631 +0000
+@@ -313,6 +313,12 @@ If this variable is nil, all regions are
+   :type 'key-sequence
+   :group 'flyspell)
+ 
++(defvar flyspell-signature-separator
++  (if (boundp 'message-signature-separator)
++	message-signature-separator
++     "^-- $")
++  "*String used to recognize .signatures.")
++
+ ;;*---------------------------------------------------------------------*/
+ ;;*    Mode specific options                                            */
+ ;;*    -------------------------------------------------------------    */
+@@ -342,7 +342,6 @@ property of the major mode name.")
+ ;;*--- mail mode -------------------------------------------------------*/
+ (put 'mail-mode 'flyspell-mode-predicate 'mail-mode-flyspell-verify)
+ (put 'message-mode 'flyspell-mode-predicate 'mail-mode-flyspell-verify)
+-(defvar message-signature-separator)
+ (defun mail-mode-flyspell-verify ()
+   "Function used for `flyspell-generic-check-word-predicate' in Mail mode."
+   (let* ((header-end (save-excursion
+@@ -353,11 +353,11 @@ property of the major mode name.")
+                         nil t)
+                        (point)))
+          (signature-begin
+-          (if (not (boundp 'message-signature-separator))
++          (if (not (boundp 'flyspell-signature-separator))
+               (point-max)
+             (save-excursion
+               (goto-char (point-max))
+-              (re-search-backward message-signature-separator
++              (re-search-backward flyspell-signature-separator
+                                   (max header-end (- (point) 4000)) t)
+               (point)))))
+     (cond ((< (point) header-end)

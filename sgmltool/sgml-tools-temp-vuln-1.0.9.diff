@@ -1,0 +1,43 @@
+--- sgml-tools-1.0.9/lib/SGMLTools.bak       Wed Apr 25 14:53:48 2001
++++ sgml-tools-1.0.9/lib/SGMLTools.pm        Wed Apr 25 14:58:42 2001
+@@ -212,6 +212,14 @@
+   return @files;
+ }
+
++# Pre-create temp files safely
++sub create_temp {
++       my $fh = new FileHandle(shift,O_CREAT|O_EXCL|O_WRONLY,0600);
++       $fh or die "$0: failed to create temporary file: $!";
++       $fh->close;
++}
++
++
+ =item SGMLTools::process_file
+
+ With all the configuration done, this routine will take a single filename
+@@ -286,6 +294,7 @@
+     {
+       $ifile = new FileHandle "$global->{NsgmlsPrePipe}|";
+     }
++  create_temp("$tmpbase.1");
+   $writensgmls = new FileHandle
+       "$precmd|$main::progs->{NSGMLS} $global->{NsgmlsOpts} $ENV{SGMLDECL} >$tmpbase.1";
+   if ($global->{charset} eq "latin")
+@@ -386,7 +395,8 @@
+   #  preASP ($inhandle, $outhandle);
+   #
+   my $inpreasp = new FileHandle "<$tmpbase.1";
+-  my $outpreasp = new FileHandle ">$tmpbase.2";
++  my $outpreasp = new FileHandle "$tmpbase.2",O_WRONLY|O_CREAT|O_EXCL,0600;
++
+   if (defined $Formats{$global->{format}}{preASP})
+     {
+       &{$Formats{$global->{format}}{preASP}}($inpreasp, $outpreasp) == 0 or
+@@ -428,6 +438,7 @@
+   my $mapping = "$main::LibDir/site/$dtd/$global->{format}/mapping";
+   -r $mapping or $mapping = "$main::LibDir/dist/$dtd/$global->{format}/mapping";
+
++  create_temp("$tmpbase.3");
+   system ("$main::progs->{SGMLSASP} $style $mapping <$tmpbase.2|
+       expand -$global->{tabsize} >$tmpbase.3");
+

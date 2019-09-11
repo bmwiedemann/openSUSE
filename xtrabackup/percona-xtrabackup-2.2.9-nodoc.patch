@@ -1,0 +1,16 @@
+From: Andreas Stieger <astieger@suse.com>
+Date: Wed, 25 Feb 2015 09:30:48 +0100
+Upstream: no
+
+openSUSE's spec file deletes doc directories due to licencing/trademark.
+Make the build work.
+
+Index: percona-xtrabackup-2.2.9/storage/innobase/xtrabackup/CMakeLists.txt
+===================================================================
+--- percona-xtrabackup-2.2.9.orig/storage/innobase/xtrabackup/CMakeLists.txt
++++ percona-xtrabackup-2.2.9/storage/innobase/xtrabackup/CMakeLists.txt
+@@ -25,4 +25,3 @@ INSTALL_SCRIPT(${CMAKE_CURRENT_BINARY_DI
+ 
+ ADD_SUBDIRECTORY(src)
+ ADD_SUBDIRECTORY(test)
+-ADD_SUBDIRECTORY(doc/source)

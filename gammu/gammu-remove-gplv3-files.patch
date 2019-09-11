@@ -1,0 +1,11 @@
+diff -Pdpru gammu-1.38.3.orig/contrib/CMakeLists.txt gammu-1.38.3/contrib/CMakeLists.txt
+--- gammu-1.38.3.orig/contrib/CMakeLists.txt	2017-05-23 13:34:20.000000000 +0200
++++ gammu-1.38.3/contrib/CMakeLists.txt	2017-06-17 14:33:00.480774329 +0200
+@@ -126,7 +126,6 @@ endif (INSTALL_UDEV_RULES)
+ 
+ # Build some examples
+ # We do not install them intentionally, just check whether they still compile
+-add_subdirectory(smscgi)
+ add_subdirectory(convert)
+ add_subdirectory(sqlreply)
+ add_subdirectory(coveragehelper)

@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Sep 12 13:03:08 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 2.12
+   see /usr/share/doc/packages/perl-HTML-Format/Changes
+
+  2.12      2015-10-10 17:49:45+01:00 Europe/London
+    - Minor test related fixes
+    - Transition to using File::Slurper in place of File::Slurp
+      Thanks to Karen Etheridge for the patch
+    - Add Travis CI integration
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Sat May  2 09:23:58 UTC 2015 - coolo@suse.com
+
+- updated to 2.11
+   see /usr/share/doc/packages/perl-HTML-Format/Changes
+
+  2.11      2013-10-27 20:57:23 Europe/London
+      - Typo fixes from dsteinbrunner
+        https://github.com/nigelm/html-format/pull/2
+      - Markdown support from mrallen1
+        https://github.com/nigelm/html-format/pull/1
+
+-------------------------------------------------------------------
+Mon Jul 25 09:50:44 UTC 2011 - vcizek@novell.com
+
+- update to 2.10
+    - Tests reworked to not use subtests.  Development versions
+      of Test::More do not support subtests, and the smokers
+      that are running with these dev versions then send me
+      confusing test failures.  This is a pain.
+    - Reworking of HTML quote issue in FormatPS
+    - Now remap all double quotes to " in FormatPS (which is not
+      really right, but the best I can do with latin1 output)
+    - RT#69426 - issues with HTML quotes
+    - UTF8 handling requires perl 5.8, so minimum requirement bumped
+
+-------------------------------------------------------------------
+Fri Apr 22 12:06:04 UTC 2011 - vcizek@novell.com
+
+- update to 2.07
+    - Code gardening - no functionality modifications
+- removed authors from spec
+
+-------------------------------------------------------------------
+Mon Feb 21 14:43:20 UTC 2011 - vcizek@novell.com
+
+- update to 2.05
+    - Smoke tests on windows showed needed make PS tests less strict
+    - Changed the github location to be all lowercase
+    - Releasing this as a stop gap - will do further work now
+      incompatibilities dealt with
+    - Added dependancies for font metrics files
+    - Documentation tidy up - but needs further work
+    - RT#54636 - UNIVERSAL::Can deprecated
+    - RT#56278 - RTF formatting parameters ignored by new
+    - Git conversion
+    - Dist::Zilla conversion
+ - removed universal-can.patch (merged in upstream)
+
+-------------------------------------------------------------------
+Wed Feb  2 13:41:03 UTC 2011 - vcizek@novell.com
+
+- bzipped source tarball 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:48 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:09 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 15 08:39:31 UTC 2010 - jw@novell.com
+
+- added universal-can.patch from
+  https://rt.cpan.org/Public/Bug/Display.html?id=54636
+  to avoid warnings:
+  UNIVERSAL->import is deprecated and will be removed in a future perl at
+  /usr/lib/perl5/vendor_perl/5.12.1/HTML/Formatter.pm line 110
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 18 12:25:00 CEST 2004 - kssingvo@suse.de
+
+- upgrade to 2.04
+
+-------------------------------------------------------------------
+Tue Dec 16 17:57:59 CET 2003 - kssingvo@suse.de
+
+- initial version
+

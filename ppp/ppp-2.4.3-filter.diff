@@ -1,0 +1,51 @@
+--- ppp-2.4.4/pppd/demand.c
++++ ppp-2.4.4/pppd/demand.c
+@@ -45,6 +45,7 @@
+ #include <sys/socket.h>
+ #ifdef PPP_FILTER
+ #include <pcap-bpf.h>
++#include <linux/if_ether.h>
+ #endif
+ 
+ #include "pppd.h"
+@@ -341,6 +342,7 @@
+ 	return 0;
+     proto = PPP_PROTOCOL(p);
+ #ifdef PPP_FILTER
++    *p = 1; /* set outbound for the filter rule */
+     p[0] = 1;		/* outbound packet indicator */
+     if ((pass_filter.bf_len != 0
+ 	 && bpf_filter(pass_filter.bf_insns, p, len, len) == 0)
+@@ -350,6 +352,7 @@
+ 	return 0;
+     }
+     p[0] = 0xff;
++    *p = 0xff; /* restore original ppp header */
+ #endif
+     for (i = 0; (protp = protocols[i]) != NULL; ++i) {
+ 	if (protp->protocol < 0xC000 && (protp->protocol & ~0x8000) == proto) {
+--- ppp-2.4.4/pppd/options.c
++++ ppp-2.4.4/pppd/options.c
+@@ -1459,6 +1459,10 @@
+     int ret = 1;
+ 
+     pc = pcap_open_dead(DLT_PPP_PPPD, 65535);
++    if (!pc) {
++        option_error("error in pass-filter expression: pcap_open_dead failed\n");
++        return 0;
++    }
+     if (pcap_compile(pc, &pass_filter, *argv, 1, netmask) == -1) {
+ 	option_error("error in pass-filter expression: %s\n",
+ 		     pcap_geterr(pc));
+@@ -1480,6 +1484,11 @@
+     int ret = 1;
+ 
+     pc = pcap_open_dead(DLT_PPP_PPPD, 65535);
++    if (!pc) {
++        option_error("error in active-filter expression: pcap_open_dead failed\n");
++        return 0;
++    }
++
+     if (pcap_compile(pc, &active_filter, *argv, 1, netmask) == -1) {
+ 	option_error("error in active-filter expression: %s\n",
+ 		     pcap_geterr(pc));

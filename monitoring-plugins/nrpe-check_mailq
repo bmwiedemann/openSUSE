@@ -1,0 +1,1 @@
+command[check_mailq]=/usr/lib/nagios/plugins/check_mailq -c 50 -w 30 -M postfix

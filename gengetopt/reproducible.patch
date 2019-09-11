@@ -1,0 +1,26 @@
+https://savannah.gnu.org/bugs/index.php?55311
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-12-28
+
+Use $SOURCE_DATE_EPOCH in mdate-sh
+
+When patches touch input files, output files will contain the build date
+making package build unreproducible.
+
+See https://reproducible-builds.org/ for why this matters.
+
+Index: gengetopt-2.22.6/build-aux/mdate-sh
+===================================================================
+--- gengetopt-2.22.6.orig/build-aux/mdate-sh
++++ gengetopt-2.22.6/build-aux/mdate-sh
+@@ -75,6 +75,10 @@ export LC_ALL
+ LC_TIME=C
+ export LC_TIME
+ 
++if [ -n "$SOURCE_DATE_EPOCH" ] ; then
++  exec date -d "@$SOURCE_DATE_EPOCH" -u "+%d %B %Y"
++fi
++
+ # GNU ls changes its time format in response to the TIME_STYLE
+ # variable.  Since we cannot assume `unset' works, revert this
+ # variable to its documented default.

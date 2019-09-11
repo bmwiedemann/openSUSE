@@ -1,0 +1,3 @@
+addFilter("no-binary")
+addFilter("devel-file-in-non-devel-package .*pkgconfig/xfce4-vala.pc")
+

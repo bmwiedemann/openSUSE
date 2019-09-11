@@ -1,0 +1,1727 @@
+From ab9628a2b1eb489cb9c887b2e4fa41a51db59c05 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 07:26:00 +0200
+Subject: [PATCH 01/19] fix spelling error ("settting" should be "setting")
+
+---
+ README                 | 2 +-
+ lib/GnuPG/Interface.pm | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index fcb982a..f457577 100644
+--- a/README
++++ b/README
+@@ -6,7 +6,7 @@ SYNOPSIS
+       use IO::Handle;
+       use GnuPG::Interface;
+   
+-      # settting up the situation
++      # setting up the situation
+       my $gnupg = GnuPG::Interface->new();
+       $gnupg->options->hash_init( armor   => 1,
+                                   homedir => '/home/foobar' );
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index f952f3e..83a4b1a 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -834,7 +834,7 @@ GnuPG::Interface - Perl interface to GnuPG
+   use IO::Handle;
+   use GnuPG::Interface;
+   
+-  # settting up the situation
++  # setting up the situation
+   my $gnupg = GnuPG::Interface->new();
+   $gnupg->options->hash_init( armor   => 1,
+ 			      homedir => '/home/foobar' );
+
+From d49813d8b82245b1d7b6c7541aa80ed92b249557 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 10:38:12 -0400
+Subject: [PATCH 02/19] Generalize the test suite
+
+The test suite currently assumes it knows something about the internal
+state of GnuPG's homedir.
+
+It's safer and less brittle to rely explicitly on the public interface
+that GnuPG has committed to, such as --import-keys and --list-keys,
+rather than assuming that certain files are in certain places in the
+GnuPG homedir.
+
+It's also better to create a fresh homedir and allow GnuPG to populate
+it during the test suite, cleaning it up at the end, rather than hope
+that GnuPG will leave a pre-existing homedir untouched.
+
+With this change, many more of the tests pass when /usr/bin/gpg is
+provided by GnuPG 2.1.
+---
+ .gitignore                 |  2 --
+ t/000_setup.t              | 28 ++++++++++++++++++++++++++++
+ t/MyTestSpecific.pm        |  2 +-
+ t/zzz_cleanup.t            | 17 +++++++++++++++++
+ test/fake-pinentry.pl      | 28 ++++++++++++++++++++++++++++
+ test/{options => gpg.conf} |  0
+ test/secret-keys/1.0.test  |  4 ++--
+ 7 files changed, 76 insertions(+), 5 deletions(-)
+ create mode 100644 t/000_setup.t
+ create mode 100644 t/zzz_cleanup.t
+ create mode 100755 test/fake-pinentry.pl
+ rename test/{options => gpg.conf} (100%)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+new file mode 100644
+index 0000000..7f7f7b0
+--- /dev/null
++++ b/t/000_setup.t
+@@ -0,0 +1,28 @@
++#!/usr/bin/perl -w
++
++use strict;
++use English qw( -no_match_vars );
++
++use lib './t';
++use MyTest;
++use MyTestSpecific;
++use Cwd;
++use File::Path qw (make_path);
++use File::Copy;
++
++TEST
++{
++    make_path('test/gnupghome', { mode => 0700 });
++    my $agentconf = IO::File->new( "> test/gnupghome/gpg-agent.conf" );
++    $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
++    $agentconf->close();
++    copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    reset_handles();
++
++    my $pid = $gnupg->import_keys(command_args => [ 'test/pubring.gpg', 'test/secring.gpg' ],
++                                  options => [ 'batch'],
++                                  handles => $handles);
++    waitpid $pid, 0;
++
++    return $CHILD_ERROR == 0;
++};
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index 053b749..1af98ae 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -40,7 +40,7 @@ use vars qw( @ISA           @EXPORT
+ 
+ $gnupg = GnuPG::Interface->new( passphrase => 'test' );
+ 
+-$gnupg->options->hash_init( homedir              => 'test',
++$gnupg->options->hash_init( homedir              => 'test/gnupghome',
+                             armor                => 1,
+                             meta_interactive     => 0,
+                             meta_signing_key_id  => '0xF950DA9C',
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+new file mode 100644
+index 0000000..5c03a72
+--- /dev/null
++++ b/t/zzz_cleanup.t
+@@ -0,0 +1,17 @@
++#!/usr/bin/perl -w
++
++use strict;
++use English qw( -no_match_vars );
++
++use lib './t';
++use MyTest;
++use MyTestSpecific;
++use File::Path qw (remove_tree);
++
++# this is actually no test, just cleanup.
++TEST
++{
++    my $err = [];
++    remove_tree('test/gnupghome', {error => \$err});
++    return ! @$err;
++};
+diff --git a/test/fake-pinentry.pl b/test/fake-pinentry.pl
+new file mode 100755
+index 0000000..12d3611
+--- /dev/null
++++ b/test/fake-pinentry.pl
+@@ -0,0 +1,28 @@
++#!/usr/bin/perl -w
++# Use this for your test suites when a perl interpreter is available.
++#
++# The encrypted keys in your test suite that you expect to work must
++# be locked with a passphrase of "test"
++#
++# Author: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++#
++# License: This trivial work is hereby explicitly placed into the
++# public domain.  Anyone may reuse it, modify it, redistribute it for
++# any purpose.
++
++use strict;
++use warnings;
++
++# turn off buffering
++$| = 1;
++
++print "OK This is only for test suites, and should never be used in production\n";
++while (<STDIN>) {
++  chomp;
++  next if (/^$/);
++  next if (/^#/);
++  print ("D test\n") if (/^getpin/i);
++  print "OK\n";
++  exit if (/^bye/i);
++}
++1;
+diff --git a/test/options b/test/gpg.conf
+similarity index 100%
+rename from test/options
+rename to test/gpg.conf
+diff --git a/test/secret-keys/1.0.test b/test/secret-keys/1.0.test
+index 5999484..129d472 100644
+--- a/test/secret-keys/1.0.test
++++ b/test/secret-keys/1.0.test
+@@ -1,5 +1,5 @@
+-test/secring.gpg
+-----------------
++test/gnupghome/secring.gpg
++--------------------------
+ sec   1024D/F950DA9C 2000-02-06
+ uid                  GnuPG test key (for testing purposes only)
+ uid                  Foo Bar (1)
+
+From aaf67ea6dec9a648153cae981c5f245c0ba3d1d4 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 11:35:31 -0400
+Subject: [PATCH 03/19] subkey validity of an key when we have established no
+ trust anchors
+
+This apparently isn't tested by deep comparisons, though, so it was
+never caught.
+---
+ t/get_public_keys.t | 2 +-
+ t/get_secret_keys.t | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/get_public_keys.t b/t/get_public_keys.t
+index 53db021..73e320b 100644
+--- a/t/get_public_keys.t
++++ b/t/get_public_keys.t
+@@ -175,7 +175,7 @@ TEST
+     ];
+ 
+     my $subkey = GnuPG::SubKey->new
+-      ( validity                 => 'u',
++      ( validity                 => '-',
+         length                   => 768,
+         algo_num                 => 16,
+         hex_id                   => 'ADB99D9C2E854A6B',
+diff --git a/t/get_secret_keys.t b/t/get_secret_keys.t
+index 3a1d99f..7bba083 100644
+--- a/t/get_secret_keys.t
++++ b/t/get_secret_keys.t
+@@ -48,7 +48,7 @@ TEST
+ 
+ 
+     my $subkey = GnuPG::SubKey->new
+-      ( validity                 => 'u',
++      ( validity                 => '-',
+         length                   => 768,
+         algo_num                 => 16,
+         hex_id                   => 'ADB99D9C2E854A6B',
+
+From f055042f0aacd0037043e03305b9dca37316a078 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 11:39:04 -0400
+Subject: [PATCH 04/19] ensure that test covers all signatures
+
+The earlier test wasn't reporting on one of the known self-sigs for
+the test key for some reason.
+
+This change ensures that all known signatures are present.
+---
+ t/get_public_keys.t | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/t/get_public_keys.t b/t/get_public_keys.t
+index 73e320b..9e96f7d 100644
+--- a/t/get_public_keys.t
++++ b/t/get_public_keys.t
+@@ -83,7 +83,17 @@ TEST
+                             date_string => '2000-02-06',
+                             hex_id => '53AE596EF950DA9C',
+                             sig_class => 0x13,
+-                            validity => '!'));
++                            validity => '!'),
++      GnuPG::Signature->new(
++                            date => 1177086329,
++                            algo_num => 17,
++                            is_exportable => 1,
++                            user_id_string => 'GnuPG test key (for testing purposes only)',
++                            date_string => '2007-04-20',
++                            hex_id => '53AE596EF950DA9C',
++                            sig_class => 0x13,
++                            validity => '!'),
++                          );
+ 
+     my $uid1 = GnuPG::UserId->new( as_string =>  'Foo Bar (1)',
+                                    validity => '-');
+
+From decf5614281405d837675e74fdb0b2e00d8cf8a7 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 14:31:38 -0400
+Subject: [PATCH 05/19] add $gpg_is_modern to test suite
+
+MyTestSpecific.pm now produces a new variable indicating whether it
+the version of GnuPG we run against is from the "Modern" line of GnuPG
+development (2.1 or later).  This will be useful when comparing output
+that we can't expect from earlier versions.
+---
+ t/MyTestSpecific.pm | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index 1af98ae..a309698 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -29,17 +29,20 @@ use GnuPG::Handles;
+ use vars qw( @ISA           @EXPORT
+              $stdin         $stdout           $stderr
+              $gpg_program   $handles          $gnupg
+-             %texts
++             %texts         $gpg_is_modern
+            );
+ 
+ @ISA    = qw( Exporter );
+ @EXPORT = qw( stdin                  stdout          stderr
+               gnupg_program handles  reset_handles
+-              texts                  file_match
++              texts                  file_match      gpg_is_modern
+             );
+ 
+ $gnupg = GnuPG::Interface->new( passphrase => 'test' );
+ 
++my @version = split('\.', $gnupg->version());
++$gpg_is_modern = ($version[0] > 2 || ($version[0] == 2 && $version[1] >= 1));
++
+ $gnupg->options->hash_init( homedir              => 'test/gnupghome',
+                             armor                => 1,
+                             meta_interactive     => 0,
+
+From 4485328c396ad82f0df7833e766913d40d6a5d10 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 14:12:40 -0400
+Subject: [PATCH 06/19] Modern GnuPG (2.1) reports more detail about secret
+ keys
+
+the GnuPG "modern" suite (version 2.1 or later) reports more detail
+about secret keys than previous versions did.  In particular, it
+reports stored ownertrust, public key data, and designated revokers
+for secret keys.  Older versions only reported those attributes for
+public keys.
+
+This patch adjusts the test suite to ensure that our handmade key
+matches the produced key when /usr/bin/gpg is supplied by the modern
+suite.
+---
+ t/get_secret_keys.t | 66 ++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 54 insertions(+), 12 deletions(-)
+
+diff --git a/t/get_secret_keys.t b/t/get_secret_keys.t
+index 7bba083..c798cce 100644
+--- a/t/get_secret_keys.t
++++ b/t/get_secret_keys.t
+@@ -23,16 +23,34 @@ TEST
+     return 0 unless @returned_keys == 1;
+ 
+     $given_key = shift @returned_keys;
+-
+-    $handmade_key = GnuPG::PrimaryKey->new
+-      ( length                 => 1024,
++    my $pubkey_data = [
++     Math::BigInt->from_hex('0x'.
++      '88FCAAA5BCDCD52084D46143F44ED1715A339794641158DE03AA2092AFD3174E3DCA2CB7DF2DDC6FEDF7C3620F5A8BDAD06713E6153F8748DD76CB97305F30CBA8F8801DB47FAC11EED725F55672CB9BDAD629178A677CBB089B3E8AE0D9A9AD7741697A35F2868C62D25670994A92D810480173DC24263EEA0F103A43C0B64B'),
++     Math::BigInt->from_hex('0x'.
++      '8F2A3842C70FF17660CBB78C78FC93F534AB9A17'),
++     Math::BigInt->from_hex('0x'.
++      '83E348C2AA65F56DE84E8FDCE6DA7B0991B1C75EC8CA446FA85869A43350907BFF36BE512385E8E7E095578BB2138C04E318495873218286DE2B8C86F36EA670135434967AC798EBA28581F709F0C6B696EB512D3E561E381A06E4B5239BCC655015F9A926C74E4B859B26EAD604F208A556511A76A40EDCD9C38E6BD82CCCB4'),
++     Math::BigInt->from_hex('0x'.
++      '80DE04C85E30C9D62C13F90CFF927A84A5A59D0900B3533D4D6193FEF8C5DAEF9FF8A7D5F76B244FBC17644F50D524E0B19CD3A4B5FC2D78DAECA3FE58FA1C1A64E6C7B96C4EE618173543163A72EF954DFD593E84342699096E9CA76578AC1DE3D893BCCD0BF470CEF625FAF816A0F503EF75C18C6173E35C8675AF919E5704')
++    ];
++
++
++    my $args = {
++        length                 => 1024,
+         algo_num               => 17,
+         hex_id                 => '53AE596EF950DA9C',
+         creation_date          => 949813093,
+         creation_date_string   => '2000-02-06',
+-        owner_trust            => '', # secret keys do not report ownertrust?
++        owner_trust            => '-',
+         usage_flags            => 'scaESCA',
+-      );
++        pubkey_data            => $pubkey_data,
++    };
++    if (!$gpg_is_modern) {
++      # older versions don't report ownertrust or pubkey_data for secret keys:
++      delete $args->{pubkey_data};
++      $args->{owner_trust} = '';
++    }
++    $handmade_key = GnuPG::PrimaryKey->new($args);
+ 
+     $handmade_key->fingerprint
+       ( GnuPG::Fingerprint->new( as_hex_string =>
+@@ -42,20 +60,42 @@ TEST
+ 
+     $handmade_key->push_user_ids(
+       GnuPG::UserId->new( as_string => 'GnuPG test key (for testing purposes only)',
+-                          validity => ''), # secret keys do not report uid validity?
++                          validity => $args->{owner_trust}),
+       GnuPG::UserId->new( as_string => 'Foo Bar (1)',
+-                          validity => '')); # secret keys do not report uid validity?
+-
+-
+-    my $subkey = GnuPG::SubKey->new
+-      ( validity                 => '-',
++                          validity => $args->{owner_trust}));
++
++    my $revoker = GnuPG::Revoker->new
++      ( algo_num       => 17,
++        class          => 0x80,
++        fingerprint    => GnuPG::Fingerprint->new( as_hex_string =>
++                                                   '4F863BBBA8166F0A340F600356FFD10A260C4FA3'),
++        );
++
++    my $subkey_pub_data = [
++     Math::BigInt->from_hex('0x'.
++      '8831982DADC4C5D05CBB01D9EAF612131DDC9C24CEA7246557679423FB0BA42F74D10D8E7F5564F6A4FB8837F8DC4A46571C19B122E6DF4B443D15197A6A22688863D0685FADB6E402316DAA9B560D1F915475364580A67E6DF0A727778A5CF3'),
++     Math::BigInt->from_hex('0x'.
++      '6'),
++     Math::BigInt->from_hex('0x'.
++      '2F3850FF130C6AC9AA0962720E86539626FAA9B67B33A74DFC0DE843FF3E90E43E2F379EE0182D914FA539CCCF5C83A20DB3A7C45E365B8A2A092E799A3DFF4AD8274EB977BAAF5B1AFB2ACB8D6F92454F01682F555565E73E56793C46EF7C3E')
++    ];
++
++    my $sub_args = {
++        validity                 => '-',
+         length                   => 768,
+         algo_num                 => 16,
+         hex_id                   => 'ADB99D9C2E854A6B',
+         creation_date            => 949813119,
+         creation_date_string     => '2000-02-06',
+         usage_flags              => 'e',
+-      );
++        pubkey_data              => $subkey_pub_data,
++      };
++
++    if (!$gpg_is_modern) {
++      # older versions do not report pubkey data for secret keys
++      delete $sub_args->{pubkey_data};
++    }
++    my $subkey = GnuPG::SubKey->new($sub_args);
+ 
+     $subkey->fingerprint
+       ( GnuPG::Fingerprint->new( as_hex_string =>
+@@ -64,6 +104,8 @@ TEST
+       );
+ 
+     $handmade_key->push_subkeys( $subkey );
++    # older versions do not report designated revokers for secret keys
++    $handmade_key->push_revokers( $revoker ) if ($gpg_is_modern);
+ 
+     $handmade_key->compare( $given_key );
+ };
+
+From 9e4f77faaca087de35101b5d414180aaad9a709f Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 14:46:13 -0400
+Subject: [PATCH 07/19] test suite:  match plaintext output across versions of
+ GnuPG
+
+The human-readable version of --list-keys is *not* expected to be
+static over time or as the user's environment changes (e.g. LANG or
+LC_MESSAGES), so expecting it to be machine-parseable is probably a
+mistake.
+
+That said, some users might want to pull textual information about
+specific keys to display directly to the user, so it's not a terrible
+idea to have it in the test suite.
+
+Modern GnuPG (2.1 or later) changes the default structure of the
+human-readable output in a few significant ways:
+
+ * it writes the path to the keyring as an absolute path, even if
+   $GNUPGHOME is set to a non-absolute path.
+
+ * it shows the calculated user id validity by default (see
+   show-uid-validity in gpg's --list-options).  (note that this is a
+   translated string, so that "unknown" (in the default C locale)
+   becomes "inconnue" when LANG or LC_MESSAGES is set to fr_CH.UTF-8,
+   for example.
+
+ * it writes the key algorithm names differently (e.g. rsa2048 instead
+   of 2048R)
+
+ * it does not display the key ID at all by default
+
+ * it displays the full fingerprint in compact form by default
+
+This changeset fixes the test suite so that it can do a rough
+verification of the human-readable text output by list_secret_keys in
+the C locale in modern versions of GnuPG, while leaving it working for
+older GnuPG suites.
+---
+ t/list_secret_keys.t           | 15 +++++++++++++--
+ test/secret-keys/1.modern.test |  8 ++++++++
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+ create mode 100644 test/secret-keys/1.modern.test
+
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 1fe9b7e..51e3651 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -16,13 +16,22 @@ TEST
+ {
+     reset_handles();
+ 
++    $ENV{LC_MESSAGES} = 'C';
+     my $pid = $gnupg->list_secret_keys( handles => $handles );
+     close $stdin;
+ 
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
+-    $out->print( <$stdout> );
++    while (<$stdout>) {
++      if ($gpg_is_modern && /^\/.*\/test\/gnupghome\/pubring.kbx$/) {
++        $out->print("test/gnupghome/pubring.kbx\n");
++      } elsif ($gpg_is_modern && /^--*$/) {
++        $out->print("--------------------------\n");
++      } else {
++        $out->print( $_ );
++      }
++    }
+     close $stdout;
+     $out->close();
+     waitpid $pid, 0;
+@@ -33,7 +42,9 @@ TEST
+ 
+ TEST
+ {
+-    my @files_to_test = ( 'test/secret-keys/1.0.test' );
++    my $suffix = '0';
++    $suffix = 'modern' if ($gpg_is_modern);
++    my @files_to_test = ( 'test/secret-keys/1.'.$suffix.'.test' );
+ 
+     return file_match( $outfile, @files_to_test );
+ };
+diff --git a/test/secret-keys/1.modern.test b/test/secret-keys/1.modern.test
+new file mode 100644
+index 0000000..3e46407
+--- /dev/null
++++ b/test/secret-keys/1.modern.test
+@@ -0,0 +1,8 @@
++test/gnupghome/pubring.kbx
++--------------------------
++sec   dsa1024 2000-02-06 [SCA]
++      93AFC4B1B0288A104996B44253AE596EF950DA9C
++uid           [ unknown] GnuPG test key (for testing purposes only)
++uid           [ unknown] Foo Bar (1)
++ssb   elg768 2000-02-06 [E]
++
+
+From d831296e0c18f0f9dba8e63193f5457792744f88 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 15:22:27 -0400
+Subject: [PATCH 08/19] fix test_default_key_passphrase when passphrase comes
+ from agent
+
+In the modern GnuPG suite, where the passphrase is always managed by
+the agent, gpg itself doesn't emit the GOOD_PASSPHRASE status.
+Instead, if signing is successful it emits plain old SIG_CREATED.
+
+There are probably even better ways to test whether a given key is
+unlocked in this case, but this is a straightforward baseline fix that
+should get this part of the test suite to pass with all available
+versions of GnuPG.
+---
+ lib/GnuPG/Interface.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 83a4b1a..1f1e6d5 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -808,7 +808,7 @@ sub test_default_key_passphrase() {
+ 
+     # all we realy want to check is the status fh
+     while (<$status>) {
+-        if (/^\[GNUPG:\]\s*GOOD_PASSPHRASE/) {
++        if (/^\[GNUPG:\]\s*(GOOD_PASSPHRASE|SIG_CREATED)/) {
+             waitpid $pid, 0;
+             return 1;
+         }
+
+From bd03392e2df9e33221470c674dda1f23f7a353eb Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 19:52:13 -0400
+Subject: [PATCH 09/19] clean up trailing whitespace
+
+---
+ lib/GnuPG/Fingerprint.pm |  2 +-
+ lib/GnuPG/Handles.pm     |  2 +-
+ lib/GnuPG/Interface.pm   | 16 ++++++++--------
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/lib/GnuPG/Fingerprint.pm b/lib/GnuPG/Fingerprint.pm
+index fcb1028..81c38a7 100644
+--- a/lib/GnuPG/Fingerprint.pm
++++ b/lib/GnuPG/Fingerprint.pm
+@@ -20,7 +20,7 @@ with qw(GnuPG::HashInit);
+ 
+ has as_hex_string => (
+     isa => 'Any',
+-    is  => 'rw',        
++    is  => 'rw',
+ );
+ 
+ sub compare {
+diff --git a/lib/GnuPG/Handles.pm b/lib/GnuPG/Handles.pm
+index b30ca57..3eee0e3 100644
+--- a/lib/GnuPG/Handles.pm
++++ b/lib/GnuPG/Handles.pm
+@@ -73,7 +73,7 @@ GnuPG::Handles - GnuPG handles bundle
+     = ( IO::Handle->new(), IO::Handle->new(), IO::Handle->new(),
+         IO::Handle->new(), IO::Handle->new(), IO::Handle->new(),
+       );
+- 
++
+   my $handles = GnuPG::Handles->new
+     ( stdin      => $stdin,
+       stdout     => $stdout,
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 1f1e6d5..19e8070 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -833,7 +833,7 @@ GnuPG::Interface - Perl interface to GnuPG
+   # A simple example
+   use IO::Handle;
+   use GnuPG::Interface;
+-  
++
+   # setting up the situation
+   my $gnupg = GnuPG::Interface->new();
+   $gnupg->options->hash_init( armor   => 1,
+@@ -852,7 +852,7 @@ GnuPG::Interface - Perl interface to GnuPG
+   # Now we'll go about encrypting with the options already set
+   my @plaintext = ( 'foobar' );
+   my $pid = $gnupg->encrypt( handles => $handles );
+-  
++
+   # Now we write to the input of GnuPG
+   print $input @plaintext;
+   close $input;
+@@ -1144,7 +1144,7 @@ The following setup can be done before any of the following examples:
+ 
+   my $handles = GnuPG::Handles->new( stdin    => $input,
+                                      stdout   => $output );
+-   
++
+   # this sets up the communication
+   # Note that the recipients were specified earlier
+   # in the 'options' data member of the $gnupg object.
+@@ -1220,7 +1220,7 @@ The following setup can be done before any of the following examples:
+   # a file written to disk
+   # Make sure you "use IO::File" if you use this module!
+   my $cipher_file = IO::File->new( 'encrypted.gpg' );
+-   
++
+   # this sets up the communication
+   my $pid = $gnupg->decrypt( handles => $handles );
+ 
+@@ -1252,7 +1252,7 @@ The following setup can be done before any of the following examples:
+   # This time we'll just let GnuPG print to our own output
+   # and read from our input, because no input is needed!
+   my $handles = GnuPG::Handles->new();
+-  
++
+   my @ids = ( 'ftobin', '0xABCD1234' );
+ 
+   # this time we need to specify something for
+@@ -1260,7 +1260,7 @@ The following setup can be done before any of the following examples:
+   # search ids as arguments
+   my $pid = $gnupg->list_public_keys( handles      => $handles,
+                                       command_args => [ @ids ] );
+-  
++
+    waitpid $pid, 0;
+ 
+ =head2 Creating GnuPG::PublicKey Objects
+@@ -1280,7 +1280,7 @@ The following setup can be done before any of the following examples:
+       command_args => [ qw( test/key.1.asc ) ],
+       handles      => $handles,
+     );
+-    
++
+     my @out = <$handles->stdout()>;
+     waitpid $pid, 0;
+ 
+@@ -1357,7 +1357,7 @@ under the same terms as Perl itself.
+ 
+ =head1 AUTHOR
+ 
+-GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.  
++GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
+ 
+ Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+ 
+
+From 610d90be4436bbaef6bcea9376a6086a4920d78c Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 19:52:58 -0400
+Subject: [PATCH 10/19] fix capitalization of GnuPG
+
+---
+ README                 | 2 +-
+ lib/GnuPG/Interface.pm | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index f457577..aa7c984 100644
+--- a/README
++++ b/README
+@@ -427,7 +427,7 @@ LICENSE
+     under the same terms as Perl itself.
+ 
+ AUTHOR
+-    GnuPg::Interface is currently maintained by Jesse Vincent
++    GnuPG::Interface is currently maintained by Jesse Vincent
+     <jesse@cpan.org>.
+ 
+     Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 19e8070..cf7138f 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -1357,7 +1357,7 @@ under the same terms as Perl itself.
+ 
+ =head1 AUTHOR
+ 
+-GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
++GnuPG::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
+ 
+ Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+ 
+
+From 77ec06ee45431898b75783f7971536d5c4792f61 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 19:57:10 -0400
+Subject: [PATCH 11/19] ommand_args should be command_args
+
+---
+ t/list_public_keys.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/list_public_keys.t b/t/list_public_keys.t
+index 7e563c1..a36a78b 100644
+--- a/t/list_public_keys.t
++++ b/t/list_public_keys.t
+@@ -38,7 +38,7 @@ TEST
+     reset_handles();
+ 
+     my $pid = $gnupg->list_public_keys( handles     => $handles,
+-                                        ommand_args => '0xF950DA9C'
++                                        command_args => '0xF950DA9C'
+                                       );
+     close $stdin;
+ 
+
+From be395372fe4835b2920b79bcb860beeb85a9a695 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:05:16 -0400
+Subject: [PATCH 12/19] use fingerprints as inputs during tests to demonstrate
+ explicit usage
+
+---
+ README                 | 6 +++---
+ lib/GnuPG/Interface.pm | 6 +++---
+ lib/GnuPG/Options.pm   | 2 +-
+ t/MyTestSpecific.pm    | 2 +-
+ t/encrypt.t            | 6 +++---
+ t/export_keys.t        | 4 ++--
+ t/get_public_keys.t    | 2 +-
+ t/get_secret_keys.t    | 2 +-
+ t/list_public_keys.t   | 4 ++--
+ t/list_secret_keys.t   | 4 ++--
+ t/list_sigs.t          | 4 ++--
+ t/sign_and_encrypt.t   | 2 +-
+ 12 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/README b/README
+index aa7c984..ed94ede 100644
+--- a/README
++++ b/README
+@@ -228,7 +228,7 @@ EXAMPLES
+ 
+       $gnupg->options->hash_init( armor    => 1,
+                                   recipients => [ 'ftobin@uiuc.edu',
+-                                                  '0xABCD1234' ],
++                                                  '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' ],
+                                   meta_interactive => 0 ,
+                                 );
+ 
+@@ -347,7 +347,7 @@ EXAMPLES
+       # and read from our input, because no input is needed!
+       my $handles = GnuPG::Handles->new();
+   
+-      my @ids = ( 'ftobin', '0xABCD1234' );
++      my @ids = ( 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' );
+ 
+       # this time we need to specify something for
+       # command_args because --list-public-keys takes
+@@ -358,7 +358,7 @@ EXAMPLES
+        waitpid $pid, 0;
+ 
+   Creating GnuPG::PublicKey Objects
+-      my @ids = [ 'ftobin', '0xABCD1234' ];
++      my @ids = [ 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' ];
+ 
+       my @keys = $gnupg->get_public_keys( @ids );
+ 
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index cf7138f..6eaef7d 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -1130,7 +1130,7 @@ The following setup can be done before any of the following examples:
+ 
+   $gnupg->options->hash_init( armor    => 1,
+                               recipients => [ 'ftobin@uiuc.edu',
+-                                              '0xABCD1234' ],
++                                              '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' ],
+                               meta_interactive => 0 ,
+                             );
+ 
+@@ -1253,7 +1253,7 @@ The following setup can be done before any of the following examples:
+   # and read from our input, because no input is needed!
+   my $handles = GnuPG::Handles->new();
+ 
+-  my @ids = ( 'ftobin', '0xABCD1234' );
++  my @ids = ( 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' );
+ 
+   # this time we need to specify something for
+   # command_args because --list-public-keys takes
+@@ -1265,7 +1265,7 @@ The following setup can be done before any of the following examples:
+ 
+ =head2 Creating GnuPG::PublicKey Objects
+ 
+-  my @ids = [ 'ftobin', '0xABCD1234' ];
++  my @ids = [ 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' ];
+ 
+   my @keys = $gnupg->get_public_keys( @ids );
+ 
+diff --git a/lib/GnuPG/Options.pm b/lib/GnuPG/Options.pm
+index 86261a0..7788662 100644
+--- a/lib/GnuPG/Options.pm
++++ b/lib/GnuPG/Options.pm
+@@ -198,7 +198,7 @@ GnuPG::Options - GnuPG options embodiment
+ 
+   # assuming $gnupg is a GnuPG::Interface object
+   $gnupg->options->armor( 1 );
+-  $gnupg->options->push_recipients( 'ftobin', '0xABCD1234' );
++  $gnupg->options->push_recipients( 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' );
+ 
+ =head1 DESCRIPTION
+ 
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index a309698..c8764cc 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -46,7 +46,7 @@ $gpg_is_modern = ($version[0] > 2 || ($version[0] == 2 && $version[1] >= 1));
+ $gnupg->options->hash_init( homedir              => 'test/gnupghome',
+                             armor                => 1,
+                             meta_interactive     => 0,
+-                            meta_signing_key_id  => '0xF950DA9C',
++                            meta_signing_key_id  => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+                             always_trust         => 1,
+                           );
+ 
+diff --git a/t/encrypt.t b/t/encrypt.t
+index 3183ac4..e6bdc08 100644
+--- a/t/encrypt.t
++++ b/t/encrypt.t
+@@ -27,7 +27,7 @@ TEST
+ 
+     $gnupg->options->clear_recipients();
+     $gnupg->options->clear_meta_recipients_keys();
+-    $gnupg->options->push_recipients( '0x2E854A6B' );
++    $gnupg->options->push_recipients( '0x7466B7E98C4CCB64C2CE738BADB99D9C2E854A6B' );
+ 
+     my $pid = $gnupg->encrypt( handles => $handles );
+ 
+@@ -43,7 +43,7 @@ TEST
+ {
+     reset_handles();
+ 
+-    my @keys = $gnupg->get_public_keys( '0xF950DA9C' );
++    my @keys = $gnupg->get_public_keys( '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+     $gnupg->options->clear_recipients();
+     $gnupg->options->clear_meta_recipients_keys();
+     $gnupg->options->push_meta_recipients_keys( @keys );
+@@ -64,7 +64,7 @@ TEST
+ 
+     $gnupg->options->clear_recipients();
+     $gnupg->options->clear_meta_recipients_keys();
+-    $gnupg->options->push_recipients( '0x2E854A6B' );
++    $gnupg->options->push_recipients( '0x7466B7E98C4CCB64C2CE738BADB99D9C2E854A6B' );
+ 
+     $handles->stdin( $texts{plain}->fh() );
+     $handles->options( 'stdin' )->{direct} = 1;
+diff --git a/t/export_keys.t b/t/export_keys.t
+index cf5c82b..5add064 100644
+--- a/t/export_keys.t
++++ b/t/export_keys.t
+@@ -15,7 +15,7 @@ TEST
+     reset_handles();
+ 
+     my $pid = $gnupg->export_keys( handles      => $handles,
+-                                   command_args => '0xF950DA9C' );
++                                   command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+     close $stdin;
+     waitpid $pid, 0;
+ 
+@@ -31,7 +31,7 @@ TEST
+     $handles->options( 'stdout' )->{direct} = 1;
+ 
+     my $pid = $gnupg->export_keys( handles            => $handles,
+-                                   command_args => '0xF950DA9C' );
++                                   command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+     waitpid $pid, 0;
+     return $CHILD_ERROR == 0;
+ };
+diff --git a/t/get_public_keys.t b/t/get_public_keys.t
+index 9e96f7d..7893625 100644
+--- a/t/get_public_keys.t
++++ b/t/get_public_keys.t
+@@ -19,7 +19,7 @@ TEST
+ {
+     reset_handles();
+ 
+-    my @returned_keys = $gnupg->get_public_keys_with_sigs( '0xF950DA9C' );
++    my @returned_keys = $gnupg->get_public_keys_with_sigs( '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+ 
+     return 0 unless @returned_keys == 1;
+ 
+diff --git a/t/get_secret_keys.t b/t/get_secret_keys.t
+index c798cce..a7f1348 100644
+--- a/t/get_secret_keys.t
++++ b/t/get_secret_keys.t
+@@ -18,7 +18,7 @@ TEST
+ {
+     reset_handles();
+ 
+-    my @returned_keys = $gnupg->get_secret_keys( '0xF950DA9C' );
++    my @returned_keys = $gnupg->get_secret_keys( '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+ 
+     return 0 unless @returned_keys == 1;
+ 
+diff --git a/t/list_public_keys.t b/t/list_public_keys.t
+index a36a78b..622b092 100644
+--- a/t/list_public_keys.t
++++ b/t/list_public_keys.t
+@@ -38,7 +38,7 @@ TEST
+     reset_handles();
+ 
+     my $pid = $gnupg->list_public_keys( handles     => $handles,
+-                                        command_args => '0xF950DA9C'
++                                        command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C'
+                                       );
+     close $stdin;
+ 
+@@ -64,7 +64,7 @@ TEST
+     $handles->options( 'stdout' )->{direct} = 1;
+ 
+     my $pid = $gnupg->list_public_keys( handles      => $handles,
+-                                        command_args => '0xF950DA9C',
++                                        command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+                                       );
+ 
+     waitpid $pid, 0;
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 51e3651..7040c38 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -55,7 +55,7 @@ TEST
+     reset_handles();
+ 
+     my $pid = $gnupg->list_secret_keys( handles      => $handles,
+-                                        command_args => '0xF950DA9C' );
++                                        command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+     close $stdin;
+ 
+     $outfile = 'test/secret-keys/2.out';
+@@ -80,7 +80,7 @@ TEST
+     $handles->options( 'stdout' )->{direct} = 1;
+ 
+     my $pid = $gnupg->list_secret_keys( handles      => $handles,
+-                                        command_args => '0xF950DA9C' );
++                                        command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C' );
+ 
+     waitpid $pid, 0;
+ 
+diff --git a/t/list_sigs.t b/t/list_sigs.t
+index 16cfa6a..1301fb2 100644
+--- a/t/list_sigs.t
++++ b/t/list_sigs.t
+@@ -36,7 +36,7 @@ TEST
+     reset_handles();
+ 
+     my $pid = $gnupg->list_sigs( handles      => $handles,
+-                                 command_args => '0xF950DA9C',
++                                 command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+                                );
+     close $stdin;
+ 
+@@ -60,7 +60,7 @@ TEST
+     $handles->options( 'stdout' )->{direct} = 1;
+ 
+     my $pid = $gnupg->list_sigs( handles      => $handles,
+-                                 command_args => '0xF950DA9C',
++                                 command_args => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+                                );
+ 
+     waitpid $pid, 0;
+diff --git a/t/sign_and_encrypt.t b/t/sign_and_encrypt.t
+index 5dc1c08..df0fc75 100644
+--- a/t/sign_and_encrypt.t
++++ b/t/sign_and_encrypt.t
+@@ -14,7 +14,7 @@ TEST
+ {
+     reset_handles();
+ 
+-    $gnupg->options->push_recipients( '0x2E854A6B' );
++    $gnupg->options->push_recipients( '0x7466B7E98C4CCB64C2CE738BADB99D9C2E854A6B' );
+     my $pid = $gnupg->sign_and_encrypt( handles => $handles );
+ 
+     print $stdin @{ $texts{plain}->data() };
+
+From 7fb7d5b6f0dd584902fbfbdb047bce10f58d2063 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:17:49 -0400
+Subject: [PATCH 13/19] move key files to generic names
+
+---
+ t/000_setup.t                         |   2 +-
+ test/{pubring.gpg => public_keys.pgp} | Bin
+ test/{secring.gpg => secret_keys.pgp} | Bin
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ rename test/{pubring.gpg => public_keys.pgp} (100%)
+ rename test/{secring.gpg => secret_keys.pgp} (100%)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index 7f7f7b0..a8e3042 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -19,7 +19,7 @@ TEST
+     copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
+     reset_handles();
+ 
+-    my $pid = $gnupg->import_keys(command_args => [ 'test/pubring.gpg', 'test/secring.gpg' ],
++    my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp' ],
+                                   options => [ 'batch'],
+                                   handles => $handles);
+     waitpid $pid, 0;
+diff --git a/test/pubring.gpg b/test/public_keys.pgp
+similarity index 100%
+rename from test/pubring.gpg
+rename to test/public_keys.pgp
+diff --git a/test/secring.gpg b/test/secret_keys.pgp
+similarity index 100%
+rename from test/secring.gpg
+rename to test/secret_keys.pgp
+
+From 46d9aa0e5b1a76b9730e22280d2347c99fddd8e5 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:25:48 -0400
+Subject: [PATCH 14/19] fix spelling: s/convience/convenience/
+
+---
+ README                 | 4 ++--
+ lib/GnuPG/Interface.pm | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/README b/README
+index ed94ede..a05ef9b 100644
+--- a/README
++++ b/README
+@@ -143,7 +143,7 @@ OBJECT METHODS
+         does not come into play. If the passphrase data member handle of the
+         handles object is not defined, but the the passphrase data member
+         handle of GnuPG::Interface object is, GnuPG::Interface will handle
+-        passing this information into GnuPG for the user as a convience.
++        passing this information into GnuPG for the user as a convenience.
+         Note that this will result in GnuPG::Interface storing the
+         passphrase in memory, instead of having it simply 'pass-through' to
+         GnuPG via a handle.
+@@ -271,7 +271,7 @@ EXAMPLES
+                                        );
+ 
+       # indicate our pasphrase through the
+-      # convience method
++      # convenience method
+       $gnupg->passphrase( $passphrase );
+ 
+       # this sets up the communication
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 6eaef7d..29205f0 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -1008,7 +1008,7 @@ and so this information is not generated and does not come into play.
+ If the B<passphrase> data member handle of the B<handles> object
+ is not defined, but the the B<passphrase> data member handle of GnuPG::Interface
+ object is, GnuPG::Interface will handle passing this information into GnuPG
+-for the user as a convience.  Note that this will result in
++for the user as a convenience.  Note that this will result in
+ GnuPG::Interface storing the passphrase in memory, instead of having
+ it simply 'pass-through' to GnuPG via a handle.
+ 
+@@ -1175,7 +1175,7 @@ The following setup can be done before any of the following examples:
+ 				   );
+ 
+   # indicate our pasphrase through the
+-  # convience method
++  # convenience method
+   $gnupg->passphrase( $passphrase );
+ 
+   # this sets up the communication
+
+From 1bb2bcb464b17b3a212eb535939d9098507e75a8 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:59:43 -0400
+Subject: [PATCH 15/19] added new secret key with different passphrase
+
+Adding a new secret key with a different passphrase should allow us to
+differentiate between passing the passphrase explicitly and relying on
+the agent + pinentry.
+---
+ t/000_setup.t                  |  2 +-
+ test/new_secret.pgp            | 58 ++++++++++++++++++++++++++++++++++
+ test/secret-keys/1.0.test      |  4 +++
+ test/secret-keys/1.modern.test |  5 +++
+ 4 files changed, 68 insertions(+), 1 deletion(-)
+ create mode 100644 test/new_secret.pgp
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index a8e3042..b183241 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -19,7 +19,7 @@ TEST
+     copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
+     reset_handles();
+ 
+-    my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp' ],
++    my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp', 'test/new_secret.pgp' ],
+                                   options => [ 'batch'],
+                                   handles => $handles);
+     waitpid $pid, 0;
+diff --git a/test/new_secret.pgp b/test/new_secret.pgp
+new file mode 100644
+index 0000000..5feb72c
+--- /dev/null
++++ b/test/new_secret.pgp
+@@ -0,0 +1,58 @@
++-----BEGIN PGP PRIVATE KEY BLOCK-----
++
++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
++=ftgB
++-----END PGP PRIVATE KEY BLOCK-----
+diff --git a/test/secret-keys/1.0.test b/test/secret-keys/1.0.test
+index 129d472..f8239a9 100644
+--- a/test/secret-keys/1.0.test
++++ b/test/secret-keys/1.0.test
+@@ -5,3 +5,7 @@ uid                  GnuPG test key (for testing purposes only)
+ uid                  Foo Bar (1)
+ ssb    768g/2E854A6B 2000-02-06
+ 
++sec   2048R/B6747DDC 2016-10-12
++uid                  GnuPG::Interface Test key <test@example.org>
++ssb   2048R/AE441D0F 2016-10-12
++
+diff --git a/test/secret-keys/1.modern.test b/test/secret-keys/1.modern.test
+index 3e46407..42b27a1 100644
+--- a/test/secret-keys/1.modern.test
++++ b/test/secret-keys/1.modern.test
+@@ -6,3 +6,8 @@ uid           [ unknown] GnuPG test key (for testing purposes only)
+ uid           [ unknown] Foo Bar (1)
+ ssb   elg768 2000-02-06 [E]
+ 
++sec   rsa2048 2016-10-12 [SC]
++      278F850AA702911F1318F0A61B913CE9B6747DDC
++uid           [ unknown] GnuPG::Interface Test key <test@example.org>
++ssb   rsa2048 2016-10-12 [E]
++
+
+From ceb287ce7162da41aca6e18a842fab45fc3bee9e Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 21:29:22 -0400
+Subject: [PATCH 16/19] Test use of gpg without explicit passphrase
+ (agent+pinentry)
+
+The modern GnuPG suite encourages the use of gpg-agent to control
+access to secret key material.  In this use case, we avoid setting an
+explicit passphrase in code, and rely on either a correctly-configured
+and primed gpg-agent or a dedicated pinentry program to supply the
+passphrase.
+
+This additional test verifies that the passphrase can be handled by
+the agent.  Note that the passphrase for this additional test key is
+*not* the default passphrase, so this test should fail in the event
+that gpg can't use the agent and the pinentry for this task.
+
+Unfortunately, this all assumes that we're using GnuPG "Modern".  I've
+noted concerns about writing forward- and backward-compatible bindings
+for GnuPG here:
+https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html
+---
+ README                 | 41 +++++++++++++++++++++++++++--------------
+ lib/GnuPG/Interface.pm | 26 +++++++++++++++++++++++++-
+ t/MyTestSpecific.pm    | 10 ++++++++--
+ t/decrypt.t            | 27 +++++++++++++++++++++++++++
+ test/encrypted.2.gpg   | 12 ++++++++++++
+ test/fake-pinentry.pl  |  2 +-
+ test/plain.2.txt       |  1 +
+ 7 files changed, 101 insertions(+), 18 deletions(-)
+ create mode 100644 test/encrypted.2.gpg
+ create mode 100644 test/plain.2.txt
+
+diff --git a/README b/README
+index a05ef9b..be06ef3 100644
+--- a/README
++++ b/README
+@@ -5,7 +5,7 @@ SYNOPSIS
+       # A simple example
+       use IO::Handle;
+       use GnuPG::Interface;
+-  
++
+       # setting up the situation
+       my $gnupg = GnuPG::Interface->new();
+       $gnupg->options->hash_init( armor   => 1,
+@@ -24,7 +24,7 @@ SYNOPSIS
+       # Now we'll go about encrypting with the options already set
+       my @plaintext = ( 'foobar' );
+       my $pid = $gnupg->encrypt( handles => $handles );
+-  
++
+       # Now we write to the input of GnuPG
+       print $input @plaintext;
+       close $input;
+@@ -140,13 +140,26 @@ OBJECT METHODS
+         standard error, standard output, or standard error. If the status or
+         logger handle is not defined, this channel of communication is never
+         established with GnuPG, and so this information is not generated and
+-        does not come into play. If the passphrase data member handle of the
+-        handles object is not defined, but the the passphrase data member
+-        handle of GnuPG::Interface object is, GnuPG::Interface will handle
+-        passing this information into GnuPG for the user as a convenience.
+-        Note that this will result in GnuPG::Interface storing the
+-        passphrase in memory, instead of having it simply 'pass-through' to
+-        GnuPG via a handle.
++        does not come into play.
++
++        If the passphrase data member handle of the handles object is not
++        defined, but the the passphrase data member handle of
++        GnuPG::Interface object is, GnuPG::Interface will handle passing
++        this information into GnuPG for the user as a convenience. Note that
++        this will result in GnuPG::Interface storing the passphrase in
++        memory, instead of having it simply 'pass-through' to GnuPG via a
++        handle.
++
++        If neither the passphrase data member of the GnuPG::Interface nor
++        the passphrase data member of the handles object is defined, then
++        GnuPG::Interface assumes that access and control over the secret key
++        will be handled by the running gpg-agent process. This represents
++        the simplest mode of operation with the GnuPG "modern" suite
++        (version 2.1 and later). It is also the preferred mode for tools
++        intended to be user-facing, since the user will be prompted directly
++        by gpg-agent for use of the secret key material. Note that for
++        programmatic use, this mode requires the gpg-agent and pinentry to
++        already be correctly configured.
+ 
+   Other Methods
+     get_public_keys( @search_strings )
+@@ -241,7 +254,7 @@ EXAMPLES
+ 
+       my $handles = GnuPG::Handles->new( stdin    => $input,
+                                          stdout   => $output );
+-   
++
+       # this sets up the communication
+       # Note that the recipients were specified earlier
+       # in the 'options' data member of the $gnupg object.
+@@ -315,7 +328,7 @@ EXAMPLES
+       # a file written to disk
+       # Make sure you "use IO::File" if you use this module!
+       my $cipher_file = IO::File->new( 'encrypted.gpg' );
+-   
++
+       # this sets up the communication
+       my $pid = $gnupg->decrypt( handles => $handles );
+ 
+@@ -346,7 +359,7 @@ EXAMPLES
+       # This time we'll just let GnuPG print to our own output
+       # and read from our input, because no input is needed!
+       my $handles = GnuPG::Handles->new();
+-  
++
+       my @ids = ( 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' );
+ 
+       # this time we need to specify something for
+@@ -354,7 +367,7 @@ EXAMPLES
+       # search ids as arguments
+       my $pid = $gnupg->list_public_keys( handles      => $handles,
+                                           command_args => [ @ids ] );
+-  
++
+        waitpid $pid, 0;
+ 
+   Creating GnuPG::PublicKey Objects
+@@ -372,7 +385,7 @@ EXAMPLES
+           command_args => [ qw( test/key.1.asc ) ],
+           handles      => $handles,
+         );
+-    
++
+         my @out = <$handles->stdout()>;
+         waitpid $pid, 0;
+ 
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 29205f0..5d8b0ec 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -106,6 +106,14 @@ sub fork_attach_exec( $% ) {
+     my ( $self, %args ) = @_;
+ 
+     my $handles = $args{handles} or croak 'no GnuPG::Handles passed';
++    my $use_loopback_pinentry = 0;
++
++    # WARNING: this assumes that we're using the "modern" GnuPG suite
++    # -- version 2.1.x or later.  It's not clear to me how we can
++    # safely and efficiently avoid this assumption (see
++    # https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html)
++    $use_loopback_pinentry = 1
++      if ($handles->passphrase());
+ 
+     # deprecation support
+     $args{commands} ||= $args{gnupg_commands};
+@@ -293,8 +301,12 @@ sub fork_attach_exec( $% ) {
+             $self->options->$option($fileno);
+         }
+ 
++        my @args = $self->options->get_args();
++        push @args, '--pinentry-mode', 'loopback'
++          if $use_loopback_pinentry;
++
+         my @command = (
+-            $self->call(), $self->options->get_args(),
++            $self->call(), @args,
+             @commands,     @command_args
+         );
+ 
+@@ -1005,6 +1017,7 @@ and standard error will be tied to the running program's standard error,
+ standard output, or standard error.  If the B<status> or B<logger> handle
+ is not defined, this channel of communication is never established with GnuPG,
+ and so this information is not generated and does not come into play.
++
+ If the B<passphrase> data member handle of the B<handles> object
+ is not defined, but the the B<passphrase> data member handle of GnuPG::Interface
+ object is, GnuPG::Interface will handle passing this information into GnuPG
+@@ -1012,6 +1025,17 @@ for the user as a convenience.  Note that this will result in
+ GnuPG::Interface storing the passphrase in memory, instead of having
+ it simply 'pass-through' to GnuPG via a handle.
+ 
++If neither the B<passphrase> data member of the GnuPG::Interface nor
++the B<passphrase> data member of the B<handles> object is defined,
++then GnuPG::Interface assumes that access and control over the secret
++key will be handled by the running gpg-agent process.  This represents
++the simplest mode of operation with the GnuPG "modern" suite (version
++2.1 and later).  It is also the preferred mode for tools intended to
++be user-facing, since the user will be prompted directly by gpg-agent
++for use of the secret key material.  Note that for programmatic use,
++this mode requires the gpg-agent and pinentry to already be correctly
++configured.
++
+ =back
+ 
+ =head2 Other Methods
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index c8764cc..e513c25 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -55,9 +55,15 @@ struct( Text => { fn => "\$", fh => "\$", data => "\$" } );
+ $texts{plain} = Text->new();
+ $texts{plain}->fn( 'test/plain.1.txt' );
+ 
++$texts{alt_plain} = Text->new();
++$texts{alt_plain}->fn( 'test/plain.2.txt' );
++
+ $texts{encrypted} = Text->new();
+ $texts{encrypted}->fn( 'test/encrypted.1.gpg' );
+ 
++$texts{alt_encrypted} = Text->new();
++$texts{alt_encrypted}->fn( 'test/encrypted.2.gpg' );
++
+ $texts{signed} = Text->new();
+ $texts{signed}->fn( 'test/signed.1.asc' );
+ 
+@@ -68,7 +74,7 @@ $texts{temp} = Text->new();
+ $texts{temp}->fn( 'test/temp' );
+ 
+ 
+-foreach my $name ( qw( plain encrypted signed key ) )
++foreach my $name ( qw( plain alt_plain encrypted alt_encrypted signed key ) )
+ {
+     my $entry = $texts{$name};
+     my $filename = $entry->fn();
+@@ -90,7 +96,7 @@ sub reset_handles
+         stderr  => $stderr
+       );
+ 
+-    foreach my $name ( qw( plain encrypted signed key ) )
++    foreach my $name ( qw( plain alt_plain encrypted alt_encrypted signed key ) )
+     {
+         my $entry = $texts{$name};
+         my $filename = $entry->fn();
+diff --git a/t/decrypt.t b/t/decrypt.t
+index b2639ed..ee41448 100644
+--- a/t/decrypt.t
++++ b/t/decrypt.t
+@@ -58,3 +58,30 @@ TEST
+ {
+     return compare( $texts{plain}->fn(), $texts{temp}->fn() ) == 0;
+ };
++
++
++# test without default_passphrase (that is, by using the agent)
++TEST
++{
++    reset_handles();
++
++    $handles->stdin( $texts{alt_encrypted}->fh() );
++    $handles->options( 'stdin' )->{direct} = 1;
++
++    $handles->stdout( $texts{temp}->fh() );
++    $handles->options( 'stdout' )->{direct} = 1;
++
++    $gnupg->clear_passphrase();
++
++    my $pid = $gnupg->decrypt( handles => $handles );
++
++    waitpid $pid, 0;
++
++    return $CHILD_ERROR == 0;
++};
++
++
++TEST
++{
++    return compare( $texts{alt_plain}->fn(), $texts{temp}->fn() ) == 0;
++};
+diff --git a/test/encrypted.2.gpg b/test/encrypted.2.gpg
+new file mode 100644
+index 0000000..105cbb3
+--- /dev/null
++++ b/test/encrypted.2.gpg
+@@ -0,0 +1,12 @@
++-----BEGIN PGP MESSAGE-----
++
++hQEMAw3NS2KuRB0PAQgAuCMQO6blPRIJZib+kDa51gac+BYPl8caXYTLqIHtiz2/
++YRVqePJON4lNAqT6qUksIzQHtejFO6tb1SLqgX9Ti+fKAMLrQw9VGOYaJFoRrTJs
+++X33S4GHVVikRTu0dydAsekbfPSc2nRmTFUlSEV3psgAmg9xy8KA6cZroK9Xfcuh
++xW7KLE0hLP+2NZ7zNmJMdu6LDGzvlQsnm1UeElXK8XdMGf8kA3R+GgeeOnR/oEQc
++Uep77k/fLc+UV4fp9Dk1OBeg3Ko/irSaefk4mU7F4HmS8jIERHRvXBTiur1Zx8Nx
++9U3fcQuc+P9+JC89iS4PJPF1Hr0MlezAghZYJrhOrtJIAe5Uaft5KMGRfy0VQnAs
++MHqGnGtzzVWK6GK83ibgG4tTfPEHHIgNFsJf3rM4cWklUmCS9TeeDJJZfhnRA6+/
++X82e6OI7QNbO
++=DlGE
++-----END PGP MESSAGE-----
+diff --git a/test/fake-pinentry.pl b/test/fake-pinentry.pl
+index 12d3611..40b8b08 100755
+--- a/test/fake-pinentry.pl
++++ b/test/fake-pinentry.pl
+@@ -21,7 +21,7 @@
+   chomp;
+   next if (/^$/);
+   next if (/^#/);
+-  print ("D test\n") if (/^getpin/i);
++  print ("D supercalifragilisticexpialidocious\n") if (/^getpin/i);
+   print "OK\n";
+   exit if (/^bye/i);
+ }
+diff --git a/test/plain.2.txt b/test/plain.2.txt
+new file mode 100644
+index 0000000..da5a1d5
+--- /dev/null
++++ b/test/plain.2.txt
+@@ -0,0 +1 @@
++test message
+
+From 9d36d92ac2a9a20fd1340a6d7957d684cc0a9cee Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Thu, 25 May 2017 16:07:45 -0400
+Subject: [PATCH 17/19] Kill any GnuPG agent before and after the test suite.
+
+This helps to ensure that the test suite daemon is started fresh at
+every test suite run.  And it also avoids leaving a daemon running
+after the test suite, assuming the test suite manages to reach the
+end.
+
+This is considered a reasonable practice by upstream.
+---
+ t/000_setup.t   | 3 +++
+ t/zzz_cleanup.t | 2 ++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index b183241..4dc4329 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -17,6 +17,9 @@ TEST
+     $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
+     $agentconf->close();
+     copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    # reset the state of any long-lived gpg-agent, ignoring errors:
++    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
++
+     reset_handles();
+ 
+     my $pid = $gnupg->import_keys(command_args => [ 'test/public_keys.pgp', 'test/secret_keys.pgp', 'test/new_secret.pgp' ],
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+index 5c03a72..eea3a48 100644
+--- a/t/zzz_cleanup.t
++++ b/t/zzz_cleanup.t
+@@ -12,6 +12,8 @@ use File::Path qw (remove_tree);
+ TEST
+ {
+     my $err = [];
++    # kill off any long-lived gpg-agent, ignoring errors:
++    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
+     remove_tree('test/gnupghome', {error => \$err});
+     return ! @$err;
+ };
+
+From 9065e53936cf6eeca05466c68e30f67d04f0b665 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 26 May 2017 09:51:40 -0400
+Subject: [PATCH 18/19] Use a short temporary homedir during the test suite
+
+This avoids problems with the length of the path to the homedir as
+compared to the size limits of sockaddr_un.sun_path, particularly on
+systems where /run/user/$(id -u) is not present or available (such as
+many minimalist build environments).
+---
+ t/000_setup.t        |  9 +++++----
+ t/MyTestSpecific.pm  | 18 +++++++++++++++++-
+ t/list_secret_keys.t |  3 ++-
+ t/zzz_cleanup.t      |  6 ++++--
+ 4 files changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index 4dc4329..82d7005 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -12,13 +12,14 @@ use File::Copy;
+ 
+ TEST
+ {
+-    make_path('test/gnupghome', { mode => 0700 });
+-    my $agentconf = IO::File->new( "> test/gnupghome/gpg-agent.conf" );
++    my $homedir = $gnupg->options->homedir();
++    make_path($homedir, { mode => 0700 });
++    my $agentconf = IO::File->new( "> " . $homedir . "/gpg-agent.conf" );
+     $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
+     $agentconf->close();
+-    copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    copy('test/gpg.conf', $homedir . '/gpg.conf');
+     # reset the state of any long-lived gpg-agent, ignoring errors:
+-    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
++    system('gpgconf', '--homedir', $homedir, '--quiet', '--kill', 'gpg-agent');
+ 
+     reset_handles();
+ 
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index e513c25..809d55c 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -22,6 +22,7 @@ use IO::Seekable;
+ use File::Compare;
+ use Exporter;
+ use Class::Struct;
++use File::Temp qw (tempdir);
+ 
+ use GnuPG::Interface;
+ use GnuPG::Handles;
+@@ -40,10 +41,25 @@ use vars qw( @ISA           @EXPORT
+ 
+ $gnupg = GnuPG::Interface->new( passphrase => 'test' );
+ 
++
++my $homedir;
++if (-f "test/gnupghome") {
++  my $record = IO::File->new( "< test/gnupghome" );
++  $homedir = <$record>;
++  $record->close();
++} else {
++  $homedir = tempdir( DIR => '/tmp');
++  my $record = IO::File->new( "> test/gnupghome" );
++  $record->write($homedir);
++  $record->close();
++}
++
+ my @version = split('\.', $gnupg->version());
+ $gpg_is_modern = ($version[0] > 2 || ($version[0] == 2 && $version[1] >= 1));
+ 
+-$gnupg->options->hash_init( homedir              => 'test/gnupghome',
++
++
++$gnupg->options->hash_init( homedir              => $homedir,
+                             armor                => 1,
+                             meta_interactive     => 0,
+                             meta_signing_key_id  => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 7040c38..d1e3f30 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -23,8 +23,9 @@ TEST
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
++    my $modern_pubring_line = $gnupg->options->homedir() . "/pubring.kbx\n";
+     while (<$stdout>) {
+-      if ($gpg_is_modern && /^\/.*\/test\/gnupghome\/pubring.kbx$/) {
++      if ($gpg_is_modern && ($_ eq $modern_pubring_line)) {
+         $out->print("test/gnupghome/pubring.kbx\n");
+       } elsif ($gpg_is_modern && /^--*$/) {
+         $out->print("--------------------------\n");
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+index eea3a48..c3ec16f 100644
+--- a/t/zzz_cleanup.t
++++ b/t/zzz_cleanup.t
+@@ -11,9 +11,11 @@ use File::Path qw (remove_tree);
+ # this is actually no test, just cleanup.
+ TEST
+ {
++    my $homedir = $gnupg->options->homedir();
+     my $err = [];
+     # kill off any long-lived gpg-agent, ignoring errors:
+-    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
+-    remove_tree('test/gnupghome', {error => \$err});
++    system('gpgconf', '--homedir', $homedir, '--quiet', '--kill', 'gpg-agent');
++    remove_tree($homedir, {error => \$err});
++    unlink('test/gnupghome');
+     return ! @$err;
+ };
+
+From a444d57aaa33ab34a8fa14f6544118b3493d157a Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 26 May 2017 18:15:24 -0400
+Subject: [PATCH 19/19] Make things work with gpg1 (assuming plain 'gpg' is
+ modern)
+
+ * avoid sending --pinentry-mode=loopback if gpg is invoked as gpg1
+ * fix up t/list_secret_keys to account for the varied output
+ * t/decrypt.t still fails two agent-only tests, but presumably folks
+   who use gpg1 are not expecting to use the agent.
+---
+ lib/GnuPG/Interface.pm | 5 ++++-
+ t/list_secret_keys.t   | 9 +++++----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 5d8b0ec..f80ead5 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -112,8 +112,11 @@ sub fork_attach_exec( $% ) {
+     # -- version 2.1.x or later.  It's not clear to me how we can
+     # safely and efficiently avoid this assumption (see
+     # https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html)
++    #
++    # as a (brittle and incomplete) cleanup, we will avoid trying to
++    # send pinentry-loopback if the program is invoked as "gpg1"
+     $use_loopback_pinentry = 1
+-      if ($handles->passphrase());
++      if ($handles->passphrase() && ! ($self->call =~ m/gpg1$/));
+ 
+     # deprecation support
+     $args{commands} ||= $args{gnupg_commands};
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index d1e3f30..8e3c911 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -23,11 +23,12 @@ TEST
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
+-    my $modern_pubring_line = $gnupg->options->homedir() . "/pubring.kbx\n";
++    my $seckey_file = $gpg_is_modern ? 'pubring.kbx' : 'secring.gpg';
++    my $pubring_line = $gnupg->options->homedir() . '/' . $seckey_file . "\n";
+     while (<$stdout>) {
+-      if ($gpg_is_modern && ($_ eq $modern_pubring_line)) {
+-        $out->print("test/gnupghome/pubring.kbx\n");
+-      } elsif ($gpg_is_modern && /^--*$/) {
++      if ($_ eq $pubring_line) {
++        $out->print('test/gnupghome/'.$seckey_file."\n");
++      } elsif (/^--*$/) {
+         $out->print("--------------------------\n");
+       } else {
+         $out->print( $_ );

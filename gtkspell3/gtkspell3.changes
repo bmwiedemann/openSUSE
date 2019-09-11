@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Sat Nov 17 17:38:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.0.10:
+  + Port to enchant-2.
+  + Updated translations.
+- Replace pkgconfig(enchant) with pkgconfig(enchant-2) following
+  upstreams port.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:00 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat May 20 06:14:12 UTC 2017 - avvissu@yandex.by
+
+- Add pkgconfig(vapigen) BuildRequires and pass --enable-vala to
+  configure call: Build vala bindings.
+
+-------------------------------------------------------------------
+Sat Nov  5 16:25:50 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 3.0.9:
+  + Add gtk_spell_checker_add_to_dictionary.
+  + Add gtk_spell_checker_ignore_word.
+  + Fix possible use-after-free in
+    gtk_spell_checker_decode_language_code.
+- Change source compression to tar.xz.
+
+-------------------------------------------------------------------
+Thu May 19 04:22:04 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20.2  Fate#318572
+
+-------------------------------------------------------------------
+Tue May  3 19:30:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.0.8:
+  + Fix cases where check_word is called on an empty range.
+  + Add gtk_spell_checker_check_word.
+  + Add gtk_spell_checker_get_suggestions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 13 11:02:31 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Sep 22 15:57:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.0.6:
+  + Fix badly merged translations.
+  + Also recognize U+2019 as apostrophe.
+  + Updated translations.
+- Changes from version 3.0.5:
+  + Fix incorrect handling of single quotes.
+  + Buildsystem cleanups and tweaks.
+  + Updated translations.
+- Changes from version 3.0.4:
+  + Make decode-language-codes more robust.
+  + Don't use deprecated symbols when compiled against gtk3 >= 3.9.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 24 20:38:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.0.3:
+  + Add decode-language-codes property (to show more friendly
+    dictionary names in the context menu), implemented using
+    iso-codes.
+  + Add gtk_spell_checker_decode_language_code method.
+  + Use g_win32_get_package_installation_directory_of_module on
+    win32.
+  + Add -no-undefined when building on for win32.
+  + Use $(foo) instead of @foo@ in Makefiles.
+  + Fix GTK_SPELL_CFLAGS -> GTK_SPELL3_CFLAGS typo.
+  + Updated translations.
+- Changes from version 3.0.2:
+  + Added vala bindings.
+  + Added some documentation on language bindings.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires: needed in
+  order to get the typelib language bindings.
+- Split out typelib-1_0-GtkSpell-3_0 subpackage.
+
+-------------------------------------------------------------------
+Sun Mar  3 19:57:08 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.0.1:
+  + Actually declare GtkSpellChecker as a G_TYPE_INITIALLY_UNOWNED.
+  + Really silently exit if detach is called when not attached.
+  + Add gtk_spell_error_get_type.
+  + Use PIMPL idiom for private members of GtkSpellChecker.
+  + Update license file with correct FSF address, add license
+    headers to files.
+- Changes from version 3.0.0:
+  + New major version not API or ABI compatible with gtkspell 2.x.
+  + Add GTK+ 3 Support (required by default).
+  + A GTK+ 2 compatible version can be built using --enable-gtk2.
+  + Update to be GObject based.
+  + Add introspection support.
+  + Add "language-changed" signal.
+  + Add gtk_spell_checker_get_language function.
+  + Updated translations.
+- Rename libgtkspell-3-0 into libgtkspell3-3-0, following upstream.
+- gtkspell3-devel now provides pkgconfig(gtkspell3-3.0), so some
+  fallout in other packages are to be expexted.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:28 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Tue Oct 11 07:24:43 UTC 2011 - vuntz@opensuse.org
+
+- Pass %{?no_lang_C} to %find_lang to avoid packaging any potential
+  english documentation in lang subpackage.
+
+-------------------------------------------------------------------
+Mon Sep 26 09:55:21 UTC 2011 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory.
+
+-------------------------------------------------------------------
+Sun Aug 28 14:46:15 UTC 2011 - gankov@opensuse.org
+
+- Initial package for gtkspell3, the GTK+ 3 version of gtkspell.
+- Note that the tarball is actually a pre-release.
+

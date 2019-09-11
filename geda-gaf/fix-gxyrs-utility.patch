@@ -1,0 +1,24 @@
+From 9b3bf135f2ceb372e3f04c6a70ca8e68bb92112f Mon Sep 17 00:00:00 2001
+From: Roland Lutz <rlutz@hedmen.org>
+Date: Sun, 5 Mar 2017 17:34:52 +0100
+Subject: [PATCH] Fix `gxyrs' utility
+
+---
+ utils/gxyrs/gxyrs.pl | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/utils/gxyrs/gxyrs.pl b/utils/gxyrs/gxyrs.pl
+index 3b7f21d92..5957f055e 100644
+--- a/utils/gxyrs/gxyrs.pl
++++ b/utils/gxyrs/gxyrs.pl
+@@ -321,6 +321,10 @@ sub usage {
+ 	usage();
+     }
+     
++    if (defined $adjust_file && substr($adjust_file, 0, 1) ne "/") {
++	$adjust_file = "./" . $adjust_file;
++    }
++
+ 
+     if ($file_in !~ '^-$') {
+ 	open(FILE_IN, $file_in) || die ("Can't open input file $file_in: $!");

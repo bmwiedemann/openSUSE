@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+Mon Apr  8 14:04:49 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - Switch to stestr
+  - When shortening span-ids, check if they're already short
+  - Do not insert osprofiler filter into Neutron api-paste pipeline
+  - Change python3.5 job to python3.7 job on Stein+
+  - import zuul job settings from project-config
+  - [devstack] Add support for elasticsearch backend
+  - Change openstack-dev to openstack-discuss
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Make tracing of SQL statements configurable in DevStack plugin
+  - add lib-forward-testing-python3 test job
+  - build universal wheels
+  - Reload keystone to apply osprofiler config
+  - Allow test path to be overridden
+  - Add sqlalchemy collector
+  - Configure Jaeger collector in DevStack
+  - add password for connecting redis-sentinel
+  - Add support for mongodb backend in devstack plugin
+  - In DevStack install Redis client library via pip, not as system package
+  - Use $STACK_USER variable in install_jaeger function
+  - Change http to https in reference link
+  - In case of an error, always add message
+  - Use templates for cover and lower-constraints
+- remove 0001-Add-sqlalchemy-collector.patch and 0001-Don-t-fail-if-sqlalchemy-driver-fails-to-initialize.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 09:50:53 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add 0001-Add-sqlalchemy-collector.patch and
+  0001-Don-t-fail-if-sqlalchemy-driver-fails-to-initialize.patch
+  Backport of the sqlalchemy collector driver to store traces
+  in a SQL database
+
+-------------------------------------------------------------------
+Mon Sep  3 09:47:07 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Check profiler instance before initialize
+  - Put 'db' parameter back and provide a deprecation warning before remove
+  - Update reno for stable/queens
+  - opts: Fix invalid rST formatting
+  - Unify and fix `list_traces` function
+  - Cleanup test-requirements
+  - Add oslo.serialization into requirements
+  - Zuul: Remove project name
+  - Add release note link in README
+  - Add minimum version and fix dulwich issue
+  - Remove Ceilometer support
+  - Filter traces that contain error/exception
+  - Remove lower bound from requirements
+  - Allow user to specify password for Redis connection
+  - Update documentation & usage for redis driver
+  - Trivial: Update pypi url to new url
+  - Fix typo
+  - OSprofiler with Jaeger Tracing as backend
+  - Add lower-constraints job
+  - set default python to python3
+  - fix tox python3 overrides
+  - Make profiler.clean() public method
+  - Initialize osprofiler in Nova Cell configs
+  - update sphinx-doc links
+  - Add initial 'trace list' command
+
+-------------------------------------------------------------------
+Fri Feb 23 13:30:57 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.15.2
+  - Update .gitreview for stable/queens
+  - Check profiler instance before initialize
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 30 15:15:33 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.15.1
+  - Add kwargs to WsgiMiddleware __init__
+  - Add functional test for Redis driver
+  - Add Zuul job for functional testing
+  - Remove setting of version/release from releasenotes
+  - Make collector configurable in DevStack plugin
+  - Add filter for OSprofiler html output
+  - Update the invalid doc links to the right ones in osprofiler docs
+
+-------------------------------------------------------------------
+Mon Jan 15 12:04:06 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.14.0
+  - Remove unused parameters from Profiler class
+  - Make dependency on oslo.messaging runtime only
+  - Update reno for stable/pike
+  - Add loading local static files option of template.html
+  - Do not require OpenStack authentication to run osprofiler CLI
+  - Improve unit test coverage
+  - Make test_notifier independent of test case execution order
+  - Remove dependency on oslo.log library
+  - Extend messaging driver to support reporting
+  - Handle and report SQLAlchemy errors
+  - Add function/sql results to trace info
+
+-------------------------------------------------------------------
+Mon Aug  7 08:36:49 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.11.0
+  - devstack: make option hmac_keys configurable
+  - Add functional test for notifier backend
+  - Add Jaeger to list of similar projects
+  - Highlight last trace for OSprofiler html output
+  - Upgrade libraries, add highlight for JSON data
+  - doc: Fix formatting
+  - Switch to "topics" keyword for messaging driver
+  - Python 3.4 support is removed
+  - Fix mistake in split meta string
+  - Update reno for stable/ocata
+  - Expose connection_string parameter into DevStack plugin
+  - Add magnum to devstack config
+  - Fix error message for invalid trace
+  - rearrange existing documentation to fit the new standard layout
+  - Move implemeted specs to implemented directory
+  - Add zun to devstack config
+  - Update .gitignore
+  - Update URLs in documents according to document migration
+  - Revert "Change list_opts to dictionary style"
+  - Change list_opts to dictionary style
+  - Improve error reporting for Ceilometer driver
+  - Enable warning-is-error in doc build
+  - Replace oslo.messaging.get_transport with get_notification_transport
+  - Change some bindings to one-time bindings
+  - devstack: use project conf file env variables
+  - Increase angular digest iteration limit
+  - Remove extra white spaces in json output
+  - Cleanup code of DevStack plugin
+  - Remove unused imports
+  - Fix enabling order specify in README.rst
+  - [Fix gate]Update test requirement
+  - Switch from oslosphinx to openstackdocstheme
+  - fix an outdated link for zipkin
+
+-------------------------------------------------------------------
+Mon Feb 13 08:44:13 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.5.0:
+  - Add py35 tox virtualenv
+  - Fix a doc typo
+  - Use an env variable for connection string default
+  - Show team and repo badges on README
+  - Fix import order
+  - Add Log Insight driver
+  - Add Elasticsearch driver
+  - Update dependencies' version from project requirements
+  - Add a redis driver
+  - Trivial: Remove vim header from source files
+  - Add exception to trace point details
+  - Add reno for release notes management
+  - Visualize trace output as graph
+  - Update documentation to the latest state
+  - Add AUTHORS and ChangeLog to .gitignore
+  - Replace six.iteritems() with .items()
+  - Organize unit tests under tests/unit folder
+  - Move hacking checks outside tests
+  - Error out for invalid trace ID
+  - Use method constant_time_compare from oslo.utils
+  - [doc]Add description for multi-backend URI
+  - Update devstack plugin readme to enable Panko
+  - Pretty print json output
+  - Heat and Cinder now use new style conf
+  - Use oslo_utils.uuidutils.is_uuid_like
+  - Update homepage with developer documentation page
+  - Replace logging with oslo_log
+  - Pass oslo.messaging kwargs only for "messaging://"
+  - Add .idea folder to .gitignore
+  - Use uuidutils instead of uuid.uuid4()
+  - Enable devstack to configure OSProfiler for Senlin project
+  - Fix syntax in JS, JSON indent with 4 spaces
+  - Re-format html template
+  - Remove old notifiers
+  - Fix the issue that ChangeLog not found when building docs
+  - Update the driver path in th doc
+  - Remove print statement
+
+-------------------------------------------------------------------
+Tue Aug 30 15:22:08 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.4.0
+  * Remove discover from test-requirements
+  * Don't set html_last_updated_fmt without git
+  * Add exception type to stop trace info
+  * OSprofiler initialization method
+  * Fix title of index page
+  * Add Ceilometer driver
+  * Expose osprofiler middleware as entrypoint
+  * Add MongoDB driver
+  * Improve unit test coverage
+  * Add connection string usage to osprofiler-cli
+  * Add tests for mongodb driver
+  * doc: Log warning when can't get informaiton from git
+  * Fix typos on spec directory
+  * Fix typo: 'Olso' to 'Oslo'
+  * Add backward compatible drivers structure
+  * Add overall profiler stats by operation
+
+-------------------------------------------------------------------
+Mon Aug  1 18:56:59 UTC 2016 - tbechtold@suse.com
+
+- Add _service and switch to upstream spec file
+
+-------------------------------------------------------------------
+Wed Apr 27 11:48:12 UTC 2016 - mmnelemane@suse.com
+
+- Upgraded to version 1.3.0
+  * Add hepler to trace sessions
+  * Add an error tip when trace_id is not found
+  * Add a similar link with reference to similar projects/libraries
+  * Continue work on standardizing osprofiler docs
+  * Remove dead/broken link to example
+  * Updates to doc conf.py to look the same as other projects
+  * Clean thread local profiler object after usage
+  * Avoid tracing class and static methods
+  * Avoid multiple tracing when applying meta or class decorator
+  * Remove outdated version
+  * Dont claim copyright for future years
+  * Use pkg_resources to get version
+  * Enable bandit in gate
+  * Fallback if git is absent
+  * It's unnecessary set deprecate group for option 'enabled'
+  * Add CONTRIBUTING.rst
+
+-------------------------------------------------------------------
+Sun Feb 28 13:12:06 UTC 2016 - dmueller@suse.com
+
+- update to 1.2.0:
+  * Remove flake8 ignore list in tox.ini
+  * run py34 tests before py27 to work around testr bug
+  * stop making a copy of options discovered by config generator
+  * Make class detection more accurate
+  * Disable staticmethods tracing
+  * Add fix for static and class methods in @trace_cls
+  * Expose X-Trace-* constants
+  * Add raw Ceilometer events support to DevStack plugin
+  * Use raw data storage for events to collect more info
+  * Use oslo.utils reflection and avoid refinding decorated name
+  * Move osprofiler tests into osprofiler
+  * Consolidate osprofiler options
+  * Remove argparse from requirements
+  * Add py34 to tox env list
+  * Make profiler timestamp json.dumps friendly
+  * Replace deprecated library function os.popen() with subprocess
+  * Add DevStack plugin
+  * Remove Py33 support
+  * Make it possible to specify file path as a source for trace
+  * Remove support for py26
+  * Improve HTML reports performance
+  * Fix TracedMeta class
+  * Fix a couple of typos in doc strings
+  * Fix Ceilometer parser to use events
+  * remove python 2.6 trove classifier
+  * Add TracedMeta class
+  * Update requirements
+  * Deprecated tox -downloadcache option removed
+  * Fix enable/disable compatibility
+  * Add hacking rules & fix hacking issues
+
+-------------------------------------------------------------------
+Tue Nov 17 14:33:11 UTC 2015 - bwiedemann@suse.com
+
+- update to 0.3.1
+  * Make api-paste.ini config optional
+  * Fix minor typos in the multi-backend specification
+  * Spec: Integration Testing
+  * Spec: Better DevStack Integration
+  * Spec: Multi Backend support
+  * Spec: Optional options in api-paste.ini
+  * Add specs base structure
+  * Update .gitreview for new namespace
+  * Fix date parsing when there's not milliseconds in the date
+  * Various cleanups
+  * Remove version from setup.cfg
+  * Stop using intersphinx
+  * Rename doc environment to docs
+  * Imporve generated trace html
+  * Adding a hits to notice operator when trace not found
+
+-------------------------------------------------------------------
+Wed Aug 20 06:52:43 UTC 2014 - tbechtold@suse.com
+
+- Initial version
+

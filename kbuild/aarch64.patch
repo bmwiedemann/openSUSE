@@ -1,0 +1,54 @@
+Index: kbuild-0.1.9998svn3110/kBuild/env.sh
+===================================================================
+--- kbuild-0.1.9998svn3110.orig/kBuild/env.sh
++++ kbuild-0.1.9998svn3110/kBuild/env.sh
+@@ -395,6 +395,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
+         sparc64|sparcv9)
+             KBUILD_HOST_ARCH='sparc64'
+             ;;
++        aarch64)
++            KBUILD_HOST_ARCH='aarch64'
++            ;;
+ 
+         *)  echo "$0: unknown cpu/arch - $KBUILD_HOST_ARCH" 1>&${ERR_REDIR}
+             sleep 1
+Index: kbuild-0.1.9998svn3110/kBuild/header.kmk
+===================================================================
+--- kbuild-0.1.9998svn3110.orig/kBuild/header.kmk
++++ kbuild-0.1.9998svn3110/kBuild/header.kmk
+@@ -197,8 +197,8 @@ KBUILD_BLD_TYPES := release profile debu
+ # build types. (PORTME)
+ #
+ KBUILD_OSES      := darwin dos dragonfly freebsd gnuhurd gnukfbsd gnuknbsd haiku l4 linux netbsd nt openbsd os2 solaris win os-agnostic
+-KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k ppc64le mips32 mips64 ppc32 ppc64 s390 s390x sh32 sh64 sparc32 sparc64
+-KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 ppc64le mips64 ppc64 s390x sh64 sparc64
++KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k ppc64le mips32 mips64 ppc32 ppc64 s390 s390x aarch64 sh32 sh64 sparc32 sparc64
++KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 ppc64le mips64 ppc64 s390x aarch64 sh64 sparc64
+ KBUILD_ARCHES_32 := x86 arm32 hppa32 m68k mips32 ppc32 s390 sh32 sparc32
+ 
+ 
+Index: kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
+===================================================================
+--- kbuild-0.1.9998svn3110.orig/src/lib/kStuff/include/k/kDefs.h
++++ kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
+@@ -160,6 +160,8 @@
+ #define K_ARCH_ARM_64           ( 5 | K_ARCH_BIT_64 | K_ARCH_END_BI)
+ /** Motorola 68000 (32-bit). */
+ #define K_ARCH_M68K             ( 6 | K_ARCH_BIT_32 | K_ARCH_END_BIG)
++/** 64-bit AARCH. */
++#define K_ARCH_AARCH_64           ( 8 | K_ARCH_BIT_64 | K_ARCH_END_LITTLE)
+ /** 32-bit MIPS. */
+ #define K_ARCH_MIPS_32          ( 7 | K_ARCH_BIT_32 | K_ARCH_END_BI)
+ /** 64-bit MIPS. */
+@@ -206,8 +208,10 @@
+ #  define K_ARCH    K_ARCH_ALPHA
+ # elif defined(__arm__) || defined(__arm32__)
+ #  define K_ARCH    K_ARCH_ARM_32
+-# elif defined(__aarch64__) || defined(__arm64__)
++# elif defined(__arm64__)
+ #  define K_ARCH    K_ARCH_ARM_64
++# elif defined(__aarch64__)
++#  define K_ARCH    K_ARCH_AARCH_64
+ # elif defined(__hppa__) && defined(__LP64__)
+ #  define K_ARCH    K_ARCH_PARISC_64
+ # elif defined(__hppa__)

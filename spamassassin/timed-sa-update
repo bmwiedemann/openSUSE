@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#
+# paranoia settings
+#
+umask 022
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+if [ -e /etc/sysconfig/spamd ]
+then
+	. /etc/sysconfig/spamd
+fi
+
+if [ "$SPAM_SA_UPDATE" = "yes" ]
+then
+	/usr/bin/sa-update &> /dev/null
+	result=$?
+
+        if [ "$SPAM_SA_COMPILE" = "yes" -a $result = 0 ] ; then
+                /usr/bin/sa-compile &> /dev/null
+        fi
+
+        if [ "$SPAM_SPAMD_RESTART" = "yes" -a $result = 0 ] ; then
+                /sbin/service spamd restart &> /dev/null
+        fi
+
+        if [ "$SPAM_AMAVISD_RESTART" = "yes" -a $result = 0 ] ; then
+                /sbin/service amavis restart &> /dev/null
+        fi
+
+        if [ $result = 2 ] ; then
+               echo "sa-update lint check failed" | \
+                     logger -t suse.cron-sa-update
+        fi
+
+        if [ $result -ge 3 ] ; then
+                echo "sa-update failed, exitcode $result" | \
+                     logger -t suse.cron-sa-update
+        fi
+fi
+exit 0

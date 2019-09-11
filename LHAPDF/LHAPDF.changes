@@ -1,0 +1,273 @@
+-------------------------------------------------------------------
+Sat Jan 19 14:41:07 UTC 2019 - badshah400@gmail.com
+
+- Add LHAPDF-pdfset-download-url-update.patch: Update to upstream
+  server's changed URL for downloading pdfsets; patch taken from
+  upstream mercurial.
+- Use %%license to install COPYING file.
+
+-------------------------------------------------------------------
+Fri Sep 15 09:41:52 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions to relevant parts.
+
+-------------------------------------------------------------------
+Sun Sep 10 19:49:30 UTC 2017 - badshah400@gmail.com
+
+- Update to version 6.2.1:
+  * Fix signed/unsigned comparison in Fortran interface.
+  * Fix ccstr_to_fstr function, and hence several problems in the
+    LHAGlue Fortran interface.
+  * Use lhapdf Python module in lhapdf script, to avoid
+    YAML-parsing problems.
+  * Extend Python xfxQ and xfxQ2 functions to allow multiple PID
+    values and 2-arg versions which return all PIDs.
+  * Make alphaS, interpolator, and extrapolator setting eager
+    rather than lazy.
+  * Remove unique_ptr from the public PDF.h header for now, for
+    C++98 API compatibility.
+  * Eliminate C++11 features from headers, and moving some
+    oversized inlines into .cc files.
+
+-------------------------------------------------------------------
+Wed Aug  2 05:11:20 UTC 2017 - badshah400@gmail.com
+
+- Update to version 6.2.0:
+  * Add warning printouts and some verbosity control to the
+    LHAGlue Fortran setlhaparm function.
+  * Provide lookupPDF and lookupLHAPDFID functions accepting a
+    single setname/mem string.
+  * Finally removed Boost multi_array.
+  * All Boost usage removed except multi_array.
+  * Propagate C++11 compiler definition to Cython build and
+    lhapdf-config; add --cxx flag to lhapdf-config.
+  * Add normal and chi-squared quantile functions, and incomplete
+    gamma functions, extracted and converted by Graeme Watt based
+    on ROOT and Cephes code.
+  * Require C++11, and starting to remove Boost.
+  * Add x-grouped xf vs Q plots to plotpdfs, and allow the user to
+    control which plot groups to make.
+  * Improvements to plotpdfs script.
+  * Move scripts for installation into a bin directory.
+  * Corrections in the lhapdf manager script for Python3
+    compatibility.
+- Refresh sover.diff for updated version.
+
+-------------------------------------------------------------------
+Mon Feb 13 17:40:13 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Call ldconfig directly.
+- Add sover.diff and do shared library versioning
+  as required by guidelines.
+
+-------------------------------------------------------------------
+Wed Feb  1 12:37:53 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Feb  1 13:01:58 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.1.6:
+  + Add canonical PDF.orderQCD property to Python PDF, to replace
+    PDF.qcdOrder.
+  + Add PDF::quarkMass and PDF::quarkThreshold methods to C++ and
+    Python.
+  + Fix quark integer ID mapping to Down/Up metadata keys in
+    AlphaS factory routine.
+  + Add a cstr_to_fstr function to LHAGlue.cc, for improved C++ to
+    Fortran string conversion (handling length limits, padding
+    rather than zero-termination, etc.)
+  + Add PDF::print() protection against being unable to read the
+    PDF set index file, so there isn't a crash for the trivial
+    reason of on-screen printout formatting when the data path is
+    restricted with trailing ::.
+  + Fixes to the lhapdf script. Thanks again to Dmitry Kalinkin
+    for a patch.
+  + Add missing getlam4 and getlam5 functions to Fortran
+    interface. Thanks to Dmitry Kalinkin for the patch.
+  + Update Cython and Python interfaces to support Python3 syntax.
+    Thanks to Vitaly Yermolchyk for the patches!
+  + Update to even newer boost.m4
+  + Don't append the install prefix to path searches if
+    $LHAPDF_DATA_PATH ends with a double-colon, ::.
+  + De-inline the availablePDFSets() function, and veto duplicate
+    set names.
+  + Determine number of parameter variation members by counting
+    number of "+" signs in ErrorType, e.g. "replicas+as+mc+mb+mt".
+  + Added a new checkPdfType() member function to PDFSet class.
+  + Added support for combined PDF+alphaS sets via new ErrorType
+    values, i.e. "replicas+as", "hessian+as" and "symmhessian+as".
+  + Updating AUTHORS notice to final EPJC paper reference, and
+    adding a final citation reminder message via the Config
+    destructor.
+  + src/Factories.cc: Adding a set of expandPDFsStr(),
+    decodePDFStr and decodePDFsStr functions to be used for
+    handling more general PDF strings of the sort that will be
+    used in the CompositePDF factory system.
+  + Adding a default constructor and knotarrays() accessor to
+    GridPDF, as requested by Nathan Hartland.
+  + Remove abs(...) twice in function
+    PDFSet::randomValueFromHessian to correct a mistake in Eq.
+    (6.5) of arXiv:1205.4024v2.  The correction is necessary to
+    ensure that correlations are preserved when converting a
+    Hessian PDF set to a Monte Carlo PDF set.
+- Drop LHAPDF-boost-configure-for-GCC5.patch, incorporated
+  upstream.
+
+-------------------------------------------------------------------
+Thu Jun 25 04:56:40 UTC 2015 - badshah400@gmail.com
+
+- Add LHAPDF-boost-configure-for-GCC5.patch to fix autoconf
+  boost macros lookup with GCC5; patch taken from boost.m4
+  upstream [https://github.com/tsuna/boost.m4].
+
+-------------------------------------------------------------------
+Fri Mar 20 19:10:37 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.1.5:
+  + Better error handling in PDF index lookup, including clearer
+    reporting of set-unmatched PDF IDs and member numbers which
+    are out of range for a valid set.
+  + Restoring original active set member in LHAGlue metadata get*
+    functions which were previously switching focus as a result of
+    calling loadMember() to get numerical grid data.
+  + Making LHAGlue Fortran interface switch the current set slot
+    more coherently (has_photon is the exception).
+  + Attempt to use Threshold* metadata keys for Fortran
+    getthresholdm_ and old C++ wrapper getThreshold. Not yet fully
+    supported in the rest of the system but we may as well
+    pre-empt it while editing LHAGlue.cc.
+  + Add missing getdescm_ and getdesc_ Fortran functions.
+  + Add missing Fortran getdatapath function, cf. LHAPDF5 but with
+    colon separators between multiple paths if appropriate.
+  + Add Fortran lhapdf_getpdfsetlist function, returning the list
+    of available PDF sets as a space-separated string. Note the
+    lhapdf_ prefix -- this is the intended 'namespace' form for a
+    new Fortran interface at some point.
+  + Remove obsolete config flags from lhapdf.conf
+  + examples/compatibility.cc: Simplify compatibility macro
+    checking.
+  + Add parsing and use of the internal PID data line in
+    GridPDF.cc, in preference to the PDF::flavors() method. This
+    fixes a bug, since flavors() was sorting the list, meaning
+    that data files without monotonically sorted PID columns would
+    wrongly assign PDFs to PIDs.
+  + Added new ContinuationExtrapolator to provide same
+    extrapolation as in the MSTW standalone code (and LHAPDF5 when
+    using MSTW sets).
+  + Better code organisation and protection against out-of-bounds
+    array accesses in log-bicubic interpolator.
+  + Fallback to bilinear interpolator if using bicubic
+    interpolator with only 2 or 3 Q2 knots in a subgrid.
+  + Improve LHAGlue info messages to not specify that particular
+    generators are being used.
+- LHAPDF-devel should require boost-devel.
+
+-------------------------------------------------------------------
+Sat Sep  6 22:23:20 UTC 2014 - badshah400@gmail.com
+
+- Update to version 6.1.4:
+  - Adding multiset variants of the 5 getmin/max LHAGlue
+    functions
+  - Adding the 'unofficial' getminmax Fortran function to
+    LHAGlue.cc
+  - Treat PID 0 as an alias for 21 in PDF::hasFlavor as well as
+    the PDF::xf* functions
+  - Clarify in lhapdf script help that 'list' by default shows all
+    available sets, not those installed on the user's system
+  - Update CONFIGFLAGS docs to fix some errors w.r.t. actual flag
+    usage
+  - Treat a DataVersion of 0 as unvalidated: valid numbers now
+    start at 1
+  - Remove the LHAPDF ID from the warning printout about
+    unvalidated PDFs, since in that case there will usually be no
+    standard ID number and it just gets unhelpfully reported as -1
+  - Detect and report improperly terminated grid files (ones
+    missing a --- final line)
+  - Replace asserts with exceptions and improve subgrid error
+    reporting in GridPDF
+  - Report the value of Q2 that causes a subgrid-finding failure
+  - Improve testgrid to use PDFNAME/MEMNUM arg syntax
+  - Forbid compilation if the demon combination of Boost < 1.47
+    and	GCC >= 4.6, with a serious bug in BOOST_FOREACH, is found:
+    http://code-muse.com/2013/08/06/boostforeach-and-compiler-bugs
+  - Improved AlphaS ODE solver performance.
+
+-------------------------------------------------------------------
+Sat Jun 21 21:51:34 UTC 2014 - badshah400@gmail.com
+
+- Update to version 6.1.3:
+  + tests/Makefile.am: Add appropriate programs to "make
+    installcheck"
+  + wrappers/python/Makefile.am: 'make distcheck' and
+    out-of-source builds should work now
+  + Add CVMFS and AFS downloading (by preference) to the lhapdf
+    script, as well as user-configurable download sources and
+    tarball removal
+  + Fix bug in PDF::qcdOrder method, and deprecate that method in
+    favour of orderQCD (to match AlphaS and the flag name).
+  + Further improvements to error messages when trying to load an
+    invalid PDF
+  + Tweak output of testalphas.cc
+  + Adding first make check targets (requires CT10nlo to be
+    installed)
+  + Flavour thresholds in alpha_s solvers, and threshold subgrids
+    from ODE solver (by Karl Nordstrom)
+  + Add accessors to a PDF's AlphaS object and to an AlphaS' QCD
+    order
+  + Add mapping of reweighting functions into Python
+  + Fix compiler warnings re. unused variables in LHAGlue.h and
+    AlphaS.h headers
+  + Fix attempted use of non-existent std::vector::find method
+  + Change source name of analyticpdf example
+  + Adding a mini-constructor to PDF to make sure that _forcePos
+    is set to a sane default value.
+
+-------------------------------------------------------------------
+Wed Jun 18 08:50:55 UTC 2014 - badshah400@gmail.com
+
+- Update to version 6.1.2:
+  + Fix HWLHAPDF behaviour in pdfset
+- Changes from version 6.1.1:
+  + Modify printout in PDFLIB backwards compatibility routine to
+    avoid confusion for some HERWIG use cases
+  + Adding warnings about mismatching alpha_s in reweighting, with
+    a default tolerance of 5%
+  + Add LHAPDF/Reweighting.h with a few handy functions for doing
+    'naive' PDF reweighting
+  + Replace all internal uses of "foreach" with explicit
+    BOOST_FOREACH until C++11
+  + Remigrate all NNPDF sets to remove duplicate Qmax points
+  + Adding initLHAPDF() and a few other do-nothing compatibility
+    functions.
+
+-------------------------------------------------------------------
+Sun May  4 07:20:17 UTC 2014 - badshah400@gmail.com
+
+- Update to version 6.1.0:
+  + Lots of changes since previously packaged version, see
+    /usr/share/doc/packages/ChangeLog for a full list
+  + Now installs a pkgconfig file (introduces BuildRequires on
+    pkg-config)
+  + Requires boost >= 1.53.0 (not available on <= 12.3).
+- Unnecessary rpaths and linker flags have been properly removed
+  from lhapdf-config by upstream, remove the temporary workaround
+  which was put in the spec file.
+
+-------------------------------------------------------------------
+Tue Apr 29 23:08:48 UTC 2014 - badshah400@gmail.com
+
+- Manually remove unnecessary rpath and linker flags from
+  generated script /usr/bin/lhapdf-config.
+
+-------------------------------------------------------------------
+Thu Apr 17 22:01:15 UTC 2014 - badshah400@gmail.com
+
+- Correct License tag in spec file: GPL-3.0 instead of GPL-2.0.
+
+-------------------------------------------------------------------
+Mon Dec  9 21:51:37 UTC 2013 - badshah400@gmail.com
+
+- Initial version 
+

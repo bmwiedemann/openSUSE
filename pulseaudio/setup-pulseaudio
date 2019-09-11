@@ -1,0 +1,426 @@
+#!/bin/sh
+
+LIST_OF_OSS_APPS="aumix sox"
+
+show_help() {
+    echo "setup-pulseaudio [ --enable | --disable | --auto | --status ]"
+    echo ""
+    echo "Modifies configuration files of some applications for PulseAudio"
+    echo "  --enable   Enables PulseAudio"
+    echo "  --disable  Disables PulseAudio"
+    echo "  --auto     Automatically enables/disables PulseAudio based on configuration"
+    echo "  --status   Shows activation state (disabled or enabled) for PulseAudio"
+    echo ""
+    echo "You need to be root for this command to succeed"
+    echo "You may need to re-login for changes to take effect"
+    exit 1
+}
+
+check_root() {
+    id=`id -u`
+    if [ "x$id" = "x0" ]; then
+	true
+    else
+	echo "You need to be root in order to enable/disable pulseaudio"
+	false
+    fi
+}
+
+PROFNAME=/etc/profile.d/pulseaudio.sh
+CPROFNAME=/etc/profile.d/pulseaudio.csh
+pulse_client_conf=/etc/pulse/client.conf.d/50-system.conf
+
+MPLAYER_CONF=/etc/mplayer/mplayer.conf
+
+set_variable () {
+    if test -f $PROFNAME &&
+	grep -q "export $1"= $PROFNAME; then
+	sed -i -e "s|export $1=.*|export $1=$2|g" $PROFNAME
+    else
+	echo "export $1=$2" >> $PROFNAME
+    fi
+    if test -f $CPROFNAME &&
+	grep -q "setenv $1 " $CPROFNAME; then
+	sed -i -e "s|setenv $1 .*|setenv $1 $2|g" $CPROFNAME
+    else
+	echo "setenv $1 $2" >> $CPROFNAME
+    fi
+}
+
+delete_variable () {
+    if test -f $PROFNAME &&
+	grep -q "export $1"= $PROFNAME; then
+	sed -i -e "/export $1=.*/d" $PROFNAME
+    fi
+    if test -f $CPROFNAME &&
+	grep -q "setenv $1 " $CPROFNAME; then
+	sed -i -e "/setenv $1 .*/d" $CPROFNAME
+    fi
+}
+
+setup_gconf_vendor() {
+    if [ -x /usr/bin/gconftool-2 ]; then
+	/usr/bin/gconftool-2 --direct --config-source \
+	    xml:readwrite:/etc/gconf/gconf.xml.vendor \
+	    "$@"
+    fi
+}
+
+enable_phonon() {
+    echo "Enabling PulseAudio for Phonon..."
+    delete_variable PHONON_PULSEAUDIO_DISABLE
+}
+
+enable_kmix() {
+    echo "Enabling PulseAudio for Kmix..."
+    delete_variable KMIX_PULSEAUDIO_DISABLE
+}
+
+enable_alsa() {
+    echo "Enabling PulseAudio for ALSA..."
+    if [ -f /etc/alsa/conf.d/99-pulseaudio-default.conf ]; then
+	return 0
+    fi
+    if [ -f /etc/alsa/conf.d/99-pulseaudio-default.conf.example ]; then
+	ln -s 99-pulseaudio-default.conf.example /etc/alsa/conf.d/99-pulseaudio-default.conf
+	delete_variable ALSA_CONFIG_PATH
+    elif [ -f /usr/share/alsa/conf.d/99-pulseaudio-default.conf.example ]; then
+	ln -s /usr/share/alsa/conf.d/99-pulseaudio-default.conf.example /etc/alsa/conf.d/99-pulseaudio-default.conf
+	delete_variable ALSA_CONFIG_PATH
+    elif [ -f /etc/alsa-pulse.conf ]; then
+	set_variable ALSA_CONFIG_PATH /etc/alsa-pulse.conf
+    else
+	echo "Please install alsa-plugins-pulse package"
+	delete_variable ALSA_CONFIG_PATH
+    fi
+}
+
+enable_libao() {
+    echo "Enabling PulseAudio for libao..."
+    if test -f /etc/libao.conf; then
+	if grep -q "default_driver=pulse" /etc/libao.conf; then
+	    echo "Default driver is pulse already in /etc/libao.conf"
+	else
+	    echo "default_driver=pulse" >> /etc/libao.conf
+	fi
+    else
+	echo "default_driver=pulse" >> /etc/libao.conf
+    fi
+}
+
+enable_mplayer() {
+    echo "Enabling PulseAudio for mplayer..."
+    if test -f $MPLAYER_CONF; then
+	if grep -q '^ao *= *pulse' $MPLAYER_CONF; then
+	    :
+	elif grep -q '^ao *=' $MPLAYER_CONF; then
+	    sed -i -e 's/^ao *= *\(.*\)$/ao=pulse,\1/g' $MPLAYER_CONF
+	else
+	    echo "ao=pulse" >> $MPLAYER_CONF
+	fi
+    fi
+
+    # FIXME: mplayerplug-in uses $HOME/.mplayer/mplayerplug-in.conf
+}
+
+enable_speechd() {
+    echo "Enabling PulseAudio for speech dispatcher..."
+    if test -f /etc/speech-dispatcher/speechd.conf; then
+	if grep -q 'AudioOutputMethod' /etc/speech-dispatcher/speechd.conf; then
+            sed -i -e "s|^.*AudioOutputMethod .*|AudioOutputMethod \"pulse\"|g" /etc/speech-dispatcher/speechd.conf
+	else
+            echo "AudioOutputMethod \"pulse\"" >> /etc/speech-dispatcher/speechd.conf
+	fi
+    fi
+}
+
+enable_openal() {
+    # nothing to do here. openal-soft is patched to prefer pulse but
+    # it won't autostart the daemon.
+    return 0
+}
+
+enable_oss() {
+    echo "Enabling PulseAudio for OSS..."
+    for app in $LIST_OF_OSS_APPS; do
+	if grep -q "alias $app='padsp $app'" $PROFNAME; then
+	    echo "Application $app already setup for PulseAudio"
+	else
+	    echo "alias $app='padsp $app'" >> $PROFNAME
+	fi
+    done
+}
+
+enable_sdl() {
+    echo "Enabling PulseAudio for SDL..."
+    # For SDL, we just add an environment variable, so that apps use the PA audio driver
+    set_variable SDL_AUDIODRIVER pulse
+}
+
+enable_timidity() {
+    echo "Enabling PulseAudio for Timidity..."
+    # Use esound output for timidity
+    if grep -q "alias timidity='timidity -Oe'" $PROFNAME; then
+	echo "Timidity already setup for using PulseAudio"
+    else
+	echo "alias timidity='timidity -Oe'" >> $PROFNAME
+    fi
+}
+
+enable_xine() {
+    #echo "Enabling PulseAudio for Xine..."
+    # FIXME: xine uses $HOME/.xine/config
+    return 0
+}
+
+enable_festival() {
+    test -f /etc/festival.scm || return 0
+    echo "Enabling PulseAudio for Festival..."
+    cat << EOF >> /etc/festival.scm
+;;;; Use pulseaudio to output sound
+(Parameter.set 'Audio_Command "paplay -n festival \$FILE")
+(Parameter.set 'Audio_Method 'Audio_Command)
+(Parameter.set 'Audio_Required_Format 'snd)
+EOF
+}
+
+enable_sox() {
+    echo "Enabling PulseAudio for SoX..."
+    set_variable AUDIODRIVER pulseaudio
+}
+
+enable_gstreamer() {
+    # set autoaudiosink/src, which should pick up PA
+    echo "Setting auto sink/src for gstreamer"
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/audiosink autoaudiosink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/musicaudiosink autoaudiosink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/chataudiosink autoaudiosink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/audiosrc autoaudiosrc
+}
+
+enable_qemu () {
+    echo "Enabling PulseAudio for QEMU/KVM"
+    set_variable QEMU_AUDIO_DRV pa
+}
+
+enable_autospawn() {
+    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket && return
+    echo "Enabling PulseAudio autospawn..."
+    if grep -q ^autospawn $pulse_client_conf >/dev/null 2>&1; then
+	sed -i -e "s|^autospawn.*|autospawn = yes|g" $pulse_client_conf
+    else
+	echo "autospawn = yes" >> $pulse_client_conf
+    fi
+}
+
+disable_alsa() {
+    echo "Disabling PulseAudio for ALSA..."
+    delete_variable ALSA_CONFIG_PATH
+    rm -f /etc/alsa/conf.d/99-pulseaudio-default.conf
+}
+
+disable_phonon() {
+    echo "Disabling PulseAudio for Phonon..."
+    set_variable PHONON_PULSEAUDIO_DISABLE 1
+}
+
+disable_kmix() {
+    echo "Disabling PulseAudio for Kmix..."
+    set_variable KMIX_PULSEAUDIO_DISABLE 1
+}
+
+disable_libao() {
+    if test -f /etc/libao.conf; then
+	echo "Disabling PulseAudio for libao..."
+	sed -i -e "/default_driver=pulse/d" /etc/libao.conf
+    fi
+}
+
+disable_mplayer() {
+    if test -f $MPLAYER_CONF; then
+	echo "Disabling PulseAudio for mplayer..."
+	sed -i -e 's/^ao *= *pulse,*/ao=/g' \
+		-e 's/^ao *= *$/ao=alsa/g' $MPLAYER_CONF
+    fi
+}
+
+disable_speechd() {
+    echo "Disabling PulseAudio for speech dispatcher..."
+    if test -f /etc/speech-dispatcher/speechd.conf; then
+	if grep -q 'AudioOutputMethod' /etc/speech-dispatcher/speechd.conf; then
+            sed -i -e "s|^.*AudioOutputMethod .*|#AudioOutputMethod \"pulse\"|g" /etc/speech-dispatcher/speechd.conf
+	fi
+    fi
+}
+
+disable_openal() {
+    # nothing to do here. openal-soft is patched to prefer pulse but
+    # it won't autostart the daemon.
+    return 0
+}
+
+disable_oss() {
+    for app in $LIST_OF_OSS_APPS; do
+	sed -i -e "/alias $app='padsp $app'/d" $PROFNAME
+    done
+}
+
+disable_sdl() {
+    echo "Disabling PulseAudio for SDL..."
+    delete_variable SDL_AUDIODRIVER
+}
+
+disable_timidity() {
+    echo "Disabling PulseAudio for Timidity..."
+    sed -i -e "/alias timidity='timidity -Oe'/d" $PROFNAME
+}
+
+disable_xine() {
+    #echo "Disabling PulseAudio for Xine..."
+    # FIXME: xine uses $HOME/.xine/config
+    return 0
+}
+
+disable_festival() {
+    test -f /etc/festival.scm || return 0
+    echo "Disabling PulseAudio for Festival..."
+    /usr/bin/sed --in-place /";;;; Use pulseaudio to output sound"/d /etc/festival.scm
+    /usr/bin/sed --in-place /"(Parameter.set 'Audio_Command \"paplay -n festival \$FILE\")"/d /etc/festival.scm
+    /usr/bin/sed --in-place /"(Parameter.set 'Audio_Method 'Audio_Command)"/d /etc/festival.scm
+    /usr/bin/sed --in-place /"(Parameter.set 'Audio_Required_Format 'snd)"/d /etc/festival.scm
+}
+
+disable_sox() {
+    echo "Disabling PulseAudio for SoX..."
+    set_variable AUDIODRIVER alsa
+}
+
+disable_gstreamer() {
+    echo "Setting alsasink/src for gstreamer"
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/audiosink alsasink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/musicaudiosink alsasink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/chataudiosink alsasink
+    setup_gconf_vendor -s -t str \
+	/system/gstreamer/0.10/default/audiosrc alsasrc
+}
+
+disable_qemu () {
+    echo "Clearing QEMU/KVM audio setup"
+    delete_variable QEMU_AUDIO_DRV
+}
+
+disable_autospawn() {
+    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket && return
+    echo "Disabling PulseAudio autospawn..."
+    if grep -q ^autospawn $pulse_client_conf >/dev/null 2>&1; then
+	sed -i -e "s|^autospawn.*|autospawn = no|g" $pulse_client_conf
+    else
+	echo "autospawn = no" >> $pulse_client_conf
+    fi
+    # kill leftover PA processes
+    killall pulseaudio > /dev/null 2>&1
+}
+
+enable_all() {
+    enable_alsa
+    enable_libao
+    enable_mplayer
+    enable_openal
+    enable_oss
+    enable_sdl
+    enable_timidity
+    enable_xine
+    enable_festival
+    enable_phonon
+    enable_kmix
+    enable_speechd
+    enable_sox
+    enable_gstreamer
+    enable_qemu
+    enable_autospawn
+}
+
+disable_all() {
+    disable_alsa
+    disable_libao
+    disable_mplayer
+    disable_openal
+    disable_oss
+    disable_sdl
+    disable_timidity
+    disable_xine
+    disable_festival
+    disable_phonon
+    disable_kmix
+    disable_speechd
+    disable_sox
+    disable_gstreamer
+    disable_qemu
+    disable_autospawn
+}
+
+case $1 in
+    --enable)
+	check_root || exit 1
+	ENABLE=1
+        enable_all
+	;;
+    --disable)
+	check_root || exit 1
+	ENABLE=0
+        disable_all
+	;;
+    --auto)
+	check_root || exit 1
+	if [ -f /etc/sysconfig/sound ]; then
+	    . /etc/sysconfig/sound
+	fi
+	if [ "x$PULSEAUDIO_ENABLE" = "xyes" ]; then
+	    enable_all
+	elif [ "x$PULSEAUDIO_ENABLE" = "xcustom" ]; then
+            echo "Custom configuration detected, doing nothing."
+        else
+	    disable_all
+	fi
+	exit 0
+	;;
+    --status)
+	if [ -f /etc/sysconfig/sound ]; then
+	    . /etc/sysconfig/sound
+	fi
+	if [ "x$PULSEAUDIO_ENABLE" = "xyes" ]; then
+	    echo "enabled"
+	elif [ "x$PULSEAUDIO_ENABLE" = "xcustom" ]; then
+            echo "custom configured"
+	else
+	    echo "disabled"
+	fi
+	exit 0
+	;;
+    *)
+	show_help
+	;;
+esac
+
+# Now, update /etc/sysconfig/sound with the PA status
+if grep -q PULSEAUDIO_ENABLE /etc/sysconfig/sound; then
+    if [  "x$ENABLE" = "x1" ]; then
+	sed -i -e "s|PULSEAUDIO_ENABLE=\"no\"|PULSEAUDIO_ENABLE=\"yes\"|g" /etc/sysconfig/sound
+    else
+	sed -i -e "s|PULSEAUDIO_ENABLE=\"yes\"|PULSEAUDIO_ENABLE=\"no\"|g" /etc/sysconfig/sound
+    fi
+else
+    if [ "x$ENABLE" = "x1" ]; then
+	echo "PULSEAUDIO_ENABLE=\"yes\"" >> /etc/sysconfig/sound
+    else
+	echo "PULSEAUDIO_ENABLE=\"no\"" >> /etc/sysconfig/sound
+    fi
+fi
+exit 0

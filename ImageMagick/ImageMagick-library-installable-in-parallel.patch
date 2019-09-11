@@ -1,0 +1,15 @@
+Index: ImageMagick-7.0.6-7/configure
+===================================================================
+--- ImageMagick-7.0.6-7.orig/configure	2017-08-12 15:28:32.000000000 +0200
++++ ImageMagick-7.0.6-7/configure	2017-08-28 16:56:48.177815147 +0200
+@@ -34903,7 +34903,9 @@ fi
+ 
+ 
+ # Subdirectory to place architecture-dependent configuration files
+-CONFIGURE_RELATIVE_PATH="${PACKAGE_NAME}-${MAGICK_MAJOR_VERSION}"
++if test "x$CONFIGURE_RELATIVE_PATH" = "x"; then
++   CONFIGURE_RELATIVE_PATH="${PACKAGE_NAME}-${MAGICK_MAJOR_VERSION}"
++fi
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define CONFIGURE_RELATIVE_PATH "$CONFIGURE_RELATIVE_PATH"

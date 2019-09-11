@@ -1,0 +1,46 @@
+From 216342f03940080176111f5e0e31b43cd909e164 Mon Sep 17 00:00:00 2001
+From: ed lane <ed.lane.0@gmail.com>
+Date: Thu, 30 Aug 2018 06:07:08 -0600
+Subject: [PATCH] Integration of MSI authentication with azurearm cloud
+ driver (#105)
+
+---
+ salt/cloud/clouds/azurearm.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/salt/cloud/clouds/azurearm.py b/salt/cloud/clouds/azurearm.py
+index e8050dca16..229412adcd 100644
+--- a/salt/cloud/clouds/azurearm.py
++++ b/salt/cloud/clouds/azurearm.py
+@@ -58,6 +58,9 @@ The Azure ARM cloud module is used to control access to Microsoft Azure Resource
+       virtual machine type will be "Windows". Only set this parameter on profiles which install Windows operating systems.
+ 
+ 
++    if using MSI-style authentication:
++    * ``subscription_id``
++
+ Example ``/etc/salt/cloud.providers`` or
+ ``/etc/salt/cloud.providers.d/azure.conf`` configuration:
+ 
+@@ -258,7 +261,8 @@ def get_configured_provider():
+         provider = __is_provider_configured(
+             __opts__,
+             __active_provider_name__ or __virtualname__,
+-            ('subscription_id', 'username', 'password')
++            required_keys=('subscription_id', 'username', 'password'),
++            log_message=False
+         )
+ 
+     return provider
+@@ -301,6 +305,7 @@ def get_conn(client_type):
+     )
+ 
+     if tenant is not None:
++        # using Service Principle style authentication...
+         client_id = config.get_cloud_config_value(
+             'client_id',
+             get_configured_provider(), __opts__, search_global=False
+-- 
+2.17.1
+
+

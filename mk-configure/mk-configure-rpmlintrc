@@ -1,0 +1,7 @@
+addFilter("zero-length /usr/share/doc/packages/mk-configure-doc/examples/hello_require_tools/fake");
+# It isn't an executable script, it is a kind of shell library.
+addFilter("script-without-shebang /usr/bin/mkc_check_common.sh");
+addFilter("non-executable-in-bin /usr/bin/mkc_check_common.sh .*");
+# Let's skip it.
+addFilter("doc-file-dependency /usr/share/doc/packages/mk-configure-doc/examples/.* /usr/bin/env");
+addFilter("doc-file-dependency /usr/share/doc/packages/mk-configure-doc/examples/.*/bin/sh");

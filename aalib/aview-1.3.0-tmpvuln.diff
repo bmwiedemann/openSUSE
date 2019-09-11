@@ -1,0 +1,50 @@
+--- aview-1.3.0/asciiview
++++ aview-1.3.0/asciiview
+@@ -1,13 +1,19 @@
+ #!/bin/bash
+ # asciiview - an ascii art image browser script. Front end for aview/aaflip
++
+ clear()
+ {
+   kill $! 2>/dev/null
+-  rm -f /tmp/aview$$.pgm 2>/dev/null
++  if [ -n $ATMPDIR -a -d $ATMPDIR ]; then
++	rm -f $ATMPDIR/aview$$.pgm 2>/dev/null && rmdir $ATMPDIR 2>/dev/null
++  else
++	echo "Cannot remove temporary directory $ATMPDIR"
++	exit 1
++  fi
+ }
+ myconvert()
+ {
+-   if anytopnm $1 >/tmp/aview$$.pgm 2>/dev/null ; then
++   if anytopnm $1 >$ATMPDIR/aview$$.pgm 2>/dev/null ; then
+      exit
+    elif convert -colorspace gray $1 pgm:- 2>/dev/null ; then
+      exit
+@@ -50,9 +56,10 @@
+       ;;
+   esac
+ done
++ATMPDIR=`mktemp -d` || exit 1 
+ trap clear 0
+-mkfifo /tmp/aview$$.pgm
+-outfile=/tmp/aview$$.pgm
++mkfifo $ATMPDIR/aview$$.pgm
++outfile=$ATMPDIR/aview$$.pgm
+ for name in $filenames ; do
+ if test -r $name ; then
+ case $name in
+@@ -61,10 +68,10 @@
+   aaflip $options $name
+   ;;
+ *)
+-  myconvert $name >/tmp/aview$$.pgm &
++  myconvert $name >$ATMPDIR/aview$$.pgm &
+   pid=$!
+   PATH="$PATH:."
+-  aview  $options /tmp/aview$$.pgm
++  aview  $options $ATMPDIR/aview$$.pgm
+   kill $pid 2>/dev/null
+ esac
+ else

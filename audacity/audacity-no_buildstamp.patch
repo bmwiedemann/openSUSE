@@ -1,0 +1,35 @@
+Index: src/AboutDialog.cpp
+===================================================================
+--- src/AboutDialog.cpp.orig	2018-02-14 09:11:20.000000000 +0200
++++ src/AboutDialog.cpp	2018-02-22 11:19:34.839783711 +0200
+@@ -64,7 +64,7 @@ hold information about one contributor t
+ #ifdef REV_LONG
+ #define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
+ #else
+-#define REV_IDENT wxT("No revision identifier was provided")
++#define REV_IDENT wxT("Official openSUSE Build")
+ #endif
+ 
+ extern wxString FormatHtmlText( const wxString & Text );
+@@ -75,7 +75,7 @@ const wxString VerCheckArgs(){
+ #ifdef REV_LONG
+    result += wxString("&CommitId=")+wxString(REV_LONG).Left(6);
+ #endif
+-   result += wxString("&Time=") + wxString( __DATE__ ) + wxString( __TIME__ );
++   result += wxString("&Time=") + wxString( "17 March 2017" ) + wxString( "23:15" );
+    result.Replace(" ","");
+    return result;
+ }
+Index: lib-src/portaudio-v19/qa/loopback/src/paqa.c
+===================================================================
+--- lib-src/portaudio-v19/qa/loopback/src/paqa.c.orig	2018-02-14 09:11:20.000000000 +0200
++++ lib-src/portaudio-v19/qa/loopback/src/paqa.c	2018-02-22 11:19:34.839783711 +0200
+@@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
+ 	int justMath = 0;
+     char *executableName = argv[0];
+ 
+-	printf("PortAudio LoopBack Test built " __DATE__ " at " __TIME__ "\n");
++	printf("PortAudio LoopBack Test built " "17 March 2017" " at " "23:15" "\n");
+ 
+ 	if( argc > 1 ){
+ 		printf("running with arguments:");

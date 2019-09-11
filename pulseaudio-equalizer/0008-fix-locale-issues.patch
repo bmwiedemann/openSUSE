@@ -1,0 +1,83 @@
+--- a/usr/bin/pulseaudio-equalizer
++++ b/usr/bin/pulseaudio-equalizer
+@@ -18,6 +18,7 @@ PA_CONTROL_MAX="30"
+ PA_PREAMP="1.0"
+ PA_CURRENT_PRESET=""
+ 
++LC_MESSAGES=C
+ if [ -z "$XDG_CONFIG_HOME" ]; then
+     CONFIG_DIR="$HOME/.config/pulse"
+ else
+@@ -113,20 +114,20 @@ fi
+ 
+ # Get sink names and volumes
+ PA_LADSPA_SINK="ladspa_output.$PA_LADSPA_PLUGIN.$PA_LADSPA_LABEL"
+-PA_CURRENT_SINK=$(pacmd stat | grep "Default sink name" | sed 's/Default sink name: //g')
+-PA_CURRENT_VOLUME=$(pacmd list | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'volume: 0:' | awk '{print $NF}' | sed 's/%//g')
++PA_CURRENT_SINK=$(pacmd stat | sed -e '/Default sink name/!d;s/Default sink name: //g')
++PA_CURRENT_VOLUME=$(pacmd list | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'volume: 0:' | awk '{print $NF}' | sed 's/%//g')
+ PA_REAL_VOLUME=$((PA_CURRENT_VOLUME*65536/100))
+ PA_REAL_PREAMP_FLOAT=$(echo "$PA_PREAMP*65536" | bc)
+ PA_REAL_PREAMP=${PA_REAL_PREAMP_FLOAT/\.*}
+-PA_CURRENT_MUTE=$(pacmd list-sinks | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'muted: ' | sed 's/[\t]muted: no/0/g' | sed 's/[\t]muted: yes/1/g')
++PA_CURRENT_MUTE=$(pacmd list-sinks | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'muted: ' | sed -e 's/[\t]muted: no/0/g;s/[\t]muted: yes/1/g')
+ 
+ # Check if equalizer is running and get accurate master sink name
+ if [ "$PA_CURRENT_SINK" = "$PA_LADSPA_SINK" ]; then
+   PA_EQUALIZER_STATUS=1
+-  PA_MASTER_SINK=$(pacmd info | grep -A30 "<$PA_CURRENT_SINK>" | grep -m1 'device.master_device = ' | sed 's/device.master_device = //g' | sed 's/"//g' | sed 's/^[ \t]*//')
++  PA_MASTER_SINK=$(pacmd info | iconv -c -t ascii | grep -A30 "<$PA_CURRENT_SINK>" | grep -m1 'device.master_device = ' | sed -e 's/device.master_device = //g;s/"//g;s/^[ \t]*//')
+ else
+   PA_EQUALIZER_STATUS=0
+-  PA_MASTER_SINK=$(pacmd stat | grep 'Default sink name' | sed 's/Default sink name: //g')
++  PA_MASTER_SINK=$(pacmd stat | sed -e '/Default sink name/!d;s/Default sink name: //g')
+ fi 
+ 
+ # Check if equalizer is set as persistent
+@@ -342,16 +343,16 @@ if [ "$1" = "disable" -o "$1" = "enable"
+ 
+   # Unload & reload stream-restore module
+   echo "Unloading & reloading stream-restore module..."
+-  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | grep -B1 -m1 'name: <module-stream-restore>' | grep '    index: ' | sed 's/    index: //g')"
++  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | iconv -c -t ascii | grep -B1 -m1 'name: <module-stream-restore>' | sed -e '/    index: /!d;s/    index: //g')"
+   echo >>/tmp/eqcommands.sh "load-module module-stream-restore"
+ 
+   # Unload LADSPA sink module (if it is already loaded)
+   echo "Unloading module-ladspa-sink..."
+-  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | grep -B1 -m1 'name: <module-ladspa-sink>' | grep '    index: ' | sed 's/    index: //g')"
++  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | iconv -c -t ascii | grep -B1 -m1 'name: <module-ladspa-sink>' | sed -e '/    index: /!d;s/    index: //g')"
+ 
+   # Move active client sinks to ALSA sink
+   echo "Moving active PulseAudio clients to ALSA sink ($PA_MASTER_SINK)..."
+-  echo >>/tmp/eqcommands.sh "$(pacmd "list-sink-inputs" | grep 'index: ' | sed 's/    index: /move-sink-input /g' | sed "s/$/ $PA_MASTER_SINK/g")"
++  echo >>/tmp/eqcommands.sh "$(pacmd "list-sink-inputs" | iconv -c -t ascii | sed -e '/index: /!d;s/    index: /move-sink-input /g;s/$/ $PA_MASTER_SINK/g')"
+ 
+   # Transfer current mute/sink volume to ALSA sink
+   echo "Transferring current mute ($PA_CURRENT_MUTE) & volume ($PA_CURRENT_VOLUME%) to ALSA sink ($PA_MASTER_SINK)..."
+@@ -371,7 +372,7 @@ if [ "$1" = "enable" ]; then
+ 
+   # Unload & reload stream-restore module with restore_device option disabled (to ensure that previously cached per-client sinks are not used)
+   echo "Unloading & reloading stream-restore module..."
+-  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | grep -B1 -m1 'name: <module-stream-restore>' | grep '    index: ' | sed 's/    index: //g')"
++  echo >>/tmp/eqcommands.sh "unload-module $(pacmd list | iconv -c -t ascii | grep -B1 -m1 'name: <module-stream-restore>' | sed -e '/    index: /!d;s/    index: //g')"
+   echo >>/tmp/eqcommands.sh "load-module module-stream-restore restore_device=false"
+ 
+   # Load LADSPA sink module
+@@ -394,7 +395,7 @@ if [ "$1" = "enable" ]; then
+ 
+   # Move currently active client sinks to LADSPA sink
+   echo "Moving active PulseAudio clients to LADSPA sink ($PA_LADSPA_SINK)..."
+-  echo >>/tmp/eqcommands.sh "$(pacmd "list-sink-inputs" | grep 'index: ' | sed 's/    index: /move-sink-input /g' | sed "s/$/ $PA_LADSPA_SINK/g")"
++  echo >>/tmp/eqcommands.sh "$(pacmd "list-sink-inputs" | iconv -c -t ascii | sed -e '/index: /!d;s/    index: /move-sink-input /g' | sed 's/$/ $PA_LADSPA_SINK/g')"
+ 
+   # Execute all queued commands (for potential speed benefit)...
+   pacmd </tmp/eqcommands.sh >/dev/null
+@@ -428,7 +429,7 @@ if [ "$1" = "status" ]; then
+ fi
+ 
+ # Refresh current sink status and display equalizer information
+-PA_CURRENT_SINK=$(pacmd stat | grep "Default sink name" | sed 's/Default sink name: //g')
++PA_CURRENT_SINK=$(pacmd stat | sed -e '/Default sink name/!d;s/Default sink name: //g')
+ if [ "$PA_CURRENT_SINK" = "$PA_LADSPA_SINK" ]; then
+   echo "-------------------------------------"
+   echo "Equalizer status: [enabled]"

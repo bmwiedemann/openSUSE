@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Mar  3 14:09:19 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+- Patch carried from the original ladspa package:
+  vocoder-0.1.dif
+
+-------------------------------------------------------------------
+Mon Dec 16 15:03:13 CET 2013 - tiwai@suse.de
+
+- Initial version 0.3: split from ladspa package
+

@@ -1,0 +1,46 @@
+diff --git a/src/libtracker-sparql-backend/meson.build b/src/libtracker-sparql-backend/meson.build
+index 084d77c2d8d67c6d3eddf4d92602d2d1cd606efe..c30d182d5278cd070712f404a396789e3b02660e 100644
+--- a/src/libtracker-sparql-backend/meson.build
++++ b/src/libtracker-sparql-backend/meson.build
+@@ -22,7 +22,7 @@ libtracker_sparql = library('tracker-sparql-' + tracker_api_version,
+ tracker_sparql_dep = declare_dependency(
+     link_with: libtracker_sparql,
+     include_directories: srcinc,
+-    dependencies: [tracker_common_dep, tracker_sparql_intermediate_dep],
++    dependencies: [tracker_common_dep],
+ )
+ 
+ # The introspection generation for libtracker-sparql is awkward because we have
+diff --git a/src/tracker-store/meson.build b/src/tracker-store/meson.build
+index df0e87fda9b83bfee490e5acd018ef0676300f5a..a6c3d0972d8f0a6e58bec011a2deb860759b2152 100644
+--- a/src/tracker-store/meson.build
++++ b/src/tracker-store/meson.build
+@@ -21,6 +21,7 @@ tracker_store_sources = [
+ 
+ tracker_store = executable('tracker-store',
+     tracker_store_sources,
++    tracker_sparql_vapi,
+     c_args: tracker_c_args + [
+         '-include', 'config.h'
+     ],
+diff --git a/tests/functional-tests/ipc/meson.build b/tests/functional-tests/ipc/meson.build
+index bd4c3250e3d0978a19e851238ad50f4c946e6643..8ee7175fefe72ef99bfde2719ee24fe16dd7497d 100644
+--- a/tests/functional-tests/ipc/meson.build
++++ b/tests/functional-tests/ipc/meson.build
+@@ -4,7 +4,7 @@ functional_ipc_test_c_args = [
+ ]
+ 
+ insert_or_replace_test = executable('test-insert-or-replace',
+-  'test-insert-or-replace.vala',
++  'test-insert-or-replace.vala', tracker_sparql_vapi,
+   dependencies: [tracker_common_dep, tracker_sparql_dep])
+ test('functional-ipc-insert-or-replace', insert_or_replace_test,
+   env: test_env)
+diff --git a/utils/tracker-resdump/meson.build b/utils/tracker-resdump/meson.build
+index 86ae5d32c370cd8a934322b34b6259e544d8a960..9e5f1102823860315f51e81f3ccfd5dd3328cda6 100644
+--- a/utils/tracker-resdump/meson.build
++++ b/utils/tracker-resdump/meson.build
+@@ -1,2 +1,2 @@
+-executable('tracker-resdump', 'tracker-resdump.vala',
++executable('tracker-resdump', 'tracker-resdump.vala', tracker_sparql_vapi,
+     dependencies: [tracker_common_dep, tracker_sparql_dep])

@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Sat Oct  4 22:05:35 UTC 2014 - dimstar@opensuse.org
+
+- Add recordmydesktop-sane-theora-defaults.patch: use some saner
+  Theora default values. Older Theora encoders simply ignored
+  insane settings. The original defaults were 'Limit to 45kbit/s
+  at highest quality (63)'. The new default is to set the highest
+  quality, without bitrate limit (boo#780609).
+
+-------------------------------------------------------------------
+Wed Oct  1 20:04:17 UTC 2014 - crrodriguez@opensuse.org
+
+- Clean up BuildRequires in line with what configure checks for and
+  convert to pkgconfig where possible:
+  + Drop xorg-x11-devel (metapackage), xorg-x11-libICE-devel,
+    xorg-x11-libSM-devel and xorg-x11-libxext-devel.
+  + Add pkgconfig() BuildRequires: ice, sm, x11, xdamage, xext and
+    xfixes.
+
+-------------------------------------------------------------------
+Fri Apr  6 14:39:12 UTC 2012 - vuntz@opensuse.org
+
+- Replace License tag with spdx identifier (GPL-2.0).
+
+-------------------------------------------------------------------
+Mon Feb 14 02:37:13 CET 2011 - vuntz@opensuse.org
+
+- Remove unneeded BuildRequires: autoconf, automake, gcc, gettext,
+  gettext-devel, glibc-devel, intltool, jack, libtool, make.
+- Add xorg-x11-libXext-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jan  7 00:33:25 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add missing .changes.
+- Spec file tidy up.
+- Split out includes patch to build on < 11.3.
+
+-------------------------------------------------------------------
+Thu Oct  1 00:00:00 CDT 2009 - pascal.bleser@opensuse.org
+
+- update to 0.3.8.1
+
+-------------------------------------------------------------------
+Mon Nov 24 00:00:00 CST 2008 - guru@unixtech.be
+
+- update to 0.3.8:
+  * code has been refactored and cleaned up extensively to ease maintenance and bugfixes
+  * fixed a cursor-flickering bug
+  * fixed color-space conversion
+  * improved detection of compositing window managers
+  * libjack is now linked normally during compilation instead of being dlopened later
+
+-------------------------------------------------------------------
+Wed Mar 19 00:00:00 CDT 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Dec 18 00:00:00 CST 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Sep  9 00:00:00 CDT 2007 - guru@unixtech.be
+
+- moved to Packman
+
+-------------------------------------------------------------------
+Sat Aug 18 00:00:00 CDT 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Fri Jul 20 00:00:00 CDT 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Mon Jul 16 00:00:00 CDT 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Thu Mar 29 00:00:00 CDT 2007 - guru@unixtech.be
+
+- new upstream version
+- CHANGES: behavior of the program when using both the MIT-SHM and XDamage
+  extensions was fixed: less memory is now required and all options related to
+  conditional usage of shared memory are gone
+
+-------------------------------------------------------------------
+Mon Feb 12 00:00:00 CST 2007 - guru@unixtech.be
+
+- use jack for recording
+- new upstream version
+
+-------------------------------------------------------------------
+Mon Jan 22 00:00:00 CST 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Mon Dec 18 00:00:00 CST 2006 - guru@unixtech.be
+
+- new package
+

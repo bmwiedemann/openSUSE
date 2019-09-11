@@ -1,0 +1,393 @@
+-------------------------------------------------------------------
+Thu Mar 29 13:11:32 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.8.0:
+  * Symmetric-indefinite Factorization: Aasen’s tridiagonalization
+    2 stage.
+  * LAPACKE interfaces.
+- Static -pic libraries are no longer built.
+
+-------------------------------------------------------------------
+Fri Jan 12 14:29:36 UTC 2018 - rguenther@suse.com
+
+- Package lapack_testing.py from lapack 3.8.0 with adjusted interpreter
+  and adjust BuildRequires to python3.  [bnc#1075766]
+
+-------------------------------------------------------------------
+Wed May 31 21:39:51 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups
+
+-------------------------------------------------------------------
+Wed May 17 22:59:46 UTC 2017 - dimstar@opensuse.org
+
+- Build the man pages in a separate .spec file (lapack-man). The
+  resulting rpm names are kept identical. This allows us to drop
+  doxygen out of lapack's main package buildroot, thus eliminating
+  a build cycle.
+
+-------------------------------------------------------------------
+Fri May  8 20:20:52 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix static libraries list
+
+-------------------------------------------------------------------
+Wed Jul 16 08:39:20 UTC 2014 - idonmez@suse.com
+
+- Add baselibs.conf to sources
+
+-------------------------------------------------------------------
+Mon Jul 14 16:38:58 UTC 2014 - toddrme2178@gmail.com
+
+- Include update-alternatives dependency in subpackages that use it
+  to guarantee it will be available.
+
+-------------------------------------------------------------------
+Wed Jun 18 08:15:19 UTC 2014 - dmitry_r@opensuse.org
+
+- Move blas and lapack libraries to subdirectories for fixing
+  update-alternatives [bnc#861081]
+- Add %posttrans scripts for fixing migration problems.
+
+-------------------------------------------------------------------
+Thu Nov 21 20:52:18 UTC 2013 - burnus@net-b.de
+
+- Update to 3.5.0
+  * Added Hermitian LDLT factorization routines with rook pivoting
+    algorithm
+  * 2-by-1 CSD to be used for tall and skinny matrix with orthonormal
+    columns
+  * New stopping criteria for balancing
+  * New complex division algorithm
+  * Various improvements
+- No longer removing files due to license reasons as one file is
+  no longer part of Lapack and the others have been replaced by
+  new ones under the normal LAPACK license
+
+-------------------------------------------------------------------
+Tue Oct 29 12:53:29 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- packaged symlinks created by update-alternative as %ghost files
+- removed quotes from update-alternative command to silence rpmlint warning
+
+-------------------------------------------------------------------
+Fri Mar 15 18:53:22 UTC 2013 - dmitry_r@opensuse.org
+
+- Split devel packages into devel and devel-static
+
+-------------------------------------------------------------------
+Sun Jan 13 00:04:56 UTC 2013 - scorot@free.fr
+
+- add update-alternative support to allow user to easily switch
+  between several blas and lapack libraries 
+
+-------------------------------------------------------------------
+Tue Nov  6 10:10:53 UTC 2012 - burnus@net-b.de
+
+- Update to 3.4.2
+  * Bug fixes
+
+-------------------------------------------------------------------
+Wed Jul 25 14:30:36 UTC 2012 - idonmez@suse.com
+
+- Fix bnc#772628 
+
+-------------------------------------------------------------------
+Thu Jul 19 20:44:04 UTC 2012 - scorot@free.fr
+
+- update baselibs.conf 
+
+-------------------------------------------------------------------
+Sun Jul 15 18:47:19 UTC 2012 - scorot@free.fr
+
+- build the c interface lapacke
+
+-------------------------------------------------------------------
+Thu May 31 13:52:43 CEST 2012 - kukuk@suse.de
+
+- doxygen >= 1.7 is required for building docu
+
+-------------------------------------------------------------------
+Mon May 21 14:40:18 UTC 2012 - saschpe@suse.de
+
+- Change obsoletes '<=' for lapack and blas back to '<', there was a
+  version update in between
+- Remove psfig.tex (bnc#757332)
+
+-------------------------------------------------------------------
+Wed May  9 13:04:08 UTC 2012 - coolo@suse.com
+
+- fixing dependencies for devel-32bit
+
+-------------------------------------------------------------------
+Fri May  4 13:44:58 UTC 2012 - burnus@net-b.de
+
+- Update to 3.4.1
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Apr  2 11:47:20 UTC 2012 - rguenther@suse.com
+
+- Undo spec file obfuscation
+
+-------------------------------------------------------------------
+Fri Mar 30 14:11:58 UTC 2012 - toddrme2178@gmail.com
+
+- Fixed building on openSUSE 11.4 by fixing defattr
+- Made the package groups consistent: Development/Libraries/Parallel
+- Cleaned up spec file formatting
+- Made all requires use the new package naming
+
+-------------------------------------------------------------------
+Wed Mar 14 12:31:13 UTC 2012 - saschpe@suse.de
+
+- Adhere to shared library policy, packages containing *.so or *.h
+  files have to be named $FOO-devel, packages containing *.a files either
+  have to be named $FOO-devel-static or provide this name
+- Set license to 'BSD-3-Clause', according to the file LICENSE and the
+  description on http://www.netlib.org/lapack/ it's not public domain
+- Package README and LICENSE in library packages
+- Removed rpmlint filters
+- Use upstream tarball URL
+
+-------------------------------------------------------------------
+Mon Feb 13 10:48:17 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Nov 23 14:04:54 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Wed Nov 16 21:03:58 UTC 2011 - burnus@net-b.de
+
+- Update to 3.4.0
+  * xGEQRT: QR factorization (improved interface)
+  * xGEQRT3: recursive QR factorization.
+  * xTPQRT: Communication-Avoiding QR sequential kernels.
+  * Bug fixes.
+  * Changes see http://www.netlib.org/lapack/lapack-3.4.0.html
+
+-------------------------------------------------------------------
+Fri Sep  9 13:58:10 UTC 2011 - burnus@net-b.de
+
+- Run BLAS and LAPACK testsuite when building
+
+-------------------------------------------------------------------
+Thu May 12 07:12:55 UTC 2011 - burnus@net-b.de
+
+- Update to 3.3.1 [bnc#654560]
+  * New procedures to compute the complete CS decomposition of a
+    partitioned unitary matrix
+  * Level-3 BLAS symmetric indefinite solve (xSYTRS) and symmetric
+    indefinite inversion (xSYTRI)
+  * Bug fixes
+  * Changes see at http://www.netlib.org/lapack/lapack-3.3.1.html
+    and http://www.netlib.org/lapack/lapack-3.3.0.html
+
+-------------------------------------------------------------------
+Thu Aug 12 13:52:25 UTC 2010 - rguenther@novell.com
+
+- Add baselibs.  [bnc#630656]
+
+-------------------------------------------------------------------
+Thu Jul  8 14:36:20 UTC 2010 - burnus@net-b.de
+
+- Update to version 3.2.2
+  * Bug fix release
+  * Changes see at http://www.netlib.org/lapack/lapack-3.2.2.html
+
+-------------------------------------------------------------------
+Tue Feb  9 18:56:59 CET 2010 - prusnak@suse.cz
+
+- package man and blas-man as noarch
+
+-------------------------------------------------------------------
+Wed Jan 13 13:15:58 CET 2010 - rguenther@suse.de
+
+- Drop -O3 -funroll-all-loops compiler flags, build dcabs1.f with -O0.
+  [bnc#569978]
+
+-------------------------------------------------------------------
+Mon May 18 15:26:56 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 3.2.1 [bnc#504669]
+  * Changes see at http://www.netlib.org/lapack/lapack-3.2.1.html
+
+-------------------------------------------------------------------
+Wed Jan 28 13:22:03 CET 2009 - rguenther@suse.de
+
+- Update to version 3.2.0.  [bnc#456384]
+  * Extra Precise Iterative Refinement
+  * XBLAS
+  * Non-Negative Diagonals from Householder QR
+  * High Performance QR and Householder Reflections on Low-Profile Matrices
+  * New fast and accurate Jacobi SVD
+  * Routines for Rectangular Full Packed format
+  * Pivoted Cholesky
+  * Mixed precision iterative refinement
+  * Some new variants added for the one sided factorization
+  * More robust DQDS algorithm
+
+-------------------------------------------------------------------
+Sun May 11 14:21:24 CEST 2008 - lrupp@suse.de
+
+- use versioned requires/obsoletes
+- %run_ldconfig is deprecated
+- prefix the patch with the packagename
+
+-------------------------------------------------------------------
+Fri Apr 27 14:17:41 CEST 2007 - rguenther@suse.de
+
+- Update to version 3.1.1.  [#265999]
+- Integrates 3.1.0 errata and missing blas routines.
+- Provides better gfortran SECOND integration.
+- Split shared libraries into their own versioned subpackage.
+
+-------------------------------------------------------------------
+Fri Jan 19 11:35:01 CET 2007 - rguenther@suse.de
+
+- Include fixes for the 3.1.0 errata.
+- Add missing CSROT, DROTM, DROTMG, DSDOT, SDSDOT, SROTM, SROTMG
+  and ZDROT from blas distribution.  [#228824]
+
+-------------------------------------------------------------------
+Thu Dec 14 12:57:12 CET 2006 - rguenther@suse.de
+
+- Restore missing so symlinks.
+
+-------------------------------------------------------------------
+Tue Nov 14 17:26:52 CET 2006 - rguenther@suse.de
+
+- Update to version 3.1.0.
+- Rename blasman to blas-man.
+- Rename lapack-manpages to lapack-man.
+
+-------------------------------------------------------------------
+Tue Oct 31 15:48:05 CET 2006 - rguenther@suse.de
+
+- Trim BuildRequires.
+- Build and package -fPIC static library variants.  [#205310]
+- Fix installing of the libblas.so symlink.
+- Do not package the matrix testing setup library libtmglib.
+- Do not package useless README file.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 13:26:51 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Fri Apr 22 10:40:54 CEST 2005 - meissner@suse.de
+
+- fixed all other instances of -fno-f2c, and g77 -> gfortran use.
+
+-------------------------------------------------------------------
+Thu Apr 21 17:33:58 CEST 2005 - meissner@suse.de
+
+- g77 -> gfortran, -fno-f2c is no more.
+
+-------------------------------------------------------------------
+Sat Jan 29 22:25:13 CET 2005 - nashif@suse.de
+
+- Updated manpages (#48784)
+
+-------------------------------------------------------------------
+Thu Jan 20 01:22:36 CET 2005 - ro@suse.de
+
+- remove BuildPrereq, BuildRequires is generated 
+
+-------------------------------------------------------------------
+Thu Mar 18 05:17:48 CET 2004 - nashif@suse.de
+
+- Fixed permission for manpages (#36340)
+
+-------------------------------------------------------------------
+Sat Jan 10 10:04:03 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Feb  3 14:10:13 CET 2003 - meissner@suse.de
+
+- Use $RPM_OPT_FLAGS, so it builds on ppc64.
+
+-------------------------------------------------------------------
+Mon Aug 26 19:26:23 CEST 2002 - nashif@suse.de
+
+- Fixed manpage conflict
+- correct library version
+
+-------------------------------------------------------------------
+Mon Jul  1 11:02:05 CEST 2002 - ro@suse.de
+
+- use -fPIC for all shared objects
+- link liblapack with shared libblas (same reason)
+
+-------------------------------------------------------------------
+Thu May  2 15:16:43 CEST 2002 - sf@suse.de
+
+- fixed %{_lib}-problems for x86_64
+
+-------------------------------------------------------------------
+Mon Sep 17 17:08:04 CEST 2001 - nashif@suse.de
+
+-  Fixed bug #9925, adding blas to required packages.
+
+-------------------------------------------------------------------
+Tue May  8 12:53:04 CEST 2001 - nashif@suse.de
+
+-  Fixed bug #6803
+
+-------------------------------------------------------------------
+Thu Feb  8 12:12:06 CET 2001 - sf@suse.de
+
+- compile with '-01' for IA64 due to 'internal compiler error' in g77
+
+-------------------------------------------------------------------
+Mon Nov  6 06:36:15 MET 2000 - nashif@suse.de
+
+-  Fixed bug of missing objects (#4028)
+
+-------------------------------------------------------------------
+Sat Apr 22 01:22:23 CEST 2000 - nashif@suse.de
+
+-  Applied new patches
+-  Modified group, url and files in spec
+
+-------------------------------------------------------------------
+Mon Feb 21 13:55:15 CET 2000 - nashif@suse.de
+
+-   Applied new patches 
+
+-------------------------------------------------------------------
+Tue Jan 18 23:22:56 CET 2000 - nashif@suse.de
+
+-   Applied new patched
+-   Moved manpages to /usr/share/man
+
+-------------------------------------------------------------------
+Thu Dec 23 19:37:04 CET 1999 - nashif@suse.de
+
+-    Update to latest version
+-    Package split lapack + blas
+
+-------------------------------------------------------------------
+Thu Oct  7 11:17:15 CEST 1999 - nashif@suse.de
+
+   - Package split: man pages + libraries 
+
+-------------------------------------------------------------------
+Wed Sep 22 21:21:06 CEST 1999 - nashif@suse.de
+
+   - New package: LAPACK
+	Linear Algebra Package (LAPACK) 
+

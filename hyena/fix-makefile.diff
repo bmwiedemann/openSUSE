@@ -1,0 +1,65 @@
+Index: hyena-0.5/build/build.rules.mk
+===================================================================
+--- hyena-0.5.orig/build/build.rules.mk	2010-07-11 21:19:07.000000000 +0200
++++ hyena-0.5/build/build.rules.mk	2011-03-15 10:11:37.972166694 +0100
+@@ -2,7 +2,7 @@ UNIQUE_FILTER_PIPE = tr [:space:] \\n |
+ BUILD_DATA_DIR = $(top_builddir)/bin/share/$(PACKAGE)
+ 
+ SOURCES_BUILD = $(addprefix $(srcdir)/, $(SOURCES))
+-dnl SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
++#SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
+ 
+ RESOURCES_EXPANDED = $(addprefix $(srcdir)/, $(RESOURCES))
+ RESOURCES_BUILD = $(foreach resource, $(RESOURCES_EXPANDED), \
+Index: hyena-0.5/Hyena/Makefile.in
+===================================================================
+--- hyena-0.5.orig/Hyena/Makefile.in	2010-10-06 21:46:07.000000000 +0200
++++ hyena-0.5/Hyena/Makefile.in	2011-03-15 10:13:22.705403674 +0100
+@@ -498,8 +498,6 @@ uninstall-am: uninstall-local uninstall-
+ 	pdf-am ps ps-am uninstall uninstall-am uninstall-local \
+ 	uninstall-moduleSCRIPTS
+ 
+-dnl SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
+-
+ all: $(ASSEMBLY_FILE) theme-icons
+ 
+ run: 
+Index: hyena-0.5/Mono.Data.Sqlite/Makefile.in
+===================================================================
+--- hyena-0.5.orig/Mono.Data.Sqlite/Makefile.in	2010-10-06 21:46:07.000000000 +0200
++++ hyena-0.5/Mono.Data.Sqlite/Makefile.in	2011-03-15 10:14:59.088585373 +0100
+@@ -394,8 +394,6 @@ uninstall-am: uninstall-local uninstall-
+ 	pdf-am ps ps-am uninstall uninstall-am uninstall-local \
+ 	uninstall-moduleSCRIPTS
+ 
+-dnl SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
+-
+ all: $(ASSEMBLY_FILE) theme-icons
+ 
+ run: 
+Index: hyena-0.5/Hyena.Data.Sqlite/Makefile.in
+===================================================================
+--- hyena-0.5.orig/Hyena.Data.Sqlite/Makefile.in	2010-10-06 21:46:07.000000000 +0200
++++ hyena-0.5/Hyena.Data.Sqlite/Makefile.in	2011-03-15 10:17:13.216537752 +0100
+@@ -393,8 +393,6 @@ uninstall-am: uninstall-local uninstall-
+ 	pdf-am ps ps-am uninstall uninstall-am uninstall-local \
+ 	uninstall-moduleSCRIPTS
+ 
+-dnl SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
+-
+ all: $(ASSEMBLY_FILE) theme-icons
+ 
+ run: 
+Index: hyena-0.5/Hyena.Gui/Makefile.in
+===================================================================
+--- hyena-0.5.orig/Hyena.Gui/Makefile.in	2010-10-06 21:46:07.000000000 +0200
++++ hyena-0.5/Hyena.Gui/Makefile.in	2011-03-15 10:17:55.980942727 +0100
+@@ -486,8 +486,6 @@ uninstall-am: uninstall-local uninstall-
+ 	pdf-am ps ps-am uninstall uninstall-am uninstall-local \
+ 	uninstall-moduleSCRIPTS
+ 
+-dnl SOURCES_BUILD += $(top_srcdir)/src/AssemblyInfo.cs
+-
+ all: $(ASSEMBLY_FILE) theme-icons
+ 
+ run: 

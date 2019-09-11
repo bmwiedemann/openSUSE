@@ -1,0 +1,65 @@
+#
+# Macros for cmake
+#
+%__cmake %{_bindir}/cmake
+%__ctest %{_bindir}/ctest
+%__builddir build
+%__builder %__make
+%__sourcedir .
+
+%cmake \
+    find %__sourcedir -name CMakeLists.txt \\\
+        -exec sed -i -re '/^[[:blank:]]*[sS][eE][tT][[:blank:]]*\\\([[:blank:]]*(CMAKE_BUILD_TYPE|CMAKE_COLOR_MAKEFILE|CMAKE_INSTALL_PREFIX|CMAKE_VERBOSE_MAKEFILE).*\\\)/{s/^/#IGNORE /}' {} + \
+    mkdir -p %__builddir \
+    cd %__builddir \
+    %__cmake $OLDPWD/%__sourcedir \\\
+%if "%__builder" == "%__make" \
+        -G"Unix Makefiles" \\\
+%else \
+        -GNinja \\\
+%endif \
+        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
+        -DINCLUDE_INSTALL_DIR:PATH=%{_includedir} \\\
+        -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
+        -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
+        -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
+        -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \\\
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \\\
+        -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}} -DNDEBUG" \\\
+        -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \\\
+%if "%{?_lib}" == "lib64" \
+        -DLIB_SUFFIX=64 \\\
+%endif \
+        -DCMAKE_SKIP_RPATH:BOOL=ON \\\
+        -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\
+        -DBUILD_SHARED_LIBS:BOOL=ON \\\
+        -DBUILD_STATIC_LIBS:BOOL=OFF \\\
+        -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \\\
+        -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \\\
+        -DCMAKE_MODULES_INSTALL_DIR=%{_datadir}/cmake/Modules
+
+%__builder_verbose \
+%if "%__builder" == "%__make" \
+    %{?_make_output_sync} VERBOSE=1 \\\
+%else \
+    -v \\\
+%endif \
+%{nil}
+
+%cmake_build %__builder \\%__builder_verbose %{?_smp_mflags}
+
+%make_jobs \
+    echo "Deprecated %%make_jobs macro used, please use %%cmake_build" \
+    %cmake_build
+
+%cmake_install \
+    DESTDIR=%{buildroot} %__builder install -C %__builddir
+
+%ctest(:-:) \
+    cd %__builddir \
+    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** \
+    cd ..

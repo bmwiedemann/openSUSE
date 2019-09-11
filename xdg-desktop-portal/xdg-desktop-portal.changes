@@ -1,0 +1,238 @@
+-------------------------------------------------------------------
+Thu Jun 13 23:39:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2:
+  + Build fixes.
+- Changes from version 1.4.1:
+  + Build fixes.
+- Changes from version 1.4.0:
+  + Add a background & autostart portal.
+  + Add a gamemode portal.
+  + Add a camera portal.
+  + Require pipewire 0.2.6.
+  + inhibit: Track session state.
+  + documents: Fix a ref-counting bug.
+  + screencast:
+    - Add cursor modes.
+    - Memory leak fixes.
+  + Updated translations.
+- Add pkgconfig(json-glib-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Apr 10 12:29:04 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildIgnore xdg-desktop-portal: self-requires is not needed here
+  to build. Flatkpak has a (correct) dependency on
+  xdg-desktop-portal, but since we don't run flatpak during build,
+  but merely require its -devel package, we can break up this
+  chain.
+
+-------------------------------------------------------------------
+Wed Jan 30 17:06:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.2.0:
+  + notification:
+    - Use icon validator from flatpak.
+    - Don't leave temp files around.
+  + email: Validate options better.
+  + inhibit: Validate options better.
+  + file chooser: Add support for setting the current filter.
+  + Updated translations.
+- Changes from version 1.1.1:
+  + Validate icons in notifications.
+  + Respect lockdown settings.
+  + Write back permissions for notifications to indicate portal
+    use.
+  + Set st_nlink in the documents portal.
+  + Add infrastructure for validating options.
+  + Validate email addresses.
+  + Updated translations.
+- Changes from version 1.1.0:
+  + Add a location portal, this requires geoclue 2.5.2.
+  + Add a settings portal, for desktop-wide settings like XSettings
+    or kdeglobals.
+  + Allow locking down printing, save-to-disk and opening uris.
+  + Monitor application changes in the open uri portal.
+  + Add more tests.
+  + Fix a crash when xdg-desktop-portal-gtk times out (boo#1118121,
+    gh#flatpak/xdg-desktop-portal#236).
+- Add pkgconfig(fontconfig) and pkgconfig(flatpak) BuildRequires:
+  New dependencies.
+- Add pkgconfig(libgeoclue-2.0) BuildRequires and pass
+  enable-geoclue to configure, build new optional location portal.
+
+-------------------------------------------------------------------
+Wed Dec 19 21:50:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.0.3:
+  + Fix an option name in the remote desktop portal
+  + document-portal: Validate permissions and report errors
+  + Fix life-cycle issues with inodes in the document portal
+  + Improve the test coverage of the documents portal
+  + Add a 'coverage' make target
+- Changes from version 1.0.2:
+  + networkmonitor: Fix several issues
+  + inhibit: Add session state monitoring
+- Changes from version 1.0.1:
+  + networkmonitor: Add GetStatus and CanReach methods
+  + Unset GTK_USE_PORTAL
+  + Add a portal for moving files to the trash
+  + Fix an inode leak in the document portal
+- Changes from version 1.0:
+  + screenshot: Add a color picker api
+  + screencast: Bump the pipewire dependency to 0.2.1
+  + Improve --help output
+  + Small documentation improvements
+- Changes from version 0.99:
+  + The NetworkMonitor portal API has been changed to allow access
+    control
+  + The Proxy and NetworkMonitor portals only respond to requests
+    from sandboxes with network access
+  + The flatpak portal is now documented
+- Switch to tarball releases, upstream now releases stable
+  tarballs.
+- Following the above, drop libtool BuildRequires and autogen.sh
+  macro call.
+- Add pkgconfig(libpipewire-0.2) and pass --enable-pipewire to
+  configure, build screencast and screenshot support.
+
+-------------------------------------------------------------------
+Tue Jun 26 10:08:20 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.11:
+  + OpenURI:
+    - Fix misleading warning when accessing the permission store
+    - Don't skip the dialog based on content type if a threshold is
+      set
+  + document-portal:
+    - Support non-O_PATH fds for adding existing files
+    - Only give DELETE right if you also get WRITE rights
+    - Make fd validation stricter wrt /proc/pid/fd symlink
+    - Rewrite paths in data
+    - Verify access right on fds
+    - Add some debug spew
+  + XdpAppInfo: Nicer handling of kind
+  + Add support for snap packages
+  + XdpAppInfo: Centralize handling of xdp_app_info_new_host ()
+  + Broaden what are valid app ids to allow snap.$PKGNAME
+  + README: Fix docs link
+  + Don't register http: uris
+  + remote-desktop: Correct device type values
+  + utils:
+    - Generalize XdpAppInfo with a tagged union
+    - Clarify content of app_infos hash table
+    - Use more constants for interactions with the dbus-daemon
+    - Don't leak names whose ownership changed
+  + file-chooser: Handle save-file backend failure
+  + screen-cast: add missing sync request
+  + documents xml: Correct flag value for as-needed-by-app
+  + build: Run install-test-data-hook as intended
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:15:29 UTC 2018 - fcrozat@suse.com
+
+- Remove BuildRequires(flatpak), it is not needed.
+- Own /usr/share/dbus-1, /usr/share/dbus-1/{interfaces,services}
+  which were owned by flatpak package before.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:45:21 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:42:58 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.10:
+  + xdg-document-portal moved here from flatpak.
+  + Add a new screencast and remote desktop portal based on
+    PipeWire.
+- Pass --disable-pipewire to configure: pipewire has not yet been
+  packaged for openSUSE.
+- Add pgkconfig(fuse) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Feb 06 18:55:25 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.9:
+  + Install pkg-config files into datadir.
+  + Avoid a race in the portal APIs.
+  + Change the email portal to take fds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 26 12:26:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.8:
+  + Update po files.
+- Changes from version 0.7:
+  + notification: Fix copy+paste error.
+  + notification: Subscribe to the right interface for signals.
+  + If the random request ID creates a collision, pick a new random
+    ID.
+  + Add some rationale.
+  + Fix a typo.
+  + Update README.md.
+  + OpenURI: Refuse to handle file: uris.
+  + Add an OpenFile method.
+  + OpenFile: Fix URI.
+  + Cache entire flatpak info file for peer, not just app id.
+  + Store the cached flatpak-info keyfile with the request.
+  + OpenFile: Rewrite app paths in /usr and /app (and /newroot).
+  + OpenFile: Ensure that passed O_PATH fd is correct.
+  + Send more data to the appchooser.
+  + Updated translations.
+- Changes from version 0.6:
+  + Remove what appears to be printing lines from a debugging
+    session.
+  + open-uri: Fix segfault crash when no content-type can be
+    resolved.
+  + account: Remove debug spew.
+  + Update README.md.
+  + Add an email portal.
+  + Include the email portal in the docs.
+  + build: No need to clean org.freedesktop.portal.Desktop.service
+    twice.
+  + Add a systemd user unit corresponding to the session service.
+  + notifications: Add better debug and error messages.
+  + device: Add more detail to error messages.
+  + Handle g_variant_lookup failure.
+  + Encode po/Makevars in UTF-8.
+  + Initialize autofree string variable to NULL.
+  + open-uri: Implement a more permissive policy for the OpenURI
+    portal.
+  + data: Fix typo in NetworkMonitor XML definition.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 22 09:50:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.5:
+  + notification: Support 'non-exported actions.
+  + Fix issues found in testing.
+  + Avoid a crash when removing notifications.
+  + Add an Account portal.
+  + Change the Account portal API.
+  + Update README.md.
+  + Add a version property to all portal interfaces.
+  + Fix a refcounting snafu.
+  + file chooser:
+    - Always grant write permissions for save dialogs.
+    - Fix reading the writable property.
+  + Simplify version support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 11 01:51:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.4:
+  + No longer rely on cgroups to find the app id.
+  + Fix handling of mime type filters in the file chooser portal.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov  3 16:54:10 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, version 0.3.
+

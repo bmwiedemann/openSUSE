@@ -1,0 +1,636 @@
+-------------------------------------------------------------------
+Tue Jul  9 17:52:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- New upstream release 4.2.1:
+  * FEATURES:
+    - Added num.tls and num.tls6 stat counters.
+    - PR #12: send-buffer-size, receive-buffer-size,
+      tcp-reject-overflow options for nsd.conf, from Jeroen Koekkoek.
+    - Fix #14, tcp connections have 1/10 to be active and have to work
+      every second, and then they get time to complete during a reload,
+      this is a process that lingers with the old version during a version
+      update.
+
+  * BUG FIXES:
+    - Fix #13: Stray dot at the end of some log entries, removes dot
+      after updated serial number in log entry.
+    - Fix TLS cipher selection, the previous was redundant, prefers
+      CHACHA20-POLY1305 over AESGCM and was not as readable as it
+      could be.
+    - Consolidate server tls context create and remote control context
+      create, with hardening for the remote control tls context too.
+    - Fix to init event structure for reassignment.
+    - Fix to init event not pointer, in reassignment.
+    - Fix #15: crash in SSL library, initialize variables for TCP access
+      when TLS is configured.
+    - Fix tls handshake event callback function mistake, reported
+      by Mykhailo Danylenko.
+    - Initialize event structures before event_set, to stop uninitialized
+      values from setting event library lists and assertions, that would
+      sometimes also show after event_del.
+    - Do not use symbol from libc, instead use own replacement, if not
+      available, for accept4.
+    - Fix output of nsd-checkconf -h.
+
+-------------------------------------------------------------------
+Tue Jun 11 18:43:46 UTC 2019 - Adam Majer <amajer@suse.com>
+
+- New upstream release 4.2.0:
+  * Implement TCP fast open
+  * Added DNS over TLS
+  * TLS OCSP stapling support with the tls-service-ocsp option
+  * New option hide-identity can be used in nsd.conf to stop NSD
+    from responding with the hostname for probe queries that
+    elicit the chaos class response, this is conform RFC4892
+  * Disable TLS1.0, TLS1.1 and weak ciphers, enable CIPHER_SERVER_PREFERENCE
+
+-------------------------------------------------------------------
+Mon Mar 25 18:50:27 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream release 4.1.27:
+  * FEATURES:
+    - Deny ANY with only one RR in response, by default.  Patch from
+      Daisuke Higashi.  The deny-any statement in nsd.conf sets ANY
+      queries over UDP to be further moved to TCP as well.
+      Also no additional section processig for type ANY, reducing
+      the response size.
+    - Fix #4215: on-the-fly change of TSIG keys with patch from Igor, adds
+      nsd-control print_tsig, update_tsig, add_tsig, assoc_tsig
+      and del_tsig.  These changes are gone after reload, edit the
+      config file (or a file included from it) to make changes that
+      last after restart.
+  * BUG FIXES:
+    - Fix #4213: disable-ipv6 and dnstap compile error.
+    - Fix to reduce region_log_stats if condition, this removes a
+      debug statement.
+    - Fix for FreeBSD port with dnstap enabled.
+    - Fix to remove unused code.
+    - Fix #6: nsd-control-setup: Change validity time to a shorter
+      period (<2038).
+    - Fix unused definition in header remote.h.
+    - Fix #4236: IPV4_MINIMAL_RESPONSE_SIZE=1480 is slightly too big.
+    - Fix #4235: IP_PMTUDISC_OMIT on IPv4/UDP sockets.
+    - Fixed radtree_insert memory leak.
+    - Fixed access recycled variable.
+
+-------------------------------------------------------------------
+Tue Dec  4 19:37:05 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream release 4.1.26:
+  * FEATURES:
+    - DNSTAP support for NSD, --enable-dnstap and then config in nsd.conf.
+    - Support SO_REUSEPORT_LB in FreeBSD 12 with the reuseport: yes
+      option in nsd.conf.
+    - Added nsd-control changezone.  nsd-control changezone name pattern
+      allows the change of a zone pattern option without downtime for
+      the zone, in one operation.
+  * BUG FIXES:
+    - Fix #4194: Zone file parser derailed by non-FQDN names in RHS of
+      DNSSEC RRs.
+    - Fix #4202: nsd-control delzone incorrect exit code on error.
+    - Tab style fix to use tab for 8 spaces, from Xiaobo Liu.
+    - Fix #4205: enable-recvmmsg in mixed IPv4/IPv6 environment fails.
+      This sets the msg_hdr.msg_namelen correctly after receipt.
+    - Fix to not set GLOB_NOSORT so the nsd.conf include: files are
+      sorted and in a predictable order.
+    - Fix #3433: document that reconfig does not change per-zone stats.
+
+-------------------------------------------------------------------
+Tue Sep 25 18:17:03 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream release 4.1.25:
+  * FEATURES:
+    - nsd-control prints neater errors for file failures.
+  * BUG FIXES:
+    - Fix that nsec3 precompile deletion happens before the RRs of
+      the zone are deleted.
+    - Fix printout of accepted remote control connection for unix sockets.
+    - Fix use_systemd typo/leftover in remote.c.
+    - Fix codingstyle in nsd-checkconf.c in patch from Sharp Liu.
+    - append_trailing_slash has one implementation and is not repeated
+      differently.
+    - Fix coding style in nsd.c
+    - Fix to combine the same error function into one, from Xiaobo Liu.
+    - Fix initialisation in remote.c.
+    - please clang analyzer and fix parse of IPSECKEY with bad gateway.
+    - Fix nsd-checkconf fail on bad zone name.
+    - Annotate exit functions with noreturn.
+    - Remove unused if clause during server service startup.
+    - Fix #4156: Fix systemd service manager state change notification
+      When it is compiled, systemd readiness signalling is enabled.
+      The option in nsd.conf is not used, it is ignored when read.
+
+-------------------------------------------------------------------
+Mon Aug 13 20:10:27 UTC 2018 - michael@stroeder.com
+
+- Update to upstream release 4.1.24:
+  - Features
+    * #4102: control interface via local socket
+    * configure --enable-systemd (needs pkg-config and libsystemd) can be 
+      used to then use-systemd: yes in nsd.conf and have readiness signalling 
+      with systemd.
+    * RFC8162 support, for record type SMIMEA.
+  - Bug Fixes
+    * Patch to fix openwrt for mac os build darwin detection in configure.
+    * Fix that first control-interface determines if TLS is used.
+      Warn when IP address interfaces are used without TLS.
+    * #4106: Fix that stats printed from nsd-control are recast from
+      unsigned long to unsigned (remote.c).
+    * Fix that type CAA (and URI) in the zone file can contain dots
+      when not in quotes.
+    * #4133: Fix that when IXFR contains a zone with broken NSEC3PARAM chain,
+      NSD leniently attempts to find a working NSEC3PARAM.
+
+-------------------------------------------------------------------
+Mon Jul 30 18:47:44 UTC 2018 - michael@stroeder.com
+
+- Update to upstream release 4.1.23:
+  - Fix NSD time sensitive TSIG compare vulnerability.
+
+-------------------------------------------------------------------
+Tue Jul  3 10:34:07 UTC 2018 - michael@stroeder.com
+
+- Update to upstream release 4.1.22:
+  - Features:
+    * refuse-any sends truncation (+TC) in reply to ANY queries
+    over UDP, and allows TCP queries like normal.
+    * Use accept4 to speed up answer of TCP queries
+  - Bug fixes:
+    * Fix nsec3 hash of parent and child co-hosted nsec3 enabled zones.
+    * Fix to use same condition for nsec3 hash allocation and free.
+
+- Changes in version 4.1.21:
+  - Features:
+    * --enable-memclean cleans up memory for use with memory checkers,
+      eg. valgrind.
+    * refuse-any nsd.conf option that refuses queries of type ANY.
+    * lower memory usage for tcp connections, so tcp-count can be
+      higher.
+  - Bug fixes:
+    * Fix spelling error in xfr-inspect.
+    * Fix buffer size warnings from compiler on filename lengths.
+
+-------------------------------------------------------------------
+Wed Feb 21 09:52:31 UTC 2018 - mvetter@suse.com
+
+- Update to 4.1.20:
+  + Fix memory leak in zone file read of unknown rr formatted RRs.
+  + Fix memory leak when rehashing nsec3 after axfr or zonefile
+    read, in the selectively allocated precompiled nsec3 hashes.
+
+-------------------------------------------------------------------
+Mon Feb 19 10:17:15 UTC 2018 - adam.majer@suse.de
+
+- Own missing ownership for %_tmpfilesdir
+
+-------------------------------------------------------------------
+Fri Feb 16 08:07:47 UTC 2018 - adam.majer@suse.de
+
+- More specfile cleanup:
+  + Drop SysV support from package (and hence usage of fillup)
+  + Don't redefine %_rundir
+  + Drop useless BuildRequires on systemd-devel
+
+-------------------------------------------------------------------
+Mon Feb 12 11:50:14 UTC 2018 - jengelh@inai.de
+
+- Check group existence before creating it, for real.
+- Stop deleting users from the system, it might remove a legitimate
+  user that nsd unfortunately shared its name with.
+
+-------------------------------------------------------------------
+Mon Feb 12 08:54:46 UTC 2018 - adam.majer@suse.de
+
+- Create a system user, not a regular user
+- Check if user/group already exists and are in system range
+- Do not ignore return values from user/group creation
+- Own the config zones directory
+
+-------------------------------------------------------------------
+Mon Feb  5 10:26:02 UTC 2018 - adam.majer@suse.de
+
+- drop insserv requires on SLE12+ and openSUSE
+- nsd-lintrpmrc: drop most overrides
+- don't install config file as sample
+- switch to using user/group names _nsd to match expected names
+  as per recent rpmlint changes as not to conflict with admin
+  created names.
+- update and change current owner during upgrade
+
+-------------------------------------------------------------------
+Tue Jan  2 11:18:40 UTC 2018 - michael@stroeder.com
+
+- update to 4.1.19 with the following bug fixes:
+  * ignore fallthrough compiler warning in flex EOF rule.
+  * Fix warnings emitted by clang for --enable-packed.  Alignment is not
+    a problem for x86_64, don't enable packed when the platform
+    requires aligned access.
+  * Fix spelling error in xfr-inspect.
+  * Fix 3392: Fix regression in 4.1.18 for notify lists with ip4
+    and ip6 targets.
+
+-------------------------------------------------------------------
+Thu Nov 30 14:15:02 UTC 2017 - michael@stroeder.com
+
+- update to 4.1.18
+  - Features
+    * xfr-inspect, it is not installed, it prints xfr files from /tmp made 
+      with 'make xfr-inspect' in the source dir.
+    * retry timeout between sending notifies dropped from 15 to 3 sec.
+    * NSD sends 16 notifies simultaneously.
+    * configure --enable-packed reduces memory usage, at expense of unaligned 
+      reads. Saves about 17%.
+    * Save memory by selectively allocate precompiled nsec3 hashes, saves 
+      about 16% memory.
+    * make ip-transparent option work on OpenBSD.
+    * Save about 2% memory by changing usage count size in name tree.
+    * Fix #2871: Increase number of sockets for xfrd transfers.
+  - Bugfixes
+    * Fix gcc 7.1.1 warnings.
+    * Fix writev compile warning on FreeBSD.
+    * Fix #1446: A corrupted zone file "propagates" to good ones.
+    * nsd-control zonestatus prints wait time between attempts, for zones 
+      that are in that waiting time.
+    * Fix collision printout of nsec3 to print name, hash and reverse.
+    * Fix #1567: Change crit to err log level for gettimeofday failure. Add 
+      defines for compile without syslog.
+    * Fix crash for DS query when parent and child zones both configured in 
+      nsd.conf and parent zone has not loaded properly.
+
+-------------------------------------------------------------------
+Mon Sep  4 17:13:03 UTC 2017 - michael@stroeder.com
+
+- update to 4.1.17
+  - Features
+    * zone parser parses type AVC (it has TXT format).
+    * Fix #1272: use writev to put tcp length field with data for
+      outgoing zone transfer requests.
+  - Bugfixes
+    * Fix potential null pointer in nsec3 adjustment tree.
+    * Fix text format of deletes for CDS and CDNSKEY, single 0 to
+      represent empty base64 or hex string.
+
+-------------------------------------------------------------------
+Mon May  8 21:55:51 UTC 2017 - michael@stroeder.com
+
+- update to 4.1.16
+  - Features
+    * zone parser can parse acronyms for algorithms ED25519 and ED448.
+    * Fix 1243: Option to make NSD emit really minimal responses, 
+      minimal-responses: yes in nsd.conf.
+  - Bugfixes
+    * Calculate new udb index after growing the array, fix from Chaofeng Liu.
+    * Fix missing _t to _type conversion for disable-radix-tree option.
+    * Printout serial error with hint it may be too big.
+    * Fix 1228: OpenSSL include is not guarded with HAVE_SSL
+    * Patch for expire state in multi-master when masters includes broken 
+      master, from Manabu Sonoda.
+    * minor manpage fix.
+
+-------------------------------------------------------------------
+Mon Apr 24 15:00:38 UTC 2017 - michael@stroeder.com
+
+- update to 4.1.15
+  * Fix nsd-control and ipv6 only.
+  * Squelch zone transfer error address family not supported by protocol at 
+    low verbosity levels.
+  * Fix #1195: Fix so that NSD fails on non-compliant values for Serial.
+  * Fix to rename _t typedefs because POSIX reserves them.
+  * Fix that nsec3 hash collisions only reported on verbosity level 3.
+
+-------------------------------------------------------------------
+Fri Jan 13 14:33:29 UTC 2017 - michael@stroeder.com
+
+- update to 4.1.14
+  - Features
+    * Fix #1132 for SERVFAIL zones perform backoff, and remembers the timeout 
+      on next startup.
+  - Bugfixes
+    * Fix null memcpy for radixtree with single link element.
+    * Robust fix against missing master in tcp_open for xfrd.
+    * Fix wildcards in include: config statements with chroot enabled.
+    * suppress compile warning in lex files.
+    * Fix to try every master once, then wait for timeout or notify.
+    * Save backoff timeout into xfrd.state file, this file has a higher 
+      version number now. Old files are skipped silently (causes refresh) and 
+      created as new files upon exit.
+    * Fix restart of zone transfers when new config becomes available.
+
+-------------------------------------------------------------------
+Tue Oct 11 11:36:47 UTC 2016 - adam.majer@suse.de
+
+- fix tmpfiles-nsd.conf to point to /run instead of /var/run
+- add nsd-rpmlintrc to not display some bogus errors
+- put log files into /var/log/nsd/
+- put sample config in documentation directory
+- update to 4.1.13
+  - FEATURES
+    - multi-master-check: yes can be used to check all masters for
+      the last version, using the higher version from the
+      configured masters
+    - Support RR type OPENPGPKEY from RFC 7929.
+    - Can config key algorithms with the digest name, eg. 'sha256'.
+    - configure --disable-radix-tree for about 15% lower memory
+      usage.
+    - for type SRV add A/AAAA to the additional section (if
+      possible), just like we already do for type MX.
+    - more extensible edns option handling.
+    - When tcp is more than half full, use short timeout for tcp
+      session.
+    - Patch for {max,min}-{refresh,retry}-time
+    - Fix #790: size-limit-xfr can stop NSD from downloading
+      infinite zone transfer data size, from Toshifumi Sakaguchi.
+      Fixes CVE-2016-6173f
+
+  - BUGFIXES
+    - Fix compile warnings about unused result from write and
+      strtol. and signcompare in minmax retrytime.
+    - Fix #812: fix that make depend fails after distribution.
+    - Fix #817: xfrd update failed loop.
+    - Add robustness against unallocated data in nsec3 trees.
+    - Fix README spelling error of BSD license
+    - Fix multimaster for not tried full zone transfer for a
+      expired zone.
+    - Fix #827: fix compile with openssl 1.1.0 with api=1.1.0.
+    - Fix malformed edns query assertion failure
+    - Fix build without IPv6, patch from Zdenek Kaspar.
+    - Fix #783: Trying to run a root server without having
+      configured it silently gives wrong answers.
+    - Fix #782: Serve DS record but parent zone has no NS record.
+    - Fix nsec3 missing for nsec3 signed parent and child for DS at
+      zonecut.
+
+-------------------------------------------------------------------
+Mon Aug  8 13:10:49 UTC 2016 - adam.majer@suse.de
+
+- reword description and summary
+- add signature file and basic keyring (currently only contains
+  signature of the released version since upstream doesn't seem
+  to distribute a real keyring)
+- remove redundant nsec3 configure option which are enabled by default
+- remove obsolete --enable-draft-rrtypes configure
+
+-------------------------------------------------------------------
+Wed Jun 29 01:11:13 UTC 2016 - mrueckert@suse.de
+
+- update to 4.1.10
+  - FEATURES:
+    - ip-freebind: yesno option in nsd.conf sets IP_FREEBIND socket
+      option for Linux, binds to interfaces and addresses that are
+      down.
+    - NSD includes AAAA before A for queries over IPV6 (in
+      delegations).  And TC is set if no glue can be provided with
+      a delegation because of packet size.
+    - print notice that nsd is starting before taking off.
+  - BUG FIXES:
+    - Fix for openssl 1.1.0, HMAC_CTX size not exported from
+      openssl.
+    - Fix #751: NSD fails to occlude names below a DNAME.
+    - If set without nsd.db print "" as the default in the man
+      pages.
+    - Fix #755: NSD spins after a zone update and a lot of TCP
+      queries.
+    - Fix for NSEC3 with zone signed without exact match for empty
+      nonterminals, the answer for that domain gets closest
+      encloser.
+    - #772 Document that recvmmsg has IPv6 problems on some linux
+      kernels.
+
+-------------------------------------------------------------------
+Tue May 10 21:58:55 UTC 2016 - mrueckert@suse.de
+
+- update to 4.1.9
+  - Change the nsd.db file version because of nanosecond precision
+    fix.
+- changes from 4.1.8
+  - #732: tcp-mss, outgoing-tcp-mss options for nsd.conf, patch
+    from Daisuke Higashi.
+  - #739: zonefile changes when mtime is small are detected on
+    reload, if filesystem supports precision mtime values.
+  - RR type CSYNC (RFC7477) syntax is supported.
+  - take advantage of arc4random_uniform if available, patch from
+    Loganaden Velvindron.
+  - Fix flto check for OSX clang.
+  - Define _DEFAULT_SOURCE with _BSD_SOURCE for glibc 2.20 on
+    Linux.
+  - Fix #736: segfault during zone transfer.
+  - Fix #744: Fix that NSD replies for configured but unloaded zone
+    with SERVFAIL, not REFUSED.
+
+-------------------------------------------------------------------
+Tue Dec 29 23:41:33 UTC 2015 - mrueckert@suse.de
+
+- update to 4.1.7
+  - support configure --with-dbfile="" for nodb mode by default,
+    where there is no binary database, but nsd reads and writes
+    zonefiles.
+  - reuseport: no is the default, because the feature is not
+    troublefree.
+  - configure --enable-ratelimit-default-is-off with
+    --enable-ratelimit to set the default ratelimit to disabled but
+    available in nsd.conf.
+  - version: "string" option to set chaos version query reply
+    string.
+  - Fix zones updates from nsd parent event loop when there are a
+    lot of interfaces.
+  - portability fixes.
+  - patch from Doug Hogan for SSL_OP_NO_SSLvx options, for the new
+    defaults in the ssl libraries.
+  - updated contrib/nsd.spec, from Bálint Szigeti, with new
+    configure options.
+  - Allocate less memory for TSIG digest.
+  - Fix #721: Fix wrong error code (FORMERR) returned for unknown
+    opcode.  NOTIMP expected.
+  - Fix zonec ttl mismatch printout to include more information.
+  - Fix TCP responses when REUSEPORT is in use by turning it off.
+  - Document default in manpage for rrl-slip, ip4 and 6
+    prefixlength.
+  - Explain rrl-slip better in documentation.
+  - Document that ratelimit qps and slip are updated in reconfig.
+  - Fix up defaults in manpage.
+
+-------------------------------------------------------------------
+Thu Nov 26 00:03:05 UTC 2015 - mrueckert@suse.de
+
+- enable zone stats
+
+-------------------------------------------------------------------
+Wed Nov 25 23:32:33 UTC 2015 - mrueckert@suse.de
+
+- update to 4.1.6
+  - Fix compile of zonec error message on FreeBSD.
+  - nsd-checkconf warns for master zones with no zonefile
+    statement.
+  - Fix start failure when many file descriptors are in use.
+  - The servfail rcode is not printed with a space in the middle.
+  - fixup file descriptor fixup nicer.
+  - print failed token for config syntax error or parse error.
+  - Fix #711: Document that debug-mode yes is used for staying
+    attached to the supervisor console.
+  - Document verbosity 3 prints more information.
+  - makedist.sh print on pgp signature creation.
+  - Fix typo in zonec.c inside error message.
+  - Fix #701: Fix that AD=1 set in a BADVERS response.
+  - Fix #706: default port 53 not opened on ip4 because of
+    getaddrinfo hints initialisation failure.
+  - Fix #698 formatting errors and typos in nsd.8.in.
+  - Add --enable-pie and --enable-relro-now options.
+  - Admitted axfrs are logged at verbosity 1.  Refused at verbosity
+    2.
+  - Fixed checkconf test for reuseport setting.
+  - SO_REUSEPORT does not work on FreeBSD.  Enabled by default on
+    Linux, not enabled by default on other OSes.
+  - Fix that notify from nsd-control contains soa serial.
+  - squelch SO_REUSEPORT failure on verbosity less than 3.
+  - removed hardcoded interface limit, --with-max-ips removed.
+  - SO_REUSEPORT support.
+  - Fix #618: documented need to list ip-addresses seperately in
+    nsd.conf if there are multiple, because the source address of
+    replies can otherwise go wrong.
+  - Fix that for expired zones NSD performs an AXFR and accepts
+    newer and older serial numbers.
+  - Document that minimal responses only minimizes responses to fit
+    in one datagram.  It does not minimize smaller responses.
+  - Fix NSID response for short edns sizes.
+  - Trunk contains 4.1.4 in development.
+  - improve nsd-control usage text. (23 june - added to 4.1.3)
+  - RFC7553 RR Type URI support.
+  - Fix redefined macro lex warning for freebsd flex.
+  - Fix that formerrors are ratelimited.
+  - max-interfaces raised to 32.
+  - removed unused defines for unofficial tsig-hmac algorithm
+    codes.  The TSIG algorithm is identified by name in the config
+    file.
+  - hmac sha224, sha384 and sha512 support, patch from David
+    Gwynne.
+  - Fix crash in zone parser for relative dname after error in
+    origin.
+  - Test for zone parser failures
+  - nsd-control addzones and delzones read list of zones from
+    stdin.
+  - Fix task and zonestat files to be stored in a subdirectory in
+    tmp to stop privilege elevation.
+  - printout names for successful addition and removal with bulk
+    command.
+  - Fix #665: when removing subdomain, nsd does not reparse parent
+    zone.
+  - trunk contains 4.1.3(upcoming).
+  - Made log message more consistent, changed 'axfr refused' log
+    message to be more consistent with other messages.  Also notify
+    refused.
+  - verbosity 2 logs axfr refused and notify refused.  verbosity 1
+    contains less log messages.
+  - Fix #654: Fix contradiction in notify logging verbosity level.
+  - Incoming notifies have serial number logged (at verbosity 1).
+  - Fix #655: Fix contradiction in verbosity for zone transfers.
+  - Use reallocarray for integer overflow protection, patch
+    submitted by Loganaden Velvindron.
+  - Fix allocation integer overflow checks.
+  - Fix buffer overflow in config parse of domain name, reported by
+    John Van de Meulebrouck Brendgard.
+  - Updated default keylength in nsd-control-setup to 3k.
+  - Fix use after free after zonefile syntax error followed by ttl
+    or origin directive, reported by John Van de Meulebrouck
+    Brendgard.
+  - Fix syntax error followed by too many TXT elements parse crash
+    reported by John Van de Meulebrouck Brendgard.
+  - Fix origin directive from unused old value and subdomain parser
+    failure, reported by John Van de Meulebrouck Brendgard.
+  - Fix b64pton out of bounds error on invalid zonefile input
+    reported by John Van de Meulebrouck Brendgard.
+  - Fix segfault on double origin in zone reader (thanks John Van
+    de Meulebrouck Brendgard).
+  - Remove dead code domain_table_iterate.
+  - Fix segfault in zone reader on invalid input reported by John
+    Van de Meulebrouck Brendgard.
+  - Fix #642: Change 'zone read with no errors' to '.. with
+    success'.  Patch from Benedikt Heine.
+
+-------------------------------------------------------------------
+Tue Oct 13 05:46:28 UTC 2015 - michael@stroeder.com
+
+- ignore absence of the systemd-tmpfiles command
+
+-------------------------------------------------------------------
+Wed Mar 11 01:33:27 UTC 2015 - mrueckert@suse.de
+
+- update to 4.1.1
+  - RFC 7344: CDS and CDNSKEY (read record types).
+  - per zone statistics with --enable-zone-stats, config zone with
+    zonestats: "name", zones configured with the same string are
+    added.
+  - Disabled use of SSLv3 in nsd-control.
+  - nsd-checkconf -f prints out full name of pidfile (with dir).
+  - Synthesize CNAMEs with same TTL as DNAME.
+  - Fix that expired zones stay expired after a server restart.
+  - Fix "xfrd_handle_ipc: bad mode" log errors when compiled with
+    --disable-bind8-stats.
+  - Fix #616: retry xfer for zones with no content after command.
+  - Fix char used as array index warnings on NetBSD.
+  - Fix that queries for noname CH TXT are REFUSED instead of
+    nodata.
+  - Fixes for wildcard addition and deletion, speedup for some
+    cases.
+  - Fix that failure to add tcp to tcp base does not leak the
+    socket.
+  - Patch nsd_munin_ from Philip Paeps to use type ABSOLUTE.
+  - Fix spinning NSD with lots of failing transfers, due to pointer
+    comparison using void pointer subtraction (from Otto Moerbeek).
+  - Fix bug#637: fix that nsd.db grows limitlessly, an off by one
+    on one megabyte free chunks, created during AXFRs of large
+    zones, that caused the one megabyte chunk to be leaked.
+  - Fix casts for ctype functions (from Todd Miller).
+  - correct some hyphen-used-as-minus-sign (from Andreas Schulze)
+    in man pages.
+  - Fix zonesdir chroot error message.
+
+-------------------------------------------------------------------
+Mon Dec 15 12:29:05 UTC 2014 - mrueckert@suse.de
+
+- update to 4.1.0
+  see /usr/share/doc/packages/NSD-4-features for the important
+  changes
+
+-------------------------------------------------------------------
+Sun Dec 29 04:24:32 UTC 2013 - mrueckert@suse.de
+
+- update to 4.0.0
+  see /usr/share/doc/packages/NSD-4-features for the important
+  changes
+- added systemd support
+
+-------------------------------------------------------------------
+Wed Aug 15 10:07:44 UTC 2012 - mrueckert@suse.de
+
+- update to 3.2.13: (bnc#774600)
+  see /usr/share/doc/packages/nsd/ChangeLog
+
+  This fixes VU#517036 CVE-2012-2979 and VU#624931 CVE-2012-2978.
+
+-------------------------------------------------------------------
+Tue Apr 12 02:24:10 UTC 2011 - mrueckert@suse.de
+
+- update to 3.2.8
+  see /usr/share/doc/packages/nsd/ChangeLog
+
+-------------------------------------------------------------------
+Wed Sep  1 16:29:48 UTC 2010 - suse-tux@gmx.de
+
+- fixed build
+
+-------------------------------------------------------------------
+Mon Feb  1 19:51:54 UTC 2010 - mrueckert@suse.de
+
+- use the pid when sending signnals to nsd
+
+-------------------------------------------------------------------
+Thu Mar 29 17:16:54 CEST 2007 - mrueckert@suse.de
+
+- added pwdutils explicitly to the requires/buildrequires.
+- add log file to the package
+
+-------------------------------------------------------------------
+Thu Mar 29 07:15:13 CEST 2007 - mrueckert@suse.de
+
+- update to 3.0.5
+

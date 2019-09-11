@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Apr 24 08:53:23 UTC 2019 - mvetter@suse.com
+
+- Update to 1.5:
+  * Fix invalid free in case rofi dir didn't already exist
+
+-------------------------------------------------------------------
+Tue Apr 23 05:54:33 UTC 2019 - mvetter@suse.com
+
+- Update to 1.4:
+  * Fix parsing result with -terse
+  * Add history feature (#6)
+
+-------------------------------------------------------------------
+Tue Apr  2 10:38:44 UTC 2019 - mvetter@suse.com
+
+- Update to 1.3:
+  * Add -no-bold flag to disable bold results
+  * Implement -terse option
+
+-------------------------------------------------------------------
+Mon Apr  1 08:23:56 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1:
+  * Add -calc-command to specify a shell command (#3)
+  * Execute with last_result from qalc when Ctrl+Enter is pressed (#3)
+
+-------------------------------------------------------------------
+Thu Mar 14 20:16:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Encode % inside description. Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Mar 13 07:27:23 UTC 2019 - mvetter@suse.com
+
+- Update to 1.0:
+  * Better dependency form
+  * Check for cairo
+  * Add qalculate version warning
+  * Use pluginsdir for installation
+  * Do not hardcode rofi path
+
+-------------------------------------------------------------------
+Wed Mar 13 07:24:42 UTC 2019 - mvetter@suse.com
+
+- Import 0.1+20180729.f24ac5e from home:siegel

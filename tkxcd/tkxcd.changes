@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Oct 14 19:02:52 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Thu Jun 21 17:33:52 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Mon Jan 15 19:17:09 CET 2007 - max@suse.de
+
+- Moved executable form /usr/X11R6/bin to /usr/bin.
+- Cleaned up spec file and made it noarch.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 12 11:40:04 CET 2004 - adrian@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Sun Jan 11 11:03:11 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Apr 10 02:27:00 CEST 2001 - ro@suse.de
+
+- added group tag
+
+-------------------------------------------------------------------
+Thu Oct 28 17:34:06 MEST 1999 - max@suse.de
+
+- ready for the new Tcl/Tk packages
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue May  7 13:27:00 GMT 1997 - hf@suse.de
+
+ This is a diff front end with a look and feel based on
+ Atria Clearcase xcleardiff.
+ 
+ Version 1.1
+
+-------------------------------------------------------------------
+Tue May  6 16:30:59 GMT 1997 - hf@suse.de
+
+ Changed the shell from wish to wish4.2
+

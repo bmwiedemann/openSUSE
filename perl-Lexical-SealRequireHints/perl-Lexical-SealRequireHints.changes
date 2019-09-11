@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Tue Jul 25 05:43:20 UTC 2017 - coolo@suse.com
+
+- updated to 0.011
+   see /usr/share/doc/packages/perl-Lexical-SealRequireHints/Changes
+
+  version 0.011; 2017-07-15
+  
+    * update test suite to not rely on . in @INC, which is no longer
+      necessarily there from Perl 5.25.7
+  
+    * no longer include a Makefile.PL in the distribution
+  
+    * update op-munging code to the PERL_OP_PARENT-compatible style
+      (though none of it is actually used on Perls new enough to support
+      PERL_OP_PARENT)
+  
+    * rename internal gen_*_op() functions into a better style
+  
+    * consistently use THX_ prefix on internal function names
+
+-------------------------------------------------------------------
+Wed Mar 23 10:41:25 UTC 2016 - coolo@suse.com
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-Lexical-SealRequireHints/Changes
+
+  version 0.010; 2016-03-18
+  
+    * skip test with lexical $_ on Perl 5.23.4+ where that feature has
+      been removed
+
+-------------------------------------------------------------------
+Mon Apr 13 19:32:52 UTC 2015 - coolo@suse.com
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-Lexical-SealRequireHints/Changes
+
+  version 0.009; 2015-03-20
+  
+    * in test of require for version checking, work around [perl #124135]
+      which was introduced in Perl 5.21.4
+  
+  version 0.008; 2015-03-20
+  
+    * bugfix: don't localise hints around a version-number require, so that
+      "use v5.10.0" can have its intentional effect of setting feature flags
+  
+    * bugfix: in pure Perl implementation, use a ($) prototype on
+      CORE::GLOBAL::require, so that the argument expression will be in
+      the correct context
+  
+    * better error message for refusing to use pure Perl implementation
+      on Perl 5.9.4 to 5.10.0
+  
+    * document that the pure Perl implementation breaks the use of the
+      implicit $_ parameter with require
+  
+    * in swash test, don't fail if utf8.pm was loaded unexpectedly early,
+      as has been seen to happen on some systems
+  
+    * test idempotence
+  
+    * fix test for thread safety, which risked false negatives
+  
+    * when preemptively loading Carp and Carp::Heavy, avoid the Perl core
+      bug regarding the context applied to file scope of required modules,
+      in case of future versions of those modules becoming vulnerable and
+      running on an old Perl
+  
+    * declare correct version for Test::More dependency
+  
+    * typo fix in documentation
+  
+    * typo fix in a comment
+
+-------------------------------------------------------------------
+Thu Feb 27 07:14:27 UTC 2014 - coolo@suse.com
+
+- initial package 0.007
+    * created by cpanspec 1.78.07
+

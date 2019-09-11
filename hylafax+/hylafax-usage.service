@@ -1,0 +1,12 @@
+#
+# Hylafax usage file for systemd-timers - service 
+# Copyright (c) 2019 Dr. Axel Braun <axel.braun@gmx.de>
+#
+
+[Unit]
+Description=Daily usage statistics for hylafax
+Documentation=man:faxcron(8) 
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/usr/sbin/faxcron | mail -s "HylaFAX Usage Report" faxmaster'

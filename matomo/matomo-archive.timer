@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto-Archiving of matomo Reports
+
+[Timer]
+OnCalendar=*-*-* *:05:00
+AccuracySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

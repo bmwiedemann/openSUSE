@@ -1,0 +1,155 @@
+--- configure.ac
++++ configure.ac
+@@ -224,6 +224,26 @@ AC_CONFIG_FILES([util/defs])
+ AC_CHECK_PROGS([HEVEA], [hevea], [])
+ AC_CHECK_PROGS([TEX], [tex], [])
+ 
++#
++# Check for zlib and libbz2 libraries to use this together
++# with SuSE's libzio to open compressed info files.
++#
++AC_CHECK_HEADER(zlib.h,[
++  for lib in z gz
++  do
++    AC_CHECK_LIB($lib, gzopen, [LIBS="$LIBS -l$lib" ; break])
++  done])
++AC_CHECK_HEADER(bzlib.h,[
++  for lib in bz2 bzip2
++  do
++    AC_CHECK_LIB($lib, BZ2_bzopen, [LIBS="$LIBS -l$lib" ; break])
++  done])
++AC_CHECK_HEADER(zio.h,[
++    AC_CHECK_LIB(zio, fzopen, [LIBS="$LIBS -lzio"
++                 AC_DEFINE(HAVE_ZIO, [],
++		 	   [Define to 1 if you have libzio for opening compressed info files.])])
++  ])
++
+ AC_CONFIG_FILES([
+   Makefile
+   doc/Makefile
+--- install-info/install-info.c
++++ install-info/install-info.c
+@@ -21,6 +21,9 @@
+ #include <getopt.h>
+ #include <regex.h>
+ #include <argz.h>
++#ifdef HAVE_ZIO
++# include <zio.h>
++#endif
+ 
+ #define TAB_WIDTH 8
+ 
+@@ -655,15 +658,47 @@ open_possibly_compressed_file (char *fil
+ 
+   *opened_filename = filename;
+   f = fopen (*opened_filename, FOPEN_RBIN);
++#ifdef HAVE_ZIO
++  if (!compression_program)
++    compression_program = &local_compression_program;
++  *compression_program = NULL;
++  if (f)
++    {
++      nread = fread (data, sizeof (data), 1, f);
++      if (nread == 1)
++	{
++	  if (data[0] == '\x1f' && data[1] == '\x8b')
++	    *compression_program = "g";
++	  else if (data[0] == '\x1f' && data[1] == '\x9d')
++	    *compression_program = "Z";
++	  else if (data[0] == '\x1f' && data[1] == '\x9e')
++	    *compression_program = "z";
++	  else if (data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
++	    *compression_program = "b";
++	}
++      fclose (f);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++    }
++#endif
+   if (!f)
+     {
+       *opened_filename = concat (filename, ".gz", "");
++#ifdef HAVE_ZIO
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "g";
++#else
+       f = fopen (*opened_filename, FOPEN_RBIN);
++#endif
+   if (!f)
+     {
+       free (*opened_filename);
+       *opened_filename = concat (filename, ".bz2", "");
++#ifdef HAVE_ZIO
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "b";
++#else
+       f = fopen (*opened_filename, FOPEN_RBIN);
++#endif
+     }
+   if (!f)
+     {
+@@ -695,7 +730,11 @@ open_possibly_compressed_file (char *fil
+               /* And try opening it again.  */
+               free (*opened_filename);
+               *opened_filename = filename;
++#ifdef HAVE_ZIO
++              f = fzopen (*opened_filename, FOPEN_RBIN);
++#else
+               f = fopen (*opened_filename, FOPEN_RBIN);
++#endif
+               if (!f)
+                 pfatal_with_name (filename);
+             }
+@@ -704,6 +743,7 @@ open_possibly_compressed_file (char *fil
+         }
+     }
+ 
++#ifndef HAVE_ZIO
+   /* Read first few bytes of file rather than relying on the filename.
+      If the file is shorter than this it can't be usable anyway.  */
+   nread = fread (data, sizeof (data), 1, f);
+@@ -778,6 +818,9 @@ open_possibly_compressed_file (char *fil
+ #endif
+       *is_pipe = 0;
+     }
++#else
++  *is_pipe = 0;
++#endif /* HAVE_ZIO */
+ 
+   return f;
+ }
+@@ -852,11 +895,23 @@ output_dirfile (char *dirfile, int dir_n
+   int i;
+   FILE *output;
+ 
++#ifndef HAVE_ZIO
+   if (compression_program)
+     {
+       char *command = concat (compression_program, ">", dirfile);
+       output = popen (command, "w");
+     }
++#else
++  if (compression_program)
++    {
++      if (*compression_program == 'g' || *compression_program == 'z')
++	output = fzopen (dirfile, "wg");
++      if (*compression_program == 'b')
++	output = fzopen (dirfile, "wb");
++      if (*compression_program == 'Z')
++	output = fzopen (dirfile, "wZ");
++    }
++#endif
+   else
+     output = fopen (dirfile, "w");
+ 
+@@ -969,9 +1024,11 @@ output_dirfile (char *dirfile, int dir_n
+   /* Some systems, such as MS-DOS, simulate pipes with temporary files.
+      On those systems, the compressor actually gets run inside pclose,
+      so we must call pclose.  */
++#ifndef HAVE_ZIO
+   if (compression_program)
+     pclose (output);
+   else
++#endif
+     fclose (output);
+ }
+ 

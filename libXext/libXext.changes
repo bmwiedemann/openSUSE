@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Thu Mar 21 15:14:41 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.3
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Update configure.ac bug URL for gitlab migration
+  * Assert that values buffer has enough room for provided values
+  * Fix typos in man pages
+  * Use __builtin_popcountl if available to replace Ones() in XSecurity.c
+  * Add description of libXext to README.md
+  * XSecurityGenerateAuthorization: Allocate enough space in values buffer
+  * Update README for gitlab migration
+
+-------------------------------------------------------------------
+Thu Jul 24 13:33:56 UTC 2014 - sndirsch@suse.com
+
+- added baselibs.conf as source to specfile 
+
+-------------------------------------------------------------------
+Thu Jul 24 13:18:50 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.3.3
+  * Time for a release before the accumulated patches are old
+    enough to vote.  Two new requirements: libX11 1.6 and a C89
+    preprocessor.
+
+-------------------------------------------------------------------
+Sat Jun  1 20:18:37 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.2:
+  This release provides fixes for the recently announced security issue
+  CVE-2013-1982, as well as build configuration improvements, man page
+  macro cleanups to work better with doclifter, and several other small
+  fixes.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Thu Apr 12 07:26:16 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.3.1:
+  + Fixes for compiler warnings
+  + Improvements to formattings for all the included extension API
+    specs
+  + Improvements to the documentation
+- Changes from version 1.3.0:
+  + New API functions to support the Fence Sync Objects added in
+    Sync extension version 3.1
+  + Redefine the return values of several MIT-SHM API calls from
+    Status (#define Status int) to Bool (typedef int Bool) to
+    clarify the expected interpretation of the return values
+  + Fix build issues
+  + Documentation improvements
+  + Build system improvements
+
+-------------------------------------------------------------------
+Sat Feb 11 18:46:20 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXext to libXext and utilize shlib policy
+
+-------------------------------------------------------------------
+Sat Feb  4 23:27:46 UTC 2012 - jengelh@medozas.de
+
+- Remove apparently unused (Build)Requires on Xdmcp, xtrans
+- Remove redundant tags/sections like %clean
+  (see specfile guidelines)
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Dec 21 02:44:31 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6_1.2.0
+
+-------------------------------------------------------------------
+Thu Oct 28 14:07:53 UTC 2010 - sndirsch@novell.com
+
+- libXext 1.2.0
+  * This release of the catchall library for the X11 extensions
+    without their own libraries adds documentation for many more
+    of the extension API's, in the form of the documents formerly
+    delivered in xorg-docs, now moved here and translated from a
+    variety of formats to DocBook/XML.
+
+-------------------------------------------------------------------
+Sat Sep  4 18:16:50 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.1.2
+- bumped version number to 7.5_1.1.2 
+- make use of %fdupes macro
+- fixed Summary/Group entries in -devel package
+
+-------------------------------------------------------------------
+Fri Apr  2 18:02:19 CEST 2010 - sndirsch@suse.de
+
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Thu Jan 14 15:54:18 CET 2010 - ro@suse.de
+
+- update to 1.1.1 (needed for xserver 1.7) 
+
+-------------------------------------------------------------------
+Fri Jan  1 06:52:42 CET 2010 - sndirsch@suse.de
+
+- libXext-commit-8a91fc6.diff:
+  * Silence "Generic Event Extension missing on display" warning
+    (bnc #567828)
+
+-------------------------------------------------------------------
+Mon Dec 14 18:22:59 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri May  1 19:31:49 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 20:24:35 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Sun Mar  1 20:55:57 CET 2009 - sndirsch@suse.de
+
+- libXext 1.0.5
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:29 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Feb 29 15:18:17 CET 2008 - sndirsch@suse.de
+
+- libXext 1.0.4
+  * Coverity #467: security_error_list has fewer than
+    XSecurityNumberErrors
+
+-------------------------------------------------------------------
+Wed Dec 26 08:25:18 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postun warning 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:53 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Fri Jan 26 07:13:18 CET 2007 - sndirsch@suse.de
+
+- updated to release 1.0.3
+  * Add XShm.man and aliases to Makefile.am
+  * Man page spelling/typo fixes
+  * Replace static ChangeLog with dist-hook to generate from git log
+  * Sun bug 4985712: man pages needed for MIT-SHM extension functions
+
+-------------------------------------------------------------------
+Sat Oct 14 06:08:23 CEST 2006 - sndirsch@suse.de
+
+- updated to X.Org 7.2RC1 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:11 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:28 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing"
+
+-------------------------------------------------------------------
+Thu Jul 27 11:42:46 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Thu Jun 22 20:40:51 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

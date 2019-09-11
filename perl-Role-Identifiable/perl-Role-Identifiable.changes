@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat May  2 09:45:00 UTC 2015 - coolo@suse.com
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-Role-Identifiable/Changes
+
+  0.007     2013-10-15 22:18:31 America/New_York
+            update bugtracker and repo metadata
+  
+  0.006     2013-08-30 15:41:27 America/New_York
+            [NOT QUITE BACKWARD COMPATIBLE]
+            idents now have to be non-empty and can't start or end with spaces
+
+-------------------------------------------------------------------
+Tue Apr  5 11:35:48 UTC 2011 - coolo@novell.com
+
+- initial package 0.005
+    * created by cpanspec 1.78.03
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. /etc/sysconfig/logitech_mouse
+
+options=
+
+if [ -n "$LOGITECH_MOUSE_RESOLUTION" ]; then
+	options="--$LOGITECH_MOUSE_RESOLUTION"
+fi
+
+if [ -z "$LOGITECH_MOUSE_DISABLE_CC" -o "$LOGITECH_MOUSE_DISABLE_CC" = yes ]; then
+	options="$options --no-sms"
+fi
+
+if [ -n "$options" ]; then
+	/usr/bin/lomoco -b $BUSNUM -d $DEVNUM $options 2>&1 | /bin/logger -t lomoco
+fi
+

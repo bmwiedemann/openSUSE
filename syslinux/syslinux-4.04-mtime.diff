@@ -1,0 +1,97 @@
+diff --git a/core/Makefile b/core/Makefile
+index 33ad7e9..49ba474 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -63,7 +63,7 @@ PREPCORE = ../lzo/prepcore
+ # official release.  Otherwise, substitute a hex string that is pretty much
+ # guaranteed to be unique to be unique from build to build.
+ ifndef HEXDATE
+-HEXDATE := $(shell $(PERL) ../now.pl $(SRCS))
++HEXDATE := $(shell $(PERL) ../now.pl $(ALLSRC))
+ endif
+ ifndef DATE
+ DATE    := $(shell sh ../gen-id.sh $(VERSION) $(HEXDATE))
+diff --git a/libinstaller/bin2c.pl b/libinstaller/bin2c.pl
+index 07c11dd..2864488 100755
+--- a/libinstaller/bin2c.pl
++++ b/libinstaller/bin2c.pl
+@@ -71,8 +71,4 @@ if ($align != 0) {
+ 
+ printf "\n};\n\nconst unsigned int %s_len = %u;\n", $table_name, $total_len;
+ 
+-@st = stat STDIN;
+-
+-printf "\nconst int %s_mtime = %d;\n", $table_name, $st[9];
+-
+ exit 0;
+diff --git a/libinstaller/syslinux.h b/libinstaller/syslinux.h
+index 710d30e..963cafe 100644
+--- a/libinstaller/syslinux.h
++++ b/libinstaller/syslinux.h
+@@ -20,11 +20,9 @@
+ /* The standard boot sector and ldlinux image */
+ extern unsigned char syslinux_bootsect[];
+ extern const unsigned int syslinux_bootsect_len;
+-extern const int syslinux_bootsect_mtime;
+ 
+ extern unsigned char syslinux_ldlinux[];
+ extern const unsigned int syslinux_ldlinux_len;
+-extern const int syslinux_ldlinux_mtime;
+ 
+ #define boot_sector	syslinux_bootsect
+ #define boot_sector_len syslinux_bootsect_len
+@@ -33,7 +31,6 @@ extern const int syslinux_ldlinux_mtime;
+ 
+ extern unsigned char syslinux_mbr[];
+ extern const unsigned int syslinux_mbr_len;
+-extern const int syslinux_mbr_mtime;
+ 
+ /* Sector size assumptions... */
+ #define SECTOR_SHIFT	9
+diff --git a/now.pl b/now.pl
+old mode 100644
+new mode 100755
+index a3b5a79..60c4fe0
+--- a/now.pl
++++ b/now.pl
+@@ -1,21 +1,22 @@
+-#!/usr/bin/perl
+-#
+-# Print the time (possibly the mtime of a file) as a hexadecimal integer
+-# If more than one file, print the mtime of the *newest* file.
+-#
+-
+-undef $now;
+-
+-foreach $file ( @ARGV ) {
+-    ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,
+-     $ctime,$blksize,$blocks) = stat($file);
+-    if ( !defined($now) || $now < $mtime ) {
+-	$now = $mtime;
+-    }
+-}
++#! /usr/bin/perl
++
++# Use checksum over all sources and source file names to create some unique id.
++
++use Digest::SHA;
++
++use strict;
+ 
+-if ( !defined($now) ) {
+-    $now = time;
++my $digest = Digest::SHA->new(256);
++
++# print STDERR "now.pl: ", join(" ", @ARGV) , "\n";
++
++for (sort @ARGV) {
++  $digest->add($_);
++  $digest->addfile($_);
+ }
+ 
+-printf "0x%08x\n", $now;
++my $val = substr($digest->hexdigest, 0, 8);
++
++# printf STDERR "now.pl: = 0x$val\n";
++
++print "0x$val\n";

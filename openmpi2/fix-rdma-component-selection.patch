@@ -1,0 +1,47 @@
+commit 062e6fe4be4db6263372053509f155784fc94cc1
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Wed Mar 28 11:17:17 2018 +0200
+
+    fix rdma component selection
+    
+    Github issue#4976
+    bsc#1087031
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git ompi/mca/osc/rdma/osc_rdma_component.c ompi/mca/osc/rdma/osc_rdma_component.c
+index b5c544a58f99..337742fabb9c 100644
+--- ompi/mca/osc/rdma/osc_rdma_component.c
++++ ompi/mca/osc/rdma/osc_rdma_component.c
+@@ -356,6 +356,8 @@ static int ompi_osc_rdma_component_query (struct ompi_win_t *win, void **base, s
+                                           int flavor)
+ {
+ 
++    int rc;
++
+     if (MPI_WIN_FLAVOR_SHARED == flavor) {
+         return -1;
+     }
+@@ -369,15 +371,18 @@ static int ompi_osc_rdma_component_query (struct ompi_win_t *win, void **base, s
+     }
+ #endif /* OPAL_CUDA_SUPPORT */
+ 
+-    if (OMPI_SUCCESS == ompi_osc_rdma_query_mtls ()) {
++    rc = ompi_osc_rdma_query_mtls ();
++    rc = comm->c_coll.coll_allreduce(MPI_IN_PLACE, &rc, 1, MPI_INT, MPI_MIN, comm, comm->c_coll.coll_allreduce_module);
++    if (OMPI_SUCCESS == rc) {
+         return 5; /* this has to be lower that osc pt2pt default priority */
+     }
+-
+-    if (OMPI_SUCCESS != ompi_osc_rdma_query_btls (comm, NULL)) {
++ 
++    rc = ompi_osc_rdma_query_btls (comm, NULL);
++    rc = comm->c_coll.coll_allreduce(MPI_IN_PLACE, &rc, 1, MPI_INT, MPI_MIN, comm, comm->c_coll.coll_allreduce_module);
++    if (OMPI_SUCCESS != rc) {
+         return -1;
+     }
+ 
+-
+     return mca_osc_rdma_component.priority;
+ }
+ 

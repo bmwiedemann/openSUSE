@@ -1,0 +1,46 @@
+Index: nvidia-texture-tools/src/nvcore/Debug.cpp
+===================================================================
+--- nvidia-texture-tools.orig/src/nvcore/Debug.cpp	2009-03-19 20:05:53.000000000 +0100
++++ nvidia-texture-tools/src/nvcore/Debug.cpp	2012-06-18 10:38:45.734548266 +0200
+@@ -2,6 +2,7 @@
+ 
+ #include <nvcore/Debug.h>
+ #include <nvcore/StrLib.h>
++#include <unistd.h>
+ 
+ // Extern
+ #if NV_OS_WIN32 //&& NV_CC_MSVC
+Index: nvidia-texture-tools/src/nvcore/DefsGnucLinux.h
+===================================================================
+--- nvidia-texture-tools.orig/src/nvcore/DefsGnucLinux.h	2009-03-19 20:05:53.000000000 +0100
++++ nvidia-texture-tools/src/nvcore/DefsGnucLinux.h	2012-06-18 12:00:18.961763264 +0200
+@@ -47,19 +47,20 @@
+ 
+ #define restrict    __restrict__
+ 
++#include <stdint.h>
+ 
+ // Type definitions
+-typedef unsigned char       uint8;
+-typedef signed char         int8;
++typedef uint8_t      uint8;
++typedef int8_t        int8;
+ 
+-typedef unsigned short      uint16;
+-typedef signed short        int16;
++typedef uint16_t      uint16;
++typedef int16_t        int16;
+ 
+-typedef unsigned int        uint32;
+-typedef signed int          int32;
++typedef uint32_t        uint32;
++typedef int32_t          int32;
+ 
+-typedef unsigned long long  uint64;
+-typedef signed long long    int64;
++typedef uint64_t  uint64;
++typedef int64_t    int64;
+ 
+ // Aliases
+-typedef uint32              uint;
++typedef uint32_t              uint;

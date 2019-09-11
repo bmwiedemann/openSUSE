@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Sat Dec  8 03:01:14 UTC 2018 - psimons@suse.com
+
+- Update haskell-src-exts to version 1.21.0.
+  1.20.3 --> 1.21.0
+  =================
+  * DerivingVia (#420)
+  * TypeInType  (#414)
+  * Parse TH-quoted list constructor (#415)
+
+-------------------------------------------------------------------
+Wed Oct 10 19:23:52 UTC 2018 - psimons@suse.com
+
+- Update haskell-src-exts to version 1.20.3.
+  1.20.2 --> 1.20.3
+  =================
+  * GHC 8.6.1 compatability (MonadFail)
+  * Remove cpphs dependency
+
+-------------------------------------------------------------------
+Fri Aug 17 14:30:43 UTC 2018 - psimons@suse.com
+
+- Update Cabal build information to support GHC 8.6.x.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:26 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update haskell-src-exts to version 1.20.2.
+  * Add fixity of (&)
+  * GHC 8.4.1 compatability
+  * Fix two test failures
+  * GHC 8.2 updates
+  * Add some missing Generics instances (#380)
+  * Support Template Haskell pattern splices (#352)
+  * Fix overloaded labels starting with _ (#362)
+  * Relax MultiParamTypeClass check (#333)
+  * DeriveAnyClass (#337)
+  * Deriving Strategies (#387)
+  * OVERLAPS/OVERLAPPING/OVERLAPPABLE pragmas
+  * Unboxed Sums
+  * Expression holes in infix expressions
+  * Support multiple pattern synonyms per pattern synonym signature
+  * COMPLETE pragmas
+  * Fix #309, remove unnecessary semi-colon from pretty printer
+  * Refine ExplicitNamespaces to properly export type operators
+  * Revert making fields of `SrcLoc` strict. (#340)
+  * Add JavaScriptFFI to known extensions (#335)
+  * Remove space when pretty printing `SrcLoc`. (#307)
+  * Don't reverse arguments in a context. (#328)
+  * Add support for EmptyCase extension (#255)
+
+-------------------------------------------------------------------
+Fri Apr 27 09:19:04 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add _constraints to avoid OOM errors on AArch64
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:17:30 UTC 2017 - psimons@suse.com
+
+- Update to version 1.18.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:32:21 UTC 2016 - psimons@suse.com
+
+- Update to version 1.17.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Dec 15 13:23:23 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.17.1
+
+* Fix bug in parsing view patterns (#284)
+* Replaced VarA with AppA in Asst (#168).
+* Promoted list/tuple members changed from Promoted to Type (#162).
+* Update PatBind, Match, and Alt from containing Binds to Maybe Binds to
+  distinguish between empty where clauses and where clauses with no
+  binds (#244).
+* Add RoleAnnotDecl and Role to support Role annotations (#215).
+* Move NameSpace field from EVar/IVar to EAbs/IAbs.
+* Add standalone parsers for ImportDecl.
+* Fix pretty-printer bugs for HaRP (#160).
+* Insert parentheses when pretty-printing non-atomic bang types (#169).
+* Un-reverse confusion of left and right arrow (#175).
+* Prettyprint option pragmas like 1.15 (#172).
+* Conditionally insert lines when pretty-printing declarations (#171).
+* Distinguish deriving (Show) from deriving Show (#189).
+* Allow parsing of unicode subscript and superscript functions (#173).
+* Pretty print unboxed tuples with spaces (#193).
+* Improve performance when parsing long extension lists (#200).
+* Properly pretty print constructor and class operators (#204).
+* Read Haskell source files as UTF-8 (#223).
+* Fix ExplicitNamespaces parsing (#216).
+* PolyKinds implies KindSignatures (#220).
+* Preserve location information for infix binds (#205).
+* Preserve positional information in checkPattern (#231).
+* Maintain correct line numbers when parsing multiline GHC_OPTIONS (#218).
+* Correctly parse "*" with TypeOperators (#81).
+* Export the "pretty" method (#222).
+* Add javascript calling convention for foreign imports (#236).
+* Add non-greedy parsers for module heads (#191).
+* Add a flag to disable arity checking when parsing (#260).
+* Parse "-" in type signatures (#206).
+* Add support for type wildcards and expression holes (#252).
+* Add support for Pattern Synonyms (#197).
+* Bump the happy lower bound (#250).
+* Make test suite pass on GHC 7.12 (#224).
+* Support linking Haddock comments to AST nodes (#213).
+* Parse multiline LANGUAGE pragmas (#217).
+* Parse trailing where (#25).
+* Parse modules starting with pragmas and indented
+  "module" keyword (#122).
+* Use pretty-show to get human readable test outputs.
+* Respect fixity declarations inside where/let/class in
+  `applyFixities` (#212).
+* Correctly parse the combination of view patterns and bang patterns. (#276)
+
+-------------------------------------------------------------------
+Wed Apr 29 13:19:03 UTC 2015 - mimi.vx@gmail.com
+
+- add _constraints file for ppc64le
+
+-------------------------------------------------------------------
+Sat Nov 22 19:28:32 UTC 2014 - mimi.vx@gmail.com
+
+- add group to devel section
+
+-------------------------------------------------------------------
+Fri Nov 21 20:04:46 UTC 2014 - mimi.vx@gmail.com
+
+- initial commit

@@ -1,0 +1,530 @@
+Vn:
+  * recognize 'dev/sclp_line0' as 3215-look-alike.  [bnc#876743]
+Vn+1:
+  * revamp readkey_dumb().
+Vn+2:
+  * support hotkeys on all line-mode terminals, not only 3215.  [bnc#885668]
+
+---
+ grub-core/kern/emu/main.c         |    8 +
+ grub-core/normal/menu_text.c      |   54 +++++++-
+ grub-core/normal/term.c           |    2 
+ grub-core/osdep/unix/emuconsole.c |  238 +++++++++++++++++++++++++++++++++++++-
+ include/grub/term.h               |    4 
+ 5 files changed, 294 insertions(+), 12 deletions(-)
+
+--- a/grub-core/osdep/unix/emuconsole.c
++++ b/grub-core/osdep/unix/emuconsole.c
+@@ -39,17 +39,61 @@
+ 
+ #include <grub/emu/console.h>
+ 
++#include <stdio.h>
++#include <errno.h>
++
+ extern struct grub_terminfo_output_state grub_console_terminfo_output;
+ static int original_fl;
+ static int saved_orig;
+ static struct termios orig_tty;
+ static struct termios new_tty;
++static int console_mode = 0;
++
++#define MAX_LEN 1023
++#if defined(__s390x__)
++static int
++dummy (void)
++{
++  return 0;
++}
++#endif
++#if 0
++static char msg[MAX_LEN+1];
++static  void
++dprint (int len)
++{
++  if (len < 0)
++    return;
++  if (len > MAX_LEN)
++    len = MAX_LEN;
++  write (2, msg, len);
++}
++#define dprintf(fmt, vargs...) dprint(snprintf(msg, MAX_LEN, fmt, ## vargs))
++#else
++#define dprintf(fmt, vargs...) {}
++#endif
+ 
+ static void
+-put (struct grub_term_output *term __attribute__ ((unused)), const int c)
++put (struct grub_term_output *term, const int c)
+ {
+   char chr = c;
+   ssize_t actual;
++  struct grub_terminfo_output_state *data
++    = (struct grub_terminfo_output_state *) term->data;
++
++  if (term->flags & GRUB_TERM_DUMB) {
++    if (c == '\n') {
++      data->pos.y++;
++      data->pos.x = 0;
++    } else {
++      data->pos.x++;
++    }
++    if (0) {
++      if (c == ' ') chr = '_';
++      if (c == GRUB_TERM_BACKSPACE) chr = '{';
++      if (c == '\b') chr = '<';
++    }
++  }
+ 
+   actual = write (STDOUT_FILENO, &chr, 1);
+   if (actual < 1)
+@@ -60,17 +104,152 @@ put (struct grub_term_output *term __att
+ }
+ 
+ static int
+-readkey (struct grub_term_input *term __attribute__ ((unused)))
++readkey (struct grub_term_input *term)
+ {
+   grub_uint8_t c;
+   ssize_t actual;
+ 
++  fd_set readfds;
++  struct timeval timeout;
++  int sel;
++  FD_SET (0, &readfds);
++  timeout.tv_sec = 0;
++  timeout.tv_usec = 500000;
++  if ((sel=select (1, &readfds, (fd_set *)0, (fd_set *)0, &timeout)) <= 0)
++    {
++      if (sel < 0 && errno == EINTR)
++        return 0x03; /* '^C' */
++      return -1;
++    }
++
+   actual = read (STDIN_FILENO, &c, 1);
+   if (actual > 0)
+     return c;
+   return -1;
+ }
+ 
++#define NO_KEY	((grub_uint8_t)-1)
++static int
++readkey_dumb (struct grub_term_input *term)
++{
++  grub_uint8_t c;
++  static grub_uint8_t p = NO_KEY;
++
++  c = readkey (term);
++  if (c == NO_KEY)
++    return -1;
++  if ((p == '^' || p == '\n') && c == '\n')   /* solitary '^' or '\n'? */
++    {
++      c = p;	/* use immediately! */
++      p = '\n';
++    }
++  else if ((c == '\n' || c == '^') && p != c) /* non-duplicate specials? */
++    {
++      p = c;	/* remember! */
++      c = NO_KEY;
++    }
++  else if (p == '^')
++    {
++      if (c != '^')
++        c &= 0x1F;
++      p = NO_KEY;
++    }
++  else
++    p = c;
++  return c;
++}
++
++static void
++grub_dumb_putchar (struct grub_term_output *term,
++                    const struct grub_unicode_glyph *c)
++{
++  unsigned i;
++
++  /* For now, do not try to use a surrogate pair.  */
++  if (c->base > 0xffff)
++    put (term, '?');
++  else
++    put (term, (c->base & 0xffff));
++
++ if (0) {
++  for (i = 0; i < c->ncomb; i++)
++    if (c->base < 0xffff)
++      put (term, grub_unicode_get_comb (c)[i].code);
++ }
++}
++
++static struct grub_term_coordinate
++grub_dumb_getxy (struct grub_term_output *term)
++{
++  struct grub_terminfo_output_state *data
++    = (struct grub_terminfo_output_state *) term->data;
++
++  dprintf ("<%d,%d>", data->pos.x, data->pos.y);
++  return data->pos;
++}
++
++static struct grub_term_coordinate
++grub_dumb_getwh (struct grub_term_output *term)
++{
++  static int once = 0;
++  struct grub_terminfo_output_state *data
++    = (struct grub_terminfo_output_state *) term->data;
++
++  if (!once++)
++    dprintf ("dumb_getwh: w=%d h=%d\n", data->size.x, data->size.y);
++  return data->size;
++}
++
++static void
++grub_dumb_gotoxy (struct grub_term_output *term,
++                      struct grub_term_coordinate pos)
++{
++  struct grub_terminfo_output_state *data
++    = (struct grub_terminfo_output_state *) term->data;
++
++  if (pos.x > grub_term_width (term) || pos.y > grub_term_height (term))
++    {
++      grub_error (GRUB_ERR_BUG, "invalid point (%u,%u)", pos.x, pos.y);
++      return;
++    }
++
++  dprintf("goto(%d,%d)", pos.x, pos.y);
++  if (pos.x > (grub_term_width (term) - 4)) {
++    dprintf (" really?");
++    //return;
++  }
++
++  if (data->gotoxy)
++    {
++      int i;
++      dprintf ("data-gotoxy");
++      if (data->pos.y != pos.y) {
++        put (term, '\n');
++
++        for (i = 1; i < pos.x; i++ )
++         put (term, ' ');
++      }
++    }
++  else
++    {
++      int i = 0;
++      if (data->pos.y != pos.y || data->pos.x > pos.x) {
++        if (data->pos.y >= pos.y) data->pos.y = pos.y - 1;
++        if (pos.y - data->pos.y > 3) data->pos.y = pos.y - 2;
++        dprintf (" <%dnl>+%d", (pos.y - data->pos.y), pos.x);
++        for (i = data->pos.y; i < pos.y; i++ )
++          put (term, '\n');
++      }
++      for (i = data->pos.x; i < pos.x; i++ )
++          put (term, ' ');
++      dprintf ("#%d", i);
++      grub_dumb_getxy (term);
++    }
++
++  dprintf ("\n");
++  data->pos = pos;
++}
++
+ static grub_err_t
+ grub_console_init_input (struct grub_term_input *term)
+ {
+@@ -105,7 +284,8 @@ static grub_err_t
+ grub_console_init_output (struct grub_term_output *term)
+ {
+   struct winsize size;
+-  if (ioctl (STDOUT_FILENO, TIOCGWINSZ, &size) >= 0)
++  if (ioctl (STDOUT_FILENO, TIOCGWINSZ, &size) >= 0 &&
++      size.ws_col > 0 && size.ws_row > 0)
+     {
+       grub_console_terminfo_output.size.x = size.ws_col;
+       grub_console_terminfo_output.size.y = size.ws_row;
+@@ -115,6 +295,8 @@ grub_console_init_output (struct grub_te
+       grub_console_terminfo_output.size.x = 80;
+       grub_console_terminfo_output.size.y = 24;
+     }
++  if (console_mode == 3215)
++    grub_console_terminfo_output.size.x -= 1;
+ 
+   grub_terminfo_output_init (term);
+ 
+@@ -161,24 +343,72 @@ static struct grub_term_output grub_cons
+ void
+ grub_console_init (void)
+ {
++#if ! defined(__s390x__)
+   const char *cs = nl_langinfo (CODESET);
+   if (cs && grub_strcasecmp (cs, "UTF-8"))
+     grub_console_term_output.flags = GRUB_TERM_CODE_TYPE_UTF8_LOGICAL;
+   else
+     grub_console_term_output.flags = GRUB_TERM_CODE_TYPE_ASCII;
++#else
++  char link[MAX_LEN+1];
++  ssize_t len = readlink ("/proc/self/fd/0", link, MAX_LEN);
++
++  if (len > 0)
++    link[len] = 0;
++  else
++    link[0] = 0;
++  if (grub_strncmp ("/dev/ttyS", link, 9) == 0 )
++    console_mode = 3215;
++  else if (grub_strncmp ("/dev/3270/tty", link, 13) == 0 )
++    console_mode = 3270;
++  else if (grub_strncmp ("/dev/sclp_line", link, 14) == 0 )
++    console_mode = 3215;
++  grub_console_term_output.flags = GRUB_TERM_CODE_TYPE_ASCII;
++  switch (console_mode)
++    {
++      case 3215:
++       grub_console_term_output.flags |= GRUB_TERM_DUMB;
++       /* FALLTHROUGH */
++      case 3270:
++       grub_console_term_output.flags |= GRUB_TERM_LINE;
++       grub_console_term_output.flags |= GRUB_TERM_NO_ECHO;
++       grub_console_terminfo_input.readkey = readkey_dumb;
++       break;
++      default:
++       break;
++    }
++#endif
++  if (grub_console_term_output.flags & GRUB_TERM_DUMB)
++    {
++      grub_console_term_output.putchar = grub_dumb_putchar,
++      grub_console_term_output.getxy = grub_dumb_getxy;
++      grub_console_term_output.getwh = grub_dumb_getwh;
++      grub_console_term_output.gotoxy = grub_dumb_gotoxy;
++      grub_console_term_output.cls = (void *) dummy;
++      grub_console_term_output.setcolorstate = (void *) dummy;
++      grub_console_term_output.setcursor = (void *) dummy;
++      grub_console_term_output.progress_update_divisor = GRUB_PROGRESS_NO_UPDATE;
++    }
+   grub_term_register_input ("console", &grub_console_term_input);
+   grub_term_register_output ("console", &grub_console_term_output);
+   grub_terminfo_init ();
+-  grub_terminfo_output_register (&grub_console_term_output, "vt100-color");
++  grub_terminfo_output_register (&grub_console_term_output,
++    (grub_console_term_output.flags & GRUB_TERM_DUMB) ? "dumb":"vt100-color");
+ }
+ 
+ void
+ grub_console_fini (void)
+ {
++  dprintf( "grub_console_fini: %d\n", grub_console_term_output.flags & GRUB_TERM_DUMB);
+   if (saved_orig)
+     {
+       fcntl (STDIN_FILENO, F_SETFL, original_fl);
+       tcsetattr(STDIN_FILENO, TCSANOW, &orig_tty);
+     }
++  if (!(grub_console_term_output.flags & GRUB_TERM_DUMB))
++    {
++      const char clear[] = { 0x1b, 'c', 0 };
++      write (STDOUT_FILENO, clear, 2);
++    }
+   saved_orig = 0;
+ }
+--- a/grub-core/normal/menu_text.c
++++ b/grub-core/normal/menu_text.c
+@@ -113,6 +113,7 @@ draw_border (struct grub_term_output *te
+ {
+   int i;
+ 
++ if (! (term->flags & GRUB_TERM_DUMB)) {
+   grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
+ 
+   grub_term_gotoxy (term, (struct grub_term_coordinate) { geo->first_entry_x - 1,
+@@ -142,7 +143,7 @@ draw_border (struct grub_term_output *te
+   grub_putcode (GRUB_UNICODE_CORNER_LR, term);
+ 
+   grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
+-
++ }
+   grub_term_gotoxy (term,
+ 		    (struct grub_term_coordinate) { geo->first_entry_x - 1,
+ 			(geo->first_entry_y - 1 + geo->num_entries
+@@ -155,6 +156,15 @@ print_message (int nested, int edit, str
+   int ret = 0;
+   grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
+ 
++  if (edit && (term->flags & GRUB_TERM_LINE))
++    {
++      ret += grub_print_message_indented_real
++	(_("Minimum Emacs-like screen editing is supported. '^i' lists "
++	   "completions. Type '^x' to boot, '^c' for a command-line "
++	   "or '^[' to discard edits and return to the GRUB menu."),
++	 STANDARD_MARGIN, STANDARD_MARGIN, term, dry_run);
++    }
++  else
+   if (edit)
+     {
+       ret += grub_print_message_indented_real (_("Minimum Emacs-like screen editing is \
+@@ -165,10 +175,15 @@ command-line or ESC to discard edits and
+     }
+   else
+     {
++#if defined(__s390x__hotkey)
++      ret += grub_print_message_indented_real
++        (_("Select a menu option by pressing the hotkey specified. "),
++         STANDARD_MARGIN, STANDARD_MARGIN, term, dry_run);
++#else
+       char *msg_translated;
+ 
+       msg_translated = grub_xasprintf (_("Use the %C and %C keys to select which "
+-					 "entry is highlighted."),
++					 "entry is highlighted. "),
+ 				       GRUB_UNICODE_UPARROW,
+ 				       GRUB_UNICODE_DOWNARROW);
+       if (!msg_translated)
+@@ -177,6 +192,7 @@ command-line or ESC to discard edits and
+ 					       STANDARD_MARGIN, term, dry_run);
+ 
+       grub_free (msg_translated);
++#endif
+ 
+       if (nested)
+ 	{
+@@ -211,6 +227,10 @@ print_entry (int y, int highlight, grub_
+ 
+   title = entry ? entry->title : "";
+   title_len = grub_strlen (title);
++
++  if ((data->term->flags & GRUB_TERM_DUMB) && title[0] == '\0')
++    return;
++
+   unicode_title = grub_malloc (title_len * sizeof (*unicode_title));
+   if (! unicode_title)
+     /* XXX How to show this error?  */
+@@ -244,6 +264,14 @@ print_entry (int y, int highlight, grub_
+   if (data->geo.num_entries > 1)
+     grub_putcode (highlight ? '*' : ' ', data->term);
+ 
++  if ((data->term->flags & GRUB_TERM_LINE) && title[0] != '\0') {
++    grub_putcode('(', data->term);
++    grub_putcode((entry && entry->hotkey >= '0' && entry->hotkey <= 'z') ?
++		  entry->hotkey : ' ', data->term);
++    grub_putcode(')', data->term);
++    grub_putcode(' ', data->term);
++  }
++
+   grub_print_ucs4_menu (unicode_title,
+ 			unicode_title + len,
+ 			0,
+@@ -413,6 +441,8 @@ grub_menu_init_page (int nested, int edi
+   grub_term_highlight_color = old_color_highlight;
+   geo->timeout_y = geo->first_entry_y + geo->num_entries
+     + geo->border + empty_lines;
++  if (term->flags & GRUB_TERM_DUMB)
++    geo->timeout_y = 1;
+   if (bottom_message)
+     {
+       grub_term_gotoxy (term,
+@@ -422,6 +452,8 @@ grub_menu_init_page (int nested, int edi
+       print_message (nested, edit, term, 0);
+       geo->timeout_y += msg_num_lines;
+     }
++  if (term->flags & GRUB_TERM_DUMB)
++    geo->timeout_y = 1;
+   geo->right_margin = grub_term_width (term)
+     - geo->first_entry_x
+     - geo->entry_width - 1;
+@@ -433,12 +465,19 @@ menu_text_print_timeout (int timeout, vo
+   struct menu_viewer_data *data = dataptr;
+   char *msg_translated = 0;
+ 
+-  grub_term_gotoxy (data->term,
++  if (data->geo.timeout_y)
++    grub_term_gotoxy (data->term,
+ 		    (struct grub_term_coordinate) { 0, data->geo.timeout_y });
+ 
++  if (data->term->flags & GRUB_TERM_DUMB)
++    {
++      if (! data->geo.timeout_y)
++        data->timeout_msg = TIMEOUT_TERSE;
++      data->geo.timeout_y = 0;
++    }
+   if (data->timeout_msg == TIMEOUT_TERSE
+       || data->timeout_msg == TIMEOUT_TERSE_NO_MARGIN)
+-    msg_translated = grub_xasprintf (_("%ds"), timeout);
++    msg_translated = grub_xasprintf (_(" %ds"), timeout);
+   else
+     msg_translated = grub_xasprintf (_("The highlighted entry will be executed automatically in %ds."), timeout);
+   if (!msg_translated)
+@@ -468,6 +507,8 @@ menu_text_print_timeout (int timeout, vo
+ 			       data->term);
+   grub_free (msg_translated);
+ 
++  if (data->term->flags & GRUB_TERM_DUMB)
++    return;
+   grub_term_gotoxy (data->term,
+ 		    (struct grub_term_coordinate) { 
+ 		      grub_term_cursor_x (&data->geo),
+@@ -495,7 +536,7 @@ menu_text_set_chosen_entry (int entry, v
+       data->first = entry;
+       complete_redraw = 1;
+     }
+-  if (complete_redraw)
++  if (complete_redraw || (data->term->flags & GRUB_TERM_DUMB))
+     print_entries (data->menu, data);
+   else
+     {
+@@ -525,6 +566,9 @@ menu_text_clear_timeout (void *dataptr)
+   struct menu_viewer_data *data = dataptr;
+   int i;
+ 
++  if ((data->term->flags & GRUB_TERM_DUMB))
++    return;
++
+   for (i = 0; i < data->geo.timeout_lines;i++)
+     {
+       grub_term_gotoxy (data->term, (struct grub_term_coordinate) {
+--- a/grub-core/normal/term.c
++++ b/grub-core/normal/term.c
+@@ -981,7 +981,7 @@ grub_print_ucs4_menu (const grub_uint32_
+ {
+   print_ucs4_real (str, last_position, margin_left, margin_right,
+ 		   term, 0, 0, 1, skip_lines, max_lines,
+-		   contchar, 1, pos);
++		   contchar, (term->flags & GRUB_TERM_DUMB)? 0 : 1, pos);
+ }
+ 
+ void
+--- a/grub-core/kern/emu/main.c
++++ b/grub-core/kern/emu/main.c
+@@ -174,6 +174,12 @@ static struct argp argp = {
+   NULL, help_filter, NULL
+ };
+ 
++void
++ignore (int num __attribute__ ((unused)))
++{
++  return;
++}
++
+ 
+ 
+ #pragma GCC diagnostic ignored "-Wmissing-prototypes"
+@@ -212,7 +218,7 @@ main (int argc, char *argv[])
+       sleep (1);
+     }
+ 
+-  signal (SIGINT, SIG_IGN);
++  signal (SIGINT, (sighandler_t) &ignore);
+   grub_console_init ();
+   grub_host_init ();
+ 
+--- a/include/grub/term.h
++++ b/include/grub/term.h
+@@ -99,8 +99,10 @@ grub_term_color_state;
+ #define GRUB_TERM_NO_EDIT	        (1 << 1)
+ /* Set when the terminal cannot do fancy things.  */
+ #define GRUB_TERM_DUMB		        (1 << 2)
++/* Set when the terminal is line oriented. */
++#define GRUB_TERM_LINE		        (1 << 3)
+ /* Which encoding does terminal expect stream to be.  */
+-#define GRUB_TERM_CODE_TYPE_SHIFT       3
++#define GRUB_TERM_CODE_TYPE_SHIFT       4
+ #define GRUB_TERM_CODE_TYPE_MASK	        (7 << GRUB_TERM_CODE_TYPE_SHIFT)
+ /* Only ASCII characters accepted.  */
+ #define GRUB_TERM_CODE_TYPE_ASCII	        (0 << GRUB_TERM_CODE_TYPE_SHIFT)

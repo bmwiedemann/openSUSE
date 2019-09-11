@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Wed Dec  5 16:04:08 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer require pattern x86: it's been removed from
+  patterns-base.
+
+-------------------------------------------------------------------
+Thu Apr 26 07:05:03 UTC 2018 - dimstar@opensuse.org
+
+- Drop patterns devel_kde and devel_kde_frameworks from the DVD:
+  the fast living pace of TW makes it a good platform for
+  development, but developers will probably miss more things from
+  the repo anyway and can install those patterns direcly from the
+  online repo.
+
+-------------------------------------------------------------------
+Tue Apr 24 08:08:56 UTC 2018 - dimstar@opensuse.org
+
+- Add xf86-video-intel to rest_core_dvd and rest_cd_core
+  (boo#1087063#c20).
+
+-------------------------------------------------------------------
+Thu Apr 12 12:01:11 UTC 2018 - rbrown@suse.com
+
+- Rename readonly_root_tools to transactional_base (boo#1089095)
+
+-------------------------------------------------------------------
+Fri Apr  6 09:41:57 UTC 2018 - dimstar@opensuse.org
+
+- Recommend xf86-video-nouveau by rest_core_dvd and rest_cd_core.
+
+-------------------------------------------------------------------
+Thu Apr  5 06:47:37 UTC 2018 - dimstar@opensuse.org
+
+- Require readonly_root_tools pattern by rest_dvd: add the pattern
+  to the installation DVD (boo#1088229).
+
+-------------------------------------------------------------------
+Wed Apr  4 15:27:42 UTC 2018 - dimstar@opensuse.org
+
+- No longer require gnome_laptop by rest_cd_gnome: gnome_laptop has
+  been dropped, as it was empty.
+- No longer require gnome_admin, gnome_imaging_opt, gnome_laptop,
+  gnome_multimedia_opt and gnome_office_opt by rest_DVD: those
+  patterns were eliminated.
+
+-------------------------------------------------------------------
+Sat Jan 27 09:52:53 UTC 2018 - dleuenberger@suse.com
+
+- No longer require devel_python pattern: pattern has been dropped.
+
+-------------------------------------------------------------------
+Fri Dec 15 16:49:21 UTC 2017 - dimstar@opensuse.org
+
+- Replace yast2-storage with yast2-storage-ng in rest_cd_core.
+
+-------------------------------------------------------------------
+Wed Nov 29 13:15:29 UTC 2017 - dimstar@opensuse.org
+
+- Recommend notification-daemon by rest_dvd_core. This is to ensure
+  notification-daemon ends up on the medium so that installations
+  can 'cheaply' provide dbus(org.freedesktop.Notifications).
+  Otherwise only KDE and GNOME provide this, which would result in
+  them being installed into a minimal-X system.
+
+-------------------------------------------------------------------
+Wed Sep 27 07:25:20 UTC 2017 - dleuenberger@suse.com
+
+- Drop stuff from the rest_cd_core pattern (resotre feature parity
+  with previous live images). None of that stuff was there before
+  and one can argue there is no need to have them now. Some make
+  sense on the RescueCD, will rework those later (marked with +)
+  * gnu_dd_rescue, dd_rescue, gparted (+)
+  * fvwm2 and fvwm2-theme
+  * gv
+  * grsync (+)
+  * krb5-client
+  * ksh, tcsh and zsh
+  * lftp (+)
+  * makedev
+  * mc (+)
+  * mmv
+  * nss_ldap
+  * pam_krb5
+  * par
+  * pmidi
+  * wine
+  * xine-ui
+  * xosd
+  * xosview
+
+-------------------------------------------------------------------
+Fri Sep  8 02:07:47 UTC 2017 - sflees@suse.de
+
+- Add rest-cd-core pattern with all the common packages
+- Run extracts through spec-cleaner to order them more uniformly
+- Add the following packages that are no longer in patterns-base to
+  the rest-core-cd pattern to ensure they stay on the media.
+  * insserv
+  * systemd-logger
+  * makedev
+  * par
+  * db-utils
+  * jfsutils
+  * libatm1
+  * lsb-release
+  * ppp
+  * pptp
+  * reiserfs
+  * ypbind
+  * yptools
+  * fvwm2
+  * fvwm-themes
+  * gv
+  * mmv
+  * pmidi
+  * suspend
+  * xine-ui
+  * xosd
+  * xosview
+  * wine
+  * ksh
+  * tcsh
+  * zsh
+  * open-iscsi 
+  
+-------------------------------------------------------------------
+Fri Aug 25 08:46:25 UTC 2017 - dleuenberger@suse.com
+
+- Remove kde_telepathy from rest_dvd pattern.
+
+-------------------------------------------------------------------
+Tue Aug 22 08:20:56 UTC 2017 - fvogt@suse.com
+
+- Remove references to sw_management_kde pattern as it got merged 
+  into kde_yast
+
+-------------------------------------------------------------------
+Tue Jul 25 09:54:46 UTC 2017 - tchvatal@suse.com
+
+- Fluendo should not be needed anymore thus drop it
+
+-------------------------------------------------------------------
+Mon Jul 17 10:14:00 UTC 2017 - dimstar@opensuse.org
+
+- Add the x86 pattern to the DVD - it provides glibc-32bit (needed
+  by steam and such) and used to be pulled in automatically until
+  we stopped adding glibc-32bit to the base pattern.
+
+-------------------------------------------------------------------
+Wed Jul  5 08:40:21 UTC 2017 - dimstar@opensuse.org
+
+- Minimally rework the rescue cd content (rest_cd_x11):
+  + No longer recommend dvb (it's slated for removal from TW).
+  + No longer recommend awesfx (unimportant for rescue systems).
+  + Drop espeak/sbl recommends. Nobody tested this ever and it is
+    not working on the rescue cd already.
+  + Drop gparted and xfce4-notifyd recommends: the pattern also
+    requires those packages.
+
+-------------------------------------------------------------------
+Sun Jun  4 16:55:59 UTC 2017 - zaitor@opensuse.org
+
+- Drop xf86-video-intel Recommends from all patterns: modesetting
+  driver from Mesa is preferd these days.
+- Drop ndiswrapper-kmp-desktop, ndiswrapper-kmp-default and
+  ndiswrapper Recommends from all patterns.
+
+-------------------------------------------------------------------
+Tue May 30 09:24:14 UTC 2017 - dimstar@opensuse.org
+
+- Do not require GNOME and KDE patterns on s390x: This platform
+  does not appeal to users of graphical user interfaces.
+
+-------------------------------------------------------------------
+Sat May 20 20:55:51 UTC 2017 - dleuenberger@suse.com
+
+- Drop dependency on office_opt: it was an empty pattern that has
+  been removed.
+
+-------------------------------------------------------------------
+Sun May  7 21:49:09 UTC 2017 - sflees@suse.de
+
+- Remove Requires on patterns that no longer exist from rest dvd
+  * non_oss
+  * office_opt
+
+-------------------------------------------------------------------
+Sun May  7 12:08:42 UTC 2017 - dleuenberger@suse.com
+
+- Fix dependency for patterns-media-rest_cd_x11.
+
+-------------------------------------------------------------------
+Fri Apr 28 16:03:43 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

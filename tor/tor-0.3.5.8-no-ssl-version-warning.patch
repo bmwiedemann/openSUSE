@@ -1,0 +1,36 @@
+https://trac.torproject.org/projects/tor/ticket/30190
+commit 3a44597b89e290e76cb20275660896cc5f178c9a
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon Apr 15 13:57:24 2019 +0200
+
+    Do not warn about compatible OpenSSL upgrades
+    
+    When releasing OpenSSL patch-level maintenance updates,
+    we do not want to rebuild binaries using it.
+    And since they guarantee ABI stability, we do not have to.
+    
+    Without this patch, warning messages were produced
+    that confused users:
+    https://bugzilla.opensuse.org/show_bug.cgi?id=1129411
+    
+    Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+diff --git a/src/lib/crypt_ops/crypto_openssl_mgt.c b/src/lib/crypt_ops/crypto_openssl_mgt.c
+index 60e4ea795..c97815f9a 100644
+--- a/src/lib/crypt_ops/crypto_openssl_mgt.c
++++ b/src/lib/crypt_ops/crypto_openssl_mgt.c
+@@ -213,6 +213,14 @@ crypto_openssl_early_init(void)
+         !strcmp(version_str, OPENSSL_VERSION_TEXT)) {
+       log_info(LD_CRYPTO, "OpenSSL version matches version from headers "
+                  "(%lx: %s).", version_num, version_str);
++    } else if ((version_num & 0xffff0000) ==
++               (OPENSSL_VERSION_NUMBER & 0xffff0000)) {
++      log_notice(LD_CRYPTO,
++               "We compiled with OpenSSL %lx: %s and we "
++               "are running with OpenSSL %lx: %s. "
++               "These two versions should be binary compatible.",
++               (unsigned long)OPENSSL_VERSION_NUMBER, OPENSSL_VERSION_TEXT,
++               version_num, version_str);
+     } else {
+       log_warn(LD_CRYPTO, "OpenSSL version from headers does not match the "
+                "version we're running with. If you get weird crashes, that "

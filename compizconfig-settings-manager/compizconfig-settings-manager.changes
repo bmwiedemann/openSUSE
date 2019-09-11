@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * Move icons out of ccsm and into respective plugin packs.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * Fixes for Python3.
+  * Introduce window state selector.
+  * Add an icon for the Earth plugin.
+  * Update translations.
+- Switch to Python3.
+- Separate shared files from python3-ccm to
+  compizconfig-settings-manager-common.
+
+-------------------------------------------------------------------
+Fri May 27 10:55:46 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.4:
+  * Gtk3: Remove a warning with some file chooser dialogs.
+  * Gtk3: Verify colour set for titles to not be equal to bgcolour.
+  * Update Catalan translation.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a missing python-gobject-Gdk dependency.
+
+-------------------------------------------------------------------
+Mon Mar 28 19:52:19 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.3:
+  * Gtk3: Fix icons not loading properly on Gtk 3.16 and older.
+  * Gtk3: Fix high CPU load.
+
+-------------------------------------------------------------------
+Thu Mar 24 19:45:28 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.2:
+  * Use /usr/local/ as a default prefix (alterable with the
+    --prefix= setup.py option).
+  * Fix --with-gtk= option not working sometimes.
+  * Fix highlight of "Ctrl" visual in hotkey selection dialog.
+  * Gtk3: Don't show category titles in several lines.
+  * Gtk3: Fix CCSM not shrinking back after upsizing to a certain
+    point.
+  * Gtk2: Fix a segfault on rare installations when clicking on
+    list items.
+- Add a missing python-gobject-cairo dependency.
+
+-------------------------------------------------------------------
+Wed Feb 17 14:47:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12.1:
+  * Fix bad behaviour in handling Ctrl key.
+  * Custom hotkey selection now works properly.
+
+-------------------------------------------------------------------
+Sat Feb 13 09:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Replace PyGObject2, PyGtk2 dependency with PyGObject3.
+  * New minimal Gtk requirements are: either Gtk 2.24.10+ or
+    Gtk 3.2+.
+  * Add support for specialised font family widget.
+  * Fix window grabbing by title or ID.
+  * Do not allow mods+Escape to be bound.
+  * Add more plugin icons from compiz-plugins-experimental, and add
+    plugin-matecompat.
+  * Drop libsexy optional dependency.
+  * Fix vertical alignment of the text on the stylized keys
+    (Shift, Super, Ctrl, Alt).
+  * Add additional Compiz 0.9.x support, no action is required for
+    either Compiz.
+- Remove unsexy.patch: unsexied upstream.
+
+-------------------------------------------------------------------
+Sat Dec 19 21:13:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Use a better upstream tarball.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:48:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.9.
+- Update dependencies.
+- Remove compizconfig-settings-manager-profile-extensions.patch:
+  fixed upstream.
+- Add compizconfig-settings-manager-lang package.
+- Provide ccsm.
+- Do not make a bindir symlink.
+- Generate icon cache.
+
+-------------------------------------------------------------------
+Thu May 12 12:10:00 UTC 2014 - ku.b@gmx.de
+
+- unlink from Factory
+
+-------------------------------------------------------------------
+Thu May 12 12:00:01 UTC 2014 - ku.b@gmx.de
+
+- repair package due to broken link in Factory
+- remove Obsoletes ccs-settings
+- repair License
+- remove outdated 1110 version section
+
+-------------------------------------------------------------------
+Sat Nov 11 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- add the requirement for a compiz version less than 0.9
+- require a version less than 0.9 of python-ccm
+
+-------------------------------------------------------------------
+Thu May 27 20:07:41 UTC 2010 - dimstar@opensuse.org
+
+- Split the python backend out in it's own package and have ccsm
+  frontend require it.
+
+-------------------------------------------------------------------
+Fri Nov 13 10:47:01 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.8.4:
+  + Remove obsolete icons
+  + Speed up startup by loading icons in the background
+
+-------------------------------------------------------------------
+Sat Oct  3 11:10:00 UTC 2009 - aj@suse.de
+
+- Don't warn about missing sexy-python, it's not available at all
+  in openSUSE (unsexy.patch)
+- Package is noarch for openSUSE 11.2.
+
+-------------------------------------------------------------------
+Fri Aug 21 14:13:14 CEST 2009 - dimstar@opensuse.org
+
+- Add new python macros for openSUSE <= 11.1
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Thu Jan 29 14:57:07 CET 2009 - rodrigo@novell.com
+
+- Add compizconfig-settings-manager-profile-extensions.patch (bgo#458343)
+
+-------------------------------------------------------------------
+Mon Sep 29 16:53:32 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Wed Sep 17 20:18:32 IST 2008 - cyberorg@opensuse.org
+
+- Release 0.7.8
+- l10n updates 
+- Add startup notification and optional dbus single-instance support
+- Make use of the new tooltip system introduced in GTK 2.12
+
+-------------------------------------------------------------------
+Tue Jul  1 17:28:58 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- update to 0.7.6
+  - Check if an action conflicts with another plugin when enabling
+    a plugin
+  - Internal action bindings will now only conflict with global
+    bindings; internal actions in different plugins can have the
+    same bindings.
+  - Rewrote plugin overview page
+  - Changed native size of category icons to 32x32
+  - Internal code refactoring and bug fixes
+
+-------------------------------------------------------------------
+Mon Apr 14 20:20:06 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Thu Apr 03 22:03:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.4 release
+- Advance search rewrite
+- Add --version/-v command line switch
+- Many GUI improvements
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.2 development release
+- Action settings were split into button, key, and edge settings, each using
+  its own widget.
+- Match settings can be edited with a simple editor that supports easy
+  grabbing of window properties
+- Advanced Search page was improved
+- New icons for some plugins
+- Minor adaptations and fixes
+
+-------------------------------------------------------------------
+Sat Feb 09 00:02:00 IST 2008 - cyberorg@cyberorg.info
+
+- sync to latest git
+
+-------------------------------------------------------------------
+Tue Dec 04 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- sync to latest git
+- many GUI improvements
+- key binding improvements
+- file selection improvements
+
+-------------------------------------------------------------------
+Tue Oct 16 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- Update to release 0.6.0
+- Translation updates
+- Key binding fixes and GUI improvements
+-------------------------------------------------------------------
+Tue Aug 25 11:05:00 IST 2007 - cyberorg@cyberorg.info
+
+- EdgeSelector improvements
+- Key grabber fixes
+- Rework key actions handling
+- Made plugin tabs scrollable
+
+-------------------------------------------------------------------
+Tue Aug 24 14:25:00 IST 2007 - cyberorg@cyberorg.info
+
+- Sync to the latest git.
+- new action settings rework
+- New GUI improvements
+
+-------------------------------------------------------------------
+Fri Aug 17 23:08:05 IST 2007 - cyberorg@cyberorg.info
+
+- Symlink ccsm to compiz-config-settings-manager.
+
+-------------------------------------------------------------------
+Mon Aug 13 18:03:15 IST 2007 - cyberorg@cyberorg.info
+
+- Update to 0.5.2 release.
+- Added missing icons
+- Profile page fixes
+- Options rearrangement - general option first
+- Fixed bug with files without type extension
+
+-------------------------------------------------------------------
+Wed Aug  8 16:16:10 CEST 2007 - schwab@suse.de
+
+- Fix specfile.
+
+-------------------------------------------------------------------
+Tue Aug  7 09:39:15 CEST 2007 - aj@suse.de
+
+- Fix packaging problems.
+
+-------------------------------------------------------------------
+Mon Aug  6 20:36:56 CEST 2007 - dreveman@suse.de
+
+- Install with correct prefix
+- Do not require libcompizconfig-backend
+- Use %suse_update_desktop_file macro
+
+-------------------------------------------------------------------
+Mon Aug  6 17:50:43 CEST 2007 - dreveman@suse.de
+
+- Initial version of package
+

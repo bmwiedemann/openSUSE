@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Sat Apr  6 05:09:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 9999.27
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+
+  9999.27     2019-04-05
+      - Update the documentation on the atomic write. We no longer use the pid
+        and I neglected to update the documentation as such. (RT #129029)
+      - Localize $^W to stop File::Temp from warning the user when the -w flag
+        is on while we're grabbing a temporary file name. (RT #129029)
+
+-------------------------------------------------------------------
+Thu Feb 14 06:09:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 9999.26
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+
+-------------------------------------------------------------------
+Thu Dec  6 15:41:21 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 9999.25
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+
+  9999.25     2018-10-29
+      - The previous release contained nothing but a documentation update. That
+        updated documentation errantly mentioned pseudo-files. Pseudo-files
+        are perfectly fine to use with File::Slurp.
+      - Add regression test for GLOB refs being slurped in. Thank you, James Keenan!
+        https://github.com/perhunter/slurp/pull/17#issuecomment-437174592
+      - Refactor read_file to use open and read rather than sysopen and sysread.
+      - Add a bugwards compatible feature to keep track of the cursor when
+        dealing with the DATA handle (https://github.com/perhunter/slurp/pull/17)
+      - Fix a typo in the docs.
+
+-------------------------------------------------------------------
+Fri Nov  9 09:38:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from summary.
+
+-------------------------------------------------------------------
+Thu Nov  8 06:22:24 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 9999.24
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+
+-------------------------------------------------------------------
+Wed Jun 08 05:07:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 9999.19:
+  * read_file and write_file work even when interrupted by signals; this
+    includes a test for read_file interrupt
+  * fixed bugs in the config synopsis example
+
+-------------------------------------------------------------------
+Tue May 17 10:16:46 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 9999.18:
+  * added :std and :edit export tags
+  * cleaned up EXPORT vars
+  * documented importing edit_file and edit_file_lines
+  * requiring Perl 5.6.2 (first time older Perls were dropped); this is because
+    of use of the re 'taint' pragma
+  * added major new features: edit_file and edit_file_lines
+  * speed up of tainted slurp with return of lines
+  * added chomp option to read_file
+  * added prefix option to read_dir
+  * fixed optimization of reading small files
+  * added support for read_file options to be a hash reference
+  * added support for read_dir options to be a hash reference
+  * added new feature prepend_file
+  * fixed bug with array_ref in list context. was introduced by .15/.14
+
+-------------------------------------------------------------------
+Thu Mar 31 11:45:47 UTC 2011 - coolo@novell.com
+
+* update to 9999.15
+  - Added LICENCE (same as perl) to POD
+  - for the rest, see Changes (a lot)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:16 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug  9 13:41:33 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- added bcond_with pod
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:37:42 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Tue Jul 14 13:18:19 CEST 2009 - chris@computersalat.de
+
+- initial package 9999.13
+

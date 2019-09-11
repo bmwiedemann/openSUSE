@@ -1,0 +1,31 @@
+--- wmppp/getmodemspeed
++++ wmppp/getmodemspeed
+@@ -0,0 +1,2 @@
++#!/bin/sh
++tac /etc/ppp/connect-errors | grep '['CONNECT'|'CARRIER']' | head -1
+--- wmppp/wmppp.c
++++ wmppp/wmppp.c
+@@ -615,7 +615,10 @@
+ 						if (!starttime) {
+ 							copyXPMArea(28, 95, 25, 11, 5, 48);
+ 							DrawTime(0, 1);
+-							start_child = execCommand(start_action);
++							if (start_action)
++								start_child = execCommand(start_action);
++							else
++								start_child = 0;
+ 							SetWaitLED(LED_PPP_POWER);
+ 							waittime = ORANGE_LED_TIMEOUT + currenttime;
+ 						}
+@@ -623,7 +626,10 @@
+ 						break;
+ 					case 1:
+ 						if (stop_child == 0) {
+-							stop_child = execCommand(stop_action);
++							if (stop_action)
++								stop_child = execCommand(stop_action);
++							else
++								stop_child = 0;
+ 						}
+ 						break;
+ 					}

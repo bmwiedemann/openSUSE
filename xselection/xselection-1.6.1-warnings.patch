@@ -1,0 +1,55 @@
+--- xselection.c
++++ xselection.c
+@@ -33,6 +33,9 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include <errno.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+@@ -87,7 +90,7 @@
+ emalloc(size)
+ int size;
+ {
+-	extern char *malloc();
++	/* extern char *malloc(); */
+ 	char *ret;
+ 
+ 	if (size == 0)
+@@ -107,7 +110,7 @@
+ char *str;
+ int size;
+ {
+-	extern char *realloc();
++	/* extern char *realloc(); */
+ 	char *ret;
+ 
+ 	if (str == NULL)
+@@ -147,6 +150,7 @@
+ }
+ 
+ 
++int
+ main(argc, argv)
+ int argc;
+ char *argv[];
+@@ -367,6 +371,7 @@
+ 			exit(0);
+ 			break; /* NOTREACHED */
+ 	}
++	return 0;
+ }
+ 
+ 
+@@ -527,7 +532,7 @@
+                                 result = 1;
+                         else {
+                                 result = select(32, (void*)&server_fd_mask,
+-						(int *)NULL, (int *)NULL,
++						(fd_set  *)NULL, (fd_set  *)NULL,
+ 						&timeout);
+                                 if (result == -1 && errno != EINTR) {
+                                         fprintf(stderr, "%s: select failed in get_selection (errno:%d)\n",

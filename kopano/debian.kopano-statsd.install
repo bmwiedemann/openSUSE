@@ -1,0 +1,4 @@
+/usr/lib/*/kopano/kopano-statsd
+usr/share/doc/kopano/example-config/statsd.cfg
+usr/share/man/man8/kopano-statsd.8
+var/lib/kopano/rrd/

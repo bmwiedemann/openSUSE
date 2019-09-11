@@ -1,0 +1,144 @@
+diff -urN kinput2-v3.1.orig/include/ConvCtrl.h kinput2-v3.1/include/ConvCtrl.h
+--- kinput2-v3.1.orig/include/ConvCtrl.h	2002-10-03 18:35:26.000000000 +0900
++++ kinput2-v3.1/include/ConvCtrl.h	2004-10-21 20:45:02.609797864 +0900
+@@ -92,6 +92,7 @@
+ #define CAFonts			0x100L
+ #define CACursor		0x200L
+ #define CAStatusFonts		0x400L
++#define CAForceRedraw		0x800L
+ 
+ typedef struct {
+     Position	spotx, spoty;
+diff -urN kinput2-v3.1.orig/lib/ConvCtrl.c kinput2-v3.1/lib/ConvCtrl.c
+--- kinput2-v3.1.orig/lib/ConvCtrl.c	2002-10-03 18:35:27.000000000 +0900
++++ kinput2-v3.1/lib/ConvCtrl.c	2004-10-21 20:45:32.467258840 +0900
+@@ -99,11 +99,14 @@
+ static Boolean ClassIsSubClassOf();
+ 
+ static void CaptureClientDead();
++static void CaptureFocusStructureChange();
+ static void InterceptClientKeyEvent();
+ static void SelectFocusKeyEvent();
+ static void UnselectFocusKeyEvent();
+ static void ClientKey();
+ static void ClientDead();
++static void FocusStructureChange();
++
+ 
+ static Boolean SafeGetWindowAttributes();
+ static void CheckAttributes();
+@@ -555,6 +558,7 @@
+     GetClientCoordinates(ccw);
+ 
+     CaptureClientDead(ccw);
++    CaptureFocusStructureChange(ccw);
+ 
+     XtAddCallback(ccw->ccontrol.inputobj,
+ 		  XtNfixNotify, FixCallback, (XtPointer)ccw);
+@@ -608,6 +612,8 @@
+ 
+     MyRemoveEventHandler(dpy, ccw->ccontrol.clientwindow, DestroyNotify,
+ 			 ClientDead, (XtPointer)ccw);
++    MyRemoveEventHandler(dpy, ccw->ccontrol.focuswindow, ConfigureNotify,
++			 FocusStructureChange, (XtPointer)ccw);
+ 
+     if (ccw->ccontrol.probewindow != None) {
+ 	MyRemoveAllEventHandler(dpy, ccw->ccontrol.probewindow);
+@@ -992,6 +998,17 @@
+ }
+ 
+ static void
++CaptureFocusStructureChange(ccw)
++ConversionControlWidget ccw;
++{
++    Display *dpy = XtDisplay(ccw);
++    Window win = ccw->ccontrol.focuswindow;
++    MyAddEventHandler(dpy, win, ConfigureNotify, StructureNotifyMask,
++                      FocusStructureChange, (XtPointer)ccw); 
++}
++
++
++static void
+ InterceptClientKeyEvent(ccw)
+ ConversionControlWidget ccw;
+ {
+@@ -1107,6 +1124,19 @@
+     XtCallCallbackList((Widget)ccw, ccw->ccontrol.endcallback, (XtPointer)True);
+ }
+ 
++static void
++FocusStructureChange(ev, data)
++XEvent *ev;
++XtPointer data;
++{
++  ConversionControlWidget ccw = (ConversionControlWidget)data;
++  ConversionAttributes attr; 
++  attr.focuswindow = ccw->ccontrol.focuswindow;
++  /* emit dummy attribute change to force redrawing */
++  CControlChangeAttributes((Widget)ccw, CAForceRedraw|CAFocusWindow,&attr);
++}
++
++
+ /* ARGSUSED */
+ static void
+ FixCallback(w, client_data, call_data)
+diff -urN kinput2-v3.1.orig/lib/OverConv.c kinput2-v3.1/lib/OverConv.c
+--- kinput2-v3.1.orig/lib/OverConv.c	2004-09-29 16:43:29.000000000 +0900
++++ kinput2-v3.1/lib/OverConv.c	2004-10-21 20:45:02.611797560 +0900
+@@ -433,6 +433,14 @@
+ 
+     if (ocw->overthespot.ignorestatusarea) mask &= ~CAStatusArea;
+ 
++    if(mask & CAForceRedraw) {
++      int spotx, spoty;
++          /* reverse calculate spot location relative to the focus window */
++      value->spotx = SPOTX(ocw) - FOCUSOFFX(ocw);
++      value->spoty = SPOTY(ocw) - FOCUSOFFY(ocw);
++      mask |= CASpotLocation;
++    }
++
+     dispres = resetDisplayObject(ocw, mask, value);
+     tcres = resetTextCanvas(ocw, mask, value);
+     if (dispres == NeedReconfig || tcres == NeedReconfig) {
+@@ -789,6 +797,7 @@
+ 	redraw = NeedReconfig;
+     }
+     if (mask & CAClientArea) {
++        getFocusOffset(ocw);
+ 	if (value->clientarea.x + FOCUSOFFX(ocw) != CLAREA(ocw).x ||
+ 	    value->clientarea.y + FOCUSOFFY(ocw) != CLAREA(ocw).y ||
+ 	    value->clientarea.width != CLAREA(ocw).width ||
+diff -urN kinput2-v3.1.orig/lib/imlib/imattr.c kinput2-v3.1/lib/imlib/imattr.c
+--- kinput2-v3.1.orig/lib/imlib/imattr.c	2004-09-29 16:43:29.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imattr.c	2004-10-21 20:45:02.612797408 +0900
+@@ -567,6 +567,7 @@
+     }
+     icp->common_attr.focus = focus;
+     icp->common_attr.set_mask |= ATTR_MASK_FOCUS;
++    icp->preedit_attr.change_mask |= ATTR_MASK_SPOT_LOCATION;
+     return 0;
+ }
+ 
+@@ -627,12 +628,8 @@
+     TRACE(("\tarea: %d, %d, %d, %d\n",
+ 	   area.x, area.y, area.width, area.height));
+ 
+-    if (!(ap->set_mask & ATTR_MASK_AREA) ||
+-	area.x != ap->area.x ||
+-	area.y != ap->area.y ||
+-	area.width != ap->area.width ||
+-	area.height != ap->area.height) {
+-	ap->change_mask |= ATTR_MASK_AREA;
++    if ( area.width != 0 && area.height != 0 ) {
++        ap->change_mask |= ATTR_MASK_AREA;
+     }
+ 
+     ap->area.x = area.x;
+@@ -640,6 +637,7 @@
+     ap->area.width = area.width;
+     ap->area.height = area.height;
+     ap->set_mask |= ATTR_MASK_AREA;
++    ap->change_mask |= ATTR_MASK_SPOT_LOCATION;
+ 
+     return 0;
+ }

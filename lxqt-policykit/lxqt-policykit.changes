@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:52:01 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Only translations was changed
+
+-------------------------------------------------------------------
+Thu Jan 31 10:16:47 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Installed former missed man page
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 15:08:42 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * CMake: Prevent in-source builds
+  * fix razor-qt -> lxqt and http -> https
+  * Fixed some LXDE mentions
+  * Drop Qt foreach
+
+-------------------------------------------------------------------
+Mon Oct 23 11:19:51 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Updated Lithuanian translation
+  * Drops Qt5Core_VERSION_STRING
+  * Added QCommandLineParser and basic cli interface to lxqt-policykit-agent
+  * Added default CMAKE_BUILD_TYPE and LXQT_POLKITAGENT_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -> LXQt stringchanges LxQt -> LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Fix typo and correct some sentences
+  * Fixed some more typos
+  * Bump year
+
+-------------------------------------------------------------------
+Fri Feb 24 01:24:32 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#25)
+
+-------------------------------------------------------------------
+Sat Sep 24 21:31:50 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * agentGui: Use default icon
+  * agentGui: Choose current user in identities combo
+  * agentGui: Handle setting the prompt correctly
+  * agent: Handle multiple identities correctly
+  * Update README.md
+  * Fixed typo prefered -> preferred
+  * Add README.md
+  * build: Use external translations
+  * ts-files removal (#21)
+  * Bump year in AUTHORS
+  * Italian translation update
+  * Updated Russian translation Removed ru_RU file
+  * update: lxqt-policykit-agent_hu.ts
+- Add keyring
+
+-------------------------------------------------------------------
+Fri Nov  6 16:22:00 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+
+-------------------------------------------------------------------
+Fri Feb 20 20:26:02 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 20:54:55 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+- Added -lang subpackage
+
+-------------------------------------------------------------------
+Mon Jan 26 00:04:49 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora builds 
+
+-------------------------------------------------------------------
+Mon Nov 10 21:22:56 UTC 2014 - andrea@opensuse.org
+
+- Fixed License string
+
+-------------------------------------------------------------------
+Sat Oct 25 11:47:48 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 17:59:38 UTC 2014 - andrea@opensuse.org
+
+- removed unsed buildrequires 
+
+-------------------------------------------------------------------
+Tue May 13 17:17:42 UTC 2014 - sfalken@opensuse.org
+
+- Specfile cleanup 
+
+-------------------------------------------------------------------
+Mon May 12 16:19:54 UTC 2014 - sfalken@opensuse.org
+
+- removed fedora spec, split into subproject
+  Del:  lxqt-policykit-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sat May 10 21:20:25 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on openSUSE specfile 
+
+-------------------------------------------------------------------
+Fri May  9 23:20:36 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add: lxqt-policykit-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 16:35:47 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  lxqt-policykit-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Thu Apr  3 20:11:52 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-policykit.spec
+  Add: lxqt-policykit.changes 
+

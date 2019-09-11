@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Thu Feb 15 12:39:19 UTC 2018 - davejplater@gmail.com
+
+- Disabled gnome support to fix Factory build, see boo#1078841
+- Ran spec cleaner and enabled alsa and libxml2 support.
+- Removed obsolete 10.2 patch jack-rack-gtk-old-tooltip-fix.diff
+
+-------------------------------------------------------------------
+Fri Dec  2 16:42:32 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 12:11:00 UTC 2011 - suse-tux@gmx.de
+
+- added Patch3 (jack-rack-ld_fix.diff) to fix the build for factory
+
+-------------------------------------------------------------------
+Sat Sep  3 18:19:23 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with as-needed and no-add-needed 
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:22 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Wed Nov 28 14:45:00 CET 2007 - tiwai@suse.de
+
+- updated to version 1.4.7:
+  * Use the correct channel numbers when sending control messages
+  * Use the new GTK tooltips API
+  * Removed support for the old LADCCA interface
+- fix build with old gtk version
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Mon Jul 30 15:26:48 CEST 2007 - tiwai@suse.de
+
+- updated to verison 1.4.5:
+  * JACK connection loss now employs automatic reconnect
+  * widgets controlled via MIDI now get all their channels updated
+  * added more translation
+  * corrected MIDI controller numbering
+  * internal: introduced flexible status and error handlers
+  * Use the new GTK about dialog and toolbar APIs
+  * Use the correct dialogs when opening and saving files.
+  * Disconnect safely from JACK upon shutdown
+  * Make the configure script check for the LADSPA header.
+  * Fix LASH support
+
+- updated to version 1.4.6:
+  * Updated translations
+  * More robustness for buggy LADSPA plugins
+  * Installation fixes
+  * Allow effects to be toggled on and off by MIDI
+  * Assign default control values to the correct controls
+  * Experimental support for 14-bit MIDI control messages
+  * Allow the range of values that MIDI controls cover to be
+    chosen
+  * Ellipsize the text in the splash screen
+  * When the RDF description of a plugin contains named points,
+    show the value as a combo box
+  * Added a script (ecarack) to run an approximation of a JACK Rack
+    config using ecasound
+  * Fix a bug with integer controls where they'd only set the first
+    channel's value when locked.
+
+-------------------------------------------------------------------
+Thu May  3 13:42:59 CEST 2007 - wstephenson@suse.de
+
+- libraptor1-devel -> libraptor-devel
+
+-------------------------------------------------------------------
+Thu May  3 06:41:18 CEST 2007 - lrupp@suse.de
+
+- raptor-devel -> libraptor1-devel
+
+-------------------------------------------------------------------
+Tue Apr 17 16:57:16 CEST 2007 - tiwai@suse.de
+
+- fix buildrequires ladspa -> ladspa-devel
+
+-------------------------------------------------------------------
+Tue Apr  3 14:48:05 CEST 2007 - tiwai@suse.de
+
+- Add jack to Requires explicitly.
+
+-------------------------------------------------------------------
+Mon Jan  8 00:22:03 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Sat Oct  7 11:17:55 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 12 19:54:08 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Oct 11 11:41:14 CEST 2005 - tiwai@suse.de
+
+- removed ladcca support (temporarily)
+- fixed some compile warnings.
+
+-------------------------------------------------------------------
+Thu Oct  6 20:59:48 CEST 2005 - tiwai@suse.de
+
+- updated to 1.4.4.
+
+-------------------------------------------------------------------
+Mon Apr 11 16:32:02 CEST 2005 - tiwai@suse.de
+
+- fix the build with gcc-4.0.
+
+-------------------------------------------------------------------
+Mon Feb 14 20:05:12 CET 2005 - tiwai@suse.de
+
+- added resmgr to neededforbuild.
+
+-------------------------------------------------------------------
+Mon Jan 31 16:33:43 CET 2005 - ro@suse.de
+
+- fix build: do not define GNOME_DISABLE_DEPRECATED 
+
+-------------------------------------------------------------------
+Tue Sep 14 14:36:41 CEST 2004 - mskibbe@suse.de
+
+- fix specfile: create icon in Multimedia Music 
+
+-------------------------------------------------------------------
+Tue May 18 18:42:13 CEST 2004 - ro@suse.de
+
+- don't define GTK_DISABLE_DEPRECATED (stuff used in ui.c)
+
+-------------------------------------------------------------------
+Mon Feb 16 19:23:24 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Thu Jan 29 01:51:19 CET 2004 - ro@suse.de
+
+- update to 1.4.3 to fix build
+
+-------------------------------------------------------------------
+Tue Aug  5 17:05:18 CEST 2003 - tiwai@suse.de
+
+- added the call of suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
+Fri Jul 25 11:11:05 CEST 2003 - tiwai@suse.de
+
+- fixed the inclusion of glib.h.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:32:55 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jul  7 15:32:48 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.4.2.  
+
+-------------------------------------------------------------------
+Thu Jul  3 19:30:43 CEST 2003 - tiwai@suse.de
+
+- initial version: 1.4.1
+

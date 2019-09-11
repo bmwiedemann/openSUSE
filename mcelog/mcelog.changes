@@ -1,0 +1,400 @@
+-------------------------------------------------------------------
+Mon Mar 25 11:31:24 UTC 2019 - christian.voegl@suse.com
+
+- Update to version 1.62:
+  * mcelog: Fix memory controller bank channel mappings for Skylake
+  * mcelog: update tests for new error code
+  * mcelog: Add decoding for Optane DC persistent memory mode
+  * mcelog: Deduce channel number for Haswell/Broadwell/Skylake systems
+- Change mcelog.spec to use autosetup
+
+-------------------------------------------------------------------
+Fri Sep 21 15:52:28 UTC 2018 - opensuse-packaging@opensuse.org
+
+(by trenn@suse.de)
+- Update to version 1.60 (fate#326221):
+  * Turn back rb_color field into unsigned long
+  * trigger: add a sync argument for waiting trigger child process exit
+  * page: trigger: add pre/post sync trigger when doing soft memory offline
+  * fixed build errors for some lose code when merging code
+  * transfer the page address to pre/post-sync-trigger scripts
+  * mcelog: Fix "--ascii" parsing to cope with change in kernel output since v4.10
+  * Remove now unused local variable
+  * Add scripts file to do MCA error code validation for a selected CPU model
+  * Add license file
+  * mcelog: Improve decoding for APEI reported errors
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:46 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Jul 07 13:59:28 UTC 2017 - fschnizlein@suse.com
+
+- Update to version 1.53:
+  * Add service file
+  * dmi: Handle NULL DMI string
+  * Compress some fields in mempage.
+  * Add coverity fixes
+  * Fix typo in man page
+  * mcelog: Check whether we successfully changed directory for trigger.
+  * mcelog version: Add ability for OS to define version
+  * Document .os_release in README
+  * Set SO_PASSCRED on listen sockets
+  * memutil.h: add missing include for va_list
+
+-------------------------------------------------------------------
+Mon Mar 20 14:28:54 UTC 2017 - trenn@suse.de
+
+- Package also includes fixes for (through previous version updates below):
+  * Add mcelog-skylake.patch patch to support Skylake Xeons (fate#319698)
+  * Add skylake support (bnc#946734)
+  * Avoid warnings at boot up (bsc#920197)
+  * Knights Landing (fate#319507)
+  * Broadwell Ex and Ep (fate#319697)
+  * Different Skylake models (fate#319696)
+
+-------------------------------------------------------------------
+Fri Mar  3 09:26:33 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.48
+  * Fix warning with gcc 6.x
+  * Remove obsolete TODO file
+  * Small fixes
+- Use url for getting sources
+
+-------------------------------------------------------------------
+Fri Jan 13 15:20:55 UTC 2017 - felix.gerling@suse.com
+
+- Version update to 1.47 (fate#321308, fate#320907, fate#321931):
+  * Fix PDF links
+  * Fix confusing error message
+
+-------------------------------------------------------------------
+Sat Dec 17 00:02:34 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.46:
+  * Various cpu support for new machines
+- Refresh patches:
+  * add-f10h-support.patch
+  * email.patch
+- Force build with pic
+- Use normal webpage as Url and do not point to git
+- Fix build with --as-needed expanded Makefile patch for email.patch
+
+-------------------------------------------------------------------
+Fri May  6 16:08:48 UTC 2016 - trenn@suse.de
+
+- Update to bugfix version 1.36
+- Do not start mcelog service based on an udev (/dev/mcelog) rule (bsc#976781)
+
+-------------------------------------------------------------------
+Thu Jan 28 14:25:26 UTC 2016 - trenn@suse.de
+
+- Update to latest version 1.29.
+  Mostly little bug fixes.
+
+-------------------------------------------------------------------
+Mon Sep 28 13:26:21 UTC 2015 - trenn@suse.de
+
+- Update to version v124. Adds skylake CPU support and some bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun 15 16:18:55 UTC 2015 - trenn@suse.de
+
+- Update to latest v120 git tag and name the version 1.20:
+  New supported CPUs:
+     - Add model number for Broadwell-DE
+     - Added Knights Landing (Xeon Phi) 
+     - Add all current Atom cpuids
+     - Support Broadwell-U
+     - New manpages: mcelog.conf.5 and mcelog.triggers.5
+  And quite some undocumented bugfixes, see git log for details
+
+-------------------------------------------------------------------
+Fri Jan 23 11:04:40 UTC 2015 - trenn@suse.de
+
+- Update to version 1.0.8
+- Remove patch which got integrated mainline:
+  0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+- Fix possible security issue, build service complained about:
+  missing-call-to-setgroups-before-setuid
+  Add fix_setgroups_missing_call.patch
+
+-------------------------------------------------------------------
+Fri Nov 14 18:25:22 UTC 2014 - crrodriguez@opensuse.org
+
+- While not yet defined, the tmpfiles_create macro takes 
+  an argument for it to actually work
+
+-------------------------------------------------------------------
+Sat Sep 20 03:16:05 UTC 2014 - crrodriguez@opensuse.org
+
+- mcelog.tmpfiles, mcelog-socket-path.patch, move socket
+  and pid file to /run/mcelog directory.
+  This update may require reboot as the relevant rpm macro
+  tmpfiles_create is not yet in any product.
+
+-------------------------------------------------------------------
+Wed Sep  3 15:41:05 UTC 2014 - trenn@suse.de
+
+- Fixed the architecture tag to %{ix86} as suggested by:
+  Andreas Vetter <asvetter@cip.physik.uni-wuerzburg.de>
+
+-------------------------------------------------------------------
+Wed Sep  3 14:41:21 UTC 2014 - meissner@suse.com
+
+- fixed the architecture tag to %ix86
+
+-------------------------------------------------------------------
+Fri Jul 11 08:17:28 UTC 2014 - juwolf@suse.com
+
+- Fixed license, GPL-2.0
+
+-------------------------------------------------------------------
+Fri Jun 27 13:54:52 UTC 2014 - juwolf@suse.com
+
+- Added: 0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+  Continue without dmi when no SMBIOS or SMBIOS=0x0 in /sys/firmware/efi/systab, bnc#829862
+
+-------------------------------------------------------------------
+Fri May 16 15:47:18 UTC 2014 - trenn@suse.de
+
+- Add mce decoding support for latest AMD CPUs (bnc#871881).
+- Implementation done by Borislav Petkov <bp@suse.de>
+   * Add patches/Start-consolidating-AMD-specific-stuff.patch
+   * Add add-defines.patch
+   * Add add-f10h-support.patch
+   * Add add-f11h-support.patch
+   * Add add-f12h-support.patch
+   * Add add-f14h-support.patch
+   * Add add-f15h-support.patch
+   * Add add-f16h-support.patch
+
+-------------------------------------------------------------------
+Mon Apr 28 16:49:38 UTC 2014 - trenn@suse.de
+
+- Update to latest git tag v101.
+- Mainline decided to finally do a version upgrade to v101
+- Remove v1.1 again, obsolete it and go for version v102
+- Some important fixes in the latest update:
+    - bnc#873159
+    - bnc#873725
+
+-------------------------------------------------------------------
+Sun Oct 27 18:00:04 UTC 2013 - crrodriguez@opensuse.org
+
+- Cleanup spec file
+- activate mcelog service via udev+systemd combo, if the kernel
+  registers a /dev/mcelog device the service will be automatically
+  started.
+- drop sysvinit scripts, add appropiate %pre %post invocations
+  of the needed systemd macros. 
+
+-------------------------------------------------------------------
+Tue Oct 15 17:02:13 UTC 2013 - trenn@suse.de
+
+- Updated to latest git HEAD:
+    commit c7bf28088f056925c04d4fd5768504c59bbf19c4
+    Author: Robin Holt <robinmholt@gmail.com>
+    Date:   Mon Sep 16 04:30:02 2013 -0500
+  Because upstream does not use proper tags/revisions, I now
+  versioned this one mcelog-1.1
+
+-------------------------------------------------------------------
+Fri Feb 22 13:00:21 UTC 2013 - rmilasan@suse.com
+
+- Install mcelog.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions). 
+
+-------------------------------------------------------------------
+Thu Aug 16 14:41:55 UTC 2012 - trenn@suse.de
+
+- bnc#774226 mcelog + systemd: won't start without MCELOG_ADMIN_EMAIL set
+- fix uninitialized variable mail_setup
+
+-------------------------------------------------------------------
+Wed Jul 18 12:49:43 UTC 2012 - trenn@suse.de
+
+- Also build mcelog packages for i386 (bnc#770726)
+
+-------------------------------------------------------------------
+Tue Apr 24 23:43:56 YEKT 2012 - avm-xandry@yandex.ru
+
+- Fixed description in init-file.
+
+-------------------------------------------------------------------
+Wed Nov 23 21:36:36 UTC 2011 - crrodriguez@opensuse.org
+
+- Add systemd unit. 
+
+-------------------------------------------------------------------
+Thu Aug 18 00:09:50 CEST 2011 - ro@suse.de
+
+- update to GIT of today (6e4e2a000124f08f1a4e3791c2b02ec9ae6af393)
+- many bugfixes
+- Implement re-parsing of mcelog output in ASCII
+- Add support for non-page aligned EFI Configuration Tables
+- Add --debug-numerrors
+- Add decoder for corrected XEN events to --ascii
+- Correctly log kernel supplied time
+- record the trigger info in the log
+- mcelog: Implement dmi decoding for UEFI
+- mcelog: Add usage information to mcelog for --ignorenodev
+- Fix length calculation of SMBIOS mapping
+- change disclaimer
+- explictly spell out corrected errors
+
+-------------------------------------------------------------------
+Sat Jul  2 21:50:53 UTC 2011 - trenn@suse.de
+
+- Update to latest git version (fate#311830)
+  Unfortunately versions have not been increased, latest tag
+  still is 1.0-pre3 (same as 1 year ago), therefore the date
+  is included in the version. I try to push maintainers to
+  increase the version number.
+- Invert logic of db prefill messages -> info if it works, silent
+  if not
+
+-------------------------------------------------------------------
+Tue Jun  7 09:51:57 UTC 2011 - trenn@suse.de
+
+- Remove test email address from config
+
+-------------------------------------------------------------------
+Mon Oct 25 15:48:57 CEST 2010 - trenn@suse.de
+
+- Add Sandybridge/Westmere decode support
+- Fix domainname for email notification
+- Update to latest git version
+
+-------------------------------------------------------------------
+Tue Apr  6 15:15:45 CEST 2010 - trenn@suse.de
+
+- Update to latest git version having quite some fixes (no features):
+   - Fixed some memleaks and made app valgrind conform
+   - Fixed theoretical DoS attack (bnc#586241)
+   - Added support of additional cpus
+   - Fixed a lot messages (in manpage, in triggers, in README, ...)
+
+-------------------------------------------------------------------
+Fri Feb 19 00:39:36 CET 2010 - ro@suse.de
+
+- Update to version 1.0pre3
+     - Boxboro-EX enhancements
+     - Bugfixes
+  Minor pidfile handling adjusting in service file
+- Added missing conf file and trigger scripts
+
+-------------------------------------------------------------------
+Thu Dec  3 12:12:40 CET 2009 - trenn@suse.de
+
+- Minor .spec and init script fixes/cleanups
+
+-------------------------------------------------------------------
+Thu Dec  3 11:28:05 CET 2009 - trenn@suse.de
+
+- Add service parts:
+   - let mcelog --daemon handle pid file in /var/run/mcelog.pid
+   - add insserv logic
+   - remove cron.daily script in update case
+
+-------------------------------------------------------------------
+Fri Nov 27 22:01:40 CET 2009 - trenn@suse.de
+
+- Update to latest git version (called it 1.0pre1 myself, may differ
+  with a possible public 1.0pre1 version), this includes
+  following new featues:
+    - yellow bit support
+    - page predictive failure analysis support
+    - Initial memdb support
+      This allows to account memory errors in memory in daemon mode
+    And a lot more...
+
+-------------------------------------------------------------------
+Fri Oct  2 17:06:03 CEST 2009 - trenn@suse.de
+
+- Update to latest git version (0.9pre)
+  Introduces mcelog damon mode, service file will follow in an
+  extra commit.
+
+-------------------------------------------------------------------
+Fri Jan  9 08:41:58 CET 2009 - olh@suse.de
+
+- use ExclusiveArch as in /SRC/arch/
+
+-------------------------------------------------------------------
+Sat Sep 27 21:50:27 CEST 2008 - trenn@suse.de
+
+- fate #304279 mcelog support for Tigerton/Dunnington
+  Patch is from Andi himself with this statement:
+  While it looks large most of it is just new tables.
+
+-------------------------------------------------------------------
+Mon May 29 16:23:12 CEST 2006 - ak@suse.de
+
+- decode intel thermal events too (#179327)
+
+-------------------------------------------------------------------
+Fri May  5 19:00:23 CEST 2006 - ak@suse.de
+
+- Update to 0.7.  This fixes
+  - Fix --dmi option (#166324)
+  - Incorporate old patches
+
+-------------------------------------------------------------------
+Fri Mar  3 20:21:01 CET 2006 - ak@suse.de
+
+- Avoid cosmetic problem in --filter (#153347)
+
+-------------------------------------------------------------------
+Wed Feb  8 14:58:50 CET 2006 - ak@suse.de
+
+- update to mcelog 0.6
+  * Fixes bugs (#148869, #137985)
+  * Adds --dmi option to map addresses to DIMMs using SMBIOS
+    (default to off)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 10:42:35 CET 2005 - sf@suse.de
+
+- update to version 0.5
+  * Clarify --ascii in the manpage
+  *Support for AMD K8 Revision F machine check DRAM error 
+   thresholding
+
+-------------------------------------------------------------------
+Fri Feb 11 10:39:53 CET 2005 - ak@suse.de
+
+- Use RPM_OPT_FLAGS
+- Improve description again
+
+-------------------------------------------------------------------
+Thu Feb 10 19:21:39 CET 2005 - ak@suse.de
+
+- mcelog-0.4:
+  * add support to decode AMD K8 (Opteron/Athlon64/AthlonFX) and
+    Intel P4 (Xeon and Pentium 4) events
+  * add --ascii option to decode machine check panic information   
+- Rewrite description in .spec file
+
+-------------------------------------------------------------------
+Wed Jun  9 21:51:14 CEST 2004 - ak@suse.de
+
+- memlog-0.2:
+  * fix mcelog looping (#41863)
+  * Add GPL notices
+
+-------------------------------------------------------------------
+Thu Mar 25 17:55:05 CET 2004 - sf@suse.de
+
+- initial version 
+- fixes #36898
+

@@ -1,0 +1,905 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:31:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * [Text thumbnailer] Don't show text preview for .directory and .flatpakref files (kde#410561)
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * kio_sftp: QFile::rename takes QString, so remove erroneous QFile::encodeName
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:01 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * No code changes since 19.03.80
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:03 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:06 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Use more https with links
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:12 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * [Comic Thumbnailer] fix CBR thumbnail generation
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * [thumbnailer appimage] Fix building with libappimage not in system path
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:25 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * 0001-sftp-bump-pending-request-count-from-1-to-128.patch
+- Dropped patches, superseded by upstream changes:
+  * fix-mtp-paste-with-KF5-5.25.diff
+- Provide / obsolete kde-odf-thumbnail. now kio-extras ships with
+  its own ODF thumbnailer
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * apply eexist workaround from listDir to stat as well (kde#399699)
+  * Avoid crash by not checking free space for smb://
+- Dropped patches, now upstream:
+  * 0001-Avoid-crash-by-not-checking-free-space-for-smb.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 11:58:56 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch 0001-Avoid-crash-by-not-checking-free-space-for-smb.patch
+  * Prevents crashes when browsing smb://
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Wed Sep 19 05:43:04 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch 0001-sftp-bump-pending-request-count-from-1-to-128.patch
+  * Increase sftp file reading speed up to 20 times
+
+-------------------------------------------------------------------
+Fri Sep  7 08:12:12 UTC 2018 - lbeltrame@kde.org
+
+- Disable WebEngine BuildReq and add %license
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Add license text of GPL 2.0, LGPL 2.0 and LGPL 2.1
+  * Avoid a kio-mtp crash when trying to add a blocked device to the device cache
+
+-------------------------------------------------------------------
+Thu Aug 16 22:04:41 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Remove an space and a new line
+  * fix sftp links with new uds implementation
+  * Don't generate thumbnail for desktop files (kde#220330)
+  * [activity plugin] Use the imperative mood to match all other Dolphin plugins
+  * Rename KActivities linking plugin
+  * Constrain libsmbclient bug workaround to affected versions only
+  * Use a more intuitive, user-friendly name for Samba share access (kde#141257)
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * fix sftp links with new uds implementation
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:48 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Scale up folder icon before creating preview overlays
+
+-------------------------------------------------------------------
+Fri May 11 05:17:56 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:24 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:33 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:53 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:20 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:11 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:06 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Workaround incorrectly returned EEXIST instead of EPERM regression introduced by libsmbclient 4.7 (kde#385708)
+  * Use KIO::PreviewJob::defaultPlugins()
+  * Use KIO::PreviewJob::defaultPlugins()
+  * Don't enter test subdirectories if BUILD_TESTING=OFF
+  * Set version in project()
+  * kfileaudiopreview: don't autoplay media files by default
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Workaround incorrectly returned EEXIST instead of EPERM regression introduced by libsmbclient 4.7 (kde#385708)
+  * Fix smb:/ handling
+- Drop workaround-bug-in-libsmbclient-4.7.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Nov  1 12:36:03 UTC 2017 - wbauer@tmo.at
+
+- Add workaround-bug-in-libsmbclient-4.7.patch to make browsing
+  samba shares work with libsmbclient 4.7 (boo#1065868, kde#385708)
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:11 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:14 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 17 19:48:32 UTC 2017 - jengelh@inai.de
+
+- Fix incomplete sentence structure in description.
+
+-------------------------------------------------------------------
+Mon Aug 14 08:16:57 UTC 2017 - fabian@ritter-vogt.de
+
+- Only BuildRequire Qt WebEngine if available
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:36 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:56 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Allow write access to Samba Shares' root
+
+-------------------------------------------------------------------
+Sat Jul  8 12:30:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Fix obsoletes
+
+-------------------------------------------------------------------
+Wed Jul  5 21:48:59 UTC 2017 - jengelh@inai.de
+
+- Fix grammar errors in description.
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:50 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Tue May 23 21:46:13 UTC 2017 - wbauer@tmo.at
+
+- Add "BuildRequires: gperf" to enable building the man kio-slave
+  (boo#1040444)
+
+-------------------------------------------------------------------
+Wed May 17 20:36:22 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Add set_package_properties for Qt5WebEngineWidgets
+  * Rename almost all the translation template (conflicts)
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:31 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 20:21:20 UTC 2017 - alarrosa@suse.com
+
+- Rebase 0001-Add-an-AudioThumnail.patch
+
+-------------------------------------------------------------------
+Thu Mar  9 12:38:31 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Fix kio_sftp hanging when server doesn't support statvfs
+  * kio_mtp: add write permissions to root storage folder
+  * Fix install files
+  * Enable html thumbnail
+  * Thumbnails should be a clean image representation, remove frame.
+
+
+-------------------------------------------------------------------
+Thu Feb  9 06:58:19 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:57:29 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:45:26 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:31:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:31:13 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+- Added patches:
+   + 0001-Add-an-AudioThumnail.patch
+   + fix-mtp-paste-with-KF5-5.25.diff
+
+-------------------------------------------------------------------
+Wed Nov  9 06:18:41 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:57:16 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:25:56 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:18:22 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 15:06:13 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:58:31 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:59:25 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:29:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Thu Apr 21 11:57:45 UTC 2016 - wbauer@tmo.at
+
+- Conflict with kactivities5 5.19.0 and earlier to prevent file
+  conflicts. The activities fileitem_linking_plugin and kio slave
+  have been moved from kactivities5 to kio-extras5 in 16.04
+  (boo#976592)
+
+-------------------------------------------------------------------
+Sun Apr 17 06:05:50 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:42:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:45:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:12:31 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:20:58 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:20:36 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:09:30 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:32:22 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:16:14 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:22 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 07:53:46 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+-------------------------------------------------------------------
+Sun Jun 28 18:31:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:29:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+
+-------------------------------------------------------------------
+Fri Feb 20 02:43:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:34:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Drop patches merged upstream:
+  0001-Port-comicbook-thumbnailer-to-KF5.patch,
+  0002-Port-textcreator-thumbnailer.patch,
+  0003-don-t-screw-up-the-filenames.patch,
+  0004-Added-support-for-NFSv3-major-refactoring-fixed-bugs.patch
+  and 0005-kio_sftp-Use-the-right-type-for-timeout_sec-and-time.patch
+- Add libmtp-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 11 17:59:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * Fixed CVE-2014-8600
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+- Drop sanitize_path.patch, merged upstream
+
+-------------------------------------------------------------------
+Thu Nov 13 22:15:00 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added sanitize_path.patch from upstream, CVE-2014-8600
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+- Added patches from upstream:
+  0001-Port-comicbook-thumbnailer-to-KF5.patch,
+  0002-Port-textcreator-thumbnailer.patch (kde#339456),
+  0003-don-t-screw-up-the-filenames.patch,
+  0004-Added-support-for-NFSv3-major-refactoring-fixed-bugs.patch
+  (kde#268797, kde#309113)
+  0005-kio_sftp-Use-the-right-type-for-timeout_sec-and-time.patch
+  (kde#331674)
+- Added kpty-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Oct 25 17:31:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 18:33:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Remove ktrash and kio_trash, merged in KIO framework since 5.3.0
+
+-------------------------------------------------------------------
+Fri Sep 26 09:14:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * Minor changes to samba kio
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+
+-------------------------------------------------------------------
+Fri Sep 12 14:23:59 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140912 (rc494702):
+  * kio_trash: implement trash spec v1.0
+  * Thumbnailer improvements
+- Added pkgconfig(Qt5Svg) BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug  8 17:31:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+  * Translation updates
+
+-------------------------------------------------------------------
+Mon Jul 28 17:50:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add kimageformats and libqt5-qtimageformats recommends
+
+-------------------------------------------------------------------
+Fri Jul 11 19:04:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+   * Plasma 5.0 Final
+
+-------------------------------------------------------------------
+Thu Jul  3 17:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * Plasma 5 RC release
+
+-------------------------------------------------------------------
+Tue Jun 10 02:07:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0
+  * Beta 2 of Plasma 5 release
+- Drop update_to_latest_head.patch
+
+-------------------------------------------------------------------
+Wed Jun  4 10:00:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add Source URL
+- Added update_to_latest_head.patch, to sync with latest KF5 API
+- Bump Qt requires to 5.3.0
+- Added phonon4qt5-devel
+- Obsolete and provide kfileaudiopreview, it is merged in kio-extras
+
+-------------------------------------------------------------------
+Sat May 17 23:11:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Mark license as GPL-2.0+
+
+-------------------------------------------------------------------
+Sat May 10 21:52:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate kio-extras5 package
+

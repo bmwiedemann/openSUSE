@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Mar 23 00:40:14 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.6.1
+  * Add dist tag to release (TOSS-2665)
+  * OS X build/test failrues (issue 31)
+  * Minor autotools fixes.
+- Update download Url
+- Enable parallel building with %{?_smp_mflags}
+
+-------------------------------------------------------------------
+Thu Aug  8 09:48:26 UTC 2013 - meissner@suse.com
+
+- imported scrub 2.5.2, a generic disk scrubber with multiple
+  government mandated scrub algorithms.

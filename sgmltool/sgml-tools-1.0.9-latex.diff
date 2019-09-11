@@ -1,0 +1,22 @@
+--- Makefile.in
++++ Makefile.in	2012-07-30 15:03:23.136010100 +0000
+@@ -24,6 +24,7 @@ BUILD_SGMLSASP=@BUILD_SGMLSASP@
+ BUILD_NSGMLS=@BUILD_NSGMLS@
+ BUILD_ENTITY_MAP=@BUILD_ENTITY_MAP@
+ BUILD_ISO_ENTITIES=@BUILD_ISO_ENTITIES@
++TEXMFMAIN=$(shell kpsewhich '-var-value=TEXMFMAIN')
+ 
+ GENFILES := bin/sgmltools
+ progs    := sgml2html sgml2info sgml2latex sgml2lyx sgml2rtf \
+@@ -83,6 +84,11 @@ endif
+ 	if [ ! -d $(DESTDIR)$(libdir) ]; then mkdir -p $(DESTDIR)$(libdir); fi
+ 	chmod 755 $(DESTDIR)$(libdir)
+ 	cp -r lib/* $(DESTDIR)$(libdir)
++	mkdir -p $(DESTDIR)$(TEXMFMAIN)/tex/latex/sgml-tools
++	mv $(DESTDIR)$(libdir)/*.sty $(DESTDIR)$(TEXMFMAIN)/tex/latex/sgml-tools/
++	mv $(DESTDIR)$(libdir)/*.tex $(DESTDIR)$(TEXMFMAIN)/tex/latex/sgml-tools/
++	rm -f $(DESTDIR)$(TEXMFMAIN)/tex/latex/sgml-tools/epsf.*
++	rm -f $(DESTDIR)$(TEXMFMAIN)/tex/latex/sgml-tools/url.*
+ 	cp VERSION $(DESTDIR)$(libdir)
+ 	@echo "Installing man pages in $(mandir1) ..." 
+ 	if [ ! -d $(DESTDIR)$(mandir1) ]; then mkdir -p $(DESTDIR)$(mandir1) ; fi

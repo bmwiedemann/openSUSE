@@ -1,0 +1,22 @@
+--- a/mate_menu/plugins/recent.py
++++ b/mate_menu/plugins/recent.py
+@@ -20,6 +20,7 @@
+ 
+ import os
+ import gi
++import shutil
+ gi.require_version("Gtk", "3.0")
+ 
+ from gi.repository import Gtk, Pango
+@@ -188,7 +189,10 @@ class pluginclass:
+     def callback(self, widget, filename=None):
+         self.Win.hide()
+ 
+-        x = os.system("gio open \""+filename+"\"")
++        if not shutil.which("gvfs-open"):
++            x = os.system("gio open \""+filename+"\"")
++        else:
++            x = os.system("gvfs-open \""+filename+"\"")
+         if x == 256:
+             dia = Gtk.Dialog('File not found!',
+                              None,  #the toplevel wgt of your app

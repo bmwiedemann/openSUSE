@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Wed Aug  8 16:02:34 UTC 2018 - jengelh@inai.de
+
+- Replace old $RPM_* shell vars by macros.
+
+-------------------------------------------------------------------
+Tue May 29 11:20:34 UTC 2018 - kkaempf@suse.com
+
+- Update to 1.0.2
+  - disable ruby documentation for Ruby 2.5.0
+    (rdoc-6.0.1 breaks swig documentation hack)
+
+-------------------------------------------------------------------
+Thu Jan 29 07:15:49 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.0.1
+  - fix comment characters in .i files for swig 3.0.4
+    (dimstar@opensuse.org)
+    this includes cmpi-bindings-swig-3.0.patch
+  - improve documentation coverage
+
+-------------------------------------------------------------------
+Mon Jan 26 14:01:04 UTC 2015 - dimstar@opensuse.org
+
+- Add cmpi-bindings-swig-3.0.patch: Fix build with SWIG 3.0.
+
+-------------------------------------------------------------------
+Wed Jun 25 10:35:41 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.0.0
+  - Transport CMPIStatus information from Ruby to CMPI API.
+  - Add Ruby classes representing CMPI error codes.
+  - Capture call results and raise proper exceptions.
+  - Fix Fedora 20 build
+
+-------------------------------------------------------------------
+Wed Feb  5 10:59:36 UTC 2014 - kkaempf@suse.com
+
+- Update to 0.9.9
+  - Support rdoc from Ruby 2.1
+
+-------------------------------------------------------------------
+Thu Dec 12 12:47:52 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.8
+  - Create Ruby documentation
+  - Split off package cmpi-bindings-ruby-docs
+  - Fix Fedora 19 build
+
+-------------------------------------------------------------------
+Wed Oct  9 11:56:48 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.7
+  Catch and log Ruby exceptions caused by invoke method type
+  conversions.
+
+-------------------------------------------------------------------
+Wed Oct  9 08:17:54 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.6
+  Return correct status for failed method invocation in Ruby.
+
+------------------------------------------------------------------
+Thu Sep 26 07:18:08 UTC 2013 - kkaempf@suse.com
+
+- Drop explicit ruby(abi) requires (bnc#842433)
+
+-------------------------------------------------------------------
+Thu Apr 11 13:52:08 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.5
+  Fix CMPISelectExp also in cmpi_provider.c (indication filters) 
+
+-------------------------------------------------------------------
+Thu Apr 11 08:31:39 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.4
+  - Fix nasty bugs in CMPIObjectPath constructor if reference
+    already contained string properties.
+
+-------------------------------------------------------------------
+Wed Apr 10 08:54:57 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.3
+  - Raise exception on nil assignment to numeric properties
+
+-------------------------------------------------------------------
+Tue Apr  9 12:37:36 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.2
+  Add projections to CMPISelectExp (to support filtering by
+  property in execQuery)
+
+-------------------------------------------------------------------
+Tue Apr  9 08:43:43 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.1
+  CMPISelectExp constructor and match (to support execQuery in
+  providers)
+
+-------------------------------------------------------------------
+Tue Mar 19 09:26:58 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and CPL-1.0
+  The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0
+
+-------------------------------------------------------------------
+Sat Mar  2 08:16:41 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Feb 14 14:35:32 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.9.0
+  - Added full testsuite
+  - Improved CMPI_DateTime handling in Ruby
+  - bug fixes
+
+-------------------------------------------------------------------
+Mon Oct  1 08:19:53 UTC 2012 - kkaempf@suse.com
+
+- no Ruby in RHEL6 in OBS ?!
+
+-------------------------------------------------------------------
+Mon Aug  6 10:37:18 UTC 2012 - kkaempf@suse.com
+
+- fix CentOS/RHEL 6 build
+
+-------------------------------------------------------------------
+Fri Jul  6 08:53:56 UTC 2012 - kkaempf@suse.com
+
+- Adapt trace level according to CMPI_BINDINGS_TRACE_LEVEL
+  environment variable (bnc#767533)
+
+-------------------------------------------------------------------
+Sun May 27 21:33:02 UTC 2012 - kkaempf@suse.com
+
+- Update to 0.5.4
+  - Fix constructor/destructor names (to adapt to swig 2.0.5 rules)
+
+-------------------------------------------------------------------
+Thu May 24 08:38:17 UTC 2012 - kkaempf@suse.com
+
+- Update to 0.5.3
+  - Implement CMPI_DateTime <-> Ruby conversions
+  - Fix Char16 handling
+  - Plug one memory leak
+  - Support Ruby 1.9
+  - disable html doc creation in Ruby 1.9
+
+-------------------------------------------------------------------
+Fri May  4 13:44:17 UTC 2012 - kkaempf@suse.com
+
+- Update to 0.5.2
+  - Fix CMPIValue <-> CMPIData confusion in Python (Jan Safranek)
+  - Don't build RPM and GEM in parallel
+
+-------------------------------------------------------------------
+Mon Mar 12 09:33:14 UTC 2012 - kkaempf@suse.com
+
+- Update to 0.5.1
+  Confine data_data to wrapping CMPIData, don't convert the value
+  (fixes issue #3 reported by mibanescu)
+
+-------------------------------------------------------------------
+Mon Mar  5 14:58:44 UTC 2012 - kkaempf@suse.com
+
+- Update to 0.5.0
+  Bugfixes
+  - plug many memory leaks
+  - proper handling of Null value in Python
+  Features
+  - switch to a *much* simpler Ruby API
+  - provide cmpi-bindings as a Ruby gem
+
+-------------------------------------------------------------------
+Sun Oct  2 18:44:39 UTC 2011 - kkaempf@suse.com
+
+- Proper error handling in CMPIObjectPath constructor
+- v 0.4.18
+
+-------------------------------------------------------------------
+Fri Sep 30 12:58:37 UTC 2011 - kkaempf@suse.com
+
+- Release CMPI objects properly
+- Fix CMPIObjectPath and CMPIInstance constructors
+- v 0.4.17
+
+-------------------------------------------------------------------
+Sat Sep 17 23:14:16 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jul  6 12:46:39 UTC 2011 - kkaempf@novell.com
+
+- Fix Python memory leaks, remove excessive INCREFs
+  (by Mihai Ibanescu)
+- v 0.4.16
+
+-------------------------------------------------------------------
+Wed Jul  6 09:47:53 UTC 2011 - kkaempf@novell.com
+
+- Fix Python backend loading issue.
+- v 0.4.15
+
+-------------------------------------------------------------------
+Fri Jun 10 10:33:05 CEST 2011 - kkaempf@suse.de
+
+- Don't pass NULL back to Python, use PyNone instead.
+  (upstream issue #1)
+- Correctly handle state of CMPIData and raise exceptions in
+  case of notFound or badValue when returning CMPIData to the
+  target language.
+- v 0.4.14
+
+-------------------------------------------------------------------
+Wed Jun  8 13:38:19 CEST 2011 - kkaempf@suse.de
+
+- Replace to_s() with __str__() in Python where applicable
+- v 0.4.13
+
+-------------------------------------------------------------------
+Wed Dec 22 10:33:25 UTC 2010 - kkaempf@novell.com
+
+- Require CMPIBroker in calls to CMPIObjectPath and CMPIInstance
+  constructors (Perl and Python only)
+- v 0.4.12
+
+-------------------------------------------------------------------
+Tue Dec 21 15:23:32 UTC 2010 - kkaempf@novell.com
+
+- Provide equality operator for CMPIBroker
+- v 0.4.11
+
+-------------------------------------------------------------------
+Fri Oct  8 09:28:07 UTC 2010 - kkaempf@novell.com
+
+- Adapt to work with Swig 2.x
+
+-------------------------------------------------------------------
+Wed Aug  4 10:58:20 UTC 2010 - kkaempf@novell.com
+
+- Install Ruby files into vendor- or site-dir
+  Create cmpi/provider.rb and cmpi/providers dir for Ruby providers
+
+-------------------------------------------------------------------
+Fri Jul 30 14:14:06 UTC 2010 - kkaempf@novell.com
+
+- simplify the name
+  - use 'cmpi' for Ruby
+  - use 'cmpi-bindings' for Perl
+  - keep 'cmpi_pywbem_bindings' for Python since pywbem is needed
+
+-------------------------------------------------------------------
+Fri Jul 30 14:06:31 UTC 2010 - kkaempf@novell.com
+
+- Fix SLE10 build.
+
+-------------------------------------------------------------------
+Wed Mar 17 15:48:45 UTC 2010 - coolo@novell.com
+
+- various fixes for other distributions
+
+-------------------------------------------------------------------
+Wed Nov  4 10:15:50 MST 2009 - bwhiteley@suse.de
+
+- Fixed References up-calls in python bindings (bnc#552571)
+
+-------------------------------------------------------------------
+Sun Aug  9 08:45:29 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue Dec 23 12:32:39 MST 2008 - bwhiteley@suse.de
+
+- Update to official 0.4.0 release. 
+
+-------------------------------------------------------------------
+Fri Nov  7 15:48:19 MST 2008 - bwhiteley@suse.de
+
+- Better handling of import errors. 
+- Code cleanup. 
+
+-------------------------------------------------------------------
+Thu Oct 23 13:53:28 MDT 2008 - npaxton@novell.com
+
+- Update to latest code, prep for release for python bindings
+- Indication support in python
+- Bump version to 0.4.0
+
+-------------------------------------------------------------------
+Thu Oct 16 14:04:32 CEST 2008 - kkaempf@suse.de
+
+- Complete Ruby bindings.
+- Small runtime improvement for Python.
+- Bump version to 0.3.0
+
+-------------------------------------------------------------------
+Mon Sep 29 22:52:31 CEST 2008 - kkaempf@suse.de
+
+- refactor cmpi_provider_{python,ruby}.c,
+  move common lines (75%) to cmpi_provider.c and target language
+  specific lines (25%) to target_{python,ruby}.c 
+
+-------------------------------------------------------------------
+Sat Sep 27 11:09:00 MDT 2008 - bwhiteley@suse.de
+
+- Update to latest code.
+- Better error handling. 
+
+-------------------------------------------------------------------
+Fri Sep 19 13:57:43 CEST 2008 - kkaempf@suse.de
+
+- rename .py filename to reflect 'pywbem' dependency.
+- fix build for SLE10 in OpenSUSE build service.
+
+-------------------------------------------------------------------
+Wed Sep 17 02:10:37 CEST 2008 - mrueckert@suse.de
+
+- provide the main package for the debug package. we dont use
+  debug_package_requires here as it would enforce to install both
+  packages.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:38:55 MDT 2008 - bwhiteley@suse.de  
+   
+- Refactered broker wrapping.   
+- Lots of cleanup.  
+
+-------------------------------------------------------------------
+Thu Sep 11 15:29:08 CEST 2008 - kkaempf@suse.de
+
+- Support Python threads, do proper locking 
+- Bump version to 0.2.0
+
+-------------------------------------------------------------------
+Tue Sep  2 11:10:23 CEST 2008 - kkaempf@suse.de
+
+- Initial package.
+

@@ -1,0 +1,31 @@
+From e0bded83fa691c3b972fa4c22b14c5ac0a7a3f13 Mon Sep 17 00:00:00 2001
+From: Jeroen Schutrup <jeroenschutrup@hotmail.nl>
+Date: Sun, 12 Aug 2018 19:43:22 +0200
+Subject: [PATCH] Try/except undefineFlags() as this operation is not
+ supported on bhyve
+
+(cherry picked from commit 29a44aceb1a73347ac07dd241b4a64a4a38cef6e)
+---
+ salt/modules/virt.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index a3f625909d..423016cd90 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -3189,7 +3189,10 @@ def purge(vm_, dirs=False, removables=None, **kwargs):
+             shutil.rmtree(dir_)
+     if getattr(libvirt, 'VIR_DOMAIN_UNDEFINE_NVRAM', False):
+         # This one is only in 1.2.8+
+-        dom.undefineFlags(libvirt.VIR_DOMAIN_UNDEFINE_NVRAM)
++        try:
++            dom.undefineFlags(libvirt.VIR_DOMAIN_UNDEFINE_NVRAM)
++        except Exception:
++            dom.undefine()
+     else:
+         dom.undefine()
+     conn.close()
+-- 
+2.21.0
+
+

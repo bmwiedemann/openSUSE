@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sun Oct  8 07:52:55 UTC 2017 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Regexp-Assemble/Changelog.ini
+- remove realperl.patch
+
+-------------------------------------------------------------------
+Thu May 26 08:33:14 UTC 2011 - coolo@novell.com
+
+- apply realperl.patch to fix perl requires
+
+-------------------------------------------------------------------
+Thu Apr  7 17:35:38 UTC 2011 - coolo@novell.com
+
+- initial package 0.35
+    * created by cpanspec 1.78.04
+

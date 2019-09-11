@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Thu Mar  7 06:15:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.02
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  4.02 Wed Mar  6 08:31:24 CET 2019
+  	- undo the fix from 4.01, it breaks more things than it fixes
+            (another tetscase by Wesley Schwengle).
+          - try a proper fix this time.
+
+-------------------------------------------------------------------
+Sat Mar  2 15:13:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.01
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  4.01 Sun Feb 24 05:03:30 CET 2019
+  	- fix some stack corruption caused mostly when calling methods
+            in list context (tewstcase by Wesley Schwengle).
+
+-------------------------------------------------------------------
+Thu Dec  6 15:47:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.0
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+-------------------------------------------------------------------
+Fri Aug 18 05:38:04 UTC 2017 - coolo@suse.com
+
+- updated to 3.04
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  TODO: move json_xs to types::serialiser
+  
+  3.04 Thu Aug 17 04:30:47 CEST 2017
+  	- change exponential realloc algorithm on encoding and string decoding to be
+            really exponential (this helps slow/debugging allocators such as libumem)
+            (reported by Matthew Horsfall).
+          - string encoding would needlessly overallocate output space
+            (testcase by Matthew Horsfall).
+          - be very paranoid about extending buffer lengths and croak if buffers get too large,
+            which might (or might not) improve security.
+  	- add cbor-packed type to json_xs.
+          - switch from YAML to YAML::XS in json_xs, as YAML is way too buggy and outdated.
+
+-------------------------------------------------------------------
+Thu Nov 17 06:37:58 UTC 2016 - coolo@suse.com
+
+- updated to 3.03
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  TODO: rfc7464
+  TODO: Victor Efimov
+  
+  3.03 Wed Nov 16 20:20:59 CET 2016
+  	- fix a bug introduced by a perl bug workaround that would cause
+            incremental parsing to fail with a sv_chop panic.
+  	- json_xs: toformat failure error message fixed.
+          - json_xs: allow cyclic data structures in CBOR.
+
+-------------------------------------------------------------------
+Fri Mar 11 10:17:07 UTC 2016 - coolo@suse.com
+
+- updated to 3.02
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  TODO: how to cope with tagged values and standard json decoders
+  TODO: investigate magic (Eric Brine)
+
+-------------------------------------------------------------------
+Mon Nov 25 07:46:38 UTC 2013 - coolo@suse.com
+
+- updated to 3.01
+      - backport to perls < 5.18 (reported by Paul Howarth).
+      - implemented an object tagging extension (using the
+         Types::Serialiser serialisation protocol).
+      - reworked the documentation regarding object serialisation,
+         add a new OBJECT SERIALISATION section that explains the
+         whole process.
+      - new setting: allow_tags.
+      - switch to Types::Serialiser booleans.
+      - remove to_json/from_json.
+      - other minor improvements to the documentation.
+
+-------------------------------------------------------------------
+Wed Jun  5 08:30:08 UTC 2013 - coolo@suse.com
+
+- updated to 2.34
+       - work around bugs in perl 5.18 breaking more than 100
+          widely used modules, without a fix in sight because
+          p5pers don't care about CPAN anymore.
+       - when canonicalising, only allocate up to 64 hash key
+          pointers on the stack. for larger hashes, use the heap,
+          to avoid using too much stackspace.
+        - discuss the problem with setlocale (reported by a few victims).
+
+       - internal encode/decode XS wrappers did not expect stack
+          moves caused by callbacks (analyzed and testcase by Jesse Luehrs).
+       - add bencode as to/from option in bin/json_xs.
+        - add -e option to json_xs, and none and string in/out formats.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:50 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Sat Aug 13 16:59:48 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.32:
+  * fix a bug in the initial whitespace accumulation
+
+- changes from 2.31:
+  * don't accumulate initial whitespace in the incremental buffer (this can be
+    useful to allow whitespace-keepalive on a tcp connection without triggering
+    the max_size limit)
+  * properly croak on some invalid inputs that are not strings (e.g. undef)
+    when trying to decode a json text
+
+-------------------------------------------------------------------
+Mon Jan 17 20:09:30 UTC 2011 - coolo@novell.com
+
+- update to 2.3(0)
+  - make sure decoder doesn't change the decoding in the incremental
+    parser (testcase provided by Hendrik Schumacher).
+  - applied patch by DaTa for Data::Dumper support in json_xs.
+  - added -t dump support to json_xs, using Data::Dump.
+  - added -f eval support to json_xs.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:10 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Sep  8 23:24:16 UTC 2010 - chris@computersalat.de
+
+- update to 2.29
+  - fix a memory leak when callbacks set using filter_json_object
+    or filter_json_single_key_object were called (great testcase
+    by Eric Wilhelm).
+2.28  Thu Mar 11 20:30:46 CET 2010
+  - implement our own atof function - perl's can be orders of
+    magnitudes slower than even the system one. on the positive
+    side, ours seems to be more exact in general than perl's.
+    (testcase provided by Tim Meadowcroft).
+  - clarify floating point conversion issues a bit.
+  - update jpsykes csrf article url.
+  - updated benchmark section - JSON::PP became much faster!
+- recreated by cpanspec 1.78
+- fix deps
+  o missing Req perl(common::sense)
+- changelog to changes file
+
+-------------------------------------------------------------------
+Wed Jan 13 23:29:13 UTC 2010 - jw@novell.com
+
+- 2.27  Thu Jan  7 07:35:08 CET 2010
+  - support relaxed option inside the incremental parser
+    (testcase provided by IKEGAMI via Makamaka).
+- 2.26  Sat Oct 10 03:26:19 CEST 2009
+  - big integers could become truncated (based on patch
+    by Strobl Anton).
+  - output format change: indent now adds a final newline, which is
+    more expected and more true to the documentation.
+- 2.25  Sat Aug  8 12:04:41 CEST 2009
+  - the perl debugger completely breaks lvalue subs - try to work
+    around the issue.
+  - ignore RMAGICAL hashes w.r.t. CANONICAL.
+  - try to work around a possible char signedness issue on aix.
+  - require common sense.
+-------------------------------------------------------------------
+Sat Jul 25 19:38:56 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 20 19:03:42 CEST 2009 - chris@computersalat.de
+
+- update to 2.24
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps
+
+-------------------------------------------------------------------
+Sun Oct 26 16:54:56 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 2.23
+

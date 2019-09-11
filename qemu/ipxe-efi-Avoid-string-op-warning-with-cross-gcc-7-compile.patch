@@ -1,0 +1,37 @@
+From 16a934b5fc715cd0f213390c88df0b4ec73d85f1 Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 25 Feb 2019 15:21:06 -0700
+Subject: [PATCH] efi: Avoid string op warning with cross gcc 7 compile
+
+When we started cross compiling using the gcc7 arm compiler, the
+a string op warning popped up that isn't addressed by the mechanism
+already in place. Add a kludge to address it.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/util/elf2efi.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/util/elf2efi.c b/src/util/elf2efi.c
+index 2c5b9df8..7d1cf03f 100644
+--- a/src/util/elf2efi.c
++++ b/src/util/elf2efi.c
+@@ -494,7 +494,14 @@ static struct pe_section * process_section ( struct elf_file *elf,
+ 	memset ( new, 0, sizeof ( *new ) + section_filesz );
+ 
+ 	/* Fill in section header details */
+-	strncpy ( ( char * ) new->hdr.Name, name, sizeof ( new->hdr.Name ) );
++	/*
++	 * The arm cross gcc 7 compiler warns about string problem here. Avoid
++	 * it by doing operation in two stages
++	 */
++	strncpy ( ( char * ) new->hdr.Name, name, sizeof ( new->hdr.Name ) -1 );
++	if (strlen(name) == sizeof( new->hdr.Name ) -1 ) {
++		*(( char * ) new->hdr.Name + sizeof( new->hdr.Name ) -1) = '\0';
++	}
+ 	new->hdr.Misc.VirtualSize = section_memsz;
+ 	new->hdr.VirtualAddress = shdr->sh_addr;
+ 	new->hdr.SizeOfRawData = section_filesz;
+-- 
+2.20.1
+

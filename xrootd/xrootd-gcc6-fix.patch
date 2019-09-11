@@ -1,0 +1,105 @@
+From 96dcf7b6a2a4ec79716c36dd61f458448d52b29f Mon Sep 17 00:00:00 2001
+From: Mattias Ellert <mattias.ellert@fysast.uu.se>
+Date: Sun, 14 Feb 2016 00:11:58 +0100
+Subject: [PATCH 1/2] Don't throw exceptions in destructors
+
+---
+ src/XrdSys/XrdSysPthread.hh | 18 +++++++++---------
+ src/XrdSys/XrdSysXSLock.cc  |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/XrdSys/XrdSysPthread.hh b/src/XrdSys/XrdSysPthread.hh
+index 5132530..57b9d09 100644
+--- a/src/XrdSys/XrdSysPthread.hh
++++ b/src/XrdSys/XrdSysPthread.hh
+@@ -119,9 +119,9 @@ inline void UnLock() {if (cnd) {cnd->UnLock(); cnd = 0;}}
+                  {if (CndVar) CndVar->Lock();
+                   cnd = CndVar;
+                  }
+-            XrdSysCondVarHelper(XrdSysCondVar &CndVar) {
+-	         CndVar.Lock();
+-		 cnd = &CndVar;
++            XrdSysCondVarHelper(XrdSysCondVar &CndVar)
++                 {CndVar.Lock();
++                  cnd = &CndVar;
+                  }
+ 
+            ~XrdSysCondVarHelper() {if (cnd) UnLock();}
+@@ -204,9 +204,9 @@ inline void UnLock() {if (mtx) {mtx->UnLock(); mtx = 0;}}
+                  {if (mutex) mutex->Lock();
+                   mtx = mutex;
+                  }
+-            XrdSysMutexHelper(XrdSysMutex &mutex) {
+-	         mutex.Lock();
+-		 mtx = &mutex;
++            XrdSysMutexHelper(XrdSysMutex &mutex)
++                 {mutex.Lock();
++                  mtx = &mutex;
+                  }
+ 
+            ~XrdSysMutexHelper() {if (mtx) UnLock();}
+@@ -350,11 +350,11 @@ inline void Wait() {while (sem_wait(&h_semaphore))
+ 
+   XrdSysSemaphore(int semval=1, const char * =0)
+                                {if (sem_init(&h_semaphore, 0, semval))
+-				   {throw "sem_init() failed";}
++                                   {throw "sem_init() failed";}
+                                }
+  ~XrdSysSemaphore() {if (sem_destroy(&h_semaphore))
+-                       {throw "sem_destroy() failed";}
+-                   }
++                        {/* throw "sem_destroy() failed"; */}
++                    }
+ 
+ private:
+ 
+diff --git a/src/XrdSys/XrdSysXSLock.cc b/src/XrdSys/XrdSysXSLock.cc
+index 3a4df53..5260c36 100644
+--- a/src/XrdSys/XrdSysXSLock.cc
++++ b/src/XrdSys/XrdSysXSLock.cc
+@@ -43,7 +43,7 @@ XrdSysXSLock::~XrdSysXSLock()
+    LockContext.Lock();
+    if (cur_count || shr_wait || exc_wait)
+       {LockContext.UnLock();
+-       throw "XSLock_delete: Lock object is still active.";
++	/* throw "XSLock_delete: Lock object is still active."; */
+       }
+    LockContext.UnLock();
+ }
+
+From e7e400c5f4f09df1ad36884c34ae0f350d1c5be2 Mon Sep 17 00:00:00 2001
+From: Mattias Ellert <mattias.ellert@fysast.uu.se>
+Date: Sun, 14 Feb 2016 08:11:29 +0100
+Subject: [PATCH 2/2] Call abort() instead
+
+---
+ src/XrdSys/XrdSysPthread.hh | 2 +-
+ src/XrdSys/XrdSysXSLock.cc  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/XrdSys/XrdSysPthread.hh b/src/XrdSys/XrdSysPthread.hh
+index 57b9d09..22a81d6 100644
+--- a/src/XrdSys/XrdSysPthread.hh
++++ b/src/XrdSys/XrdSysPthread.hh
+@@ -353,7 +353,7 @@ inline void Wait() {while (sem_wait(&h_semaphore))
+                                    {throw "sem_init() failed";}
+                                }
+  ~XrdSysSemaphore() {if (sem_destroy(&h_semaphore))
+-                        {/* throw "sem_destroy() failed"; */}
++                        {abort();}
+                     }
+ 
+ private:
+diff --git a/src/XrdSys/XrdSysXSLock.cc b/src/XrdSys/XrdSysXSLock.cc
+index 5260c36..e8d0bc0 100644
+--- a/src/XrdSys/XrdSysXSLock.cc
++++ b/src/XrdSys/XrdSysXSLock.cc
+@@ -43,7 +43,7 @@ XrdSysXSLock::~XrdSysXSLock()
+    LockContext.Lock();
+    if (cur_count || shr_wait || exc_wait)
+       {LockContext.UnLock();
+-	/* throw "XSLock_delete: Lock object is still active."; */
++       abort();
+       }
+    LockContext.UnLock();
+ }

@@ -1,0 +1,1839 @@
+-------------------------------------------------------------------
+Fri Jun 14 00:55:59 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 3.14.5
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Fri May 24 22:53:37 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to 3.14.4
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Sat Mar 30 13:43:31 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to 3.14.1
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Fri Mar 15 05:19:38 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to 3.14.0
+  * The "cmake-gui(1)" dialog gained new "-S" and "-B" arguments to
+  explicitly specify source and build directories.
+
+-------------------------------------------------------------------
+Fri Feb 08 14:03:11 UTC 2019 - seanlew@opensuse.org
+
+- update to 3.13.4
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Tue Jan 15 01:57:44 UTC 2019 - seanlew@opensuse.org
+
+- update to 3.13.3
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Fri Dec 28 06:22:18 UTC 2018 - sean@suspend.net
+
+- update to 3.13.2
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Wed Dec 19 16:25:45 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Include license file as BSD license requires.
+
+-------------------------------------------------------------------
+Sat Dec 01 18:06:13 UTC 2018 - sean@suspend.net
+
+- update to 3.13.1
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Thu Nov 22 04:37:04 UTC 2018 - sean@suspend.net
+
+- update to 3.13.0:
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Wed Jul 18 22:25:50 UTC 2018 - foss@grueninger.de
+
+- update to 3.12.0:
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Fri Jun 22 22:45:39 UTC 2018 - astieger@suse.com
+
+- update to 3.11.4:
+  * No changes specific to CMake-GUI 
+
+-------------------------------------------------------------------
+Sat Jun  2 22:48:27 UTC 2018 - foss@grueninger.de
+
+- Updated to 3.11.3
+  * No changes specific to CMake-GUI 
+
+-------------------------------------------------------------------
+Sun May 20 22:53:46 UTC 2018 - foss@grueninger.de
+
+- Use libuv provided by CMake for Leap 42.3.
+
+-------------------------------------------------------------------
+Thu May 17 20:26:45 UTC 2018 - foss@grueninger.de
+
+- Updated to 3.11.2
+  * No changes specific to CMake-GUI 
+
+-------------------------------------------------------------------
+Wed May  9 22:37:12 UTC 2018 - foss@grueninger.de
+
+- Updated to 3.11.1
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Wed Apr  4 10:46:28 UTC 2018 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+- Drop conditions for building on Leap
+
+-------------------------------------------------------------------
+Wed Mar 28 22:41:54 UTC 2018 - foss@grueninger.de
+
+- Updateo to 3.11.0
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Fri Mar 16 19:05:39 UTC 2018 - avindra@opensuse.org
+
+- Update to version 3.10.3
+  * No changes specific to CMake-GUI
+- switch to https urls
+
+-------------------------------------------------------------------
+Fri Jan 19 01:50:29 UTC 2018 - avindra@opensuse.org
+
+- Update to version 3.10.2
+  * No changes specific to CMake-GUI
+- cleanup spec file
+
+-------------------------------------------------------------------
+Sat Dec 16 07:23:26 UTC 2017 - foss@grueninger.de
+
+- Update to version 3.10.1
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Tue Nov 28 21:46:08 UTC 2017 - foss@grueninger.de
+
+- Update to version 3.10.0
+  * No changes specific to CMake-GUI
+- update form.patch
+
+-------------------------------------------------------------------
+Fri Nov  3 14:32:24 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 3.9.5:
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Thu Oct  5 14:13:19 UTC 2017 - riafarov@suse.com
+
+- Update to version 3.9.4:
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Sun Sep 10 09:07:13 UTC 2017 - astieger@suse.com
+
+- gmake-gui 3.9.2
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Mon Aug 14 20:53:04 UTC 2017 - qantas94heavy@gmail.com
+
+- fix moved .desktop file
+
+-------------------------------------------------------------------
+Tue Aug  8 20:19:15 UTC 2017 - foss@grueninger.de
+
+- Update to version 3.9.0:
+  * No changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Tue Jun  6 13:56:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.8.2:
+  * No changes in CMake-GUI
+
+-------------------------------------------------------------------
+Fri Jun  2 07:11:29 UTC 2017 - mpluskal@suse.com
+
+- Use system rhash
+
+-------------------------------------------------------------------
+Tue May  2 20:57:37 UTC 2017 - foss@grueninger.de
+
+- update to 3.8.1:
+  * no changes specific to CMake-GUI
+
+-------------------------------------------------------------------
+Tue Apr 11 04:55:48 UTC 2017 - foss@grueninger.de
+
+- update to 3.8.0:
+  * no changes specific to CMake-GUI for Linux
+
+-------------------------------------------------------------------
+Sun Jan 15 14:11:33 UTC 2017 - astieger@suse.com
+
+- update to 3.7.2:
+  * no changes specific to CMake-GUI for Linux
+
+-------------------------------------------------------------------
+Wed Nov 30 22:58:23 UTC 2016 - foss@grueninger.de
+
+- update to CMake 3.7.1
+  no changes specific to CMake-GUI for Linux
+  full changelog: https://blog.kitware.com/cmake-3-7-1-available-for-download/
+
+-------------------------------------------------------------------
+Thu Nov 17 21:25:36 UTC 2016 - sflees@suse.de
+
+- Fix typo in libuv detection
+
+-------------------------------------------------------------------
+Wed Nov 16 14:28:58 UTC 2016 - foss@grueninger.de
+
+- use libuv which is shipped in CMake's tarball for older systems
+  that do not provide this lib on their own
+
+-------------------------------------------------------------------
+Wed Nov 16 00:03:32 UTC 2016 - foss@grueninger.de
+
+- update to CMake 3.7.0
+  no changes specific to CMake-GUI for Linux
+  full changelog: https://blog.kitware.com/cmake-3-7-0-available-for-download/
+
+-------------------------------------------------------------------
+Tue Sep 13 21:29:33 UTC 2016 - foss@grueninger.de
+
+- update to CMake 3.6.2
+  no changes specific to CMake-GUI
+  full changelog: https://blog.kitware.com/cmake-3-6-2-available-for-download/
+
+-------------------------------------------------------------------
+Fri Aug 26 08:14:10 UTC 2016 - tchvatal@suse.com
+
+- Remove wrong FIXME from spec
+- Require qt5 gui everywhere as it on all supported platforms
+
+-------------------------------------------------------------------
+Sun Jul 24 12:53:31 UTC 2016 - foss@grueninger.de
+
+- update to CMake 3.6.1
+  no changes specific to CMake-GUI
+  full changelog: https://blog.kitware.com/cmake-3-6-1-available-for-download/
+
+-------------------------------------------------------------------
+Tue Jul 12 05:26:59 UTC 2016 - foss@grueninger.de
+
+- While upstreaming cmake-version-in-generated-files.patch, the
+  CMake developer Brad King reduced the patch
+
+-------------------------------------------------------------------
+Mon Jul 11 17:28:35 UTC 2016 - mpluskal@suse.com
+
+- Remove PIE from macro
+
+-------------------------------------------------------------------
+Sun Jul 10 08:18:57 UTC 2016 - foss@grueninger.de
+
+- update to CMake 3.6.0
+  no changes specific to CMake-GUI
+  full changelog: https://blog.kitware.com/cmake-3-6-0-available-for-download/
+- update patch cmake-version-in-generated-files.patch
+
+-------------------------------------------------------------------
+Sun Jun 26 21:20:16 UTC 2016 - mpluskal@suse.com
+
+- Update cmake.macros to enable PIE by default
+- Build with more secure LDFLAGS
+
+-------------------------------------------------------------------
+Sat Apr 16 12:57:14 UTC 2016 - astieger@suse.com
+
+- cmake 3.5.2:
+  * Fix lookup of an ALIAS target outside aliased target's directory
+  * Rename local target lookup methods to clarify purpose
+  * cmFortranParser: Skip #line directives that do not name files
+  * Ninja: Fix detection of custom command symbolic outputs
+  * Ninja: Restat custom command byproducts even with a SYMBOLIC output (#16049)
+  * ASM: Add missing <INCLUDES> placeholder for "compile" rules
+
+-------------------------------------------------------------------
+Fri Mar 25 11:14:39 UTC 2016 - foss@grueninger.de
+
+- update to 3.5.1
+  * cmake-gui: Populate CFBundleIdentifier in our Info.plist file
+
+-------------------------------------------------------------------
+Wed Mar  9 04:46:14 UTC 2016 - foss@grueninger.de
+
+- update to 3.5.0
+  * The cmake-gui(1) gained options to control warnings about
+    deprecated functionality.
+  * The cmake-gui(1) learned an option to set the toolset to be
+    used with VS IDE and Xcode generators, much like the existing -T
+    option to cmake(1).
+  * The cmake-gui(1) gained a Regular Expression Explorer which may
+    be used to create and evaluate regular expressions in real-time.
+    The explorer window is available via the Tools menu.
+  Full changelog at https://cmake.org/cmake/help/v3.5/release/3.5.html
+
+-------------------------------------------------------------------
+Thu Feb 18 09:00:40 UTC 2016 - olaf@aepfle.de
+
+- Remove cmake version from generated files
+  cmake-version-in-generated-files.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 21:57:29 UTC 2016 - foss@grueninger.de
+
+- update to 3.4.3
+   * Do not fail on Windows 10 with VS 2015 if no SDK is available
+
+-------------------------------------------------------------------
+Wed Jan 20 21:57:20 UTC 2016 - foss@grueninger.de
+
+- update to 3.4.2
+   * cmSystemTools: Add VersionCompareEqual helper
+   * FindJava: Fix typos in IdlJ and JarSigner component implementation
+
+-------------------------------------------------------------------
+Thu Dec  3 10:54:32 UTC 2015 - tchvatal@suse.com
+
+- Version update to 3.4.1:
+  * Fix auto export symbols for Dlls containing /bigobj for 64bit builds.
+  * Cray: Implement Fortran compiler version detection (#15845)
+  * MSVC: Fix linking with /MANIFEST:NO option
+  * Make C and C++ default dialect detection robust to advanced optimizations
+  * FindGTest: Refactor test type checks to avoid cases triggering CMP0064
+  * Android: Restore generation of non-versioned soname (#15851)
+  * Project: Guess default standard dialect if compiler was forced (#15852)
+  * Revert "Disable shared library support when compiler links statically"
+  * (#15855)
+  * Tests: Add case for add_subdirectory inside a function
+  * Tests: Add case for unmatched cmake_policy({PUSH,POP})
+  * Tests: Add case for package version file unmatched policy scope
+  * cmState: Skip variable scope snapshots to avoid call stack duplicates
+  * cmMakefile: Clarify purpose of method that pops a scope snapshot
+  * cmMakefile: Remove unused PolicyPushPop interfaces
+  * cmLocalGenerator: Use ScopePushPop RAII class to manage local variable
+  * scopes
+  * cmState: Enforce policy scope balancing around variable scopes
+  * cmLinkedTree: Rename 'Extend' method to 'Push'
+  * cmLinkedTree: Add Pop method
+  * cmListFileCache: Implement cmListFileBacktrace ctor/dtor out-of-line
+  * cmState: Avoid accumulating policy stack storage for short-lived scopes
+  * cmState: Avoid accumulating snapshot storage for short-lived scopes
+  * cmOrderDirectories: Factor out directory comparison
+  * cmOrderDirectories: Reduce repeat realpath() calls
+  * Include `sys/types.h` header to get `mode_t`
+  * Add NIOS2 CPU support
+  * cmELF: Avoid divide by zero if there are no dynamic section entries
+
+-------------------------------------------------------------------
+Thu Nov 12 22:23:37 UTC 2015 - foss@grueninger.de
+
+- Update to 3.4.0
+  * The "if()" command learned a new "TEST" operator that evaluates to
+    true if a given test name has been defined by the "add_test()"
+    command.  See policy "CMP0064".
+  * The "install(DIRECTORY)" command "DESTINATION" option learned to
+    support "generator expressions".
+  * The "install(FILES)" command "DESTINATION" option learned to
+    support "generator expressions".
+  * CMake learned to honor "*.manifest" source files with MSVC tools.
+    Manifest files named as sources of ".exe" and ".dll" targets will be
+    merged with linker-generated manifests and embedded in the binary.
+  Full changelog see http://kitware.com/blog/home/post/1002
+
+-------------------------------------------------------------------
+Fri Sep 18 12:26:52 UTC 2015 - foss@grueninger.de
+
+- Update to 3.3.2
+     Makefile: Print color escapes only when necessary
+     find_*: Fix search order when the environment duplicates some HINTS
+     cmExtra{Kate,SublimeText}Generator: Remove unused cmXMLSafe includes
+     cmCTest{BZR,GIT,P4}: Remove unused cmXMLSafe includes
+     CTest: Fix XML double-encoding cases
+     CMakeDetermine{C,CXX}Compiler: Avoid if() auto-dereferene in quoted arguments
+
+-------------------------------------------------------------------
+Fri Aug 14 20:56:51 UTC 2015 - astieger@suse.com
+
+- cmake 3.3.1:
+  * ctest: fix add_subdirectory() crash
+  * add_subdirectory: Fix error message on missing CMakeLists.txt
+  * Fortran: Store detected compiler version persistently
+- verify source signatures
+-------------------------------------------------------------------
+Mon Jul 27 17:52:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.3.0:
+ * New Features
+  * Generators
+   * The *Makefile Generators* now add ".DELETE_ON_ERROR" to the
+     makefiles that contain the actual build rules for files on
+     disk. This tells GNU make to remove rule outputs when their
+     recipe modifies an output but fails.
+   * The *Visual Studio Generators* learned to support ".xaml"
+     source files and automatically associate them with corresponding
+     ".h" and ".cpp" sources.
+   * A new experimental "Green Hills MULTI" generator was added on
+     Windows.  Green Hills MULTI is an IDE for embedded real-time
+     systems.
+  * Commands
+   * The "add_dependencies()" command learned to allow dependencies
+     to be added to *interface libraries*. Dependencies added to an
+     interface library are followed transitively in its place since
+     the target itself does not build.
+   * The "execute_process()" command learned to support specifying
+     the same file for "OUTPUT_FILE" and "ERROR_FILE".
+   * The "file(GLOB)" and "file(GLOB_RECURSE)" commands learned a
+     new "LIST_DIRECTORIES <bool>" option to specify whether the glob
+     result
+   * The "find_library()", "find_path()", and "find_file()" commands
+     now search in installation prefixes derived from the "PATH"
+     environment variable.
+   * The "if()" command learned a new "IN_LIST" operator that
+     evaluates to true if a given element is contained in a
+     named list.
+   * The "install(EXPORT)" and "export()" commands learned to export
+     targets that populate the "INTERFACE_SOURCES" target property.
+   * The "install(TARGETS)" command learned to support generator
+     expressions in the "DESTINATION" value.
+  * Variables
+   * The version of some Fortran compilers is now detected and stored
+     in the "CMAKE_Fortran_COMPILER_VERSION" variable.
+   * The *Visual Studio Generators* learned a new
+     "CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD" option to put the
+     "INSTALL" target in the default build of a solution (".sln") file.
+  * Properties
+   * A "CROSSCOMPILING_EMULATOR" target property and supporting
+     "CMAKE_CROSSCOMPILING_EMULATOR" variable were introduced to
+     allow target platform binaries to run on the host during
+     cross compiling.
+   * A "<LANG>_INCLUDE_WHAT_YOU_USE" target property and supporting
+    "CMAKE_<LANG>_INCLUDE_WHAT_YOU_USE" variable were introduced to
+    tell the *Makefile Generators* and the "Ninja" generator to run
+    "include-what-you-use" along with the compiler for
+    "C" and "CXX" languages.
+   * The "<LANG>_VISIBILITY_PRESET" and "VISIBILITY_INLINES_HIDDEN"
+     target properties now affect compilation in sources of all target
+     types.  See policy "CMP0063".
+   * The "XCODE_ATTRIBUTE_<an-attribute>" target property learned to
+     support generator expressions.
+  * Modules
+   * The "CheckFortranCompilerFlag" module was introduced to check
+     "Fortran" compiler flags, much like the "CheckCCompilerFlag"
+     module already does for "C".
+   * The "ExternalData" module learned a new
+     "ExternalData_NO_SYMLINKS" option to disable use of symbolic
+     links to populate the real data files and use copies instead.
+   * The "ExternalData" module learned a new "RECURSE:" option in
+     "DATA{}" references specifying directories. This allows an
+     entire directory tree of associated files to be matched.
+   * The "ExternalData" module learned a new URL template
+     placeholder "%(algo:<key>)" to allow custom mapping from
+     algorithm name to URL component through configuration of new
+     "ExternalData_URL_ALGO_<algo>_<key>" variables. This allows
+     more flexibility in remote URLs.
+   * The "ExternalProject" module learned to replace tokens like
+     "<BINARY_DIR>" in the "BYPRODUCTS" of each step.
+   * The "ExternalProject" module APIs learned to support "generator
+     expressions" when using "LOG_*" options and in CMake initial
+     cache options.
+   * The "FindBoost" module now tracks the directories containing
+     libraries separately for RELEASE and DEBUG configurations.
+   * The "FindCUDA" module now defaults to using the static CUDA
+     runtime library if it is available.
+     A new "CUDA_USE_STATIC_CUDA_RUNTIME" option is offered to
+     control this  behavior.
+   * The "FindMatlab" module was completely rewritten.  It learned
+     about versions and components and to find Matlab in a more
+     precise and multiplatform way.  The module now offers APIs to
+     create mex extensions, documentation, and unit tests.
+   * The "FindPackageHandleStandardArgs" module
+     "FIND_PACKAGE_HANDLE_STANDARD_ARGS" function now always
+     populates both the "<PackageName>_FOUND" and
+     "<UPPERCASE_NAME>_FOUND" variables (the latter for backwards
+     compatibility).  The "FOUND_VAR" option is now ignored except
+     to enforce its allowed values.
+   * The "InstallRequiredSystemLibraries" module learned a new
+      "CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT" option to specify the
+      installation component.
+  * Generator Expressions
+   * A new "COMPILE_LANGUAGE" generator expression was introduced to
+     allow specification of compile options for target files based
+     on the "LANGUAGE" of each source file.  Due to limitations of
+     the underlying native build tools, this feature has varying
+     support across generators.
+     See the "cmake-generator-expressions(7)" manual for details.
+  * CTest
+   * The "ctest(1)" tool learned a new "--repeat-until-fail <n>"
+     option to help find sporadic test failures.
+   * The "CTestCoverageCollectGCOV" module learned to support the
+     same "CTEST_CUSTOM_COVERAGE_EXCLUDE" option as the
+     "ctest_coverage()" command.
+   * CPack
+   * The "cpack(1)" "IFW" generator and the "CPackIFW" module
+     learned to support Qt Framework Installer 2.0 tools.
+   * The "CPackDeb" module learned a new
+     "CPACK_DEBIAN_<COMPONENT>_PACKAGE_SHLIBDEPS" variable to
+     specify per-component use of "dpkg-shlibdeps".
+   * The "CPackDeb" module learned a new
+     "CPACK_DEBIAN_<COMPONENT>_PACKAGE_DEPENDS" option to specify
+     per-component dependencies.
+   * The "CPackRPM" module learned to package symbolic links more
+     cleanly and now supports directory symlinks with recent
+     "rpmbuild" versions.
+   * The "CPackRPM" module learned a new
+     "CPACK_RPM_ADDITIONAL_MAN_DIRS" variable to specify directories
+     containing man pages for the brp- compress RPM macro.
+   * The "CPackRPM" module learned a new
+     "CPACK_RPM_<component>_PACKAGE_ARCHITECTURE" variable to
+     specify a component-specific package architecture.
+   * The CPack WIX generator learned the new
+     "CPACK_START_MENU_SHORTCUTS", "CPACK_DESKTOP_SHORTCUTS" and
+     "CPACK_STARTUP_SHORTCUTS" installed file properties which can
+     be used to install shorcuts in the Start Menu, on the Desktop
+     and in the Startup Folder respectively.
+   * Other
+   * The "Compile Features" functionality is now aware of features
+     supported by GNU compilers on Windows, versions 4.4 through 5.0.
+   * The "cmake(1)" "-E tar" command learned a new "--format<format>"
+     option to specify the archive format to be written.
+   * On OS X, CMake learned to create XCTest bundles to test
+     Frameworks and App Bundles within Xcode.  The "FindXCTest"
+     module provides convenience functions to handle "XCTEST" bundles.
+ * Deprecated and Removed Features
+   * On OS X the "cmake-gui(1)" no longer has the "Install For Command
+     Line Use" menu item.  Instead there is a "How to Install For
+     Command Line Use" menu item that shows an informational dialog box
+     explaining how to make the command line tools available.
+     For example:
+     /Applications/CMake.app/Contents/bin/cmake-gui --install
+   * The "ctest_build()" and "build_command()" commands no longer
+     tell "make" tools to ignore errors with the "-i" option.
+     Previously this was done for *Makefile Generators* but not
+     others. See policy "CMP0061".
+   * The "Visual Studio 10 2010" generator no longer checks for
+     running VS IDEs with the project open or asks them to reload.
+     This was originally done for VS 10 because it had been done for
+     VS 7 through 9 to avoid prompting for every project in a
+     solution. Since VS >= 10 allow the whole solution to reload at
+     once they do not need CMake to help them.
+   * The "Visual Studio 7" generator (.NET 2002) is now deprecated
+     and will be removed in a future version of CMake.
+   * The "Visual Studio 6" generator is now deprecated and will be
+     removed in a future version of CMake.
+   * The "find_package()" command no longer considers project build
+     trees recently configured in a "cmake-gui(1)". This was
+     previously done only on Windows and is now never done. The
+     "NO_CMAKE_BUILDS_PATH" option is now ignored if given and
+     effectively always on. Projects may populate the *User Package
+     Registry* to aid users building multiple dependent projects one
+     after another.
+   * When building with GNU tools on Windows (MinGW tools), the
+     "find_library()" command will no longer consider ".dll" files
+     to be linkable libraries.  All dynamic link libraries are
+     expected to provide separate ".dll.a" or ".lib" import libraries.
+   * The "add_definitions()" command no longer causes a "DEFINITIONS"
+     directory property to be populated. See policy "CMP0059".
+   * With Visual Studio 7, 8, and 9 generators the value of the
+     "$(OutDir)" placeholder no longer evaluates to the configuration
+     name.  Projects should use "$(ConfigurationName)" for that instead.
+   * Using the output of "export()" with the "install(FILES)" command
+     is no longer allowed.  See policy "CMP0062" for details.
+ * Other Changes
+   * The "Ninja" generator now requires that calls to the
+     "add_custom_command()" and "add_custom_target()" commands use
+     the "BYPRODUCTS" option to explicitly specify any files generated
+     by the custom commands that are not listed as outputs (perhaps
+     because their timestamps are allowed to be older than the inputs).
+     See policy "CMP0058".
+   * Build-time progress output of *Makefile Generators* has been
+     improved. It no longer mixes progress and build rule messages
+     during parallel builds. The link rule messages now have progress
+     and are displayed as bold green instead of bold red (since red
+     is often associated with an error message).
+   * The "CMAKE_CFG_INTDIR" variable value for Visual Studio 7, 8,
+     and 9 is now "$(ConfigurationName)" instead of "$(OutDir)".
+     This should have no effect on the intended use cases of
+     the variable.
+   * Linking to library files by a full path in an implicit linker
+     search directory (e.g. "/usr/lib/libfoo.a") no longer asks the
+     linker to search for the library (e.g. "-lfoo") and now links
+     by full path. See policy "CMP0060".
+
+-------------------------------------------------------------------
+Tue Jun  2 06:54:23 UTC 2015 - foss@grueninger.de
+
+- Update to 3.2.3
+      Makefile: Workaround mingw32-make trailing backslash trouble (#15546)
+      Makefile: Fix compilation after parent commit was backported
+      InstallRequiredSystemLibraries: Update for VS 2015 (#15552)
+      Fix assertion failure on unmatched foreach in function (#15572)
+      ctest_build: Fix regression in GNU make error message matching
+
+-------------------------------------------------------------------
+Wed Apr 15 09:47:42 UTC 2015 - foss@grueninger.de
+
+- Update to 3.2.2
+      file(LOCK): Close file descriptor/handle when releasing a lock
+      FindMFC: Use if(DEFINED) to simplify condition (#15477)
+      curl: Never consider using Windows APIs on Cygwin
+      liblzma: Use unaligned access only on Intel and PowerPC archs
+      liblzma: Disable XL compiler optimizations
+      liblzma: Disable GNU 3.3 compiler optimizations
+      KWSys SystemTools: Teach Touch with !create to succeed on missing file
+      Makefile: Fix multiple custom command outputs with one missing
+      libarchive: Fix string concatentation in Windows mktemp implementation
+
+-------------------------------------------------------------------
+Sun Mar 15 12:02:10 UTC 2015 - foss@grueninger.de
+
+- Update to 3.2.1
+ * Changes since 3.2.0~rc1
+      Makefile: Fix multiple custom command outputs regression (#15116)
+      configure_file: Do not warn about newline style arguments
+      Tests: Add more signature tests to RunCMake.configure_file test
+      Ninja: Improve internal check for generating at the top-level (#15436)
+      UseSWIG: Avoid if() auto-dereferene in quoted arguments
+      Diagnose invalid <LANG>_STANDARD value instead of crashing (#15426)
+      CPackRPM: Fix handling of relocation prefix parent directories
+      KWSys SystemTools: Update CopyFileAlways stream library workarounds
+      install: Write the entire installation manifest at once
+      Help: Revise configure_file documentation (#15403)
+      Help: In 3.2 relnotes move OpenGL/X11 to deprecated/removed section
+      Utilities/Release: Build OS X and Win binaries without OpenSSL
+      cmake-gui: Reset generator platform and toolset on configure (#15411)
+      FindJsonCpp: Drop new module due to upstream jsoncpp providing package
+      bootstrap: Add --(no-)system-jsoncpp options
+      FindCurses: Drop unused check for cbreak in tinfo library
+      FindJNI: Add arch-specific library dir for JDK 9 layout (#15408)
+- Update system-libs.patch
+
+-------------------------------------------------------------------
+Thu Feb 19 15:05:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Comment jsoncpp BuildRequires, as it creates dependancy cycle
+
+-------------------------------------------------------------------
+Sat Feb 14 19:48:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.2 rc1:
+ * New Features:
+   * Syntax:
+     * CMake learned to support unicode characters *encoded as
+       UTF-8* on Windows. This was already supported on platforms
+       whose system APIs accept UTF-8 encoded strings. Unicode
+       characters may now be used in CMake code, paths to source
+       files, configured files such as ".h.in" files, and other
+       files read and written by CMake.  Note that because CMake
+       interoperates with many other tools, there may still be some
+       limitations when using certain unicode characters.
+   * Commands:
+     * The "add_custom_command()" and "add_custom_target()"
+       commands learned a new "BYPRODUCTS" option to specify files
+       produced as side effects of the custom commands.
+       These are not outputs because they do not always have to be
+       newer than inputs.
+     * The "add_custom_command()" and "add_custom_target()"
+       commands learned a new "USES_TERMINAL" option to request
+       that the command be given direct access to the terminal
+       if possible. The "Ninja" generator will places such commands
+       in the "console" "pool". Build targets provided by CMake
+       that are meant for individual interactive use, such as
+       "install", are now placed in this pool.
+     * A new "continue()" command was added that can be called
+       inside loop contexts to end the current iteration and start
+       the next one at the top of the loop block.
+     * The "file(LOCK)" subcommand was created to allow CMake
+       processes to synchronize through file and directory locks.
+     * The "file(STRINGS)" now supports UTF-16LE, UTF-16BE, UTF-32LE,
+       UTF- 32BE as "ENCODING" options.
+     * The "install(EXPORT)" command now works with an absolute
+       "DESTINATION" even if targets in the export set are
+       installed with a destination or *usage requirements*
+       specified relative to the install prefix. The value of the
+       "CMAKE_INSTALL_PREFIX" variable is hard-coded into the
+       installed export file as the base for relative references.
+     * The "try_compile()" command source file signature now honors
+       link flags (e.g. "CMAKE_EXE_LINKER_FLAGS") in the generated
+       test project. See policy "CMP0056".
+     * The "try_run()" command learned to honor the "LINK_LIBRARIES"
+       option just as "try_compile()" already does.
+     * The "file(GENERATE)" command now generates the output file
+       with the same permissions as the input file if set.
+     * The "file(GENERATE)" command can now generate files which
+       are used as source files for buildsystem targets. Generated
+       files automatically get their "GENERATED" property
+       set to "TRUE".
+   * Variables:
+     * The "CMAKE_MATCH_COUNT" variable was introduced to record
+       the number of matches made in the last regular expression
+       matched in an "if()" command or a "string()" command.
+   * Properties:
+     * An "ANDROID_API_MIN" target property was introduced to
+       specify the minimum version to be targeted by the toolchain.
+     * A "VS_SHADER_FLAGS" source file property was added to
+       specify additional shader flags to ".hlsl" files, for the
+       Visual Studio generators.
+   * Modules:
+     * The "ExternalData" module learned to support *Custom Fetch
+       Scripts*. This allows projects to specify custom ".cmake"
+       scripts for fetching data objects during the build.
+     * The "ExternalProject" module learned options to create
+       independent external project step targets that do not depend
+       on the builtin steps.
+     * The "ExternalProject" module "ExternalProject_Add()" command
+       learned a new "CMAKE_CACHE_DEFAULT_ARGS" option to initialize
+       cache values in the external project without setting them on
+       future builds.
+     * The "ExternalProject" module "ExternalProject_Add()" command
+       learned a new "TEST_EXCLUDE_FROM_MAIN" option to exclude tests
+       from the main build.
+     * The "ExternalProject" module "ExternalProject_Add()" command
+       learned a new "UPDATE_DISCONNECTED" option to avoid
+       automatically updating the source tree checkout from
+       version control.
+     * The "FindCUDA" module learned about the "cusolver" library
+       in CUDA 7.0.
+     * The "FindGit" module learned to find the "git" command-line
+       tool that comes with GitHub for Windows installed in user
+       home directories.
+     * A "FindGSL" module was introduced to find the GNU Scientific
+       Library.
+     * A "FindIntl" module was introduced to find the Gettext
+       "libintl" library.
+     * A "FindJsonCpp" module was introduced to find the JsonCpp
+       package.
+     * The "FindLATEX" module learned to support components.
+     * The "FindMPI" module learned to find MS-MPI on Windows.
+     * The "FindOpenSSL" module now reports "crypto" and "ssl"
+       libraries separately in "OPENSSL_CRYPTO_LIBRARY" and
+       "OPENSSL_SSL_LIBRARY", respectively, to allow applications
+       to link to one without the other.
+     * The "WriteCompilerDetectionHeader" module learned to create
+       a define for portability of the "cxx_thread_local" feature.
+       The define expands to either the C++11 "thread_local" keyword,
+       or a pre-standardization compiler-specific equivalent,
+       as appropriate.
+     * The "WriteCompilerDetectionHeader" module learned to create
+       multiple output files per compiler and per language, instead
+       of creating one large file.
+   * CTest:
+     * The "ctest_coverage()" command learned to support Delphi
+       coverage.
+     * The "ctest_coverage()" command learned to support Javascript
+       coverage.
+     * The "CTestCoverageCollectGCOV" module was introduced as an
+       alternative to the "ctest_coverage()" command for collecting
+       "gcov" results for submission to CDash.
+   * CPack:
+     * The "CPackRPM" module learned options to set per-component
+       descriptions and summaries. See the
+       "CPACK_RPM_<component>_PACKAGE_DESCRIPTION" and
+       "CPACK_RPM_<component>_PACKAGE_SUMMARY" variables.
+     * The "CPackRPM" module learned options to specify requirements
+       for pre- and post-install scripts.
+       See the "CPACK_RPM_PACKAGE_REQUIRES_PRE" and
+       "CPACK_RPM_PACKAGE_REQUIRES_POST" variables.
+     * The "CPackRPM" module learned options to specify requirements
+       for pre- and post-uninstall scripts.
+       See the "CPACK_RPM_PACKAGE_REQUIRES_PREUN" and
+       "CPACK_RPM_PACKAGE_REQUIRES_POSTUN" variables.
+     * The "CPackRPM" module learned a new
+       "CPACK_RPM_<COMPONENT>_PACKAGE_PREFIX" variable to specify a
+       component-specific value to use instead of
+       "CPACK_PACKAGING_INSTALL_PREFIX".
+     * The "CPackRPM" module learned a new
+       "CPACK_RPM_RELOCATION_PATHS" variable to specify multiple
+       relocation prefixes for a single rpm package.
+   * Other:
+     * The "cmake(1)" "-E tar" command now supports creating
+       ".xz"-compressed archives with the "J" flag.
+     * The "cmake(1)" "-E tar" command learned a new
+       "--files-from=<file>" option to specify file names using
+       lines in a file to overcome command-line length limits.
+     * The "cmake(1)" "-E tar" command learned a new "--mtime=<date>"
+       option to specify the modification time recorded in
+       tarball entries.
+     * The "Compile Features" functionality is now aware of features
+       supported by more compilers, including:
+       * Apple Clang ("AppleClang") for Xcode versions 4.4 though 6.1.
+       * GNU compiler versions 4.4 through 5.0 on UNIX and Apple ("GNU").
+       * Microsoft Visual Studio ("MSVC") for versions 2010 through 2015.
+       * Oracle SolarisStudio ("SunPro") version 12.4.
+     * The *AUTORCC* feature now tracks files listed in ".qrc" files
+       as dependencies. If an input file to the "rcc" tool is changed,
+       the tool is automatically re-run.
+ * New Diagnostics:
+     * The "break()" command now rejects calls outside of a loop
+       context or that pass arguments to the command.
+       See policy "CMP0055".
+ * Deprecated and Removed Features:
+     * Files written in the "cmake-language(7)", such as
+       "CMakeLists.txt" or "*.cmake" files, are now expected to be
+       encoded as UTF-8. If files are already ASCII, they will be
+       compatible. If files were in a different encoding,
+       including Latin 1, they will need to be converted.
+     * The "FindOpenGL" module no longer explicitly searches for any
+       dependency on X11 libraries with the "FindX11" module. Such
+       dependencies should not need to be explicit. Applications
+       using X11 APIs themselves should find and link to X11
+       libraries explicitly.
+     * The implementation of CMake now relies on some C++ compiler
+       features which are not supported by some older compilers.
+       As a result, those old compilers can no longer be used to
+       build CMake itself. CMake continues to be able to generate
+       Makefiles and project files for users of those old compilers
+       however. Compilers known to no longer be capable of building
+       CMake are:
+       * Visual Studio 6 and 7.0 -- superseded by VisualStudio 7.1
+         and newer.
+       * GCC 2.95 -- superseded by GCC 3 and newer compilers.
+       * Borland compilers -- superseded by other Windows compilers.
+       * Compaq compilers -- superseded by other compilers.
+       * SGI compilers -- IRIX was dropped as a host platform.
+ * Other Changes:
+     * On Windows and OS X, commands supporting network communication
+       via "https", such as "file(DOWNLOAD)", "file(UPLOAD)", and
+       "ctest_submit()", now support SSL/TLS even when CMake is not
+       built against OpenSSL. The Windows or OS X native SSL/TLS
+       implementation is used by default. OS-configured certificate
+       authorities will be trusted automatically.
+       On other platforms, when CMake is built with OpenSSL,
+       these commands now search for OS-configured certificate
+       authorities in a few "/etc" paths to be trusted automatically.
+     * On OS X with Makefile and Ninja generators, when a compiler
+       is found in "/usr/bin" it is now mapped to the corresponding
+       compiler inside the Xcode application folder, if any. This
+       allows such build trees to continue to work with their
+       original compiler even when "xcode- select" switches to a
+       different Xcode installation.
+     * The Visual Studio generators now write solution and project
+       files in UTF-8 instead of Windows-1252. Windows-1252
+       supported Latin 1 languages such as those found in North
+       and South America and Western Europe. With UTF-8, additional
+       languages are now supported.
+     * The "Xcode" generator no longer requires a value for the
+       "CMAKE_MAKE_PROGRAM" variable to be located up front. It now
+       locates "xcodebuild" when needed at build time.
+     * When building CMake itself using SolarisStudio 12, the
+       default "libCStd" standard library is not sufficient to
+       build CMake. The SolarisStudio distribution supports compiler
+       options to use "STLPort4" or "libstdc++". An appropriate
+       option to select the standard library is now added
+       automatically when building CMake with SolarisStudio compilers.
+- BuildRequire pkgconfig(jsoncpp), and use it as system library on
+  openSUSE > 13.2
+- Added form.patch: set the correct include path for the
+  ncurses includes
+- Added system-libs.patch: allow choosing between bundled and
+  system jsoncpp & form libs
+
+-------------------------------------------------------------------
+Fri Feb 13 06:56:18 UTC 2015 - foss@grueninger.de
+
+- Update to 3.1.3
+      Do not call setlocale() globally in CMake applications (#15377)
+      Add setlocale() calls around use of libarchive APIs (#14934, #15377)
+      Makefile: Fix regression in target-bound custom command COMMENT output
+
+-------------------------------------------------------------------
+Fri Feb  6 16:41:28 UTC 2015 - foss@grueninger.de
+
+- Update to 3.1.2
+      install: Fix regression in default configuration selection
+      CPack: Fix packaging of source tarballs with symbolic links
+      KWSys Directory: Check opendir return value before using it (#15367)
+      Help: Clarify status of link_libraries command
+      Normalize OBJECT_DEPENDS paths to match custom commands (#15366)
+      MSVC: Fix initialization of RelWithDebInfo shared library link flags (#15385)
+      FeatureSummary: Fix bracket in documentation.
+      FindOpenSSL: fix detection of OpenSSL 1.0.2
+      ctest_build: Update GNU make error message matching (#15379)
+
+-------------------------------------------------------------------
+Thu Jan 22 23:01:01 UTC 2015 - foss@grueninger.de
+
+- Update to 3.1.1
+      Eclipse: Add org.eclipse.cdt.core.cnature to CXX projects (#15068)
+      get_test_property: clarify the documentation
+      set_tests_properties: fix documentation
+      tests: add tests for querying properties
+      Xcode: Sort targets deterministically and with ALL_BUILD first (#15346)
+      bootstrap: Fix syntax for Solaris 10 shell (#15317)
+      Help: Clarify MinGW v. MSYS Makefiles generators (#15319)
+      Ninja: Do not crash when CMAKE_<LANG>_COMPILE_OBJECT is empty (#15325)
+      Ninja: Generate rules only for languages compiled in a target (#15325)
+      Tests: Test using objects from a language enabled in a subdirectory (#15325)
+      Help: Add 3.1 release note about '#' escaping in Makefiles (#15322)
+      Help: Clarify if(<variable>) documentation (#15335)
+      Help: Document CMAKE_FIND_PACKAGE_NAME variable
+      Xcode: Do not require code signing for compiler id (#15214)
+      Copyright.txt: Update year range to end in 2015
+      XL: Fix link flags for executables on Linux with XL compilers
+      QNX: Fix detection of QCC compiler id (#15349)
+      Xcode: Fix early termination on per-config source file error CMake 3.1.1
+      CPack: Fix PackageMaker internal versioning for OS X 10.10
+      Fix compilation with the Oracle / Sun compiler (#15318)
+      Help: Small fixes in CPackComponent documentation
+      FindRuby: fix selection of version x.0 (#15345)
+      CPack: Avoid crash on invalid CMake generator name (#15308)
+      FindRuby: Fix output check in _RUBY_CONFIG_VAR
+      find_package: Document CMAKE_FIND_PACKAGE_NAME variable
+      QtAutoUic: Restore source file AUTOUIC_OPTIONS settings
+      FindCUDA: Do not assume CMAKE_SYSTEM_PROCESSOR is set
+      cmake-mode.el: Fix extracting keyword at point in cmake-help
+      cmake-mode.el: Re-add explicit call to require thingatpt
+      FindIce: Port to work with CMP0054 NEW behavior
+      FindSDL: Allow if() to dereference SDL_INCLUDE_DIR for matching
+      FindQt: fix setting DESIRED_QT_VERSION if "find_package(Qt VVV)" was called
+      FindQt: fix variable name in error message
+      FindQt: explicitely mention that it cannot Qt5 or later
+      FindBoost: Add latest Boost version 1.57.0 and next milestone 1.58.0
+      KWSys Terminal: Add xterm-termite to VT100 color support whitelist
+      Help: Document valid 14 value for CXX_STANDARD. (#15339)
+      get_target_property: discern empty from undefined properties (#15333)
+      QtAutoUic: Add a test for the regression in the parent commit.
+      cmMakefile: Rename a method to what it really does.
+      Features: Fix the COMPILE_FEATURES genex for unavailable features.
+      cmTarget: Compute link language of TARGET_OBJECTS with CMP0026 OLD (#15338)
+      Help: Link relevant documents for virtual override features (#15311)
+      Help: Add INTERFACE_LIBRARY to TYPE target property documentation
+      Help: Update cmake.org links to avoid redirects
+
+-------------------------------------------------------------------
+Wed Dec 17 21:09:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1 final:
+ * Help: Drop FeatureSummary example in cmake-developer.7
+ * Help: Extend policy CMP0054 documentation with an example
+
+-------------------------------------------------------------------
+Thu Dec 11 07:57:44 UTC 2014 - olaf@aepfle.de
+
+- Require libarchive 3 due to usage of archive_write_set_format_7zip
+
+-------------------------------------------------------------------
+Wed Dec 10 18:01:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0~rc3
+ * Revert "ClearMatches: Only clear matches which were
+   actually set" (#15261)
+ * Help: Document COMPONENT option of install(SCRIPT/CODE)
+   (#14956)
+ * Do not use just-built CMake to install itself when
+   cross-compiling (#15248)
+ * KWSys SharedForward: Hard-code the ldpath buffer size to
+   below VS 14 limit
+ * VS: Rename VS 14 generator to 'Visual Studio 14 2015'
+ * Help: target_include_directories does not allow target names
+ * Utilities/Sphinx: Add missing call to note_explicit_target
+ * FindJava: Do not accept OS X stub 'java' as Java
+ * Fix lookup of source names after conversion to their actual
+   case (#15259)
+ * Help: Format set_property and get_property command docs
+ * Help: Add 3.1 release notes for INSTALL property scope
+ * CMakeParseImplicitLinkInfo: Fix implicit library logging
+ * Makefile: Do not create an empty linker response file
+ * FindOpenGL: Revert support for imported targets (#15267)
+ * Help: Document Nsight Tegra toolchain configuration (#15276)
+ * Utilities/Sphinx: Fix link targets for mixed-case command names
+ * Modules: Rename FindXerces to FindXercesC
+ * Help: Document file(GENERATE) signature option order
+ * VS: Add source file properties to set the hlsl shader entry
+   point and model
+ * Help: Remove duplicate '#' in CMP0053 valid character list
+ * Help: Add missing space to ctest -j option description
+ * FindwxWidgets: Add versions 3.0.1 and 3.0.2
+ * Help: Fix typo in cmake-compile-features(7) manual
+ * Help: Fix typo in CMAKE_CXX_KNOWN_FEATURES docs
+ * VS: Change Nsight Tegra 2.0 Project
+   Revision Number from 8 to 9
+ * Avoid if() quoted auto-dereference when checking for "MSVC"
+ * VS: Improve error messages when compiler
+   is not detected (#15228)
+ * VS: Do not produce WinMD file for OBJECT libraries (#15228)
+ * VS: Add source file property to specify Windows App
+   deployment location
+ * CPackIFW: Correction of the module documentation
+ * FindOpenMP: Use fixed form Fortran test program
+ * Help: Document installed file property API
+ * VS, WINCE: Fix entry point for Unicode builds
+ * FindPythonInterp: fix version component variables for
+   Python 1.4 (#15275)
+ * Features: Don't record for AppleClang
+ * Features: Test the CXX compiler only if it has features.
+ * Features: Fix references to CXX compiler
+   version in Clang-C.cmake.
+ * Features: Record C++11 dialect switch only for
+   GNU 4.7 and later.
+ * Features: Fix the default C dialect for Clang and GNU.
+ * Fix the test for running the CxxDialog unit test.
+ * WCDH: Don't imply that MSVC is supported by the module.
+ * WCDH: Make the header -Wundef safe for the C language.
+ * Genex: Fix evaluation context propagation for TARGET_OBJECTS.
+ * cmTarget: Don't allow relative paths in INTERFACE_SOURCES
+ * Export: Disallow export of targets with INTERFACE_SOURCES
+ * Help: Document the export limitation of INTERFACE_SOURCES.
+
+-------------------------------------------------------------------
+Thu Nov 13 20:26:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0~rc2
+ * FindCurses: Include CheckLibraryExists before using it (#15220)
+ * Help: Clarify add_compile_options documentation (#15225)
+ * Help: Reference add_compile_options from add_definitions (#15225)
+ * KWSys: Fix configure_file call to use COPYONLY, not COPY_ONLY
+ * Qt4: Fix configure_file call to use COPYONLY, not COPY_ONLY
+ * FindIce: Drop use of :envvar: Sphinx markup
+ * Help: Drop TOC from latex manuals
+ * Help: Format add_library documented list of INTERFACE commands
+ * Help: Fix example in cmake-packages to avoid long line
+ * FindProtobuf: Cleanup reStructuredText documentation formatting
+ * Modules: Wrap long lines in pre-formatted documentation blocks
+ * Help: Tell latex to use a small font for cmake-language.7 productions
+ * Utilities/Sphinx: Fix html_favicon configuration
+ * Help: Update 3.1 release notes for dropping of FindITK and FindVTK
+ * Help: Wrap long lines in pre-formatted documentation blocks
+ * Help: Fix broken cross-references reported by 'nitpicky' option
+ * Xcode: Fix compiler path detection for iOS tools on Xcode <= 5.0 (#15237)
+ * ExternalProject: Restore logic to not download already-existing file
+ * Help: Link to GNUInstallDirs from CMAKE_INSTALL_PREFIX (#15246)
+ * Utilities/Sphinx: Add index entries for cross-references
+ * Help: Add 3.1 release note Emacs mode update
+ * Workaround for short jump tables on PA-RISC.
+ * genex: Preserve order while evaluating TARGET_OBJECTS
+ * Fix link line order when shared libraries are de-duplicated
+ * Help: Fix configure_file call to use COPYONLY, not COPY_ONLY
+ * Watcom: Drop symfile linker option
+ * Documentation: Fix minor typo thecommand -> the command
+ * cmake-mode.el: syntax of '_' should be treated as symbol
+ * KWSys SystemInformation: Check for _SC_AIX_REALMEM before using it
+
+-------------------------------------------------------------------
+Tue Oct 28 20:09:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0~rc1
+ * Some of the more significant features of CMake 3.1 are:
+   * Windows Phone and Windows Store support has been added to
+     Visual Studio 11 (2012) and above Generators.
+   * NVIDIA Nsight Tegra support has been added to  Visual Studio
+     10 (2010) and above Generators.
+   * New "target_compile_features" command allows populating
+     target based compile features. CMake uses this information
+     to ensure that the compiler in use is capable of building the
+     target, and to add any necessary compile flags such as
+     -std=gnu++11 to support language features.
+     More information on this is found at:
+     http://www.cmake.org/cmake/help/v3.1/manual/cmake-compile-features.7.html
+   * The syntax for *Variable References* and *Escape Sequences* was simplified in
+  order to allow a much faster implementation. See policy "CMP0053".
+   * The "if" command no longer automatically dereferences
+     variables named in quoted or bracket arguments.  See policy "CMP0054".
+   * The target property "SOURCES" now generally supports "Generator
+     Expressions". The generator expressions may be used in the
+     "add_library" and "add_executable" commands.
+   * It is now possible to write and append to the target
+     property "SOURCES". The variable "CMAKE_DEBUG_TARGET_PROPERTIES"
+     can be used to trace the origin of sources.
+   * CPack gained "7Z" and "TXZ" generators supporting
+     lzma-compressed archives.
+   * The ExternalProject module has learned to support lzma-compressed
+     source tarballs with ".7z", ".tar.xz", and ".txz" extensions.
+   * The ExternalProject module ExternalProject_Add command
+     learned a new BUILD_ALWAYS option to cause the external project
+     build step to run every time the host project is built.
+   * The ctest_coverage command learned to support Intel coverage
+     files with the "codecov" tool.
+   * The ctest_memcheck command learned to support sanitizer modes,
+     including "AddressSanitizer", "MemorySanitizer", "ThreadSanitizer",
+     and "UndefinedBehaviorSanitizer".
+ * Deprecated and Removed Features:
+   * In CMake 3.0 the "target_link_libraries" command accidentally
+     began allowing unquoted arguments to use Generator Expressions
+     containing a semicolon separated list within them.
+     CMake 3.1 again requires the quotes for this to work correctly.
+- Added pkgconfig(liblzma) BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 12 17:01:21 UTC 2014 - idonmez@suse.com
+
+- Update to version 3.0.2
+   * No changes to the GUI
+
+-------------------------------------------------------------------
+Sun Aug 10 14:33:05 UTC 2014 - andreas.stieger@gmx.de
+
+- CMake 3.0.1:
+  * Ninja: Remove CMake includes from explicit depends
+  * KWSys SystemInformation: No SA_RESTART on QNX
+  * cmake: Fix read-after-free while checking command-line arguments
+  * Fortran: Add support for GNU >= 4.9 compressed modules
+  * bootstrap: Clarify name of configured source directory
+  * bootstrap: Fix "make test" and "make package" targets
+  * UseSWIG: Fix check for noproxy flag
+  * CMakeExpandImportedTargets: Do not read property on non-target
+  * Check*CompilerFlag: Avoid ';' in common pattern
+  * cmcurl: Fix a build failure with the Cray compiler on Linux
+  * FindQt4: Add nativewifi and qtga plugins
+  * QNX: Add missing flags for configurations and artifact creation.
+
+-------------------------------------------------------------------
+Thu Jul  3 07:57:47 UTC 2014 - tchvatal@suse.com
+
+- Provide cmake-mans subpackage and use it to avoid buildcycle
+
+-------------------------------------------------------------------
+Wed Jul  2 13:04:33 UTC 2014 - tchvatal@suse.com
+
+- Install manpages. Patch idea by Christoph Grüninger.
+
+-------------------------------------------------------------------
+Sat Jun 21 12:59:23 UTC 2014 - tchvatal@suse.com
+
+- Fix %setup line
+
+-------------------------------------------------------------------
+Sat Jun 21 10:42:41 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and remove support for sle10.
+
+-------------------------------------------------------------------
+Wed Jun 11 04:41:58 UTC 2014 - foss@grueninger.de
+
+- Update to 3.0.0
+
+-------------------------------------------------------------------
+Sun Jun  1 08:22:13 UTC 2014 - foss@grueninger.de
+
+- Update to 3.0.0~rc6
+  * CMP0022: Fix link language propagation in NEW behavior
+  * KWSys SystemTools: Port cygwin path conversion to modern API
+  * KWSys Process: Workaround child kill trouble on Cygwin
+  * cmSystemTools::RenameFile: Retry on Windows ERROR_SHARING_VIOLATION
+  * FindCUDA: Use CUDA_NVCC_FLAGS* for separable compilation
+
+-------------------------------------------------------------------
+Wed May 14 15:42:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0~rc5
+  * Utilities/Sphinx: Fix cmake domain document removal with python3
+  * Utilities/Sphinx: Add option to build 'singlehtml' format
+  * Restore --help-full option to output all help manuals
+  * ExternalProject: Fix path to cmake in verify script
+  * KWSys SystemInformation: Include backtrace APIs whenever we use them
+  * ctest_build: Do not crash on bad generator name
+  * cmTarget: Drop unused GetProperty signature
+  * cmTarget: Evaluate CMP0026 in calling context
+  * Ninja: Fix deptype for Intel compiler on Linux
+  * VS: Fix /MANIFESTUAC:NO linker option mapping
+  * InstallRequiredSystemLibraries: MBCS MFC is optional on VS 12 (#14903)
+  * cmake-gui: Fix desktop file icon configuration
+  * FindCurses: Honor CURSES_NEED_NCURSES when curses is found
+  * FindCurses: Detect and satisfy ncurses dependency on tinfo
+  * CompileFlags: Test for C++ features after selecting flags
+  * CompileFlags: Add -AA +hpxstd98 on HP-UX 11.11 with aCC
+  * CompileFlags: add better selection which aCC version gets -AA
+    +hpxstd98 flags
+  * OS X: Fix Info.plist placement in a CFBundle
+  * Utilities/Sphinx: Port documentation generation to python3 (#14886)
+
+-------------------------------------------------------------------
+Sun May  4 20:52:05 UTC 2014 - arichardson.kde@gmail.com
+
+- Use Qt5 for building the GUI
+
+-------------------------------------------------------------------
+Thu Apr 24 23:08:48 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0~rc4
+  * Revise and format policy CMP0025 and CMP0047 docs
+  * Do not warn by default when policy CMP0025 or CMP0047 is not set
+  * CMakeDetermineVSServicePack: Format documentation
+  * CMakeDetermineVSServicePack: Match versions more robustly
+  * CMakeDetermineVSServicePack: Add VS 11 update 4
+  * Fortran: Detect pointer size on Intel archs with PGI (#14870)
+  * CMakeRCInformation: Do not mention 'Fortran' in documentation
+  * CMakeRCInformation: Recognize 'windres' tools with '.' in name (#14865)
+  * Drop /lib32 and /lib64 from link directories and RPATH (#14875)
+  * cmArchiveWrite: Handle NULL error string (#14882)
+  * Policies: omit warnings about unset policies when they are
+    actually set to NEW
+  * Qt4Macros: Make QT4_CREATE_MOC_COMMAND a function
+  * create_test_sourcelist: Initialize variable at declaration
+  * Help: Fix typo in cmake-qt manual.
+
+-------------------------------------------------------------------
+Wed Apr 23 17:15:17 UTC 2014 - dmueller@suse.com
+
+- fix build on SLE11
+- remove dependency on system curl: this is not a security
+  senstive app and the system curl comes quite late in the
+  build cycle
+- remove nonsensical checks for %{sles_version}
+
+-------------------------------------------------------------------
+Wed Mar 26 17:33:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0~rc3
+  * QtDialog: Fix Qt 5 build on non-Windows
+  * Disallow INTERFACE libraries with add_custom_command(TARGET)
+
+-------------------------------------------------------------------
+Thu Mar 20 01:42:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0~rc2
+  * Miscellaneous fixes since rc1
+  * FindRuby module learned to search for Ruby 2.0 and 2.1
+
+-------------------------------------------------------------------
+Sat Mar  1 00:22:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0~rc1
+  * First release candidate of 3.0.0 release, for more details, please
+    see http://www.cmake.org/cmake/help/v3.0/release/3.0.0.html
+- Drop cmake-jni-ppc64le.patch and fix-check-for-freetype251.patch,
+  merged upstream
+- Added pkgconfig(bzip2) BuildRequires for bzip2 support
+- Rebase cmake-fix-ruby-test.patch to current release
+- All documentation is now available in rst format, and in
+  /usr/share/cmake/Help directory (including former man files),
+  see mentioned online changelog
+
+-------------------------------------------------------------------
+Tue Jan 28 19:46:59 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.12.2
+  * XCode: Fix compiler line matching for XCode 5.1.
+  * Visual Studio: Convert include path to backslashes for Visual
+    Studio 2010 and newer.
+  * FindOpenMP: Support compilers that do not need any special flags.
+
+-------------------------------------------------------------------
+Mon Nov 25 03:40:59 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop old 2.8.12 tarball
+- Adjust cmake-gui.spec so it uses 2.8.12.1
+
+-------------------------------------------------------------------
+Thu Nov  7 12:52:33 UTC 2013 - vcizek@suse.com
+
+- update to 2.8.12.1
+  * Reverts a change in behaviour from older versions caused by a bad
+    implementation of a CMake Policy introduced in 2.8.12: CMP0022
+    (bnc#849378)
+
+-------------------------------------------------------------------
+Tue Oct  8 16:35:02 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.12
+  * Xcode: Fix test architecture selection for Xcode >= 5
+  * Xcode: Teach Tests/BuildDepends to allow LINK_DEPENDS_NO_SHARED failure
+  * Xcode: Drop XCODE_DEPEND_HELPER for Xcode >= 5
+  * Xcode: Fix OBJECT library support for Xcode 5 (#14254)
+  * Genex: Fix processing multiple include directories for relative paths
+  * VS: Future-proof Intel project format selection
+  * MSVC: Drop /link from executable link lines with Ninja
+  * FindCUDA: Always list custom command outputs in their targets
+  * FindPNG: Honor old PNG_LIBRARY if provided (#14398)
+  * FindHDF5: Fix regression in per-configuration library selection
+  * bash-completion: Future-proof --help-*-list "cXXXX version" filtering
+  * OS X: Search system SDKs for frameworks
+  * Use first custom command for the same output (#14446)
+  * MSVC: Fix version test for linking corelibc on Windows CE (#14420)
+  * MSVC: Fix WinCE arch family preprocessor symbol (#14436)
+  * VS: Use version-specific subsystem for WinCE compiler id (#14440)
+  * bootstrap: try better workaround for builds on Linux/HPPA
+  * Add differing target property content to policy CMP0022 warning
+  * Fix CMP0022 warning when no old-style property is set
+  * genex: Fix preprocessing with incomplete content (#14410).
+  * cmMakefile: Do not track CMake temporary files.
+  * Fix RunCMake.Configure test expectation newline matching
+  * Clean up install rules of CMake itself (#14371)
+  * OSX: Allow an empty INSTALL_NAME_DIR to override MACOSX_RPATH.
+  * FindImageMagick: Find libraries named with HDRI support (#14348)
+  * FindTCL: Add BSD paths for Tcl/Tk 8.6
+  * VS: Generate ToolsVersion matching each VS version
+  * cmMakefile: Do not track configured files known to be temporary
+  * CheckC*CompilerFlag: add documentation what to expect from a positive result
+  * Fix OLD behavior of CMP0021.
+  * try_compile: Extract IMPORTED targets from LINK_DEPENDENT_LIBRARIES
+  * try_compile: Extract IMPORTED targets from INTERFACE_LINK_LIBRARIES
+  * Genex: Fix evaluation of MAP_IMPORTED_CONFIG_<CONFIG>
+  * Fix some whitespace errors in docs.
+  * Normalize system directories from the interface target property
+  * CPack: Fix a typo in documentation
+  * CTest: Fix GTM coverage parsing line offset bug
+  * CPackWIX: Add support for custom WiX templates
+  * CMakeSystem: include toolchain file after setting CMAKE_HOST_ (#13796)
+  * Add support files for C, C++ and ASM for the IAR toolchain.
+  * Add regexps for the IAR toolchain to the vendor list.
+  * Add IAR to the CMakeDetectC(XX)CompilerID.c(pp).in
+  * cmake-gui: use shortcut F only for "Find in Output"
+  * Eclipse: fix #14204 and #14205: no file links to directories
+  * automoc: add a global AUTOMOC_TARGETS_FOLDER property
+  * install: do not strip dll import libraries (#14123)
+  * ExportTargets: add one more comment to the generated file.
+  * Add documentation for the --graphviz support
+  * graphvizoptions: add copyright notice
+  * add macros cmake_print_properties() and cmake_print_variables()
+  * VS: Detect MSVC compiler id on ARM toolchain
+  * Fix spelling and typos (affecting users)
+  * Fix spelling and typos (affecting binary data / module messages)
+  * Fix spelling and typos (non-binary)
+  * Fix spelling and typos (product names)
+  * FindwxWidgets: add DOC strings with usual style
+  * Explain distribution of Win9x binary on all Windows versions.
+  * VS10: add detailed comment about MIDL processing
+  * Docs: Update description of CMAKE_(BUILD_TYPE|CONFIGURATION_TYPES)
+  * Docs: Clarify that CMAKE_*_(PREFIX|SUFFIX) affect filenames
+  * Docs: Clarify wording "flag used" => "flag (to|will) be used"
+  * set_property: Do not remove a property when APPENDing nothing
+  * Tests/RunCMake: Document stripping of expected output
+  * export: Error when exporting a target without a language
+  * variable_watch: Store client data as pointers
+  * variable_watch: Add a deleter for the client data
+  * variable_watch: Match client_data when finding duplicates
+  * variable_watch: Allow specifying the data to match in RemoveWatch
+  * variable_watch: Prevent making extra entries in the watch map
+  * variable_watch: Fix a typo in the error message
+  * variable_watch: Don't share memory for callbacks
+  * variable_watch: Check newValue for NULL
+  * variable_watch: Add test for watching a variable multiple times
+  * Do not set CMAKE_MATCH_ variables when not neeeded
+  * SelectLibraryConfigurations: Fix for cached <base>_LIBRARY
+  * VS: Separate compiler and linker PDB files (#11899, #14062)
+  * MSVC: Invoke 'link' directly for executables
+  * Ninja: Fix OBJECT_DIR placeholder path conversion
+  * VS 10: Escape ; as %3B in preprocessor definitions (#14073)
+  * CTest: Simplify ctest_* command source/build dir lookup
+  * get_filename_component: Add explicit unit tests
+  * get_filename_component: Add DIRECTORY option (#14091)
+  * Xcode: Use explicitFileType to mark source types (#14093)
+  * Check{C,CXX}CompilerFlag: Test using C locale (#14102)
+  * Windows: Search '/' prefix only when cross compiling (#10994)
+  * Recognize ld with toolchain prefix (#13960)
+  * VS: Always initialize CMAKE_CONFIGURATION_TYPES in IDE generators
+  * Begin post-2.8.11 development
+  * Sanitize linker name to parse implicit link line (#14154)
+  * VS: Allow /Fa to set AssemblerListingLocation (#14153)
+  * Tests/IncludeDirectories: Avoid shared library with no symbols
+  * if: Add test for IS_DIRECTORY
+  * try_compile: Add test for bad call error cases
+  * try_compile: Refactor argument processing
+  * variable_watch: Add test for MODIFIED_ACCESS report
+  * bootstrap: Compile KWSys SystemTools with UTIME(S|NSAT) values
+  * variable_watch: Remove leftover debugging code (#14187)
+  * variable_watch: Print accesses as "CMake Debug Log" messages
+  * Docs: Clarify CMAKE_PARENT_LIST_FILE (#14194)
+  * get_filename_component: Test ABSOLUTE of .. after root component
+  * try_compile: Add signature to allow multiple SOURCES
+  * enable_language: Clarify documentation
+  * Split cmBootstrapCommands.cxx into two sources
+  * Document CMAKE_INSTALL_PREFIX in CMAKE_SYSTEM_PREFIX_PATH
+  * cmake: Document "-E tar" support for .zip (#14225)
+  * FindBoost: Clarify failure on missing 'static' libs (#14235)
+  * CMakeDetermineVSServicePack: Improve documentation
+  * CMakeDetermineVSServicePack: Add VS 11 update 1 and 2 (#14239)
+  * Document ENV syntax as a "variable" (#14245)
+  * Embarcadero: Use response files only for includes, objects, and libs
+  * Escape target flags taken from COMPILE_OPTIONS
+  * Refactor target COMPILE_OPTIONS and COMPILE_FLAGS handling
+  * CMakeDetermineVSServicePack: Add VS 11 update 3
+  * Document removal of 'register' from flex/bison output
+  * VS12: Find proper MSBuild for VSProjectInSubdir test
+  * Fortran: Use explicit type in Fortran 90 check
+  * project: Document top-level CMakeLists.txt requirement
+  * ExternalProject: Document multiple COMMAND lines
+  * include: Clarify variable access scope for included file
+  * VS: Fix /MAP:mapfile flag mapping (#14282)
+  * cmake: On configure error suggest looking at CMake*.log files
+  * try_compile: Escape CMAKE_<lang>_FLAGS in test projects (#14268)
+  * try_compile: Add COPY_FILE_ERROR option to capture failure
+  * FindPNG: Add versioned library names for 1.6 (#14289)
+  * cmake: Fix resource leak reported by cppcheck
+  * VS,Xcode: Drop incorrect legacy dependency trace (#14291)
+  * OS X: Add copyright notices to Darwin-*-Fortran.cmake
+  * VS: Avoid leaking child process output back to IDE (#14266)
+  * Fix ExportImport test cmp0022NEW build on Watcom
+  * add_test: Document test name restrictions (#14298)
+  * UseJava: Update notice of copyright by Kitware
+  * add_custom_command: Manage backtrace memory correctly (#14299)
+  * Teach compiler ABI check to tolerate try_compile COPY_FILE failure
+  * Test COMPILE_DEFINITIONS target property get/set/get round-trip
+  * Check*CompilerFlag: Document use of CMAKE_REQUIRED_DEFINITIONS (#14309)
+  * sha2: Avoid type-punned pointer dereference (#14314)
+  * VS 6: Tell BuildDepends test to tolerate ninjadep failure
+  * cmMakefile: Do not track configured files known to be temporary
+  * libarchive: Update README-CMake.txt for new snapshot
+  * libarchive: Include cm_zlib.h to get zlib used by CMake
+  * libarchive: Silence API deprecation warnings
+  * libarchive: Avoid struct init with variable
+  * libarchive: Remove build options not used by CMake
+  * libarchive: Backport to CMake 2.8.2
+  * VS10: Honor user-specified /SUBSYSTEM: flag (#14326)
+  * VS10: Escape include paths in XML project files (#14331)
+  * OS X: Search for SDK based on deployment target (#14324)
+  * bootstrap: Do not suppress CMAKE_OSX_SYSROOT if CFLAGS have -isysroot (#14324)
+  * OS X: Enable command-line build without tools in PATH
+  * VS 6,7: Refactor local generators to avoid GetSourceFileWithOutput
+  * cmake-gui: Fix build rules for Qt5 on Windows
+  * Include cmMakefile.h before cm*Lexer.h to get stdint.h first
+  * Skip CTestLimitDashJ test on Borland
+  * Add RunCMake.Syntax test to cover argument parsing
+  * cmListFileLexer: Fix line number after backslash in string
+  * cmListFileLexer: Split normal and legacy unquoted arguments
+  * cmListFileArgument: Generalize 'Quoted' bool to 'Delimeter' enum
+  * Add RunCMake.Syntax test cases for command invocation styles
+  * cmListFileCache: Convert CMake language parser to class
+  * Warn about arguments not separated by whitespace
+  * Warn about unquoted arguments that look like long brackets
+  * cmListFileLexer: Modify flex output to avoid Borland warning
+  * Cygwin: Avoid legacy warnings in RunCMake.* tests
+  * Update version introducing CMP0021, CMP0022, and CMP0023
+  * OS X: Do not default to non-existent deployment target SDK
+  * Do not warn about left paren not separated by a space
+  * VS: Add support for .NET target framework version
+  * Improve documentation for CPACK_PACKAGE_INSTALL_REGISTRY_KEY.
+  * Refactor how bundles and frameworks are supported.
+  * Xcode: Add support for shared library versioning
+  * OS X:  Fix getting of CFBundle LOCATION property.
+  * OS X: Add RPATH support for Mac.
+  * Xcode: Add rpath support in Xcode generator.
+  * OS X: Add support for @rpath in export files.
+  * OS X: Add test for rpaths on Mac.
+  * OS X: Improvements for getting install name of dylib.
+  * OS X: Enable rpath support on Mac OS X when find_library() is used.
+  * OS X: Fix regression handling frameworks for Ninja
+  * OS X: If necessary, use xcrun to help find otool used to query install names.
+  * Xcode: Support XCODE_ATTRIBUTE_ with [variant=<config>] (#12532)
+  * FindGTK2: Move check for pangocairo in gtk module
+  * FindGTK2: Detect gthread library
+  * FindFreetype: Detect Freetype installed by GtkMM installer for win
+  * FindGTK2: Do not fail on MSVC11 if vc100 libraries are available
+  * FindGTK2: Add GTK2_DEFINITIONS variable
+  * SelectLibraryConfigurations: Do not cache the _LIBRARY variable
+  * SelectLibraryConfigurations: Use -NOTFOUND instead of copying the vars
+  * FindGTK2: Use GTK_XXX_LIBRARY_DEBUG libraries in debug mode
+  * FindGTK2: Append _LIBRARY to var name in _GTK2_FIND_LIBRARY
+  * FindGTK2: Append _INCLUDE_DIR to var name in _GTK2_FIND_INCLUDE_DIR
+  * FindGTK2: Update local changelog
+  * FindGTK2: Remove GTK2_SKIP_MARK_AS_ADVANCED option
+  * FindGTK2: gthread-2.0 folder does not exist
+  * FindGTK2: Detect gmodule library
+  * FindGTK2: Detect pangoft2 and pangoxft libraries
+  * OpenBSD: Enable ELF parsing and editing (#14241)
+  * CPack/NSIS: Obtain path from which to uninstall from registry (#14124)
+  * Add support for componentized USER spec file
+  * CPackRPM add mechanism to remove path from generated list of file in RPM spec.
+  * CPackRPM add /usr/lib64 to the list of builtin to-be-excluded path
+  * CPackRPM protect '@' character in filename processed in the spec file.
+  * CPackRPM make the changelog line conform to expected format
+  * CPackWIX: Handle CPACK_PACKAGE_EXECUTABLES (#13967)
+  * FindImageMagick: Find v6 include dir (#14174)
+  * OS X: Add Fortran library version flags (#14249)
+  * UseJava: Pass sources to javac using response file (#13028)
+  * Allow using Java in a cross-compilation toolchain
+  * Ninja: use cd /D to set directory on Windows
+  * CPackWIX: Fix MSI package layout regression from parent
+  * bash-completion: Add -S,-SP options arguments completion
+  * bash-completion: Fix/improve generator names extraction
+  * Eclipse: Add a missing space in the documentation
+  * MinGW: Find mingw32-make included with Code::Blocks IDE (#14302)
+  * VS: Add Windows Forms Support
+  * VS: Add VS_GLOBAL_ROOTNAMESPACE target property
+  * VS: Add Resx configuration to the vcxproj file
+  * libarchive 3.1.2 (reduced)
+  * cmake-gui: Add search functions for Output window (#9733)
+  * cmake-gui: Add search functions to the context menu of the Output widget
+  * cmake-gui: Change shortcut of the search field from Ctrl-F to Alt-E
+  * cmake-gui: Add function for going to next error message in Output window
+  * FindCUDA: Remove duplicate entries from INCLUDE_DIRECTORIES.
+  * FindX11: Search in /opt/X11 for OS X 10.8 (#14232)
+  * FindCUDA: CUDA_COMPUTE_BUILD_PATH uses relative paths to binary dir.
+  * ExternalProject: Allow blank SVN_USERNAME/SVN_PASSWORD (#14128)
+  * Xcode: Honor CMAKE_(MODULE|SHARED)_LINKER_FLAGS_<CONFIG> (#14161)
+  * UseJava.cmake: fully use cmake_parse_arguments in add_jar
+  * FindProtobuf: also find pthread
+  * UseJava.cmake: document add_jar compat shim
+  * Optimize custom command full-path dependency lookup
+  * Add cmake_host_system_information command
+  * Add option to use stdout/stderr of original terminal in cmake --build
+  * Unify the way the flags of a static library are read
+  * Add support for CMAKE_STATIC_LINKER_FLAGS
+  * Add CMAKE_STATIC_LINKER_FLAGS to CMakeCommonLanguageInclude
+  * Add documentation for the missing CMAKE_*_LINKER_FLAGS_* variables
+  * Add additonal tests for the linker flags
+  * VS6: Add handling of CMAKE_*_LINKER_FLAGS_<CONFIG> variables
+  * VS6: Hardcode id_machine_6 for compiler detection
+  * VS10: Do not set the TargetMachine when detecting the compiler
+  * VS: Set CMAKE_VS_PLATFORM_NAME for VS7 and VS71 too
+  * VS: Replace ArchitectureId with PlatformName
+  * VS12: Remove duplicated overload of UseFolderProperty()
+  * Fix detection of WinCE SDKs with 64bit verion of CMake
+  * VS: Unify how the name of the generator is specified
+  * VS10: Add support for assembler code (#11536)
+  * WIN: Use COFF file header header for architecture detection (#14083)
+  * Improve const-correctness in cmVisualStudioGeneratorOptions
+  * Fix setting of the entry point symbol for Windows CE (#14088)
+  * Add support for new Windows CE compiler
+  * VS11: Add support for Windows CE SDKs
+  * CTest: Add test for running many tests in parallel
+  * cmDependsC: Collapse relative include paths
+  * Add projectDir parameter to GenerateBuildCommand
+  * VS: Create parser for Visual Studio .sln files
+  * VS: Use .sln parser to build targets in subdirs with msbuild (#13623)
+  * VS: Add test for building MSBuild project in subdir
+  * ctest_build: Pass projectDir to GenerateBuildCommand
+  * Ninja: Make cmcldeps depfile output more consistent with 'ninja -t msvc'
+  * CPackWIX: Handle multiple shortcuts in the start menu
+  * CPackWIX: Add option to specify the language(s) of the installer
+  * CMakeCPack: Provide an upgrade guid for WiX
+  * cmMakefile: Refactor AddCMakeDependFile  and AddCMakeOutputFile.
+  * Ninja: Track configured files so we can regenerate them.
+  * cmMakefile: Track configured files so we can regenerate them (#13582)
+  * Add a test to expose a bug with add_custom_command and ninja.
+  * Ninja: GlobalNinjaGenerator WriteBuild and WritePhonyBuild non static
+  * Ninja: Custom Command file depends don't need to exist before building
+  * FindCUDA: Search for libraries in <prefix>/lib/<arch>/nvidida-current.
+  * Ninja: Properly convert all paths to unix style before we do set intersection.
+  * Ninja: Update BuildDepends test to verify cmcldeps depfiles.
+  * FindOpenSSL: Fix spelling of CMAKE_CROSSCOMPILING (#14075)
+  * FindOpenGL: simplify OS selection code
+  * FindOpenGL: require headers to be found on non-Windows platforms (#13746)
+  * Tests: create output files for all memory checkers
+  * CTest: use an output file for Valgrind (#14110)
+  * CTest: remove unreachable code and CTestTestMemcheckUnknown test
+  * Tests: remove code duplication in CTestTestMemCheck tests
+  * Tests: verify that memory checker output files are always present
+  * CTest: drop suppression for gcc 2.9.6 errors from default Valgrind flags
+  * Tests: add test for non-existent Valgrind suppression file
+  * CTest: fix comment documenting cmBoundsCheckerParser class
+  * Tests: add a test with custom options passed to valgrind
+  * CTest: make sure never to report negative test times (#14132)
+  * Doc: fix example for FAIL_REGULAR_EXPRESSION
+  * CTest: break after first regex match on output
+  * Tests: ignore Guard Malloc messages in MemChecker tests
+  * CTest: avoid useless changing of directory
+  * Tests: fix build of dummy memtester on AIX
+  * wizard: fix warnings
+  * wizard: simplify control flow
+  * cmTarget: drop the unused local typedef LinkLine
+  * Tests: ignore GuardMalloc messages on all Apple build, not just XCode ones
+  * replace string(... MATCHES "^const$) with string(... STREQUAL "const")
+  * Revert "CTest: fix pre and post test commands with spaces" (#13887)
+  * FindPNG: improve library detection (#14301)
+  * CTest: create one output file per memcheck (#14303)
+  * Remove some uses of obsolete 'register' storage specifier
+  * Document CMAKE_<LANG>_FLAGS variable (#14305)
+  * Make the QtAutomoc test compile with either Qt 4 or Qt 5
+  * Add a test for Qt5Automoc
+  * Remove an endif() followed by an if() for the same condition.
+  * Fix some copyastos in the DetermineRCCompiler file.
+  * Test transitive includes from setting the LINK_LIBRARIES property.
+  * Test the use of target transitive compile definitions with moc.
+  * Fix handling of commas in arbitrary content in genexes.
+  * Fix style.
+  * Remove unused marker for a variable which is now used.
+  * Extract the ProcessArbitraryContent method.
+  * Rename the method determining if a genex accepts arbitrary content.
+  * Make it possible for any genex to have arbitrary content at the end.
+  * Add the JOIN generator expression.
+  * Test that linking using the debug keyword to tll works.
+  * automoc: Read target defines unconditionally
+  * Remove unused typedef.
+  * Fix brace indentation.
+  * Add EXPORT_NAME property.
+  * Remove unused vector population.
+  * Sublime: Honor source-level COMPILE_FLAGS property
+  * Docs: cmake -G selects a "build system" generator
+  * Recognize shared library files with a numerical suffix
+  * FindQt4: Fix QUIET failure with Qt 5 but not Qt 4
+  * Error on relative path in INCLUDE_DIRECTORIES target property.
+  * include_directories: Fix handling of empty or space-only entries
+  * CTest: Read CTEST_PARALLEL_LEVEL from environment
+  * string: Add MAKE_C_IDENTIFIER subcommand
+  * GenerateExportHeader: Add newlines to separate the compiler output.
+  * GenerateExportHeader: Allow use of of this macro with MODULEs.
+  * file: Add GENERATE command to produce files at generate time
+  * Tests/Module/GenerateExportHeader: Test exported free-function
+  * Add $<LINK_LANGUAGE> generator expression
+  * GenerateExportHeader: Generate only C identifiers as defines
+  * Tests/CompileDefinitions: Avoid spaces in defines on VS 6
+  * Use the qt5::moc imported target instead of a variable.
+  * QtAutomoc: Get the Qt version through the target link interface
+  * Fix indentation.
+  * VS6: Rename some variables to correspond to config values.
+  * Add cmLocalGenerator::GetCompileOptions.
+  * Add <LANG>_COMPILER_ID generator expressions.
+  * cmTarget: Rename struct to be more re-usable.
+  * cmTarget: Rename LinkInterfaceIncludeDirectoriesEntries
+  * Add COMPILE_OPTIONS target property.
+  * Add target_compile_options command.
+  * Introduce target property <LANG>_VISIBILITY_PRESET
+  * Add a COMPILE_OPTION for a VISIBILITY_INLINES_HIDDEN target property.
+  * Qt4Macros: Allow specifying a TARGET in invokations of macros.
+  * Introduce add_compile_options command.
+  * Remove unused cmAddDefinitionsCommand::ParseDefinition method.
+  * Add some spaces to the INCLUDE_DIRECTORIES documentation.
+  * CLI: Suppress the unused warning if the key value pair is cached.
+  * Use --sysroot when cross compiling.
+  * Add missing 'seen' check for evaluating COMPILE_OPTIONS.
+  * Find targets in INTERFACE_COMPILE_OPTIONS when exporting for try_compile.
+  * Use a preprocessor loop to manage the valid transitive properties.
+  * Generate INTERFACE_COMPILE_OPTIONS on export.
+  * Genex: Fix indentation in docs.
+  * cmSystemTools: Fix typo in comment.
+  * Style: Don't put an else after a return.
+  * Add compiler target compile options.
+  * QtAutomoc: Fix handling of list separator for compile definitions.
+  * QtAutomoc: Use config-dependent compile definitions and includes.
+  * De-duplicate version comparison code.
+  * Add generator expressions for version comparision.
+  * Don't run the WarnUnusedCliUnused test on Windows.
+  * Add whitespace after colons in error messages.
+  * Add missing return after error report.
+  * Genex: Make LINK_LANGUAGE report an error when evaluating link libraries.
+  * Genex: Extend EvaluatingLinkLibraries to also check the top target name.
+  * Genex: Report error if a target file is needed to evaluate link libraries.
+  * Add generator expressions for compiler versions.
+  * Split the GeneratorExpression test into a third part.
+  * Remove unused variable.
+  * Add Target API to determine if an include is a system include.
+  * Store system include directories in the cmTarget.
+  * Extend the cmTargetPropCommandBase interface property handling.
+  * Add a SYSTEM parameter to target_include_directories (#14180)
+  * Add entire link interface transitive closure as target depends.
+  * Test non-IMPORTED libraries in the INTERFACE of IMPORTED libraries.
+  * GenexEval: Add abstracted access to link interface for a target.
+  * Introduce the LINK_ONLY generator expression.
+  * Introduce the INTERFACE_LINK_LIBRARIES property.
+  * Export: Generate INTERFACE_LINK_LIBRARIES property on targets.
+  * TLL: Don't populate old link interface if CMP0022 is NEW.
+  * Overload cmLocalGenerator::AppendDefines to add a list.
+  * Add an overload of cmIDEOptions::AddDefines taking a vector of strings.
+  * Refactor cmTarget::GetCompileDefinitions to use an out-vector, not a string.
+  * Document some variables for deprecation control.
+  * Genex: Make CMP0021 and CMP0022 usable with TARGET_POLICY
+  * Revert "Use --sysroot when cross compiling."
+  * Add target property debugging for COMPILE_DEFINITIONS
+  * Mark qt4_use_modules and qt4_automoc as obsolete.
+  * Add the INTERFACE_SYSTEM_INCLUDE_DIRECTORIES target property.
+  * Don't add trailing whitespace to error message.
+  * Remove TODO to uniq COMPILE_OPTIONS
+  * Remove the LINK_LANGUAGE generator expression.
+  * Genex: Fix $<CONFIG> with IMPORTED targets and multiple locations.
+  * FindQt4: Don't use Qt component _FOUND vars before they're defined (#14286)
+  * Add a convenient way to add the includes install dir to the INTERFACE.
+  * Use linked frameworks as a source of include directories.
+  * target_link_libraries: Add PUBLIC/PRIVATE/INTERFACE keyword signature
+  * FindQt4: Re-add QAxServer to the QT_MODULES.
+  * FindQt4: Populate the INTERFACE_LINK_LIBRARIES of IMPORTED targets.
+  * Genex: Allow relative paths in INSTALL_INTERFACE.
+  * cmTarget: Fix property name typo in docs.
+  * Docs: Document file(GENERATE) CONDITION as optional.
+  * Qt4Macros: Remove unneeded generate CONDITION.
+  * Qt4Macros: Remove undefined varible use.
+  * Qt4Macros: Simplify some variable population.
+  * Docs: Document existing target property debugging options.
+  * Docs: Trim trailing whitespace in generated doc.
+  * Docs: Generalize and de-duplicate VISIBILITY_PREFIX docs.
+  * Docs: Document variables for default visibility values.
+  * Export: Fix typo of LINK_INTERFACE_LIBRARIES.
+  * cmTarget: Remove duplicates when printing traces of tll signatures
+  * cmTarget: Fix iface libraries and languages for static libraries.
+  * Genex: Disallow LINKER_LANGUAGE only when used on a static library.
+  * install: Remove error condition using INCLUDES DESTINATION without EXPORT.
+  * Fix crash on export of target with empty INTERFACE_INCLUDE_DIRECTORIES.
+  * Allow target commands to be invoked with no items (#14325).
+  * Docs: Fix typo in CMAKE_DEBUG_TARGET_PROPERTIES
+  * cmTarget: Add NAME property
+  * Export: Process generator expressions from INCLUDES DESTINATION.
+  * Add the ALIAS target concept for libraries and executables.
+  * Revert "Add compiler target compile options."
+  * Genex: Fix segfault when parsing ends with parameter expectation.
+  * Add cmake_reset_check_state() macro
+  * Use GmakeErrorParser instead of deprecated MakeErrorParser (fixes bug 0013699)
+  * variable_watch: Add missing string enumeration entry (#14188)
+  * ccmake: Add missing initializers reported by cppcheck
+  * libarchive: Fix free() order to avoid accessing freed memory
+  * cmcurl: Fix resource leak reported by cppcheck
+- Dropped cmake-cmCustomCommand_add_operator=.patch and
+  cmake-fix-ImageMagick6.patch, merged upstream
+
+-------------------------------------------------------------------
+Sat Aug  3 12:23:35 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.11.2
+  * asm support: adapt to changes in CMakeDetectCompiler in 2.8.10
+  * SelectLibraryConfigurations: Fix for cached <base>_LIBRARY
+  * cmCryptoHash: Increase alignment of HashFile buffer
+  * cmcurl: Backport curl bug 1192 fix (#14250)
+  * VS12: Add Visual Studio 12 generator (#14251)
+  * VS12: Generate flag tables from MSBuild v120 tool files
+  * FindBoost: Add -vc120 mangling for VS 12
+  * VS: Clarify Visual Studio product year for each version
+
+-------------------------------------------------------------------
+Sat Jun  8 08:16:43 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 2.8.11.1
+  * ExternalData: Do not re-stage staged object files
+  * try_compile: Fix quoting of libraries in generated CMakeLists.txt
+  * KWSys: Fix SystemTools::FileIsDirectory with long paths (#14176)
+  * FindBoost: Fix handling of \ in input paths (#14179)
+  * Xcode: Fix framework search paths in STATIC library targets (#14191)
+  * Fix test failures caused by regexp-sensitive characters in the build paths
+  * include_directories: Fix handling of empty or space-only entries
+  * try_compile: Trim whitespace from LINK_LIBRARIES entries
+  * cmTarget: Remove some hardcoding of transitive property names.
+  * GenexEval: Extract a getLinkedTargetsContent from TargetPropertyNode.
+  * GenexEval: Fix evaluation of INCLUDE_DIRECTORIES target property.
+  * GenexEval: Test evaluation of INCLUDE_DIRECTORIES target property.
+  * FindQt4: Don't fail if certain Qt modules are unavailable.
+  * Qt4Macros: Handle Qt ActiveX libraries in qt4_use_modules.
+  * Genex: Fix the HEAD target used for evaluated expressions
+
+-------------------------------------------------------------------
+Sat May 18 12:42:24 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 2.8.11
+  * Targets can specify usage requirements for their consumers such as
+    include directories and preprocessor definitions; previously only
+    link dependencies were supported.
+  * target_link_libraries(myexe yourlib) can now build myexe sources
+    with requirements specified by yourlib
+  * Added target_include_directories and target_compile_definitions
+    commands with PUBLIC/PRIVATE/INTERFACE options
+  * Introduced ExternalData Module
+  * Keep source trees lightweight by storing data separately
+  * Reference data unambiguously from source tree by content hash
+  * Fetch on-demand during build from local or remote resources
+  * CMake: Sublime Text Generator added that supports both Make and Ninja
+  * CMake: Added support for Texas Instruments C6 and up compilers
+  * CMake: Improve OpenBSD support
+  * CPack: Added Support for 64bit NSIS
+  * CPack: Added WiX Package Generator
+  * ExternalProject: Will run git fetch less often
+  * FindBoost: Major overhaul of searching and result caching
+  * FindCUDA: Now has support for separable compilation
+  * FindQt4: Overall improvements to finding Qt and importing targets
+  * FindSquish: Added support for squish 4
+  Full changelog at http://www.kitware.com/blog/home/post/492
+* Drop cmake-endian.patch (Merged upstream)
+
+-------------------------------------------------------------------
+Thu Feb 28 16:54:13 UTC 2013 - schwab@suse.de
+
+- cmake-endian.patch:
+  Add support for aarch64.
+
+-------------------------------------------------------------------
+Wed Nov 28 00:29:29 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.10.2
+  * Fix kitware#0013691: [Modules] FindGettext.cmake does not set GETTEXT_FOUND on success
+  * Fix kitware#0013702: [CMake] CMake crashes when reconfiguring build
+  * Fix kitware#0013667: [CMake] Automoc fails to handle Q_INTERFACES
+- Drop obsolete patches
+
+-------------------------------------------------------------------
+Wed Nov  7 21:24:45 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.10.1 This is a bugfix release
+  * Fix kitware#0013651: FindSDL.cmake is broken
+  * Fix kitware#0013638: ./configure reports Copyright 2000-2011
+  Complete changelog: http://public.kitware.com/Bug/changelog_page.php?version_id=105
+
+-------------------------------------------------------------------
+Fri Nov  2 13:28:27 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.10
+  * file(DOWNLOAD now handles "https" URLs -- the pre-built binaries available from Kitware link to OpenSSL
+  * Automoc: fix kitware#13572: issue with symbolic links
+  * Uniform compiler "id" and version number variables available for nearly all known compilers and platforms
+  * New way to arrange exported targets that depend on other targets into "export sets"
+  * New generator expressions
+  * Generator expressions available in more contexts, namely in the INCLUDE_DIRECTORIES and COMPILE_DEFINITIONS target properties
+  See /usr/share/doc/packages/cmake/Changelog for the complete changelog
+- Minor spec cleanup
+
+-------------------------------------------------------------------
+Tue Aug 14 09:07:10 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.9
+ * See /usr/share/doc/packages/cmake/Changelog for changes
+ * Drop cmake-pkgconfig.patch, already upstream
+
+-------------------------------------------------------------------
+Wed Apr 18 23:00:30 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.8
+ - see /usr/share/doc/packages/cmake/Changelog for changes
+
+-------------------------------------------------------------------
+Wed Jan 25 13:10:30 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 2.8.7
+ - see /usr/share/doc/packages/cmake/Changelog for changes
+
+-------------------------------------------------------------------
+Fri Oct 14 12:31:49 UTC 2011 - puzel@suse.com
+
+- update to 2.8.6
+ - see /usr/share/doc/packages/cmake/Changelog for changes
+
+-------------------------------------------------------------------
+Sat Sep 17 23:11:42 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Jul 29 16:19:45 UTC 2011 - puzel@novell.com
+
+- update to 2.8.5
+ - see /usr/share/doc/packages/cmake/Changelog for changes
+
+-------------------------------------------------------------------
+Thu Nov 11 11:09:03 UTC 2010 - puzel@novell.com
+
+- update to cmake-2.8.3
+ - see /usr/share/doc/packages/cmake/Changelog for changes
+- drop cmake-FindGTK2-gdk-pixbuf.patch (fixed upstream)
+- drop cmake-support-new-python.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Sep 13 18:09:02 UTC 2010 - kkaempf@novell.com
+
+- fix build on RHEL/Fedora
+
+-------------------------------------------------------------------
+Tue Jul 20 20:37:51 UTC 2010 - puzel@novell.com
+
+- update to cmake-gui-2.8.2
+  - cmake-gui: Add simple grouped view
+  - cmake-gui: Support build tree under symlink (#9975)
+
+-------------------------------------------------------------------
+Tue May 25 14:12:51 UTC 2010 - puzel@novell.com
+
+- split cmake into two spec files: cmake and cmake-gui, so that
+  cmake build does not depend on libqt4

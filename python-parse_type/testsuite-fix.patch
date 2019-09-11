@@ -1,0 +1,74 @@
+--- a/tests/test_cardinality.py
++++ b/tests/test_cardinality.py
+@@ -5,11 +5,12 @@ Test suite to test the :mod:`parse_type.
+ """
+ 
+ from __future__ import absolute_import
+-from .parse_type_test import ParseTypeTestCase, parse_number
+-from parse_type import Cardinality, TypeBuilder, build_type_dict
+-from parse_type.parse import Parser as ParserExt
+ import parse
+ import unittest
++from parse import Parser as ParserExt
++
++from .parse_type_test import ParseTypeTestCase, parse_number
++from parse_type import Cardinality, TypeBuilder, build_type_dict
+ 
+ # -----------------------------------------------------------------------------
+ # TEST CASE: TestCardinality
+--- a/tests/test_builder.py
++++ b/tests/test_builder.py
+@@ -495,35 +495,6 @@ Person:   Alice
+         self.assertIsNotNone(result)
+         self.assertEqual(result.fixed, tuple(expected))
+ 
+-    def test_parse_with_many_unnamed_fields_with_variants(self):
+-        from parse_type.parse import Parser as Parser2
+-        type_dict = build_type_dict(self.TYPE_CONVERTERS)
+-        schema = """\
+-Number:   {:Number}
+-YesNo:    {:YesNo}
+-Color:    {:Color}
+-Person:   {:PersonChoice}
+-Variant2: {:Color_or_PersonChoice}
+-Variant1: {:Number_or_YesNo}
+-"""
+-        # -- OMIT: XFAIL, due to group_index delta counting => Parser problem.
+-        parser = Parser2(schema, type_dict)
+-
+-        text = """\
+-Number:   12
+-YesNo:    yes
+-Color:    red
+-Person:   Alice
+-Variant2: Bob
+-Variant1: 42
+-"""
+-        expected = [ 12, True, Color.red, "Alice", "Bob", 42 ]
+-
+-        result = parser.parse(text)
+-        self.assertIsNotNone(result)
+-        self.assertEqual(result.fixed, tuple(expected))
+-
+-
+ # -----------------------------------------------------------------------------
+ # MAIN:
+ # -----------------------------------------------------------------------------
+--- a/tests/test_parse_type_parse.py
++++ b/tests/test_parse_type_parse.py
+@@ -22,14 +22,7 @@ from datetime import datetime, time
+ import re
+ 
+ # -- EXTENSION:
+-import os
+-PARSE_MODULE = os.environ.get("PARSE_TYPE_PARSE_MODULE", "parse_type.parse")
+-if PARSE_MODULE.startswith("parse_type"):
+-    # -- USE VENDOR MODULE: parse_type.parse (probably older that original)
+-    from parse_type import parse
+-else:
+-    # -- USE ORIGINAL MODULE: parse
+-    import parse
++import parse
+ # -- EXTENSION-END
+ 
+ 

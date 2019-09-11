@@ -1,0 +1,2229 @@
+-------------------------------------------------------------------
+Sun Jan 13 19:26:23 UTC 2019 - seanlew@opensuse.org
+
+- Update to 1.8.27
+  * Fixes and clarifications to the sudo plugin documentation
+  * The sudo manuls no longer require extensive post-processing
+  * If an I/O logging plugin is configured, sudo will no longer
+    force the command to be run in a pseudo-tty
+  * #843 (PAM handling error) correctly fixed.
+  * In visudo, it's now possible to specify the path to sudoers
+    without using the -f option (#864)
+  * Fixed a big introduced in 1.8.22 where utm/p/utmpx would not
+    be updated when a command was run in a pseudo-tty (#865)
+  * Sudo now sets the silent flag when opening the PAM session 
+    except when running a shell via sudo -s or sudo -i (#867)
+
+-------------------------------------------------------------------
+Sat Nov 17 09:08:54 UTC 2018 - sean@suspend.net
+
+- Update to 1.8.26 
+  * Fixed a bug in cvtsudoers when converting to JSON format
+    when alias exansion is enabled
+  * Sudo no longer sets the USERNAME environment variable
+    when running commands
+  * Sudo now treats the LOGNAME and USER environment variables
+    (as well as the LOGIN variable on AIX) as a single unit
+  * Added support for OpenLDAP TLS_REQCERT setting in ldap.conf
+  * Sudo now logs when the command was suspended and resumed 
+    in the I/O logs
+  * Sudo now prints a warning message when there is an error or 
+    end of file while reading the password instead of exiting
+  * Fixed a bug introduced in sudo 1.8.25 that prevented sudo 
+    from properly setting the user's groups on AIX.
+  * The sudoers LDAP back-end now supports negated sudoRunAsUser 
+    and sudoRunAsGroup entries
+  * Sudo now rpovides a proper error message when the "fqdn" 
+    sudoers option is set and it is unable to resolve the local
+    host name.
+  * Sudo now includes sudoers LDAP schema for the on-line config
+    supported by OpenLDAP
+ 
+-------------------------------------------------------------------
+Wed Sep 19 15:40:24 UTC 2018 - kstreitova@suse.com
+
+- fix permissions for /var/lib/sudo and /var/lib/sudo/ts
+  [bsc#1097643]
+
+-------------------------------------------------------------------
+Tue Sep 18 09:38:57 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.8.25p1
+  * Fixed a bug introduced in sudo 1.8.25 that caused a crash on 
+    systems that have the poll() function but not the ppoll() 
+    function
+
+-------------------------------------------------------------------
+Wed Sep  5 09:02:35 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.8.25
+  * I/O log timing file entries now use a monotonic timer and 
+    include nanosecond precision
+  * when sudo runs a command in a pseudo-tty, the slave device is 
+    now closed in the main process immediately after starting the 
+    monitor process
+  * the testsudoers utility now supports querying an LDIF-format 
+    policy
+
+-------------------------------------------------------------------
+Tue Aug 21 11:42:45 UTC 2018 - mcalabkova@suse.com
+
+- Update to 1.8.24
+  * random insults are now more random 
+  * added SUDO_CONV_PREFER_TTY flag for conversation function to 
+    tell sudo to try writing to /dev/tty first
+  * cvtsudoers can now parse base64-encoded attributes in LDIF 
+    files
+
+-------------------------------------------------------------------
+Thu Jul 12 19:14:48 UTC 2018 - bwiedemann@suse.com
+
+- Build with make -B to make package build reproducible
+
+-------------------------------------------------------------------
+Wed May  2 16:19:56 UTC 2018 - michael@stroeder.com
+
+- Update to 1.8.23
+  * primarily a bug fix release
+  * new cvtsudoers utility (replaces sudoers2ldif) and converts
+    between sudoers formats and perform some basic filtering.
+  * removed obsolete sudoers2ldif-env.patch
+  
+-------------------------------------------------------------------
+Mon Apr 16 15:18:12 UTC 2018 - kstreitova@suse.com
+
+- integrate pam_keyinit pam module [bsc#1081947]
+  * add sudo-i.pamd PAM configuration file and install it as
+    /etc/pam.d/sudo-i
+  * add "session optional pam_keyinit.so revoke" to sudo.pamd and
+    "session optional pam_keyinit.so force revoke" to sudo-i.pamd
+  * add "--with-pam-login" build option to enable specific PAM
+    session for "sudo -i"
+- make pam configuration files (noreplace)
+- reorganize Sources
+
+-------------------------------------------------------------------
+Wed Apr  4 11:47:35 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Feb 19 08:08:02 UTC 2018 - dimstar@opensuse.org
+
+- Fix sudo prompt: escape %p into %%p to ensure 'p' is not wrapped
+  and interpreted as being an rpm variable (boo#1081470).
+
+-------------------------------------------------------------------
+Tue Feb 13 11:33:04 UTC 2018 - kstreitova@suse.com
+
+- The sudo distribution files are now signed with a new pgp key.
+  Refresh sudo.keyring
+
+-------------------------------------------------------------------
+Wed Jan 24 00:44:24 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.8.22 [bsc#1080793]
+  * Commands run in the background from a script run via sudo will
+    no longer receive SIGHUP when the parent exits and I/O logging
+    is enabled
+  * A particularly offensive insult is now disabled by default
+  * The description of sudo -i now correctly documents that the
+    env_keep and env_check sudoers options are applied to the
+    environment
+  * Fixed a crash when the system's host name is not set
+  * The sudoers2ldif script now handles #include and #includedir
+    directives.
+  * Fixed a bug where sudo would silently exit when the command
+    was not allowed by sudoers and the passwd_tries sudoers option
+    was set to a value less than one.
+  * Fixed a bug with the listpw and verifypw sudoers options and
+    multiple sudoers sources. If the option is set to all a
+    password should be required unless none of a user's sudoers
+    entries from any source require authentication.
+  * Fixed a bug with the listpw and verifypw sudoers options in
+    the LDAP and SSSD back-ends. If the option is set to any and
+    the entry contained multiple rules, only the first matching
+    rule was checked. If an entry contained more than one matching
+    rule and the first rule required authentication but a
+    subsequent rule did not, sudo would prompt for a password when
+    it should not have.
+  * When running a command as the invoking user (not root), sudo
+    would execute the command with the same group vector it was
+    started with. Sudo now executes the command with a new group
+    vector based on the group database which is consistent with how
+    su(1) operates.
+  * Fixed a double free in the SSSD back-end that could occur when
+    ipa_hostname is present in sssd.conf and is set to an unqualified
+    host name.
+  * When I/O logging is enabled, sudo will now write to the terminal
+    even when it is a background process. Previously, sudo would only
+    write to the tty when it was the foreground process when I/O
+    logging was enabled. If the TOSTOP terminal flag is set, sudo
+    will suspend the command (and then itself) with the SIGTTOU signal.
+  * A new authfail_message sudoers option that overrides the default
+    N incorrect password attempt(s).
+  * An empty sudoRunAsUser attribute in the LDAP and SSSD backends
+    will now match the invoking user. This is more consistent with
+    how an empty runas user in the sudoers file is treated.
+  * Documented that in check mode, visudo does not check the owner /
+    mode on files specified with the -f flag
+  * It is now an error to specify the runas user as an empty string
+    on the command line. Previously, an empty runas user was treated
+    the same as an unspecified runas user
+  * When timestamp_type option is set to tty and a terminal is
+    present, the time stamp record will now include the start time
+    of the session leader. When the timestamp_type option is set
+    to ppid or when no terminal is available, the start time of the
+    parent process is used instead. This significantly reduces the
+    likelihood of a time stamp record being re-used when a user logs
+    out and back in again.
+  * The sudoers time stamp file format is now documented in the new
+    sudoers_timestamp manual.
+  * Visudo will now use the SUDO_EDITOR environment variable (if
+    present) in addition to VISUAL and EDITOR. 
+- rebase sudoers2ldif-env.patch
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 11 13:38:25 UTC 2017 - kstreitova@suse.com
+
+- remove sudoers.dist that is not needed [bsc#1071379] 
+
+-------------------------------------------------------------------
+Wed Sep 13 14:19:27 UTC 2017 - kstreitova@suse.com
+
+- remove "--with-insults" and disable insults by default. Now
+  insults sets are included but user must enable it in the sudoers
+  file [bsc#1053911]
+
+-------------------------------------------------------------------
+Fri Sep  8 09:17:50 UTC 2017 - michael@stroeder.com
+
+- update to 1.8.21p2
+
+Major changes between sudo 1.8.21p2 and 1.8.21p1:
+ * Fixed a bug introduced in version 1.8.21 which prevented sudo
+   from using the PAM-supplied prompt.  Bug #799
+ * Fixed a bug introduced in version 1.8.21 which could result in
+   sudo hanging when running commands that exit quickly.  Bug #800
+ * Fixed a bug introduced in version 1.8.21 which prevented the
+   command from being run when the password was read via an external
+   program using the askpass interface.  Bug #801
+
+Major changes between sudo 1.8.21p1 and 1.8.21:
+ * On systems that support both PAM and SIGINFO, the main sudo
+   process will no longer forward SIGINFO to the command if the
+   signal was generated from the keyboard.  The command will have
+   already received SIGINFO since it is part of the same process
+   group so there's no need for sudo to forward it.  This is
+   consistent with the handling of SIGINT, SIGQUIT and SIGTSTP.
+   Bug #796
+ * If SUDOERS_SEARCH_FILTER in ldap.conf does not specify a value,
+   the LDAP search expression used when looking up netgroups and
+   non-Unix groups had a syntax error if a group plugin was not
+   specified.
+ * "sudo -U otheruser -l" will now have an exit value of 0 even
+   if "otheruser" has no sudo privileges.  The exit value when a
+   user attempts to lists their own privileges or when a command
+   is specified is unchanged.
+ * Fixed a regression introduced in sudo 1.8.21 where sudoreplay
+   playback would hang for I/O logs that contain terminal input.
+ * Sudo 1.8.18 contained an incomplete fix for the matching of
+   entries in the LDAP and SSSD backends when a sudoRunAsGroup is
+   specified but no sudoRunAsUser is present in the sudoRole.
+
+Major changes between sudo 1.8.21 and 1.8.20p2:
+ * The path that sudo uses to search for terminal devices can now
+   be configured via the new "devsearch" Path setting in sudo.conf.
+ * It is now possible to preserve bash shell functions in the
+   environment when the "env_reset" sudoers setting is disabled by
+   removing the "*=()*" pattern from the env_delete list.
+ * A change made in sudo 1.8.15 inadvertantly caused sudoedit to
+   send itself SIGHUP instead of exiting when the editor returns
+   an error or the file was not modified.
+ * Sudoedit now uses an exit code of zero if the file was not
+   actually modified.  Previously, sudoedit treated a lack of
+   modifications as an error.
+ * When running a command in a pseudo-tty (pty), sudo now copies a
+   subset of the terminal flags to the new pty.  Previously, all
+   flags were copied, even those not appropriate for a pty.
+ * Fixed a problem with debug logging in the sudoers I/O logging
+   plugin.
+ * Window size change events are now logged to the policy plugin.
+   On xterm and compatible terminals, sudoreplay is now capable of
+   resizing the terminal to match the size of the terminal the
+   command was run on.  The new -R option can be used to disable
+   terminal resizing.
+ * Fixed a bug in visudo where a newly added file was not checked
+   for syntax errors.  Bug #791.
+ * Fixed a bug in visudo where if a syntax error in an include
+   directory (like /etc/sudoers.d) was detected, the edited version
+   was left as a temporary file instead of being installed.
+ * On PAM systems, sudo will now treat "username's Password:" as
+   a standard password prompt.  As a result, the SUDO_PROMPT
+   environment variable will now override "username's Password:"
+   as well as the more common "Password:".  Previously, the
+   "passprompt_override" Defaults setting would need to be set for
+   SUDO_PROMPT to override a prompt of "username's Password:".
+ * A new "syslog_pid" sudoers setting has been added to include
+   sudo's process ID along with the process name when logging via
+   syslog.  Bug #792.
+ * Fixed a bug introduced in sudo 1.8.18 where a command would
+   not be terminated when the I/O logging plugin returned an error
+   to the sudo front-end.
+ * A new "timestamp_type" sudoers setting has been added that replaces
+   the "tty_tickets" option.  In addition to tty and global time stamp
+   records, it is now possible to use the parent process ID to restrict
+   the time stamp to commands run by the same process, usually the shell.
+   Bug #793.
+ * The --preserve-env command line option has been extended to accept
+   a comma-separated list of environment variables to preserve.
+   Bug #279.
+ * Friulian translation for sudo from translationproject.org.
+
+-------------------------------------------------------------------
+Thu Jun  1 07:04:16 UTC 2017 - michael@stroeder.com
+
+- update to 1.8.20p2 which obsoletes patches:
+  * sudo-1.8.19p2-CVE-2017-1000367.patch
+  * sudo-1.8.19p2-decrement_env_len.patch
+  * sudo-1.8.19p2-dont_overwrite_ret_val.patch
+
+Major changes between sudo 1.8.20p2 and 1.8.20p1:
+
+ * Fixed a bug parsing /proc/pid/stat on Linux when the process
+   name contains newlines. This is not exploitable due to the /dev
+   traversal changes in sudo 1.8.20p1.
+   [bsc#1042146], [CVE-2017-1000368]
+
+Major changes between sudo 1.8.20p1 and 1.8.20:
+
+ * Fixed "make check" when using OpenSSL or GNU crypt.
+   Bug #787.
+ * Fixed CVE-2017-1000367, a bug parsing /proc/pid/stat on Linux
+   when the process name contains spaces.  Since the user has control
+   over the command name, this could potentially be used by a user
+   with sudo access to overwrite an arbitrary file on systems with
+   SELinux enabled.  Also stop performing a breadth-first traversal
+   of /dev when looking for the device; only a hard-coded list of
+   directories are checked,
+
+Major changes between sudo 1.8.20 and 1.8.19p2:
+
+ * Added support for SASL_MECH in ldap.conf. Bug #764
+ * Added support for digest matching when the command is a glob-style
+   pattern or a directory. Previously, only explicit path matches
+   supported digest checks.
+ * New "fdexec" Defaults option to control whether a command
+   is executed by path or by open file descriptor.
+ * The embedded copy of zlib has been upgraded to version 1.2.11.
+ * Fixed a bug that prevented sudoers include files with a relative
+   path starting with the letter 'i' from being opened.  Bug #776.
+ * Added support for command timeouts in sudoers.  The command will
+   be terminated if the timeout expires.
+ * The SELinux role and type are now displayed in the "sudo -l"
+   output for the LDAP and SSSD backends, just as they are in the
+   sudoers backend.
+ * A new command line option, -T, can be used to specify a command
+   timeout as long as the user-specified timeout is not longer than
+   the timeout specified in sudoers.  This option may only be
+   used when the "user_command_timeouts" flag is enabled in sudoers.
+ * Added NOTBEFORE and NOTAFTER command options to the sudoers
+   backend similar to what is already available in the LDAP backend.
+ * Sudo can now optionally use the SHA2 functions in OpenSSL or GNU
+   crypt instead of the SHA2 implementation bundled with sudo.
+ * Fixed a compilation error on systems without the stdbool.h header
+   file.  Bug #778.
+ * Fixed a compilation error in the standalone Kerberos V authentication
+   module.  Bug #777.
+ * Added the iolog_flush flag to sudoers which causes I/O log data
+   to be written immediately to disk instead of being buffered.
+ * I/O log files are now created with group ID 0 by default unless
+   the "iolog_user" or "iolog_group" options are set in sudoers.
+ * It is now possible to store I/O log files on an NFS-mounted
+   file system where uid 0 is remapped to an unprivileged user.
+   The "iolog_user" option must be set to a non-root user and the
+   top-level I/O log directory must exist and be owned by that user.
+ * Added the restricted_env_file setting to sudoers which is similar
+   to env_file but its contents are subject to the same restrictions
+   as variables in the invoking user's environment.
+ * Fixed a use after free bug in the SSSD backend when the fqdn
+   sudoOption is enabled and no hostname value is present in
+   /etc/sssd/sssd.conf.
+ * Fixed a typo that resulted in a compilation error on systems
+   where the killpg() function is not found by configure.
+
+ * Fixed a compilation error with the included version of zlib
+   when sudo was built outside the source tree.
+ * Fixed the exit value of sudo when the command is terminated by
+   a signal other than SIGINT.  This was broken in sudo 1.8.15 by
+   the fix for Bug #722.  Bug #784.
+ * Fixed a regression introduced in sudo 1.8.18 where the "lecture"
+   option could not be used in a positive boolean context, only
+   a negative one.
+ * Fixed an issue where sudo would consume stdin if it was not
+   connected to a tty even if log_input is not enabled in sudoers.
+   Bug #786.
+ * Clarify in the sudoers manual that the #includedir directive
+   diverts control to the files in the specified directory and,
+   when parsing of those files is complete, returns control to the
+   original file.  Bug #775.
+
+-------------------------------------------------------------------
+Tue May 30 19:11:42 UTC 2017 - sflees@suse.de
+
+- Fix a vulnerability in Sudo's get_process_ttyname() leading to 
+  privlage elevation.
+  * sudo-1.8.19p2-CVE-2017-1000367.patch 
+  * CVE-2017-1000367
+  * bsc#1039361
+
+-------------------------------------------------------------------
+Fri Mar  3 15:30:29 UTC 2017 - kstreitova@suse.com
+
+- update sudo in SLE12SP3 to the latest Factory version [fate#322095]
+  * remove sudo-1.8.10p3-CVE-2016-7032.patch [bsc#1007766]
+    * fixed in sudo 1.8.15
+  * remove sudo-1.8.10p3-CVE-2016-7076.patch [bsc#1007501]
+    * fixed in sudo 1.8.18p1
+  * remove sudo-1.8.10p3-parse_boottime_properly.patch [bsc#899252]
+    * fixed in sudo 1.8.14
+  * remove sudo-1.8.10p3-user_groups.patch [bsc#988014]
+    * fixed in sudo 1.8.17p1
+  * remove sudo-1.8.10p3_pam_groups_upstream.patch [fate#318850]
+    * fixed in sudo 1.8.17 
+  * remove sudo-1.8.10p3-CVE-2014-9680.patch [bsc#917806]
+    * fixed in sudo 1.8.12 
+
+-------------------------------------------------------------------
+Tue Jan 31 16:11:17 UTC 2017 - kstreitova@suse.com
+
+- add sudo-1.8.19p2-decrement_env_len.patch - In 
+  sudo_unsetenv_nodebug(), decrement envp.env_len after removing
+  the variable [bsc#981124]
+- add sudo-1.8.19p2-dont_overwrite_ret_val.patch - don't overwrite
+  the return value of ldap_sasl_interactive_bind_s() by the
+  subsequent call to sudo_set_krb5_ccache_name() [bsc#981124]
+
+-------------------------------------------------------------------
+Sat Jan 14 14:25:39 UTC 2017 - michael@stroeder.com
+
+- update to 1.8.19p2
+
+Major changes between sudo 1.8.19p2 and 1.8.19p1:
+ * Fixed a crash in visudo introduced in sudo 1.8.9 when an IP address
+   or network is used in a host-based Defaults entry.  Bug #766
+ * Added a missing check for the ignore_iolog_errors flag when
+   the sudoers plugin generates the I/O log file path name.
+ * Fixed a typo in sudo's vsyslog() replacement that resulted in
+   garbage being logged to syslog.
+
+-------------------------------------------------------------------
+Wed Jan  4 12:40:14 UTC 2017 - kstreitova@suse.com
+
+- add /usr/lib/tmpfiles.d directory to the %files section and fix
+  build for SLE12SP2
+
+-------------------------------------------------------------------
+Mon Dec 19 23:08:10 UTC 2016 - michael@stroeder.com
+
+- update to 1.8.19p1
+
+Major changes between sudo 1.8.19p1 and 1.8.19:
+ * Fixed a bug introduced in sudo 1.8.19 that resulted in the wrong
+   syslog priority and facility being used.
+
+Major changes between sudo 1.8.19 and 1.8.18p1:
+ * New "syslog_maxlen" Defaults option to control the maximum size of
+   syslog messages generated by sudo.
+ * Sudo has been run against PVS-Studio and any issues that were
+   not false positives have been addressed.
+ * I/O log files are now created same group ID as the parent directory
+   and not the invoking user's group ID.
+ * I/O log permissions and ownership are now configurable via the
+   "iolog_mode", "iolog_user" and "iolog_group" sudoers Defaults
+   variables.
+ * Fixed configuration of the sudoers I/O log plugin debug subsystem.
+   Previously, I/O log information was not being written to the
+   sudoers debug log.
+ * Fixed a bug in visudo that broke editing of files in an include
+   dir that have a syntax error.  Normally, visudo does not edit
+   those files, but if a syntax error is detected in one, the user
+   should get a chance to fix it.
+ * Warnings about unknown or unparsable sudoers Defaults entries now
+   include the file and line number of the problem.
+ * Visudo will now use the file and line number information about an
+   unknown or unparsable Defaults entry to go directly to the file
+   with the problem.
+ * Fixed a bug in the sudoers LDAP back-end where a negated sudoHost
+   entry would prevent other sudoHost entries following it from matching.
+ * Warnings from visudo about a cycle in an Alias entry now include the
+   file and line number of the problem.
+ * In strict mode, visudo will now use the file and line number
+   information about a cycle in an Alias entry to go directly to the
+   file with the problem.
+ * The sudo_noexec.so file is now linked with -ldl on systems that
+   require it for the wordexp() wrapper.
+ * Fixed linking of sudo_noexec.so on macOS systems where it must be
+   a dynamic library and not a module.
+ * Sudo's "make check" now includes a test for sudo_noexec.so
+   working.
+ * The sudo front-end now passes the user's umask to the plugin.
+   Previously the plugin had to determine this itself.
+ * Sudoreplay can now display the stdin and ttyin streams when they
+   are explicitly added to the filter list.
+ * Fixed a bug introduced in sudo 1.8.17 where the "all" setting
+   for verifypw and listpw was not being honored.  Bug #762.
+ * The syslog priority (syslog_goodpri and syslog_badpri) can now
+   be negated or set to "none" to disable logging of successful or
+   unsuccessful sudo attempts via syslog.
+
+-------------------------------------------------------------------
+Fri Oct 28 08:53:16 UTC 2016 - michael@stroeder.com
+
+- update to 1.8.18p1 with these major changes:
+ * When sudo_noexec.so is used, the WRDE_NOCMD flag is now added
+   if the wordexp() function is called.  This prevents commands
+   from being run via wordexp() without disabling it entirely.
+ * On Linux systems, sudo_noexec.so now uses a seccomp filter to
+   disable execute access if the kernel supports seccomp.  This is
+   more robust than the traditional method of using stub functions
+   that return an error.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:13:29 UTC 2016 - michael@stroeder.com
+
+- update to 1.8.18
+ * The sudoers locale is now set before parsing the sudoers file.
+   If sudoers_locale is set in sudoers, it is applied before
+   evaluating other Defaults entries.  Previously, sudoers_locale
+   was used when evaluating sudoers but not during the inital parse.
+   Bug #748.
+ * A missing or otherwise invalid #includedir is now ignored instead
+   of causing a parse error.
+ * During "make install", backup files are only used on HP-UX where
+   it is not possible to unlink a shared object that is in use.
+   This works around a bug in ldconfig on Linux which could create
+   links to the backup shared library file instead of the current
+   one.
+ * Fixed a bug introduced in 1.8.17 where sudoers entries with long
+   commands lines could be truncated, preventing a match.  Bug #752.
+ * The fqdn, runas_default and sudoers_locale Defaults settings are
+   now applied before any other Defaults settings since they can
+   change how other Defaults settings are parsed.
+ * On systems without the O_NOFOLLOW open(2) flag, when the NOFOLLOW
+   flag is set, sudoedit now checks whether the file is a symbolic link
+   before opening it as well as after the open.  Bug #753.
+ * Sudo will now only resolve a user's group IDs to group names
+   when sudoers includes group-based permissions.  Group lookups
+   can be expensive on some systems where the group database is
+   not local.
+ * If the file system holding the sudo log file is full, allow
+   the command to run unless the new ignore_logfile_errors Defaults
+   option is disabled.  Bug #751.
+ * The ignore_audit_errors and ignore_iolog_errors Defaults options
+   have been added to control sudo's behavior when it is unable to
+   write to the audit and I/O logs.
+ * Fixed a bug introduced in 1.8.17 where the SIGPIPE signal handler
+   was not being restored when sudo directly executes the command.
+ * Fixed a bug where "sudo -l command" would indicate that a command
+   was runnable even when denied by sudoers when using the LDAP or
+   SSSD backends.
+ * The match_group_by_gid Defaults option has been added to allow
+   sites where group name resolution is slow and where sudoers only
+   contains a small number of groups to match groups by group ID
+   instead of by group name.
+ * Fixed a bug on Linux where a 32-bit sudo binary could fail with
+   an "unable to allocate memory" error when run on a 64-bit system.
+   Bug #755
+ * When parsing ldap.conf, sudo will now only treat a '#' character
+   as the start of a comment when it is at the beginning of the
+   line.
+ * Fixed a potential crash when auditing is enabled and the audit
+   function fails with an error.  Bug #756
+ * Norwegian Nynorsk translation for sudo from translationproject.org.
+ * Fixed a typo that broke short host name matching when the fqdn
+   flag is enabled in sudoers.  Bug #757
+ * Negated sudoHost attributes are now supported by the LDAP and
+   SSSD backends.
+ * Fixed matching entries in the LDAP and SSSD backends when a
+   RunAsGroup is specified but no RunAsUser is present.
+ * Fixed "sudo -l" output in the LDAP and SSSD backends when a
+   RunAsGroup is specified but no RunAsUser is present.
+
+-------------------------------------------------------------------
+Wed Jun 22 21:02:46 UTC 2016 - michael@stroeder.com
+
+- update to 1.8.17p1:
+  * Fixed a bug introduced in 1.8.17 where the user's groups were
+    not set on systems that don't use PAM.  Bug #749.
+
+-------------------------------------------------------------------
+Sun Jun 19 14:01:44 UTC 2016 - michael@stroeder.com
+
+- removed obsolete patch sudo-1.8.16-pam_groups.patch
+- update to 1.8.17:
+ * On AIX, if /etc/security/login.cfg has auth_type set to PAM_AUTH
+   but pam_start(3) fails, fall back to AIX authentication.
+   Bug #740.
+ * Sudo now takes all sudoers sources into account when determining
+   whether or not "sudo -l" or "sudo -b" should prompt for a password.
+   In other words, if both file and ldap sudoers sources are in
+   specified in /etc/nsswitch.conf, "sudo -v" will now require that
+   all entries in both sources be have NOPASSWD (file) or !authenticate
+   (ldap) in the entries.
+ * Sudo now ignores SIGPIPE until the command is executed.  Previously,
+   SIGPIPE was only ignored in a few select places.  Bug #739.
+ * Fixed a bug introduced in sudo 1.8.14 where (non-syslog) log
+   file entries were missing the newline when loglinelen is set to
+   a non-positive number.  Bug #742.
+ * Unix groups are now set before the plugin session intialization
+   code is run.  This makes it possible to use dynamic groups with
+   the Linux-PAM pam_group module.
+ * Fixed a bug where a debugging statement could dereference a NULL
+   pointer when looking up a group that doesn't exist.  Bug #743.
+ * Sudo has been run through the Coverity code scanner.  A number of
+   minor bugs have been fixed as a result.  None were security issues.
+ * SELinux support, which was broken in 1.8.16, has been repaired.
+ * Fixed a bug when logging I/O where all output buffers might not
+   get flushed at exit.
+ * Forward slashes are no longer escaped in the JSON output of
+   "visudo -x".  This was never required by the standard and not
+   escaping them improves readability of the output.
+ * Sudo no longer treats PAM_SESSION_ERR as a fatal error when
+   opening the PAM session.  Other errors from pam_open_session()
+   are still treated as fatal.  This avoids the "policy plugin
+   failed session initialization" error message seen on some systems.
+ * Korean translation for sudo and sudoers from translationproject.org.
+ * Fixed a bug on AIX where the stack size hard resource limit was
+   being set to 2GB instead of 4GB on 64-bit systems.
+ * The SSSD backend now properly supports "sudo -U otheruser -l".
+ * The SSSD backend now uses the value of "ipa_hostname"
+   from sssd.conf, if specified, when matching the host name.
+ * Fixed a hang on some systems when the command is being run in
+   a pty and it failed to execute.
+ * When performing a wildcard match in sudoers, check for an exact
+   string match if the user command was fully-qualified (or resolved
+   via the PATH).  This fixes an issue executing scripts on Linux
+   when there are multiple wildcard matches with the same base name.
+   Bug #746.
+
+-------------------------------------------------------------------
+Mon May 23 08:22:12 UTC 2016 - egeorget@openmailbox.org
+
+- Changing password promp to make use of sudo localized prompts. 
+
+-------------------------------------------------------------------
+Thu May 19 09:13:54 UTC 2016 - kstreitova@suse.com
+
+- add "BuildRequires: cyrus-sasl-devel" to enable SASL
+  authentication [bnc#979531]
+
+-------------------------------------------------------------------
+Fri Apr 29 11:34:18 UTC 2016 - kstreitova@suse.com
+
+- add sudo-1.8.16-pam_groups.patch to do group setup in
+  policy_init_session() before calling out to the plugin. This makes
+  it possible for the pam_group module to change the group in
+  pam_setcred() [fate#318850]
+
+-------------------------------------------------------------------
+Sat Mar 19 10:02:09 UTC 2016 - mpluskal@suse.com
+
+- Add gpg signature
+- Use valid category for tests
+
+-------------------------------------------------------------------
+Thu Mar 17 23:32:59 UTC 2016 - michael@stroeder.com
+
+- update to 1.8.16:
+ * Fixed a compilation error on Solaris 10 with Stun Studio 12.
+   Bug #727.
+ * When preserving variables from the invoking user's environment, if
+   there are duplicates sudo now only keeps the first instance.
+ * Fixed a bug that could cause warning mail to be sent in list
+   mode (sudo -l) for users without sudo privileges when the
+   LDAP and sssd backends are used.
+ * Fixed a bug that prevented the "mail_no_user" option from working
+   properly with the LDAP backend.
+ * In the LDAP and sssd backends, white space is now ignored between
+   an operator (!, +, +=, -=) when parsing a sudoOption.
+ * It is now possible to disable Path settings in sudo.conf
+   by omitting the path name.
+ * The sudoedit_checkdir Defaults option is now enabled by default
+   and has been extended.  When editing files with sudoedit, each
+   directory in the path to be edited is now checked.  If a directory
+   is writable by the invoking user, symbolic links will not be
+   followed.  If the parent directory of the file to be edited is
+   writable, sudoedit will refuse to edit it.
+   Bug #707.
+ * The netgroup_tuple Defaults option has been added to enable matching
+   of the entire netgroup tuple, not just the host or user portion.
+   Bug #717.
+ * When matching commands based on the SHA2 digest, sudo will now
+   use fexecve(2) to execute the command if it is available.  This
+   fixes a time of check versus time of use race condition when the
+   directory holding the command is writable by the invoking user.
+ * On AIX systems, sudo now caches the auth registry string along
+   with password and group information.  This fixes a potential
+   problem when a user or group of the same name exists in multiple
+   auth registries.  For example, local and LDAP.
+ * Fixed a crash in the SSSD backend when the invoking user is not
+   found.  Bug #732.
+ * Added the --enable-asan configure flag to enable address sanitizer
+   support.  A few minor memory leaks have been plugged to quiet
+   the ASAN leak detector.
+ * The value of _PATH_SUDO_CONF may once again be overridden via
+   the Makefile.  Bug #735.
+ * The sudoers2ldif script now handles multiple roles with same name.
+ * Fixed a compilation error on systems that have the posix_spawn()
+   and posix_spawnp() functions but an unusable spawn.h header.
+   Bug #730.
+ * Fixed support for negating character classes in sudo's version
+   of the fnmatch() function.
+ * Fixed a bug in the LDAP and SSSD backends that could allow an
+   unauthorized user to list another user's privileges.  Bug #738.
+ * The PAM conversation function now works around an ambiguity in the
+   PAM spec with respect to multiple messages.  Bug #726.
+
+-------------------------------------------------------------------
+Fri Nov  6 11:55:17 UTC 2015 - kstreitova@suse.com
+
+- update to 1.8.15:
+  * Fixed a bug that prevented sudo from building outside the source 
+    tree on some platforms. Bug #708.
+  * Fixed the location of the sssd library in the RHEL/Centos packages.
+    Bug #710.
+  * Fixed a build problem on systems that don't implicitly include
+    sys/types.h from other header files. Bug #711.
+  * Fixed a problem on Linux using containers where sudo would ignore
+    signals sent by a process in a different container.
+  * Sudo now refuses to run a command if the PAM session module returns
+    an error.
+  * When editing files with sudoedit, symbolic links will no longer be
+    followed by default. The old behavior can be restored by enabling
+    the sudoedit_follow option in sudoers or on a per-command basis with
+    the FOLLOW and NOFOLLOW tags. Bug #707.
+  * Fixed a bug introduced in version 1.8.14 that caused the last valid
+    editor in the sudoers "editor" list to be used by visudo and sudoedit
+    instead of the first. Bug #714.
+  * Fixed a bug in visudo that prevented the addition of a final newline
+    to edited files without one.
+  * Fixed a bug decoding certain base64 digests in sudoers when the
+    intermediate format included a '=' character.
+  * Individual records are now locked in the time stamp file instead of
+    the entire file. This allows sudo to avoid prompting for a password
+    multiple times on the same terminal when used in a pipeline.
+    In other words, sudo cat foo | sudo grep bar now only prompts for
+    the password once. Previously, both sudo processes would prompt for
+    a password, often making it impossible to enter. Bug #705.
+  * Fixed a bug where sudo would fail to run commands as a non-root user
+    on systems that lack both setresuid() and setreuid(). Bug #713.
+  * Fixed a bug introduced in sudo 1.8.14 that prevented visudo from
+    re-editing the correct file when a syntax error was detected.
+  * Fixed a bug where sudo would not relay a SIGHUP signal to the command
+    when the terminal is closed and the command is not run in its own
+    pseudo-tty. Bug #719.
+  * If some, but not all, of the LOGNAME, USER or USERNAME environment
+    variables have been preserved from the invoking user's environment,
+    sudo will now use the preserved value to set the remaining variables
+    instead of using the runas user. This ensures that if, for example,
+    only LOGNAME is present in the env_keep list, that sudo will not set
+    USER and USERNAME to the runas user.
+  * When the command sudo is running dies due to a signal, sudo will now
+    send itself that same signal with the default signal handler installed
+    instead of exiting. The bash shell appears to ignore some signals,
+    e.g. SIGINT, unless the command being run is killed by that signal.
+    This makes the behavior of commands run under sudo the same as
+    without sudo when bash is the shell. Bug #722.
+  * Slovak translation for sudo from translationproject.org.
+  * Hungarian and Slovak translations for sudoers from
+    translationproject.org.
+  * Previously, when env_reset was enabled (the default) and the
+    -s option was not used, the SHELL environment variable was set to the
+    shell of the invoking user. Now, when env_reset is enabled and the
+    -s option is not used, SHELL is set based on the target user.
+  * Fixed challenge/response style BSD authentication.
+  * Added the sudoedit_checkdir Defaults option to prevent sudoedit from
+    editing files located in a directory that is writable by the
+    invoking user.
+  * Added the always_query_group_plugin Defaults option to control
+    whether groups not found in the system group database are passed to
+    the group plugin. Previously, unknown system groups were always
+    passed to the group plugin.
+  * When creating a new file, sudoedit will now check that the file's
+    parent directory exists before running the editor.
+  * Fixed the compiler stack protector test in configure for compilers
+    that support -fstack-protector but don't actually have the ssp
+    library available.
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug 12 18:29:20 UTC 2015 - jengelh@inai.de
+
+- No need to buildrequire an sssd plugin (libsss_sudo)
+
+-------------------------------------------------------------------
+Wed Aug 12 06:29:33 UTC 2015 - dimstar@opensuse.org
+
+- Pass --enable-tmpfiles.d=%{_tmpfilesdir} to configure: let's be
+  specific about this feature, and not randomly rely on the
+  presence/absence of /usr/lib/tmpfiles.d/systemd.conf.
+- Add systemd-rpm-macros BuildRequires to ensure %_tmpfilesdir is
+  defined.
+- Add relevant %tmpfiles_create call to post scriptlet.
+
+-------------------------------------------------------------------
+Thu Jul 23 10:09:08 UTC 2015 - kstreitova@suse.com
+
+- update to 1.8.14p3:
+  * changes in 1.8.14p3
+    * Fixed a bug introduced in sudo 1.8.14p2 that prevented sudo 
+      from working when no tty was present. Bug #706.
+    * Fixed tty detection on newer AIX systems where dev_t is 64-bit.
+  * changes in 1.8.14p2
+    * Fixed a bug introduced in sudo 1.8.14 that prevented the
+      lecture file from being created. Bug #704.
+  * changes in 1.8.14p1
+    * Fixed a bug introduced in sudo 1.8.14 that prevented the sssd
+      backend from working. Bug #703.
+  * changes in 1.8.14
+    * Log messages on Mac OS X now respect sudoers_locale when sudo
+      is build with NLS support.
+    * The sudo manual pages now pass mandoc -Tlint with no warnings.
+    * Fixed a compilation problem on systems with the sig2str()
+      function that do not define SIG2STR_MAX in signal.h.
+    * Worked around a compiler bug that resulted in unexpected
+      behavior when returning an int from a function declared to
+      return bool without an explicit cast.
+    * Worked around a bug in Mac OS X 10.10 BSD auditing where the
+      au_preselect() fails for AUE_sudo events but succeeds for 
+      AUE_DARWIN_sudo.
+    * Fixed a hang on Linux systems with glibc when sudo is linked
+      with jemalloc.
+    * When the user runs a command as a user ID that is not present
+      in the password database via the -u flag, the command is now
+      run with the group ID of the invoking user instead of group ID 0.
+    * Fixed a compilation problem on systems that don't pull in
+      definitions of uid_t and gid_t without sys/types.h or unistd.h.
+    * Fixed a compilation problem on newer AIX systems which use a
+      struct st_timespec for time stamps in struct stat that differs
+      from struct timespec. Bug #702.
+    * The example directory is now configurable via --with-exampledir
+      and defaults to DATAROOTDIR/examples/sudo on BSD systems.
+    * The /usr/lib/tmpfiles.d/sudo.conf file is now installed as part
+      of "make install" when systemd is in use.
+    * Fixed a linker problem on some systems with libintl. Bug #690.
+    * Fixed compilation with compilers that don't support __func__ or
+      __FUNCTION__.
+    * Sudo no longer needs to uses weak symbols to support localization
+      in the warning functions. A registration function is used instead.
+    * Fixed a setresuid() failure in sudoers on Linux kernels where
+      uid changes take the nproc resource limit into account.
+    * Fixed LDAP netgroup queries on AIX.
+    * Sudo will now display the custom prompt on Linux systems with
+      PAM even if the "Password: " prompt is not localized by the
+      PAM module. Bug #701.
+    * Double-quoted values in an LDAP sudoOption are now supported
+      for consistency with file-based sudoers.
+    * Fixed a bug that prevented the btime entry in /proc/stat from
+      being parsed on Linux.
+  * update sudo-sudoers.patch
+  * remove sudo-parse_boottime_properly.patch (it's not longer needed) 
+
+-------------------------------------------------------------------
+Wed Jul 22 18:27:35 UTC 2015 - crrodriguez@opensuse.org
+
+- BuildRequires zlib-devel, support zlib compressed I/O logs. 
+
+-------------------------------------------------------------------
+Thu May 14 12:47:49 UTC 2015 - vcizek@suse.com
+
+- update to 1.8.13
+ * The examples directory is now a subdirectory of the doc dir to
+   conform to Debian guidelines.  Bug #682.
+ * Fixed a compilation error for siglist.c and signame.c on some
+   systems.  Bug #686
+ * Weak symbols are now used for sudo_warn_gettext() and
+   sudo_warn_strerror() in libsudo_util to avoid link errors when
+   -Wl,--no-undefined is used in LDFLAGS.  The --disable-weak-symbols
+   configure option can be used to disable the user of weak symbols.
+ * Fixed a bug in sudo's mkstemps() replacement function that
+   prevented the file extension from being preserved in sudoedit.
+ * A new mail_all_cmnds sudoers flag will send mail when a user runs
+   a command (or tries to). The behavior of the mail_always flag has
+   been restored to always send mail when sudo is run.
+ * New "MAIL" and "NOMAIL" command tags have been added to toggle
+   mail sending behavior on a per-command (or Cmnd_Alias) basis.
+ * Fixed matching of empty passwords when sudo is configured to
+   use passwd (or shadow) file authentication on systems where the
+   crypt() function returns NULL for invalid salts.
+ * The "all" setting for listpw and verifypw now works correctly
+   with LDAP and sssd sudoers.
+ * The sudo timestamp directory is now created at boot time on
+   platforms that use systemd.
+ * Sudo will now restore the value of the SIGPIPE handler before
+   executing the command.
+ * Sudo now uses "struct timespec" instead of "struct timeval" for
+   time keeping when possible.  If supported, sudoedit and visudo
+   now use nanosecond granularity time stamps.
+ * Fixed a symbol name collision with systems that have their own
+   SHA2 implementation.  This fixes a problem where PAM could use
+   the wrong SHA2 implementation on Solaris 10 systems configured
+   to use SHA512 for passwords.
+ * The editor invoked by sudoedit once again uses an unmodified
+   copy of the user's environment as per the documentation.  This
+   was inadvertantly changed in sudo 1.8.0.  Bug #688.
+
+-------------------------------------------------------------------
+Sun Feb 22 15:29:28 UTC 2015 - vcizek@suse.com
+
+- update to 1.8.12 (fixes bnc#918953)
+- changelog:
+  * The embedded copy of zlib has been upgraded to version 1.2.8 and
+    is now installed as a shared library where supported.
+  * Debug settings for the sudo front end and sudoers plugin are now configured separately.
+  * Multiple sudo.conf Debug entries may now be specified per program (or plugin).
+  * The plugin API has been extended such that the path to the plugin
+    that was loaded is now included in the settings array. This path
+    can be used to register with the debugging subsystem. The debug_flags
+    setting is now prefixed with a file name and may be specified multiple
+    times if there is more than one matching Debug setting in sudo.conf.
+  * The sudoers regression tests now run with the locale set to C since
+    some of the tests compare output that includes locale-specific messages. Bug #672.
+  * Fixed a bug where sudo would not run commands on Linux when compiled
+    with audit support if audit is disabled. Bug #671.
+  * The default password prompt now includes a trailing space after
+    "Password:" for consistency with su(1) on most systems. Bug #663.
+  * Visudo will now use the optional sudoers_file, sudoers_mode,
+    sudoers_uid and sudoers_gid arguments if specified on the sudoers.so Plugin line in the sudo.conf file.
+  * Fixed a problem introduced in sudo 1.8.8 that prevented the full
+    host name from being used when the fqdn sudoers option is used. Bug #678.
+  * Sudo now installs a handler for SIGCHLD signal handler immediately
+    before stating the process that will execute the command (or start the monitor).
+  * Removed a limit on the length of command line arguments expanded by
+    a wild card using sudo's version of the fnmatch() function.
+    This limit was introduced when sudo's version of fnmatch() was replaced in sudo 1.8.4.
+  * LDAP-based sudoers can now query an LDAP server for a user's netgroups
+    directly. This is often much faster than fetching every sudoRole object
+    containing a sudoUser that begins with a `+' prefix and checking
+    whether the user is a member of any of the returned netgroups.
+  * The mail_always sudoers option no longer sends mail for
+    sudo -l or sudo -v unless the user is unable to authenticate themselves.
+  * Fixed a crash when sudo is run with an empty argument vector.
+  * Fixed two potential crashes when sudo is run with very low resource limits.
+  * The TZ environment variable is now checked for safety instead of simply
+    being copied to the environment of the command. This fixes a potential security issue.
+
+-------------------------------------------------------------------
+Wed Dec 17 09:52:47 UTC 2014 - vcizek@suse.com
+
+- correctly parse /proc/stat for boottime (bnc#899252)
+  * added sudo-parse_boottime_properly.patch from Debian
+
+-------------------------------------------------------------------
+Thu Nov  6 12:35:03 UTC 2014 - fstrba@suse.com
+
+- update to 1.8.11p2
+  * Fixed a bug where dynamic shared objects loaded from a plugin
+    could use the hooked version of getenv() but not the hooked
+    versions of putenv(), setenv() or unsetenv().  This can cause
+    problems for PAM modules that use those functions.
+
+-------------------------------------------------------------------
+Sat Oct 11 02:09:17 UTC 2014 - tabraham@suse.com
+
+- refresh sudo-sudoers.patch
+- update to 1.8.11p1
+  * Fixed a compilation problem on some systems when the 
+    --disable-shared-libutil configure option was specified.
+  * The user can no longer interrupt the sleep after an incorrect password on 
+    PAM systems using pam_unix. Bug #666.
+  * Fixed a compilation problem on Linux systems that do not use PAM. Bug #667.
+  * "make install" will now work with the stock GNU autotools install-sh 
+    script. Bug #669.
+  * Fixed a crash with "sudo -i" when the current working directory does not 
+    exist. Bug #670.
+  * Fixed a potential crash in the debug subsystem when logging a message 
+    larger that 1024 bytes.
+  * Fixed a "make check" failure for ttyname when stdin is closed and stdout 
+    and stderr are redirected to a different tty. Bug #643.
+  * Added BASH_FUNC_* to environment blacklist to match newer-style bash 
+    functions. 
+
+- changes from 1.8.11
+  * The sudoers plugin no longer uses setjmp/longjmp to recover from fatal 
+    errors. All errors are now propagated to the caller via return codes.
+  * When running a command in the background, sudo will now forward SIGINFO to 
+    the command (if supported).
+  * Sudo will now use the system versions of the sha2 functions from libc or 
+    libmd if available.
+  * Visudo now works correctly on GNU Hurd. Bug #647.
+  * Fixed suspend and resume of curses programs on some system when the 
+    command is not being run in a pseudo-terminal. Bug #649.
+  * Fixed a crash with LDAP-based sudoers on some systems when Kerberos was 
+    enabled.
+  * Sudo now includes optional Solaris audit support.
+  * Catalan translation for sudoers from translationproject.org.
+  * Norwegian Bokmaal translation for sudo from translationproject.org.
+  * Greek translation for sudoers from translationproject.org
+  * The sudo source tree has been reorganized to more closely resemble that of 
+    other gettext-enabled packages. 
+  * Sudo and its associated programs now link against a shared version of 
+    libsudo_util. The --disable-shared-libutil configure option may be used to 
+    force static linking if the --enable-static-sudoers option is also 
+    specified.
+  * The passwords in ldap.conf and ldap.secret may now be encoded in base64.
+  * Audit updates. SELinux role changes are now audited. For sudoedit, we now 
+    audit the actual editor being run, instead of just the sudoedit command.
+  * Fixed bugs in the man page post-processing that could cause portions of the 
+    manuals to be removed.
+  * Fixed a crash in the system_group plugin. Bug #653.
+  * Fixed sudoedit on platforms without a native version of the getprogname() 
+    function. Bug #654.
+  * Fixed compilation problems with some pre-C99 compilers.
+  * Fixed sudo's -C option which was broken in version 1.8.9.
+  * It is now possible to match an environment variable's value as well as its 
+    name using env_keep and env_check. This can be used to preserve bash 
+    functions which would otherwise be removed from the environment.
+  * New files created via sudoedit as a non-root user now have the proper 
+    group id. Bug #656.
+  * Sudoedit now works correctly in conjunction with sudo's SELinux RBAC 
+    support. Temporary files are now created with the proper security context.
+  * The sudo I/O logging plugin API has been updated. If a logging function 
+    returns an error, the command will be terminated and all of the plugin's 
+    logging functions will be disabled. If a logging function rejects the 
+    command's output it will no longer be displayed to the user's terminal.
+  * Fixed a compilation error on systems that lack openpty(), _getpty() and 
+    grantpt(). Bug #660.
+  * Fixed a hang when a sudoers source is listed more than once in a single 
+    sudoers nsswitch.conf entry.
+  * On AIX, shell scripts without a #! magic number are now passed to 
+    /usr/bin/sh, not /usr/bin/bsh. This is consistent with what the execvp() 
+    function on AIX does and matches historic sudo behavior. Bug #661.
+  * Fixed a cross-compilation problem building mksiglist and mksigname. 
+    Bug #662. 
+
+-------------------------------------------------------------------
+Thu May 15 13:00:31 UTC 2014 - vcizek@suse.com
+
+- update to 1.8.10p3
+  * Fixed expansion of the %p escape in the prompt for "sudo -l"
+    when rootpw, runaspw or targetpw is set. Bug #639.
+  * Fixed matching of uids and gids which was broken in version 1.8.9
+  * PAM credential initialization has been re-enabled. It was
+    unintentionally disabled by default in version 1.8.8. The way
+    credentials are initialized has also been fixed. Bug #642.
+  * Fixed a descriptor leak on Linux when determing boot time. Sudo
+    normally closes extra descriptors before running a command so
+    the impact is limited. Bug #645.
+  * Fixed flushing of the last buffer of data when I/O logging is
+    enabled. This bug, introduced in version 1.8.9, could cause
+    incomplete command output on some systems. Bug #646.
+  * Fixed a hang introduced in sudo 1.8.10 when timestamp_timeout
+    is set to zero. Bug #638.
+- don't install test LICENSE with executable perms
+
+-------------------------------------------------------------------
+Fri Mar 14 14:46:59 UTC 2014 - vcizek@suse.com
+
+- update to 1.8.10p1
+  * Fixed a bug with netgated commands in "sudo -l command" that
+    could cause the command to be listed even when it was explicitly
+    denied. This only affected list mode when a command was specified.
+    Bug #636.
+  * It is now possible to disable network interface probing in sudo.conf
+    by changing the value of the probe_interfaces setting.
+  * When listing a user's privileges (sudo -l), the sudoers plugin
+    will now prompt for the user's password even if the targetpw,
+    rootpw or runaspw options are set.
+  * The sudoers plugin uses a new format for its time stamp files.
+    Bug #616.
+  * sudo's -K option will now remove all of the user's time stamps,
+    not just the time stamp for the current terminal.
+    The -k option can be used to only disable time stamps for
+    the current terminal.
+  * If sudo was started in the background and needed to prompt for a
+    password, it was not possible to suspend it at the password prompt
+  * LDAP-based sudoers now uses a default search filter of
+    (objectClass=sudoRole) for more efficient queries.
+    The netgroup query has been modified to avoid falling below the
+    minimum length for OpenLDAP substring indices.
+  * The new use_netgroups sudoers option can be used to explicitly
+    enable or disable netgroups support. For LDAP-based sudoers,
+    netgroup support requires an expensive substring match on the server.
+    If netgroups are not needed, this option can be disabled to
+    reduce the load on the LDAP server.
+  * Sudo is once again able to open the sudoers file when the group
+    on sudoers doesn't match the expected value, so long as the
+    file is not group writable.
+  * Sudo now installs an init.d script to clear the time stamp
+    directory at boot time on AIX and HP-UX systems.
+    These systems either lack /var/run or do not clear it on boot.
+  * The JSON format used by visudo -x now properly supports the
+    negation operator. In addition, the Options object is now
+    the same for both Defaults and Cmnd_Specs.
+  * Fixed parsing of the "umask" defaults setting in sudoers. Bug #632.
+
+-------------------------------------------------------------------
+Thu Jan 30 12:12:28 UTC 2014 - vcizek@suse.com
+
+- added subpackage with a test for fate#313276
+
+-------------------------------------------------------------------
+Wed Jan 29 19:47:28 UTC 2014 - vcizek@suse.com
+
+- update to 1.8.9p4
+  * Fixed a bug where sudo could consume large amounts of CPU while
+    the command was running when I/O logging is not enabled.
+    Bug #631 (bnc#861153)
+  * Fixed a bug where sudo would exit with an error when the debug
+    level is set to util@debug or all@debug and I/O logging is not
+    enabled. The command would continue runnning after sudo exited.
+
+-------------------------------------------------------------------
+Tue Jan 14 10:49:21 UTC 2014 - vcizek@suse.com
+
+- update to 1.8.9p3
+- set secure_path to /usr/sbin:/usr/bin:/sbin:/bin
+- changes since 1.8.8:
+  * Fixed a bug introduced in sudo 1.8.9 that prevented the tty name
+    from being resolved properly on Linux systems.  Bug #630.
+  * Updated config.guess, config.sub and libtool to support the ppc64le
+    architecture (IBM PowerPC Little Endian).
+  * Fixed a problem with gcc 4.8's handling of bit fields that could
+    lead to the noexec flag being enabled even when it was not
+    explicitly set.
+  * Reworked sudo's main event loop to use a simple event subsystem
+    using poll(2) or select(2) as the back end.
+  * It is now possible to statically compile the sudoers plugin into
+    the sudo binary without disabling shared library support.  The
+    sudo.conf file may still be used to configure other plugins.
+  * Sudo can now be compiled again with a C preprocessor that does
+    not support variadic macros.
+  * Visudo can now export a sudoers file in JSON format using the
+    new -x flag.
+  * The locale is now set correctly again for visudo and sudoreplay.
+  * The plugin API has been extended to allow the plugin to exclude
+    specific file descriptors from the "closefrom" range.
+  * There is now a workaround for a Solaris-specific problem where
+    NOEXEC was overriding traditional root DAC behavior.
+  * Add user netgroup filtering for SSSD. Previously, rules for
+    a netgroup were applied to all even when they did not belong
+    to the specified netgroup.
+  * On systems with BSD login classes, if the user specified a group
+    (not a user) to run the command as, it was possible to specify
+    a different login class even when the command was not run as the
+    super user.
+  * The closefrom() emulation on Mac OS X now uses /dev/fd if possible.
+  * Fixed a bug where sudoedit would not update the original file
+    from the temporary when PAM or I/O logging is not enabled.
+  * When recycling I/O logs, the log files are now truncated properly.
+  * Fixes bugs #617, #621, #622, #623, #624, #625, #626
+
+-------------------------------------------------------------------
+Tue Oct  8 09:21:18 UTC 2013 - vcizek@suse.com
+
+- update to 1.8.8
+- drop sudo-plugins-sudoers-sssd.patch (upstream)
+  * Removed a warning on PAM systems with stacked auth modules
+    where the first module on the stack does not succeed.
+  * Sudo, sudoreplay and visudo now support GNU-style long options.
+  * The -h (--host) option may now be used to specify a host name.
+    This is currently only used by the sudoers plugin in conjunction
+    with the -l (--list) option.
+  * Sudo's LDAP SASL support now works properly with Kerberos.
+    Previously, the SASL library was unable to locate the user's
+    credential cache.
+  * It is now possible to set the nproc resource limit to unlimited
+    via pam_limits on Linux (bug #565).
+  * New "pam_service" and "pam_login_service" sudoers options
+    that can be used to specify the PAM service name to use.
+  * New "pam_session" and "pam_setcred" sudoers options that
+    can be used to disable PAM session and credential support.
+  * The sudoers plugin now properly supports UIDs and GIDs
+    that are larger than 0x7fffffff on 32-bit platforms.
+  * Fixed a visudo bug introduced in sudo 1.8.7 where per-group
+    Defaults entries would cause an internal error.
+  * If the "tty_tickets" sudoers option is enabled (the default),
+    but there is no tty present, sudo will now use a ticket file
+    based on the parent process ID.  This makes it possible to support
+    the normal timeout behavior for the session.
+  * Fixed a problem running commands that change their process
+    group and then attempt to change the terminal settings when not
+    running the command in a pseudo-terminal.  Previously, the process
+    would receive SIGTTOU since it was effectively a background
+    process.  Sudo will now grant the child the controlling tty and
+    continue it when this happens.
+  * The "closefrom_override" sudoers option may now be used in
+    a command-specified Defaults entry (bug #610).
+  * Fixed visudo's -q (--quiet) flag, broken in sudo 1.8.6.
+  * Root may no longer change its SELinux role without entering
+    a password.
+  * Fixed a bug introduced in Sudo 1.8.7 where the indexes written
+    to the I/O log timing file are two greater than they should be.
+    Sudoreplay now contains a work-around to parse those files.
+
+-------------------------------------------------------------------
+Fri Jul 12 12:07:27 UTC 2013 - vcizek@suse.com
+
+- fix the default flag settings in manual to reflect changes caused by
+  sudo-sudoers.patch (bnc#823292)
+
+-------------------------------------------------------------------
+Tue Jul  9 15:46:19 UTC 2013 - darin@darins.net
+
+- Added patch to resolve packaging error. Patch has been sent
+  upstream.
+  * E: sudo 64bit-portability-issue ./sssd.c:829
+
+-------------------------------------------------------------------
+Tue Jul  9 12:34:16 UTC 2013 - darin@darins.net
+
+- Enable SSSD as a sudoers data source 
+
+-------------------------------------------------------------------
+Tue Jul  2 16:30:19 UTC 2013 - dmueller@suse.com
+
+- restore accidentally dropped suse-specific patches 
+
+-------------------------------------------------------------------
+Thu Jun 27 18:03:10 UTC 2013 - michael@stroeder.com
+
+- Update to upstream release 1.8.7
+  * remove CVE-2013-1775
+  * remove CVE-2013-1776
+  * The non-Unix group plugin is now supported when sudoers data is stored in LDAP.
+  * User messages are now always displayed in the user's locale, even when the
+  same message is being logged or mailed in a different locale.  
+  * Log files created by sudo now explicitly have the group set to group ID 0
+  rather than relying on BSD group semantics (which may not be the default).
+  * A new exec_background sudoers option can be used to initially run the 
+  command without read access to the terminal when running a command in a 
+  pseudo-tty. 
+  * Sudo now produces better error messages when there is an error in the sudo.conf file.
+  * Two new settings have been added to sudo.conf to give the admin better control of 
+  how group database queries are performed.
+  * There is now a standalone sudo.conf manual page.
+  * New support for specifying a SHA-2 digest along with the command in sudoers.
+  Supported hash types are sha224, sha256, sha384 and sha512. See the description
+  of Digest_Spec in the sudoers manual or the description of sudoCommand in the
+  sudoers.ldap manual for details.
+  * Fixed potential false positives in visudo's alias cycle detection.
+  * Sudo now only builds Position Independent Executables (PIE) by default on Linux
+  systems and verifies that a trivial test program builds and runs.
+
+-------------------------------------------------------------------
+Fri Mar  1 11:12:28 UTC 2013 - vcizek@suse.com
+
+- added two security fixes:
+  * CVE-2013-1775 (bnc#806919)
+    + sudo-1.8.6p3-CVE-2013-1775.patch
+  * CVE-2013-1776 (bnc#806921)
+    + sudo-1.8.6p3-CVE-2013-1776.patch
+
+-------------------------------------------------------------------
+Mon Dec  3 10:58:10 UTC 2012 - cfarrell@suse.com
+
+- license update: ISC
+  Look at the license file
+
+-------------------------------------------------------------------
+Sun Nov  4 20:32:52 UTC 2012 - crrodriguez@opensuse.org
+
+- sudo 1.8.6p3
+* Support for using the System Security Services Daemon (SSSD) as a source of sudoers data
+* Fixed a race condition that could cause sudo to receive SIGTTOU (and stop) 
+  when resuming a shell that was run via sudo when I/O logging (and use_pty) is not enabled. 
+* The sudoers plugin now takes advantage of symbol visibility controls when supported by the compiler or linker.
+* Sending SIGTSTP directly to the sudo process will now suspend 
+   the running command when I/O logging (and use_pty) is not enabled.
+
+-------------------------------------------------------------------
+Fri Oct 26 15:34:58 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on groff
+
+-------------------------------------------------------------------
+Wed Jun 13 19:08:05 CEST 2012 - vuntz@opensuse.org
+
+- Update to version 1.8.5p2:
+  + Fixed use of the SUDO_ASKPASS environment variable which was
+    broken in Sudo 1.8.5.
+  + Fixed a problem reading the sudoers file when the file mode is
+    more restrictive than the expected mode.  For example, when the
+    expected sudoers file mode is 0440 but the actual mode is 0400.
+- Changes from version 1.8.5p1:
+  + Fixed a bug that prevented files in an include directory from
+    being evaluated.
+
+-------------------------------------------------------------------
+Wed May 16 15:27:32 UTC 2012 - vcizek@suse.com
+
+- update to 1.8.5
+  Some of the changes:
+  * /etc/environment is no longer read directly on Linux systems when
+    PAM is used. Sudo now merges the PAM environment into the user's
+    environment which is typically set by the pam_env module.
+  * The plugin API has been extended
+  * The policy plugin's init_session function is now called by the
+    parent sudo process, not the child process that executes the command
+    This allows the PAM session to be open and closed in the same process,
+    which some PAM modules require.
+  * A new group provider plugin, system_group, is included
+  * Fixed a potential security issue in the matching of hosts against
+    an IPv4 network specified in sudoers.The flaw may allow a user who
+    is authorized to run commands on hosts belonging to one IPv4
+    network to run commands on a different host (CVE-2012-2337)
+
+-------------------------------------------------------------------
+Fri Mar  9 14:19:44 UTC 2012 - vcizek@suse.com
+
+- update to 1.8.4p2
+  Some of the changes:
+  * The -D flag in sudo has been replaced with a more general
+    debugging framework that is configured in sudo.conf.
+  * Fixed a crash with sudo -i when a runas group was specified
+    without a runas user.
+  * New Serbian and Spanish translations for sudo from translationproject.org.
+    LDAP-based sudoers may now access by group ID in addition to group name.
+  * visudo will now fix the mode on the sudoers file even if no
+    changes are made unless the -f option is specified.
+  * On systems that use login.conf, sudo -i now sets environment
+    variables based on login.conf
+  * values in the LDAP search expression are now escaped as per RFC 4515
+  * The deprecated "noexec_file" sudoers option is no longer supported.
+  * Fixed a race condition when I/O logging is not enabled that could
+    result in tty-generated signals (e.g. control-C) being received
+    by the command twice.
+  * visudo -c will now list any include files that were checked in
+    addition to the main sudoers file when everything parses OK.
+  * Users that only have read-only access to the sudoers file may
+    now run visudo -c. Previously, write permissions were required
+    even though no writing is down in check-only mode.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:30:58 UTC 2012 - vcizek@suse.com
+
+- update to 1.8.3p2
+  * Fixed a format string vulnerability when the sudo binary
+    (or a symbolic link to the sudo binary) contains printf
+    format escapes and the -D (debugging) flag is used.
+
+-------------------------------------------------------------------
+Wed Jan 25 15:09:14 UTC 2012 - vcizek@suse.com
+
+- honour global CFLAGS and LDFLAGS when compiling sesh,
+  to avoid rpmlint error (bnc#743157)
+
+-------------------------------------------------------------------
+Wed Jan  4 16:54:23 UTC 2012 - vcizek@suse.com
+
+- update to sudo-1.8.3p1 
+  * Fixed a crash in the monitor process on Solaris when NOPASSWD
+    was specified or when authentication was disabled.
+  * Fixed matching of a Runas_Alias in the group section of a Runas_Spec. 
+
+-------------------------------------------------------------------
+Wed Dec 28 06:45:07 UTC 2011 - aj@suse.de
+
+- Set timedir correctly
+
+-------------------------------------------------------------------
+Mon Oct 24 08:42:33 UTC 2011 - vcizek@suse.com
+
+- update to sudo-1.8.3
+  - Fixed expansion of strftime() escape sequences
+    in the log_dir sudoers setting.
+  - Esperanto, Italian and Japanese
+    translations from translationproject.org.
+  - Added --enable-werror configure option for gcc's
+  -Werror flag.  - Visudo no longer
+    assumes all editors support the +linenumber command line argument.
+    It now uses a whitelist of editors known to support the option.
+  - Fixed matching of network addresses when a netmask is specified but
+    the address is not the first one in the CIDR block.
+  - The configure script now check whether or not errno.h declares the
+    errno variable. Previously, sudo would always declare errno itself
+    for older systems that don't declare it in errno.h.
+  - The NOPASSWD tag is now honored for denied commands too,
+    which matches historic sudo behavior (prior to sudo 1.7.0).
+  - Sudo now honors the DEREF
+    setting in ldap.conf which controls how alias dereferencing is done
+    during an LDAP search.
+  - A symbol conflict with the
+    pam_ssh_agent_auth PAM module that would cause a crash been
+    resolved.
+  - The inability to load a group provider plugin is no
+    longer a fatal error.
+  - A potential crash in the utmp handling
+    code has been fixed.
+  - Two PAM session issues have been resolved.
+    In previous versions of sudo, the PAM session was opened as one
+    user and closed as another. Additionally, if no authentication was
+    performed, the PAM session would never be closed.
+  - The LOGNAME,
+    USER and USERNAME environment variables are preserved correctly
+    again in sudoedit mode.
+- grp-include.patch no longer needed
+
+-------------------------------------------------------------------
+Thu Oct 13 00:59:49 UTC 2011 - prusnak@opensuse.org
+
+- updated to sudo-1.8.2
+  * Sudo, visudo, sudoreplay and the sudoers plug-in now have natural
+    language support (NLS). This can be disabled by passing configure
+    the --disable-nls option.  Sudo will use gettext(), if available,
+    to display translated messages.  All translations are coordinated
+    via The Translation Project, http://translationproject.org/.
+  * Plug-ins are now loaded with the RTLD_GLOBAL flag instead of
+    RTLD_LOCAL.  This fixes missing symbol problems in PAM modules
+    on certain platforms, such as FreeBSD and SuSE Linux Enterprise.
+  * I/O logging is now supported for commands run in background mode
+    (using sudo's -b flag).
+  * Group ownership of the sudoers file is now only enforced when
+    the file mode on sudoers allows group readability or writability.
+  * Visudo now checks the contents of an alias and warns about cycles
+    when the alias is expanded.
+  * If the user specifes a group via sudo's -g option that matches
+    the target user's group in the password database, it is now
+    allowed even if no groups are present in the Runas_Spec.
+  * The sudo Makefiles now have more complete dependencies which are
+    automatically generated instead of being maintained manually.
+  * The "use_pty" sudoers option is now correctly passed back to the
+    sudo front end.  This was missing in previous versions of sudo
+    1.8 which prevented "use_pty" from being honored.
+  * "sudo -i command" now works correctly with the bash version
+    2.0 and higher.  Previously, the .bash_profile would not be
+    sourced prior to running the command unless bash was built with
+    NON_INTERACTIVE_LOGIN_SHELLS defined.
+  * When matching groups in the sudoers file, sudo will now match
+    based on the name of the group instead of the group ID. This can
+    substantially reduce the number of group lookups for sudoers
+    files that contain a large number of groups.
+  * Multi-factor authentication is now supported on AIX.
+  * Added support for non-RFC 4517 compliant LDAP servers that require
+    that seconds be present in a timestamp, such as Tivoli Directory Server.
+  * If the group vector is to be preserved, the PATH search for the
+    command is now done with the user's original group vector.
+  * For LDAP-based sudoers, the "runas_default" sudoOption now works
+    properly in a sudoRole that contains a sudoCommand.
+  * Spaces in command line arguments for "sudo -s" and "sudo -i" are
+    now escaped with a backslash when checking the security policy.
+- added missing include (grp-include.patch)
+
+-------------------------------------------------------------------
+Fri May 20 12:10:45 UTC 2011 - puzel@novell.com
+
+- update to sudo-1.8.1p2 
+  - Two-character CIDR-style IPv4 netmasks are now matched
+    correctly in the sudoers file.
+  - A non-existent includedir is now treated the same as an empty
+    directory and not reported as an error.
+  - Removed extraneous parens in LDAP filter when
+    sudoers_search_filter is enabled that can cause an LDAP search
+    error.
+  - A new LDAP setting, sudoers_search_filter, has been added to
+    ldap.conf.  This setting can be used to restrict the set of
+    records returned by the LDAP query.  Based on changes from
+    Matthew Thomas.
+  - White space is now permitted within a User_List when used in
+    conjunction with a per-user Defaults definition.
+  - A group ID (%#gid) may now be specified in a User_List or
+    Runas_List.  Likewise, for non-Unix groups the syntax is
+    %:#gid.
+  - Support for double-quoted words in the sudoers file has been
+    fixed.  The change in 1.7.5 for escaping the double quote
+    character caused the double quoting to only be available at the
+    beginning of an entry.
+  - The fix for resuming a suspended shell in 1.7.5 caused problems
+    with resuming non-shells on Linux.  Sudo will now save the
+    process group ID of the program it is running on suspend and
+    restore it when resuming, which fixes both problems.
+  - A bug that could result in corrupted output in "sudo -l" has
+    been fixed.
+  - Sudo will now create an entry in the utmp (or utmpx) file when
+    allocating a pseudo-tty (e.g. when logging I/O).  The
+    "set_utmp" and "utmp_runas" sudoers file options can be used to
+    control this.  Other policy plugins may use the "set_utmp" and
+    "utmp_user" entries in the command_info list.
+  - The sudoreplay utility now supports arbitrary session IDs.
+    Previously, it would only work with the base-36 session IDs
+    that the sudoers plugin uses by default.
+  - Sudo now passes "run_shell=true" to the policy plugin in the
+    settings list when sudo's -s command line option is specified.
+    The sudoers policy plugin uses this to implement the "set_home"
+    sudoers option which was missing from sudo 1.8.0.
+  - The "noexec" functionality has been moved out of the sudoers
+    policy plugin and into the sudo front-end, which matches the
+    behavior documented in the plugin writer's guide.  As a result,
+    the path to the noexec file is now specified in the sudo.conf
+    file instead of the sudoers file.
+  - The exit values for "sudo -l", "sudo -v" and "sudo -l command"
+    have been fixed in the sudoers policy plugin.
+  - Sudo now parses command line arguments before loading any
+    plugins.  This allows "sudo -V" or "sudo -h" to work even if
+    there is a problem with sudo.conf
+- drop sudo-dont-ignore-LDFLAGS.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Mar 17 10:24:49 UTC 2011 - puzel@novell.com
+
+- update to sudo-1.8.0
+  * Sudo has been refactored to use a modular framework that can
+    support third-party policy and I/O logging plugins.
+  * Defaults settings that are tied to a user, host or command may
+    now include the negation operator. For example:
+         Defaults:!millert lecture
+    will match any user but millert.
+  * The default PATH environment variable, used when no PATH
+    variable exists, now includes /usr/sbin and /sbin.
+  * Support for logging I/O for the command being run.
+  * Sudo will now use the Linux audit system.
+  + See /usr/share/doc/packages/sudo/NEWS for full list
+- new configure script flags: enable-warnings, with-linux-audit, 
+  docdir, with-sendmail
+- BuildRequires += audit-devel
+- BuildRequires -= postfix
+- PreReq += permissions
+- add sudo-dont-ignore-LDFLAGS.patch
+- drop sudo-1.7.1-defaults.diff (insults disabled in sudoers)
+- drop sudo-1.7.1-__P.diff (no more __P in sudo sources)
+- drop sudo-1.7.1-strip.diff (sudo no longer strips binaries)
+- drop sudo-CVE-2011-0010.patch (in upstream)
+- drop sudo-1.7.1-secure_path.diff (sudo now adds /sbin and
+  /usr/sbin to $PATH if it is empty)
+- drop sudo-1.7.1-pam_rhost.diff (fixed in upstream)
+- sudo-1.7.1-sudoers.diff renamed to sudo-sudoers.patch
+- sudo-1.7.1-env.diff renamed to sudoers2ldif-env.patch
+- do not package *.pod files
+- use %verifyscript
+- timestamp directory moved from /var/run/sudo to /var/lib/sudo
+- better commented default /etc/sudoers
+- packaged /etc/sudoers.d directory
+- new sudo-devel subpackage
+- cleaned specfile
+
+-------------------------------------------------------------------
+Thu Jan 27 09:18:05 UTC 2011 - cprause@novell.com
+
+- added openldap schema file (bnc#667558) 
+
+-------------------------------------------------------------------
+Thu Jan 13 10:11:35 UTC 2011 - puzel@novell.com
+
+- add sudo-CVE-2011-0010.patch (bnc#663881) 
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Jun 15 21:23:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.7.2p7:
+  * portability fixes
+
+- changes from 1.7.2p6:
+  * Handle duplicate variables in the environment
+  * visudo: fix a crash when checking a sudoers file that has aliases
+    that reference themselves
+  * aliases: fix use after free in error message when a duplicate
+    alias exists
+  * visudo: prevent NULL dereference in printf()
+
+- removed sudo-CVE-2010-1163.patch (merged upstream)
+
+- removed sudo-CVE-2010-1646.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Jun  2 10:32:42 UTC 2010 - puzel@novell.com
+
+- add sudo-CVE-2010-1646.patch (bnc#594738) 
+
+-------------------------------------------------------------------
+Tue May 18 15:52:10 UTC 2010 - puzel@novell.com
+
+- add sudo-CVE-2010-1163.patch (bnc#594738)
+
+-------------------------------------------------------------------
+Wed Feb 24 16:19:35 UTC 2010 - prusnak@suse.cz
+
+- updated to 1.7.2p4
+  * Fixed the expansion of the %h escape in #include file names
+    introduced in sudo 1.7.1.
+  * Fixed a a bug where the negation operator in a Cmnd_List
+    was not being honored.
+  * No longer produce a parse error when #includedir references
+    a directory that contains no valid filenames.
+  * The sudo.man.pl and sudoers.man.pl files are now included
+    in the distribution for people who wish to regenerate the man pages.
+  * Fixed the emulation of krb5_get_init_creds_opt_alloc() for MIT kerberos.
+  * When authenticating via PAM, set PAM_RUSER and PAM_RHOST early
+    so they can be used during authentication.
+  * Fix printing of entries with multiple host entries on
+    a single line.
+  * Fix use after free when sending error messages via email.
+  * Use setrlimit64(), if available, instead of setrlimit()
+    when setting AIX resource limits since rlim_t is 32bits.
+  * Fix size arg when realloc()ing include stack.
+  * Avoid a duplicate fclose() of the sudoers file.
+  * Fix a bug that could allow users with permission to run sudoedit
+    to run arbitrary commands.
+
+-------------------------------------------------------------------
+Tue Jan 26 22:48:31 CET 2010 - jengelh@medozas.de
+
+- SPARC requires large PIE model
+
+-------------------------------------------------------------------
+Mon Jul 13 14:43:20 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.7.2
+  * A new #includedir directive is available in sudoers.  This can be
+    used to implement an /etc/sudo.d directory.  Files in an includedir
+    are not edited by visudo unless they contain a syntax error.
+  * The -g option did not work properly when only setting the group
+    (and not the user).  Also, in -l mode the wrong user was displayed
+    for sudoers entries where only the group was allowed to be set.
+  * Fixed a problem with the alias checking in visudo which
+    could prevent visudo from exiting.
+  * Sudo will now correctly parse the shell-style /etc/environment
+    file format used by pam_env on Linux.
+  * When doing password and group database lookups, sudo will only
+    cache an entry by name or by id, depending on how the entry was
+    looked up.  Previously, sudo would cache by both name and id
+    from a single lookup, but this breaks sites that have multiple
+    password or group database names that map to the same uid or
+    gid.
+  * User and group names in sudoers may now be enclosed in double
+    quotes to avoid having to escape special characters.
+  * BSM audit fixes when changing to a non-root uid.
+  * Experimental non-Unix group support.  Currently only works with
+    Quest Authorization Services and allows Active Directory groups
+    fixes for Minix-3.
+  * For Netscape/Mozilla-derived LDAP SDKs the certificate and key
+    paths may be specified as a directory or a file.  However, version
+    5.0 of the SDK only appears to support using a directory (despite
+    documentation to the contrary).  If SSL client initialization
+    fails and the certificate or key paths look like they could be
+    default file name, strip off the last path element and try again.
+  * A setenv() compatibility fix for Linux systems, where a NULL
+    value is treated the same as an empty string and the variable
+    name is checked against the NULL pointer.
+
+-------------------------------------------------------------------
+Mon Apr 27 17:37:00 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.7.1
+  * A new Defaults option "pwfeedback" will cause sudo to provide visual
+    feedback when the user is entering a password.
+  * A new Defaults option "fast_glob" will cause sudo to use the fnmatch()
+    function for file name globbing instead of glob().  When this option
+    is enabled, sudo will not check the file system when expanding wildcards.
+    This is faster but a side effect is that relative paths with wildcard
+    will no longer work.
+  * The file name specified with the #include directive may now include
+    a %h escape which is expanded to the short form of hostname.
+  * The -k flag may now be specified along with a command, causing the
+    user's timestamp file to be ignored.
+  * The unused alias checks in visudo now handle the case of an alias
+    referring to another alias.
+
+-------------------------------------------------------------------
+Mon Jan 26 13:54:15 CET 2009 - prusnak@suse.cz
+
+- updated to 1.7.0
+  * Rewritten parser that converts sudoers into a set of data structures.
+    This eliminates a number of ordering issues and makes it possible to
+    apply sudoers Defaults entries before searching for the command. It
+    also adds support for per-command Defaults specifications.
+  * Sudoers now supports a #include facility to allow the inclusion of
+    other sudoers-format files.
+  * Sudo's -l (list) flag has been enhanced:
+    o applicable Defaults options are now listed
+    o a command argument can be specified for testing whether a user may run
+      a specific command.
+    o a new -U flag can be used in conjunction with sudo -l to allow root
+      (or a user with sudo ALL) to list another user's privileges.
+  * A new -g flag has been added to allow the user to specify a primary group
+    to run the command as. The sudoers syntax has been extended to include
+    a group section in the Runas specification.
+  * A uid may now be used anywhere a username is valid.
+  * The secure_path run-time Defaults option has been restored.
+  * Password and group data is now cached for fast lookups.
+  * The file descriptor at which sudo starts closing all open files is now
+    configurable via sudoers and, optionally, the command line.
+  * visudo will now warn about aliases that are defined but not used.
+  * The -i and -s command line flags now take an optional command to be run
+    via the shell. Previously, the argument was passed to the shell as
+    a script to run.
+  * Improved LDAP support. SASL authentication may now be used in conjunction
+    when connecting to an LDAP server. The krb5_ccname parameter in ldap.conf
+    may be used to enable Kerberos.
+  * Support for /etc/nsswitch.conf. LDAP users may now use nsswitch.conf
+    to specify the sudoers order. E.g.:
+
+        sudoers: ldap files
+
+    to check LDAP, then /etc/sudoers. The default is files, even when LDAP
+    support is compiled in. This differs from sudo 1.6 where LDAP was always
+    consulted first.
+  * Support for /etc/environment on AIX and Linux. If sudo is run with the -i
+    flag, the contents of /etc/environment are used to populate the new
+    environment that is passed to the command being run.
+  * Sudo now ignores user .ldaprc files as well as system LDAP defaults.
+    All LDAP configuration is now in /etc/ldap.conf (or whichever file was
+    specified by configure's --with-ldap-conf-file option). If you are using
+    TLS, you may now need to specify:
+
+        tls_checkpeer no
+
+    in sudo's ldap.conf unless ldap.conf references a valid certificate
+    authority file(s).
+  * If no terminal is available or if the new -A flag is specified, sudo
+    will use a helper program to read the password if one is configured.
+    Typically, this is a graphical password prompter such as ssh-askpass.
+  * A new Defaults option, "mailfrom" that sets the value of the "From:"
+    field in the warning/error mail. If unspecified, the login name of
+    the invoking user is used.
+  * Resource limits are now set to the default value for the user the command
+    is being run as on AIX systems.
+  * A new Defaults option, "env_file" that refers to a file containing
+    environment variables to be set in the command being run.
+  * A new -n flag is available which may be used to indicate that sudo should
+    not prompt the user for a password and, instead, exit with an error if
+    authentication is required.
+  * A new Defaults option, "sudoers_locale" that can be used to set the locale
+    to be used when parsing the sudoers file.
+  * sudoedit now checks the EDITOR and VISUAL environment variables to make sure
+    sudoedit is not re-invoking itself (or sudo). This allows one to set EDITOR
+    to sudoedit without getting into an infinite loop for programs that need
+    to invoke an editor such as crontab(1). Also added SUDO_EDITOR environment
+    variable which is used by sudoedit in preference to EDITOR/VISUAL.
+  * The versions of glob(3) and fnmatch(3) bundled with sudo now support POSIX
+    character classes.
+  * If sudo needs to prompt for a password and it is unable to disable echo
+    (and no askpass program is defined), it will refuse to run unless the
+    "visiblepw" Defaults option has been specified.
+  * Prior to version 1.7.0, hitting enter/return at the Password: prompt would
+    exit sudo. In sudo 1.7.0 and beyond, this is treated as an empty password.
+    To exit sudo, the user must now press ^C or ^D at the prompt.
+
+-------------------------------------------------------------------
+Wed Aug 20 15:41:38 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+- added comment about !env_reset into sudoers file
+
+-------------------------------------------------------------------
+Wed Aug  6 19:35:05 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.6.9p17
+  * The -i flag should imply resetting the environment, as it did in
+    sudo version prior to 1.6.9.  Also, the -i and -E flags are
+    mutually exclusive.
+  * Fixed the configure test for dirfd() under Linux.
+  * Fixed test for whether -lintl is required to link.
+  * Changed how sudo handles the child process when sending mail.
+    This fixes a problem on Linux with the mail_always option.
+  * Fixed a problem with line continuation characters inside of
+    quoted strings.
+
+- updated to 1.6.9p16
+  * There was a missing space before the ldap libraries in the Makefile
+    for some configurations.
+  * LDAPS_PORT may not be defined on older Solaris LDAP SDKs.
+  * If the LDAP server could not be contacted and the user was not present
+    in sudoers, a syntax error in sudoers was incorrectly reported.
+
+-------------------------------------------------------------------
+Wed Jul 30 11:37:52 CEST 2008 - prusnak@suse.cz
+
+- fix note in manpage (added to sudoers.diff) [bnc#404710]
+- added commented 'session optional pam_xauth.so' to pam [bnc#402818]
+
+-------------------------------------------------------------------
+Tue May  6 09:43:22 CEST 2008 - prusnak@suse.cz
+
+- do not set PAM_RHOST (pam_rhost.diff) [bnc#386587]
+
+-------------------------------------------------------------------
+Thu Apr 24 11:15:40 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.6.9p15
+  * updated libtool to version 1.5.26
+  * fixed printing of default SELinux role and type in -V mode
+  * the HOME environment variable is once again preserved by default,
+    as per the documentation
+
+-------------------------------------------------------------------
+Wed Mar 19 16:54:10 CET 2008 - prusnak@suse.cz
+
+- updated to 1.6.9p14
+  * Moved LDAP options into a table for simplified parsing/setting.
+  * Fixed a problem with how some LDAP options were being applied.
+  * Added support for connecting directly to LDAP servers via SSL
+    in addition to the existing start_tls support.
+  * Fixed a compilation problem on SCO related to how they
+    store the high resolution timestamps in struct stat.
+  * Avoid checking the passwd file group multiple times
+    in the LDAP query when the user's passwd group is also
+    listed in the supplemental group vector.
+  * The URI specifier can now be used in ldap.conf even when
+    the LDAP SDK doesn't support ldap_initialize().
+  * New %p prompt escape that expands to the user whose password
+    is being prompted, as specified by the rootpw, targetpw and
+    runaspw sudoers flags.  Based on a diff from Patrick Schoenfeld.
+  * Added a configure check for the ber_set_option() function.
+  * Fixed a compilation problem with the HP-UX K&R C compiler.
+  * Revamped the Kerberos 5 ticket verification code.
+  * Added support for the checkpeer ldap.conf variable for
+    netscape-based LDAP SDKs.
+  * Fixed a problem where an incomplete password could be echoed
+    to the screen if there was a read timeout.
+  * Sudo will now set the nproc resource limit to unlimited on Linux
+    systems to work around Linux's setuid() resource limit semantics.
+    On PAM systems the resource limits will be reset by pam_limits.so
+    before the command is executed.
+  * SELinux support that can be used to implement role based access
+    control (RBAC).  A role and (optional) type may be specified
+    in sudoers or on the command line.  These are then used in the
+    security context that the command is run as.
+  * Fixed a Kerberos 5 compilation problem with MIT Kerberos.
+  * Fixed an invalid assumption in the PAM conversation function
+    introduced in version 1.6.9p9.  The conversation function may
+    be called for non-password reading purposes as well.
+  * Fixed freeing an uninitialized pointer in -l mode, introduced in
+    version 1.6.9p13.
+  * Check /etc/sudoers after LDAP even if the user was found in LDAP.
+    This allows Defaults options in /etc/sudoers to take effect.
+  * Add missing checks for enforcing mode in SELinux RBAC mode.
+- dropped obsoleted patch:
+  * prompt.patch (included in update)
+
+-------------------------------------------------------------------
+Tue Dec  4 14:41:14 CET 2007 - prusnak@suse.cz
+
+- updated to 1.6.9p9
+  * the ALL command in sudoers now implies SETENV permissions
+  * the command search is now performed using the target user's
+    auxiliary group vector too
+  * when determining if the PAM prompt is the default "Password: ",
+    compare the localized version if possible
+  * added passprompt_override flag to sudoers to cause sudo's prompt
+    to be used in all cases, also set when the -p flag is used
+
+-------------------------------------------------------------------
+Tue Nov  6 11:11:13 CET 2007 - prusnak@suse.cz
+
+- updated to 1.6.9p8
+  * fixed a bug where a sudoers entry with no runas user specified
+    was treated differently from a line with the default runas user
+    explicitly specified
+
+-------------------------------------------------------------------
+Tue Oct 30 12:17:37 CET 2007 - prusnak@suse.cz
+
+- updated to 1.6.9p7
+  * go back to using TCSAFLUSH instead of TCSADRAIN when turning off
+    echo during password reading
+  * fixed a configure bug that was preventing the addition of -lutil
+    for login.conf support on FreeBSD and NetBSD
+  * add configure check for struct in6_addr since some systems define
+    AF_INET6 but have no real IPv6 support
+
+-------------------------------------------------------------------
+Wed Oct 10 11:45:19 CEST 2007 - prusnak@suse.cz
+
+- update to 1.6.9p6
+  * worked around bugs in the session support of some PAM 
+    implementations
+  * the full tty path is now passed to PAM as well
+  * sudo now only prints the password prompt if the process is in 
+    the foreground
+  * inttypes.h is now included when appropriate if it is present
+  * simplified alias allocation in the parser
+
+-------------------------------------------------------------------
+Tue Sep 25 12:07:05 CEST 2007 - prusnak@suse.cz
+
+- update to 1.6.9p5
+  * fixed a bug related to supplemental group matching
+  * added IPv6 support from YOSHIFUJI Hideaki
+  * fixed the sudo_noexec installation path
+  * fixed a compilation error on old K&R-style compilers
+  * fixed a bug in the IP address matching introduced by the IPV6 merge
+  * for "visudo -f file" we now use the permissions of the original file
+    and not the hard-coded sudoers owner/group/mode
+    (this makes it possible to use visudo with a revision control system)
+  * fixed sudoedit when used on a non-existent file
+  * regenerated configure using autoconf 2.6.1 and libtool 1.5.24
+  * groups and netgroups are now valid in an LDAP sudoRunas statement
+- dropped obsolete patches:
+  * groupmatch.patch (included in update)
+
+-------------------------------------------------------------------
+Tue Aug 28 11:41:51 CEST 2007 - prusnak@suse.cz
+
+- build --without-secure-path
+- hardcoded secure path changed to /usr/sbin:/bin:/usr/bin:/sbin
+  (secure_path.diff)
+- user can now add PATH variable to env_keep in /etc/sudoers
+
+-------------------------------------------------------------------
+Tue Aug 14 11:02:58 CEST 2007 - prusnak@suse.cz
+
+- added XDG_SESSION_COOKIE to env_keep variables [#298943]
+- fixed supplemental group matching (groupmatch.patch)
+
+-------------------------------------------------------------------
+Sat Aug 11 13:06:53 CEST 2007 - schwab@suse.de
+
+- Avoid command line parsing bug in autoconf < 2.59c.
+
+-------------------------------------------------------------------
+Tue Jul 31 10:18:36 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.6.9p2
+  * fixed a crash in the error logging function
+  * worked around a crash when no tty was present in some PAM
+    implementations
+  * fixed updating of the saved environment when the environ pointer
+    gets changed out from underneath us
+
+-------------------------------------------------------------------
+Tue Jul 24 15:49:47 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.6.9
+  * added to the list of variables to remove from the environment
+  * fixed a Kerberos V security issue that could allow a user to
+    authenticate using a fake KDC
+  * PAM is now the default on systems where it is supported
+  * removed POSIX saved uid use; the stay_setuid option now requires
+    the setreuid() or setresuid() functions to work
+  * fixed fd leak when lecture file option is enabled
+  * PAM fixes
+  * security fix for Kerberos5
+  * fixed securid5 authentication
+  * added fcntl F_CLOSEM support to closefrom()
+  * sudo now uses the supplemental group vector for matching
+  * added more environment variables to remove by default
+  * mail from sudo now includes an Auto-Submitted: auto-generated header
+  * reworked the environment handling code
+  * remove the --with-execv option, it was not useful
+  * use TCSADRAIN instead of TCSAFLUSH in tgetpass() since some OSes
+    have issues with TCSAFLUSH
+  * use glob(3) instead of fnmatch(3) for matching pathnames
+  * reworked the syslog long line splitting code based on changes
+    from Eygene Ryabinkin
+  * visudo will now honor command line arguments in the EDITOR or VISUAL
+    environment variables if env_editor is enabled
+  * LDAP now honors rootbinddn, timelimit and bind_timelimit in /etc/ldap.conf
+  * For LDAP, do a sub tree search instead of a base search (one level in
+    the tree only) for sudo right objects
+  * env_reset option is now enabled by default
+  * moved LDAP schema data into separate files
+  * sudo no longer assumes that gr_mem in struct group is non-NULL
+  * added support for setting environment variables on the command line
+    if the command has the SETENV attribute set in sudoers
+  * added a -E flag to preserve the environment if the SETENV attribute
+    has been set
+  * sudoers2ldif script now parses Runas users
+  * -- flag now behaves as documented
+  * sudo -k/-K no longer cares if the timestamp is in the future
+  * when searching for the command, sudo now uses the effective gid of
+    the runas user
+  * sudo no longer updates the timestamp if not validated by sudoers
+  * now rebuild environment regardless of how sudo was invoked
+  * more accurate usage() when called as sudoedit
+  * command line environment variables are now treated like normal
+    environment variables unless the SETENV tag is set
+  * better explanation of environment handling in the sudo man page
+- changed '/usr/bin/env perl' to '/usr/bin/env' in sudoers2ldif
+  script (env.diff)
+- dropped obsoleted patches:
+  * sudo-1.6.8p12-conf.diff
+  * sudo-1.6.8p12-configure.diff
+
+-------------------------------------------------------------------
+Tue Jul 17 10:57:40 CEST 2007 - prusnak@suse.cz
+
+- added note about special input method variables into /etc/sudoers
+  (sudoers.diff) [#222728]
+
+-------------------------------------------------------------------
+Fri Jan 26 13:16:15 CET 2007 - prusnak@suse.cz
+
+- packaged script sudoers2ldif
+  * can be used for importing /etc/sudoers to LDAP
+  * more info at http://www.sudo.ws/sudo/readme_ldap.html
+
+-------------------------------------------------------------------
+Wed Jan 24 10:36:48 CET 2007 - prusnak@suse.cz
+
+- added sudoers permission change to %post section of spec file
+
+-------------------------------------------------------------------
+Thu Nov 30 14:12:34 CET 2006 - prusnak@suse.cz
+
+- package /etc/sudoers as 0440 [Fate#300934]
+
+-------------------------------------------------------------------
+Wed Nov 29 18:29:23 CET 2006 - prusnak@suse.cz
+
+- protect locale-related environment variables from resetting (sudoers.diff) [#222728]
+
+-------------------------------------------------------------------
+Wed Oct  4 19:35:18 CEST 2006 - mjancar@suse.cz
+
+- enable LDAP support (#159774)
+
+-------------------------------------------------------------------
+Wed Jun 14 16:55:52 CEST 2006 - schwab@suse.de
+
+- Fix quoting in configure script.
+
+-------------------------------------------------------------------
+Wed Mar  8 15:22:15 CET 2006 - mjancar@suse.cz
+
+- don't limit access to local group users (#151938)
+
+-------------------------------------------------------------------
+Fri Jan 27 09:23:26 CET 2006 - mjancar@suse.cz
+
+- set environment and sudo search PATH to SECURE_PATH
+  only when env_reset (#145687)
+
+-------------------------------------------------------------------
+Thu Jan 26 13:28:28 CET 2006 - schwab@suse.de
+
+- Fix syntax error in /etc/sudoers.
+
+-------------------------------------------------------------------
+Thu Jan 26 12:03:48 CET 2006 - mjancar@suse.cz
+
+- fix PATH always reset (#145687)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 15 20:40:26 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Jan 10 16:31:46 CET 2006 - mjancar@suse.cz
+
+- fix CVE-2005-4158 (#140300)
+  * compile with --with-secure-path
+  * use always_set_home and env_reset by default
+- document purpose of the default asking for root password
+
+-------------------------------------------------------------------
+Wed Dec 21 19:55:27 CET 2005 - mjancar@suse.cz
+
+- update to 1.6.8p12
+
+-------------------------------------------------------------------
+Fri Dec  9 10:01:27 CET 2005 - ro@suse.de
+
+- disabled selinux 
+
+-------------------------------------------------------------------
+Tue Aug  2 20:42:18 CEST 2005 - mjancar@suse.cz
+
+- update to 1.6.8p9
+
+-------------------------------------------------------------------
+Mon Jun 20 11:50:45 CEST 2005 - anicka@suse.cz
+
+- build position independent binaries
+
+-------------------------------------------------------------------
+Mon Feb 28 15:30:42 CET 2005 - ro@suse.de
+
+- update to 1.6.8p7 
+
+-------------------------------------------------------------------
+Mon Nov 15 14:58:45 CET 2004 - kukuk@suse.de
+
+- Use common PAM config files
+
+-------------------------------------------------------------------
+Mon Sep 13 16:00:56 CEST 2004 - ro@suse.de
+
+- undef __P first
+
+-------------------------------------------------------------------
+Tue Apr  6 07:12:34 CEST 2004 - kukuk@suse.de
+
+- fix default permissions of sudo
+
+-------------------------------------------------------------------
+Fri Mar 26 01:18:52 CET 2004 - ro@suse.de
+
+- added postfix to neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb 25 13:02:03 CET 2004 - lnussel@suse.de
+
+- Add comment and warning for 'Defaults targetpw' to config file
+
+-------------------------------------------------------------------
+Thu Jan 29 15:57:53 CET 2004 - kukuk@suse.de
+
+- Fix sudo configuration broken by last patch
+
+-------------------------------------------------------------------
+Wed Jan 28 10:55:29 CET 2004 - kukuk@suse.de
+
+- Add SELinux patch
+
+-------------------------------------------------------------------
+Thu Jan 22 18:45:07 CET 2004 - ro@suse.de
+
+- package /etc/sudoers as 0640
+
+-------------------------------------------------------------------
+Fri Jan 16 13:26:31 CET 2004 - kukuk@suse.de
+
+- Add pam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Sun Jan 11 09:29:32 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Nov  7 16:20:57 CET 2003 - schwab@suse.de
+
+- Fix quoting in configure script.
+
+-------------------------------------------------------------------
+Wed Sep 10 11:06:04 CEST 2003 - mjancar@suse.cz
+
+- move the defaults to better place in /etc/sudoers (#30282)
+
+-------------------------------------------------------------------
+Mon Aug 25 15:21:16 CEST 2003 - mjancar@suse.cz
+
+- update to 1.6.7p5
+    * Fixed a problem with large numbers
+      of environment variables.
+- more useful defaults (#28056)
+
+-------------------------------------------------------------------
+Wed May 14 10:44:53 CEST 2003 - mjancar@suse.cz
+
+- update to version 1.6.7p4
+
+-------------------------------------------------------------------
+Fri Feb  7 13:49:00 CET 2003 - kukuk@suse.de
+
+- Use pam_unix2.so instead of pam_unix.so
+
+-------------------------------------------------------------------
+Wed Jun  5 15:18:21 CEST 2002 - pmladek@suse.cz
+
+- updated to version 1.6.6
+- removed obsolete heap-overflow fix in prompt patch
+
+-------------------------------------------------------------------
+Mon Apr 22 14:56:46 CEST 2002 - pmladek@suse.cz
+
+- fixed a heap-overflow (prompt patch)
+- fixed prompt behaviour, %% is always translated to % (prompt patch)
+
+-------------------------------------------------------------------
+Tue Feb 12 12:23:08 CET 2002 - pmladek@suse.cz
+
+- insults are really off by default now [#13134]
+- sudo.pamd moved from patch to sources
+- used %defattr(-,root,root)
+
+-------------------------------------------------------------------
+Thu Jan 24 10:17:00 CET 2002 - postadal@suse.cz
+
+- updated to version 1.6.5p2
+
+-------------------------------------------------------------------
+Thu Jan 17 18:47:02 CET 2002 - pmladek@suse.cz
+
+- updated to version 1.6.5p1
+- removed obsolete security patch (to do not run mailer as root),
+  sudo runs mailer again as root but with hard-coded environment
+
+-------------------------------------------------------------------
+Wed Jan  2 12:36:17 CET 2002 - pmladek@suse.cz
+
+- aplied security patch from Sebastian Krahmer <krahmer@suse.de>
+  to do not run mailer as root
+- NOTIFY_BY_EMAIL enabled
+
+-------------------------------------------------------------------
+Tue Oct 30 22:58:33 CET 2001 - bjacke@suse.de
+
+- make /etc/sudoers (noreplace)
+
+-------------------------------------------------------------------
+Wed Aug 15 16:17:35 CEST 2001 - pmladek@suse.cz
+
+- updated to version 1.6.3p7
+
+-------------------------------------------------------------------
+Tue Aug 14 18:05:55 CEST 2001 - ro@suse.de
+
+- Don't use absolute paths to PAM modules in PAM config files 
+
+-------------------------------------------------------------------
+Tue Feb 27 11:17:10 CET 2001 - pblaha@suse.cz
+
+- update on 1.6.3p6 for fix potential security problems 
+
+-------------------------------------------------------------------
+Mon Jun 26 17:39:24 CEST 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Thu May  4 15:57:08 CEST 2000 - smid@suse.cz
+
+- upgrade to 1.6.3
+- buildroot added
+
+-------------------------------------------------------------------
+Tue Apr  4 17:55:40 CEST 2000 - uli@suse.de
+
+- added "--with-env-editor" to configure call
+
+-------------------------------------------------------------------
+Wed Mar  1 16:08:27 CET 2000 - schwab@suse.de
+
+- Specfile cleanup, remove Makefile.Linux
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jun  9 17:19:36 MEST 1999 - kukuk@suse.de
+
+- update to version 1.5.9p1
+- enable PAM
+
+----------------------------------------------------------------------------
+Wed Nov  6 00:13:26 CET 1996 - florian@suse.de
+
+
+- update to version 1.5.2
+
+- sudo has changed a lot, please check the sudo documentation
+
+

@@ -1,0 +1,27 @@
+https://github.com/benoitc/restkit/pull/145 
+
+commit 65ab77b6392a0b4f0832a35fd9145ab13beb9acd
+Author: Bernhard M. Wiedemann <bwiedemann suse.de>
+Date:   Fri May 25 18:26:47 2018 +0200
+
+Allow to override sitemap time
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+Index: restkit-4.2.2/doc/sitemap_gen.py
+===================================================================
+--- restkit-4.2.2.orig/doc/sitemap_gen.py
++++ restkit-4.2.2/doc/sitemap_gen.py
+@@ -2020,6 +2020,9 @@ def OpenFileForRead(path, logtext):
+ 
+ def TimestampISO8601(t):
+   """Seconds since epoch (1970-01-01) --> ISO 8601 time string."""
++  sde = int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
++  if t > sde:
++    t = sde
+   return time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))
+ #end def TimestampISO8601
+ 

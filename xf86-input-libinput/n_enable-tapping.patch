@@ -1,0 +1,14 @@
+Author: Stefan Dirsch
+Subject: Enable tapping by default on touchpads
+Signed-off-by: Stefan Dirsch
+diff -u -r xf86-input-libinput-0.15.0.orig/conf/40-libinput.conf xf86-input-libinput-0.15.0/conf/40-libinput.conf
+--- xf86-input-libinput-0.15.0.orig/conf/40-libinput.conf	2015-12-15 14:34:18.100266000 +0100
++++ xf86-input-libinput-0.15.0/conf/40-libinput.conf	2015-12-15 14:34:42.522281000 +0100
+@@ -18,6 +19,7 @@
+         MatchIsTouchpad "on"
+         MatchDevicePath "/dev/input/event*"
+         Driver "libinput"
++        Option "Tapping" "On"
+ EndSection
+ 
+ Section "InputClass"

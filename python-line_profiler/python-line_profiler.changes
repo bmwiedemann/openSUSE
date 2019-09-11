@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Wed Jan  2 12:35:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Regenerate cython files to fix build under python 3.7
+
+-------------------------------------------------------------------
+Mon Oct 29 15:21:25 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- It doesn't have a direct dependency on prompt_toolkit.
+
+-------------------------------------------------------------------
+Thu Jul 19 15:06:24 UTC 2018 - mcepl@suse.com
+
+- Switch off tests (they are broken,
+  https://github.com/rkern/line_profiler/issues/128)
+
+-------------------------------------------------------------------
+Thu May 10 15:23:01 UTC 2018 - toddrme2178@gmail.com
+
+- Set minimum python3 version
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Apr 19 17:16:36 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 2.1.2
+  * ENH: Add support for Python 3.5 coroutines
+  * ENH: Documentation updates
+  * ENH: CI for most recent Python versions (3.5, 3.6, 3.6-dev, 3.7-dev, nightly)
+  * ENH: Add timer unit argument for output time granularity spec
+
+-------------------------------------------------------------------
+Tue Aug 29 21:23:54 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 2.0
+  * Added support for IPython 5.0+, removed support for IPython <=0.12
+- Update to version 1.1
+  * Read source files as bytes.
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue Nov 11 16:08:30 UTC 2014 - toddrme2178@gmail.com
+
+- Implement update-alternatives
+- Implement unit tests
+
+-------------------------------------------------------------------
+Thu Oct  2 17:50:42 UTC 2014 - termim@gmail.com
+
+- Update to 1.0
+    * `kernprof.py` is now installed as `kernprof`.
+    * Python 3 support. Thanks to the long-suffering Mikhail Korobov for
+      being patient. 
+    * Dropped 2.6 as it was too annoying.
+    * The `stripzeros` and `add_module` options. Thanks to Erik Tollerud
+      for contributing it. 
+    * Support for IPython cell blocks. Thanks to Michael Forbes for adding
+      this feature. 
+    * Better warnings when building without Cython. Thanks to David
+      Cournapeau for spotting this. 
+
+-------------------------------------------------------------------
+Mon Mar 10 15:05:50 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.0b3
+    * Profile generators.
+    * Update for compatibility with newer versions of Cython. 
+      Thanks to Ondrej Certik for spotting the bug.
+    * Update IPython compatibility for 0.11+. Thanks to Yaroslav 
+      Halchenko and others for providing the updated imports.
+
+-------------------------------------------------------------------
+Fri Jul  1 08:10:03 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

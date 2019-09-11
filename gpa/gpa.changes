@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Thu Oct 18 14:03:00 UTC 2018 - astieger@suse.com
+
+- update to 0.10.0:
+  + Added key manager context menu items to copy the key
+    fingerprint and the secret key to the clipboard.
+  + Added "Details" buttons to many error popups to show raw
+    diagnostic output from gpg.
+  + Changed the "Retrieve Key" dialog to first try the Web Key
+    Directory if a mail address is given.  Only if this lookup
+    fails the keyservers are searched.
+  + Added a user-ID notebook page to show per user-ID info.
+  + Fixed crash on filename conversion error
+  + Removed lazy loading of the secret keyring
+- add upstream patch gpa-0.10.0-reduce-gpgme-requirement.patch
+  to avoid requiring gpgme >= 0.11.x
+
+-------------------------------------------------------------------
+Fri Dec  2 11:22:34 UTC 2016 - astieger@suse.com
+
+- Update to version 0.9.10:
+  + Addded basic support for TOFU information.
+  + Removed key-ID from some listings in favor of using the
+    fingerprint.
+  + Fixed deletion of X.509 keys.
+  + Allow for saving to an alternate file name if the file already
+    exists.
+  + Fixed several problems with key edit functions.
+  + Fixed drag-and-drop.
+
+-------------------------------------------------------------------
+Wed Sep  9 09:49:32 UTC 2015 - astieger@suse.com
+
+- update to gpa 0.9.9:
+  + fix build problem with gpgme < 1.6.1.
+- includes changes from gpa 0.9.8:
+  + Does start with the clipboard view after a key has been created.
+  + Limit the size of dialogs by truncating too long user ids.
+  + Make the window frame's close button work as expected.
+  + With a decent version of libgpgme the key algorithm and size is
+    shown using the GnuPG 2.1 format.
+
+-------------------------------------------------------------------
+Fri Dec 26 20:21:07 UTC 2014 - andreas.stieger@gmx.de
+
+- Update to version 0.9.7:
+  + Support sending keys for GnuPG 2.1.
+
+-------------------------------------------------------------------
+Fri Nov 21 20:32:20 UTC 2014 - andreas.stieger@gmx.de
+
+- Update to version 0.9.6:
+  + Support keyserver operations for GnuPG 2.1.
+  + Implement the IMPORT_FILES server command.
+  + New "Refresh Key" action in the key manager's context menu.
+- remove gpg-offline, signature verificatin is now part of
+  source_validator
+
+-------------------------------------------------------------------
+Mon Sep  1 09:25:17 UTC 2014 - andreas.stieger@gmx.de
+
+- Update to version 0.9.5:
+  + GPA now starts with the UI server enabled and tests on startup
+    whether such a server is already running to open that one
+    instead of launching a second instance.
+  + GPA is now aware of ECC keys.
+  + Improved detection of CMS objects (which are used by S/MIME)
+    and detached OpenPGP signatures.
+  + Allow import and export of X.509 certificates.  Allow backup
+    of X.509 keys.
+  + The key creation date is now displayed in the key listing.
+  + Armored detached signature files are now created with an
+    ".asc" suffix and not with ".sig".
+  + The GnuPG home directory is now detected using the gpgconf
+    tool.
+  + Fixed several bugs leading to crashs.
+
+-------------------------------------------------------------------
+Fri May 10 20:54:56 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 0.9.4
+ * Added scrollbars to the verification result window.
+ * Improved searching in the key listing.
+- verify source signature
+
+-------------------------------------------------------------------
+Tue Nov 20 20:04:53 UTC 2012 - andreas.stieger@gmx.de
+
+- Update to version 0.9.3:
+  + Allow searching in the keylist.
+  + Collected bug fixes.
+- Changes from version 0.9.2:
+  + Adjust server mode to modern Libassuan.
+  + Add options --gpg-binary, --gpgsm-binary and --debug-edit-fsm.
+  + Properly process CMS data in the clipboard and with the
+    server's VERIFY_FILES and DECRYPT_FILES commands.
+  + Minor code cleanups.
+- Changes from version 0.9.1:
+  + The key selection dialogs for encryption and signing do not
+    anymore list expired, revoked or otherwise invalid keys.
+  + If no recipients are given to the server, a generic key
+    selection dialog is now used.
+  + Now works with Libassuan 2.x.
+  + The card manager now displays the ATR for an unknown card.
+- Drop gpa-assuan2.patch: fixed upstream
+- Remove gpa.desktop source file, it's included in the tarball and
+  correctly installed.
+- Drop automake BuildRequires and autoreconf call: no longer
+  needed, as we don't carry patches touching the build system.
+- No longer rename zh_TW.Big5 to zh_TW: fixed upstream.
+- Remove unsupported configure parameters --enable-shared and
+  --enable-static-rnd=linux
+- The hack to first "make gpadefs.h" is no longer needed.
+- Package manpage.
+- Drop conditions for obsoleted openSUSE versions (1130).
+
+-------------------------------------------------------------------
+Fri Dec  2 06:32:54 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Feb 12 18:57:17 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Split lang subpackage.
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Thu Apr  8 19:56:08 CEST 2010 - vuntz@opensuse.org
+
+- Only use gpa-assuan2.patch on 11.3 and later.
+
+-------------------------------------------------------------------
+Thu Apr  8 06:18:20 UTC 2010 - puzel@novell.com
+
+- add gpa-assuan2.patch (use libassuan-2.0.0 interface)
+
+-------------------------------------------------------------------
+Wed Jun 24 11:35:49 CEST 2009 - puzel@novell.com
+
+- update to gpa-0.9.0
+ * Added a smartcard manager.
+ * GPA now requires GnuPG-2.
+ * X.509 support is now always enabled.
+ * Major internal cleanups.  More to follow soon.
+- simplify build phase
+- add a hack to build gpadefs.h
+- change license to GPL3
+
+-------------------------------------------------------------------
+Mon Sep 15 01:31:17 CEST 2008 - ro@suse.de
+
+- remove gtk-devel from buildrequires 
+
+-------------------------------------------------------------------
+Fri Sep  5 12:20:07 CEST 2008 - puzel@suse.cz
+
+- update to 0.8.0
+   * Add basic UI server mode and option --daemon.
+   * GPA now supports direct crypto operations to and from the
+     clipboard, and features a simple text edit area as well.
+   * GPA supports manipulating the backend configuration through
+     gpg-conf.
+   * GPA has now basic support for X.509; use the command line switch
+     --cms to enable this.
+   * The default keyserver is now taken from gpg.conf and not from
+     gpa.conf.
+- add libassuan to BuildReqs
+- update authors section
+
+
+-------------------------------------------------------------------
+Thu Feb 21 21:07:46 CET 2008 - crrodriguez@suse.de
+
+- fix desktop file again
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Wed May 30 14:54:12 CEST 2007 - ltinkl@suse.cz
+
+- update to bugfix release 0.7.6
+- add gnupg to BuildRequires to fix compilation
+- fix .desktop file English Name spelling
+- fix rpmlint warning about %check section
+
+-------------------------------------------------------------------
+Mon May 14 14:05:26 CEST 2007 - coolo@suse.de
+
+- fix desktop file
+
+-------------------------------------------------------------------
+Wed Mar 14 14:17:02 CET 2007 - ltinkl@suse.cz
+
+- update to 0.7.5
+ * Allow setting a password if it was empty.
+ * Fixed changing of expiration date for non-C-99 systems.
+ * Fixed a crash while encrypting several files.
+ * Fixed a bug while encrypting to several keys.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:48:46 CEST 2006 - pnemec@suse.cz
+
+- updated to version 0.7.4
+  fixed minor bugs
+  added icon
+
+-------------------------------------------------------------------
+Wed Aug 30 00:20:29 CEST 2006 - ro@suse.de
+
+- add extra newline to configure.ac for new m4 
+
+-------------------------------------------------------------------
+Wed Jul 12 14:03:53 CEST 2006 - pnemec@suse.cz
+
+- updated to version 0.7.3
+  fixed many minor bugs
+  added desktop file
+  add detection for detached signature
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 23:29:15 CET 2006 - kukuk@suse.de
+
+- Add gpgme-devel to nfb
+
+-------------------------------------------------------------------
+Mon Dec 13 23:32:50 CET 2004 - sndirsch@suse.de
+
+- moved chinese mo file to correct directory (Bug #47262)
+
+-------------------------------------------------------------------
+Thu Aug 05 15:15:04 CEST 2004 - postadal@suse.cz
+
+- updated to version 0.7.0
+- removed obsoleted patch gcc3
+
+-------------------------------------------------------------------
+Sat Jan 10 18:07:40 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sun Sep  7 22:05:09 CEST 2003 - adrian@suse.de
+
+- remove Utility Category
+
+-------------------------------------------------------------------
+Sat Aug 16 23:05:02 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jun 19 21:13:48 CEST 2003 - ro@suse.de
+
+- build with current gettext 
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Feb 14 17:12:31 CET 2002 - postadal@suse.cz
+
+- used macro %{suse_update_config}
+
+-------------------------------------------------------------------
+Tue Jan 22 15:25:16 CET 2002 - vinil@suse.cz
+
+- Update to gpa-0.4.3 (hope didn't brake gcc3 fixes :-)
+
+-------------------------------------------------------------------
+Tue Sep 11 12:36:01 MEST 2001 - garloff@suse.de
+
+- Fix gcc3 fixes :-(
+
+-------------------------------------------------------------------
+Mon Sep 10 20:08:16 MEST 2001 - garloff@suse.de
+
+- Update to gpa-0.4.2.
+  * Many fixes
+  * Supports GnuPG-1.0.5+ output format
+- Include messages and share dir.
+- gcc3 fixes (needed on axp)
+
+-------------------------------------------------------------------
+Wed Aug  8 11:01:27 CEST 2001 - cihlar@suse.cz
+
+- fixed to compile on axp
+
+-------------------------------------------------------------------
+Wed Jun 13 14:24:49 CEST 2001 - pblaha@suse.cz
+
+- fix compilation and #needforbuild
+- fix prefix into /usr/X11R6/
+- bziped source 
+
+-------------------------------------------------------------------
+Wed Oct 25 20:07:29 MEST 2000 - garloff@suse.de
+
+- Initial creation of package gpa-0.3.1.
+

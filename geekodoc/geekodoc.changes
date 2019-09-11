@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Fri Feb  9 12:27:58 UTC 2018 - thomas.schraitle@suse.com
+
+- Bugfix release 1.0.2.1
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.2.1
+
+* Correct version in GeekoDoc schema
+* Add missing 'fig' value (#43)
+* Improve test suite
+
+
+-------------------------------------------------------------------
+Wed Feb  7 12:15:55 UTC 2018 - thomas.schraitle@suse.com
+
+- Add bcond_with tests to activate test suite 
+
+-------------------------------------------------------------------
+Tue Feb  6 14:49:06 UTC 2018 - thomas.schraitle@suse.com
+
+- Release 1.0.2
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.2
+
+Only a package release without any changes in the schemas.
+Fixes issue #41 to reduce number of files in packages
+ 
+
+-------------------------------------------------------------------
+Tue Feb  6 14:31:32 UTC 2018 - thomas.schraitle@suse.com
+
+- Remove number of files in package; fixes openSUSE/geekodoc#41
+  some files are only useful for development
+
+
+-------------------------------------------------------------------
+Tue Jan 30 07:23:22 UTC 2018 - thomas.schraitle@suse.com
+
+Release 1.0.1
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.1
+
+* Geekodoc
+  * Forbid xml:id on row and entry (#37)
+  * Allow affiliation inside author (#36)
+  * Forbid xml:id on remark (#32)
+  * Inconsistency between informalfigure and informaltable (#35)
+  * Allow sections (#34)
+
+* Novdoc
+  no changes
+
+
+-------------------------------------------------------------------
+Thu Oct 26 09:28:12 UTC 2017 - thomas.schraitle@suse.com
+
+Release 1.0.0
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.0
+
+* Geekodoc
+  * Missing mediaobject in cover (#30)
+
+* Novdoc
+  no changes 
+
+
+-------------------------------------------------------------------
+Fri Oct 13 08:00:59 UTC 2017 - thomas.schraitle@suse.com
+
+Release 0.9.9
+https://github.com/openSUSE/geekodoc/releases/tag/v0.9.9
+
+* Geekodoc
+  * Allow lowercase Values in format attribute (#29)
+  * Add list elements in taskprerequisites (#25)
+
+* Novdoc
+  * No changes
+
+
+-------------------------------------------------------------------
+Fri Sep 15 07:59:00 UTC 2017 - thomas.schraitle@suse.com
+
+Release 0.9.8
+https://github.com/openSUSE/geekodoc/releases/tag/v0.9.8 
+
+Release 0.9.8
+
+* GeekoDoc
+  * Restrict Possible Values in format Attribute (#24)
+  * Fix outdated Schematron rules (#22)
+  * Implement task elements (#20)
+  * Adapt content model of task* elements (#1)
+  * Add test cases and use Travis to check schema
+
+* Spec file:
+  * Correct summary
+
+-------------------------------------------------------------------
+Thu Jun  1 09:34:04 UTC 2017 - sknorr@suse.com
+
+- Make sure that we ship the LICENSE file in the package
+
+-------------------------------------------------------------------
+Thu Dec  1 09:00:14 UTC 2016 - toms@opensuse.org
+
+Release 0.9.7
+https://github.com/openSUSE/geekodoc/releases/tag/v0.9.7
+
+Release 0.9.7
+
+* GeekoDoc
+  * link without "xlink:href" attribute is currently valid (#15)
+
+* Novdoc
+  * Content model of step is not determinist (#17)
+
+-------------------------------------------------------------------
+Thu Nov 24 15:15:35 UTC 2016 - toms@opensuse.org
+
+Release 0.9.6
+https://github.com/openSUSE/geekodoc/releases/tag/v0.9.6
+ 
+* GeekoDoc
+  * Remove title in step (#4)
+  * Empty <xref/> does not trigger a warning (#9)
+  * Allow common attributes in link (#10)
+  * Disallow xreflabel (#11)
+  * Restrict <results> element (#14)
+
+* Novdoc
+  * Missing novdocx-core.rnc (#5)
+  * Allow <mediaobject> only in <figure> and
+  * <informalfigure> (#7)
+  * Fix content model for step to allow para, substeps,
+  * para (#12)
+  * Allow phrase inside productnumber (#13)
+
+* Both
+ * Update Novdoc/GeekoDoc to disallow screen in entry (#2)
+
+* Spec file changes:
+ * Generate Novdoc RNC/RNG files to add missing files
+
+-------------------------------------------------------------------
+Fri Sep 16 08:35:15 UTC 2016 - sknorr@suse.com
+
+- Added missing build dependency on trang
+
+-------------------------------------------------------------------
+Fri Aug 19 09:39:31 UTC 2016 - fvogt@suse.com
+
+- Initial package
+

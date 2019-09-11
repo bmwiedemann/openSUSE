@@ -1,0 +1,65 @@
+From 676bc5fa4b6aa9d153c9805cdbad0ff0450bade6 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@gmail.com>
+Date: Wed, 3 Feb 2016 11:56:23 +0100
+Subject: [PATCH] Create a thread to reap death process
+
+ForkingWSGIServer use `SocketServer.ForkingMixIn` to implement a
+multiprocess server.  This class provides a workflow that collect
+death process (process in Zombie status) before the
+`process_request`.  This means that this process itself will be
+in Zombie status at the end of the request, that will be eventually
+collected during the next `process_request`.
+
+To minimize transient Zombie process, `ForkingWSGIServer` is
+creating a daemon thread (via `threading.Timer`) to call the
+collector every (by default) 5 seconds.
+
+Fixes #810
+---
+ werkzeug/serving.py | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+Index: Werkzeug-0.15.4/src/werkzeug/serving.py
+===================================================================
+--- Werkzeug-0.15.4.orig/src/werkzeug/serving.py
++++ Werkzeug-0.15.4/src/werkzeug/serving.py
+@@ -41,6 +41,7 @@ import signal
+ import socket
+ import sys
+ 
++import threading
+ import werkzeug
+ from ._compat import PY2
+ from ._compat import reraise
+@@ -775,6 +776,7 @@ class ForkingWSGIServer(ForkingMixIn, Ba
+         passthrough_errors=False,
+         ssl_context=None,
+         fd=None,
++        frequency=5,
+     ):
+         if not can_fork:
+             raise ValueError("Your platform does not support forking.")
+@@ -783,6 +785,23 @@ class ForkingWSGIServer(ForkingMixIn, Ba
+         )
+         self.max_children = processes
+ 
++        if frequency:
++            self.frequency = frequency
++            self.setup_reap_children()
++
++    def setup_reap_children(self):
++        """Create a thread to collect death children."""
++        t = threading.Timer(self.frequency, self.reap_children)
++        # Set daemon mode to provide a clean termination of the thread
++        # when the system ends
++        t.daemon = True
++        t.start()
++
++    def reap_children(self):
++        """Reap or collect death children."""
++        self.collect_children()
++        self.setup_reap_children()
++
+ 
+ def make_server(
+     host=None,

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Jan  9 22:24:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May 16 15:58:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 2017.9.19
+  * Update password.
+  * Ignore # comments anywhere on callgrind files.
+  * Skip header '# callgrind format' if any.
+  * Improved profile pruning abilities
+  * Avoid ZipFile open mode 'U'.
+  * Make assertion check robust against computational inaccuracies.
+  * Truncate function names to avoid labels larger than 16Kb.
+  * Update for changes if perf output.
+  * Fix printing output on stdout in Python 3.5.1.
+  * Prevent ZeroDivisionError when options.colour_nodes_by_selftime is set
+  * Scale node weights when coloring nodes by selftime
+  * Add colour-nodes-by-selftime option
+  * Ranking of cycle functions
+  * Improve implementation of Tarjan's algorithm to search for cycles.
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue May  3 11:31:40 UTC 2016 - foss@grueninger.de
+
+- update to version 2015.12.01
+  no changelog available
+
+-------------------------------------------------------------------
+Thu Jun 26 13:47:37 UTC 2014 - hpj@urpla.net
+
+- initial build: 2014.03.12

@@ -1,0 +1,20 @@
+---
+ bashline.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+--- bashline.c
++++ bashline.c	2018-11-29 08:12:25.876588305 +0000
+@@ -2045,6 +2045,13 @@ globword:
+ 	    return ((char *)NULL);
+ 	}
+ 
++      if (GLOB_FAILED (glob_matches) || glob_matches == 0)
++	{
++	  glob_ignore_case = old_glob_ignore_case;
++	  glob_matches = (char **)NULL;
++	  return ((char *)NULL);
++	}
++
+       while (val = glob_matches[local_index++])
+         {
+ 	  if (executable_or_directory (val))

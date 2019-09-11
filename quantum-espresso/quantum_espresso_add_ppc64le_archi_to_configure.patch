@@ -1,0 +1,36 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: quantum espresso add ppc64le archi to configure
+Date: Thu, 06 Aug 2015 18:56:41 +0200
+
+quantum espresso add ppc64le archi to configure
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ install/configure    |    1 +
+ install/configure.ac |    1 +
+ 2 files changed, 2 insertions(+)
+
+Index: espresso-5.1.2/install/configure
+===================================================================
+--- espresso-5.1.2.orig/install/configure
++++ espresso-5.1.2/install/configure
+@@ -2191,6 +2191,7 @@ then
+                 *-pc-cygwin )           arch=cygwin ;;
+                 sx*-nec* )              arch=necsx  ;;
+                 powerpc64-*-linux-gnu ) arch=ppc64  ;;
++                powerpc64le-*-linux-gnu ) arch=ppc64  ;;
+                 *-*-mingw32 )           arch=mingw32;;
+                 *-*-mingw64 )           arch=mingw64;;
+                 * )                     { $as_echo "$as_me:$LINENO: WARNING: Unrecognized build architecture" >&5
+Index: espresso-5.1.2/install/configure.ac
+===================================================================
+--- espresso-5.1.2.orig/install/configure.ac
++++ espresso-5.1.2/install/configure.ac
+@@ -208,6 +208,7 @@ then
+                 *-pc-cygwin )           arch=cygwin ;;
+                 sx*-nec* )              arch=necsx  ;;
+                 powerpc64-*-linux-gnu ) arch=ppc64  ;;
++                powerpc64le-*-linux-gnu ) arch=ppc64  ;;
+                 *-*-mingw32 )           arch=mingw32;;
+                 *-*-mingw64 )           arch=mingw64;;
+                 * )                     AC_MSG_WARN(Unrecognized build architecture)

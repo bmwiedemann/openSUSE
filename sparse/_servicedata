@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.kernel.org/pub/scm/devel/sparse/sparse.git</param>
+              <param name="changesrevision">2b96cd804dc7e4b5f6a0aae62c1962bd6b2caae9</param></service></servicedata>

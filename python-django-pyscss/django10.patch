@@ -1,0 +1,27 @@
+From ddda505c6a05080ffc9f631e0cede5cbb6a032c2 Mon Sep 17 00:00:00 2001
+From: Thomas Goirand <zigo@debian.org>
+Date: Tue, 19 Jul 2016 10:46:55 +0200
+Subject: [PATCH] Define django template backend
+
+django.template.backends.django.DjangoTemplates must be defined
+with the APP_DIRS set to True for the unit tests to work with
+Django 1.10.
+---
+ testproject/testproject/settings.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/testproject/testproject/settings.py b/testproject/testproject/settings.py
+index 22a254d..ee7c859 100644
+--- a/testproject/testproject/settings.py
++++ b/testproject/testproject/settings.py
+@@ -131,3 +131,10 @@
+         },
+     }
+ }
++
++TEMPLATES = [
++    {
++        'BACKEND': 'django.template.backends.django.DjangoTemplates',
++        'APP_DIRS': True,
++    },
++]

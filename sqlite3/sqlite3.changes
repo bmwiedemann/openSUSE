@@ -1,0 +1,2781 @@
+-------------------------------------------------------------------
+Thu Jul 11 08:59:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.29.0
+  * Added the SQLITE_DBCONFIG_DQS_DML and SQLITE_DBCONFIG_DQS_DDL
+    actions to sqlite3_db_config() for activating and deactivating
+    the double-quoted string literal misfeature. Both default to 
+    "on" for legacy compatibility, but developers are encouraged 
+    to turn them "off", perhaps using the -DSQLITE_DQS=0
+    compile-time option.
+  * -DSQLITE_DQS=0 is now a recommended compile-time option.
+  * Improvements to the query planner:
+    + Improved optimization of AND and OR operators when one or
+      the other operand is a constant.
+    + Enhancements to the LIKE optimization for cases when the
+      left-hand side column has numeric affinity.
+  * Added the "sqlite_dbdata" virtual table for extracting raw
+    low-level content from an SQLite database, even a database
+    that is corrupt.
+  * Enhancements to the CLI:
+    + Add the ".recover" command which tries to recover as much
+      content as possible from a corrupt database file.
+    + Add the ".filectrl" command useful for testing.
+    + Add the long-standing ".testctrl" command to the ".help" menu.
+    + Added the ".dbconfig" command
+
+-------------------------------------------------------------------
+Thu Apr 18 13:52:28 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Upgrade to 3.28.0:
+  * CVE-2019-9936, bsc#1130326: running fts5 prefix queries inside
+    a transaction could trigger a heap-based buffer over-read.
+  * CVE-2019-9937, bsc#1130325: interleaving reads and writes in a
+    single transaction with an fts5 virtual table will lead to a
+    NULL Pointer Dereference.
+  * Enhanced window functions
+  * Enhanced VACUUM INTO so that it works for read-only databases.
+  * New query optimizations.
+  * Added the sqlite3_value_frombind() API for determining if the
+    argument to an SQL function is from a bound parameter. 
+  * Security and compatibilities enhancements to fts3_tokenizer().
+  * Improved robustness against corrupt database files.
+
+-------------------------------------------------------------------
+Sun Mar 10 17:37:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.27.2:
+  * Add the VACUUM INTO command
+  * Issue an SQLITE_WARNING message on the error log if a
+    double-quoted string literal is used
+  * Add the remove_diacritics=2 option to FTS3 and FTS5.
+  * Add  the SQLITE_PREPARE_NO_VTAB option to sqlite3_prepare_v3().
+    Use that option to prevent circular references to shadow tables
+    from causing resource leaks.
+  * Enhancements to the sqlite3_deserialize() interface
+  * Enhancements to the CLI, mostly to support testing and debugging
+    of the SQLite library itself
+  * Increased robustness against malicious SQL that is run against
+    a maliciously corrupted database
+- drop sqlite3-btree02-100.patch
+  
+-------------------------------------------------------------------
+Thu Jan 17 16:58:54 UTC 2019 - Reinhard Max <max@suse.com>
+
+- btree02.test depended on Tcl internals that changed in 8.6.9.
+  (sqlite3-btree02-100.patch)
+
+-------------------------------------------------------------------
+Wed Dec  5 12:56:29 UTC 2018 - malte.kraus@suse.com
+
+- SQLite 3.26.0:
+  * Optimization: When doing an UPDATE on a table with indexes on
+    expressions, do not update the expression indexes if they do
+    not refer to any of the columns of the table being updated.
+  * Allow the xBestIndex() method of virtual table implementations
+    to return SQLITE_CONSTRAINT to indicate that the proposed query
+    plan is unusable and should not be given further consideration.
+  * Added the SQLITE_DBCONFIG_DEFENSIVE option which disables the
+    ability to create corrupt database files using ordinary SQL.
+  * Added support for read-only shadow tables when the
+    SQLITE_DBCONFIG_DEFENSIVE option is enabled.
+  * Added the PRAGMA legacy_alter_table command, which if enabled
+    causes the ALTER TABLE command to behave like older version of
+    SQLite (prior to version 3.25.0) for compatibility.
+  * Added PRAGMA table_xinfo that works just like PRAGMA table_info
+    except that it also shows hidden columns in virtual tables.
+  * Added the explain virtual table as a run-time loadable
+    extension.
+  * Add a limit counter to the query planner to prevent excessive
+    sqlite3_prepare() times for certain pathological SQL inputs.
+  * Added support for the sqlite3_normalized_sql() interface, when
+    compiling with SQLITE_ENABLE_NORMALIZE.
+  * Enhanced triggers so that they can use table-valued functions
+    that exist in schemas other than the schema where the trigger
+    is defined.
+  * Improvements to the ".help" command in the CLI.
+  * The SQLITE_HISTORY environment variable, if it exists,
+    specifies the name of the command-line editing history file.
+  * The --deserialize option associated with opening a new database
+    in the CLI cause the database file to be read into memory and
+    accessed using the sqlite3_deserialize() API. This simplifies
+    running tests on a database without modifying the file on disk.
+
+-------------------------------------------------------------------
+Sat Oct  6 14:16:07 UTC 2018 - astieger@suse.com
+
+- SQLite 3.25.2:
+  * Add the PRAGMA legacy_alter_table=ON command that causes the
+    "ALTER TABLE RENAME" command to behave as in 3.24.0 and earlier
+  * Fix issue with some expressions with windows functions in views
+- includes changes from SQLite 3.25.1:
+  * Avoid false-positive error checks on ALTER TABLE
+  * Further ORDER BY LIMIT optimization fixes for window functions
+
+-------------------------------------------------------------------
+Sun Sep 16 06:51:34 UTC 2018 - astieger@suse.com
+
+- SQLite 3.25.0:
+  * Add support for window functions
+  * Add support for renaming columns within a table
+  * Query optimizer improvements
+  * slightly better concurrency in multi-threaded environments
+  * The ORDER BY LIMIT optimization might have caused an infinite
+    loop in the byte code of the prepared statement under very
+    obscure circumstances, due to a confluence of minor defects in
+    the query optimizer
+
+-------------------------------------------------------------------
+Sat Jun 30 07:01:37 UTC 2018 - avvissu@yandex.by
+
+- Enable the FTS3 extension
+
+-------------------------------------------------------------------
+Fri Jun 29 10:21:38 UTC 2018 - mpluskal@suse.com
+
+- Run tests during build
+
+-------------------------------------------------------------------
+Fri Jun  8 14:01:06 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Use 'src' archive instead of 'amalgamation' to be able to use
+  some flags, such as SQLITE_ENABLE_UPDATE_DELETE_LIMIT
+- Remove 'sqlite-fts5-link.patch' since patched file is not 
+  availaible in 'src' archive. Add '-lm' flag to LIBS var instead
+
+-------------------------------------------------------------------
+Thu Jun  7 09:50:31 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Enable SQLITE_ENABLE_UPDATE_DELETE_LIMIT
+
+-------------------------------------------------------------------
+Wed Jun  6 16:22:50 UTC 2018 - astieger@suse.com
+
+- update to 3.24.0:
+  * Add support for PostgreSQL-style UPSERT
+  * Add support for auxiliary columns in r-tree tables
+  * Add C-language APIs for discovering SQL keywords used by SQLite
+  * Add C-language APIs for dynamic strings based on sqlite3_str
+  * Enhance ALTER TABLE so that it recognizes "true" and "false" as
+    valid arguments to DEFAULT
+  * Add the sorter-reference optimization as a compile-time option
+  * Improve the format of the EXPLAIN QUERY PLAN raw output, so that
+   it gives better information about the query plan and about the
+    relationships between the various components of the plan
+  * Added the SQLITE_DBCONFIG_RESET_DATABASE option to the
+    sqlite3_db_config() API.
+  * Automatically intercept the raw EXPLAIN QUERY PLAN output an
+    reformat it into an ASCII-art graph.
+  * Lines that begin with "#" and that are not in the middle of an
+    SQL statement are interpreted as comments
+  * Add the --append option to the ".backup" command
+  * Add the ".dbconfig" command
+  * various performance improvements
+  * various bug fixes
+
+-------------------------------------------------------------------
+Wed Apr 11 11:40:57 UTC 2018 - astieger@suse.com
+
+- update to 3.23.1:
+  * Fix two problems in the new LEFT JOIN strength reduction
+    optimization 
+  * Fix misbehavior of the FTS5 xBestIndex method
+  * Fix a harmless reference to an uninitialized virtual machine
+    register
+  * Fix the eval.c extension so that it works with PRAGMA
+    empty_result_callbacks=ON
+  * Fix the generate_series virtual table so that it correctly
+    returns no rows if any of its constraints are NULL
+  * Performance enhancements in the parser
+
+-------------------------------------------------------------------
+Mon Apr  2 18:33:42 UTC 2018 - astieger@suse.com
+
+- update to 3.23.0:
+  * Add the sqlite3_serialize() and sqlite3_deserialize()
+    interfaces when the SQLITE_ENABLE_DESERIALIZE compile-time
+    option is used.
+  * Recognize TRUE and FALSE as constants. (For compatibility, if
+    there exist columns named "true" or "false", then the
+    identifiers refer to the columns rather than Boolean constants.)
+  * Support operators IS TRUE, IS FALSE, IS NOT TRUE, and IS NOT FALSE.
+  * Added the SQLITE_DBSTATUS_CACHE_SPILL option to
+    sqlite3_db_status() for reporting the number of cache spills
+    that have occurred.
+  * The "alternate-form-2" flag ("!") on the built-in printf
+    implementation now causes string substitutions to measure the
+    width and precision in characters instead of bytes.
+  * If the xColumn method in a virtual table implementation returns
+    an error message using sqlite3_result_error() then give that
+    error message preference over internally-generated messages.
+  * Added the -A command-line option to the CLI to make it easier to
+    manage SQLite Archive files.
+  * Add support for INSERT OR REPLACE, INSERT OR IGNORE, and UPDATE
+    OR REPLACE in the Zipfile virtual table.
+  * Enhance the sqlite3changeset_apply() interface so that it is
+    hardened against attacks from deliberately corrupted changeset
+    objects.
+  * Added the sqlite3_normalize() extension function.
+  * Query optimizer enhancements
+  * Various bug fixes
+  * Fix various issues reported by fuzzers, including:
+    + CVE-2018-8740: NULL pointer dereference on CREATE TABLE as
+      (bsc#1085790)
+
+-------------------------------------------------------------------
+Thu Feb  1 20:49:08 UTC 2018 - astieger@suse.com
+
+- update to 3.22.0:
+  * Add Zipfile virtual table to read and write a ZIP Archive.
+  * Improved handling of WAL mode databases
+  * various improvements, optimizations and bug fixes
+
+-------------------------------------------------------------------
+Wed Oct 25 08:41:37 UTC 2017 - idonmez@suse.com
+
+- Update to version 3.21.0
+  * Take advantage of the atomic-write capabilities in the F2FS
+    filesystem when available, for greatly reduced transaction
+    overhead. This currently requires the
+    SQLITE_ENABLE_BATCH_ATOMIC_WRITE compile-time option.
+  * Allow ATTACH and DETACH commands to work inside of a
+    transaction.
+  * Allow WITHOUT ROWID virtual tables to be writable if the
+    PRIMARY KEY contains exactly one column.
+  * The "fsync()" that occurs after the header is written in a
+    WAL reset now uses the sync settings for checkpoints.
+    This means it will use a "fullfsync" on macs if PRAGMA
+    checkpoint_fullfsync set on.
+  * The sqlite3_sourceid() function tries to detect if the source
+    code has been modified from what is checked into version
+    control and if there are modifications, the last four
+    characters of the version hash are shown as "alt1" or
+    "alt2". The objective is to detect accidental and/or
+    careless edits. A forger can subvert this feature.
+  * Improved de-quoting of column names for CREATE TABLE AS
+    statements with an aggregate query on the right-hand side.
+  * Fewer "stat()" system calls issued by the unix VFS.
+  * Enhanced the LIKE optimization so that it works with an
+    ESCAPE clause.
+  * Enhanced PRAGMA integrity_check and PRAGMA quick_check
+    to detect obscure row corruption that they were formerly
+    missing. Also update both pragmas so that they return
+    error text rather than SQLITE_CORRUPT when encountering
+    corruption in records.
+  * The query planner now prefers to implement FROM-clause
+    subqueries using co-routines rather using the query
+    flattener optimization. Support for the use of
+    co-routines for subqueries may no longer be disabled.
+  * Pass information about !=, IS, IS NOT, NOT NULL, and
+    IS NULL constraints into the xBestIndex method of virtual tables.
+  * Enhanced the CSV virtual table so that it accepts the
+    last row of input if the final new-line character is missing.
+  * Remove the rarely-used "scratch" memory allocator.
+    Replace it with the SQLITE_CONFIG_SMALL_MALLOC configuration
+    setting that gives SQLite a hint that large memory allocations
+    should be avoided when possible.
+  * Added the swarm virtual table to the existing union virtual
+    table extension.
+  * Added the sqlite_dbpage virtual table for providing direct
+    access to pages of the database file. The source code is
+    built into the amalgamation and is activated using the
+    -DSQLITE_ENABLE_DBPAGE_VTAB compile-time option.
+  * Add a new type of fts5vocab virtual table - "instance" 
+    - that provides direct access to an FTS5 full-text
+    index at the lowest possible level.
+  * Miscellaneous microoptimizations reduce CPU usage by about 2.1%.
+
+  Bug fixes
+  * Fix a faulty assert() statement discovered by OSSFuzz.
+    Ticket cb91bf4290c211d
+  * Fix an obscure memory leak in sqlite3_result_pointer().
+    Ticket 7486aa54b968e9b
+  * Avoid a possible use-after-free error by deferring schema
+    resets until after the query planner has finished running.
+    Ticket be436a7f4587ce5
+  * Only use indexes-on-expressions to optimize ORDER BY or
+    GROUP BY if the COLLATE is correct. Ticket e20dd54ab0e4383
+  * Fix an assertion fault that was coming up when the expression
+    in an index-on-expressions is really a constant. Ticket aa98619ad08ddca
+  * Fix an assertion fault that could occur following PRAGMA
+    reverse_unordered_selects. Ticket cb91bf4290c211d
+  * Fix a segfault that can occur for queries that use table-valued
+    functions in an IN or EXISTS subquery. Ticket b899b6042f97f5
+  * Fix a potential integer overflow problem when compiling a particular
+    horrendous common table expression. This was another problem discovered
+    by OSSFuzz. Check-in 6ee8cb6ae5.
+  * Fix a potential out-of-bound read when querying a corrupt
+    database file, a problem detected by Natalie Silvanovich of
+    Google Project Zero. Check-in 04925dee41a21f.
+
+-------------------------------------------------------------------
+Wed Aug 30 07:46:10 UTC 2017 - astieger@suse.com
+
+- update to 3.20.1:
+  * Fix a potential memory leak in the new sqlite3_result_pointer()
+    interface
+
+-------------------------------------------------------------------
+Wed Aug  2 00:26:35 UTC 2017 - astieger@suse.com
+
+- Update to 3.20.0:
+  * Potential incompatible change for clients incorrectly relying
+    on unspecified behavior: column names returned by
+    sqlite3_column_name() and sqlite3_column_name16() may return
+    different names when views or subqueries are used in the FROM
+    clause, and AS clauses are not used (as they should be)
+  * Text of some error messages changed. Applications that depend
+    on specific error message text may be impacted.
+
+-------------------------------------------------------------------
+Fri Jun 16 07:43:51 UTC 2017 - astieger@suse.com
+
+- a little less packaging cleanup so as to not break SLE 11 SP4
+
+-------------------------------------------------------------------
+Fri Jun 16 07:20:20 UTC 2017 - mpluskal@suse.com
+
+- Small packaging cleanup
+
+-------------------------------------------------------------------
+Fri Jun  9 07:43:28 UTC 2017 - astieger@suse.com
+
+- Update to 3.19.3:
+  * Fix a bug associated with auto_vacuum that can lead to database
+    corruption. (introduced in 3.16.0)
+
+-------------------------------------------------------------------
+Thu May 25 17:52:39 UTC 2017 - idonmez@suse.com
+
+- Update to 3.19.2
+  * Fix a bug in the LEFT JOIN flattening optimization.
+    Ticket cad1ab4cb7b0fc.
+  * Fix more bugs in the LEFT JOIN flattening optimization.
+    Ticket 7fde638e94287d2c.
+
+-------------------------------------------------------------------
+Mon May 22 18:47:42 UTC 2017 - idonmez@suse.com
+
+- Update to 3.19.0
+  * The SQLITE_READ authorizer callback is invoked once with a
+    column name that is an empty string for every table referenced
+    in a query from which no columns are extracted.
+  * When using an index on an expression, try to use expression
+    values already available in the index, rather than loading
+    the original columns and recomputing the expression.
+  * Enhance the flattening optimization so that it is able to
+    flatten views on the right-hand side of a LEFT JOIN.
+  * Use replace() instead of char() for escaping newline and
+    carriage-return characters embedded in strings in the .dump
+    output from the command-line shell.
+  * Avoid unnecessary foreign key processing in UPDATE statements
+    that do not touch the columns that are constrained by the
+    foreign keys.
+  * On a DISTINCT query that uses an index, try to skip ahead
+    to the next distinct entry using the index rather than
+    stepping through rows, when an appropriate index is available.
+  * Avoid unnecessary invalidation of sqlite3_blob handles
+    when making changes to unrelated tables.
+  * Transfer any terms of the HAVING clause that use only
+    columns mentioned in the GROUP BY clause over to the
+    WHERE clause for faster processing.
+  * Reuse the same materialization of a VIEW if that VIEW
+    appears more than once in the same query.
+  * Enhance PRAGMA integrity_check so that it identifies
+    tables that have two or more rows with the same rowid.
+  * Enhance the FTS5 query syntax so that column filters
+    may be applied to arbitrary expressions.
+  * Enhance the json_extract() function to cache and
+    reuse parses of JSON input text.
+  * Added the anycollseq.c loadable extension that allows a
+    generic SQLite database connection to read a schema that
+    contains unknown and/or application-specific collating sequences.
+  * Fix a problem in REPLACE that can result in a corrupt
+    database containing two ore more rows with the same rowid.
+    Fix for ticket f68dc596c4e6018d.
+  * Fix a problem in PRAGMA integrity_check that was causing a
+    subsequent VACUUM to behave suboptimally.
+    so that it works correctly with foreign keys on WITHOUT ROWID tables.
+  * Disallow leading zeros in numeric constants in JSON.
+    Fix for ticket b93be8729a895a528e2.
+  * Disallow control characters inside of strings in JSON.
+    Fix for ticket 6c9b5514077fed34551.
+  * Limit the depth of recursion for JSON objects and arrays in orde
+    to avoid excess stack usage in the recursive descent parser.
+    Fix for ticket 981329adeef51011052.
+
+-------------------------------------------------------------------
+Fri Mar 31 12:03:54 UTC 2017 - idonmez@suse.com
+
+- Update to 3.18.0
+  * Added the PRAGMA optimize command
+  * The SQLite version identifier returned by the sqlite_source_id()
+    SQL function and the sqlite3_sourceid() C API and found in the
+    SQLITE_SOURCE_ID macro is now a 64-digit SHA3-256 hash instead
+    of a 40-digit SHA1 hash.
+  * Added the json_patch() SQL function to the JSON1 extension.
+  * Enhance the LIKE optimization so that it works for arbitrary
+    expressions on the left-hand side as long as the LIKE pattern
+    on the right-hand side does not begin with a digit or minus sign.
+  * Added the sqlite3_set_last_insert_rowid() interface and use the
+    new interface in the FTS3, FTS4, and FTS5 extensions to ensure
+    that the sqlite3_last_insert_rowid() interface always returns
+    reasonable values.
+  * Enhance PRAGMA integrity_check and PRAGMA quick_check so that
+    they verify CHECK constraints.
+  * Enhance the query plans for joins to detect empty tables early
+    and halt without doing unnecessary work.
+  * Enhance the sqlite3_mprintf() family of interfaces and the
+    printf SQL function to put comma separators at the thousands
+    marks for integers, if the "," format modifier is used in
+    between the "%" and the "d" (example: "%,d").
+  * Added the -DSQLITE_MAX_MEMORY=N compile-time option.
+  * Added the .sha3sum dot-command and the .selftest dot-command
+    to the command-line shell
+  * Begin enforcing SQLITE_LIMIT_VDBE_OP. This can be used, 
+    for example, to prevent excessively large prepared statements 
+    in systems that accept SQL queries from untrusted users.
+  * Various performance improvements.
+  * Ensure that indexed expressions with collating sequences are
+    handled correctly. Fix for ticket eb703ba7b50c1a5.
+  * Fix a bug in the 'start of ...' modifiers for the date and
+    time functions. Ticket 6097cb92745327a1
+  * Fix a potential segfault in complex recursive triggers,
+    resulting from a bug in the OP_Once opcode introduced as part
+    of a performance optimization in version 3.15.0. Ticket 06796225f59c057c
+  * In the RBU extension, add extra sync operations to avoid the
+    possibility of corruption following a power failure.
+  * The sqlite3_trace_v2() output for nested SQL statements should
+    always begin with a "--" comment marker.
+
+-------------------------------------------------------------------
+Wed Feb 15 18:30:53 UTC 2017 - dimstar@opensuse.org
+
+- Drop update-desktop-files BuildRequires: this package contains no
+  desktop files, hence there is no need to handle any of them.
+
+-------------------------------------------------------------------
+Tue Feb 14 09:19:28 UTC 2017 - idonmez@suse.com
+
+- Update to 3.17.0
+  * Approximately 25% better performance from the R-Tree extension.
+  * Add the SQLITE_DEFAULT_LOOKASIDE compile-time option.
+  * Increase the default lookaside size from 512,125 to 1200,100
+    as this provides better performance while only adding 56KB of
+    extra memory per connection.
+  * Use compiler built-ins __builtin_sub_overflow(), 
+    __builtin_add_overflow(), and __builtin_mul_overflow() 
+   when available.
+  * Added the SQLITE_ENABLE_NULL_TRIM compile-time option, which
+    can result in significantly smaller database files for some
+    applications, at the risk of being incompatible with older
+    versions of SQLite.
+  * Change SQLITE_DEFAULT_PCACHE_INITSZ from 100 to 20, for
+    improved performance.
+  * Added the SQLITE_UINT64_TYPE compile-time option as an analog
+    to SQLITE_INT64_TYPE.
+  * Perform some UPDATE operations in a single pass instead of in
+    two passes.
+  * Enhance the session extension to support WITHOUT ROWID tables.
+  * Fixed performance problems and potential stack overflows when
+    creating views from multi-row VALUES clauses with hundreds of
+    thousands of rows.
+  * Added the sha1.c extension.
+  * In the command-line shell, enhance the ".mode" command so that
+    it restores the default column and row separators for modes 
+    "line", "list", "column", and "tcl".
+  * Enhance the SQLITE_DIRECT_OVERFLOW_READ option so that it
+    works in WAL mode as long as the pages being read are not
+    in the WAL file.
+  * Enhance the LEMON parser generator so that it can store the
+    parser object as a stack variable rather than allocating space
+    from the heap and make use of that enhancement in the amalgamation.
+  * Other performance improvements. Uses about 6.5% fewer CPU cycles.
+  * Throw an error if the ON clause of a LEFT JOIN references
+    tables to the right of the ON clause. This is the same behavior
+    as PostgreSQL. Formerly, SQLite silently converted the LEFT JOIN
+    into an INNER JOIN. Fix for ticket 25e335f802dd.
+  * Use the correct affinity for columns of automatic indexes.
+    Ticket 7ffd1ca1d2ad4ec.
+  * Ensure that the sqlite3_blob_reopen() interface can correctly
+    handle short rows. Fix for ticket e6e962d6b0f06f46e. 
+
+-------------------------------------------------------------------
+Sat Jan  7 16:44:32 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.16.2:
+  * Fix the REPLACE statement for WITHOUT ROWID tables that lack
+    secondary indexes so that it works correctly with triggers and
+    foreign keys.
+  * Fix the sqlite3_value_text() interface so that it correctly
+    translates content generated by zeroblob() into a string of all
+    0x00 characters.
+  * Fix the bytecode generator to deal with a subquery in the FROM
+    clause that is itself a UNION ALL where one side of the UNION
+    ALL is a view that contains an ORDER BY.
+  * Adjust the sqlite3_column_count() API so it more often returns
+    the same values for PRAGMA statements as it did in prior
+    releases, to minimize disruption to applications that might be
+    using that interface in unexpected ways.
+
+-------------------------------------------------------------------
+Tue Jan  3 19:45:49 UTC 2017 - idonmez@suse.com
+
+- Update to version 3.16.1
+  * Fix a bug concerning the use of row values within triggers
+    (see ticket 8c9458e7) that was in version 3.15.0.
+
+-------------------------------------------------------------------
+Tue Jan  3 11:41:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.16.0:
+  * Uses 9% fewer CPU cycles. (See the CPU performance measurement
+    report for details on how the this performance increase was
+    computed.)
+  * Added experimental support for PRAGMA functions.
+  * Added the SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE option to
+    sqlite3_db_config().
+  * Enhance the date and time functions so that the 'unixepoch'
+    modifier works for the full span of supported dates.
+  * Changed the default configuration of the lookaside memory
+    allocator from 500 slots of 128 bytes each into 125 slots of
+    512 bytes each.
+  * Enhanced "WHERE x NOT NULL" partial indexes so that they are
+    usable if the "x" column appears in a LIKE or GLOB operator.
+  * Enhanced sqlite3_interrupt() so that it interrupts checkpoint
+    operations that are in process.
+  * Enhanced the LIKE and GLOB matching algorithm to be faster for
+    cases when the pattern contains multiple wildcards.
+  * Added the SQLITE_FCNTL_WIN32_GET_HANDLE file control opcode.
+  * Added ".mode quote" to the command-line shell.
+  * Added ".lint fkey-indexes" to the command-line shell.
+  * Added the .imposter dot-command to the command-line shell.
+  * Added the remember(V,PTR) SQL function as a loadable extension.
+  * Rename the SQLITE_OMIT_BUILTIN_TEST compile-time option to
+  * SQLITE_UNTESTABLE to better reflect the implications of using
+    it.
+
+-------------------------------------------------------------------
+Fri Dec 30 13:39:56 UTC 2016 - astieger@suse.com
+
+- SQLite 3.15.2:
+  * Multiple bug fixes to the row value logic that was introduced in
+    version 3.15.0.
+  * Fix a NULL pointer dereference in ATTACH/DETACH following a
+    maliciously constructed syntax error
+  * Fix a crash that can occur following an out-of-memory condition
+    in the built-in instr() function.
+  * In the JSON extension, fix the JSON validator so that it
+    correctly rejects invalid backslash escapes within strings. 
+
+-------------------------------------------------------------------
+Mon Nov 21 21:50:08 UTC 2016 - astieger@suse.com
+
+- SQLite 3.15.1:
+  * Fix the VACUUM command so that it spills excess content to disk
+    rather than holding everything in memory, and possible causing
+    an out-of-memory error for larger database files
+  * Fix a case where OR-connected terms in the ON clause of a LEFT
+    JOIN might cause incorrect results
+  * Fix a case where the use of row values in the ON clause of a
+    LEFT JOIN might cause incorrect results
+
+-------------------------------------------------------------------
+Fri Oct 14 18:11:59 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.15.0
+  * Added support for row values.
+  * Allow deterministic SQL functions in the WHERE clause of a
+    partial index.
+  * Added the "modeof=filename" URI parameter on the unix VFS
+  * Added support for SQLITE_DBCONFIG_MAINDBNAME.
+  * Added the ability to VACUUM an ATTACH-ed database.
+  * Enhancements to the command-line shell:
+    + Add the ".testcase" and ".check" dot-commands.
+    + Added the --new option to the ".open" dot-command,
+      causing any prior content in the database to be purged
+      prior to opening.
+  * Enhance the fts5vocab virtual table to handle "ORDER BY term"
+    efficiently.
+  * Miscellaneous micro-optimizations reduce CPU usage by more than
+    7% on common workloads. Most optimization in this release
+    has been on the front-end (sqlite3_prepare_v2()).
+  * The multiply operator now correctly detects 64-bit
+    integer overflow and promotes to floating point in all
+    corner-cases. Fix for ticket 1ec41379c9c1e400.
+  * Correct handling of columns with redundant unique indexes
+    when those columns are used on the LHS of an IN operator.
+    Fix for ticket 0eab1ac759.
+  * Skip NULL entries on range queries in indexes on expressions.
+    Fix for ticket 4baa46491212947.
+  * Ensure that the AUTOINCREMENT counters in the sqlite_sequence
+    table are initialized doing "Xfer Optimization" on 
+    "INSERT ... SELECT" statements. Fix for ticket 7b3328086a5c116c.
+  * Make sure the ORDER BY LIMIT optimization (from check-in 559733b09e)
+    works with IN operators on INTEGER PRIMARY KEYs. 
+    Fix for ticket 96c1454c 
+
+-------------------------------------------------------------------
+Wed Sep 14 08:49:58 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.14.2:
+  * Fix the sqlite3_trace_v2() interface so that it is disabled
+    if either the callback or the mask arguments are zero,
+    in accordance with the documentation.
+  * Fix commenting errors and improve the comments generated on
+    EXPLAIN listings when the -DSQLITE_ENABLE_EXPLAIN_COMMENTS
+    compile-time option is used.
+  * Fix the ".read" command in the command-line shell so that
+    it understands that its input is not interactive.
+  * Correct affinity computations for a SELECT on the RHS of
+    an IN operator. Fix for ticket 199df4168c.
+  * The ORDER BY LIMIT optimization is not valid unless the
+    inner-most IN operator loop is actually used by
+    the query plan. Fix for ticket 0c4df46116e90f92.
+  * Fix an internal code generator problem that was causing
+    some DELETE operations to no-op. Ticket ef360601
+
+-------------------------------------------------------------------
+Sun Aug 14 07:26:23 UTC 2016 - astieger@suse.com
+
+- SQLite 3.14.1:
+  * A performance enhancement to the page-cache "truncate" 
+    operation reduces COMMIT time by dozens of milliseconds on
+    systems with a large page cache
+  * Fix to the --rbu option of sqldiff. 
+
+-------------------------------------------------------------------
+Mon Aug  8 18:06:28 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.14.0
+  * Added support for WITHOUT ROWID virtual tables.
+  * Improved the query planner so that the OR optimization can be
+    used on virtual tables even if one or more of the disjuncts use
+    the LIKE, GLOB, REGEXP, MATCH operators.
+  * Added the CSV virtual table for reading RFC 4180 formatted
+    comma-separated value files.
+  * Added the carray() table-valued function extension.
+  * Enabled persistent loadable extensions using the new
+    SQLITE_OK_LOAD_PERMANENTLY return code from the extension
+    entry point.
+  * Added the SQLITE_DBSTATUS_CACHE_USED_SHARED option to
+    sqlite3_db_status().
+  * Add the vfsstat.c loadable extension - a VFS shim that measures
+    I/O together with an eponymous virtual table that provides access
+    to the measurements.
+  * Improved algorithm for running queries with both an ORDER BY
+    and a LIMIT where only the inner-most loop naturally generates
+    rows in the correct order.
+  * Enhancements to Lemon parser generator, so that it generates a
+    faster parser.
+  * The PRAGMA compile_options command now attempts to show the version
+    number of the compiler that generated the library.
+  * Enhance PRAGMA table_info so that it provides information about
+    eponymous virtual tables.
+  * The query planner uses a full scan of a partial index instead of
+    a full scan of the main table, in cases where that makes sense.
+  * Allow table-valued functions to appear on the right-hand side
+    of an IN operator.
+  * Added two new C-language interfaces: sqlite3_expanded_sql()
+    and sqlite3_trace_v2(). These new interfaces subsume the
+    functions of sqlite3_trace() and sqlite3_profile() which are
+    now deprecated.
+  * Added the json_quote() SQL function to the json1 extension.
+  * Disable the authorizer callback while reparsing the schema.
+  * Added the SQLITE_ENABLE_UNKNOWN_SQL_FUNCTION compile-time option and
+    turned that option on by default when building the command-line shell.
+  * Fix the ALTER TABLE command so that it does not corrupt descending
+    indexes when adding a column to a legacy file format database.
+    Ticket f68bf68513a1c15f
+  * Fix a NULL-pointer dereference/crash that could occurs when a
+    transitive WHERE clause references a non-existent collating
+    sequence. Ticket e8d439c77685eca6.
+  * Improved the cost estimation for an index scan which includes a WHERE
+    clause that can be partially or fully evaluated using columns in the index
+    and without having to do a table lookup. This fixes a performance regression
+    that occurred for some obscure queries following the ORDER BY LIMIT optimization
+    introduced in version 3.12.0. 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:41:17 UTC 2016 - astieger@suse.com
+
+- Fix SLE 11 for previous change: noarch subpackages not supported
+
+-------------------------------------------------------------------
+Tue Aug  2 11:00:30 UTC 2016 - tchvatal@suse.com
+
+- Reduce the conditions a bit and sort with spec-cleaner
+- Remove condition for old sle10 ppc machines
+
+-------------------------------------------------------------------
+Wed May 18 19:43:17 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.13.0:
+  * Postpone I/O associated with TEMP files for as long as possible,
+    with the hope that the I/O can ultimately be avoided completely.
+  * Merged the session extension into trunk.
+  * Added the ".auth ON|OFF" command to the command-line shell.
+  * Added the "--indent" option to the ".schema" and ".fullschema"
+    commands of the command-line shell, to turn on pretty-printing.
+  * Added the ".eqp full" option to the command-line shell, that does
+    both EXPLAIN and EXPLAIN QUERY PLAN on each statement that is
+    evaluated.
+  * Improved resistance against goofy query planner decisions caused by
+    incomplete or incorrect modifications to the sqlite_stat1 table by
+    the application.
+  * Added the sqlite3_db_config(db,SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION)
+    interface which allows the sqlite3_load_extension() C-API to be enabled
+    while keeping the load_extension() SQL function disabled for security.
+  * Change the temporary directory search algorithm on Unix to allow
+    directories with write and execute permission, but without read
+    permission, to serve as temporary directories. Apply this same
+    standard to the "." fallback directory.
+  * Fix a problem with the multi-row one-pass DELETE optimization that was
+    causing it to compute incorrect answers with a self-referential subquery
+    in the WHERE clause. Fix for ticket dc6ebeda9396087
+  * Fix a possible segfault with DELETE when table is a rowid table with an
+    INTEGER PRIMARY KEY and the WHERE clause contains a OR and the table has
+    one or more indexes that are able to trigger the OR optimization, but none
+    of the indexes reference any table columns other than the
+    INTEGER PRIMARY KEY. Ticket 16c9801ceba49.
+  * When checking for the WHERE-clause push-down optimization, verify that all
+    terms of the compound inner SELECT are non-aggregate, not just the last term.
+    Fix for ticket f7f8c97e97597.
+
+-------------------------------------------------------------------
+Tue Apr 19 06:04:57 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.12.2:
+  * Fix compatibility with some legacy versions of sqlite database
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Sat Apr  9 06:55:32 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.12.1:
+  * Fix a boundary condition error introduced by version 3.12.0 that
+    can result in a crash during heavy SAVEPOINT usage.
+  * Fix views so that they inherit column datatypes from the table
+    that they are defined against, when possible.
+  * Fix the query planner so that IS and IS NULL operators are able to
+    drive an index on a LEFT OUTER JOIN.
+
+-------------------------------------------------------------------
+Wed Mar 30 07:47:34 UTC 2016 - idonmez@suse.com
+
+- SQLite 3.12.0:
+  * The SQLITE_DEFAULT_PAGE_SIZE is increased from 1024 to 4096.
+    The SQLITE_DEFAULT_CACHE_SIZE is changed from 2000 to -2000
+    so the same amount of cache memory is used by default.
+  * Enhancements to the Lemon parser generator so that it creates
+    a smaller and faster SQL parser.
+  * Only create master journal files if two or more attached databases
+    are all modified, do not have PRAGMA synchronous set to OFF,
+    and do not have the journal_mode set to OFF, MEMORY, or WAL.
+  * Added the SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER option to
+    sqlite3_db_config() which allows the two-argument version of the
+    fts3_tokenizer() SQL function to be enabled or disabled at run-time.
+  * Added the sqlite3rbu_bp_progress() interface to the RBU extension.
+  * The PRAGMA defer_foreign_keys=ON statement now also disables RESTRICT
+    actions on foreign key.
+  * Added the sqlite3_system_errno() interface.
+  * Added the SQLITE_DEFAULT_SYNCHRONOUS and SQLITE_DEFAULT_WAL_SYNCHRONOUS
+    compile-time options. The SQLITE_DEFAULT_SYNCHRONOUS compile-time option
+    replaces the SQLITE_EXTRA_DURABLE option, which is no longer supported.
+  * Enhanced the ".stats" command in the command-line shell to show more
+    information about I/O performance obtained from /proc, when available.
+  * Make sure the sqlite3_set_auxdata() values from multiple triggers within
+    a single statement do not interfere with one another. Ticket dc9b1c91.
+  * Fix the code generator for expressions of the form "x IN (SELECT...)"
+    where the SELECT statement on the RHS is a correlated subquery.
+- Remove sqlite3-link-binary-with-libsqlite3.patch: replaced with configure
+  option --disable-static-shell
+
+-------------------------------------------------------------------
+Fri Mar 25 08:45:56 UTC 2016 - idonmez@suse.com
+
+- Enable secure delete by default, this matches Fedora & Android.
+  It can be disabled with `PRAGMA SECURE_DELETE = 0;`
+- Enable more extensions, syncing with Fedora & Gentoo.
+
+-------------------------------------------------------------------
+Mon Mar  7 15:22:53 UTC 2016 - dimstar@opensuse.org
+
+- Fix sqlite-fts5-link.patch: link libsqlite3.so with libm instead
+  of the sqlite3 binary: the library is the actual user of log().
+- Add sqlite3-link-binary-with-libsqlite3.patch: dyamically link
+  /usr/bin/sqlite3 to libsqlite3 instead of statically using it.
+- Move autoreconf call to build section, where it belongs.
+
+-------------------------------------------------------------------
+Mon Mar  7 13:53:03 UTC 2016 - idonmez@suse.com
+
+- Enable FTS5 support.
+- Add sqlite-fts5-link.patch to link to math library because FTS5
+  code uses log().
+
+-------------------------------------------------------------------
+Fri Mar  4 18:23:17 UTC 2016 - astieger@suse.com
+
+- SQLite 3.11.1:
+  * Fix an FTS5 issue in which the 'optimize' command could cause
+    index corruption.
+  * Fix a buffer overread that might occur if FTS5 is used to query
+    a corrupt database file.
+  * Increase the maximum "scope" value for the spellfix1 extension
+    from 6 to 30. 
+
+-------------------------------------------------------------------
+Tue Mar  1 16:18:25 UTC 2016 - lnussel@suse.de
+
+- explicitly enable readline support
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 18 15:32:46 UTC 2016 - mpluskal@suse.com
+
+- Update to 3.11.0
+  * Enhanced WAL mode so that it works efficiently with 
+    transactions that are larger than the cache_size.
+  * Added the FTS5 detail option.
+  * Added the "EXTRA" option to PRAGMA synchronous that does a sync 
+    of the containing directory when a rollback journal is unlinked 
+    in DELETE mode, for better durability. The SQLITE_EXTRA_DURABLE 
+    compile-time option enables PRAGMA synchronous=EXTRA by default.
+  * Enhanced the query planner so that it is able to use a covering
+    index as part of the OR optimization.
+  * Avoid recomputing NOT NULL and CHECK constraints on unchanged 
+    columns in UPDATE statement.
+  * Many micro-optimizations, resulting in a library that is faster 
+    than the previous release.
+  * By default, the shell is now in "auto-explain" mode. The output 
+    of EXPLAIN commands is automatically formatted.
+  * Added the ".vfslist" dot-command.
+  * The SQLITE_ENABLE_EXPLAIN_COMMENTS compile-time option is now 
+    turned on by default in the standard builds.
+
+-------------------------------------------------------------------
+Wed Jan 20 19:52:49 UTC 2016 - astieger@suse.com
+
+- SQlite 3.10.2:
+  * Fix case-folding bug introduced in 3.10.0 in the LIKE operator
+  * Fix a use-after-free that can occur when SQLite is compiled
+    with -DSQLITE_HAS_CODEC.
+  * Fix the build so that it works with -DSQLITE_OMIT_WAL.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:48:00 UTC 2016 - astieger@suse.com
+
+- SQLite 3.10.1:
+  * Fix a 16-month-old bug in the query planner that could generate
+    incorrect results when a scalar subquery attempts to use the
+    block sorting optimization.
+  * Add SQLITE_FCNTL_JOURNAL_POINTER file control
+
+-------------------------------------------------------------------
+Thu Jan  7 12:49:58 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.10.0
+- spec-cleaned
+* Added support for LIKE, GLOB, and REGEXP operators on virtual tables.
+* Added the colUsed field to sqlite3_index_info for use by the 
+	sqlite3_module.xBestIndex method.
+* Enhance the PRAGMA cache_spill statement to accept a 32-bit integer parameter 
+	which is the threshold below which cache spilling is prohibited.
+* On unix, if a symlink to a database file is opened, then the corresponding 
+	journal files are based on the actual filename, not the symlink name.
+* Added the "--transaction" option to sqldiff.
+* Added the sqlite3_db_cacheflush() interface.
+* Added the sqlite3_strlike() interface.
+* When using memory-mapped I/O map the database file read-only so that stray 
+	pointers and/or array overruns in the application cannot accidently modify
+	the database file.
+* Added the experimental sqlite3_snapshot_get(), sqlite3_snapshot_open(), and 
+	sqlite3_snapshot_free() interfaces. These are subject to change or removal in
+	a subsequent release.
+* Enhance the 'utc' modifier in the date and time functions so that it is a no-op 
+	if the date/time is known to already be in UTC. (This is not a compatibility 
+	break since the behavior has long been documented as "undefined" in that case.)
+* Added the json_group_array() and json_group_object() SQL functions in the json
+	 extension.
+* Added the SQLITE_LIKE_DOESNT_MATCH_BLOBS compile-time option.
+* Many small performance optimizations.
++ Enhancements to the command-line shell:
+ * Added the ".changes ON|OFF" and ".vfsinfo" dot-commands.
++ Important fixes:
+ * Fix inconsistent integer to floating-point comparison operations that could 
+	result in a corrupt index if the index is created on a table column that 
+	contains both large integers and floating point values of similar magnitude.
+ * Fix an infinite-loop in the query planner that could occur on malformed common 
+	table expressions.
+ * Various bug fixes in the sqldiff tool.
+
+-------------------------------------------------------------------
+Mon Nov  2 20:51:40 UTC 2015 - astieger@suse.com
+
+- SQLite 3.9.2:
+  * Fix the schema parser so that it interprets certain (obscure
+    and ill-formed) CREATE TABLE statements the same as legacy.
+  * Fix a query planner problem that could result in an incorrect
+    answer due to the use of automatic indexing in subqueries in
+    the FROM clause of a correlated scalar subqueries.
+
+-------------------------------------------------------------------
+Fri Oct 16 19:58:52 UTC 2015 - astieger@suse.com
+
+- SQLite 3.9.1:
+  * Fix the json1 extension so that it does not recognize ASCII
+    form-feed as a whitespace character, in order to comply with
+    RFC-7159.
+  * Build and portability fixes.
+
+-------------------------------------------------------------------
+Thu Oct 15 14:35:51 UTC 2015 - astieger@suse.com
+
+- SQLite 3.9.0
+  * Add json1 extension module 
+  * The CREATE VIEW statement now accepts an optional list of
+    column names following the view name.
+  * Added support for indexes on expressions.
+  * Added support for table-valued functions in the FROM clause of a
+    SELECT statement.
+  * Added support for eponymous virtual tables.
+  * A VIEW may now reference undefined tables and functions when
+    initially created. Missing tables and functions are reported
+    when the VIEW is used in a query.
+  * Added the sqlite3_value_subtype() and sqlite3_result_subtype()
+    interfaced (used by the json1 extension).
+  * The query planner is now able to use partial indexes that
+    contain AND-connected terms in the WHERE clause.
+  * The sqlite3_analyzer utility is updated to report the depth of
+    each btree and to show the average fanout for indexes and
+    WITHOUT ROWID tables.
+  * Enhanced the dbstat virtual table so that it can be used as a
+    table-valued function where the argument is the schema to be
+    analyzed.
+  * sqlite3_memory_alarm() no-op.
+
+-------------------------------------------------------------------
+Fri Jul 31 11:44:40 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.8.11.1
+  * Restore an undocumented side-effect of PRAGMA cache_size: force 
+    the database schema to be parsed if the database has not been 
+    previously accessed.
+  * Fix a long-standing problem in sqlite3_changes() for WITHOUT 
+    ROWID tables that was reported a few hours after the 3.8.11 
+    release.
+
+-------------------------------------------------------------------
+Mon Jul 27 18:57:42 UTC 2015 - astieger@suse.com
+
+- SQLite 3.8.11:
+  * Significantly improved performance
+  * new interfaces and enhancements
+  * Important bug fixes for CREATE TABLE AS 
+  * Fix the skip-scan optimization so that it works correctly when
+    the OR optimization is used on WITHOUT ROWID tables. 
+  * Fix the sqlite3_memory_used() and sqlite3_memory_highwater()
+    interfaces so that they actually do provide a 64-bit answer. 
+  * experimental extensions, not enabled:
+    + RBU (Resumable Bulk Update) extension
+    + FTS5 (Full-text search) extension
+
+-------------------------------------------------------------------
+Sun May 24 20:45:03 UTC 2015 - astieger@suse.com
+
+- SQLite 3.8.10.2:
+  * Fix an index corruption issue introduced by version 3.8.7.
+
+-------------------------------------------------------------------
+Sun May 10 12:21:00 UTC 2015 - astieger@suse.com
+
+- SQLite 3.8.10.1:
+  * Make sqlite3_compileoption_used() responsive to the 
+    SQLITE_ENABLE_DBSTAT_VTAB compile-time option.
+  * Fix minor issues with the dbstat virtual table.
+
+-------------------------------------------------------------------
+Thu May  7 19:21:37 UTC 2015 - crrodriguez@opensuse.org
+
+- Update to SQLite 3.8.10
+* Added the y format string to the matchinfo() function of FTS3.
+* Performance improvements for ORDER BY, VACUUM, CREATE INDEX, 
+  PRAGMA integrity_check, and PRAGMA quick_check
+* Fix many obscure problems discovered while SQL fuzzing.
+* Add the ".binary" and ".limits" commands to the command-line shell
+* Make the "dbstat" virtual table part of standard builds 
+  when compiled with the SQLITE_ENABLE_DBSTAT_VTAB option.
+
+-------------------------------------------------------------------
+Wed Apr  8 19:03:41 UTC 2015 - astieger@suse.com
+
+- Update to SQLite 3.8.9:
+  * Added the sqlite3_status64() interface.
+  * Fix memory size tracking so that it works even if SQLite uses
+    more than 2GiB of memory.
+  * Added the PRAGMA index_xinfo command.
+  * Fix a potential 32-bit integer overflow problem in the
+    sqlite3_blob_read() and sqlite3_blob_write() interfaces.
+  * Ensure that prepared statements automatically reset on extended
+    error codes of SQLITE_BUSY and SQLITE_LOCKED even when
+    compiled using SQLITE_OMIT_AUTORESET.
+  * Correct miscounts in the sqlite3_analyzer.exe utility related
+    to WITHOUT ROWID tables.
+  * Added the ".dbinfo" command to the command-line shell.
+  * Improve the performance of fts3/4 queries that use the
+    OR operator and at least one auxiliary fts function.
+  * Fix a bug in the fts3 snippet() function causing it to omit
+    leading separator characters from snippets that begin with the
+    first token in a column. 
+
+-------------------------------------------------------------------
+Wed Feb 25 16:37:54 UTC 2015 - mpluskal@suse.com
+
+- Update to SQLite 3.8.8.3
+  * Fix a bug (ticket 2326c258d02ead33) that can lead to incorrect 
+    results if the qualifying constraint of a partial index 
+    appears in the ON clause of a LEFT JOIN.
+  * Added the ability to link against the "linenoise" command-line 
+    editing library in unix builds of the command-line shell.
+
+-------------------------------------------------------------------
+Thu Feb 12 12:59:28 UTC 2015 - astieger@suse.com
+
+- SQLite 3.8.8.2:
+  * Enhance sqlite3_wal_checkpoint_v2(TRUNCATE) interface so that
+    it truncates the WAL file even if there is no checkpoint work
+    to be done. 
+
+-------------------------------------------------------------------
+Tue Jan 20 20:14:31 UTC 2015 - andreas.stieger@gmx.de
+
+- SQLite 3.8.8.1:
+  * Fix a bug in the sorting logic, present since version 3.8.4,
+    that can cause output to appear in the wrong order on queries
+    that contains an ORDER BY clause, a LIMIT clause, and that have
+    approximately 60 or more columns in the result set.
+
+-------------------------------------------------------------------
+Fri Jan 16 21:01:06 UTC 2015 - andreas.stieger@gmx.de
+
+- SQLite 3.8.8
+- New Features:
+  * Added the PRAGMA data_version command
+  * Added the SQLITE_CHECKPOINT_TRUNCATE option to the
+    sqlite3_wal_checkpoint_v2() / PRAGMA wal_checkpoint.
+  * Added the sqlite3_stmt_scanstatus() when compiled with 
+    SQLITE_ENABLE_STMT_SCANSTATUS.
+  * The sqlite3_table_column_metadata() is enhanced to work
+    correctly on WITHOUT ROWID tables and to check for the
+    existence of a a table if the column name parameter is NULL.
+    The interface is now also included in the build by default,
+    without requiring the SQLITE_ENABLE_COLUMN_METADATA compile-
+    time option.
+  * Added the SQLITE_ENABLE_API_ARMOR compile-time option.
+  * Added the SQLITE_REVERSE_UNORDERED_SELECTS compile-time option.
+  * Added the SQLITE_SORTER_PMASZ compile-time option and 
+    SQLITE_CONFIG_PMASZ start-time option.
+  * Added the SQLITE_CONFIG_PCACHE_HDRSZ option to sqlite3_config()
+  * The number of rows in a VALUES clause is no longer limited by
+    SQLITE_LIMIT_COMPOUND_SELECT.
+  * Added the eval.c loadable extension that implements an eval()
+    SQL function that will recursively evaluate SQL.
+- Performance Enhancements:
+  * Reduce the number of memcpy() operations involved in balancing a
+    b-tree, for 3.2% overall performance boost.
+  * Improvements to cost estimates for the skip-scan optimization.
+  * The automatic indexing optimization is now capable of
+    generating a partial index if that is appropriate.
+- Bug fixes:
+  * Ensure durability following a power loss with "PRAGMA
+    journal_mode=TRUNCATE" by calling fsync() right after
+    truncating the journal file.
+  * The query planner now recognizes that any column in the right-
+    hand table of a LEFT JOIN can be NULL, even if that column has
+    a NOT NULL constraint. Avoid trying to optimize out NULL tests
+    in those cases.
+  * Make sure ORDER BY puts rows in ascending order even if the
+    DISTINCT operator is implemented using a descending index.
+  * Fix data races that might occur under stress when running with
+    many threads in shared cache mode where some of the threads are
+    opening and closing connections.
+  * Fix obscure crash bugs found by american fuzzy lop.
+- Other changes:
+  * Disable the use of the strchrnul() C-library routine unless it
+    is specifically enabled using the -DHAVE_STRCHRNULL compile-
+    time option.
+  * Improvements to the effectiveness and accuracy of the
+    likelihood(), likely(), and unlikely() SQL hint functions.
+
+-------------------------------------------------------------------
+Thu Dec 11 11:11:29 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.7.4:
+  * Bug fix: Add in a mutex that was omitted from the previous
+    release.
+
+-------------------------------------------------------------------
+Sat Dec  6 17:21:43 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.7.3:
+  * Ensure the cached KeyInfo objects (an internal abstraction not
+    visible to the application) do not go stale when operating in
+    shared cache mode and frequently closing and reopening some
+    database connections while leaving other database connections
+    on the same shared cache open continuously.
+  * Recognize that any column in the right-hand table of a LEFT
+    JOIN can be NULL even if the column has a NOT NULL constraint.
+    Do not apply optimizations that assume the column is never
+    NULL.
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.7.2:
+  * Enhance the ROLLBACK command so that pending queries are
+    allowed to continue as long as the schema is unchanged.
+  * Bug fix: Make sure that NULL results from OP_Column are fully
+    and completely NULL and do not have the MEM_Ephem bit set.
+  * Bug fix: The %c format in sqlite3_mprintf() is able to handle
+    precisions greater than 70.
+  * Bug fix: Do not automatically remove the DISTINCT keyword from
+    a SELECT that forms the right-hand side of an IN operator since
+    it is necessary if the SELECT also contains a LIMIT.
+
+-------------------------------------------------------------------
+Wed Oct 29 21:03:11 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.7.1:
+  * In PRAGMA journal_mode=TRUNCATE mode, call fsync() immediately
+    after truncating the journal file to ensure that the
+    transaction is durable across a power loss.
+  * Fix an assertion fault that can occur when updating the NULL
+    value of a field at the end of a table that was added using
+    ALTER TABLE ADD COLUMN.
+  * Do not attempt to use the strchrnul() function from the
+    standard C library unless the HAVE_STRCHRNULL compile-time
+    option is set.
+  * Fix a couple of problems associated with running an UPDATE or
+    DELETE on a VIEW with a rowid in the WHERE clause.
+
+-------------------------------------------------------------------
+Fri Oct 17 19:45:26 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.7
+- Performance Enhancements:
+  * Many micro-optimizations result in 20.3% more work for the same
+    number of CPU cycles relative to the previous release.
+  * The sorter can use auxiliary helper threads to increase real-
+    time response. This feature is off by default and may be
+    enabled using the PRAGMA threads command or the 
+    SQLITE_DEFAULT_WORKER_THREADS compile-time option.
+  * Enhance the skip-scan optimization so that it is able to skip
+    index terms that occur in the middle of the index, not just as
+    the left-hand side of the index.
+  * Improved optimization of CAST operators.
+  * Various improvements in how the query planner uses sqlite_stat4
+    information to estimate plan costs.
+- New Features:
+  * Added new interfaces with 64-bit length parameters:
+      sqlite3_malloc64()
+      sqlite3_realloc64()
+      sqlite3_bind_blob64()
+      sqlite3_result_blob64()
+      sqlite3_bind_text64()
+      sqlite3_result_text64()
+  * Added the new interface sqlite3_msize() that returns the size
+    of a memory allocation obtained from sqlite3_malloc64() and its
+    variants.
+  * Added the SQLITE_LIMIT_WORKER_THREADS option to sqlite3_limit()
+    and PRAGMA threads command for configuring the number of
+    available worker threads.
+  * The spellfix1 extension allows the application to optionally
+    specify the rowid for each INSERT. Added the User
+    Authentication extension.
+- Bug Fixes:
+  * Fix a bug in the partial index implementation that might result
+    in an incorrect answer if a partial index is used in a subquery
+    or in a view.
+  * Fix a query planner bug that might cause a table to be scanned
+    in the wrong direction (thus reversing the order of output)
+    when a DESC index is used to implement the ORDER BY clause on a
+    query that has an identical GROUP BY clause.
+  * Fix a bug in sqlite3_trace() that was causing it to sometimes
+    fail to print an SQL statement if that statement needed to be
+    re-prepared.
+  * Fix a faulty assert() statement.
+- Test, Debug, and Analysis Changes:
+  * Show ASCII-art abstract syntax tree diagrams using the
+    ".selecttrace" and ".wheretrace" commands in the command-line
+    shell when compiled with SQLITE_DEBUG,
+    SQLITE_ENABLE_SELECTTRACE, and SQLITE_ENABLE_WHERETRACE.
+    Also provide the sqlite3TreeViewExpr() and
+    sqlite3TreeViewSelect() entry points that can be invoked
+    from with the debugger to show the parse tree when stopped at
+    a breakpoint.
+  * Drop support for SQLITE_ENABLE_TREE_EXPLAIN. The SELECTTRACE
+    mechanism provides more useful diagnostics information.
+  * New options to the command-line shell for configuring auxiliary
+    memory usage: --pagecache, --lookaside, and --scratch.
+
+-------------------------------------------------------------------
+Fri Aug 15 18:13:00 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.6
+  * Added support for hexadecimal integer literals in the SQL
+    parser. (Ex: 0x123abc)
+  * Enhanced the PRAGMA integrity_check command to detect UNIQUE
+    and NOT NULL constraint violations.
+  * Increase the maximum value of SQLITE_MAX_ATTACHED from 62 to
+    125.
+  * Increase the timeout in WAL mode before issuing an
+    SQLITE_PROTOCOL error from 1 second to 10 seconds.
+  * Added the likely(X) SQL function.
+  * The unicode61 tokenizer is now included in FTS4 by default.
+  * Trigger automatic reprepares on all prepared statements when
+    ANALYZE is run.
+  * Added a new loadable extension source code file to the source
+    tree: fileio.c
+  * Add extension functions readfile(X) and writefile(X,Y) (using
+    code copy/pasted from fileio.c in the previous bullet) to the
+    command-line shell.
+  * Added the .fullschema dot-command to the command-line shell.
+  * performance enhancements
+  * bug fixes
+
+-------------------------------------------------------------------
+Wed Jun  4 20:00:01 UTC 2014 - andreas.stieger@gmx.de
+
+- SQlite 3.8.5
+- New and improved:
+  * Added support for partial sorting by index.
+  * Enhance the query planner so that it always prefers an index
+    that uses a superset of WHERE clause terms relative to some
+    other index.
+  * Improvements to the automerge command of FTS4 to better control
+    the index size for a full-text index that is subject to a large
+    number of updates.
+  * Added the sqlite3_rtree_query_callback() interface to R-Tree
+    extension
+  * Added new URI query parameters "nolock" and "immutable".
+  * Use less memory by not remembering CHECK constraints on
+    read-only database connections.
+  * Enable the OR optimization for WITHOUT ROWID tables.
+  * Render expressions of the form "x IN (?)" (with a single value
+    in the list on the right-hand side of the IN operator) as if
+    they where "x==?", Similarly optimize "x NOT IN (?)"
+  * Add the ".system" and ".once" commands to the command-line shell
+  * Added the SQLITE_IOCAP_IMMUTABLE bit to the set of bits that
+    can be returned by the xDeviceCharacteristics method of a VFS.
+  * Added the SQLITE_TESTCTRL_BYTEORDER test control.
+- Bug Fixes:
+  * OFFSET clause ignored on queries without a FROM clause.
+  * Assertion fault on queries involving expressions of the form
+    "x IN (?)".
+  * Incorrect column datatype reported.
+  * Duplicate row returned on a query against a table with more than
+    16 indices, each on a separate column, and all used via OR-
+    connected constraints.
+  * Partial index causes assertion fault on UPDATE OR REPLACE.
+  * Crash when calling undocumented SQL function 
+    sqlite_rename_parent() with NULL parameters.
+  * ORDER BY ignored if the query has an identical GROUP BY.
+  * The group_concat(x,'') SQL function returns NULL instead of an
+    empty string when all inputs are empty strings.
+  * Fix a bug in the VDBE code generator that caused crashes when
+    doing an INSERT INTO ... SELECT statement where the number of
+    columns being inserted is larger than the number of columns in
+    the destination table.
+  * Fix a problem in CSV import in the command-line shell where if
+    the leftmost field of the first row in the CSV file was both
+    zero bytes in size and unquoted no data would be imported.
+  * Fix a problem in FTS4 where the left-most column that contained
+    the notindexed column name as a prefix was not indexed rather
+    than the column whose name matched exactly.
+  * Fix the sqlite3_db_readonly() interface so that it returns
+    true if the database is read-only due to the file format write
+    version number being too large.
+
+-------------------------------------------------------------------
+Wed Apr 23 08:12:14 UTC 2014 - tittiatcoke@gmail.com
+
+- Build SQLite with the unlock_notify API, which is now required
+  for the akonadi QSQLITE3 driver. "-DSQLITE_ENABLE_UNLOCK_NOTIFY" 
+
+-------------------------------------------------------------------
+Thu Apr  3 19:29:14 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.4.3:
+  - fix for a problem that might cause incorrect query results on a
+    query that mixes DISTINCT, GROUP BY in a subquery, and ORDER BY
+- Fix obsolete-not-provided warning on sqlite-64bit for ppc64
+
+-------------------------------------------------------------------
+Sat Mar 29 14:32:55 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.4.2:
+  * Fix a potential buffer overread that could result when trying
+    to search a corrupt database file. 
+- fix duplicate file warning on current.html on -doc package
+
+-------------------------------------------------------------------
+Wed Mar 12 03:59:30 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.4.1:
+  * When computing the cost of the skip-scan optimization, take
+    into account the fact that multiple seeks are required. 
+
+-------------------------------------------------------------------
+Mon Mar 10 15:43:55 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.4
+- general changes:
+  * Code optimization and refactoring for improved performance.
+  * Add the ".clone" and ".save" commands to the command-line shell.
+  * Update the banner on the command-line shell to alert novice
+    users when they are using an ephemeral in-memory database.
+  * Fix editline support in the command-line shell.
+  * Add support for coverage testing of VDBE programs using the
+    SQLITE_TESTCTRL_VDBE_COVERAGE verb of sqlite3_test_control().
+  * Update the _FILE_OFFSET_BITS macro so that builds work again on
+    QNX.
+  * Change the datatype of SrcList.nSrc from type u8 to type int to
+    work around an issue in the C compiler on AIX.
+- bug fixes:
+  * Bug fix: Fix the char() SQL function so that it returns an empty
+    string rather than an "out of memory" error when called with
+    zero arguments.
+  * Bug fix: DISTINCT now recognizes that a zeroblob and a blob of
+    all 0x00 bytes are the same thing.
+  * Bug fix: Compute the correct answer for queries that contain an
+    IS NOT NULL term in the WHERE clause and also contain an OR term
+    in the WHERE clause and are compiled with SQLITE_ENABLE_STAT4.
+  * Bug fix: Make sure "rowid" columns are correctly resolved in
+    joins between normal tables and WITHOUT ROWID tables.
+  * Bug fix: Make sure the same temporary registers are not used
+    in concurrent co-routines used to implement compound SELECT
+    statements containing ORDER BY clauses, as such use can lead to
+    incorrect answers.
+  * Bug fix: Ensure that "ORDER BY random()" clauses do not get
+    optimized out.
+  * Bug fix: Repair a name-resolution error that can occur in
+    sub-select statements contained within a TRIGGER.
+  * Bug fix: Fix column default values expressions of the form 
+    "DEFAULT(-(-9223372036854775808))" so that they work correctly,
+    initializing the column to a floating point value approximately
+    equal to +9223372036854775808.0.
+
+-------------------------------------------------------------------
+Wed Feb 12 08:59:06 UTC 2014 - andreas.stieger@gmx.de
+
+- SQLite 3.8.3.1:
+  * Fix a bug that causes rows to go missing on some queries with
+    OR clauses and IS NOT NULL operators in the WHERE clause, when
+    the SQLITE_ENABLE_STAT3 or SQLITE_ENABLE_STAT4 compile-time
+    options are used.
+    These compile-time options are not used in this package.
+- add HTML documentation in sqlite3-doc package
+
+-------------------------------------------------------------------
+Tue Feb  4 14:55:29 UTC 2014 - max@suse.com
+
+- New version: 3.8.3:
+  * Added support for common table expressions and the WITH
+    clause.
+  * Added the printf() SQL function.
+  * Added SQLITE_DETERMINISTIC as an optional bit in the 4th
+    argument to the sqlite3_create_function() and related
+    interfaces, providing applications with the ability to create
+    new functions that can be factored out of inner loops when
+    they have constant arguments.
+  * Add SQLITE_READONLY_DBMOVED error code, returned at the
+    beginning of a transaction, to indicate that the underlying
+    database file has been renamed or moved out from under SQLite.
+  * Allow arbitrary expressions, including function calls and
+    subqueries, in the filename argument to ATTACH.
+  * Allow a VALUES clause to be used anywhere a SELECT statement
+    is valid.
+  * Reseed the PRNG used by sqlite3_randomness(N,P) when invoked
+    with N==0. Automatically reseed after a fork() on unix.
+  * Enhance the spellfix1 virtual table so that it can search
+    efficiently by rowid.
+  * Performance enhancements.
+  * Improvements to the comments in the VDBE byte-code display
+    when running EXPLAIN.
+  * Add the "%token_class" directive to LEMON parser generator and
+    use it to simplify the grammar.
+  * Change the LEMON source code to avoid calling C-library
+    functions that OpenBSD considers dangerous. (Ex: sprintf).
+  * Bug fix: In the command-line shell CSV import feature, do not
+    end a field when an escaped double-quote occurs at the end of
+    a CRLN line.
+
+-------------------------------------------------------------------
+Tue Jan  7 17:07:55 UTC 2014 - max@suse.com
+
+- Simplify building on RH for Application:Geo.
+- See discussion in https://build.opensuse.org/request/show/212812
+
+-------------------------------------------------------------------
+Wed Dec 11 20:48:47 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 3.8.2:
+- adds support for WITHOUT ROWID tables
+  http://sqlite.org/withoutrowid.html
+- potentially incompatible change: cast from very large positive
+  floating point number no longer results in most negavtive number,
+  now casts from float to integers return integer closest to float
+  between value and zero. Affects routines with implicit casts like
+  sqlite3_column_int64()
+- a number of performance enhancements
+- Full list of changes: http://sqlite.org/releaselog/3_8_2.html
+
+-------------------------------------------------------------------
+Fri Oct 18 07:18:45 UTC 2013 - kpetsch@suse.com
+
+- New version 3.8.1:
+- Full list of changes: http://sqlite.org/releaselog/3_8_1.html
+- Highlights:
+  * Enhancements to the query planner
+  * Refactor the implementation of PRAGMA statements to improve
+  	parsing performance.
+  * Add the "totype.c" extension, implementing the tointeger() and 
+  	toreal() SQL functions. 
+  * Added the SQLITE_MINIMUM_FILE_DESCRIPTOR compile-time option 
+
+-------------------------------------------------------------------
+Mon Sep 23 11:49:21 UTC 2013 - max@suse.com
+
+- New version 3.8.0.2:
+- Full list of changes: http://sqlite.org/releaselog/3_8_0_2.html
+- Highlights:
+  * Add support for partial indexes.
+  * Cut-over to the next generation query planner for faster and
+    better query plans.
+  * Added the FTS4 notindexed option, allowing non-indexed columns
+    in an FTS4 table.
+  * Added the SQLITE_ALLOW_URI_AUTHORITY compile-time option.
+
+-------------------------------------------------------------------
+Mon Aug 26 10:33:58 UTC 2013 - max@suse.com
+
+- New version 3.7.17.
+- Full list of changes: http://sqlite.org/releaselog/3_7_17.html
+- Highlights:
+  * Add support for memory-mapped I/O.
+  * Assigned the integer at offset 68 in the database header as
+    the Application ID for when SQLite is used as an application
+    file-format. Added the PRAGMA application_id command to query
+    and set the Application ID.
+  * Enhance the extension loading mechanism to be more flexible
+    (while still maintaining backwards compatibility) in two ways:
+    1. If the default entry point "sqlite3_extension_init" is not
+       present in the loadable extension, also try an entry point
+       "sqlite3_X_init" where "X" is based on the shared library
+       filename. This allows every extension to have a different
+       entry point, which allows them to be statically linked with
+       no code changes.
+    2. The shared library filename passed to
+       sqlite3_load_extension() may omit the filename suffix, and
+       an appropriate architecture-dependent suffix (".so",
+       ".dylib", or ".dll") will be added automatically.
+  * Added many new loadable extensions to the source tree,
+    including amatch, closure, fuzzer, ieee754, nextchar, regexp,
+    spellfix, and wholenumber.
+  * Bug fix: Fix a potential database corruption bug in shared
+    cache mode when one database connection is closed while
+    another is in the middle of a write transaction. Ticket
+    e636a050b7
+
+-------------------------------------------------------------------
+Mon Aug 12 22:31:19 UTC 2013 - max@suse.com
+
+- The Tcl bindings for SQLite are now part of the Tcl core, so the
+  sqlite3-tcl subpackage is no longer needed.
+
+-------------------------------------------------------------------
+Wed Mar 20 12:09:38 UTC 2013 - max@suse.com
+
+- New Version 3.7.16:
+  * Added the PRAGMA foreign_key_check command.
+  * Added new extended error codes for all SQLITE_CONSTRAINT
+    errors
+  * Added the SQLITE_READONLY_ROLLBACK extended error code for
+    when a database cannot be opened because it needs rollback
+    recovery but is read-only.
+  * Added SQL functions unicode(A) and char(X1,...,XN).
+  * Performance improvements for PRAGMA incremental_vacuum,
+    especially in cases where the number of free pages is greater
+    than what will fit on a single trunk page of the freelist.
+  * Improved optimization of queries containing aggregate min() or
+    max().
+  * Enhance virtual tables so that they can potentially use an
+    index when the WHERE clause contains the IN operator.
+  * Allow indices to be used for sorting even if prior terms of
+    the index are constrained by IN operators in the WHERE clause.
+  * Enhance the PRAGMA table_info command so that the "pk" column
+    is an increasing integer to show the order of columns in the
+    primary key.
+  * Enhance the query optimizer to exploit transitive join
+    constraints.
+  * Performance improvements in the query optimizer.
+  * Allow the error message from PRAGMA integrity_check to be
+    longer than 20000 bytes.
+  * Improved name resolution for deeply nested queries.
+  * Added the test_regexp.c module as a demonstration of how to
+    implement the REGEXP operator.
+  * Improved error messages in the RTREE extension.
+  * Enhance the command-line shell so that a non-zero argument to
+    the ".exit" command causes the shell to exit immediately
+    without cleanly shutting down the database connection.
+  * Improved error messages for invalid boolean arguments to
+    dot-commands in the command-line shell.
+  * Improved error messages for "foreign key mismatch" showing the
+    names of the two tables involved.
+  * Remove all uses of umask() in the unix VFS.
+  * Added the PRAGMA vdbe_addoptrace and PRAGMA vdbe_debug
+    commands.
+  * Change to use strncmp() or the equivalent instead of memcmp()
+    when comparing non-zero-terminated strings.
+  * Update cygwin interfaces to omit deprecated API calls.
+  * Enhance the spellfix1 extension so that the edit distance cost
+    table can be changed at runtime by inserting a string like
+    'edit_cost_table=TABLE' into the "command" field.
+  * Bug fix: repair a long-standing problem that could cause
+    incorrect query results in a 3-way or larger join that
+    compared INTEGER fields against TEXT fields in two or more
+    places. Ticket fc7bd6358f
+  * Bug fix: Issue an error message if the 16-bit reference
+    counter on a view overflows due to an overly complex query.
+  * Bug fix: Avoid leaking memory on LIMIT and OFFSET clauses in
+    deeply nested UNION ALL queries.
+  * Bug fix: Make sure the schema is up-to-date prior to running
+    pragmas table_info, index_list, index_info, and
+    foreign_key_list.
+
+-------------------------------------------------------------------
+Thu Jan 24 14:19:25 UTC 2013 - max@suse.com
+
+- New Version 3.7.15.2:
+  * Added the sqlite3_errstr() interface.
+  * Avoid invoking the sqlite3_trace() callback multiple times
+    when a statement is automatically reprepared due to
+    SQLITE_SCHEMA errors.
+  * Enhance IN operator processing to make use of indices with
+    numeric affinities.
+  * Do full-table scans using covering indices when possible,
+    under the theory that an index will be smaller and hence can
+    be scanned with less I/O.
+  * Enhance the query optimizer so that ORDER BY clauses are more
+    aggressively optimized, especially in joins where various
+    terms of the ORDER BY clause come from separate tables of the
+    join.
+  * Add the ability to implement FROM clause subqueries as
+    coroutines rather that manifesting the subquery into a
+    temporary table.
+  * Several enhancements the command-line shell.
+  * Added the busy_timeout pragma.
+  * Added the instr() SQL function.
+  * Added the SQLITE_FCNTL_BUSYHANDLER file control, used to allow
+    VFS implementations to get access to the busy handler
+    callback.
+  * The xDelete method in the built-in VFSes now return
+    SQLITE_IOERR_DELETE_NOENT if the file to be deleted does not
+  * exist.
+  * Bug fix: Avoid various concurrency problems in shared cache
+    mode.
+  * Bug fix: Avoid a deadlock or crash if the backup API, shared
+    cache, and the SQLite Encryption Extension are all used at
+    once.
+  * Bug fix: SQL functions created using the TCL interface honor
+    the "nullvalue" setting.
+  * Bug fix: Fix a 32-bit overflow problem on CREATE INDEX for
+    databases larger than 16GB.
+  * Bug fix: Avoid segfault when using the COLLATE operator inside
+    of a CHECK constraint or view in shared cache mode.
+- Use %optflags for building
+- Fix debuginfo in the Tcl bindings.
+
+-------------------------------------------------------------------
+Fri Oct  5 07:13:36 UTC 2012 - max@suse.com
+
+- Bugfix release 3.7.14.1:
+  * Fix a bug that causes a segfault on a LEFT JOIN that includes
+    an OR in the ON clause.
+  * Work around a bug in the optimizer in the VisualStudio-2012
+    compiler that causes invalid code to be generated when
+    compiling SQLite on ARM.
+  * Fix the TCL interface so that the "nullvalue" setting is
+    honored for TCL implementations of SQL functions.
+
+-------------------------------------------------------------------
+Tue Sep  4 14:21:55 UTC 2012 - mmeister@suse.com
+
+- New version 3.7.14:
+  * Ensure that floating point values are preserved exactly when 
+    reconstructing a database from the output of the ".dump" 
+    command of the command-line shell.
+  * Added the sqlite3_close_v2() interface.
+  * Updated the command-line shell so that it can be built using 
+    SQLITE_OMIT_FLOATING_POINT and SQLITE_OMIT_AUTOINIT.
+  * Enhancements to PRAGMA integrity_check and PRAGMA quick_check 
+    so that they can optionally check just a single attached 
+    database install of all attached databases.
+  * Enhancements to WAL mode processing that ensure that at least 
+    one valid read-mark is available at all times, so that 
+    read-only processes can always read the database.
+  * Performance enhancements in the sorter used by ORDER BY and CREATE INDEX.
+  * Added the SQLITE_DISABLE_FTS4_DEFERRED compile-time option.
+  * Better handling of aggregate queries where the aggregate 
+    functions are contained within subqueries.
+  * Enhance the query planner so that it will try to use a 
+    covering index on queries that make use of or optimization.
+
+-------------------------------------------------------------------
+Fri Aug 31 15:41:54 UTC 2012 - max@suse.com
+
+- New version 3.7.13:
+  * In-memory databases that are specified using URI filenames are
+    allowed to use shared cache, so that the same in-memory
+    database can be accessed from multiple database connections.
+  * Recognize and use the mode=memory query parameter in URI
+    filenames.
+  * Avoid resetting the schema of shared cache connections when
+    any one connection closes. Instead, wait for the last
+    connection to close before reseting the schema.
+  * In the RTREE extension, when rounding 64-bit floating point
+    numbers to 32-bit for storage, always round in a direction
+    that causes the bounding box to get larger.
+  * Adjust the unix driver to avoid unnecessary calls to fchown().
+  * Add interfaces sqlite3_quota_ferror() and
+    sqlite3_quota_file_available() to the test_quota.c module.
+  * The sqlite3_create_module() and sqlite3_create_module_v2()
+    interfaces return SQLITE_MISUSE on any attempt to overload or
+    replace a virtual table module. The destructor is always
+    called in this case, in accordance with historical and current
+    documentation.
+
+-------------------------------------------------------------------
+Thu May 24 07:39:26 UTC 2012 - max@suse.com
+
+- New version 3.7.12:
+  * Add the SQLITE_DBSTATUS_CACHE_WRITE option for
+    sqlite3_db_status().
+  * Optimize the typeof() and length() SQL functions so that they
+    avoid unnecessary reading of database content from disk.
+  * Add the FTS4 "merge" command, the FTS4 "automerge" command,
+    and the FTS4 "integrity-check" command.
+  * Report the name of specific CHECK constraints that fail.
+  * In the command-line shell, use popen() instead of fopen() if
+    the first character of the argument to the ".output" command
+    is "|".
+  * Make use of OVERLAPPED in the windows VFS to avoid some system
+    calls and thereby obtain a performance improvement.
+  * More aggressive optimization of the AND operator when one side
+    or the other is always false.
+  * Improved performance of queries with many OR-connected terms
+    in the WHERE clause that can all be indexed.
+  * Add the SQLITE_RTREE_INT_ONLY compile-time option to force the
+    R*Tree Extension Module to use integer instead of floating
+    point values for both storage and computation.
+  * Enhance the PRAGMA integrity_check command to use much less
+    memory when processing multi-gigabyte databases.
+  * New interfaces added to the test_quota.c add-on module.
+  * Added the ".trace" dot-command to the command-line shell.
+  * Allow virtual table constructors to be invoked recursively.
+  * Improved optimization of ORDER BY clauses on compound queries.
+  * Improved optimization of aggregate subqueries contained within
+    an aggregate query.
+  * Bug fix: Fix the RELEASE command so that it does not cancel
+    pending queries. This repairs a problem introduced in 3.7.11.
+  * Bug fix: Do not discard the DISTINCT as superfluous unless a
+    subset of the result set is subject to a UNIQUE constraint and
+    it none of the columns in that subset can be NULL. Ticket
+    385a5b56b9.
+  * Bug fix: Do not optimize away an ORDER BY clause that has the
+    same terms as a UNIQUE index unless those terms are also NOT
+    NULL. Ticket 2a5629202f.
+- 79a4a3a84f.patch isn't needed anymore.
+
+-------------------------------------------------------------------
+Mon May 14 09:53:58 UTC 2012 - idonmez@suse.com
+
+- Add upstream commit 79a4a3a84f to fix subversion failures 
+
+-------------------------------------------------------------------
+Fri May  4 06:49:49 UTC 2012 - max@suse.com
+
+- Spec file cleanup
+- Drop support for the pre 11.0 packaging scheme.
+- New version 3.7.11. Changes since 3.7.8 include:
+  * Enhance the INSERT syntax to allow multiple rows to be inserted
+    via the VALUES clause.
+  * Enhance the CREATE VIRTUAL TABLE command to support the IF NOT
+    EXISTS clause.
+  * Added the sqlite3_stricmp() interface as a counterpart to
+    sqlite3_strnicmp().
+  * Added the sqlite3_db_readonly() interface.
+  * Added the SQLITE_FCNTL_PRAGMA file control, giving VFS
+    implementations the ability to add new PRAGMA statements or to
+    override built-in PRAGMAs.
+  * Queries of the form: "SELECT max(x), y FROM table" returns the
+    value of y on the same row that contains the maximum x value.
+  * Added support for the FTS4 languageid option.
+  * Documented support for the FTS4 content option. This feature
+    has actually been in the code since version 3.7.9 but is only
+    now considered to be officially supported.
+  * Pending statements no longer block ROLLBACK. Instead, the
+    pending statement will return SQLITE_ABORT upon next access
+    after the ROLLBACK.
+  * Improvements to the handling of CSV inputs in the command-line
+    shell
+  * The default schema format number is changed from 1 to 4. This
+    means that, unless the PRAGMA legacy_file_format=ON statement
+    is run, newly created database files will be unreadable by
+    version of SQLite prior to 3.3.0 (2006-01-10). It also means
+    that the descending indices are enabled by default.
+  * The sqlite3_pcache_methods structure and the
+    SQLITE_CONFIG_PCACHE and SQLITE_CONFIG_GETPCACHE configuration
+    parameters are deprecated. They are replaced by a new
+    sqlite3_pcache_methods2 structure and SQLITE_CONFIG_PCACHE2 and
+    SQLITE_CONFIG_GETPCACHE2 configuration parameters.
+  * Added the powersafe overwrite property to the VFS
+    interface. Provide the SQLITE_IOCAP_POWERSAFE_OVERWRITE I/O
+    capability, the SQLITE_POWERSAFE_OVERWRITE compile-time option,
+    and the "psow=BOOLEAN" query parameter for URI filenames.
+  * Added the sqlite3_db_release_memory() interface and the
+    shrink_memory pragma.
+  * Added the sqlite3_db_filename() interface.
+  * Added the sqlite3_stmt_busy() interface.
+  * Added the sqlite3_uri_boolean() and sqlite3_uri_int64()
+    interfaces.
+  * If the argument to PRAGMA cache_size is negative N, that means
+    to use approximately -1024*N bytes of memory for the page cache
+    regardless of the page size.
+  * Enhanced the default memory allocator to make use of _msize()
+    on windows, malloc_size() on Mac, and malloc_usable_size() on
+    Linux.
+  * Enhanced the query planner to support index queries with range
+    constraints on the rowid.
+  * Enhanced the query planner flattening logic to allow UNION ALL
+    compounds to be promoted upwards to replace a simple wrapper
+    SELECT even if the compounds are joins.
+  * Enhanced the query planner so that the xfer optimization can be
+    used with INTEGER PRIMARY KEY ON CONFLICT as long as the
+    destination table is initially empty.
+  * Enhanced the windows VFS so that all system calls can be
+    overridden using the xSetSystemCall interface.
+  * Updated the "unix-dotfile" VFS to use locking directories with
+    mkdir() and rmdir() instead of locking files with open() and
+    unlink().
+  * Enhancements to the test_quota.c extension to support
+    stdio-like interfaces with quotas.
+  * Change the unix VFS to be tolerant of read() system calls that
+    return less then the full number of requested bytes.
+  * Change both unix and windows VFSes to report a sector size of
+    4096 instead of the old default of 512.
+  * In the TCL Interface, add the -uri option to the "sqlite3" TCL
+    command used for creating new database connection objects.
+  * Added the SQLITE_TESTCTRL_EXPLAIN_STMT test-control option with
+    the SQLITE_ENABLE_TREE_EXPLAIN compile-time option to enable
+    the command-line shell to display ASCII-art parse trees of SQL
+    statements that it processes, for debugging and analysis.
+  * Bug fix: Add an additional xSync when restarting a WAL in order
+    to prevent an exceedingly unlikely but theoretically possible
+    database corruption following power-loss. Ticket ff5be73dee.
+  * Bug fix: Change the VDBE so that all registers are initialized
+    to Invalid instead of NULL. Ticket 7bbfb7d442
+  * Bug fix: Fix problems that can result from 32-bit integer
+    overflow. Ticket ac00f496b7e2
+  * If a search token (on the right-hand side of the MATCH
+    operator) in FTS4 begins with "^" then that token must be the
+    first in its field of the document. ** Potentially Incompatible
+    Change **
+  * Added options SQLITE_DBSTATUS_CACHE_HIT and
+    SQLITE_DBSTATUS_CACHE_MISS to the sqlite3_db_status()
+    interface.
+  * Removed support for SQLITE_ENABLE_STAT2, replacing it with the
+    much more capable SQLITE_ENABLE_STAT3 option.
+  * Enhancements to the sqlite3_analyzer utility program, including
+    the --pageinfo and --stats options and support for multiplexed
+    databases.
+  * Enhance the sqlite3_data_count() interface so that it can be
+    used to determine if SQLITE_DONE has been seen on the prepared
+    statement.
+  * Added the SQLITE_FCNTL_OVERWRITE file-control by which the
+    SQLite core indicates to the VFS that the current transaction
+    will overwrite the entire database file.
+  * Increase the default lookaside memory allocator allocation size
+    from 100 to 128 bytes.
+  * Enhanced the query planner so that it can factor terms in and
+    out of OR expressions in the WHERE clause in an effort to find
+    better indices.
+  * Added the SQLITE_DIRECT_OVERFLOW_READ compile-time option,
+    causing overflow pages to be read directly from the database
+    file, bypassing the page cache.
+  * Remove limits on the magnitude of precision and width value in
+    the format specifiers of the sqlite3_mprintf() family of string
+    rendering routines.
+  * Fix a bug that prevent ALTER TABLE ... RENAME from working on
+    some virtual tables in a database with a UTF16 encoding.
+  * Fix a bug in ASCII-to-float conversion that causes slow
+    performance and incorrect results when converting numbers with
+    ridiculously large exponents.
+  * Fix a bug that causes incorrect results in aggregate queries
+    that use multiple aggregate functions whose arguments contain
+    complicated expressions that differ only in the case of string
+  * literals contained within those expressions.
+  * Fix a bug that prevented the page_count and quick_check pragmas
+    from working correctly if their names were capitalized.
+  * Fix a bug that caused VACUUM to fail if the count_changes
+    pragma was engaged.
+  * Fix a bug in virtual table implementation that causes a crash
+    if an FTS4 table is dropped inside a transaction and a
+    SAVEPOINT occurs afterwards.
+
+-------------------------------------------------------------------
+Thu Apr 26 22:04:07 UTC 2012 - behrisch@users.sourceforge.net
+
+- fixing tcl macro for old or non-SuSE builds
+
+-------------------------------------------------------------------
+Fri Oct  7 11:26:43 UTC 2011 - max@suse.com
+
+- New version 3.7.8:
+  * Orders of magnitude performance improvement for CREATE INDEX on
+    very large tables.
+  * Improved the windows VFS to better defend against interference
+    from anti-virus software.
+  * Improved query plan optimization when the DISTINCT keyword is
+    present.
+  * Allow more system calls to be overridden in the unix VFS - to
+    provide better support for chromium sandboxes.
+  * Increase the default size of a lookahead cache line from 100 to
+    128 bytes.
+  * Enhancements to the test_quota.c module so that it can track
+    preexisting files.
+  * Bug fix: Virtual tables now handle IS NOT NULL constraints
+    correctly.
+  * Bug fixes: Correctly handle nested correlated subqueries used
+    with indices in a WHERE clause.
+
+- Re-integrate the Tcl bidings as a subpackage, now that it is
+  easier to build both out of a single tarball.
+
+-------------------------------------------------------------------
+Thu Aug  4 13:56:02 UTC 2011 - idonmez@novell.com
+
+- New Version: 3.7.7.1:
+  * Fix a bug causing PRAGMA case_sensitive_like statements compiled
+    using sqlite3_prepare() to fail with an SQLITE_SCHEMA error.
+
+-------------------------------------------------------------------
+Fri Jun 24 12:32:50 UTC 2011 - max@novell.com
+
+- New Version: 3.7.7:
+  * Add support for URI filenames.
+  * Add the sqlite3_vtab_config() interface in support of
+    ON CONFLICT clauses with virtual tables.
+  * Add the xSavepoint, xRelease and xRollbackTo methods in
+    virtual tables in support of SAVEPOINT for virtual tables.
+  * Update the built-in FTS3/FTS4 and RTREE virtual tables to
+    support ON CONFLICT clauses and REPLACE.
+  * Avoid unnecessary reparsing of the database schema.
+  * Added support for the FTS4 prefix option and the FTS4 order
+    option.
+  * Allow WAL-mode databases to be opened read-only as long as
+    there is an existing read/write connection.
+  * Added support for short filenames.
+
+-------------------------------------------------------------------
+Fri May 20 08:38:22 UTC 2011 - max@novell.com
+
+- New Version: 3.7.6.3:
+  * Fix a problem with WAL mode which could cause transactions to
+    silently rollback if the cache_size is set very small (less than
+    10) and SQLite comes under memory pressure.
+- Enabled the column metadata APIs (bnc#383370).
+
+-------------------------------------------------------------------
+Wed Apr 13 16:02:10 UTC 2011 - max@novell.com
+
+- New Version: 3.7.6.1:
+  * Added the sqlite3_wal_checkpoint_v2() interface and enhanced
+    the wal_checkpoint pragma to support blocking checkpoints.
+  * Improvements to the query planner so that it makes better
+    estimates of plan costs and hence does a better job of
+    choosing the right plan, especially when SQLITE_ENABLE_STAT2
+    is used.
+  * Fix a bug which prevented deferred foreign key constraints
+    from being enforced when sqlite3_finalize() was not called
+    by one statement with a failed foreign key constraint prior
+    to another statement with foreign key constraints running.
+  * Integer arithmetic operations that would have resulted in
+    overflow are now performed using floating-point instead.
+  * Increased the version number on the VFS object to 3 and added
+    new methods xSetSysCall, xGetSysCall, and xNextSysCall used
+    for doing full-coverage testing.
+  * Increase the maximum value of SQLITE_MAX_ATTACHED from 30 to
+    62 (though the default value remains at 10).
+  * Added the fts4aux table
+  * Added support for compressed FTS4 content 
+  * Enhance the ANALYZE command to support the name of an index as
+    its argument, in order to analyze just that one index.
+  * Added the "unix-excl" built-in VFS on unix and unix-like
+    platforms.
+
+-------------------------------------------------------------------
+Thu Feb  3 14:52:19 UTC 2011 - max@novell.com
+
+- New Version: 3.7.5:
+  * Added the sqlite3_vsnprintf() interface.
+  * Added the SQLITE_DBSTATUS_LOOKASIDE_HIT,
+    SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE, and
+    SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL options for the
+    sqlite3_db_status() interface.
+  * Added the SQLITE_OMIT_AUTORESET compile-time option.
+  * Added the SQLITE_DEFAULT_FOREIGN_KEYS compile-time option.
+  * Updates to sqlite3_stmt_readonly() so that its result is
+    well-defined for all prepared statements and so that it works
+    with VACUUM.
+  * Added the "-heap" option to the command-line shell
+  * Fix a bug involving frequent changes in and out of WAL mode
+    and VACUUM that could (in theory) cause database corruption.
+  * Enhance the sqlite3_trace() mechanism so that nested SQL
+    statements such as might be generated by virtual tables are
+    shown but are shown in comments and without parameter
+    expansion. This greatly improves tracing output when using the
+    FTS3/4 and/or RTREE virtual tables.
+  * Change the xFileControl() methods on all built-in VFSes to
+    return SQLITE_NOTFOUND instead of SQLITE_ERROR for an
+    unrecognized operation code.
+  * The SQLite core invokes the SQLITE_FCNTL_SYNC_OMITTED file
+    control to the VFS in place of a call to xSync if the database
+    has PRAGMA synchronous set to OFF.
+
+- Split off sqlite3-tcl into a separate source package.
+
+-------------------------------------------------------------------
+Thu Jan 13 14:08:55 UTC 2011 - max@novell.com
+
+- Adjust the package to the new upstream tarball naming and
+  version numbering scheme.
+
+- New version: 3.7.4:
+  * Added the sqlite3_blob_reopen() interface to allow an
+    existing sqlite3_blob object to be rebound to a new row.
+  * Use the new sqlite3_blob_reopen() interface to improve the
+    performance of FTS.
+  * VFSes that do not support shared memory are allowed to access
+    WAL databases if PRAGMA locking_mode is set to EXCLUSIVE.
+  * Enhancements to EXPLAIN QUERY PLAN.
+  * Added the sqlite3_stmt_readonly() interface.
+  * Added PRAGMA checkpoint_fullfsync.
+  * Added the SQLITE_FCNTL_FILE_POINTER option to
+    sqlite3_file_control().
+  * Added support for FTS4 and enhancements to the FTS matchinfo()
+    function.
+  * Added the test_superlock.c module which provides example code
+    for obtaining an exclusive lock to a rollback or WAL database.
+  * Added the test_multiplex.c module which provides an example
+    VFS that provides multiplexing (sharding) of a DB, splitting
+    it over multiple files of fixed size.
+  * A very obscure bug associated with the or optimization was
+    fixed.
+
+-------------------------------------------------------------------
+Wed Nov 17 17:06:54 UTC 2010 - max@novell.com
+
+- New version: 3.7.3:
+  * Added the sqlite3_create_function_v2() interface that
+    includes a destructor callback.
+  * Added support for custom r-tree queries using
+    application-supplied callback routines to define the boundary
+    of the query region.
+  * The default page cache strives more diligently to avoid using
+    memory beyond what is allocated to it by
+    SQLITE_CONFIG_PAGECACHE. Or if using page cache is allocating
+    from the heap, it strives to avoid going over the
+    sqlite3_soft_heap_limit64(), even if
+    SQLITE_ENABLE_MEMORY_MANAGEMENT is not set.
+  * Added the sqlite3_soft_heap_limit64() interface as a
+    replacement for sqlite3_soft_heap_limit().
+  * The ANALYZE command now gathers statistics on tables even if
+    they have no indices.
+  * Tweaks to the query planner to help it do a better job of
+    finding the most efficient query plan for each query.
+  * Enhanced the internal text-to-numeric conversion routines so
+    that they work with UTF8 or UTF16, thereby avoiding some
+    UTF16-to-UTF8 text conversions.
+  * Fix a problem that was causing excess memory usage with large
+    WAL transactions in win32 systems.
+  * The interface between the VDBE and B-Tree layer is enhanced
+    such that the VDBE provides hints to the B-Tree layer letting
+    the B-Tree layer know when it is safe to use hashing instead
+    of B-Trees for transient tables.
+  * Miscellaneous documentation enhancements. 
+
+-------------------------------------------------------------------
+Fri Aug 27 10:42:55 UTC 2010 - max@novell.com
+
+- New version: 3.7.2:
+  * Added new commands SQLITE_DBSTATUS_SCHEMA_USED and
+    SQLITE_DBSTATUS_STMT_USED to the sqlite3_db_status()
+    interface, in order to report out the amount of memory used
+    to hold the schema and prepared statements of a connection.
+ 
+  * Increase the maximum size of a database pages from 32KiB to
+    64KiB.
+
+  * Use the LIKE optimization even if the right-hand side string
+    contains no wildcards.
+
+  * Added the SQLITE_FCNTL_CHUNK_SIZE verb to the
+    sqlite3_file_control() interface for both unix and windows, to
+    cause database files to grow in large chunks in order to reduce
+    disk fragmentation.
+
+  * Fixed a bug in the query planner that caused performance
+    regresssions relative to 3.6.23.1 on some complex joins.
+
+  * Fixed a typo in the OS/2 backend.
+
+  * Refactored the pager module.
+
+  * The SQLITE_MAX_PAGE_SIZE compile-time option is now silently
+    ignored. The maximum page size is hard-coded at 65536 bytes.
+
+  * Fix an old and very obscure bug that can lead to corruption of
+    the database free-page list when incremental_vacuum is used.
+
+-------------------------------------------------------------------
+Thu Aug  5 12:20:40 CEST 2010 - max@suse.de
+
+- New version 3.7.0.1:
+  * Fix a potential database corruption problem that can result
+    if the same database file is alternately written by version
+    3.7.0 and 3.6.23.1.
+  * Fix a possible performance regression caused by the
+    introduction of automatic indexing. 
+
+-------------------------------------------------------------------
+Thu Jul 22 19:08:56 CEST 2010 - max@suse.de
+
+- New version: 3.7.0:
+  * Added support for write-ahead logging.
+  * Query planner enhancement - automatic transient indices are
+    created when doing so reduces the estimated query time.
+  * Query planner enhancement - the ORDER BY becomes a no-op if
+    the query also contains a GROUP BY clause that forces the
+    correct output order.
+  * Add the SQLITE_DBSTATUS_CACHE_USED verb for
+    sqlite3_db_status().
+  * The logical database size is now stored in the database
+    header so that bytes can be appended to the end of the
+    database file without corrupting it and so that SQLite will
+    work correctly on systems that lack support for ftruncate(). 
+
+-------------------------------------------------------------------
+Mon Jul  5 09:32:28 CEST 2010 - max@suse.de
+
+- Bugfix release: 3.6.23.1
+  * Fix a bug in the offsets() function of FTS3.
+  * Fix a missing "sync" that when omitted could lead to database
+    corruption if a power failure or OS crash occurred just as a
+    ROLLBACK operation was finishing. 
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:25 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Wed Mar 10 17:30:05 CET 2010 - max@suse.de
+
+- Version 3.6.23:
+  * Added the secure_delete pragma.
+
+  * Added the sqlite3_compileoption_used() and
+    sqlite3_compileoption_get() interfaces as well as the
+    compile_options pragma and the sqlite_compileoption_used() and
+    sqlite_compileoption_get() SQL functions.
+
+  * Added the sqlite3_log() interface together with the
+    SQLITE_CONFIG_LOG verb to sqlite3_config(). The ".log" command
+    is added to the Command Line Interface.
+
+  * Improvements to FTS3.
+
+  * Improvements and bug-fixes in support for
+    SQLITE_OMIT_FLOATING_POINT.
+
+  * The integrity_check pragma is enhanced to detect out-of-order
+    rowids.
+
+  * The ".genfkey" operator has been removed from the Command Line
+    Interface.
+
+  * Updates to the co-hosted Lemon LALR(1) parser
+    generator. (These updates did not effect SQLite.)
+
+  * Various minor bug fixes and performance enhancements.
+
+-------------------------------------------------------------------
+Wed Jan 20 16:02:54 CET 2010 - max@suse.de
+
+- Add -fno-strict-aliasing to CFLAGS as a temporary workaround
+  for a crash on (at least) PPC (bnc#571934).
+
+-------------------------------------------------------------------
+Thu Jan 14 17:04:48 UTC 2010 - max@novell.com
+
+- New version: 3.6.22:
+  * Fix bugs that can (rarely) lead to incorrect query results
+    when the CAST or OR operators are used in the WHERE clause of
+    a query.
+  * Continuing enhancements and improvements to FTS3.
+  * The SQL output resulting from sqlite3_trace() is now modified
+    to include the values of bound parameters.
+  * Performance optimizations targetting a specific use case from
+    a single high-profile user of SQLite. A 12% reduction in the
+    number of CPU operations is achieved (as measured by
+    valgrind). Actual performance improvements in practice may
+    vary depending on workload. Changes include:
+    * The ifnull() and coalesce() SQL functions are now
+      implemented using in-line VDBE code rather than calling
+      external functions, so that unused arguments need never be
+      evaluated.
+    * The substr() SQL function does not bother to measure the
+      length its entire input string if it is only computing a
+      prefix.
+    * Unnecessary OP_IsNull, OP_Affinity, and OP_MustBeInt VDBE
+      opcodes are suppressed.
+    * Various code refactorizations for performance.
+  * The FTS3 extension has undergone a major rework and
+    cleanup. New FTS3 documentation is now available.
+  * The SQLITE_SECURE_DELETE compile-time option fixed to make
+    sure that content is deleted even when the truncate
+    optimization applies.
+  * Improvements to "dot-command" handling in the Command Line
+    Interface.
+  * Other minor bug fixes and documentation enhancements. 
+
+-------------------------------------------------------------------
+Mon Dec 14 16:40:50 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Nov 30 18:24:34 CET 2009 - max@suse.de
+
+- New version: 3.6.20.
+- Reworked package to use the "amalgamation" source distribution
+  as recommended by the author and to fix the following bugs:
+  * bnc#555845: sqlite3 should link libdl
+  * bnc#470371: system sqlite should be built with fts3
+
+-------------------------------------------------------------------
+Thu Oct 22 21:39:13 UTC 2009 - andrea@opensuse.org
+
+- enabled load-extension option since some packages need
+  such symbol
+
+-------------------------------------------------------------------
+Wed Aug  5 18:20:21 CEST 2009 - max@suse.de
+
+- New version: 3.6.16:
+  * Fix a bug (ticket #3929) that occasionally causes INSERT or
+    UPDATE operations to fail on an indexed table that has a
+    self-modifying trigger.
+  * Refactor the internal representation of SQL expressions so
+    that  they use less memory on embedded platforms.
+  * Reduce the amount of stack space used
+  * The sqlite3_create_function() family of interfaces now return
+    SQLITE_MISUSE instead of SQLITE_ERROR when passed invalid
+    parameter combinations.
+  * When new tables are created using CREATE TABLE ... AS SELECT
+    ... the datatype of the columns is the simplified SQLite
+    datatype (TEXT, INT, REAL, NUMERIC, or BLOB) instead of a
+    copy of the original datatype from the source table.
+  * Resolve race conditions when checking for a hot rollback
+    journal.
+  * The sqlite3_shutdown() interface frees all mutexes under
+    windows.
+  * Enhanced robustness against corrupt database files
+  * Continuing improvements to the test suite and fixes to
+    obscure bugs and inconsistencies that the test suite
+    improvements are uncovering. 
+  * Other minor bug fixes and performance optimizations. 
+
+-------------------------------------------------------------------
+Tue Jun  2 17:45:52 CEST 2009 - max@suse.de
+
+- New version 3.6.14.2:
+  * Fix a code generator bug introduced in version 3.6.14. This bug
+    can cause incorrect query results under obscure circumstances.
+- Use the old naming scheme when building on openSUSE < 11.0.
+
+-------------------------------------------------------------------
+Sun Feb 22 22:02:19 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Oct 24 19:25:54 CEST 2008 - max@suse.de
+
+- Update to version 3.6.4:
+  * Fixes a missing symbol with the Tcl binding.
+  * Added the sqlite3_stmt_status() interface for performance
+    monitoring.
+  * Added the TRUNCATE option to PRAGMA journal_mode
+  * Performance enhancements to tree balancing logic in the B-Tree
+    layer.
+  * Added the source code and documentation for the genfkey
+    program for automatically generating triggers to enforce
+    foreign key constraints.
+  * The SQL language documentation is converted to use syntax
+    diagrams instead of BNF.
+  * Other minor bug fixes
+
+-------------------------------------------------------------------
+Fri Sep 26 15:33:53 CEST 2008 - max@suse.de
+
+- Bugfix-Release 3.6.3:
+  * Fix for a bug in the SELECT DISTINCT logic that was introduced
+    by the prior versoin.
+  * Other minor bug fixes.
+
+-------------------------------------------------------------------
+Wed Sep 10 14:32:18 CEST 2008 - max@suse.de
+
+- Update to version 3.6.2.
+- This version contains rewrites of the page-cache subsystem and
+  the procedures for matching identifiers to table columns in SQL
+  statements. These changes are designed to better modularize the
+  code and make it more maintainable and reliable moving forward.
+  Nearly 5000 non-comment lines of core code (about 11.3%) have
+  changed from the previous release. Nevertheless, there should
+  be no application-visible changes, other than bug fixes.
+
+-------------------------------------------------------------------
+Fri Jul 25 13:30:50 CEST 2008 - max@suse.de
+
+- Update to version 3.6.0:
+  * Modifications to the virtual file system interface to support a
+    wider range of embedded systems. See 35to36.html for additional
+    information. *** Potentially incompatible change ***
+  * The handling of IN and NOT IN operators that contain a NULL on
+    their right-hand side expression is brought into compliance with
+    the SQL standard and with other SQL database engines. This is a
+    bug fix, but as it has the potential to break legacy applications
+    that depend on the older buggy behavior, we mark that as a
+    *** Potentially incompatible change ***
+  * The result column names generated for compound subqueries have
+    been simplified to show only the name of the column of the
+    original table and omit the table name. This makes SQLite
+    operate more like other SQL database engines.
+  * Added the sqlite3_config() interface for doing run-time
+    configuration of the entire SQLite library.
+  * Added the sqlite3_status() interface used for querying run-time
+    status information about the overall SQLite library and its
+    subsystems.
+  * Added the sqlite3_initialize() and sqlite3_shutdown() interfaces.
+  * The SQLITE_OPEN_NOMUTEX option was added to sqlite3_open_v2().
+  * Added the PRAGMA page_count command.
+  * Added the sqlite3_next_stmt() interface.
+  * Added a new R*Tree virtual table
+- Link libtclsqlite against the Tcl stubs library, so that it can be
+  used from tclkit.
+
+-------------------------------------------------------------------
+Thu May  8 15:03:21 CEST 2008 - max@suse.de
+
+- Actually apply sqlite-strcasecmp.patch to fix the Tcl extension.
+- Link the Tcl extension dynamically.
+
+-------------------------------------------------------------------
+Wed May  7 21:38:43 CEST 2008 - coolo@suse.de
+
+- provide sqlite-<arch>
+
+-------------------------------------------------------------------
+Tue Apr 29 16:48:08 CEST 2008 - cthiel@suse.de
+
+- obsolete sqlite-<arch> via baselibs.conf
+
+-------------------------------------------------------------------
+Mon Apr 28 17:49:19 CEST 2008 - max@suse.de
+
+- Avoid an unresolved symbol in the Tcl extension
+  (sqlite-strcasecmp.patch).
+- Use upstream fixes for test failures caused by Tcl 8.5
+
+-------------------------------------------------------------------
+Sun Apr 27 17:26:17 CEST 2008 - coolo@suse.de
+
+- disable the test suite, it adds 5 hours to the build time
+
+-------------------------------------------------------------------
+Thu Apr 10 16:04:31 CEST 2008 - max@suse.de
+
+- update to version 3.5.7. Changes include:
+  * Fix a bug in the register allocation for compound selects.
+  * Do not apply the flattening optimization if the outer query
+    is an aggregate and the inner query contains ORDER BY.
+  * Accept "Z" as the zulu timezone at the end of date strings.
+  * Fix a bug in the LIKE optimizer that occurs when the last
+    character before the first wildcard is an upper-case "Z"
+  * Added the "bitvec" object for keeping track of which pages
+    have been journalled. Improves speed and reduces memory
+    consumption, especially for large database files.
+  * Add the new sqlite3_result_error_code() API.
+  * Convert the underlying virtual machine to be a register-based
+    machine rather than a stack-based machine. The only
+    user-visible change is in the output of EXPLAIN.
+- Fix build for Tcl 8.5.
+- Don't --enable-releasemode anymore, because it recently started
+  putting the package version into the library name
+  (libsqlite3-3.5.7.so.0.8.6)  
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 17:24:11 CEST 2008 - max@suse.de
+
+- Fixed the tcl subpackage and adapted it to the new Tcl file
+  system layout.
+
+-------------------------------------------------------------------
+Thu Jan 10 16:43:20 CET 2008 - lrupp@suse.de
+
+- split of libsqlite3-0 package (Shared Library Packaging Policy)
+- rename sqlite to sqlite3
+
+-------------------------------------------------------------------
+Tue Dec 18 10:14:31 CET 2007 - adrian@suse.de
+
+- update to version 3.5.4
+  From official changelog:
+  * Fix a critical bug in UPDATE or DELETE that occurs when an
+    OR REPLACE clause or a trigger causes rows in the same table to be
+    deleted as side effects. (See ticket #2832.) The most likely result
+    of this bug is a segmentation fault, though database corruption is
+    a possibility.
+  * Bring the processing of ORDER BY into compliance with the SQL
+    standard for case where a result alias and a table column name are
+    in conflict. Correct behavior is to prefer the result alias. Older
+    versions of SQLite incorrectly picked the table column. (See ticket #2822.)
+  * The VACUUM command preserves the setting of the legacy_file_format
+    pragma. (Ticket #2804.)
+  * Productize and officially support the group_concat() SQL function.
+  * Better optimization of some IN operator expressions.
+  * Add the ability to change the auto_vacuum status of a database by
+    setting the auto_vaccum pragma and VACUUMing the database.
+  * Prefix search in FTS3 is much more efficient.
+  * Relax the SQL statement length restriction in the CLI so that the
+    ".dump" output of databases with very large BLOBs and strings can
+    be played back to recreate the database.
+  * Other small bug fixes and optimizations.
+
+-------------------------------------------------------------------
+Fri Nov 30 08:51:31 CET 2007 - adrian@suse.de
+
+- update to version 3.5.3
+  * documentation has been removed from tar ball.
+
+  From official changelog:
+  * Fix a long-standing bug in INSERT INTO ... SELECT ... statements 
+    where the SELECT is compound. 
+  * Fix a long-standing bug in RAISE(IGNORE) as used in BEFORE triggers. 
+  * Fixed the operator precedence for the ~ operator. 
+  * Allow collating sequence names to be quoted. 
+  * Modify the TCL interface to use sqlite3_prepare_v2(). 
+  * Fix multiple bugs that can occur following a malloc() failure. 
+  * sqlite3_step() returns SQLITE_MISUSE instead of crashing when
+    called with a NULL parameter. 
+  * FTS3 now uses the SQLite memory allocator exclusively. The FTS3
+    amalgamation can now be appended to the SQLite amalgamation to
+    generate a super-amalgamation containing both. 
+  * The DISTINCT keyword now will sometimes use an INDEX if an
+    appropriate index is available and the optimizer thinks its use
+     might be advantageous.
+
+-------------------------------------------------------------------
+Mon Nov  5 09:40:03 CET 2007 - adrian@suse.de
+
+- update to version 3.5.2
+  From the official changelog:
+  * The OS interface layer and the memory allocation subsystems in 
+    SQLite have been reimplemented. The published API is largely 
+    unchanged but the (unpublished) OS interface has been modified 
+    extensively. Applications that implement their own OS interface 
+    will require modification.
+  * This is a large change. Approximately 10% of the source code was 
+    modified.
+  * Fix a long-standing bug that might cause database corruption if
+    a disk-full error occurs in the middle of a transaction and that
+    transaction is not rolled back.
+
+-------------------------------------------------------------------
+Thu Oct 18 19:05:22 CEST 2007 - sbrabec@suse.cz
+
+- Build with column metadata support, as required by libgda.
+
+-------------------------------------------------------------------
+Mon Aug 13 17:37:35 CEST 2007 - adrian@suse.de
+
+- call %post/%pre ldconfig again (#298292)
+
+-------------------------------------------------------------------
+Mon Aug  6 17:40:32 CEST 2007 - adrian@suse.de
+
+- update to version 3.4.1
+  * Bugfix release to solve database corruption
+  * remove static fts2 plugin patch, it is broken and get not used
+  * Changelog from the release:
+    - Fix a bug in VACUUM that can lead to  database corruption if two
+      processes are connected to the database at the same time and one
+      VACUUMs then the other then modifies the database.
+    - The expression "+column" is now considered the same as "column" when
+      computing the collating sequence to use on the expression.
+    - In the TCL language interface, "@variable" instead of "$variable" always
+      binds as a blob.
+    - Added PRAGMA freelist_count for determining the current size of the
+      freelist.
+    - The  PRAGMA auto_vacuum=incremental setting is now persistent.
+    - Add FD_CLOEXEC to all open files under unix.
+    - Fix a bug in the  min()/max() optimization when applied to descending
+      indices.
+    - Make sure the TCL language interface works correctly with 64-bit integers
+      on 64-bit machines.
+    - Allow the value -9223372036854775808 as an integer literal in SQL
+      statements.
+    - Add the capability of "hidden" columns in virtual tables.
+    - Use the macro SQLITE_PRIVATE (defaulting to "static") on all internal
+      functions in the amalgamation.
+    - Add pluggable tokenizers and ICU tokenization support to FTS2
+    - Other minor bug fixes and documentation enhancements
+
+-------------------------------------------------------------------
+Tue Jun 26 11:29:19 CEST 2007 - adrian@suse.de
+
+- update to version 3.4.0
+  WARNING: this version might cause incompatibilities due to new
+           limits. These limits could be raised again, if we run in
+           trouble, but let's follow upstream for now.
+  * Two important bugfixes for database corruption.
+  * New features like incremental BLOB I/O and incremental vacuum
+
+-------------------------------------------------------------------
+Fri Apr 27 09:38:04 CEST 2007 - adrian@suse.de
+
+- update to version 3.3.17
+  * bug fix in forwards-compatibility logic of SQLite
+
+-------------------------------------------------------------------
+Thu Apr 19 12:04:35 CEST 2007 - adrian@suse.de
+
+- update to version 3.3.16
+  * speed improvements were not enabled in .15 by accident
+
+-------------------------------------------------------------------
+Mon Apr 16 10:45:39 CEST 2007 - adrian@suse.de
+
+- update to version 3.3.15
+  * speed improvements
+  * new exclusive locking mode
+- switch to -O3 now
+- general spec file clean up
+  
+-------------------------------------------------------------------
+Mon Feb 19 11:46:31 CET 2007 - adrian@suse.de
+
+- update to version 3.3.13
+  from the changelog:
+  * Add a "fragmentation" measurement in the output of sqlite3_analyzer.
+  * Add the COLLATE operator used to explicitly set the collating
+    sequence used by an expression. This feature is considered
+    experimental pending additional testing.
+  * Allow up to 64 tables in a join - the old limit was 32.
+  * Added two new experimental functions: randomBlob() and hex().
+    Their intended use is to facilitate generating UUIDs. 
+  * Fix a problem where PRAGMA count_changes was causing incorrect
+    results for updates on tables with triggers
+  * Fix a bug in the ORDER BY clause optimizer for joins where
+    the left-most table in the join is constrained by a UNIQUE index.
+  * Fixed a bug in the "copy" method of the TCL interface.
+  * Bug fixes in fts1 and fts2 modules.
+
+-------------------------------------------------------------------
+Mon Feb 12 14:24:08 CET 2007 - dmueller@suse.de
+
+- fix library dependencies after loadable extensions were enabled
+
+-------------------------------------------------------------------
+Tue Feb  6 17:04:03 CET 2007 - dmacvicar@suse.de
+
+- Enable support for loadable extensions 
+
+-------------------------------------------------------------------
+Mon Feb  5 13:16:20 CET 2007 - max@suse.de
+
+- Enable the fts1 and fts2 modules and link them in statically.
+
+-------------------------------------------------------------------
+Wed Jan 31 08:57:50 CET 2007 - adrian@suse.de
+
+- update to version 3.3.12
+  * further bugfixes, esp. for bugs introduced in 3.3.9
+
+-------------------------------------------------------------------
+Thu Jan 11 10:38:33 CET 2007 - adrian@suse.de
+
+- update to version 3.3.10
+  * pure bug fix release
+
+-------------------------------------------------------------------
+Tue Jan  9 13:43:26 CET 2007 - adrian@suse.de
+
+- update to version 3.3.9
+  * fixes database corruption "under obscure and difficult to
+    reproduce circumstances". 
+  * new sqlite3_prepare v2() api (new header file) 
+
+-------------------------------------------------------------------
+Mon Nov  6 12:09:35 CET 2006 - adrian@suse.de
+
+- fix permissions of installed man page
+
+-------------------------------------------------------------------
+Mon Oct 16 17:23:39 CEST 2006 - adrian@suse.de
+
+- update to version 3.3.8
+  * full-text search using the FTS1 module
+  * minor bufixes
+- two testcases got disabled, because they fail.
+  We need to review the reason for that before shipping this package,
+  but this package builds again at least.
+
+-------------------------------------------------------------------
+Wed Aug 23 12:28:42 CEST 2006 - adrian@suse.de
+
+- update to version 3.3.7
+  * support for loadable extensions and virtual tables
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Thu May 18 12:52:29 CEST 2006 - adrian@suse.de
+
+- update to version 3.3.5
+  Version 3.3 adds support for CHECK constraints, DESC indices, 
+  separate REAL and INTEGER column affinities, a new OS interface 
+  layer design, and many other changes.
+  The file format for version 3.3 has changed slightly. SQLite 3.3
+  will read and write legacy databases created with any prior 
+  version of SQLite 3. But databases created by version 3.3.0 will 
+  not be readable or writable by earlier versions of the SQLite
+
+-------------------------------------------------------------------
+Wed Mar 22 15:56:11 CET 2006 - schwab@suse.de
+
+- Fix another 64bit bug.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 14:55:01 CET 2006 - adrian@suse.de
+
+- disable "same thread check". It is only needed with broken
+  thread implementations and will be similar offered in sqlite 3.3
+
+-------------------------------------------------------------------
+Wed Jan  4 13:15:43 CET 2006 - adrian@suse.de
+
+- update to version 3.2.8
+  * bugfix release
+
+-------------------------------------------------------------------
+Tue Jan  3 14:32:02 CET 2006 - rguenthe@suse.de
+
+- Correct 64bit issues causing x86_64 testsuite failures.
+
+-------------------------------------------------------------------
+Fri Dec  2 21:32:02 CET 2005 - jw@suse.de
+
+- VERSION parsing back to normal.
+  3002007 looks better than 3000000
+
+-------------------------------------------------------------------
+Mon Oct 24 13:24:00 CEST 2005 - adrian@suse.de
+
+- fix build for 64bit
+
+-------------------------------------------------------------------
+Mon Oct 17 09:38:03 CEST 2005 - adrian@suse.de
+
+- update to version 3.2.7
+  * needed an additional fix for conflict.test
+
+-------------------------------------------------------------------
+Tue Aug 30 15:02:55 CEST 2005 - jw@suse.de
+
+- disabled a timing test. This fixes failed builds 
+  on heavy loaded autobuild hosts.
+
+-------------------------------------------------------------------
+Wed Jun 29 18:54:12 CEST 2005 - jw@suse.de
+
+- configure script fixed: VERSION was misparsed.
+
+-------------------------------------------------------------------
+Mon Jun 27 11:35:51 CEST 2005 - max@suse.de
+
+- Skip the testsuite if the underlaying file system doesn't
+  support fsync() on directories (e.g. tmpfs).
+
+-------------------------------------------------------------------
+Tue Jun 21 10:46:36 CEST 2005 - max@suse.de
+
+- Update to version 3.2.2.
+- Improved installation of the Tcl package.
+
+-------------------------------------------------------------------
+Thu Apr 21 19:29:21 CEST 2005 - max@suse.de
+
+- Disabling of certain tests for certain architectures does not
+  seem to be needed anymore.
+
+-------------------------------------------------------------------
+Wed Apr 20 01:20:42 CEST 2005 - ro@suse.de
+
+- get patch to even apply 
+
+-------------------------------------------------------------------
+Tue Apr 19 12:05:05 CEST 2005 - max@suse.de
+
+- Added a subpackage for the Tcl extension.
+
+-------------------------------------------------------------------
+Fri Apr  8 17:23:52 CEST 2005 - adrian@suse.de
+
+- update to version 3.2.1
+
+-------------------------------------------------------------------
+Tue Mar 29 16:07:56 CEST 2005 - adrian@suse.de
+
+- update to version 3.2.0
+
+-------------------------------------------------------------------
+Mon Feb 28 08:23:34 CET 2005 - adrian@suse.de
+
+- update to version 3.1.3
+  * a minor bugfix for VACUUM databases
+  * to remain compatible with future 3.2 databases
+- obsoletes a testsuite workaround
+
+-------------------------------------------------------------------
+Fri Feb 18 17:36:53 CET 2005 - adrian@suse.de
+
+- fix library versioning
+
+-------------------------------------------------------------------
+Wed Feb 16 09:31:08 CET 2005 - adrian@suse.de
+
+- update to version 3.1.2
+  * contains a criticial bugsfix, which can corrupted the database
+    when using the VACUUM command
+
+-------------------------------------------------------------------
+Mon Nov 29 11:44:52 CET 2004 - adrian@suse.de
+
+- update to version 3.0.8
+
+-------------------------------------------------------------------
+Mon Nov 15 14:44:52 CET 2004 - adrian@suse.de
+
+- add susehelp desktop file for developer documentation
+
+-------------------------------------------------------------------
+Mon Nov 15 13:29:09 CET 2004 - adrian@suse.de
+
+- fix libdir path in .la file for lib64 systems
+
+-------------------------------------------------------------------
+Mon Oct 25 13:38:20 CEST 2004 - adrian@suse.de
+
+- enable utf-8 support
+
+-------------------------------------------------------------------
+Fri Jul 30 13:21:06 CEST 2004 - adrian@suse.de
+
+- run "make alltest"
+
+-------------------------------------------------------------------
+Thu Jul 29 18:51:48 CEST 2004 - adrian@suse.de
+
+- update to version 2.8.15
+- disable wrong tcl test case on 64bit
+
+-------------------------------------------------------------------
+Mon Jun 21 09:59:55 CEST 2004 - adrian@suse.de
+
+- update to version 2.8.14
+
+-------------------------------------------------------------------
+Tue Jun  1 23:15:08 CEST 2004 - adrian@suse.de
+
+- package sqlite man page
+
+-------------------------------------------------------------------
+Fri Apr 23 10:36:46 CEST 2004 - adrian@suse.de
+
+- update to version 2.8.13
+
+-------------------------------------------------------------------
+Mon Mar  1 10:58:10 CET 2004 - adrian@suse.de
+
+- disable format3 test case for ppc for now
+
+-------------------------------------------------------------------
+Sun Feb 29 16:24:33 CET 2004 - adrian@suse.de
+
+- update to version 2.8.12
+- add usual 64bit fixes
+- add -fno-strict-aliasing
+- disable bigfile test case due to limits in autobuild
+
+-------------------------------------------------------------------
+Thu Jan 22 09:15:59 CET 2004 - adrian@suse.de
+
+- update to version 2.8.11
+  * one testcase fails on ppc, our ppc people will have a look
+
+-------------------------------------------------------------------
+Mon Dec 29 17:52:40 CET 2003 - adrian@suse.de
+
+- update to version 2.8.8
+  * several 64 bit fixes have been merged, some more are needed now
+- ignore some not exact matching float test cases on s390*
+- enable threading support
+
+-------------------------------------------------------------------
+Tue Dec  2 17:08:42 CET 2003 - adrian@suse.de
+
+- initial package of version 2.8.6
+- a number of 64bit fixes
+- some test cases got disabled, because they use an invalid Tcl 
+  Interface for 64bit
+

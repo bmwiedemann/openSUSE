@@ -1,0 +1,42 @@
+--- 43-wqy-zenhei-sharp.conf-orig	2009-10-03 23:19:23.000000000 +0800
++++ 43-wqy-zenhei-sharp.conf	2013-01-20 21:42:33.505729834 +0800
+@@ -2,11 +2,24 @@
+ <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+ <!-- WenQuanYi Zen Hei Configure File -->
+ <fontconfig>
++   <match target="font">
++        <test qual="any" name="family">
++                <string>WenQuanYi Zen Hei Sharp</string>
++                <string>文泉驿点阵正黑</string>
++                <string>文泉驛點陣正黑</string>
++        </test>
++        <test compare="more_eq" name="pixelsize"><double>12</double></test>
++        <test compare="less_eq" name="pixelsize"><double>16</double></test>
++        <edit name="antialias" mode="assign"><bool>false</bool></edit>
++        <edit name="embeddedbitmap" mode="assign"><bool>true</bool></edit>
++        <edit name="hinting" mode="assign"><bool>false</bool></edit>
++  </match>
++
+         <alias>
+                 <family>serif</family>
+                 <prefer>
+-                        <family>Bitstream Vera Serif</family>
+                         <family>DejaVu Serif</family>
++                        <family>Bitstream Vera Serif</family>
+                         <family>WenQuanYi Zen Hei Sharp</family>
+                 </prefer>
+         </alias>
+@@ -18,4 +31,13 @@
+                         <family>WenQuanYi Zen Hei Sharp</family>
+                 </prefer>
+         </alias>
++        <alias>
++                <family>monospace</family>
++                <prefer>
++                        <family>DejaVu Sans Mono</family>
++                        <family>Bitstream Vera Sans Mono</family>
++                        <family>WenQuanYi Zen Hei Sharp</family>
++                </prefer>
++        </alias>
++
+ </fontconfig>

@@ -1,0 +1,29 @@
+commit aed464bdf4ff6ddf81bd5730559a69d4dc7bd446
+Author: Will Stephenson <wstephenson@kde.org>
+Date:   Fri Jan 18 20:46:43 2013 +0100
+
+    Change italic krunner result subtext to be smaller instead of italic (kde#307344)
+
+diff --git a/krunner/interfaces/default/resultitem.cpp b/krunner/interfaces/default/resultitem.cpp
+index 31fe94c..8d5e7d5 100644
+--- a/krunner/interfaces/default/resultitem.cpp
++++ b/krunner/interfaces/default/resultitem.cpp
+@@ -383,12 +383,12 @@ void ResultItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
+     p.setPen(textColor);
+     //TODO: add subtext, make bold, etc...
+     p.drawText(pixmap.rect(), Qt::AlignLeft | Qt::TextWordWrap, name());
+-    QFont italics = p.font();
+-    QFontMetrics italicMetrics(italics);
+-    int fontHeight = italicMetrics.boundingRect(pixmap.rect(), Qt::AlignLeft | Qt::TextWordWrap, name()).height();
+-    italics.setItalic(true);
+-    p.setFont(italics);
+-    p.drawText(pixmap.rect().adjusted(0, fontHeight, 0, 0), Qt::AlignLeft | Qt::TextWordWrap, description());
++    QFont subtext = p.font();
++    subtext.setPointSize(qMax(subtext.pointSize() - 1, 1));
++    QFontMetrics subtextMetrics(subtext);
++    int fontHeight = subtextMetrics.boundingRect(pixmap.rect(), Qt::AlignLeft | Qt::TextWordWrap, name()).height();
++    p.setFont(subtext);
++    p.drawText(pixmap.rect().adjusted(0, pixmap.rect().height() - fontHeight, 0, 0), Qt::AlignLeft | Qt::TextWordWrap, description());
+ 
+     // Fade the pixmap out at the end
+     if (width > pixmap.width()) {

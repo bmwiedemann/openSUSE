@@ -1,0 +1,335 @@
+-------------------------------------------------------------------
+Tue Feb 26 12:08:42 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Tue Oct 16 16:26:20 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:11:57 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Feb  13 11:46:30 UTC 2018 - lelcp@protonmail.com
+
+- don't use inline html styles when including package metadata
+  (bsc#1080792)
+- 4.0.0
+
+-------------------------------------------------------------------
+Mon Nov  3 14:45:57 UTC 2014 - lslezak@suse.cz
+
+- do not use repository name as alias, it must be unique, let
+  pkg-bindings create it (bnc#551014)
+- 3.1.4
+
+-------------------------------------------------------------------
+Wed Jun  4 06:47:46 UTC 2014 - pgajdos@suse.com
+
+- OneClickInstallCLI: /sbin/YaST -> /usr/sbin/yast (bnc#926313)
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Apr  7 12:59:45 UTC 2014 - pgajdos@suse.com
+
+- use Product.name when talking about product
+- 3.1.2
+
+-------------------------------------------------------------------
+Mon Oct 14 13:14:34 UTC 2013 - jreidinger@suse.com
+
+- Move binaries from /sbin to /usr/sbin to follow conventions and 
+  keep backward compatible symlinks
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 10:29:32 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:32:54 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Mar 29 15:33:17 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts 
+
+-------------------------------------------------------------------
+Thu Sep 29 13:11:33 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- rename the module in desktop file to reflect reality
+- 0.8.14 
+
+-------------------------------------------------------------------
+Fri Aug  5 13:28:21 UTC 2011 - lslezak@suse.cz
+
+- import trusted GPG keys before refreshing repositories, do not
+  ask for importing already trusted keys (bnc#652043)
+- 0.8.13
+
+-------------------------------------------------------------------
+Fri Jul 22 14:48:20 CEST 2011 - locilka@suse.cz
+
+- removed X-KDE-SubstituteUID from the desktop file and replaced
+  with X-SuSE-YaST-RootOnly (bnc#540627)
+- 0.8.12
+
+-------------------------------------------------------------------
+Fri Oct 15 11:34:00 UTC 2010 - lslezak@suse.cz
+
+- added missing slidshow initialization after manual conflict
+  resolution, properly display the total number of pakages to
+  install (bnc#590198)
+- 0.8.11
+
+-------------------------------------------------------------------
+Tue Oct 12 13:32:37 UTC 2010 - lslezak@suse.cz
+
+- don't use obsoleted inst_packages.ycp client, use PackagesUI.ycp
+  module instead (bnc#471490)
+- 0.8.10
+
+-------------------------------------------------------------------
+Mon Sep  6 09:42:58 CEST 2010 - jsrain@suse.cz
+
+- lowercase the textdomain to be consistent with the rest of YaST
+
+-------------------------------------------------------------------
+Mon May 25 14:57:39 CEST 2009 - mvidner@suse.cz
+
+- Added -h, --help to /sbin/OCICLI.
+
+-------------------------------------------------------------------
+Thu Apr  2 13:57:51 CEST 2009 - lslezak@suse.cz
+
+- properly initialize package slideshow, display correct
+  installation progress (bnc#482320)
+- 0.8.9
+
+-------------------------------------------------------------------
+Thu Feb 12 12:31:43 CET 2009 - coolo@suse.de
+
+- make the desktop files more XDG compliant 
+- 0.8.8
+
+-------------------------------------------------------------------
+Mon Sep  8 13:08:42 CEST 2008 - mvidner@suse.cz
+
+- Applied proofreading changes from Andrew Spackman.
+- 0.8.7
+
+-------------------------------------------------------------------
+Thu Sep  4 15:40:13 CEST 2008 - visnov@suse.cz
+
+- Adapt to SlideShow API changes 
+
+-------------------------------------------------------------------
+Mon Jul 14 13:13:05 CEST 2008 - locilka@suse.cz
+
+- Removed useless dependency on yast2-installation, fixed
+  dependency on yast2-country -> yast2-country-data.
+- 0.8.6
+
+-------------------------------------------------------------------
+Thu Jun 26 20:10:00 BST 2008 - benji@opensuse.org
+
+- Fix bnc #392257 (Back button enabled after installation)
+- Fix bnc #401885 (UI Error when no repositories added during installation)
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon May  5 16:30:47 CEST 2008 - mvidner@suse.cz
+
+- 0.8.5
+
+-------------------------------------------------------------------
+Sat May 03 11:00:00 BST 2008 - benji@opensuse.org
+
+- Fixed progress dialogue flicker when adding repositories (bnc#386383)
+
+-------------------------------------------------------------------
+Wed Apr 30 09:15:18 CEST 2008 - mvidner@suse.cz
+
+- reviewed for autobuild
+
+-------------------------------------------------------------------
+Tue Apr 29 15:03:04 CEST 2008 - benji@opensuse.org
+
+- Fixed duplicated Wizard steps (bnc#384492).
+- Allow translatable repository names.
+- Disabled back button when on first step of wizard.
+- 0.8.4
+
+-------------------------------------------------------------------
+Wed Apr 16 09:34:12 CEST 2008 - jsrain@suse.cz
+
+- merged texts from proofread
+- 0.8.3
+
+-------------------------------------------------------------------
+Fri Apr 04 13:40:00 GMT 2008 - benji@opensuse.org
+
+- Prefer installing packages from repositories defined in the YMP.
+
+-------------------------------------------------------------------
+Sat Mar 29 12:00:00 GMT 2008 - benji@opensuse.org
+
+- Fix error stage reporting.
+- Switch to slideshow for installation progress, instead of popups.
+
+-------------------------------------------------------------------
+Tue Mar 18 17:00:00 GMT 2008 - benji@opensuse.org
+
+- Command line Support.
+- Move dialogues out of main file to reduce size.
+- Refactor workflow so both UI and CLI can use it.
+- UI tweaks, including:
+- Don't show this again support for nag warning.
+- Removed "advanced mode" tickbox in favour of an editable proposal.
+- YMP description visible in detailed mode too.
+- 0.8.0
+
+-------------------------------------------------------------------
+Tue Nov 27 13:00:00 GMT 2007 - benji.weber@gmail.com
+
+- Catch errors caused by invalid XML. (341840)
+- Fall back to xdg_menu_su on xdg_su failure.
+
+-------------------------------------------------------------------
+Mon Nov 19 17:02:49 CET 2007 - locilka@suse.cz
+
+- Fixed used terminology (repositories) (FATE #302970).
+
+-------------------------------------------------------------------
+Thu Nov  8 15:15:51 CET 2007 - mvidner@suse.cz
+
+- Fixed missing association by calling update-mime-database (#330352).
+- 0.7.3
+
+-------------------------------------------------------------------
+Thu Oct  31 10:40:00 GMT 2007 - benji.weber@gmail.com
+
+- Allow package names that are not valid XML element names e.g. 3ddiag (#331557)
+- Alter default error message to indicate most likely cause for failure - user didn't enter password (#310813)
+-------------------------------------------------------------------
+Thu Oct  4 15:34:25 CEST 2007 - mvidner@suse.cz
+
+- Use an actual icon (sw_single) for the YaST windows instead of the
+  default one (#329644).
+- 0.7.2
+
+-------------------------------------------------------------------
+Mon Sep 17 08:39:14 CEST 2007 - mvidner@suse.cz
+
+- Fixed broken pattern installing and package removal (#325600).
+- Fixed installation failing if no repositories were added (#325600).
+- Fixed the close button (#309146). (both benji)
+- 0.7.1
+
+-------------------------------------------------------------------
+Tue Sep  4 10:06:32 CEST 2007 - stbinner@suse.de
+
+- .desktop files have to contain NoDisplay=true, not Hidden=true
+
+-------------------------------------------------------------------
+Mon Sep  3 14:16:44 CEST 2007 - mvidner@suse.cz
+
+- Added associations for Firefox, via shared-mime-info (#295677).
+- Use translations for buttons and heading (benji).
+- 0.7.0
+
+-------------------------------------------------------------------
+Thu Aug 30 11:01:27 CEST 2007 - mvidner@suse.cz
+
+- Do not add duplicate repositories (#300974). Also uses correct
+  name when adding repositories. This change breaks compatibility
+  with 10.2.
+- Fixed a failure when run as root (#305354).
+- Fixed bad appearance when using YMPs with no description or for
+  the wrong distribution.
+  (all by benji)
+- 0.6.0
+
+-------------------------------------------------------------------
+Tue Aug 14 16:54:48 CEST 2007 - jsuchome@suse.cz
+
+- Merged proofread texts 
+- 0.5.3
+
+-------------------------------------------------------------------
+Mon Aug  6 16:39:26 CEST 2007 - mvidner@suse.cz
+
+- Added 10.3 to the tuxsaver example.
+- 0.5.2
+
+-------------------------------------------------------------------
+Mon Aug  6 12:36:11 CEST 2007 - mvidner@suse.cz
+
+- Delete newlines before processing URL (benji).
+- Handle file: URLs (benji).
+- Updated the tuxsaver example.
+
+-------------------------------------------------------------------
+Mon Aug  6 10:24:37 CEST 2007 - mvidner@suse.cz
+
+- Implementing http://en.opensuse.org/Standards/One_Click_Install
+- Use yast2-devtools for building
+- 0.5
+
+-------------------------------------------------------------------
+Wed Aug  1 10:48:01 CEST 2007 - mvidner@suse.cz
+
+- Add mimetype desktop files for distros before 10.3 (in OBS
+  openSUSE:Tools) (adrian)
+- Require /usr/bin/xdg-su (adrian)
+- 0.4.1
+
+-------------------------------------------------------------------
+Mon Jul 23 13:14:03 CEST 2007 - mvidner@suse.cz
+
+- Mime type changed from text/ymu to text/x-suse-ymu (#292715).
+- 0.4
+
+-------------------------------------------------------------------
+Fri Jun  8 13:12:37 CEST 2007 - mvidner@suse.cz
+
+- Use xdg-su instead of kdesu.
+- Removed KDE config stuff, will be put it to kdebase3-SUSE.
+- Removed prototype of search client.
+- 0.3
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Thu May 17 10:16:54 CEST 2007 - mvidner@suse.cz
+
+- Call the complex package selector in summary mode if there are
+  non-automatically resolvable conflicts (#274058).
+- 0.2
+
+-------------------------------------------------------------------
+Fri May 11 09:57:24 CEST 2007 - mvidner@suse.cz
+
+- initial packaging for autobuild
+

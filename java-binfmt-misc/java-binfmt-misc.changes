@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Sep  7 07:44:19 UTC 2017 - mpluskal@suse.com
+
+- Reload systemd-binfmt.service so that binfmt setting are applied
+  without need to reboot (bsc#1057531)
+
+-------------------------------------------------------------------
+Sun Mar 26 13:05:19 UTC 2017 - tchvatal@suse.com
+
+- Run desktop db scriptlet updates wrt bsc#1030903
+
+-------------------------------------------------------------------
+Tue Mar 21 09:22:41 UTC 2017 - tchvatal@suse.com
+
+- Move the wrappers to libexec wrt bsc#1029650 (see binfmt.d(5))
+- Format a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul 29 13:28:09 UTC 2013 - mvyskocil@suse.com
+
+- update to 1.4
+  * add systemd-style binfmt.d config files
+  * drop sysvinit script
+  * rename and update readme file
+
+-------------------------------------------------------------------
+Wed Mar 25 13:46:34 CET 2009 - mvyskocil@suse.cz
+
+- fixed minor indentation in initscript [bnc#435514] using vim's = 
+
+-------------------------------------------------------------------
+Tue Feb 10 11:19:48 CET 2009 - mvyskocil@suse.cz
+
+- Remove Java 64bit Webstart warning, as it's obsoleted by openjdk and Sun u12 
+
+-------------------------------------------------------------------
+Thu Feb  5 14:27:41 CET 2009 - mvyskocil@suse.cz
+
+- Initial packaging of java-binfmt-misc (splitted from jpackage-utils)
+- Test of existence a files in /proc/sys/fs/binfmt_misc/ before write in stop
+  (the older version ends with an error if stop was called several times)
+- New java-binfmt-misc.1 manual page (manual page of every available wrapper is
+  a link to this page)
+- Include a Documentation/java.txt
+- Build a javaclassname command from source code and drop the ad-hoc binary
+  from sources

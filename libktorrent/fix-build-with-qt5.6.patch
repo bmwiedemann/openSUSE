@@ -1,0 +1,83 @@
+From bcb17b62ff492a7bc7d65c59a5b0a3513199c65d Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Thu, 31 Aug 2017 18:52:26 +0200
+Subject: Fix build with Qt 5.6 or lower
+
+qAsConst() is only available since Qt 5.7.0, but the specified minimum
+Qt version is 5.2.0.
+This partially reverts commit d671f62febfe2bedeae9c427c58a02675dabd9cb
+in case of building with a lower Qt version to avoid the usage of
+qAsConst() and make it compile.
+
+Differential Revision: https://phabricator.kde.org/D7634
+---
+ src/upnp/upnprouter.cpp | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/src/upnp/upnprouter.cpp b/src/upnp/upnprouter.cpp
+index f51ebcd..5ae95b0 100644
+--- a/src/upnp/upnprouter.cpp
++++ b/src/upnp/upnprouter.cpp
+@@ -155,7 +155,11 @@ namespace bt
+ 
+     void UPnPRouter::addService(const UPnPService& s)
+     {
++#if QT_VERSION < QT_VERSION_CHECK(5, 7, 0)
++        foreach(const UPnPService& os, d->services)
++#else
+         for (const UPnPService& os : qAsConst(d->services))
++#endif
+         {
+             if(s.servicetype == os.servicetype)
+                 return;
+@@ -205,7 +209,11 @@ namespace bt
+         bool found = false;
+         Out(SYS_PNP | LOG_NOTICE) << "Forwarding port " << port.number << " (" << (port.proto == UDP ? "UDP" : "TCP") << ")" << endl;
+         // first find the right service
++#if QT_VERSION < QT_VERSION_CHECK(5, 7, 0)
++        foreach(const UPnPService& s, d->services)
++#else
+         for (const UPnPService& s : qAsConst(d->services))
++#endif   
+         {
+             if(s.servicetype.contains("WANIPConnection") || s.servicetype.contains("WANPPPConnection"))
+             {
+@@ -375,7 +383,11 @@ namespace bt
+ 
+     void UPnPRouter::visit(UPnPRouter::Visitor* visitor) const
+     {
++#if QT_VERSION < QT_VERSION_CHECK(5, 7, 0)
++        foreach(const Forwarding& fwd, d->fwds)
++#else
+         for (const Forwarding& fwd : qAsConst(d->fwds))
++#endif   
+         {
+             visitor->forwarding(fwd.port, fwd.pending_req != 0, fwd.service);
+         }
+@@ -391,7 +403,11 @@ namespace bt
+ 
+     UPnPRouter::UPnPRouterPrivate::~UPnPRouterPrivate()
+     {
++#if QT_VERSION < QT_VERSION_CHECK(5, 7, 0)
++        foreach(HTTPRequest* r, active_reqs)
++#else
+         for (HTTPRequest* r : qAsConst(active_reqs))
++#endif   
+         {
+             r->deleteLater();
+         }
+@@ -515,7 +531,11 @@ namespace bt
+ 
+     void UPnPRouter::UPnPRouterPrivate::getExternalIP()
+     {
++#if QT_VERSION < QT_VERSION_CHECK(5, 7, 0)
++        foreach(const UPnPService& s, services)
++#else
+         for (const UPnPService& s : qAsConst(services))
++#endif   
+         {
+             if(s.servicetype.contains("WANIPConnection") || s.servicetype.contains("WANPPPConnection"))
+             {
+-- 
+cgit v0.11.2
+

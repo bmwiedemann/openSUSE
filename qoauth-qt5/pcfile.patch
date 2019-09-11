@@ -1,0 +1,12 @@
+diff --git a/src/pcfile.sh b/src/pcfile.sh
+index 47cff29..25a2c0d 100755
+--- a/src/pcfile.sh
++++ b/src/pcfile.sh
+@@ -10,6 +10,6 @@ includedir=\${prefix}/include/QtOAuth
+ Name: QOAuth
+ Description: Qt OAuth support library
+ Version: $2
+-Requires: QtCore QtNetwork qca2
++Requires: Qt5Core Qt5Network qca2-qt5
+ Libs: -L\${libdir} -lqoauth
+ Cflags: -I\${includedir}" > qoauth.pc

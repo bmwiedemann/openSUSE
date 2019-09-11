@@ -1,0 +1,12 @@
+Index: Network.cpp
+===================================================================
+--- Network.cpp.orig
++++ Network.cpp
+@@ -750,6 +750,7 @@ ConnectToServer() {
+     throw NetworkError();
+   }
+ #endif
++return(0); /* return value of this function is not used in MultiPlayerSelect.cpp*/
+ }
+ 
+ void

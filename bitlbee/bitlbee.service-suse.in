@@ -1,0 +1,26 @@
+# Copyright (c) 1995-2015 SUSE Linux GmbH, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Martin Caj <mcaj@suse.cz>
+#
+# /usr/lib/systemd/system/bitlbee-server.service
+#
+#   and it's symbolic link
+#
+# /usr/sbin/rcbitlbee
+
+[Unit]
+Description=Bitblee Daemon the IM to IRC gateway
+After=network.target
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/mkdir -p /run/bitlbee
+ExecStartPre=/usr/bin/chown bitlbee.bitlbee /run/bitlbee
+ExecStart=/usr/sbin/bitlbee -F -u bitlbee
+PIDFile=/run/bitlbee/bitlbee.pid
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

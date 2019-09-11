@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-scheduler-2.0.0.orig/setup.py azure-mgmt-scheduler-2.0.0/setup.py
+--- azure-mgmt-scheduler-2.0.0.orig/setup.py	2018-05-23 19:40:32.000000000 +0200
++++ azure-mgmt-scheduler-2.0.0/setup.py	2018-09-05 14:16:01.121605197 +0200
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrestazure>=0.4.27,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

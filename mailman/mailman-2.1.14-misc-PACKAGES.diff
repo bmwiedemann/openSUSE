@@ -1,0 +1,21 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -125,6 +125,7 @@ doinstall: $(SUBDIRS)
+ 	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
+ 	done
+ 	$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/Mailman", ddir="$(prefix)/Mailman")'
++	$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/bin", ddir="$(prefix)/bin")'
+ 
+ # Only run bin/update if we aren't installing in DESTDIR, as this
+ # means there are probably no lists to deal with, and it wouldn't
+--- a/misc/Makefile.in
++++ b/misc/Makefile.in
+@@ -57,7 +57,7 @@ EMAILPKG=	@EMAILPKG@
+ JACODECSPKG=	@JACODECSPKG@
+ KOCODECSPKG=	@KOCODECSPKG@
+ 
+-PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
++PACKAGES= $(EMAILPKG)
+ 
+ # Modes for directories and executables created by the install
+ # process.  Default to group-writable directories but

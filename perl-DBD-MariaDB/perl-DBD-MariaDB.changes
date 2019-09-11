@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Jul  8 16:46:41 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Enabled tests during build
+  * Added files test-setup.sh and test-clean.sh
+  * Added test dependecies: Proc::ProcessTable and mariadb
+
+-------------------------------------------------------------------
+Mon Jun  3 10:48:18 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Reduce the description and delete useless defattr
+
+-------------------------------------------------------------------
+Mon Jun  3 10:28:32 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Tests can't be run inside the buildroot, test manually before submit
+
+-------------------------------------------------------------------
+Wed Feb 27 12:00:09 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 1.21 2019-02-27
+  * 1.21 2019-02-27
+    - Fix skipping test t/14destruct.t
+    - Revert "MySQL bug #93276 is fixed in 8.0.15"
+      (https://github.com/gooddata/DBD-MariaDB/issues/137)
+
+-------------------------------------------------------------------
+Tue Feb 26 11:08:17 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 1.20 2019-02-22
+  * 1.20 2019-02-22
+    - Fix compilation on Windows
+    - Fix tests for MariaDB 10.2.20+, 10.3.12+ and 10.4.1+
+    - Fix processing of unfetched multi result sets
+    - Cover a protocol design error for multi result statements
+    - Fix $dbh->last_insert_id for async calls and multi result statements
+    - Add more robust solution to prevent deinitializing OpenSSL functions
+      (https://github.com/gooddata/DBD-MariaDB/issues/119)
+    - Set $sth->{Active} to off after fetching all data
+      (https://github.com/jhthorsen/mojo-mysql/pull/47#issuecomment-448095164)
+    - Fix $sth->rows for async, multi results and when error occurred
+    - Fix disconnect_all() method to work also during global destruction phase
+    - Address MySQL bug #93276 which is fixed in 8.0.15
+
+-------------------------------------------------------------------
+Tue Feb 19 12:39:53 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 19 06:09:04 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- initial package 1.11
+  * 1.11 2019-01-02
+    - Fix breakage of Net::SSLeay / OpenSSL library after DBI disconnect
+      (https://github.com/gooddata/DBD-MariaDB/issues/119)
+  * 1.10 2018-12-05
+    - Fix spelling error (https://github.com/gooddata/DBD-MariaDB/issues/82)
+    - Fix MinGW build (https://github.com/gooddata/DBD-MariaDB/issues/91)
+    - Fix DBI SQL types (https://github.com/gooddata/DBD-MariaDB/issues/109)
+    - Fix overflow in mariadb_thread_id and mariadb_warning_count attributes
+    - Fix parsing LIMIT keyword (case-insensitive + allow whitespaces around)
+    - Fix allocating and releasing memory when using Embedded Server
+    - Fix escaping placeholders when sql_mode is NO_BACKSLASH_ESCAPES
+    - Fix output from Unicode related tests
+    - Fix setting client_flag for mysql_real_connect()
+    - Fix calling DBI->data_sources() without second argument
+    - Fix $dbh->last_insert_id() for multi and prepared server side statements
+    - Use dbd_db_do6 API from DBI 1.642 when available
+    - Add support for a new DBI method call $sth->last_insert_id()
+    - Add sanity check for Makefile.PL --testsocket, --testhost and --testport
+    - Report error when $dbh->{mariadb_ssl_cipher} attribute is not supported
+    - Check that correct number of bind parameters are in $dbh->do()
+    - Update workarounds for bugs in MariaDB client library (some were fixed)
+    - Allow to set zero read, write and connect timeout (which means infinite)
+    - Set default session collation to utf8mb4_unicode_ci for real Unicode
+    - Change minimal MySQL client version to 4.1.8 (older is incompatible)
+    - Skip tests which cannot be started on current system/architecture
+    - Move testrules.yml to t/ directory
+    - Miscellaneous fixes in tests
+  * 1.00 2018-07-12
+    - Do not remove test name and line from test error messages
+    - Update documentation for mariadb_length and mariadb_max_length
+    - Fix retrieving ODBC attribute SQL_USER_NAME via $dbh->get_info()
+    - Do not show internal DBI packages on cpan
+    - Fix checking for error value from mariadb_embedded options
+    - Makefile.PL shows error message when no client library was specified
+    - Fix checking if integer value should be signed or unsigned
+  * 0.90_01 2018-06-26 (beta)
+    - This is a new DBD::MariaDB driver, fork of DBD::mysql 4.041 with fixes
+    - Attributes and methods with mysql_* prefix were renamed to mariadb_*
+    - See https://metacpan.org/source/PALI/DBD-MariaDB-0.90_01/Changes

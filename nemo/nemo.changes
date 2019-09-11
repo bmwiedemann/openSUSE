@@ -1,0 +1,1375 @@
+-------------------------------------------------------------------
+Sun Jul 28 04:49:33 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.2:
+  * nemo-desktop-link.c: Don't allow an attempt to rename mounts.
+
+-------------------------------------------------------------------
+Sun Jul 21 06:55:55 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.1:
+  * Fix nemo_global_preferences_get_size_prefix_preference
+    getting set to the wrong value
+  * nemo-view.c: Always show the pin/unpin actions.
+  * various: Fix a couple leaks
+  * nemo-list-model.c: When the last child of a node is
+    removed, Handle re-adding a dummy row (or not) in the
+    file removed handler, instead of always adding one, 
+    then removing it on parent's subsequent changed call.
+  * nemo-list-view.c: When triggering a rename using the
+    'slow double click' trigger, check whether the file
+    is a folder to determine whether to select all or
+    only non-extension text.
+  * nemo-view.c: Use the stack for running the action
+    visiblity cycle.
+  * nemo-*-view.c: Update the selection info when a view
+    has finished loading.
+  * Toolbar: Don't show thumbnail button by default
+
+-------------------------------------------------------------------
+Mon Jul  1 03:57:46 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 4.2.0:
+  * nemo-view.c: Don't ignore non-symbolic extension menu icons.
+  * nemo-icon-view.c: Don't apply the 'ignore metadata' mode to the desktop, this prevents the icon size from loading or saving properly when that setting is active.
+  * nemo-icon-info: Use different text widths for the desktop than for windowed mode.
+  * Update URL (#2045)
+  * nemo-query-editor.c: Ignore leading and trailing whitespace in search query text.
+  * misc: Fix some memory leaks revealed by valgrind.
+  * Add keyboard shortcuts page
+  * nemo-bookmarks-window.c: Fix support for Computer/Bookmarks section separator.
+  * nemo-bookmarks-window: Remove help button, fix some breakpoint accounting during dnd.
+  * nemo-view.c: Never have more than one connection to an action's 'activate' signal.
+  * actions: Monitor gsettings condition changes and trigger menu updates when these or any dbus conditions change.
+  * application: Add debug flag to command line options, remove environment variable-based verbose mode for actions.
+  * nemo-action: Cleanup
+  * nemo-blank-desktop-window.c: Fix initial popup menu failure due to a not-fully-initialized action manager.
+  * nemo-action.c: Allow discovery of tokens in any order in an action line.
+  * nemo-action.c: Queue gsettings condition updates (same as dbus updates). This should have been done in 92c58403f12436c65a1c.
+  * Update nemo-style-fallback-mandatory.css
+  * Add Move to Trash confirmation option
+  * nemo-file-operations.c: Remove unused translatable string.
+  * nemo-window-manage-views.c: ignore cache when thumbnails are disabled
+  * nemo-window-manage-views.c: add a weak pointer to the window slot's bad cache bar when spawned.
+  * preferences: Finalize our settings instances using the eel_call_at_shutdown function.  This occurs at a point closer to exit, and allows handlers to disconnect cleanly.
+  * Reimplement thumbnailing-per-folder and add inheritance for view type
+  * A couple of bugfixes
+  * nemo-main-application.c: Make sure any command-line geometry option takes precedence over the saved window geometry.
+  * nemo-window-slot: Remove trailing spaces
+  * Navigation: Fix go to parent action for Samba
+  * nemo-window-slot.c: Use GString for manipulating samba uris, it makes what's being done to the uri a bit more explicit.
+  * nemo-window-slot.c: (samba) When navigating up from a host, load network:/// instead of smb:///.
+  * nemo-icon-container.c: Wait to un-freeze canvas updates until the renaming operation has completed.
+  * nemo-file.c: Check for NULL when converting the raw file timestamp to a GDateTime.
+  * desktop-prefs: Change to match the new cinnamon settings style
+  * nemo-desktop-overlay.glade: Update to match new settings format. (mostly)
+  * Nemo desktop entry - ensure caret-color matches text color
+  * nemo-mime-application-chooser.c: escape file names in Open With tab
+  * nemo-view.c: Open Terminal in parent if a file is selected
+  * Start implementing exec support
+  * Optimize nemo_action_get_visibility()
+  * nemo-action.c: Support multiple selection and action path for exec condition checks.
+  * nemo-action.c: Support tokens in exec condition calls.
+  * sample action:  Update to include exec conditions, new correct method to enable debugging.
+  * Revert "nemo-file-operations.c: Remove unused translatable string."
+  * Remove some unused code, optimize some frequently-used settings.
+  * nemo-view.c: Clear a source id at the end of the rename delay callback.
+  * Remove the context menu toggle (the +/- button) for displaying additional menu items.
+  * Add a mechanism for pinning a file to the top of a view.
+  * Improve pin icon.
+  * pinned emblem: try to improve (again)
+  * icon view: Use bold text instead of an emblem for pinned files.
+  * nemo-places-sidebar.c: Workaround incorrectly-sized popup menus when right- clicking on a currently-unselected item.
+  * move code after early return statements where possible (#2149)
+  * l10n: Update POT
+  * l10n: Generate additional files
+  * Option to open uri in tabs at startup
+  * l10n: Update POT
+
+-------------------------------------------------------------------
+Fri Mar 15 02:58:37 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 4.0.6:
+  * Packaging: Depend on cinnamon-l10n
+  * nemo-program-choosing.c: add a wrapper for simple .desktop files that invoke pkexec.
+  * nemo-desktop-overlay.c: Don't respond to slider value-changed signals when syncing *from* the view.
+  * nemo-list-view.c: Always display at the default list view zoom level during a search.
+  * nemo-icon-view.c: Don't rely on the default icon zoom level for the grid desktop, hardcode to normal instead.
+  * nemo-icon-view.c: Correctly initialize to the default view zoom level when ignore-metadata mode is active.
+  * per-folder thumbnails: Remove toolbar thumbnail button preference, instead base visibility on the show-image-thumbnails preference.
+  * nemo-window.c: Fix hidden menu alt-key activation.
+  * nemo-places-sidebar.c: Keep the selected bookmark scrolled into view when a selection is made on a bookmark.
+  * nemo-list-view.c:  Ignore triple-clicks and reset the double-click last_click_time when the current double-click succeeds.
+  * nemo-extension-config-widget.c: Allow description to be multi-line instead of reverting to a horizontal scroll bar.
+  * nemo-list-view.c: Don't use fixed-height mode, it does not work well with zoom changes.
+  * nemo-action.c: Don't include previously inserted characters/text in subsequent token matching - skip ahead based on the inserted text length, so we avoid potentially parsing escape codes that are part of a file's uri.
+  * places and tree sidebars: Listen for action manager reloads, rebuild popup menus when needed.
+  * places sidebar: Enable actions to work properly even when the item being right-clicked/context-menu'd is not the currently loaded view.
+  * nemo-tree-sidebar.c: Fix memory leak.
+  * nemo-file-management-properties.c: Don't drop builder object ref until the window is closed, as callbacks to setting changes refer to it still.
+  * desktop/extension config: remove incorrect tooltips
+  * nemo-desktop-overlay.c: Don't use g_clear_pointer to destroy a widget, this causes build warnings in newer glib.
+  * nemo-properties-window.c: If the icon picker is spawned on a file that has an existing custom icon name or path, display it initially in the picker.
+  * nemo-window-manage-views.c: When clearing thumbnails for a view refresh, drop the NemoIconInfo cache as well.
+  * nemo-application.c: Check for "nemo" in the current theme, instead of "nemo-window". Remove unintentional additions to nemo-style- application.css which were made in 21a960712bf4d7688.
+  * nemo-desktop: Simplify view layout preferences, other changes.
+  * desktop overlay: Use normal window hints instead of hidden.  Allow resizing, assign an icon (and use XAppGtkWindow so the icon isn't blurry). Make sure all the action names are not marked as translate. Show the monitor plug name and dimensions when displaying view settings.
+  * l10n: Update POT
+  * Version bump for dev.
+  * libnemo-extension: Refactor a bit, replace a lot of boilerplate with macros, simplify doc generation.  Documentation needs more work at some point.
+  * nemo-file.c: Do a better job of figuring out the mimetype for empty files.
+  * Add creation time (btime) support.
+  * preferences window: Add toggle for creation date in tooltips.
+  * nemo-file-info.h: Don't use G_DECLARE_INTERFACE - it doesn't allow us to properly use NemoFile for its vtable - it works but throws a ton of build warnings and isn't safe.
+  * misc: Clean up build warnings
+  * icon view: remove some deprecated paths (gtk doesn't return anything useful anymore.)
+  * nemo-icon-canvas-item.c: Insert some space between the icon and label bounds in compact view.
+  * nemo-statusbar.c: Remove custom scroll handler.  The gtk one works correctly now.
+  * menus: Respect the gtk-menu-images preference for the primary 'open/ open-with' menu item.
+  * meson.build: Add option to disable omit-frame-pointers from build (useful for perf profiling.)
+  * icon container: Generate tooltips for icon items on-demand, instead of when the view loads.
+  * meson.build: show profiling flag status in config summary.
+  * nemo-icon-info: Optimize icon lookups by GIcon.
+  * search: Respect the current state of the 'show hidden files' setting when calculating results.
+  * nemo-query-editor.c: don't intercept keys when hidden.
+  * nemo-view.c: Decrease minimum update interval.
+  * nemo-view: Optimize *_get_selection(), don't create deep copies when not necessary.
+  * nemo-file: Remove pixbuf cached in NemoFile.
+  * nemo-list-model.c: Improve accounting for dummy expander row, so it more reliably removes the expander for empty folders.
+  * nemo-file.c: Cache some heavily used values from date construction, particularly caching of the GTimeZone object for use in GDateTime construction.
+  * icon view: Remove "tighter layout" option.
+  * nemo-icon-info: don't implement as a gobject.
+  * nemo-mime-actions.c: Don't offer the 'Make executable and run' option by default.
+  * nemo-mime-application-chooser.c: Remove hacks for file-picker button.
+  * nemo-icon-canvas-item: Remove some unused code for embedded text
+  * Icon containers: Improve spacing, increase icon sizes.
+  * nemo-icon-view-container.c: Connect the tooltip signal per container instance, rather than once overall.
+  * nemo-icon-info.h: Tweak text width a bit for the zoom levels.
+  * nemo-icon-container.c: Turn on hover prelight by default.  This helps label text overlapping adjacent items (during hover) to have a clean background for better legibility.
+  * emblems: Use cached parent pointers when checking for can't-write emblem condition, instead of looking it up for each file.
+  * nemo-file.c: Load file-roller mimetype cache upon first demand, instead of at startup.  This has a noticeable impact on startup time.
+  * nemo-list-model.c: Reduce number of icon info lookups when creating icon surfaces for the model.
+  * preferences: Use the new XApp sidebar switcher, and use an ordinary GtkWindow instead of a GtkDialog to clean up the look.  This includes removing the close button as well (we already don't use one in the plugins window.)
+  * preferences: Add the plugin manager as a preferences page.  Refactor to remove unnecessary code and allow the prefs window to open on a particular page.
+  * preferences: Use togglebuttons instead of checkbuttons for toolbar button switches, and show the action's icon in the button.
+  * nemo-icon-container: Remove some unused code.
+  * eel-graphic-effects.c: Lessen the effect eel_create_spotlight_pixbuf.
+  * prefs: Restyle the visible buttons page a bit
+  * prefs: Move the custom icons to xapps
+  * meson_update_icon_cache.py: Print the icon cache folder when running.
+  * nemo-widget-menu-item.c: Fix allocation warnings.
+  * nemo-extension-config-widget.c: Improve look of extension list.
+  * nemo-places-sidebar.c: Fix a few issues with mounting/ejecting - some incorrect _finish functions and some assumptions of error always being set.
+  * nemo-thumbnails.c: Generate large thumnails to accomodate the larger icon sizes we have now.
+  * nemo-list-view.c: use the subclass selection changed callback instead of NemoView's directly - this makes sure the cached selection list is up-to-date before triggering view/menu updates.
+  * Add some keywords to the desktop entry (#1939)
+  * nemo-window-menus.c: Block split pane view in desktop windows.
+  * nemo-action.c: g_file_test here should be checking the *dependency* path, not the path to the action file.
+  * Preferences: Remove separators
+  * nemo-thumbnails.c: Use GTask.
+  * nemo-list-view.c: Start using GtkTreeView's fixed height mode.
+  * meson.build: Remove gthread dependency (no longer used).
+  * nemo-list-model.c: Check for unreadable folders and remove the expander when one is discovered during the async count job.
+  * nemo-icon-container.c: Don't recalculate the layout while renaming a file.
+  * nemo-application.c: Add minimally necessary theme elements to the current theme if they appear to be missing.
+  * Fix meson warnings (#1920)
+  * Prefer XDS Protocol Type over _NETSCAPE_URL to make DnD work in Firefox.
+  * Add option for thumbnails per folder
+  * Fix some issues with pkgconfig file
+  * desktop: Add overlay window for configuring individual monitor views as well as global desktop preferences.
+  * nemo-icon-dnd.c: Fix warning when initiating a drag from a normal windowed icon view.
+  * Remove desktop settings action (replaced by 'Customize' fixed entry).
+  * nemo-desktop-window.c: Fix build warning (unused variable).
+  * nemo-desktop: Add smaller and larger icon sizes.  The smaller is useful for low res monitors and the larger one will be useful for those using physically large 4k monitors (that do not qualify as hidpi).
+  * nemo-properties-window.c: Use XAppIconChooserDialog to select custom icons.
+  * Update libxapp dependency for icon chooser.
+  * l10n: Update POT and additional files
+
+-------------------------------------------------------------------
+Tue Sep 18 17:27:47 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.6:
+  * nemo-icon-canvas-item.c: Insert some space between the icon and
+    label bounds in compact view.
+  * nemo-query-editor.c: Don't intercept keys when hidden.
+  * nemo-places-sidebar.c: Fix a few issues with mounting/ejecting:
+    some incorrect _finish functions and some assumptions of error
+    always being set.
+
+-------------------------------------------------------------------
+Fri Jul 20 09:32:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.5:
+  * eel-gtk-extensions.c: Fix menu popups when a valid event is not
+    provided.
+- Rebase nemo-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Thu Jul  5 13:05:25 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.4:
+  * nemo-progress-info.c: Emit signals in proper order to prevent
+    an unmatched g_application_hold/release in
+    nemo-progress-ui-handler.c.
+  * eel-gtk-extensions.c: Use gtk_menu_popup_at_pointer instead of
+    plain gtk_menu_popup, which is deprecated (and causes a lot of
+    warnings under wayland. Functionality under x11 is unchanged.
+  * nemo-file.c: Fix a couple pixbuf leaks, invalidate thumbnails
+    internally when a force refresh is commanded.
+  * various: Fix some memory leaks.
+- Add nemo-gtk-3.20.patch: Restore GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.3:
+  * trash: Show the correct icon in the pathbar, and fix
+    activation uri for directories located in the trash.
+  * icons: Fix pathbar display of recent and network locations.
+  * Run merge_action_strings (updated icons names).
+  * nemo-query-editor.c: Ignore modifiers (such as numlock) during
+    the favourites menu popup event.
+  * nemo-query-editor.c: Use get_default_mod_mask for button state
+    check instead of hardcoded mask.
+  * mounts: Force reload when navigating to a new mount from the
+    sidebar.
+  * thumbnails: Make debug spam a runtime choice, not buildtime.
+  * Change polkit policy message to "Files".
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.2:
+  * nemo-places-sidebar.c: Fix potential divide by 0 (found in
+    virtualbox, guest additions CD returns a GFileInfo, but the
+    size fields we use for calculating drive full % come back all
+    0's).
+  * nemo-places-sidebar.c: Fix some leaks - GFiles must be
+    unreferenced.
+  * nemo-list-view.c: Fix list view column ordering in Gtk 3.22.11.
+  * nemo-icon-container.c: Chain the button release event up when
+    ending a rubberband selection. This allows the canvas to "pick"
+    the icon the release is over, and not cause the background
+    context menu to be used (and all items get deselected) if the
+    very next event is a right-click.
+  * Make exempi and libexif dependencies optional.
+  * Update style of meson build options.
+  * Disallow bookmarking of search result views.
+  * Add a symbolic icon for usb and replace bookmark-not-found.
+  * Fix some compiler warnings.
+
+-------------------------------------------------------------------
+Mon Apr 30 20:10:22 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.1:
+  * meson: Don't install libnemo-private.a
+  * symbolic control icons: Use icon names rather than gicons.
+    The gicon api does not support inherited icon themes.
+  * Use symbolic icons in nemo-desktop actions
+  * Add mount archive symbolic, fix bookmark icon.
+  * mime actions: Fix use of gvfs admin back-end.
+  * nemo-view.c: Disallow creation of directories or files in
+    admin:// - it does not properly set file permissions (the same
+    reason copy/paste is not allowed either.)
+  * nemo-file-utilities.c: Improve symbolic icon logic for mounts,
+    drives and volumes. For mounts and volumes, check for
+    too-generic icons and use the backing GDrive's icon instead.
+  * nemo-places-sidebar.c: Handle missing file info more gracefully.
+    Some mounted devices (for example, phones,) don't support
+    GFileInfo.
+  * Fix symbolic for desktop action.
+  * Fix build with old meson.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Apr 19 20:07:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.0:
+  * Switch to Meson.
+  * nemo-icon-view-grid-container.c: Add missing position shift
+    prior snapping a semi-positioned icon. This was causing the
+    free position check to potentially check the wrong grid spot,
+    causing shifting positions.
+  * nemo-icon-dnd.c: When calculating drop position, use the overall
+    canvas item's y centre, rather than just the icon's centre.
+    This is makes the final aligned position more closely match the
+    drag actor's apparent position.
+  * nemo-desktop-manager: Scale the window x and y positions, as
+    well as size when retrieving geometry from cinnamon.
+  * nemo-icon-dnd.c: Fix missing semicolon.
+  * nemo-icon-view-grid-container.c: Don't allow the vertical
+    adjustment to calculate out to more than half of the grid snap
+    height, this will cause grid checks to evaluate incorrectly.
+  * nemo-icon-container: Only mark (pseudo)-desktop icons as
+    transient if keep_align is active. This restores reasonable
+    behaviour for non-keep-aligned desktops, and prevents icon
+    movement when refreshing and during startup.
+  * Fix left pane in dual pane mode reverting to minimum width.
+  * Add g_return_val_if_fail to the beginning of reposition_paned.
+  * Rename Nemo icon from places to nemo.
+  * nemo-window.c: Listen for a position change on the split-view
+    paned widget when adding a new pane. When GtkPaned's position
+    property hasn't been explicitly set, it auto-adjusts to keep
+    panes equal-sized.
+  * nemo-places-sidebar-.c: Get rid of old hack for the sidebar.
+    It was intended originally to make sure enough vertical height
+    was given to the scrolled container children in their various
+    states (collapsed categories). It does not appear to be
+    necessary any more, and now causes gtk theme issues.
+  * Add options to preview thumbnails for up to 16GB and 32GB.
+  * nemo-places-sidebar.c, nemo-action.c: Replace
+    g_drive_is_media_removable with g_drive_is_removable.
+  * nemo-window-slot.c: Remove padding from extra_location_widgets
+    box.
+  * [gtk3.22] Pathbar style.
+  * Use symbolic icons.
+  * nemo-window: Check for an active slot when updating cursor.
+  * nemo-properties-window: Use utility functions if available.
+  * nemo-properties-window: Use gdk_pixbuf_scale_simple().
+  * eel-vfs-extensions: Update filename extensions.
+  * nemo-places-sidebar: Cleanup spacing.
+  * Fix sources: Use other version macro, fix fn call.
+  * actions: Fully support all system data paths, but respect the
+    install prefix for looking up fixed resources.
+  * Fix lmde3 build, don't build empty view by default.
+  * Fix thumbmails generation.
+  * nemo-file-operations: Revert a change that might be backfiring.
+  * nemo-view.c: Don't try to update undo menu items in a
+    non-active slot.
+  * Fix open as root error.
+  * nemo-list-view.c: Don't clear the editable on focus-out, this
+    will get done properly when we chain up. We need to propagate
+    the focus-out-event signal, which the callback wasn't doing.
+  * Don't build/install gtkdocs by default
+  * nemo-icon-dnd.c: Fix segfault when dragging from nemo to
+    nemo-desktop.
+  * search: Use newer GtkEntry method for focusing search box,
+    remove custom code.
+  * nemo-window-menus.c: Ignore "go home" shortcut on the desktop.
+  * nemo-view.c: Allow view display of files to commence even when
+    loading is ongoing, instead of waiting until files are entirely
+    finished loading.
+  * eel-editable-label.c: Don't queue a redraw on unrealised labels.
+  * nemo-icon-container.c: Don't perform relayouts on an unrealised
+    container.
+  * nemo-list-view.c: Remove and re-add columns rather than moving
+    them. This prevents negative allocation warnings during the
+    move calls.
+  * eel-canvas.c: Don't update the scroll region when clearing the
+    canvas to destroy it.
+  * query editor: Simplify, remove additional filters, just a
+    simple filename search.
+  * nemo-window.c: Go back to explicitly setting half the width for
+    the split-pane's position property, rather than counting on it
+    to fall that way naturally.  The natural position can be
+    affected by sizing demands of the panes' children.
+  * search: Add a more convenient way for saving searches.
+  * nemo-file.c: Avoid recursion when updating symbolic links that
+    point to each other. See inline notes.
+  * nemo-file.c: Small fix and optimisation for 40dc6ae - return
+    the full link_file list as before if the target file is not a
+    link, and only check if the file is a link one time.
+  * libnemo-extension: Remove custom enum code for
+    NemoOperationResult - it's not necessary in modern builds due
+    to introspection.
+  * info provider extensions: Improvements to info provider
+    extension operations.
+  * nemo-query-editor.c: Add mnemonic to popup search keys for
+    quick selection.
+  * nemo-query-editor.c: Inhibit faves popup if the list is empty,
+    filter out typical keyboard modifiers during clicks on the
+    favourite icon.
+  * nemo-desktop-application.c: Allow nemo-desktop to provide
+    coverage for the org.freedesktop.FileManager1 D-Bus interface.
+  * nemo-icon-view.c: Be more selective when updating the scroll
+    region.
+  * refresh/reload: When reacting to a user-initiated view refresh,
+    regenerate any thumbnails as well.
+  * nemo-properties-window: Stop using stock buttons.
+  * prefs-window: Don't use stock buttons.
+  * menus: Convert most icons to symbolic versions.
+  * nemo-list-view.c: Re-apply right-click column handler when
+    reloading column settings (see inline notes, this only affects
+    certain Gtk versions.
+  * nemo-view.c: Add label to directory menu Cut and Copy.
+  * nemo-view.c: make mnemonics for Cut, Copy, Paste match Gtk's.
+  * Fix function argument order.
+  * Check for realized instead of mapped/visible to prevent
+    needless resize calculations (and associated warnings).
+  * nemo-file-management-properties: Fix 2px border width
+    surrounding content (see comments).
+  * Use symbolic icons for the places sidebar.
+  * places-sidebar.c: Use symbolic for eject button.
+  * More symbolic conversion.
+  * nemo-trash-monitor.c: Add a new path for the symbolic icon.
+    Our file views need a non-symbolic icon.
+  * More symbolic fixes, cleanup in pathbar.
+  * Missed a few trash icons.
+  * extensions: Show symbolic icons properly, hide the icon if it
+    is not a symbolic name.
+  * Add rubber-band selection to the list view.
+  * nemo-places-sidebar.c: Remove vertical padding for headers.
+    This is unnecessary, and looks bad when a theme has increased
+    spacing between all rows.
+  * go menu, bookmarks menu: Respect the menu-images setting.
+  * nemo-trash-monitor.c: Fix a copy-paste typo.
+  * nemo-icon-info.c: Stop using gtk_icon_theme_has_icon() - it
+    returns false negative when attempting to check for icons that
+    have been added using gtk_icon_theme_append_search_path().
+    This entire branch of functionality is considered "legacy" and
+    not recommended, but for dropbox emblems, where more than one
+    package may attempt to provide them, putting them in the
+    (recommended) hicolor icon folder won't work.
+  * Use media-mount icon for right-click action.
+  * Eject/unmount icon & new directory icon.
+  * Force UTF-8 to workaround build error.
+  * Fix some warnings.
+
+-------------------------------------------------------------------
+Sun Dec 24 10:19:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.5:
+  * nemo-desktop-manager.c: Add null checks for GErrors - it seems
+    as though g_dbus calls are not guaranteed to fill the error
+    slot.
+  * nemo-window: Restore inadvertantly removed menu actions for
+    view type selection (and their corresponding shortcuts), using
+    methods and practices more consistent with currently maintained
+    code.
+
+-------------------------------------------------------------------
+Tue Nov 21 07:11:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.4:
+  * nemo-window: Restore initial synchronisation of view buttons.
+    This was inadvertantly removed in d237626 when getting rid of
+    some actual unused code related to an old way view types used
+    to be selected.
+
+-------------------------------------------------------------------
+Sat Nov 18 00:00:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.3:
+  * nemo-desktop-manager.c: Account for scale factor when using
+    cinnamon- supplied monitor info. Cinnamon runs at a scale
+    factor of 1 always, and things are scaled internally.
+  * dnd: Make sure to clear any source_fs pointers after dnd
+    operations.
+
+-------------------------------------------------------------------
+Sun Nov 12 21:00:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Remove the cinnamon-translations build requirement.
+
+-------------------------------------------------------------------
+Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.2 (changes since 3.4.7):
+  * actions: Escape single and double quotes that are part of a
+    file path. Add a "Terminal" key in the nemo_action file, to
+    execute the Exec line in a terminal window.
+  * actions: Update sample action for Terminal keyword, update
+    nemo_action sourceview files.
+  * actions: Only use nemo_launch_application_from_command_array()
+    when Terminal=true. This ensures compatibility with existing
+    actions, which will continue to use g_spawn_async().
+  * nemo-icon-info.h: Use standard icon sizes for the desktop.
+  * nemo-action.c: Fixup a few compiler warnings.
+  * nemo-icon-private.h: Avoid memory padding. Save a little memory
+    use by rearranging the fields to avoid memory padding in
+    structures.
+  * eel-editable-label.h: Avoid memory padding. Move fields in a
+    structure to avoid memory padding made padding explicit to 
+    avoid warning messages if the padding compiler warnings are on.
+  * nemo-file-undo-operations.c: Use GQueue instead of GList for
+    our undo file pair lists.
+  * nemo-file-operations.c: Use g_remove for native (path-reachable)
+    files. Allowing the normal g_file_delete involves gvfs whether
+    the file is native or not.
+  * nemo.desktop: Remove DBusActivatable line - we don't actually
+    support it yet, it was an unnecessary change in ad5fcfc.
+    This ends up just causing issues with getting nemo to launch in
+    more up-to-date distributions.
+  * nemo-icon-container.c: Always treat desktop pseudo-files as
+    semi-placed icons - that is, they can have their positions
+    stored, then restored later, but their position can be adjusted
+    upon placement if their previously stored position is now
+    occupied.
+  * nemo-progress-ui-handler.c: Use XAppGtkWindow for the progress
+    window, so we can pass progress info to Cinnamon.
+  * nemo-desktop-manager: Refactor and expand to integrate better
+    with Cinnamon.
+  * plugin manager: Allow launching of an extension's config
+    application from the plugin window, rather than having it in
+    the main menu.
+  * desktop: Handle blank desktop windows properly during monitor
+    change events.
+  * nemo-desktop-manager.c: Don't just try to resize existing
+    desktops if the number of monitors has changed. In this case,
+    do a full re-layout.
+  * nemo-progress-ui-handler.c: Don't update the status icon if
+    it's not being shown.
+  * nemo-file-operations.c: Reduce progress ui update frequency
+    during file operations.
+  * Fix some warnings in libnemo-private
+  * nemo-desktop-manager.c: Don't run on_run_state_changed() during
+    the init phase when it's a fallback session as it can cause a
+    nasty recursion problem resulting in a crash.
+  * nemo-directory-async.c: Hold the directory alive for the
+    duration of an extension provider job, to ensure clean
+    termination to the job when asynchronous info providers are
+    used.
+  * dbus services: Normalise file names.
+  * desktop: Don't show the "Show hidden files" menu item. We have
+    never show hidden files on the desktop, so having this is
+    misleading.
+  * Add .rar and .7z to the archive mounting action.
+  * When activating files on the desktop (only), deselect them
+    after activating them.
+  * nemo-toolbar.c: Add an option to hide an elevated privileges
+    warning.
+  * Rename show-superuser-toolbar to show-root-warning.
+  * file: Let renames work on Google Drive Renaming. An item on
+    Google Drive does not change the actual GVfs path because the
+    path is made up of document-ids, which do not change.
+    A rename operation only affects the title of the entry.
+    In GIO terms, only the standard::display-name changes, but the
+    standard::name remains the same.
+  * file, file-undo-operations: Let renames on Google Drive be
+    undone. We really should be using standard::display-name when
+    renaming files - g_file_get_basename is simply not the right
+    thing to use. Moreover, in case of Google Drive, the URI might
+    not change with the display name and we can not get the old
+    display name from the old GFile.
+  * A send by mail action.
+  * Fix permissions on files/usr/share/nemo/actions/send-by-mail.py
+  * Update the man page.
+  * Update translations.
+- Remove nemo-implicit-pointer-decl.patch,
+  nemo-void-return-no-return.patch: merged upstream.
+
+-------------------------------------------------------------------
+Sun Aug 20 16:09:40 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.7:
+  * eel_g_list_str_copy: Replace contents with g_list_copy_deep.
+    May improve performance somewhat for very high volume file
+    copies (lp#1663186).
+  * nemo-main-application.c: Try to start as a service first, then
+    a client. This allows nemo to be started via dbus (which
+    requires it be run with the G_APPLICATION_IS_SERVICE flag) as
+    well as being able to connect to an already-running instance as
+    we can now.
+  * nemo-main-application.c: Re-add "no-desktop" command line
+    option. We don't use it anymore, but some programs apparently
+    hardcode nemo with this flag rather than use xdg-open or
+    mimetype activation. This allows them to continue working as
+    before.
+  * nemo-view.c: Fix "follow link to original file" action when the
+    link is on the desktop. In these cases, we need to launch a
+    directory handler and pass it the full file name (which for
+    most file managers should open the folder and select the file).
+  * nemo-query-editor.c: Use a copy of the query text to check if
+    the query is empty (or all spaces). The function g_strstrip
+    modifies the string in-place, and passing the modified query
+    text causes issues when typing multiple words (separated by
+    spaces) in the query.
+  * Configure: Disable a tracker by default.
+  * nemo-desktop-icon-grid-view.c: Store layout timestamps any
+    time the layout is changed by a user action.
+  * Desktop: Remove metadata for pseudo-files on the desktop such
+    as Computer and Home when they're removed via preferences.
+    This simulates their deletion with respect to how metadata
+    timestamps are tracked and validated.
+  * nemo-icon-view-grid-container.c: Mark the sort as dirty any
+    time a file is added or removed (this determines whether and
+    when the sort direction indicator is shown in the context menu
+    when auto-arrange is not active.
+
+-------------------------------------------------------------------
+Sun Jul  9 12:20:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.6:
+  * nemo-icon-view-grid-container.c: Reset lazy flag when the icon
+    position is stored in auto-layout mode.
+  * nemo-file.c: Don't check for valid thumbnails if thumbnailing
+    is disabled.
+  * nemo-action.c: Use non-blocking checks for a directory.
+  * css: Treat NemoBlankDesktopWindow the same as NemoDesktopWindow
+    with regards to themes, add a couple fixes to our application
+    css to prevent background issues with certain themes
+    (BlackMATE, Ambiance).
+  * move-to/copy-to dialogs: Allow remote locations in the sidebar.
+
+-------------------------------------------------------------------
+Wed Jun 28 19:20:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.5:
+  * search (ctrl-f): Don't search for an empty string.
+    If the user wants to search for every file, one can use the
+    wildcard (*).
+  * nemo-application: Only check/create the config directory at
+    startup for nemo, and have nemo-desktop check both config and
+    Desktop directories.
+  * nemo-window-menus.c: Fix control-n (new window) action callback
+    when used from the desktop process - it should launch the
+    preferred file manager instead of attempting to spawn a window
+    itself.
+  * configure.ac: Suppress deprecated warnings.
+  * Add --enable-silent-rules to debian/rules, quiet C89 warnings.
+  * l10n: Generate desktop files.
+
+-------------------------------------------------------------------
+Mon Jun 26 08:54:15 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.4:
+  * nemo-icon-view-grid-container.c: Skip default placement if we
+    are in auto-layout mode. We get false lazy flags on new icons
+    since the original desktop did not use auto-layout. We need to
+    handle this because we both store layout timestamps and provide
+    auto-layout.
+  * nemo-window-slot.c: Initialise cache_bar to NULL, this is
+    checked for in nemo-window-manage-views
+    (nemo_window_slot_check_bad_cache_bar).
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.3:
+  * Remove decoration from desktop window (shows in weston).
+  * Desktop: Relax control of positioning for placed icons.
+    At startup, they are loaded and set to their stored position,
+    but not force-aligned, allowing the layout to ignore
+    fluctuations in the work area during system startup.
+    Fix some logic around "orphan" icons as well to prevent issues
+    with icons not being shown due to being falsely classified as
+    orphans.
+  * icon container: Be more specific about when to flag icons
+    coming from a different monitor due to a desktop configuration
+    change.
+  * metadata: Add back cached position values in NemoFile.
+    Be sure to clear the timestamp metadata on files being
+    moved/copied to or from the desktop. This ensures the lazy flag
+    operates correctly. With the desktop becoming a separate
+    process, transfers that include position info need to be
+    handled slightly differently, as the old way of just setting
+    metadata and reacting to it from a new container won't work -
+    the file gets debuted in the other process sooner than (or not
+    reliably after, at least) the metadata is written, resulting in
+    inconsistent positioning.
+  * Add gvfs-info action for inspecting file metadata (for purposes
+    of debugging) - right-click a file and it will send gvfs-info
+    output on that file to stdout.
+  * nemo-icon-view-grid-container.c: Improve updates after
+    thumbnail generation.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.2:
+  * nemo-icon-container.c: don't force a native window for the
+    desktop - fixes prelight hover sticking on the desktop when
+    leaving an icon to pass into another window.
+  * nemo-icon-view-grid-container: Don't show bracketed empty
+    spots, it's tacky.
+  * nemo-main.c: Remove back end requirement (only needed for the
+    desktop).
+  * icon view/desktop: Fix hidpi scaling on the desktop.
+    This also fixes compact view mode in hidpi, which was
+    semi-broken since hidpi was implemented, and very broken since
+    the desktop grid was added.
+  * nemo-icon-dnd.c: Depopulate the dnd grid of the selected icons
+    so insertion marks aren't drawn in the icon's source position.
+  * nemo-window-manager-views.c: Simply close the window if the
+    current view has no backward history, instead of jumping home
+    or to the parent directory. The most common time for this to
+    occur is a directory opened from the desktop - if you delete
+    that directory, the window showing it then shows the desktop in
+    a directory, which doesn't make much sense.
+  * nemo-window-manage-views.c: Invalidate file info before
+    reloading the view, not after.
+    This fixes mount permissions being incorrect.
+  * dnd: Restore capability of "moving" files from and to the
+    desktop via drag'n'drop.
+  * Fetch file-roller mimetype info from a GDesktopAppInfo at
+    startup, instead of a static (and woefully out of date) list.
+  * nemo-file.c: Add EFAULT as a valid exception to the access_ok
+    function. This can throw when the file has just been moved or
+    is in the midst of being moved and the internal asynch updates
+    have not completed yet (usually during a fairly large transfer).
+    As a result, the icon cache problem bar appears needlessly.
+  * desktop: Size thumbnails more appropriately - scale them to our
+    icon size in height only, and allow the width to increase as
+    much as our max text width while maintaining the image aspect
+    ratio.
+  * desktop thumbnails: Pad the thumbnail height when it ends up
+    smaller than the desired height due to aspect ratio and width
+    restrictions.
+    This ensures a nice alignment when keep-aligned is active.
+  * nemo-icon-view-grid-container.c: Highlight the current dnd
+    rectangle in debug mode.
+  * desktop grid: Use the layout size for determining constraint to
+    the canvas bounds instead of max size - this prevents files
+    with very long names from being pushed out of the grid alignment.
+  * misc: Clean up minor leaks, other issues.
+  * desktop grid: Include additional text (Icon Captions) in
+    calculations for the ellipsis limit, and update the desktop
+    when these change - instead of forcing the user to reload or
+    restart to see changes.
+  * nemo-style-application: Remove drop shadow from the selection
+    and pre-light states of desktop icons. The shadows are drawn
+    outside the calculated bounds of these items, and are
+    problematic to account for without doing frequent full screen
+    repaints.
+  * DnD: Draw the highlight box around the entire text when an item
+    is prelit and highlighted as a drop target. The highlight box
+    was only drawing as if to surround only the normal, ellipsised
+    text, rather than the full, unellipsised height.
+  * Set a default font for the desktop - this is overridden by
+    distributions in most cases, but having something is better
+    than leaving it blank - you could set it to "Foo Sans 15"
+    and it would still show the labels, even though you lack that
+    actual font.
+  * Add a default to our theme - Using the default font was always
+    supposed to be a fallback option, however the check in various
+    places for whether the gsettings key is empty or not is incorrect:
+    GSettings::get_string() will always return a string, never
+    NULL, so we need to check if the string is not empty instead
+    (boo#1040024).
+  * desktop: Fix missing icons when "show orphans" is disabled
+    (we were incorrectly interpreting a monitor number of -1 (which
+    means, no previous location) and a missing monitor).
+  * Fix visual sort function - sort function was incorrect for the
+    new grid, and the new order was never set after a sort when
+    running the alignment routine.
+  * nemo-places-sidebar: Use folder-recents for the recent icon.
+  * grid view: Don't re-enable auto-arrange when changing zoom
+    levels.
+  * Desktop dnd - Use more sensible behaviour when keep-aligned is
+    active.
+  * Fix dnd for netscape url drops.
+  * nemo-mime-actions.c: Don't fail for non-local links (like
+    dragged website links) - the check here is for the foreign url,
+    not the local desktop file (link), so it will never succeed,
+    and is not necessary.
+  * DnD: Fix some positioning issues with auto-align local moves,
+    and non-local icon moves (like nemo->nemo-desktop transfers).
+  * nemo-icon-view-grid-container.c: Keep the icon list synched
+    with the visual order of the desktop.
+  * dnd: Split out some container-specific code that had bled over a
+    bit.
+  * Modify desktop icon order.
+  * nemo-file-operations.c: store the desktop location during a
+    duplicate job, to fix DnD duplicate positioning on the desktop.
+
+-------------------------------------------------------------------
+Sun May  7 11:23:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.1 (changes since 3.2.2):
+  * Nemo-Icon-View: Fix missing cast warning.
+  * restore prototype lost in Nemo 3.2.0.
+  * Add a missing include.
+  * Fix quirks with tabs and search widgets.
+  * Don't reload while a reload is ongoing.
+  * Wildcard search for search-engine-simple.
+  * Fix a crash when attempting to delete an empty selection on
+    the desktop.
+  * Update polkit pkexec support.
+  * Fix search never resolving.
+  * nemo-dbus-manager.c: Add MoveURIs method.
+  * Improve date display.
+  * Use 24-hour date format when requested.
+  * Translate date formats.
+  * nautilus-file: Implement smarter dates.
+  * nautilus-list-view: Add a modified column with time.
+  * nautilus-file: Clarify translators comments.
+  * nautilus-file: Fix a memory leak.
+  * nautilus-file: Fix code style.
+  * Mark time format with xgettext:no-c-format.
+  * file: Fix date string day difference calculation.
+  * Use long day and month names if space allows.
+  * Make libselinux dependency controllable by configure switch.
+  * Raise tracker version.
+  * autogen.sh: Don't run aclocal.
+  * location-bar: Use a GFile in location-changed signal.
+  * l10n: Generate desktop file via generate_aditional_file.
+  * Add Cinnamon panel shortcuts (trash, computer, etc.) to the
+    launcher.
+  * Fix compiler warnings in the eel/ directory.
+  * nemo-desktop-window, nemo-blank-desktop-window: Clean
+    delete-event handling up.
+  * window: Make NemoWindow a GtkApplicationWindow.
+  * nemo-file-operations.c: Use only template filenames for new
+    files.
+  * nemo-navigation-action.c: Add new_tab_action.
+  * configure.ac: Remove CFLAGS line - the optimisation is
+    dangerous, and the fatal warnings for unused stuff was just
+    annoying when trying to refactor - warnings are enough.
+  * Use GTimer for tracking startup speed, and also use one to
+    track view loads.
+  * nemo-view.c: Add idle timer for benchmarking.
+  * Split off desktop handling into new process.
+  * Split off old icon container into the existing subclass
+    NemoIconViewContainer and set up a new subclass -
+    NemoIconViewGridContainer to match with a new
+    NemoDesktopIconGridView class. The old style is accessible via
+    the org.nemo.desktop 'use-desktop-grid' setting.
+  * Fix autostart file name so cinnamon session doesn't fail.
+  * Remove a bunch of comments, fix auto-layout not sticking.
+  * nemo-icon-container: Move debug drawing to the grid container
+    subclass. Trigger it using NEMO_DEBUG=Desktop when running
+    nemo-desktop.
+  * Implement horizontal layout.
+  * General fixes, icons, metadata issues between monitors. Provide
+    per-monitor metadata for desktop containers.
+  * Improve DND during keep-aligned, allow for insertion of items.
+    Implement zoom scaling and allow adjustment.
+  * Improve highlighting of hovered items
+  * Fix desktop folder launching - xdg-open was never intended to be
+    the final answer.
+  * Fix ellipses change listening - the is_desktop flag was being
+    set too late in the view construction process to connect to the
+    correct gsettings key.
+  * Fix regression causing metadata to be inconsistent in nemo
+    client window when navigating to and away from the Desktop
+    directory.
+  * Add some gsettings listeners for grid stuff.
+  * Fix dnd between monitors - clamp grid values, and ensure we
+    have a grid on the target monitor.
+  * Fix zoom switching, dnd placement, snapping.
+  * nemo-desktop-utils.c: Improve how we store the monitor number
+    for a desktop window.
+  * Use black instead of theme colour for pre-light label
+    highlighting.
+  * nemo-icon-canvas-item.c: Extend redraw area slightly for canvas
+    items. This ensures any small shadow we have is cleaned up
+    after an item is de-selected.
+  * nemo-desktop-icon-grid-view.c: Don't trigger a real update
+    while updating menus.
+  * Disable zoom for the desktop window (allow it only via context
+    menu).
+  * nemo-desktop-application: Clean some commented lines up.
+  * Fix desktop file error (gh#linuxmint#nemo#1477).
+  * nemo-navigation-action.c: Extend, Fix Middle-Click
+    (gh#linuxmint#nemo#1478).
+  * l10n: Update POT file.
+- Rebase nemo-void-return-no-return.patch.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.2 (changes since 3.2.0):
+  * Add missing "Desktop" DEBUG flag.
+  * Add space to Name[en_GB].
+  * file-operations: Don't recurse for trash operations.
+  * Force X11 backend.
+  * Remove screen metadata (we only ever have one screen).
+  * nemo-file-operations.c: Don't update position metadata on most
+    file operations - it's costly, and can cause lockups.
+  * l10n: Generate additional files.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.0:
+  * Migrate away from gnome-common deprecated vars and macros.
+  * Fix GCC pointer signedness warnings.
+  * Add a .view style class on the icon view scrolled window.
+  * window: Remove a custom get_preferred_width/height implementation.
+    We already take care of the default size when we create the
+    window, and these only break assumptions of the default
+    GtkWindow's handlers.
+  * pathbar: Avoid GTK+ warnings.
+  * pathbar: Remove a hardcoded width for sliders.
+  * Close an open_as_root child on child exit.
+  * nemo-context-menu-menu-item.c: Use correct grammar in the
+    context menu toggle.
+  * Fix a GTK+ 3.21.3+ desktop redraw issue (gh#linuxmint/nemo#1231).
+  * Replace a deprecated gtk_icon_info_free() with g_object_unref().
+  * file-operations: Reduce the time for reliable transfer rate.
+  * Remove a 'Show text in icon' preference.
+  * nemo-view.c: Unescape uris being passed to file-roller during
+    drag-and-drop (replaces %20 with spaces).
+  * Expand grid width to canvas.
+  * Minimum of one column.
+  * Update nemo-file.c.
+  * trash-monitor: Change trash monitoring process.
+  * Fix --geometry option when Nemo is already running.
+  * Keep warnings as warnings when building the packages.
+  * nemo-window.c: Save sidebar width 100ms after last change.
+  * nemo-application.c: Fix maximised window state preservation.
+  * Remove conditional ellipsis code for GTK+ < 3.12.0 builds.
+  * Bind double left click on blank to go to parent directory.
+  * Add an option to manage double cick in blank area (off by
+    default) because it changes previous behaviour.
+  * nemo-file.c: Only append .desktop to desktop files when they
+    actually need it. Trusted desktop files (ones that typically
+    get made and placed on the desktop) don't show their extension,
+    so when you try to rename them, the new name needs .desktop
+    appended to it.
+  * nemo-file-management-properties.glade: Improve the description
+    of the click-to-rename feature.
+  * nemo-thumbnails.c: Don't set a stack size.
+  * nemo-application.c: Look for already-existing desktop windows
+    before attempting to manage the desktop.
+  * desktop: Don't rebuild the desktop any time _NET_WORKAREA
+    changes - this can happen fairly frequently in some situations,
+    causing crashes due to the asynchronous nature of nemo's
+     directory loading back-end.
+  * eel-gnome-extensions.c: Use preferred terminal emulator when
+    using "Run in terminal" to execute something.
+  * nemo-desktop-manager.c: Run layout_changed when the widget
+    scale factor changes.
+  * file-undo-operations: Change trashed files matching condition.
+  * icon view: Use the correct container size for applying margins
+    to the icon container. Also, make sure icon data is fully
+    loaded before positioning items - desktop pseudo-items don't
+    necessarily have the correct bounding boxes defined by the time
+    layout occurs. Load this data just before trying to position
+    the icon, rather than just after.
+  * nemo-desktop-utils: Adjustments for Gtk 3.22 changes in monitor
+    management. gdk_screen_get_monitor_workarea() no longer returns
+    a valid workarea, it simply returns the geometry.
+  * nemo-desktop-manager.c: Reload the desktop in an idle callback.
+  * nemo-application.c: Add a whitelist for ignoring existing
+    desktop handlers by WM_CLASS match. By default 'conky' is in
+    the list.
+- Remove nemo-fix-desktop-redraw.patch: fixed upstream.
+- Move gtk-doc to the devel package.
+- Update nemo-implicit-pointer-decl.patch and
+  nemo-void-return-no-return.patch.
+
+-------------------------------------------------------------------
+Tue Sep 27 12:38:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Add nemo-fix-desktop-redraw.patch from upstream commit 4e5a103:
+  fix a GTK+ 3.21.3+ desktop (boo#1001431, gh#linuxmint/nemo#1231).
+
+-------------------------------------------------------------------
+Thu Jun 23 18:43:19 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.6:
+  * Generate action files manually (as opposed to during the build).
+  * nemo-desktop-utils.c: return 0 for monitor index if a widget
+    isn't realised (this can happen during configuration changes
+    and during session startup).
+  * nemo-desktop-icon-view.c: Disconnect from the same gsettings
+    instance we connected to.
+  * nemo-desktop-manager, nemo-application: Fix some cleanup
+    issues - disconnect from the correct objects when disposing of
+    the desktop manager, and destroy the desktop manager earlier
+    in Nemo's destruction so there are no issues freeing the
+    DesktopInfos.
+  * notebook: Remove unused ifdef code.
+  * nemo-list-view.c: Detach the column header menu from metadata
+    when setting it up. Use the actual view's layout instead. When
+    reacting to visible columns being changed, simplify things by
+    iterating through the treeview column to build a new metadata
+    list.
+  * nemo-list-view.c: Don't show trash-specific columns in the
+    header menu.
+  * list view: Make changes to the search results view persistent.
+    gvfs can't save metadata for the search 'folder' so we store it
+    ourselves.
+  * eel-canvas.c: Fix touchscreen selection in icon views.
+
+-------------------------------------------------------------------
+Wed Jun  1 12:43:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.5 (changes since 3.0.3):
+  * Add standard settings for EelEditableLabel.
+  * Build-require cinnamon-translations.
+  * Use g_hash_table_remove_all and get rid of some callbacks.
+
+-------------------------------------------------------------------
+Tue May 24 16:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.3:
+  * nemo-places-sidebar.c: When gtk overlay scrolling is in effect,
+    add some padding right of the sidebar eject icons, otherwise
+    they are covered by the scrollbar when it pops up.
+  * Update pot file.
+
+-------------------------------------------------------------------
+Sat May 21 13:21:24 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 3.0.2:
+  * Fix build.
+  * Fix action i18n scripts to write UTF-8.
+  * nemo-icon-view: Include nemo-application.h needed in
+    nemo_icon_view_add_file for: nemo_application_set_cache_flag,
+    nemo_application_get_singleton.
+  * nemo-pathbar: Use gint for slider_width instead of gint16
+    silences an incorrect pointer type warning.
+  * nemo-list-view.c: Don't explicitly unref columns anymore –
+    they'll get handled when the tree view is destroyed.
+  * nemo-icon-container.c: Re-enable desktop type-to-select feature.
+    Also make a couple fixes on the positioning logic for this
+    little popup. Where possible, it will avoid overlapping panels.
+  * desktop windows: Maximise instead of relying on gdk for monitor
+    workarea – it's inaccurate for anything but the primary monitor.
+  * nemo-icon-container.c: Special case desktop windows for search
+    popup – now that we can rely on the window being the correct
+    size to account for panels, we can reliably position this popup
+    off of those panels.
+  * prefs: Don't try to hardcode a minimum size for the
+    preferences dialog.
+  * Use g_themed_icon_new instead of
+    g_themed_icon_new_with_default_fallbacks.
+  * nemo-window.c: As of 9cb9c48 we maximise the desktop
+    containers to make sure they use the correct work area as set
+    by muffin. This started causing the window state 'maximized'
+    key to be set to true when opening a new nemo window.
+    This corrects that issue, using disable_chrome as an indicator
+    to ignore the window – only the desktop windows set this true.
+
+-------------------------------------------------------------------
+Thu May 12 09:54:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.1:
+  * pathbar: Always show the pathbar up and down arrows.
+    Dynamically adding and removing these buttons was causing the
+    visual style of buttons in the pathbar to break.
+  * Fix segfault on changing the number of colums when in list view.
+  * Fix uninitialised is_desktop flag.
+  * Port Python scripts to Python 3.x: /data/extract_action_strings,
+    /data/merge_action_strings,
+    /files/usr/share/nemo/actions/myaction.py.
+  * nemo-list-view.c:  Fix initial column sizing: expand the
+    filename column only to fill available space.
+    Other columns will start with their natural size.
+  * nemo-view: Switch to nemo_get_file_by_uri so we don't get a null
+    pointer if the file isn't already loaded internally.
+  * Add desktop settings action.
+  * nemo-places-sidebar.c: Ensure a minimum usable sidebar width
+    when resizing windows or panes.
+  * Set minimum size for File Management Preferences window.
+  * Increase default width of File Management Preferences window.
+  * nemo-list-view.c: Clean up column changes: only add columns and
+    connect to them once, remove some unnecessary checks.
+  * nemo-list-view.c: Give the name column a default width that
+    the column-double-click autosize action can use. Otherwise it
+    makes the name column as small as possible (the opposite what
+    it's supposed to do, or what the other columns do).
+  * Update m4 files.
+
+-------------------------------------------------------------------
+Mon Apr 25 05:00:35 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.0:
+  * Fix wrong desktop size on Gtk 3.20+.
+  * Add missing includes.
+  * Fix pointer types, to avoid warning.
+  * Respect dbus_satisfied flag for menu enties on blank desktops.
+  * Fix printf format specifier.
+  * Don't draw the desktop on a cloned monitor.
+  * Fix some missing cast warnings.
+  * Fix fallback style for GTK 3.20+.
+  * Add style class nemo-window-pane.
+  * Add style class nemo-properties-dialog to GtkBuilder file.
+  * Add style class in nemo_desktop_window_init (same as Nautilus).
+  * Add style class to places sidebar.
+  * Add style class to nemo-window.
+  * Use a more specific class name for places sidebar.
+  * nemo-icon-info.c: Remove invalid
+    GTK_ICON_LOOKUP_GENERIC_FALLBACK flag (triggers warnings in
+    Gtk 3.20+).
+  * nemo-window: Add new flag NEMO_WINDOW_OPEN_FLAG_SEARCH and use
+    the same slot if this flag is passed to
+    nemo_window_slot_open_location_full to avoid opening a new
+    window (and a crash) when starting a search with the open in
+    new window preference enabled.
+  * Updated makepot and pot file.
+- Rebase nemo-void-return-no-return.patch.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:09:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.8.7:
+  * Improve context menu toggle:
+    - shows separate distinct regions of the menu item now;
+    - tooltip manifests as right-justified text next to the toggle
+      icon.
+  * Use g_strcmp0 instead of unsafe strcmp.
+  * file: Don't crash when the original file path has reserved
+    characters.
+  * file-operations: Make sure to use correct filename when
+    restoring from Trash.
+  * file-utils: Ensure directories exist before restoring from trash.
+
+-------------------------------------------------------------------
+Fri Nov 27 11:09:29 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.6:
+  * nemo-view.c: Fix Open context menu entry not updating its label
+    when a new selection is made. Also, fix tracking the context
+    toggle when the menu has scroll bars.
+  * nemo-view: Fix invalid View reference when view types change,
+    and the tooltip is updated for the context menu toggle.
+
+-------------------------------------------------------------------
+Fri Nov 20 19:24:16 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.5:
+  * list view, icon view: Do not trigger click-on-rename until
+    button release, in order to preserve the possibility of
+    dragging an already-selected single item.
+  * icon-view/container: Fix click-to-rename issue where selection
+    count was not up-to-date, requiring an extra click to trigger
+    a rename after selecting a single icon from having no selection
+    previously.
+  * bookmarks: Fix crashing and inconsistent behaviour when
+    working with remote bookmarks.
+  * nemo-icon-container: Prevent interactive search on the desktop.
+
+-------------------------------------------------------------------
+Thu Nov 12 10:21:31 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.4:
+  * nemo-file-operations.c: Handle NULL NemoFiles when deciding
+    queue: this happens in both directions when dragging/copying
+    files to and from a Virtualbox guest or host.
+  * Removed context menu option from preferences.
+
+-------------------------------------------------------------------
+Wed Nov 11 21:01:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.3:
+  * Add control to context menu to toggle simple/complex menu.
+  * nemo-list-view: Implement click-to-rename.
+  * Remove nemo-directory-view-ui-light.xml (no longer needed).
+  * Update pot file.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:53:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.2:
+  * file operations queue: Refactor slightly to make it easier to
+    manage what gets queued and what gets started immediately.
+  * nemo-window-pane.c: Prevent search from appearing on desktop.
+  * preferences: Move context menu toggle to the top of the
+    Display page.
+  * file operations window: Raise the window when another operation
+    is added, if the window is visible (not status-iconed).
+  * click-to-rename: move logic to earlier in the click event, in a
+    way similar to how double-clicks are handled. Also, handle the
+    preference change in nemo-view – this way it can be re-used
+    later to handle list views as well. Also, this keeps us from
+    interacting with GSettings so much.
+  * icon view: Fetch click-to-rename preference when the view is
+    loaded, do not allow click-to-rename on read-only files.
+  * thumbnails: Detect and throttle back thumbnail generation for
+    files that are being actively updated on disk.
+  * file queue: Add some additional checks for determining whether
+    or not to start a file operation immediately.
+  * Add option to disable queueing.
+  * job queue: Refactor to reduce duplication, add debugging info,
+    add filesystem comparison to detect false "local" paths (local
+    paths to non-local or non-native filesystems and mounts).
+  * nemo-query-editor: Fix some casts to prevent build warnings.
+  * click-to-rename: Fix accidental rename triggering with multiple
+    selection in icon view
+  * click-to-rename: Fix previous commit (broke double-click upon
+    initial selection.)
+  * list view: Do not clear the rename widget twice.
+  * Fixed Nemo crashing when quickly clicking on two unmounted
+    volumes in the sidebar.
+
+-------------------------------------------------------------------
+Tue Oct 27 11:21:31 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.1:
+  * nemo-list-view.c: Fix editable not being destroyed after a
+    canceled rename in certain instances. This would cause the
+    action bindings for cut/copy not to be released from the text
+    entry box, breaking cut/copy/paste until Nemo is restarted.
+  * src/nemo-extension-config-widget.c: Make "No extensions found"
+    un-clickable like the other two lists.
+
+-------------------------------------------------------------------
+Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.0:
+  * pathbar: use a private struct and use use
+    nemo_is_[home/root/desktop]_directory().
+  * Fix compile errors.
+  * Don't use hardcoded script and action paths, remove unused sys
+    script path.
+  * Use definitions from nemo-global-preferences.
+  * Move action key definition to nemo-action.h to be external
+    usable.
+  * Show comment as tooltips for actions in action config, and
+    improve comments for some actions.
+  * Remove nemo_window_slot_go_to().
+  * Combine the search bar and query editor.
+  * Add search_is_not_empty, to fixe a segfault in treelist.
+  * Only include the domain if the method is SMB.
+  * Bump some deps and build-deps.
+  * Quick rename.
+  * Fix default sort order bug in list view.
+  * nemo-places-sidebar.c: Fix a couple of drag-and-drop issues
+    when there are no bookmarks, or when the xdg-bookmark area is
+    empty.
+  * nemo-places-sidebar.c: Fix a memory leak.
+  * connect-to-server: Remember the last connection type.
+  * nemo-list-view.c: Fix column sorting when default sort type is
+    "Detailed type".
+  * nemo-connect-server-dialog.c: Fix previous commit.
+  * Fix build warnings, missing prototype.
+  * nemo-window-pane.c: Fix crash during location entry.
+  * Fix indentation.
+  * Don't assign the position of the last closed window to the
+    first opened window (it would be really confusing if it worked…
+    and it didn't really work since gtk_application_get_windows()
+    seemed to also count the desktop window).
+  * Prefs: Rephrase quickrename option.
+  * nemo-action-config-widget.c: Localise non-localised comment
+    strings.
+  * Update pot file.
+  * Re-add revealer animation on search bar.
+  * Fix Query Editor Row not displaying.
+- Fix dependencies.
+- Rename and rebase nemo-2.4.0-void-return-no-return.patch to
+  nemo-void-return-no-return.patch.
+- Some cleanup.
+
+-------------------------------------------------------------------
+Mon Aug 10 10:10:25 UTC 2015 - i@marguerite.su
+
+- update version 2.6.7
+  * progress window: simplify slightly, have info widgets 
+    manage themselves 
+
+-------------------------------------------------------------------
+Tue Jun  2 23:18:52 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.6.5 
+
+-------------------------------------------------------------------
+Thu Apr 23 17:51:48 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.4.5
+
+-------------------------------------------------------------------
+Wed Nov  5 15:55:28 UTC 2014 - i@marguerite.su
+
+- update version 2.4.0
+- drop support for openSUSE 12.3 which will be EOL soon
+- drop patch: nemo-2.3.0-revert-hidpi-support.patch
+- add patch: nemo-implicit-pointer-decl.patch 
+  * use strcmp without including string.h
+
+-------------------------------------------------------------------
+Tue Aug 12 07:05:52 UTC 2014 - i@marguerite.su
+
+- add patch: nemo-2.3.0-revert-hidpi-support.patch
+  * revert Hi-DPI support on openSUSE 12.3, whose GTK+ doesn't
+    support it
+
+-------------------------------------------------------------------
+Tue Jul 15 15:30:45 UTC 2014 - i@marguerite.su
+
+- update version 2.3.0
+  * simplify button event handling for nemo panes
+  * Don't switch the current tab on right-click events
+  * rename function for relative tab reordering
+
+-------------------------------------------------------------------
+Wed Jul  9 09:38:23 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.3
+
+-------------------------------------------------------------------
+Thu May 22 08:05:17 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.2
+
+-------------------------------------------------------------------
+Fri May  2 10:17:10 UTC 2014 - i@marguerite.su
+
+- update version 2.2.1
+
+-------------------------------------------------------------------
+Sun Apr 20 11:04:26 UTC 2014 - i@marguerite.su
+
+- update version 2.2.0
+- add patch: nemo-2.2.0-void-return-no-return.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 13:31:02 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.8
+  * Fix passing non-latin uri's to actions.
+
+-------------------------------------------------------------------
+Mon Nov 25 15:13:07 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.7
+  * Revert "Use gksu instead of pkexec until systemd/glib/whatever is fixed."
+  * Revert "Add a bit more space between items in the places sidebar" 
+  * Add a bit more space between items in the places sidebar
+  * Don't show custom mimetype handlers in the menu.
+  * Don't crash when browser mode is off and multiple folders are selected and opened.
+  * Don't display actions for special items like desktop icons
+  * list-view: prevent name column from shrinking to uselessness
+  * Fix orphan tooltips in icon view and desktop when deleting items
+  * Use gksu instead of pkexec until systemd/glib/whatever is fixed.
+
+-------------------------------------------------------------------
+Tue Nov 12 14:38:47 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.6
+  * Fix action string script, update nemo action translations
+
+-------------------------------------------------------------------
+Mon Nov  4 11:25:33 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.5
+  * When renaming test.folder in listview, select entire filename.
+  * remove nemo-2.0.3-GTK_STOCK.patch
+  * clean spec file 
+
+-------------------------------------------------------------------
+Sat Nov  2 05:03:08 UTC 2013 - i@marguerite.su
+
+- update verson 2.0.4
+  * Fix pathbar button middle-click action
+
+-------------------------------------------------------------------
+Mon Oct 28 18:20:39 UTC 2013 - i@marguerite.su
+
+- update version 2.0.3
+  * Don't use g_list_copy_deep, it isn't supported in Mint 13
+  * Unhide certain default mime actions from the open-with menu.
+  * Add a shortcut to /usr/share/icons in the icon picker dialog
+- drop patch: nemo-2.0.1-g_list_copy_deep.patch, upstreamed
+
+-------------------------------------------------------------------
+Mon Oct 21 17:44:21 UTC 2013 - i@marguerite.su
+
+- update version 2.0.1
+  * see https://github.com/linuxmint/nemo/commits/master
+- enable documentation
+- remove lang_package, now cinnamon has a package called translation
+- use gnome-common's version to wise detect Tumbleweed
+- add patch: nemo-2.0.1-g_list_copy_deep.patch, fix g_list_copy_deep
+- add patch: nemo-2.0.1-view-no-return.patch, fix OBS gcc checks
+- add patch: nemo-2.0.1-GTK_STOCK.patch, GTK_STOCK_* deprecated
+
+-------------------------------------------------------------------
+Mon Nov 19 13:22:52 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.1.2
+  + small fixes
+
+-------------------------------------------------------------------
+Wed Nov  7 21:07:20 UTC 2012 - nmo.marques@gmail.com
+
+- Add dbus-1 (directory ownership) and xz (unpack sources in 12.1)
+  to BRs
+
+-------------------------------------------------------------------
+Tue Nov  6 00:10:08 UTC 2012 - nmo.marques@gmail.com
+
+- initial package from version 1.1.0
+

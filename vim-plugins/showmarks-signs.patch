@@ -1,0 +1,22 @@
+From e752d376f3566b9ca646914d148259097fdc713a Mon Sep 17 00:00:00 2001
+From: Tobias Gehring <tobias.gehring@fysik.dtu.dk>
+Date: Sat, 4 Oct 2014 17:37:23 +0200
+Subject: [PATCH] vim doesn't allow signs at the first line any more
+
+---
+ plugin/showmarks.vim | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugin/showmarks.vim b/plugin/showmarks.vim
+index affd240..80d9ab1 100644
+--- a/plugin/showmarks.vim
++++ b/plugin/showmarks.vim
+@@ -372,7 +372,7 @@ fun! s:ShowMarks()
+ 					exe 'hi link '.s:ShowMarksDLink{nm}.nm.' '.b:ShowMarksLink{nm}
+ 				endif
+ 				let mark_at{ln} = nm
+-				if !exists('b:placed_'.nm) || b:placed_{nm} != ln
++				if ln > 0 && (!exists('b:placed_'.nm) || b:placed_{nm} != ln)
+ 					exe 'sign unplace '.id.' buffer='.winbufnr(0)
+ 					exe 'sign place '.id.' name=ShowMark'.nm.' line='.ln.' buffer='.winbufnr(0)
+ 					let b:placed_{nm} = ln

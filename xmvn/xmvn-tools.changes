@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Mar 15 16:33:40 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of xmvn-tools 3.0.0 and their dependencies from
+  xmvn project
+- Generate and customize ant build files in order to be able to
+  build without maven

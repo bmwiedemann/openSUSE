@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:32:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on the parent pom since we are not building using
+  Maven.
+
+-------------------------------------------------------------------
+Fri Feb  1 16:33:40 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- BuildIgnore xml-apis and xml-resolver, since this does not
+  strictly require them for build
+
+-------------------------------------------------------------------
+Fri Feb  1 12:59:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- BuildIgnore xerces-j2 to break cycle of OSGi requires
+
+-------------------------------------------------------------------
+Thu Dec 13 10:52:02 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Obsolete the different other xml-resolver providers
+
+-------------------------------------------------------------------
+Tue Dec 11 01:20:14 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups. Use improved file deletion.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:50:01 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of xml-commons-resolver
+- Add compatibility symlinks as well as provides

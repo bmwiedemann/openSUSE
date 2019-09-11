@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat Mar 12 15:21:39 UTC 2016 - andrea@opensuse.org
+
+- new upstream version 0.97
+  * Fix crash during capture
+  * Enbed iniparser
+- removed all patches now in upstream code:
+  * iouyap-0.95_buff_overflow.patch
+  * iouyap-0.95_log_error.patch
+  * iouyap-0.95_fix_packet_mem_corruption.patch
+  * iouyap-0.95_fix_ownership.patch
+
+-------------------------------------------------------------------
+Tue Jan 13 10:40:24 UTC 2015 - andrea@opensuse.org
+
+- added iouyap-0.95_fix_ownership.patch from upstream code 
+
+-------------------------------------------------------------------
+Fri Dec 12 11:19:09 UTC 2014 - andrea@opensuse.org
+
+- added -I flag when compiling
+
+-------------------------------------------------------------------
+Wed Dec 11 22:25:55 UTC 2014 - andrea@opensuse.org
+
+- Fixed package description
+- made rpmlint happy by using -fPIE and -pie flags to make the code
+  position independent
+
+-------------------------------------------------------------------
+Wed Dec  3 16:39:06 UTC 2014 - andrea@opensuse.org
+
+- made sure we don't break Fedora
+
+-------------------------------------------------------------------
+Wed Dec  3 15:46:07 UTC 2014 - meissner@suse.com
+
+- hook up to permission framework. bnc#904060
+
+-------------------------------------------------------------------
+Wed Dec  3 14:36:01 UTC 2014 - andrea@opensuse.org
+
+- added pre script to add user iouyap and fix security audit boo# 904060
+- removed post script and pre-req for post scripts
+
+-------------------------------------------------------------------
+Wed Dec  3 14:14:59 UTC 2014 - andrea@opensuse.org
+
+- moved iouyap from /usr/bin into /usr/lib (libexecdir)
+- set iouyap permissions to 0750 and root,iouyap 
+
+-------------------------------------------------------------------
+Wed Dec  3 10:58:42 UTC 2014 - andrea@opensuse.org
+
+- added iouyap-0.95_buff_overflow.patch to fix buffer overflows 
+- added iouyap-0.95_log_error.patch to fix format specifiers in log_error calls 
+- added iouyap-0.95_fix_packet_mem_corruption.patch to fix mem corruption issues
+
+-------------------------------------------------------------------
+Mon Nov 24 20:43:40 UTC 2014 - andrea@opensuse.org
+
+- removed setcap in post scripts
+
+-------------------------------------------------------------------
+Thu Jul 10 09:40:46 UTC 2014 - andrea@opensuse.org
+
+- fixed packet capture on 64 bits system
+- removed IFF_MULTI_QUEUE patch now in upstream code
+
+-------------------------------------------------------------------
+Sun Jun 15 17:39:42 UTC 2014 - andrea@opensuse.org
+
+- added iouyap-0.1-IFF_MULTI_QUEUE.patch to allow build on suse <= 12.3 
+
+-------------------------------------------------------------------
+Sat Jun  7 09:40:45 UTC 2014 - andrea@opensuse.org
+
+- added Packet capture support.
+
+-------------------------------------------------------------------
+Thu May 15 21:36:21 UTC 2014 - andrea@opensuse.org
+
+- new package 
+

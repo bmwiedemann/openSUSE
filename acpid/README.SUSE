@@ -1,0 +1,13 @@
+
+Dokumentation for acpid can be found in 'man acpid'.
+
+Be aware that the acpid is only used to hand over ACPI events
+(caught from /proc/acpi/events) to other services
+(e.g. hal, powersaved, iald, ...).
+
+The events are handled by those services.
+Most of them are processed by the powersave daemon.
+For further documentation, please have a look at:
+/usr/share/doc/packages/pm-utils/
+or
+http://powersave.sourceforge.net/

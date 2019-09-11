@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Nov  7 11:42:47 CET 2018 - mcepl@suse.com
+
+- Update to 0.4.4:
+    * Bug in solve with dense array, where base of result is not
+      set correctly, fixed.
+    * Supported versions updated to: - Python: 3.7, 3.6 - NumPy:
+      1.15, 1.14, 1.13 - SciPy: 1.1, 1.0, 0.19 - SuiteSparse: 5.2
+
+-------------------------------------------------------------------
+Wed Aug  8 16:38:21 UTC 2018 - jengelh@inai.de
+
+- Trim irrelevant parts from description.
+
+-------------------------------------------------------------------
+Thu May 24 17:42:59 UTC 2018 - toddrme2178@gmail.com
+
+- Add license file
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Apr 19 16:51:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.4.3
+  * The method solve_L can now also use the L matrix of the LL' decomposition.
+  * Supported versions updated to Python 3.6, 3.5 and 2.7, NumPy 1.14 and 1.13 and SciPy 1.0 and 0.19.
+
+-------------------------------------------------------------------
+Thu May 25 16:14:07 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

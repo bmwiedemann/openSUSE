@@ -1,0 +1,30 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: ThePEG gcc6 failed
+Date: Thu, 16 Jun 2016 10:58:11 +0200
+
+to avoid compilation error with gcc6 now default compiler for TW
+===
+[  355s] In file included from FastJetFinder.cc:27:0:
+[  355s] ../include/ThePEG/Persistency/PersistentOStream.h: In member function 'ThePEG::PersistentOStream& ThePEG::PersistentOStream::operator<<(double)':
+[  355s] ../include/ThePEG/Persistency/PersistentOStream.h:222:17: error: 'isnan' was not declared in this scope
+[  355s]      if ( isnan(d) || isinf(d) )
+===
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ Config/std.h |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: ThePEG-2.1.1/Config/std.h
+===================================================================
+--- ThePEG-2.1.1.orig/Config/std.h
++++ ThePEG-2.1.1/Config/std.h
+@@ -100,6 +100,8 @@ using std::sqrt;
+ using std::abs;
+ using std::atan2;
+ using std::isfinite;
++using std::isnan;
++using std::isinf;
+ 
+ /** Powers - standard or non-standard */
+ template <class ExponentT>

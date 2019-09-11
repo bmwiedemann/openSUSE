@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue May  5 13:26:18 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 18 16:49:49 UTC 2012 - mrueckert@suse.de
+
+-  enable building of the shared library
+
+-------------------------------------------------------------------
+Thu Mar 12 14:33:23 CET 2009 - dmueller@suse.de
+
+- update to 2.7.2:
+     * Enabled some CPU-specific predefined macros in compiler-
+     independent-build as well as compiler-specific-build, because
+     there are some occasions which require those macros when we use
+     some compiler system's header files.  Created init_cpu_macro().
+     (configure.ac, noconfig.H, configed.H, main.c, system.c)
+     * Enabled -m32 and -m64 options even on 32-bits systems and on
+     compiler-independent-build, when the OS is UNIX-like one.  These
+     options change some predefined macros.  (system.c)
+     * Made -z option to output #include lines themselves.  (system.c)
+     * Fixed a bug of source line numbering in library-build.  (by
+     Dwayne Boone) (main.c)
+     * V.2.7.1
+     * Fixed a bug of newline synchronization on -K option.  Created
+     sync_linenum().  (Thanks to Benjamin Smedberg) (directive.c)
+     * Made GCC-specific-build on x86_64 and ppc64 have two sets of
+     predefines for 32bit mode and 64bit mode, and implemented -m32
+     and -m64 options.  (Thanks to Benjamin Smedberg) (configure.ac,
+     set_mcpp.sh, system.c)
+     * Stopped to use freopen() so that a main program which links
+     libmcpp can use stdin, stdout and stderr.  (by Benoit Foucher)
+     (main.c)
+     * Fixed a bug of file-handle leak on -MD and -MF options.
+     (Thanks to Masashi Fujita) (system.c)
+     * Added ports to Vicual C++ 6.0 and Borland C++ 5.9 (aka C++
+     Builder 2007).  (by Dwayne Boone) (vc6.dif, bc59.dif, eval.c)
+     * Revised declaration of stpcpy().  (internal.H)
+     * Created macro notification mode, implemented -K option and '#
+      pragma MCPP debug macro_call' sub-directive to enable this mode
+      on STD mode.  Created get_src_location(), print_macro_inf(),
+      print_macro_arg(), close_macro_inf(), chk_magic_balance(),
+      remove_magics(), some MAC_* macros to define magic characters,
+      struct LINE_COL, MACRO_INF.  Revised many functions.
+
+-------------------------------------------------------------------
+Mon Jun 18 15:32:56 CEST 2007 - dmueller@suse.de
+
+- Initial package (2.6.4)
+

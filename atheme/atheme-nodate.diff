@@ -1,0 +1,36 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-10-28 01:35:57.295975255 +0200
+
+__DATE__ is not desired; causes unnecessary rebuilds.
+
+---
+ libathemecore/ptasks.c    |    2 +-
+ modules/operserv/uptime.c |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: atheme-7.2.7/libathemecore/ptasks.c
+===================================================================
+--- atheme-7.2.7.orig/libathemecore/ptasks.c
++++ atheme-7.2.7/libathemecore/ptasks.c
+@@ -49,7 +49,7 @@ int get_version_string(char *buf, size_t
+ 		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id);
+ #else
+ 	return snprintf(buf, bufsize, "%s. %s %s :%s [%s] [enc:%s] Build Date: %s",
+-		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id, __DATE__);
++		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id, "");
+ #endif
+ }
+ 
+Index: atheme-7.2.7/modules/operserv/uptime.c
+===================================================================
+--- atheme-7.2.7.orig/modules/operserv/uptime.c
++++ atheme-7.2.7/modules/operserv/uptime.c
+@@ -36,7 +36,7 @@ static void os_cmd_uptime(sourceinfo_t *
+ #ifdef REPRODUCIBLE_BUILDS
+ 	command_success_nodata(si, "%s [%s]", PACKAGE_STRING, revision);
+ #else
+-        command_success_nodata(si, "%s [%s] Build Date: %s", PACKAGE_STRING, revision, __DATE__);
++        command_success_nodata(si, "%s [%s] Build Date: %s", PACKAGE_STRING, revision, "");
+ #endif
+         command_success_nodata(si, _("Services have been up for %s"), timediff(CURRTIME - me.start));
+ 	command_success_nodata(si, _("Current PID: %d"), getpid());

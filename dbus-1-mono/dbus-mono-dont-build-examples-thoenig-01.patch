@@ -1,0 +1,8 @@
+--- mono/Makefile.am
++++ mono/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS=. doc example
++SUBDIRS=. doc
+ 
+ TARGET=$(ASSEMBLY)
+ NOINST_EXES=test-dbus-sharp.exe

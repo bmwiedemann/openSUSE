@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Mar 14 15:58:37 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+     - RT #85350; retain WS around "+" and "-" operators, so that we don't break
+       the "calc()" function by accident.
+       Thanks to Philipp Soehnlein
+     - RT #60239; remove WS around ">" and "~" selector combinators
+       Thanks to Jacob R.
+     - RT #60238; remove units on zero values (e.g. "0px" -> "0")
+       Thanks to Jacob R.
+     - RT #85896 and #79792; allow builds on Perls older than 5.8.8
+       Thanks to Michael Robinton
+
+-------------------------------------------------------------------
+Mon Dec 12 08:40:42 UTC 2011 - coolo@suse.com
+
+- initial package 0.08
+    * created by cpanspec 1.78.06
+

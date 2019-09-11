@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Feb 24 12:22:21 UTC 2014 - seife+obs@b1-systems.com
+
+- add COPYING to doc, as requested by SUSE legal
+
+-------------------------------------------------------------------
+Sat Feb 22 11:28:06 UTC 2014 - zaitor@opensuse.org
+
+- Correct license to WTFPL, the SUSE prefix is not valid.
+
+-------------------------------------------------------------------
+Wed Jun  6 08:54:22 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-WTFPL-2.0
+  Use an SPDX compatible license (http://www.spdx.org/licenses or choose
+  from the spreadsheet linked at license.opensuse.org)
+
+-------------------------------------------------------------------
+Sat Apr 10 00:44:18 CEST 2010 - hmacht@suse.de
+
+- version 0.2.3:
+  - Add config file ~/.killswitch.cfg to store the killswitch state
+    and to restore it when the applet starts
+  - Add About dialog
+  - Use vector graphic (svg) for tray icon
+  - Add tool tip with list of active kills switches
+
+-------------------------------------------------------------------
+Thu Apr  8 18:48:28 CEST 2010 - hmacht@suse.de
+
+- run spec-cleaner and build for noarch
+
+-------------------------------------------------------------------
+Tue Mar 30 12:42:12 CEST 2010 - hmacht@suse.de
+
+- version 0.2.1
+
+-------------------------------------------------------------------
+Tue Apr 14 11:42:17 CEST 2009 - hmacht@suse.de
+
+- initial import
+

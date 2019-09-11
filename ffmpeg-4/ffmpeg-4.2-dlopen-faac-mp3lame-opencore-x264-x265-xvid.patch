@@ -1,0 +1,864 @@
+Index: ffmpeg-4.2/configure
+===================================================================
+--- ffmpeg-4.2.orig/configure
++++ ffmpeg-4.2/configure
+@@ -232,6 +232,7 @@ External library support:
+   --enable-libdc1394       enable IIDC-1394 grabbing using libdc1394
+                            and libraw1394 [no]
+   --enable-libfdk-aac      enable AAC de/encoding via libfdk-aac [no]
++  --enable-libfdk-aac-dlopen enable AAC de/encoding via dlopen()'ed libfdk-aac [no]
+   --enable-libflite        enable flite (voice synthesis) support via libflite [no]
+   --enable-libfontconfig   enable libfontconfig, useful for drawtext filter [no]
+   --enable-libfreetype     enable libfreetype, needed for drawtext filter [no]
+@@ -246,8 +247,11 @@ External library support:
+   --enable-liblensfun      enable lensfun lens correction [no]
+   --enable-libmodplug      enable ModPlug via libmodplug [no]
+   --enable-libmp3lame      enable MP3 encoding via libmp3lame [no]
++  --enable-libmp3lame-dlopen enable MP3 encoding via dlopen()'ed libmp3lame [no]
+   --enable-libopencore-amrnb enable AMR-NB de/encoding via libopencore-amrnb [no]
++  --enable-libopencore-amrnb-dlopen enable AMR-NB de/encoding via dlopen()'ed libopencore-amrnb [no]
+   --enable-libopencore-amrwb enable AMR-WB decoding via libopencore-amrwb [no]
++  --enable-libopencore-amrwb-dlopen enable AMR-WB decoding via dlopen()'ed libopencore-amrwb [no]
+   --enable-libopencv       enable video filtering via libopencv [no]
+   --enable-libopenh264     enable H.264 encoding via OpenH264 [no]
+   --enable-libopenjpeg     enable JPEG 2000 de/encoding via OpenJPEG [no]
+@@ -281,7 +285,9 @@ External library support:
+   --enable-libwavpack      enable wavpack encoding via libwavpack [no]
+   --enable-libwebp         enable WebP encoding via libwebp [no]
+   --enable-libx264         enable H.264 encoding via x264 [no]
++  --enable-libx264-dlopen  enable H.264 encoding via dlopen()'ed x264 [no]
+   --enable-libx265         enable HEVC encoding via x265 [no]
++  --enable-libx265-dlopen  enable HEVC encoding via dlopen()'ed x265 [no]
+   --enable-libxavs         enable AVS encoding via xavs [no]
+   --enable-libxavs2        enable AVS2 encoding via xavs2 [no]
+   --enable-libxcb          enable X11 grabbing using XCB [autodetect]
+@@ -290,6 +296,7 @@ External library support:
+   --enable-libxcb-shape    enable X11 grabbing shape rendering [autodetect]
+   --enable-libxvid         enable Xvid encoding via xvidcore,
+                            native MPEG-4/Xvid encoder exists [no]
++  --enable-libxvid-dlopen  enable Xvid encoding via dlopen()'ed xvidcore [no]
+   --enable-libxml2         enable XML parsing using the C library libxml2, needed
+                            for dash demuxing support [no]
+   --enable-libzimg         enable z.lib, needed for zscale filter [no]
+@@ -1715,15 +1722,19 @@ EXTERNAL_LIBRARY_GPL_LIST="
+     librubberband
+     libvidstab
+     libx264
++    libx264_dlopen
+     libx265
++    libx265_dlopen
+     libxavs
+     libxavs2
+     libxvid
++    libxvid_dlopen
+ "
+ 
+ EXTERNAL_LIBRARY_NONFREE_LIST="
+     decklink
+     libfdk_aac
++    libfdk_aac_dlopen
+     openssl
+     libtls
+ "
+@@ -1733,7 +1744,9 @@ EXTERNAL_LIBRARY_VERSION3_LIST="
+     libaribb24
+     liblensfun
+     libopencore_amrnb
++    libopencore_amrnb_dlopen
+     libopencore_amrwb
++    libopencore_amrwb_dlopen
+     libvmaf
+     libvo_amrwbenc
+     mbedtls
+@@ -1777,6 +1790,7 @@ EXTERNAL_LIBRARY_LIST="
+     libkvazaar
+     libmodplug
+     libmp3lame
++    libmp3lame_dlopen
+     libmysofa
+     libopencv
+     libopenh264
+@@ -6203,6 +6217,7 @@ enabled libdrm            && require_pkg
+ enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
+                                { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
+                                  warn "using libfdk without pkg-config"; } }
++enabled libfdk_aac_dlopen && enable libfdk_aac && add_cppflags "-I/usr/include/fdk-aac"
+ flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
+ enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
+ enabled fontconfig        && enable libfontconfig
+@@ -6228,13 +6243,16 @@ enabled libmfx            && { check_pkg
+                                { require libmfx "mfx/mfxvideo.h" MFXInit "-llibmfx $advapi32_extralibs" && warn "using libmfx without pkg-config"; } }
+ enabled libmodplug        && require_pkg_config libmodplug libmodplug libmodplug/modplug.h ModPlug_Load
+ enabled libmp3lame        && require "libmp3lame >= 3.98.3" lame/lame.h lame_set_VBR_quality -lmp3lame $libm_extralibs
++enabled libmp3lame_dlopen && enable libmp3lame && add_cppflags "-I/usr/include/lame"
+ enabled libmysofa         && { check_pkg_config libmysofa libmysofa mysofa.h mysofa_load ||
+                                require libmysofa mysofa.h mysofa_load -lmysofa $zlib_extralibs; }
+ enabled libnpp            && { check_lib libnpp npp.h nppGetLibVersion -lnppig -lnppicc -lnppc -lnppidei ||
+                                check_lib libnpp npp.h nppGetLibVersion -lnppi -lnppc -lnppidei ||
+                                die "ERROR: libnpp not found"; }
+ enabled libopencore_amrnb && require libopencore_amrnb opencore-amrnb/interf_dec.h Decoder_Interface_init -lopencore-amrnb
++enabled libopencore_amrnb_dlopen && enable libopencore_amrnb && add_cppflags "-I/usr/include/opencore-amrnb"
+ enabled libopencore_amrwb && require libopencore_amrwb opencore-amrwb/dec_if.h D_IF_init -lopencore-amrwb
++enabled libopencore_amrwb_dlopen && enable libopencore_amrwb && add_cppflags "-I/usr/include/opencore-amrwb"
+ enabled libopencv         && { check_headers opencv2/core/core_c.h &&
+                                { check_pkg_config libopencv opencv opencv2/core/core_c.h cvCreateImageHeader ||
+                                  require libopencv opencv2/core/core_c.h cvCreateImageHeader -lopencv_core -lopencv_imgproc; } ||
+@@ -6308,11 +6326,14 @@ enabled libx264           && { check_pkg
+                                  warn "using libx264 without pkg-config"; } } &&
+                              require_cpp_condition libx264 x264.h "X264_BUILD >= 118" &&
+                              check_cpp_condition libx262 x264.h "X264_MPEG2"
++enabled libx264_dlopen    && enable libx264
+ enabled libx265           && require_pkg_config libx265 x265 x265.h x265_api_get &&
+                              require_cpp_condition libx265 x265.h "X265_BUILD >= 68"
++enabled libx265_dlopen    && enable libx265
+ enabled libxavs           && require libxavs "stdint.h xavs.h" xavs_encoder_encode "-lxavs $pthreads_extralibs $libm_extralibs"
+ enabled libxavs2          && require_pkg_config libxavs2 "xavs2 >= 1.3.0" "stdint.h xavs2.h" xavs2_api_get
+ enabled libxvid           && require libxvid xvid.h xvid_global -lxvidcore
++enabled libxvid_dlopen    && enable libxvid
+ enabled libzimg           && require_pkg_config libzimg "zimg >= 2.7.0" zimg.h zimg_get_api_version
+ enabled libzmq            && require_pkg_config libzmq libzmq zmq.h zmq_ctx_new
+ enabled libzvbi           && require_pkg_config libzvbi zvbi-0.2 libzvbi.h vbi_decoder_new &&
+Index: ffmpeg-4.2/libavcodec/dlopen.h
+===================================================================
+--- /dev/null
++++ ffmpeg-4.2/libavcodec/dlopen.h
+@@ -0,0 +1,13 @@
++#ifndef LOCALINC_DLOPEN_H
++#define LOCALINC_DLOPEN_H
++#include <dlfcn.h>
++#define num2str(x) str(x)
++#define str(x) #x
++
++#define dl_sym(func, args, lib) \
++	fprintf(stderr, "dlsym " #func "\n"); \
++	dl_##func = args dlsym(lib, #func); \
++	if ((err = dlerror())) \
++		goto error;
++
++#endif
+Index: ffmpeg-4.2/libavcodec/libfdk-aacdec.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libfdk-aacdec.c
++++ ffmpeg-4.2/libavcodec/libfdk-aacdec.c
+@@ -37,6 +37,54 @@
+ #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
+ #endif
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++#include "dlopen.h"
++AAC_DECODER_ERROR (*dl_aacDecoder_AncDataInit)(HANDLE_AACDECODER, UCHAR*, int);
++HANDLE_AACDECODER (*dl_aacDecoder_Open)(TRANSPORT_TYPE, UINT);
++AAC_DECODER_ERROR (*dl_aacDecoder_Fill)(HANDLE_AACDECODER, UCHAR**, const UINT*, UINT*);
++AAC_DECODER_ERROR (*dl_aacDecoder_ConfigRaw)(HANDLE_AACDECODER, UCHAR **, const UINT*);
++AAC_DECODER_ERROR (*dl_aacDecoder_SetParam)(const HANDLE_AACDECODER, const AACDEC_PARAM, const INT);
++AAC_DECODER_ERROR (*dl_aacDecoder_DecodeFrame)(HANDLE_AACDECODER, INT_PCM*, const INT, const UINT);
++CStreamInfo* (*dl_aacDecoder_GetStreamInfo)(HANDLE_AACDECODER);
++void (*dl_aacDecoder_Close)(HANDLE_AACDECODER);
++#define aacDecoder_AncDataInit dl_aacDecoder_AncDataInit
++#define aacDecoder_Open dl_aacDecoder_Open
++#define aacDecoder_Fill dl_aacDecoder_Fill
++#define aacDecoder_ConfigRaw dl_aacDecoder_ConfigRaw
++#define aacDecoder_SetParam dl_aacDecoder_SetParam
++#define aacDecoder_DecodeFrame dl_aacDecoder_DecodeFrame
++#define aacDecoder_GetStreamInfo dl_aacDecoder_GetStreamInfo
++#define aacDecoder_Close dl_aacDecoder_Close
++#define FDKAAC_LIB "libfdk-aac.so.1"
++static int loadLibFdkAac(AVCodecContext *avctx);
++static int loadLibFdkAac(AVCodecContext *avctx) {
++	void *libfdkaac = NULL;
++	const char *err = NULL;
++	
++	libfdkaac = dlopen(FDKAAC_LIB, RTLD_LAZY);
++	if(err = dlerror()) {
++		av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libfdk-aac support will be disabled\n", err, FDKAAC_LIB);
++		if(libfdkaac)
++			dlclose(libfdkaac);
++		return 1;
++	}
++	dl_sym(aacDecoder_AncDataInit, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR*, int)), libfdkaac);
++	dl_sym(aacDecoder_Open, (HANDLE_AACDECODER (*)(TRANSPORT_TYPE, UINT)), libfdkaac);
++	dl_sym(aacDecoder_Fill, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR**, const UINT*, UINT*)), libfdkaac);
++	dl_sym(aacDecoder_ConfigRaw, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR**, const UINT*)), libfdkaac);
++	dl_sym(aacDecoder_SetParam, (AAC_DECODER_ERROR (*)(const HANDLE_AACDECODER, const AACDEC_PARAM, const INT)), libfdkaac);
++	dl_sym(aacDecoder_DecodeFrame, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, INT_PCM*, const INT, const UINT)), libfdkaac);
++	dl_sym(aacDecoder_GetStreamInfo, (CStreamInfo* (*)(HANDLE_AACDECODER)), libfdkaac);
++	dl_sym(aacDecoder_Close, (void (*)(HANDLE_AACDECODER)), libfdkaac);
++	return 0;
++error:
++	av_log(avctx, AV_LOG_FATAL, "libfdk-aac: Missing symbols in %s: %s\n"
++		"libfdk-aac support disabled\n", FDKAAC_LIB, err);
++	dlclose(libfdkaac);
++	return 1;
++}
++#endif
++
+ enum ConcealMethod {
+     CONCEAL_METHOD_SPECTRAL_MUTING      =  0,
+     CONCEAL_METHOD_NOISE_SUBSTITUTION   =  1,
+@@ -224,6 +272,11 @@ static av_cold int fdk_aac_decode_init(A
+     FDKAACDecContext *s = avctx->priv_data;
+     AAC_DECODER_ERROR err;
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++    if (loadLibFdkAac(avctx))
++        return -1;
++#endif
++
+     s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
+     if (!s->handle) {
+         av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
+Index: ffmpeg-4.2/libavcodec/libfdk-aacenc.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libfdk-aacenc.c
++++ ffmpeg-4.2/libavcodec/libfdk-aacenc.c
+@@ -34,6 +34,48 @@
+ #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
+ #endif
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++#include "dlopen.h"
++#include <fdk-aac/aacdecoder_lib.h>
++AACENC_ERROR (*dl_aacEncOpen)(HANDLE_AACENCODER*, const UINT, const UINT);
++AACENC_ERROR (*dl_aacEncoder_SetParam)(const HANDLE_AACENCODER, const AACENC_PARAM, const UINT);
++AACENC_ERROR (*dl_aacEncEncode)(const HANDLE_AACENCODER, const AACENC_BufDesc*, const AACENC_BufDesc*, const AACENC_InArgs*, AACENC_OutArgs*);
++AACENC_ERROR (*dl_aacEncInfo)(const HANDLE_AACENCODER, AACENC_InfoStruct*);
++AACENC_ERROR (*dl_aacEncClose)(HANDLE_AACENCODER*);
++
++#define aacEncOpen dl_aacEncOpen
++#define aacEncoder_SetParam dl_aacEncoder_SetParam
++#define aacEncEncode dl_aacEncEncode
++#define aacEncInfo dl_aacEncInfo
++#define aacEncClose dl_aacEncClose
++#define FDKAAC_LIB "libfdk-aac.so.1"
++
++static int loadLibFdkAac(AVCodecContext *avctx);
++static int loadLibFdkAac(AVCodecContext *avctx) {
++	void *libfdkaac = NULL;
++	const char *err = NULL;
++	
++	libfdkaac = dlopen(FDKAAC_LIB, RTLD_LAZY);
++	if(err = dlerror()) {
++		av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libfdk-aac support will be disabled\n", err, FDKAAC_LIB);
++		if(libfdkaac)
++			dlclose(libfdkaac);
++		return 1;
++	}
++	dl_sym(aacEncOpen, (AACENC_ERROR (*)(HANDLE_AACENCODER*, const UINT, const UINT)), libfdkaac);
++	dl_sym(aacEncoder_SetParam, (AACENC_ERROR (*)(const HANDLE_AACENCODER, const AACENC_PARAM, const UINT)), libfdkaac);
++	dl_sym(aacEncEncode, (AACENC_ERROR (*)(const HANDLE_AACENCODER, const AACENC_BufDesc*, const AACENC_BufDesc*, const AACENC_InArgs*, AACENC_OutArgs*)), libfdkaac);
++	dl_sym(aacEncInfo, (AACENC_ERROR (*)(const HANDLE_AACENCODER, AACENC_InfoStruct*)), libfdkaac);
++	dl_sym(aacEncClose, (AACENC_ERROR (*)(HANDLE_AACENCODER*)), libfdkaac);
++	return 0;
++error:
++	av_log(avctx, AV_LOG_FATAL, "libfdk-aac: Missing symbols in %s: %s\n"
++		"libfdk-aac support disabled\n", FDKAAC_LIB, err);
++	dlclose(libfdkaac);
++	return 1;
++}
++#endif
++
+ typedef struct AACContext {
+     const AVClass *class;
+     HANDLE_AACENCODER handle;
+@@ -126,6 +168,11 @@ static av_cold int aac_encode_init(AVCod
+     int aot = FF_PROFILE_AAC_LOW + 1;
+     int sce = 0, cpe = 0;
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++    if (loadLibFdkAac(avctx))
++        return -1;
++#endif
++
+     if ((err = aacEncOpen(&s->handle, 0, avctx->channels)) != AACENC_OK) {
+         av_log(avctx, AV_LOG_ERROR, "Unable to open the encoder: %s\n",
+                aac_get_error(err));
+Index: ffmpeg-4.2/libavcodec/libmp3lame.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libmp3lame.c
++++ ffmpeg-4.2/libavcodec/libmp3lame.c
+@@ -38,6 +38,145 @@
+ #include "mpegaudio.h"
+ #include "mpegaudiodecheader.h"
+ 
++#ifdef CONFIG_LIBMP3LAME_DLOPEN
++#include "dlopen.h"
++
++static lame_global_flags* (*dl_lame_init) (void);
++
++static int  (*dl_lame_close) (lame_global_flags *);
++
++static int (*dl_lame_encode_flush) (lame_global_flags *  gfp, unsigned char* mp3buf, int size);
++
++static int (*dl_lame_encode_buffer) (lame_global_flags*  gfp, const short int buffer_l [], const short int buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size );
++
++static int (*dl_lame_encode_buffer_interleaved) (lame_global_flags*  gfp, short int pcm[], int num_samples, unsigned char* mp3buf, int mp3buf_size );
++
++static int (*dl_lame_encode_buffer_int) (lame_global_flags* gfp, const int buffer_l [], const int buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size );
++
++static int (*dl_lame_encode_buffer_float) (lame_global_flags* gfp, const float buffer_l [], const float buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size );
++
++static int (*dl_lame_get_encoder_delay) (lame_global_flags* gfp );
++
++static int (*dl_lame_set_in_samplerate) (lame_global_flags *, int);
++
++static int (*dl_lame_set_num_channels) (lame_global_flags *, int);
++
++static int (*dl_lame_set_quality) (lame_global_flags *, int);
++static int (*dl_lame_set_mode) (lame_global_flags *, MPEG_mode);
++
++static int (*dl_lame_set_out_samplerate) (lame_global_flags *, int);
++
++static int (*dl_lame_set_brate) (lame_global_flags *, int);
++
++static int (*dl_lame_set_VBR) (lame_global_flags *, vbr_mode);
++
++static int (*dl_lame_set_VBR_quality) (lame_global_flags *, float);
++
++static int (*dl_lame_set_VBR_mean_bitrate_kbps) (lame_global_flags *, int);
++
++static int (*dl_lame_set_bWriteVbrTag) (lame_global_flags *, int);
++
++static int (*dl_lame_set_disable_reservoir) (lame_global_flags *, int);
++
++static int (*dl_lame_init_params) (lame_global_flags *);
++
++static int (*dl_lame_get_framesize) (const lame_global_flags *);
++
++static int (*dl_lame_set_lowpassfreq) (lame_global_flags *, int);
++
++#define lame_init			dl_lame_init
++#define lame_close			dl_lame_close
++#define lame_encode_flush		dl_lame_encode_flush
++#define lame_encode_buffer		dl_lame_encode_buffer
++#define lame_encode_buffer_interleaved	dl_lame_encode_buffer_interleaved
++#define lame_encode_buffer_int		dl_lame_encode_buffer_int
++#define lame_encode_buffer_float	dl_lame_encode_buffer_float
++#define lame_get_encoder_delay		dl_lame_get_encoder_delay
++#define lame_set_in_samplerate		dl_lame_set_in_samplerate
++#define lame_set_num_channels		dl_lame_set_num_channels
++#define lame_set_quality		dl_lame_set_quality
++#define lame_set_mode			dl_lame_set_mode
++#define lame_set_out_samplerate		dl_lame_set_out_samplerate
++#define lame_set_brate			dl_lame_set_brate
++#define lame_set_VBR			dl_lame_set_VBR
++#define lame_set_VBR_quality		dl_lame_set_VBR_quality
++#define lame_set_VBR_mean_bitrate_kbps	dl_lame_set_VBR_mean_bitrate_kbps
++#define lame_set_bWriteVbrTag		dl_lame_set_bWriteVbrTag
++#define lame_set_disable_reservoir	dl_lame_set_disable_reservoir
++#define lame_init_params		dl_lame_init_params
++#define lame_get_framesize		dl_lame_get_framesize
++#define lame_set_lowpassfreq		dl_lame_set_lowpassfreq
++#define	MP3LAME_LIB			"libmp3lame.so.0"
++
++static int loadLibMp3Lame(AVCodecContext *avctx);
++static int loadLibMp3Lame(AVCodecContext *avctx) {
++    void *libmp3lame = NULL;
++    const char *err = NULL;
++
++
++    libmp3lame = dlopen(MP3LAME_LIB, RTLD_LAZY);
++    if ((err = dlerror())) {
++	av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libmp3lame support disabled\n", err, MP3LAME_LIB);
++	if (libmp3lame)
++	    dlclose(libmp3lame);
++	return 1;
++    }
++
++    dl_sym(lame_init, (lame_global_flags* (*) (void)), libmp3lame);
++
++    dl_sym(lame_close, (int (*) (lame_global_flags*)), libmp3lame);
++
++    dl_sym(lame_encode_flush, (int (*) (lame_global_flags* gfp, unsigned char* mp3buf, int size)), libmp3lame);
++
++    dl_sym(lame_encode_buffer, (int (*) (lame_global_flags* gfp, const short int buffer_l [], const short int buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size)), libmp3lame);
++
++    dl_sym(lame_encode_buffer_interleaved, (int (*) (lame_global_flags* gfp, short int pcm[], int num_samples, unsigned char* mp3buf, int mp3buf_size)), libmp3lame);
++
++    dl_sym(lame_encode_buffer_int, (int (*) (lame_global_flags* gfp, const int buffer_l [], const int buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size)), libmp3lame);
++
++    dl_sym(lame_encode_buffer_float, (int (*) (lame_global_flags* gfp, const float buffer_l [], const float buffer_r [], const int nsamples, unsigned char* mp3buf, const int mp3buf_size)), libmp3lame);
++
++    dl_sym(lame_get_encoder_delay, (int (*) (lame_global_flags* gfp)), libmp3lame);
++
++    dl_sym(lame_set_in_samplerate, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_num_channels, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_quality, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_mode, (int (*) (lame_global_flags *, MPEG_mode)), libmp3lame);
++
++    dl_sym(lame_set_out_samplerate, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_brate, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_VBR, (int (*) (lame_global_flags *, vbr_mode)), libmp3lame);
++
++    dl_sym(lame_set_VBR_quality, (int (*) (lame_global_flags *, float)), libmp3lame);
++
++    dl_sym(lame_set_VBR_mean_bitrate_kbps, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_bWriteVbrTag, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_set_disable_reservoir, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    dl_sym(lame_init_params, (int (*) (lame_global_flags *)), libmp3lame);
++
++    dl_sym(lame_get_framesize, (int (*) (const lame_global_flags *)), libmp3lame);
++
++    dl_sym(lame_set_lowpassfreq, (int (*) (lame_global_flags *, int)), libmp3lame);
++
++    return 0;
++
++error:
++    av_log(avctx, AV_LOG_FATAL, "libmp3lame: Missing symbols in %s: %s "
++	    "mp3lame support disabled\n", MP3LAME_LIB, err);
++    dlclose(libmp3lame);
++    return 1;
++
++}
++#endif
++
+ #define BUFFER_SIZE (7200 + 2 * MPA_FRAME_SIZE + MPA_FRAME_SIZE / 4+1000) // FIXME: Buffer size to small? Adding 1000 to make up for it.
+ 
+ typedef struct LAMEContext {
+@@ -93,6 +232,11 @@ static av_cold int mp3lame_encode_init(A
+     LAMEContext *s = avctx->priv_data;
+     int ret;
+ 
++#ifdef CONFIG_LIBMP3LAME_DLOPEN
++    if (loadLibMp3Lame(avctx))
++	return -1;
++#endif
++
+     s->avctx = avctx;
+ 
+     /* initialize LAME and get defaults */
+Index: ffmpeg-4.2/libavcodec/libopencore-amr.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libopencore-amr.c
++++ ffmpeg-4.2/libavcodec/libopencore-amr.c
+@@ -29,6 +29,108 @@
+ #include "audio_frame_queue.h"
+ #include "internal.h"
+ 
++#if CONFIG_LIBOPENCORE_AMRWB_DECODER
++#include <opencore-amrwb/dec_if.h>
++#include <opencore-amrwb/if_rom.h>
++#endif
++
++#ifdef CONFIG_LIBOPENCORE_AMRNB_DLOPEN
++#include <opencore-amrnb/interf_dec.h>
++#include <opencore-amrnb/interf_enc.h>
++
++#include "dlopen.h"
++static void* (*dl_Decoder_Interface_init) (void);
++static void (*dl_Decoder_Interface_exit) (void* state);
++static void (*dl_Decoder_Interface_Decode) (void* state, const unsigned char* in, short* out, int bfi);
++static void* (*dl_Encoder_Interface_init) (int dtx);
++static void (*dl_Encoder_Interface_exit) (void* state);
++static int (*dl_Encoder_Interface_Encode) (void* state, enum Mode mode, const short* speech, unsigned char* out, int forceSpeech);
++
++#define	Decoder_Interface_init		dl_Decoder_Interface_init
++#define	Decoder_Interface_exit		dl_Decoder_Interface_exit
++#define Decoder_Interface_Decode	dl_Decoder_Interface_Decode
++#define Encoder_Interface_init		dl_Encoder_Interface_init
++#define Encoder_Interface_exit		dl_Encoder_Interface_exit
++#define Encoder_Interface_Encode	dl_Encoder_Interface_Encode
++#define	AMRNB_LIB			"libopencore-amrnb.so.0"
++
++static int loadLibAMRNB(AVCodecContext *avctx);
++static int loadLibAMRNB(AVCodecContext *avctx) {
++    void *libamrnb = NULL;
++    const char *err = NULL;
++
++    libamrnb = dlopen(AMRNB_LIB, RTLD_LAZY);
++    if ((err = dlerror())) {
++	av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, opencore-amrnb support will be disabled\n", err, AMRNB_LIB);
++	if (libamrnb)
++	    dlclose(libamrnb);
++	return 1;
++    }
++
++
++    dl_sym(Decoder_Interface_init, (void (*)), libamrnb);
++
++    dl_sym(Decoder_Interface_exit, (void (*) (void* state)), libamrnb);
++
++    dl_sym(Decoder_Interface_Decode, (void (*) (void* state, const unsigned char* in, short* out, int bfi)), libamrnb);
++
++    dl_sym(Encoder_Interface_init, (void* (*) (int dtx)), libamrnb);
++
++    dl_sym(Encoder_Interface_exit, (void (*) (void* state)), libamrnb);
++
++    dl_sym(Encoder_Interface_Encode, (int (*) (void* state, enum Mode mode, const short* speech, unsigned char* out, int forceSpeech)), libamrnb);
++
++    return 0;
++
++error:
++    av_log(avctx, AV_LOG_FATAL, "opencore-amrnb: Missing symbols in %s: %s\n"
++	    "opencore-amrnb support disabled\n", AMRNB_LIB, err);
++    dlclose(libamrnb);
++    return 1;
++}
++#endif
++
++#ifdef CONFIG_LIBOPENCORE_AMRWB_DLOPEN
++#include "dlopen.h"
++
++static void* (*dl_D_IF_init) (void);
++static void (*dl_D_IF_decode) (void* state, const unsigned char* bits, short* synth, int bfi);
++static void (*dl_D_IF_exit) (void* state);
++
++#define	D_IF_init			dl_D_IF_init
++#define	D_IF_decode			dl_D_IF_decode
++#define D_IF_exit			dl_D_IF_exit
++#define	AMRWB_LIB			"libopencore-amrwb.so.0"
++
++static int loadLibAMRWB(AVCodecContext *avctx) {
++    void *libamrwb = NULL;
++    const char *err = NULL;
++
++    libamrwb = dlopen(AMRWB_LIB, RTLD_LAZY);
++    if ((err = dlerror())) {
++	av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, opencore-amrwb support will be disabled\n", err, AMRWB_LIB);
++	if (libamrwb)
++	    dlclose(libamrwb);
++	return 1;
++    }
++
++    dl_sym(D_IF_init, (void (*)), libamrwb);
++
++    dl_sym(D_IF_decode, (void (*) (void* state, const unsigned char* bits, short* synth, int bfi)), libamrwb);
++
++    dl_sym(D_IF_exit, (void (*) (void* state)), libamrwb);
++
++    return 0;
++
++error:
++    av_log(avctx, AV_LOG_FATAL, "opencore-amrwb: Missing symbols in %s: %s\n"
++	    "opencore-amrwb support disabled\n", AMRWB_LIB, err);
++    dlclose(libamrwb);
++    return 1;
++}
++#endif
++
++
+ static int amr_decode_fix_avctx(AVCodecContext *avctx)
+ {
+     const int is_amr_wb = 1 + (avctx->codec_id == AV_CODEC_ID_AMR_WB);
+@@ -49,9 +151,6 @@ static int amr_decode_fix_avctx(AVCodecC
+ 
+ #if CONFIG_LIBOPENCORE_AMRNB
+ 
+-#include <opencore-amrnb/interf_dec.h>
+-#include <opencore-amrnb/interf_enc.h>
+-
+ typedef struct AMRContext {
+     AVClass *av_class;
+     void *dec_state;
+@@ -193,6 +292,11 @@ static av_cold int amr_nb_encode_init(AV
+ {
+     AMRContext *s = avctx->priv_data;
+ 
++#ifdef CONFIG_LIBOPENCORE_AMRNB_DLOPEN
++    if (loadLibAMRNB(avctx))
++        return -1;
++#endif
++
+     if (avctx->sample_rate != 8000 && avctx->strict_std_compliance > FF_COMPLIANCE_UNOFFICIAL) {
+         av_log(avctx, AV_LOG_ERROR, "Only 8000Hz sample rate supported\n");
+         return AVERROR(ENOSYS);
+@@ -303,10 +407,6 @@ AVCodec ff_libopencore_amrnb_encoder = {
+ 
+ /* -----------AMR wideband ------------*/
+ #if CONFIG_LIBOPENCORE_AMRWB_DECODER
+-
+-#include <opencore-amrwb/dec_if.h>
+-#include <opencore-amrwb/if_rom.h>
+-
+ typedef struct AMRWBContext {
+     void  *state;
+ } AMRWBContext;
+@@ -319,6 +419,11 @@ static av_cold int amr_wb_decode_init(AV
+     if ((ret = amr_decode_fix_avctx(avctx)) < 0)
+         return ret;
+ 
++#ifdef CONFIG_LIBOPENCORE_AMRWB_DLOPEN
++    if (loadLibAMRWB(avctx))
++        return -1;
++#endif
++
+     s->state        = D_IF_init();
+ 
+     return 0;
+Index: ffmpeg-4.2/libavcodec/libx264.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libx264.c
++++ ffmpeg-4.2/libavcodec/libx264.c
+@@ -44,6 +44,120 @@
+ // blocks of pixels (with respect to the luma plane)
+ #define MB_SIZE 16
+ 
++#ifdef CONFIG_LIBX264_DLOPEN
++#include "dlopen.h"
++
++static void (*dl_x264_picture_init) (x264_picture_t *);
++static int  (*dl_x264_encoder_encode) (x264_t *, x264_nal_t **, int *, x264_picture_t *, x264_picture_t *);
++static int  (*dl_x264_encoder_delayed_frames) (x264_t *);
++static x264_t* (*dl_x264_encoder_open) ( x264_param_t * );
++static int  (*dl_x264_encoder_reconfig) ( x264_t *, x264_param_t * );
++static void (*dl_x264_encoder_close) (x264_t *);
++static void (*dl_x264_param_default) (x264_param_t *);
++static int  (*dl_x264_param_parse) (x264_param_t *, const char *name, const char *value );
++static int  (*dl_x264_param_default_preset) (x264_param_t *, const char *preset, const char *tune);
++static int  (*dl_x264_param_apply_profile) (x264_param_t *, const char *profile);
++static void (*dl_x264_param_apply_fastfirstpass) (x264_param_t *);
++static int  (*dl_x264_encoder_headers) (x264_t *, x264_nal_t **, int *);
++#define x264_picture_init		dl_x264_picture_init
++#define x264_encoder_encode		dl_x264_encoder_encode
++#define	x264_encoder_delayed_frames	dl_x264_encoder_delayed_frames
++#undef x264_encoder_open
++#define x264_encoder_open		dl_x264_encoder_open
++#define x264_encoder_reconfig		dl_x264_encoder_reconfig
++#define x264_encoder_close		dl_x264_encoder_close
++#define	x264_param_default		dl_x264_param_default
++#define x264_param_apply_profile	dl_x264_param_apply_profile
++#define x264_param_apply_fastfirstpass	dl_x264_param_apply_fastfirstpass
++#define	x264_param_parse		dl_x264_param_parse
++#define x264_param_default_preset	dl_x264_param_default_preset
++#define x264_encoder_headers		dl_x264_encoder_headers
++
++#define	X264_BUILD_str num2str(X264_BUILD)
++#define	X264_LIB "libx264.so." X264_BUILD_str
++#define	x264_encoder_open_str "x264_encoder_open_" X264_BUILD_str
++
++int dl_x264_bit_depth;
++#define	x264_bit_depth dl_x264_bit_depth
++
++const x264_level_t x264_levels[] =
++{
++    { 10,    1485,    99,    396,     64,    175,  64, 64,  0, 2, 0, 0, 1 },
++    {  9,    1485,    99,    396,    128,    350,  64, 64,  0, 2, 0, 0, 1 }, /* "1b" */
++    { 11,    3000,   396,    900,    192,    500, 128, 64,  0, 2, 0, 0, 1 },
++    { 12,    6000,   396,   2376,    384,   1000, 128, 64,  0, 2, 0, 0, 1 },
++    { 13,   11880,   396,   2376,    768,   2000, 128, 64,  0, 2, 0, 0, 1 },
++    { 20,   11880,   396,   2376,   2000,   2000, 128, 64,  0, 2, 0, 0, 1 },
++    { 21,   19800,   792,   4752,   4000,   4000, 256, 64,  0, 2, 0, 0, 0 },
++    { 22,   20250,  1620,   8100,   4000,   4000, 256, 64,  0, 2, 0, 0, 0 },
++    { 30,   40500,  1620,   8100,  10000,  10000, 256, 32, 22, 2, 0, 1, 0 },
++    { 31,  108000,  3600,  18000,  14000,  14000, 512, 16, 60, 4, 1, 1, 0 },
++    { 32,  216000,  5120,  20480,  20000,  20000, 512, 16, 60, 4, 1, 1, 0 },
++    { 40,  245760,  8192,  32768,  20000,  25000, 512, 16, 60, 4, 1, 1, 0 },
++    { 41,  245760,  8192,  32768,  50000,  62500, 512, 16, 24, 2, 1, 1, 0 },
++    { 42,  522240,  8704,  34816,  50000,  62500, 512, 16, 24, 2, 1, 1, 1 },
++    { 50,  589824, 22080, 110400, 135000, 135000, 512, 16, 24, 2, 1, 1, 1 },
++    { 51,  983040, 36864, 184320, 240000, 240000, 512, 16, 24, 2, 1, 1, 1 },
++    { 52, 2073600, 36864, 184320, 240000, 240000, 512, 16, 24, 2, 1, 1, 1 },
++    { 0 }
++};
++
++static int loadLibX264(AVCodecContext *avctx);
++static int loadLibX264(AVCodecContext *avctx) {
++    void *libx264 = NULL;
++    const char *err = NULL;
++    int *ptr;
++
++    libx264 = dlopen(X264_LIB, RTLD_LAZY);
++    if ((err = dlerror())) {
++	av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, x264 support will be disabled\n", err, X264_LIB);
++	if (libx264)
++	    dlclose(libx264);
++	return 1;
++    }
++
++
++    dl_sym(x264_picture_init, (void (*) (x264_picture_t *)), libx264);
++
++    dl_sym(x264_encoder_encode, (int (*) (x264_t *, x264_nal_t **, int *, x264_picture_t *, x264_picture_t *)), libx264);
++
++    dl_sym(x264_encoder_delayed_frames, (int (*) (x264_t *)), libx264);
++
++    dl_x264_encoder_open =(x264_t* (*) (x264_param_t *)) dlsym(libx264, x264_encoder_open_str);
++    if ((err = dlerror()))
++	    goto error;
++
++    dl_sym(x264_encoder_reconfig, (int (*) (x264_t *, x264_param_t * )), libx264);
++
++    dl_sym(x264_encoder_close, (void (*) (x264_t *)), libx264);
++
++    dl_sym(x264_param_default, (void (*) (x264_param_t *)), libx264);
++
++    dl_sym(x264_param_apply_fastfirstpass, (void (*) (x264_param_t *)), libx264);
++
++    dl_sym(x264_param_parse, (int (*) (x264_param_t *, const char *name, const char *value )), libx264);
++
++    dl_sym(x264_param_default_preset, (int (*) (x264_param_t *, const char *preset, const char *tune)), libx264);
++
++    dl_sym(x264_param_apply_profile, (int (*) (x264_param_t *, const char *profile)), libx264);
++
++    dl_sym(x264_param_apply_fastfirstpass, (void (*) (x264_param_t *)), libx264);
++
++    dl_sym(x264_encoder_headers, (int (*) (x264_t *, x264_nal_t **, int *)), libx264);
++
++    ptr = (int *) dlsym(libx264, "x264_bit_depth");
++    dl_x264_bit_depth = *ptr;
++
++    return 0;
++
++error:
++    av_log(avctx, AV_LOG_FATAL, "libx264: Missing symbols in %s: %s\n"
++	    "x264 support disabled\n", X264_LIB, err);
++    dlclose(libx264);
++    return 1;
++}
++#endif
++
+ typedef struct X264Context {
+     AVClass        *class;
+     x264_param_t    params;
+@@ -555,6 +669,11 @@ static av_cold int X264_init(AVCodecCont
+     if (avctx->global_quality > 0)
+         av_log(avctx, AV_LOG_WARNING, "-qscale is ignored, -crf is recommended.\n");
+ 
++#ifdef CONFIG_LIBX264_DLOPEN
++    if (loadLibX264(avctx))
++	return -1;
++#endif
++
+ #if CONFIG_LIBX262_ENCODER
+     if (avctx->codec_id == AV_CODEC_ID_MPEG2VIDEO) {
+         x4->params.b_mpeg2 = 1;
+Index: ffmpeg-4.2/libavcodec/libx265.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libx265.c
++++ ffmpeg-4.2/libavcodec/libx265.c
+@@ -34,6 +34,39 @@
+ #include "avcodec.h"
+ #include "internal.h"
+ 
++#ifdef CONFIG_LIBX265_DLOPEN
++#include "dlopen.h"
++#define X265_BUILD_str num2str(X265_BUILD)
++#define X265_LIB "libx265.so." X265_BUILD_str
++#undef x265_api_get
++typedef const x265_api* (*x265_api_func)(int);
++x265_api_func dl_x265_api_get = NULL;
++#define x265_api_get dl_x265_api_get
++
++static int loadLibX265();
++static int loadLibX265() {
++	const char *err = NULL;
++	void *libx265 = NULL;
++	int *ptr;
++
++	libx265 = dlopen(X265_LIB, RTLD_LAZY);
++	if ((err = dlerror())) {
++		fprintf(stderr, "%s\n%s is missing, x265 support will be disabled\n", err, X265_LIB);
++		if(libx265)
++			dlclose(libx265);
++		return 1;
++	}
++
++	x265_api_get=(x265_api_func)dlsym(libx265, "x265_api_get_" num2str(X265_BUILD));
++	if(!x265_api_get) {
++		fprintf(stderr, "No x265_api_get_" num2str(X265_BUILD) " in " X265_LIB "\n");
++		return 1;
++	}
++
++	return 0;
++}
++#endif
++
+ typedef struct libx265Context {
+     const AVClass *class;
+ 
+@@ -514,6 +547,10 @@ static const enum AVPixelFormat x265_csp
+ 
+ static av_cold void libx265_encode_init_csp(AVCodec *codec)
+ {
++#ifdef CONFIG_LIBX265_DLOPEN
++    if (loadLibX265())
++        return;
++#endif
+     if (x265_api_get(12))
+         codec->pix_fmts = x265_csp_twelve;
+     else if (x265_api_get(10))
+Index: ffmpeg-4.2/libavcodec/libxvid.c
+===================================================================
+--- ffmpeg-4.2.orig/libavcodec/libxvid.c
++++ ffmpeg-4.2/libavcodec/libxvid.c
+@@ -51,6 +51,61 @@
+ #include <io.h>
+ #endif
+ 
++#ifdef CONFIG_LIBXVID_DLOPEN
++#include "dlopen.h"
++
++static int (*dl_xvid_encore) (void *handle, int opt, void *param1, void *param2);
++static int (*dl_xvid_global) (void *handle, int opt, void *param1, void *param2);
++static int (*dl_xvid_plugin_single) (void *handle, int opt, void *param1, void *param2);
++static int (*dl_xvid_plugin_lumimasking) (void *handle, int opt, void *param1, void *param2);
++static int (*dl_xvid_plugin_ssim) (void *handle, int opt, void *param1, void *param2);
++static int (*dl_xvid_plugin_2pass2) (void *handle, int opt, void *param1, void *param2);
++
++#define	xvid_encore		dl_xvid_encore
++#define	xvid_global		dl_xvid_global
++#define	xvid_plugin_single	dl_xvid_plugin_single
++#define xvid_plugin_lumimasking	dl_xvid_plugin_lumimasking
++#define xvid_plugin_ssim	dl_xvid_plugin_ssim
++#define xvid_plugin_2pass2	dl_xvid_plugin_2pass2
++#define	XVID_LIB		"libxvidcore.so.4"
++
++static int loadLibXVID(AVCodecContext *avctx);
++static int loadLibXVID(AVCodecContext *avctx) {
++    void *libxvid = NULL;
++    const char *err = NULL;
++
++    libxvid = dlopen(XVID_LIB, RTLD_LAZY);
++    if ((err = dlerror())) {
++	av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libxvid support will be disabled\n", err, XVID_LIB);
++
++	if (libxvid)
++	    dlclose(libxvid);
++	return 1;
++    }
++
++  dl_sym(xvid_encore, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  dl_sym(xvid_global, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  dl_sym(xvid_plugin_single, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  dl_sym(xvid_plugin_lumimasking, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  dl_sym(xvid_plugin_ssim, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  dl_sym(xvid_plugin_2pass2, (int (*) (void *handle, int opt, void *param1, void *param2)), libxvid);
++
++  return 0;
++
++error:
++  av_log(avctx, AV_LOG_FATAL, "libxvid: Missing symbols in %s: %s "
++	    "libxvid support disabled\n", XVID_LIB, err);
++  dlclose(libxvid);
++
++  return 1;
++}
++#endif
++
+ /**
+  * Buffer management macros.
+  */
+@@ -388,6 +443,11 @@ static av_cold int xvid_encode_init(AVCo
+     xvid_enc_create_t         xvid_enc_create = { 0 };
+     xvid_enc_plugin_t         plugins[4];
+ 
++#ifdef CONFIG_LIBXVID_DLOPEN
++    if (loadLibXVID(avctx))
++	return -1;
++#endif
++
+     x->twopassfd = -1;
+ 
+     /* Bring in VOP flags from ffmpeg command-line */

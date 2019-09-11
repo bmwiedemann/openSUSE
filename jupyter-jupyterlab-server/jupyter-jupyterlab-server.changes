@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu May 16 20:27:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix conflict with newer version on openSUSE:Factory
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Roll back to version 0.2.0, jupyterlab is not compatible with 0.3.0.
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Mon Mar 11 14:23:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Simplify files somewhat
+- Grammar fix in summary
+
+-------------------------------------------------------------------
+Sat Mar  2 18:20:00 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove devel from noarch
+  * be more specific in %files section
+
+- update to version 0.3.0:
+  * Update workspaces listing to include values.
+
+-------------------------------------------------------------------
+Mon Jan  7 21:11:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version (0.2.0)

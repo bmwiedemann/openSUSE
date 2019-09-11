@@ -1,0 +1,8 @@
+[Unit]
+Description=UUCP Tcp Server
+After=local-fs.target
+
+[Service]
+User=uucp
+ExecStart=/usr/sbin/uucico -l
+StandardInput=socket

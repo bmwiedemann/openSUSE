@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Apr 14 21:17:45 UTC 2015 - coolo@suse.com
+
+- updated to 1.101245
+   see /usr/share/doc/packages/perl-String-Flogger/Changes
+
+  1.101245  2014-08-08 18:43:38-04:00 America/New_York
+          - switch from JSON to JSON::MaybeXS
+
+-------------------------------------------------------------------
+Tue Nov 26 07:30:51 UTC 2013 - coolo@suse.com
+
+- updated to 1.101244
+   update bugtracker and repo
+
+-------------------------------------------------------------------
+Tue Jun  4 18:26:30 UTC 2013 - coolo@suse.com
+
+- updated to 1.101243
+          use horrible hack to avoid dying when a data structure to log
+          contains an object
+          make ->flog({...}) act like ->flog([ '%s', {...} ])
+          (thanks, Randy Stauner)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:38 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon Jan 17 18:15:00 UTC 2011 - coolo@novell.com
+
+- initial package 1.101241
+  * created by cpanspec 1.78.03
+

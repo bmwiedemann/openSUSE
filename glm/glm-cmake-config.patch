@@ -1,0 +1,19 @@
+--- glm-0.9.9.5.orig/CMakeLists.txt	2019-04-02 11:28:25.000000000 +0200
++++ glm-0.9.9.5/CMakeLists.txt	2019-04-24 12:03:48.074253826 +0200
+@@ -253,13 +253,13 @@ configure_file(cmake/glmBuildConfig.cmak
+ # install tree package config
+ configure_package_config_file(
+ 	cmake/glmConfig.cmake.in
+-	${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
+-	INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
++	${CMAKE_CURRENT_BINARY_DIR}/glmConfig.cmake
++	INSTALL_DESTINATION ${CMAKE_CURRENT_BINARY_DIR}
+ 	PATH_VARS CMAKE_INSTALL_INCLUDEDIR
+ 	NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+ 
+ install(FILES
+-	"${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
++	"${CMAKE_CURRENT_BINARY_DIR}/glmConfig.cmake"
+ 	"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
+ 	DESTINATION ${GLM_INSTALL_CONFIGDIR})
+ 

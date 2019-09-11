@@ -1,0 +1,7 @@
+# we source the general profile here so we dont have to
+# reimplement it
+setopt nonomatch
+source /etc/profile
+unsetopt nonomatch
+# put your own login shell specific configuration below
+# this line 

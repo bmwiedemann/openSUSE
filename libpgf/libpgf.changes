@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Sat Apr 20 20:35:30 UTC 2019 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 7.19.3:
+  * This version fixes a compilation bug seen when ROI support is
+    disabled.
+
+-------------------------------------------------------------------
+Thu Feb 15 20:43:24 UTC 2018 - asterios.dramis@gmail.com
+
+- Update to version 7.15.32:
+  * This version improves the reuse of CPGFImage objects for
+    several decoding operations. It clarifies the usage of
+    CPGFImage::Close() and CPGFImage::Destroy() by deletion of
+    Close(). Several reading operations can be performed in the
+    following way: Open(), Read(), GetBitmap(), ResetStreamPos(),
+    Read(), GetBitmap(), ResetStreamPos(), ... Calling Destroy()
+    frees all allocated ressources and reinitializes the object to
+    the same state as the constructor does. This allows the reuse
+    of the CPGFImage object for encoding and decoding: SetHeader(),
+    ImportBitmap(), Write(), ResetStreamPos(), Destroy(), Open(),
+    Read(), GetBitmap()
+  * Caching or skipping of user data (meta data) while opening a
+    PGF image can be controlled by a new UserdataPolicy in
+    ConfigureDecoder().
+  From version 7.15.25:
+  * In case you use the ROI decoding, we strongly encourage using
+    version 7.15.25 instead of an older version.
+  * This version fixes some decoder bugs only seen in ROI decoding.
+    ROI decoding is now also supported for Bitmap and RGB12 image
+    modes.
+  * This version introduces a new and more efficient data format
+    for binary images (bitmaps). The new format allows ROI
+    decoding. The decoder supports both the old and the new format,
+    but ROI decoding works only with the new format.
+  * The two reserverd bytes in PGFHeader are now used for a more
+    detailled PGF version number.
+- Removed libpgf-r147.patch and libpgf-r148.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Sep  7 19:57:21 UTC 2015 - asterios.dramis@gmail.com
+
+- Added the following security patches from upstream:
+  * libpgf-r147.patch, libpgf-r148.patch
+    Fix use-after-free vulnerability in Decoder.cpp
+    CVE-2015-6673, bnc#943304, boo#941059
+
+-------------------------------------------------------------------
+Fri Aug  8 19:52:28 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 6.14.12:
+  * The new version is a minor update of version 6.12.24.
+  * It mainly contains some fixes of memory leaks in the OpenMP part and some
+    improvements suggested by cppcheck and Coverity.
+
+-------------------------------------------------------------------
+Thu Feb 13 20:59:56 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 6.13.45.svn123:
+  * Detailed changelog not available.
+  * Fix memory leak in digikam (kde#326525, bnc#854323).
+- Removed automake-1.13.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Sat Mar 23 18:49:49 UTC 2013 - asterios.dramis@gmail.com
+
+- Added a patch "automake-1.13.patch" to fix build with automake 1.13.
+- Fix build in SLE 11 SP2 and openSUSE 11.4.
+
+-------------------------------------------------------------------
+Sun Oct 28 16:42:19 UTC 2012 - asterios.dramis@gmail.com
+
+- Initial release (version 6.12.24).

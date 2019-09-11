@@ -1,0 +1,12 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>javax.help</groupId>
+  <artifactId>javahelp</artifactId>
+  <version>2.0.05</version>
+  <name>JavaHelp API</name>
+  <url>http://java.sun.com/products/javahelp/index.jsp</url>
+  <description>The JavaHelp API provides a platform-independent help framework.</description>
+  <distributionManagement>
+    <downloadUrl>http://java.sun.com/products/javahelp/downloads/index.html</downloadUrl>
+  </distributionManagement>
+</project>

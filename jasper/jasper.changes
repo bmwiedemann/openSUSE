@@ -1,0 +1,622 @@
+-------------------------------------------------------------------
+Thu Jun  6 07:43:02 UTC 2019 - mvetter@suse.com
+
+- bsc#1117508 CVE-2018-19540: Fix heap based overflow in jas_icctxtdesc_input
+  Add jasper-CVE-2018-19540.patch: Make sure asclen is at least 1
+- bsc#1117507 CVE-2018-19541: Fix heap based overread in jas_image_depalettize
+  Add jasper-CVE-2018-19541.patch: Check number of lutents
+
+-------------------------------------------------------------------
+Mon Mar 25 10:23:40 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.16:
+  * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50)
+  * Fix build on Windows 10 (#162)
+  * Improve README
+  * Fix build with CMake 2.x
+  * Add missing dereference operators (#178, #157)
+  * Check data in jas_image (CVE-2018-19539) (#196)
+- Remove because contained in new release:
+  * jasper-CVE-2018-19539.patch
+  * 0001-jpc_cs-reject-all-but-JPC_COX_INS-and-JPC_COX_RFT.patch
+  * Remove 0001-Added-a-fix-from-nrusch-to-allow-JasPer-to-be-build-.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 21 09:38:27 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1117505 CVE-2018-19542:
+  * Add jasper-CVE-2018-19542.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 16:35:04 UTC 2019 - mvetter@suse.com
+
+- bsc#1117511 CVE-2018-19539:
+  * Add jasper-CVE-2018-19539.patch
+
+-------------------------------------------------------------------
+Thu Mar 29 14:40:02 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * jasper-CVE-2018-9055.patch
+    + fix CVE-2018-9055, bsc#1087020: jasper: denial of service via
+      a reachable assertion in the function jpc_firstone in
+      libjasper/jpc/jpc_math.c.
+
+-------------------------------------------------------------------
+Thu Mar 29 08:12:30 UTC 2018 - fstrba@suse.com
+
+- Upgrade to 2.0.14
+  * Soname and package name change libjasper1 to libjasper4
+  * Security fixes:
+    + CVE-2016-9557 jasper: Signed integer overflow in jas_image.c
+- Removed patches:
+  * jasper-1.900.1-uninitialized.patch
+    + not needed any more
+  * jasper-CVE-2016-10251.patch
+  * jasper-CVE-2016-8654.patch
+  * jasper-CVE-2016-9262.patch
+  * jasper-CVE-2016-9395.patch
+  * jasper-CVE-2016-9560.patch
+  * jasper-CVE-2016-9583.patch
+  * jasper-CVE-2016-9591.patch
+  * jasper-CVE-2016-9600.patch
+  * jasper-CVE-2017-1000050.patch
+  * jasper-CVE-2017-5498.patch
+  * jasper-CVE-2017-6850.patch
+    + Fixed upstream
+- Added patches:
+  * 0001-jpc_cs-reject-all-but-JPC_COX_INS-and-JPC_COX_RFT.patch
+    + fix assertion failure JPC_NOMINALGAIN() which can be caused
+      by a crafted JP2 file.
+  * 0001-Added-a-fix-from-nrusch-to-allow-JasPer-to-be-build-.patch
+    + allow JasPer to be build with CMake 2.x as well as CMake 3.x.
+
+-------------------------------------------------------------------
+Wed Jul 12 07:43:06 UTC 2017 - fstrba@suse.com
+
+- Other bugs fixed by existing patches:
+  * jasper-CVE-2016-9395.patch
+    - bsc#1010756, CVE-2016-9394: assertion in jas_matrix_t
+      *jas_seq2d_create(int, int, int, int): Assertion
+      `xstart <= xend && ystart <= yend'
+    - bsc#1010757, CVE-2016-9392: pc_dec.c:1637: void
+      calcstepsizes(uint_fast16_t, int, uint_fast16_t *):
+      Assertion `!((expn + (numrlvls - 1) - (numrlvls - 1 -
+      ((bandno > 0) ? ((bandno + 2) / 3) : (0)))) & (~0x1f))'
+      failed.
+    - bsc#1010766, CVE-2016-9393: jpc_t2cod.c:297: int
+      jpc_pi_nextrpcl(jpc_pi_t *): Assertion
+      `pi->prcno pirlvl->numprcs' failed.
+    - bsc#1010977, CVE-2016-9395: jas_seq.c:90: jas_matrix_t
+      *jas_seq2d_create(int, int, int, int): Assertion `xstart
+      <= xend && ystart <= yend' failed.
+- Other bugs fixed in current version:
+  * bsc#1010774, CVE-2016-9390: jas_seq.c:90: jas_matrix_t
+    *jas_seq2d_create(int, int, int, int): Assertion `xstart <=
+    xend && ystart <= yend' failed.
+  * bsc#1010782, CVE-2016-9391: jpc_bs.c:197: long
+    jpc_bitstream_getbits(jpc_bitstream_t *, int): Assertion
+    `n >= 0 && n < 32' failed.
+  * bsc#1010968, CVE-2016-9389: Assertion `((c1)->numcols_) ==
+    numcols && ((c2)->numcols_) == numcols' failed.
+  * bsc#1010975, CVE-2016-9388: ras_dec.c:330: int
+    ras_getcmap(jas_stream_t *, ras_hdr_t *, ras_cmap_t *):
+    Assertion `numcolors <= 256' failed.
+  * bsc#1010960, CVE-2016-9387: jas_seq.c:90: jas_matrix<= yend'
+    failed.
+
+-------------------------------------------------------------------
+Tue Jul 11 10:45:59 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * jasper-CVE-2016-9262.patch
+    + Fix for Multiple overflow vulnerabilities leading to use
+      after free (bsc#1009994, CVE-2016-9262)
+
+-------------------------------------------------------------------
+Tue Jul 11 09:02:39 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * jasper-CVE-2017-1000050.patch
+    + Upstream fix for NULL Pointer Dereference jp2_encode
+      (bsc#1047958, CVE-2017-1000050)
+
+-------------------------------------------------------------------
+Thu Mar 30 09:51:07 UTC 2017 - fstrba@suse.com
+
+- Modified patch:
+  * jasper-CVE-2016-9583.patch
+    + integrate upstream change
+      99a50593254d1b53002719bbecfc946c84b23d27, which fixed a null
+      pointer dereferencing crash.
+
+-------------------------------------------------------------------
+Wed Mar 22 09:30:41 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * jasper-CVE-2016-9583.patch
+    - Out of bounds heap read in jpc_pi_nextpcrl() (bsc#1015400,
+      CVE-2016-9583)
+  * jasper-CVE-2017-6850.patch
+    - NULL pointer dereference in jp2_cdef_destroy (jp2_cod.c)
+      (bsc#1021868, CVE-2017-6850)
+
+-------------------------------------------------------------------
+Fri Mar 17 08:25:35 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * jasper-CVE-2017-5498.patch
+    - Upstream changes putting braces and belts around
+      CVE-2017-5498, bsc#1020353, left-shift undefined behaviour
+  * jasper-CVE-2016-9600.patch
+    - Upstream fix for "Null Pointer Dereference due to missing
+      check for UNKNOWN color space in JP2 encoder" (CVE-2016-9600,
+      bsc#1018088)
+
+-------------------------------------------------------------------
+Thu Mar 16 08:28:31 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * jasper-CVE-2016-10251.patch
+    - Upstream fix for bsc#1029497, CVE-2016-10251: Use of
+      uninitialized value in jpc_pi_nextcprl (jpc_t2cod.c)
+
+-------------------------------------------------------------------
+Mon Mar  6 14:19:57 CET 2017 - sbrabec@suse.com
+
+- Add -D_BSD_SOURCE to fix redefinition of system types in
+  jas_config.h and breakage in ppc64le, s390 and s390x
+  (bsc#1028070).
+
+-------------------------------------------------------------------
+Wed Dec 21 08:53:09 UTC 2016 - fstrba@suse.com
+
+- Added patch:
+  * jasper-CVE-2016-9591.patch
+    - Fix for bsc#1015993, CVE-2016-9591: Use-after-free on heap in
+      jas_matrix_destroy
+
+-------------------------------------------------------------------
+Tue Dec 13 11:58:42 UTC 2016 - fstrba@suse.com
+
+- Added patches:
+  * jasper-CVE-2016-8654.patch
+    - Upstream fix for bsc#1012530, CVE-2016-8654: Heap-based
+      buffer overflow in QMFB code in JPC codec
+  * jasper-CVE-2016-9395.patch
+    - Upstream fix for bsc#1010977, CVE-2016-9395: jas_seq.c:90:
+      jas_matrix_t *jas_seq2d_create(int, int, int, int): Assertion
+      'xstart <= xend && ystart <= yend' failed
+  * jasper-CVE-2016-9398.patch
+    - Fix for bsc#1010979, CVE-2016-9398: jpc_math.c:94: int
+      jpc_floorlog2(int): Assertion 'x > 0' failed
+  * jasper-CVE-2016-9560.patch
+    - Upstream fix for bsc#1011830, CVE-2016-9560: stack-based
+      buffer overflow in jpc_tsfb_getbands2 (jpc_tsfb.c) 
+
+-------------------------------------------------------------------
+Fri Oct 28 11:55:35 UTC 2016 - jengelh@inai.de
+
+- Update summaries. Use %_smp_mflags for parallel build.
+
+-------------------------------------------------------------------
+Wed Oct 26 14:18:40 UTC 2016 - fstrba@suse.com
+
+- Updated to bugfix release 1.900.14
+  * Security fixes
+    + bsc#941919, CVE-2015-5203
+    + bsc#1006591, CVE-2016-8880
+    + bsc#1006593, CVE-2016-8881
+    + bsc#1006597, CVE-2016-8882
+    + bsc#1006598, CVE-2016-8883
+    + bsc#1007009, CVE-2016-8884, CVE-2016-8885
+    + bsc#1006599, CVE-2016-8886
+    + bsc#1006836, bsc#1006839, CVE-2016-8887
+  * Changes
+    + Add another data file for testing (Michael Adams)
+    + Ensure that not all tiles lie outside the image area (Michael
+      Adams)
+    + Added a note on sanitizer options (Michael Adams)
+    + Added a simple test script (Michael Adams)
+    + Added an --enable-memory-limit configure option (Michael
+      Adams)
+    + Manually merged and edited a few changes from Bob Friesenhahn
+      (GraphicsMagick Maintainer) for Windows (Michael Adams)
+    + Added some new mostly small image files (many of which are
+      corrupt/invalid) that are useful for testing purposes
+      (Michael Adams)
+    + The debugging function jpc_dec_dump did not consider the case
+      that a band can have a null data pointer (when a band
+      contains no samples). This caused a null pointer to be
+      dereferenced (Michael Adams)
+    + Changed the JPC bitstream code to more gracefully handle a
+      request for a larger sized integer than what can be handled
+      (i.e., return with an error instead of failing an assert).
+      (Michael Adams)
+    + The component domains must be the same for the ICT/RCT in the
+      JPC codec. This was previously enforced with an assertion.
+      Now, it is handled in a more graceful manner (Michael Adams)
+    + Fixed a few bugs in the RAS encoder and decoder where errors
+      were tested with assertions instead of being gracefully
+      handled (Michael Adams)
+
+-------------------------------------------------------------------
+Mon Oct 24 06:50:38 UTC 2016 - fstrba@suse.com
+
+- Updated to bugfix release 1.900.13
+  * Changes
+    + Fixed another problem with incorrect cleanup of JP2 box data
+      upon error. (Michael Adams)
+    + Fixed another integer overflow problem. (Michael Adams)
+    + Replaced the remaining left and right shifts in the QMFB/MCT
+      code that can result in undefined behavior (due to shifting
+      negative values) with call to inline functions.
+      These functions collect all of the undefined behavior in one
+      place and also allow code sanitizers to ignore this ugliness
+      (via function attributes). (Michael Adams)
+    + Fixed a bug in the row/column split operations for QMFBs.
+      (Michael Adams)
+    + Made the PNM decoder more gracefully handle the not-fully-
+      supported feature of signed sample data. (Michael Adams)
+    + The PNM decoder did not gracefully handle an invalid magic
+      number in the PNM header. (Michael Adams)
+    + Fixed a MIF decoder bug. (Michael Adams)
+    + The imginfo command did not correctly handle an image with
+      zero components. (Michael Adams)
+    + Fixed an integer overflow problem. (Michael Adams)
+    + A new experimental memory allocator has been introduced. The
+      allocator is experimental in the sense that its API is not
+      considered stable and the allocator may change or disappear
+      entirely in future versions of the code. This new allocator
+      tracks how much memory is being used by jas_malloc and friends.
+      A maximum upper bound on the memory usage can be set via the
+      experimental API provided and a default value can be set at
+      build time as well. Such functionality may be useful in
+      run-time environments where the user wants to be able to limit
+      the amount of memory used by JasPer. This allocator is not
+      used by default. (Michael Adams)
+    + Changed the configure setup so that if GCC is used warnings
+      and pedantic errors are enabled. (Michael Adams)
+    + Fixed a bug that resulted in the destruction of JP2 box data
+      that had never been constructed in the first place. (Michael
+      Adams)
+    + The memory stream interface allows for a buffer size of zero.
+      The case of a zero-sized buffer was not handled correctly, as
+      it could lead to a double free (bsc#1005242, CVE-2016-8693).
+      (Michael Adams)
+    + Fixed a small memory leak for CRG marker segments. (Michael
+      Adams)
+    + Fixed a problem with a null pointer dereference in the BMP
+      decoder. (Michael Adams)
+    + Introduced jas_fast32_asl, jas_fast32_asr, and friends in
+      order to pull all undefined behavior for left and right shift
+      of (negative) integers into a small number of places and
+      provide a means to have UBSAN ignore this ugliness. (Michael
+      Adams)
+    + Fixed an integral type promotion problem by adding a JAS_CAST.
+      Modified the jpc_tsfb_synthesize function so that it will be a
+      noop for an empty sequence (in order to avoid dereferencing a
+      null pointer). (Michael Adams)
+    + Added some extra debugging log messages for memory
+      allocation/deallocation. (Michael Adams)
+    + The RCT and ICT require at least three components. Previously,
+      this was enforced with an assertion. Now, the assertion has
+      been replaced with a proper error check. (Michael Adams)
+    + The member (pi) in tiles was not properly initialized. This is
+      now corrected. Also, each tile is now only cleaned up once.
+      (Michael Adams)
+    + Initialize uninitialized variable. (Michael Adams)
+    + Added some options to configure for enabling various code
+      sanitizers. (Michael Adams)
+    + Added some range checks on parameters in some JPC marker
+      segments. (Michael Adams)
+    + Fixed potential integer overflow problem. (Michael Adams)
+    + Added some functions for safe integer arithmetic (for size_t)
+      in jas_math.h. (Michael Adams)
+    + Fixed some indentation issues. (Michael Adams)
+    + Converted a few raw mallocs to use jas_alloc2. Added code in
+      the jas_* memory allocation/deallocation functions to generate
+      debugging log messages. Only disable JAS_DBGLOG message if
+      NDEBUG is defined. (Michael Adams)
+    + Added more error/log messages for debugging in the JPEG
+      decoder. (Michael Adams)
+    + Added some extra log messages for debugging. Added check of
+      value returned by jas_matrix_create. (Michael Adams)
+    + Applied fix for VPATH builds (Michael Adams)
+    + Did some configure.ac cleanup (Michael Adams)
+    + Fixed 'inline' for older version of Visual Studio. (dirk)
+    + Fix a potential double fclose of a FILE* in the JPEG decoder.
+      (Michael Adams)
+    + Changed jas_types.h to assume that header files required by
+      the C99 standard are present. (Michael Adams)
+    + Incorporated changes from patch
+      jasper-1.900.3-libjasper-stepsizes-overflow.patch (Michael
+      Adams)
+    + Incorporated changes from patch
+      jasper-1.900.3-CVE-2011-4516-CVE-2011-4517-CERT-VU-887409.patch
+      (Michael Adams)
+    + Incorporated changes from patch
+      jasper-1.900.3-Coverity-RESOURCE_LEAK.patch (Michael Adams)
+    + Incorporated patch jasper-1.900.3-Coverity-NULL_RETURNS.patch
+      (Michael Adams)
+    + Fixed memory leak in jiv. (Michael Adams)
+    + Fixed a sanitizer failure in the BMP codec (bsc#1005084,
+      CVE-2016-8690). Also, added a --debug-level command line
+      option to the imginfo command for debugging purposes.
+      (Michael Adams) 
+    + Added some missing type casts to ensure promotion to the
+      correct unsigned type to avoid undefined behavior (and stop
+      warnings from USAN). (Michael Adams)
+    + Fixed a linking problem with newer versions of GCC. (Michael
+      Adams)
+    + Changed --enable-debug configure option to enable some GCC
+      sanitizers. (Michael Adams)
+    + Added range check on XRsiz and YRsiz fields of SIZ marker
+      segment (bsc#1005090, CVE-2016-8691, CVE-2016-8692). (Michael
+      Adams)
+    + At many places in the code, jas_malloc or jas_recalloc was
+      being invoked with the size argument being computed in a
+      manner that would not allow integer overflow to be detected.
+      Now, these places in the code have been modified to use
+      special-purpose memory allocation functions (e.g., jas_alloc2,
+      jas_alloc3, jas_realloc2) that check for overflow.
+      (Michael Adams)
+    + Add fixes for CVE-2014-8137. (Michael Adams)
+    + Added fix for CVE-2016-2089. (Michael Adams)
+    + Moved abort into default case of switch statement. (Michael
+      Adams)
+    + Remove auto-generated file aclocal.m4 from repository.
+      (Michael Adams)
+    + Removed HAVE_VLA stuff from various configuration and build
+      files. Also, changed a few INCLUDES to AM_CPPFLAGS in automake
+      files (since INCLUDES is deprecated). (Michael Adams)
+    + 1.701.0-GL (Richard Hughes)
+    + pkgconfig (Richard Hughes)
+    + Coverity-UNREACHABLE (Richard Hughes)
+    + CVE-2016-1867 (Richard Hughes)
+    + CVE-2014-9029 (Richard Hughes)
+    + CVE-2014-8158 (Richard Hughes)
+    + CVE-2014-8157 (Richard Hughes)
+    + CVE-2014-8138 (Richard Hughes)
+    + CVE-2015-5221 (Richard Hughes)
+    + CVE-2016-2116 (Richard Hughes)
+    + Coverity-FORWARD_NULL (Richard Hughes)
+    + jpc_dec.c (Richard Hughes)
+    + Coverity-CHECKED_RETURN (Richard Hughes)
+    + CVE-2016-1577 (Richard Hughes)
+    + Coverity-UNUSED_VALUE (Richard Hughes)
+    + Coverity-BAD_SIZEOF (Richard Hughes)
+    + CVE-2008-3522 (Richard Hughes)
+- Removed patches:
+  * jasper-1.900.1-bug258253.patch
+  * jasper-1.900.1-bug392410.patch
+  * jasper-1.900.1-no-undef-true-false.patch
+  * jasper-1.900.1-bug725758.patch
+  * jasper-overflow-bnc906364.patch
+  * jasper-CVE-2014-8137.patch
+  * jasper-CVE-2014-8138.patch
+  * jasper-CVE-2014-8157.patch
+  * jasper-CVE-2014-8158.patch
+  * jasper-jpc_dec.patch
+  * jasper-CVE-2016-1867.patch
+  * jasper-CVE-2016-2089.patch
+    + Fixed upstream
+- Force -std=c99, since the upstream sources assume C99
+
+-------------------------------------------------------------------
+Tue Feb  2 07:48:21 UTC 2016 - fstrba@suse.com
+
+- Modified patch
+  * jasper-CVE-2016-2089.patch
+    + Use the new version of patch from
+      https://bugzilla.redhat.com/show_bug.cgi?id=1302636
+      with more targetted checks.
+- Version the Obsoletes/Provides so that the package does not
+  obsolete itself
+
+-------------------------------------------------------------------
+Thu Jan 28 14:59:27 UTC 2016 - fstrba@suse.com
+
+- Add jasper-CVE-2016-2089.patch
+  * CVE-2016-2089: invalid read in the JasPer's jas_matrix_clip()
+    function (bsc#963983)
+
+-------------------------------------------------------------------
+Thu Jan 14 13:55:04 UTC 2016 - fstrba@suse.com
+
+- Add jasper-CVE-2016-1867.patch
+  * CVE-2016-1867: Out-of-bounds Read in the JasPer's
+    jpc_pi_nextcprl() function (bsc#961886)
+
+-------------------------------------------------------------------
+Sun Jul 12 09:03:19 UTC 2015 - badshah400@gmail.com
+
+- Add jasper-jpc_dec.patch to fix failure when manipulating images
+  with 4 component color using reversible color translation
+  (deb#469786); patch taken from Fedora.
+
+-------------------------------------------------------------------
+Fri Jan 23 14:25:53 UTC 2015 - nadvornik@suse.com
+
+- fixed CVE-2014-8157, CVE-2014-8158 (bnc#911837)
+  + jasper-CVE-2014-8157.patch
+  + jasper-CVE-2014-8158.patch
+
+-------------------------------------------------------------------
+Fri Dec 19 10:31:14 UTC 2014 - nadvornik@suse.com
+
+- fixed CVE-2014-8137, CVE-2014-8138 (bnc#909474, bnc#909475)
+  + jasper-CVE-2014-8137.patch
+  + jasper-CVE-2014-8138.patch
+
+-------------------------------------------------------------------
+Fri Dec  5 09:56:39 UTC 2014 - nadvornik@suse.com
+
+- fixed possible overflow CVE-2014-9029 (bnc#906364)
+  + jasper-overflow-bnc906364.patch
+
+-------------------------------------------------------------------
+Thu Jun 12 11:06:02 UTC 2014 - nadvornik@suse.com
+
+- added obsoletes and provides of libjasper-32bit (bnc#881716)
+
+-------------------------------------------------------------------
+Wed Mar  5 15:26:47 UTC 2014 - nadvornik@suse.com
+
+- fixed possible overflow (bnc#725758, bnc#830803)
+
+-------------------------------------------------------------------
+Wed Sep 11 08:01:48 UTC 2013 - pgajdos@suse.com
+
+- added no-undef-true-false.patch to fix [bnc#839584]
+
+-------------------------------------------------------------------
+Thu Mar 28 10:34:19 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sat Jan 12 19:12:02 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Sun Nov 13 09:11:33 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Wed Oct  5 13:58:57 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %configure macro
+
+-------------------------------------------------------------------
+Mon Aug  2 08:20:13 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jul 29 08:54:37 UTC 2010 - coolo@novell.com
+
+- do not build the highlevel image viewer in a basic library
+  (in case someone needs it, we better do a 2nd spec file)
+- follow shared library policy
+
+-------------------------------------------------------------------
+Wed Dec 16 11:16:55 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Nov 12 15:22:43 CET 2008 - nadvornik@suse.cz
+
+- use the last version of the patches [bnc#392410]
+
+-------------------------------------------------------------------
+Tue May 27 11:53:05 CEST 2008 - nadvornik@suse.cz
+
+- fixed multiple integer overflows [bnc#392410]
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr 19 13:42:54 CEST 2007 - nadvornik@suse.cz
+
+- updated to bugfix release 1.900.1
+- created libjasper-devel subpackage
+- do not build static libs
+- added compat symlink libjasper-1.701.so.1 -> libjasper.so.1.0.0
+- fixed various crashes on malformed input [#258253]
+
+-------------------------------------------------------------------
+Mon May 22 13:49:45 CEST 2006 - pnemec@suse.cz
+
+- fixed uninitialized varibale #176395
+  added -uninitialzed.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 14 18:24:09 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.701.0.
+
+-------------------------------------------------------------------
+Thu Feb 05 18:35:27 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.700.5.
+
+-------------------------------------------------------------------
+Sat Jan 10 16:16:47 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Jul 24 12:59:07 CEST 2003 - nadvornik@suse.cz
+
+- updated to 1.700.2
+
+-------------------------------------------------------------------
+Mon May 12 01:35:59 CEST 2003 - ro@suse.de
+
+- added libstdc++-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Wed Oct 23 21:50:26 CEST 2002 - uli@suse.de
+
+- update -> 1.600.0 (improved support for the JP2 format, new
+  application program "jiv" (simple image viewer), improved support
+  for the PNM family of formats, numerous other minor bugs fixed)
+
+-------------------------------------------------------------------
+Sat Aug 24 17:30:26 CEST 2002 - ro@suse.de
+
+- fix doc file section for new cp behaviour 
+
+-------------------------------------------------------------------
+Tue Jul  2 14:21:07 CEST 2002 - meissner@suse.de
+
+- buildrooted, run autoreconf*
+
+-------------------------------------------------------------------
+Thu Apr 18 18:25:48 CEST 2002 - sf@suse.de
+
+- added %{_libdir} to configure for lib/lib64
+- added %{suse_update_config} 
+
+-------------------------------------------------------------------
+Fri Jan 25 15:29:30 CET 2002 - uli@suse.de
+
+- update -> 1.500.4 (improved docs)
+
+-------------------------------------------------------------------
+Thu Dec  6 12:31:42 CET 2001 - uli@suse.de
+
+- update -> 1.500.3 (fixes)
+
+-------------------------------------------------------------------
+Thu Aug 16 15:25:08 CEST 2001 - uli@suse.de
+
+- build shared lib, too
+
+-------------------------------------------------------------------
+Mon Jul 30 18:49:00 CEST 2001 - uli@suse.de
+
+- initial package
+
+

@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Sun Jul 21 16:58:02 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 3.0.2:
+  * #650: Fixed space encoding in base string URI used in the
+    signature base string.
+  * #652: Fixed OIDC /token response which wrongly returned
+    "&state=None"
+  * #654: Doc: The value state must not be stored by the AS, only
+    returned in /authorize response.
+  * #656: Fixed OIDC "nonce" checks: raise errors when it's mandatory
+
+-------------------------------------------------------------------
+Sun Feb 17 00:40:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to version 3.0.1
+  * Fixed regression introduced in 3.0.0
+    + Fixed Revocation & Introspection Endpoints when using Client
+      Authentication with HTTP Basic Auth.
+- from 3.0.0
+  * General fixes:
+    + Add support of python3.7
+    + $ and ' are allowed to be unencoded in query strings
+    + Request attributes are no longer overriden by HTTP Headers
+    + Removed unnecessary code for handling python2.6
+    + Several minors updates to setup.py and tox
+    + Set pytest as the default unittest framework
+  * OAuth2.0 Provider - outstanding Features
+    + OpenID Connect Core support
+    + RFC7662 Introspect support
+    + RFC8414 OAuth2.0 Authorization Server Metadata support
+    + RFC7636 PKCE support
+  * OAuth2.0 Provider - API/Breaking Changes
+    + Add "request" to confirm_redirect_uri
+    + confirm_redirect_uri/get_default_redirect_uri has a bit changed
+    + invalid_client is now a FatalError
+    + Changed errors status code from 401 to 400:
+      - invalid_grant:
+      - invalid_scope:
+      - access_denied/unauthorized_client/consent_required/login_required
+      - 401 must have WWW-Authenticate HTTP Header set.
+  * OAuth2.0 Provider - Bugfixes
+    + empty scopes no longer raise exceptions for implicit and authorization_code
+  * OAuth2.0 Client - Bugfixes / Changes:
+    + expires_in in Implicit flow is now an integer
+    + expires is no longer overriding expires_in
+    + parse_request_uri_response is now required
+    + Unknown error=xxx raised by OAuth2 providers was not understood
+    + OAuth2's `prepare_token_request` supports sending an empty string for `client_id`
+    + OAuth2's `WebApplicationClient.prepare_request_body` was refactored to better
+      support sending or omitting the `client_id` via a new `include_client_id` kwarg.
+      By default this is included. The method will also emit a DeprecationWarning if
+      a `client_id` parameter is submitted; the already configured `self.client_id`
+      is the preferred option.
+  * OAuth1.0 Client:
+    + Support for HMAC-SHA256
+- Removed remove_unittest2.patch made redundant by v3.0.1
+- Set minumum version of python-PyJWT >= 1.0.0
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Aug 13 13:01:36 UTC 2018 - mcepl@suse.com
+
+Remove dependency on unittest2
+    Add remove_unittest2.patch to facilitate that
+
+-------------------------------------------------------------------
+Wed May 23 02:49:49 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * fix fdupes call for single-spec
+
+- update to version 2.1.0:
+  * Fixed some copy and paste typos (#535)
+  * Use secrets module in Python 3.6 and later (#533)
+  * Add request argument to confirm_redirect_uri (#504)
+  * Avoid populating spurious token credentials (#542)
+  * Make populate attributes API public (#546)
+
+-------------------------------------------------------------------
+Mon Mar 26 16:17:21 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * ran spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar 24 18:50:04 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * updated url
+
+- update to version 2.0.7:
+  * Moved oauthlib into new organization on GitHub.
+  * Include license file in the generated wheel package. (#494)
+  * When deploying a release to PyPI, include the wheel
+    distribution. (#496)
+  * Check access token in self.token dict. (#500)
+  * Added bottle-oauthlib to docs. (#509)
+  * Update repository location in Travis. (#514)
+  * Updated docs for organization change. (#515)
+  * Replace G+ with Gitter. (#517)
+  * Update requirements. (#518)
+  * Add shields for Python versions, license and RTD. (#520)
+  * Fix ReadTheDocs build (#521).
+  * Fixed "make" command to test upstream with local oauthlib. (#522)
+  * Replace IRC notification with Gitter Hook. (#523)
+  * Added Github Releases deploy provider. (#523)
+
+-------------------------------------------------------------------
+Sat Oct 21 03:14:43 UTC 2017 - arun@gmx.de
+
+- update to version 2.0.6:
+  * 2.0.5 contains breaking changes.
+
+-------------------------------------------------------------------
+Fri Oct 20 01:43:25 UTC 2017 - arun@gmx.de
+
+- update to version 2.0.5:
+  * Fix OAuth2Error.response_mode for #463.
+  * Documentation improvement.
+
+-------------------------------------------------------------------
+Mon Sep 25 16:14:07 UTC 2017 - arun@gmx.de
+
+- update to version 2.0.4:
+  * Fixed typo that caused OAuthlib to crash because of the fix in
+    "Address missing OIDC errors and fix a typo in the
+    AccountSelectionRequired exception".
+
+- changes from version 2.0.3:
+  * Address missing OIDC errors and fix a typo in the
+    AccountSelectionRequired exception.
+  * Update proxy keys on CaseInsensitiveDict.update().
+  * Redirect errors according to OIDC's response_mode.
+  * Added universal wheel support.
+  * Added log statements to except clauses.
+  * According to RC7009 Section 2.1, a client should include
+    authentication credentials when revoking its tokens. As discussed
+    in #339, this is not make sense for public clients. However, in
+    that case, the public client should still be checked that is
+    infact a public client (authenticate_client_id).
+  * Improved prompt parameter validation.
+  * Added two error codes from RFC 6750.
+  * Hybrid response types are now be fragment-encoded.
+  * Added Python 3.6 to Travis CI testing and trove classifiers.
+  * Fixed BytesWarning issued when using a string placeholder for
+    bytes object.
+  * Documented PyJWT dependency and improved logging and exception
+    messages.
+  * Documentation improvements and fixes.
+
+-------------------------------------------------------------------
+Mon Aug 21 14:03:34 UTC 2017 - tbechtold@suse.com
+
+- update to 2.0.2:
+  * Dropped support for Python 2.6, 3.2 & 3.3.
+  * (FIX) `OpenIDConnector` will no longer raise an AttributeError when calling
+    `openid_authorization_validator()` twice.
+
+-------------------------------------------------------------------
+Sun May  7 15:22:56 UTC 2017 - pousaduarte@gmail.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Mon Jan  2 08:13:27 UTC 2017 - tbechtold@suse.com
+
+- Use pypi.io and htttps as Source
+
+-------------------------------------------------------------------
+Sun Jan  1 16:43:13 UTC 2017 - michael@stroeder.com
+
+- update to 2.0.1:
+  too many changes to be listed herein
+  (see /usr/share/doc/packages/python-oauthlib/CHANGELOG.rst)
+- removed obsolete pycrypto.patch because changes were made upstream
+
+-------------------------------------------------------------------
+Thu Sep 15 13:53:29 UTC 2016 - rjschwei@suse.com
+
+- Include in SLES 12 (FATE#321371, bsc#998103)
+
+-------------------------------------------------------------------
+Wed Apr 22 09:38:29 UTC 2015 - mcihar@suse.cz
+
+- Update to 0.7.2:
+  * (Quick fix) Unpushed locally modified files got included in the PyPI 0.7.1
+    release. Doing a new clean release to address this. Please upgrade quickly
+    and report any issues you are running into.
+  * (Quick fix) Add oauthlib.common.log object back in for libraries using it.
+  * (Change) OAuth2 clients will not raise a Warning on scope change if
+    the environment variable ``OAUTHLIB_RELAX_TOKEN_SCOPE`` is set. The token
+    will now be available as an attribute on the error, ``error.token``.
+    Token changes will now also be announced using blinker.
+  * (Fix/Feature) Automatic fixes of non-compliant OAuth2 provider responses (e.g. Facebook).
+  * (Fix) Logging is now tiered (per file) as opposed to logging all under ``oauthlib``.
+  * (Fix) Error messages should now include a description in their message.
+  * (Fix/Feature) Optional support for jsonp callbacks after token revocation.
+  * (Feature) Client side preparation of OAuth 2 token revocation requests.
+  * (Feature) New OAuth2 client API methods for preparing full requests.
+  * (Feature) OAuth1 SignatureOnlyEndpoint that only verifies signatures and client IDs.
+  * (Fix/Feature) Refresh token grant now allow optional refresh tokens.
+  * (Fix) add missing state param to OAuth2 errors.
+  * (Fix) add_params_to_uri now properly parse fragment.
+  * (Fix/Feature) All OAuth1 errors can now be imported from oauthlib.oauth1.
+  * (Fix/Security) OAuth2 logs will now strip client provided password, if present.
+  * Allow unescaped @ in urlencoded parameters.
+- New dependency on python-blinker
+- Add pycrypto.patch to be compatible with latest PyJWT
+
+-------------------------------------------------------------------
+Wed Jul 23 13:29:30 UTC 2014 - mcihar@suse.cz
+
+- Update to version 0.6.3:
+  + 0.6.3: 
+    * Quick fix. OAuth 1 client repr in 0.6.2 overwrote secrets when
+      scrubbing for print.
+  + 0.6.2: 
+    * Numerous OAuth2 provider errors now suggest a status code of 401 instead
+      of 400 (#247.
+    * Added support for JSON web tokens with oauthlib.common.generate_signed_token.
+      Install extra dependency with oauthlib[signedtoken] (#237).
+    * OAuth2 scopes can be arbitrary objects with __str__ defined (#240).
+    * OAuth 1 Clients can now register custom signature methods (#239).
+    * Exposed new method oauthlib.oauth2.is_secure_transport that checks whether
+      the given URL is HTTPS. Checks using this method can be disabled by setting
+      the environment variable OAUTHLIB_INSECURE_TRANSPORT (#249).
+    * OAuth1 clients now has __repr__ and will be printed with secrets scrubbed.
+    * OAuth1 Client.get_oauth_params now takes an oauthlib.Request as an argument.
+    * urldecode will now raise a much more informative error message on
+      incorrectly encoded strings.
+    * Plenty of typo and other doc fixes.
+- new dependency on PyJWT
+
+-------------------------------------------------------------------
+Sun Apr 13 17:25:38 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.6.1
+  + (OAuth 2 Provider) is_within_original_scope to check whether a
+    refresh token is trying to aquire a new set of scopes that are 
+    a subset of the original scope.
+  + (OAuth 2 Provider) expires_in token lifetime can be set per request.
+  + (OAuth 2 Provider) client_authentication_required method added to
+    differentiate between public and confidential clients.
+  + (OAuth 2 Provider) rotate_refresh_token now indicates whether a 
+    new refresh token should be generated during token refresh or 
+    if old should be kept.
+  + (OAuth 2 Provider) returned JSON headers no longer include charset.
+  + (OAuth 2 Provider) validate_authorizatoin_request now also includes
+    the internal request object in the returned dictionary. Note that
+    this is not meant to be relied upon heavily and its interface might
+    change.
+  + many style and typo fixes.
+
+-------------------------------------------------------------------
+Tue Jan 21 08:47:36 UTC 2014 - dmueller@suse.com
+
+- use pycrypto, not python-rsa 
+
+-------------------------------------------------------------------
+Mon Jan 20 10:22:53 UTC 2014 - speilicke@suse.com
+
+- Add pycrypto requirement for "rsa" submodule
+
+-------------------------------------------------------------------
+Fri Nov  1 11:22:43 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.6.0
+  + All endpoint methods change contract to return 3 values instead
+    of 4. The new signature is `headers`, `body`, `status code` where
+    the initial `redirect_uri` has been relocated to its rightful place
+    inside headers as `Location`.
+  + OAuth 1 Access Token Endpoint has a new required validator method 
+    `invalidate_request_token`.
+  + OAuth 1 Authorization Endpoint now returns a 200 response instead
+    of 302 on `oob` callbacks.
+- Changes from version 0.5.1
+  + OAuth 1 provider fix for incorrect token param in nonce validation.
+- Changes from version 0.5.0
+  + OAuth 1 provider refactor. OAuth 2 refresh token validation fix.
+- Changes from version 0.4.2
+  + OAuth 2 draft to RFC. Removed OAuth 2 framework decorators.
+- Changes from version 0.4.1
+  + Documentation corrections and various small code fixes.
+- Changes from version 0.4.0
+  + OAuth 2 Provider support (experimental).
+- Changes from version 0.3.8
+  + OAuth 2 Client now uses custom errors and raise on expire
+- Changes from version 0.3.7
+  + OAuth 1 optional encoding of Client.sign return values
+- Changes from version 0.3.6
+  + Revert default urlencoding.
+- Changes from version 0.3.5
+  + Default unicode conversion (utf-8) and urlencoding of input.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:35 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Nov 23 11:19:03 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.3.4:
+  + A number of small features and bug fixes.
+- Changes from version 0.3.3:
+  + OAuth 1 Provider verify now return useful params
+- Changes from version 0.3.2:
+  + Fixed #62, all Python 3 tests pass.
+- Changes from version 0.3.1:
+  + Python 3.1, 3.2, 3.3 support (experimental)
+- Changes from version 0.3.0:
+  + Initial OAuth 2 client support
+- Changes from version 0.2.1:
+  + Exclude non urlencoded bodies during request verification
+- Changes from version 0.2.0:
+  + OAuth provider support
+- Changes from version 0.1.4:
+  + soft dependency on PyCrypto  
+
+-------------------------------------------------------------------
+Fri May 18 00:49:08 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+

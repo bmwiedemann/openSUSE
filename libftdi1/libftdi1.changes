@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue Jun 12 17:35:10 UTC 2018 - msuchanek@suse.com
+
+- Fix Leap 42.3 build - do not apply cmake 3.11 compat patch.
+
+-------------------------------------------------------------------
+Fri May 11 14:25:33 UTC 2018 - tchvatal@suse.com
+
+- Smash libftdi-cmake.patch to make it work with cmake-3.11
+  * Not to upstream the changes I did are pretty ugly
+
+-------------------------------------------------------------------
+Sat Apr  7 20:10:15 UTC 2018 - foss@grueninger.de
+
+- Added patch libftdi-cmake.patch from upstream to make package
+  compatible with CMake 3.11
+
+-------------------------------------------------------------------
+Tue Nov  7 13:39:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4:
+  * New ftdi_usb_open_bus_addr() open function
+  * Use BM/R series baud rate computation for FT230X
+  * ftdi_get_error_string() now returns const char*
+  * C++ API: Ability to open devices with empty descriptor strings
+  * C++ API: Fix enumerations for buffer purge and modem controls
+  * small build fixes and improvements in the python examples
+  * ftdi_eeprom / eeprom handling:
+    + New API function: ftdi_eeprom_get_strings()
+    + Fix USE_SERIAL handling for 230X type chips
+    + Make ftdi_read_eeprom_location() endianness independent
+    + Fix flashing of FT245R
+- Build python3 version of bindings on Factory
+- Rename python bindings subpackage to match singlespec conventions
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul  6 18:17:15 UTC 2017 - mardnh@gmx.de
+
+- Minor package cleanup
+
+-------------------------------------------------------------------
+Wed Feb  1 12:52:25 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri May 27 13:56:14 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 1.3
+  * Added ftdi_usb_get_strings2() to prevent automatic device close
+  * Added ftdi_transfer_data_cancel() for cancellation of a submitted
+    transfer, avoided resubmittion of a canceled transfer in the callbacks,
+    replaced calls to libusb_handle_events with 
+    libusb_handle_events_timeout_completed
+  * ftdi_eeprom / eeprom handling:
+    +  Add support for arbitrary user data
+    +  Add --build-eeprom support
+    +  Fix use_usb_version config file option
+    +  Ability to include other config files in EEPROM config file
+    +  Add external oscillator enable bit
+    +  Support channel configuration
+    +  Added --device option to ftdi_eeprom to specify FTDI device
+    +  Fixed EEPROM user-area space checks for FT232R and FT245R chips
+  * Various improvements to CBUS handling, including the EEPROM
+  * swig wrapper: Fix handling of binary strings in ftdi_write_data()
+    for python 3
+  * cbus python example code
+  * ftdi_stream: fix timeout setting
+  * Fixed typo in CBUS defines: CBUSG_DRIVE1 -> CBUSH_DRIVE1
+- Build python binding
+  * Add a libftdi1-binding-python
+  * Add python-devel, python-xml and swig dependencies
+- Add libconfuse-devel build dependency
+
+-------------------------------------------------------------------
+Mon Dec 15 20:18:12 UTC 2014 - mardnh@gmx.de
+
+- updated to 1.2
+  * Support for FT230X devices (Uwe Bonnes)
+  * ftdi_usb_get_strings(): Don't try to open an already open device (Denis Sirotkin)
+  * Support for finding devices bricked by the Windows driver (Forest Crossman)
+  * cmake build system: New LibFTDI1ConfigVersion.cmake file (xantares09)
+  * Fix a typo in the MPSSE command CLK_BYTES_OR_LOW (Benjamin Vanheuverzwijn)
+  * Minor fixes for MSVC++ (Andrei Errapart)
+  * Various small code improvements (Florian Preinstorfer, Jochen Sprickerhof, xantares09)
+- updated to 1.1
+  * Fix FT232H eeprom suspend pulldown setting (Davide Michelizza)
+  * Fix FT232H eeprom user area size (Davide Michelizza)
+  * Improved mingw build (Paul Fertser and Michel Zou)
+  * C++ wrapper: Get/set functions for USB timeouts (Jochen Sprickerhof)
+  * Partial support for FT230X (Nathael Pajani)
+  * New API function: ftdi_eeprom_set_strings() (Nathael Pajani)
+  * Prevent possible segfault in ftdi_eeprom_decode() (Nathael Pajani)
+  * Save device release number in eeprom (Jarkko Sonninen)
+  * Fix "self powered" eeprom flag (Jarkko Sonninen)
+  * Improved python wrapper (Michel Zou)
+  * Many buildsystem improvements (Michel Zou and Mike Frysinger)
+  * See the git history for more changes and fixes
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 30 16:19:35 UTC 2013 - rw@suse.de
+
+- updated to 1.0
+  * Ported to libusb 1.x (initial work by Jie Zhang)
+  * Many eeprom handling improvements (Uwe Bonnes, Anders Larsen)
+  * Renamed pkconfig, library .so etc. files to "libftdi1" (Intra2net)
+  * ftdi_eeprom is part of libftdi now (Intra2net)
+  * New baudrate calculation code + unit tests (Uwe Bonnes and Intra2net)
+  * Improved python bindings including python3 support (Michel Zou)
+  * Switched completely to cmake build system (Intra2net)
+  * cmake: Easy libftdi discovery via find_package() (Michel Zou)
+  * eeprom handling now done via get()/set() functions (Uwe Bonnes)
+  * C++ wrapper: Fixed use-after-free in List::find_all() (Intra2net)
+  * Documentation updates (Xiaofan Chen)
+  * See the git history for more changes and fixes
+- removed buildfixes.diff
+
+-------------------------------------------------------------------
+Wed Jan  2 22:06:35 UTC 2013 - prusnak@opensuse.org
+
+- updated to 0.20
+  * Support for FT232H (Uwe Bonnes)
+  * Fixed install location of header files (Uwe Bonnes and Intra2net)
+  * Backported serial_test tool from libftdi 1.x (Uwe Bonnes)
+- updated to 0.19
+  * Make kernel driver detach configurable (Thomas Klose)
+  * Correct ftdi_poll_modem_status() result code (Tom Saunders)
+  * cmake build system improvements (Evgeny Sinelnikov)
+  * Fix uninitialized memory access in async mode (Intra2net)
+  * Support for FT232R eeprom features (Hermann Kraus)
+  * Fix size returned by ftdi_read_data (Hermann Kraus)
+  * C++ wrapper: Fix infinite recursion in set_bitmode (Intra2net)
+  * Improvements to the python wrapper (Flynn Marquardt and Chris Zeh)
+
+-------------------------------------------------------------------
+Thu May  3 16:21:44 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-2.0-with-classpath-exception
+  Use SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Fri Jan 21 23:08:09 CET 2011 - stepan@coresystems.de
+
+- Update to 0.18
+- Add COPYING.GPL and LICENSE files, too
+
+-------------------------------------------------------------------
+Mon Dec 21 10:18:44 CET 2009 - stepan@coresystems.de
+
+- Update to 0.17
+
+-------------------------------------------------------------------
+Sun Oct 26 14:37:10 CET 2008 - jblunck@suse.de
+
+- Initial page submission
+

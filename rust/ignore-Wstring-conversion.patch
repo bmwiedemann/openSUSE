@@ -1,0 +1,17 @@
+*** rustc-1.30.0-src/src/librustc_llvm/build.rs	2018-10-25 09:00:01.000000000 +1300
+--- rust-patch/src/librustc_llvm/build.rs	2018-11-05 07:31:35.672765505 +1300
+***************
+*** 147,152 ****
+--- 147,158 ----
+              continue;
+          }
+  
++         // hack to avoid flag on openSUSE which is incompatible with GCC
++         if flag.starts_with("-W") && flag.contains("string-conversion") {
++             continue;
++         }
++ 
++ 
+          cfg.flag(flag);
+      }
+  

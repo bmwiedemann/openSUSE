@@ -1,0 +1,9 @@
+#  Output filters 
+addFilter("hidden-file-or-dir")
+addFilter("macro-in-comment")
+addFilter("suse-missing-rclink matomo-archive")
+addFilter("zero-length /srv/www/matomo/plugins/Morpheus/stylesheets/base/font.css")
+addFilter("pem-certificate")
+addFilter("non-conffile-in-etc /etc/matomo/environment/dev.php")
+addFilter("non-conffile-in-etc /etc/matomo/environment/test.php")
+addFilter("non-conffile-in-etc /etc/matomo/environment/ui-test.php")

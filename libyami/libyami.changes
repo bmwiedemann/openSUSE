@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Tue Jun 25 21:05:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add export CXXFLAGS="-Wno-error", needed to fix build after gcc9.
+  This needs to be fixed upstream.
+
+-------------------------------------------------------------------
+Sat Dec 29 20:12:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.3.1:
+  * libyami-1.3.1 release
+  * fix bug https://github.com/intel/libyami/issues/833
+- Use release tarballs and drop service/git checkout.
+
+-------------------------------------------------------------------
+Fri Jul 20 15:10:08 UTC 2018 - mimi.vx@gmail.com
+
+- Update to version 1.3.0+20180629.0067a64:
+- move to git version - fixes for GCC8+ are almost in all commits
+- drop fix-build-with-libva-1.x.diff
+  * unittest: decoder, enable lowlatency test
+  * configure.ac: bump API version to 0.5.5 for VIDEO_DECODE_BUFFER_FLAG
+  * h264, h265: add VIDEO_DECODE_BUFFER_FLAG_FRAME_END to inidicate frame end
+  * h264dec: fix low lantecy mode
+  * Add flags for SDL signoff called SDL325 - Compile With Defenses Enabled
+  * android: re-enable android build
+  * vp8enc: make some deconsturctor virtulized
+  * interface: remove extern C for decoder,encoder,vpp
+  * egl: protect YamiV4L2_UseEglImage with __ENABLE_EGL__
+  * v4l2: fix compile warnning for V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE
+
+-------------------------------------------------------------------
+Tue Feb  6 09:10:43 UTC 2018 - olaf@aepfle.de
+
+- Align libva version with configure.ac to fix build
+
+-------------------------------------------------------------------
+Sun Dec 31 13:01:35 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional pkgconfig(libva-wayland) BuildRequires and pass
+  conditional --enable-wayland="yes" to configure, build wayland
+  support for selected versions of openSUSE.
+
+-------------------------------------------------------------------
+Fri Dec 22 17:00:54 UTC 2017 - alarrosa@suse.com
+
+- Add fix-build-with-libva-1.x.diff to fix builds with libva 1. The patch
+  is only applied when building in Leap 42.x .
+
+-------------------------------------------------------------------
+Mon Dec  4 12:36:25 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 1.3.0:
+  * Implement H.264 SVC-T new reference mode.
+  * Implement H.264 low latency mode.
+  * Improve v4l2 interface,support dynamic resolution change.
+  * JPEG decoder fixes and Y800 support.
+- Changes from version 1.2.0:
+  * Depends on libva 1.8.1.
+  * Improve vp9 10 bit decoder conformance.
+  * Improve h265 8/10 bit decoder conformance.
+  * Add decoder/display zero-copy API.
+  * Use decoder/display zero copy API in v4l2 decoder.
+  * Expose vp9 qp setting to the user.
+  * Change API from 0.4.0 to 0.5.0 for following interface changes:
+    - Get/set surface in SurfaceAllocParams.
+    - Add VIDEO_DATA_MEMORY_TYPE_EXTERNAL_DMA_BUF.
+
+-------------------------------------------------------------------
+Tue Mar 21 15:23:55 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups again. Fix error in description.
+
+-------------------------------------------------------------------
+Sun Feb 19 13:30:48 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file:
+  * Run spec-clener
+  * Trim not needed sections
+  * Use correct rpm groups
+  * Install license
+  * Correct openSUSE spelling
+
+-------------------------------------------------------------------
+Sat Jan 21 09:08:58 UTC 2017 - seanvk@posteo.de
+
+- Update for Release 1.1.0 
+
+-------------------------------------------------------------------
+Thu Jan 19 06:34:18 UTC 2017 - seanvk@posteo.de
+
+- Initial SPEC file 
+

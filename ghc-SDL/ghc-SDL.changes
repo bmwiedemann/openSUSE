@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:05 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:11 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:11 UTC 2018 - psimons@suse.com
+
+- Update SDL to version 0.6.7.0.
+  Upstream has not updated the file "changes.txt" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu May 17 08:35:47 UTC 2018 - psimons@suse.com
+
+- Update SDL to version 0.6.6.0.
+  * Made SDL_WaitEvent from unsafe to safe, because it blocks.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:27:48 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6.5.1 revision 1 with cabal2obs.
+  This update obsoletes ghc-7_8.diff.
+
+-------------------------------------------------------------------
+Tue May 12 16:29:49 UTC 2015 - dap.darkness@gmail.com
+
+- Added ghc-7_8.diff to resolve build time fail.
+
+-------------------------------------------------------------------
+Mon Oct 28 19:08:11 UTC 2013 - sbahling@suse.com
+
+- Remove doc subpackage
+
+-------------------------------------------------------------------
+Mon Oct 28 18:00:17 UTC 2013 - sbahling@suse.com
+
+- Update spec file.
+  * Use new cabal-rpm template
+  * Builds for SUSE Linux Enterprise 11
+
+-------------------------------------------------------------------
+Thu Aug  1 16:16:24 UTC 2013 - dap.darkness@gmail.com
+
+- Update to upstream version 0.6.5:
+  * No upstream changelog.
+- Fixed for Haskell Platform 2013.2.
+
+-------------------------------------------------------------------
+Mon Jun 17 17:07:50 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.

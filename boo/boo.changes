@@ -1,0 +1,264 @@
+-------------------------------------------------------------------
+Fri May  4 17:27:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace gtksourceview18-devel with pkgconfig(gtksourceview-2.0),
+  and use sed to bump what version configure looks for, no longer
+  depend on a long obsolete and deprecated version.
+
+-------------------------------------------------------------------
+Wed Jun 14 13:09:55 UTC 2017 - kstreitova@suse.com
+
+- update Url in the specfile
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:15 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep 17 20:30:13 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Jan 26 19:05:23 UTC 2010 - ajorgensen@novell.com
+
+- Update to 0.9.3.3457
+  * Bugs
+    [BOO-1034] - compiler error referencing base class members of a generic subclass of a generic class
+    [BOO-1064] - Overriden explicit interface implementation crashes compiler
+    [BOO-1065] - Duplicate explicit interfaces cause emit error
+    [BOO-1071] - List comprehension cannot be used inside array constructor
+    [BOO-1081] - Subclassing containing class causes compiler stack overflow
+    [BOO-1082] - Abstract subclassing turns methods public
+    [BOO-1165] - Callable cannot declare variable parameters
+    [BOO-1170] - for/or bug in generator
+    [BOO-1191] - booish crashes after /help, /globals, /load and /save
+    [BOO-1194] - Any autocompletion on an array crashes Boo interpreter
+    [BOO-1211] - No type safety at all if LHS or RHS of expression is an interface
+    [BOO-1240] - Compiler falsely considers any member of the same name to fulfill an external interface.
+    [BOO-1241] - Not all overloads of external implementations searched
+    [BOO-1248] - Most of the links on the Boo home page are dead
+    [BOO-1251] - Overflowing calculations with constants are compiled to invalid code
+    [BOO-1252] - System.InvalidOperationException with void/bool comparison
+    [BOO-1253] - System.InvalidOperationException with void function in hash literal
+    [BOO-1254] - Boo compiler fails on certain file names
+    [BOO-1255] - Boo compiler fails on empty files
+    [BOO-1256] - Class not found after importing two similar namespaces
+    [BOO-1259] - inheritance generic class with abstract parameter causes error
+    [BOO-1261] - cross-namespace inheritance from an interface fails
+    [BOO-1262] - The white space agnostic parser is not preserving file names
+    [BOO-1266] - Parser fails on literal -9223372036854775808L (long.MinValue)
+  * Improvement
+    [BOO-903] - Allow 'of' to be omitted in type references when [] are used
+    [BOO-1236] - Missing PatternMatching patterns, plus regex pattern
+    [BOO-1260] - Language change: remove 'continue' and 'break' special meaning from 'or' blocks
+
+-------------------------------------------------------------------
+Tue Mar 31 14:54:41 MDT 2009 - ajorgensen@novell.com
+
+- Update to 0.9.0.3203
+  * http://dist.codehaus.org/boo/distributions/ChangeLog-v0.9.html
+
+-------------------------------------------------------------------
+Tue Aug 12 13:29:30 MDT 2008 - ajorgensen@novell.com
+
+- Split into boo and boo-devel so as to not require nant
+
+-------------------------------------------------------------------
+Tue Jun 17 14:18:43 MST 2008 - wberrier@suse.de
+
+- Update to 0.8.2.2960
+ - (almost) complete nullable type support
+ - shorthandsfor nullable types (T?) and enumerables 
+   (T* instead of IEnumerable[of T])
+ - improved booish behavior with nicer colors 
+   (and it should work inside emacs now )
+ - 'else' block for 'for' and 'while loops
+ - fixes and improvement related to generic methods 
+   (overloads and interface declarations)
+
+-------------------------------------------------------------------
+Wed Feb 27 13:18:43 MST 2008 - wberrier@suse.de
+
+- Update to 0.8.1.2865
+ - a simpler way for writing macros
+ - support for nested functions
+ - generic methods overloading works
+ - support for CLR 3.5 extension methods (moreover boo extension methods)
+ - compile-time conditionals through ConditionalAttribute and the new -define SYMBOL booc option
+ - AttributeUsageAttribute is now supported and enforced
+ - a better interactive interpreter (previously known as booish2)
+ - warnings about unused private members, unused namespaces, unreachable code
+ - new error messages, including suggestions for misspelled members or types
+ - exception filters, exception fault handlers
+ - for loop IDisposeable.Dispose integration
+
+-------------------------------------------------------------------
+Wed Nov 02 12:18:43 MST 2007 - wberrier@suse.de
+
+- Update to 0.8.0.2730
+ -Fixed Bugs
+    * [BOO-836] - WSA Boo "end" keyword required for some blocks and not others
+    * [BOO-869] - wrong type inferred for null field initializer
+    * [BOO-871] - booish fails to display dictionary that contains DynamicMethod
+    * [BOO-874] - compiler doesn't generate debug information for duck typed call sites
+    * [BOO-881] - compiler doesn't check for duplicate parameter names in constructor definitions
+    * [BOO-883] - Internal error using regular expression in generator
+    * [BOO-884] - compiler should prefer data preserving overloads 
+    * [BOO-885] - parser doesnt allow complex expressions inside closures
+    * [BOO-887] - Wrong stack trace information for exception during assignment inside generator method
+    * [BOO-891] - Boo.NAnt.Tasks is using an obsolete method (Assembly.LoadWithPartialName)
+    * [BOO-893] - QuackInvoke intercepts calls to super() in class CTOR
+    * [BOO-894] - Type inference failure for property used in object initializer
+    * [BOO-898] - [MetaProgramming] Splicing operator is not recognized inside string expression interpolation
+
+  -Improvements
+    * [BOO-870] - parser should not require the 'L' suffix to parse long literals
+    * [BOO-872] - better name for closure methods
+    * [BOO-873] - extension methods should be preferred over non accessible members
+    * [BOO-888] - Delay Sign parameter is ignored
+    * [BOO-889] - BooPrinterVistor makes ugly elif chains
+    * [BOO-892] - Test Cases use obsolete interfaces and throw warnings during compilation
+    * [BOO-895] - [MetaProgramming] splicing for member references
+    * [BOO-896] - [MetaProgramming] splicing for class and field names
+    * [BOO-897] - [MetaProgramming] splicing for method names
+    * [BOO-899] - bool equality comparisons are emitting unnecessary RuntimeServices.EqualityOperator calls
+    * [BOO-900] - unreserve 'otherwise' keyword so it can be used by the 'match' macro
+    * [BOO-901] - unreserve 'given' and 'when' keywords so they can be implemented as macros
+
+  -New Features
+    * [BOO-136] - generic given statement
+    * [BOO-218] - duck typing - unary operators
+
+-------------------------------------------------------------------
+Wed Oct 10 14:04:43 MST 2007 - wberrier@suse.de
+
+- Don't use -<package> notation in BuildRequires anymore.  Normal
+  sles9 doesn't like it (obs must intervene here).
+
+-------------------------------------------------------------------
+Fri Sep 28 16:04:43 MST 2007 - wberrier@suse.de
+
+- Update to 0.7.9.2659
+ -boo-pkgconfig_path_fix.patch: fix broken paths in .pc file
+
+-------------------------------------------------------------------
+Fri Aug 17 00:04:43 CEST 2007 - wberrier@suse.de
+
+- Depend on gtksourceview18
+
+-------------------------------------------------------------------
+Fri Jul 06 11:31:25 MST 2007 - wberrier@novell.com
+
+- Filelist changes: List each assembly dir instead of having this
+  package provide /usr/lib/mono/gac
+- disable vs2005 project file updates (new in 0.7.8)
+- Update to 0.7.8
+ -Fixed Bugs:
+    * [BOO-603] - GetSlice doesn't work with non-indexed properties 
+      that return indexable object
+    * [BOO-677] - variable argument lists prevent callables from 
+      being invoked via dictionaries
+    * [BOO-724] - Private fields conflict with same named fields in 
+      child class
+    * [BOO-819] - Disallow comparing static ref to function with 
+      not static ref
+    * [BOO-825] - generators compiled with .net 1.1 boo binaries 
+      dont run with the runtime compiled for .net 2.0
+    * [BOO-826] - Internal compiler error when using a generic 
+      method invocation as the target of a member reference expression
+    * [BOO-827] - InvalidCastException when calling overloaded 
+      function with duck argument
+    * [BOO-828] - slice in duck typing mode doesn't work with a 
+      non indexed property
+    * [BOO-829] - Overload resolution and argument conversion is 
+      not the same in duck typing mode
+    * [BOO-831] - CompilerGeneratedExtensions.BeginInvoke is 
+      ambiguous
+    * [BOO-833] - Compiler thinks a property is write-only when 
+      only the setter is overriden
+  -Improvements:
+    * [BOO-44] - add pkg-config support to booc and boo nant task
+    * [BOO-835] - DSL-friendly method syntax
+
+-------------------------------------------------------------------
+Wed Apr 11 16:16:25 CET 2007 - wberrier@novell.com
+
+- Add mono dep/req for older distros
+
+-------------------------------------------------------------------
+Thu Mar 30 10:44:14 CET 2007 - wberrier@novell.com
+
+- Adapt for build service
+ -do a crazy hack for sles9 since that platform doesn't have
+  shared-mime-info
+ -add fedora hack to use /tmp for .wapi
+ -use distro specific prefixes for mime-info and gtksourceview
+
+-------------------------------------------------------------------
+Tue Jan 30 18:00:49 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 11 02:07:14 CET 2007 - wberrier@suse.de
+
+- Also remove /usr/share/gtksourceview* to fix build
+
+-------------------------------------------------------------------
+Wed Jan  3 22:36:05 CET 2007 - wberrier@suse.de
+
+- Add update-mime-database to post[un] for bnc #225743
+  (fix from Andreas Hanke)
+
+-------------------------------------------------------------------
+Wed Oct 11 00:46:33 CEST 2006 - wberrier@suse.de
+
+- Remove boo.lang since it's now in gtksourceview (bnc #209516)
+
+-------------------------------------------------------------------
+Wed Aug  2 00:40:25 CEST 2006 - wberrier@suse.de
+
+- Update to 0.7.6.2237
+- Switch to building from original source tarball now that we have
+  nant, opposed to repackaging prepackaged binary dist
+- minor filesystem changes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 13 22:18:53 CEST 2005 - wberrier@suse.de
+
+- Update to 0.7.0 version
+
+-------------------------------------------------------------------
+Thu Sep 29 00:11:20 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Sep  9 08:38:14 CEST 2005 - aj@suse.de
+
+- Update check-build.sh.
+
+-------------------------------------------------------------------
+Sat Aug 27 14:55:12 CEST 2005 - aj@suse.de
+
+- Add check-build script.
+
+-------------------------------------------------------------------
+Fri Aug 12 12:20:46 CEST 2005 - ro@suse.de
+
+- fix pkgconfig dir for noarch package 
+
+-------------------------------------------------------------------
+Thu Aug  4 23:57:31 CEST 2005 - wberrier@suse.de
+
+- Initial package
+

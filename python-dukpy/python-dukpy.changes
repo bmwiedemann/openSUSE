@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Mar  8 14:55:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.2:
+  * State compatibility with Python 3.7
+  * Provide wheels for Python 3.7
+  * Fix building wheel from source distribution
+  * Fix a memory leak in dukpy.evaljs
+- Add patch from upstream to work well with pytest:
+  * pytest.patch
+
+-------------------------------------------------------------------
+Thu Aug 16 09:42:12 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Aug  7 15:40:54 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,28 @@
+Index: ui.c
+===================================================================
+--- ui.c.orig	2001-04-25 18:04:37.000000000 +0200
++++ ui.c	2011-09-05 11:41:36.778971128 +0200
+@@ -14,7 +14,7 @@ static char getletter(int i)
+ {
+     if(i<9) return('1'+i);
+     if(i==9) return('0');
+-    if(i>9) return('A'+i-10);
++    /* if(i>9) */ return('A'+i-10);
+ }
+ static void do_display(void)
+ {
+Index: configure
+===================================================================
+--- configure.orig	2001-04-25 17:57:15.000000000 +0200
++++ configure	2011-09-05 11:47:59.206036005 +0200
+@@ -1576,8 +1576,8 @@ rm -f conftest*
+   
+   rm -f conf.aalibtest
+ 
+-CFLAGS="$CFLAGS $AALIB_CFLAGS"
+-LIBS="$CLFAGS $AALIB_LIBS"
++CFLAGS="$CFLAGS $AALIB_CFLAGS -fno-lto"
++LIBS="$CLFAGS $AALIB_LIBS -lm"
+ 
+ trap '' 1 2 15
+ cat > confcache <<\EOF

@@ -1,0 +1,65 @@
+Python module needs to be built without these extra renames.
+MPI module needs to reference correct python
+
+~Index: boost_1_64_0/libs/mpi/build/Jamfile.v2
+~===================================================================
+~--- boost_1_64_0.orig/libs/mpi/build/Jamfile.v2
+~+++ boost_1_64_0/libs/mpi/build/Jamfile.v2
+~@@ -61,10 +61,10 @@ libraries += boost_mpi ;
+~     lib boost_mpi_python
+~       : # Sources
+~         python/serialize.cpp
+~+        /user-config//boost_python_alias
+~       : # Requirements
+~         <library>boost_mpi
+~         <library>/mpi//mpi [ mpi.extra-requirements ]
+~-      	<library>/boost/python//boost_python
+~         <link>shared:<define>BOOST_MPI_DYN_LINK=1
+~         <link>shared:<define>BOOST_MPI_PYTHON_DYN_LINK=1
+~         <link>shared:<define>BOOST_PYTHON_DYN_LINK=1        
+~@@ -92,8 +92,8 @@ libraries += boost_mpi ;
+~         python/skeleton_and_content.cpp
+~         python/status.cpp
+~         python/py_timer.cpp
+~+        /user-config//boost_python_alias
+~       : # Requirements
+~-      	<library>/boost/python//boost_python      
+~         <library>boost_mpi_python
+~         <library>boost_mpi
+~         <library>/mpi//mpi [ mpi.extra-requirements ]
+Index: boost_1_69_0/libs/python/Jamfile
+===================================================================
+--- boost_1_69_0.orig/libs/python/Jamfile
++++ boost_1_69_0/libs/python/Jamfile
+@@ -36,9 +36,10 @@ local rule split-version ( version )
+ # For example, Boost.Python built for Python 2.7 uses the suffix "27"
+ rule version-suffix ( version )
+ {
+-    local major-minor = [ split-version $(version) ] ;
+-    local suffix = $(major-minor:J="") ;
+-    return $(suffix) ;
++    # local major-minor = [ split-version $(version) ] ;
++    # local suffix = $(major-minor:J="") ;
++    # return $(suffix) ;
++    return "" ;
+ }
+ 
+ 
+Index: boost_1_69_0/libs/mpi/build/Jamfile.v2
+===================================================================
+--- boost_1_69_0.orig/libs/mpi/build/Jamfile.v2
++++ boost_1_69_0/libs/mpi/build/Jamfile.v2
+@@ -42,9 +42,10 @@ local rule split-version ( version )
+ # For example, Boost.Python built for Python 2.7 uses the suffix "27"
+ rule version-suffix ( version )
+ {
+-    local major-minor = [ split-version $(version) ] ;
+-    local suffix = $(major-minor:J="") ;
+-    return $(suffix) ;
++    #local major-minor = [ split-version $(version) ] ;
++    #local suffix = $(major-minor:J="") ;
++    #return $(suffix) ;
++    return "" ;
+ }
+ 
+ 

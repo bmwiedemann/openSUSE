@@ -1,0 +1,13 @@
+Index: tbb-2019_U8/build/linux.gcc.inc
+===================================================================
+--- tbb-2019_U8.orig/build/linux.gcc.inc
++++ tbb-2019_U8/build/linux.gcc.inc
+@@ -65,7 +65,7 @@ ifneq (,$(shell $(CONLY) -dumpfullversio
+ endif
+ 
+ ifeq ($(cfg), release)
+-        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 -DUSE_PTHREAD
++        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 $(OPTFLAGS) -DUSE_PTHREAD
+ endif
+ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG $(ITT_NOTIFY) -g -O0 -DUSE_PTHREAD

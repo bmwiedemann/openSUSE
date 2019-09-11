@@ -1,0 +1,13 @@
+Index: mariadb-connector-odbc-3.1.1-ga-src/CMakeLists.txt
+===================================================================
+--- mariadb-connector-odbc-3.1.1-ga-src.orig/CMakeLists.txt
++++ mariadb-connector-odbc-3.1.1-ga-src/CMakeLists.txt
+@@ -281,7 +281,7 @@ IF(WIN32)
+   ADD_LIBRARY(${LIBRARY_NAME} SHARED ${MARIADB_ODBC_SOURCES} ${CMAKE_SOURCE_DIR}/mariadb-odbc-driver-uni.def maodbcu.rc)
+ ELSE()
+   MESSAGE(STATUS "Version script: ${CMAKE_SOURCE_DIR}/maodbc.def")
+-  ADD_LIBRARY(${LIBRARY_NAME} SHARED ${MARIADB_ODBC_SOURCES} maodbcu.rc)
++  ADD_LIBRARY(${LIBRARY_NAME} MODULE ${MARIADB_ODBC_SOURCES} maodbcu.rc)
+   
+   IF(APPLE)
+     SET_TARGET_PROPERTIES(${LIBRARY_NAME} PROPERTIES LINK_FLAGS "-Wl")

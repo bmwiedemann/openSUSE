@@ -1,0 +1,22 @@
+Source: vym
+Section: sectionName
+Priority: optional
+Maintainer: Uwe Drechsel <vym@insilmaril.de>
+Build-Depends: debhelper (>= 4.1.16)
+
+Package: vym
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: mindmapping tool
+ Vym is a mind mapping program. It is useful to organize thoughts and
+ do structure work. In addition to that it has a lot of helpful
+ shortcuts.
+ .
+ A mindmap is a multicolored and image centered radial diagram that
+ represents semantic or other connections between portions of learned
+ material.  For example, it can graphically illustrate the structure
+ of a thesis outline, a project plan, or the government institutions
+ in a state.  Mindmaps have many applications in personal, family,
+ educational, and business situations.  Possibilities include
+ note-taking, brainstorming, summarizing, revising and general
+ clarifying of thoughts.

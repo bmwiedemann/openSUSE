@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Wed Jan 16 09:23:52 UTC 2019 - jdelvare@suse.de
+
+- dmidecode-add-logical-non-volatile-device.patch: Add "Logical
+  non-volatile device" to the memory device types (bsc#1120149).
+- Use %doc directly on files instead of installing them explicitly.
+
+-------------------------------------------------------------------
+Mon Jan 14 16:32:30 CET 2019 - jdelvare@suse.de
+
+- Don't overwrite the path of license (boo#1121851).
+
+-------------------------------------------------------------------
+Mon Oct 22 14:51:29 CEST 2018 - jdelvare@suse.de
+
+- dmidecode-fix-redfish-hostname-print-length.patch: Fix Redfish
+  Hostname print length (bsc#1112755).
+
+-------------------------------------------------------------------
+Mon Sep 17 13:01:40 CEST 2018 - jdelvare@suse.de
+
+- Update to upstream version 3.2 (FATE#326044):
+  * [COMPATIBILITY] The UUID is now displayed using lowercase
+    letters, per RFC 4122 (#53569). You must ensure that any code
+    parsing it is case-insensitive.
+  * Support for SMBIOS 3.2.0. This includes new processor names,
+    new socket and port connector types, new system slot state and
+    property, and support for non-volatile memory (NVDIMM).
+  * Support for Redfish management controllers.
+  * A new command line option to query a specific structure by its
+    handle.
+  * A new command line option to query the system family string.
+  * Support for 3 ThinkPad-specific structures (patch #9642).
+  * Support for HPE's new company name.
+  * Support UEFI on FreeBSD.
+  * Important bug fixes:
+    Fix firmware version of TPM device
+    Fix the HPE UEFI feature flag check
+  * (biosdecode) A new command line option to fully decode PIR
+    information (support request #109339).
+  * Obsoletes dmioem-reflect-hpe-new-company-name.patch,
+    dmidecode-fix-tpm-device-firmware-version.patch, and
+    dmioem-fix-hpe-type-219-uefi-flag.patch.
+  * CHANGELOG is gone, package more compact NEWS file instead.
+- Reenable signature checking.
+- Use %license for LICENSE file.
+
+-------------------------------------------------------------------
+Tue Apr 17 09:54:57 UTC 2018 - jdelvare@suse.de
+
+- dmioem-reflect-hpe-new-company-name.patch: Reflect HPE's new
+  company name.
+- dmidecode-fix-tpm-device-firmware-version.patch: Fix firmware
+  version of TPM device.
+- dmioem-fix-hpe-type-219-uefi-flag.patch: Fix the reporting of
+  HP/HPE UEFI feature.
+
+-------------------------------------------------------------------
+Mon Jul 17 14:43:37 CEST 2017 - jdelvare@suse.de
+
+- Add missing bug numbers and FATE references in changes file
+  (bsc#1041670).
+
+-------------------------------------------------------------------
+Wed May 24 13:50:05 UTC 2017 - jdelvare@suse.de
+
+- Update to upstream version 3.1:
+  * Support for SMBIOS 3.1.0 and 3.1.1. This includes new chassis
+    types, new processor family names, new processor family upgrade
+    names, and new slot types, as well as support of larger BIOS
+    ROM sizes and cache sizes, and a new structure type (43, TPM
+    Device.)
+  * A new command line option to query OEM strings.
+  * All error messages are now printed on stderr (#47274, #48158.)
+  * Fixes a crash with SIGBUS (#46066.)
+  * Various minor fixes, improvements and cleanups.
+  * Obsoletes dmidecode-01-add-no-sysfs-option-description-to-h-output.patch,
+    dmidecode-02-fix-no-smbios-nor-dmi-entry-point-found-on-smbios3.patch,
+    dmidecode-03-let-read_file-return-the-actual-data-size.patch,
+    dmidecode-04-use-read_file-to-read-the-dmi-table-from-sysfs.patch,
+    dmidecode-05-use-dword-for-structure-table-maximum-size-in-smbios3.patch,
+    dmidecode-06-hide-irrelevant-fixup-message.patch, and
+    dmidecode-07-only-decode-one-dmi-table.patch.
+
+-------------------------------------------------------------------
+Fri Jan 20 13:18:38 CET 2017 - jdelvare@suse.de
+
+- dmidecode-07-only-decode-one-dmi-table.patch: Only decode one
+  DMI table.
+  https://savannah.nongnu.org/bugs/?50022
+
+-------------------------------------------------------------------
+Tue May  3 14:10:41 UTC 2016 - jdelvare@suse.de
+
+- dmidecode-01-add-no-sysfs-option-description-to-h-output.patch:
+  Add "--no-sysfs" option description to -h output.
+- dmidecode-02-fix-no-smbios-nor-dmi-entry-point-found-on-smbios3.patch:
+  Fix 'No SMBIOS nor DMI entry point found' on SMBIOS3.
+- dmidecode-03-let-read_file-return-the-actual-data-size.patch:
+  Let read_file return the actual data size.
+- dmidecode-04-use-read_file-to-read-the-dmi-table-from-sysfs.patch:
+  Use read_file() to read the DMI table from sysfs.
+  https://savannah.nongnu.org/bugs/?46176
+- dmidecode-05-use-dword-for-structure-table-maximum-size-in-smbios3.patch:
+  Use DWORD for Structure table maximum size in SMBIOS3.
+- dmidecode-06-hide-irrelevant-fixup-message.patch:
+  Hide irrelevant fixup message.
+  http://savannah.nongnu.org/support/?109024
+
+-------------------------------------------------------------------
+Thu Sep  3 10:57:15 CEST 2015 - jdelvare@suse.de
+
+- Update to upstream version 3.0 (FATE#320746, FATE#320773):
+  * Adds support for SMBIOS 3.0. This includes a new (64-bit) entry
+    point format and new enumerated values for recent hardware.
+  * Adds support for the new kernel interface (as of Linux v4.2) as
+    an alternative to relying on /dev/mem to access the entry point
+    and DMI table.
+  * Adds decoding of Acer-specific DMI type 170 and HP-specific DMI
+    types 212, 219 and 233.
+  * Obsoletes dmidecode-1.173-drop-cast.patch,
+    dmidecode-1.175-fix-SMBIOS-2.8.0.patch,
+    dmidecode-1.176-SMBIOS-2.8-is-supported.patch,
+    dmidecode-1.177-decode-pcie3-slot-id.patch,
+    dmidecode-1.181-decode-CPUID-recent-AMD.patch, and
+    dmidecode-1.182-decode-ddr4-memory-type.patch.
+  * Various minor fixes and clean-ups.
+  * Skip the SMBIOS version comparison in quiet mode (bsc#974862).
+
+-------------------------------------------------------------------
+Sun Feb 22 09:07:28 UTC 2015 - meissner@suse.com
+
+- dmidecode.keyring was empty, reference the savannah keyring.
+  but the tarball is signed by someone unknown without gpg signatures,
+  so no keyring for now.
+
+-------------------------------------------------------------------
+Fri Feb 20 20:55:12 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Oct 13 14:00:09 CEST 2014 - jdelvare@suse.de
+
+- dmidecode-1.181-decode-CPUID-recent-AMD.patch: Decode the CPUID
+  of recent AMD processors (DMI type 4).
+- dmidecode-1.182-decode-ddr4-memory-type.patch: Add support for
+  DDR4 memory type (DMI type 17) (bsc#955705).
+  https://savannah.nongnu.org/bugs/?43370
+
+-------------------------------------------------------------------
+Mon Jan 13 17:31:16 CET 2014 - jdelvare@suse.de
+
+- dmidecode-1.176-SMBIOS-2.8-is-supported.patch: Bump
+  SUPPORTED_SMBIOS_VER so that SMBIOS 2.8 implementations don't
+  trigger a warning.
+- dmidecode-1.177-decode-pcie3-slot-id.patch: Decode ID of PCI
+  Express 3 slots (DMI type 9.)
+  https://savannah.nongnu.org/bugs/?40178
+
+-------------------------------------------------------------------
+Fri Apr 26 12:37:12 UTC 2013 - guillaume@opensuse.org
+
+- Enable build for ARM
+
+-------------------------------------------------------------------
+Wed Apr 24 22:07:43 CEST 2013 - jdelvare@suse.de
+
+- Update to upstream version 2.12:
+  * Adds support for SMBIOS 2.8. This includes new enumerated
+    values for recent hardware.
+  * Obsoletes dmidecode-add-SMBIOS-2_7_1-support.patch and
+    dmidecode-fix-memory-array-location-overrun.patch.
+  * Various minor fixes and clean-ups.
+- dmidecode-1.173-drop-cast.patch: Drop unneeded and possibly
+  dangerous cast.
+- dmidecode-1.175-fix-SMBIOS-2.8.0.patch: Fix support for new
+  processor upgrade types (DMI type 4) and new memory device type
+  (DMI type 17.)
+
+-------------------------------------------------------------------
+Mon Mar 25 15:09:35 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Apr 13 17:45:35 CEST 2011 - jdelvare@suse.de
+
+- dmidecode-add-SMBIOS-2_7_1-support.patch: Add enumerated values
+  from SMBIOS 2.7.1.
+
+-------------------------------------------------------------------
+Tue Jan 25 17:58:57 CET 2011 - jdelvare@suse.de
+
+- dmidecode-fix-memory-array-location-overrun.patch: Fix boundary
+  checks of memory array location codes (DMI type 16).
+
+-------------------------------------------------------------------
+Thu Jan 20 13:53:27 CET 2011 - jdelvare@suse.de
+
+- Update to upstream version 2.11:
+  * Adds support for SMBIOS 2.6.1 and 2.7. This includes new
+    enumerated values for recent hardware.
+  * Obsoletes dmidecode-fix-makefile-for-GNU-make-3.82.patch.
+  * Various minor fixes and clean-ups.
+
+-------------------------------------------------------------------
+Wed Sep  8 18:17:59 CEST 2010 - jdelvare@suse.de
+
+- dmidecode-fix-makefile-for-GNU-make-3.82.patch: Drop BSD make
+  command in Makefile, as GNU make 3.82 chokes on it.
+
+-------------------------------------------------------------------
+Tue May  5 10:02:31 CEST 2009 - coolo@suse.de
+
+- obsolete pmtools, but do not provide it as it's not a rename
+
+-------------------------------------------------------------------
+Wed Mar 25 10:35:42 CET 2009 - jdelvare@suse.de
+
+- Initial packaging. Historically, dmidecode had been part of the
+  pmtools package, but it didn't make that much sense so it now has
+  its own package.
+- Initial version: 2.10.
+

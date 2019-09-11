@@ -1,0 +1,890 @@
+-------------------------------------------------------------------
+Tue May 28 08:37:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.8.3
+  * ebtables: Fix rule listing with counters
+  * ebtables-nft: Support user-defined chain policies
+- Remove 0001-include-extend-the-headers-conflict-workaround-to-in.patch
+  0001-include-fix-build-with-kernel-headers-before-4.2.patch
+  (upstreamed)
+
+-------------------------------------------------------------------
+Wed May 22 16:15:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-include-fix-build-with-kernel-headers-before-4.2.patch,
+  0001-include-extend-the-headers-conflict-workaround-to-in.patch
+  to fix build with older linux-glibc-devel. [boo#1132821]
+
+-------------------------------------------------------------------
+Thu Apr  4 11:44:31 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- Add iptables-1.8.2-dont_read_garbage.patch that fixes a situation
+  where 'iptables -L' reads garbage from the struct as the kernel
+  never filled it in the bugged case. This can lead to issues like
+  mapping a few TiB of memory [bsc#1106751].
+
+-------------------------------------------------------------------
+Tue Nov 13 12:09:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.8.2
+  * Fix incorrect handling of various targets and options in
+    iptables-nft,ebtables-nft,arptables-nft.
+
+-------------------------------------------------------------------
+Tue Oct 23 14:25:53 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.8.1
+  * New cgroup match revision with reduced memory footprint
+
+-------------------------------------------------------------------
+Mon Sep 24 08:14:16 UTC 2018 - astieger@suse.com
+
+- note build-time dependency on libnftnl >= 1.1.1
+
+-------------------------------------------------------------------
+Tue Sep  4 08:08:22 UTC 2018 - Markos Chandras <mchandras@suse.de>
+
+- Add missing update-alternatives dependency to Requires(post)
+  section. If this is missing the package fails to install properly
+  when it is used as build dependency.
+
+-------------------------------------------------------------------
+Mon Jul  9 09:38:13 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.8.0 and snapshot 1.8.0.g75
+  * The ipv6 "srh" match can now match previous/next/last sid
+  * CONNMARK target now supports bit-shifting for restore,set
+    and save-mark.
+  * DNAT now supports shifted portmap ranges.
+  * iptables now comes in two backends: legacy and nft.
+
+-------------------------------------------------------------------
+Thu May 24 16:38:53 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Mar 12 10:08:53 UTC 2018 - matthias.gerstner@suse.com
+
+- Fix ethertypes ownership, should be %exclude, not %ghost.
+
+-------------------------------------------------------------------
+Thu Feb 22 16:21:38 UTC 2018 - matthias.gerstner@suse.com
+
+- Resolve conflict with ebtables and obtain ethertypes from new netcfg minor
+  version. FATE#320520
+
+-------------------------------------------------------------------
+Sat Feb  3 14:02:59 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.6.2
+  * add support for the "srh" match
+  * add randomize-full for the "MASQUERADE" target
+  * add rate match mode to the "hashlimit" match
+
+-------------------------------------------------------------------
+Thu Jun 22 15:34:40 UTC 2017 - matthias.gerstner@suse.com
+
+- Add iptables-batch-lock.patch: Fix a locking issue of
+  iptables-batch which can cause it to spuriously fail when other
+  programs modify the iptables rules in parallel (bnc#1045130).
+  This can especially affect SuSEfirewall2 during startup.
+
+-------------------------------------------------------------------
+Fri Jan 27 22:53:14 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.6.1
+* add support for hashlimit rev 2 for higher pps rates
+* add support for cgroup2 path matching
+* translation program for nft
+
+-------------------------------------------------------------------
+Fri Dec 18 20:06:41 UTC 2015 - jengelh@inai.de
+
+- Update to final release 1.6.0
+* Only a build fix, no new significant changes.
+
+-------------------------------------------------------------------
+Mon Nov 23 11:07:15 UTC 2015 - jengelh@inai.de
+
+- Update to new snapshot v1.4.21-367-g9763347 [1.6.0~]
+* -m ah/esp/rt: restore matching "any SPI id" by default
+  (they unexpectedly defaulted to --spi 0 rather than --spi ALL)
+* -m cgroup: new module
+* -m dst: make ! --dst-len work
+* -m ipcomp: new module
+* -m socket: add --restore-skmark option
+* -j CT: add support for new zone options
+* -j REJECT: add missing ICMPv6 codes
+* -j TEE: make it possible to delete rules with -D ... -j
+* -j SNAT/DNAT: add randomize-full support
+
+-------------------------------------------------------------------
+Thu Apr 24 09:54:12 UTC 2014 - dmueller@suse.com
+
+- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway)
+
+-------------------------------------------------------------------
+Wed Apr 23 16:20:02 UTC 2014 - dmueller@suse.com
+
+- remove dependency on sgmltool: doesn't seem to be used
+  and reduces rebuild time on aarch64 by 8 hours
+
+-------------------------------------------------------------------
+Sat Nov 23 04:39:31 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.4.21
+* --nowildcard option for xt_socket, available since Linux kernel 3.11
+* SYNPROXY support, available since Linux kernel 3.12
+
+-------------------------------------------------------------------
+Wed Aug  7 13:19:02 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.4.20
+* Introduce a new revision for the set match with the counters support
+* Add locking to prevent concurrent instances
+
+-------------------------------------------------------------------
+Fri May 31 20:00:39 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.4.19.1
+* New connlabel and bpf matches
+- Remove 0001-Revert-build-resolve-link-failure-for-ip6t_NETMAP.patch,
+  0001-libip6t_NETMAP-Use-xtables_ip6mask_to_cidr-and-get-r.patch
+  (are upstream)
+
+-------------------------------------------------------------------
+Mon Apr 15 06:19:21 UTC 2013 - jengelh@inai.de
+
+- libxt_state.so symlink was not installed (bnc#815182); fix by
+  removing 0001-build-also-use-libtool-for-install-stage.patch,
+  removing 0001-build-do-not-dereference-symlinks-on-installation.patch,
+  adding 0001-libip6t_NETMAP-Use-xtables_ip6mask_to_cidr-and-get-r.patch,
+  adding 0001-Revert-build-resolve-link-failure-for-ip6t_NETMAP.patch
+
+-------------------------------------------------------------------
+Wed Mar 20 08:22:20 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0 and Artistic-2.0
+  GPL version does not have ^or later^ due to inclusion of numerous GPL 2
+  ^only^ files. Also, aggregation of Artistic-2.0 content
+
+-------------------------------------------------------------------
+Mon Mar  4 21:42:12 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.4.18
+* documentation updates
+- Create subpackage xtables-plugins, to aid packaging of xtadm
+- Add 0001-build-do-not-dereference-symlinks-on-installation.patch
+  as a prerequisite for:
+- Add 0001-build-also-use-libtool-for-install-stage.patch
+  to kill of undesired DT_RPATH entries
+
+-------------------------------------------------------------------
+Tue Dec 25 22:47:56 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.4.17
+* libxt_time: add support to ignore day transition
+* libxt_statistic: fix save output
+
+-------------------------------------------------------------------
+Wed Nov 28 17:07:29 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Thu Nov 15 16:06:15 UTC 2012 - lnussel@suse.de
+
+- list all required binaries explicitly to make sure all of them are actually
+  compiled
+
+-------------------------------------------------------------------
+Thu Nov 15 14:15:48 UTC 2012 - jengelh@inai.de
+
+- Always regenerate files due to SUSE's iptables-batch patch
+
+-------------------------------------------------------------------
+Mon Oct  8 12:42:37 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.4.16.3
+* This release includes aliasing support which translates command
+  lines using obsolete extensions into new ones. The option parser
+  now flags illegal negative numbers in some more extensions.
+  A division by zero was resolved in libxt_limit as well.
+
+-------------------------------------------------------------------
+Tue Jul 31 12:08:07 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.4.15
+* libxt_recent: add --mask netmask
+* libxt_hashlimit: add support for byte-based operation
+
+-------------------------------------------------------------------
+Sat May 26 19:35:38 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.4.14
+* Support for the new cttimeout infrastructure. This allows you to
+  attach specific timeout policies to flow via iptables CT target.
+
+-------------------------------------------------------------------
+Tue Mar 27 13:29:31 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.13
+* Add the rpfilter, nfacct and IPv6 ECN extensions
+
+-------------------------------------------------------------------
+Mon Jan  2 21:30:38 UTC 2012 - jengelh@medozas.de
+
+- Update to newer git snapshot (v1.4.12.2-28-g2117f2b,
+  but master branch), tag locally as 1.4.12.90.
+* ships missing pkgconfig files, compile fix for libnfnetlink
+* libxt_NFQUEUE: fix --queue-bypass ipt-save output
+* libxt_connbytes: fix handling of --connbytes FROM
+* libxt_recent: Add support for --reap option
+- split iptables-devel into libiptc-devel and libxtables-devel
+
+-------------------------------------------------------------------
+Wed Dec 28 09:50:23 UTC 2011 - puzel@suse.com
+
+- iptables-apply-mktemp-fix.patch (bnc#730161) 
+
+-------------------------------------------------------------------
+Wed Nov 30 14:28:11 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct  4 23:01:57 UTC 2011 - jengelh@medozas.de
+
+- Update to a newer git snapshot of the stable branch
+  (to v1.4.12.1-16-gd2b0eaa)
+* resolve failure to load extensions that depend on libm.so
+- rediff of iptables-batch due to fuzz
+- relax runtime requires
+
+-------------------------------------------------------------------
+Thu Sep  1 17:09:05 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.12.1
+* regression fixes for the new (stricter) command-line parser
+- restore --includedir= in spec file
+- Put libxtables into its own subpackage so that one does not need
+  a lockstep update of iproute2 on a new iptables package
+- Remove redundant fields (Autoreqprov defaults to on, License is
+  inherited from main package)
+
+-------------------------------------------------------------------
+Sat Aug 13 01:39:38 CEST 2011 - draht@suse.de
+
+- include path is /usr/include
+
+-------------------------------------------------------------------
+Mon Aug  8 00:42:53 UTC 2011 - jengelh@medozas.de
+
+- Put include files into a separate directory to flag up missing
+  CFLAGS. libipq.pc will now be provided.
+- Enable build of nfnl_osf, a tool to upload OS fingerprints to
+  the kernel for use with xt_osf.
+
+-------------------------------------------------------------------
+Fri Jul 22 13:12:50 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.12
+* Include lost match/target descriptions in manpage again
+* libxt_LOG: fix ignorance of all but the last flag
+* libxt_HL: restore hl-* option names
+* libxt_hashlimit: use a more obvious expiry value by default
+* libxt_RATEEST: fix find-and-delete of rules with -j RATEEST
+* ipv4: restore negation for the -f option
+* Reject empty host specifications (e.g. -s "")
+* libxt_conntrack: restore network byteordering for ABI v1 & v2
+* Documentation updates
+
+-------------------------------------------------------------------
+Wed Jun  8 10:20:57 UTC 2011 - jengelh@medozas.de
+
+- Update to snapshot 1.4.11+git16
+* libxt_owner: restore inversion support
+* option: fix ignored negation before implicit extension loading
+* build: fix installation of symlinks
+* build: fix absence of xml translator in IPv6-only builds
+- Drop merged patches
+
+-------------------------------------------------------------------
+Sun May 29 23:56:33 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.11
+* stricter option parsing
+* support for the current xt_SET target as contained in 2.6.39
+* support for the new xt_devgroup match
+* support for the new xt_AUDIT target
+* support for a new NFQUEUE bypass option, allowing to bypass the
+  queue if no userspace listener is present
+* a new iptables option "-C" to check for existence of a rules
+- Fixes on top
+* allow negation of --uid-owner/--gid-owner again
+* fix installation of symlinks
+- Run spec-beautifier
+
+-------------------------------------------------------------------
+Fri Oct 29 17:56:48 UTC 2010 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.10
+* this is the release for the Linux 2.6.36 kernel
+* support for the cpu match, which can be used to improve cache
+  locality when running multiple server instances
+* support for the IDLETIMER target, which can be used to notify
+  userspace of interfaces being idle
+* support for the CHECKSUM target
+* support for the ipvs match
+* a fix for deletion of rules using the quota match
+                                                                                                                                                                                                                                                                                                                                                                                                                    
+-------------------------------------------------------------------
+Mon Aug  9 07:21:28 UTC 2010 - puzel@novell.com
+
+- update to new upstream release 1.4.9.1 
+  * fixes a compilation problem with static linking in the 1.4.9
+    release
+
+-------------------------------------------------------------------
+Wed Aug  4 09:56:11 UTC 2010 - puzel@novell.com
+
+- update to new upstream release 1.4.9
+  * this is the release for the Linux 2.6.35 kernel
+  * support for the LED target
+  * a new version of the set extension for the upcoming release
+    supporting IPv6                                                                  
+  * negation support for the quota match
+  * support for the SACK-IMMEDIATELY SCTP extension and 
+    FORWARD_TSN chunk type in the sctp match                                   
+  * documentation updates and various smaller bugfixes
+
+-------------------------------------------------------------------
+Wed May 26 15:20:25 UTC 2010 - jengelh@medozas.de
+
+- update to new upstream release 1.4.8
+  * this is the release for the Linux 2.6.34 kernel
+  * add support for the new xt_CT extension
+  * import the nfnl_osf program required for proper operation
+    of the xt_osf extension
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:18 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Mon Mar  1 15:43:30 UTC 2010 - jengelh@medozas.de
+
+- update to new upstream release 1.4.7
+  * libipq is built as a shared library
+  * removal of some restrictions on interface names
+  * documentation updates
+- rebase and fix linking of iptables-batch
+- fix libdir->libexecdir
+
+-------------------------------------------------------------------
+Mon Feb 22 13:09:03 UTC 2010 - jengelh@medozas.de
+
+- only run configure when needed
+- use %_smp_mflags
+- use newer git snapshot to fix compile error due to missing
+  ipt_DSCP.h in newer linux-glibc-devel (>= 2.6.32)
+
+-------------------------------------------------------------------
+Wed Dec 30 13:01:52 UTC 2009 - puzel@novell.com
+
+- fix bnc#561793 - do not include unclean module documentation
+  in iptables manpage
+
+-------------------------------------------------------------------
+Tue Dec 22 18:09:11 CET 2009 - jengelh@medozas.de
+
+- update specfile descriptions (bnc#553801)
+- update to iptables 1.4.6:
+  * combine iptables subprograms into a new multi-purpose binary
+  * support for new implementations: NFQUEUE v1, conntrack v2
+  * helper: fix invalid passed option to check_inverse
+  * iprange accepts single host specifications again
+  * iprange: do accept non-ranges for xt_iprange v1
+  * iprange: warn on reverse range
+  * libiptc: fix wrong maptype of base chain counters on restore
+  * iptables: fix undersized deletion mask creation
+  * iptables/extensions: make bundled options work again
+  * iptables: take masks into consideration for replace command
+  * xtables: warn of missing version identifier in extensions
+  * documentation updates
+- refresh iptables-batch
+
+-------------------------------------------------------------------
+Thu Nov 12 08:21:35 UTC 2009 - puzel@novell.com
+
+- remove outdated howtos (bnc#551748)
+
+-------------------------------------------------------------------
+Wed Jul 15 17:53:13 CEST 2009 - kay.sievers@novell.com
+
+- fix libdir/libexecdir on 64bit installation
+
+-------------------------------------------------------------------
+Wed Jun 17 17:23:48 CEST 2009 - puzel@novell.com
+
+- install iptables-apply
+
+-------------------------------------------------------------------
+Wed Jun 17 12:15:58 CEST 2009 - puzel@suse.cz
+
+- update to iptables-1.4.4
+  * support for the new features in the 2.6.30 kernel, namely the
+    cluster match and persistent multi-range NAT mappings
+  * support for the ipset set match and target
+  * various minor fixes and cleanups
+  * documentation updates
+
+-------------------------------------------------------------------
+Mon May 11 17:12:57 CEST 2009 - puzel@suse.cz
+
+- make explicit 'commit' in iptables-batch do nothing (bnc#500990)
+
+-------------------------------------------------------------------
+Tue Apr 21 14:15:16 CEST 2009 - puzel@suse.cz
+
+- update to 1.4.3.2
+  - numerous documentation updates and bugfixes
+  - set of changes to move some of the iptables functionality to a shared
+	library for tc and m_ipt
+  - make libiptc available as shared library (closes bnc#487629)
+  - IPv6 support for the recent match
+  - TPROXY support
+  - SCTP/DCCP NAT support
+
+- INCOMPATIBILITY: This release starts enforcing the deprecation of NAT
+  filtering that was added in 1.4.2-rc1, filtering rules in the NAT tables will
+  cause an error instead of a warning from now on.
+
+- rework iptables-batch.patch (libiptc interface has changed)
+- update howtos
+
+-------------------------------------------------------------------
+Fri Jan 16 14:57:14 CET 2009 - prusnak@suse.cz
+
+- updated to 1.4.2
+  * remove dependency on libiptc headers
+  * fix segmentation fault with -tanything
+  * warn about use of DROP in nat table
+  * do allow --rttl for --update
+  * run ldconfig on `make install`
+  * fix invalid iptables-save output
+  * fix hashlimit output
+
+-------------------------------------------------------------------
+Wed Sep 10 13:36:30 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.4.2-rc1
+  * libxt_TOS: make sure --set-tos value/mask is recognized
+  * libiptc: fix scalability performance issue during initial ruleset parsing
+  * xt_string: string extension case insensitive matching
+  * ip6tables: add --goto support
+
+-------------------------------------------------------------------
+Wed Sep 10 12:02:03 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.4.1.1
+  * iptables: fix printing of line numbers with --line-numbers arg
+  * ip6tables: fix printing of ipv6 network masks
+  * build: fix `make install` when --disable-shared is used
+  * iprange: kernel flags were not set
+
+-------------------------------------------------------------------
+Wed Sep 10 11:59:58 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.4.1
+  * iptables: use C99 lists for struct options
+  * Make iptables-restore usable over a pipe
+  * Add support for --set-counters to iptables -P
+  * iptables --list-rules command
+  * iptables --list chain rulenum
+  * Make --set-counters (-c) accept comma separated counters
+  * libxt_iprange: Fix IP validation logic
+  * fix ip6tables dest address printing
+  * Converts the iptables build infrastructure to autotools.
+  * Introduce strtonum(), which works like string_to_number(), but passes
+  * print warning when dlopen fails
+  * libxt_owner: UID/GID range support
+  * Fix compilation of iptables-static build
+  * xtables.h: move non-exported parts to internal.h
+  * Combine IP{,6}T_LIB_DIR into XTABLES_LIBDIR
+  * manpages: fix broken markup (missing close tags)
+  * manpages: update to reflect fine-grained control
+  * configure: split --enable-libipq from --enable-devel
+  * Add all necessary header files - compilation fix for various cases
+  * Install libiptc header files because xtables.h depends on it
+  * Implement AF_UNSPEC as a wildcard for extensions
+  * Combine ipt and ip6t manpages
+  * Resolve warnings on 64-bit compile
+  * Wrap dlopen code into NO_SHARED_LIBS
+  * Remove support for compilation of conditional extensions
+  * Resolve libipt_set warnings
+  * Update documentation about building the package
+  * configure.ac: AC_SUBST must be separate
+  * Dynamically create xtables.h.in with version
+  * configure.ac: remove already-defined variables
+  * Remove old functions, constants
+  * Makefile.am: use PACKAGE_TARNAME
+  * iptables out-of-tree build directory
+  * Introduce a counter for number of user defined chains.
+  * Solving scalability issue: for chain list "name" searching.
+  * REDIRECT: Allow symbolic port in REDIRECT --to-port
+  * Fix iptables-save output of libxt_owner match
+  * allow empty strings in argument parser
+  * Fix define value of SCTP chunk type.
+  * cleanup several code wraparounds
+  * Add RATEEST target extension
+  * Add rateest match extension
+  * Properly initialize revision for ip6tables targets
+  * Resync header files with kernel
+  * libiptc: move variable definitions to head of function
+  * Fix CONNMARK mask initialisation
+  * iptables-save:remove unnecessary code.
+  * Don't assume /bin/sh is bash
+  * Add xtables version defines.
+  * Use s6_addr32 to access bits in int6_addr instead of incompatible name
+
+-------------------------------------------------------------------
+Tue Jan  8 17:10:54 CET 2008 - prusnak@suse.cz
+
+- updated to 1.4.0:
+  * Add support for generic xtables infrastructure (improved IPv6 support!)
+  * Deletes empty ->final_check() functions
+  * Fix sparse warnings: non-C99 array declaration, incorrect function prototypes
+  * Remove last vestiges of NFC
+  * Make @msg argument a const char *, just like printf
+  * Makes it possible to omit extra_opts of matches/targets if unnecessary
+  * Fix "iptables getsockopt failed strangely" when querying revisions
+    for non-existant matches and targets
+  * Introduces DEST_IPT_LIBDIR in Makefile
+  * Change default KERNEL_DIR location and add KBUILD_OUTPUT
+  * Removes obsolete KERNEL_64_USERSPACE_32 definitions
+  * Fix unused function warning
+  * Don't use dlfcn.h if NO_SHARED_LIBS is defined
+  * Fix showing help text for matches/targets with revision as user
+  * Print warnings to stderr
+  * Fix sscanf type errors
+  * Always print mask in iptables-save
+  * Don't silenty exit on failure to open /proc/net/{ip,ip6}_tables_names
+  * Adds --table to iptables-restore
+  * Make DO_MULTI=1 work for ip6tables* binaries
+  * Add ip6tables-{save,restore} to non-experimental target,
+    fix strict aliasing warnings
+  * Introducing libxt_*.man files. Sorted matches and modules
+  * Install ip6tables-{save,restore} manpages
+  * Performance optimization in sorting chain during pull-out
+  * Fix sockfd use accounting for kernels without autoloading
+  * use <linux/types.h>
+  * Fix make/compile error for iptables-1.4.0rc1
+  * Fix for --random option in DNAT and REDIRECT
+  * Document xt_statistic 
+  * sctp: fix - mistake to pass a pointer where array is required
+  * Fix connlimit output for inverted --connlimit-above:
+    ! > is <=, not <
+  * Add NFLOG manpage
+  * Move libipt_DSCP.man to libxt_DSCP.man for ip6tables.8
+  * Unifies libip[6]t_CONNSECMARK.man to libxt_CONNSECMARK.man
+  * Moves libipt_CLASSYFY.man to libxt_CLASSYFY.man for ip6tables.8
+  * fix check_inverse() call
+- removed obsolete patch:
+  * strict-aliasing-fix.diff (included in update)
+
+-------------------------------------------------------------------
+Tue Jul 31 13:10:56 CEST 2007 - prusnak@suse.cz
+
+- removed sed scripts in %prep section from last update
+  * not needed anymore
+
+-------------------------------------------------------------------
+Thu Jul 26 16:20:40 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.3.8
+  * Fix build error of conntrack match
+  * Remove whitespace in ip6tables.c
+  * `-p all' and `-p 0' should be allowed in ip6tables
+  * hashlimit doc update
+  * add --random option to DNAT and REDIRECT
+  * Makefile uses POSIX conform directory check
+  * Fix missing newlines in iptables-save/restore output
+  * Update quota manpage for SMP
+  * Output for unspecified proto is `all' instead of `0'
+  * Fix iptables-save with --random option
+  * Remove unnecessary IP_NAT_RANGE_PROTO_RANDOM ifdefs
+  * Remove libnsl from LDLIBS
+  * Fix problem with iptables-restore and quotes
+  * Remove unnecessary includes
+  * Fix --modprobe parameter
+  * ip6tables-restore should output error of modprobe after failed to load
+  * Add random option to SNAT
+  * Fix missing space in error message
+  * Fixes for manpages of tcp, udp, and icmp{,6}
+  * Add ip6tables mh extension
+  * Fix tcpmss manpage
+  * Add ip6tables TCPMSS extension
+  * Add UDPLITE multiport support
+  * Fix missing space in ruleset listing
+  * Remove extensions for unmaintained/obsolete patchlets
+  * Fix greedy debug grep
+  * Fix type in manpage
+  * Fix compile/install error for iptables-xml with DO_MULTI=1
+- dropped obsolete patches:
+  * newlines.diff (included in update)
+  * shlibs.diff (done by sed in %prep section)
+  * extensions.diff
+
+-------------------------------------------------------------------
+Wed May  9 13:39:08 CEST 2007 - prusnak@suse.cz
+
+- added newlines to error messages (newlines.diff) [#271847]
+
+-------------------------------------------------------------------
+Tue Mar 13 14:08:25 CET 2007 - prusnak@suse.cz
+
+- added initial setting of KERNEL_DIR variable in %install section of spec file
+
+-------------------------------------------------------------------
+Tue Jan  9 14:52:15 CET 2007 - prusnak@suse.cz
+
+- added experimental tools and extensions (removed by last update)
+
+-------------------------------------------------------------------
+Wed Jan  3 17:58:09 CET 2007 - prusnak@suse.cz
+
+- updated to 1.3.7
+  * Add revision support for ip6tables
+  * Add port range support for ip6tables multiport match
+  * Add sctp match extension for ip6tables
+  * Add iptables-xml tool
+  * Add hashlimit support for ip6tables (needs kernel > 2.6.19)
+  * Add NFLOG target extension for iptables/ip6tables (needs kernel > 2.6.19)
+  * Bugfixes
+- updated debian-docs and moved into tar.bz2
+
+-------------------------------------------------------------------
+Thu Nov 16 11:06:55 CET 2006 - mjancar@suse.cz
+
+- allow setting KERNEL_DIR on commandline for build (#220851)
+
+-------------------------------------------------------------------
+Tue Oct 17 17:47:47 CEST 2006 - anosek@suse.cz
+
+- updated to version 1.3.6
+  * Support multiple matches of the same type within a single rule
+  * DCCP/SCTP support for multiport match (needs kernel >= 2.6.18)
+  * SELinux SECMARK target (needs kernel >= 2.6.18)
+  * SELinux CONNSECMARK target (needs kernel >= 2.6.18)
+  * Add support for statistic match (needs kernel >= 2.6.18)
+  * Optionally read realm values from /etc/iproute2/rt_realms
+  * Bugfixes
+
+-------------------------------------------------------------------
+Wed Feb  1 15:26:39 CET 2006 - lnussel@suse.de
+
+- updated to version 1.3.5
+  * supports ip6tables state and conntrack \o/ (#145758)
+
+-------------------------------------------------------------------
+Fri Jan 27 01:50:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 15:00:31 CET 2006 - schwab@suse.de
+
+- Fix building of shared libraries.
+
+-------------------------------------------------------------------
+Tue Jan 17 15:11:43 CET 2006 - postadal@suse.cz
+
+- updated policy extension from upstream (policy-1.3.4.patch)
+  * ported for changes in kernel
+
+-------------------------------------------------------------------
+Tue Nov 15 17:09:38 CET 2005 - postadal@suse.cz
+
+- updated to version 1.3.4
+- added RPM_OPT_FLAGS to CFLAGS
+- fixed strict aliasing (strict-aliasing-fix.patch)
+
+-------------------------------------------------------------------
+Mon Aug  1 16:36:26 CEST 2005 - lnussel@suse.de
+
+- add iptables-batch and ip6tables-batch
+
+-------------------------------------------------------------------
+Mon Aug  1 10:14:00 CEST 2005 - postadal@suse.cz
+
+- updated to version 1.3.3
+
+-------------------------------------------------------------------
+Wed Jul 27 15:38:26 CEST 2005 - postadal@suse.cz
+
+- updated to version 1.3.2
+
+-------------------------------------------------------------------
+Wed Mar  9 11:28:10 CET 2005 - postadal@suse.cz
+
+- updated to version 1.3.1 (bug fixes)
+
+-------------------------------------------------------------------
+Thu Feb 17 10:02:14 CET 2005 - postadal@suse.cz
+
+- updated to version 1.3.0
+- removed obsoleted patch modules-secfix 
+
+-------------------------------------------------------------------
+Tue Nov 02 17:00:05 CET 2004 - postadal@suse.cz
+
+- fixed uninitialised variable [#47850] - CAN-2004-0986
+
+-------------------------------------------------------------------
+Tue Aug 17 15:15:44 CEST 2004 - mludvig@suse.cz
+
+- Fixed mode for extensions/.policy-test6
+
+-------------------------------------------------------------------
+Thu Aug 05 14:15:52 CEST 2004 - mludvig@suse.cz
+
+- Added IPv6 support to the 'policy' match.
+
+-------------------------------------------------------------------
+Wed Aug 04 15:44:06 CEST 2004 - postadal@suse.cz
+
+- updated to version 1.2.11
+- removed obsoleted patch clusterip
+
+-------------------------------------------------------------------
+Sat Apr 24 08:45:00 CEST 2004 - lmb@suse.de
+
+- Add support for Cluster IP functionality.
+
+-------------------------------------------------------------------
+Wed Apr 21 16:51:03 CEST 2004 - mludvig@suse.cz
+
+- Added module for IPv6 conntrack from USAGI.
+
+-------------------------------------------------------------------
+Wed Mar 24 15:47:24 CET 2004 - mludvig@suse.cz
+
+- Added policy module from patch-o-matic
+
+-------------------------------------------------------------------
+Fri Feb 06 18:09:42 CET 2004 - postadal@suse.cz
+
+- updated to version 1.2.9.
+
+-------------------------------------------------------------------
+Sat Jan 10 20:33:48 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Jul 23 15:08:45 CEST 2003 - postadal@suse.cz
+
+- updated to 1.2.8
+
+-------------------------------------------------------------------
+Tue Apr  8 21:33:42 CEST 2003 - schwab@suse.de
+
+- Prefer sanitized kernel headers.
+
+-------------------------------------------------------------------
+Thu Sep 05 11:13:51 CEST 2002 - postadal@suse.cz
+
+- updated to bugfixed 1.2.7a version
+
+-------------------------------------------------------------------
+Wed Aug 28 18:20:07 CEST 2002 - postadal@suse.cz
+
+- added Requires %{name} = %{version} to devel package
+
+-------------------------------------------------------------------
+Thu Aug 08 13:03:46 CEST 2002 - nadvornik@suse.cz
+
+- updated to 1.2.7
+
+-------------------------------------------------------------------
+Wed Mar 27 11:10:32 CET 2002 - postadal@suse.cz
+
+- revert to compile it with kernel headers (#15448)
+
+-------------------------------------------------------------------
+Fri Feb  1 14:14:49 CET 2002 - nadvornik@suse.cz
+
+- compiled with kernel headers from glibc
+
+-------------------------------------------------------------------
+Tue Jan 15 15:30:31 CET 2002 - nadvornik@suse.cz
+
+- update to 1.2.5
+
+-------------------------------------------------------------------
+Wed Nov 14 13:51:38 CET 2001 - nadvornik@suse.cz
+
+- updated to 1.2.4 [bug #12104]
+  - fixed problems with iptables-save/restore
+- iptables-1.2.4.debian.diff.bz2 contains documentation only,
+  Makefile changes moved to separate patch
+
+-------------------------------------------------------------------
+Sat Sep 22 02:04:31 MEST 2001 - garloff@suse.de
+
+- Fix ipt_string support (compile fix).
+
+-------------------------------------------------------------------
+Tue Jul 17 10:55:30 MEST 2001 - garloff@suse.de
+
+- Update to iptables-1.2.2
+- Appply debian patch: mostly docu stuff
+- Added COMPILE_EXPERIMENTAL flag to Makefile and pass it from RPM
+  .spec file to compile and install ip(6)tables-save/restore apps.
+
+-------------------------------------------------------------------
+Fri Apr  6 15:28:00 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild from lx_suse to kernel-source
+
+-------------------------------------------------------------------
+Tue Mar 27 23:24:15 CEST 2001 - lmuelle@suse.de
+
+- update to 1.2.1a
+- add devel package with libipq stuff
+- minor spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jan 28 16:40:08 CET 2001 - olh@suse.de
+
+- update to 1.2, needed for ppc and sparc
+
+-------------------------------------------------------------------
+Tue Dec 19 09:33:37 CET 2000 - nadvornik@suse.cz
+
+- compiled with lx_suse
+
+-------------------------------------------------------------------
+Tue Oct 17 16:15:51 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.1.2
+
+-------------------------------------------------------------------
+Fri Sep 22 02:34:07 CEST 2000 - ro@suse.de
+
+- up to 1.1.1 
+
+-------------------------------------------------------------------
+Fri Jun  9 08:58:25 CEST 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jun  7 08:33:45 CEST 2000 - nadvornik@suse.cz
+
+- new package 1.1.0
+

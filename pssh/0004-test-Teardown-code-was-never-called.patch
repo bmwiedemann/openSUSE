@@ -1,0 +1,61 @@
+From df34832187bc48a29dc43bf51a358df0487a93c3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristoffer=20Gr=C3=B6nlund?= <krig@koru.se>
+Date: Thu, 9 Jan 2014 09:40:17 +0100
+Subject: [PATCH 4/8] test: Teardown code was never called
+
+---
+ test/test.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/test/test.py b/test/test.py
+index c11d38b357a2..fc86bc54dd45 100644
+--- a/test/test.py
++++ b/test/test.py
+@@ -25,7 +25,7 @@ class PsshTest(unittest.TestCase):
+         self.outDir = tempfile.mkdtemp()
+         self.errDir = tempfile.mkdtemp()
+ 
+-    def teardown(self):
++    def tearDown(self):
+         shutil.rmtree(self.errDir)
+         shutil.rmtree(self.outDir)
+ 
+@@ -69,7 +69,7 @@ class PscpTest(unittest.TestCase):
+         self.outDir = tempfile.mkdtemp()
+         self.errDir = tempfile.mkdtemp()
+ 
+-    def teardown(self):
++    def tearDown(self):
+         shutil.rmtree(self.errDir)
+         shutil.rmtree(self.outDir)
+         try:
+@@ -134,7 +134,7 @@ class PslurpTest(unittest.TestCase):
+         self.outDir = tempfile.mkdtemp()
+         self.errDir = tempfile.mkdtemp()
+ 
+-    def teardown(self):
++    def tearDown(self):
+         shutil.rmtree(self.errDir)
+         shutil.rmtree(self.outDir)
+ 
+@@ -200,7 +200,7 @@ class PrsyncTest(unittest.TestCase):
+         self.outDir = tempfile.mkdtemp()
+         self.errDir = tempfile.mkdtemp()
+ 
+-    def teardown(self):
++    def tearDown(self):
+         shutil.rmtree(self.errDir)
+         shutil.rmtree(self.outDir)
+ 
+@@ -261,7 +261,7 @@ class PnukeTest(unittest.TestCase):
+         self.outDir = tempfile.mkdtemp()
+         self.errDir = tempfile.mkdtemp()
+ 
+-    def teardown(self):
++    def tearDown(self):
+         shutil.rmtree(self.errDir)
+         shutil.rmtree(self.outDir)
+ 
+-- 
+1.8.4
+

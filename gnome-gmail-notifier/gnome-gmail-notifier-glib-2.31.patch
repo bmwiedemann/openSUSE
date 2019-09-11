@@ -1,0 +1,17 @@
+Index: gnome-gmail-notifier-0.10.1/src/main.h
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/src/main.h
++++ gnome-gmail-notifier-0.10.1/src/main.h
+@@ -47,10 +47,9 @@
+ 
+ /*
+  * glib explicit threading support include statement.
+- * this includes the gthread header and the pthread
+- * header.
++ * this includes the the pthread header.
++ * The gthread header is implicit included by glib.h.
+  */
+-#include <glib/gthread.h>
+ #include <pthread.h>
+ 
+ /*

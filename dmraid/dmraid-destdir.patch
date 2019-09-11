@@ -1,0 +1,65 @@
+--- 1.0.0.rc16.orig/include/Makefile.in
++++ 1.0.0.rc16/include/Makefile.in
+@@ -17,8 +17,8 @@ include $(top_srcdir)/make.tmpl
+ 
+ install_dmraid_headers: $(HEADERS)
+ 	@echo "Installing $(HEADERS) in $(includedir)/dmraid"
+-	mkdir -p $(includedir)/dmraid
+-	$(INSTALL) $(STRIP) $(HEADERS) $(includedir)/dmraid
++	mkdir -p $(DESTDIR)$(includedir)/dmraid
++	$(INSTALL) $(STRIP) $(HEADERS) $(DESTDIR)$(includedir)/dmraid
+ 
+ install: install_dmraid_headers
+ 
+--- 1.0.0.rc16.orig/lib/Makefile.in
++++ 1.0.0.rc16/lib/Makefile.in
+@@ -78,16 +78,16 @@ $(LIB_EVENTS_SHARED):
+ 
+ install_dmraid_libs: $(INSTALL_TARGETS)
+ 	@echo "Installing $(INSTALL_TARGETS) in $(libdir)"; \
+-	mkdir -p $(libdir); \
++	mkdir -p $(DESTDIR)$(libdir); \
+ 	for f in $(INSTALL_TARGETS); \
+ 	do \
+ 		n=$$(basename $${f}) ; \
+ 		if [[ "$$n" =~ .so$$ && ! "$$n" =~ libdmraid-events-.* ]]; then \
+ 			$(INSTALL) -m 555 $(STRIP) \
+-				$$f $(libdir)/$${n}.@DMRAID_LIB_VERSION@; \
+-			$(LN_S) -f $${n}.@DMRAID_LIB_VERSION@ $(libdir)/$${n}; \
++				$$f $(DESTDIR)$(libdir)/$${n}.@DMRAID_LIB_VERSION@; \
++			$(LN_S) -f $${n}.@DMRAID_LIB_VERSION@ $(DESTDIR)$(libdir)/$${n}; \
+ 		else \
+-			$(INSTALL) -m 555 $(STRIP) $$f $(libdir)/$${n}; \
++			$(INSTALL) -m 555 $(STRIP) $$f $(DESTDIR)$(libdir)/$${n}; \
+ 		fi \
+ 	done
+ 
+--- 1.0.0.rc16.orig/tools/Makefile.in
++++ 1.0.0.rc16/tools/Makefile.in
+@@ -80,8 +80,8 @@ dmevent_tool: $(top_srcdir)/lib/libdmrai
+ 
+ install_dmraid_tools: $(TARGETS)
+ 	@echo "Installing $(TARGETS) in $(sbindir)"; \
+-	mkdir -p $(sbindir); \
+-	$(INSTALL) $(STRIP) $(TARGETS) $(sbindir)
++	mkdir -p $(DESTDIR)$(sbindir); \
++	$(INSTALL) $(STRIP) $(TARGETS) $(DESTDIR)$(sbindir)
+ 
+ install: install_dmraid_tools
+ 
+--- 1.0.0.rc16.orig/man/Makefile.in
++++ 1.0.0.rc16/man/Makefile.in
+@@ -17,11 +17,11 @@ include $(top_srcdir)/make.tmpl
+ 
+ install_dmraid_man:
+ 	@echo "Installing $(MAN8) in $(MAN8DIR)"; \
+-	mkdir -p $(MAN8DIR); \
++	mkdir -p $(DESTDIR)$(MAN8DIR); \
+ 	for f in $(MAN8); \
+ 	do \
+ 	   $(RM) $(MAN8DIR)/$$f; \
+-	   @INSTALL@ -D -m 444 $$f $(MAN8DIR)/$$f; \
++	   @INSTALL@ -D -m 444 $$f $(DESTDIR)$(MAN8DIR)/$$f; \
+ 	done
+ 
+ install:	install_dmraid_man

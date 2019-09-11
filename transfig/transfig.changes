@@ -1,0 +1,650 @@
+-------------------------------------------------------------------
+Thu Aug 15 07:21:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch transfig-03ea4578.patch from upstream commit 03ea4578
+  to fix bsc#1143650 with CVE-2019-14275 
+
+-------------------------------------------------------------------
+Thu Aug 30 09:50:10 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch transfig-e0c4b024.patch from upstream commit e0c4b024
+  to fix bsc#1106531 with CVE-2018-16140
+
+-------------------------------------------------------------------
+Mon May  7 10:28:07 UTC 2018 - werner@suse.de
+
+- Update to fig2dev version 3.2.7a (Patchlevel 7a (April 2018))
+  o  Language         previous option         current option
+    ------------------------------------------------------------
+     cgm              -b dummy                -a
+     epic             -A scale                -d scale
+     eepic            -A scale                -d scale
+     eepicemu         -A scale                -d scale
+     gbx              -i on|off               -v
+     ibmgl            -m mag,xoff,yoff        -m mag -x xoff -y yoff
+     mp               -I file                 -d file
+     ps               -S dummy                -o
+  o Print language-specific help text by using fig2dev -L lang -h.
+  o Add option -M, multipage, for MetaPost output language.
+  o Add option -P, pagemode, and -z to choose a pagesize for pdf output.
+  o Add option -W (scaling of figures not possible) for tikz.
+  o Add option -b, border width, for LaTeX output language.
+  o Add option -f for pstex_t and pdftex_t output language.
+  o Add uk_UA and ru_RU encodings for PostScript output. Ticket #12.
+  o Fix regression whereupon flipped ellipses were not read. Ticket #23.
+  o Distribute i18n files ru_RU.CP1251.ps and uk_UA.KOI8-U.ps.
+  o Make test "survive debian bug #890016" succeed on 32 bit systems.
+  o Distribute the X bitmaps files within fig2dev, no need to install
+    these files. The files were needed for Tk and Perl/Tk output.
+  o Add option -w, wrap (create stand-alone perl file) for Perl/Tk output.
+  o Update help text: Output help for dxf and textyl output language,
+    add description of -g option for Tk/Tcl and Perl/Tk output, allow -f
+    option for pstex_t and pdftex_t output language.
+  o Sanitize input. Do not segfault on malformed input files. Fixes debian
+    bugs 881143, 881144, 881396, 890015, 890016, 882021 and also 882022.
+  o Do not put an %%Orientation: comment into PostScript output. Some
+    viewers would rotate the resulting file, others not.
+  o Fix build on NetBSD, which has a _setmode() function different from
+    _setmode() on Windows. Ticket #17. Also, avoid alloca(). Ticket #16.
+  o tikz output: Omit the semicolon after \pgftext[..]{...};.
+  o Define PostScript patterns with larger tiles, may render better. #13
+  o Fix build in case libXpm is missing. Ticket #15.
+  o Use netpbm programs instead of ghostscript, to produce smaller files.
+  o Correctly embed eps files with binary preview (epsi, typically
+    found on Microsoft systems). Also, allow to embed ps-files. Fixes
+    debian bug 248807, ticket #8.
+  o For compilation, do not depend on PATH_MAX being defined.
+- Remove patches now upstream
+    fig2dev-3.2.6-genps_oldpatterns.patch
+    fig2dev-3.2.6a-input-sanitizing.patch
+    fig2dev-3.2.6a-style-overflow.patch
+- Modify patches
+    fig2dev-3.2.6-fig2mpdf-doc.patch
+    fig2dev-3.2.6-fig2mpdf.patch
+    fig2dev-3.2.6a-RGBFILE.patch
+    transfig-3.2.6.dif
+    transfig-fix-afl.patch
+    transfig.3.2.5d-mediaboxrealnb.dif
+
+-------------------------------------------------------------------
+Fri Mar  2 15:40:14 UTC 2018 - crrodriguez@opensuse.org
+
+- Change xorg-x11-devel --> pkgconfig(xpm)
+- buildrequire default libpng.
+
+-------------------------------------------------------------------
+Wed Nov 22 12:25:21 UTC 2017 - werner@suse.de
+
+- Added patches
+  * fig2dev-3.2.6a-RGBFILE.patch to let rgb.txt be located via
+    environment variable FIG2DEV_RGBFILE
+  * fig2dev-3.2.6a-man-typo.patch to fix simple typo in manual page
+  * fig2dev-3.2.6a-input-sanitizing.patch to do some input
+    sanitizing when reading FIG files (bsc#1069257, CVE-2017-16899)
+  * fig2dev-3.2.6a-style-overflow.patch
+
+-------------------------------------------------------------------
+Mon Feb  6 11:23:24 UTC 2017 - werner@suse.de
+
+- Fix now failing download source service, that is don't do this
+
+-------------------------------------------------------------------
+Thu Feb  2 13:44:43 UTC 2017 - werner@suse.de
+
+- Update to fig2dev version 3.2.6a (Patchlevel 6a (January 2017))
+  NEW FEATURES:
+    o Distribute transfig.pdf. No need to build it from the TeX sources.
+    o Enable reproducible build for svg output.
+    o Set the creator to fig2dev, not to the path by which fig2dev is
+      invoked.
+  BUGS FIXED:
+    Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+    o The svg output now produces correct patterns and pie-wege arcs.
+      Property names instead of style attributes are used. Hollow arrow
+      heads are really hollow, not filled with white. In the PostScript
+      output, this might also clip a bit of the filling underneath an arrow.
+    o tikz output: Re-use \dimen \XFigu if it is already defined. Ticket #3.
+    o tikz output: A pattern in an object with line width zero and the
+      stroke color equal to the fill color would produce a white fill.
+      The tikz output now does not try to be smart and puts a pattern, even
+      if the result is equal to a solid fill. Ticket #1.
+    o pict2e output: Standalone tex-files always include color.sty. #2.
+    o pict2e output: A pattern with stroke color equal to fill color is
+      rendered as a solid fill.
+    o Compiles when gnu iconv and standard iconv are present.
+
+-------------------------------------------------------------------
+Fri Sep 23 12:04:22 UTC 2016 - werner@suse.de
+
+- Update to fig2dev version 3.2.6 (the successor of transfig)
+  o Add compile switch --enable-versioning and script update-version_m4,
+    to create version string from source control system
+  o tikz output: Support -G (grid) option. Make \XFigwidth and \XFigheight
+    only scale coordinates, not line widths; Do not set unnecessarily
+    \color{black} on text.
+  From Roland Rosenfeld <roland@spinnaker.de>
+  o Correct comment string in man page fig2ps2tex.1
+  o Distribute autotest file lookup_X_color.at - only useful for hacko
+  From Brian V. Smith:
+  o Changed object defs from O_ to OBJ_ because O_TEXT conflicts
+    with system typedef (debian 37_OBJ_typedef.patch)
+  o Remove unused charset variables cs and ca from genibmgl.c
+    (debian 38_unusedcharset.patch)
+  o Build with make CFLAGS="-Werror -Wpedantic -Wformat -Wformat-security'
+  o On lines with Round or Projecting cap style and arrowheads, the line
+    endpoint stuck out beyond the arrowhead (this was fixed in
+    xfig 3.2.5c, but not here until now; debian 41_arrowhead.patch)
+  o Changed .ce (center lines) to .RS (right-justify) in fig2ps2tex man
+    page file because of issues when generating HTML (From Eric Raymond)
+    (debian 36_manpage_ce2RS.patch)
+  o Quotes added to output file name for several formats in case there
+    are blanks in the name (debian 39_gs_quote.patch)
+  o For PDF output, changed -dColorImageFilter from /FlateEncode to
+    /DCTEncode for lossy compression (smaller pdf files)
+    (debian 40_ColorImageFilter.patch)
+  o Update help for PDF options (debian 42_PDF_help.patch)
+  From Roland Rosenfeld. Bug numers refer to https://bugs.debian.org/#.
+  o Remove bashisms in fig2ps2tex script. Reported from
+    Chris Lamb <chris@chris-lamb.co.uk>. Fixes debian bug 480615.
+  o Include sys/stat.h in genps.c. Reported from Steven Chamberlain
+    <steven@pyro.eu.org>. Debian bug 654767. (28_fix_chmod...patch)
+  o Distribute the man page transig.1. (34_transfig.1.patch)
+  o Do not report user information in ps files. Debian bug 316382
+    (04_displaywho.patch)
+  o Set locale to C. Debian bug 45378 (05_locale_patch).
+  o Support pdftex in transfig (20_transfig_pdftex.patch). Reported by
+    Jindrich Makovicka <makovick@gmail.com>.
+  o Fix some typos (22_typos.patch, 35_manpage_typos.patch).
+  o Honor environment variable SOURCE_DATE_EPOCH, for reproducible
+    builds. Debian bug 819911. From Alexis Bienvenüe <pado@passoire.fr>.
+    (33_honour_SOURCE_DATE_EPOCH.patch).
+  o Enable fonts >= 42 pt, needs \usepackage{type1cm}. Bug 343139,
+    (09_maxfontsize.patch).
+  o New pict2e and tikz output language, for use with TeX/LaTeX.
+  o Compile with ./configure; make; make install.
+    Optionally, use make check; make installcheck.
+  o By default, transfig is not built.
+  o Swap patterns in PostScript output, were upside down.
+  o Silence most compiler warnings.
+  o Update man-pages and help text.
+  o Accurately position arrowheads, flush with line, in PostScript output.
+- Remove transfig.3.2.5d-patches.tar.bz2 but port and add the oldpatterns
+  and mpdf patches to 3.2.6: 
+    fig2dev-3.2.6-fig2mpdf-doc.patch
+    fig2dev-3.2.6-fig2mpdf.patch
+    fig2dev-3.2.6-genps_oldpatterns.patch
+- Patch transfig.3.2.5d.dif becomes transfig-3.2.6.dif 
+- Modify the patches
+    transfig-fix-afl.patch
+    transfig.3.2.5-binderman.dif
+    transfig.3.2.5d-mediaboxrealnb.dif
+
+-------------------------------------------------------------------
+Thu Apr 16 12:26:49 UTC 2015 - meissner@suse.com
+
+- transfig-fix-afl.patch: fixed crashes due to uninitialized memory,
+  found by afl.
+
+-------------------------------------------------------------------
+Tue Dec 10 14:50:19 UTC 2013 - werner@suse.de
+
+- Update to transfig version 3.2.5e
+  * HTML map output was limited to 100 links.
+    Fix by Jan van Dijk
+  * Updated for compatibility to PNG 1.5
+    From Matthias Scheler
+  * Was adding "showpage" command when producing bitmap formats from intermediate EPS.
+    This produced "illegal" PNG and JPEG files with extra, blank image.
+  * Maximum width of included image in PS/EPS output increased from 8192 to 16384
+  * Precision of some PIC objects increased from %.2f to %.3f
+  * Double close of output file when ghostscript fails. Original bug report from
+    https://bugzilla.redhat.com/728825
+- Change out patch sets to fit 3.2.5e
+
+-------------------------------------------------------------------
+Fri Apr  5 10:16:53 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Fri Feb  8 11:14:39 UTC 2013 - werner@suse.de
+
+- Use original patches from Debian
+
+-------------------------------------------------------------------
+Thu Feb  7 16:34:21 UTC 2013 - werner@suse.de
+
+- Add xfig.3.2.5b-mediaboxrealnb.dif to fix regarding pdf import,
+  reported by Loic Le Guyader compare with Debian bug #530898 
+
+-------------------------------------------------------------------
+Fri Sep 28 14:15:17 UTC 2012 - werner@suse.de
+
+- Update to transfig version 3.2.5d
+  * made PostScript output DSC 3.0 compliant to work with CUPS 
+    patch from Ian Dall (see https://bugzilla.redhat.com/558380)
+  * Changed STOCK_LAST from 17 to 19 in fig2dev/dev/genemf.c
+  * Questionable copy of one data type to another in genemf.c
+  * Changed definition of command for short slanted lines in genlatex.c
+  * Added check for existance of arrows in SVG line generator
+  * Removed %%Page: directive from included JPEG files in PostScript/EPS output
+  * bound.c was passing pointers to int instead of double to arc_tangent
+  * put_msg function uses proper varargs now
+  * Option for debug comments in GBX output is "yes" or "no", not "on" or "off"
+  * Added help (-h)  info for GBX output
+  * In version 1.4 of the PNG library dither was removed so fig2dev now uses
+    quantize when importing PNG images with palettes
+  * put_msg was declared twice (fig2dev/dev/genemf.c)
+  * Added xlink namespace for images in SVG export
+  * SVG output for imported images didn't form href link properly
+  * New PSTricks driver from Gene Ressler (see man fig2dev for info)
+  * transfig command was hardwired for "tex" for "make all" directive and
+    removing files with "make clean" directive in creating Makefile
+  * -a option added to PostScript and PICTeX languages to NOT include user's
+    login name in output
+  * Gerber (RS-247-X for CAD drawings for printed circuits) export language from Edward Gr
+
+-------------------------------------------------------------------
+Tue Jul 24 09:46:42 UTC 2012 - werner@suse.de
+
+- Add missed fonts 
+
+-------------------------------------------------------------------
+Tue Jul 10 10:12:05 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+
+-------------------------------------------------------------------
+Tue Jun 28 19:21:37 CEST 2011 - werner@suse.de
+
+- Add URL due bnc#676463
+
+-------------------------------------------------------------------
+Tue Apr 20 17:24:01 CEST 2010 - werner@suse.de
+
+- Add compatibility switch for libpng 1.4 or higher
+
+-------------------------------------------------------------------
+Mon Apr 19 11:22:31 CEST 2010 - sndirsch@suse.de
+
+- fixed libpng buildrequires for openSUSE >= 11.3 
+
+-------------------------------------------------------------------
+Thu Dec 17 09:30:41 CET 2009 - werner@suse.de
+
+- Apply latest binderman patch
+
+-------------------------------------------------------------------
+Mon Dec 14 15:05:23 CET 2009 - werner@suse.de
+
+- Update to transfig version 3.2.5a
+  * 22 new arrowhead types
+  * HTML map now produces reference to .png file instead of .gif
+  * CreationDate in pictex output was either wrong or caused segfault
+  * bugs fixed in SVG Driver:
+    - blue component of shaded colors was always zero
+    - line protruding beyond arrowhead on long arrows
+    - wrong position of back arrowhead on double-headed arrows
+    - fill patterns either missing or using incorrect linewidth
+    - lowercase greek phi did not match its X11 counterpart
+      from Martin Kroeker
+  * dubious printf(j++,j++) in MP driver
+  * missing #includes in MP driver
+  * added !defined(__FreeBSD) to fig2dev.h def for sys_nerr and errno
+    From Eric Scott
+  * added -quiet options to giftopnm and ppmtopcs in reading GIF files
+    From Eric Scott
+  * Typo in LaTeX driver when generating arc-box. "iut" should be "put"
+  * extraneous stroke:black in svg header removed along with stroke color
+    for text, since the text fill color does the whole job
+  * fig2dev produces more correctly structured PostScript.  Files get printed via
+    CUPS on PostScript printers.  When viewing a .ps-file in gv you can go to the
+    last page and back and to the last page again without getting PostScript errors.
+    From Ronald Lembcke
+  * Renamed the macro \SetFigFont to \SetFigFontNFSS if NFSS is #defined to alleviate
+    some problems. From Roland Rosenfeld.
+  * Grid in metric mode was incorrectly scaled
+  * Removes any %EOF or %%EOF from imported EPS pictures before exporting.  
+    Also doesn't add %EOF when importing JPEG file now.
+  * Missing call to get local time before converting to string in genpictex.c
+
+-------------------------------------------------------------------
+Fri Oct  9 14:18:53 CEST 2009 - werner@suse.de
+
+- Yet an other David Binderman bug (bnc#544938)
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Oct  8 15:30:13 CEST 2008 - werner@suse.de
+
+- Add patch to enable cups to print postscript (bnc#419432)
+
+-------------------------------------------------------------------
+Fri Apr 25 16:01:21 CEST 2008 - werner@suse.de
+
+- Remove unwanted debug code (bnc#383669)
+
+-------------------------------------------------------------------
+Mon Nov  5 15:11:04 CET 2007 - werner@suse.de
+
+- Fix typo which caused a missed white space (bug #339086)
+
+-------------------------------------------------------------------
+Tue Jul 24 17:49:48 CEST 2007 - werner@suse.de
+
+- Update to transfig version 3.2.5 (bug ##267840)
+  * SVG driver adds color and pattern filling to arcs
+    from Martin Kroeker
+  * bug which made arrowheads too short fixed
+  * SVG driver corrects the ugly arrowheads on stick arrows
+    from Martin Kroeker
+  * EMF driver would crash when fed stdin
+    from Martin Kroeker
+  * Unhandled case for linetypes in latex driver
+  * CUPS didn't like the order of some of the Postscript header
+    from Ian Dall
+  * Updated SVG driver from Martin Kroeker was missing from alpha6
+  * Another SVG update: Use a font-family list of "Times,Symbol" for symbol
+    characters - the Times fontface does not contain all elements of the
+    Symbol font on all platforms
+  * Typo in font name (was cmit10, should be cmti10) in MetaPost driver
+    This bug fix was omitted from alpha6
+  * Added -dPDFSETTINGS=/prepress option to ghostscript when generating
+    PDF output to improve quality of bitmap graphics
+  * Fill patterns now use PostScript Level 2 built-in pattern commands
+    for Postscript/EPS/PDF and bitmap output
+    From Konstantin Shemyak
+  * Updated SVG driver from Martin Kroeker
+  * New -K option to size bounding box to whole figure when exporting
+    only certain depths
+    From Dirk Osswald
+  * Typo in font name (was cmit10, should be cmti10) in MetaPost driver
+  * When all texts were "special" (LaTeX coded) in a figure, ISO
+    characters weren't encoded in straight PS and PDF output
+  * Bug in radius for circles in SVG driver (dev/gensvg.c)
+  * fig2dev.man was missing many papersize options
+  * Double fclose() in bitmap driver
+  * Raster picture support added to SVG driver. (In SVG, this translates
+    to a link to the image file plus rotation/scaling information. 
+    While 'conformant' SVG viewers need only support PNG and JPEG, there
+    is no a filetype test, as there is no limit on supported formats
+    in the standard, and e.g. Batik is able to display XBM and GIF in
+    addition.  Added code for rounded boxes (polyline subtype 4).
+    Added code for boxes, explicit support for polygons.  Added
+    xml-space:preserve qualifier on texts to preserve whitespace. Rewrote
+    fill pattern handling to generate patterns as needed - adding support
+    for penwidth and color.  Corrected tiling of all shingle patterns and
+    reversal of horizontal shingles.
+    From Martin Kroeker
+  * Better arrowheads in SVG driver.  Corrected font family selection.
+    Corrected (and simplified) calculation of white-tinted fill colors
+    (and removed the HSV/RGB conversion code).
+    From Justus Piater
+  * Typo in LATEX_AND_XFIG file. Text should be: 
+    \convertMPtoPDF{foo.0}{1}{1}
+    It was missing parameters {1}{1}
+  * Depth filter option -D was parsing range (e.g. 40:80) incorrectly
+    Fix from Justus Piater
+  * C++ style comments "//" changed to "/* */" in genmp.c
+  * Integer overflow in computing some spline steps
+  * \pagestyle{empty} added for epic/eepic driver so it doesn't produce
+    unnecessary page number when LaTeXing
+  * Many SVG driver enhancements from Martin Kroeker
+    (martin@ruby.chemie.uni-freiburg.de)
+  * New features in EMF driver from ITOH Yasufumi:
+      support for locale text (if iconv() is available),
+      arc box, open arc, rotated ellipse, picture,
+      dash-triple-dotted line style, and all fill patterns.
+  * "cleandir" directive missing from doc/manual/Makefile
+  * Added note about requiring dummy argument for -R option
+  * SVG driver bug fixes: semicolon missing in CSS properties, multiline
+    string problem, width, height and viewbox attributes now relative to
+    figure bounds instead of pagesize. Fixes from Justus Piater.
+  * Font info was put in the pstex file even when there were only special
+    texts.
+  * Global option "-Z maxdim" to scale figure so that largest dimension
+    (width or height) is maxdim inches
+  * Shapepar driver to generate shaped paragraphs for LaTeX (-L shape)
+    from Christian Gollwitzer
+  * I18N support postscript file installation moved to fig2dev/dev
+    directory and installed with InstallNonExecFile (imake directive)
+  * options -dAutoFilterColorImages=false and -dColorImageFilter=/FlateEncode
+    added to ghostscript call when exporting to pdf to improve image
+    quality during compression
+  * "Epoch" added to rpm spec
+  * New HP/GL2 driver from Glenn Burkhardt with paper size selection,
+    offset, centering and orientation options
+  * comments about BINDIR added to fig2dev/Imakefile and transfig/Imakefile
+    so user can easily change installation directory of both programs
+  * MKDIRHIER used in Imakefile for installing support files instead of mkdir
+  * commands like \\small used instead of SetFigFont for thick and thin
+    dots for LaTeX export
+    From Bo Thilde
+  * removed typedefs of uint, ushort and ulong from genemf.h because
+    systems should already have those defined
+  * SVG driver not mentioned in fig2dev.1 (.man)
+  * shortened two fprintf calls in gensvg.c for HP-UX which can't handle
+    long strings
+  * If an imported picture path points to some directory which is not the
+    current directory, and there exists a picture file of the same name in
+    the current directory, and the correct file is not compressed, fig2dev
+    would use the file in the current directory because it stripped off
+    the path first.  This was fixed by looking for the uncompressed name
+    first.
+  * Color values should be divided by 255, not 256 to produce values from
+    0 to 1.0 in LaTeX, Tk and PostScript drivers, and readpng and readpcx
+    utilities
+  * Increased precision of arc angles from %.1f to %.4f in PS/EPS/PDF
+    driver
+  * Postscript support files now installed with r/w permissions only (was
+    r/w/x)
+  * Metapost (mp) driver now generates all Fig styles of arrowheads
+    From Tim Braun
+  * Bug in pic preamble - default font size either 0 or garbage
+  * PDF not rotated anymore for landscape mode (similar to eps)
+  * fontmag not set when magnification was read from Fig file
+  * When there were only LaTeX special texts without backslashes (\) and
+    no other objects in the figure, a bounding box of 0 width was produced
+    for EPS, PS and PSTEX output.
+  * Added ZLIBDIR variable in fig2dev/Imakefile to specify zlib directory
+    if different from standard location
+  * pstex_t export lacked border option (-b) to align LaTeX text when
+    pstex figure specified border (also fixed in xfig Combined PS/LaTeX)
+  * warnings in gentpic.c caused failure of gcc on hppa architecture under
+    Debian
+  * cleaned up lots of implicit declarations of functions/procs
+  * transfig: the "psfig" language was missing from the list of languages,
+    making things go out of sync past "ps".
+  * transfig: "transfig -L pstex" was generating rules for ps not eps
+  * slight margin added to text bounds
+  * an incorrect printf specification (%d instead of %ld) in gemp.c
+  * "#include <varargs.h>" no longer needed (and is unsupported by gcc 3.3)
+  * Not a bug, really but a workaround for programs that generate Fig files
+    with arcs that have coincident start and end points with the intent
+    of making a circle (TCM apparently does this).  Without this
+    workaround, such arcs have the same start and end angle, which
+    ghostcript and probably other PostScript interpreters take to mean
+    "don't draw anything".  This fix adds 0.01 degrees to the end angle
+    if it is identical to the start angle.
+  * Exporting a file with a picture containing a path with blanks failed
+  * Incorrect ISO translation was: 
+        "\\.S", /* latin capital letter S with dot above */
+    Should be:
+        "\\.Z", /* latin capital letter Z with dot above */
+  * LaTeX: Correction to the ISO-8859-2 ogonek diacritic mark now uses \k
+    instead of cedilla (\c).  If the macro \k isn't defined in your
+    situation or you don't see the ogonek then define the macro: \def\k#1{\c{#1}}
+    before the \begin{document}.  
+    From Jerzy Sobczyk
+  * Bug in user-defined colors when exporting to CGM. If color numbers
+    weren't contiguous, e.g. 32, 34, then it couldn't find color 34.
+  * glyphs in the Symbol font that have descenders weren't taken into
+    account when calculating text bounds
+  * missing blue and extra brown color in LaTeX driver
+  * \smash directive added back to text objects in eepic driver (was removed 
+    in 3.2.4)
+  * Quotes in FIG2DEV_LIBDIR definition (fig2dev/Imakefile) interferred when
+    using $DESTDIR
+  * Comments not inserted in EMF output anymore (not valid in language)
+  * float/int mixup in printf in pic driver for font size caused default
+    font size to be 0
+  * bug in hp/gl (ibmgl) driver produced incorrect JCL code to enter HP/GL
+    mode when using -k option
+  * point size factor changed from 72.27 to 72 points per inch as specified
+    by HP tech notes
+  * change in 3.2.4 which included all "special" (LaTeX) texts in the
+    bounding box that don't have any backslashes ("\") in them failed to
+    take into account inline equations using the "$".  Now those special
+    texts are also excluded from the bounding box calculation.
+  * various man page format errors fixed
+
+-------------------------------------------------------------------
+Wed May 16 14:47:06 CEST 2007 - sbrabec@suse.cz
+
+- Require GhostScript, needed for PS and PDF output.
+
+-------------------------------------------------------------------
+Fri Apr 20 09:20:56 CEST 2007 - aj@suse.de
+
+- Use texlive for building.
+
+-------------------------------------------------------------------
+Mon Jul 31 19:17:02 CEST 2006 - werner@suse.de
+
+- Make it build with X11R7
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 28 10:51:39 CET 2005 - meissner@suse.de
+
+- -Wno-all is actually -w (all warnings off).
+  Use $RPM_OPT_FLAGS to get other architecture flags.
+
+-------------------------------------------------------------------
+Thu Mar 11 16:57:09 CET 2004 - werner@suse.de
+
+- Avoid extrem long build logs
+
+-------------------------------------------------------------------
+Mon Feb  2 19:05:12 CET 2004 - werner@suse.de
+
+- Update to 3.2.4 (fix bug #34194)
+
+-------------------------------------------------------------------
+Sun Jan 11 09:26:19 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jun 13 08:39:39 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+
+-------------------------------------------------------------------
+Fri May 23 10:36:38 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Nov  8 12:01:21 CET 2002 - werner@suse.de
+
+- Remove XCOMM definition to make new cpp happy
+
+-------------------------------------------------------------------
+Mon Jun 17 15:35:29 CEST 2002 - meissner@suse.de
+
+- renamed text() to _text() to avoid conflicts of assemblername
+  and sectionname .text on ppc64.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Dec 10 16:33:10 CET 2001 - werner@suse.de
+
+- Update to version 3.2.3d
+
+-------------------------------------------------------------------
+Tue Aug 21 18:25:14 CEST 2001 - werner@suse.de
+
+- Fix bug #9024: echo style for fig2ps2tex should be bsd
+
+-------------------------------------------------------------------
+Fri Oct 20 11:37:36 CEST 2000 - werner@suse.de
+
+- Add missed `$'
+
+-------------------------------------------------------------------
+Wed Oct 18 15:58:04 CEST 2000 - werner@suse.de
+
+- Avoid epsfig style, use normal graphics style (bug# 4168)
+
+-------------------------------------------------------------------
+Fri Sep 15 17:01:53 CEST 2000 - werner
+
+- Update to 3.2.3c to fit xfig version
+
+-------------------------------------------------------------------
+Wed May 31 16:26:42 CEST 2000 - werner
+
+- Use %{_defaultdocdir}
+
+-------------------------------------------------------------------
+Mon Mar 27 18:40:06 CEST 2000 - uli@suse.de
+
+- fixed minor blooper in fig2dev/Imakefile (now calls mkdir with -p)
+
+-------------------------------------------------------------------
+Mon Mar 27 12:48:09 CEST 2000 - werner@suse.de
+
+- Avoid sparc nasties
+
+-------------------------------------------------------------------
+Fri Mar 24 16:49:39 CET 2000 - werner@suse.de
+
+- New version 3.2.3 for the new xfig version
+- Fix some common nasties
+- Disable some doubles like getopt
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Oct 29 15:15:03 MET 1998 - ro@suse.de
+
+- update to 3.2.1
+
+-------------------------------------------------------------------
+Thu Sep 17 18:15:53 MEST 1998 - ro@suse.de
+
+- dont redeclare sys_errlist for glibc
+
+----------------------------------------------------------------------------
+Fri Oct 10 15:32:09 MEST 1997 - florian@suse.de
+
+- update to version 3.2
+
+----------------------------------------------------------------------------
+Wed Oct  8 16:06:02 CEST 1997 - ro@suse.de
+
+- Prepared package for automatic build
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- update to version 3.2.0-beta2
+
+

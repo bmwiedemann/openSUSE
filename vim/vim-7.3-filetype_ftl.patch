@@ -1,0 +1,53 @@
+Index: vim-8.1.1467/runtime/filetype.vim
+===================================================================
+--- vim-8.1.1467.orig/runtime/filetype.vim
++++ vim-8.1.1467/runtime/filetype.vim
+@@ -2201,3 +2201,7 @@ endfunc
+ " Restore 'cpoptions'
+ let &cpo = s:cpo_save
+ unlet s:cpo_save
++
++" FreeMarker templates
++au BufNewFile,BufRead *.ftl     setf ftl
++
+Index: vim-8.1.1467/runtime/syntax/ftl.vim
+===================================================================
+--- /dev/null
++++ vim-8.1.1467/runtime/syntax/ftl.vim
+@@ -0,0 +1,36 @@
++" Vim syntax file
++" Language:	FreeMarker Template Language (FTL)
++" Maintainer:	Stephan Müller <stephan@chaquotay.net>
++" Last Change:  2003 Oct 7
++
++syn case match
++
++" directives and interpolations
++syn region ftlStartDirective start=+<#+ end=+>+ contains=ftlKeyword, ftlDirective, ftlString, ftlComment
++syn region ftlEndDirective start=+</#+ end=+>+ contains=ftlDirective
++syn region ftlStartUserDirective start=+<@+ end=+>+ contains=ftlString, ftlComment
++syn region ftlEndUserDirective start=+</@+ end=+>+
++syn region ftlInterpolation start=+${+ end=+}+
++syn region ftlInterpolation2 start=+#{+ end=+}+
++syn region ftlString contained start=+"+ end=+"+
++syn region ftlComment start=+<#--+ end=+-->+
++
++" keywords
++syn keyword ftlDirective contained list if else macro import include switch case break
++syn keyword ftlDirective contained assign local global nested recurse fallback visit
++syn keyword ftlDirective contained function return t rt lt nt ftl
++syn keyword ftlKeyword contained as in using
++
++" highlighting
++highlight link ftlKeyword Statement
++highlight link ftlDirective Statement
++highlight link ftlStartDirective Function
++highlight link ftlEndDirective Function
++highlight link ftlStartUserDirective Function
++highlight link ftlEndUserDirective Function
++highlight link ftlInterpolation Constant
++highlight link ftlInterpolation2 Constant
++highlight link ftlString Constant
++highlight link ftlComment Comment
++
++

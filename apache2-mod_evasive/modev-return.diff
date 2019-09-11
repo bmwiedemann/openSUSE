@@ -1,0 +1,33 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-07-10 18:24:19.208700830 +0200
+
+build: resolve compiler warnings
+
+rpmlint complaints loudly:
+I: Program returns random data in a function
+E: mod_evasive no-return-in-nonvoid-function mod_evasive20.c:118, 301
+
+---
+ mod_evasive20.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: mod_evasive/mod_evasive20.c
+===================================================================
+--- mod_evasive.orig/mod_evasive20.c
++++ mod_evasive/mod_evasive20.c
+@@ -115,6 +115,7 @@ static void * create_hit_list(apr_pool_t
+     /* Create a new hit list for this listener */
+ 
+     hit_list = ntt_create(hash_table_size);
++    return hit_list;
+ }
+ 
+ static const char *whitelist(cmd_parms *cmd, void *dconfig, const char *ip)
+@@ -298,6 +299,7 @@ static apr_status_t destroy_hit_list(voi
+   ntt_destroy(hit_list);
+   free(email_notify);
+   free(system_command);
++  return APR_SUCCESS;
+ }
+ 
+ 

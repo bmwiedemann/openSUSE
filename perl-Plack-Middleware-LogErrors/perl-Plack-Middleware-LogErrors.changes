@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue May 22 05:49:00 UTC 2018 - coolo@suse.com
+
+- updated to 0.003
+   see /usr/share/doc/packages/perl-Plack-Middleware-LogErrors/Changes
+
+  0.003     2018-05-21 19:17:39Z
+            - reftype is no longer erroneously added as a method
+            - Plack::Middleware::LogErrors::LogHandle is no longer indexed by
+              PAUSE
+            - miscellaneous distribution tooling improvements
+
+-------------------------------------------------------------------
+Wed Jan 14 11:34:38 UTC 2015 - ncutler@suse.com
+
+- re-generate specfile using cpanspec 1.78.08
+- upgrade to latest upstream version 0.002
+- check license
+- take maintainership
+

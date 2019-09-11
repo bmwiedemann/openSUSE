@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sun Aug  7 06:39:39 UTC 2016 - coolo@suse.com
+
+- updated to 20160806
+   see /usr/share/doc/packages/perl-URI-Find/Changes
+
+  20160806  Sat Aug  6 13:36:14 PDT 2016
+      Distribution
+      * Homepage is now metacpan
+      * Now testing Strawberry Perl with AppVeyor
+      * Kwalitee fix (Patrice Clement) [github 14]
+
+-------------------------------------------------------------------
+Mon Sep 15 15:44:32 UTC 2014 - coolo@suse.com
+
+- updated to 20140709
+     New Features
+     * The "git" scheme is supported. (Schwern)
+     * svn, ssh and svn+ssh schemes are supported. [rt.cpan.org 57490] (Schwern)
+     * Added a --schemeless option to urifind. (Schwern)
+ 
+     Bug Fixes
+     * http:// is no longer matched [rt.cpan.org 63283] (Schwern)
+ 
+     Backwards Incompatibilities
+     * Previously, URIs stringified to their canonical version.  Now
+       they stringify as written.  This results in less loss of
+       information.  For example.  "Blah HTTP:://FOO.COM" previously
+       would stringify as "http://foo.com/" and now it will stringify
+       as "HTTP://FOO.COM".  To restore the old behavior you can call
+       $uri->canonical. (Schwern)
+ 
+     Distribution Changes
+     * No longer using URI::URL. (Schwern)
+     * Now requires URI 1.60 for Unicode support. (Schwern)
+ 
+ 
+ 20140702  Wed Jul  2 13:41:47 PDT 2014
+     New Features
+     * IDNA (aka Unicode) domains are now supported. [github 3] (GwenDragon)
+     * The list of TLDs for schemeless matching has been updated. [github 3] (GwenDragon)
+ 
+     Bug Fixes
+     * Handle balanced [], {} and quotes in addition to (). [rt.cpan.org 85053] (Schwern)
+     * Don't mangle IPv6 URLs. [rt.cpan.org 85053] (Schwern)
+     * Schemeless is more accurate about two letter TLDs. [github 3] (GwenDragon)
+ 
+     Distribution Changes
+     * Switched the issue tracker to Github. (Schwern)
+
+-------------------------------------------------------------------
+Mon Dec 19 11:48:56 UTC 2011 - coolo@suse.de
+
+- updated to 20111103 from very old sources, see Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:01:02 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Mon Jan 11 00:00:00 UTC 2010 - nine@detonation.org
+
+- initial package
+

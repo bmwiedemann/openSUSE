@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Thu May  2 05:17:14 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.5
+  * Improvements to template instantation of templates with gcc9
+    and icc T23
+  * Change in assignment operator definition, add delete, to avoid
+    warnings with gcc9
+  * Minor changes for compilation with gcc8,9, icc and clang
+- Changes from version 2.1.4:
+  * Improvements to helicity libraries to support more BSM models
+  * Added FixedTargetLuminosity for fixed target collisions
+
+-------------------------------------------------------------------
+Mon Apr 30 21:27:55 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.1.3:
+  * Use std::array<> where suitable
+
+-------------------------------------------------------------------
+Thu Nov  2 10:00:24 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.2:
+  * Allow LHAPDF6 interface to return photon pdf.
+  * Sign fix in GeneralVVSVertex
+  * Fix multiple weight reading from LHE files
+  * Preparations for Rivet 3
+
+-------------------------------------------------------------------
+Sat Sep 23 14:34:17 UTC 2017 - badshah400@gmail.com
+
+- Disable java bindings and binary until ThePEG becomes
+  compatible with openjdk >= 1.9; fixes build failures in Factory.
+
+-------------------------------------------------------------------
+Sat Sep  2 12:18:54 UTC 2017 - badshah400@gmail.com
+
+- Build with HepMC2-devel, since Rivet does not compile with
+  HepMC-devel >= 3 yet. 
+
+-------------------------------------------------------------------
+Wed Aug  2 05:40:21 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.1:
+  * Added missing evaluate() option to GeneralVVSVertex
+  * More robust reading of LHE files
+  * Warn about duplicate PDG names in user input
+  * Write current timestamp into log files
+  * Calling 'read' in an input file will no longer change the 
+    repository directory you're in
+- Changes from version 2.1.0:
+  * Transition to C++-11 code, building with C++-98 is no longer
+    possible
+  * Interfaces with two choices now consistently accept Yes/No as
+    answer
+  * Several smaller bug fixes and additions, to allow new features
+    in Herwig 7.1
+- Refresh ThePEG_gcc6_failed.patch for updated version.
+
+-------------------------------------------------------------------
+Mon Feb 13 17:46:17 UTC 2017 - jengelh@inai.de
+
+- Rename from libThePEG24 to ThePEG-libs as the package does not
+  satisfy the SLPP guideline: there are a number of non-.so.24
+  files.
+
+-------------------------------------------------------------------
+Thu Feb  2 15:06:27 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Nov 10 15:29:41 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.0.4:
+  * Default weight explicitly labelled: The nominal event weight
+    is now labelled "Default" and is always the first weight to be
+    inserted into HepMC.
+  * LesHouches event weights handling: There are now two options
+    for the treatment of optional weights coming in from a Les
+    Houches file, available through
+    "LesHouchesEventHandler:WeightNormalization". Either they are
+    normalized to the "Default" weight ("Normalized"), or they are
+    given as cross-sections in pb ("CrossSection"). The default
+    behaviour is "Normalized".
+  * JetFinder in Cuts objects writes information: The selected
+    JetFinder is explicitly listed in the debug output.
+- Lots of changes from version 1.9.2 (last packaged) through
+  v2.0.3; please see NEWS file for details.
+- Add java-devel BuildRequires; required to build new GUI.
+- Add YODA-devel BuildRequires; required for configuring Rivet
+  during build.
+
+-------------------------------------------------------------------
+Sun Jun 19 10:27:46 UTC 2016 - jengelh@inai.de
+
+- RPM group classification and direct use of ldconfig
+
+-------------------------------------------------------------------
+Thu Jun 16 09:19:27 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new ThePEG_gcc6_failed.patch to avoid gcc6 build failure
+  tracked upstream by
+  https://herwig.hepforge.org/trac/ticket/4
+
+-------------------------------------------------------------------
+Thu Sep  4 23:20:29 UTC 2014 - badshah400@gmail.com
+
+- Update to version 1.9.2:
+  + Better support for LHAPDF 6; now determines if version 6 is
+    available and makes use of new LHAPDFv6 features
+- Changes from version 1.9.1:
+  + Build fix for SLC6
+  + Build fix for Rivet 2.1.1: adapted to Rivet 2.1.1 changed
+    header file layout
+- Use macro instead of hard-coding version in file-list.
+
+-------------------------------------------------------------------
+Sat Dec  7 00:39:24 UTC 2013 - badshah400@gmail.com
+
+- Initial version
+

@@ -1,0 +1,32 @@
+diff -uprN mono-5.20.0.211.old/Makefile.am mono-5.20.0.211/Makefile.am
+--- mono-5.20.0.211.old/Makefile.am	2019-02-14 10:46:05.000000000 +0300
++++ mono-5.20.0.211/Makefile.am	2019-02-14 20:01:25.206136053 +0300
+@@ -152,3 +152,6 @@ update-solution-files:
+ 
+ update-solution-files-with-tests:
+ 	$(MAKE) "GENPROJ_ARGS=2012 true true" update-solution-files
++
++confighfixdir = $(includedir)/mono-2.0
++dist_confighfix_DATA = config.h
+diff -uprN mono-5.20.0.211.old/mono/metadata/Makefile.am mono-5.20.0.211/mono/metadata/Makefile.am
+--- mono-5.20.0.211.old/mono/metadata/Makefile.am	2019-02-14 10:46:09.000000000 +0300
++++ mono-5.20.0.211/mono/metadata/Makefile.am	2019-02-14 20:01:25.206136053 +0300
+@@ -444,6 +444,7 @@ libmonoruntimeinclude_HEADERS = \
+ 	attrdefs.h		\
+ 	blob.h			\
+ 	class.h			\
++	debug-internals.h	\
+ 	debug-helpers.h		\
+ 	debug-mono-symfile.h	\
+ 	environment.h		\
+diff -uprN mono-5.20.0.211.old/mono/utils/Makefile.am mono-5.20.0.211/mono/utils/Makefile.am
+--- mono-5.20.0.211.old/mono/utils/Makefile.am	2019-02-14 10:46:09.000000000 +0300
++++ mono-5.20.0.211/mono/utils/Makefile.am	2019-02-14 20:03:48.353363004 +0300
+@@ -319,6 +319,7 @@ libmonoutilsinclude_HEADERS = 	\
+ 	mono-publib.h		\
+ 	mono-jemalloc.h		\
+ 	mono-dl-fallback.h	\
++	mono-compiler.h		\
+ 	mono-counters.h
+ 
+ EXTRA_DIST = mono-embed.h mono-embed.c ../../support/libm/complex.c

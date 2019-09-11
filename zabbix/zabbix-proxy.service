@@ -1,0 +1,12 @@
+[Unit]
+Description=Zabbix Proxy
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/zabbix-proxy -f
+User=zabbixs
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

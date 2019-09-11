@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Fri Jun 29 12:11:31 UTC 2018 - kstreitova@suse.com
+
+- require p7zip-full for TW as 7z and 7za binaries needed by qnapi
+  were moved to this package (see bsc#899627 for more details about
+  this change)
+
+-------------------------------------------------------------------
+Mon Jun 11 12:20:31 UTC 2018 - aloisio@gmx.com
+
+- Added qnapi-Qt511.patch to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Tue Jan  9 07:58:42 UTC 2018 - aloisio@gmx.com
+
+- Added missing build dependency
+
+-------------------------------------------------------------------
+Sat Jul 29 12:22:48 UTC 2017 - aloisio@gmx.com
+
+- Added qnapi-libmaia.patch and use the system libmaia instead
+  of the embedded one
+
+-------------------------------------------------------------------
+Fri Jun  2 20:54:07 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.2.3 (machine-translated from Polish):
+  * Possibility to select the user interface language
+    (english / polish / italian) - (thx Fincer, luigino)
+  * Rebuilt application configuration subsystem
+  * Split application between library (libqnapi) and user
+    interface (gui)
+  * Target formatting / caption extension by line argument - # 65
+  * Fixed issue with loss of color information for captions during
+    conversion - # 100
+
+- Qnapi now includes libmaia and qt-maybe
+
+-------------------------------------------------------------------
+Thu Mar 30 16:31:33 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.2.2 (machine-translated from Polish):
+  * Refreshed application icon
+  * Subtitle display of language taken in the summary window
+    - # 53 (thx andrewpros)
+  * Patch installer for Windows - # 55
+  * Improvements in the selection Subtitle - # 57 (thx 
+    andrewpros)
+  * Fix error when changing the diacritical characters to 
+    ASCII - # 64
+  * Prevention segfaultowi - # 83 (thx kempniu)
+  * Fixes typos in several places - # 84 (thx kempniu)
+  * Configuration Engine Napisy24 - # 88
+  * Removed unsupported Napiprojekt engine functions (upload 
+    Subtitle, reporting of amendments)
+  version 0.2.1
+  * Problem with the names of paths containing special 
+    characters also improved when open another instance of
+    the application (Windows) - # 28
+  * Amendments to the detection of UTF-8 for languages
+    other than Polish - # 37
+  * The file extension is not changed when processing Subtitle 
+    is inactive - # 38
+  * Showing the version information for Qt
+  * Subtitle downloading in the spare language in silent mode 
+    - # 42
+  * Wash libmediainfo instead ffprobe to retrieve information 
+    about the movie file
+  * Subtitle option to search all at once, also in the spare - 
+    # 45
+  * Valid only interrupt the search, if found subtitles - # 46
+  * Fixes bugs in the engine Napisy24 - # 47
+
+- Added libmediainfo as build requirement
+
+- Added fix for gcc6
+
+-------------------------------------------------------------------
+Sat Dec 19 09:40:16 UTC 2015 - fisiu@opensuse.org
+
+- Update to 0.2.0:
+  * bugfix in napisy24 engine
+  * icons placed at directories according to their sizes
+  * bugfixes in file encoding detection
+  * preserving original file encoding during subtitle format conversion
+  * bugfixed backup language support
+- Drop 0001-fix-license-headers-in-source-files.patch: fixed upstream
+- Drop fix-icons-paths.patch: fixed upstream
+- Drop qnapi-napisy24.pl-skip-.url.patch: fixed upstream
+
+-------------------------------------------------------------------
+Sat Oct 31 19:46:14 UTC 2015 - fisiu@opensuse.org
+
+- Add qnapi-napisy24.pl-skip-.url.patch: fix napisy24.pl plugin.
+
+-------------------------------------------------------------------
+Sat Sep  5 19:30:17 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.9.0:
+  * conversion between subtitle formas: SRT, mDVD, TMP, MPL2 (requires ffprobe)
+  * select target extension of subtitles
+  * directory scanning now can see other subtitle extensions than .txt (also .srt and .sub)
+  * respect INSTALL_PREFIX on icons and desktop files installation
+- Add 0001-fix-license-headers-in-source-files.patch: fix license headers.
+- Add fix-icons-paths.patch: fix icons directories.
+
+-------------------------------------------------------------------
+Fri Aug 14 00:37:22 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.8.0:
+  * support for backup language for subtitle download
+  * fixed issue with window placing in multi-screen environment
+- Update to 1.7.0:
+  * new subtitle engine for Napisy24 (by fenuks)
+  * migration to Qt5
+  * diacritic characters replacement with ASCII counterparts
+    in subtitle post-processing
+  * GUI/CLI interface improvements
+  * lot of minor bugfixes
+
+-------------------------------------------------------------------
+Sun Dec 29 19:56:44 UTC 2013 - fisiu@opensuse.org
+
+- Spec cleanup. It seems qnapi is not maintained anymore,
+  but it still works fine.
+
+-------------------------------------------------------------------
+Wed Mar  4 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+  - upstream version
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+  - added service menus for KDE4
+
+-------------------------------------------------------------------
+Mon Apr  7 00:00:00 UTC 2008 - obi.gts@gmail.com
+
+- 0.1.4
+
+-------------------------------------------------------------------
+Sat Mar  1 00:00:00 UTC 2008 - obi.gts@gmail.com
+
+- 0.1.3
+
+-------------------------------------------------------------------
+Wed Feb 20 00:00:00 UTC 2008 - obi.gts@gmail.com
+
+- 0.1.2
+
+-------------------------------------------------------------------
+Sat Feb 16 00:00:00 UTC 2008 - obi.gts@gmail.com
+
+- 0.1.1
+

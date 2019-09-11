@@ -1,0 +1,16 @@
+Index: netpbm-10.86.3/converter/pbm/pbmtozinc.c
+===================================================================
+--- netpbm-10.86.3.orig/converter/pbm/pbmtozinc.c
++++ netpbm-10.86.3/converter/pbm/pbmtozinc.c
+@@ -107,7 +107,10 @@ packer_putitem(Packer * const packerP) {
+         putchar(' ');
+ 
+     ++packerP->itemsperline;
+-    printf ("0x%02x%02x", packerP->item & 255, packerP->item >> 8);
++    if (BYTE_ORDER == LITTLE_ENDIAN)
++        printf ("0x%02x%02x", packerP->item & 255, packerP->item >> 8);
++    else
++        printf ("0x%02x%02x", packerP->item >> 8, packerP->item & 255);
+ 
+ }
+ 

@@ -1,0 +1,9 @@
+--- etc/useradd
++++ etc/useradd
+@@ -1,5 +1,5 @@
+ # useradd defaults file
+-GROUP=1000
++GROUP=100
+ HOME=/home
+ INACTIVE=-1
+ EXPIRE=

@@ -1,0 +1,55 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-01-08 14:43:34.344321909 +0100
+
+This exports most of LzmaLib (minus code that does not compile because it
+requires too much Windows or Windows-like APIs) as a library for use by
+other packages.
+
+---
+ Makefile.am  |   11 +++++++++++
+ clzma.pc.in  |   10 ++++++++++
+ configure.ac |    6 ++++++
+ 3 files changed, 27 insertions(+), 0 deletions(-)
+
+Index: 1/Makefile.am
+===================================================================
+--- /dev/null
++++ 1/Makefile.am
+@@ -0,0 +1,11 @@
++AM_CPPFLAGS = -D_7ZIP_ST -D_7ZIP_PPMD_SUPPPORT
++lib_LTLIBRARIES = libclzma.la
++pkgconfigdir = ${libdir}/pkgconfig
++pkgconfig_DATA = clzma.pc
++# source list: C/Util/LzmaLib/makefile
++libclzma_la_SOURCES = C/7zAlloc.c C/7zArcIn.c C/7zBuf2.c C/7zBuf.c C/7zCrc.c C/7zCrcOpt.c C/7zDec.c C/7zFile.c C/7zStream.c C/7zVersion.rc C/Aes.c C/AesOpt.c C/Alloc.c C/Bcj2.c C/Bra86.c C/Bra.c C/BraIA64.c C/CpuArch.c C/Delta.c C/DllSecur.c C/LzFind.c C/Lzma2Dec.c C/Lzma2Enc.c C/Lzma86Dec.c C/Lzma86Enc.c C/LzmaDec.c C/LzmaEnc.c C/LzmaLib.c C/Ppmd7.c C/Ppmd7Dec.c C/Ppmd7Enc.c C/Sha256.c C/Sort.c C/Xz.c C/XzCrc64.c C/XzCrc64Opt.c C/XzDec.c C/XzEnc.c C/XzIn.c
++#ifWIN32#SOURCES += C/Bcj2Enc.c C/LzFindMt.c C/MtCoder.c C/Threads.c
++libclzma_la_LDFLAGS = -release suse -version-info 0:0:0
++clzmadir = ${includedir}/clzma
++clzma_HEADERS = C/7zAlloc.h C/7zBuf.h C/7zCrc.h C/7zFile.h C/7z.h C/7zTypes.h C/7zVersion.h C/Aes.h C/Alloc.h C/Bcj2.h C/Bra.h C/Compiler.h C/CpuArch.h C/Delta.h C/DllSecur.h C/LzFind.h C/LzFindMt.h C/LzHash.h C/Lzma2Dec.h C/Lzma2Enc.h C/Lzma86.h C/LzmaDec.h C/LzmaEnc.h C/LzmaLib.h C/MtCoder.h C/Ppmd7.h C/Ppmd.h C/Precomp.h C/RotateDefs.h C/Sha256.h C/Sort.h C/Threads.h C/XzCrc64.h C/XzEnc.h C/Xz.h
++clzma.pc: ${top_builddir}/config.status
+Index: 1/clzma.pc.in
+===================================================================
+--- /dev/null
++++ 1/clzma.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: clzma
++Description: 7-Zip implementation of LZMA compression
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lclzma
++Cflags: -I${includedir}/clzma
+Index: 1/configure.ac
+===================================================================
+--- /dev/null
++++ 1/configure.ac
+@@ -0,0 +1,6 @@
++AC_INIT([lzma-sdk], [0])
++AM_INIT_AUTOMAKE([foreign subdir-objects])
++AC_PROG_CC
++LT_INIT([disable-static])
++AC_CONFIG_FILES([Makefile clzma.pc])
++AC_OUTPUT

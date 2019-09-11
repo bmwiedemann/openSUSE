@@ -1,0 +1,106 @@
+Index: atftp-0.7.2/tftpd.c
+===================================================================
+--- atftp-0.7.2.orig/tftpd.c
++++ atftp-0.7.2/tftpd.c
+@@ -98,8 +98,8 @@ int deny_severity = LOG_NOTICE;
+ #endif
+ 
+ /* user ID and group ID when running as a daemon */
+-char user_name[MAXLEN] = "nobody";
+-char group_name[MAXLEN] = "nogroup";
++char user_name[MAXLEN] = "tftp";
++char group_name[MAXLEN] = "tftp";
+ 
+ /* For special uses, disable source port checking */
+ int source_port_checking = 1;
+@@ -296,54 +296,46 @@ int main(int argc, char **argv)
+            */
+           dup2(sockfd, 0);
+           close(sockfd);
++     }
+ 
+-          /* release priviliedge */
+-          user = getpwnam(user_name);
+-          group = getgrnam(group_name);
+-          if (!user || !group)
+-          {
+-               logger(LOG_ERR,
+-                      "atftpd: can't change identity to %s.%s, exiting.",
+-                      user_name, group_name);
+-               exit(1);
+-          }
++     /* release privilege */
++     user = getpwnam(user_name);
++     group = getgrnam(group_name);
++     if (!user || !group)
++     {
++          logger(LOG_ERR,
++                 "atftpd: can't change identity to %s.%s, exiting.",
++                 user_name, group_name);
++          exit(1);
++     }
+ 
+-          /* write our pid in the specified file before changing user*/
+-          if (pidfile)
+-          {
+-               if (tftpd_pid_file(pidfile, 1) != OK)
+-               {
+-                    logger(LOG_ERR,
+-                           "atftpd: can't write our pid file: %s.",
+-                           pidfile);
+-                    exit(1);
+-               }
+-               /* to be able to remove it later */
+-               if (chown(pidfile, user->pw_uid, group->gr_gid) != OK) {
+-	            logger(LOG_ERR,
+-		           "atftpd: failed to chown our pid file %s to owner %s.%s.",
+-                           pidfile, user_name, group_name);
+-                    exit(1);
+-	       }
+-          }
++     /* write our pid in the specified file before changing user */
++     if (pidfile)
++     {
++          if (tftpd_pid_file(pidfile, 1) != OK)
++               exit(1);
++          /* to be able to remove it later */
++          chown(pidfile, user->pw_uid, group->gr_gid);
++     }
+ 
+-	  if (setgid(group->gr_gid) != OK) {
+-	      logger(LOG_ERR,
+-		      "atftpd: failed to setgid to group %d (%s).",
+-		      group->gr_gid, group_name);
+-	      exit(1);
+-	  }
+-	  if (setuid(user->pw_uid) != OK) {
+-	      logger(LOG_ERR,
+-		      "atftpd: failed to setuid to user %d (%s).",
+-		      user->pw_uid, user_name);
+-	      exit(1);
+-	  }
+-
+-          /* Reopen log file now that we changed user, and that we've
+-           * open and dup2 the socket. */
+-          open_logger("atftpd", log_file, logging_level);
++     if (setgid(group->gr_gid) != OK) {
++          logger(LOG_ERR,
++                 "atftpd: failed to setgid to group %d (%s).",
++                 group->gr_gid, group_name);
++          exit(1);
+      }
++     if (setgroups(0, NULL)) {
++          logger(LOG_ERR, "atftpd: can't clear supplementary group list");
++          exit(1);
++     }
++     if(setuid(user->pw_uid)) {
++          logger(LOG_ERR, "atftpd: can't switch user to %s, exiting.", user_name);
++          exit(1);
++     }
++
++     /* Reopen log file now that we changed user, and that we've
++      * open and dup2 the socket. */
++     open_logger("atftpd", log_file, logging_level);
+ 
+ #if defined(SOL_IP) && defined(IP_PKTINFO)
+      /* We need to retieve some information from incomming packets */

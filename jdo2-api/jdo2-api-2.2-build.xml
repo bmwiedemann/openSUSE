@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="javadoc" name="jdo2-api" basedir=".">
+  <property name="defaulttargetdir" value="target">
+  </property>
+  <property name="libdir" value="target/lib">
+  </property>
+  <property name="classesdir" value="target/classes">
+  </property>
+  <property name="sourcedir" value="src/java">
+  </property>
+  <property name="testclassesdir" value="target/test-classes">
+  </property>
+  <property name="testclassesdir" value="target/test-classes">
+  </property>
+  <property name="testreportdir" value="target/test-reports">
+  </property>
+  <property name="distdir" value="dist">
+  </property>
+  <property name="javadocdir" value="dist/docs/api">
+  </property>
+  <property name="jar.name" value="jdo2-api">
+  </property>
+   <property name="jar.version" value="2.2">
+  </property>
+  <property name="final.name" value="${jar.name}-${jar.version}">
+  </property>
+
+  <target name="clean" description="Clean up">
+    <delete dir="${classesdir}"/>
+    <delete file="${final.name}"/>
+  </target>
+
+  <target name="compile" description="Compile the sources">
+    <mkdir dir="${classesdir}"/>
+    <javac srcdir="${sourcedir}" destdir="${classesdir}" deprecation="true" debug="true" optimize="false">
+      <classpath>
+        <fileset dir="/usr/share/java">
+          <include name="geronimo-jta*.jar"/>
+          <include name="ant.jar"/>
+          <include name="geronimo-jpa*.jar"/>
+          <include name="junit.jar"/>
+        </fileset>
+      </classpath>
+    </javac>
+    <copy todir="${classesdir}">
+      <fileset dir="${sourcedir}">
+        <include name="javax/jdo/*.properties">
+        </include>
+      </fileset>
+    </copy>
+    <copy todir="${classesdir}">
+      <fileset dir="src/schema">
+        <include name="javax/jdo/*.dtd">
+        </include>
+        <include name="javax/jdo/*.xsd">
+        </include>
+      </fileset>
+    </copy>
+  </target>
+
+  <!--target name="test" description="o Run the test cases" if="test.failure" depends="internal-test">
+    <fail message="There were test failures.">
+    </fail>
+  </target>
+  <target name="internal-test" depends="compile-tests">
+    <mkdir dir="${testreportdir}">
+    </mkdir>
+    <junit dir="./" failureproperty="test.failure" printSummary="yes" fork="true" haltonerror="true">
+      <sysproperty key="basedir" value=".">
+      </sysproperty>
+      <formatter type="xml">
+      </formatter>
+      <formatter usefile="false" type="plain">
+      </formatter>
+      <classpath>
+        <pathelement path="${testclassesdir}">
+        </pathelement>
+        <pathelement path="${classesdir}">
+        </pathelement>
+        <fileset dir="/usr/share/java">
+          <include name="geronimo-jta.jar"/>
+          <include name="ant.jar"/>
+          <include name="geronimo-jpa.jar"/>
+          <include name="junit.jar"/>
+        </fileset>
+      </classpath>
+      <batchtest todir="${testreportdir}">
+        <fileset dir="test/java">
+          <include name="**/*Test.java">
+          </include>
+          <exclude name="javax/jdo/util/AbstractTest.java">
+          </exclude>
+          <exclude name="javax/jdo/pc/*.java">
+          </exclude>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+  <target name="compile-tests" depends="compile">
+    <mkdir dir="${testclassesdir}">
+    </mkdir>
+    <javac destdir="${testclassesdir}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
+      <src>
+        <pathelement location="test/java">
+        </pathelement>
+      </src>
+      <classpath>
+        <fileset dir="/usr/share/java">
+          <include name="geronimo-jta.jar"/>
+          <include name="ant.jar"/>
+          <include name="geronimo-jpa.jar"/>
+          <include name="junit.jar"/>
+        </fileset>
+        <pathelement path="${classesdir}">
+        </pathelement>
+      </classpath>
+    </javac>
+    <copy todir="${testclassesdir}">
+      <fileset dir="test/java">
+        <include name="**/*.jdo">
+        </include>
+        <include name="**/*.jdoquery">
+        </include>
+        <include name="**/*.orm">
+        </include>
+        <include name="**/jdoconfig.xml">
+        </include>
+      </fileset>
+    </copy>
+  </target-->
+  
+  <target name="javadoc" description="o Generate javadoc">
+    <mkdir dir="${javadocdir}">
+    </mkdir>
+    <tstamp>
+      <format pattern="2005-yyyy" property="year">
+      </format>
+    </tstamp>
+    <property name="copyright" value="Copyright &amp;copy; 2005-2008 Apache Software Foundation. All Rights Reserved.">
+    </property>
+    <property name="title" value="JDO2 API 2.2 API">
+    </property>
+    <javadoc use="true" private="true" destdir="${javadocdir}" author="true" version="true" sourcepath="${sourcedir}" packagenames="javax.jdo.*">
+      <classpath>
+        <fileset dir="/usr/share/java">
+          <include name="geronimo-jta*.jar"/>
+          <include name="ant.jar"/>
+          <include name="geronimo-jpa*.jar"/>
+          <include name="junit.jar"/>
+        </fileset>
+        <pathelement path="${classesdir}">
+        </pathelement>
+      </classpath>
+    </javadoc>
+  </target>
+
+  <target name="jar" description="Create the jar" depends="compile">
+    <jar jarfile="${final.name}.jar" basedir="${classesdir}">
+        <manifest>
+          <attribute name="Built-By" value="${user.name}"/>
+          <attribute name="Extension-Name" value="${jar.name}"/>
+          <attribute name="Package" value="javax.jdo"/>
+          <attribute name="Specification-Title" value="Java Data Objects 2 (JDO) API"/>
+          <attribute name="Specification-Version" value="JDO 2.2"/>
+          <attribute name="Specification-Vendor" value="Apache Software Foundation"/>
+          <attribute name="Implementation-Title" value="javax.jdo"/>
+          <attribute name="Implementation-Version" value="2.2"/>
+          <attribute name="Implementation-Vendor" value="Apache Software Foundation"/>
+          <attribute name="Bundle-Localization" value="plugin"/>
+          <attribute name="Bundle-ManifestVersion" value="2"/>
+          <attribute name="Bundle-Name" value="Java Data Objects"/>
+          <attribute name="Bundle-SymbolicName" value="javax.jdo"/>
+          <attribute name="Bundle-Vendor" value="Apache"/>
+          <attribute name="Export-Package" value="javax.jdo,javax.jdo.annotations,javax.jdo.datastore,javax.jdo.identity,javax.jdo.listener,javax.jdo.spi"/>
+          <attribute name="Import-Package" value="javax.transaction;resolution:=optional,javax.persistence;resolution:=optional"/>
+        </manifest>
+    </jar>
+  </target>
+
+  <target name="install" depends="jar,javadoc">
+     <mkdir dir="${destdir}/usr/share/java/" />
+     <copy file="${final.name}" todir="${destdir}/usr/share/java/"/>
+     <mkdir dir="${destdir}/usr/share/javadoc/" />
+     <copy file="${javadocdir}" todir="${destdir}/usr/share/javadoc/${jar.name}/"/>
+  </target>
+</project>

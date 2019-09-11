@@ -1,0 +1,3434 @@
+--- mgdiff.c
++++ mgdiff.c
+@@ -1,13 +1,14 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "mgdiff.c,v 2.1 1994/09/29 01:56:53 dan Exp";
+ #endif
+ 
+-#ifndef lint
++#if 0
+ static char copyright[] = "Copyright (c) 1994, Daniel Williams";
+ #endif
+ 
+ /*
+  * Copyright (c) 1994    Daniel Williams
++ * Copyright (c) 2003    Erik de Castro Lopo
+  * 
+  * The X Consortium, and any party obtaining a copy of these files from
+  * the X Consortium, directly or indirectly, is granted, free of charge,
+@@ -40,6 +41,7 @@
+ #include <assert.h>
+ #include <errno.h>
+ #include <sys/stat.h>
++#include <locale.h>
+ 
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+@@ -99,7 +101,7 @@
+ static void show_version (Widget parent);
+ static void update_overall (void);
+ static void refresh (void);
+-static void toggle_saveas_sensitive (Boolean sensitive);
++static void toggle_saveas_sensitive (Boolean saveas, Boolean save_left, Boolean save_right);
+ static void exit_cb (Widget w, XtPointer closure, XtPointer call_data);
+ static void Select (Widget widget, XEvent *event, String *params, Cardinal *num_params);
+ static void Scroll (Widget widget, XEvent *event, String *params, Cardinal *num_params);
+@@ -109,9 +111,14 @@
+ static void unselect_all (void);
+ static Boolean all_selected (void);
+ static Dimension get_preferred_width (Widget w);
+-static char *basename (char *name);
++static char *mgdiff_basename (char *name);
+ 
+-#define APP_DEFAULTS_VERSION 1
++enum {
++    WIDGET_LEFT	 = 0x10000000,
++    WIDGET_RIGHT = 0x20000000
++} ;
++
++#define APP_DEFAULTS_VERSION 2
+ 
+ /* 
+  * treat failure to find the resources from the application defaults
+@@ -120,10 +127,16 @@
+  */
+ static String fallbacks[] = {
+     "*menubar.button_0.XmString: File",
+-    "*file_menu*button_4.XmString: Exit",
++    "*file_menu*button_6.XmString: Exit",
+     NULL
+ };
+ 
++static char unselected_text_msg [] =
++    "Unselected blocks remain.\n\n"
++    "Press Cancel to go back to correct this.\n"
++    "Pressing OK will save the merged data with all unselected\n"
++    "blocks absent from the output file." ;
++
+ static XrmOptionDescRec option_table[] = {
+     {"-quit", "quitIfSame", XrmoptionNoArg, "true"},
+     {"-args", "diffArgs", XrmoptionSepArg, NULL},
+@@ -137,6 +150,7 @@
+ 
+ static struct screenstate {
+     Block *b;
++    Block *lastSelected;
+     int topline;
+     int leftcol;
+     int sindex, findex[2];
+@@ -170,7 +184,7 @@
+ 
+ static char *str_fnamel, *str_fnamer;
+ static char *str_snamel, *str_snamer;
+-static char *tempfname;
++static char tempfname [512] = "" ;
+ static char *user_filename;
+ char *progname;
+ 
+@@ -195,8 +209,11 @@
+  * anyway) and less complex than turning on and correctly processing
+  * GraphicsExpose events.
+  */
+-static int statel = VisibilityFullyObscured;
+-static int stater = VisibilityFullyObscured;
++
++/* Make the initial state unobscured. */
++static int statel = VisibilityUnobscured;
++static int stater = VisibilityUnobscured;
++
+ 
+ /* ARGSUSED1 */
+ static void Visible (Widget widget, XtPointer closure, XEvent *event, Boolean *continue_to_dispatch)
+@@ -398,23 +415,37 @@
+     Region region;
+     Block *b;
+     GC fore, back;
+-    int columns;
+-
++    int columns, widget_side;
++	
++    Side x_selection = NEITHER;
++    Block *curr_x_block = newss.lastSelected;
++	
++    if (curr_x_block) {
++	x_selection = curr_x_block->selected;
++    }
++	
+     XtVaGetValues (w, XmNwidth, &width, XmNheight, &height, NULL);
+     XtAddExposureToRegion (cbs->event, region = XCreateRegion ());
+ 
+     columns = (int) width / font_width + 1;
+ 
++    if (w == textl)
++	widget_side = WIDGET_LEFT;
++    else if (w == textr)
++	widget_side = WIDGET_RIGHT;
++    else
++	assert (False);
++
+     itemp = newss.sindex;
+     ypos = 0;
+     for (b = newss.b; b != NULL; b = b->next) {
+ 	int j;
+ 	Chunk *ths, *oth;
+ 
+-	if (w == textl) {
++	if (widget_side == WIDGET_LEFT) {
+ 	    ths = &b->arr[LEFT];
+ 	    oth = &b->arr[RIGHT];
+-	    if (b->selected == LEFT) {
++	    if (b->selected == LEFT || b->selected == BOTH) {
+ 		fore = gcfore[4];
+ 		back = gcback[4];
+ 	    }
+@@ -423,10 +454,10 @@
+ 		back = gcback[ths->type];
+ 	    }
+ 	}
+-	else if (w == textr) {
++	else if (widget_side == WIDGET_RIGHT) {
+ 	    ths = &b->arr[RIGHT];
+ 	    oth = &b->arr[LEFT];
+-	    if (b->selected == RIGHT) {
++	    if (b->selected == RIGHT || b->selected == BOTH) {
+ 		fore = gcfore[4];
+ 		back = gcback[4];
+ 	    }
+@@ -537,15 +568,32 @@
+ 	open_right_file (toplevel, str_fnamer);
+ 	break;
+     case 3:			/* save as */
+-	if (all_selected ()) {
+-	    set_cursor (toplevel);
+-	    save_file (toplevel, di->first, str_fnamel);
++	if (all_selected () == False) {
++	    if (modal_question (toplevel, "Mgdiff Save", unselected_text_msg) == False)
++		break;
+ 	}
+-	else {
+-	    werror (toplevel, "Save Error", "Save", "there are unselected text blocks");
++	save_file (toplevel, di->first, str_fnamel);
++	break;
++	case 4:			/* save as left */
++	if (all_selected () == False) {
++	    if (modal_question (toplevel, "Mgdiff Save", unselected_text_msg) == False)
++		break;
+ 	}
++	    set_cursor (toplevel);
++	    save_as_filename (toplevel, di->first, str_fnamel);
++	    reset_cursor (toplevel);
++	break;
++	case 5:			/* save as right */
++	if (all_selected () == False) {
++	    if (modal_question (toplevel, "Mgdiff Save", unselected_text_msg) == False)
++		break;
++	}
++	    set_cursor (toplevel);
++	    save_as_filename (toplevel, di->first, str_fnamer);
++	    reset_cursor (toplevel);
++
+ 	break;
+-    case 4:			/* exit */
++    case 6:			/* exit */
+ 	exit_cb (w, NULL, NULL);
+ 	break;
+     default:
+@@ -724,7 +772,6 @@
+ 	dagcb = XtGetGC (children[1], GCForeground|GCBackground, &gc_values);
+ 	been_here = 1;
+     }
+-
+     for (i = 0; i < 3; i++) {
+ 	XtVaGetValues (children[i],
+ 		       XmNwidth, &width[i],
+@@ -755,7 +802,7 @@
+ 	yfpos[LEFT] += b->arr[LEFT].fsize;
+ 	h = ((int) height[0] * yfpos[LEFT] / max (di->flines[LEFT], 1)) - y;
+ 	y3 = ((h == 0) ? y1 : (y1 + h - 1));
+-	back = (b->selected == LEFT) ? 4 : b->arr[LEFT].type;
++	back = (b->selected == LEFT || b->selected == BOTH) ? 4 : b->arr[LEFT].type;
+ 	XFillRectangle (XtDisplay (children[0]), p[0], gcback[back],
+ 			0, y, width[0], h);
+ 
+@@ -763,7 +810,7 @@
+ 	yfpos[RIGHT] += b->arr[RIGHT].fsize;
+ 	h = ((int) height[2] * yfpos[RIGHT] / max (di->flines[RIGHT], 1)) - y;
+ 	y4 = ((h == 0) ? y2 : (y2 + h - 1));
+-	back = (b->selected == RIGHT) ? 4 : b->arr[RIGHT].type;
++	back = (b->selected == RIGHT || b->selected == BOTH) ? 4 : b->arr[RIGHT].type;
+ 	XFillRectangle (XtDisplay (children[2]), p[2], gcback[back],
+ 			0, y, width[2], h);
+ 
+@@ -906,6 +953,7 @@
+      */
+     static char *foo3 = "\
+ 	<Btn1Down>: Select() \n\
++	<Btn2Down>: Select() \n\
+ 	~Ctrl <Key>osfPageDown: Scroll(PageDown) \n\
+ 	~Ctrl <Key>osfPageUp: Scroll(PageUp) \n\
+ 	<Key>osfLeft: Scroll(Left) \n\
+@@ -951,8 +999,9 @@
+  */
+ static void cleanup_at_exit (void)
+ {
+-    if (tempfname != NULL)
++    if (strlen (tempfname) > 0)
+ 	(void) unlink (tempfname);
++    tempfname [0] = 0 ; 
+ }
+ 
+ /* 
+@@ -1018,8 +1067,11 @@
+     {"debug", "Debug", XtRBoolean, sizeof (Boolean), 0, XtRString, "false"},
+     {"filename", "Filename", XtRString, sizeof (String), 0, XtRString, ""}};
+     
+-    progname = basename (argv[0]);
++    progname = mgdiff_basename (argv[0]);
+ 
++    XtSetLanguageProc (NULL, NULL, NULL);
++    setlocale (LC_ALL, "");
++    setlocale (LC_CTYPE, "en");
+     toplevel = XtVaAppInitialize (&app, "Mgdiff", option_table, XtNumber (option_table),
+ #if X11R5
+ 				  &argc,
+@@ -1079,7 +1131,6 @@
+ 	};
+ 	werror_long (toplevel, "Wrong Application Defaults", array, sizeof (array) / sizeof (array[0]));
+     }
+-
+     if (debug_flag) {
+ 	XSetErrorHandler (x_error_handler);
+ 	XtAppSetErrorHandler (app, xt_error_handler);
+@@ -1087,7 +1138,10 @@
+     else
+ 	XtAppSetWarningHandler (app, xt_warning_handler);
+ 
+-#if sun
++#if 0
++    /* May possibly be required on some old versions of SunOS.
++    ** Definitely not required on Solaris.
++    */
+     (void) on_exit (cleanup_at_exit, NULL);
+ #else
+     (void) atexit (cleanup_at_exit);
+@@ -1109,14 +1163,17 @@
+ 	 * two filenames on command line; process them
+ 	 */
+     case 3:
++	if (strcmp (argv[1], "-") == 0 && strcmp (argv[2], "-") == 0) {
++		(void) fprintf (stderr, "Cannot use stdin for both file input\n");
++		exit (2);
++	}
+ 	if (strcmp (argv[1], "-") == 0) {
+-	    tempfname = tempnam (NULL, "mgdif");
+-	    str_fnamel = strdup (tempfname);
+-	    str_snamel = strdup (user_filename);
+-	    if (!copy_to_file (stdin, tempfname)) {
++	    if (!copy_to_tempfile (stdin, tempfname, sizeof (tempfname))) {
+ 		(void) fprintf (stderr, "Error copying stdin to temp file \"%s\"\n", tempfname);
+ 		exit (2);
+ 	    }
++	    str_fnamel = strdup (tempfname);
++	    str_snamel = strdup (user_filename);
+ 	}
+ 	else if (!file_tests (toplevel, argv[1])) {
+ 	    no_files_flag = True;
+@@ -1131,13 +1188,12 @@
+ 	}
+ 
+ 	if (strcmp (argv[2], "-") == 0) {
+-	    tempfname = tempnam (NULL, "mgdif");
+-	    str_fnamer = strdup (tempfname);
+-	    str_snamer = strdup (user_filename);
+-	    if (!copy_to_file (stdin, tempfname)) {
++	    if (!copy_to_tempfile (stdin, tempfname, sizeof (tempfname))) {
+ 		(void) fprintf (stderr, "Error copying stdin to temp file \"%s\"\n", tempfname);
+ 		exit (2);
+ 	    }
++	    str_fnamer = strdup (tempfname);
++	    str_snamer = strdup (user_filename);
+ 	}
+ 	else if (!file_tests (toplevel, argv[2])) {
+ 	    no_files_flag = True;
+@@ -1174,6 +1230,7 @@
+     }
+ 
+     newss.b = di->first;
++    newss.lastSelected= NULL;
+     newss.topline = newss.sindex = newss.findex[LEFT] = newss.findex[RIGHT] = 0;
+ 
+     mainw = XtVaCreateManagedWidget ("mainw", xmMainWindowWidgetClass,
+@@ -1205,10 +1262,13 @@
+ 				  XmVaPUSHBUTTON, NULL, NULL, NULL, NULL,
+ 				  XmVaSEPARATOR,
+ 				  XmVaPUSHBUTTON, NULL, NULL, NULL, NULL,
++				  XmVaPUSHBUTTON, NULL, NULL, NULL, NULL,
++				  XmVaSEPARATOR,
++				  XmVaPUSHBUTTON, NULL, NULL, NULL, NULL,
+ 				  NULL);
+     if (no_files_flag || (di->status == 2)) {
+ 	toggle_openlr_sensitive (False);
+-	toggle_saveas_sensitive (False);
++	toggle_saveas_sensitive (False, False, False);
+     }
+     XmVaCreateSimplePulldownMenu (menubar, "view_menu", 1, view_cb,
+ 				  XmVaPUSHBUTTON, NULL, NULL, NULL, NULL,
+@@ -1491,6 +1551,7 @@
+ 
+     XtAppMainLoop (app);
+     /* NOTREACHED */
++    return 0;
+ }
+ 
+ static void redraw_partial_vert (Widget w)
+@@ -1622,9 +1683,9 @@
+ {
+     char buffer[16];
+ 
+-    (void) sprintf (buffer, "%*d", linenum_columns, l);
++    (void) snprintf (buffer, sizeof (buffer), "%*d", linenum_columns, l);
+     XmTextFieldSetString (linenuml, buffer);
+-    (void) sprintf (buffer, "%*d", linenum_columns, r);
++    (void) snprintf (buffer, sizeof (buffer), "%*d", linenum_columns, r);
+     XmTextFieldSetString (linenumr, buffer);
+ }
+ 
+@@ -1986,7 +2047,7 @@
+ 					      mgdiff_width, mgdiff_height,
+ 					      fg, bg,
+ 					      DefaultDepth (dpy, DefaultScreen (dpy)));
+-	(void) sprintf (buffer, "mgdiff\n\nA graphical difference browser\n\nAuthor: Dan Williams (dan@sass.com)\nVersion: %s PL%s", VERSION, PATCHLEVEL);
++	(void) snprintf (buffer, sizeof (buffer), "mgdiff\n\nA graphical difference browser\n\nAuthors: Dan Williams (dan@sass.com)\nErik de Castro Lopo (erikd@mega-nerd.com)\n\nVersion: %s PL%s", VERSION, PATCHLEVEL);
+ 
+ 	XtVaSetValues (dialog,
+ 		       XmNautoUnmanage, True,
+@@ -2041,12 +2102,12 @@
+     if (di->status != 2) {
+ 	no_files_flag = False;
+ 	toggle_openlr_sensitive (True);
+-	toggle_saveas_sensitive (True);
++	toggle_saveas_sensitive (True, True, True);
+     }
+     else {
+ 	no_files_flag = True;
+ 	toggle_openlr_sensitive (False);
+-	toggle_saveas_sensitive (False);
++	toggle_saveas_sensitive (False, False, False);
+ 	free (str_fnamel);
+ 	free (str_snamel);
+ 	free (str_fnamer);
+@@ -2082,7 +2143,7 @@
+     if (di->status == 2) {
+ 	no_files_flag = True;
+ 	toggle_openlr_sensitive (False);
+-	toggle_saveas_sensitive (False);
++	toggle_saveas_sensitive (False, False, False);
+ 	free (str_fnamel);
+ 	free (str_snamel);
+ 	free (str_fnamer);
+@@ -2117,7 +2178,7 @@
+     if (di->status == 2) {
+ 	no_files_flag = True;
+ 	toggle_openlr_sensitive (False);
+-	toggle_saveas_sensitive (False);
++	toggle_saveas_sensitive (False, False, False);
+ 	free (str_fnamel);
+ 	free (str_snamel);
+ 	free (str_fnamer);
+@@ -2133,6 +2194,7 @@
+     handle_diff_errors (di);
+ }
+ 
++
+ static void refresh (void)
+ {
+     newss.b = di->first;
+@@ -2182,9 +2244,11 @@
+     toggle_openlr_sensitive (sensitive);
+ }
+ 
+-static void toggle_saveas_sensitive (Boolean sensitive)
++static void toggle_saveas_sensitive (Boolean saveas, Boolean save_left, Boolean save_right)
+ {
+-    XtSetSensitive (XtNameToWidget (file_menu, "button_3"), sensitive);
++    XtSetSensitive (XtNameToWidget (file_menu, "button_3"), saveas);
++    XtSetSensitive (XtNameToWidget (file_menu, "button_4"), save_left);
++    XtSetSensitive (XtNameToWidget (file_menu, "button_5"), save_right);
+ }
+ 
+ /* 
+@@ -2196,78 +2260,263 @@
+     exit ((di != NULL) ? di->status : 2);
+ }
+ 
++static void lost_selection ( Widget  widget, Atom* selection) { 
++	
++	if (debug_flag) {
++		fprintf(stderr,"selection lost on widget %p\n",widget);
++	}
++//	newss.lastSelected=NULL;
++}
++
++static Boolean do_selection(Widget widget, Atom*  selection, Atom*  target ,
++                            Atom*  type, XtPointer*  value, 
++			    unsigned long* length,int* format) {
++
++    Atom targets = XInternAtom(XtDisplay(widget), "TARGETS", False);
++    Atom *array;
++    char* result;
++    char* line;
++    int i,j;
++    Block *b= newss.lastSelected;
++    Chunk *chunk =NULL;
++    
++    if (debug_flag) {
++		fprintf(stderr,"selection request on widget %p\n",widget);
++    }
++
++   if (!b) return False;
++   
++   chunk = &(b->arr[b->selected]);
++   
++    if (*target == targets)
++    {
++	if (debug_flag) {
++		fprintf(stderr,"clipboards targets requested on widget %p\n",widget);
++        }	
++	/*
++	 * Handle request for data types
++	 */
++
++	if ((array = (Atom *)XtMalloc((unsigned)(sizeof(Atom) * 1))) == NULL)
++	    return False;
++	*value = (XtPointer)array;
++	array[0] = XA_STRING;
++	*type = XA_ATOM;
++	*format = sizeof(Atom) * 8;
++	*length = 5;
++	return True;
++    }
++    
++    if (*target == XA_STRING) {
++    	/*
++	 * request for string data !.
++	 */
++	if (debug_flag) {
++		fprintf(stderr,"string target requested on widget %p\n",widget);
++	}
++    	
++	/*
++	 * Iterate through the lines in the text block
++	 * summing the lengths
++	 */
++	*length=0;
++	for (i = 0; i < chunk->fsize; i++) {
++	   if ((chunk->wtext != NULL) && (chunk->wtext[i] != NULL)) {
++	       *length += (strlen(chunk->wtext[i])+1);
++	   } else {
++	       *length += (strlen(chunk->text[i])+1);
++	   }
++         }
++        *format = 8;	    /* 8 bits per char */
++	*type  = XA_STRING;
++	if (debug_flag) {
++		fprintf(stderr,"string length= %li\n",*length);
++	}
++
++    	*value = XtMalloc(*length);
++        result = (char*)(*value);
++ 	/*
++	 * Iterate through the lines in the text block
++	 * moving the data into the clipboard memblock
++	 */
++	for (i = 0; i < chunk->fsize; i++) {
++	   if ((chunk->wtext != NULL) && (chunk->wtext[i] != NULL)) {
++	      line = chunk->wtext[i] ;
++	   } else {
++	       line = chunk->text[i];
++	   }
++	   j =strlen(line);
++	   memcpy(result,line,j);
++	   result+=j;
++	   *(result++)= '\n';
++         }
++ 	
++	
++	if (debug_flag) {
++		fprintf(stderr,"all done string at= %p\n",*value);
++	}
++	if (!(*value)) {
++		return False;
++    	}
++	return True;
++    }
++    /* 
++     * Haven't found data type we know about!
++     */
++    return False;	
++}
++
++
++
++
+ /* ARGSUSED2 */
+ static void Select (Widget widget, XEvent *event, String *params, Cardinal *num_params)
+ {
+-    if (event->xany.type == ButtonPress) {
++    /*
++    ** The original version of this function was rather confusing. It was
++    ** rewritten to make it easier to follow so that more selection features
++    ** could then be added (ie select both left and right).
++    ** The function itself and the main for loop are written so that evaluation
++    ** of current state occurs at the top and processing at the bottom. For
++    ** instance, the first test to see if the XEvent is a ButtonPress returns
++    ** from the function rather than making the whole function one huge if
++    ** statement. Similarly, continue statements are used in the for loop to
++    ** bypass the lower part of the loop.
++    */
+ 	Block *b;
+ 	Dimension ypos, height;
+-	int itemp, rect_height;
++    int itemp, rect_height, widget_side;
++ 	Side x_selection = NEITHER;
++        Block *curr_x_block = newss.lastSelected;
++
++    if (event->xany.type != ButtonPress)
++	return;
++
++    if (widget == textl)
++	widget_side = WIDGET_LEFT;
++    else if (widget == textr)
++	widget_side = WIDGET_RIGHT;
++    else
++	assert (False);
++
++ 	
++ 	if (curr_x_block) {
++		x_selection = curr_x_block->selected;
++ 	}
+ 
+ 	XtVaGetValues (widget, XmNheight, &height, NULL);
+ 
+ 	itemp = newss.sindex;
+ 	ypos = 0;
++ 	//Find selected chunk!.
+ 	for (b = newss.b; b != NULL; b = b->next) {
++	/* If the current ypos is > height of window, we're done, so just return. */
++	    if (ypos > height)
++	    	return;
++
+ 	    if ((rect_height = font_height * (b->ssize - itemp)) > (int) height)
+ 		rect_height = height;
++	itemp = 0;
+ 
+-	    if ((event->xbutton.y >= (unsigned int) ypos) &&
+-		(event->xbutton.y < (unsigned int) (ypos + rect_height)) &&
+-		(b->arr[LEFT].type != SAME)) {
+-		switch (b->selected) {
+-		case LEFT:
+-		    if (widget == textl) {
+-			b->selected = NEITHER;
+-			redraw_partial (textl, ypos, rect_height);
+-			redraw_partial (textr, ypos, rect_height);
+-			update_pixmaps ();
++	if (event->xbutton.y < (unsigned int) ypos) {
++	    ypos += rect_height;
++	    continue;
+ 		    }
+-		    else if (widget == textr) {
+-			b->selected = RIGHT;
+-			redraw_partial (textl, ypos, rect_height);
+-			redraw_partial (textr, ypos, rect_height);
+-			update_pixmaps ();
++
++	if (event->xbutton.y >= (unsigned int) (ypos + rect_height)) {
++	    ypos += rect_height;
++	    continue;
+ 		    }
+-		    else
+-			assert (False);
+-		    break;
+-		case RIGHT:
+-		    if (widget == textl) {
++
++	/*
++	** Have now found the selected block.
++	** If the LH and RH sides of the selected block are the same, then
++	** there is nothing to do, so just return.
++	*/
++	if (b->arr[LEFT].type == SAME)
++	    return;
++
++	/*
++	** This state machine has been rewritten as a true state machine. The
++	** original had three cases (LEFT< RIGHT, NEITHER) and an if statement
++	** in each case. Since the original simplification, more states have
++	** been added (ie select BOTH state).
++	*/
++	switch (widget_side | (event->xbutton.button << 4) | b->selected) {
++	    case WIDGET_LEFT  | (1<<4) | NEITHER:
++	    case WIDGET_LEFT  | (1<<4) | RIGHT:
++	    case WIDGET_LEFT  | (1<<4) | BOTH:
+ 			b->selected = LEFT;
+-			redraw_partial (textl, ypos, rect_height);
+-			redraw_partial (textr, ypos, rect_height);
+-			update_pixmaps ();
+-		    }
+-		    else if (widget == textr) {
++		break;
++	    case WIDGET_LEFT  | (1<<4) | LEFT:
++	    case WIDGET_RIGHT | (2<<4) | BOTH:
+ 			b->selected = NEITHER;
+-			redraw_partial (textl, ypos, rect_height);
+-			redraw_partial (textr, ypos, rect_height);
+-			update_pixmaps ();
+-		    }
+-		    else
+-			assert (False);
+ 		    break;
+-		case NEITHER:
+-		    b->selected = (widget == textl) ? LEFT : RIGHT;
+-		    redraw_partial (textl, ypos, rect_height);
+-		    redraw_partial (textr, ypos, rect_height);
+-		    update_pixmaps ();
++
++	    case WIDGET_RIGHT | (1<<4) | NEITHER:
++	    case WIDGET_RIGHT | (1<<4) | LEFT:
++	    case WIDGET_RIGHT | (1<<4) | BOTH:
++		b->selected = RIGHT;
++		break;
++	    case WIDGET_RIGHT | (1<<4) | RIGHT:
++	    case WIDGET_LEFT  | (2<<4) | BOTH:
++		b->selected = NEITHER;
+ 		    break;
+-		default:
+-		    assert (False);
++
++	    case WIDGET_LEFT  | (2<<4) | NEITHER:
++	    case WIDGET_LEFT  | (2<<4) | LEFT:
++	    case WIDGET_LEFT  | (2<<4) | RIGHT:
++	    	if (b->arr[LEFT].type == DIFF) {
++		    b->selected = BOTH;
+ 		    break;
+ 		}
+-		return;
+-	    }
++		if (b->arr[LEFT].wtext != NULL)
++		    b->selected = (b->selected == LEFT) ? NEITHER : LEFT;
++	    	break ;
++
++	    case WIDGET_RIGHT | (2<<4) | NEITHER:
++	    case WIDGET_RIGHT | (2<<4) | LEFT:
++	    case WIDGET_RIGHT | (2<<4) | RIGHT:
++	    	if (b->arr[LEFT].type == DIFF) {
++		    b->selected = BOTH;
++		    break;
++		}
++	    	if (b->arr[RIGHT].wtext != NULL)
++		    b->selected = (b->selected == RIGHT) ? NEITHER : RIGHT;
++	    	break ;
+ 
+-	    ypos += rect_height;
+ 
+-	    itemp = 0;
+-	    if (ypos > height)
+-		return;
++		default:
++		printf ("Button:%d    widget:%s    sel:%d\n", event->xbutton.button, 
++			widget_side == WIDGET_LEFT ? "LEFT" : "RIGHT", b->selected) ;
++		    assert (False);
++		    break;
++		}
++	redraw_partial (textl, ypos, rect_height);
++	redraw_partial (textr, ypos, rect_height);
++	update_pixmaps ();
++      
++	if (  b->selected == NEITHER ) {
++		if (b == newss.lastSelected)
++ 			newss.lastSelected=NULL;
++	} else {
++		newss.lastSelected=b;
+ 	}
+-    }
++	
++	if ( !newss.lastSelected 
++	      || (x_selection != newss.lastSelected->selected)
++  //	     || (newss.lastSelected != curr_x_block ) 
++ 	    )
++	{
++ 		XtDisownSelection(widget,XA_PRIMARY, CurrentTime);
++	}
++	
++ 	if (newss.lastSelected) {
++ 	   XtOwnSelection(widget,XA_PRIMARY, CurrentTime,&do_selection,&lost_selection,NULL);
++  	}
++
++	return;
++	    }
+ }
+ 
+ /* 
+@@ -2307,14 +2556,14 @@
+ 	else {
+ 	    char buffer[1024];
+ 	    
+-	    (void) sprintf (buffer, "Illegal argument to action proc Scroll (\"%s\")", params[0]);
++	    (void) snprintf (buffer, sizeof (buffer), "Illegal argument to action proc Scroll (\"%s\")", params[0]);
+ 	    XtAppWarning (XtWidgetToApplicationContext (widget), buffer);
+ 	}
+     }
+     else {
+ 	char buffer[1024];
+ 	    
+-	(void) sprintf (buffer, "Illegal number of arguments to action proc Scroll (\"%d\")", *num_params);
++	(void) snprintf (buffer, sizeof (buffer), "Illegal number of arguments to action proc Scroll (\"%d\")", *num_params);
+ 	XtAppWarning (XtWidgetToApplicationContext (widget), buffer);
+     }
+ }
+@@ -2391,7 +2640,7 @@
+ /* 
+  * delete any prefix ending in '/' and return a copy
+  */
+-static char *basename (char *path)
++static char *mgdiff_basename (char *path)
+ {
+     if (path) {
+ 	char *p;
+--- mgdiff.h
++++ mgdiff.h
+@@ -1,7 +1,7 @@
+ #ifndef MXDIFF_H
+ #define MXDIFF_H
+ 
+-#ifndef lint
++#if 0
+ static char rcsid_mgdiff_h[] = "mgdiff.h,v 2.0 1994/05/19 02:01:15 dan Exp";
+ #endif
+ 
+@@ -52,7 +52,11 @@
+     short *tlen;		/* the lengths of each line */
+ } Chunk;
+ 
+-typedef enum {LEFT = 0, RIGHT, NEITHER} Side;
++/*
++** LEFT and RIGHT must be 0 and 1 respectively as they are used 
++** to index as array.
++*/
++typedef enum {LEFT = 0, RIGHT, NEITHER, BOTH} Side;
+ 
+ /* 
+  * a block is an element of a doubly linked list containing a left chunk 
+@@ -86,4 +90,11 @@
+  */
+ #define X11R5 (defined(XtSpecificationRelease) && (XtSpecificationRelease >= 5))
+ 
++/*
++ * According to IETF RFC 2279, byte values of 0xfe and 0xff are
++ * not legal utf-8, but all others bytes are legal.
++ */
++#define islatin(c)     (isprint((c)) || ((((unsigned char)(c)) <= 0xfd)))
++
++#define isallowed(c)	(isascii((c)) || islatin((c)))
+ #endif
+--- Imakefile
++++ Imakefile
+@@ -8,7 +8,8 @@
+ XCOMM
+ XCOMM for Dell SVR4
+ XCOMM
+-EXTRA_LIBRARIES = -lc -lucb
++#EXTRA_LIBRARIES = -lc -lucb
++EXTRA_DEFINES = -Wall -Wstrict-prototypes -Wmissing-prototypes
+ 
+ SRCS = mgdiff.c rundiff.c misc.c files.c spawn.c manual.c modal.c legend.c
+ OBJS = mgdiff.o rundiff.o misc.o files.o spawn.o manual.o modal.o legend.o
+--- legend.c
++++ legend.c
+@@ -1,4 +1,4 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "legend.c,v 2.0 1994/05/19 02:01:08 dan Exp";
+ #endif
+ 
+--- Mgdiff.ad
++++ Mgdiff.ad
+@@ -112,7 +112,7 @@
+ !
+ ! this should only be defined in the site-wide file
+ !
+-?.AppDefaultsVersion:			1
++?.AppDefaultsVersion:			2
+ 
+ ?.Geometry:				800x600
+ 
+@@ -215,10 +215,14 @@
+ *file_menu*button_3.Accelerator:	Ctrl<Key>s
+ *file_menu*button_3.AcceleratorText:	Ctrl+S
+ 
+-*file_menu*button_4.XmString:		Exit
+-*file_menu*button_4.Mnemonic:		E
+-*file_menu*button_4.Accelerator:	Ctrl<Key>c
+-*file_menu*button_4.AcceleratorText:	Ctrl+C
++*file_menu*button_4.XmString:		Save As Left...
++*file_menu*button_5.XmString:		Save As Right...
++
++*file_menu*button_6.XmString:		Exit
++*file_menu*button_6.Mnemonic:		E
++*file_menu*button_6.Accelerator:	Ctrl<Key>c
++*file_menu*button_6.AcceleratorText:	Ctrl+C
++
+ !
+ !
+ *view_menu*button_0.XmString:		Previous
+--- spawn.c
++++ spawn.c
+@@ -1,4 +1,4 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "spawn.c,v 2.0 1994/05/19 02:01:23 dan Exp";
+ #endif
+ 
+@@ -35,6 +35,11 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ 
++#include <X11/Intrinsic.h>
++
++#include "mgdiff.h"
++#include "externs.h"
++
+ #define BLOCKSIZE 10
+ 
+ /* 
+@@ -105,7 +110,7 @@
+ 	argv[argc++] = NULL;
+ 
+ 	if (execvp (prog, argv) == -1) {
+-	    (void) sprintf (buffer, "%s: %s: %s", progname, "exec", prog);
++	    (void) snprintf (buffer, sizeof (buffer), "%s: %s: %s", progname, "exec", prog);
+ 	    perror (buffer);
+ 	    exit (2);
+ 	}
+@@ -131,4 +136,5 @@
+ 	break;
+     }
+     /* NOTREACHED */
++    return NULL;
+ }
+--- files.c
++++ files.c
+@@ -1,9 +1,10 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "files.c,v 2.0 1994/05/19 02:01:06 dan Exp";
+ #endif
+ 
+ /*
+  * Copyright (c) 1994    Daniel Williams
++ * Copyright (c) 2003    Erik de Castro Lopo
+  * 
+  * The X Consortium, and any party obtaining a copy of these files from
+  * the X Consortium, directly or indirectly, is granted, free of charge,
+@@ -83,16 +84,18 @@
+  */
+ static int is_ascii_text (char *filename)
+ {
+-    int fd, bytes, i;
++    int fd, bytes, i, ch;
+     char buffer[1024];
+ 
+     fd = open (filename, O_RDONLY);
+     bytes = read (fd, (void *) buffer, 1024);
+     (void) close (fd);
+ 
+-    for (i = 0; i < bytes; i++)
+-	if (!isascii (buffer[i]))
++    for (i = 0; i < bytes; i++) {
++	ch = buffer [i];
++	if (!isallowed(ch))
+ 	    return (0);
++    }
+     return (1);
+ }
+ 
+@@ -143,7 +146,7 @@
+     XmString xms;
+     Arg args[2];
+ 
+-    (void) sprintf (buffer, "%s: %s", msg1, msg2);
++    (void) snprintf (buffer, sizeof (buffer), "%s: %s", msg1, msg2);
+     xms = XmStringCreateLtoR (buffer, XmSTRING_DEFAULT_CHARSET);
+     XtSetArg (args[0], XmNmessageString, xms);
+     XtSetArg (args[1], XmNdialogStyle, XmDIALOG_PRIMARY_APPLICATION_MODAL);
+@@ -318,7 +321,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms;
++    XmString xms = NULL ;
+ 
+     shell = XtVaCreatePopupShell ("openfiles", xmDialogShellWidgetClass, parent,
+ 				  XmNallowShellResize, True,
+@@ -424,7 +427,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms;
++    XmString xms = NULL ;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdeleteResponse, XmDO_NOTHING); i++;
+@@ -477,7 +480,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms;
++    XmString xms = NULL ;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdeleteResponse, XmDO_NOTHING); i++;
+@@ -533,7 +536,7 @@
+     if (access (filename, W_OK) == 0) {	/* file exists and can be written */
+ 	char buffer[1024];
+ 
+-	(void) sprintf (buffer, "Overwrite \"%s\"?", filename);
++	(void) snprintf (buffer, sizeof (buffer), "Overwrite \"%s\"?", filename);
+ 	if (modal_question (w, "Mgdiff Save Question", buffer)) {
+ 	    set_cursor (shell);
+ 	    if ((status = really_save_file (filename, (Block *) closure)) != 0) {
+@@ -569,7 +572,7 @@
+     Arg args[3];
+     int i;
+     char *dir;
+-    XmString xms;
++    XmString xms = NULL ;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdialogStyle, XmDIALOG_PRIMARY_APPLICATION_MODAL); i++;
+@@ -618,18 +621,32 @@
+ 		return (status);
+ 	}
+ 	else if ((b->arr[LEFT].type == DIFF) && (b->arr[RIGHT].type == DIFF)) {
+-	    assert (b->selected != NEITHER);
++	    switch (b->selected) {
++		case BOTH:
++		    fprintf (file, "<<<<<<< diff from left file\n");
++		    if ((status = write_chunk (file, &b->arr[LEFT])) != 0)
++			return (status);
++		    fprintf (file, "========\n");
++		    if ((status = write_chunk (file, &b->arr[RIGHT])) != 0)
++			return (status);
++		    fprintf (file, ">>>>>>> diff from right file\n");
++		    break;
++		case LEFT:
++		case RIGHT:
+ 	    if ((status = write_chunk (file, &b->arr[b->selected])) != 0)
+ 		return (status);
++		    break;
++		case NEITHER:
++		    break;
++		default : assert (False);
++	    }
+ 	}
+ 	else if ((b->arr[LEFT].type == INSERT) && (b->arr[RIGHT].type == BLANK)) {
+-	    assert (b->selected != NEITHER);
+ 	    if (b->selected == LEFT)
+ 		if ((status = write_chunk (file, &b->arr[LEFT])) != 0)
+ 		    return (status);
+ 	}
+ 	else if ((b->arr[LEFT].type == BLANK) && (b->arr[RIGHT].type == INSERT)) {
+-	    assert (b->selected != NEITHER);
+ 	    if (b->selected == RIGHT)
+ 		if ((status = write_chunk (file, &b->arr[RIGHT])) != 0)
+ 		    return (status);
+@@ -669,3 +686,45 @@
+ 
+     return (0);
+ }
++
++void save_as_filename (Widget parent, Block *closure, char *filename)
++{	
++    char *title = "Mgdiff Save Error";
++    int status;
++    Widget shell = get_top_shell (parent);
++
++    if (access (filename, W_OK) == 0) {
++	/* file exists and can be written */
++	char buffer[1024];
++
++	(void) snprintf (buffer, sizeof (buffer), "Overwrite \"%s\"?", filename);
++	if (modal_question (parent, "Mgdiff Save Question", buffer)) {
++	    set_cursor (shell);
++	    if ((status = really_save_file (filename, (Block *) closure)) != 0) {
++		reset_cursor (shell);
++		werror (parent, title, filename, strerror (status));
++		return;
++	    }
++	    reset_cursor (shell) ;
++	}
++    }
++    else {
++	/* file can't be written to */
++	if (errno == ENOENT) {
++	    /* because it doesn't exist */
++	    set_cursor (shell);
++	    if ((status = really_save_file (filename, (Block *) closure)) != 0) {
++		reset_cursor (shell);
++		werror (parent, title, filename, strerror (status));
++		return;
++	    }
++	    reset_cursor (shell);
++	}
++	else {
++	    /* for some other reason */
++	    werror (parent, title, filename, strerror (errno));
++	    return;
++	}
++    }
++
++} /* save_as_filename */
+--- manual.c
++++ manual.c
+@@ -1,4 +1,4 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "manual.c,v 2.0 1994/05/19 02:01:09 dan Exp";
+ #endif
+ 
+@@ -134,14 +134,14 @@
+ 	if (value == NULL) {	/* system calls in popen failed */
+ 	    char buffer[1024];
+ 
+-	    (void) sprintf (buffer, "System routine \"popen\" failed executing\nthis command (resource \"manCommand\"):\n\n\"%s\"", cmd);
++	    (void) snprintf (buffer, sizeof (buffer), "System routine \"popen\" failed executing\nthis command (resource \"manCommand\"):\n\n\"%s\"", cmd);
+ 	    xms = XmStringCreateLtoR (buffer, XmSTRING_DEFAULT_CHARSET);
+ 	    iserror = 1;
+ 	}
+ 	else if (value[0] == '\0') { /* command produced no output */
+ 	    char buffer[1024];
+ 
+-	    (void) sprintf (buffer, "Shell command (resource \"manCommand\"):\n\n\"%s\"\n\nproduced no output", cmd);
++	    (void) snprintf (buffer, sizeof (buffer), "Shell command (resource \"manCommand\"):\n\n\"%s\"\n\nproduced no output", cmd);
+ 	    xms = XmStringCreateLtoR (buffer, XmSTRING_DEFAULT_CHARSET);
+ 	    iserror = 1;
+ 	}
+@@ -151,7 +151,7 @@
+ 
+ 	    if ((tmp = strrchr (value, '\n')) != NULL)
+ 		*tmp = '\0';
+-	    (void) sprintf (buffer, "Shell command (resource \"manCommand\"):\n\n    \"%s\"\n\nproduced this output: \n\n    \"%s\"", cmd, value);
++	    (void) snprintf (buffer, sizeof (buffer), "Shell command (resource \"manCommand\"):\n\n    \"%s\"\n\nproduced this output: \n\n    \"%s\"", cmd, value);
+ 	    xms = XmStringCreateLtoR (buffer, XmSTRING_DEFAULT_CHARSET);
+ 	    iserror = 1;
+ 	}
+--- debian/README.debian
++++ debian/README.debian
+@@ -0,0 +1,39 @@
++mgdiff for DEBIAN
++----------------------
++
++I've added an awk script called "rmgdiff" that allows you to use
++mgdiff (or tkdiff etc.) to graphically and recursively diff two
++directories.
++
++Paul Serice <ugs@debian.org>, Tue, 25 Aug 1998 23:05:16 -0500
++
++               -----------------------------
++
++I've applied lots of patches from Erik de Castro Lopo <erikd AT
++mega-nerd DOT com>. Main new features for the user are:
++
++  - Save As Left... / Save As Right... in File menu
++  - saving without having selected all textblocks is possible
++  - click-middle-button selects both sides, the resulting file gets
++    markers like CVS uses
++  - changes documented in manpage
++
++See the changelog entry of 1.0-20 for a complete list of changes and
++the manpage for more explanations of the new features. Thanks Erik,
++great work!
++
++Edelhard Becker <edelhard@debian.org>, Sat, 07 Jun 2003 16:02:26 +0200
++
++               -----------------------------
++
++I've got another useful patch from Roger Gammans <roger@computer-
++surgery.co.uk> which add two features (see his "Patch Viewer" page
++http://www.sandman.uklinux.net/patchv/default.html for more info):
++
++  - X Paste of the most recently selected diff hunk. 
++  - A wrapper to view patches, by appliy them to a temporary file first 
++
++The latter is installed as /usr/share/doc/mgdiff/viewpatch, thanks
++Roger!
++
++Edelhard Becker <edelhard@debian.org>, Thu, 08 Apr 2004 00:42:30 +0200
+--- debian/control
++++ debian/control
+@@ -0,0 +1,15 @@
++Source: mgdiff
++Section: text
++Priority: optional
++Maintainer: Edelhard Becker <edelhard@debian.org>
++Build-Depends: xutils, lesstif2-dev, debhelper (>= 4)
++Standards-Version: 3.6.1
++
++Package: mgdiff
++Architecture: any
++Depends: ${shlibs:Depends}, debianutils (>=1.7), file, mawk
++Description: xdiff clone
++ mgdiff is modeled after xdiff and provides a nice graphical interface
++ for comparing the contents of two text files.  rmgdiff recurses down
++ two directories collating difference information and invoking mgdiff
++ whenever two text files differ.
+--- debian/prerm
++++ debian/prerm
+@@ -0,0 +1,7 @@
++#!/bin/sh
++
++#DEBHELPER#
++
++if [ -L /usr/doc/mgdiff ]; then
++	rm -f /usr/doc/mgdiff
++fi
+--- debian/rules
++++ debian/rules
+@@ -0,0 +1,66 @@
++#!/usr/bin/make -f
++# Made with the aid of debmake, by Christoph Lameter,
++# based on the sample debian/rules file for GNU hello by Ian Jackson.
++
++export DH_COMPAT=4
++package=mgdiff
++
++build:
++	dh_testdir
++	xmkmf
++	make depend XMULIBONLY=""
++	make XMULIBONLY=""
++	touch build
++
++clean:
++	dh_testdir
++	-rm -f build
++	-make clean
++	-rm -f `find . -name "*~"`
++	-rm -rf debian/mgdiff debian/files* core debian/substvars
++
++binary-indep: build
++	dh_testdir
++	dh_testroot
++# There are no architecture-independent files to be uploaded
++# generated by this package.  If there were any they would be
++# made here.
++
++binary-arch: build
++	dh_testdir
++	dh_testroot
++	-rm -rf debian/mgdiff
++	install -d debian/mgdiff debian/mgdiff/usr/bin debian/mgdiff/usr/share/man/man1 debian/mgdiff/usr/share/doc/mgdiff
++	make install BINDIR=`pwd`/debian/mgdiff/usr/bin \
++		XAPPLOADDIR=`pwd`/debian/mgdiff/etc/X11/app-defaults \
++		XMULIBONLY=""
++	make install.man MANDIR=`pwd`/debian/mgdiff/usr/share/man/man1 XMULIBONLY=""
++	mkdir -p debian/mgdiff/usr/lib/rmgdiff
++	install -m 755 debian/rmgdiff debian/mgdiff/usr/lib/rmgdiff
++	install -m 644 debian/rmgdiff.awk debian/mgdiff/usr/lib/rmgdiff
++	ln -s ../lib/rmgdiff/rmgdiff debian/mgdiff/usr/bin
++	install -m 755 debian/cvsmgdiff debian/mgdiff/usr/bin
++	install -m 644 debian/cvsmgdiff.1 debian/mgdiff/usr/share/man/man1
++	install -m 644 debian/rmgdiff.1x debian/mgdiff/usr/share/man/man1
++	install -m 644 debian/mgdiff.README debian/mgdiff/usr/share/doc/mgdiff
++	install -m 755 debian/viewpatch debian/mgdiff/usr/share/doc/mgdiff
++	chmod u+w debian/mgdiff/usr/share/man/man1/mgdiff.1x
++	chmod u+w debian/mgdiff/etc/X11/app-defaults/Mgdiff
++	dh_testdir
++	dh_installdirs
++	dh_installdocs
++	dh_installman
++	dh_installchangelogs 
++	dh_link
++	dh_strip
++	dh_compress
++	dh_fixperms
++	dh_installdeb
++	dh_shlibdeps
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++
++binary: binary-indep binary-arch
++
++.PHONY: binary binary-arch binary-indep clean
+--- debian/rmgdiff
++++ debian/rmgdiff
+@@ -0,0 +1,183 @@
++#!/bin/sh
++
++# Default value for the RMGDIFF_GUI environment variable.
++: ${RMGDIFF_GUI:=/usr/bin/mgdiff}
++
++#
++# You shouldn't need to edit beneath here.
++#
++
++SHOW_FILE_TYPES="TRUE"
++USE_CVS=""
++DEBUG=""
++USE_GUI="TRUE"
++RMGDIFF_VERSION=""
++
++
++
++Usage() {
++cat <<-EOF
++
++Usage: `basename "$0"` [-b] [-c] [-d] [-g <gui>] [-n] [-v] <dir1> <dir2>
++
++    -b: basic reporting (no file type info will be printed)
++    -c: cvs files will be included in diff
++    -d: print debugging information
++    -g: which gui to use
++    -n: no gui will pop up
++    -v: version
++
++EOF
++}
++
++verify_exec () {
++    type "$1" 1>/dev/null 2>&1
++    if [ $? -ne 0 ] ; then
++        echo "$progname: Error: Unable to find executable for \"$1\"." >&2
++        exit 1
++    fi
++}
++
++# Some machines don't have a "readlink" command.
++read_link_via_ls() {
++    if [ $# -ne 1 ] ; then
++        echo "$progname: Internal Error: Invalid args for" \
++             "readlink_via_ls: $@" >&2
++        exit 1
++    fi
++
++    \ls -l "$1" | sed -e 's|.*-> ||'
++}
++
++
++# Some machines don't have a "realpath" command.  follow_link_via_ls
++# does not pretend to be "realpath" because it will leave all sorts of
++# cruft in the path string, but it should eventuall reach a regular
++# file.
++follow_link_via_ls() {
++
++    if [ $# -ne 1 ] ; then
++        echo "$progname: Internal Error: Invalid args for" \
++             "follow_link_via_ls: $@" >&2
++        exit 1
++    fi
++
++    local_iteration_count=0
++    local_iteration_max=1024
++
++    # Prime the pump.
++    local_tmp=
++    local_rv="$1"
++
++    while [ $local_iteration_count -lt $local_iteration_max ] ; do
++
++        if [ ! -h "$local_rv" ] ; then
++            break
++        fi
++
++        local_tmp=`read_link_via_ls "$local_rv"`
++
++        # The "read_link_via_ls" above could result in an absolute
++        # path or a relative one.  The Solaris /bin/sh does not
++        # support "${PSTREE_AWK_SCRIPT#/}".  So, use grep instead.
++        echo "$local_tmp" | grep '^/' >/dev/null 2>&1
++        if [ $? -ne 0 ] ; then
++            # The path given by readlink was relative.  So, we have a
++            # little more work to do because we need to prepend the
++            # same path used to reach the original symlink.
++            local_tmp=`dirname "$local_rv"`/"$local_tmp"
++        fi
++
++        local_rv="$local_tmp"
++
++        local_iteration_count=`expr $local_iteration_count + 1`
++
++    done
++
++    if [ $local_iteration_count -ge $local_iteration_max ] ; then
++        echo "$progname: Error: Symbolic link nesting is too deep when" \
++             "following \"$1\"." >&2
++        exit 1
++    fi 
++
++    echo "$local_rv"
++
++}
++
++
++#
++# Script starts here.
++#
++
++progname="rmgdiff"
++verify_exec "basename"
++progname=`basename "$0"`
++
++verify_exec "awk"
++verify_exec "diff"
++verify_exec "dirname"
++verify_exec "expr"
++verify_exec "file"
++verify_exec "grep"
++verify_exec "ls"
++verify_exec "$RMGDIFF_GUI"
++verify_exec "sed"
++
++while getopts "bcdg:nv" OPT ; do
++    case "$OPT" in
++        b)  SHOW_FILE_TYPES=""
++            ;;
++        c)  USE_CVS="TRUE"
++            ;;
++        d)  DEBUG="TRUE"
++            ;;
++        g)  RMGDIFF_GUI="$OPTARG"
++            ;;
++        n)  USE_GUI=""
++            ;;
++        v)  RMGDIFF_VERSION="TRUE"
++            ;;
++        \?) Usage
++            exit 1
++            ;;
++    esac
++done
++shift `expr $OPTIND - 1`
++
++#
++# Find the rmgdiff awk script.  It is located in the same directory as
++# this shell script after following all the symlinks.
++#
++lib_dir=`follow_link_via_ls "$0"`
++RMGDIFF_AWK=`dirname "$lib_dir"`/rmgdiff.awk
++
++
++# If the user just wants the version ...
++if [ -n "$RMGDIFF_VERSION" ] ; then
++    exec awk -v version="$RMGDIFF_VERSION" -f "$RMGDIFF_AWK"
++fi
++
++if [ $# -lt 2 ] || [ $# -gt 2 ] ; then
++    Usage
++    exit 1
++fi
++
++if [ ! -d "$1" ] ; then
++    echo "$progname: dir1=\"$1\" is not a directory." 1>&2
++    exit 1
++fi
++
++if [ ! -d "$2" ] ; then
++    echo "$progname: dir2=\"$2\" is not a directory." 1>&2
++    exit 1
++fi
++
++exec diff -rq "$1" "$2" | awk -v debug="$DEBUG" \
++                              -v dir1="$1" \
++                              -v dir2="$2" \
++                              -v rmgdiff_gui="$RMGDIFF_GUI" \
++                              -v show_file_types="$SHOW_FILE_TYPES" \
++                              -v use_cvs="$USE_CVS" \
++                              -v use_gui="$USE_GUI" \
++                              -v version="$RMGDIFF_VERSION" \
++                              -f "$RMGDIFF_AWK"
+--- debian/changelog
++++ debian/changelog
+@@ -0,0 +1,264 @@
++mgdiff (1.0-28) unstable; urgency=low
++
++  * bug fixes by Javier Fernández-Sanguino Peña <jfs@debian.org>
++    - Insecure /tmp usage in viewpatch example script (Closes: #335188)
++    - mgdiff: Allows user to set both input as '-' (Closes: #335191)
++    Thanks Javier!
++
++ -- Edelhard Becker <edelhard@debian.org>  Tue, 25 Oct 2005 22:48:37 +0200
++
++mgdiff (1.0-27) unstable; urgency=low
++
++  * updated Paul Serices rmgdiff shell and awk scripts to 1.8.1, available
++    from his rmgdiff page (see copyright file); this should fix problems with
++    filenames and dirs with spaces and gawk compatibility, thanks Paul!
++
++ -- Edelhard Becker <edelhard@debian.org>  Thu, 23 Jun 2005 22:14:26 +0200
++
++mgdiff (1.0-26) unstable; urgency=low
++
++  * fixed rmgdiff.1x typo, thanks A Costa (Closes: #310343)
++
++ -- Edelhard Becker <edelhard@debian.org>  Fri, 27 May 2005 17:37:17 +0200
++
++mgdiff (1.0-25) unstable; urgency=low
++
++  * switched to lesstif2, get rid of lesstif1
++  * switched to debhelper, get rid of debmake
++  * made debhelper version lintian-clean
++
++ -- Edelhard Becker <edelhard@debian.org>  Sat, 12 Mar 2005 22:33:35 +0100
++
++mgdiff (1.0-24) unstable; urgency=low
++
++  * bug fixes by Erik de Castro Lopo <erikd AT mega-nerd DOT com>:
++    - clean compiler warnigs (Closes: #271623)
++    - fix Ctrl-U/Ctrl-P handling (Closes: #271624)
++    - fix UTF8 handling (Closes: #135854)
++    Thanks Erik!
++
++ -- Edelhard Becker <edelhard@debian.org>  Thu,  7 Oct 2004 00:50:16 +0200
++
++mgdiff (1.0-23) unstable; urgency=low
++
++  * Removes Xmu references from the build process (Closes: Bug#256419, must
++    been there for ages, thanks Daniel).
++  * corrected manpage sections to 1x
++
++ -- Edelhard Becker <edelhard@debian.org>  Sun, 27 Jun 2004 14:50:55 +0200
++
++mgdiff (1.0-22) unstable; urgency=low
++
++  * included Roger Gammans <rgammans@computer-surgery.co.uk> "Patch Viewer"
++    plus necessary mgdiff patch
++  * Bumped to standards version 3.6.1
++
++ -- Edelhard Becker <edelhard@debian.org>  Thu,  8 Apr 2004 00:33:53 +0200
++
++mgdiff (1.0-21) unstable; urgency=low
++
++  * scrambled Eriks e-mail in the manpage also
++  * typo in man-page fixed (thx Erik pointing this out)
++
++ -- Edelhard Becker <edelhard@debian.org>  Wed,  9 Jul 2003 16:33:07 +0200
++
++mgdiff (1.0-20) unstable; urgency=low
++
++  * applied lots of patches from Erik de Castro Lopo <erikd AT mega-nerd DOT
++    com> (explanations from his e-mail to me):
++    - mgdiff-includes.diff: Fix a couple of missing includes.
++    - mgdiff-islatin.diff: Fix a warning message.
++    - mgdiff-sun-fix.diff: A fix for SUN Solaris.
++    - mgdiff-tempfile.diff: Replace use of tempnam() with something more
++      secure.
++    - mgdiff-warnings.diff: Remove compiler warnings when using CFLAGS equal
++      to -g -O2 -Wall -Wstrict-prototypes -Wmissing-prototypes [eb: added the
++      flags to the Imakefile].
++    - mgdiff-snprintf.diff: Replace all usage of sprintf() with snprintf().
++    - mgdiff-save-left-right.diff: Add file menu entries for "Save as Left..."
++      and "Save as Right...". Includes increment of APP_DEFAULTS_VERSION
++      number, mods to Mgdiff.ad and checks for correct app-default value.
++    - mgdiff-save-unselected.diff: Allow saving files with unselected blocks.
++    - mgdiff-select-both.diff: Add ability to select both sides by clicking
++      with the middle button. When both sides are selected the two blocks are
++      written to the output file using markings similar to the markings CVS
++      palces in a file when a merge goes wrong.
++    - mgdiff-man.diff: Update the man page to reflect the above changes. Also
++      added my own copyright to a couple of files where I made anything more
++      than minor changes. I'm quite happy to have my changes under the same
++      license as the original code.
++  * changed maintainer address to debian account
++  * Bumped to standards version 3.5.10
++  * updated README
++
++ -- Edelhard Becker <edelhard@debian.org>  Sat,  7 Jun 2003 16:07:42 +0200
++
++mgdiff (1.0-19) unstable; urgency=low
++
++  * Added NAME section to cvsmgdiff man page (closes: #141670).
++  * Bumped to standards version 3.5.8.0.
++  * New maintainer. Closes: #169554.
++
++ -- Edelhard Becker <becker@edelhard.de>  Wed, 26 Feb 2003 19:01:20 +0100
++
++mgdiff (1.0-18) unstable; urgency=low
++
++  * Change source maintainer to myself (closes: #71915).
++  * Make cvsmgdiff a bash script (bash should handle anything pdksh does).
++  * Write a manpage for cvsmgdiff.
++  * Add dh_strip to rules (fixes lintian warning).  
++  * Add debhelper to Build-Depends.
++
++ -- Ian Zimmerman <itz@speakeasy.org>  Fri, 15 Feb 2002 12:38:38 -0800
++
++mgdiff (1.0-17) unstable; urgency=low
++
++  * Fixed not being able to specify the cvsmgdiff gui from the command
++    line.  There is now a -g flag.
++  * Also fixed a problem with where mgdiff was not comming up when
++    the -r option was used exactly once on the command line.
++
++ -- Paul Serice <paul@serice.net>  Tue,  5 Feb 2002 13:09:08 -0600
++
++mgdiff (1.0-16) unstable; urgency=low
++
++  * Better dependencies in the Debian "control" file.
++  * Introduced the "cvsmgdiff" script for comparing a revision in your
++    CVS archive with what is currently checked out or for comparing
++    two revision both of which are in the archive.  It works with
++    "mgdiff" (of course), xdiff, xxdiff, and tkdiff (not that tkdiff
++    needs this script).
++  * Portable way to move rmgdiff.awk out of /usr/bin and into
++    /usr/lib/rmgdiff where it should have been in the first place.
++
++ -- Paul Serice <paul@serice.net>  Sat, 26 Jan 2002 23:06:47 -0600
++
++mgdiff (1.0-15) unstable; urgency=low
++
++  * Debian QA Upload.
++  * New version built by Paul Serice <paul@serice.net>
++    Fri, 26 Oct 2001 03:19:15 -0500; Thank you for your contribution:
++    - This is getting embarrassing. Previous version introduced a bug
++      that caused the "only in" sanity check to be triggered (yes,
++      again) when a file was only in one directory but had a minimum
++      depth of 2.
++
++ -- Peter Palfrader <weasel@debian.org>  Sun, 28 Oct 2001 01:55:22 +0200
++
++mgdiff (1.0-14) unstable; urgency=low
++
++  * Debian QA Upload.
++  * New version built by Paul Serice <paul@serice.net>
++    Thu, 27 Sep 2001 20:33:15 -0500; Thanks Paul:
++    - Fatal bug in rmgdiff caused by working on two directories the last
++      one was a superstring of the first one is fixed.
++  * Removed emacs mode commands from debian/changelog.
++  * /etc/X11/app-defaults/Mgdiff tagged as conffile.
++
++ -- Peter Palfrader <weasel@debian.org>  Sat, 29 Sep 2001 23:24:31 +0200
++
++mgdiff (1.0-13) unstable; urgency=low
++
++  * Debian QA Upload.
++  * Changed maintainer email address from debian-qa@lists.debian.org
++    to packages@qa.debian.org.
++  * New version built by Paul Serice <paul@serice.net>
++    Fri, 21 Sep 2001 01:29:06 -0500; Thanks Paul:
++    - Merged patch from Polish(ed) distribution, closes: #96085
++      (mgdiff has wrong heuristics for determining whether a file is
++      text or not).
++    - rmgdiff failed to escape meta-characters in directory names causing
++      directories like "c++_src" to trigger a sanity check.
++
++ -- Peter Palfrader <weasel@debian.org>  Sat, 22 Sep 2001 15:42:00 +0200
++
++mgdiff (1.0-12) unstable; urgency=low
++
++  * Fixed RMGDIFF_GUI variable in /usr/bin/rmgdiff.
++  * Added license and author of rmgdiff to copyright file.
++  * Thanks Paul, closes: #87929.
++
++ -- Peter Palfrader <weasel@debian.org>  Wed, 28 Feb 2001 03:40:31 +0000
++
++mgdiff (1.0-11) unstable; urgency=low
++
++  * Made Build-Depends: xutils, lesstif-dev, debmake (closes: #83848).
++  * Some app-defaults bugs have not been closed by last changelog:
++    (closes: #81421, #81383)
++  * Added support for DEB_BUILD_OPTIONS.
++  * Removed diff from Depends. diff is essential.
++  * Changed man path from usr/X11R6/man to /usr/share/man.
++  * Install binaries in usr/bin instead of usr/X11R6/bin.
++  * Moved doc from /usr/doc to /usr/share/doc and create symlink.
++  * Calling dpkg-gencontrol with -isp now, so Section and Priority fields
++    are in the pacakge.
++
++ -- Peter Palfrader <weasel@debian.org>  Sat, 24 Feb 2001 17:39:49 +0000
++
++mgdiff (1.0-10) unstable; urgency=low
++
++  * Rebuilt to move app-defaults file to /etc/X11, Closes: #86278
++
++ -- Joey Hess <joeyh@debian.org>  Fri, 16 Feb 2001 19:50:21 -0800
++
++mgdiff (1.0-9) unstable; urgency=low
++
++  * Paul orphaned the package a while back. Maintainer set to QA.
++
++ -- Joey Hess <joeyh@debian.org>  Fri, 29 Dec 2000 18:47:27 -0800
++
++mgdiff (1.0-8) unstable; urgency=low
++
++  * Fixed error in man page for rmgdiff.
++
++ -- Paul Serice <ugs@debian.org>  Sat, 13 Nov 1999 05:37:36 -0600
++
++mgdiff (1.0-7) unstable; urgency=low
++
++  * Added dependency on mawk.
++  * Fixed usage for rmgdiff:  -m should be -g.
++
++ -- Paul Serice <ugs@debian.org>  Tue, 26 Oct 1999 21:09:52 -0500
++
++mgdiff (1.0-6) unstable; urgency=low
++
++  * Linked against lesstif1.  Closes bug #48167.
++
++ -- Paul Serice <ugs@debian.org>  Sun, 24 Oct 1999 21:23:31 -0500
++
++mgdiff (1.0-5) unstable; urgency=low
++
++  * Added needed dependency on "file".
++
++ -- Paul Serice <ugs@debian.org>  Sat,  8 May 1999 15:30:37 -0500
++
++mgdiff (1.0-4) unstable; urgency=low
++
++  * I wrote "rmgdiff" to allow the user to recursively diff two
++    directories using any graphical diff viewer -- including
++    mgdiff.
++  * Compiled using libc6 with new naming convention.
++  * mgdiff man page was not in the correct directory.
++  * Added "mgdiff.README".
++  * Now using original source in tarball.
++
++ -- Paul Serice <ugs@debian.org>  Sun, 17 Jan 1999 23:05:44 -0600
++
++mgdiff (1.0-3) unstable; urgency=low
++
++  * Updated description to reflect Lesstif improvements.
++  * Changed architecture to 'any'.
++
++ -- Paul Serice <ugs@debian.org>  Mon, 26 Oct 1998 01:16:45 -0600
++
++mgdiff (1.0-2) unstable; urgency=low
++
++  * Changed architecture to all.
++
++ -- Paul Serice <ugs@debian.org>  Sat, 24 Oct 1998 23:08:56 -0500
++
++mgdiff (1.0-1) unstable; urgency=low
++
++  * Initial Release.
++
++ -- Paul Serice <ugs@debian.org>  Tue, 25 Aug 1998 23:05:16 -0500
+--- debian/cvsmgdiff.1
++++ debian/cvsmgdiff.1
+@@ -0,0 +1,182 @@
++.\" Automatically generated by Pod::Man version 1.16
++.\" Fri Feb 15 12:01:43 2002
++.\"
++.\" Standard preamble:
++.\" ======================================================================
++.de Sh \" Subsection heading
++.br
++.if t .Sp
++.ne 5
++.PP
++\fB\\$1\fR
++.PP
++..
++.de Sp \" Vertical space (when we can't use .PP)
++.if t .sp .5v
++.if n .sp
++..
++.de Ip \" List item
++.br
++.ie \\n(.$>=3 .ne \\$3
++.el .ne 3
++.IP "\\$1" \\$2
++..
++.de Vb \" Begin verbatim text
++.ft CW
++.nf
++.ne \\$1
++..
++.de Ve \" End verbatim text
++.ft R
++
++.fi
++..
++.\" Set up some character translations and predefined strings.  \*(-- will
++.\" give an unbreakable dash, \*(PI will give pi, \*(L" will give a left
++.\" double quote, and \*(R" will give a right double quote.  | will give a
++.\" real vertical bar.  \*(C+ will give a nicer C++.  Capital omega is used
++.\" to do unbreakable dashes and therefore won't be available.  \*(C` and
++.\" \*(C' expand to `' in nroff, nothing in troff, for use with C<>
++.tr \(*W-|\(bv\*(Tr
++.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
++.ie n \{\
++.    ds -- \(*W-
++.    ds PI pi
++.    if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
++.    if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\"  diablo 12 pitch
++.    ds L" ""
++.    ds R" ""
++.    ds C` ""
++.    ds C' ""
++'br\}
++.el\{\
++.    ds -- \|\(em\|
++.    ds PI \(*p
++.    ds L" ``
++.    ds R" ''
++'br\}
++.\"
++.\" If the F register is turned on, we'll generate index entries on stderr
++.\" for titles (.TH), headers (.SH), subsections (.Sh), items (.Ip), and
++.\" index entries marked with X<> in POD.  Of course, you'll have to process
++.\" the output yourself in some meaningful fashion.
++.if \nF \{\
++.    de IX
++.    tm Index:\\$1\t\\n%\t"\\$2"
++..
++.    nr % 0
++.    rr F
++.\}
++.\"
++.\" For nroff, turn off justification.  Always turn off hyphenation; it
++.\" makes way too many mistakes in technical documents.
++.hy 0
++.if n .na
++.\"
++.\" Accent mark definitions (@(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2).
++.\" Fear.  Run.  Save yourself.  No user-serviceable parts.
++.bd B 3
++.    \" fudge factors for nroff and troff
++.if n \{\
++.    ds #H 0
++.    ds #V .8m
++.    ds #F .3m
++.    ds #[ \f1
++.    ds #] \fP
++.\}
++.if t \{\
++.    ds #H ((1u-(\\\\n(.fu%2u))*.13m)
++.    ds #V .6m
++.    ds #F 0
++.    ds #[ \&
++.    ds #] \&
++.\}
++.    \" simple accents for nroff and troff
++.if n \{\
++.    ds ' \&
++.    ds ` \&
++.    ds ^ \&
++.    ds , \&
++.    ds ~ ~
++.    ds /
++.\}
++.if t \{\
++.    ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
++.    ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
++.    ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
++.    ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
++.    ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
++.    ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
++.\}
++.    \" troff and (daisy-wheel) nroff accents
++.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
++.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
++.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
++.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
++.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
++.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
++.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
++.ds ae a\h'-(\w'a'u*4/10)'e
++.ds Ae A\h'-(\w'A'u*4/10)'E
++.    \" corrections for vroff
++.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
++.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
++.    \" for low resolution devices (crt and lpr)
++.if \n(.H>23 .if \n(.V>19 \
++\{\
++.    ds : e
++.    ds 8 ss
++.    ds o a
++.    ds d- d\h'-1'\(ga
++.    ds D- D\h'-1'\(hy
++.    ds th \o'bp'
++.    ds Th \o'LP'
++.    ds ae ae
++.    ds Ae AE
++.\}
++.rm #[ #] #H #V #F C
++.\" ======================================================================
++.\"
++.IX Title "CVSMGDIFF 1"
++.TH CVSMGDIFF 1 "Utility Scripts" "2002-02-15" "Utility Scripts"
++.SH NAME
++cvsmgdiff \- uses mgdiff to display differences between any two cvs revisions.
++.UC
++.SH "SYNOPSIS"
++.IX Header "SYNOPSIS"
++\&\fBcvsmgdiff\fR [\fB\-v\fR|\fB\-h\fR|\fB\-g\fR \fIgui\fR|\fB\-r\fR \fIrev1\fR [\fB\-r\fR \fIrev2\fR]] \fIfile\fR ...
++.SH "DESCRIPTION"
++.IX Header "DESCRIPTION"
++This manual page documents briefly  the cvsmgdiff program.
++This manual page was written for the Debian GNU/Linux distribution
++(but may be used by others), because the  original
++program does not have a manual page.
++.PP
++This script lets you recursively diff the \s-1CVS\s0 directories you have
++checked out.  To use, just pass in an optional revision levels and
++an optional file directory name.  This script then will show you the
++differences you're interested in.
++.SH "OPTIONS"
++.IX Header "OPTIONS"
++.Ip "\fB\-v\fR" 4
++.IX Item "-v"
++Print version information successfully
++.Ip "\fB\-h\fR" 4
++.IX Item "-h"
++Print help information
++.Ip "\fB\-g\fR \fIgui\fR" 4
++.IX Item "-g gui"
++Use the program \fIgui\fR as the user interface (default: \fI/usr/bin/mgdiff\fR)
++.Ip "\fB\-r\fR \fIrevision\fR" 4
++.IX Item "-r revision"
++Specify the \s-1CVS\s0 revision to view.  If just one \fB\-r\fR option is given, view
++differences between that revision and the current file in the \s-1CVS\s0 working
++directory.  If two \fB\-r\fR options are given, compare those two revisions
++with each other.
++.SH "AUTHOR"
++.IX Header "AUTHOR"
++cvsmgdiff appears to have been written by Paul Serice.
++This manual page was written  by  Ian Zimmerman <itz@speakeasy.org>
++for the Debian GNU/Linux project, but may
++be used by others.  It was written with the assistance  of
++\&\fIpod2man\fR\|(1).
+--- debian/mgdiff.README
++++ debian/mgdiff.README
+@@ -0,0 +1,44 @@
++Mon May 16 21:52:32 EDT 1994
++
++This is mgdiff, a graphical front end to the Unix diff command based
++upon X11R[456] and the Motif widget set.  It allows the user to select
++two files for comparison, runs the diff command, parses the output and
++presents the results graphically.  This presentation can also be used
++to generate a user-specified merge of the two files into a third file.
++
++This program's appearance is based upon a program called gdiff, which
++runs only on Silicon Graphics workstations and for which source code
++is not provided.
++
++The program has been developed and tested in the following
++environment:
++
++	- Dell SVR4 Issue 2.2 
++	- cc and gcc 2.3.3
++	- X11R4 and X11R5
++	- Motif 1.1.4
++
++It has received some testing using SGI IRIX 5.2 with cc, X11R5 and
++Motif 1.2.3.
++
++It should build fairly painlessly with the Imakefile provided.  You
++may need to point the Imakefile at your Motif libraries.
++
++You will need to install the application defaults file correctly for
++the program to run at all.
++
++An XPM icon file is provided if your window manager can use it.
++
++A preformatted manual page is also provided for those who don't have
++DWB or it's equivalent.
++
++Please send your comments, bug reports, bug fixes etc. to:
++
++	mgdiff@sass.com
++
++Enjoy,
++Dan
++--
++Daniel Williams, Consultant | Systems & Scientific Software
++Internet: dan@sass.com      | 263 Forrest Avenue
++Voice: (215) 885-1573       | Elkins Park, PA  19027
+--- debian/cvsmgdiff
++++ debian/cvsmgdiff
+@@ -0,0 +1,245 @@
++#! /bin/bash
++
++#
++# This script lets you recursively diff the CVS directories you have
++# checked out.  To use, just pass in an optional revision levels and
++# an optional file directory name.  This script then will show you the
++# differences you're interested in.
++#
++#                                             -- Paul Serice
++#
++
++CVSMGDIFF_VERSION=1.1
++
++: ${MGDIFF:=/usr/bin/mgdiff}
++: ${TMP:=/tmp}
++
++function usage {
++    if [ $# -ne 1 ] ; then
++        echo "progname: Error: Invalid args for usage: \"$@\"" >&2
++        exit 1
++    fi
++    cmd=
++    cmd="$cmd echo >&2 ;"
++    cmd="$cmd echo \"Usage: $progname [-h] [-v]"
++    cmd="$cmd [-g <gui>] [[-r <rev1>] [-r <rev2>]] file\" >&$1 ;"
++    cmd="$cmd echo >&2"
++    eval "$cmd"
++    if [ $1 -eq 1 ] ; then
++        exit 0
++    fi
++    exit 1
++}
++
++function verify_exec {
++    if [ $# -ne 1 ] ; then
++        echo "$progname: Error: Invalid args for verify_exec: \"$@\"" >&2
++        exit 1
++    fi
++    if ! type "$1" >/dev/null 2>&1 ; then
++        echo "$progname: Error: Unable to find executable for \"$1\"." >&2
++        exit 1
++    fi
++}
++
++tmp_base="cvsmgdiff-$$."
++function clean_up {
++    # These signal handlers are rough.  It is, as far as I can tell,
++    # impossible to pass in the name of the currently active temporary
++    # files.  A reasonable alternative is to scan $TMP for files that
++    # match the pattern we use being careful not to allow a malicious
++    # user to trick us into deleting some other file.
++    find "$TMP" -maxdepth 1 \
++                -type f \
++                -links 1 \
++                -uid `id -u` \
++                -name "$tmp_base"'*' \
++                -print0 \
++    | xargs -r0 rm -f
++    exit 0
++}
++
++#
++# getunique() -- Finds two unique temporary file names.
++#
++getunique()
++{
++    old_umask=`umask`
++    umask 077
++    if ! tmp_file_1=$(mktemp -q "$TMP/${tmp_base}XXXXXX") ; then
++        echo "Error: Unable to allocate a necessary temporary file." >&2
++        exit 1
++    fi
++    
++    if ! tmp_file_2=$(mktemp -q "$TMP/${tmp_base}XXXXXX") ; then
++        echo "Error: Unable to allocate a necessary temporary file." >&2
++        exit 1
++    fi
++    umask $old_umask
++}
++
++#
++# Script Starts Here !!!
++#
++
++progname="cvsmgdiff.sh"
++verify_exec "basename"
++progname=`basename $0`
++
++# Signal Trap handler to clean up temporary files in "$TMP".
++if ! trap 'clean_up' HUP INT QUIT TERM ; then
++    echo "$progname: Unable to register signal handler." >&2
++    exit 1
++fi
++
++# Get cvs revision(s) to use.
++cnt=0
++while getopts "g:hr:v" OPT ; do
++    case "$OPT" in
++        g)  MGDIFF="$OPTARG"
++            ;;
++        h)  usage 1
++            ;;
++        r)  rev[$cnt]="-r$OPTARG"
++            cnt=`expr $cnt + 1`
++            ;;
++        v)  echo "$progname: ${CVSMGDIFF_VERSION}"
++            exit 0
++            ;;
++        \?) usage 2
++            ;;
++    esac
++done
++shift `expr $OPTIND - 1`
++
++verify_exec "cut"
++verify_exec "cvs"
++verify_exec "echo"
++verify_exec "expr"
++verify_exec "find"
++verify_exec "grep"
++verify_exec "$MGDIFF"
++verify_exec "mktemp"
++verify_exec "sleep"
++verify_exec "xargs"
++
++mgdiff_basename=`basename "$MGDIFF"`
++
++# Portability issues.
++if [ "$mgdiff_basename" = "mgdiff" ] ; then
++    QUIET_OPT="-quit"
++    FNAME_OPT="-file"
++elif [ "$mgdiff_basename" = "xdiff" ] ; then
++    QUIET_OPT="-D"
++    FNAME_OPT="-N"
++elif [ "$mgdiff_basename" = "xxdiff" ] ; then
++    QUIET_OPT="-D"
++    FNAME_OPT="-N"
++    TITLE_1_OPT="--title1"
++    TITLE_2_OPT="--title2"
++fi
++
++if [ $cnt -gt 2 ] ; then
++    echo
++    echo "Error: Too many revisions."
++    echo
++    exit 1
++fi
++
++if [ ! -d `pwd`"/CVS" ] && [ ! -d `pwd`"/$1/CVS" ] ; then
++    echo
++    echo "Warning: \"$1\" does not appear to be a CVS directory." 1>&2
++    echo "Trying to diff \"$1\" with CVS repository anyway."
++    echo
++    sleep 5
++fi
++
++# Run CVS recursively on the entire directory.
++cvs diff "${rev[@]}" "$@" 2>/dev/null \
++| grep '^Index:' \
++| cut -d ' ' -f 2 \
++| while read fname ; do
++
++      echo -n "Processing $fname . . . "
++
++      # tkdiff CVS access built-in.
++      if [ "$mgdiff_basename" = "tkdiff" ] ; then
++
++          "$MGDIFF" ${rev[0]+"${rev[@]}"} "$fname"
++
++      # The others require a little bit of scripting.
++      elif [ $cnt -eq 2 ] ; then
++
++          getunique
++
++          \cvs update -p "${rev[0]}" "$fname" > "$tmp_file_1" 2> /dev/null
++          \cvs update -p "${rev[1]}" "$fname" > "$tmp_file_2" 2> /dev/null
++
++          "$MGDIFF" ${QUIET_OPT+"$QUIET_OPT"} \
++                    ${TITLE_1_OPT+"$TITLE_1_OPT" "$fname (rev ${rev[0]#-r})"} \
++                    ${TITLE_2_OPT+"$TITLE_2_OPT" "$fname (rev ${rev[1]#-r})"} \
++                    "$tmp_file_1" "$tmp_file_2"
++
++          \rm -f "$tmp_file_1" > /dev/null 2>&1
++          \rm -f "$tmp_file_2" > /dev/null 2>&1
++          
++      elif [ $cnt -le 1 ] ; then
++
++         if [ $cnt -eq 1 ] ; then
++             title_rev="${rev[0]#-r}"
++         else
++             title_rev=`cvs status "$fname" \
++                        | grep 'Working revision:' \
++                        | awk '{print $3;}'`
++         fi
++              
++          # For some reason, xxdiff does not like to work with pipes
++          # despite its saying otherwise.
++          if [ "$TITLE_1_OPT" ] ; then
++
++              getunique
++
++              # The convention that "diff" uses is that the old file is on
++              # the left and the new file is on the right.  We use this to
++              # display the files for all but "mgdiff" which has a
++              # "File->Save As..." menu option that works better the other
++              # way around.
++              file_first="$tmp_file_1"
++              file_second="$fname"
++              if [ "$mgdiff_basename" = "mgdiff" ] ; then
++                  file_first="$fname"
++                  file_second="$tmp_file_1"
++              fi
++
++              cvs update -p ${rev[0]+"${rev[0]}"} "$fname" \
++                     > "$tmp_file_1" 2>/dev/null
++              
++              "$MGDIFF" ${QUIET_OPT+"$QUIET_OPT"} \
++                        ${TITLE_1_OPT+"$TITLE_1_OPT" "$fname (rev $title_rev)"}\
++                        "$file_first" "$file_second"
++              
++              \rm -f "$tmp_file_1" > /dev/null 2>&1
++              \rm -f "$tmp_file_2" > /dev/null 2>&1
++
++          else
++
++              # See comment above.
++              file_first="-"
++              file_second="$fname"
++              if [ "$mgdiff_basename" = "mgdiff" ] ; then
++                  file_first="$fname"
++                  file_second="-"
++              fi
++
++              cvs update -p ${rev[0]+"${rev[0]}"} "$fname" 2>/dev/null \
++              | "$MGDIFF" ${QUIET_OPT+"$QUIET_OPT"} \
++                          ${FNAME_OPT+"$FNAME_OPT" "$fname (rev $title_rev)"} \
++                          "$file_first" "$file_second"
++
++          fi
++          
++      fi
++
++      echo "Done."
++
++  done
+--- debian/viewpatch
++++ debian/viewpatch
+@@ -0,0 +1,33 @@
++#!/bin/sh
++##
++#
++# (C) Roger Gammans 2001 (rgammans@computer-surgery.co.uk).
++#
++# Please distribute under the GPL.
++#
++# It's probably better to rely on the $PATH
++# to find the various external bits as they more likey
++# to be in it somewhere than one particluar location
++# over many unices.
++#
++
++FNAME=`tempfile` || { echo "$0: Cannot create temporary file" >&2; exit 1;  }
++trap " [ -f \"$FNAME\" ] && /bin/rm -f -- \"$FNAME\"" 0 1 2 3 13 15
++
++ORIG=$1
++PATCH=$2
++
++shift 2
++
++if [ -z "$ORIG" ] ||  [ ! -e "$ORIG" ] ; then
++	echo "$0: original file '$ORIG' does not exist"
++fi
++if [ -z "$PATCH" ] ||  [ ! -e "$PATCH" ] ; then
++	echo "$0: original file '$ORIG' does not exist"
++fi
++
++
++cp $ORIG $FNAME;
++if patch $* $FNAME  < $PATCH; then mgdiff $ORIG $FNAME; fi
++
++exit 0
+--- debian/rmgdiff.1x
++++ debian/rmgdiff.1x
+@@ -0,0 +1,98 @@
++.na
++.TH RMGDIFF 1x
++.SH NAME
++rmgdiff \- use almost any graphical file difference browser to recursively
++view the differences between two directories.
++.SH SYNOPSIS
++rmgdiff [-b] [-d] [-g gui] [-n] dir1 dir2
++.SH DESCRIPTION
++.LP
++.I rmgdiff
++is an awk script that works in conjunction with almost any graphical file
++difference browser.  It is known to work with 
++.IR mgdiff ,
++.IR tkdiff ,
++and
++.IR xdiff .
++.LP
++Unless I am mistaken, most of the GUI difference viewers (except for emacs)
++do not have built-in support for recursing down two directories, but
++.I diff
++does.  Based on
++.IR diff 's
++output, 
++.I rmgdiff
++decides when to invoke the graphical difference viewer.
++.LP
++In addition,
++.I rmgdiff
++also collates
++.IR diff 's
++output.  As soon as a new difference is encountered in a text file,
++.I rmgdiff
++will print to standard output the name of the file that both directories have
++in common.  It will then start the GUI and block until the user exits.
++As more text files with differences are found, the GUI will be started up
++again.
++.LP
++In the interim,
++.I rmgdiff
++will keep track of differences in binary (non-text) files.  It organizes
++the binary files as executables, shared libraries, static libraries, object
++files, and other.  Only after all the text files have been displayed will
++.I rmgdiff
++report the binary differences.
++.LP
++It also keeps track of files and directories that
++.I diff
++reports as being only in one directory or another.  
++.I rmgdiff
++organizes these entries by directory.  Thus, files in one directory
++will be reported in one block, and files that are in the other directory
++will be reported in a different block.
++.LP
++In addition to printing the name of the files that are different,
++.I rmgdiff
++defaults to printing the relevant portion of the output from the
++.I file
++command.  This has the unfortunate side-effect of slowing things down;
++however, I find this information to be invaluable.  If you're just looking
++for a fast way to collate 
++.IR diff 's
++output, try piping it into
++.I sort
++instead.
++
++.SH COMMAND LINE OPTIONS
++.TP 8
++.B \-b
++Sets the basic reporting mode.  In basic mode, rmgdiff reports only
++file names.  It does not report the file types involved.
++.TP 8
++.B \-c
++By default, files relating to
++.I CVS
++are ignored by
++.IR rmgdiff .
++If you want to include CVS files, use this option.
++.TP 8
++.B \-d
++Sets
++.I rmgdiff
++to print way too much debugging information.
++.TP 8
++\fB\-g\fP \fIgui\fP
++Tells
++.I rmgdiff
++which gui you would like to use for viewing differences.  By default,
++.I mgdiff
++is used.  You can also set $RMGDIFF_GUI in your environment, but it can
++be overridden with this option.
++.TP 8
++.B \-n
++.I rmgdiff
++will not invoke the gui.  This is useful, if you only want to view the 
++collated output.
++
++.SH AUTHOR
++Paul Serice (paul@serice.net)
+--- debian/mgdiff.substvars
++++ debian/mgdiff.substvars
+@@ -0,0 +1 @@
++shlibs:Depends=lesstif2, libc6 (>= 2.3.5-1), libice6 | xlibs (>> 4.1.0), libsm6 | xlibs (>> 4.1.0), libx11-6 | xlibs (>> 4.1.0), libxext6 | xlibs (>> 4.1.0), libxt6 | xlibs (>> 4.1.0)
+--- debian/copyright
++++ debian/copyright
+@@ -0,0 +1,42 @@
++This package was debianized by Paul Serice <ugs@debian.org> on
++Tue, 25 Aug 1998 23:05:16 -0500.
++
++It was downloaded from ftp://ftp.x.org/contrib/applications/mgdiff.tar.gz .
++
++Please note that rmgdiff is not a part of the mgdiff distribution.  Instead,
++it was written by your humble Debian maintainer.  rmgdiff is GNU
++copyrighted.
++
++The copyright for mgdiff as found in mgdiff.c of the source distribution
++is as follows:
++
++/*
++ * Copyright (c) 1994    Daniel Williams
++ * 
++ * The X Consortium, and any party obtaining a copy of these files from
++ * the X Consortium, directly or indirectly, is granted, free of charge,
++ * a full and unrestricted irrevocable, world-wide, paid up,
++ * royalty-free, nonexclusive right and license to deal in this software
++ * and documentation files (the "Software"), including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute,
++ * sublicense, and/or sell copies of the Software, and to permit persons
++ * who receive copies from any such party to do so.  This license
++ * includes without limitation a license to do the foregoing actions
++ * under any patents of the party supplying this software to the X
++ * Consortium.  The following conditions apply:
++ * 
++ * The above copyright notice and this permission notice shall be
++ * included in all copies or substantial portions of the Software.
++ * 
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
++ * IN NO EVENT SHALL DANIEL WILLIAMS OR SYSTEMS & SCIENTIFIC SOFTWARE BE
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++
++rmgdiff was written by Paul Serice <paul@serice.net>. It has its homepage
++at http://www.serice.net/rmgdiff/ and is in public domain.
+--- debian/rmgdiff.awk
++++ debian/rmgdiff.awk
+@@ -0,0 +1,776 @@
++#
++# rmgdiff.awk
++#             -- awk script to that reads standard input for the output
++#                of "diff -rq <dir1> <dir2>".  It then takes diff's
++#                output and calls mgdiff once for each pair of text
++#                files that differ.  It prints out a message to this
++#                effect.  It then prints out a list of binary files
++#                that have differences followed by a list of files
++#                that appear only in the first directory followed by a
++#                list of files that appear only in the second
++#                directory.
++#
++#                It expects you to pass in <dir1> and <dir2> on the
++#                command line using awk's "-v" option.  You should
++#                find the shell script I use to call this file near
++#                where you found this file.
++#
++#                                            -- Paul Serice
++#
++
++#
++# Changes:
++#
++#  v1.8.1   Minor clean up.
++#
++#  v1.8.0   Testing revealed problems handling white space.
++#
++#  v1.7     Fixed a problem with the regular expression that
++#           escapes meta-characters in the escape_dir() function.
++#           Now, both gawk and mawk should be able to interpret this
++#           script.
++#
++#  v1.6     Changed the "rmgdiff" shell script wrapper so that this
++#           awk script does not have to be in the same directory.
++#           You can now place both "rmgdiff" and "rmgdiff.awk" in
++#           any directory and place a symbolic link in a "bin"
++#           directory that points to the "rmgdiff" shell script.
++#           The shell script will then follow the symbolic links
++#           in order to find the "rmgdiff.awk" script.  One way to
++#           set this up is as follows:
++#
++#                 /usr/local/lib/rmgdiff/rmgdiff
++#                 /usr/local/lib/rmgdiff/rmgdiff.awk
++#                 /usr/local/bin/rmgdiff -> ../lib/rmgdiff/rmgdiff
++#
++#  v1.5     I've said it before, and here I go again.  This time
++#           it's fixed.  v1.4 introduced a new bug related to the same
++#           section of code that v1.3 and v1.4 was trying to fix.
++#           This new bug manifested itself when a subdirectory was
++#           only in one directory and had a minimum depth of at least
++#           2.  Everything that was originally a bug and everything I
++#           subsequently broke now appears to work.
++#  v1.4     Was finally able to reproduce the bug that was causing
++#           reported directories to appear to have been split
++#           incorrectly.  Problem solved.
++#  v1.3     Forgot to escape the accidental meta-characters in the
++#           directory names.  Also, I am explicitly putting both the
++#           "rmgdiff" shell script and this "rmgdiff.awk" awk script
++#           in the public domain.  (It has always been in the public
++#           domain.  This just makes it official.  Use at your own
++#           risk.)
++#  v1.2     Changed the way the "rmgdiff" shell script initialized the
++#           RMGDIFF_GUI variable.
++#  v1.1     Fixed bug in "/^Binary file /" rule that used "$4" and "$6"
++#           instead of "$3" and "$5".
++#  v1.0     Initial release
++# 
++
++#
++# trim_dir(dir) -- A user can enter a directory such as "dir", "dir/", 
++#                  "dir//", etc.  trim_dirr() will reduce all of these
++#                  to "dir" by removing all trailing slashes.
++#
++function trim_dir( dir  ,  pos ) {
++  if( !dir )
++    return "";
++
++  pos = length(dir);
++  while( pos > 0 )
++    {
++      if( substr(dir, pos, 1) != "/" )
++        break;
++      pos--;
++    }
++
++  # If you made it back to the beginning, then "dir" was all slashes
++  # which is a synonym for the root dir.
++  if( pos <= 0 )
++    return "/";
++  else
++    return substr(dir, 1, pos);
++}
++
++
++#
++# escape_dir(dir) -- Escape the characters in the directory name that
++#                    are coincidentally meta characters.
++#
++function escape_dir(dir) {
++    gsub(/[[\]{}()^$. +|*?]/, "\\\\&", dir);
++    return dir;
++}
++
++
++#
++# relative_path(full_path, upper_dir)
++#
++#         This function strips off the upper most directory.  This
++#         lets you report a difference just by reporting the relative
++#         path.  Thus, "dir1/abcd/efgh" and "dir2/abcd/efgh" can be
++#         reported as being different by referring to "a difference in
++#         the abcd/efgh files that reside in both directories."
++#
++function relative_path( full_path, upper_dir  ,  pos ) {
++  if( index(full_path, upper_dir) != 1 )
++    {
++      print("***");
++      print("*** rmgdiff.awk: Internal error. ");
++      print("***              " upper_dir );
++      print("***              can't possibly be the base directory of ");
++      print("***              " full_path ".");
++      print("***");
++      exit_flag = 1;
++      exit(1);
++    }
++
++  pos = length(upper_dir) + 1;
++  full_path_len = length(full_path);
++
++  while( pos <= full_path_len )
++    {
++      if( substr(full_path, pos, 1) != "/")
++        break;
++      pos++;
++    }
++  
++  # If "pos" makes it all the way to the end of "full_path", then the
++  # user passed in the name of a single directory instead of a path.
++  if( pos == length )
++    return "";
++  else
++    return substr(full_path, pos);
++}
++
++
++#
++# get_file_type() -- Returns the relevant part of the description returned
++#                    by "file".  Unlike for Linux, the "file" command for
++#                    SGI will have in indeterminate number of spaces before
++#                    the relevant partion.  Hence the iterative solution.
++#                    Perhaps it would be better to use 'FS= ' (?).
++#
++function get_file_type( file_name, \
++                        cmd, pos, file_type, file_type_len, next_ch) {
++  cmd = file_cmd " \"" file_name "\"";
++  if( (cmd | getline file_type) == -1)
++    {
++      print("");
++      print("rmgdiff.awk:  Unable to determine file type of " $2 ".");
++      print("              This usually occurs because you don't have any " \
++                           "available");
++      print("              file descriptors or \"file\" is not in your path.");
++      print("");
++      exit_flag = 1;
++      exit(1);
++    }
++  close(cmd);
++
++  # Start right after the colon that always follows the file name.
++  pos = length(file_name) + 2;
++  file_type_len = length(file_type);
++
++  # Iterate until you find the first non-space and non-tab.  I did it
++  # like this because different versions of Unix have different spacing.
++  while( pos <= file_type_len )
++    {
++      next_ch = substr(file_type, pos, 1);
++      if( (next_ch != " ") && (next_ch != "\t") )
++        break;
++      pos++;
++    }
++  
++  if( pos > file_type_len )
++    {
++      print("***");
++      print("*** rmgdiff.awk: Internal error.  Missed a file type for");
++      print("***              "  file_name);
++      print("***");
++      exit_flag = 1;
++      exit(1);
++    }
++  
++  return substr(file_type, pos);
++}
++
++
++#
++# add_only_in(dir, str3, str4) -- routine to convert $3 and $4 of the
++#                                 output of diff when the file is only
++#                                 in one directory into something we can
++#                                 later print.
++#
++function add_only_in(dir, str3, str4  ,  middle, fullpath, file_type) {
++
++  middle = relative_path(str3, dir);
++  
++  if( middle == "" )
++    fullpath = dir "/" str4;
++  else
++    fullpath = dir "/" middle "/" str4;
++  
++  file_type = get_file_type(fullpath);
++  
++  if( debug )
++    print("file_type = " file_type);
++  
++  if( dir == dir1 )
++    {
++      if( debug )
++        print("Adding " fullpath " to only_in_dir1[" only_in_dir1_cnt "].");
++
++      if( show_file_types )
++        only_in_dir1[only_in_dir1_cnt++] = fullpath "  (" file_type ")";
++      else
++        only_in_dir1[only_in_dir1_cnt++] = fullpath;
++    }
++  else if( dir == dir2 )
++    {
++      if( debug )
++        print("Adding " fullpath " to only_in_dir2[" only_in_dir2_cnt "].");
++
++      if( show_file_types )
++        only_in_dir2[only_in_dir2_cnt++] = fullpath "  (" file_type ")";
++      else
++        only_in_dir2[only_in_dir2_cnt++] = fullpath;
++    }
++  else
++    {
++      print("***");
++      print("*** rmgdiff.awk: Internal error.  Can't figure out " \
++            "\"only in\" directory.");
++      print("***");
++      exit_flag = 1;
++      exit(1);
++    }
++}
++
++
++
++#
++# add_binary(full_name_1, full_name_2)
++#          -- Determines what type of binary a file is and adds it
++#             to the appropriate list for reporting later.  Make
++#             sure "full_name_1" is the full_name associated with
++#             "dir1" (which is a global variable).
++#
++
++function add_binary(full_name_1, full_name_2  ,  file_type_1, file_type_2) {
++  file_type_1 = get_file_type(full_name_1);
++  file_type_2 = get_file_type(full_name_2);
++  
++  if( debug )
++    {
++      print("full_name_1 = " full_name_1);
++      print("full_name_2 = " full_name_2);
++      print("file_type_1 = " file_type_1);
++      print("file_type_2 = " file_type_2);
++    }
++
++  if( file_type_1 ~ /executable/ && file_type_2 ~ /executable/ )
++    {
++      if( debug )
++        print("Adding " relative_path(full_name_1, dir1) \
++              " to executable_files[" executable_files_cnt "].");
++
++      if( show_file_types )
++        executable_files[executable_files_cnt++] \
++          = relative_path(full_name_1, dir1) "  (" file_type_1 ")";
++      else
++        executable_files[executable_files_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++  else if( file_type_1 ~ /shared object/ && file_type_2 ~ /shared object/ )
++    {
++      if( debug )
++        print("Adding " relative_path(full_name_1, dir1) " to shared_libs[" \
++              shared_libs_cnt "].");
++
++      if( show_file_types )
++        shared_libs[shared_libs_cnt++] \
++          = relative_path(full_name_1, dir1) "  (" file_type_1 ")";
++      else
++        shared_libs[shared_libs_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++  else if( file_type_1 ~ /ar archive/ && file_type_2 ~ /ar archive/ )
++    {
++      if( debug )
++        print("Adding " relative_path(full_name_1, dir1) " to static_libs[" \
++              static_libs_cnt "].");
++
++      if( show_file_types )
++        static_libs[static_libs_cnt++] \
++          = relative_path(full_name_1, dir1) "  (" file_type_1 ")";
++      else
++        static_libs[static_libs_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++  else if( file_type_1 ~ /relocatable/ && file_type_2 ~ /relocatable/ )
++    {
++      if( debug )
++        print("Adding " relative_path(full_name_1, dir1) " to object_files[" \
++              object_files_cnt "].");
++
++      if( show_file_types )
++        object_files[object_files_cnt++] \
++          = relative_path(full_name_1, dir1) "  (" file_type_1 ")";
++      else
++        object_files[object_files_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++  # gzip files report a date which is causing them to appear
++  # to be mismatched.  Avoid a mismatch with this rule.
++  else if ( file_type_1 ~ /gzip compressed data/ &&
++            file_type_2 ~ /gzip compressed data/ )
++    {
++      if( debug )
++        {
++	  print("Matched a gzipped file.  I'll be making up a type!!!");
++          print("Adding " relative_path(full_name_1, dir1) \
++                " to other_bin_files[" other_bin_files_cnt "].");
++        }
++
++      if( show_file_types )
++        other_bin_files[other_bin_files_cnt++] \
++          = relative_path(full_name_1, dir1) "  (gzip compressed data)";
++      else
++        other_bin_files[other_bin_files_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++  # Mismatched types.
++  else if ( file_type_1 !~ file_type_2 )  
++    {
++      if( debug )
++        {
++          print("Adding " relative_path(full_name_1, dir1) \
++                " to mismatched_files[" mismatched_files_cnt "].");
++          print("File types differ!");
++        }
++      
++      mismatched_files[mismatched_files_cnt++] \
++        = relative_path(full_name_1, dir1) \
++          "  (Types differ.  See next two lines.)\n" \
++          "       " dir1 ":  (" file_type_1 ")\n" \
++          "       " dir2 ":  (" file_type_2 ")";
++    }
++  else
++    {
++      if( debug )
++        print("Adding " relative_path(full_name_1, dir1) \
++              " to other_bin_files[" other_bin_files_cnt "].");
++
++      if( show_file_types )
++        other_bin_files[other_bin_files_cnt++] \
++          = relative_path(full_name_1, dir1) "  (" file_type_1 ")";
++      else
++        other_bin_files[other_bin_files_cnt++] \
++          = relative_path(full_name_1, dir1);
++    }
++}
++
++
++#
++# add_text(full_name_1, full_name_2, file_type_1, file_type2)
++#          -- We don't really need to "add" an entry to note that
++#             we have found a text file.  Instead, we go ahead and
++#             print out the file's name and start up the GUI.
++#
++function add_text(full_name_1, full_name_2, file_type_1, file_type_2) {
++  if( debug )
++    {
++      print("full_name_1 = " full_name_1);
++      print("full_name_2 = " full_name_2);
++      print("file_type_1 = " file_type_1);
++      print("file_type_2 = " file_type_2);
++    }
++  
++  if( first_diff )
++    {
++      printf("\n*** DIFFERENT TEXT FILES ***\n\n");
++      first_diff = 0;
++    }
++  
++  if( file_type_1 == file_type_2 )
++    if( show_file_types )
++      print(relative_path(full_name_1, dir1) "  (" file_type_1 ")");
++    else
++      print(relative_path(full_name_1, dir1));
++  else
++    {
++      print("=====");
++      print(relative_path(full_name_1, dir1) "  (Types differ.  " \
++            "See next two lines)");
++      print("       " dir1 ":  (" file_type_1 ")");
++      print("       " dir2 ":  (" file_type_2 ")");
++      print("=====");
++    }
++  
++  if(use_gui)
++    system(rmgdiff_gui " \"" full_name_1 "\" \"" full_name_2 "\"");
++}
++
++
++#
++# add_text_or_binary(full_name_1, full_name_2)
++#              -- Used to detect whether we have text files that differ
++#                 or something else.  It sure would be nice if we could
++#                 pass these strings by reference.
++#
++function add_text_or_binary(full_name_1, full_name_2 , file_type_1, file_type_2)
++{
++  file_type_1 = get_file_type(full_name_1);
++  file_type_2 = get_file_type(full_name_2);
++  
++  if( (file_type_1 ~ /text/ || file_type_1 ~ /^empty$/) &&
++      (file_type_2 ~ /text/ || file_type_2 ~ /^empty$/) )
++    {
++      add_text(full_name_1, full_name_2, file_type_1, file_type_2);
++    }
++  else
++    {
++      add_binary(full_name_1, full_name_2);
++    }
++}
++
++
++
++function check_exec(exec  ,  cmd) {
++  cmd="type \"" exec "\" 1>/dev/null 2>&1";
++  if( system(cmd) != 0 )
++    {
++      printf("\nrmgdiff.awk: " exec " isn't executable.\n\n");
++      exit_flag = 1;
++      exit(1);
++    }
++}
++
++
++function check_dir(dir  ,  cmd) {
++  cmd = "[ -d \"" dir "\" ]";
++  if( system(cmd) != 0 )
++    {
++      printf("\nrmgdiff.awk: \"" dir "\" isn't a directory.\n\n");
++      exit_flag = 1;
++      exit(1);
++    }
++}
++
++
++function check_external_executables() {
++  # You only need a gui if debug is off.  Default to "mgdiff" if
++  # the user does not pass in a value.
++  if(use_gui && !rmgdiff_gui)
++    {
++      rmgdiff_gui = "mgdiff";
++    }
++  check_exec(rmgdiff_gui);
++
++  if(!file_cmd)
++    {
++      file_cmd = "file";
++    }
++  check_exec(file_cmd);
++
++  check_dir(dir1);
++  check_dir(dir2);
++}
++
++#
++# get_full_names(raw_diff_line, dir1, dir2, full_names)
++#     -- This function takes the raw output of "diff -rq" for lines of
++#        the form "... <file1> and <file2> differ" and returns <file1>
++#        and <file2> in "full_names[1]" and "full_names[2]" respectively.
++#        A special function is needed in order to account for those
++#        cases where the file names have embedded spaces.
++#
++function get_full_names(raw_diff_line, dir1, dir2, full_names  ,  regex) {
++  #
++  # full_names[2] -- The first call to gsub() strips off the trailing
++  # "differ".  The second call to gsub() strips from the beginning of
++  # the string to the "and" that precedes <file2>.  In case you missed
++  # it, we are calculating full_names[2] [sic] first.
++  #
++  full_names[2] = raw_diff_line;
++  gsub(/ differ$/, "", full_names[2]);
++  gsub("^.* and (" dir2 ")", dir2, full_names[2]);
++
++  #
++  # full_names[1] -- The first call to gsub() strips off the trailing
++  # "and <file2> differ".  The second call to gsub() strips from the
++  # beginning of the string up to <file1>.
++  #
++  full_names[1] = raw_diff_line;
++  sub(" and " full_names[2] " differ$", "", full_names[1]);
++  sub("^.* " dir1, dir1, full_names[1]);
++
++  if( debug ) {
++      print("full_names[1] = " full_names[1]);
++      print("full_names[2] = " full_names[2]);
++  }
++}
++
++
++
++BEGIN {
++  if( debug )
++    print("Start BEGIN");
++
++  if( version )
++    {
++      printf("\nrmgdiff.awk: v1.8.1\n\n");
++      exit_flag = 1;
++      exit 1;
++    }
++
++  first_diff = 1;            # Flag.
++
++  check_external_executables();
++
++  if( debug )
++    {
++      print("dir1 = " dir1);
++      print("dir2 = " dir2);
++    }
++
++  dir1 = trim_dir(dir1);
++  dir2 = trim_dir(dir2);
++
++  if( debug )
++    {
++      print("Trimmed dir1 to " dir1);
++      print("Trimmed dir2 to " dir2);
++      print("");
++    }
++
++  # When you want to match regular expressions, you need to escape any
++  # meta characters.  For example, if your directory where "c++_src",
++  # and you try to do the match in the /^Only in/ that checks the
++  # following:
++  # 
++  #       if( "c++_src" ~ "^" "c++_src" )
++  #
++  # it will fail because the "++" in the last term are meta characters
++  # that aren't matched.
++  dir1_escaped = escape_dir(dir1);
++  dir2_escaped = escape_dir(dir2);
++
++  if( debug )
++    {
++      print("dir1 escaped to " dir1_escaped);
++      print("dir2 escaped to " dir2_escaped);
++    }
++
++  if( length(dir1_escaped) >= length(dir2_escaped) ) {
++    longer_dir = dir1;
++    longer_dir_escaped = dir1_escaped;
++    shorter_dir = dir2;
++    shorter_dir_escaped = dir2_escaped;
++  } else {
++    longer_dir = dir2;
++    longer_dir_escaped = dir2_escaped;
++    shorter_dir = dir1;
++    shorter_dir_escaped = dir1_escaped;
++  }
++
++  if( debug )
++    {
++      print("longer_dir = " longer_dir);
++      print("longer_dir_escaped = " longer_dir_escaped);
++      print("shorter_dir = " shorter_dir);
++      print("shorter_dir_escaped = " shorter_dir_escaped);
++    }
++
++}
++
++
++{
++  # Show the current line.
++  if( debug )
++    print("Current line:  " $0);
++}
++
++
++
++# Find the files that differ.  Filter out the CVS entries.  Call mgdiff
++# if the file is a text file.  If the file is a binary, save it for later.
++/^Files / {
++  if( debug )
++    print("Start Text and Binary files");
++
++  if( !use_cvs && $0 ~ /[ \/]CVS([ \/:]|$)/ )
++    {
++      if( debug )
++        print("Skipping CVS file.\n");
++      next;
++    }
++
++  full_names[1] = "";
++  full_names[2] = "";
++  get_full_names($0, dir1, dir2, full_names);
++
++  add_text_or_binary(full_names[1], full_names[2]);
++}
++
++
++# This is here for compatibility with the older version of GNU diff
++# that reported binary and text file differences separately.
++/^Binary files / {
++  if( debug )
++    print("Start Binary files only");
++
++  if( !use_cvs && $0 ~ /[ \/]CVS([ \/:]|$)/ )
++    {
++      if( debug )
++        print("Skipping CVS file.\n");
++      next;
++    }
++
++  full_names[1] = "";
++  full_names[2] = "";
++  get_full_names($0, dir1, dir2, full_names);
++
++  add_binary(full_names[1], full_names[2]);
++}
++
++# Find the files that are only in one of the directories.  Filter out
++# the CVS entries.  Sort into two arrays for later printing.
++/^Only in / {
++  if( debug )
++    print("Start Only in");
++
++  if( !use_cvs && $0 ~ /[ \/]CVS([ \/:]|$)/ )
++    {
++      if( debug )
++        print("Skipping CVS file.\n");
++      next;
++    }
++
++  # Find the directory.
++  only_in_dir = substr($0, length("Only in ") + 1);
++  gsub(/: .*$/, "", only_in_dir);
++
++  # Find the file that is only in "only_in_dir".
++  only_file = $0;
++  gsub(/^.*: /, "", only_file);
++
++  if( debug )
++    {
++      print("only_in_dir = " only_in_dir);
++      print("only_file = " only_file);
++    }
++
++  #
++  # A space means to concatenate the strings.  So,
++  #
++  #        only_in_dir ~ "^" longer_dir_escaped
++  #
++  #
++  # means you have a match if only_in_dir begins with longer_dir_escaped.
++  #
++  # You have to NOT anchor the end of the string to match.  The reason
++  # is that you could easily get the situation where a file or
++  # directory is only in one of the directories you are recursively
++  # diffing, and it has a depth of 2 or more.  (Note, "depth" here is
++  # the same concept as the "find" command's "-maxdepth" parameter.)
++  # This means you don't know what is going to be at the end of only_in_dir.
++  #
++  # You have to test the longer directory first because you might be
++  # diffing two directories named something like "my_dir" and
++  # "my_dir-v1.0".  If you tested the shorter directory first, you
++  # would always get a match because when only_in_dir is the longer directory,
++  # it too matches the shorter directory.
++  #
++
++  if( only_in_dir ~ "^" longer_dir_escaped ) {
++      add_only_in(longer_dir, only_in_dir, only_file);
++  }
++  else if( only_in_dir ~ "^" shorter_dir_escaped ) {
++      add_only_in(shorter_dir, only_in_dir, only_file);
++  } else {
++      print("***");
++      print("*** rmgdiff.awk: Internal error.  Missed an \"only in\".");
++      print("***    only_in_dir = " only_in_dir);
++      print("***");
++      exit_flag = 1;
++      exit(1);
++    }
++
++}
++
++
++# Just print a line to separate output for each pass.
++{
++  if( debug )
++    print("");
++}
++
++
++# Print out the entries you earlier saved to an array.
++END {
++  if( !exit_flag )
++    {
++
++      # I decided to not create a separate function for printing
++      # reports because you can't pass these potentially large
++      # arrays by reference.
++
++      if( executable_files_cnt )
++        {
++          printf("\n*** DIFFERENT EXECUTABLES ***\n\n");
++          for( i = 0 ; i < executable_files_cnt ; i++ )
++            print(executable_files[i]);
++        }
++
++      if( shared_libs_cnt )
++        {
++          printf("\n*** DIFFERENT SHARED LIBRARIES ***\n\n");
++          for( i = 0 ; i < shared_libs_cnt ; i++ )
++            print(shared_libs[i]);
++        }
++
++      if( static_libs_cnt )
++        {
++          printf("\n*** DIFFERENT STATIC LIBRARIES ***\n\n");
++          for( i = 0 ; i < static_libs_cnt ; i++ )
++            print(static_libs[i]);
++        }
++
++      if( object_files_cnt )
++        {
++          printf("\n*** DIFFERENT OBJECT FILES ***\n\n");
++          for( i = 0 ; i < object_files_cnt ; i++ )
++            print(object_files[i]);
++        }
++
++      if( other_bin_files_cnt )
++        {
++          printf("\n*** OTHER DIFFERENT BINARY FILES ***\n\n");
++          for( i = 0 ; i < other_bin_files_cnt ; i++ )
++            print(other_bin_files[i]);
++        }
++      
++      if( only_in_dir1_cnt )
++        {
++          printf("\n*** FILES ONLY IN %s ***\n\n", dir1);
++          for( i = 0 ; i < only_in_dir1_cnt ; i++ )
++            print(only_in_dir1[i]);
++        }
++      
++      if( only_in_dir2_cnt )
++        {
++          printf("\n*** FILES ONLY IN %s ***\n\n", dir2);
++          for( i = 0 ; i < only_in_dir2_cnt ; i++ )
++            print(only_in_dir2[i]);
++        }
++
++      if( mismatched_files_cnt )
++        {
++          printf("\n*** WARNING: MISMATCHED FILES ***\n\n");
++          for( i = 0 ; i < mismatched_files_cnt ; i++ )
++            print(mismatched_files[i]);
++        }
++
++      print("");
++    }
++}
+--- modal.c
++++ modal.c
+@@ -1,4 +1,4 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "modal.c,v 2.0 1994/05/19 02:01:20 dan Exp";
+ #endif
+ 
+--- rundiff.c
++++ rundiff.c
+@@ -1,4 +1,4 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "rundiff.c,v 2.0 1994/05/19 02:01:22 dan Exp";
+ #endif
+ 
+@@ -209,7 +209,7 @@
+     FILE *diff, *file1, *file2;
+     char buffer[BUFSIZ+1];
+     int sline, fline1, fline2;
+-    Block *b;
++    Block *b = NULL;
+     int i, lines, counter;
+     int stat_loc;
+     DiffInfo *di;
+@@ -245,7 +245,7 @@
+ 		char cmdline[4096];
+ 
+ 		di->etext = (char **) calloc (MAX_ERROR_LINES + 1, sizeof (char *));
+-		(void) sprintf (cmdline, "    \"%s %s %s %s\"", prog, args, path1, path2);
++		(void) snprintf (cmdline, sizeof (cmdline), "    \"%s %s %s %s\"", prog, args, path1, path2);
+ 		di->etext[di->errors++] = strdup ("diff command line:");
+ 		di->etext[di->errors++] = strdup ("");
+ 		di->etext[di->errors++] = strdup (cmdline);
+@@ -522,21 +522,23 @@
+  */
+ static char *duplicate (char *s, int *flag)
+ {
+-    int len, i, tabs, ctrls;
++    int len, i, tabs, ctrls, latin, ch;
+ 
+     /* 
+      * compute length of new string, taking tabs and control 
+      * characters into account
+      */
+     for (i = 0, len = 0, ctrls = tabs = 0; s[i] != '\0'; i++) {
+-	if (isascii (s[i])) {
++    ch = s [i];
++	latin = islatin(ch);
++	if ((isascii(ch) || latin)) {
+ 	    if (s[i] == '\t') {
+ 		tabs++;
+ 		len += 8;
+ 		len /= 8;
+ 		len *= 8;
+ 	    }
+-	    else if (iscntrl (s[i])) {
++	    else if (!latin && iscntrl (s[i])) {
+ 		ctrls++;
+ 		len += 2;
+ 	    }
+@@ -551,16 +553,18 @@
+ 
+     if (tabs || ctrls) {
+ 	char *ret = (char *) calloc (1, len + 1);
+-	int j;
++	int j, ch;
+ 
+ 	for (i = 0, j = 0; s[i] != '\0'; i++) {
+-	    if (isascii (s[i])) {
++	    ch = s[i];
++	    latin = islatin(ch);
++	    if ((isascii(ch) || latin)) {
+ 		if (s[i] == '\t') {
+ 		    ret[j++] = ' ';
+ 		    while ((j % 8) != 0)
+ 			ret[j++] = ' ';
+ 		}
+-		else if (iscntrl (s[i])) {
++		else if (!latin && iscntrl (s[i])) {
+ 		    ret[j++] = '^';
+ 		    ret[j++] = (s[i] + '@') & 0x7f;
+ 		}
+--- misc.c
++++ misc.c
+@@ -1,9 +1,10 @@
+-#ifndef lint
++#if 0
+ static char rcsid[] = "misc.c,v 2.0 1994/05/19 02:01:19 dan Exp";
+ #endif
+ 
+ /*
+  * Copyright (c) 1994    Daniel Williams
++ * Copyright (c) 2003    Erik de Castro Lopo
+  * 
+  * The X Consortium, and any party obtaining a copy of these files from
+  * the X Consortium, directly or indirectly, is granted, free of charge,
+@@ -33,6 +34,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
++#include <errno.h>
+ 
+ #include <Xm/Xm.h>
+ #include <X11/cursorfont.h>
+@@ -40,6 +43,7 @@
+ #include <Xm/SashP.h>
+ 
+ #include "mgdiff.h"
++#include "externs.h"
+ 
+ int max (int i, int j)
+ {
+@@ -52,14 +56,38 @@
+ }
+ 
+ /* 
+- * copy a stream up to the EOF to a file
++ * Create a temporary file and write all text from the input stream (up to 
++ * the EOF) to the file.
++ * The name of the temp file is returned to the user in *name.
+  */
+-int copy_to_file (FILE *fin, char *name)
++int copy_to_tempfile (FILE *fin, char *name, size_t name_len)
+ {
+-    FILE *fout;
++    FILE *fout ;
++    int fd ;
++	
++    /*
++    **	Seed the random() generator. This does not need to be super
++    **	randomised as the while loop below will be run until a file
++    **	is opened.
++    */
++    srandom (getpid () + getppid () + time (NULL)) ;
++
++    while (1) {
++	snprintf (name, name_len, "/tmp/mgdiff-%#lx", random()) ;
++	if ((fd = open (name, O_CREAT | O_EXCL | O_RDWR, 0600)) < 0) {
++	    if (errno == EEXIST)
++		continue ;
++	    return 1 ;
++	}
++
++	if ((fout = fdopen (fd, "r+")) == NULL) {
++	    close (fd) ;
++	    return 1 ;
++	}
++	
++	break ;
++    }
+ 
+-    if ((fout = fopen (name, "a")) == NULL)
+-	return (0);
+     while (!feof (fin)) {
+ 	char buffer[BUFSIZ];
+ 	int nitems;
+@@ -68,10 +96,12 @@
+ 	if (fwrite (buffer, 1, nitems, fout) != nitems)
+ 	    break;
+     }
++
+     if (ferror (fin) || ferror (fout)) {
+ 	(void) fclose (fout);
+ 	return (1);
+     }
++
+     return ((fclose (fout) == 0));
+ }
+ 
+--- patchlevel.h
++++ patchlevel.h
+@@ -28,11 +28,11 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+ 
+-#ifndef lint
++#if 0
+ static char rcsid_patchlevel_h[] = "patchlevel.h,v 2.0 1994/05/19 02:01:21 dan Exp";
+ #endif
+ 
+ #define VERSION    "1.0"
+-#define PATCHLEVEL "0"
++#define PATCHLEVEL "1"
+ 
+ #endif
+--- externs.h
++++ externs.h
+@@ -28,7 +28,7 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+ 
+-#ifndef lint
++#if 0
+ static char rcsid_externs_h[] = "externs.h,v 2.0 1994/05/19 02:01:05 dan Exp";
+ #endif
+ 
+@@ -43,7 +43,7 @@
+ extern DiffInfo *build_diff_info (char *prog, char *args, char *path1, char *path2);
+ extern int max (int i, int j);
+ extern int min (int i, int j);
+-extern int copy_to_file (FILE *fin, char *name);
++extern int copy_to_tempfile (FILE *fin, char *name, size_t name_len);
+ extern void set_cursor (Widget w);
+ extern void reset_cursor (Widget w);
+ extern Widget get_top_shell (Widget w);
+@@ -61,5 +61,6 @@
+ extern void turn_off_sash_traversal (Widget pane);
+ extern void show_legend (Widget parent);
+ extern void show_context (Widget parent);
++extern void save_as_filename (Widget parent, Block *b, char *name);
+ 
+ #endif
+--- mgdiff.man
++++ mgdiff.man
+@@ -1,6 +1,7 @@
+ .\" mgdiff.man,v 2.0 1994/05/19 02:01:16 dan Exp
+ .\"
+ .\" Copyright (c) 1994    Daniel Williams
++.\" Copyright (c) 2003    Erik de Castro Lopo
+ .\" 
+ .\" The X Consortium, and any party obtaining a copy of these files from
+ .\" the X Consortium, directly or indirectly, is granted, free of charge,
+@@ -26,7 +27,7 @@
+ .\" WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .\"
+ .na
+-.TH MGDIFF 1
++.TH MGDIFF 1x
+ .SH NAME
+ mgdiff \- Motif-based graphical file difference browser
+ .SH SYNOPSIS
+@@ -82,6 +83,20 @@
+ .LP
+ At the top of the display is a Motif menu bar; those functions are
+ discussed in the MENUS section of this manual page.
++.LP
++Earlier versions of this program (pre 2003) only allowed the selection
++of the left hand side difference or the right hand side difference.  It
++also would not allow a file to be saved with unselected blocks.  The
++current version allows the user to select both sides of a difference
++by selecting blocks using the middle mouse button.  When both sides of a 
++difference are selected both blocks will be saved to the merged file and 
++marked in a similar manner to the way 
++.I CVS
++marks merges that require manual resolution of conflicting changes.  In
++addition, the current version also allows saving of a merged file with
++unselected blocks.  In this case, the merged file will contain 
++neither the left hand side nor the right hand side of the unselected
++blocks.
+ 
+ .SH COMMAND LINE OPTIONS
+ .TP 8
+@@ -170,8 +185,27 @@
+ application modal dialog.  The program will allow the user to
+ overwrite an existing file but pops up a QuestionDialog to allow the
+ user to cancel the operation if desired.  If there are any unselected
+-areas of difference between the two files the user is notified via an
+-ErrorDialog and the save operation is canceled.
++areas of difference between the two files the user is asked whether
++they want to continue or cancel the operation.  If the user continues,
++the output file will contain none of the unselected blocks.
++.IP "\fBSave As Left...\fP" \n(XYP
++.LP
++Saves the merged file to the location given by the left hand side
++file location. The user will be asked if they are sure they wish the
++existing file to be overwritten. As with the "Save As", if there are 
++any unselected areas of difference between the two files the user 
++asked whether they want to continue or cancel the operation.  If the
++user continues, the output file will contain none of the data in the
++unselected blocks.
++.IP "\fBSave As Right...\fP" \n(XYP
++.LP
++Saves the merged file to the location given by the right hand side
++file location. The user will be asked if they are sure they wish the
++existing file to be overwritten. As with the "Save As", if there are 
++any unselected areas of difference between the two files the user 
++asked whether they want to continue or cancel the operation.  If the
++user continues, the output file will contain none of the data in the
++unselected blocks.
+ .IP "\fBExit\fP" \n(XYP
+ .B Ctrl+C
+ .LP
+@@ -332,6 +366,9 @@
+ 					XmPushButtonGadget  button_3
+ 					XmSeparatorGadget  separator_0
+ 					XmPushButtonGadget  button_4
++					XmPushButtonGadget  button_5
++					XmSeparatorGadget  separator_1
++					XmPushButtonGadget  button_6
+ 				XmRowColumn  options_menu
+ 					XmToggleButtonGadget  button_0
+ 					XmToggleButtonGadget  button_1
+@@ -543,12 +580,17 @@
+ any quote processing.
+ .SH COPYRIGHT
+ Copyright (c) 1994, Daniel Williams
++.br 
++Copyright (c) 2003, Erik de Castro Lopo
+ .br
+ See
+ .B X (1)
+ for a full statement of rights and permissions.
+-.SH AUTHOR
++.SH AUTHORS
+ Daniel Williams (dan@sass.com)
++.br
++Erik de Castro Lopo (erikd AT mega-nerd DOT com) added "\fBSave as Left/Right\fP"
++and saving both and neither sides.
+ .SH ACKNOWLEDGEMENTS
+ To Andrew C. Myers for writing
+ .I gdiff.

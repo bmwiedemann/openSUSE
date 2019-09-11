@@ -1,0 +1,33 @@
+<multibuild>
+	<!--
+		for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 RaspberryPi Vagrant hardware; do
+			for f in "" "ContainerHost-" "Kubic-kubeadm-"; do
+				printf "\t<flavor>%s%s</flavor>\n" $f $a
+			done
+		done
+	-->
+	<flavor>kvm-and-xen</flavor>
+	<flavor>ContainerHost-kvm-and-xen</flavor>
+	<flavor>Kubic-kubeadm-kvm-and-xen</flavor>
+	<flavor>VMware</flavor>
+	<flavor>ContainerHost-VMware</flavor>
+	<flavor>Kubic-kubeadm-VMware</flavor>
+	<flavor>MS-HyperV</flavor>
+	<flavor>ContainerHost-MS-HyperV</flavor>
+	<flavor>Kubic-kubeadm-MS-HyperV</flavor>
+	<flavor>OpenStack-Cloud</flavor>
+	<flavor>ContainerHost-OpenStack-Cloud</flavor>
+	<flavor>Kubic-kubeadm-OpenStack-Cloud</flavor>
+	<flavor>Pine64</flavor>
+	<flavor>ContainerHost-Pine64</flavor>
+	<flavor>Kubic-kubeadm-Pine64</flavor>
+	<flavor>RaspberryPi</flavor>
+	<flavor>ContainerHost-RaspberryPi</flavor>
+	<flavor>Kubic-kubeadm-RaspberryPi</flavor>
+	<flavor>Vagrant</flavor>
+	<flavor>ContainerHost-Vagrant</flavor>
+	<flavor>Kubic-kubeadm-Vagrant</flavor>
+	<flavor>hardware</flavor>
+	<flavor>ContainerHost-hardware</flavor>
+	<flavor>Kubic-kubeadm-hardware</flavor>
+</multibuild>

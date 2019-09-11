@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Wed Feb 20 09:19:51 UTC 2019 - schwab@suse.de
+
+- altivec.patch: always use the GNU version of the altivec insns
+
+-------------------------------------------------------------------
+Sat Jul 15 21:49:12 UTC 2017 - zaitor@opensuse.org
+
+- Drop a52dec-compat.diff and mm_accel.h source, not needed with
+  the svn checkout we are using.
+- Pass --enable-shared to configure, ensure we build the shared
+  library.
+
+-------------------------------------------------------------------
+Wed Mar 22 07:56:31 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from descriptions. Improve summaries.
+
+-------------------------------------------------------------------
+Wed Mar 22 07:43:25 UTC 2017 - aloisio@gmx.com
+
+- Add baselibs.conf as source file
+
+-------------------------------------------------------------------
+Tue Mar 21 11:20:44 UTC 2017 - aloisio@gmx.com
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Nov  5 14:28:28 UTC 2014 - i@margueirte.su
+
+- update latest svn 0.7.5+svn613
+
+-------------------------------------------------------------------
+Tue Jan 24 09:56:18 UTC 2012 - reddwarf@opensuse.org
+
+- fix baselibs.conf
+- don't install the INSTALL file
+- change license tag to SPDX
+- add automake, autoconf and libtool BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar  2 23:30:23 UTC 2011 - reddwarf@opensuse.org
+
+- run spec cleaner
+- remove .la files
+- add pkg-config BuildRequire so RPM can do its magic
+
+-------------------------------------------------------------------
+Sun Jun 20 17:31:22 UTC 2010 - ludwig.nussel@gmx.de
+
+- provide a52dec-devel for compatibility
+
+-------------------------------------------------------------------
+Sat Nov 21 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- update to svn from videolan
+
+-------------------------------------------------------------------
+Fri Aug 21 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- cleanups where rpmlint wasn't so happy
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- rename of the lib packages
+
+-------------------------------------------------------------------
+Sun Apr 20 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- splitted in different packages
+
+-------------------------------------------------------------------
+Tue Nov 23 00:00:00 UTC 2004 - detlef@dreichelt.de
+
+- changes for x86_64:
+ - added CFLAGS= -fPIC
+
+-------------------------------------------------------------------
+Tue Mar 25 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- changes to use Packman upload-script
+
+-------------------------------------------------------------------
+Sat Feb 22 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- added --enable-shared
+
+-------------------------------------------------------------------
+Wed Feb  5 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- added german description
+- some changes I got from Philipp Thomas <pthomas@suse.de>
+
+-------------------------------------------------------------------
+Wed Jul  3 00:00:00 UTC 2002 - Manfred.Tremmel@iiv.de
+
+- update to Version 0.7.4
+
+-------------------------------------------------------------------
+Thu May 30 00:00:00 UTC 2002 - Manfred.Tremmel@iiv.de
+
+- update to Version 0.7.3
+
+-------------------------------------------------------------------
+Sat Dec 29 00:00:00 UTC 2001 - waldemar@links2linux.de
+
+- first build
+

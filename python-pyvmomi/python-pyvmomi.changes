@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sat Dec 29 16:24:24 UTC 2018 - mardnh@gmx.de
+
+- Update to version 6.7.1.2018.12
+  * Support JSON encoding for pyVmomi objects
+  * Fix vcrpy hardening in test-requirements. Support versions < 2.0
+  * Delete deprecated Docs folder
+- Add patch:
+  * python-pyvmomi-fix-incompatibility-with-vcrpy2.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Nov 21 13:15:48 UTC 2018 - Santiago Zarate <santiago.zarate@suse.com>
+
+_ Update to version 6.7.1
+  * Publish new bindings to support vSphere 6.7 Update 1 Release
+  * Newer features are available via the new vSphere Automation SDK for Python 
+
+-------------------------------------------------------------------
+Wed Apr 18 17:58:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 6.7
+  * Publish new bindings to support vSphere 6.7
+- Change URL to download sources from github
+- Remove hotfix macro
+- Enable tests
+
+-------------------------------------------------------------------
+Sat Mar  3 18:41:57 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * don't use python_module for Requires
+
+-------------------------------------------------------------------
+Wed Nov 29 15:01:48 UTC 2017 - boris@steki.net
+
+- updated to release v6.5.0.2017.5-1
+  + Fix SoapAdapter serializer to support serializing unicode chars
+  + Remove custom getattr in _HTTPSConnection
+  + Add user-agent header when connecting to vsphere
+- moved to single spec logic to build py2 and py3 package
+
+-------------------------------------------------------------------
+Sun Jan 15 11:57:13 UTC 2017 - hpj@urpla.net
+
+- fix build: add python-fixtures to build dependencies
+
+-------------------------------------------------------------------
+Thu Jan 12 19:30:55 UTC 2017 - mardnh@gmx.de
+
+- Update to version 6.5
+  * Spec bump to support vSphere 6.5.
+  * Include EAM bindings to support vSphere EAM service.
+  * Fixed server thumbprint verification.
+  * Fixed sslcontext creation in sample code.
+
+-------------------------------------------------------------------
+Sun Sep 18 12:40:36 UTC 2016 - mardnh@gmx.de
+
+- Update to version 6.0.0.2016.4
+  * Python3 related bug fixes.
+  * Include task.py utility class.
+- Changes from version 6.0.0
+  * Spec bump to support vSphere 6.0 server objects and types
+    vSphere 6.0 U1 spec is used
+  * New ssl context parameter in Connect.py and SoapAdapter.py to
+    support passing various ssl options while connecting to vSphere.
+  * Drop python 2.6 support.
+  * Critical bug fixes.
+- Remove patch: pyvmomi-git20141104-new.diff (fixed upstream)
+- Fix Source-Url
+
+-------------------------------------------------------------------
+Wed May 13 15:03:26 UTC 2015 - mc@suse.com
+
+- add requires for python-six and python-requests
+
+-------------------------------------------------------------------
+Tue Nov  4 17:28:19 UTC 2014 - hpj@urpla.net
+
+- version 5.5.0.2014.1.1: initial build
+- apply asorted fixes from todays git tree
+

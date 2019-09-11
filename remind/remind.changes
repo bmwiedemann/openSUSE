@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Fri Aug 14 15:32:07 UTC 2015 - puzel@suse.com
+
+- update to remind-3.1.15 
+  - BUG FIX: Fix a buffer overflow found by Alexander Keller
+    (CVE-2015-5957)
+  - BUG FIX: Make parser reject an AT followed by more than one time.
+  - BUG FIX: Make parser reject repeated delta or *repeat values.
+  - NEW FEATURE: Putting the line __EOF__ in a .rem file causes
+    Remind to treat it as end-of-file.
+  - IMPROVEMENT: Use better PNG images for moons in the HTML display
+  - BUG FIX: The "-n" command-line option should really run in
+    "ADVANCE_MODE" rather than "CAL_MODE" internally; otherwise,
+    the substitution sequences may be misinterpreted.
+  - BUG FIX: A typo in clearing out MD5 sum context has been fixed.
+  - BUG FIX: Typo in Spanish translation was fixed.
+
+-------------------------------------------------------------------
+Mon Apr 22 20:28:03 UTC 2013 - puzel@suse.com
+
+- update to remind-3.1.13 
+  - BUG FIX: Sunrise/Sunset calculations greatly improved thanks to
+    John McGowan.  Accuracy should now be within a couple of
+    minutes in most places.
+  - BUG FIX: Allow specification of margins as low as 0 points in
+    rem2ps, courtesy of Jonathan Kamens.
+  - BUG FIX: Permit compilation with gcc 2.95 (which doesn't allow
+    variable declarations after non-declaration statements in a
+    block.)
+  - BUG FIX: Several minor documentation errors corrected courtesy
+    of Simon Ruderich.
+  - BUG FIX: Spurious test harness failure was fixed.
+
+-------------------------------------------------------------------
+Tue Feb 28 11:42:15 UTC 2012 - puzel@suse.com
+
+- update to remind-3.1.12 
+  - NEW FEATURE: Many substitution sequences "%x" have an alternate
+    mode denoted by "%*x".  This alternate mode leaves out
+    prepositions.  For example, in English "%i" might yield "on
+    01-25" while "%*i" yields only "01-25".
+  - BUG FIX: The "dusk" and "dawn" calculations were completely
+    wrong.  They have been fixed.  Also, sunrise/sunset calculations
+    have been tweaked, so the results may be off by a minute or two
+    compared to previous versions of Remind.
+  - BUG FIX: For some inexplicable reason, dawn was considered to
+    happen when the sun was 14 degrees below the horizon instead of
+    the standard 6 degrees for Civil Dawn.  This has been fixed.
+  - BUG FIXES: Clarified the man pages and fixed some typos.
+  - BUG FIX: Add THROUGH to the remind.vim syntax highlighting file.
+  - ENHANCEMENT (?): Allow SPECIAL COLOR to be spelled SPECIAL
+    COLOUR.
+  - BUG FIX: Apply minor Debian cleanups reported by Kurt B. Kaiser.
+
+-------------------------------------------------------------------
+Mon Feb 20 06:17:56 UTC 2012 - mrdocs@opensuse.org
+
+- disable make check - it breaks the build
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:29 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Dec 22 12:32:25 UTC 2010 - puzel@novell.com
+
+- clean up specfile
+- enable 'make check' again
+
+-------------------------------------------------------------------
+Tue Nov  2 11:10:39 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.10 
+  - add the THROUGH keyword.  You can omit blocks of dates
+    with: OMIT start THROUGH end
+  - add support for multibyte characters (eg, UTF-8) in calendar
+    output. Note that UTF-8 strings are still not supported in
+    PostScript output.
+  - add support for UTF-8 line-drawing characters in calendar
+    output
+  - you can have multiple TAG clauses in a REM statement
+  - avoid spawning long-running background processes in "make
+    test"
+  - don't declare variables in the middle of statements (old C
+    compilers choke.)
+
+-------------------------------------------------------------------
+Mon Jun 21 07:17:06 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.9
+  - New "purge mode" to delete expired reminders. See
+    the PURGE MODE section of the remind man page.
+  - Support DURATION in TkRemind. Thanks to Marek Marczykowski.
+  - Don't change the order of PS and PSFILE reminders.  Bug found
+    by John McGowan.
+  - "REM 1990-01-01 SATISFY 1" would yield a spurious parse error
+    in earlier versions of Remind.
+  - Yom HaShoah is moved to Thursday if it would normally fall on
+    a Friday. Thanks to Jonathan Kamens for pointing this out.
+
+-------------------------------------------------------------------
+Wed Mar 10 08:54:34 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.8 
+  - Add the $T, $Td, $Tm, $Tw, $Ty, $U, $Ud, $Um, $Uw, $Uy
+    special variables to make reminder files less wordy. See man page
+    for details.
+  - Ignore msgprefix() and msgsuffix() on RUN-type reminders.
+  - Adjust Remind and Rem2PS so that SHADE specials don't obliterate
+    earlier MOON specials.
+  - Fix bug in SCHED calculations if Remind is started in the middle
+    of a SCHED interval.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:09:10 UTC 2010 - puzel@novell.com
+
+- initial package for Contrib, based on obs://home:code933k/remind 
+

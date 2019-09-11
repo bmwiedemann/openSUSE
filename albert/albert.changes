@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Mar 18 00:05:10 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs -> %cmake_build
+
+-------------------------------------------------------------------
+Tue Jan  1 09:04:51 UTC 2019 - tobia@ledfan.be
+
+- Update to version 0.16.1:
+  *  [albert] Fix default plugin lookup path
+  *  [albert] Fix flicker when changing frontends
+  *  [albert] Fix “Terminal option resets after a restart”
+  *  [albert] Link libglobalshortcut statically
+  *  [albert] Add a build flag for QtCharts
+  *  [albert] Drop debug options if favor of QLoggingCategory env vars
+  *  [plugins:ssh] Fix input regex. Sort by length then lexically.
+  *  [plugins:ssh] Use backward compatible ssh url syntax
+  *  [plugins:qml] Consistent form layout
+  *  [modules:aur] Sort items by length first
+
+
+-------------------------------------------------------------------
+Tue Nov 27 16:28:33 UTC 2018 - mcalabkova@suse.com
+
+- Update to version 0.14.22:
+  * Fix settings not shown on missing hotkey
+  * Update comments
+  * Fix travis #2
+  * Fix travis build
+  * v0.14.22
+  * Add telemetry checkbox. Closes #697
+  * Add telemetry question.
+  * fixed typo (#711)
+  * Update ISSUE_TEMPLATE.md
+  * Backward compatibility.
+
+-------------------------------------------------------------------
+Tue Jun 12 11:12:00 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.14.21:
+  * No changelog available.
+- Remove albert-fix-libdir.patch.
+
+-------------------------------------------------------------------
+Mon Jun  5 11:10:39 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.11.3:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.11.1:
+  * No changelog available.
+- Rebase albert-fix-libdir.patch.
+
+-------------------------------------------------------------------
+Mon Feb  6 19:20:22 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.3:
+  * No changelog available.
+- Add albert-fix-libdir.patch: Install libraries into a correct
+  directory.
+
+-------------------------------------------------------------------
+Sat Jul 23 16:15:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.10:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sat May 28 15:43:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.9:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.8.
+
+-------------------------------------------------------------------
+Mon Apr 25 12:47:04 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 0.8.7.2
+  * No changelog available
+- Add pkgconfig(Qt5Svg) requirement; new upstream dependency
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

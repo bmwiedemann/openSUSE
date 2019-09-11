@@ -1,0 +1,1241 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:46 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Save and load page margins 
+  * Don't persist authentication 
+  * Re-map default "Switch input mode" shortcut to not confict with konsolepart (kde#409978) 
+  * Make keyword completion model return HideListIfAutomaticInvocation by default 
+  * Minimap: Do not grab the left-mmouse-button-click on up/down buttons 
+  * Fix minor typos 
+  * allow up to 1024 hl ranges instead of not higlighting the line at all if that limit is reached 
+  * fix folding of lines with end position at column 0 of a line (kde#405197) 
+  * move enum to dialog, only used there 
+  * Add option to treat some chars also as "auto bracket" only when we have a selection 
+  * Add an action to insert a non-indented newline (kde#314395) 
+  * Add setting to enable/disable text drag-and-drop (on by default)
+
+-------------------------------------------------------------------
+Fri Jul 19 11:44:56 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+- Drop conditionals for no longer supported distribution versions
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * fix goto line centering force center for any external set cursor position call (kde#408418)
+  * Fix bookmark icon display on icon border with low dpi
+  * Fix action "Show Icon Border" to toggle border again
+  * Remove ifdef for Qt 5.11 since we require that version now
+  * Fix compiler warning about unused variable
+  * Fix empty pages in print preview and lines printed twice (kde#348598)
+  * remove no longer used header
+  * fix unit test for all operating systems
+  * fix unit test
+  * fix autoscrolling down speed (kde#408874)
+  * Add default variables for variables interface
+  * Make automatic spellcheck work after reloading a document (kde#408291)
+  * raise default line length limit to 10000
+  * WIP:Disable highlighting after 512 characters on a line.
+  * KateModeMenuList: move to QListView
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Don't delete entire previous line by backspace in pos 0 (kde#408016)
+  * Use native dialog overwrite check
+  * Review del/backspace
+  * Add action to reset font size
+  * show static word wrap marker always if requested
+  * Ensure highlighted range begin/end marker after unfold
+  * Fix: don't reset Highlight when saving some files (kde#407763)
+  * Auto indentation: Use std::vector instead of QList
+  * Fix: Use default indentation mode for new files
+  * remove duplicated assignment
+  * honor auto-bracket setting for balance check
+  * improve invalid character check on loading (kde#406571)
+  * New menu of syntax highlighting in the status bar
+  * Avoid infinite loop in "Toggle Contained Nodes" action
+
+-------------------------------------------------------------------
+Wed May 15 18:16:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Remove override keyword
+  * Use isEmpty here
+  * Remove deprecated method
+  * try to improve painting height for text lines - bug 403868 avoid to cut _
+    and other parts still broken: double height things  like mixed
+    english/arab, see bug 404713 (kde#403868)
+  * Use QTextFormat::TextUnderlineStyle instead of QTextFormat::FontUnderline (kde#399278)
+  * Make it possible to show all spaces in the document (kde#381267, kde#342811)
+  * Do not print indent lines
+  * KateSearchBar: Show also search has wrapped hint in nextMatchForSelection() aka Ctrl-H
+  * katetextbuffer: refactor TextBuffer::save() to better separate code paths
+  * Use AuthCore instead of Auth
+  * Remove dead code
+  * Explicitly link against KAuth
+  * Refactor KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
+  * Improvements to completion
+  * Add TODO KF6 note
+  * Set the color scheme to Printing for Print Preview (kde#391678)
+- Refreshed patches:
+  * 0001-Disable-KAuth-integration.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * skip cppstyle indentation test for !t 5.12.0 which has a broken regex implementation in JS
+  * KateSpellCheckDialog: Remove action "Spellcheck Selection"
+  * Update JavaScript library underscore.js to version 1.9.1
+  * Fix bug 403422: Allow changing the marker size again (kde#403422)
+  * Consistently use override, not Q_DECL_OVERRIDE
+  * SearchBar: Add Cancel button to stop long running tasks
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH
+  * Review KateGotoBar
+  * ViewInternal: Fix 'Go to matching bracket' in override mode
+  * Delete copy constructor and assignment operator from public vim/ classes
+  * delete copy constructor and assignment operator of some internal classes
+  * Use HTTPS, if available, in links visible to users
+  * Review KateStatusBar
+  * ViewConfig: Add option to paste at cursor position by mouse (kde#363492)
+  * Use the nicer K_PLUGIN_CLASS_WITH_JSON
+  * Remove Qt version check
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix unit test that arbitrarily fails
+  * fix scripting for Qt 5.12
+  * Fix emmet script by using HEX instead of OCT numbers in strings (kde#386151)
+  * Fix broken Emmet (kde#386151)
+  * ViewConfig: Add 'Dynamic Wrap At Static Marker' option
+  * fix folding region end, add ending token to the range
+  * avoid ugly overpainting with alpha
+  * Don't re-mark words added/ignored to the dictionary as misspelled (kde#387729)
+  * KTextEditor: Add action for static word wrap (kde#141946)
+  * ViewPrivate: Don't hide 'Clear Dictionary Ranges' action
+  * KateStatusBar: Reformatted by astyle command to follow coding style
+  * Don't ask for confimation when reloading (kde#401376)
+  * class Message: Use inclass member initialization
+  * KTextEditor::Message: Review documentation
+  * use STL were no implicit sharing is required
+  * Expose KTextEditor::ViewPrivate:setInputMode(InputMode) to KTextEditor::View
+  * improve range handling, no allocations for common updates (kde#333517)
+  * KateViewInternal: Rename getMouse/Cursor() => mouse/cursorPosition() to fit coding style
+  * tune editing actions for large number of small edits
+  * Only cal updateView() in visibleRange() when endPos() is invalid.
+  * KateViewInternal: S&R
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * KTextEditor::ViewPrivate: S&R
+  * KateViewInternal: Remove unneeded functions
+  * Allow negative syntax definition priorities.
+  * Expose "Toggle Comment" feature through tools menu and default shortcut (kde#387654)
+  * Fix hidden languages in the mode menu
+  * SpellCheckBar: Use DictionaryComboBox instead of plain QComboBox
+  * KTextEditor::ViewPrivate: Avoid warning "Text requested for invalid range"
+  * Android: No need to define log2 anymore
+  * disconnect contextmenu from all aboutToXXContextMenu receivers (kde#401069)
+  * Introduce AbstractAnnotationItemDelegate for more control by consumer
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Remove unused variables
+  * Fix minor EBN issues and typos
+  * Fix align of doxygen comments in templates
+  * Use normalized signatures with SIGNAL(), SLOT(), Q_ARG(), Q_RETURN_ARG()
+  * Remove duplicated includes
+  * Use more explicit constructors with internal classes
+  * Remove double underscore (__) from header include guards
+  * Minor: Cleanup some code
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:36 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Restaure default severity
+  * Autogenerate debug file + create categories file
+  * Port to no deprecated method
+  * Paint code folding marker only for multiline code folding regions
+  * Intialize m_lastPosition
+  * Scripting: isCode() returns false for dsAlert text
+  * fix ebn issues
+  * use R Script hl for R indent tests
+  * Unit tests for the R indent script
+  * Update of the R indent script
+  * Fix Solarized Light and Dark color schemes (kde#382075)
+  * Don't require Qt5::XmlPatterns
+
+-------------------------------------------------------------------
+Mon Sep 17 07:55:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Too many changes to list here
+- Refreshed patches:
+  * 0001-Disable-KAuth-integration.patch
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:24 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * proper fix for the raw string indenting auto-quoting
+  * fix indenter to cope with new syntax file in syntaxhighlighting framework
+  * adjust test to new state in syntax-highlighting repository
+  * Show "Search wrapped" message in center of view for better visibility
+  * fix warning, just use isNull()
+  * Extend Scripting API
+  * fix segfault on rare cases where empty vector occurs for word count happens e.g. sometimes for vimode_emulatedcommandbar test
+  * enforce clear of scrollbar preview on document clear BUG: 374630 (kde#374630)
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * use nullptr, not 0
+  * add missing const qualifiers
+  * guard updateConfig for disabled status bars
+  * add context menu to statusbar to toggle show total lines/word count
+  * Implemented displaying of total lines in kate (kde#387362)
+  * Make menu-bearing toolbar buttons show their menus with normal click rather than click-and-hold (kde#353747)
+  * CVE-2018-10361: privilege escalation
+  * Fix caret width (kde#391518)
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Warning--
+  * Use override
+  * Don't use title case for the "show word count" checkbox
+  * Make the word/char count a global preference
+
+-------------------------------------------------------------------
+Sun May 13 21:03:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * optimization of KTextEditor::DocumentPrivate::views()
+  * [ktexteditor] much faster positionFromCursor
+  * Implement single click on line number to select line of text
+  * Warning--
+  * Add missing override
+  * Fix problem that font/italic/... attributes no longer work with e.g. >= Qt 5.9
+  * clang-tidy: modernize-use-default-member-init run
+- Dropped patches, now upstream:
+  * Fix-font-attributes.patch
+
+-------------------------------------------------------------------
+Wed Apr 18 05:57:19 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-font-attributes.patch to fix missing bold/italic/...
+  markup with modern Qt versions (>= 5.9)
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:06 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Make it possible for KTextEditor to build on Android NDK's gcc 4.9
+  * avoid Asan runtime error: shift exponent -1 is negative
+  * We depend against 5.8.0
+  * optimization of TextLineData::attribute
+  * Don't calculate attribute() twice.
+  * Revert Fix: View jumps when Scroll past end of document is enabled (kde#391838)
+  * don't pollute the clipboard history with dupes
+  * Revert "[KateCompletionWidget] Create configuration interface on demand" (kde#391955)
+  * [KateCompletionWidget] Create configuration interface on demand
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Initialize value
+  * Iterate over initializer_lists to avoid mem allocs
+  * Add icons for KTextEditor Document-Export, Bookmark-Remove and Formatting Text Upppercase, Lowercase and Capitalize
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * improve line heigh computation try to avoid cutting of parts of glyphs
+  * Fix: View jumps when Scroll past end of document is enabled (kde#306745)
+  * KateView unit test: simplify finding KateViewInternal
+  * Use at least the requested width for the argument hint tree
+  * ExpandingWidgetModel: find the right-most column based on location
+  * Simplify code: return early to reduce indentation depth
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:20 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * clang-tidy modernize-use-override
+  * Fix wildcard matching for modelines
+  * Fix Unit Test
+  * Fix compilation
+  * Fix a regression caused by changing backspace key behavior
+  * port to non-deprecated API like already used at other place (kde#386823)
+  * Add missing include for std::array
+  * MessageInterface: Add CenterInView as additional position
+  * Verify if QTest::qWaitForWindowExposed returns true
+  * QStringList initializer list cleanup
+  * Migrate some QRegExps to QRegularExpression
+  * Fix warning about unused variable
+  * Fix syntax unit tests
+  * Fix API documentation about RangeCommand
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Use directly QStringLiteral
+  * We depend against 5.7
+  * API dox: fix section id
+  * Plugin template: remove bogus translation strings
+  * Fix VI-Mode buffer commands
+  * Remove unused member variable
+  * prevent accidental zooming.
+  * autotests: Remove dep on Qt5::Script again
+  * Fix: Missing dependencies for ktexeditor autotests
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * API dox: fix wrong names of methods and args, add missing \since
+  * Avoid (certain) crashes while executing QML scripts (kde#385413)
+  * Avoid a QML crash triggered by C style indentation scripts
+  * - Increase size of trailing mark
+  * add autotests for D8333
+  * fix some indenters from indenting on random characters
+  * Fix deprecation warning
+- Remove patches, now upstream:
+  * fix-some-indenters-from-indenting-on-random-characters.patch
+
+-------------------------------------------------------------------
+Tue Oct 24 05:21:38 UTC 2017 - wbauer@tmo.at
+
+- Add fix-some-indenters-from-indenting-on-random-characters.patch
+  to fix broken indentation of some languages (e.g. Python)
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Ignore default mark in icon border for single selectable mark
+  * Minor spell check interface fixes
+  * Use QActionGroup for input mode selection
+  * Fix missing spell check bar (kde#359682)
+  * Fix the fall-back "blackness" value for unicode > 255 characters. (kde#385336)
+  * Plugin template: fix name of Messages.sh
+  * Fix trailing space visualization for RTL lines.
+  * fix typo approved by Dominik Haumann
+
+-------------------------------------------------------------------
+Wed Sep 13 07:05:50 UTC 2017 - lbeltrame@kde.org
+
+- Add 0001-Disable-KAuth-integration.patch
+  * Streamlined way to disable KAuth support from ktexteditor
+- Remove patches, folded into the above:
+  * 0001-Revert-KAuth-integration-in-document-saving-vol.-2.patch
+  * 0002-Revert-KAuth-integration-in-document-saving.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Port Document/View scripting API to QJSValue-based solution
+  * Show icons in icon border context menu
+  * Use config.h more
+  * Fix compilation on windows with editorconfig-c-core available
+  * Replace KStandardAction::PasteText with KStandardAction::Paste
+  * Support fractional scaling in generating the sidebar preview
+  * Fix build with QT_NO_ACCESSIBILITY
+  * Switch from QtScript to QtQml
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:37 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Handle fine-grained wheel event in zooming
+  * Add template for a ktexteditor plugin
+  * Add KF6 TODO for missing argument namespace in slot signature
+  * copy permissions from original file on save copy BUG: 377373 (kde#377373)
+  * perhaps avoid stringbuild crash BUG: 339627 (kde#339627)
+  * fix problem with * adding for lines outside of comments BUG: 360456 (kde#360456)
+  * fix save as copy, it missed to allow overwriting the destination file we check
+    if we want that via a dialog, but we still always fail to do so BUG: 368145 (kde#368145)
+  * Adapt unit test to changes from KSyntaxHighlighting framework
+  * Command 'set-highlight': Join args with space
+  * fix crash on view destruction because of non-deterministic cleanup of objects
+  * Emit signals from icon border when no mark was clicked
+  * Fix crash in vi input mode (sequence: "o" "Esc" "O" "Esc" ".") (kde#377852)
+  * Use mutually exclusive group in Default Mark Type
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Fix cpu usage spiking after showing vi command bar (kde#376504)
+  * Fix jumpy scrollbar-dragging when mini-map is enabled.
+  * Jump to the clicked scrollbar position when minim-map is enabled. (kde#368589)
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Add Q_FALLTHROUGH
+  * Add missing break
+  * Unbreak KateSyntaxTest in paths with dots, check only dir entry name for .
+  * Revert "Add temporary debug output for investigating KateSyntaxTest fail on CI"
+  * Add temporary debug output for investigating KateSyntaxTest fail on CI
+  * Remove duplicated path separator
+  * Unbreak autotests in paths with spaces, properly escape " chars
+  * Use explicit flag values or explicit constructor instead of nullptr
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * KAuth integration in document saving - vol. 2 - various security improvements
+  * Fix assertion when applying code folding that changes cursor position
+  * Use non-deprecated <gui> root element in ui.rc file
+  * Add scroll-bar-marks also to the built-in search&replace
+  * KAuth integration in document saving
+- Revert upstream feature as disliked by the security team (boo#1033055)
+  * 0001-Revert-KAuth-integration-in-document-saving-vol.-2.patch
+  * 0002-Revert-KAuth-integration-in-document-saving.patch
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:56 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * fix debug warning (and wrong pen value) found by kfunk, introduced my me
+  * Expose additional internal View's functionality to the public API
+  * Upgrade KF5 version to 5.33.0.
+  * save a lot of allocation for setPen
+  * Fix ConfigInterface of KTextEditor::Document
+  * Add unit test for KTextEditor::ConfigInterface
+  * Added font and on-the-fly-spellcheck options in ConfigInterface
+
+-------------------------------------------------------------------
+Sat Apr  8 12:01:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Enable editorconfig support only on TW and Leap >= 42.2
+
+-------------------------------------------------------------------
+Sat Mar 25 12:30:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Enable editorconfig support
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:00 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Fix compilation with Qt 5.6
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Remember file type set by user over sessions
+  * Reset filetype when opening url
+  * Added getter for word-count configuration value
+  * vimode_completion unit test failure
+  * Consistent conversion from/to cursor to/from coordinates
+  * Update file type on save only if path changes
+  * EditorConfig support
+  * add FindEditorConfig to ktexteditor if that proves to be useful, can be moved to extra-cmake-modules, thought I see its use is rather specialized to ktexteditor
+  * Fix: emmetToggleComment action doesn't work
+  * Use sentence style capitalization with label texts of edit fields
+  * Reverse meaning of :split, :vsplit to match vi and Kate actions.
+  * Use C++11 log2() instead of log() / log(2)
+  * KateSaveConfigTab: put spacer behind last group on Advanced tab, not inside
+  * KateSaveConfigTab: Remove wrong margin around content of Advanced tab
+  * Borders config subpage: fix scrollbar visibility combobox being off-placed
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:33:05 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:43:39 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:04:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Prevent Qt warnings about an unsupported clipboard mode on Mac
+  * Use syntax definitions from KF5::SyntaxHighlighting
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:11:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Breeze Dark: Darken current-line background color for
+    better readability (kde#371042)
+  * Sorted Dockerfile instructions
+  * Breeze (Dark): Make comments a bit lighter for
+    better readability (kde#371042)
+  * Fix CStyle and C++/boost indenters when automatic
+    brackets enabled (kde#370715)
+  * Add modeline 'auto-brackets'
+  * Fix inserting text after end of file (rare case)
+  * Fix invalid xml highlighting files
+  * Maxima: Remove hard-coded colors, fix itemData Label
+  * Add OBJ, PLY and STL syntax definitions
+  * Add syntax highlighting support for Praat
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:59:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * XML files: remove hard-coded color for values
+  * XML: Remove hard-coded color for values
+  * XML Schema Definition: Turn 'version' into an xs:integer
+  * Highlighting definition files: round version up to next integer
+  * Support multi char captures only in {xxx} to avoid regressions
+  * Support regular expressions replaces with captures > \9, e.g. I
+    (kde#365124)
+  * Fix rendering of characters spanning into next line,
+    e.g. underlines are no longer cut off with some fonts/font-sizes
+    (kde#335079)
+  * Fix crash: Make sure the display cursor is valid after text folding
+    (kde#367466)
+  * KateNormalInputMode needs to rerun SearchBar enter methods
+  * try to "fixup" rendering of underlines and stuff like that
+    (kde#335079)
+  * Show "View Difference" button only, if 'diff' is installed
+  * Use non-modal message widget for externally
+    modified file notifications (kde#353712)
+  * Fix regression: testNormal did only work because of
+    test execution at once
+  * Split the indent test into separate runs
+  * Support "Unfold Toplevel Nodes" action again (kde#335590)
+  * Fix crash when showing top or bottom messages multiple times
+  * Fix eol setting in mode lines (kde#365705)
+  * Highlight .nix files as bash, guess can't hurt (kde#365006)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:53:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Remove accel clash (kde#363738)
+  * Fix email address highlighting in doxygen (kde#363186)
+  * Detect some more json files, like our own projects ;)
+  * Improve mime-type detection (kde#357902)
+  * Bug 363280 - highlighting: c++: #if 1 #endif #if defined (A) aaa
+    #elif defined (B) bbb #endif (kde#363280)
+  * Bug 351496 - Python folding is not working during initial typing
+    (kde#351496)
+  * Bug 365171 - Python syntax highlighting: not working correctly
+    for escape sequences (kde#365171)
+  * Bug 344276 - php nowdoc not folded correctly (kde#344276)
+  * Bug 359613 - Some CSS3 properties are not supported in
+    syntax highlight (kde#359613)
+  * Bug 367821 - wineHQ syntax: The section in a reg file isn't
+    highlighted correctly (kde#367821)
+  * Improve swap file handling if swap directory specified
+  * Fix crash when reloading documents with auto-wrapped line due
+    to line length limit (kde#366493)
+  * Fix constant crashes related to the vi command bar
+    (kde#367786)
+  * Fix: Line numbers in printed documents now starts at 1
+    (kde#366579)
+  * Backup Remote Files: Treat mounted files also as remote files
+  * Cleanup logic for searchbar creation
+  * Add highlighting for Magma
+  * Allows only one level of recursion
+  * Fix broken swap-file on windows
+  * Patch: add bitbake support for syntax highlighting engine
+  * Autobrace: look at spellcheck attribute where the character
+    was entered (kde#367539)
+  * Highlight QMAKE_CFLAGS
+  * Don't pop out of the main context
+  * Add some executable names that are commonly used
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:56:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Do not ask for overwriting a file twice with native dialogs
+  * Added FASTQ syntax
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:06:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Show Scrollbar Text Preview after a delay of 250ms
+  * Hide preview and stuff on view content scrolling
+  * Set parent + toolview, I think this is needed to avoid task
+    switcher entry in Win10
+  * Remove "KDE-Standard" from encoding box
+  * Folding preview on per default
+  * Avoid dashed underline for preview & avoid poisoning of
+    line layout cache
+  * Always enable "Show preview of folded text" option
+  * TextPreview: Adjust the grooveRect-height when
+    scrollPastEnd is enabled
+  * Scrollbar preview: use groove rect if scrollbar does
+    not use full height
+  * Add KTE::MovingRange::numberOfLines() just like KTE::Range has
+  * Code folding preview: set popup height so that
+    all hidden lines fit
+  * Add option to disable preview of folded text
+  * Add modeline 'folding-preview' of type bool
+  * View ConfigInterface: support 'folding-preview' of type bool
+  * Add bool KateViewConfig::foldingPreview() and
+    setFoldingPreview(bool)
+  * Feature: Show text preview when hovering over folded code block
+  * KateTextPreview: add setShowFoldedLines() and showFoldedLines()
+  * Add modelines 'scrollbar-minimap' [bool], and
+    'scrollbar-preview' [bool]
+  * Enable mini-map scrollbar by default
+  * New feature: Show text preview when hovering over the scrollbar
+  * KateUndoGroup::editEnd(): pass KTE::Range by const ref
+  * Fix vim-mode shortcut handling,
+    after behaviour changes in Qt 5.5 (kde#353332)
+  * Autobrace: don't insert ' character in text
+  * ConfigInterface: add scrollbar-minimap config key to
+    enable/disable scrollbar mini map
+  * Fix KTE::View::cursorToCoordinate() when top message widget
+    is visible
+  * Refactoring of the Emulated Command Bar
+  * Fix drawing artifacts when scrolling while notifications
+    are visible (kde#363220)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:27:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Fix default encoding to UTF-8 (kde#62604)
+  * Fix color configurability of default style "Error"
+  * Search & Replace: Fix replace background color (regression
+    introduced in v5.22) (kde#63441)
+  * New color scheme "Breeze Dark", see https://kate-editor.org/?post=3745
+  * KateUndoManager::setUndoRedoCursorOfLastGroup(): pass Cursor
+    as const reference
+  * sql-postgresql.xml improve syntax highlighting by
+    ignoring multiline function bodies
+  * Add syntax highlighting for Elixir and Kotlin
+  * VHDL syntax highlighting in ktexteditor: add support for
+    functions inside architecture statements
+  * vimode: Don't crash when given a range for a nonexistent
+    command (kde#60418)
+  * Properly remove composed characters when using Indic locales
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:33:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Use proper char syntax '"' instead of '\"'
+  * doxygen.xml: Use default style dsAnnotation for "Custom Tags"
+    as well (less hard-coded colors)
+  * Add option to show the counter of words
+  * Improved foreground color contrast for search & replace
+    highlightings
+  * Fix crash when closing Kate through dbus while the print
+    dialog is open (kde##356813)
+  * Cursor::isValid(): add note about isValidTextPosition()
+  * Add API {Cursor, Range}::{toString, static fromString}
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:22:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Revert "Open/Save config page: Use term "Folder" instead
+    of "Directory""
+  * Open/Save config page: Use term "Folder" instead of "Directory"
+  * kateschemaconfig.cpp: use correct filters with open/save dialogs
+    (kde#343327)
+  * c.xml: use default style for control flow keywords
+  * isocpp.xml: use default style "dsControlFlow" for control
+    flow keywords
+  * c/isocpp: add more C standard types
+  * KateRenderer::lineHeight() returns an int
+  * printing: use font size from selected printing schema
+    (kde#356110)
+  * cmake.xml speedup: Use WordDetect instead of RegExpr
+  * Change tab with to 4 instead of 8
+  * Fix changing the current line number color
+  * Fix selecting completion item with the mouse (kde#307052)
+  * Add syntax highlighting for gcode
+  * Fix the MiniMap selection background painting
+  * Fix encoding for gap.xml (use UTF-8)
+  * Fix nested comment blocks (kde#358692)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+- Drop upstreamed 0001-Fix-Clazy-fix-mistake-that-broke-selection-handling-.patch
+
+-------------------------------------------------------------------
+Sun Mar 27 14:50:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-Clazy-fix-mistake-that-broke-selection-handling-.patch
+
+-------------------------------------------------------------------
+Sun Mar  6 10:01:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Fix highlighting of all occurences in ReadOnlyPart
+  * Don't iterate over a QString as if it was a QStringList
+  * Properly initialize static QMaps
+  * Prefer toDisplayString(QUrl::PreferLocalFile)
+  * Support surrogate character sending from input method
+  * Do not crash on shutdown when text animation is still running
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:06:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Better behaviour for "insert braces around" autobrace feature
+  * Change option key to enforce new default,
+    Newline at End of File = true
+  * Remove some suspicious setUpdatesEnabled calls (kde#353088)
+  * Delay emitting of verticalScrollPositionChanged until all stuff
+    is consistent for folding (kde#342512)
+  * Patch updating tag substitution (kde#330634)
+  * Only update the palette once for the change event
+    belonging to qApp (kde#358526)
+  * Append newlines at EOF by default
+  * Add NSIS syntax highlighting file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:45:20 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Syntax h/l for pli: builtin functions added, expandable regions added
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:09:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Add syntax highlighting for TaskJuggler and PL/I
+  * Make it possible to disable keyword-completion via
+    the config interface.
+  * Resize the tree when the completion model got reset.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:03:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * highlighting: gnuplot: add .plt extension
+  * fix validation hint, add hint about the compile time validation
+  * Don't crash when command is not available.
+  * Fix kde##307107
+  * Haskell highlighting variables starting with _
+  * simplify git2 init, given we require recent enough version
+    (kde#353947)
+  * bundle default configs in resource
+  * syntax highlighting (d-g): use default styles instead of
+    hard-coded colors
+  * better scripts search, first user local stuff, then the stuff
+    in our resources, then all other stuff, that way the user can
+    overwrite our shipped scripts with local ones
+  * package all js stuff in resources, too, only 3 config files
+    missing and ktexteditor could be just used as a library without
+    any bundled files
+  * next try: put all bundled xml syntax files into a resource
+  * add input mode switch shortcut (kde#347769)
+  * bundle xml files in resource
+  * syntax highlighting (a-c): migrate to new default styles, remove
+    hard-coded colors
+  * syntax highlighting: remove hard-coded colors and use
+    default styles instead
+  * syntax highlighting: use new default styles
+    (removes hard-coded colors)
+  * Better "Import" default style
+  * Introduce "Save As with Encoding" to save a file with different
+    encoding, using the nice grouped encoding menu we have and
+    replacing all save dialogs with the correct ones of the
+    operating system without loosing this important feature.
+  * bundle ui file into lib, using my extension to xmlgui
+  * Printing again honors the selected font & color schema
+    (kde#344976)
+  * Use breeze colors for saved and modified lines
+  * Improved icon border default colors of scheme "Normal"
+  * autobrace: only insert brace when next letter is empty or
+    not alphanumeric
+  * autobrace: if removing start parenthesis with backspace,
+    remove end as well
+  * autobrace: only establish connection once
+  * Autobrace: eat closing parentheses under some conditions
+  * Fix shortcutoverride not being forwarded to the mainwindow
+  * Bug 342659 - Default "bracket highlighting" color is hard to see
+    (Normal schema fixed) (kde#342659)
+  * Add proper default colors for "Current Line Number" color
+  * bracket matching & auto-brackets: share code
+  * bracket matching: guard against negative maxLines
+  * bracket matching: just because the new range matches the old
+    doesn't mean no update is required
+  * Add the width of half a space to allow painting the cursor at EOL
+  * fix some HiDPI issues in the icon border
+  * fix kde##310712: remove trailing spaces also on line with cursor
+    (kde#310712)
+  * only display "mark set" message when vi input mode is active
+  * remove & from button text (kde#345937)
+  * fix update of current line number color (kde#340363)
+  * implement brackets insert on writing a bracket over a selection
+    (kde#350317)
+  * auto brackets (kde#350317)
+  * fix alert HL (kde#344442)
+  * no column scrolling with dyn word wrap on
+  * remember if highlighting was set by user over sessions to not
+    loose it on save after restore (kde#332605)
+  * fix folding for tex (kde#328348)
+  * fixed kde##327842: End of C-style comment is misdetected (kde#327842)
+  * save/restore dyn word wrap on session save/restore (kde#284250)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Validate more regexp
+  * Fix regexps in HL files (kde#352662)
+  * Sync ocaml HL with state of
+    https://code.google.com/p/vincent-hugot-projects/
+    before google code is down, some small bugfixes
+  * Add word-break (kde#352258)
+  * Validate line before calling folding stuff (kde#339894)
+  * Fix Kate word count issues by listening to DocumentPrivate
+    instead of Document (kde#353258)
+  * Update Kconfig syntax highlighting: add new operators from Linux 4.2
+  * Sync w/ KDE/4.14 kate branch
+  * Minimap: Fix scrollbar handle not being drawn with
+    scrollmarks off. (kde#352641)
+  * Syntax: Add git-user option for kdesrc-buildrc
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Merge allocation of TextLineData and ref count block.
+  * Change default keyboard shortcut for "go to previous editing line"
+  * Syntax highlighting Haskell comment fixes
+  * Speed up code-completion pop-up appearance
+  * minimap: Attempt to improve the look and feel (kde#309553)
+  * nested comments in Haskell syntax highlighting
+  * Fix problem with wrong unindent for python (kde#351190)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Guard default log level for Qt < 5.4.0, fix log cat name
+  * Add hl for Xonotic (kde#342265)
+  * Add Groovy HL (kde#329320)
+  * Update J highlighting (kde#346386)
+  * Make compile with MSVC2015
+  * Less iconloader use, fix more pixelated icons
+  * Enable/disable find all button on pattern changes
+  * Improved search & replace bar
+  * Remove useless ruler from powermode
+  * More slim search bar
+  * vi: Fix misreading of markType01 flag
+  * Use correct qualification to call base method.
+  * Remove checks, QMetaObject::invokeMethod guards itself
+    against that already.
+  * Fix HiDPI issues with color pickers
+  * Cleanup coe: QMetaObject::invokeMethod is nullptr safe.
+  * More comments
+  * Change the way the interfaces are null safe
+  * Only output warnings and above per default
+  * Remove todos from the past
+  * Use QVarLengthArray to save the temporary QVector iteration.
+  * Move the hack to indent group labels to construction time.
+  * Fixup some serious issues with the KateCompletionModel in
+    tree mode.
+  * Fix broken model design, which relied on Qt 4 behavior.
+  * Obey umask rules when saving new file (kde#343158)
+  * Add meson HL
+  * As Varnish 4.x introduces various syntax changes compared to
+    Varnish 3.x, I wrote additional, separate syntax highlighting
+    files for Varnish 4 (varnish4.xml, varnishtest4.xml).
+  * Fix HiDPI issues
+  * vimode: don't crash if the <c-e> command gets executed in the
+    end of a document. (kde#350299)
+  * Support QML multi-line strings.
+  * Fix syntax of oors.xml
+  * Add CartoCSS hl by Lukas Sommer (kde#340756)
+  * Fix floating point HL, use the inbuilt Float like in C
+    (kde#348843)
+  * Split directions did got reversed (kde#348845)
+  * Bug 348317 - [PATCH] Katepart syntax highlighting should
+    recognize \u0123 style escapes for JavaScript (kde#348317)
+  * Add *.cljs (kde#349844)
+  * Update the GLSL highlighting file.
+  * Fixed default colors to be more distinguishable
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * debianchangelog.xml: add Debian/Stretch, Debian/Buster, Ubuntu-Wily
+  * Fix for UTF-16 surrogate pair backspace/delete behavior.
+  * Let QScrollBar handle the WheelEvents (kde#340936)
+  * Apply patch from KWrite devel top update pure basic HL
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Allow like in KDE 4.x times 3rdparty apps/plugins to install
+    own highlighting XML files into katepart5/syntax
+  * Add KTextEditor::Document::searchText()
+  * Bring back use of KEncodingFileDialog (kde#343255)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:44:19 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Add kdesrc-buildrc highlighting file
+  * syntax: added support for binary integer literals in the PHP
+    highlighting file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Thu Mar 19 01:55:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kiconthemes-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:40 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Add word count statistics in statusbar
+  * vimode: fix crash when removing last line in Visual Line mode
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fixed high-precision touchpad scrolling
+  * Do not emit documentUrlChanged during reload
+  * Do not break cursor position on document reload in
+    lines with tabs
+  * Do not re(un)fold the first line if it was
+    manually (un)folded
+  * vimode: command history through arrow keys
+  * Do not try to create a digest when we get
+    a KDirWatch::deleted() signal
+  * Performance: remove global initializations
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Fix build on MSVC.
+  * vimode bugfixes
+  * add syntax file for Oracle PL/SQL
+  * ppd highlighting: better support for multiline values
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Fix kde#340212: incorrect soft-tabs alignment after
+    beginning-of-line
+  * Add libgit2 compile-time check for threads support
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Implement "go to last editing position" action
+  * Guard against a possibly broken code folding state on disk
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Multiple memory leaks fixed
+  * Avoid auto-completion to interfere with search/replace text
+    (kde#339130), and more autocompletion fixes
+  * Many fixes to the VIM mode
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Added libgit2-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added pkgconfig(Qt5Xml) and pkgconfig(Qt5XmlPatterns) BuildRequires
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Tue Apr 22 19:30:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Removed sonnet-devel from devel package requires, not needed
+
+-------------------------------------------------------------------
+Sat Mar 29 19:17:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate KTextEditor package
+

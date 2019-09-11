@@ -1,0 +1,1385 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:45:13 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue Jan 22 08:14:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.6.1:
+  * No obvious changelog from upstream
+
+-------------------------------------------------------------------
+Mon Apr 24 11:58:23 UTC 2017 - tchvatal@suse.com
+
+- Update the dkms chrooting to use the tmpfiles macros from systemd
+- Make sure it is adhering to most requirements for integration
+  fate#308323
+
+-------------------------------------------------------------------
+Wed Feb  1 09:50:43 UTC 2017 - bumblebee.obs@gmail.com
+
+- Start the dkms service before the display-manager service
+  for the nvidia modules.
+- Make the module build more secure (JPoortvliet@suse.de)
+
+-------------------------------------------------------------------
+Sun Jan 15 05:30:21 UTC 2017 - i@marguerite.su
+
+- update version 2.3
+  * added support for forcing modules installation with configuration files
+  * fixed mkinitrd call when using dracut
+  * fixed have_one_kernel for non-zero return code
+  * added --no-depmod action to prevent running depmod 
+  * fixed removal of module build directory
+  * fixed check of obsolete modules
+  * added option to symlink modules
+  * allowed building for all installed kernels in the common postinst
+  * do not fail if /lib/modules does not exist
+  * fixed ZFS autoinstall failures for kernel upgrades
+  * implemented inter-module dependencies feature
+  * added POST_BUILD to the dkms_conf_variables list
+  * enable users to opt out of creating weak modules
+  * enable parallel jobs when building
+  * fixed OBSOLETE_BY did not work since check_version_sanity exits early
+
+-------------------------------------------------------------------
+Tue Jan 12 04:20:15 UTC 2016 - ngompa13@gmail.com
+
+- Use kernel-syms instead of kernel-devel
+
+-------------------------------------------------------------------
+Wed Sep  2 18:43:54 UTC 2015 - ngompa13@gmail.com
+
+- Add make and gcc as Requires to ensure they are there.
+
+-------------------------------------------------------------------
+Fri Feb  7 15:55:13 UTC 2014 - tchvatal@suse.com
+
+- Accidentaly moved dkms default config. Move it back.
+
+-------------------------------------------------------------------
+Fri Feb  7 15:19:14 UTC 2014 - tchvatal@suse.com
+
+- Add trailing newlines.
+
+-------------------------------------------------------------------
+Fri Feb  7 15:01:24 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec cleaner
+- Remove compat layers for everything to be up par with suse needs
+- Provide only systemd files as we support only systemd on all
+  products
+- Remove old backcompat postun script
+
+- removed patches:
+  * dkms-compat_suse_init_script.diff
+
+-------------------------------------------------------------------
+Sat Aug 22 00:00:00 UTC 2009 - Matt_Domsch@dell.com
+
+- update to latest upstream
+- drop Requires: lsb.  avoid calling rpm (recursively) if possible.
+- add recognition for Oracle Enterprise Linux, Oracle VM, Scientific
+  Linux, and VMware 3.x
+
+
+-------------------------------------------------------------------
+Fri Jul 24 00:00:00 UTC 2009 - rel-eng@lists.fedoraproject.org
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2009 - Matt_Domsch@dell.com
+
+- add Requires: lsb
+
+
+-------------------------------------------------------------------
+Tue Apr 14 00:00:00 UTC 2009 - Matt_Domsch@dell.com
+
+- update to latest upstream
+
+
+-------------------------------------------------------------------
+Tue Feb 24 00:00:00 UTC 2009 - rel-eng@lists.fedoraproject.org
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed May 28 00:00:00 UTC 2008 - Matt_Domsch@dell.com
+
+- depmod on uninstall before mkinitrd, depmod fix & cleanups
+- find_module_from_ko() could incorrectly return multiple values
+
+
+-------------------------------------------------------------------
+Tue Mar 25 00:00:00 UTC 2008 - Matt_Domsch@dell.com
+
+- fix dkms.spec file/dir ownerships yet again
+
+
+-------------------------------------------------------------------
+Thu Mar 20 00:00:00 UTC 2008 - Matt_Domsch@dell.com
+
+- don't include dist/ in tarball
+- use /etc/kernel/{prerm,postinst}.d/dkms in RPMs now too
+- mkrpm: display rpmbuild log on error, write RPMs to $dkms_tree/$module/$module_version/rpm
+- clarify license in spec to GPLv2+
+
+
+-------------------------------------------------------------------
+Fri Feb 15 00:00:00 UTC 2008 - Matt_Domsch@dell.com
+
+- call udevadm trigger instead of udevtrigger for newer udev (Launchpad #192241)
+- omit installed-weak modules from remove --all (Red Hat BZ#429410)
+
+
+-------------------------------------------------------------------
+Wed Oct 10 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- call udevtrigger if we install a module for the currently running kernel
+- uninstall from /extra before DEST_MODULE_LOCATION (Red Hat BZ#264981)
+- Run depmod after uninstall
+
+
+-------------------------------------------------------------------
+Wed Sep 19 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- upgrade to latest upstream
+
+
+-------------------------------------------------------------------
+Wed Jun 20 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- updated for Ubuntu support, other bugfixes.
+
+
+-------------------------------------------------------------------
+Tue Mar 20 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- spec file cleanups per re-review in Fedora
+- add bash completion, rpmbuild check, pinit, pass-arch patches from
+  Mandriva.  These are generic.  The other Mandriva patches appear to
+  be distro-specific.
+- Look for /etc/sysconfig/module-init-tools to get some values.
+
+
+-------------------------------------------------------------------
+Tue Feb 27 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- fix override_dest_module_location() for historical distro versions
+- don't run weak-modules if it doesn't exist
+
+
+-------------------------------------------------------------------
+Mon Feb 26 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- release with no changes
+
+
+-------------------------------------------------------------------
+Fri Feb 23 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- After upgrading from older DKMS versions to 2.0.14, any previously
+  installed modules wouldn't show status properly, and wouldn't
+  uninstall properly, due to the new policy of using /extras/ and
+  /updates/.  Needed to take that into account and look in both places.
+- SuSE puts weak-modules in /usr/lib/module-init-tools not /sbin.
+
+
+-------------------------------------------------------------------
+Thu Feb 22 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- RHEL5 weak module status report fixed
+
+
+-------------------------------------------------------------------
+Mon Feb 19 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- RHEL5 weak module recognition with new state installed-weak
+- autoinstaller recognizes installed-weak and doesn't rebuild
+- RHEL5 and SLES10 and higher weak module code expects modules to go
+  into /lib/modules/$kern/{extra,updates} respectively, so force that.
+
+
+-------------------------------------------------------------------
+Mon Feb  5 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- patch from http://qa.mandriva.com/show_bug.cgi?id=27985 assigns new
+  modprobe.conf alias ordinals starting at zero.
+
+
+-------------------------------------------------------------------
+Fri Jan 12 00:00:00 UTC 2007 - Matt_Domsch@dell.com
+
+- properly create driver disks for Fedora Core 6 and RHEL5
+- make .iso, .tar, and floppy .img driver disks for Red Hat and SuSE
+- set CLEAN properly even if MAKE[] isn't set.
+- fix install.sh buglet installing the manpage
+
+
+-------------------------------------------------------------------
+Thu Jun 29 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- bump to 2.0.13
+
+
+-------------------------------------------------------------------
+Wed Jun 28 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- fix version comparison awk pattern matching invocation and a line continuation
+
+
+-------------------------------------------------------------------
+Mon Jun 26 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- bump to 2.0.12
+
+
+-------------------------------------------------------------------
+Wed Jun 14 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- fix version comparison for all 2.6 kernels
+
+
+-------------------------------------------------------------------
+Mon Apr 10 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- add README.dkms to doc
+
+
+-------------------------------------------------------------------
+Wed Mar 29 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- use -n <val> to all head and tail calls
+
+
+-------------------------------------------------------------------
+Tue Mar 28 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- fix munging of /etc/sysconfig/kernel INITRD_MODULES= line
+  so it doesn't move already-present entries to the end
+
+
+-------------------------------------------------------------------
+Thu Mar 16 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- bump to 2.0.10
+
+
+-------------------------------------------------------------------
+Wed Mar 15 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- add PRE_INSTALL dkms.conf directive
+
+
+-------------------------------------------------------------------
+Tue Mar 14 00:00:00 UTC 2006 - Matt_Domsch@dell.com
+
+- add SuSE Kernel Module Package (mkkmp) support
+
+
+-------------------------------------------------------------------
+Tue Dec 13 00:00:00 UTC 2005 - Matt_Domsch@dell.com
+
+- patch from Eric Devolder enables mkinitrd for Debian Sarge
+- include debian/ directory in upstream tarball
+
+
+-------------------------------------------------------------------
+Thu Dec  8 00:00:00 UTC 2005 - Matt_Domsch@dell.com
+
+- fix DF28947 (remove word 'only') from a printed message
+- gzip -9 dkms.8 manpage
+
+
+-------------------------------------------------------------------
+Wed Dec  7 00:00:00 UTC 2005 - Matt_Domsch@dell.com
+
+- look to DKMS_DIRECTIVE* environment variables to override dkms.conf settings
+- don't create/remove (unused) /var/lock/subsys/dkms files in autoinstaller
+
+
+-------------------------------------------------------------------
+Mon Nov  7 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- mkrpm now is built with -ba, not -bb (creates source RPM)
+
+
+-------------------------------------------------------------------
+Fri Nov  4 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- In dkms_autoinstaller added -no-clean-kernel to builds of multiple modules to avoid mrproper
+
+
+-------------------------------------------------------------------
+Wed Oct 19 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Updated dkms_mkkerneldoth to know about VMWare kernel
+
+
+-------------------------------------------------------------------
+Sun Oct  9 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Changed root check on ldtarball to only care about root if it sees --force
+
+
+-------------------------------------------------------------------
+Fri Sep  2 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- renamed 2.0.5.9 to 2.0.6
+
+
+-------------------------------------------------------------------
+Mon Jul 25 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- FIXED BUG, when only some modules have original_modules, ARCHIVE_PREF3 wasn't getting reset causing big problems
+
+
+-------------------------------------------------------------------
+Mon Jul 18 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- DKMS install now moves out original modules, does not copy them out
+
+
+-------------------------------------------------------------------
+Tue Jun  7 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Get rid of grep error when looking for RH file on non RH distro (Matt Domsch)
+
+
+-------------------------------------------------------------------
+Wed May 11 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- handle obsolete modules in /etc/sysconfig/kernel
+
+
+-------------------------------------------------------------------
+Fri Apr 29 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- dkms remove now properly removes modules_conf_aliases (thanks Matthew Melvin)
+
+
+-------------------------------------------------------------------
+Wed Apr 20 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Mktarball fails if it can't find dkms_dbversion
+
+
+-------------------------------------------------------------------
+Tue Mar 15 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- More spec cleanups
+
+
+-------------------------------------------------------------------
+Mon Mar 14 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Tweaked spec to follow http://fedoraproject.org/wiki/PackagingGuidelines
+
+
+-------------------------------------------------------------------
+Thu Mar  3 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Added --size for alternate driver disk image sizes
+
+
+-------------------------------------------------------------------
+Tue Jan 25 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Repackaged as 2.0.5
+
+
+-------------------------------------------------------------------
+Mon Jan 17 00:00:00 UTC 2005 - gary_lerhaupt@dell.com
+
+- Allow MAKE_MATCH[0] to decide if MAKE[0] will be used
+- Add Taroon check in template-dkms-mkrpm.spec for ia32e detection
+
+
+-------------------------------------------------------------------
+Mon Dec 20 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- John Hull's patch for no SuSE 2.6 kernel preparation
+
+
+-------------------------------------------------------------------
+Wed Dec 15 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Red Hat driver disks can now have modules.pcimap and pci.ids files
+
+
+-------------------------------------------------------------------
+Mon Dec 13 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- bumped revision
+
+
+-------------------------------------------------------------------
+Fri Dec 10 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added quotes to $kernel_config when checking variable
+- Tweak the multiowned arch detection workaround to deal with no ownership
+
+
+-------------------------------------------------------------------
+Mon Dec  6 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fix to template-spec so that ia32e check doesn't require kernel sources
+
+
+-------------------------------------------------------------------
+Wed Dec  1 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Jeffrey Kirsher's workaround for arch detection on multiowned /lib/modules
+
+
+-------------------------------------------------------------------
+Mon Nov 22 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Issues regressed.  Bumped to non-testing version.
+
+
+-------------------------------------------------------------------
+Fri Nov 19 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- DKMS ldtarball arch fix for changed Andreas 2.0.2 code
+- Workaround for Red Hat's new source symlink in 2.6.9
+- All 'cd -' now output to /dev/null
+
+
+-------------------------------------------------------------------
+Sat Oct  2 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added --verbose which invoke_command uses
+- Fixed it so mrproper doesn't get run > 2.6.6
+
+
+-------------------------------------------------------------------
+Tue Sep 28 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Charles Duffy's fix for multiple rpms owning /lib/modules/kernel...
+- Andreas Gruenbacher's removal of IFS usage
+- Andreas Gruenbacher's reorganizing prepare check into prepare_kernel
+- Andreas Gruenbacher's patch to cut down on line length by using $base_dir
+- fixed $base_dir so it gets set after setup_kernels_arches
+
+
+-------------------------------------------------------------------
+Sun Sep 12 00:00:00 UTC 2004 - agruen@suse.de
+
+- patch to remove tick usage
+- patch to rewrite version comparison code
+- patch to switch to usage of case, remove use of grep -c, remove use of IFS
+- patch to change handling of stderr
+
+
+-------------------------------------------------------------------
+Fri Sep 10 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed remove so you can remove modules in added state
+
+
+-------------------------------------------------------------------
+Thu Sep  9 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Removed "module ignored" message from dkms_autoinstaller
+
+
+-------------------------------------------------------------------
+Thu Aug 26 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Output to stderr is now >> and not >
+- Added kludge to allow redhat1 driver disks with BOOT kernel modules
+- Allow cross arch building on 2.6 if --kernelsourcedir is passed
+- Generic make commands now respect --kernelsourcedir
+- Bumped dkms_dbversion to 2.0.0
+
+
+-------------------------------------------------------------------
+Thu Aug 19 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed suse driver disks for i386
+
+
+-------------------------------------------------------------------
+Thu Aug 12 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Look for /etc/SuSEconfig also to know if its a SuSE box
+- If no make command, set the clean command
+
+
+-------------------------------------------------------------------
+Wed Aug 11 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added suse mkdriverdisk support
+- Updated man page
+
+
+-------------------------------------------------------------------
+Tue Aug 10 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added provides: dkms-minimal for Mandrake
+- Added -r, --release for use in SuSE driver disks
+
+
+-------------------------------------------------------------------
+Fri Aug  6 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed kernelsourcedir error message.
+- dkms_autoinstaller now excepts a kernel parameter
+
+
+-------------------------------------------------------------------
+Tue Jul 27 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Created a set_kernel_source_dir function to remove dup code
+
+
+-------------------------------------------------------------------
+Mon Jul 26 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added John Hull's SuSE support patches (mkinitrd, config prep)
+
+
+-------------------------------------------------------------------
+Fri Jul 23 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Split modulesconf_modify to separate add and remove functions
+- Added support for /etc/modprobe.conf
+
+
+-------------------------------------------------------------------
+Thu Jul 15 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Remove coreutils as a dependency to avoid RH21 error.
+
+
+-------------------------------------------------------------------
+Wed Jul 14 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- DKMS ldtarball now check dbversion and wont load future tarballs
+
+
+-------------------------------------------------------------------
+Mon Jul 12 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Buchan Milne's Mandrake prep support patch
+- Buchan Milne's macro additions to template-dkms-mkrpm.spec
+- Buchan Milne's typo corrections in mkrpm
+- Buchan Milne's change to how mkrpm works (mktarball happen in rpm prep)
+
+
+-------------------------------------------------------------------
+Tue Jul  6 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added a dependency on modutils for usage of modinfo
+- Added version sanity check
+- dkms_autoinstaller now check for sanity of version
+- Changed conversion algorithm for /var/dkms to /var/lib/dkms
+- Changed all warning to get to stderr
+- set_module_suffix doesn't use version_checker because its too slow
+
+
+-------------------------------------------------------------------
+Thu Jul  1 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Reworked version checking to handle non-digit characters
+- Added coreutils as a dependency
+- Create a tempdir in mkdriverdisk, whoops (thanks Charles Duffy)
+
+
+-------------------------------------------------------------------
+Wed Jun 30 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- dkms_dbversion belongs in /var/lib/dkms (thanks Thomas Palmieri)
+- Added a version checking subroutine
+- Removed gt2dot4 variable in favor of kernel version checking
+- MAKE is no longer required.  If none specified, it uses a default.
+
+
+-------------------------------------------------------------------
+Thu Jun 24 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Buchan Milne's optimization of the arch detection code
+
+
+-------------------------------------------------------------------
+Wed Jun 23 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed bug when find finds more than one thing (thanks Paul Howarth)
+- Changed arch detection code to first try RPM which always will get it right (thanks Vladimir Simonov)
+
+
+-------------------------------------------------------------------
+Tue Jun 22 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Initial mkrpm is working
+- Added --source-only option to mktarball
+- mkrpm handles --source-only
+- Updated manpage
+
+
+-------------------------------------------------------------------
+Thu Jun 17 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Started adding mkrpm
+
+
+-------------------------------------------------------------------
+Wed Jun 16 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed dkms_autoinstaller bugs (thanks Vladimir Simonov)
+- Fixed paths in the tarball's install.sh
+
+
+-------------------------------------------------------------------
+Tue Jun 15 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- kernelver/arch handling for mktarball
+
+
+-------------------------------------------------------------------
+Mon Jun 14 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added support for RH v2 driver disks (they support multiple arches)
+
+
+-------------------------------------------------------------------
+Fri Jun 11 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Continue rework of kernelver/arch handling
+- Added PATH fix (thanks Andrey Ulanov <andrey.ulanov@acronis.com>)
+- config_contents should not be local (thanks Andrey Ulanov)
+- If no config in /configs, just use .config (thanks Andrey Ulanov)
+- match now pays attention to --kernelsourcedir
+
+
+-------------------------------------------------------------------
+Wed Jun  9 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Started coding new kernelver arch CLI handling
+
+
+-------------------------------------------------------------------
+Mon Jun  7 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added STRIP[] directive.  By default dkms now runs strip -g on all built modules.
+- Fix set_module_suffix in dkms build
+- Changed /etc/dkms_framework.conf to /etc/dkms/framework.conf
+- Added reload into dkms_autoinstaller to limit Mandrake error messages
+- Moved /var/dkms to /var/lib/dkms !!!!!!!!!!!!!!!!
+
+
+-------------------------------------------------------------------
+Fri Jun  4 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- PRE_BUILD, POST_BUILD, POST_ADD, etc all now allow their scripts to accept parameters
+
+
+-------------------------------------------------------------------
+Thu Jun  3 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added --installtree option to specify different install location besides /lib/modules
+- Took Charles Duffy's advice and removed brackets on error messages
+
+
+-------------------------------------------------------------------
+Wed Jun  2 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added set_module_suffix function
+
+
+-------------------------------------------------------------------
+Tue Jun  1 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added a PRE_BUILD dkms.conf directive.
+
+
+-------------------------------------------------------------------
+Thu May 27 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added build time check for gcc and make if there is a build failure
+- You can now specify --archive to mktarball to control the naming of the made tarball (thanks Vladimir Simonov)
+
+
+-------------------------------------------------------------------
+Wed May 26 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Removed rpm dependency on gcc (thanks Vladimir Simonov)
+- Re-implemented dkms status recursively
+
+
+-------------------------------------------------------------------
+Mon May 24 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added local variable declarations to local variables
+
+
+-------------------------------------------------------------------
+Fri May 21 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Vladimir Simonov's invoke_command improvements for keeping /tmp clean
+
+
+-------------------------------------------------------------------
+Thu May 20 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Pass --targetarch to dkms_mkkerneldoth (thanks to Vladimir Simonov <validimir.simonov@acronis.com>)
+- Moved arch detection into a function called detect_arch
+
+
+-------------------------------------------------------------------
+Wed May 19 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Bug fixes on arch support
+- Updated man page
+
+
+-------------------------------------------------------------------
+Tue May 18 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Completing arch awareness and transition scripts
+- Created upgrade_dkms_archify.sh to update DKMS trees for arch support
+
+
+-------------------------------------------------------------------
+Mon May 17 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Continued adding arch awareness
+
+
+-------------------------------------------------------------------
+Thu May 13 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Started adding arch awareness into the DKMS tree
+
+
+-------------------------------------------------------------------
+Fri May  7 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- bumped the revision
+
+
+-------------------------------------------------------------------
+Thu May  6 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Improved readability of install and uninstall text to the screen
+- You can now specify multiple actions in the same command
+
+
+-------------------------------------------------------------------
+Wed May  5 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added arch_used as part of the filename of a tarball created by mktarball
+- If multiple original modules exist in a single kernel, the one in /updates is preferred
+- Changed multiple original module handling to move out and store all collisions
+
+
+-------------------------------------------------------------------
+Mon May  3 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Changed 2.6 prep prepare-all target usage to make modules_prepare
+- Changed 2.6 make command to always use M= as this is fixed in 2.6.6-rc3-bk5
+
+
+-------------------------------------------------------------------
+Fri Apr 30 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- If module build exit status is bad, die accordingly
+- 2.6 kernel prep changes (not quite there yet, still broken)
+
+
+-------------------------------------------------------------------
+Thu Apr 29 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added BUILD_EXCLUSIVE_KERNEL & BUILD_EXCLUSIVE_ARCH directives for dkms.conf
+- Tweaked dkms_autoinstaller to more gracefully handle a build failure
+
+
+-------------------------------------------------------------------
+Tue Apr 27 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Got rid of make clean warning if not present
+
+
+-------------------------------------------------------------------
+Tue Apr 20 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed error message when compiling with --no-prepare-kernel
+
+
+-------------------------------------------------------------------
+Tue Apr 13 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed the format of rhdd-6.1 for Red Hat driver disks
+- Update man page with new white paper info
+
+
+-------------------------------------------------------------------
+Thu Apr  1 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added work-around to recognize ia32e kernel config instead of x86_64
+- Got rid of start and stop functions which were no-ops anyway
+
+
+-------------------------------------------------------------------
+Thu Mar 25 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added a fix to keep the driver disk filename from being so long that it breaks
+
+
+-------------------------------------------------------------------
+Mon Feb  9 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Added a fix to resolve RHEL21 depmod errors when an obsolete reference is found
+
+
+-------------------------------------------------------------------
+Thu Jan 15 00:00:00 UTC 2004 - gary_lerhaupt@dell.com
+
+- Fixed mkinitrd for ia64
+
+
+-------------------------------------------------------------------
+Tue Dec  9 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed /usr/share/doc/dkms-<version> mode to 755
+
+
+-------------------------------------------------------------------
+Mon Dec  1 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Bumped version to 1.00
+
+
+-------------------------------------------------------------------
+Mon Nov 24 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Add -t vfat to loopback mount during creation of driver disk
+
+
+-------------------------------------------------------------------
+Fri Nov 21 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Only edit /etc/modules.conf if remake_initrd is set or if this is the last uninstall and no original module exists
+- Added MODULES_CONF_OBSOLETE_ONLY array directive in dkms.conf
+- Updated man page
+
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed a bug in mktarball to limit the tarball name to less than 255 chars
+
+
+-------------------------------------------------------------------
+Tue Nov 18 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Binary only tarballs now contain a copy of dkms.conf so that they can be force loaded
+
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Updated man page, recommended rpm naming: <module>-<version>-<rpmversion>dkms.noarch.rpm
+
+
+-------------------------------------------------------------------
+Thu Nov 13 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- dkms_autoinstaller is now installed to /etc/init.d for cross-distro happiness
+
+
+-------------------------------------------------------------------
+Fri Nov  7 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added kernel config prepping for hugemem kernel (thanks Amit Bhutani)
+- modules.conf only now gets changed during install or uninstall of active module
+
+
+-------------------------------------------------------------------
+Mon Nov  3 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed MODULES_CONF_ALIAS_TYPE to an array in dkms.conf
+- Added MODULES_CONF_OBSOLETES array in dkms.conf
+- Reworked modules_conf_modify to make use of OBSOLETES logic
+- Updated man page
+
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added --binaries-only option to mktarball
+- Updated man page
+
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- If depmod or mkinitrd fail during install, automatically go back to built state
+- Warn heavily if mkinitrd fails during uninstall
+
+
+-------------------------------------------------------------------
+Wed Oct 29 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added Red Hat specific kernel prep to avoid make dep (Thanks Matt Domsch)
+- Added dkms_mkkerneldoth script to support RH kernel prep
+- Moved dkms from /sbin/ to /usr/sbin
+- Fixed typo which caused original_module not to get replaced on uninstall
+- No longer edit Makefiles, just specify KERNELVERSION=$kernel_version on the command line
+- Removed unnecessary depmod during uninstall
+
+
+-------------------------------------------------------------------
+Thu Oct 23 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed mkdriverdisk to copy rhdd-6.1 file into driver disk image
+
+
+-------------------------------------------------------------------
+Wed Oct 22 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed expected driver disk filename from module-info to modinfo to work on legacy RH OSs
+
+
+-------------------------------------------------------------------
+Tue Oct 14 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Unset all arrays before using them.  duh.
+
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed bug in autoinstaller where it wasn't looking for dkms.conf through source symlink
+
+
+-------------------------------------------------------------------
+Thu Oct  2 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added --rpm_safe_upgrade flag
+- Updated the man page and sample.spec
+
+
+-------------------------------------------------------------------
+Wed Oct  1 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- No longer copy dkms.conf into /var/dkms tree, just go to the source_tree so as to reduce duplication
+- Got rid of --post-add, --post-build, --post-install and --post-remove
+- Replaced the above with DKMS directives POST_ADD, POST_BUILD, POST_INSTALL, POST_REMOVE
+- Fixed ldtarball and mktarball to no longer look for these duplicate files
+- Added a sample.conf for /usr/share/doc
+- Updated dkms_dbversion to 1.01 from 1.00 due to these changes
+- Update the man page
+
+
+-------------------------------------------------------------------
+Tue Sep 30 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added diff checking in status command in case modules are overwritten by someone else
+- Fixed already built error message in build_module
+- Changed build-arch to noarch
+- Updated sample.spec
+- Change dest_module_location to not get prefaced by /lib/modules/$kernel_version
+- When saving old initrd, copy it instead of moving it in case new one doesn't build
+- Only create source symlink during loadtarball if --force or if it doesn't exist
+- Decide to completely remove during remove_module after doing find with maxdepth of 0 not 1
+
+
+-------------------------------------------------------------------
+Mon Sep 29 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Reworked mktarball format to remove dependence on /var/dkms and /usr/src
+- Reworked ldtarball to match new tarball format
+- Ldtarball now uses --archive=tarball-location flag instead of --config flag
+- Ldtarball can now load any old source tarball as long as it contains a good dkms.conf
+- Added --kernelsourcedir cli option to provide alternate location for kernel source
+- Driver disk files are now looked for in /redhat_driver_disk
+- Added $tmp_location specifiable in /etc/dkms_framework.conf to specify your /tmp dir (default /tmp)
+- Updated man page
+
+
+-------------------------------------------------------------------
+Thu Sep 25 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed tmp_dir_name typo in ldtarball
+- Fixed mkdriverdisk to correctly create kernel/module structure
+- Don't expect a rhdd-6.1 file for RH driver disk, dkms will create it
+- Remove mkdriverdisk warning on non BOOT kernels
+- Moved driver_disk directory location to underneath $module_version
+- mkdriverdisk can now accept multiple kernel versions
+- Updated man page with info about $dkms_tree and $source_tree as dkms.conf variables
+
+
+-------------------------------------------------------------------
+Wed Sep 24 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Don't allow installs of modules onto non-existant kernels
+- Suppressed stderr on some commands
+- Fixed brain-dead bug for REMAKE INITRD
+- During uninstall, dont remake initrd if it was not installed
+- ldtarball into unique tempdir and delete it when finished
+
+
+-------------------------------------------------------------------
+Tue Sep 23 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed PATCH to array based system (added PATCH_MATCH array)
+- PATCHes can now be matched against regular expressions, not just substrings
+- Changed MODULES_CONF to array based system
+- CHANGED MAKE to array based system (added MAKE_MATCH array)
+- MAKEs can now be matched against regular expressions, not just substrings.
+- Updated man page
+
+
+-------------------------------------------------------------------
+Mon Sep 22 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed autoinstaller bootup priority from 08 to 04
+- Changed invoke_command routine to use mktemp for better security
+- Changed invoke_command in dkms_autoinstaller too
+
+
+-------------------------------------------------------------------
+Fri Sep 19 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Continued bug testing and fixing new features
+
+
+-------------------------------------------------------------------
+Wed Sep 17 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Got rid of MODULE_NAME: replaced with BUILT_MODULE_NAME, DEST_MODULE_NAME arrays
+- Got rid of LOCATION: replaced with BUILT_MODULE_LOCATION, DEST_MODULE_LOCATION arrays
+- Update man page
+
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed the setting of the gt2dot4 variable
+
+
+-------------------------------------------------------------------
+Wed Sep 10 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added PACKAGE_NAME, PACKAGE_VERSION requirements to dkms.conf for gmodconfig use
+- Fixed creation of /var/dkms before cp of dkms_dbversion in install.sh
+
+
+-------------------------------------------------------------------
+Mon Sep  8 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Continued adding autoinstall stuff
+- Updated man page
+
+
+-------------------------------------------------------------------
+Fri Sep  5 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added dkms_autoinstaller service (builds module on boot if AUTOINSTALL="yes" in dkms.conf)
+- DKMS usage no longer sent to std_err
+- Added --no-prepare-kernel cli option
+
+
+-------------------------------------------------------------------
+Fri Aug  8 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed quote bugs in match (Reported by: John Hull <john_hull@dell.com>)
+- Added Fred Treasure to the AUTHORS list
+- Added dkms_dbversion file to DKMS tree to track architecture of dkms db layout
+
+
+-------------------------------------------------------------------
+Thu Jul  3 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added mkinitrd support for SuSE (etc_sysconfig_kernel_modify)
+- Added generic make command for kernel >2.4 (make -C <path-to-kernel-source> SUBDIRS=<build dir> modules)
+- Fixed kernel prepare to do Red Hat/Generic by default
+- Only do make dep if < 2.5
+
+
+-------------------------------------------------------------------
+Tue Jun  3 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Modified the Red Hat prep routine to be smaller and more robust (including summit support)
+- Added sample.spec to the sources for /usr/share/doc
+- If you save a .config before make mrproper, return it right afterwards
+- Updated the man page
+
+
+-------------------------------------------------------------------
+Fri May 30 00:00:00 UTC 2003 - gary_lerahupt@dell.com
+
+- Added a remake_initrd function to keep SuSE from doing wrong things
+- If you know the correct right steps for rebuilding SuSE initrds, please let me know!
+- Updated man page
+
+
+-------------------------------------------------------------------
+Thu May 29 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added a native readlink function to make sure it exists
+- Added a mkdir -p to $location to make sure it exists
+- Added --directive
+
+
+-------------------------------------------------------------------
+Wed May 28 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added kernel preparation support for SLES/United Linux (Many thanks to: Fred Treasure <fwtreas@us.ibm.com>)
+
+
+-------------------------------------------------------------------
+Tue May 20 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- On remove, to remove all kernel versions you must now specify --all
+- Added grep, cpio and gzip to the Requires of the RPM
+- Added cleaning kernel tree (make mrproper) after last build completes
+- Before prepare kernel, the current .config is stored in memory to be restored later
+- Added a verbose warning to the status command to remind people it only shows DKMS modules
+- Added /etc/dkms_framwork.conf for controlling source_tree and dkms_tree
+- Added the undocumented --dkmstree and --sourcetree options for cli control of these vars
+- When looking for original modules, dkms now employs the find command to expand search past $location
+- Updated man page
+
+
+-------------------------------------------------------------------
+Wed May 14 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed a typo in the man page.
+
+
+-------------------------------------------------------------------
+Mon May  5 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed ldtarball/mktarball to obey source_tree & dkms_tree (Reported By: Jordan Hargrave <jordan_hargrave@dell.com>)
+- Added DKMS mailing list to man page
+
+
+-------------------------------------------------------------------
+Tue Apr 29 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed NEEDED_FOR_BOOT to REMAKE_INITRD as this makes more sense
+- Redid handling of modifying modules.conf
+- Added MODULE_CONF_ALIAS_TYPE to specs
+
+
+-------------------------------------------------------------------
+Mon Apr 28 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Started adding ldtarball support
+- added the --force option
+- Update man page
+
+
+-------------------------------------------------------------------
+Thu Apr 24 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Started adding mktarball support
+- Fixed up the spec file to use the tarball
+
+
+-------------------------------------------------------------------
+Tue Mar 25 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Continued integrating mkdriverdisk
+- Updated man page
+
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added renaming ability to modules after builds (MODULE_NAME="beforename.o:aftername.o")
+- Started adding mkdriverdisk support
+- Added distro parameter for use with mkdriverdisk
+- Now using readlink to determine symlink pointing location
+- Added redhat BOOT config to default location of config files
+- Fixed a bug in read_conf that caused the wrong make subdirective to be used
+- Remove root requirement for build action
+
+
+-------------------------------------------------------------------
+Wed Mar 19 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed archiving of original modules (Reported by: Kris Jordan <kris@sagebrushnetworks.com>)
+
+
+-------------------------------------------------------------------
+Wed Mar 12 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added kernel specific patching ability
+
+
+-------------------------------------------------------------------
+Mon Mar 10 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Removed the sourcing in of /etc/init.d/functions as it was unused anyway
+- Implemented generic patching support
+- Updated man page
+- Fixed timing of the creation of DKMS built infrastructure in case of failure
+
+
+-------------------------------------------------------------------
+Fri Mar  7 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Builds now occur in /var/dkms/$module/$module_version/build and not in /usr/src
+- Fixed the logging of the kernel_config
+
+
+-------------------------------------------------------------------
+Thu Mar  6 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Started adding patch support
+- Redid reading implementation of modules_conf entries in dkms.conf (now supports more than 5)
+- Updated man page
+
+
+-------------------------------------------------------------------
+Tue Mar  4 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Module names are not just assumed to end in .o any longer (you must specify full module name)
+- At exit status to invoke_command when bad exit status is returned
+
+
+-------------------------------------------------------------------
+Fri Feb 28 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Changed the way variables are handled in dkms.conf, %kernelver to $kernelver
+
+
+-------------------------------------------------------------------
+Mon Feb 24 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed a typo in install
+
+
+-------------------------------------------------------------------
+Tue Feb 11 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Fixed bug in remove which made it too greedy
+- Updated match code
+
+
+-------------------------------------------------------------------
+Mon Feb 10 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added uninstall action
+- Updated man page
+
+
+-------------------------------------------------------------------
+Fri Feb  7 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added --config option to specify where alternate .config location exists
+- Updated the man page to indicate the new option.
+- Updated the spec to allow for software versioning printout
+- Added -V which prints out the current dkms version and exits
+
+
+-------------------------------------------------------------------
+Thu Jan  9 00:00:00 UTC 2003 - gary_lerhaupt@dell.com
+
+- Added GPL stuffs
+
+
+-------------------------------------------------------------------
+Mon Dec  9 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Added support for multiple modules within the same install
+- Added postadd and fixed up the man page
+
+
+-------------------------------------------------------------------
+Fri Dec  6 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Cleaned up the spec file.
+
+
+-------------------------------------------------------------------
+Fri Nov 22 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Fixed a bug in finding MAKE subdirectives
+
+
+-------------------------------------------------------------------
+Thu Nov 21 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Fixed make.log path error when module make fails
+- Fixed invoke_command to work under RH8.0
+- DKMS now edits kernel makefile to get around RH8.0 problems
+
+
+-------------------------------------------------------------------
+Wed Nov 20 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Reworked the implementation of -q, --quiet
+
+
+-------------------------------------------------------------------
+Tue Nov 19 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Version 0.16: added man page
+
+
+-------------------------------------------------------------------
+Mon Nov 18 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Version 0.13: added match option
+- Version 0.14: dkms is no longer a SysV service
+- Added depmod after install and remove
+- Version 0.15: added MODULES_CONF directives in dkms.conf
+
+
+-------------------------------------------------------------------
+Fri Nov 15 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Version 0.12: added the -q (quiet) option
+
+
+-------------------------------------------------------------------
+Thu Nov 14 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Version 0.11: began coding the status function
+
+
+-------------------------------------------------------------------
+Wed Nov 13 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Changed the name to DKMS
+- Moved original_module to its own separate directory structure
+- Removal now does a complete clean up
+
+
+-------------------------------------------------------------------
+Mon Nov 11 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Split build into build and install
+- dkds.conf is now sourced in
+- added kernelver variable to dkds.conf
+
+
+-------------------------------------------------------------------
+Fri Nov  8 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Added date to make.log
+- Created the prepare_kernel function
+
+
+-------------------------------------------------------------------
+Thu Nov  7 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Barebones implementation complete
+
+
+-------------------------------------------------------------------
+Wed Oct 30 00:00:00 UTC 2002 - gary_lerhaupt@dell.com
+
+- Initial coding
+

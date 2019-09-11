@@ -1,0 +1,10 @@
+--- Makefile.in.orig	2012-10-18 18:21:49.000000000 +0200
++++ Makefile.in	2012-10-18 18:21:55.000000000 +0200
+@@ -92,7 +92,6 @@
+ 	$(INSTALL_PROGRAM) scripts/Config.dlg  $(DESTDIR)$(DATA_DIR)/Config.dlg
+ 	$(INSTALL_PROGRAM) scripts/Support  $(DESTDIR)$(DATA_DIR)/Support
+ 	$(INSTALL_PROGRAM) scripts/Trace  $(DESTDIR)$(DATA_DIR)/Trace
+-	$(INSTALL_PROGRAM) scripts/dialog  $(DESTDIR)$(DATA_DIR)/dialog
+ 	$(INSTALL_CFG) scripts/cfg_divas.sh $(DESTDIR)$(DATA_DIR)/cfg_divas.sh
+ 	$(INSTALL_CFG) scripts/divas_sys_info.sh $(DESTDIR)$(DATA_DIR)/divas_sys_info.sh
+ 	$(INSTALL_CFG) scripts/divas_stop.rc $(DESTDIR)$(DATA_DIR)/divas_stop.rc

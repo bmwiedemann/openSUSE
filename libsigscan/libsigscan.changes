@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed Apr 17 22:36:16 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v20190103
+	* Worked on Python bindings
+
+-------------------------------------------------------------------
+Mon Oct  2 23:01:21 UTC 2017 - Greg.Freemyer@gmail.com
+
+- add python3 binding subpackage
+
+-------------------------------------------------------------------
+Thu Feb 16 20:59:47 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v20170124
+	* fixed bug in scan tree initialization
+	* applied updates
+	* fixes for rpmbuild
+	* worked on Python 3 support
+	* worked on Python bindings
+	* worked on setup.py
+	* bug fixes
+
+-------------------------------------------------------------------
+Wed Jul  1 22:05:45 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v20150627
+	* required by plaso v1.3
+	* worked on Python bindings
+	* fixes in sigscan.conf
+- update url field to point to github
+- for the python sub-package add a Requires libsigscan
+
+-------------------------------------------------------------------
+Wed Mar 25 21:47:05 UTC 2015 - Greg.Freemyer@gmail.com
+
+- initial package v20150125
+

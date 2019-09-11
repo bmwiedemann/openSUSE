@@ -1,0 +1,347 @@
+commit 04fab574db9c814196e81a86084a565dcdd4a26b
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Wed Mar 14 19:06:42 2018 +0100
+
+    Patch 3: mutter-xwayland-use-gdm-auth-file.patch
+
+Index: mutter-3.32.1/src/wayland/meta-wayland.c
+===================================================================
+--- mutter-3.32.1.orig/src/wayland/meta-wayland.c
++++ mutter-3.32.1/src/wayland/meta-wayland.c
+@@ -367,6 +367,7 @@ meta_wayland_init (void)
+ {
+   MetaWaylandCompositor *compositor = meta_wayland_compositor_get_default ();
+   GSource *wayland_event_source;
++  gchar *xauthority_path = NULL;
+ 
+   wayland_event_source = wayland_event_source_new (compositor->wayland_display);
+ 
+@@ -415,7 +416,8 @@ meta_wayland_init (void)
+ 
+   if (meta_should_autostart_x11_display ())
+     {
+-      if (!meta_xwayland_start (&compositor->xwayland_manager, compositor->wayland_display))
++      if (!meta_xwayland_start (&compositor->xwayland_manager, compositor->wayland_display,
++                                &xauthority_path))
+         g_error ("Failed to start X Wayland");
+     }
+ 
+@@ -440,6 +442,9 @@ meta_wayland_init (void)
+ 
+   if (meta_should_autostart_x11_display ())
+     set_gnome_env ("DISPLAY", meta_wayland_get_xwayland_display_name (compositor));
++    set_gnome_env ("XAUTHORITY", xauthority_path);
++
++    g_free (xauthority_path);
+ 
+   set_gnome_env ("WAYLAND_DISPLAY", meta_wayland_get_wayland_display_name (compositor));
+ }
+Index: mutter-3.32.1/src/wayland/meta-xwayland-private.h
+===================================================================
+--- mutter-3.32.1.orig/src/wayland/meta-xwayland-private.h
++++ mutter-3.32.1/src/wayland/meta-xwayland-private.h
+@@ -26,7 +26,8 @@
+ 
+ gboolean
+ meta_xwayland_start (MetaXWaylandManager *manager,
+-                     struct wl_display   *display);
++                     struct wl_display   *display,
++                     gchar **xauthority_path_out);
+ 
+ void
+ meta_xwayland_complete_init (MetaDisplay *display);
+Index: mutter-3.32.1/src/wayland/meta-xwayland.c
+===================================================================
+--- mutter-3.32.1.orig/src/wayland/meta-xwayland.c
++++ mutter-3.32.1/src/wayland/meta-xwayland.c
+@@ -32,6 +32,13 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
++/* For Xauthority cookie */
++#include <X11/Xauth.h>
++#include <glib/gstdio.h>
++#include <fcntl.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++
+ #include "compositor/meta-surface-actor-wayland.h"
+ #include "meta/main.h"
+ #include "wayland/meta-wayland-actor-surface.h"
+@@ -465,20 +472,231 @@ on_displayfd_ready (int          fd,
+   return G_SOURCE_REMOVE;
+ }
+ 
++/* Cookie generation code snipped from GDM */
++
++static gboolean
++_fd_is_character_device (int fd)
++{
++  struct stat file_info;
++
++  if (fstat (fd, &file_info) < 0) {
++    return FALSE;
++  }
++
++  return S_ISCHR (file_info.st_mode);
++}
++
++static gboolean
++_read_bytes (int      fd,
++             char    *bytes,
++             gsize    number_of_bytes,
++             GError **error)
++{
++  size_t bytes_left_to_read;
++  size_t total_bytes_read = 0;
++  gboolean premature_eof;
++
++  bytes_left_to_read = number_of_bytes;
++  premature_eof = FALSE;
++  do {
++    size_t bytes_read = 0;
++
++    errno = 0;
++    bytes_read = read (fd, ((guchar *) bytes) + total_bytes_read,
++                       bytes_left_to_read);
++
++    if (bytes_read > 0) {
++      total_bytes_read += bytes_read;
++      bytes_left_to_read -= bytes_read;
++    } else if (bytes_read == 0) {
++      premature_eof = TRUE;
++      break;
++    } else if ((errno != EINTR)) {
++      break;
++    }
++  } while (bytes_left_to_read > 0);
++
++  if (premature_eof) {
++    g_set_error (error,
++                 G_FILE_ERROR,
++                 G_FILE_ERROR_FAILED,
++                 "No data available");
++
++    return FALSE;
++  } else if (bytes_left_to_read > 0) {
++    g_set_error (error,
++                 G_FILE_ERROR,
++                 g_file_error_from_errno (errno),
++                 "%s", g_strerror (errno));
++    return FALSE;
++  }
++
++  return TRUE;
++}
++
++static char *
++generate_random_bytes (gsize    size,
++                       GError **error)
++{
++  int fd;
++  char *bytes;
++  GError *read_error;
++
++  /* We don't use the g_rand_* glib apis because they don't document
++   * how much entropy they are seeded with, and it might be less
++   * than the passed in size.
++   */
++
++  errno = 0;
++  fd = open ("/dev/urandom", O_RDONLY);
++
++  if (fd < 0) {
++    g_set_error (error,
++                 G_FILE_ERROR,
++                 g_file_error_from_errno (errno),
++                 "%s", g_strerror (errno));
++    close (fd);
++    return NULL;
++  }
++
++  if (!_fd_is_character_device (fd)) {
++    g_set_error (error,
++                 G_FILE_ERROR,
++                 g_file_error_from_errno (ENODEV),
++                 "/dev/urandom is not a character device");
++    close (fd);
++    return NULL;
++  }
++
++  bytes = g_malloc (size);
++  read_error = NULL;
++  if (!_read_bytes (fd, bytes, size, &read_error)) {
++    g_propagate_error (error, read_error);
++    g_free (bytes);
++    close (fd);
++    return NULL;
++  }
++
++  close (fd);
++  return bytes;
++}
++
++static FILE *
++create_auth_file (char **filename)
++{
++  char *auth_dir = NULL;
++  char *auth_file = NULL;
++  int fd;
++  FILE *fp = NULL;
++
++  auth_dir = g_build_filename (g_get_user_runtime_dir (),
++                               "mutter",
++                               NULL);
++
++  g_mkdir_with_parents (auth_dir, 0711);
++  auth_file = g_build_filename (auth_dir, "Xauthority", NULL);
++  g_clear_pointer (&auth_dir, g_free);
++
++  fd = open (auth_file, O_RDWR | O_CREAT | O_TRUNC, 0700);
++
++  if (fd < 0) {
++    g_debug ("could not open %s to store auth cookie: %m",
++             auth_file);
++    g_clear_pointer (&auth_file, g_free);
++    goto out;
++  }
++
++  fp = fdopen (fd, "w+");
++
++  if (fp == NULL) {
++    g_debug ("could not set up stream for auth cookie file: %m");
++    g_clear_pointer (&auth_file, g_free);
++    close (fd);
++    goto out;
++  }
++
++  *filename = auth_file;
++out:
++  return fp;
++}
++
++static char *
++prepare_auth_file (void)
++{
++  FILE     *fp = NULL;
++  char     *filename = NULL;
++  GError   *error = NULL;
++  gboolean  prepared = FALSE;
++  Xauth     auth_entry = { 0 };
++  char      localhost[HOST_NAME_MAX + 1] = "";
++
++  g_debug ("Preparing auth file for X server");
++
++  fp = create_auth_file (&filename);
++
++  if (fp == NULL) {
++    return NULL;
++  }
++
++  if (gethostname (localhost, HOST_NAME_MAX) < 0) {
++    strncpy (localhost, "localhost", sizeof (localhost) - 1);
++  }
++
++  auth_entry.family = FamilyLocal;
++  auth_entry.address = localhost;
++  auth_entry.address_length = strlen (auth_entry.address);
++  auth_entry.name = "MIT-MAGIC-COOKIE-1";
++  auth_entry.name_length = strlen (auth_entry.name);
++
++  auth_entry.data_length = 16;
++  auth_entry.data = generate_random_bytes (auth_entry.data_length, &error);
++
++  if (error != NULL) {
++    goto out;
++  }
++
++  if (!XauWriteAuth (fp, &auth_entry) || fflush (fp) == EOF) {
++    goto out;
++  }
++
++  auth_entry.family = FamilyWild;
++  if (!XauWriteAuth (fp, &auth_entry) || fflush (fp) == EOF) {
++    goto out;
++  }
++
++  prepared = TRUE;
++
++out:
++  g_clear_pointer (&auth_entry.data, g_free);
++  g_clear_pointer (&fp, fclose);
++
++  if (!prepared) {
++    g_clear_pointer (&filename, g_free);
++  }
++
++  return filename;
++}
++
+ gboolean
+ meta_xwayland_start (MetaXWaylandManager *manager,
+-                     struct wl_display   *wl_display)
++                     struct wl_display   *wl_display,
++                     gchar **xauthority_path_out)
+ {
+   int xwayland_client_fd[2];
+   int displayfd[2];
+   gboolean started = FALSE;
+   g_autoptr(GSubprocessLauncher) launcher = NULL;
+   GSubprocessFlags flags;
++  gchar *auth_file = NULL;
+   GError *error = NULL;
+ 
+   if (!choose_xdisplay (manager))
+     goto out;
+ 
++  auth_file = prepare_auth_file ();
++  if (!auth_file)
++    g_error ("Unable to create X authority file");
++
+   /* We want xwayland to be a wayland client so we make a socketpair to setup a
+    * wayland protocol connection. */
+   if (socketpair (AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0, xwayland_client_fd) < 0)
+@@ -523,6 +741,7 @@ meta_xwayland_start (MetaXWaylandManager
+                                                "-terminate",
+                                                "-accessx",
+                                                "-core",
++                                               "-auth", auth_file,
+                                                "-listen", "4",
+                                                "-listen", "5",
+                                                "-displayfd", "6",
+@@ -545,6 +764,11 @@ meta_xwayland_start (MetaXWaylandManager
+   manager->init_loop = g_main_loop_new (NULL, FALSE);
+   g_main_loop_run (manager->init_loop);
+ 
++  if (xauthority_path_out)
++    *xauthority_path_out = auth_file;
++  else
++    g_free (auth_file);
++
+   started = TRUE;
+ 
+ out:
+Index: mutter-3.32.1/meson.build
+===================================================================
+--- mutter-3.32.1.orig/meson.build
++++ mutter-3.32.1/meson.build
+@@ -83,6 +83,7 @@ mutter_installed_tests_libexecdir = join
+ 
+ m_dep = cc.find_library('m', required: true)
+ x11_dep = dependency('x11')
++xau_dep = dependency('xau')
+ gtk3_dep = dependency('gtk+-3.0', version: gtk3_req)
+ gdk_pixbuf_dep = dependency('gdk-pixbuf-2.0')
+ pango_dep = dependency('pango', version: pango_req)
+Index: mutter-3.32.1/src/meson.build
+===================================================================
+--- mutter-3.32.1.orig/src/meson.build
++++ mutter-3.32.1/src/meson.build
+@@ -84,6 +84,7 @@ if have_x11
+     xfixes_dep,
+     xi_dep,
+     x11_dep,
++    xau_dep,
+   ]
+ 
+   mutter_pkg_private_deps += [

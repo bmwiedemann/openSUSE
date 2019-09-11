@@ -1,0 +1,24 @@
+Index: src/copyin.c
+===================================================================
+--- src/copyin.c.orig	2010-08-10 16:45:19.000000000 +0200
++++ src/copyin.c	2010-08-10 16:45:19.000000000 +0200
+@@ -1485,6 +1485,19 @@ process_copy_in ()
+ 
+   apply_delayed_set_stat ();
+   
++  if (tty_in)
++  {
++    fclose(tty_in);
++  }
++  if (tty_out)
++  {
++    fclose(tty_out);
++  }
++  if (rename_in)
++  {
++    fclose(rename_in);
++  }
++
+   if (append_flag)
+     return;
+ 

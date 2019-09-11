@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Dec 14 12:53:58 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Package should own whole sitelib/sphinxcontrib/__pycache__
+
+-------------------------------------------------------------------
+Fri Dec  7 21:06:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove wrong BR on python-sphinxcontrib
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:46 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 18 22:29:06 UTC 2017 - toddrme2178@gmail.com
+
+- Use new python-sphinxcontrib package to provide namespace
+  directory.
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue Nov 15 12:39:04 UTC 2016 - dmueller@suse.com
+
+- update to 0.8.5:
+  * Python 3.5 enablement
+
+-------------------------------------------------------------------
+Wed Nov 25 15:43:36 UTC 2015 - tbechtold@suse.com
+
+- Don't install tests/ into global python site-packages dir
+- Fix license string
+
+-------------------------------------------------------------------
+Fri Jul 10 11:15:25 UTC 2015 - tbechtold@suse.com
+
+- update Requires
+
+-------------------------------------------------------------------
+Fri Jul 10 09:55:06 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

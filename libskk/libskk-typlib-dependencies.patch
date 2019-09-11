@@ -1,0 +1,13 @@
+Index: libskk-1.2.0+git20150413.be6e20b/libskk/Makefile.am
+===================================================================
+--- libskk-1.2.0+git20150413.be6e20b.orig/libskk/Makefile.am
++++ libskk-1.2.0+git20150413.be6e20b/libskk/Makefile.am
+@@ -85,7 +85,7 @@ typelibdir = $(libdir)/girepository-1.0
+ typelib_DATA = Skk-@SKK_API_VERSION@.typelib
+ 
+ Skk-@SKK_API_VERSION@.typelib: Skk-@SKK_API_VERSION@.gir
+-	@INTROSPECTION_COMPILER@ --shared-library=libskk -o $@ $^
++	@INTROSPECTION_COMPILER@ --shared-library=libskk.so.$(LT_CURRENT) -o $@ $^
+ endif
+ 
+ Skk-@SKK_API_VERSION@.gir skk-internals-@SKK_API_VERSION@.vapi skk-@SKK_API_VERSION@.vapi: libskk.la

@@ -1,0 +1,64 @@
+|BNC#577221 - Non-login, interactive bash executes /etc/bash.bashrc
+|             yet not documented
+|
+|Jared Hudson    2010-02-04 22:47:01 UTC
+|
+|bash-3.2-147.4.1 executes /etc/bash.bashrc when invoking an interactive,
+|non-login shell yet this is not documented. The man page should mention
+|this in its INVOCATION section. I've checked the source code and it's
+|hard coded to execute /etc/bash.bashrc (SYS_BASHRC macro)
+|
+|BSC#959755 - man page on bash needs some clarification.
+|
+|Werner Fink	2016-08-01 12:40:06 UTC
+|
+|Make clear that the files /etc/profile as well as /etc/bash.bashrc may source
+|other files as well even if the bash does not.
+|
+---
+ doc/bash.1 |   15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+--- doc/bash.1
++++ doc/bash.1	2018-09-20 08:16:12.073822864 +0000
+@@ -330,6 +330,8 @@ and executes commands from the first one
+ The
+ .B \-\-noprofile
+ option may be used when the shell is started to inhibit this behavior.
++Please note that the file \fI/etc/profile\fP includes an autodetection shell
++code wether it has to source \fI/etc/bash.bashrc\fP as well as \fI~/.bashrc\fP.
+ .PP
+ When an interactive login shell exits,
+ or a non-interactive login shell executes the \fBexit\fP builtin command,
+@@ -339,13 +341,19 @@ exists.
+ .PP
+ When an interactive shell that is not a login shell is started,
+ .B bash
+-reads and executes commands from \fI~/.bashrc\fP, if that file exists.
+-This may be inhibited by using the
++reads and executes commands from \fI/etc/bash.bashrc\fP then \fI~/.bashrc\fP
++when those files exist and are readable. This may be inhibited by using the
+ .B \-\-norc
+ option.
+ The \fB\-\-rcfile\fP \fIfile\fP option will force
+ .B bash
+ to read and execute commands from \fIfile\fP instead of \fI~/.bashrc\fP.
++Please note that the file \fI/etc/bash.bashrc\fP includes an autodetection shell
++code wether it is used for by a remote OpenSSH SSH client like
++.BR ssh (1)
++or
++.BR slogin (1)
++to source the local \fI/etc/profile\fP if not already done.
+ .PP
+ When
+ .B bash
+@@ -431,7 +439,8 @@ daemon, usually \fIrshd\fP, or the secur
+ If
+ .B bash
+ determines it is being run in this fashion, it reads and executes
+-commands from \fI~/.bashrc\fP, if that file exists and is readable.
++commands from \fI/etc/bash.bashrc\fP then  \fI~/.bashrc\fP when
++those files exist and are readable.
+ It will not do this if invoked as \fBsh\fP.
+ The
+ .B \-\-norc

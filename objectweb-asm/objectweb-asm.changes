@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Mar  6 10:17:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 6.2.1
+- Generate and customize the ant build system to be able to build
+  without gradle
+- Removed patches:
+  * objectweb-asm-6.0-no_bnd.patch
+  * objectweb-asm-6.0-no_retrofit.patch
+  * objectweb-asm-6.0-sourcetarget.patch
+  * objectweb-asm-6.0-uberjar.patch
+    + not needed in this version
+
+-------------------------------------------------------------------
+Tue Dec 11 14:03:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Tue Dec 11 10:09:57 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 6.0, the last version buildable with ant
+- Removed patches:
+  * asm-3.3.1-jdk9.patch
+  * asm-3.3.1-sourcetarget.patch
+  * objectweb-asm-no-classpath-in-manifest.patch
+    + Not corresponding any more to the current state of code
+- Added patches:
+  * objectweb-asm-6.0-no_bnd.patch
+    + Don't use bnd (which we don't have) to create bundles
+  * objectweb-asm-6.0-no_retrofit.patch
+    + Don't retrofit bytecode, since we build with target > 1.5
+  * objectweb-asm-6.0-sourcetarget.patch
+    + Build with source/target 8
+  * objectweb-asm-6.0-uberjar.patch
+    + Bring back the uberjars (asm-all.jar and asm-debug-all.jar)
+      since some packages might still depend on them
+
+-------------------------------------------------------------------
+Wed May 16 07:57:32 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Added patch:
+  * asm-3.3.1-jdk9.patch
+    + Since JDK9, "_" is reserved keyword
+
+-------------------------------------------------------------------
+Wed Oct  4 08:01:47 UTC 2017 - fstrba@suse.com
+
+- Remove dependency on java-1_5_0-gcj-compat-devel
+- Specify java source and target level 1.6 to allow building with
+  jdk9
+- Added patch:
+  * asm-3.3.1-sourcetarget.patch
+    + Don't hardcode the source and target levels, allow specifying
+      them on command-line
+
+-------------------------------------------------------------------
+Fri May 19 12:01:04 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+- cleaned spec using spec-cleaner 
+- remove "section free" macro
+- get rid of %if 0 blocks
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:18 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Sep 25 12:03:11 UTC 2013 - mvyskocil@suse.com
+
+- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it
+- Disable javadoc package
+
+-------------------------------------------------------------------
+Wed Sep 11 07:32:22 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:16 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Sun Dec 18 00:42:38 UTC 2011 - nlminhtl@gmail.com
+
+- 3.3.1 release 
+  * added new InstructionAdapter class, TryCatchBlockSorter (provided by Adrian Sampson)
+  * improved extensibility of analysis package (patch from Markus Heiden)
+  * 314119 Provide read access to uninitializedTypes in AnalyzerAdapter
+  * 313804 Improve analysis results
+  * a lot of bugfixes
+
+-------------------------------------------------------------------
+Tue Jun  2 14:50:36 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of objectweb-asm (from jpp 5.0) 
+

@@ -1,0 +1,4 @@
+%__rubygems_requires	%{_rpmconfigdir}/rubygemsdeps.rb --requires
+%__rubygems_provides    %{_rpmconfigdir}/rubygemsdeps.rb --provides
+%__rubygems_path        ^%{_libdir}/.*/gems/[^/]*/specifications
+

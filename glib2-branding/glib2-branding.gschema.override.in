@@ -1,0 +1,102 @@
+[org.gnome.desktop.interface]
+## No accessibility by default, until we're 100% there's no regression
+toolkit-accessibility = false
+### For the theme, we stay with the defaults
+## Note: for non-GNOME sessions, the cursor theme is defined in /var/adm/fillup-templates/sysconfig.windowmanager-desktop-data-openSUSE from desktop-data-openSUSE
+# cursor-theme = ""
+## Note: gtk[23]-branding-%{branding_name} must contain the same defaults for icon and gtk, otherwise the theme will change when gnome-settings-daemon starts
+# icon-theme = ""
+# gtk-theme = ""
+
+[org.gnome.desktop.background]
+## Default wallpaper
+picture-uri = "@@WALLPAPER_URI@@"
+picture-options = "stretched"
+primary-color = "#258c06"
+secondary-color = "#258c06"
+
+[org.gnome.desktop.screensaver]
+picture-uri = "@@WALLPAPER_URI@@"
+picture-options = "stretched"
+primary-color = "#258c06"
+secondary-color = "#258c06"
+@@IF_SLE@@lock-delay = 300
+
+[org.gnome.login-screen]
+## Logo in the gdm login dialog
+logo='/usr/share/gdm/greeter/images/distributor.svg'
+
+[org.gnome.libgnomekbd.desktop]
+## Set keyboard layout global per session instead of per window
+group-per-window = false
+
+[org.gnome.desktop.sound]
+## Make sure to have event sounds by default
+event-sounds = true
+@@IF_openSUSE@@theme-name = "freedesktop"
+@@IF_SLE@@theme-name = "novell"
+
+[org.gnome.desktop.wm.preferences]
+@@IF_openSUSE@@# Audible bell is more annoying than useful
+@@IF_openSUSE@@audible-bell = false
+### For the theme, we stay with the defaults
+# titlebar-uses-system-font = false
+# titlebar-font = ""
+# theme = ""
+
+[org.gnome.desktop.peripherals.touchpad]
+## Enable tap-to-click by default (bnc#554884,fate#310811)
+## http://lists.opensuse.org/opensuse-factory/2012-06/msg01087.html
+tap-to-click = true
+
+[org.gnome.settings-daemon.plugins.housekeeping]
+## To avoid popup warnings on default UEFI installation (bsc#919217)
+ignore-paths = ['/boot/efi']
+
+[org.gnome.settings-daemon.plugins.power]
+## Enable Energy Star compliant default configuration
+sleep-inactive-battery-type = "suspend"
+## To complete Energy Star compliant default configuration, you should enable this too:
+## (disabled by default because suspending is not working fine in all cases)
+# sleep-inactive-ac = true
+# sleep-inactive-ac-timeout = 1200
+# sleep-inactive-battery = true
+# sleep-inactive-battery-timeout = 1200
+
+[org.gnome.settings-daemon.plugins.xsettings]
+## the PackageKit gtk+ module is too spammy, fdo#23917
+disabled-gtk-modules = [ "pk-gtk-module" ]
+
+[org.gnome.settings-daemon.plugins.media-keys]
+help = "Help"
+
+[org.gnome.shell]
+## Default apps shown in the gnome-shell dash
+@@IF_openSUSE@@favorite-apps = [ 'firefox.desktop', 'org.gnome.Evolution.desktop', 'empathy.desktop', 'gnome-music.desktop', 'shotwell.desktop', 'writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop' ]
+@@IF_SLE@@favorite-apps = [ 'firefox.desktop', 'evolution.desktop', 'pidgin.desktop', 'gnome-photos.desktop', 'startcenter.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'yelp.desktop' ]
+@@IF_SLE@@## Default extensions that are enabled
+@@IF_SLE@@enabled-extensions = [ 'alternative-status-menu@gnome-shell-extensions.gcampax.github.com' ]
+
+[org.gnome.gnome-panel.applet.window-list]
+## Display all workspaces in the gnome-panel window list applet
+display-all-workspaces = true
+
+[org.freedesktop.Tracker.Miner.Files]
+## Disable indexing on removable media
+index-removable-devices = false
+
+[org.gnome.settings-daemon.plugins.xsettings:sle-classic]
+## Show application menu on title bar in sle-classic session
+## Need glib2 supports that gsettings default value can be overridden depending on session
+## bgo#746592 bsc#1070090
+overrides = {'Gtk/ShellShowsAppMenu': <0>}
+
+# @@IF_LEAP@@[org.gnome.software]
+# @@IF_LEAP@@# Disable GNOME Software's automatic update notifications - openSUSE relies on
+# @@IF_LEAP@@# gnome-settings-daemon's internal update plugin for update notifications.
+# @@IF_LEAP@@download-updates = false
+@@IF_LEAP@@[org.gnome.nautilus.icon-view]
+@@IF_LEAP@@default-zoom-level = 'small'
+
+@@IF_SLE@@[org.gnome.nautilus.icon-view]
+@@IF_SLE@@default-zoom-level = 'small'

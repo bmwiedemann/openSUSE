@@ -1,0 +1,10 @@
+--- src/cmd/ksh93/sh/jobs.c.orig	2015-09-15 15:56:08.902265877 +0000
++++ src/cmd/ksh93/sh/jobs.c	2015-09-15 15:57:00.866122451 +0000
+@@ -1981,6 +1981,7 @@ again:
+ 	{
+ 		count = bp->count;
+ 		jp = bp->list;
++		jpold = 0;
+ 		goto again;
+ 	}
+ 	if(jp)

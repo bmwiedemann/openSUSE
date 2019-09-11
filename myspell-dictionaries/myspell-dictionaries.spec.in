@@ -1,0 +1,126 @@
+#
+# spec file for package myspell-dictionaries.spec
+#
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+###################################################################
+## @DO_NOT_EDIT_COMMENT@
+## Generate: sh update.sh
+###################################################################
+Name:           myspell-dictionaries
+Version:        @VERSION@
+Release:        0
+Summary:        A Source Package for Dictionaries Used by MySpell
+License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
+Group:          Productivity/Text/Spell
+URL:            http://cgit.freedesktop.org/libreoffice/dictionaries/
+Source0:        dictionaries.tar.xz
+Source1:        update.sh
+Source2:        myspell-dictionaries.spec.in
+BuildRequires:  dos2unix
+BuildRequires:  xz
+Obsoletes:      myspell-african
+Obsoletes:      myspell-albanian
+Obsoletes:      myspell-armenian
+Obsoletes:      myspell-assamese
+Obsoletes:      myspell-asturian
+Obsoletes:      myspell-chichewa
+Obsoletes:      myspell-coptic
+Obsoletes:      myspell-esperanto
+Obsoletes:      myspell-faroese
+Obsoletes:      myspell-friulian
+Obsoletes:      myspell-gaelic-scots
+Obsoletes:      myspell-haitian
+Obsoletes:      myspell-indonese
+Obsoletes:      myspell-irish
+Obsoletes:      myspell-kazakh
+Obsoletes:      myspell-khmer
+Obsoletes:      myspell-kichwa
+Obsoletes:      myspell-kikuyu
+Obsoletes:      myspell-kinyarwanda
+Obsoletes:      myspell-korean
+Obsoletes:      myspell-kurdish
+Obsoletes:      myspell-latin
+Obsoletes:      myspell-lower-sorbian
+Obsoletes:      myspell-macedonian
+Obsoletes:      myspell-maithili
+Obsoletes:      myspell-malagasy
+Obsoletes:      myspell-malay
+Obsoletes:      myspell-malayalam
+Obsoletes:      myspell-maory
+Obsoletes:      myspell-marathi
+Obsoletes:      myspell-ndebele
+Obsoletes:      myspell-new-zealand
+Obsoletes:      myspell-persian
+Obsoletes:      myspell-setswana
+Obsoletes:      myspell-sotho-northern
+Obsoletes:      myspell-swati
+Obsoletes:      myspell-swedish-finland
+Obsoletes:      myspell-tagalog
+Obsoletes:      myspell-tsonga
+Obsoletes:      myspell-venda
+Obsoletes:      myspell-welsh
+Obsoletes:      myspell-xhosa
+Obsoletes:      myspell-yiddish
+Obsoletes:      libreoffice-thesaurus-bg
+Obsoletes:      libreoffice-thesaurus-ca
+Obsoletes:      libreoffice-thesaurus-cs
+Obsoletes:      libreoffice-thesaurus-da
+Obsoletes:      libreoffice-thesaurus-de
+Obsoletes:      libreoffice-thesaurus-de-AT
+Obsoletes:      libreoffice-thesaurus-de-CH
+Obsoletes:      libreoffice-thesaurus-el
+Obsoletes:      libreoffice-thesaurus-en-AU
+Obsoletes:      libreoffice-thesaurus-en-GB
+Obsoletes:      libreoffice-thesaurus-en-US
+Obsoletes:      libreoffice-thesaurus-es
+Obsoletes:      libreoffice-thesaurus-es-AR
+Obsoletes:      libreoffice-thesaurus-es-VE
+Obsoletes:      libreoffice-thesaurus-fr
+Obsoletes:      libreoffice-thesaurus-ga
+Obsoletes:      libreoffice-thesaurus-hu
+Obsoletes:      libreoffice-thesaurus-it
+Obsoletes:      libreoffice-thesaurus-nb
+Obsoletes:      libreoffice-thesaurus-ne
+Obsoletes:      libreoffice-thesaurus-pl
+Obsoletes:      libreoffice-thesaurus-pt
+Obsoletes:      libreoffice-thesaurus-ro
+Obsoletes:      libreoffice-thesaurus-ru
+Obsoletes:      libreoffice-thesaurus-sk
+Obsoletes:      libreoffice-thesaurus-sl
+Obsoletes:      libreoffice-thesaurus-sv
+Obsoletes:      libreoffice-hyphen
+
+%description
+This source package contains dictionaries for MySpell.
+
+The MySpell spell-checker is used by the Libreoffice office suite,
+the Mozilla Composer, and the Mozilla Mail message composition window.
+
+@METADATA@
+
+%prep
+%setup -q -n dictionaries
+
+%build
+
+%install
+@INSTALL@
+
+%files
+@FILES@
+
+%changelog

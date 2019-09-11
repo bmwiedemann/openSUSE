@@ -1,0 +1,463 @@
+-------------------------------------------------------------------
+Thu Apr 11 10:59:47 UTC 2019 - coolo@suse.com
+
+- Update to version 20190411:
+  * Update SPDX license list
+
+-------------------------------------------------------------------
+Wed Mar 13 06:16:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Switch to obs_scm with buildtime compression
+
+-------------------------------------------------------------------
+Wed Mar 13 06:07:40 UTC 2019 - coolo@suse.com
+
+- Update to version 20190312:
+  * prepare_spec: try to keep rich deps unbroken (bsc#1125035)
+
+-------------------------------------------------------------------
+Mon Aug 20 07:22:07 UTC 2018 - tchvatal@suse.com
+
+- Version update to version 20180820:
+  * In header use https not http when pointing to bugzilla
+
+-------------------------------------------------------------------
+Tue Mar  6 09:28:42 UTC 2018 - coolo@suse.com
+
+- Update to version 20180306:
+  + do not patch URL nor Url
+
+-------------------------------------------------------------------
+Thu Feb 15 11:07:31 UTC 2018 - coolo@suse.com
+
+- Update to version 20180215:
+  + map GPL-1.0 to GPL-1.0-only
+
+-------------------------------------------------------------------
+Wed Feb 14 17:30:08 UTC 2018 - coolo@suse.com
+
+- Update to version 20180214:
+  + adapt license list for SPDX 3.0
+  + remove readd-exceptions.patch
+
+-------------------------------------------------------------------
+Thu Nov  9 13:43:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 20171107:
+  + Update licenses.
+  + SPDX conjunction / disjunction operators are capitalized.
+- Rebase readd-exceptions.patch.
+
+-------------------------------------------------------------------
+Sat Feb  4 06:52:23 UTC 2017 - coolo@suse.com
+
+- update licenes (from git)
+
+-------------------------------------------------------------------
+Thu Sep 29 11:35:08 CEST 2016 - ro@suse.de
+
+- Handle needssslcertforbuild directive
+- Handle empty output directory
+- Improve the license and group comments handling
+
+-------------------------------------------------------------------
+Wed Aug 24 12:21:29 UTC 2016 - rpm@fthiessen.de
+
+- Update to 20160406
+  * Update licenses
+  * Fetch SPDX license exceptions (bsc#973404)
+
+-------------------------------------------------------------------
+Tue Feb  2 10:22:02 UTC 2016 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Fri Sep  4 07:57:44 UTC 2015 - coolo@suse.com
+
+- update licenses
+- silence warnings in perl 5.22
+
+-------------------------------------------------------------------
+Thu Jul 16 17:42:20 UTC 2015 - coolo@suse.com
+
+- update licenses
+- add readd-exceptions.patch to readd licenses we use
+
+-------------------------------------------------------------------
+Tue Jun 23 14:09:06 UTC 2015 - hib@hiberis.nl
+
+- Fix build for Debian 7.0/8.0
+- Use install target from Makefile
+
+-------------------------------------------------------------------
+Wed Jan 21 10:19:17 UTC 2015 - coolo@suse.com
+
+- change company name
+
+-------------------------------------------------------------------
+Mon Nov  3 09:47:09 UTC 2014 - coolo@suse.com
+
+- remove PKGBUILD as it makes factory submissions impossible
+
+-------------------------------------------------------------------
+Thu Oct 30 07:07:40 UTC 2014 - coolo@suse.com
+
+- one more license from ciaran
+
+-------------------------------------------------------------------
+Mon Aug 25 05:13:17 UTC 2014 - coolo@suse.com
+
+- updated to SPDX License List v1.20
+- cleaned up the SUSE specific list and moved to tar_scm service
+
+-------------------------------------------------------------------
+Thu Aug 14 02:28:08 CEST 2014 - ro@suse.de
+
+- do not enter empty license line if not found (eg in include file) 
+
+-------------------------------------------------------------------
+Wed Aug 13 11:21:40 CEST 2014 - ro@suse.de
+
+- update prepare_spec from git to fix (bnc#891152)
+
+-------------------------------------------------------------------
+Thu Jul 31 15:44:36 CEST 2014 - ro@suse.de
+
+- update prepare_spec from git to fix (bnc#889537)
+
+-------------------------------------------------------------------
+Thu Jul 10 10:49:45 UTC 2014 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Thu Apr 10 08:54:01 UTC 2014 - coolo@suse.com
+
+- fetched new licenses
+
+-------------------------------------------------------------------
+Tue Feb 11 08:47:54 UTC 2014 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Thu Feb  6 12:31:26 UTC 2014 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Tue Jan 28 09:25:30 UTC 2014 - coolo@suse.com
+
+- add Unicode from spreadsheet
+
+-------------------------------------------------------------------
+Mon Jan 27 06:31:43 UTC 2014 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Mon Dec  9 19:27:58 UTC 2013 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Tue Jun 18 12:35:33 UTC 2013 - coolo@suse.com
+
+- add SUSE-GitSlave
+
+-------------------------------------------------------------------
+Wed Apr 24 08:27:12 UTC 2013 - coolo@suse.com
+
+- adding SUSE-Permissive-Modify-By-Patch
+
+-------------------------------------------------------------------
+Fri Apr 19 07:50:56 UTC 2013 - coolo@suse.com
+
+- adding SUSE-Beerware
+
+-------------------------------------------------------------------
+Fri Mar  8 06:24:40 UTC 2013 - coolo@suse.com
+
+- add SUSE-BSD-Mark-Modifications for aspell
+
+-------------------------------------------------------------------
+Sun Feb 17 07:10:40 UTC 2013 - coolo@suse.com
+
+- update fetch-licenses and bump version
+
+-------------------------------------------------------------------
+Fri Feb  1 11:57:05 UTC 2013 - coolo@suse.com
+
+- add a + version for all SUSE licenses
+
+-------------------------------------------------------------------
+Fri Jan 25 09:30:32 UTC 2013 - coolo@suse.com
+
+- official fix for the X11 license
+
+-------------------------------------------------------------------
+Fri Jan 25 08:03:19 UTC 2013 - adrian@suse.de
+
+- drop double definition of X11 license
+- add basic self check on building package
+
+-------------------------------------------------------------------
+Thu Jan 24 06:11:18 UTC 2013 - coolo@suse.com
+
+- more licenses
+
+-------------------------------------------------------------------
+Wed Nov  7 13:54:57 UTC 2012 - coolo@suse.com
+
+- one more license
+
+-------------------------------------------------------------------
+Wed Oct 24 05:24:39 UTC 2012 - coolo@suse.com
+
+- more licenses
+
+-------------------------------------------------------------------
+Mon Oct  8 11:45:31 UTC 2012 - coolo@suse.com
+
+- remove SUSE- prefix for licenses that only have a +
+
+-------------------------------------------------------------------
+Mon Oct  8 11:03:10 UTC 2012 - coolo@suse.com
+
+- fix duplicate for Artistic-1.0+
+
+-------------------------------------------------------------------
+Sat Oct  6 13:08:22 UTC 2012 - coolo@suse.com
+
+- allow a + variant for all spdx licenses
+
+-------------------------------------------------------------------
+Tue Sep 25 12:29:17 UTC 2012 - coolo@suse.com
+
+- even more licenses
+
+-------------------------------------------------------------------
+Thu Sep 20 13:36:17 UTC 2012 - coolo@suse.com
+
+- one more license
+
+-------------------------------------------------------------------
+Thu Sep 13 14:39:31 UTC 2012 - coolo@suse.com
+
+- replace ; with and in license tag
+
+-------------------------------------------------------------------
+Mon Sep  3 08:46:29 UTC 2012 - coolo@suse.com
+
+- update licenses
+
+-------------------------------------------------------------------
+Wed Jun 20 14:16:06 UTC 2012 - coolo@suse.com
+
+- updated licenses
+
+-------------------------------------------------------------------
+Tue May 29 09:51:33 UTC 2012 - adrian@suse.de
+
+- do not break require lines using %() macros
+
+-------------------------------------------------------------------
+Fri May 11 09:17:10 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Thu Apr 19 10:41:40 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Tue Apr  3 08:30:08 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Thu Mar 29 10:15:51 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Tue Mar 27 07:14:11 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Wed Mar 21 14:12:24 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Fri Mar  9 15:27:34 UTC 2012 - coolo@suse.com
+
+- licenses update
+
+-------------------------------------------------------------------
+Mon Feb 27 13:12:13 UTC 2012 - saschpe@suse.de
+
+- avoid breaking shell expansions
+
+-------------------------------------------------------------------
+Fri Feb 24 09:48:57 UTC 2012 - coolo@suse.com
+
+- don't stop sorting at empty lines in %description
+- fix indenting of the script
+
+-------------------------------------------------------------------
+Mon Feb 20 13:19:09 UTC 2012 - coolo@suse.com
+
+- fix sorting of tag lines that are not on the beginning of the file
+
+-------------------------------------------------------------------
+Mon Feb 20 08:15:52 UTC 2012 - coolo@suse.com
+
+- not only break buildrequires per (sorted) line, but also
+  Requires and Provides
+
+-------------------------------------------------------------------
+Tue Feb 14 11:05:24 UTC 2012 - coolo@suse.com
+
+- even more legal updates
+
+-------------------------------------------------------------------
+Thu Feb  9 14:32:43 UTC 2012 - coolo@suse.com
+
+- even more legal updates
+
+-------------------------------------------------------------------
+Thu Feb  9 10:36:01 UTC 2012 - coolo@suse.com
+
+- fix the whitespace after the preamble
+
+-------------------------------------------------------------------
+Mon Feb  6 12:33:12 UTC 2012 - coolo@suse.com
+
+- one more update for php-2.0 and osl-1.1
+
+-------------------------------------------------------------------
+Sat Feb  4 09:35:13 UTC 2012 - adrian@suse.de
+
+- handle failing prepare_spec when $OUTDIR=$PWD correct
+
+-------------------------------------------------------------------
+Fri Feb  3 09:23:51 UTC 2012 - coolo@suse.com
+
+- fix php license
+
+-------------------------------------------------------------------
+Wed Jan 25 08:18:28 UTC 2012 - coolo@suse.com
+
+- another update from license list
+
+-------------------------------------------------------------------
+Thu Jan 19 14:07:31 UTC 2012 - coolo@suse.com
+
+- confirm license
+
+-------------------------------------------------------------------
+Thu Jan 19 08:04:28 UTC 2012 - coolo@suse.com
+
+- update list of licenses as legal team found new cases
+
+-------------------------------------------------------------------
+Mon Dec 19 08:40:02 UTC 2011 - coolo@suse.com
+
+- put groups in subpackages unconditionally to leave sle11 support
+  intact
+
+-------------------------------------------------------------------
+Thu Dec 15 13:59:55 UTC 2011 - coolo@suse.com
+
+- more licenses for SUSE-*
+
+-------------------------------------------------------------------
+Mon Dec 12 10:28:57 UTC 2011 - coolo@suse.com
+
+- preserve release tag if it's more than a number
+
+-------------------------------------------------------------------
+Wed Dec  7 14:04:46 UTC 2011 - coolo@suse.com
+
+- move pkgconfig() and co to the end of the buildrequires
+
+-------------------------------------------------------------------
+Wed Dec  7 08:22:29 UTC 2011 - coolo@suse.com
+
+- another update from git to replace way more licenses (0.4)
+
+-------------------------------------------------------------------
+Tue Dec  6 08:50:41 UTC 2011 - coolo@suse.com
+
+- update from https://github.com/openSUSE/obs-service-format_spec_file
+
+-------------------------------------------------------------------
+Thu Dec  1 14:10:52 UTC 2011 - adrian@suse.de
+
+- allow to specify a defined spec file (version 0.2)
+
+-------------------------------------------------------------------
+Wed Sep  7 13:34:45 CEST 2011 - dmueller@suse.de
+
+- remove %%debug_package insertion
+
+-------------------------------------------------------------------
+Mon Aug  8 14:05:45 UTC 2011 - ro@suse.com
+
+- more work on disabled subpackages, port from internal
+  prepare_spec
+
+-------------------------------------------------------------------
+Mon Aug  1 17:29:28 CEST 2011 - ro@suse.de
+
+- try to keep summary and group for cases like openldap2
+  (bnc#624980) 
+
+-------------------------------------------------------------------
+Mon Jul  4 11:42:26 CEST 2011 - ro@suse.de
+
+- fix empty line handling (multiple subsequent empty lines) 
+
+-------------------------------------------------------------------
+Mon Jul  4 00:16:05 CEST 2011 - ro@suse.de
+
+- leave Version lines intact (fix issue with multiple version
+  lines in a package, for example in if-constructs) 
+
+-------------------------------------------------------------------
+Fri Jun 17 07:27:18 UTC 2011 - coolo@novell.com
+
+- do not replace licenses without knowing them (not sure this
+  is necessary at all)
+
+-------------------------------------------------------------------
+Tue May 31 08:03:34 UTC 2011 - adrian@suse.de
+
+- do not fail on kiwi packages
+
+-------------------------------------------------------------------
+Wed May 25 15:34:28 UTC 2011 - adrian@suse.de
+
+- do not generate new spec files when no changes happened
+
+-------------------------------------------------------------------
+Wed May 25 14:00:35 CEST 2011 - ro@suse.de
+
+- fix uninitialized warning in prepare_spec
+
+-------------------------------------------------------------------
+Wed May  4 01:55:04 CEST 2011 - ro@suse.de
+
+- cleanup prepare_spec, drop Needed.pm 
+- make it ready for public usage
+
+-------------------------------------------------------------------
+Wed Jan 26 17:02:42 UTC 2011 - adrian@suse.de
+
+- initial version.
+  not usable outside of SUSE network yet.
+

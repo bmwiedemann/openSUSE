@@ -1,0 +1,55 @@
+Index: chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
+===================================================================
+--- chromium-75.0.3770.142.orig/build/config/BUILDCONFIG.gn
++++ chromium-75.0.3770.142/build/config/BUILDCONFIG.gn
+@@ -130,6 +130,8 @@ declare_args() {
+   # separate flags.
+   is_official_build = false
+ 
++  gcc_lto = false
++
+   # Whether we're a traditional desktop unix.
+   is_desktop_linux = current_os == "linux"
+ 
+@@ -440,6 +442,12 @@ default_compiler_configs = [
+   "//build/config/sanitizers:default_sanitizer_flags",
+ ]
+ 
++if (gcc_lto) {
++  default_compiler_configs += [
++    "//build/config/compiler:gcc_lto",
++  ]
++}
++
+ if (is_win) {
+   default_compiler_configs += [
+     "//build/config/win:default_crt",
+Index: chromium-75.0.3770.142/build/config/compiler/BUILD.gn
+===================================================================
+--- chromium-75.0.3770.142.orig/build/config/compiler/BUILD.gn
++++ chromium-75.0.3770.142/build/config/compiler/BUILD.gn
+@@ -1921,6 +1921,10 @@ if (is_win) {
+   }
+ }
+ 
++config("gcc_lto") {
++  cflags = [ "-flto" ]
++}
++
+ config("default_stack_frames") {
+   if (is_posix || is_fuchsia) {
+     if (enable_frame_pointers) {
+Index: chromium-75.0.3770.142/sandbox/linux/BUILD.gn
+===================================================================
+--- chromium-75.0.3770.142.orig/sandbox/linux/BUILD.gn
++++ chromium-75.0.3770.142/sandbox/linux/BUILD.gn
+@@ -256,6 +256,9 @@ component("seccomp_bpf") {
+     "//base",
+     "//base/third_party/dynamic_annotations",
+   ]
++  if (gcc_lto) {
++    configs -= [ "//build/config/compiler:gcc_lto" ]
++  }
+ 
+   if (is_nacl_nonsfi) {
+     cflags = [ "-fgnu-inline-asm" ]

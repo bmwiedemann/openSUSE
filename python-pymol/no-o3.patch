@@ -1,0 +1,14 @@
+--- a/setup.py
++++ b/setup.py
+@@ -261,11 +261,6 @@ ext_comp_args = [
+     "-Wno-narrowing",
+     # legacy stuff
+     '-Wno-char-subscripts',
+-    # optimizations
+-    "-ffast-math",
+-    "-funroll-loops",
+-    "-O0" if DEBUG else "-O3",
+-    "-fcommon",
+ ]
+ ext_link_args = []
+ ext_objects = []

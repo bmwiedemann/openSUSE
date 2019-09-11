@@ -1,0 +1,106 @@
+From 3bd1a087aa604545f8400bcdc1df37a00d7a4aa4 Mon Sep 17 00:00:00 2001
+From: Michal Srb <michalsrb@gmail.com>
+Date: Fri, 11 Aug 2017 14:58:33 +0200
+Subject: [PATCH] Add xvnc-args configuration option.
+
+It allows passing additional arguments to Xvnc.
+---
+ Configuration.cpp | 20 +++++++++++++++++++-
+ Configuration.h   |  7 +++++++
+ Xvnc.cpp          |  9 +++++++++
+ vncmanager.conf   |  6 ++++++
+ 4 files changed, 41 insertions(+), 1 deletion(-)
+
+diff --git a/Configuration.cpp b/Configuration.cpp
+index 9d7f932..10f3f1f 100644
+--- a/Configuration.cpp
++++ b/Configuration.cpp
+@@ -64,6 +64,22 @@ static void validate(boost::any &v, std::vector<std::string> const &tokens, VeNC
+         throw po::invalid_option_value("No security type configured.");
+ }
+ 
++static void validate(boost::any &v, std::vector<std::string> const &tokens, XvncArgList *target_type, int /* boost template trickery */)
++{
++    if (v.empty())
++        v = boost::any(XvncArgList());
++
++    XvncArgList *p = boost::any_cast<XvncArgList>(&v);
++
++    boost::escaped_list_separator<char> sep('\\', ' ', '\"');
++    for (const std::string & token : tokens) {
++        boost::tokenizer<boost::escaped_list_separator<char>> tok(token, sep);
++        for (auto str : tok) {
++            p->values.push_back(str);
++        }
++    }
++}
++
+ bool Configuration::parse(int argc, char *argv[], const char *config)
+ {
+     VeNCryptSubtypesList defaultSecurity = { VeNCryptSubtype::TLSNone, VeNCryptSubtype::X509None, VeNCryptSubtype::None };
+@@ -92,7 +108,9 @@ bool Configuration::parse(int argc, char *argv[], const char *config)
+         ("xvnc",    po::value<std::string>()->default_value("/usr/bin/Xvnc"),               "path to Xvnc executable")
+         ("greeter", po::value<std::string>()->default_value("/usr/bin/vncmanager-greeter"), "path to Greeter executable")
+         ("xauth",   po::value<std::string>()->default_value("/usr/bin/xauth"),              "path to xauth executable")
+-        ("rundir",  po::value<std::string>()->default_value("/run/vncmanager"),             "path to run directory");
++        ("rundir",  po::value<std::string>()->default_value("/run/vncmanager"),             "path to run directory")
++
++        ("xvnc-args", po::value<XvncArgList>()->multitoken(), "Additional arguments that will be passed to Xvnc. Take care to not overwrite arguments set by vncmanager.");
+ 
+     po::options_description tls("TLS");
+     tls.add_options()
+diff --git a/Configuration.h b/Configuration.h
+index 59cc46d..ca7d167 100644
+--- a/Configuration.h
++++ b/Configuration.h
+@@ -29,6 +29,13 @@
+ 
+ #include <boost/program_options.hpp>
+ 
++
++/// Wrapper struct to allow custom parsing
++struct XvncArgList
++{
++    std::vector<std::string> values;
++};
++
+ class Configuration
+ {
+ public:
+diff --git a/Xvnc.cpp b/Xvnc.cpp
+index d8709cc..4c26c68 100644
+--- a/Xvnc.cpp
++++ b/Xvnc.cpp
+@@ -246,6 +246,15 @@ void Xvnc::execute(bool queryDisplayManager)
+             argv.push_back("-desktop");
+             argv.push_back("VNC manager");
+         }
++
++        XvncArgList xvnc_args;
++        if (!Configuration::options["xvnc-args"].empty()) {
++            xvnc_args = Configuration::options["xvnc-args"].as<XvncArgList>();
++        }
++        for (auto &xvnc_arg : xvnc_args.values) {
++            argv.push_back(xvnc_arg.c_str());
++        }
++
+         argv.push_back(nullptr);
+ 
+         // Execute
+diff --git a/vncmanager.conf b/vncmanager.conf
+index 4b53673..33ecef9 100644
+--- a/vncmanager.conf
++++ b/vncmanager.conf
+@@ -89,3 +89,9 @@
+ # Default: /run/vncmanager
+ #
+ # rundir = /run/vncmanager
++
++# Additional arguments that will be passed to Xvnc.
++# Take care to not overwrite arguments set by vncmanager.
++#
++# Default:
++# xvnc-args =
+-- 
+2.12.3
+

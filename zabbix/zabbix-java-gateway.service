@@ -1,0 +1,12 @@
+[Unit]
+Description=Zabbix Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zabbix-java-gateway run
+User=zabbixs
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

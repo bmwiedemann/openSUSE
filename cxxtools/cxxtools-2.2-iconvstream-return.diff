@@ -1,0 +1,12 @@
+diff --git a/src/iconvstream.cpp b/src/iconvstream.cpp
+index 9b052ed..0019771 100644
+--- a/src/iconvstream.cpp
++++ b/src/iconvstream.cpp
+@@ -70,6 +70,7 @@ iconvstreambuf* iconvstreambuf::open(std::ostream& sink_,
+   const char* tocode, const char* fromcode)
+ {
+   open(sink_, tocode, fromcode, iconvstreambuf::mode_default);
++  return this;
+ }
+ 
+ iconvstreambuf* iconvstreambuf::open(std::ostream& sink_,

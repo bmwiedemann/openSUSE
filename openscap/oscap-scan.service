@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenSCAP security scanner
+Wants=local-fs.target
+After=local-fs.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/oscap-scan
+ExecStart=/usr/bin/oscap $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

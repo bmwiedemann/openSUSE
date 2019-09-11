@@ -1,0 +1,185 @@
+From d720c226a19f5ed4fe08c7f8e590a27850f5e99b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 7 Oct 2014 14:24:43 +0200
+Subject: [PATCH 04/20] Install cimprovagt scripts into
+ /usr/share/openlmi-providers
+
+---
+ src/account/CMakeLists.txt       | 2 +-
+ src/fan/CMakeLists.txt           | 2 +-
+ src/firewalld/CMakeLists.txt     | 2 +-
+ src/hardware/CMakeLists.txt      | 2 +-
+ src/journald/CMakeLists.txt      | 2 +-
+ src/locale/CMakeLists.txt        | 2 +-
+ src/logicalfile/CMakeLists.txt   | 2 +-
+ src/power/CMakeLists.txt         | 2 +-
+ src/realmd/CMakeLists.txt        | 2 +-
+ src/selinux/CMakeLists.txt       | 2 +-
+ src/service-dbus/CMakeLists.txt  | 2 +-
+ src/service/CMakeLists.txt       | 2 +-
+ src/software-dbus/CMakeLists.txt | 2 +-
+ src/sssd/CMakeLists.txt          | 2 +-
+ 14 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/account/CMakeLists.txt b/src/account/CMakeLists.txt
+index 9d416c9a28b6..458d1f702853 100644
+--- a/src/account/CMakeLists.txt
++++ b/src/account/CMakeLists.txt
+@@ -52,5 +52,5 @@ target_link_libraries(${LIBRARY_NAME} openlmicommon ${KONKRETCMPI_LIBRARIES} ${G
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+-install(PROGRAMS ${ACCOUNT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${ACCOUNT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/fan/CMakeLists.txt b/src/fan/CMakeLists.txt
+index f2464ef7904a..218b3074a2c9 100644
+--- a/src/fan/CMakeLists.txt
++++ b/src/fan/CMakeLists.txt
+@@ -35,4 +35,4 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+-install(PROGRAMS ${FAN_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${FAN_SCRIPT} DESTINATION share/openlmi-providers)
+diff --git a/src/firewalld/CMakeLists.txt b/src/firewalld/CMakeLists.txt
+index 121250c63084..498c523805d9 100644
+--- a/src/firewalld/CMakeLists.txt
++++ b/src/firewalld/CMakeLists.txt
+@@ -28,5 +28,5 @@ target_link_libraries(${LIBRARY_NAME} openlmicommon ${KONKRETCMPI_LIBRARIES} ${G
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/hardware/CMakeLists.txt b/src/hardware/CMakeLists.txt
+index 92a9ea6fc1a1..f914f8ce155f 100644
+--- a/src/hardware/CMakeLists.txt
++++ b/src/hardware/CMakeLists.txt
+@@ -43,6 +43,6 @@ set(TARGET_MOFS "${TARGET_MOF}" "${TARGET_MOF_DMTF}")
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOFS}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+ install(FILES ${TARGET_MOF_DMTF} DESTINATION share/openlmi-providers/)
+diff --git a/src/journald/CMakeLists.txt b/src/journald/CMakeLists.txt
+index 63a52462b999..129712dbd898 100644
+--- a/src/journald/CMakeLists.txt
++++ b/src/journald/CMakeLists.txt
+@@ -55,5 +55,5 @@ profile_mof_generate("90_LMI_Journald_Profile.mof.skel" "${TARGET_MOF}" "${CIM_P
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/locale/CMakeLists.txt b/src/locale/CMakeLists.txt
+index c32d8c9286cc..6df7af32c5ea 100644
+--- a/src/locale/CMakeLists.txt
++++ b/src/locale/CMakeLists.txt
+@@ -38,5 +38,5 @@ profile_mof_generate("90_LMI_Locale_Profile.mof.skel" "${TARGET_MOF}" "LMI_Local
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/logicalfile/CMakeLists.txt b/src/logicalfile/CMakeLists.txt
+index 755fe596f0b6..4c9ae4fbf048 100644
+--- a/src/logicalfile/CMakeLists.txt
++++ b/src/logicalfile/CMakeLists.txt
+@@ -37,6 +37,6 @@ profile_mof_generate("90_LMI_LogicalFile_Profile.mof.skel" "${TARGET_MOF}" "${CI
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+ install(FILES ${CONFIG} DESTINATION ${SYSCONF_INSTALL_DIR}/openlmi/logicalfile/)
+diff --git a/src/power/CMakeLists.txt b/src/power/CMakeLists.txt
+index 05d5bbfd71ac..4987bd758580 100644
+--- a/src/power/CMakeLists.txt
++++ b/src/power/CMakeLists.txt
+@@ -49,5 +49,5 @@ target_link_libraries(${LIBRARY_NAME} openlmicommon ${KONKRETCMPI_LIBRARIES} ${G
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+-install(PROGRAMS ${POWERMANAGEMENT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${POWERMANAGEMENT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/realmd/CMakeLists.txt b/src/realmd/CMakeLists.txt
+index 961c7b1111ac..89cbc79d1468 100644
+--- a/src/realmd/CMakeLists.txt
++++ b/src/realmd/CMakeLists.txt
+@@ -50,5 +50,5 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers
+ 
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi/)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/selinux/CMakeLists.txt b/src/selinux/CMakeLists.txt
+index 5885af56ceed..4cc473ed4e55 100644
+--- a/src/selinux/CMakeLists.txt
++++ b/src/selinux/CMakeLists.txt
+@@ -52,7 +52,7 @@ profile_mof_generate("90_LMI_SELinux_Profile.mof.skel" "${TARGET_MOF}" "${CIM_CL
+ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers "${TARGET_MOF}")
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+ # install(FILES ${CONFIG} DESTINATION ${SYSCONF_INSTALL_DIR}/openlmi/selinux/)
+ install(FILES DESTINATION ${SYSCONF_INSTALL_DIR}/openlmi/selinux/)
+diff --git a/src/service-dbus/CMakeLists.txt b/src/service-dbus/CMakeLists.txt
+index 02500f9ac361..09b5ae81bf2e 100644
+--- a/src/service-dbus/CMakeLists.txt
++++ b/src/service-dbus/CMakeLists.txt
+@@ -41,5 +41,5 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers
+ 
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/service/CMakeLists.txt b/src/service/CMakeLists.txt
+index 99f2cac5d2bd..fd005a83c913 100644
+--- a/src/service/CMakeLists.txt
++++ b/src/service/CMakeLists.txt
+@@ -31,6 +31,6 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} "60_LMI_Service.mof" share/ope
+ 
+ 
+ install(PROGRAMS util/servicedisc.sh util/serviceutil.sh DESTINATION libexec)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/software-dbus/CMakeLists.txt b/src/software-dbus/CMakeLists.txt
+index f8768605cf50..dc415a7caa46 100644
+--- a/src/software-dbus/CMakeLists.txt
++++ b/src/software-dbus/CMakeLists.txt
+@@ -50,5 +50,5 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers
+ 
+ 
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+diff --git a/src/sssd/CMakeLists.txt b/src/sssd/CMakeLists.txt
+index 5a884e8ffc7f..5a5639127a5a 100644
+--- a/src/sssd/CMakeLists.txt
++++ b/src/sssd/CMakeLists.txt
+@@ -38,6 +38,6 @@ cim_registration(${PROVIDER_NAME} ${LIBRARY_NAME} ${MOF} share/openlmi-providers
+ set(TARGET_MOF "${CMAKE_BINARY_DIR}/mof/90_LMI_SSSD_Profile.mof")
+ profile_mof_generate("90_LMI_SSSD_Profile.mof.skel" "${TARGET_MOF}" "LMI_SSSD")
+ 
+-install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION libexec/pegasus)
++install(PROGRAMS ${CIMPROVAGT_SCRIPT} DESTINATION share/openlmi-providers)
+ install(TARGETS ${LIBRARY_NAME} DESTINATION lib${LIB_SUFFIX}/cmpi)
+ install(FILES ${TARGET_MOF} DESTINATION share/openlmi-providers/)
+-- 
+2.1.4
+

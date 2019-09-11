@@ -1,0 +1,279 @@
+-------------------------------------------------------------------
+Mon May 20 12:12:08 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid build failures due to OOM
+
+-------------------------------------------------------------------
+Tue Apr  9 20:22:42 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Spec file cleanup:
+  * Use https for Url and Source tags
+  * Remove defattr
+  * Remove __DATE__ mangling, handled by GCC + SOURCE_DATE_EPOCH
+  * Remove support for Leap 42.x, unresolvable anyway
+
+-------------------------------------------------------------------
+Tue Dec 25 12:18:12 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.23b:
+  See https://play0ad.com/re-release-of-0-a-d-alpha-23-ken-wood/
+
+-------------------------------------------------------------------
+Fri May 18 09:03:04 UTC 2018 - mvetter@suse.com
+
+- Update to 0.0.23:
+  See https://play0ad.com/new-release-0-a-d-alpha-23-ken-wood/
+- Remove fix_abs_of_unsigned_char_on_arm.patch: upstreamed
+- Remove system-tinygettext.patch:
+  Upstream thinks this might lead to problems
+  See https://trac.wildfiregames.com/ticket/4192
+- Add BuildReq libsodium and remove tinygettext to use shipped one
+
+-------------------------------------------------------------------
+Fri Mar  9 17:07:45 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Keep fix_abs_of_unsigned_char_on_arm.patch intact and disable
+  the conflicting/irrelevant hunk in the spec file
+
+-------------------------------------------------------------------
+Sun Feb 25 20:33:53 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Revert the changes to use bundled mozjs38 on Leap 42.3 again
+  (no changelog entry), it does not build on 42.3. Use fixed
+  mozjs38 from distribution instead.
+
+-------------------------------------------------------------------
+Sat Feb 24 18:46:33 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Add fix_abs_of_unsigned_char_on_arm.patch, fixes build on 32/64
+  bit ARM (and probably PPC)
+
+-------------------------------------------------------------------
+Sat Feb  3 14:27:50 UTC 2018 - guillaume@opensuse.org
+
+- Enable nvidia-texture-tools only on supported archs
+
+-------------------------------------------------------------------
+Fri Feb  2 06:06:05 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use system mozjs38, bundled one fails to build on TW
+- Remove special handling for Leap 42.1
+- Pass compiler flags to bundled Collada
+
+-------------------------------------------------------------------
+Tue Nov 21 08:43:30 UTC 2017 - adam.majer@suse.de
+
+- Stop depending on boost-devel (boo#1062766)
+
+-------------------------------------------------------------------
+Fri Aug 11 19:35:27 UTC 2017 - mailaender@opensuse.org
+
+- Build with system nvidia-texture-tools (boo#1053393)
+
+-------------------------------------------------------------------
+Fri Jul 28 10:37:17 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.0.22:
+  + Remake of many models, animations and textures, two new music
+    tracks.
+  + Configuration-free Multiplayer Hosting.
+  + Capture the Relic Gamemode.
+  + Aura and Heal Range Visualization.
+  + Twelve new maps, including scripted enemies, rising water and a
+    tutorial.
+  + Espionage Technology, Team Bonuses and Hero Auras.
+  + Petra AI Diplomacy and Attack Strategies.
+  + Summary Screen Graphs.
+  + Cinema Path Editing.
+  + Buddy System.
+- Drop 0ad-desktop.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:38:45 UTC 2017 - dimstar@opensuse.org
+
+- Install the upstream provided appdata.xml file.
+
+-------------------------------------------------------------------
+Wed Dec  7 00:05:47 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.0.21
+  See: https://play0ad.com/new-release-0-a-d-alpha-21-ulysses/
+- Add patch 0ad-desktop.patch because of rpmlint-error invalid-
+  desktopfile invalid key URL
+- Drop patch fix-c++14-compat.patch because now in upstream
+- Rebase patch system-tinygettext.patch
+
+-------------------------------------------------------------------
+Tue Aug 30 14:13:52 UTC 2016 - rpm@fthiessen.de
+
+- Added system-tinygettext.patch
+- Removed code for other distributions from spec file, sine we just
+  build for openSUSE.
+
+-------------------------------------------------------------------
+Fri Jul 29 09:22:25 UTC 2016 - jengelh@inai.de
+
+- Update License field and trim filler words from description.
+
+-------------------------------------------------------------------
+Mon Jun 27 01:18:13 UTC 2016 - rpm@fthiessen.de
+
+- Fixed build with gcc6 (Tumbleweed), added fix-c++14-compat.patch
+
+-------------------------------------------------------------------
+Mon May 16 13:12:05 UTC 2016 - jengelh@inai.de
+
+- Build with wxWidgets 3 and reenable dependency generation
+
+-------------------------------------------------------------------
+Mon Apr  4 14:12:31 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.0.20
+  * New maps
+  * Better graphics and Camera
+  See https://play0ad.com/new-release-0-a-d-alpha-20-timosthenes/
+
+-------------------------------------------------------------------
+Sat Apr  2 17:23:08 UTC 2016 - bwiedemann@suse.com
+
+- use changelog time instead of build time to fix build-compare
+
+-------------------------------------------------------------------
+Thu Nov 26 22:50:54 UTC 2015 - mvetter@suse.com
+
+- Update to version 0.0.19
+
+-------------------------------------------------------------------
+Tue Apr  7 12:43:56 UTC 2015 - g.bluehut@gmail.com
+
+- Use xz archive instead of gz
+
+-------------------------------------------------------------------
+Thu Apr  2 21:30:23 UTC 2015 - opensuse@oeschti.de
+
+- update to version 0.0.18
+- use libminiupnpc-devel instead of builtin libminiupnpc
+
+-------------------------------------------------------------------
+Mon Oct 13 19:02:57 UTC 2014 - opensuse@dstoecker.de
+
+- update to version 0.0.17
+
+-------------------------------------------------------------------
+Sun Oct 12 06:48:03 UTC 2014 - bwiedemann@suse.com
+
+- use builtin libminiupnpc to work inspite of incompatible OS version
+
+-------------------------------------------------------------------
+Mon May 26 08:07:52 UTC 2014 - adrian@suse.de
+
+- require same versioned data package
+
+-------------------------------------------------------------------
+Wed May 21 07:58:31 UTC 2014 - adrian@suse.de
+
+- build using external libicu
+
+-------------------------------------------------------------------
+Tue May 20 11:10:15 UTC 2014 - adrian@suse.de
+
+- Update to version 0.0.16.
+
+-------------------------------------------------------------------
+Sat Jan  4 19:58:53 UTC 2014 - aj@ajaissle.de
+
+- Update to version 0.0.15.
+
+-------------------------------------------------------------------
+Tue Sep 10 17:09:06 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 0.0.14.
+- Adhere to https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Apr  3 15:58:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.0.13.
+
+-------------------------------------------------------------------
+Sun Jan 13 09:33:32 UTC 2013 - joop.boonen@opensuse.org
+
+- Added BuildRequires libXcursor-devel as they are not
+  automatically installed for openSUSE > 12.2
+
+-------------------------------------------------------------------
+Sun Dec 16 21:55:40 UTC 2012 - philip@zaynar.co.uk
+
+- Update to 0.0.12
+- Remove obsolete unused Debian build scripts
+
+-------------------------------------------------------------------
+Sun Oct 14 10:56:21 UTC 2012 - philip@zaynar.co.uk
+
+- Update to 0.0.11
+- New version number scheme
+- Remove fam/gamin dependency
+
+-------------------------------------------------------------------
+Wed May 16 20:14:34 UTC 2012 - philip@zaynar.co.uk
+
+- Update to r11863
+
+-------------------------------------------------------------------
+Thu Mar 15 17:35:49 UTC 2012 - philip@zaynar.co.uk
+
+- Update to r11339
+
+-------------------------------------------------------------------
+Fri Dec 23 19:53:20 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r10803
+
+-------------------------------------------------------------------
+Sat Sep 17 12:03:28 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r10288
+
+-------------------------------------------------------------------
+Sun Jul 10 12:17:14 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9786
+- libenet0-devel -> libenet-devel
+
+-------------------------------------------------------------------
+Fri May 20 14:07:52 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9530
+- libenet-devel -> libenet0-devel
+
+-------------------------------------------------------------------
+Fri Mar 11 16:52:07 UTC 2011 - philip@zaynar.co.uk
+
+- Update to r9049
+
+-------------------------------------------------------------------
+Mon Feb 21 00:05:53 UTC 2011 - reddwarf@opensuse.org
+
+- wxGTK -> wxWidgets migration
+
+-------------------------------------------------------------------
+Fri Dec 10 23:40:26 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r8832
+
+-------------------------------------------------------------------
+Sun Oct 17 22:15:45 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r8413
+
+-------------------------------------------------------------------
+Sun Aug 15 15:29:40 UTC 2010 - philip@zaynar.co.uk
+
+- Update to r7970
+- Compile in Release mode
+
+-------------------------------------------------------------------
+Mon Jul 12 21:10:44 UTC 2010 - bitshuffler@opensuse.org
+
+- Initial package
+

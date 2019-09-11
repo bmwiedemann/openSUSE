@@ -1,0 +1,277 @@
+---
+ libXaw3d-1.6.3/src/AsciiSink.c |    2 ++
+ libXaw3d-1.6.3/src/Command.c   |    2 ++
+ libXaw3d-1.6.3/src/Label.c     |   11 ++++++++++-
+ libXaw3d-1.6.3/src/List.c      |   14 ++++++++++++--
+ libXaw3d-1.6.3/src/MultiSink.c |   33 ++++++++++++++++++++++++++-------
+ libXaw3d-1.6.3/src/SmeBSB.c    |    2 ++
+ libXaw3d-1.6.3/src/Tip.c       |   16 ++++++++++++++--
+ libXaw3d-1.6.3/src/XawIm.c     |   14 +++++++++-----
+ 8 files changed, 77 insertions(+), 17 deletions(-)
+
+--- libXaw3d-1.6.3/src/AsciiSink.c
++++ libXaw3d-1.6.3/src/AsciiSink.c	2018-06-19 10:22:54.985964432 +0000
+@@ -513,6 +513,8 @@ Initialize(Widget request, Widget new, A
+ {
+     AsciiSinkObject sink = (AsciiSinkObject) new;
+ 
++    if (!sink->ascii_sink.font) XtError("Aborting: no font found\n");
++
+     GetGC(sink);
+ 
+     sink->ascii_sink.insertCursorOn= CreateInsertCursor(XtScreenOfObject(new));
+--- libXaw3d-1.6.3/src/Command.c
++++ libXaw3d-1.6.3/src/Command.c	2018-06-19 10:22:54.985964432 +0000
+@@ -220,6 +220,8 @@ Initialize(Widget request, Widget new, A
+   CommandWidget cbw = (CommandWidget) new;
+   int shape_event_base, shape_error_base;
+ 
++  if (!cbw->label.font) XtError("Aborting: no font found\n");
++
+   if (cbw->command.shape_style != XawShapeRectangle
+       && !XShapeQueryExtension(XtDisplay(new), &shape_event_base,
+ 			       &shape_error_base))
+--- libXaw3d-1.6.3/src/Label.c
++++ libXaw3d-1.6.3/src/Label.c	2018-06-19 10:22:54.985964432 +0000
+@@ -217,7 +217,10 @@ SetTextWidthAndHeight(LabelWidget lw)
+ #ifdef XAW_INTERNATIONALIZATION
+     if ( lw->simple.international == True ) {
+       XFontSet	fset = lw->label.fontset;
+-      XFontSetExtents *ext = XExtentsOfFontSet(fset);
++      XFontSetExtents *ext;
++
++      if (!lw->label.fontset || !(ext = XExtentsOfFontSet(fset)))
++	 XtError("Aborting: no fontset found\n");
+ 
+       lw->label.label_height = ext->max_ink_extent.height;
+       if (lw->label.label == NULL) {
+@@ -402,6 +405,12 @@ Initialize(Widget request, Widget new, A
+ 	lw->threeD.shadow_width = 0;
+ #endif
+ 
++    if (!lw->label.font) XtError("Aborting: no font found\n");
++#ifdef XAW_INTERNATIONALIZATION
++    if (lw->simple.international && !lw->label.fontset)
++	XtError("Aborting: no fontset found\n");
++#endif
++
+     if (lw->label.label == NULL)
+         lw->label.label = XtNewString(lw->core.name);
+     else
+--- libXaw3d-1.6.3/src/List.c
++++ libXaw3d-1.6.3/src/List.c	2018-06-19 10:22:54.985964432 +0000
+@@ -362,6 +362,12 @@ Initialize(Widget junk, Widget new, ArgL
+ {
+     ListWidget lw = (ListWidget) new;
+ 
++    if (!lw->list.font) XtError("Aborting: no font found\n");
++#ifdef XAW_INTERNATIONALIZATION
++    if (lw->simple.international && !lw->list.fontset)
++	XtError("Aborting: no fontset found\n");
++#endif
++
+ /*
+  * Initialize all private resources.
+  */
+@@ -571,7 +577,9 @@ PaintItemName(Widget w, int item)
+     int x, y, str_y;
+     ListWidget lw = (ListWidget) w;
+ #ifdef XAW_INTERNATIONALIZATION
+-    XFontSetExtents *ext  = XExtentsOfFontSet(lw->list.fontset);
++    XFontSetExtents *ext;
++    if (!lw->list.fontset || !(ext = XExtentsOfFontSet(lw->list.fontset)))
++       XtError("Aborting: no fontset found\n");
+ #endif
+ 
+     if (!XtIsRealized(w)) return; /* Just in case... */
+@@ -926,7 +934,9 @@ SetValues(Widget current, Widget request
+     ListWidget nl = (ListWidget) new;
+     Boolean redraw = FALSE;
+ #ifdef XAW_INTERNATIONALIZATION
+-    XFontSetExtents *ext = XExtentsOfFontSet(nl->list.fontset);
++    XFontSetExtents *ext;
++    if (!nl->list.fontset || !(ext = XExtentsOfFontSet(nl->list.fontset)))
++       XtError("Aborting: no fontset found\n");
+ #endif
+ 
+     /* If the request height/width is different, lock it.  Unless its 0. If */
+--- libXaw3d-1.6.3/src/MultiSink.c
++++ libXaw3d-1.6.3/src/MultiSink.c	2018-06-19 10:22:54.985964432 +0000
+@@ -252,7 +252,9 @@ PaintText(Widget w, GC gc, Position x, P
+     XFontSet fontset = sink->multi_sink.fontset;
+     Position max_x;
+     Dimension width = XwcTextEscapement(fontset, buf, len);
+-    XFontSetExtents *ext = XExtentsOfFontSet(fontset);
++    XFontSetExtents *ext;
++    if (!fontset || !(ext = XExtentsOfFontSet(fontset)))
++       XtError("Aborting: no fontset found\n");
+     max_x = (Position) ctx->core.width;
+ 
+     if ( ((int) width) <= -x)	           /* Don't draw if we can't see it. */
+@@ -286,7 +288,9 @@ DisplayText(Widget w, Position x, Positi
+     MultiSinkObject sink = (MultiSinkObject) w;
+     Widget source = XawTextGetSource(XtParent(w));
+     wchar_t buf[BUFSIZ];
+-    XFontSetExtents *ext = XExtentsOfFontSet(sink->multi_sink.fontset);
++    XFontSetExtents *ext;
++    if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet(sink->multi_sink.fontset)))
++       XtError("Aborting: no fontset found\n");
+ 
+     int j, k;
+     XawTextBlock blk;
+@@ -403,8 +407,10 @@ FindDistance (Widget w, XawTextPosition
+ 
+     XawTextPosition index, lastPos;
+     wchar_t c;
+-    XFontSetExtents *ext = XExtentsOfFontSet(sink->multi_sink.fontset);
+     XawTextBlock blk;
++    XFontSetExtents *ext;
++    if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet(sink->multi_sink.fontset)))
++       XtError("Aborting: no fontset found\n");
+ 
+     /* we may not need this */
+     lastPos = GETLASTPOS;
+@@ -437,8 +443,10 @@ FindPosition(Widget w, XawTextPosition f
+     int     lastWidth = 0, whiteSpaceWidth = 0;
+     Boolean whiteSpaceSeen;
+     wchar_t c;
+-    XFontSetExtents *ext = XExtentsOfFontSet(sink->multi_sink.fontset);
+     XawTextBlock blk;
++    XFontSetExtents *ext;
++    if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet(sink->multi_sink.fontset)))
++       XtError("Aborting: no fontset found\n");
+ 
+     lastPos = GETLASTPOS;
+ 
+@@ -535,6 +543,11 @@ Initialize(Widget request, Widget new, A
+ 
+     GetGC(sink);
+ 
++#ifdef XAW_INTERNATIONALIZATION
++    if (!sink->multi_sink.fontset) XtError("Aborting: no fontset found\n");
++#endif
++
++
+     sink->multi_sink.insertCursorOn= CreateInsertCursor(XtScreenOfObject(new));
+     sink->multi_sink.laststate = XawisOff;
+     sink->multi_sink.cursor_x = sink->multi_sink.cursor_y = 0;
+@@ -615,7 +628,9 @@ MaxLines(Widget w, Dimension height)
+ {
+   MultiSinkObject sink = (MultiSinkObject) w;
+   int font_height;
+-  XFontSetExtents *ext = XExtentsOfFontSet(sink->multi_sink.fontset);
++  XFontSetExtents *ext;
++  if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet(sink->multi_sink.fontset)))
++     XtError("Aborting: no fontset found\n");
+ 
+   font_height = ext->max_logical_extent.height;
+   return( ((int) height) / font_height );
+@@ -636,7 +651,9 @@ MaxHeight(
+     int lines )
+ {
+   MultiSinkObject sink = (MultiSinkObject) w;
+-  XFontSetExtents *ext = XExtentsOfFontSet(sink->multi_sink.fontset);
++  XFontSetExtents *ext;
++  if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet(sink->multi_sink.fontset)))
++     XtError("Aborting: no fontset found\n");
+ 
+   return(lines * ext->max_logical_extent.height);
+ }
+@@ -718,7 +735,9 @@ _XawMultiSinkPosToXY(
+     Position *y )
+ {
+     MultiSinkObject sink = (MultiSinkObject) ((TextWidget)w)->text.sink;
+-    XFontSetExtents *ext = XExtentsOfFontSet( sink->multi_sink.fontset );
++    XFontSetExtents *ext;
++    if (!sink->multi_sink.fontset || !(ext = XExtentsOfFontSet( sink->multi_sink.fontset )))
++       XtError("Aborting: no fontset found\n");
+ 
+     _XawTextPosToXY( w, pos, x, y );
+     *y += abs( ext->max_logical_extent.y );
+--- libXaw3d-1.6.3/src/SmeBSB.c
++++ libXaw3d-1.6.3/src/SmeBSB.c	2018-06-19 10:22:54.985964432 +0000
+@@ -204,6 +204,8 @@ Initialize(Widget request, Widget new, A
+     else
+ 	entry->sme_bsb.label = XtNewString( entry->sme_bsb.label );
+ 
++    if (!entry->sme_bsb.font) XtError("Aborting: no font found\n");
++
+     CreateGCs(new);
+ 
+     GetBitmapInfo(new, TRUE);	/* Left Bitmap Info */
+--- libXaw3d-1.6.3/src/Tip.c
++++ libXaw3d-1.6.3/src/Tip.c	2018-06-19 10:22:54.985964432 +0000
+@@ -248,6 +248,12 @@ XawTipInitialize(Widget req, Widget w, A
+     TipWidget tip = (TipWidget)w;
+     XGCValues values;
+ 
++    if (!tip->tip.font) XtError("Aborting: no font found\n");
++#ifdef XAW_INTERNATIONALIZATION
++    if (tip->tip.international && !tip->tip.fontset)
++	XtError("Aborting: no fontset found\n");
++#endif
++
+     tip->tip.timer = 0;
+ 
+     values.foreground = tip->tip.foreground;
+@@ -333,7 +339,10 @@ XawTipExpose(Widget w, XEvent *event, Re
+ #ifdef XAW_INTERNATIONALIZATION
+     if (tip->tip.international == True) {
+ 	Position ksy = tip->tip.internal_height;
+-	XFontSetExtents *ext = XExtentsOfFontSet(tip->tip.fontset);
++	XFontSetExtents *ext;
++
++        if (!tip->tip.fontset || !(ext = XExtentsOfFontSet(tip->tip.fontset)))
++	   XtError("Aborting: no fontset found\n");
+ 
+ 	ksy += abs(ext->max_ink_extent.y);
+ 
+@@ -414,7 +423,10 @@ TipLayout(XawTipInfo *info)
+ #ifdef XAW_INTERNATIONALIZATION
+     if (info->tip->tip.international == True) {
+ 	XFontSet fset = info->tip->tip.fontset;
+-	XFontSetExtents *ext = XExtentsOfFontSet(fset);
++	XFontSetExtents *ext;
++
++	if (!fset || !(ext = XExtentsOfFontSet(fset)))
++	   XtError("Aborting: no fontset found\n");
+ 
+ 	height = ext->max_ink_extent.height;
+ 	if ((nl = index(label, '\n')) != NULL) {
+--- libXaw3d-1.6.3/src/XawIm.c
++++ libXaw3d-1.6.3/src/XawIm.c	2018-06-19 10:22:54.985964432 +0000
+@@ -727,8 +727,10 @@ CreateIC(Widget w, XawVendorShellExtPart
+ 	    SetVaArg( &pe_a[pe_cnt], (XPointer) p->font_set); pe_cnt++;
+ 	    SetVaArg( &st_a[st_cnt], (XPointer) XNFontSet); st_cnt++;
+ 	    SetVaArg( &st_a[st_cnt], (XPointer) p->font_set); st_cnt++;
+-	    height = maxAscentOfFontSet(p->font_set)
+-		   + maxDescentOfFontSet(p->font_set);
++	    if (p->font_set) {
++		height = maxAscentOfFontSet(p->font_set)
++			+ maxDescentOfFontSet(p->font_set);
++	    }
+ 	    height = SetVendorShellHeight(ve, height);
+ 	}
+ 	if (p->flg & CIFg) {
+@@ -857,7 +859,7 @@ SetICValues(Widget w, XawVendorShellExtP
+     XPointer		ic_a[20], pe_a[20], st_a[20];
+     int			ic_cnt = 0, pe_cnt = 0, st_cnt = 0;
+     XawTextMargin	*margin;
+-    int			height;
++    int			height = 0;
+ 
+     if ((ve->im.xim == NULL) || ((p = GetIcTableShared(w, ve)) == NULL) ||
+ 	(p->xic == NULL)) return;
+@@ -884,8 +886,10 @@ SetICValues(Widget w, XawVendorShellExtP
+ 	    SetVaArg( &pe_a[pe_cnt], (XPointer) p->font_set); pe_cnt++;
+ 	    SetVaArg( &st_a[st_cnt], (XPointer) XNFontSet); st_cnt++;
+ 	    SetVaArg( &st_a[st_cnt], (XPointer) p->font_set); st_cnt++;
+-	    height = maxAscentOfFontSet(p->font_set)
+-		   + maxDescentOfFontSet(p->font_set);
++	    if (p->font_set) {
++		height = maxAscentOfFontSet(p->font_set)
++			+ maxDescentOfFontSet(p->font_set);
++	    }
+ 	    height = SetVendorShellHeight(ve, height);
+ 	}
+ 	if (p->flg & CIFg) {

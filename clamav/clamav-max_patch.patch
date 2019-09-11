@@ -1,0 +1,11 @@
+--- libclamav/others_common.c.orig
++++ libclamav/others_common.c
+@@ -855,7 +855,7 @@
+     size_t sanitized_index   = 0;
+     char* sanitized_filepath = NULL;
+ 
+-    if((NULL == filepath) || (0 == filepath_len) || (MAX_PATH < filepath_len)) {
++    if((NULL == filepath) || (0 == filepath_len) || (PATH_MAX < filepath_len)) {
+         goto done;
+     }
+ 

@@ -1,0 +1,26 @@
+## Path:          Network/Mail/Postgrey
+## Description:   Basic configuration of the postgrey greylisting daemon
+## Type:          string(--dbdir=/var/lib/postgrey)
+## Default:       ""
+## ServiceReload: postgrey
+#
+# directory location of database
+#
+POSTGREY_DBDIR=""
+
+## Type:          string(--unix=/var/spool/postfix/postgrey/socket,--inet=127.0.0.1:10031)
+## Default:       ""
+## ServiceReload: postgrey
+#
+# Choose between tcp and unix connection
+#
+#POSTGREY_CONN_OPTIONS="--inet=127.0.0.1:10031"
+#
+POSTGREY_CONN_OPTIONS="--unix=/var/spool/postfix/postgrey/socket"
+
+## Type:          string(--auto-whitelist-clients)
+## Default:       "--auto-whitelist-clients"
+## ServiceReload: postgrey
+#
+# additional options, like auto-whitelisting
+POSTGREY_EXTRA_OPTIONS="--auto-whitelist-clients"

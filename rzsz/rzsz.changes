@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Tue Jul  9 20:10:36 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add lrzsz-0.12.21rc-drop-po-intl.patch:
+  fix build with gettext >= 0.20
+- generate and install translation file manually
+
+-------------------------------------------------------------------
+Thu Apr  5 07:51:03 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.12.21~rc bsc#1086416 bsc#1090051 CVE-2018-10195:
+  * RC candidate from 1999 containing bunch of trivial fxies that
+    most other distributions ship
+- Rebase patches:
+  * lrzsz-0.12.20-automake-1.13.patch
+  * lrzsz-autotools.patch
+  * lrzsz-po.patch
+
+-------------------------------------------------------------------
+Sun Jan 21 13:35:25 UTC 2018 - benoit.monin@gmx.fr
+
+- add lrzsz-0.12.20-fix-lsz-getopt.patch: fix for boo#1076576
+
+-------------------------------------------------------------------
+Thu Jan 18 12:42:46 UTC 2018 - tchvatal@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep  3 18:57:20 UTC 2017 - benoit.monin@gmx.fr
+
+- remove _link to factory to build the package in the devel project
+- change source to tar.gz: upstream does not provide tar.bz2
+- also ignore ZMODEMtcp* tests failure for s390x
+
+-------------------------------------------------------------------
+Thu Apr 14 12:40:11 UTC 2016 - normand@linux.vnet.ibm.com
+
+- ignore ZMODEMtcp* tests failure for ppc64 archi
+
+-------------------------------------------------------------------
+Mon Aug  4 15:31:38 CEST 2014 - ro@suse.de
+
+- re-diff lrzsz-implicit-decl.patch 
+- Drop unused drop_ftime.patch
+
+-------------------------------------------------------------------
+Mon May 12 14:52:21 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Apply autoconf patches to allow autoreconf:
+  * lrzsz-autotools.patch
+  * lrzsz-0.12.20-automake-1.12.patch
+  * lrzsz-0.12.20-automake-1.13.patch
+- Fix compilation with latest gccs:
+  * lrzsz-implicit-decl.patch
+- Fix null as last argument for function calls:
+  * lrzsz-0.12.20-null-pointer.patch
+- Remove weirdly done patch that merged multiple operations at once:
+  * lrzsz-0.12.20.dif
+- Run test phase
+- Run make install properly and create symlinks for the
+  other binaries to provide lrz* to r* symlinks and thus match other
+  distributions.
+
+-------------------------------------------------------------------
+Thu Nov 14 20:30:02 UTC 2013 - dvaleev@suse.com
+
+- Drop obsoleted ftime. (drop_ftime.patch) 
+  Broken under PowerKVM  
+
+-------------------------------------------------------------------
+Fri Sep 30 16:12:50 UTC 2011 - uli@suse.com
+
+- cross-build fixes: use %configure macro, install to correct bindir
+
+-------------------------------------------------------------------
+Mon Sep  7 15:30:10 CEST 2009 - mmarek@suse.cz
+
+- lrzsz-0.12.20-use-after-free.patch: fix for bnc#529899.
+
+-------------------------------------------------------------------
+Mon Feb 25 15:11:21 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 17 14:48:14 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Mon Jan 24 17:12:56 CET 2005 - meissner@suse.de
+
+- fixed some implicit warnings, fixed one execle.
+
+-------------------------------------------------------------------
+Sun Jan 11 12:02:06 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Aug 22 10:02:21 CEST 2002 - nadvornik@suse.cz
+
+- installed /usr/bin/sx again (sx from package sp was renamed)
+
+-------------------------------------------------------------------
+Mon Jan 22 10:59:11 CET 2001 - nadvornik@suse.cz
+
+- fixed typo in german po file
+
+-------------------------------------------------------------------
+Mon Oct  9 09:37:19 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+- used bzip2
+
+-------------------------------------------------------------------
+Thu Apr 20 14:09:54 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+- added URL
+- removed Makefile.Linux
+
+-------------------------------------------------------------------
+Thu Mar  2 22:11:20 CET 2000 - zoz@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Fri Oct  1 17:07:44 CEST 1999 - zoz@suse.de
+
+- manpage sx removed, added remark to man sz 
+- added README.SuSE with same remark
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Mar  1 11:24:42 MET 1999 - ro@suse.de
+
+- don't redeclare strstr if already defined as a macro
+
+-------------------------------------------------------------------
+Wed Jan 20 15:28:26 MET 1999 - bs@suse.de
+
+- removed /usr/bin/sx from file list (is in package sp)
+
+-------------------------------------------------------------------
+Tue Jan 19 13:17:27 MET 1999 - florian@suse.de
+
+- update to lrzsz 0.12.20
+- fixed list of files
+
+-------------------------------------------------------------------
+Sun Sep 27 18:18:36 MEST 1998 - ro@suse.de
+
+- define DST_NONE if undefined
+
+-------------------------------------------------------------------
+Thu Oct 23 13:37:48 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+update to new version lrzsz 0.12b

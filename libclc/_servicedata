@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/llvm-mirror/libclc.git</param>
+    <param name="changesrevision">45017385361603d6328997a2272d140e50786686</param>
+  </service>
+</servicedata>

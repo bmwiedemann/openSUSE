@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Wed May 28 16:45:26 CEST 2014 - sbrabec@suse.cz
+
+- Simplify spec file.
+- Remove UsrMerge compatibility symlink.
+
+-------------------------------------------------------------------
+Wed May 14 01:00:43 CEST 2014 - ro@suse.de
+
+- add COPYING and COPYRIGHT as doc files
+
+-------------------------------------------------------------------
+Sun Jan 20 22:06:54 UTC 2013 - jengelh@inai.de
+
+- Split "adjtimex" off util-linux
+
+-------------------------------------------------------------------
+Tue Mar  6 21:18:56 UTC 2012 - rschweikert@suse.com
+
+- keep binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Tue Feb 21 13:46:25 UTC 2012 - puzel@suse.com
+
+- update to adjtimex-1.29
+
+-------------------------------------------------------------------
+Fri Jul  9 06:23:27 UTC 2010 - puzel@novell.com
+
+- update to adjtimex-1.28
+- drop adjtimex-1.20-nosyscall.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Apr 16 14:55:22 CEST 2009 - werner@suse.de
+
+- Move /usr/sbin/adjtimex to /sbin/adjtimex to be able to check the
+  kernel time variables even without /usr mounted
+
+-------------------------------------------------------------------
+Mon Jan 10 14:45:12 CET 2005 - mmj@suse.de
+
+- Update adjtimex to 1.20
+
+-------------------------------------------------------------------
+Mon Apr 14 15:12:27 CEST 2003 - pthomas@suse.de
+
+- Get rid of the syscall for adjtimex in selective cases and
+  just call the glibc wrapper. Fixes build on s390.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:12:02 CET 2002 - mmj@suse.de
+
+- Fix multistring assignment in adjtimex
+
+-------------------------------------------------------------------
+Tue Dec 18 16:50:34 CET 2001 - bjacke@suse.de
+
+- add adjtimex
+

@@ -1,0 +1,90 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-01-04 18:49:50.951406965 +0100
+
+build: avoid using -I/-L with no parameter.
+
+It can happen that some of these variables are empty, leading to
+the compiler always returning an exit code, and thus configure
+missing the existence of libraries. I saw this in config.log:
+
+configure:15405: checking X11/extensions/Xrender.h usability
+configure:15405: gcc -c -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -fno-strict-aliasing -Wall -g -fno-strict-aliasing -Wno-unused -Wno-comment -fno-tree-ter  -I conftest.c >&5
+gcc: fatal error: no input files
+compilation terminated.
+configure:15405: $? = 1
+
+---
+ ac_find_xft.m4 |   32 ++++++++++++++++++++++++++------
+ 1 file changed, 26 insertions(+), 6 deletions(-)
+
+Index: motif-2.3.4/ac_find_xft.m4
+===================================================================
+--- motif-2.3.4.orig/ac_find_xft.m4
++++ motif-2.3.4/ac_find_xft.m4
+@@ -48,7 +48,10 @@ yes)
+ 	esac
+ 	;;
+ *)
+-	FREETYPE_CFLAGS="-I$freetype_includes"
++	FREETYPE_CFLAGS=""
++	if test -n "$freetype_includes"; then
++		FREETYPE_CFLAGS="-I$freetype_includes"
++	fi
+ 	;;
+ esac
+ 
+@@ -67,7 +70,11 @@ yes)
+ 	esac
+ 	;;
+ *)
+-	freetype_lib="-L$freetype_lib -lfreetype"
++	freetype_lib=""
++	if test -n "$freetype_lib"; then
++		freetype_lib="-L$freetype_lib"
++	fi
++	freetype_lib="$freetype_lib -lfreetype"
+ 	;;
+ esac
+ 
+@@ -134,8 +141,14 @@ AC_SUBST(CONFDIR)
+ FINDXFT_HAVE_XRENDER="no"
+ case "$have_x" in
+ yes)
+-	XRENDER_CFLAGS="-I$x_includes"
+-	XRENDER_LIBS="-L$x_libraries -lXft -lXrender"
++	if test -n "$x_includes"; then
++		XRENDER_CFLAGS="-I$x_includes"
++	fi
++	XRENDER_LIBS=""
++	if test -n "$x_libraries"; then
++		XRENDER_LIBS="-L$x_libraries"
++	fi
++	XRENDER_LIBS="$XRENDER_LIBS -lXft -lXrender"
+ 
+ 	saved_LIBS="$LIBS"
+ 	LIBS="$LIBS $XRENDER_LIBS"
+@@ -197,7 +210,10 @@ yes)
+ 	esac
+ 	;;
+ *)
+-	FONTCONFIG_CFLAGS="-I$fontconfig_includes"
++	FONTCONFIG_CFLAGS=""
++	if test -n "$fontconfig_includes"; then
++		FONTCONFIG_CFLAGS="-I$fontconfig_includes"
++	fi
+ 	;;
+ esac
+ 
+@@ -216,7 +232,11 @@ yes)
+ 	esac
+ 	;;
+ *)
+-	FONTCONFIG_LIBS="-L$fontconfig_lib -lfontconfig"
++	FONTCONFIG_LIBS=""
++	if test -n "$fontconfig_lib"; then
++		FONTCONFIG_LIBS="-L$fontconfig_lib";
++	fi
++	FONTCONFIG_LIBS="$FONTCONFIG_LIBS -lfontconfig"
+ 	;;
+ esac
+ 

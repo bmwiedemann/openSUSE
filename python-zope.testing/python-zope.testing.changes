@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Fri Apr  5 14:44:29 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 4.7
+  * Added support for Python 3.7.
+  * Remove dependencies on zope.interface and zope.exceptions.
+  * Remove use of 2to3 for outdated versions of PyPy3, letting us 
+    build universal wheels.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:32 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jun 23 11:17:45 UTC 2017 - aloisio@gmx.com
+
+- Update to 4.6.1
+  * Add support for Python 3.6.
+  4.6.0:
+  * Introduce option flag ``IGNORE_EXCEPTION_MODULE_IN_PYTHON2`` 
+    to normalize exception class names in traceback output.
+    In Python 3 they are displayed as the full dotted name.
+    In Python 2 they are displayed as "just" the class name.
+    When running doctests in Python 3, the option flag will 
+    not have any effect, however when running the same test in
+    Python 2, the segments in the full dotted name leading up to
+    the class name are stripped away from the "expected" string.
+  * Drop support for Python 2.6 and 3.2.
+  * Add support for Python 3.5.
+  * Cleaned up useless 2to3 conversion.
+  4.5.0:
+  * Added meta data for test case methods created with
+    ``zope.testing.doctestcase``.
+  * Reasonable values for ``__name__``, making sure that 
+    ``__name__`` starts with ``test``.
+  * For ``doctestfile`` methods, provide ``filename`` and 
+    ``filepath`` attributes.
+    The meta data us useful, for example, for selecting tests
+    with the nose attribute mechanism.
+  * Added ``doctestcase.doctestfiles``
+  * Define multiple doctest files at once.
+  * Automatically assign test class members.  So rather than::
+      class MYTests(unittest.TestCase):
+          ...
+          test_foo = doctestcase.doctestfile('foo.txt')
+    You can use::
+      @doctestcase.doctestfiles('foo.txt', 'bar.txt', ...)
+      class MYTests(unittest.TestCase):
+          ...
+  4.4.0:
+  * Added ``zope.testing.setupstack.mock`` as a convenience 
+    function for setting up mocks in tests.  (The Python
+    ``mock`` package must be in the path for this to work. The
+    excellent ``mock`` package isn't a dependency of
+    ``zope.testing``.)
+  * Added the base class ``zope.testing.setupstack.TestCase`` to
+    make it much easier to use ``zope.testing.setupstack`` in
+    ``unittest`` test cases.
+  4.3.0:
+  * Added support for creating doctests as methods of
+    ``unittest.TestCase`` classes so that they can found 
+    automatically by test runners, like *nose* that ignore test
+    suites.
+  4.2.0:
+  * **Actually** remove long-deprecated ``zope.testing.doctest`` 
+    (announced as removed in 4.0.0) and
+    ``zope.testing.doctestunit``.
+  * Add support for PyPy and PyPy3.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri May 15 13:38:51 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.1.3:
+  * Added support for Python 3.4.
+  * Updated boostrap.py to version 2.2.
+- switch the source archive to tar.gz (zip not available)
+- remove unzip from BuildRequires
+- reenable the tests for all suse versions
+
+-------------------------------------------------------------------
+Fri Nov  1 10:08:16 UTC 2013 - p.drouand@gmail.com
+
+- Disable tests; fix build for Factory
+
+-------------------------------------------------------------------
+Thu Oct 24 11:18:01 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Mar 15 13:58:11 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

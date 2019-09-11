@@ -1,0 +1,78 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-01-08 13:48:59+0100
+
+Use LZMA system libraries instead of bundled code.
+
+---
+ CMakeLists.txt              |    4 ++--
+ src/CMakeLists.txt          |    4 ++--
+ tools/zipdir/CMakeLists.txt |    4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+Index: gzdoom-4.0.0/CMakeLists.txt
+===================================================================
+--- gzdoom-4.0.0.orig/CMakeLists.txt
++++ gzdoom-4.0.0/CMakeLists.txt
+@@ -12,6 +12,7 @@ endif()
+ 
+ list( APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
+ include( FindPackageHandleStandardArgs )
++include(FindPkgConfig)
+ 
+ # Support cross compiling
+ option( FORCE_CROSSCOMPILE "Turn on cross compiling." NO )
+@@ -355,7 +356,7 @@ else()
+ 	set( GME_LIBRARIES gme )
+ endif()
+ 
+-set( LZMA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lzma/C" )
++pkg_check_modules(LZMA REQUIRED clzma)
+ 
+ if( NOT CMAKE_CROSSCOMPILING )
+ 	if( NOT CROSS_EXPORTS )
+@@ -373,7 +374,6 @@ install(DIRECTORY docs/
+ 		DESTINATION ${INSTALL_DOCS_PATH}
+ 		COMPONENT "Documentation")
+ 
+-add_subdirectory( lzma )
+ add_subdirectory( tools )
+ add_subdirectory( dumb )
+ add_subdirectory( gdtoa )
+Index: gzdoom-4.0.0/src/CMakeLists.txt
+===================================================================
+--- gzdoom-4.0.0.orig/src/CMakeLists.txt
++++ gzdoom-4.0.0/src/CMakeLists.txt
+@@ -467,7 +467,7 @@ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LI
+ if (HAVE_VULKAN)
+ 	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
+ endif()
+-include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${JPEG_INCLUDE_DIR}" "${GME_INCLUDE_DIR}" )
++include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${GME_INCLUDE_DIR}" )
+ 
+ if( ${HAVE_VM_JIT} )
+ 	add_definitions( -DHAVE_VM_JIT )
+@@ -1370,7 +1370,7 @@ if( UNIX )
+ 	endif()
+ endif()
+ 
+-target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa dumb lzma )
++target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa dumb ${LZMA_LIBRARIES})
+ 
+ include_directories( .
+ 	g_statusbar
+Index: gzdoom-4.0.0/tools/zipdir/CMakeLists.txt
+===================================================================
+--- gzdoom-4.0.0.orig/tools/zipdir/CMakeLists.txt
++++ gzdoom-4.0.0/tools/zipdir/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ cmake_minimum_required( VERSION 2.8.7 )
+ 
+ if( NOT CMAKE_CROSSCOMPILING )
+-	include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
++	include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" )
+ 	add_executable( zipdir
+ 		zipdir.c )
+-	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} lzma )
++	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} ${LZMA_LDFLAGS})
+ 	set( CROSS_EXPORTS ${CROSS_EXPORTS} zipdir PARENT_SCOPE )
+ endif()

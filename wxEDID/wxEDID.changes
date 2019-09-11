@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Wed Jul 24 13:57:06 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v0.0.18
+Fixed
+  * Removed unused "Hex View" menu item
+
+Added
+  * Menu Options: "DTD preview: keep aspect ratio": keep aspect
+    ratio of the DTD preview screen.
+  * DTD_Constructor: active screen area size is now displayed on
+    the DTD screen preview. H/V borders are excluded from active
+    area.
+
+-------------------------------------------------------------------
+Sun Dec 23 18:43:51 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v0.0.17
+Changed
+  * Increased default Log Window size from 400x300 to 500x400.
+  * All panels & controls are now using default system font instead
+    of fixed one.
+
+Fixed
+  * (BUG::wxSmith) Menu "Quit" and "About" handlers were connected
+    dynamically in the frame constructor, even though they were
+    already present in the static event table.
+  * Options menu: all menu items except "Log window" should stay
+    disabled until edid data is loaded/imported.
+
+-------------------------------------------------------------------
+Thu Dec  6 13:05:39 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v0.0.16
+Added
+  * support for wxWidgets v3.1.x : *experimental*
+
+Changed
+  * DTD panel: all the controls are now configured to use default
+    min sizes - this is rather a disadventage, because f.e. the
+    default controls in gtk3 are ridiculously big. However,
+    the minimal App frame size is now re-calculated dynamically,
+    basing on the min. size reported by the DTD sizer - so this
+    is a more flexible solution.
+  * Dropped support for old wxWidgets versions (<3.0.0).
+  * Changed proportions of AUI panes.
+
+Fixed
+  * DTD panel: dtd_screen: background was erased twice on resize
+    event → now the refreshing is performed in a single call to
+    the paint event.
+  * wxWidgets v3.1.x wxGrid::SetCellValue(wxString&, int, int)
+    is deprecated, new version is wxGrid::SetCellValue(int, int,
+    wxString&)
+  * wxWidgets v3.1.x: wxEVT_GRID_CELL_CHANGE is no longer
+    supported → renamed to wxEVT_GRID_CELL_CHANGED
+  * wxEDID_Frame::evt_frame_size() missing call to sizer->Layout()
+    → quick resizing of the frame could cause incorrect placement
+    of child windows on the DTD panel.
+  * (BUG::old): DTD_Ctor_WriteInt(): value change event log:
+    missing field names. Only the first letter of field name was
+    printed due to missing conversion from ASCII to wxString.
+  * (BUG::old): EDID_class.cpp: wxString AltDesc wasn't really
+    initializing the alternative desriptors' "Desc" fields.
+    Now the AltDesc is just a char string, and the "Desc" fields
+    are proprly initialized by calling wxString::FromUTF8(AltDesc).
+  * DTD_Ctor_WriteInt(), WriteField(): value change event log:
+    print the whole message string in a single call to
+    guilog::DoLog() - eliminates printing of multiple timestamps
+    per event.
+  * Corrected few textual descriptions of EDID fields.
+
+-------------------------------------------------------------------
+Tue Nov 28 03:47:08 UTC 2017 - 9@cirno.systems
+
+- update to v0.0.15
+  * Fixed: (BUG) RCD_RETURN_FALSE() returns RCD_TRUE
+
+-------------------------------------------------------------------
+Mon Oct 30 16:49:24 UTC 2017 - 9@cirno.systems
+
+- update to v0.0.14
+  * Update: guilog.h v0.2
+  * Fixed: Info panel: BG & FG colors were theme-dependent, which
+    could make the panel look "ugly" or even completely unreadable.
+    Now the FG is forced to black and the BG is white.
+
+-------------------------------------------------------------------
+Tue Sep  5 23:46:02 UTC 2017 - 9@cirno.systems
+
+- update to v0.0.13
+  * Fixed: (GCC 6.x): silenced some warnings (false-positives)
+    regarding "possibly unitialized variables" in EDID_class.cpp
+  * Fixed: (GCC 6.x, C11 mode): wxEDID_Main.h: C11 requires a space
+    between literal and string macro [-Wliteral-suffix].
+  * Update: returncode.h v0.8.3 
+
+-------------------------------------------------------------------
+Sat Apr  1 02:41:15 UTC 2017 - 9@cirno.systems
+
+- Initial commit

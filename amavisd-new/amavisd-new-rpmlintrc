@@ -1,0 +1,6 @@
+# use the old name for init script
+addFilter("incoherent-init-script-name.*amavis")
+# amavis depends on a lot of perl-modules, so this is not really needed:
+addFilter("no-dependency-on.*perl-base")
+# dont rename the package for one single perl module:
+addFilter("perl5-naming-policy-not-applied.*JpegTester.pm")

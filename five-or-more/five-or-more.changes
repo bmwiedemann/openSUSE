@@ -1,0 +1,516 @@
+-------------------------------------------------------------------
+Mon Mar 11 18:04:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:26:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Updated docs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:23:22 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Added snap build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 07:02:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Nightly builds.
+  + Appdata updates.
+  + Tests for appdata and desktop validation.
+  + Updated translations.
+- Drop five-or-more-fix-help-build.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan  5 17:20:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Minor interface changes.
+  + Updated translations.
+- Changes from version 3.31.1:
+  + Complete rewrite as part of GSoC.
+  + Added new ball theme.
+  + Remove appmenu.
+  + Resource files with reverse domain naming.
+  + Updated translations.
+- Replace pkgconfig(gmodule-2.0) with pkgconfig(gmodule-export-2.0)
+  BuildRequires: Align with what meson checks for.
+- Add vala, pkgconfig(gee-0.8) and pkgconfig(gio-2.0)
+  BuildRequires: New dependencies.
+- Add five-or-more-fix-help-build.patch: Fix build of help files.
+
+-------------------------------------------------------------------
+Sun Sep  9 07:38:14 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Changes from version 3.29.3:
+  + Updated translations.
+  + Migrate to gettext.
+  + Migrate to meson.
+  + Use libgnome-games-support for scores tracking.
+- Drop intltool BuildRequires: No longer needed after upstream
+  migration to Gettext.
+- Build with meson:
+  + Add meson as build requirement.
+  + Use appropriate macros.
+- Add pkgconfig(libgnome-games-support-1) as build requirement.
+- No longer recommend lang package as it already supplements main
+  package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Mon Mar 12 23:14:16 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 18:55:06 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Tue Mar  6 09:49:47 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Make theme names translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 22:53:13 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.91:
+  + Updated translations.
+- Update Url tag to https://wiki.gnome.org/Apps/Five_or_more:
+  the current Five or More's web page.
+- Drop glib2_gsettings_schema_*, icon_theme_cache_*,
+  desktop_database_* post/postun scriptlets and
+  glib2_gsettings_schema_requires macro: their functionality has
+  been moved to RPM file triggers.
+- Drop update-desktop-files BuildRequires and its macro: they are
+  no longer required anymore.
+- Add fdupes BuildRequires and its macro for replacement of
+  duplicates with links under the data directory.
+- Split help documentation into a doc subpackage and add a
+  Recommens tag for it: more than half the size of the package was
+  documentation files.
+- Update package description to show the content provided by the
+  package.
+- Remove pristine Obsoletes tag for glines.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:24 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep 12 01:07:44 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 22 08:55:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Updated required GTK version.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 14 17:37:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Replaced deprecated set focus on click call.
+  + Fix Bugzilla submit bug button text (bgo#767264).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 10 23:50:30 UTC 2016 - firebird209@gmail.com
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:35:21 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Added content ratings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 07:26:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:42:42 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Fixed theme loading.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 17 11:19:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Updated appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 17 11:19:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Fix theme loading.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 31 06:46:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix Quit menu item and keyboard shortcut.
+  + Fix window size growing out of control with GTK+ 3.20.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:44:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:40:32 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 11:09:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Provide highres icon.
+  + Updated the appdata to spec version 0.7+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 08:34:50 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Stop using deprecated gnome-common.
+  + Add pre-commit and pre-applypatch hooks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 22 20:07:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.3:
+  + Updated appdata and doap.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 00:39:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Fixes for theme change help page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:36:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:23:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fixed window dragging.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:38:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:37:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Provide symbolic app icon.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:17:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:15:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:35:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 08:55:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Remove New Game from appmenu.
+  + Remove .gitignore from version Control.
+  + Fix comparison of pointer with integer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 26 11:44:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.4:
+  + Confirm before restarting the game on board size change.
+  + Mark new string for translation.
+  + Use imperative verb for the new dialog's action.
+  + Don't enter a score of zero in high scores.
+  + Fixed various memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 20:44:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Switch to appstream util validate from appdata validation.
+  + Remove GNOME Games branding from about dialog.
+  + Deprecation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:39:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:14:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 14:50:09 UTC 2014 - dimstar@opensuse.org
+
+- Drop special permission handling, incl pwdutils Requires: this
+  was required back when there was a system wide, shared highscore
+  list. 
+
+-------------------------------------------------------------------
+Tue Sep 16 09:57:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Fix insensitive new game menu item.
+  + Set a reasonable minimum size for the game.
+  + Show the preferences dialog in front of the main window.
+  + Fix some memory leaks.
+
+-------------------------------------------------------------------
+Tue Aug 19 06:53:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90.1:
+  + Fix insensitive new game button.
+
+-------------------------------------------------------------------
+Mon Aug 18 22:56:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Use a header bar for the preferences dialog.
+  + Use text button for new game button.
+  + Always show the new game button.
+  + Distribute high contrast icons. Moved from
+    gnome-themes-standard.
+  + Updated translations.
+- Add pkgconfig(glib-2.0) BuildRequires: new verified dependency.
+- Build HighContrast icon cache in post/postun.
+
+-------------------------------------------------------------------
+Sat May 17 07:34:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:07:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 15:26:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix some bugs with the user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 08:18:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 11:18:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + The game view is no longer far too small when playing with a
+    Large field (regression in 3.11.5).
+  + The new game button now works.
+  + The new game button now has a tooltip.
+  + The desktop file has been renamed to gnome-chess.desktop.
+  + Updated translations.
+- Update %suse_update_desktop_file macro following upstream
+  changes.
+
+-------------------------------------------------------------------
+Mon Feb  3 20:57:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + The size radio button in Preferences now always indicates the
+    correct size.
+  + A new game button now appears in the window after the game has
+    ended.
+  + Scores are now stored in the home directory, instead of in
+    /var/games.
+  + The binary no longer needs to be setgid in order for scores to
+    work.
+  + The outdated Classic and Pulse themes have been removed.
+  + The default window size has been increased.
+  + Updated translations.
+- Remove calls to handle score files in /var/games.
+- Drop gnome-games-scripts BuildRequires: no longer required, as
+  we no longer have score files in /var/games.
+
+-------------------------------------------------------------------
+Mon Jan 13 17:56:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Fix location of items on the right side of the headerbar with
+    latest GTK+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 16 18:04:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Use a GtkHeaderBar.
+  + Fix preview area disappearing when selecting another window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 19 19:49:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 17 19:41:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Appdata is now translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 21:27:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 13 11:08:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 11:08:46 UTC 2013 - idonmez@suse.com
+
+- Create games user/group on demand (fate#314560)
+  + Depend on pwdutils for that to work.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:08:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:27:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Add an appdata file for GNOME Software.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 19:18:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Fix a crash when starting the game.
+  + Replace the menu bar with an application menu.
+  + Fullscreen option has been removed.
+  + Preferences dialog no longer considered a separate window by
+    GNOME Shell.
+  + Fix two broken links in user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun  2 05:30:19 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.2:
+  + Fix a crash on start on ubuntu.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:32:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  8 17:18:49 UTC 2013 - dimstar@opensuse.org
+
+- Also obsolete glines-lang from the main package.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:38:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:54:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Desktop file renamed back to glines.desktop.
+  + Themes moved in from gnome-games-extra-data.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:42:50 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:55:42 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.90:
+  + Split out of gnome-games bundle package.
+

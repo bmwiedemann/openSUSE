@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Feb 14 18:23:12 UTC 2016 - cshorler@googlemail.com
+
+- Update for 0.3.3
+  * add COPYING to installation
+  * documentation updates
+- Update for 0.3.2
+  * bug fix release
+
+-------------------------------------------------------------------
+Sun Jun 21 11:40:59 UTC 2015 - cshorler@googlemail.com
+
+- Update for 0.3.1
+  * change of package name to conform to shlib policy 
+  * remove rpmlintrc overrides
+
+-------------------------------------------------------------------
+Sun Oct  5 16:31:49 UTC 2014 - cshorler@googlemail.com
+
+- adjust rpmlintrc to use addFilter rather than setBadness 
+
+-------------------------------------------------------------------
+Sat Sep 13 17:35:26 UTC 2014 - cshorler@googlemail.com
+
+- Update for 0.3.0
+  * UDisks2 is now standard
+  * GLib is used for all DBus operations 
+
+-------------------------------------------------------------------
+Mon Jun 24 18:32:27 UTC 2013 - cshorler@googlemail.com
+
+- Rename changes filename to match spec filename 
+
+-------------------------------------------------------------------
+Wed May 29 19:52:21 UTC 2013 - cshorler@googlemail.com
+
+- New version RC1, fixes crashes and removes GLib dependency
+
+-------------------------------------------------------------------
+Sun Mar 24 17:46:51 UTC 2013 - cshorler@googlemail.com
+
+- Minor updates to fix RPM build issues on Fedora and SLE 
+
+-------------------------------------------------------------------
+Sat Mar 23 20:25:04 UTC 2013 - cshorler@googlemail.com
+
+- initial RPM build 
+

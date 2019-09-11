@@ -1,0 +1,251 @@
+-------------------------------------------------------------------
+Tue May 28 09:05:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add 0001-fix-build-with-gcc-9.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 09:02:23 UTC 2018 - jslaby@suse.com
+
+- add fix-build-with-Qt-5.11.patch
+
+-------------------------------------------------------------------
+Wed Feb  1 13:09:28 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Oct  8 13:24:33 UTC 2016 - jslaby@suse.com
+
+- add: ensured-all-objects-are-shown-when-a-layer-is-toggle.patch
+  (from upstream)
+
+-------------------------------------------------------------------
+Tue Sep 27 07:41:18 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.1.3
+* The Shift key had no effect and would not activate the
+  command line.
+
+-------------------------------------------------------------------
+Mon Sep 19 12:47:21 UTC 2016 - jslaby@suse.com
+
+- Update to new upstream release 2.1.2
+  * wouldn't build with gcc 5.4 and 6
+  * mouse cursor was missing for 'Arc Tangential'
+  * right-click with plugins could cause a crash
+  * construction lines were not drawn when the line segment was out of view
+  * DXF files with comments were not properly loaded
+  * drawings were not marked as modified after an 'undo'
+  * the command line didn't accept numpad input
+  * the command widget didn't activate properly when floating
+- librecad-gcc6.patch: Remove (unneeded now)
+
+-------------------------------------------------------------------
+Tue Jun 28 11:54:10 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.1.1
+* Bugfixes:
+* draft mode was not set for new/opened drawings
+* performance did not improve when zooming into an area
+* certain polylines were not rendered properly
+* opening a file didn't restore the layer's construction state
+* the cursor was hidden for 'polyline from existing'
+* closing an inactive tab cleared the layer list
+
+-------------------------------------------------------------------
+Fri Jun 17 10:21:20 UTC 2016 - jslaby@suse.com
+
+- add librecad-gcc6.patch
+
+-------------------------------------------------------------------
+Tue Jun  7 07:51:47 UTC 2016 - jslaby@suse.com
+
+- Update to new upstream release 2.1.0
+  * new features
+  * lot of bug fixes
+  * other changes
+  * see full changelog at:
+    https://github.com/LibreCAD/ChangeLogs/blob/master/developers/r-a-v-a-s/2-1/2-1-0/2-1-0.md
+
+-------------------------------------------------------------------
+Tue May 24 10:32:20 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.0.11
+* Updated translations. Added non-uniform knots support.
+* Added Edit - Device Options.
+* Eliminated crash on save when auto backup is off.
+* Eliminated invalid bounding boxes from auto zoom.
+
+-------------------------------------------------------------------
+Mon May 16 13:04:14 UTC 2016 - jslaby@suse.com
+
+- Update to new upstream release 2.0.10:
+  * the Arch paper sizes were not properly supported
+  * the pen toolbar was wider than necessary on super HD displays
+  * various memory leaks
+  * build error when using boost version greater than 1.53
+  * auto-save could not really be turned off
+  * file dialog always opened with DXF, instead of the last chosen file type
+  * the statusbar and statusbar font were not allowed to autosize
+  * the fixed extension line length option was not working for dimensions
+  * the program would crash after: modify action -> undo -> repeat modify
+    action
+
+-------------------------------------------------------------------
+Mon Jan 18 07:43:39 UTC 2016 - jslaby@suse.com
+
+- Update to new upstream release 2.0.9:
+  * Mostly a bug fixing release
+  * Fixed a few crashes due to undo and deleted entities
+  * More at:
+    http://forum.librecad.org/2-0-9-released-td5712809.html
+
+-------------------------------------------------------------------
+Wed Sep  9 21:03:17 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to new upstream release 2.0.8:
+  * DWG read support.
+  * SVG export support.
+  * Arabic Language GUI support. More work is needed for:
+    Right-to-left support for Text entities.
+    Arabic fonts for Text.
+  * More user configurable settings in App Preferences.
+  * Many fixes and enhancements, see:
+    http://forum.librecad.org/2-0-8-released-td5712049.html
+    for details.
+- Added new Part Library:
+  Electrical1-LCAD.zip
+- Rebased librecad-install.diff, librecad-no-date.diff and
+  librecad-use-system-libdxfrw.patch to apply cleanly.
+- Added a patch "librecad-use-system-shapelib.patch" to use the
+  system shapelib instead of the bundled one and new build
+  requirement libshp-devel (for openSUSE > 13.2).
+- Update includes the fix for boo#937874.
+
+-------------------------------------------------------------------
+Thu Apr 30 01:00:13 UTC 2015 - crrodriguez@opensuse.org
+
+- Switch to QT5 for Factory builds. 
+
+-------------------------------------------------------------------
+Sat Jan 31 22:21:05 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to new upstream release 2.0.7:
+  * A serious command line regression since 2.0.6 was fixed:
+    keyboard Enter/Esc support, command line widget in a second
+    screen, etc. Also fixed are some crashes for tangential circle
+    drawing and polyline addition.
+  * Improved LFF font support
+  * The command line can be used as a calculator by typing math
+    expression after command “cal”. For example, command "cal 1+1"
+    to get output "2"
+  * Many fixes and enhancements, see:
+    http://blog.librecad.org/
+    for details
+  From version 2.0.5:
+  * Interpolation spline. Draw->Spline->Spline Points.
+  * File -> Export as PDF.
+  * Korean language support.
+  * Smooth scrolling/zooming
+  * Work-in-progress, finding enclosed area within a contour.
+  * “Modify->Round” renamed to “Modify->Fillet”.
+  * Command line aliases can be made for both regular commands and
+    short commands.
+- Added new Part Libraries:
+  Architect8-LCAD.zip and Electronics8-LCAD.zip.
+- Added new build requirement unzip.
+- Rebased librecad-install.diff and
+  librecad-use-system-libdxfrw.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Wed Aug 13 18:36:35 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to new upstream release 2.0.4:
+  * Windows and OS/X printer dialog fails to appear when running Qt5;
+  * A patched version of muparser is used by default for OS/X and win32;
+  * Update layer for selected entities when a layer is selected
+  * Plotting/drawing mathematical equations by smallfix
+  * Draw circle by 2 points and radius
+  * PIC file importer by cgrzemba
+  * Update layer for selected entities when a layer is selected by ajisaacs
+  * Lots of shortcut fixes by thomas
+  * Arc angle updates for negative z-axis by coryjc190
+  * Drawing order regression in 2.0.3
+- Rebased librecad-use-system-libdxfrw.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Sun May  4 19:21:39 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to new upstream release 2.0.2:
+  * Some notable changes visible to users:
+    + Reworked snapping system to allow simultaneous multiple snapping options;
+      snapping of equidistant middle points;
+    + Helping/scratch layer support. Straight lines are kept infinite and
+      entities are skipped  in printout;
+    + Isometric grids;
+    + Architectural tick;
+    + Support of new ellipse features missing in version 1.0, such as,
+      intersection, middle point, arc length, and tangential direction;
+    + Several new drawing features for line, circle, and ellipse;
+    + Improved localization, translation for plugins and standard dialogs;
+    + Support for a general factor for drawing size dimensions to help scaled
+      drawings;
+    + Revert entities direction, developed by effad;
+    + Some UI tweaking;
+    + Windows setup registration to add LC in Windows Control Panel ‘Programs
+      and Features’.
+  * LibreCAD-2.0 is using a new dxfrw library to handle the DXF file format,
+    and some advantage of the dxfrw library brings are:
+    + New dxf library supporting ascii and binary files, more versions and
+      fully compatible with the specification;
+    + Support of templates;
+    + Dimensions: support for aligned / horizontal text;
+    + Dimensions: added general scale property;
+    + Added support for single line text.
+  * Some internal changes since LibreCAD-1.0 series:
+    + Removed Qt3 dependency;
+    + Reworked methods to calculate intersections to simplify support for new
+      entity types;
+    + Improved many drawing algorithms for performance;
+    + Added scripts to allow automatic building on OS/X and Windows;
+    + Added boost and C++11 support ;
+    + Various code review and bug fixes.
+  * See http://blog.librecad.org/ for more details.
+- Updated License to GPL-2.0 and (Apache-2.0 or
+  SUSE-GPL-3.0+-with-font-exception).
+- Added a man page (ttf2lff.1) for the ttf2lff program.
+- Removed bash, dxflib-devel and libqt4-devel-doc build requirements (not
+  needed anymore).
+- Added new build requirements boost-devel, libdxfrw-devel and
+  wqy-microhei-fonts.
+- Added mime_database_post/mime_database_postun entries sice the package
+  installs a mime file.
+- Rebased librecad-no-date.diff to apply cleanly.
+- Removed the following patches (not needed anymore):
+  * librecad-dxflib25.diff
+  * librecad-external-dxflib.diff
+- Added the following patches (taken from Fedora):
+  * librecad-use-system-libdxfrw.patch (Use system libdxfrw)
+
+-------------------------------------------------------------------
+Sun Jun 23 18:46:58 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to new upstream release 1.0.3:
+  * Bugfix release.
+- Removed librecad.mime.desktop file (not needed since dxf is part
+  of the shared-mime-info database). Removed also the respective
+  update-mime-database post/postun entries.
+- Added desktop_database_post/desktop_database_postun entries
+  since the package defines a MIME handler.
+
+-------------------------------------------------------------------
+Sat May  5 22:10:23 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.0.2
+* replaces dependency on fparser library by
+  license-compatible muparser
+
+-------------------------------------------------------------------
+Tue Oct 18 01:26:37 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

@@ -1,0 +1,17 @@
+diff -Ndur a/plugins/demofiles.sh b/plugins/demofiles.sh
+--- a/plugins/demofiles.sh	2017-09-16 11:54:46.161483014 +0200
++++ b/plugins/demofiles.sh	2017-09-16 11:56:41.910200886 +0200
+@@ -25,11 +25,11 @@
+ # with a file plugin
+ version=1.1
+ ###############################################################################
+-function msg () {
++msg () {
+ 	echo >&2 $*
+ }
+ ###############################################################################
+-function syntaxe () {
++syntaxe () {
+ 	msg "this plugin just show how to modifiy files"
+ 	msg "it must be called with --change-files option"
+ 	msg "-h|--help : this help"

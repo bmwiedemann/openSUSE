@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jun 14 05:30:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.10    2019-06-13
+          [CHANGES]
+           * Added experimental value-semantic expression form (RT121267)
+           * Document that the module works nicely with Future::AsyncAwait
+           * Ignore import symbols `catch` and `finally`
+  
+          [BUGFIXES]
+           * Fixed spelling mistakes in documentation (patch from debian)
+             (RT124140)
+
+-------------------------------------------------------------------
+Wed Apr  3 07:54:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.09
+ * created by cpanspec 1.78.09

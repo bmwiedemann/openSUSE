@@ -1,0 +1,27 @@
+From 2af2add95fdd3973437cd0ce5ca1794afb461227 Mon Sep 17 00:00:00 2001
+From: Samuel Cabrero <scabrero@suse.de>
+Date: Mon, 14 Jan 2019 13:16:29 +0100
+Subject: [PATCH 7/9] krb5-1.12-ksu
+
+Import krb5-1.12-ksu-path.patch
+
+Set the default PATH to the one set by login.
+---
+ src/clients/ksu/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/clients/ksu/Makefile.in b/src/clients/ksu/Makefile.in
+index 5755bb58a..9d58f29b5 100644
+--- a/src/clients/ksu/Makefile.in
++++ b/src/clients/ksu/Makefile.in
+@@ -1,6 +1,6 @@
+ mydir=clients$(S)ksu
+ BUILDTOP=$(REL)..$(S)..
+-DEFINES = -DGET_TGT_VIA_PASSWD -DPRINC_LOOK_AHEAD -DCMD_PATH='"/bin /local/bin"'
++DEFINES = -DGET_TGT_VIA_PASSWD -DPRINC_LOOK_AHEAD -DCMD_PATH='"/usr/local/sbin /usr/local/bin /sbin /bin /usr/sbin /usr/bin"'
+ 
+ KSU_LIBS=@KSU_LIBS@
+ PAM_LIBS=@PAM_LIBS@
+-- 
+2.20.1
+

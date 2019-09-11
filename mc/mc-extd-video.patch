@@ -1,0 +1,34 @@
+Index: misc/ext.d/video.sh
+===================================================================
+--- misc/ext.d/video.sh.orig
++++ misc/ext.d/video.sh
+@@ -6,14 +6,27 @@
+ action=$1
+ filetype=$2
+ 
+-[ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="xdg-open"
++[ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="_xdg_open"
++
++_xdg_open()
++{
++    if [ -n "$DISPLAY" ] && type -p gmplayer ; then
++        gmplayer "${MC_EXT_FILENAME}"
++    elif type -p mplayer ; then
++        mplayer "${MC_EXT_FILENAME}"
++    else
++        xdg-open "${MC_EXT_FILENAME}"
++    fi
++}
+ 
+ do_view_action() {
+     filetype=$1
+ 
+     case "${filetype}" in
+     *)
+-        if mplayer >/dev/null 2>&1; then
++        if type -p mediainfo >/dev/null 2>&1 ; then
++           mediainfo "${MC_EXT_FILENAME}"
++        elif mplayer >/dev/null 2>&1; then
+             mplayer -identify -vo null -ao null -frames 0 "${MC_EXT_FILENAME}" 2>&1 | \
+                 sed -n 's/^ID_//p'
+         elif which mpv_identify.sh >/dev/null 2>&1; then

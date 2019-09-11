@@ -1,0 +1,504 @@
+-------------------------------------------------------------------
+Mon Jul  8 07:52:23 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.8.1
+
+  * no changelog entry found
+
+-------------------------------------------------------------------
+Sun Aug  5 19:01:44 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 3.8.0
+
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.7.0...v3.8.0)
+
+  Bug Fixes:
+
+  * Issue error when encountering invalid "counted" negative message expectations.
+    (Sergiy Yarinovskiy, #1212)
+  * Ensure `allow_any_instance_of` and `expect_any_instance_of` can be temporarily
+    supressed. (Jon Rowe, #1228)
+  * Ensure `expect_any_instance_of(double).to_not have_received(:some_method)`
+    fails gracefully (as its not supported) rather than issuing a `NoMethodError`.
+    (Maxim Krizhanovsky, #1231)
+
+-------------------------------------------------------------------
+Thu Oct 26 10:12:42 UTC 2017 - coolo@suse.com
+
+- updated to version 3.7.0
+ see installed Changelog.md
+
+  ### 3.8 Development
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.7.0...master)
+  
+  ### 3.7.0 / 2017-10-17
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.6.0...v3.7.0)
+  
+  Enhancements:
+  
+  * Improve compatibility with `--enable-frozen-string-literal` option
+    on Ruby 2.3+. (Pat Allan, #1165)
+  
+  Bug Fixes:
+  
+  * Fix `hash_including` and `hash_excluding` so that they work against
+    subclasses of `Hash`. (Aaron Rosenberg, #1167)
+
+-------------------------------------------------------------------
+Tue May 23 10:17:49 UTC 2017 - coolo@suse.com
+
+- updated to version 3.6.0
+ see installed Changelog.md
+
+  ### 3.6.0 / 2017-05-04
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.6.0.beta2...v3.6.0)
+  
+  Bug Fixes:
+  
+  * Fix "instance variable @color not initialized" warning when using
+    rspec-mocks without rspec-core. (Myron Marston, #1142)
+  * Restore aliased module methods properly when stubbing on 1.8.7.
+    (Samuel Giddins, #1144)
+  * Allow a message chain expectation to be constrained by argument(s).
+    (Jon Rowe, #1156)
+  
+  ### 3.6.0.beta2 / 2016-12-12
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.6.0.beta1...v3.6.0.beta2)
+  
+  Enhancements:
+  
+  * Add new `without_partial_double_verification { }` API that lets you
+    temporarily turn off partial double verification for an example.
+    (Jon Rowe, #1104)
+  
+  ### 3.6.0.beta1 / 2016-10-09
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.5.0...v3.6.0.beta1)
+  
+  Bug Fixes:
+  
+  * Return the test double instance form `#freeze` (Alessandro Berardi, #1109)
+  * Allow the special logic for stubbing `new` to work when `<Class>.method` has
+    been redefined. (Proby, #1119)
+
+-------------------------------------------------------------------
+Sat Jul  2 05:26:34 UTC 2016 - coolo@suse.com
+
+- updated to version 3.5.0
+ see installed Changelog.md
+
+  ### 3.5.0 / 2016-07-01
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.5.0.beta4...v3.5.0)
+  
+  Enhancements:
+  
+  * Provides a nice string representation of
+    `RSpec::Mocks::MessageExpectation` (Myron Marston, #1095)
+  
+  ### 3.5.0.beta4 / 2016-06-05
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.5.0.beta3...v3.5.0.beta4)
+  
+  Enhancements:
+  
+  * Add `and_throw` to any instance handling. (Tobias Bühlmann, #1068)
+  
+  ### 3.5.0.beta3 / 2016-04-02
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.5.0.beta2...v3.5.0.beta3)
+  
+  Enhancements:
+  
+  * Issue warning when attempting to use unsupported
+    `allow(...).to receive(...).ordered`. (Jon Rowe, #1000)
+  * Add `rspec/mocks/minitest_integration`, to properly integrate rspec-mocks
+    with minitest. (Myron Marston, #1065)
+  
+  ### 3.5.0.beta2 / 2016-03-10
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.5.0.beta1...v3.5.0.beta2)
+  
+  Enhancements:
+  
+  * Improve error message displayed when using `and_wrap_original` on pure test
+    doubles. (betesh, #1063)
+  
+  Bug Fixes:
+  
+  * Fix issue that prevented `receive_message_chain(...).with(...)` working
+    correctly on "any instance" mocks. (Jon Rowe, #1061)
+  
+  ### 3.5.0.beta1 / 2016-02-06
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.4.1...v3.5.0.beta1)
+  
+  Bug Fixes:
+  
+  * Allow `any_instance_of(...).to receive(...)` to use `and_yield` multiple
+    times. (Kilian Cirera Sant, #1054)
+  * Allow matchers which inherit from `rspec-mocks` matchers to be used for
+    `allow`. (Andrew Kozin, #1056)
+  * Prevent stubbing `respond_to?` on partial doubles from causing infinite
+    recursion. (Jon Rowe, #1013)
+  * Prevent aliased methods from disapearing after being mocked with
+    `any_instance` (regression from #1043). (Joe Rafaniello, #1060)
+
+-------------------------------------------------------------------
+Mon Jan 11 05:50:26 UTC 2016 - coolo@suse.com
+
+- updated to version 3.4.1
+ see installed Changelog.md
+
+  ### 3.4.1 / 2016-01-10
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.4.0...v3.4.1)
+  
+  Bug Fixes:
+  
+  * Fix `any_instance` to work properly on Ruby 2.3. (Joe Rafaniello, #1043)
+
+-------------------------------------------------------------------
+Fri Nov 13 05:39:04 UTC 2015 - coolo@suse.com
+
+- updated to version 3.4.0
+ see installed Changelog.md
+
+  ### 3.4.0 / 2015-11-11
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.3.2...v3.4.0)
+  
+  Enhancements:
+  
+  * Make `expect(...).to have_received` work without relying upon
+    rspec-expectations. (Myron Marston, #978)
+  * Add option for failing tests when expectations are set on `nil`.
+    (Liz Rush, #983)
+  
+  Bug Fixes:
+  
+  * Fix `have_received { ... }` so that any block passed when the message
+    was received is forwarded to the `have_received` block. (Myron Marston, #1006)
+  * Fix infinite loop in error generator when stubbing `respond_to?`.
+    (Alex Dowad, #1022)
+  * Fix issue with using `receive` on subclasses (at a class level) with 1.8.7.
+    (Alex Dowad, #1026)
+
+-------------------------------------------------------------------
+Thu Jul 16 04:32:38 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.2
+ see installed Changelog.md
+
+  ### 3.3.2 / 2015-07-15
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.3.1...v3.3.2)
+  
+  Bug Fixes:
+  
+  * Prevent thread deadlock errors during proxy creation (e.g. when using
+    `before_verifying_doubles` callbacks). (Jon Rowe, #980, #979)
+
+-------------------------------------------------------------------
+Sun Jun 21 04:33:06 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.1
+ see installed Changelog.md
+
+  ### 3.3.1 / 2015-06-19
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.3.0...v3.3.1)
+  
+  Bug Fixes:
+  
+  * Fix bug in `before_verifying_double` callback logic that caused it to be called
+    once for each class in the ancestor list when mocking or stubbing a class. Now
+    it is only called for the mocked or stubbed class, as you would expect. (Sam
+    Phippen, #974)
+
+-------------------------------------------------------------------
+Sat Jun 13 04:35:08 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.0
+ see installed Changelog.md
+
+  ### 3.3.0 / 2015-06-12
+  [Full Changelog](http://github.com/rspec/rspec-mocks/compare/v3.2.1...v3.3.0)
+  
+  Enhancements:
+  
+  * When stubbing `new` on `MyClass` or `class_double(MyClass)`, use the
+    method signature from `MyClass#initialize` to verify arguments.
+    (Myron Marston, #886)
+  * Use matcher descriptions when generating description of received arguments
+    for mock expectation failures. (Tim Wade, #891)
+  * Avoid loading `stringio` unnecessarily. (Myron Marston, #894)
+  * Verifying doubles failure messages now distinguish between class and instance
+    level methods. (Tim Wade, #896, #908)
+  * Improve mock expectation failure messages so that it combines both
+    number of times and the received arguments in the output. (John Ceh, #918)
+  * Improve how test doubles are represented in failure messages.
+    (Siva Gollapalli, Myron Marston, #932)
+  * Rename `RSpec::Mocks::Configuration#when_declaring_verifying_double` to
+    `RSpec::Mocks::Configuration#before_verifying_doubles` and utilise when
+    verifying partial doubles. (Jon Rowe, #940)
+  * Use rspec-support's `ObjectFormatter` for improved formatting of
+    arguments in failure messages so that, for example, full time
+    precisions is displayed for time objects. (Gavin Miller, Myron Marston, #955)
+  
+  Bug Fixes:
+  
+  * Ensure expectations that raise eagerly also raise during RSpec verification.
+    This means that if exceptions are caught inside test execution the test will
+    still fail. (Sam Phippen, #884)
+  * Fix `have_received(msg).with(args).exactly(n).times` and
+    `receive(msg).with(args).exactly(n).times` failure messages
+    for when the message was received the wrong number of times with
+    the specified args, and also received additional times with other
+    arguments. Previously it confusingly listed the arguments as being
+    mis-matched (even when the double was allowed to receive with any
+    args) rather than listing the count. (John Ceh, #918)
+  * Fix `any_args`/`anything` support so that we avoid calling `obj == anything`
+    on user objects that may have improperly implemented `==` in a way that
+    raises errors. (Myron Marston, #924)
+  * Fix edge case involving stubbing the same method on a class and a subclass
+    which previously hit a `NoMethodError` internally in RSpec. (Myron Marston #954)
+  * Fix edge case where the message received count would be incremented multiple
+    times for one failure. (Myron Marston, #957)
+  * Fix failure messages for when spies received the expected message with
+    different arguments and also received another message. (Maurício Linhares, #960)
+  * Silence whitespace-only diffs. (Myron Marston, #969)
+
+-------------------------------------------------------------------
+Thu Feb 26 05:33:55 UTC 2015 - coolo@suse.com
+
+- updated to version 3.2.1
+ Bug Fixes:
+ 
+ * Add missing `rspec/support/differ` require so that rspec-mocks can be
+   used w/o rspec-expectations (which also loads the differ and hided the
+   fact we forgot to require it). (Myron Marston, #893)
+ * Revert tracking of received arg mutation (added in 3.2.0 to provide an
+   error in a situation we can't support) as our implementation has side
+   effects on non-standard objects and there's no solution we could come
+   up with that always works. (Myron Marston, #900)
+
+-------------------------------------------------------------------
+Fri Feb  6 20:13:06 UTC 2015 - coolo@suse.com
+
+- updated to version 3.2.0
+ Enhancements:
+ 
+ * Treat `any_args` as an arg splat, allowing it to match an arbitrary
+   number of args at any point in an arg list. (Myron Marston, #786)
+ * Print diffs when arguments in mock expectations are mismatched.
+   (Sam Phippen, #751)
+ * Support names for verified doubles (`instance_double`, `instance_spy`,
+   `class_double`, `class_spy`, `object_double`, `object_spy`). (Cezary
+   Baginski, #826)
+ * Make `array_including` and `hash_including` argument matchers composable.
+   (Sam Phippen, #819)
+ * Make `allow_any_instance_of(...).to receive(...).and_wrap_original`
+   work. (Ryan Fitzgerald, #869)
+ 
+ Bug Fixes:
+ 
+ * Provide a clear error when users wrongly combine `no_args` with
+   additional arguments (e.g. `expect().to receive().with(no_args, 1)`).
+   (Myron Marston, #786)
+ * Provide a clear error when users wrongly use `any_args` multiple times in the
+   same argument list (e.g. `expect().to receive().with(any_args, 1, any_args)`.
+   (Myron Marston, #786)
+ * Prevent the error generator from using user object #description methods.
+   See [#685](https://github.com/rspec/rspec-mocks/issues/685).
+   (Sam Phippen, #751)
+ * Make verified doubles declared as `(instance|class)_double(SomeConst)`
+   work properly when `SomeConst` has previously been stubbed.
+   `(instance|class)_double("SomeClass")` already worked properly.
+   (Myron Marston, #824)
+ * Add a matcher description for `receive`, `receive_messages` and
+   `receive_message_chain`. (Myron Marston, #828)
+ * Validate invocation args for null object verified doubles.
+   (Myron Marston, #829)
+ * Fix `RSpec::Mocks::Constant.original` when called with an invalid
+   constant to return an object indicating the constant name is invalid,
+   rather than blowing up. (Myron Marston, #833)
+
+-------------------------------------------------------------------
+Tue Jan 20 10:15:12 UTC 2015 - dmueller@suse.com
+
+- update to 3.1.3:
+  * Rails 4.1
+  [too many changes to list here, see
+   http://www.rubydoc.info/gems/rspec-mocks/file/Changelog.md ]
+
+-------------------------------------------------------------------
+Mon Oct 13 18:41:48 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun Feb 23 09:24:50 UTC 2014 - coolo@suse.com
+
+- updated to version 2.14.6
+ Bug Fixes:
+ * Ensure `any_instance` method stubs and expectations are torn down regardless of
+   expectation failures. (Sam Phippen)
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:19 UTC 2014 - coolo@suse.com
+
+- updated to version 2.14.5
+ Bug Fixes:
+ 
+ * Fix regression that caused block implementations to not receive all
+   args on 1.8.7 if the block also receives a block, due to Proc#arity
+   reporting `1` no matter how many args the block receives if it
+   receives a block, too. (Myron Marston)
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:39 UTC 2013 - coolo@suse.com
+
+- updated to version 2.14.4
+ Bug Fixes:
+ 
+ * Fix issue where unstubing methods on "any instances" would not
+   remove stubs on existing instances (Jon Rowe)
+ * Fix issue with receive(:message) do ... end precedence preventing
+   the usage of modifications (`and_return` etc) (Jon Rowe)
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:53 UTC 2013 - coolo@suse.com
+
+- updated to version 2.14.3
+ Bug Fixes:
+ 
+ * Fix stubbing some instance methods for classes whose hierarchy includes
+   a prepended Module (Bradley Schaefer)
+
+-------------------------------------------------------------------
+Tue Jul 30 18:46:51 UTC 2013 - coolo@suse.com
+
+- updated to version 2.14.2
+  Bug Fixes:
+  
+  * Fix `as_null_object` doubles so that they return `nil` from `to_ary`
+    (Jon Rowe).
+  * Fix regression in 2.14 that made `stub!` (with an implicit receiver)
+    return a test double rather than stub a method (Myron Marston).
+  
+  ### 2.14.1 / 2013-07-07
+  [full changelog](http://github.com/rspec/rspec-mocks/compare/v2.14.0...v2.14.1)
+  
+  Bug Fixes:
+  
+  * Restore `double.as_null_object` behavior from 2.13 and earlier: a
+    double's nullness persisted between examples in earlier examples.
+    While this is not an intended use case (test doubles are meant to live
+    for only one example), we don't want to break behavior users rely
+    on in a minor relase.  This will be deprecated in 2.99 and removed
+    in 3.0. (Myron Marston)
+  
+  ### 2.14.0 / 2013-07-06
+  [full changelog](http://github.com/rspec/rspec-mocks/compare/v2.14.0.rc1...v2.14.0)
+  
+  Enhancements:
+  
+  * Document test spies in the readme. (Adarsh Pandit)
+  * Add an `array_including` matcher. (Sam Phippen)
+  * Add a syntax-agnostic API for mocking or stubbing a method. This is
+    intended for use by libraries such as rspec-rails that need to mock
+    or stub a method, and work regardless of the syntax the user has
+    configured (Paul Annesley, Myron Marston and Sam Phippen).
+  
+  Bug Fixes:
+  
+  * Fix `double` so that it sets up passed stubs correctly regardless of
+    the configured syntax (Paul Annesley).
+  * Allow a block implementation to be used in combination with
+    `and_yield`, `and_raise`, `and_return` or `and_throw`. This got fixed
+    in 2.13.1 but failed to get merged into master for the 2.14.0.rc1
+    release (Myron Marston).
+  * `Marshal.dump` does not unnecessarily duplicate objects when rspec-mocks has
+    not been fully initialized. This could cause errors when using `spork` or
+    similar preloading gems (Andy Lindeman).
+
+-------------------------------------------------------------------
+Fri Apr 12 08:45:37 UTC 2013 - coolo@suse.com
+
+- updated to version 2.13.1
+ Bug fixes
+ 
+ * Allow a block implementation to be used in combination with
+   `and_yield`, `and_raise`, `and_return` or `and_throw` (Myron Marston).
+
+-------------------------------------------------------------------
+Sun Mar  3 09:45:19 UTC 2013 - coolo@suse.com
+
+- updated to version 2.13.0
+
+-------------------------------------------------------------------
+Sun Feb  3 17:13:04 UTC 2013 - coolo@suse.com
+
+- updated to version 2.12.2
+
+ [full changelog](http://github.com/rspec/rspec-mocks/compare/v2.12.1...v.2.12.2)
+
+ Bug fixes
+
+ * Fix `and_call_original` to work properly for methods defined
+   on a module extended onto an object instance (Myron Marston).
+ * Fix `stub_const` with an undefined constnat name to work properly
+   with constant strings that are prefixed with `::` -- and edge case
+   I missed in the bug fix in the 2.12.1 release (Myron Marston).
+ * Ensure method visibility on a partial mock is restored after reseting
+   method stubs, even on a singleton module (created via `extend self`)
+   when the method visibility differs between the instance and singleton
+   versions (Andy Lindeman).
+ 
+
+-------------------------------------------------------------------
+Sat Dec 22 07:30:56 UTC 2012 - coolo@suse.com
+
+- updated to version 2.12.1
+ Bug fixes
+ 
+ * Fix `any_instance` to support `and_call_original`.
+   (Myron Marston)
+ * Properly restore stubbed aliased methods on rubies
+   that report the incorrect owner (Myron Marston and Andy Lindeman).
+
+-------------------------------------------------------------------
+Tue Nov 13 14:05:18 UTC 2012 - coolo@suse.com
+
+- updated to version 2.12.0
+ Enhancements
+ 
+ * `and_raise` can accept an exception class and message, more closely
+   matching `Kernel#raise` (e.g., `foo.stub(:bar).and_raise(RuntimeError, "message")`)
+   (Bas Vodde)
+ * Add `and_call_original`, which will delegate the message to the
+   original method (Myron Marston).
+ 
+ Deprecations:
+ 
+ * Add deprecation warning when using `and_return` with `should_not_receive`
+   (Neha Kumari)
+
+-------------------------------------------------------------------
+Sun Sep 23 09:54:55 UTC 2012 - coolo@suse.com
+
+- updated to version 2.11.3
+ [full changelog](http://github.com/rspec/rspec-mocks/compare/v2.11.2...v2.11.3)
+ 
+ Bug fixes
+ 
+ * Fix `:transfer_nested_constants` option of `stub_const` so that it
+   doesn't blow up when there are inherited constants. (Myron Marston)
+ * `any_instance` stubs can be used on classes that override `Object#method`.
+   (Andy Lindeman)
+ * Methods stubbed with `any_instance` are unstubbed after the test finishes.
+   (Andy Lindeman)
+ * Fix confusing error message when calling a mocked class method an
+   extra time with the wrong arguments (Myron Marston).
+
+-------------------------------------------------------------------
+Mon Aug 27 19:48:45 UTC 2012 - coolo@suse.com
+
+- updated to version 2.11.2
+
+-------------------------------------------------------------------
+Sun Jul 29 09:15:01 UTC 2012 - coolo@suse.com
+
+- initial package
+

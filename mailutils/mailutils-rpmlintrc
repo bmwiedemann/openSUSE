@@ -1,0 +1,5 @@
+addFilter(".*W:.*subdir-in-bin.*/usr/bin/mu-mh/.*")
+addFilter(".*W:.*name-repeated-in-summary.*C.*Mailutils.*")
+addFilter(".*W:.*files-duplicate.*mailutils-mh\.el.*mailutils-mh\.el.*")
+addFilter(".*W:.*shared-lib-calls-exit.*libmu_sieve\.so.*")
+addFilter(".*W:.*suse-alternative-generic-name-missing.*")

@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Sun Nov 25 16:42:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Move /var/lib/blktests to /usr/lib/blktests, packages don't
+  deliver variadic data.
+
+-------------------------------------------------------------------
+Thu Nov 22 15:56:30 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- Fix package dependencies: nvmetcli is not needed, some packages
+  can be missing (changed to Recommended:)
+
+-------------------------------------------------------------------
+Thu Nov 22 09:50:56 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- fix the %files section: change %{_sharedstatedir} to %{_localstatedir}/lib
+
+-------------------------------------------------------------------
+Thu Nov 22 09:46:35 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- change %{_sharedstatedir} to %{_localstatedir}/lib
+
+-------------------------------------------------------------------
+Thu Nov 22 09:33:46 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- Correct the package category, System/Benchmarks is wrong 
+-> System/Benchmark
+
+-------------------------------------------------------------------
+Thu Nov 22 09:20:45 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+Move the installed files from /usr/share to /var/lib
+
+-------------------------------------------------------------------
+Thu Nov 22 09:06:32 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+move the installed files from /usr/local to /usr/share 
+
+-------------------------------------------------------------------
+Wed Nov 21 14:55:39 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- clean the .spec
+
+-------------------------------------------------------------------
+Wed Nov 21 14:32:02 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- fix the group of the package
+
+-------------------------------------------------------------------
+Wed Nov 21 14:11:48 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+- Add the blktests.spec file
+
+-------------------------------------------------------------------
+Wed Nov 21 14:08:33 UTC 2018 - Michael Moese <mmoese@suse.com>
+
+Add new package for "blktests", the linux block layer testing framework
+from https://github.com/osandov/blktests
+- 

@@ -1,0 +1,27 @@
+From 47afac81d171f736a1ec486692893911404ed189 Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gsscalet@gmail.com>
+Date: Tue, 2 Jun 2015 14:49:19 -0300
+Subject: [PATCH 06/15] PPC64: Enable support for ppc64 little endian
+
+---
+ src/lj_arch.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lj_arch.h b/src/lj_arch.h
+index c8d7138e0e93..c27ca6a5197d 100644
+--- a/src/lj_arch.h
++++ b/src/lj_arch.h
+@@ -424,8 +424,8 @@
+ #if !LJ_ARCH_PPC64 && LJ_ARCH_ENDIAN == LUAJIT_LE
+ #error "No support for little-endian PPC32"
+ #endif
+-#if LJ_ARCH_PPC64
+-#error "No support for PowerPC 64 bit mode (yet)"
++#if LJ_ARCH_PPC64 && LJ_ARCH_ENDIAN == LUAJIT_BE
++#error "No support for big-endian PPC64"
+ #endif
+ #ifdef __NO_FPRS__
+ #error "No support for PPC/e500 anymore (use LuaJIT 2.0)"
+-- 
+2.20.1
+

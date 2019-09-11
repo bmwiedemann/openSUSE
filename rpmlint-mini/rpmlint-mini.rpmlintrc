@@ -1,0 +1,3 @@
+addFilter("library-without-ldconfig")
+addFilter("python-bytecode-without-source")
+addFilter("devel-file-in-non-devel-package")

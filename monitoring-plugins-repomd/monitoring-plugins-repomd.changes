@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sun Apr 28 15:27:58 UTC 2019 - lars@linux-schulserver.de - 2.1
+
+- update to 2.1:
+  + be a bit more robust if curl fails or produces unknown output
+- include abstractions/bash and abstractions/openssl in the apparmor
+  profile to avoid misleading DENIED messages in audit log
+- path for grep, cat and mktemp were moved to /usr/bin - use sed 
+  to adjust the script in spec
+
+-------------------------------------------------------------------
+Mon Apr 15 18:54:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Sun Apr 14 16:03:28 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- update AppArmor profile for usrMerge (boo#1132350)
+
+-------------------------------------------------------------------
+Thu Jan  7 19:29:47 CET 2016 - ro@suse.de
+
+- only check for revision/date if there is a suseinfo entry
+  in the repomd.xml file 
+
+-------------------------------------------------------------------
+Wed Jul 30 19:20:35 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-repomd
+
+-------------------------------------------------------------------
+Tue Sep 17 10:14:50 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.0:
+  + analyse the revision tag in repomd.xml directly instead of 
+    using the last modified information
+- added initial apparmor profile
+
+-------------------------------------------------------------------
+Mon Sep 16 15:38:59 UTC 2013 - lars@linux-schulserver.de
+
+- initial version 1.0
+

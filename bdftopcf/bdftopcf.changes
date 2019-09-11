@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Nov  9 16:29:02 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.1
+  * This release imports the libXfont 1.x BDF-reading and PCF-writing
+    code, as this program is the only known user of that code and
+    libXfont 1.x is otherwise unmaintained. No functional difference
+    should be apparent, this is just another step towards eliminating
+    the old version of libXfont from the world.
+
+-------------------------------------------------------------------
+Fri Feb  3 08:08:46 UTC 2017 - mpluskal@suse.com
+
+- Add gpg signature
+- Remove obsolete parts of spec file
+- Make building more verbose
+
+-------------------------------------------------------------------
+Sat Jan  3 17:36:59 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.5:
+  This minor maintenance release fixes a couple of issues with the
+  usage messages printed for incorrect options, and updates the
+  configure scripts to the latest X.Org standards.
+
+-------------------------------------------------------------------
+Sat Jan 19 09:20:31 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Use remove() instead of unlink() to remove files.
+  + Use symbolic names instead of raw integers for stdin & stdout
+    fd's.
+  + Add -v flag to print version info.
+  + Combine usage message strings.
+  + Initialize font to 0 values directly instead of via bzero.
+  + Adopt X.Org standard coding style (via x-indent.sh).
+  + man: remove trailing spaces and tabs.
+  + config:
+    - Move man pages into their own directory.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Use AC_PROG_INSTALL now supplied by XORG_DEFAULT_OPTIONS.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split bdftopcf from xorg-x11. Initial version: 1.0.3.
+

@@ -1,0 +1,57 @@
+--- commons-chain-1.2-src/build.xml	2018-12-21 16:15:38.510811564 +0100
++++ commons-chain-1.2-src/build.xml	2018-12-21 16:16:39.575123664 +0100
+@@ -40,7 +40,7 @@
+     <available property="Junit.present" classname="junit.framework.Test">
+     </available>
+   </target>
+-  <target name="compile" description="o Compile the code" depends="get-deps">
++  <target name="compile" description="o Compile the code">
+     <mkdir dir="${classesdir}">
+     </mkdir>
+     <javac destdir="${classesdir}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
+@@ -137,7 +137,7 @@
+       </classpath>
+     </javac>
+   </target>
+-  <target name="javadoc" description="o Generate javadoc" depends="get-deps">
++  <target name="javadoc" description="o Generate javadoc">
+     <mkdir dir="${javadocdir}">
+     </mkdir>
+     <tstamp>
+@@ -155,36 +155,6 @@
+       </classpath>
+     </javadoc>
+   </target>
+-  <target name="get-deps" unless="noget" depends="init">
+-    <!--Proxy settings works only with a JDK 1.2 and higher.-->
+-
+-    <setproxy>
+-    </setproxy>
+-    <get dest="${libdir}/servlet-api-2.3.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/javax.servlet/jars/servlet-api-2.3.jar">
+-    </get>
+-    <get dest="${libdir}/portlet-api-1.0.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/javax.portlet/jars/portlet-api-1.0.jar">
+-    </get>
+-    <get dest="${libdir}/myfaces-api-1.1.0.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/myfaces/jars/myfaces-api-1.1.0.jar">
+-    </get>
+-    <get dest="${libdir}/junit-3.8.1.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/junit/jars/junit-3.8.1.jar">
+-    </get>
+-    <get dest="${libdir}/xml-apis-2.0.2.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/xml-apis/jars/xml-apis-2.0.2.jar">
+-    </get>
+-    <get dest="${libdir}/xercesImpl-2.2.1.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/xerces/jars/xercesImpl-2.2.1.jar">
+-    </get>
+-    <get dest="${libdir}/commons-beanutils-1.7.0.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/commons-beanutils/jars/commons-beanutils-1.7.0.jar">
+-    </get>
+-    <get dest="${libdir}/commons-digester-1.8.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/commons-digester/jars/commons-digester-1.8.jar">
+-    </get>
+-    <get dest="${libdir}/commons-logging-1.1.1.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/commons-logging/jars/commons-logging-1.1.1.jar">
+-    </get>
+-    <get dest="${libdir}/maven-xdoc-plugin-1.9.2.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/maven/plugins/maven-xdoc-plugin-1.9.2.jar">
+-    </get>
+-    <get dest="${libdir}/maven-changelog-plugin-1.8.2.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/maven/plugins/maven-changelog-plugin-1.8.2.jar">
+-    </get>
+-    <get dest="${libdir}/maven-changes-plugin-1.6.jar" usetimestamp="true" ignoreerrors="true" src="http://repo1.maven.org/maven/maven/plugins/maven-changes-plugin-1.6.jar">
+-    </get>
+-  </target>
+   <target name="install-maven">
+     <get dest="${user.home}/maven-install-latest.jar" usetimestamp="true" src="${repo}/maven/maven-install-latest.jar">
+     </get>

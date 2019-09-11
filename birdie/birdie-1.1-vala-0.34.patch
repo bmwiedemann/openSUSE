@@ -1,0 +1,35 @@
+--- a/src/Birdie.vala
++++ b/src/Birdie.vala
+@@ -127,7 +127,7 @@ namespace Birdie {
+ 
+         private int limit_notifications;
+ 
+-        public static const OptionEntry[] app_options = {
++        public const OptionEntry[] app_options = {
+             { "debug", 'd', 0, OptionArg.NONE, out Option.DEBUG, "Enable debug logging", null },
+             { "start-hidden", 's', 0, OptionArg.NONE, out Option.START_HIDDEN, "Start hidden", null },
+             { null }
+--- a/src/Media/Imgur.vala
++++ b/src/Media/Imgur.vala
+@@ -16,8 +16,8 @@
+ 
+ namespace Birdie.Media {
+     public class Imgur : Object {
+-        private static const string CLIENT_ID = "c04f7adadaa22017f95c7b002ad20240";
+-        private static const string URL_FORMAT = "http://api.imgur.com/2/";
++        private const string CLIENT_ID = "c04f7adadaa22017f95c7b002ad20240";
++        private const string URL_FORMAT = "http://api.imgur.com/2/";
+         private Rest.Proxy proxy;
+ 
+         public Imgur () {
+--- a/src/Widgets/CompletionProvider.vala
++++ b/src/Widgets/CompletionProvider.vala
+@@ -16,7 +16,7 @@
+ 
+ namespace Birdie.Widgets {
+     public class CompletionProvider : Gtk.SourceCompletionProvider, Object {
+-        static const unichar[] stoppers = {' ', '\n'};
++        const unichar[] stoppers = {' ', '\n'};
+         Gtk.TextMark completion_mark; /* The mark at which the proposals were generated */
+         
+         public string name;

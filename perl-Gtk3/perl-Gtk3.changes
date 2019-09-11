@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Jul 22 14:29:11 UTC 2019 - malcolmlewis@opensuse.org
+
+- Updated to version 0.35:
+  * Load GdkPixdata introspection data if gdk-pixbuf >= 2.38.0,
+    (RT#127071).
+
+-------------------------------------------------------------------
+Mon Jan  7 23:07:24 UTC 2019 - malcolmlewis@opensuse.org
+
+- Add missing Gtk 3.0 typelib to build requires for failing test.

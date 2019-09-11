@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Thu Jul  4 14:33:52 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix paths in tests and replace python's f-string usage
+- Test are passing in OBS, drop patch disable-failing-test.patch
+- Added patches:
+  * 0001-Fix-runtests.py.patch
+- Removed patches:
+  * disable-failing-test.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 10:35:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to disable one test that fails in OBS only:
+  * disable-failing-test.patch
+
+-------------------------------------------------------------------
+Wed May 22 07:38:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.2:
+  * no actual changelog, many bugfixes and friends
+- Remove no longer appplicable stuff:
+  * 0001-Add-support-for-the-NO_CI_FLAG-credentials-option.REVERT
+  * 0002-Add-test-to-check-setting-cred-options.REVERT
+  * 0003-Include-header-for-writev.patch
+  * gp_config.fix
+- Remove localy created .pc files
+
+-------------------------------------------------------------------
+Sun Oct  8 23:58:13 UTC 2017 - nfbrown@suse.com
+
+- 0003-Include-header-for-writev.patch
+ upstream patch to fix build error
+
+-------------------------------------------------------------------
+Mon Mar 20 04:50:04 UTC 2017 - nfbrown@suse.com
+
+- gssproxy.spec - lots of tidy up, particularly using
+  pkgconfig() for BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar  9 05:30:12 UTC 2017 - nfbrown@suse.com
+
+- Initial check-in of version 0.7.0
+
+  gssproxy is needed on the NFS server if krb5 is used for NFS
+  authentication using an AD directory server.
+
+  /etc/krb5.conf may need "auth_to_local = RULE:[1:$1@$0]" on
+  the "realms" section when "winbind" is used for nsswitch.conf.
+
+  (bsc#1024309)(FATE#322526)
+
+- gp_config.fix
+  0001-Add-support-for-the-NO_CI_FLAG-credentials-option.REVERT
+  0002-Add-test-to-check-setting-cred-options.REVERT
+
+   Conditionally allow compilation on older releases.

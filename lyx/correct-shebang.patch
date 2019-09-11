@@ -1,0 +1,54 @@
+diff -ur a/lib/configure.py b/lib/configure.py
+--- a/lib/configure.py	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/configure.py	2018-08-29 23:44:58.310928948 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #
+ # file configure.py
+diff -ur a/lib/lyx2lyx/lyx2lyx b/lib/lyx2lyx/lyx2lyx
+--- a/lib/lyx2lyx/lyx2lyx	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/lyx2lyx/lyx2lyx	2018-08-29 23:46:17.080401969 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # Copyright (C) 2002-2011 The LyX Team
+ # Copyright (C) 2002-2007 José Matos <jamatos@lyx.org>
+diff -ur a/lib/lyx2lyx/profiling.py b/lib/lyx2lyx/profiling.py
+--- a/lib/lyx2lyx/profiling.py	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/lyx2lyx/profiling.py	2018-08-29 23:46:36.432763866 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # Copyright (C) 2004 José Matos <jamatos@lyx.org>
+ #
+diff -ur a/lib/scripts/listerrors b/lib/scripts/listerrors
+--- a/lib/scripts/listerrors	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/scripts/listerrors	2018-08-29 23:47:06.305322496 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ # file listerrors
+ # This file is part of LyX, the document processor.
+diff -ur a/lib/scripts/svg2pdftex.py b/lib/scripts/svg2pdftex.py
+--- a/lib/scripts/svg2pdftex.py	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/scripts/svg2pdftex.py	2018-08-29 23:47:27.381716633 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file svg2pdftex.py
+diff -ur a/lib/scripts/svg2pstex.py b/lib/scripts/svg2pstex.py
+--- a/lib/scripts/svg2pstex.py	2018-08-28 21:49:44.000000000 +0200
++++ b/lib/scripts/svg2pstex.py	2018-08-29 23:47:42.970008140 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file svg2pstex.py

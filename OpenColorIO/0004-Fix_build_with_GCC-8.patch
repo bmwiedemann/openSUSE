@@ -1,0 +1,1865 @@
+From: Adam Williamson <adamw@happyassassin.net>
+Date: Wed, 21 Mar 2018 06:11:01 -0700
+Subject: Fix_build_with_GCC-8
+
+GCC 8 appears to be rather stricter about various issues to do
+with type conversions and casts than GCC 7 was. This affects
+OpenColorIO's Python bindings quite heavily, producing a large
+number of warnings (which are converted to errors by `-Werror`)
+and outright errors.
+
+The changes here are almost all one of three basic types:
+
+1. Many functions that become Python methods with no arguments
+(using the METH_NOARGS flag) did not include the expected second
+parameter in their signatures at all. METH_NOARGS does not
+prevent this second parameter being passed *at all*, it only
+ensures that it will always be NULL. It's still not technically
+correct to leave it out of the function signature; as a comment
+from 'yak' on  https://stackoverflow.com/questions/10256315
+points out, there are situations where this could cause a crash.
+I've added the second parameter (with no name, per convention)
+to every one of these cases.
+
+2. In several cases, classes specified a custom destructor, with
+a cast to the `destructor` type, which only takes a single
+parameter. However, the signatures for these destructor functions
+included two parameters, assuming that they'd get an 'args'
+parameter (they do not). I've corrected all these cases.
+
+3. In several cases, classes specified custom str or repr
+methods. However, in the `PyTypeObject` structures for these
+classes, these methods were not cast to the `reprfunc` type, as
+they ought to be. I've added these casts.
+
+There are two warnings I just can't get rid of with my limited
+C++ knowledge. The `Config` class (in PyConfig.cpp) defines a
+couple of methods that take kwargs as well as args. This is
+done by setting the `METH_KEYWORDS` flag, which ultimately seems
+to result in a cast from type `PyCFunctionWithKeywords` to
+`PyCFunction` happening somewhere behind the scenes. There's some
+discussion of this at https://stackoverflow.com/questions/9496753
+
+GCC 8 does not like this cast - it causes a 'cast-function-type'
+warning. I've messed around a bit with `reinterpret_cast` and
+stuff, but didn't really understand precisely what I was doing
+and didn't manage to find anything that got rid of the warnings.
+So I just suppressed these warnings with GCC pragmas instead
+(using `-Wno-error=cast-function-type` causes older GCC versions
+to choke, so we can't do that).
+
+I've tested at least that the compilation succeeds, and I can
+import the Python module and instantiate a few classes and
+examine their docstrings and stuff with no apparent errors.
+
+Many thanks to Kevin Kofler for his help with these fixes.
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ src/pyglue/PyAllocationTransform.cpp |  14 ++--
+ src/pyglue/PyBaker.cpp               |  56 ++++++++--------
+ src/pyglue/PyCDLTransform.cpp        |  36 +++++-----
+ src/pyglue/PyColorSpace.cpp          |  46 ++++++-------
+ src/pyglue/PyColorSpaceTransform.cpp |   8 +--
+ src/pyglue/PyConfig.cpp              | 123 +++++++++++++++++++----------------
+ src/pyglue/PyContext.cpp             |  38 +++++------
+ src/pyglue/PyDisplayTransform.cpp    |  36 +++++-----
+ src/pyglue/PyExponentTransform.cpp   |   4 +-
+ src/pyglue/PyFileTransform.cpp       |  16 ++---
+ src/pyglue/PyGpuShaderDesc.cpp       |  20 +++---
+ src/pyglue/PyGroupTransform.cpp      |  16 ++---
+ src/pyglue/PyLogTransform.cpp        |   4 +-
+ src/pyglue/PyLook.cpp                |  34 +++++-----
+ src/pyglue/PyLookTransform.cpp       |  12 ++--
+ src/pyglue/PyMain.cpp                |   6 +-
+ src/pyglue/PyMatrixTransform.cpp     |  16 ++---
+ src/pyglue/PyProcessor.cpp           |  20 +++---
+ src/pyglue/PyProcessorMetadata.cpp   |  12 ++--
+ src/pyglue/PyTransform.cpp           |  18 ++---
+ 20 files changed, 272 insertions(+), 263 deletions(-)
+
+diff --git a/src/pyglue/PyAllocationTransform.cpp b/src/pyglue/PyAllocationTransform.cpp
+index 06b418a..d77737a 100644
+--- a/src/pyglue/PyAllocationTransform.cpp
++++ b/src/pyglue/PyAllocationTransform.cpp
+@@ -53,10 +53,10 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_AllocationTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_AllocationTransform_getAllocation(PyObject * self);
++        PyObject * PyOCIO_AllocationTransform_getAllocation(PyObject * self,  PyObject *);
+         PyObject * PyOCIO_AllocationTransform_setAllocation(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_AllocationTransform_getNumVars(PyObject * self);
+-        PyObject * PyOCIO_AllocationTransform_getVars(PyObject * self);
++        PyObject * PyOCIO_AllocationTransform_getNumVars(PyObject * self,  PyObject *);
++        PyObject * PyOCIO_AllocationTransform_getVars(PyObject * self,  PyObject *);
+         PyObject * PyOCIO_AllocationTransform_setVars(PyObject * self,  PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -68,7 +68,7 @@ OCIO_NAMESPACE_ENTER
+             { "setAllocation",
+             PyOCIO_AllocationTransform_setAllocation, METH_VARARGS, ALLOCATIONTRANSFORM_SETALLOCATION__DOC__ },
+             { "getNumVars",
+-            (PyCFunction) PyOCIO_AllocationTransform_getNumVars, METH_VARARGS, ALLOCATIONTRANSFORM_GETNUMVARS__DOC__ },
++            (PyCFunction) PyOCIO_AllocationTransform_getNumVars, METH_NOARGS, ALLOCATIONTRANSFORM_GETNUMVARS__DOC__ },
+             { "getVars",
+             (PyCFunction) PyOCIO_AllocationTransform_getVars, METH_NOARGS, ALLOCATIONTRANSFORM_GETVARS__DOC__ },
+             { "setVars",
+@@ -160,7 +160,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_AllocationTransform_getAllocation(PyObject * self)
++        PyObject * PyOCIO_AllocationTransform_getAllocation(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstAllocationTransformRcPtr transform = GetConstAllocationTransform(self);
+@@ -180,7 +180,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_AllocationTransform_getNumVars(PyObject * self)
++        PyObject * PyOCIO_AllocationTransform_getNumVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstAllocationTransformRcPtr transform = GetConstAllocationTransform(self);
+@@ -188,7 +188,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_AllocationTransform_getVars(PyObject * self)
++        PyObject * PyOCIO_AllocationTransform_getVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstAllocationTransformRcPtr transform = GetConstAllocationTransform(self);
+diff --git a/src/pyglue/PyBaker.cpp b/src/pyglue/PyBaker.cpp
+index bc2df48..866083c 100644
+--- a/src/pyglue/PyBaker.cpp
++++ b/src/pyglue/PyBaker.cpp
+@@ -60,31 +60,31 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_Baker_init(PyOCIO_Baker * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Baker_delete(PyOCIO_Baker * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_isEditable(PyObject * self);
+-        PyObject * PyOCIO_Baker_createEditableCopy(PyObject * self);
++        void PyOCIO_Baker_delete(PyOCIO_Baker * self);
++        PyObject * PyOCIO_Baker_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Baker_createEditableCopy(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setConfig(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getConfig(PyObject * self);
++        PyObject * PyOCIO_Baker_getConfig(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setFormat(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Baker_getFormat(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Baker_setType(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getType(PyObject * self);
++        PyObject * PyOCIO_Baker_getType(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setMetadata(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getMetadata(PyObject * self);
++        PyObject * PyOCIO_Baker_getMetadata(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setInputSpace(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getInputSpace(PyObject * self);
++        PyObject * PyOCIO_Baker_getInputSpace(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setShaperSpace(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getShaperSpace(PyObject * self);
++        PyObject * PyOCIO_Baker_getShaperSpace(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setLooks(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getLooks(PyObject * self);
++        PyObject * PyOCIO_Baker_getLooks(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setTargetSpace(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getTargetSpace(PyObject * self);
++        PyObject * PyOCIO_Baker_getTargetSpace(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setShaperSize(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getShaperSize(PyObject * self);
++        PyObject * PyOCIO_Baker_getShaperSize(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_setCubeSize(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Baker_getCubeSize(PyObject * self);
+-        PyObject * PyOCIO_Baker_bake(PyObject * self);
+-        PyObject * PyOCIO_Baker_getNumFormats(PyObject * self);
++        PyObject * PyOCIO_Baker_getCubeSize(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Baker_bake(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Baker_getNumFormats(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Baker_getFormatNameByIndex(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Baker_getFormatExtensionByIndex(PyObject * self, PyObject * args);
+         
+@@ -208,17 +208,17 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_Baker_delete(PyOCIO_Baker *self, PyObject * /*args*/)
++        void PyOCIO_Baker_delete(PyOCIO_Baker *self)
+         {
+             DeletePyObject<PyOCIO_Baker>(self);
+         }
+         
+-        PyObject * PyOCIO_Baker_isEditable(PyObject * self)
++        PyObject * PyOCIO_Baker_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyConfigEditable(self));
+         }
+         
+-        PyObject * PyOCIO_Baker_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_Baker_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -240,7 +240,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getConfig(PyObject * self)
++        PyObject * PyOCIO_Baker_getConfig(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -280,7 +280,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getType(PyObject * self)
++        PyObject * PyOCIO_Baker_getType(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -300,7 +300,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getMetadata(PyObject * self)
++        PyObject * PyOCIO_Baker_getMetadata(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -320,7 +320,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getInputSpace(PyObject * self)
++        PyObject * PyOCIO_Baker_getInputSpace(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -340,7 +340,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getShaperSpace(PyObject * self)
++        PyObject * PyOCIO_Baker_getShaperSpace(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -360,7 +360,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getLooks(PyObject * self)
++        PyObject * PyOCIO_Baker_getLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -380,7 +380,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getTargetSpace(PyObject * self)
++        PyObject * PyOCIO_Baker_getTargetSpace(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -400,7 +400,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getShaperSize(PyObject * self)
++        PyObject * PyOCIO_Baker_getShaperSize(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -420,7 +420,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getCubeSize(PyObject * self)
++        PyObject * PyOCIO_Baker_getCubeSize(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -428,7 +428,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_bake(PyObject * self)
++        PyObject * PyOCIO_Baker_bake(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+@@ -438,7 +438,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Baker_getNumFormats(PyObject * self)
++        PyObject * PyOCIO_Baker_getNumFormats(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstBakerRcPtr baker = GetConstBaker(self);
+diff --git a/src/pyglue/PyCDLTransform.cpp b/src/pyglue/PyCDLTransform.cpp
+index 06a5a4e..203ef47 100644
+--- a/src/pyglue/PyCDLTransform.cpp
++++ b/src/pyglue/PyCDLTransform.cpp
+@@ -50,22 +50,22 @@ OCIO_NAMESPACE_ENTER
+         int PyOCIO_CDLTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds); 
+         PyObject * PyOCIO_CDLTransform_CreateFromFile(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_CDLTransform_equals(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_CDLTransform_getXML(PyObject * self);
++        PyObject * PyOCIO_CDLTransform_getXML(PyObject * self, PyObject *);
+         PyObject * PyOCIO_CDLTransform_setXML(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_CDLTransform_getSlope(PyObject * self);
+-        PyObject * PyOCIO_CDLTransform_getOffset(PyObject * self);
+-        PyObject * PyOCIO_CDLTransform_getPower(PyObject * self);
+-        PyObject * PyOCIO_CDLTransform_getSOP(PyObject * self);
+-        PyObject * PyOCIO_CDLTransform_getSat(PyObject * self);
++        PyObject * PyOCIO_CDLTransform_getSlope(PyObject * self, PyObject *);
++        PyObject * PyOCIO_CDLTransform_getOffset(PyObject * self, PyObject *);
++        PyObject * PyOCIO_CDLTransform_getPower(PyObject * self, PyObject *);
++        PyObject * PyOCIO_CDLTransform_getSOP(PyObject * self, PyObject *);
++        PyObject * PyOCIO_CDLTransform_getSat(PyObject * self, PyObject *);
+         PyObject * PyOCIO_CDLTransform_setSlope(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_CDLTransform_setOffset(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_CDLTransform_setPower(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_CDLTransform_setSOP(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_CDLTransform_setSat(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_CDLTransform_getSatLumaCoefs(PyObject * self);
+-        PyObject * PyOCIO_CDLTransform_getID(PyObject * self);
++        PyObject * PyOCIO_CDLTransform_getSatLumaCoefs(PyObject * self, PyObject *);
++        PyObject * PyOCIO_CDLTransform_getID(PyObject * self, PyObject *);
+         PyObject * PyOCIO_CDLTransform_setID(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_CDLTransform_getDescription(PyObject * self);
++        PyObject * PyOCIO_CDLTransform_getDescription(PyObject * self, PyObject *);
+         PyObject * PyOCIO_CDLTransform_setDescription(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -252,7 +252,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getXML(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getXML(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -271,7 +271,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getSlope(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getSlope(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -281,7 +281,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getOffset(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getOffset(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -291,7 +291,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getPower(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getPower(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -301,7 +301,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getSOP(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getSOP(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -311,7 +311,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getSat(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getSat(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -398,7 +398,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getSatLumaCoefs(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getSatLumaCoefs(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -408,7 +408,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getID(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getID(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+@@ -427,7 +427,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_CDLTransform_getDescription(PyObject * self)
++        PyObject * PyOCIO_CDLTransform_getDescription(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstCDLTransformRcPtr transform = GetConstCDLTransform(self);
+diff --git a/src/pyglue/PyColorSpace.cpp b/src/pyglue/PyColorSpace.cpp
+index 0838aa5..68abcca 100644
+--- a/src/pyglue/PyColorSpace.cpp
++++ b/src/pyglue/PyColorSpace.cpp
+@@ -77,25 +77,25 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_ColorSpace_init(PyOCIO_ColorSpace * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_ColorSpace_delete(PyOCIO_ColorSpace * self, PyObject * args);
++        void PyOCIO_ColorSpace_delete(PyOCIO_ColorSpace * self);
+         PyObject * PyOCIO_ColorSpace_str(PyObject * self);
+-        PyObject * PyOCIO_ColorSpace_isEditable(PyObject * self);
+-        PyObject * PyOCIO_ColorSpace_createEditableCopy(PyObject * self);
+-        PyObject * PyOCIO_ColorSpace_getName(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_ColorSpace_createEditableCopy(PyObject * self, PyObject *);
++        PyObject * PyOCIO_ColorSpace_getName(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setName(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_getFamily(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getFamily(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setFamily(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_getEqualityGroup(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getEqualityGroup(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setEqualityGroup(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_getDescription(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getDescription(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setDescription(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_getBitDepth(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getBitDepth(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setBitDepth(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_isData(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_isData(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setIsData(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpace_getAllocation(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getAllocation(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setAllocation(PyObject * self, PyObject * args );
+-        PyObject * PyOCIO_ColorSpace_getAllocationVars(PyObject * self);
++        PyObject * PyOCIO_ColorSpace_getAllocationVars(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpace_setAllocationVars(PyObject * self,  PyObject * args);
+         PyObject * PyOCIO_ColorSpace_getTransform(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_ColorSpace_setTransform(PyObject * self, PyObject * args);
+@@ -167,7 +167,7 @@ OCIO_NAMESPACE_ENTER
+         0,                                          //tp_as_mapping
+         0,                                          //tp_hash 
+         0,                                          //tp_call
+-        PyOCIO_ColorSpace_str,                      //tp_str
++        (reprfunc)PyOCIO_ColorSpace_str,            //tp_str
+         0,                                          //tp_getattro
+         0,                                          //tp_setattro
+         0,                                          //tp_as_buffer
+@@ -264,7 +264,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_ColorSpace_delete(PyOCIO_ColorSpace *self, PyObject * /*args*/)
++        void PyOCIO_ColorSpace_delete(PyOCIO_ColorSpace *self)
+         {
+             DeletePyObject<PyOCIO_ColorSpace>(self);
+         }
+@@ -279,12 +279,12 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+ 
+-        PyObject * PyOCIO_ColorSpace_isEditable(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyColorSpaceEditable(self));
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -293,7 +293,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getName(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getName(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -312,7 +312,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getFamily(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getFamily(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -331,7 +331,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getEqualityGroup(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getEqualityGroup(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -350,7 +350,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getDescription(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getDescription(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -369,7 +369,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getBitDepth(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getBitDepth(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -388,7 +388,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_isData(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_isData(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -408,7 +408,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getAllocation(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getAllocation(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+@@ -428,7 +428,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpace_getAllocationVars(PyObject * self)
++        PyObject * PyOCIO_ColorSpace_getAllocationVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceRcPtr colorSpace = GetConstColorSpace(self, true);
+diff --git a/src/pyglue/PyColorSpaceTransform.cpp b/src/pyglue/PyColorSpaceTransform.cpp
+index aa10e25..3ca2b56 100644
+--- a/src/pyglue/PyColorSpaceTransform.cpp
++++ b/src/pyglue/PyColorSpaceTransform.cpp
+@@ -50,9 +50,9 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_ColorSpaceTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_ColorSpaceTransform_getSrc(PyObject * self);
++        PyObject * PyOCIO_ColorSpaceTransform_getSrc(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpaceTransform_setSrc(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_ColorSpaceTransform_getDst(PyObject * self);
++        PyObject * PyOCIO_ColorSpaceTransform_getDst(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ColorSpaceTransform_setDst(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -143,7 +143,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_ColorSpaceTransform_getSrc(PyObject * self)
++        PyObject * PyOCIO_ColorSpaceTransform_getSrc(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceTransformRcPtr transform = GetConstColorSpaceTransform(self);
+@@ -162,7 +162,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ColorSpaceTransform_getDst(PyObject * self)
++        PyObject * PyOCIO_ColorSpaceTransform_getDst(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstColorSpaceTransformRcPtr transform = GetConstColorSpaceTransform(self);
+diff --git a/src/pyglue/PyConfig.cpp b/src/pyglue/PyConfig.cpp
+index 42ea872..d2f5107 100644
+--- a/src/pyglue/PyConfig.cpp
++++ b/src/pyglue/PyConfig.cpp
+@@ -76,48 +76,48 @@ OCIO_NAMESPACE_ENTER
+         ///////////////////////////////////////////////////////////////////////
+         ///
+         
+-        PyObject * PyOCIO_Config_CreateFromEnv(PyObject * cls);
++        PyObject * PyOCIO_Config_CreateFromEnv(PyObject * cls, PyObject * args);
+         PyObject * PyOCIO_Config_CreateFromFile(PyObject * cls, PyObject * args);
+         PyObject * PyOCIO_Config_CreateFromStream(PyObject * cls, PyObject * args);
+         int PyOCIO_Config_init(PyOCIO_Config * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Config_delete(PyOCIO_Config * self, PyObject * args);
++        void PyOCIO_Config_delete(PyOCIO_Config * self);
+         PyObject * PyOCIO_Config_repr(PyObject * self);
+-        PyObject * PyOCIO_Config_isEditable(PyObject * self);
+-        PyObject * PyOCIO_Config_createEditableCopy(PyObject * self);
+-        PyObject * PyOCIO_Config_sanityCheck(PyObject * self);
+-        PyObject * PyOCIO_Config_getDescription(PyObject * self);
++        PyObject * PyOCIO_Config_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_createEditableCopy(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_sanityCheck(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_getDescription(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setDescription(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_serialize(PyObject * self);
++        PyObject * PyOCIO_Config_serialize(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getCacheID(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getCurrentContext(PyObject * self);
++        PyObject * PyOCIO_Config_getCurrentContext(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_addEnvironmentVar(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getNumEnvironmentVars(PyObject * self);
++        PyObject * PyOCIO_Config_getNumEnvironmentVars(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getEnvironmentVarNameByIndex(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getEnvironmentVarDefault(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getEnvironmentVarDefaults(PyObject * self);
+-        PyObject * PyOCIO_Config_clearEnvironmentVars(PyObject * self);
+-        PyObject * PyOCIO_Config_getSearchPath(PyObject * self);
++        PyObject * PyOCIO_Config_getEnvironmentVarDefaults(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_clearEnvironmentVars(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_getSearchPath(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setSearchPath(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getWorkingDir(PyObject * self);
++        PyObject * PyOCIO_Config_getWorkingDir(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setWorkingDir(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_Config_getNumColorSpaces(PyObject * self);
++        PyObject * PyOCIO_Config_getNumColorSpaces(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getColorSpaceNameByIndex(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_Config_getColorSpaces(PyObject * self); // py interface only
++        PyObject * PyOCIO_Config_getColorSpaces(PyObject * self, PyObject *); // py interface only
+         PyObject * PyOCIO_Config_getColorSpace(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getIndexForColorSpace(PyObject * self,  PyObject * args);
+         PyObject * PyOCIO_Config_addColorSpace(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_clearColorSpaces(PyObject * self);
++        PyObject * PyOCIO_Config_clearColorSpaces(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_parseColorSpaceFromString(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_isStrictParsingEnabled(PyObject * self);
++        PyObject * PyOCIO_Config_isStrictParsingEnabled(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setStrictParsingEnabled(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_setRole(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getNumRoles(PyObject * self);
++        PyObject * PyOCIO_Config_getNumRoles(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_hasRole(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getRoleName(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getDefaultDisplay(PyObject * self);
+-        PyObject * PyOCIO_Config_getNumDisplays(PyObject * self);
++        PyObject * PyOCIO_Config_getDefaultDisplay(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_getNumDisplays(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getDisplay(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getDisplays(PyObject * self);
++        PyObject * PyOCIO_Config_getDisplays(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getDefaultView(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getNumViews(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getView(PyObject * self, PyObject * args);
+@@ -125,24 +125,31 @@ OCIO_NAMESPACE_ENTER
+         PyObject * PyOCIO_Config_getDisplayColorSpaceName(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getDisplayLooks(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_addDisplay(PyObject * self, PyObject * args, PyObject * kwargs);
+-        PyObject * PyOCIO_Config_clearDisplays(PyObject * self);
++        PyObject * PyOCIO_Config_clearDisplays(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setActiveDisplays(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getActiveDisplays(PyObject * self);
++        PyObject * PyOCIO_Config_getActiveDisplays(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setActiveViews(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getActiveViews(PyObject * self);
+-        PyObject * PyOCIO_Config_getDefaultLumaCoefs(PyObject * self);
++        PyObject * PyOCIO_Config_getActiveViews(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Config_getDefaultLumaCoefs(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_setDefaultLumaCoefs(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Config_getLook( PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_getNumLooks(PyObject * self);
++        PyObject * PyOCIO_Config_getNumLooks(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getLookNameByIndex(PyObject * self, PyObject * args);        
+-        PyObject * PyOCIO_Config_getLooks(PyObject * self);
++        PyObject * PyOCIO_Config_getLooks(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_addLook(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Config_clearLooks(PyObject * self);
++        PyObject * PyOCIO_Config_clearLooks(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Config_getProcessor(PyObject * self, PyObject * args, PyObject * kwargs);
+         
+         ///////////////////////////////////////////////////////////////////////
+         ///
+         
++        // disable cast-function-type warning on GCC 8+
++        // this is triggered by methods that take kwargs (METH_KEYWORDS)
++        #pragma GCC diagnostic push
++        #if __GNUC__ >= 8
++        #pragma GCC diagnostic ignored "-Wcast-function-type"
++        #endif
++        
+         PyMethodDef PyOCIO_Config_methods[] = {
+             { "CreateFromEnv",
+             (PyCFunction) PyOCIO_Config_CreateFromEnv, METH_NOARGS | METH_CLASS, CONFIG_CREATEFROMENV__DOC__ },
+@@ -269,6 +276,8 @@ OCIO_NAMESPACE_ENTER
+             { NULL, NULL, 0, NULL }
+         };
+         
++        #pragma GCC diagnostic pop
++        
+     }
+     
+     ///////////////////////////////////////////////////////////////////////////
+@@ -284,7 +293,7 @@ OCIO_NAMESPACE_ENTER
+         0,                                          //tp_getattr
+         0,                                          //tp_setattr
+         0,                                          //tp_compare
+-        PyOCIO_Config_repr,                         //tp_repr
++        (reprfunc)PyOCIO_Config_repr,               //tp_repr
+         0,                                          //tp_as_number
+         0,                                          //tp_as_sequence
+         0,                                          //tp_as_mapping
+@@ -323,7 +332,7 @@ OCIO_NAMESPACE_ENTER
+         ///////////////////////////////////////////////////////////////////////
+         ///
+         
+-        PyObject * PyOCIO_Config_CreateFromEnv(PyObject * /*self*/)
++        PyObject * PyOCIO_Config_CreateFromEnv(PyObject *, PyObject * /*self*, *args*/)
+         {
+             OCIO_PYTRY_ENTER()
+             return BuildConstPyConfig(Config::CreateFromEnv());
+@@ -357,7 +366,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_Config_delete(PyOCIO_Config *self, PyObject * /*args*/)
++        void PyOCIO_Config_delete(PyOCIO_Config *self)
+         {
+             DeletePyObject<PyOCIO_Config>(self);
+         }
+@@ -372,12 +381,12 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+ 
+-        PyObject * PyOCIO_Config_isEditable(PyObject * self)
++        PyObject * PyOCIO_Config_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyConfigEditable(self));
+         }
+         
+-        PyObject * PyOCIO_Config_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_Config_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -386,7 +395,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_sanityCheck(PyObject * self)
++        PyObject * PyOCIO_Config_sanityCheck(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -395,7 +404,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getDescription(PyObject * self)
++        PyObject * PyOCIO_Config_getDescription(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -415,7 +424,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_serialize(PyObject * self)
++        PyObject * PyOCIO_Config_serialize(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -439,7 +448,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getCurrentContext(PyObject * self)
++        PyObject * PyOCIO_Config_getCurrentContext(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -460,7 +469,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getNumEnvironmentVars(PyObject * self)
++        PyObject * PyOCIO_Config_getNumEnvironmentVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -491,7 +500,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getEnvironmentVarDefaults(PyObject * self)
++        PyObject * PyOCIO_Config_getEnvironmentVarDefaults(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             std::map<std::string, std::string> data;
+@@ -505,7 +514,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_clearEnvironmentVars(PyObject * self)
++        PyObject * PyOCIO_Config_clearEnvironmentVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConfigRcPtr config = GetEditableConfig(self);
+@@ -514,7 +523,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getSearchPath(PyObject * self)
++        PyObject * PyOCIO_Config_getSearchPath(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -534,7 +543,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getWorkingDir(PyObject * self)
++        PyObject * PyOCIO_Config_getWorkingDir(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -554,7 +563,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getNumColorSpaces(PyObject * self)
++        PyObject * PyOCIO_Config_getNumColorSpaces(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -573,7 +582,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getColorSpaces(PyObject * self)
++        PyObject * PyOCIO_Config_getColorSpaces(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -624,7 +633,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_clearColorSpaces(PyObject * self)
++        PyObject * PyOCIO_Config_clearColorSpaces(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConfigRcPtr config = GetEditableConfig(self);
+@@ -646,7 +655,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_isStrictParsingEnabled(PyObject * self)
++        PyObject * PyOCIO_Config_isStrictParsingEnabled(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -679,7 +688,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getNumRoles(PyObject * self)
++        PyObject * PyOCIO_Config_getNumRoles(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -709,7 +718,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getDefaultDisplay(PyObject * self)
++        PyObject * PyOCIO_Config_getDefaultDisplay(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -717,7 +726,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getNumDisplays(PyObject * self)
++        PyObject * PyOCIO_Config_getNumDisplays(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -736,7 +745,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getDisplays(PyObject * self)
++        PyObject * PyOCIO_Config_getDisplays(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -841,7 +850,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_clearDisplays(PyObject * self)
++        PyObject * PyOCIO_Config_clearDisplays(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConfigRcPtr config = GetEditableConfig(self);
+@@ -862,7 +871,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getActiveDisplays(PyObject * self)
++        PyObject * PyOCIO_Config_getActiveDisplays(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -882,7 +891,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getActiveViews(PyObject * self)
++        PyObject * PyOCIO_Config_getActiveViews(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -908,7 +917,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getDefaultLumaCoefs(PyObject * self)
++        PyObject * PyOCIO_Config_getDefaultLumaCoefs(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -929,7 +938,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getNumLooks(PyObject * self)
++        PyObject * PyOCIO_Config_getNumLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -948,7 +957,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_getLooks(PyObject * self)
++        PyObject * PyOCIO_Config_getLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstConfigRcPtr config = GetConstConfig(self, true);
+@@ -977,7 +986,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Config_clearLooks(PyObject * self)
++        PyObject * PyOCIO_Config_clearLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConfigRcPtr config = GetEditableConfig(self);
+diff --git a/src/pyglue/PyContext.cpp b/src/pyglue/PyContext.cpp
+index 0faa991..ccc5903 100644
+--- a/src/pyglue/PyContext.cpp
++++ b/src/pyglue/PyContext.cpp
+@@ -77,23 +77,23 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_Context_init(PyOCIO_Context * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Context_delete(PyOCIO_Context * self, PyObject * args);
++        void PyOCIO_Context_delete(PyOCIO_Context * self);
+         PyObject * PyOCIO_Context_str(PyObject * self);
+-        PyObject * PyOCIO_Context_isEditable(PyObject * self);
+-        PyObject * PyOCIO_Context_createEditableCopy(PyObject * self);
+-        PyObject * PyOCIO_Context_getCacheID(PyObject * self);
+-        PyObject * PyOCIO_Context_getSearchPath(PyObject * self);
++        PyObject * PyOCIO_Context_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Context_createEditableCopy(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Context_getCacheID(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Context_getSearchPath(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Context_setSearchPath(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Context_getWorkingDir(PyObject * self);
++        PyObject * PyOCIO_Context_getWorkingDir(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Context_setWorkingDir(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Context_getStringVar(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Context_setStringVar(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Context_getNumStringVars(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Context_getStringVarNameByIndex(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Context_clearStringVars(PyObject * self);
++        PyObject * PyOCIO_Context_clearStringVars(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Context_setEnvironmentMode(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Context_getEnvironmentMode(PyObject * self);
+-        PyObject * PyOCIO_Context_loadEnvironment(PyObject * self);
++        PyObject * PyOCIO_Context_getEnvironmentMode(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Context_loadEnvironment(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Context_resolveStringVar(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Context_resolveFileLocation(PyObject * self, PyObject * args);
+         
+@@ -159,7 +159,7 @@ OCIO_NAMESPACE_ENTER
+         0,                                          //tp_as_mapping
+         0,                                          //tp_hash 
+         0,                                          //tp_call
+-        PyOCIO_Context_str,                         //tp_str
++        (reprfunc)PyOCIO_Context_str,               //tp_str
+         0,                                          //tp_getattro
+         0,                                          //tp_setattro
+         0,                                          //tp_as_buffer
+@@ -199,7 +199,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_Context_delete(PyOCIO_Context *self, PyObject * /*args*/)
++        void PyOCIO_Context_delete(PyOCIO_Context *self)
+         {
+             DeletePyObject<PyOCIO_Context>(self);
+         }
+@@ -214,12 +214,12 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+ 
+-        PyObject * PyOCIO_Context_isEditable(PyObject * self)
++        PyObject * PyOCIO_Context_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyContextEditable(self));
+         }
+         
+-        PyObject * PyOCIO_Context_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_Context_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstContextRcPtr context = GetConstContext(self, true);
+@@ -228,7 +228,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_getCacheID(PyObject * self)
++        PyObject * PyOCIO_Context_getCacheID(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstContextRcPtr context = GetConstContext(self, true);
+@@ -236,7 +236,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_getSearchPath(PyObject * self)
++        PyObject * PyOCIO_Context_getSearchPath(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstContextRcPtr context = GetConstContext(self, true);
+@@ -256,7 +256,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_getWorkingDir(PyObject * self)
++        PyObject * PyOCIO_Context_getWorkingDir(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstContextRcPtr context = GetConstContext(self, true);
+@@ -319,7 +319,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_clearStringVars(PyObject * self)
++        PyObject * PyOCIO_Context_clearStringVars(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ContextRcPtr context = GetEditableContext(self);
+@@ -340,7 +340,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_getEnvironmentMode(PyObject * self)
++        PyObject * PyOCIO_Context_getEnvironmentMode(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstContextRcPtr context = GetConstContext(self, true);
+@@ -349,7 +349,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Context_loadEnvironment(PyObject * self)
++        PyObject * PyOCIO_Context_loadEnvironment(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ContextRcPtr context = GetEditableContext(self);
+diff --git a/src/pyglue/PyDisplayTransform.cpp b/src/pyglue/PyDisplayTransform.cpp
+index 7775d3a..e13a5d2 100644
+--- a/src/pyglue/PyDisplayTransform.cpp
++++ b/src/pyglue/PyDisplayTransform.cpp
+@@ -50,23 +50,23 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_DisplayTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_DisplayTransform_getInputColorSpaceName(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getInputColorSpaceName(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setInputColorSpaceName(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getLinearCC(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getLinearCC(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setLinearCC(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getColorTimingCC(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getColorTimingCC(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setColorTimingCC(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getChannelView(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getChannelView(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setChannelView(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getDisplay(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getDisplay(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setDisplay(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getView(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getView(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setView(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getDisplayCC(PyObject * self);
++        PyObject * PyOCIO_DisplayTransform_getDisplayCC(PyObject * self, PyObject *);
+         PyObject * PyOCIO_DisplayTransform_setDisplayCC(PyObject * self, PyObject * args );
+-        PyObject * PyOCIO_DisplayTransform_getLooksOverride(PyObject * self );
++        PyObject * PyOCIO_DisplayTransform_getLooksOverride(PyObject * self, PyObject * args );
+         PyObject * PyOCIO_DisplayTransform_setLooksOverride(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_DisplayTransform_getLooksOverrideEnabled(PyObject * self );
++        PyObject * PyOCIO_DisplayTransform_getLooksOverrideEnabled(PyObject * self, PyObject * args );
+         PyObject * PyOCIO_DisplayTransform_setLooksOverrideEnabled(PyObject * self,  PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -187,7 +187,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getInputColorSpaceName(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getInputColorSpaceName(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -207,7 +207,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getLinearCC(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getLinearCC(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -228,7 +228,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getColorTimingCC(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getColorTimingCC(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -249,7 +249,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getChannelView(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getChannelView(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -270,7 +270,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getDisplay(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getDisplay(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -290,7 +290,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getView(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getView(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -310,7 +310,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getDisplayCC(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getDisplayCC(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -331,7 +331,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getLooksOverride(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getLooksOverride(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+@@ -351,7 +351,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_DisplayTransform_getLooksOverrideEnabled(PyObject * self)
++        PyObject * PyOCIO_DisplayTransform_getLooksOverrideEnabled(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstDisplayTransformRcPtr transform = GetConstDisplayTransform(self);
+diff --git a/src/pyglue/PyExponentTransform.cpp b/src/pyglue/PyExponentTransform.cpp
+index 76c2723..deca273 100644
+--- a/src/pyglue/PyExponentTransform.cpp
++++ b/src/pyglue/PyExponentTransform.cpp
+@@ -50,7 +50,7 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_ExponentTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_ExponentTransform_getValue(PyObject * self);
++        PyObject * PyOCIO_ExponentTransform_getValue(PyObject * self, PyObject *);
+         PyObject * PyOCIO_ExponentTransform_setValue(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -145,7 +145,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_ExponentTransform_getValue(PyObject * self)
++        PyObject * PyOCIO_ExponentTransform_getValue(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstExponentTransformRcPtr transform = GetConstExponentTransform(self);
+diff --git a/src/pyglue/PyFileTransform.cpp b/src/pyglue/PyFileTransform.cpp
+index f2c83c7..a7f4bc9 100644
+--- a/src/pyglue/PyFileTransform.cpp
++++ b/src/pyglue/PyFileTransform.cpp
+@@ -50,13 +50,13 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_FileTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_FileTransform_getSrc(PyObject * self);
++        PyObject * PyOCIO_FileTransform_getSrc(PyObject * self, PyObject *);
+         PyObject * PyOCIO_FileTransform_setSrc(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_FileTransform_getCCCId(PyObject * self);
++        PyObject * PyOCIO_FileTransform_getCCCId(PyObject * self, PyObject *);
+         PyObject * PyOCIO_FileTransform_setCCCId(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_FileTransform_getInterpolation(PyObject * self);
++        PyObject * PyOCIO_FileTransform_getInterpolation(PyObject * self, PyObject *);
+         PyObject * PyOCIO_FileTransform_setInterpolation(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_FileTransform_getNumFormats(PyObject * self);
++        PyObject * PyOCIO_FileTransform_getNumFormats(PyObject * self, PyObject *);
+         PyObject * PyOCIO_FileTransform_getFormatNameByIndex(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_FileTransform_getFormatExtensionByIndex(PyObject * self, PyObject * args);
+         
+@@ -161,7 +161,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_FileTransform_getSrc(PyObject * self)
++        PyObject * PyOCIO_FileTransform_getSrc(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstFileTransformRcPtr transform = GetConstFileTransform(self);
+@@ -181,7 +181,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_FileTransform_getCCCId(PyObject * self)
++        PyObject * PyOCIO_FileTransform_getCCCId(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstFileTransformRcPtr transform = GetConstFileTransform(self);
+@@ -201,7 +201,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_FileTransform_getInterpolation(PyObject * self)
++        PyObject * PyOCIO_FileTransform_getInterpolation(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstFileTransformRcPtr transform = GetConstFileTransform(self);
+@@ -222,7 +222,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_FileTransform_getNumFormats(PyObject * self)
++        PyObject * PyOCIO_FileTransform_getNumFormats(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstFileTransformRcPtr transform = GetConstFileTransform(self);
+diff --git a/src/pyglue/PyGpuShaderDesc.cpp b/src/pyglue/PyGpuShaderDesc.cpp
+index 55de23a..21be2a3 100644
+--- a/src/pyglue/PyGpuShaderDesc.cpp
++++ b/src/pyglue/PyGpuShaderDesc.cpp
+@@ -54,14 +54,14 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_GpuShaderDesc_init(PyOCIO_GpuShaderDesc * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_GpuShaderDesc_delete(PyOCIO_GpuShaderDesc * self, PyObject * args);
++        void PyOCIO_GpuShaderDesc_delete(PyOCIO_GpuShaderDesc * self);
+         PyObject * PyOCIO_GpuShaderDesc_setLanguage(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_GpuShaderDesc_getLanguage(PyObject * self);
++        PyObject * PyOCIO_GpuShaderDesc_getLanguage(PyObject * self, PyObject *);
+         PyObject * PyOCIO_GpuShaderDesc_setFunctionName(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_GpuShaderDesc_getFunctionName(PyObject * self);
++        PyObject * PyOCIO_GpuShaderDesc_getFunctionName(PyObject * self, PyObject *);
+         PyObject * PyOCIO_GpuShaderDesc_setLut3DEdgeLen(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_GpuShaderDesc_getLut3DEdgeLen(PyObject * self);
+-        PyObject * PyOCIO_GpuShaderDesc_getCacheID(PyObject * self);
++        PyObject * PyOCIO_GpuShaderDesc_getLut3DEdgeLen(PyObject * self, PyObject *);
++        PyObject * PyOCIO_GpuShaderDesc_getCacheID(PyObject * self, PyObject *);
+         
+         ///////////////////////////////////////////////////////////////////////
+         ///
+@@ -152,7 +152,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_GpuShaderDesc_delete(PyOCIO_GpuShaderDesc *self, PyObject * /*args*/)
++        void PyOCIO_GpuShaderDesc_delete(PyOCIO_GpuShaderDesc *self)
+         {
+             DeletePyObject<PyOCIO_GpuShaderDesc>(self);
+         }
+@@ -169,7 +169,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GpuShaderDesc_getLanguage(PyObject * self)
++        PyObject * PyOCIO_GpuShaderDesc_getLanguage(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGpuShaderDescRcPtr desc = GetConstGpuShaderDesc(self);
+@@ -190,7 +190,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GpuShaderDesc_getFunctionName(PyObject * self)
++        PyObject * PyOCIO_GpuShaderDesc_getFunctionName(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGpuShaderDescRcPtr desc = GetConstGpuShaderDesc(self);
+@@ -210,7 +210,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GpuShaderDesc_getLut3DEdgeLen(PyObject * self)
++        PyObject * PyOCIO_GpuShaderDesc_getLut3DEdgeLen(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGpuShaderDescRcPtr desc = GetConstGpuShaderDesc(self);
+@@ -218,7 +218,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GpuShaderDesc_getCacheID(PyObject * self)
++        PyObject * PyOCIO_GpuShaderDesc_getCacheID(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGpuShaderDescRcPtr desc = GetConstGpuShaderDesc(self);
+diff --git a/src/pyglue/PyGroupTransform.cpp b/src/pyglue/PyGroupTransform.cpp
+index 5a1425f..7d1c412 100644
+--- a/src/pyglue/PyGroupTransform.cpp
++++ b/src/pyglue/PyGroupTransform.cpp
+@@ -51,13 +51,13 @@ OCIO_NAMESPACE_ENTER
+         
+         int PyOCIO_GroupTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+         PyObject * PyOCIO_GroupTransform_getTransform(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_GroupTransform_getTransforms(PyObject * self);
++        PyObject * PyOCIO_GroupTransform_getTransforms(PyObject * self, PyObject *);
+         PyObject * PyOCIO_GroupTransform_setTransforms(PyObject * self,  PyObject * args);
+         // TODO: make these appear more like a pysequence. .append, len(), etc
+-        PyObject * PyOCIO_GroupTransform_size(PyObject * self);
++        PyObject * PyOCIO_GroupTransform_size(PyObject * self, PyObject *);
+         PyObject * PyOCIO_GroupTransform_push_back(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_GroupTransform_clear(PyObject * self);
+-        PyObject * PyOCIO_GroupTransform_empty(PyObject * self);
++        PyObject * PyOCIO_GroupTransform_clear(PyObject * self, PyObject *);
++        PyObject * PyOCIO_GroupTransform_empty(PyObject * self, PyObject *);
+         
+         ///////////////////////////////////////////////////////////////////////
+         ///
+@@ -175,7 +175,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GroupTransform_getTransforms(PyObject * self)
++        PyObject * PyOCIO_GroupTransform_getTransforms(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGroupTransformRcPtr transform = GetConstGroupTransform(self);
+@@ -206,7 +206,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GroupTransform_size(PyObject * self)
++        PyObject * PyOCIO_GroupTransform_size(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGroupTransformRcPtr transform = GetConstGroupTransform(self);
+@@ -228,7 +228,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GroupTransform_clear(PyObject * self)
++        PyObject * PyOCIO_GroupTransform_clear(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             GroupTransformRcPtr transform = GetEditableGroupTransform(self);
+@@ -237,7 +237,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_GroupTransform_empty(PyObject * self)
++        PyObject * PyOCIO_GroupTransform_empty(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstGroupTransformRcPtr transform = GetConstGroupTransform(self);
+diff --git a/src/pyglue/PyLogTransform.cpp b/src/pyglue/PyLogTransform.cpp
+index afeafa6..936cd04 100644
+--- a/src/pyglue/PyLogTransform.cpp
++++ b/src/pyglue/PyLogTransform.cpp
+@@ -50,7 +50,7 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_LogTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_LogTransform_getBase(PyObject * self);
++        PyObject * PyOCIO_LogTransform_getBase(PyObject * self, PyObject *);
+         PyObject * PyOCIO_LogTransform_setBase(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -137,7 +137,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_LogTransform_getBase(PyObject * self)
++        PyObject * PyOCIO_LogTransform_getBase(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLogTransformRcPtr transform = GetConstLogTransform(self);
+diff --git a/src/pyglue/PyLook.cpp b/src/pyglue/PyLook.cpp
+index f5b5fee..3274960 100644
+--- a/src/pyglue/PyLook.cpp
++++ b/src/pyglue/PyLook.cpp
+@@ -77,19 +77,19 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_Look_init(PyOCIO_Look * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Look_delete(PyOCIO_Look * self, PyObject * args);
++        void PyOCIO_Look_delete(PyOCIO_Look * self);
+         PyObject * PyOCIO_Look_str(PyObject * self);
+-        PyObject * PyOCIO_Look_isEditable(PyObject * self);
+-        PyObject * PyOCIO_Look_createEditableCopy(PyObject * self);
+-        PyObject * PyOCIO_Look_getName(PyObject * self);
++        PyObject * PyOCIO_Look_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Look_createEditableCopy(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Look_getName(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Look_setName(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Look_getProcessSpace(PyObject * self);
++        PyObject * PyOCIO_Look_getProcessSpace(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Look_setProcessSpace(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Look_getDescription(PyObject * self);
++        PyObject * PyOCIO_Look_getDescription(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Look_setDescription(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Look_getTransform(PyObject * self);
++        PyObject * PyOCIO_Look_getTransform(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Look_setTransform(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Look_getInverseTransform(PyObject * self);
++        PyObject * PyOCIO_Look_getInverseTransform(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Look_setInverseTransform(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -144,7 +144,7 @@ OCIO_NAMESPACE_ENTER
+         0,                                          //tp_as_mapping
+         0,                                          //tp_hash 
+         0,                                          //tp_call
+-        PyOCIO_Look_str,                            //tp_str
++        (reprfunc)PyOCIO_Look_str,                  //tp_str
+         0,                                          //tp_getattro
+         0,                                          //tp_setattro
+         0,                                          //tp_as_buffer
+@@ -202,7 +202,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        void PyOCIO_Look_delete(PyOCIO_Look *self, PyObject * /*args*/)
++        void PyOCIO_Look_delete(PyOCIO_Look *self)
+         {
+             DeletePyObject<PyOCIO_Look>(self);
+         }
+@@ -217,12 +217,12 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+ 
+-        PyObject * PyOCIO_Look_isEditable(PyObject * self)
++        PyObject * PyOCIO_Look_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyLookEditable(self));
+         }
+         
+-        PyObject * PyOCIO_Look_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_Look_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+@@ -231,7 +231,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Look_getName(PyObject * self)
++        PyObject * PyOCIO_Look_getName(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+@@ -251,7 +251,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Look_getProcessSpace(PyObject * self)
++        PyObject * PyOCIO_Look_getProcessSpace(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+@@ -271,7 +271,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Look_getDescription(PyObject * self)
++        PyObject * PyOCIO_Look_getDescription(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+@@ -290,7 +290,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Look_getTransform(PyObject * self)
++        PyObject * PyOCIO_Look_getTransform(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+@@ -313,7 +313,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Look_getInverseTransform(PyObject * self)
++        PyObject * PyOCIO_Look_getInverseTransform(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookRcPtr look = GetConstLook(self, true);
+diff --git a/src/pyglue/PyLookTransform.cpp b/src/pyglue/PyLookTransform.cpp
+index 0fe209a..af428e6 100644
+--- a/src/pyglue/PyLookTransform.cpp
++++ b/src/pyglue/PyLookTransform.cpp
+@@ -48,11 +48,11 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_LookTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        PyObject * PyOCIO_LookTransform_getSrc(PyObject * self);
++        PyObject * PyOCIO_LookTransform_getSrc(PyObject * self, PyObject *);
+         PyObject * PyOCIO_LookTransform_setSrc(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_LookTransform_getDst(PyObject * self);
++        PyObject * PyOCIO_LookTransform_getDst(PyObject * self, PyObject *);
+         PyObject * PyOCIO_LookTransform_setDst(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_LookTransform_getLooks(PyObject * self);
++        PyObject * PyOCIO_LookTransform_getLooks(PyObject * self, PyObject *);
+         PyObject * PyOCIO_LookTransform_setLooks(PyObject * self, PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -150,7 +150,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(-1)
+         }
+         
+-        PyObject * PyOCIO_LookTransform_getSrc(PyObject * self)
++        PyObject * PyOCIO_LookTransform_getSrc(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookTransformRcPtr transform = GetConstLookTransform(self);
+@@ -170,7 +170,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_LookTransform_getDst(PyObject * self)
++        PyObject * PyOCIO_LookTransform_getDst(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookTransformRcPtr transform = GetConstLookTransform(self);
+@@ -190,7 +190,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_LookTransform_getLooks(PyObject * self)
++        PyObject * PyOCIO_LookTransform_getLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstLookTransformRcPtr transform = GetConstLookTransform(self);
+diff --git a/src/pyglue/PyMain.cpp b/src/pyglue/PyMain.cpp
+index b3cf3d6..0fa10a8 100644
+--- a/src/pyglue/PyMain.cpp
++++ b/src/pyglue/PyMain.cpp
+@@ -37,7 +37,7 @@ namespace OCIO = OCIO_NAMESPACE;
+ namespace
+ {
+     
+-    PyObject * PyOCIO_ClearAllCaches(PyObject * /* self */)
++    PyObject * PyOCIO_ClearAllCaches(PyObject *, PyObject * /* self, args */)
+     {
+         OCIO_PYTRY_ENTER()
+         OCIO::ClearAllCaches();
+@@ -45,7 +45,7 @@ namespace
+         OCIO_PYTRY_EXIT(NULL)
+     }
+     
+-    PyObject * PyOCIO_GetLoggingLevel(PyObject * /* self */)
++    PyObject * PyOCIO_GetLoggingLevel(PyObject *, PyObject * /* self, args */)
+     {
+         OCIO_PYTRY_ENTER()
+         return PyString_FromString(
+@@ -69,7 +69,7 @@ namespace
+         OCIO_PYTRY_EXIT(NULL)
+     }
+     
+-    PyObject * PyOCIO_GetCurrentConfig(PyObject * /* self */)
++    PyObject * PyOCIO_GetCurrentConfig(PyObject *, PyObject * /* self, args */)
+     {
+         OCIO_PYTRY_ENTER()
+         return OCIO::BuildConstPyConfig(OCIO::GetCurrentConfig());
+diff --git a/src/pyglue/PyMatrixTransform.cpp b/src/pyglue/PyMatrixTransform.cpp
+index 9e1ebf8..5635a58 100644
+--- a/src/pyglue/PyMatrixTransform.cpp
++++ b/src/pyglue/PyMatrixTransform.cpp
+@@ -51,13 +51,13 @@ OCIO_NAMESPACE_ENTER
+         
+         int PyOCIO_MatrixTransform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+         PyObject * PyOCIO_MatrixTransform_equals(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_MatrixTransform_getValue(PyObject * self);
++        PyObject * PyOCIO_MatrixTransform_getValue(PyObject * self, PyObject *);
+         PyObject * PyOCIO_MatrixTransform_setValue(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_MatrixTransform_getMatrix(PyObject * self);
++        PyObject * PyOCIO_MatrixTransform_getMatrix(PyObject * self, PyObject *);
+         PyObject * PyOCIO_MatrixTransform_setMatrix(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_MatrixTransform_getOffset(PyObject * self);
++        PyObject * PyOCIO_MatrixTransform_getOffset(PyObject * self, PyObject *);
+         PyObject * PyOCIO_MatrixTransform_setOffset(PyObject * self,  PyObject * args);
+-        PyObject * PyOCIO_MatrixTransform_Identity(PyObject * cls);
++        PyObject * PyOCIO_MatrixTransform_Identity(PyObject * cls, PyObject *);
+         PyObject * PyOCIO_MatrixTransform_Fit(PyObject * cls, PyObject * args);
+         PyObject * PyOCIO_MatrixTransform_Sat(PyObject * cls, PyObject * args);
+         PyObject * PyOCIO_MatrixTransform_Scale(PyObject * cls, PyObject * args);
+@@ -202,7 +202,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_MatrixTransform_getValue(PyObject * self)
++        PyObject * PyOCIO_MatrixTransform_getValue(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstMatrixTransformRcPtr transform = GetConstMatrixTransform(self);
+@@ -247,7 +247,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_MatrixTransform_getMatrix(PyObject * self)
++        PyObject * PyOCIO_MatrixTransform_getMatrix(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstMatrixTransformRcPtr transform = GetConstMatrixTransform(self);
+@@ -277,7 +277,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_MatrixTransform_getOffset(PyObject * self)
++        PyObject * PyOCIO_MatrixTransform_getOffset(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstMatrixTransformRcPtr transform = GetConstMatrixTransform(self);
+@@ -307,7 +307,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_MatrixTransform_Identity(PyObject * /*self*/)
++        PyObject * PyOCIO_MatrixTransform_Identity(PyObject *, PyObject * /*self*, *args*/)
+         {
+             OCIO_PYTRY_ENTER()
+             std::vector<float> matrix(16);
+diff --git a/src/pyglue/PyProcessor.cpp b/src/pyglue/PyProcessor.cpp
+index 331b6a6..48da3ff 100644
+--- a/src/pyglue/PyProcessor.cpp
++++ b/src/pyglue/PyProcessor.cpp
+@@ -60,13 +60,13 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_Processor_init(PyOCIO_Processor * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Processor_delete(PyOCIO_Processor * self, PyObject * args);
+-        PyObject * PyOCIO_Processor_isNoOp(PyObject * self);
+-        PyObject * PyOCIO_Processor_hasChannelCrosstalk(PyObject * self);
+-        PyObject * PyOCIO_Processor_getMetadata(PyObject * self);
++        void PyOCIO_Processor_delete(PyOCIO_Processor * self);
++        PyObject * PyOCIO_Processor_isNoOp(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Processor_hasChannelCrosstalk(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Processor_getMetadata(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Processor_applyRGB(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Processor_applyRGBA(PyObject * self, PyObject * args);
+-        PyObject * PyOCIO_Processor_getCpuCacheID(PyObject * self);
++        PyObject * PyOCIO_Processor_getCpuCacheID(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Processor_getGpuShaderText(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Processor_getGpuShaderTextCacheID(PyObject * self, PyObject * args);
+         PyObject * PyOCIO_Processor_getGpuLut3D(PyObject * self, PyObject * args);
+@@ -222,12 +222,12 @@ OCIO_NAMESPACE_ENTER
+             return -1;
+         }
+         
+-        void PyOCIO_Processor_delete(PyOCIO_Processor *self, PyObject * /*args*/)
++        void PyOCIO_Processor_delete(PyOCIO_Processor *self)
+         {
+             DeletePyObject<PyOCIO_Processor>(self);
+         }
+         
+-        PyObject * PyOCIO_Processor_isNoOp(PyObject * self)
++        PyObject * PyOCIO_Processor_isNoOp(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorRcPtr processor = GetConstProcessor(self);
+@@ -235,7 +235,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Processor_hasChannelCrosstalk(PyObject * self)
++        PyObject * PyOCIO_Processor_hasChannelCrosstalk(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorRcPtr processor = GetConstProcessor(self);
+@@ -243,7 +243,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Processor_getMetadata(PyObject * self)
++        PyObject * PyOCIO_Processor_getMetadata(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorRcPtr processor = GetConstProcessor(self);
+@@ -307,7 +307,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Processor_getCpuCacheID(PyObject * self)
++        PyObject * PyOCIO_Processor_getCpuCacheID(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorRcPtr processor = GetConstProcessor(self);
+diff --git a/src/pyglue/PyProcessorMetadata.cpp b/src/pyglue/PyProcessorMetadata.cpp
+index a074e30..3331ea1 100644
+--- a/src/pyglue/PyProcessorMetadata.cpp
++++ b/src/pyglue/PyProcessorMetadata.cpp
+@@ -59,9 +59,9 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_ProcessorMetadata_init(PyOCIO_ProcessorMetadata * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_ProcessorMetadata_delete(PyOCIO_ProcessorMetadata * self, PyObject * args);
+-        PyObject * PyOCIO_ProcessorMetadata_getFiles(PyObject * self);
+-        PyObject * PyOCIO_ProcessorMetadata_getLooks(PyObject * self);
++        void PyOCIO_ProcessorMetadata_delete(PyOCIO_ProcessorMetadata * self);
++        PyObject * PyOCIO_ProcessorMetadata_getFiles(PyObject * self, PyObject *);
++        PyObject * PyOCIO_ProcessorMetadata_getLooks(PyObject * self, PyObject *);
+         
+         ///////////////////////////////////////////////////////////////////////
+         ///
+@@ -138,12 +138,12 @@ OCIO_NAMESPACE_ENTER
+             return -1;
+         }
+         
+-        void PyOCIO_ProcessorMetadata_delete(PyOCIO_ProcessorMetadata *self, PyObject * /*args*/)
++        void PyOCIO_ProcessorMetadata_delete(PyOCIO_ProcessorMetadata *self)
+         {
+             DeletePyObject<PyOCIO_ProcessorMetadata>(self);
+         }
+         
+-        PyObject * PyOCIO_ProcessorMetadata_getFiles(PyObject * self)
++        PyObject * PyOCIO_ProcessorMetadata_getFiles(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorMetadataRcPtr metadata = GetConstProcessorMetadata(self);
+@@ -154,7 +154,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_ProcessorMetadata_getLooks(PyObject * self)
++        PyObject * PyOCIO_ProcessorMetadata_getLooks(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstProcessorMetadataRcPtr metadata = GetConstProcessorMetadata(self);
+diff --git a/src/pyglue/PyTransform.cpp b/src/pyglue/PyTransform.cpp
+index e381160..c9bc4dd 100644
+--- a/src/pyglue/PyTransform.cpp
++++ b/src/pyglue/PyTransform.cpp
+@@ -183,11 +183,11 @@ OCIO_NAMESPACE_ENTER
+         ///
+         
+         int PyOCIO_Transform_init(PyOCIO_Transform * self, PyObject * args, PyObject * kwds);
+-        void PyOCIO_Transform_delete(PyOCIO_Transform * self, PyObject * args);
++        void PyOCIO_Transform_delete(PyOCIO_Transform * self);
+         PyObject * PyOCIO_Transform_str(PyObject * self);
+-        PyObject * PyOCIO_Transform_isEditable(PyObject * self);
+-        PyObject * PyOCIO_Transform_createEditableCopy(PyObject * self);
+-        PyObject * PyOCIO_Transform_getDirection(PyObject * self);
++        PyObject * PyOCIO_Transform_isEditable(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Transform_createEditableCopy(PyObject * self, PyObject *);
++        PyObject * PyOCIO_Transform_getDirection(PyObject * self, PyObject *);
+         PyObject * PyOCIO_Transform_setDirection(PyObject * self,PyObject * args);
+         
+         ///////////////////////////////////////////////////////////////////////
+@@ -226,7 +226,7 @@ OCIO_NAMESPACE_ENTER
+         0,                                          //tp_as_mapping
+         0,                                          //tp_hash 
+         0,                                          //tp_call
+-        PyOCIO_Transform_str,                       //tp_str
++        (reprfunc)PyOCIO_Transform_str,             //tp_str
+         0,                                          //tp_getattro
+         0,                                          //tp_setattro
+         0,                                          //tp_as_buffer
+@@ -269,7 +269,7 @@ OCIO_NAMESPACE_ENTER
+             return -1;
+         }
+         
+-        void PyOCIO_Transform_delete(PyOCIO_Transform *self, PyObject * /*args*/)
++        void PyOCIO_Transform_delete(PyOCIO_Transform *self)
+         {
+             DeletePyObject<PyOCIO_Transform>(self);
+         }
+@@ -284,12 +284,12 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+ 
+-        PyObject * PyOCIO_Transform_isEditable(PyObject * self)
++        PyObject * PyOCIO_Transform_isEditable(PyObject * self, PyObject *)
+         {
+             return PyBool_FromLong(IsPyTransformEditable(self));
+         }
+         
+-        PyObject * PyOCIO_Transform_createEditableCopy(PyObject * self)
++        PyObject * PyOCIO_Transform_createEditableCopy(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstTransformRcPtr transform = GetConstTransform(self, true);
+@@ -303,7 +303,7 @@ OCIO_NAMESPACE_ENTER
+             OCIO_PYTRY_EXIT(NULL)
+         }
+         
+-        PyObject * PyOCIO_Transform_getDirection(PyObject * self)
++        PyObject * PyOCIO_Transform_getDirection(PyObject * self, PyObject *)
+         {
+             OCIO_PYTRY_ENTER()
+             ConstTransformRcPtr transform = GetConstTransform(self, true);

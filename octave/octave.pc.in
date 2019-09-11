@@ -1,0 +1,10 @@
+version=@VERSION@
+libdir=/usr/@LIB@/octave/${version}
+includedir=/usr/include/octave-${version}/octave
+
+Name: octave
+Description: A High Level Programming Language
+Version: ${version}
+Libs: -L${libdir}
+Cflags: -I${includedir}
+

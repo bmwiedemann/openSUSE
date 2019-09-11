@@ -1,0 +1,50 @@
+#I can't look into the issue deeply right now, but you can probably just
+#comment out 'versionwarning.extension' in docs/conf.py temporarily to get
+#past the error.
+#
+#
+#StevenLoria.com
+#
+#
+#On Wed, Mar 27, 2019 at 4:56 AM pgajdos <pgajdos@suse.cz> wrote:
+#
+#> Hello,
+#>
+#> I am currently trying to build above, versions:
+#> marshmallow 2.19.1
+#> sphinx-version-warning 1.1.2, tried also 1.1.1
+#>
+#> I am getting following error:
+#>
+#> [    4s] Exception occurred:
+#> [    4s]   File
+#> "/usr/lib/python3.7/site-packages/versionwarning/signals.py", line 66, in
+#> generate_versionwarning_data_json
+#> [    4s]     os.mkdir(data_path)
+#> [    4s] PermissionError: [Errno 13] Permission denied:
+#> '/usr/lib/python3.7/site-packages/versionwarning/_static/data'
+#> [    4s] The full traceback has been saved in
+#> /tmp/sphinx-err-ltqp3qvg.log, if you want to report the issue to the
+#> developers.
+#> [    4s] Please also report this if it was a user error, so that a better
+#> error message can be provided next time.
+#> [    4s] A bug report can be filed in the tracker at <
+#> https://github.com/sphinx-doc/sphinx/issues>. Thanks!
+#> [    4s] make: *** [Makefile:53: html] Error 2
+#> [    4s] error: Bad exit status from /var/tmp/rpm-tmp.X6uCeq (%build)
+#>
+#> I am perhaps hitting
+#>
+# https://github.com/humitos/sphinx-version-warning/issues/22
+Index: marshmallow-2.19.1/docs/conf.py
+===================================================================
+--- marshmallow-2.19.1.orig/docs/conf.py	2019-03-16 21:09:37.000000000 +0100
++++ marshmallow-2.19.1/docs/conf.py	2019-04-01 10:00:19.833567622 +0200
+@@ -35,7 +35,6 @@ extensions = [
+     'sphinx.ext.viewcode',
+     'alabaster',
+     'sphinx_issues',
+-    'versionwarning.extension',
+ ]
+ 
+ primary_domain = 'py'

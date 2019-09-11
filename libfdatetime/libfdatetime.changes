@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Apr 15 19:45:48 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180910
+        * Worked on POSIX timestamp in nanoseconds
+        * Worked on floatingtime
+
+-------------------------------------------------------------------
+Sun Oct  1 22:21:47 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170902
+	* applied 2017 updates
+	* worked on tests
+	* improved handling of strings with invalid syntax
+
+-------------------------------------------------------------------
+Wed Jan 27 12:31:00 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20150507
+	* fix in POSIX timestamp for missing sign check
+
+-------------------------------------------------------------------
+Thu Jan  8 20:22:36 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150104
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+
+-------------------------------------------------------------------
+Thu Aug 14 13:34:51 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to 0~20140105
+	* 2014 update
+	* updated dependencies
+	* added copy to int functions
+
+-------------------------------------------------------------------
+Thu Nov 21 02:37:37 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to 0~20130904
+	* code clean up
+	* worked on tests
+	* updated dependencies
+	* textual changes
+	* maximum string size is now only returned for invalid date time values
+- change compression to gz to simplify updates
+
+-------------------------------------------------------------------
+Tue Jul 30 20:45:15 UTC 2013 - Greg.Freemyer@gmail.com
+
+- cleanup specfile comments
+
+-------------------------------------------------------------------
+Mon Apr 22 19:59:39 UTC 2013 - Greg.Freemyer@gmail.com
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr  4 19:27:35 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20130317) for build.opensuse.org

@@ -1,0 +1,25 @@
+Index: beautifulsoup4-4.6.1/bs4/testing.py
+===================================================================
+--- beautifulsoup4-4.6.1.orig/bs4/testing.py
++++ beautifulsoup4-4.6.1/bs4/testing.py
+@@ -677,7 +677,7 @@ class XMLTreeBuilderSmokeTest(object):
+         self.assertTrue(b"&lt; &lt; hey &gt; &gt;" in encoded)
+ 
+     def test_can_parse_unicode_document(self):
+-        markup = u'<?xml version="1.0" encoding="euc-jp"><root>Sacr\N{LATIN SMALL LETTER E WITH ACUTE} bleu!</root>'
++        markup = u'<?xml version="1.0""><root>Sacr\N{LATIN SMALL LETTER E WITH ACUTE} bleu!</root>'
+         soup = self.soup(markup)
+         self.assertEqual(u'Sacr\xe9 bleu!', soup.root.string)
+ 
+Index: beautifulsoup4-4.6.1/bs4/tests/test_lxml.py
+===================================================================
+--- beautifulsoup4-4.6.1.orig/bs4/tests/test_lxml.py
++++ beautifulsoup4-4.6.1/bs4/tests/test_lxml.py
+@@ -67,6 +67,7 @@ class LXMLTreeBuilderSmokeTest(SoupTest,
+         # Make sure that the deprecated BSS class uses an xml builder
+         # if one is installed.
+         with warnings.catch_warnings(record=True) as w:
++            warnings.simplefilter("always")
+             soup = BeautifulStoneSoup("<b />")
+         self.assertEqual(u"<b/>", unicode(soup.b))
+         self.assertTrue("BeautifulStoneSoup class is deprecated" in str(w[0].message))

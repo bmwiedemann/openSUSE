@@ -1,0 +1,24 @@
+Quiet lintian by properly escaping minus signs in upstream manpage.
+
+Index: scheme48/doc/scheme48.man
+===================================================================
+--- scheme48.orig/doc/scheme48.man	2009-03-02 19:41:25.000000000 -0800
++++ scheme48/doc/scheme48.man	2009-03-02 19:42:01.000000000 -0800
+@@ -6,7 +6,7 @@
+ LS48 \- a Scheme interpreter
+ .SH SYNOPSIS
+ .B LS48
+-[-i image] [-h heapsize] [-a argument]
++[\-i image] [\-h heapsize] [\-a argument]
+ .SH DESCRIPTION
+ .B LS48
+ is an implementation of the Scheme programming language as described in
+@@ -80,7 +80,7 @@
+ .nf
+      > ,build (lambda (a) (display a) (newline) 0) foo.image
+      > ,exit
+-     $ LS48 -i foo.image -a mumble
++     $ LS48 \-i foo.image \-a mumble
+      mumble
+      $ 
+ .PP

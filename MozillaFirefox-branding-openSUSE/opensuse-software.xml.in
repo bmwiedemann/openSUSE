@@ -1,0 +1,12 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
+<ShortName>openSUSE Software</ShortName>
+<Description>Search for openSUSE packages</Description>
+<InputEncoding>utf-8</InputEncoding>
+<Image width="16" height="16">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKUlEQVR4AWKAgYZDjoptR73igdgQ0Dg1AMsRRMHvUmzbKsc8m7Ft28nZiG3bdlaxbdt20lOX+dZWjfv164edeqJ9gdDxNvEzT3aOjsrOFz7eOpeFlXSczIj+kmFhJC9trOyInZMHHZxS7xNM5Rac6R2brjEMYmF80sKI70MFIfg/kvYgfE0IQTbUy+tLrr80OTo5gZaCMxh/QHAZDhaBZI+NlT508ZqJM052zkkJFqdvCFIYAzzPL5ga2lnZBDev7QoFOpA8d/LqMTR5d5MbRsKIDCsjvu7mNXUsjOgZvF+Ciq1OTu1CovtZGclTD68tQBRkJn8XgN3I3s7KxwcEs8nByq9iXwt3H5GTgSCgHmm84t+UAJ6POjmlEnc/I3diQrTbI+hxJ/phZaRHUigAkMTshdxjOP8C6DsU6FxEMirlZJVbpx5v28jBKQ4TPN4+EgWvksfuYBVbw8db5YGnHiC4hLcX6IeJKHUTqDHi/gh1CNKbRIE7lYrfeNgPsBbZL+7i1a2srHQdSvkY719A+hnna0ikBQ1YmRBUT1E6OpAPAC8AONwrGGqirQvbGGlFD6+rGjzWsrKLU/fB2wHaC2spQXorVH1GvBewPwQlx3F+jfENd27aCwUmHxU9SFmR9LsTufgEw+34P/Sbrjhjkrd0WSRwJdaDdlZxE4n7gKb5gIqchcFBrFMhuRvyUsPNqeIy/TuXnR8WN+1Eu4SFZ/onrLwwNiYz7D+rbO2MgOS2gwAAAABJRU5ErkJggg</Image>
+<Url type="text/html" method="GET" template="http://software.opensuse.org/search">
+  <Param name="p" value="1"/>
+  <Param name="baseproject" value="openSUSE:%PRJNAME%"/>
+  <Param name="q" value="{searchTerms}"/>
+</Url>
+<SearchForm>https://software.opensuse.org/search</SearchForm>
+</SearchPlugin>

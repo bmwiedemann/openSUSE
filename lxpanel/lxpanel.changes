@@ -1,0 +1,488 @@
+-------------------------------------------------------------------
+Wed Nov 01 13:54:13 UTC 2017 - gutaper@gmail.com
+
+- Update to 0.9.3
+    * Finally fixed battery calculations, it missed Power so left time was always at zero.
+    * Fixed task window raising on drop file on it (was broken since 0.9.0).
+
+- Added lxpanel-0.9.3-panel_config.patch
+    * Fix rpmlint warning
+- Added lxpanel-0.9.3-default_config.patch
+    * Fix rpmlint warning
+
+-------------------------------------------------------------------
+Sun Dec 25 13:54:13 UTC 2016 - trcs@gmx.com
+
+- Update to 0.9.2
+  * Fixed battery selection if battery detached but another is 
+    available
+  * Fixed battery percentage calculations if charge isn't available 
+    but energy is, it appears broken in 0.9.0
+  * Fixed wrong state change on task button when hovered, it 
+    shouldn't receive selected state until window has urgency
+  * Fixed wrong flat button appearance when hovered, it wasn't flat
+  
+  Changes on 0.9.2 since 0.9.1:
+  
+  * Fixed build failure without ALSA
+  * Added alternative mixers if build using OSS
+  * Fixed panel flicker with some window managers
+
+-------------------------------------------------------------------
+Thu Nov 24 22:40:25 UTC 2016 - jengelh@inai.de
+
+- Reword description.
+
+-------------------------------------------------------------------
+Mon Nov 21 08:09:18 UTC 2016 - mvetter@suse.com
+
+- Update to 0.9.0:
+    * Added support for laptops with multiple batteries.
+    * Added a way to scroll through workspaces by using the scroll wheel over the deskno plugin.
+    * Bunch of fixes for GTK+ 3.0 compatibility.
+    * Fixed outdated lxpanel man page.
+    * Fixed weather locations query (since YQL was changed recently).
+    * Converted space plugin into internal PanelSpace widget in liblxpanel.
+    * Converted task button into widget class to avoid ambiguous code.
+    * Added support for third-party plugins localized descriptions.
+    * Implemented “lxpanelctl command …” to send message to panel plugin.
+    * Added APIs for PanelIconGrid to draw focus on drop.
+    * Converted launch button into widget class for more easy management.
+    * Adjusted PanelIconGrid: min spacing is now 1, no_window flag is now left unset by default, spacing is taken into account on overall size to be consistent on chosen orientation.
+    * Implemented dropping file or folder onto launch bar to create launcher.
+    * Implemented dragging launchers around launchbars (between panels too).
+    * Implemented dropping file or folder onto free panel space to create launcher.
+    * Implemented dragging launchers from launchbar to some free panel space.
+    * Added stripping scheme from URI menu://applications/… when a launcher is created, only menu-id itself should be used.
+    * Implemented moving plugins across panel by means of middle button drag and drop, i.e. middle-click it then drag, and plugin will follow the mouse until middle button is released.
+    * Merged ‘volume’ and ‘volumealsa’ plugins into single plugin which uses the same interface but different driver, in dependency on how it was built – either OSS or ALSA interface is used. Name ‘volume’ is used for simplicity while ‘volumealsa’ is supported for compatibility.
+    * Made default channel in ‘volume’ plugin definable in config. If there is no config statement then plugin finds first usable one, the same as before.
+    * Made clicks for Toggle Mute, Show Slider and Open Mixer actions of the ‘volume’ plugin configurable. Defaults are the same: left-click shows slider, middle-click toggles mute state.
+    * Added support for ‘PCM’ and ‘Headphone’ channels for OSS mixer.
+    * Added support for other (not default one) ALSA cards in ‘volume’ plugin via ‘CardNumber’ setting.
+    * Added hotkey support into ‘volume’ plugin to be able to use multimedia keys for volume changing directly by plugin.
+    * Fixed missing libkeybinder initialization (keybinding did not work).
+    * Fixed check for attempt to add a binding for the same hotkey which is already bound elsewhere.
+    * Added a configuration dialog to the ‘volume’ plugin with all the new settings available to choose and set, including preset of discovered mixers, with ability to type own command as well.
+    * Fixed crash on action on task window which was deleted while task menu is still opened.
+    * Fixed “dynamic” panel width allocation.
+    * Fixed PanelIconGrid allocation in rigth-to-left languages, it was wrong so some icons might be invisible or placed under other plugins.
+    * Removed call to gtk_widget_set_style() from volume slider to fix colors of current theme.
+    * Changed icon size handling on task bar – it may now maintain the same size as rest of icons. It may affect users who are used to have thems maller, it’s why this feature was made configurable, corresponding config variable is UseSmallerIcons and default is 1 (old behavior).
+    * Changed volume slider popup behavior – it now hides when loses focus.
+    * Fixed invalid memory access in weather plugin.
+    * Fixed incorrect reporting units on “Feel” value in weather plugin. YQL always reports Fahrenheit degrees there.
+    * Added a safeguard on menu cache returning items with empty Exec line.
+    * Fixed maximizing windows using task bar, GDK functions not always work.
+    * Fixed wrong bind of preferences dialog to the panel, which resulted in other dialogs appear on the same workspace where preferences was.
+    * Expanded launch buttons active area to launchbar borders so if clicked even into desktop corner, it should activate button at that corner.
+    * Fixed few memory leaks in ‘batt’ plugin.
+    * Removed unwanted conversions with energy for charge in ‘batt’ plugin which will mess up tooltip indications, and may make rate/percentage calculations invalid.
+    * Replaced Xclimsg() with Xclimsgx() to be screen aware with X11 message.
+    * Added a workaround for WM like MWM which does not properly resize down widgets of panel kind. It still leaves artefacts but is better now.
+    * Added a workaround on GtkBox behavior which does not send allocation requests to children in some cases, so resizing of launchtaskbar on panel height change was broken.
+    * Fixed PanelIconGrid layout on vertical panels with more than 1 column.
+
+- Remove upstreamed patches:
+ * lxpanel-0.8.1-Do-not-load-indicators-in-the-constructor.patch
+ * lxpanel-0.8.1-Fix-crash-with-invalid-size-of-icon.patch
+ * lxpanel-0.8.1-Fix-incorrect-panel-geometry-initialization.patch
+ * lxpanel-0.8.1-Fix-lxpanel.pc-dependencies.patch
+ * lxpanel-0.8.1-Fix-taskbar-plugin-crash.patch
+
+-------------------------------------------------------------------
+Sat Oct 31 12:29:24 UTC 2015 - trcs@gmx.com
+
+- Added lxpanel-0.8.1-Fix-lxpanel.pc-dependencies.patch
+- Added lxpanel-0.8.1-Fix-taskbar-plugin-crash.patch
+  * Fixes SF#758
+- Added lxpanel-0.8.1-Fix-incorrect-panel-geometry-initialization.patch
+  * Fixes SF#753
+- Added lxpanel-0.8.1-Fix-crash-with-invalid-size-of-icon.patch
+- Added lxpanel-0.8.1-Do-not-load-indicators-in-the-constructor.patch
+  * Prevents loading indicators twice
+  
+-------------------------------------------------------------------
+Wed May  6 21:25:45 UTC 2015 - trcs@gmx.com
+
+- New upstream version 0.8.1
+  * Improved OSS headers detection a bit.
+  * Fixed expand setting on plugins with default_expand when more 
+    than one is available on the same panel.
+  * Fixed icon for task button that retrieved using WM_HINTS.
+  * Fixed wrong PanelIconGrid arrangement in vertical panel 
+    orientation.
+  * Fixed missing handlers disconnect when destroying Task 
+    structure.
+  * Removed writing debug messages to file when 'indicator' plugin 
+    is in use - it will write all the debug there and that changes 
+    the behavior which was not intended really.
+  * Corrected background for 'indicator' plugin.
+  * Fixed update 'indicator' plugin on configuration changes.
+  * Fixed battery status: if discharge rate is 0 then it's charged.
+  * Fixed incorrect cycle in netproc_devicelist_clear() leading to 
+    crash on resume (after suspend).
+  * Fixed scanning for temperature sensors which failed with some 
+    kernels.
+  * Changed reconfiguring panel behavior: callbacks to plugins will
+    be sent on idle, not immediately to avoid "stuck" spin button 
+    (and eventually even crash was possible).
+  * Fixed initial icon on 'volumealsa' to show real state instead
+    of muted.
+  * Fixed 'dclock' updating that it will show time on start, not 
+    just on next second change. It would create impression it's 
+    slow otherwise.
+  * Fixed wrong task button activation on not processed drag of 
+    button.
+
+-------------------------------------------------------------------
+Mon Dec  8 08:16:40 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 0.8.0
+  * complete multi-monitor support
+  * improve and further simplify plugins API
+  * full changelog at http://blog.lxde.org/?p=1323
+  
+-------------------------------------------------------------------
+Thu Oct 23 21:55:31 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.7.2
+  * Fixed unhiding panel if it becomes empty and height_when_hidden
+    is 0
+  * Fixed invalid X protocol word size: despite of stating it 32 
+    bit, the X server uses unsigned long which is 64 bit on 64-bit 
+    architectures
+  * Adapted to use libmenu-cache >= 1.0.0 - it could show empty 
+    folders in the desktop menu
+  * Fixed crash in taskbar after visible task changed name then 
+    gone
+  * Ensured panel background update after some plugin was resized
+  * FileManager statement from old config should never be scanned
+    again
+  * Fixed positioning of new created panel, the edge was not saved
+  * Eliminated hardcoded "xterm" in 'volumealsa' plugin - LibFM has
+    enough means to call terminal when needed
+  * Fixed crash if 'volumealsa' plugin initialization failed
+- removed unnecessary patches
+  * lxpanel-0.7.1-fix-empty-panel-unhide-if-height_when_hidden-is-0.patch
+  * lxpanel-0.7.1-fix-panel-covering-maximized-windows.patch 
+
+-------------------------------------------------------------------
+Mon Sep 22 12:46:40 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.7.1
+  * Fixed search for the gtkrc file.
+  * Fixed search path for configuration - it should be not 
+    compilation time path but paths using $XDG_CONFIG_DIRS.
+  * Fixed incorrect flag for 'launchbar' plugin which marks him 
+    expandable.
+  * Fixed dragging of task buttons.
+  * Corrected using $XDG_MENU_PREFIX to work the same way as 
+    libfm does.
+  * Fixed using font description, font in gtkrc file was ignored.
+  * Improved search for hw sensors in /sys/class/hwmon/ hierarchy.
+  * Improved check for critical temperatures in 'termal' plugin, 
+    now each individual hardware setting (if available) is also 
+    taken into consideration.
+  * Fixed parsing alias name in 'weather' plugin settings.
+  * Got rid of all individual plugins/*/Makefile - those rules 
+    more easily can be contained in the plugins/Makefile.am. 
+    Adding a simple plugin basically would mean to add three 
+    lines into that file instead of writing whole Makefile.am.
+  * Fixed invalid system config path search ("lxpanel" part was 
+    missing).
+  * Fixed incorrect requirements in the lxpanel.pc file.
+  * Fixed memory leak in the 'volumealsa' plugin.
+  * Now 'volumealsa' checks for 'MixerCommand' setting in the 
+	configuration before guessing it.
+  * Fixed color saving in the configuration.
+  * Fixed incomplete resources deallocation in 'volumealsa' 
+    plugin.
+  * Fixed make uninstall (it left plugins installed).
+  * Fixed monitor number set from GUI.
+  * Fixed hang on netstatus icon in auto-hidden panel.
+  * Fixed icon grid compilation with GTK+ < 2.20.
+  * Fixed compilation without menu-cache.
+  * Now man pages are included in the GIT and tarball, not just 
+    xml files.
+  * Fixed incorrect printf arguments in 'netstatus' plugin.
+- Removed 
+  lxpanel-0.7.0-fix-crash-after-click-on-empty-part-of-panel.patch
+- Added 
+  lxpanel-0.7.1-fix-empty-panel-unhide-if-height_when_hidden-is-0.patch
+- Added lxpanel-0.7.1-fix-panel-covering-maximized-windows.patch
+
+-------------------------------------------------------------------
+Thu Aug 21 18:43:33 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.7.0
+  * New plugin 'launchtaskbar' with combined functionality from 
+    'launchbar' and 'taskbar'. For easy support codebase is 
+    merged instead of doing duplicates but appearance is still 
+    the same in dependency from mode chosen.
+  * Integrated with LibFM, all launching and application selection 
+    in the launchbar settings is done by LibFM now.
+  * New simpler plugins API implementation, using LibFM plugins 
+    loader. In new API some callbacks were simplified and some 
+    removed, see all the detailed descriptions in the file 
+    plugin.h.
+  * New plugins are GtkWidgets now, therefore there is no explicit 
+    destroy for them or their data, all will be handled implicitly.
+  * Changed config access with simple API similar to libconfig one.
+  * Using icon caching from LibFM.
+  * Applications properties in the menu are managed by LibFM API, 
+    no more calls to lxshortcut application.
+  * Setting for file manager is not handled on its own but XDG 
+    setting is used now, i.e. default choice for "inode/directory" 
+    MIME type.
+  * Setting for terminal is handled by LibFM, therefore it is the 
+    same as in PCManFM now, no own setting anymore.
+  * Replaced configure option --enable-cast-checks with 
+    --enable-debug.
+  * Replaced 'pager' plugin with former 'wnckpager' one. The 
+    'wnckpager'name is still supported for compatibility but it is 
+    the same plugin.
+  * Added new plugin 'weather', written by Piotr Sipika.
+  * Using drag & drop handling from LibFM in launchbar. It is 
+    possible now to use any kind of files as launchbuttons, and 
+    folders can receive drops as well.
+  * Allowed drag applications from system menu plugin so they now 
+    can be dropped somewhere. The obvious example is drop on the 
+    desktop.
+  * Using human readable sensor names if available (like 'Core 0', 
+    etc.).
+  * Panel is allowed to hide completely (setting width when hidden 
+    to 0).
+  * The IconGrid converted into GtkContainer derived class 
+    PanelIconGrid.
+  * Allowed to use <USER_CONFIG_DIR>/lxpanel/<profile>/gtkrc for 
+    the panel custom style setup.
+  * The panel itself in not a struct now but a GtkWindow derived 
+    class so no special API to destroy it is required.
+  * Improved the layout of icons in panel, they will not align to 
+    the edge of screen but appropriately to panel height. Some of 
+    them did that already but some were aligned to the screen edge 
+    without any gap.
+  * The button to configure plugin in panel plugins configuration 
+    tab is renamed from 'Edit' to 'Properties'.
+  * All logging is unified. The option --log is deprecated and 
+    isn't used anymore. User can change logs appearance using 
+    G_MESSAGES_DEBUG and G_MESSAGES_PREFIXED environment variables 
+    (see GLib docs).
+  * Old APIs are in place still for backward compatibility with 
+    third party plugins but will be dropped later, supposedly on 
+    next feature release point. Old APIs are not present in public 
+    headers, compatibility is on binary level only.
+  * A whole lot of bugfixes.
+- added 
+  lxpanel-0.7.0-fix-crash-after-click-on-empty-part-of-panel.patch
+  to make LXPanel not to crash when it's clicked on an empty part
+
+-------------------------------------------------------------------
+Fri May  9 18:46:40 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.6.2
+  * monitors: fix for newer kernels (>=3.14)
+  * misc,menu: ID 3615268 - lxpanel load icon from icon theme first
+  * batt: detect when battery is inserted or removed
+  * batt: don't fail if there is no battery
+  * menu: fix ID: 3614733, doesn't interpret %c in .desktop
+
+-------------------------------------------------------------------
+Sun Jan  5 11:46:02 UTC 2014 - trcs@eresmas.com
+
+- new upstream version 0.6.1
+  * no changelog provided
+
+-------------------------------------------------------------------
+Thu Mar 28 12:33:39 UTC 2013 - mvyskocil@opensuse.org
+
+- update to 0.5.12 (bugfix release, no changelog provided)
+  * obsoletes lxpanel-0.5.10-automake-1.12.patch
+  * obsoletes lxpanel-0.5.8-fix-libgmodule-underlinking.patch
+- use pkgconfig() BuildRequires when possible
+
+-------------------------------------------------------------------
+Fri Jun 22 12:25:38 UTC 2012 - mvyskocil@opensuse.org
+
+- update to 5.10
+  * configuration for two panel layout
+  * new plugins monitor, netstat and wnckpager
+- refresh automake patch and apply on 12.2+ only
+- explicitly require menu-cache
+
+-------------------------------------------------------------------
+Mon Jun 11 11:35:38 UTC 2012 - gber@opensuse.org
+
+- lxpanel includes code from Suxpanel which is GPL 2.0 only, the
+  resulting binary is thus also GPL 2.0 only and not GPL 2.0 or
+  later (bnc#766371)
+
+-------------------------------------------------------------------
+Thu Jun  7 07:07:11 UTC 2012 - pgajdos@suse.com
+
+- build with automake 1.12
+  * automake-1.12.patch
+
+-------------------------------------------------------------------
+Tue Jan 17 12:24:13 UTC 2012 - gber@opensuse.org
+
+- added lxpanel-0.5.8-fix-libgmodule-underlinking.patch in order to
+  explicitly link against libgmodule
+- removed unecessary build dependencies
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:47 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep 22 08:18:27 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in lxpanel.spec
+
+-------------------------------------------------------------------
+Fri Jul 29 22:26:44 UTC 2011 - andrea@opensuse.org
+
+- New upstream bugfix version 0.5.8
+- removed lxpanel-0.5.7-fix-gcc-warnings.patch
+  lxpanel-0.5.7-fix-gcc-warnings.patch and
+  lxpanel-0.5.7-fix-gtkrequisition.patch now in upstream code
+
+-------------------------------------------------------------------
+Tue Jul 26 22:14:24 UTC 2011 - gber@opensuse.org
+
+- added lxpanel-0.5.7-fix-gcc-warnings.patch in order to fix two
+  typos
+
+-------------------------------------------------------------------
+Sun Jul 24 22:53:49 UTC 2011 - andrea@opensuse.org
+
+- added lxpanel-0.5.7-fix-gcc-warnings.patch and
+  lxpanel-0.5.7-fix-gtkrequisition.patch to fix compiler warnings
+  and wrong usage of gtk functions
+
+-------------------------------------------------------------------
+Sun Jul 24 11:37:25 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.5.7
+  * translations update
+  * fix bugs in plugins
+- removed patch now in upstream code 
+
+-------------------------------------------------------------------
+Wed Aug 11 22:09:59 UTC 2010 - andrea@opensuse.org
+
+- added lxpanel-0.5.6-fix-alarm.patch that fix a compilation
+  error because of a conflicting type alarm
+
+-------------------------------------------------------------------
+Tue Jul 20 13:20:49 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.5.6
+- removed all previous patches now into upstream code 
+
+-------------------------------------------------------------------
+Mon Jun  7 14:15:34 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Mon May 24 10:03:36 UTC 2010 - andrea@opensuse.org
+
+- backported the following patches from upstream code to fix
+  bugs and overflows:
+	* lxpanel-0.5.5-fix-batt_status.patch
+	* lxpanel-0.5.5-fix-g_locale_to_utf8.patch
+	* lxpanel-0.5.5-fix-kbled.patch
+	* lxpanel-0.5.5-fix-panel_draw_label_text.patch
+	* lxpanel-0.5.5-fix-sort_dirmenu.patch
+	* lxpanel-0.5.5-missing_glades.patch.gz
+
+-------------------------------------------------------------------
+Sun May 23 17:45:47 UTC 2010 - andrea@opensuse.org
+
+- restored lxpanel-0.5.5-fix-sf2954636.patch, for unknown reasons,
+  the content was been erased
+
+-------------------------------------------------------------------
+Fri Apr 16 08:06:26 UTC 2010 - andrea@opensuse.org
+
+- renamed patch lxpanel-0.5.5-fix-sf#2954636.patch to
+  lxpanel-0.5.5-fix-sf2954636.patch, this avoid problems
+  because of char '#'
+
+-------------------------------------------------------------------
+Tue Apr  6 08:45:11 UTC 2010 - andrea@opensuse.org
+
+- removed un-supported locale 
+
+-------------------------------------------------------------------
+Tue Mar  2 21:44:16 UTC 2010 - andrea@opensuse.org
+
+- Fix failure to honor Terminal=true in menu
+  and launchbar #sf2954636
+
+-------------------------------------------------------------------
+Wed Feb 17 16:02:16 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.5.5
+  * Startup becomes slightly faster.
+  * Configuration dialog of launchbar applet become much faster
+  * Some translation updates.
+  * Several small bug fixes.
+- removed no more useful patches now in upstream code
+
+-------------------------------------------------------------------
+Tue Feb  2 00:54:06 UTC 2010 - andrea@opensuse.org
+
+- simply do not lose translation because of previous patch,
+  added lxpanel-0.5.4.1-translations.patch
+
+-------------------------------------------------------------------
+Sun Jan 31 11:11:17 UTC 2010 - andrea@opensuse.org
+
+- added lxpanel-0.5.4.1-fix-#sf2834685-#sf2937420.patch
+  * Blinking of the panel when autohide is enabled and
+    there is a popup from a systray icon (Bug2937420).
+  * Fix flaky operation of Raise (Bug2834685 )
+  * Remove debugging output
+- added -lang package
+
+-------------------------------------------------------------------
+Sun Dec 13 12:20:26 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.4.1
+- upstream translations improvment 
+
+-------------------------------------------------------------------
+Fri Dec 11 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.4
+
+------------------------------------------------------------------- 
+Sun Aug 09 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.3
+
+-------------------------------------------------------------------
+Sun Aug 02 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.1
+
+-------------------------------------------------------------------
+Fri Jul 31 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.5.0
+
+-------------------------------------------------------------------
+Thu Jul 14 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- new svn version
+- update to svn 1825 (in the same day) to fix some of post checks
+
+-------------------------------------------------------------------
+Fri May 22 00:45:35 UTC 2009 - andrea@opensuse.org
+
+- New package (0.4.1)
+

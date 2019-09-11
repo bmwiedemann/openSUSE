@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Wed Oct 10 14:51:02 UTC 2018 - davejplater@gmail.com
+
+- Update to version 1.6.63
+- Add openCOLLADA-pcre-redefined.patch to fix build against new pcre.
+- Upstream changes:
+  *Load images declared in profile_COMMON
+  *Corrected whitespace
+  *Subclass effect loaders from image loaders so that images
+   declared within effects are loaded properly
+
+-------------------------------------------------------------------
+Mon Jan 29 13:14:01 UTC 2018 - davejplater@gmail.com
+
+- Update to version 1.6.62, removed incorporated
+  openCOLLADA-signed-char.patch.
+- Upstream changes:
+  *Add signed char keyword
+  *Expose COLLADASaxFWL::Loader string ID -> UniqueId map
+  *Export "Force to sleep" attribute.
+  *Consistent use of std::abs
+
+-------------------------------------------------------------------
+Sun Jan 28 09:13:48 UTC 2018 - davejplater@gmail.com
+
+- Remove conflicts with old libOpenCOLLADA0 to allow parallel
+  installation of different so versions.
+
+-------------------------------------------------------------------
+Sat Jun 10 07:38:32 UTC 2017 - davejplater@gmail.com
+
+- Update to release 1.6.51 to sync with blender.
+- Bumped minor soversion to 3 to for blender fixes.
+- Removed opencollada-no-undefined.patch.
+- Rebased openCOLLADA-no-daevalidator.patch.
+- Upstream changes from git log:
+  * Better platform detection of hash-related includes.
+  * CMAKE_VS_DEVENV_COMMAND variable not supported in older
+    versions of cmake.
+  * Code coverage specific code disabled.
+  * Correctly link UTF (fixes opencollada-no-undefined.patch issue).
+  * libBuffer depends on UTF.
+  * PhysX schema.
+
+-------------------------------------------------------------------
+Thu May 18 09:34:57 UTC 2017 - davejplater@gmail.com
+
+- Update to version 1.6.47 Improved error handling (reporting
+  errors instead of terminating Blender).
+- For upstream changes see:
+  https://github.com/KhronosGroup/OpenCOLLADA/tree/v1.6.47
+
+-------------------------------------------------------------------
+Tue Apr 11 10:39:50 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Fri Apr  7 11:45:13 UTC 2017 - davejplater@gmail.com
+
+- Update to version 1.6.43
+- Rebased opencollada-no-undefined.patch
+- Added openCOLLADA-no-daevalidator.patch to prevent the building
+  of the app DAEvalidator which tries to use internal zlib.
+- For upstream changes see:
+  https://github.com/KhronosGroup/OpenCOLLADA/tree/v1.6.43
+
+-------------------------------------------------------------------
+Tue Aug 16 13:48:09 UTC 2016 - jengelh@inai.de
+
+- Update rpm groups and descriptions
+
+-------------------------------------------------------------------
+Sun Aug 14 15:28:36 UTC 2016 - davejplater@gmail.com
+
+- Update to release version 1.6.25
+- Renamed openCOLLADA-devel to libopenCOLLADA-devel, openCOLLADA-doc
+  to libopenCOLLADA-doc and openCOLLADA-util to libopenCOLLADA-util
+  due to upstream having a correct versioning scheme and version
+  numbers derived from git are no longer neccessary. Conflicted,
+  provided and obsoleted the old packages.
+- Split libraries into separate sub packages.
+- Refreshed patches.
+- For upstream changes see:
+  https://github.com/KhronosGroup/OpenCOLLADA/tree/v1.6.25
+
+-------------------------------------------------------------------
+Wed May 25 11:57:31 UTC 2016 - dimstar@opensuse.org
+
+- Add openCOLLADA-signed-char.patch: Use signed char; 'char' by
+  itself depends on arch implementation
+  (gh#KhronosGroup/OpenCOLLADA#439).
+
+-------------------------------------------------------------------
+Tue Aug  4 12:09:52 UTC 2015 - davejplater@gmail.com
+
+- Update to version 1_3335ac1 to enable blender to build with
+  openCOLLADA again.
+- Reworked opencollada-includes.patch
+
+-------------------------------------------------------------------
+Sat Jan  3 11:13:47 UTC 2015 - tchvatal@suse.com
+
+- Update package to match what is done in Fedora + what is needed
+  for libreoffice. Move from svn snapshot to git snapshot
+- Added patches:
+  * opencollada-cmake.patch
+  * opencollada-includes.patch
+  * opencollada-no-undefined.patch
+- Obsoleted patches:
+  * openCOLLADA-COLLADABU_ASSERT.patch
+  * openCOLLADA-cmakelinuxbuild.patch
+  * openCOLLADA-gcc47.patch
+
+-------------------------------------------------------------------
+Mon Mar 26 20:54:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to svn 868:
+  + Support make install target
+  + Fixes build with gcc 4.7
+- Rebase openCOLLADA-cmakelinuxbuild.patch
+- Add openCOLLADA-gcc47.patch: Fix some more gcc 4.7 issues.
+
+-------------------------------------------------------------------
+Sun May  8 13:02:51 UTC 2011 - davejplater@gmail.com
+
+- Fix for build flags included in openCOLLADA-cmakelinuxbuild.patch
+  by adding -O2 to all builds except openCOLLADASaxFrameworkLoader.
+
+-------------------------------------------------------------------
+Fri May  6 19:00:48 UTC 2011 - davejplater@gmail.com
+
+- Moved the headers in devel subpackage to a named directory under
+  /usr/include/<library name>
+
+-------------------------------------------------------------------
+Fri May  6 09:51:54 UTC 2011 - davejplater@gmail.com
+
+- Bumped library revision to 1 due to build changes.
+
+-------------------------------------------------------------------
+Tue May  3 01:41:03 UTC 2011 - davejplater@gmail.com
+
+- Update to svn 839.
+- Fixed build with openCOLLADA-COLLADABU_ASSERT.patch.
+- Upstream changes :
+  *add hash_multimap
+  *clean up header
+  *fix asserts
+
+-------------------------------------------------------------------
+Sat Apr 23 14:01:13 UTC 2011 - davejplater@gmail.com
+
+- Switched to cmake build system and improved library versioning
+  using openCOLLADA-cmakelinuxbuild.patch from Fedora with changes.
+- libUTF, libbuffer and libftoa are no longer packaged and are
+  statically linked to the openCOLLADA libs that use them.
+
+-------------------------------------------------------------------
+Thu Mar 31 23:03:58 UTC 2011 - davejplater@gmail.com
+
+- Update to svn836
+- Upstream changes :
+  *fix validation preprocessor flag
+  *inti member variables
+  *fix uri copy ctor, add missing includes
+  *replace asserts
+  *fix import
+  *fix crash in utf conversion with recent gcc
+  *replace asserts by custom assert
+
+-------------------------------------------------------------------
+Fri Feb 11 22:20:31 UTC 2011 - davejplater@gmail.com
+
+- Update to svn827
+- Upstream changes:
+  *fix Issue 125: cgfx shader source file is not honoring the
+   search path on export.
+  *fix Issue 89: CONTINUITY semantic is not defined. Define all
+   semantics in COLLADASWInputList.h
+  *partially fix Issue 71: wrong opacity for effects without set
+   transparency
+  *fix Issue 65: COLLADASaxFWL::Loader::loadDocument() don't check
+   if the file correctly loads
+  *fix Issue 62: build fixes for linux (gcc 4.4.3)
+  *ignore bin and lib folder in pcre
+  *Issue 35: IWriter start, cancel, and finish methods not called
+  *remove precompiled pcre pattern from source
+  *fix Issue 122: Root::loadDocument("../a/b/c.dae") attempts to
+   open "../a/a/b/c.dae"
+  *Issue 145: std::terminate() while loading lightwave dae through
+   OpenCOLLADAValidator
+  *fix Issue 146: OpenCOLLADAValidator crash
+   COLLADASaxFWL::LibraryEffectsLoader::handleTexture
+  *fix Issue 151: CMakeLists.txt overwrites custom CMAKE_CXX_FLAGS
+  *Issue 153: crash in <articulated_system> improvements in
+   kinematics loader related to mathml
+
+-------------------------------------------------------------------
+Fri Jan  7 18:10:44 UTC 2011 - davejplater@gmail.com
+
+- Spec file change to fix SLE_11_SP1 build made by repabuild.
+
+-------------------------------------------------------------------
+Mon Dec 27 11:07:43 UTC 2010 - davejplater@gmail.com
+
+- Update to svn788
+- Upstream changes 
+  *fix Issue 148: Glitch in ftoa and dtoa (rename variables)
+
+-------------------------------------------------------------------
+Mon Nov 22 09:38:55 UTC 2010 - davejplater@gmail.com
+
+- Update to svn785
+- Prevent build of dae2ogre with openCOLLADA-nodae2ogre.patch
+- Upstream changes :
+  *apply path from Issue 4: CMake or Scons
+  *fix performance issue with many materials
+  *fix: do not write empty <extra> element in <profile_COMMON>
+  *apply patch (only first change) provided in Issue 136: Fix for
+   color sets not exporting in colladaMaya
+  *fix Issue 137: SetParam does not properly export float<n> with
+   0's in it
+
+-------------------------------------------------------------------
+Sat Nov  6 10:08:12 UTC 2010 - davejplater@gmail.com
+
+- Update to svn 779 Removed openCOLLADA-assign_value.patch which is
+  already incorporated in this revision.
+- Upstream changes :
+  *fix Issue 126: cgfx shader source file is not honoring the search
+   path on export.
+  *apply patch provided in Issue 4: CMake or Scons (add cmake files)
+  *fix Issue 132: Small fix from compiling blender - collada with
+   -Wall -Werror
+  *fix Issue 131: Gcc will be initialized after warning fixes
+
+-------------------------------------------------------------------
+Tue Oct 26 23:59:02 UTC 2010 - pth@suse.de
+
+- Actually assign the passed value in setter function.
+- Manually strip libraries
+
+-------------------------------------------------------------------
+Sun Oct 24 11:22:11 UTC 2010 - davejplater@gmail.com
+
+- Added patch COLLADA-linuxbuild.patch to fix shared lib build includes.
+- Added patch openCOLLADA-buildflags.patch for optflags.
+- Added patch openCOLLADA-soname.patch to add sonames to libs.
+
+-------------------------------------------------------------------
+Mon Oct 18 14:06:52 UTC 2010 - davejplater@gmail.com
+
+- Created new package openCOLLADA needed by blender-2.5x
+- OpenCOLLADA is a stream based reader and writer library for
+  COLLADA files. support@opencollada.org
+
+

@@ -1,0 +1,11 @@
+--- src/cmd/ksh93/sh/lex.c
++++ src/cmd/ksh93/sh/lex.c	2012-01-16 15:09:38.000000000 +0000
+@@ -1893,6 +1893,8 @@ static int here_copy(Lex_t *lp,register
+ 					sfputc(sp,'\\');
+ 				}
+ 			}
++			if (LEN < 1)
++				LEN = 1;
+ 			bufp = fcseek(-LEN);
+ 		}
+ 		else

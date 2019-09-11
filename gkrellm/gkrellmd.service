@@ -1,0 +1,10 @@
+[Unit]
+Description=GNU Krell Monitors server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gkrellmd
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,47 @@
+From cd8e175738f7742fbb7c9e9d329039371bc0e579 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 30 Apr 2019 10:51:42 +0100
+Subject: [PATCH] Use ThreadPool from multiprocessing.pool to avoid
+ leakings
+
+---
+ salt/grains/core.py | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 796458939d..fec7b204bc 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -26,7 +26,7 @@ from errno import EACCES, EPERM
+ import datetime
+ import warnings
+ 
+-from multiprocessing.dummy import Pool as ThreadPool
++from multiprocessing.pool import ThreadPool
+ 
+ # pylint: disable=import-error
+ try:
+@@ -2225,10 +2225,14 @@ def fqdns():
+     # Create a ThreadPool to process the underlying calls to 'socket.gethostbyaddr' in parallel.
+     # This avoid blocking the execution when the "fqdn" is not defined for certains IP addresses, which was causing
+     # that "socket.timeout" was reached multiple times secuencially, blocking execution for several seconds.
+-    pool = ThreadPool(8)
+-    results = pool.map(_lookup_fqdn, addresses)
+-    pool.close()
+-    pool.join()
++
++    try:
++       pool = ThreadPool(8)
++       results = pool.map(_lookup_fqdn, addresses)
++       pool.close()
++       pool.join()
++    except Exception as exc:
++       log.error("Exception while creating a ThreadPool for resolving FQDNs: %s", exc)
+ 
+     for item in results:
+         if item:
+-- 
+2.17.1
+
+

@@ -1,0 +1,99 @@
+#
+# spec file for package restic
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+# nodebuginfo
+
+
+%define import_path github.com/restic/restic
+
+Name:           restic
+Version:        0.9.5
+Release:        0
+Summary:        Backup program with deduplication and encryption
+License:        BSD-2-Clause
+Group:          Productivity/Archiving/Backup
+Url:            https://restic.net
+Source0:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+BuildRequires:  bash-completion
+BuildRequires:  go
+BuildRequires:  golang-packaging
+BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.10
+
+%description
+restic is a backup program. It supports verification, encryption,
+snapshots and deduplication.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(restic:bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(restic:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
+%prep
+%setup -q
+
+%build
+# Set up GOPATH.
+export GOPATH="$GOPATH:$HOME/go"
+mkdir -p $HOME/go/src/%{import_path}
+cp -rT $PWD $HOME/go/src/%{import_path}
+
+# Build restic. We don't use build.go because it builds statically, uses go
+# modules, and also restricts the Go version in cases where it's not actually
+# necessary. We disable go modules because restic still provides a vendor/.
+GO111MODULE=off go build -o %{name} -buildmode=pie \
+	-ldflags "-s -w -X main.version=%{version}" \
+	%{import_path}/cmd/restic
+
+%install
+install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -d %{buildroot}%{_mandir}/man1
+./%{name} generate --man %{buildroot}%{_mandir}/man1
+install -Dm0644 doc/bash-completion.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm0644 doc/zsh-completion.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
+
+%files
+%defattr(-,root,root)
+%doc *.md *.rst
+%doc doc/
+%license LICENSE
+%{_bindir}/restic
+%{_mandir}/man1/restic*.1*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%config %{_sysconfdir}/zsh_completion.d/%{name}
+
+%changelog

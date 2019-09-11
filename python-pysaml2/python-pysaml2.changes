@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Mon Jul 22 14:57:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.8.0:
+  * Refactor the way ForceAuthn is set: check for "true" and "1"
+  * Allow to set NameQualifier and SPNameQualifier attributes for ePTID
+  * Parse assertions with Holder-of-Key profile
+  * Add created_at timestamps to all mongodb documents
+  * Look for existing persistent id's before creating new ones
+  * Do not add AllowCreate property for default transient NameID
+  * Enable entity category import from module search path
+  * Add SAML subject identifier attributes to saml2_uri attributemap
+  * Fix deprecation warning regarding the cgi module - use the html module when available
+  * Misc minor improvements
+  * tests: Be compatible with latest pytest
+  * tests: Make tests pass after 2024
+  * tests: Add py37 as a test target
+  * docs: Correct instructions to run tests
+  * docs: Fix misc typos
+
+-------------------------------------------------------------------
+Wed Jun  5 09:39:57 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.7.0
+  * Add support for MDQ signature verification
+  * Raise XmlsecError if xmlsec1 operations do not succeed
+  * Handle non standard response error status codes correctly
+  * Remove the python-future dependency and only use six
+
+-------------------------------------------------------------------
+Fri Dec  7 10:43:13 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.5:
+  * Many many changes everywhere, see CHANGELOG.md for details
+- Use github tarball to include license/tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Oct 10 06:08:56 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- cleanup filelist
+
+-------------------------------------------------------------------
+Tue Oct  9 15:50:52 UTC 2018 - Colleen Murphy <comurphy@suse.com>
+
+- Replace python-pycryptodomex dep with python-cryptography
+  - Dependency was swapped in afdf5b4
+
+-------------------------------------------------------------------
+Wed Nov 29 08:25:34 UTC 2017 - okurz@suse.com
+
+- Add missing runtime dependency on 'defusedxml'
+- Add obsolete suse_version special handling
+
+-------------------------------------------------------------------
+Mon Oct 30 22:27:36 UTC 2017 - michael@stroeder.com
+
+- update to 4.5.0
+
+-------------------------------------------------------------------
+Mon Jun 19 08:57:42 UTC 2017 - okurz@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Tue Nov 22 15:18:26 UTC 2016 - dmueller@suse.com
+
+- fix requires
+
+-------------------------------------------------------------------
+Thu Nov 17 14:42:09 UTC 2016 - michael@stroeder.com
+
+- update to 4.4.0
+- added LICENSE.txt to docs
+
+-------------------------------------------------------------------
+Fri Feb 26 13:14:29 UTC 2016 - tbechtold@suse.com
+
+- Require python-python-dateutil. package was renamed
+
+-------------------------------------------------------------------
+Tue Oct 13 21:31:03 UTC 2015 - dmueller@suse.com
+
+- add pycrypto/pyOpenSSL dependency 
+
+-------------------------------------------------------------------
+Tue Sep  1 07:17:52 UTC 2015 - tbechtold@suse.com
+
+- Move python-repoze.who from Recommends to Requires. It's needed.
+
+-------------------------------------------------------------------
+Thu Jul 30 19:30:53 UTC 2015 - tbechtold@suse.com
+
+- Add missing Requires
+
+-------------------------------------------------------------------
+Thu Jul 16 15:40:39 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build on non-SUSE distributions whose rpm does not know
+  "Recommends"
+
+-------------------------------------------------------------------
+Wed Jun 10 08:48:46 UTC 2015 - dmueller@suse.com
+
+- update to 2.4.0:
+  * A couple of security fixes plus maintenance updates.
+
+-------------------------------------------------------------------
+Tue Oct 15 07:41:04 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

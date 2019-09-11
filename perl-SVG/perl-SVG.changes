@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Tue Feb 20 06:54:53 UTC 2018 - coolo@suse.com
+
+- updated to 2.84
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.84  2018.02.19 MANWAR
+        - Removed '+x' bits from the script "xt/author/pod-syntax.t".
+
+-------------------------------------------------------------------
+Tue Feb 13 07:02:30 UTC 2018 - coolo@suse.com
+
+- updated to 2.83
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.83  2018.02.12 MANWAR
+        - Merged PR #11 (Test Reports), thanks @genio.
+
+-------------------------------------------------------------------
+Tue Jan 23 07:05:03 UTC 2018 - coolo@suse.com
+
+- updated to 2.82
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.82  2017.12.18 MANWAR
+        - Fixed subquery (txn-1762542) of the issue RT #123896.
+
+-------------------------------------------------------------------
+Mon Dec 18 06:54:17 UTC 2017 - coolo@suse.com
+
+- updated to 2.81
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.81  2017.12.17 MANWAR
+        - Fixed issue RT #123896 (trailing space in credit comment).
+
+-------------------------------------------------------------------
+Fri Dec  8 06:52:15 UTC 2017 - coolo@suse.com
+
+- updated to 2.80
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.80  2017.11.30 MANWAR
+        - Added one more test author only as suggested by @DAVE. (RT #123705)
+
+-------------------------------------------------------------------
+Fri Dec  1 06:57:02 UTC 2017 - coolo@suse.com
+
+- updated to 2.79
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.79  2017.11.30 MANWAR
+        - Addressed RT #123705, making test t/96-perl-critic.t and t/99_test_pod_coverage.t author only.
+
+-------------------------------------------------------------------
+Sat Jul  8 06:14:54 UTC 2017 - coolo@suse.com
+
+- updated to 2.78
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.78  2017.07.07 MANWAR
+        - Merged PR #10 (fix entity escaping), thanks @haarg. This also resolved RT #121612.
+
+-------------------------------------------------------------------
+Fri May 19 06:33:35 UTC 2017 - coolo@suse.com
+
+- updated to 2.77
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.77  2017.05.18 MANWAR
+        - Proposed fix to the following test failure:
+          http://www.cpantesters.org/cpan/report/ddc7eefc-3429-11e7-8430-9cfb106f656a
+
+-------------------------------------------------------------------
+Tue May 16 06:39:09 UTC 2017 - coolo@suse.com
+
+- updated to 2.76
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.76  2017.05.08 MANWAR
+        - Added AUTHOR ONLY test scripts (meta-json.t and meta-yml.t).
+  
+  2.75  2017.05.07 MANWAR
+        - Tidied up unit test scripts and removed '+x' attributes.
+        - Tidied up SEE ALSO section in SVG::XML package pod.
+
+-------------------------------------------------------------------
+Sat May  6 06:31:05 UTC 2017 - coolo@suse.com
+
+- updated to 2.74
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.74  2017.05.04 MANWAR
+        - Added key 'provides' to the Makefile.PL script as recommended by CPANTS.
+  
+  2.73  2017.05.03 MANWAR
+        - Merged PR #8, thanks @CSSON. Modified slightly to keep tidyall happy.
+        - Correct some spelling errors that were detected by codespell.
+        - Don't insert whitespace between tag name and closing bracked when a tag has no attributes
+
+-------------------------------------------------------------------
+Wed May  3 06:25:47 UTC 2017 - coolo@suse.com
+
+- updated to 2.72
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.72  2017.05.02 MANWAR
+        - Added test script t/00-load.t
+        - Fixed typo in the pod document.
+  
+  2.71  2017.05.01 MANWAR
+        - Fixed issue RT #57000 with regard to be explici about SVG instance.
+  
+  2.70  2017.04.27 MANWAR
+        - Added MIN_PERL_VERSION to the Makefile.PL script as suggested by CPANTS.
+
+-------------------------------------------------------------------
+Tue Apr 25 06:39:27 UTC 2017 - coolo@suse.com
+
+- updated to 2.69
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.69  2017.04.20 MANWAR
+        - Fixed issue RT #118091, skip test if Perl::Tidy is missing.
+  
+  2.68  2017.04.19 MANWAR
+        - Fixed issue RT #109521, adding min ver of Test::More v0.94.
+
+-------------------------------------------------------------------
+Wed Apr 19 06:35:37 UTC 2017 - coolo@suse.com
+
+- updated to 2.67
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.67  2017.04.18 MANWAR
+        - Fixed the issue with regard to github respository info in the Makefile.PL script, thanks @KENTNL.
+  
+  2.66  2017.04.17 MANWAR
+        - Addressed issue RT #121197 (incorrect meta spec), thanks @KENTNL.
+        - Added 'clean' and 'dist' keys to the Makefile.PL script.
+        - Tidied up .gitignore file.
+        - Added MANIFEST file, no need to generate every time.
+
+-------------------------------------------------------------------
+Mon Apr 17 06:31:49 UTC 2017 - coolo@suse.com
+
+- updated to 2.65
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+-------------------------------------------------------------------
+Sun Jun  7 08:59:38 UTC 2015 - coolo@suse.com
+
+- updated to 2.64
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.64 2015.06.02
+      - RT #103938 SVG::DOM insertSiblingAfter calls nonexistent 'parent' method (Marius Gavrilescu)
+
+-------------------------------------------------------------------
+Tue Apr 14 18:08:06 UTC 2015 - coolo@suse.com
+
+- updated to 2.63
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.63 2015.03.06
+      - Move SVG results from POD to external files.
+  
+  2.62 2015.03.06
+      - Remove more duplicate pod.
+      - Encoding of the pod RT #89414
+  
+  2.61 2015.03.03
+      - Eliminate a bunch of duplicate documentation.
+      - Skip tidy testing if module is not available (RT #102484)
+      - POD formatting.
+  
+  2.60 2015.03.03
+  	- Convert source files to utf8
+  	- Add more tests
+  	- css styles are now sorted to make it easeier to test
+  	- Run Perltidy on the code
+
+-------------------------------------------------------------------
+Tue Jun  4 18:08:47 UTC 2013 - coolo@suse.com
+
+- updated to 2.59
+       - Experiment to show images on MetaCPAN
+       - Move all the content of SVG::Manual to SVG
+       - Add an image to the pod generated by and example.
+       - Rename SVG::Manual from .pm to .pod.
+       - Stop violating the Subroutines::ProhibitExplicitReturnUndef policy,
+         eliminate 'return undef' and return wantarray?():undef; from the code.
+       - Update the dates in the Changes file.
+       - Remove the function prototypes that don't work on methods anyway.
+         Stop violating the Subroutines::ProhibitSubroutinePrototypes policy.
+       - missing test file removed from MANIFEST (RT #78856)
+       - move POD testing to xt/
+       - Some example cleanup - Shlomi Fish
+       - removing prototype - Shlomi Fish
+       - POD fixes - David Paleino
+
+-------------------------------------------------------------------
+Mon May 28 13:59:37 UTC 2012 - coolo@suse.com
+
+- updated to 2.51
+      - Maintenance by Gabor Szabo
+      - Some documentation fixes.
+      - Modernizing test suite.
+      - Link to new public repository.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:19 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Aug  4 14:07:46 UTC 2010 - chris@computersalat.de
+
+- initial package 2.50
+  * created by cpanspec 1.78
+

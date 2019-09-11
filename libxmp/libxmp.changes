@@ -1,0 +1,390 @@
+-------------------------------------------------------------------
+Tue Feb  7 14:03:52 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 4.4.1
+  * fix MDL c5spd to preserve base periods
+  * fix MDL sample decoder loop with corrupted data
+  * fix MASI loader OPLH and PPAN subchunks parsing
+  * fix MacOS Tiger build issues
+  * fix sample loop corner case
+  * fix set pan effect in multichannel MODs
+  * fix global volume on module loop
+  * fix IT pan right value
+  * fix MASI effects based on OpenMPT PSM loader
+  * fix memory leak in XMs with 256 patterns
+  * fix anticlick when rendering only one sample
+  * fix anticlick in His Master's Noise instruments
+  * fix anticlick in MED synth instruments
+
+-------------------------------------------------------------------
+Tue Jul 26 14:48:59 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.4.0
+* fix XM arpeggio in FastTracker 2 compatible mode
+* fix IT bidirectional loop sample length
+* fix MOD vibrato and tremolo in Protracker compatible mode
+* fix XM replayer note delay and retrig quirk
+* fix XM replayer channel pan
+* fix MOD loader period to note conversion
+* fix virtual channel deallocation error handling
+* fix S3M global volume effect
+* fix IT envelope reset on tone portamento
+* fix IT voice leak caused by disabled envelope
+* fix IT volume column tone portamento
+* fix XM envelope position setting
+* fix FT2 arpeggio+portamento quirk with finetunes
+* fix mixer anticlick routines
+* accept S3M modules with invalid effects
+* fix 669 effects when no instrument number is specified
+* fix 669 effects to be frequency-based
+* fix 669 initial tempo
+* fix S3M channel reset on sample end
+* fix Noisetracker MOD speed setting
+* fix IT loader DCA sanity check
+* fix IT envelope reset after offset with portamento
+* fix bidirectional sample interpolation
+* fix mixer resampling and tuning issues
+* add Antti Lankila's Amiga 500 modeling mixer
+* add support to filter effect E0 in Amiga mods
+* add flags to configure player mode
+* add option to set the maximum number of virtual channels
+* add frequency-based "period" mode
+* add support to IT sample sustain loop
+* limit Oktalyzer modules to MOD note range
+* remove broken synth chip and Adlib emulation suport
+
+-------------------------------------------------------------------
+Wed Jun  1 10:02:51 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.3.13
+* The testcase has caught multiple rendition issues in: IT note
+  off with instrument, IT note recover after cut, IT instrument
+  without note after note cut event, IT pan reset on new note
+  instead of new instrument, IT volume swing problems, XM glissando
+  effect, Scream Tracker 3 period limits, Scream Tracker 3 tremolo
+  memory, IT volume column fine volume slide with row delay.
+* Add format converters for TrackerPacker v1, v2, ProPacker 1.0.
+
+-------------------------------------------------------------------
+Sat Feb 13 20:39:46 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.3.11
+* fix FT2 XM arpeggio clamp, FT2 XM arpeggio + pitch slide,
+  XM tremor effect handling, XM tremor recover after volume setting,
+  IT instrument after keyoff, S3M first frame test in pattern delay,
+  Protracker tone portamento target setting, Protracker arpeggio
+  wraparound, Protracker finetune setting, range of MMD effect 9,
+  invalid sample offset handling in Skale Tracker XM, Protracker
+  sample loop to use full repeat only if start is 0, Scream Tracker
+  4-channel MOD fingerprinting.
+
+-------------------------------------------------------------------
+Sun Jan 17 18:28:43 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.3.10
+* fix out of bounds access in IT/XM/MDL/IMF envelopes, OOB read
+  in STX effect decoding
+* fix AC1D converter number of patterns underflow; PRU2 usage of
+  uninitialized data; Vorbis depacker usage of uninitialized
+  data; negative array index read when setting position; JVS
+  command parameter in MED synth; 669 effect decoding; and a
+  memory violation in LZX decompressor.
+* add sanity check to smix sample loading, PP21 format converter,
+  P40 and P61A format converters, Zen Packer format converter,
+  TP3 format converter
+* prevent division by zero in memory I/O
+* change IFF info ID from string to binary buffer
+* Fix problems caused by fuzz files:
+* add sanity checks to LHA depacker, MED3 loader, ABK loader,
+  Fuchs converter, GMC converter
+* Other changes:
+* fix IT envelope release + fadeout; SFX effects 5, 6, 7, and 8;
+  pattern loading in Galaxy 4 and 5; fix tone portamento target
+  setting; IT autovibrato depth; IMS sample loop start; LIQ pan
+  setting and surround channel
+* disable ST3 sample size limit
+
+-------------------------------------------------------------------
+Thu Jun 25 20:16:57 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.3.9
+* Fix bugs caught in the OpenMPT test cases:
+* fix IT tone portamento on sample change and NNA
+* fix IT tone portamento with offset
+* fix memory leak in vorbis decoder
+* detect Amiga frequency limits in MOD
+* fix problems in Amiga split channels
+* fix global volume on restart to invalid row
+* fix Oktalyzer note slide effect
+* fix Oktalyzer volume setting in split channels
+* allow short sample reads
+
+-------------------------------------------------------------------
+Tue Apr  7 12:28:49 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.3.8
+* Fix Impluse Tracker sample mode note cut on invalid sample,
+  IT sample mode note end detection,
+  IT envelope handling with carry and fadeout,
+  IT tone portamento with sample changes,
+  IT keyoff with instrument in old effects mode,
+  IT note release at end of envelope sustain loop
+* Recognize IT high offset command (SAx) and surround command (S9x).
+* Add IT surround channel support and sample pan setting support.
+
+-------------------------------------------------------------------
+Wed Mar 25 11:30:58 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.3.6
+* Fix multiple crashes with fuzzed files
+* Add support to Amiga split channel loop and volume setting
+
+-------------------------------------------------------------------
+Sun Mar  8 09:34:02 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.3.5
+* Fix multiple crashes with fuzzed files
+* fix prowizard data request response
+* fix EU/NP1/NP2/NP3 prowizard depackers
+
+-------------------------------------------------------------------
+Wed Jan 28 13:14:57 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.3.4
+* Add a ProTracker 3.0 loader
+* Fixes to XM parsing and rendition, caught by OpenMPT testsuite:
+* fix XM note delay volume with no note or instrument set
+* fix XM out-of-range note delays with pattern delays
+* fix XM keyoff+delay combinations
+* fix XM fine pitch slide with pattern delay
+* fix XM vibrato rampdown waveform
+* fix XM volume column pan with keyoff and delay
+* fix XM pan envelope position setting
+* fix channel volume and instrument initialization
+* fix end of module detection inside a loop
+- Remove endian.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sat Dec 27 20:59:19 UTC 2014 - schwab@linux-m68k.org
+
+- endian.patch: properly configure byte order
+
+-------------------------------------------------------------------
+Sat Dec  6 20:58:43 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.3.2
+* Fix a number of bugs found through the OpenMPT test suite
+
+-------------------------------------------------------------------
+Sun Oct  5 21:00:46 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.3.0
+* Fix MED4 instrument numbering, MED effect FFF (turn note off) and
+  MED synth finetune effect.
+* Fix fine volume slide memory, IT portamento after note end in
+  sample mode, and S3M portamento after note end.
+* add XM and IT envelope loop and sustain point quirk
+* fix Amiga limits for notes with finetune
+* fix XM invalid offset handling, XM note release reset on new
+  volume, XM pattern loader to honor header size, XM fine volume
+  slide effect memory, XM fine pitch slide effect memory, XM
+  finetune effect, IT portamento if offset effect is used, IT NNA
+  on invalid sample mapping, IT filter envelope index reset, IT
+  envelope carry on note cut events, IT envelope reset on new
+  instrument, IT instrument change on portamento in compatible
+  GXX mode, IT unmapped sample parsing, IT filter cutoff reset.
+* add AMOS Music Bank loader (by Stephen Leary)
+* read OctaMED annotation and song info text
+* fix MED synth pitch slide reset on new note, MED synth volume
+  change during wait command, MED synth envelope loop handling
+* fix OctaMED SS default pitch transpose, and OctaMED instrument
+  name loading
+* fix XM, S3M, IT and MED offset effect handling
+* fix IT fadeout and envelope reset on new virtual channel
+* fix S3M shared effect parameter memory, default pan positions,
+  set BPM effect with values < 32
+* fix incorrect Noisetracker effect filtering
+* fix period limits for (possibly non-Amiga) Protracker clones
+
+-------------------------------------------------------------------
+Mon Aug 11 01:34:12 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.8
+* fix OctaMED decimal volume decoding
+* fix MED4 sampled instrument octave range
+* fix mishandling of MED4 effect FFD
+* fix MED synth waveform command CHD
+* fix sequence number reset on player start
+* fix stray notes in XM
+* limit note number to avoid crash
+* disable recursive file decompression
+
+-------------------------------------------------------------------
+Mon Apr 14 07:46:14 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.7
+* This release adds support for ADPCM samples in XM files, and
+  implements an OctaMED channel pan effect. It also fixes OctaMED
+  MMD2 and MMD3 note and sample mapping, the XM channel pan
+  effect, and a disabled pan in IT instruments.
+
+-------------------------------------------------------------------
+Tue Apr  8 14:18:07 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.6
+* This release has fixes for the Impulse Tracker tempo slide
+  effect, for 15-instrument Soundtracker sample loops, and many
+  fixes for OctaMED modules, including 2-to-7 octave IFFOCT
+  samples, hold and decay support, vibrato depth, and synth
+  instrument volume.
+
+-------------------------------------------------------------------
+Sun Mar  2 20:51:15 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.5
+* This release fixes Oktalyzer sample numbering and XM delay
+  effects when an invalild instrument is specified. It also
+  contains minor code refactoring from the Coremod player fork.
+
+-------------------------------------------------------------------
+Sun Feb 23 20:28:36 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.4
+* This release fixes issues in XM delay, retrig, and envelope
+  position effects, fixes Chiptracker pattern decoding, improves
+  S3M arpeggio effect and Slamtilt format recognition, and removes
+  incomplete DMF and DTT loaders.
+
+-------------------------------------------------------------------
+Sat Jan 18 18:55:41 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.3
+* This release fixes a bug in the S3M loader which reduced the
+  replay time of certain modules and fixes decoding errors in the
+  Digitrakker loader.
+
+-------------------------------------------------------------------
+Mon Jan 13 07:32:02 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.2.2
+* This release fixes bugs related to sample loading, effects, and
+  tempo setting in MED and OctaMED loaders, and re-enables
+  Megatracker format support.
+* Minor bugs have been fixed in GDM, Digitrakker, and Digibooster
+  loaders.
+
+-------------------------------------------------------------------
+Sun Dec 29 21:36:20 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.2.1
+* This release improves loading of several module formats
+  (including XM and S3M) and fixes many bugs, including crashes
+  when loading modules from memory, memory leaks on invalid module
+  loading, and loop setting in MOD files for very small loops. It
+  also contains a refactored vibrato effect, win32 portability
+  fixes, and code cleanup and optimization.
+
+-------------------------------------------------------------------
+Sun Nov 10 21:28:39 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.2.0
+* This release adds new API calls to load modules from memory, to
+  query the player state, and to play module instruments and
+  external samples on reserved channels alongside regular module
+  replay.
+* A loader for His Master's Noise modules has been added, and
+  Noisetracker module decoding was improved.
+* Many bugs have been fixed, notably in MED synth effects, 16-bit
+  sample loops in S3M files, LHa header parsing, and thread safety
+  in Archimedes Tracker and Digital Tracker loaders.
+
+-------------------------------------------------------------------
+Tue May 28 13:16:18 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.1.5
+* This release fixes parsing of OctaMED note decay, implements
+  missing OctaMED effects, fixes The Player 5.0A and 6.0A pattern
+  decoding, and fixes Oktalyzer sample mapping.
+
+-------------------------------------------------------------------
+Mon May 20 10:26:15 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.1.4
+* This release fixes an array initialization in the IT loader.
+
+-------------------------------------------------------------------
+Sun May 12 09:26:54 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.1.3
+* This release fixes XM and IT envelope resets, fixes IT portamento
+  after note cut events, and refactors the virtual channel code.
+
+-------------------------------------------------------------------
+Sun May  5 09:36:14 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.1.2
+* This release fixes limit checking when downmixing to unsigned
+  samples. It also fixes Multitracker fine tuning, adds Graoumf
+  Tracker linear volume effects, and fixes memory leaks when
+  loading corrupted module files.
+- Removed 0001-test-Fix-play_buffer-test.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Apr 29 20:55:27 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.1.0
+* This release adds a function to play fixed-size buffers to the
+  API, improves precision of the IT lowpass filter, and contains
+  bugfixes for simultaneous volume up and down, IT envelopes with
+  no envelope points, Amusic module loading, and MED pitch slides,
+  portamento, and pattern reading. Build issues were addressed for
+  Cygwin and MinGW, and a buffer overflow was fixed in the MASI
+  loader. (xref: bnc#816454, CVE-2013-1980)
+- Update to new upstream release 4.1.1
+* Improved precision in portamento effects and implemented the XM
+  "set envelope position" effect.
+- Add 0001-test-Fix-play_buffer-test.patch
+
+-------------------------------------------------------------------
+Sun Apr  7 22:08:57 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.0.4
+* This release fixes bugs in IT effects including volume column
+  slide to note, pan setting, vibrato depth adjustments, portamento
+  after fadeout, panbrello waveform setting, tremolo depth, and
+  random waveform.
+
+-------------------------------------------------------------------
+Mon Apr  1 14:51:05 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.0.3
+* This release adds module quirks for well-known cases and a
+  built-in zoo depacker. Bugs in IT pan effects, MED BPM tempo
+  setting, global volume slides, and bidirectional sample loops
+  have been fixed.
+- Remove 0001-Fix-IT-set-pan-effect.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sun Mar 24 01:15:11 UTC 2013 - jengelh@inai.de
+
+- Add 0001-Fix-IT-set-pan-effect.patch to resolve ignored
+  ImpulseTracker effect code X.
+
+-------------------------------------------------------------------
+Mon Mar 11 12:58:34 UTC 2013 - jengelh@inai.de
+
+- Remove adlib_sb.txt (bnc#808655) and ay-3-8912.txt (seems
+  unnecessary to have)
+
+-------------------------------------------------------------------
+Mon Feb 25 11:30:11 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.0.2
+* This release improves IT replaying by implementing missing
+  features such as volume column vibrato, a pattern row delay
+  effect, and the fine global volume slide effect.
+
+-------------------------------------------------------------------
+Sat Feb 16 03:36:34 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 4.0.1) for build.opensuse.org

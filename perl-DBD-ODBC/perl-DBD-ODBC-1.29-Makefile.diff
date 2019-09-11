@@ -1,0 +1,109 @@
+Index: Makefile.PL
+===================================================================
+--- Makefile.PL.orig	2014-07-22 11:55:35.089027443 +0200
++++ Makefile.PL	2014-07-22 12:04:44.751518221 +0200
+@@ -210,6 +210,7 @@ EOT
+ }
+ print "Overriding ODBC Directory with command line option: $opt_o\n"
+     if $opt_o ;
++my $lib=$ENV{LIB};
+ if ($opt_g) {
+    print "Setting debug options!\n";
+    if ($OSNAME eq 'MSWin32') {
+@@ -346,7 +347,7 @@ EOT
+             #$tmp_odbchome =~ s/\\/\//g;
+             #$odbchome = $tmp_odbchome if (-e "$tmp_odbchome/odbc.ini")
+             chomp($odbchome = `cygpath \$WINDIR`);
+-        } elsif (-f '/opt/sapdb/interfaces/odbc/lib/libsqlod.a') {
++        } elsif (-f '/opt/sapdb/interfaces/odbc/lib/libsqlod.a' || -f '/opt/sapdb/interfaces/odbc/lib/lib64/libsqlod.a') {
+             $odbchome = '/opt/sapdb/interfaces/odbc/';
+         }
+     }
+@@ -444,7 +445,7 @@ EOT
+     $opts{INC}  .= " -I/usr/include/w32api" if $OSNAME eq 'cygwin';
+ 
+     # TO_DO all this needs to move until later
+-#    my $lib_d1 = "$odbchome/lib";
++#    my $lib_d1 = "$odbchome/$lib";
+ #    my $lib_d2 = "$odbchome/dlls";
+ #    my $libs   = "odbc";
+ #    $opts{LIBS} = " -L$lib_d1 -R$lib_d1 -L$lib_d2 -R$lib_d2 -l$libs";
+@@ -487,32 +488,32 @@ EOT
+                          -e "$odbchome/odbc32.dll"));
+ 
+     $myodbc = 'empress'
+-        if !$myodbc && glob "$odbchome/lib/libempodbc.*";
++        if !$myodbc && glob "$odbchome/$lib/libempodbc.*";
+ 
+     $myodbc = 'intersolve'
+         if !$myodbc && -f "$odbchome/include/qeodbc.h";
+ 
+     $myodbc = 'sapdb'
+-        if !$myodbc && -f "$odbchome/lib/libsqlod.$arext";
++        if !$myodbc && -f "$odbchome/$lib/libsqlod.$arext";
+ 
+     $myodbc = 'adabas'
+         if (!$myodbc &&
+                 $ENV{DBROOT} &&
+                     ($odbchome eq $ENV{DBROOT}) &&
+-                        -f "$odbchome/lib/odbclib.$arext");
++                        -f "$odbchome/$lib/odbclib.$arext");
+ 
+     $myodbc = 'udbc'
+-        if !$myodbc && -f "$odbchome/lib/libudbc.$arext";
++        if !$myodbc && -f "$odbchome/$lib/libudbc.$arext";
+ 
+     $myodbc = 'solid'
+-        if !$myodbc && -f "$odbchome/lib/libsolcli.$dlext";
++        if !$myodbc && -f "$odbchome/$lib/libsolcli.$dlext";
+ 
+     # JL 2002-12-16: This test is accurate on Unix (Solaris 7) with IBM
+     # Informix ClientSDK 2.80.UC1, which includes IBM Informix CLI
+     # v3.81.000, an ODBC 3.x driver.
+ 	# NB: The correct value for $ODBCHOME is $INFORMIXDIR.
+     $myodbc = 'informix'
+-        if !$myodbc && -f "$odbchome/lib/cli/libifcli.$dlext";
++        if !$myodbc && -f "$odbchome/$lib/cli/libifcli.$dlext";
+ 
+     if (!$myodbc) {
+ 	local($LIST_SEPARATOR) = ", ";
+@@ -540,7 +541,7 @@ EOT
+ 
+     if ($myodbc eq 'Microsoft ODBC') {
+         print "\nBuilding for Microsoft under Cygwin\n";
+-        $opts{LIBS} = "-L/usr/lib/w32api -lodbc32";
++	$opts{LIBS} = "-L/usr/$lib/w32api -lodbc32";
+         print {$sqlhfh} "#include <windows.h>\n";
+         print {$sqlhfh} "#include <sql.h>\n";
+         print {$sqlhfh} "#include <sqltypes.h>\n";
+@@ -573,7 +574,7 @@ EOT
+             # remove lib prefix and .so suffix so "-l" style link can be used
+             $ilibname =~ s/^lib(iodbc.*?)\.\w+$/$1/;
+             $opts{LIBS} = "-L$odbclibdir -l$ilibname";
+-            warn "Warning: LD_LIBRARY_PATH doesn't include $odbchome/lib\n"
++	    warn "Warning: LD_LIBRARY_PATH doesn't include $odbchome/$lib\n"
+                 if (!defined($ENV{LD_LIBRARY_PATH})) ||
+                     ($ENV{LD_LIBRARY_PATH} =~ /\Q$odbclibdir/);
+         }
+@@ -700,7 +701,11 @@ EOT
+ 	print {$sqlhfh} qq{#define DBD_ODBC_NO_DATASOURCES\n};
+ 
+ 	$opts{INC} .= " -I$odbchome/incl";
+-	$opts{LDFROM} = "\$(OBJECT) $odbchome/lib/libsqlod.a";
++        if (-f "$odbchome/$lib/libsqlod.a" ) {
++          $opts{LDFROM} = "\$(OBJECT) $odbchome/$lib/libsqlod.a";
++        } else {
++          $opts{LDFROM} = "\$(OBJECT) $odbchome/$lib/lib64/libsqlod.a";
++        }
+     }
+     elsif ($myodbc eq 'adabas') {
+ 	print {$sqlhfh} "#define FAR \n#define EXPORT \n#define CALLBACK \n";
+@@ -759,7 +764,7 @@ if ($OSNAME eq 'darwin') {
+     # SQLGetPrivateProfileString is in libiodbcinst.a
+     my $osver = `uname -r`;
+     if ($osver && ($osver =~ /^8/)) {
+-        $opts{LIBS} .= ' -L/usr/lib -liodbcinst';
++        $opts{LIBS} .= ' -L/usr/$lib -liodbcinst';
+     }
+ }
+ 

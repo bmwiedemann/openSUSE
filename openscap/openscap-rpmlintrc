@@ -1,0 +1,4 @@
+# can not change docs implementation
+addFilter("files-duplicate /usr/share/doc/openscap/html/search")
+# ignore duplicates in different schema versions
+addFilter("files-duplicate /usr/share/openscap/schemas")

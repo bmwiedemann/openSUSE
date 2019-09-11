@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sun Feb 24 04:23:18 UTC 2019 - i@marguerite.su
+
+- Update to version 0.1.1~git20180606.42f7640:
+  * no english changelog
+
+-------------------------------------------------------------------
+Tue Aug 25 02:11:59 UTC 2015 - i@marguerite.su
+
+- Update to version 0.1.0+git20150224.78e9d89:
+  * Fix incorrect sizeof expression
+  * hanja_list_new() memory leak
+- changes in 0.1.0
+  * add new API for keycode normalization
+  * remove deprecated API
+  * add supports for freebsd
+  * update some test codes
+
+-------------------------------------------------------------------
+Thu Oct 23 09:51:31 UTC 2014 - i@marguerite.su
+
+- update version 0.1.0+git20140928
+  * A Korean person take the maintainance role but I don't know
+    what he has fixed for (the git commits were in Korean)
+- fix for sles
+  * @mkinstalldirs@ doesn't exist, use @mkdir_p@
+- fix for factory
+  * factory uses gettext 0.19
+
+-------------------------------------------------------------------
+Wed Jul  4 14:08:29 UTC 2012 - i@marguerite.su
+
+- fix sles build.
+  * downgrade gettext version requirement to 0.14 from 0.18.
+
+-------------------------------------------------------------------
+Tue Mar 20 14:16:25 UTC 2012 - swyear@gmail.com
+
+- Rename package name to libhangul1 because shlib-policy-name-error 
+
+-------------------------------------------------------------------
+Tue Mar 20 13:41:06 UTC 2012 - swyear@gmail.com
+
+- Update to 0.1.0
+  Removed deprecated API 
+  Keycode normalization and more
+
+-------------------------------------------------------------------
+Sat Nov 19 15:57:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Jun 14 03:19:16 UTC 2011 - swyear@gmail.com
+
+- Update to 0.0.12;
+  add new keyboard layouts; unicode fixes; preedit fix, etc;
+  see NEWS for details 
+
+-------------------------------------------------------------------
+Tue Mar  2 09:31:54 UTC 2010 - mxwu@novell.com
+
+- Upgrade to 0.0.10 :
+  - Implemented new logic romaja method
+  - Updated to support the new Unicode standard 5.2
+  - Updated API document
+  - Fixed small bugs
+
+-------------------------------------------------------------------
+Mon Feb  1 11:35:16 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Mar  3 22:37:46 CET 2009 - crrodriguez@suse.de
+
+- fix -devel package dependencies 
+- add missing %clean section to the spec file
+
+-------------------------------------------------------------------
+Wed Feb 11 20:48:19 CET 2009 - ro@suse.de
+
+- added baselibs.conf (needed by imhangul) 
+
+-------------------------------------------------------------------
+Fri Jan 09 16:51:21 CET 2009 - mfabian@suse.de
+
+- update to version 0.0.9
+  * Changelog written in Korean, no translation available
+
+-------------------------------------------------------------------
+Thu Dec 27 02:15:46 CET 2007 - crrodriguez@suse.de
+
+- update to version 0.0.6
+  * Changelog written in Korean, no translation available
+- remove static libraries and "la" files
+- fix library-without-ldconfig-* errors
+
+-------------------------------------------------------------------
+Mon Apr 16 18:46:09 CEST 2007 - mfabian@suse.de
+
+- new package: version 0.0.4.
+
+

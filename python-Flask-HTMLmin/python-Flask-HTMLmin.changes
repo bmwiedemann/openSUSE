@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Oct 26 16:41:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim fill wording
+
+-------------------------------------------------------------------
+Fri Oct 26 10:05:23 UTC 2018 - alarrosa@suse.com
+
+- Fix summary grammar
+
+-------------------------------------------------------------------
+Sat Oct 20 15:54:52 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.5.0:
+  * Add stale bot configuration
+  * Implement Route (or URL rule) exemption with test
+  * Update setup config
+  * Setup python 3.7 in travis CI
+  * Update license date
+  * Update Readme
+
+-------------------------------------------------------------------
+Wed Oct 10 14:58:12 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 1.4.0
+
+- Remove conditional test variable from spec file and keep it enabled
+
+-------------------------------------------------------------------
+Tue Aug 21 15:53:26 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-Flask-HTMLmin 1.4.0

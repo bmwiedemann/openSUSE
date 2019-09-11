@@ -1,0 +1,43 @@
+From 7349fc2723704fe22e81efcdc5aaaa5731a5b22f Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:21 +0100
+Subject: [PATCH 23/43] tools/kvm_stat: fix missing field update after filter
+ change
+
+When updating the fields filter, tracepoint events of fields previously
+not visible were not enabled, as TracepointProvider.update_fields()
+updated the member variable directly instead of using the setter, which
+triggers the event enable/disable.
+To reproduce, run 'kvm_stat -f kvm_exit', press 'c' to remove the
+filter, and notice that no add'l fields that do not match the regex
+'kvm_exit' will appear.
+This issue was introduced by commit c469117df059 ("tools/kvm_stat:
+simplify initializers").
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 67c162b0892ac481e47bef06d9c6231ee993843a)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index f0beda705072..1494113df827 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -549,8 +549,8 @@ class TracepointProvider(Provider):
+ 
+     def update_fields(self, fields_filter):
+         """Refresh fields, applying fields_filter"""
+-        self._fields = [field for field in self.get_available_fields()
+-                        if self.is_field_wanted(fields_filter, field)]
++        self.fields = [field for field in self.get_available_fields()
++                       if self.is_field_wanted(fields_filter, field)]
+ 
+     @staticmethod
+     def get_online_cpus():
+-- 
+2.12.3
+

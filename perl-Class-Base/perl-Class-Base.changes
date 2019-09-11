@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Fri Jan  5 06:09:15 UTC 2018 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Class-Base/Changes
+
+-------------------------------------------------------------------
+Tue Jul 26 05:07:32 UTC 2016 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Class-Base/Changes
+
+  0.08 2016.08.25
+      Fix release (hopefully)
+  
+  0.07 2016.08.25
+      BUILD_REQUIRES vs TEST_REQUIRES  (Kent Fredric)
+
+-------------------------------------------------------------------
+Mon Apr 13 18:08:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-Class-Base/Changes
+
+   Add license to META files
+   Updating the Changes file
+
+-------------------------------------------------------------------
+Mon Jun  3 12:00:23 UTC 2013 - coolo@suse.com
+
+- updated to 0.05
+ * Silencing a warning by chromatic RT 75286
+ * Linking to source repository
+
+-------------------------------------------------------------------
+Sat Feb 11 18:52:05 UTC 2012 - coolo@suse.com
+
+- updated to 0.04
+ * Test script is using Test::More instead the home-made ok() and is().
+ * Recommend using Badger::Base instead.
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Oct 12 16:18:03 UTC 2010 - jw@novell.com
+
+- initial package 0.03
+  * created by cpanspec 1.78.02
+

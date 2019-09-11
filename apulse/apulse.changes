@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Mar 26 07:03:44 UTC 2019 - olaf@aepfle.de
+
+- Use alsa API properly. Consumers are expected to use
+  <alsa/asoundlib.h> instead of <asoundlib.h>.
+  This is in preparation of an change to pkgconfig(alsa) to
+  not pollute CFLAGS with -I/usr/include/alsa anymore (bsc#1130333)
+  apulse-alsa.patch
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.1.12 (changes since 0.1.10):
+  * Implement new, free, and write functions of the pa_simple_*
+    family.
+  * Add some documentation about issues related to sandboxing.
+  * Drop the libpulsecommon-5.0.so binary.
+  * Add stub functions for the mainloop-glib interface.
+  * add a man- page.
+  * Cosmetic code changes.
+  * Misc compatibility fixes.
+- Add apulse-fix-pulse-12.patch sor.alexei@meowr.ru: Fix
+  PulseAudio 12+ compatibility.
+- Remove apulse-link-math.patch.
+- Use %cmake_install.
+- Rewrite the apulse script in Python 3 to avoid insecure config
+  reading from home. The apulse.conf format was changed, and the
+  user config also was moved from ~/.apulse.conf to
+  $XDG_CONFIG_HOME/apulse.conf.
+
+-------------------------------------------------------------------
+Fri Mar 12 17:50:15 UTC 2018 - ilya@ilya.pp.ua
+
+- Refresh spec-file via spec-cleaner.
+  * Add %license macro.
+  * Add cmake -LA option for print local variables.
+
+-------------------------------------------------------------------
+Wed Jul 19 11:59:16 UTC 2017 - ilya@ilya.pp.ua
+
+- Add files:
+  * apulse.conf
+  * apulse (using apulse.conf and autoload 32-bit or 64-bit library)
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.1.10 (changes since 0.1.8):
+  * Fix the PA_SAMPLE_S16NE volume scaling bug.
+  * Fix video stuttering in Firefox by calling write callback as
+    soon as minreq bytes become available in write buffer.
+  * Make error messages from do_connect_pcm friendlier.
+  * Per-stream volumes.
+  * Implement source and sink info introspection functions.
+  * Implement timed events.
+  * Fix buffer xruns by increasing buffer sizes.
+
+-------------------------------------------------------------------
+Wed Mar  8 19:13:26 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.1.8:
+  * Make playback in Firefox working, including volume changing
+    (boo#1028547).
+  * Reimplement snd_pcm_avail(), which is missing in older versions
+    of alsa-lib.
+  * Make reported buffer sizes to be multiple of frame sizes.
+  * Stop crashing in pa_stream_disconnect() if initialisation has
+    failed.
+- Add apulse-link-math.patch: Link with -lm to fix building.
+
+-------------------------------------------------------------------
+Sat Dec 26 21:14:56 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.1.7:
+  * Make pa_proplist be able to store binary objects too.
+  * Implement pa_stream_begin_write.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Mon Oct  5 14:45:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Avoid providing libpulse.so in apulse-32bit.
+
+-------------------------------------------------------------------
+Thu Aug 20 17:47:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Apr  3 08:12:36 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use udev macros from systemd-rpm-macros
+- Update info rules
+- Add gpg signature
+- Use url for source
+
+-------------------------------------------------------------------
+Thu May  9 04:47:32 UTC 2013 - crrodriguez@opensuse.org
+
+-  isight-ft-udev.patch: detect the udev directories 
+   at compile time.
+
+-------------------------------------------------------------------
+Wed Oct 10 19:56:50 UTC 2012 - coolo@suse.com
+
+- own udev directories to avoid udev build dependency
+
+-------------------------------------------------------------------
+Tue Feb 07 07:35:09 UTC 2012 - tuukka.pasanen@ilmi.fi
+
+- Added support for older iMac isight 
+
+-------------------------------------------------------------------
+Thu Jun  2 07:35:09 UTC 2011 - idonmez@novell.com
+
+- Version bump to version 1.6 
+
+-------------------------------------------------------------------
+Mon Jul 06 2009 tuukka.pasanen@ilmi.fi
+
+- packaged isight-firmware-tools version 1.4.2 using the buildservice spec file wizard
+ 
+

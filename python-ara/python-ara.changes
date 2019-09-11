@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Jul  3 14:57:08 UTC 2019 - Itxaka serrano <igarcia@suse.com>
+
+- Move some requirements into recommends.
+  Ara has changed and its no longer bundling the server with the
+  main package, so most of the requirements related to the
+  django server can be moved into recommends. Ara will raise a
+  message if a user tries to execute the server part but the
+  requirements are missing.
+
+-------------------------------------------------------------------
+Sun Jun 30 12:12:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed Jun 19 11:28:57 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.0.1)

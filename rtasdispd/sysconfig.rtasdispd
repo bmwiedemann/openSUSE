@@ -1,0 +1,27 @@
+#
+# Options for rtasdispd
+#
+
+#
+# what status lines to display:
+#  u = uptime
+#  l = load
+#  m = memory usage
+#  s = swap usage
+#  p = number of proceses
+#  w = number of users
+#  A = all of them
+#
+RTASDISPD_DISPLAYS="A"
+
+#
+# time between updates (default: 15)
+#
+RTASDISPD_UPDATE=""
+
+#
+# static title line
+# (%n = machine name, %a = architecture, %c = number of CPUs,
+#  %v = kernel version)
+#
+RTASDISPD_TITLE="%n x%c"

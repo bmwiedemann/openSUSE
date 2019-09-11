@@ -1,0 +1,31 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  expat
+ BuildRequires:  perl-HTML-Tidy
+ BuildRequires:  perl-IO-CaptureOutput
+ BuildRequires:  perl-Test-Pod
+ BuildRequires:  perl-Text-Wrapper
+ BuildRequires:  perl-Tie-IxHash
+ BuildRequires:  perl-XML-Filter-BufferText
+ BuildRequires:  perl-XML-Handler-YAWriter
+ BuildRequires:  perl-XML-Parser
+ BuildRequires:  perl-XML-SAX-Writer
+ BuildRequires:  perl-XML-Simple
+ BuildRequires:  perl-XML-XPath
+ BuildRequires:  perl-XML-XPathEngine
+ Requires:       expat
+ Requires:       perl-XML-Parser
+ Requires:       perl(Encode)
+ BuildRequires:     perl-HTML-Tidy
+ BuildRequires:     perl-Text-Wrapper
+ BuildRequires:     perl-Tie-IxHash
+ BuildRequires:     perl-XML-XPath
+ BuildRequires:     perl-XML-XPathEngine

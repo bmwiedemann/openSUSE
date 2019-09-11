@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sun Mar  8 17:49:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Include AM_PROG_AR to detect 'ar' instead of hard-coding it.
+  + Use automake subdir-objects option.
+  + Check for pagesize options via autoconf instead of per-platform
+    #ifdefs.
+  + Copious const cleanup.
+  + Require OS to provide rename(2), as all POSIX.1-1990 & later
+    OS'es do.
+  + autogen.sh: Honor NOCONFIGURE=1.
+  + configure: Drop AM_MAINTAINER_MODE.
+  + Fix man page tbl markup.
+  + Remove obsolete Imake SIGNALRETURNSINT.
+  + Drop CRAY support.
+
+-------------------------------------------------------------------
+Sat Jan 19 11:15:01 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.2.1:
+  + Remove lisp/env.c from EXTRA_DIST to fix make_distcheck
+  + Eliminate use of tab stops. Use real TBL markup.
+  + Do not unconditionally define DEBUG.
+  + Avoid problems with builds with -Werror=format-security.
+  + Use proper pointer when computing "realpath" of a new file.
+  + Correct 64 bit overflow check and bignum code.
+  + Update fallback implementation of missing libc functions.
+  + Fix builds of lisp/core.c with Solaris Studio compilers.
+  + Require xt >= 1.0 for appdefaultdir (fdo#7237).
+  + config:
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Move man pages into their own directory.
+  + man:
+    - Replace hard coded man page section with substitution strings
+    - Remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xedit from xorg-x11. Initial version: 1.2.0.
+

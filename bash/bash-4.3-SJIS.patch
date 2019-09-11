@@ -1,0 +1,328 @@
+---
+ bashintl.h          |    3 +++
+ builtins/printf.def |   21 +++++++++++++++++++++
+ builtins/read.def   |   52 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ lib/sh/strtrans.c   |   21 +++++++++++++++++++++
+ locale.c            |   26 ++++++++++++++++++++++++++
+ parse.y             |   42 +++++++++++++++++++++++++++++++++++++++++-
+ 6 files changed, 163 insertions(+), 2 deletions(-)
+
+--- bashintl.h
++++ bashintl.h	2018-11-29 08:14:56.165762022 +0000
+@@ -43,6 +43,9 @@
+ #  undef HAVE_SETLOCALE
+ #endif
+ 
++int bash_mbcs_non_utf8;
++int bash_mb_cur_max;
++
+ #if !defined (HAVE_SETLOCALE)
+ #  define setlocale(cat, loc)
+ #endif
+--- builtins/printf.def
++++ builtins/printf.def	2018-11-29 08:18:21.445909015 +0000
+@@ -247,6 +247,8 @@ printf_builtin (list)
+ #if defined (HANDLE_MULTIBYTE)
+   char mbch[25];		/* 25 > MB_LEN_MAX, plus can handle 4-byte UTF-8 and large Unicode characters*/
+   int mbind, mblen;
++  size_t charlen;
++  mbstate_t mbs;
+ #endif
+ #if defined (ARRAY_VARS)
+   int arrayflags;
+@@ -334,6 +336,25 @@ printf_builtin (list)
+ 	  precision = fieldwidth = 0;
+ 	  have_fieldwidth = have_precision = 0;
+ 
++#if defined (HANDLE_MULTIBYTE)
++	  if (bash_mbcs_non_utf8)
++	    {
++	      memset (&mbs, 0, sizeof (mbs));
++	      charlen = mbrlen (fmt, bash_mb_cur_max, &mbs);
++	      if (charlen > 1 && charlen != (size_t)-2 && charlen != (size_t)-1)
++	        {
++	          while (charlen > 0)
++	            {
++	              PC (*fmt);
++	              fmt++;
++	              charlen--;
++	            }
++	          fmt--;
++	          continue;
++	        }
++	    }
++#endif
++
+ 	  if (*fmt == '\\')
+ 	    {
+ 	      fmt++;
+--- builtins/read.def
++++ builtins/read.def	2018-11-29 08:14:56.165762022 +0000
+@@ -188,6 +188,12 @@ read_builtin (list)
+   char c;
+   char *input_string, *orig_input_string, *ifs_chars, *prompt, *arrayname;
+   char *e, *t, *t1, *ps2, *tofree;
++#if defined (HANDLE_MULTIBYTE)
++  static char mbch[25];
++  size_t charlen;
++  int mblen;
++  mbstate_t mbs;
++#endif
+   struct stat tsb;
+   SHELL_VAR *var;
+   TTYSTRUCT ttattrs, ttset;
+@@ -548,6 +554,7 @@ read_builtin (list)
+ #endif
+ 
+   ps2 = 0;
++  charlen = 0;
+   for (print_ps2 = eof = retval = 0;;)
+     {
+       CHECK_ALRM;
+@@ -589,14 +596,40 @@ read_builtin (list)
+ 
+       reading = 1;
+       CHECK_ALRM;
++#if defined (HANDLE_MULTIBYTE)
++      charlen = 0;
++      mblen = 0;
++      if (bash_mbcs_non_utf8)
++	{
++	  do
++	   {
++	     if (unbuffered_read)
++	       retval = posixly_correct ? zreadintr (fd, &c, 1) : zread (fd, &c, 1);
++	     else
++	       retval = posixly_correct ? zreadcintr (fd, &c) : zreadc (fd, &c);
++
++	     if (retval <= 0)
++	        break;
++
++	     mbch[mblen++] = c;
++	     memset (&mbs, 0, sizeof (mbs));
++	     charlen = mbrlen (mbch, mblen, &mbs);
++	   }
++	  while (charlen == (size_t)-2 && mblen < bash_mb_cur_max);
++	}
++      else
++	{
++#endif
+       if (unbuffered_read == 2)
+ 	retval = posixly_correct ? zreadintr (fd, &c, 1) : zreadn (fd, &c, nchars - nr);
+       else if (unbuffered_read)
+ 	retval = posixly_correct ? zreadintr (fd, &c, 1) : zread (fd, &c, 1);
+       else
+ 	retval = posixly_correct ? zreadcintr (fd, &c) : zreadc (fd, &c);
++#if defined (HANDLE_MULTIBYTE)
++	}
++#endif
+       reading = 0;
+-
+       if (retval <= 0)
+ 	{
+ 	  if (retval < 0 && errno == EINTR)
+@@ -639,6 +672,11 @@ read_builtin (list)
+ 	    }
+ 	}
+ 
++#if defined (HANDLE_MULTIBYTE)
++      if (bash_mbcs_non_utf8 && charlen > 1)
++	goto add_char;
++#endif
++
+       /* If the next character is to be accepted verbatim, a backslash
+ 	 newline pair still disappears from the input. */
+       if (pass_next)
+@@ -681,7 +719,19 @@ read_builtin (list)
+ 	}
+ 
+ add_char:
++#if defined (HANDLE_MULTIBYTE)
++      if (bash_mbcs_non_utf8 && charlen > 1)
++	{
++	   for (mblen = 0; mblen < charlen; mblen++)
++	     input_string[i++] = mbch[mblen];
++	}
++      else
++	{
++#endif
+       input_string[i++] = c;
++#if defined (HANDLE_MULTIBYTE)
++	}
++#endif
+       CHECK_ALRM;
+ 
+ #if defined (HANDLE_MULTIBYTE)
+--- lib/sh/strtrans.c
++++ lib/sh/strtrans.c	2018-11-29 08:14:56.165762022 +0000
+@@ -29,6 +29,7 @@
+ #include <chartypes.h>
+ 
+ #include "shell.h"
++#include "bashintl.h"
+ 
+ #include "shmbchar.h"
+ #include "shmbutil.h"
+@@ -55,6 +56,10 @@ ansicstr (string, len, flags, sawc, rlen
+   int c, temp;
+   char *ret, *r, *s;
+   unsigned long v;
++#if defined (HANDLE_MULTIBYTE)
++  size_t charlen;
++  mbstate_t mbs;
++#endif
+ 
+   if (string == 0 || *string == '\0')
+     return ((char *)NULL);
+@@ -69,6 +74,22 @@ ansicstr (string, len, flags, sawc, rlen
+ #endif
+   for (r = ret, s = string; s && *s; )
+     {
++#if defined (HANDLE_MULTIBYTE)
++      if (bash_mbcs_non_utf8)
++        {
++          memset (&mbs, 0, sizeof (mbs));
++          charlen = mbrlen (s, bash_mb_cur_max, &mbs);
++          if (charlen > 1 && charlen != (size_t)-2 && charlen != (size_t)-1)
++            {
++              while (charlen > 0)
++                {
++                  *r++ = *s++;
++                  charlen--;
++                }
++              continue;
++            }
++        }
++#endif
+       c = *s++;
+       if (c != '\\' || *s == '\0')
+ 	*r++ = c;
+--- locale.c
++++ locale.c	2018-11-29 08:14:56.165762022 +0000
+@@ -52,6 +52,7 @@ int locale_mb_cur_max;	/* value of MB_CU
+ int locale_shiftstates;
+ 
+ extern int dump_translatable_strings, dump_po_strings;
++extern int bash_mb_cur_max, bash_mbcs_non_utf8;
+ 
+ /* The current locale when the program begins */
+ static char *default_locale;
+@@ -76,6 +77,26 @@ static int reset_locale_vars __P((void))
+ static void locale_setblanks __P((void));
+ static int locale_isutf8 __P((char *));
+ 
++static void
++set_mbcs_values ()
++{
++  /* Enhance the performance. */
++#if defined (HANDLE_MULTIBYTE)
++  bash_mb_cur_max = MB_CUR_MAX;
++#  if defined (HAVE_LANGINFO_CODESET)
++  if (strcasestr (nl_langinfo (CODESET), "JIS") != 0 && bash_mb_cur_max == 2)
++    bash_mbcs_non_utf8 = 1;
++  else
++    bash_mbcs_non_utf8 = 0;
++#  else
++    bash_mbcs_non_utf8 = 0;
++#  endif
++#else
++  bash_mb_cur_max = 1;
++  bash_mbcs_non_utf8 = 0;
++#endif
++}
++
+ /* Set the value of default_locale and make the current locale the
+    system default locale.  This should be called very early in main(). */
+ void
+@@ -94,6 +115,8 @@ set_default_locale ()
+   default_locale = setlocale (LC_ALL, "");
+   if (default_locale)
+     default_locale = savestring (default_locale);
++
++  set_mbcs_values ();
+ #endif /* HAVE_SETLOCALE */
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
+@@ -150,6 +173,7 @@ set_default_locale_vars ()
+     setlocale (LC_TIME, lc_all);
+ #  endif /* LC_TIME */
+ 
++  set_mbcs_values ();
+ #endif /* HAVE_SETLOCALE */
+ 
+   val = get_string_value ("TEXTDOMAIN");
+@@ -240,6 +264,7 @@ set_locale_var (var, value)
+       if (lc_all == 0 || *lc_all == '\0')
+ 	{
+ 	  x = setlocale (LC_CTYPE, get_locale_var ("LC_CTYPE"));
++	  set_mbcs_values ();
+ 	  locale_setblanks ();
+ 	  locale_mb_cur_max = MB_CUR_MAX;
+ 	  /* if setlocale() returns NULL, the locale is not changed */
+@@ -388,6 +413,7 @@ reset_locale_vars ()
+   t = setlocale (LC_TIME, get_locale_var ("LC_TIME"));
+ #  endif
+ 
++  set_mbcs_values ();
+   locale_setblanks ();  
+   locale_mb_cur_max = MB_CUR_MAX;
+   if (x)
+--- parse.y
++++ parse.y	2018-11-29 08:14:56.165762022 +0000
+@@ -2005,7 +2005,12 @@ read_a_line (remove_quoted_newline)
+ {
+   static char *line_buffer = (char *)NULL;
+   static int buffer_size = 0;
+-  int indx, c, peekc, pass_next;
++  int indx, c, peekc, pass_next, chari;
++#if defined (HANDLE_MULTIBYTE)
++  size_t charlen;
++  mbstate_t mbs;
++  static char char_buffer[10];
++#endif
+ 
+ #if defined (READLINE)
+   if (no_line_editing && SHOULD_PROMPT ())
+@@ -2020,7 +2025,42 @@ read_a_line (remove_quoted_newline)
+       /* Allow immediate exit if interrupted during input. */
+       QUIT;
+ 
++#if defined (HANDLE_MULTIBYTE)
++      if (!bash_mbcs_non_utf8)
++        c = yy_getc ();
++      else
++        {
++          chari = 0;
++          charlen = 0;
++          while (chari < 10)
++            {
++              char_buffer[chari++] = c = yy_getc ();
++
++              if (c == EOF)
++                break;
++
++              memset (&mbs, 0, sizeof (mbs));
++              charlen = mbrlen (char_buffer, chari, &mbs);
++
++              if ((size_t)charlen != (size_t)-2 && (size_t)charlen != (size_t)-1)
++                break;
++            }
++
++          if (charlen != 1)
++            {
++              charlen = chari;
++              for (chari = 0; chari < charlen && char_buffer[chari] != EOF; chari++)
++                {
++	          RESIZE_MALLOCED_BUFFER (line_buffer, indx, 2, buffer_size, 128);
++	          line_buffer[indx++] = char_buffer[chari];
++                }
++              if (chari == charlen)
++                continue;
++            }
++        }
++#else
+       c = yy_getc ();
++#endif
+ 
+       /* Ignore null bytes in input. */
+       if (c == 0)

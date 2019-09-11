@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Wed Apr 24 08:59:02 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Move definition of _lto_cflags into %build.
+
+-------------------------------------------------------------------
+Tue Apr 23 11:33:06 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133088).
+
+-------------------------------------------------------------------
+Sun Mar 17 06:01:34 UTC 2019 - seanlew@opensuse.org
+
+- Update to new upstream version 5.5
+  * No changelog yet available in release notes
+
+-------------------------------------------------------------------
+Sat Mar 02 14:53:04 UTC 2019 - seanlew@opensuse.org
+
+- Update to new upstream version 5.4
+  * FUSE Client memory leak fixed (#1623107)
+  * fail to sync non-ascii utf8 file and dir names (#1648642)
+  * Tracker bug for all leases related issues (#1651323)
+  * gluster-blockd segfaults because of a null-deref (#1659563)
+  * Memory leak: dict_t leak in rda_opendir (#1659676)
+  * dht_revalidate may not heal attrs on the brick root (#1660736)
+  * Fix tests/bugs/shard/zero-flag.t (#1660932)
+  * NL cache: fix typos (#1662200)
+
+-------------------------------------------------------------------
+Sat Jan 19 06:52:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to new upstream version 5.3 (4.0 is EOL)
+  * 5.3 brings hundreds of improvements, see complete relnote at
+   https://docs.gluster.org/en/latest/release-notes/5.0/
+- Remove patches no longer needed in 5.x:
+  * 0001-build-restore-ability-to-control-verbosity-settings.patch
+  * glusterfs-tirpc.diff
+
+-------------------------------------------------------------------
+Thu May  3 11:50:05 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.0.2
+  * GlusterD2 (GD2) is a new management daemon for Gluster-4.0,
+    glustercli is the command-line interface for it.
+    It is a preview release. GD2 is not backwards compatible with
+    the older GlusterD. Heterogeneous clusters running both GD2
+    and GlusterD are not possible.
+  * Not all commands from GlusterD have been implemented for GD2.
+  * GD2 does not (yet) work well in 2-node clusters.
+  * Self Heal feature integrated for the new Volumes created
+    using Glusterd2.
+
+-------------------------------------------------------------------
+Thu Dec 14 18:47:07 UTC 2017 - jengelh@inai.de
+
+- Add 0001-build-restore-ability-to-control-verbosity-settings.patch
+- Replace xdr_sizeof.c with an empty file
+
+-------------------------------------------------------------------
+Mon Dec  4 14:03:38 UTC 2017 - jengelh@inai.de
+
+- Update to new release 3.12.3
+  * -- Features introduced in 3.10
+  * Brick multiplexing
+  * Support to display op-version information from clients
+  * Support for rebalance time to completion estimation
+  * Separation of tier as its own service
+  * Statedump support for gfapi based applications
+  * Disabled creation of trash directory by default
+  * Implemented parallel readdirp with distribute xlator
+  * -- Features introduced in 3.12:
+  * Ability to mount sub-directories using the Gluster
+    FUSE protocol
+  * GFID to path conversion is enabled by default
+  * Provided an option to set a limit on number of bricks
+    multiplexed in a processes
+  * Enhanced the option to export statfs data for bricks
+    sharing the same backend filesystem
+  * Provided a means to resolve GFID split-brain using
+    the gluster CLI
+  * Introduction of new api glfs_fd_set_lkowner() to set lock owner
+- Remove glusterfs-date.diff (no longer applies)
+
+-------------------------------------------------------------------
+Mon Nov 13 07:49:33 CET 2017 - kukuk@suse.de
+
+- glusterfs-tirpc.diff: fallback to libtirpc if there is no sunrpc
+  support in glibc
+
+-------------------------------------------------------------------
+Fri Nov  3 10:10:48 UTC 2017 - mpluskal@suse.com
+
+- Explicitly require python2 as python3 is not yet supported
+
+-------------------------------------------------------------------
+Wed Oct 18 11:28:29 UTC 2017 - vcizek@suse.com
+
+- Add missing Requires: libacl-devel to the devel subpackage
+  * glfs.h #includes <sys/acl.h>
+
+-------------------------------------------------------------------
+Wed Aug 23 15:58:34 UTC 2017 - vcizek@suse.com
+
+- Update to version 3.8.15
+  * fixes build with OpenSSL 1.1 (bsc#1055466)
+  * Mandatory lock support for Multiprotocol environment
+  * Gluster/NFS disabled by default
+  * Geo-replication for Sharded Volumes
+  * Tiering aware Geo-replication
+  * Enhance Quota enable/disable in glusterd
+  * Automagic unsplit-brain by [ctime|mtime|size|majority] for AFR
+  * Granular Entry self-heal for AFR
+  * Tons of bugfixes
+  * for more details see the NEWS file
+- spec cleanup
+- Install License files/docu
+
+-------------------------------------------------------------------
+Tue Oct 27 20:38:50 UTC 2015 - scorot@free.fr
+
+- Update to version 3.6.6
+  * No ChangeLog available
+
+-------------------------------------------------------------------
+Tue Aug  4 19:07:46 UTC 2015 - scorot@free.fr
+
+- Update to version 3.6.4 
+  * No ChangeLog available
+- Fix Url
+
+-------------------------------------------------------------------
+Thu Apr  9 16:39:09 UTC 2015 - afaerber@suse.de
+
+- Update to version 3.6.2
+* glusterfs-api.pc had version 0.0.0 in v3.6.1, now 4.3.6.2
+  This is still a backwards jump from v3.6.0 (7.0.0) and v3.5.3 (6).
+* Package glfsheal again
+
+-------------------------------------------------------------------
+Thu Jan 15 15:03:38 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.6.1
+  * api: versioned symbols in libgfapi.so for compatibility
+  * Use versioned symbols to keep libgfapi at libgfapi.so.0.0.0
+  * Some nits uncovered:
+   - there are a couple functions declared that do not have an
+     associated definition, e.g. glfs_truncate(), glfs_caller_specific_init() 
+   - there are seven private/internal functions used by heal/src/glfsheal
+     and the gfapi master xlator (glfs-master.c): glfs_loc_touchup(),
+     glfs_active_subvol(), and glfs_subvol_done(), glfs_init_done(),
+     glfs_resolve_at(), glfs_free_from_ctx(), and glfs_new_from_ctx();
+     which are not declared in glfs.h;
+   - for this initial pass at versioned symbols, we use the earliest version
+     of all public symbols, i.e. those for which there are declarations in
+     glfs.h or glfs-handles.h.
+     Further investigation as we do backports to 3.6, 3.4, and 3.4
+     will be required to determine if older implementations need to
+     be preserved (forward ported) and their associated alias(es) and
+     symbol version(s) defined.
+
+-------------------------------------------------------------------
+Mon Aug  4 21:27:22 UTC 2014 - scorot@free.fr
+
+- Update to new upstream release 3.5.2
+  * NFS server crashes in _socket_read_vectored_request
+  * Can't write to quota enable folder
+  * nfs: reset command does not alter the result for nfs options
+    earlier set
+  * features/gfid-access: stat on .gfid virtual directory return
+    EINVAL
+  * creating symlinks generates errors on stripe volume
+  * Self-heal errors with "afr crawl failed for child 0 with ret -1"
+    while performing rolling upgrade.
+  * [AFR] I/O fails when one of the replica nodes go down
+  * Fix inode leaks in gfid-access xlator
+  * NFS subdir authentication doesn't correctly handle 
+    multi-(homed,protocol,etc) network addresses
+  * nfs-utils should be installed as dependency while installing
+    glusterfs-server
+  * Excessive logging in quotad.log of the kind 'null client'
+  * client_t clienttable cliententries are never expanded when all
+    entries are used
+  * AFR : self-heal of few files not happening when a AWS EC2 Instance
+    is back online after a restart
+  * Dist-geo-rep : deletion of files on master, geo-rep fails to
+    propagate to slaves.
+  * Allow the usage of the wildcard character '*' to the options
+    "nfs.rpc-auth-allow" and "nfs.rpc-auth-reject"
+  * glfsheal: Improve the way in which we check the presence of
+    replica volumes
+  * Resource cleanup doesn't happen for clients on servers after
+    disconnect
+  * mounting a volume over NFS (TCP) with MOUNT over UDP fails
+  * backport 'gluster volume status --xml' issues
+  * Glustershd memory usage too high
+
+-------------------------------------------------------------------
+Tue Jul 29 19:48:39 UTC 2014 - scorot@free.fr
+
+- Update to new upstream release 3.5.1
+  * A new volume option server.manage-gids has been added.
+    This option should be used when users of a volume are in more
+    than approximately 93 groups (Bug 1096425).
+  * Duplicate Request Cache for NFS has now been disabled by
+    default, this may reduce performance for certain workloads,
+    but improves the overall stability and memory footprint for
+    most users.
+  * Others changes are mostly bug fixes.
+- disable systemd pre an post scripts for old product and then fix
+  build on SLE 11  
+
+-------------------------------------------------------------------
+Mon May  5 22:40:02 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.5.0
+* AFR_CLI_enhancements: Improved logging with more clarity and
+  statistical information. It allows visibility into why a
+  self-heal process was initiated and which files are affected, for
+  example. Prior to this enhancement, clearly identifying
+  split-brain issues from the logs was often difficult, and there
+  was no facility to identify which files were affected by a split
+  brain issue automatically. Remediating split brain without quorum
+  will still require some manual effort, but with the tools
+  provided, this will become much simpler.
+* Exposing Volume Capabilities: Provides client-side insight into
+  whether a volume is using the BD translator and, if so, which
+  capabilities are being utilized.
+* File Snapshot: Provides a mechanism for snapshotting individual
+  files. The most prevalent use case for this feature will be to
+  snapshot running VMs, allowing for point-in-time capture. This
+  also allows a mechanism to revert VMs to a previous state
+  directly from Gluster, without needing to use external tools.
+* GFID Access: A new method for accessing data directly by GFID.
+  With this method, the data can be directly consumed in changelog
+  translator, which is logging ‘gfid’ internally, very efficiently.
+* On-Wire Compression + Decompression: Use of this feature reduces
+  the overall network overhead for Gluster operations from a
+  client.
+* Prevent NFS restart on Volume change (Part 1): Previously, any
+  volume change (volume option, volume start, volume stop, volume
+  delete, brick add, etc.) would restart the NFS server, which led
+  to service disruptions. This feature allow modifying certain
+  NFS-based volume options without such interruptions occurring.
+  Part 1 is anything not requiring a graph change.
+* Quota Scalability: Massively increase the amount of quota
+  configurations from a few hundred to 65536 per volume.
+* readdir_ahead: Gluster now provides read-ahead support for
+  directories to improve sequential directory read performance.
+* zerofill: Enhancement to allow zeroing out of VM disk images,
+  which is useful in first time provisioning or for overwriting an
+  existing disk.
+* Brick Failure Detection: Detecting failures on the filesystem
+  that a brick uses makes it possible to handle errors that are
+  caused from outside of the Gluster environment.
+* Disk encryption: Implement the previous work done in HekaFS into
+  Gluster. This allows a volume (or per-tenant part of a volume) to
+  be encrypted “at rest” on the server using keys only available on
+  the client. [Note: Only content of regular files is encrypted.
+  File names are not encrypted! Also, encryption does not work in
+  NFS mounts.]
+* Geo-Replication Enhancement: Previously, the geo-replication
+  process, gsyncd, was a single point of failure as it only ran on
+  one node in the cluster. If the node running gsyncd failed, the
+  entire geo-replication process was offline until the issue was
+  addressed. In this latest incarnation, the improvement is
+  extended even further by foregoing use of xattrs to identify
+  change candidates and directly consuming from the volume
+  changelog, which will improve performance twofold: one, by
+  keeping a running list of only those files that may need to be
+  synced; and two, the changelog is maintained in memory, which
+  will allow near instant access to which data needs to be changed
+  and where by the gsync daemon.
+
+-------------------------------------------------------------------
+Thu Feb 28 21:58:02 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.4.0alpha (rpm: 3.4.0~qa9)
+* automake-1.13 support
+- Enable AIO support
+
+-------------------------------------------------------------------
+Tue Nov 27 11:28:36 UTC 2012 - jengelh@inai.de
+
+- Use `glusterd -N` in glusterd.service to run in foreground
+  as required
+
+-------------------------------------------------------------------
+Tue Nov 27 10:59:15 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0 or LGPL-3.0+
+
+-------------------------------------------------------------------
+Fri Nov  9 21:47:11 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.4.0qa2
+* No changelog provided by upstream
+- Remove glusterfs-init.diff, merged upstream
+- Provide systemd service file
+
+-------------------------------------------------------------------
+Wed Oct 31 12:19:47 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.3.1
+* mount.glusterfs: Add support for {attribute,entry}-timeout options
+* cli: Proper xml output for "gluster peer status"
+* self-heald: Fix inode leak
+* storage/posix: implement native linux AIO support
+
+-------------------------------------------------------------------
+Mon Sep 24 03:45:09 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.3.0
+* New: Unified File & Object access
+* New: Hadoop hooks - HDFS compatibility layer
+* New volume type: Repstr - replicated + striped (+ distributed)
+  volumes
+
+-------------------------------------------------------------------
+Fri Dec  2 15:43:43 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct  5 22:17:35 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

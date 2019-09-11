@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Sun Dec 11 19:47:26 UTC 2016 - lars@linux-schulserver.de
+
+- update to 3.0.0.5
+  - update GLPlugin, fix valdiff&lookback
+  - former fix was a bad idea. now if there is no cache activity, there are no
+    perfdata
+  - use the last good value for hitrates of there is absolutely no
+    database activity
+  - default --lookback 3600 only if not given on the commandline
+  - fix version string
+  - default --lookback 3600
+  - new structure, using Monitoring::GLPlugin
+- remove monitoring-plugins-mysql_health-destroy_connection.patch
+  => fixed upstream
+
+-------------------------------------------------------------------
+Sun Aug 14 11:24:13 UTC 2016 - mardnh@gmx.de
+
+- update to 2.2.2
+  - handle permission/syntax problems for mode sql
+- fix source url
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug 26 13:13:36 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.2.1
+  - fix the autoconf m4, so the debian-builds don't fail
+
+-------------------------------------------------------------------
+Sun Aug  2 10:25:10 UTC 2015 - lars@linux-schulserver.de
+
+- update to 2.2
+  + add rfc3986-encoded passwords
+
+-------------------------------------------------------------------
+Mon Feb 23 22:31:10 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.1.9.2
+  - bugfix in InnoDB initialization & versions > 5.6.1
+- changes from 2.1.9.1
+  - add connections_aborted, open_files to the pnp template
+- changes from 2.1.9
+  - bugfix in pnp template
+  - bugfix in qcache calculation
+- changes from 2.1.8.4
+  - implement –negate old_level=new_level
+  - allow floating point numbers in thresholds
+- changes from 2.1.8.3
+  - output also ok-messages for my-modes
+
+-------------------------------------------------------------------
+Wed Jan 14 08:23:44 UTC 2015 - lars@linux-schulserver.de
+
+- add monitoring-plugins-mysql_health-destroy_connection.patch to 
+  really handle the DB disconnect in DESTROY
+
+-------------------------------------------------------------------
+Wed Jul 30 19:18:19 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-mysql_health
+
+-------------------------------------------------------------------
+Sun Mar  2 01:23:02 UTC 2014 - lars@linux-schulserver.de
+
+- package the pnp4nagios template at the right place
+
+-------------------------------------------------------------------
+Fri Jan 25 15:05:57 UTC 2013 - lars@linux-schulserver.de
+
+- add COPYING to doc
+
+-------------------------------------------------------------------
+Wed Jan 23 10:21:38 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.1.8.2:
+  + bugfix in querycache-hitrate (div by 0 after db restart)
+  + fix warnings for newest perl versions 
+  + new parameters –mycnf and –mycnfgroup 
+
+-------------------------------------------------------------------
+Thu Jul 12 20:51:40 UTC 2012 - lars@linux-schulserver.de
+
+- update to 2.1.7
+  + innodb modes now detect problems with the innodb engine 
+  + fix a bug with statefilesdir and capital letters 
+  + add –labelformat so that groundwork no longer complains 
+    (max label length is 19 characters)
+  + bugfix in mode sql (numerical vs. regexp output) 
+
+-------------------------------------------------------------------
+Fri Jul 29 15:38:21 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 2.1.5.1
+

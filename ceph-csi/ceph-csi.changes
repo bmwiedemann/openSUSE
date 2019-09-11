@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Jul 17 13:32:39 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Use ceph-base pattern instead of individual packages 
+
+-------------------------------------------------------------------
+Fri Jul 12 10:58:40 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Updating to the v1.1.0
+  + CephFS subvolume/manager based volume provisioning and deletion.
+  + E2E test support for PVC creation, App pod mounting.etc.
+  + CSI spec v1.1 support
+  + Kube dependency updated to 1.15.
+  + Configuration store change from configmap to rados omap
+  + Mount options support for CephFS and RBD volumes
+  + Move locks to more granular locking than CPU count based
+  + Rbd support for ReadWriteMany PVCs for block mode
+  + Unary plugin code for both ( CephFS and RBD ) drivers.
+  + Driver name updated to CSI spec standard.
+  + helm chart updates.
+  + sidecar updates to latest available.
+  + RBAC corrections and updates for containers.
+  + Lock protection for create,delete volume ..etc operations
+  + Added CSIDriver CRD. 
+
+-------------------------------------------------------------------
+Fri Jul 12 07:31:20 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update version to be parsed by OBS service 
+
+-------------------------------------------------------------------
+Thu Jul 11 15:53:58 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update version according to openSUSE package name guidelines
+
+-----------------------------------------------------------------------
+Mon Jul  8 22:36:35 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Initial submission
+- Build from upstream github.com/ceph/ceph-csi initially
+  + Initially use master branch
+- Version at commit fa68c35f3b5d9081d8aa3241baf71064af967aa9

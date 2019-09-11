@@ -1,0 +1,13 @@
+Index: cpio-2.11/src/mt.c
+===================================================================
+--- cpio-2.11.orig/src/mt.c	2014-07-29 11:02:31.631881572 +0200
++++ cpio-2.11/src/mt.c	2014-07-29 11:02:31.665881951 +0200
+@@ -428,7 +428,7 @@ parse_opt (int key, char *arg, struct ar
+ 	  {
+ 	    char *p;
+ 	    long val = strtol (arg, &p, 0);
+-	    if (*p || (count = val) != count)
++	    if (*p || (count = val) != val)
+ 	      error (MT_EXIT_INVOP, 0, _("invalid count value"));
+ 	  }
+ 	  break;

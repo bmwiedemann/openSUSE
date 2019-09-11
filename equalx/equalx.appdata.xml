@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<component>
+  <id>equalx.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>EqualX</name>
+  <project_license>GPL-3.0+</project_license>
+  <summary>Editor for writing and exporting TeX/LaTeX equations</summary>
+  <url type="homepage">http://equalx.sourceforge.net/</url>
+  <description>
+    <p>EqualX is a helpful graphical interface to LaTeX programs.
+It gives you the power and beauty for writing TeX/LaTeX equations
+in a simple to use editor.</p>
+    <p>Features included:</p>
+    <ul>
+      <li>Highlight find results in the Equation Preview</li>
+      <li>3 modes for Refreshing the Preview</li>
+      <li>Customise the export commands</li>
+      <li>Professional and customisable window layout</li>
+      <li>Equation font is computed according to desktop DPI</li>
+      <li>Reshaping the Symbols toolbar and Templates toolbar</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image height="621" width="769">http://equalx.sourceforge.net/images/mainwindow.png</image>
+      <caption>Main window</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>q.quark_AT_gmail.com</update_contact>
+</component>

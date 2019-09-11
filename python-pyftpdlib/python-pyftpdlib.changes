@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Tue May 28 11:07:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not remove tests, other packages import them
+
+-------------------------------------------------------------------
+Sat May 25 09:29:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.5:
+  * Various minor fixes and documentation updates
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 00:57:35 UTC 2018 - toddrme2178@gmail.com
+
+- Version update to 1.5.4
+  + Enhancements
+    * #463: FTPServer class can now be used as a context manager.
+  + Bug fixes
+    * #431: Ctrl-C doesn't exit `python -m pyftpdlib` on Windows.
+    * #436: ThreadedFTPServer.max_cons is evaluated threading.activeCount(). If
+      the user uses threads of its own it will consume the number of max_cons.
+    * #447: ThreadedFTPServer and MultiprocessFTPServer do not join() tasks which
+      are no longer consuming resources.
+- Disable tests since they randomly fail.
+  See https://github.com/giampaolo/pyftpdlib/issues/386
+
+-------------------------------------------------------------------
+Wed May  2 10:27:38 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.5.3:
+  * implemented SITE MFMT command which changes file modification time. (patch by Tahir Ijaz)
+  * add username and password command line options
+  * documentation moved to readthedocs: http://pyftpdlib.readthedocs.io
+  * fix duplicated output log. (path by PonyPC)
+  * Respond successfully to STOR only after closing file handle.
+
+-------------------------------------------------------------------
+Thu Jul  6 00:25:48 UTC 2017 - jengelh@inai.de
+
+- Trim exaggeration from descriptions.
+
+-------------------------------------------------------------------
+Thu Jun 22 14:14:51 UTC 2017 - jmatejek@suse.com
+
+- update to 1.5.2
+  * disables old SSL methods
+  * fixed some hangs/crashes
+- fixes test failures in OBS
+- drop patches that are no longer needed:
+  * pyftpdlib-disable-error-0-ssl-unwrap.diff
+  * pyftpdlib-disable-incomplete-file-received.diff
+  * pyftpdlib-handle-missing-SSLv3.diff
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon May  9 14:58:36 UTC 2016 - hpj@urpla.net
+
+- add patch to disable another failing test, related to icomplete
+  file receptions
+
+-------------------------------------------------------------------
+Mon May  9 13:14:32 UTC 2016 - hpj@urpla.net
+
+- add patch to test SSLv3 only, if available
+
+-------------------------------------------------------------------
+Mon May  9 10:34:42 UTC 2016 - hpj@urpla.net
+
+- add patch to disable a test, that triggers an error 0 in ssl
+
+-------------------------------------------------------------------
+Sun May  8 20:15:42 UTC 2016 - hpj@urpla.net
+
+- version 1.5.1: initial build
+

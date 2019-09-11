@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed Apr 17 10:39:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Switch to pytest runner, which seems to be a way more stable in
+  providing the results. 
+
+-------------------------------------------------------------------
+Thu Jan 24 10:07:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Thu Jan 24 09:31:19 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 0.4.4:
+  * Changed how any return value from the ``on_data`` callable is processed. In
+    earlier versions, the return value was ignored. In this version, if the
+    return value is ``False``, the data received from ``gpg`` is not buffered.
+    Otherwise (if the value is ``None`` or ``True``, for example), the data is
+    buffered as normal. This functionality can be used to do your own
+    buffering, or to prevent buffering altogether.  The ``on_data`` callable is
+    also called once with an empty byte-string to signal the end of data from
+    ``gpg``.
+  * Added an additional attribute ``check_fingerprint_collisions`` to
+    ``GPG`` instances, which defaults to ``False``. It seems that ``gpg`` is
+    happy to have duplicate keys and fingerprints in a keyring, so we can't be
+    too strict. A user can set this attribute of an instance to ``True`` to
+    trigger a check for collisions.
+  * With GnuPG 2.2.7 or later, provide the fingerprint of a signing key for a
+    failed signature verification, if available.
+  * For verification where multiple signatures are involved, a mapping of
+    signature_ids to fingerprint, keyid, username, creation date, creation
+    timestamp and expiry timestamp is provided.
+  * Added a check to disallow certain control characters ('\r', '\n', NUL) in
+    passphrases (CVE-2019-6690 bsc#1123498)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jun 13 19:37:41 UTC 2018 - astieger@suse.com
+
+- uppate to 0.4.3:
+  * Add --no-verbose to the gpg command line, in case verbose is
+    specified is gpg.conf.
+  * This is mitigation against CVE-2018-12020 boo#1096745
+- includes changes from 0.4.2:
+  * Subkey information is now collected and returned in a
+    subkey_info dictionary keyed by the subkey's ID
+  * Add expect_passphrase password for use on GnuPG >= 2.1 when
+    passing passphrase to gpg via pinentry
+  * Provid a trust_keys method to allow setting the trust level
+    for keys
+  * When the gpg executable is not found, note the path used in the
+    exception message
+  * Make error messages nor informational
+
+-------------------------------------------------------------------
+Mon Sep 11 15:33:08 UTC 2017 - jengelh@inai.de
+
+- Ensure description neutrality.
+
+-------------------------------------------------------------------
+Wed Sep  6 17:29:32 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

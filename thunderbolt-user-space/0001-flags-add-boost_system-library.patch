@@ -1,0 +1,27 @@
+From d80be03e4a694da76215aba87952cc5767f1ce95 Mon Sep 17 00:00:00 2001
+From: Nirmoy Das <nirmoy@chapman.arch.suse.de>
+Date: Mon, 9 Oct 2017 14:32:33 +0200
+Subject: [PATCH] flags: add boost_system library
+
+---
+ common/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/common/CMakeLists.txt b/common/CMakeLists.txt
+index 8b5ddc5..8ff517b 100644
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -2,8 +2,8 @@ project(common VERSION 0.1 LANGUAGES CXX)
+ 
+ add_library(${PROJECT_NAME} STATIC "file.cpp")
+ 
+-find_package(Boost REQUIRED COMPONENTS filesystem)
+-target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_LIBRARIES})
++find_package(Boost REQUIRED COMPONENTS filesystem system)
++target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_LIBRARIES} ${Boost_SYSTEM_LIBRARY})
+ 
+ target_include_directories(${PROJECT_NAME} INTERFACE
+ 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+-- 
+2.13.6
+

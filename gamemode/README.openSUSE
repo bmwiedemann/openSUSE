@@ -1,0 +1,13 @@
+Launching the GameMode Daemon
+=============================
+
+The GameMode daemon is activated via D-Bus launch automatically on access by
+the first client.
+
+Reloading the GameMode configuration file
+=========================================
+
+Although activated via D-Bus. The daemon is run using Systemd and can easily
+be restarted via systemctl.
+
+    systemctl --user restart gamemoded

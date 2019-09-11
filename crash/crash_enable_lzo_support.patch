@@ -1,0 +1,13 @@
+---
+ CFLAGS.extra  |    1 +
+ LDFLAGS.extra |    1 +
+ 2 files changed, 2 insertions(+)
+
+--- /dev/null
++++ b/CFLAGS.extra
+@@ -0,0 +1 @@
++-DLZO
+--- /dev/null
++++ b/LDFLAGS.extra
+@@ -0,0 +1 @@
++-llzo2

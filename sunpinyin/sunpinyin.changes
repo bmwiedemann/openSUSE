@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Tue Jun 19 14:16:59 UTC 2018 - schwab@suse.de
+
+- sunpinyin-aarch64.patch: Remove obsolete patch
+
+-------------------------------------------------------------------
+Thu Nov 23 16:50:07 UTC 2017 - dimstar@opensuse.org
+
+- Add sunpinyin-scons-on-py3.patch: Fix build with scons using
+  python3 as interpreter.
+
+-------------------------------------------------------------------
+Tue Sep 12 02:19:43 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.0.0rc1
+  * fix the pod2man invocations: 63ef4bb
+  * Add support for DESTDIR: 9232a1e
+  * add travis-ci integration: f01c99e
+  * fixed the FTBFS on gcc6: 844ad0f
+  * handle AArch64 architecture: 96b3342
+  * hacks to support ve/ue: cf3fe3d
+  * shuangpin related fixes: 33091ba, 4c1acf5
+  * Support 'ng', 'hm' and 'rua': 3bbbf8f
+  * Use lve/nve instead of lue/nue: 4f9745c
+  * fix invalid 'yai' case: d6e9f34
+  * fixed the userdict saving issue: 7d8b8b1
+  * expose userdict to public, easier to import user dict.: a4bfe22
+  * fix crashes, merge the duplicate sentences: fa7ec5f
+  * optimized the add operation from O(n) to O(log n): 08f5da8
+  * fixed crash in preeditstring when partial commit with empty pinyin: b728af3
+  * add Python plugin support. refact uiobjects: CCandidateList and CPreeditString: 57370b8
+- Fix doc filelist.
+- Remove useless %post and %postun.
+
+-------------------------------------------------------------------
+Tue May  2 13:27:26 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build fully reproducible
+
+-------------------------------------------------------------------
+Sun Mar 06 05:02:17 UTC 2016 - i@marguerite.su
+
+- update to version 2.0.4+git20160225.844ad0f:
+  + Fixed SunPinyinLookupTable::cursor_up()
+  + slm/thread: be more tolerant when looking up a float
+  + SLM-train.mk: publish SLM*_TEXT_FILE instead of
+    TSLM*_TEXT_FILE.
+- libsunpinyin3 should requires sunpinyin-data, or the
+  input method can't be used
+
+-------------------------------------------------------------------
+Sun Aug 23 15:25:49 UTC 2015 - i@marguerite.su
+
+- update to version 2.0.4+git20150706.cf18102:
+  + fix pod2man invocations
+- drop sunpinyin-gcc47.patch, forgot to delete the file
+- add patch: no-download.patch, don't download dicts online
+
+-------------------------------------------------------------------
+Sat Mar 23 22:50:44 UTC 2013 - schwab@suse.de
+
+- sunpinyin-aarch64.patch: get endianess for aarch64
+
+-------------------------------------------------------------------
+Sun Jun 24 19:00:52 UTC 2012 - i@marguerite.su
+
+- fix fedora builds.
+
+-------------------------------------------------------------------
+Mon Jun  4 09:55:38 UTC 2012 - i@marguerite.su
+
+- update version to 2.0.4git, to be compatible with latest fcitx.
+- drop gcc47 patch. upstream fixed.
+
+-------------------------------------------------------------------
+Sat Mar 17 23:29:50 UTC 2012 - zaitor@opensuse.org
+
+- Add sunpinyin-gcc47.patch: Fix build with gcc 4.7. 
+
+-------------------------------------------------------------------
+Thu Jan 26 21:57:13 UTC 2012 - i@marguerite.su
+
+- merge changelog
+
+-------------------------------------------------------------------
+Wed Jan 25 10:15:52 UTC 2012 - i@marguerite.su
+
+- initial package 2.0.4
+
+-------------------------------------------------------------------
+Sat Sep 10 04:15:33 UTC 2011 - stecue@gmail.com
+
+- Updated to 2.0.3.99. Thanks to csslayer!
+
+-------------------------------------------------------------------
+Mon Aug  1 10:26:57 CEST 2011 - tiwai@suse.de
+
+- Rename libsunpinyin3-devel to libsunpinyin-devel
+- Add explicitly dependency from devel sub-package
+- Clean up spec file
+
+-------------------------------------------------------------------
+* Tue May 31 19:33:27 UTC 2011 - stecue@gmail.com 2.0.3
+
+- Check the license for open-gram.
+- bz2ed all sources.
+
+-------------------------------------------------------------------
+* Mon Feb 21 00:00:00 UTC 2011 - hillwood<hillwood@linuxfans.org>
+
+- First build 2.0.3 for suse and Fedora.

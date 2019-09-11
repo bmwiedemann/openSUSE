@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Aug 13 20:32:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added do-not-use-global-static-systembus-instance.patch from
+  upstream, fixes crash on DBus disconnect
+
+-------------------------------------------------------------------
+Thu Jul 10 18:09:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.112.0
+  * Qt5 support
+  * Update deprecated methods to latest Polkit API
+- Drop patches merged upstream: fixed-reference-counting-of-GObjects.patch,
+  fixed-GCancellable-handling-in-PolkitQtListener.patch and
+  qt5-support.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 10:35:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add license to %doc
+
+-------------------------------------------------------------------
+Mon Apr 14 17:23:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate polkit-qt5-1 package
+

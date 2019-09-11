@@ -1,0 +1,28 @@
+--- tkirc2
++++ tkirc2
+@@ -1,6 +1,6 @@
+ #! /bin/sh
+ # \
+-exec wish8.3 "$0" "$@"
++exec wish "$0" "$@"
+ 
+ #############################################################################
+ #                                                                           #
+@@ -840,7 +840,7 @@
+ set history_max        20
+ set lines_max          256
+ set lines_all          0
+-set ircpath            "irc"
++set ircpath            "/usr/bin/epic"
+ 
+ set leavetext_limit    80
+ set topic_limit        80
+@@ -7807,7 +7807,7 @@
+   if {"$irc($inum,serv)" != ""} {
+     set len [string length "$message"]
+     if {$len == 0} {
+-      set message "ircII+tkirc2"
++      set message "epic+tkirc2"
+     }
+     ExecOnCommands signoff $inum window "$irc($inum,mesg)" nick "$irc($inum,nick)" address "[AddressOfNick $inum "$irc($inum,nick)"]" message "$message"
+     catch {write2irc $inum "/signoff $message"}

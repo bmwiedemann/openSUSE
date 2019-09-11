@@ -1,0 +1,17 @@
+[Unit]
+Description=Initialize /var/cache/man
+DefaultDependencies=no
+Wants=local-fs.target
+After=local-fs.target
+After=systemd-tmpfiles-setup.service
+ConditionPathExists=/var/cache/man
+ConditionPathExists=!/var/cache/man/index.db
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/mandb --quiet --create
+
+[Install]
+WantedBy=multi-user.target
+

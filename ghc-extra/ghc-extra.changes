@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Sat Jun  1 02:02:09 UTC 2019 - psimons@suse.com
+
+- Update extra to version 1.6.17.
+  1.6.17, released 2019-05-31
+      Add enumerate
+
+-------------------------------------------------------------------
+Sun May 26 09:26:57 UTC 2019 - psimons@suse.com
+
+- Update extra to version 1.6.16.
+  1.6.16, released 2019-05-25
+      Add atomicModifyIORef_ and atomicModifyIORef'_
+
+-------------------------------------------------------------------
+Tue Apr 23 02:01:56 UTC 2019 - psimons@suse.com
+
+- Update extra to version 1.6.15.
+  1.6.15, released 2019-04-22
+      #45, add NonEmpty.Extra for extra appending functions
+      #42, add fromMaybeM
+      Remove support for GHC 7.4, 7.6 and 7.8
+
+-------------------------------------------------------------------
+Tue Dec 11 03:01:57 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.14.
+  1.6.14, released 2018-12-10
+      Add mapLeft and mapRight
+
+-------------------------------------------------------------------
+Mon Oct 15 02:01:21 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.13.
+  1.6.13, released 2018-10-14
+      #40, deprecate Data.List.Extra.for (clashes with Traversable)
+
+-------------------------------------------------------------------
+Thu Oct  4 09:43:02 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.12.
+  1.6.12, released 2018-09-24
+      #39, add curry3/uncurry3
+  1.6.11, released 2018-09-18
+      #38, make escapeHTML replace ' with &#39;
+  1.6.10, released 2018-09-04
+      #37, make a duration/sleep test more robust (wider bounds)
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:23 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:05 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.9.
+  1.6.9, released 2018-07-12
+      Add loop, the non-monadic version of loopM
+      #36, add whenMaybe and whenMaybeM
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:51 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.8.
+  1.6.8, released 2018-05-24
+      Add notNull
+      Add listDirectories
+  1.6.7, released 2018-05-23
+      #35, add fold1M and fold1M_
+      #34, lots of documentation typos
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update extra to version 1.6.6.
+  * Add escapeJSON and unescapeJSON
+  * Add escapeHTML and unescapeHTML
+  * #33, improve error messages on test suite failures
+  * Add dropPrefix and dropSuffix
+  * Add maximumOn and minimumOn
+  * #31, add nubSort, nubSortBy and nubSortOn
+  * Mark the partial functions with Partial
+  * Add Partial constraint
+  * Add newTempFileWithin and newTempDirWithin
+  * Mark the Extra module as deprecated, used for documentation only
+  * #23, delete subtractTime
+  * Require QuickCheck-2.10
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Jun 19 21:01:51 UTC 2017 - psimons@suse.com
+
+- Update to version 1.5.3.
+
+-------------------------------------------------------------------
+Sun Apr  9 18:08:06 UTC 2017 - psimons@suse.com
+
+- Update to version 1.5.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:20:44 UTC 2017 - psimons@suse.com
+
+- Update to version 1.5.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:28:13 UTC 2016 - psimons@suse.com
+
+- Update to version 1.4.10 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Jun 16 10:28:27 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.10
+* Add Data.Typeable.Extra containing typeRep, Proxy, (:~:)
+
+-------------------------------------------------------------------
+Thu Jun  2 04:50:09 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.9
+* add line1
+
+-------------------------------------------------------------------
+Mon May 30 09:49:03 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.8
+* Add displayException
+
+-------------------------------------------------------------------
+Mon May 23 09:07:41 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.7
+* add concatForM
+
+-------------------------------------------------------------------
+Thu May 12 13:35:41 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.6
+* add maybeM and eitherM
+
+-------------------------------------------------------------------
+Sat Apr 30 16:02:30 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.5
+* change fileEq on files that do not exist to be an error
+* add mconcatMap and mconcatMapM
+* add fileEq
+* add isMac
+
+-------------------------------------------------------------------
+Fri Jan  8 10:43:20 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.4.3
+* Add Data.Version.Extra
+
+-------------------------------------------------------------------
+Sun Sep 20 19:14:27 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.4.2
+ * Make concatMapM/mapMaybeM faster
+
+-------------------------------------------------------------------
+Fri Aug  7 07:01:42 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.4.1
+ * Make temp file functions workaround GHC bug #10731
+ * Add retryBool
+ * Add stripInfix and stripInfixEnd
+ * support directory-1.2.3
+ * Add whenJustM
+ * Add errorIO
+ * Add onceFork
+ * Make once async exception safe
+ * Fix a deadlock in once when two people request in parallel
+ * Fix a missing hClose in captureOutput
+
+-------------------------------------------------------------------
+Sat Apr 25 17:04:43 UTC 2015 - mimi.vx@gmail.com
+
+- version bump to 1.1
+* add nubOrd, nubOrdOn, nubOrdBy
+* add groupSortOn and groupSortBy
+* add splitAtEnd
+
+-------------------------------------------------------------------
+Sun Feb  1 16:44:27 UTC 2015 - mimi.vx@gmail.com
+
+- version bump to 1.0.1
+    + Make listFilesAvoid drop trailing path separators before testing
+    + #3, add a constraint base >= 4.4
+
+-------------------------------------------------------------------
+Sat Nov 15 20:36:28 UTC 2014 - mimi.vx@gmail.com
+
+- initial commit of extra package

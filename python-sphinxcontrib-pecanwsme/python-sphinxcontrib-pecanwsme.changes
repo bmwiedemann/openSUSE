@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Tue Apr 23 13:48:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.10.0
+  * Add support for Sphinx 2.0
+  * Logs are moved to debug level to reduce noisiness of output
+
+-------------------------------------------------------------------
+Tue Sep  4 07:54:08 UTC 2018 - dmueller@suse.com
+
+- update to 0.9:
+  * setup.cfg: Update with recent changes
+  * Port to Python 3
+- switch to singlespec
+
+-------------------------------------------------------------------
+Wed Jul 29 11:05:09 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file. Use fedora compatible files macros
+
+-------------------------------------------------------------------
+Tue May  6 08:46:27 UTC 2014 - dmueller@suse.com
+
+- update to version 0.8:
+  + Fix make rst for method not using wsme
+
+-------------------------------------------------------------------
+Tue Mar 18 08:15:57 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.7.1:
+  + update announce.rst for 0.7.1 release
+  + Fix formatting issue for docstrings without param list
+  + fix tags syntax
+
+-------------------------------------------------------------------
+Thu Mar  6 16:38:19 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.7:
+  + Remove trailing slash from URLs
+
+-------------------------------------------------------------------
+Thu Feb 13 09:47:40 UTC 2014 - dmueller@suse.com
+
+- remove d2to1 dependency 
+
+-------------------------------------------------------------------
+Sat Jan 11 10:26:28 UTC 2014 - dmueller@suse.com
+
+- update to 0.6:
+  * Add support for DELETE and PATCH HTTP verbs
+
+-------------------------------------------------------------------
+Mon Oct 21 08:15:58 UTC 2013 - dmueller@suse.com
+
+- update to 0.5:
+  * Add rest verb as prefix for custom_actions
+
+-------------------------------------------------------------------
+Thu Sep 26 13:32:56 UTC 2013 - dmueller@suse.com
+
+- update to 0.4:
+  * Remove duplication in RESTControllerDirective
+  * Handle more pecan REST method
+
+-------------------------------------------------------------------
+Mon Sep 16 12:49:02 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3:
+  + Update pbr usage past the world of d2to1
+
+-------------------------------------------------------------------
+Thu Jul  4 13:04:20 UTC 2013 - speilicke@suse.com
+
+- Package LICENSE and README.rst
+
+-------------------------------------------------------------------
+Mon Jun 10 20:16:04 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.2) 
+

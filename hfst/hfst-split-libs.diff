@@ -1,0 +1,60 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2014-09-12 10:29:55.446630599 +0200
+X-Upstream: likely not
+
+Install sublibraries such that we can make them separate packages
+and tag these with their licenses.
+---
+ back-ends/foma/Makefile.am            |    6 +++++-
+ back-ends/openfst/src/lib/Makefile.am |    3 ++-
+ back-ends/sfst/Makefile.am            |    3 ++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+Index: hfst-3.12.2/back-ends/foma/Makefile.am
+===================================================================
+--- hfst-3.12.2.orig/back-ends/foma/Makefile.am
++++ hfst-3.12.2/back-ends/foma/Makefile.am
+@@ -8,12 +8,16 @@ if WANT_MINGW
+ AM_CPPFLAGS += -D__NO_MINGW_LFS
+ endif
+ 
+-noinst_LTLIBRARIES = libfoma.la
++lib_LTLIBRARIES = libfoma.la
++libfoma_la_LDFLAGS = -release hfst -version-number 0 -no-undefined
+ libfoma_la_SOURCES = int_stack.c define.c determinize.c apply.c \
+         rewrite.c lexcread.c topsort.c flags.c minimize.c reverse.c \
+         extract.c sigma.c structures.c constructions.c \
+         coaccessible.c io.c utf8.c spelling.c dynarray.c mem.c stringhash.c \
+         trie.c lex.lexc.c lex.yy.c regex.c
++if GENERATE_FOMA_WRAPPER
++libfoma_la_LIBADD = -lz
++endif
+ 
+ hfst_foma_LDADD = $(top_builddir)/back-ends/foma/libfoma.la
+ 
+Index: hfst-3.12.2/back-ends/openfst/src/lib/Makefile.am
+===================================================================
+--- hfst-3.12.2.orig/back-ends/openfst/src/lib/Makefile.am
++++ hfst-3.12.2/back-ends/openfst/src/lib/Makefile.am
+@@ -11,6 +11,7 @@
+ 
+ AUTOMAKE_OPTIONS=subdir-objects
+ AM_CPPFLAGS = -I $(srcdir)/../include $(ICU_CPPFLAGS)
+-noinst_LTLIBRARIES = libfst.la
++lib_LTLIBRARIES = libfst.la
++libfst_la_LDFLAGS = -release hfst -version-number 0 -no-undefined
+ libfst_la_SOURCES = compat.cc flags.cc fst.cc properties.cc \
+ 	symbol-table.cc symbol-table-ops.cc util.cc
+Index: hfst-3.12.2/back-ends/sfst/Makefile.am
+===================================================================
+--- hfst-3.12.2.orig/back-ends/sfst/Makefile.am
++++ hfst-3.12.2/back-ends/sfst/Makefile.am
+@@ -1,6 +1,7 @@
+ AM_CPPFLAGS=-Wno-deprecated
+ 
+-noinst_LTLIBRARIES = libsfst.la
++lib_LTLIBRARIES = libsfst.la
++libsfst_la_LDFLAGS = -release hfst -version-number 0 -no-undefined
+ libsfst_la_SOURCES = alphabet.cc basic.cc utf8.cc compact.cc fst.cc \
+         operators.cc determinise.cc generate.cc hopcroft.cc
+ 

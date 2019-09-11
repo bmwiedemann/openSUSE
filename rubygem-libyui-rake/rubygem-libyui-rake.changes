@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue Mar 26 13:24:10 UTC 2019 - Ladislav Slezak <lslezak@suse.cz>
+
+- Added SLE-15-SP1 target (bsc#1130043)
+- 0.1.14
+
+-------------------------------------------------------------------
+Tue Oct 30 07:47:42 UTC 2018 - lslezak@suse.cz
+
+- Changed the SLE12-SP4 SR target to the :Update subproject
+  (bsc#1113887)
+- 0.1.13
+
+-------------------------------------------------------------------
+Tue Oct 16 15:33:04 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Remove qrc from license check (boo#1112041)
+- 0.1.12
+
+-------------------------------------------------------------------
+Fri Oct  5 14:15:26 UTC 2018 - jreidinger@suse.com
+
+- Relax rake dependency as it works even with ruby 2.5(bsc#1044312)
+- 0.1.11
+
+-------------------------------------------------------------------
+Fri Jun 15 13:12:04 UTC 2018 - jreidinger@suse.com
+
+- switch sle_latest to SLE15 SP1 and switch SLE15 GA to
+  maintenance mode (bsc#1044312)
+- 0.1.10
+
+-------------------------------------------------------------------
+Thu Apr 19 11:16:14 UTC 2018 - jreidinger@suse.com
+
+- add SLE12 SP4 as target and switch sle_latest to nil for now
+  until IBS create project for SLE15 SP1. (bsc#1044312)
+- 0.1.9
+
+-------------------------------------------------------------------
+Mon Feb  5 13:43:37 UTC 2018 - shundhammer@suse.com
+
+- Allow 4 digits in version numbers (bsc#1074596)
+- 0.1.8
+
+-------------------------------------------------------------------
+Thu Jun 15 09:13:10 UTC 2017 - jreidinger@suse.com
+
+- Update sle12sp3 target and add sle15 target (bnc#1044312)
+- 0.1.7
+
+-------------------------------------------------------------------
+Thu Nov 10 10:11:20 UTC 2016 - igonzalezsosa@suse.com
+
+- Update sle12sp2 target (bnc#1009324)
+- 0.1.6
+
+-------------------------------------------------------------------
+Fri Oct  7 09:11:30 UTC 2016 - mvidner@suse.com
+
+- Added a 'staging' target for devel:libraries:libyui:Staging.
+- 0.1.5
+
+-------------------------------------------------------------------
+Tue Sep 13 08:37:37 UTC 2016 - jreidinger@suse.com
+
+- add data for submitting to Leap and SLES12 SP3 (bnc#996865)
+- 0.1.4
+
+-------------------------------------------------------------------
+Wed Mar 16 11:43:58 UTC 2016 - mvidner@suse.com
+
+- Packaging fixes:
+  - Relax, require packaging_rake_tasks > 1.1.4
+  - SPDX format for license
+- 0.1.3
+
+-------------------------------------------------------------------
+Wed Mar  9 14:46:24 CET 2016 - schubi@suse.de
+
+- Requiring packaging_rake_tasks ~> 1.1.4 in order to check
+  for bugzilla,fate entries in the changes file.
+  (bnc#0)
+- 0.1.2
+
+-------------------------------------------------------------------
+Thu Nov  5 10:52:47 UTC 2015 - ancor@suse.com
+
+- Targets definition and usage are now similar to yast-rake
+- 0.1.1
+
+-------------------------------------------------------------------
+Fri Oct  2 10:03:57 UTC 2015 - igonzalezsosa@suse.com
+
+- initial version
+

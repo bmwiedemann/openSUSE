@@ -1,0 +1,72 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: Automatically detect compressed booted kernel
+References: bnc#777516, bnc#828260
+Patch-mainline: not yet
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ filesys.c |   26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
+
+Index: b/filesys.c
+===================================================================
+--- a/filesys.c
++++ b/filesys.c
+@@ -582,6 +582,7 @@ static int
+ find_booted_kernel(void)
+ {
+ 	char kernel[BUFSIZE];
++	char *real_kernel;
+ 	char buffer[BUFSIZE];
+ 	char **searchdirs;
+ 	int i, preferred, wrapped;
+@@ -631,16 +632,24 @@ find_booted_kernel(void)
+ 			sprintf(kernel, "%s%s", searchdirs[i], dp->d_name);
+ 
+ 			if (mount_point(kernel) ||
+-			    !file_readable(kernel) || 
+-                            !is_kernel(kernel))
++			    !file_readable(kernel))
+ 				continue;
+ 
++			if (!is_compressed_kernel(kernel, &real_kernel))
++				real_kernel = kernel;
++
+ 			if (CRASHDEBUG(1)) 
+ 				fprintf(fp, "find_booted_kernel: check: %s\n", 
+ 					kernel);
+ 
+-			found = match_file_string(kernel, kt->proc_version, buffer);
+-	
++			if (!is_kernel(real_kernel)) {
++				if (real_kernel != kernel)
++					free(real_kernel);
++				continue;
++			}
++
++			found = match_file_string(real_kernel, kt->proc_version, buffer);
++
+ 			if (found)
+ 				break;
+ 	        }
+@@ -660,10 +669,19 @@ find_booted_kernel(void)
+ 			if (CRASHDEBUG(1))
+ 				fprintf(fp, "find_booted_kernel: found: %s\n", 
+ 					pc->namelist);
++			if (real_kernel != kernel) {
++				pc->namelist_orig = pc->namelist;
++				pc->namelist = real_kernel;
++			}
+                         return TRUE;
+                 }
+ 	}
+ 
++	if (real_kernel != kernel) {
++		remove(real_kernel);
++		free(real_kernel);
++	}
++
+ 	error(INFO, 
+              "cannot find booted kernel -- please enter namelist argument\n\n");
+ 	return FALSE;

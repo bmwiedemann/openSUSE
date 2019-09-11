@@ -1,0 +1,20 @@
+Index: tcpdump-4.9.2/tests/crypto.sh
+===================================================================
+--- tcpdump-4.9.2.orig/tests/crypto.sh
++++ tcpdump-4.9.2/tests/crypto.sh
+@@ -72,15 +72,6 @@ then
+ 			echo $failed >.failed
+ 			exitcode=1
+ 		fi
+-		if ./TESTonce ikev2pI2 ikev2pI2.pcap ikev2pI2.out '-E "file ikev2pI2-secrets.txt" -v -v -v -v'
+-		then
+-			passed=`expr $passed + 1`
+-			echo $passed >.passed
+-		else
+-			failed=`expr $failed + 1`
+-			echo $failed >.failed
+-			exitcode=1
+-		fi
+ 		if ./TESTonce isakmp4 isakmp4500.pcap isakmp4.out '-E "file esp-secrets.txt"'
+ 		then
+ 			passed=`expr $passed + 1`

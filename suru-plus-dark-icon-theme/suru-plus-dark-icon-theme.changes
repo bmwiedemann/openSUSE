@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Mar 19 05:59:18 UTC 2019 - mvetter@suse.com
+
+- Update to 25.1:
+  * Added new icons:
+    + Alva
+    + Cronopete
+    + Dockstation
+    + Edex
+    + elCalc
+    + elementary OS
+    + Figma
+    + Google Web Designer
+    + Optimizer
+    + Listen1
+    + Lyrics
+    + VNote
+  * Added new icons with two alternatives
+  * Added new GNOME 3.32 icons
+  * Added new missed symlinked icons of AppImage apps
+  * Improved the color-picker.svg
+  * Improved the 16px color-picker-black.svg to be legible
+
+-------------------------------------------------------------------
+Fri Mar 15 09:25:08 UTC 2019 - mvetter@suse.com
+
+- Update description
+
+-------------------------------------------------------------------
+Mon Feb 18 09:43:44 UTC 2019 - mvetter@suse.com
+
+- Initial package of suru-plus-dark icon theme 25.0 for openSUSE

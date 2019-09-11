@@ -1,0 +1,26 @@
+--- a/etc/udev/rules.d/59-dasd.rules	2016-03-17 06:15:01.000000000 -0400
++++ b/etc/udev/rules.d/59-dasd.rules	2016-03-23 17:36:26.000000000 -0400
+@@ -15,7 +15,7 @@
+ 
+ LABEL="dasd_block_end"
+ 
+-ACTION!="change|add", GOTO="dasd_symlinks_end"
++ACTION!="change|add", GOTO="dasd_partition_end"
+ 
+ # for partitions import parent information
+ KERNEL=="dasd*[0-9]", IMPORT{parent}=="ID_*"
+@@ -24,6 +24,14 @@
+ KERNEL=="dasd*[0-9]", ENV{ID_UID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_UID}-part%n"
+ KERNEL=="dasd*[0-9]", ENV{ID_XUID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_XUID}-part%n"
+ 
++LABEL="dasd_partition_end"
++
++ENV{ID_SERIAL}!="?*", GOTO="dasd_symlinks_end"
++# by-label/by-uuid (filesystem properties)
++IMPORT{builtin}="blkid"
++ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{ID_FS_UUID}=="?*", SYMLINK+="disk/by-uuid/$env{ID_FS_UUID}"
++ENV{ID_FS_USAGE}=="filesystem|other", ENV{ID_FS_LABEL_SAFE}=="?*", SYMLINK+="disk/by-label/$env{ID_FS_LABEL_SAFE}"
++
+ LABEL="dasd_symlinks_end"
+ 
+ # on device add set request queue scheduler to deadline

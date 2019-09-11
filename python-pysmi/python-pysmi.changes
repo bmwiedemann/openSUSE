@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Mon May  6 13:46:05 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.3.4
+  - Rebased MIB importing code onto `importlib` because `imp` is long
+    deprecated
+  - Fixed Py file borrower to become functional
+
+-------------------------------------------------------------------
+Thu Jan 10 08:34:25 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.3.3
+  * Exit code indication of the command-line tools aligned with
+    sysexits.h to report more useful termination status
+
+- Update to version 0.3.2
+  * Fixed compiler crash when building comments at a platform
+    which has broken users/groups databases
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Aug 11 16:35:14 UTC 2017 - tbechtold@suse.com
+
+- update to 0.3.1:
+  * INET-ADDRESS-MIB configured as pre-built at pysnmp codegen
+  * JSON codegen produces "nodetype" element for OBJECT-TYPE
+  * Fix to mibdump.py --destination-directory option
+  * Fix to pysnmp and JSON code generators to properly refer to MIB module
+  defining particular MIB object
+  * The @mib@ magic in reader's URL template made optional. If it is not present,
+  MIB module name is just appended to URL template
+  * Send User-Agent containing pysmi and Python versions as well as platform name.
+  * Fixed missing STATUS/DISPLAY-HINT/REFERENCE/etc fields generation at pysnmp
+  backend when running in the non-full-text mode
+  * Fixed broken `ordereddict` dependency on Python 2.6-
+  * Generate REFERENCE and STATUS fields at various SMI objects
+  * Generate DESCRIPTION field followed REVISION field at MODULE-IDENTITY objects
+  * Generate PRODUCT-RELEASE field at AGENT-CAPABILITIES objects
+  * Generated Python source aligned with PEP8
+  * MIB texts cleaned up by default, --keep-texts-layout preserves original formatting
+  * Fix to the `ordereddict` conditional dependency
+  * Missing test module recovered
+  * Failing tests fixed
+  * JSON code generating backend implemented
+  * Experimental JSON OID->MIB indices generation implemented
+  * Package structure flattened for easier use
+  * Minor refactoring to the test suite
+  * Source code statically analyzed, hardened and PEP8-ized
+  * Files closed explicitly to mute ResourceWarnings
+  * Fixed to Python 2.4 (and aged ply) compatibility
+  * Added a workaround to avoid generating pysnmp TextualConvention classes
+  inheriting from TextualConvention (when MIB defines a TEXTUAL-CONVENTION
+  based on another TEXTUAL-CONVENTION as SYNTAX)
+  * Author's e-mail changed, copyright extended to year 2017
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Aug  1 20:59:32 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.07
+  * Crash on existing .py file handling fixed.
+  * Fix to __doc__ use in setup.py to make -O0 installation mode working.
+  * Fix to PyPackageSearcher not to fail on broken Python packages.
+  * Source code pep8'ed
+  * Copyright added to source files.
+
+-------------------------------------------------------------------
+Sat Nov 21 15:33:19 UTC 2015 - bwiedemann@suse.com
+
+- initial package of version 0.0.6
+

@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Tue Apr  9 08:57:08 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * python3-only package, for other changes see changelog.rst
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:33:18 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu May 24 17:46:54 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.3.1
+  * Add Elementwise broadcasting and broadcast_to (:pr:`35`) `Hameer Abbasi`_
+  * Add Bitwise ops (:pr:`38`) `Hameer Abbasi`_
+  * Add slicing support for Ellipsis and None (:pr:`37`) `Matthew Rocklin`_
+  * Add triu and tril and tests (:pr:`40`) `Hameer Abbasi`_
+  * Extend gitignore file  (:pr:`42`) `Nils Werner`_
+  * Update MANIFEST.in (:pr:`45`) `Matthew Rocklin`_
+  * Remove auto densification and unify operator code (:pr:`46`) `Hameer Abbasi`_
+  * Fix nnz for scalars (:pr:`48`) `Hameer Abbasi`_
+  * Update README (:pr:`50`) (:pr:`53`) `Hameer Abbasi`_
+  * Fix large concatenations and stacks (:pr:`50`) `Hameer Abbasi`_
+  * Add __array_ufunc__ for __call__ and reduce (:pr:`49`) `Hameer Abbasi`_
+  * Update documentation (:pr:`54`) `Hameer Abbasi`_
+  * Flake8 and coverage in pytest (:pr:`59`) `Nils Werner`_
+  * Copy constructor (:pr:`55`) `Nils Werner`_
+  * Add random function (:pr:`41`) `Nils Werner`_
+  * Add lots of indexing features (:pr:`57`) `Hameer Abbasi`_
+  * Validate .transpose axes (:pr:`61`) `Nils Werner`_
+  * Simplify axes normalization logic `Nils Werner`_
+  * User higher density for sparse.random in tests (:pr:`64`) `Keisuke Fujii`_
+  * Support left-side np.number elemwise operations (:pr:`67`) `Keisuke Fujii`_
+  * Support len on COO (:pr:`68`) `Nils Werner`_
+  * Update scipy version in requirements (:pr:`70`) `Hameer Abbasi`_
+  * Documentation (:pr:`43`) `Nils Werner`_ and `Hameer Abbasi`_
+  * Use Tox for cross Python-version testing (:pr:`77`) `Nils Werner`_
+  * Support mixed sparse-dense when result is sparse (:pr:`75`) `Hameer Abbasi`_
+  * Update contributing.rst (:pr:`76`) `Hameer Abbasi`_
+  * Size and density properties (:pr:`69`) `Nils Werner`_
+  * Fix large sum (:pr:`83`) `Hameer Abbasi`_
+  * Add DOK (:pr:`85`) `Hameer Abbasi`_
+  * Implement __array__ protocol (:pr:`87`) `Matthew Rocklin`_
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Nov  2 03:18:40 UTC 2017 - arun@gmx.de
+
+- update to version 0.1.1:
+  * Add @ operator (simplify) (#16)
+  * Opt in to caching
+  * Cache reshape and transpose
+  * Add tocsr method and sorted checking
+  * Fix windows errors around int/long
+  * use elemwise_binary in __add__
+  * Fix bug in large reductions
+  * Add out= keywords to ufuncs
+
+-------------------------------------------------------------------
+Thu May 25 16:49:28 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,11 @@
+[Unit]
+Description=Start the rsync server daemon
+After=network.target
+ConditionPathExists=/etc/rsyncd.conf
+
+[Service]
+ExecStart=/usr/sbin/rsyncd --daemon --no-detach
+IOSchedulingClass=idle
+CPUSchedulingPolicy=batch
+PrivateTmp=true
+StandardInput=socket

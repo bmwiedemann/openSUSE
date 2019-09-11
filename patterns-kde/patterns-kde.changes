@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Thu May  9 13:48:28 UTC 2019 - wbauer@tmo.at
+
+- Add back the kde_telepathy pattern (boo#1116043)
+
+-------------------------------------------------------------------
+Fri Nov 30 11:28:08 UTC 2018 - lslezak@suse.cz
+
+- Updated yast2-theme dependency (related to boo#1109310)
+
+-------------------------------------------------------------------
+Fri Oct 19 12:17:55 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend dolphin in kde_plasma
+
+-------------------------------------------------------------------
+Wed Sep 19 07:24:54 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Apply qt devel icon (boo#1039994)
+- Change icon for kde-pim (boo#1107103)
+
+-------------------------------------------------------------------
+Tue Sep  4 13:28:32 UTC 2018 - fabian@ritter-vogt.de
+
+- Work around missing PIM icon (boo#1107103)
+- Use new pattern-kde icons instead of -kde4
+
+-------------------------------------------------------------------
+Sat Jul 28 15:32:00 UTC 2018 - fabian@ritter-vogt.de
+
+- %2F is '/', but it has to be '-', so use %2D
+
+-------------------------------------------------------------------
+Wed Jul 18 08:02:16 UTC 2018 - fabian@ritter-vogt.de
+
+- Make kde_pim visible
+
+-------------------------------------------------------------------
+Mon Jul  9 09:08:59 UTC 2018 - fabian@ritter-vogt.de
+
+- Update devel_kde_frameworks packagelist
+- Update devel_qt5 packagelist
+- Merge devel_kde into devel_kde_frameworks
+- Don't require breeze5-wallpapers, only recommend it
+- Split out PIM into a separate pattern:
+  * Use kleopatra instead of kgpg
+  * Remove 5 suffix
+- Don't recommend kmozillahelper, it has a supplements already
+- Slim down kde_plasma, move applications to kde
+- Call it "KDE Plasma 5 Desktop Base" to make it more obvious that
+  only the base desktop is installed
+- Improve descriptions of kde_plasma and kde
+- Move gdb recommendation to drkonqi5
+- Use %2F instead of - where necessary
+- Remove kppp, rekonq and smb4k
+- Use libreoffice-qt5 instead of libreoffice-kde4
+- Only suggest cervisia
+- Recommend skanlite in kde, not kde_imaging as well
+
+-------------------------------------------------------------------
+Mon Jun 25 20:21:38 UTC 2018 - fabian@ritter-vogt.de
+
+- Directly recommend kgamma5 in kde_plasma
+- Add some packages from imaging directly to kde (boo#1098878)
+- Remove calligra-stage
+
+-------------------------------------------------------------------
+Fri Jun 15 12:46:45 UTC 2018 - fabian@ritter-vogt.de
+
+- Remove moonlight-plugin and aria2 suggests
+
+-------------------------------------------------------------------
+Mon Jun  4 09:46:33 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't recommend the imaging pattern, it pulls in only GIMP anyway
+- Use VLC instead of Dragon Player
+
+-------------------------------------------------------------------
+Tue Apr  3 09:01:00 UTC 2018 - fabian@ritter-vogt.de
+
+- Replace plasma-nm5-vpnc with plasma-nm5-openconnect
+
+-------------------------------------------------------------------
+Tue Mar 27 11:19:47 UTC 2018 - wbauer@tmo.at
+
+- Recommend kdevelop5 instead of kdevelop4 in the kde_ide pattern
+  (boo#1009986)
+
+-------------------------------------------------------------------
+Sat Mar 24 16:59:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't recommend unused kde-oxygen-fonts and google-droid-fonts
+
+-------------------------------------------------------------------
+Fri Jan 26 13:55:59 UTC 2018 - fabian@ritter-vogt.de
+
+- Recommend plasma5-session-wayland to install it by default
+
+-------------------------------------------------------------------
+Tue Jan 16 11:00:47 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't recommend kde-gtk-config5, replaced by supplements
+
+-------------------------------------------------------------------
+Sat Jan 13 18:38:50 UTC 2018 - fabian@ritter-vogt.de
+
+- Recommend discover in the kde_plasma pattern
+
+-------------------------------------------------------------------
+Tue Sep 12 09:14:04 UTC 2017 - fabian@ritter-vogt.de
+
+- kolorlines -> klines (boo#1058191)
+
+-------------------------------------------------------------------
+Fri Aug 25 08:47:19 UTC 2017 - fabian@ritter-vogt.de
+
+- Drop the kde_telepathy pattern
+
+-------------------------------------------------------------------
+Thu Aug 17 08:40:36 UTC 2017 - fabian@ritter-vogt.de
+
+- Do not recommend KDE4 based applications anymore
+- Replace old KDE4 package names with current ones
+- Move Recommends: kdebase4-workspace-libs to breeze4-style
+- Set BuildArch: noarch and remove unnecessary patterns-kde-rpmlintrc
+
+-------------------------------------------------------------------
+Wed Aug 16 13:46:01 UTC 2017 - fabian@ritter-vogt.de
+
+- Merge kde_plasma pattern into kde
+- Merge sw_management_kde pattern into kde_yast
+- Do not recommend obsolete YaST modules (boo#1053324)
+
+-------------------------------------------------------------------
+Mon Jul 24 14:25:53 UTC 2017 - tchvatal@suse.com
+
+- Drop libtunepimp-devel from suggestions
+
+-------------------------------------------------------------------
+Wed Jun 28 05:27:25 UTC 2017 - jengelh@inai.de
+
+- Use macros over old $RPM shell vars.
+  Change to a sh loop for creating minimally different text files.
+
+-------------------------------------------------------------------
+Mon Jun 19 10:21:52 UTC 2017 - dimstar@opensuse.org
+
+- Do not require basesystem: KDE builds on top of X11, it is not
+  our worry to understand what X11 builds upon (happens to be base
+  too).
+
+-------------------------------------------------------------------
+Thu Jun  1 15:20:43 UTC 2017 - fabian@ritter-vogt.de
+
+- Replace susehelp with khelpcenter5
+
+-------------------------------------------------------------------
+Tue May 23 14:45:09 UTC 2017 - fabian@ritter-vogt.de
+
+- "KDE Plasma 5" instead of "Plasma5" (boo#1040006)
+
+-------------------------------------------------------------------
+Tue May  9 14:41:44 UTC 2017 - fabian@ritter-vogt.de
+
+- Recommend ffmpegthumbs, kdegraphics-thumbnailers
+  and kde-odf-thumbnail as well (boo#1017035)
+
+-------------------------------------------------------------------
+Wed May  3 19:38:45 UTC 2017 - dimstar@opensuse.org
+
+- Provide/obsolete patterns-openSUSE-* names.
+- Adjust supplements for the new pattern names.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

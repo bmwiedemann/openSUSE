@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">24</size>
+    </disk>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
+

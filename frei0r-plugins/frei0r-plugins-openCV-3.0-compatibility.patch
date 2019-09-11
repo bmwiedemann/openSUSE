@@ -1,0 +1,32 @@
+---
+ src/Makefile.am                      |    2 
+ src/filter/facedetect/facedetect.c   |  266 -----------------------------------
+ src/filter/facedetect/facedetect.cpp |   19 ++
+ 3 files changed, 19 insertions(+), 268 deletions(-)
+
+Index: frei0r-plugins-1.6.1/src/Makefile.am
+===================================================================
+--- frei0r-plugins-1.6.1.orig/src/Makefile.am	2017-11-28 07:45:05.578831357 +0200
++++ frei0r-plugins-1.6.1/src/Makefile.am	2017-11-28 07:45:25.475732451 +0200
+@@ -157,7 +157,7 @@ facebl0r_la_CFLAGS = @OPENCV_CFLAGS@ @CF
+ facebl0r_la_LIBADD = @OPENCV_LIBS@
+ plugin_LTLIBRARIES += facedetect.la
+ facedetect_la_SOURCES = filter/facedetect/facedetect.cpp
+-facedetect_la_CFLAGS = @OPENCV_CFLAGS@ @CFLAGS@
++facedetect_la_CPPFLAGS = @OPENCV_CFLAGS@ @CFLAGS@
+ facedetect_la_LIBADD = @OPENCV_LIBS@
+ endif
+ 
+Index: frei0r-plugins-1.6.1/src/filter/facedetect/facedetect.cpp
+===================================================================
+--- frei0r-plugins-1.6.1.orig/src/filter/facedetect/facedetect.cpp	2017-11-28 07:45:05.578831357 +0200
++++ frei0r-plugins-1.6.1/src/filter/facedetect/facedetect.cpp	2017-11-28 07:45:25.475732451 +0200
+@@ -25,7 +25,7 @@
+ #include <limits.h>
+ #include <time.h>
+ #include <ctype.h>
+-#include <opencv/cv.h>
++#include <opencv/cv.hpp>
+ #include "frei0r.hpp"
+ #include "frei0r_math.h"
+ 

@@ -1,0 +1,29 @@
+From d68c65371a500b6116fefd86773e6d3b9536baaf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 15 Feb 2019 22:17:45 +0100
+Subject: [PATCH 4/5] Fix allocation for MEDfileName, consider trailing null
+ ('\0') byte
+
+MEDfileName(id, NULL, 0) returns the file name length without trailing
+null byte (like e.g. strlen), allocate sufficient memory for the
+whole name.
+---
+ python/medfile_module.i | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/medfile_module.i b/python/medfile_module.i
+index 1fc8ebf..ddcd970 100644
+--- a/python/medfile_module.i
++++ b/python/medfile_module.i
+@@ -31,7 +31,7 @@
+   } 
+   $1 = static_cast< med_idt >(val);
+   $3 = MEDfileName($1,NULL,0);
+-  $2 = (char *) malloc(sizeof(char)*$3);
++  $2 = (char *) malloc(sizeof(char)*$3 + 1);
+ }
+ %typemap(freearg,noblock=1)  (med_idt fid, char * const filename, med_int filenamesize) {
+   free($2);
+-- 
+2.20.1
+

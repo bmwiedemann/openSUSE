@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Mar  7 11:33:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix testrun on python3.7:
+  * python37.patch
+- Fix macro expansion to run the tests under python3
+
+-------------------------------------------------------------------
+Mon Oct 22 07:25:25 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make the tests actually execute
+
+-------------------------------------------------------------------
+Sun Oct 14 11:12:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary (rpmlint).
+
+-------------------------------------------------------------------
+Thu Oct 11 08:46:49 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- State all dependnecies properly and execute tests
+
+-------------------------------------------------------------------
+Sat Oct  6 09:06:54 UTC 2018 - ecsos@opensuse.org
+
+- initial version 18.6.0

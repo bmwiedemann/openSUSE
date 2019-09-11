@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Oct 26 17:28:56 UTC 2017 - junghans@votca.org
+
+- added 29.patch to fix return value for comp_dgemv
+
+-------------------------------------------------------------------
+Wed Oct 25 22:02:45 UTC 2017 - junghans@votca.org
+
+- version bump to v1.3
+  * Drop 27.patch, merged upstream
+  * Changes: https://github.com/lanl/libquo/compare/v1.2.9...v1.3
+    - add c++ api
+
+-------------------------------------------------------------------
+Wed Oct 25 12:43:35 UTC 2017 - junghans@votca.org
+
+- adapt to new openlmi package - source mpivars.h during build
+
+-------------------------------------------------------------------
+Fri Jan 27 17:14:51 UTC 2017 - junghans@votca.org
+
+- added patch from upsteam - 27.patch to make build
+  reproducible
+
+-------------------------------------------------------------------
+Mon Jan 16 00:21:33 UTC 2017 - junghans@votca.org
+
+- Updated homepage and source url
+
+-------------------------------------------------------------------
+Sun Jan  1 12:33:21 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description
+
+-------------------------------------------------------------------
+Wed Aug 24 19:41:46 UTC 2016 - junghans@votca.org
+
+- version bumped to 1.2.9, details:
+  https://github.com/losalamos/libquo/commits/master
+- added quo-info to devel package
+- bumped so version to 4
+
+-------------------------------------------------------------------
+Sat Oct 10 14:24:33 UTC 2015 - junghans@votca.org
+
+- version bumped to 1.2.4, details: 
+  https://github.com/losalamos/libquo/commits/master
+- added pkg-config file to devel package
+
+-------------------------------------------------------------------
+Thu Nov 20 00:44:33 UTC 2014 - junghans@votca.org
+
+- initial commit
+

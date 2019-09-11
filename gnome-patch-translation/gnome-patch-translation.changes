@@ -1,0 +1,502 @@
+-------------------------------------------------------------------
+Tue Mar  6 20:08:11 CET 2018 - sbrabec@suse.cz
+
+- Updated ko, lt, nn, pl, sk, sv, uk, zh_TW.
+- Version bump to 15.0:
+  * Updated for the latest Factory (1 new strings, obsolete xchat,
+    gstreamer-0_10).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep  4 17:59:40 CEST 2014 - sbrabec@suse.cz
+
+- Version bump to 13.2:
+  * Updated for the latest Factory (0 new strings, 6 obsolete).
+- Updated ca, ja.
+- gnome-patch-translation.conf: Remove dropped gnome-panel and
+  gnome-screensaver.
+
+-------------------------------------------------------------------
+Fri Oct 18 21:12:06 CEST 2013 - sbrabec@suse.cz
+
+- Updated pl, ro, zh_CN.
+
+-------------------------------------------------------------------
+Tue Feb 26 15:22:18 CET 2013 - sbrabec@suse.cz
+
+- Added gstreamer (no new strings).
+
+-------------------------------------------------------------------
+Mon Feb 11 19:57:54 CET 2013 - sbrabec@suse.cz
+
+- Updated pl, ro.
+
+-------------------------------------------------------------------
+Fri Jan 18 20:55:15 CET 2013 - sbrabec@suse.cz
+
+- Updated pl, ro.
+- Allow to set translation domain.
+
+-------------------------------------------------------------------
+Mon Jan  7 20:52:57 CET 2013 - sbrabec@suse.cz
+
+- Updated ar, fr, hu, lt, pl, ro, wa.
+- Updated for the latest Factory (0 new strings, 3 obsolete).
+
+-------------------------------------------------------------------
+Tue Jul 24 17:16:14 CEST 2012 - sbrabec@suse.cz
+
+- Updated ar, cs, de, el, es, fi, fr, gl, hu, km, lt, nb, pl, pt,
+  pt_BR, ro, zh_CN, zh_TW.
+- Migrate to svn.opensuse.org.
+
+-------------------------------------------------------------------
+Thu Oct 20 15:03:34 CEST 2011 - sbrabec@suse.cz
+
+- Updated da, el, fr, hu, it, ja, nb, nl, pl, ru.
+- Fix of update-solve-upload-conflict supplementary script.
+
+-------------------------------------------------------------------
+Fri Oct 14 16:15:18 CEST 2011 - sbrabec@suse.cz
+
+- Added several packages with strings in patches (9 new strings).
+- Updated el, hu, it, km, pl, pt_BR, zh_TW.
+
+-------------------------------------------------------------------
+Tue Jun 21 18:44:19 CEST 2011 - sbrabec@suse.cz
+
+- Updated da, de, es, fi, fr, gl, hr, hu, it, ja, km, lt, nb, nl,
+  pl, pt_BR, ro, ru, wa.
+- Updated for the latest Factory.
+
+-------------------------------------------------------------------
+Fri Feb  4 19:59:45 CET 2011 - sbrabec@suse.cz
+
+- Updated all available translations for 11.4.
+
+-------------------------------------------------------------------
+Wed Nov 24 14:15:51 CET 2010 - sbrabec@suse.cz
+
+- Updated fi.
+- Updated for the latest Factory.
+
+-------------------------------------------------------------------
+Mon Sep  6 19:08:59 CEST 2010 - sbrabec@suse.cz
+
+- Updated de, lt, ru.
+- Updated for the latest Factory.
+
+-------------------------------------------------------------------
+Wed Jun 16 15:42:08 CEST 2010 - sbrabec@suse.cz
+
+- Updated af, bn, ca, el, et, fr, gl, gu, hi, hr, ka, km, lt, mk,
+  mr, nb, pa, pl, pt, ro, si, sl, sr, ta, uk, wa, xh, zu.
+
+-------------------------------------------------------------------
+Tue Jun  1 19:12:00 CEST 2010 - sbrabec@suse.cz
+
+- Updated cs, da, es, fi, fr, gl, hu, it, ja, km, lt, nb, nl, pl,
+  pt_BR, ro, ru, sk, uk.
+- Updated list of packages.
+- Plural declaration added into HEADER.pot (bnc#594753).
+
+-------------------------------------------------------------------
+Mon Mar  8 20:29:20 CET 2010 - sbrabec@suse.cz
+
+- Updated gl, lt, pt_BR, ro, wa, zh_TW.
+- Updated list of packages with patches.
+- Updated strings from the latest Factory (19 new strings).
+- LCN migrated to Berlios.
+
+-------------------------------------------------------------------
+Thu Oct 29 17:12:00 CET 2009 - sbrabec@suse.cz
+
+- Updated da, fr, gl, it, ko, lt, nb, pl, ru.
+- 11 lost gtk2 strings from the old version re-added.
+
+-------------------------------------------------------------------
+Wed Oct 21 13:09:25 CEST 2009 - sbrabec@suse.cz
+
+- Updated de, fi, hu, ja, km, ko, nb, nl, pl, sk.
+
+-------------------------------------------------------------------
+Mon Oct 19 18:07:37 CEST 2009 - sbrabec@suse.cz
+
+- Updated cs, da, de, es, fi, fr, gl, hu, it, ja, km, ko, nb, nl,
+  pl, pt_BR, ro, ru, sk, uk, wa, zh_TW.
+- Added libgnomesu (bnc#541653, 6 new strings).
+
+-------------------------------------------------------------------
+Wed Sep  9 16:26:14 CEST 2009 - sbrabec@suse.cz
+
+- Updated da, de, es, fr, gl, hr, hu, km, ko, nb, pl, uk, wa,
+  zh_TW.
+- Added bluez-gnome (7 new strings).
+
+-------------------------------------------------------------------
+Tue Jun 30 13:28:35 CEST 2009 - sbrabec@suse.cz
+
+- Updated ja, ko, nl, pl, pt_BR, ru, sk.
+
+-------------------------------------------------------------------
+Fri Jun  5 14:15:48 CEST 2009 - sbrabec@suse.cz
+
+- Updated cs, da, de, en_GB, es, et, fi, fr, hu, it, ja, km, ko,
+  nb, nl, pa, pl, pt, pt_BR, ro, ru, sk, sr, sv, th, uk, zh_CN,
+  zh_TW.
+- Fixes for bash 4.
+
+-------------------------------------------------------------------
+Thu Feb 19 18:13:41 CET 2009 - sbrabec@suse.cz
+
+- Updated README and HOWTO to describe current work-flow.
+
+-------------------------------------------------------------------
+Thu Feb  5 15:22:46 CET 2009 - sbrabec@suse.cz
+
+- Updated cs, hu, it, ja, ko, nb, pt_BR, ru.
+- Added evolution (bnc#464770).
+- Updated strings from the latest Factory snapshot (8 new strings).
+
+-------------------------------------------------------------------
+Tue Jan 27 16:40:35 CET 2009 - sbrabec@suse.cz
+
+- Updated cs, da, de, en_US, es, fi, fr, gl, hu, it, ja, km, ko,
+  nb, nl, pa, pl, pt_BR, ru, uk, wa, zh_CN.
+- Updated strings from the latest Factory (20 new strings).
+
+-------------------------------------------------------------------
+Fri Nov 21 17:06:10 CET 2008 - sbrabec@suse.cz
+
+- Updated de, fi, fr, pt_BR, ru, sv.
+- Updated strings from the latest Factory (11 new strings).
+
+-------------------------------------------------------------------
+Tue Nov  4 19:14:00 CET 2008 - sbrabec@suse.cz
+
+- Package updating tools reworked and migrated to osc.
+- Updated pl, pt_BR.
+
+-------------------------------------------------------------------
+Wed Oct 22 13:51:22 CEST 2008 - sbrabec@suse.cz
+
+- Updated da, de, en_US, es, gl, hr, hu, it, ja, km, ko, nb, nl,
+  pl, pt_BR, ro, uk, wa, zh_CN.
+
+-------------------------------------------------------------------
+Wed Oct  8 12:03:28 CEST 2008 - sbrabec@suse.cz
+
+- Updated af, ar, bg, bn, bs, ca, cs, cy, da, de, el, en_GB, en_US,
+  es, et, fi, fr, gl, gu, he, hi, hr, hu, id, it, ja, ka, km, ko,
+  lt, mk, mr, nb, nl, pa, pl, pt, pt_BR, ro, ru, si, sk, sl, sr,
+  sr@Latn, sv, ta, th, tr, uk, vi, wa, xh, zh_CN, zh_TW, zu.
+
+-------------------------------------------------------------------
+Wed Sep 17 18:10:00 CEST 2008 - sbrabec@suse.cz
+
+- Updated af, ar, bg, bn, bs, ca, cs, cy, da, de, el, en_GB, en_US,
+  es, et, fi, fr, gl, gu, he, hi, hr, hu, id, it, ja, ka, km, ko,
+  lt, mk, mr, nb, nl, pa, pl, pt, pt_BR, ro, ru, si, sk, sl, sr,
+  sr@Latn, sv, ta, th, tr, uk, vi, wa, xh, zh_CN, zh_TW, zu.
+
+-------------------------------------------------------------------
+Wed Aug 20 12:34:31 CEST 2008 - sbrabec@suse.cz
+
+- Updated cs, el, en_US, fi, hu, it, ko, pt_BR, ro, uk, zh_CN.
+
+-------------------------------------------------------------------
+Fri May 23 15:34:55 CEST 2008 - sbrabec@suse.cz
+
+- Updated cs, it, ko, nl, pt_BR, sk, zh_TW.
+
+-------------------------------------------------------------------
+Fri May  9 16:34:36 CEST 2008 - sbrabec@suse.cz
+
+- Updated pl, pt_BR.
+
+-------------------------------------------------------------------
+Fri May  2 15:27:17 CEST 2008 - sbrabec@suse.cz
+
+- Updated fi, it, km, ko, pt_BR, zh_CN.
+
+-------------------------------------------------------------------
+Fri Apr 25 13:13:41 CEST 2008 - sbrabec@suse.cz
+
+- Updated de, fr, hu, it, km, ko, pl, pt, ru, zh_CN.
+- Updated strings for the latest Factory (1 new string).
+
+-------------------------------------------------------------------
+Fri Apr 18 13:28:29 CEST 2008 - sbrabec@suse.cz
+
+- Updated da, de, el, en_US, es, fi, fr, hu, it, ja, ko, pl, pt,
+  pt_BR, th, uk, zh_CN, zh_TW.
+- Updated strings for the latest Factory (13 string changes).
+
+-------------------------------------------------------------------
+Tue Mar 18 10:23:11 CET 2008 - sbrabec@suse.cz
+
+- Updated en_US, es, et, fr, hu, ja, lt, nl, ro, uk, zh_CN, zh_TW.
+- Do not replace translation header by a dumb one.
+- Updated strings for the latest Factory (8 new strings).
+
+-------------------------------------------------------------------
+Mon Sep 24 13:19:09 CEST 2007 - sbrabec@suse.cz
+
+- Updated sk.
+
+-------------------------------------------------------------------
+Mon Sep 17 18:14:35 CEST 2007 - sbrabec@suse.cz
+
+- Updated fi, pt.
+
+-------------------------------------------------------------------
+Fri Sep  7 16:19:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated cs, hi, hu, pt_BR, sv, zh_CN.
+
+-------------------------------------------------------------------
+Fri Aug 24 12:31:57 CEST 2007 - sbrabec@suse.cz
+
+- Updated da, de, fi, hu, it, km, nb, nl, pa, pl, pt, ru, sk, uk.
+
+-------------------------------------------------------------------
+Mon Aug 20 16:27:29 CEST 2007 - sbrabec@suse.cz
+
+- Updated ca, cs, da, de, el, en_GB, en_US, es, et, fi, fr, hr, hu,
+  id, it, ja, km, lt, mk, mr, nb, nl, pa, pl, pt, pt_BR, ru, sk,
+  sr@Latn, sv, wa, zh_CN, zh_TW.
+- Updated strings from the latest sources.
+- Activated strings from uncommented gdm patches.
+- Updated HOWTO.
+
+-------------------------------------------------------------------
+Fri Aug  3 16:26:20 CEST 2007 - sbrabec@suse.cz
+
+- Updated strings from the latest sources.
+- Branched separate project for Factory strings.
+
+-------------------------------------------------------------------
+Mon Jul 16 12:30:24 CEST 2007 - sbrabec@suse.cz
+
+- Updated bn, gu, hi, hu, mr, ta.
+- Updated strings from the latest sources.
+
+-------------------------------------------------------------------
+Wed Jun 13 14:20:16 CEST 2007 - sbrabec@suse.cz
+
+- Updated af, ar, ca, hu, it, ja, pl, pt_BR, xh, zu.
+- Updated strings from the latest sources.
+
+-------------------------------------------------------------------
+Fri Apr 20 16:56:37 CEST 2007 - sbrabec@suse.cz
+
+- Updated hu.
+- Updated strings from the latest sources.
+
+-------------------------------------------------------------------
+Tue Apr 10 12:07:57 CEST 2007 - sbrabec@suse.cz
+
+- Updated af, ar, bg, bn, bs, ca, cs, cy, da, de, el, en_GB, en_US,
+  es, et, fi, fr, gl, gu, he, hi, hr, hu, id, it, ja, ka, km, ko,
+  lt, mk, mr, nb, nl, pa, pl, pt, pt_BR, ro, ru, sk, sl, sr,
+  sr@Latn, sv, ta, tr, uk, vi, xh, zh_CN, zh_TW, zu.
+
+-------------------------------------------------------------------
+Wed Feb 21 13:53:03 CET 2007 - sbrabec@suse.cz
+
+- Updated af, bg, cs, da, de, el, en_US, es, et, fi, fr, hr, hu,
+  it, ja, km, lt, nb, nl, pa, pl, pt, pt_BR, ru, sk, sl, sr, sv,
+  uk, zh_CN, zh_TW, zu.
+- Merged new strings from evolution-exchange.
+
+-------------------------------------------------------------------
+Wed Feb 14 17:33:58 CET 2007 - sbrabec@suse.cz
+
+- Merged new strings from NetworkManager, gnome-power-manager and
+  evolution.
+- Updated af, de, en_US, es, fr, hu, it, ja, pt_BR, xh, zh_CN,
+  zh_TW, zu.
+- Do not strip pot headers to allow UTF-8 characters in sources.
+
+-------------------------------------------------------------------
+Tue Jan 23 16:43:59 CET 2007 - sbrabec@suse.cz
+
+- Merged latest snapshots and updated HOWTO for Novell Forge SVN.
+
+-------------------------------------------------------------------
+Tue Jan 23 01:46:20 CET 2007 - ro@suse.de
+
+- drop requires for gnome-filesystem 
+
+-------------------------------------------------------------------
+Fri Jan  5 15:10:21 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+
+-------------------------------------------------------------------
+Thu Nov 23 19:27:28 CET 2006 - sbrabec@suse.cz
+
+- Updated cs, hu.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:24:38 CET 2006 - sbrabec@suse.cz
+
+- Skip unneeded steps during compilation.
+- Merged SLE10-SP and FACTORY strings into one compendium.
+- Updated cs, fi, hu, mi, ru, vi.
+
+-------------------------------------------------------------------
+Wed Sep 20 18:15:11 CEST 2006 - sbrabec@suse.cz
+
+- Detect, if all strings are upstreamed.
+
+-------------------------------------------------------------------
+Mon Jun 26 19:06:19 CEST 2006 - sbrabec@suse.cz
+
+- Merged gedit false UTF-16 detection fix (#116777).
+- Updated hu.
+
+-------------------------------------------------------------------
+Mon Jun 26 12:54:27 CEST 2006 - sbrabec@suse.cz
+
+- Updated cs, de, es, fr, it, ja, pt_BR, zh_CN, zh_TW.
+- Merged missing strings from nautilus-share (#183392).
+
+-------------------------------------------------------------------
+Tue Jun 20 12:22:52 CEST 2006 - sbrabec@suse.cz
+
+- Merged missing string from gnome-passwd (#185584#c7).
+- Updated cs, hu, ja.
+
+-------------------------------------------------------------------
+Fri Jun 16 14:10:03 CEST 2006 - sbrabec@suse.cz
+
+- Merged missing strings from gnome-passwd (#185584#c3) and
+  gnome-sound-properties (#185591).
+- Updated cs, pl.
+
+-------------------------------------------------------------------
+Thu Jun 15 10:48:44 CEST 2006 - sbrabec@suse.cz
+
+- Updated de, es, fr, it, ja, pt_BR, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Wed Jun  7 13:45:44 CEST 2006 - sbrabec@suse.cz
+
+- Fixed strings for gedit locale detection (#180613).
+
+-------------------------------------------------------------------
+Mon Jun  5 16:35:36 CEST 2006 - sbrabec@suse.cz
+
+- Added new strings from control-center2 passwd capplet (#179459).
+- Added new strings from NetworkManager (#169096).
+- Updated cs, fi, hu.
+
+-------------------------------------------------------------------
+Mon May 22 12:40:10 CEST 2006 - sbrabec@suse.cz
+
+- Updated de, es, fr, it, ja, pt_BR, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Thu May 18 11:08:28 CEST 2006 - sbrabec@suse.cz
+
+- Merged missing nautilus string to translations (#173448).
+
+-------------------------------------------------------------------
+Wed May  3 14:00:15 CEST 2006 - sbrabec@suse.cz
+
+- Updated fi.
+
+-------------------------------------------------------------------
+Mon Apr 24 14:43:32 CEST 2006 - sbrabec@suse.cz
+
+- Updated cs, hu.
+
+-------------------------------------------------------------------
+Tue Apr 18 18:55:15 CEST 2006 - sbrabec@suse.cz
+
+- Updated hu.
+
+-------------------------------------------------------------------
+Tue Apr 18 17:56:00 CEST 2006 - sbrabec@suse.cz
+
+- Updated de, es, fi, fr, hu, it, ja, pl, pt_BR, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Fri Apr  7 15:34:31 CEST 2006 - sbrabec@suse.cz
+
+- Added evolution, gdm, libgnomeui.
+- Updated cs.
+
+-------------------------------------------------------------------
+Mon Mar 27 18:17:51 CEST 2006 - sbrabec@suse.cz
+
+- Updated cs.
+
+-------------------------------------------------------------------
+Fri Mar 24 16:31:00 CET 2006 - sbrabec@suse.cz
+
+- Updated de, es, fr, it, ja, pt_BR, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:17:41 CET 2006 - sbrabec@suse.cz
+
+- Updated cs, fi, hu, nb, pl, pt, uk.
+
+-------------------------------------------------------------------
+Fri Mar 17 16:24:39 CET 2006 - sbrabec@suse.cz
+
+- Merged translations from old modemlights applet (#158257).
+
+-------------------------------------------------------------------
+Wed Mar 15 13:46:24 CET 2006 - sbrabec@suse.cz
+
+- Updated hu, fi.
+- Added support for shared-mime-info, merged new strings.
+
+-------------------------------------------------------------------
+Fri Mar  3 15:04:23 CET 2006 - sbrabec@suse.cz
+
+- Added fi, fr, km, es, fr, it, ja, pt_BR.
+- Updated cs, de, hu, zh_CN, zh_TW.
+- Merged upstream translations from nautilus.
+- Added support for gnome-system-monitor.
+
+-------------------------------------------------------------------
+Fri Feb 24 15:57:34 CET 2006 - sbrabec@suse.cz
+
+- Updated strings from nautilus-share.
+- Updated Czech and Hungarian.
+
+-------------------------------------------------------------------
+Wed Feb 22 15:29:22 CET 2006 - sbrabec@suse.cz
+
+- Added support for gnome-menus (144946#c12).
+- Updated Czech, German and Hungarian translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 15:18:07 CET 2006 - sbrabec@suse.cz
+
+- Updated Czech and Hungarian translation.
+- Fixed merge if upstream translation is missing in some projects.
+
+-------------------------------------------------------------------
+Fri Feb  3 14:29:52 CET 2006 - sbrabec@suse.cz
+
+- Added Hungarian translation.
+
+-------------------------------------------------------------------
+Thu Feb  2 18:09:53 CET 2006 - sbrabec@suse.cz
+
+- Updated translation files for gnome-panel.
+- Updated Czech translation.
+
+-------------------------------------------------------------------
+Wed Feb  1 17:10:21 CET 2006 - sbrabec@suse.cz
+
+- New SuSE package (#144946).
+

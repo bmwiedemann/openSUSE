@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-logic-4.0.0rc2.orig/setup.py azure-mgmt-logic-4.0.0rc2/setup.py
+--- azure-mgmt-logic-4.0.0rc2.orig/setup.py	2019-03-28 10:54:52.497059015 +0100
++++ azure-mgmt-logic-4.0.0rc2/setup.py	2019-03-28 10:55:23.813349948 +0100
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

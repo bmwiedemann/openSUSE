@@ -1,0 +1,467 @@
+-------------------------------------------------------------------
+Mon Jun 17 03:11:00 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0: 
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support, as
+      well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+    - Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.  
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin (msdk):
+      dmabuf import/export for zero-copy integration with other
+      components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element that
+      allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Switch to meson on Tumbleweed.
+- Add libgstges.so to files.
+
+-------------------------------------------------------------------
+Fri May 31 22:37:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + Fix compilation with latest GLib.
+  + layer: Resort clips before syncing priorities.
+  + timeline: Better handle loading inconsistent timelines.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:59:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:31:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Tue Jul 24 08:31:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + python: Fix GES.Timelineset_child_property.
+  + Set GLib log domain to GES.
+  + group: Fix handling clips that are added to a layer.
+
+-------------------------------------------------------------------
+Sun May 20 09:56:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Tue Apr 17 13:12:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 30 12:29:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: glgo#pitivi#2142, glgo#pitivi#2133, bgo#793874.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 11 20:19:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:59:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + track_element: Always emit "control-binding-removed" signal.
+  + Revert "timeline: Return FALSE when commiting an empty
+    timeline".
+  + xml-formatter: Save encoder and muxer advanced settings.
+  + Enhance some pad linking issue debug logging.
+  + smartmixer: Give a unique name to each compositor instances.
+  + pipeline: Allow up to 2 seconds queueing in the playsink video
+    queue.
+  + asset:
+    - Add a function to stop proxying an asset.
+    - Clear loading error when reload is requested.
+  + nlecomposition: Properly update segment->start/stop on commit.
+  + timeline: Remove trackelements initating move from the moving
+    context.
+  + xml-formatter: Serialize encoding profiles in reverse order.
+  + pipeline: Make sure tracks are unlinked on NULL->NULL state
+    changes.
+
+-------------------------------------------------------------------
+Fri Jul 14 12:03:57 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Bugs fixed: bgo#784769.
+
+-------------------------------------------------------------------
+Wed Jun 21 08:55:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Wed May 10 12:09:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + No changes, stable version bump.
+- Changes from version 1.11.91:
+  + Automatic common submodule update.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#780854.
+
+-------------------------------------------------------------------
+Sat Feb 25 00:25:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Bugs fixed: bgo#776805, bgo#778248.
+
+-------------------------------------------------------------------
+Thu Feb 23 20:39:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#774480, bgo#765967, bgo#774641, bgo#775051,
+    bgo#775295, bgo#776063, bgo#776064.
+- Add missing Requires on main package in devel sub package.
+- Move manpages to mainpackage where the actual binary is.
+- Move Changelog and README to devel package.
+
+-------------------------------------------------------------------
+Thu Feb 23 20:32:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + ges-timeline: Properly calculate absolute diff of two unsigned
+    integers.
+  + ges:
+    - Add NULL check before dereferencing.
+    - Check if GstDiscoverer could be created at init time.
+
+-------------------------------------------------------------------
+Mon Jan 30 16:38:49 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + meson: Install ges-launch.
+  + validate: Remove space breaking muting ges-launch.
+
+-------------------------------------------------------------------
+Sat Dec  3 19:16:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Bugs fixed: bgo#774751.
+
+-------------------------------------------------------------------
+Sun Nov 27 11:33:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Minor bugfixes.
+- Changes from version 1.10.0:
+  + Minor bugfixes.
+
+-------------------------------------------------------------------
+Wed Aug 24 09:42:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + Revert 3 commits:
+    - "video-source: Expose deinterlace-[fields, mode, tff] child
+      properties".
+    - "container: Handle setting children properties that need
+      prefixing".
+    - "formatter: Prefix all children properties in the XML
+      formatter".
+
+-------------------------------------------------------------------
+Fri Jul  1 17:20:47 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:33:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo765853: timeline: rename "track-element" to 
+    "track_element" in select-tracks-for-object documentation.
+  + bgo#765856: g-i: use only " ges/ges.h " as c-include for
+    introspection.
+  + bgo#766455: nlecomposition: ensure elements pending to be added
+    are not leaked.
+  + bgo#766459: ges: ges_asset_set_proxy documentation fix and add
+    some g-i annotations.
+  + bgo#766524: audio-source: unref private capsfilter reference on
+    finalize.
+  + bgo#767053: nlecomposition: Fix race condition in seek handling
+    causing deadlocks.
+  + bgo#767293: ges-uri-asset: GstDiscoverer can return a valid
+    info but a non-OK result, consider this an error.
+
+-------------------------------------------------------------------
+Thu Apr 21 08:45:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + titlesource: Add support for absolute positionning.
+
+-------------------------------------------------------------------
+Sat Mar 26 21:03:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+- Replace gobject-introspection-devel for
+  pkgconfig(gobject-introspection-1.0) BuildRequires.
+- Add explicit pkgconfig(glib-2.0) BuildRequires and version it.
+- Add pkgconfig(gst-validate-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon Jan 18 12:35:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + bash-completion: Disable during "make distcheck".
+  + Revert "build: fix make distcheck."
+  + tests: Properly setup GST_PLUGIN_PATH in test environement.
+  + Dist gst-editing-services.doap.
+  + ges: Set restriction caps in the audio source caps filter.
+  + formatter: Do not serialize top effect priorities.
+  + launcher: Make sure to not activate validate twice when simply
+    loading a scene.
+
+-------------------------------------------------------------------
+Wed Jan 13 09:58:08 UTC 2016 - antoine.belvire@laposte.net
+
+- Move the NLE GStreamer plugin (libgstnle.so) from devel package
+  to libges
+
+-------------------------------------------------------------------
+Sun Nov  1 08:18:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + TRY_GET leaks string pointer.
+  + structure-parser: leaks internal lists.
+  + nleoperation: leaks srcpad.
+  + ges-project: leaks internal file info.
+
+-------------------------------------------------------------------
+Fri Oct  2 08:50:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + For changelog, see mainpackage changes, everything is condenced
+    there.
+  + nlecomposition allocates unused UpdateCompositionData.
+- Add flex and pkgconfig(bash-completion) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
+Tue Nov  4 10:26:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to 1.4.0:
+  + Add support to gst-validate, allowing us to easily write
+    integration testsuites.
+  + Add multifilesrc support.
+  + Give a name/unique identifier to all GESTimelineElement in the
+    timeline.
+  + ges-launch: Cleanup and allow using encoding profiles from
+    project files.
+  + bgo#738624: gst-editing-services fails to build with current
+    git gstreamer-validate via Cerbero.
+
+-------------------------------------------------------------------
+Fri Jul 25 21:21:06 UTC 2014 - dimstar@opensuse.org
+
+- Upate to version 1.2.1:
+  + ges-launch:
+    - Properly handle project loading.
+    - Format the position printing as in gst-validate and friends.
+    - Not being able to load an asset is an error.
+  + pipeline: Do not set EncodingProfile.presence when we have no
+    track for the type.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Sat Apr 12 18:01:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.0:
+  + Bugs fixed: bgo#673040, bgo#651806, bgo#432662, bgo#644943,
+    bgo#645385, bgo#646293, bgo#669827, bgo#669959, bgo#672751,
+    bgo#673038, bgo#673714, bgo#677048, bgo#679941, bgo#681774,
+    bgo#692864, bgo#695267, bgo#696226, bgo#701115, bgo#702424,
+    bgo#702426, bgo#702605, bgo#703152, bgo#706855, bgo#707914,
+    bgo#709777, bgo#710168, bgo#710172, bgo#710390, bgo#721111,
+    bgo#724337, bgo#726365, bgo#678558, bgo#663869.
+- Drop ges-extra-semicolon.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Mar 15 13:02:20 UTC 2014 - schwab@suse.de
+
+- ges-extra-semicolon.patch: remove extra semicolon
+
+-------------------------------------------------------------------
+Tue Jan 21 19:30:45 UTC 2014 - dimstar@opensuse.org
+
+- Update License Tag: the source tarball contains GPL-3.0+ code
+  for the samples. The library is licensed LGPL-2.1+.
+
+-------------------------------------------------------------------
+Sat Nov 30 20:41:05 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 1.1.90.
+

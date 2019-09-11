@@ -1,0 +1,10 @@
+--- Makefile.am-dist	2003-06-04 09:37:06.000000000 +0200
++++ Makefile.am	2003-07-03 16:52:39.000000000 +0200
+@@ -90,6 +90,7 @@
+ 			frametype.gperf compat.gperf genre.dat.in  \
+ 			debug.c debug.h
+ 
++libid3tag_la_LIBADD  =  -lz
+ libid3tag_la_LDFLAGS =	-version-info $(version_info)
+ 
+ BUILT_SOURCES =		frametype.c compat.c genre.dat

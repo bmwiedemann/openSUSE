@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Mon May 20 09:52:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly require zlib at build time.
+- Obsolete yate-qt4 for the factory package to avoid file conflicts.
+
+-------------------------------------------------------------------
+Sun Apr 28 15:52:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Only build the Qt4 GUI up to suse_version 1500.
+
+-------------------------------------------------------------------
+Wed Jul  4 08:19:41 UTC 2018 - mardnh@gmx.de
+
+- Update tp version 6.1.0
+  * upstream does not provide changelog
+- remove patch:
+  * yate-openssl-1.1.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 11:08:10 UTC 2018 - mardnh@gmx.de
+
+- Build with support for sctp
+
+-------------------------------------------------------------------
+Mon Jan  8 11:54:19 UTC 2018 - jengelh@inai.de
+
+- Implement shared library packaging guideline.
+- Drop one instance of an unnecessary %if..%endif guard.
+  Remove marketing from description.
+
+-------------------------------------------------------------------
+Fri Jan  5 19:37:54 UTC 2018 - mardnh@gmx.de
+
+- openh323 was dropped from factory (unmaintained and broken)
+  * Do not longer build against openh323
+- Always build against libgsm and spandsp
+- Use pkg-config style BuildRequires
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan  4 20:29:41 UTC 2018 - mardnh@gmx.de
+
+- Update to version 6.0.0
+  * upstream does not provide changelog
+
+-------------------------------------------------------------------
+Tue Dec  5 16:03:51 CET 2017 - ro@suse.de
+
+- add patch yate-openssl-1.1.patch
+  to fix build against openssl-1.1 
+
+-------------------------------------------------------------------
+Wed Sep 27 15:14:11 UTC 2017 - olaf@aepfle.de
+
+- Remove dropped php5 from Requires in scripts subpkg
+
+-------------------------------------------------------------------
+Wed Mar 15 21:06:36 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package files installed by make install into _docdir:
+  rpm 4.13 no longer implicitly packages those files.
+
+-------------------------------------------------------------------
+Sun Aug 21 09:23:39 UTC 2016 - jengelh@inai.de
+
+- Run fdupes to reduce duplicated files reported by rpmlint.
+
+-------------------------------------------------------------------
+Thu May 26 14:55:36 UTC 2016 - mbrugger@suse.com
+
+- add support for aarch64 architecture
+  * add-arm64-support.patch
+
+-------------------------------------------------------------------
+Tue May  3 18:30:59 UTC 2016 - aloisio@gmx.com
+
+- Fixed build problem on PMBS 
+
+-------------------------------------------------------------------
+Sat May  9 14:59:17 UTC 2015 - mardnh@gmx.de
+
+- update to 5.5.0
+  - upstream does not provide changelog
+
+-------------------------------------------------------------------
+Fri Mar  6 21:16:52 UTC 2015 - mardnh@gmx.de
+
+- update to 5.4.2:
+  - upstream does not provide changelog
+- updated patch: dont-mess-with-cflags.patch
+- removed patches (fixed upstream)
+  * yate-fix-bashisms.patch
+  * yate-ppc64-libdir.patch
+  * yate-ppc64.patch
+- moved %{_datadir}/%{name}/sounds from the qt4-subpackge to
+  the base package since this directory also provides the
+  music on hold files that may be needed when using yate as
+  a PBX
+
+-------------------------------------------------------------------
+Mon Nov 17 01:51:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in echo.sh script
+- add patches:
+  * yate-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Fri Jul 25 20:05:24 UTC 2014 - mardnh@gmx.de
+
+- update to 5.4.0:
+  - updated and renamed patch
+    yate-3.3.2-ppc64-libdir.patch -> yate-ppc64-libdir.patch
+  - upstream does not provide changelog
+
+-------------------------------------------------------------------
+Wed May 28 09:02:55 UTC 2014 - tchvatal@suse.com
+
+- Fix source url
+
+-------------------------------------------------------------------
+Tue May 20 14:43:58 UTC 2014 - mardnh@gmx.de
+
+- update to 5.3.0:
+  - removed patch: yate-fix-ssl-detection.patch (fixed upstream)
+  - upstream does not provide changelog
+
+-------------------------------------------------------------------
+Sun Dec 15 01:17:28 UTC 2013 - uweigand@de.ibm.com
+
+- yate-3.3.2-ppc64-libdir.patch: Add ppc64le.
+- yate-ppc64.patch: Fix ppc64 and add ppc64le support.
+
+-------------------------------------------------------------------
+Fri Aug 16 15:06:07 UTC 2013 - duwe@suse.com
+
+- update to 4.3.0:
+  * Various changes to improve Jingle and Google Voice support
+  * Javascript is now usable in routing scripts 
+  * SIGTRAN links failures fixed by always setting the SCTP socket
+    timers 
+  * Flood protection in the SIP channel 
+  * iLBC codes based on fixed point WebRTC library 
+  * Added XML support in Javascript
+  * SCCP - GTT routing between different networks
+  * Stability improvements
+
+-------------------------------------------------------------------
+Mon Apr 22 23:33:38 UTC 2013 - dimstar@opensuse.org
+
+- Add yate-fix-ssl-detection.patch: Fix openssl detection: checkin
+  for the return value of pkg-config --cflags $pkg, and relying on
+  pkg-config returning an empty string 'when package exists but
+  does not specify CFLAGS' is just wrong.
+
+-------------------------------------------------------------------
+Wed Mar 20 15:19:06 UTC 2013 - idonmez@suse.com
+
+- dont-mess-with-cflags.patch: don't mess with CFLAGS
+
+-------------------------------------------------------------------
+Tue Mar 19 10:09:04 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Tue Jul  3 14:39:55 UTC 2012 - dvaleev@suse.com
+
+- add ppc64 to the known platforms 
+
+-------------------------------------------------------------------
+Wed Jun  6 17:19:58 UTC 2012 - fisiu@opensuse.org
+
+- Update to 4.1.0, no changelog from upstream provided.
+
+-------------------------------------------------------------------
+Wed Mar  7 13:09:26 UTC 2012 - dvaleev@suse.com
+
+- fix wrong libdir for ppc64. 
+
+-------------------------------------------------------------------
+Thu Jan  5 07:58:55 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.3.2:
+  upstream does not provide any changelog
+
+-------------------------------------------------------------------
+Thu Sep 29 23:39:44 UTC 2011 - saschpe@suse.de
+
+- Set license to GPL-2.0+ (SPDX style)
+- The scripts sub-package now requires php5
+- PHP scripts now again point to "/usr/bin/php" as the php5 package doesn't
+  provide a 'php5' binary anymore
+
+-------------------------------------------------------------------
+Fri Jan 28 18:46:43 UTC 2011 - saschpe@gmx.de
+
+- Split of scripts package, packaged apidocs
+- Added dependencies to OpenH323 and SpanDSP
+- Fixed several rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Jan 28 15:42:58 UTC 2011 - saschpe@suse.de
+
+- Fixed php scripts to not point to "/usr/bin/php" (not present
+  on openSUSE)
+- Added some packager comments
+
+-------------------------------------------------------------------
+Fri Jan 28 14:33:24 UTC 2011 - saschpe@suse.de
+
+- Better BuildRequires for non-SUSE distros
+
+-------------------------------------------------------------------
+Wed Jan 26 14:14:21 UTC 2011 - saschpe@suse.de
+
+- Initial version (3.0.0)
+

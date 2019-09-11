@@ -1,0 +1,49 @@
+From 429350ff8a1868b03d5c351e29ecbaa277f95454 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 5 Feb 2018 13:59:58 +0100
+Subject: [PATCH 37/43] tools/kvm_stat: print error on invalid regex
+
+Entering an invalid regular expression did not produce any indication of an
+error so far.
+To reproduce, press 'f' and enter 'foo(' (with an unescaped bracket).
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 1cd8bfb1ed9962be6d80d5020508922aa93653ac)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 7038766c99f1..cb7f485c2e70 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1179,6 +1179,7 @@ class Tui(object):
+         Asks for a valid regex and sets the fields filter accordingly.
+ 
+         """
++        msg = ''
+         while True:
+             self.screen.erase()
+             self.screen.addstr(0, 0,
+@@ -1187,6 +1188,7 @@ class Tui(object):
+             self.screen.addstr(2, 0,
+                                "Current regex: {0}"
+                                .format(self.stats.fields_filter))
++            self.screen.addstr(5, 0, msg)
+             self.screen.addstr(3, 0, "New regex: ")
+             curses.echo()
+             regex = self.screen.getstr().decode(ENCODING)
+@@ -1201,6 +1203,7 @@ class Tui(object):
+                 self.refresh_header()
+                 return
+             except re.error:
++                msg = '"' + regex + '": Not a valid regular expression'
+                 continue
+ 
+     def show_vm_selection_by_pid(self):
+-- 
+2.12.3
+

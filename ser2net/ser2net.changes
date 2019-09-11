@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu Sep  6 23:18:53 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace %__-type macro indirections.
+
+-------------------------------------------------------------------
+Fri Aug 17 14:24:52 UTC 2018 - agraf@suse.com
+
+- Update to version 3.5
+  - allows to declare device aliases which enabled by-path device names
+  - adapted ser2net-config.patch
+  - builds with autoconf, add build dependencies (autoconf, automake, libtool)
+
+-------------------------------------------------------------------
+Mon Mar 23 01:37:22 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.10.0
+  * utils.c, controller.c, dataxfer.c: Return an errno from
+	scan_tcp_port() so it can return an out of memory error.
+  * controller.c, controller.h, ser2net.c: Add an out of memory
+	return code from controller_init().
+  * utils.c, utils.h, dataxfer.c, controller.c: Rework the handling
+	of addresses to work properly with all the return values of
+	getaddrinfo, and to prefer IPV6 over IPV4 when opening the socket.
+	This means if you specify a number, it will open the IPV6 ::,port
+	address first.  This was a big cleanup, and moved a lot of the
+	base socket handling into utils.h.
+  * dataxfer.c: Rework the stdio handling so it doesn't rely on the
+	port number in the address, since that is now gone.
+  * dataxfer.c: Set port->closestr to NULL when freeing it to avoid
+	a double-free.
+  * readconfig.c, ser2net.8: Rework the input handling so an IPV6
+	can be specified as part of the portnum parameter.  This was hard
+	because IPV6 addresses have ':' in them.  Basically, if there is a
+	"," in the port specification, assume that everything from the
+	beginning of the line to the ':' after the ',' is the port number.
+  * utils.c, utils.h, dataxfer.c, controller.c: Modified address
+	handling so that ser2net opens all the addresses returned by
+	getaddrinfo, not just the first one.  That should make things
+	work correctly in a lot more cases.
+  * io.h, devcfg.h, devcfg.c, dataxfer.c, buffer.c, buffer.h: Abstract
+	the device I/O operations.
+  * utils.c, utils.h, controller.h, controller.c: Fix some const
+	correctness issues
+  * conroller.c, controller.h: Add printf-style output.
+  * dataxfer.h, dataxfer.c, devcfg.h, devcfg.c, io.h, readconfig:
+	Rework the error and output handling to make it more flexible, so
+	errors can be output with useful information from the lower
+  * utils.h, readconfig.c, dataxfer.c: Rework the find_xxx
+	functions to return a strdup of the string.
+  * dataxfer.c, dataxfer.h, devcfg.h: Remove the dinfo structure
+	and move the contents into the port structure, and remove the
+	now empty devcfg.h.
+  * configure.ac: Minor rework.
+  * ser2net.h, Makefile.am: Move some things into a new
+	ser2net.h file.
+  * devcfg.c, controller.c, dataxfer.c, ser2net.c, utils.c: Add the
+	ser2net.h include file.
+  * dataxfer.c: Fix some EAGAIN handling.
+- Require systemd-rpm-macros instead of pkgconfig(systemd)
+- Remove redundant %clean section
+- Update ser2net-config.patch
+
+-------------------------------------------------------------------
+Thu Mar 20 19:47:15 UTC 2014 - crrodriguez@opensuse.org
+
+- version 2.9.1
+* drop tcpwrappers support
+* Fix a bug in format strings where hex element (\x)
+  would have the wrong values for a-f.
+* Make RFC2217 signature configurable:
+* The baudrate, that will be sent to the client,
+    was converted twice.
+-------------------------------------------------------------------
+Fri Dec 21 20:21:12 UTC 2012 - crrodriguez@opensuse.org
+
+- Enable tcp-wrappers support
+- ser2net-config.patch Do not open any serial2net connections
+  by default, it is up to the user to do so.
+
+-------------------------------------------------------------------
+Thu Dec 20 22:11:44 UTC 2012 - crrodriguez@opensuse.org
+
+- Initial version for factory, 2.8.rc3 
+
+-------------------------------------------------------------------
+Mon Feb 26 11:03:05 AEST 2008 - developer@jefferyfernandez.id.au
+
+- Cleaned up init script
+-------------------------------------------------------------------
+Mon Feb 25 22:42:05 AEST 2008 - developer@jefferyfernandez.id.au
+
+- Initial release for openSUSE
+-------------------------------------------------------------------

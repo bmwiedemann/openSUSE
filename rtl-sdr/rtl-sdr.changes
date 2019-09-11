@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Tue Aug 28 08:07:53 UTC 2018 - mpluskal@suse.com
+
+- Use more of cmake macros
+- Disable developer output from cmake
+
+-------------------------------------------------------------------
+Mon Aug 27 21:14:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.6.0
+  * Fix inline functions to use 'static inline'
+  * tuner_r82xx: turn off loop-through, remove dead code
+  * rtl_adsb: fix hanging upon a signal in Fedora 27
+  * lib: use USB zero-copy transfers if possible
+
+-------------------------------------------------------------------
+Sun Jun 10 02:17:13 UTC 2018 - plinnell@opensuse.org
+
+- Update to 0.5.4
+  * No change log found in source or wiki
+  * Drop git-requirement
+
+-------------------------------------------------------------------
+Fri Dec 15 15:49:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.5.3+git.20170919:
+  * fix for msvc14
+  * Add option '-T' for activating bias-T in rtl_(adsb|fm|power|tcp)
+  * rtl_tcp: add command for bias tee control
+  * lib: Use GPIO P0 to toggle an (optional) bias-t
+  * lib: fix direction bit in GPIO code
+
+-------------------------------------------------------------------
+Thu Jun 15 17:00:43 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to version 0.5.3+git.20170612:
+  * lib: use GPIO0 to control bias tee
+  * rtl_(adsb|fm|power|tcp): add option -T for activating bias tee
+
+-------------------------------------------------------------------
+Sun Apr 23 17:52:05 UTC 2017 - mardnh@gmx.de
+
+- Use package-meta for tar_scm service and add git-core
+  to BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr 23 16:22:00 UTC 2017 - mpluskal@suse.com
+
+- Update group handling
+
+-------------------------------------------------------------------
+Sat Apr 15 18:23:22 UTC 2017 - mardnh@gmx.de
+
+- Add patch: 0001-Better-udev-handling.patch
+- Use proper cmake options
+- Use group rtlsdr in the udev-rules
+
+-------------------------------------------------------------------
+Thu Mar 23 15:19:35 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Mon Mar  6 14:23:52 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.5.3+git.20161127:
+  * lib: change default number of transfers to 15
+  * rtl_tcp: make all global variables static
+  * cmake: include resource file for MSVC builds
+  * Correct return code of e4k_reg_write().
+  * Allow setting bandwidth for R820T
+  * New functions rtlsdr_set_tuner_bandwidth()
+  * tools: allow built-in functions for newer versions of MSVC
+  * lib: check for libusb init failure
+  * lib: add new HanfTek dongle
+- Packaging changes:
+  * Add _service for easier updating of package
+  * Split udev rules to separate package
+  * Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Mar  5 11:02:17 UTC 2017 - mpluskal@suse.com
+
+- Use cmake macros
+
+-------------------------------------------------------------------
+Sun Dec  4 13:58:15 UTC 2016 - dl8fcl@darc.de
+
+- update to version 0.5.3_13_ge3e6ee2
+  add new HanfTek dongle
+
+-------------------------------------------------------------------
+Wed Jun 10 21:37:56 UTC 2015 - dl8fcl@darc.de
+
+- update to version 0.5.3_12_ge3c03f7
+  check for libusb init failure
+
+-------------------------------------------------------------------
+Sat May 16 21:18:22 UTC 2015 - dl8fcl@darc.de
+
+- update to version 0.5.3_10_g8b4d755
+  Allow setting bandwidth for R820T
+
+-------------------------------------------------------------------
+Fri Sep  5 09:19:30 UTC 2014 - dl8fcl@darc.de
+
+- update to version 0.5.3_6_gd447a2e
+
+-------------------------------------------------------------------
+Fri Dec 20 23:02:38 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.5.2_2_g5f38c05
+
+-------------------------------------------------------------------
+Sun Nov  3 18:53:05 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Changes to spec file:
+  * Update udev paths for openSUSE 13.1 and ensure udev rules are
+    updated when package is installed / updated / uninstalled.
+  * Define %libname to ease reuse of %post(un) macros
+
+-------------------------------------------------------------------
+Fri Nov  1 20:04:37 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.5.1 
+
+-------------------------------------------------------------------
+Sun Sep 22 13:42:56 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.5.0_git20130915 
+
+-------------------------------------------------------------------
+Tue Jul 23 10:04:09 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- update to version 0.5.git
+  * adds support for ASUS U3100MINI_PLUS_V2 
+  * set DETACH_KERNEL_DRIVER=ON to allow detaching of kernel driver
+
+-------------------------------------------------------------------
+Mon Jun 10 21:16:03 UTC 2013 - dl8fcl@darc.de
+
+- update to version git20130608
+  minor enhancements 
+
+-------------------------------------------------------------------
+Sun Apr 28 19:02:45 UTC 2013 - dl8fcl@darc.de
+
+- update to version git20130417.
+  minor enhancements 
+
+-------------------------------------------------------------------
+Thu Apr 11 07:27:35 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- small changes to the spec file:
+  * pass %optflags to cmake according to 
+    http://en.opensuse.org/openSUSE:Build_system_recipes 
+  * use config(noreplace) for udev rules file
+
+-------------------------------------------------------------------
+Fri Mar 22 22:46:08 UTC 2013 - dl8fcl@darc.de
+
+- import into the hamradio repository 
+

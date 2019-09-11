@@ -1,0 +1,33 @@
+From 479e84dcbd0d7f1333105c495d7931f1bef3e63b Mon Sep 17 00:00:00 2001
+From: "Richard J. Moore" <rich@kde.org>
+Date: Sat, 18 Apr 2015 12:44:30 +0100
+Subject: [PATCH] Fix exclusion of anonymous ciphers.
+
+Qt attempted to exclude anonymous ciphers since they offer no MITM
+protection, but missed export ADH ciphers and AECDH from the exclude
+list.
+
+Change-Id: Icdfa9b31643a0e9927010885c7c1d02c42460d79
+Reviewed-by: Peter Hartmann <peter-qt@hartmann.tk>
+---
+ src/network/ssl/qsslsocket_openssl.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/network/ssl/qsslsocket_openssl.cpp b/src/network/ssl/qsslsocket_openssl.cpp
+index ce98494..00b2b9e 100644
+--- a/src/network/ssl/qsslsocket_openssl.cpp
++++ b/src/network/ssl/qsslsocket_openssl.cpp
+@@ -662,7 +662,10 @@ void QSslSocketPrivate::resetDefaultCiphers()
+             if (cipher->valid) {
+                 QSslCipher ciph = QSslSocketBackendPrivate::QSslCipher_from_SSL_CIPHER(cipher);
+                 if (!ciph.isNull()) {
+-                    if (!ciph.name().toLower().startsWith(QLatin1String("adh")))
++                    // Unconditionally exclude ADH and AECDH ciphers since they offer no MITM protection
++                    if (!ciph.name().toLower().startsWith(QLatin1String("adh")) &&
++                        !ciph.name().toLower().startsWith(QLatin1String("exp-adh")) &&
++                        !ciph.name().toLower().startsWith(QLatin1String("aecdh")))
+                         ciphers << ciph;
+                 }
+             }
+-- 
+2.6.2

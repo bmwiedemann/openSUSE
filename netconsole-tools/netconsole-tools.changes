@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Fri Mar 16 15:19:04 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun  6 14:13:29 CEST 2005 - olh@suse.de
+
+- add an option to change the kernel loglevel of netconsole
+
+-------------------------------------------------------------------
+Wed Jun  1 14:23:10 CEST 2005 - olh@suse.de
+
+- build as noarch
+
+-------------------------------------------------------------------
+Wed Jun  1 14:08:37 CEST 2005 - olh@suse.de
+
+- update netconsole-server script to deal with 2.6 syntax
+
+-------------------------------------------------------------------
+Fri May  9 16:39:10 CEST 2003 - olh@suse.de
+
+- fflush(stdout); for pipes
+
+-------------------------------------------------------------------
+Fri May  9 15:32:51 CEST 2003 - olh@suse.de
+
+- initial package with netconsole-client-20010928.tar.gz and netcon
+

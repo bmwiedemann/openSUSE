@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Mon Sep  5 07:07:09 UTC 2016 - ncutler@suse.com
+
+- fix %doc in spec file 
+
+-------------------------------------------------------------------
+Sun Sep  4 17:59:56 UTC 2016 - ncutler@suse.com
+
+- fix _service file 
+
+-------------------------------------------------------------------
+Sun Sep  4 17:58:31 UTC 2016 - ncutler@suse.com
+
+- updated to 0.283
+   see /usr/share/doc/packages/perl-Web-MREST-CLI/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 17:57:04 UTC 2016 - ncutler@suse.com
+
+- updated to 0.282
+   see /usr/share/doc/packages/perl-Web-MREST-CLI/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 17:56:32 UTC 2016 - ncutler@suse.com
+
+- add _service file to automate version update in spec file
+
+-------------------------------------------------------------------
+Fri Sep  2 11:26:16 UTC 2016 - tampakrap@opensuse.org
+
+- updated to 0.280
+   see /usr/share/doc/packages/perl-Web-MREST-CLI/Changes
+
+-------------------------------------------------------------------
+Mon Jul 27 19:38:51 UTC 2015 - ncutler@suse.com
+
+- add _service file 
+
+-------------------------------------------------------------------
+Mon Jul 27 19:27:33 UTC 2015 - ncutler@suse.com
+
+- add Params::Validate dependency
+
+-------------------------------------------------------------------
+Mon Jul 27 11:34:25 UTC 2015 - ncutler@suse.com
+
+- initial package 0.275
+    * created by cpanspec 1.78.08
+

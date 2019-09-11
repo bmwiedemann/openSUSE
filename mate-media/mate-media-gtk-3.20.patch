@@ -1,0 +1,71 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,9 +32,9 @@ AC_C_INLINE
+ AC_TYPE_OFF_T
+ AC_TYPE_SIZE_T
+ 
+-GLIB_REQUIRED_VERSION=2.50.0
+-GIO_REQUIRED_VERSION=2.50.0
+-GTK_REQUIRED_VERSION=3.22.0
++GLIB_REQUIRED_VERSION=2.48.0
++GIO_REQUIRED_VERSION=2.48.0
++GTK_REQUIRED_VERSION=3.20.0
+ CANBERRA_REQUIRED_VERSION=0.13
+ MATE_MIXER_REQUIRED_VERSION=1.10.0
+ MATE_DESKTOP_REQUIRED_VERSION=1.17.0
+--- a/mate-volume-control/gvc-stream-applet-icon.c
++++ b/mate-volume-control/gvc-stream-applet-icon.c
+@@ -73,7 +73,11 @@ popup_dock (GvcStreamAppletIcon *icon, g
+         GdkDisplay    *display;
+         GdkScreen     *screen;
+         int            x, y;
++#if GTK_CHECK_VERSION (3, 22, 0)
+         GdkMonitor    *monitor_num;
++#else
++        gint           monitor_num;
++#endif
+         GdkRectangle   monitor;
+         GtkRequisition dock_req;
+ 
+@@ -85,8 +89,13 @@ popup_dock (GvcStreamAppletIcon *icon, g
+         gtk_window_set_screen (GTK_WINDOW (icon->priv->dock), screen);
+         gvc_channel_bar_set_orientation (GVC_CHANNEL_BAR (icon->priv->bar), icon->priv->orient);
+ 
++#if GTK_CHECK_VERSION (3, 22, 0)
+         monitor_num = gdk_display_get_monitor_at_point (gdk_screen_get_display (screen), allocation.x, allocation.y);
+         gdk_monitor_get_geometry (monitor_num, &monitor);
++#else
++        monitor_num = gdk_screen_get_monitor_at_point (screen, allocation.x, allocation.y);
++        gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
++#endif
+ 
+         gtk_container_foreach (GTK_CONTAINER (icon->priv->dock), (GtkCallback) gtk_widget_show_all, NULL);
+         gtk_widget_get_preferred_size (icon->priv->dock, &dock_req, NULL);
+--- a/mate-volume-control/gvc-stream-status-icon.c
++++ b/mate-volume-control/gvc-stream-status-icon.c
+@@ -70,7 +70,11 @@ popup_dock (GvcStreamStatusIcon *icon, g
+         GdkScreen     *screen;
+         int            x;
+         int            y;
++#if GTK_CHECK_VERSION (3, 22, 0)
+         GdkMonitor    *monitor_num;
++#else
++        int            monitor_num;
++#endif
+         GdkRectangle   monitor;
+         GtkRequisition dock_req;
+ 
+@@ -89,8 +93,13 @@ popup_dock (GvcStreamStatusIcon *icon, g
+         gvc_channel_bar_set_orientation (GVC_CHANNEL_BAR (icon->priv->bar),
+                                          1 - orientation);
+ 
++#if GTK_CHECK_VERSION (3, 22, 0)
+         monitor_num = gdk_display_get_monitor_at_point (gdk_screen_get_display (screen), area.x, area.y);
+         gdk_monitor_get_geometry (monitor_num, &monitor);
++#else
++        monitor_num = gdk_screen_get_monitor_at_point (screen, area.x, area.y);
++        gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
++#endif
+ 
+         gtk_container_foreach (GTK_CONTAINER (icon->priv->dock),
+                                (GtkCallback) gtk_widget_show_all, NULL);

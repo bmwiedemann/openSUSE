@@ -1,0 +1,1049 @@
+-------------------------------------------------------------------
+Tue Jul 23 15:14:36 UTC 2019 - trenn@suse.de
+
+- Update to latest v3.0.0 cobbler release
+- Add previouly added patch: exclude_get-loaders_command.patch to
+  the list of patches to apply.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:13:53 UTC 2019 - trenn@suse.de
+
+- Fix log file world readable (as suggested by Matthias Gerstner)
+  and change file attributes via attr in spec file
+- Do not allow get-loaders command (download of third party
+  provided network boot loaders we do not trust)
+A exclude_get-loaders_command.patch
+- Add apache min version requires to 2.4 (due to mainline commit:
+  31a1aa31d26c4a096f0e0
+  Remove apache IfVersion tags from apache configs
+- Fix Tumbleweed build where python2-Cheetah3 and python3-Cheetah3
+  are build for a while by changing (Build- and) Requires from:
+  Cheetah3 to python3-Cheetah3
+- Setting test package group to a valid one
+- Fix test files to be added to test package, not only the directory
+- Remove general dir from file section: %{_datadir}
+- Fix test package requires
+  missing Requires: python3-pytest python3-pyflakes python3-pycodestyle
+- Mainline fixes:
+  3172d1df9b9cc8 Add missing help text in redhat_management_key field
+  c8f5490e507a72 Set default interface if cobbler system add has no
+                 --interface= param
+  31a1aa31d26c4a Remove apache IfVersion tags from apache configs
+
+-------------------------------------------------------------------
+Thu May 16 10:44:38 UTC 2019 - trenn@suse.de
+
+- Updated to latest git master branch
+commit d43461b39073ac01a54a3f52be0b133d36cb8061
+Author: Jochen Breuer <jbreuer@suse.de>
+Date:   Fri May 10 16:41:32 2019 +0200
+  Remove already mainline patches:
+D fix-login-error.patch
+D remove-newline-from-token.diff
+D fixes-distro-none-case.diff
+D return-the-name-of-the-unknown-method.patch
+D call-with-logger-where-possible.patch
+D fix-http-status-code.patch
+D create-system-directory-at-the-correct-place.patch
+D remodeled-distro-detection.diff
+D disable_nsupdate_enabled_by_default.diff
+D power_system_xmlrpc_api.patch
+D renamed-methods-alias.patch
+D changes-return-to-float.diff
+D revert-redhat-management-removal.patch
+D add-docker-integration-testing.diff
+D refactor-unittest-to-pytest.diff
+D renamed-methods-alias-part2.patch
+D changes-detection-to-distro-like-for-suse-distributions.diff
+D rhn-mngmnt-key-field-fix.diff
+
+-------------------------------------------------------------------
+Thu May 16 08:46:16 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Re-enabling build for cobbler-test package.
+
+-------------------------------------------------------------------
+Wed May 15 13:16:42 UTC 2019 - trenn@suse.de
+
+- Integrated fixes that came in from mainline from other products
+  (to calm down obs regression checker):
+  CVE-2011-4953, fate#312397, bsc#660126, bsc#671212, bsc#672471, bsc#682665
+  bsc#687891, bsc#695955, bsc#722443, bsc#722445, bsc#757062, bsc#763610
+  bsc#783671, bsc#790545, bsc#796773, bsc#811025, bsc#812948, bsc#842699
+  bsc#846580, bsc#869371, bsc#884051, bsc#976826, bsc#984998
+
+-------------------------------------------------------------------
+Thu May  9 14:50:34 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix for redhat_management_key not being listed as a choice
+  during profile rename (bsc#1134588)
+
+- Added:
+  * rhn-mngmnt-key-field-fix.diff
+
+-------------------------------------------------------------------
+Tue May  7 13:00:33 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fixes distribution detection in setup.py for SLESo
+
+- Added:
+  * changes-detection-to-distro-like-for-suse-distributions.diff
+
+-------------------------------------------------------------------
+Tue May  7 09:21:09 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Moving to pytest and adding Docker test integration
+
+- Added:
+  * add-docker-integration-testing.diff
+  * refactor-unittest-to-pytest.diff
+
+-------------------------------------------------------------------
+Tue May  7 08:13:34 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Additional compatability changes for old Koan versions.
+
+- Modified:
+  * renamed-methods-alias-part2.patch
+
+-------------------------------------------------------------------
+Tue Apr 30 14:16:17 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Old Koan versions not only need method aliases, but also need
+  compatible responses
+
+- Added:
+  * renamed-methods-alias-part2.patch
+
+-------------------------------------------------------------------
+Tue Apr 23 09:25:21 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Add the redhat_managment_* fields again to enable templating in SUMA.
+
+- Added:
+  * revert-redhat-management-removal.patch  
+
+-------------------------------------------------------------------
+Fri Apr  5 12:14:39 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Changes return of last_modified_time RPC to float
+
+- Added:
+  * changes-return-to-float.diff
+
+-------------------------------------------------------------------
+Thu Apr  4 14:13:02 CEST 2019 - mantel@suse.de
+
+- provide old name aliases for all renamed methods:
+  - get_distro_for_koan     =>  get_distro_as_rendered
+  - get_profile_for_koan    =>  get_profile_as_rendered
+  - get_system_for_koan     =>  get_system_as_rendered
+  - get_repo_for_koan       =>  get_repo_as_rendered
+  - get_image_for_koan      =>  get_image_as_rendered
+  - get_mgmtclass_for_koan  =>  get_mgmtclass_as_rendered
+  - get_package_for_koan    =>  get_package_as_rendered
+  - get_file_for_koan       =>  get_file_as_rendered
+
+- Renamed:
+  get_system_for_koan.patch => renamed-methods-alias.patch
+
+-------------------------------------------------------------------
+Thu Apr  4 10:18:05 CEST 2019 - mantel@suse.de
+
+- provide renamed method "get_system_for_koan" under old name
+  for old clients.
+
+- Added:
+  * get_system_for_koan.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 11:31:36 UTC 2019 - Matei <malbu@suse.com>
+
+- Bring back power_system method in the XML-RPC API
+- Changed lanplus option to lanplus=true in fence_ipmitool.template
+
+- Added:
+  * power_system_xmlrpc_api.patch
+
+- Changed:
+  * fence_ipmitool.template
+
+-------------------------------------------------------------------
+Wed Mar 27 14:33:58 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Disables nsupdate_enabled by default
+
+- Added:
+  * disable_nsupdate_enabled_by_default.diff
+
+-------------------------------------------------------------------
+Wed Mar 27 12:50:12 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fixes issue in distribution detection with "lower" function call.
+
+- Modified:
+  * remodeled-distro-detection.diff  
+
+-------------------------------------------------------------------
+Tue Mar 26 09:29:03 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Adds imporoved distribution detection. Since now all base products
+  get detected correctly, we no longer need the SUSE Manager patch.
+
+- Added:
+  * remodeled-distro-detection.diff  
+
+-------------------------------------------------------------------
+Sun Mar 24 17:06:54 UTC 2019 - Michael Calmer <mc@suse.com>
+
+- fix grub directory layout
+- Added:
+  * create-system-directory-at-the-correct-place.patch
+
+-------------------------------------------------------------------
+Sat Mar 23 13:36:07 UTC 2019 - Michael Calmer <mc@suse.com>
+
+- fix HTTP status code of XMLRPC service
+- Added:
+  * fix-http-status-code.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 17:11:35 UTC 2019 - Michael Calmer <mc@suse.com>
+
+- touch /etc/genders when it not exists (bsc#1128926)
+- Add patches to fix logging
+
+- Added:
+  * return-the-name-of-the-unknown-method.patch
+  * call-with-logger-where-possible.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 14:25:15 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Switching version schema from 3.0 to 3.0.0
+
+-------------------------------------------------------------------
+Tue Mar 12 16:08:08 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fixes case where distribution detection returns None (bsc#1130658)
+
+- Added:
+  * fixes-distro-none-case.diff
+
+-------------------------------------------------------------------
+Tue Mar 12 09:52:53 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Removes newline from token, which caused authentication error (bsc#1128754)
+
+- Added:
+  * remove-newline-from-token.diff
+
+-------------------------------------------------------------------
+Fri Mar  8 10:52:54 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Added a patch which fixes an exception when login in with a non-root user.
+
+- Added:
+  * fix-login-error.patch
+
+-------------------------------------------------------------------
+Fri Mar  8 10:52:54 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Added a patch which fixes an exception when login in with a non-root user.
+
+- Added:
+  * fix-login-error.patch
+  
+-------------------------------------------------------------------
+Fri Mar  8 09:34:46 UTC 2019 - jgonzalez@suse.com
+
+- Remove patch merged at upstream:
+  * 0001-return-token-as-string.patch
+
+-------------------------------------------------------------------
+Fri Mar  8 07:43:50 UTC 2019 - Michael Calmer <mc@suse.com>
+
+- change grub2-x86_64-efi dependency to Recommends
+
+-------------------------------------------------------------------
+Thu Mar  7 17:58:42 UTC 2019 - jgonzalez@suse.com
+
+- grub2-i386pc is not really required. Changed to recommended
+  to allow building for architectures other than x86_64
+
+-------------------------------------------------------------------
+Thu Mar  7 11:30:40 UTC 2019 - jgonzalez@suse.com
+
+- Use cdrtools starting with SLE-15 and Leap-15 again. (bnc#1081739)
+- Update cobbler loaders server hostname (bsc#980577)
+- Update outdated apache config (bsc#956264)
+- Replace builddate with changelog date to fix build-compare (bsc#969538)
+- LOCKFILE usage removed on openSUSE (bnc#714618)
+- Power management subsystem completely re-worked to prevent
+  command-injection (CVE-2012-2395)
+- Removed patch merged at upstream:
+  * cobblerd_needs_apache2_service_started.patch
+
+-------------------------------------------------------------------
+Fri Mar  1 15:46:24 UTC 2019 - trenn@suse.de
+
+- Checking bug fixes of released products are in latest develop pkg:
+  - remove fix-nameserver-search.fix; bug is invalid (bsc#1029276)
+    -> not needed anymore
+  - fix cobbler yaboot handling (bsc#968406, bsc#966622)
+    -> no yaboot support anymore
+  - support UEFI boot with cobbler generated tftp tree (bsc#1020376)
+    -> upstream
+  - Enabling PXE grub2 support for PowerPC (bsc#986978)
+    -> We have grub2 support for ppc64le
+  - (bsc#1048183) fix missing args and location for xen
+    -> is in
+  - no koan support anymore:
+    bsc#969541, bsc#924118, bsc#967523
+  - not installed (bsc#966841)
+    works.
+
+- These still have to be looked at:
+  SUSE system as systemd only (bsc#952844)
+  handle list value for kernel options 
+  correctly (bsc#973413) 
+  entry in pxe menu (bsc#988889)
+
+- This still has to be switched off (at least in internal cobbler versions):
+  Disabling 'get-loaders' command and 'check' fixed. bsc#973418
+
+-------------------------------------------------------------------
+Thu Feb 28 14:31:01 UTC 2019 - trenn@suse.de
+
+- Add python3-requests and removed old python2 requires:
+  Requires:       python-PyYAML
+  Requires:       python-urlgrabber
+  (originally from jbreuer@suse.de)
+- Add explicity require to tftp, so it is used for both SLE
+  and openSUSE (originally from jgonzalez@suse.com)
+- Moved Recommends according to spec_cleaner
+
+-------------------------------------------------------------------
+Mon Feb 25 15:48:39 UTC 2019 - trenn@suse.de
+
+- Require latest apache2-mod_wsgi-python3 package
+  This fixes interface to http://localhost/cblr/svc/...
+- Use latest github cobbler/cobbler master branch in _service file
+- cobblerd_needs_apache2_service_started.patch reverted, that is mainline
+  now:
+D cobblerd_needs_apache2_service_started.patch
+- Only recommend grub2-arm and grub2-ppc packages or we might not be
+  able to build on factory where arm/ppc might not be built
+- Remove genders package requires. A genders file is generated, but
+  we do not need/use the genders package.
+
+-------------------------------------------------------------------
+Tue Feb 19 11:14:04 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup with spec-cleaner 
+
+-------------------------------------------------------------------
+Thu Feb 14 14:35:56 UTC 2019 - trenn@suse.de
+
+- Update to latest cobbler version 3.0 mainline git HEAD version
+  and remove already integrated or not needed anymore patches:
+D    cobbler-symlink.diff
+D    detect-parallel-cobbler-sync.patch
+D    escape-shell-parameters-provided-by-user-on-reposync.patch
+D    fix_subprocess_sp_encoding.patch
+D    fix-os-release.patch
+D    disable_not_relevant_checks_bnc_828453.patch
+D    update-outdated-apache-config-bsc956264.patch
+D    cve-2018-10931-forbid-exposure-of-private-methods-in.patch
+D    fix-broken-tests.diff
+D    fix-manpage-creation.patch
+D    do_not_use_grubby_compat_when_grub2_is_in_use.diff
+D    fix_hardcoded_libpath_for_websession.patch
+D    looking_for_cobbler_order_changed.diff
+D    grubby-compat.diff
+D    fix-restart-paravirt-xen.dif
+D    koan_old_cobbler_compat.diff
+D    fix_shebang.patch
+D    catch_cheetah_exception.patch
+D    fix-script-endpoint-security-bug-1030582.patch
+D    cobbler_web_config.diff
+D    fix-koan-port-guessing.dif
+D    cobblerd_needs_apache2_service_started.patch
+D    fix-powermanagement-status.dif
+D    check-access-token-when-calling-modify_setting-api-e.patch
+D    fix_sle_detection.patch
+D    fix_test_create_systems.diff
+D    fix_subprocess_sp_encoding.patch
+D    cobbler-2.4.2-reprovision-rhel-on-suse-bnc883487.patch
+
+
+-------------------------------------------------------------------
+Wed Feb  6 14:49:40 UTC 2019 - trenn@suse.de
+
+- Serial console support added, did some testing already
+  Things should start to work as expected
+
+-------------------------------------------------------------------
+Tue Jan 29 13:35:00 UTC 2019 - trenn@suse.de
+
+- Add general grub2 support
+
+-------------------------------------------------------------------
+Wed Jan 16 18:05:34 UTC 2019 - trenn@suse.de
+
+- Put mkgrub.* into mkgrub.sh
+
+-------------------------------------------------------------------
+Wed Jan 16 15:46:08 UTC 2019 - trenn@suse.de
+
+- Add git date and commit to version string for now
+
+-------------------------------------------------------------------
+Wed Jan 16 14:49:17 UTC 2019 - trenn@suse.de
+
+- Add grub2 mkimage scripts:
+mkgrub.i386-pc
+mkgrub.powerpc-ieee1275
+mkgrub.x86_64-efi
+mkgrub.arm64-efi
+  and generate grub executables with them in the %post section
+  
+-------------------------------------------------------------------
+Fri Jan 11 13:46:17 UTC 2019 - trenn@suse.de
+
+** Backported fixes from SLE12 SP3
+- build server wants explicite package in BuildRequires; use tftp
+- require tftp(server) instead of atftp
+- cleanup: cobbler is noarch, so arch specific requires do not make
+  sense
+- SLES15 is using /etc/os-release instead of /etc/SuSE-release, use
+  this one for checking also
+- Add:
+  * sles15.patch
+- add sles15 distro profile (bsc#1090205)
+- Add:
+  * add-sles15-distro.patch
+- fix signature for SLES15 (bsc#1075014)
+- Updated:
+  * add-sles15-distro.patch
+- fix signature for SLES15 (bsc#1075014)
+- Updated:
+  * add-sles15-distro.patch
+
+Missing fixes
+=============
+
+This SLE fixes are missing.
+The reason for this is that koan got split out into a separate
+package, these changes (changelog entries) therefore are not relevant
+for this package anymore:
+
+Koan specific:
+--------------
+- fix koan wait parameter initialization
+  Added:
+  * fix-wait.patch
+- Fix koan shebang
+- Add:
+  * fix-usr-bin-env-bash-koan.diff
+
+But these patches still have to be double checked and
+probably applied to current cobbler sources.
+The patches are still added in the package, but do not
+get patched. If this work has been done, these changelog
+entries should show up in the
+** Backported fixes from SLE12 SP3
+section above to please maintenance and "factory first"
+release checking tools:
+
+cobbler specific (still have to be done):
+-----------------------------------------
+- Escape shell parameters provided by the user for the
+  reposync action (CVE-2017-1000469) (bsc#1074594)
+- Added:
+  * escape-shell-parameters-provided-by-user-on-reposync.patch 
+- detect if there is already another instance of "cobbler sync"
+  running and exit with failure if so (bsc#1081714)
+- Add:
+  * detect-parallel-cobbler-sync.patch
+- do not try to hardlink to a symlink. The result will be a
+  dangling symlink in the general case (bsc#1097733)
+- Added:
+  * cobbler-symlink.diff
+- fix kernel options when generating bootiso (bsc#1101670)
+- Added:
+  * cobbler-buildiso-list-to-string.patch
+- Refreshed:
+  * cobbler-symlink.diff
+- fix service restart after logrotate for cobblerd (bsc#1113747)
+- rotate cobbler logs at higher frequency to prevent disk fillup
+  (bsc#1113747)
+
+
+
+-------------------------------------------------------------------
+Fri Aug 10 10:11:17 UTC 2018 - pablo.suarezhernandez@suse.com
+
+- Forbid exposure of private methods in the API (CVE-2018-10931)
+  (CVE-2018-1000225) (bsc#1104287) (bsc#1104189) (bsc#1105442)
+- Check access token when calling 'modify_setting' API endpoint
+  (bsc#1104190) (bsc#1105440) (CVE-2018-1000226)
+
+- Added:
+  * check-access-token-when-calling-modify_setting-api-e.patch
+  * cve-2018-10931-forbid-exposure-of-private-methods-in.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 12:09:52 UTC 2018 - pablo.suarezhernandez@suse.com
+
+- Escape shell parameters provided by the user for the
+  reposync action (CVE-2017-1000469) (bsc#1074594)
+
+- Added:
+  * escape-shell-parameters-provided-by-user-on-reposync.patch 
+
+-------------------------------------------------------------------
+Mon Mar  5 13:18:28 UTC 2018 - adam.majer@suse.de
+
+- Use cdrtools starting with SLE-15 and Leap-15 again.
+  (bnc#1081739)
+
+-------------------------------------------------------------------
+Mon Nov 27 11:55:05 UTC 2017 - pablo.suarezhernandez@suse.com
+
+- Cleanup of the spec file.
+
+-------------------------------------------------------------------
+Mon Nov 27 10:41:25 UTC 2017 - jloeser@suse.com
+
+- fix creation of manpages:
+    option '--release ""' resulted in empty man pages
+
+- added patch:
+  * fix-manpage-creation.patch
+
+-------------------------------------------------------------------
+Wed Nov  8 18:08:11 UTC 2017 - aavindraa@gmail.com
+
+- Update to latest stable version of cobbler (2.8.2)
+  * many changes since 2.6.6. see: https://cobbler.github.io/posts/
+- rebase patches
+  * koan_old_cobbler_compat.diff
+  * disable_not_relevant_checks_bnc_828453.patch
+  * update-outdated-apache-config-bsc956264.patch
+    + potentionally fixed in 3d4db162c7b7c0fe7de00c30fcb81798b7db5039
+- remove fix-cobbler-loaders-server-bsc980577.patch
+  * fixed in 77328c0b05d37878f13704efa31e4daa162fda12
+- remove vendor-files.tar.bz2
+  * use built in manpage instead of vendored one
+  * add cobbler_firewall_settings to package root
+- use py macros to do installation
+
+-------------------------------------------------------------------
+Thu Oct  5 15:10:39 UTC 2017 - mihai.dinca@suse.com
+
+- fix script endpoint security bug CVE-2016-9605 (bsc#1030582)
+  Add:
+    * fix-script-endpoint-security-bug-1030582.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 13:53:18 UTC 2017 - mihai.dinca@suse.com
+
+- fix setup.py to identify SUSE OS correctly bsc#1046679
+  Added:
+  * fix-os-release.patch
+
+-------------------------------------------------------------------
+Fri Jul 28 10:38:24 UTC 2017 - trenn@suse.de
+
+- Recommend fence-agents for broader power switch support
+
+-------------------------------------------------------------------
+Wed May 18 15:07:29 UTC 2016 - pablo.suarezhernandez@suse.com
+
+- Update cobbler loaders server hostname bsc#980577
+  Added:
+  * fix-cobbler-loaders-server-bsc980577.patch
+
+-------------------------------------------------------------------
+Tue May  3 14:55:13 UTC 2016 - mdinca@suse.de
+
+- Update outdated apache config bsc#956264
+  * update-outdated-apache-config-bsc956264.patch
+
+-------------------------------------------------------------------
+Wed Mar  9 17:38:45 UTC 2016 - bwiedemann@suse.com
+
+- Replace builddate with changelog date to fix build-compare (bsc#969538)
+
+-------------------------------------------------------------------
+Thu Jan 15 09:36:07 UTC 2015 - fcastelli@suse.com
+
+- Added 'fix_test_create_systems.diff': fixes the "create_systens" unit test
+
+-------------------------------------------------------------------
+Tue Jan 13 09:37:53 UTC 2015 - fcastelli@suse.com
+
+- Fix runtime dependency: ensure the yaml module is available.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:51:03 UTC 2015 - fcastelli@suse.com
+
+- Install the right cobblerd.service file
+
+-------------------------------------------------------------------
+Mon Jan 12 17:07:27 UTC 2015 - fcastelli@suse.com
+
+- Do not ship cobbler_web.conf inside of the cobbler package, get rid
+  of part of our patches to setup.py,
+
+-------------------------------------------------------------------
+Fri Dec 19 17:48:20 UTC 2014 - fcastelli@suse.com
+
+- Added new patch required to fix the broken unit tests:
+  * fix-broken-tests.diff
+
+-------------------------------------------------------------------
+Thu Dec 18 14:59:08 UTC 2014 - fcastelli@suse.com
+
+- Removed another no longer needed patch:
+  * fix-textmode-for-SUSE.dif
+
+-------------------------------------------------------------------
+Thu Dec 18 14:51:32 UTC 2014 - fcastelli@suse.com
+
+- Update to latest stable version of cobbler (2.6.6)
+- Removed no longer needed patches
+  * bnc_877009.patch
+  * cobbler-2.4.2-Fix-koan-s-get_insert_script.patch
+  * fix-broken-tests.diff
+  * fix-initscript.diff
+  * suse_config.diff
+- Fixed old patches to apply against the new code:
+  * catch_cheetah_exception.patch
+  * grubby-compat.diff
+  * setup_py.diff
+
+-------------------------------------------------------------------
+Mon Dec 15 10:20:53 UTC 2014 - fcastelli@suse.com
+
+- Fix the broken unit tests
+
+-------------------------------------------------------------------
+Thu Dec 11 16:34:35 UTC 2014 - mseidl@suse.de
+
+- Created sub package for unit tests 
+
+-------------------------------------------------------------------
+Tue Dec  9 15:35:25 CET 2014 - mc@suse.de
+
+- use fdupes only on SUSE
+
+-------------------------------------------------------------------
+Mon Dec  8 09:27:33 UTC 2014 - dmacvicar@suse.de
+
+- Fix for re-installation of machines on SLE with static
+  network configuration (bnc#883487)
+- Added patches:
+  * cobbler-2.4.2-Fix-koan-s-get_insert_script.patch
+  * cobbler-2.4.2-reprovision-rhel-on-suse-bnc883487.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 10:01:30 CET 2014 - mc@suse.de
+
+- fix port guessing in koan (bsc#855389)
+  * fix-koan-port-guessing.dif
+- add "copy-default" option to grubby-compat (bsc#855389)
+- handle elilo in SUSE (bsc#855389)
+
+-------------------------------------------------------------------
+Wed Nov 26 13:46:30 CET 2014 - mc@suse.de
+
+- fix wrong option "text" in SUSE environment (bsc#901058)
+  * fix-textmode-for-SUSE.dif
+
+-------------------------------------------------------------------
+Thu Sep  4 09:43:01 UTC 2014 - fcastelli@suse.com
+
+- Added do_not_use_grubby_compat_when_grub2_is_in_use.diff: prevents
+  usage of grubby-compat when grub2 is active. Use grub2 features
+  do modify the boot loader.
+
+-------------------------------------------------------------------
+Tue Sep  2 15:08:40 UTC 2014 - fcastelli@suse.com
+
+- Moved grubby-compat inside of the koan sub-package. The scrit was accidentally
+  moved into the cobbler package.
+
+-------------------------------------------------------------------
+Fri Jul 25 15:51:39 UTC 2014 - fcastelli@suse.com
+
+- Added fix_sle_detection.patch: ensures SLE12 is properly detected.
+
+-------------------------------------------------------------------
+Fri Jul 25 13:28:15 UTC 2014 - fcastelli@suse.com
+
+- Did some cleanup of the spec file.
+
+-------------------------------------------------------------------
+Tue Jul 15 15:17:06 UTC 2014 - fcastelli@suse.com
+
+- Fix source of cobbler package inside of spec file (required by openSUSE:Factory)
+
+-------------------------------------------------------------------
+Tue Jul 15 13:02:42 UTC 2014 - fcastelli@suse.com
+
+- Added bnc_877009.patch, fixes CVE-2014-3225: cobbler: Local file inclusion (bnc#877009)
+
+-------------------------------------------------------------------
+Mon Jul 14 16:27:59 UTC 2014 - fcastelli@suse.com
+
+- Got rid of some of the rpmlint warnings.
+- Fixed error inside of koan tool introduced by the 'grubby-compat.diff' patch.
+
+-------------------------------------------------------------------
+Fri Jul 11 10:18:57 UTC 2014 - mseidl@suse.de
+
+- Requires tfpt-server but atftp/tftpt packages provide tfpt(server)
+- Added conditional requires for s390x and syslinux-x86_64
+- Added patches:
+  + catch_cheetah_exception.patch 
+      - forward cheetah exception as 500 SERVER ERROR (bnc#787879)
+  + disable_not_relevant_checks_bnc_828453.patch
+  + fence_ipmitool.sh
+    - add fence_ipmitool script for power management
+  + fix-powermanagement-status.dif
+    - fix evaluation of power status calls
+  + fix-restart-paravirt-xen.dif
+    - fix XEN fullvirt installation
+  + grubby-compat.diff
+  + koan_old_cobbler_compat.diff
+    - add new grubby-compat tool
+  + looking_for_cobbler_order_changed.diff
+    - fix cobbler checks on SUSE (bnc#828453)
+  + setup_py.diff
+    - update paths for suse apache
+  
+- Modified fix-initscript.diff -Failed to patch due to new line in newer version
+
+- Removed patches:
+  - suse_newver.patch - Upstreamed
+  - users_patch.diff - Upstreamed
+  - cheetah_template_autoescape.patch - No longer needed 
+
+-------------------------------------------------------------------
+Fri Feb 14 11:47:04 CET 2014 - mc@suse.de
+
+- update to version 2.4.2
+  + Adding support for gPXE
+  + Adding support for ESXi5
+  + fix install=... kernel parameter when importing a SUSE distro
+  + koan: Port xen creation to virt-install
+  + koan: Port qcreate to virt-install
+  + Port koan from virtinst to virt-install command (v2)
+  + add qcow2 driver type
+  + Adding ability to use https for API calls (cobbler CLI)
+  + Use ip instead of ifconfig for network snippets
+  + minor modifications to templar to show template rendering errors
+  + bugfixes and refactoring
+
+-------------------------------------------------------------------
+Tue Aug 13 11:41:27 UTC 2013 - kkaempf@suse.com
+
+- Update to 2.4.0
+  Major Features:
+  - Dynamic Settings
+  - Distro Signatures
+  - Vastly improved support for Ubuntu, OpenSUSE and VMware ESXi (5.0 and 5.1)
+  - Added in new templated scripting support (needs documentation)
+  - New web interface improvements (tabs, etc.)
+  - Added apt-specific fields for repositories to make mirroring them easier
+  - Support for parameterized classes and defines in puppet using management classes
+
+  Minor Features:
+  - Added the bonded_bridge_slave interface type:
+  - Improved template error reporting
+  - Variables in fields are now evaluated through the templating engine
+  - Added openvz as a virtualization type for koan
+  - Added --virt-pxe-boot option for koan to force PXE booting of new systems
+  - Added a per-interface gateway option, for systems that support it
+  - Added support for new puppet command syntax
+  - Exposed replication rsync options
+
+  Major Bugfixes:
+  - --available-as no longer copies all files.
+  - Improved gPXE/iPXE support, including FreeBSD
+  - Deleting objects now respects the --recursive option again
+
+  Minor Bugfixes:
+  - Too many to list
+
+-------------------------------------------------------------------
+Wed Aug  7 15:59:31 CEST 2013 - ro@suse.de
+
+- fix filelist to fix build on factory: rpm does not allow to
+  mark a non-directory as dir anymore 
+
+-------------------------------------------------------------------
+Wed Apr 10 11:23:44 UTC 2013 - rbrownccb@opensuse.org
+
+- use systemd for openSUSE 12.3 and later
+- change release number to match upstream
+- drop obsolete setup_py.diff
+- add required apache modules for cobbler-web
+- add suse_newver.patch to add support for SLES11 SP3, 
+  openSUSE 12.3 and openSUSE 13.1
+
+-------------------------------------------------------------------
+Tue Apr 9 15:45:11 UTC 2013 - rbrownccb@opensuse.org
+
+- update to 2.2.3
+  + Multiple security fixes
+  + CSRF support for the web GUI, which will now default to using 
+    https too.
+  + Power management subsystem completely re-worked to prevent 
+    command-injection (CVE-2012-2395)
+  + Support for bind in chroot'd environments
+  + Koan now uses virt-install CLI instead of directly accessing 
+    the virtinst API
+  + Various improvements for SuSE and autoyast, especially for 
+    PPC64-based systems.
+  + BETA support for ESXi5 and gPXE
+  + BETA support for using other template languages, like jinja2
+- rebase patches
+- drop obsolete manage_import_suse.py
+- no longer requires mod_python
+
+-------------------------------------------------------------------
+Thu May  3 10:35:30 CEST 2012 - ug@suse.de
+
+- require syslinux only on x86 arch
+
+-------------------------------------------------------------------
+Thu Apr 19 10:57:50 CEST 2012 - ug@suse.de
+
+- moved the secret generation from RPM post-script to the
+  init-script, to avoid that all appliances will still have the
+  same key
+
+-------------------------------------------------------------------
+Tue Apr 17 17:11:59 CEST 2012 - ug@suse.de
+
+- create a secret during installation
+
+-------------------------------------------------------------------
+Tue Mar 27 10:50:05 UTC 2012 - chris@computersalat.de
+
+- update to 2.2.2
+  * please see CHANGELOG for more info
+- remove obsolete virt-auto-boot patch
+- rebase patches
+
+-------------------------------------------------------------------
+Mon Feb 13 17:52:57 CET 2012 - ug@suse.de
+
+- fixed return value of rccobblerd status
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:06 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Dec 22 13:23:01 CET 2011 - ug@suse.de
+
+- fix install=... kernel option when you import a SUSE distro
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:24 CEST 2011 - ug@suse.de
+
+- virtual machines autostart on boot fixed
+
+-------------------------------------------------------------------
+Fri Oct  7 16:44:05 CEST 2011 - ug@suse.de
+
+- Import modules, which allowed easy integration of...
+- Ubuntu and Debian support again!
+- Better support for SuSE
+- Support for FreeBSD
+- Support for ESX 4+/ESXi
+- Integration with the python TFTP server pytftpd
+- "fetchable files" and "boot files" support for distros that need to
+  get more files from the TFTP server
+- Faster sync using link cache
+- Support for EFI grub booting
+- Support for bridged interfaces
+- WSGI instead of mod_python for the web interface.
+- Lots of Web UI improvements
+- A lot more I'm sure I missed when going through the change log
+- version 2.2.1
+
+-------------------------------------------------------------------
+Sat Sep 17 23:18:43 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Aug 31 16:45:43 CEST 2011 - ug@suse.de
+
+- LOCKFILE usage removed on openSUSE
+  (bnc#714618)
+
+-------------------------------------------------------------------
+Fri Jun 10 16:38:53 CEST 2011 - ug@suse.de
+
+- fixed the handling of cheetah template code in
+  AutoYaST XML files
+  (thanks to Jörgen Maas for pointing me to the bug)
+- fixed parameter list in build-ISO code
+  (thanks to Jörgen Maas for the patch)
+
+-------------------------------------------------------------------
+Thu Apr  7 17:46:03 CEST 2011 - ug@suse.de
+
+- added a backported upstream patch for tainted file error
+  message
+
+-------------------------------------------------------------------
+Thu Apr  7 13:30:16 CEST 2011 - ug@suse.de
+
+- fix hostname in install=...
+
+-------------------------------------------------------------------
+Thu Apr  7 12:11:35 CEST 2011 - ug@suse.de
+
+- fix init-script
+
+-------------------------------------------------------------------
+Thu Apr  7 10:34:06 CEST 2011 - ug@suse.de
+
+- fixed apache config typo
+
+-------------------------------------------------------------------
+Wed Apr  6 15:39:59 CEST 2011 - ug@suse.de
+
+- added SUSE breed to import-webui
+
+-------------------------------------------------------------------
+Wed Apr  6 12:31:29 CEST 2011 - ug@suse.de
+
+- build ISO for SUSE fixed
+
+-------------------------------------------------------------------
+Wed Apr  6 12:25:04 CEST 2011 - ug@suse.de
+
+- added patch for autoyast XML files and cobbler triggers
+
+-------------------------------------------------------------------
+Wed Apr  6 10:52:03 CEST 2011 - ug@suse.de
+
+- added patch to fix koan with SUSE dists
+
+-------------------------------------------------------------------
+Tue Apr  5 15:29:57 CEST 2011 - ug@suse.de
+
+- fixed tftp-root path on SUSE
+
+-------------------------------------------------------------------
+Tue Apr  5 13:33:26 CEST 2011 - ug@suse.de
+
+- added support for importing a SUSE distribution
+
+-------------------------------------------------------------------
+Mon Apr  4 14:11:29 CEST 2011 - ug@suse.de
+
+- fixed the start of cobblerd when [tftpd] section is missing
+  in the modules.conf
+
+-------------------------------------------------------------------
+Mon Apr  4 10:46:50 CEST 2011 - ug@suse.de
+
+- version from 2.0.10 to 2.1.0
+
+-------------------------------------------------------------------
+Wed Mar 23 14:16:58 CET 2011 - ug@suse.de
+
+- changed logfiles to root:root (bnc#678433)
+
+-------------------------------------------------------------------
+Tue Mar 22 13:47:40 CET 2011 - ug@suse.de
+
+- changed permissions in /var/log/ to root:www (bnc#678433)
+
+-------------------------------------------------------------------
+Fri Mar  4 14:08:33 CET 2011 - ug@suse.de
+
+- patches cleaned up
+
+-------------------------------------------------------------------
+Mon Feb 28 18:23:38 CET 2011 - ug@suse.de
+
+- fixed a crash because xml.dom.ext is not available on 11.4
+
+-------------------------------------------------------------------
+Thu Feb 17 17:21:19 CET 2011 - ug@suse.de
+
+- fixed the restarting of services on SUSE
+
+-------------------------------------------------------------------
+Thu Feb 17 10:22:50 CET 2011 - ug@suse.de
+
+- missing rc-script link added
+
+-------------------------------------------------------------------
+Wed Feb 16 16:34:02 CET 2011 - ug@suse.de
+
+- don't add "#raw" comment per default anymore
+
+-------------------------------------------------------------------
+Wed Feb 16 13:30:07 CET 2011 - ug@suse.de
+
+- cobbler failed to export kickstart profiles with $SNIPPET(...)
+  cheetah_class_fix.diff added for that
+
+-------------------------------------------------------------------
+Tue Feb  8 12:45:30 CET 2011 - ug@suse.de
+
+- removed grubby from the requires
+
+-------------------------------------------------------------------
+Thu Feb  3 16:36:59 CET 2011 - ug@suse.de
+
+- packaged the cobbler.conf instead of cobbler_wsgi.conf
+  (bnc#668968)
+
+-------------------------------------------------------------------
+Wed Feb  2 09:28:43 CET 2011 - ug@suse.de
+
+- spec file fixed
+
+-------------------------------------------------------------------
+Fri Jan 28 11:03:37 CET 2011 - ug@suse.de
+
+- fixed apache config to avoid warning
+
+-------------------------------------------------------------------
+Wed Jan 19 16:10:00 CET 2011 - ug@suse.de
+
+- added firewall config
+
+-------------------------------------------------------------------
+Thu Jan 13 14:26:05 CET 2011 - ug@suse.de
+
+- version update to 2.0.10
+
+-------------------------------------------------------------------
+Wed Jan 12 11:56:18 CET 2011 - ug@suse.de
+
+- some template files were not packaged
+
+-------------------------------------------------------------------
+Tue Jan 11 16:03:07 CET 2011 - ug@suse.de
+
+- removed xinetd from start script
+
+-------------------------------------------------------------------
+Tue Jan 11 14:34:18 CET 2011 - ug@suse.de
+
+- update to version 2.0.8
+

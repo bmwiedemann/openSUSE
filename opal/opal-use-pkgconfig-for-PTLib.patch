@@ -1,0 +1,27 @@
+--- opal-3.10.5-orig/plugins/LID/IxJ/Makefile.in	2012-04-26 06:56:02.000000000 +0200
++++ opal-3.10.5/plugins/LID/IxJ/Makefile.in	2012-05-19 00:42:40.699285850 +0200
+@@ -31,8 +31,8 @@
+ #
+ #
+ 
+-STDCCFLAGS =@STDCCFLAGS@
+-CXXFLAGS   =@CXXFLAGS@
++CFLAGS=@CFLAGS@
++CXXFLAGS=@CXXFLAGS@
+ 
+ LID_PLUGIN_DIR=@LID_PLUGIN_DIR@
+ prefix=@prefix@
+@@ -65,7 +65,7 @@
+ 
+ $(OBJDIR)/%.o : %.cxx
+ 	@mkdir -p $(OBJDIR) >/dev/null 2>&1
+-	$(Q_CC)$(CXX) -I../../../include $(STDCCFLAGS) $(OPTCCFLAGS) $(CXXFLAGS) -c $< -o $@
++	$(Q_CC)$(CXX) -I../../../include $(CXXFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ PLUGIN	= ./ixj_lid_pwplugin.so
+ 
+@@ -85,3 +85,4 @@
+ 	rm -f $(OBJECTS) $(PLUGIN)
+ 
+ ###########################################
++

@@ -1,0 +1,25 @@
+From 611ba030fc18c5df43ddc02ea16ce50691bd786e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Wed, 13 Dec 2017 08:58:28 +0100
+Subject: [PATCH] Remove webview because it is broken in wxWidgets
+
+---
+ wxLua/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/wxLua/CMakeLists.txt b/wxLua/CMakeLists.txt
+index a80a011..3339ae3 100644
+--- a/wxLua/CMakeLists.txt
++++ b/wxLua/CMakeLists.txt
+@@ -46,8 +46,8 @@ set( wxLua_SUBRELEASE_NUMBER "3")
+ # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
+ # If this CMakeLists.txt was called from another, FIND_WXWIDGETS() may have already been called.
+ if (NOT DEFINED wxWidgets_COMPONENTS)
+-    set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
+-    #set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
++    set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
++    #set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
+     #set(wxWidgets_COMPONENTS stc mono) # for monolithic
+ endif()
+ 

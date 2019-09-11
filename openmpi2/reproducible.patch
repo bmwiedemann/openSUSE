@@ -1,0 +1,139 @@
+=> merged https://github.com/open-mpi/ompi/pull/3755 sort ; backport in 3756
+=> merged https://github.com/open-mpi/ompi/pull/5653 user+host
+https://github.com/open-mpi/ompi/issues/3759
+
+
+Index: openmpi-2.1.1/autogen.pl
+===================================================================
+--- openmpi-2.1.1.orig/autogen.pl
++++ openmpi-2.1.1/autogen.pl
+@@ -85,7 +85,7 @@ if ($^O eq "solaris") {
+ }
+ 
+ $username = getpwuid($>);
+-$full_hostname = `hostname`;
++$full_hostname = $ENV{HOSTNAME} || `hostname`;
+ chomp($full_hostname);
+ $hostname = $full_hostname;
+ $hostname =~ s/^([\w\-]+)\..+/\1/;
+@@ -316,7 +316,7 @@ sub mca_process_framework {
+             $mca_found->{$pname}->{$framework}->{found} = 1;
+             opendir(DIR, $dir) ||
+                 my_die "Can't open $dir directory";
+-            foreach my $d (readdir(DIR)) {
++            foreach my $d (sort(readdir(DIR))) {
+                 # Skip any non-directory, "base", or any dir that
+                 # begins with "."
+                 next
+@@ -628,7 +628,7 @@ sub mpiext_run_global {
+     my $dir = "$topdir/$ext_prefix";
+     opendir(DIR, $dir) ||
+         my_die "Can't open $dir directory";
+-    foreach my $d (readdir(DIR)) {
++    foreach my $d (sort(readdir(DIR))) {
+         # Skip any non-directory, "base", or any dir that begins with "."
+         next
+             if (! -d "$dir/$d" || $d eq "base" || substr($d, 0, 1) eq ".");
+@@ -715,7 +715,7 @@ sub mpicontrib_run_global {
+     my $dir = "$topdir/$contrib_prefix";
+     opendir(DIR, $dir) ||
+         my_die "Can't open $dir directory";
+-    foreach my $d (readdir(DIR)) {
++    foreach my $d (sort(readdir(DIR))) {
+         # Skip any non-directory, "base", or any dir that begins with "."
+         next
+             if (! -d "$dir/$d" || $d eq "base" || substr($d, 0, 1) eq ".");
+@@ -1144,9 +1144,6 @@ if (-e "orcm") {
+ 
+ #---------------------------------------------------------------------------
+ 
+-$full_hostname = `hostname`;
+-chomp($full_hostname);
+-
+ $m4 = "dnl
+ dnl \$HEADER\$
+ dnl
+Index: openmpi-2.1.1/config/opal_functions.m4
+===================================================================
+--- openmpi-2.1.1.orig/config/opal_functions.m4
++++ openmpi-2.1.1/config/opal_functions.m4
+@@ -95,8 +95,8 @@ EOF
+ #
+ 
+ OPAL_CONFIGURE_USER="`whoami`"
+-OPAL_CONFIGURE_HOST="`hostname | head -n 1`"
+-OPAL_CONFIGURE_DATE="`date`"
++OPAL_CONFIGURE_HOST="${HOSTNAME:-`hostname | head -n 1`}"
++OPAL_CONFIGURE_DATE="reproducibledate"
+ 
+ #
+ # Save these details so that they can be used in opal_info later
+@@ -115,8 +115,8 @@ AC_DEFUN([OPAL_BASIC_SETUP],[
+ #
+ 
+ OPAL_CONFIGURE_USER="`whoami`"
+-OPAL_CONFIGURE_HOST="`hostname | head -n 1`"
+-OPAL_CONFIGURE_DATE="`date`"
++OPAL_CONFIGURE_HOST="${HOSTNAME:-`hostname | head -n 1`}"
++OPAL_CONFIGURE_DATE="reproducibledate"
+ 
+ #
+ # Make automake clean emacs ~ files for "make clean"
+Index: openmpi-2.1.1/config/opal_get_version.m4
+===================================================================
+--- openmpi-2.1.1.orig/config/opal_get_version.m4
++++ openmpi-2.1.1/config/opal_get_version.m4
+@@ -91,7 +91,7 @@ m4_define([OPAL_GET_VERSION],[
+                     $2_REPO_REV=`git describe --tags --always`
+                 fi
+             else
+-                $2_REPO_REV="date`date '+%Y-%m-%d'`"
++                $2_REPO_REV="date"
+             fi
+         fi
+ 
+Index: openmpi-2.1.1/ompi/tools/ompi_info/Makefile.am
+===================================================================
+--- openmpi-2.1.1.orig/ompi/tools/ompi_info/Makefile.am
++++ openmpi-2.1.1/ompi/tools/ompi_info/Makefile.am
+@@ -26,8 +26,8 @@ AM_CFLAGS = \
+             -DOPAL_CONFIGURE_HOST="\"@OPAL_CONFIGURE_HOST@\"" \
+             -DOPAL_CONFIGURE_DATE="\"@OPAL_CONFIGURE_DATE@\"" \
+             -DOMPI_BUILD_USER="\"$$USER\"" \
+-            -DOMPI_BUILD_HOST="\"`hostname`\"" \
+-            -DOMPI_BUILD_DATE="\"`date`\"" \
++            -DOMPI_BUILD_HOST="\"$${HOSTNAME:-`hostname`}\"" \
++            -DOMPI_BUILD_DATE="\"reproducibledate\"" \
+             -DOMPI_BUILD_CFLAGS="\"@CFLAGS@\"" \
+             -DOMPI_BUILD_CPPFLAGS="\"@CPPFLAGS@\"" \
+             -DOMPI_BUILD_CXXFLAGS="\"@CXXFLAGS@\"" \
+Index: openmpi-2.1.1/orte/tools/orte-info/Makefile.am
+===================================================================
+--- openmpi-2.1.1.orig/orte/tools/orte-info/Makefile.am
++++ openmpi-2.1.1/orte/tools/orte-info/Makefile.am
+@@ -23,8 +23,8 @@ AM_CFLAGS = \
+             -DOPAL_CONFIGURE_HOST="\"@OPAL_CONFIGURE_HOST@\"" \
+             -DOPAL_CONFIGURE_DATE="\"@OPAL_CONFIGURE_DATE@\"" \
+             -DOMPI_BUILD_USER="\"$$USER\"" \
+-            -DOMPI_BUILD_HOST="\"`hostname`\"" \
+-            -DOMPI_BUILD_DATE="\"`date`\"" \
++            -DOMPI_BUILD_HOST="\"$${HOSTNAME:-`hostname`}\"" \
++            -DOMPI_BUILD_DATE="\"reproducibledate\"" \
+             -DOMPI_BUILD_CFLAGS="\"@CFLAGS@\"" \
+             -DOMPI_BUILD_CPPFLAGS="\"@CPPFLAGS@\"" \
+             -DOMPI_BUILD_CXXFLAGS="\"@CXXFLAGS@\"" \
+Index: openmpi-2.1.1/oshmem/tools/oshmem_info/Makefile.am
+===================================================================
+--- openmpi-2.1.1.orig/oshmem/tools/oshmem_info/Makefile.am
++++ openmpi-2.1.1/oshmem/tools/oshmem_info/Makefile.am
+@@ -15,8 +15,8 @@ AM_CPPFLAGS = \
+             -DOPAL_CONFIGURE_HOST="\"@OPAL_CONFIGURE_HOST@\"" \
+             -DOPAL_CONFIGURE_DATE="\"@OPAL_CONFIGURE_DATE@\"" \
+             -DOMPI_BUILD_USER="\"$$USER\"" \
+-            -DOMPI_BUILD_HOST="\"`hostname`\"" \
+-            -DOMPI_BUILD_DATE="\"`date`\"" \
++            -DOMPI_BUILD_HOST="\"$${HOSTNAME:-`hostname`}\"" \
++            -DOMPI_BUILD_DATE="\"reproducibledate\"" \
+             -DOMPI_BUILD_CFLAGS="\"@CFLAGS@\"" \
+             -DOMPI_BUILD_CPPFLAGS="\"@CPPFLAGS@\"" \
+             -DOMPI_BUILD_CXXFLAGS="\"@CXXFLAGS@\"" \

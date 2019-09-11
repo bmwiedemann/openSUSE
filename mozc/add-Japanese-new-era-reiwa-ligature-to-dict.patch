@@ -1,0 +1,23 @@
+diff -ru mozc-2.18.2612.102/data/symbol/symbol.tsv mozc-2.18.2612.102.mod/data/symbol/symbol.tsv
+--- mozc-2.18.2612.102/data/symbol/symbol.tsv	2016-10-03 15:16:39.000000000 +0900
++++ mozc-2.18.2612.102.mod/data/symbol/symbol.tsv	2019-04-11 23:49:02.870950329 +0900
+@@ -523,6 +523,7 @@
+ 記号	㊦	した げ	丸下
+ 記号	㊧	ひだり	丸左
+ 記号	㊨	みぎ	丸右
++記号	㋿	れいわ ねんごう	年号		OTHER
+ 記号	㍻	へいせい ねんごう	年号		OTHER
+ 記号	㍼	しょうわ  ねんごう	年号		OTHER
+ 記号	㍽	たいしょう  ねんごう	年号		OTHER
+diff -ru mozc-2.18.2612.102/data/unicode/UnicodeData.txt mozc-2.18.2612.102.mod/data/unicode/UnicodeData.txt
+--- mozc-2.18.2612.102/data/unicode/UnicodeData.txt	2016-10-03 15:16:39.000000000 +0900
++++ mozc-2.18.2612.102.mod/data/unicode/UnicodeData.txt	2019-04-12 00:15:46.083941218 +0900
+@@ -11314,6 +11314,7 @@
+ 32FC;CIRCLED KATAKANA WI;So;0;L;<circle> 30F0;;;;N;;;;;
+ 32FD;CIRCLED KATAKANA WE;So;0;L;<circle> 30F1;;;;N;;;;;
+ 32FE;CIRCLED KATAKANA WO;So;0;L;<circle> 30F2;;;;N;;;;;
++337B;SQUARE ERA NAME REIWA;So;0;L;<square> 4EE4 548C;;;;N;SQUARED TWO IDEOGRAPHS ERA NAME REIWA;;;;
+ 3300;SQUARE APAATO;So;0;L;<square> 30A2 30D1 30FC 30C8;;;;N;SQUARED APAATO;;;;
+ 3301;SQUARE ARUHUA;So;0;L;<square> 30A2 30EB 30D5 30A1;;;;N;SQUARED ARUHUA;;;;
+ 3302;SQUARE ANPEA;So;0;L;<square> 30A2 30F3 30DA 30A2;;;;N;SQUARED ANPEA;;;;
+ 

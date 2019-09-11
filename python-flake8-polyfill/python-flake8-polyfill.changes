@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:48:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 02:25:09 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Sun Dec 31 06:13:05 UTC 2017 - arun@gmx.de
+
+- update to version 1.0.2:
+  * Fix bug where user-supplied value for an option is ignored if the
+    option is transformed with comma_separated_list or normalize_paths
+    (!4)
+
+-------------------------------------------------------------------
+Wed Oct 18 11:06:54 UTC 2017 - alarrosa@suse.com
+
+- Initial version of python-flake8-polyfill
+- Use singlespec

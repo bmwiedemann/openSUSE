@@ -1,0 +1,267 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:41:27 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM groups. Update summaries. Remove ineffective --with-pic.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:27 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 18 15:58:56 UTC 2017 - jayvdb@gmail.com
+
+- Replace deprecated PreReq: with Requires(post): and Requires(postun):
+- Explicitly remove %{_infodir}/dir before creating package to
+  allow builds on RHEL and derived Linux distributions
+- Use %{ext_info} to allow build on Mageia
+- Enable configure option --disable-dependency-tracking to
+  allow build on Mageia
+
+-------------------------------------------------------------------
+Mon Apr 15 09:39:38 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Mar  1 12:45:38 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Oct 11 20:17:27 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libIDL-2-0 subpackage.
+  + Add Provides/Obsoletes for libidl to libIDL-2-0.
+  + Update baselibs.conf accordingly.
+
+-------------------------------------------------------------------
+Sun Apr 25 11:48:04 CEST 2010 - meissner@suse.de
+
+- add buildrequires pkg-config
+
+-------------------------------------------------------------------
+Tue Mar 30 14:11:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.14:
+  + Fix build error in configure.in.
+  + Remove CPP_STDINC cruft from configure.in.
+  + Enable silent build rules.
+
+-------------------------------------------------------------------
+Thu Dec 17 17:23:33 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Mar 17 19:48:15 CET 2009 - vuntz@novell.com
+
+- Update to version 0.8.13:
+  + Clean up some warnings from sparse/gcc.
+  + Makefile.am: Put local includes first.
+- Remove AutoReqProv: it's default now.
+- Remove indent BuildRequires.
+- Remove autoreconf call.
+- Use makeinstall
+- Remove la files.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Dec 29 18:34:54 EST 2008 - mboman@suse.de
+
+- Update to version 0.8.12:
+  + Fix the build with bison 2.4 
+
+-------------------------------------------------------------------
+Thu Aug 28 18:54:39 CEST 2008 - maw@suse.de
+
+- Update to version 1.8.11:
+  + Bug fixed: bgo#474641.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Jan 29 16:15:02 CET 2008 - rodrigo@suse.de
+
+- Update to version 0.8.10:
+  * Fix the build with glib 2.15
+  * Ignore "command-line" in addition to "command line" when handling
+    output from cpp 
+
+-------------------------------------------------------------------
+Fri Jan  4 09:30:59 CET 2008 - crrodriguez@suse.de
+
+- remove unneded buildrequires on popt-devel (not used anymore)
+- fix misplaced PreReq tag
+
+-------------------------------------------------------------------
+Mon Sep 17 17:54:20 CEST 2007 - gekker@suse.de
+
+- Update to version 0.8.9
+  * Add missing braces (Dominique Quatravaux)
+
+-------------------------------------------------------------------
+Thu Mar 29 10:44:03 CEST 2007 - meissner@suse.de
+
+- buildrequires flex,bison
+
+-------------------------------------------------------------------
+Wed Mar 21 17:11:38 CST 2007 - maw@suse.de
+
+- Update to version 0.8.8
+- b.g.o bugs fixed, including 122032.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Mon Dec 11 19:23:50 CET 2006 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Dec  8 14:46:55 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Thu Aug 17 23:48:27 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.8.7
+- Clean up some dead code
+- Fix compiler warning
+- Don't use deprecated function g_basename()
+- Handle IDLN_WIDE_CHAR, IDLN_WIDE_STRING and IDLN_SRCFILE
+          in IDL_tree_free()/IDL_tree_free_real()
+- Wind32 fixes 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 14:06:37 CET 2005 - kukuk@suse.de
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Mon Aug  1 20:05:47 CEST 2005 - gekker@suse.de
+
+- Update to version 0.8.6 
+
+-------------------------------------------------------------------
+Wed Jun  1 18:58:24 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Thu Feb 10 21:20:47 CET 2005 - gekker@suse.de
+
+- Update version to 0.8.5 
+
+-------------------------------------------------------------------
+Wed Nov 17 20:23:45 CET 2004 - gekker@suse.de
+
+- Update version to 0.8.4 
+
+-------------------------------------------------------------------
+Mon Mar 15 15:57:21 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Tue Mar 02 14:43:12 CET 2004 - sbrabec@suse.cz
+
+- Fixed AC_DEFUN underquoting (bug #34763).
+
+-------------------------------------------------------------------
+Thu Feb  5 16:17:01 CET 2004 - hhetter@suse.de
+
+- updated to version 0.8.3 [GNOME 2.4.2] 
+
+-------------------------------------------------------------------
+Sun Jan 11 11:06:03 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jul 15 17:46:03 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 12 14:55:34 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.8.2.
+
+-------------------------------------------------------------------
+Sun Jun  1 16:33:54 CEST 2003 - ro@suse.de
+
+- fix info page installation 
+
+-------------------------------------------------------------------
+Tue Jul  2 09:17:07 CEST 2002 - hhetter@suse.de
+
+- no longer require texinfo 
+
+-------------------------------------------------------------------
+Tue Jun  4 15:10:02 CEST 2002 - ro@suse.de
+
+- fix requires for devel package 
+
+-------------------------------------------------------------------
+Tue Jun  4 09:30:10 CEST 2002 - hhetter@suse.de
+
+- updated to 0.8.0 source frozen release
+        * link against glib2 
+        * build fixes          
+
+-------------------------------------------------------------------
+Wed May  8 17:29:33 CEST 2002 - meissner@suse.de
+
+- %_lib changes
+
+-------------------------------------------------------------------
+Tue Apr  9 10:30:15 CEST 2002 - hhetter@suse.de
+
+- update to version 0.7.4 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Thu Jan 31 15:46:47 CET 2002 - hhetter@suse.de
+
+- updated to version 0.7.3 [gnome desktop alpha2] 
+	* lexer.l: gcc 3.0 update
+
+-------------------------------------------------------------------
+Fri Jan 11 12:22:29 CET 2002 - hhetter@suse.de
+
+- updated to version 0.7.2:
+       * portability fixes
+       * fix --version and --cflags output 
+       * build fixes 
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Dec 12 15:00:40 CET 2001 - hhetter@suse.de
+
+- added pkgconfig files to devel package 
+
+-------------------------------------------------------------------
+Wed Dec 12 12:36:17 CET 2001 - hhetter@suse.de
+
+- initial SuSE release for GNOME 2.0 platform
+ 
+

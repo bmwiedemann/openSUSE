@@ -1,0 +1,13 @@
+Index: powerpc-utils-1.3.7/scripts/ofpathname
+===================================================================
+--- powerpc-utils-1.3.7.orig/scripts/ofpathname
++++ powerpc-utils-1.3.7/scripts/ofpathname
+@@ -1632,7 +1632,7 @@ of2l_nvme()
+ . $PSERIES_PLATFORM
+ if [[ $platform = $PLATFORM_POWERNV ]]; then
+ 	echo "$OFPATHNAME: is not supported on the $platform_name platform" 1>&2
+-	exit 1
++	exit 0
+ fi
+ 
+ if [[ "$#" -eq 0 ]]; then

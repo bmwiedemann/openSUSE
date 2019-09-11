@@ -1,0 +1,116 @@
+diff --git a/README.md b/README.md
+index d0e1881..4e01df3 100644
+--- a/README.md
++++ b/README.md
+@@ -40,7 +40,8 @@ compatibility of one minor version between client and server:
+ 
+ | kured  | kubectl | k8s.io/client-go | k8s.io/apimachinery | expected kubernetes compatibility |
+ |--------|---------|------------------|---------------------|-----------------------------------|
+-| master | 1.13.6  | v10.0.0          | release-1.13        | 1.12.x, 1.13.x, 1.14.x            |
++| master | 1.14.1  | v11.0.0          | release-1.14        | 1.13.x, 1.14.x, 1.15.x            |
++| 1.2.0  | 1.13.6  | v10.0.0          | release-1.13        | 1.12.x, 1.13.x, 1.14.x            |
+ | 1.1.0  | 1.12.1  | v9.0.0           | release-1.12        | 1.11.x, 1.12.x, 1.13.x            |
+ | 1.0.0  | 1.7.6   | v4.0.0           | release-1.7         | 1.6.x, 1.7.x, 1.8.x               | 
+ 
+@@ -57,7 +58,7 @@ To obtain a default installation without Prometheus alerting interlock
+ or Slack notifications:
+ 
+ ```
+-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.1.0/kured-1.1.0-dockerhub.yaml
++kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+ ```
+ 
+ If you want to customise the installation, download the manifest and
+diff --git a/cmd/kured/Dockerfile b/cmd/kured/Dockerfile
+index a44a976..272dde7 100644
+--- a/cmd/kured/Dockerfile
++++ b/cmd/kured/Dockerfile
+@@ -1,7 +1,7 @@
+ FROM alpine:3.8
+ RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+ # NB: you may need to update RBAC permissions when upgrading kubectl - see kured-rbac.yaml for details
+-ADD https://storage.googleapis.com/kubernetes-release/release/v1.13.6/bin/linux/amd64/kubectl /usr/bin/kubectl
++ADD https://storage.googleapis.com/kubernetes-release/release/v1.14.1/bin/linux/amd64/kubectl /usr/bin/kubectl
+ RUN chmod 0755 /usr/bin/kubectl
+ COPY ./kured /usr/bin/kured
+ ENTRYPOINT ["/usr/bin/kured"]
+diff --git a/kured-rbac.yaml b/kured-rbac.yaml
+index 93c909a..4bd4945 100644
+--- a/kured-rbac.yaml
++++ b/kured-rbac.yaml
+@@ -8,7 +8,7 @@ rules:
+ # Allow kubectl to drain/uncordon
+ #
+ # NB: These permissions are tightly coupled to the bundled version of kubectl; the ones below
+-# match https://github.com/kubernetes/kubernetes/blob/v1.12.1/pkg/kubectl/cmd/drain.go
++# match https://github.com/kubernetes/kubernetes/blob/v1.14.1/pkg/kubectl/cmd/drain/drain.go
+ #
+ - apiGroups: [""]
+   resources: ["nodes"]
+@@ -16,7 +16,7 @@ rules:
+ - apiGroups: [""]
+   resources: ["pods"]
+   verbs:     ["list","delete","get"]
+-- apiGroups: ["extensions"]
++- apiGroups: ["apps"]
+   resources: ["daemonsets"]
+   verbs:     ["get"]
+ - apiGroups: [""]
+@@ -43,7 +43,7 @@ metadata:
+   name: kured
+ rules:
+ # Allow kured to lock/unlock itself
+-- apiGroups:     ["extensions"]
++- apiGroups:     ["apps"]
+   resources:     ["daemonsets"]
+   resourceNames: ["kured"]
+   verbs:         ["update"]
+diff --git a/pkg/daemonsetlock/daemonsetlock.go b/pkg/daemonsetlock/daemonsetlock.go
+index b26d574..be9b782 100644
+--- a/pkg/daemonsetlock/daemonsetlock.go
++++ b/pkg/daemonsetlock/daemonsetlock.go
+@@ -29,7 +29,7 @@ func New(client *kubernetes.Clientset, nodeID, namespace, name, annotation strin
+ 
+ func (dsl *DaemonSetLock) Acquire(metadata interface{}) (acquired bool, owner string, err error) {
+ 	for {
+-		ds, err := dsl.client.ExtensionsV1beta1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
++		ds, err := dsl.client.AppsV1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
+ 		if err != nil {
+ 			return false, "", err
+ 		}
+@@ -53,7 +53,7 @@ func (dsl *DaemonSetLock) Acquire(metadata interface{}) (acquired bool, owner st
+ 		}
+ 		ds.ObjectMeta.Annotations[dsl.annotation] = string(valueBytes)
+ 
+-		_, err = dsl.client.ExtensionsV1beta1().DaemonSets(dsl.namespace).Update(ds)
++		_, err = dsl.client.AppsV1().DaemonSets(dsl.namespace).Update(ds)
+ 		if err != nil {
+ 			if se, ok := err.(*errors.StatusError); ok && se.ErrStatus.Reason == metav1.StatusReasonConflict {
+ 				// Something else updated the resource between us reading and writing - try again soon
+@@ -68,7 +68,7 @@ func (dsl *DaemonSetLock) Acquire(metadata interface{}) (acquired bool, owner st
+ }
+ 
+ func (dsl *DaemonSetLock) Test(metadata interface{}) (holding bool, err error) {
+-	ds, err := dsl.client.ExtensionsV1beta1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
++	ds, err := dsl.client.AppsV1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
+ 	if err != nil {
+ 		return false, err
+ 	}
+@@ -87,7 +87,7 @@ func (dsl *DaemonSetLock) Test(metadata interface{}) (holding bool, err error) {
+ 
+ func (dsl *DaemonSetLock) Release() error {
+ 	for {
+-		ds, err := dsl.client.ExtensionsV1beta1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
++		ds, err := dsl.client.AppsV1().DaemonSets(dsl.namespace).Get(dsl.name, metav1.GetOptions{})
+ 		if err != nil {
+ 			return err
+ 		}
+@@ -107,7 +107,7 @@ func (dsl *DaemonSetLock) Release() error {
+ 
+ 		delete(ds.ObjectMeta.Annotations, dsl.annotation)
+ 
+-		_, err = dsl.client.ExtensionsV1beta1().DaemonSets(dsl.namespace).Update(ds)
++		_, err = dsl.client.AppsV1().DaemonSets(dsl.namespace).Update(ds)
+ 		if err != nil {
+ 			if se, ok := err.(*errors.StatusError); ok && se.ErrStatus.Reason == metav1.StatusReasonConflict {
+ 				// Something else updated the resource between us reading and writing - try again soon

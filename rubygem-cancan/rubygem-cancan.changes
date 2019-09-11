@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon May 27 10:40:29 UTC 2013 - coolo@suse.com
+
+- updated to version 1.6.10
+ * fix matches_conditons_hash for string values on 1.8 (thanks rrosen)
+ * work around SQL injection vulnerability in older Rails versions (thanks steerio) - issue #800
+ * add support for nested join conditions (thanks yuszuv) - issue #806
+ * fix load_resource "find_by" in mongoid resources (thanks albertobajo) - issue #705
+ * fix namespace split behavior (thanks xinuc) - issue #668
+ * fix inserting AND (NULL) to end of SQL queries (thanks jonsgreen) - issue #687
+ * fix merge_joins for nested association hashes (thanks DavidMikeSimon) - issues #655, #560
+ * raise error on recursive alias_action (thanks fl00r) - issue #660
+ * fix namespace controllers not loading params (thanks andhapp) - issues #670, #664
+
+-------------------------------------------------------------------
+Wed Aug  1 05:02:28 UTC 2012 - coolo@suse.com
+
+- updated to version 1.6.8
+
+-------------------------------------------------------------------
+Wed Jan 18 13:57:15 UTC 2012 - mrueckert@suse.de
+
+- update to version 1.6.7
+  see /usr/lib*/ruby/gems/1.8/gems/cancan-1.6.7/CHANGELOG.rdoc
+
+-------------------------------------------------------------------
+Fri Jun 11 13:41:06 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.1.1
+  * Fixing behavior in Rails 3 by properly initializing
+    ResourceAuthorization
+- additional changes from version 1.1.0
+  * Supporting arrays, ranges, and nested hashes in ability
+    conditions
+  * Removing "unauthorized!" method in favor of "authorize!" in
+    controllers
+  * Adding action, subject and default_message abilities to
+    AccessDenied exception - see issue #40
+  * Adding caching to current_ability controller method, if you're
+    overriding this be sure to add caching too.
+  * Adding "accessible_by" method to Active Record for fetching
+    records matching a specific ability
+  * Adding conditions behavior to Ability#can and fetch with
+    Ability#conditions - see issue #53
+  * Renaming :class option to :resource for
+    load_and_authorize_resource which now supports a symbol for non
+    models - see issue #45
+  * Properly handle Admin::AbilitiesController in
+    params[:controller] - see issue #46
+  * Adding be_able_to RSpec matcher (thanks dchelimsky), requires
+    Ruby 1.8.7 or higher - see issue #54
+  * Support additional arguments to can? which get passed to the
+    block - see issue #48
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Wed Jan  6 19:44:35 CET 2010 - prusnak@suse.cz
+
+- updated to 1.0.2
+
+-------------------------------------------------------------------
+Wed Dec 16 01:07:44 UTC 2009 - mrueckert@suse.de
+
+- initial package of version 1.0.0
+

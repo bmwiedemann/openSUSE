@@ -1,0 +1,19 @@
+/var/log/net-snmpd.log {
+   compress
+   dateext
+   maxage 365
+   rotate 99
+   size=+1024k
+   notifempty
+   missingok
+   create 600 root root
+   su root root
+   sharedscripts
+   postrotate
+       /etc/init.d/snmpd reload ||:
+       if [ -x /etc/init.d/snmptrapd ] ; then \
+          /etc/init.d/snmptrapd reload ||: ; \
+       fi
+   endscript
+
+}

@@ -1,0 +1,285 @@
+-------------------------------------------------------------------
+Sun Apr 27 16:14:56 UTC 2014 - crrodriguez@opensuse.org
+
+- fix build with no SSLv2, caused by package using 
+  bundled neon library, update supporting patch 
+  (sitecopy-support-neon-0.29.diff)
+-------------------------------------------------------------------
+Mon Sep  6 12:34:53 UTC 2010 - coolo@novell.com
+
+- take support for new neon function from cadaver
+
+-------------------------------------------------------------------
+Tue Aug  5 08:50:00 CEST 2008 - olh@suse.de
+
+- update to version 0.16.6
+  DAV: Fix crash with progress bar enabled with neon 0.27/0.28.
+  DAV: Fix SSL cert caching to avoid repeated prompts.
+  Update to neon 0.28.3 and support neon 0.24.x through 0.28.x.
+
+-------------------------------------------------------------------
+Fri Jan  4 14:03:21 CET 2008 - olh@suse.de
+
+- do not use built-in neon
+
+-------------------------------------------------------------------
+Wed Aug  8 18:58:27 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Jul 20 10:43:39 CEST 2006 - olh@suse.de
+
+- update to version 0.16.3
+  DAV: Add PKCS#12 client cert support; "client-cert /path/to/cert.p12"
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan  1 13:44:43 CET 2006 - olh@suse.de
+
+- update to version 0.16.2
+
+-------------------------------------------------------------------
+Wed Sep 28 21:44:01 CEST 2005 - olh@suse.de
+
+- update to version 0.16.1
+
+-------------------------------------------------------------------
+Sat Aug 27 16:42:48 CEST 2005 - olh@suse.de
+
+- update to version 0.16.0 (#113504)
+
+-------------------------------------------------------------------
+Sat May 21 20:17:18 CEST 2005 - olh@suse.de
+
+- update to version 0.15.1
+
+-------------------------------------------------------------------
+Thu Jan  6 18:13:37 CET 2005 - olh@suse.de
+
+- update to version 0.14.3, drop xsitecopy
+
+-------------------------------------------------------------------
+Wed Nov 10 17:49:34 CET 2004 - ro@suse.de
+
+- reduced neededforbuild
+
+-------------------------------------------------------------------
+Thu Apr 29 01:35:22 CEST 2004 - ro@suse.de
+
+- changed return type to "void" for druid_back
+
+-------------------------------------------------------------------
+Thu Nov  6 16:14:53 CET 2003 - schwab@suse.de
+
+- Fix quoting in configure script.
+
+-------------------------------------------------------------------
+Sat Aug 16 09:34:27 CEST 2003 - adrian@suse.de
+
+- fix last change
+
+-------------------------------------------------------------------
+Fri Aug 15 14:39:39 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Thu Jul  3 18:08:12 CEST 2003 - ro@suse.de
+
+- /opt/gnome/share/aclocal is gone 
+
+-------------------------------------------------------------------
+Tue Jun  3 08:21:30 CEST 2003 - olh@suse.de
+
+- workaround broken rpm4
+
+-------------------------------------------------------------------
+Mon Jan 20 15:47:50 CET 2003 - olh@suse.de
+
+- add sitecopy-0.11.4.mkdir.diff (#12545)
+  simplify specfile
+
+-------------------------------------------------------------------
+Fri Sep 27 14:35:00 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Tue Apr  9 01:53:49 CEST 2002 - ro@suse.de
+
+- copy conditionals to main path of configure(.in) 
+- change some LIBOBJS usages to AC_LIBOBJ
+
+-------------------------------------------------------------------
+Fri Mar 15 10:51:25 CET 2002 - olh@suse.de
+
+- add /opt/gnome/share/xsitecopy to file list
+
+-------------------------------------------------------------------
+Tue Jan 22 16:46:59 CET 2002 - olh@suse.de
+
+- update to 0.11.4
+
+-------------------------------------------------------------------
+Tue Jan 22 15:27:57 CET 2002 - olh@suse.de
+
+- rename xsitecpy to xsitecopy, fix compile with gnome1
+
+-------------------------------------------------------------------
+Thu Jan 10 19:44:19 CET 2002 - olh@suse.de
+
+- update to 0.11.3
+
+-------------------------------------------------------------------
+Sun Jan  6 22:49:59 CET 2002 - olh@suse.de
+
+-update to 0.11.2 
+
+-------------------------------------------------------------------
+Wed Jul 11 18:44:59 CEST 2001 - olh@suse.de
+
+- enable openssl support
+
+-------------------------------------------------------------------
+Wed Jul 11 18:05:21 CEST 2001 - olh@suse.de
+
+- gcc30 compile fixes
+
+-------------------------------------------------------------------
+Tue Mar 13 15:26:16 CET 2001 - ro@suse.de
+
+- added xf86 to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Mar  1 18:52:14 MET 2001 - egger@suse.de
+
+- Updated to version 0.10.15 
+
+-------------------------------------------------------------------
+Sun Feb 25 18:28:47 MET 2001 - egger@suse.de
+
+- Remove unnecessary dependencies from #neededforbuild,
+  especially imlib-config. 
+
+-------------------------------------------------------------------
+Tue Jan 30 23:35:01 CET 2001 - ro@suse.de
+
+- changed neededforbuild <imlibcfe> to <imlib-config>
+
+-------------------------------------------------------------------
+Tue Dec 12 19:04:15 CET 2000 - olh@suse.de
+
+- update to 0.10.9
+
+-------------------------------------------------------------------
+Wed Nov 22 22:48:54 CET 2000 - olh@suse.de
+
+- update to 0.10.7
+
+-------------------------------------------------------------------
+Tue Nov  7 18:09:12 CET 2000 - kukuk@suse.de
+
+- Add esound-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Sun Sep 17 18:18:45 CEST 2000 - olh@suse.de
+
+- update to 0.10.6, fix gnome header path
+
+-------------------------------------------------------------------
+Tue Sep 12 00:23:51 CEST 2000 - olh@suse.de
+
+-  add libgladd to neededforbuild
+
+-------------------------------------------------------------------
+Sun Sep 10 22:45:33 CEST 2000 - olh@suse.de
+
+- fix specfile
+
+-------------------------------------------------------------------
+Tue Sep  5 00:23:32 MEST 2000 - egger@suse.de
+
+- Update to 0.10.4.
+
+-------------------------------------------------------------------
+Sun Mar 12 23:00:43 CET 2000 - olh@suse.de
+
+- update to 0.9.8
+
+-------------------------------------------------------------------
+Wed Mar  8 12:30:54 CET 2000 - olh@suse.de
+
+- update to 0.9.7
+
+-------------------------------------------------------------------
+Tue Mar  7 23:52:55 CET 2000 - olh@suse.de
+
+- update to 0.9.6, use locale
+
+-------------------------------------------------------------------
+Thu Mar  2 13:51:35 CET 2000 - olh@suse.de
+
+- update to 0.9.5
+
+-------------------------------------------------------------------
+Fri Feb  4 23:22:43 CET 2000 - olh@suse.de
+
+- update to 0.9.4
+
+-------------------------------------------------------------------
+Wed Jan 26 23:24:35 CET 2000 - olh@suse.de
+
+- update to 0.9.3
+  /usr/man -> /usr/share/man
+  check for compile errors on axp,i386,ppc
+
+-------------------------------------------------------------------
+Thu Dec  9 22:28:46 CET 1999 - olh@suse.de
+
+- added expat to # neededforbuild
+
+-------------------------------------------------------------------
+Tue Dec  7 21:03:47 CET 1999 - olh@suse.de
+
+- remove expat from package
+
+-------------------------------------------------------------------
+Mon Oct 25 21:32:02 CEST 1999 - olh@suse.de
+
+- update to 0.8.4
+
+-------------------------------------------------------------------
+Sun Oct 24 01:54:17 CEST 1999 - olh@suse.de
+
+- fixed dump specfile, add more docs
+- check for build on i386, axp, ppc
+- added libexpat, a XML parser in C
+
+-------------------------------------------------------------------
+Fri Oct 22 23:28:55 CEST 1999 - olh@suse.de
+
+- fixed installdir for sitecopy 
+
+-------------------------------------------------------------------
+Fri Oct 22 19:34:20 CEST 1999 - olh@suse.de
+
+- update to 0.8.3
+
+-------------------------------------------------------------------
+Tue Sep 21 11:24:06 CEST 1999 - olh@suse.de
+
+- add sitecopy package to SuSE distribution
+

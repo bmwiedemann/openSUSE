@@ -1,0 +1,26 @@
+Index: a52dec-0.7.5+svn613/liba52/cpu_accel.c
+===================================================================
+--- a52dec-0.7.5+svn613.orig/liba52/cpu_accel.c
++++ a52dec-0.7.5+svn613/liba52/cpu_accel.c
+@@ -162,7 +162,7 @@ static uint32_t arch_accel (uint32_t acc
+ 
+ 	canjump = 1;
+ 
+-#ifdef HAVE_ALTIVEC_H	/* gnu */
++#if 1 /* def HAVE_ALTIVEC_H */	/* gnu */
+ #define VAND(a,b,c) "vand " #a "," #b "," #c "\n\t"
+ #else			/* apple */
+ #define VAND(a,b,c) "vand v" #a ",v" #b ",v" #c "\n\t"
+Index: a52dec-0.7.5+svn613/liba52/cpu_state.c
+===================================================================
+--- a52dec-0.7.5+svn613.orig/liba52/cpu_state.c
++++ a52dec-0.7.5+svn613/liba52/cpu_state.c
+@@ -44,7 +44,7 @@ static void state_restore_mmx (cpu_state
+ #endif
+ 
+ #ifdef ARCH_PPC
+-#ifdef HAVE_ALTIVEC_H	/* gnu */
++#if 1 /* def HAVE_ALTIVEC_H */	/* gnu */
+ #define LI(a,b) "li " #a "," #b "\n\t"
+ #define STVX0(a,b,c) "stvx " #a ",0," #c "\n\t"
+ #define STVX(a,b,c) "stvx " #a "," #b "," #c "\n\t"

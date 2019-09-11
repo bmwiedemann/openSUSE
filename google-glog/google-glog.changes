@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Sun Jun  4 04:25:12 UTC 2017 - plinnell@opensuse.org
+
+- Update to 0.3.5
+
+
+    -CHECK_NOTNULL works with smart pointers when compiled in C++11
+    -Add __declspec(noreturn) on Win
+    -DCHECK_ALWAYS_ON to make D* enabled under NDEBUG
+    -MinGW: avoid the error "conflicting declaration 'typedef DWORD pthread_t'" etc.
+    -NULL sinks_ after deletion to prevent dangling pointer
+    -Symbolize: Calculate a module's zero VA using program headers
+    -Allow permission line in /proc/self/map to be "rwx"
+    -Add support for PowerPC
+    -Use namespace GFLAGS_NAMESPACE instead namespace gflags. #62
+    - Win: use _fdopen instead of fdopen. Fix #73
+    -Win: FAILED macro can't be used with HANDLE. Fix #79
+    -Avoid calling new/malloc in signalhandler to fix #78
+    -Reset SIGABRT action only if FailureSignalHandler is installed
+    -Fix missing public include directory
+    -Fix double-free in unit test on Windows
+    -Add logfile_mode to control logfile permissions to fix #23
+    -Fix mocklog unused arguments
+    -Fix redefinition of _XOPEN_SOURCE
+    -Don't call RAW_VLOG with locking vmodule_lock to fix #29
+    -Add CMake support. closes #4
+    -Fix #8 AddLogSink memory leak
+    -Add #ifndefs to avoid collision with other google opensource projects
+    -LOG_STRING: use std::vector and std::string
+    -Adds color output support for tmux terminals
+    -Fix x64/Debug build on MSVS
+
+
+
+
+- Changes from 0.3.4
+
+   - repository moved from code.google.com/p/google-glog to github.com/google/glog
+   - fixes for latest MSVS
+   - add libc++ support
+   - fix build issue in demangle.cc
+   - add callback for OpenObjectFileContainingPcAndGetStartAddress
+   - add StrError and replace posix_strerror_r call
+   - fix VC build by adding GOOGLE_GLOG_DLL_DECL
+   - style fix for C++11
+   - reduce dynamic allocation from 3 to 1 per log message
+   - attempt to improve mingw-w64 support
+   - support unordered_(map|set) by stl_logging
+
+
+-------------------------------------------------------------------
+Wed Mar 16 08:14:42 UTC 2016 - mpluskal@suse.com
+
+- Install documentation in default location with correct 
+  permissions
+- Use macro for configure
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 29 20:01:48 UTC 2016 - qzhao@suse.com
+
+- Make sure source code's COPYING file install by default.
+
+-------------------------------------------------------------------
+Sat Jun 29 18:05:14 UTC 2013 - i@marguerite.su
+
+- update version 0.3.3
+  * Add --disable-rtti option for configure.
+  * Visual Studio build and test fix.
+  * QNX build fix (thanks vanuan).
+  * Reduce warnings.
+  * Fixed LOG_SYSRESULT (thanks ukai).
+  * FreeBSD build fix (thanks yyanagisawa).
+  * Clang build fix.
+  * Now users can re-initialize glog after ShutdownGoogleLogging.
+  * Color output support by GLOG_colorlogtostderr (thanks alexs).
+  * Now glog's ABI around flags are compatible with gflags.
+  * Document mentions how to modify flags from user programs. 
+
+-------------------------------------------------------------------
+Thu Oct 11 15:15:53 UTC 2012 - i@marguerite.su
+
+- initial version 0.3.2
+  * Clang support.
+  * Demangler and stacktrace improvement for newer GCCs.
+  * Now fork(2) doesn't mess up log files.
+  * Make valgrind happier.
+  * Reduce warnings for more -W options.
+  * Provide a workaround for ERROR defined by windows.h.
+ 
+

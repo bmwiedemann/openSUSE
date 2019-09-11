@@ -1,0 +1,543 @@
+-------------------------------------------------------------------
+Mon Oct  1 18:09:27 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- replaced libopenssl-devel with libopenssl-1_1-devel
+
+-------------------------------------------------------------------
+Tue Mar 20 08:41:59 UTC 2018 - adam.majer@suse.de
+
+- Install license
+- replace_manpage_with_links.sh: replace named links with symlinks
+  and stop using fdupes as it just linked linked manpages
+
+-------------------------------------------------------------------
+Mon Mar 19 13:46:17 UTC 2018 - marco.strigl@suse.com
+
+- fixed flaky timeout tests for ppc64le (bsc#1085850)
+    * fix_timeout_tests_for_ppc64le.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 14:30:00 UTC 2017 - vcizek@suse.com
+
+- Update to 0.30.2
+  Add support for OpenSSL 1.1.x (Kurt Roeckx).
+  Fix PKCS#11 support under GnuTLS 3.x.
+      PKCS#11 API no longer supported with GnuTLS 2.x
+- cleaned the .spec
+
+-------------------------------------------------------------------
+Wed Mar  4 12:50:17 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Enable tests
+- Use fdupes to remove duplicates
+- Update to 0.30.1
+  * small changes, for details see included ChangeLog
+
+-------------------------------------------------------------------
+Wed Aug 21 03:19:07 UTC 2013 - crrodriguez@opensuse.org
+
+- version 0.30.0 
+* drop neon-openssl-version.patch
+*  API and ABI backwards-compatible with 0.27.x and later
+*  ne_path_escape: fix excessive memory allocation
+*  added  ne_ssl_clicert_import, ne_ssl_context_get_flag, 
+  ne_set_addrlist2, added ne_addr_canonical..
+* support chunked bodies with negative length passed to 
+  ne_set_request_body_provider
+
+-------------------------------------------------------------------
+Wed Aug 21 00:34:06 UTC 2013 - crrodriguez@opensuse.org
+
+- permanently drop neon-aes-ni.patch which is not applied
+  and obsolete, bug in openSSL already fixed and the ENGINE
+  loading issue addressed in a different fashion.
+
+-------------------------------------------------------------------
+Wed Jun  6 13:45:57 CEST 2012 - meissner@suse.de
+
+- disable explicit openssl version check. openssl 1.0 is stable
+  api wise. [bnc#764906]
+
+-------------------------------------------------------------------
+Fri May  4 11:31:00 UTC 2012 - lnussel@suse.de
+
+- don't  use ca-bundle.pem. neon correctly uses openssl's default
+  instead (ie the /etc/ssl/certs directory)
+
+-------------------------------------------------------------------
+Mon Jan 30 11:54:59 UTC 2012 - dmacvicar@suse.de
+
+- build with libproxy
+- make expat explicit in configure
+- pass ca-bundle.pem to configure
+
+-------------------------------------------------------------------
+Mon Jan 30 11:35:31 UTC 2012 - dmacvicar@suse.de
+
+- build with NE_FEATURE_TS_SSL (thread-safe SSL)
+
+-------------------------------------------------------------------
+Mon Nov 21 15:53:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Nov 20 06:26:23 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 18 16:38:07 CEST 2011 - dmueller@suse.de
+
+- remove neon-aes-ni.patch temporarily (bnc#720601)
+
+-------------------------------------------------------------------
+Mon Sep  5 23:13:56 UTC 2011 - crrodriguez@opensuse.org
+
+- test suite hangs or fails in the OBS, but works locally 
+  disable it.
+
+-------------------------------------------------------------------
+Mon Sep  5 19:48:00 UTC 2011 - crrodriguez@opensuse.org
+
+- Load openssl engines as well, needed to support 
+  AES-NI, fast/hardware provided hash functions and Ivy bridge's
+  RDRAND instruction.
+
+-------------------------------------------------------------------
+Thu Jul 21 14:23:23 CEST 2011 - dmueller@suse.de
+
+- update to 0.29.6:
+  * Don't abort SSL handshake with GnuTLS if a client cert is
+  requested but none is configured/available
+  * Fix GnuTLS build with Nettle
+  * Fix the method string passed to create_request hooks to
+  have the same lifetime as the request object
+  * Docs updates.
+  * Fix GnuTLS handshakes failures with 'TLS warning alert'
+  * Fix SNI support
+  * Fix possible Solaris linker errors if building static library
+  * Fix error handling when pulling a request body from an file
+  * Fix ne_request_dispatch() return value for SOCKS proxy failure cases
+  * Tighten SSL cert ID checks to deny a wildcard match against an IP address
+
+-------------------------------------------------------------------
+Thu May 12 11:14:48 UTC 2011 - lnussel@suse.de
+
+- Obsoletes: neon must be in the lib package. Otherwise
+  libneon-devel gets installed as replacement for neon on distro
+  upgrade, drawing in lots of other devel stuff.
+
+-------------------------------------------------------------------
+Sun Aug 22 13:34:21 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.29.3
+  + Change ne_sock_close() to no longer wait for SSL closure alert
+  + Fix memory leak with GnuTLS
+  + API clarification in ne_sock_close()
+- Changes from version 0.29.2:
+  + Fix spurious 'certificate verify failed' errors with OpenSSL
+  + Fix unnecessary re-authentication with SSPI
+- Changes from version 0.29.1:
+  + Fixes for (Unix) NTLM implementation:
+    - fix handling of session timeout
+    - fix possible crash
+  + Build fixes for Win32:
+  + Fix build with versions of GnuTLS older than 2.8.0.
+- Changes from version 0.29.0:
+  + New interfaces and features:
+   - added NTLM auth support for Unix builds
+   - ne_auth.h: added NE_AUTH_GSSAPI and NE_AUTH_NTLM auth protocol
+     codes
+   - added ne_acl3744.h, updated WebDAV ACL support
+   - added built-in SOCKS v4/v4a/v5 support:
+     ne_socket.h:ne_sock_proxy(), and
+     ne_session.h:ne_session_socks_proxy()
+   - added support for system-default proxies:
+     ne_session_system_proxy(), implemented using libproxy
+   - ne_session.h: added NE_SESSFLAG_EXPECT100 session flag, SSL
+     verification failure bits extended by NE_SSL_BADCHAIN and
+     NE_SSL_REVOKED, better handling of failures within the cert
+     chain
+   - ne_utils.h: added feature code NE_FEATURE_SYSPROXY
+   - ne_socket.h: ne_sock_writev(), ne_sock_set_error(),
+     ne_iaddr_raw(), ne_iaddr_parse()
+   - ne_string.h: ne_buffer_qappend(), ne_strnqdup()
+- Changes from version 0.28.6:
+  + SECURITY (CVE-2009-2473): Fix "billion laughs" attack against
+    expat;
+  + SECURITY (CVE-2009-2474): Fix handling of an embedded NUL byte
+    in a certificate subject name with OpenSSL;
++ Changes from version 0.28.5:
+  + Enable support for X.509v1 CA certificates in GnuTLS.
+  + Fix handling of EINTR in connect() calls.
+  + Fix use of builds with SOCK_CLOEXEC support on older Linux
+    kernels.
+- Add libproxy-devel BuildRequires
+- Clean spec file using spec-cleaner.
+- Drop upstream included patches:
+  + neon-0.28.4-CVE-2009-2473,2474.patch
+  + neon-openssl.patch
+- Drop the main package. It avoids the lib from being installed in
+  different versions and generally only contained coders doc.
+  => provide / obsolete neon by libneon-devel.
+
+-------------------------------------------------------------------
+Sun Apr 18 19:23:22 UTC 2010 - coolo@novell.com
+
+- take patch from upstream to fix openssl linkage
+
+-------------------------------------------------------------------
+Mon Feb  1 12:06:17 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Sep 10 17:07:03 CEST 2009 - prusnak@suse.cz
+
+- fixed CVE-2009-2473 and CVE-2009-2474 [bnc#528370]
+
+-------------------------------------------------------------------
+Thu May  7 13:47:31 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.28.4
+  * GnuTLS support fixes:
+    - fix handling of PKCS#12 client certs with multiple certs or keys
+    - fix crash with OpenPGP certificate
+    - use pkg-config data in configure, in preference to libgnutls-config
+  * Add PKCS#11 support for OpenSSL builds (where pakchois is available)
+  * Fix small memory leak in PKCS#11 code
+- enabled kerberos support (by adding krb5-devel to BuildRequires)
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Aug 21 10:50:11 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.28.3
+  * SECURITY (CVE-2008-3746): Fix potential NULL pointer dereference in
+    Digest domain parameter support; could allow a DoS by a malicious server
+  * Fix parsing of *-Authenticate response header with LWS after quoted value
+  * Fix ne_set_progress(, NULL, ) to match pre-0.27 behaviour (and not crash)
+  * Fix to disable Nagle on Win32 with newer toolchain (thanks to Stefan Küng)
+  * Fix build on Netware (Guenter Knauf)
+  * Document existing ne_uri_parse() API postcondition and ne_uri_resolve()
+    pre/postconditions regarding the ->path field in ne_uri structures
+  * Mark ne_{,buffer_}concat with sentinel attribute for GCC >= 4.
+  * Distinguish the error message for an SSL handshake which fails after a
+   client cert was requested.
+  * Compile with PIC flags by default even for static library builds
+
+-------------------------------------------------------------------
+Tue Jun  3 13:31:44 CEST 2008 - coolo@suse.de
+
+- require COPYING package
+
+-------------------------------------------------------------------
+Sun May 18 10:42:07 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 17:54:47 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.28.2
+  * Support "Proxy-Connection: Keep-Alive" for compatibility with HTTP/1.0
+    proxies which require persistent connections for NTLM authentication
+  * Fix an fd leak in ne_ssl_{,cli}cert_read (GnuTLS only)
+  * Enable fast initialization in GnuTLS.
+  (changes from 0.28.1)
+  * Fix build on SCO OpenServer 5.0.x (thanks to Nico Kadel-Garcia)
+  * Fix handling of Digest domain parameter values without a trailing slash
+  * Fix build against apr-util's bundled libexpat.la in Subversion
+  * Add --without-pakchois to configure (Arfrever Frehtes Taifersar Arahesis)
+  * zh message catalog renamed to zh_CN, translation updated (Dongsheng Song)
+
+- disable make check, does not build on all archs
+
+- dropped patch:
+  * digest.patch (included in update)
+
+-------------------------------------------------------------------
+Mon Mar  3 11:26:50 CET 2008 - olh@suse.de
+
+- fix bug in digest domain parameter handling to fix svn commit
+
+-------------------------------------------------------------------
+Thu Feb 28 22:06:13 CET 2008 - crrodriguez@suse.de
+
+- run the test suite to detect any possible regression 
+
+-------------------------------------------------------------------
+Fri Feb 15 01:47:53 CET 2008 - crrodriguez@suse.de
+
+- version 0.28.0
+- Interface changes:
+	* none, API and ABI backwards-compatible with 0.27.x 
+- New interfaces:
+	* ne_pkcs11.h: added basic PKCS#11 support (requires GnuTLS and pakchois)
+	* ne_auth.h: added NE_AUTH_ALL and NE_AUTH_DEFAULT constants
+    * ne_socket.h: added ne_sock_peer(), ne_sock_prebind(), ne_sock_cipher()
+    * ne_session.h: NE_SESSFLAG_TLSSNI flag added; TLS SNI support is enabled by default, where supported; ne_set_localaddr() added
+    * ne_request.h: added close_conn hooks (Robert J. van der Boon)
+    * ne_basic.h: added ne_options2() 
+- Other changes:
+	* add Polish (pl) translation (Arfrever Frehtes Taifersar Arahesis)
+	* add support for the 'domain' parameter in Digest authentication
+ 	* fix fd leak in ne_sock_connect() error path (Andrew Teirney)
+	* the FD_CLOEXEC flag is set on socket fds
+    * fix timezone handling in ne_dates for more platforms (Alessandro Vesely)
+    * fix ne_simple_propfind() to print XML namespaces in flat property values
+    * fix ne_get_range() for unspecified end-range case (Henrik Holst)
+    * fix ne_strclean() to be locale-independent and avoid possible Win32 crash
+    * fix ne_get_error() to not "clean" localized error strings
+    * fix ne_ssl_clicert_read() to fail for client certs missing cert or key
+ 
+
+-------------------------------------------------------------------
+Mon Nov 26 15:52:13 CET 2007 - crrodriguez@suse.de
+
+- version 0.27.2
+ * Fix crash in GSSAPI Negotiate response header verification.
+- Cleanup excessive dependencies on -devel package. 
+
+-------------------------------------------------------------------
+Fri Oct 12 00:34:55 CEST 2007 - ro@suse.de
+
+- add provides/obsoletes for neon-devel in libneon-devel
+  after package rename 
+
+-------------------------------------------------------------------
+Tue Sep 25 11:52:53 CEST 2007 - prusnak@suse.cz
+
+- update do 0.27.1
+  * New interfaces:
+   - ne_session.h: ne_fill_proxy_uri() retrieves configured proxy,
+     ne_hook_post_headers() adds a hook after response headers are read,
+     ne_set_connect_timeout() sets session connection timeout,
+     NE_SESSFLAG_RFC4918, NE_SESSFLAG_CONNAUTH flags added
+   - ne_socket.h: ne_sock_connect_timeout() sets connection timeout,
+     ne_iaddr_reverse() performs reverse DNS lookup
+   - ne_string.h: ne_buffer_snprintf() prints to a buffer object
+   - ne_xml.h: ne_xml_resolve_nspace() resolves namespace prefixes
+  * Interface changes:
+   - ne_set_notifier() replaces ne_set_status(); finer-grained and type-safe
+     connection status information now provided; obsoletes ne_set_progress()
+   - ne_xml_dispatch_request() now only invokes the XML parser for 
+     response entities with an XML content-type, following RFC 3023 rules
+   - ne_acl_set() now takes a "const" entries array
+   - LFS compatibility functions *64 removed: all functions taking an
+     off_t now take an ne_off_t which is off64_t for LFS builds
+  * GnuTLS support now mostly feature-complete with OpenSSL support:
+   - greatly improved SSL distinguished name handling with GnuTLS >= 1.7.8
+  * Other changes:
+   - descriptive error messages for authentication failures
+   - SSPI support uses canonical DNS server name (Yves Martin)
+   - fixes for handling of "stale" parameter in Digest authentication
+   - added support for URIs in SSL server certificate subjectAltName field
+   - fix compiler warnings with expat 2.x
+   - fix handling of "Transfer-Encoding: identity" responses from privoxy
+  * Fix regression in response progress counter for notifier/progress callbacks
+  * Fix interface description for ne_set_notifier() callback; sr.total
+    is set to -1 not 0 for an indeterminate response length
+
+-------------------------------------------------------------------
+Tue Jul 17 10:43:17 CEST 2007 - prusnak@suse.cz
+
+- update to 0.26.4
+  * Fix Negotiate Authentication-Info response header verification with GSSAPI
+  * Fix multiple handlers with ne_add_{server,proxy}_auth (Werner Baumann)
+  * Fix SSPI build with some versions of MinGW (Gisle Vanem)
+  * Fix for SSPI segfault in response header verification (Mike DiCuccio)
+  * Fix error strings for CONNECT SSL proxy tunnel request failure
+  * Fix install-nls for VPATH builds (Hans Meine)
+  * Fix use of unencrypted client certs with GnuTLS
+  * Fix ne_lock* If: header insertion to use CRLF-terminated headers
+  * Fix test suite failures on QNX by working around send() length limit
+  * Fix handling of POSIX strerror_r failure case in ne_strerror
+  * Fix alignment issues in test suite MD5 code
+
+-------------------------------------------------------------------
+Fri Apr 27 23:14:39 CEST 2007 - dmueller@suse.de
+
+- fix buildrequires 
+
+-------------------------------------------------------------------
+Tue Apr 17 19:00:40 CEST 2007 - prusnak@suse.cz
+
+- updated spec file to reflect expat package split
+
+-------------------------------------------------------------------
+Sat Mar 31 18:41:15 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 24 13:56:36 CET 2007 - prusnak@suse.cz
+
+- update to 0.26.3
+  * build fix for platforms without libintl.h
+  * use Libs.private in neon.pc for newer versions of pkg-config
+  * fix error reported for LOCK responses lacking a Lock-Token header
+  * security fix CVE-2007-0157: fix buffer under-read in URI parser
+  * fix handling of "nextnonce" parameter in Digest authentication
+- drop obsoleted patch from Jan 15 (included in update)
+
+-------------------------------------------------------------------
+Mon Jan 15 14:53:06 CET 2007 - olh@suse.de
+
+- do not cast char pointers into int pointers (CVE-2007-0157 / #235083)
+
+-------------------------------------------------------------------
+Thu Jul 20 20:30:40 CEST 2006 - olh@suse.de
+
+- update to 0.26.1
+  new API
+- neon-devel requires openssl-devel zlib-devel expat
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun 29 21:27:13 CEST 2005 - olh@suse.de
+
+- build with expat instead of libxml2, should speed up svn checkout
+  of large files (#94606)
+
+-------------------------------------------------------------------
+Wed Feb  2 16:32:10 CET 2005 - meissner@suse.de
+
+- fix build with gcc4, added 2 sentinel mark ups.
+
+-------------------------------------------------------------------
+Sun Oct 17 11:50:41 CEST 2004 - olh@suse.de
+
+- remove .so link from main package, its already in -devel
+
+-------------------------------------------------------------------
+Sat Sep 25 11:35:07 CEST 2004 - olh@suse.de
+
+- update for gcc4, -Wimplicit-prototypes and inline
+
+-------------------------------------------------------------------
+Tue Jul  6 08:20:45 CEST 2004 - olh@suse.de
+
+- update to 0.24.7
+
+-------------------------------------------------------------------
+Sun May  9 17:39:21 CEST 2004 - olh@suse.de
+
+- add neon-CAN-2004-0398.patch (#39774)
+
+-------------------------------------------------------------------
+Thu Apr  1 13:18:41 CEST 2004 - olh@suse.de
+
+- add CAN-2004-0179.diff (#37716)
+
+-------------------------------------------------------------------
+Thu Jan 22 18:41:36 CET 2004 - olh@suse.de
+
+- update for gcc3.4, -Wimplicit-prototypes and inline
+
+-------------------------------------------------------------------
+Sat Jan 10 19:16:34 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Nov 28 13:12:25 CET 2003 - mcihar@suse.cz
+
+- updated to 0.24.4, some highlights:
+    * Major changes to XML interface
+    * Major changes to SSL interface
+    * Add a pkg-config file
+    * Tons of fixes
+
+-------------------------------------------------------------------
+Wed Apr 23 23:37:16 CEST 2003 - olh@suse.de
+
+- update to 0.23.9
+  Changes in release 0.23.9:
+  * neon-config exports includes needed for OpenSSL given by
+    pkg-config.
+  * ne_redirect_location will return NULL if redirect hooks have
+    not been registered for the session (Ralf Mattes <rm@fabula.de>).
+  Changes in release 0.23.8:
+  * On Linux, skip slow lookup for IPv6 addresses when IPv6 support
+    is not loaded in kernel (thanks to Daniel Stenberg for this
+    technique).
+  * Update to autoconf 2.57 and libtool 1.4.3.
+
+-------------------------------------------------------------------
+Sat Mar  1 09:37:43 CET 2003 - olh@suse.de
+
+- apply security fix from 0.23.8
+  * SECURITY: Prevent control characters from being included in the
+    reason_phrase field filled in by ne_parse_statusline(), and in
+    the session error string.
+  * Fix digest auth response verification for >9 responses in session
+    (bug manifests as "Server was not authenticated correctly" error).
+
+-------------------------------------------------------------------
+Tue Jan 28 10:20:13 CET 2003 - olh@suse.de
+
+- update to 0.23.7
+  Changes in release 0.23.7:
+  * Fix for handling EINTR during write() call (Sergey N Ushakov).
+  * When available, use pkg-config to determine compiler flags
+    needed to use OpenSSL headers and libraries.
+
+-------------------------------------------------------------------
+Tue Jan 21 12:55:54 CET 2003 - olh@suse.de
+
+- update to 0.23.6
+
+-------------------------------------------------------------------
+Sat Oct 12 13:18:20 CEST 2002 - olh@suse.de
+
+- update to 0.23.5
+  move interface documentation to -devel
+
+-------------------------------------------------------------------
+Thu Sep 19 13:47:05 CEST 2002 - olh@suse.de
+
+- update to 0.23.4, enable build with -g
+
+-------------------------------------------------------------------
+Sat Aug 31 13:01:58 CEST 2002 - poeml@suse.de
+
+- update to 0.22.0, needed by subversion
+
+-------------------------------------------------------------------
+Fri Aug  9 19:27:15 CEST 2002 - olh@suse.de
+
+- devel requires base package
+
+-------------------------------------------------------------------
+Fri Jul 26 23:18:22 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Sun Jun 23 16:15:37 CEST 2002 - olh@suse.de
+
+- update to 0.21.3
+
+-------------------------------------------------------------------
+Sat May  4 12:57:56 CEST 2002 - olh@suse.de
+
+- initial SuSE package, version 0.20.0
+

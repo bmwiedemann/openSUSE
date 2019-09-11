@@ -1,0 +1,1145 @@
+-------------------------------------------------------------------
+Mon Aug 12 09:32:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update Fix-build-with-Qt-5_13.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 11:06:32 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.0.5
+- Bugs fixed:
+  * Tag not shown in ledger if only an category is set (kde#352029)
+  * Budgeted vs. Actual report: Budgeted values broken if ticks
+    selected to Bi-Monthly, Quarterly or Yearly (kde#393752)
+  * Can't edit loan account with institution of "Accounts with no
+    institution assigned" (kde#402672)
+  * OFX import targets the wrong account (kde#405206)
+  * Show hidden accounts (kde#407021)
+  * Invalid online statement balance shown (kde#407422)
+  * 21st June 2019 shows as non-processing day when holiday
+    calendar is configured (kde#407800)
+  * KMyMoney crashes in LEAP15.1 (kde#407902, boo#1136300)
+  * Categories with different currencies, no more rate (kde#407982)
+  * Crash during CSV import (kde#408026)
+  * Merging payees results in error and data loss if payee is in
+    matched transaction (kde#408205)
+  * AqBanking File Import does not allow to select account
+    (kde#408494)
+  * Gnucash importer ignores the accounts currencies (kde#409098)
+  * Converted amount not entered into exchange rate editor
+    (kde#409428)
+- Enhancements:
+  * In Payees view, change "Default Account" tab to "Default
+    Category" (kde#409089)
+- Drop Fix-storage-of-schedules.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri May 10 06:40:57 UTC 2019 - wbauer@tmo.at
+
+- Add Fix-storage-of-schedules.patch to fix incompatibilites in how
+  schedules are saved compared to previous versions (kde#406082)
+
+-------------------------------------------------------------------
+Mon Apr 22 08:09:59 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.0.4. Bugs fixed in this release:
+  * (kde#368159) Report Transactions by Payee omits transactions lacking
+    category
+  * (kde#390681) OFX import and unrecognized <FITID> tag
+  * (kde#392305) Not all Asset accounts are shown during OFX import
+  * (kde#396225) When importing a ofx/qif file, it does not show me all my
+    accounts
+  * (kde#396978) Stable xml file output
+  * (kde#400761) Cannot open files on MacOS
+  * (kde#401397) kmymoney changes group permissions
+  * (kde#403745) in import dialog, newly-created account doesn’t appear in
+    pulldown menu
+  * (kde#403825) Transaction validity filter is reset when re-opening
+    configuration
+  * (kde#403826) Transactions without category assignment are not shown in
+    report
+  * (kde#403885) Buying / selling investments interest / fees round to 2 decimal
+    places even when currency is to 6 decimal places
+  * (kde#403886) No way to set/change investment start date in investment wizard
+  * (kde#403955) After an action, the cursor returns to top of page and does not
+    remain in a similar position to when action was started
+  * (kde#404156) Can’t select many columns as memo
+  * (kde#404848) Crash on “Enter Next Transcation”
+  * (kde#405061) No chart printing support
+  * (kde#405329) CPU loop reconciling if all transactions are cleared
+  * (kde#405817) CSV importer trailing lines are treated as absolute lines
+  * (kde#405828) Budget problems
+  * (kde#405928) Loss of inserted data in transaction planner
+  * (kde#406073) Change of forecast method is not reflected in forecast view
+  * (kde#406074) Unused setting “Forecast (history)” for home view
+  * (kde#406220) Crash when deleting more than 5000 transactions at once
+  * (kde#406509) “Find Transaction…” dialog focus is on “Help” button instead of
+    “Find”
+  * (kde#406525) Subtotals are not correctly aggregated when (sub-)categories
+    have the same name
+  * (kde#406537) Encrypted file cannot be saved as unencrypted
+  * (kde#406608) Custom report based on Annual Budget incorrectly getting
+    Actuals
+  * (kde#406714) Home view shows budget header twice
+  Check https://kmymoney.org/changelogs/ChangeLog-5.0.4.txt for the complete
+  list of changes.
+
+-------------------------------------------------------------------
+Mon Jan 28 11:38:12 UTC 2019 - wbauer@tmo.at
+
+- Update to version 5.0.3
+- Bugs fixed:
+  * Storing and loading customized information reports in XML is
+    totally broken (kde#403068)
+  * Transaction contains erroneous *** UNASSIGNED *** in Tags view
+    if no payee is given (kde#347685)
+  * Unable to remove Payee from transactions (kde#392684)
+  * 5.0 Version - Crashes when importing OFX/QFX File Using Firefox
+    (kde#396831)
+  * Closed accounts are removed from a historical report each time
+    the report is changed (kde#397467)
+  * Display schedule transactions with planned post date
+    (kde#398919)
+  * title of report is truncated in graph view (kde#399260)
+  * Error Attempting Backup to Samba share - Windows 10
+    (kde#400628)
+  * KMyMoney crashed when clicking on Forecast>Chart (kde#400820)
+  * Cumbersome opening of multiple reports (kde#401080)
+  * Price in exponential format is not interpreted correctly
+    (kde#401144)
+  * Windows build is broken - '_isinf': identifier not found
+    (kde#401448)
+  * Allow to reuse check numbers (kde#402101)
+  * "Pay to" field gets auto filled from previous transaction even
+    if cleared manually (kde#402120)
+  * CSV importer: Opposite signs option not read from banking
+    profile (kde#402195)
+  * EnterSchedule dialog too narrow (kde#402200)
+  * Saving confirmation asked even for unfilled operation
+    (kde#402302)
+  * Check/transaction number not imported via CSV plugin
+    (kde#402501)
+  * DB password doesn't apply while trying to save (kde#402534)
+  * Unable to save data to database in presence of online jobs
+    (kde#402547)
+  * in remove shares transaction field tab order sticks in number
+    of shares field (kde#402694)
+  * Unknown account id mymoneystoreagemgr.cpp:142 (kde#402699)
+  * Division by zero errors in investement reports (kde#402708)
+  * Rounding problems with stock split factor cause crashes and
+    errors (kde#402750)
+  * Transaction editor is not reset (kde#402783)
+  * Automatic category assignment does not respect tax assignment
+    (kde#402794)
+  * Initial state of "View/Show all accounts" is not correct
+    (kde#402814)
+  * The Interest pull down field missing when trying to enter
+    income transaction in Investment ledger (kde#403039)
+  * Cmake fails on Fedora 28 looking for LibAlkimia and Qt4 Core
+    and DBus (kde#403156)
+  * assigned TAG isn't shown up in scheduled transaction
+    configuration (kde#403529)
+  * Crash when importing qif (kde#403565)
+  * SaveAs defaults to "wrong" file path (kde#403608)
+  * The currency New Kwanza Angolano has been replaced (kde#403617)
+- Enhancements:
+  * Allow saving investment transaction without brokerage account
+    if net amount is zero (kde#398133)
+  * Add action to create new transaction from any view (kde#402316)
+ 
+-------------------------------------------------------------------
+Mon Nov  5 08:53:25 UTC 2018 - wbauer@tmo.at
+
+- Update to version 5.0.2
+  * List of bugs which have been fixed:
+    + when using the 'amount entry widget' in the ledger view, it
+      hangs off the screen (kde#283784)
+    + Update the documentation screenshots (kde#340244)
+    + Saving anonymous file loses relation between investment
+      accounts and brokerage accounts (kde#340902)
+    + investment account does not have key value pair for
+      lastImportedTransactionDate (kde#343878)
+    + User is asked to create a new category in splits table if
+      change is aborted (kde#344409)
+    + "Update Stock and Currency Prices" doesn't work when base
+      currency is South Korean Won(KRW) (kde#368190)
+    + investactivities.cpp: 8 * Redundant condition (kde#385180)
+    + Entering fees in Investment account (ie broker fee) doesn't
+      appear with transaction (kde#390750)
+    + Double free or corruption when creating a new asset account
+      (kde#391251)
+    + Missing 2 .h files in /usr/include/kmymoney (kde#392110)
+    + 5.0.1 is shown as 5.0.0 in splash screen and about dialog
+      (kde#392372)
+    + Home page Net Worth Forecast Not correct (kde#392407)
+    + Cannot create new investment (kde#392477)
+    + Reports Configure dialog uses a "Find" button instead of an
+      "Apply" button (kde#392519)
+    + OFX - Mapping Account - Last Update Change causing Update
+      Account greying - Online Settings disappears (kde#392603)
+    + Crash on viewing or trying to add data into any account
+      (kde#392735)
+    + [Patch] Fix working week in 5.x/master (kde#393168)
+    + Budgeted vs. Actual report: Budgeted values broken if ticks
+      selected to Bi-Monthly, Quarterly or Yearly (kde#393752)
+    + MySQL connection error with dbname "KMyMoney" (kde#394384)
+    + problems adding securities to investment accounts (kde#394394)
+    + csv writer generates invalid file in case field delimiter is
+      used in any field (kde#395025)
+    + CSV Export of Investment Accounts does not issue transactions
+      on non-English kmymoney installations (kde#395040)
+    + Last selected view (kde#395100)
+    + KMyMoney gitt head master, crash on opening any account
+      (kde#395291)
+    + Ledger Input: Category Field (kde#395459)
+    + QIF Export manually typing file path adds .qif after every
+      character (kde#395985)
+    + Cannot create new investment (kde#396174)
+    + Last digit of date field is obscured by "details column" in
+      ledger view (kde#396405)
+    + CSV: ordering of buttons when finishing wizard (kde#396759)
+    + Online Banking Behavior Change Since 4.8 (kde#396886)
+    + Payee "Suggest a category" does not work (kde#396987)
+    + Opening dates in "all dates" plot (kde#397020)
+    + Net worth does not appear (kde#397021)
+    + Default color of imported transaction in the ledger (kde#397023)
+    + Kmymoney version in help menu, splash screen and apt are
+      different (kde#397025)
+    + Net worth forecast graph in new file shows formatting problem
+      (kde#397436)
+    + double clicking in ledger activates edit, but does not select
+      transaction clicked on (kde#397457)
+    + cannot connect to kmysql database because of prepended slash
+      (kde#397675)
+    + Limit in number of securities (397824)
+    + écran d'accueil (kde#398168)
+    + Account information report crashes (kde#398394)
+    + KMyMoney does not prompt for password when connecting to
+      database (kde#398409)
+    + KMyMoney does not work properly when changing from one file to
+      another (kde#399244)
+    + "show balance chart" does not show 3 months forecast in the
+      future anymore (kde#399309)
+    + Unable to Update Prices (kde#399378)
+    + importer file selector does not show QIF files and does not
+      remember last import directory (kde#399673)
+  * New improvements:
+    + Online web source "KMyMoney Currency" does not support price
+      pairs without decimal (kde#396797)
+    + Speedup loading of home page
+    + KDE binary factory builds for MS-Windows installer
+    + Add color coding of pos/neg amounts for 'posted value' column
+    + Fix online credit transfer creation
+    + Some features have been moved to plugins so that they can be
+      turned off if unused
+    + Provide correct version information for all shared object files
+    + Improved handling of "Save as..." logic
+    + Allow to add a timezone offset for OFX import on account basis
+    + Moved GPG key handling to XML plugin
+    + Accounts can now take a URL for direct access of the online
+      banking web-site
+    + Support more than one online banking provider during update
+    + Added option to keep linebreaks in memo of AqBanking
+      transaction imports
+    + Remove reference to online balance when unmapping account
+    + Added feature to make DB password visible during input
+- Drop patches merged upstream:
+  * Fix-build-with-Qt-5.11.patch
+  * Delete-item-after-it-has-been-removed.patch
+  * Improve-deletion-of-unused-widgets-in-transaction-editor.patch
+- Build with QtWebEngine instead of QtWebKit where possible
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul 12 14:47:48 UTC 2018 - wbauer@tmo.at
+
+- Add upstream patches to fix a crash when creating or editing a
+  transaction (boo#1100025, kde#392735):
+  * Delete-item-after-it-has-been-removed.patch
+  * Improve-deletion-of-unused-widgets-in-transaction-editor.patch
+
+-------------------------------------------------------------------
+Sun May 27 03:40:02 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-build-with-Qt-5.11.patch to fix build with Qt 5.11
+- Update build requirements versions, it needs Qt 5.6.0 meanwhile
+- Remove libkmm_csvimportercore.so and libkmm_icons.so from main
+  package's filelist, they are supposed to be in the devel
+  subpackage only
+
+-------------------------------------------------------------------
+Mon Mar 19 16:40:16 UTC 2018 - wbauer@tmo.at
+
+- Update to version 5.0.1
+  * Improvements:
+    + Remove old locolor icons
+    + Install local icons in the local datadir
+    + Fix icon presentation of our own icons
+    + Fix build with QtWebEngine
+    + Enable investment actions when appropriate
+    + Ledger search box now supports the account hierarchy
+      character ":"
+    + Enable calculator tool button
+    + Allow CSV importer to deal with Feb 30th
+  * Clicking autocomplete entry crashes application (kde#390264)
+  * Kmymoney does not open multiple files correctly (kde#350850)
+  * Cannot turn off Outbox tab in 4.8.0. (kde#377760)
+  * can't change ledger sort options in configure dialog
+    (kde#390042)
+  * File/backup give mount/unmount error, even if "mount" is not
+    checked (kde#390176)
+  * Don't add new payee from new operation panel (kde#390232)
+  * QIF Import filter fails (kde#390627)
+  * Huge gap in report display screen (kde#390657)
+  * Crash > Tools > Currencies (kde#390658)
+  * Scheduled transactions: "Enter next transaction" should be
+    available in ledger (kde#390834)
+  * dollar symbol appears after amount (kde#390873)
+  * quantity in Investments view should be right-justified
+    (kde#390967)
+  * Pre-Fill dialog missing (kde#391048)
+  * Show tip of the day (kde#391249)
+  * Displaying the ledger without an account having been selected
+    displays a closed account (kde#391453)
+  * Startup WM Class is wrong (kde#391733)
+  * CSV importer ignores last line if not followed by a newline
+    (kde#391770)
+  * Context does not change to ledger view from the find
+    transaction dialog (kde#391773)
+  * After completing reconcile, Statement/Cleared/Balance show
+    reconcile amounts, not account amounts (kde#390178)
+  * switching from Investments page to Ledgers always shows same
+    stale closed account ledger (kde#390406)
+  * Clearing ledger search box doesn't return to the previous
+    position (kde#390593)
+  * Ctrl+Shift+Space shortcut no longer available (kde#390249)
+  * Save as defaults to encrypted with no way to not encrypt
+    (kde#390467)
+  * Home page Net Worth Forecast Y axis starts at 0 (kde#391961)
+- Drop no longer used Kross build requirement
+
+-------------------------------------------------------------------
+Fri Feb 16 06:50:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to version 5.0.0
+  * Ported to KDE Frameworks 5
+  * Multiple improvements to reports, including better performance.
+  * Allow logarithmic axes in report graphs.
+  * When deleting a security, automatically delete its prices.
+  * Allow separate beginning balance accounts for different currencies.
+  * Added support for several new currencies
+  * Major bugs fixed:
+    + Elimination of several crashes.
+    + Fix problems with report graphs using older data.
+    + Fix rounding errors in some investment transactions.
+    + Removed Yahoo from stock and currency price sources, as they no
+      longer provide this service.
+- Drop patches (upstreamed or no longer applicable):
+  - aqbanking-5.1-backward-compatibility.patch
+  - fix-build-with-libalkimia-7.0.patch
+  - fix-sepa-plugin.patch
+- Move docs to main subpackage (English) and put translated docs
+  in -lang
+
+-------------------------------------------------------------------
+Mon Jan 29 17:32:18 UTC 2018 - wbauer@tmo.at
+
+- Add fix-build-with-libalkimia-7.0.patch to make it build with the
+  latest libalkimia (kde#387350)
+
+-------------------------------------------------------------------
+Fri Dec 29 20:24:04 UTC 2017 - wbauer@tmo.at
+
+- Add fix-sepa-plugin.patch to fix the installation of the SEPA
+  plugin so that it can actually be loaded (kde#386547)
+
+-------------------------------------------------------------------
+Wed Dec 27 07:48:09 UTC 2017 - wbauer@tmo.at
+
+- Update to 4.8.1.1
+  * Improvements to data import, including:
+    + Improved payee matching
+    + Avoid crash if you provide an invalid name for the import
+      file
+    + Resolved numerous issues with importing QIF and CSV files
+    + Removed some restrictions on the type of account to which
+      data can be imported
+    + Allowed OFX import to use Client UID, required by some banks
+  * Improvements to the database back end
+    + Avoid a crash if the database is not present restoring from
+      hibernation
+    + Corrected SQL syntax issues causing errors
+  * The user is now notified if changing a memo in a transaction
+    would make it different from the memo in the other split of the
+    transaction (such as in a transfer)
+  * Added a setting to configure location of optional log file for
+    imported data
+  * Removed restriction on configuring VAT assignments for certain
+    types of accounts
+  * Eliminated false positive errors from Consistency Check
+  * Several improvements to importing and exporting templates
+  * Eliminated several causes of crashes
+- Drop patches that have been merged upstream:
+  * kmymoney-4.8.0-fix-csv-import-account-type.patch
+  * fix-build.patch
+  * fix-build-with-cmake-3.9.patch
+- Rebase aqbanking-5.1-backward-compatibility.patch
+- Drop BuildIgnore again, no longer necessary as libqt4 uses
+  OpenSSL 1.1 now in Tumbleweed
+- No longer necessary to change the file permissions of the appdata
+  file, this has been fixed upstream
+- Adjust package summary and description (for KDE4 -> by KDE)
+
+-------------------------------------------------------------------
+Mon Dec 11 12:59:34 UTC 2017 - wbauer@tmo.at
+
+- BuildIgnore libopenssl-1_0_0-devel to avoid an openssl conflict
+  and fix the build on Tumbleweed
+
+-------------------------------------------------------------------
+Sat Aug 26 08:15:10 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build-with-cmake-3.9.patch to fix build with latest
+  cmake in Factory (kde#383351)
+
+-------------------------------------------------------------------
+Wed Jun 21 09:12:08 UTC 2017 - wbauer@tmo.at
+
+- Modify aqbanking-5.1-backward-compatibility.patch to fix online
+  SEPA transactions with aqbanking 5.1
+
+-------------------------------------------------------------------
+Wed Jun  7 07:38:06 UTC 2017 - wbauer@tmo.at
+
+- Add aqbanking-5.1-backward-compatibility.patch to make it
+  possible to build the kbanking plugin on Leap 42.X (boo#1042760)
+
+-------------------------------------------------------------------
+Fri Jun  2 17:57:31 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build.patch to fix build with latest cmake in Factory
+
+-------------------------------------------------------------------
+Wed Feb  1 11:45:37 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Dec  8 19:58:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Thu Sep 15 21:01:31 UTC 2016 - nico.kruber@gmail.com
+
+- add kmymoney-4.8.0-fix-csv-import-account-type.patch which fixes
+  the default CSV import to credit card accounts (kde#364425)
+
+-------------------------------------------------------------------
+Sun Jul 10 20:05:05 UTC 2016 - nico.kruber@gmail.com
+
+- Update to 4.8.0
+  * Added support for online SEPA transactions
+  * Added support for import from Weboob
+  * Improved payee matching when importing transactions
+  * Supports AqBanking versions 5.5.0 or later
+  * Updated Brazilian account templates
+  * When an account cannot be closed, a tooltip explains the
+    reason
+  * Categories no longer have opening date, which caused annoying
+    errors both during input and while running the consistency
+    check
+  * Do not inadvertently modify start date of schedules
+  * Solved rounding problems causing reconciliation to fail and
+    investment transaction to show missing assignments of 0.00
+  * Fixed some annoying consistency check errors
+
+-------------------------------------------------------------------
+Wed Jun  1 15:02:37 UTC 2016 - wbauer@tmo.at
+
+- Use share-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Tue May 31 12:20:20 UTC 2016 - wbauer@tmo.at
+
+- Only require libakonadiprotocolinternals1 (needed to run kmymoney)
+  on Leap and Tumbleweed, not akonadi-runtime, to prevent conflicts
+  with KDEPIM5 (boo#982301)
+
+-------------------------------------------------------------------
+Wed Apr 29 22:38:21 UTC 2015 - nico.kruber@gmail.com
+
+- Update to 4.7.2:
+  * fix a crash in the transaction split editor
+  * added the monetary symbol of the Turkish lira
+  * matching restrictions on an already imported transaction
+    were removed
+
+-------------------------------------------------------------------
+Sun Nov 09 05:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Sun Nov  2 00:08:17 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 4.7.1:
+  * fix ledger context menu triggering with multiple selection on
+    Windows (kde#339693)
+  * fix setting all amounts to zero while editing multiple
+    transactions (kde#332793)
+  * zero valued transactions can be entered again just like in
+    4.6.x (kde#340219)
+  * fix the currency conversion dialog for really big/small
+    conversion rates (kde#334564)
+  * fix investment transaction unassigned value errors in some
+    cases (kde#303026)
+
+-------------------------------------------------------------------
+Sun Oct 12 11:51:12 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 4.7.0:
+  * Revamped CSV import plugin
+  * New Tags feature
+  * Oxygen is now the default icon set
+  * For OFX imports, application ID can be entered manually now
+  * Many fixes in the import and online banking modules
+  * Performance improvements
+  * Many fixes for multi-platform issues
+- enable KActivities support
+
+-------------------------------------------------------------------
+Mon Jun 23 19:32:02 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 4.6.6:
+  * Fix build problem found in version 4.6.5.
+  From 4.6.5:
+  * Fixes for online imports using Quicken 2011 compatibility.
+- Removed 0001-Fixed-linking-with-Gwenhywfar-4.6.0.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Sun Oct  6 02:58:58 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 4.6.4:
+  Most important changes:
+  * Fixed the interaction with input method editors
+    (kde#320579, kde#272393 and kde#272631)
+  * Fixed a crash after editing a security (kde#309105)
+  * The 'Use system colors' setting was made a default setting
+    (kde#309010)
+  * Fixed the rendering of a ledger entry when the ledger does
+    not have focus
+  * Fixed the persistency of some header settings like in the
+    'Investments' view (kde#310260)
+  * Fixed a crash when OFX update is cancelled while waiting for
+    KWallet (kde#281728)
+  * Fixed a crash cause by a transaction with an empty postdate
+    (kde#310265)
+  * Fixed a possible crash while mapping an OFX account
+    (kde#296681)
+  * Added definition for new Azerbaijani Manat (kde#307774)
+  * Fixed the category selection actions in the find transactions
+    dialog (kde#313874)
+- drop fix-build-with-gmp-510.diff (kde#312481) (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Sep 15 19:33:16 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fixed-linking-with-Gwenhywfar-4.6.0.patch, fixes build
+  with newer Gwenhywfar versions
+
+-------------------------------------------------------------------
+Sun Mar 10 15:55:17 UTC 2013 - nico.kruber@gmail.com
+
+- fix build with gmp 5.1.0 (file fix-build-with-gmp-510.diff)
+
+-------------------------------------------------------------------
+Tue Sep 11 10:25:35 UTC 2012 - nico.kruber@gmail.com
+
+- Update to 4.6.3:
+  Most important changes:
+  * The online statement balance is highlighted if it's different
+    from current file balance
+  * Correct the post date of the opening balance transaction when
+    the opening date of the account changes
+  * The header state (adjusted column sizes) is now always
+    restored correctly
+  * Can be built with Qt 4.8 without patching KDChart
+  * Fix a crash on opening SQLite databases
+  * MZN as new Mozambique Metical as well as an entry for MZM as
+    the old Mozambique Metical were added
+  * Attempt to reconnect to the database (once) on accidental
+    disconnects
+  * Allow the creation of 'Equity' accounts when
+   "Show equity accounts" is checked
+  * In the 'Find transactions' dialog trigger a search when return
+    is pressed and there is text entered in the filter
+  * Reports related fixes
+  * Fixed a large minimum ledger size when using some fonts
+  * Fixed SQL sintax in a certain usecase
+  * CSV importer plugin related fixes
+- dropped kmymoney-qdebug.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sat Feb  4 21:51:54 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 4.6.2:
+  Most important changes:
+  * OFX files with UTF-8 data can now be imported correctly
+  * Fix displaying the 'Enter/Skip schedule' action icons in the homepage on
+    Windows
+  * Fixed the initial size of the schedule entry dialog in some use cases
+  * Fixed a hang in reports in some scenarios
+  * Fixed some Finance::Quote related problems on Windows
+  * Allow editing the memo of multiple transactions
+  * Fix schedule handling
+  * Make the QIF import on Windows usable
+  * Fix GnuCash file import
+  * Improve item navigation using the keyboard
+  * Scheduled transactions can now be correctly skipped or ignored when
+    automatic entry is enabled
+  * Fix the budgets that somehow still reference invalid accounts
+
+-------------------------------------------------------------------
+Wed Nov 30 12:55:52 UTC 2011 - idoenmez@suse.de
+
+- Fix build with Qt 4.8
+
+-------------------------------------------------------------------
+Wed Nov  9 20:16:05 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.6.1:
+  * Fixed schedules moved to the next processing day
+  * Fixed a crash with an uncaught exception when closing the current file
+    before a GNUCash import
+  * Fixed the split window redraw when resizing
+  * Fixed a crash caused by an invalid budget
+  * Fixed a crash when deleting an account
+  * The date can now be modified when editing multiple transactions
+  * The balance in the payees view is now computed correctly even if the payee
+    has transactions with different currencies
+- Spec file updates:
+  * Renamed License: to GPL-2.0 or GPL-3.0 (SPDX style).
+  * Changes based on spec-cleaner run.
+  * Removed libpth-devel from BuildRequires: (not needed).
+  * Removed -DUSE_HTML_HANDBOOK=YES from cmake arguments (not needed for the
+    generation of the user documentation).
+  * Fixed "non-etc-or-var-file-marked-as-conffile" rpmlint warning for
+    the "kmymoney.kcfg" file.
+- Removed patch for import of gnucash files (bnc#723728) (fixed ustream).
+
+-------------------------------------------------------------------
+Tue Oct 18 07:47:06 UTC 2011 - coolo@suse.com
+
+- change lang and doc subpackages to recommends
+
+-------------------------------------------------------------------
+Thu Oct 13 18:16:50 UTC 2011 - ctrippe@opensuse.org
+
+- Allow import of gnucash files (bnc#723728)
+
+-------------------------------------------------------------------
+Fri Sep 16 13:00:21 UTC 2011 - toddrme2178@gmail.com
+
+- Split translation package (fix for RPMLINT warning)
+- Split documentation package (fix for RPMLINT warning)
+- Changed descriptions
+- Added pth gpgme backend support
+- Enabled building of HTML handbook
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Aug 11 06:00:00 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- re-enabled the ofx import plugin
+
+-------------------------------------------------------------------
+Tue Aug  9 19:53:38 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.6.0:
+  * New CSV import plugin
+  * The application is translated in 36 languages (Bosnian and Uyghur added)
+  * The user documentation is available in 7 languages (French translation
+    added)
+  * Many fixes for the OS X and Windows platform
+  * Performance improvements
+  * Many fixes in the import and online banking modules
+  * Over 100 bugs have been fixed since the latest bugfix release alone
+  * Since the OFX institution listing service run by Microsoft (TM) stopped
+    working, we switched to the service run on www.ofxhome.com which is
+    provided on a voluntarily basis by Jesse Liesch. With his support it was
+    easy to make the switch in KMyMoney
+  * Added Serbian Dinar as a standard currency
+  * Allow entering an interest rate with three decimal places when editing a
+    loan
+  * Improved wording when transaction editing is canceled by selecting another
+    transaction in the ledger
+  * Make FID an optional field during definition of an OFX account mapping
+  * Allow to base the payee name from either the PAYEEID, NAME or MEMO field in
+    an OFX transaction
+- Spec file updates:
+  * Added boost-devel, glib2-devel, gmp-devel, libalkimia-devel and
+    libxml2-devel and removed libassuan-devel in BuildRequires:.
+  * Minor other updates.
+- No need for the rpmlint warning "wrong-icon-size" fix (fixed upstream).
+- Removed the patch for the installation of the icons in the hicolor directory
+  (fixed upstream).
+
+-------------------------------------------------------------------
+Sat Jun  4 20:45:43 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Added libical-devel and shared-mime-info in BuildRequires:.
+  * Removed support for openSUSE < 11.2.
+  * Added update-mime-database in %post/%postun scripts for the mime file
+    installed by the package.
+  * Minor other updates.
+- Fixed rpmlint warning "wrong-icon-size".
+- Added a patch (taken from Fedora) to install icons to hicolor instead of
+  oxygen (removes also the need to install an icon in /usr/share/pixmaps to
+  avoid the "Icon file not installed" rpm post-build check error).
+
+-------------------------------------------------------------------
+Sun Feb 20 12:54:46 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to 4.5.3:
+  + Improve performance with investment account balance calculation
+  + Switch to AqBanking5
+  + Don't select the character that starts the split editor #263319
+  + Support "Gielda Papierow Wartosciowych" as price source #261803
+
+-------------------------------------------------------------------
+Mon Jan 24 22:00:24 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- fixed missing libassuan-devel requirement for compilation on
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Sat Jan 15 11:04:47 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- backported new aqbanking5 patch from
+  http://reviewboard.kde.org/r/5524/
+  + fixes #253151
+
+-------------------------------------------------------------------
+Wed Dec 29 11:32:37 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- added patch to make kmymoney compatible with aqbanking5
+- Update to 4.5.2:
+  + fixed several crashes, for example:
+    * when adding transactions directly into the register
+      on Qt 4.7.1 (#258355)
+    * when cancelling the QIF importer date selection dialog
+      (#259235)
+    * when importing GnuCash files with zero valued prices
+      (#256282)
+  + fixed a problem with Finance::Quote (#257260)
+  + it is now possible to use KMyMoney with small resolutions (1024x600)
+    (#258460 and #256769)
+  + improved some small user interface issues
+    (#259437, #258466, #257986, #257761, #257369)
+  + fixed a usability issue when using the Include sub-accounts
+    feature with budgets (#255135)
+- Update to 4.5.1:
+  + fixed several crashes, for example:
+    * when adding a default category to a payee (#248448)
+    * when activating the schedules calendar on certain languages
+      (#232757)
+    * when back-tabbing in the split editor (#244962)
+  + fixed some report configuration bugs (#255532 and #249119)
+  + improved some small user interface issues
+    (#252598, #249609, #241044, #255433, #251212)
+  + added the new Bulgarian Lev as a currency (#255491)
+
+-------------------------------------------------------------------
+Tue Aug 17 19:32:19 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 4.5:
+  + first stable release for KDE platform 4
+  + improved usability of the online banking features
+  + uses KWallet to store online banking passwords
+  + the consistency check runs automatically before saving your data,
+    it now checks for a wider range of problems, and it automatically
+    corrects many of them
+  + better documentation
+
+-------------------------------------------------------------------
+Thu Jul  8 05:23:14 UTC 2010 - beineri@opensuse.org
+
+- update to version 1.0.5:
+  * Fixed the way to calculate balance variation for the linear
+    regression forecast method (backported from KDE4)
+  * Fixed a crash when a budget selected for a report is no longer
+    present
+  * replace all new line characters because we only have one line
+    available for the displayed data (backported from KDE4)
+  * Don't allow import of investment transactions that don't have
+    a share amount. This used to end in a div by zero when
+    calculating the price. (Backported from KDE4)
+  * Add all overdue schedules when calculating forecast
+  * Do not show accounts of institutions if it has been selected
+    in the general settings to Do not show closed accounts
+  * Do not show an institution if it has no visible accounts and
+    it has been selected to not show closed accounts
+  * Backported fix from Ian Neal to solve problems when opening
+    the ledger with specific scheduled transactions
+  * Fixed loop in payments of the home page when a schedule is set
+    to end by date
+  * Backported encoding patch from KDE4 version
+
+-------------------------------------------------------------------
+Sun Apr 11 08:20:24 UTC 2010 - beineri@opensuse.org
+
+- update to version 1.0.4:
+    * Backported encoding patch from KDE4 version
+    * Updated Finnish translation by Mikael Kujanpaa
+    * Use users character set encoding for reports
+    * Fixed OFX plugin X-KDE-PluginInfo-Name setting
+    * Applied backport patch provided by Ian Neal
+    * Improved anonymizer
+    * Fixed transaction loader for XML file
+    * Added testcases
+    * Don't preset date in currency calculator to today in all cases
+    * Fixed iterator problem in loop
+    * Optimized MyMoneyMoney(QString) ctor
+
+-------------------------------------------------------------------
+Mon Feb 15 12:52:21 UTC 2010 - llunak@novell.com
+
+- update to version 1.0.3: various bugfixes
+- build with gcc-4.5
+
+-------------------------------------------------------------------
+Sat Dec  5 14:00:56 UTC 2009 - Nico.Laus.2001@gmx.de
+
+- disabled pdf generation for openSUSE >= 11.2 (breaks build)
+
+-------------------------------------------------------------------
+Sun Oct  4 05:09:22 UTC 2009 - beineri@opensuse.org
+
+- update to version 1.0.2: QIF importer and other bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 14 12:46:34 UTC 2009 - beineri@opensuse.org
+
+- update to version 1.0.1:
+  * Allow moving investment transactions
+  * Fix Yahoo UK stock quotes
+  * Improved layout of printed reports
+  * Fix potential loop in Gnc importer
+  * Fixed icon resolution problems with oxygen icon set
+  * Updated Brazilian homepage and whatsnew file from Marcus Gama
+  * Fixed crash on new Credit Card a/c  with reminder schedule
+
+-------------------------------------------------------------------
+Tue Sep 1 10:21:00 UTC 2009 - Nico.Laus.2001@gmx.de
+
+- added static libraries to the -devel sub-package again
+  (needed for the kmm_kbanking plugin)
+- added sqlite3 dependency so SQLITE3 support is enabled
+- added dependencies so that "PDF document generation" is enabled
+- use parallel make
+- fixed traces of RPM_BUILD_DIR or RPM_BUILD_ROOT in .la files  (from PackMan)
+- splitted off lang-sub-package (from PackMan)
+- added slqite3-plugin sub-package (from PackMan)
+
+-------------------------------------------------------------------
+Wed Aug 26 20:49:48 UTC 2009 - beineri@opensuse.org
+
+- don't %if %suse_version the "Patch: foo" line
+
+-------------------------------------------------------------------
+Wed Aug 26 19:12:52 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 1.0
+    * A new look and feel, and a new set of icons
+    * Added investment price reports, investment moving average price
+    * Added GUI option for expert mode
+    * Improved scheduled occurrences support
+    * Improved support for CMake
+    * Improved text filter for transactions
+    * Improved charts look and feel
+    * Improved DB support and performance
+    * Improved QIF and OFX support
+    * Updated documentation
+    * Updated translations
+    * A lot of bug fixing and polishing rough edges to make this an outstanding release
+
+-------------------------------------------------------------------
+Thu Feb 19 13:45:20 CET 2009 - dmueller@suse.de
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Thu Apr  3 18:01:18 CEST 2008 - dmueller@suse.de
+
+- update to 0.8.9:
+   * translation update
+   * fixed a string problem when reading an OFX statement
+   * fixed crash when pressing ctrl-w while transaction editor is
+   present
+
+-------------------------------------------------------------------
+Thu Dec 20 09:02:29 CET 2007 - stbinner@suse.de
+
+- update to version 0.8.8:
+   * Use two digit month and day values in QIF export
+   * Fix QIF export problem where it was hampered by having the KDE
+     locale's negative sign position set to "Parens Around"
+   * Force trust-model when writing GPG encrypted file
+   * improved GnuCash importer to support version 2.2 files
+   * Modified OFX importer to use Qt::UTC as dateformat
+   * Force usage of GPG agent with set GPG_AGENT_INFO variable
+
+-------------------------------------------------------------------
+Wed Oct 24 12:08:05 CEST 2007 - dmueller@suse.de
+
+- gcc 4.3 fixes
+
+-------------------------------------------------------------------
+Sun Jul 22 19:53:35 CEST 2007 - stbinner@suse.de
+
+- update to 0.8.7: many bug fixes; ui, i18n and l10n improvements
+
+-------------------------------------------------------------------
+Thu Jun 21 11:04:00 CEST 2007 - stbinner@suse.de
+
+- add missing requires, run kde_post_install, fix .desktop file
+
+-------------------------------------------------------------------
+Wed May 23 23:07:27 CEST 2007 - dmueller@suse.de
+
+- split off -devel package
+
+-------------------------------------------------------------------
+Sun Mar 11 11:23:38 CET 2007 - stbinner@suse.de
+
+- update to version 0.8.6
+  * Added ability to print home page
+  * Added Yahoo France web price source
+  * Added new price source "Gielda Papierow Wartosciowych"
+  * Improved detection of KBanking support
+  * New and updated translations
+  * Several GUI, scheduled transactions and other problem bug fixes
+
+-------------------------------------------------------------------
+Sat Dec  9 21:29:59 CET 2006 - dmueller@suse.de
+
+- fix undefined operation
+
+-------------------------------------------------------------------
+Thu Aug 31 16:03:46 CEST 2006 - stbinner@suse.de
+
+- update to version 0.8.5
+   * Improved online stock quotes so the  'Update all'  continues
+     even if one stock is unable to be updated.
+   * Added a dialog to prompt the user whether he wants to disable
+     online quotes for this stock in this case.
+   * GnuCash importer changes
+     - Add non UTF-8 support (manual selection)
+     - Remove unnecessary  'Unknown payee'  references
+     - Support for GnuCash V2.0 files (maybe incomplete)
+     - Handle some additional account and schedule types
+     - Preserve account's tax-related status
+     - Minor coding changes
+   * Correct currency code for Mexican Peso to MXN
+   * Don't show price/value if price information is invalid
+   * Allow to read GNC V2 files (N.B. not full support)
+   * Added %m-%d-%yyyy date format to QIF profile
+   * Added a file filter (e.g.  *.qif ) to QIF profile when an input
+     filter is used. (Addresses RFE #1172030)
+   * Added chapter 'Making most of KMyMoney'  to manual
+   * Fixed tax transaction report, which was erroneously including
+     transfers
+   * Modified bank ID handling for QIF files so the ID s are handled
+     the same as other imported statements.
+   * Fixed Zero-amount transfer transaction leads to crash
+   * Fixed Frequent crash on changing/opening file
+   * Fixed more GPG problems in KGPGFile::GPGAvailable and
+     KGPGFile::keyAvailable by applying the same fix as on 2006-06-05
+   * Modified the anonymizer so that the autoCalc value is not modified
+   * Fixed problem in KGPGFile::open which reported an error when a read
+     operation was finished before open gets around to check for the
+     presence of the process. Synced with version of CVS HEAD.
+   * several translation updates
+
+-------------------------------------------------------------------
+Thu Aug 24 16:44:03 CEST 2006 - stbinner@suse.de
+
+- build OFX plugin
+
+-------------------------------------------------------------------
+Wed Jun 14 23:12:19 CEST 2006 - dmueller@suse.de
+
+- build parallel
+
+-------------------------------------------------------------------
+Tue May 30 07:15:06 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Mon May 22 09:24:19 CEST 2006 - stbinner@suse.de
+
+- update to version 0.8.4
+   * everal bug fixes and some improvements to the entry of
+     scheduled transactions
+   * some new translations
+
+-------------------------------------------------------------------
+Mon Apr 24 15:21:02 CEST 2006 - dmueller@suse.de
+
+- Avoid undefined C code (#159361)
+
+-------------------------------------------------------------------
+Wed Feb 22 14:34:07 CET 2006 - stbinner@suse.de
+
+- update to version 0.8.3
+   * Sourceforge and other bug report fixes
+     Fixed 1390918 (Can't use more than 2 decimal places in manual
+                    price update)
+     Fixed 1393899 (Add support for new Russian Ruble - RUB)
+     Fixed 1397412 (Investment transactions counted twice)
+     Fixed 1400746 (Entering scheduled transaction for a loan
+                    crashes)
+     Fixed Debian 347698 (Account tree collapses without user
+                          approval)
+     GUI improvements
+     Add field descriptions for new transactions when transaction
+       form off
+     Check all data present before entering schedule
+   * Internationalization issues
+     Updated en-GB translation provided by Neil Williams via
+        Mark Purcell
+     Fixed a translation error in the German version (thanks to
+        Karin Capey for reporting)
+     Added new Danish translation as provided by Anders EllenshÃ
+     Added new French translation as provided by Vincent ?
+     Updated Italian translation as provided by Vincenzo Reale
+   * Build changes
+     Fixed build system to better support FreeBSD
+     Added missing include of locale.h
+     Adjusted build system to new layout
+
+-------------------------------------------------------------------
+Wed Feb 15 11:27:33 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  2 10:45:24 CET 2006 - stbinner@suse.de
+
+- update to version 0.8.2
+
+-------------------------------------------------------------------
+Mon Nov  7 10:33:05 CET 2005 - stbinner@suse.de
+
+- update to version 0.8.1
+
+-------------------------------------------------------------------
+Mon Oct 24 11:20:09 CEST 2005 - stbinner@suse.de
+
+- fix wrong include hints for Qt 3.3.5 compilation
+
+-------------------------------------------------------------------
+Thu Oct 13 13:40:42 CEST 2005 - stbinner@suse.de
+
+- remove extra qualification for gcc 4.1 compilation
+
+-------------------------------------------------------------------
+Sat Aug 13 14:02:57 CEST 2005 - adrian@suse.de
+
+- update to stable version 0.8
+- online banking is not enabled yet, since kbanking is still
+  at version 0.9.9
+
+-------------------------------------------------------------------
+Thu Feb 17 13:25:05 CET 2005 - adrian@suse.de
+
+- update to version 0.6.4
+- menu entry moved to xdg dir
+
+-------------------------------------------------------------------
+Thu Jul 29 09:52:36 CEST 2004 - adrian@suse.de
+
+- update to version 0.6.1
+
+-------------------------------------------------------------------
+Mon Jun  7 15:55:02 CEST 2004 - adrian@suse.de
+
+- update to version 0.6 final
+
+-------------------------------------------------------------------
+Thu Apr 15 19:29:01 CEST 2004 - coolo@suse.de
+
+- build without unsermake
+
+-------------------------------------------------------------------
+Sun Feb 29 12:28:44 CET 2004 - adrian@suse.de
+
+- update to 0.6rc3
+
+-------------------------------------------------------------------
+Wed Feb 18 16:54:24 CET 2004 - ro@suse.de
+
+- update to 0.6rc2
+
+-------------------------------------------------------------------
+Mon Jan 19 15:51:47 CET 2004 - adrian@suse.de
+
+- update to version 0.6rc1
+
+-------------------------------------------------------------------
+Sat Jan 10 11:44:05 CET 2004 - adrian@suse.de
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Sun Aug 24 15:06:13 CEST 2003 - adrian@suse.de
+
+- fix compile with gcc 3.3.1
+
+-------------------------------------------------------------------
+Wed Jul 30 08:16:32 CEST 2003 - adrian@suse.de
+
+- update to version 0.5.1
+- add Categories
+
+-------------------------------------------------------------------
+Sat Jun 14 14:14:51 CEST 2003 - coolo@suse.de
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Fri Nov  8 11:09:52 CET 2002 - coolo@suse.de
+
+- compiling with KDE3 (expecting a real port soon looking at the
+  upstream Changelogs)
+
+-------------------------------------------------------------------
+Fri May 24 01:24:52 CEST 2002 - adrian@suse.de
+
+- use update_admin
+
+-------------------------------------------------------------------
+Thu May 23 01:55:41 CEST 2002 - ro@suse.de
+
+- update admin directory and use common_options
+
+-------------------------------------------------------------------
+Sun Apr  7 13:03:33 CEST 2002 - adrian@suse.de
+
+- initial packaging (version 0.4 for KDE 2)
+

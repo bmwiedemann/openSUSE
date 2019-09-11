@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:30:26 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 19:33:54 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Thu Jul 17 17:27:09 UTC 2014 - jrecord@suse.com
+
+- Fixed use of uninitialized value $filesize in cache-00001.pl
+
+-------------------------------------------------------------------
+Fri Apr 25 21:27:36 UTC 2014 - jrecord@suse.com
+
+- Fixed uninitialized errors in diskspace-00001.pl
+- Now ndsdseg-00001.pl checks if OES installed
+
+-------------------------------------------------------------------
+Wed Apr 16 16:05:24 UTC 2014 - jrecord@suse.com
+
+- Changed to lower case directory for consistency
+
+-------------------------------------------------------------------
+Tue Apr 15 15:52:43 UTC 2014 - jrecord@suse.com
+
+- Fixed chkcert-7006968.py when seconds are not given
+
+-------------------------------------------------------------------
+Tue Apr  8 01:55:36 UTC 2014 - jrecord@suse.com
+
+- Replaced certcheck-00001.pl with chkcert-7006968.py
+
+-------------------------------------------------------------------
+Thu Mar 13 17:23:21 UTC 2014 - jrecord@suse.com
+
+- Fixed FSF address in all patterns
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Sat Feb  8 22:17:35 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Thu Jan 16 09:04:01 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Jan 15 09:04:01 MST 2014 jrecord@suse.com
+
+- added edir-7014412.py
+
+-------------------------------------------------------------------
+Wed Dec 20 09:04:01 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+

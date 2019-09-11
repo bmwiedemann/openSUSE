@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Dec 25 16:08:42 UTC 2018 - mailaender@opensuse.org
+
+- update to version 1.4.5.1
+
+-------------------------------------------------------------------
+Wed Sep 19 15:39:02 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- BuildRequires R-Rcpp-devel instead of R-Rcpp
+  Devel files were split out into a -devel subpackage.
+- Fix license
+
+-------------------------------------------------------------------
+Wed Dec 20 08:24:01 UTC 2017 - mailaender@opensuse.org
+
+- update to version 1.3.5
+
+-------------------------------------------------------------------
+Fri Apr 18 14:59:46 UTC 2014 - darin@darins.net
+
+- fix packaging
+
+-------------------------------------------------------------------
+Wed Apr 16 22:40:06 UTC 2014 - darin@darins.net
+
+- initial packaging
+

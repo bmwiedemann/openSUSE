@@ -1,0 +1,21 @@
+Index: b/sesman/session.c
+===================================================================
+--- a/sesman/session.c	2018-08-10 20:47:37.977842303 +0800
++++ b/sesman/session.c	2018-08-10 20:50:06.203134988 +0800
+@@ -732,6 +729,16 @@ session_start_fork(tbus data, tui8 type,
+ 
+                     g_free(passwd_file);
+ 
++                    /* translate sesman.ini options KillDisconnected and DisconnectedTimeLimit
++                     * into TigerVNC Xvnc parameteres */
++                    if (g_cfg->sess.kill_disconnected != 0 ||
++                        g_cfg->sess.max_disc_time != 0)
++                    {
++                        list_add_item(xserver_params, (tintptr)g_strdup("-MaxDisconnectionTime"));
++                        g_snprintf(text, 255, "%d", g_cfg->sess.max_disc_time < 60 ? 60 : g_cfg->sess.max_disc_time);
++                        list_add_item(xserver_params, (tintptr)g_strdup(text));
++                    }
++
+                     /* additional parameters from sesman.ini file */
+                     //config_read_xserver_params(SESMAN_SESSION_TYPE_XVNC,
+                     //                           xserver_params);

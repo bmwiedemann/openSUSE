@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat Apr  6 20:01:14 CDT 2019 - relliott@umn.edu
+
+- update install locations of cmake files
+
+-------------------------------------------------------------------
+Mon Apr  1 14:54:03 CDT 2019 - relliott@umn.edu
+
+- update to official v2.0.2 release
+  * make adjustments for new upstream package name (kim-api-v2 -> kim-api)
+  * add examples package
+  * build does indeed require vim (it uses the xxd utility)
+  * update required cmake version to match actual package
+  * add appropriate dependencies
+  * update to new bash completions file name
+
+-------------------------------------------------------------------
+Wed Aug  1 20:45:36 UTC 2018 - junghans@votca.org
+
+- initial commit
+

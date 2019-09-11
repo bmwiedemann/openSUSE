@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Fri Apr 17 10:12:00 UTC 2015 - schwab@linux-m68k.org
+
+- endian.patch: use proper endian-agnostic extractor
+
+-------------------------------------------------------------------
+Tue Apr 14 20:17:04 UTC 2015 - coolo@suse.com
+
+- updated to 3.300
+   see /usr/share/doc/packages/perl-Image-Size/ChangeLog
+
+  3.300	Saturday February 28, 2015, 08:44:22 AM -0800
+  
+  	* lib/Image/Size.pm
+  	* t/all.t
+  	* t/old-os2.bmp (added)
+  	Add support for old OS/2 version of BMP header (Geoff Richards).
+  
+  	* lib/Image/Size.pm
+  	Typo fixes (David Steinbrunner).                                
+  
+  	* lib/Image/Size.pm
+  	Avoid a sprintf() warning in Perl 5.21. Perl 5.21 introduces a  
+  	warning for redundant arguments to s?printf(), so sprintf("%d", 
+  	1, 2) would warn. This commit silences that warning by passing  
+  	sprintf the exact number of arguments that it expects (Brian    
+  	Fraser).                                                        
+  
+  	* lib/Image/Size.pm
+  	Added =encoding utf8 to pod - the accented character was        
+  	causing a pod error (Neil Bowers).                              
+  
+  	* lib/Image/Size.pm
+  	Added Z<> to the =item [012] to resolve pod warning. You can't  
+  	have =item 0, so the way round this seems to be to add a Z<>    
+  	(zero width space) before each digit (Neil Bowers).             
+  
+  	* lib/Image/Size.pm
+  	Added link to github repo to doc (Neil Bowers).                 
+  
+  	* lib/Image/Size.pm
+  	RT #41238: Applied modified version of patch from user to fix a 
+  	die problem with unpack on truncated files.                     
+  
+  	* lib/Image/Size.pm
+  	* t/1.sm.webp (added)
+  	* t/all.t
+  	* t/move.cur (added)
+  	* t/tux.ico (added)
+  	Add support for WEBP, ICO and CUR file types (Baldur            
+  	Kristinsson).                                                   
+  
+  	* lib/Image/Size.pm
+  	Fix some perlcritic issues.
+
+-------------------------------------------------------------------
+Wed Jun  5 07:47:40 UTC 2013 - coolo@suse.com
+
+- updated to 3.232
+      * lib/Image/Size.pm
+      Removed the "!" flag in pack template for EMF. It was not
+      needed and it broke on earlier Perls.
+
+      * lib/Image/Size.pm
+      Small change to swfmxsize for short-buffer issues.
+
+      * lib/Image/Size.pm
+      Multiple changes in this commit: Abandoned AutoLoader; moved
+      POD to the end of the file now that all the per-format
+      subroutines are part of the file-proper; fixed cases where lack
+      of ImageMagick would cause the error message to be overwritten.
+
+      * t/all.t
+      * t/kazeburo-bar.jpg (added)
+      New test (and image) for JPG tag-offset issue.
+
+      * lib/Image/Size.pm
+      Applied patch from github user kazeburo: bug fix for some jpeg
+      files
+
+      * imgsize
+      Fixed so that default output now catches errors. Previously,
+      you would get an "undefined" warning if there was an error in
+      parsing/sizing the input file.
+
+      * lib/Image/Size.pm
+      Turns out the 4 bounding-box ints for EMF are signed.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:33 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Aug 18 19:49:13 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo in description of perl-Image-Size.spec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:14 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Sep  1 16:18:17 CEST 2010 - anicka@suse.cz
+
+- update to 3.230
+ * Added support for Windows Enhanced Metafile Format
+
+-------------------------------------------------------------------
+Fri Jul 16 15:09:04 CEST 2010 - anicka@suse.cz
+
+- update to 3.221
+ * Large-scale code and documentation clean-up based on perlcritic 
+   and visual review.                                              
+
+-------------------------------------------------------------------
+Wed Jan 13 16:35:55 CET 2010 - anicka@suse.cz
+
+- update to 3.220
+* lib/Image/Size.pm Small fix to the regex for detecting GIFs, 
+  per Slaven Rezic.    
+* lib/Image/Size.pm Moved around some conditionally-needed libs to 
+  delay loading    until/unless needed. Also made a small fix 
+  per Perl::Critic.    
+
+-------------------------------------------------------------------
+Mon Jul  6 14:22:15 CEST 2009 - lrupp@suse.de
+
+- update to 3.2
+  * Compress::Zlib is optional now
+  * Per RT ticket #43452, make the cache visible outside the
+    lexical scope of the module This allows the hash to be used
+    with packages like IPC::Shareable or IPC::MM to enable sharing
+    the cache between processes. Added extra documentation of this,
+    and a new section describing approaches to cache-sharing.
+  * new build/dist process 
+- add perl(Test::Pod::Coverage) and perl(Test::Pod) to BuildReq
+- fix license
+
+-------------------------------------------------------------------
+Mon Mar  3 12:11:21 CET 2008 - kssingvo@suse.de
+
+- upgrade to version 3.1.1
+  * Updated the license information to make sure all references are
+    to both the Artistic 2.0 and the LGPL.
+  * Changed "use 5.6.0" lines to no longer use v-strings, for
+    forward compatibility with Perl 5.10.0.
+  * Added "recommends" specification to Build.PL to refer to
+    modules used in the testing phase (there is no
+    "build_recommends" setting).
+  * Added Compress::Zlib to the list of required modules in
+    Makefile.PL and Build.PL.
+  * Added "use warnings" to Size.pm to make sure it stays
+    warnings-clean.
+  * Small change from n@shaplov.ru for a bug in CWS handling that
+    only surfaced when two CWS files were sized consecutively.
+  * Updated the date on the copyright notice and added a
+    "COPYRIGHT" section to the documentation.
+  * Changed the licensing terms. This is now dual-licensed under
+    Artistic 2.0 and LGPL 2.1.
+  * Restored the old Makefile.PL for users who don't have
+    Module::Build.
+
+
+-------------------------------------------------------------------
+Thu Sep 14 14:35:33 CEST 2006 - kssingvo@suse.de
+
+- upgrade to version 3.01. New features:
+- Added ex/ directory with a few samples.
+- Dropped ExtUtils::MakeMaker and switched to Module::Build.
+  Makefile.PL is now a wrapper of sorts around Build.PL. This allows
+  adding licensing information to META.yml for CPAN indexing.
+- adapted the specfile
+
+-------------------------------------------------------------------
+Thu Jun 22 10:14:05 CEST 2006 - kssingvo@suse.de
+
+- upgrade to version 3.0. New features:
+- delay of Image::Magick loading until it is needed
+- additional installation tests
+- FlashMX (Shockwave Flash Ver. 6) support
+- image size of gif is now controlled by additional flag
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:12:09 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Aug 22 15:04:00 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 11:21:59 CEST 2003 - ro@suse.de
+
+- install to vendor location 
+
+-------------------------------------------------------------------
+Tue Jul 22 13:27:52 CEST 2003 - kssingvo@suse.de
+
+- updated to version 2.992
+
+-------------------------------------------------------------------
+Mon Jun 16 15:55:28 CEST 2003 - kssingvo@suse.de
+
+- added missing directories
+
+-------------------------------------------------------------------
+Mon May 26 00:10:16 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Mon Feb  3 11:31:39 CET 2003 - kssingvo@suse.de
+
+- initial package version 2.991
+

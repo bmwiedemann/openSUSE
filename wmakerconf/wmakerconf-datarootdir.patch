@@ -1,0 +1,12 @@
+Index: scripts/upgrade.pl.in
+===================================================================
+--- scripts/upgrade.pl.in.orig
++++ scripts/upgrade.pl.in
+@@ -44,6 +44,7 @@ else
+ }
+ 
+ $prefix    = "@prefix@";
++$datarootdir = "@datarootdir@";
+ $datadir   = "@DATADIR@";
+ $datadir   =~ s/wmakerconf//;
+ $datadir   =~ s/\/$//;

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Nov  4 05:34:04 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Mar 20 20:42:31 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.0
+ * BREAKING: Made result compatible to current Jed (#4)
+
+-------------------------------------------------------------------
+Fri Feb 20 14:13:49 UTC 2015 - tboerger@suse.com
+
+- Updated to 0.1.0
+  - Transfer from github.com/nubis/po_to_json
+  - Added TravisCI, Rubocop and Coveralls
+  - Updated structure to my opinionated gem style
+
+-------------------------------------------------------------------
+Wed Dec 17 10:05:39 UTC 2014 - tboerger@suse.com
+
+- Initial packaging of 0.0.7
+

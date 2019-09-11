@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Jun 20 05:35:01 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- added systemd timer for weekly updates
+  (needs to be enabled by admin)
+
+-------------------------------------------------------------------
+Wed Jun 19 10:34:53 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fixed build
+
+- Update to version 3.1.1
+
+  * This version now allows parsing of license keys longer than 12
+    characters.
+
+- Update to version 3.1.0
+
+  * This version restores the ability to use the `AccountID` / `UserId`
+    999999 along with an all-zero license key when downloading free
+    databases. However, the use of this combination is not recommended
+    and may break in future versions.
+  * When printing verbose output, only the first four character of the
+    `LicenseKey` will now be displayed.
+
+- Update to version 3.0.1
+
+  * When there were no updates available, 3.0.0 incorrectly returned an
+    exit code of 1 instead of 0. This release reverts to the pre-3.0.0
+    behavior, returning an exit code of 0 in this case.
+
+- Update to version 3.0.0
+
+  * BREAKING CHANGE: When downloading the free databases without a
+    MaxMind account, you must either not have `AccountID`, `UserId`,
+    or `LicenseKey` set in your configuration file or they must be set
+    to the zero values previously recommended in our documentation. Any
+    other value will cause an authorization error.
+  * BREAKING CHANGE: The configuration options `Protocol`,
+    `SkipPeerVerification`, and `SkipHostnameVerification` are no longer
+    supported. If they are present in the configuration file, they will
+    be ignored. HTTPS with peer and hostname verification will be used
+    on all requests.
+  * BREAKING CHANGE: The configuration file must have the `AccountID`
+    or the deprecated `UserId` when downloading a paid database.
+    Previously, when downloading the GeoIP Legacy Country database, you
+    were able to only provide the `LicenseKey`.
+  * IMPORTANT: `geoipupdate-pureperl.pl` has been removed and will no
+    longer be distributed with `geoipupdate`. This Perl script had known
+    issues and did not have feature parity with the C implementation. If
+    you were using the Perl version, we recommend that you switch to the
+    C version. If you are not able to do this, you may continue using the
+    Perl version distributed with 2.5.0.
+  * This program no longer uses the following endpoints:
+    `/app/update_getipaddr`, `/app/update`, and `/app/update_secure`.
+    `/geoip/databases/{edition_id}/update` is now used instead.
+  * Fixed issue in `gu_strnlen()` dereferencing a pointer before checking
+    that it was in array bounds. Issue found by fcntl.
+  * We now update the default GeoIP.conf during installation so that
+    directory paths match build parameters. Previously this config always
+    said the data directory was under /usr/local/share which was not always
+    accurate.
+  * Improve the error checking and display the underlying reason for the
+    error when possible. Reported by Jonathan Kosgei. GitHub #82.
+  * Document that the `LockFile` is not removed from the filesystem after
+    a successful exit from the program. GitHub issue #79.
+  * Make default configuration directory agree with default installation
+    directory.
+
+-------------------------------------------------------------------
+Thu Nov 16 09:09:29 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.5.0:
+  * Document the LockFile option in the GeoIP.conf man page.
+  * Remove unused base64 library.
+  * Add the new configuration option PreserveFileTimes. If set, the
+    downloaded files will get the same modification times as their
+    original on the server. Default is 0 (unset).
+  * Use the correct types when calling curl_easy_setopt().
+  * In GeoIP.conf, the UserId option was renamed to AccountID and
+    the ProductIds option was renamed to EditionIDs. The old
+    options will continue to work, but upgrading to the new names
+    is recommended for forward compatibility.
+- Cleanup previous changelog entry
+- Run tests during build
+
+-------------------------------------------------------------------
+Mon Oct 16 15:35:45 UTC 2017 - Mathias.Homann@opensuse.org
+
+- Update to version 2.4.0:
+  * geoipupdate now checks that the database directory is writable.
+    If it is not, it reports the problem and aborts.
+  * geoipupdate now acquires a lock when starting up to ensure only
+    one instance may run at a time. A new option, LockFile, exists
+    to set the file to use as a lock. By default, LockFile is the
+    file .geoipupdate.lock in the database directory.
+  * geoipupdate now prints out additional information from the
+    server when a download request results in something other than
+    HTTP status 2xx. This provides more information when the API
+    does not respond with a database file. In conjunction with
+    changes to the download service itself, errors such as lacking
+    a subscription no longer show up with the message "not a valid
+    gzip file".
+  * ${datarootdir}/GeoIP is now created on make install.
+
+-------------------------------------------------------------------
+Thu Jan  5 15:40:45 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.3.1:
+  * geoipupdate now uses TCP keep-alive when compiled with cURL
+    7.25 or greater.
+  * Previously, on an invalid gzip file, geoipupdate would output
+    binary data to stderr. It now displays an appropriate error
+    message.
+  * Install README, ChangeLog, GeoIP.conf.default etc into docdir.
+  * $(sysconfdir) is now created if it doesn't exist.
+  * The sample config file is now usable.
+
+-------------------------------------------------------------------
+Fri Jul  1 17:31:03 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Thu Feb  4 20:17:08 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.2.2
+  * geoipupdate now calls fsync on the database directory after a 
+    rename to make it durable in the event of a crash.
+
+-------------------------------------------------------------------
+Sun Nov  8 13:56:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.2.1
+  * Version bump to fix PPA issue
+- Changes from version 2.2.0
+  * geoipupdate now verifies the MD5 of the new database before 
+    deploying it. If the database MD5 does not match the expected MD5,
+    geoipupdate will exit with an error.
+  * The copy of base64.c and base64.h was switched to a version under
+    GPL 2+ to prevent a license conflict.
+  * The LICENSE file was added to the distribution.
+  * Several issues in the documentation were fixed.
+- Remove gpl-2.0.txt; now included in the tarball
+- Perform a spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 21 11:07:53 UTC 2015 - mpluskal@suse.com
+
+- Initial packaging
+

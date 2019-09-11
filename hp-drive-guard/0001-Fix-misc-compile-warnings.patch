@@ -1,0 +1,67 @@
+From 6011c6ef44c0eb6513ba3dd4e6fcfacacb439c99 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 14 Sep 2010 14:42:07 +0200
+Subject: [PATCH] Fix misc compile warnings
+
+Some wrong printf formats and removal of unused variables / functions.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/core.c         |   11 -----------
+ src/serverconfig.c |    4 +---
+ 2 files changed, 1 insertions(+), 14 deletions(-)
+
+diff --git a/src/core.c b/src/core.c
+index d8fc8a4..3686bd5 100644
+--- a/src/core.c
++++ b/src/core.c
+@@ -218,17 +218,6 @@ static void server_init(void)
+ 	in_protection = 0;
+ }
+ 
+-static int parse_timeout(const char *arg, int defval)
+-{
+-	int timeout = atoi(arg);
+-	if (timeout < 0 || timeout > SHOCK_TIMEOUT_S_MAX) {
+-		fprintf(stderr, "%s: invalid timeout seconds %d\n",
+-			progname, timeout);
+-		timeout = SHOCK_TIMEOUT_S_DEFAULT;
+-	}
+-	return timeout;
+-}
+-
+ int main(int argc, char *argv[])
+ {
+ 	int i, task_prio;
+diff --git a/src/serverconfig.c b/src/serverconfig.c
+index 3a4b889..d399436 100644
+--- a/src/serverconfig.c
++++ b/src/serverconfig.c
+@@ -75,7 +75,7 @@ static gboolean read_config_int(GKeyFile *keyfile, const char *key,
+ 	val = g_key_file_get_integer(keyfile, DRIVE_GUARD_CONFIG_GROUP,
+ 				     key, NULL);
+ 	if (val < minval || val > maxval) {
+-		fprintf(stderr, "config: invalid value %s for key %s\n",
++		fprintf(stderr, "config: invalid value %d for key %s\n",
+ 			val, key);
+ 		return FALSE;
+ 	}
+@@ -108,7 +108,6 @@ static void _read_config(GKeyFile *keyfile, DriveGuardServerConfig *config)
+ int drive_guard_read_config(DriveGuardServerConfig *config)
+ {
+ 	GKeyFile *keyfile;
+-	gchar **devs;
+ 
+ 	keyfile = g_key_file_new();
+ 	if (!g_key_file_load_from_file(keyfile, DRIVE_GUARD_CONFIG_FILE_PATH,
+@@ -178,7 +177,6 @@ int drive_guard_write_config(DriveGuardServerConfig *config)
+ {
+ 	DriveGuardServerConfig oldconfig;
+ 	GKeyFile *keyfile;
+-	gchar **devs;
+ 	int result;
+ 
+ 	drive_guard_init_config(&oldconfig);
+-- 
+1.7.2.1
+

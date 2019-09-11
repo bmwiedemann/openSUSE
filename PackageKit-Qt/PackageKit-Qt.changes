@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Wed Mar  6 18:10:58 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to use the NetworkManager dbus signal when PackageKit is
+  not running and thus, can't emit  a propertiesUpdated signal when
+  the network changes its state. This is part of the fix for
+  boo#1103678.
+  * 0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
+
+-------------------------------------------------------------------
+Wed Oct 24 07:13:55 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add fixes until current master (9e048b7):
+  * 0001-Fix-pkg-config-include-path.patch
+  * 0002-Fix-some-documentation-typos.patch
+  * 0003-Make-sure-the-build-is-done-as-c-11.patch
+- Update to version 1.0.1:
+  * Fix build against PackageKit::Offline
+- Update to version 1.0.0:
+  * Add an Offline class to interface with PackageKit's Offline interface
+  * Fix parsing package data and incomplete package-ids
+  * Fix logic of the new string parsing
+  * Add missing PackageKit 1.0.2 enums
+  * Also optimize PackageName & friends on Transaction class
+  * Fix recursion by explicity setting types
+  * Optimize packageName & friends
+  * A few more updates and fixes for 1.0.0
+  * Modernize to C++11 and remove deprecated methods
+  * Bump to 1.0.0 version
+- Update to version 0.10.0:
+  * Delete the transactions when they are done
+  * Merge pull request #22 from aleixpol/master
+  * Next version includes new API, so we need a minor version bump
+  * Avoid deadlock on disconnecting signals
+  * Add missing enums from upstream
+  * Implement offlineTrigger
+  * Make Transaction deletion match better what is really happening
+  * Reintroduce upgradeSystem()
+  * Merge pull request #16 from pvuorela/master
+  * Fix pkg-config file
+  * Drop qt4 pkg-config file
+  * Update cmake minimum version
+  * Leverage smart pointers for better memory safety
+  * Clean up config.cmake file
+  * Deprecated as I've been told it shouldn't be used anymore
+  * trivial: post release version bump
+
+-------------------------------------------------------------------
+Mon Feb 26 11:50:11 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Sat Sep 24 20:44:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.9.6:
+  + Features:
+    - Use Qt 5 by default.
+    - Drop Qt4 support from PK-Qt.
+    - Make use of QLoggingCategory packagekitqt.
+    - Change default visibility to hidden.
+    - Require at least Qt 5.6.
+  + Bugfixes:
+    - Fix compilation with strict QString() constructors on a host
+      application.
+    - Move enumTo/FromString code from header to cpp file.
+    - No need to have random files marked as executable.
+    - Reduce changes between QString <-> QByteArray.
+    - Properly expose enums for introspection.
+- Remove multi-spec handling: only PackageKit-Qt is now built. The
+  former PackageKit-Qt5 assumes the identify of PK-Qt now.
+  + Obsolete/Provide PackageKit-Qt5-devel by Pk-Qt-devel. There is
+    no extra handling needed for the library subpackage.
+
+-------------------------------------------------------------------
+Wed Nov 19 17:01:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.9.5:
+  + New Features: Add operator== to bitfield.
+  + Bugfixes:
+    - Deprecate ::packageIcon methods.
+    - Disable namespacing and classes names on the generated
+      interfaces.
+    - Don't assume the target is packagekitqt5.
+    - Fix compilation due to not-set cmake variable.
+    - Fix documentation.
+    - Fix QPK include dir in cmake module.
+    - Properly export cmake targets.
+    - Remove daemon proxy conection to changed().
+    - Remove RoleUpgradeSystem as it's not supported in 0.9.x
+      anymore.
+    - Remove the metatype registration for Transaction types.
+    - Support RPATH by default.
+    - Use GNUInstallDirs to determine most of used variables.
+    - Use "PackageKit" as the include namespace rather than the
+      library name.
+- Drop PackageKit-Qt-ff-7248b030c0.patch and
+  0001-Use-GNUInstallDirs-to-determine-most-of-used-variabl.patch:
+  Fixed upstream/No longer needed.
+
+-------------------------------------------------------------------
+Fri Oct  3 20:29:30 UTC 2014 - dimstar@opensuse.org
+
+- Build PackageKit-Qt5 variant:
+  + Add pre_checkin.sh to help keep Qt4 and Qt5 variants in sync.
+  + Introduce QtVersion defines to distinguish between Qt4 and Qt5
+    build.
+  + Only BuildRequire libqt4-devel when built for Qt4.
+  + In case of Qt5 builds, add:
+    - -DUSE_QT5=ON parameter to cmake.
+    - pkgconfig(Qt5Core), pkgconfig(Qt5DBus) and pkgconfig(Qt5Sql)
+      BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep 18 22:23:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add
+  0001-Use-GNUInstallDirs-to-determine-most-of-used-variabl.patch:
+  Use GNUinstallDirs to determine relevant destination directories.
+  Also removed unused vars.
+- Pass only install prefix, the above patch takes care of the
+  libdir.
+
+-------------------------------------------------------------------
+Thu Sep 18 01:03:15 UTC 2014 - dimstar@opensuse.org
+
+- Add PackageKit-Qt-ff-7248b030c0.patch: Fast forward to git
+  commit 7248b030c0, fixing build with PackageKit 1.0.0.
+- Rename libpackagekit-qt2-6 subpackage to libpackagekitqt4-0,
+  following upstreams soname bump.
+- Adust Requires in -devel package accordingly.
+
+-------------------------------------------------------------------
+Wed Sep 10 09:58:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.2:
+  + Notes:
+    - Update to new PK API 0.9.
+    - Applied a series of patches to port to Qt5.
+  + New Features:
+    - Add GetDetailsLocal, GetFilesLocal and RepoRemove.
+    - Make use of DBus Properties changed to make less blocking
+      calls.
+  + Bugfixes:
+    - Allow for Details to be empty constructed.
+    - Cleaned include directive.
+    - Finish the API changes to get rid of blocking calls.
+    - Fix CMake var names for both Qt versions.
+    - Fix libdir path.
+    - Fix reply signature for Transaction methods.
+    - Improve object handlying.
+    - I think the API level should be hidden from libname.
+    - Keep only one transaction flags, which is unlikely to change.
+    - PackageKit doesn't has a changed signal anymore.
+    - Properly delete private data on daemon as DaemonPrivate is
+      not a QObject.
+    - Properly handle new Details signal.
+    - Properly init some Daemon values.
+    - Queue signals so that all transaction properties are
+      available when needed.
+    - Remove debug info.
+    - Update Roles enum, remove Provides enum, and fix some docs
+      typos.
+- Drop PackageKit-Qt-libdir-references.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Sep 20 07:57:26 UTC 2013 - alarrosa@suse.com
+
+- Add PackageKit-Qt-libdir-references.patch: Fix the installed
+  packagekit-qt2-config.cmake file to have the correct link to the
+  library by keeping CMAKE_INSTALL_LIBDIR as a relative path and
+  the .pc file to have a valid path to $libdir.
+
+-------------------------------------------------------------------
+Fri May 10 10:01:11 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 0.8.8
+  + New Features:
+    - Adding Provides property to Daemon.
+    - Adding some Meta information.
+    - Adds the transactionFlags to the Transaction class.
+    - Add TransactionFlags registration.
+    - Implement connectNotify and disconnectNotify.
+  + Bugfixes:
+    - Add missing declare enums.
+    - Fix searchGroups() be iterating over the flaged values.
+    - Ignore Interface isValid() check.
+    - Improve error handling and make it easier for QML use it.
+    - Make sure we set an error if we fail to contact PackageKit.
+    - Use the correct version of the LGPL library.
+- Drop 0001-upstream-license-correction.patch: fixed upstream.
+- Rename libpackagekit-qt2-5 subpackage to libpackagekit-qt2-6,
+  following upstreams soname change.
+
+-------------------------------------------------------------------
+Mon Mar 11 06:18:22 UTC 2013 - coolo@suse.com
+
+- add rename provides for old devel package
+
+-------------------------------------------------------------------
+Tue Jan 22 11:23:59 UTC 2013 - tittiatcoke@gmail.com
+
+- Add 0001-upstream-license-correction.patch: Update COPYING file
+  to reflect LGPL-2.1. The GPL-3.0 COPYING file was just the
+  default injected one by autotools, if none is explicitly given.
+- Udpate License tag LGPL-2.1 (from LGPL-2.0, which was what the
+  file headers indicated).
+
+-------------------------------------------------------------------
+Thu Jan 17 21:14:58 UTC 2013 - tittiatcoke@gmail.com
+
+- Initial package, version 0.8.7:
+  + This is the first release of Packagekit-Qt which has been split
+    out of the main PackageKit project. This project is decoupled
+    from the main PackageKit project from  this point onwards and
+    does not subscribe to the same API and ABI promises of
+    PackageKit.
+

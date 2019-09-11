@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Jun 15 00:27:25 UTC 2015 - poeml@cmdline.net
+
+- update to 0.4
+- lockfile cleanup fix upstream (Thanks Martin Caj and Martin Vidner. Good
+  Catch!) (cosmetical bug which didn't affect the locking strategy)
+- man page added
+- license file added
+- use the now provided Makefile
+- moved to github.com
+
+-------------------------------------------------------------------
+Thu Aug 14 13:23:11 UTC 2014 - mcaj@suse.com
+
+- I wrote a patch got-lock.patch to fix the trouble with the got-lock variable.
+  I was testing the withlock and still had there the lock file after a
+  program already end with exit code 0. I have look on the code together
+  with our Python expert mvidner@suse.cz and we found the got-lock variable
+  isn't marked ad global variable.I`ll send this to poeml@cmdline.net
+  after we test it on our servers.
+
+-------------------------------------------------------------------
+Tue Mar 25 21:07:09 UTC 2014 - poeml@cmdline.net
+
+- update to 0.3
+  * At exit, unlink the lock file only if a lock was actually obtained.
+    When waiting for a lock (using -w option) and timing out, the file
+    was removed nevertheless. Thanks Bernhard Wiedemann for finding this
+    bug and providing such a good test case, so the fix was easy.
+    See https://bugzilla.novell.com/show_bug.cgi?id=864785
+
+-------------------------------------------------------------------
+Mon Feb 10 21:49:18 UTC 2014 - poeml@cmdline.net
+
+- withlock is now distributed as a tarball, which is generally 
+  easier for packaging on some platforms (at least Solaris). The 
+  only other change: updated copyright year.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:07:26 UTC 2012 - cfarrell@suse.com
+
+- license update: Apache-2.0
+  SPDX format
+
+-------------------------------------------------------------------
+Thu Aug 23 18:21:16 UTC 2012 - lars@linux-schulserver.de
+
+- updated to svn revision 5 which updates the year of Copyright,
+  fixes a typo and add an URL to project page to the comment header
+- add project URL 
+- require python
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Nov 18 16:14:41 CET 2009 - lrupp@suse.de
+
+- initial package, version 0.2
+

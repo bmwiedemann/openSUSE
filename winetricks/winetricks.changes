@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Jun 15 07:29:43 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- Update to 20190615
+  - lots of adjustments
+
+-------------------------------------------------------------------
+Sun Mar 10 20:50:32 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 20190310
+
+-------------------------------------------------------------------
+Sun Dec 23 08:34:05 UTC 2018 - linux4humans <zenitur@ya.ru>
+
+- adjusted logic for license/doc handling to cover more distributions
+
+-------------------------------------------------------------------
+Tue Dec 11 20:16:21 UTC 2018 - linux4humans <zenitur@ya.ru>
+
+- Minor changes for making it built on older openSUSE versions
+- TODO: can anybody define %license as %doc for openSUSE < 13.1 then put
+  this %if at the beggining of the SPEC file? Then delete this %if from
+  the %files section? Like it advised to do there: https://lists.opensuse.org/
+  opensuse-factory/2016-02/msg00196.html
+
+-------------------------------------------------------------------
+Wed Dec  5 09:59:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and redundancies from description.
+- Avoid name repetition in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 09:22:41 UTC 2018 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 20181203
+

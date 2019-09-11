@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -556,6 +556,27 @@ if(MEDIASTREAMER2_CPPFLAGS)
+ 	add_definitions(${MEDIASTREAMER2_CPPFLAGS})
+ endif()
+ 
++
++set(MS_PUBLIC_PACKAGES "ortp bctoolbox")
++if(ENABLE_ZRTP)
++       set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libbzrtp")
++endif()
++if(ENABLE_FFMPEG)
++       set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libavcodec libavutil libswscale")
++endif()
++if(ENABLE_FIXED_POINT)
++       set(MS_PUBLIC_CFLAGS "-DMS_FIXED_POINT")
++else(ENABLE_FIXED_POINT)
++       set(MS_PUBLIC_CFLAGS )
++endif()
++set(prefix ${CMAKE_INSTALL_PREFIX})
++set(exec_prefix ${prefix}/bin)
++set(libdir ${CMAKE_INSTALL_LIBDIR})
++set(includedir ${prefix}/include)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
++
++
+ set(STRICT_OPTIONS_CPP )
+ set(STRICT_OPTIONS_C )
+ set(STRICT_OPTIONS_OBJC "-Wno-error")
+--- a/mediastreamer.pc.in
++++ b/mediastreamer.pc.in
+@@ -5,7 +5,8 @@ includedir=@includedir@
+ 
+ Name: mediastreamer 
+ Description: A mediastreaming library for telephony applications
+-Requires: ortp bctoolbox
++Requires: @MS_PUBLIC_PACKAGES@
++Requires.private: @MS_PRIVATE_PACKAGES@
+ Version: @MEDIASTREAMER_VERSION@
+ Libs: -L@libdir@ -lmediastreamer_base -lmediastreamer_voip
+ Cflags: -I@includedir@ @MS_PUBLIC_CFLAGS@

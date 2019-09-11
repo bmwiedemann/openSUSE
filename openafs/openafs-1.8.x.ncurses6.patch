@@ -1,0 +1,13 @@
+--- a/src/cf/curses.m4.orig	2018-01-07 08:17:41.815732371 +0100
++++ b/src/cf/curses.m4	2018-01-07 08:23:50.585670554 +0100
+@@ -19,7 +19,9 @@
+     AC_CHECK_LIB([ncurses], [initscr],
+ 		 [AC_CHECK_LIB([ncurses], [LINES], [openafs_cv_curses_lib=-lncurses],
+ 			       [AC_CHECK_LIB([tinfo], [LINES],
+-					     [openafs_cv_curses_lib="-lncurses -ltinfo"])])])
++					     [openafs_cv_curses_lib="-lncurses -ltinfo"],  
++		                             [AC_CHECK_LIB([ncurses], [_nc_LINES], [openafs_cv_curses_lib=-lncurses], 
++                                                          [AC_CHECK_LIB([tinfo], [_nc_LINES], [openafs_cv_curses_lib="-lncurses -ltinfo"])])])])])
+     AS_IF([test "x$openafs_cv_curses_lib" = x],
+ 	  [AC_CHECK_LIB([Hcurses], [initscr], [openafs_cv_curses_lib=-lHcurses])])
+     AS_IF([test "x$openafs_cv_curses_lib" = x],

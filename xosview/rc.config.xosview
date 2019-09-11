@@ -1,0 +1,7 @@
+#
+# Enable this in order to automatically load the memstat
+# kernel module for xosview at boot time if the module is
+# available for the currently running kernel.
+#
+LOAD_MEMSTAT_MODULE="no"
+

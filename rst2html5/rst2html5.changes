@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Thu Apr 20 15:45:08 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 1.9.3
+  * Fix setup.py
+- Update to 1.9.2
+  * Fix conflict with docutils==0.13.1 rst2html5.py
+- Update to 1.9.1
+  * Fix install_requires in setup.py
+  * Update list of authors
+- Fix source url.
+- Remove upstream-included rst2html5-minimal_dependencies.patch
+- Implement update-alternatives to avoid conflict with 
+  python3-docutils.
+
+-------------------------------------------------------------------
+Sat Feb 11 20:27:11 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Tue Feb  7 16:46:37 UTC 2017 - c.b.bakker@carmenbianca.eu
+
+- Added a patch that uses minimal dependency versions instead of
+  exact versions.
+  * rst2html5-minimal_dependencies.patch (boo#1010414)
+
+-------------------------------------------------------------------
+Fri Dec 23 11:21:42 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.9:
+  * New directives :code:`stylesheet`, :code:`script` and
+    :code:`template` for declaring stylesheets, scripts and
+    template inside a restructured text.
+
+-------------------------------------------------------------------
+Wed Nov  2 20:54:24 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.8.2:
+  * CodeBlock directive refactored
+- Changes for version 1.8.1:
+  * Raw html shouldn't be indented
+  * CodeBlock directive also registered as code
+- Changes for version 1.8:
+  * New directives define, undef, ifdef and ifndef to
+    conditionally include (or not) a rst snippet.
+- Disable tests as we can't satisfy dependencies
+
+-------------------------------------------------------------------
+Wed May  4 09:26:19 UTC 2016 - mpluskal@suse.com
+
+- Install license, changelog and list of authors
+
+-------------------------------------------------------------------
+Sun May  1 13:35:22 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.7.5
+  * fixes deleted blank lines in <table><pre> during Genshi
+    rendering
+  * Testing does not depend on ordered tag attributes anymore
+- Update dependencies
+  * add beautifulsoup4 and nose
+- Cleanup spec file
+- Use only python3
+
+-------------------------------------------------------------------
+Tue Apr 14 15:30:48 UTC 2015 - rneuhauser@suse.cz
+
+- prefer python2 in openSUSE-13.1 
+
+-------------------------------------------------------------------
+Tue Apr 14 15:25:08 UTC 2015 - rneuhauser@suse.cz
+
+- prefer python2 in openSUSE-12.3 
+
+-------------------------------------------------------------------
+Tue Apr  7 14:21:42 UTC 2015 - rneuhauser@suse.cz
+
+- rst2html5-1.7.3
+
+-------------------------------------------------------------------
+Tue Mar 31 10:38:29 UTC 2015 - rneuhauser@suse.cz
+
+- rst2html5-1.6
+

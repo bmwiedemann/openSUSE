@@ -1,0 +1,32 @@
+From 5b80abcb5b2dbead332e1c77fa615d6f93fe2218 Mon Sep 17 00:00:00 2001
+From: Stanislav Ochotnicky <sochotnicky@redhat.com>
+Date: Wed, 2 Feb 2011 14:50:17 +0100
+Subject: [PATCH 2/2] Fix compile target
+
+---
+ pom.xml |    9 +++++++++
+ 1 files changed, 9 insertions(+), 0 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index f45d162..2c1a7a9 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -67,6 +67,15 @@
+           </instructions>
+         </configuration>
+       </plugin>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-compiler-plugin</artifactId>
++        <version>2.3.2</version>
++        <configuration>
++          <source>1.7</source>
++          <target>1.7</target>
++        </configuration>
++      </plugin>
+     </plugins>
+   </build>
+ 
+-- 
+1.7.3.5
+

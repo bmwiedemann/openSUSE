@@ -1,0 +1,28 @@
+References: bsc#978173
+The 32bit versions of the media contain a xenpae version along with
+a non pae version. The sles10 sp4 32bit kernel will only boot para-
+virtualized if the pae kernel is selected.
+Note that sles12 and newer has no 32bit release.
+
+Index: virt-manager-2.2.0/virtinst/install/urldetect.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtinst/install/urldetect.py
++++ virt-manager-2.2.0/virtinst/install/urldetect.py
+@@ -533,9 +533,14 @@ class _SuseDistro(_RHELDistro):
+ 
+         if self.type == "xen":
+             # Matches Opensuse > 10.2 and sles 10
+-            self._kernel_paths.append(
+-                ("boot/%s/vmlinuz-xen" % tree_arch,
+-                 "boot/%s/initrd-xen" % tree_arch))
++            if tree_arch == "i386":
++                self._kernel_paths.append(
++                    ("boot/%s/vmlinuz-xenpae" % tree_arch,
++                     "boot/%s/initrd-xenpae" % tree_arch))
++            else:
++                self._kernel_paths.append(
++                    ("boot/%s/vmlinuz-xen" % tree_arch,
++                     "boot/%s/initrd-xen" % tree_arch))
+ 
+         if str(self._os_variant).startswith(("sles11", "sled11")):
+             if tree_arch == "s390x":

@@ -1,0 +1,17 @@
+--- Makefile-dist	2004-01-22 12:34:16.000000000 +0100
++++ Makefile	2004-01-22 12:34:36.000000000 +0100
+@@ -10,13 +10,7 @@
+ 	sudo python -i preamp.py
+ 
+ $(PLUG).so: $(PLUG).o
+-	g++ -Wall $(OPTS) -shared -o $@ $<
+-
+-.c.s:
+-	gcc -O6 -I/usr/local/include -S $<
+-
+-.cc.o:
+-	g++ -Wall $(OPTS) -I/usr/local/include -c $<
++	g++ -Wall -shared -o $@ $<
+ 
+ tags:
+ 	ctags *.cc *.h

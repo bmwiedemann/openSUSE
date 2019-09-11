@@ -1,0 +1,11 @@
+:summary: A modular Ruby webserver interface
+:version_suffix: '-1_3'
+
+:sources:
+  - rubygem-rack-1_3-rpmlintrc
+
+:preamble: |-
+  BuildRequires:  fdupes
+
+:post_install: |-
+  %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/

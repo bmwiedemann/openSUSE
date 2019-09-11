@@ -1,0 +1,46 @@
+Index: packages/xemacs-packages/apel/install.el
+===================================================================
+--- packages/xemacs-packages/apel/install.el.orig
++++ packages/xemacs-packages/apel/install.el
+@@ -149,14 +149,17 @@
+ 	  (featurep 'meadow) ; for Meadow
+ 	  (and (eq system-type 'windows-nt) ; for NTEmacs
+ 	       (>= emacs-major-version 20)))
+-      (expand-file-name "../../.." exec-directory)
++;;      (expand-file-name "../../.." exec-directory)
++      (expand-file-name "../../.." data-directory)
+     (expand-file-name "../../../.." data-directory)))
+ 
+ (defvar install-elisp-prefix
+-  (if (>= emacs-major-version 19)
++  (if (and (not (featurep 'xemacs)) (>= emacs-major-version 19))
+       "site-lisp"
++    (if (featurep 'xemacs)
++	"xemacs-packages"
+     ;; v18 does not have standard site directory.
+-    "local.lisp"))
++      "local.lisp")))
+ 
+ (defun install-detect-elisp-directory (&optional prefix elisp-prefix
+ 						 allow-version-specific)
+@@ -189,16 +192,15 @@
+ 							      "\\\\" "/"))))
+ 		    (throw 'tag (car rest))))
+ 	    (setq rest (cdr rest)))))
+-      (expand-file-name (concat (if (and (not (featurep 'xemacs))
+-					 (or (>= emacs-major-version 20)
+-					     (and (= emacs-major-version 19)
+-						  (> emacs-minor-version 28))))
++      (expand-file-name (concat (if (or (>= emacs-major-version 20)
++					(and (= emacs-major-version 19)
++					     (> emacs-minor-version 28)))
+ 				    "share/"
+ 				  "lib/")
+ 				(cond
+ 				 ((featurep 'xemacs)
+ 				  (if (featurep 'mule)
+-				      "xmule/"
++				      "xemacs/"
+ 				    "xemacs/"))
+ 				 ;; unfortunately, unofficial mule based on
+ 				 ;; 19.29 and later use "emacs/" by default.

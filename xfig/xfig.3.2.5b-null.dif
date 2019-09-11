@@ -1,0 +1,49 @@
+---
+ src/w_dir.c      |    4 ++++
+ src/w_library.c  |    2 ++
+ src/w_srchrepl.c |    3 +++
+ 3 files changed, 9 insertions(+)
+
+--- src/w_dir.c
++++ src/w_dir.c	2016-09-22 08:47:20.164004194 +0000
+@@ -127,6 +127,8 @@ FileSelected(Widget w, XtPointer client_
+ {
+     XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
+ 
++    if (!ret_struct)
++	return;
+     strcpy(CurrentSelectionName, ret_struct->string);
+     FirstArg(XtNstring, CurrentSelectionName);
+     if (browse_up) {
+@@ -158,6 +160,8 @@ DirSelected(Widget w, XtPointer client_d
+ {
+     XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
+ 
++    if (!ret_struct)
++	return;
+     strcpy(CurrentSelectionName, ret_struct->string);
+     DoChangeDir(CurrentSelectionName);
+ }
+--- src/w_library.c
++++ src/w_library.c	2016-09-22 08:47:20.164004194 +0000
+@@ -476,6 +476,8 @@ NewObjectSel(Widget w, XtPointer closure
+     int		    new_obj;
+     XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
+ 
++    if (!ret_struct)
++	return;
+     new_obj = ret_struct->list_index;
+     if (icons_made) {
+ 	/* unhighlight the current view icon */
+--- src/w_srchrepl.c
++++ src/w_srchrepl.c	2016-09-22 08:47:20.164004194 +0000
+@@ -883,6 +883,9 @@ spell_select_word(Widget widget, XtPoint
+ {
+     XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
+ 
++    if (!ret_struct)
++	return;
++
+     /* make correct button and correction entry sensitive */
+     XtSetSensitive(correct_button, True);
+     XtSetSensitive(correct_word, True);

@@ -1,0 +1,35 @@
+From d7cfa01b0f7a36acaa365dccaf0be32ab6ec8d5f Mon Sep 17 00:00:00 2001
+From: Oliver Kurz <okurz@suse.de>
+Date: Fri, 9 Aug 2019 15:23:05 +0200
+Subject: [PATCH] Prevent warning about undefined object on closed channels
+
+This prevents warnings like
+
+```
+(in cleanup) Can't call method "_handle" on an undefined value at /usr/lib/perl5/vendor_perl/5.18.2/Mojo/RabbitMQ/Client.pm line 354.
+```
+
+as reported in https://github.com/inway/mojo-rabbitmq-client/issues/30
+---
+ lib/Mojo/RabbitMQ/Client.pm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Mojo/RabbitMQ/Client.pm b/lib/Mojo/RabbitMQ/Client.pm
+index 03d61b1..cc0723a 100644
+--- a/lib/Mojo/RabbitMQ/Client.pm
++++ b/lib/Mojo/RabbitMQ/Client.pm
+@@ -351,9 +351,9 @@ sub _connect {
+ 
+       # Connection established
+       $stream->on(timeout => sub { $self->_error($id, 'Inactivity timeout') });
+-      $stream->on(close => sub { $self->_handle($id, 1) });
++      $stream->on(close => sub { $self && $self->_handle($id, 1) });
+       $stream->on(error => sub { $self && $self->_error($id, pop) });
+-      $stream->on(read => sub { $self->_read($id, pop) });
++      $stream->on(read => sub { $self && $self->_read($id, pop) });
+       $cb->();
+     }
+   );
+-- 
+2.16.4
+

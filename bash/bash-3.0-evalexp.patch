@@ -1,0 +1,17 @@
+---
+ expr.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- expr.c
++++ expr.c	2018-11-29 08:10:59.542212175 +0000
+@@ -512,8 +512,8 @@ expassign ()
+   value = expcond ();
+   if (curtok == EQ || curtok == OP_ASSIGN)
+     {
+-      int special, op;
+-      intmax_t lvalue;
++      int special, op = -1;
++      intmax_t lvalue = 0;
+ 
+       special = curtok == OP_ASSIGN;
+ 

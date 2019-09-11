@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/Z3Prover/z3.git</param>
+          <param name="changesrevision">6ef3e5e3638fa5a3ba87bf3bc46f5eab81fbabfd</param></service></servicedata>

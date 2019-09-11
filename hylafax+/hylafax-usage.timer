@@ -1,0 +1,17 @@
+#
+# Hylafax usage file for systemd-timers
+# Copyright (c) 2019 Dr. Axel Braun <axel.braun@gmx.de>
+#
+
+[Unit]
+Description=Daily usage statistics for hylafax
+Documentation=man:faxcron(8) 
+Requires=hylafax-hfaxd.service
+
+[Timer]
+OnCalendar=daily
+AccuracySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,38 @@
+This patch fix a problem that crash cannot open a dumpfile which is
+captured by sadump in KASLR enabled kernel.
+
+When KASLR feature is enabled, a kernel is placed on the memory randomly
+and therefore crash cannot open a dumpfile captured by sadump because
+addresses of kernel symbols in System.map or vmlinux are different from
+actual addresses.
+
+To solve this problem, we need to calculate kaslr offset(the difference
+between original symbol address and actual address) and phys_base, and
+adjust symbol table of crash. In the case of dumpfile of kdump, these
+information is included in the header, but dumpfile of sadump does not
+have such a information.
+
+This patch calculate kaslr offset and phys_base to solve this problem.
+Please see the comment in the calc_kaslr_offset() for the detail idea.
+The basic idea is getting register (IDTR and CR3) from dump header, and
+calculate kaslr_offset/phys_base using them.
+
+Signed-off-by: Takao Indoh <indou.takao@jp.fujitsu.com>
+---
+ symbols.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: b/symbols.c
+===================================================================
+--- a/symbols.c
++++ b/symbols.c
+@@ -1151,6 +1151,9 @@ symname_hash_install(struct syment *spn)
+ 			}
+ 		}
+ 	}
++
++	if (SADUMP_DUMPFILE())
++		kt->flags2 |= KASLR_CHECK;
+ }
+ 
+ /*

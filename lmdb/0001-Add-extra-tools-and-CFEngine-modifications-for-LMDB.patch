@@ -1,0 +1,354 @@
+From 1701892d066c626bbd82c9340d6b442f733c33a1 Mon Sep 17 00:00:00 2001
+From: Kristian Amlie <kristian.amlie@cfengine.com>
+Date: Mon, 28 Jul 2014 11:28:38 +0200
+Subject: [PATCH 1/4] Add extra tools and CFEngine modifications for LMDB.
+
+---
+ libraries/liblmdb/lmdump.c   | 128 +++++++++++++++++++++++++++
+ libraries/liblmdb/lmmgr.c    | 201 +++++++++++++++++++++++++++++++++++++++++++
+ libraries/liblmdb/mdb_copy.c |   2 +-
+ 3 files changed, 330 insertions(+), 1 deletion(-)
+ create mode 100644 libraries/liblmdb/lmdump.c
+ create mode 100644 libraries/liblmdb/lmmgr.c
+
+diff --git a/libraries/liblmdb/lmdump.c b/libraries/liblmdb/lmdump.c
+new file mode 100644
+index 000000000000..0e3ee4bb61c2
+--- /dev/null
++++ b/libraries/liblmdb/lmdump.c
+@@ -0,0 +1,128 @@
++/* lmdump.c - Lmdb database dumper
++   Has three modes :
++     -a : print keys in ascii form
++     -A : print keys and values in ascii form
++     -x : print keys and values in hexadecimal form
++     -d : print only the size of keys and values
++ */
++
++#define _XOPEN_SOURCE 500        /* srandom(), random() */
++#include <stdio.h>
++#include <stdlib.h>
++#include <time.h>
++#include <string.h>
++#include "lmdb.h"
++
++static void print_hex(char *s,  int len) 
++{
++    int i = 0;
++    for (i=0; i<len; i++)
++    {
++        printf("%02x", s[i]);
++    }
++}
++
++static void print_usage(void) 
++{
++    printf("Lmdb database dumper\n");
++    printf("Usage: dump -d|-x|-a|-A filename\n\n");
++    printf("Has three modes :\n");
++    printf("    -a : print keys in ascii form\n");
++    printf("    -A : print keys and values in ascii form\n");
++    printf("    -x : print keys and values in hexadecimal form\n");
++    printf("    -d : print only the size of keys and values\n");
++}
++
++static int report_error(int rc) 
++{
++    printf("err(%d): %s\n", rc, mdb_strerror(rc));   
++    return rc;
++}
++
++int main(int argc, char * argv[])
++{
++    int rc;
++    MDB_env *env;
++    MDB_dbi dbi;
++    MDB_val key, data;
++    MDB_txn *txn;
++    MDB_cursor *cursor;
++
++    if (argc<3)
++    {
++        print_usage();
++        return 1;
++    }
++    int mode = -1;
++    if (strcmp(argv[1],"-a") == 0)
++    {
++        mode = 'a';
++    }
++    else if (strcmp(argv[1],"-A") == 0)
++    {
++        mode = 'A';
++    }
++    else if(strcmp(argv[1],"-x") == 0)
++    {
++        mode = 'x';
++    }
++    else if(strcmp(argv[1],"-d") == 0)
++    {
++        mode = 'd';
++    }
++    else
++    {
++        print_usage();
++        return 1;
++    }
++    rc = mdb_env_create(&env);
++    if(rc) return report_error(rc);
++
++    rc = mdb_env_open(env, argv[2], MDB_NOSUBDIR, 0644);
++    if(rc) return report_error(rc);
++
++    rc = mdb_txn_begin(env, NULL, MDB_RDONLY, &txn);
++    if(rc) return report_error(rc);
++
++    rc = mdb_open(txn, NULL, 0, &dbi);
++    if(rc) return report_error(rc);
++
++    rc = mdb_cursor_open(txn, dbi, &cursor);
++    if(rc) return report_error(rc);
++
++    while( (rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT)) ==0)
++    {
++        if (mode == 'A')
++        {
++            printf("key: %p[%d] %.*s\n",
++                key.mv_data, (int) key.mv_size, (int) key.mv_size, (char *) key.mv_data);
++        }
++        else if (mode == 'a')
++        {
++            printf("key: %p[%d] %.*s, data: %p[%d] %.*s\n",
++                key.mv_data, (int) key.mv_size, (int) key.mv_size, (char *) key.mv_data,
++                data.mv_data, (int) data.mv_size, (int) data.mv_size, (char *) data.mv_data);
++        }
++        else if (mode == 'd')
++        {
++            printf("key: %p[%d] ,data: %p[%d]\n",
++                key.mv_data,  (int) key.mv_size,
++                data.mv_data, (int) data.mv_size);
++        }
++        else if (mode == 'x')
++        {
++            printf("key: %p[%d] ", key.mv_data,  (int) key.mv_size);
++            print_hex(key.mv_data,  (int) key.mv_size);
++            printf(" ,data: %p[%d] ", data.mv_data,  (int) data.mv_size);
++            print_hex(data.mv_data,  (int) data.mv_size);
++            printf("\n");
++        }
++    }
++    mdb_cursor_close(cursor);
++    mdb_close(env, dbi);
++
++    mdb_txn_abort(txn);
++    mdb_env_close(env);
++
++    return 0;
++}
+diff --git a/libraries/liblmdb/lmmgr.c b/libraries/liblmdb/lmmgr.c
+new file mode 100644
+index 000000000000..1137d8dc388a
+--- /dev/null
++++ b/libraries/liblmdb/lmmgr.c
+@@ -0,0 +1,201 @@
++/*
++lmmgr.c : Add, remove or manage the maxreaders value of a given database file
++*/
++#include <stdio.h>
++#include <string.h>
++#include "lmdb.h"
++
++static int report_error(int rc) 
++{
++    printf("err(%d): %s\n", rc, mdb_strerror(rc));   
++    return rc;
++}
++
++int openconn(const char *dbfile, MDB_env **env, long int maxreaders)
++{
++/*init*/
++    int rc;
++    rc = mdb_env_create(env);
++    if(rc) return report_error(rc);
++
++    rc = mdb_env_open(*env, dbfile, MDB_NOSUBDIR, 0644);
++    if(rc) return report_error(rc);
++    return 0;
++}
++
++int gettxn(MDB_env *env, MDB_txn **txn, MDB_dbi *dbi)
++{
++    int rc;
++/*setup txn*/
++    rc = mdb_txn_begin(env, NULL, 0, txn);
++    if(rc) return report_error(rc);
++    rc = mdb_open(*txn, NULL, 0, dbi);
++    if(rc) return report_error(rc);
++    return 0;
++}
++
++int committxn(MDB_txn *txn)
++{
++/*commit*/
++    int rc;
++    rc = mdb_txn_commit(txn);
++    return 0;
++}
++
++int aborttxn(MDB_txn *txn)
++{
++/*abort*/
++    int rc;
++    mdb_txn_abort(txn);
++    return 0;
++}
++
++int closeall(MDB_env *env, MDB_txn *txn, MDB_dbi dbi)
++{
++/*end*/
++    mdb_close(env, dbi);
++    mdb_env_close(env);
++    return 0;
++}
++
++int do_put(char *dbfile, char *mykey, char *myval)
++{
++    MDB_env *env;
++    openconn(dbfile, &env, 0);
++
++    MDB_txn *txn;
++    MDB_dbi dbi;
++    gettxn(env, &txn, &dbi);
++
++    int rc;
++    MDB_val key, data;
++    key.mv_data  = mykey;
++    data.mv_data = myval;
++    key.mv_size = strlen(mykey) + 1;
++    data.mv_size = strlen(myval) + 1;
++
++    rc = mdb_put(txn, dbi, &key, &data, MDB_NOOVERWRITE);
++    if (rc == MDB_SUCCESS)
++    {
++        rc = mdb_txn_commit(txn);
++    }
++    else
++    {
++        mdb_txn_abort(txn);
++    }
++
++    mdb_env_close(env);
++    return rc;
++}
++
++int do_del(char *dbfile, char *mykey)
++{
++    MDB_env *env;
++    openconn(dbfile, &env, 0);
++
++    MDB_txn *txn;
++    MDB_dbi dbi;
++    gettxn(env, &txn, &dbi);
++
++    int rc;
++    MDB_val key;
++    key.mv_data  = mykey;
++    key.mv_size = strlen(mykey) + 1;
++
++    rc = mdb_del(txn, dbi, &key, NULL);
++    if (rc == MDB_SUCCESS)
++    {
++        rc = mdb_txn_commit(txn);
++    }
++    else
++    {
++        mdb_txn_abort(txn);
++    }
++
++    mdb_env_close(env);
++    return rc;
++}
++
++int do_init(char *dbfile, unsigned long maxr)
++{
++    MDB_env *env;
++    openconn(dbfile, &env, maxr);
++    mdb_env_close(env);
++    return 0;
++}
++
++int do_stat(char *dbfile)
++{
++    int rc;
++    MDB_env *env;
++    openconn(dbfile, &env, 0);
++
++    MDB_stat stat;
++    MDB_envinfo info;
++
++    rc = mdb_env_stat(env, &stat);
++    rc = mdb_env_info(env, &info);
++    printf("me_maxreaders=%ld\n", info.me_maxreaders);
++    mdb_env_close(env);
++    return 0;
++}
++
++int main(int argc, char *argv[])
++{
++    if (argc < 3)
++    {
++        goto fail;
++    }
++
++    if (!strcmp(argv[1], "put"))
++    {
++        if (argc == 5)
++        {
++            int rc = do_put(argv[2], argv[3], argv[4]);
++            return rc;
++        }
++    }
++    else if (!strcmp(argv[1], "del"))
++    {
++        if (argc == 4)
++        {
++            int rc = do_del(argv[2], argv[3]);
++            return rc;
++        }
++    }
++    else if (!strcmp(argv[1], "init"))
++    {
++        if (argc == 3)
++        {
++            int rc = do_init(argv[2], 0L);
++            return rc;
++        }
++        else if (argc == 5 && !strcmp(argv[3], "-m"))
++        {
++            int rc = do_init(argv[2], atol(argv[4]));
++            do_stat(argv[2]);
++            return rc;
++        }
++    }
++    else if (!strcmp(argv[1], "maxr"))
++    {
++        if (argc == 3)
++        {
++            int rc = do_stat(argv[2]);
++            return rc;
++        }
++    }
++
++fail:
++    printf("Usage :\n");
++    printf("Add a key and value to a DB file :\n");
++    printf("\tlmmgr put dbfile key value\n");
++    printf("Remove a key from a DB file :\n");
++    printf("\tlmmgr del dbfile key\n");
++    printf("Set a new maxreaders value of a DB file :\n");
++    printf("\tlmmgr init dbfile [-m maxreaders]\n");
++    printf("Give maxreaders value of a DB file :\n");
++    printf("\tlmmgr maxr dbfile\n");
++
++    return 1;
++}

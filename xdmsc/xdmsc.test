@@ -1,0 +1,32 @@
+                        Testform für XDMSC
+                        ==================
+
+29.11.2005: Version 0.4
+Maintainer: werner
+
+Vorraussetzungen:
+=================
+
+X muss installiert sein.
+X-Server muss konfiguriert sein.
+Die Variablen START_RX, RX_XDMCP und RX_RHOST
+müssen in /etc/rc.config gesetzt sein.
+
+
+Eine Zeile mit
+
+7:2:respawn:+/sbin/init.d/rx tty7
+
+sollte in /etc/inittab enhalten sein.
+
+Starten:
+========
+
+Im Runlevel 2 einfach `init q' aufrufen,
+sonstige Runlevels mit `init 2' verlassen.
+
+Ergebnisse:
+==========
+
+Je nach Wahl von RX_XDMCP und RX_RHOST
+ein chooser-Menu oder ein xdm-Fenster oder nichts.

@@ -1,0 +1,26 @@
+Index: pidentd-3.0.19/src/k_linux.c
+===================================================================
+--- pidentd-3.0.19.orig/src/k_linux.c
++++ pidentd-3.0.19/src/k_linux.c
+@@ -14,6 +14,7 @@
+ 
+ #include "config.h"
+ 
++#include <string.h>
+ #include <stdio.h>
+ #include <syslog.h>
+ #include <errno.h>
+Index: pidentd-3.0.19/src/main.c
+===================================================================
+--- pidentd-3.0.19.orig/src/main.c
++++ pidentd-3.0.19/src/main.c
+@@ -21,6 +21,9 @@
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <grp.h>
+ #include <signal.h>
+ 
+ #include "pidentd.h"

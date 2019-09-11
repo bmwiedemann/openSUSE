@@ -1,0 +1,35 @@
+---
+description_paragraphs: 1
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#preamble: |-
+# BuildRequires:  gcc-c++
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+post_install: |-
+ VERSION=$(echo %{version} | sed -e "s|\.|_|g")
+ pushd %buildroot%_bindir >/dev/null
+ for file in *; do
+     mv -v $file $file-${VERSION}
+ done
+ popd >/dev/null
+ pushd %buildroot%_mandir/man1
+ for file in *.1; do
+     mv -v $file ${file/.1/}-${VERSION}.1
+ done
+ popd >/dev/null
+ pushd %buildroot%_mandir/man3
+ for file in *.3pm; do
+     mv -v $file ${file/.3pm/}-${VERSION}.3pm
+ done
+ popd >/dev/null
+license: GPL-1.0+ or Artistic-1.0
+#skip_noarch: 1
+#custom_build: -
+#./Build build flags=%{?_smp_mflags} --myflag

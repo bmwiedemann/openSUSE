@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:40:22 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update descriptions.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:34 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  1 08:59:46 UTC 2017 - fezhang@suse.com
+
+- Update to version 0.1.27:
+  + Fix another reproducibility issue in the generated
+    documentation, caught by Debian Reproducible.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Fri Dec 16 17:20:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.26:
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Fri Jul  1 15:29:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.25:
+  + New word break APIs for more thread-safety.
+  + Fix compilation error and warning with GCC 6.
+  + Do not test word breaking if dictionary is disabled.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Mon Nov 30 08:58:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.1.24:
+  + Fix infinite loop caused by optimization in previous version.
+    (deb#805703).
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Thu Nov 12 23:22:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.23:
+  + Correctly check doxygen version on configure.
+  + Threadsafe word breaking.
+  + Improve word breaking performance by 0.1%.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Fri May 15 07:31:58 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.1.22:
+  + Updated word break dictionary.
+  + Improve word breaking performance by 0.38%.
+  + No timestamp on Doxygen-generated doc.
+
+-------------------------------------------------------------------
+Sat Aug 23 21:25:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.1.21:
+  + Updated word break dictionary.
+  + Improve word breaking performance by 8.61%.
+
+-------------------------------------------------------------------
+Sun Oct 27 13:38:15 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.1.20:
+  + Updated word break dictionary.
+  + Fix compiler warnings in test suites.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:11:48 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.1.19:
+  + New API th_validate_leveled() for IM correction with strictness
+    level.
+  + Updated word break dictionary.
+  + Switched to XZ tarball compression.
+
+-------------------------------------------------------------------
+Mon Jun 18 17:09:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.18:
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Tue Feb 21 13:54:47 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.17:
+  + Recognizes acronyms on word breaking.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Wed Jan 18 08:00:30 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.16:
+  + Updated word break dictionary.
+- Change versioned Obsoletes for libthai from <= to < now that we
+  have a new upstream version.
+
+-------------------------------------------------------------------
+Mon Jun 27 12:39:05 CEST 2011 - dimstar@opensuse.org
+
+- Apply SLPP (bnc#674012):
+  + Split out libthai0 subpackage
+  + Move thbrk.tri in new libthai-data subpackage
+  + Add libthai-data Requires to libthai0. This Requires use >=
+    %{version}, instead of =, since the data is not
+    parallel-installable with other versions. We can just hope the
+    data format will stay compatible (and the higher version will
+    be more complete).
+- Change License tag to LGPL-2.1+, as per spdx.org.
+- Do not require libdatrie-devel from the -devel package: it will
+  be added automatically the pkgconfig()-way.
+- Adjust baselibs.conf to follow the SLPP name change.
+- Change Group of the -devel package to be Development/Languages/C
+  and C++ instead of System/Libraries.
+- Stop using source services. Factory is moving away from it and a
+  different approach to verify the authenticity of the tarballs is
+  being implemented (by using the Source URL).
+- spec file cleanups.
+
+-------------------------------------------------------------------
+Fri Apr 29 22:58:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to 0.1.15:
+  + Updated word break dictionary.
+- Use source services: download_url, recompress, set_version.
+
+-------------------------------------------------------------------
+Tue Feb 22 15:21:51 CET 2011 - vuntz@opensuse.org
+
+- Add missing baselibs.conf.
+
+-------------------------------------------------------------------
+Sun Feb 28 15:10:31 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.14:
+  + Fix crash on corrupted dictionary file; now it fails quietly
+    instead.
+  + License clarification on individual source files.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
+Sun Jan 17 20:09:00 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.13:
+  + Fix integer overflow vulnerabilities (CVE-2009-4012).
+  + Updated word break dictionary.
+- Changes from version 0.1.12:
+  + Improved unknown words boundary.
+  + Add symbol versioning.
+  + Updated word break dictionary.
+- Changes from version 0.1.11:
+  + Diminished link flags in pkg-config info, for less dependency
+    for clients.
+  + More words in word break dictionary.
+- Changes from version 0.1.10:
+  + More dictionary capacity with libdatrie 0.2.
+  + Dictionary clean-up on unload.
+  + Some performance fine-tuning.
+  + More words in word break dictionary.
+- Drop warnings.patch: fixed upstream.
+- Drop bug-569615_01_integer-overflow-vuln.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jan 16 19:54:50 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+
+-------------------------------------------------------------------
+Wed May 21 16:30:45 CEST 2008 - sbrabec@suse.cz
+
+- Fixed devel depenendencies.
+
+-------------------------------------------------------------------
+Mon Apr  7 16:02:06 CEST 2008 - uli@suse.de
+
+- update -> 0.1.9 (bug #326002)
+  * Rewritten itemization for line breaker, for conformance to UAX#14.
+  * Revised dictionary for compound words support.
+  * Improved handling of white spaces in word break routine, for better quality
+    line wrapping in Gecko libthai component.
+  * More words in word break dictionary.
+  * Excessive exported symbols are eliminated from library.
+  * Rewritten word break routines:
+    - Split dictionary from source, thus new dependency on libdatrie
+    - New word break routine from scratch, for maintainability
+  * Improved dictionary for word segmentation:
+    - New word list preparation process from multiple categories
+    - New contemporary words not included in Royal Institute dictionary,
+      as well as some proper names for countries and locations, etc.
+    - Fine-tuned dictionary to get rid of some potential ambiguities
+  * Documentation with doxygen.
+  * Add missing APIs.
+  * Fix compiler warnings.
+  * Improved word breaking. Space is now also considered a breakable point.
+  * More PUA support for Mac fonts rendering.
+  * Start maintaining library version info from now on.
+- created devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 15 12:57:11 CEST 2005 - uli@suse.de
+
+- initial package
+

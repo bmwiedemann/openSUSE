@@ -1,0 +1,386 @@
+-------------------------------------------------------------------
+Tue Jun 11 12:38:04 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue Apr  9 06:36:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing dependencies for Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Dec  4 11:28:47 UTC 2017 - suse+build@de-korte.org
+
+- update to 0.68.0
+  * authldaplib.cpp: Rewrite authldap in modern C++. Autodetect
+    and automatically reload authldaprc when it is changed. No server
+    restart is required.
+  * authldaplib.cpp (operator): Fix compilation warning.
+  * checkpassword.c (do_authcheckpassword): Check for a null return
+    value from crypt().
+  * authsqlite, authmysql, authpgsql: Rewrite these modules in
+    modern C++. Autodetect and automatically reload the configuration
+    file when it's changed, no server restart is needed.
+  * userdb/userdbpw.c (main): Use bcrypt_gensalt() on OpenBSD
+  * courierauth.h: Move declarations from cramlib.h into courierauth.h,
+    exporting them as part of the public API.
+  * configure.ac: Rebuild against updated courier-unicode API.
+  
+-------------------------------------------------------------------
+Tue Apr 11 10:31:26 UTC 2017 - jengelh@inai.de
+
+- Drop redundant %clean section. Dissolve %__-type macros.
+
+-------------------------------------------------------------------
+Fri Mar 17 19:40:21 UTC 2017 - kukuk@suse.com
+
+- Don't install init script if we use systemd
+
+-------------------------------------------------------------------
+Sat Feb 18 17:31:33 UTC 2017 - kukuk@suse.com
+
+- Don't call insserv if we use systemd
+
+-------------------------------------------------------------------
+Mon May 16 12:46:18 UTC 2016 - chris@computersalat.de
+
+- udpate to 0.66.4
+  * authgetconfig.c (authgetconfig): avoid invalid memory read.
+
+-------------------------------------------------------------------
+Wed Aug  5 00:33:31 UTC 2015 - chris@computersalat.de
+
+- update to 0.66.3
+  * authdaemon.c: auth_callback_default_autocreate, default callback
+  used by clients that autocreates a home directory, if one does not
+  exist already.
+- update to 0.66.2
+  * Update to courier-unicode 1.2.
+  * liblock, couriertls: fix compilation for OpenBSD -- based on a
+  patch from Giovanni Bechis <giovanni@paclan.it>.
+  * checkpassword.c (safe_strcmp): Fix bug introduced in 2014-04-27.
+  * courier.spec.in: Update to use systemd macros.
+  * Check for NULL return value from crypt().
+  * Factored out the unicode library into a separate package.
+- add BuildRequires courier-unicode-devel
+- fix deps (SLE_11_SP4) to build againts pgsql >= 9.1
+
+-------------------------------------------------------------------
+Sun Nov 09 03:07:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in preun script
+
+-------------------------------------------------------------------
+Thu Jul 31 12:40:09 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Tue Mar 18 17:20:42 UTC 2014 - chris@computersalat.de
+
+- fix missing LOGGEROPTS in authdaemonrc
+  * added patch courier-authlib-authdaemonrc.patch
+
+-------------------------------------------------------------------
+Mon Mar 17 20:59:45 UTC 2014 - chris@computersalat.de
+
+- fix for bnc#751125
+  * maildrop can not access courier-authlib socket
+
+-------------------------------------------------------------------
+Sat Mar 15 00:23:49 UTC 2014 - chris@computersalat.de
+
+- update to 0.66.1
+  * Makefile.am: run sysconftool on authsqliterc, in install-configure.
+    Remove .la files for authentication modules, keep then for actual
+    API libraries. Install them in the -devel RPM package.
+  * userdb/Makefile.am: Stub for the pw2userdb(8) man page.
+  * courier-authlib.service.in: Added Install target.
+- added systemd service file
+- add own tmpfiles.d file
+  * courier-authlib.tmpfile
+- remove obsolete makedat patch
+
+-------------------------------------------------------------------
+Mon Nov 11 13:51:33 UTC 2013 - chris@computersalat.de
+
+- update to 0.66
+  * sqlite fixes.
+  * authldaplib.c (ldapopen): Added LDAP_INITBIND option.
+  * Makefile.am: chmod $(pkglibexecdir) explicitly to 755
+  * courier-authlib.spec.in: Typo.
+- add Source sig file
+- add makedat patch
+  * fix wrong source path to install makedatprog
+
+-------------------------------------------------------------------
+Tue Jan 15 17:39:02 UTC 2013 - chris@computersalat.de
+
+- update to 0.65.0
+  * New authsqlite authentication module.
+  * Fixed: when using authpgsql, if the Postgres server goes down
+    authpgsql will then start leaking memory.
+  * Fixed error codes returned by several authentication modules that
+    prevent certain combinations of authentication modules from being
+    used together.
+- fix deps
+  * add missing pkg-config
+- add module sqlite
+
+-------------------------------------------------------------------
+Mon Sep 24 10:57:31 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-3.0-with-openssl-exception
+  Contains an exception to permit linking with openssl
+
+-------------------------------------------------------------------
+Fri Sep 21 11:32:28 UTC 2012 - chris@computersalat.de
+
+- update to 0.64.0
+  * authpam.c (callback_pam): Call pam_end() after an authentication
+    attempt.
+  * Makefile.am: Renamed authstaticlist.h to courierauthstaticlist.h, and
+    added it to the list of header files that 'make install' puts into
+    includedir.
+  * Fix gcc 4.6 warnings
+  * courier.spec.in: switch to systemd.
+  * Fix autoconf warnings.
+  * courier-authlib.spec: Make rmplint happy.
+- 0.63.1
+  * Remove the bundled libtdl library. Require the system-installed
+    libltdl library.
+  * authmysqllib.c (auth_mysql_setpass): Fix crash if DEFAULT_DOMAIN
+    is not set in the config file.
+- fix license (GPL-2.0+ -> GPL-3.0+)
+
+-------------------------------------------------------------------
+Wed Oct 26 20:03:53 UTC 2011 - chris@computersalat.de
+
+- fix init script
+  * add ldap mysql to Should-Start/Stop
+
+-------------------------------------------------------------------
+Wed Sep 21 23:08:05 UTC 2011 - chris@computersalat.de
+
+- change --with-authdaemonvar to /var/run/{name}
+- rework init script
+  * create PID DIR
+- some spec cleanup
+
+-------------------------------------------------------------------
+Sat Sep 17 23:54:20 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use _smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Feb 24 22:00:58 UTC 2010 - chris@computersalat.de
+
+- update to 0.63.0
+  * authldapescape.c: Factor out LDAP string escape function.
+  * authldap.schema: Various fixes
+  * authldap.ldif (olcObjectClasses): Create LDIF format schema from
+    authldap.schema
+  * authoption.c (auth_getoptionenvint): For account options that
+    are parsed to an int, an option value that begins with t, T, y, or Y
+    is evaluated as 1, other alphabetic values as 0; so that 'true'
+    or 'yes' get evaluated as 1.
+
+-------------------------------------------------------------------
+Sat Sep  5 17:48:07 CEST 2009 - chris@computersalat.de
+
+- update to new version 0.62.4
+    * Various compilation fixes for gcc 4.4 and libtool 2.2
+  o 0.62.3
+    * courier-authlib.spec.in (MAKEFLAGS): Explicit path to ./configtmp
+    * README_authlib.sgml: Fixed documentation of authpipe AUTH command.
+    * authmigrate.in (rc): Add /etc/courier-imap
+- removed define for authdaemonvar
+- fixed DEBUG_LOGIN
+  o added export DEBUG_LOGIN to init script
+- rpmlint
+  o addFilter incoherent-init-script-name courier-authdaemon
+  o addFilter shlib-policy-missing-suffix
+
+-------------------------------------------------------------------
+Wed Sep  2 12:49:01 UTC 2009 - chris@computersalat.de
+
+- spec mods
+  o added norootforbuild
+  o define authdaemondir
+  o post authmigrate, sysconftool
+
+-------------------------------------------------------------------
+Thu Aug 20 10:38:07 CEST 2009 - chris@computersalat.de
+
+- cleanup spec file
+  o fixed header
+  o removed all #---- lines
+  o fixed devel Group
+  o added configure macro
+- rpmlint
+  o added rpmlintrc
+  o subpackages libauth[name] back to subpackage-[name]
+    rpmlint warning can be ignored for libauth[names]
+  o fixed non-conffile-in-etc
+
+-------------------------------------------------------------------
+Mon Apr 13 23:22:21 2009 - chris@computersalat.de - 0.62.2
+
+- update to new version 0.62.2
+  o Makefile.am: Compatibility fix for bash 4
+- 0.62.1
+  o cryptpassword.c: Fix compiler warnings
+  o checkpasswordsha1.c: Fix compiler warnings.
+  o authldaplib.c (auth_ldap_enumerate): Fix typo.
+- 0.62.0
+  o authpgsqllib.c: Use PQescapeStringConn() instead of removing all
+    apostrophes from query parameters. This fixes a potential SQL injection
+    vulnerability if the Postgres database uses a non-Latin locale.
+- 0.61.1
+  o authsasllogin.c (authsasl_login): Fix memory leak.
+  o authldaplib.c (read_env): Fix resource leak. authldap did not close
+    the authldaprc configuration file after reading it on startup.
+  o authldaplib.c (auth_ldap_do2): Fix used ptr after free(). When an
+    email map feature is enabled, and the map failed, the resulting
+    error message was formed from a buffer that was recently free()ed.
+  o authpipe.c (auth_pipe): Fix memory leak. If the fork() system call
+    failed (unlikely), a buffer wasn't getting released.
+
+-------------------------------------------------------------------
+Sat Nov 15 16:12:11 2008 - chris@computersalat.de - 0.61.0  
+
+- rpmlint  
+  o set devel Group  
+  o removed dot 'Summary ended with dot'  
+  o renamed subpackages[names] to libauth[names]  
+  o replaced macro run_ldconfig with /sbin/ldconfig  
+  o modified post: insserv authdaemon  
+    activate syslog if not running (build error)  
+
+-------------------------------------------------------------------
+Fri Sep  5 15:26:06 CEST 2008 - hvogel@suse.de
+
+- update to version 0.61.0
+* Cleanup: always compile md5, sha* and hmac stuff, and remove all
+  conditionally-compiled cruft. Move SASL list to an internal header.
+  Add client-side support for AUTH EXTERNAL.
+* authsasl.c (auth_sasl_ex): auth_sasl_ex() supercedes auth_sasl(),
+  invokes auth_sasl() for non-EXTERNAL SASL methods, implements EXTERNAL
+  by going through the motions, then setting up a dummy authentication
+  request.
+* authdaemon.c (auth_generic): Check for the dummy EXTERNAL
+  authentication request, and handle it by invoking auth_getuserinfo(),
+  rather than sending it down the pipe. This avoid having to implement
+  a stub in every authentication module.
+* authmysqllib.c: Use mysql_set_character_set() instead of SET NAMES
+* authmysqllib.c: Fix domain-less queries.
+* Drop the unmaintained authvchkpw module.
+* authmysqllib.c: Cleanup. Use mysql_real_escape_string instead of
+  crude filtering.
+* More portability fixes.
+- add rpmlintrc (shlib-policy-name-error) for the moment
+  to fix build
+
+-------------------------------------------------------------------
+Sat Aug 16 14:23:44 2008 - chris@computersalat.de - 0.61.0  
+
+- update to new version 0.61.0
+- beautify spec file ;)  
+- fixed BuildRequires for suseversion >= 103  
+  o gdbm-devel  
+  o procps  
+- some rpmlint fixes  
+  o added PreReq coreutils 
+  o removed obsolete X-UnitedLinux from init script  
+    fixed service-names  
+
+-------------------------------------------------------------------
+Mon Apr 14 11:27:57 CEST 2008 - aj@suse.de
+
+- Small changes to make rpmlint happier:
+  * Rename keywords in init scripts
+  * Prerequire /bin/rm
+
+-------------------------------------------------------------------
+Thu Jan 17 13:20:56 CET 2008 - mskibbe@suse.de
+
+- update to version 0.60.2 which
+  o Portability fix for checking the highest available file
+    descriptor
+  o Fix typos
+  o Use OPEN_MAX, instead of hardcoded
+
+-------------------------------------------------------------------
+Fri Jun  8 01:50:18 CEST 2007 - ro@suse.de
+
+- remove explicit requires for mysql-shared (library is required
+  anyway)
+
+-------------------------------------------------------------------
+Wed Apr 25 11:17:06 CEST 2007 - mskibbe@suse.de
+
+- update to version 0.59.3 which includes:
+  o CRAM authentication in vchpw module
+  o bug fixes
+  o updated man pages
+
+-------------------------------------------------------------------
+Thu Mar 29 11:38:28 CEST 2007 - rguenther@suse.de
+
+- Add procps BuildRequires due to interesting configure checks
+
+-------------------------------------------------------------------
+Mon Mar 26 12:27:47 CEST 2007 - rguenther@suse.de
+
+- Add gdbm-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 22 14:16:01 CET 2007 - mskibbe@suse.de
+
+- update to version 0.59.1 which
+  o fix some bugs
+  o Make the spec a little prettier
+  o Change distro-detection to use "rh" and "fc" for version
+    detection, and add support for mandriva
+  o Added the -f option to makeuserdb
+  o Try to recover when the LDAP server closes the
+    persistent socket, for inactivity
+
+-------------------------------------------------------------------
+Mon Sep 18 12:21:24 CEST 2006 - mskibbe@suse.de
+
+- fix Bug 204834 - missing rccourier-authdaemon symlink
+
+-------------------------------------------------------------------
+Tue Aug  1 12:14:40 CEST 2006 - mskibbe@suse.de
+
+- Add mysql, pipe, pgsql sub-packages 
+
+-------------------------------------------------------------------
+Mon Mar 27 11:50:09 CEST 2006 - kukuk@suse.de
+
+- Add missing ldconfig calls
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 13:46:57 CET 2005 - kukuk@suse.de
+
+- Update to 0.58 (enable shadow aging support)
+
+-------------------------------------------------------------------
+Sun Sep 25 19:07:47 CEST 2005 - kukuk@suse.de
+
+- Compile with -DLDAP_DEPRECATED
+
+-------------------------------------------------------------------
+Fri Jul 29 14:00:24 CEST 2005 - kukuk@suse.de
+
+- Initial version
+

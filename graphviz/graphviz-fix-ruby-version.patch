@@ -1,0 +1,19 @@
+--- configure.ac.orig	2019-04-11 15:12:07.607681824 +0200
++++ configure.ac	2019-04-11 14:43:28.508860376 +0200
+@@ -116,6 +116,7 @@
+ 
+ AC_ARG_VAR(LIBPOSTFIX, [subscript to lib, e.g. "/64" for "/usr/lib/64" on Solaris])
+ AC_ARG_VAR(INTGOSIZE, [integer size for go, 32 or 64])
++AC_ARG_VAR(RUBY_VER, [version number of ruby package])
+ 
+ INTGOSIZE=32
+ if test -z "$LIBPOSTFIX"; then
+@@ -1397,7 +1398,7 @@
+           RUBY_INSTALL_DIR="`$RUBY $srcdir/config/config_ruby.rb vendorarchdir`"
+ 	fi
+       ],[
+-        PKG_CHECK_MODULES([RUBY], [ruby-1.9],[
++        PKG_CHECK_MODULES([RUBY], [ruby-${RUBY_VER}],[
+ 	  AC_CHECK_PROG(RUBY,ruby,ruby)
+           if test "x$RUBY" = "x"; then
+             use_ruby="No (ruby not available)"

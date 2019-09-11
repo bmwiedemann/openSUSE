@@ -1,0 +1,39 @@
+NAME = grafana
+SPEC = $(NAME).spec
+
+default: verify-deps clean tar
+
+verify-deps:
+	@which yarn >/dev/null 2>&1 || ( echo "yarn not found; run \`sudo npm install -g yarn\`" && false )
+	@which grunt >/dev/null 2>&1 || ( echo "grunt not found; run \`sudo npm install -g grunt-cli\`" && false )
+
+clean:
+	rm -f $(NAME)-*.tar $(NAME)-*.tar.xz
+
+tar:
+	osc service disabledrun
+	@version=$$( awk '/^Version:/ {print $$2}' $(SPEC) ) && \
+	echo "Package version is $$version" && \
+	basename=$(NAME)-$$version && \
+	tar=$$basename.tar && \
+	tmpdir=$$(mktemp -d -p .) && \
+	cd $$tmpdir && \
+	tar -xf ../$$tar && \
+	cd $$basename && \
+	sed -i 's/base\///' public/sass/base/_fonts.scss && \
+	# patch frontend html template to remove phantomjs dependant link \
+	sed -i 's/<a.*<i class=".*fa-camera">.*<\/a>//g' public/app/features/dashboard/components/ShareModal/template.html && \
+	yarn install --pure-lockfile && \
+	grunt release && \
+	cp -pr tmp/public . && \
+	cp -pr tmp/tools . && \
+	cd .. && \
+	echo "Updating $$basename/tools $$basename/public in tarball..." && \
+	tar -rf ../$$tar $$basename/tools $$basename/public && \
+	# remove phantomjs binary \
+	tar -f ../$$tar --delete $$basename/tools/phantomjs/phantomjs && \
+	# remove go.mod and go.sum as we build exclusively using vendor deps \
+	tar -f ../$$tar --delete $$basename/go.mod $$basename/go.sum && \
+	cd .. && \
+	xz $$tar && \
+	rm -rf $$tmpdir

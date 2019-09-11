@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Sat Nov 10 15:38:32 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update soapy-module version 0.6 -> 0.7
+
+-------------------------------------------------------------------
+Sat May 12 14:03:01 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.3.3
+  * Added check for hackrf_device_list API in header
+  * Fixed getGain() for the Rx AMP due to minus typo
+
+-------------------------------------------------------------------
+Mon Nov 20 19:12:15 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.3.2
+  * Corrected order of gain elements in the Rx direction
+  * Track settings during TX/RX switch for TRX switching
+  * Prevent spin loop in SoapyHackRF::acquireReadBuffer()
+  * Fix edge case in SoapyHackRF::releaseReadBuffer()
+  * Standard style find script for FindLIBHACKRF.cmake
+
+-------------------------------------------------------------------
+Wed Jun 21 13:38:32 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.3.1
+  * Cache discovered HackRF results for claimed devices
+
+-------------------------------------------------------------------
+Fri May  5 12:58:38 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.3.0
+  * Major cleanup for thread safety and buffer management
+  * Added label convention to hackrf discovery routine
+  * Support filtering specific devices by serial number
+  * Switch to format constants in streaming implementation
+
+-------------------------------------------------------------------
+Wed Apr 19 21:47:50 UTC 2017 - mardnh@gmx.de
+
+- renamed packages according the debian package name from upstream
+
+-------------------------------------------------------------------
+Fri Apr 14 20:07:59 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2.2 (tagged release)
+- renamed package from SoapyHackRF to soapy-hackrf
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue Jan 03 21:38:26 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2.2.git1479766706.69600e4:
+  * Fixed debian control Maintainer/Uploaders
+  * Reset buffer counters before activating RX stream
+  * print device args on open
+  * wait for tx to be consumed before switching
+  * hackrf: changelog entry for 0.2.1 release tag
+  * debian: update for soapysdr module API format
+  * created top level changelog
+  * debian: fixed rules executable bit
+  * debian: fix install rule typo
+  * Clarified copyright statements in source files
+  * New transceiver_mode_t enum for HackRF API changes
+  * hackrf: changelog entry for 0.2.2 release tag
+  * Switch to format constants in streaming
+  * cleanup some initialization warnings
+  * fix self test copy typo
+
+-------------------------------------------------------------------
+Tue Dec 08 21:07:11 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.1.0.git1448057283.4f0e41e:
+  + update for SoapySDR 0.4.0
+  + hackrf: version check, and changelog entries for api update
+  + hackrf: tweak bias tx arg info to match others
+  + hackrf:add custom gain distribution algorithm
+  + hackrf:added direct buffer access API support
+  + added RX/TX stream pointer support
+  + fixed bug added CF64 support added burst flage support allow tx/rx switching
+  + hackrf:fixed writeStream parameter type bug
+  + hackrf:optimized code
+  + hackrf:optimized rx/tx stream parameter
+  + hackrf:optimized tx burst end mode code
+  + hackrf: added recent feature additions to the changelog
+  + hackrf:fixed loop which will use 100% CPU
+  + hackrf: fix while loop to contain the sleep
+  + travis: added travis CI to SoapyHackRF
+
+-------------------------------------------------------------------
+Sun Oct 11 19:01:46 UTC 2015 - mardnh@gmx.de
+
+ - initial package

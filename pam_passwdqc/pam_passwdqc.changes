@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Sat Sep 22 06:24:50 UTC 2018 - sean@suspend.net
+
+- Update to passwdqc 1.3.1
+  * The rarely used "non-unix" option to pam_passwdqc was broken
+    (uninitialized pointer): when that option was enabled,
+    pam_passwdqc would either segfault or potentially wrongly
+    conclude that a password is based on the user's information
+    (false positive detection of weak password).
+
+-------------------------------------------------------------------
+Sun Mar  8 23:28:24 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.3.0
+  * Detection of common character sequences has been improved.  This has
+    reduced the number of passing passwords for RockYou top 100k from
+    35 to 18, and for RockYou top 1M from 2333 to 2273 (all of these are
+    with passwdqc's default policy).  I also tested on lists of cracked and
+    not cracked passwords and reviewed the results manually to ensure
+    there's no significant increase in false positives.
+  * Generation of random passphrases with non-default settings has been
+    improved: case toggling has been made optional, possible use of trailing
+    single characters has been added, words are now separated with dashes
+    when different separator characters are not in use, and the range of
+    possible bit sizes of generated passphrases has been expanded (now it is
+    24 to 85 bits for the programs, and 24 to 136 bits for the API).
+    The code has been made more robust: possible NULL pointer returns from
+    crypt(3) are handled correctly, all pre-initialized arrays and structs
+    are declared as "const", greater use of cpp macros for integer constants
+    and some source code comments were added (mostly in passwdqc_random.c).
+  * Darwin (Mac OS X) support has been added to the Makefile
+  * pwqcheck.php, a PHP wrapper function around the pwqcheck program, has
+    been added.
+- Use download Url as source
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Tue Feb 21 13:54:49 CET 2012 - mc@suse.de
+
+- update to version 1.2.2
+- When matching against the reversed new password, always pass the
+  original non-reversed new password (possibly with a substring
+  removed) into is_simple(), but remove or check the correct
+  substring in is_based() considering that the matching is possibly
+  being done against the reversed password.
+- New command-line options for pwqcheck: -1 and -2 for reading just
+  1 and just 2 lines from stdin, respectively (instead of reading 3
+  lines, which is the default), --multi for checking multiple
+  passphrases at once (until EOF).
+- With randomly-generated passphrases, encode more entropy per
+  separator character (by increasing the number of different
+  separators from 8 to 16) and per word (by altering the case of
+  the first letter of each word), which increases the default
+  generated passphrase size from 42 to 47 bits.
+- Substring matching has been enhanced to partially discount rather
+  than fully remove weak substrings, support leetspeak, and detect
+  some common sequences of characters (sequential digits, letters in
+  alphabetical order, adjacent keys on a QWERTY keyboard).
+- Detect and allow passphrases with non-ASCII characters in the words.
+- A number of optimizations have been made resulting in significant
+  speedup of passwdqc_check() on real-world passwords.
+
+-------------------------------------------------------------------
+Wed Apr  7 14:45:09 CEST 2010 - ro@suse.de
+
+- fix baselibs.conf (package is called libpasswdqc0) 
+
+-------------------------------------------------------------------
+Thu Mar  4 16:10:07 CET 2010 - mc@suse.de
+
+- update to version 1.1.4
+  * new library for password checking
+  * tools for password checking and password generation 
+
+-------------------------------------------------------------------
+Mon Feb  1 12:19:35 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jun 24 19:33:11 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 11:31:34 CEST 2008 - mc@suse.de
+
+- update to version 1.0.5
+  - Replaced the separator characters with some of those defined by RFC 3986
+    as being safe within "userinfo" part of URLs without encoding.
+  - Reduced the default value for the N2 parameter to min=... (the minimum
+    length for passphrases) from 12 to 11.
+  - Corrected the potentially misleading description of N2 (Debian bug #310595).
+  - Applied minor grammar and style corrections to the documentation, a
+    pam_passwdqc message, and source code comments.
+  - Changed Makefile to pass list of libraries to linker after regular
+    object files, to fix build with -Wl,--as-needed.
+  - Fixed potential memory leak in conversation wrapper.
+  - Restricted list of global symbols exported by the PAM module
+    to standard set of six pam_sm_* functions.
+
+-------------------------------------------------------------------
+Thu Aug 10 12:17:02 CEST 2006 - mc@suse.de
+
+- version 1.0.2 branched from pam-modules 
+

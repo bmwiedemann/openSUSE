@@ -1,0 +1,670 @@
+-------------------------------------------------------------------
+Tue Apr 23 12:03:45 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.21
+  * Use MAP_SHARED for read-only file mappings on MacOS and Android
+  * Changed prbit.h to use builtin function on aarch64
+  * Test program build fixes
+  * Minor fixes to support unified builds
+  * Update library copyright notices
+  * Removed Gonk/B2G references
+
+-------------------------------------------------------------------
+Sun Oct 21 07:30:43 UTC 2018 - wr@rosenauer.org
+
+- update to version 4.20
+  * abstract socket address support for Linux (incl. Android)
+  * aarch64 support for Windows
+  * support for riscv64
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:35 UTC 2018 - cgrobertson@suse.com
+
+- update to version 4.19
+  * changed order of shutdown cleanup to avoid a crash on Mac OSX
+  * build compatibility with Android NDK r16 and glibc 2.26
+
+-------------------------------------------------------------------
+Wed Feb  7 21:08:01 UTC 2018 - wr@rosenauer.org
+
+- update to version 4.18
+  * removed HP-UX DCE threads support
+  * improvements for the Windows implementation of PR_SetCurrentThreadName
+  * fixes for the Windows implementation of TCP Fast Open
+
+-------------------------------------------------------------------
+Sun Oct  1 21:21:50 UTC 2017 - wr@rosenauer.org
+
+- update to version 4.17
+  * changes to the Windows implementation of the networking code
+    required for Firefox 57
+  * a FreeBSD build fix (bmo#1391716)
+
+-------------------------------------------------------------------
+Tue Sep 12 09:01:01 UTC 2017 - wr@rosenauer.org
+
+- update to version 4.16
+  * contains various correctness fixes
+    see
+    https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&query_format=advanced&product=NSPR&target_milestone=4.16
+    for details
+
+-------------------------------------------------------------------
+Sat Aug  5 13:09:55 UTC 2017 - wr@rosenauer.org
+
+- update to version 4.15
+  * added TCP Fast Open functionality
+  * various correctness fixes
+
+-------------------------------------------------------------------
+Wed Apr 26 21:23:54 UTC 2017 - wr@rosenauer.org
+
+- update to version 4.14
+  * a socket without PR_NSPR_IO_LAYER will no longer trigger
+    an assertion when polling
+  * the PRNetAddr structure has been extended on Windows (bmo#1313612)
+  * allow sending a zero size UDP message on Windows (bmo#1331810)
+
+-------------------------------------------------------------------
+Wed Jan 18 21:11:42 UTC 2017 - wr@rosenauer.org
+
+- update to version 4.13.1
+  * The previously released version 4.13 had changed pipes to be
+    nonblocking by default, and as a consequence, PollEvent was changed
+    to not block on clear.
+    The NSPR development team received reports that these changes
+    caused regressions in some applications that use NSPR, and it
+    has been decided to revert the changes made in NSPR 4.13.
+    NSPR 4.13.1 restores the traditional behavior of pipes and PollEvent.
+- update to version 4.13
+  NSPR 4.13 has the following bug fixes:
+  * PL_strcmp (and others) were fixed to return consistent results
+    when one of the arguments is NULL.
+  * PollEvent was fixed to not block on clear.
+  * Pipes are always nonblocking.
+  * PR_GetNameForIdentity: added thread safety lock and bound checks.
+  * Removed the PLArena freelist.
+  * Avoid some integer overflows.
+  * fixed several comments.
+
+-------------------------------------------------------------------
+Thu Nov 17 14:38:10 UTC 2016 - schwab@suse.de
+
+- Properly run testsuite
+
+-------------------------------------------------------------------
+Mon Feb 29 15:31:53 UTC 2016 - wr@rosenauer.org
+
+- update to version 4.12
+  * added a PR_GetEnvSecure function, which attempts to detect if
+    the program is being executed with elevated privileges, and
+    returns NULL if detected. It is recommended to use this function
+    in general purpose library code.
+  * fixed a memory allocation bug related to the PR_*printf functions
+  * exported API PR_DuplicateEnvironment, which had already been
+    added in NSPR 4.10.9
+  * added support for FreeBSD aarch64
+  * several minor correctness and compatibility fixes
+
+-------------------------------------------------------------------
+Sat Dec 19 16:40:08 UTC 2015 - wr@rosenauer.org
+
+- update to version 4.11
+  * Enable atomic instructions on mips (bmo#1129878)
+  * Fix mips assertion failure when creating thread with custom
+    stack size (bmo#1129968)
+
+-------------------------------------------------------------------
+Sun Oct 25 14:42:59 UTC 2015 - wr@rosenauer.org
+
+- update to version 4.10.10 (bnc#952810)
+  * MFSA 2015-133/CVE-2015-7183 (bmo#1205157)
+    memory corruption issues
+
+-------------------------------------------------------------------
+Fri Aug 21 14:00:21 UTC 2015 - wr@rosenauer.org
+
+- update to version 4.10.9
+  * bmo#1021167: Leak of |poll_list| on failure in _MW_PollInternal
+  * bmo#1030692: Make compiling nspr on windows possible again.
+  * bmo#1088790: dosprint() doesn't support %zu and other size formats
+  * bmo#1130787: prtime.h does not compile with MSVC's /Za (ISO C/C++
+                 conformance) option
+  * bmo#1153610: MIPS64: Add support for n64 ABI
+  * bmo#1156029: Teach clang-analyzer about PR_ASSERT
+  * bmo#1160125: MSVC version detection is broken CC is set to a wrapper
+                 (like sccache)
+  * bmo#1163346: Add NSPR support for FreeBSD mips/mips64
+  * bmo#1169185: Add support for OpenRISC (or1k)
+  * bmo:1174749: Remove configure block for iOS that uses MACOS_SDK_DIR
+  * bmo#1174781: PR_GetInheritedFD can use uninitialized variables
+
+-------------------------------------------------------------------
+Wed Feb  4 16:29:31 UTC 2015 - coolo@suse.com
+
+- add the changes file as source so the .src.rpm builds (used for
+  fake build time)
+
+-------------------------------------------------------------------
+Thu Jan 29 09:06:29 UTC 2015 - wr@rosenauer.org
+
+- update to version 4.10.8
+  * bmo#573192: remove the stack-based PRFileDesc cache.
+  * bmo#756047: check for _POSIX_THREAD_PRIORITY_SCHEDULING > 0 instead
+                of only checking if the identifier is defined.
+  * bmo#782113: Add NSPR support for FreeBSD ppc/ppc64/arm.
+  * bmo#782124: Implement PR_GetPhysicalMemorySize on FreeBSD/DragonFly.
+  * bmo#1060292: Make PR_Assert() and PR_Abort() output visible in the
+                 logcat on Android.
+  * bmo#1089908: Fix variable shadowing in _PR_MD_LOCKFILE. Use
+                 PR_ARRAY_SIZE to get the array size of _PR_RUNQ(t->cpu).
+  * bmo#1105144: Two places in NSPR's pruthr.c cast a pointer to long,
+                 which isn't correct on 64-bit Windows.
+  * bmo#1060401: change import library name under mingw.
+  * bmo#1106600: Replace PR_ASSERT(!"foo") with PR_NOT_REACHED("foo") t
+                 fix clang -Wstring-conversion warnings.
+  * bmo#1107063: link NSPR libs with -soname on OpenBSD.
+  * bmo#1120772: Avoid defining snprintf when MSVC provides it.
+
+-------------------------------------------------------------------
+Fri Aug 29 11:47:40 UTC 2014 - wr@rosenauer.org
+
+- update to version 4.10.7
+  * bmo#836658: VC11+ defaults to SSE2 builds by default.
+  * bmo#979278: TSan: data race nsprpub/pr/src/threads/prtpd.c:103
+                PR_NewThreadPrivateIndex.
+  * bmo#1026129: Replace some manual declarations of MSVC intrinsics with
+                 #include <intrin.h>.
+  * bmo#1026469: Use AC_CHECK_LIB instead of MOZ_CHECK_PTHREADS. Skip
+                 compiler checks when using MSVC, even when $CC is
+                 not literally "cl".
+  * bmo#1034415: NSPR hardcodes the C compiler to cl on Windows.
+  * bmo#1042408: Compilation fix for Android > API level 19.
+  * bmo#1043082: NSPR's build system hardcodes -MD.
+
+-------------------------------------------------------------------
+Tue Jun 10 09:59:12 UTC 2014 - wr@rosenauer.org
+
+- update to version 4.10.6 (bnc#881874)
+  * requirement for Firefox 30
+  * PR_GetPhysicalMemorySize should release the mach_host_self()
+    Mach port when done with it (bmo#1009270)
+  * "Network address type not supported" error on the Hurd (bmo#1011861)
+  * Clang Static Analysis: useless declaration in NSPR (bmo#1003946)
+  * OOB write with sprintf and console functions (bmo#1018783)
+    (CVE-2014-1545)
+
+-------------------------------------------------------------------
+Wed May  7 06:36:24 UTC 2014 - wr@rosenauer.org
+
+- update to version 4.10.5
+  * autoconf updates
+  * PPC64LE support
+- dropped obsolete nspr-ppc64le.patch
+
+-------------------------------------------------------------------
+Mon Mar 10 10:38:17 UTC 2014 - wr@rosenauer.org
+
+- update to version 4.10.4
+  * bmo#767759: Add support for new x32 abi
+  * bmo#844784: Thread data race in PR_EnterMonitor
+  * bmo#939786: data race nsprpub/pr/src/pthreads/ptthread.c:137 _pt_root
+  * bmo#958796: Users of _beginthreadex that set a custom stack size
+                may not be getting the behavior they want
+  * bmo#963033: AArch64 support update for NSPR
+  * bmo#969061:	Incorrect end-of-list test when iterating over a
+                PRCList in prcountr.c and prtrace.c
+  * bmo#971152: IPv6 detection on linux depends on availability of
+                /proc/net/if_inet6
+
+-------------------------------------------------------------------
+Mon Mar  3 14:00:18 CET 2014 - ro@suse.de
+
+- drop patch config-guess-sub-update.diff
+  config.guess and config.sub are updated by the ppc64le patch
+
+-------------------------------------------------------------------
+Fri Feb 28 13:02:40 UTC 2014 - pcerny@suse.com
+
+- update of the PowerPC 64 LE support patch
+  (renamed ppc64le-support.patch to nspr-ppc64le.patch)
+
+-------------------------------------------------------------------
+Thu Feb  6 06:16:02 UTC 2014 - wr@rosenauer.org
+
+- update to version 4.10.3
+  * bmo#749849: ensure we'll free the thread-specific data key.
+  * bmo#941461: don't compile android with unaligned memory access.
+  * bmo#932398: Add PR_SyncMemMap, a portable version of
+    msync/FlushViewOfFile.
+  * bmo#952621: Fix a thread-unsafe access to lock->owner in PR_Lock.
+  * bmo#957458: Fix several bugs in the lock rank checking code.
+  * bmo#936320: Use an alternative test for IPv6 support on Linux to
+    avoid opening a socket.
+
+-------------------------------------------------------------------
+Thu Dec 12 03:58:23 UTC 2013 - uweigand@de.ibm.com
+
+- Add ppc64le-support.patch:
+  * add support for powerpc64le-linux
+
+-------------------------------------------------------------------
+Mon Nov 11 21:59:52 UTC 2013 - wr@rosenauer.org
+
+- update to version 4.10.2
+  relevant changes
+  * bmo#770534: possible pointer overflow in PL_ArenaAllocate()
+  * bmo#888546: ptio.c:PR_ImportUDPSocket doesn't work
+
+-------------------------------------------------------------------
+Sun Sep 22 12:16:26 UTC 2013 - wr@rosenauer.org
+
+- update to version 4.10.1
+  * bmo#888273: RWIN Scaling (RFC1323) limited to 2 on Windows 7 and 8
+                (Windows only)
+  * bmo#907512: Unix platforms shouldn't mask errors specific to
+                Unix domain sockets
+
+-------------------------------------------------------------------
+Sun Jun  9 21:41:08 UTC 2013 - wr@rosenauer.org
+
+- update to version 4.10
+  * bmo#844513: Add AddressSanitizer (ASan) memory check annotations to
+    PLArena.
+  * bmo#849089: Simple changes to make NSPR's configure.in work with
+    the current version of autoconf.
+  * bmo#856196: Fix compiler warnings and clean up code in NSPR 4.10.
+  * bmo#859066: Fix warning in nsprpub/pr/src/misc/prnetdb.c.
+  * bmo#859830: Deprecate ANDROID_VERSION in favor of android/api-level.h.
+  * bmo#861434: Make PR_SetThreadPriority() change priorities
+    relatively to the main process instead of using absolute values on
+    Linux.
+  * bmo#871064L: _PR_InitThreads() should not call PR_SetThreadPriority.
+
+-------------------------------------------------------------------
+Sat Mar 16 12:00:38 UTC 2013 - wr@rosenauer.org
+
+- update to version 4.9.6
+  * aarch64 support
+    (removed obsolete aarch64-support.patch)
+  * added PL_SizeOfArenaPoolExcludingPool function (bmo#807883)
+  * Auto detect android api version for x86 (bmo#782214)
+  * Initialize Windows CRITICAL_SECTIONs without debug info and
+    with nonzero spin count (bmo#812085)
+
+-------------------------------------------------------------------
+Thu Feb 28 22:56:59 UTC 2013 - wr@rosenauer.org
+
+- update to version 4.9.5
+  * bmo#634793: define NSPR's exact-width integer types PRInt{N} and
+    PRUint{N} types to match the <stdint.h> exact-width integer types
+    int{N}_t and uint{N}_t.
+  * bmo#782815: passing 'int *' to parameter of type 'unsigned int *'
+    in setsockopt().
+  * bmo#822932: Port bmo#802527 (NDK r8b support for x86) to NSPR.
+  * bmo#824742: NSPR shouldn't require librt on Android.
+  * bmo#831793: data race on lib->refCount in PR_UnloadLibrary.
+
+-------------------------------------------------------------------
+Thu Feb 28 21:26:07 UTC 2013 - dmueller@suse.com
+
+- Add config-guess-sub-update.diff:
+  * update config.guess/sub for aarch64 support
+- Add aarch64-support.patch:
+  * add support for aarch64
+
+-------------------------------------------------------------------
+Fri Nov 30 12:51:46 UTC 2012 - wr@rosenauer.org
+
+- update to version 4.9.4
+  * bmo#757593: PR_IntervalNow not monotonic for Android, Linux,
+                Mac OS X.
+  * bmo#804806: Remove support for obsolete platforms (ncr, nec,
+                sony, nextstep, sinix/reliantunix, and sunos4).
+  * bmo#804833: Allow PR_FormatTime and PR_FormatTimeUSEnglish with
+                NO_NSPR_10_SUPPORT. Fixed by Isaac Aggrey.
+
+-------------------------------------------------------------------
+Thu Oct 25 11:52:11 UTC 2012 - wr@rosenauer.org
+
+- update to version 4.9.3
+  * bmo#749849: NSPR pthread_key_t leak and memory corruption.
+  * bmo#794316: PR_PushIOLayer doesn't push layer on the top correctly
+  * bmo#795213: clang's -Wtautological-constant-out-of-range-compare
+                warns on prnetdb.c
+
+-------------------------------------------------------------------
+Tue Jul 24 08:49:25 UTC 2012 - wr@rosenauer.org
+
+- update to version 4.9.2
+  * new PR_SetThreadName and PR_GetThreadName functions for setting
+    and getting the name of the *current thread*
+
+-------------------------------------------------------------------
+Fri Jun  1 14:57:37 UTC 2012 - wr@rosenauer.org
+
+- update to version 4.9.1
+  * Android fixes
+  * pkgconfig file included (removed our patch)
+  * added Hurd support
+  * honor EHOSTDOWN
+  * a few smaller fixes
+- license change from tri-license to MPL-2.0
+
+-------------------------------------------------------------------
+Thu Feb 16 08:22:35 UTC 2012 - wr@rosenauer.org
+
+- update to version 4.9
+- added testsuite in %check
+
+-------------------------------------------------------------------
+Wed Sep 21 09:01:27 UTC 2011 - wr@rosenauer.org
+
+- some spec file cleanup
+- override the build time detection and use the last change time
+  instead to incorporate into the build
+
+-------------------------------------------------------------------
+Fri Aug 12 20:26:21 UTC 2011 - wr@rosenauer.org
+
+- update to 4.8.9 RTM
+  * no release notes available from upstream
+
+-------------------------------------------------------------------
+Thu May 19 05:27:00 UTC 2011 - wr@rosenauer.org
+
+- update to 4.8.8 RTM
+  * minor cleanup changes
+  * minor changes not affecting the Linux platform
+
+-------------------------------------------------------------------
+Thu Apr 28 05:45:30 UTC 2011 - wr@rosenauer.org
+
+- update to 4.8.8beta3
+  * support IPv6 on Android (bmo#626866)
+  * use AI_ADDRCONFIG for loopback hostnames (bmo#614526)
+  * support SDP sockets (bmo#518078)
+  * support m32r architecture (bmo#635667)
+  * use atomic functions on ARM (bmo#626309)
+  * some other fixes not affecting the Linux platform
+
+-------------------------------------------------------------------
+Sun Jan  9 22:26:15 UTC 2011 - wr@rosenauer.org
+
+- update to 4.8.7 RTM
+  * no code changes to beta2
+  * only updated internal version information
+
+-------------------------------------------------------------------
+Thu Dec  9 14:35:25 UTC 2010 - wr@rosenauer.org
+
+- update to 4.8.7beta2
+  * minimal requirement for NSS 3.12.9
+  * bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 23 21:03:48 CEST 2010 - wr@rosenauer.org
+
+- update to 4.8.6
+  * moved PR_STATIC_ASSERT from prlog.h to prtypes.h
+  * use new NSPR atomic macros
+  * bugfixes
+- removed fixes for temporary package split
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:23 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Fri Mar  5 07:29:10 CET 2010 - wr@rosenauer.org
+
+- update to 4.8.4
+  * bugfix release
+
+-------------------------------------------------------------------
+Fri Dec 18 13:48:16 CET 2009 - wr@rosenauer.org
+
+- update to 4.8.3
+  * NSPR logging timestamp month number is off by one
+  * fixed possible DoS in prdtoa
+- added baselibs.conf
+
+-------------------------------------------------------------------
+Tue Oct 13 08:14:52 CEST 2009 - wr@rosenauer.org
+
+- update to 4.8.2 (bnc#546371)
+  * RISC OS, Symbian and WinCE improvements
+  * bugfixes and optimizations
+
+-------------------------------------------------------------------
+Wed May 20 21:56:39 CEST 2009 - wr@rosenauer.org
+
+- update to 4.8
+  * Windows 9x and NT 3.51 and 4.0 are no longer 
+    supported
+  * Windows Mobile and Mac OS X 64-bit (x86_64) are now supported
+  * New macros:
+    prlock.h: PR_ASSERT_CURRENT_THREAD_OWNS_LOCK
+    prmon.h: PR_ASSERT_CURRENT_THREAD_IN_MONITOR
+  * special log module timestamp adds timestamps to NSPR log 
+    messages
+
+-------------------------------------------------------------------
+Sat Apr 11 19:44:47 CEST 2009 - wr@rosenauer.org
+
+- update to 4.7.4
+  * Fix strict aliasing issues in prdtoa.c for gcc 4.4 (bmo#439144)
+    - obsoletes prdtoa.patch and -fno-strict-aliasing flag
+  * In prlink.c, errStrBuf is not thread-safe
+
+-------------------------------------------------------------------
+Fri Jan 30 16:32:25 EST 2009 - hfiguiere@suse.de
+
+- update to 4.7.3
+  * Only Solaris fixes.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:46:28 CET 2009 - wr@rosenauer.org
+
+- update to 4.7.2 RTM version
+  * use /dev/urandom instead of /dev/random (bmo#455829)
+  * support Linux/SPARC64 (bmo#459304)
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Jun 18 02:51:04 CEST 2008 - maw@suse.de
+
+- Merge changes from the build service (thanks, Wolfgang)
+  (bnc#400001 and SWAMP#18164).
+
+-------------------------------------------------------------------
+Fri May  2 23:49:20 CEST 2008 - wr@rosenauer.org
+
+- update to 4.7.1 RTM version
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 31 19:36:06 CEST 2008 - maw@suse.de
+
+- Undo the shared library package split, per discussion in
+  opensuse-packaging.
+
+-------------------------------------------------------------------
+Wed Mar 26 15:32:51 CET 2008 - wr@rosenauer.org
+
+- update to 4.7.1beta2-20080325 snapshot
+
+-------------------------------------------------------------------
+Tue Mar 25 23:01:47 CET 2008 - maw@suse.de
+
+- Merge changes from the build service (thanks, Wolfgang)
+- Update to the 4.7.1beta1-20080225 snapshot
+- Split out a shared library subpackage.
+
+-------------------------------------------------------------------
+Thu Feb  7 18:03:16 CET 2008 - maw@suse.de
+
+- Merge changes from the build service (thanks, Wolfgang).
+- Remove strcstr.patch, which has been upstreamed.
+
+-------------------------------------------------------------------
+Thu Feb  7 15:45:17 CET 2008 - wr@rosenauer.org
+
+- update to 4.7.0 (requirement for Firefox 3)
+- added a %clean section
+
+-------------------------------------------------------------------
+Thu Nov 22 09:39:59 CET 2007 - wr@rosenauer.org
+
+- update to version 4.6.8
+
+-------------------------------------------------------------------
+Mon Jun 11 12:11:49 CEST 2007 - ro@suse.de
+
+- update to NSPR 4.6.7 (pull in from wr from opensuse BS)
+
+-------------------------------------------------------------------
+Wed Feb 21 16:50:31 CST 2007 - maw@suse.de
+
+- Update to version 4.6.5
+
+-------------------------------------------------------------------
+Wed Feb  7 07:18:56 CET 2007 - wr@rosenauer.org
+
+- fixed crasher in PL_strcaserstr() (strcstr.patch) (bmo #369467)
+
+-------------------------------------------------------------------
+Wed Jan 31 18:37:50 CET 2007 - maw@suse.de
+
+- Don't install %{_includedir}/nspr4/prvrsion.h with the executable
+  bit set.
+
+-------------------------------------------------------------------
+Sat Oct 21 10:05:27 CEST 2006 - aj@suse.de
+
+- from openSUSE BuildService (thanks Wolfgang Rosenauer):
+- update to version 4.6.3: Bug fix release.
+
+-------------------------------------------------------------------
+Tue Aug  1 08:37:28 CEST 2006 - stark@suse.de
+
+- version is still 4.6.2
+
+-------------------------------------------------------------------
+Sat Jul 15 09:31:05 CEST 2006 - stark@suse.de
+
+- added PR_SI_HOSTNAME_UNTRUNCATED flag to get the hostname as 
+  FQDN with PR_GetSystemInfo() if configured on a system
+  (bmo #322956)
+
+-------------------------------------------------------------------
+Mon May 15 15:12:38 CEST 2006 - stark@suse.de
+
+- update to 4.6.2 RTM version
+  bugs fixed:
+  * PR_ParseTimeString use PR_Assert and it calls abort on 
+    invalid date (bmo #247896)
+  * PR_SetSysfdTableSize and PR_GetSysfdTableMax are not exported
+    (bmo #326110)
+  * Add a UTF-16 API to load a library (bmo #326168)
+  * various changes for non-Linux platforms
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 16 08:55:07 CET 2005 - stark@suse.de
+
+- update to final 4.6.1 RTM version
+
+-------------------------------------------------------------------
+Wed Dec  7 19:16:50 CET 2005 - stark@suse.de
+
+- moved headers to nspr4 sub-directories and removed some 
+  unneeded headers
+
+-------------------------------------------------------------------
+Fri Nov 25 22:50:10 CET 2005 - stark@suse.de
+
+- changed ldconfig call in install-scripts
+
+-------------------------------------------------------------------
+Tue Nov 15 07:31:58 CET 2005 - stark@suse.de
+
+- current 4.6.1pre (20051114) 
+
+-------------------------------------------------------------------
+Tue Oct 11 06:55:14 CEST 2005 - stark@suse.de
+
+- next official release will most likely be 4.6.1 (20051010)
+
+-------------------------------------------------------------------
+Mon Sep 26 21:39:48 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Thu Sep 22 07:09:54 CEST 2005 - stark@suse.de
+
+- update to 4.7.0pre (20050921)
+
+-------------------------------------------------------------------
+Tue May 31 11:47:31 CEST 2005 - stark@suse.de
+
+- update to final 4.6
+
+-------------------------------------------------------------------
+Thu May 19 13:48:05 CEST 2005 - stark@suse.de
+
+- renamed mozilla-nspr.pc to nspr.pc as decided upstream
+- latest snapshots which integrates hidden.patch
+
+-------------------------------------------------------------------
+Wed May 18 10:40:11 CEST 2005 - stark@suse.de
+
+- workaround for gcc bug (bmo #293438, bnc #83908)
+- provide its own pkgconfig file (mozilla-nspr.pc)
+
+-------------------------------------------------------------------
+Tue May 10 07:08:55 CEST 2005 - stark@suse.de
+
+- update to current HEAD (upstreamed two patches)
+
+-------------------------------------------------------------------
+Tue Apr 26 13:03:52 CEST 2005 - stark@suse.de
+
+- moved static libs to sub-directory
+  (almost nobody should link against them statically)
+
+-------------------------------------------------------------------
+Mon Apr 25 07:40:47 CEST 2005 - stark@suse.de
+
+- fix nspr-config for biarch
+
+-------------------------------------------------------------------
+Tue Mar 22 12:47:19 CET 2005 - stark@suse.de
+
+- update to HEAD for mozilla compatibility
+
+-------------------------------------------------------------------
+Sat Mar 19 13:37:12 CET 2005 - stark@suse.de
+
+- update to 4.5.2beta1
+
+-------------------------------------------------------------------
+Tue Mar  8 07:53:21 CET 2005 - stark@suse.de
+
+- initial standalone package
+

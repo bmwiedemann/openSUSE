@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Sat May 25 09:39:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.5:
+  - Added RFC3560 providing RSAES-OAEP Key Transport Algorithm
+    in CMS
+  - Added RFC6019 providing BinaryTime - an alternate format
+    for representing Date and Time
+  - RFC3565 superseded by RFC5649
+  - Added RFC5480 providng Elliptic Curve Cryptography Subject
+    Public Key Information
+  - Added RFC8520 providing X.509 Extensions for MUD URL and
+    MUD Signer
+  - Added RFC3161 providing Time-Stamp Protocol support
+  - Added RFC3709 providing Logotypes in X.509 Certificates
+  - Added RFC3274 providing CMS Compressed Data Content Type
+  - Added RFC4073 providing Multiple Contents protection
+    with CMS
+- Execute testsuite
+
+-------------------------------------------------------------------
+Mon Jan 28 14:26:26 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to version 0.2.4
+
+Revision 0.2.4:
+- Added modules for RFC8226 implementing JWT Claim Constraints
+  and TN Authorization List for X.509 certificate extensions
+- Fixed bug in `rfc5280.AlgorithmIdentifier` ANY type definition
+
+Revision 0.2.3:
+- Added modules for RFC5083 and RFC5084 (CMS)
+- Copyright notice extended to the year 2019
+
+-------------------------------------------------------------------
+Tue Jul  3 10:21:47 UTC 2018 - michael@stroeder.com
+
+- update to version 0.2.2:
+  * Copyright notice extended to the year 2018
+  * Migrated references from SourceForge
+  * rfc2986 module added
+
+-------------------------------------------------------------------
+Sun Nov 26 21:20:48 UTC 2017 - arun@gmx.de
+
+- update to version 0.2.1:
+  * Allow ANY DEFINED BY objects expanding automatically if requested
+  * Imports PEP8'ed
+
+-------------------------------------------------------------------
+Thu Oct 12 07:45:00 UTC 2017 - michael@stroeder.com
+
+- Update to upstream release 0.1.5
+  * OCSP response blob fixed in test
+  * Fixed wrong OCSP ResponderID components tagging
+
+-------------------------------------------------------------------
+Thu Sep  7 22:05:22 UTC 2017 - michael@stroeder.com
+
+- Update to upstream release 0.1.4
+  * more onversion pinning
+
+-------------------------------------------------------------------
+Thu Sep  7 12:03:08 UTC 2017 - michael@stroeder.com
+
+- Update to upstream release 0.1.2
+  * Tests refactored into proper unit tests
+  * pem.readBase64fromText() convenience function added
+  * Pinned to pyasn1 0.3.4+
+
+-------------------------------------------------------------------
+Tue Aug 15 17:34:02 UTC 2017 - michael@stroeder.com
+
+- Update to upstream release 0.0.11
+  * Fixed typo in ASN.1 definitions at rfc2315.py
+
+-------------------------------------------------------------------
+Sat Jul 29 21:04:04 UTC 2017 - michael@stroeder.com
+
+- Updated project URL
+- Update to upstream release 0.0.10
+  * Fixed SequenceOf initializer to pass now-mandatory componentType
+    keyword argument (since pyasn1 0.3.1)
+  * Temporarily fixed recursive ASN.1 type definition to work with
+    pyasn1 0.3.1+. This is going to be fixed properly shortly.
+
+-------------------------------------------------------------------
+Wed Jun 14 12:44:59 UTC 2017 - michael@stroeder.com
+
+- Update to upstream release 0.0.9
+  * More CRL data structures added (RFC3279)
+  * Added X.509 certificate extensions map
+  * Added X.509 attribute type map
+  * Fix to __doc__ use in setup.py to make -O0 installation mode working
+  * Copyright added to source files
+  * More PEP-8'ing done on the code
+  * Author's e-mail changed
+
+-------------------------------------------------------------------
+Thu Mar 16 13:46:56 UTC 2017 - tbechtold@suse.com
+
+- Switch to singlespec approach
+
+-------------------------------------------------------------------
+Tue Dec 29 17:10:09 UTC 2015 - michael@stroeder.com
+
+- Update to upstream release 0.0.8
+  - Wheel distribution format now supported
+  - Fix to misspelled rfc2459.id_at_sutname variable
+  - Fix to misspelled rfc2459.NameConstraints component tag ID
+  - Fix to misspelled rfc2459.GeneralSubtree component default status
+
+-------------------------------------------------------------------
+Thu Aug 13 13:02:16 UTC 2015 - michael@stroeder.com
+
+- Added file ext .txt to doc files like in upstream
+- Update to upstream release 0.0.7
+  - Extensions added to text files, CVS attic flushed.
+  - Fix to rfc2459.BasicConstraints syntax.
+
+-------------------------------------------------------------------
+Sat Jul  4 20:46:59 UTC 2015 - michael@stroeder.com
+
+- Update to upstream release 0.0.6
+  - Typo fix to id_kp_serverAuth object value
+  - A test case for indefinite length encoding eliminated as it's
+    forbidden in DER.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:11:23 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue May  7 08:25:25 UTC 2013 - michael@stroeder.com
+
+- Update to upstream release 0.0.5
+
+Revision 0.0.5
+--------------
+
+- License updated to vanilla BSD 2-Clause to ease package use
+  (http://opensource.org/licenses/BSD-2-Clause).
+
+-------------------------------------------------------------------
+Wed Jan  2 19:44:41 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Fri Jul 27 18:03:12 UTC 2012 - michael@stroeder.com
+
+- Update to upstream release 0.0.4
+
+The pyasn1-modules collection now includes Certificate Management Protocol
+(RFC4210) data structures.
+
+-------------------------------------------------------------------
+Mon Apr 23 19:23:07 UTC 2012 - michael@stroeder.com
+
+- Update to upstream release 0.0.3
+
+-------------------------------------------------------------------
+Fri Mar 23 09:58:53 UTC 2012 - michael@stroeder.com
+
+- Initial submission of upstream release 0.0.2

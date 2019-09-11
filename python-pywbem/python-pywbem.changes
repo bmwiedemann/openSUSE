@@ -1,0 +1,685 @@
+-------------------------------------------------------------------
+Thu Jan 11 13:49:00 UTC 2018 - adam.majer@suse.de
+
+- Fix another lost dependency. Need ssl module which python-base
+  does not provide. (bnc#1072564)
+
+-------------------------------------------------------------------
+Tue Nov 14 10:14:08 UTC 2017 - mpluskal@suse.com
+
+- Fix lost dependency
+
+-------------------------------------------------------------------
+Wed Nov  8 13:39:33 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.11.0:
+  * Some new functionality such as:
+    + Added the MOF compiler API to the pywbem namespace.
+    + Add operation statistics gathering experimental.
+    + Documentation improvements
+  * Lots of bugfixes
+  * For full list of changes see:
+    https://pywbem.readthedocs.io/en/latest/changes.html#pywbem-v0-11-0
+- Convert to python singlespec
+
+-------------------------------------------------------------------
+Tue Jul  4 09:18:30 UTC 2017 - jengelh@inai.de
+
+- Remove redundant cleaning actions.
+
+-------------------------------------------------------------------
+Fri Jun 30 12:38:27 UTC 2017 - adam.majer@suse.de
+
+- Add missing runtime dependencies.
+
+-------------------------------------------------------------------
+Wed Dec 21 07:12:53 UTC 2016 - kkaempf@suse.com
+
+- Update to 0.10.0
+  * There is some new functionality, such as:
+    - use of SAX parser instead of minidom
+    - finalized the indications API
+    - added Iter* enumeration and association operations with
+      a Python generator/iterator interface that use the pull
+      operations if available or else the traditional operations.
+  * full changelog at
+    https://pywbem.readthedocs.io/en/latest/changes.html#pywbem-v0-10-0
+
+-------------------------------------------------------------------
+Thu Dec  1 08:41:21 UTC 2016 - kkaempf@suse.com
+
+- Update to 0.9.1
+  * Documentation improvements
+  * Bug fixes
+  Full changelog available at
+  https://pywbem.readthedocs.io/en/stable/changes.html#pywbem-v0-9-1
+
+-------------------------------------------------------------------
+Tue Sep 13 13:06:26 UTC 2016 - kkaempf@suse.com
+
+- Update to 0.9.0
+  Many changes and deprecations, see
+  https://pywbem.readthedocs.io/en/latest/changes.html#pywbem-v0-9-0
+  for full list.
+
+-------------------------------------------------------------------
+Mon Mar 21 07:52:12 UTC 2016 - kkaempf@suse.com
+
+- Update to 0.8.2
+  * Eliminated dependency on "six" package during installation of
+    pywbem.
+
+-------------------------------------------------------------------
+Mon Mar 21 07:45:18 UTC 2016 - kkaempf@suse.com
+
+- dropped python-pywbem-doc package, see http://pywbem.github.io
+
+- rename 'wbemcli' to 'pywbemcli' to prevent conflict with
+  sblim-wbemcli.
+
+- Update to 0.8.1
+  See http://pywbem.github.io/pywbem/doc/0.8.1/changelog.html for
+  the complete list of changes.
+
+  Known issues:
+  * Installing PyWBEM on Python 2.6 has a conflict with the 'pbr'
+    package from PyPI, resulting in a TypeError: "dist must be a
+    Distribution instance". This issue is specific to Python 2.6 and
+    does not occur in any of the other supported Python versions
+    (2.7, 3.4, 3.5). This issue can be mitigated by uninstalling
+    the 'pbr' package, or if that is not possible, by migrating
+    to Python 2.7. See issue #26 on GitHub.
+  * MOF using names that are reserved keywords will fail to compile
+    in the MOF compiler. For example, a CIM property named
+    'indication'. See issue #62 on GitHub.
+  * The Pulled Enumeration Operations introduced in DSP0200 1.3 are
+    not supported in this release. See issue #9 on GitHub.
+  * Note that some components of this PyWBEM Client package are still
+    considered experimental:
+    - The twisted client module twisted_client.py.
+    - The Python provider modules cim_provider.py and cim_provider2.py.
+    - The CIM indication listener in the irecv directory. See issue
+      #66 on GitHub.
+
+- drop pywbem-0.8.0-dev.patch, upstream
+
+-------------------------------------------------------------------
+Fri Mar  6 09:59:12 UTC 2015 - kkaempf@suse.com
+
+- don't leave 'url_' undefined: pywbem-0.8.0-dev.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 14:01:39 UTC 2015 - kkaempf@suse.com
+
+- add an extra 'import sys': pywbem-0.8.0-dev.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 10:07:13 UTC 2015 - kkaempf@suse.com
+
+- Splitted documentation off as python-pywbem-doc
+
+- Update to 0.8.0~dev (development pre-release)
+
+  * Verify certificates against platform provided CA trust store in
+    /etc/pki/tls/certs. Linux only.  (Peter Hatina)
+
+  * Added '-d' option to MOF compiler that causes the compiler to perform a
+    dry-run and just check the MOF file syntax. This allows to more easily
+    detect included MOF files when used together with the '-v' option.
+    (Jan Safranek)
+
+  * Added support for non-ASCII (Unicode) characters.  (Michal Minar, Andreas
+    Maier)
+      
+  * Improved information in the message text of some exceptions (TypeError
+    and KeyError in cim_obj.py, ValueError in cim_obj.py, and ParseError in
+    tupleparse.py).  (Andreas Maier)
+
+  * Moved the definition of the pywbem version from setup.py to __init__.py,
+    in order to make it available to programs using pywbem as
+    pywbem.__version__.  (Andreas Maier)
+
+  * Added support for direct iteration over NocaseDict objects using 'for'
+    and 'in' by adding __iter__(), e.g. for use with CIMInstance.properties.
+    (Andreas Maier)
+
+  * Added more instance attributes to be shown in repr() on CIMProperty and
+    other classes in cim_obj.  (Andreas Maier)
+
+  * Added and improved docstring-based documentation in the pywbem modules
+    cim_operations, cim_http, cim_obj, cim_types, and the pywbem module.
+    (Andreas Maier)
+
+  * Improved the way missing file:// URL support on Windows is handled, by
+    now issuing a proper error message instead of stumbling across the
+    missing socket.AF_UNIX constant.  (Andreas Maier)
+
+  * Improved the way missing OWLocal authorization with the OpenWBEM server
+    is handled on Windows, by now issuing a proper error message instead of
+    stumbling across the missing os.getuid() function.  (Andreas Maier)
+      
+  * Improved Windows portability by no longer attempting to import 'pwd' in
+    case the userid is not set in the environment variables that are checked
+    when the WBEM server is local.  (Andreas Maier)
+
+  * Added support for ExecQuery operation to twisted client.  (Robert Booth)
+
+  * Added get() methods on CIMInstance and CIMInstanceName to step up to the
+    statement that they behave like dictionaries w.r.t. properties and key
+    bindings.  (Andreas Maier)
+
+  * Improved help text of test_cim_operations.py test program.
+    (Andreas Maier)
+
+  * Added an optional Params argument to InvokeMethod(), that is an ordered
+    list of CIM input parameters, that preserves its order in the CIM-XML
+    request message. This is to accomodate deficient WBEM servers that do
+    not tolerate arbitrary order of method input parameters as required by
+    the standard. The new argument is optional, making this a backwards
+    compatible change of InvokeMethod().  (Andreas Maier)
+
+  * Cleaned up the public symbols of each module by making symbols private
+    that are used only internally. Specifically, the following symbols have
+    been made private: In cimxml_parse: _get_required_attribute,
+    _get_attribute, _get_end_event, _is_start, _is_end. In cim_xml: _text
+    (was: Text).  (Andreas Maier)
+
+  * Cleaned up symbols imported by wildcard import by defining __all__ in
+    each module with only the public symbols defined in that module (removing
+    any symbols imported into the module), except for the following modules
+    which define less than the complete set of public symbols in their
+    __all__: mof_compiler, twisted_client, tupleparse, cimxml_parse,
+    cim_http.  (Andreas Maier)
+
+  * Added support for using CDATA section based escaping in any requests sent
+    to the WBEM server. The default is still XML entity reference based
+    escaping, the CDATA based escaping can be turned on by setting the switch
+    _CDATA_ESCAPING accordingly, which is a global variable in the cim_xml
+    module.  (Andreas Maier)
+
+  * Simplified the exceptions that can be raised by WBEMConnection methods,
+    and improved the information in the exception messages. See description
+    of WBEMConnection class for details.  (Andreas Maier)
+
+  * Added support for timeouts to WBEMConnection, via a new timeout argument,
+   that defaults to no timeout.  (This finally increased the minimum version
+   of Python to 2.6.  (Andreas Maier)
+
+  BUG FIXES:
+
+  * Fix syntax error in CIM DTDVERSION error path.  Allow KEYVALUE
+    VALUETYPE attribute to be optional as specified in the DTD.
+    (Andreas Linke)
+
+  * Added parsing of InvokeMethod return value and output parameters for
+    Twisted Python client.  (Tim Potter)
+
+  * Fixed cim_provider2.py to properly support shutdown() and can_unload()
+    (called from CMPI cleanup() functions).  Support was recently added
+    to cmpi-bindings for this.  (Bart Whiteley)
+
+  * Fixed XML parsing to accept SFCB-style embedded instance parameters.
+    (Mihai Ibanescu)
+
+  * Use getpass module instead of pwd to detect local user to fix Win32.
+    (Tim Potter)
+
+  * Re-throw KeyError exceptions with capitalised key string instead
+    of lower cased version in NocaseDict.__getitem__().  (Tim Potter)
+
+  * Use base64.b64encode() instead of base64.encodestring() in Twisted
+    client. (Mihai Ibanescu)
+
+  * Fix missing CIMDateTime import in Twisted client.  (Mihai Ibanescu)
+
+  * Fixed CIMInstanceName rendering to string. It is now possible to pass the
+    rendered string value as an instance path argument of a CIM method.
+    (Jan Safranek, Michal Minar)
+
+  * For Python providers, fixed the comparsion of the Role parameter in
+    association operations to be case insensitive, and removed an erroneous
+    test that raised an exception when the property specified in the Role
+    parameter was not also in the property list specified by the Properties
+    parameter.  (Jan Safranek)
+
+  * For Python providers, converted debug 'print' statements to trace
+    messages that end up in the system log.  (Jan Safranek)
+
+  * The CIM-XML parser no longer throws an exception when parsing a
+    qualifier declaration.
+    Note: The CIM-XML supported by this fix does not conform to DSP0201 so
+    far. Further fixes are pending.  (Jan Safranek)
+
+  * Fixed parsing errors for connection URLs with IPv6 addresses, including
+    zone indexes (aka scope IDs).  (Peter Hatina, Andreas Maier)
+
+  * Fixed the hard coded socket addressing family used for HTTPS that was
+    incorrect in some IPv6 cases, by determining it dynamically.
+    (Peter Hatina)
+
+  * Fixed the list of output parameters of extrinsic method calls to be
+    returned as a case insensitive dictionary (using cim_obj.NocaseDict).
+    (Jan Safranek)
+
+  * Fixed the checking of CIMVERSION attributes in CIM-XML to only verify the
+    major version, consistent with DSP0201 (see subclause 5.2.1, in DSP0201
+    version 2.3.1).  (Jan Safranek)
+
+  * Fixed error in cim_http.py related to stronger type checking of Python
+    2.7. (Eduardo de Barros Lima)
+
+  * Removed erroneous qualifier scopes SCHEMA and QUALIFIER from the MOF
+    compiler (see DSP0004).  (Andreas Maier)
+
+  * Fixed debug logging of CIM-XML payload (that is, conn.last_*request/reply
+    attributes) for extrinsic method calls, to now be consistent with
+    intrinsic method calls.  (Andreas Maier)
+
+  * Fixed TOCTOU (time-of-check-time-of-use) error when validating peer's
+    certificate.  (Michal Minar)
+
+  * Added a check in the CIMInstanceName constructor that the 'classname'
+    argument is not None.  (Andreas Maier)
+
+  * Fixed the issue in the CIMProperty constructor that specifying a tuple
+    for the 'value' argument was incorrectly detected to be a scalar (and not
+    an array).  (Andreas Maier)
+    
+  * Fixed the issue in the CIMProperty constructor that specifying a
+    datetime or timedelta typed value resulted in storing the provided object
+    in the 'value' attribute, instead of converting it to a CIMDateTime
+    object.  (Andreas Maier)
+    
+  * Fixed the issue in the CIMProperty constructor that specifying a datetime
+    formatted string typed 'value' argument along with type='datetime'
+    resulted in storing the provided string object in the 'value' attribute,
+    instead of converting it to a CIMDateTime object.  (Andreas Maier)
+    
+  * Fixed several cases in the CIMProperty constructor of unnecessarily
+    requiring the optional arguments 'type', 'is_array', 'embedded_object',
+    or 'reference_class'. These optional arguments are now only necessary to
+    be provided if they cannot be implied from provided arguments (mainly
+    from 'value').  (Andreas Maier)
+    
+  * Fixed the issue in the CIMProperty constructor that an 'embedded_object'
+    argument value of 'object' was changed to 'instance' when a CIMInstance
+    typed 'value' argument was also provided.  (Andreas Maier)
+
+  * Fixed the issue in the CIMProperty constructor that the first array
+    element was used for defaulting the 'type' attribute, without checking
+    that for None, causing an exception to be raised in this case.
+    (Andreas Maier)
+    
+  * Added a check in the CIMProperty constructor that the 'name' argument is
+    not None.  (Andreas Maier)
+
+  * Fixed the issue that the CIMProperty constructor raised only TypeError
+    even when the issue was not about types; it now raises in addition
+    ValueError.  (Andreas Maier)
+
+  * Changed the exception that is raised in NocaseDict.__setitem__() for
+    invalid key types, to be TypeError in instead of KeyError. Updated the
+    testcases accordingly.  (Andreas Maier)
+
+  * Added checks for more than one argument and for unsupported argument
+    types to the constructor of NocaseDict.  (Andreas Maier)
+
+  * Fixed incorrectly labeled namespace variables in twisted client.
+    (Robert Booth)
+
+  * Fixed that WBEMConnection.last_raw_reply was not set to the current reply
+    in case of parsing errors in the reply.  (Andreas Maier)
+
+  * Reintroduced Python 2.6 support in cim_http.HTTPSConnection.connect()
+    that disappeared in early drafts of this version:
+    - Removed SSLTimeoutError from except list; being a subclass of SSLError,
+      it is catched via SSLError.
+    - Invoked socket.create_connection() without source_address, if running
+      on Python 2.6.
+    (Andreas Maier)
+
+   * Fixed bug where HTTP body was attempted ot be read when CIMError header
+     is set, causing a hang.  (Andreas Maier)
+
+   * Added CIM-XML declaration support for alternative PyWBEM client based
+     on twisted.  (Andreas Maier)
+ 
+   * Added support for Windows to wbemcli.py, by making dependency on HOME
+     environment variable optional, and adding HOMEPATH environment variable.
+     Also, cleaned up the global namespace of wbemcli.py and made it
+     importable as a module.  (Andreas Maier)
+
+   * Fixed errors in generated MOF (e.g. in any tomof() methods):
+     - Missing backslash escaping within string literals for \n, \r, \t, \".
+     - Representation of REF types was incorrect.
+     - '=' in array-typed qualifier declarations was missing.
+     - Fixed size indicator was missing in array elements.
+     - Qualifiers of method parameters were missing.
+     Improvements in generated MOF:
+     - Changed order of qualifiers to be sorted by qualifier name.
+     - Added empty line before each property and method in the class for
+       better readability.
+     - Method parameters are now placed on separate lines.
+     - Moved generation of method qualifiers from class into method. This
+       changes the behavior of CIMMethod.tomof() to now generate the method
+       qualifiers.
+     (Andreas Maier)
+
+  TESTING:
+
+  * Added support for running the unit test cases without having to be in the
+    testsuite directory. This was done by setting up the DTD_FILE path
+    correctly for any XML tests.  (Andreas Maier)
+
+  * Improved the quality of assertion messages issued when testcases fail, to
+    include context information and types.  (Andreas Maier)
+
+  * Added docstrings to test cases.  (Andreas Maier)
+
+  * Added testcases for CIMProperty.__init__() to be comprehensive.
+    (Andreas Maier)
+
+  * In XML validation tests, added the expected XML root element.
+    (Andreas Maier)
+
+  * Added a header to any error messages issued by xmllint.  (Andreas Maier)
+
+  * Fix: Merged stderr into stdout for the xmllint invocation, xmllint error
+    messages go to stderr and had been dropped before.  (Andreas Maier)
+
+  * Fix: The "mkdir -p ..:" command in the comfychair testcase constructor
+    created subdirectories named "-p" when running on Windows; replaced that
+    command with os.makedirs().  (Andreas Maier)
+
+  * Fix: Replaced the "rm -fr ..." command in the comfychair testcase
+    constructor with shutil.rmtree(), in order to better run on Windows.
+    (Andreas Maier)
+  
+  * Fix: In comfychair._enter_rundir(), moved registration of cleanup
+    function _restore_directory() to the end, so cleanup happens only if no
+    errors happened.  (Andreas Maier)
+
+  * Fixed a bug in pywbem/trunk/testsuite/test_tupleparse.py in function
+    ParseCIMProperty.runtest(), where the use of real tab characters caused
+    a few lines to be incorrectly indented, and as a result, ignored for the
+    test.  (Andreas Maier)
+
+  * Improved Windows portability in testsuite: Moved from using the Unix-only
+    functions posix.WIFSIGNALED() and posix.WEXITSTATUS() for testing the
+    success of subprocess.wait(), to simply testing for 0.  (Andreas Maier)
+
+  * Added ability to invoke test_cim_operations.py with comfychair arguments,
+    and added printing of exception information if an operation fails.
+    (Andreas Maier)
+
+  - clean code:
+    
+  * Removed dangerous default parameter '{}' from CIMProperty and
+    CIMInstanceName, and replaced it with 'None'. To support that, added
+    support for initializing an empty NocaseDict object from 'None'.
+    (Andreas Maier)
+
+  * In cim_obj, changed the use of the deprecated backticks to using %r in
+    the format string (which produces the same result).  (Andreas Maier)
+
+  * In the constructor of CIMInstanceName, added assertions to some paths
+    that cannot possibly be taken based on the fact that the keybindings
+    attribute is always a NocaseDict. They should be removed at some point.
+    (Andreas Maier)
+
+  * Addressed PyLint issues:
+    - Consolidated imports at the top of the module (after module docstring),
+      consistent with the PEP-8 recommendation.
+    - Ensured order of imports: standard, non-standard, pywbem, local (on a
+      subset of modules only).
+    - Replaced wildcard imports with specific imports, as much as possible.
+    - Removed unused imports.
+    - Addressed PyLint issues that are related to whitespace, continuation
+      indentation, and line length.
+    - Replaced all real tab characters with spaces.
+    (Andreas Maier)
+
+  PACKAGING / BUILD:
+
+  * Fixed grammatical funkiness in the license text.  No change to actual
+    license - still LGPLv2.  (Tim Potter)
+
+  * Added LICENSE.txt file to release.  (Tim Potter)
+
+  * Added LICENSE.txt, NEWS, README and INSTALL files to distribution
+    archive.  (Andreas Maier)
+
+  * Fixed inconsistencies in license text in file headers to consistently
+    say LGPL 2.1 or higher (The LICENSE.txt file has always been LGPL 2.1).
+    (Andreas Maier)
+
+  * Removed confusing section about build from INSTALL file, to scope it just
+    to the topic of installation.  (Andreas Maier)
+
+  * Restructured pywbem/trunk subtree to move pywbem package files into a
+    pywbem subdirectory.  (Andreas Maier)
+
+  * Added a makefile (invoke 'make help' for valid targets).  (Andreas Maier)
+
+  * Added support for checking the Python source code using PyLint.
+    (Andreas Maier)
+
+  * Added support for generating HTML documentation using epydoc, and
+    included the documentation into the distribution archive. The syntax
+    used in Python docstrings is reStructuredText markdown.   (Andreas Maier)
+
+-------------------------------------------------------------------
+Tue Jan 20 10:03:53 UTC 2015 - kkaempf@suse.com
+
+- Update to 0.8.0 (pre-release)
+
+-------------------------------------------------------------------
+Tue Jun  3 14:51:04 UTC 2014 - kkaempf@suse.com
+
+- Upgrade to upstream revision 629
+  - added support for non-ascii characters
+  - fixed TOCTOU error when validating peer's certificate
+    (obsoletes pywbem-ssl_verify_host.patch)
+  - mof_compiler: Add '-d' option to dry-run the operation
+  - fix connection to ipv6 hosts
+    (obsoletes pywbem-ipv6.patch)
+  - verify certificates against platform provided CA trust store
+
+-------------------------------------------------------------------
+Wed Jan 22 15:49:05 UTC 2014 - kkaempf@suse.com
+
+- Drop INSTALL file, unneeded for packaged pywbem.
+
+-------------------------------------------------------------------
+Thu Dec 19 19:55:03 UTC 2013 - pwieczorkiewicz@suse.com
+
+- pywbem-ipv6.patch: Enabling IPv6. (bnc#840250)
+- pywbem-ssl_verify_host.patch:
+  Fix for security issue around SSL certificate verification
+  (possible MITM attack). Adapted to work with python 2.6 and SLE11's
+  python-M2Crypto version. (bnc#856323 bnc#856108 CVE-2013-6418)
+
+-------------------------------------------------------------------
+Thu Dec 19 19:33:56 UTC 2013 - speilicke@suse.com
+
+- Don't remove buildroot in install section
+
+-------------------------------------------------------------------
+Fri Sep 27 06:44:06 UTC 2013 - kkaempf@suse.com
+
+- add upstream patch to support IPv6
+  pywbem-ipv6.patch
+
+- provide INSTALL documentation
+
+-------------------------------------------------------------------
+Fri Aug  2 09:59:35 UTC 2013 - kkaempf@suse.com
+
+- revert to upstream version 0.7.0
+  - Check only the major part of CIMVERSION.
+    (DSP0201 2.3.1 chap. 5.2.1)
+  - Use case-insensitive dictionary for method output parameters.
+  - The parser should not throw an exception when parsing XML with a
+    qualifier declaration.
+  - Convert debug 'print' to trace messages.
+  - Fix References(Role="xxx") intrinsic method.
+  - Fix comparsion of Role parameter
+  - Fixed CIMInstanceName rendering to string.
+
+-------------------------------------------------------------------
+Fri Aug  2 08:47:56 UTC 2013 - kkaempf@suse.com
+
+- Fix upstream compatibility: Provide pywbem
+
+-------------------------------------------------------------------
+Thu Oct 20 10:01:34 UTC 2011 - kkaempf@suse.com
+
+- Adapt http header creation to Python 2.7
+- version 0.7.1
+
+-------------------------------------------------------------------
+Mon Aug  2 13:44:46 UTC 2010 - kkaempf@novell.com
+
+- Fix the build for non-SUSE distributions
+
+-------------------------------------------------------------------
+Mon Aug  2 13:20:27 UTC 2010 - kkaempf@novell.com
+
+- Pass --install-purelib when calling "setup --install" to cope
+  with lib vs lib64
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Fri Dec 12 10:10:29 MST 2008 - bwhiteley@suse.de
+
+- update to 0.7.0 official release.  Previous builds were based on 
+  svn snapshots. 
+- This update includes some fixes for python-2.6 and some fixes for
+  problems found by pychecker. 
+- Local connection factory functions now allow passing more
+  arguments, making them more consistent with WBEMConnection(). 
+
+-------------------------------------------------------------------
+Thu Oct 23 21:17:00 MDT 2008 - bwhiteley@suse.de
+
+- update to latest svn
+- symlink new wbemcli utility to /usr/bin/
+
+-------------------------------------------------------------------
+Sat Sep 27 20:17:10 CEST 2008 - bwhiteley@suse.de
+
+- Updated to latest svn in preparation for update to soon-to-be-
+  released 0.7. 
+
+-------------------------------------------------------------------
+Thu Sep 11 21:54:39 CEST 2008 - bwhiteley@suse.de
+
+- Updated to latest svn in preparation for update to soon-to-be-
+  released 0.7. 
+
+-------------------------------------------------------------------
+Fri Mar 21 17:07:45 CET 2008 - mmarek@suse.cz
+
+- simplify %%install
+
+-------------------------------------------------------------------
+Thu Mar 20 14:26:49 CET 2008 - mmarek@suse.cz
+
+- added changes file to the buildservice package, summarize recent
+  updates
+
+-------------------------------------------------------------------
+Thu Feb 21 14:00:00 CET 2008 - bwhiteley@suse.de
+
+- update to svn trunk (0.6.20080221.1)
+  LICENSING:
+    * Relicensed from the GNU GPLv2 to the GNU LGPLv2.
+  API CHANGES:
+    * Add a type keyword arg and attribute to CIMQualifier, similar to
+      the CIMProperty object, to allow the creation of null qualifiers.
+      (Tim Potter) 
+    * Remove the toxml() method from CIM object classes.  Use
+      tocimxml().toxml() instead which specifies the CIM-XML
+      representation of the object. (Tim Potter)
+    * CIMDateTime class should now be used instead of datetime.datetime 
+      and datetime.timedelta. 
+    * Added a new method, CIMInstance.update_existing().  This behaves 
+      like update() on a dict, but only assigns new values to existing
+      properties.  It skips values for properties not already present
+      in the instance.  This is useful for honoring PropertyList within
+      python providers. 
+  ENHANCEMENTS:
+    * Added support for generating Pegasus provider registration MOF in 
+      cim_provider.codegen(). (Bart Whiteley)
+	* Implemented methods to parse indication export requests.
+      (Bart Whiteley)
+    * Python provider code generation enhancements.  (Bart Whiteley)
+    * Support for Pegasus Local authentication.  (Bart Whiteley)
+    * Support for Pegasus and OpenWBEM Unix Domain Socket.  (Tim and Bart)
+    * Added support for Pegasus non-compliant EMBEDDEDOBJECT XML attribute. 
+      (Bart Whiteley)
+    * Added CIMQualifierDeclaration.tomof().  (Bart Whiteley)
+    * Added a powerful MOF compiler.  (Bart Whiteley)
+    * Support for OpenWBEM password-less local authentication. 
+      (Bart Whiteley)
+    * Support for embedded objects is described in DSP0201-2.2.0
+      (Bart Whiteley)
+    * New CIMDateTime class to deal with CIM-isms of datetimes.
+      Most notably, datetime deals with timezone info poorly.
+      (Bart Whiteley)
+    * Add InvokeMethod() support in Twisted Python client. (Tim
+      Potter)
+  plus lots of bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 00:49:19 CET 2006 - bwhiteley@suse.de
+
+- Update to pywbem-0.5
+
+-------------------------------------------------------------------
+Sat Sep 23 16:44:09 CEST 2006 - aj@suse.de
+
+- Fix build with python 2.5.
+
+-------------------------------------------------------------------
+Wed Apr 26 19:12:38 CEST 2006 - bwhiteley@suse.de
+
+- Renamed package from python-wbem to python-pywbem per request
+  from upstream maintainer
+
+-------------------------------------------------------------------
+Fri Apr  7 00:10:14 CEST 2006 - bwhiteley@suse.de
+
+- Update to CVS snapshot.  This includes several fixes which enable 
+  method invocation. 
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:04 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 16 21:43:20 CET 2005 - bwhiteley@suse.de
+
+- added "Requires: python-xml"
+
+-------------------------------------------------------------------
+Tue Nov 15 17:16:33 CET 2005 - bwhiteley@suse.de
+
+- Updated to real version 0.4.  Previously version 0.4 was a pre-
+  release "under the table" distribution from Tim Potter
+
+-------------------------------------------------------------------
+Fri Oct  7 00:37:06 CEST 2005 - bwhiteley@suse.de
+
+- Initial package
+

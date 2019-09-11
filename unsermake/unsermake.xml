@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+
+<!--
+
+Process this file with an XSLT processor: `xsltproc \
+-''-nonet /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/\
+manpages/docbook.xsl manpage.dbk'.  A manual page
+<package>.<section> will be generated.  You may view the
+manual page with: nroff -man <package>.<section> | less'.  A
+typical entry in a Makefile or Makefile.am is:
+
+DB2MAN=/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/\
+manpages/docbook.xsl
+XP=xsltproc -''-nonet
+
+manpage.1: manpage.dbk
+        $(XP) $(DB2MAN) $<
+    
+The xsltproc binary is found in the xsltproc package.  The
+XSL files are in docbook-xsl.  Please remember that if you
+create the nroff version in one of the debian/rules file
+targets (such as build), you will need to include xsltproc
+and docbook-xsl in your Build-Depends control field.
+
+-->
+
+  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
+  <!ENTITY dhfirstname "<firstname>Jonathan</firstname>">
+  <!ENTITY dhsurname   "<surname>Riddell</surname>">
+  <!-- Please adjust the date whenever revising the manpage. -->
+  <!ENTITY dhdate      "<date>October 17, 2004</date>">
+  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
+       allowed: see man(7), man(1). -->
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>jr @jriddell.org</email>">
+  <!ENTITY dhusername  "Jonathan Riddell">
+  <!ENTITY dhucpackage "<refentrytitle>UNSERMAKE</refentrytitle>">
+  <!ENTITY dhpackage   "unsermake">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
+]>
+
+<refentry>
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      &dhfirstname;
+      &dhsurname;
+    </author>
+    <copyright>
+      <year>2004</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+
+    &dhsection;
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+
+    <refpurpose>A build for used by KDE to replace automake and make</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+
+      <arg><option>[options]</option> <option>[make-target]</option></arg>
+
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>DESCRIPTION</title>
+
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> command.</para>
+
+    <para><command>&dhpackage;</command> is a program that replaces
+    make and automake when compiling KDE packages.  It has faster
+    build times, especially on multiple processor machines, and
+    cleaner output.</para>
+
+    <para>Prepare for compilation with <command>unsermake -f
+    Makefile.cvs</command> run <command>./configure</command> as
+    normal and compile with <command>unsermake</command>.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>OPTIONS</title>
+
+    <para>These programs follow the usual &gnu; command line syntax,
+      with long options starting with two dashes (`-').  A summary of
+      options is included below.  For a complete description, see the
+      <application>Info</application> files.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><option>-h</option>
+          <option>--help</option>
+        </term>
+        <listitem>
+          <para>Show summary of options.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--version</option>
+        </term>
+        <listitem>
+          <para>Show version of program.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option>
+          <option>--verbose</option>
+        </term>
+        <listitem>
+          <para>Show verbose output.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-C</option>
+          <option>--directory=dir</option>
+        </term>
+        <listitem>
+          <para>Change to directory dir before doing anything.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--compile-jobs=N</option>
+        </term>
+        <listitem>
+          <para>Limit compile jobs to N.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-i</option>
+          <option>--ignore-errors</option>
+        </term>
+        <listitem>
+          <para>Ignore errors from commands.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-j</option>
+          <option>--jobs=N</option>
+        </term>
+        <listitem>
+          <para>Allow N parallel jobs.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-k</option>
+          <option>--keep-going</option>
+        </term>
+        <listitem>
+          <para>Keep going when some targets can't be made.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--missing-deps</option>
+        </term>
+        <listitem>
+          <para>Find missing dependencies.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--no-real-compare</option>
+        </term>
+        <listitem>
+          <para>Use only mtime and not file contents to determine if a file has changed  (default).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--real-compare</option>
+        </term>
+        <listitem>
+          <para>Use not only mtime but file content to determine if a file has changed.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <option>--random=N</option>
+        </term>
+        <listitem>
+          <para>Make random targets.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-n</option>
+          <option>--just-print</option>
+        </term>
+        <listitem>
+          <para>Only print out the commands to call, do not run them.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-p</option>
+          <option>--print-progress</option>
+        </term>
+        <listitem>
+          <para>Shows an estimated percent number before each output.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-f file</option>
+        </term>
+        <listitem>
+          <para>Use file as a makefile.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>SEE ALSO</title>
+
+    <para>make (1), automake (1).</para>
+
+  </refsect1>
+  <refsect1>
+    <title>AUTHOR</title>
+
+    <para>This manual page was written by &dhusername; &dhemail; (but
+      may be used by others).  Permission is granted to copy,
+      distribute and/or modify this document under the terms of the
+      &gnu; General Public License, Version 2 any later version
+      published by the Free Software Foundation.  
+    </para>
+
+	<para>
+	  On Debian systems, the complete text of the GNU General Public
+	  License can be found in /usr/share/common-licenses/GPL.
+	</para>
+
+  </refsect1>
+</refentry>
+

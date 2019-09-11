@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Fri Jul  1 17:26:47 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Sat Dec 26 03:57:51 UTC 2015 - i@marguerite.su
+
+- eb-devel should requires eb, which requires libeb16.
+  or applications like ebview won't build because lack
+  of /etc/eb.conf
+
+-------------------------------------------------------------------
+Tue Jan  6 22:36:18 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.4.3
+  + eb/ebnet.c (ebnet_open): Use _atoi64() or atol(), when atoll()
+	is not available.
+  + configure.ac (LIBEB_VERSION_INFO): 
+	EB Library verison 4.2.2 sets LIBEB_VERSION_INFO to 15:0:2,
+	but it is wrong.  To avoid the confusion, I decide to update
+	LIBEB_VERSION_INFO to 16:0:0.
+- Split out translation files in a lang subpackage and recommend it
+  by the main package
+- Split out the system library in libeb16 subpackage; follow shared
+  library packaging guidelines
+- Do not provide the INSTALL file; we're not concerned
+- Update the Url
+- Use download Url as source
+- Make devel subpackage depends on libeb16 instead of eb
+- Remove redudant "eb" in Summary; fix related rpmlint warning
+- Remove bugzilla-242268.patch; merged on upstream release
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Undebianify ebdev to eb-devel
+
+-------------------------------------------------------------------
+Mon Feb 25 07:50:13 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postin errors 
+- spec file cleanup
+- remove libtool archives and static libraries
+- use find_lang macro where needed 
+
+-------------------------------------------------------------------
+Fri Mar 30 02:25:53 CEST 2007 - ro@suse.de
+
+- added zlib-devel to buildreq 
+
+-------------------------------------------------------------------
+Tue Feb 06 15:50:24 CET 2007 - mfabian@suse.de
+
+- bugzilla #242268: array subscript is above array bounds.
+
+-------------------------------------------------------------------
+Tue Feb 06 12:33:57 CET 2007 - mfabian@suse.de
+
+- update to 4.3.
+  • fix a problem with shared directories with EPWING dictionaries
+  • fix the problem that ‘ebunzip --test’ did overwrite the
+    main dictionary file.
+  • fix the problem that ebappendix created an appendix in
+    electronic book form even when reading a catalogs.app file.
+  • make colour illustrations with reference links work.
+  • API Additions:
+     new functions: eb_have_image_menu(), eb_image_menu().
+     new text hooks: EB_HOOK_BEGIN_IMAGE_PAGE,
+     EB_HOOK_END_IMAGE_PAGE, EB_HOOK_BEGIN_CLICKABLE_AREA,
+     EB_HOOK_END_CLICKABLE_AREA 
+
+-------------------------------------------------------------------
+Wed Feb  8 01:22:14 CET 2006 - ro@suse.de
+
+- workaround glibc(?) problem with localedir being .locale
+  in configure 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun  8 20:27:12 CEST 2005 - tiwai@suse.de
+
+- updated to version 4.2.
+
+-------------------------------------------------------------------
+Wed Apr 13 11:25:27 CEST 2005 - mfabian@suse.de
+
+- use gt_LC_MESSAGES instead of AM_LC_MESSAGES in gettext.m4
+  to make it build.
+
+-------------------------------------------------------------------
+Tue Dec  7 19:05:03 CET 2004 - pth@suse.de
+
+- Fix quoting in AC_DEFUN
+
+-------------------------------------------------------------------
+Sat Jan 10 16:26:14 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 23 18:12:06 CEST 2003 - mfabian@suse.de
+
+- update to eb-3.3.4.
+- use %run_ldconfig.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 11:21:51 CET 2003 - mfabian@suse.de
+
+- I forgot "Prereq:       %install_info_prereq", sorry.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:58:29 CET 2003 - mfabian@suse.de
+
+- update to eb-3.3
+- use %install_info macro (Bug #23401)
+
+-------------------------------------------------------------------
+Tue Aug 13 11:18:14 CEST 2002 - mfabian@suse.de
+
+- update to eb-3.2.2
+  according to the NEWS file:
+  * Fix bug in handling of appendix.
+  * Fix gettext message catalogs.
+  and now the Oxford Concise dictionary works perfectly in UTF-8
+  for me with eb-3.2.1 I still had problems using the Oxford
+  Concise in UTF-8.
+
+-------------------------------------------------------------------
+Fri Apr  5 19:44:47 CEST 2002 - mfabian@suse.de
+
+- update to eb-3.2.1
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Sat Oct 13 20:53:10 CEST 2001 - mfabian@suse.de
+
+- update to eb-3.1
+- move .so symbolic links to dev subpackage
+
+-------------------------------------------------------------------
+Tue Mar 27 14:35:33 CEST 2001 - ro@suse.de
+
+- fixed buildrooting 
+
+-------------------------------------------------------------------
+Wed Aug 16 18:43:45 CEST 2000 - mfabian@suse.de
+
+- changed `%{suse_update_config zlib}' to
+  `%{?suse_update_config:%{suse_update_config zlib}}'
+  to enable building the package outside of the SuSE environment.
+
+-------------------------------------------------------------------
+Wed Aug 16 17:52:50 CEST 2000 - mfabian@suse.de
+
+- changed %{?suse_update_config} into %{suse_update_config zlib}
+  to make it build on ia64
+
+-------------------------------------------------------------------
+Thu Aug 10 10:44:01 CEST 2000 - mfabian@suse.de
+
+- update to version 2.3.8
+
+-------------------------------------------------------------------
+Wed Jul 12 17:50:15 CEST 2000 - mfabian@suse.de
+
+- new package: eb, Version 2.3.7
+
+

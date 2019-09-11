@@ -1,0 +1,29 @@
+Author: Luca Boccassi <bluca@debian.org>
+Description: version_generator.py: make build reproducible
+ If SOURCE_DATE_EPOCH is defined then the user is most likely interested
+ in building the library in a reproducible way. So in that case use fixed
+ "BuildSystem" and "BuildMachine" strings instead of the operating system
+ and architecture.
+Origin: https://github.com/steve-o/openpgm/pull/58
+--- pgm.orig/version_generator.py
++++ pgm/version_generator.py
+@@ -8,6 +8,11 @@ timestamp = time.gmtime (int (os.getenv
+ build_date = time.strftime ("%Y-%m-%d", timestamp)
+ build_time = time.strftime ("%H:%M:%S", timestamp)
+ build_rev = filter (str.isdigit, "$Revision$")
++build_system = platform.system()
++build_machine = platform.machine()
++if 'SOURCE_DATE_EPOCH' in os.environ:
++        build_system = 'BuildSystem'
++        build_machine = 'BuildMachine'
+ 
+ print """
+ /* vim:ts=8:sts=8:sw=4:noai:noexpandtab
+@@ -51,6 +56,6 @@ const char* pgm_build_revision = "%s";
+ 
+ 
+ /* eof */
+-"""%(build_date, build_time, platform.system(), platform.machine(), build_rev)
++"""%(build_date, build_time, build_system, build_machine, build_rev)
+ 
+ # end of file

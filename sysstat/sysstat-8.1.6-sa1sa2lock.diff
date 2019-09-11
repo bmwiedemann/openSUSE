@@ -1,0 +1,50 @@
+Index: sysstat-11.6.1/sa1.in
+===================================================================
+--- sysstat-11.6.1.orig/sa1.in
++++ sysstat-11.6.1/sa1.in
+@@ -22,15 +22,21 @@ then
+ 	SADC_OPTIONS="${SADC_OPTIONS} -D"
+ fi
+ 
++set -e
+ ENDIR=@SA_LIB_DIR@
+ cd ${ENDIR}
++LOCKFILE=/var/run/sysstat/sadc.LOCK
++mkdir -p /var/run/sysstat
++lockfile -r2 -30 "$LOCKFILE" 2>/dev/null
++trap "/bin/rm -f $LOCKFILE" EXIT
++
+ [ "$1" = "--boot" ] && shift && BOOT=y || BOOT=n
+ if [ $# = 0 ] && [ "${BOOT}" = "n" ]
+ then
+ # Note: Stats are written at the end of previous file *and* at the
+ # beginning of the new one (when there is a file rotation) only if
+ # outfile has been specified as '-' on the command line...
+-	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
++	 ${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
+ else
+-	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
++	 ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
+ fi
+Index: sysstat-11.6.1/sa2.in
+===================================================================
+--- sysstat-11.6.1.orig/sa2.in
++++ sysstat-11.6.1/sa2.in
+@@ -43,6 +43,17 @@ ENDIR=@bindir@
+ 
+ [ -f "${DFILE}" ] || exit 0
+ cd ${ENDIR}
++
++LOCKFILE=/var/run/sysstat/sadc.LOCK
++mkdir -p /var/run/sysstat
++if ! lockfile -r6 -600 $LOCKFILE 2>/dev/null; then
++  if test `find $LOCKFILE -mmin +180 2>/dev/null`; then
++    rm -f $LOCKFILE
++    logger -p cron.alert "$0: detected an old lockfile \"$LOCKFILE\"."
++  fi
++fi
++trap "/bin/rm -f $LOCKFILE" EXIT
++
+ if [ x${REPORTS} != xfalse ]
+ then
+ 	${ENDIR}/sar $* -f ${DFILE} > ${RPT}

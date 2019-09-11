@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:47 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:34 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 13:06:57 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu May 18 09:52:19 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.0.7 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:31:20 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.0.7 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu May 14 07:34:16 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit
+* decoupled from ghc 7.8

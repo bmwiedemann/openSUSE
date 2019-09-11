@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Wed May 22 05:12:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.21
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+  version 2.21: Tue 21 May 16:26:30 CEST 2019
+  
+  	Fixes:
+  	- fix metadata [Mohammad S Anwar]
+  
+  	Improvements:
+  	- add more to the README
+  	- add Mail::Mailer option StartSSL for smtp backend
+  	  rt.cpan.org#125871 [Guilhem Moulin]
+  	- deprecate Mail::Mailer backend smtps
+  	- document need for escaping docs for Mail::Send
+  	  rt.cpan.org#129627 [Jonathan Kamens]
+  	- document limit on parameters for Mail::Send::new()
+  	  rt.cpan.org#129633 [Sven Neuhaus]
+
+-------------------------------------------------------------------
+Wed Feb  7 15:49:21 UTC 2018 - coolo@suse.com
+
+- updated to 2.20
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+  version 2.20: Mon 22 Jan 18:14:44 CET 2018
+  
+  	Improvements:
+  	- rewrite doc syntax to my current standard style.
+  	- text corrections rt.cpan.org#123823 [Ville Skyttä]
+  	- text corrections rt.cpan.org#123824 [Ville Skyttä]
+  	- convert to GIT
+  	- move to GitHUB
+
+-------------------------------------------------------------------
+Thu Aug 24 05:54:45 UTC 2017 - coolo@suse.com
+
+- updated to 2.19
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+-------------------------------------------------------------------
+Wed Aug 23 05:46:29 UTC 2017 - coolo@suse.com
+
+- updated to 2.19
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+  version 2.19: Tue 22 Aug 13:30:41 CEST 2017
+  
+  	Improvements:
+  	- block namespace MailTools rt.cpan.org#120905 [Karen Etheridge]
+
+-------------------------------------------------------------------
+Mon May 23 12:07:22 UTC 2016 - coolo@suse.com
+
+- updated to 2.18
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+  version 2.18: Wed 18 May 23:52:30 CEST 2016
+  
+  	Fixes:
+  	- Mail::Header should accept  in empty line which ends the
+  	  header.  rt.cpan.org#114382 [Ricardo Signes]
+  
+  version 2.17: Wed 11 May 17:20:21 CEST 2016
+  
+  	Fixes:
+  	- Mail::Header should only accept totally empty lines as header
+  	  terminator, not to break MIME::Tools regression tests.
+  	  rt.cpan.org#113918 [David Cantrell]
+
+-------------------------------------------------------------------
+Thu May  5 09:33:51 UTC 2016 - coolo@suse.com
+
+- updated to 2.16
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+-------------------------------------------------------------------
+Fri Apr 17 09:11:57 UTC 2015 - coolo@suse.com
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+
+  version 2.14: Fri Nov 21 17:12:42 CET 2014
+  
+  	Fixes:
+  
+  	- threads and Mail::Field initiation
+  	  rt.cpan.org#99153 [Autumn Lansing] and [Arne Becker]
+  
+  	Improvements:
+  
+  	- warn when loading of some Mail::Field::* fails [Arne Becker]
+  
+  version 2.13: Sun Jan  5 18:52:25 CET 2014
+  
+  	Fixes:
+  
+  	- optional 'from' and 'on' component in in-reply-to are comments
+  	  rt.cpan.org#89371 [Ward Vandewege]
+  	- mailcap \\ -> \
+  	  rt.cpan.org#89802 [Kevin Ryde]
+  
+  	Improvements:
+  
+  	- fix typos  rt.cpan.org#87188 [D Steinbrunner]
+
+- remove obsolete incsearch.diff
+
+-------------------------------------------------------------------
+Mon Jul 15 12:47:51 UTC 2013 - coolo@suse.com
+
+- update to 2.12
+        Fixes:
+ 
+        - default for Mail::Header::new(Modify) is 'false', not 'true'
+          rt.cpan.org#79985 [Thomas Sibley]
+ 
+        - Mail::Address take username with rindex(), a bit better than
+          index() but still poor.
+          rt.cpan.org#82056 [Filipe Gonçalves]
+ 
+        Improvements:
+ 
+        - check for bad folding of header lines
+          rt.cpan.org#79993 [Thomas Sibley]
+ 
+        - add a note about better to avoid Mail::Address->name(),
+          in response to a question by
+          rt.cpan.org#81459 [Moritz Lenz]
+ 
+ version 2.11: Wed Aug 29 09:09:47 CEST 2012
+ 
+        Fixes:
+ 
+        - typo in Mail::Mailer::smtp, which only shows up in >5.14
+          [cpantesters]
+ 
+ version 2.10: Tue Aug 28 09:41:52 CEST 2012
+ 
+        Fixes:
+ 
+        - Mail::Mailer::smtp set from address twice.
+          rt.cpan.org#77161 [Vladimir Goshev]
+ 
+        - Mail::Mailer::smtps did not support the From option.
+          rt.cpan.org#77161 [Vladimir Goshev]
+
+-------------------------------------------------------------------
+Mon Jul 15 14:09:27 CEST 2013 - mls@suse.de
+
+- fix searching of %INC, make sure the entry really has a set
+  value. Fixes the perl-MIME-tools module.
+
+-------------------------------------------------------------------
+Thu Mar 01 19:46:02 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.09:
+  * remove dependency to Test::Pod by moving 99pod.t from t/ to xt/ as result
+    of RT#69918
+
+-------------------------------------------------------------------
+Fri Jun  3 10:12:07 UTC 2011 - vcizek@novell.com
+
+- corrected license (same as Perl)
+- removed authors
+
+-------------------------------------------------------------------
+Wed Jun  1 22:14:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.08:
+  * respect errors on closing an Mail::Mailer::smtp/::smtps connection
+  * Mail::Internet should accept Net::SMTP::SSL as well (RT#68590)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:27 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:27 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:45 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Tue Oct  5 15:10:39 CEST 2010 - anicka@suse.cz
+
+- update to 2.07
+ * update README: MailTools 2.* require 5.8.1
+ * add "MAIL FROM" to Mail::Mailer::smtp, to be able to communicate
+   with Comcast
+
+-------------------------------------------------------------------
+Tue Feb 23 16:21:06 CET 2010 - anicka@suse.cz
+
+- update to 2.06
+ * express more clearly that Authen::SASL needs to be installed
+   manually if you need the functionality
+ * support for smtps via Net::SMTP::SSL
+
+-------------------------------------------------------------------
+Wed Jan 13 16:32:20 CET 2010 - anicka@suse.cz
+
+- update to 2.05
+ * no de-ref error when index out of range in Mail::Header::get()
+ * repaired fixed selection of smtp for non-unix systems.
+ * do not run pod.t in devel environment.
+ * set default output filename for Mail::Mailer::testfile::PRINT
+ * warn when no mailers were found.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Sep 10 16:56:04 CEST 2008 - anicka@suse.cz
+
+- update to 2.04
+ * Mail::Field::_require_dir complained on 5.10 about a closed
+   dirhandle.
+ * Bcc line removed before collecting addresses.
+ * add "die" to "close()" in synopsis of Mail::Send and
+   Mail::Mailer.
+
+-------------------------------------------------------------------
+Thu Jun 19 16:23:28 CEST 2008 - anicka@suse.cz
+
+- update to 2.03
+ * Netware needs to use smtp as well
+ * Mail::Field::extract() fixed.
+
+-------------------------------------------------------------------
+Thu Dec 13 15:32:59 CET 2007 - anicka@suse.cz
+
+- update to 2.02 
+  * use 3-arg open() in Mail::Util.
+  * reorganized installation of MailTools, in a modern way. This
+    may break installation on very old releases of Perl.
+  * added and cleaned a lot of documentation, using OODoc to
+    generate nice manuals in POD and HTML.
+  * extracted Mail::Field::Generic from Mail::Field
+  * added misteriously missing Mail::Field::AddrList::addr_list()
+
+-------------------------------------------------------------------
+Tue May 15 16:09:11 CEST 2007 - anicka@suse.cz
+
+- update to 1.77
+  * fixed syntax error in qmail.pm
+  * die if qmail's exec fails.
+  * require Data::Format
+  * corrected header field folding according to rfc2822, which
+    may break some ancient (poor) applications.
+
+-------------------------------------------------------------------
+Thu Apr 12 11:38:05 CEST 2007 - anicka@suse.cz
+
+- update to 1.76
+  * The tag (field label) casing is "normalized" which is not
+    required (as the comment in the code told), but a mis*
+    feature.  The feature will not change, to avoid breaking
+    existing code.
+  * Do not ignore unknown argument to Mail::Internet::new(),
+    but complain about it
+  * Document that the \n is still after a header line, but folding
+    is removed.
+  * Document that unfolding is too greading, taking all leading
+    blanks where only one should be taken. 
+  * [Mike Lerley] reported that environment variables are not
+    thread*safe in mod_perl.  Therefore, he required to pass the
+    sender of the message explictly on qmail's command*line.
+    His addapted patch included.
+
+-------------------------------------------------------------------
+Thu Jul 13 13:49:30 CEST 2006 - anicka@suse.cz
+
+- update to 1.74
+  * minor improvements and bugfixes, new examples added 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 11 15:52:33 CEST 2005 - freitag@suse.de
+
+- updated to most recent version 1.67 
+
+-------------------------------------------------------------------
+Thu Feb 26 15:06:05 CET 2004 - choeger@suse.de
+
+- updated to most recent version 1.60
+
+-------------------------------------------------------------------
+Sun Jan 11 12:08:19 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Aug 22 15:15:19 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 19:49:12 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 10:50:05 CEST 2003 - choeger@suse.de
+
+- updated filelist
+
+-------------------------------------------------------------------
+Mon May 19 12:26:50 CEST 2003 - choeger@suse.de
+
+- remove installed (but unpackaged) file perllocal.pod
+
+-------------------------------------------------------------------
+Thu May  8 14:07:43 CEST 2003 - choeger@suse.de
+
+- update to version 1.58
+
+-------------------------------------------------------------------
+Wed Oct 30 10:58:20 CET 2002 - choeger@suse.de
+
+- Security update: The mailx mailer has been removed from the list
+  of possible mailers in the Mail::Mailer package. Remote attackers
+  could use unpatched Mail::Mailer packages to execute arbitrary
+  commands via programs using this package or any other Perl
+  package using Mail::Mailer. Such programs are auto-reply
+  programs or SpamAssassin for example.
+
+-------------------------------------------------------------------
+Mon Aug  5 12:36:44 MEST 2002 - link@suse.de
+
+- update to 1.47 
+- overhauled spec file
+
+-------------------------------------------------------------------
+Mon Jul 29 14:13:33 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Sun Jan 13 03:17:49 MET 2002 - link@suse.de
+
+- update to v1.42 
+
+-------------------------------------------------------------------
+Wed Nov 15 17:39:27 CET 2000 - choeger@suse.de
+
+- long package name
+- buildroot
+
+-------------------------------------------------------------------
+Wed Jul 19 09:32:51 MEST 2000 - choeger@suse.de
+
+- first package, v1.1401
+

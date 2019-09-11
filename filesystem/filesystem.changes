@@ -1,0 +1,1877 @@
+-------------------------------------------------------------------
+Mon May 27 15:47:56 CEST 2019 - kukuk@suse.de
+
+- Re-add /var/cache and /var/log (revert [bsc#1078466] because of
+  [bsc#1078466])
+- Fix permission of fs-var.conf
+
+-------------------------------------------------------------------
+Thu May 17 15:19:29 CEST 2018 - ro@suse.de
+
+- pretrans lua script: try to move away /var/run and /var/lock
+  unless they are already symlinks (bsc#1084119) 
+
+-------------------------------------------------------------------
+Tue Mar 27 17:44:09 UTC 2018 - msuchanek@suse.com
+
+- Add /etc/modprobe.d and /usr/lib/modprobe.d (bsc#1082050).
+
+-------------------------------------------------------------------
+Fri Mar 16 19:05:37 CET 2018 - ro@suse.de
+
+- drop /etc/xinetd.d (bsc#1084457) 
+
+-------------------------------------------------------------------
+Fri Mar  2 11:05:59 UTC 2018 - dimstar@opensuse.org
+
+- Handle aaa_base moving the license files to /usr/share/licenses.
+
+-------------------------------------------------------------------
+Wed Feb 14 10:40:35 UTC 2018 - schwab@suse.de
+
+- Use lib64 filelist on riscv64
+
+-------------------------------------------------------------------
+Thu Feb  8 13:56:45 CET 2018 - kukuk@suse.de
+
+- Exclude some directories from fs-var.conf which are already part 
+  of systemd [bsc#1078466].
+- Remove obsolete, outdated or duplicate directories:
+  /lib/YaST, /lib/lsb, /srv/ftp, /usr/lib/lsb, /usr/share/nls and
+  /usr/share/tmac.
+
+-------------------------------------------------------------------
+Tue Feb  6 07:13:19 CET 2018 - kukuk@suse.de
+
+- Adjust aaa_base test for latest aaa_base changes
+
+-------------------------------------------------------------------
+Mon Feb  5 13:11:33 UTC 2018 - rbrown@suse.com
+
+- Remove /var/adm/fillup-templates, already prohibited by rpmlint 
+
+-------------------------------------------------------------------
+Mon Feb  5 13:41:24 CET 2018 - kukuk@suse.de
+
+- Remove /var/adm/backup/{rpmdb,sysconfig}, they belong to
+  aaa_base-extras only. 
+
+-------------------------------------------------------------------
+Wed Nov 22 11:26:13 CET 2017 - kukuk@suse.de
+
+- Fix incomplete /usr/X11R6 drop from 2013
+
+-------------------------------------------------------------------
+Tue Nov 21 16:55:26 CET 2017 - kukuk@suse.de
+
+- Create fs-var.conf for systemd-tmpfiles, which contains all 
+  directories and links below /var. This is needed for systems,
+  which use transactional update, read-only root filesystem, or
+  other things, where either /var is not available during upgrade
+  or does not survive a reboot. So that systemd-tmpfiles could
+  create them at next boot.
+- Drop deprecated /usr/tmp compat link
+
+-------------------------------------------------------------------
+Wed Nov  8 14:22:03 UTC 2017 - rbrown@suse.com
+
+- Add /usr/share/fillup-templates: this is the new location for
+  fillup-templates
+
+-------------------------------------------------------------------
+Wed Nov  1 08:35:43 UTC 2017 - dimstar@opensuse.org
+
+- Add /usr/share/metainfo: this is the new location defined by
+  AppStream to replace /usr/share/appdata.
+
+-------------------------------------------------------------------
+Fri Jun  9 13:07:39 CEST 2017 - kukuk@suse.de
+
+- Remove /etc/ppp and subdirectories, the current, full list of
+  directories is part of the sysconfig package
+
+-------------------------------------------------------------------
+Thu Jun  8 16:59:35 CEST 2017 - kukuk@suse.de
+
+- Require user root and group root
+
+-------------------------------------------------------------------
+Thu Jun  8 13:39:00 CEST 2017 - kukuk@suse.de
+
+- Remove /etc/susehelp.d and subdirectories, susehelp is gone
+- Remove /etc/tmpdirs.d, support was removed 2011 and migrated
+  to tmpfiles.d
+- Remove /var/adm/perl-modules (support was removed with 11.4)
+
+-------------------------------------------------------------------
+Thu Jun  8 13:28:41 CEST 2017 - kukuk@suse.de
+
+- Get ride of the last non-root group. /run/lock is created by
+  systemd, not filesystem, so remove it from here.
+
+-------------------------------------------------------------------
+Tue Jun  6 11:27:55 CEST 2017 - kukuk@suse.de
+
+- Change ownership of /etc/ppp, group dialout has meanwhile another
+  meaning and there are no setgid dialout binaries who could need
+  that.
+
+-------------------------------------------------------------------
+Mon Apr 17 18:26:36 CEST 2017 - kukuk@suse.de
+
+- Remove home directories for wwwrun, lp, mail and nobody.
+  They are now part of the corresponding system-user-* RPMs.
+
+-------------------------------------------------------------------
+Wed Mar 29 12:48:14 UTC 2017 - kukuk@suse.de
+
+- Move /etc/init.d hiearchy to insserv-compat
+- Move /etc/cups to cups-libs [bsc#1025689]
+
+-------------------------------------------------------------------
+Fri Feb 10 22:29:14 CET 2017 - kukuk@suse.de
+
+- Remove /usr/games (finally everything is moved to /usr/bin)
+
+-------------------------------------------------------------------
+Sat Jan 21 12:34:37 CET 2017 - kukuk@suse.de
+
+- Remove /*/news, now part of system-user-news
+
+-------------------------------------------------------------------
+Fri Jan 20 22:50:06 UTC 2017 - kukuk@suse.de
+
+- Remove /var/cache/man, now part of system-user-man
+
+-------------------------------------------------------------------
+Tue Dec 20 10:29:46 CET 2016 - kukuk@suse.de
+
+- Remove /var/games, now part of system-user-games
+
+-------------------------------------------------------------------
+Tue Dec 20 10:07:10 CET 2016 - kukuk@suse.de
+
+- Add /usr/lib/sysusers.d
+- Remove uucp directories, moved to system-user-uucp
+
+-------------------------------------------------------------------
+Mon Dec  5 13:28:41 UTC 2016 - lnussel@suse.de
+
+- change /etc/cups to mode 0755 by cherry-picking SLE change
+
+-------------------------------------------------------------------
+Wed Nov 25 16:08:03 UTC 2015 - lnussel@suse.de
+
+- own /usr/share/licenses to support %license tags in rpm, see
+  http://rpm.org/wiki/Releases/4.11.0
+
+-------------------------------------------------------------------
+Fri Aug  7 08:25:43 UTC 2015 - dimstar@opensuse.org
+
+- Add /usr/lib/udev/rules.d: packages installing rules don't really
+  have to build depend on udev, it only increases their build time.
+
+-------------------------------------------------------------------
+Wed Jul  1 22:27:17 UTC 2015 - jengelh@inai.de
+
+- Add some systemd directories so that uuidd does not have to own
+  them and still succeeds building in a systemd-less root.
+
+-------------------------------------------------------------------
+Fri May 29 10:16:37 UTC 2015 - dimstar@opensuse.org
+
+- Add /usr/lib/tmpfiles.d, which can well be considered a base
+  system directory by now.
+
+-------------------------------------------------------------------
+Thu Sep 11 13:20:36 CEST 2014 - ro@suse.de
+
+- add /usr/share/appdata (bnc#893441) 
+
+-------------------------------------------------------------------
+Wed Sep  3 16:04:02 CEST 2014 - ro@suse.de
+
+- drop /media directory (bnc#890198)
+
+-------------------------------------------------------------------
+Fri Aug 29 07:10:41 UTC 2014 - lnussel@suse.de
+
+- make /run/lock %ghost to fix build failure
+
+-------------------------------------------------------------------
+Wed Apr 23 18:44:15 CEST 2014 - ro@suse.de
+
+- make /var/run and /var/lock just ghost entries and create them
+  if they do not exist at all and rely on dracut hooks to
+  actually replace directories with symlinks there (bnc#874748) 
+
+-------------------------------------------------------------------
+Tue Apr 22 00:17:18 CEST 2014 - ro@suse.de
+
+- add vscan user to ignore home list 
+
+-------------------------------------------------------------------
+Fri Apr 11 16:23:42 CEST 2014 - ro@suse.de
+
+- change /etc/cups to mode 0755 (bnc#871640) for new cups version 
+
+-------------------------------------------------------------------
+Fri Apr 11 14:02:07 CEST 2014 - ro@suse.de
+
+- change /sys to mode 0555 (bnc#871640) 
+
+-------------------------------------------------------------------
+Wed Mar 12 10:19:17 CET 2014 - ro@suse.de
+
+- make /var/lock a symlink to /run/lock (bnc#867873) 
+
+-------------------------------------------------------------------
+Fri Mar  7 11:11:05 CET 2014 - ro@suse.de
+
+- use lazy umount 
+
+-------------------------------------------------------------------
+Thu Mar  6 01:03:53 CET 2014 - ro@suse.de
+
+- use os.execute("umount ...") instead of posix.umount("...")
+  bnc#866964 
+
+-------------------------------------------------------------------
+Mon Mar  3 11:48:31 CET 2014 - ro@suse.de
+
+- change pre to pretrans for directory/symlink conversion 
+
+-------------------------------------------------------------------
+Fri Feb 28 13:56:47 CET 2014 - ro@suse.de
+
+- drop /var/lib/pam_devperm (bnc#866234) 
+
+-------------------------------------------------------------------
+Thu Feb 27 18:48:24 CET 2014 - ro@suse.de
+
+- replace /var/run by symlink to /run
+- try to handle case where /var/run is a bind-mount
+- extend lua script in preinstall to handle this transition
+- bnc#865893 
+
+-------------------------------------------------------------------
+Mon Jan  6 12:53:48 UTC 2014 - dmueller@suse.com
+
+- bump version to 13.2 
+
+-------------------------------------------------------------------
+Mon Dec  9 09:18:00 UTC 2013 - speilicke@suse.com
+
+- Drop /usr/X11R6, /usr/X11R6/bin, /usr/X11R6/lib, /var/X11R6
+
+-------------------------------------------------------------------
+Wed Dec  4 09:41:24 UTC 2013 - adrian@suse.de
+
+- add ppc64le definition
+
+-------------------------------------------------------------------
+Mon Sep 30 09:29:05 UTC 2013 - speilicke@suse.com
+
+- Drop /lib/systemd and /lib/systemd/system, everything is now in 
+  /usr/lib/systemd...
+
+-------------------------------------------------------------------
+Tue Jul 16 13:51:36 CEST 2013 - mls@suse.de
+
+- do not put dir modifiers on symlinks
+
+-------------------------------------------------------------------
+Thu Jul  4 09:07:10 UTC 2013 - lnussel@suse.de
+
+- change license to MIT as GPL doesn't make sense for a package that
+  only contains directories. Also include a LICENSE.txt with the
+  sources (bnc#822602).
+
+-------------------------------------------------------------------
+Fri Jun 28 07:39:12 UTC 2013 - dmueller@suse.com
+
+- bump version to 13.1
+
+-------------------------------------------------------------------
+Tue Jun 18 08:55:07 CEST 2013 - mhrusecky@suse.cz
+
+- Add systemd %_unitdir
+
+-------------------------------------------------------------------
+Mon Jun 17 12:26:21 UTC 2013 - coolo@suse.com
+
+- move sysctl directories here
+
+-------------------------------------------------------------------
+Thu Jan 31 14:00:51 UTC 2013 - guillaume@opensuse.org
+
+- Add directory.list64 for aarch64
+
+-------------------------------------------------------------------
+Tue Nov  6 15:11:22 UTC 2012 - fcrozat@suse.com
+
+- Revert /var/run and /var/lock being symlinks for now.
+
+-------------------------------------------------------------------
+Sat Oct 20 09:03:48 UTC 2012 - coolo@suse.com
+
+- remove get_version_number.sh, it's unused since ages
+
+-------------------------------------------------------------------
+
+Mon Oct 15 10:47:36 UTC 2012 - aj@suse.de
+
+- Revert last change since aaa_base removed /usr/lib/tmpfiles.d.
+
+-------------------------------------------------------------------
+Fri Oct 12 14:25:04 UTC 2012 - coolo@suse.com
+
+- own /usr/lib/tmpfiles.d
+
+-------------------------------------------------------------------
+Tue Sep 25 19:49:58 UTC 2012 - aj@suse.de
+
+- Remove also /sbin/conf.d/ (SuSEconfig directory).
+
+-------------------------------------------------------------------
+Tue Sep 25 12:30:57 UTC 2012 - fcrozat@suse.com
+
+- replace /var/run and /var/lock directories with symlinks to
+  /run and /run/lock (respectively).
+
+-------------------------------------------------------------------
+Thu Sep 20 13:46:26 CEST 2012 - kukuk@suse.de
+
+- Remove SuSEconfig directories [FATE#100011]
+
+-------------------------------------------------------------------
+Tue Sep  4 13:54:01 UTC 2012 - coolo@suse.com
+
+- move directories for man page translations from man package to
+  filesystem
+
+-------------------------------------------------------------------
+Thu Jul 12 08:49:21 UTC 2012 - lnussel@suse.de
+
+- remove /var/run/vi.recover (bnc#765288)
+- remove /media/floppy and /media/cdrom ghost entries, they are not
+  used anywhere since years either
+
+-------------------------------------------------------------------
+Fri Jun  1 07:24:32 UTC 2012 - lnussel@suse.de
+
+- remove /var/cache/fonts (bnc#764885)
+
+-------------------------------------------------------------------
+Tue Mar 13 15:22:06 UTC 2012 - vuntz@opensuse.org
+
+- Also create /usr/share/help/$LOCALE for each LOCALE defined in
+  the languages file. This will allow our packages to have
+  translations for the XDG help system.
+
+-------------------------------------------------------------------
+Mon Jan  9 10:16:10 CET 2012 - dmueller@suse.de
+
+- bump version to 12.2
+
+-------------------------------------------------------------------
+Tue Oct 25 12:56:49 UTC 2011 - coolo@suse.com
+
+- digged through logs to find more languages that have >45000 strings
+
+-------------------------------------------------------------------
+Tue Sep 20 14:49:10 UTC 2011 - lnussel@suse.de
+
+- remove world writeable /var/crash again (bnc#438041)
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Sep  5 14:56:39 UTC 2011 - vuntz@opensuse.org
+
+- Add /usr/share/help and /usr/share/help/C: this is the directory
+  used by the XDG help system specification, and the subdirectory
+  for the english docs there.
+
+-------------------------------------------------------------------
+Mon Aug 22 16:22:51 CEST 2011 - dmueller@suse.de
+
+- remove dirs that are clearly aaa_base specific
+
+-------------------------------------------------------------------
+Thu Aug  4 09:56:31 UTC 2011 - lnussel@suse.de
+
+- remove /var/lock/subsys as /var/lock is on tmpfs now
+
+-------------------------------------------------------------------
+Mon Jul 25 18:55:31 UTC 2011 - aj@suse.de
+
+- Really add language zh.
+
+-------------------------------------------------------------------
+Tue Jul 12 09:13:06 UTC 2011 - aj@suse.de
+
+- Add languages ga, ia, kk, km, kn, mai, nds, wa (from kde4-l10n) and
+  zh (from cups).
+
+-------------------------------------------------------------------
+Thu Jul  7 12:06:16 UTC 2011 - lnussel@suse.de
+
+- add /etc/skel/{.local,.config} to make sure they have correct
+  permissions for new users (bnc#676468)
+
+-------------------------------------------------------------------
+Thu Jun 30 12:46:34 UTC 2011 - aj@suse.de
+
+- Bump version number.
+- Remove /etc/skel/.mozilla, it's not needed to have this by default.
+
+-------------------------------------------------------------------
+Mon Jun  6 09:57:42 UTC 2011 - aj@suse.de
+
+- Increase version number to 12.1.
+- Add missing directories from aaa_base: /usr/share/doc/packages/aaa_base,
+  /lib/aaa_base
+
+-------------------------------------------------------------------
+Wed Mar 30 12:04:01 CEST 2011 - ro@suse.de
+
+- add /run directory (mode 0755,root,root) 
+
+-------------------------------------------------------------------
+Wed Mar  9 08:16:59 UTC 2011 - coolo@novell.com
+
+- reset list of languages to only contain what's translated with
+  more than 45.000. we might add big ones later if they become popular
+  to translate
+
+-------------------------------------------------------------------
+Mon Mar  7 12:28:28 CET 2011 - ro@suse.de
+
+- bump version to 11.5 
+
+-------------------------------------------------------------------
+Wed Feb 16 12:44:27 CET 2011 - ro@suse.de
+
+- fix build whitelisting /lib/udev/devices 
+
+-------------------------------------------------------------------
+Fri Jan 14 09:08:08 UTC 2011 - coolo@novell.com
+
+- add new locales (bnc#659001)
+
+-------------------------------------------------------------------
+Sun Dec 12 11:01:41 UTC 2010 - dimstar@opensuse.org
+
+- Add the new locale for "Congo", kg (iso 639-1).
+
+-------------------------------------------------------------------
+Wed Nov 10 15:13:56 UTC 2010 - coolo@novell.com
+
+- add an locale for "Aragonese Spanish"
+
+-------------------------------------------------------------------
+Tue Nov  9 12:23:35 UTC 2010 - lnussel@suse.de
+
+- add /lib/systemd and /lib/systemd/system to avoid systemd
+  dependencies in lots of packages that merely install a text file
+  there.
+
+-------------------------------------------------------------------
+Fri Nov  5 13:22:30 UTC 2010 - lnussel@suse.de
+
+- add /etc/tmpfiles.d
+
+-------------------------------------------------------------------
+Wed Apr 28 17:04:20 CEST 2010 - ro@suse.de
+
+- add ghost.list with directories only listed in this package
+  as ghost files, move /tmp/.X11-unix, /tmp/.ICE-unix
+  and /var/tmp/vi.recover to that list
+- also move /media/cdrom and /media/floppy to that list
+  they were done manually as ghosts in the specfile before 
+- add /etc/tmpdirs.d (see aaa_base)
+
+-------------------------------------------------------------------
+Tue Apr 27 10:20:52 UTC 2010 - aj@suse.de
+
+- Set version number to 11.3
+
+-------------------------------------------------------------------
+Tue Mar  9 13:58:27 UTC 2010 - lnussel@suse.de
+
+- change group of /var/lock to 'lock' (bnc#552095, FATE#308360)
+
+-------------------------------------------------------------------
+Wed Dec  9 18:46:00 CET 2009 - ro@suse.de
+
+- added ms_my (bnc#561174)
+
+-------------------------------------------------------------------
+Tue Dec  8 10:35:55 CET 2009 - jengelh@medozas.de
+
+- Add /usr/$march directories for SPARC. Will be packaging both
+  sparc-suse-linux and sparc64-suse-linux because the compiler
+  suite is usually configured with the latter on this arch.
+
+-------------------------------------------------------------------
+Fri Dec  4 14:56:55 CET 2009 - ro@suse.de
+
+- minor change for sparc in specfile (bnc#558343) 
+
+-------------------------------------------------------------------
+Tue Dec  1 01:49:16 CET 2009 - ro@suse.de
+
+- added en@shaw (bnc#559206) 
+
+-------------------------------------------------------------------
+Fri Aug  7 18:30:51 UTC 2009 - jansimon.moeller@opensuse.org
+
+- add arm gnueabi folders
+
+-------------------------------------------------------------------
+Wed Aug  5 17:58:04 CEST 2009 - thomas@novell.com
+
+- added /selinux (fate#305557) 
+
+-------------------------------------------------------------------
+Wed Jul 15 16:24:35 CEST 2009 - ro@suse.de
+
+- added fil (filipino) to the list of languages (bnc#513962) 
+
+-------------------------------------------------------------------
+Fri Jul  3 10:14:53 CEST 2009 - lrupp@suse.de
+
+- add bem (Bemba) (fix bnc#501080) 
+
+-------------------------------------------------------------------
+Mon Apr 20 00:24:04 CEST 2009 - ro@suse.de
+
+- fix build (ignore /lib/mkinitrd/scripts for now) 
+
+-------------------------------------------------------------------
+Thu Apr 16 18:16:08 CEST 2009 - dmueller@suse.de
+
+- add hne (Chhattisgarhi)
+
+-------------------------------------------------------------------
+Tue Apr 14 15:38:38 CEST 2009 - ro@suse.de
+
+- added jbo (bnc#485455) 
+
+-------------------------------------------------------------------
+Mon Feb 23 15:30:47 CET 2009 - ro@suse.de
+
+- added ha and ig (bnc#470409) 
+
+-------------------------------------------------------------------
+Mon Feb  9 17:52:00 CET 2009 - ro@suse.de
+
+- added af_ZA and fa_IR (bnc#470781) 
+
+-------------------------------------------------------------------
+Mon Jan 26 18:05:25 CET 2009 - ro@suse.de
+
+- drop sr@Latn (please use sr@latin instead) (bnc#469183) 
+
+-------------------------------------------------------------------
+Wed Jan 21 17:53:06 CET 2009 - ro@suse.de
+
+- added la and tr_TR to list of languages (bnc#462486) 
+
+-------------------------------------------------------------------
+Thu Nov 27 18:03:38 CET 2008 - dmueller@suse.de
+
+- add directory for update-scripts/update-messages
+
+-------------------------------------------------------------------
+Sat Oct  4 14:43:15 CEST 2008 - aj@suse.de
+
+- Add ckb as language (bnc#432200).
+
+-------------------------------------------------------------------
+Thu Sep 25 15:42:06 CEST 2008 - lnussel@suse.de
+
+- change /var/games to 755 to prevent ill-considered maneuvers there
+  (bnc#429882)
+
+-------------------------------------------------------------------
+Mon Sep 15 18:21:54 CEST 2008 - jpr@suse.de
+
+- Add nds_DE to the locale list
+
+-------------------------------------------------------------------
+Fri Sep 12 10:09:16 CEST 2008 - aj@suse.de
+
+- Add en_NZ to the locale list.
+
+-------------------------------------------------------------------
+Fri Sep  5 20:28:16 CEST 2008 - mrueckert@suse.de
+
+- add sr@latin to the locale list
+
+-------------------------------------------------------------------
+Tue Sep  2 17:34:06 CEST 2008 - ajorgensen@novell.com
+
+- Add the Asturia (ast) locale
+
+-------------------------------------------------------------------
+Thu Aug 28 20:04:24 CEST 2008 - maw@suse.de
+
+- Add the Crimean Tatar (crh) locale.
+
+-------------------------------------------------------------------
+Wed Aug 20 13:57:39 CEST 2008 - jblunck@suse.de
+
+- Add /var/crash. This directory holds system crash dumps.
+
+-------------------------------------------------------------------
+Fri Aug 15 19:51:12 CEST 2008 - maw@suse.de
+
+- Add the Kashmiri (ks) locale.
+
+-------------------------------------------------------------------
+Wed Jul 16 21:01:20 CEST 2008 - mrueckert@suse.de
+
+- added "mus" locale (bnc#405874)
+
+-------------------------------------------------------------------
+Thu Jul  3 11:58:16 CEST 2008 - kssingvo@suse.de
+
+- changed /etc/cups to have owner root now
+
+-------------------------------------------------------------------
+Fri Jun 27 18:22:34 CEST 2008 - maw@suse.de
+
+- Add Malay, Baba (bal).
+
+-------------------------------------------------------------------
+Tue Apr  1 23:18:21 CEST 2008 - mrueckert@suse.de
+
+- removed uz@Cyrl and uz@Latn
+- added uz@cyrillic instead
+
+-------------------------------------------------------------------
+Tue Apr  1 16:01:34 CEST 2008 - mkoenig@suse.de
+
+- add /usr/share/omc and /usr/share/omc/svcinfo.d
+
+-------------------------------------------------------------------
+Mon Mar 17 00:47:14 CET 2008 - ro@suse.de
+
+- added Mandingo (md) 
+
+-------------------------------------------------------------------
+Fri Mar 14 04:36:46 CET 2008 - maw@suse.de
+
+- Add Pakistani Urdu (ur_PK)
+
+-------------------------------------------------------------------
+Tue Mar  4 23:54:18 CET 2008 - maw@suse.de
+
+- Add Maithili (mai)
+
+-------------------------------------------------------------------
+Mon Feb 18 18:34:12 CET 2008 - maw@suse.de
+
+- Add Friulian (fur)
+
+-------------------------------------------------------------------
+Mon Dec 17 22:28:35 CET 2007 - maw@suse.de
+
+- Add Ido (io)
+
+-------------------------------------------------------------------
+Mon Dec 10 17:15:38 CET 2007 - ro@suse.de
+
+- added /etc/skel/bin , .fonts and .mozilla (from aaa_skel) 
+
+-------------------------------------------------------------------
+Fri Aug 24 16:47:08 CEST 2007 - dmueller@suse.de
+
+- add Kashubian (csb) 
+
+-------------------------------------------------------------------
+Fri Jul 27 11:13:47 CEST 2007 - werner@suse.de
+
+- Add /usr/lib/restricted and /usr/lib/restricted/bin (bug #293038)
+
+-------------------------------------------------------------------
+Thu Jun 21 13:37:09 CEST 2007 - dmueller@suse.de
+
+- remove compat locale 'gr', 'el' is the replacement
+
+-------------------------------------------------------------------
+Thu Mar 15 09:45:36 CET 2007 - lnussel@suse.de
+
+- add /lib/firmware
+
+-------------------------------------------------------------------
+Tue Mar  6 23:31:26 CET 2007 - rguenther@suse.de
+
+- Fix order of changelog entries.
+
+-------------------------------------------------------------------
+Thu Mar  1 16:48:48 CET 2007 - lnussel@suse.de
+
+- /usr/share/SuSEfirewall2/services ->
+  /usr/sysconfig/SuSEfirewall2.d/services (#247352)
+
+-------------------------------------------------------------------
+Thu Mar  1 13:20:03 CET 2007 - sbrabec@suse.cz
+
+- Added ca@valencia for valencian dialectal verb forms and wording.
+
+-------------------------------------------------------------------
+Wed Feb 28 12:03:37 CET 2007 - sbrabec@suse.cz
+
+- Added /etc/xdg/autostart (#229171) and
+  /usr/share/xsessions (#229172).
+
+-------------------------------------------------------------------
+Tue Feb 27 16:55:54 CET 2007 - sbrabec@suse.cz
+
+- Added be@latin for Belarusian written with Latin (#248753).
+
+-------------------------------------------------------------------
+Thu Feb 22 13:12:12 CET 2007 - sbrabec@suse.cz
+
+- Added /usr/share/SuSEfirewall2/services (#247435).
+
+-------------------------------------------------------------------
+Thu Jan 25 21:46:44 CET 2007 - sndirsch@suse.de
+
+- get rid of /usr/X11R6/{man,share}
+
+-------------------------------------------------------------------
+Wed Jan 24 14:52:15 CET 2007 - ro@suse.de
+
+- added sq_AL to languages 
+
+-------------------------------------------------------------------
+Wed Jan 24 07:43:41 CET 2007 - sndirsch@suse.de
+
+- get rid of /usr/X11R6/include/{,net,sys,rpcsvc} (Bug #223524,
+  comment #5)
+
+-------------------------------------------------------------------
+Mon Jan  8 16:01:03 CET 2007 - sbrabec@suse.cz
+
+- Added /usr/share/xml and /usr/share/xml/docbook.
+- Added languages for iso-codes: aa, byn, dv, gez, haw, iu, kk, kl,
+  kok, kw, om, ps sa, sid, so, sw, syr, ti, tig, ve, wal and wo.
+
+-------------------------------------------------------------------
+Fri Jan  5 14:00:01 CET 2007 - sbrabec@suse.cz
+
+- Added languages ang, as, az_IR, bo, de_CH, dz, es_CL, es_CO,
+  es_CR, es_DO, es_EC, es_GT, es_HN, es_NI, es_PA, es_PE, es_PR,
+  es_SV, es_UY, es_VE, fr_CA, fr_CH, gd, gn, gv, hy, ky, mg, my,
+  nl_BE, or, rm, si, sr@ije, st, tk, tl, ug, ur, urd, uz@Latn and
+  yo to the list.
+
+-------------------------------------------------------------------
+Thu Oct 19 23:53:09 CEST 2006 - ro@suse.de
+
+- added language ne to list 
+
+-------------------------------------------------------------------
+Sun Aug 13 16:35:05 CEST 2006 - ro@suse.de
+
+- remove /usr/X11R6/lib/X11 
+
+-------------------------------------------------------------------
+Wed Aug  9 18:05:18 CEST 2006 - ro@suse.de
+
+- remove usr/include/X11 and usr/lib/X11 if symlinks (or empty)
+  in prescript using rpm-builtin lua interpreter 
+
+-------------------------------------------------------------------
+Wed Aug  9 12:21:27 CEST 2006 - ro@suse.de
+
+- drop the prereq again and test if bin/rm is available
+  (otherwise this is not an update and no action needed)
+- the prereq for /bin/sh is autogenerated by rpm anyway 
+
+-------------------------------------------------------------------
+Wed Aug  9 10:10:25 CEST 2006 - sndirsch@suse.de
+
+- added "Prereq: /bin/sh /usr/bin/test /bin/rm" to make sure
+  /usr/lib/X11,usr/include/X11 symlinks can be removed in %pre;
+  this requires bash and coreutils installed *before* filesystem
+
+-------------------------------------------------------------------
+Tue Aug  8 12:10:50 CEST 2006 - dmueller@suse.de
+
+- Add /usr/share/fonts and remove /usr/X11R6/lib/X11/fonts
+
+-------------------------------------------------------------------
+Mon Aug  7 14:46:43 CEST 2006 - kukuk@suse.de
+
+- Remove /var/lib/update-message and /usr/share/update-message
+  [Fate#300893]
+
+-------------------------------------------------------------------
+Tue Aug  1 20:39:21 CEST 2006 - sndirsch@suse.de
+
+- removed /usr/X11R6/lib/X11/app-defaults, which has been added to
+  blacklist 
+
+-------------------------------------------------------------------
+Fri Jul 28 12:08:28 CEST 2006 - ro@suse.de
+
+- change var/adm/backup permissions to 700 
+
+-------------------------------------------------------------------
+Thu Jul 27 10:09:26 CEST 2006 - sndirsch@suse.de
+
+- changed /usr/include/X11 from symlink to directory; remove
+  existing symlink in %pre 
+- removed /var/X11R6/lib symlink, which pointed to /usr/X11R6/lib/X11
+
+-------------------------------------------------------------------
+Mon Jul 24 12:48:12 CEST 2006 - ro@suse.de
+
+- added var/adm/backup/{rpmdb,sysconfig} (#190597)
+
+-------------------------------------------------------------------
+Thu Jul 20 10:35:40 CEST 2006 - sndirsch@suse.de
+
+- changed /usr/lib/X11 from symlink to directory; remove existing
+  symlink in %pre
+
+-------------------------------------------------------------------
+Sat Mar  4 07:13:59 CET 2006 - aj@suse.de
+
+- added fy and tt to languages.
+
+-------------------------------------------------------------------
+Mon Jan 30 23:40:59 CET 2006 - ro@suse.de
+
+- added km to languages 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 14:10:16 CET 2005 - ro@suse.de
+
+- added languages fo,ku,lo,nds,se,ss 
+
+-------------------------------------------------------------------
+Tue Dec 20 11:57:19 CET 2005 - kukuk@suse.de
+
+- Don't check mode for /media/*
+
+-------------------------------------------------------------------
+Mon Dec 19 11:47:16 CET 2005 - ro@suse.de
+
+- added /dev 
+
+-------------------------------------------------------------------
+Thu Dec  8 16:20:54 CET 2005 - ro@suse.de
+
+- added /usr/share/mime and /usr/share/mime/packages 
+
+-------------------------------------------------------------------
+Fri Sep 30 14:54:11 CEST 2005 - lnussel@suse.de
+
+- change /var/games to games:games 775 again (#103186)
+
+-------------------------------------------------------------------
+Mon Aug 15 19:31:50 CEST 2005 - pth@suse.de
+
+- Add zh_HK and it_IT to locale
+
+-------------------------------------------------------------------
+Fri Aug 12 11:57:40 CEST 2005 - ro@suse.de
+
+- changed /var/games to root:root/0755 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:10:32 CEST 2005 - cthiel@suse.de
+
+- added te to language list
+
+-------------------------------------------------------------------
+Wed Jun 22 00:37:14 CEST 2005 - gekker@suse.de
+
+- added mi, mt, nso, oc, ven, xh, zu to language list 
+
+-------------------------------------------------------------------
+Thu Jun  9 17:42:26 CEST 2005 - ro@suse.de
+
+- add /usr/share/pkgconfig 
+
+-------------------------------------------------------------------
+Wed May 18 13:44:40 CEST 2005 - cthiel@suse.de
+
+- added bn_IN and mr to language list
+
+-------------------------------------------------------------------
+Tue Apr 12 15:46:42 CEST 2005 - ro@suse.de
+
+- added ar to language list
+
+-------------------------------------------------------------------
+Wed Apr  6 16:12:20 CEST 2005 - kukuk@suse.de
+
+- Add rw to language list (gcc4)
+
+-------------------------------------------------------------------
+Fri Jan 28 21:03:15 CET 2005 - gekker@suse.de
+
+- add gu and pa to language list 
+
+-------------------------------------------------------------------
+Thu Jan 27 18:26:37 CET 2005 - gekker@suse.de
+
+- add en_CA to language list 
+
+-------------------------------------------------------------------
+Wed Nov 10 15:03:13 CET 2004 - ro@suse.de
+
+- /var/cache/fonts to 1777 (was set this way in tetex perms)
+
+-------------------------------------------------------------------
+Tue Oct 19 00:13:23 CEST 2004 - ro@suse.de
+
+- remove no from language list (nb,nn now)
+
+-------------------------------------------------------------------
+Tue Sep 28 13:16:08 CEST 2004 - uli@suse.de
+
+- really enable /media on s390* (was missing in directory.list)
+
+-------------------------------------------------------------------
+Tue Aug 31 14:16:17 CEST 2004 - ro@suse.de
+
+- ignore icecream home-dir (might be forced into buildsystem)
+
+-------------------------------------------------------------------
+Thu Aug 26 08:59:12 CEST 2004 - kukuk@suse.de
+
+- removed /etc/httpd tree (Apache1 was dropped)
+
+-------------------------------------------------------------------
+Fri Aug 20 14:58:52 CEST 2004 - ro@suse.de
+
+- removed /var/adm/notify tree (obsolete now)
+
+-------------------------------------------------------------------
+Tue Aug 17 18:41:31 CEST 2004 - ro@suse.de
+
+- added /var/lib/update-messages
+  and /usr/share/update-messages (lang subdirs to be done)
+
+-------------------------------------------------------------------
+Thu Aug  5 16:52:14 CEST 2004 - ro@suse.de
+
+- added es_ES to languages 
+
+-------------------------------------------------------------------
+Thu Jun 24 16:26:00 CEST 2004 - kukuk@suse.de
+
+- Enable /media on s390/s390x [Bug #42411]
+
+-------------------------------------------------------------------
+Thu Apr 15 09:14:51 CEST 2004 - kukuk@suse.de
+
+- Add /etc/ld.so.conf.d
+
+-------------------------------------------------------------------
+Sun Apr  4 21:49:39 CEST 2004 - mls@suse.de
+
+- made /usr/lib/news owned by root:root as /usr/lib/news/bin
+  contains a suid-root program
+
+-------------------------------------------------------------------
+Thu Apr  1 10:14:11 CEST 2004 - kukuk@suse.de
+
+- Add sticky bit to /var/lock
+- Change permissions of /var/lock/subsys to root:root, mode 755
+
+-------------------------------------------------------------------
+Wed Mar 31 12:12:52 CEST 2004 - ro@suse.de
+
+- package /media/{cdrom,floppy} as %ghost (not on s390*)
+
+-------------------------------------------------------------------
+Tue Feb 24 00:01:58 CET 2004 - ro@suse.de
+
+- ignore missing HOME for abuild user
+
+-------------------------------------------------------------------
+Mon Feb 23 14:30:57 CET 2004 - ro@suse.de
+
+- /root/.gnupg: mode 700 now (#31982)
+
+-------------------------------------------------------------------
+Wed Feb 18 11:32:39 CET 2004 - kukuk@suse.de
+
+- Remove ca_ES again
+
+-------------------------------------------------------------------
+Mon Feb 16 14:01:44 CET 2004 - kukuk@suse.de
+
+- added lang ca_ES
+
+-------------------------------------------------------------------
+Mon Feb  9 11:39:05 CET 2004 - ro@suse.de
+
+- added /usr/share/java
+
+-------------------------------------------------------------------
+Fri Jan 30 11:40:09 CET 2004 - schwab@suse.de
+
+- Add /emul/ia32-linux on ia64.
+
+-------------------------------------------------------------------
+Tue Nov 18 14:52:02 CET 2003 - ro@suse.de
+
+- added lang pt_PT 
+
+-------------------------------------------------------------------
+Thu Nov  6 18:25:06 CET 2003 - olh@suse.de
+
+- add /sys
+
+-------------------------------------------------------------------
+Tue Oct 21 01:28:20 CEST 2003 - ro@suse.de
+
+- fixed leftover permissions from previous change 
+
+-------------------------------------------------------------------
+Mon Oct 20 18:15:19 CEST 2003 - ro@suse.de
+
+- adapt to current permissions files
+- don't build as root 
+
+-------------------------------------------------------------------
+Tue Oct 14 09:57:21 CEST 2003 - meissner@suse.de
+
+- ppc has also lib64 directories (coming from biarch gcc build).
+
+-------------------------------------------------------------------
+Thu Sep 25 17:15:37 CEST 2003 - mmj@suse.de
+
+- Add /etc/xdg and /usr/share/themes according to the new standards
+  on freedesktop.org
+
+-------------------------------------------------------------------
+Tue Sep  9 15:37:07 CEST 2003 - kukuk@suse.de
+
+- Add bs, ka, uz and uz@Cyrl to languages
+
+-------------------------------------------------------------------
+Fri Aug 29 09:58:58 CEST 2003 - kukuk@suse.de
+
+- adjust /etc/cups permissions to cups need (make it 0775) 
+
+-------------------------------------------------------------------
+Tue Aug 26 15:26:01 CEST 2003 - kssingvo@suse.de
+
+- changed group ownership of /etc/cups (bugzilla#28736)
+
+-------------------------------------------------------------------
+Thu Aug 21 00:31:40 CEST 2003 - ro@suse.de
+
+- added br to languages
+
+-------------------------------------------------------------------
+Wed Jul 30 10:45:40 CEST 2003 - adrian@suse.de
+
+- add ee and es_MX to languages
+
+-------------------------------------------------------------------
+Mon Jul 28 12:53:14 CEST 2003 - adrian@suse.de
+
+- add /usr/share/applications directory
+
+-------------------------------------------------------------------
+Mon Jun 23 10:02:08 CEST 2003 - kukuk@suse.de
+
+- Fix /usr/alpha-suse-linux directory
+
+-------------------------------------------------------------------
+Thu Jun 19 18:42:25 CEST 2003 - mmj@suse.de
+
+- Add missing directories on lib64 platforms
+
+-------------------------------------------------------------------
+Fri Jun 13 13:26:17 CEST 2003 - kukuk@suse.de
+
+- Fix permissions of /etc/uucp
+
+-------------------------------------------------------------------
+Fri Jun 13 09:55:00 CEST 2003 - kukuk@suse.de
+
+- Add /usr/X11R6/share/locale
+
+-------------------------------------------------------------------
+Thu Jun 12 15:58:10 CEST 2003 - kukuk@suse.de
+
+- Add /usr/share/dict
+
+-------------------------------------------------------------------
+Thu Jun 12 14:20:10 CEST 2003 - kukuk@suse.de
+
+- Add new locale directories: kn, li, ml, sr@Latn and yi
+
+-------------------------------------------------------------------
+Thu Jun 12 14:05:32 CEST 2003 - kukuk@suse.de
+
+- Rename i486-suse-linux to i586-suse-linux
+
+-------------------------------------------------------------------
+Thu Jun 12 11:43:33 CEST 2003 - kukuk@suse.de
+
+- Fix permissions of /etc/cups
+
+-------------------------------------------------------------------
+Thu Jun 12 07:48:58 CEST 2003 - kukuk@suse.de
+
+- Add /usr/X11R6/share and /usr/X11R6/share/icons
+
+-------------------------------------------------------------------
+Wed Jun 11 17:30:24 CEST 2003 - ro@suse.de
+
+- added usr/lib*/browser-plugins and usr/share/pixmaps 
+
+-------------------------------------------------------------------
+Wed Jun 11 14:26:45 CEST 2003 - kukuk@suse.de
+
+- Add /etc/sysconfig/network and /etc/ppp subdirectories
+
+-------------------------------------------------------------------
+Wed Jun 11 13:21:22 CEST 2003 - kukuk@suse.de
+
+- Add /var/adm/SuSEconfig/{bin,md5}
+
+-------------------------------------------------------------------
+Wed Jun 11 13:00:26 CEST 2003 - kukuk@suse.de
+
+- Add /etc/X11
+
+-------------------------------------------------------------------
+Wed Jun 11 11:25:00 CEST 2003 - kukuk@suse.de
+
+- Add /usr/X11R6/lib/X11/fonts
+
+-------------------------------------------------------------------
+Wed Jun 11 09:26:57 CEST 2003 - kukuk@suse.de
+
+- Add /usr/share/doc/packages with correct permissions
+
+-------------------------------------------------------------------
+Tue Jun 10 14:25:31 CEST 2003 - kukuk@suse.de
+
+- Add usr/share/locale and subdirectories
+- Remove usr/share/doc/packages/aaa_base, not needed any longer
+
+-------------------------------------------------------------------
+Thu May 15 10:23:58 CEST 2003 - kukuk@suse.de
+
+- Add include/net, include/sys, include/rpcsvc
+
+-------------------------------------------------------------------
+Fri Apr  4 12:17:56 CEST 2003 - ro@suse.de
+
+- added /etc/skel 
+
+-------------------------------------------------------------------
+Fri Apr  4 12:12:43 CEST 2003 - kukuk@suse.de
+
+- changed version to BUILD_DISTRIBUTION_VERSION
+
+-------------------------------------------------------------------
+Thu Feb 27 10:04:12 CET 2003 - kukuk@suse.de
+
+- Remove /var/named from filelist [Bug #24387]
+
+-------------------------------------------------------------------
+Thu Feb 13 13:46:21 CET 2003 - mmj@suse.de
+
+- Make filesystem own /etc/cron.d* since we might want to use
+  other cron versions.
+
+-------------------------------------------------------------------
+Thu Feb 13 00:36:57 CET 2003 - mmj@suse.de
+
+- Do not own /etc/cron.daily -- it's owned by cron already
+
+-------------------------------------------------------------------
+Tue Jan 14 22:58:27 CET 2003 - kukuk@suse.de
+
+- Add /etc/xinetd.d
+
+-------------------------------------------------------------------
+Tue Nov  5 14:43:25 CET 2002 - ro@suse.de
+
+- removed /var/lib/YaST
+- removed /var/adm/current_package_descr (#19665) 
+
+-------------------------------------------------------------------
+Mon Sep  2 10:26:50 CEST 2002 - ro@suse.de
+
+- added /var/lib/empty 
+
+-------------------------------------------------------------------
+Sun Aug  4 11:53:03 CEST 2002 - ro@suse.de
+
+- added /etc/java 
+
+-------------------------------------------------------------------
+Thu Aug  1 17:17:11 CEST 2002 - poeml@suse.de
+
+- move Apache's ServerRoot from /usr/local/httpd to /srv/www
+- move homedir of ftp user from /usr/local/ftp to /srv/ftp
+
+-------------------------------------------------------------------
+Tue Jul 30 15:45:11 CEST 2002 - kukuk@suse.de
+
+- use changes and not spec file for version number calculating
+
+-------------------------------------------------------------------
+Wed Jul 17 16:41:13 CEST 2002 - kukuk@suse.de
+
+- Rename package to filesystem
+
+-------------------------------------------------------------------
+Thu Jul 11 09:59:35 CEST 2002 - kukuk@suse.de
+
+- Add /etc/aliases.d (partial fix for Bug #15921)
+
+-------------------------------------------------------------------
+Mon Jul  8 15:04:32 CEST 2002 - kukuk@suse.de
+
+- Remove home dirs for user removed from aaa_base
+
+-------------------------------------------------------------------
+Fri Jul  5 11:06:27 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Tue Jul  2 15:59:09 CEST 2002 - ro@suse.de
+
+- removed ircd,squid home dirs 
+
+-------------------------------------------------------------------
+Tue Jul  2 12:48:41 CEST 2002 - ro@suse.de
+
+- removed home dirs for dpbox,vscan,wnn,perforce,db4web 
+
+-------------------------------------------------------------------
+Mon Jun 17 14:52:28 CEST 2002 - ro@suse.de
+
+- removed pop home 
+
+-------------------------------------------------------------------
+Fri Jun  7 10:58:29 CEST 2002 - ro@suse.de
+
+- removed zope home 
+
+-------------------------------------------------------------------
+Mon Jun  3 23:52:07 CEST 2002 - ro@suse.de
+
+- removed /usr/share/doc/support 
+
+-------------------------------------------------------------------
+Sun May 26 12:28:15 CEST 2002 - ro@suse.de
+
+- removed ingres home dir 
+
+-------------------------------------------------------------------
+Fri May 24 10:39:16 CEST 2002 - kukuk@suse.de
+
+- Remove /usr/lib/cyrus and /var/spool/postfix (should be moved
+  to postfix and cyrus-imapd)
+
+-------------------------------------------------------------------
+Wed May 22 09:01:26 CEST 2002 - kukuk@suse.de
+
+- Move /var/spool/atjobs to at package
+
+-------------------------------------------------------------------
+Tue May 21 16:37:16 CEST 2002 - ro@suse.de
+
+- no 64bit dirs for "normal" ppc 
+
+-------------------------------------------------------------------
+Sun May 19 16:56:37 CEST 2002 - olh@suse.de
+
+- fix specfile
+
+-------------------------------------------------------------------
+Sun May 19 00:57:17 CEST 2002 - olh@suse.de
+
+- add directories for ppc64 
+
+-------------------------------------------------------------------
+Thu Apr 18 00:25:20 CEST 2002 - kukuk@suse.de
+
+- x86_64 is 64bit arch
+
+-------------------------------------------------------------------
+Wed Apr 10 16:10:33 CEST 2002 - kukuk@suse.de
+
+- Change i486-linux -> i486-suse-linux
+
+-------------------------------------------------------------------
+Wed Mar 27 12:29:32 CET 2002 - ihno@suse.de
+
+- removed directories /media/floppy and /media/cdrom
+  for s390 and s390x
+- removed links /floppy and /cdrom to these directories
+  for s390 and s390x
+
+-------------------------------------------------------------------
+Wed Mar 13 10:49:07 CET 2002 - kukuk@suse.de
+
+- Add more /var/adm subdirectories
+
+-------------------------------------------------------------------
+Sat Mar  9 15:34:03 CET 2002 - kukuk@suse.de
+
+- Add /etc/httpd and /etc/httpd/modules (needed by more packages
+  than only apache).
+
+-------------------------------------------------------------------
+Sat Mar  9 15:28:53 CET 2002 - kukuk@suse.de
+
+- Add /usr/share/sgml and /usr/share/sgml/docbook
+
+-------------------------------------------------------------------
+Fri Mar  8 15:22:48 CET 2002 - kukuk@suse.de
+
+- Add /usr/share/sounds and /usr/share/icons
+
+-------------------------------------------------------------------
+Fri Mar  8 13:40:55 CET 2002 - kukuk@suse.de
+
+- Add /usr/lib/pkgconfig to filelist
+
+-------------------------------------------------------------------
+Mon Feb 25 13:50:49 CET 2002 - schwab@suse.de
+
+- Don't add lib64 on ia64.
+
+-------------------------------------------------------------------
+Wed Feb 20 14:33:03 CET 2002 - froh@suse.de
+
+- added {,/usr,/usr/local,/usr/X11R6}/lib64 for s390x, ia64 and sparc64
+
+-------------------------------------------------------------------
+Sun Feb 17 09:16:56 CET 2002 - kukuk@suse.de
+
+- Add /usr/local/httpd hierachy
+
+-------------------------------------------------------------------
+Thu Feb 14 16:37:43 MET 2002 - draht@suse.de
+
+- added dir /tmp/.ICE-unix root.root 1777 (#13261)
+
+-------------------------------------------------------------------
+Fri Jan 18 12:11:07 CET 2002 - ro@suse.de
+
+- added /var/spool/clientmqueue as home for mail user 
+
+-------------------------------------------------------------------
+Wed Jan 16 11:56:51 CET 2002 - ro@suse.de
+
+- moved /usr/cyrus to /usr/lib/cyrus 
+
+-------------------------------------------------------------------
+Thu Jan 10 14:09:30 CET 2002 - ro@suse.de
+
+- removed /etc/rc.config.d
+- removed /usr/games/{bin,lib} (#7788) 
+
+-------------------------------------------------------------------
+Fri Jan  4 08:57:15 CET 2002 - olh@suse.de
+
+- remove /macboot and /macos 
+
+-------------------------------------------------------------------
+Wed Dec 12 15:09:50 CET 2001 - ro@suse.de
+
+- added /etc/sysconfig 
+
+-------------------------------------------------------------------
+Wed Dec 12 13:53:13 CET 2001 - ro@suse.de
+
+- added /etc/logrotate.d 
+
+-------------------------------------------------------------------
+Fri Nov 30 12:16:11 CET 2001 - kukuk@suse.de
+
+- remove compat cdrom and floppy link (will be created by YaST2)
+- remove /usr/etc and /usr/man (obsolete)
+- remove /usr/spool (obsolete)
+
+-------------------------------------------------------------------
+Thu Nov 22 13:10:56 CET 2001 - ro@suse.de
+
+- removed openwin dirs and fsuite dirs 
+
+-------------------------------------------------------------------
+Wed Oct 17 14:25:48 CEST 2001 - ro@suse.de
+
+- removed Provides for package name 
+
+-------------------------------------------------------------------
+Sat Sep 22 14:09:37 CEST 2001 - kukuk@suse.de
+
+- Add /var/adm/SuSEconfig to file list
+
+-------------------------------------------------------------------
+Fri Sep  7 14:33:34 CEST 2001 - ro@suse.de
+
+- added homedir for db4web user 
+
+-------------------------------------------------------------------
+Mon Aug 20 14:41:03 CEST 2001 - ro@suse.de
+
+- added /etc/profile.d and /etc/permissions.d to dirlist 
+- removed homedirs for dropped users: lnx, yard, ixess, virtuoso,
+    nps, skyrix, dbmaker, fixadm, fib, fixlohn, codadmin
+
+-------------------------------------------------------------------
+Thu Jul 12 16:09:08 CEST 2001 - ro@suse.de
+
+- move skyrix home to /opt/skyrix
+
+-------------------------------------------------------------------
+Wed Jul 11 16:11:36 CEST 2001 - ro@suse.de
+
+- removed informix home dir (#9136) 
+
+-------------------------------------------------------------------
+Wed May  2 08:36:33 CEST 2001 - kukuk@suse.de
+
+- Use _target_cpu, not RPM_ARCH
+
+-------------------------------------------------------------------
+Mon Apr 30 13:00:13 CEST 2001 - ro@suse.de
+
+- added sapdb home /var/opt/sapdb 
+
+-------------------------------------------------------------------
+Wed Apr 25 16:03:41 CEST 2001 - ro@suse.de
+
+- moved /cdrom and /floppy to /media and added links 
+
+-------------------------------------------------------------------
+Tue Apr  3 15:44:00 CEST 2001 - kukuk@suse.de
+
+- Remove i486-linux-libc6 -> not used
+         i486-linux-libc5 -> is in shlibs5
+         i486-linuxaout -> not used any longer
+         i486-sysv -> is in ibcs2 
+
+-------------------------------------------------------------------
+Fri Mar 16 17:44:45 CET 2001 - kukuk@suse.de
+
+- remove rwho spool directory, it is in the rwho package
+
+-------------------------------------------------------------------
+Wed Jan 17 23:52:28 CET 2001 - ro@suse.de
+
+- deleted db2 home dirs (/usr/lib/db2 and below) 
+
+-------------------------------------------------------------------
+Tue Jan  9 23:27:05 CET 2001 - ro@suse.de
+
+- added /tmp/.X11-unix mode 1777
+
+-------------------------------------------------------------------
+Mon Jan  8 17:21:28 CET 2001 - ro@suse.de
+
+- added perforce home-dir 
+
+-------------------------------------------------------------------
+Wed Dec 20 08:34:02 PST 2000 - bk@suse.de
+
+- make /var/run constistent with perms change in /etc/permissions:
+  root.root 755, fix for bug #3857
+
+-------------------------------------------------------------------
+Tue Dec 19 11:57:14 CET 2000 - ro@suse.de
+
+- added new dirs from aaa_base 
+
+-------------------------------------------------------------------
+Mon Dec 18 15:25:56 CET 2000 - ro@suse.de
+
+- changed mysql to /var/lib/mysql 
+
+-------------------------------------------------------------------
+Thu Dec 14 17:12:26 CET 2000 - ro@suse.de
+
+- added usr/local/etc 
+
+-------------------------------------------------------------------
+Wed Dec 13 17:26:08 CET 2000 - kukuk@suse.de
+
+- Fix etc/rc.d link [Bug 4627]
+
+-------------------------------------------------------------------
+Mon Dec 11 16:36:18 CET 2000 - ro@suse.de
+
+- added susehelp dirs 
+
+-------------------------------------------------------------------
+Tue Dec  5 22:43:22 PST 2000 - bk@suse.de
+
+- Add /usr/share/misc (used by util-linux, file, more and ncurses)
+
+-------------------------------------------------------------------
+Wed Nov 29 13:23:33 CET 2000 - kukuk@suse.de
+
+- Add /var/lib/pam_devperm 
+
+-------------------------------------------------------------------
+Mon Nov 27 16:45:23 CET 2000 - ro@suse.de
+
+- fixes for /sbin/init.d -> /etc/init.d 
+
+-------------------------------------------------------------------
+Thu Nov 16 16:34:00 CET 2000 - ro@suse.de
+
+- added /etc/init.d 
+
+-------------------------------------------------------------------
+Fri Nov  3 00:40:10 CET 2000 - ro@suse.de
+
+- added pop home dir 
+
+-------------------------------------------------------------------
+Fri Oct 27 14:25:43 CEST 2000 - ro@suse.de
+
+- added wnn home dir 
+
+-------------------------------------------------------------------
+Wed Sep  6 12:02:56 CEST 2000 - ro@suse.de
+
+- added usr/src/packages
+
+-------------------------------------------------------------------
+Wed Aug 23 10:59:49 CEST 2000 - ro@suse.de
+
+- added home dir for vscan user
+
+-------------------------------------------------------------------
+Sat Jul 29 18:52:07 CEST 2000 - kukuk@suse.de
+
+- change /etc/news to 0750 news.news [Bug #3661] 
+
+-------------------------------------------------------------------
+Fri Jul 21 12:36:57 CEST 2000 - kukuk@suse.de
+
+- Follow aaa_base change and rename skyrix32 to skyrix36
+
+-------------------------------------------------------------------
+Fri Jul 21 09:54:34 CEST 2000 - kukuk@suse.de
+
+- Remove user empress home directory [Bug #3464]
+
+-------------------------------------------------------------------
+Sat Jul 15 17:55:34 CEST 2000 - kukuk@suse.de
+
+- Rename /var/catman -> /var/cache/man
+
+-------------------------------------------------------------------
+Sun Jun 25 18:48:54 CEST 2000 - kukuk@suse.de
+
+- Add /usr/src 
+
+-------------------------------------------------------------------
+Thu Jun 22 13:29:18 CEST 2000 - kukuk@suse.de
+
+- Remove /usr/info (same reasons as for /usr/doc)
+
+-------------------------------------------------------------------
+Tue May 30 14:20:33 CEST 2000 - kukuk@suse.de
+
+- Add /usr/share/{nls,tmac} for FHS 2.1
+
+-------------------------------------------------------------------
+Sat May 27 16:11:38 CEST 2000 - kukuk@suse.de
+
+- Add group tag
+
+-------------------------------------------------------------------
+Wed May 17 19:24:48 CEST 2000 - kukuk@suse.de
+
+- Make /var/games a directory
+
+-------------------------------------------------------------------
+Tue May 16 10:10:02 CEST 2000 - kukuk@suse.de
+
+- Add /etc/opt and /var/cache (used but no owner)
+- Add /usr/share/games, /var/cache/fonts and /var/lib/misc for FHS
+- Add Link /var/mail -> /var/spool/mail for FHS 2.1
+- Add Link /var/games -> /var/lib/games (FHS)
+
+-------------------------------------------------------------------
+Fri May 12 01:56:19 CEST 2000 - ro@suse.de
+
+- added home dir for zope /var/lib/zope 
+
+-------------------------------------------------------------------
+Tue May  9 15:40:15 CEST 2000 - ro@suse.de
+
+- added home dir for codadmin /var/lib/codadmin 
+
+-------------------------------------------------------------------
+Thu Apr 27 14:28:48 CEST 2000 - ro@suse.de
+
+- added /var/lib/{games,wwwrun,firewall,nobody} 
+
+-------------------------------------------------------------------
+Mon Apr 17 16:05:13 CEST 2000 - ro@suse.de
+
+- added /usr/local/{games,sbin,share,src},/usr/share/doc  (#2748)
+- added /var/opt (#2744) 
+
+-------------------------------------------------------------------
+Mon Apr  3 18:10:53 CEST 2000 - ro@suse.de
+
+- fixed for other archs 
+
+-------------------------------------------------------------------
+Thu Mar  2 19:06:40 CET 2000 - schwab@suse.de
+
+- Add arch directory for ia64
+
+-------------------------------------------------------------------
+Tue Feb 22 17:35:10 CET 2000 - ro@suse.de
+
+- added ingres home-directory 
+
+-------------------------------------------------------------------
+Mon Feb 21 15:51:39 CET 2000 - ro@suse.de
+
+- fixed skyrix-home 
+
+-------------------------------------------------------------------
+Tue Feb 15 14:12:13 MET 2000 - ro@suse.de
+
+- rebuilt specfile: don't use a tar but a list of directories to
+  generate 
+
+-------------------------------------------------------------------
+Sun Jan 30 19:12:49 CET 2000 - olh@suse.de
+
+- add the directories /macboot /macos 
+  remove them in %post on an none PowerMac machine
+
+-------------------------------------------------------------------
+Wed Jan 19 14:55:18 CET 2000 - ro@suse.de
+
+- added usr/share/{info,man} and usr/share/man/man[1-9n]
+- removed usr/i486* on non-x86 and added corresponding dirs
+  for alpha,ppc,sparc 
+- added /etc/uucp
+
+-------------------------------------------------------------------
+Mon Dec  6 15:49:48 MET 1999 - ro@suse.de
+
+- moved uucp-home to /var/spool/uucp 
+
+-------------------------------------------------------------------
+Fri Nov 12 14:28:30 CET 1999 - bs@suse.de
+
+- fixed ownership of ibmdb2 home directories.
+
+-------------------------------------------------------------------
+Mon Nov  1 18:29:29 MET 1999 - ro@suse.de
+
+- moved oracle-home to /opt/oracle
+
+-------------------------------------------------------------------
+Wed Oct 27 18:27:27 MEST 1999 - ro@suse.de
+
+- added ~ for dpbox
+- removed / from rpm-filelist 
+
+-------------------------------------------------------------------
+Mon Oct 25 23:14:41 MEST 1999 - ro@suse.de
+
+- added ~ for mysql 
+
+-------------------------------------------------------------------
+Tue Sep 21 16:09:43 CEST 1999 - bs@suse.de
+
+- added ~ for oracle.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 12:34:22 MEST 1999 - ro@suse.de
+
+- added home directories for fixlohn, fixadm and fib
+
+-------------------------------------------------------------------
+Thu Jul 29 15:00:40 MEST 1999 - bs@suse.de
+
+- added home dirs of nps, skyrix and dbmaker
+- added the directories /etc/cron.daily /etc/ppp 
+  /usr/doc/packages/aaa_base /usr/doc/support
+
+-------------------------------------------------------------------
+Mon Jul 12 11:25:33 MEST 1999 - bs@suse.de
+
+- added var/adm/notify/*
+
+-------------------------------------------------------------------
+Thu Jul  1 15:07:07 MEST 1999 - ro@suse.de
+
+- removed /var/texfonts from package (closing bug 20)
+
+-------------------------------------------------------------------
+Tue Jun  1 16:27:34 MEST 1999 - ro@suse.de
+
+- added cyrus home dir
+
+-------------------------------------------------------------------
+Fri May 21 13:27:46 MEST 1999 - ro@suse.de
+
+- added postfix home dir
+
+-------------------------------------------------------------------
+Tue Apr 20 11:32:13 MEST 1999 - ro@suse.de
+
+- set gdm-home /var/lib/gdm to mode 750
+
+-------------------------------------------------------------------
+Mon Apr 19 10:44:27 MEST 1999 - ro@suse.de
+
+- added home dir for gdm user
+
+-------------------------------------------------------------------
+Tue Mar 30 12:38:10 MEST 1999 - bs@suse.de
+
+- set permissions of /floppy and /cdrom back to 755 (000 leads to
+  massive problems with nfsd)
+
+-------------------------------------------------------------------
+Tue Mar 23 03:31:16 MET 1999 - bs@suse.de
+
+- added home dir for fnet user.
+
+-------------------------------------------------------------------
+Mon Mar 22 16:58:16 MET 1999 - bs@suse.de
+
+- set permissions of /mnt to 755 (a lot of people mount things not on
+  but under /mnt - e.g. /mnt/disk1)
+
+-------------------------------------------------------------------
+Tue Mar  9 18:42:41 MET 1999 - ro@suse.de
+
+- added home directories for ibmdb2 users: db2inst1, db2fenc1 and db2as
+
+-------------------------------------------------------------------
+Thu Jan  7 14:14:41 MET 1999 - bs@suse.de
+
+- added /etc/news
+
+-------------------------------------------------------------------
+Sat Dec 12 01:58:39 MET 1998 - bs@suse.de
+
+- added /opt/virtuoso-lite
+
+-------------------------------------------------------------------
+Fri Dec 11 15:10:10 MET 1998 - bs@suse.de
+
+- set standard mount points (/cdrom, /floppy, /mnt) to 000.
+
+-------------------------------------------------------------------
+Sun Dec  6 12:38:38 MET 1998 - bs@suse.de
+
+- added directories /usr/i486-*
+
+-------------------------------------------------------------------
+Fri Nov 27 13:46:18 MET 1998 - bs@suse.de
+
+- added symlink /usr/lib/X11
+
+-------------------------------------------------------------------
+Thu Nov 26 16:50:59 MET 1998 - bs@suse.de
+
+- added /floppy
+
+-------------------------------------------------------------------
+Wed Nov 18 11:58:50 MET 1998 - bs@suse.de
+
+- added rc.config.d
+
+-------------------------------------------------------------------
+Fri Oct 23 11:44:32 MEST 1998 - ro@suse.de
+
+- added home directory for the user named
+
+-------------------------------------------------------------------
+Thu Aug 13 11:25:57 MEST 1998 - bs@suse.de
+
+- added home directories for the users news, uucp, amanda, ixware 
+  and informix.
+- added a check, if all home directories do exist.
+
+-------------------------------------------------------------------
+Wed May 27 15:36:36 MEST 1998 - bs@suse.de
+
+- added home /usr/lib/ircd for system user irc.
+
+-------------------------------------------------------------------
+Fri Apr 17 09:00:54 MEST 1998 - bs@suse.de
+
+- added /boot
+
+-------------------------------------------------------------------
+Fri Apr  3 15:57:41 MEST 1998 - bs@suse.de
+
+- fixed ownership od /usr/empress
+
+-------------------------------------------------------------------
+Thu Mar 26 13:43:15 MET 1998 - bs@suse.de
+
+- added some symlinks to directories (/usr/tmp, /usr/spool, ...)
+- added /var/spool/rwho
+
+-------------------------------------------------------------------
+Mon Feb  9 10:28:03 MET 1998 - bs@suse.de
+
+- deleted /usr/postgres
+- added /usr/X11R6/lib/X11/app-defaults
+
+-------------------------------------------------------------------
+Fri Nov 28 16:07:48 MET 1997 - bs@suse.de
+
+- changed /usr/local/ftp to root.root
+
+-------------------------------------------------------------------
+Tue Nov 18 15:05:29 MET 1997 - bs@suse.de
+
+- added /var/lock/subsys
+
+-------------------------------------------------------------------
+Mon Nov 17 16:47:36 MET 1997 - bs@suse.de
+
+- added postgress home dir (/var/lib/pgsql)
+
+-------------------------------------------------------------------
+Sun Nov 16 16:16:17 MET 1997 - bs@suse.de
+
+- ready for autobuild
+

@@ -1,0 +1,790 @@
+-------------------------------------------------------------------
+Sun Mar  3 19:35:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * SDL-1.2.15-Use-system-glext.h.patch
+    Mesa-18.2.6 changed GL_GLEXT_VERSION and that conflicts with
+    the bundled glext.h definitions.
+    Use system glext.h instead via GL/gl.h.
+    See: https://bugzilla.redhat.com/show_bug.cgi?id=1662778
+
+-------------------------------------------------------------------
+Thu Jun 29 10:48:23 UTC 2017 - schwab@suse.de
+
+- libspe2 doesn't exist any more
+
+-------------------------------------------------------------------
+Mon Jan 12 16:16:23 UTC 2015 - schwab@suse.de
+
+- libspe2 only exists for ppc and ppc64
+
+-------------------------------------------------------------------
+Tue Jan  6 12:37:40 UTC 2015 - jengelh@inai.de
+
+- Avoid bs_sched computation failure by expanding %power64
+
+-------------------------------------------------------------------
+Fri Dec 19 10:48:55 UTC 2014 - jengelh@inai.de
+
+- Drop old soundserver support (also arts, after esound).
+  Remove --with-pic, building defaults to PIC anyway.
+  Use pkgconfig names to slurp in packages.
+
+-------------------------------------------------------------------
+Thu Dec 18 10:14:55 UTC 2014 - jengelh@inai.de
+
+- Remove gpg-offline leftovers
+
+-------------------------------------------------------------------
+Sun Oct 12 15:07:16 UTC 2014 - dimstar@opensuse.org
+
+- Drop esound-devel BuildRequires: esd is really no longer the way
+  to go.
+
+-------------------------------------------------------------------
+Sun May 25 16:30:19 UTC 2014 - crrodriguez@opensuse.org
+
+-  Update SDL-lfs.patch, after a recent verification I found
+   that something is not including SDL_config.h (config.h)
+   therefore not using large file offsets.
+-------------------------------------------------------------------
+Tue Dec 17 08:20:15 UTC 2013 - jengelh@inai.de
+
+- Add libsdl-1.2.15-resizing.patch: resolve an issue whereby window
+  frame corner resizing emitted no resize events to applications
+  (bnc#855639)
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+- Optional signature verification in local builds
+
+-------------------------------------------------------------------
+Sat Jun  8 20:24:50 UTC 2013 - crrodriguez@opensuse.org
+
+- sdl-lfs.patch: Ensure library is built with large file 
+ support/ 64bit off_t in 32bit systems
+
+-------------------------------------------------------------------
+Thu Jan  3 00:31:43 UTC 2013 - crrodriguez@opensuse.org
+
+- USe OS byteswapping macros that are optimized for all platforms
+ directly by GCC.
+
+ - DO not use dlopen to load libraries that otherwise can be linked
+  at build-time, this is a _very_ bad idea, starting with the fact
+  that rpm dependencies do not take account of dlopen and will 
+  break profiling/debugging etc..
+
+- SDL-devel now has strict requires, so it will only pull what
+ it really requires, as it no longer requires metapackages, it is
+ very likely that some packages dont the chain will fail to build
+ those must be fixed in the respective spec files (not here)
+
+-------------------------------------------------------------------
+Tue Sep 18 08:15:46 UTC 2012 - coolo@suse.com
+
+- 12.3's Mesa doesn't bundle libGLU anymore
+
+-------------------------------------------------------------------
+Thu Apr 26 15:54:46 UTC 2012 - joop.boonen@opensuse.org
+
+- build version 1.2.15
+  * SDL-1.2.14-wesnoth_clicks.patch is now included in the source code
+  * SDL-1.2.14-joystick-crash.patch is now included in the source code
+
+-------------------------------------------------------------------
+Wed Dec 28 11:27:04 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Dec 20 10:59:17 UTC 2011 - coolo@suse.com
+
+- own aclocal directory, there is no other reason to buildrequire
+  automake
+
+-------------------------------------------------------------------
+Fri Sep 16 12:01:12 UTC 2011 - coolo@suse.com
+
+- remove _service, too fragile
+
+-------------------------------------------------------------------
+Sat Jul  2 14:47:46 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Sun Dec  5 19:31:28 UTC 2010 - PVince81@yahoo.fr
+
+- applied patch from upstream for joystick related crash [bnc#632271]
+
+-------------------------------------------------------------------
+Mon Aug  9 14:59:56 UTC 2010 - reddwarf@opensuse.org
+
+- take patch from upstream to fix Battle for Wesnoth
+
+-------------------------------------------------------------------
+Mon May  3 11:10:53 CEST 2010 - meissner@suse.de
+
+- disable video for ps3
+
+-------------------------------------------------------------------
+Tue Jan 12 07:46:10 UTC 2010 - meissner@novell.com
+
+- buildrequire libspe2-devel on ppc
+
+-------------------------------------------------------------------
+Fri Dec 18 12:54:49 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Oct 29 13:16:57 UTC 2009 - lnussel@suse.de
+
+- new version 1.2.14
+  * Fixed flicker when resizing the SDL window
+  * Fixed crash in SDL_SetGammaRamp()
+  * Fixed freeze in SDL_memset() with 0 length when assembly code is
+    disabled.
+  * Added SDL_DISABLE_LOCK_KEYS environment variable to enable
+    normal up/down events for Caps-Lock and Num-Lock keys.
+  * Fixed audio quality problem when converting between 22050 Hz and
+    44100 Hz.
+  * Fixed a threading crash when a few threads are rapidly created
+    and complete.
+  * Increased accuracy of alpha blending routines.
+  * Fixed crash loading BMP files saved with the scanlines inverted.
+  * Fixed mouse coordinate clamping if SDL_SetVideoMode() isn't
+    called in response to SDL_VIDEORESIZE event.
+  * Added doxygen documentation for the SDL API headers.
+  * Fixed potential memory corruption due to assembly bug with SDL_revcpy()
+  * Fixed crashes trying to detect SSE features on x86_64 architecture.
+  * Fixed assembly for GCC optimized 50% alpha blending blits.
+  * Added configure option --enable-screensaver, to allow enabling
+    the screensaver by default.
+  * Use XResetScreenSaver() instead of disabling screensaver
+    entirely.
+  * Removed the maximum window size limitation on X11.
+  * Fixed SDL_GL_SWAP_CONTROL on X11.
+  * Fixed setting the X11 window input hint.
+  * Fixed distorted X11 window icon for some visuals.
+  * Fixed detecting X11 libraries for dynamic loading on 64-bit Linux.
+  * SDL_GL_GetAttribute(SDL_GL_SWAP_CONTROL) returns the correct
+    value with GLX_SGI_swap_control.
+  * Added SDL_VIDEO_FULLSCREEN_DISPLAY as a preferred synonym for
+    SDL_VIDEO_FULLSCREEN_HEAD on X11.
+  * The SDL_VIDEO_FULLSCREEN_DISPLAY environment variable can be set
+    to 0 to place fullscreen SDL windows on the first Xinerama
+    screen.
+  * Added the SDL_VIDEO_FBCON_ROTATION environment variable to
+    control output orientation on the framebuffer console.
+  * Fixed DirectFB detection on some Linux distributions.
+  * Added code to use the PS3 SPE processors for YUV conversion on Linux.
+  * Updated ALSA support to the latest stable API
+  * ALSA is now preferred over OSS audio. (SDL_AUDIODRIVER=dsp will
+    restore the previous behavior.)
+  * Improved support for PulseAudio
+  * The Network Audio System support is now dynamically loaded at
+    runtime.
+  * Fixed crash with the MP-8866 Dual USB Joypad on newer Linux
+    kernels.
+  * Fixed crash in SDL_Quit() when a joystick has been unplugged. 
+- most patches obsolete
+- enum patch removed without replacement:
+  http://bugzilla.libsdl.org/show_bug.cgi?id=854
+- dynamically link ALSA instead of dlopen
+
+-------------------------------------------------------------------
+Tue Oct 13 09:45:18 UTC 2009 - coolo@novell.com
+
+- fix requires of 32bit package
+
+-------------------------------------------------------------------
+Wed Oct  7 14:50:41 CEST 2009 - prusnak@suse.cz
+
+- fix provides and obsoletes [bnc#544957]
+
+-------------------------------------------------------------------
+Wed Sep 16 12:01:23 CEST 2009 - coolo@novell.com
+
+- we need to obsolete all old versions of SDL (bnc#539543)
+
+-------------------------------------------------------------------
+Tue Jun 16 08:30:03 CEST 2009 - coolo@novell.com
+
+- readd implicit dependencies of arts
+
+-------------------------------------------------------------------
+Mon Jun 15 16:47:55 CEST 2009 - ro@suse.de
+
+- drop arts support (kde3 is fading out and nothing else uses arts) 
+
+-------------------------------------------------------------------
+Wed May 20 15:33:30 CEST 2009 - prusnak@suse.cz
+
+- follow Shared Library Policy
+
+-------------------------------------------------------------------
+Fri Feb 20 02:44:15 CET 2009 - crrodriguez@suse.de
+
+- disable all static libraries except loner libSDLmain.a which is now built
+  --with-pic
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Jul  7 17:38:23 CEST 2008 - schwab@suse.de
+
+- Fix aliasing bugs.
+
+-------------------------------------------------------------------
+Tue May 27 09:54:45 MST 2008 - wberrier@novell.com
+
+- Build with pulseaudio support to fix some sdl apps
+  (xmoto in this case) (bnc#394721)
+- Fix dynamic loading on x86_64 for pulse and libasound.
+  This is mainly done so that libsdl doesn't linked against 
+  libpulse, but it also fixes libasound on x86_64.
+  (updated SDL-1.2.13-autoconf.patch)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 25 13:58:24 CET 2008 - prusnak@suse.cz
+
+- remove aalib support [#373565]
+  - change line "%define aalib 0" to "%define aalib 1" in .spec file
+    and rebuild src.rpm if you want it back
+
+-------------------------------------------------------------------
+Tue Mar 11 12:57:49 CET 2008 - prusnak@suse.cz
+
+- export X11_KeyToUnicode function but warn to stderr (x11-keytounicode.patch)
+  - some games use this function although it is an internal one
+    which should not be used by new SDL-using code
+
+-------------------------------------------------------------------
+Tue Jan 15 13:12:08 CET 2008 - prusnak@suse.cz
+
+- updated to 1.2.13 (minor bug fix release)
+    * fixed link error when building with Intel Compiler 10
+    * removed stray C++ comment from public headers
+    * fixed crash in SDL_SoftStretch() on secure operating systems
+    * fixed undefined symbol on X11 implementations without UTF-8
+      support
+    * worked around BadAlloc error when using XVideo on the XFree86
+      Intel Integrated Graphics driver
+    * scan for all joysticks on Linux instead of stopping at one
+      that was removed
+    * fixed use of sdl-config arguments in sdl.m4
+
+-------------------------------------------------------------------
+Tue Sep 25 11:39:54 CEST 2007 - prusnak@suse.cz
+
+- added Mesa-devel to Requires of -devel subpackage
+
+-------------------------------------------------------------------
+Thu Sep 13 17:55:12 CEST 2007 - prusnak@suse.cz
+
+- disabled assembly stretch for %ix86 architectures [#309075]
+  (no_asm_stretch.patch)
+
+-------------------------------------------------------------------
+Wed Jul 25 17:45:14 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.2.22
+  * added SDL_VIDEO_ALLOW_SCREENSAVER to override SDL's disabling
+    of the screensaver on Mac OS X and X11
+
+-------------------------------------------------------------------
+Fri Mar  2 12:55:14 CET 2007 - prusnak@suse.cz
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Tue Sep 19 17:35:26 CEST 2006 - dmueller@suse.de
+
+- remove slang requires
+
+-------------------------------------------------------------------
+Fri Sep  8 17:24:56 CEST 2006 - nadvornik@suse.cz
+
+- updated to 1.2.11
+  * API enhancements
+  * dynamic X11 loading
+  * upstream Xinerama support
+  * pkgconfig configuration support
+
+-------------------------------------------------------------------
+Thu Jun  1 17:12:03 CEST 2006 - nadvornik@suse.cz
+
+- use upstream patch for 32 visuals bug [#178725]
+
+-------------------------------------------------------------------
+Wed May 31 17:47:04 CEST 2006 - nadvornik@suse.cz
+
+- do not use depth 32 visuals [#178725]
+
+-------------------------------------------------------------------
+Fri Mar 10 18:55:05 CET 2006 - bk@suse.de
+
+- remove the ifnarch s390 s390x for Requires: alsa-devel (obsolete)
+
+-------------------------------------------------------------------
+Thu Mar  9 19:33:00 CET 2006 - bk@suse.de
+
+- remove esound-devel from Requires of SDL-devel [#115205]
+- remove gcc-c++ from Requires of SDL-devel (moved to the packages)
+- add libstdc++ and gcc to Requires of SDL-devel(req. by libSDL.la)
+
+-------------------------------------------------------------------
+Fri Feb 10 13:43:09 CET 2006 - schwab@suse.de
+
+- Fix inconsistent use of structure padding.
+
+-------------------------------------------------------------------
+Tue Jan 31 08:47:49 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+- Fix requires of SDL-devel.
+
+-------------------------------------------------------------------
+Mon Jan 30 11:59:24 CET 2006 - nadvornik@suse.cz
+
+- added gcc-c++ to Requires of SDL-devel (it should be possible
+  to build SDL with arts support and without c++ dependency,
+  but this is more safe for now)
+
+-------------------------------------------------------------------
+Thu Jan 26 16:19:52 CET 2006 - nadvornik@suse.cz
+
+- removed arts-devel from Requires: of SDL-devel [#115205]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 15 11:09:21 CET 2005 - nadvornik@suse.cz
+
+- updated to 1.2.9
+- use alsa by default [#114750] 
+
+-------------------------------------------------------------------
+Tue Nov  1 20:26:57 CET 2005 - dmueller@suse.de
+
+- build libSDL with nonexecutable stack 
+
+-------------------------------------------------------------------
+Mon Oct 10 15:37:55 CEST 2005 - nadvornik@suse.cz
+
+- used -fno-strict-aliasing, removed possibly broken fix
+
+-------------------------------------------------------------------
+Tue Jul 19 16:57:05 CEST 2005 - nadvornik@suse.cz
+
+- fixed Requires of devel subpackage
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Apr 13 13:34:15 CEST 2005 - pth@suse.de
+
+- Give the anonymous enums in SDL_events.h a name so
+  that they're acceptable even for an operator<<.
+
+-------------------------------------------------------------------
+Mon Apr  4 15:47:00 CEST 2005 - nadvornik@suse.cz
+
+- fixed to compile with gcc4
+
+-------------------------------------------------------------------
+Wed Jan 12 15:18:28 CET 2005 - schwab@suse.de
+
+- Fix asm constraints for x86_64.
+
+-------------------------------------------------------------------
+Thu Jan 06 11:49:30 CET 2005 - nadvornik@suse.cz
+
+- updated to 1.2.8:
+  * libasound is dlopened
+  * many bugfixes
+
+-------------------------------------------------------------------
+Thu Nov 18 18:24:34 CET 2004 - nadvornik@suse.cz
+
+- do not add rpath to sdl-config --libs [#48331]
+
+-------------------------------------------------------------------
+Wed Jul  7 17:15:12 CEST 2004 - sndirsch@suse.de
+
+- SDL-1.2.7-xinerama.patch:
+  * use first monitor for fullscreen mode in Xinerama mode (instead 
+    of both, which is very annoying!); SDL_VIDEO_X11_XINERAMA_SCREEN 
+    environment variable needs to be set for this, so it shouldn't
+    hurt, if the patch isn't perfect
+
+-------------------------------------------------------------------
+Wed Mar 03 16:19:24 CET 2004 - nadvornik@suse.cz
+
+- updated to 1.2.7
+
+-------------------------------------------------------------------
+Fri Feb 20 18:33:13 CET 2004 - nadvornik@suse.cz
+
+- fixed underquoted definitions [#34764]
+
+-------------------------------------------------------------------
+Thu Feb 05 17:02:00 CET 2004 - nadvornik@suse.cz
+
+- updated to 1.2.6
+  - arts and esound libs are dlopened
+- fixed dangerous compiler warnings
+
+-------------------------------------------------------------------
+Sat Jan 10 13:37:01 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Nov 21 00:56:04 CET 2003 - ro@suse.de
+
+- compile with -DALSA_PCM_OLD_HW_PARAMS_API
+
+-------------------------------------------------------------------
+Mon Oct  6 14:53:07 CEST 2003 - ro@suse.de
+
+- added glib2(-devel) to neededforbuild (arts) 
+
+-------------------------------------------------------------------
+Wed Sep 17 16:29:29 CEST 2003 - tiwai@suse.de
+
+- fixed the detection of ALSA device using non-blocking open mode.
+
+-------------------------------------------------------------------
+Tue Jul 29 14:54:54 CEST 2003 - aj@suse.de
+
+- Fix problems exposed by unit-at-a-time.
+
+-------------------------------------------------------------------
+Thu Jun 19 22:28:16 CEST 2003 - ro@suse.de
+
+- fix build with current automake
+
+-------------------------------------------------------------------
+Mon May 26 11:42:57 CEST 2003 - ro@suse.de
+
+- fix problem with target_cpu macro definition in specfile
+- fix head calling syntax in configure.in 
+
+-------------------------------------------------------------------
+Tue May 13 18:02:01 CEST 2003 - ro@suse.de
+
+- hack to build with current libtool 
+
+-------------------------------------------------------------------
+Mon Mar 31 15:17:15 CEST 2003 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Wed Nov 20 02:15:59 CET 2002 - ro@suse.de
+
+- work around problem with latest automake 
+
+-------------------------------------------------------------------
+Tue Nov 12 17:16:09 CET 2002 - nadvornik@suse.cz
+
+updated to 1.2.5: bugfix release
+
+-------------------------------------------------------------------
+Sun Nov 10 23:48:51 CET 2002 - ro@suse.de
+
+- fix deprecated multiline string literal for gcc-3.3 
+
+-------------------------------------------------------------------
+Tue Sep 24 13:38:55 CEST 2002 - froh@suse.de
+
+- %-ifarch'ed Requires: alsa-devel for all but s390 and s390x (#18647)
+
+-------------------------------------------------------------------
+Mon Sep  9 09:34:33 CEST 2002 - kukuk@suse.de
+
+- Remove kdelibs3-devel from neededforbuild
+
+-------------------------------------------------------------------
+Tue Aug 20 17:18:19 CEST 2002 - tiwai@suse.de
+
+- fixed endian check using endian.h [bug #18106]
+
+-------------------------------------------------------------------
+Mon Aug 12 01:07:13 CEST 2002 - ro@suse.de
+
+- remove OBJCDEPFLAGS from configure.in 
+
+-------------------------------------------------------------------
+Mon Jun 10 18:40:39 CEST 2002 - meissner@suse.de
+
+- use system AM_PROG_LIBTOOL, so we get a newer libtool.
+
+-------------------------------------------------------------------
+Tue May 21 10:23:43 CEST 2002 - nadvornik@suse.cz
+
+- added SDL-devel requires aalib-devel [bug #15699]
+
+-------------------------------------------------------------------
+Wed May 15 14:09:10 CEST 2002 - ro@suse.de
+
+- fix rpath for lib64 in sdl-config 
+
+-------------------------------------------------------------------
+Tue Apr 30 15:30:43 CEST 2002 - bk@suse.de
+
+- update to 1.2.4
+- remove obsolete -malign stuff(opt_flags use -mcpu=i686 now)
+
+-------------------------------------------------------------------
+Tue Apr  2 10:34:13 CEST 2002 - nadvornik@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Fri Feb 15 00:20:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs3-artsd> to <arts arts-devel>
+
+-------------------------------------------------------------------
+Mon Feb  4 16:19:49 CET 2002 - egmont@suselinux.hu
+
+- enable aalib support
+
+-------------------------------------------------------------------
+Tue Jan 22 17:16:29 CET 2002 - uli@suse.de
+
+- build with KDE 3
+
+-------------------------------------------------------------------
+Wed Jan  9 13:43:22 CET 2002 - nadvornik@suse.cz
+
+- used macros %{_lib} and %{_libdir}
+
+-------------------------------------------------------------------
+Mon Dec  3 16:26:54 CET 2001 - tiwai@suse.de
+
+- added support for ALSA 0.9.0.
+
+-------------------------------------------------------------------
+Mon Nov 26 16:45:31 CET 2001 - nadvornik@suse.cz
+
+- update to 1.2.3:
+  - added X11 Xinerama support
+  - added platform independent OpenGL header - SDL_opengl.h
+  - added support for DirectFB video on Linux
+  - added initial NVidia acceleration on framebuffer console
+
+-------------------------------------------------------------------
+Wed Nov  7 11:56:17 CET 2001 - nadvornik@suse.cz
+
+- fixed src/hermes/Makefile.am for new automake
+- SDL_devel requires alsa-devel and esound-devel [bug #8630]
+
+-------------------------------------------------------------------
+Tue Nov  6 12:58:46 CET 2001 - nadvornik@suse.cz
+
+- fixed to compile with new automake
+
+-------------------------------------------------------------------
+Tue Sep  4 11:50:47 CEST 2001 - nadvornik@suse.cz
+
+- do not use -fomit-frame-pointer on i386 arch
+
+-------------------------------------------------------------------
+Tue Aug  7 14:13:23 CEST 2001 - nadvornik@suse.cz
+
+- installed correctly
+
+-------------------------------------------------------------------
+Thu Aug  2 14:56:01 CEST 2001 - nadvornik@suse.cz
+
+- renamed sdl -> SDL
+- changed kdelibs -> kdelibs-artsd in neededforbuild
+- updated to 1.2.2
+
+-------------------------------------------------------------------
+Mon Jun 18 15:18:57 CEST 2001 - nadvornik@suse.cz
+
+- compiled with aRts support (bug #8601)
+- added nasm to neededforbuild
+
+-------------------------------------------------------------------
+Thu May 17 10:25:25 CEST 2001 - nadvornik@suse.cz
+
+- fixed cast warnings and include files for ia64
+
+-------------------------------------------------------------------
+Wed May  9 18:13:43 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Sat Apr 14 21:00:57 CEST 2001 - schwab@suse.de
+
+- Run autoconf prior to configuring.
+
+-------------------------------------------------------------------
+Thu Apr 12 16:50:55 CEST 2001 - nadvornik@suse.cz
+
+- update to 1.2.0
+
+-------------------------------------------------------------------
+Mon Mar 26 11:31:05 CEST 2001 - kkaempf@suse.de
+
+- package split -devel
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:41 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Tue Mar  6 08:24:31 MET 2001 - bk@suse.de
+
+- fix _target_platform: set _target_cpu from arch and optflags
+- does not use -mcpu=pentiumpro any longer, uses other optimisations
+- fix broken 486 case in configure(.in): -march=486 -> -march=i486
+- remove duplicate entries from %doc lines
+
+-------------------------------------------------------------------
+Sun Feb 18 10:36:25 CET 2001 - bk@suse.de
+
+- update to 1.1.8, use RPM_OPT_FLAGS and enable sdl optimisations
+- fix manuals installation and simplify documentation installation
+- SDL-1.1.8.dif: disable -march=pentium, allowing -mcpu=pentiumpro
+
+-------------------------------------------------------------------
+Sat Nov  4 17:03:52 CET 2000 - kukuk@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Tue Oct 24 11:32:05 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.1.6
+
+-------------------------------------------------------------------
+Tue Sep  5 08:32:44 CEST 2000 - nadvornik@suse.cz
+
+- back to suse_update_config -f (with libtool 1.3.5 it works)
+
+-------------------------------------------------------------------
+Thu Aug 31 09:02:52 CEST 2000 - nadvornik@suse.cz
+
+- used suse_update_config -fl
+- removed -lXv from sdl-config
+
+-------------------------------------------------------------------
+Mon Aug 28 14:02:59 CEST 2000 - nadvornik@suse.cz
+
+- removed xdevel3 from neededforbuild (1.1.4 does not need it)
+- added mesa, mesadev, mesasoft to neededforbuild
+- added -lXv to sdl-config
+
+-------------------------------------------------------------------
+Wed Aug 16 16:59:56 CEST 2000 - uli@suse.de
+
+- update -> 1.1.4 (need this for smpeg-xmms)
+
+-------------------------------------------------------------------
+Fri Jul 28 11:13:03 CEST 2000 - nadvornik@suse.cz
+
+- compiled with xdevel3 to work with xf86 3.3.6
+
+-------------------------------------------------------------------
+Tue May 23 14:54:06 CEST 2000 - freitag@suse.de
+
+- new version 1.1.2
+- xdevel to neededforbuild to get libXx... 
+
+-------------------------------------------------------------------
+Wed May  3 10:37:32 CEST 2000 - kukuk@suse.de
+
+- Fix configure for new libtool
+- use defaultdocdir macro
+
+-------------------------------------------------------------------
+Sat Apr  8 02:11:41 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Sun Apr  2 10:18:08 CEST 2000 - sndirsch@suse.de
+
+- update to version 1.0.8 (e.g. required by aleclone 1.16.1)
+
+-------------------------------------------------------------------
+Mon Feb 28 17:37:48 CET 2000 - freitag@suse.de
+
+- spec-cleanup 
+
+-------------------------------------------------------------------
+Wed Dec 15 17:50:50 MET 1999 - freitag@suse.de
+
+- update to version 1.0.1 
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------
+Tue Sep 21 16:33:04 CEST 1999 - uli@suse.de
+
+- run Configure.sh on PPC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon May 31 12:40:04 MEST 1999 - ro@suse.de
+
+- added code to build on alpha
+  (copied from linuxthreads-0.6 like the rest)
+
+-------------------------------------------------------------------
+Wed May 26 16:40:22 MEST 1999 - uli@suse.de
+
+- added sdldev subpack
+
+-------------------------------------------------------------------
+Fri May 21 16:04:56 MEST 1999 - uli@suse.de
+
+- fixed #includes/definitions for glibc 2.1
+
+-------------------------------------------------------------------
+Mon Mar 22 14:40:40 MET 1999 - uli@suse.de
+
+- new package, version 0.9.9
+

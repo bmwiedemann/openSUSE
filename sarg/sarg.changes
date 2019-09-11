@@ -1,0 +1,510 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:47:27 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Jun 15 13:05:08 UTC 2017 - tchvatal@suse.com
+
+- Remove apache2 dependency as it was only for directory ownership
+- Add patch sarg-no-werror.patch to not build with Werror
+- Cleanup a bit with spec-cleaner
+- Remove patch sarg-reports-english.patch which was applied by upstream
+
+-------------------------------------------------------------------
+Tue Dec 15 17:30:06 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.3.10
+  - Greatly reduce the complexity and the number of messages to 
+    translate.
+  - Fix a couple of minor programming errors.
+- add missing BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 26 12:23:37 UTC 2015 - ecsos@opensuse.org
+
+- fix apache.conf for apache 2.4
+
+-------------------------------------------------------------------
+Wed Nov 19 23:13:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in sarg-reports script
+
+-------------------------------------------------------------------
+Mon Nov  3 16:05:34 UTC 2014 - tabraham@suse.com
+
+- update source URL due to source being unavailable at original location
+- Enable parallel build, remove redundant sections - jengelh@inai.de
+
+-------------------------------------------------------------------
+Thu Oct  2 17:14:36 UTC 2014 - tabraham@suse.com
+
+- Update to 2.3.9
+  - Fix various small compile and link time errors.                           
+  - Add some code to help in diagnosing an error with the number of old report
+
+- Changes from 2.3.8
+  - Process downloaded volume bigger than 2GB (thanks to Рустам Муса-Ахунов). 
+
+-------------------------------------------------------------------
+Fri Nov  1 14:51:13 UTC 2013 - tabraham@suse.com
+
+- Update to 2.3.7
+  - backport a fix to acccept a per user limit over 2GB
+
+-------------------------------------------------------------------
+Sun Jun  2 13:56:53 UTC 2013 - tabraham@suse.com
+
+- Update to 2.3.6
+  - Store the IP address in the per user limit file (thanks to xeus)
+- Changes from 2.3.5
+  - Fix an issue when creating the redirector report. Sarg was not creating
+    the unsorted file as expected. That regression was introduced in
+    sarg 2.3.4
+- Changes from 2.3.4
+  - Fix an error occurring when several user names contain at least two
+    consecutive non-alphanumeric characters. In that case, the mangled
+    file name is not unique. Thanks to Fabiola and Pecha for reporting
+    this bug
+  - Remove a warning about the redirector file that can't be deleted
+    when it is not created.
+- Changes from 2.3.3
+  - Don't abort the report generation due to an error in a squidGuard
+    error (wrapped over long lines)
+  - Support for gd, ldap and iconv can be disabled during configuration
+  - Supporess the blank line breaking the header of the e-mail report
+  - Add many debug messages to help understanding why some parts of the
+    report are not produced. Considering all the options and various
+    conditions that are involved in the creation of a report, that
+    help is welcome
+  - Fix the report generation if users_sites is disabled
+  - Avoid a possible name clash among the temporary files if a user
+    happens to have the same name as one of the files sarg generates
+  - Fix various links and reports when some options are disabled
+  - Accept regular expressions in the hostalias file
+  - URL in SquidGuard logs sometimes don't have a scheme. This is now
+    handled properly
+  - Exclude hosts based on the IPv4 address even if a port number is
+    suffixed after the IP address (thanks to Mark Easter for
+    reporting the bug)
+  - IP addresses can be resolved to host names using an external program
+  - Limit the maximum line length read from the input log to avoid
+    consuming all the memory when reading a corrupted or invalid file.
+    The limit is set to 10MB per line
+  - Protect the temporary directory against unsafe deletion (if the
+    temporary path is set to a wrong location, sarg won't blindly
+    wipe the directory)
+  - The smartfilter might be fixed (I need test logs to validate this
+    change. If you have some, please send them to fmarchal at
+    users.sourceforge.net)
+  - The top sites report can be sorted according to the number of
+    users who visited each site
+  - The two options --convert and --split can read the log file from
+    stdin
+  - Display execution statistics with --statistics. Only useful to
+    test for regressions during development
+
+-------------------------------------------------------------------
+Sun Mar  4 03:55:17 UTC 2012 - tabraham@novell.com
+
+- Update to 2.3.2:
+  * removed obsolete sarg-2.2.3.1-description.patch
+  * added C_FLAGS=-std99 and sarg-2.3.2-limits_h.diff to compile on
+    SLE 10 and openSUSE 11.1
+
+  - Add support for sorttable.js (http://www.kryogenix.org/code/browser/sorttable/) 
+    to dynamically sort some tables (thanks to Éric).
+  - Add the two command line options --lastlog and --keeplogs to set the number of 
+    reports to keep or to keep all the reports respectively (thanks to Emmanuel 
+    Lacour for the suggestion).
+  - Report the user ID in the e-mail report.
+  - Add an option to sort the top sites by time.
+  - Delete unused files from the directory containing the user report 
+    (thanks to alf-man).
+  - Add the index_fields option to hide the directory size column in the index 
+    sorted by date.
+  - Split the input log file in several files each containing one day worth of 
+    data (thanks to Mauricio Silveira).
+  - Take the date_format into account when converting a log file.
+  - Accept IPv6 addresses in the realtime report.
+  - Don't fail for an empty report directory when building the index.
+  - Fix a read error when parsing the time of a common log format 
+    (thanks to Richard P Scott).
+  - Use anonymous file and directory names in the report to hide the identity of 
+    the user whose report is displayed and shorten the total path length.
+  - More robust calls to external sort commands (guard against buffer overflows 
+    and use tab as column separator).
+  - Replace host names by aliases and group identicaly aliased host names.
+  - IPv6 is accepted in the hosts exclusion list.
+  - Discriminate between users whose name produce the same mangled temporary 
+    file name.
+  - Write a note about the number of entries ignored in the reports (thanks 
+    to Iain Lopata).
+  - Command line option -z output some messages to explain why the reports 
+    are not generated due to the configuration.
+  - The Sites & Users report page links to the user's page if the user is 
+    listed in the Top Users page.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:47 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Tue Feb  8 20:48:47 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.1:
+  - Please read ChangeLog with changes from 2.3 at
+    http://sarg.sourceforge.net/sarg.ChangeLog.txt
+- Refresh config patch:
+  Old: sarg-2.2.7.1-config.patch
+  New: sarg-2.3.1-config.patch
+- Really enabled sarg-php;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Nov  9 15:59:18 UTC 2010 - nix@opensuse.org
+
+- Update conf file to match sarg 2.2.7.1
+
+-------------------------------------------------------------------
+Tue Nov  9 14:40:37 UTC 2010 - nix@opensuse.org
+
+- Conf file appears to have been word wrapped by mistake. Fixed
+
+-------------------------------------------------------------------
+Thu Sep 16 21:27:34 UTC 2010 - chris@computersalat.de
+
+- fix build for suse_version < 1130
+  o BuildReq: apache2 (/etc/apache2/conf.d)
+
+-------------------------------------------------------------------
+Wed Sep 15 08:06:21 UTC 2010 - cyberorg@opensuse.org
+
+- Remove obsolete patches
+- Add english to sarg-report
+- Add suse logo to report index
+- Improved default config
+- Add apache configuration
+- Version 2.2.7
+   * Extra compile and run time protection (FORTIFY_SOURCE) fixed
+     in configure.
+   * Use tabulations as columns separator in intermediary files
+     to avoid problems when a field of the log contains a space.
+   * Input log file type detection partly rewritten to clearly
+     distinguish which type is processed where.
+   * Read the input log file from standard input if log file name
+     is -.
+   * Use string pointers in getword instead of copying the
+     strings over and over.
+   * Use LC_TIME to format some dates and times in the report
+     according to the selected locale.
+   * Sarg.conf can list up to 255 access.log files.
+   * Downloaded files suffixes are matched against a sorted list
+     and use a dichotomic search.
+   * Added getword_atoll to read a number directly from a file
+     without an intermediary string storage.
+   * Use boolean to enable the options instead of string
+     compares.
+   * Accept an absolute path for the language file in sarg.conf.
+   * Experimental: Can show the backtrace of the program when a
+     getword loop is detected to help in locating the origin of
+     the error.
+   * Protect the creation of the index against invalid
+     directories.
+   * Only copy the files (not the subdirs) when creating the
+     directory with the images to include in the reports.
+   * Directories deleted without using the rm system command.
+   * Index created using an internal sort algorithm instead of a
+     system call.
+   * Fixed Debian bug #408577 (changed exclude_hosts to exclude
+     subdomains and IPv4 subnets).
+   * Replace --enable-htmldir by --enable-sargphp to avoid
+     confusion on the name (thanks to Peter Nixon).
+   * Installation of sarg-php can be disabled with
+     --disable-sargphp.
+   * Fixed empty entries in squidGuard log when the URL doesn't
+     start with protocol://.
+   * Fixed regressions in creation and reading of a sarg parsed
+     log (thanks to Joao Alves).
+   * Does not report URLs consisting of only a host name ending
+     with .com as a downloaded file.
+   * Mangle the $ and @ signs in user ID to make the resulting
+     file name valid in shell commands.
+   * Fixed a regression in the default value of --enable-sargphp.
+   * Increase the maximum size of a line read from access.log and
+     detect longer lines that were silently splitted in previous
+     versions.
+   * Tolerate longer URLs during the reading of the access.log to
+     have less chances of aborting during that phase. It only
+     helps if short URLs are output in the reports. If long_url is set, sarg will
+     still abort on over sized URLs. 
+
+-------------------------------------------------------------------
+Sat Oct 10 00:28:39 UTC 2009 - crrodriguez@opensuse.org
+
+- sarg-2.2.5-46.17: missing call to fclose  [bnc#544699]
+
+-------------------------------------------------------------------
+Tue Feb  3 11:57:14 CET 2009 - kssingvo@suse.de
+
+- purified specfile
+- added manpage for sarg-report
+- fixed wrong permissions of various files
+
+-------------------------------------------------------------------
+Tue Sep  9 11:46:57 CEST 2008 - kssingvo@suse.de
+
+- fix for buffer check assertion in make_index (bnc#416077)
+
+-------------------------------------------------------------------
+Thu Apr 24 16:08:41 CEST 2008 - kssingvo@suse.de
+
+- fix for buffer size in log.c: fun[]  CVE-2008-???
+- fix for sprintf() calls through use of snprintf() calls CVE-2008-???
+- fix for font buffer size CVE-2008-???
+
+-------------------------------------------------------------------
+Tue Apr 22 15:34:34 CEST 2008 - kssingvo@suse.de
+
+- getword3() needs also to be checked CVE-2008-1922 (bugzilla#382255)
+
+-------------------------------------------------------------------
+Mon Apr 21 18:34:03 CEST 2008 - kssingvo@suse.de
+
+- added suse_version check: old distributions don't support Recommends:
+
+-------------------------------------------------------------------
+Mon Apr 21 18:10:22 CEST 2008 - kssingvo@suse.de
+
+- fix for buffer size in report.c (bugzilla#209273)
+- buffer checks for getword() introduced (bugzilla#209273)
+
+-------------------------------------------------------------------
+Tue Apr  8 07:28:53 CEST 2008 - crrodriguez@suse.de
+
+- Reccommend cron, otherwise it may not work properly. 
+
+-------------------------------------------------------------------
+Thu Mar  6 12:14:04 CET 2008 - kssingvo@suse.de
+
+- update to version 2.2.5:
+  * new fix to the script insertion vulnerability via user-agent
+    report. javascript can still be executed via e.g. the "<BODY
+    onload=function();>" scheme.
+
+-------------------------------------------------------------------
+Mon Mar  3 12:20:35 CET 2008 - kssingvo@suse.de
+
+- update to version 2.2.4:
+  * a issue to be execute arbitrary code when sarg is used with
+    malicious input files.
+  * French language fixed.
+  * Fixed: Segfault in x86_64
+- removed static buffer fix in util.c, now in upstream
+
+-------------------------------------------------------------------
+Wed Dec  5 17:19:46 CET 2007 - kssingvo@suse.de
+
+- added daily,weekly,monthly cronjobs for sarg reports
+- added sarg-reports tool
+- adapted configuration to SUSE paths
+- fixed default config file
+- fixed issue in util.c (bugzilla#342529)
+- fixed wrong description (bugzilla#334146)
+- http_proxy is no longer Requires:, using instead Recommends:
+
+-------------------------------------------------------------------
+Wed Jan 31 21:22:24 CET 2007 - kssingvo@suse.de
+
+- upgrade to version 2.2.3.1:
+  * fidex -m option to show all the used tags
+  * date period invalid in download reports
+  * wrong results when userid contain '%20' character
+  * previous reports info wrong in index.html
+  * gd graph font change from FreeSans.ttf to DejaVuSans.ttf
+  * minor fixes when only denied records in access.log file.
+  * ulimit tag changed. If you run sarg with a low privilege user,
+    set to 'none' to disable ulimit.
+  * Russian_UTF-8 language fixed by Igor Ageikin
+    <iageikin@lipen.elektra.ru>
+  * realtime_unauthenticated_records tag changed to show by
+    default.
+  * chmod 755 in sarg-php due to errors in rpmbuild.
+  * when the keyword "anonymous" is used in squidGuard.conf, Sarg
+    does
+  * when the keyword "anonymous" is used in squidGuard.conf, Sarg
+    does not find the log-files anymore.
+  * after reading the squidGuard configuration, the data read from
+    the usertab file was corrupted.
+  * milisec values showed as bytes.
+  * with squidGuard, you can log groups in only one log file. We
+    must parse each log files only one time.
+  * error message(removetmp) Cannot open /tmp/sarg_tmp/../general
+    when sending report by email.
+  * incorrect off_t size in printf. In FreeBSD off_t is 64bit long
+    long, but sarg always use %d to display off_t in log
+    processing. This cause garbage while reading log files on a
+    freebsd, and possible crash.
+  * squid24 on/off tag added in sarg.conf to implement
+    compatibility if using squid <= 2.4 and using squid common
+    logs.
+  * exclude_hosts and some code errors fixed by Alexander Kozlov
+    <avk@post.eao.ru>. Many thanks.
+  * temporary file names changed to sarg-... to avoid conflicts
+    with usernames.
+  * SARG support Japanese wordset but not support charset. submited
+    by anonymous at sourceforge.net  Many thanks.
+  * support for utf-8 character set added by Peter Warasin
+    <peter-endian@users.sourceforge.net>. Many thanks.
+  * if all the data is at the hour each day, totaliza_day() treates
+    it all as being on the last day. This is observed for users
+    which only download via a cron job at the same time each day.
+    Now the date and time will be checked to see if changed.
+  * greport_day() doesn't add the volume for the first hour of each
+    day to the total.
+  * Russian_koi8 and Russian_windows1251 languages updated by Stas
+    Degteff <stas.grumbler@gmail.com>. Many thanks
+  * realtime reporting is sorted by URL, and not by Date/Time.
+
+-------------------------------------------------------------------
+Fri Nov 10 14:32:48 CET 2006 - kssingvo@suse.de
+
+- fixed build issue with permission check of docs and manuals
+
+-------------------------------------------------------------------
+Tue Aug 29 19:23:20 CEST 2006 - kssingvo@suse.de
+
+- update to version 2.2.2 
+  * malloc test implemented to avoid high-memory consuming.
+    Thanks to Rodrigo Rubira Branco <rodrigo@kernelhacking.com>
+  * Czech UTF8 language added by Josef Karliak <karliak@ajetaci.cz>
+  * fixed: parsed mismatch in realtime_access_log_lines and 
+    access_log_lines tags.
+    Thanks to Kuznetsov Andrey <pm_kan@mail.ru>
+  * changed: realtime report sort changed by date/time
+    Thanks to Leonardo Buonsanti <leonardo.buonsanti@gmail.com>
+  * GD minor fixes added.
+  * bug fixed. *** buffer overflow detected ***: sarg terminated
+    in Fedora Core 5 when using -D FORTIFY_SOURCE in gcc or in kernel
+
+-------------------------------------------------------------------
+Thu Aug 10 11:07:12 CEST 2006 - kssingvo@suse.de
+
+- update to version 2.2.1
+  * iconv problems fixed in Freebsd and Slackware.
+    Thanks to Grigory Trenin <gtrenin@gmail.com>.
+  * new word added to languages: Topuser
+  * missing fclose fp-in in css.c
+    Thanks to Renato Botelho <rbgarga@gmail.com>.
+  * index.c fixed. Missing -r in reverse sort.
+    Thanks to Fernando Lemes da Silva <fernando@koho.com.br>
+  * wrong values in columns in-cache and out-cache.
+    Thanks to Hugo P S Costa <hpcosta@nutron.com.br>
+  * sarg ported to 64 bits.
+    Thanks to Antonio F. Zago <zagolinux@uol.com.br>
+    to share your Fedora Core 5 64 bits with me. 
+  * fixed conflict types for 'saverecs2' in .configure
+  * fixed no index.html when lastlog tag is greather then 0,
+    caused by some debug messages.
+  * removed some development debug message
+  * user_limit_block script added to block users when limit exceeded
+  * fixed wrong sort in index.html
+  * removed '+' argument to sort utility.
+    Thanks to Julio Cesar Covolato <julio@psi.com.br>
+  * fixed "file too long" messages when using long_url
+    Thanks to Fabio Lo Votrico <fabio@link.it>
+  * fixes and improvements from Oleg <xsov@mail.ru> - Tanks.
+    . fprintf faster than sprintf+fputs (fixed in some places);
+    . strcpy+strcat is faster than sprintf (fixed in some places);
+    . unused variables removed;
+    . fixed headers look and feel (<th class="header3">);
+    . fixed word 'BYTES' localisation for datetime user report;
+    . fixed corrupted top header on index, denied, download and tt-reports;
+    . fixed "No" table header in topsites;
+    . fixed user report table look;
+    . fixed floating point exception on long url (added checks 
+      for division by zero);
+    . fixed incorrect long url view;
+    . fixed too wide table entries in user report by adding url_limit 
+      internal parameter in html.c (default 40);
+    . fixed charset.c file (was in MS-DOS text format);
+    . also included all previous fixes by other people (from 
+      datafile.patch and lastlog.patch files).
+
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 14:51:07 CET 2006 - kssingvo@suse.de
+
+- update to 2.1
+- remove of memory leak patch (already included)
+
+-------------------------------------------------------------------
+Wed Aug 17 16:27:49 CEST 2005 - kssingvo@suse.de
+
+- fixed memory problems (at least under x86_64)
+
+-------------------------------------------------------------------
+Wed Jul 27 18:43:28 CEST 2005 - kssingvo@suse.de
+
+- update to 2.0.8
+
+-------------------------------------------------------------------
+Fri Jun 17 14:19:37 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Feb 16 11:13:29 CET 2005 - kssingvo@suse.de
+
+- update to 2.0.3
+- adaptions for new version
+- introduced norootforbuild
+
+-------------------------------------------------------------------
+Thu Nov 25 01:59:09 CET 2004 - ro@suse.de
+
+- run suse_update_config also in cfgaux dir
+
+-------------------------------------------------------------------
+Tue Nov 16 14:58:36 CET 2004 - kssingvo@suse.de
+
+- updated to 2.0.1
+- added htmldir option
+- added manual page
+- added official largeurl patch
+
+-------------------------------------------------------------------
+Tue Jul 22 17:03:20 CEST 2003 - kssingvo@suse.de
+
+- updated to 1.4.1
+- removed unnecessary string patch, fixed minor problems in spec file
+
+-------------------------------------------------------------------
+Tue Jan 14 17:32:36 CET 2003 - nadvornik@suse.cz
+
+- fixed multi-line string literals
+
+-------------------------------------------------------------------
+Thu Dec  5 09:44:11 CET 2002 - kssingvo@suse.de
+
+- fixed build problem: $RPM_BUILD_ROOT was missing
+
+-------------------------------------------------------------------
+Wed Dec  4 18:39:00 CET 2002 - kssingvo@suse.de
+
+- updated to 1.2.2.1
+- rewrote many parts of spec file
+- updated path in sarg.conf (bugzilla#21290)
+
+-------------------------------------------------------------------
+Wed Jul 25 21:24:48 CEST 2001 - bodammer@suse.de
+
+- initial package of sarg-1.1.1
+

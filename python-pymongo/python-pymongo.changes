@@ -1,0 +1,1050 @@
+-------------------------------------------------------------------
+Mon May 27 09:15:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix test run on 32bit:
+  * mongodb-skip-test.patch
+
+-------------------------------------------------------------------
+Sat May 25 13:04:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.8.0:
+  * http://api.mongodb.com/python/3.8.0/changelog.html
+
+-------------------------------------------------------------------
+Fri Sep 21 09:05:25 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 3.7.1
+
+- Upgrade to 3.7.1
+  * Calling `~pymongo.database.Database.authenticate` more than once with the
+    same credentials results in OperationFailure.
+  * Authentication fails when SCRAM-SHA-1 is used to authenticate users with
+    only MONGODB-CR credentials.
+  * A millisecond rounding problem when decoding datetimes in the pure
+    Python BSON decoder on 32 bit systems and AWS lambda.
+
+-------------------------------------------------------------------
+Mon Jul 16 16:55:52 UTC 2018 - mcepl@suse.com
+
+- Upgrade to 3.7.0
+    Version 3.7 adds support for MongoDB 4.0. More details are available
+    at http://api.mongodb.com/python/3.7.0/changelog.html
+
+-------------------------------------------------------------------
+Wed Mar  7 14:20:01 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 17:59:40 UTC 2018 - aplanas@suse.com
+
+- Suggests only for SUSE
+
+-------------------------------------------------------------------
+Mon Feb 26 17:23:35 CET 2018 - ro@suse.de
+
+- fix build on ppc64 and s390x by dropping the ifarch statements
+  all our platforms install this to sitearch (bsc#1085572)
+
+-------------------------------------------------------------------
+Fri Feb 23 04:43:48 UTC 2018 - jacobwinski@gmail.com
+
+- Update to version 3.6.0:
+  + Adds support for MongoDB 3.6, drops support for CPython 3.3.
+  + Drops support for MongoDB versions older than 2.6.
+  + Updates:
+    * Support for change streams. See the
+      :meth:`~pymongo.collection.Collection.watch` method for details.
+    * Support for array_filters in
+      :meth:`~pymongo.collection.Collection.update_one`,
+      :meth:`~pymongo.collection.Collection.update_many`,
+      :meth:`~pymongo.collection.Collection.find_one_and_update`,
+      :meth:`~pymongo.operations.UpdateOne`, and
+      :meth:`~pymongo.operations.UpdateMany`.
+    * New Session API, see :meth:`~pymongo.mongo_client.MongoClient.start_session`.
+    * New methods :meth:`~pymongo.collection.Collection.find_raw_batches` and
+      :meth:`~pymongo.collection.Collection.aggregate_raw_batches` for use with
+      external libraries that can parse raw batches of BSON data.
+    * New methods :meth:`~pymongo.mongo_client.MongoClient.list_databases` and
+      :meth:`~pymongo.mongo_client.MongoClient.list_database_names`.
+    * New methods :meth:`~pymongo.database.Database.list_collections` and
+      :meth:`~pymongo.database.Database.list_collection_names`.
+    * Support for mongodb+srv:// URIs. See
+      :class:`~pymongo.mongo_client.MongoClient` for details.
+    * Index management helpers
+      (:meth:`~pymongo.collection.Collection.create_index`,
+      :meth:`~pymongo.collection.Collection.create_indexes`,
+      :meth:`~pymongo.collection.Collection.drop_index`,
+      :meth:`~pymongo.collection.Collection.drop_indexes`,
+      :meth:`~pymongo.collection.Collection.reindex`) now support maxTimeMS.
+    * Support for retryable writes and the ``retryWrites`` URI option.  See
+      :class:`~pymongo.mongo_client.MongoClient` for details.
+  + Deprecations:
+    * The `useCursor` option for :meth:`~pymongo.collection.Collection.aggregate`
+      is deprecated. The option was only necessary when upgrading from MongoDB
+      2.4 to MongoDB 2.6. MongoDB 2.4 is no longer supported.
+    * The :meth:`~pymongo.database.Database.add_user` and
+      :meth:`~pymongo.database.Database.remove_user` methods are deprecated. See
+      the method docstrings for alternatives.
+  + Breaking changes:
+    * Starting in MongoDB 3.6, the deprecated methods
+      :meth:`~pymongo.database.Database.authenticate` and
+      :meth:`~pymongo.database.Database.logout` now invalidate all cursors created
+      prior. Instead of using these methods to change credentials, pass credentials
+      for one user to the :class:`~pymongo.mongo_client.MongoClient` at construction
+      time, and either grant access to several databases to one user account, or use
+      a distinct client object for each user.
+    * BSON binary subtype 4 is decoded using RFC-4122 byte order regardless
+      of the UUID representation. This is a change in behavior for applications
+      that use UUID representation :data:`bson.binary.JAVA_LEGACY` or
+      :data:`bson.binary.CSHARP_LEGACY` to decode BSON binary subtype 4. Other
+      UUID representations, :data:`bson.binary.PYTHON_LEGACY` (the default) and
+      :data:`bson.binary.STANDARD`, and the decoding of BSON binary subtype 3
+      are unchanged.
+
+-------------------------------------------------------------------
+Sat Nov 25 17:07:57 UTC 2017 - axel.braun@gmx.de
+
+- update to version 3.5.1
+  tests_should_pass_without_MongoDB_running.patch removed - not needed anymore 
+
+-------------------------------------------------------------------
+Wed Apr 26 15:36:48 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version3.4
+  * Complete support for MongoDB 3.4
+  * Improved support for logging server discovery and monitoring events. See
+    :mod:`~pymongo.monitoring` for examples.
+  * Support for matching iPAddress subjectAltName values for TLS certificate
+    verification.
+  * TLS compression is now explicitly disabled when possible.
+  * The Server Name Indication (SNI) TLS extension is used when possible.
+  * Finer control over JSON encoding/decoding with
+    :class:`~bson.json_util.JSONOptions`.
+  * Allow :class:`~bson.code.Code` objects to have a scope of ``None``,
+    signifying no scope. Also allow encoding Code objects with an empty scope
+  (i.e. ``{}``).
+- Update to Version3.3
+  * C extensions support on big endian systems.
+  * Kerberos authentication support on Windows using `WinKerberos
+    <https://pypi.python.org/pypi/winkerberos>`_.
+  * A new ``ssl_clrfile`` option to support certificate revocation lists.
+  * A new ``ssl_pem_passphrase`` option to support encrypted key files.
+  * Support for publishing server discovery and monitoring events. See
+    :mod:`~pymongo.monitoring` for details.
+  * New connection pool options ``minPoolSize`` and ``maxIdleTimeMS``.
+  * New ``heartbeatFrequencyMS`` option controls the rate at which background
+    monitoring threads re-check servers. Default is once every 10 seconds.
+- Update to Version3.2.2
+  * Version 3.2.2 fixes a few issues reported since the release of 3.2.1, including
+    a fix for using the `connect` option in the MongoDB URI and support for setting
+    the batch size for a query to 1 when using MongoDB 3.2+.
+    Changes in Version 3.2.1
+  * Version 3.2.1 fixes a few issues reported since the release of 3.2, including
+     running the mapreduce command twice when calling the
+    :meth:`~pymongo.collection.Collection.inline_map_reduce` method and a
+    :exc:`TypeError` being raised when calling
+    :meth:`~gridfs.GridFSBucket.download_to_stream`. This release also
+    improves error messaging around BSON decoding.
+- Update to Version3.2
+  + Version 3.2 implements the new server features introduced in MongoDB 3.2.
+  + Highlights include:
+    - Full support for MongoDB 3.2
+    - Support for reading and writing raw BSON with
+      :class:`~bson.raw_bson.RawBSONDocument`
+- Add tests_should_pass_without_MongoDB_running.patch
+- Fix source URL
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Thu Feb 18 13:24:49 UTC 2016 - eshmarnev@suse.com
+
+- Update to 3.1.1:
+  * Command monitoring support.
+  * Configurable error handling for UnicodeDecodeError. 
+  * Optional automatic timezone conversion when decoding BSON datetime. 
+  * An implementation of GridFSBucket from the new GridFS spec.
+  * Compliance with the new Connection String spec.
+  * Reduced idle CPU usage in Python 2.
+
+-------------------------------------------------------------------
+Wed Aug  5 00:49:55 UTC 2015 - jacobwinski@gmail.com
+
+- Update to 3.0.3, fixes: 
+  * PYTHON-942: Error in changelog guidance for Python 3 (find timeout parameter)
+  * PYTHON-934: Unable to specify ssl_match_hostname option using URI style connection string
+  * PYTHON-946: Undocumented regression in Collection.find - projection tuple no longer allowed
+  * PYTHON-939: Monitor threads slow to terminate on application shutdown.
+  * PYTHON-932: Error in GSSAPI / Kerberos
+  * PYTHON-954: TxMongo is recommended for production use
+  * PYTHON-945: Remove validation of the OP_REPLY "startingFrom" field
+  * PYTHON-951: Corrupt GridFS files can send GridOut.read / readline into an infinite loop
+  * PYTHON-940: Unhelpful and pretty wrong error message
+  * PYTHON-933: "maxPoolSize=0" allowed, causes hang
+
+-------------------------------------------------------------------
+Sat Jul 25 09:41:42 UTC 2015 - seife+obs@b1-systems.com
+
+- fix non-SUSE build by conditionalizing "Suggests:" tag
+
+-------------------------------------------------------------------
+Fri Jun 19 07:51:59 UTC 2015 - bwiedemann@suse.com
+
+- update to 3.0.2
+  - fix a bug that could route operations to replica set members
+    that are not in primary or secondary state when using
+  - fix bug in GridFS.delete
+
+-------------------------------------------------------------------
+Wed Apr  8 11:38:16 UTC 2015 - mlin@suse.com
+
+- Add BuildRequires: python-unittest2 for fix fails in tests on SLE11 SP3
+
+-------------------------------------------------------------------
+Wed Apr  8 06:14:03 UTC 2015 - tbechtold@suse.com
+
+- update to 3.0:
+  - BUMP 3.0
+  - Update install docs.
+  - Capitalize "Python" in changelog.
+  - Note the loss of Connection and ReplicaSetConnection.
+  - Add TLS/SSL example docs.
+  - PYTHON-821 - Note that the new CRUD API methods don't apply SON manipulators.
+  - Update collection.py
+  - PYTHON-874 - Support wincertstore as ca_certs fallback on Windows.
+  - PYTHON-874 - Support certifi as ca_certs fallback on old pythons.
+  - PYTHON-863 - Fix heartbeatFrequencyMS.
+  - PYTHON-863 - Don't take a lock from a weakref callback.
+  - PYTHON-863 - Ref cycle in Monitor.
+  - Post rc1.
+  - BUMP 3.0rc1
+  - Update install docs.
+  - PYTHON-872 - Update changelog.
+  - PYTHON-872 - Test ConfigurationError.
+  - PYTHON-872 - Can't test loading system CA certs on Windows.
+  - PYTHON-872 - Add tests.
+  - PYTHON-872 - Better error message on handshake failure.
+  - PYTHON-872 - Default to ssl.CERT_REQUIRED when ssl=True.
+  - Delete obsolete test_pool_with_fork.
+  - Fix racy tests of legacy unacknowledged writes.
+  - Redundant assignment in test_crud.py.
+  - Reuse global test client in test_crud.py.
+  - PYTHON-871 - Fix encoding of defaultdict.
+  - PYTHON-818 - Remove unicode_literals future imports.
+  - PYTHON-870 - Fix two unlikely reference leaks.
+  - PYTHON-869 - Use ReadPreference.PRIMARY for current_op and unlock.
+  - Post rc0.
+  - BUMP 3.0rc0
+  - Fix up copyright dates.
+  - Update install docs.
+  - Define and use some constants.
+  - Close socket in test_pool_check.
+  - PYTHON-857 - Remove MongoClient.(min|max)_wire_version.
+  - Various doc fixes.
+  - PYTHON-857 - Delete test_wire_version_mongos_ha.
+  - PYTHON-857 - Clean up _command helper return values.
+  - PYTHON-868 - Apply local threshold for mongos load balancing.
+  - PYTHON-868 - Fix secondary reads in Sharded mode.
+  - PYTHON-865 - Fix mongos $readPreference issues.
+  - PYTHON-857 - Fix options() for legacy server versions.
+  - PYTHON-857 - Fix race in collection_names and options.
+  - Fix bulk result for legacy insert with write concern failure.
+  - Set SlaveOkay bit for list_indexes / index_information.
+  - Fix test of mapreduce and read preference.
+  - PYTHON-857 - Update C version of batch writes.
+  - PYTHON-857 - Fix SlaveOkay wire protocol bit for mapreduce.
+  - PYTHON-866 - Change MIN_HEARTBEAT_INTERVAL to 500ms.
+  - PYTHON-857 - Delete MongoClient._writable_max_wire_version().
+  - PYTHON-842 - SSL URI config support.
+  - PYTHON-864 - Support RFC-3339 offset format for $date.
+  - PYTHON-857 - Rename _get_socket_for_writes to _socket_for_writes.
+  - PYTHON-857 - Delete MongoClient._send_message.
+  - PYTHON-857 - Fix "not master" error handling.
+  - Fix up doc formatting for parallel_scan.
+  - Fix formatting in find() docs.
+  - PYTHON-798 - Improve docs and add examples.
+  - PYTHON-857 - Remove MongoClient.__check_gle_response.
+  - PYTHON-857 - Collection and Database use SocketInfo.command.
+  - PYTHON-677 - Really make WriteConcern immutable.
+  - PYTHON-822 - Remove no longer necessary test workaround.
+  - PYTHON-822: Added CRUD YAML tests.
+  - PYTHON-821 - Improve docs for write result acknowledged attribute.
+  - PYTHON-857 - Complete wire-protocol race fix in Bulk API.
+  - PYTHON-857 - Simplify _Bulk.execute_no_results.
+  - PYTHON-857 - Pass socket to Collection._insert() etc.
+  - PYTHON-820 - Ignore useCursor and batchSize when appropriate.
+  - PYTHON-857 - Faster attribute access on SocketInfo.
+  - Remove MongoDB 2.5.x-specific code for retrieving an upserted _id.
+  - PYTHON-820 - Set batchSize on aggregate CommandCursor.
+  - PYTHON-862 - Add batch_size to Cursor constructor.
+  - PYTHON-857 - Use SocketInfo, not MongoClient, in message.py.
+  - Post b1.
+  - BUMP 3.0b1
+  - Update install docs for b1.
+  - PYTHON-861 - Doc updates and compliance.
+  - Obsolete comment about max write command size.
+  - PYTHON-857 - Fix server-reset logic.
+  - PYTHON-857 - Use client._get_socket_for_writes for write commands.
+  - PYTHON-857 - Use client._get_socket_for_writes for OP_UPDATE and OP_DELETE.
+  - PYTHON-857 - Use client._get_socket_for_writes for OP_INSERT.
+  - PYTHON-861 - Implement list_indexes.
+  - PYTHON-861 - Implement create_indexes.
+  - PYTHON-728 - Fix signal handling in gevent / eventlet.
+  - PYTHON-861 - Fix dropDups tests.
+  - PYTHON-861 - create/ensure index changes
+  - Feature to run a subset of tests in a green framework.
+  - Typo in test_ha.
+  - PYTHON-858 - Clean up high availability docs.
+  - Some unused imports in tests.
+  - PYTHON-728 - Translate socket.error to ConnectionFailure in pool.py.
+  - Added server selection timeout to hanging tests.
+  - PYTHON-813 Removed client_knobs where no longer needed
+  - Add Anna Herlihy to contributors.
+  - Don't call ismaster twice when opening a monitor socket.
+  - PYTHON-512 - Remove gevent from tox.ini.
+  - Delete racy test_selection_failure.
+  - Revert "Mock the clock in test_selection_failure."
+  - Revert "Python 3.4 compatibility in test_selection_failure."
+  - Revert "Unused import in test_topology."
+  - Post b0
+  - BUMP 3.0b0
+  - Changelog updates.
+  - Mention beta releases in install docs.
+  - PYTHON-856 - as_class -> document_class
+  - PYTHON-813 Added support for serverSelectionTimeoutMS
+  - PYTHON-854 max_pool_size -> maxPoolSize
+  - PYTHON-851 - Fix a test.
+  - PYTHON-851 - Clean up MongoClient properties.
+  - PYTHON-815 - Fix rtt test runner.
+  - PYTHON-815 - Fix server selection spec test runner.
+  - Rename test_mongos_ha to test_mongos_load_balancing.
+  - PYTHON-852 - Mongos load balancing.
+  - Don't remove a mongos on disconnect.
+  - Ease-of-use testing with ha_tools.py.
+  - PYTHON-836 - Fix command routing for aggregate and map_reduce helpers.
+  - PYTHON-836 - Fix new test under auth.
+  - PYTHON-836 - Always set slaveOk bit for non-mongos direct connection.
+  - PYTHON-815: Added YAML tests for server selection.
+  - Move another legacy test.
+  - Bring changelog up to date.
+  - PYTHON-834 - Add option to disable match_hostname.
+  - Fix ReturnDocument examples.
+  - Finalize option locations and exports.
+  - Simplify TopologyDescription.reset_server.
+  - Unused import in test_topology.
+  - PYTHON-845 - Add examples to CRUD docstrings.
+  - Correct the description of waitQueueMultiple.
+  - PYTHON-770 - Update SDAM tests from specs repo.
+  - PYTHON-726 - Test in gevent and eventlet.
+  - PYTHON-850 - Fix an authentication test.
+  - PYTHON-850 - Change some uses of ConfigurationError to Type/ValueError.
+  - PYTHON-844 - Use the Python 3 docs' HTML theme.
+  - PYTHON-841 FAQ entry for key order and subdocument matching.
+  - PYTHON-846 - Database.connection -> Database.client
+  - PYTHON-847 Remove disconnect(), synonym of MongoClient.close().
+  - PYTHON-848 Remove MongoClient.alive.
+  - PYTHON-839 - Better validation error messages.
+  - PYTHON-838 - Deprecate Database.add_son_manipulator
+  - Typo in FAQ.
+  - PYTHON-837 - Implement CRUD spec exception hierarchy.
+  - PYTHON-835 - Consistent method signatures.
+  - PEP8 / Pylint cleanups.
+  - Debug a test.
+  - Fix a racy test.
+  - PYTHON-821 - Deprecated legacy API.
+  - PYTHON-821 - Small test fixes.
+  - PYTHON-821 - Add test_legacy_api.py
+  - Skip forking tests if we don't have multiprocessing.
+  - PYTHON-821 - Switch internals to the new CRUD API.
+  - Debug some tests.
+  - Fix typo.
+  - PYTHON-821 - Use new CRUD API in GridFS.
+  - PYTHON-821 - Migrate most tests to new the CRUD API.
+  - PYTHON-821 - Add insert_many to built docs.
+  - PYTHON-821 - Implement insert_many
+  - PYTHON-821 - Implement delete_one and delete_many.
+  - PYTHON-821 - Implement replace_one, update_one, and update_many.
+  - PYTHON-821 - Introduce results and options modules.
+  - PYTHON-821 - Implement insert_one.
+  - PYTHON-821 - Implement find_one_and_*.
+  - PYTHON-825 BSON API changes and internal options handling.
+  - PYTHON-821 - Implement Collection.bulk_write.
+  - PYTHON-826 Move codec_options submodule from pymongo to bson.
+  - Python 3.4 compatibility in test_selection_failure.
+  - Mock the clock in test_selection_failure.
+  - PYTHON-829 Call ismaster on each new connection.
+  - PYTHON-829 Move some network code to network.py.
+  - Clean up a stray user.
+  - Replace more tearDowns with addCleanup.
+  - No more need to call MongoClient.close in tests.
+  - Use with-statement to flush test key-file.
+  - Replace some tearDowns with addCleanup.
+  - Remove tearDowns from test_ha.
+  - Remove pre-MongoDB-2.0 version checks from tests.
+  - Reset average round trip time if a server is disconnected.
+  - Correct a comment in test_round_trip_time.
+  - Update MongoDB version references from 2.8 to 3.0.
+  - PYTHON-830 - Fix bad uses of _get_wc_override.
+  - Longer timeouts in test_insert_large_batch.
+  - Fix and clarify test_insert_large_batch.
+  - Debug test_insert_large_batch.
+  - Fix test_init_disconnected.
+  - Race in test_exhaust_getmore_server_error.
+  - Lock the Pool to return a socket.
+  - Update comments in test_insert_large_batch.
+  - Race in test_continue_on_error.
+  - Import SkipTest correctly in Python 2.6.
+  - Two test failures on Windows.
+  - Let test_network_error_on_operation succeed without a server.
+  - PYTHON-820 - API changes for find/find_one to comply with CRUD spec.
+  - PYTHON-820 - count and distinct changes to comply with CRUD.
+  - Work around Vim's poor parsing of python docstrings.
+  - PYTHON-820 - Change aggregate to comply with the CRUD spec.
+  - Race in test_round_trip_time.
+  - PYTHON-816 Improved test coverage for Pool.
+  - PYTHON-816 Simplify Pool.
+  - Python 2 compatibility in TestMonitor.test_atexit_hook.
+  - Stop thread sooner after Monitor is deleted.
+  - Simplify TestMonitor.
+  - Shorter timeout in TestMonitor.
+  - PYTHON-798 - Fix auth tests.
+  - PYTHON-818 - Work around issues with unicode_literals and pbkdf2_hmac.
+  - PYTHON-798 - Make common.BaseObject immutable
+  - PYTHON-814 - API and behavior changes for Database.command.
+  - PYTHON-812 - Make local threshold global and immutable.
+  - PYTHON-811 - latencyThresholdMS -> localThresholdMS
+  - Don't test 'text' command with MongoDB 2.8.
+  - PYTHON-799 Avoid deadlock in Cursor destructor with PyPy.
+  - PYTHON-799 Break ref cycle in Monitor.
+  - Add codec_options to MongoReplicaSetClient docs.
+  - PYTHON-805 - Fix docs for find() and Cursor.
+  - PYTHON-801 - Remove BaseObject.uuid_subtype
+  - PYTHON-801 - Add STANDARD and PYTHON_LEGACY to bson.binary
+  - PYTHON-800 - Clean up internal use of CodecOptions.
+  - PYTHON-785 - Really check Collection's write_concern in GridFS.
+  - Clean up test_auto_ref_and_deref_list.
+  - Delete references to missing file /examples/requests.
+  - PYTHON-677 - Finish transition to WriteConcern.
+  - PYTHON-677 - WriteConcern docs.
+  - PYTHON-785 - Check Collection's write_concern in GridFS
+  - PYTHON-807 Silence warnings when testing Database.error().
+  - PYTHON-785 No need for getlasterror before filemd5.
+  - PYTHON-807 Deprecate Database.error() and related methods.
+  - PYTHON-805 - Fix legacy internals that pass read_preference to Cursor
+  - PYTHON-804 - Add codec_options, etc. to Database.create_collection
+  - Updated minimongo repository location
+  - PYTHON-806 - Always use command cursor 'ns' value for OP_GET_MORE
+  - PYTHON-796 - Support listCollections and listIndexes command cursors
+  - Race in test_network_error_on_operation.
+  - PYTHON-805 - Add with_options and remove per helper read_preference
+  - PYTHON-799 Create a PeriodicExecutor class for background monitoring.
+  - Delete test_errors.py.
+  - PYTHON-803 - Don't use Collection.find() for commands.
+  - PYTHON-802 - Add get_database and get_collection methods
+  - PYTHON-800 - Docs for codec_options.
+  - PYTHON-800 - Add __eq__ and __ne__ methods to CodecOptions.
+  - PYTHON-800 - Add CodecOptions class.
+  - Fix how unittests check for "enableTestCommands" server option.
+  - Indentation style in Topology.
+  - Update a comment in Monitor.
+  - Long line.
+  - Unused imports in tests.
+  - Unused imports in mongo_client.
+  - Update docstring for a test utility, SocketGetter.
+  - Update comments in select_server().
+  - PYTHON-785 Update connection-pooling FAQ.
+  - Tests detect when Mongo Orchestration has enabled test commands.
+  - Avoid ResourceWarnings in TestPooling.
+  - Dead code in test_read_preferences.
+  - Race in test_round_trip_time.
+  - Unused import
+  - Python 3 compatibility in TestJsonUtil.test_regex.
+  - Rename maybe_return_socket to return_socket.
+  - PYTHON-526 Remove 'compile_re' option.
+  - Race in test_round_trip_time.
+  - Style in pymongo_mocks.py.
+  - Avoid ResourceWarning with MockPool tests in Python 3.3.
+  - More reliable test_round_trip_time.
+  - Long line in test_cursor.
+  - Don't reassign "address" parameter in _send_message().
+  - Changelog formatting.
+  - Update cursor management for PyMongo 3.0.
+  - Rely on standard json module.
+  - Delete an ancient FAQ about the Year 2038 Problem.
+  - Dead code.
+  - Make Pool.get_socket a context manager.
+  - Delete an ancient note about MongoDB 1.5.
+  - New method to calculate average round trip time.
+  - Raise if nonce or server signature don't match.
+  - PYTHON-795 - Fix password handling for None and the empty string.
+  - PYTHON-785 Changelog: how to adapt to a world without start_request.
+  - Fix race in TestMongoClientFailover.test_discover_primary.
+  - PYTHON-785 Delete examples/requests.rst.
+  - PYTHON-785 Remove start_request().
+  - PYTHON-785 Don't call start_request in mod_wsgi test.
+  - PYTHON-785 Delete TestReplicaSetRequest.
+  - PYTHON-792 - Update create collection and index docs.
+  - test_client style.
+  - test_network_error_on_operation can run without a server.
+  - Unused import in monitor.
+  - Use _UNPACK_INT in new BSON helpers.
+  - Add Heewa Barfchin to contributors.
+  - Update changelog to mention new BSON helpers.
+  - Document uuid_subtype parameter for BSON.encode/decode.
+  - Document to uuid_subtype parameter for decoders.
+  - Fix up docs for decode_(file_)iter.
+  - Fix decode_(file_)iter tests for 3.0-dev.
+  - Allow decode_(file_)iter to use C extensions.
+  - Add compile_re support to decode_(file_)iter.
+  - Add generator versions of decode_all in bson.
+  - Fix test_default_roles to work with mongo-orchestration.
+  - test_lazy_connect_w0 can break the next test.
+  - Unused import in test_pooling.
+  - Update test_cert_ssl_validation_hostname_fail for replica set in 3.0-dev.
+  - More reliable test_max_pool_size.
+  - Optional packages: backports.pbkdf2, pykerberos, monotime.
+  - Use a monotonic clock if possible.
+  - Tests can rely on Javascript sleep() function.
+  - PYTHON-785 Don't use requests in GridFS.
+  - PYTHON-791 - Fix JSON support for Timestamp.
+  - Changelog and related fixes.
+  - PYTHON-789 Clarify valid ObjectId input (3.0-dev).
+  - PYTHON-785 Don't use requests in tests.
+  - Rename connection_id and conn_id to "address".
+  - Finish renaming 'set_name' to 'replica_set_name'.
+  - PYTHON-525 Helpful connection error messages.
+  - Simplify auth tests, don't create additional root users.
+  - Remove TestClientLazyConnectBadSeeds.
+  - Shorter timeout in connection-failure tests.
+  - Typo in test_host_w_port.
+  - Undeprecate message.insert().
+  - Rename "set_name" to "replica_set_name".
+  - Unused imports in test files.
+  - Unused imports.
+  - Fix test_stale_getmore and test_stale_killcursors.
+  - Fix add_user tests for MongoDB 2.4.
+  - Fix race with disconnect, auth, and getMore.
+  - Two typos
+  - Fix wtimeout tests for MongoDB 2.8.
+  - Fix require_test_commands decorator for unittests.
+  - PYTHON-788 Remove copy_database helper method.
+  - PyMongo 2.8 changelog.
+  - PYTHON-778 - Document URI quoting rules.
+  - Typo in README.rst.
+  - Fix whitespace in test/utils.py.
+  - PYTHON-782 Verify readchunk() works for a disconnected GridOut.
+  - Add a user and authenticate before copy_database specifying fromhost.
+  - Assert that MongoClient raises OperationFailure when connecting to a host with bad credentials using SASL PLAIN.
+  - Force all tests to run in alphabetical order by module name.
+  - Test the right client in TestClient.test_contextlib.
+  - Re-authenticate after logging out from TestThreadsAuth.
+  - Fix races in TestTopologyErrors.
+  - Remove unused class SocketSettings.
+  - All TopologySettings options should default to None.
+  - Import style in test_gridfs.
+  - More consistent use of 'reset' and 'close'.
+  - Monitors stop themselves when the Topology is GC'ed.
+  - MongoClient.close() stops monitors.
+  - Faster method of checking server compatibility.
+  - Longer timeout in test_request_with_fork.
+  - Fix race in test_common.
+  - Use a separate db for manipulator test.
+  - Add Sergey Azovskov to contributors.
+  - Add version information to docstring.
+  - Manipulate defaults to False in find_and_modify.
+  - Added support for manipulate param in find_and_modify for consistency with find method
+  - Update travis.yml
+  - PYTHON-762 - Fix tests for python3.2.
+  - Remove pymongo.errors.UnsupportedOption.
+  - Fix tests of MongoClient.host property.
+  - Remove obsolete GridFile test.
+  - PYTHON-781 - Fix tests for multiple storage engines.
+  - PYTHON-761 - Use listCollections for helper methods
+  - PYTHON-762 - Use listIndexes for index_information
+  - test_atexit_hook wasn't testing what it meant to.
+  - Remove GridFS.open and close, and GridFile.
+  - PEP 257.
+  - Remove warnings about MongoDB versions before 1.8.
+  - Remove ancient version annotations.
+  - PYTHON-768 - Support authMechanismProperties.
+  - Standardize how tests construct MongoClients.
+  - Redundant test code.
+  - Test GridFS.find_one.
+  - Style.
+  - Add find_one() method for gridfs.
+  - PYTHON-703 Remove slow SON.__contains__ method.
+  - Allow destructive ops during son iteration and let python handle (identical to iter on list)
+  - Don't unnecessarily copy the key list
+  - PYTHON-706 Mention that backports.pbkdf2 provides the best performance.
+  - PYTHON-706 - Optimize XOR in SCRAM HI.
+  - PYTHON-706 Use fastest SCRAM-SHA-1 implementation available.
+  - PYTHON-764 Update auth examples for MongoDB 2.8.
+  - PYTHON-764 SCRAM-SHA-1 automatic upgrade / downgrade.
+  - Update grid_file.py
+  - PYTHON-757 Warn against installing third-party "bson" package.
+  - Avoid TypeError in Pool.__del__ during shutdown.
+  - PYTHON-749 Handle floating-point chunkSize in GridOut.
+  - PYTHON-749 Test that GridOut handles chunkSize as a float.
+  - PYTHON-766 Fix KeyError when parsing certain mongos error responses.
+  - PYTHON-766 Demonstrate a bug parsing an error message from mongos.
+  - Use replica set connection in tests wherever possible.
+  - Silence DeprecationWarnings in add_user tests.
+  - PYTHON-763 - Bump MAX_SUPPORTED_WIRE_VERSION to 3.
+  - Fix MongoClient.__getattr__ implementation.
+  - Modern exception-handling syntax in ha_tools.
+  - Use with-statements to acquire locks.
+  - Remove _TestLazyConnectMixin class.
+  - PYTHON-737 Raise AutoReconnect on exhaust cursor error.
+  - Update Topology tests.
+  - Fix TestMonitor.test_atexit_hook.
+  - PYTHON-525 Update replica set docs for new MongoClient.
+  - PYTHON-493 - Add **kwargs to Database.dereference
+  - PYTHON-679 - Add simple test for socketKeepAlive.
+  - PYTHON-693 - Fix parsing of default values for keyword args.
+  - PYTHON-525 Redundant server discovery tests.
+  - Debug TestMonitor.test_atexit_hook.
+  - PYTHON-525 Use MongoClient in test_ha.
+  - Test dropping an index twice.
+  - Test MongoClient with invalid URI scheme.
+  - Spelling: "test_drop_indexes_non_existent".
+  - Fix test_not_master_error for auth.
+  - Unused imports.
+  - Redundant implementation of partition_node().
+  - Improve MongoClient test coverage.
+  - Unused helper function "shuffled()".
+  - PYTHON-753 - Add "How To Ask For Help" in README.rst
+  - NotMasterError, not AutoReconnect, on w=0 write to secondary.
+  - Dead code in Pool.
+  - PYTHON-525 Remove "force" param for Pool.get_socket().
+  - PYTHON-525 Socket timeout for monitoring is connect_timeout.
+  - Note that Topology.select_server() calls open() if needed.
+  - PYTHON-525 Try to halt monitors before exiting.
+  - Fix test_server.py's docstring.
+  - PYTHON-739 - Add namespace to command failure message.
+  - PYTHON-525 Update ReadPreference doc.
+  - PYTHON-525 Obsolete attributes in RS client doc.
+  - Fix docs for latency_threshold_ms.
+  - PYTHON-752 - Fix escaping in SocketInfo.command.
+  - PYTHON-700 - Support subclassing of son manipulators
+  - TestCursorManager need not inherit from TestRequestMixin.
+  - Remove "functools.partial" backport.
+  - Remove "itertools.permutations" backport.
+  - Remove "assertIsInstance" backport.
+  - Remove unused test method "assertSoon".
+  - Instructions to compile python for mod_wsgi testing.
+  - PYTHON-480 - Filter __getattr__ lookups.
+  - Python 3 compatibility in mod_wsgi test.
+  - PYTHON-760 - BSONInt64 -> Int64
+  - Use lower() to canonicalize hostnames.
+  - Update JSON test files from spec repo.
+  - PYTHON-525 Use MongoClient in replica set tests.
+  - PYTHON-758 Allow tests to use an existing user when running under auth.
+  - Restore copy_database fromhost test...
+  - Obsolete docs for "authenticate" and "logout".
+  - Auth doc should use term "deployment", not "cluster".
+  - Replace "Cluster" term with "Topology".
+  - Rename "cluster" files to "topology".
+  - PYTHON-759 - Support $date as ISO-8601 or $numberLong
+  - Raise OperationFailure if command response has no document.
+  - PYTHON-525 Deprecate MongoReplicaSetClient.
+  - PYTHON-314, PYTHON-744 - Hint by index name, count with hint.
+  - PYTHON-525 Restart monitor threads after fork.
+  - PYTHON-525 Don't reset whole Cluster on network error.
+  - PYTHON-525 Python 3 compatibility in SocketInfo.check_auth.
+  - PYTHON-525 Update obsolete docstring.
+  - PYTHON-525 Fix race in test_max_wire_version.
+  - PYTHON-525 Don't use auto_start_request in mod_wsgi tests.
+  - PYTHON-525 - Fix overflow error when testing on Windows
+  - Fix index tests for MongoDB 2.7.x explain output
+  - PYTHON-706 - Optimize our use of HMAC.
+  - Fix long comment line.
+  - PYTHON-525 Fix test_cluster_spec.
+  - PYTHON-706 - Use SystemRandom for secure nonces.
+  - Convert YAML to JSON.
+  - PYTHON-525 Test direct connection to an RS member via external IP.
+  - Rename test to more accurate direct_connection_slave.yml.
+  - PYTHON-525 Better test_cluster_spec messages.
+  - PYTHON-525 Handle a new primary with wrong setName.
+  - Correct cluster type if a primary uses internal IP.
+  - Fix style in test_cluster_spec.
+  - YAML files should end with a newline.
+  - Update discovery.yml test from spec.
+  - Fixed hosts in discovery test
+  - Fixed yml formatting
+  - Implemented Cluster Monitor tests and test harness to consume them
+  - PYTHON-346 - Use codecs for all string decoding/encoding.
+  - PYTHON-525 Reimplement auth for new MongoClient.
+  - PYTHON-525 Update test_ssl for new MongoClient.
+  - Run tests even if prior run didn't clean up users.
+  - PYTHON-525 Tests determine quickly if a mongod is available.
+  - Fix test_unix_socket for narrowed localhost exception.
+  - PYTHON-525 Speed up ConnectionFailure tests.
+  - PYTHON-525 Skip SSL tests quickly if SSL is disabled.
+  - PYTHON-525 Bugfix, allow tests to override SERVER_WAIT_TIME.
+  - PYTHON-346 - Type lookup and caching improvements.
+  - PYTHON-754 - Deprecate dropDups / drop_dups
+  - PYTHON-346 - Add _encode_mapping, cache subtypes.
+  - PYTHON-226 - Optimize ObjectId creation from BSON
+  - Skip kill_cursors tests for mongos before 2.4.7.
+  - PYTHON-525 Reimplement MongoClient to use Cluster.
+  - PYTHON-525 Cluster improvements.
+  - PYTHON-525 Move SERVER_TYPE to its own file.
+  - PYTHON-525 Add method Cluster.select_server().
+  - Undeprecate MongoClient.set_cursor_manager.
+  - Missing import.
+  - PYTHON-525 Server selection implemented within ReadPreference classes.
+  - PYTHON-346 - Remove buffer copies.
+  - PYTHON-505 - Fix bson tests under Jython2.7.
+  - Clean up an unnecessary constant definition.
+  - PYTHON-346 - Eliminate second _bson_to_dict return value
+  - PYTHON-346 - Eliminate unnecessary datetime.replace call
+  - Skip dropDups test on mongo versions newer than 2.6.x
+  - PYTHON-346 - Optimize decoding of most types.
+  - PYTHON-346 - Relocate _make_c_string and friends.
+  - PYTHON-346 - Cleanup style and silence a host of pylint complaints.
+  - PYTHON-505 - Fix C extension build with VC++.
+  - PYTHON-346 - Eliminate _get_int unsigned option
+  - PYTHON-346 - Use a tuple for decoder options.
+  - PYTHON-706 - SCRAM-SHA-1
+  - PYTHON-505 Allow C extensions to encode any mapping type, not just dicts.
+  - No-rendezvous pool tests use the correct pool.
+  - Enable MongoClient unittests that were disabled by mistake.
+  - PYTHON-525 Race condition in TestClusterErrors.test_pool_reset.
+  - Tiny style fix.
+  - PYTHON-743 - Add ClientOptions class.
+  - PYTHON-719 - Fix imports and indentation.
+  - PYTHON-525 Avoid lost notifications in Monitor.request_check().
+  - PYTHON-525 Configurable heartbeat_frequency.
+  - Allow certificate-validation tests to run.
+  - close_cursors requires 'address' parameter.
+  - Wrap server responses in a Response or ExhaustResponse object.
+  - PYTHON-682 Add .coveragerc
+  - PYTHON-346 - Fix DBRef encoding under jython2.7
+  - PYTHON-346 - Fix unhashable types issue in python 3.4.
+  - PYTHON-707 - Fix -Werror=declaration-after-statement
+  - PYTHON-738 - Clarify versionchanged line for bulk insert.
+  - PYTHON-707 Update bson.son.SON's documentation in light of new BSONInt64 type.
+  - PYTHON-346 - Reimplement pure python BSON encoder.
+  - PYTHON-707 Encode BSONInt64 in C extensions.
+  - PYTHON-708 Support $undefined and $numberLong extended JSON types.
+  - PYTHON-707 Add a BSONInt64 type.
+  - SocketInfo's 'host' parameter is no longer optional.
+  - Unused imports.
+  - PYTHON-726 Document how to run tests with Gevent.
+  - PYTHON-726 Fix tests to run with Gevent's monkey-patching.
+  - PYTHON-724 Remove Gevent-specific code.
+  - Fix intermittent failure in test_exhaust_network_error.
+  - PYTHON-724 Fix test_pooling for PyPy.
+  - Unused import.
+  - PYTHON-724 Remove greenlet- and gevent-specific client tests.
+  - PYTHON-724 Remove use_greenlets from high-availability tests.
+  - PYTHON-724 Remove greenlet- and gevent-specific pool tests.
+  - Skip test_exhuast_network_error when connected to a mongos, since mongos doesn't support exhaust cursors.
+  - PYTHON-724 Explain changes in PyMongo 3.0's Gevent support.
+  - PYTHON-724 Remove use_greenlets from docs and comments.
+  - Redundant imports.
+  - PYTHON-732 Test network error during authentication.
+  - Don't test MongoClientNew with auth until it supports auth.
+  - PYTHON-715 Fix ipv6 tests for restricted localhost exception.
+  - PYTHON-679 add 'socketKeepAlive' option to MongoClient and MongoReplicaSetClient.
+  - Fix ResourceWarning in test_dead_request_socket_with_max_size.
+  - PYTHON-722 Use SocketInfo in a with-statement.
+  - More robust stepdown testing.
+  - Fix test.utils.read_from_which_host for the new read preferences.
+  - PYTHON-730 - Add a validate option to uri_parser
+  - Clean up SSL support.
+  - connection_string() helper should use given seed list even without auth enabled.
+  - PYTHON-715 Fix tests for MongoDB >= 2.7.1 when running with auth enabled.
+  - PYTHON-727 - Implement and use PoolOptions class
+  - Add docstrings in Cluster and related classes.
+  - Skip MongoClientNew tests when necessary.
+  - Minor cluster update optimization.
+  - Another fix for test_client_new.
+  - Fix test_client_new for standalone and mongos.
+  - PYTHON-525 - Cluster monitoring python 3 support.
+  - PYTHON-525 - Add required properties to MongoClientNew
+  - PYTHON-525 Implement Cluster, Server, and Monitor.
+  - PYTHON-683 Separate unit tests and integration tests in the pymongo test suite. Raise SkipTest in tests that require a connection to MongoDB when none is available.
+  - Spelling.
+  - Fix read preference tests.
+  - PYTHON-719 Read preference backward compatibility
+  - Make gridfs tests pass regardless of execution order.
+  - Fix an issue with mongos read preferences.
+  - PYTHON-718 - Use SSLContext when available.
+  - PYTHON-717 - Implement MongoCredential
+  - PYTHON-714 Work around localhost exception issues in add_user when connected to MongoDB >= 2.7.1.
+  - Fix tests under pypy3.
+  - PYTHON-709 insert _id in document after applying non-copying SONManipulators.
+  - Revert "PYTHON-710, simplify SON's equality operator."
+  - Use modern 'distinct' syntax in tests.
+  - PYTHON-710, simplify SON's equality operator.
+  - PYTHON-710, SON.to_dict shouldn't change original data.
+  - PYTHON-710 test that SON.to_dict doesn't change data.
+  - PYTHON-712 ObjectId.is_valid(None) should be False.
+  - Fix autoreconnect test.
+  - PYTHON-705 - Fix python 3.2 support.
+  - PYTHON-705 - Fix Bulk API legacy upsert _id compatibility
+  - PYTHON-681 All requests with w=0 must be wrapped in client.start_request() in the tests when using the shared client
+  - PYTHON-681 Make sure forceerror command and subsequent calls to error() and previous_error() happen on same socket in tests
+  - PYTHON-681 Reuse MongoClient whenever possible in the tests
+  - PYTHON-697 - Fix upsert _id backward compatibility
+  - Primary -> PRIMARY
+  - PYTHON-698 - Try encoding types with broken __getattr__ methods
+  - Fix an aggregation test.
+  - Fix a few tests for MongoDB 2.7.0
+  - PYTHON-526 - Remaining test fixes.
+  - Various fixes for auth tests with old mongos versions.
+  - Move test module-wide setup and teardown to a custom TestRunner class
+  - Fix a few tests with really old mongos versions.
+  - PYTHON-696 - Fix remove_user for old mongos versions.
+  - PYTHON-696 - Fix user and index creation with old mongos versions.
+  - The 'test' command in setup.py should use exit status to communicate test pass/failure
+  - Added Jaroslav Semančík (girogiro) to contributors
+  - Fixed wrong Python object name for UTC
+  - PYTHON-667 - Clarify drop_index behavior when an index does not exist.
+  - PYTHON-690 - Various fixes to indexing docstrings.
+  - PYTHON-680 Add new test command to setup.py in order to avoid DeprecationWarning when raising SkipTest
+  - PYTHON-691 - Fix UserWarning command issues.
+  - PYTHON-685 - Fix rare resource leak in _cmessage
+  - PYTHON-684 - Ignore wnote/jnote from legacy servers.
+  - Always raise warnings in tests.
+  - Use catch_warnings to test warnings.
+  - PYTHON-680 Remove all references to nose
+  - PYTHON-680 Stop using nose in favor of pure unittest/unittest2
+  - PYTHON-686 - Remove a bunch of references to 2.4 and 2.5
+  - Remove mod_wsgi test client's dependency on py3compat.
+  - Explain how to test PyMongo with mod_wsgi.
+  - Remove workaround for python issue7380.
+  - PYTHON-686 - Finish updating docs related to python 3.
+  - Remove useless uuid module checks.
+  - PYTHON-673 - Use bytes and remove binary_type
+  - PYTHON-676 - Use bytes instead of binary_type
+  - PYTHON-675 - Use bytes instead of binary_type
+  - PYTHON-676 python 2/3 single-source for the test module
+  - PYTHON-675 python 2/3 single-source for the gridfs module
+  - PYTHON-674 python 2/3 single-source for the pymongo module
+  - PYTHON-672 - Add __ne__ to read preferences
+  - PYTHON-673 - Fix a json_util issue in python 3.x
+  - PYTHON-673 - Add a few things back to py3compat temporarily
+  - PYTHON-677 - Update docstrings.
+  - PYTHON-677 - Switch internals to new WriteConcern class
+  - PYTHON-673 python 2/3 single-source for the bson module
+  - PYTHON-672 - Make read preference a class
+  - PYTHON-526 secondaryAcceptableLatencyMS changes.
+  - PYTHON-525 Remove (_must)_use_master.
+  - PYTHON-526 Remove get/set/unset_lasterror_options
+  - PYTHON-525 Remove MasterSlaveConnection
+  - PYTHON-526 Remove the network_timeout query option.
+  - PYTHON-526 Remove the "safe" option.
+  - PYTHON-525 Remove (ReplicaSet)Connection.
+  - PYTHON-526 Drop support for slaveOk/slave_okay.
+  - PYTHON-665 Drop support for Python 2.4, 2.5, and 3.1
+  - Version -> dev0
+- enable testsuite run after build
+
+-------------------------------------------------------------------
+Tue Aug 26 10:18:16 UTC 2014 - mlin@suse.com
+
+- Update to version 2.7.2
+  * Insert _id in document after applying non-copying SONManipulators
+    (https://jira.mongodb.org/browse/PYTHON-709)
+  * Fix exhaust cursor error-handling (https://jira.mongodb.org/browse/PYTHON-736)
+  * Handle network errors when adding existing credentials to sockets
+    (https://jira.mongodb.org/browse/PYTHON-732)
+  * ObjectId.is_valid(None) should be False (https://jira.mongodb.org/browse/PYTHON-712)
+  * Clarify versionchanged line for bulk insert (https://jira.mongodb.org/browse/PYTHON-738)
+  * Work around localhost exception issues in add_user when connected to
+    MongoDB >= 2.7.1 (https://jira.mongodb.org/browse/PYTHON-714)
+  * Fix Bulk API legacy upsert _id compatibility (https://jira.mongodb.org/browse/PYTHON-705)
+  * SON.to_dict shouldn't change original data (https://jira.mongodb.org/browse/PYTHON-710)
+
+-------------------------------------------------------------------
+Fri Jul 25 08:59:00 UTC 2014 - mlin@suse.com
+
+- Update to version 2.7.1
+  * Ensure _cbson can encode types with broken __getattr__
+    implementations (https://jira.mongodb.org/browse/PYTHON-698)
+  * Index and user manipulation broken with mongos versions before
+    2.4.0 (https://jira.mongodb.org/browse/PYTHON-696)
+  * Wrong Python object name for UTC in C module
+    (https://jira.mongodb.org/browse/PYTHON-695)
+  * Helpers and internal command calls that don't obey read
+    preference shouldn't raise UserWarning
+    (https://jira.mongodb.org/browse/PYTHON-691)
+  * jnote and wnote should not raise errors when connected to
+    legacy servers (https://jira.mongodb.org/browse/PYTHON-684)
+  * Possible resource leak in _cmessage
+    (https://jira.mongodb.org/browse/PYTHON-685)
+  * v 2.7 breaks backward compatibility on results returned by
+    update with upsert (https://jira.mongodb.org/browse/PYTHON-697)
+  * drop_index fails with OperationFailure if no index found on
+    collection (https://jira.mongodb.org/browse/PYTHON-667)
+  * PyMongo driver docs don't mention text search
+    (https://jira.mongodb.org/browse/PYTHON-690)
+- PyMongo 2.7 is a major release with a large number of new features
+  and bug fixes. Highlights include:
+  * Full support for MongoDB 2.6.
+  * A new :doc:`bulk write operations API </examples/bulk>`.
+  * Support for server side query timeouts using
+    :meth:`~pymongo.cursor.Cursor.max_time_ms`.
+  * Support for writing :meth:`~pymongo.collection.Collection.aggregate` 
+    output to a collection.
+  * A new :meth:`~pymongo.collection.Collection.parallel_scan` helper.
+  * :class:`~pymongo.errors.OperationFailure` and its subclasses now
+    include a :attr:`~pymongo.errors.OperationFailure.details`
+    attribute with complete error details from the server.
+  * A new GridFS :meth:`~gridfs.GridFS.find` method that returns
+    a :class:`~gridfs.grid_file.GridOutCursor`.
+  * Greatly improved :doc:`support for mod_wsgi </examples/mod_wsgi>`
+    when using PyMongo's C extensions. Read Jesse's blog post for
+    details.
+  * Improved C extension support for ARM little endian.
+  * Version 2.7 drops support for replica sets running MongoDB versions
+    older than 1.6.2.
+  * More details please see https://jira.mongodb.org/browse/PYTHON/fixforversion/12892
+
+-------------------------------------------------------------------
+Sat Dec  7 02:20:46 UTC 2013 - matz@suse.com
+
+- Fix filelist on ppc64le
+
+-------------------------------------------------------------------
+Wed Nov 27 13:25:30 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.6.3
+  + fix : AttributeError raised when use_greenlets=True is specified
+    without gevent (https://jira.mongodb.org/browse/PYTHON-561)
+  + fix : Semaphore leak during connection failure. 
+    (https://jira.mongodb.org/browse/PYTHON-580)
+  + fix : MongoReplicaSetClient ignores waitQueueMultiple and 
+    waitQueueTimeoutMS 
+    (https://jira.mongodb.org/browse/PYTHON-579)
+
+-------------------------------------------------------------------
+Sat Sep 14 19:18:50 UTC 2013 - schwab@suse.de
+
+- Fix file list for aarch64
+
+-------------------------------------------------------------------
+Wed Sep 11 21:11:29 UTC 2013 - dmueller@suse.com
+
+- update to 2.6.2:
+  Version 2.6.2 fixes a :exc:`TypeError` problem when max_pool_size=None
+  is used in Python 3.
+  Version 2.6.1 fixes a reference leak in
+  the :meth:`~pymongo.collection.Collection.insert` method.
+
+-------------------------------------------------------------------
+Mon Sep  2 15:40:35 UTC 2013 - dmueller@suse.com
+
+- update to 2.6:
+  - The ``max_pool_size`` option for :class:`~pymongo.mongo_client.MongoClient`
+    and :class:`~pymongo.mongo_replica_set_client.MongoReplicaSetClient` now
+    actually caps the number of sockets the pool will open concurrently.
+    Once the pool has reached :attr:`~pymongo.mongo_client.MongoClient.max_pool_size`
+    operations will block waiting for a socket to become available. If
+    ``waitQueueTimeoutMS`` is set, an operation that blocks waiting for a socket
+    will raise :exc:`~pymongo.errors.ConnectionFailure` after the timeout. By
+    default ``waitQueueTimeoutMS`` is not set.
+    See :ref:`connection-pooling` for more information.
+  - The :meth:`~pymongo.collection.Collection.insert` method automatically splits
+    large batches of documents into multiple insert messages based on
+    :attr:`~pymongo.mongo_client.MongoClient.max_message_size`
+  - Support for the exhaust cursor flag.
+    See :meth:`~pymongo.collection.Collection.find` for details and caveats.
+  - Support for the PLAIN and MONGODB-X509 authentication mechanisms.
+    See :doc:`the authentication docs </examples/authentication>` for more
+    information.
+  - Support aggregation output as a :class:`~pymongo.cursor.Cursor`. See
+    :meth:`~pymongo.collection.Collection.aggregate` for details.
+
+-------------------------------------------------------------------
+Thu Aug  8 14:47:50 UTC 2013 - dvaleev@suse.com
+
+- on bigendian platforms we don't build native exentions, so
+  package to python_sitelib instead of python_sitearch on those
+  platforms
+
+-------------------------------------------------------------------
+Thu Aug  8 14:38:01 UTC 2013 - speilicke@suse.com
+
+- Drop ExclusiveArch, mongodb is only a Suggets which is plain documentation.
+  Nobody says that a PPC machine with the Python bindings can't talk to an
+  x86_64 machine hosting mongodb.
+
+-------------------------------------------------------------------
+Tue Jun  4 03:56:25 UTC 2013 - mlin@suse.com
+
+- Update to version 2.5.2
+  * Version 2.5.2 fixes a NULL pointer dereference issue when decoding
+    an invalid :class:`~bson.dbref.DBRef`(bnc#822798, CVE-2013-2132). 
+    See release notes in JIRA: 
+    https://jira.mongodb.org/browse/PYTHON/fixforversion/12581 for details.
+
+-------------------------------------------------------------------
+Tue Jun  4 03:54:45 UTC 2013 - mlin@suse.com
+
+- Update to version 2.5.1
+  * Version 2.5.1 is a minor release that fixes issues discovered after the
+    release of 2.5. Most importantly, this release addresses some race
+    conditions in replica set monitoring. See release notes in JIRA: 
+    https://jira.mongodb.org/browse/PYTHON/fixforversion/12484 for details.
+
+-------------------------------------------------------------------
+Wed Apr  3 21:23:59 UTC 2013 - dvaleev@suse.com
+
+- Set Exclusive arch for LittleEndian machines. mongodb is not 
+  BigEndian compatible. 
+
+-------------------------------------------------------------------
+Wed Mar 27 03:21:28 UTC 2013 - mlin@suse.com
+
+- Update to version 2.5
+  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=11981
+    for details
+
+-------------------------------------------------------------------
+Wed Dec 12 08:01:11 UTC 2012 - mlin@suse.com
+
+- Update to version 2.4.1
+  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=12286 
+    for details
+
+-------------------------------------------------------------------
+Wed Dec 12 07:56:27 UTC 2012 - mlin@suse.com
+
+- Update to version 2.4
+  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=11485 
+    for details
+
+-------------------------------------------------------------------
+Mon Sep 24 12:03:51 UTC 2012 - i@marguerite.su
+
+- Update to version 2.3
+  * fixes see https://jira.mongodb.org/browse/PYTHON/fixforversion/11146
+  * Support for expanded read preferences including directing 
+    reads to tagged servers - See Secondary Reads for more 
+    information.
+  * Support for mongos failover - See High Availability and 
+    mongos for more information.
+  * A new aggregate() method to support MongoDB’s new 
+    aggregation framework.
+  * Support for legacy Java and C# byte order when encoding 
+    and decoding UUIDs.
+  * Support for connecting directly to an arbiter.
+
+-------------------------------------------------------------------
+Tue Mar 27 08:41:06 UTC 2012 - saschpe@suse.de
+
+- Change requires on mongodb to suggests, a weak dependency is better
+
+-------------------------------------------------------------------
+Tue Feb 28 08:54:00 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.1.1
+  * See https://jira.mongodb.org/browse/PYTHON/fixforversion/11081
+    for details
+- Require mongodb
+
+-------------------------------------------------------------------
+Sat Mar 26 00:03:48 UTC 2011 - alexandre@exatati.com.br
+
+- Initial package (1.9) for openSUSE.

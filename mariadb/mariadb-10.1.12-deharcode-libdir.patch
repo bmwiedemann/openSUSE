@@ -1,0 +1,27 @@
+PATCH-P0-FIX-SUSE: dehardcode libdir 
+
+Don't expect libdir is set to lib64 on x86_64 only.
+There is other occurances like ppc64 and aarch64.
+Use %{_libdir} macro instead
+
+Maintainer: Dinar Valeev <dvaleev@suse.com>
+
+Index: cmake/install_layout.cmake
+===================================================================
+--- cmake/install_layout.cmake.orig
++++ cmake/install_layout.cmake
+@@ -137,14 +137,6 @@ SET(INSTALL_SCRIPTDIR_RPM
+ SET(INSTALL_SYSCONFDIR_RPM		"/etc")
+ SET(INSTALL_SYSCONF2DIR_RPM             "/etc/my.cnf.d")
+ #
+-IF(CMAKE_SIZEOF_VOID_P EQUAL 8)
+-  SET(INSTALL_LIBDIR_RPM                "lib64")
+-  SET(INSTALL_PLUGINDIR_RPM             "lib64/mysql/plugin")
+-ELSE()
+-  SET(INSTALL_LIBDIR_RPM                "lib")
+-  SET(INSTALL_PLUGINDIR_RPM             "lib/mysql/plugin")
+-ENDIF()
+-#
+ SET(INSTALL_INCLUDEDIR_RPM              "include/mysql")
+ #
+ SET(INSTALL_DOCDIR_RPM                  "share/doc")

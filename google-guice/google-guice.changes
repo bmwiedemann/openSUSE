@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Apr  3 07:41:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the tarball in order to avoid files with spurious legal
+  status
+
+-------------------------------------------------------------------
+Wed Mar 27 09:31:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:01 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of google-guice 4.1

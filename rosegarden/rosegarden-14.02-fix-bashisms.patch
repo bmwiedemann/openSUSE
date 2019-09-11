@@ -1,0 +1,88 @@
+Index: scripts/distclean.sh
+===================================================================
+--- scripts/distclean.sh.orig
++++ scripts/distclean.sh
+@@ -1,12 +1,10 @@
+ #!/bin/sh
+-rm -f  {,src/,po/,docs/,data/}CMakeCache.txt
+-rm -f  {,src/,po/,docs/,data/}cmake_install.cmake
+-rm -f  {,src/,po/,docs/,data/}cmake_uninstall.cmake
+-rm -f  {,src/,po/,docs/,data/}CPackConfig.cmake
+-rm -f  {,src/,po/,docs/,data/}CPackSourceConfig.cmake
+-rm -f  {,src/,po/,docs/,data/}install_manifest.txt
+-rm -f  {,src/,po/,docs/,data/}progress.make
+-rm -f  {,src/,po/,docs/,data/}Makefile
+-rm -rf {,src/,po/,docs/,data/}CMakeFiles
+-rm -rf {,src/,po/,docs/,data/}_CPack_Packages
++for d in . src po docs data; do
++	for f in CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake install_manifest.txt progress.make Makefile; do
++		rm -f $d/$f
++	done
++	for f in CMakeFiles _CPack_Packages; do
++		rm -rf $d/$f
++	done
++done
+ rm -rf RGbuild/*
+Index: scripts/reorganise.sh
+===================================================================
+--- scripts/reorganise.sh.orig
++++ scripts/reorganise.sh
+@@ -585,7 +585,7 @@ for file in guitar/*.h ; do
+ 	fi
+     fi
+ done
+-mv guitar/*.{cpp,h} $g/editors/guitar/
++mv guitar/*.cpp guitar/*.h $g/editors/guitar/
+ 
+ cd ../src
+ 
+@@ -601,21 +601,25 @@ for replacement in $replacements; do
+     perlcommand="s/$before/$after/g ; $perlcommand"
+ done
+ 
+-for file in */*.{cpp,h} */*/*.{cpp,h} */*/*/*.{cpp,h}; do
+-    perl -i -p -e "$perlcommand" $file
++for e in cpp h; do
++    for file in */*.$e */*/*.$e */*/*/*.$e; do
++	perl -i -p -e "$perlcommand" $file
++    done
+ done
+ 
+ echo Adding headers at `date`... 1>&2    
+ 
+-for x in {base,sound,sequencer}/*.h ; do
+-    egrep "^class [A-Za-z_0-9][^:;]*" $x | \
+-	grep -v ';' | \
+-	sed -e 's/^class //' -e 's/[:;{</].*//' | \
+-	sort | uniq | \
+-	sed "s, *\$,:$x,"
+-    egrep '^typedef ([A-Za-z0-9_]+ +)+[A-Za-z][A-Za-z0-9_]* *; *$' $x | \
+-	sed 's/^.* \([A-Za-z0-9_]*\) *; *$/\1/' | \
+-	sed "s, *\$,:$x,"
++for d in base sound sequencer; do
++    for x in $d/*.h ; do
++	egrep "^class [A-Za-z_0-9][^:;]*" $x | \
++	    grep -v ';' | \
++	    sed -e 's/^class //' -e 's/[:;{</].*//' | \
++	    sort | uniq | \
++	    sed "s, *\$,:$x,"
++	egrep '^typedef ([A-Za-z0-9_]+ +)+[A-Za-z][A-Za-z0-9_]* *; *$' $x | \
++	    sed 's/^.* \([A-Za-z0-9_]*\) *; *$/\1/' | \
++	    sed "s, *\$,:$x,"
++    done
+ done > $class_header_cache
+ 
+ for hfile in $candidate_h ; do 
+@@ -788,8 +792,10 @@ add_includes document/RosegardenGUIDoc.c
+ 
+ echo Formatting at `date`... 1>&2    
+ 
+-for file in */*.{cpp,h} */*/*.{cpp,h} */*/*/*.{cpp,h} ; do 
+-    perl -i -p -e 's,^//(inc|dec|ndec|replacement_candidate)!,,' $file
++for e in cpp h; do
++    for file in */*.$e */*/*.$e */*/*/*.$e ; do 
++	perl -i -p -e 's,^//(inc|dec|ndec|replacement_candidate)!,,' $file
++    done
+ done
+ 
+ for file in */*.cpp */*/*.cpp */*/*/*.cpp ; do 

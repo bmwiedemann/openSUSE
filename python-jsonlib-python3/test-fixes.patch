@@ -1,0 +1,31 @@
+Index: jsonlib-python3-1.6.1/test_jsonlib.py
+===================================================================
+--- jsonlib-python3-1.6.1.orig/test_jsonlib.py
++++ jsonlib-python3-1.6.1/test_jsonlib.py
+@@ -757,7 +757,7 @@ class WriteNumberTests (SerializerTestCa
+ 		# Value that will give different string representations
+ 		# depending on whether it is passed to str() or repr().
+ 		pi = 3.1415926535897931
+-		self.assertNotEqual (str (pi), repr (pi))
++		self.assertEqual (str (pi), repr (pi))
+ 		self.w ([pi], '[%s]' % repr (pi))
+ 		
+ 	def test_long_decimal (self):
+@@ -777,7 +777,7 @@ class WriteNumberTests (SerializerTestCa
+ 		
+ 	def test_long_complex (self):	
+ 		pi = 3.1415926535897931
+-		self.assertNotEqual (str (pi), repr (pi))
++		self.assertEqual (str (pi), repr (pi))
+ 		self.w ([pi+0j], '[%s]' % repr (pi))
+ 		
+ 	def test_fail_complex (self):
+@@ -901,7 +901,7 @@ class WriteObjectTests (SerializerTestCa
+ 		
+ 	def test_not_writing_comma_error (self):
+ 		self.w ({'a': 1, 'b': 2, 'c': 3},
+-		        '{"a":1,"c":3,"b":2}')
++		        '{"a":1,"b":2,"c":3}')
+ 		
+ 	def test_userstring_key (self):
+ 		self.w ({collections.UserString ('a'): 'b'}, '{"a":"b"}')

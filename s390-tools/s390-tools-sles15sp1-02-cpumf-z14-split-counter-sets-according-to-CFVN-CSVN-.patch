@@ -1,0 +1,382 @@
+Subject: cpumf/z14: split counter sets according to CFVN/CSVN (part 1/2)
+From: Hendrik Brueckner <brueckner@linux.ibm.com>
+
+Summary:     cpumf: Add CPU-MF hardware counters for z14
+Description: Add hardware counter definitions for IBM z14.
+Upstream-ID: d121ffa3f01e08d2cc53140444dfcab830319012
+Problem-ID:  KRN1608
+
+Upstream-Description:
+
+             cpumf/z14: split counter sets according to CFVN/CSVN (part 1/2)
+
+             With z14, the counters in the problem-state are reduced resulting
+             in an increased first version number of the CPUM CF.  To adapt to
+             this change, split the counter sets according to their counter
+             first and second version number.  The second version number controls
+             the crypto-activity and extended counter set.  Treat the crypto-activity
+             counter set as generic, as the extended counter set is already handled
+             based on hardware models.
+
+             Signed-off-by: Hendrik Brueckner <brueckner@linux.vnet.ibm.com>
+             Signed-off-by: Stefan Haberland <sth@linux.vnet.ibm.com>
+
+
+Signed-off-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+---
+ cpumf/Makefile                      |    4 -
+ cpumf/data/cpum-cf-cfvn-1.ctr       |   48 +++++++++++++
+ cpumf/data/cpum-cf-cfvn-3.ctr       |   32 ++++++++
+ cpumf/data/cpum-cf-csvn-generic.ctr |   84 ++++++++++++++++++++++
+ cpumf/data/cpum-cf-generic.ctr      |  132 ------------------------------------
+ cpumf/data/cpum-cf-hw-counter.map   |   15 +++-
+ 6 files changed, 180 insertions(+), 135 deletions(-)
+
+--- a/cpumf/Makefile
++++ b/cpumf/Makefile
+@@ -4,7 +4,9 @@ include ../common.mak
+ 
+ 
+ CPUMF_DATADIR = $(TOOLS_DATADIR)/cpumf
+-DATA_FILES = cpum-cf-hw-counter.map cpum-cf-generic.ctr \
++DATA_FILES = cpum-cf-hw-counter.map \
++	     cpum-cf-cfvn-1.ctr cpum-cf-cfvn-3.ctr \
++	     cpum-cf-csvn-generic.ctr \
+              cpum-cf-extended-z10.ctr cpum-cf-extended-z196.ctr \
+ 	     cpum-cf-extended-zEC12.ctr cpum-sf-modes.ctr \
+ 	     cpum-cf-extended-z13.ctr cpum-cf-extended-z14.ctr
+--- /dev/null
++++ b/cpumf/data/cpum-cf-cfvn-1.ctr
+@@ -0,0 +1,48 @@
++Counter:   0	Name:CPU_CYCLES
++Description:
++Cycle Count
++.
++Counter:   1	Name:INSTRUCTIONS
++Description:
++Instruction Count
++.
++Counter:   2	Name:L1I_DIR_WRITES
++Description:
++Level-1 I-Cache Directory Write Count
++.
++Counter:   3	Name:L1I_PENALTY_CYCLES
++Description:
++Level-1 I-Cache Penalty Cycle Count
++.
++Counter:   4	Name:L1D_DIR_WRITES
++Description:
++Level-1 D-Cache Directory Write Count
++.
++Counter:   5	Name:L1D_PENALTY_CYCLES
++Description:
++Level-1 D-Cache Penalty Cycle Count
++.
++Counter:  32	Name:PROBLEM_STATE_CPU_CYCLES
++Description:
++Problem-State Cycle Count
++.
++Counter:  33	Name:PROBLEM_STATE_INSTRUCTIONS
++Description:
++Problem-State Instruction Count
++.
++Counter:  34	Name:PROBLEM_STATE_L1I_DIR_WRITES
++Description:
++Problem-State Level-1 I-Cache Directory Write Count
++.
++Counter:  35	Name:PROBLEM_STATE_L1I_PENALTY_CYCLES
++Description:
++Problem-State Level-1 I-Cache Penalty Cycle Count
++.
++Counter:  36	Name:PROBLEM_STATE_L1D_DIR_WRITES
++Description:
++Problem-State Level-1 D-Cache Directory Write Count
++.
++Counter:  37	Name:PROBLEM_STATE_L1D_PENALTY_CYCLES
++Description:
++Problem-State Level-1 D-Cache Penalty Cycle Count
++.
+--- /dev/null
++++ b/cpumf/data/cpum-cf-cfvn-3.ctr
+@@ -0,0 +1,32 @@
++Counter:   0	Name:CPU_CYCLES
++Description:
++Cycle Count
++.
++Counter:   1	Name:INSTRUCTIONS
++Description:
++Instruction Count
++.
++Counter:   2	Name:L1I_DIR_WRITES
++Description:
++Level-1 I-Cache Directory Write Count
++.
++Counter:   3	Name:L1I_PENALTY_CYCLES
++Description:
++Level-1 I-Cache Penalty Cycle Count
++.
++Counter:   4	Name:L1D_DIR_WRITES
++Description:
++Level-1 D-Cache Directory Write Count
++.
++Counter:   5	Name:L1D_PENALTY_CYCLES
++Description:
++Level-1 D-Cache Penalty Cycle Count
++.
++Counter:  32	Name:PROBLEM_STATE_CPU_CYCLES
++Description:
++Problem-State Cycle Count
++.
++Counter:  33	Name:PROBLEM_STATE_INSTRUCTIONS
++Description:
++Problem-State Instruction Count
++.
+--- /dev/null
++++ b/cpumf/data/cpum-cf-csvn-generic.ctr
+@@ -0,0 +1,84 @@
++Counter:  64	Name:PRNG_FUNCTIONS
++Description:
++Total number of the PRNG functions issued by the CPU
++.
++Counter:  65	Name:PRNG_CYCLES
++Description:
++Total number of CPU cycles when the DEA/AES coprocessor is busy
++performing PRNG functions issued by the CPU
++.
++Counter:  66	Name:PRNG_BLOCKED_FUNCTIONS
++Description:
++Total number of the PRNG functions that are issued by the CPU and are
++blocked because the DEA/AES coprocessor is busy performing a function
++issued by another CPU
++.
++Counter:  67	Name:PRNG_BLOCKED_CYCLES
++Description:
++Total number of CPU cycles blocked for the PRNG functions issued by
++the CPU because the DEA/AES coprocessor is busy performing a function
++issued by another CPU
++.
++Counter:  68	Name:SHA_FUNCTIONS
++Description:
++Total number of SHA functions issued by the CPU
++.
++Counter:  69	Name:SHA_CYCLES
++Description:
++Total number of CPU cycles when the SHA coprocessor is busy performing
++the SHA functions issued by the CPU
++.
++Counter:  70	Name:SHA_BLOCKED_FUNCTIONS
++Description:
++Total number of the SHA functions that are issued by the CPU and are
++blocked because the SHA coprocessor is busy performing a function issued
++by another CPU
++.
++Counter:  71	Name:SHA_BLOCKED_CYCLES
++Description:
++Total number of CPU cycles blocked for the SHA functions issued by the
++CPU because the SHA coprocessor is busy performing a function issued
++by another CPU
++.
++Counter:  72	Name:DEA_FUNCTIONS
++Description:
++Total number of the DEA functions issued by the CPU
++.
++Counter:  73	Name:DEA_CYCLES
++Description:
++Total number of CPU cycles when the DEA/AES coprocessor is busy
++performing the DEA functions issued by the CPU
++.
++Counter:  74	Name:DEA_BLOCKED_FUNCTIONS
++Description:
++Total number of the DEA functions that are issued by the CPU and are
++blocked because the DEA/AES coprocessor is busy performing a function
++issued by another CPU
++.
++Counter:  75	Name:DEA_BLOCKED_CYCLES
++Description:
++Total number of CPU cycles blocked for the DEA functions issued by the
++CPU because the DEA/AES coprocessor is busy performing a function issued
++by another CPU
++.
++Counter:  76	Name:AES_FUNCTIONS
++Description:
++Total number of AES functions issued by the CPU
++.
++Counter:  77	Name:AES_CYCLES
++Description:
++Total number of CPU cycles when the DEA/AES coprocessor is busy
++performing the AES functions issued by the CPU
++.
++Counter:  78	Name:AES_BLOCKED_FUNCTIONS
++Description:
++Total number of AES functions that are issued by the CPU and are blocked
++because the DEA/AES coprocessor is busy performing a function issued
++by another CPU
++.
++Counter:  79	Name:AES_BLOCKED_CYCLES
++Description:
++Total number of CPU cycles blocked for the AES functions issued by the
++CPU because the DEA/AES coprocessor is busy performing a function issued
++by another CPU
++.
+--- a/cpumf/data/cpum-cf-generic.ctr
++++ /dev/null
+@@ -1,132 +0,0 @@
+-Counter:   0	Name:CPU_CYCLES
+-Description:
+-Cycle Count
+-.
+-Counter:   1	Name:INSTRUCTIONS
+-Description:
+-Instruction Count
+-.
+-Counter:   2	Name:L1I_DIR_WRITES
+-Description:
+-Level-1 I-Cache Directory Write Count
+-.
+-Counter:   3	Name:L1I_PENALTY_CYCLES
+-Description:
+-Level-1 I-Cache Penalty Cycle Count
+-.
+-Counter:   4	Name:L1D_DIR_WRITES
+-Description:
+-Level-1 D-Cache Directory Write Count
+-.
+-Counter:   5	Name:L1D_PENALTY_CYCLES
+-Description:
+-Level-1 D-Cache Penalty Cycle Count
+-.
+-Counter:  32	Name:PROBLEM_STATE_CPU_CYCLES
+-Description:
+-Problem-State Cycle Count
+-.
+-Counter:  33	Name:PROBLEM_STATE_INSTRUCTIONS
+-Description:
+-Problem-State Instruction Count
+-.
+-Counter:  34	Name:PROBLEM_STATE_L1I_DIR_WRITES
+-Description:
+-Problem-State Level-1 I-Cache Directory Write Count
+-.
+-Counter:  35	Name:PROBLEM_STATE_L1I_PENALTY_CYCLES
+-Description:
+-Problem-State Level-1 I-Cache Penalty Cycle Count
+-.
+-Counter:  36	Name:PROBLEM_STATE_L1D_DIR_WRITES
+-Description:
+-Problem-State Level-1 D-Cache Directory Write Count
+-.
+-Counter:  37	Name:PROBLEM_STATE_L1D_PENALTY_CYCLES
+-Description:
+-Problem-State Level-1 D-Cache Penalty Cycle Count
+-.
+-Counter:  64	Name:PRNG_FUNCTIONS
+-Description:
+-Total number of the PRNG functions issued by the CPU
+-.
+-Counter:  65	Name:PRNG_CYCLES
+-Description:
+-Total number of CPU cycles when the DEA/AES coprocessor is busy
+-performing PRNG functions issued by the CPU
+-.
+-Counter:  66	Name:PRNG_BLOCKED_FUNCTIONS
+-Description:
+-Total number of the PRNG functions that are issued by the CPU and are
+-blocked because the DEA/AES coprocessor is busy performing a function
+-issued by another CPU
+-.
+-Counter:  67	Name:PRNG_BLOCKED_CYCLES
+-Description:
+-Total number of CPU cycles blocked for the PRNG functions issued by
+-the CPU because the DEA/AES coprocessor is busy performing a function
+-issued by another CPU
+-.
+-Counter:  68	Name:SHA_FUNCTIONS
+-Description:
+-Total number of SHA functions issued by the CPU
+-.
+-Counter:  69	Name:SHA_CYCLES
+-Description:
+-Total number of CPU cycles when the SHA coprocessor is busy performing
+-the SHA functions issued by the CPU
+-.
+-Counter:  70	Name:SHA_BLOCKED_FUNCTIONS
+-Description:
+-Total number of the SHA functions that are issued by the CPU and are
+-blocked because the SHA coprocessor is busy performing a function issued
+-by another CPU
+-.
+-Counter:  71	Name:SHA_BLOCKED_CYCLES
+-Description:
+-Total number of CPU cycles blocked for the SHA functions issued by the
+-CPU because the SHA coprocessor is busy performing a function issued
+-by another CPU
+-.
+-Counter:  72	Name:DEA_FUNCTIONS
+-Description:
+-Total number of the DEA functions issued by the CPU
+-.
+-Counter:  73	Name:DEA_CYCLES
+-Description:
+-Total number of CPU cycles when the DEA/AES coprocessor is busy
+-performing the DEA functions issued by the CPU
+-.
+-Counter:  74	Name:DEA_BLOCKED_FUNCTIONS
+-Description:
+-Total number of the DEA functions that are issued by the CPU and are
+-blocked because the DEA/AES coprocessor is busy performing a function
+-issued by another CPU
+-.
+-Counter:  75	Name:DEA_BLOCKED_CYCLES
+-Description:
+-Total number of CPU cycles blocked for the DEA functions issued by the
+-CPU because the DEA/AES coprocessor is busy performing a function issued
+-by another CPU
+-.
+-Counter:  76	Name:AES_FUNCTIONS
+-Description:
+-Total number of AES functions issued by the CPU
+-.
+-Counter:  77	Name:AES_CYCLES
+-Description:
+-Total number of CPU cycles when the DEA/AES coprocessor is busy
+-performing the AES functions issued by the CPU
+-.
+-Counter:  78	Name:AES_BLOCKED_FUNCTIONS
+-Description:
+-Total number of AES functions that are issued by the CPU and are blocked
+-because the DEA/AES coprocessor is busy performing a function issued
+-by another CPU
+-.
+-Counter:  79	Name:AES_BLOCKED_CYCLES
+-Description:
+-Total number of CPU cycles blocked for the AES functions issued by the
+-CPU because the DEA/AES coprocessor is busy performing a function issued
+-by another CPU
+-.
+--- a/cpumf/data/cpum-cf-hw-counter.map
++++ b/cpumf/data/cpum-cf-hw-counter.map
+@@ -1,11 +1,22 @@
+ # CPU-measurement facilities
+ #
+-# Mapping of IBM System z hardware types to extended counter set defintions
++# Mapping of:
++#   1. CPU-MF counter first/second version numbers to "generic" counter
++#      definitions
++#   2. IBM z Systems hardware to respective extended counter set definitions
+ #
+ #
+ {
+ 	# Definition	   # File name
+-	   0		=> 'cpum-cf-generic.ctr',
++
++	# CFVN
++	'cfvn-1'      	=> 'cpum-cf-cfvn-1.ctr',
++	'cfvn-3'	=> 'cpum-cf-cfvn-3.ctr',
++
++	# CSVN
++	'csvn-generic'	=> 'cpum-cf-csvn-generic.ctr',
++
++	# Extended counters
+ 	2097		=> 'cpum-cf-extended-z10.ctr',
+ 	2098		=> 'cpum-cf-extended-z10.ctr',
+ 	2817		=> 'cpum-cf-extended-z196.ctr',

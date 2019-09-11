@@ -1,0 +1,22 @@
+--- privoxy_nm
++++ privoxy_nm
+@@ -0,0 +1,18 @@
++#! /bin/sh
++#
++# privoxy - rerun privoxy in response to interface change
++#
++# Wagner Thomas <wagner-thomas@gmx.at>
++# Place this script in the /etc/NetworkManager/dispatcher.d/ directory.
++
++case "$2" in
++    up)
++        /usr/bin/systemctl reload privoxy
++        ;;
++    down)
++        /usr/bin/systemctl reload privoxy
++        ;;
++    *)
++        exit 0
++        ;;
++esac
++

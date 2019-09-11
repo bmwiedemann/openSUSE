@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Sep 15 12:49:17 UTC 2017 - lars@linux-schulserver.de
+
+- Require monitoring-plugins-common for utils.pm
+
+-------------------------------------------------------------------
+Wed Jul 30 19:19:40 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-openvpn
+
+-------------------------------------------------------------------
+Sun May  6 01:17:42 UTC 2012 - lars@linux-schulserver.de
+
+- use nagios-rpm-macros
+
+-------------------------------------------------------------------
+Thu Feb 17 18:17:55 UTC 2011 - lars@linux-schulserver.de
+
+- add option to print out performance data and increase Version to 
+  1.1 ( check_openvpn-add-perfdata.patch )
+
+-------------------------------------------------------------------
+Thu Feb 17 17:37:25 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 1.0- 
+

@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Wed Jun 19 03:16:40 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update build to use go_nostrip, in order to attempt to fix the broken
+  binaries on Leap 15.1.
+
+-------------------------------------------------------------------
+Sun Jun  9 08:21:19 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Explicitly require lxcfs-hooks-lxc. LXD supports lxcfs but it requires tha
+  the LXC configuration files be present.
+
+-------------------------------------------------------------------
+Sun Jun  2 17:22:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+- Remove --with-pic which often has no point with --disable-static.
+- Avoid bash-specific sh code.
+
+-------------------------------------------------------------------
+Thu May  9 20:28:55 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.13. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-13-has-been-released/4738
+  boo#1138031
+  + Cluster: Improved heartbeat interval
+  + Cluster Internal container copy
+  + Initial syscall interception support
+  + Role Based Access Control
+  + IPVLAN support
+  + Quota support on dir storage backend
+  + Routes on container NIC devices
+  + Configurable NAT source address
+  + LXC features exported in API
+  * Lots of bug fixes...
+
+-------------------------------------------------------------------
+Mon Apr  8 13:18:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- %pre bash features: replace by POSIX equivalents.
+- %build bash features: add %_buildshell definition for it.
+- Do not ignore errors from groupadd.
+
+-------------------------------------------------------------------
+Fri Apr  5 19:13:48 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.12. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-12-has-been-released/4483
+  + Cluster: Aggregated DHCP leases
+  + Cluster: Events now show location
+  + Cluster: Operations now show location
+  + Cluster: Support for --target in more commands
+  + Shiftfs support
+  + Kernel features now exported over API
+  + Improved CPU reporting
+  + GPU reporting
+  + Snapshot expiry now visible in lxc info
+  * Lots of bug fixes...
+
+-------------------------------------------------------------------
+Thu Mar 28 01:54:01 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Make sqlite+dqlite both shared libs to avoid bloating RSS. In order to avoid
+  issues with packaging new versions of libsqlite3 there are a bunch of
+  DT_SONAME and DT_NEEDED hacks to ensure that rpm doesn't cause false-positive
+  conflicts or other issues. This requires a new lxd-rpmlintrc to work on older
+  SLE versions.
+
+-------------------------------------------------------------------
+Tue Mar 26 02:44:05 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Initial packaging of LXD 3.11.

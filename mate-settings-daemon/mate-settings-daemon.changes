@@ -1,0 +1,575 @@
+-------------------------------------------------------------------
+Thu Jul 18 11:46:30 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * update translations
+  * media-keys: Execute default instant messaging application defined by schema
+  * locate-pointer: Do not grab pointer button when trying to locate 
+- remove patches:
+  * mate-settings-daemon-gtk-3.20.patch: we don't support gtk3.20
+    and glib2.48 anymore
+- BuildRequire gtk >= 3.22 and glib >= 2.50
+- reorder patches
+
+-------------------------------------------------------------------
+Wed Jul 17 11:08:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- remove xxf86misc from BuildRequires as it got removed from TW
+- add patch:
+  * drop-libXxf86-dependency.patch: drop the dependency on libXxf86
+    fixes boo#1139857
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Require mate-desktop 1.21.1+.
+  * xrandr-applet-popup: Add an icon for configuration item.
+  * xrandr-applet-popup: Add item to mirror displays.
+  * xrandr-applet-popup: Dim menuitems for disabled monitors.
+  * xrandr-applet-popup: Enable turning monitors on an off.
+  * xrandr-applet-popup: Show icon only if "menus-have-icons" is
+    not turned off.
+  * xrandr-applet-popup: Handle Greybird (etc.) Xfce themes.
+  * xrandr-applet-popup: Special case the GNOME themes for black
+    text on monitor labels.
+  * xrandr-applet-popup: Remove draw callback.
+  * xrandr-applet-popup: Allow themes to override monitor label
+    colours.
+  * xrandr-applet-popup: Add a border to coloured monitor labels.
+  * xrandr-applet-popup: Use a coloured bg again in monitor labels.
+  * xrandr applet popup: Add monitor icons to monitor label
+    menuitems.
+  * xrandr-applet: Add a style class for menuitems.
+  * xrandr-applet: Drop non-working bg from menu.
+  * xrandr-applet: Don't hard code label colours in menu.
+  * Prevent media-keys bindings from swallowing modifier keys.
+  * Scale OSD size correctly on HiDPI displays.
+  * media-keys: Add test for rfkill OSD icons.
+  * media-keys: Add a label for the touchpad OSD.
+  * media-keys: Add labels for the rfkill OSD.
+  * media-keys: Remove test for screen brightness OSD icons.
+  * media-keys: Add support for Killswitch media keys.
+  * rfkill: Add RFKill support plugin on Linux systems.
+  * Add a shortcut to start mate-control-center.
+  * media-keys: Add test for touchpad OSD icons.
+  * media-keys: Remove touchpad OSD icons and use theme's instead.
+  * media-keys: Simplify touchpad OSD.
+  * media-keys: Add support for XF86TouchpadOn/Off.
+  * Add support for
+    org.mate.accessibility-keyboard.stickykeys-latch-to-lock.
+  * daemon: Fix a memory leak.
+  * daemon: Stop using deprecated GSettings API.
+  * xsettings: Add a setting to enable/disable primary paste
+    from the middle mouse button.
+  * Replace deprecated gdk_error_trap_push/pop.
+  * background-manager: Replace deprecated GDK functions.
+  * plugins: Avoid deprecated "gdk_keymap_get_default".
+  * media-keys: Add microphone mute key support.
+  * msd-xrdb-manager: Realise the widget.
+  * media-keys: Make sound changes quiet with Alt.
+  * msd-xrdb-manager.c: Avoid deprecated "gtk_widget_ensure_style".
+  * media-keys: Always round the render coordinates for media
+    icons.
+  * media-keys: Tweak the OSD's volume bar position.
+  * osd-window: Make the window smaller.
+  * media-keys: Make the icon smaller in OSD.
+  * media-keys: Use constant for icon size in OSD.
+  * media-keys: Add test for display switch OSD icons.
+  * media-keys: Add support for display switch OSD.
+  * media-keys: Don't show a level when muted.
+  * media-keys: Execute default calculator application defined by
+    schema.
+  * Update translations.
+- Rebase mate-settings-daemon-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Mon Dec 24 15:02:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.4:
+  * Disable deprecation warnings for distcheck.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Jun  5 11:44:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3 (changes since 1.20.1):
+  * Bump mate-desktop requirement.
+  * Make setting QT_SCALE_FACTOR optional.
+  * Support background fallback on HiDPI.
+  * Update translations.
+- Rebase mate-settings-daemon-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Prevent media-keys bindings from swallowing modifier keys.
+  * Scale OSD size correctly on HiDPI displays.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Add GlobalMenu support.
+  * HiDPI: Load xsettings during initialisation phase.
+  * Add HiDPI configuration in XSettings.
+  * Add support for HiDPI displays.
+  * Bump the required version of mate-desktop.
+  * Avoid deprecated gdk_screen_get_monitor_,
+    gdk_screen_get_width/height(), gdk_screen_get_number(),
+    gdk_screen_get_width/height_mm(), gdk_display_get_screen(),
+    gdk_display_get_n_screens() functions.
+  * msd-a11y-preferences-dialog.ui: Clean up deprecations.
+  * ally-keyboard: Fix help link.
+  * Don't use deprecated gtk_show_uri().
+  * Fix XRandr applet dying on restart.
+  * msd-xrandr-manager: Avoid deprecated gtk_misc_set_padding().
+  * ldsm-dialog: Don't use deprecated GtkStock.
+  * datetime: Fix a -Wunused-but-set-variable warning.
+  * touchpad: Disable clickfinger by default.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * msd-keyboard-xkb: Fix Gdk-CRITICAL warning on creating the 
+    status bar icon.
+  * plugins: G_GNUC_UNUSED in unused but needed variables.
+  * xsettings: Drop CanChangeAccels which won't work with GTK+3.
+  * msd-datetime-mechanism.c: Fix build warnings.
+  * msd-mpris-manager.c: Fix a build warning.
+  * Update translations.
+- Add mate-settings-daemon-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:20:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * ldsm-dialog: Set max width chars for labels.
+  * keyboard plugin: Apply panel menu theme to popup menu.
+  * Request keyboard event reports from global keybindings of other
+    windows.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr  5 18:48:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * mouse: Make pointer locater always click through.
+  * mouse: Also grab button presses so as to replay them on pointer
+    locater.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require XInput unconditionally.
+  * Build: Require libmatemixer >= 1.10, libxklavier >= 5.2,
+    dconf >= 0.13.
+  * Build: Require libmatekbd and libmate-desktop >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Add libinput support for mouse and touchpad.
+  * Mouse: Fix locate pointer.
+  * Touchpad: Add separate settings for handedness
+    (left/right-handed) and motion acceleration/threshold.
+  * Background: Restore an option to let Caja draw background with
+    GTK+ 3.22.
+  * Some fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:04:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * GTK+3: Fix possible build breakage with libmate-desktop 1.17.
+  * GTK+3: Fix OSD rendering on non-composited desktop.
+  * GTK+3: Add OSD style class for non-composited desktop.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Change default hinting style to 'hintslight'.
+  * Use 'rgba' (LCD subpixel) antialiasing by default.
+  * GTK+3: Add CSS theming for OSD (MsdOsdWindow) instead of using
+    hardcoded colours.
+  * GTK+3: Fix drawing and changing of desktop background with
+    Gtk 3.21.
+  * GTK+3: Fix several deprecations.
+  * Fix some build warnings.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Aug 14 11:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * housekeeping: Fix thumbnails cleaning.
+  * housekeeping: Fix text markup.
+  * media-keys: Use gnome-calculator binary instead of old
+    gcalctool.
+  * Make distcheck use currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * touchpad: Support edge and two-finger scrolling independently
+    (use separate GSettings keys for them).
+  * xsettings: Add settings for cursor theme and size.
+  * Some more fixes and cleanups.
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Gtk3: several deprecation fixes.
+  * media-keys: add setting to enable/disable OSD.
+  * Fix some build warnings.
+  * Drop MateConf migration script.
+
+-------------------------------------------------------------------
+Wed Jan  6 13:21:22 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing XInput dependency.
+- Do not disable mozilla-nss for openSUSE Leap 42.1.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * xrandr: Install icon in correct directory.
+  * GTK+3: Do not remove xrandr applet background (fixes invisible
+    text in some themes).
+- Enable smartcard support.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * Add new keybinding for logout (empty by default).
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Gtk3: make XRandR tray applet support custom panel themes.
+  * Some more fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Oct  9 05:49:34 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Switch to org.gnome.SessionManager.
+  * touchpad: Add support for natural scrolling.
+  * touchpad: Add support for two and three finger clicks.
+  * mouse: Use syndaemon -K to ignore Ctrl+C and other combos.
+  * mouse: Use event driven mode for syndaemon, save some power.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:42:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * a11y: Do not use ancient properties.
+  * housekeeping: Do not monitor fdescfs (special FS in FreeBSD).
+  * keyboard: Connect to libmatekbd's GSettings before reading them.
+  * mouse: Use event driven mode for syndaemon, save some power.
+
+-------------------------------------------------------------------
+Mon Jul 13 21:12:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Fix media keys issue with multiple players.
+  * Add some missing manpages.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 12:40:58 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * No changes since version 1.9.90
+
+-------------------------------------------------------------------
+Mon Mar 23 16:22:50 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.90 (unstable)
+  * Bugfixes release
+
+-------------------------------------------------------------------
+Thu Jan 22 10:00:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.6 (unstable)
+  * Adapt to mate-desktop MateRR* API changes.
+
+-------------------------------------------------------------------
+Sun Nov 23 17:22:25 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.5 (unstable)
+  + No changelog available (entries not updated)
+
+-------------------------------------------------------------------
+Tue Nov 11 17:14:47 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.4 (unstable)
+  + Port media-keys plugin to libmatemixer
+  + Remove GStreamer bits, make libmatemixer, libcanberra and PulseAudio
+    optional dependencies
+- Add libmatemixer-devel build requirement; new dependency
+
+-------------------------------------------------------------------
+Fri Oct  3 14:15:36 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.2
+  + mpris: Replace googlemusicframe with nuvolaplayer
+  + Update schema to use toggle shell script
+
+-------------------------------------------------------------------
+Sat Jul 19 16:56:06 UTC 2014 - p.drouand@gmail.com
+
+- Build with pulseaudio support
+- Disable gstreamer support
+- Remove useless gstreamer requirements
+
+-------------------------------------------------------------------
+Sat May 10 11:38:40 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + added support for Gtk/DecorationLayout for GTK3 CSD windows
+
+-------------------------------------------------------------------
+Wed Mar  5 10:52:47 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Wed Feb 19 16:02:32 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90
+  + add GTK3 support
+  + add Middle Click Emulation to mouse manager
+
+-------------------------------------------------------------------
+Mon Feb 10 15:03:13 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1
+  + keyboard: Fix GTK3 support
+  + xrandr: Fix gdk_spawn_command_line_on_screen usage with GTK3
+  + update translations
+  + add Middle Click Emulation to mouse manager
+  + fix makefile
+- Changes from version 1.7.0
+  + no changes since version 1.6.2
+
+-------------------------------------------------------------------
+Tue Dec 31 16:06:32 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + Fixes and cleanups
+  + Add dist-hook for auto Changelog generation
+  + Change INCLUDES for AM_CPPFLAGS
+  + Silence autofoo warning
+  + housekeeping: Support new thumbnails path for newer glib versions
+    Closes #51 (https://github.com/mate-desktop/mate-settings-daemon/issues/51)
+  + Update schema to use toggle shell script
+  + media-keys: Fix terminal GSettings key name
+
+-------------------------------------------------------------------
+Wed Dec 18 16:12:24 UTC 2013 - p.drouand@gmail.com
+
+- mate-settings-daemon is licensed under LGPLv2.1; change it in spec
+
+-------------------------------------------------------------------
+Thu Sep 19 22:43:03 UTC 2013 - p.drouand@gmail.com
+
+- Don't use %exclude macro; remove unwanted file instead
+- Use %{_libdir} instead of %{_prefix}/%{_lib} in --libdir configure
+  option
+
+-------------------------------------------------------------------
+Thu Sep 12 16:16:20 UTC 2013 - p.drouand@gmail.com
+
+- Remove rpmlintrc file; Date and time change service is now allowed
+  (bnc#831404)
+
+-------------------------------------------------------------------
+Tue Jun 25 13:04:38 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.1
+    + fixes for make dist
+    + keyboard: Allow to disable indicators in GSettings
+    + init libnotify in mate-settings-daemon, not in plugins 
+
+-------------------------------------------------------------------
+Wed Apr  3 14:37:14 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + fix copyright mpris holders
+  + fix typo in comment
+  + remove unused variables
+  + update translations
+
+-------------------------------------------------------------------
+Sat Mar 23 09:14:28 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.7
+  + Make GSettings schemas translatable
+  + Add MPRIS plugin
+  + Register mate-settings-daemon as client of org.mate.SessionManager
+  + Remove code to become a daemon
+    It is not needed and it creates issues in some distributions
+  
+-------------------------------------------------------------------
+Sun Mar 10 23:49:10 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.6
+  + use libnotify instead of libmatenotify
+  + keybindings module migration to GSettings
+  + fix segfault on resolution change
+  + updated translations
+  + minor fixes
+- Remove Fix-missing-void-keyword-in-real_draw_bg-function.patch,
+  fixed on upstream release
+
+-------------------------------------------------------------------
+Sun Mar  3 17:03:02 UTC 2013 - p.drouand@gmail.com
+
+- Add Requires: matekbd-common to fix a glib error when launching
+  mate-settings-daemon
+
+-------------------------------------------------------------------
+Sun Feb 17 15:59:04 UTC 2013 - p.drouand@gmail.com
+
+- Add Requires: mate-backgrounds to avoid CPU 100% usage bug
+
+-------------------------------------------------------------------
+Sat Feb  9 17:50:09 UTC 2013 - p.drouand@gmail.com
+
+- Add Fix-missing-void-keyword-in-real_draw_bg-function.patch
+  Fix build
+
+-------------------------------------------------------------------
+Fri Feb  8 10:37:41 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.5
+  + fix schema path deprectations and remove unused constant
+  + mouse: remove deprecated gdk_drawable_get_size & gdk_drawable_get_screen
+    since required GTK 2.24, gdk_window_get_width() can be directly use
+    gdk_window_get_width(), gdk_window_get_height(), and gdk_window_get_screen()
+  + keyboard:
+    - don't use deprecated gdk_spawn API use gdk_display_get_app_launch
+     _context() on GTK3 gdk_app_launch_context_new() on GTK2 instead
+    - add g_strv_behead, reduce code & fix filter_xkb_config()
+      fixes compiler warning: 'i' may be used uninitialized in this function
+      Indeed, rather than initializing 'i' to zero, 'lv' (char arr of **lv) was
+      erroneously being assigned the value of 0 in the for loop's initialization.
+      g_strv_behead copied from gkbd_strv_behead from libgnomekbd/gkbd-util.c
+      For reference: Using shared gkbd_strv_* utility functions, reducing the code
+    - fix g_format_size_for_display deprecation (GLIB 2.30)
+    - don't cast dialog to GTK_OBJECT on GTK3
+    - give a name to the keyboard status icon
+  + replace deprecations, use GDK X11 API, bump GTK+ to 2.24
+  + restore preference for volume step instead of hardcoding it
+
+-------------------------------------------------------------------
+Mon Dec  3 23:21:34 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.4
+  + use new MATE_BG_KEY's defines from mate-bg.h
+  + fix XGetWindowProperty long_length & nitems_return
+    params
+  + check for caja is drawing bg when detecting settings
+  + listen for draw-background/show-desktop-icons
+  + GCC 4.6 warning fixes
+  + bump to GIO 2.26.0
+  + backgorund convert to GDBus (and fix delayed background
+    drawing
+  + review GSettings, don't rely on Caja as a key component
+  + other fixes
+
+-------------------------------------------------------------------
+Wed Nov 14 10:33:41 UTC 2012 - nmo.marques@gmail.com
+
+- Use polkit-gobject-1 instead of polkit-backend-1 in BRs.
+
+-------------------------------------------------------------------
+Mon Nov 12 10:19:40 UTC 2012 - nmo.marques@gmail.com
+
+- /etc/mate-settings-daemon/xrandr was being created but not
+  packaged. Fixing this.
+
+-------------------------------------------------------------------
+Sat Oct 27 22:49:56 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.3
+  + disable accessibility keybindings file
+  + fix enum in schema
+
+-------------------------------------------------------------------
+Tue Oct 23 11:35:02 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.2
+  + add enums to gsettings schema
+  + fix 64bit portability issues
+- Remove mate-settings-daemon-1.5.1-fix_64bit_portability.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
+Wed Oct 17 19:40:10 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-settings-daemon-1.5.1-fix_64bit_portability.patch: fix
+  regression, taken from upstream
+
+-------------------------------------------------------------------
+Wed Oct 17 14:06:24 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + fix compiler warnings and errors
+  + fix memory leaks
+- Remove mate-settings-daemon-1.5.0-fix_memory_leak.patch
+  upstreamed
+- Remove mate-settings-daemon-1.5.0-fix_compiler_warning.patch
+  upstreamed
+- Replace pulse for gstreamer dependencies and add configure
+  options to use gstreamer instead of pulse
+
+-------------------------------------------------------------------
+Tue Oct 16 10:29:24 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-settings-daemon-1.5.0-fix_memory_leak.patch: fix memory
+  leak crashing mate-settings-daemon
+
+-------------------------------------------------------------------
+Mon Oct 15 21:40:52 UTC 2012 - nmo.marques@gmail.com
+
+- Add pkgconfig(ice) and pkgconfig(SM) to BRs
+
+-------------------------------------------------------------------
+Wed Oct 10 22:19:15 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + drop mateconf and move to gsettings
+- Remove mateconf-2.0 and macros and move to gsettings
+- Add mate-settings-daemon-1.5.0-fix_compiler_warning.patch: fix
+  compiler warning that breaks builds on OBS :)
+
+-------------------------------------------------------------------
+Sat Sep  8 02:35:20 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.4.0
+- copypac to X11:MATE
+  + minor cosmetic fixes
+
+-------------------------------------------------------------------
+Sun Jun 17 20:51:35 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.2.0
+  + move spec to use mateconf macros and cleanups
+
+-------------------------------------------------------------------
+Sun Jan 22 17:20:15 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package from version 1.1.0
+

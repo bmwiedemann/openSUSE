@@ -1,0 +1,30 @@
+From 672a0405c2c191280887b4427a759490aa2ce5ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
+Date: Fri, 13 Mar 2015 14:53:04 +0100
+Subject: [PATCH 19/32] Cleaner solution for the extensions doc dir
+
+The other solution was also failing on 1.8
+---
+ templates/gem_packages.spec.erb | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
+index 80e552e..661539a 100644
+--- a/templates/gem_packages.spec.erb
++++ b/templates/gem_packages.spec.erb
+@@ -14,10 +14,8 @@
+   end
+ 
+   def self.get_extension_doc_dir(gem_spec)
+-    # TODO: This is kinda ugly but it does the job for now.
+-    rv = Gem::Version.new(RUBY_VERSION)
+-    return nil unless RUBY_ENGINE=='ruby' && (Gem::Version.new('2.2.0') > rv && rv > Gem::Version.new('2.1.0'))
+-    if gem_spec.respond_to?(:extensions_dir) && RUBY_ENGINE != 'rbx'
++    return nil unless Gem.ruby_engine == 'ruby' && Gem::Requirement.new("~> 2.1.0").satisfied_by? Gem.ruby_version
++    if gem_spec.respond_to?(:extensions_dir)
+       rp = gem_spec.extensions_dir.rpartition(gem_spec.base_dir)
+       return File.join(rp[1], 'doc', rp[2]) 
+     end
+-- 
+2.20.1
+

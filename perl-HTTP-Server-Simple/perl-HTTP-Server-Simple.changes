@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Sat Apr  1 05:52:45 UTC 2017 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-HTTP-Server-Simple/Changes
+
+  0.52 2017-03-31
+    - Add . to lib in Makefile.PL to support perl 5.25.11
+
+-------------------------------------------------------------------
+Sun Sep 20 08:56:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-HTTP-Server-Simple/Changes
+
+  0.51 2015-09-16
+  
+    - add OPTIONS as a valid method
+    - better compatibility with CGI.pm < 3.36
+    - fix tests for freebsd and IPv6
+    - repository info
+
+-------------------------------------------------------------------
+Thu Aug 27 12:51:06 UTC 2015 - hsk@imb-jena.de
+
+- add CGI to Requires:, BuildRequires:, as that module is not in
+  perl core since perl 5.22
+
+-------------------------------------------------------------------
+Tue Apr 14 18:05:28 UTC 2015 - coolo@suse.com
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-HTTP-Server-Simple/Changes
+
+-------------------------------------------------------------------
+Mon Oct 15 10:43:06 UTC 2012 - coolo@suse.com
+
+- buildrequire netcfg for the test suite
+
+-------------------------------------------------------------------
+Mon Apr  4 18:15:49 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.44:
+  + Fix tests to run in a FreeBSD Jail ( rt.cpan.org #49807 )
+- package ex directory with example server
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:34 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun May  2 10:15:18 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.43:
+  + Support for getting REMOTE_PORT
+
+-------------------------------------------------------------------
+Sat Feb 20 12:13:06 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.42:
+  + Inline uri_unescape to drop URI::Escape which is the only 
+    non-core dependency of this distribution.
+  + Do not special case COOKIE and sets Cookie header to HTTP_COOKIE. 
+  + Pluggable CGI class support based on a patch from NANIS
+- remove perl(URI::Escape) dependency
+
+-------------------------------------------------------------------
+Sat Dec 26 23:09:47 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.41
+

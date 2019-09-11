@@ -1,0 +1,125 @@
+--- charset/chset.c
++++ charset/chset.c
+@@ -17,6 +17,8 @@
+ /* #include "sendmail.h" */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <errno.h>
+ #include "iso646.h"
+ #include "charset.h"
+@@ -42,7 +44,7 @@
+ 	return s;
+ }
+ 
+-void
++int
+ main (argc, argv)
+ 	int	 argc;
+ 	char   **argv;
+--- charset/conv.c
++++ charset/conv.c
+@@ -25,6 +25,8 @@
+ /* #include "sendmail.h"  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <errno.h>
+ #include "iso646.h"
+ #include "charset.h"
+@@ -43,7 +45,6 @@
+ int ipos;
+ Char oc ARRAY(SLEN),*op;
+ 
+-extern	int atoi(char *);	/* 941114 / TW */
+ extern	CHAR8U * strncnv(CHARSET *, CHARSET *, CHAR8U *, CHAR8U *, int); /* 941114 / TW */
+ 
+ void
+@@ -65,7 +66,7 @@
+ }
+ 
+ 
+-void
++int
+ main (argc, argv)
+ 	int	 argc;
+ 	Char   **argv;
+--- charset/gc.c
++++ charset/gc.c
+@@ -11,6 +11,7 @@
+    * $Log$
+    */
+   
++#include	<stdlib.h>
+ #include	<stdio.h>
+ #include	<ctype.h>
+ #include	<unistd.h>	/* 941114/TW */
+@@ -256,7 +257,7 @@
+ }
+ 
+ 
+-void
++int
+   main (argc, argv) 
+ int argc; char **argv; {
+   
+--- charset/strncnv.c
++++ charset/strncnv.c
+@@ -32,6 +32,7 @@
+ #include "iso646.h"
+ #include <ctype.h>
+ #include <stdlib.h>	/* 941114 / TW */
++#include <string.h>
+ #include <syslog.h>	/* 941125/TW */
+ #ifdef SENDMAIL
+ #include "sendmail.h"
+--- forks.c
++++ forks.c
+@@ -32,6 +32,7 @@
+ */
+ #include "emil.h"
+ #include <fcntl.h>
++#include <sys/wait.h>
+ extern int pseudo_route;
+ static	int	fd[2];
+ 
+--- func.h
++++ func.h
+@@ -247,5 +247,6 @@
+ char    * confextr(char *, char *, char *);
+ char    **get_mailer(char *);
+ struct  config_struct   * getoption(char *, char *, char *);
++struct	config_struct *	getmember(char *);
+ 
+ 
+--- helper.c
++++ helper.c
+@@ -208,5 +208,6 @@
+     }
+   printf(" ;\n\n");
+   printf("Restart sendmail and try it out.\n");
++  return 0;
+ }
+   
+--- logger.c
++++ logger.c
+@@ -30,6 +30,7 @@
+ **                                           Sweden
+ ** 
+ */
++#include <time.h>
+ #include "emil.h"
+ 
+ #ifndef	HAVE_GETHOSTNAME
+--- smtp.c
++++ smtp.c
+@@ -36,6 +36,7 @@
+ #define RCLASS(r)   (((r) / 10) % 10)
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <netdb.h>
+ #include <errno.h>
+ #ifdef NAMED_BIND

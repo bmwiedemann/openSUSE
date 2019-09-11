@@ -1,0 +1,129 @@
+#! /bin/sh
+# Copyright (c) 2005 SUSE LINUX Products Gmbh, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Thorsten Kukuk
+#
+# /etc/init.d/courier-authdaemon
+#   and its symbolic link
+# /(usr/)sbin/rccourier-authdaemon
+#
+### BEGIN INIT INFO
+# Provides:          courier-authdaemon
+# Required-Start:    $syslog $remote_fs
+# Should-Start:      ldap mysql
+# Required-Stop:     $syslog $remote_fs
+# Should-Stop:       courier-imap courier-imap-ssl courier-pop courier-pop-ssl ldap mysql
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Courier-IMAP Authentication server
+# Description:       Start the Courier-IMAP Authentication server,
+#                    which handles the user authentication for the
+#                    Courier IMAP and POP3 daemons.
+### END INIT INFO
+
+# Check for missing binaries (stale symlinks should not happen)
+# Note: Special treatment of stop for LSB conformance
+COURIER_AUTHLIB_BIN=/usr/lib/courier-authlib/authdaemond
+test -x $COURIER_AUTHLIB_BIN || { echo "$COURIER_AUTHLIB_BIN not installed";
+	if [ "$1" = "stop" ]; then exit 0;
+	else exit 5; fi; }
+
+# Check for existence of needed config file and read it
+COURIER_AUTHLIB_CONFIG=/etc/authlib/authdaemonrc
+test -r $COURIER_AUTHLIB_CONFIG || { echo "$COURIER_AUTHLIB_CONFIG not existing";
+	if [ "$1" = "stop" ]; then exit 0;
+	else exit 6; fi; }
+
+# Read config
+. $COURIER_AUTHLIB_CONFIG
+
+# for debug log_level to work
+# all debugging output goes to syslog at facility 'mail', level 'debug'
+# add mail.debug to syslog-ng.conf.in
+export DEBUG_LOGIN
+
+# some vars
+SERVICE_NAME="Courier Authentication Daemon"
+COURIER_AUTHLIB_PIDDIR=/var/run/courier-authlib
+COURIER_AUTHLIB_PID=$COURIER_AUTHLIB_PIDDIR/pid
+
+# Check for PID DIR
+[ ! -d $COURIER_AUTHLIB_PIDDIR ] && {
+	install -d $COURIER_AUTHLIB_PIDDIR;
+}
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     be verbose in local rc status and clear it afterwards
+#      rc_status -v -r  ditto and clear both the local and overall rc status
+#      rc_status -s     display "skipped" and exit with status 3
+#      rc_status -u     display "unused" and exit with status 3
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num>
+#      rc_reset         clear both the local and overall rc status
+#      rc_exit          exit appropriate to overall rc status
+#      rc_active        checks whether a service is activated by symlinks
+. /etc/rc.status
+
+# Reset status of this service
+rc_reset
+
+case "$1" in
+    start)
+	echo -n "Starting $SERVICE_NAME "
+	/usr/sbin/courierlogger -pid=$COURIER_AUTHLIB_PID $LOGGEROPTS -start $COURIER_AUTHLIB_BIN
+
+	# remeber status and be verbose
+	rc_status -v
+	;;
+    stop)
+	echo -n "Shutting down $SERVICE_NAME "
+	/usr/sbin/courierlogger -pid=$COURIER_AUTHLIB_PID $LOGGEROPTS -stop $COURIER_AUTHLIB_BIN
+
+	# remeber status and be verbose
+	rc_status -v
+	;;
+    try-restart)
+	$0 status >/dev/null &&  $0 restart
+
+	# remeber status
+	rc_status
+	;;
+    restart)
+	$0 stop
+	$0 start
+
+	# remeber status
+	rc_status
+	;;
+    force-reload)
+	$0 stop  &&  $0 start
+
+	# remeber status
+	rc_status
+	;;
+    reload)
+	echo -n "Reload service $SERVICE_NAME "
+	rc_failed 3
+
+	# remeber status and be verbose
+	rc_status -v
+	;;
+    status)
+	echo -n "Checking for service $SERVICE_NAME "
+	checkproc $COURIER_AUTHLIB_BIN
+
+	# remeber status and be verbose
+	rc_status -v
+	;;
+    probe)
+	test $COURIER_AUTHLIB_CONFIG -nt $COURIER_AUTHLIB_PID && echo restart
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+	exit 1
+	;;
+esac
+rc_exit

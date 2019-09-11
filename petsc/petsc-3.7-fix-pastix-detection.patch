@@ -1,0 +1,23 @@
+From: Kshitij Kulshreshtha <kkhere.geo@gmail.com>
+
+The pastix package contains a pkgconfig file in all lower case
+so check for the name here in all lower case too.
+
+---
+ config/BuildSystem/config/package.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/config/BuildSystem/config/package.py
++++ b/config/BuildSystem/config/package.py
+@@ -139,7 +139,10 @@ class Package(config.base.Configure):
+     self.PACKAGE          = self.name.upper()
+     self.package          = self.name.lower()
+     self.downloadname     = self.name
+-    self.pkgname          = self.name
++    if self.name == 'PaStiX':
++      self.pkgname = self.name.lower()
++    else:
++      self.pkgname          = self.name
+     self.downloaddirnames = [self.downloadname];
+     return
+ 

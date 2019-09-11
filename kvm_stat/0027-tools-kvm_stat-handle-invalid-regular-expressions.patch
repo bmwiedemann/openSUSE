@@ -1,0 +1,40 @@
+From 34f151004c143d186530fde6e71271891f773700 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:25 +0100
+Subject: [PATCH 27/43] tools/kvm_stat: handle invalid regular expressions
+
+Passing an invalid regular expression on the command line results in a
+traceback. Note that interactive specification of invalid regular
+expressions is not affected
+To reproduce, run "kvm_stat -f '*'".
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 08e20a6300e106d5feb89c9e47ea479533fec46f)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index f2711b0a04f5..c34a1c511e68 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1524,6 +1524,13 @@ Press any other key to refresh statistics immediately.
+                          callback=cb_guest_to_pid,
+                          )
+     (options, _) = optparser.parse_args(sys.argv)
++    try:
++        # verify that we were passed a valid regex up front
++        re.compile(options.fields)
++    except re.error:
++        sys.exit('Error: "' + options.fields + '" is not a valid regular '
++                 'expression')
++
+     return options
+ 
+ 
+-- 
+2.12.3
+

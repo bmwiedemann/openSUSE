@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Jun 12 12:52:41 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.8.0:
+ * flag: allow disabling SSL verification
+ * git: fix support for case where git binary is missing
+
+-------------------------------------------------------------------
+Tue Mar 26 13:32:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * api: support pull requests on buildkite (#197) (2700e3e2)
+  * cli: ensure upload failures trigger cli failures (16192b84)
+
+-------------------------------------------------------------------
+Thu Mar  7 13:38:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.0:
+  * too many to enumerate, see CHANGELOG.md
+- Run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun  7 20:46:27 UTC 2018 - jengelh@inai.de
+
+- Generalize the description for any use case and replace weird
+  non-telling phrases like "ruin your security".
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Wed Aug 23 13:48:02 UTC 2017 - t.gruner@katodev.de
+
+- Initial release 1.2.0
+

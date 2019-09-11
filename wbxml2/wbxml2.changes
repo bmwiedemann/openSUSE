@@ -1,0 +1,318 @@
+-------------------------------------------------------------------
+Sat Apr 13 13:55:16 UTC 2019 - bosim@opensuse.org
+
+- updated to version 0.11.6
+  * Fixed/changed the encoding of element Content in CodePage
+    AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft 
+    ActiveSync.
+    This element is used when the clients send a request to save a
+    draft email.
+    An example can be found in:
+    http://interoperability.blob.core.windows.net/files/MS-ASEMAIL/[MS-ASEMAIL].pdf
+    (4.4 Adding a Draft Email with Attachments).
+    Reference:
+    https://msdn.microsoft.com/en-us/library/mt563406%28v=exchg.80%29.aspx
+    (issue #58 from Thomas Führer)
+  * Added a testcase for Microsoft ActiveSync EAS Provisioning
+    (clarifies issue #56).
+
+-------------------------------------------------------------------
+Wed Mar 15 12:22:18 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions
+- Replace unnecessary uses of %__ indirections in macros,
+  remove redundant %clean section, do parallel build with %_smp_mflags.
+
+-------------------------------------------------------------------
+Sun Feb 19 14:27:59 UTC 2017 - bosim@opensuse.org
+
+- updated to version 0.11.5
+  * Fixed ActiveSync element data of code pages ResolveRecipients and 
+    GAL (issue #52 from Thomas Führer, fixed in pull request #53).
+  * Added definitions of ActiveSync protocoll v16.0 (pull request #32 from Gil Hartmann).
+  * Added support to build a static library (issue #22 and pull requests #23, #24, #25, 
+    #26 and #27 from Gaurav Gupta). 
+  * Added support for MacOS X to Travis CI environment.
+  * Added support for ccache (pull request #44 from Gaurav Gupta).
+  * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).
+  * Avoid malloc typecasts (pull requests #31, #33, #34, #35, #36, #37, #38, #39 and #40 from Gaurav Gupta).
+  * Added support for automated testing with travis-ci.org
+  * Fixed memory leak in function wbxml_strtbl_collect_words of wbxml_encoder (pull request #21 from Gaurav Gupta).
+  * Fixed memory leak in function wbxml_strtbl_check_references of wbxml_encoder (pull request #20 from Gaurav Gupta).
+  * If pkg-config is used then use the provided ldflags (pull request #19 from Jeroen Dekkers).
+
+-------------------------------------------------------------------
+Mon Jan 31 11:43:23 CET 2011 - cstender@suse.de
+
+- updated to version 0.10.9
+  * Added correct default behaviour to parse_charset. If no character
+    set is specified in a WBXML document then UTF-8 is assumed until
+    there is another specification in the transport meta-information.
+    (ticket #52)
+  * Added several tokens for Microsoft ActiveSync v14.0 revision 8.0
+    (ticket #53). The patch was supplied by Amnon Aaronsohn.
+  * Fixed iconv support (ticket #52)
+  * Fixed wrong WBXML table token for OMA DM DDF (ticket #51)
+  * Fixed locations of variable definitions and replaced strtoull by
+    strtoul (changes from ticket #42 and #50).
+    This fixes some compiler errors from MS VisualStudio 2008 and 9.0.
+  * Fixed integer overflow in opaque data parsing (ticket #54).
+    The patch was supplied by Amnon Aaronsohn.
+  * Fixed unsigned integer overflow (patch from ticket #41)
+    The overflow causes crashs or wrong wbxml messages.
+  * Added support for recursion in wbxml_tree_node_elt_get_from_name
+    (ticket #46)
+
+-------------------------------------------------------------------
+Tue Apr 20 13:57:54 CEST 2010 - cstender@suse.de
+
+- updated to version 0.10.8
+  * Added a fix for the broken vFormat handling in the SyncML
+    specification. All LFs are replaced by CRLFs in every vFormat
+    object inside a SyncML message (ticket #38).
+  * Added Nokia ConML support (ticket #35).
+    There is no public documentation available from Nokia. The
+    transformation tables were created from sniffed WBXML documents.
+    The patch was supplied by Anton D. Kachalov.
+  * Removed OMA DM tests because the OMA did not grant a permission
+    for the inclusion (ticket #36).
+
+-------------------------------------------------------------------
+Mon Aug  3 08:42:34 UTC 2009 - cstender@novell.com
+
+- removed ddf testcases (bnc#515194)
+
+-------------------------------------------------------------------
+Wed May 13 17:52:02 CEST 2009 - cstender@suse.de
+
+- updated to version 0.10.7
+  * If the operating system environment has a built-in getopt
+    implementation then the cmake environment disables the internal
+    implementation of libwbxml and uses the getopt function of the
+    operating system. This avoids clashes with variables which are
+    declared extern and explicit but already exists in the default
+    POSIX header files (e.g. optopt).
+
+-------------------------------------------------------------------
+Fri Apr 24 18:54:47 CEST 2009 - cstender@suse.de
+
+- updated to version 0.10.6
+  * Extended (updated) tables for Microsoft AirSync
+    (The patch was supplied by Ossi Jormakka from Ixonos Plc.)
+  * Expat splits &lt;html&gt; into three separate text nodes.
+    Therefore it is necessary to scan for splitted text nodes and
+    merge them into a single consistent text node.
+  * Fixed race condition in WV datetime opaque encoding
+
+-------------------------------------------------------------------
+Mon Mar 30 15:56:01 CEST 2009 - cstender@suse.de
+
+- updated to version 0.10.5
+  * Fixed library installation path for win32 (ticket #31)
+    (The patch was supplied by Jeremy Laine.)
+
+-------------------------------------------------------------------
+Thu Mar 12 12:36:07 CET 2009 - cstender@suse.de
+
+- updated to version 0.10.4
+  * Fixed the byte order of the WV datetime opaque encoding (the bytes
+    were written in the reversed order)
+  * Fixed the time zone byte handling in the WV datetime opaque encoding
+    (e.g. A means UTC+1, Z must be 0x5a) (ticket #30)
+  * Added correct timezone handling for WV datetime opaque parser
+  * Added support for WV datetime inline encoding. All timestamps which
+    use the full ISO style like 2001-09-12T13:09:12+02:00 are encoded
+    as inline strings. This style is strongly recommended because time
+    zones like UTC+09:30 of Darwin in Australia are supported too.
+    (ticket #30)
+
+  * Added support for an EXPECTED value to the XML normalization script
+
+-------------------------------------------------------------------
+Mon Feb 23 16:32:53 CET 2009 - cstender@suse.de
+
+- updated to version 0.10.3
+  * Added support for SourceParent in SyncML 1.1.
+    This is a proprietary extension to support things like the SMS and
+    bookmark synchronization of Nokia.
+
+-------------------------------------------------------------------
+Fri Feb 13 13:04:07 CET 2009 - cstender@suse.de
+
+- updated to version 0.10.2
+  * Added support for OMA DM DDF 1.2 (ticket #7).
+  * DRMREL 1.0 test cases were disabled because of the poor
+    specification (e.g. hard coded names for XML namespaces and
+    definition of such namespaces as (WB)XML attributes).
+  * The generated XML documents of the most tests (conversion from XML
+    to WBXML back to XML) are compared with the original documents.
+    Only special tests are not covered (e.g. hexadecimal number
+    conversion, SyncML CDATA usage).
+
+  * If there is no PUBLIC ID then DOCTYPE must include PUBLIC "" or
+    SYSTEM. libwbxml always adds SYSTEM in this case.
+  * Fixed datetime support for Wireless Village (ticket #27).
+  * Extension tokens must not be replaced within normal text data
+    (ticket #26).
+  * Ticket #13 was rejected because the mentioned specification is only
+    a today outdated OMA change request. Perhaps a new specification
+    must be implemented in case of a new request.
+
+  * Created a script to normalize XML documents.
+  * The getopt implementation was replaced because of a potential
+    license issue. This fixed a Solaris build issue too (ticket #25).
+
+-------------------------------------------------------------------
+Fri Jan  9 11:28:58 CET 2009 - cstender@suse.de
+
+- updated to version 0.10.1
+  * LIBDATA_INSTALL_DIR was introduced (used by pkgconfig).
+  * The installation of the documentation can be disabled.
+  * All tests are executed as standalone tests to get more
+    detailed informations if a test fails.
+  * Removed a useless buffer which only creates a memory leak.
+
+-------------------------------------------------------------------
+Tue Dec 16 13:53:17 CET 2008 - cstender@suse.de
+
+- updated to libwbxml 0.10.0
+  * libwbxml is now maintained by the OpenSync project
+  * the new homepage is http://libwbxml.opensync.org
+  * Build system switched to cmake from GNU autotools.
+  * Tests were integrated and can be used via make test.
+  * Fixed a couple of issues with SyncML
+
+  * Fixed segfault in wbxml_encoder.c - Thanks Stijn van Drongelen
+  * Size changed to MaxSize in OMA DS 1.2 DevInf
+  * Fixed ticket #14 with patch from ticket (hexadecimal integer support
+    for Wireless-Village)
+  * Added datetime encoding support for Wireless-Village. (The encoder
+    can tolerate missing seconds like in the tests.)
+  * Added Sax like entity parsing
+  * Namespaces support
+  * Miscellaneous build fixes and anonymous document support
+  * Fixed for wrong doctype detection
+  * The inclusion of expat and iconv header files were moved to an
+    internal header file.
+  * The configuration parameters which are relevant for users are placed
+    in wbxml_config.h.
+  * Fixed SO naming
+
+- changed build env to cmake
+- added wbxml2-tools subpackage
+- updated license to LGPL v2.1 or later
+- dropped patches (all included in libwbxml 0.10.0)
+
+-------------------------------------------------------------------
+Tue Nov 18 18:00:35 CET 2008 - cstender@suse.de
+
+- added patch (09-devinf-doctype.patch) from Michael Bell
+  - The embedded DevInf document is now prefixed with correct doctype
+    during internal XML to WBXML conversion. This leeds to correct
+    DevInf 1.0, 1.1 and 1.2 embedded WBXML. The old code always
+    embeds a SyncML 1.2 DevInf (e.g. in a SyncML 1.1 message).
+
+-------------------------------------------------------------------
+Fri Nov  7 17:11:19 CET 2008 - cstender@suse.de
+
+- fixed syncml-fix.diff which leads to broken libsyncml testcases
+
+-------------------------------------------------------------------
+Thu Sep  4 16:59:38 CEST 2008 - cstender@suse.de
+
+- Size tag was changed to MaxSize in OMA DS 1.2 Device
+Information
+
+-------------------------------------------------------------------
+Mon Aug 18 16:39:59 CEST 2008 - cstender@suse.de
+
+- updated to 0.9.2_SVN59
+  * fixed segfault
+- updated patches
+- added new patch (syncml-fix.diff) from Michael Bell
+
+-------------------------------------------------------------------
+Sat Jan 12 22:32:26 CET 2008 - crrodriguez@suse.de
+
+- remove wrong hardcoded require on libexpat0 >= 1.95.4
+- fix -devel package dependencies.
+- pkgconfig script wrongly injected uneeded dependencies.  
+- fix library-without-ldconfig-* errors
+
+-------------------------------------------------------------------
+Thu May  3 13:46:30 CEST 2007 - dgollub@suse.de
+
+- splitted wbxml2 to libwxbml2-0, libwbxml2-devel and wbxml2-tools 
+- updated to 0.9.2_SVN48:
+    * several SyncML fixes
+- removed .*a files
+- updated project URL
+
+-------------------------------------------------------------------
+Thu May  3 06:31:27 CEST 2007 - lrupp@suse.de
+
+- require libexpat0 instead
+
+-------------------------------------------------------------------
+Wed May  2 19:31:21 CEST 2007 - dgollub@suse.de
+
+- Fixed invalid Requires (#270547)
+
+-------------------------------------------------------------------
+Fri Apr 27 18:57:02 CEST 2007 - aj@suse.de
+
+- Add libexpat-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Sat Jan 20 18:55:28 CET 2007 - dgollub@suse.de
+
+- updated to wbxml2 0.9.2:
+    * Added SyncML 1.2 support 
+    * Added Microsoft AirSync support
+    * Some more cleanup and bug fixes
+- added patch for Makefile template to handle CFLAGS 
+- bumped up version to 0.9.2 in configure template 
+
+-------------------------------------------------------------------
+Sat Nov 11 12:01:04 CET 2006 - ro@suse.de
+
+- cleanup specfile
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Wed Oct  4 19:48:32 CEST 2006 - dgollub@suse.de
+
+- added missing NumberOfChanged patch which avoid problems in the
+  SyncML implementation of wbxml2.
+
+-------------------------------------------------------------------
+Thu Aug 10 15:33:51 CEST 2006 - kkaempf@suse.de
+
+- Remove self-provides without version.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 16:47:15 CET 2005 - dgollub@suse.de
+
+- fixed spec file for 64bit architecures (--libdir=%{_libdir})
+
+-------------------------------------------------------------------
+Thu Oct 28 10:49:04 CEST 2004 - behlert@suse.de
+
+- added patch from multisync-developers needed to handle syncml 
+  correct (Nokia 6600 bug) [#447779]
+
+-------------------------------------------------------------------
+Thu May  6 10:21:56 CEST 2004 - behlert@suse.de
+
+- updated to v0.9, which is now under GPL instead of LGPL 
+
+-------------------------------------------------------------------
+Mon Mar  8 14:32:27 CET 2004 - behlert@suse.de
+
+- initial version 
+

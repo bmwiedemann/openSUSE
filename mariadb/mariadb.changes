@@ -1,0 +1,3349 @@
+-------------------------------------------------------------------
+Tue May 14 12:20:09 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 10.2.24 GA [bsc#1122198]
+  * notable changes:
+    * MDEV-18968 - Both (WHERE 0.1) and (WHERE NOT 0.1) return empty set
+    * MDEV-18466 - Unsafe to log updates on tables referenced by
+      foreign keys with triggers in statement format
+    * MDEV-18899 - Server crashes in Field::set_warning_truncated_wrong_value
+    * MDEV-18298 - Crashes server with segfault during role grants
+    * MDEV-17610 - Unexpected connection abort after certain operations
+      from within stored procedure
+    * MDEV-19112 - WITH clause does not work with information_schema 
+      as default database
+    * MDEV-17830 - Server crashes in Item_null_result::field_type upon
+      SELECT with CHARSET(date) and ROLLUP
+    * MDEV-14041 - Server crashes in String::length on queries with
+      functions and ROLLUP
+    * MDEV-18920 - Prepared statements with st_convexhull hang and
+      eat 100% cpu.
+    * MDEV-15837 - Assertion item1->type() == Item::FIELD_ITEM &&
+      item2->type() == Item::FIELD_ITEM
+    * MDEV-9531 - GROUP_CONCAT with ORDER BY inside takes a lot of
+      memory while it's executed
+    * MDEV-17036 - BULK with replace doesn't take the first parameter
+      in account
+    * Bug#28986737 - RENAMING AND REPLACING MYSQL.USER TABLE CAN
+      LEAD TO A SERVER CRASH
+    * MDEV-19350 - Server crashes in delete_tree_element / ... /
+      Item_func_group_concat::repack_tree
+    * MDEV-19188 - Server Crash When Using a Trigger With A Number
+      of Virtual Columns on INSERT/UPDATE
+    * MDEV-19352 - Server crash in alloc_histograms_for_table_share
+      upon query from information schema InnoDB
+    * InnoDB persistent corruption fixes: MDEV-19426, MDEV-19022,
+      MDEV-19241, MDEV-13942
+    * InnoDB recovery fixes and speedup: MDEV-18733, MDEV-12699,
+      MDEV-19356, MDEV-19426
+    * MDEV-14398 - innodb_encrypt_tables will work even with
+      innodb_encryption_rotate_key_age=0
+    * MDEV-17036 - BULK with replace doesn't take the first
+      parameter in account
+    * MDEV-14784 - Slave crashes in show_status_array upon running
+      a trigger with select from I_S
+    * MDEV-19060 - mariabackup continues, despite failing to open
+      a tablespace
+    * MDEV-18686 - Add option to PAM authentication plugin to allow
+      case insensitive username matching
+    * bugfix - multi-update checked privileges on views incorrectly
+    * MDEV-19276 - during connect, write error log warning for
+      ER_DBACCESS_DENIED_ERROR, if log_warnings > 1
+    * MDEV-17456 - Malicious SUPER user can possibly change audit
+      log configuration without leaving traces.
+  * fixes for the following security vulnerabilities:
+    [CVE-2019-2614], [CVE-2019-2627], [CVE-2019-2628]
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10224-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10224-changelog
+- refresh mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 12:00:15 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- remove %{extra_provides} definition and Provides/Obsoletes where
+  it was used. It's just a remnant and it's no longer needed.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:45:14 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 10.2.23 GA
+  * notable changes:
+    * InnoDB ALTER TABLE fixes: MDEV-18016, MDEV-18630, MDEV-18775,
+      MDEV-18732, MDEV-18749, MDEV-18637, MDEV-13818, MDEV-17595
+    * MDEV-18878: InnoDB Purge: Optimize away futile table lookups
+    * MDEV-14984: Regression in connect performance
+    * MDEV-18936: Purge thread fails to exit on shutdown
+    * MDEV-18272: InnoDB fails to rollback after exceeding FOREIGN
+      KEY recursion depth
+    * MDEV-9519: Data corruption on Galera cluster size change
+    * MDEV-18204: fix incremental MyRocks backup
+    * MDEV-18611: mariabackup terminated while copying InnoDB
+      redo log
+    * MDEV-18669: mariabackup writes timestamp in version line
+    * MDEV-18855: Mariabackup should fetch innodb_compression_level
+      from running server
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10223-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10223-changelog
+- remove mariadb-10.2.22-fix_path.patch that is no longer needed
+  (applied upstream)
+
+-------------------------------------------------------------------
+Wed Feb 27 14:48:43 UTC 2019 - kstreitova@suse.com
+
+- add mariadb-10.2.22-fix_path.patch to fix a path to resolveip in
+  mysql_install_db script [bsc#1127027] MDEV-18526
+
+-------------------------------------------------------------------
+Thu Feb 21 15:46:53 UTC 2019 - kstreitova@suse.com
+
+- my.cnf/my.ini: move slow_query_log example to the error log so
+  it's logically together
+
+-------------------------------------------------------------------
+Mon Feb 18 21:58:17 UTC 2019 - suse+build@de-korte.org
+
+- fix references path below legacy directory /var/run -> /run
+
+-------------------------------------------------------------------
+Fri Feb 15 15:39:01 UTC 2019 - rick.salevsky@suse.com
+
+- remove xtrabackup requirement as MariaDB ships a build in
+  mariabackup so xtrabackup is not needed unless a user specificaly
+  wants to use xtrabackup as sst method
+
+-------------------------------------------------------------------
+Thu Feb 14 15:01:27 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- add slow_query_log example to my.cnf and adjust the logrotate
+  configuration to rotate all /var/log/mysql/*.log files .
+  This is useful when the slow query log is enabled. In that case,
+  this log file should also be rotated (bsc#1112767)
+
+-------------------------------------------------------------------
+Tue Feb 12 13:48:59 UTC 2019 - Nicolas Bock <nicolas.bock@suse.com>
+
+- update to 10.2.22 GA
+  * notable changes:
+    * Backport Information Schema CHECK_CONSTRAINTS Table.
+    * MDEV-17475: Maximum value of table_definition_cache is
+      now 2097152
+    * InnoDB ALTER TABLE fixes: MDEV-16499, MDEV-18186, MDEV-18237,
+      MDEV-18222, MDEV-18256, MDEV-18016, MDEV-16849
+    * Mariabackup fixes: MDEV-18185, MDEV-18201, MDEV-18194
+    * Galera crash recovery fix: MDEV-15740
+    * Encryption fixes: MDEV-18129, MDEV-18183, MDEV-18279
+  * Fixes for the following security vulnerabilities:
+    * CVE-2019-2510, CVE-2019-2537
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10222-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10222-changelog
+
+-------------------------------------------------------------------
+Thu Jan  3 15:01:44 UTC 2019 - kstreitova@suse.com
+
+- update to 10.2.21 GA
+  * notable changes:
+    * MDEV-17589 - Stack-buffer-overflow with indexed varchar
+      (utf8) field
+    * MDEV-16987 - ALTER DATABASE possible in read-only mode
+      (forbid ALTER DATABASE in read_only)
+    * MDEV-17720 - slave_ddl_exec_mode=IDEMPOTENT does not handle
+      DROP DATABASE
+    * MDEV-6453 - Assertion `inited==NONE || (inited==RND && scan)'
+      failed in handler::ha_rnd_init(bool) with InnoDB, joins,
+      AND/OR conditions
+    * MDEV-18105 - Mariabackup fails to copy encrypted InnoDB
+      system tablespace if LSN>4G
+    * MDEV-18041 - Database corruption after renaming a
+      prefix-indexed column [bsc#1120041]
+    * MDEV-17470 - Orphan temporary files after interrupted ALTER
+      cause InnoDB: Operating system error number 17 and eventual
+      fatal error 71
+    * MDEV-17833: ALTER TABLE is not enforcing prefix index size
+      limit
+    * MDEV-17989: InnoDB: Failing assertion:
+      dict_tf2_is_valid(flags, flags2)
+    * MDEV-17765: Locking bug fix for SPATIAL INDEX
+    * MDEV-17923, MDEV-17904, MDEV-17938: Fixes for FULLTEXT INDEX
+    * Fixes for regressions introduced in MariaDB Server 10.2.19 by
+      the backup-safe TRUNCATE TABLE (MDEV-13564,
+      innodb_safe_truncate=ON) and innodb_undo_log_truncate:
+      * MDEV-17780, MDEV-17816, MDEV-17849, MDEV-17851, MDEV-17885
+    * Several improvements to MariaDB Server and backup for dealing
+      with encrypted or page_compressed pages:
+      * MDEV-12112: corruption in encrypted table may be overlooked
+      * MDEV-17958: On little-endian systems, remove bug-compatible
+        variant of innodb_checksum_algorithm=crc32
+      * MDEV-17957: Make innodb_checksum_algorithm stricter for
+        strict_* values
+      * MDEV-18025: Mariabackup fails to detect corrupted
+        page_compressed=1 tables
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10221-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10221-changelog
+    https://mariadb.com/kb/en/library/mariadb-10220-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10220-changelog
+- update suse_skipped_tests.list
+
+-------------------------------------------------------------------
+Wed Dec 12 13:38:00 UTC 2018 - kstreitova@suse.com
+
+- remove PerconaFT from the package as it has AGPL licence
+  [bsc#1118754]
+- use a new syntax for cmake variables that specify which plugin
+  will be built
+
+-------------------------------------------------------------------
+Sat Dec  1 09:44:46 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to link against libatomic where necessary and
+  use C++11 atomics instead of gcc built-in atomics
+  * mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+- Add two tests to suse_skipped_tests.list for ppc
+  * encryption.innodb-bad-key-change2
+  * encryption.innodb-bad-key-change4
+
+-------------------------------------------------------------------
+Wed Nov 14 09:42:24 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.19 GA [bsc#1116686]
+  * notable changes:
+    * innodb_safe_truncate system variable for a backup-safe
+      TRUNCATE TABLE implementation that is based on RENAME,
+      CREATE, DROP (MDEV-14717, MDEV-14585, MDEV-13564). Default
+      value for this variable is ON. If you absolutely must use
+      XtraBackup instead of Mariabackup, you can set it to OFF and
+      restart the server
+    * MDEV-17289: Multi-pass recovery fails to apply some redo
+      log records
+    * MDEV-17073: INSERT…ON DUPLICATE KEY UPDATE became more
+      deadlock-prone
+    * MDEV-17491: micro optimize page_id_t
+    * MDEV-13671: InnoDB should use case-insensitive column name
+      comparisons like the rest of the server
+    * Fixes for indexed virtual columns: MDEV-17215, MDEV-16980
+    * MDEV-17433: Allow InnoDB start up with empty ib_logfile0
+      from mariabackup --prepare
+    * MDEV-12547: InnoDB FULLTEXT index has too strict
+      innodb_ft_result_cache_limit max limit
+    * MDEV-17541: KILL QUERY during lock wait in FOREIGN KEY
+      check causes hang
+    * MDEV-17531: Crash in RENAME TABLE with FOREIGN KEY and
+      FULLTEXT INDEX
+    * MDEV-17532: Performance_schema reports wrong directory for
+      the temporary files of ALTER TABLE…ALGORITHM=INPLACE
+    * MDEV-17545: Predicate lock for SPATIAL INDEX should lock
+      non-matching record
+    * MDEV-17546: SPATIAL INDEX should not be allowed for
+      FOREIGN KEY
+    * MDEV-17548: Incorrect access to off-page column for
+      indexed virtual column
+    * MDEV-12023: Assertion failure sym_node->table != NULL
+      on startup
+    * MDEV-17230: encryption_key_id from alter is ignored by
+      encryption threads
+  * fixes for the following security vulnerabilities:
+      CVE-2018-3282 [bsc#1112432], CVE-2016-9843 [bsc#1013882],
+      CVE-2018-3174 [bsc#1112368], CVE-2018-3143 [bsc#1112421],
+      CVE-2018-3156 [bsc#1112417], CVE-2018-3251 [bsc#1112397],
+      CVE-2018-3185 [bsc#1112384], CVE-2018-3277 [bsc#1112391],
+      CVE-2018-3162 [bsc#1112415], CVE-2018-3173 [bsc#1112386],
+      CVE-2018-3200 [bsc#1112404], CVE-2018-3284 [bsc#1112377]
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10219-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10219-changelog
+- do not pack libmariadb.pc (packed in mariadb-connector-c)
+
+-------------------------------------------------------------------
+Tue Oct 30 14:59:59 UTC 2018 - kstreitova@suse.com
+
+- add "Requires: libmariadb_plugins" to the mariadb-test subpackage
+  in order to be able to test client plugins successfuly
+  [bsc#1111859]
+- don't remove debug_key_management.so anymore [bsc#1111858]
+
+
+-------------------------------------------------------------------
+Wed Sep 26 09:28:21 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.18 GA
+  * notable changes:
+    * MDEV-15511 - if available, stunnel can be used during Galera
+      rsync SST
+    * MDEV-16791 - mariabackup: Support DDL commands during backup
+    * MDEV-13564 - Refuse MLOG_TRUNCATE in mariabackup
+    * MDEV-16934 - add new system variable eq_range_index_dive_limit
+      to speed up queries that new long nested IN lists. The default
+      value, for backward compatibility, is 0 meaning "unlimited".
+    * MDEV-13333 - errors on InnoDB lock conflict
+    * Report all InnoDB redo log corruption
+    * MDEV-17043 - Purge of indexed virtual columns may cause hang
+      on table-rebuilding DDL
+    * MDEV-16868 - corruption of InnoDB temporary tables
+    * MDEV-16465 - Invalid (old?) table or database name or hang
+      in ha_innobase::delete_table and log semaphore wait upon
+      concurrent DDL with foreign keys
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10218-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10218-changelog
+- refresh mariadb-10.2.4-fortify-and-O.patch
+
+-------------------------------------------------------------------
+Thu Sep 13 08:15:11 UTC 2018 - kstreitova@suse.com
+
+- add ssl tests that are failing with OpenSSL 1.1.1 to 
+  suse_skipped_tests.list [MDEV-17184]
+
+-------------------------------------------------------------------
+Tue Aug 28 00:17:03 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.17 GA
+  * notable changes:
+    * New variable innodb_log_optimize_ddl for avoiding delay due
+      to page flushing and allowing concurrent backup
+    * InnoDB updated to 5.7.23
+    * MDEV-14637 - Fix hang due to DDL with FOREIGN KEY or
+      persistent statistics
+    * MDEV-15953 - Alter InnoDB Partitioned Table Moves Files
+      (which were originally not in the datadir) to the datadir
+    * MDEV-16515 - InnoDB: Failing assertion: ++retries < 10000 in
+      file dict0dict.cc line 2737
+    * MDEV-16809 - Allow full redo logging for ALTER TABLE
+    * Temporary tables: MDEV-16713 - InnoDB hang with repeating
+      log entry
+    * indexed virtual columns: MDEV-15855 - Deadlock between purge
+      thread and DDL statement
+    * MDEV-16664 - Change the default to
+      innodb_lock_schedule_algorithm=fcfs
+    * Galera: MDEV-15822 - WSREP: BF lock wait long for trx
+  * fixes for the following security vulnerabilities:
+    CVE-2018-3064 [bsc#1103342], CVE-2018-3063 [bsc#1101677],
+    CVE-2018-3058 [bsc#1101676], CVE-2018-3066 [bsc#1101678],
+    CVE-2018-3060
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10217-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10217-changelog
+
+-------------------------------------------------------------------
+Fri Jul 27 20:27:36 UTC 2018 - kstreitova@suse.com
+
+- switch to libedit as control sequences were already fixed there
+  so we don't have to avoid it [bsc#1098683]
+
+-------------------------------------------------------------------
+Tue Jul 17 12:50:27 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.16 GA
+  * notable changes:
+    * MDEV-13122: mariabackup now supports MyRocks
+    * MDEV-13779 - InnoDB fails to shut down purge workers, causing
+      hang
+    * MDEV-16267 - Wrong INFORMATION_SCHEMA.INNODB_BUFFER_PAGE.\
+      TABLE_NAME
+    * MDEV-13834 - Upgrade failure from 10.1 innodb_encrypt_log
+    * MDEV-16283 - ALTER TABLE...DISCARD TABLESPACE still takes long
+      on a large buffer pool
+    * MDEV-16376 - ASAN: heap-use-after-free in
+      gcol.innodb_virtual_debug
+    * MDEV-15824 - innodb_defragment=ON trumps
+      innodb_optimize_fulltext_only=ON in OPTIMIZE TABLE
+    * MDEV-16124 - fil_rename_tablespace() times out and crashes
+      server during table-rebuilding ALTER TABLE
+    * MDEV-16416 - Crash on IMPORT TABLESPACE of a
+      ROW_FORMAT=COMPRESSED table
+    * MDEV-16456 - InnoDB error "returned OS error 71" complains
+      about wrong path
+    * MDEV-13103 - Deal with page_compressed page corruption
+    * MDEV-16496 - Mariabackup: Implement --verbose option to
+      instrument InnoDB log apply
+    * MDEV-16087 - Inconsistent SELECT results when query cache
+      is enabled
+    * MDEV-15114 - ASAN heap-use-after-free in mem_heap_dup or
+      dfield_data_is_binary_equal (fix for indexed virtual columns)
+  * fixes for the following security vulnerabilities:
+    none 
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10216-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10216-changelog
+- refresh mariadb-5.5.28-install_db-quiet.patch
+- refresh mariadb-10.2.9-galera_cnf.patch
+- pack wsrep_sst_rsync_wan file to galera subpackage
+- update suse_skipped_tests.list
+
+-------------------------------------------------------------------
+Wed May 23 15:23:00 CEST 2018 - kukuk@suse.de
+
+- Don't require systemd explicit, spec file can handle both cases
+  correct and in containers we don't have systemd.
+
+-------------------------------------------------------------------
+Fri May 18 11:02:12 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.15 GA
+  * notable changes:
+    * PCRE updated to 8.42
+    * The embedded server library now supports SSL when connecting
+      to remote servers [bsc#1088681], [CVE-2018-2767]
+    * MDEV-15325 - Incomplete validation of missing tablespace
+      during recovery
+    * MDEV-15720 - ib_buffer_pool unnecessarily includes the
+      temporary tablespace
+    * MDEV-15764 - InnoDB may write uninitialized garbage to redo
+      log
+    * MDEV-15553 - Virtual Columns: Assertion failed in
+      dict_table_get_col_name
+    * MDEV-14705 - slow innodb startup/shutdown can exceed systemd
+      timeout
+    * MDEV-15507 - Assertion failed in dict_check_sys_tables on
+      upgrade from 5.5
+    * MDEV-15916 - Change buffer crash during TRUNCATE or
+      DROP TABLE
+    * encryption fixes - MDEV-12632, MDEV-13516, MDEV-15752,
+      MDEV-15566, MDEV-16092
+    * temporary table ROLLBACK fixes - MDEV-15826, MDEV-15374
+    * applicable changes from 5.7.22 - MDEV-16142
+  * fixes for the following security vulnerabilities:
+    CVE-2018-2786, CVE-2018-2759, CVE-2018-2777, CVE-2018-2810,
+    CVE-2018-2782, CVE-2018-2784, CVE-2018-2787, CVE-2018-2766,
+    CVE-2018-2755, CVE-2018-2819, CVE-2018-2817, CVE-2018-2761, 
+    CVE-2018-2781, CVE-2018-2771, CVE-2018-2813
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10215-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10215-changelog
+- update suse_skipped_tests.list and add tests that are failing
+  with GCC 8 [bsc#1092544], MDEV-16127
+- do not build TokuDB as a build without jemalloc is not supported
+  upstream
+
+-------------------------------------------------------------------
+Mon Apr 30 22:36:12 UTC 2018 - kstreitova@suse.com
+
+- update suse_skipped_tests.list and add failing tests for s390
+
+-------------------------------------------------------------------
+Mon Apr 30 13:29:35 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.14 GA
+  * notable changes:
+    * MyRocks is now Gamma (RC)
+    * MDEV-14533 - Added the DISKS plugin, for monitoring disk
+      space
+    * MDEV-14611 - ALTER TABLE EXCHANGE PARTITION does not work
+      properly when used with DATA DIRECTORY.
+    * MDEV-15333 - MariaDB (still) slow start
+    * MDEV-12255 - Wrong result with
+      innodb_prefix_index_cluster_optimization
+    * MDEV-12396 - IMPORT TABLESPACE cleanup
+    * MDEV-14648 - Restore fix for MySQL BUG#39053 - UNINSTALL
+      PLUGIN does not allow the storage engine to cleanup open
+      connections
+    * MDEV-15249 - IMPORT fixes
+    * MDEV-14988 - innodb_read_only tries to modify files if
+      transactions were recovered in COMMITTED state
+    * MDEV-14773 - DROP TABLE hangs for InnoDB table with FULLTEXT
+      index (fixing a recent regression from upstream)
+    * MDEV-15529 - IMPORT TABLESPACE unnecessarily uses the
+      doublewrite buffer
+    * MDEV-15554 - InnoDB page_cleaner shutdown sometimes hangs
+    * MDEV-14545 - Mariabackup - Backup fails due to
+      MLOG_INDEX_LOAD record
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10214-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10214-changelog
+- remove the following patches
+  * mariadb-10.2.14-xtrabackup-v2.patch (applied upstream,
+    MDEV-15254)
+  * mariadb-10.2.13-aarch_compilefix.patch (applied upstream,
+    MDEV-14318)
+  * mariadb-10.2.10-disable_openssl_compatibility_check.patch
+    (fixed upstream in https://github.com/MariaDB/server/pull/558)
+  * mariadb-10.2.8-systemd-cmake.patch and DWITH_SYSTEMD=ON
+    compile option that are no longer needed - systemd is detected
+    correctly now (discussed in [bsc#1080891] and MDEV-8379)
+  * mariadb-10.2.3-mysql_install_db-mariadb_dirs.patch (fixed
+    upstream in 52516706c86f9f66c76836eabde7e2477694bac3)
+  * remove mariadb-10.2.3-group.patch that was just a half solution
+    of the group support (missing server part) and moreover using
+    a group option in mysql-systemd-helper was removed few years ago
+    as it caused troubles because MariaDB resolved it as
+    'group_concat_max_len option' (see
+    https://github.com/openSUSE/mysql-packaging/issues/15) 
+- remove jar files from the tarball (used for testing from the
+  source)
+- build TokuDB without the jemalloc support for now. Jemalloc 5
+  is not backwards compatible which leads to the errors in the
+  testsuite at least (MDEV-15034)
+- update suse_skipped_tests.list
+
+-------------------------------------------------------------------
+Fri Mar 16 12:17:05 UTC 2018 - kstreitova@suse.com
+
+- change %{extra_provides} macro from "mariadb_102" to "mariadb-102"
+  and use this macro in Provides/Obsoletes for mariadb, test,
+  tools, bench and errormessages subpackages to ensure a smooth
+  transition from SLE12 to SLE15 [fate#323756]
+- remove "Provides: mariadb-errormessages = 10.1.25" that shouldn't
+  be needed anymore
+
+-------------------------------------------------------------------
+Wed Mar 14 00:35:11 CET 2018 - ro@suse.de
+
+- fix build on aarch64: compile a few more files with -O0
+  from https://jira.mariadb.org/browse/MDEV-14318
+  add patch mariadb-10.2.13-aarch_compilefix.patch
+
+-------------------------------------------------------------------
+Tue Feb 27 14:13:50 UTC 2018 - rsalevsky@suse.com
+
+- add mariadb-10.2.14-xtrabackup-v2.patch (bsc#1083087)
+
+-------------------------------------------------------------------
+Wed Feb 14 11:51:39 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.13 GA
+  * notable changes
+    * InnoDB updated to 5.7.21
+    * Galera wsrep library updated to 25.3.23
+    * MDEV-13869 - MariaDB slow start
+    * MDEV-14611 - ALTER TABLE EXCHANGE PARTITION does not work
+      properly when used with DATA DIRECTORY
+    * MDEV-15249 - Crash in MVCC read after IMPORT TABLESPACE
+    * Foreign key bugs:
+    * MDEV-15199 - Referential integrity broken in ON DELETE
+      CASCADE/MDEV-14222 Unnecessary 'cascade' memory allocation
+      for every updated row
+    * MDEV-15219 - FOREIGN KEY CASCADE or SET NULL operations will
+      not resume after lock wait
+    * MDEV-15042 - INSERT ON DUPLICATE KEY UPDATE produces error
+      1032 (Can't find record)
+    * MDEV-13205 - InnoDB: Failing assertion:
+      !dict_index_is_online_ddl(index) upon ALTER TABLE
+    * MDEV-14958 - Merge new release of InnoDB MySQL 5.7.21 to 10.2
+    * MDEV-15165 - InnoDB purge for index on virtual column is
+      trying to access an incomplete record
+    * MDEV-15143 - InnoDB: Rollback of trx with id 0 completed
+    * MDEV-11415 - Remove excessive undo logging during ALTER
+      TABLE…ALGORITHM=COPY
+    * MDEV-15016 - multiple page cleaner threads use a lot of CPU
+    * MDEV-14941 - Timeouts on persistent statistics tables caused
+      by MDEV-14511
+    * MDEV-14985 - innodb_undo_log_truncate may be blocked if
+      transactions were recovered at startup
+    * MDEV-14441 - InnoDB hangs when setting
+      innodb_adaptive_hash_index=OFF during UPDATE
+    * MDEV-14887 - On a 32-bit system, MariaDB 10.2 mishandles
+      data file sizes exceeding 4GiB
+  * fixes for the following security vulnerabilities:
+    * CVE-2018-2562, CVE-2018-2622, CVE-2018-2640, CVE-2018-2665,
+      CVE-2018-2668, CVE-2018-2612
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10213-release-notes/
+    https://mariadb.com/kb/en/library/mariadb-10213-changelog/
+  * fixes [bsc#1058729] and [bsc#1068906]
+- refresh mariadb-10.2.10-disable_openssl_compatibility_check.patch
+- refresh mariadb-10.2.3-group.patch
+
+-------------------------------------------------------------------
+Mon Feb 12 17:12:18 UTC 2018 - dmueller@suse.com
+
+- add dependency on which for galera scripts
+
+-------------------------------------------------------------------
+Fri Jan 19 13:28:50 UTC 2018 - kstreitova@suse.com
+
+- change owner of mysql-test directory from root to mysql. It also
+  fixes sys_vars.secure_file_priv running under mysql user (e.g.
+  if ít's started via suse-test-run script) that needs to be able
+  to create a test file there during its run [bsc#1012075]
+
+-------------------------------------------------------------------
+Fri Jan  5 12:23:20 UTC 2018 - kstreitova@suse.com
+
+- update to 10.2.12 GA
+   * release notes and changelog:
+     https://mariadb.com/kb/en/library/mariadb-10212-release-notes/
+     https://mariadb.com/kb/en/library/mariadb-10212-changelog/
+- remove mysql-community-server-5.5.6-safe-process-in-bin.patch
+  becuase this moving is done in the specfile
+- get rid of the archive with patches (remove mysql-patches.tar.xz
+  and series files), handle patches in the standard way
+    mysql-community-server-5.1.45-multi-configuration.patch
+    mariadb-10.2.4-logrotate.patch
+    mariadb-5.5.28-install_db-quiet.patch
+    mariadb-10.1.1-mysqld_multi-features.patch
+    mariadb-5.2.3-cnf.patch
+    mariadb-10.2.3-group.patch
+    mariadb-10.1.12-deharcode-libdir.patch
+    mariadb-10.0.15-logrotate-su.patch
+    mariadb-10.2.4-fortify-and-O.patch
+    mariadb-10.2.8-systemd-cmake.patch
+    mariadb-10.2.3-mysql_install_db-mariadb_dirs.patch
+    mariadb-10.2.9-galera_cnf.patch
+    mariadb-10.2.10-disable_openssl_compatibility_check.patch
+- add comments to the section with removing unused files (based on
+  https://lists.launchpad.net/maria-developers/msg11028.html)
+- put rm statements together
+- install the new upstream systemd-tmpfiles configuration file
+  'tmpfiles.conf' and rename it to 'mariadb.conf' in order to
+  follow the manual
+- remove the new upstream systemd-sysusers configuration file as
+  we handle creating of mysql user in the specfile
+- mysql.service: remove calling of the wait function and let
+  systemd to do this job. Switch from 'Type=simple' to
+  'Type=notify' and add TimeoutSec=300
+- rename unit files from mysql to mariadb and add mysql alias for
+  the backward compatibility [bsc#1067443]
+  * mysql.service -> mariadb.service
+  * mysql.target -> mariadb.target
+  * mysql@.service -> mariadb@.service
+- remove configuration-tweaks.tar.xz and move configuration to
+  my.ini/my.cnf file (omit default_plugins.cnf as all
+  configuration here was commented out)
+- add a numeric prefix for galera.cnf file in order to allow users
+  to speficy in which order the configs will be loaded within the
+  my.cnf.d directory [bsc#1055268]
+- add 'bind-address = 127.0.0.1' as a default option to my.cnf file
+  for security reasons (disable MariaDB to listen for TCP/IP
+  connections by default) [bsc#1058374]
+- update my.cnf file and add a section with SSL configuration
+  [bsc#1058374]
+
+-------------------------------------------------------------------
+Tue Jan  2 14:04:21 UTC 2018 - kstreitova@suse.com
+
+- switch from deprecated 'net-tools' to 'iproute2' for 
+  mariadb-galera subpackage. This dependency switch is sufficient
+  for making wsrep_sst_rsync.sh script to use 'ip' instead of 
+  'ifconfig' command
+
+-------------------------------------------------------------------
+Thu Dec 21 12:42:28 UTC 2017 - dimstar@opensuse.org
+
+- Do not manually delete
+  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something:
+  The file is listed as ghost and thus properly owned by the
+  package.
+- Use %tmpfiles_create which can cope with transactional updates.
+
+-------------------------------------------------------------------
+Thu Nov 30 07:53:14 UTC 2017 - kstreitova@suse.com
+
+- update to 10.2.11 GA
+  * release notes and changelog:
+    * https://mariadb.com/kb/en/library/mariadb-10211-release-notes/
+    * https://mariadb.com/kb/en/library/mariadb-10211-changelog/
+- pack additional mroonga/groonga files
+- change default charset to utf8mb4 for full Unicode support
+  [fate#324329]
+- remove mariadb-10.2.10-wsrep_sst_common.patch as it's no longer
+  needed
+
+-------------------------------------------------------------------
+Wed Nov 29 16:16:45 UTC 2017 - rhafer@suse.de
+
+- Added mariadb-10.2.10-wsrep_sst_common.patch (bsc#1069401).
+  Upstream bug: https://jira.mariadb.org/browse/MDEV-14256
+
+-------------------------------------------------------------------
+Wed Nov 29 12:54:23 UTC 2017 - vcizek@suse.com
+
+- Disable openssl compatibility checking
+  * the check uses CRYPTO_set_mem_functions() to set debugging
+    memory allocation function. The setting only succeeds if no allocation
+    was done before. Our fips self-tests, which are run from the library
+    constructor, however, do allocate memory, so the subsequent call to
+    CRYPTO_set_mem_functions causes the compatibility check to fail
+  * add mariadb-10.2.10-disable_openssl_compatibility_check.patch
+
+-------------------------------------------------------------------
+Tue Oct 31 14:23:22 UTC 2017 - kstreitova@suse.com
+
+- update to 10.2.10 GA
+  * release notes and changelogs
+    https://downloads.mariadb.org/mariadb/+releases/
+  * fixes for the following security vulnerabilities
+    * 10.2.10: CVE-2017-10378, CVE-2017-10268, CVE-2017-15365
+    * 10.2.8:  CVE-2017-3636, CVE-2017-3641, CVE-2017-3653,
+               CVE-2017-10320, CVE-2017-10365, CVE-2017-10379,
+               CVE-2017-10384, CVE-2017-10286, CVE-2017-3257
+    * 10.2.6:  CVE-2017-3308, CVE-2017-3309, CVE-2017-3453,
+               CVE-2017-3456, CVE-2017-3464
+    * 10.2.5:  CVE-2017-3313, CVE-2017-3302
+  * [bsc#1042632], [bsc#1043328], [bsc#1019948], [fate#323738]
+- refresh and rename the following patches:
+  * mariadb-10.1.4-group.patch to
+    mariadb-10.2.3-group.patch
+  * mariadb-10.1.16-systemd-cmake.patch to
+    mariadb-10.2.8-systemd-cmake.patch
+  * mariadb-10.1.18-mysql_install_db-mariadb_dirs.patch to
+    mariadb-10.2.3-mysql_install_db-mariadb_dirs.patch
+  * mariadb-10.1.12-fortify-and-O.patch to
+    mariadb-10.2.4-fortify-and-O.patch
+  * mysql-community-server-5.1.46-logrotate.patch to
+    mariadb-10.2.4-logrotate.patch
+- add mariadb-10.2.10.tar.gz.sig signature and mariadb.keyring files
+- start building without client library part, use
+  mariadb-connector-c for getting libmariadb libraries. Remove
+  libmysclient* packages
+- remove baselibs.conf because we no longer build client libraries
+  here
+- update %{soname} to 19 (libmysqld soname)
+- change '=' to '>=' in  Requires:mariadb-errormessages for
+  libmysqld%{soname}. Versioned libraries shouldn't require regular
+  packages with '='. It also causes problems during update (Problem:
+  libmysqld18-10.1.25-3.1.x86_64 requires mariadb-errormessages = 10.1.25,
+  but this requirement cannot be provided).
+  Also add "Provides: mariadb-errormessages = 10.1.25" for errormessages
+  subpackage that solves this problem for the current update.
+- pack new files, remove mysql specific files
+- remove README.SUSE as it was outdated
+- package cleaning
+  * run spec-cleaner
+  * renumber sources
+  * reorganize subpackages order and update summaries, descriptions
+    and groups
+  * tweak and add some comments to the specfile
+  * remove warning about mysql-packaging repository that is no longer
+    used for this package
+  * remove checks whether we build mysql or mariadb (we build mariadb
+    only)
+- add galera subpackage
+  * add missing "Requires:" (lsof, net-tools, rsync, socat,
+    xtrabackup) for proper wsrep scripts functionality
+  * add mariadb-10.2.9-galera_cnf.patch that enhances galera.cnf
+    configuration file (add wsrep_on=OFF and set the location
+    of the wsrep library)
+  * rename README-wsrep to README.wsrep so it corresponds with the
+    other README names
+  * move galera_new_cluster, galera_recovery,
+    use_galera_new_cluster.conf, wsrep_* scripts to the galera
+    subpackage
+- remove the following macros definitions:
+  * %{_tmpfilesdir} - it's been defined in systemd macros since
+    openSUSE 13.2
+  * %{preferred} - we no longer need to distinguish between preferred
+    and not preferred version (we build mariadb only)
+  * %{with_mandatory_lz4} - mysql specific
+  * %{build_extras}, %{pretty_name}, %{build_readline},
+    %{builtin_plugins} and {libname} - they are no longer needed
+- add the following macros
+  * %{run_testsuite} macro that controls the run of the regression
+    testsuite
+  * %{ignore_testsuite_result} macro - when set to 1 it ignores
+    results from the regression testsuite (debug purposes)
+  * %{with_mroonga} macro (enable mroonga build for x86_64 archs only)
+- rename %{with_jemalloc} to %{with_tokudb} and enable tokudb for
+  x86_64 architectures for openSUSE and SLE15 [fate#323280]. Don't
+  enable it for SLE12 (missing jemalloc dependency)
+- add the following BuildRequires:
+  * unixODBC-devel to allow ODBC support for Connect engine [bsc#1039034]
+  * krb5-devel to build auth_gssapi.so plugin
+  * libarchive-devel
+  * use libboost_headers-devel instead of boost-devel for TW. Boost
+    package has been split up and will migrate to using multibuild.
+    This results in packages that unnecessarily build require
+    boost-devel to cause major bottlenecks [bsc#1062583]
+- do not use "BuildRequires: lzo-devel" for i586 and arm because
+  it makes build fail
+- add the following Requires:
+  * hostname - as mariadb_install_db depends on this tool [bsc#1060110]
+  * libaio-devel for libmysqld-devel because libmysqld depends
+    on libaio
+- tweak build options:
+  * remove "DWITH_ASAN=OFF" - this option was added because of mysql
+    and it's no longer needed
+  * switch from "-DWITH_JEMALLOC=auto" to "-DWITH_JEMALLOC=system"
+  * use "DCMAKE_SKIP_INSTALL_RPATH" - this allows to link with -rpath
+    during build and fixes quite a few test suite failures. When
+    installing the file -rpath is still disabled, so this should
+    not have any effect on the installed binaries
+  * add "-DWITH_LIBARCHIVE=ON" and "-DWITH_MARIABACKUP=ON"
+  * remove -DWITH_BOOST=../boost/ as we use system boost now
+- enable OQGRAPH to build (openSUSE only, SLE is missing Judy
+  requirement)
+- disable Cassandra storage engine build as it's no longer actively
+  being developed (See MDEV-4695) [bsc#1055165] 
+  * Remove "BuildRequires: libthrift-devel" and %{with_cassandra}
+    macros that are no longer needed now
+- disable make test (Connector/C unit tests) as it requires a
+  running server. These tests are part of mysql-test-run
+  now (MDEV-12470)
+- add suse_skipped_tests.list - the list of the tests that we want
+  to skip (they fail correctly or the fix is in progress)
+    * adjust mysql-test-run options to skip tests listed there
+      [bsc#1041891]
+- remove mytop utility that is packaged separately
+- remove *.jar files from mysql-test
+- remove python scripts remains from tokudb upstream
+- remove generating of the MySQL NDB Cluster filelists
+- remove removing of manpages for MySQL Carrier Grade Edition
+- provide a symlink for the my_safe_process executable that was
+  moved from its location to bindir
+- update filename in /var/adm/update-messages to match
+  documentation and build-compare pattern
+- README is now README.md
+- fix "file listed twice" build error
+
+-------------------------------------------------------------------
+Tue Oct 31 10:38:13 UTC 2017 - vcizek@suse.com
+
+- Also Require: libopenssl-1_0_0-devel from the libmysqlclient-devel package
+
+-------------------------------------------------------------------
+Thu Oct 26 05:16:30 UTC 2017 - bwiedemann@suse.com
+
+- Drop INFO_BIN from package because it is not needed
+  and differs for every build (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Sep 19 15:54:05 UTC 2017 - vcizek@suse.com
+
+- Explicitly require libopenssl-1_0_0-devel, to successfully build
+  once we switch openssl to 1.1 (bsc#1042632)
+
+-------------------------------------------------------------------
+Mon Jul 10 11:30:59 UTC 2017 - kstreitova@suse.com
+
+- update to MariaDB 10.1.25 GA
+  * notable changes
+    * MariaDB can no longer be compiled with OpenSSL version 0.9.8
+      and below. The last 0.9.8 release was in December 2015, it is
+      out of support and is no longer getting security fixes.
+    * MariaDB Backup is now beta
+  * release notes and changelog:
+    * https://mariadb.com/kb/en/mariadb/mariadb-10125-release-notes
+    * https://mariadb.com/kb/en/mariadb/mariadb-10125-changelog
+  * refresh mariadb-10.1.12-fortify-and-O.patch
+  * remove mariadb-10.1.22-xtradb_null_checks.patch (MDEV-12358),
+    a fix was merged upstream
+  * update file lists for new man-pages and tools
+- switch from 'Restart=on-failure' to 'Restart=on-abort' in
+  mysql.service in order to follow the upstream
+ 
+-------------------------------------------------------------------
+Tue May 30 13:12:47 UTC 2017 - fvogt@suse.com
+
+- Add mariadb-10.1.22-xtradb_null_checks.patch (boo#1041525)
+  (See also https://jira.mariadb.org/browse/MDEV-12358)
+- switch from '/var/run' to '/run' as /var/run is just a symlink to /run
+- fix permissions for /var/run/mysql that were wrongly set to
+  700 instead of 755 due to added umask. This prevented non-root
+  from connecting to the database [bsc#1038740]
+- change permissions of the configuration dir/files to 755/644.
+  Please note that storing the password in the /etc/my.cnf file is
+  not safe. Use for example an option file that is accessible only
+  by yourself [bsc#889126]
+- set the default umask to 077 in mysql-systemd-helper [bsc#1020976]
+
+-------------------------------------------------------------------
+Tue Apr 11 13:35:46 UTC 2017 - kstreitova@suse.com
+
+- increase required physical memory in _constraints from 5 GB to
+  7 GB in order to try to fix i586 build that fails because of
+  "Out of memory" error
+
+-------------------------------------------------------------------
+Wed Mar 15 18:42:17 UTC 2017 - kstreitova@suse.com
+
+- update to MariaDB 10.1.22 GA
+  * notable changes
+    * XtraDB updated to 5.6.35-80.0
+    * TokuDB updated to 5.6.35-80.0
+    * PCRE updated to 8.40
+    * MDEV-12160: ed25519 authentication plugin
+    * MDEV-11842: Fix a 10.1.21 regression with failed INSERT, BEFORE
+      INSERT triggers, and columns with no default value
+    * MDEV-12075: Fix a 10.1.21 regression in the InnoDB data file
+      extension code
+    * MDEV-11027: better InnoDB crash recovery progress reporting
+    * MDEV-11520: improvements to how InnoDB data files are extended
+    * Improvements to InnoDB startup/shutdown to make it more robust
+    * MDEV-11233: fix for FULLTEXT index crash
+    * MDEV-9734: systemd compatible bintar files now available
+  * release notes and changelog:
+    * https://mariadb.com/kb/en/mariadb/mariadb-10122-release-notes/
+    * https://mariadb.com/kb/en/mariadb/mariadb-10122-changelog/
+  * fixes the following CVEs:
+    * CVE-2017-3313 [bsc#1020890], CVE-2017-3302 [bsc#1022428]
+- refresh mysql-community-server-5.1.46-logrotate.patch
+- refresh mariadb-10.1.16-systemd-cmake.patch
+- remove mariadb-10.1.20-incorrect_list_handling.patch that is no
+  longer needed [bsc#1022428] [CVE-2017-3302] 
+
+-------------------------------------------------------------------
+Fri Feb  3 18:02:42 UTC 2017 - kstreitova@suse.com
+
+- update to MariaDB 10.1.21
+  * notable changes:
+    * Innodb updated to 5.6.35
+    * Performance Schema updated to 5.6.35
+  * release notes and changelog:
+    * https://mariadb.com/kb/en/mariadb/mariadb-10121-release-notes/
+    * https://mariadb.com/kb/en/mariadb/mariadb-10121-changelog/
+  * fixes the following CVEs:
+    CVE-2017-3318 [bsc#1020896], CVE-2017-3317 [bsc#1020894],
+    CVE-2017-3312 [bsc#1020873], CVE-2017-3291 [bsc#1020884],
+    CVE-2017-3265 [bsc#1020885], CVE-2017-3258 [bsc#1020875],
+    CVE-2017-3257 [bsc#1020878], CVE-2017-3244 [bsc#1020877],
+    CVE-2017-3243 [bsc#1020891], CVE-2017-3238 [bsc#1020882],
+    CVE-2016-6664 [bsc#1008253]
+- add mariadb.te file to the filelist
+- add mysqld_safe_helper to the filelist
+- refresh mariadb-10.1.4-group.patch
+- add mariadb-10.1.20-incorrect_list_handling.patch to fix incorrect
+  linked list handling in mysql_prune_stmt_list() function that can
+  cause use-after-free error [bsc#1022428]
+
+-------------------------------------------------------------------
+Thu Jan 26 10:54:15 UTC 2017 - dimstar@opensuse.org
+
+- Replace systemd and systemd-devel BuildRequires with
+  pkgconfig(libsystemd), which matches what the build system is
+  actually looking for.
+
+-------------------------------------------------------------------
+Tue Dec 27 03:19:07 UTC 2016 - 13ilya@gmail.com
+
+- update to MariaDB 10.1.20
+  * notable changes:
+    * XtraDB updated to 5.6.34-79.1
+    * TokuDB updated to 5.6.34-79.1
+    * HeidiSQL updated to 9.4
+    * The limit for the table_open_cache system variable has been increased to 1024K
+    * Galera wsrep library updated to 25.3.19
+  * release notes and changelog:
+    * https://mariadb.com/kb/en/mariadb/mariadb-10120-release-notes/
+    * https://mariadb.com/kb/en/mariadb/mariadb-10120-changelog/
+
+-------------------------------------------------------------------
+Fri Dec  2 15:26:57 UTC 2016 - kstreitova@suse.com
+
+- update to MariaDB 10.1.19
+  * notable changes:
+    * XtraDB updated to 5.6.33-79.0
+    * TokuDB updated to 5.6.33-79.0
+  * release notes and changelog:
+     * https://mariadb.com/kb/en/mariadb/mariadb-10119-release-notes/
+     * https://mariadb.com/kb/en/mariadb/mariadb-10119-changelog/
+  * fixes for the following security vulnerabilities:
+    CVE-2016-7440 [bsc#1005581]
+    CVE-2016-5584 [bsc#1005558]
+- add mariadb-10.1.18-mysql_install_db-mariadb_dirs.patch to fix
+  mysql_install_db.sh script to find data files in mariadb
+  directories when a user uses "--basedir" option [bsc#1006539]
+-  switch to xz compression instead of bz2 for the following tarballs:
+     * mysql-patches.tar.bz2 renamed to mysql-patches.tar.xz
+     * configuration-tweaks.tar.bz2 renamed to configuration-tweaks.tar.xz
+   replace occurrences of "bzip2" with "xz" in README.debug 
+
+-------------------------------------------------------------------
+Mon Oct 24 18:38:45 UTC 2016 - kstreitova@suse.com
+
+- update to 10.1.18
+  * Release notes:
+    https://mariadb.com/kb/en/mariadb/mariadb-10118-release-notes/
+    https://mariadb.com/kb/en/mariadb/mariadb-10117-release-notes/
+    https://mariadb.com/kb/en/mariadb/mariadb-10116-release-notes/
+    https://mariadb.com/kb/en/mariadb/mariadb-10115-release-notes/
+  * Changelog:
+    https://mariadb.com/kb/en/mariadb/mariadb-10118-changelog/
+    https://mariadb.com/kb/en/mariadb/mariadb-10117-changelog/
+    https://mariadb.com/kb/en/mariadb/mariadb-10116-changelog/
+    https://mariadb.com/kb/en/mariadb/mariadb-10115-changelog/
+  * fixed CVE's:
+    CVE-2016-8283, CVE-2016-6663, CVE-2016-5629, CVE-2016-5626,
+    CVE-2016-5624, CVE-2016-5616, CVE-2016-3492, CVE-2016-6662,
+    CVE-2016-5440, CVE-2016-3615, CVE-2016-3521, CVE-2016-3477
+  * fix:
+    [bsc#1005582], [bsc#1001367], [bsc#1005569], [bsc#1005566],
+    [bsc#1005564], [bsc#1005562], [bsc#1005555], [bnc#998309],
+    [bsc#989926],  [bsc#989922],  [bsc#989919],  [bsc#989913]
+  * refresh mariadb-10.1.4-group.patch
+  * refresh mariadb-10.1.12-fortify-and-O.patch
+- requires devel packages for aio and lzo2
+- remove mariadb-10.0.21-mysql-test_main_bootstrap.patch that is no
+  longer needed [bnc#984858]  
+- append "--ignore-db-dir=lost+found" to the mysqld options in
+  "mysql-systemd-helper" script if "lost+found" directory is found
+  in $datadir [bnc#986251]
+- remove syslog.target from *.service files [bsc#983938]
+- add BuildRequires: systemd-devel
+- make some dependecies switchable 
+- add systemd to deps to build on leap and friends  
+- add mariadb-10.1.16-systemd-cmake.patch to allow more
+  (case-insensitive) values for 'WITH_SYSTEMD' variable in systemd.cmake
+- replace '%{_libexecdir}/systemd/system' with %{_unitdir} macro
+- remove useless mysql@default.service [bsc#971456]  
+- replace all occurrences of the string "@sysconfdir@" with "/etc" in
+  mysql-community-server-5.1.46-logrotate.patch as it wasn't expanded
+  properly [bsc#990890] 
+
+-------------------------------------------------------------------
+Sun Jun 12 11:25:08 UTC 2016 - kstreitova@suse.com
+
+- update to 10.1.14
+  * What is MariadDB 10.1:
+    https://mariadb.com/kb/en/mariadb/what-is-mariadb-101/
+  * CVEs fixed in 10.1.x branch
+    CVE-2016-2047, CVE-2016-0668, CVE-2016-0651, CVE-2016-0650, 
+    CVE-2016-0649, CVE-2016-0646, CVE-2016-0644, CVE-2016-0642, 
+    CVE-2016-0641, CVE-2016-0640, CVE-2016-0616, CVE-2016-0610, 
+    CVE-2016-0609, CVE-2016-0608, CVE-2016-0606, CVE-2016-0600, 
+    CVE-2016-0598, CVE-2016-0597, CVE-2016-0596, CVE-2016-0546, 
+    CVE-2016-0505, CVE-2015-7744, CVE-2015-4913, CVE-2015-4895, 
+    CVE-2015-4879, CVE-2015-4870, CVE-2015-4866, CVE-2015-4864, 
+    CVE-2015-4861, CVE-2015-4858, CVE-2015-4836, CVE-2015-4830, 
+    CVE-2015-4826, CVE-2015-4819, CVE-2015-4816, CVE-2015-4815, 
+    CVE-2015-4807, CVE-2015-4802, CVE-2015-4792
+  * adjust mysql-patches.tar.bz2 archive for mariadb-101
+  * pack new MariaDB 10.1.x files
+- remove '%define _rundir' as 13.1 is out of support scope
+- temporarily disable OQGraph It seems to need the boost library with
+  the version not earlier than 1.40 and not later than 1.55 (MDEV-9479)
+- add "BuildRequires: systemd-devel" for SLE12, openSUSE 13.2 and
+  openSUSE Leap in order to enable systemd features during the build of
+  mariadb-101 for these products. Otherwise we get "Performing Test
+  HAVE_SYSTEMD - Failed" and systemd files aren't installed.
+- re-enable profiling support
+- don't remove HandlerSocket plugin [bnc#979524]
+- add 'log-error' and 'secure-file-priv' configuration options
+  (added via configuration-tweaks.tar.bz2) [bsc#963810]
+  * add '/etc/my.cnf.d/error_log.conf' that specifies
+    'log-error = /var/log/mysql/mysqld.log'. If no path is set, the error
+    log is written to '/var/lib/mysql/$HOSTNAME.err', which is not picked
+    up by logrotate.
+  * add '/etc/my.cnf.d/secure_file_priv.conf' which specifies that
+    'LOAD DATA', 'SELECT ... INTO' and 'LOAD FILE()' will only work with
+    files in the directory specified by 'secure-file-priv' option
+    (='/var/lib/mysql-files').
+- run 'usermod -g mysql mysql' only if mysql user is not in mysql group.
+  Run 'usermod -s /bin/false/ mysql' only if mysql user doesn't have
+  '/bin/false' shell set.
+- don't delete the log data when migration fails
+
+-------------------------------------------------------------------
+Thu May  5 14:31:50 UTC 2016 - dmueller@suse.com
+
+- fix constraints conditions for 32bit architectures
+
+-------------------------------------------------------------------
+Tue Feb  2 13:13:35 UTC 2016 - kstreitova@suse.com
+
+- fix information leak via mysql-systemd-helper script 
+  [CVE-2015-5969], [bnc#957174] 
+
+-------------------------------------------------------------------
+Mon Nov 30 11:38:12 UTC 2015 - kstreitova@suse.com
+
+- update to 10.0.22
+  * Release notes:
+    https://kb.askmonty.org/en/mariadb-10022-release-notes/
+  * Changelog:
+    https://kb.askmonty.org/en/mariadb-10022-changelog/
+  * fixed CVEs:
+    CVE-2015-4802, CVE-2015-4807, CVE-2015-4815, CVE-2015-4826
+    CVE-2015-4830, CVE-2015-4836, CVE-2015-4858, CVE-2015-4861
+    CVE-2015-4870, CVE-2015-4913, CVE-2015-4792
+  * remove the following patches (applied upstream)
+    * mysql-community-server-5.6.12-srv_buf_size.patch
+    * mariadb-10.0.16-header_files_const_warnings.patch
+- add mariadb-10.0.21-mysql-test_main_bootstrap.patch that fix
+  main.bootstrap test (change default charset to utf8 in test
+  result) [bnc#937787]
+- add mariadb-10.0.22-fix_build_denabled_profiling_off.patch to
+  fix compilation with '-DENABLED_PROFILING=OFF' 
+
+-------------------------------------------------------------------
+Fri Aug 28 14:38:45 UTC 2015 - kstreitova@suse.com
+
+- update to MariaDB 10.0.21
+  * changes:
+    * https://mariadb.com/kb/en/mariadb/mariadb-10021-release-notes
+  * the following patches were processed upstream and are no longer needed:
+    * mariadb-5.5.28-hotcopy.patch
+    * mariadb-5.1.50-strncat-overflow.patch
+    * mysql-community-server-5.1.51-mysql_config.patch
+    * mariadb-5.5.32-upgrade-exit-status.patch
+    * mariadb-5.5.41-mariadb-admincrash.patch
+- use syntax in mysql-systemd-helper that is accepted by both mariadb 
+  and mysql [bnc#937767]
+- fix spurious macro expansion in comment in specfile
+- install INFO_BIN and INFO_SRC, noticed in MDEV-6912
+- replace readline-devel for readline5-devel (MDEV-6912) [bnc#902396]
+- use spec-cleaner
+- Tweak some cmake switches to enable more things
+  * WITH_ASAN=OFF adress sanitization
+    WITH_LIBWRAP=ON tcp wrappers
+    ENABLED_PROFILING=OFF profiling disable (for mysql)
+    ENABLE_DEBUG_SYNC=OFF debug testing sync disable (for mysql)
+    WITH_PIC=ON by default we want pic generated binaries (for mysql)
+- set cmake options for MariaDB Galera Cluster    
+- remove superfluous '--group' parameter from mysql-systemd-helper
+- make -devel package installable in the presence of LibreSSL
+- cleanup after the update-message if it was displayed
+- add 'exec' to mysql-systemd-helper to shutdown mysql/mariadb cleanly
+  [bnc#943096]
+- remove redundant entry from %{_tmpfilesdir}/mysql.conf. Using both
+  'x' and 'X' options is redundant and causes a warning message.
+  Leaving only the 'x' line fixes this problem. [bnc#942908]
+
+-------------------------------------------------------------------
+Sat Jul 11 12:25:05 UTC 2015 - tchvatal@suse.com
+
+- Sync to git state, fixes bnc#937754 too
+
+-------------------------------------------------------------------
+Tue Jul  7 09:24:09 UTC 2015 - tchvatal@suse.com
+
+- Sync to git state fixing few triv issues
+
+-------------------------------------------------------------------
+Fri Jun 26 07:41:39 UTC 2015 - tchvatal@suse.com
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Thu Jun 25 13:50:12 UTC 2015 - tchvatal@suse.com
+
+- Update to 10.0.20:
+  https://mariadb.com/kb/en/mariadb/mariadb-10020-release-notes/
+  * Fixes bnc#934789 Logjam Attack using 512bit dh groups in ssl
+- Sync the package to git state, redoing initscripts to be more
+  robust
+
+-------------------------------------------------------------------
+Tue Jun 23 13:16:03 UTC 2015 - tchvatal@suse.com
+
+- Update to 10.0.19, sync to git state of repository:
+  https://mariadb.com/kb/en/mariadb/mariadb-10019-release-notes/
+
+-------------------------------------------------------------------
+Tue Apr 14 13:42:54 UTC 2015 - michal.hrusecky@opensuse.org
+
+- fix parent directory has insecure permissions error
+
+-------------------------------------------------------------------
+Tue Apr 14 08:20:47 UTC 2015 - michal.hrusecky@opensuse.org
+
+- disable optional features for mariadb
+  * still possible to use them from mariadb_100 package
+
+-------------------------------------------------------------------
+Mon Mar 23 23:24:11 UTC 2015 - dvaleev@suse.com
+
+- Adjust _constraints. 11GB is not enough for ppc64 builds, 
+  increase to 13GB
+
+-------------------------------------------------------------------
+Wed Mar 11 15:02:44 UTC 2015 - sweet_f_a@gmx.de
+ 
+- fix build for openSUSE 13.2 ppc bnc#921955
+
+-------------------------------------------------------------------
+Tue Mar  3 05:48:08 UTC 2015 - michal.hrusecky@opensuse.org
+
+- Updated to the version 10.0.17
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-10017-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-10017-changelog
+- merged patches to packaging git and regenerated
+  * few fixes mainly to upgrades
+
+-------------------------------------------------------------------
+Mon Mar  2 17:25:47 UTC 2015 - mgorse@suse.com
+
+- README.SuSE is now README.SUSE; fix name in some places.
+
+-------------------------------------------------------------------
+Fri Jan 23 19:17:09 UTC 2015 - xrigou@otenet.gr
+
+- Fix undefined initial status in systemd script (boo #914370)
+
+-------------------------------------------------------------------
+Mon Jan 12 20:29:24 UTC 2015 - xrigou@otenet.gr
+
+- Fix include dir in alternative cnf files (bnc #859345) 
+
+-------------------------------------------------------------------
+Sat Dec  6 11:44:25 UTC 2014 - michal.hrusecky@opensuse.org
+
+- run spec cleaner on spec
+- update to 10.0.15
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-10015-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-10015-changelog
+- conditionally enable more storage engines
+- updated packaging to the latest templates
+
+-------------------------------------------------------------------
+Sun Nov 09 18:53:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in posttrans script
+
+-------------------------------------------------------------------
+Thu Oct  9 16:58:53 UTC 2014 - michal.hrusecky@opensuse.org
+
+- update to 10.0.14
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-10014-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-10014-changelog
+- fix build thanks to pull request from Andreas Schwab
+
+-------------------------------------------------------------------
+Wed Sep 24 12:54:56 UTC 2014 - michal.hrusecky@opensuse.org
+
+- some CentOS/Fedora compatibility
+
+-------------------------------------------------------------------
+Wed Sep 24 08:08:36 UTC 2014 - michal.hrusecky@opensuse.org
+
+- systemd not depending on SUSE version anymore
+- fixing build on distributions with %docdir != %datadir/doc/%name
+
+-------------------------------------------------------------------
+Fri Sep 19 17:41:26 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Get rid of error during update
+
+-------------------------------------------------------------------
+Tue Sep 16 06:37:15 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Little polishing of rc script
+
+-------------------------------------------------------------------
+Wed Sep  3 12:26:08 UTC 2014 - kstreitova@novell.com
+
+- bnc#894479: fix URL (changed from "http://www.mariab.org" to 
+  	      "https://www.mariadb.org") 
+- README.SuSE renamed to README.SUSE
+
+-------------------------------------------------------------------
+Tue Aug 19 06:42:53 UTC 2014 - michal.hrusecky@opensuse.org
+
+- fix privileges as a last step of upgrade
+
+-------------------------------------------------------------------
+Mon Aug 18 17:39:33 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Update to 10.0.13
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-10013-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-10013-changelog
+
+-------------------------------------------------------------------
+Wed Jul  2 21:43:19 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Update to 10.0.12
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-10012-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-10012-changelog
+- Not chowning datadir
+
+-------------------------------------------------------------------
+Mon Jun 16 09:55:54 UTC 2014 - coolo@suse.com
+
+- switch from buildrequire systemd to pkgconfig(systemd) to avoid cycles
+
+-------------------------------------------------------------------
+Fri May 23 09:04:30 CEST 2014 - mhrusecky@suse.cz
+
+- Updating to 10.0 branch of MariaDB
+  * https://mariadb.com/kb/en/what-is-mariadb-100/
+- Many additional fixes like basic systemd support
+- enabled TokuDB storage engine
+- warning text about security implications on first install
+
+-------------------------------------------------------------------
+Wed May 14 05:45:51 UTC 2014 - coolo@suse.com
+
+- use %_rundir if available
+
+-------------------------------------------------------------------
+Wed Nov 13 17:40:37 UTC 2013 - klaussfreire@gmail.com
+
+- Fix perl shebangs
+
+-------------------------------------------------------------------
+Wed Nov 13 16:45:10 UTC 2013 - klaussfreire@gmail.com
+
+- bnc#829430: Move libmysqlclient.so and libmysqlclient_r.so from
+  libmysqlclient-devel into libmysqlclient18 and libmysqlclient_r18
+  subpackages respectively
+
+-------------------------------------------------------------------
+Mon Sep 23 10:46:28 UTC 2013 - bbrunner@suse.com
+
+- bnc#841709: Added libmysqlclient18 as requirement for libmysqlclient_r18
+
+-------------------------------------------------------------------
+Thu Sep 19 08:03:20 UTC 2013 - mhrusecky@suse.com
+
+- comment out old settings dir if it doesn't exist
+
+-------------------------------------------------------------------
+Wed Sep 18 23:33:33 CEST 2013 - mhrusecky@suse.cz
+
+- fixed commenting out of incompatible options
+- updated to MariaDB 5.5.33
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5533-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5533-changelog
+  * not using TokuDB and jmalloc
+
+-------------------------------------------------------------------
+Mon Sep  9 10:37:12 CEST 2013 - mhrusecky@suse.cz
+
+- better version detection
+- drop /etc/mysql dir, use upstream /etc/my.cfn.d only
+
+-------------------------------------------------------------------
+Thu Aug 22 03:04:45 UTC 2013 - crrodriguez@opensuse.org
+
+- Build with -DOPENSSL_LOAD_CONF so mariadb respects 
+  and load the system's openSSL configuration.
+
+-------------------------------------------------------------------
+Wed Aug 21 14:52:43 CEST 2013 - mhrusecky@suse.cz
+
+- fix includedir in configuration file
+
+-------------------------------------------------------------------
+Sat Aug 17 13:46:26 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Fix INSTALL_LIBDIR_RPM and INSTALL_PLUGINDIR_RPM, they need to
+  point to %_lib, not %_libdir
+- Drop so symlink generation and removal, that is not necessary and
+  breaks non x86_64 builds of dependent packages
+
+-------------------------------------------------------------------
+Mon Aug 12 14:32:51 CEST 2013 - mhrusecky@suse.cz
+
+- chown --no-dereference instead of chown to improve security
+  * similar issue as CVE-2013-1976
+- fix build for ppc64 using -mminimal-toc
+
+-------------------------------------------------------------------
+Mon Aug 12 12:25:16 CEST 2013 - mhrusecky@suse.cz
+
+- merge latest packaging fixes
+  * better handling of libdir
+  * more cautious upgrades
+
+-------------------------------------------------------------------
+Wed Aug  7 15:12:13 CEST 2013 - ro@suse.de
+
+- add patch for lib64 on s390x
+  mysql-patches/mariadb-5.5.24-s390x-libdir.patch 
+
+-------------------------------------------------------------------
+Tue Jul 30 21:51:25 CEST 2013 - mhrusecky@suse.cz
+
+- get rid of info which is not info (bnc#747811)
+- minor polishing of spec/installation
+
+-------------------------------------------------------------------
+Fri Jul 26 10:07:33 CEST 2013 - mhrusecky@suse.cz
+
+- fix ownership of logdir (bnc#763150)
+
+-------------------------------------------------------------------
+Thu Jul 25 13:08:06 CEST 2013 - mhrusecky@suse.cz
+
+- avoiding file conflicts with mytop
+
+-------------------------------------------------------------------
+Tue Jul 23 10:28:10 CEST 2013 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.32
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5532-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5532-changelog
+
+-------------------------------------------------------------------
+Thu Jun  6 13:22:37 UTC 2013 - mhrusecky@suse.com
+
+- enable support for libaio (bnc#796164)
+- better rights for logdir (bnc#789263)
+
+-------------------------------------------------------------------
+Wed Jun  5 08:48:42 UTC 2013 - mhrusecky@suse.com
+
+- Moving directory with configuration to upstream default
+  (/etc/mysql -> /etc/my.cnf.d)
+
+-------------------------------------------------------------------
+Wed Jun  5 05:51:45 UTC 2013 - mhrusecky@suse.com
+
+- New default config file
+
+-------------------------------------------------------------------
+Fri May 24 08:27:48 CEST 2013 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.31
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5531-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5531-changelog
+- cleanups in upgrade procedure
+
+-------------------------------------------------------------------
+Tue Mar 26 13:56:50 CET 2013 - mhrusecky@suse.cz
+
+- little cleanup of systemd
+
+-------------------------------------------------------------------
+Tue Mar 26 11:11:37 CET 2013 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.30
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5530-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5530-changelog
+
+-------------------------------------------------------------------
+Tue Mar 12 16:03:07 UTC 2013 - tpaszkowski@suse.com
+
+- systemd awareness for openSUSE >= 12.1
+
+-------------------------------------------------------------------
+Sun Mar  3 21:32:37 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Sun Feb  3 15:29:02 CET 2013 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.29
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5529-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5529-changelog
+  * fixes following CVEs:
+    CVE-2012-5611, CVE-2012-5627, CVE-2012-5615, CVE-2012-5612
+
+-------------------------------------------------------------------
+Mon Jan 28 09:28:44 UTC 2013 - meissner@suse.com
+
+- require the errormessage rpm in libmysqld too
+  for embedded usage like in AmaRoK.
+
+-------------------------------------------------------------------
+Thu Jan 17 09:14:41 CET 2013 - mhrusecky@suse.cz
+
+- making MariaDB default
+
+-------------------------------------------------------------------
+Fri Jan  4 12:52:20 CET 2013 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.28a
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5528a-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5528a-changelog
+  * fixes CVE-2012-5611 (bnc#792444)
+  * fixes CVE-2012-4414 (bnc#779476)
+
+-------------------------------------------------------------------
+Wed Oct 31 22:31:34 CET 2012 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.28
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5527-release-notes
+    http://kb.askmonty.org/v/mariadb-5528-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5527-changelog
+    http://kb.askmonty.org/v/mariadb-5528-changelog
+
+-------------------------------------------------------------------
+Tue Aug 28 11:53:55 UTC 2012 - xgpub@tellas.gr
+
+- Reenable use of initgroups() (revert a temporary workaround
+  for ancient bmc#3037, search below for bug #39798).
+  This is necessary if we want to use the auth_pam plugin to 
+  authenticate users against their unix password via pam_unix2.
+  For that, mysqld must run as group shadow and maintain membership
+  after forking.
+
+-------------------------------------------------------------------
+Mon Jul  2 12:28:40 UTC 2012 - mhrusecky@suse.com
+
+- fixed path for messages from previous commit
+
+-------------------------------------------------------------------
+Mon Jun 25 14:05:10 CEST 2012 - mhrusecky@suse.cz
+
+- splitted out error messages and put them into diferent directory
+
+-------------------------------------------------------------------
+Sat Jun 23 09:52:00 CEST 2012 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.25
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5525-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5525-changelog
+
+-------------------------------------------------------------------
+Tue Jun 19 10:52:13 CEST 2012 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.5.24
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5524-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5524-changelog
+
+-------------------------------------------------------------------
+Sat Jun  9 18:30:56 UTC 2012 - xgpub@tellas.gr
+
+- move the dialog.so client plugin to the client library package
+
+-------------------------------------------------------------------
+Wed Apr 25 11:24:31 UTC 2012 - dvaleev@suse.com
+
+- fix plugin libdir on ppc64 
+
+-------------------------------------------------------------------
+Sun Apr 15 09:51:54 CEST 2012 - mhrusecky@suse.cz
+
+- migrated to MariaDB 5.5.23, see:
+  http://kb.askmonty.org/en/what-is-mariadb-55
+  http://kb.askmonty.org/en/release-notes-mariadb-55-series
+  http://kb.askmonty.org/en/changelogs-mariadb-55-series
+
+-------------------------------------------------------------------
+Tue Apr 10 11:42:16 CEST 2012 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.3.6
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-536-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-536-changelog
+
+-------------------------------------------------------------------
+Mon Mar 12 16:03:38 UTC 2012 - mhrusecky@suse.cz
+
+- migrated to MariaDB 5.3.5, see:
+  http://kb.askmonty.org/en/what-is-mariadb-53
+  http://kb.askmonty.org/en/release-notes-mariadb-53-series
+  http://kb.askmonty.org/en/changelogs-mariadb-53-series
+
+-------------------------------------------------------------------
+Sat Feb 18 08:25:25 UTC 2012 - mhrusecky@suse.cz
+
+- updated license to conform new policy
+
+-------------------------------------------------------------------
+Mon Jan 30 08:46:31 UTC 2012 - mhrusecky@suse.cz
+
+- adding /ush/share/aclocal in files
+- renaming *-debug package to *-debug-version to avoid conflicts
+
+-------------------------------------------------------------------
+Mon Jan 30 08:23:32 UTC 2012 - mhrusecky@suse.cz
+
+- adding missing buildrequires (fixes build for factory)
+
+-------------------------------------------------------------------
+Thu Dec  8 10:39:05 CET 2011 - mhrusecky@suse.cz
+
+- migrated to the new common template
+- updated to MariaDB 5.2.10
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-5210-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-5210-changelog
+
+-------------------------------------------------------------------
+Wed Nov 23 09:27:43 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov  2 12:55:18 UTC 2011 - bkutil@suse.com
+
+- Fix pretrans script in spec file to use RPM embedded LUA.
+
+-------------------------------------------------------------------
+Tue Oct 18 14:26:19 CEST 2011 - mhrusecky@suse.cz
+
+- re-adding static mysql user id
+
+-------------------------------------------------------------------
+Sun Oct  2 23:47:02 CEST 2011 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.9
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-529-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-529-changelog
+
+-------------------------------------------------------------------
+Wed Aug 24 16:04:32 CEST 2011 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.8
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-528-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-528-changelog
+
+-------------------------------------------------------------------
+Tue Aug 16 15:50:27 CEST 2011 - mhrusecky@suse.cz
+
+- not building embedded server as we don't ship it anyway and it
+  adds some unresolvable dependencies
+
+-------------------------------------------------------------------
+Wed Jul 27 13:51:14 CEST 2011 - mhrusecky@suse.cz
+
+- requiring %{version} and not %{srv_vers}
+  - dependencies are resolvable now
+
+-------------------------------------------------------------------
+Sat Jul 16 23:14:42 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix strict-aliasing warnings
+- allow using the "pool of threads" feature that requires libevent
+
+-------------------------------------------------------------------
+Wed Jun 22 19:19:50 CEST 2011 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.7
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-527-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-527-changelog
+
+-------------------------------------------------------------------
+Sun May 15 18:53:40 CEST 2011 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.6
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-526-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-526-changelog
+
+-------------------------------------------------------------------
+Mon Mar 14 16:47:16 CET 2011 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.5
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-525-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-525-changelog
+
+-------------------------------------------------------------------
+Wed Feb 23 16:20:02 CET 2011 - mhrusecky@suse.cz
+
+- fixed init script to
+  - work with SELinux (bnc#635645)
+  - allow running as different user/group
+  - create TMPDIR correctly
+
+-------------------------------------------------------------------
+Wed Feb 23 10:59:13 UTC 2011 - adrian@suse.de
+
+- remove runlevel 2 from default start in init script or it isn't
+  usable on openSUSE 11.4 and later
+
+-------------------------------------------------------------------
+Tue Dec  7 11:27:24 CET 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.4
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-524-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-524-changelog
+
+-------------------------------------------------------------------
+Wed Nov 10 11:58:13 CET 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.2.3
+  * Release notes:
+    http://kb.askmonty.org/v/mariadb-523-release-notes
+  * Changelog:
+    http://kb.askmonty.org/v/mariadb-523-changelog
+
+-------------------------------------------------------------------
+Thu Oct 21 11:07:15 CEST 2010 - mhrusecky@suse.cz
+
+- fixed building on Mandriva
+
+-------------------------------------------------------------------
+Mon Oct 18 22:53:09 CEST 2010 - mhrusecky@suse.cz
+
+- rewritten spec file
+  - build and install parts are in separate file now
+  - patches in the archive
+    - contains more documentation
+    - contains tags
+    - adding/removing patches just at in one configuration file
+
+-------------------------------------------------------------------
+Wed Sep 29 12:15:59 CEST 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.1.50
+  - based on MySQL 5.1.50 maintenance update
+  - changelog:
+    http://kb.askmonty.org/v/mariadb-5150-changelog
+  - release notes:
+    http://kb.askmonty.org/v/mariadb-5150-release-notes
+- fixed init script to work on SELinux machines (bnc#635645)
+
+-------------------------------------------------------------------
+Thu Aug 12 11:54:38 CEST 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.1.49
+  - based on MySQL 5.1.49 maintenance update
+  - changelog:
+    http://kb.askmonty.org/v/mariadb-5149-changelog
+  - release notes:
+    http://kb.askmonty.org/v/mariadb-5149-release-notes
+
+-------------------------------------------------------------------
+Wed Jun  2 10:38:05 CEST 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.1.47
+  - based on MySQL 5.1.47 maintenance update
+  - changelog:
+    http://askmonty.org/wiki/Manual:MariaDB_5.1.47_Changelog
+  - release notes:
+    http://askmonty.org/wiki/Manual:MariaDB_5.1.47_Release_Notes
+
+-------------------------------------------------------------------
+Wed May 26 14:02:25 CEST 2010 - mhrusecky@suse.cz
+
+- Fixed build for Fedora12
+
+-------------------------------------------------------------------
+Tue May 25 14:44:15 CEST 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.1.44b
+  - important security related update
+  - changelog:
+    http://askmonty.org/wiki/Manual:MariaDB_5.1.44b_Release_Notes
+- not obsoleting mysql, to make sure mysql gets replaced by
+  mysql-community-server by default
+
+-------------------------------------------------------------------
+Mon Apr 26 10:34:41 CEST 2010 - mhrusecky@suse.cz
+
+- packaging MariaDB shared libraries to be used by client and tools
+
+-------------------------------------------------------------------
+Wed Apr  7 10:26:52 CEST 2010 - mhrusecky@suse.cz
+
+- updated to MariaDB 5.1.44
+  - changelog:
+    http://askmonty.org/wiki/index.php/Manual:MariaDB_5.1.44_Changelog
+  - release notes:
+    http://askmonty.org/wiki/index.php/Manual:MariaDB_5.1.44_Release_Notes
+
+-------------------------------------------------------------------
+Wed Mar 17 17:44:37 UTC 2010 - mhrusecky@suse.cz
+
+- adapted to MariaDB 5.1.42
+  - changelog:
+    http://askmonty.org/wiki/index.php/Manual:MariaDB_5.1.42_Changelog
+  - release notes:
+    http://askmonty.org/wiki/index.php/Manual:MariaDB_5.1.42_Release_Notes
+
+-------------------------------------------------------------------
+Mon Mar  8 15:13:11 UTC 2010 - mhrusecky@suse.cz
+
+- updated to 5.1.44, see
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-43.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-44.html
+- splitting out shared libmysqld shared library (quick dirty way)
+- preparing spec file to be more general and easily adjustable to 
+  other MySQL flavours
+
+-------------------------------------------------------------------
+Sun Jan 10 00:57:25 CET 2010 - mhrusecky@suse.cz
+
+- updated to 5.1.42, see
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-42.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-41.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-40.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-39.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-38.html
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-37.html
+
+-------------------------------------------------------------------
+Tue Dec 15 01:23:16 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Dec  1 17:52:18 CET 2009 - mhrusecky@suse.cz
+
+- removing compatibility symlink
+  - intended for 11.2 but never get there
+- fixing various security issues (bnc#557669) 
+  - upstream #47320 - checking server certificates (CVE-2009-4028)
+  - upstream #48291 - error handling in subqueries (CVE-2009-4019)
+  - upstream #47780 - preserving null_value flag in GeomFromWKB()
+                      (CVE-2009-4019)
+  - upstream #39277 - symlink behaviour fixed (CVE-2008-7247)
+  - upstream #32167 - symlink behaviour refixed (CVE-2009-4030)
+
+-------------------------------------------------------------------
+Wed Nov 11 14:23:43 CET 2009 - mhrusecky@suse.cz
+
+- making pid file readable by everybody
+- fixing 'rcmysql status' for non-root
+
+-------------------------------------------------------------------
+Thu Oct 29 14:11:09 CET 2009 - mhrusecky@suse.cz
+
+- adding /var/lib/mysql/mysql.sock symlink for compatibility with
+  applications for older versions
+- using kill instead of killproc as killproc matches by default all
+  running MySQL instances (even KDE ones)
+- checking for log consistency in rc script instead of post of spec
+  as it makes more sense
+
+-------------------------------------------------------------------
+Fri Oct 16 09:32:35 UTC 2009 - adrian@suse.de
+
+- fix PreRequires or mysql package can't be used in build enviroment
+- do not fail on usermod call in %pre as specified
+
+-------------------------------------------------------------------
+Mon Oct 12 18:36:04 UTC 2009 - coolo@novell.com
+
+- fix prereq for usermod
+
+-------------------------------------------------------------------
+Mon Oct  5 11:11:35 CEST 2009 - mhrusecky@suse.cz
+
+- fixed my.cnf rights (bnc#539249)
+- fixed restart on update (bnc#520876)
+
+-------------------------------------------------------------------
+Tue Sep 15 16:45:23 CEST 2009 - mhrusecky@suse.cz
+
+- Few better formulations in README.SuSE (bnc#539243)
+
+-------------------------------------------------------------------
+Tue Aug 25 10:19:04 CEST 2009 - mhrusecky@suse.cz
+
+- Refixing bnc#420313 so mysql_config will return better values
+
+-------------------------------------------------------------------
+Wed Aug 12 13:29:09 CEST 2009 - mhrusecky@suse.cz
+
+- Using configure option to enforce pthreads rwlocks on s390 instead
+  of sed substitution 
+
+-------------------------------------------------------------------
+Tue Jul 28 17:10:31 CEST 2009 - mhrusecky@suse.cz
+
+- Applying upstream patch for upstream bug#43594
+  (hotcopy will ignore log tables) (bnc#525325)
+- Not using bmove512 as it may slow things down
+  (see upstream bug#19975)
+
+-------------------------------------------------------------------
+Mon Jul 27 14:45:24 CEST 2009 - mhrusecky@suse.cz
+
+- Applying upstream patch for upstream bug#36259
+  'Optimizing with ORDER BY'
+
+-------------------------------------------------------------------
+Fri Jul 24 17:35:07 CEST 2009 - dmueller@suse.de
+
+- fix baselibs.conf (bnc#525065)
+
+-------------------------------------------------------------------
+Tue Jul  7 11:19:05 CEST 2009 - mhrusecky@suse.cz
+
+- updated to 5.1.36, see
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-36.html
+
+-------------------------------------------------------------------
+Fri Jun 26 11:09:34 CEST 2009 - mhrusecky@suse.cz
+
+- fixed rcmysql status
+
+-------------------------------------------------------------------
+Tue Jun 23 19:33:08 CEST 2009 - mhrusecky@suse.cz
+
+- extra escaping in rc script just to be sure
+- creating parent directories for logs when they don't exists
+- rc script didn't always exited when it should
+- checking for incompatible databases in way it can be logged
+
+-------------------------------------------------------------------
+Fri Jun 19 13:17:44 CEST 2009 - mhrusecky@suse.cz
+
+- actualized README.SuSE
+
+-------------------------------------------------------------------
+Tue Jun 16 14:32:00 CEST 2009 - mhrusecky@suse.cz
+
+- updated to 5.1.35, see
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-35.html
+- fixed some tests
+
+-------------------------------------------------------------------
+Mon Jun  8 13:33:35 CEST 2009 - mhrusecky@suse.cz
+
+- putting all log files to subdirectory in /var/log
+
+-------------------------------------------------------------------
+Mon Jun  1 18:33:43 CEST 2009 - mhrusecky@suse.cz
+
+- moving socket back to /var/lib/mysql for people with old distributions
+
+-------------------------------------------------------------------
+Sat May  2 13:43:40 CEST 2009 - chris@computersalat.de
+
+- fdupes fix for fedora 
+
+-------------------------------------------------------------------
+Fri May  1 17:55:12 CEST 2009 - chris@computersalat.de
+
+- beautify spec file
+  o some if's to get Fedora, Centos build
+- to minimize effort for admins
+  o with-charset=utf8
+  o with-collation=utf8_unicode_ci
+
+-------------------------------------------------------------------
+Thu Apr 30 10:58:29 CEST 2009 - mhrusecky@suse.cz
+
+- adding upgrade log
+
+-------------------------------------------------------------------
+Tue Apr 28 18:33:22 CEST 2009 - mhrusecky@suse.cz
+
+- fixed update so only one at the time is allowed
+
+-------------------------------------------------------------------
+Fri Apr 24 17:27:11 CEST 2009 - mhrusecky@suse.cz
+
+- updated to 5.1.34, see
+  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-34.html
+- added README.SuSE with notes about version 5.1
+- fixed migration problem from 5.0.X regarding moved pidfile
+
+-------------------------------------------------------------------
+Fri Apr 10 14:40:54 CEST 2009 - mhrusecky@suse.cz
+
+- Fixed SSL support on 64-bit machines
+
+-------------------------------------------------------------------
+Tue Apr  7 18:33:16 CEST 2009 - mhrusecky@suse.cz
+
+- Merging with development version of MySQL 5.1
+  - following changes were committed since 
+    Mon Oct  1 19:55:46 CEST 2007 when package development was
+    branched
+    * Fri Apr  3 16:05:02 CEST 2009 - mhrusecky@suse.cz
+      - better fix for rc status
+      - my_safe_process moved to %_bindir
+    * Thu Apr  2 18:41:08 CEST 2009 - mhrusecky@suse.cz
+      - updated to 5.1.33, see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-33.html
+      - fixed path dependent build of scripts
+    * Tue Mar 17 19:10:09 CET 2009 - mhrusecky@suse.cz
+      - localstatedir is back to /var/lib/mysql as it is used as 
+        default value for datadir
+      - fixed upgrade using datadir
+    * Tue Mar 17 18:23:35 CET 2009 - mhrusecky@suse.cz
+      - mysql_install_db now uses group option too
+      - log file migrated to /var/log
+    * Thu Mar 12 18:07:24 CET 2009 - mhrusecky@suse.cz
+      - Fixing mysql-test so it can be installed in 
+        /usr/share/mysql-test
+    * Mon Mar  9 20:17:32 CET 2009 - mhrusecky@suse.cz
+      - Adjusting suse-test-run as there is no longer mysql-Max
+        package
+    * Fri Mar  6 15:59:40 CET 2009 - mhrusecky@suse.cz
+      - updated to 5.1.32, see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-32.html
+      - mysql-5.1.31-test-allowed-packets.patch no longer needed 
+        as it was fixed upstream
+    * Tue Mar  3 19:53:11 CET 2009 - mhrusecky@suse.cz
+      - moving tmp and socket/pidfiles directories to the better 
+        location
+    * Mon Mar  2 14:40:19 CET 2009 - mhrusecky@suse.cz
+      - dropping mysql-storage-plugins package (now part of mysql 
+        base package)
+    * Fri Feb 27 16:04:57 CET 2009 - mhrusecky@suse.cz
+      - fixed main.variables-big test
+    * Thu Feb 26 17:48:51 CET 2009 - mhrusecky@suse.cz
+      - fixed federated plugin to avoid versioning
+      - fixed main.mysqlbinlog_row_big test
+      - fixed dependencies and other things because of dropped 
+        mysql-Max
+    * Mon Feb 23 17:28:38 CET 2009 - mhrusecky@suse.cz
+      - updated to 5.1.31, see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-31.html
+        * mysql-5.1.30-test-daemon-sbin.patch no longer needed as 
+          something better was accepted upstream
+        * mysql-openssl-test.patch is already in upstream too
+    * Mon Feb 23 15:25:22 CET 2009 - mhrusecky@suse.cz
+      - dropping unused rc.mysql file
+      - fixed status detection
+    * Fri Feb 20 15:06:22 CET 2009 - mhrusecky@suse.cz
+      - innodb support compiled as a static part of MySQL
+      - getting rid of sysconfig
+    * Tue Jan 20 18:39:38 CET 2009 - mhrusecky@suse.cz
+      - automatic plugins loading
+    * Mon Jan  5 18:34:40 CET 2009 - mhrusecky@suse.cz
+      - init script checks for relative paths (bnc#463586)
+    * Mon Dec  8 17:27:29  CET 2008 - mhrusecky@suse.cz
+      - updated to 5.1.30, see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-28.html
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-29.html
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-30.html
+      - indentation in rc scripts fixed (bnc#435519)
+      - more comments and minor fixes in spec file
+      - using symlinks for mysql-test-run and mtr as these are the 
+        same files and they needs some patching
+      - fixed some of the automatic tests
+      - dropping some patches which are no longer used
+    * Thu Sep 25 12:05:46 CEST 2008 - mmarek@suse.cz
+      - merged init script changes from the 5.0 package
+    * Wed Jul 30 14:57:46 CEST 2008 - mmarek@suse.cz
+      - updated to 5.1.26-rc, see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-26.html
+    * Fri Jul  4 12:58:41 CEST 2008 - mmarek@suse.cz
+      - updated to 5.1.25-rc, for changes see
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-24.html
+        http://dev.mysql.com/doc/refman/5.1/en/news-5-1-25.html
+    * Fri Mar 14 14:19:36 CET 2008 - mmarek@suse.cz
+      - fixed mysqld_multi.patch (bnc#371000)
+    * Fri Mar 14 13:31:01 CET 2008 - mmarek@suse.cz
+      - add 'user = mysql' to mysqld_multi example groups
+    * Fri Mar 14 09:06:11 CET 2008 - mmarek@suse.cz
+      - dropped README.SUSE (bnc#357634)
+      - moved mysql_upgrade to the server package (bnc#366820)
+    * Thu Mar 13 17:29:32 CET 2008 - mmarek@suse.cz
+      - adjusted license tags
+    * Wed Mar 12 18:48:52 CET 2008 - mmarek@suse.cz
+      - finally convert err-log to log-error in my.cnf
+    * Wed Mar 12 17:58:03 CET 2008 - mmarek@suse.cz
+      - shortened the comment in sysconfig.mysql, a detailed
+        description or HOWTO can be added to a README (created a 
+        draft)
+    * Wed Mar 12 16:03:16 CET 2008 - mmarek@suse.cz
+      - don't preinstall /var/lib/mysql-databases, create datadirs
+        in mysqld_multi on first startup insteal
+    * Tue Mar 11 13:38:33 CET 2008 - mmarek@suse.cz
+      - updated to 5.1.23-rc
+        * fixes CVE-2007-5970
+        * for other changes see
+          http://dev.mysql.com/doc/refman/5.1/en/news-5-1-23.html
+    * Tue Feb 12 12:00:00 CET 2008 - richard@radoeka.nl
+      - Added multi database support by
+        o updating /etc/init.d/mysql, it has now 2 legs the existing 
+          one to start a single database, and a new one to start and 
+          stop multiple database.
+        o Added a sysconfig variable
+        o Added a directory /var/lib/mysql-databases to hold 
+          databases,
+        o Updated /etc/my.cnf with some examples database 
+          configurations
+    * Fri Nov  9 15:51:08 CET 2007 - mmarek@suse.cz
+      - removed the sles9 workaround that's not needed anymore and 
+        breaks sles9 builds instead
+    * Wed Oct 10 22:30:44 CEST 2007 - mmarek@suse.cz
+      - merged the standard and Max server packages
+      - example, csv and federated storage engines are packaged in
+        mysql-storage-plugins
+      - build the NDB cluster:
+        * mysql-ndb-storage
+        * mysql-ndb-management
+        * mysql-ndb-tools
+        * mysql-ndb-extra
+      - removed libmysqlclient static libraries and .la files
+      - moved libmysqlclient and libmysqld to %%_libdir, %%_libdir/mysql
+        will only be used for the server plugins
+    * Mon Oct  1 19:55:46 CEST 2007 - mmarek@suse.cz
+      - initial 5.1 packaging (5.1.22-rc)
+        * ported the 5.0 spec file to make it build at least
+        * highlights from the "What's New" list
+         (http://dev.mysql.com/doc/refman/5.1/en/mysql-nutshell.html):
+         - table partitioning
+         - plugin API
+         - event scheduler
+         - basic XML functions (ExtractValue() and UpdateXML())
+         - mysqlslap load emulator
+
+-------------------------------------------------------------------
+Mon Mar 30 01:05:45 CEST 2009 - crrodriguez@suse.de
+
+- configure flag --with-pic is not really used for libmysqld.a
+  restore -fPIC in CFLAGS  
+
+-------------------------------------------------------------------
+Tue Mar  3 02:15:37 CET 2009 - crrodriguez@suse.de
+
+- use --disable-static, note that this will only
+  remove static libraries that have shared counterparts, those
+  in static form only remain available as usual (saves around 6MB)
+- remove "la" files
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 23 18:24:37 CEST 2008 - mmarek@suse.cz
+
+- fix mysql_install_db when the hostname is 'localhost'
+  (bnc#429618, mysql#35754)
+
+-------------------------------------------------------------------
+Thu Sep 25 16:45:53 CEST 2008 - mmarek@suse.cz
+
+- build -max and -debug with --with-big-tables and archive, csv,
+  example, blackhole and federated engines to match the binary
+  builds provided by MySQL (bnc#427384)
+
+-------------------------------------------------------------------
+Fri Sep 12 18:33:47 CEST 2008 - mmarek@suse.cz
+
+- better fix for CVE-2008-2079 (bnc#425079, mysql#32167)
+
+-------------------------------------------------------------------
+Fri Sep 12 15:37:25 CEST 2008 - mmarek@suse.de
+
+- remove no longer needed s390 workaround
+
+-------------------------------------------------------------------
+Tue Sep  2 11:08:38 CEST 2008 - mmarek@suse.cz
+
+- fix mysql_config --libs output (bnc#420313, mysql#39175)
+
+-------------------------------------------------------------------
+Mon Aug 25 10:04:20 CEST 2008 - mmarek@suse.cz
+
+- updated to 5.0.67, for changes see
+ http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-67.html
+
+
+-------------------------------------------------------------------
+Mon Aug 18 15:48:07 CEST 2008 - mmarek@suse.de
+
+- add Required-Stop: $network $remote_fs to the init script
+
+-------------------------------------------------------------------
+Fri May 30 15:35:17 CEST 2008 - mmarek@suse.cz
+
+- fix a race in rcmysql restart between the old mysql removing it's
+  pid file and exiting - use checkproc -p (bnc#359522, bnc#332530,
+  #395710)
+
+-------------------------------------------------------------------
+Thu May 22 22:02:23 CEST 2008 - mmarek@suse.cz
+
+- increase timeout in rcmysql stop, should fix failed restarts
+  (bnc#359522, bnc#332530)
+
+-------------------------------------------------------------------
+Mon May 19 15:02:38 CEST 2008 - mmarek@suse.cz
+
+- fixed a privilege bypass with DATA/INDEX DIRECTORY
+  (bnc#387746, mysql#32167, CVE-2008-2079)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar 14 14:19:36 CET 2008 - mmarek@suse.cz
+
+- fixed mysqld_multi.patch (bnc#371000)
+
+-------------------------------------------------------------------
+Fri Mar 14 13:31:01 CET 2008 - mmarek@suse.cz
+
+- add 'user = mysql' to mysqld_multi example groups
+
+-------------------------------------------------------------------
+Fri Mar 14 09:21:41 CET 2008 - mmarek@suse.cz
+
+- synced with server:database:mysql51
+- dropped README.SUSE (bnc#357634)
+- moved mysql_upgrade to the server package (bnc#366820)
+- adjusted license tags
+- finally convert err-log to log-error in my.cnf
+- Added multi database support by
+  o updating /etc/init.d/mysql, it has now 2 legs the existing one to start
+    a single database, and a new one to start and stop multiple database.
+  o Added a sysconfig variable
+  o Updated /etc/my.cnf with some examples database configurations
+  (Done by Richard Bos, minor edits by me, bnc#353120)
+
+
+-------------------------------------------------------------------
+Tue Feb 26 13:50:00 CET 2008 - mmarek@suse.cz
+
+- updated to 5.0.51a
+  * incorporates previous security fixes
+
+-------------------------------------------------------------------
+Fri Jan  4 15:25:50 CET 2008 - mmarek@suse.cz
+
+- updated to 5.0.51
+  * statements that contain unclosed /*-comments now are rejected
+    with a syntax error [mysql#28779]
+  * server parser performance improvements [mysql#30625,
+    mysql#30237]
+  * security fix: CVE-2007-5969 / mysql#32111
+  * for a full list of changes, see
+  http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-51.html
+- fixed CVE-2007-6303 / mysql#29908
+- fixed CVE-2007-6304 / mysql#29801
+- fixed several testsuite failures
+  (mybug25359.patch, mybug32458.patch, mybug33050.patch)
+
+-------------------------------------------------------------------
+Wed Dec 26 07:45:12 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postun 
+
+-------------------------------------------------------------------
+Thu Nov  8 13:39:51 CET 2007 - mmarek@suse.cz
+
+- avoid using distributed pregenerated files instead of
+  files generated in the builddirs
+
+-------------------------------------------------------------------
+Fri Aug 31 13:46:48 CEST 2007 - mmarek@suse.cz
+
+- make sure mysql-shared is replaced by libmysqlclient15 when
+  updating from 10.1 or 10.2 [#306556]
+
+-------------------------------------------------------------------
+Wed Aug 29 17:55:40 CEST 2007 - mmarek@suse.cz
+
+- fix for http://bugs.mysql.com/30069
+  (thanks to Richard Guenther)
+
+-------------------------------------------------------------------
+Tue Aug 21 10:21:49 CEST 2007 - mmarek@suse.cz
+
+- make TMPDIR relative to datadir= setting in /etc/my.cnf
+- add a hint about changing datadir to rcmysql [#285076]
+
+-------------------------------------------------------------------
+Fri Jul 27 11:14:56 CEST 2007 - mmarek@suse.cz
+
+- updated to 5.0.45, for changes see
+  http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-45.html
+
+-------------------------------------------------------------------
+Mon Jul  2 10:58:59 CEST 2007 - mmarek@suse.cz
+
+- mysql_upgrade: don't fail if the db is already up-to-date
+  [#287209] (mysql_upgrade-exit-status.patch)
+
+-------------------------------------------------------------------
+Mon Jun  4 15:14:50 CEST 2007 - mmarek@suse.cz
+
+- updated the mysql-test package (there are still some failures
+  that don't occur during build-time tests)
+- use a new version of the mysql_upgrade program, which finally
+  handles errors from /usr/bin/mysql correctly
+
+-------------------------------------------------------------------
+Fri Jun  1 09:15:49 CEST 2007 - mmarek@suse.cz
+
+- fixed build for older distributions in the buildservice
+
+-------------------------------------------------------------------
+Tue May 29 12:58:35 CEST 2007 - mmarek@suse.de
+
+- run ldconfig in %%post of library packages
+- don't copy example my.cnf files to /usr/share/doc (they're
+  already installed in /usr/share/mysql
+- fixed libmysqlclient-devel dependencies
+
+-------------------------------------------------------------------
+Mon May 28 10:34:45 CEST 2007 - mmarek@suse.cz
+
+- updated to 5.0.41, for changes see
+  http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-37.html
+  http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-41.html
+- fixed --with testsuite build [#252630]
+- renamed subpackages according to library packaging policy:
+  mysql-shared -> libmysqlclient15, libmysqlclient_r15
+  mysql-devel -> libmysqlclient-devel (pulls in both flavors)
+- increased rcmysql start timeout to 30 seconds, don't return
+  failure if mysql doesn't start early enough (except for update
+  case) [#273938]
+
+-------------------------------------------------------------------
+Thu Mar 29 10:58:14 CEST 2007 - mmarek@suse.de
+
+- BuildRequires fixes:
+   + ncurses-devel
+   + zlib-devel
+   + procps (configure needs /bin/ps)
+   + pwdutils (to be able to install the package in the build root)
+   + use sed instead of ex in the s390 workaround
+- build with -DFORCE_INIT_OF_VARS to get rid of some uninitialized
+  variable warnings
+
+-------------------------------------------------------------------
+Mon Mar 12 10:16:55 CET 2007 - mmarek@suse.cz
+
+- added openssl-devel to Requires: of mysql-devel to fix build of
+  packages using mysql-devel
+
+-------------------------------------------------------------------
+Thu Feb 22 17:20:33 CET 2007 - mmarek@suse.cz
+
+- updated to 5.0.33, see
+  http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-33.html
+  for a list of changes
+- added SuSEfirewall2 description file [#246917]
+- print a friendly message about "Duplicate column" errors in
+  mysql_upgrade
+  [#228248] (mysql_upgrade.patch)
+- fixed a typo in /etc/logrotate/mysql [#244620]
+- build the client, libraries and the Max server with OpenSSL
+  support (FIXME: not yet tested, there are some failures in the
+  testsuite)
+- don't package the PDF manual (it's constantly out of date and it
+  might make more sense to create a noarch mysql-manual.rpm or just
+  point users to http://dev.mysql.com/doc/ instead)
+- don't link libmysql to the various client binaries statically
+- created a new mysql-tools subpackage with scripts / binaries
+  that aren't essential for the client and server packages and
+  bring additional deps (perl-DBD-mysql namely)
+- use VPATH builds for building the different server versions for
+  easier debugging (no 'make clean' in-between)
+- build the client and libraries only once to save build time
+  (mysql-build-only-server.patch)
+- cleaned up spec file
+
+-------------------------------------------------------------------
+Mon Jan 22 15:18:36 CET 2007 - mmarek@suse.cz
+
+- silence some gcc warnings (compiler-warnings.patch)
+
+-------------------------------------------------------------------
+Wed Jan  3 12:09:38 CET 2007 - mmarek@suse.cz
+
+- mysql-devel doesn't need mysql-client [#231010]
+
+-------------------------------------------------------------------
+Tue Dec 19 11:54:45 CET 2006 - mmarek@suse.cz
+
+- updated to 5.0.27
+  * includes the fix for http://bugs.mysql.com/bug.php?id=23427
+- fixed build with tar-1.16
+- fixed small typo in README.SuSE, renamed to README.SUSE [#226716]
+
+-------------------------------------------------------------------
+Thu Nov 23 11:28:15 CET 2006 - mmarek@suse.de
+
+- don't run killproc in rcmysql to avoid sending SIGKILL if
+  possible [#223209]
+
+-------------------------------------------------------------------
+Wed Nov 15 17:16:46 CET 2006 - mmarek@suse.de
+
+- create user mysql with shell /bin/false, because 'su mysql' is
+  not needed anymore (see bug #57071)
+
+-------------------------------------------------------------------
+Wed Nov 15 12:30:43 CET 2006 - mmarek@suse.cz
+
+- use /var/lib/mysql/.tmp instead of /var/lib/mysql/tmp to avoid
+  collision with a database named 'tmp' [#221188]
+
+-------------------------------------------------------------------
+Tue Nov 14 12:10:16 CET 2006 - mmarek@suse.cz
+
+- use upstream patch for the varbinary upgrade problem (fixes the
+  problem in the REPAIR TABLE implementation, not in the mysqlcheck
+  program)
+  [#188134, http://bugs.mysql.com/bug.php?id=19371]
+
+-------------------------------------------------------------------
+Tue Oct 31 16:56:24 CET 2006 - mmarek@suse.cz
+
+- fixed another binary incompatibility in mysql-shared
+  [http://bugs.mysql.com/bug.php?id=23427] (mybug23427.patch)
+
+-------------------------------------------------------------------
+Thu Oct 19 16:02:59 CEST 2006 - pnemec@suse.cz
+
+- updated to 5.0.26
+  * fixes security bugs CVE-2006-4226 and CVE-2006-4227
+  * Ctrl-C in the mysql CLI client tries to kill the current
+    statement first, instead of exiting
+  * mysqlshow treats wild characters such as '_' as literal, if the
+    argument matches a single database name exactly
+  * DROP VIEW with multiple views will try to drop remaining views
+    and not stop at first error
+  * the server now issues a warning if it removes leading spaces
+    from an alias
+  * the VIEW_DEFINITION column of the INFORMATION_SCHEMA VIEWS
+    table now contains information about the view algorithm
+  * mysql_upgrade doesn't read the [client] section of my.cnf, only
+    the [mysql_upgrade] section
+  * the LOAD DATA FROM MASTER and LOAD TABLE FROM MASTER statements
+    are deprecated, see
+    http://dev.mysql.com/doc/refman/5.0/en/load-data-from-master.html
+  * mysqldump now has a --flush-privileges option. It causes
+    mysqldump to emit a FLUSH PRIVILEGES statement after dumping
+    the mysql database
+  * lots of bugfixes
+- new patch uninitialized_variable.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 10:37:29 CEST 2006 - mmarek@suse.cz
+
+- The ISAM storage engine is no longer supported, update the
+  warning in rc.mysql.
+
+-------------------------------------------------------------------
+Mon Oct  2 13:17:19 CEST 2006 - mmarek@suse.cz
+
+- updated to version 5.0.24a
+  * fixes a binary incompatibility of mysql-shared introduced in
+    5.0.24
+  * fixes a buffer overflow caused by statements with long DEFINER
+    clause
+  * fixes crash when closing temporary tables
+
+-------------------------------------------------------------------
+Mon Sep 11 19:45:32 CEST 2006 - joeshaw@suse.de
+
+- Add the libmysqld static libraries to the devel package.
+
+-------------------------------------------------------------------
+Wed Aug 16 16:17:39 CEST 2006 - mmarek@suse.cz
+
+- updated to version 5.0.24
+  * added the --ssl-verify-server-cert option to MySQL client
+    programs and MYSQL_OPT_SSL_VERIFY_SERVER_CERT for
+    mysql_options()
+  * new ssl_ca, ssl_capath, ssl_cert, ssl_cipher, and ssl_key
+    system variables
+  * added --skip-merge option to disable the MERGE storage engine,
+    because it has a minor security problem
+    [http://bugs.mysql.com/20230]
+  * mysql_upgrade script reimplemented in C
+  * bug fixes
+- dropped obsolete CVE-2006-0903.patch and pick_args.patch,
+  added my_libwrap.patch [http://bugs.mysql.com/18246]
+
+-------------------------------------------------------------------
+Tue Aug  1 16:46:22 CEST 2006 - mmarek@suse.cz
+
+- removed Recommends: from mysql-debug, it doesn't work on older
+  dists
+
+-------------------------------------------------------------------
+Mon Jul 31 16:14:05 CEST 2006 - mmarek@suse.cz
+
+- created a new mysql-debug package compiled with --with-debug
+  and removed the --with debug rpmbuild option
+- fixed --core-file option to really work when the server is
+  started by root
+  (coredump.patch) [http://bugs.mysql.com/bug.php?id=21361]
+- added a README.debug describing how to debug mysqld crashes
+- cleaned up rc.mysql a bit
+- the server depends on a minimal mysql-client version to make
+  sure a recent mysqlcheck is available for rc.mysql
+
+-------------------------------------------------------------------
+Mon Jul 31 10:03:39 CEST 2006 - mmarek@suse.cz
+
+- fixed some leaks and overflos in varbinary-upgrade.patch
+
+-------------------------------------------------------------------
+Fri Jul 21 10:28:09 CEST 2006 - mmarek@suse.cz
+
+- workaround an incompatibility with pre-5.0 varbinary fields:
+  update the .frm file and remove trailing zeros and spaces
+  in 'mysqlcheck --check-upgrade'
+  [#188134, http://bugs.mysql.com/bug.php?id=19371]
+  (varbinary-upgrade.patch)
+
+-------------------------------------------------------------------
+Fri Jun 30 15:17:39 CEST 2006 - mmarek@suse.cz
+
+- use --skip-networking when running the server with
+  --skip-grant-tables in rcmysql (problem reported by Lenz Grimmer)
+
+-------------------------------------------------------------------
+Mon Jun 19 10:48:57 CEST 2006 - mmarek@suse.cz
+
+- updated to 5.0.22
+  * new mysql_upgrade script for easies upgrades from previous
+    versions
+  * libmysqlclient.so uses versioned symbols
+  * new 'charset' command in the  mysql client to switch charsets
+    without reconnecting
+  * lots of bugfixes
+- modified rcmysql to use the mysql_upgrade script
+- the testsuite can be run in %%build again (run
+  rpmbuild --with testsuite ... mysql.spec)
+- dropped patches: lib64.patch, sql_parse.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 14:32:13 CEST 2006 - mmarek@suse.cz
+
+- build as user
+
+-------------------------------------------------------------------
+Wed May  3 13:59:11 CEST 2006 - mmarek@suse.cz
+
+- fix buffer overflow and and reading uninitialized memory using
+  the COM_TABLE_DUMP protocol command (fix from the 5.0.21 release)
+  [#172155] (sql_parse.patch)
+
+-------------------------------------------------------------------
+Tue Apr  4 13:58:58 CEST 2006 - mmarek@suse.cz
+
+- don't allow \0 in SQL even in comments
+  [#163157] (CVE-2006-0903.patch)
+
+-------------------------------------------------------------------
+Mon Mar 27 13:54:20 CEST 2006 - mmarek@suse.cz
+
+- require mysql-shared = %%version in mysql-devel
+
+-------------------------------------------------------------------
+Tue Mar  7 11:14:53 CET 2006 - mmarek@suse.cz
+
+- mail error message and explanation in logrotote script
+  [#155341] (logrotate.patch)
+
+-------------------------------------------------------------------
+Mon Mar  6 12:45:30 CET 2006 - mmarek@suse.cz
+
+- make err-log option work again
+- put a symlink to the logfile into /var/log
+  [#155341] (4x-compat.patch)
+
+-------------------------------------------------------------------
+Tue Jan 31 18:23:44 CET 2006 - mmarek@suse.cz
+
+- run mysql_fix_privilege_tables.sql when upgrading from 4.1
+  [#146739]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 14:49:32 CET 2006 - mmarek@suse.cz
+
+- created a new package mysql-test
+- removed unnecessary %%suse_update_config 
+
+-------------------------------------------------------------------
+Mon Jan  2 13:32:53 CET 2006 - mmarek@suse.cz
+
+- update to 5.0.18
+
+-------------------------------------------------------------------
+Tue Dec  6 09:36:35 CET 2005 - mmarek@suse.cz
+
+- update to 5.0.16
+
+-------------------------------------------------------------------
+Thu Dec  1 10:54:15 CET 2005 - mmarek@suse.cz
+
+- try postadal's update in BETA
+
+-------------------------------------------------------------------
+Tue Oct 25 20:28:02 CEST 2005 - postadal@suse.cz
+
+- updated to version 5.0.15 [#119929]
+- removed obsoleted buffer-overflow.patch
+- fixed gcc issue
+
+-------------------------------------------------------------------
+Thu Sep  1 12:19:57 CEST 2005 - pnemec@suse.cz
+
+- fixed bug #95729 : set $TMPDIR to /var/lib/mysql/tmp
+
+-------------------------------------------------------------------
+Tue Aug 30 17:59:08 CEST 2005 - lmuelle@suse.de
+
+- Use MySQL for any output of the init script and add a space at each line we
+  output.
+
+-------------------------------------------------------------------
+Tue Jul 26 18:30:33 CEST 2005 - postadal@suse.cz
+
+- updated to version 4.1.13
+- removed obsoleted sentinel.patch
+- added glibc-devel zlib-devel to devel requires
+
+-------------------------------------------------------------------
+Fri May 20 15:56:01 CEST 2005 - mcihar@suse.cz
+
+- update to 4.1.12 (fixes tmp race, bug #84740)
+
+-------------------------------------------------------------------
+Fri Apr 22 15:54:17 CEST 2005 - mcihar@suse.cz
+
+- fix buffer overflow in test
+
+-------------------------------------------------------------------
+Thu Apr 21 08:37:42 CEST 2005 - tcrhak@suse.de
+
+- use $datadir when initializing a new database (bug #63707)
+
+-------------------------------------------------------------------
+Wed Apr  6 12:20:11 CEST 2005 - mcihar@suse.cz
+
+- update to 4.1.11
+- compile against readline (bug #75901)
+
+-------------------------------------------------------------------
+Sun Apr  3 12:43:10 CEST 2005 - aj@suse.de
+
+- Fix GCC 4 warning.
+
+-------------------------------------------------------------------
+Fri Apr  1 14:39:04 CEST 2005 - mcihar@suse.cz
+
+- enable ISAM engine (bug #75320)
+- warn about existing ISAM tables (bug #75320)
+- fix init script to update MySQL tables on upgrade (bug #75321)
+
+-------------------------------------------------------------------
+Thu Mar 10 11:33:17 CET 2005 - mcihar@suse.cz
+
+- update to 4.1.10a (bug #71788)
+
+-------------------------------------------------------------------
+Tue Feb 15 14:25:12 CET 2005 - mcihar@suse.cz
+
+- update to 4.1.10 (bug #50825)
+
+-------------------------------------------------------------------
+Thu Feb 10 15:08:33 CET 2005 - mcihar@suse.cz
+
+- disable actually test also for second build
+
+-------------------------------------------------------------------
+Tue Feb  8 15:25:50 CET 2005 - mcihar@suse.cz
+
+- remove tests at all, these timeout in autobuild and work okay when
+  building manyally
+
+-------------------------------------------------------------------
+Fri Feb  4 17:40:44 CET 2005 - mcihar@suse.cz
+
+- increase test timeout not to fail so often
+
+-------------------------------------------------------------------
+Mon Jan 24 18:46:30 CET 2005 - mcihar@suse.cz
+
+- update to 4.1.9
+- normal version now also supports InnoDB as well as original MySQL packages
+- update mysql tables on server start if needed
+
+-------------------------------------------------------------------
+Fri Sep 17 16:32:32 CEST 2004 - ro@suse.de
+
+- added symlinks for libmysqlclient_r also in libdir/mysql
+
+-------------------------------------------------------------------
+Fri Sep 17 14:00:23 CEST 2004 - tcrhak@suse.cz
+
+- added symlink libmysqlclient_r.so -> libmysqlclient_r.so.12.0.0
+  to the file list of mysql-devel (bug #44700)
+
+-------------------------------------------------------------------
+Fri Sep 10 16:41:04 CEST 2004 - tcrhak@suse.cz
+
+- update to 4.0.21
+
+-------------------------------------------------------------------
+Thu Sep 02 10:50:22 CEST 2004 - tcrhak@suse.cz
+
+- do not use /var/adm/notify for notification mails (bug #44357)
+- updated README.SuSE (bug #44332)
+- be more verbose in the initial welcome message of mysql_install_db
+  (also bug #44332)
+
+-------------------------------------------------------------------
+Thu Aug 19 13:35:09 CEST 2004 - tcrhak@suse.cz
+
+- update to version 4.0.20
+- use group 'mysql' instead of 'daemon' for mysqld (bug #42071)
+- fixed a lib64 issue in mysql_config
+- applied patch for a security hole in mysqlhotcopy (bug #43829)
+- fixed a typo in rcmysql (bug #41055)
+- fix in order not to use initgroups() (caused segfault when used
+  with ldap, bug #39798)
+
+-------------------------------------------------------------------
+Fri Apr 02 14:07:42 CEST 2004 - tcrhak@suse.cz
+
+- fixed tmp race in mysqlbug (bug #37115)
+
+-------------------------------------------------------------------
+Wed Mar 31 11:39:54 CEST 2004 - tcrhak@suse.cz
+
+- mysql: added dependency on perl-DBD-mysql (bug #36500)
+- fixed timezone.test (patch timezone)
+
+-------------------------------------------------------------------
+Sat Mar 27 19:09:25 CET 2004 - ro@suse.de
+
+- mysql-bench: replace perl-Msql-Mysql-modules by perl-DBD-mysql
+  in requires
+
+-------------------------------------------------------------------
+Wed Mar 17 16:38:21 CET 2004 - tcrhak@suse.cz
+
+- use -f when running hostname in mysql_install_db (bug #36060)
+
+-------------------------------------------------------------------
+Fri Feb 20 10:42:00 CET 2004 - tcrhak@suse.cz
+
+- added /usr/bin/myisam_ftdump to filelist
+- updated manual.pdf to the latest version (2004-02-20)
+
+-------------------------------------------------------------------
+Wed Feb 18 13:00:25 CET 2004 - tcrhak@suse.cz
+
+- update to version 4.0.18
+
+-------------------------------------------------------------------
+Fri Feb  6 11:05:40 CET 2004 - kukuk@suse.de
+
+- Compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Oct 29 17:18:33 CET 2003 - tcrhak@suse.cz
+
+- use socket to detect the start of mysqld instead
+  of 'mysqladmin ping' again [bug #31605]
+
+-------------------------------------------------------------------
+Tue Sep 16 12:47:18 CEST 2003 - tcrhak@suse.cz
+
+- fixed the postrotate script [bug #30985]
+
+-------------------------------------------------------------------
+Mon Sep 15 20:25:10 CEST 2003 - tcrhak@suse.cz
+
+- fixed bogus 'start failed' reporting [bug #30210]
+
+-------------------------------------------------------------------
+Thu Sep 11 14:43:19 CEST 2003 - tcrhak@suse.cz
+
+- update to version 4.0.15
+
+-------------------------------------------------------------------
+Thu Aug 28 13:05:51 CEST 2003 - meissner@suse.de
+
+- Readded ppc/ppc64 mutex patch.
+
+-------------------------------------------------------------------
+Mon Aug 25 09:09:01 CEST 2003 - tcrhak@suse.cz
+
+- updated to version 4.0.14
+- added patch overflow
+- added macros %stop_on_removal and %restart_on_update
+- updated the pdf manual to version 2003-08-22
+
+-------------------------------------------------------------------
+Fri May 30 16:22:59 CEST 2003 - tcrhak@suse.cz
+
+- fixed installed unpacked files
+
+-------------------------------------------------------------------
+Fri May 16 18:29:57 CEST 2003 - tcrhak@suse.cz
+
+- update to version 4.0.12
+- require mysql-client in the main package (needed for logrotate)
+- use mysqladmin ping in logrotate script
+- commented out log_bin in my.cnf (my-medium.cnf) (bug #26716)
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Mar  7 12:13:25 CET 2003 - kukuk@suse.de
+
+- Fix useradd options
+
+-------------------------------------------------------------------
+Sun Feb 23 11:05:06 CET 2003 - tcrhak@suse.cz
+
+- added %fillup_prereq and %insserv_prereq [bug #24039]
+
+-------------------------------------------------------------------
+Fri Feb 14 12:31:40 CET 2003 - tcrhak@suse.cz
+
+- updated to version 3.23.55
+- updated the pdf manual to version 2002-07-26
+- fixed script mysql_install_db to use mysql-max if present
+  ( necessary if e.g. options concerning innodb are
+    uncommented prior to starting mysqld )
+- on start-up, detach from the terminal [bug #18440]
+- added %install_info macros
+
+-------------------------------------------------------------------
+Fri Jan 17 13:14:25 CET 2003 - bg@suse.de
+
+- Disabled berkeley db backend for hppa
+
+-------------------------------------------------------------------
+Mon Dec  2 14:49:52 CET 2002 - ro@suse.de
+
+- include errno.h 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Aug 24 16:09:52 CEST 2002 - kukuk@suse.de
+
+- Disabled berkeley db backend for SPARC
+
+-------------------------------------------------------------------
+Mon Aug 19 18:55:07 CEST 2002 - bk@suse.de
+
+- Update to 3.23.52, which is a bugfix release for 3.23.51. Fixes (trimmed):
+  o Fixed security bug when having an empty database name in the user.db table.
+  o Changed initialisation of RND() to make it less predicatable.
+  o Fixed GROUP BY on result with expression that created a BLOB field.
+  o Fixed thread bug in SLAVE START, SLAVE STOP and automatic repair of MyISAM
+    tables that could cause table cache to be corrupted.
+  o Fixed possible thread related key-cache-corruption problem with OPTIMIZE
+    TABLE and REPAIR TABLE.
+  o Fixed bug with creating an auto-increment value on second part of a UNIQUE()
+    key where first part could contain NULL values.
+  o Don't write slave-timeout reconnects to the error log.
+  o Fixed bug with slave net read timeouting
+  o Fixed a core-dump bug with MERGE tables and MAX() function.
+  o Fixed bug in ALTER TABLE with BDB tables.
+  o Fixed bug when logging LOAD DATA INFILE to binary log with no active database.
+  o Fixed a bug in range optimiser (causing crashes).
+  o Fixed possible problem in replication when doing DROP DATABASE on a database
+    with InnoDB tables.
+- add fileutils to PreReq and use echo instead of cat.
+
+-------------------------------------------------------------------
+Mon Aug 12 14:22:35 CEST 2002 - max@suse.de
+
+- Using pthread mutexes instead of atomic_* on s390 and s390x,
+  because mysql casts &int to (atomic_t *) when calling the atomic
+  functions which breaks the alignment constraints of atomic_t.
+
+-------------------------------------------------------------------
+Tue Jul 23 20:33:25 CEST 2002 - kukuk@suse.de
+
+- Fix useradd call
+
+-------------------------------------------------------------------
+Mon Jul 22 10:51:28 CEST 2002 - kukuk@suse.de
+
+- Create user mysql
+
+-------------------------------------------------------------------
+Mon Jul 22 09:57:30 CEST 2002 - max@suse.de
+
+- New version: 3.23.51.
+- Init script doesn't source /etc/rc.config anymore [#17122].
+- Disabled berkeley db backend for alpha and x86_64 as well.
+- Still breaks on s390x, and x86_64.
+
+-------------------------------------------------------------------
+Fri Jun 14 16:43:46 CEST 2002 - meissner@suse.de
+
+- Reenabled make test.
+- Rerun auto* tools so libtool works on ppc64.
+- Do not use the berkeley DB backend on s390,s390x,ppc,ppc64,axp,mips
+  (needs to be fixed some time)
+- Use generic AC_SYS_LARGEFILE macro.
+- Do not use asm/atomic stuff on ppc64 (long vs int problem).
+- Use CONFIG_SMP for other asm/atomic stuff instead of __SMP__.
+
+-------------------------------------------------------------------
+Mon May 27 12:11:31 CEST 2002 - meissner@suse.de
+
+- Disabled make test for x86_64 for now.
+- More %_lib fixes, packaged libmysqlclient.so symlink into devel, the
+  rest *.so.* into shared.
+
+-------------------------------------------------------------------
+Wed Apr 24 12:57:49 CEST 2002 - meissner@suse.de
+
+- started x86_64 work. Implemented required fast mutex, 
+  now only the test suite fail.
+
+-------------------------------------------------------------------
+Fri Feb 15 16:07:35 CET 2002 - grimmer@suse.de
+
+- Update to 3.23.48 (bugfixes) - MySQL 3.23 is now considered
+  STABLE!
+  * Fixed bug in complicated join with const tables
+  * Added internal safety checks for InnoDB
+  * SHOW GRANTS now shows REFERENCES instead of REFERENCE
+- use more libdir macros
+- safe_mysqld logfile has been renamed from
+  /var/lib/mysql/<hostname>.log to /var/lib/mysql/mysqld.log and
+  is properly rotated by logrotate
+- updated README.SuSE
+
+-------------------------------------------------------------------
+Wed Jan 30 17:10:08 CET 2002 - grimmer@suse.de
+
+- Update to 3.23.47 (bugfixes) - see the following URLs for the
+  full list of changes:
+  http://www.mysql.com/doc/N/e/News-3.23.47.html
+- re-enabled and adjusted inline-patch
+- use libdir and prefix macros in configure call
+
+-------------------------------------------------------------------
+Thu Dec 20 13:38:29 CET 2001 - grimmer@suse.de
+
+- added /etc/logrotate.d/mysql
+- added log-rotate.patch to fit SuSEs logrotating better
+- added debugging symbols and /usr/bin/resolve_stack_dump
+- reworked installation section in spec file (create all
+  directories first)
+
+-------------------------------------------------------------------
+Mon Dec 17 10:20:38 CET 2001 - grimmer@suse.de
+
+- Update to 3.23.46 (bugfixes) - see the following URLs for the 
+  full list of changes:
+  http://www.mysql.com/doc/N/e/News-3.23.45.html
+  http://www.mysql.com/doc/N/e/News-3.23.46.html
+- Changed ldflags from "all-static" to "static" and make sure
+  to archive *.lai files as well before recompiling (required
+  to build Midgard), thanks to schwab@suse.de for the patch
+- changed mysql-shared file list from /usr/lib/libmysqlclient.so*
+  to /usr/lib/libmysqlclient.so.*
+- removed START_MYSQL rc.config entry for SuSE Linux 8.0, adapted
+  spec file to reflect this change
+- updated README.SuSE
+
+-------------------------------------------------------------------
+Wed Nov 21 21:52:49 CET 2001 - grimmer@suse.de
+
+- added check for "socket=" variable in function "parse_arguments"
+  in the mysql init script (thanks to Aivo Kalu and Peter Marschall
+  for spotting this) - the init script would issue a "failed"
+  notice, if the socket variable had been changed to a different
+  path than /var/lib/mysql/mysql.sock in /etc/my.cnf even though
+  the MySQL daemon would be up and running [#12411]
+
+-------------------------------------------------------------------
+Thu Nov 15 21:35:23 CET 2001 - grimmer@suse.de
+
+- Update to 3.23.44 (bugfixes) - see the following URLs for the
+  full list of changes:
+  http://www.mysql.com/doc/N/e/News-3.23.43.html
+  http://www.mysql.com/doc/N/e/News-3.23.44.html
+- added "-felide-constructors -fno-exceptions -fno-rtti" to
+  CXXFLAGS in spec file (thanks to Monty Widenius for pointing
+  this out)
+- Updated manual.pdf
+- disabled inline patch (not required anymore)
+- Install /etc/mysqlaccess.conf with permissions set to "640"
+  instead of "755" [#10871]
+
+-------------------------------------------------------------------
+Mon Oct  1 11:23:10 CEST 2001 - schwab@suse.de
+
+- Add patch to allow compilation even if the compiler decides to 
+  not actually inline the two largest inline functions, 
+  page_dir_slot_check() and btr_search_check_guess().
+- Don't run automake, fix the extra dependency instead.
+
+-------------------------------------------------------------------
+Mon Sep 17 15:29:30 CEST 2001 - grimmer@suse.de
+
+- Update to 3.23.42 (bugfixes) - the following bugs were fixed:
+  * Fixed problem when using LOCK TABLES and BDB tables.
+  * Fixed problem with REPAIR TABLE on MyISAM tables with row
+    lengths between 65517 - 65520 bytes 
+  * Fixed rare hang when doing mysqladmin shutdown when there
+    was a lot of activity in other threads. 
+  * Fixed problem with INSERT DELAYED where delay thread could
+    be hanging on upgrading locks without any apparent reasons. 
+  * Fixed problem with myisampack and BLOB.
+  * Fixes problem when one edited .MRG tables by hand. (Patch
+    from Benjamin Pflugmann). 
+  * Enforce that all tables in a MERGE table come from the same
+    database.
+  * Fixed bug with LOAD DATA INFILE and transactional tables.
+  * Fix bug when using INSERT DELAYED with wrong column definition.
+  * Fixed coredump during REPAIR of some particularly broken tables.
+  * Fixed bug in InnoDB and AUTO_INCREMENT columns.
+  * Fixed bug in InnoDB and RENAME TABLE columns.
+  * Fixed critical bug in InnoDB and BLOB columns. If one has used
+    BLOB columns larger than 8000 bytes in an InnoDB table, one
+    must dump the table with mysqldump, drop it and restore it
+    from the dump. 
+  * Applied large patch for OS/2 from Yuri Dario.
+  * Fixed problem with InnoDB when one could get the error
+    Can't execute the given command... even when one didn't have
+    an active transaction. 
+  * Applied some minor fixes that concern Gemini.
+  * Use real arithmetic operations even in integer context if not
+    all arguments are integers. (Fixes uncommon bug in some integer
+    contexts). 
+  * Don't force everything to lower cases on Windows. (To fix
+    problem with Windows and ALTER TABLE). Now --lower_case_names
+    also works on Unix. 
+  * Fixed that automatic rollback that is done when thread end
+    doesn't lock other threads. 
+
+-------------------------------------------------------------------
+Tue Aug 14 14:11:40 CEST 2001 - grimmer@suse.de
+
+- Update to 3.23.41 (bugfixes, see the changelog at
+  http://www.mysql.com/doc/N/e/News-3.23.41.html for details)
+
+-------------------------------------------------------------------
+Mon Jul 30 14:15:29 CEST 2001 - grimmer@suse.de
+
+- Update to 3.23.40 (see the changelogs at 
+  http://www.mysql.com/doc/N/e/News-3.23.x.html for details)
+- spec file: added mysql-Max subpackage that includes all the
+  new bells and whistles (BerkeleyDB, InnoDB)
+- spec file: added "--with-libwrap" compile option to enable
+  TCP wrapper support
+- spec file: reworked the build and install section to ease
+  the creation of mysqld-max
+- rc.mysql: fixed two (trivial) typos
+- rc.mysql: make sure to test for mysqld-max as well before
+  trying to start up
+- spec file: moved "replace" and "perror" binaries incl.
+  man pages to the mysql-client package
+- spec file: corrected URLs
+- manual.pdf: update to current version
+- README.SuSE: updated to document the above changes
+
+-------------------------------------------------------------------
+Fri May  4 20:35:32 CEST 2001 - grimmer@suse.de
+
+- Fixed a nasty bug when updating after the database files
+  have been copied to the new location, but the old ones have
+  not been removed (#7692) - thanks to Jochen Schulz
+  <jschulz1@gwdg.de> for spotting this one.
+
+-------------------------------------------------------------------
+Sat Apr 28 19:03:03 CEST 2001 - grimmer@suse.de
+
+- Update to 3.23.37 (bugfixes, see
+  http://www.mysql.com/doc/N/e/News-3.23.37.html for full
+  changelog)
+- fixed init script, now start MySQL using the wrapper script
+  "safe_mysqld" instead of mysqld again (logging did not work),
+  fixes for bug [#6876] and [#6840]
+- we currently do not enable MySQL-Max, since it is still
+  considered beta (http://www.mysql.com/downloads/mysql-max-3.23.html)
+
+-------------------------------------------------------------------
+Thu Apr 12 14:35:13 CEST 2001 - grimmer@suse.de
+
+- Update to 3.23.36 (bugfix and security release)
+  full Changelogs for Changes between 3.23.33 and 3.23.36 are here:
+  http://www.mysql.com/doc/N/e/News-3.23.36.html
+  http://www.mysql.com/doc/N/e/News-3.23.35.html
+  http://www.mysql.com/doc/N/e/News-3.23.34.html
+- reworked init script
+- added more man pages to file list
+- reworked README.SuSE
+- added automated testing to spec file
+
+-------------------------------------------------------------------
+Thu Mar  8 09:39:38 CET 2001 - grimmer@suse.de
+
+- Update to 3.23.33 (bugfix release, see
+  http://www.mysql.com/doc/N/e/News-3.23.33.html for a complete
+  list of changes)
+- updated manual.pdf
+- fixed init script (#6044, "failed" on startup on a 2.4 kernel)
+  beautified init script output a bit, changed "reload" argument
+  to "force-reload" and added separate "reload" section
+- added some comments about replication and BerkeleyDB code to
+  README.SuSE
+- marked init script as config file in spec file
+
+-------------------------------------------------------------------
+Tue Jan 23 10:30:18 CET 2001 - grimmer@suse.de
+
+- Update to 3.23.32 - stable release including security fixes
+  for the SHOW GRANTS statement and a remote buffer overflow
+  (Bugtraq ID 2262)
+- updated manual.pdf
+- added some missing files to the file list
+- added --without-berkeley-db to the configure options
+  (according to the release notes, Berkeley DB support and
+  replication have not been exhaustively tested yet)
+
+-------------------------------------------------------------------
+Wed Jan 10 12:51:02 CET 2001 - grimmer@suse.de
+
+- Update to 3.23.30-gamma (bugfix-release)
+- added manual.pdf as a separate file
+- removed verbosity flag from cp-command in preinstall section
+
+-------------------------------------------------------------------
+Fri Dec 22 19:32:57 CET 2000 - grimmer@suse.de
+
+- fixed initial startup in init script (correct ownerships of
+  the mysql datadir before starting mysqld using "chown")
+- added different mysql sample configurations to directory "cnf"
+  in the documentation directory
+- use my-medium.cnf as default configuration /etc/my.cnf
+
+-------------------------------------------------------------------
+Mon Dec 18 12:19:39 CET 2000 - grimmer@suse.de
+
+- fixed packaging of mysql-bench (file list was empty)
+
+-------------------------------------------------------------------
+Fri Dec 15 13:29:16 CET 2000 - grimmer@suse.de
+
+- init script fixes (added $remote_fs to Required-Start,
+  check if /usr/sbin/mysqld exists)
+- README.SuSE updates
+
+-------------------------------------------------------------------
+Fri Dec  1 13:20:12 CET 2000 - ro@suse.de
+
+- added static libs to devel package 
+
+-------------------------------------------------------------------
+Mon Nov 27 15:25:54 CET 2000 - grimmer@suse.de
+
+- update to 3.23.28-gamma (considered stable enough by Monty)
+- added --with-extra-charsets=complex
+- database files are now located below /var/lib/mysql
+- do not use --with-raid or --with-berkeley-db yet
+- adapted to new init scheme (new init script, removed symlinks,
+  moved init script from /sbin/init.d -> /etc/init.d)
+- moved socket from /tmp/mysql.sock to /var/lib/mysql/mysql.sock
+- removed AGREEMENT since mysql is GPL now
+- removed README.SuSE, rc.config.mysql and rc.mysql from patch
+  and added them as additional source files instead
+
+-------------------------------------------------------------------
+Fri Nov 10 17:25:51 CET 2000 - grimmer@suse.de
+
+- added a symlink /usr/lib/mysql/libmysqlclient.so ->
+  ../libmysqlclient.so.6.0.0 to make libtool happy
+
+-------------------------------------------------------------------
+Mon Nov  6 09:24:10 CET 2000 - grimmer@suse.de
+
+- fixed Requires: for mysql-bench (mysql-perl -> perl-Msql-Mysql-modules)
+
+-------------------------------------------------------------------
+Thu Nov  2 17:24:47 CET 2000 - grimmer@suse.de
+
+- switched to long package names:
+      mysqclnt -> mysql-client
+      mysqldev -> mysql-devel
+      mysqbnch -> mysql-bench
+      mysqllib -> mysql-shared
+- removed subpackage mysqperl from mysql.spec and created
+  separate packages (perl-Msql-Mysql-modules and perl-Data-ShowTable)
+- finally use BuildRoot
+- updated README.SuSE to reflect changes
+
+-------------------------------------------------------------------
+Wed Aug 23 00:07:55 CEST 2000 - ro@suse.de
+
+- fixed perl path 
+
+-------------------------------------------------------------------
+Fri Jul 21 16:52:02 CEST 2000 - grimmer@suse.de
+
+- corrected removal of comment - bash does not like
+  empty if-statements...
+
+-------------------------------------------------------------------
+Thu Jul 13 18:43:17 CEST 2000 - grimmer@suse.de
+
+- added missing "-" to parameter "hostname --fqdn" in
+  scripts/mysql_install_db.sh (BUG#3383)
+- removed comment from scripts/mysql_install_db.sh about
+  needing to install an init script, since we supply this already
+
+-------------------------------------------------------------------
+Wed Jul  5 12:54:13 CEST 2000 - grimmer@suse.de
+
+- removed DBI perl module from subpackage mysqperl (is in a
+  separate package "perl_dbi" now) and adjusted file list
+  (BUG#3173)
+
+-------------------------------------------------------------------
+Wed May 24 19:26:20 MEST 2000 - uli@suse.de
+
+- moved docs to /usr/share
+
+-------------------------------------------------------------------
+Fri May  5 15:35:12 CEST 2000 - freitag@suse.de
+
+- Security change requested by a feedback mail - sets initially
+  a full qualified hostname and notifies the user to change the
+  two root passwords and not only one.
+- added autoconf and automake to neededforbuild
+- added --host=%{_host} to configure call due to suspicious libtool
+  probs 
+- /usr/doc/packages replaced by %{_defaultdocdir}
+
+-------------------------------------------------------------------
+Sat Apr  8 00:21:24 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Wed Feb 23 12:51:51 MET 2000 - grimmer@suse.de
+
+- Update to 3.22.32
+- created subpackage "mysqllib" which contains shared libs only
+- created subpackage "mysqperl" which contains the perl modules
+- removed obsolete security patch (is included in new version)
+- update now checks for existing database files and chowns them
+  to "mysql" itself, if they still belong to "root" - specfile
+  and init script modified
+- removed SuSE Linux version from AGREEMENT
+- updated README.SuSE to reflect changes
+
+-------------------------------------------------------------------
+Fri Feb 11 17:40:11 MET 2000 - grimmer@suse.de
+
+- added security patch from monty@tcx.se (password authentication)
+
+-------------------------------------------------------------------
+Thu Jan 13 16:29:16 MET 2000 - grimmer@suse.de
+
+- update to 3.22.30 (security fix for GRANT privileges)
+- now uses version macro in spec file
+
+-------------------------------------------------------------------
+Fri Jan  7 09:55:27 MET 2000 - grimmer@suse.de
+
+- update to 3.22.29
+- updated Msql-Mysql-modules to 1.2210 and removed obsolete patch
+- changed RPM Group of mysqldev to Development/Libraries
+- corrected paths in mysqlaccess
+
+-------------------------------------------------------------------
+Thu Oct 28 04:33:56 MEST 1999 - grimmer@suse.de
+
+- update to 3.22.27
+- updated Msql-Mysql-modules to 1.2209
+- fixed check for ownership of installed db in specfile
+
+-------------------------------------------------------------------
+Mon Oct 25 01:26:07 MEST 1999 - grimmer@suse.de
+
+- update to 3.22.26a
+- now runs as user "mysql" (resolved Bug #371)
+- now uses /etc/my.cnf
+- updated perl-modules (DBI, Msql-Mysql-modules)
+- moved long names from PAC-file to specfile (Provides:)
+- misc minor corrections/updates (specfile, init-script...)
+
+-------------------------------------------------------------------
+Mon Aug 30 15:28:36 CEST 1999 - grimmer@suse.de
+
+- added bugfix for Alpha (TEXT and BLOB were broken)
+- modified configure-call in spec
+- added long aliases to PAC-files
+
+-------------------------------------------------------------------
+Tue Jul 13 10:14:43 MEST 1999 - grimmer@suse.de
+
+- update to 3.22.25
+- updated perl-modules (DBI, Msql-Mysql-modules)
+- moved libs (mysqlclient.so et al) from /usr/lib/mysql to /usr/lib
+- minor corrections (README.SuSE, init-Script)
+
+-------------------------------------------------------------------
+Thu May 20 01:20:25 MEST 1999 - ro@suse.de
+
+- activate assembler parts only on x86
+
+-------------------------------------------------------------------
+Wed Apr 28 15:52:37 MEST 1999 - grimmer@suse.de
+
+- added missing perl module (Mysql.pm)
+- added missing perl package (Data-Showtable)
+
+-------------------------------------------------------------------
+Tue Apr  6 17:29:51 MEST 1999 - ro@suse.de
+
+- update to 3.22.21
+- split into subpackages (mysql, mysqclnt, mysqldev, mysqbnch)
+- re-added perl-modules
+- updated init-Script
+- /etc/mysql.passwd is now obsolete
+
+-------------------------------------------------------------------
+Fri Dec 11 17:02:45 MET 1998 - grimmer@suse.de
+
+- updated init-Script
+
+-------------------------------------------------------------------
+Sun Nov 29 14:53:08 MET 1998 - bs@suse.de
+
+- fixed pathes for perl modules.
+- remove symlinks before creating them.
+
+-------------------------------------------------------------------
+Fri Nov 27 01:07:18 MET 1998 - ro@suse.de
+
+- adapted paths to old perl 
+- this version should not have been in stable
+
+-------------------------------------------------------------------
+Tue Nov 24 17:58:42 MET 1998 - grimmer@suse.de
+
+- added /usr/doc/packages/AGREEMENT
+
+-------------------------------------------------------------------
+Tue Nov 17 17:00:28 MET 1998 - ro@suse.de
+
+- adapted paths to perl5.005_02
+
+-------------------------------------------------------------------
+Wed Nov 11 12:30:18 MET 1998 - ro@suse.de
+
+- added libgpp to neededforbuild
+
+-------------------------------------------------------------------
+Mon Nov  9 16:49:33 MET 1998 - grimmer@suse.de
+
+- New Package (Version 3.21.33b)
+

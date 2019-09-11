@@ -1,0 +1,445 @@
+-------------------------------------------------------------------
+Wed Apr 17 10:35:50 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply patch gkrellm-2.3.10-d51b57616e.patch with upstream git master
+  changes, contains a number of important fixes, including improved
+  gkrellm-2.3.5-fix-diskio-corruption.patch and 
+  gkrellm-2.3.5-fix-sdX-sort-order.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 14:12:54 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add patch gkrellm-install-and-reconnect-gkrellmd.conf.patch
+  in order to install /etc/gkrellmd.conf properly and make reconnect
+  default
+- refresh patches
+
+-------------------------------------------------------------------
+Thu Nov  8 14:36:59 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- separate gkrellmd package
+
+-------------------------------------------------------------------
+Mon Dec 12 15:42:07 UTC 2016 - dimstar@opensuse.org
+
+- BuildRequire systemd-rpm-macros instead of
+  pkgconfig(libsystemd-daemon): The libs is not used at all.
+- Fix minor copy/paste error: run the post script for the right
+  service name.
+
+-------------------------------------------------------------------
+Mon Nov 21 14:53:01 UTC 2016 - pgajdos@suse.com
+
+- updated to 2.3.10:
+  * see http://git.srcbox.net/gkrellm/log/
+- removed gkrellm-libsensors.patch (not needed, gkrellm links
+  against libsensors correctly)
+
+-------------------------------------------------------------------
+Fri Mar 27 14:04:16 UTC 2015 - seife+obs@b1-systems.com
+
+- add gkrellm-2.3.5-fix-diskio-corruption.patch to fix corruption
+  of chart labels (actually work around it)
+
+-------------------------------------------------------------------
+Sun Apr 27 18:41:11 UTC 2014 - seife+obs@b1-systems.com
+
+- add gkrellm-2.3.5-fix-sdX-sort-order.patch to fix sort order of
+  sda,sdb,sdc,... disks
+
+-------------------------------------------------------------------
+Mon Feb 17 10:48:25 UTC 2014 - pgajdos@suse.com
+
+- Add systemd service gkrellm.service (bnc#864225).
+
+-------------------------------------------------------------------
+Wed Feb 12 01:35:16 CET 2014 - ro@suse.de
+
+- Exclude s390/s390x that have no libsensors.
+
+-------------------------------------------------------------------
+Thu Oct 24 08:41:54 UTC 2013 - pgajdos@suse.com
+
+- Install /usr/lib{,64}/gkrellm2/plugins directories (bnc#841818).
+- Add gkrellm-lib64-plugins-dir.patch: Look in
+  /usr/lib64/gkrellm2/plugins on 64bit systems.
+
+-------------------------------------------------------------------
+Thu May  2 15:28:29 UTC 2013 - schwab@linux-m68k.org
+
+- Compile with %{optflags}
+
+-------------------------------------------------------------------
+Tue Apr 23 11:01:17 UTC 2013 - pgajdos@suse.com
+
+- really build against libsensors [bnc#803967] and [bnc#803081]
+
+-------------------------------------------------------------------
+Tue Nov 20 08:40:50 UTC 2012 - pgajdos@suse.com
+
+- fixed url
+
+-------------------------------------------------------------------
+Mon Feb 20 09:07:24 UTC 2012 - pgajdos@suse.com
+
+- add xorg-x11-libSM-devel into buildrequires
+
+-------------------------------------------------------------------
+Wed Dec 21 08:30:07 UTC 2011 - pgajdos@suse.com
+
+- -lgmodule-2.0 added to the linker command line
+
+-------------------------------------------------------------------
+Sat Feb 12 17:51:02 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Split lang subpackage.
+
+-------------------------------------------------------------------
+Sat Oct  9 11:00:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.3.5:
+  + Linux sensors: check for /sys/class/thermal/thermal_zone[0-*].
+  + Add Linux net monitor checking for IPv6 routes.
+  + Use dynamic buffering to handle large disk names from a Mac
+    gkrellmd.
+  + Fix IMAP login by escaping backslash and double-quotes in
+    username, password and mailbox strings.
+  + Fix initial sending of fstab entries in gkrellmd, fstab was only
+    sent if it was marked as "changed"
+  + gkrellmd: Make "-d" commandline option the short version for
+    "--detach" instead of for "--debug-level".
+  + Add searching for linux sensors directly below hwmon dir since
+    kernel is putting newer devices there.
+  + Bugfixes
+    - Fix eof check in fgets_pipe() (when using external mail check
+      program).
+    - Fix some aliasing violations due to sockaddr_* typecasting.
+  + Code cleanups.
+  + FreeBSD-related fixes.
+  + Windows-related fixes.
+  + Build fixes.
+  + Updated translations.
+- Rebase gkrellm-libsensors.patch to apply without fuzz.
+- Change SMC_LIBS to X11_LIBS.
+- Do not define CFLAGS and LOCALEDIR during the build: it's not
+  needed anymore.
+- Stop creating directories before installation: it's now handled
+  properly by gkrellm.
+- Do not set GenericName and Categories in gkrellm.desktop with
+  %suse_update_desktop_file, but instead set them directly in the
+  file since we add it ourselves.
+
+-------------------------------------------------------------------
+Sat Jan 30 21:23:01 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.3.4:
+  + Add gkrellm_sys_setup_connect() function so sysdep code can
+    register from gkrellm_sys_main_init() a setup function to call
+    after main() argument parsing
+  + Add FreeBSD support for the amdtemp temperature sensor
+  + Add some mbmon usage help to gkrellm.1 and README
+  + Bugfixes
+    - Patch from Sandro Tosi: fix a FTBFS when using gold as linker
+      (by simply adding -lX11)
+    - Add SSL library init calls to mail check for gnutls case
+    - Patch from Hans de Goede: Fix some crashes - check for NULL
+      GC when drawing root pixmap on transparent chart or panel
+    - Patch from Goswin von Brederlow: Ignore device mapper devices
+      in Linux disk stats
+- Remove gkrellm-getline.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Mon Nov 16 11:05:42 CET 2009 - seife@opensuse.org
+
+- add devel package
+
+-------------------------------------------------------------------
+Fri Sep  4 15:32:36 CEST 2009 - vuntz@novell.com
+
+- Use spec-cleaner script to clean the packaging (mainly using the
+  right macros for directories).
+
+-------------------------------------------------------------------
+Wed Aug 19 22:52:50 CEST 2009 - beineri@opensuse.org
+
+- add an already translated GenericName to .desktop file
+- install an application menu icon
+
+-------------------------------------------------------------------
+Sun Jun  7 11:56:27 CEST 2009 - ro@suse.de
+
+- rename getline to my_getline to avoid conflict with function
+  from glibc 
+
+-------------------------------------------------------------------
+Mon Jan 19 10:00:58 CET 2009 - pgajdos@suse.cz
+
+- updated to 2.3.2:
+* Patch from Stefan Gehn:
+    - Add error logging routines so errors and debugging can be routed to
+      a file or stdout, and gkrellmd can log to the system syslog file.
+      Begin replacing debug printf() with g_message(), g_warning(), etc
+      functions to support the logging functions.
+    - Port gtk_combo functions to gtk_combo_box
+    - Add client mode server connection error dialog pupups.
+    - Use GTK 2.12 gtk_widget_xxx_tooltip over gtk_tooltip in mail.c 
+* Add OpenSSL license exception.
+  Make OpenSSL the default to avoid gnutls symbol conflict crash.
+* Link to libntlm and remove smb* files from gkrellm source distribution.
+* Patch from Takao Fujiwara: Pass clock/calendar strings to strftime in
+  current locale.  Bump default width up to 100.
+* Patch from Leo Schwab: add linux sysfs battery interface.  Use
+  preferencially over deprecated /proc/acpi interface.
+* Patch from Lycestra:
+    - Mac OS X support:
+        "darwin9" build mode for Leopard, which lacks libkvm
+        add inet monitor interface
+		add buffers and cache data to memory monitor
+    - don't client connect to server in the case read_server_setup() fails
+* Bugfixes
+  o Allow spaces in file system monitor directories.
+  o Andrey Rahmatullin and Ravi Pinjal both sent a patch to fix:
+    some memleaks in clock monitor.
+  o Ken Milmore patch: fix configure script to work for lm_sensors >= 3.1
+  o NULL serve_name segfault
+* Translation updates
+  o pl.po from Michal Smoczyk
+- removed development files
+
+-------------------------------------------------------------------
+Thu Dec 18 13:31:42 CET 2008 - pgajdos@suse.cz
+
+- build gkrellm againist libsensors
+
+-------------------------------------------------------------------
+Sun Mar 16 06:48:10 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang problems 
+
+-------------------------------------------------------------------
+Tue Dec 11 12:42:24 CET 2007 - pgajdos@suse.cz
+
+- upgrade to version 2.3.1
+	* Clock/Calendar monitor rewritten to use user configurable display
+	  format strings containing strftime conversion characters and
+	  Pango text attribute markup strings.
+	* dd new to be released libsensors4 interface to
+	  linux sensors.
+	* -A option to bind gkrellmd to a specific interface.
+	* Include UDP connections in the Linux inet monitor.
+	* Bugfixes
+	* Translation updates: de, fr, pl
+
+-------------------------------------------------------------------
+Sun Jul 22 10:27:05 CEST 2007 - bwalle@suse.de
+
+- Upgrade to version 2.3.0
+  * Upgrade to GPLv3
+  * mail check for Sylpheed .claws_mark mark file.
+  * preserve config of disabled monitors.
+  * look for linux I2O disks.
+  * Don't save config for disabled non-existing net interfaces.
+  * Add memory monitor raw free and raw used panel variables.
+  * Plugin interface to export strings (data) for panel/chart
+    labels. Net monitor updated to check for exports.
+  * Linux nvidia GPU option to use nvclock when nvidia-settings
+    fails.
+  * Translation updates (de)
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Jun  6 11:29:51 CEST 2006 - lmichnovic@suse.cz
+
+- Upgrade to version 2.2.9
+  * Add battery monitor option to use percent capacity remaining for alerts.
+  * Filippo Giunchedi linux.c patch: make sensor code able to read
+    apple/pmu's sysfs based sensors.
+  * Jindrich Makovicka linux.c patch: subtract the memory allocated to
+    slabs from the used memory and add it to the cached value instead.
+  * Put multiple instances lock files in /var/lock.
+  * Bugfixes: many
+  * Translation updates: bg, es, ru.
+
+-------------------------------------------------------------------
+Wed May 24 17:22:23 CEST 2006 - schwab@suse.de                                                                                      
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 14:23:10 CEST 2005 - ltinkl@suse.cz
+
+- update to 2.2.7 (#99154)
+
+-------------------------------------------------------------------
+Tue Apr 12 11:51:00 CEST 2005 - ltinkl@suse.cz
+
+- update to 2.2.5
+
+-------------------------------------------------------------------
+Mon Nov 29 16:29:16 CET 2004 - ltinkl@suse.cz
+
+- update to 2.2.4
+
+-------------------------------------------------------------------
+Fri Aug 06 12:05:09 CEST 2004 - ltinkl@suse.cz
+
+- add openssl support (#43454)
+
+-------------------------------------------------------------------
+Mon Jul 19 11:40:07 CEST 2004 - ltinkl@suse.cz
+
+- update to 2.2.2
+
+-------------------------------------------------------------------
+Tue Apr 27 11:37:11 CEST 2004 - ltinkl@suse.cz
+
+- fix build using -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Mar 03 12:44:34 CET 2004 - ltinkl@suse.cz
+
+- update to 2.1.27
+
+-------------------------------------------------------------------
+Tue Feb 24 12:38:27 CET 2004 - ltinkl@suse.cz
+
+- update to 2.1.26
+
+-------------------------------------------------------------------
+Thu Jan 22 14:18:26 CET 2004 - ltinkl@suse.cz
+
+- update to 2.1.25
+
+-------------------------------------------------------------------
+Sat Jan 10 22:24:24 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Jan 06 16:53:04 CET 2004 - ltinkl@suse.cz
+
+- update to 2.1.24
+
+-------------------------------------------------------------------
+Wed Dec 17 12:24:51 CET 2003 - ltinkl@suse.cz
+
+- update to 2.1.22
+
+-------------------------------------------------------------------
+Tue Oct 14 16:02:34 CEST 2003 - ltinkl@suse.cz
+
+- update to 2.1.21
+
+-------------------------------------------------------------------
+Thu Oct 09 10:46:31 CEST 2003 - ltinkl@suse.cz
+
+- updated to version 2.1.20
+
+-------------------------------------------------------------------
+Tue Sep 30 13:27:42 CEST 2003 - ltinkl@suse.cz
+
+- updated to 2.1.19
+- cleaned up the requires and neededforbuild
+- look for translations in the right directory
+
+-------------------------------------------------------------------
+Thu Sep 04 18:36:22 CEST 2003 - ltinkl@suse.cz
+
+- update to 2.1.16, also fixes #29628
+
+-------------------------------------------------------------------
+Sat Aug 16 23:29:02 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jun 19 10:06:11 CEST 2003 - ltinkl@suse.cz
+
+- fixed manpage installation
+
+-------------------------------------------------------------------
+Wed Jun 11 16:37:06 CEST 2003 - ltinkl@suse.cz
+
+- fixed to install to /usr
+
+-------------------------------------------------------------------
+Mon Jun 09 23:49:41 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to version 2.1.12
+- fixed the Makefile patch
+- install gkrellm.pc
+
+-------------------------------------------------------------------
+Thu Jan 16 00:35:01 CET 2003 - ro@suse.de
+
+- use gtk2-devel-packages in neededforbuild
+- fix a lib64 issue 
+
+-------------------------------------------------------------------
+Sat Jan 11 16:51:12 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.1.5
+
+-------------------------------------------------------------------
+Wed Jul 03 14:37:34 CEST 2002 - tcrhak@suse.cz
+
+- update to version 1.2.13
+
+-------------------------------------------------------------------
+Fri Mar 15 12:02:13 CET 2002 - tcrhak@suse.cz
+
+- added /usr/X11R6/include/%{name} to filelist
+
+-------------------------------------------------------------------
+Thu Dec 20 15:30:16 CET 2001 - tcrhak@suse.cz
+
+- update to version 1.2.6
+
+-------------------------------------------------------------------
+Tue Aug  7 17:42:56 CEST 2001 - adostal@suse.cz
+
+- update to version 1.2.1
+- fixed spec file  and makefile 
+
+-------------------------------------------------------------------
+Thu Feb 15 14:20:18 MET 2001 - egger@suse.de
+
+- Updated to version 1.0.6. 
+
+-------------------------------------------------------------------
+Thu Jan 11 00:42:57 CET 2001 - ro@suse.de
+
+- fixed doc list 
+
+-------------------------------------------------------------------
+Mon Nov  6 02:37:36 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Mon Oct 16 01:45:59 MEST 2000 - egger@suse.de
+
+- Updated to version 1.0.0. 
+
+-------------------------------------------------------------------
+Fri Jun  9 10:04:50 MEST 2000 - dipa@suse.de
+
+- update to package 0.9.10
+
+-------------------------------------------------------------------
+Sat Oct 30 09:59:57 MEST 1999 - ray@suse.de
+
+- nwe packages 0.7.1
+

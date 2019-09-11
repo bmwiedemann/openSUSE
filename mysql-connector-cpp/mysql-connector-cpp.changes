@@ -1,0 +1,196 @@
+-------------------------------------------------------------------
+Sun Feb 17 08:18:37 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.15
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0.html
+- Introduced X API library - libmysqlcppconn8
+- Old JDBC-like API development files moved to jdbc subdirectory
+- fixed upstream, examples aren't built by default anymore
+  * removed mysql-connector-cpp-1.1.0-disable_tests_and_examples.patch
+- replace patch to match new paths & code formating
+  * removed mysql-connector-cpp-1.1.9-libmysql_dynamic_proxy_typos.patch
+  * added mysql-connector-cpp-8.0.12-libmysql_dynamic_proxy_typos.patch
+
+-------------------------------------------------------------------
+Mon Aug 27 09:23:24 UTC 2018 - tchvatal@suse.com
+
+- Depend on zlib-devel, previously was pulled in by openssl
+
+-------------------------------------------------------------------
+Mon Feb  5 14:15:08 UTC 2018 - w01dnick@gmail.com
+
+- add mysql-connector-cpp-mariadb.patch
+  to fix compatibility with MariaDB, not supported options removed
+
+-------------------------------------------------------------------
+Fri Nov 24 12:20:13 UTC 2017 - kstreitova@suse.com
+
+- add mysql-connector-cpp-1.1.9-libmysql_dynamic_proxy_typos.patch
+  to fix build by fixing copypaste errors in
+  libmysql_dynamic_proxy.cpp file [bsc#1067883]
+- remove mariadb_api.patch that it's no longer needed because:
+  * our current client library already provides mysql_get_option() 
+  * using MARIADB_BASE_VERSION is no longer working as intended as
+    it's not defined in mariadb client library provided by
+    mariadb-connector-c
+  * hunk for stmt_free_result() was moved to
+    mysql-connector-cpp-1.1.9-libmysql_dynamic_proxy_typos.patch
+ 
+-------------------------------------------------------------------
+Tue Sep  5 13:58:31 UTC 2017 - kstreitova@suse.com
+
+- Update to version 1.1.9:
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-1-1-9.html
+- Remove installing of ANNOUNCEMENT and CHANGES files that are no
+  longer present
+- Add "Requires: libboost_headers-devel" for libmysqlcppconn-devel
+  subpackage ("Requires: boost-devel" for the older distros that
+  don't have libboost_headers-devel available yet) [bsc#838038]
+
+-------------------------------------------------------------------
+Wed May 31 08:48:50 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.1.8:
+  * See the news files on
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/
+
+-------------------------------------------------------------------
+Thu Feb  2 10:14:43 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Aug 12 14:11:08 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.1.6:
+  * See the news files on
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/
+- Update soname to libmyslqcppcon7
+- Remove needlessly long description
+- Drop unneeded/merged patches:
+  mysql-connector-cpp-1.1.0-cmake-paths-fix.patch
+  mysql-connector-cpp-1.1.0-gcc44.patch
+- Refresh patch:
+  mysql-connector-cpp-1.1.0-disable_tests_and_examples.patch
+- Add patch to build with mariadb:
+  mariadb_api.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 14:21:30 UTC 2014 - tchvatal@suse.com
+
+- Use cmake macros for building properly.
+
+-------------------------------------------------------------------
+Sat Jul 26 13:36:10 UTC 2014 - cobexer@gmail.com
+
+- disable gcov coverage recording
+  Gcov is a development tool, it slows down execution and creates
+  coverage data that is not useful to users of this library.
+
+-------------------------------------------------------------------
+Fri Apr 19 14:29:56 CEST 2013 - mhrusecky@suse.cz
+
+- Do not use macro for make install as it doesn't work on SLE
+
+-------------------------------------------------------------------
+Wed Apr 17 15:43:40 CEST 2013 - mhrusecky@suse.cz
+
+- Compatibility Obsoletes/Provides
+
+-------------------------------------------------------------------
+Wed Apr  3 12:34:30 UTC 2013 - mhrusecky@suse.com
+
+- Merge with package by Tomas Chvatal (to make it work with LO)
+
+-------------------------------------------------------------------
+Fri Mar  8 11:05:21 UTC 2013 - saschpe@suse.de
+
+- Fix library requirement for devel package due to wrong soversion
+
+-------------------------------------------------------------------
+Wed Feb 13 18:20:22 UTC 2013 - adam@mizerski.pl
+
+- update to 1.1.2, see
+  https://dev.mysql.com/doc/relnotes/connector-cpp/en/ccpp-news-1-1-1.html
+  https://dev.mysql.com/doc/relnotes/connector-cpp/en/ccpp-news-1-1-2.html
+- libmysqlcppconn5 changed to libmysqlcppconn6 (number bump)
+- spec file cleanup
+- removed patch for driver/mysql_art_resultset.cpp from
+  mysql-connector-cpp-1.1.0-gcc44.patch
+- added mysql-connector-cpp-1.1.0-disable_tests_and_examples.patch
+
+-------------------------------------------------------------------
+Wed Jan 18 13:04:42 UTC 2012 - cdenicolo@suse.com
+
+- license update: SUSE-GPL-2.0-with-FLOSS-exception
+  GPL has FLOSS exception.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:48 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jun  2 16:22:02 CEST 2011 - mhrusecky@suse.cz
+
+- updated to version 1.1.0, see
+  http://forge.mysql.com/wiki/Connector_C%2B%2B#MySQL_Connector.2FC.2B.2B_1.1.0_GA_.2813.09.2010.29
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:32 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Jul 28 13:39:59 CEST 2009 - mhrusecky@suse.cz
+
+- Better description (bnc#522682)
+
+-------------------------------------------------------------------
+Thu May 21 17:37:01 CEST 2009 - mhrusecky@suse.cz
+
+- updated to version 1.0.5
+  * Changed the interface of sql::ConnectionMetaData, sql::ResultSetMetaData
+    and sql::ParameterMetaData to have a protected destructor. In this way the
+    client code doesn't need, and won't be able, to destruct the metadata
+    objects returned by the connector. The connector will handle their
+    destruction.  This enables statements like :
+    connection->getMetaData->getSchema(); without the result of leaking memory
+    because we lost the pointer returned by getMetaData().  (Lawrin, Andrey)
+  * Large overhaul of the code to improve the memory management to not leak in
+    exceptional situations. Big improvement compared to Beta1. (Andrey)
+  * Fixed the interface of sql::Driver and sql::Connection so they accept the
+    options map by alias instead of by value. (Andrey)
+  * Changed the return type of sql::SQLException::getSQLState() from
+    std::string to const char * to be consistent with std::exception::what().
+    (Andrey)
+  * Implemented getResultSetType() and setResultSetType() for Statement. Used
+    are TYPE_FORWARD_ONLY, which means unbuffered result set and
+    TYPE_SCROLL_INSENSITIVE, which means buffered result set. (Andrey)
+  * Implemented getResultSetType() for PreparedStatement. The setter is not
+    implemented because currently PreparedStatement can't do refetching and
+    storing the result means the bind buffers will be correct. (Andrey)
+  * Added "defaultStatementResultType" to MySQL_Connection::setClientOption()
+    as an option. Also the method now returns `sql::Connection *`. (Andrey)
+  * Added Result::getType() and implemented it in the three result set classes.
+    (Andrey)
+  * Enabled tracing functionality when building with VC8 and up (VS2005 and
+    up). (Andrey)
+  * Added better support for named pipes, on Windows. Use pipe:// and add the
+    path to the pipe. Shared memory connections are currently not supported.
+    (Andrey)
+  * Fixed a bug in MySQL_Connection::setSessionVariable() which led to
+    exception being thrown. (Andrey)
+
+-------------------------------------------------------------------
+Mon May 18 14:00:33 CEST 2009 - mhrusecky@suse.cz
+
+- fixed compilation using gcc44
+
+-------------------------------------------------------------------
+Fri Apr 17 19:57:19 CEST 2009 - mhrusecky@suse.cz
+
+- initial version of MySQL Connector/C++ package (version 1.0.4 beta)
+

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:51:51 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun 14 15:54:42 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:50:06 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Oct 10 13:38:43 UTC 2013 - ddiss@suse.com
+
+- Update to pushy-0.5.3
+  + No changelog available
+
+-------------------------------------------------------------------
+Thu Jul 11 14:58:23 UTC 2013 - speilicke@suse.com
+
+- Initial version
+
+

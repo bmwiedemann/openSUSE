@@ -1,0 +1,15 @@
+Index: fossil-2.7/src/main.c
+===================================================================
+--- fossil-2.7.orig/src/main.c	2018-09-22 19:40:11.000000000 +0200
++++ fossil-2.7/src/main.c	2018-09-27 11:01:56.761406195 +0200
+@@ -1006,8 +1006,8 @@ static void get_version_blob(
+   blob_zero(pOut);
+   blob_appendf(pOut, "This is fossil version %s\n", get_version());
+   if( !bVerbose ) return;
+-  blob_appendf(pOut, "Compiled on %s %s using %s (%d-bit)\n",
+-               __DATE__, __TIME__, COMPILER_NAME, sizeof(void*)*8);
++  blob_appendf(pOut, "Compiled using %s (%d-bit)\n",
++               COMPILER_NAME, sizeof(void*)*8);
+   blob_appendf(pOut, "Schema version %s\n", AUX_SCHEMA_MAX);
+   fossil_get_page_size(&pageSize);
+   blob_appendf(pOut, "Detected memory page size is %lu bytes\n",

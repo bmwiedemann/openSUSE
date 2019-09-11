@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue May  7 08:26:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1544:
+  * No upstream changelog
+- Rebase patch gn-flags.patch
+
+-------------------------------------------------------------------
+Fri Nov  9 08:44:22 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to add missing files to fix armv7 build:
+  * gn-add_missing_arm_files.patch
+
+-------------------------------------------------------------------
+Tue Oct 30 14:50:22 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 0.1479:
+  * No upstream changelog
+- Rebase patch gn-flags.patch
+
+-------------------------------------------------------------------
+Tue Aug 28 11:06:58 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.1463:
+  * No upstream changelog
+- Rebase patch gn-flags.patch
+
+-------------------------------------------------------------------
+Mon Aug  6 11:33:49 UTC 2018 - tchvatal@suse.com
+
+- Fix building on openSUSE Leap 42.3
+
+-------------------------------------------------------------------
+Wed Jul 25 14:51:09 UTC 2018 - tchvatal@suse.com
+
+- Initial commit, package used to generate ninja files, used
+  when configuring chromium

@@ -1,0 +1,114 @@
+--- src/lib/libast/path/pathtemp.c
++++ src/lib/libast/path/pathtemp.c	2012-10-25 10:35:14.510345073 +0000
+@@ -73,15 +73,49 @@
+ #include <ls.h>
+ #include <tv.h>
+ #include <tm.h>
++#include <error.h>
+ 
+ #define ATTEMPT		10
+ 
+ #define TMP_ENV		"TMPDIR"
+ #define TMP_PATH_ENV	"TMPPATH"
+ #define TMP1		"/tmp"
+-#define TMP2		"/usr/tmp"
++#define TMP2		"/var/tmp"
+ 
+-#define VALID(d)	(*(d)&&!eaccess(d,W_OK|X_OK))
++static inline int xaccess(const char *path, int mode)
++{
++	static size_t pgsz;
++	struct statvfs vfs;
++	int ret;
++
++	if (!pgsz)
++		pgsz = strtoul(astconf("PAGESIZE",NiL,NiL),NiL,0);
++
++	if (!path || !*path)
++	{
++		errno = EFAULT;
++		goto err;
++	}
++
++	do
++		ret = statvfs(path, &vfs);
++	while (ret < 0 && errno == EINTR);
++
++	if (ret < 0)
++		goto err;
++
++	if (vfs.f_frsize*vfs.f_bavail < pgsz)
++	{
++		errno = ENOSPC;
++		goto err;
++	}
++
++	return eaccess(path, mode);
++err:
++	return -1;
++}
++
++#define VALID(d)	(*(d)&&!xaccess(d,W_OK|X_OK))
+ 
+ static struct
+ {
+@@ -182,7 +216,7 @@ pathtemp(char* buf, size_t len, const ch
+ 		tv.tv_nsec = 0;
+ 	else
+ 		tvgettime(&tv);
+-	if (!(d = (char*)dir) || *d && eaccess(d, W_OK|X_OK))
++	if (!(d = (char*)dir) || (*d && xaccess(d, W_OK|X_OK)))
+ 	{
+ 		if (!tmp.vec)
+ 		{
+@@ -227,7 +261,7 @@ pathtemp(char* buf, size_t len, const ch
+ 			tmp.dir = tmp.vec;
+ 			d = *tmp.dir++;
+ 		}
+-		if (!d && (!*(d = astconf("TMP", NiL, NiL)) || eaccess(d, W_OK|X_OK)) && eaccess(d = TMP1, W_OK|X_OK) && eaccess(d = TMP2, W_OK|X_OK))
++		if (!d && (!*(d = astconf("TMP", NiL, NiL)) || xaccess(d, W_OK|X_OK)) && xaccess(d = TMP1, W_OK|X_OK) && xaccess(d = TMP2, W_OK|X_OK))
+ 			return 0;
+ 	}
+ 	if (!len)
+--- src/lib/libast/sfio/sftmp.c
++++ src/lib/libast/sfio/sftmp.c	2012-10-25 12:09:18.026344912 +0000
+@@ -20,6 +20,14 @@
+ *                                                                      *
+ ***********************************************************************/
+ #include	"sfhdr.h"
++#if _PACKAGE_ast
++# if defined(__linux__) && _lib_statfs
++#  include <sys/statfs.h>
++#  ifndef  TMPFS_MAGIC
++#   define TMPFS_MAGIC	0x01021994
++#  endif
++# endif
++#endif
+ 
+ /*	Create a temporary stream for read/write.
+ **	The stream is originally created as a memory-resident stream.
+@@ -207,7 +215,24 @@ Sfio_t*	f;
+ 	int		fd;
+ 
+ #if _PACKAGE_ast
++# if defined(__linux__) && _lib_statfs
++	/*
++	 * Use the area of POSIX shared memory objects for the new temporary file descriptor
++	 * that is do not access HD or SSD but only the memory based tmpfs of the POSIX SHM
++	 */
++	static int doshm;
++	static char *shm = "/dev/shm";
++	if (!doshm)
++	{
++		struct statfs fs;
++		if (statfs(shm, &fs) < 0 || fs.f_type != TMPFS_MAGIC || eaccess(shm, W_OK|X_OK))
++			shm = NiL;
++		doshm++;
++	}
++	if(!(file = pathtemp(NiL,PATH_MAX,shm,"sf",&fd)))
++# else
+ 	if(!(file = pathtemp(NiL,PATH_MAX,NiL,"sf",&fd)))
++# endif
+ 		return -1;
+ 	_rmtmp(f, file);
+ 	free(file);

@@ -1,0 +1,27 @@
+From 8fc7a4f671833d7142e632517d25d0015b648c3c Mon Sep 17 00:00:00 2001
+From: Nathan Hjelm <hjelmn@me.com>
+Date: Thu, 23 May 2013 19:11:16 -0600
+Subject: [PATCH] Update news for 0.1.5
+
+---
+ NEWS | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/NEWS b/NEWS
+index 05928ca..5dcd53a 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,6 +1,10 @@
+ This file lists notable changes in each release. For the full history of all
+ changes, see ChangeLog.
+ 
++2013-05-20: libusb-compat-0.1.5 release
++ * Update autoconf/automake files to fix warnings.
++ * Use an atexit function to call libusb_exit().
++
+ 2012-04-24: libusb-compat-0.1.4 release
+  * Change usb_*_write() prototypes to use const for read-only parameters
+  * Fix #42 usb_detach_kernel_driver_np() error mapping
+-- 
+2.3.5
+

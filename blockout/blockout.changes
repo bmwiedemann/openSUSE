@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Apr  6 19:19:06 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.5
+* A few graphics improvements
+* Pratice mode improvements
+* Improved the demo mode (bot plays better)
+
+-------------------------------------------------------------------
+Mon Nov 11 04:27:30 UTC 2013 - jengelh@inai.de
+
+- Set RPM game group and Freecode URL
+
+-------------------------------------------------------------------
+Tue Feb 19 14:04:20 UTC 2013 - reddwarf@opensuse.org
+
+- build also against libpng14
+  * modified automake.diff (look for libpng)
+
+-------------------------------------------------------------------
+Tue Feb 19 08:36:08 UTC 2013 - pgajdos@suse.com
+
+- build also against libpng16
+  * modified compilefixes.diff (#include <string.h> in hpng.c)
+  * modified automake.diff (look for libpng16 and then for libpng15)
+
+-------------------------------------------------------------------
+Sun Mar 25 14:18:38 UTC 2012 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

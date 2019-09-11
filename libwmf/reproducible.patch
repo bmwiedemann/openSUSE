@@ -1,0 +1,34 @@
+From: Bernhard M. Wiedemann <bwiedemann suse.de>
+Subject: sort .o file lists so libwmf.a is built reproducibly
+
+Index: libwmf-0.2.8.4/ltmain.sh
+===================================================================
+--- libwmf-0.2.8.4.orig/ltmain.sh
++++ libwmf-0.2.8.4/ltmain.sh
+@@ -3734,7 +3734,7 @@ EOF
+ 		done
+ 	      fi
+ 
+-	      libobjs="$libobjs "`find $xdir -name \*.$objext -print -o -name \*.lo -print | $NL2SP`
++	      libobjs="$libobjs "`find $xdir -name \*.$objext -print -o -name \*.lo -print | sort | $NL2SP`
+ 	    done
+ 	  fi
+ 	fi
+@@ -4032,7 +4032,7 @@ EOF
+ 	      done
+ 	    fi
+ 
+-	    reload_conv_objs="$reload_objs "`find $xdir -name \*.$objext -print -o -name \*.lo -print | $NL2SP`
++	    reload_conv_objs="$reload_objs "`find $xdir -name \*.$objext -print -o -name \*.lo -print | sort | $NL2SP`
+ 	  done
+ 	fi
+       fi
+@@ -5048,7 +5048,7 @@ fi\
+ 	    done
+ 	  fi
+ 
+-	  oldobjs="$oldobjs "`find $xdir -name \*.${objext} -print -o -name \*.lo -print | $NL2SP`
++	  oldobjs="$oldobjs "`find $xdir -name \*.${objext} -print -o -name \*.lo -print | sort | $NL2SP`
+ 	done
+       fi
+ 

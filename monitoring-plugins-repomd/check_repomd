@@ -1,0 +1,138 @@
+#!/bin/bash
+#
+# Copyright (C) 2013, SUSE Linux Products GmbH
+# Author: Lars Vogdt
+#
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice, this
+#   list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+#
+# * Neither the name of the Novell nor the names of its contributors may be
+#   used to endorse or promote products derived from this software without
+#   specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+VERSION="2.1"
+DEBUG=0
+
+DAYS=30
+GREP='/bin/grep'
+CURL='/usr/bin/curl'
+CAT='/bin/cat'
+CUT='/usr/bin/cut'
+MKTEMP='/bin/mktemp'
+UTILS='/usr/lib/nagios/plugins/utils.sh'
+
+if [ -r "$UTILS" ]; then
+. "$UTILS"
+else
+    cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: could not read $UTILS"
+fi
+
+function print_help(){
+    echo "Usage: $(basename $0) -u <url_to_repomd.xml> [-o <days>] [-d][-v][-h]"
+    echo "       checks up-to date state of repomd.xml"
+    echo
+    echo "       -u <url_to_repomd.xml> : please enter the full URL to the repomd.xml file"
+    echo "       -o <days>              : days unless a repomd.xml file is handled as outdated (default: $DAYS)"
+    echo "       -d                     : enable debug output"
+    echo "       -v                     : print version"
+    echo "       -h                     : help (this text)"
+    echo 
+    print_revision "$(basename $0)" "$VERSION"
+    support
+    cleanup_and_exit "$STATE_OK" ""
+}
+
+function cleanup_and_exit(){
+    local EXIT="$1"
+    local COMMENT="$2"
+    test -f "$RESULTFILE" && rm "$RESULTFILE"
+    echo "$COMMENT"
+    exit $EXIT
+}
+
+while getopts "hu:do:v" OPTION; do
+    case $OPTION in
+        h) print_help
+        ;;
+        v) print_revision "$(basename $0)" "$VERSION"
+           exit "$STATE_OK"
+        ;;
+        u) URL="$OPTARG"
+        ;;
+        o) DAYS="$OPTARG"
+        ;;
+        d) DEBUG=1
+        ;;
+    esac
+done
+
+if [ -z "$URL" ]; then
+    cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: option -u <url> not defined"
+fi
+
+if [[ $DAYS != [0-9]* ]]; then
+    cleanup_and_exit "$STATE_UNKNOWN" "UNKNOWN: option -o <days> contains non-integer value"
+fi
+
+if [ ! -x $GREP ]; then
+    cleanup_and_exit "$STATE_UNKNOWN" "UNKNOWN: could not execute $GREP"
+fi
+
+trap 'echo' SIGHUP SIGINT SIGQUIT
+trap 'cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: received SIGTRAP, SIGBUS, SIGKILL, SIGPIPE or SIGTERM signal"' SIGTRAP SIGBUS SIGKILL SIGPIPE SIGTERM
+
+RESULTFILE=$($MKTEMP /tmp/check_repomd-XXXXXX)
+
+$CURL -s $URL -o "$RESULTFILE" 2>&1
+CURL_EXIT="$?"
+
+if [ x"$CURL_EXIT" != "x0" ]; then
+	cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: curl returned with error code: $CURL_EXIT"
+fi
+
+if ! $GREP -q "revision" "$RESULTFILE"; then
+	cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: needed tag 'revision' not found in output of $URL"
+fi
+
+REVISION=$($GREP revision "$RESULTFILE" | $CUT -d "<" -f2 | $CUT -d ">" -f2)
+HAS_INFO=$($GREP "type.*suseinfo" "$RESULTFILE")
+NOW=$(date +'%s')
+let DIFFERENCE=(${NOW}-${REVISION})
+let SECONDS=${DAYS}*24*60*60
+
+if [ "$DEBUG" != "0" ]; then
+	echo "DEBUG: Output of $CURL -s $URL -o $RESULTFILE :"
+	echo
+	$CAT $RESULTFILE
+	echo
+	echo "DEBUG: NOW: $NOW; REVISION: $REVISION; DIFFERENCE: $DIFFERENCE; allowed seconds: $SECONDS"
+	echo
+fi
+
+if [[ -n "$HAS_INFO" && $DIFFERENCE -gt $SECONDS ]]; then
+	cleanup_and_exit "$STATE_CRITICAL" "CRITICAL: repomd.xml from $URL is older than $DAYS days"
+else
+	cleanup_and_exit "$STATE_OK" "OK: repomd.xml from $URL is younger than $DAYS days"
+fi
+

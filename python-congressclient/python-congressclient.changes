@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:05:30 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.12.0
+  - Add Python 3.6 classifier to setup.cfg
+  - Switch to stestr
+  - Change openstack-dev to openstack-discuss
+  - Update hacking version
+  - Add python 3.6 for test in tox
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Use template for lower-constraints
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Mon Sep  3 17:28:54 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.11.0
+  - fix tox python3 overrides
+  - Update links in README
+  - Update the home-page
+  - Adds support for z3 policies
+  - Follow the new PTI for document build
+  - Cleanup test-requirements
+  - doc update to fix errors from new sphinx version 1.7.5
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 12:52:25 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 30 15:08:09 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.9.0
+  - Enable include_rules option for library policy
+  - Support activating library policy
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+
+-------------------------------------------------------------------
+Mon Aug  7 08:31:56 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.8.0
+  - Use oslo_log instead of system logging for consistency
+  - Revert "Fix the problem of default width is small"
+  - Remove unused packages from requirements.txt
+  - Add client methods for library policy CRUD
+  - Remove log translations
+  - Update .gitignore
+  - Python 3.5 is added
+  - Use 'project' instead of 'tenant' when switching to openstackclient command
+  - Fix modindex link
+  - Set default max-width to 80 everywhere
+  - [Fix gate]Update test requirement
+  - Added how to install from a branch
+  - Add command to create policy from file
+  - remove redundant path variables in v1/client.py
+  - Update documentation link
+  - Update the documentation link for doc migration
+  - Updated from global requirements
+  - Fix the problem of default width is small
+  - Switch from oslosphinx to openstackdocstheme
+  - doc migration
+
+-------------------------------------------------------------------
+Mon Feb 13 11:24:40 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.6.0:
+  - Add plug-in summary for osc doc
+  - Add Constraints support
+  - Remove unnecessary utf coding
+  - Add method to show datasource
+  - Show team and repo badges on README
+  - Fall back to UUID when delete by name fails
+  - Remove unnecessary db calls to list_datasources
+  - Minor edit of misleading message
+  - no longer use oslo-incubator code
+  - Updated from global requirements
+  - Change home-page and documentation link
+  - Remove oslo.i18n from requirements
+
+-------------------------------------------------------------------
+Thu Sep  8 12:25:34 UTC 2016 - tbechtold@suse.com
+
+update to version 1.5.0
+  * Remove discover from test-requirements
+  * Remove python-keystoneclient dependency
+  * Add __ne__ built-in function
+  * Add missing makefile so HTML docs can be generated
+  * Add release notes
+  * Updated from global requirements
+  * Support push rows to datasources
+
+-------------------------------------------------------------------
+Fri Aug 26 10:45:21 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.4.0)
+

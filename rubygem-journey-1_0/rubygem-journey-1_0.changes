@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Oct 22 01:05:15 CEST 2014 - ro@suse.de
+
+- regenerate with current gem2rpm 
+
+-------------------------------------------------------------------
+Tue Jul 31 13:25:01 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Thu Jun 28 12:38:30 UTC 2012 - coolo@suse.com
+
+- update to 1.0.4
+    * lib/journey/formatter.rb: when generating routes, skip route
+       literals (routes that do not have replacement values like
+       "/:controller") when matching unnamed routes.
+         
+         https://github.com/rails/rails/issues/6459
+
+-------------------------------------------------------------------
+Mon May 14 12:15:22 UTC 2012 - coolo@suse.com
+
+- fix provides
+
+-------------------------------------------------------------------
+Tue Apr  3 08:51:11 UTC 2012 - coolo@suse.com
+
+- update to 1.0.3
+   * lib/journey/formatter.rb: reject non-truthy parameters parts.
+     Fixes rails ticket #4587
+
+-------------------------------------------------------------------
+Fri Mar 23 10:48:11 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Fri Jan 27 00:52:55 UTC 2012 - mrueckert@suse.de
+
+- update to 1.0.1
+  * Added symbol? and literal? predicate methods to the ast nodes
+    for easier AST traversal.
+  * Made the dummy node a real class.
+
+-------------------------------------------------------------------
+Thu Jan 26 16:14:01 UTC 2012 - mrueckert@suse.de
+
+- initial package of the 1.0 branch
+

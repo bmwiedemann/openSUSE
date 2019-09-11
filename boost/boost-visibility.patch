@@ -1,0 +1,110 @@
+---
+ boost/archive/impl/basic_xml_grammar.hpp     |   16 ++++++++--------
+ libs/serialization/src/basic_xml_grammar.ipp |   14 +++++++-------
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+
+Index: boost/archive/impl/basic_xml_grammar.hpp
+===================================================================
+--- boost/archive/impl/basic_xml_grammar.hpp.orig
++++ boost/archive/impl/basic_xml_grammar.hpp
+@@ -135,7 +135,7 @@ private:
+         Sch,
+         NameChar;
+ 
+-    void init_chset();
++    BOOST_SYMBOL_VISIBLE void init_chset();
+ 
+     bool my_parse(
+         IStream & is,
+@@ -143,7 +143,7 @@ private:
+         const CharType delimiter = L'>'
+     ) const ;
+ public:
+-    struct return_values {
++    BOOST_SYMBOL_VISIBLE struct return_values {
+         StringType object_name;
+         StringType contents;
+         //class_id_type class_id;
+@@ -159,12 +159,12 @@ public:
+             tracking_level(false)
+         {}
+     } rv;
+-    bool parse_start_tag(IStream & is) /*const*/;
+-    bool parse_end_tag(IStream & is) const;
+-    bool parse_string(IStream & is, StringType & s) /*const*/;
+-    void init(IStream & is);
+-    bool windup(IStream & is);
+-    basic_xml_grammar();
++    BOOST_SYMBOL_VISIBLE bool parse_start_tag(IStream & is) /*const*/;
++    BOOST_SYMBOL_VISIBLE bool parse_end_tag(IStream & is) const;
++    BOOST_SYMBOL_VISIBLE bool parse_string(IStream & is, StringType & s) /*const*/;
++    BOOST_SYMBOL_VISIBLE void init(IStream & is);
++    BOOST_SYMBOL_VISIBLE bool windup(IStream & is);
++    BOOST_SYMBOL_VISIBLE basic_xml_grammar();
+ };
+ 
+ } // namespace archive
+Index: libs/serialization/src/basic_xml_grammar.ipp
+===================================================================
+--- libs/serialization/src/basic_xml_grammar.ipp.orig
++++ libs/serialization/src/basic_xml_grammar.ipp
+@@ -173,7 +173,7 @@ struct append_lit {
+ } // namespace anonymous
+ 
+ template<class CharType>
+-bool basic_xml_grammar<CharType>::my_parse(
++BOOST_SYMBOL_VISIBLE bool basic_xml_grammar<CharType>::my_parse(
+     typename basic_xml_grammar<CharType>::IStream & is,
+     const rule_t & rule_,
+     CharType delimiter
+@@ -209,7 +209,7 @@ bool basic_xml_grammar<CharType>::my_par
+ }
+ 
+ template<class CharType>
+-bool basic_xml_grammar<CharType>::parse_start_tag(
++BOOST_SYMBOL_VISIBLE bool basic_xml_grammar<CharType>::parse_start_tag(
+     typename basic_xml_grammar<CharType>::IStream & is
+ ){
+     rv.class_name.resize(0);
+@@ -217,12 +217,12 @@ bool basic_xml_grammar<CharType>::parse_
+ }
+ 
+ template<class CharType>
+-bool basic_xml_grammar<CharType>::parse_end_tag(IStream & is) const {
++BOOST_SYMBOL_VISIBLE bool basic_xml_grammar<CharType>::parse_end_tag(IStream & is) const {
+     return my_parse(is, ETag);
+ }
+ 
+ template<class CharType>
+-bool basic_xml_grammar<CharType>::parse_string(IStream & is, StringType & s){
++BOOST_SYMBOL_VISIBLE bool basic_xml_grammar<CharType>::parse_string(IStream & is, StringType & s){
+     rv.contents.resize(0);
+     bool result = my_parse(is, content, '<');
+     // note: unget caused a problem with dinkumware.  replace with
+@@ -235,7 +235,7 @@ bool basic_xml_grammar<CharType>::parse_
+ }
+ 
+ template<class CharType>
+-basic_xml_grammar<CharType>::basic_xml_grammar(){
++BOOST_SYMBOL_VISIBLE basic_xml_grammar<CharType>::basic_xml_grammar(){
+     init_chset();
+ 
+     S =
+@@ -432,7 +432,7 @@ basic_xml_grammar<CharType>::basic_xml_g
+ }
+ 
+ template<class CharType>
+-void basic_xml_grammar<CharType>::init(IStream & is){
++BOOST_SYMBOL_VISIBLE void basic_xml_grammar<CharType>::init(IStream & is){
+     init_chset();
+     if(! my_parse(is, XMLDecl))
+         boost::serialization::throw_exception(
+@@ -453,7 +453,7 @@ void basic_xml_grammar<CharType>::init(I
+ }
+ 
+ template<class CharType>
+-bool basic_xml_grammar<CharType>::windup(IStream & is) {
++BOOST_SYMBOL_VISIBLE bool basic_xml_grammar<CharType>::windup(IStream & is) {
+     return my_parse(is, ETag);
+ }
+ 

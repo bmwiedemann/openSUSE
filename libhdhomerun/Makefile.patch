@@ -1,0 +1,24 @@
+--- Makefile	2012-08-30 15:46:27.000000000 -0500
++++ ../Makefile.new	2013-03-16 03:34:33.000000000 -0500
+@@ -18,13 +18,20 @@
+ LDFLAGS += -lpthread
+ SHARED = -shared -Wl,-soname,libhdhomerun$(LIBEXT)
+ 
++LBITS := $(shell getconf LONG_BIT)
++ifeq ($(LBITS),64)
++   LIB=lib64
++else
++   LIB=lib
++endif
++
+ ifeq ($(OS),Windows_NT)
+   BINEXT := .exe
+   LIBEXT := .dll
+   LDFLAGS += -liphlpapi
+ else
+   OS := $(shell uname -s)
+-  LIBEXT := .so
++  LIBEXT := .so.2
+   ifeq ($(OS),Linux)
+     LDFLAGS += -lrt
+   endif

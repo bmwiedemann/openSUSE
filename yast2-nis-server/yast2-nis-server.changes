@@ -1,0 +1,810 @@
+-------------------------------------------------------------------
+Fri May 31 12:34:55 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Thu Dec  6 18:21:57 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- properly escape shell arguments (bsc#1118291)
+- 4.1.1
+
+-------------------------------------------------------------------
+Sun Nov 25 20:25:01 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Aug 20 11:19:37 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Wed Jun 27 17:37:54 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Tue Feb 20 07:45:58 UTC 2018 - knut.anderssen@suse.com
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed Jun  1 15:07:55 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-nis-server-devel-doc package (fate#320356)
+- 3.1.4
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:32 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Jun  2 10:40:02 CEST 2014 - locilka@suse.com
+
+- Marked text for translation (bnc#880306)
+- 3.1.2
+
+-------------------------------------------------------------------
+Fri May 30 16:25:26 CEST 2014 - jsuchome@suse.cz
+
+- use correct name of service for firewall (bnc#880383)
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 11:52:08 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:34:19 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Wed Nov 28 13:14:39 CET 2012 - jsuchome@suse.cz
+
+- save local NIS client with static netconfig policy (bnc#786799)
+- 2.23.0
+
+-------------------------------------------------------------------
+Tue Apr 24 14:21:35 CEST 2012 - ug@suse.de
+
+- small rnc file fix
+
+-------------------------------------------------------------------
+Tue Jan 24 17:46:17 CET 2012 - jsuchome@suse.cz
+
+- confirmed licence
+- 2.22.0 
+
+-------------------------------------------------------------------
+Wed Sep 28 18:53:45 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.1 
+
+-------------------------------------------------------------------
+Mon Aug  8 10:24:14 CEST 2011 - jsuchome@suse.cz
+
+- remember the settings after clicking Details (bnc#710882)
+- 2.21.0 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:22 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Tue Jun 16 14:27:44 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Thu Jan 22 09:29:03 CET 2009 - jsuchome@suse.cz
+
+- NisServer::modified used to indicate if changes were done
+- ask for abort if changes were done (bnc#460168)
+- code cleanup
+- 2.18.0 
+
+-------------------------------------------------------------------
+Thu Sep  4 14:36:32 CEST 2008 - jsuchome@suse.cz
+
+- use rpcbind instead of portmap if available (bnc#423026)
+- 2.17.2 
+
+-------------------------------------------------------------------
+Tue Sep  2 10:40:11 CEST 2008 - jsuchome@suse.cz
+
+- fixed button alignment (bnc#421043)
+- 2.17.1 
+
+-------------------------------------------------------------------
+Thu Aug 28 14:16:47 CEST 2008 - jsuchome@suse.cz
+
+- adapted to recent changes in nis-client (no check for DHCP)
+- DHCLIENT_SET_DOMAINNAME replaced with NETCONFIG_NIS_SETDOMAINNAME
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon Apr 21 12:01:33 CEST 2008 - jsuchome@suse.cz
+
+- check if /var/yp/Makefile exists before reading it (bnc#381369)
+- 2.16.4
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- 2.16.3
+
+-------------------------------------------------------------------
+Mon Jan 28 10:39:56 CET 2008 - jsuchome@suse.cz
+
+- fixed broken requirement
+- 2.16.2 
+
+-------------------------------------------------------------------
+Thu Jan 24 15:39:26 CEST 2008 - mzugec@suse.cz
+
+- replace deprecated NetworkDevices by NetworkInterfaces (from yast2)
+- 2.16.1
+
+-------------------------------------------------------------------
+Wed Oct  3 10:01:26 CEST 2007 - mvidner@suse.cz
+
+- Do not try to package COPYRIGHT.english, it is gone from
+  devtools (#299144).
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Sep  6 09:23:50 CEST 2007 - coolo@suse.de
+
+- This package does _not_ provide yast2-devel-doc
+
+-------------------------------------------------------------------
+Thu Jul 26 08:49:14 CEST 2007 - jsuchome@suse.cz
+
+- documentation moved to -devel-doc package (F302461)
+- 2.15.1 
+
+-------------------------------------------------------------------
+Thu Jul 19 08:39:41 CEST 2007 - jsuchome@suse.cz
+
+- do not mention /etc/gshadow (#292299)
+- 2.15.0
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Wed Nov  8 09:52:08 CET 2006 - jsuchome@suse.cz
+
+- fixed autoyast schema (#211014)
+- 2.14.1
+
+-------------------------------------------------------------------
+Mon Nov  6 10:31:27 CET 2006 - jsuchome@suse.cz
+
+- new version for new product
+- 2.14.0 
+
+-------------------------------------------------------------------
+Thu Oct 26 16:37:49 CEST 2006 - jsuchome@suse.cz
+
+- added schema name to desktop file (#215249)
+- 2.13.6 
+
+-------------------------------------------------------------------
+Thu Oct 26 15:46:01 CEST 2006 - jsuchome@suse.cz
+
+- schema file moved from autoyast package (#215249)
+- 2.13.5 
+
+-------------------------------------------------------------------
+Tue Aug  1 11:06:12 CEST 2006 - jsuchome@suse.cz
+
+- install also ypbind package (#195400)
+- 2.13.4 
+
+-------------------------------------------------------------------
+Mon Mar 27 09:45:20 CEST 2006 - jsuchome@suse.cz
+
+- added checking for root permissions (#158483)
+- 2.13.3 
+
+-------------------------------------------------------------------
+Mon Mar 27 08:17:13 CEST 2006 - jsuchome@suse.cz
+
+- removed yast2-devel-packages from BuildRequires
+- 2.13.2 
+
+-------------------------------------------------------------------
+Tue Jan 31 14:45:17 CET 2006 - jsuchome@suse.cz
+
+- minimum width for Merge frames (#146629)
+- 2.13.1
+
+-------------------------------------------------------------------
+Tue Dec 20 17:29:44 CET 2005 - jsuchome@suse.cz
+
+- new version for new product version
+- 2.13.0 
+
+-------------------------------------------------------------------
+Fri Sep  2 16:32:07 CEST 2005 - jsuchome@suse.cz
+
+- update to current output of makedbm (#114932)
+- 2.12.4 
+ 
+-------------------------------------------------------------------
+Tue Aug 30 08:27:19 CEST 2005 - jsuchome@suse.cz
+
+- correctly detect if the master server is running (#113774)
+- 2.12.3
+
+-------------------------------------------------------------------
+Thu Jul 28 11:28:00 CEST 2005 - jsuchome@suse.cz
+
+- updated desktop file 
+- 2.12.2
+
+-------------------------------------------------------------------
+Wed Jun 29 14:13:48 CEST 2005 - jsuchome@suse.cz
+
+- allow only hostnames (and not IPs) in slave server list (#94286)
+- allow hostname as master server address
+- show the expected hostname of slave server in the error message (#94287)
+- 2.12.1
+
+-------------------------------------------------------------------
+Wed May  4 08:24:59 CEST 2005 - jsuchome@suse.cz
+
+- renamed "default" variables
+- 2.12.0 
+
+-------------------------------------------------------------------
+Mon Feb 14 10:26:30 CET 2005 - jsuchome@suse.cz
+
+- fix: allow host names for slaves (#50735)
+- 2.11.5
+
+-------------------------------------------------------------------
+Mon Feb  7 16:38:21 CET 2005 - jsuchome@suse.cz
+
+- merged texts from proofreading
+- 2.11.4 
+
+-------------------------------------------------------------------
+Tue Jan 18 10:47:20 CET 2005 - jsuchome@suse.cz
+
+- command line support: configure master and slave server
+- 2.11.3
+
+-------------------------------------------------------------------
+Wed Dec 15 13:09:46 CET 2004 - jsuchome@suse.cz
+
+- fixed NFB (yast2-firewall not required)
+- adapted to new Progress usage 
+- fixed SCR calls when there are not config files
+- 2.11.2 
+
+-------------------------------------------------------------------
+Fri Nov  5 10:06:01 CET 2004 - jsuchome@suse.cz
+
+- lookup's and select's replaced by brackets
+- 2.11.1 
+
+-------------------------------------------------------------------
+Fri Oct 29 09:24:42 CEST 2004 - jsuchome@suse.cz
+
+- adapted for new Mode:: interface
+- used common texts from Message module
+- 2.11.0
+
+-------------------------------------------------------------------
+Tue Sep 14 09:04:35 CEST 2004 - jsuchome@suse.cz
+
+- adapted testsuite to changes in yast2-firewall
+- 2.10.5 
+
+-------------------------------------------------------------------
+Tue Aug 31 00:19:07 CEST 2004 - nashif@suse.de
+
+- use modified flag (#43904)
+- 2.10.4
+
+-------------------------------------------------------------------
+Mon Aug 30 14:47:28 CEST 2004 - jsuchome@suse.cz
+
+- firewall: use "nis-server" service instead of "portmap"
+- 2.10.3
+
+-------------------------------------------------------------------
+Fri Aug 27 14:00:29 CEST 2004 - jsuchome@suse.cz
+
+- merged proofread texts
+
+-------------------------------------------------------------------
+Mon Aug 16 10:01:10 CEST 2004 - jsuchome@suse.cz
+
+- do not create gshadow file (#42646)
+- 2.10.2
+
+-------------------------------------------------------------------
+Tue Aug 10 09:10:39 CEST 2004 - jsuchome@suse.cz
+
+- merged proofread texts
+
+-------------------------------------------------------------------
+Fri Aug  6 14:06:56 CEST 2004 - jsuchome@suse.cz
+
+- basic command line support (summary) 
+- 2.10.1
+
+-------------------------------------------------------------------
+Thu Aug  5 14:46:04 CEST 2004 - jsuchome@suse.cz
+
+- added widgets for adjusting firewall configuration
+
+-------------------------------------------------------------------
+Wed Aug  4 12:18:10 CEST 2004 - jsuchome@suse.cz
+
+- warn when DHCP could change domain name (#28727)
+
+-------------------------------------------------------------------
+Tue Jul 27 16:12:46 CEST 2004 - jsuchome@suse.cz
+
+- use Package module instead of Require
+
+-------------------------------------------------------------------
+Mon Jul 12 13:37:57 CEST 2004 - mvidner@suse.cz
+
+- Fixed cancelling Abort (#42730).
+
+-------------------------------------------------------------------
+Thu Jun 17 10:46:18 CEST 2004 - mvidner@suse.cz
+
+- Added "testedfiles" to test cases to make it work with the new testsuite.
+- 2.10.0
+
+-------------------------------------------------------------------
+Fri Jun  4 15:15:32 CEST 2004 - mvidner@suse.cz
+
+- Fixed editing and deleting securenets entries (#41493).
+- Prevented aborting after some error popups.
+
+-------------------------------------------------------------------
+Fri May  7 16:21:36 CEST 2004 - mvidner@suse.cz
+
+- Fixed a typo that made Write unfunctional (#40086)
+- 2.9.9
+
+-------------------------------------------------------------------
+Fri Apr  2 15:14:48 CEST 2004 - mvidner@suse.cz
+
+- changed license to GPL
+- 2.9.8
+
+-------------------------------------------------------------------
+Mon Mar 29 10:12:03 CEST 2004 - mvidner@suse.cz
+
+- fixed build by avoiding nil in testsuite (#36922)
+- 2.9.7
+
+-------------------------------------------------------------------
+Fri Mar 26 18:14:40 CET 2004 - mvidner@suse.cz
+
+- fixed writing broken by improper use of eval (#37031)
+- yast2-installation not necessary anymore
+- 2.9.6
+
+-------------------------------------------------------------------
+Mon Mar  8 19:42:01 CET 2004 - lslezak@suse.cz
+
+- use Sequencer::
+- set icon
+- version 2.9.5
+
+-------------------------------------------------------------------
+Mon Mar  8 13:49:31 CET 2004 - mvidner@suse.cz
+
+- switched from Runlevel to Service
+- require yast2-installation because of ProductFeatures
+- 2.9.4
+
+-------------------------------------------------------------------
+Fri Mar  5 17:03:27 CET 2004 - mvidner@suse.cz
+
+- added type information (lslezak)
+- 2.9.3
+
+-------------------------------------------------------------------
+Tue Feb 10 10:28:06 CET 2004 - lslezak@suse.cz
+
+- removed *.y2cc file
+- NI fixes (removed globals, data types, dynamic scope)
+- use IP:: module
+- version 2.9.2
+
+-------------------------------------------------------------------
+Wed Feb  4 17:16:57 CET 2004 - lslezak@suse.cz
+
+- yast2-nis-client and yast2-pam needed for build
+- NI fixes
+- testsuite update
+- version 2.9.1
+
+-------------------------------------------------------------------
+Sun Sep 21 15:20:06 CEST 2003 - adrian@suse.de
+
+- put package to stable with fixed kcontrol desktop entry
+- 2.8.6
+
+-------------------------------------------------------------------
+Fri Aug 22 20:02:36 CEST 2003 - nashif@suse.de
+
+- Return required package during autoinstall
+- 2.8.5
+
+-------------------------------------------------------------------
+Wed Aug 20 15:05:18 CEST 2003 - jsuchome@suse.de
+
+- removed redundant "initialization dialog" (#28779)
+- 2.8.4
+
+-------------------------------------------------------------------
+Thu Aug 14 16:58:46 CEST 2003 - jsuchome@suse.cz
+
+- removed "really save" and "succesfully saved" popups, added writing
+  progress dialog (#28729)
+- 2.8.3
+
+-------------------------------------------------------------------
+Mon Aug  4 17:29:19 CEST 2003 - mvidner@suse.de
+
+- Added desktop file (supersedes y2cc file).
+- 2.8.2
+
+-------------------------------------------------------------------
+Wed Jul 23 15:36:10 CEST 2003 - mvidner@suse.cz
+
+- Fixed autoinstallation (#26998).
+- Using Label, Popup, Require.
+- 2.8.1
+
+-------------------------------------------------------------------
+Mon Feb 17 16:39:04 CET 2003 - mvidner@suse.de
+
+- Fixed file names of png's that were named as jpg's. (#21925)
+- Changed _auto::Result to Export (nashif).
+- 2.7.2
+
+-------------------------------------------------------------------
+Mon Feb 10 13:19:45 CET 2003 - jsuchome@suse.de
+
+- Merged proofread texts. 
+
+-------------------------------------------------------------------
+Mon Feb  3 17:31:30 CET 2003 - mvidner@suse.de
+
+- Added autoyast funcitionality (nashif).
+- Converted to a standard structure with a NisServer module.
+- 2.7.1
+
+-------------------------------------------------------------------
+Wed Jan 15 13:04:23 CET 2003 - mvidner@suse.de
+
+- Added function key shortcuts in ncurses.
+- 2.7.0
+
+-------------------------------------------------------------------
+Wed Aug 28 14:07:38 CEST 2002 - mvidner@suse.cz
+
+- Fix: The values of YPPWD_CHSH and YPPWD_CHFN were swapped when saving.
+- Fixed detecting whether we are in the master's slave list
+  when ypbind isn't running.
+- 2.6.11
+
+-------------------------------------------------------------------
+Mon Aug 26 17:18:59 CEST 2002 - mvidner@suse.cz
+
+- Use not only /etc/defaultdomain but also ypdomainname,
+  because dhcpcd may use it. (~#14232)
+- Adapted for the new packagemanager.
+- 2.6.10
+
+-------------------------------------------------------------------
+Wed Aug 14 09:46:44 CEST 2002 - mvidner@suse.cz
+
+- Make "yast2 nis-server" invoke "yast2 nis_server" (#17570).
+- Merged proofread texts for the second translation round.
+- 2.6.9
+
+-------------------------------------------------------------------
+Sun Aug 11 23:05:55 CEST 2002 - mvidner@suse.cz
+
+- Let the table keep the keyboard focus (#16116 workaround).
+- 2.6.8
+
+-------------------------------------------------------------------
+Sun Aug  4 00:20:28 CEST 2002 - schwab@suse.de
+
+- Fix requires.
+
+-------------------------------------------------------------------
+Wed Jul 31 19:03:19 CEST 2002 - mvidner@suse.cz
+
+- Added comments for translators
+- yast2-runlevel is no longer required.
+- 2.6.7
+
+-------------------------------------------------------------------
+Fri Jul 19 18:02:58 CEST 2002 - mvidner@suse.cz
+
+- Moved sysconfig/ypserv definition to yast2.rpm to share it with yast2-users.
+- Labels internally reorganized, preventing a babelfish effect (#17002).
+- Merged proofread texts.
+- 2.6.6
+
+-------------------------------------------------------------------
+Thu Jul 11 21:06:46 CEST 2002 - mvidner@suse.cz
+
+- Create YPPWD_SRCDIR if it does not exist (#15624).
+- Nis domain names are not as strict as DNS ones (#16648).
+- Fixed client Write invocation.
+- Abort on WM close button.
+- 2.6.5
+
+-------------------------------------------------------------------
+Thu Jul 04 21:31:21 CEST 2002 - arvin@suse.de
+
+- moved non binary files to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Fri Jun 28 15:14:27 CEST 2002 - mvidner@suse.cz
+
+- Renamed to "yast2-nis-server"
+- menuentry -> config
+- 2.6.2
+
+-------------------------------------------------------------------
+Tue Apr 16 15:44:42 CEST 2002 - mvidner@suse.cz
+
+- Rewrote the maps selection dialog:
+  * Two clumsy SelectionBoxes replaced by a single MultiSelectionBox.
+  * Offer only those maps whose sources exist.
+  * Added amd.home and removed amd and home (duh).
+- Added return type declarations to defines.
+- Fix for automake 1.6
+- 2.6.1
+
+-------------------------------------------------------------------
+Mon Mar 11 15:40:47 CET 2002 - mvidner@suse.cz
+
+- Check that the source directory exists. (#14708)
+- Show also init.d/ypbind output on error. (#14706)
+- 2.5.9
+
+-------------------------------------------------------------------
+Mon Feb 11 17:21:45 CET 2002 - mvidner@suse.cz
+
+- Fixed Next/Finish in case ypserv is not installed. (#13042)
+- Allow 0.0.0.0 as a net mask again.
+- Added SetFocus to input popups.
+- Clarified ExitPopup by using YesNo instead of ContinueCancel.
+- 2.5.8
+
+-------------------------------------------------------------------
+Fri Feb  1 13:19:55 CET 2002 - mvidner@suse.cz
+
+- Fixed the interface to the client module after autoinst changes.
+- Fixed invisible labels in the first dialog.
+- Had the English texts proofread.
+- 2.5.7
+
+-------------------------------------------------------------------
+Mon Jan 28 15:52:53 CET 2002 - mvidner@suse.cz
+
+- Switched from rc-config-agent to ini-agent.
+- 2.5.6
+
+-------------------------------------------------------------------
+Fri Jan 11 16:08:16 CET 2002 - mvidner@suse.cz
+
+- Not using /etc/rc.config* .
+- 2.5.5
+- Removed old menu entry.
+
+-------------------------------------------------------------------
+Fri Jan 11 09:43:46 CET 2002 - mvidner@suse.cz
+
+- Changed an identifier that has become a builtin name. (2.5.4)
+
+-------------------------------------------------------------------
+Fri Dec  7 15:29:40 CET 2001 - mvidner@suse.cz
+
+- Obliterated START_ variables, using Runlevel.
+- Client config by calling nis_write.
+- Using Wizard and Progress, syntax update.
+- Using y2autoconf and create-spec.
+- 2.5.3
+
+-------------------------------------------------------------------
+Tue Nov 13 11:32:20 CET 2001 - mvidner@suse.cz
+
+- Added default values for lookups. (2.5.2)
+
+-------------------------------------------------------------------
+Mon Oct 29 10:55:13 CET 2001 - mvidner@suse.cz
+
+- Added a missing CloseDialog (#12090, ncurses cc only).
+- Removed a spurious percent sign confusing gettext.
+- 2.5.1
+
+-------------------------------------------------------------------
+Tue Oct  2 14:08:28 CEST 2001 - mvidner@suse.cz
+
+- Two labels were not marked for translation. (2.5.0)
+
+-------------------------------------------------------------------
+Mon Sep 24 11:51:22 CEST 2001 - mvidner@suse.cz
+
+- Icon changed from "generic network" to "yellow book" used also
+  for the client. (#11245) (2.4.18)
+
+-------------------------------------------------------------------
+Fri Sep 14 17:44:55 CEST 2001 - mvidner@suse.cz
+
+- Delay when restarting ypbind (bug #10428). (2.4.17)
+
+-------------------------------------------------------------------
+Fri Sep 14 12:50:01 CEST 2001 - mvidner@suse.cz
+
+- Documentation update.
+- Fixed a disappearing progress label regression. (#10258)
+- Minor layout fixes for ncurses.
+- 2.4.16
+
+-------------------------------------------------------------------
+Tue Sep 11 11:00:06 CEST 2001 - mvidner@suse.cz
+
+- Client: run SuSEconfig only after flushing rc-files. (2.4.15)
+
+-------------------------------------------------------------------
+Mon Sep 10 10:20:41 CEST 2001 - mvidner@suse.cz
+
+- Slave server saves the domain name too.
+- Slave server gets the list of maps from yphelper, not from ypwhich.
+  (Works also when ypbind is not running, can change a domain)
+- Get the master name from a map, do not enforce an IP address.
+- 2.4.14
+
+-------------------------------------------------------------------
+Tue Sep  4 17:45:32 CEST 2001 - mvidner@suse.cz
+
+- Fixed using more than one slave server. (2.4.13)
+
+-------------------------------------------------------------------
+Mon Sep  3 17:56:02 CEST 2001 - mvidner@suse.cz
+
+- Start services only if not running already, portmap needs this (Bug #9999).
+- Fixed detection of master without passwd.byname, using base host name.
+- Make the ypservers map too.
+- Fixed slave server setup (inverted NOPUSH).
+- The check for presence in ypservers is done only after the domain is set up.
+- Fixed stopping the client.
+- Fixed backing up /var/yp/{ypservers,securenets}.
+- Eliminated redundant bash calls in server selection dialog.
+- 2.4.12
+
+-------------------------------------------------------------------
+Fri Aug 31 00:49:12 CEST 2001 - ro@suse.de
+
+- added <libycp-devel> to neededforbuild (for testsuite)
+
+-------------------------------------------------------------------
+Mon Aug 27 15:21:56 CEST 2001 - mvidner@suse.cz
+
+- Fixed starting the client (write yp.conf, set START_PORTMAP).
+- Fixed starting yppasswdd and ypxfrd.
+- 2.4.11
+
+-------------------------------------------------------------------
+Fri Aug 24 15:57:49 CEST 2001 - mvidner@suse.cz
+
+- Fixed re-detection of being a server. (2.4.10)
+
+-------------------------------------------------------------------
+Tue Aug 21 13:32:09 CEST 2001 - mvidner@suse.cz
+
+- Replaced obsolete fileexist builtin, fixed testsuite accordingly.
+- 2.4.9
+
+-------------------------------------------------------------------
+Fri Aug 17 14:13:21 CEST 2001 - mvidner@suse.cz
+
+- Fixed detection of whether to start a client too.
+- Fixed detection of being a master when a client is not started.
+- 2.4.8
+
+-------------------------------------------------------------------
+Tue Aug 14 09:59:23 CEST 2001 - mvidner@suse.cz
+
+- Fixed *.scr file list. (Don't steal from yast2-core-scr) (2.4.7)
+
+-------------------------------------------------------------------
+Mon Aug 13 13:40:51 CEST 2001 - mvidner@suse.cz
+
+- Moved specialized agents from yast2-agent-{any,rcconfig}.
+- 2.4.6
+
+-------------------------------------------------------------------
+Wed Aug  8 14:53:11 CEST 2001 - mvidner@suse.cz
+
+- Better error formatting.
+- LSB-compatible daemon restarting.
+- Warn about needing to reboot when client of a changed domain.
+- Changed from RPM Requires to sw_single
+- Using common routines from yast2-lib-network.
+- 2.4.4
+
+-------------------------------------------------------------------
+Tue Jul 31 14:58:41 CEST 2001 - mvidner@suse.cz
+
+- New maintainer.
+- Temporary fix of an inconsistent testsuite.
+- Requires yast2-config-package-manager and ypserv.
+- Some English corrections.
+- Added some doc comments.
+- Unified Add-Edit-Delete buttons.
+- Better enabling/disabling of buttons.
+
+-------------------------------------------------------------------
+Mon Jul 30 13:36:16 CEST 2001 - mvidner@suse.cz
+
+- Added missing files.
+- Turned off autoheader.
+- Replaced _("&OK") by OKButtonLabel() etc.
+- version 2.4.2
+
+-------------------------------------------------------------------
+Fri Jul 20 15:59:43 CEST 2001 - dan@suse.cz
+
+- help text and locale fixes
+
+-------------------------------------------------------------------
+Tue Jul 17 10:28:18 CEST 2001 - dan@suse.cz
+
+- initial version
+

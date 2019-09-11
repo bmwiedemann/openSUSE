@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Thu Apr 18 14:58:39 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.0.4
+  * Try using unshallow clone
+  * Add support for Python 3.7
+  * Add test for attempt numbers in interleaved async coroutines
+  * Fix wait_chain to be runnable multiple times
+  * Fix six.wraps having a problem with __name__ attr on Py2
+  * Add retry_if_exception_message and complement
+  * RetryCallState: add retry_object & next_action fields
+  * Tweak wait funcs to accept call_state with backward compat
+  * Add RetryCallState class
+  * Documentation fixes
+
+-------------------------------------------------------------------
+Wed Jan  9 23:06:29 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Use "Requires:" instead of "Recommends:" on older build platforms
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct 18 21:56:38 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Oct 11 11:56:31 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.12.0:
+  * add retry\_error\_callback param
+  * Fix Mergify conf
+  * Enable mergify
+  * Implement before\_sleep logging hook
+  * Rename tenacity.async to tenacity.\_asyncio
+  * Remove useless install of nose
+  * Switch to pytest
+  * Fix codeblock formatting
+  * Document how to use Trio/curio
+  * Catch BaseException rather than just Exception
+  * Fix pep8 errors
+  * Only install monotonic on Python 2
+  * Stop using pbr to build documentation
+  * Add \`license\` key to \`setup.cfg\`
+  * Avoid inspect.getargspec deprecation warning
+  * Don't fall over if an old version of tornado is installed
+  * Allow to specify RetryError
+
+-------------------------------------------------------------------
+Wed Jan 10 22:24:53 UTC 2018 - jengelh@inai.de
+
+- Remove repetition of license terms in description.
+
+-------------------------------------------------------------------
+Wed Jan 10 20:48:41 UTC 2018 - toddrme2178@gmail.com
+
+- update to 4.8.0
+  * Allow waiters to introspect last result
+- update to 4.7.1
+  * Missed top level import of stop\_when\_event\_set
+  * Mention Tornado minimum version in README
+  * Fix unless\_exception test names and add no input test
+- update to 4.7.0
+  * Add Tornado support
+  * Fix pep8
+- update to 4.6.1
+  * Simplify wrapping code
+- update to 4.6.0
+  * Implement \`retry\_with' on decorated functions
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Thu Nov  2 23:20:11 UTC 2017 - dmueller@suse.com
+
+- update to 4.5.0:
+  * Replace hacking with flake8 extensions
+  * Fix import order
+  * Put a default sleep attribute on BaseRetrying
+  * async: allow to specify a different sleep method
+  * Issue-8: Make sure doc examples run (#89)
+  * Remove Python 3.4 support
+
+-------------------------------------------------------------------
+Tue Aug 22 06:34:38 UTC 2017 - tbechtold@suse.com
+
+- update to 4.4.0:
+  * Document wait\_random\_exponential strategy
+  * Rename wait\_full\_jitter to wait\_random\_exponential
+  * Add retry\_unless\_exception\_type
+  * Add missing ')' to README.rst
+  * Do not duplicate statistics fields in instance
+  * Do not start trial\_start\_time as an attribute
+  * Add an example on how to combine stop conditions
+  * Put a link to the GitHub issue of retrying about the fork
+  * feat: added wait\_full\_jitter
+  * Add new event based sleep and stop
+  * Add \`wraps' method directly on Retrying object
+  * wait: handle OverflowError
+  * doc: raise Exception in example so they actually work
+  * Remove weird example with retry\_if\_io\_error
+  * Bump version for new feature
+  * Add Python 3.6 support
+  * Add retry\_if\_not\_result class to compliment the existing retry\_if\_result class
+  * Fix six minimum version
+  * doc: rewrite the before explanation
+  * Add \_\_call\_\_ on BaseRetrying class
+  * Document before and after keywords
+  * Remove useless MANIFEST
+  * Remove non-working PyPI download image
+  * Bump hacking to 0.13
+  * Use Python 3 for pep8 tox target
+  * Remove deprecated wait\_jitter
+
+-------------------------------------------------------------------
+Fri Feb 10 16:06:26 UTC 2017 - tbechtold@suse.com
+
+- update to 3.7.1:
+  * Fix pep8 errors
+  * Correctly set the exception if we TryAgain for ever
+
+-------------------------------------------------------------------
+Sun Dec 18 12:29:45 UTC 2016 - dmueller@suse.com
+
+- update to 3.6.0:
+ * Retry on coroutines
+ * Run flake8 only with latest python
+ * Deduplicate retry decorator logic
+ * Extract controller IOs in subclass
+ * Allow to combine stop conditions
+ * Add SayThanks
+ * retry: implement bitwise operators on retry strategies
+ * retry: add retry_all
+
+-------------------------------------------------------------------
+Fri Dec  2 17:38:01 UTC 2016 - dmueller@suse.com
+
+- update to 3.4.0:
+  * Deprecate wait_jitter for wait_random
+  * Align tox and travis settings
+  * Fix README typo
+  * Bump hacking to 0.12
+  * Fix README.rst wrong description
+  * This is using floating point seconds (not milliseconds)
+  * Some small docstring updates
+  * Use py3.x compat print in README.rst
+  * Fix typo in retry_if_exception example
+
+-------------------------------------------------------------------
+Wed Nov  9 14:14:17 UTC 2016 - dmueller@suse.com
+
+- update to 3.3.0: 
+  * Implement '+' operator for wait strategies
+  * Rename `_retrying` attribute to `retry` and document it
+  * Store retrying object as an attribute of retried function
+  *  Make sure statistics are thread locals
+
+-------------------------------------------------------------------
+Mon Sep 26 14:23:36 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 3.1.1)
+

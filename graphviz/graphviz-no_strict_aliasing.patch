@@ -1,0 +1,9 @@
+--- .orig/lib/vmalloc/Makefile.am	2019-04-02 14:39:35.873818775 +0200
++++ lib/vmalloc/Makefile.am	2019-04-02 14:50:07.659001790 +0200
+@@ -9,4 +9,6 @@
+ 	vmprofile.c vmregion.c vmsegment.c vmset.c vmstat.c vmstrdup.c \
+ 	vmtrace.c vmwalk.c
+ 
++libvmalloc_C_la_CFLAGS = -fno-strict-aliasing
++
+ EXTRA_DIST = README vmalloc.vcxproj*

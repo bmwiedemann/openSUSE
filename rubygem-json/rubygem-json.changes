@@ -1,0 +1,358 @@
+-------------------------------------------------------------------
+Sat Mar  2 15:24:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.2.0
+ see installed CHANGES.md
+
+  ## 2019-02-21 (2.2.0)
+   * Adds support for 2.6 BigDecimal and ruby standard library Set datetype.
+
+-------------------------------------------------------------------
+Wed Apr 19 04:31:10 UTC 2017 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed CHANGES.md
+
+  ## 2017-04-18 (2.1.0)
+   * Allow passing of `decimal_class` option to specify a class as which to parse
+     JSON float numbers.
+
+-------------------------------------------------------------------
+Wed Apr 12 04:37:17 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.4
+ see installed CHANGES.md
+
+  ## 2017-03-23 (2.0.4)
+   * Raise exception for incomplete unicode surrogates/character escape
+     sequences. This problem was reported by Daniel Gollahon (dgollahon).
+   * Fix arbitrary heap exposure problem. This problem was reported by Ahmad
+     Sherif (ahmadsherif).
+
+-------------------------------------------------------------------
+Sat Jan 14 05:33:24 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.3
+ see installed CHANGES.md
+
+  
+  ## 2017-01-12 (2.0.3)
+   * Set `required_ruby_version` to 1.9
+   * Some small fixes
+
+-------------------------------------------------------------------
+Wed Jul 27 04:29:58 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.2
+ see installed CHANGES.md
+
+  ## 2016-07-26 (2.0.2)
+    * Specify `required_ruby_version` for json\_pure.
+    * Fix issue #295 failure when parsing frozen strings.
+
+-------------------------------------------------------------------
+Sat Jul  2 04:36:32 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.1
+ CHANGES removed upstream
+
+-------------------------------------------------------------------
+Wed Jun  3 04:32:30 UTC 2015 - coolo@suse.com
+
+- updated to version 1.8.3
+ see installed CHANGES
+
+  2015-06-01 (1.8.3)
+    * Fix potential memory leak, thx to nobu.
+
+-------------------------------------------------------------------
+Wed Feb  4 15:27:25 UTC 2015 - coolo@suse.com
+
+- rename rpmlintrc and add it as source
+
+-------------------------------------------------------------------
+Wed Feb  4 12:20:33 UTC 2015 - hvogel@suse.com
+
+- update to 1.8.2
+  * Some performance improvements by Vipul A M <vipulnsward@gmail.com>.
+  * Fix by Jason R. Clark <jclark@newrelic.com> to avoid mutation of
+    JSON.dump_default_options.
+  * More tests by Michael Mac-Vicar <mmacvicar@gmail.com> and fixing
+    space_before accessor in generator.
+  * Performance on Jruby improvemed by Ben Browning <bbrownin@redhat.com>.
+  * Some fixes to be compatible with the new Ruby 2.2 by
+    Zachary Scott <e@zzak.io> and SHIBATA Hiroshi <hsbt@ruby-lang.org>.
+
+-------------------------------------------------------------------
+Tue Sep 30 12:02:33 UTC 2014 - mrueckert@suse.de
+
+- update to new packaging scheme and add gem2rpm.yml
+- disable documentation to disable a loop between rdoc and json
+
+-------------------------------------------------------------------
+Thu Feb  6 11:54:31 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:38 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.1
+  * Remove Rubinius exception since transcoding should be working now.
+
+-------------------------------------------------------------------
+Mon May 13 13:37:38 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.0
+   * Fix https://github.com/flori/json/issues/162 reported by Marc-Andre
+     Lafortune <github_rocks@marc-andre.ca>. Thanks!
+   * Applied patches by Yui NARUSE <naruse@airemix.jp> to suppress warning with
+     -Wchar-subscripts and better validate UTF-8 strings.
+   * Applied patch by ginriki@github to remove unnecessary if.
+   * Add load/dump interface to JSON::GenericObject to make
+         serialize :some_attribute, JSON::GenericObject
+     work in Rails active models for convenient SomeModel#some_attribute.foo.bar
+     access to serialised JSON data.
+
+-------------------------------------------------------------------
+Tue Feb 12 13:44:25 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.7
+   * Security fix for JSON create_additions default value and
+     JSON::GenericObject. It should not be possible to create additions unless
+     explicitely requested by setting the create_additions argument to true or
+     using the JSON.load/dump interface. If JSON::GenericObject is supposed to
+     be automatically deserialised, this has to be explicitely enabled by
+     setting
+       JSON::GenericObject.json_createble = true
+     as well.
+   * Remove useless assert in fbuffer implementation.
+   * Apply patch attached to https://github.com/flori/json/issues#issue/155
+     provided by John Shahid <jvshahid@gmail.com>, Thx!
+   * Add license information to rubygems spec data, reported by Jordi Massaguer Pla <jmassaguerpla@suse.de>.
+   * Improve documentation, thx to Zachary Scott <zachary@zacharyscott.net>.
+
+-------------------------------------------------------------------
+Wed Jan  2 08:09:53 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.6
+  * Add GeneratorState#merge alias for JRuby, fix state accessor methods. Thx to
+   jvshahid@github.
+  * Increase hash likeness of state objects.
+
+-------------------------------------------------------------------
+Sun Aug 26 05:38:19 UTC 2012 - coolo@suse.com
+
+- updated to version 1.7.5
+ * Fix compilation of extension on older rubies.
+
+-------------------------------------------------------------------
+Sat Jul 28 17:01:02 UTC 2012 - coolo@suse.com
+
+- update to 1.7.4
+ * Fix compilation problem on AIX, see https://github.com/flori/json/issues/142
+
+-------------------------------------------------------------------
+Fri Jul  6 19:00:44 UTC 2012 - coolo@suse.com
+
+- update to 1.7.3
+  * Work around Rubinius encoding issues using iconv for conversion instead.
+  * Fix some encoding issues, that cause problems for  the pure and the
+    extension variant in jruby 1.9 mode.
+
+-------------------------------------------------------------------
+Tue May  8 05:52:30 UTC 2012 - coolo@suse.com
+
+- update to 1.7.1
+  * Some small fixes for building
+
+-------------------------------------------------------------------
+Sun May  6 14:29:47 UTC 2012 - coolo@suse.com
+
+- update to 1.7.0
+  * Add JSON::GenericObject for method access to objects transmitted via JSON.
+  * Fix possible crash when trying to parse nil value.
+
+-------------------------------------------------------------------
+Tue Apr  3 08:03:35 UTC 2012 - coolo@suse.com
+
+- update to 1.6.6
+  * Propagate src encoding to values made from it (fixes 1.9 mode converting
+    everything to ascii-8bit; harmless for 1.8 mode too) (Thomas E. Enebo
+    <tom.enebo@gmail.com>), should fix
+    https://github.com/flori/json/issues#issue/119.
+  * Fix https://github.com/flori/json/issues#issue/124 Thx to Jason Hutchens.
+  * Fix https://github.com/flori/json/issues#issue/117
+
+-------------------------------------------------------------------
+Wed Feb 15 14:43:12 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.6.5:
+  * Fixed a bug that shows up when using optimisation under GCC 4.7. 
+- Changes from version 1.6.4:
+  * Patches that improve speed on JRuby contributed
+  * Support object_class/array_class with duck typed hash/array.
+- Changes from version 1.6.3:
+  * Let JSON.load('') return nil as well to make mysql text columns (default to
+    '') work better for serialization.
+- Changes from version 1.6.2:
+  * Add support for OpenStruct and BigDecimal.
+  * Fix bug when parsing nil in quirks_mode.
+  * Make JSON.dump and JSON.load methods better cooperate with Rails' serialize
+    method. Just use: serialize :value, JSON
+  * Fix bug with time serialization concerning nanoseconds. Thanks for the
+    patch go to Josh Partlow (jpartlow@github).
+  * Improve parsing speed for JSON numbers (integers and floats)
+
+-------------------------------------------------------------------
+Wed Dec 14 19:05:46 UTC 2011 - jreidinger@suse.com
+
+- move benchmarks to doc
+- create testsuite subpackage ( template doesn't detect it as it is
+  tests not test as usual ) 
+
+-------------------------------------------------------------------
+Wed Nov 23 10:31:21 UTC 2011 - darix@nordisch.org
+
+- added versioned provides
+
+-------------------------------------------------------------------
+Mon Nov 21 14:27:10 UTC 2011 - fcastelli@suse.com
+
+- Fix build on SLE11SP1: add the fastjar dependency at build time
+- Remove file duplicates at the end of the build
+
+-------------------------------------------------------------------
+Mon Nov 21 11:29:47 UTC 2011 - fcastelli@suse.com
+
+- Remove all the update=alternatives references from the spec file,
+  they are no longer needed since the gem doesn't have entries
+  inside of /bin
+
+-------------------------------------------------------------------
+Fri Oct 14 13:33:13 UTC 2011 - fcastelli@suse.com
+
+- Update to 1.6.1
+  * Using -target 1.5 to force Java bits to compile with 1.5.
+- additional changes from version 1.6.0
+  * Extract utilities (prettifier and GUI-editor) in its own gem json-utils.
+  * Split json/add/core into different files for classes to be serialised.
+
+-------------------------------------------------------------------
+Thu Aug 25 10:01:06 UTC 2011 - dmacvicar@suse.de
+
+- json gem does not provide json_pure in terms of rpm
+  Provides. If a gem depends on json_pure, having the json
+  gem installed will make gem not find it.
+- use the update-alternatives system for the installed
+  binaries to be able to install json_pure in parallel
+
+-------------------------------------------------------------------
+Wed Aug 24 16:35:41 UTC 2011 - fcastelli@novell.com
+
+- Update to version 1.5.4
+  * Fix memory leak when used from multiple JRuby. (Patch by
+    jfirebaugh@github).
+- additional changes from version 1.5.3
+  * Alias State#configure method as State#merge to increase duck type synonymy with Hash.
+  * Add as_json methods in json/add/core, so rails can create its json objects
+the new way.
+- additional changes from version 1.5.2
+  * Apply documentation patch by Cory Monty <cory.monty@gmail.com>.
+  * Add gemspecs for json and json_pure.
+  * Fix bug in jruby pretty printing.
+  * Fix bug in object_class and array_class when inheriting from Hash or Array.
+- additional changes from version 1.5.1
+  * Made rake-compiler build a fat binary gem. This should fix issue
+    https://github.com/flori/json/issues#issue/54.
+- additional changes from version 1.5.0
+  * Included Java source codes for the Jruby extension made by Daniel Luz
+    <dev@mernen.com>.
+  * Output full exception message of deep_const_get to aid debugging.
+  * Fixed an issue with ruby 1.9 Module#const_defined? method, that was
+    reported by Riley Goodside.
+- Add provides rubygem-json_pure since json_pure is just this gem under a 
+  different name.
+-------------------------------------------------------------------
+Tue Mar 29 13:29:07 UTC 2011 - kkaempf@novell.com
+
+- split off -doc subpackage
+
+-------------------------------------------------------------------
+Sun Nov 14 15:54:42 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.4.6
+  * Fixed oversight reported in
+    http://github.com/flori/json/issues/closed#issue/23,
+    always create a new object from the state prototype.
+  * Made pure and ext api more similar again.
+- additional changes from version 1.4.5
+  * Manage data structure nesting depth in state object during
+    generation. This should reduce problems with to_json method
+    definіtions that only have one argument.
+  * Some fixes in the state objects and additional tests.
+- additional changes from version 1.4.4
+  * Fixes build problem for rubinius under OS X,
+    http://github.com/flori/json/issues/closed#issue/25
+  * Fixes crashes described in
+    http://github.com/flori/json/issues/closed#issue/21 and
+    http://github.com/flori/json/issues/closed#issue/23
+
+-------------------------------------------------------------------
+Fri Jun 11 18:17:09 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.4.3
+  * Fixed some test assertions, from Ruby r27587 and r27590, patch
+    by nobu.
+  * Fixed issue http://github.com/flori/json/issues/#issue/20 
+    reported by electronicwhisper@github. Thx!
+- additional changes from version 1.4.2
+  * Applied patch from naruse Yui NARUSE <naruse@airemix.com> to
+    make building with Microsoft Visual C possible again.
+  * Applied patch from devrandom <c1.github@niftybox.net> in order
+    to allow building of json_pure if extensiontask is not present.
+  * Thanks to Dustin Schneider <dustin@stocktwits.com>, who
+    reported a memory leak, which is fixed in this release.
+  * Applied 993f261ccb8f911d2ae57e9db48ec7acd0187283 patch from
+    josh@github.
+- additional changes from version 1.4.1
+  * Fix for a bug reported by Dan DeLeo <dan@kallistec.com>, caused
+    by T_FIXNUM being different on 32bit/64bit architectures.
+- additional changes from version 1.4.0
+  * Major speed improvements and building with simplified
+    directory/file-structure.
+  * Extension should at least be comapatible with MRI, YARV and
+    Rubinius.
+- additional changes from version 1.2.4
+  * Triger const_missing callback to make Rails' dynamic class
+    loading work.
+- additional changes from version 1.2.3
+  * Added a State#[] method which returns an attribute's value in
+    order to increase duck type compatibility to Hash.
+- additional changes from version 1.2.2
+  * Made some changes to make the building of the parser/generator
+    compatible to Rubinius.
+- additional changes from version 1.2.1
+  * Added :symbolize_names option to Parser, which returns symbols
+    instead of strings in object names/keys.
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Mon Dec 21 17:29:18 UTC 2009 - prusnak@suse.cz
+
+- update to version 1.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 15:21:48 CET 2009 - mrueckert@suse.de
+
+- update to version 1.1.3
+
+-------------------------------------------------------------------
+Fri May 25 11:08:57 CEST 2007 - mrueckert@suse.de
+
+- initial package
+

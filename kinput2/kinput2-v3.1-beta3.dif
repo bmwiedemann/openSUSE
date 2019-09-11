@@ -1,0 +1,130 @@
+Index: kinput2-v3.1/lib/CcWnn.c
+===================================================================
+--- kinput2-v3.1.orig/lib/CcWnn.c	2002-10-03 11:35:27.000000000 +0200
++++ kinput2-v3.1/lib/CcWnn.c	2009-12-02 19:24:28.000000000 +0100
+@@ -339,8 +339,8 @@ static int NumSymbols;
+ 
+ static void ccInitialize();
+ static void jcInitialize();
+-static void createEnvError();
+-static int createConfirm();
++static int createEnvError(const char *);
++static int createConfirm(const char *);
+ 
+ static int funcDispatch();
+ static void defAction();
+@@ -899,9 +899,9 @@ CcWnnObject obj;
+     if (obj->ccWnn.pendingdata) restoreData(obj);
+ }
+ 
+-static void
++static int
+ createEnvError(s)
+-char *s;
++const char *s;
+ {
+     if (current_obj != NULL)
+ 	XtAppWarning(XtWidgetToApplicationContext((Widget)current_obj), s);
+@@ -909,7 +909,7 @@ char *s;
+ 
+ static int
+ createConfirm(s)
+-char *s;
++const char *s;
+ {
+     if (current_obj != NULL && current_obj->ccWnn.confirmfunc != NULL)
+ 	return (*current_obj->ccWnn.confirmfunc)((Widget)current_obj, s);
+Index: kinput2-v3.1/lib/cconv.c
+===================================================================
+--- kinput2-v3.1.orig/lib/cconv.c	2002-10-03 11:35:28.000000000 +0200
++++ kinput2-v3.1/lib/cconv.c	2009-12-02 19:24:08.000000000 +0100
+@@ -604,6 +604,7 @@ static char	*rcsid = "$Id: cconv.c,v 10.
+ #endif
+ 
+ #include	<stdio.h>
++#include	<stdlib.h>
+ #include	<X11/Xlib.h>
+ #include	<X11/keysym.h>
+ #include	<X11/Xutil.h>
+Index: kinput2-v3.1/lib/ioecall.c
+===================================================================
+--- kinput2-v3.1.orig/lib/ioecall.c	2002-10-03 11:35:28.000000000 +0200
++++ kinput2-v3.1/lib/ioecall.c	2009-12-02 19:24:08.000000000 +0100
+@@ -23,6 +23,7 @@ static char *rcsid = "$Id: ioecall.c,v 1
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xfuncproto.h>
+ #include "IOECall.h"
+Index: kinput2-v3.1/lib/wnnlib.c
+===================================================================
+--- kinput2-v3.1.orig/lib/wnnlib.c	2002-10-03 11:35:28.000000000 +0200
++++ kinput2-v3.1/lib/wnnlib.c	2009-12-02 19:24:08.000000000 +0100
+@@ -282,7 +282,7 @@
+  *
+  * struct wnn_buf jcOpen(char *servername, char *envname,
+  *			 char *rcfilename, int override,
+- *			 void (*errmsgfunc)(), int (*confirmfunc)(),
++ *			 int (*errmsgfunc)(const char *), int (*confirmfunc)(const char *),
+  *			 int timeout)
+  *	jl_open あるいは jl_open_lang に対応した wnnlib のインタフェー
+  *	スで、この関数の中で実際に jl_open あるいは jl_open_lang を呼
+@@ -581,6 +581,7 @@ static char	*rcsid = "$Id: wnnlib.c,v 10
+ #include	"wnnlib.h"
+ #include	"WStr.h"
+ #include	<string.h>
++#include	<stdlib.h>
+ #include	<pwd.h>
+ #include	<X11/Xos.h>
+ 
+@@ -1367,7 +1368,7 @@ int cl;
+ 
+ 	/* 変換文字列の長さのチェック */
+ 	clp = buf->clauseInfo + cl;
+-	len = jl_kanji_len(buf->wnn, cl);
++	len = jl_kanji_len(buf->wnn, cl,-1);
+ 	diff = len - ((clp + 1)->dispp - clp->dispp);
+ 	newlen = (buf->displayEnd - buf->displayBuf) + diff;
+ 	if (newlen > buf->bufferSize) {
+@@ -3449,8 +3450,8 @@ char *server;
+ char *envname;
+ int override;
+ char *rcfile;
+-void (*errmsg)();
+-int (*confirm)();
++int (*errmsg)(const char *);
++int (*confirm)(const char *);
+ int timeout;
+ {
+     return jcOpen2(server, envname, override, rcfile, rcfile, errmsg, confirm, timeout);
+@@ -3463,8 +3464,8 @@ char *envname;
+ int override;
+ char *rcfile4;		/* wnnenvrc for Wnn4 */
+ char *rcfile6;		/* wnnenvrc for Wnn6 */
+-void (*errmsg)();
+-int (*confirm)();
++int (*errmsg)(const char *);
++int (*confirm)(const char *);
+ int timeout;
+ {
+     struct wnn_buf *wnnbuf;
+Index: kinput2-v3.1/include/wnnlib.h
+===================================================================
+--- kinput2-v3.1.orig/include/wnnlib.h	2002-10-03 11:35:27.000000000 +0200
++++ kinput2-v3.1/include/wnnlib.h	2009-12-02 19:24:08.000000000 +0100
+@@ -107,11 +107,11 @@ typedef struct {
+ #ifdef __STDC__
+ extern struct wnn_buf *jcOpen(char *server, char *envname,
+ 				int override, char *rcfile,
+-				void (*error)(), int (*confirm)(),
++				int (*error)(const char *), int (*confirm)(const char *),
+ 				int timeout);
+ extern struct wnn_buf *jcOpen2(char *server, char *envname,
+ 				int override, char *rcfile4, char *rcfile6,
+-				void (*error)(), int (*confirm)(),
++				int (*error)(const char *), int (*confirm)(const char *),
+ 				int timeout);
+ extern int jcClose(struct wnn_buf *wnn);
+ extern int jcIsConnect(struct wnn_buf *wnn);

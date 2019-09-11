@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat Jun 18 17:26:42 UTC 2016 - kkaempf@suse.com
+
+- buildrequire python-six and -ply
+
+-------------------------------------------------------------------
+Wed Jun 24 07:50:44 UTC 2015 - kkaempf@suse.com
+
+- fix SLE10 build
+
+-------------------------------------------------------------------
+Sat Sep 27 12:06:04 MDT 2008 - bwhiteley@suse.de
+
+- moved to root/suse namespace
+- use cmpi-provider-register utility
+
+-------------------------------------------------------------------
+Tue Sep 23 14:26:28 MDT 2008 - bwhiteley@suse.de
+
+- Initial package
+

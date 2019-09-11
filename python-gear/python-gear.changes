@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Jul 26 13:14:22 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.14.0
+  * Add support for server name indication
+  * OpenDev Migration Patch
+
+-------------------------------------------------------------------
+Thu Mar 14 16:02:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.0:
+  * prefer ipv6 for listen addrs
+  * add support for keepalive to client
+- Execute tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Oct 30 21:44:06 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * Add --listen-address flag to geard
+  * Build universal wheels
+  * Automatically send GRAB\_JOB after CAN\_DO
+
+-------------------------------------------------------------------
+Mon Mar 26 09:37:20 UTC 2018 - tbechtold@suse.com
+
+- Fix Source
+
+-------------------------------------------------------------------
+Fri Mar 23 14:55:46 UTC 2018 - tbechtold@suse.com
+
+- update to 0.11.1:
+  * Make workers admin command py3 safe
+  * server: make stats more efficient
+  * Add a send lock to the base Connection class
+  * Server: support background jobs
+  * Fix exception setter
+  * Provide TextJob and TextWorker for convenience
+  * Uncap pbr dependency
+  * Update hacking dependency
+  * Replace assertEquals with assertEqual
+  * Make Job.name assume utf-8
+  * Ignore E129
+  * Move py27 after py34 and py35
+  * Re-enable flake8
+  * Add py35 to tox.ini default envs
+  * Move other-requirements.txt to bindep.txt
+  * Remove discover from test-requirements
+  * Add test for AdminRequest.isComplete
+  * Parse admin requests 2880 times faster
+  * Geard: Handle connections closed while sending
+  * Support TCP keepalives in geard
+  * List system dependencies for running common tests
+  * Do not encode the type (b) in the job name
+  * Bump version requirement for pbr
+  * Remove vestigal hook entry from setup.cfg
+  * Remove py26 from tox.ini
+  * Switch to six for configparser
+  * Do not change object size when iterating
+  * Allow setting a timeout for Client.waitForServer()
+  * Remove shebang as the script is managed by an entry\_point
+  * Guard against double shutdown in client
+  * Remove argparse from requirements
+  * Deprecated tox -downloadcache option removed
+  * Add a test for worker termination
+- Switch to singlespec
+
+-------------------------------------------------------------------
+Mon Dec  7 14:44:52 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging (version 0.5.8)
+

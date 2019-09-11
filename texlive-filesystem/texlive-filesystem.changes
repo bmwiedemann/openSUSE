@@ -1,0 +1,438 @@
+-------------------------------------------------------------------
+Thu Jun  6 07:34:34 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Remove (texlive-)axessibility package as it has a nofree license:
+  Creative Commons Attribution-NonCommercial 4.0 License
+
+-------------------------------------------------------------------
+Fri May 10 13:04:02 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2019
+
+-------------------------------------------------------------------
+Wed Feb 20 12:12:19 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- A binary only TeXLive installation is a fatal error
+
+-------------------------------------------------------------------
+Tue Jun 19 09:06:49 UTC 2018 - werner@suse.de
+
+- Comment out not available font map files during update
+
+-------------------------------------------------------------------
+Wed May  2 10:22:22 UTC 2018 - werner@suse.de
+
+- Switch over to TeXLive 2018 final 20180414 
+
+-------------------------------------------------------------------
+Fri Apr  6 13:22:57 UTC 2018 - werner@suse.de
+
+- First intial snap short of TeXLive pre 2018 
+
+-------------------------------------------------------------------
+Wed Jan 24 08:46:16 UTC 2018 - werner@suse.de
+
+- Switch over to python 3 (boo#1077170)
+
+-------------------------------------------------------------------
+Thu Jan 11 12:41:32 UTC 2018 - werner@suse.de
+
+- Add debug and force mode to the TeXLive update script which
+  might help to fix broken systems as well as might show some
+  debug messages as well.
+
+-------------------------------------------------------------------
+Mon Jan  8 12:55:08 UTC 2018 - werner@suse.de
+
+- If zypper way of posttrans scripts are disabled do use the rpm
+  %posttrans scriptlets (boo#1074128)
+
+-------------------------------------------------------------------
+Fri Nov 24 12:46:53 UTC 2017 - werner@suse.de
+
+- Disable by a build conditions using zypper way of posttrans scripts
+  as we already use %posttrans. Nevertheless correct naming scheme
+  (boo#1069445)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:51:29 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Oct 23 09:52:35 UTC 2017 - werner@suse.de
+
+- Avoid overwriting ls-R files 
+
+-------------------------------------------------------------------
+Fri Aug 18 07:06:21 UTC 2017 - werner@suse.de
+
+- Really not define texgid rpm macro (boo#1054325) 
+
+-------------------------------------------------------------------
+Mon Jul 24 10:59:12 UTC 2017 - werner@suse.de
+
+- Enforce mktexlsr if texlive-filesystem becomes installed to
+  refresh/rehash the kpathsea data base files after this (boo#1046277)
+
+-------------------------------------------------------------------
+Mon Jul 24 07:56:46 UTC 2017 - werner@suse.de
+
+- Avoid error in zypper python script 
+
+-------------------------------------------------------------------
+Tue Jul 18 13:50:34 UTC 2017 - werner@suse.de
+
+- Even more speedup for update.texlive, that is remove empty
+  work load directory
+
+-------------------------------------------------------------------
+Tue Jul 18 11:02:31 UTC 2017 - werner@suse.de
+
+- Make update.texlive faster and remove specific tag file after
+  creating specific format
+
+-------------------------------------------------------------------
+Wed Jul 12 07:41:21 UTC 2017 - werner@suse.de
+
+- Generate/remove specific formats at installation/erease of a
+  package (boo#1046277)
+
+-------------------------------------------------------------------
+Tue Jul 11 12:00:53 UTC 2017 - werner@suse.de
+
+- Modify update.texlive script in such a way that we detect old
+  format files and enforce a refresh based on hyphen (boo#1046277)
+
+-------------------------------------------------------------------
+Tue Jun 13 10:38:52 UTC 2017 - werner@suse.de
+
+- Final TeXLive 2017 20170520
+
+-------------------------------------------------------------------
+Thu Jun  1 12:29:31 UTC 2017 - werner@suse.de
+
+- Update to TeXLive 2017 20170520 pretest
+
+-------------------------------------------------------------------
+Fri May 26 14:39:46 UTC 2017 - werner@suse.de
+
+- Run luatools and luaotfload-tool at update to get the caches up
+
+-------------------------------------------------------------------
+Wed Jun 22 08:31:55 UTC 2016 - werner@suse.de
+
+- Add some typos in update script (boo#985971) 
+
+-------------------------------------------------------------------
+Mon Jun 20 07:54:36 UTC 2016 - werner@suse.de
+
+- Have a directory to hold the splitted hyphen informations 
+
+-------------------------------------------------------------------
+Tue Jun  7 16:44:43 UTC 2016 - werner@suse.de
+
+- Update to TeXLive 2016 
+
+-------------------------------------------------------------------
+Wed Apr 13 14:11:56 UTC 2016 - werner@suse.de
+
+- Correct cut&paste typo with texlua-devel package name 
+
+-------------------------------------------------------------------
+Mon Mar 21 13:57:38 UTC 2016 - werner@suse.de
+
+- Really require the devel packages with texlive-devel 
+
+-------------------------------------------------------------------
+Mon Feb  8 11:35:46 UTC 2016 - werner@suse.de
+
+- Add both texlive.infra and texlive.infra.doc as these provides
+  some perl module files used by fmtutil.pl 
+
+-------------------------------------------------------------------
+Thu Jan 28 10:52:36 UTC 2016 - werner@suse.de
+
+- Update to TeXLive 2015 (timestamp 20150521 revision 26946)
+
+-------------------------------------------------------------------
+Thu Mar 26 14:05:48 UTC 2015 - werner@suse.de
+
+- Update to TeXLive 2014 (timestamp 20140525 revision 34252)
+  * Support DVIPDFMx
+  * [fix] avoid luatex crash under math_mode 'decimal'
+  * luaotfload: Fix incorrect handling of font file formats luaotfload)
+  * Sync with Context beta as of 2014-04-05
+  * pdfTeX: sync with Knuth TeX 3.14159265, e-TeX 2.6
+  * Many more ...
+  * Further collection split
+    - texlive-collection-langchinese
+    - texlive-collection-langjapanese
+    - texlive-collection-langkorean
+
+-------------------------------------------------------------------
+Tue May 20 09:23:47 UTC 2014 - schwab@suse.de
+
+- Make sure that texconfig/update is run only once per transaction
+
+-------------------------------------------------------------------
+Mon Feb 10 10:03:46 UTC 2014 - werner@suse.de
+
+- Avoid that missing formats for a hyphen file will cause high
+  load at installation 
+
+-------------------------------------------------------------------
+Wed Aug  7 09:57:30 UTC 2013 - werner@suse.de
+
+- Repair several wrong paths cause by the move of TEXMFMAIN that is 
+  the location of TLUtils.pm used by updmap 
+
+-------------------------------------------------------------------
+Mon Aug  5 10:24:25 UTC 2013 - werner@suse.de
+
+- Refresh formats if required
+
+-------------------------------------------------------------------
+Tue Jul 30 16:14:46 UTC 2013 - werner@suse.de
+
+- Update to TeXLive 2013 (timestamp 20130620)
+  + Distribution layout: the top-level texmf/ directory has been
+    merged into texmf-dist/, for simplicity. Both the TEXMFMAIN
+    and TEXMFDIST Kpathsea variables now point to texmf-dist.
+  + Many small language collections have been merged together,
+    to simplify installation.
+  + MetaPost: native support for PNG output and floating-point
+    (IEEE double) has been added.
+  + LuaTEX: updated to Lua 5.2, and includes a new library
+    (pdfscanner) to process external PDF page content, among
+    much else (see its web pages).
+  + XeTEX (also see its web pages for more):
+    The HarfBuzz library now used for font layout instead of ICU.
+    Graphite2 and HarfBuzz are used instead of SilGraphite for Graphite layout.
+    On Macs, Core Text is used instead of the (deprecated) ATSUI.
+    Prefer TrueType/OpenType fonts to Type1 when the names are the same.
+    Fix occasional mismatch in font finding between XeTEX and xdvipdfmx.
+    Support OpenType math cut-ins.
+  + xdvi: now uses FreeType instead of t1lib for rendering.
+  + microtype.sty: some support for XeTEX (protrusion) and LuaTEX
+    (protrusion, font expansion, tracking), among other enhancements. 
+- Update biblatex-biber to 1.7
+- Udpate biblatex of TeXLive 2013 to 2.7a
+
+-------------------------------------------------------------------
+Tue Jul 16 12:39:56 UTC 2013 - werner@suse.de
+
+- New rpm had removed "prereq" flag from installation script bits
+  that is that `Requires(prereq)' is not valid anymore :((( 
+
+-------------------------------------------------------------------
+Mon May  6 13:31:55 UTC 2013 - werner@suse.de
+
+- Asymptote binaries may have the same version as the format files
+  of the asymptote package it self (bnc#813032) 
+
+-------------------------------------------------------------------
+Wed Mar 27 13:21:44 UTC 2013 - werner@suse.de
+
+- Change Obsoletes from < 2012+subversion to <= 2011 (bnc#811162)
+- Let mathdesign require tex(texnansi.enc) (bnc#808731)
+- Let biber-bin require perl(Text::BibTeX) (bnc#811258)
+- Do not require xfs as we do not use xfs at all, otherwise we
+  have to add some more lua code in the %post scriptlet.
+
+-------------------------------------------------------------------
+Tue Feb  5 09:08:31 UTC 2013 - werner@suse.de
+
+- Work around missing support of %posttrans scriptlets in libzypp
+  due missing rpm option for not to execute those scriptlets (bnc#773575)
+
+-------------------------------------------------------------------
+Wed Sep 19 09:51:43 UTC 2012 - werner@suse.de
+
+- If update script falis on some points like fmtutils then do not
+  remove the execution tag file to handle this later
+
+-------------------------------------------------------------------
+Wed Sep 12 09:54:02 UTC 2012 - werner@suse.de
+
+- Make update script to run updmap-sys only once on texhash 
+
+-------------------------------------------------------------------
+Tue Sep 11 15:18:34 UTC 2012 - werner@suse.de
+
+- Fix update script: do not override with wrong md5 check sum for
+  language format check 
+- Run updmap-sys only if required
+
+-------------------------------------------------------------------
+Thu Aug  2 13:17:40 UTC 2012 - werner@suse.de
+
+- Change font config semantic as the font directories below
+  /usr/share/fonts will be always found by freetype
+
+-------------------------------------------------------------------
+Fri Jul 13 07:34:32 UTC 2012 - werner@suse.de
+
+- Rename SuSEconfig.texlive to update.texlive to make the quibblers
+  happy.  The script was already self-sufficient and does not need
+  any help from the old SuSEconfig infrastructure.
+
+-------------------------------------------------------------------
+Wed Jun 27 09:00:58 UTC 2012 - werner@suse.de
+
+- Re-add the rungs script to dvipdfmx-bin
+
+-------------------------------------------------------------------
+Mon Jun 25 12:09:26 UTC 2012 - werner@suse.de
+
+- Reoder update script 
+
+-------------------------------------------------------------------
+Fri Jun 22 16:45:19 UTC 2012 - werner@suse.de
+
+- Run update if required 
+
+-------------------------------------------------------------------
+Fri Jun 22 16:28:01 UTC 2012 - werner@suse.de
+
+- Do not remove /var/run/texlive, add mtxrun to update script 
+
+-------------------------------------------------------------------
+Fri Jun 22 13:11:08 UTC 2012 - werner@suse.de
+
+- The new updmap requires the perl mudules TLConfig.pm and TLUtils.pm 
+
+-------------------------------------------------------------------
+Wed Jun 20 13:03:13 UTC 2012 - werner@suse.de
+
+- Finished package split of texlive and texlive-filesystem 
+
+-------------------------------------------------------------------
+Wed Jun 20 10:38:21 UTC 2012 - werner@suse.de
+
+- Avoid to be fooled by wrong ownerships during fmtutil that is
+  allow user nobody and group mktex to access the temporary
+  fmtutil directory if the initial user is root
+
+-------------------------------------------------------------------
+Tue Jun 19 15:22:47 UTC 2012 - werner@suse.de
+
+- Move old SuSEconfig md5 backup files to new location 
+
+-------------------------------------------------------------------
+Tue Jun 19 10:53:41 UTC 2012 - werner@suse.de
+
+- Add missed /var/lib/texmf/web2c/ tree to file system
+
+-------------------------------------------------------------------
+Mon Jun 18 07:23:56 UTC 2012 - werner@suse.de
+
+- Simplify dependency chain(s)
+
+-------------------------------------------------------------------
+Thu Jun 14 11:55:02 UTC 2012 - werner@suse.de
+
+- Make RPMlint happy again 
+
+-------------------------------------------------------------------
+Thu Jun 14 10:59:06 UTC 2012 - werner@suse.de
+
+- Correct version numbers of kpathsea and ptexenc automatically
+
+-------------------------------------------------------------------
+Wed Jun 13 08:16:02 UTC 2012 - werner@suse.de
+
+- Readd well known paclages like texlive-devel, texlive-bin-devel,
+  and texlive-tools.  Also cause texlive-latex to install its
+  binary packages.
+
+-------------------------------------------------------------------
+Tue Jun 12 17:56:31 UTC 2012 - werner@suse.de
+
+- Update to frozen/final 2012 (timestamp 20120611)
+
+-------------------------------------------------------------------
+Tue Jun 12 12:18:05 UTC 2012 - werner@suse.de
+
+- Do not drop the tar scheme and collection tar balls for reference
+- Split off texlive-filesystem, texlive-scheme, and texlive-collection
+  build into a separate spec file
+- Make version comparision work as we use upstream version and
+  release numbers
+
+-------------------------------------------------------------------
+Sat Jun  9 05:44:25 UTC 2012 - coolo@suse.com
+
+- relax the version requirements
+
+-------------------------------------------------------------------
+Fri Jun  8 15:04:36 UTC 2012 - coolo@suse.com
+
+- split out collections and filesystem
+
+-------------------------------------------------------------------
+Mon Jun  4 07:48:37 UTC 2012 - werner@suse.de
+
+- Avoid source url for all tar balls as our checkin script can not
+  handle snapshots nor is knowing about the infrastructure of the
+  upstream TeXLive server
+
+-------------------------------------------------------------------
+Fri Jun  1 08:06:51 UTC 2012 - werner@suse.de
+
+- Change also version/release scheme of the sub binary subpackages 
+
+-------------------------------------------------------------------
+Thu May 31 11:34:39 UTC 2012 - werner@suse.de
+
+- Change version/release scheme 
+
+-------------------------------------------------------------------
+Tue May 22 08:12:13 UTC 2012 - werner@suse.de
+
+- Install manaul page of biber as this is also build
+- Require the used perl version for biber 
+
+-------------------------------------------------------------------
+Mon May 21 11:22:16 UTC 2012 - werner@suse.de
+
+- Try to support BibteX-Biber perl dumped binary required to
+  provide BibteX-Biber also for PPC nad PPC64 
+
+-------------------------------------------------------------------
+Fri May 18 16:17:36 UTC 2012 - werner@suse.de
+
+- Use texlive.texlive instead of texlive.texmf for permission file
+
+-------------------------------------------------------------------
+Fri May 18 14:25:00 UTC 2012 - werner@suse.de
+
+- Be aware new poppler library, there is no getSize() but only
+  getNumObjects() 
+
+-------------------------------------------------------------------
+Mon May 14 14:14:13 UTC 2012 - werner@suse.de
+
+- Cron: remove older sources as well as crap 
+
+-------------------------------------------------------------------
+Mon May 14 11:59:48 UTC 2012 - werner@suse.de
+
+- Avoid warning messages from mktexlsr due empty ls-R
+- Handle case where public program is not setgid public
+- Make spec file more flexible and use a rpm macro for a public
+  group which can be named to e.g. public
+
+-------------------------------------------------------------------
+Mon May 14 11:34:42 UTC 2012 - werner@suse.de
+
+- If MT_FEATURES includes varfonts and system default is not
+  writable choose $HOME/.cache/texmf/fonts 
+
+-------------------------------------------------------------------
+Tue Dec 20 13:24:26 UTC 2011 - werner@suse.de
+
+- First initial main spec file using the original TeX Live packaging
+  scheme and layout
+

@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Wed Feb 20 14:46:55 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- drop hdf5-devel 1.8 deps
+- drop dependency to main package from lib package
+
+-------------------------------------------------------------------
+Fri Feb 15 16:10:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix warnings, build
+  * Add 0001-Fix-error-message-concatenation.patch
+  * Add 0002-Return-this-from-operator-in-medenum-python-wrapper.patch
+  * Add 0003-Avoid-format-warnings-on-64-bit.patch
+  * Add 0005-Respect-DESTDIR-when-byte-compiling-python-code.patch
+- Fix OOB access in python wrapper
+  * Add 0004-Fix-allocation-for-MEDfileName-consider-trailing-nul.patch
+- Reenable python bindings
+
+-------------------------------------------------------------------
+Fri Feb 15 10:09:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Fri Feb 15 08:56:11 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- disable python bindings for now, they cause test suite errors in
+  med-tools testsuite. Also generated bindings cause post-build-check
+  failures in tumbleweed due to incomplete generated functions.
+
+-------------------------------------------------------------------
+Tue Feb 12 16:41:35 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.0.0
+  * details can be found in Changelog in a ridicolous english accent
+  * switching to python3
+  * switching to HDF5 1.10
+  * soversion is 11 now
+- using cmake build system
+  * fixing build/installation in fix-cmakefiles.patch
+- new Fortran bindings subpackage
+- drop tests package, run them in %check instead
+
+-------------------------------------------------------------------
+Tue May  8 07:28:17 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.1
+  * french(!) ChangeLog file is included
+
+-------------------------------------------------------------------
+Tue Apr 17 12:06:33 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups, make documentation noarch and not dependent on
+  the runtime, use find -delete, and drop redundant setting of
+  C(XX)FLAGS.
+
+-------------------------------------------------------------------
+Tue Apr 10 11:41:59 UTC 2018 - adrian@suse.de
+
+- explicit require hdf5-1_8-devel
+
+-------------------------------------------------------------------
+Wed Feb  7 09:27:37 UTC 2018 - adrian@suse.de
+
+- use hdf5-1_8 to avoid incompatible on disk format
+
+-------------------------------------------------------------------
+Sun Jun 11 13:02:13 UTC 2017 - adrian@suse.de
+
+- enable swig to fix gcc-7 builds
+
+-------------------------------------------------------------------
+Wed Jun  7 11:17:39 UTC 2017 - adrian@suse.de
+
+- update to 3.2.1
+- enable python bindings
+
+-------------------------------------------------------------------
+Sun Oct 14 09:22:00 UTC 2012 - scorot@free.fr
+
+- update to version 3.0.5
+ * No ChangeLog available 
+- put examples and test cases in a separate package
+
+-------------------------------------------------------------------
+Tue Jul  3 21:14:51 UTC 2012 - scorot@free.fr
+
+- spec file reformating and cleanup
+- move unwanted dirs under %%bindir to %%libdir
+
+-------------------------------------------------------------------
+Mon Nov  9 08:43:54 UTC 2009 - andrea@opensuse.org
+
+- new package 
+

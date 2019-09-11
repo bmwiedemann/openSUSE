@@ -1,0 +1,14 @@
+Index: scirenderer-1.1.0/src/org/scilab/forge/scirenderer/implementation/jogl/JoGLCanvas.java
+===================================================================
+--- scirenderer-1.1.0.orig/src/org/scilab/forge/scirenderer/implementation/jogl/JoGLCanvas.java	2013-03-28 17:25:15.000000000 +0100
++++ scirenderer-1.1.0/src/org/scilab/forge/scirenderer/implementation/jogl/JoGLCanvas.java	2013-07-02 18:40:25.000000000 +0200
+@@ -254,7 +254,8 @@
+ 
+         boolean needFlip;
+         try {
+-            needFlip = !((GLContextImpl) context).offscreenImageNeedsVerticalFlip();
++//            needFlip = !((GLContextImpl) context).offscreenImageNeedsVerticalFlip();
++	    needFlip = !autoDrawable.isGLOriented();
+         } catch (GLException e) {
+             needFlip = false;
+         }

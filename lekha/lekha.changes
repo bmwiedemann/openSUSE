@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Apr  9 09:35:18 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Refresh broken patch
+- Use python3 for setup commands 
+
+-------------------------------------------------------------------
+Fri Jul  7 06:44:29 UTC 2017 - sflees@suse.de
+
+- Exclude ix86 python3-efl doesn't build there
+
+-------------------------------------------------------------------
+Mon Sep 12 02:01:49 UTC 2016 - sflees@suse.de
+
+- python3 support
+
+-------------------------------------------------------------------
+Mon Aug 24 05:14:33 UTC 2015 - simon@simotek.net
+
+- Tidy up spec file,
+  Add fix-invalid-actions-in-desktop-file.patch
+  * Previously the desktop file contained actions that didn't 
+    Do anything or look like they could do anything sensible
+
+-------------------------------------------------------------------
+Mon Jul 13 06:33:27 UTC 2015 - simon@simotek.net
+
+- Backport following patches for better mouse wheel support
+# 661193de60e542a80e88019d59342f345f10a1ae
+Patch0:         fix-panel-on-mouse.patch
+# f0ab75e3016f10dce01f6543ae99955a8492e9a8
+Patch1:         feature-mouse-zoom.patch
+
+-------------------------------------------------------------------
+Wed May 13 05:57:16 UTC 2015 - simon@simotek.net
+
+- Initial early version of lekha
+

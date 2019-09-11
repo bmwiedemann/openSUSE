@@ -1,0 +1,25 @@
+From bc5724ed98eb591d4b82dff1b4b47ed77ec47eda Mon Sep 17 00:00:00 2001
+From: Shaun McCance <shaunm@redhat.com>
+Date: Thu, 8 Nov 2018 19:01:43 -0500
+Subject: [PATCH] Apply ITS files passed with -i in --join mode
+
+Fixes https://github.com/itstool/itstool/issues/34
+---
+ itstool.in | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/itstool.in b/itstool.in
+index b3c0033..e64cd34 100755
+--- a/itstool.in
++++ b/itstool.in
+@@ -1635,6 +1635,9 @@ if __name__ == '__main__':
+         messages = MessageList()
+         doc = Document(opts.join, messages)
+         doc.apply_its_rules(not(opts.nobuiltins), params=params)
++        if opts.itsfile is not None:
++            for itsfile in opts.itsfile:
++                doc.apply_its_file(itsfile, params=params)
+         doc.join_translations(translations, strict=opts.strict)
+         serialized = doc._doc.serialize('utf-8')
+         if PY3:
+

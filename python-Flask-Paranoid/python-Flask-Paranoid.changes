@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Oct 24 14:05:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description. Add paragraph from
+  https://flask-paranoid.readthedocs.io/en/latest/ .
+
+-------------------------------------------------------------------
+Wed Oct 10 14:58:53 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.2.0
+
+- Use sources from github instead of pypi, so we can run tests
+
+-------------------------------------------------------------------
+Tue Aug 21 17:36:36 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-Flask-Paranoid-0.2.0

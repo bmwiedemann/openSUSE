@@ -1,0 +1,87 @@
+#!/usr/bin/python3
+import os
+import re
+import syslog
+
+split_dev = re.compile('([a-z/]*)(\d*)')
+mounts = open('/proc/mounts' ,'r').readlines()
+
+def get_mount_point(device):
+    for mount in mounts:
+        if mount.startswith(device):
+            return mount.split(' ')[1]
+
+def is_mount_read_only(mountpoint):
+    for mount in mounts:
+        mount_values = mount.split(' ')
+        if mount_values[1] == mountpoint:
+            mount_opts = mount_values[3].split(',')
+            return 'ro' in mount_opts
+
+def resize_fs(fs_type, device):
+    if fs_type.startswith('ext'):
+        cmd = 'resize2fs %s' % device
+        syslog.syslog(
+            syslog.LOG_INFO,
+            'Resizing: "%s"' %cmd
+        )
+        os.system(cmd)
+    elif fs_type == 'xfs':
+        mnt_point = get_mount_point(device)
+        cmd = 'xfs_growfs %s' % mnt_point
+        syslog.syslog(
+            syslog.LOG_INFO,
+            'Resizing: "%s"' %cmd
+        )
+        os.system(cmd)
+    elif fs_type == 'btrfs':
+        mnt_point = get_mount_point(device)
+        # If the volume is read-only, the resize operation will fail even
+        # though it's still probably wanted to do the resize. A feasible
+        # work-around is to use snapper's .snapshots subdir (if exists)
+        # instead of the volume path for the resize operation.
+        if is_mount_read_only(mnt_point):
+            if os.path.isdir('{}/.snapshots'.format(mnt_point)):
+                cmd = 'btrfs filesystem resize max {}/.snapshots'.format(
+                    mnt_point)
+            else:
+                syslog.syslog(
+                    syslog.LOG_ERR,
+                    "cannot resize read-only btrfs without snapshots"
+                )
+                return
+        else:
+            cmd = 'btrfs filesystem resize max {}'.format(mnt_point)
+        syslog.syslog(
+            syslog.LOG_INFO,
+            'Resizing: "%s"' %cmd
+         )
+        os.system(cmd)
+
+
+for mount in mounts:
+    if ' / ' in mount:
+        mount_dev = mount.split(' ')[0]
+        fs = mount.split(' ')[2]
+        try:
+            dev, partition = split_dev.match(mount_dev).groups()
+        except:
+            syslog.syslog(
+                syslog.LOG_ERR,
+                'match exception for "%s"' % mount
+            )
+            break
+        if dev and partition:
+            cmd = '/usr/sbin/growpart %s %s' %(dev, partition)
+            syslog.syslog(
+                syslog.LOG_INFO,
+                'Executing: "%s"' % cmd
+            )
+            os.system(cmd)
+            resize_fs(fs, mount_dev)
+        else:
+            syslog.syslog(
+                syslog.LOG_ERR,
+                'could not match device and partition in "%s"' % mount
+            )
+

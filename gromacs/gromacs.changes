@@ -1,0 +1,576 @@
+-------------------------------------------------------------------
+Wed May  8 15:07:49 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- version bump to 2019.2 details here:
+  http://manual.gromacs.org/documentation/2019.2/release-notes/2019/2019.2.html
+  Hightlights:
+  - Fix L-BGFS minimizer
+  - Disallow pull geometry direction-periodic with AWH
+  - Fixed mdrun -nsteps option
+  - gmx cluster -clndx indices now correct
+  - gmx editconf -f in.pdb -o out.pdb again preserves chain IDs
+  - Tools again accept .tpr files as input
+  - Fix segmentation fault when preparing simulated annealing inputs
+  - Fix error in AVX 512 detection code
+  - Added warning with the use of GROMOS force fields
+  - Prevented internal build of FFTW with clang and AVX-512 SIMD
+  - Updated performance guide for recent Intel processors with AVX512 instruction support
+  
+-------------------------------------------------------------------
+Tue Feb 26 10:48:25 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- add fdupes
+
+-------------------------------------------------------------------
+Mon Feb 25 17:51:49 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- version bump to 2019.1 details here:
+  http://manual.gromacs.org/documentation/2019.1/release-notes/2019/2019.1.html
+  Hightlights:
+  - Fix error with 2D/3D dynamic load balancing
+  - Fix incorrect LJ repulsion force switching on GPUs
+  - Fix segmentation fault in mdrun with domain decomposition
+  - Fix segmentation fault with energy minimization with the group scheme
+  - Correct free-energy Delta H output with mass lambda’s
+  - Prevent mdrun -rerun from writing incorrect free-energy output
+  - Fix possible division by zero in enforced-rotation code
+  - Fix trjconv -ndec
+  - Fix using index file groups when .tpr file not supplied
+  - Fix tune_pme
+  - Fixes that affect portability
+  - Explicitly require 64-bit platforms for OpenCL
+
+-------------------------------------------------------------------
+Tue Nov 13 01:10:07 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- version bump to 2018.4 details here:
+  http://manual.gromacs.org/documentation/2018.4/release-notes/2018/2018.4.html
+  Highlights:
+  - Correct PME forces with free energy without perturbed charges/LJ
+  - Add constraint contribution to foreign Hamiltonian differences
+  - Add mass contribution to foreign Hamiltonian differences
+  - Work around bugs with expanded ensemble runs
+  - Checkpoint continuations require suitable .tpr files
+  - Fix mindist output file checks
+  - Fix gmx helix segmentation faults
+  - Fix bug in entropy calculation in gmx anaeig
+  - Fixed an issue where the log file could sometimes report an incorrect initial dynamic load balancing state
+  - Fix Bromine parameters in amber forcefield files
+  - Made normal-mode analysis work for more than one molecule
+  - Disallow rerun using same filename as output file
+  - Fix issue when building GROMACS without TNG
+
+-------------------------------------------------------------------
+Wed Nov  7 16:16:25 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- version bump to 2018.3 details here:
+  http://manual.gromacs.org/documentation/2018.3/release-notes/2018/2018.3.html
+  Highlights:
+  - Multi-domain GPU runs can no longer miss pair interactions
+  - Fix Conjugate Gradient assertion failure at end of minimization
+  - Multi-domain Conjugate Gradient minimimization no longer segfaults.
+  - Fix pairlist buffer with Brownian Dynamics
+  - Avoid “atom moved to far” errors
+  - grompp now checks that pull groups are not close to half the box size
+  - Fixed segmentation fault in mdrun with QM/MM ONIOM scheme
+  - Fixed syntax error in make_gromos_rtp.py
+  - Fix gmx solvate topology updating
+  - Fix bfactor output error caused by fix for Issue 2511
+  - Made sure that gmx rms can skip values
+  - Fix trjconv when not providing structure file
+  - Fix enforced rotation energy output
+  - Fix nvcc host compiler check triggering
+  - Report up to date hwloc version information
+  - Disable single compilation unit with CUDA 9.0
+  - Avoid aborting mdrun when GPU sanity check detects errors
+  - Improve OpenCL kernel performance on AMD Vega GPUs
+
+-------------------------------------------------------------------
+Sat Jul 21 00:11:15 UTC 2018 - junghans@votca.org
+
+- version bump to 2018.2 details here:
+  http://manual.gromacs.org/documentation/2018.2/release-notes/2018/2018.2.html
+  Highlights:
+  - Prevented OpenCL timing memory leak
+  - Fixed MPI error after constraint failure during energy minimization
+  - Fixed moving frozen atoms with constraints
+  - Fixed COM removal moving frozen atoms
+
+-------------------------------------------------------------------
+Wed Apr  4 16:07:40 UTC 2018 - junghans@votca.org
+
+- version bump to 2018.1 details here:
+  http://manual.gromacs.org/documentation/2018.1/release-notes/2018/2018.1.html
+  Highlights:
+   - Fixed leap-frog integrator with Nose-Hoover T coupling and Parrinello-Rahman P coupling
+   - Used SIMD bondeds without perturbed interactions
+   - Fixed bonds whose displacement was zero
+   - Fixed centre-of-mass motion removal on part of the system
+   - Fixed multi-simulations with multiple ranks per simulation
+   - Improved inter-simulation signalling implementation
+   - Fixed FEP calculations with SHAKE
+   - Fixed handling of mdp define statement assigning preprocessor values
+   - Prevented log file energy average printing dividing by zero
+
+-------------------------------------------------------------------
+Fri Mar 23 08:53:36 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add _constraints file to avoid build failure and timeout on tests
+  for slow CPU workers
+
+-------------------------------------------------------------------
+Fri Jan 19 18:46:11 UTC 2018 - junghans@votca.org
+
+- version bump to 2018 details here:
+  http://manual.gromacs.org/documentation/2018/ReleaseNotes/index.html
+  Highlights:
+    - A new dual-list dynamic-pruning algorithm for the short-ranged interactions
+    - PME long-ranged interactions can now run on a single GPU
+    - AWH (Accelerated Weight Histogram) method is now supported
+    - A physical validation suite is added, which runs a series of short simulations
+    - Conserved quantities are computed and reported for more integration schemes
+- disable GPU on ppc64le, build error
+- use internal tinyxml2 as tinxml-6 is broken with gromacs, only testing is build it anyhow
+
+-------------------------------------------------------------------
+Sat Nov  4 00:30:29 UTC 2017 - junghans@votca.org
+
+- enable GPU support via OpenCL
+
+-------------------------------------------------------------------
+Wed Oct 25 11:40:37 UTC 2017 - kkaempf@suse.com
+
+- adapt to new openlmi package - source mpivars.h during build
+
+-------------------------------------------------------------------
+Fri Sep 15 16:20:29 UTC 2017 - junghans@votca.org
+
+- version bump to 2016.4 details here:
+  http://manual.gromacs.org/documentation/2016.4/ReleaseNotes/index.html
+  Highlighs:
+   - Disabled PME tuning with the group scheme
+   - Fixed value of Ewald shift
+   - Fixed orientation restraint reference
+   - Fixed bugs with setup for orientation restraints
+   - Worked around missing OpenMP implementation in orientation restraints
+   - Enable group-scheme SIMD kernels on recent AVX extensions
+   - Fix FEP state with rerun
+   - Fixed COM pull force with SD
+   - Fix PBC bugs in the swap code
+   - Fixed flat-bottomed position restraints with multiple ranks
+   - Fixed null pointer print in DD
+   - Improved the “files not present” error message
+   - Fixed LJ-PME + switch grompp error
+   - Fixed unused SIMD PME table kernel
+   - Fixed bugs in most double-precision Simd4 implementations
+   - Avoid inf in SIMD double sqrt()
+   - Fix NVML error messages
+   - Fixed IMD interface malfunctions
+   - Fixed initial temperature reporting
+   - Fix exception in SIMD LJ PME solve
+
+-------------------------------------------------------------------
+Tue Aug  8 23:24:41 UTC 2017 - junghans@votca.org
+
+- Fix build on Factory
+
+-------------------------------------------------------------------
+Mon May  8 16:28:38 UTC 2017 - junghans@votca.org
+
+- __builddir is not overwritable on SLE-12, so use subdirs
+- disable test on s390x (too slow)
+
+-------------------------------------------------------------------
+Tue Mar 14 15:11:23 UTC 2017 - junghans@votca.org
+
+- version bump to 2016.3 details here:
+  http://manual.gromacs.org/documentation/2016.1/ReleaseNotes/index.html
+- Highlights:
+  - Made distance restraints work with threads and DD
+  - Fixed Ewald surface+3DC corrections
+  - Fixed opening of wall table files
+  - Fixed bug in gmx insert-molecules.
+  - Made virial reproducible
+  - Updated to support FFTW 3.3.5
+  - Permitted automatic load balancing to disable itself when it makes the run slower
+  - Improved the accuracy of timing for dynamic load balancing with GPUs
+  - Corrected kernel launch bounds for Tesla P100 GPUs
+  - Improved logic handling if/when the run is terminated for SETTLE warnings
+  - Fixed bug in gmx wham for reading pullx files.
+  - Fixed ouput bug in gmx wham
+  - Fixed deadlock with thread-MPI
+  - Made error reporting in grompp more user friendly
+  - Fixed SIMD suggestion for VMX
+  - Fixed script xplor2gmx.pl to work with GMXDATA
+  - Fixed default nice level in mdrun-only build
+  - Fixed math-test false positive
+  - Improved documentation
+  - OpenCL error string are now written, instead of cryptic error codes
+  - Fixed build with GMX_USE_TNG=off
+  - Removed variable-precision .gro writing
+  - Fixed BG/Q platform files and install guide
+  - Reduced the memory required for free-energy simulations
+
+-------------------------------------------------------------------
+Sat Nov  5 18:27:42 UTC 2016 - junghans@votca.org
+
+- version bump to 2016.1 details here:
+  http://manual.gromacs.org/documentation/2016/ReleaseNotes/index.html
+- Highlights:
+  - Made distance restraints work with threads and DD
+  - Fixed Ewald surface+3DC corrections
+  - Fixed opening of wall table files
+  - Fixed bug in gmx insert-molecules.
+  - Made virial reproducible
+  - Permitted automatic load balancing to disable itself when it makes the run slower
+  - Improved the accuracy of timing for dynamic load balancing with GPUs
+  - Corrected kernel launch bounds for Tesla P100 GPUs
+  - Improved logic handling if/when the run is terminated for SETTLE warnings
+  - Fixed bug in gmx wham for reading pullx files.
+  - Fixed ouput bug in gmx wham
+  - Fixed deadlock with thread-MPI
+  - Made error reporting in grompp more user friendly
+  - Fixed SIMD suggestion for VMX
+  - Fixed script xplor2gmx.pl to work with GMXDATA
+  - Fixed default nice level in mdrun-only build
+  - Fixed math-test false positive
+  - Improved documentation
+  - Fixed build with GMX_USE_TNG=off
+  - Removed variable-precision .gro writing
+  - Reduced the memory required for free-energy simulations
+
+-------------------------------------------------------------------
+Wed Aug 24 15:24:30 UTC 2016 - junghans@votca.org
+
+- version bump to 2016 details here:
+  http://manual.gromacs.org/documentation/2016/ReleaseNotes/index.html
+- Highlights:
+  - As always, we’ve got several useful performance improvements, with or without GPUs. CPU-side SIMD and threading enhancements will make GPU-accelerated simulations faster even if we’d left the GPU code alone! Thanks to these and additional GPU kernel improvements, in GPU-accelerated runs expect around 15% improvement in throughput. (And not just for plain vanilla MD, either... the pull code now supports OpenMP threading throughout, and multi-simulations have less coupling between simulations.)  
+  - We have a new C++11 portability layer permitting us to accelerate in SIMD on the CPU lots of minor routines. These will also often improve runs that use accelerators or many nodes through better load balancing. POWER8, ARM64, AVX512 (KNL), and more are fully SIMD accelerated now because they are supported in the new portability layer!
+  - We made further SIMD acceleration of bonded interactions which reduces their calculation time by about a factor of 2. This improves load balance at high parallelization by a factor of 2, and shows significantly better scaling.
+  - Similarly, SIMD acceleration of SETTLE reduces the time for constraints by a factor of 3 to 5 - which has a strong effect for GPU runs.
+  - OpenCL GPU support is now available with all combinations of MPI, thread-MPI and GPU sharing (ie. the same as CUDA). Kernel performance has improved by up to 60%. AMD GPUs benefit the most, OpenCL on NVIDIA is generally still slow.
+  - Tools in the new analysis framework can handle trajectories that are subsets of the simulation system.
+  - New pull coordinate geometries angle-axis, dihedral, and normal angle.
+  - Checkpoint restarts work only in the cases where the implementation can always do what the user wants.
+  - The version numbering has changed to be the year of the release, plus (in future) a patch number. GROMACS 2016 will be the initial release from this branch, then GROMACS 2016.1 will have the set of bugs that have been fixed in GROMACS 2016, etc.
+
+
+-------------------------------------------------------------------
+Wed Oct 14 16:08:31 UTC 2015 - junghans@votca.org
+
+- version bump to 5.1 details here:
+  http://manual.gromacs.org/documentation/5.1/ReleaseNotes/index.html
+- html documentation is gone
+- devel package now includes cmake macros and config files
+
+-------------------------------------------------------------------
+Wed Oct  8 14:22:10 UTC 2014 - junghans@votca.org
+
+- version bump to 5.0.2
+- Details: http://www.gromacs.org/About_Gromacs/Release_Notes/Versions_5.0.x
+
+-------------------------------------------------------------------
+Sat Sep  6 16:16:42 UTC 2014 - junghans@votca.org
+
+- version bump to 5.0.1
+- Details: http://www.gromacs.org/About_Gromacs/Release_Notes/Versions_5.0.x
+
+-------------------------------------------------------------------
+Mon Feb 10 16:47:31 UTC 2014 - junghans@votca.org
+
+- added %check
+
+-------------------------------------------------------------------
+Sun Feb  9 16:23:45 UTC 2014 - junghans@votca.org
+
+- version bumped to 4.6.5
+- fix GMX_CPU_ACCELERATION to SSE2 for older i386 machines
+- added openmpi package
+- split doc, bash-completion into separate packages
+
+-------------------------------------------------------------------
+Tue Mar  5 21:02:02 UTC 2013 - kkaempf@suse.com
+
+- Update to 4.6.1
+  Bugfix release
+  - increased shared object major version to 8, #1147
+  - updates to HTML manual, install guide, PDF manual, shell completions
+    copious minor bug fixes
+  - various build system upgrades and fixes #1143
+  - new and enhanced error messages
+  - fixes for AdResS bugs (neighbour list construction, flop accounting,
+    multiple tf tables)
+  - fixed PME timing counter issues #1125
+  - fixed PME load balance reporting
+  - fixed forcerec to work with tools like genion and g_disre #1136
+  - various GPU performance enhancements
+  - fixed sd integrator with OpenMP threading #1138
+  - various minor fixes for interacting with CUDA for GPUs
+  - fixes for g_tune_pme to cope with new mdrun behaviour and changed
+    command-line options (for both g_tune_pme and mdrun)
+  - more checks for system support for setting thread affinities
+  - removed inter-flag dependency in g_order
+  - fixed issues with free-energy pertubation soft-core and cut-offs #1146
+  - fixed issues with md-vv + nose-hoover + (nstcalcenergy > nsttcouple)
+    #1129
+  - incorporated new changes from release 4.5.x branch
+  - prevented building with icc 11.1 and SSE4.1 because of known problems
+    #1126
+  - adding warning about not building with icc version < 12 #1126
+  - fixed bug sorting atoms with GPUs introduced since 4.6 #1153
+  - fixed issues with automated download of regression tests #1150
+  - fixed bug with DD cut-off check and PME dynamic load balancing #1169
+
+-------------------------------------------------------------------
+Mon Feb  4 09:20:09 UTC 2013 - kkaempf@suse.com
+
+- Update to 4.6
+  New features
+
+  - New Verlet non-bonded scheme which, by default, uses exact cut-off's
+    and a buffered pair-list.
+  - Multi-level hybrid parallelization (MPI + OpenMP + CUDA):
+    full OpenMP multithreading with the Verlet scheme;
+  - OpenMP mulitthreading for PME-only nodes with the group scheme;
+    native GPU acceleration using CUDA (supporte NVIDIA hardware).
+  - New x86 SIMD non-bonded kernels for the usual cut-off scheme, called
+    group scheme and the new verlet scheme, use x86 SIMD intrinsics (no
+    more assembly code):
+    SSE2
+    SSE4.1
+    AVX-128-FMA (for AMD Bulldozer/Piledriver)
+    AVX-256 (for Intel Sandy/Ivy Bridge)
+  - Automated OpenMP thread count choice to use all available cores.
+  - Automated CPU affinity setting: locking processes or threads to cores.
+  - Automated PP-PME (task) load-balancing: balancing non-bonded force and
+    PME mesh workload when the two are executed on different
+    compute-resources (i.e CPU and GPU or different CPUs). This enables
+    GPU-CPU and PP-PME process load balancing by shifting work from the
+    mesh to the non-bonded calculation.
+  - PPPM/P3M with analytical derivative at the same cost and with the same
+    features as PME.
+  - New, advanced free energy sampling techniques.
+  - AdResS adaptive resolution simulation support.
+  - Enforced rotation ("rotational pulling")
+  - Build configuration now uses CMake, configure+autoconf/make no longer
+    supported. (The CMake build system features with a lot of automation
+    and cleverness under the hood and we know that the it might not always
+    prove to be as rock-solid as the old one. However, far more advanced
+    and complex, so bear with us while we iron out issues that come up
+    along the way.)
+  - g_hbond now utilizes OpenMP.
+
+  Plus plenty of bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun  4 16:09:35 UTC 2012 - toddrme2178@gmail.com
+
+- Clean up spec file
+
+-------------------------------------------------------------------
+Wed Sep 21 13:32:02 UTC 2011 - kkaempf@suse.com
+
+- Clean up spec file
+
+- Update to 4.5.5
+  - Improved pdb2gmx -chainsep option and reintroduced the -merge option.
+  - Fixed mdrun file appending truncating files to 0 bytes when
+    continuation runs stopped before writing new output.
+  - Fixed COM pulling with multiple constraints checking the
+    convergence of one constraint instead of all.
+  - Fixed some dihedrals in sugars in Gromos53a5/6 working on the
+    wrong atoms.
+  - AmberGS force field is now based on Amber94 instead of Amber96.
+  - Moved hydrogens in Charmm27 protein termini to separate charge
+    groups and added ACE and CT3 residue types.
+  - Many small fixes which avoid termination with fatal errors or
+    crashes in mdrun and tools.
+  - Many small updates to the manual pages of programs.
+
+-------------------------------------------------------------------
+Tue Mar 22 08:37:59 UTC 2011 - kkaempf@novell.com
+
+- Update to 4.5.4
+  - Fixed pdb2gmx picking up force field from local instead of
+    library directory
+  - Made pdb2gmx vsite generation work again for certain His
+    namings.
+  - Fixed incorrect virial and pressure averages with certain
+    nst... values (instantaneous values correct)
+  - Fixed incorrect cosine viscosity output
+  - New -multidir alternative for mdrun -multi option
+  - Several minor fixes in analysis tools
+  - Several updates to the program documentation
+
+-------------------------------------------------------------------
+Wed Nov 10 08:07:38 UTC 2010 - kkaempf@novell.com
+
+- Update to 4.5.3
+  - Double precision energy file reading
+  - CHARMM and GB issues
+  - Support for Altivec (PowerPC) with CMake
+  - Running binaries within the CMake build tree is now possible
+  - Various other fixes
+
+-------------------------------------------------------------------
+Thu Oct  7 07:24:01 UTC 2010 - kkaempf@novell.com
+
+- Update to 4.5.1
+  - fix bnc#642828 (CVE-2010-4001: Insecure use of LD_LIBRARY_PATH)
+  See http://www.gromacs.org/About_Gromacs/Release_Notes/Version_4.5
+  for a full list of changes
+
+  - 2D decomposition support for PME: improved load balancing with
+    up to 40% overall performance improvement for large systems.
+  - Memory usage is improved for very large systems, allowing
+    simulations of >100 million atoms. 
+  - Running on multi-core nodes now automatically uses thread-
+    based parallelization.
+  - GPU computing support
+  - Check-pointing is made more secure:MD5sum are used to verify
+    that all files are correctly in-place before a simulation is
+    appended. Output file appending at continuation is turned on
+    by default
+  - Full Cmake support. Autoconf/automake will be deprecated after
+    the final 4.5 release!
+  - Full support for 7 AMBER force fields
+  - Support for CHARMM27, including cmap for dihedrals
+  - Efficient Generalized-Born implicit solvent support including
+    the Still/HCT/OBC-models to compute the Born radii, a novel way
+    of tabulating the generalized Born-interaction formula for
+    greater speed, and optimized SSE-routines for both cut-off and
+    all-vs-all simulations.
+  - Support for nucleic acid simulations
+  - Support for Velocity-Verlet integrators for reversible T- and
+    P-coupling; MTTK pressure control integrators; Nose-Hoover
+    chains
+  - Support for Bennett acceptance ratio (BAR) free energy
+    calculations
+  - Decoupling group setup for free energy
+  - File formats: All GROMACS tools can now read any VMD supported
+    trajectory format, without converting trajectory first. (VMD
+    is required)
+  - g_rdf was a little bit enhanced that structure factors can be
+    calculated for any system, by supplying the necessary data via
+    sfactor.dat. Most of the common atomtypes are already contained,
+    but everybody who needs more freedom can enhance the table
+  - Library support for "dynamic index groups" based on textual
+    selections (experimental feature). See the tool g_select, the
+    included template.c, or Doxygen documentation for information on
+    how to write analysis tools using the library. Existing tools
+    have not (yet) been converted.
+  - g_tune_pme: For a given number of processes or threads this tool
+    systematically times mdrun with various numbers of PME-only nodes
+    and determines which setting is fastest. It also checks whether
+    performance can be enhanced by shifting load between the real and
+    the reciprocal space part of the Ewald sum.
+  - g_membed: a very convenient utility for embedding membrane
+    proteins into equilibrated lipid bilayers
+
+-------------------------------------------------------------------
+Sat May 22 19:29:07 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- read "/dev/urandom" instead of /dev/random 
+
+-------------------------------------------------------------------
+Sat Jun 20 14:07:02 CEST 2009 - coolo@novell.com
+
+- fix build with automake 1.11
+
+-------------------------------------------------------------------
+Fri Jan  9 18:33:46 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Tue Oct  7 20:32:58 CEST 2008 - kkaempf@suse.de
+
+- Fix buffer overflow (gcc static detection) in calcmu.c
+
+-------------------------------------------------------------------
+Mon Oct 16 01:24:15 CEST 2006 - schwab@suse.de
+
+- Use install-exec-hook instead of install-hook.
+- Use AM_PROG_AS.
+
+-------------------------------------------------------------------
+Wed Jul 19 10:11:29 CEST 2006 - kkaempf@suse.de
+
+- update to 3.3.1
+  see http://www.gromacs.org for a complete list of changes.
+
+-------------------------------------------------------------------
+Mon Jun 19 13:09:31 CEST 2006 - schwab@suse.de
+
+- Set datadir.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 15:00:36 CET 2005 - ro@suse.de
+
+- added .so symlink to filelist 
+
+-------------------------------------------------------------------
+Wed Aug 11 20:11:06 CEST 2004 - kkaempf@suse.de
+
+- bugfix update to 3.2.1
+
+-------------------------------------------------------------------
+Mon Feb 23 18:34:10 CET 2004 - kkaempf@suse.de
+
+- rename 'disco' to 'g_disco' to avoid nameclash with package mono
+- build with -fno-strict-aliasing
+- return value from main()
+
+-------------------------------------------------------------------
+Tue Feb 17 18:42:05 CET 2004 - kkaempf@suse.de
+
+- remove obsolete libtool from "configure.ac".
+- use proper automake syntax in "acinclude.m4".
+- add missing FF.dat as advised on gromacs-users mailing list.
+
+-------------------------------------------------------------------
+Tue Feb  3 10:13:09 CET 2004 - kkaempf@suse.de
+
+- update to 3.2
+
+-------------------------------------------------------------------
+Sat Jan 10 11:51:34 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jun 13 13:51:26 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist and fix permissions
+
+-------------------------------------------------------------------
+Thu Nov 21 00:34:18 CET 2002 - ro@suse.de
+
+- work around automake problem 
+
+-------------------------------------------------------------------
+Fri Nov 15 11:42:59 CET 2002 - uli@suse.de
+
+- removed lesstif from neededforbuild (not used)
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xshared xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Tue Oct 29 12:55:11 CET 2002 - ro@suse.de
+
+- removed own libtool hacks from acinclude.m4 
+
+-------------------------------------------------------------------
+Mon Jul 29 10:46:44 CEST 2002 - kkaempf@suse.de
+
+- Initial version 3.1.4
+

@@ -1,0 +1,304 @@
+-------------------------------------------------------------------
+Thu Jun 20 10:25:00 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO due to symbol versioning (boo#1138813).
+
+-------------------------------------------------------------------
+Wed Mar 20 15:12:34 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.9
+  * Add two new Xen initial SIDs
+  * Check that initial sid indexes are within the valid range
+  * Create policydb_sort_ocontexts()
+  * Eliminate initial sid string definitions in module_to_cil.c
+  * Rename kernel_to_common.c stack functions
+  * add missing ibendport port validity check
+  * destroy the copied va_list
+  * do not call malloc with 0 byte
+  * do not leak memory if list_prepend fails
+  * do not use uninitialized value for low_value
+  * fix endianity in ibpkey range checks
+  * ibpkeys.c: fix printf format string specifiers for subnet_prefix
+  * mark permissive types when loading a binary policy
+
+-------------------------------------------------------------------
+Thu Nov  8 09:34:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use more %make_install.
+
+-------------------------------------------------------------------
+Thu Nov  8 07:19:24 UTC 2018 - jsegitz@suse.com
+
+- Adjusted source urls (bsc#1115052)
+
+-------------------------------------------------------------------
+Wed Oct 17 11:54:52 UTC 2018 - jsegitz@suse.com
+
+- Update to version 2.8 (bsc#1111732)
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/RELEASE-20180524.txt
+
+-------------------------------------------------------------------
+Wed May 16 07:13:18 UTC 2018 - mcepl@suse.com
+
+- Rebase to 2.7
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
+
+-------------------------------------------------------------------
+Fri Nov 24 09:16:47 UTC 2017 - jsegitz@suse.com
+
+- Update to version 2.6. Notable changes:
+  * Add support for converting extended permissions to CIL
+  * Create user and role caches when building binary policy
+  * Check for too many permissions in classes and commons in CIL
+  * Fix xperm mapping between avrule and avtab
+  * Produce more meaningful error messages for conflicting type rules in CIL
+  * Change which attributes CIL keeps in the binary policy
+  * Warn instead of fail if permission is not resolved
+  * Ignore object_r when adding userrole mappings to policydb
+  * Correctly detect unknown classes in sepol_string_to_security_class
+  * Fix neverallowxperm checking on attributes
+  * Only apply bounds checking to source types in rules
+  * Fix CIL and not add an attribute as a type in the attr_type_map
+  * Fix extended permissions neverallow checking
+  * Fix CIL neverallow and bounds checking
+  * Add support for portcon dccp protocol
+
+-------------------------------------------------------------------
+Fri Jul 15 14:29:28 UTC 2016 - jengelh@inai.de
+
+- Update RPM groups, trim description and combine filelist entries.
+
+-------------------------------------------------------------------
+Thu Jul 14 14:38:09 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Make spec file a bit more easy
+- Ship new supbackage (-tools)
+
+-------------------------------------------------------------------
+Thu Jul 14 14:21:46 UTC 2016 - jsegitz@novell.com
+
+- Without bug number no submit to SLE 12 SP2 is possible, so to make
+  sle-changelog-checker happy: bsc#988977
+
+-------------------------------------------------------------------
+Thu Jul 14 07:57:35 UTC 2016 - jsegitz@novell.com
+
+- Adjusted source link
+
+-------------------------------------------------------------------
+Tue Jul  5 17:11:44 UTC 2016 - i@marguerite.su
+
+- update version 2.5
+  * Fix unused variable annotations
+  * Fix uninitialized variable in CIL
+  * Validate extended avrules and permissionxs in CIL
+  * Add support in CIL for neverallowx
+  * Fully expand neverallowxperm rules
+  * Add support for unordered classes to CIL
+  * Add neverallow support for ioctl extended permissions
+  * Improve CIL block and macro call recursion detection
+  * Fix CIL uninitialized false positive in cil_binary
+  * Provide error in CIL if classperms are empty
+  * Add userattribute{set} functionality to CIL
+  * fix CIL blockinherit copying segfault and add macro restrictions
+  * fix CIL NULL pointer dereference when copying classpermission/set
+  * Add CIL support for ioctl whitelists
+  * Fix memory leak when destroying avtab
+  * Replace sscanf in module_to_cil
+  * Improve CIL resolution error messages
+  * Fix policydb_read for policy versions < 24
+  * Added CIL bounds checking and refactored CIL Neverallow checking
+  * Refactored libsepol Neverallow and bounds (hierarchy) checking
+  * Treat types like an attribute in the attr_type_map
+  * Add new ebitmap function named ebitmap_match_any()
+  * switch operations to extended perms
+  * Write auditadm_r and secadm_r roles to base module when writing CIL
+  * Fix module to CIL to only associate declared roleattributes with in-scope types
+  * Don't allow categories/sensitivities inside blocks in CIL
+  * Replace fmemopen() with internal function in libsepol
+  * Verify users prior to evaluating users in cil
+  * Binary modules do not support ioctl rules
+  * Add support for ioctl command whitelisting
+  * Don't use symbol versioning for static object files
+  * Add sepol_module_policydb_to_cil(), sepol_module_package_to_cil(), 
+    and sepol_ppfile_to_module_package()
+  * Move secilc out of libsepol
+  * fix building Xen policy with devicetreecon, and add devicetreecon
+    CIL documentation
+  * bool_copy_callback set state on creation
+  * Add device tree ocontext nodes to Xen policy
+  * Widen Xen IOMEM context entries
+  * Fix error path in mls_semantic_level_expand()
+  * Update to latest CIL, includes new name resolution and fixes ordering
+    issues with blockinherit statements, and bug fixes
+- changes in 2.4
+  * Remove assumption that SHLIBDIR is ../../ relative to LIBDIR
+  * Fix bugs found by hardened gcc flags
+  * Build CIL into libsepol. libsepol can be built without CIL by setting the
+    DISABLE_CIL flag to 'y'
+  * Add an API function to set target_platform
+  * Report all neverallow violations
+  * Improve check_assertions performance
+  * Allow libsepol C++ static library on device
+
+-------------------------------------------------------------------
+Fri May 16 13:06:12 UTC 2014 - vcizek@suse.com
+
+- update to 2.3
+  * Improve error message for name-based transition conflicts.
+  * Revert libsepol: filename_trans: use some better sorting to compare and merge.
+  * Report source file and line information for neverallow failures.
+  * Fix valgrind errors in constraint_expr_eval_reason from Richard Haines.
+  * Add sepol_validate_transition_reason_buffer function from Richard Haines.
+- dropped libsepol-2.1.4-role_fix_callback.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Oct 31 13:36:48 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2
+  * Allow constraint denial cause to be determined
+	  - Add kernel policy version 29.
+	  - Add modular policy version 17.
+	  - Add sepol_compute_av_reason_buffer(), sepol_string_to_security
+       _class(), sepol_string_to_av_perm().
+  * Support overriding Makefile RANLIB
+  * Fix man pages
+- Remove libsepol-rhat.patch; merged on upstream
+
+-------------------------------------------------------------------
+Thu Jun 27 14:37:12 UTC 2013 - vcizek@suse.com
+
+- change the source url to the official 2.1.9 release tarball
+
+-------------------------------------------------------------------
+Sat Jun 22 01:40:19 UTC 2013 - crrodriguez@opensuse.org
+
+- Build with LFS_CFLAGS for 32 bit archs 
+
+-------------------------------------------------------------------
+Fri Apr  5 15:31:13 UTC 2013 - vcizek@suse.com
+
+- remove a debugging artifact in spec
+
+-------------------------------------------------------------------
+Thu Apr  4 19:26:35 UTC 2013 - vcizek@suse.com
+
+- fixed source url
+
+-------------------------------------------------------------------
+Wed Feb 13 14:34:39 UTC 2013 - vcizek@suse.com
+
+- update to 2.1.9
+  * filename_trans: use some better sorting to compare and merge
+  * coverity fixes
+  * implement default type policy syntax
+  * Fix memory leak issues found by Klocwork
+- added libsepol-rhat.patch
+
+-------------------------------------------------------------------
+Mon Jan  7 22:46:48 UTC 2013 - jengelh@inai.de
+
+- Remove obsolete defines/sections
+
+-------------------------------------------------------------------
+Mon Dec 10 17:34:14 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2.1.8 version:
+  * fix neverallow checking on attributes
+  * Move context_copy() after switch block in ocontext_copy_*().
+  * check for missing initial SID labeling statement.
+  * Add always_check_network policy capability
+  * role_fix_callback skips out-of-scope roles during expansion.
+
+-------------------------------------------------------------------
+Thu Oct 25 10:47:00 UTC 2012 - vcizek@suse.com
+
+- skip roles which are out of scope when expanding attributes
+- needed for building selinux-policy
+
+-------------------------------------------------------------------
+Wed Jul 25 11:16:59 UTC 2012 - meissner@suse.com
+
+- updated to 2.1.4
+  - lots of updates
+
+-------------------------------------------------------------------
+Wed Oct  5 15:11:06 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:22 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Feb 25 15:00:29 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.0.41
+  * changes too numerous to list
+
+-------------------------------------------------------------------
+Sun Dec 13 01:35:55 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Nov 11 18:18:22 UTC 2009 - crrodriguez@opensuse.org
+
+- libsepol-devel Requires glibc-devel
+
+-------------------------------------------------------------------
+Fri Jun 19 13:26:45 CEST 2009 - prusnak@suse.cz
+
+- put static library in libsepol-devel-static
+
+-------------------------------------------------------------------
+Wed May 27 13:56:59 CEST 2009 - prusnak@suse.cz
+
+- updated to 2.0.36
+  * fix alias field in module format, caused by boundary format
+    change from Caleb Case
+  * fix boolean state smashing from Joshua Brindle
+
+-------------------------------------------------------------------
+Mon Dec  1 11:37:58 CET 2008 - prusnak@suse.cz
+
+- updated to 2.0.34
+  * add bounds support
+  * fix invalid aliases bug
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:24 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Tue Sep 23 12:53:01 CEST 2008 - prusnak@suse.cz
+
+- require only version, not release [bnc#429053]
+
+-------------------------------------------------------------------
+Fri Aug 22 14:45:33 CEST 2008 - prusnak@suse.cz
+
+- added baselibs.conf file
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:23 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Tue Jul 15 15:35:54 CEST 2008 - prusnak@suse.cz
+
+- initial version 2.0.32
+  * based on Fedora package by Dan Walsh <dwalsh@redhat.com>
+

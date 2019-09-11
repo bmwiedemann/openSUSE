@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Mon Apr 30 18:01:09 UTC 2018 - eich@suse.com
+
+- (Temporarily) disable fpr S390* as a check test for netcdf fails
+  currently on BE (bsc#1091474).
+
+-------------------------------------------------------------------
+Tue Mar 27 13:35:04 UTC 2018 - eich@suse.com
+
+- Fix hdf5 devel package dependency of static HPC library package
+  to pull in the HPC variant (boo#1087090). 
+
+-------------------------------------------------------------------
+Fri Feb  9 20:13:15 UTC 2018 - eich@suse.com
+
+- Add support for openmpi2 for HPC (FATE#325089).
+
+-------------------------------------------------------------------
+Fri Feb  9 15:26:02 UTC 2018 - eich@suse.com
+
+- Fix summary in module files (bnc#1080259).
+
+-------------------------------------------------------------------
+Fri Jan 26 19:39:13 UTC 2018 - eich@suse.com
+
+- Fix the module load command for netcdf to reflect the change
+  to 'pnetcdf' for MPI versions following (boo#1075933).
+
+-------------------------------------------------------------------
+Fri Jan 12 15:43:10 UTC 2018 - eich@suse.com
+
+- Disable the openmpi3 flavor in some products.
+
+-------------------------------------------------------------------
+Fri Jan  5 19:12:40 UTC 2018 - eich@suse.com
+
+- Switch from gcc6 to gcc7 as additional compiler flavor for HPC on SLES.
+- Add support for mpich and openmpi3 for HPC.
+
+-------------------------------------------------------------------
+Wed Nov 15 13:30:29 UTC 2017 - eich@suse.com
+
+- Fix typo in modules file which made help less useful.
+
+-------------------------------------------------------------------
+Tue Nov 14 11:12:31 UTC 2017 - eich@suse.com
+
+- Fix modules file: only use %hpc_bindir if it really exists
+- Translate '-' to '_' for env-variable.
+
+-------------------------------------------------------------------
+Fri Nov 10 16:22:10 UTC 2017 - eich@suse.com
+
+- Add Requires: for the netcdf library/devel package to the
+  netcdf-fortran library/devel package for HPC.
+
+-------------------------------------------------------------------
+Wed Oct 25 15:04:03 UTC 2017 - eich@suse.com
+
+- Fix Requires for the main package.
+
+-------------------------------------------------------------------
+Wed Oct 25 10:27:18 UTC 2017 - eich@suse.com
+
+- Removed a bugs dependency that was copy-and-pasted.
+
+-------------------------------------------------------------------
+Mon Oct 23 05:37:05 UTC 2017 - eich@suse.com
+
+- Fix buildrequires for compiler_families where c_f_ver is set.
+
+-------------------------------------------------------------------
+Sat Sep  9 06:03:08 UTC 2017 - eich@suse.com
+
+- netcdf4-Return-status-for-non-void-function-always.patch:
+  Make sure non-void function always has a good return value.
+
+-------------------------------------------------------------------
+Sun Oct 23 07:25:18 UTC 2016 - eich@suse.com
+
+- Initial creation of netcdf-fortran v4.4.4
+  (FATE#321719).

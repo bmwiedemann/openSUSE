@@ -1,0 +1,14 @@
+Index: openssl-1.0.2g/crypto/rsa/rsa_gen.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/rsa/rsa_gen.c	2016-04-14 10:52:34.187646539 +0200
++++ openssl-1.0.2g/crypto/rsa/rsa_gen.c	2016-04-14 10:53:39.335559301 +0200
+@@ -465,7 +465,8 @@ static int rsa_builtin_keygen(RSA *rsa,
+         goto err;
+ 
+     bitsp = (bits + 1) / 2;
+-    bitsq = bits - bitsp;
++    /* Use the same number of bits for p and q, our checks assume it. */
++    bitsq = bitsp;
+ 
+     /* prepare a maximum for p and q */
+     /* 0xB504F334 is (sqrt(2)/2)*2^32 */

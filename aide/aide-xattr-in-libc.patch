@@ -1,0 +1,23 @@
+diff -Pdpru aide-0.16.1.orig/configure.ac aide-0.16.1/configure.ac
+--- aide-0.16.1.orig/configure.ac	2019-03-17 22:12:56.269936982 +0100
++++ aide-0.16.1/configure.ac	2019-03-17 22:14:48.084669784 +0100
+@@ -536,7 +536,7 @@ AC_ARG_WITH([xattr],
+ 	
+ AS_IF([test "x$with_xattr_support" != xno],
+ 	[AC_DEFINE(WITH_XATTR,1,[use xattr])
+-	ATTRLIB=-lattr
++	ATTRLIB=
+ 	compoptionstring="${compoptionstring}WITH_XATTR\\n"
+ 	aideextragroups="${aideextragroups}+xattrs"
+ 	AC_MSG_RESULT(yes)],
+diff -Pdpru aide-0.16.1.orig/include/db_config.h aide-0.16.1/include/db_config.h
+--- aide-0.16.1.orig/include/db_config.h	2019-03-17 22:12:56.269936982 +0100
++++ aide-0.16.1/include/db_config.h	2019-03-17 22:16:01.303841342 +0100
+@@ -62,7 +62,6 @@ typedef struct acl_type {
+ 
+ #ifdef WITH_XATTR /* Do generic user Xattrs. */
+ #include <sys/xattr.h>
+-#include <attr/attributes.h>
+ #ifndef ENOATTR
+ # define ENOATTR ENODATA
+ #endif

@@ -1,0 +1,28 @@
+# HG changeset patch
+# Parent  5c1e122e31b601de64d81085294216af33f31aed
+# force PAM in defaullt install (this was removed from upstream in 3.8p1)
+# bnc#46749
+# --used to be called '-pam-fix2'
+
+diff --git a/openssh-7.7p1/sshd_config b/openssh-7.7p1/sshd_config
+--- openssh-7.7p1/sshd_config
++++ openssh-7.7p1/sshd_config
+@@ -74,17 +74,17 @@ AuthorizedKeysFile	.ssh/authorized_keys
+ # and session processing. If this is enabled, PAM authentication will
+ # be allowed through the ChallengeResponseAuthentication and
+ # PasswordAuthentication.  Depending on your PAM configuration,
+ # PAM authentication via ChallengeResponseAuthentication may bypass
+ # the setting of "PermitRootLogin without-password".
+ # If you just want the PAM account and session checks to run without
+ # PAM authentication, then enable this but set PasswordAuthentication
+ # and ChallengeResponseAuthentication to 'no'.
+-#UsePAM no
++UsePAM yes
+ 
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+ X11Forwarding yes
+ #X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PermitTTY yes

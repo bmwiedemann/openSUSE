@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Thu Aug 15 08:25:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides/obsoletes wrt bsc#1145710 to avoid file conflict
+
+-------------------------------------------------------------------
+Wed Aug 14 09:44:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add more patches for s390 fate#327911 bsc#1145464
+  These add support for ZR1 and add support for counter second version
+  number 6:
+  * 0001-s390-cpumf-add-IBM-z14-ZR1-support.patch
+  * 0001-s390-cpumf-add-support-for-counter-second-version-nu.patch
+  * 0001-s390-cpumf-add-support-for-machine-type-8561.patch
+
+-------------------------------------------------------------------
+Thu Jul  4 06:35:27 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Wed Aug  8 14:18:34 UTC 2018 - tchvatal@suse.com
+
+- Version update to 4.10.1 fate#326340 fate#326387:
+  * Fix build issues on Cavium Tunder X2 from v4.10
+  * Update to Intel Skylake event table
+  * Intel Skylake X uncore PMUs support (all PMU boxes)
+  * Intel Knight Mill (KNM) core PMU support
+  * Cavium Thunder X2 core PMU support
+  * various event table updates
+  * various bug fixes
+- Drop patch merged upstream:
+  * libpfm-python3.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 08:52:49 UTC 2018 - tchvatal@suse.com
+
+- Remove useless byte-compiling for py2 that breaks py3 only build
+- Update libpfm-python3.patch to fix one stray identation issue
+
+-------------------------------------------------------------------
+Wed Jan 17 15:52:07 UTC 2018 - tchvatal@suse.com
+
+- Add patch to build and work with python3:
+  * libpfm-python3.patch
+- Build the python parts using singlespec macros to allow switching
+  as needed
+
+-------------------------------------------------------------------
+Wed Jan 17 15:30:33 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.9.0:
+  * Intel Broadwell EP uncore PMUs support (all PMU boxes)
+  * AMD Fam17h (Zen) core PMU support
+  * IBM Power9 core PMU support
+  * AMD Fam16h (Jaguar) support
+  * various event table updates
+  * various bug fixes
+- Drop upstream merged patches:
+  * libpfm_add-power9-entries-to-validate_power-c.patch
+  * libpfm_enable-ibm-power9-core-pmu-support-beta.patch
+  * libpfm_fix-power9-event-file-header.patch
+  * libpfm_power9-event-list-update-for-perfmon2.patch
+
+-------------------------------------------------------------------
+Wed Aug 16 17:06:19 UTC 2017 - tonyj@suse.com
+
+- Add Power9 support (FATE#322257) 
+  New patch: libpfm_enable-ibm-power9-core-pmu-support-beta.patch
+  New patch: libpfm_fix-power9-event-file-header.patch
+  New patch: libpfm_power9-event-list-update-for-perfmon2.patch
+  New patch: libpfm_add-power9-entries-to-validate_power-c.patch
+
+-------------------------------------------------------------------
+Sat Jan 14 14:53:05 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Tue Dec 27 10:37:25 UTC 2016 - adam.majer@suse.de
+
+- Version bump to 4.8.0:
+  * Intel Knights Landing support (core and uncore)
+  * Intel Goldmont support
+  * Allow . as a delimiter for event string
+  * enable Broadwell EP
+  * Intel event table updates
+  * various bug fixes
+- Requires swig 2.0.5 to compile since older versions cannot
+  parse long long types in enum value assignments.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:00:28 UTC 2016 - tchvatal@suse.com
+
+- Version bump to 4.7.0:
+  * Intel Skylake core PMU
+  * Intel Haswell-EP uncore PMUs
+  * Intel Broadwell-DE
+  * Major update on Intel event tables
+  * bug fixes and many other improvements
+- Respect cflags, disable werror bnc#985166
+
+-------------------------------------------------------------------
+Tue Jan 19 18:17:58 UTC 2016 - tonyj@suse.com
+
+- Package useful utilities (check_events. evt2raw and showevtinfo)
+  in devel package. Backport from Factory. (bnc#1017407)
+
+-------------------------------------------------------------------
+Fri Mar 13 14:13:09 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.6.0 fate#318068:
+  * Intel Broadwell (desktop core)
+  * Intel Haswell-EP (core)
+  * Applied Micro X-Gene processor
+  * ARM A53 processor
+  * Intel SNB, IVB, HSW event table updates
+  * IBM Power8 event table updates
+  * improved Intel x86 model detection
+  * bug fixes and many other improvements
+- Cleanup with spec-cleaner
+- Drop obsolete patch:
+  * libpfm-add-ibm-power8-support.patch
+- Remove with_python switch that always evaluated as true
+  * If the need is really here it should be used as %bcond_without
+
+-------------------------------------------------------------------
+Mon Feb 16 10:04:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.5.0
+  * Intel IVB-EP uncore PMU support
+  * Intel Silvermont support
+  * Perf raw event syntax support
+  * Intel RAPL event support
+  * AMD Fam15h northbridge support
+  * Qualcomm Krait support
+  * IBM Power 8 support
+  * IBM s390 updates
+  * AMD Fam15h fixes
+  * various IVB, SNB, HSW event table updates
+  * more bug fixes
+
+-------------------------------------------------------------------
+Thu Jan  9 18:28:09 UTC 2014 - tonyj@suse.com
+
+- Add Power8 support (libpfm-add-ibm-power8-support.patch) FATE#315274
+
+-------------------------------------------------------------------
+Wed Dec  4 19:25:33 UTC 2013 - tonyj@suse.com
+
+- Update to version 4.4.
+- Changelog:
+  - Intel SandyBridge-EP uncore PMU support (all boxes)
+  - Intel IvyBridge desktop core and uncore PMU support
+  - Intel IvyBridge-EP core PMU support
+  - newer Intel Haswell desktop core PMU support
+  - newer Intel Atom
+  - Intel Knigts Corner
+  - Intel Nehalem, Westmere, SandyBridge, IvyBridge, Haswell PEBS Load Latency 
+    modifier (ldlat)
+  - many bug fixes and other minor improvements 
+
+-------------------------------------------------------------------
+Mon Jan 28 14:02:53 UTC 2013 - dimstar@opensuse.org
+
+- Add baselibs.conf: provide libpfm4 as -32bit (makes papi-32bit
+  installable).
+
+-------------------------------------------------------------------
+Wed Jan  9 14:18:06 CET 2013 - pth@suse.de
+
+- Run service to format spec file.
+- Small cosmetic changes in spec file.
+
+-------------------------------------------------------------------
+Tue Jan  8 00:13:39 UTC 2013 - tonyj@suse.com
+
+- Changes to python builds, drop duplicate defns already in system macros.
+- Fix build when with_python=0
+
+-------------------------------------------------------------------
+Fri Jan  4 08:19:57 UTC 2013 - jengelh@inai.de
+
+- Parallel build, remove redundant %clean section, consistent use
+  of %buildroot
+- Follow python package naming guidelines
+- Separate out static library into distinct subpackage
+
+-------------------------------------------------------------------
+Sat Dec 29 20:52:00 UTC 2012 - tonyj@suse.com
+
+- Initial checkin of libpfm4 (version 4.3). 
+

@@ -1,0 +1,22 @@
+--- mfhdf/test/tsdsprops.c.orig	2013-02-08 05:44:43.000000000 +0100
++++ mfhdf/test/tsdsprops.c	2013-03-28 11:17:48.871711093 +0100
+@@ -696,7 +696,7 @@
+ 
+     /* Read second dataset with out of bound stride */
+     sds_id = SDselect(sd_id, 1);
+-    d2start[0] = d2start[0] = 0;
++    d2start[0] = d2start[1] = 0;
+     d2stride[0] = 1;
+     d2stride[1] = D2_Y;  /* should be D2_Y - 1 */
+     d2count[0] = D2_X;
+--- mfhdf/test/trank0.c.orig	2013-02-08 05:44:43.000000000 +0100
++++ mfhdf/test/trank0.c	2013-03-28 12:12:30.061936742 +0100
+@@ -75,7 +75,7 @@
+     /* Attempt to set chunk but should fail */
+     HDmemset(&c_def, 0, sizeof(HDF_CHUNK_DEF));
+     comp_flag = HDF_CHUNK;
+-    status = SDsetchunk(sds_id, c_def, comp_flag);
++    status = SDsetchunk(sds2_id, c_def, comp_flag);
+     VERIFY(status, FAIL, "test_rank0: SDsetchunk");
+ 
+      /* Close the SDSs */

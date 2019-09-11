@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Tue Sep 27 18:44:23 UTC 2016 - tampakrap@opensuse.org
+
+- Update to 2016.9.7
+  - No changelog, see https://github.com/saltstack/salt-testing/compare/v2016.7.22...v2016.9.7
+
+-------------------------------------------------------------------
+Sat Jul 30 08:13:49 UTC 2016 - tampakrap@opensuse.org
+
+- Update to 2016.7.22
+  - No changelog, see https://github.com/saltstack/salt-testing/compare/v2015.7.10...v2016.7.22
+
+-------------------------------------------------------------------
+Tue Oct 13 14:02:31 UTC 2015 - tampakrap@opensuse.org
+
+- Update to 2015.7.10
+  - introduces new dependency to python-six
+  - No changelog, see https://github.com/saltstack/salt-testing/compare/v2015.2.16...v2015.7.10
+
+-------------------------------------------------------------------
+Thu Feb 12 19:33:24 UTC 2015 - aboe76@gmail.com
+
+- Updated to 2015.2.16
+  + fixed scripts that weren't in source tarball
+  + dropped hard depency on python-requests
+  + Jenkins execution helper script salt-jenkins-build
+  + GitHub commit status notification: github-commit-status
+  
+-------------------------------------------------------------------
+Wed Feb 11 20:10:32 UTC 2015 - aboe76@gmail.com
+
+- Updated to 2015.2.15
+  + new depency python-requests
+  + too much to list:
+  see https://github.com/saltstack/salt-testing/compare/v2014.8.5...develop
+
+-------------------------------------------------------------------
+Tue Aug  5 19:14:58 UTC 2014 - aboe76@gmail.com
+
+- updated to 2014.8.5
+  + Added with_system_user, with_system_group and with_system_user_and_group which surpasses the functionality from the now deprecated with_system_account.
+  + Added expensiveTest decorator which is supposed to mark tests which cost money
+  + Allow passing a path to the docker binary
+  + Updated the PEP8 PyLint plugin to support some newly added messages
+  + Improved the string formatting pylint plugin
+  + Support mock_open as a fake object so that import errors are not triggered
+
+-------------------------------------------------------------------
+Thu Apr 24 19:34:10 UTC 2014 - aboe76@gmail.com
+
+- Updated to version 2014.4.24
+  - first date based release
+  - Add skip_if_binaries_missing helper method
+  - Global exception handler to catch weird and uncaught exceptions
+  - Docker runtests support enhancements
+  - Mark the start and stop of each tests on a log message
+
+-------------------------------------------------------------------
+Thu Jan  2 16:41:27 UTC 2014 - aboe76@gmail.com
+
+- Updated to version 0.5.4
+- Support Pylint >= 1.0 and still maintain support for older versions
+- Allow super() usage by turning old style classes into new style classes
+- Delete docker container once the tests suite ends
+- Fake some mocked object in order not to fail at import time(before mock support checks)
+
+-------------------------------------------------------------------
+Tue Nov 12 06:54:27 UTC 2013 - aboe76@gmail.com
+
+- Updated to version 0.5.3
+- Dropped HTML unit test reports support which was 
+  a requirement for EPEL, I think...
+- Added support to run the tests suite within a Docker container
+  (as long as it's properly configured on the user's system)
+- Added a minimal string format checker for PyLint, it basicaly 
+  reject any string which calls .format and it has format holders 
+  but they are not indexed, ie 'Foo {}'.format(bar)
+
+-------------------------------------------------------------------
+Thu Oct 24 15:57:58 UTC 2013 - aboe76@gmail.com
+
+- Updated to version 0.5.2
+  - no-encoding-in-empty-file (W9905) test added
+  - only apply PEP8 messages which generate code
+  - Log start and stop executions
+  - Logic added to avoid PyLints deprecation messages
+  - AUTHORS.rst and LICENSE added  
+
+-------------------------------------------------------------------
+Thu Oct 24 11:13:35 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Sep 27 16:57:44 UTC 2013 - aboe76@gmail.com
+
+- Updated to version 0.5.1
+  - ipv6 check support
+  - salt pylint checker
+  - salt coverage support
+  - local network check
+
+-------------------------------------------------------------------
+Thu Sep 19 05:43:07 UTC 2013 - aboe76@gmail.com
+
+- Python-salt-testing version 0.5.0
+

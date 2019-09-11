@@ -1,0 +1,20 @@
+pkgname=obs-service-download_files
+pkgver=0.6.2
+pkgrel=0
+pkgdesc="An OBS source service: download files"
+arch=(any)
+license=(GPL-2.0+)
+url=https://github.com/openSUSE/$pkgname
+source=($pkgname-$pkgver.tar.gz)
+sha256sums=('SKIP')
+depends=('build>=2012.08.24' diffutils wget)
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p $pkgdir/usr/lib/obs/service
+  install -m 0755 download_files $pkgdir/usr/lib/obs/service
+  install -m 0644 download_files.service $pkgdir/usr/lib/obs/service
+  mkdir -p $pkgdir/etc/obs/services
+  install -m 0644 download_files.rc $pkgdir/etc/obs/services/download_files
+  mkdir -p $pkgdir/var/cache/obs/download_files/file{,name}
+}

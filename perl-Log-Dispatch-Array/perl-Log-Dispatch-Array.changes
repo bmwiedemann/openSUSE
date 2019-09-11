@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Feb 24 06:10:56 UTC 2014 - coolo@suse.com
+
+- updated to 1.003
+ fix github links
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:37 UTC 2013 - coolo@suse.com
+
+- updated to 1.002
+  repackage, update bugtracker
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:25 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Nov  5 11:38:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.001)
+

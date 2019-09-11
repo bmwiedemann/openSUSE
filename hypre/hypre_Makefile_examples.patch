@@ -1,0 +1,11 @@
+--- src/examples/Makefile.orig	2019-02-13 14:10:08.298666931 +0100
++++ src/examples/Makefile	2019-02-13 14:10:26.674630317 +0100
+@@ -27,7 +28,7 @@
+ 
+ 
+ LINKOPTS  = $(COPTS)
+-LIBS      = -L$(HYPRE_DIR)/lib -lHYPRE -lm
++LIBS      = -L$(HYPRE_LIB) -L$(SUPERLU_LIB) -lHYPRE -lm -lblas -llapack -lsuperlu
+ LFLAGS    = $(LINKOPTS) $(LIBS) -lstdc++
+ LFLAGS_B =\
+  -L${HYPRE_DIR}/lib\

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:02:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- refresh pytest4.patch for pytest5 
+
+-------------------------------------------------------------------
+Tue Feb 12 14:15:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with pytest newer than 4:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Sun Aug  5 17:06:32 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.5
+- fixed dependencies
+  * switch to setuptools_scm
+  * avoid dict iteration (fixes issue on python3)
+  * preserve __package__ - ths gets us better pep 302 compliance
+
+-------------------------------------------------------------------
+Thu Apr 27 10:37:20 UTC 2017 - aloisio@gmx.com
+
+- Fixed source URL
+
+-------------------------------------------------------------------
+Fri Apr 21 19:39:38 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec 
+- Enabled tests
+
+-------------------------------------------------------------------
+Fri Mar 11 08:37:01 UTC 2016 - tbechtold@suse.com
+
+- update to 1.4:
+  - revert the automated version gathering
+  - fix issue2 - adapt tests on Jython
+  - handle jython __pkgpath__ missabstraction when running python from jar files
+  - alias modules pointing to unimportable modules will return None for
+    all their attributes instead of raising ImportError.  This addresses
+    python3.4 where any call to getframeinfo() can choke on sys.modules
+    contents if pytest is not installed (because py.test.* imports it).
+  - introduce apipkg.distribution_version(name) as helper to
+    obtain the current version number of a package from install metadata
+    its used by default with the package name
+  - add an eagerloading option and eagerload automatically
+    if bpython is used (workaround for their monkeypatching)
+- Switch to use .tar.gz sdist instead of zip
+- Install LICENSE
+- BuildRequires python-setuptools
+
+-------------------------------------------------------------------
+Tue Nov 20 10:05:35 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

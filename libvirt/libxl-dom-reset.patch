@@ -1,0 +1,84 @@
+commit 3ac6e50943a775c545aa7d4e4bde5fcb8a163b64
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Jun 23 15:51:20 2014 -0600
+
+    libxl: support domainReset
+    
+    Currently, libxl_send_trigger() does not implement the LIBXL_TRIGGER_RESET
+    option, but domainReset can be implemented in the libxl driver by
+    forcibly destroying the domain and starting it again.
+
+Index: libvirt-5.6.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-5.6.0.orig/src/libxl/libxl_driver.c
++++ libvirt-5.6.0/src/libxl/libxl_driver.c
+@@ -1364,6 +1364,61 @@ libxlDomainReboot(virDomainPtr dom, unsi
+ }
+ 
+ static int
++libxlDomainReset(virDomainPtr dom, unsigned int flags)
++{
++    libxlDriverPrivatePtr driver = dom->conn->privateData;
++    libxlDriverConfigPtr cfg = libxlDriverConfigGet(driver);
++    virDomainObjPtr vm;
++    int ret = -1;
++
++    virCheckFlags(0, -1);
++
++    if (!(vm = libxlDomObjFromDomain(dom)))
++        goto cleanup;
++
++    if (virDomainResetEnsureACL(dom->conn, vm->def) < 0)
++        goto cleanup;
++
++    if (libxlDomainObjBeginJob(driver, vm, LIBXL_JOB_MODIFY) < 0)
++        goto cleanup;
++
++    if (!virDomainObjIsActive(vm)) {
++        virReportError(VIR_ERR_OPERATION_INVALID,
++                       "%s", _("Domain is not running"));
++        goto endjob;
++    }
++
++    /*
++     * The semantics of reset can be achieved by forcibly destroying
++     * the domain and starting it again.
++     */
++    if (libxl_domain_destroy(cfg->ctx, vm->def->id, NULL) < 0) {
++        virReportError(VIR_ERR_INTERNAL_ERROR,
++                       _("Failed to reset domain '%d'"), vm->def->id);
++        goto endjob;
++    }
++
++    libxlDomainCleanup(driver, vm);
++
++    if (libxlDomainStartNew(driver, vm, false) < 0) {
++        virReportError(VIR_ERR_INTERNAL_ERROR,
++                       _("Failed to start domain '%d' after reset"),
++                       vm->def->id);
++        goto endjob;
++    }
++
++    ret = 0;
++
++ endjob:
++    libxlDomainObjEndJob(driver, vm);
++
++ cleanup:
++    virDomainObjEndAPI(&vm);
++    virObjectUnref(cfg);
++    return ret;
++}
++
++static int
+ libxlDomainDestroyFlags(virDomainPtr dom,
+                         unsigned int flags)
+ {
+@@ -6539,6 +6594,7 @@ static virHypervisorDriver libxlHypervis
+     .domainShutdown = libxlDomainShutdown, /* 0.9.0 */
+     .domainShutdownFlags = libxlDomainShutdownFlags, /* 0.9.10 */
+     .domainReboot = libxlDomainReboot, /* 0.9.0 */
++    .domainReset = libxlDomainReset, /* 1.2.16 */
+     .domainDestroy = libxlDomainDestroy, /* 0.9.0 */
+     .domainDestroyFlags = libxlDomainDestroyFlags, /* 0.9.4 */
+ #ifdef LIBXL_HAVE_DOMAIN_SUSPEND_ONLY

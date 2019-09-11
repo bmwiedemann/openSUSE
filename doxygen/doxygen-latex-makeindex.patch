@@ -1,0 +1,13 @@
+Index: doxygen-1.8.15/src/config.xml
+===================================================================
+--- doxygen-1.8.15.orig/src/config.xml	2018-12-27 19:05:37.000000000 +0100
++++ doxygen-1.8.15/src/config.xml	2019-01-07 13:11:07.980751501 +0100
+@@ -2594,7 +2594,7 @@ EXTRA_SEARCH_MAPPINGS = tagname1=loc1 ta
+ ]]>
+       </docs>
+     </option>
+-    <option type='string' id='LATEX_MAKEINDEX_CMD' defval='\makeindex' depends='GENERATE_LATEX'>
++    <option type='string' id='LATEX_MAKEINDEX_CMD' defval='makeindex' depends='GENERATE_LATEX'>
+       <docs>
+ <![CDATA[
+  The \c LATEX_MAKEINDEX_CMD tag can be used to specify the command name to

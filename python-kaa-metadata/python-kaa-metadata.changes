@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Properly obsolete python-mmpython.
+- Spec cleanup.
+- Use upstream tarball.
+
+-------------------------------------------------------------------
+Thu Oct 29 00:36:11 UTC 2009 - jfunk@funktronics.ca
+
+- Update to 0.7.7
+
+-------------------------------------------------------------------
+Wed May 27 00:00:00 UTC 2009 - jfunk@funktronics.ca
+
+- Update to 0.7.6
+
+-------------------------------------------------------------------
+Tue Dec  2 00:00:00 UTC 2008 - jfunk@funktronics.ca
+
+- Update to 0.7.5
+  * Fix DVD detection for discs with bad subtitle mastering
+  * Make EXIF parser for JPG files more robust
+  * Minor bugfixes
+  * Add HTML documentation
+- 0.7.4, 2008-09-09
+  * Update EXIF.py to a new version
+  * Multiple parsers can be registered for the same extension
+  * Language code fixes
+  * Parser improvements for DVD, Real, MPEG, FLV, MP4
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2008 - jfunk@funktronics.ca
+
+- Update to 0.7.3
+
+-------------------------------------------------------------------
+Sat May  5 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Update to 0.6.1
+
+-------------------------------------------------------------------
+Mon Mar 5 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Initial release

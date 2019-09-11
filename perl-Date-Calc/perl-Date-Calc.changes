@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Thu Apr 16 19:56:35 UTC 2015 - coolo@suse.com
+
+- updated to 6.4
+   see /usr/share/doc/packages/perl-Date-Calc/CHANGES.txt
+- remove upstream Date-Calc-6.3.diff
+
+-------------------------------------------------------------------
+Sun Jan  4 13:16:20 UTC 2015 - coolo@suse.com
+
+- Date::Calc's parse logic puts 3.1.64 into 2064 if it's closer to
+  $NOW than 1964, which is the case since 1.1.2015
+  updated Date-Calc-6.3.diff for 
+  https://rt.cpan.org/Public/Bug/Display.html?id=101232
+
+-------------------------------------------------------------------
+Mon Apr 15 11:02:18 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Feb 27 06:46:33 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:21 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:31 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:41 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Feb 26 16:02:59 CET 2010 - anicka@suse.cz
+
+- update to 6.3 
+ *  The language can now be set individually for each function
+    in "Date::Calc" that requires it (through a new optional
+    parameter; the default continues to be a global setting
+    for backward compatibility); the affected functions are:
+    "Decode_Month()", "Decode_Day_of_Week()", "Compressed_to_Text()",
+    "Date_to_Text()", "Date_to_Text_Long()", "Calendar()",
+    "Month_to_Text()", "Day_of_Week_to_Text()", "Day_of_Week_Abbreviation()",
+    "Decode_Date_EU()", "Decode_Date_US()", "Decode_Date_EU2()",
+    "Decode_Date_US2()", "Parse_Date()".
+ *  BEWARE that the interface of "DateCalc.c" has changed!
+ *  Module "Date::Calc::Object" has been changed similarly
+ *  Module "Date::Calendar::Year" has also been adapted accordingly
+ *  bugfixes
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 16:11:05 CEST 2009 - anicka@suse.cz
+
+- update to 5.6
+ *  Made the module MacOS X compatible
+ *  Made some tiny changes to the documentation
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 16:32:18 CEST 2005 - cthiel@suse.de
+
+- added perl-Carp-Clan to neededforbuild
+
+-------------------------------------------------------------------
+Mon Aug  1 14:02:27 CEST 2005 - cthiel@suse.de
+
+- update to version 5.4
+
+-------------------------------------------------------------------
+Sun Jan 11 11:17:13 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:29:02 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 14:44:06 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon May 26 15:17:14 CEST 2003 - mjancar@suse.cz
+
+- remove Carp::Clan conflicting with perl-Bit-Vector
+
+-------------------------------------------------------------------
+Thu May 22 18:30:58 CEST 2003 - mjancar@suse.cz
+
+- use $RPM_OPT_FLAGS
+- use #!/usr/bin/perl instead of #!perl in examples
+- package omited man page
+- dont package MANIFEST
+
+-------------------------------------------------------------------
+Tue May 20 12:39:01 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Thu Dec 19 18:41:38 CET 2002 - prehak@suse.cz
+
+- updated to version 5.3
+- added doc files, adjusted their permissions
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jan 22 14:21:24 CET 2002 - rvasice@suse.cz
+
+- update to version 5.0
+- actualize filelist
+- use macros %{perl_sitearch}, %{perl_archlib}, %{_prefix}
+- added make test
+
+-------------------------------------------------------------------
+Mon Nov  6 18:38:01 CET 2000 - grimmer@suse.de
+
+- renamed from perl_dc to perl-Date-Calc
+- update to Version 4.3
+- spec file cleanups (macros, BuildRoot)
+
+-------------------------------------------------------------------
+Fri Jan 21 13:25:02 CET 2000 - ro@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Thu Oct 28 15:21:57 CEST 1999 - tmg@suse.de
+
+- created package (Date-Calc-4.2) 
+

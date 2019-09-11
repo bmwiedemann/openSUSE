@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Nov 15 12:41:52 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Install license file 
+
+-------------------------------------------------------------------
+Fri Apr  1 22:53:20 UTC 2016 - dvaleev@suse.com
+
+- Enable exluded architectures.
+  Fixed by debian patch no-rpath-prebuilt.patch 
+
+-------------------------------------------------------------------
+Sun Mar 20 10:08:24 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.9
+  * Lots of new features
+- Add aarch64 to list of excluded architectures
+
+-------------------------------------------------------------------
+Thu Aug 13 07:39:41 UTC 2015 - normand@linux.vnet.ibm.com
+
+- exclude ppc64le as already done for ppc/ppc64 (4 tests FAIL)
+    set-interpreter-long.sh
+    set-rpath.sh
+    big-dynstr.sh
+    set-rpath-library.sh
+  Same exclude on fedora as per bug 627370
+  https://bugzilla.redhat.com/show_bug.cgi?id=627370
+
+-------------------------------------------------------------------
+Sat Aug  2 13:01:46 UTC 2014 - idonmez@suse.com
+
+- Update to version 0.8
+  * No changelog upstream
+
+-------------------------------------------------------------------
+Tue Jul  3 13:39:43 UTC 2012 - dvaleev@suse.com
+
+- exclude ppc and ppc64. Tests are failed
+
+-------------------------------------------------------------------
+Thu Jun 21 15:05:20 UTC 2012 - adrian@suse.de
+
+- initial packaging of patchelf version 0.6
+  required for accelerated cross build package
+

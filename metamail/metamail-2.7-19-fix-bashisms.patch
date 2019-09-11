@@ -1,0 +1,24 @@
+--- a/bin/extcompose
++++ b/bin/extcompose
+@@ -28,7 +28,7 @@ do
+     echo "    4 -- In an Internet FTP directory that requires a valid login"
+     echo "    5 -- Under the control of a mail server that will send the data on request"
+     echo ""
+-    echo -n "Please enter a number from 1 to 5: \c"
++    echo -n "Please enter a number from 1 to 5: "
+     read ans
+     case "$ans" in
+         1) accesstype=local-file ;;
+--- a/bin/showaudio
++++ b/bin/showaudio
+@@ -269,8 +269,8 @@ then
+ 		read AUDIOPHONE
+ 	fi
+ 
+-	if test "$thishost" == "$AUDIOPHONEHOST" \
+-		-o "$thishost" == "$AUDIOPHONEHOSTLONG"
++	if test "$thishost" = "$AUDIOPHONEHOST" \
++		-o "$thishost" = "$AUDIOPHONEHOSTLONG"
+ 	then
+ 		echo Calling Phone number $AUDIOPHONE
+ 		echo "You MUST SAY HELLO when you answer the phone, or you will not hear the message."

@@ -1,0 +1,47 @@
+#
+# directories and files for check_mk
+#
+# place for livestatus.o libdir
+%livestatus_libdir				%{_prefix}/lib/check_mk
+#
+%livestatus_socketdir           %{_var}/spool/check_mk
+# 
+%livestatus_datadir				%{_datadir}/check_mk
+# confdir
+%livestatus_sysconfdir 			%{_sysconfdir}/check_mk
+# vardir
+%livestatus_vardir				%{_var}/lib/check_mk
+# livesock
+%livestatus_socket_file			%{livestatus_socketdir}/livestatus.cmd
+# livebackendsdir
+%livestatus_livebackendsdir		%{livestatus_datadir}/livestatius
+# check_mk_configdir
+%livestatus_check_mk_configdir	%{livestatus_sysconfdir}/conf.d
+# check_mk-docdir (man pages of checks)
+%livestatus_check_mk_checks_mandir %{_defaultdocdir}/check_mk/checks 
+# agentsdir
+%livestatus_agentsdir			%{livestatus_datadir}/agents
+# checksdir
+%livestatus_checksdir			%{livestatus_datadir}/checks
+# modulesdir
+%livestatus_modulesdir			%{livestatus_datadir}/modules
+# notificationsdir
+%livestatus_notificationsdir    %{livestatus_datadir}/notifications
+# web_dir
+%livestatus_webdir				%{livestatus_datadir}/web
+# agentslibdir
+%livestatus_agentslibdir		%{_prefix}/lib/check_mk_agent
+# agentsconfdir
+%livestatus_agentsconfdir		%{livestatus_sysconfdir}
+# htdocsdir
+%livestatus_htdocsdir			%{nagios_datadir}
+# htdocsdir for icinga
+%livestatus_icinga_htdocsdir	%{icinga_datadir}
+# nagconfdir
+%livestatus_nagconfdir			%{nagios_sysconfdir}/check_mk.d
+# nagconfdir for icinga
+%livestatus_icinga_confdir		%{icinga_sysconfdir}/check_mk.d
+# rrddir
+%livestatus_rrddir				%{livestatus_libdir}/rrd
+# log_dir
+%livestatus_log_dir             %{_var}/log/check_mk

@@ -1,0 +1,17 @@
+[Unit]
+Description=Redis
+After=network.target
+PartOf=redis-sentinel.target
+
+[Service]
+Type=notify
+User=redis
+Group=redis
+PrivateTmp=true
+PIDFile=/var/run/redis/sentinel-%i.pid
+ExecStart=/usr/sbin/redis-sentinel /etc/redis/sentinel-%i.conf
+LimitNOFILE=10240
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target redis.target

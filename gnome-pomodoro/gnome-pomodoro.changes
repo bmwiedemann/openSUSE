@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Apr  8 08:33:03 UTC 2019 - mvetter@suse.com
+
+- Update to version 0.15.1:
+  + Minor code cleanups to support ES6 syntax
+  + Support for GNOME Shell 3.32
+  + Fix for build with vala 0.44.1
+  + Updated German translation
+  + Fix for handle error recreating existing folder
+  + Minor code cleanups
+
+-------------------------------------------------------------------
+Mon Dec  3 11:43:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.14.0:
+  + Support for GNOME Shell 3.28 and 3.30.
+  + Stats.
+  + Background blur under the dialog during breaks.
+  + Updated translations.
+- Replace pkgconfig(appindicator3-0.1) with
+  pkgconfig(ayatana-appindicator3-0.1) BuildRequires following
+  upstream changes.
+- Add pkgconfig(gom-1.0) and pkgconfig(sqlite3) BuildRequires: New
+  dependencies.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Tue Dec  5 20:21:31 UTC 2017 - dimstar@opensuse.org
+
+- Require appstream-glib >= 0.7.3: This version changed the default
+  location for the appdata file from /usr/share/appdata to
+  /usr/share/mimeinfo. Since this package needs to be bootstrapped
+  we need to know what we end up with.
+
+-------------------------------------------------------------------
+Tue Nov 21 10:08:26 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.4:
+  + Add and update various translations.
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Log timer entries in database.
+  + Simple blur effect for the notification dialog.
+  + Display screen notification timer only on primary monitor.
+  + Display notifications despite timer being paused.
+  + gnome: Use Shell D-Bus instead of gsettings.
+  + Wait for plugins capabilities during startup.
+  + Various bugfixes.
+
+-------------------------------------------------------------------
+Fri Sep 15 08:25:38 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.3:
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Simplify Utils.Patch class.
+  + Update and add translations.
+  + Mark as compatible with GNOME 3.26.
+- Remove fedora conditions
+- Remove not needed macros like %icon_theme_cache_postun
+
+-------------------------------------------------------------------
+Fri Mar 17 20:23:47 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.1
+  + Support for GNOME Shell 3.24.
+  + Bug fixes.
+- Drop intltool in favor of newer gettext.
+- Remove libgnome-desktop-3.0 dependency (happened in 0.13.0).
+- Add BuildRequires appstream-glib for AppStream support.
+- Add BuildRequires libappindicator to provide indicator on
+  other desktops than GNOME.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:58:54 UTC 2016 - zaitor@opensuse.org
+
+- Add global Requires exclude for the now private typelib(Meta)
+  from mutter.
+
+-------------------------------------------------------------------
+Mon Jun 20 09:08:27 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.12.1:
+  + Fix for build error.
+- Add gnome-pomodoro-rpmlintrc: lib is only used by pomodoro.
+- BuildRequire pkgconfig(gio-2.0) instead of
+  pkgconfig(dbus-glib-1): Migrated from libdubs-glib to GDBus.
+- Drop BuildRequires/Recommends for:
+  + telepathy-glib: Drop integration with Telepathy.
+  + google-droid-sans-fonts: Don't use Droid Sans for timer digits,
+    instead use default system font.
+- Added BuildRequires:
+  + gsettings-desktop-schemas: to provide fallback for other
+    desktops.
+  + pkgconfig(libpeas): added a plugin engine based on libpeas.
+- Drop passing of prefix to autogen as it gets done in there
+  automatically.
+- Linker flags changed due to issues:
+  gh#codito/gnome-pomodoro#159 and gh#codito/gnome-pomodoro#195.
+
+-------------------------------------------------------------------
+Mon Jun 13 10:13:12 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.12.0:
+  + Support for more desktops.
+  + Ability to pause the timer.
+  + Ability add plugins.
+  + Code refactoring.
+  + Bug fixes.
+  + Dropped Telepathy and Skype integration.
+  + Dropped support for GNOME Shell 3.14 and older.
+
+-------------------------------------------------------------------
+Wed May 18 09:56:03 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.11.3:
+  + Ignore small mouse movements in screen notification.
+  + Fixed indicator not updating.
+  + Cleaned up some compilation warnings.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:54:29 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.11.2:
+  + Add GNOME 3.20 support.
+
+-------------------------------------------------------------------
+Fri Nov 13 09:54:10 UTC 2015 - mvetter@suse.com
+
+- Update to version 0.11.1:
+  + Add GNOME 3.18 support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 14 07:48:02 UTC 2015 - mvetter@suse.com
+
+- Correct glib2 macros
+
+-------------------------------------------------------------------
+Mon Jul 13 14:49:44 UTC 2015 - mvetter@suse.com
+
+- Using macros in post/postun
+- Splitting in lang package
+- Use proper configure
+
+-------------------------------------------------------------------
+Thu Jul  2 14:37:40 UTC 2015 - mvetter@suse.com
+
+- Remove deb file
+- Clean up spec file
+- Correct name of spec file and add changes file
+- Package got created originally by Kamil Prusko (kamilprusko)
+

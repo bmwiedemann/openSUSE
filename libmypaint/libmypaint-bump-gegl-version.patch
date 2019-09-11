@@ -1,0 +1,44 @@
+diff -Nur --color libmypaint-1.3.0-orig/configure.ac libmypaint-1.3.0/configure.ac
+--- libmypaint-1.3.0-orig/configure.ac	2016-12-01 23:47:49.000000000 +0100
++++ libmypaint-1.3.0/configure.ac	2018-04-27 21:03:56.044082301 +0200
+@@ -22,7 +22,7 @@
+           [libmypaint_api_major().libmypaint_api_minor().libmypaint_api_micro()m4_bpatsubst(libmypaint_api_prerelease(), [^\(.\)], [-\1])])
+ 
+ # Dependencies.
+-m4_define([gegl_required_version], [0.3])
++m4_define([gegl_required_version], [0.4])
+ m4_define([introspection_required_version], [1.32.0])
+ 
+ AC_INIT([libmypaint],
+@@ -312,7 +312,7 @@
+ )
+ 
+ if eval "test x$enable_gegl = xyes"; then
+-  PKG_CHECK_MODULES(GEGL, gegl-0.3 >= gegl_required_version)
++  PKG_CHECK_MODULES(GEGL, gegl-0.4 >= gegl_required_version)
+ fi
+ AM_CONDITIONAL(ENABLE_GEGL, test "x$enable_gegl" = "xyes")
+ 
+diff -Nur --color libmypaint-1.3.0-orig/gegl/libmypaint-gegl.pc.in libmypaint-1.3.0/gegl/libmypaint-gegl.pc.in
+--- libmypaint-1.3.0-orig/gegl/libmypaint-gegl.pc.in	2016-05-17 20:55:34.000000000 +0200
++++ libmypaint-1.3.0/gegl/libmypaint-gegl.pc.in	2018-04-27 21:39:14.767603874 +0200
+@@ -6,6 +6,6 @@
+ Name: libmypaint
+ Description: MyPaint brush engine library, with GEGL integration.
+ Version: @LIBMYPAINT_VERSION@
+-Requires: gegl-0.3 libmypaint
++Requires: gegl-0.4 libmypaint
+ Cflags: -I${includedir}/libmypaint-gegl
+ Libs: -L${libdir} -lmypaint-gegl
+diff -Nur --color libmypaint-1.3.0-orig/gegl/Makefile.am libmypaint-1.3.0/gegl/Makefile.am
+--- libmypaint-1.3.0-orig/gegl/Makefile.am	2016-11-29 04:49:30.000000000 +0100
++++ libmypaint-1.3.0/gegl/Makefile.am	2018-04-27 21:40:11.208350373 +0200
+@@ -11,7 +11,7 @@
+ INTROSPECTION_GIRS =
+ INTROSPECTION_SCANNER_ARGS = \
+     --warn-all \
+-    --pkg="gegl-0.3" \
++    --pkg="gegl-0.4" \
+     --pkg="glib-2.0" \
+     --namespace="MyPaintGegl" \
+     --nsversion="$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION)" \

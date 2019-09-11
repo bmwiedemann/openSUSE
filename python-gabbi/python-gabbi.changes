@@ -1,0 +1,325 @@
+-------------------------------------------------------------------
+Mon Aug 12 13:46:41 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.49.0
+  * Enhanced https certificate validation.
+
+-------------------------------------------------------------------
+Wed Jul 24 13:58:12 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.48.0
+  * Work around issues in urllib3
+  * Enable a -q arg to gabbi-run
+
+-------------------------------------------------------------------
+Thu Mar 14 15:54:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.45.0:
+  * * Adjust loading of YAML to be ready for new release of PyYAML.
+
+-------------------------------------------------------------------
+Tue Jan  8 13:05:06 UTC 2019 - Colleen Murphy <comurphy@suse.com>
+
+- Add python as build dependency
+  * The unit tests require a version of python compiled with SSL
+
+-------------------------------------------------------------------
+Tue Nov 20 12:40:17 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.44.0:
+  * jsonhandler: allow reading yaml data from disk (#254)
+  * Release 1.43.0
+  * read data from disk improvement (#251)
+  * Block PyYAML above 4.0 for the time being
+  * Formatting changes based on pylint and pep8 reviews
+  * Switch to using stestr instead of testrepository
+  * Relase 1.42.1
+  * Check for empty string as host in suitemaker
+  * Apply skipIf decorator to test method instead of TestCase
+  * update release notes
+  * Release 1.42.0
+  * Allow listing of tests with no host configured
+  * Use python3 when building releases
+  * Release 1.41.0
+  * Improve the tests for handling numbers, fix a found bug
+  * Avoid checking for <@ when data is not a string
+  * Make it possible to use non-string $RESPONSE in data
+  * Release 1.40.1
+  * Clean up warnings shown during testing
+  * Tweak docstrings for disambiguation
+  * Simplify HTTP setup for readability
+  * Pass strict=True when creating httpclient
+  * Require gnocchi and placement targets to pass
+  * Fix Gnocchi CI
+  * Raise GabbiFormatError when headers are None
+  * Tune up the instructions that get tox installed
+  * Update documentation to indicate requirements-dev.txt
+  * Move header\_key.yaml to intercept tests
+  * Add tox to a new requirements-dev (#233)
+  * Update documentation for header key substitution
+  * Run replace template for response header keys
+  * Add test for replacing template header keys
+  * Run replace template for header keys
+  * Make todo about test\_pytest more clear
+  * Remove support for Python 3.3
+  * Fix pytest handling of fixture-level skips
+  * Minor pylint driven formtting cleanups
+- run tests
+
+-------------------------------------------------------------------
+Wed Aug 22 12:22:21 UTC 2018 - sjamgade@suse.com
+
+- update to 1.37.0
+  * Release 1.37.0
+  * Brief documentation for safe\_yaml=False
+  * Allow to load python object from yaml
+  * create pyup.io config file
+  * Release 1.36.0
+  * Add docs for use\_prior\_test
+  * Add use\_prior\_test to the py\_test\_generator
+  * Add Zane to the contributors
+  * Clarify that regular expressions use search() not match()
+  * Don't treat data in substitutions as regular expressions
+  * Correctly match regexes that start or end with slashes
+  * Allow non-ASCII in response when matching regex
+  * use\_prior\_test directive and flag
+  * use\_prior\_test directive and flag
+  * use\_prior\_test directive and flag
+  * use\_prior\_test directive and flag
+  * use\_prior\_test directive and flag
+  * Update travis test matrix for pypy, pypy3 and py33
+  * correct spelling mistake
+  * Release 1.35.1
+  * curl to tar to avoid the file having a location
+  * Actually run the placement tox target
+  * Add a tox target for testing against openstack placement
+  * Test for host or intercept after url processing
+  * curl to tar to avoid the file having a location
+  * Actually run the placement tox target
+  * Add a tox target for testing against openstack placement
+  
+-------------------------------------------------------------------
+Thu Jul 20 05:41:40 UTC 2017 - tbechtold@suse.com
+
+- update to 1.35.0:
+  * release 1.35.0
+  * Documentation for <@ in json path values
+  * Allow value of a json path query to be read from disk
+  * Make _load_data_file public
+  * Add some simple docs for the LHS json path substitution
+  * Template expansion in LHS of json path test
+  * Correct location of gnocchi repo in gnocchi tests
+
+-------------------------------------------------------------------
+Wed Jul  5 08:23:44 UTC 2017 - tbechtold@suse.com
+
+- update to 1.34.1:
+  * Release 1.34.1
+  * Add configuration for uploading signed sdists and wheels
+  * use assertRegex not assertRegexpMatches
+  * Update contributors list to reflect recent activity
+  * Relase 1.34.0
+  * Add additional test to coerce.yaml
+  * Manage numerals more effectively in replacers
+  * Add optional `test` param for custom content handlers (#212)
+  * Remove .testrepository/times.dbm each test run
+  * release 1.33.0
+  * Enforce type of response/content-handler test data
+  * Make verbose accept additional valid strings
+  * Add verbose option to `build_tests`
+  * Allow substitutions in count and delay
+  * Fix prefix handling for relative urls
+  * Add a test for a relative link and add a comment
+  * Avoid duplicating prefix when re-using urls
+  * Ensure that $HOME is in passenv
+  * Unicode content from disk must become bytes
+- convert to singlespec
+- disable tests for now. remote access needed for some
+
+-------------------------------------------------------------------
+Mon Feb 13 18:30:46 UTC 2017 - tbechtold@suse.com
+
+- update 1.32.0:
+  * Release 1.32.0
+  * Minor comment clarification
+  * Adjust runner to track test suite failures
+  * Release 1.31.0
+  * Handle exceptions when starting fixtures
+  * Add a bit of test running arcana to the faq
+  * Fix verbose printing of json bodies
+  * Force removal of the .tox when doing make clean
+  * Release 1.30.1
+  * add application/xml.* as non-binary
+  * Remove FAQ entry about pytest warnings
+  * Use newer style of stating method in example.yaml
+  * Add optional testing of current gabbi with current gnocchi
+  * Try using a matrix to support multiple pythons
+  * Try using python 3.5 to run all the tests
+  * Add testing infrastructure for python 3.6
+  * release 1.30.0
+  * Add docs for the $HISTORY feature
+  * Minor test format doc improvements
+  * Fixes for failing tests
+  * Add $HISTORY variable
+  * Improve coverage testing and handling
+  * Improve gabbi-run stdin test coverage
+  * release 1.29.1
+  * gabbi-run: Fix usage of STDIN
+  * release 1.29.0
+  * Adjust 'data' docs in format.rst
+  * Add docs explaining use of new pytest technique
+  * clarify wording of docs
+  * Add a -v or --verbose flag to gabbi-run
+  * Use the dirname of each runner testfile as the test_dir
+  * update docs to mention filepath rather than file
+  * enable mock_open to work on py3.3/3.4
+  * Allow <@ syntax to safely include subdirectories
+  * release 1.28.0
+  * fixing duplicate word in a comment
+  * Pretty print JSON bodies in verbose tests
+  * release 1.27.1
+  * Support verbose with post data
+  * Don't compare strings via object identity
+  * Make sure the pytester plugin is called
+  * Pass metafunc into the pytest generator
+  * Fix pytest warnings by using pytest_generate_tests
+  * Release 1.27.0
+  * Add some rudimentary docs for runner input files handling
+  * Extract sys.stdin handling from the input_files
+  * Extract argparse setup to own method
+  * Remove the use of lambda and just call run_suite directly
+  * Refactor file path extraction
+  * Improve argument type detection
+  * Refactor internals to encapsulate function arguments
+  * Change CLI interface for input files
+  * Add support for multiple input files to runner
+  * Refactor runner in preparation of support for multiple input files
+  * Use testtools.TestCase instead of TestCaseWithFixtures
+  * Release 1.26.0
+  * Pluralize to remain consistent with previous function name
+  * Closes #174 by correcting the function name typo
+  * Add doc for inner fixtures
+  * Fix docstring typos
+  * Remove hacks for dealing with response handler global state
+  * Add the concept of an inner fixture
+  * Update content-handlers to reflect json regex handling
+  * Correct group_regex in .testr.conf
+  * Don't use usedevelop (#173)
+  * Fix heading level
+  * Release 1.25.0
+  * Allow test_loader_name to override test class module (#171)
+  * Add some doc and FAQ about quieting pytest warnings (#172)
+  * Release 1.24.1
+  * Cast json match to string when doing regex match (#167)
+  * Add a custom move to six to make mock available for both
+    Python 2 and 3. (#169)
+  * Add a FAQ about yaml anchors and aliases
+  * Add the framework for including a FAQ in docs (#163)
+  * Fixing link to google (#162)
+
+-------------------------------------------------------------------
+Thu Sep  1 15:16:24 UTC 2016 - tbechtold@suse.com
+
+- Fix Requires
+
+-------------------------------------------------------------------
+Mon Aug 15 05:37:53 UTC 2016 - tbechtold@suse.com
+
+- update to 1.24.0:
+  * release 1.24.0
+  * Allow regex in json path values (#160)
+  * Clean up content-type parsing
+  * release 1.23.0
+  * Add a pytest plugin to fix fixture handling (#152)
+  * Send a warning when a yaml filename has an underscore (#157)
+  * Be more visible about test loader needs when concurrent
+  * Adjustments for release notes
+  * Add a release notes page to the docs. (#155)
+  * Tune up the docs so modules are presented better
+  * release 1.22.0
+  * Enable a 'url' arg to build_tests (#153)
+  * Report better error when request headers malformed
+  * Run prior tests with TestResult class
+  * Runner cleanup (#141)
+  * Use named argumets when establishing Interceptor
+  * Fix failing tests
+  * Extract suitemaking out of driver
+  * release 1.21.0
+  * Allowing forcing SSL in build_tests and gabbi-run
+  * release 1.20.0
+  * release 1.19.1
+  * Get gabbi working with IPv6 addresses
+  * Fix cookie tests and pep8
+  * Add a docs for $COOKIE
+  * Experiment with implementation of a $COOKIE
+  * Make pylint a little happier
+  * Relase 1.19.0
+  * Adjust the definition of LAST_URL
+  * Add missing README for tests directory
+  * Release 1.18.0
+  * All "live" tests to be skipped
+  * First pass at implementing $LAST_URL feature
+  * Update docs to points to readthedocs.io
+  * Release 1.17.4
+  * Silence urllib3 warnings
+  * Release 1.17.3
+  * Add 'reason' to verbose header blacklist
+  * pytest needs to be in requirements now
+  * Run release tox with --skip-missing-interpreters
+  * release 1.17.1
+  * Get rid of unused pytest argument
+  * Update pytest docs
+  * Fix pytest failure handling
+  * Make slight improvements to pytest related docs
+  * Release 1.17.0
+  * Add docs about the pytest situation
+  * Add support for pytest
+  * Relase 1.16.1
+  * Be even more explicit about wsgi-intercept requirement
+  * make urllib3 min requirement of 1.11.0
+  * Release 1.16.0
+  * Removing the remaning references to httplib2
+  * Be more explicit about redirect and retry handling
+  * Switch to use urllib3 from httplib2
+  * Release 1.15.0
+  * Support testing of full json responses
+  * Release 1.14.1
+  * Adjust header evaluation to always use strings
+  * Fix JSON formatting in docs
+  * Simplify and clarify JSONPath docs
+  * Improve internal reference in docs
+  * Fix punctuation problem in jsonpath docs
+  * Adjust jsonpath documentation
+  * Release 1.14.0
+  * Switch to using jsonpath_rw_ext 1.0.0
+  * Release 1.13.1
+  * Be more explicit about expect yaml file encoding
+  * Add a test to confirm jsonpath returns a list
+  * release 1.13.0
+  * Add small amount of docs for json extensions
+  * Add some tests for json extension
+  * Add initial support for jsonpath sort and filter
+  * clean up some copyright strays
+  * Drop support for python3.2 in tests
+  * Fix typo
+  * Switch to mdash where appropriate
+  * Remove tox from test-requirements
+- Use pypi.io as Source  url
+- Add _service file
+- Adjust Requires
+
+-------------------------------------------------------------------
+Thu Feb  4 10:15:30 UTC 2016 - dmueller@suse.com
+
+- fix license string
+
+-------------------------------------------------------------------
+Thu Jan 28 14:33:00 UTC 2016 - aplanas@suse.com
+
+- fix tests and add gabbi_run 
+
+-------------------------------------------------------------------
+Thu Jan 28 08:32:03 UTC 2016 - bwiedemann@suse.com
+
+- initial version 1.12.0
+

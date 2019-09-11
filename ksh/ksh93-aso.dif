@@ -1,0 +1,25 @@
+--- src/lib/libast/features/aso
++++ src/lib/libast/features/aso	2012-02-20 12:09:41.065934089 +0100
+@@ -5,7 +5,10 @@ if	aso note{ gcc 4.1+ 64 bit memory atom
+ 		int main()
+ 		{
+ 			uint64_t i = 0;
+-			return __sync_fetch_and_add(&i,7);
++			uint32_t j = 0;
++			uint16_t l = 0;
++			uint8_t  m = 0;
++			return __sync_fetch_and_add(&i,7)+__sync_fetch_and_add(&j,7)+__sync_fetch_and_add(&l,7)+__sync_fetch_and_add(&m,7);
+ 		}
+ 	}end && {
+ 		#define _aso_cas8(p,o,n)	__sync_val_compare_and_swap(p,o,n)
+@@ -31,7 +34,9 @@ elif	aso note{ gcc 4.1+ 32 bit memory at
+ 		int main()
+ 		{
+ 			uint32_t i = 0;
+-			return __sync_fetch_and_add(&i,7);
++			uint16_t j = 0;
++			uint8_t  l = 0;
++			return __sync_fetch_and_add(&i,7)+__sync_fetch_and_add(&j,7)+__sync_fetch_and_add(&l,7);
+ 		}
+ 	}end && {
+ 		#define _aso_cas8(p,o,n)	__sync_val_compare_and_swap(p,o,n)

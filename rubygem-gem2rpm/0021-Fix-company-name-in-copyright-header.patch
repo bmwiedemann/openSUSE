@@ -1,0 +1,25 @@
+From 2d02399fc670b648785b10bf7f1510c136e6f981 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
+Date: Thu, 16 Apr 2015 23:49:01 +0200
+Subject: [PATCH 21/32] Fix company name in copyright header
+
+---
+ templates/opensuse.spec.erb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index a5f34c6..57bf9ff 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -1,7 +1,7 @@
+ #
+ # spec file for package rubygem-<%= spec.name %><%= config[:version_suffix] %>
+ #
+-# Copyright (c) <%= Time.now.year %> SUSE LINUX Products GmbH, Nuernberg, Germany.
++# Copyright (c) <%= Time.now.year %> SUSE LINUX GmbH, Nuernberg, Germany.
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+-- 
+2.20.1
+

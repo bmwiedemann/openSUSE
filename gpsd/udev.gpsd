@@ -1,0 +1,47 @@
+#!/bin/bash
+CTRL_SOCK="/var/run/gpsd.socket"
+DEV_NAME="/var/run/gpsd.device"
+
+. /etc/sysconfig/gpsd
+
+if [ "$GPSD_STARTBYUDEV" != "yes" ]; then
+    exit 1
+fi
+
+if [ "${ACTION}" = "remove" ]; then
+  GPSD_PID=$(pidof gpsd)
+
+  if [ -z "$GPSD_PID" ]; then
+    echo "Can't find gpsd!"
+  else
+    echo "Remove gpsd from pid: ${GPSD_PID}"
+    TTYDEV="/dev/$(basename $DEVPATH)"
+    TTYDEV_SAVE=$(cat ${DEV_NAME})
+
+     if [ "${TTYDEV}" = "${TTYDEV_SAVE}" ]; then
+         # send TERM signal
+         kill -15 ${GPSD_PID}
+         rm -f ${DEV_NAME}
+     fi
+  fi
+else
+  case "$DEVPATH" in
+    *tty*)
+      TTYDEV="/dev/$(basename $DEVPATH)"
+      options="-F $CTRL_SOCK $GPSD_OPTIONS"
+  
+      if [ -n "$GPSD_PORT" ]; then
+        options="$options -S $GPSD_PORT"
+      else
+        GPSD_PORT=2947
+      fi
+  
+      echo "Action '${ACTION}' Launch gpsd to $TTYDEV with $options"
+  
+      /usr/sbin/gpsd $options ${TTYDEV}
+      echo "${TTYDEV}" > ${DEV_NAME}
+      (sleep 1 && echo "F=$TTYDEV" >/dev/tcp/localhost/$GPSD_PORT) &
+    ;;
+  esac
+fi 2>&1 | /bin/logger -t gpsd
+

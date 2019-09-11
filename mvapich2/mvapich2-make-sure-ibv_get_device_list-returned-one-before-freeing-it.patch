@@ -1,0 +1,142 @@
+commit a99fe07d76f518d8ce98752e3251e1c6d601ca7f
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Aug 2 10:53:11 2019 +0200
+
+    mvapich2: make sure ibv_get_device_list returned one before freeing it
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git src/mpid/ch3/channels/common/src/detect/hca/mv2_hca_detect.c src/mpid/ch3/channels/common/src/detect/hca/mv2_hca_detect.c
+index 8a6f06bb43a1..0eaab4a30804 100644
+--- src/mpid/ch3/channels/common/src/detect/hca/mv2_hca_detect.c
++++ src/mpid/ch3/channels/common/src/detect/hca/mv2_hca_detect.c
+@@ -632,7 +632,8 @@ mv2_multirail_info_type mv2_get_multirail_info()
+                 g_mv2_multirail_info = mv2_num_rail_unknown;
+                 break;
+         }
+-        ibv_free_device_list(dev_list);
++		if(dev_list)
++			ibv_free_device_list(dev_list);
+     }
+     return g_mv2_multirail_info;
+ }
+diff --git src/mpid/ch3/channels/mrail/src/gen2/ibv_param.c src/mpid/ch3/channels/mrail/src/gen2/ibv_param.c
+index 0634d4ae48d2..6414bc0b76b8 100644
+--- src/mpid/ch3/channels/mrail/src/gen2/ibv_param.c
++++ src/mpid/ch3/channels/mrail/src/gen2/ibv_param.c
+@@ -572,7 +572,8 @@ int rdma_get_process_to_rail_mapping(int mrail_user_defined_p2r_type)
+     }
+   fn_exit:
+     /* Housekeeping operations */
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++		ibv_free_device_list(dev_list);
+     MPIU_Free(p2r_only_numbers);
+     MPIU_Free(mrail_p2r_string);
+     mrail_p2r_string = NULL;
+diff --git src/mpid/ch3/channels/mrail/src/gen2/rdma_iba_priv.c src/mpid/ch3/channels/mrail/src/gen2/rdma_iba_priv.c
+index 89bf75ef49ab..4d97eb107be6 100644
+--- src/mpid/ch3/channels/mrail/src/gen2/rdma_iba_priv.c
++++ src/mpid/ch3/channels/mrail/src/gen2/rdma_iba_priv.c
+@@ -387,7 +387,8 @@ int rdma_find_network_type(struct ibv_device **dev_list, int num_devices,
+         *num_usable_hcas = num_unknwn_cards;
+     }
+ 
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++		ibv_free_device_list(dev_list);
+ 
+     return network_type;
+ }
+@@ -514,7 +515,8 @@ int ring_rdma_open_hca(struct mv2_MPIDI_CH3I_RDMA_Process_t *proc)
+ 
+   fn_exit:
+     /* Clean up before exit */
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++	    ibv_free_device_list(dev_list);
+     return is_device_opened;
+ }
+ 
+@@ -614,7 +616,8 @@ retry_hca_open:
+ 
+         if (!ib_dev) {
+             /* Clean up before exit */
+-            ibv_free_device_list(dev_list);
++			if (dev_list)
++	            ibv_free_device_list(dev_list);
+             MPIR_ERR_SETFATALANDJUMP1(mpi_errno, MPI_ERR_OTHER, "**fail",
+                                       "**fail %s", "No IB device found");
+         }
+@@ -624,7 +627,8 @@ retry_hca_open:
+         proc->nic_context[rdma_num_hcas] = ibv_open_device(ib_dev);
+         if (!proc->nic_context[rdma_num_hcas]) {
+             /* Clean up before exit */
+-            ibv_free_device_list(dev_list);
++			if (dev_list)
++				ibv_free_device_list(dev_list);
+             MPIR_ERR_SETFATALANDJUMP2(mpi_errno, MPI_ERR_OTHER, "**fail",
+                                       "%s %d", "Failed to open HCA number",
+                                       rdma_num_hcas);
+@@ -641,7 +645,8 @@ retry_hca_open:
+             ibv_alloc_pd(proc->nic_context[rdma_num_hcas]);
+         if (!proc->ptag[rdma_num_hcas]) {
+             /* Clean up before exit */
+-            ibv_free_device_list(dev_list);
++			if (dev_list)
++				ibv_free_device_list(dev_list);
+             MPIR_ERR_SETFATALANDJUMP2(mpi_errno, MPI_ERR_OTHER,
+                                       "**fail", "%s%d",
+                                       "Failed to alloc pd number ",
+@@ -672,7 +677,8 @@ retry_hca_open:
+ 
+   fn_exit:
+     /* Clean up before exit */
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++		ibv_free_device_list(dev_list);
+     return mpi_errno;
+ 
+   fn_fail:
+diff --git src/mpid/ch3/channels/mrail/src/gen2/sysreport.c src/mpid/ch3/channels/mrail/src/gen2/sysreport.c
+index c4754ada2e7b..e427925bf996 100644
+--- src/mpid/ch3/channels/mrail/src/gen2/sysreport.c
++++ src/mpid/ch3/channels/mrail/src/gen2/sysreport.c
+@@ -111,7 +111,8 @@ static int hca_check(int rank) {
+        */
+     }
+ 
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++		ibv_free_device_list(dev_list);
+     return mpi_errno;
+ }
+ 
+diff --git src/mpid/ch3/channels/mrail/src/rdma/ibv_sharp.c src/mpid/ch3/channels/mrail/src/rdma/ibv_sharp.c
+index e023a9239a39..110f92e2eddf 100644
+--- src/mpid/ch3/channels/mrail/src/rdma/ibv_sharp.c
++++ src/mpid/ch3/channels/mrail/src/rdma/ibv_sharp.c
+@@ -281,7 +281,8 @@ finished_query:
+         MPIR_ERR_POP(mpi_errno);
+     }  
+ 
+-    ibv_free_device_list(dev_list);
++	if (dev_list)
++		ibv_free_device_list(dev_list);
+     return 0;
+ #else
+     PRINT_ERROR( "Unable to get the device name, please set MV2_SHARP_HCA_NAME and MV2_SHARP_PORT, then rerun the program. ");
+diff --git src/mpid/ch3/channels/psm/src/psm_entry.c src/mpid/ch3/channels/psm/src/psm_entry.c
+index 09220e66b7f1..1e5b29e3104c 100755
+--- src/mpid/ch3/channels/psm/src/psm_entry.c
++++ src/mpid/ch3/channels/psm/src/psm_entry.c
+@@ -226,7 +226,8 @@ mv2_arch_hca_type MV2_get_arch_hca_type(void)
+         hca_type = MV2_HCA_ANY;
+ 
+     g_mv2_arch_hca_type = (uint64_t)arch_type << 32 | hca_type;
+-    ibv_free_device_list(dev_list);
++	if(dev_list)
++		ibv_free_device_list(dev_list);
+ #else
+     g_mv2_arch_hca_type = mv2_get_arch_hca_type(NULL);
+ #endif

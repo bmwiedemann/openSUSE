@@ -1,0 +1,1755 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:22:29 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Wed Apr 17 17:37:04 UTC 2019 - Larry Dewey <ldewey@suse.com>
+
+- Fixing issue with virt-customize in SLES and openSUSE guests
+  (boo#1132790)
+  Patches added:
+    28bd06227b-inspect-handle-os-release-opensuse-tumbleweed-as-ope.patch
+    70407cd622-inspection-Parse-os-release-opensuse-leap-as-opensus.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 18:50:31 UTC 2019 - Larry Dewey <ldewey@suse.com>
+
+- Fixing issue with virt-customize uninstall and '-l'
+  (bnc#1131342)
+  Patches added:
+    fd43730e-error-with-uninstall-option-on-SUSE.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 13:39:04 UTC 2018 - ohering@suse.de
+
+- Remove zerofree from BuildRequires because only supermin will
+  consider this feature at runtime.
+
+-------------------------------------------------------------------
+Thu Apr 19 09:07:54 UTC 2018 - cbosdonnat@suse.com
+
+- Build against libtirpc
+
+-------------------------------------------------------------------
+Tue Feb 27 13:14:35 UTC 2018 - cbosdonnat@suse.com
+
+- Remove unneeded createrepo build dependency (bsc#1082689)
+- builder-repository: fix SLES short id computation
+  Patch added:
+    0a55098f-builder-repository-fix-compute_short_id-for-sles-X.0.patch
+- Fix handling of Latin-1 encoding in rpmdb (bsc#1075803)
+  Patches added:
+    0001-Introduce-a-wrapper-around-xmlParseURI.patch
+    0002-common-extract-UTF-8-conversion-function.patch
+    0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 08:53:30 UTC 2018 - adam.majer@suse.de
+
+- Remove dependency on wodim for openSUSE:Factory and use cdrtools
+  (bnc#1081739)
+
+-------------------------------------------------------------------
+Fri Feb  9 19:39:31 UTC 2018 - cbosdonnat@suse.com
+
+- update to version 1.38.0:
+  * Virt-builder-repository is a new tool allowing end users to
+    create and update virt-builder repositories. (fate#318952)
+  * Virt-rescue has been substantially rewritten, implementing job
+    control, -m and -i options, escape keys, etc.
+  * Virt-builder planner has been improved so that faster and more
+    efficient build plans are chosen for complex cases, especially when
+    either the tmpdir or output is on networked storage.
+  * Virt-customize now sets a random /etc/machine-id for Linux guests, if
+    one is not already set.
+  * Virt-df now works correctly on filesystems with block sizes smaller
+    than 1K.
+  * Virt-dib has further compatibility enhancements with diskimage-builder.
+  * Virt-sysprep removes "DHCP_HOSTNAME" from ifcfg-* files.
+  * Virt-resize now correctly copies GPT partition attributes from the
+    source to the destination. (bsc#1074585)
+  * Bash tab completion implemented or enhanced for: virt-win-reg,
+    virt-v2v-copy-to-local.
+  * Both virt-v2v and virt-p2v are now able to pass through the source CPU
+    vendor, model and topology.
+  * Virt-v2v now supports encrypted guests.
+  * Virt-v2v now detects the special Linux Xen PV-only kernels correctly
+  * Virt-v2v -o glance now generates the right properties for UEFI guests
+  * Virt-v2v -o null now avoids spooling the guest to a temporary file,
+    instead it writes to the qemu "null block device".  This makes it
+    faster and use almost no disk space.
+  * Virt-v2v -i libvirtxml can now open network disks over http or https.
+  * Virt-v2v will now give a warning about host passthrough devices
+  * Inspection support was rewritten in OCaml and included inside the
+    daemon.  This makes inspection considerably faster, more robust and
+    more easily extensible in future.
+  * The libguestfs API is now thread-safe (although not parallel).  You can
+    call APIs on the same handle from multiple threads without needing to
+    take a lock.
+- Removed patches:
+    531316cc-build-improve-and-simplify-distro-detection.patch
+    9d25b4e5-python-add-simple-wrappers-for-PyObject-string-funct.patch
+    f3f99a09-python-use-right-func-when-PyString_FromStringAndSiz.patch
+- Added patches:
+    d0e5a819-python-Fix-missing-additional-backslashes.patch
+  
+
+-------------------------------------------------------------------
+Mon Dec  4 17:18:57 UTC 2017 - cbosdonnat@suse.com
+
+- evtxdump is in python3-evtx, drop python2 dependency
+  (fate#323526)
+- add hwinfo to the appliance packages for ntfs support.
+  (bsc#1070976)
+- Don't run fdupes as it symlinks some of the python3 binding
+  files to their python2 equivalent
+
+-------------------------------------------------------------------
+Wed Nov 22 16:22:39 UTC 2017 - cbosdonnat@suse.com
+
+- Add db48-utils dependency: needed to inspect the installed
+  packages.
+- Remove useless patch: 0000-hotfix.patch
+
+-------------------------------------------------------------------
+Wed Oct 25 13:24:50 UTC 2017 - cbosdonnat@suse.com
+
+- Move guestfs-data to libguestfs0. bsc#1064399
+- Force distro detection
+  Removed:
+    * use-idlike.patch
+  Added:
+    * 531316cc-build-improve-and-simplify-distro-detection.patch
+
+-------------------------------------------------------------------
+Thu Oct 12 14:37:40 CEST 2017 - sbrabec@suse.com
+
+- Use "OCaml" in RPM group exactly as all other packages do.
+
+-------------------------------------------------------------------
+Thu Sep 21 13:25:16 UTC 2017 - jengelh@inai.de
+
+- Update summaries and RPM groups. Trim description for size.
+- Replace old $RPM_ shell vars by macros.
+  Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Sep 20 17:18:24 UTC 2017 - cbosdonnat@suse.com
+
+- Add windows support files to the appliance for SLES (fate#316274)
+- Merge SLES and openSUSE spec files.
+
+-------------------------------------------------------------------
+Mon Sep  4 19:15:25 UTC 2017 - cbosdonnat@suse.com
+
+- Tweak configuration before building for python3 or PyString_*
+  symbols will still be missing
+
+-------------------------------------------------------------------
+Thu Aug 31 15:25:06 UTC 2017 - cbosdonnat@suse.com
+
+- Fix python binding for python3
+  add patches:
+  * 9d25b4e5-python-add-simple-wrappers-for-PyObject-string-funct.patch
+  * f3f99a09-python-use-right-func-when-PyString_FromStringAndSiz.patch
+- Better fix for SUSE distro detection using ID_LIKE as fallback:
+  * use-idlike.patch
+
+-------------------------------------------------------------------
+Tue Jul 18 14:07:54 UTC 2017 - cbosdonnat@suse.com
+
+- Add missing dependency on guestfs-data (bsc#1048848)
+- Add conflict with old virt-v2v (bsc#1050069)
+- Fix python binding package
+  * Replace python-libguestfs by python[23]-libguestfs packages
+  * Add egg-info to python[23]-libguestfs package
+
+-------------------------------------------------------------------
+Mon Jul 17 07:05:10 UTC 2017 - dmueller@suse.com
+
+- add dependency on augeas (bsc#1048620)
+
+-------------------------------------------------------------------
+Sun Jul 16 09:07:22 UTC 2017 - dmueller@suse.com
+
+- update to version 1.36.5:
+  * btrfs_replace: fix position of subcommand options
+  * lib: Move close_file_descriptors into guestfs-internal.h.
+  * daemon: lvm: Pass --yes option to force pvresize (RHBZ#1460577).
+  * lib: direct, uml: Unblock SIGTERM in the hypervisor and recovery processes (RHBZ#1460338).
+  * lib: create: Allow any [[:alnum:]]+ string as a backingfmt parameter (RHBZ#1459979).
+  * mllib: Handle empty files correctly in read_first_line_from_file.
+  * resize: make sure the input disk is read-only
+  * v2v: tell v2v the real root device to mkinitrd
+  * mllib: Export which in "stdlib mode".
+  * mllib: Export prog, quiet, trace, verbose in "stdlib mode".
+  * btrfs_replace: fix position of subcommand options
+- add download location for source verification purposes
+
+-------------------------------------------------------------------
+Thu Jun  1 16:12:07 UTC 2017 - cbosdonnat@suse.com
+
+- Fix v2v conversion of SLES 11 SP4 with kdump enabled
+  bsc#1038397
+
+-------------------------------------------------------------------
+Tue May 30 09:42:47 UTC 2017 - ohering@suse.de
+
+- Update to version 1.36.4
+  ... to fix build with gperf 3.1
+
+-------------------------------------------------------------------
+Mon May 15 12:13:40 UTC 2017 - cbosdonnat@suse.com
+
+- Don't let mkinitrd guess the root device (bsc#1038397)
+
+-------------------------------------------------------------------
+Thu Apr  6 13:27:25 UTC 2017 - cbosdonnat@suse.com
+
+- Add ldmtool to appliance (fate#320858)
+- Add cdrkit-cdrtools-compat to appliance, required for isoinfo*
+  APIs to work.
+
+-------------------------------------------------------------------
+Wed Nov 30 16:04:14 UTC 2016 - cbosdonnat@suse.com
+
+- Add initviocons to appliance package (bsc#1011940)
+
+-------------------------------------------------------------------
+Thu Sep 22 13:45:00 UTC 2016 - cbosdonnat@suse.com
+
+- Backport btrfs-related fixes (bsc#1000202)
+  commits: d6bba9b, f90185d, 4e0dbf9 and 738c3bf
+
+-------------------------------------------------------------------
+Mon Sep 19 09:18:21 UTC 2016 - cbosdonnat@suse.com
+
+- Add mount.ntfs alternatives symlink for SLES too (fate#316274)
+
+-------------------------------------------------------------------
+Wed Sep 14 13:13:10 UTC 2016 - ohering@suse.de
+
+- Remove obsolete kernel checks from specfile (fate#316274)
+- Remove kernel-default and mkinitrd from BuildRequires (fate#316274)
+
+-------------------------------------------------------------------
+Fri Aug 26 13:55:55 UTC 2016 - cbosdonnat@suse.com
+
+- Clean up dependencies and add recommends for optional packages
+  like the ones enabling file system features
+  fate#316274, bsc#993501
+
+-------------------------------------------------------------------
+Thu Jul 28 10:03:14 UTC 2016 - cbosdonnat@suse.com
+
+- Fix dependencies (fate#316274)
+
+-------------------------------------------------------------------
+Wed Jul 20 19:47:22 UTC 2016 - cbosdonnat@suse.com
+
+- appliance fixes (fate#316274):
+  * re-add helper script mount-rootfs-and-chroot.sh for virt-rescue
+    appliance.patch
+  * make guestfs-data a requirement of guestfs-tools
+
+-------------------------------------------------------------------
+Wed Jul 20 08:32:21 UTC 2016 - cbosdonnat@suse.com
+
+- v2v: add support for win2k16.
+  Backport commit e93d4ea3, fate#316274
+
+-------------------------------------------------------------------
+Wed Jul 13 15:21:57 UTC 2016 - ke@suse.de
+
+- Fix virt-p2v package summary (dummy bsc#933411).
+
+-------------------------------------------------------------------
+Mon Jul  4 10:11:11 UTC 2016 - cbosdonnat@suse.com
+
+- Fix guestfs-tools dependencies. bsc#986866
+
+-------------------------------------------------------------------
+Wed Jun  8 13:02:30 UTC 2016 - cbosdonnat@suse.com
+
+- Fix virt-filesystem -l for btrfs. bsc#980092
+- Add p2v support (fate#316274)
+
+-------------------------------------------------------------------
+Mon Mar 14 08:41:08 UTC 2016 - cbosdonnat@suse.com
+
+- Update to version 1.32.4
+- Backported commits (fate#316274):
+  * f5a9cdf: api: add mountable_device and mountable_subvolume
+  * 1c30c23: fish: fix btrfs subvolumes display in error case
+  * 1f24364: v2v: win <= 7: reduce registry patch
+  * f0dce24: v2v: win >= 8: reduce registry patch
+  * 9a441b0: v2v: win >= 8: simplify registry patching
+  * e07459d: v2v: win: factor out common bits in registry patching
+  * 47aa64a: v2v: add support for virtio-scsi
+  * bba9ea9: v2v: also search for windows virtio drivers in symlinks
+  * 3bf7d30: Update packagelist for SLES and openSUSE
+  * 89ae53e: appliance: skip /etc/mtab creation is already existing
+  * ee78c06: customize: add support for pvvxsvc
+  * 25848b5: v2v: document SUSE's Xen as a working input hypervisor
+  * e9082ea: v2v: rename RHEL 5 Xen input section into Xen in man
+  * 75fe93e: v2v: improve initrd search
+  * 536ef6f: customize: change windows firstboot path
+  * 07f7bfa: customize: fix windows firstboot script
+  * c466d4c: v2v: add support for SUSE VMDP drivers
+  * 9de9300: v2v: handle subfolders in ova files
+- Removed patches:
+  * 1000-force-virtio_blk-in-old-guest-kernel.patch
+  * libguestfs.mkinitrd.1110.patch
+  * libguestfs.mkinitrd.1115.patch
+  * libguestfs.mkinitrd.1140.patch
+  * libguestfs.mkinitrd.1210.patch
+  * libguestfs.mkinitrd.1220.patch
+  * libguestfs.mkinitrd.1230.patch
+  * libguestfs.mkinitrd.1310.patch
+  * libguestfs.mkinitrd.boot-btrfs.sh
+  * libguestfs.mkinitrd.boot-dm.sh
+  * libguestfs.mkinitrd.boot-lvm2.sh
+  * libguestfs.mkinitrd.boot-md.sh
+  * libguestfs.mkinitrd.boot-nfs.sh
+  * libguestfs.mkinitrd.boot.sh
+  * libguestfs.mkinitrd.setup-btrfs.sh
+  * libguestfs.mkinitrd.setup-dm.sh
+  * libguestfs.mkinitrd.setup-lvm2.sh
+  * libguestfs.mkinitrd.setup-md.sh
+  * libguestfs.mkinitrd.setup-nfs.sh
+  * libguestfs.mkinitrd.setup.sh
+  * libguestfs.mkinitrd.tar.bz2
+
+-------------------------------------------------------------------
+Thu Oct  1 12:09:22 UTC 2015 - cbosdonnat@suse.com
+
+- Add password default encryption method for sles. fate#318952
+
+-------------------------------------------------------------------
+Tue Sep 29 14:21:52 UTC 2015 - cbosdonnat@suse.com
+
+- Add -l to zypper for install and update.
+
+-------------------------------------------------------------------
+Mon Sep 14 11:27:19 UTC 2015 - cbosdonnat@suse.com
+
+- Create the .cache folder if it doesn't exist already.
+  bsc#939097.
+
+-------------------------------------------------------------------
+Wed Sep  9 12:50:11 UTC 2015 - cbosdonnat@suse.com
+
+- Define SHA512 as the default password encryption method for
+  opensuse 11+.
+
+-------------------------------------------------------------------
+Mon Sep  7 13:39:57 UTC 2015 - cbosdonnat@suse.com
+
+- Add opensuse images source for virt-builder.
+  fate#318952.
+
+-------------------------------------------------------------------
+Tue Jul 28 13:53:53 UTC 2015 - cbosdonnat@suse.com
+
+- Make sure gpg-agent isn't blocking unmount operations for
+  fedora 22+ images. boo#939105
+
+-------------------------------------------------------------------
+Fri Jul 24 12:33:51 UTC 2015 - ohering@suse.de
+
+- Add rpmlintrc to surpress binaryinfo-readelf-failed to reduce
+  build-compare noise
+
+-------------------------------------------------------------------
+Mon Jul 20 07:38:45 UTC 2015 - ohering@suse.de
+
+- Refresh libguestfs.mkinitrd.1310.patch
+
+-------------------------------------------------------------------
+Mon Mar  9 14:14:52 UTC 2015 - ohering@suse.de
+
+- Force feature usb into initrd to avoid build-compare noise
+
+-------------------------------------------------------------------
+Mon Mar  9 13:58:47 UTC 2015 - ohering@suse.de
+
+- Workaround bug in patch(1) which does not follow symlinks anymore
+
+-------------------------------------------------------------------
+Tue Feb 24 09:43:58 UTC 2015 - ohering@suse.de
+
+- Update to version 1.26.10
+  * gcc5: test-tool: Initialize local variable.
+  * lua: Define luaL_checkint which was deprecated in lua 5.3.
+  * tools: fix free -m invocation
+
+-------------------------------------------------------------------
+Fri Feb  6 13:45:22 UTC 2015 - cbosdonnat@suse.com
+
+- Make zypper called with -n parameter when installing packages.
+  (bsc#916567)
+
+-------------------------------------------------------------------
+Tue Dec  9 15:44:39 UTC 2014 - ohering@suse.de
+
+- Package guestfs_lvm_conf.aug (bnc#908632)
+
+-------------------------------------------------------------------
+Wed Nov 26 11:02:59 UTC 2014 - ohering@suse.de
+
+- Handle more dist versions when patching mkinitrd
+
+-------------------------------------------------------------------
+Mon Nov 24 17:02:33 UTC 2014 - ohering@suse.de
+
+- Add isofs and other fs drivers (bnc#906692)
+
+-------------------------------------------------------------------
+Mon Nov 24 16:52:12 UTC 2014 - ohering@suse.de
+
+- Use fixed /etc/hosts, scsi_dh_modules and ibft_hostname to
+  reduce build-compare noise
+
+-------------------------------------------------------------------
+Thu Oct 16 13:26:13 CEST 2014 - ohering@suse.de
+
+- Handle btrfs subvolume name '@' as used in SLE12 (bnc#900346)
+
+-------------------------------------------------------------------
+Tue Oct 14 10:34:12 CEST 2014 - ohering@suse.de
+
+- Include gconv modules for hivex (bnc#900530)
+
+-------------------------------------------------------------------
+Fri Sep  5 09:53:22 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.9
+  * customize: fix locking accounts with passwords
+  * daemon: lvm-filter: use augeas for setting the filter
+  * daemon: move AUGEAS_ERROR to the common header
+  * daemon: add add_sprintf
+
+-------------------------------------------------------------------
+Tue Aug 26 07:20:34 UTC 2014 - ohering@suse.de
+
+- Update to version 1.26.8
+  * mllib: Export output_spaces function.
+  * daemon: Fix echo-daemon so it doesn't fail on empty array input.
+  * drives: fix deletion of servers on error
+  * daemon: zfile: call pclose instead of fclose
+  * utils: Add new CLEANUP_PCLOSE cleanup.  It calls pclose(3).
+  * launch: direct: Only issue Debian /dev/kvm group warning if /dev/kvm wasn't openable (RHBZ#1130189).
+  * lib: Missing include of <locale.h>.
+  * python: fix possible free on uninit memory with OStringList optargs
+  * df: unlock retire_mutex on early exit
+  * daemon: use CLEANUP_CLOSE
+  * daemon: blkid: fix memory issues in "no -p/-i" mode
+  * daemon: initialize memory when handling DeviceList params
+  * rescue: fix sscanf placeholders for --smp and --memsize
+  * daemon: add and use a reply_with_unavailable_feature macro
+
+-------------------------------------------------------------------
+Thu Jul 31 15:53:57 CEST 2014 - ohering@suse.de
+
+- Fix build without ocaml
+
+-------------------------------------------------------------------
+Thu Jul 31 15:11:49 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.7
+  * launch: Close file descriptors after fork (RHBZ#1123007).
+  * Revert "launch: Close file descriptors after fork (RHBZ#1123007)."
+  * launch: direct: check for null paths in make_uri
+  * make-fs: do not leak the fd from mkstemp
+  * make-fs: respect libguestfs' temporary dir
+
+-------------------------------------------------------------------
+Thu Jul 31 14:56:52 CEST 2014 - ohering@suse.de
+
+- define kernel_binary on aarch64
+
+-------------------------------------------------------------------
+Mon Jul 28 09:27:51 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.6
+  * cleanups: add CLEANUP_FCLOSE (fclose on FILE*)
+  * launch: Close file descriptors after fork (RHBZ#1123007).
+  * virt-resize: Unmount filesystem after testing size.
+  * daemon: Add extra debugging to umount_all command.
+  * sparsify: Relax requirement that output device cannot be block device (RHBZ#1122557).
+  * ocaml: Ignore Warning 3: deprecated feature: String.* functions.
+  * sysprep: Standard exception handling, taken from virt-builder & virt-v2v.
+  * customize: Use Common_utils.error function instead of failwith.
+  * mllib: introduce Mkdtemp.temp_dir
+  * inspect: ignore /etc/fstab with no entries (RHBZ#1113156).
+
+-------------------------------------------------------------------
+Wed Jul  9 09:54:31 CEST 2014 - ohering@suse.de
+
+- Include fdisk and bc (bnc#886372)
+
+-------------------------------------------------------------------
+Tue Jul  8 17:33:56 CEST 2014 - ohering@suse.de
+
+- add Requires: qemu 2 to guestfs-tools to restore versioned kvm
+
+-------------------------------------------------------------------
+Tue Jul  8 12:54:34 CEST 2014 - ohering@suse.de
+
+- Use /usr/bin/qemu-system-ppc64 as kvm_binary on ppc64le (bnc#884564)
+
+-------------------------------------------------------------------
+Tue Jul  8 12:52:58 CEST 2014 - ohering@suse.de
+
+- Handle empty /lib/mkinitrd/scripts gracefully
+
+-------------------------------------------------------------------
+Mon Jul  7 10:12:36 CEST 2014 - ohering@suse.de
+
+- Update requirements for kvm package. Instead of calling qemu-kvm
+  and Requires: kvm, replace the Requires with /usr/bin/qemu-system-$ARCH
+  Define the helper for aarch64, ppc64, s390x and x86_64.
+  Other archs have to use LIBGUESTFS_HV= (bnc#884564)
+
+-------------------------------------------------------------------
+Mon Jul  7 09:37:23 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.5
+  * generator: Sort the structs.
+  * Use -v and -x flags consistently across OCaml virt-* tools.
+  * mllib: Rewrite text wrapping function so it can handle newlines within the text.
+  * mllib: Add a common 'warning' utility function.
+  * mllib: Add an interface for Common_utils library.
+  * mllib: Move common code for comparing version strings to library.
+  * options: Compile out part of union which cannot be used when not compiling guestfish.
+  * mllib: Create a common utility function is_directory.
+  * fuse: UID 0 should override all permissions checks (RHBZ#1106548).
+  * launch: libvirt: Only use serial BIOS (sgabios) on x86.
+  * daemon: print parameters for vgchange in error messages
+  * generator: fix daemon functions with optional params but no mandatory params
+  * appliance: Increase udev timeout to 6000s (RHBZ#1096579).
+  * launch: libvirt: Add -device sga (sgabios).
+
+-------------------------------------------------------------------
+Fri Jul  4 09:51:06 CEST 2014 - ohering@suse.de
+
+- Add cdrkit-cdrtools-compat, psmisc, gptfdisk, syslinux to
+  BuildRequires to reduce amount of missing commands
+
+-------------------------------------------------------------------
+Fri Jul  4 09:29:11 CEST 2014 - ohering@suse.de
+
+- Include mkinitrd scripts for btrfs, and include it in feature list
+
+-------------------------------------------------------------------
+Wed Jul  2 11:27:26 CEST 2014 - ohering@suse.de
+
+- Include mkinitrd scripts from lvm2, device-mapper, mdadm and
+  nfs-client for 13.2 builds. The scripts will be removed from these
+  packages, they are required here. (bnc#883863, bnc#883873,bnc#883876)
+
+-------------------------------------------------------------------
+Thu Jun  5 17:10:57 UTC 2014 - mlatimer@suse.com
+
+- Fix permissions on initramfs to allow regular users access. 
+
+-------------------------------------------------------------------
+Mon May 26 11:22:34 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.3
+  * ppc64: Use console=hvc0 console=ttyS0.
+  * fish: simplify output of 'supported'
+  * Fix some spelling mistakes and typos in documentation (RHBZ#1099284).
+  * configure: Move --with-default-backend test later in configure.ac.
+  * Fix handling of passwords in URLs
+
+-------------------------------------------------------------------
+Tue May 13 15:16:11 CEST 2014 - ohering@suse.de
+
+- Update to version 1.26.2
+  * sparsify: Add a note about qcow2 internal snapshots not being copied (RHBZ#1094746).
+  * customize: random-seed file has moved again.
+  * lib: xmlParse{File,Memory} -> xmlRead{File,Memory}
+  * launch: direct: Supply -M option when testing qemu for devices.
+  * tar-in: Fix places where we didn't cancel the receive (FileIn) correctly along error paths (RHBZ#1091803).
+  * configure: Make sure grep matches qemu 2.x version string.
+  * daemon: parted: part-get-name: switch from sgdisk to parted (RHBZ#1088424).
+  * sparsify: If using -v (verbose), ensure #disk_create runs verbose too.
+  * disk-create: Fix this API so it works correctly with block devices (RHBZ#1088262).
+  * listfs: If LDM not available, don't inhibit partition detection (RHBZ#1079182).
+  * mllib: utils: Add mapi function.
+  * src/launch: improve the addition of the no-hpet option
+  * handle: Free g->backend_settings.
+  * python: Remove unnecessary library dependencies.
+  * utils: Move guestfs___validate_guid out of utils.c.
+  * utils: Remove for-loop variable decl.
+  * rescue: Don't leak various variables when using --suggest option with multi-boot guests.
+  * make-fs: Close FILE* along error path.
+  * make-fs: Check for error return from guestfs_statvfs.
+  * daemon: parted: part-get-name: Don't leak partition type string.
+
+-------------------------------------------------------------------
+Fri Mar 28 14:03:57 CET 2014 - ohering@suse.de
+
+- Update to version 1.26.0
+  * virt-customize is a new tool for customizing disk images
+  * virt-diff is a new tool for showing differences between filesystems
+  * virt-sparsify has a new --in-place option
+  * new virt-sysprep operations
+  * many bug fixes
+  * full release notes: http://libguestfs.org/guestfs-release-notes.1.html
+- added 0000-hotfix.patch
+- removed 0001-ocamlopt.patch
+
+-------------------------------------------------------------------
+Thu Feb 27 13:40:20 CET 2014 - ohering@suse.de
+
+- Build without ocaml.opt on s390x and ppc64le
+  0001-ocamlopt.patch
+
+-------------------------------------------------------------------
+Thu Feb 13 00:41:23 CET 2014 - ohering@suse.de
+
+- Update to version 1.24.6
+  *  FAQ: Another common problem is permission denied errors when running as root.
+  *  FAQ: Add another common Ubuntu appliance problem.
+  *  list-filesystems: Do not segfault if guestfs_btrfs_subvolume_list returns an error (RHBZ#1064008).
+  *  actions/part_set_gpt_type: set type of "guid" parameter as "GUID" (RHBZ#1008417).
+  *  generator: generate code for parameter validation
+  *  generator: add a GUID parameter type
+  *  utils: add a function to validate a GUID string
+  *  Remove bogus license file from daemon subdirectory.
+  *  daemon: Always pass -F option to mkfs.ntfs.
+  *  resize: Don't truncate libguestfs error messages.
+  *  libvirt-domain: Remove unnecessary and wrongly indented parens.
+  *  fish/uri: Tidy up error messages.
+  *  daemon: lvm2: Ignore "unknown device" output when a PV is missing (RHBZ#1054761).
+  *  generator/set-uuid: Fix two typos in documentation
+  *  sparsify: Prevent overwriting block or char output devices (RHBZ#1056290).
+  *  test-tool: Rearrange output into alphabetical order.
+
+-------------------------------------------------------------------
+Tue Feb  4 22:57:01 CET 2014 - ohering@suse.de
+
+- more testcases for SLE12, using grub2
+  libguestfs.test.simple.create-sles12-guest.sh
+  libguestfs.test.simple.create-sles12-guest-crypt-on-lvm.sh
+
+-------------------------------------------------------------------
+Thu Jan 30 12:10:34 CET 2014 - ohering@suse.de
+
+- add BuildRequires:  ocaml(ocaml.opt)
+
+-------------------------------------------------------------------
+Wed Jan 29 13:36:58 CET 2014 - ro@suse.de
+
+- drop i586 from ExclusiveArch as SLE-12 does not build a runnable
+  kernel there, and KVM is 64bit only
+
+-------------------------------------------------------------------
+Thu Jan 23 17:53:31 CET 2014 - ohering@suse.de
+
+- Disable ipv6 in the appliance because qemu usernet is ipv4 only
+
+-------------------------------------------------------------------
+Wed Jan 22 10:13:00 UTC 2014 - ohering@suse.de
+
+- add libguestfs-test subpackage, /usr/share/guestfs (fate#316275)
+  libguestfs.test.simple.run-libugestfs-test-tool.sh
+  libguestfs.test.simple.create-opensuse-guest.sh
+  libguestfs.test.simple.create-opensuse-guest-crypt-on-lvm.sh
+
+-------------------------------------------------------------------
+Mon Jan 20 23:09:24 CET 2014 - ohering@suse.de
+
+- Update to version 1.24.5
+  * launch: Allow backend = "appliance" for backwards compatibility (RHBZ#1055452).
+  * daemon: Use wipefs_has_force_option to decide whether to add wipefs --force option.
+  * init: Display clocksource (only when debugging is enabled).
+  * launch: direct: Make sure we pass lpj= parameter when using TCG.
+  * Use recommended timer settings for KVM (RHBZ#1053847).
+  * fuse: clear stat structs (RHBZ#660687).
+  * fuse: remove extra trailing \n in debug messages
+
+-------------------------------------------------------------------
+Mon Jan 20 19:41:24 CET 2014 - ohering@suse.de
+
+- Include crypto modules in appliance to enable luks related commands
+
+-------------------------------------------------------------------
+Mon Jan 20 11:34:25 CET 2014 - ohering@suse.de
+
+- Resolve also library dependencies of libnss in mkinitrd (bnc#847785)
+- BuildRequire nfs-utils to get mount.nfs, for virt-rescue
+
+-------------------------------------------------------------------
+Thu Jan 16 21:29:47 CET 2014 - ohering@suse.de
+
+- Include mkinitrd from 13.1 when building appliance for 13.2 or
+  later because dracut can not be used as replacement for mkinitrd
+  and supermin is not ready yet
+
+-------------------------------------------------------------------
+Tue Jan  7 14:22:52 CET 2014 - ohering@suse.de
+
+- Update to version 1.24.4
+  * ruby: Fix .new method (RHBZ#1046509).
+  * RHEL 6: ruby: Fix fallback to rake/rdoctask for old rake.
+  * inspect: fix detection of newer CirrOS versions (RHBZ#1045450).
+  * launch: libvirt: Clearer message when libvirt screws up.
+  * fish: Fix memory leak in inspect/-i code (detected by valgrind).
+  * appliance: Create an /etc/resolv.conf file referring to qemu user network nameserver (RHBZ#1044585).
+  * fish: Move -d option parsing to common function.
+  * fish: Deprecate the -D option (prefer --no-dest-paths instead).
+  * daemon: Improve error message for readlink call.
+  * generator: Fix bug in documentation of guestfs_free_* functions.
+  * fish: Ensure print_inspect_prompt can only be called by guestfish.
+  * inspector: Ensure low-level inspection functions can only be called by virt-inspector.
+  * virt-cat, virt-filesystems, virt-ls don't use libconfig.
+  * resize: Move roundup64 function into common utilities.
+  * fuse: provide a stub "flush" implementation (RHBZ#660687).
+  * recipes: Use new style -a/-d options in virt-edit example.
+  * daemon: mkfs: Use -I option to force mkfs.fat to write a filesystem over a whole device (RHBZ#1039995).
+  * proto: Remove another error message which hides earlier error.
+  * proto: Remove error message which hides earlier error.
+  * lib: fix newline in error output (RHBZ#923355).
+  * recipes: Add a recipe for masking a systemd service.
+  * launch: direct: Pass -enable-fips option if qemu supports it.
+  * fish: improve the command error messages
+
+-------------------------------------------------------------------
+Tue Dec 17 22:27:22 CET 2013 - ohering@suse.de
+
+- Update to version 1.24.2
+  * launch: Print program and version as part of standard debug output when launching the handle.
+  * lua: Don't redefine lua_objlen if already defined.
+  * lib: Make sure -lselinux is used when linking libguestfs.so.
+  * daemon: btrfs: Upstream 'btrfs device add' command now needs '--force' option to work.
+  * perl: Give error instead of crashing if optarg is not an array reference.
+  * Avoid modulo bias in random password generation
+  * mllib: Add a utility function for safely reading from /dev/urandom.
+  * podwrapper: virt-install is not a libguestfs page.
+  * Update to latest gnulib to get hash relicensing change (thanks Jim Meyering).
+  * Fix fstab block device resolution for FreeBSD
+
+-------------------------------------------------------------------
+Tue Nov 26 11:27:04 CET 2013 - ohering@suse.de
+
+- Update to version 1.24.1
+  * virt-resize & virt-sysprep can now use URIs to work on remote disks
+  * many new virt-sysprep operations
+  * many bug fixes
+  * full release notes: http://libguestfs.org/guestfs-release-notes.1.html
+- guestfsd needs at least libaugeas0 >= 1.0.0
+- Recommend bash-completion to avoid completion errors
+
+-------------------------------------------------------------------
+Fri Oct 18 10:26:12 CEST 2013 - ohering@suse.de
+
+- Update to version 1.22.7
+  * fish: CVE-2013-4419: Fix insecure temporary directory handling for remote guestfish (bnc#845720).
+  * sysprep: firstboot: Don't set `Created_files flag unless files are created.
+  * firstboot: Add some debugging to the control script.
+  * firstboot: Fix test for installing sysvinit scripts.
+  * firstboot: Install both systemd and SysV init scripts.
+  * firstboot: Start service after network only.
+  * firstboot: Fix firstboot scripts so they work on Ubuntu.
+  * edit: Add virt-edit --edit as an alias for virt-edit -e.
+  * btrfs: Fix improper memmove usage in do_btrfs_subvolume_list (RHBZ#1018149).
+  * daemon: xattr: Fix scope of cleanup buf to avoid memory leaks.
+  * daemon: parted: Fix memory leak of list of strings.
+  * daemon: Fix scope of cleanup functions to avoid memory leaks.
+  * df: parallel: Add a debug message when work function returns an error.
+  * daemon: 'exists' API should not follow broken symlinks.
+  * sysprep: Don't remove /var/cache/apt/archives/partial directory.
+  * firstboot: Invoke firstboot.sh script with 'start' parameter.
+  * daemon: Don't set LD_PRELOAD for guestfsd children.
+  * daemon: Fix xfs_info parser because of new format.
+  * sysprep: Fix option quoting in manual page.
+  * virt-df: parallel: Send debugging messages to stderr.
+  * inspection: Don't print a warning if \Windows\explorer.exe does not exist.
+  * launch: direct: Set QEMU_AUDIO_DRV=none to stop qemu opening audio devices.
+  * virt-df: parallel: Compile debugging messages in always.
+  * daemon: augeas: Don't test if AUG_NO_ERR_CLOSE is defined.
+  * daemon: augeas: Enhance error reporting for aug_init failures.
+  * drives: Don't need to call free_drive_servers since preceding code checks servers == NULL.
+  * sparsify: Fix signal handling.
+  * daemon: tar: Use a temporary file to pass excludes to tar command (RHBZ#1001875).
+  * format: Set MBR partition type byte appropriately (RHBZ#1000428).
+
+-------------------------------------------------------------------
+Mon Oct 14 19:32:05 CEST 2013 - ohering@suse.de
+
+- Keep setup-dm.sh, required to copy dm rules (bnc#837595)
+
+-------------------------------------------------------------------
+Mon Sep 23 15:35:28 CEST 2013 - ohering@suse.de
+
+- Remove BuildRequires: qemu-tools
+
+-------------------------------------------------------------------
+Mon Sep 23 11:40:31 CEST 2013 - ohering@suse.de
+
+- Add static 169.254.0.0/16 network addresses (bnc#835949)
+
+-------------------------------------------------------------------
+Thu Sep 19 20:20:44 CEST 2013 - ohering@suse.de
+
+- Update to version 1.22.6
+  * Initialize CLEANUP_* stack variables with NULL in various places.
+  * daemon: sh: Fix missing initializer which caused segfault (RHBZ#1000121).
+  * fish: Document that guestfish --remote --add won't work as expected (RHBZ#998513).
+  * launch: direct: Don't try to wait for qemu if parent process forked (RHBZ#998482).
+  * list-filesystems: Don't fail if there are no filesystems found (RHBZ#995711).
+  * virt-list-filesystems: Fix to use $g->canonical_device_name instead of homebrew function.
+  * daemon: If /proc/modules doesn't exist, linuxmodules optgroup is disabled.
+  * launch: direct: Print \n after printing qemu command line.
+  * conn: Make sure we display all log messages when qemu goes away.
+  * lib: Turn 'random_chars' function used by libvirt backend into utility function.
+  * daemon: ldm: Don't return an error if /dev/mapper doesn't exist.
+  * daemon: Move all RESOLVE macros to daemon/stubs.c.
+  * proto: Fix --enable-packet-dump mode.
+  * daemon: Close augeas, hivex handles in unmount_all.
+  * Fix parsing of boot flag in do_part_get_bootable()
+  * Update gnulib to latest version.
+  * augeas: Improve error reporting.
+  * launch: direct: Add drives after machine parameters.
+  * fish: Fix guestfish so it can recognize sheepdog://... as a valid URI.
+  * resize: Move isatty_stdout function to separate module (TTY.isatty_stdout).
+  * daemon: cap-get-file: Return empty string if no capability on file (RHBZ#989356).
+  * src/file.c: Be sure to call guestfs___lazy_make_tmpdir before using g->tmpdir.
+  * generator: Fix the case where a daemon function has one FileIn/FileOut parameter and no other parameters.
+
+-------------------------------------------------------------------
+Thu Sep 19 15:43:53 CEST 2013 - ohering@suse.de
+
+- Create symlink from /etc/mtab to /proc/self/mounts (bnc#840662)
+
+-------------------------------------------------------------------
+Mon Sep  2 13:59:21 CEST 2013 - dvaleev@suse.com
+
+- add ppc64 to Exclusive arch 
+
+-------------------------------------------------------------------
+Thu Aug 29 21:36:08 CEST 2013 - ohering@suse.de
+
+- Add support for lvm (bnc#837595)
+
+-------------------------------------------------------------------
+Thu Aug 22 11:36:24 CEST 2013 - ohering@suse.de
+
+- Add network related modules to initrd (bnc#835949)
+- Remove supermin.d
+- Mount also /dev/pts in mount-rootfs-and-do-chroot.sh
+- Handle rw option in ext4.ko
+- Update libguestfs.mkinitrd.1210.patch to create /usr/*bin in 11.4
+
+-------------------------------------------------------------------
+Mon Aug 19 23:23:31 CEST 2013 - ohering@suse.de
+
+- Update to version 1.22.5
+  * full support for btrfs guests
+  * large performance improvements in virt-df and virt-alignment-scan tools
+  * many bug fixes
+  * full release notes: http://libguestfs.org/guestfs-release-notes.1.html
+
+-------------------------------------------------------------------
+Mon Aug  5 17:48:01 CEST 2013 - ohering@suse.de
+
+- Package /lib/udev or /usr/lib/udev in guestfsd subpackage
+
+-------------------------------------------------------------------
+Tue Jul 30 20:57:39 CEST 2013 - ohering@suse.de
+
+- Update to version 1.20.10
+  * sysprep: On RHEL, firstboot script should be called S99... not 99.
+  * fish: For -N option, add drive with explicit format = "raw".
+  * daemon: Implement set-label for XFS and fix it for btrfs (RHBZ#986875).
+  * mkfs: Use -b size=<size> for xfs (RHBZ#981715).
+  * cmd: Allow callers to override file-closing behaviour after fork.
+  * daemon: hivex: Check that hivex_commit is passed an absolute path (RHBZ#981683).
+  * daemon: Verify ext2/3/4 filesystem name before passing to mke2fs (RHBZ#978302).
+  * virt-resize: Add notes about Windows and disk consistency (RHBZ#975753).
+  * virt-resize: Take into account large start offset of the first partition when calculating overhead (RHBZ#974904).
+  * launch: direct: Calculate appliance root correctly when iface drives are added (RHBZ#975797).
+
+-------------------------------------------------------------------
+Sun Jun 16 08:36:08 CEST 2013 - ohering@suse.de
+
+- Update to version 1.20.9
+  * txz-out: Fix this API to produce xz files again (RHBZ#972775).
+  * inspect: Fix bogus warning for partitions without /boot.ini
+  * inspect: Partial support for non-standard windows system root
+  * events: Avoid event handler limit if program allocates and deallocates handlers.
+  * proto: Fix for rare FileIn hangs. (RHBZ#969845)
+  * inspection: Don't segfault if /etc/SuSE-release is an empty file.
+  * fuse: Allow specifying the fstype of a mount
+  * is_lv: Does not need to depend on lvm2.
+  * add --with-supermin-extra-options configure option
+  * Remove use of gnulib progname module.
+  * inspection: Fix double-free when certain guest files are empty. (CVE-2013-2124)
+  * daemon: Properly quote arguments for tar-out, base64-out commands (RHBZ#957772).
+  * inspection: Don't fail if libosinfo database is not found (RHBZ#948324).
+  * daemon/copy: Ensure errno is preserved along error
+  * Better error messages for FUSE and other things not supported.
+
+-------------------------------------------------------------------
+Mon Apr  8 20:55:11 CEST 2013 - ohering@suse.de
+
+- force paths to supermin/supermin-helper even if package is not available at buildtime
+
+-------------------------------------------------------------------
+Tue Apr  2 14:43:33 CEST 2013 - ohering@suse.de
+
+- Update to version 1.20.5
+  * daemon: file: Remove extraneous space after output of 'file' command (RHBZ#928995).
+  * lib: Add missing cases in switch statements.
+  * appliance: Make sure cachedir has mode 0755 (RHBZ#921292).
+  * appliance: Use ignore_value() macro instead of casting return to (void).
+  * launch: Print attach-method, tmpdir, umask, euid when launching.
+  * utils: Fix error messages for external commands that fail (RHBZ#921040).
+
+-------------------------------------------------------------------
+Tue Apr  2 14:39:01 CEST 2013 - ohering@suse.de
+
+- make sure /etc/lvm/lvm.conf exists (bnc#812931)
+
+-------------------------------------------------------------------
+Fri Mar 22 19:55:41 CET 2013 - ohering@suse.de
+
+- Update to version 1.20.4
+  * launch: appliance: Add custom parameters last.
+  * filearch: Don't print errno if cpio command fails, print command status instead.
+  * proto: send_to_daemon is not an exported function.
+
+-------------------------------------------------------------------
+Mon Mar 18 18:46:34 UTC 2013 - dmueller@suse.com
+
+- use proper build conditionals so that it can be influenced
+  outside spec file (via e.g. prjconf)
+
+-------------------------------------------------------------------
+Wed Mar  6 20:27:13 CET 2013 - ohering@suse.de
+
+- Update to version 1.20.3
+  * trace: Put trace buffer on the stack instead of in the handle.
+  * FAQ: Add question about running fsck on live filesystems
+  * lib: Check calls to xmlXPathEvalExpression for nodesetval == NULL.
+  * recipes: Add example converting from one format/filesystem to another
+  * daemon: protocol: Fix memory leak when receiving FileIn file (RHBZ#914934).
+  * protocol: Don't segfault if appliance crashes during FileIn upload (RHBZ#914931).
+  * libutils: Add guestfs___count_strings utility function to common library
+  * lib: Create libutils convenience library.
+  * docs: Rewrite security section (thanks Dan Berrange)
+  * lib: Fix memory leak when the 'lpj' setting is read from dmesg.
+
+-------------------------------------------------------------------
+Mon Feb 25 21:51:17 CET 2013 - ohering@suse.de
+
+- Update to version 1.20.2
+  * proto: Fix stack overflow when there are many progress events (RHBZ#909624).
+  * rescue: Count the mountable filesystems when displaying the 'suggest' message.
+  * lib: Define CLEANUP_CMD_CLOSE macro and use it throughout the library.
+  * lib: Allow guestfs_free_* functions to be safely called with a NULL pointer.
+  * btrfs: Fix btrfs_subvolume_list on F18 (RHBZ#903620).
+  * daemon: Check parameter of base64-out and tar-out before running external command (RHBZ#908322).
+  * daemon: download: Add extra check that download file is not a directory (RHBZ#908321).
+  * daemon: Add more information to certain calls to perror.
+  * daemon: Call wipefs before mkfs to work around pathological behaviour in btrfs.
+  * lib: Add CLEANUP_* macros which automatically free things when leaving scope.
+  * header: Deprecate LIBGUESTFS_HAVE_* in favour of GUESTFS_HAVE_*.
+  * fuse: Use guestfs_rename to implement rename(2) syscall (RHBZ#895910).
+  * New API: rename: Rename file within the same filesystem (RHBZ#895910).
+  * fuse: If guestfs_last_errno returns 0, don't return no error to FUSE layer.
+  * daemon: Change ln, ln-f (hard-link) APIs to use link(2) instead of external ln (RHBZ#895905).
+  * Fix checksums-out command (RHBZ#895904).
+  * launch: appliance: Fix parsing of QEMU_OPTIONS.
+  * launch: appliance: Small refactoring of virtio-scsi detection code.
+
+-------------------------------------------------------------------
+Mon Feb 25 20:11:27 CET 2013 - ohering@suse.de
+
+- enable ruby bindings only in 12.2 or later, ruby is too fragile
+
+-------------------------------------------------------------------
+Sun Feb 24 18:11:07 CET 2013 - ohering@suse.de
+
+- BuildRequire: perl-macros only in sles11 builds to fix build in 11.4
+
+-------------------------------------------------------------------
+Fri Jan 18 14:28:46 CET 2013 - ohering@suse.de
+
+- more fixes for copying entire /etc/lvm directory (bnc#795503)
+
+-------------------------------------------------------------------
+Wed Jan 16 16:40:46 CET 2013 - ohering@suse.de
+
+- disable strip and /usr/lib/rpm/find-debuginfo.sh for non-opt builds
+  it destroys bytecode binaries
+
+-------------------------------------------------------------------
+Thu Jan  3 14:01:47 CET 2013 - ohering@suse.de
+
+- handle more architectures than just x86 when looking for guest kernel
+
+-------------------------------------------------------------------
+Wed Jan  2 16:19:30 CET 2013 - ohering@suse.de
+
+- Update to version 1.20.1
+  * inspection: Set fs->device field on swap devices.
+  * Pass noapic on i686 kernel command line.
+  * daemon: Use pvcreate --force option (RHBZ#887971).
+  * daemon: Fold stdout on stderr when running e2fsck.
+  * other minor changes
+
+-------------------------------------------------------------------
+Wed Jan  2 16:00:13 CET 2013 - ohering@suse.de
+
+- copy entire /etc/lvm directory in guestfsd (bnc#795503)
+
+-------------------------------------------------------------------
+Mon Dec 17 23:48:22 CET 2012 - ohering@suse.de
+
+- correct initrd filename on i586 (bnc#794819)
+
+-------------------------------------------------------------------
+Thu Dec 13 17:09:48 CET 2012 - ohering@suse.de
+
+- Update to stable branch, version 1.20.0
+
+-------------------------------------------------------------------
+Tue Dec 11 17:54:19 CET 2012 - ohering@suse.de
+
+- add Conflicts: (libguestfs0|guestfs-data) with old versions to
+  guestfs-tools to make sure all parts match the same API
+
+-------------------------------------------------------------------
+Thu Nov 29 20:25:33 CET 2012 - ohering@suse.de
+
+- update BuildRequire ext4-writeable-kmp-default handling
+  enable it unconditional in sles11 builds, but not in the
+  Virtualization repo because its a private package.
+
+-------------------------------------------------------------------
+Thu Nov 29 20:15:11 CET 2012 - ohering@suse.de
+
+- make perl-bindings (perl-Sys-Guestfs) optional, disabled for sles11
+
+-------------------------------------------------------------------
+Sun Nov 25 18:17:02 CET 2012 - ohering@suse.de
+
+- include Pod-Simple-3.23.tar.gz to get perl(Pod::Simple::XHTML)
+  at build time (bnc#789653)
+- Update to version 1.19.64 (fate#312159)
+
+-------------------------------------------------------------------
+Mon Nov 19 18:26:16 CET 2012 - ohering@suse.de
+
+- readd autoreconf -fi if automake is newer than 1.10
+  it fixes ruby build failures due to RPATH ending up in libraries
+  in 11.4 and 12.1
+
+-------------------------------------------------------------------
+Mon Nov 19 17:24:19 CET 2012 - ohering@suse.de
+
+- Update to version 1.19.61
+  new subpackage lua-libguestfs, disabled for sles11
+
+-------------------------------------------------------------------
+Wed Nov 14 20:22:19 CET 2012 - ohering@suse.de
+
+- stick to upstream defaults:
+  restore default attach mode, which is appliance,
+
+-------------------------------------------------------------------
+Wed Nov 14 17:51:16 CET 2012 - ohering@suse.de
+
+- adjust License tag, libguestfs0 is LGPL-2.1, rest is GPL-2
+- add COPYING.LIB to subpackage
+- remove AUTHORS and README files from doc section
+
+-------------------------------------------------------------------
+Wed Nov 14 17:30:40 CET 2012 - ohering@suse.de
+
+- remove guestfs-doc subpackage, it contains just exmple xml files
+
+-------------------------------------------------------------------
+Wed Nov 14 16:39:14 CET 2012 - ohering@suse.de
+
+- remove autoreconf -fi, it fails with autoconf-1.10 as included 
+  in sles11 due to AM_SUBST_NOTMAKE usage
+
+-------------------------------------------------------------------
+Tue Nov 13 23:47:18 CET 2012 - ohering@suse.de
+
+- Update to version 1.19.59
+
+-------------------------------------------------------------------
+Tue Nov 13 23:40:45 CET 2012 - ohering@suse.de
+
+- disable python when building for SLES11
+
+-------------------------------------------------------------------
+Tue Nov 13 15:42:54 CET 2012 - ohering@suse.de
+
+- split BuildRequires ocaml into ocaml_tools and ocaml_bindings
+- disable ocaml_bindings when building for SLES11
+
+-------------------------------------------------------------------
+Tue Nov 13 15:25:29 CET 2012 - ohering@suse.de
+
+- disable ruby when building for SLES11
+
+-------------------------------------------------------------------
+Thu Nov  8 16:17:09 CET 2012 - ohering@suse.de
+
+- Update to version 1.19.57
+
+-------------------------------------------------------------------
+Mon Oct 29 10:19:23 CET 2012 - ohering@suse.de
+
+- add BuildRequires aaa_base to get get_kernel_version
+  handle get_kernel_version location in /sbin or /usr/sbin
+
+-------------------------------------------------------------------
+Fri Oct 19 14:09:27 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.53
+
+-------------------------------------------------------------------
+Wed Oct 10 16:51:32 CEST 2012 - ohering@suse.de
+
+- change default_attach_method from appliance to libvirt if the
+  distro kernel includes virtio-scsi. This is true for 12.2+
+  In 12.1 and older the attach_method remains appliance.
+  The reason for this change is the creation of XML for libvirt,
+  which is cumbersome for virtio-blk.
+
+-------------------------------------------------------------------
+Mon Oct  8 20:17:39 CEST 2012 - ohering@suse.de
+
+- make appliance optional when using libvirt as attach-method
+
+-------------------------------------------------------------------
+Mon Oct  8 14:40:09 CEST 2012 - ohering@suse.de
+
+- disable hivex and zerofree when building for SLES11
+
+-------------------------------------------------------------------
+Mon Oct  8 12:07:23 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.48
+
+-------------------------------------------------------------------
+Wed Oct  3 18:01:22 CEST 2012 - ohering@suse.de
+
+- make zerofree optional in the spec file
+
+-------------------------------------------------------------------
+Wed Oct  3 17:00:39 CEST 2012 - ohering@suse.de
+
+- remove obsolete virt-list-filesystems, virt-list-partitions and
+  virt-tar comamnds
+
+-------------------------------------------------------------------
+Fri Sep 28 07:37:17 CEST 2012 - ohering@suse.de
+
+- add local patches to copy symlinks with mkinitrd (bnc#778149)
+
+-------------------------------------------------------------------
+Tue Sep 25 16:41:28 CEST 2012 - ohering@suse.de
+
+- add mount.ntfs and mount.fuse to initrd
+
+-------------------------------------------------------------------
+Tue Sep 25 07:23:54 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.44
+
+-------------------------------------------------------------------
+Mon Sep 24 14:55:51 CEST 2012 - ohering@suse.de
+
+- update virtio-blk patch to force vda in libguestfs-test-tool 
+
+-------------------------------------------------------------------
+Mon Sep 24 11:01:57 CEST 2012 - ohering@suse.de
+
+- update mount-rootfs-and-do-chroot.sh, avoid bind mount errors
+
+-------------------------------------------------------------------
+Sat Sep 22 15:33:31 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.43
+
+-------------------------------------------------------------------
+Fri Sep 21 20:03:21 CEST 2012 - ohering@suse.de
+
+- reorder debug output in /init script, print partitions last
+- mention mount-rootfs-and-do-chroot.sh in rescue message
+
+-------------------------------------------------------------------
+Thu Sep 20 17:52:13 CEST 2012 - ohering@suse.de
+
+- add mkdir, mount, chroot, umount to initrd command list, for 11.4
+
+-------------------------------------------------------------------
+Thu Sep 20 17:39:23 CEST 2012 - ohering@suse.de
+
+- use ttyS0 for setctsid if /proc/consoles does not exist
+
+-------------------------------------------------------------------
+Wed Sep 19 23:48:08 CEST 2012 - ohering@suse.de
+
+- enable augeas unconditionally also for sles11
+
+-------------------------------------------------------------------
+Wed Sep 19 17:53:03 CEST 2012 - ohering@suse.de
+
+- add augeas-lenses to BuildRequires in 11.4+ and package it in
+  initrd, for virt-inspector
+
+-------------------------------------------------------------------
+Tue Sep 18 08:15:23 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.42
+
+-------------------------------------------------------------------
+Thu Sep 13 20:22:24 CEST 2012 - ohering@suse.de
+
+- move BuildRequires for subpackages into the subpackage section
+
+-------------------------------------------------------------------
+Thu Sep 13 20:12:28 CEST 2012 - ohering@suse.de
+
+- move Requires to guestfs-tools
+
+-------------------------------------------------------------------
+Thu Sep 13 20:11:01 CEST 2012 - ohering@suse.de
+
+- Use perl_requires macro in guestfs-tools
+
+-------------------------------------------------------------------
+Thu Sep 13 19:32:00 CEST 2012 - ohering@suse.de
+
+- add Requires libguestfs0 to libguestfs-devel to fix rpmlint warning
+
+-------------------------------------------------------------------
+Thu Sep 13 18:35:08 CEST 2012 - ohering@suse.de
+
+- fix rpmlint warnings about shlib-policy-missing-lib:
+  move files from libguestfs to guestfs-tools
+  rename libguestfs-guestfsd to guestfsd
+  rename libguestfs-doc to guestfs-doc
+  rename libguestfs-data to guestfs-data
+
+-------------------------------------------------------------------
+Thu Sep 13 14:53:39 CEST 2012 - ohering@suse.de
+
+- force virtio-blk usage only if the guest kernel has no virtio-scsi
+
+-------------------------------------------------------------------
+Thu Sep 13 10:39:54 CEST 2012 - ohering@suse.de
+
+- delete unused perl script without executable permissions to fix rpmlint warning
+
+-------------------------------------------------------------------
+Thu Sep 13 10:18:06 CEST 2012 - ohering@suse.de
+
+- delete empty perl bootstrap files to fix rpmlint warning
+
+-------------------------------------------------------------------
+Thu Sep 13 10:12:11 CEST 2012 - ohering@suse.de
+
+- adjust Summary of libguestfs0 to fix rpmlint warning
+
+-------------------------------------------------------------------
+Thu Sep 13 09:58:17 CEST 2012 - ohering@suse.de
+
+- show missing_commands only in verbose mode
+
+-------------------------------------------------------------------
+Thu Sep 13 07:09:32 CEST 2012 - ohering@suse.de
+
+- add jfsutils and reiserfs to BuildRequires to reduce number of missing_commands
+
+-------------------------------------------------------------------
+Wed Sep 12 11:53:15 CEST 2012 - ohering@suse.de
+
+- add chroot helper for virt-rescue, Bug 674684 - mount-rootfs-and-do-chroot.sh
+
+-------------------------------------------------------------------
+Wed Sep 12 11:04:13 CEST 2012 - ohering@suse.de
+
+- create /selinux in initrd, guestfsd tries to bind mount it into the guest
+
+-------------------------------------------------------------------
+Fri Sep  7 17:03:24 CEST 2012 - ohering@suse.de
+
+- copy terminfo files so that backspace works in screen
+
+-------------------------------------------------------------------
+Fri Sep  7 16:32:27 CEST 2012 - ohering@suse.de
+
+- run the rescue shell with setctsid so that it gets a controlling tty
+
+-------------------------------------------------------------------
+Wed Sep  5 15:04:16 CEST 2012 - ohering@suse.de
+
+- move all modules, except dm-mod, to udevmodules so that the are
+  really loaded on demand
+
+-------------------------------------------------------------------
+Wed Sep  5 11:30:26 CEST 2012 - ohering@suse.de
+
+- include sparsify from zerofree.rpm, and strace in initrd
+
+-------------------------------------------------------------------
+Wed Sep  5 11:29:37 CEST 2012 - ohering@suse.de
+
+- use perl_gen_filelist to avoid packaging the "auto" directory
+- this leads to build errors in SLE_11 repo
+- perl_gen_filelist tries to package everything, remove all non-perl
+  files from list to avoid duplicate files
+
+-------------------------------------------------------------------
+Wed Sep  5 10:17:22 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.40
+
+-------------------------------------------------------------------
+Tue Sep  4 21:14:31 CEST 2012 - ohering@suse.de
+
+- move additional modules to mkinitrd to prevent loading everything,
+  rely on autoloading instead
+- add also nls modules, remove ecrypt
+
+-------------------------------------------------------------------
+Tue Sep  4 19:41:16 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.39
+
+-------------------------------------------------------------------
+Tue Sep  4 19:40:38 CEST 2012 - ohering@suse.de
+
+- add also btrfs and ext4
+
+-------------------------------------------------------------------
+Tue Sep  4 19:39:58 CEST 2012 - ohering@suse.de
+
+- surprise: filesystem modules are required to mount a filesystem:
+  9p cramfs ecryptfs ext2 ext3 fat fuse hfs hfsplus jfs minix ncpfs
+  nfs quota reiserfs squashfs squashfs3 udf ufs xfs
+
+-------------------------------------------------------------------
+Tue Sep  4 16:07:50 CEST 2012 - ohering@suse.de
+
+- remove obsolete libguestfs-1.13.14-without-hivex.patch
+
+-------------------------------------------------------------------
+Tue Sep  4 09:37:36 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.38
+
+-------------------------------------------------------------------
+Tue Sep  4 08:02:36 CEST 2012 - ohering@suse.de
+
+- correct assignment for additional external commands
+
+-------------------------------------------------------------------
+Mon Sep  3 23:38:25 CEST 2012 - ohering@suse.de
+
+- actually enable the code to force virtio_blk
+
+-------------------------------------------------------------------
+Mon Sep  3 20:12:05 CEST 2012 - ohering@suse.de
+
+- add also the fsck.* commands because guestfsd can not provide such a list
+
+-------------------------------------------------------------------
+Mon Sep  3 20:11:21 CEST 2012 - ohering@suse.de
+
+- run format_specfile
+
+-------------------------------------------------------------------
+Mon Sep  3 20:10:43 CEST 2012 - ohering@suse.de
+
+- add dosfstools for mkfs.vfat/msdos
+
+-------------------------------------------------------------------
+Mon Sep  3 20:08:08 CEST 2012 - ohering@suse.de
+
+- move all BuildRequires for the initrd into the subpackage section
+
+-------------------------------------------------------------------
+Mon Sep  3 20:00:34 CEST 2012 - ohering@suse.de
+
+- add patch to force virtio_blk or virtio_scsi via environment variable
+
+-------------------------------------------------------------------
+Mon Sep  3 19:21:14 CEST 2012 - ohering@suse.de
+
+- update Group of ocaml-libguestfs-devel to fix rpmlint warning
+
+-------------------------------------------------------------------
+Mon Sep  3 18:05:00 CEST 2012 - ohering@suse.de
+
+- provide fixed list of mkfs subcommands because guestfsd can not
+  export such list
+
+-------------------------------------------------------------------
+Mon Sep  3 17:32:29 CEST 2012 - ohering@suse.de
+
+- create /sysroot directory in initrd, guestfsd relies on it
+
+-------------------------------------------------------------------
+Mon Sep  3 16:27:26 CEST 2012 - ohering@suse.de
+
+- show more /proc/entries using head(1)
+
+-------------------------------------------------------------------
+Mon Sep  3 11:45:22 CEST 2012 - ohering@suse.de
+
+- add missing perl Requires, they are not automatically added at build time
+
+-------------------------------------------------------------------
+Mon Sep  3 11:19:09 CEST 2012 - ohering@suse.de
+
+- remove the LD_RUN_PATH patch
+  The same result can appearently achieved by passing an empty LD_RUN_PATH to make
+
+-------------------------------------------------------------------
+Mon Sep  3 10:27:44 CEST 2012 - ohering@suse.de
+
+- quote % in awk regex to avoid potential errors
+
+-------------------------------------------------------------------
+Mon Sep  3 10:27:00 CEST 2012 - ohering@suse.de
+
+- use perl macro to remove unwanted files from buildroot
+
+-------------------------------------------------------------------
+Mon Sep  3 09:47:14 CEST 2012 - ohering@suse.de
+
+- Reduce number of rpmlint warnings:
+  update Group of doc and devel subpackage
+  update Summary  and description of perl, python and ruby bindings
+  trim description of ruby bindings
+
+-------------------------------------------------------------------
+Sun Sep  2 20:04:08 CEST 2012 - ohering@suse.de
+
+- update perl(Pod::Simple::XHTML) BuildRequires, and comment
+
+-------------------------------------------------------------------
+Sun Sep  2 14:25:54 CEST 2012 - ohering@suse.de
+
+- add hack to force virtio_blk instead of virtio_scsi
+- because 12.1 and older kernels do not have virtio_scsi yet
+
+-------------------------------------------------------------------
+Sat Sep  1 23:01:59 CEST 2012 - ohering@suse.de
+
+- enable BuildRequires: perl(Win::Hivex)
+
+-------------------------------------------------------------------
+Sat Sep  1 21:01:16 CEST 2012 - ohering@suse.de
+
+- use versioned obsoletes to avoid self-obsoletes
+
+-------------------------------------------------------------------
+Sat Sep  1 20:53:08 CEST 2012 - ohering@suse.de
+
+- move guestfsd to subpackage libguestfs-guestfsd
+
+-------------------------------------------------------------------
+Sat Sep  1 20:39:04 CEST 2012 - ohering@suse.de
+
+- enable BuildRequires: perl(String::ShellQuote)
+
+-------------------------------------------------------------------
+Sat Sep  1 20:26:11 CEST 2012 - ohering@suse.de
+
+- move ocaml files to ocaml-libguestfs and ocaml-libguestfs-devel
+
+-------------------------------------------------------------------
+Sat Sep  1 15:40:47 CEST 2012 - ohering@suse.de
+
+- rename subpackage libguestfs-python to python-libguestfs
+
+-------------------------------------------------------------------
+Sat Sep  1 14:14:34 CEST 2012 - ohering@suse.de
+
+- rename subpackage libguestfs-perl to perl-Sys-Guestfs
+
+-------------------------------------------------------------------
+Fri Aug 31 21:40:41 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.37
+
+-------------------------------------------------------------------
+Fri Aug 31 21:39:27 CEST 2012 - ohering@suse.de
+
+- reenable ruby bindings, apply patch to fix failure in 11.4 and 12.1
+  happens to work in sles11sp2 and 12.2 for some reason
+
+-------------------------------------------------------------------
+Fri Aug 31 20:22:08 CEST 2012 - ohering@suse.de
+
+- remove Version from libguestfs-data package, not needed.
+- remove Requires from libguestfs-data package, not needed either.
+
+-------------------------------------------------------------------
+Fri Aug 31 20:20:22 CEST 2012 - ohering@suse.de
+
+- remove libguestfs.perl.install_vendor.patch
+  INSTALLDIRS=vendor can be used to select a different dir
+  (from Fedora libguestfs.spec)
+
+-------------------------------------------------------------------
+Fri Aug 31 18:14:04 CEST 2012 - ohering@suse.de
+
+- fix module loading, they have to be listed in a single line
+- include magic files for file
+
+-------------------------------------------------------------------
+Fri Aug 31 16:52:38 CEST 2012 - ohering@suse.de
+
+- add iproute2 for ip command
+
+-------------------------------------------------------------------
+Fri Aug 31 15:30:55 CEST 2012 - ohering@suse.de
+
+- add workaround for copying symlinks in mkinitrd (bnc#778149)
+
+-------------------------------------------------------------------
+Fri Aug 31 14:12:40 CEST 2012 - ohering@suse.de
+
+- run mkinitrd with bash -x as a debugging aid
+
+-------------------------------------------------------------------
+Fri Aug 31 13:36:54 CEST 2012 - ohering@suse.de
+
+- add ntfs-3g
+
+-------------------------------------------------------------------
+Fri Aug 31 12:11:59 CEST 2012 - ohering@suse.de
+
+- remove compress
+
+-------------------------------------------------------------------
+Fri Aug 31 12:10:06 CEST 2012 - ohering@suse.de
+
+- add more packages to BuildRequires to reduce number of missing_commands
+
+-------------------------------------------------------------------
+Thu Aug 30 20:37:06 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.36
+  Add patch to collect a list of all called binaries from guestfsd
+
+- patch mkinitrd to copy links (bnc#778149)
+
+-------------------------------------------------------------------
+Thu Aug 30 11:18:11 CEST 2012 - ohering@suse.de
+
+- sort modules and programs in initrd
+
+-------------------------------------------------------------------
+Thu Aug 30 11:16:22 CEST 2012 - ohering@suse.de
+
+- add blockdev from util-linux to initrd
+
+-------------------------------------------------------------------
+Thu Aug 30 10:54:36 CEST 2012 - ohering@suse.de
+
+- build with parted, for virt-alignment-scan
+
+-------------------------------------------------------------------
+Thu Aug 30 10:45:15 CEST 2012 - ohering@suse.de
+
+- use final filename for initrd and vmlinuz to simplify copying from build chroot
+
+-------------------------------------------------------------------
+Thu Aug 30 10:24:49 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.35
+  disable java
+  remove kvm and qemu from BuildRequires, the path to qemu-kvm
+  can be passed to configure
+
+-------------------------------------------------------------------
+Wed Aug 29 23:30:35 CEST 2012 - ohering@suse.de
+
+- remove buildtime dependency of kvm
+
+-------------------------------------------------------------------
+Wed Aug 29 19:40:04 CEST 2012 - ohering@suse.de
+
+- build appliance as initramfs image with the help of mkinitrd
+
+-------------------------------------------------------------------
+Wed Aug 29 17:26:45 CEST 2012 - ohering@suse.de
+
+- enable and install the guestfs daemon
+
+-------------------------------------------------------------------
+Wed Aug 29 16:48:23 CEST 2012 - ohering@suse.de
+
+- build with attr-devel
+
+-------------------------------------------------------------------
+Wed Aug 29 16:35:22 CEST 2012 - ohering@suse.de
+
+- build with file-devel
+
+-------------------------------------------------------------------
+Wed Aug 29 16:27:13 CEST 2012 - ohering@suse.de
+
+- build with augeas in openSUSE 11.4 and later
+
+-------------------------------------------------------------------
+Wed Aug 29 16:16:50 CEST 2012 - ohering@suse.de
+
+- build with libconfig in openSUSE 12.2 and later
+
+-------------------------------------------------------------------
+Wed Aug 29 16:07:05 CEST 2012 - ohering@suse.de
+
+- split perl patch libguestfs-1.19.30.patch into
+  libguestfs.perl.install_vendor.patch and libguestfs.perl.no-rpath.patch
+  Both are needed in upcoming versions
+
+-------------------------------------------------------------------
+Wed Aug 29 15:31:00 CEST 2012 - ohering@suse.de
+
+- remove obsolete patches
+  libguestfs-1.13.14-disable-erlang.patch
+  libguestfs-1.13.14-no-machine.patch
+  libguestfs-1.13.14-provided-appliance.patch
+
+-------------------------------------------------------------------
+Wed Aug 29 14:41:16 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.34
+  enable fuse support
+
+-------------------------------------------------------------------
+Fri Aug 24 19:24:15 CEST 2012 - ohering@suse.de
+
+- require at least kvm 1.1 at runtime
+
+-------------------------------------------------------------------
+Mon Aug 20 12:07:42 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.32
+
+-------------------------------------------------------------------
+Mon Aug 20 12:01:08 CEST 2012 - ohering@suse.de
+
+- package ocaml directory to fix build
+
+-------------------------------------------------------------------
+Mon Aug 20 10:57:38 CEST 2012 - ohering@suse.de
+
+- enable ocaml for sparsify
+
+-------------------------------------------------------------------
+Sat Aug 18 16:38:57 CEST 2012 - ohering@suse.de
+
+- Require kvm, to get /usr/bin/qemu-kvm
+- move devel man pages to devel package
+
+-------------------------------------------------------------------
+Fri Aug 17 10:18:18 CEST 2012 - ohering@suse.de
+
+- force usage of Pod::Simple::XHTML from this project to fix build in 11.4
+
+-------------------------------------------------------------------
+Thu Aug 16 17:55:36 CEST 2012 - ohering@suse.de
+
+- run /usr/lib/obs/service/format_spec_file
+
+-------------------------------------------------------------------
+Thu Aug 16 17:44:26 CEST 2012 - ohering@suse.de
+
+- disable qemu test.
+  If the package is built within kvm the configure test will fail
+  because it starts kvm within kvm
+
+-------------------------------------------------------------------
+Thu Aug 16 16:48:39 CEST 2012 - ohering@suse.de
+
+- require Pod::Simple::XHTML for podwrapper.pl
+
+-------------------------------------------------------------------
+Thu Aug 16 15:03:20 CEST 2012 - ohering@suse.de
+
+- add more groups to enable sles11 build
+
+-------------------------------------------------------------------
+Thu Aug 16 14:34:59 CEST 2012 - ohering@suse.de
+
+- Add Group: Documentation to fix build in sles11
+
+-------------------------------------------------------------------
+Thu Aug 16 11:24:11 CEST 2012 - ohering@suse.de
+
+- RPM_OPT_FLAGS can not be used with configure macro, use CFLAGS instead
+
+-------------------------------------------------------------------
+Thu Aug 16 10:57:01 CEST 2012 - ohering@suse.de
+
+- remove libguestfs.files reference
+
+-------------------------------------------------------------------
+Thu Aug 16 10:35:01 CEST 2012 - ohering@suse.de
+
+- disable ruby, uses -Wl,-R
+- build with -Wno-unused
+- touch file list
+
+-------------------------------------------------------------------
+Wed Aug 15 20:05:40 CEST 2012 - ohering@suse.de
+
+- Update to version 1.19.30
+  move python, perl and ruby bindings to extra package
+
+-------------------------------------------------------------------
+Tue Aug  7 11:12:47 CEST 2012 - ohering@suse.de
+
+- ExclusiveArch x86
+
+-------------------------------------------------------------------
+Mon Jul  2 19:41:08 CEST 2012 - ohering@suse.de
+
+- fix filelist to build on sles11
+
+-------------------------------------------------------------------
+Sat Oct  1 08:30:45 CEST 2011 - mhrusecky@suse.cz
+
+- disabling dependencies not present in Factory
+  * will enable them once they will be available
+
+-------------------------------------------------------------------
+Thu Sep 29 20:55:55 CEST 2011 - mhrusecky@suse.cz
+
+- shrinking virtual image
+- making virtual machine data dependent on libguestfs
+
+-------------------------------------------------------------------
+Tue Sep 27 14:00:44 CEST 2011 - mhrusecky@suse.cz
+
+- enabling more dependencies (fuse, hivex, libconfig)
+- providing ruby bindings
+
+-------------------------------------------------------------------
+Tue Sep 27 00:33:09 CEST 2011 - mhrusecky@suse.cz
+
+- Initial package (version 1.13.14)
+  * no bindings yet
+  * no fuse
+  * no febootstrap
+  * sample virtual machine included
+

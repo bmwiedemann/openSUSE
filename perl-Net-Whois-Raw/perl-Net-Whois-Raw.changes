@@ -1,0 +1,486 @@
+-------------------------------------------------------------------
+Tue Jul 16 09:50:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.99022
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  
+  2.99022  Jul 12 2019 Dave Hayes
+      Fix caching for QRY_ALL (https://github.com/regru/Net-Whois-Raw/pull/19)
+
+-------------------------------------------------------------------
+Thu Dec  6 16:00:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.99021
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99021  Nov 20 2018 Eugeny Subachev
+      - Fixed/added 'not found' patterns of net.ua vg gd kiwi sx TLDs.
+
+-------------------------------------------------------------------
+Tue Sep 25 05:40:37 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.99020
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99020  Sep 24 2018 Alexander Nalobin
+      - fix recursive whois regexp. Now matches 
+ line endings. 
+  
+  2.99019  Sep 24 2018 Alexander Nalobin
+      - fix precedence in 2.99016 fix, thanx to Slaven Rezić.
+
+-------------------------------------------------------------------
+Thu Aug 30 05:45:02 UTC 2018 - coolo@suse.com
+
+- updated to 2.99018
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+-------------------------------------------------------------------
+Wed Jul 18 05:47:52 UTC 2018 - coolo@suse.com
+
+- updated to 2.99016
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99016  Jul 18 2018 Alexander Nalobin
+      - fixed recursion to referal whois servers in QRY_FIRST mode
+
+-------------------------------------------------------------------
+Sat Jun 16 05:47:50 UTC 2018 - coolo@suse.com
+
+- updated to 2.99015
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99015  Jun 14 2018 Sergei Sedinkin
+      - new whois server for .net.ru, .org.ru and .pp.ru domains
+
+-------------------------------------------------------------------
+Wed May  9 05:42:27 UTC 2018 - coolo@suse.com
+
+- updated to 2.99014
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99014  May 8 2018 Alexander Nalobin
+      - whois.unitedtld.com is no longer a whois server (https://github.com/regru/Net-Whois-Raw/issues/16)
+
+-------------------------------------------------------------------
+Fri Dec 15 06:43:24 UTC 2017 - coolo@suse.com
+
+- updated to 2.99013
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99013  Dec 13 2017 Alexander Nalobin
+      - Added "notfound" and "strip" patterns for whois.registry.ripn.net
+
+-------------------------------------------------------------------
+Wed Dec 13 06:40:27 UTC 2017 - coolo@suse.com
+
+- updated to 2.99012
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99012  Dec 11 2017 Vadim Likhota
+      - update notfound data and whois servers for some tlds
+
+-------------------------------------------------------------------
+Fri Nov 24 06:46:48 UTC 2017 - coolo@suse.com
+
+- updated to 2.99011
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99011  Nov 23 2017 Alexander Nalobin
+      - Skip urls as recursive whois servers
+
+-------------------------------------------------------------------
+Tue Aug  1 06:04:18 UTC 2017 - coolo@suse.com
+
+- updated to 2.99010
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99010  Jul 31 2017 Alexander Nalobin
+      - CI regexp in recursive whois server match
+
+-------------------------------------------------------------------
+Sun Jun 25 06:04:07 UTC 2017 - coolo@suse.com
+
+- updated to 2.99009
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99009  Jun 24 2017 Gregory Oschwald
+      - Do not warn if newsrv is undefined
+
+-------------------------------------------------------------------
+Fri Jun  9 06:08:34 UTC 2017 - coolo@suse.com
+
+- updated to 2.99008
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99008  Jun 7 2017 Alexander Nalobin
+      - can bypass recursing to custom servers ($Net::Whois::Raw::Data::whois_servers_no_recurse)
+
+-------------------------------------------------------------------
+Thu May 25 08:45:37 UTC 2017 - coolo@suse.com
+
+- updated to 2.99007
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99007  May 22 2017 Vadiml Likhota
+      - revert broken $which_whois default behavior
+
+-------------------------------------------------------------------
+Tue Feb 14 07:18:15 UTC 2017 - coolo@suse.com
+
+- updated to 2.99006
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99006  Feb 1 2017 Alexander Nalobin
+      - pwhois script approves IDN domains (ɢoogle.com)
+  
+  2.99005  Jan 26 2017 Oleg Gavrin
+       - speed optimizations
+  
+  2.99004    2017 Vadiml Likhota
+      - fix whois for .LA
+  
+  2.99003  Nov 22 2016 Oleg Gavrin, Christian Walde, Vadim Likhota, Alexander Nalobin
+      - maintanance tool for Data.pm
+      - a lot of new gTLDs whois servers added and fixed
+      - "not found" patterns fixed
+      - new tlds .NG, *.TH, .ID
+      - fix whois for .AU, .TH
+
+-------------------------------------------------------------------
+Tue Oct 18 05:51:34 UTC 2016 - coolo@suse.com
+
+- updated to 2.99002
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99002  Oct 17 2016 Alexander Nalobin, Vadim Likhota, Anton Chuvashev
+      - get rid of unused DBI dependency
+      - whois.iana.org for tld only query
+      - new tlds .RADIO.AM, .RADIO.FM, .SHOP, .SHOPPING, .GAMES
+      - new tld .HELP
+
+-------------------------------------------------------------------
+Tue Aug 23 05:43:47 UTC 2016 - coolo@suse.com
+
+- updated to 2.99001
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99001  Aug 01 2016 Vadim Likhota
+      - new tlds .PROMO, .ART, .FORUM
+      - fix whois for .JOBS, .LA, .MOBI
+      - set default whois whois.nic.TLD
+
+-------------------------------------------------------------------
+Wed Jul  6 08:30:52 UTC 2016 - coolo@suse.com
+
+- updated to 2.99
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99    Jul 05 2016 Andrey Voyshko
+      - new tlds .GROUP
+  
+  2.98    Jun 22 2016 Anton Chuvashev
+      - new tlds .TUBE
+  
+  2.97    Jun 06 2016 Vadim Likhota
+      - fix whois for .NET.RU, .ORG.RU, .PP.RU
+      - new zones .STORE, .VIP
+
+-------------------------------------------------------------------
+Sat May 28 10:19:32 UTC 2016 - coolo@suse.com
+
+- updated to 2.96
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.96    Mar 31 2016 Anton Chuvashev
+      - new tlds .GAME, .PROMO
+  
+  2.95    May 24 2016 Alexander Nalobin
+      - new tld .VIP
+      - Update ZA, PRIV.AT whois, not available/exceed sentences thanx to @zdm
+
+-------------------------------------------------------------------
+Mon Apr  4 10:07:41 UTC 2016 - coolo@suse.com
+
+- updated to 2.94
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.94    Mar 31 2016 Alexander Nalobin
+      - new tlds .CAFE, .QA
+      - new 'not found' message of whois-dub.mm-registry.com
+
+-------------------------------------------------------------------
+Tue Mar  8 10:40:04 UTC 2016 - coolo@suse.com
+
+- updated to 2.93
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.93    Mar 06 2016 Vadim Likhota
+      - fix whois for .CC, .RU.NET, .COM.RU, .EXNET.RU, *.RU & *.SU geodomains
+      - new tlds .CLOUD, .BET, .PET, .AUTO, .CAR, .CARS, .BEST, .BROKER, .CAREER, .COURSES, .EARTH, .FILM, .FOREX, .MEN, .SRL, .STUDY, .FAMILY, .LIVE, .STUDIO
+
+-------------------------------------------------------------------
+Sat Feb 13 10:25:42 UTC 2016 - coolo@suse.com
+
+- updated to 2.92
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.92    Feb 10 2016  Vadim Likhota
+      - fix clear disclaimer for .ME, .MOBY .NAME, and .ORG
+      - fix whois for .OOO, .LA, .PRO and .PW
+      - new tlds .CONTACT, .FAN, .PID and .REALTY
+
+-------------------------------------------------------------------
+Thu Oct 29 10:13:54 UTC 2015 - coolo@suse.com
+
+- updated to 2.91
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.91    Oct 28 2015 Vadim Likhota
+      - even more new tlds of whois.centralnic.com
+
+-------------------------------------------------------------------
+Tue Oct 27 10:15:53 UTC 2015 - coolo@suse.com
+
+- updated to 2.90
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+-------------------------------------------------------------------
+Sun Oct  4 09:04:41 UTC 2015 - coolo@suse.com
+
+- updated to 2.87
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  
+  2.85    Jul 09 2015 Alexander Nalobin
+      - new tld .PRESS
+  
+  2.86    Sep 01 2015 Alexander Nalobin
+      - QRY_LAST/QRY_FIRST caching issue fix
+  
+  2.87    Sep 28 2015 Alexander Nalobin & Hugo Salgado
+      - basic IPv6 server support
+
+-------------------------------------------------------------------
+Tue Apr 14 21:20:34 UTC 2015 - coolo@suse.com
+
+- updated to 2.84
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+-------------------------------------------------------------------
+Fri Jul 25 09:32:03 UTC 2014 - coolo@suse.com
+
+- updated to 2.76
+     - Fixed .domains whois error
+ 
+ 2.60    Mar 21 2014 Dmitriy Shamatrin
+     - Added query suffix
+     - Added timeout to 02-internet.t for hangs prevention
+ 
+ 2.61    Apr 02 2014 Dmitriy Seluzhitskiy
+     - Add zones for whois.uniregistry.net
+ 
+ 2.62    Apr 16 2014 Dmitriy Seluzhitskiy
+     - Add whois.dot-kiwi.com for .KIWI
+ 
+ 2.63    Apr 17 2014 Dmitriy Seluzhitskiy
+     - Add whois.nic.build for .BUILD
+ 
+ 2.64    Apr 22 2014 Dmitriy Seluzhitskiy
+     - new tlds .PINK .RED .SHIKSHA .KIM .BLUE
+ 
+ 2.65    Apr 24 2014 Dmitriy Seluzhitskiy
+     - new tlds .CLUB
+ 
+ 2.66    May 08 2014 Dmitriy Seluzhitskiy
+     - new tlds of United TLD Holdco Ltd (http://rightside.co)
+ 
+ 2.67    May 08 2014 Dmitriy Seluzhitskiy
+     - new tlds .LUXURY
+ 
+ 2.68    May 21 2014 Dmitriy Seluzhitskiy
+     - new tlds of donuts.co
+ 
+ 2.69    May 27 2014 Dmitriy Seluzhitskiy
+     - change whois for .356360343
+ 
+ 2.70    Jun 02 2014 Alexander Nalobin
+     - RT#96078 Fixed LANG handling in pwhois script
+ 
+ 2.71    Jun 03 2014 Dmitriy Seluzhitskiy
+     - Add whois for .PW
+ 
+ 2.72    Jun 17 2014 Dmitriy Seluzhitskiy
+     - new tlds of http://mm-registry.com
+ 
+ 2.73    Jun 25 2014 Dmitriy Seluzhitskiy
+     - new tlds of http://uniregistry.com
+ 
+ 2.74    Jul 1 2014 Alexander Nalobin
+     - tests cleaning
+
+-------------------------------------------------------------------
+Fri Mar 14 06:06:53 UTC 2014 - coolo@suse.com
+
+- updated to 2.59
+    - Add whois servers for gtld: .berlin
+    - Fixed .domains whois error
+
+-------------------------------------------------------------------
+Mon Mar 10 07:07:02 UTC 2014 - coolo@suse.com
+
+- updated to 2.57
+     - Handling exceed limits of whois.name.com
+       and in recursive queries ( set $CHECK_EXCEED = 2 )
+     - TODAY whois server added
+     - Add whois server for gtld, managed by Sugar Glen, LLC (http://donuts.co)
+     - RT#91930 Boilerplate stripping
+     - new tlds XN--D1ACJ3B, XN--80ASWG, XN--80ASEHDB
+     - Fix whois server for .BZ
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:36 UTC 2014 - coolo@suse.com
+
+- updated to 2.51
+     - IN.NET, HR whois server added
+     - AC whois server fixed
+     - Handling exceed limits of whois.nic.cz
+     - RT#60339 fixed regexp for parsing .TJ web whois
+     - RT#64960 extend regexp for ReferralServer parsing (for recursive whois)
+     - Several timeout/alarm issues:
+     Fix race-condition between ALRM handler cleared and
+     alarm timer cleared (could result process to exit with signalal - i.e. not possible
+     to catch as die(), and no destructions called).
+     Fix action-at-distance - we were clearing alarm timer to zero, if alarm is
+     not used (i.e if TIMEOUT zero).
+     Substract time spent in request from outer alarm
+     - Fixed: unicode whois was damaging when using caching
+     Under POSIX systems pwhois now uses TMPDIR env, not TEMP.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:22 UTC 2013 - coolo@suse.com
+
+- updated to 2.48
+       - Fixed "not found" parsing form whois.centralnic.com
+       - Fixed encoding for com.ua domains
+
+-------------------------------------------------------------------
+Thu Jun 20 13:35:57 UTC 2013 - coolo@suse.com
+
+- updated to 2.46
+   - Case-insensitive match for "not found" messages
+   - utf8 encoding fix
+   - IPv6 whois support
+   - IPv6 whois support with Regexp::IPv6
+   - Using whois.netcom.cm for CM instead of web whois
+   - TV whois server updated
+   - BZ web whois updated
+   - MU, IN, CN web whois removed
+   - Fixed TJ web whois (broken html)
+
+-------------------------------------------------------------------
+Mon Feb 13 13:02:38 UTC 2012 - coolo@suse.com
+
+- update to 2.40
+    - Fixed problem with passing server parameter from command line in pwhois
+    - Fixed problem with encoding detection in pwhois on Windows
+    - Added convertation to punycode in pwhois
+
+    - Added domain name validation in pwhois
+    - Updated some 'not found' string
+
+    - whois.relcom.ru is no more. Using whois.nic.ru instead.
+    - Removed crutches for whois.relcom.ru / www_whois
+
+    - Further migration from whois.relcom.ru to whois.nic.ru
+
+    - confess -> die :: no need to die such verbosely
+
+    - Added whois server for .SO zone
+
+    - Deleted whitespaces removing from the whois result
+
+    - Added whois server for .CO.UA zone
+
+    - Added whois server for .IN.UA zone
+
+    - Added whois server for .XXX zone
+    - Fixed BZ whois (restored whois.belizenic.bz server)
+
+    - Fixed regexp for .PRO whois check
+
+    - Fixed whois server address for *.ua domains
+
+    - Confess instead of die to simplify error tracing
+
+    - internet tests updated
+    - Net::Whois::Raw::Data addons / updates, thanx to Guillaume
+
+    - Now you can redefine SOCK_CLASS::getline method as you want
+    - require_once for Data::Dumper
+
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:16 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Sep 30 20:02:36 UTC 2010 - chris@computersalat.de
+
+- update to 2.25
+  - And then again to www_whois (but to another URL)
+- 2.24    Sep 01 2010     Ilya Chesnokov
+  - For .BZ domains whois server changed from www_whois to whois.belizenic.bz
+- 2.23	Aug 25 2010	Walery Studennikov
+  - Fixed problem with tests for .TJ domains
+- noarch pkg
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Mon Apr 26 10:17:40 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.22:
+  + Added whois servers for zones: .MD, .GD, .HT, .IM, .KI, .LC, 
+    .TRAVEL, .FM, .CO, .LA, .SB, .VN, .CM
+  + Fixed %strip hash for .CX, .MU, .NL, .TL
+  + Fixed $CACHE_TIME parameter documentation
+
+-------------------------------------------------------------------
+Thu Apr  1 10:27:01 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.20:
+  + Exceed patterns updated for whois.eu
+  + Fixed whois_config (CHECK_EXCEED support)
+  + $Net::Whois::Raw::USE_CNAMES option removed (who needs it??)
+  + Crutch for rechecking RELCOM-domains through WWW
+
+-------------------------------------------------------------------
+Thu Mar 25 11:10:49 UTC 2010 - lars@linux-schulserver.de
+
+- update to 2.18:
+  + many bugfixes
+  + core now uses unicode
+  + Support for OMIT_MSG == 2 and CHECK_FAIL == 2 was dropped
+  + fixes for .CN and .VN domains
+  + add five zones: COM.UA ORG.UA KIEV.UA BIZ.UA NOV.RU
+  + Support for list of whois servers which has no idn support
+  + support for cyrillic .RF domain
+  + fixes for multilingual TLDs
+  + search DNS-servers in .org, .biz, .name zones through
+    a whois-server of appropriate zone  
+  + external hooks support: whois_query_sockparams, 
+                            whois_query_socket, 
+                            whois_query_ua
+
+-------------------------------------------------------------------
+Thu Mar 19 09:39:45 CET 2009 - lrupp@suse.de
+
+- initial version 1.63
+

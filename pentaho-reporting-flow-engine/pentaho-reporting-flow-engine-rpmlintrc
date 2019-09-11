@@ -1,0 +1,2 @@
+#libserializer is java package, not native library
+addFilter("explicit-lib-dependency libserializer")

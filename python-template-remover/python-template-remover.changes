@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Feb 13 03:59:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Remove unnecessary python-devel
+- Remove %bcond test
+
+-------------------------------------------------------------------
+Wed Jan 17 02:37:10 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version for v0.1.9

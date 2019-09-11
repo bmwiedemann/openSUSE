@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue May  1 22:56:21 UTC 2018 - cornelis@solcon.nl
+
+- Release 3.003; Major changes:
+  * New license:
+    + Eliminated Hack Open Font License
+    + Added MIT License for Hack work
+    + These license changes eliminated the Reserved Font Name "Hack"
+      in the typeface license
+    + No changes to co-licensure with the Bitstream Vera license
+      from upstream source
+  * Only provide ttf
+  * For details, see
+    https://github.com/source-foundry/Hack/blob/master/CHANGELOG.md
+- Update LICENSE.md and README.md to the versions from master
+- Removed service file, seems unnecessary
+
+-------------------------------------------------------------------
+Thu May 12 12:37:04 UTC 2016 - fcrozat@suse.com
+
+- Release 2.020:
+ * adjusted size / positioning on a lot of glyphs.
+
+-------------------------------------------------------------------
+Thu Jan 21 16:24:05 UTC 2016 - fcrozat@suse.com
+
+- Release 2.019:
+ * adjusted size / positioning on a lot of glyphs.
+- Update url for LICENSE.md and README.md to fetch released version
+  of those files from github.
+
+-------------------------------------------------------------------
+Mon Dec 14 12:52:13 UTC 2015 - fcrozat@suse.com
+
+- Fix license tag to SUSE-Hack-Open-Font-2.0 and
+  SUSE-Bitstream-Vera.
+- Ensure to install README.md and LICENSE.md.
+
+-------------------------------------------------------------------
+Tue Dec  8 16:01:30 CET 2015 - fcrozat@suse.com
+
+- Release 2.018:
+ * Add missing glyphs (U+016C, U+016D.
+
+- Changes from 2.016/2.017:
+  * increased vertical position of the tilde.
+  * increased width of the vertical stroke on the dollar symbol.
+  * modified Cyrillic upper case C (U+0421) to differentiate from
+    Latin C.
+  * upper case theta (U+0398) to differentiate from lower case
+    theta.
+  * add missing glyphs (U+0132, U+0133, U+013F, U+0140, U+0162
+    U+0163, U+0138, U+266A, U+0149, U+1EF9, U+1EF8, U+1EBD, U+1EBC
+    U+2116, U+01A4, U+0108, U+0109, U+011C, U+011D, U+0124, U+0125
+    U+0134, U+0135, U+015C, U+015D, U+016C, U+016D, U+20B7.
+  * fixed missing null glyph (U+0000) in regular, italic,
+    bolditalic sets.
+  * removed duplicate CR glyph (U+000D) in all sets.
+  * updated ttfautohint to version 1.4.1 for TrueType.
+-------------------------------------------------------------------
+Thu Oct  8 16:36:52 UTC 2015 - fcrozat@suse.com
+
+- Release 2.015:
+  * new vertical metrics = decreased line spacing height
+  * adjusted vertical position of the colon to a higher position,
+    improves alignment with other punctuation glyphs (U+003A).
+  * changed vertical position of the dash (U+002D) so that regular
+    and oblique, bold and bold oblique are properly aligned.
+  * updated hinting algorithm for bold set (improved point position
+    over stem of lowercase j/i for some text sizes).
+  * underscore (U+005F) centered, increased width, increased height
+    & aligned vertical position closer to baseline.
+  * increased vertical position of dieresis mark on lowercase u
+    dieresis (U+00FC), on lowercase i dieresis (U+00EF), on
+    lowercase e dieresis (U+00EB).
+  * decreased vertical position of the asterisk (U+002A).
+  * new design for ascii tilde - broader curves, taller glyph with
+  * goal to improve appearance at small text sizes where it tended
+    to render like a dash (U+007E).
+
+-------------------------------------------------------------------
+Sat Sep 12 06:23:10 UTC 2015 - hot123tea123@gmail.com
+
+- Update license spelling according to http://license.opensuse.org/
+
+-------------------------------------------------------------------
+Sat Sep 12 06:20:06 UTC 2015 - hot123tea123@gmail.com
+
+- Update to version 2.013
+
+-------------------------------------------------------------------
+Wed Sep  2 09:16:03 UTC 2015 - fcrozat@suse.com
+
+- Improve specfile to follow openSUSE policy packaging rules.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:07:17 UTC 2015 - pgajdos@suse.com
+
+- use font rpm macros
+
+-------------------------------------------------------------------
+Tue Sep  1 14:25:52 UTC 2015 - fcrozat@suse.com
+
+- Run spec-cleaner on specfile.
+
+-------------------------------------------------------------------
+Mon Aug 31 14:37:19 UTC 2015 - aevseev@gmail.com
+
+- First build - version 2.010
+

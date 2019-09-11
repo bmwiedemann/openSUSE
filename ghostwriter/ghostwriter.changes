@@ -1,0 +1,293 @@
+-------------------------------------------------------------------
+Wed May  1 11:16:26 UTC 2019 - Sebastien CHAVAUX <seb95passionlinux@opensuse.org>
+
+- Update to version 1.8.0:
+  * New Features: HTML preview has been ported from QtWebKit to QtWebEngine (Chromium).
+  * Issue #206: ghostwriter now has right-to-left language support.
+  * Issue #391: mathml option for pandoc is now used to render math equations for preview and export.
+  * Issue #411: Fixed crash when adding a new theme with no theme selected.
+  * Issue #412: Fixed export to PDF (wkhtmltopdf) failure with Pandoc.
+  * Issue #430: Fixed issue extra spaces appearing between <br/> tags in the HTML preview.
+  * Removed print support, since it has some odd bugs on some platforms, and most users would want to print their exported content anyway.
+  * Removed graphics fade effect for the bottom of the editor, as it is a risky feature that has caused bugs in the past and does not work on HiDPI screens.
+
+-------------------------------------------------------------------
+Fri Dec 14 20:54:37 UTC 2018 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to version 1.7.4:
+  * Issue #178: Only use --quiet option for Pandoc version 2 or greater.
+  * Fixed words-per-minute calculations to not be jumpy or overly high.
+  * Fixed issue where creating a new theme resulted in inconsistent selection and display of themes in the Theme Selection dialog.
+  * Fixed broken icon when running under Wayland.
+  * Fixed screenshots in appdata.
+  * Issue #385: Updated resource files license to CC BY-SA 4.0.
+
+-------------------------------------------------------------------
+Fri Aug 24 14:20:13 UTC 2018 - seb95.scou@gmail.com
+
+- Update to version 1.7.3:
+  * Fixed segfault that occurred when changing the theme or interface style after opening the Preview Options dialog.
+
+-------------------------------------------------------------------
+Tue Jul 31 14:56:18 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.7.2:
+  * Fixed issue where the --quiet option was mistakenly used with older Pandoc versions that did not support its use.
+  * Worked around Qt 5.11 qinstall bug where running qmake and make would fail when installing the translation files
+
+-------------------------------------------------------------------
+Mon Jul 23 17:52:19 UTC 2018 - seb95.scou@gmail.com
+
+- Update to version 1.7.1
+  * Fixed regression in full screen mode where menu bar was not showing on mouse-over.
+  * Fixed regression where wrong theme was shown as selected on opening the Theme Selection dialog.
+  * Fixed issue #366 where warnings from Pandoc that were resulting in error dialogs on successful export.
+  * Fixed issue #292 where saving a document under Windows resulted in end-of-line characters being written as \n instead of \r\n.
+  * Fixed issue #360 where a graphical glitch under MacOS disabled the Theme Selection dialog's remove theme button.
+
+
+-------------------------------------------------------------------
+Wed Jul 18 16:56:08 UTC 2018 - seb95.scou@gmail.com
+
+- Update to version 1.7.0
+  * Added light and dark built-in themes based on the community Ulysses III theme Plainstraction.
+  * @sbrl added a new Github Dark built-in stylesheet for use with the live preview.
+  * Live preview has been optimized to show the preview for typed characters immediately on smaller documents.
+  * Added ODT and EPUB 3 as export options for MultiMarkdown 6.
+  * Theme selection dialog now displays a grid instead of a list.
+
+  * The menu bar is now hidden again in full screen mode when the user presses Alt+Tab to switch to a different application.
+  * Fixed issue #354 to disable hard line breaks for Pandoc's Github-flavored Markdown.
+  * Worked around issue in Qt 5.11 where changing the theme causes the app to crash.
+  * Worked around issue in Qt 5.10 where opening a new document with a document already loaded can cause the app to crash.
+
+
+-------------------------------------------------------------------
+Mon Apr 16 17:05:07 UTC 2018 - seb95.scou@gmail.com
+
+- Update to version 1.6.2
+  * Issue #315: Worked around slow load of QPrinter constructor in
+    Fedora 27 by lazy loading the printer settings only when needed
+    for printing or print preview rather than during application
+    startup.
+  * Fixed line break tokenizing to not include paragraph breaks.
+
+-------------------------------------------------------------------
+Mon Apr  9 15:17:14 UTC 2018 - seb95.scou@gmail.com
+
+- New upstream release, update to version 1.6.1 
+  * Worked around an issue with Qt version 5.10 that causes the
+  application to occasionally crash when reloading the currently
+  opened document or when opening a new document due to the text
+  cursor not being set to the beginning of the document before
+  clearing the editor and loading the new document.
+
+-------------------------------------------------------------------
+Mon Apr  9 12:03:01 UTC 2018 - mpluskal@suse.com
+
+- Run spec-cleaner
+- Drop not needed scriplets
+
+-------------------------------------------------------------------
+Sun Apr 8 22:18:35 UTC 2018 - seb95.scou@gmail.com
+
+- Update to version 1.6.0
+   * HTML live preview is now in a split pane view rather than in a
+   separate window.
+   * New options were added to hide HUD windows while typing, in full
+   screen mode, or in live preview mode.
+   * A new button was added to the status bar and a new shortcut was
+   added to the View menu in the menu bar to toggle hiding/showing the
+   open HUDs.
+   * Github's cmark-gfm can now be detected and used as a Markdown
+   processor.
+   * Block quotes and code blocks now have an inobtrusive background
+   color to differentiate them.
+   * Buttons have been added to the status for existing features.
+   * HUD windows and scrollbars can be stylized to have square or
+   rounded corners in the Settings, and are no longer theme dependent.
+   * New "Typewriter" focus mode was added by @hirschenberger.
+   * The style sheet and Markdown processor to use with the HTML live
+   preview can now be selected in their own dialog box accessible both
+   from the status bar at the bottom of the window and from the menu bar
+   in the Settings menu.
+   * The "Copy HTML" button has been moved to the "status bar" at the
+   bottom of the main window.
+   * The "Copy HTML" button / menu bar option can copy just the selected
+   Markdown text as HTML (using the currently selected Markdown
+   processor). It will still copy the entire Markdown text document and
+   convert it to HTML in the system clipboard if no text is selected.
+   * Themes now support options for emphasis color and block text color.
+   Note that emphasis color will also affect the color of headings, and
+   block text color will affect the color of block quotes and code blocks.
+   * Issue #302: ghostwriter will now look for default Qt 
+   translations on the standard Qt translations path 
+   (for standard buttons/text). These default Qt translations 
+   have been included in the Windows installer translations 
+   folder and portable Windows Zip, and will be loaded automatically
+   based on the currently selected application language.
+   * Some tweaks have been made to the parsing/highlighting of
+   emphasized text to handle nested emphasis cases better. As part
+   of this effort, ghostwriter uses a Qt 5-specific regular
+   expression class that is not available in Qt 4. As such,
+   ghostwriter can no longer be built with Qt and must be built with
+   Qt 5.
+   * Issue #272: Fixed issue with Focus mode where inserting
+   matching characters around a selection was causing the application
+   to crash.
+   * Issue #260: Added compatability with Pandoc version 2 and
+   MultiMarkdown version 6.
+   * Fixed issue where HTML preview scrolls to the top if the new
+   HTML from a modified document matches the old HTML, even if the
+   markup used in the source document did change.
+   * Fixed issue where current word is not live spell checked if the
+   user switches the text cursor to a different line.
+   * Fixed issue where prompt to reload a file that has been modified
+   externally was being displayed multiple times per file change. This
+   seems to have been triggered by some editors like Sublime Text that
+   perform multiple file saves for a single file modification.
+   * Issue #228: Selected text can now be dragged and dropped to a
+   different location within the editor.
+   * Fixed issue where if setext heading markup line is selected and
+   deleted with the cursor position beginning at the end of the previous
+   line, the heading is not removed from the Outline HUD.
+   * Fixed issue where Preview HTML menu item and button were not in
+   sync to appear checked or unchecked.
+   * ghostwriter now clears the Outline HUD when loading or reloading
+   a document to prevent a crash in case bad data is in the HUD.
+   * Fixed copy HTML issue to ensure Markdown text has proper formatting
+   (i.e., greater than signs aren't converted to &gt;).
+   * ghostwriter will now search in the mozilla-dicts installation
+   location for dictionaries on OpenBSD.
+
+-------------------------------------------------------------------
+Fri Nov  3 09:29:25 UTC 2017 - mpluskal@suse.com
+
+- Update suggested packages and recommend virtual package markdown
+
+-------------------------------------------------------------------
+Sun May 28 09:20:58 UTC 2017 - mpluskal@suse.com
+
+- Update suggested packages
+
+-------------------------------------------------------------------
+Sat May 27 22:13:51 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 1.5.0
+  * HUD windows can now be closed using the Esc key when they have
+    focus.
+  * A new option has been added to highlight double spaces at the
+    end of a line.
+  * Github-style task lists can now be made using the * and +
+    bullet point characters, in addition to the - character.
+  * Support for ConTeXt and wkhtmltopdf when exporting to PDF with
+    Pandoc has been added.
+  * Auto-matching characters for selected text now respects the
+    existing preferences for the matching done while typing without
+    text selected.
+  * Typing a single quote (') will no longer result in a second
+    quote being automatically inserted after the cursor if the
+    cursor is positioned in the middle of a word.
+  * Most settings have been moved into a new Preferences dialog to
+    accommodate the ever increasing number of application options.
+  * Font size can now be increased by pressing Ctrl+=or decreased
+    by pressing Ctrl+-. It can also be changed by using Ctrl and
+    the mouse wheel.
+  * When exporting to other file formats, the output file will be
+    opened after export with its default application.
+  * E-books created using Pandoc will now also be generated with a
+    table of contents.
+  * When passing in a file path via the command line, a new file
+    will be created with that path if it does not already exist.
+  * When typing a * character, ghostwriter would auto-insert a
+    second '*' character in anticipation of emphasized text. The
+    auto-inserted second * will now be removed if a space is typed
+    to accommodate a bullet list instead.
+  * Rudimentary support for HiDPI has been added. See notes below.
+  * Various performance enhancements and tweaks have been made
+    under the hood.
+  * Hyphenated words are now considered one word for spell checking
+  * ghostwriter can now be built from its source tarball without
+    needing git to be installed.
+  * Linux desktop file now specifies that ghostwriter can open only
+    one file from the command line rather than multiple files.
+  * Ctrl+M now opens the HTML Preview instead of Ctrl+W. This is to
+    avoid a conflict with closing windows in Linux.
+  * Copy and paste no longer makes the word count jump.
+  * Sundry minor fixes have been added.
+
+-------------------------------------------------------------------
+Sun Feb 19 16:58:13 UTC 2017 - mpluskal@suse.com
+
+- Split lang subpackage and generate/install translations
+- Suggest MultiMarkdown-5 as well
+
+-------------------------------------------------------------------
+Thu Sep  8 01:06:00 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 1.4.2:
+  * Issue #113: Full screen clock now displays time based on
+    locale.
+  * Issue #119: Null characters, which had been breaking the HTML
+    preview, are no longer inserted when typing over selecting text.
+  * Issue #121: Code fences are now correctly highlighted when they
+    contain blank lines.
+  * Issue #123: Statistics HUDs now have proper padding when
+    alternating row colors is enabled.
+  * Issue #125: The translations folder has been moved up one
+    folder for the portable distribution of ghostwriter.
+  * Sundry minor fixes have been added.
+
+-------------------------------------------------------------------
+Mon Aug 15 10:04:09 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 1.4.1:
+  * Pressing backspace at the end of a line no longer deletes
+    adjacent line breaks.
+  * Renaming a theme no longer removes its background image.
+  * Main window is now rendered correctly when transitioning
+    between full screen mode and maximized. Main window also
+    remembers its normal size upon being restored from maximized
+    after having been in full screen mode previously.
+
+-------------------------------------------------------------------
+Wed Jul 27 18:12:16 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.4.0:
+  * The time of day optionally displays in full screen mode.
+  * The recent file history size has been increased to 10.
+  * The menu bar will optionally auto-hide in full screen mode when
+    the mouse is not hovering over it.
+  * All new Hemingway mode button will disable backspace and
+    delete keys.
+  * Two new HUDs display statistical information on the current
+    writing session and document.
+  * Auto-matched characters can be customized.
+  * Pandoc PDF export now has better defaults for margins and
+    hyperlinks.
+  * Shortcut keys using Alt now use Ctrl to avoid conflicts with
+    OS shortcut keys and to better accommodate non-USA keyboards.
+  * High DPI scaling has been enabled for Qt 5.6 and above.
+  * Dragging and dropping an image into the editor will now insert
+    the image link at the mouse location.
+  * Classic Light and Classic Dark themes have new color palettes.
+  * Various aesthetics have been added to the main window.
+  * New application translations are available for the following 
+    languages:
+    + German
+    + Italian
+    + Japanese
+    + Portuguese (Brazil)
+    + Russian
+  * Sundry other fixes have been added.
+
+-------------------------------------------------------------------
+Thu May  5 00:44:07 UTC 2016 - jengelh@inai.de
+
+- Trim description to relevant parts.
+
+-------------------------------------------------------------------
+Sat Apr 30 19:53:33 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 1.3.1
+

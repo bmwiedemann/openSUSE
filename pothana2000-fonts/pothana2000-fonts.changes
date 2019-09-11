@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:25 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  3 14:37:45 UTC 2012 - pgajdos@suse.com
+
+- renamed pothana2000 -> pothana2000-fonts
+
+-------------------------------------------------------------------
+Thu Apr  8 18:18:11 CEST 2010 - tiwai@suse.de
+
+- remove unncessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Tue Jan 23 16:32:30 CET 2007 - mfabian@suse.de
+
+- new package: Pothana2000.ttf and vemana.ttf, version 1.1.

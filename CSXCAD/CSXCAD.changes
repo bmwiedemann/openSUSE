@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Apr  3 15:04:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit BuildRequires for double-conversion-devel and lzma-devel
+
+-------------------------------------------------------------------
+Sat Dec 15 11:29:36 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.6.2
+  * Various bug fixes and enhancements, no changelog available.
+- Use split boost dependencies
+- Rebase CSXCAD-hdf5.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 14:28:31 UTC 2018 - adrian@suse.de
+
+- drop buildrequires to hdf5-devel to fix conflict.
+  The right version comes via vtk-devel
+
+-------------------------------------------------------------------
+Thu Nov  9 15:17:20 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Remove sz2-devel BuildRequires, these are already required by
+  hdf5-devel itself if hdf5 is built with szip support.
+
+-------------------------------------------------------------------
+Thu Nov  2 04:43:29 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Removed vtk-java, vtk-tcl and python3-vtk BuildRequires again.
+  The requirements are an artifact of the VTK buildsystem and have
+  to be fixed upstream. In the meantime, the BuildRequires are
+  kept as part of vtk-devel.
+- Modify cmake patch, CSXCAD does not need a specific VTK version
+
+-------------------------------------------------------------------
+Sat Oct 28 13:09:41 UTC 2017 - badshah400@gmail.com
+
+- Add BuildRequires: sz2-devel because it is needed ever since
+  we started building hdf5 with sz2 support; fixes build failures
+  for openSUSE > 1320.
+
+-------------------------------------------------------------------
+Tue Sep 12 15:41:48 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add explicit BuildRequires for vtk-java, vtk-tcl and python3-vtk, 
+  and Qt5Sql/Qt5Widgets devel packages, as these are no longer
+  implicitly required by vtk-devel
+
+-------------------------------------------------------------------
+Fri Aug 26 21:39:05 UTC 2016 - jengelh@inai.de
+
+- Set SRPM group field, and bump license to LGPL-3.0+.
+
+-------------------------------------------------------------------
+Fri Aug 26 18:13:15 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.6.1
+  * Bug fixes.
+- Drop obsolete
+  * CSXCAD-cxx-flags.patch
+  * CSXCAD-vtk7.patch
+- Fix build with HDF5
+  * CSXCAD-hdf5.patch
+
+-------------------------------------------------------------------
+Sat Mar 12 20:55:07 UTC 2016 - dvaleev@suse.com
+
+- Fix building against VTK7 CSXCAD-vtk7.patch
+
+-------------------------------------------------------------------
+Mon Oct 12 21:55:39 UTC 2015 - dmitry_r@opensuse.org
+
+- Initial package, version 0.6.0
+- Fix additional cxx flags
+  * CSXCAD-cxx-flags.patch
+- Fix linking for VTK >= 6.3
+  * CSXCAD-vtk.patch
+- Remove build time from binaries
+  * CSXCAD-no-build-date.patch
+- Fix AppCSXCAD.sh load
+  * CSXCAD-octave-AppCSXCAD-load.patch
+- Add correct instruction about Octave and MATLAB packages
+  * CSXCAD-readme-octave-package.patch

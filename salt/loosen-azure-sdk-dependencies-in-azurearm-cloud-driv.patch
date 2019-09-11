@@ -1,0 +1,41 @@
+From 8fe82178247ff3704915b578398ea55b0c6e4fa0 Mon Sep 17 00:00:00 2001
+From: Joachim Gleissner <jgleissner@suse.com>
+Date: Tue, 18 Sep 2018 15:07:13 +0200
+Subject: [PATCH] loosen azure sdk dependencies in azurearm cloud driver
+
+Remove dependency to azure-cli, which is not used at all.
+Use azure-storage-sdk as fallback if multiapi version is not available.
+
+remove unused import from azurearm driver
+---
+ salt/cloud/clouds/azurearm.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/salt/cloud/clouds/azurearm.py b/salt/cloud/clouds/azurearm.py
+index 229412adcd..ac59467fb3 100644
+--- a/salt/cloud/clouds/azurearm.py
++++ b/salt/cloud/clouds/azurearm.py
+@@ -104,6 +104,7 @@ import time
+ 
+ # Salt libs
+ from salt.ext import six
++import pkgutil
+ import salt.cache
+ import salt.config as config
+ import salt.loader
+@@ -126,6 +127,11 @@ try:
+     import azure.mgmt.network.models as network_models
+     from azure.storage.blob.blockblobservice import BlockBlobService
+     from msrestazure.azure_exceptions import CloudError
++    if pkgutil.find_loader('azure.multiapi'):
++        # use multiapi version if available
++        from azure.multiapi.storage.v2016_05_31 import CloudStorageAccount
++    else:
++        from azure.storage import CloudStorageAccount
+     HAS_LIBS = True
+ except ImportError:
+     pass
+-- 
+2.17.1
+
+

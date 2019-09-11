@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Mar 18 10:04:57 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Repair URL and Source in spec
+
+-------------------------------------------------------------------
+Thu Jun 14 10:36:20 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- Remove unnecessary brackets fron description
+
+-------------------------------------------------------------------
+Thu Apr  5 08:46:27 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- Mark LICENSE as %license
+
+-------------------------------------------------------------------
+Mon Mar 26 10:16:30 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- rename changes file
+
+-------------------------------------------------------------------
+Thu Mar 22 12:26:30 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- removed _service and used spec-clean
+
+-------------------------------------------------------------------
+Mon Mar 12 13:32:46 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- kicked pre-systemd support (SLE11)
+
+-------------------------------------------------------------------
+Tue Feb 27 08:25:31 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Sun Feb 11 18:59:57 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- upgrade to hmcfgusb (0.103-1) unstable; urgency=low
+  * flash-ota: add support for HM-HMOD-UART and TSCUL
+  * hmsniff: add support for HM-MOD-UART
+  * flash-hmmoduart: firmware updating on HM-MOD-UART
+  * flash-ota: various bug-fixes
+
+- adapt to systemd for newer distros
+
+-------------------------------------------------------------------
+Wed Feb 24 00:00:00 UTC 2016 vetter@physik.uni-wuerzburg.de
+
+- Initial Packaging
+- hmcfgusb-0.102

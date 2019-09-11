@@ -1,0 +1,23 @@
+Index: Ming-0.9.1/Ming.egg-info/requires.txt
+===================================================================
+--- Ming-0.9.1.orig/Ming.egg-info/requires.txt
++++ Ming-0.9.1/Ming.egg-info/requires.txt
+@@ -1,4 +1,4 @@
+-pymongo<3.8,>=3.0
++pymongo>=3.0
+ pytz
+ six>=1.6.1
+ 
+Index: Ming-0.9.1/setup.py
+===================================================================
+--- Ming-0.9.1.orig/setup.py
++++ Ming-0.9.1/setup.py
+@@ -35,7 +35,7 @@ setup(name='Ming',
+       include_package_data=True,
+       zip_safe=True,
+       install_requires=[
+-        "pymongo>=3.0,<3.8",
++        "pymongo>=3.0",
+         "pytz",
+         "six>=1.6.1"
+       ],

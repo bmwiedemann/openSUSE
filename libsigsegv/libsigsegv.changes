@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Fri Apr 26 11:19:16 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Allow LTO but only FAT LTO OBJECTS (boo#1133245)
+
+-------------------------------------------------------------------
+Thu Apr 25 11:18:04 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch libsigsegv-2.12-lto.dif
+  * Avoid redefinition of structures of <bits/sigcontext.h> by
+    <asm/sigcontext.h>
+  * Avoid moved logic in resulting assembler code for LTO objects
+    in signal handler for segmentation faults
+
+-------------------------------------------------------------------
+Thu Apr 25 06:34:02 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid none debugging libsigsegv, that is add -fno-lto (boo#1133245)
+- Use %license if known
+
+-------------------------------------------------------------------
+Wed Apr 24 17:18:04 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133245).
+
+-------------------------------------------------------------------
+Thu Feb  1 20:16:44 UTC 2018 - astieger@suse.com
+
+- update to 2.12:
+  * updates for platform other than GNU/Linux
+  * Reliability improvements
+
+-------------------------------------------------------------------
+Mon May 22 13:36:14 UTC 2017 - mpluskal@suse.com
+
+- Add gpg signature
+- Small spec file cleanup with spec-cleaner
+- Trim dependencies
+
+-------------------------------------------------------------------
+Wed Feb 22 07:29:42 UTC 2017 - werner@suse.de
+
+- Update to version 2.11
+  * Added support for catching stack overflow on Linux/SPARC.
+  * Provide a correct value for SIGSTKSZ on 64-bit AIX and on HP-UX. The one
+    defined by these systems is too small.
+  * Updated build infrastructure.
+  * Compilation now requires the <stdint.h> include file. Platforms which
+  don't have this include file (such as IRIX) are no longer supported.
+  * NOTE: Support for Cygwin and native Windows is currently not up-to-date.
+- Update URL that is use https://www.gnu.org/software/libsigsegv/
+
+-------------------------------------------------------------------
+Wed Jul  3 12:36:56 UTC 2013 - schwab@suse.de
+
+- fix-build-in-qemu.patch: Remove, set XFAIL_TESTS instead
+- Reenable testsuite on armv7
+
+-------------------------------------------------------------------
+Wed May  8 13:09:02 UTC 2013 - werner@suse.de
+
+- Update to version 2.10
+- Adopt patch fix-build-in-qemu.patch 
+
+-------------------------------------------------------------------
+Tue Jan 31 10:39:15 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Dec  3 20:36:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (2.9)
+

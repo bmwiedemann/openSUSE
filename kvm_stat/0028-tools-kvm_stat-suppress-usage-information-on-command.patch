@@ -1,0 +1,50 @@
+From 370dd4a6b7e76bdb1bd815732a78c85305bc297e Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:26 +0100
+Subject: [PATCH 28/43] tools/kvm_stat: suppress usage information on command
+ line errors
+
+Errors while parsing the '-g' command line argument result in display of
+usage information prior to the error message. This is a bit confusing,
+as the command line is syntactically correct.
+To reproduce, run 'kvm_stat -g' and specify a non-existing or inactive
+guest.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 822cfe3e4813c8f52199362b0e689fba9459ddc9)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index c34a1c511e68..dcfeb57d54fe 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1456,16 +1456,13 @@ Press any other key to refresh statistics immediately.
+         try:
+             pids = Tui.get_pid_from_gname(val)
+         except:
+-            raise optparse.OptionValueError('Error while searching for guest '
+-                                            '"{}", use "-p" to specify a pid '
+-                                            'instead'.format(val))
++            sys.exit('Error while searching for guest "{}". Use "-p" to '
++                     'specify a pid instead?'.format(val))
+         if len(pids) == 0:
+-            raise optparse.OptionValueError('No guest by the name "{}" '
+-                                            'found'.format(val))
++            sys.exit('Error: No guest by the name "{}" found'.format(val))
+         if len(pids) > 1:
+-            raise optparse.OptionValueError('Multiple processes found (pids: '
+-                                            '{}) - use "-p" to specify a pid '
+-                                            'instead'.format(" ".join(pids)))
++            sys.exit('Error: Multiple processes found (pids: {}). Use "-p" '
++                     'to specify the desired pid'.format(" ".join(pids)))
+         parser.values.pid = pids[0]
+ 
+     optparser = optparse.OptionParser(description=description_text,
+-- 
+2.12.3
+

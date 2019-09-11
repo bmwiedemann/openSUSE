@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:33:41 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 19:08:59 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Sep  8 22:55:36 UTC 2017 - jason.record@suse.com
+
+- New Security Pattern
+  suma21all/python-pycrypto_SUSE-SU-2017_2350-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Mon Jun 13 19:54:54 UTC 2016 - jason.record@suse.com
+
+- New Security Pattern
+  suma21all/bind_SUSE-SU-2016_1541-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Fri Apr 22 15:28:06 UTC 2016 - jrecord@suse.com
+
+- New Security Pattern
+  suma21all/openssl_SUSE-SU-2016_1057-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Fri Aug  7 16:40:12 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  suma21all/oracle-update_SUSE-SU-2015_1353-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Thu Jul  9 15:29:31 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  suma17all/openssl_SUSE-SU-2015_1182-1_suma-1.7.py
+
+-------------------------------------------------------------------
+Fri May 22 18:06:48 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  suma17all/susemanager_SUSE-SU-2015_0928-1_suma-1.7.py
+
+-------------------------------------------------------------------
+Thu Feb 26 14:52:01 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  suma17all/java_SUSE-SU-2015_0343-2_suma-1.7.py
+- Fixed updateStatus for suma17all/spacewalk-branding_SUSE-SU-2014_1394-1_1.7.py
+
+-------------------------------------------------------------------
+Fri Dec  5 21:57:28 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  suma12all/manager_SUSE-SU-2011_0653-1_suma-1.2.py
+  suma21all/proxy_SUSE-SU-2011_0648-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Fri Dec  5 20:16:43 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  suma12all/auditlog-keeper_SUSE-SU-2012_0958-1_suma-1.2.py
+  suma12all/cobbler_SUSE-SU-2012_0552-1_suma-1.2.py
+  suma12all/cobbler_SUSE-SU-2012_0814-1_suma-1.2.py
+  suma12all/oracle-update_SUSE-SU-2012_0765-1_suma-1.2.py
+  suma12all/oracle-update_SUSE-SU-2012_1020-1_suma-1.2.py
+  suma17all/oracle-update_SUSE-SU-2012_1020-1_suma-1.7.py
+
+-------------------------------------------------------------------
+Thu Dec  4 23:15:27 UTC 2014 - jrecord@suse.com
+
+- Added SUMA 1.2 directory
+
+-------------------------------------------------------------------
+Thu Dec  4 23:14:36 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  suma12all/manager_SUSE-SU-2013_0841-1_suma-1.2.py
+  suma12all/oracle-update_SUSE-SU-2013_0811-1_suma-1.2.py
+  suma12all/oracle-update_SUSE-SU-2013_1448-1_suma-1.2.py
+  suma17all/manager_SUSE-SU-2013_0841-1_suma-1.7.py
+  suma17all/oracle-update_SUSE-SU-2013_0810-1_suma-1.7.py
+  suma17all/oracle-update_SUSE-SU-2013_1448-1_suma-1.7.py
+  suma17all/spacewalk-java_SUSE-SU-2013_1661-1_suma-1.7.py
+
+-------------------------------------------------------------------
+Wed Dec  3 22:02:44 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  suma17all/bash_SUSE-SU-2014_1223-1_suma-1.7.py
+  suma17all/bash_SUSE-SU-2014_1247-2_suma-1.7.py
+  suma17all/gnutls_SUSE-SU-2014_0445-1_suma-1.7.py
+  suma17all/gnutls_SUSE-SU-2014_0758-2_suma-1.7.py
+  suma17all/java_SUSE-SU-2014_0451-1_suma-1.7.py
+  suma17all/java_SUSE-SU-2014_0728-1_suma-1.7.py
+  suma17all/java_SUSE-SU-2014_1526-2_suma-1.7.py
+  suma17all/openssl-certs_SUSE-SU-2014_0444-1_suma-1.7.py
+  suma17all/openssl_SUSE-SU-2014_1387-2_suma-1.7.py
+  suma17all/oracle-update_SUSE-SU-2014_0130-1_suma-1.7.py
+  suma17all/spacewalk-java_SUSE-SU-2014_1339-1_suma-1.7.py
+  suma17all/struts_SUSE-SU-2014_0902-1_suma-1.7.py
+  suma21all/spacewalk-java_SUSE-SU-2014_1218-1_suma-2.1.py
+  suma21all/spacewalk-java_SUSE-SU-2014_1342-1_suma-2.1.py
+  suma21all/struts_SUSE-SU-2014_0902-1_suma-2.1.py
+
+-------------------------------------------------------------------
+Tue Dec  2 23:00:59 UTC 2014 - jrecord@suse.com
+
+- Changed suma17all/jabberd-7015878.py to use suma library
+- New Pattern
+  suma17all/spacewalk-branding_SUSE-SU-2014_1394-1_1.7.py
+
+-------------------------------------------------------------------
+Thu Nov 13 23:17:47 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  suma17all/jabberd-7015878.py
+  suma17all/master-tid-suma-7012610.py
+  suma21all/jabberd-7015878.py
+  suma21all/master-tid-suma-7012610.py
+- Initial checkin
+

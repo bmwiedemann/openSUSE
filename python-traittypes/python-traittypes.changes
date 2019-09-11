@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Apr 25 20:40:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable xarray dependency and tests that require it on python2
+  since xarray no longer supports python2.
+
+-------------------------------------------------------------------
+Wed Feb 20 15:42:16 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Exclude test_bad_values test while it is failing
+  (gh#jupyter-widgets/traittypes#31)
+
+-------------------------------------------------------------------
+Thu Aug  2 20:10:12 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.2.1
+  * Add xarray DataArray
+  * Remove unused imports (pandas and xarray)
+  * Add xarray Dataset
+  * Allow Undefined as default
+  * Refactor commond pandas trait type (DRY)
+  * Add tests for SciType validators
+  * Only raise error for missing dependencies on use
+
+-------------------------------------------------------------------
+Fri Apr 20 20:38:23 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

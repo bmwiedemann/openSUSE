@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Thu May 12 14:45:16 UTC 2016 - pgajdos@suse.com
+
+- gujrati fonts [bsc#977195]: remove hinting instructions for all 
+  letters except gujrati symbols in
+  * aakar medium
+  * padmaa Bold
+  * padmaa Medium
+  * Rekha medium
+  Fonts updated from:
+  https://github.com/kartikm/fonts-aakar
+  https://github.com/samyakbhuta/fonts-padmaa
+  https://github.com/kartikm/fonts-rekha
+
+-------------------------------------------------------------------
+Mon Mar 31 11:56:52 UTC 2014 - pgajdos@suse.com
+
+- updated Lohit fonts to 20140220:
+  * Lohit Devanagari 2.94.0 release with number of improvements 
+    and bug fixes.
+  * Lohit Malayalam 2.92.0 (Beta-1) release with number of improvements 
+    and bug fixes.
+  * etc. see https://raw.github.com/pravins/lohit/master/RECENT-NEWS
+
+-------------------------------------------------------------------
+Wed Nov 27 08:46:30 UTC 2013 - pgajdos@suse.com
+
+- updated Lohit fonts to 20130612:
+  * Released Lohit Oriya with bug fixes against Harfbuzz NG. 
+
+-------------------------------------------------------------------
+Tue Apr  2 11:45:11 UTC 2013 - pgajdos@suse.com
+
+- url in source
+
+-------------------------------------------------------------------
+Thu Mar 28 13:22:46 UTC 2013 - pgajdos@suse.com
+
+- adjusted description [bnc#812254]
+
+-------------------------------------------------------------------
+Tue Mar 26 15:19:08 UTC 2013 - pgajdos@suse.com
+
+- updated Lohit fonts to 20130130:
+  * Released version 2.5.3 of All Lohit fonts with major enhancement 
+    and dropping Reserved Font Name.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:13 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr  8 18:13:40 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Tue Dec  8 12:20:59 CET 2009 - pgajdos@suse.cz
+
+- updated Lohit fonts to 2.4.2 
+  (see http://svn.fedorahosted.org/svn/lohit/trunk/ChangeLog)
+
+-------------------------------------------------------------------
+Thu Nov 13 12:04:09 CET 2008 - mfabian@suse.de
+
+- bnc#444025: update Lohit fonts to 2.3.1. Many bugfixes, see:
+  http://svn.fedorahosted.org/svn/lohit/trunk/ChangeLog
+
+-------------------------------------------------------------------
+Tue Oct 16 16:57:02 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #334154: update Lohit fonts to 2.1.5.
+
+-------------------------------------------------------------------
+Tue Feb 06 16:09:17 CET 2007 - mfabian@suse.de
+
+- Fate #301933: add "mr" to "Provides locale()".
+
+-------------------------------------------------------------------
+Tue Jan 23 19:03:13 CET 2007 - mfabian@suse.de
+
+- split the Telugu fonts Pothana2000 and Vemana2000 into
+  a separate package "pothana2000".
+- add "Recommends: pothana2000".
+
+-------------------------------------------------------------------
+Tue Aug  8 14:11:26 CEST 2006 - dmueller@suse.de
+
+- install fonts to /usr/share/fonts
+
+-------------------------------------------------------------------
+Wed Mar 01 15:27:09 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ta;bn;gu;hi;pa)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 12:59:38 CET 2006 - mfabian@suse.de
+
+- Bugzilla #144135: add provides scalable-font-gu, scalable-font-hi
+  scalable-font-pa.
+
+-------------------------------------------------------------------
+Mon Jun 27 02:59:46 CEST 2005 - mfabian@suse.de
+
+- add "defattr(-, root,root)" and "# norootforbuild" again.
+
+-------------------------------------------------------------------
+Fri Jun 24 15:16:18 CEST 2005 - mfabian@suse.de
+
+- add %run_suseconfig_fonts to %post and %postun again
+- simplify .spec file
+- put all fonts into the truetype directory again because it
+  currently is like this in all other font packages.
+
+-------------------------------------------------------------------
+Wed Jun 15 17:16:42 IST 2005 - amunshi@novell.com
+
+- Removed all fonts due to font name selection issue. (Refer to README)
+- Rearranged the folder structure according to languages.
+- Updated the CREDITS file.
+- Some fonts provided by FSF/Akruti had to be removed since they might
+  have copyright issues.
+  (http://www.fsf.org.in/software/software.html#akruti)
+- Add updated fonts from their sources.
+
+-------------------------------------------------------------------
+Thu Feb 24 13:21:07 CET 2005 - mfabian@suse.de
+
+- install fonts into the correct directory.
+
+-------------------------------------------------------------------
+Mon Feb 21 10:56:22 CET 2005 - mfabian@suse.de
+
+- Add "Provides: scalable-font-ta, scalable-font-bn" moved
+  here from fonts-tamil and fonts-bangla, these two packages will
+  be dropped because they contain mainly duplicates of the fonts
+  in indic-fonts.
+
+-------------------------------------------------------------------
+Thu Feb 10 12:18:47 CET 2005 - mfabian@suse.de
+
+- add %run_suseconfig_fonts to %post and %postun.
+
+-------------------------------------------------------------------
+Tue Jan 18 15:30:46 CET 2005 - ro@suse.de
+
+- change version number to 1.0 (from amunshi at novell.com)
+
+-------------------------------------------------------------------
+Thu Jan 13 18:55:41 CET 2005 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sat Dec 04 13:41:28 CET 2004 - amunshi@novell.com
+
+- Added AUTHORS
+- Added CHANGELOG
+- Added CREDITS
+- Added FAQ
+- Added LICENSE
+- Added README
+- Added TODO
+- Tamil font from Lohit was not included, it was not working.
+- Added following fonts
+- Changed the file names to Language_FontName standard.
+- Changed the font names to Language_FontName standard using PfaEdit.
+- Modified EM to a standard power of 2 (increased it for some fonts only).
+
+-------------------------------------------------------------------
+Fri Dec 03 13:41:28 CET 2004 - amunshi@novell.com
+
+- Added Fonts from Lohit.
+

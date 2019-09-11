@@ -1,0 +1,27 @@
+---
+ ddd/config-info |   11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+Index: ddd-3.3.12/ddd/config-info
+===================================================================
+--- ddd-3.3.12.orig/ddd/config-info
++++ ddd-3.3.12/ddd/config-info
+@@ -50,17 +50,8 @@ echo
+ echo '#include "configinfo.h"'
+ echo 
+ echo "static const char *config_sccs_info = "
+-# Issue date in ISO 8601 YYYY-MM-DD format
+-year=`date '+%Y' 2>/dev/null || date +'%y'`
+-case $year in
+-  9?) year=19$year;;
+-  ??) year=20$year;;
+-esac
+-month=`date '+%m'`
+-day=`date '+%d'`
+-date=${year}-${month}-${day}
+ (
+-    echo "@(#)Built $date by $userinfo"
++    echo "@(#)Built by $userinfo"
+     if $features; then
+       echo ""
+       echo Features:

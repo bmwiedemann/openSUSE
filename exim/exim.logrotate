@@ -1,0 +1,51 @@
+/var/log/exim/main.log {
+	compress
+	dateext
+	notifempty
+	missingok
+	create 640 mail mail
+	rotate 99
+	weekly
+	#maxage 365
+	prerotate
+		cd /var/log/exim
+		test -f /etc/sysconfig/exim && source /etc/sysconfig/exim
+		if test "$EXIM_REPORT_WEEKLY" = yes; then
+			day=`date +%Y%m%d`
+			report=weekly_report-$day
+			eximstatsdir=/srv/www/eximstats/$day
+			touch $report; chmod 640 $report; chown :mail $report
+			eximstats main.log > $report
+			if test "$EXIM_REPORT_WEEKLY_HTML" = yes; then
+				mkdir $eximstatsdir
+				eximstats -html -charts -chartdir $eximstatsdir main.log > $eximstatsdir/index.html
+			fi
+			if ! test -e no_report_mail && test "$EXIM_REPORT_WEEKLY_SEND" = yes; then mail -s "$(sed -n '2{p;q;}' < $report) ($(hostname))" postmaster < $report; fi
+			if test -f $report.gz; then old $report.gz; fi
+			gzip -f -9 $report
+		fi
+	endscript
+}
+
+/var/log/exim/reject.log {
+	compress
+	dateext
+	notifempty
+	missingok
+	create 640 mail mail
+	rotate 99
+	size 4M
+	#maxage 365
+}
+
+/var/log/exim/panic.log {
+	compress
+	dateext
+	notifempty
+	missingok
+	create 640 mail mail
+	rotate 99
+	size 1M
+	#maxage 365
+}
+

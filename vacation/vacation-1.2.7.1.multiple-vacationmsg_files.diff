@@ -1,0 +1,107 @@
+---
+ vacation-1.2.7.1/vacation-en.man |    7 +++++++
+ vacation-1.2.7.1/vacation.c      |   24 ++++++++++++++++--------
+ 2 files changed, 23 insertions(+), 8 deletions(-)
+
+--- vacation-1.2.7.1/vacation-en.man
++++ vacation-1.2.7.1/vacation-en.man	2017-02-01 09:22:09.274931674 +0000
+@@ -40,6 +40,9 @@ vacation \- reply to mail automatically
+ .BI \-a " alias"
+ ]
+ [
++.BI \-f " file"
++]
++[
+ .BI \-t N
+ ]
+ [
+@@ -241,6 +244,10 @@ Otherwise, use the
+ .RB ` From: '
+ entry.
+ .TP
++.BI \-f\ <file>
++use a different message file than the default, .vacation.msg.
++The path to this file is relative to the home directory of the user.
++.TP
+ .BI \-?
+ issue short usage line.
+ .SH USAGE
+--- vacation-1.2.7.1/vacation.c
++++ vacation-1.2.7.1/vacation.c	2017-02-01 09:22:09.274931674 +0000
+@@ -102,6 +102,7 @@ static void eatmsg (void);
+ /* Extern definitions for getopt(3) */
+ extern int optind, opterr;
+ extern char *optarg;
++char *vmsg = VMSG;
+ 
+ /*
+  *  VACATION -- return a message to the sender when on vacation.
+@@ -136,7 +137,7 @@ main (int argc, char **argv)
+ #endif
+   if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-F") == 0)))
+     nflag = 1;
+-  while ((ch = getopt (argc, argv, "a:h:Iit:jrlF")) != EOF)
++  while ((ch = getopt (argc, argv, "a:f:h:Iit:jrlF")) != EOF)
+     switch ((char) ch)
+       {
+       case 'a':		/* alias */
+@@ -149,6 +150,13 @@ main (int argc, char **argv)
+ 	cur->next = names;
+ 	names = cur;
+ 	break;
++      case 'f':
++	if(optarg) {
++	  vmsg = optarg;  /* another vacation.msg file */
++	} else {
++	  syslog(LOG_NOTICE, "vacation: -f option used but not file given");
++	}
++	break;
+       case 'h':		/* hostname */
+ 	vdomain = optarg;
+ 	break;
+@@ -745,10 +753,10 @@ sendmessage (char *myname, char *myrealn
+   printd (logline);
+ #endif
+ 
+-  mfp = fopen (VMSG, "r");
++  mfp = fopen (vmsg, "r");
+   if (mfp == NULL)
+     {
+-      syslog (LOG_NOTICE, "vacation: no ~%s/%s file.\n", myname, VMSG);
++      syslog (LOG_NOTICE, "vacation: no ~%s/%s file.\n", myname, vmsg);
+       closelog();
+       exit (1);
+     }
+@@ -826,7 +834,7 @@ usage (void)
+ {
+   puts ("usage: vacation [ -I | -i | -l ] [ -F ]");
+   puts
+-    ("or:    vacation [ -j ] [ -a alias ] [ -h hostname ] [ -tN ] [ -r ] login");
++    ("or:    vacation [ -j ] [ -a alias ] [ -f file ] [ -h hostname ] [ -tN ] [ -r ] login");
+   exit (1);
+ }
+ 
+@@ -886,11 +894,11 @@ initialize (char *path, char *myname)
+   printd (logline);
+ #endif
+ 
+-  if (((message = fopen (VMSG, "r")) == NULL))
++  if (((message = fopen (vmsg, "r")) == NULL))
+     {
+-      if (((message = fopen (VMSG, "w")) == NULL))
++      if (((message = fopen (vmsg, "w")) == NULL))
+ 	{
+-	  fprintf (stderr, "vacation: cannot open %s\n", VMSG);
++	  fprintf (stderr, "vacation: cannot open %s\n", vmsg);
+ 	  exit (1);
+ 	}
+       fprintf (message, "Subject: away from my mail\n\n");
+@@ -912,7 +920,7 @@ initialize (char *path, char *myname)
+       fclose (oldmessage);
+     }
+   fclose (message);
+-  snprintf (ebuf, PATH_MAX, "%s %s", editor, VMSG);	/* Flawfinder: ignore */
++  snprintf (ebuf, PATH_MAX, "%s %s", editor, vmsg);	/* Flawfinder: ignore */
+ #ifdef DEBUG
+   snprintf (logline, MAXLINE, "calling editor with \"%s\"\n", ebuf);	/* Flawfinder: ignore */
+   printd (logline);

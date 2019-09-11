@@ -1,0 +1,32 @@
+Index: b/src/smartbookmark.c
+===================================================================
+--- a/src/smartbookmark.c
++++ b/src/smartbookmark.c
+@@ -173,10 +173,10 @@ static t_search *search_new(XfcePanelPlu
+     gtk_widget_set_valign(GTK_WIDGET(search->box), GTK_ALIGN_CENTER);
+ 
+     /* default options */
+-    search->url = "http://bugs.debian.org/";
+-    search->label_text = "BTS";
++    search->url = "https://bugzilla.xfce.org/show_bug.cgi?id=";
++    search->label_text = "bxo#";
+     search->size = 5;
+-    search->hide_label = FALSE;
++    search->hide_label = TRUE;
+     /* read config file options */
+     filename = xfce_panel_plugin_save_location(plugin, TRUE);
+     search_read_config(search, filename);
+@@ -209,10 +209,10 @@ static void search_read_config(t_search
+     if( (rcfile = xfce_rc_simple_open(filename, TRUE) ))
+     {
+         xfce_rc_set_group(rcfile, NULL);
+-        search->url = g_strdup(xfce_rc_read_entry(rcfile,"url","http://bugs.debian.org/"));
+-        search->label_text = g_strdup(xfce_rc_read_entry(rcfile,"value","DBS"));
++        search->url = g_strdup(xfce_rc_read_entry(rcfile,"url","https://bugzilla.xfce.org/show_bug.cgi?id="));
++        search->label_text = g_strdup(xfce_rc_read_entry(rcfile,"value","bxo#"));
+         search->size = xfce_rc_read_int_entry(rcfile, "size", 5);
+-        search->hide_label = xfce_rc_read_bool_entry(rcfile, "hidelabel", FALSE);
++        search->hide_label = xfce_rc_read_bool_entry(rcfile, "hidelabel", TRUE);
+     }
+ }
+ 

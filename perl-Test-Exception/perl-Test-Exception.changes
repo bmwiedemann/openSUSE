@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Sat Jan  2 10:16:17 UTC 2016 - coolo@suse.com
+
+- updated to 0.43
+   see /usr/share/doc/packages/perl-Test-Exception/Changes
+
+-------------------------------------------------------------------
+Sat Dec 26 10:16:52 UTC 2015 - coolo@suse.com
+
+- updated to 0.41
+   see /usr/share/doc/packages/perl-Test-Exception/Changes
+
+  0.40   [2015-12-21]
+      -   Updated for Test2
+
+-------------------------------------------------------------------
+Sun Jun  7 09:05:54 UTC 2015 - coolo@suse.com
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Test-Exception/Changes
+
+  0.40   [2015-06-05]
+      -   Updated for changes in Test::Stream (Use Test::Stream::Sync)
+  
+  0.39   [2015-06-04]
+      -   Updated for changes in Test::Stream
+
+-------------------------------------------------------------------
+Thu Apr 23 05:55:21 UTC 2015 - coolo@suse.com
+
+- extend version to 6 digits to avoid problems with > 0.331
+
+-------------------------------------------------------------------
+Mon Apr 13 18:27:40 UTC 2015 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Test-Exception/Changes
+
+  0.38   [2015-02-27]
+      -   fixed repository link in metadata
+  
+  0.37   [2015-02-27]
+      -   distribution is now managed by ExtUtils::MakeMaker (RT#102054)
+
+-------------------------------------------------------------------
+Fri Feb  6 13:13:00 UTC 2015 - coolo@suse.com
+
+- updated to 0.36
+     -   Fix bug when Test::More has been downgraded
+ 
+ 0.35   [2014-09-20]
+     -   Fix a bug when Test::Builder isn't new (better version).
+ 
+ 0.34   [2014-09-20]
+     -   Fix a bug when Test::Builder isn't new.
+ 
+ 0.33   [2014-09-19] Or "Another Test-Simple change"
+     -   Fixed test broken by changes in Test::Builder and friends
+
+-------------------------------------------------------------------
+Tue Jun  4 15:03:12 UTC 2013 - coolo@suse.com
+
+- updated to 0.32
+   Fixed tests that broke due to Test::More diagnostic changes
+
+-------------------------------------------------------------------
+Mon Apr 15 10:37:49 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:00 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Aug 30 19:13:52 UTC 2011 - andrea.turrini@gmail.com
+
+- standardized "Authors:" format in description of 
+  perl-Test-Exception.spec
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:42 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Oct 15 15:53:15 CEST 2010 - anicka@suse.cz
+
+- update to 0.31
+ -   Added a bunch of folk to the acknowledgements
+ -   Added some clarifying documentation to respond to RT#59293
+ -   Marked a test that was failing under T::B 2.0 until we figure out
+     whether it should pass or not. See http://is.gd/fNOFb    
+ -   Added dates to changes file, as far as we can from backpan et al
+ -   Fix for DB::args bug (thanks Peter Rabbitson)
+ -   Fix for bizarre-copy bug (thanks Peter Rabbitson)
+
+-------------------------------------------------------------------
+Wed Jan 13 16:40:46 CET 2010 - anicka@suse.cz
+
+- update to 0.29
+  * Patch to fix code with Sub::Uplevel again.
+
+-------------------------------------------------------------------
+Sun Dec 20 16:41:11 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:44:26 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Tue Jul 14 11:32:17 CEST 2009 - chris@computersalat.de
+
+- fixed deps
+  o Req for Test::Builder
+
+-------------------------------------------------------------------
+Wed Jul  1 13:12:01 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps
+
+-------------------------------------------------------------------
+Mon Feb 25 13:46:44 CET 2008 - anicka@suse.cz
+
+- update to 0.27
+ * Patch to fix my broken code with the now working Sub::Uplevel.
+
+-------------------------------------------------------------------
+Thu Dec 13 14:27:59 CET 2007 - anicka@suse.cz
+
+- update to 0.26
+  * Added some more exposition on the usage of dies_ok() and 
+    lives_ok() for those who found them confusing. Also reordered 
+    presentation of docs so more specific throws_ok() comes first.
+  * Some misc. documentation tweaks.
+  * Added some tests for RT#24678, but not actually fixed them yet
+  * Added comment in docs about T::E not catching exit() in eval() 
+    blocks 
+
+-------------------------------------------------------------------
+Thu Jun 14 18:17:42 CEST 2007 - anicka@suse.cz
+
+- package created (version 0.25) 
+

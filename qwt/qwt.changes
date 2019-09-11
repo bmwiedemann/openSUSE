@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Sun Jul 21 12:08:35 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added qwt-Qt_5.13.patch to fix Factory build
+
+-------------------------------------------------------------------
+Wed Apr 17 16:21:13 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a Qt5 snapshot for qwt, needed by scidavis 1.25.
+- Run spec-cleaner
+- Drop the examples package. qwt5 has only one user.
+
+-------------------------------------------------------------------
+Sat Feb  1 19:02:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- updated to version 5.2.3
+  * Several minor bug fixes
+- Smaller spec cleanup: remove ancient distro checks
+- Added Conflicts with libftdi1-devel for devel-doc subpackage, both
+  provide deprecated(3) man page
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Wed Jun 20 12:50:11 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-QWT-1.0
+  SPDX format (or choose from list linked at license.opensuse.org)
+
+-------------------------------------------------------------------
+Wed Nov 30 08:45:45 UTC 2011 - idoenmez@suse.de
+
+- Add Provides for qwt package, no need for obsoletes since the base
+  package never really existed.
+- Simplify filelist
+
+-------------------------------------------------------------------
+Tue Nov 29 07:15:09 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- removed dependency of the devel package to the (non-existing)
+  base package
+
+-------------------------------------------------------------------
+Mon Nov 28 13:36:55 UTC 2011 - idoenmez@suse.de
+
+- Remove nearly empty qwt base package again 
+
+-------------------------------------------------------------------
+Sat Nov 26 01:13:23 UTC 2011 - chris@computersalat.de
+
+- readd tests for other distributions
+- cleanup doc files
+  * mv pdf to devel-doc
+  * mv man to devel-doc
+- CHANGES, COPYING, README to qwt pkg
+  * no extra files in libqwt5 pkg
+- fix rpmlintrc file
+- fix build for SLE_10
+  * directories not owned by a package: %{_libdir}/qt4/....
+
+-------------------------------------------------------------------
+Fri Oct 21 16:20:10 CEST 2011 - mls@suse.de
+
+- do not use /usr/src/packages in specfile
+
+-------------------------------------------------------------------
+Thu Aug  4 08:33:11 UTC 2011 - toddrme2178@gmail.com
+
+- Changed include dir from qwt to qwt5.
+  This will make it more compatible with qwt6, 
+  which is out but not well-supported yet
+- Removed build flags that are enabled by default.
+- Added building of svg item support.
+  This is needed by the bindings packages
+- Cleaned up spec file formatting.
+
+-------------------------------------------------------------------
+Thu Aug  4 08:33:11 UTC 2011 - toddrme2178@gmail.com
+
+- updated to version 5.2.2
+- add pdf documentation package
+- remove tests for other distributions
+- move contents of the "qwt" package into libqwt5
+  it just had the license, readme, and changelog
+- remove patch (enable-svg.diff) that is now included upstream
+
+-------------------------------------------------------------------
+Wed Apr 14 17:21:51 EEST 2010 - koprok@nand.bg
+
+- updated to version 5.2.1
+- fix parallel make patch is not needed any more
+
+-------------------------------------------------------------------
+Fri Jan  1 20:39:49 UTC 2010 - chris@computersalat.de
+
+- spec mods
+  o added header
+  o cleanup
+  o fixed fdupes deps >= 1100
+  o replaced libqt4-devel >= 4.3 to qt-devel
+    * Qwt 5.x might be usable in all environments where you find Qt.
+      It is compatible with Qt 3.3.x and Qt 4.x
+
+-------------------------------------------------------------------
+Tue Nov 24 16:11:03 EET 2009 - koprok@nand.bg
+
+- fix parallel make
+
+-------------------------------------------------------------------
+Sun Aug 30 22:41:53 CEST 2009 - lars@linux-schulserver.de
+
+- original taken from Education:Salome:Factory
+- use the original name for the package and provide/obsolete
+  the libqwt5* names
+- use qmake vars instead of patching the sources
+- split off designer package and put the lib to the right place
+- added rpmlintrc
+
+-------------------------------------------------------------------
+Fri May 08 00:00:00 CET 2009 - Nico.Laus.2001@gmx.de
+
+- made compile on Fedora, Mandriva
+- removed unnecessary (Build)Requires
+
+-------------------------------------------------------------------
+Mon Mar 30 00:00:00 CET 2009 - Nico.Laus.2001@gmx.de
+
+- updated to version 5.2.0
+- changed config to enable QwtPlotSvgItem
+
+-------------------------------------------------------------------
+Wed Mar 25 00:00:00 CET 2009 - Nico.Laus.2001@gmx.de
+
+- added sub-packages examples and devel-doc
+- added documentation
+
+-------------------------------------------------------------------
+Fri May 16 00:00:00 CET 2008 - 0.pm.1
+
+- rebuild for PackMan
+
+-------------------------------------------------------------------
+Thu Nov 22 00:00:00 CET 2007 - opensuse@dstoecker.de
+
+- better installation
+- some fixes
+
+-------------------------------------------------------------------
+Wed Jun 27 00:00:00 CET 2007 - opensuse@dstoecker.de
+
+- updated to release 5.0.2
+- now a openSUSE BuildService project
+
+-------------------------------------------------------------------
+Wed Jan 03 00:00:00 CET 2007 - Christian Härtwig 5.0.0
+
+- updated to CVS20070103 (5.0.0)
+- renamed package to libqwt5
+- modified package to coexist together with libqwt-4.2.0 from Quentin Denis
+- added examples to -devel package
+
+-------------------------------------------------------------------
+Mon Aug 28 00:00:00 CET 2006 - Christian Härtwig 5.0.0
+
+- initial version CVS20060828 (5.0.0)
+

@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Fri Aug  2 21:37:41 UTC 2019 - James Mason <bear454@opensuse.org>
+
+- Update to version 1.2.1 (bsc#1144100, bsc#1144102)
+  + Support 'oracle' framework for images only 
+
+-------------------------------------------------------------------
+Fri Aug  2 21:08:40 UTC 2019 - James Mason <bear454@opensuse.org>
+
+- Update to version 1.2.0 (bsc#1144100, bsc#1144102)
+  + Support 'oracle' framework 
+
+-------------------------------------------------------------------
+Thu Jan 10 20:35:48 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.1.0 (bsc#1121151, bsc#1121150)
+  + Support new inactive state
+  + Remove awscvsgen and associated subpackage
+
+-------------------------------------------------------------------
+Fri Aug  3 09:22:06 UTC 2018 - rjschwei@suse.com
+
+- Update to version 1.0.4 (bsc#1103684)
+  + Avoid traceback on improper query options
+
+-------------------------------------------------------------------
+Wed Apr 11 21:13:10 UTC 2018 - rjschwei@suse.com
+
+- Update to version 1.0.3 (bsc#1089196)
+  + Make request implementation to access pint server usable as library
+
+-------------------------------------------------------------------
+Fri Jan 19 17:59:25 UTC 2018 - rjschwei@suse.com
+
+- Update to version 1.0.2
+  + Fix data output
+- From 1.0.1
+  + Improve from source install
+
+-------------------------------------------------------------------
+Thu Aug 10 16:23:08 UTC 2017 - sean.marlow@suse.com
+
+- Update to version 1.0.0
+  + Port to python3
+
+-------------------------------------------------------------------
+Mon Apr 17 19:04:49 UTC 2017 - bear454@opensuse.org
+
+- Update to version 0.4.0 (bsc#1034497)
+  + Add type filter for servers
+  + Remove HP Helion support
+
+-------------------------------------------------------------------
+Thu Mar  3 08:39:45 UTC 2016 - jgleissner@suse.com
+
+- removed __pycache__ and .pyc files from tar ball
+
+-------------------------------------------------------------------
+Wed Mar  2 15:06:38 UTC 2016 - jgleissner@suse.com
+
+- v0.3.0
+  + pep8 fixes
+  + Fix exception when the service pack command line option was used
+  + show an error message instead of traceback on connection error
+  + error messages should write to stderr by default
+  + added regex and invert substring filters
+
+-------------------------------------------------------------------
+Sat Nov 21 10:39:13 UTC 2015 - rjschwei@suse.com
+
+- Update to version 0.2.1
+  + Pretty print the output
+
+-------------------------------------------------------------------
+Wed Oct  7 21:14:10 UTC 2015 - bear454@opensuse.org
+
+- v0.2.0r1
+  + fix up permissions on amazon data generation binary
+
+-------------------------------------------------------------------
+Wed Oct  7 21:07:04 UTC 2015 - bear454@opensuse.org
+
+- v0.2.0
+  + add Amazon data generation
+  + add missing dependency python-requests BSC#949281 
+
+-------------------------------------------------------------------
+Thu Oct  1 15:51:22 UTC 2015 - bear454@opensuse.org
+
+- v0.1.4
+  + Cross-compatible with Python 2.6 (SLE 11)
+  + Submit to SLE 11 & SLE 12 Public Cloud Modules FATE#319399 BSC#943490 
+
+-------------------------------------------------------------------
+Thu Sep 24 19:41:04 UTC 2015 - bear454@opensuse.org
+
+- v0.1.3
+  + name filter is case-insensitive 
+
+-------------------------------------------------------------------
+Wed Sep 16 17:51:19 UTC 2015 - jmason@suse.com
+
+- v0.1.2
+  + Updated manpage
+  + Include in SLE 12 (FATE#319399)
+
+-------------------------------------------------------------------
+Tue Sep 15 16:44:19 UTC 2015 - jmason@suse.com
+
+- v0.1.1
+  + Resolve a path generation issue
+    https://github.com/SUSE/Enceladus/issues/51
+
+-------------------------------------------------------------------
+Thu Sep  3 14:57:40 UTC 2015 - jmason@suse.com
+
+- v0.1.0
+  + Added filters
+
+-------------------------------------------------------------------
+Sat Jul  4 13:45:46 UTC 2015 - rjschwei@suse.com
+
+- Initial build version 0.0.1
+

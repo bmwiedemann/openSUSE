@@ -1,0 +1,13 @@
+From: Antonio Larrosa <larrosa@kde.org>
+Subject: Install the example mycroft.conf to the doc directory
+
+Index: plasma-mycroft-0.1git~20180219T045942~8511f4e/CMakeLists.txt
+===================================================================
+--- plasma-mycroft-0.1git~20180219T045942~8511f4e.orig/CMakeLists.txt
++++ plasma-mycroft-0.1git~20180219T045942~8511f4e/CMakeLists.txt
+@@ -34,4 +34,4 @@ add_subdirectory(plugin)
+ add_subdirectory(icons)
+ plasma_install_package(plasmoid org.kde.plasma.mycroftplasmoid)
+ 
+-install( DIRECTORY mycroft DESTINATION ${SYSCONF_INSTALL_DIR})
++install( DIRECTORY mycroft DESTINATION ${SHARE_INSTALL_PREFIX}/doc/packages/plasma-mycroft)

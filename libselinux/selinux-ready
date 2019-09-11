@@ -1,0 +1,272 @@
+#!/bin/bash
+
+KERNEL="unknown"
+INITRD="unknown"
+TD=""
+
+
+# init needs /selinux to be there
+check_dir()
+{
+	SLDIRS="/selinux /sys/fs/selinux"
+	FOUND="no"
+
+	for DIR in $SLDIRS; do
+		if [ -d $DIR ]; then
+			printf "\tcheck_dir: OK. $DIR exists.\n"
+			FOUND="yes"
+		fi
+	done
+
+	if [ $FOUND == "yes" ]; then
+		return 0
+	else
+		printf "\tcheck_dir: ERR. Neither of $SLDIRS does exist. Please execute 'mkdir /sys/fs/selinux' as root\n"
+		return 1
+	fi
+}
+
+check_filesystem()
+{
+	FSPATH="/proc/filesystems"
+	FSNAMES="securityfs selinuxfs"
+	OK="O"
+
+	for FSNAME in $FSNAMES; do
+		grep -w $FSNAME $FSPATH 1>&2 >/dev/null
+
+		if [ $? == 0 ]; then
+			printf "\tcheck_filesystem: OK. Filesystem '$FSNAME' exists.\n"
+		else
+			printf "\tcheck_filesystem: ERR. Filesystem '$FSNAME' is missing. Please enable SELinux while compiling the kernel.\n"
+			OK="1"
+		fi
+	done
+	if [ "$OK" == "0" ]; then
+		return 0;
+	else
+		return 1;
+	fi
+}
+
+check_boot()
+{
+	BPARAM1="security=selinux"
+	BPARAM2="selinux=1"
+
+	printf "\tcheck_boot: Assuming GRUB2 as bootloader.\n"
+
+	# look for parameters of the current kernel
+	CURRENT_KERNEL=$(uname -r)
+	OTHERS=""
+	RETVAL="FAIL"
+	while read BLINE
+	do
+		K=$(echo $BLINE | awk -F' ' '{print $2}')
+		KERNEL=$(basename $K)
+		K=$(echo $KERNEL | sed s/vmlinuz-//)
+
+		if [ "$K" == "$CURRENT_KERNEL" ]; then
+			INITRD=initrd-$K
+			RETVAL="OK"
+		else
+			OTHERS="$KERNEL $OTHERS"
+		fi
+	done < <(grep -- $BPARAM1 /boot/grub2/grub.cfg 2>/dev/null | grep -- $BPARAM2)
+
+	if [ "$RETVAL" == OK ]; then
+		printf "\tcheck_boot: OK. Current kernel '$KERNEL' has boot-parameters '$BPARAM1 $BPARAM2'\n"
+		printf "\tcheck_boot: OK. Other kernels with correct parameters: $OTHERS\n"
+		return 0
+	else
+		printf "\tcheck_boot: ERR. Boot-parameter missing for booting the kernel.\n"
+		printf "\t            Please use YaST2 to add 'security=selinux selinux=1' to the kernel boot-parameter list.\n"
+		return 1
+	fi
+}
+
+check_mkinitrd()
+{
+	if [ "$INITRD" == "unknown" ]; then
+		return 1
+	fi
+	MCMD="mount.*/root/proc.*"
+
+	if ! [ -f "/boot/$INITRD" ];then
+		printf "\tcheck_mkinitrd: ERR. Unable to locate '/boot/$INITRD'\n"
+		return 2
+	fi
+
+	cp /boot/$INITRD $TD/ 2>/dev/null
+
+	if ! [ -f "$TD/$INITRD" ];then
+		printf "\tcheck_mkinitrd: ERR. Error while copying initrd file.'\n"
+		return 2
+	fi
+
+
+	pushd . 2>&1>/dev/null
+	cd $TD
+	mkdir initrd-extracted
+	cd initrd-extracted
+	INITRD_FORMAT=$(file $TD/$INITRD | awk -F' ' '{print $2}')
+  case $INITRD_FORMAT in
+  'XZ' )
+    xz -d -c $TD/$INITRD | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+  'ASCII' )
+    /usr/lib/dracut/skipcpio $TD/$INITRD | xz -d | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+  'gzip' )
+    gzip -d -c $TD/$INITRD | cpio -i --force-local --no-absolute-filenames 2>/dev/null ;;
+  * )
+		printf "\tcheck_mkinitrd: ERR. Error while extracting initrd file.'\n"
+    return 2
+  esac
+  if [ -d boot ]; then 
+    grep -E -- $MCMD boot/* 2>&1 >/dev/null
+    FLG1=$?
+    grep -E -- load_policy boot/* 2>&1 >/dev/null
+    FLG2=$?
+  else
+    # looks like we're using dracut/systemd. We can only check if libselinux1
+    # exists
+    if [ -f lib64/libselinux.so.1 ]; then
+      # if this exists 
+      FLG1=0
+      FLG2=0
+    fi
+  fi
+	popd 2>&1>/dev/null
+
+	if [ $FLG1 == 0 -a $FLG2 == 0 ];then
+		printf "\tcheck_mkinitrd: OK. Your initrd seems to be correct.\n"
+		return 0
+	else
+		printf "\tcheck_mkinitrd: ERR. Your initrd seems not to mount /proc of\n"
+		printf "\t                the root filesystem during boot and/or load_policy\n"
+		printf "\t                is missing,\n"
+		printf "\t                this may be a reason for SELinux not working.\n"
+		return 1
+	fi
+}
+
+check_pam()
+{
+	AA_PAM=0
+	SE_PAM=0
+
+	# test for AA pam module
+	grep apparmor /etc/pam.d/* 2>&1 >/dev/null
+	FLG=$?
+	if [ $FLG == 0 ]; then
+		AA_PAM=1
+	fi
+
+	# test for SELinux pam module
+	grep selinux /etc/pam.d/* 2>&1 >/dev/null
+	FLG=$?
+	if [ $FLG == 0 ]; then
+		SE_PAM=1
+	fi
+
+	# suggest config
+	if [ $SE_PAM == 1 ] && [ $AA_PAM == 0 ]; then
+		printf "\tcheck_pam: OK. Your PAM configuration seems to be correct.\n"
+		return 0
+	fi
+		printf "\tcheck_pam: ERR. Your PAM configuration seems to be incorrect.\n"
+	if [ $AA_PAM == 1 ]; then
+		printf "             execute 'pam-config -d --apparmor' as root\n"
+	fi
+	if [ $SE_PAM == 0 ]; then
+		printf "             execute 'pam-config -a --selinux' as root\n"
+	fi
+
+	return 1
+}
+
+check_initupstart()
+{
+	CFGFILE="/etc/selinux/config"
+
+	if ! [ -f $CFGFILE ]; then
+		printf "\tcheck_initupstart: ERR. $CFGFILE does not exist.\n"
+		return 1;
+	fi
+}
+
+check_runlevel()
+{
+	if [ "$(systemctl is-enabled restorecond.service 2>/dev/null)" == "enabled" ]; then
+		printf "\tcheck_runlevel: OK. restorecond is enabled on your system\n"
+		return 0;
+	fi
+	printf "\tcheck_runlevel: ERR. please enable restorecond with systemctl enable restorecond.service.\n"
+	return 1
+}
+
+check_packages()
+{
+	PKGLST="checkpolicy policycoreutils selinux-tools libselinux1 libsepol1 libsemanage1 restorecond"
+	FAIL=0
+
+	for i in $PKGLST
+	do
+		rpm -q $i 1>&2 >/dev/null
+		if [ $? == 1 ];then
+			printf "\tcheck_packages: ERR. Package '$i' not installed, please run 'zypper in $i' as root\n"
+			FAIL=1
+		fi
+	done
+
+	if [ $FAIL == 0 ]; then
+		printf "\tcheck_packages: OK. All essential packages are installed\n"
+		return 0
+	else
+		return 1
+	fi
+}
+
+check_config()
+{
+	CF="/etc/selinux/config"
+
+	if [ -f $CF ];then
+		printf "\tcheck_config: OK. Config file seems to be there.\n"
+		# with -L because /etc/selinux/config is now a link to /etc/sysconfig/selinux-policy
+		if ! [ $(stat -L --printf=%a $CF) -eq "644" ]; then
+			printf "\tcheck_config: ERR. Config file '$CF' has wrong permissions.\n"
+			return 1
+		fi
+
+		# check that SELINUX is not disabled there
+	        SELINUX_MODE=$(grep "^\s*SELINUX\s*=" $CF | sed "s/SELINUX\s*=\(\S*\)\s*"/\\1/)
+		case "$SELINUX_MODE" in
+			permissive | enforcing )
+				printf "\tcheck_config: OK. SELINUX is set to '$SELINUX_MODE'.\n"
+				return 0
+				;;
+			* )
+				printf "\tcheck_config: ERR. SELINUX is set to '$SELINUX_MODE' in '$CF'. Should be either 'permissive' or 'enforcing'\n"
+				return 1
+				;;
+		esac
+	else
+		printf "\tcheck_config: ERR. Config file '$CF' is missing.\n"
+		return 1
+	fi
+}
+
+TD=$(mktemp -q -d /tmp/selinux-ready.XXXXXX)
+
+echo "Start checking your system if it is selinux-ready or not:"
+check_dir
+check_filesystem
+check_boot
+check_mkinitrd
+check_packages
+check_config
+check_initupstart
+check_pam
+check_runlevel
+
+rm -rf $TD

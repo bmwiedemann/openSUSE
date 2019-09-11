@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Feb  1 15:53:33 UTC 2015 - mailaender@opensuse.org
+
+- use en.opensuse.org/SourceUrls
+- make this a noarch package to silence rpmlint
+- adhere to the Mono packaging guidelines
+- automatic spec file cleanup
+
+-------------------------------------------------------------------
+Sat Sep  8 16:01:13 UTC 2012 - mailaender@opensuse.org
+
+- Update to 1.1.0
+  - Now featuring NAT-PMP support
+
+-------------------------------------------------------------------
+Wed Jan 27 17:48:08 UTC 2010 - ajorgensen@novell.com
+
+- Update to 1.0.2
+- Can't use make -jN
+
+-------------------------------------------------------------------
+Wed Oct 14 22:43:52 CEST 2009 - dimstar@opensuse.org
+
+- Require mono-nat by the -devel package.
+
+-------------------------------------------------------------------
+Sat Apr 25 12:33:22 CDT 2009 - oddrationale@gmail.com
+
+- Update to 1.0.1
+
+-------------------------------------------------------------------
+Mon Mar  2 14:15:42 MST 2009 - ajorgensen@novell.com
+
+- Initial package
+

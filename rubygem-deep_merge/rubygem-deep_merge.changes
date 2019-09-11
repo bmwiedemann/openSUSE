@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Sun Dec  3 19:14:38 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.1
+ see installed CHANGELOG
+
+  2017-11-16 Jason Frey <fryguy9@gmail.com>
+    * Ship version 1.2.1
+  
+    * Fixed release date in the gemspec.
+  
+  2017-11-16 Jason Frey <fryguy9@gmail.com>
+    * Ship version 1.2.0
+  
+  2017-04-25 Joe Rafaniello <jrafanie@redhat.com>
+    * Merge nil values or keep the original via an option
+
+-------------------------------------------------------------------
+Tue Aug  2 04:30:57 UTC 2016 - coolo@suse.com
+
+- updated to version 1.1.1
+ see installed CHANGELOG
+
+  2016-08-01 Jason Frey <fryguy9@gmail.com>
+    * Ship version 1.1.1
+  
+    * Fixed release date in the gemspec.
+  
+  2016-08-01 Jason Frey <fryguy9@gmail.com>
+    * Ship version 1.1.0
+  
+    * Add testing for newer Ruby 2.2, 2.3, head, and jruby-head.
+  
+  2016-06-14 Michael Sievers <michael_sievers@web.de>
+    * Add extend_existing_arrays option
+  
+  2016-06-07 Jason Frey <fryguy9@gmail.com>
+    * Add overwrite_arrays option
+  
+  2016-04-08 Dan Deleo <dan@kallistec.com>
+    * Remove support for old Ruby 1.8 and 1.9
+
+-------------------------------------------------------------------
+Wed Nov 26 10:00:56 UTC 2014 - tampakrap@opensuse.org
+
+- Version bump 1.0.1:
+  * Update knockout behavior to better handle nil (b7de40b5)
+  * Document how to use w/ Rails 3 via Bundler
+- Remove gem2rpm.yml as LINCENSE is fine now on gemspec
+
+-------------------------------------------------------------------
+Wed Nov 26 09:55:05 UTC 2014 - tampakrap@opensuse.org
+
+- Convert to the new ruby packaging schema
+
+-------------------------------------------------------------------
+Thu Nov 14 16:17:54 UTC 2013 - mrueckert@suse.de
+
+- initial package
+

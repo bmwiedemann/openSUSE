@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Tue May  1 12:29:12 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.0.7
+  * new synproxy support
+  * don't crash on NULL labelmap
+  * expose a copy of nf_conntrack_common.h
+
+-------------------------------------------------------------------
+Mon Aug 22 11:08:53 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.6
+* add support for IPv6 NAT
+* conntrack: add zone attribute to tuple
+
+-------------------------------------------------------------------
+Wed Sep  9 16:23:58 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.0.5
+* conntrack: add mark event filter
+* conntrack: compare: relax MARK/ZONE attribute comparison
+
+-------------------------------------------------------------------
+Mon Dec  8 23:44:17 UTC 2014 - jengelh@inai.de
+
+- Drop %version from subincludedir, it tends to break recompiles of
+  already-built trees on library updates.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:45:35 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Aug  7 13:09:48 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0.4
+* This release includes connlabel support, one memleak fix and
+  fixes in the comparison API.
+
+-------------------------------------------------------------------
+Mon Mar  4 19:17:33 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0.3
+* Treat the ATTR_HELPER_INFO attribute as the variable-length type
+  that it actually is.
+* Fix a use after free when nfct_clone was used with certain
+  attribute data types.
+
+-------------------------------------------------------------------
+Wed Nov 28 20:12:14 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Mon Oct  8 12:14:54 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.2
+* This release provides new interfaces to interact with libmnl,
+  and also has several fixes.
+
+-------------------------------------------------------------------
+Sat May 19 22:08:36 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.1
+* add NAT, expectfn and class support
+* conntrack: add new ATTR_GRP_[ORIG|REPL]_ADDR_[SRC|DST] attributes
+
+-------------------------------------------------------------------
+Wed Jan  4 18:28:21 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.0.0
+* build and compilation updates
+* expect: fix missing parsing of master tuple
+* expect: nfexp_snprintf prints expectation timeout if present
+* expect: nfexp_snprintf displays mask and master tuple information
+* expect: add nfexp_send()
+* expect: support CTA_EXPECT_HELP_NAME
+* src: clarify licensing terms of library (GPLv2+)
+* conntrack: fix size of CTA_PROTOINFO_TCP_FLAGS_ORIGINAL in ARM
+* conntrack: fix set operation for master IPv6 src and dst
+* expect: add nfexp_cmp
+
+-------------------------------------------------------------------
+Thu Dec 29 21:17:48 UTC 2011 - jengelh@medozas.de
+
+- SPDX format for License: tag
+- Use separate include directory to catch compile errors
+
+-------------------------------------------------------------------
+Thu Feb 24 19:22:03 UTC 2011 - jengelh@medozas.de
+
+- new upstream release 0.9.1
+* add support for CTA_SECCTX and CTA_EXPECT_ZONE
+* allow to use nfct handler for conntrack and expectations at
+  the same time
+* conntrack: add timestamp support
+
+-------------------------------------------------------------------
+Wed Sep  8 22:47:11 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 0.9.0
+* ct: fix regression with helpers for Linux kernel >= 2.6.34
+* ct: fix EINVAL if not TCP attributes are set for Linux
+  kernel <= 2.6.25
+
+-------------------------------------------------------------------
+Thu Jul 15 19:44:54 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 0.0.102
+  * support for conntrack zones
+  * support for TCP window scale factor
+
+-------------------------------------------------------------------
+Tue Feb 23 22:12:24 UTC 2010 - jengelh@medozas.de
+
+- new upstream release: 0.0.101
+- add baselibs.conf
+- use %_smp_mflags
+- remove unnecessary PreReq: glibc
+- secure the *.la delete call
+- wrap description at col 70
+
+-------------------------------------------------------------------
+Sun Sep 20 16:54:49 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 0.0.100
+

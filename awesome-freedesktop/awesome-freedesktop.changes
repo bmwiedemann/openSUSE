@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Jan 10 16:54:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.0~git20170109 (changes since 0.0+git20120906):
+  * Port to Lua 5.3.
+  * Port to Awesome 4.0.
+  * Fix gfind in utils.lua.
+  * desktop.lua: Fix a typo that caused Thunar to always be used.
+  * Look for icons in all directories from the specification.
+- Remove awesome-freedesktop-3.5-compat.patch: obsolete.
+
+-------------------------------------------------------------------
+Tue Nov 10 14:07:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Add awesome-freedesktop-3.5-compat.patch (boo#953503).
+
+-------------------------------------------------------------------
+Thu Nov  8 11:41:22 UTC 2012 - toganm@opensuse.org
+
+- Change license to GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Oct 31 18:08:39 UTC 2012 - toganm@opensuse.org
+
+- Update to git version 201209061058
+  Cleanup spec to guidelines 
+
+-------------------------------------------------------------------
+Fri Nov  4 18:18:28 UTC 2011 - toganm@opensuse.org
+
+- initial checkin via service file

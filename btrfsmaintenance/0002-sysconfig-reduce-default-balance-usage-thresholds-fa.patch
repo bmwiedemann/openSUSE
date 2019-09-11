@@ -1,0 +1,56 @@
+From 194fd3a02f686737ae7d266d72d35a3418a5903b Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Fri, 25 Jan 2019 13:29:20 -0500
+Subject: sysconfig: reduce default balance usage thresholds
+References: fate#325529 jsc#SLE-3188
+
+In the early days of btrfs, the only way to clean up empty block groups
+was to perform a balance operation to coalesce block groups that were
+mostly free and release the newly empty block groups.
+
+Since then, btrfs cleans up empty block groups automatically so the need
+for regular aggressive balancing has been reduced substantially.  Since
+workload shifts could still produce ENOSPC issues, we still want to
+perform a periodic balance but we can do it much less aggressively.
+---
+ sysconfig.btrfsmaintenance | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/sysconfig.btrfsmaintenance b/sysconfig.btrfsmaintenance
+index 4088254..5a34c83 100644
+--- a/sysconfig.btrfsmaintenance
++++ b/sysconfig.btrfsmaintenance
+@@ -52,18 +52,18 @@ BTRFS_BALANCE_PERIOD="weekly"
+ 
+ ## Path:        System/File systems/btrfs
+ ## Type:        string
+-## Default:     "1 5 10 20 30 40 50"
++## Default:     "5 10"
+ #
+ # The usage percent for balancing data block groups.
+ #
+ # Note: default values should not disturb normal work but may not reclaim
+ # enough block groups. If you observe that, add higher values but beware that
+ # this will increase IO load on the system.
+-BTRFS_BALANCE_DUSAGE="1 5 10 20 30 40 50"
++BTRFS_BALANCE_DUSAGE="5 10"
+ 
+ ## Path:        System/File systems/btrfs
+ ## Type:        string
+-## Default:     "1 5 10 20 30"
++## Default:     "3"
+ #
+ # The usage percent for balancing metadata block groups. The values are also
+ # used in case the filesystem has mixed blockgroups.
+@@ -71,7 +71,7 @@ BTRFS_BALANCE_DUSAGE="1 5 10 20 30 40 50"
+ # Note: default values should not disturb normal work but may not reclaim
+ # enough block groups. If you observe that, add higher values but beware that
+ # this will increase IO load on the system.
+-BTRFS_BALANCE_MUSAGE="1 5 10 20 30"
++BTRFS_BALANCE_MUSAGE="3"
+ 
+ ## Path:        System/File systems/btrfs
+ ## Type:        string
+-- 
+2.16.4
+

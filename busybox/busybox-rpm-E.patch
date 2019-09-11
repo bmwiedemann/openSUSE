@@ -1,0 +1,30 @@
+--- archival/rpm.c
++++ archival/rpm.c	2019/03/29 10:59:36
+@@ -358,7 +358,7 @@
+ 	INIT_G();
+ 	G.pagesize = getpagesize();
+ 
+-	while ((opt = getopt(argc, argv, "iqpldc")) != -1) {
++	while ((opt = getopt(argc, argv, "iqpldcE:")) != -1) {
+ 		switch (opt) {
+ 		case 'i': /* First arg: Install mode, with q: Information */
+ 			if (!func) func = rpm_install;
+@@ -382,6 +382,18 @@
+ 			func |= rpm_query_list;
+ 			func |= rpm_query_list_config;
+ 			break;
++		case 'E': /* special hack for kiwi */
++		        if (strcmp (optarg, "%_dbpath") == 0)
++			  {
++			    if (access ("/usr/lib/sysimage/rpm", F_OK) == 0)
++			      printf ("/usr/lib/sysimage/rpm\n");
++			    else
++			      printf ("/var/lib/rpm\n");
++			    return 0;
++			  }
++			else
++			  bb_show_usage();
++			break;
+ 		default:
+ 			bb_show_usage();
+ 		}

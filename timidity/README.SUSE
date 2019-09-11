@@ -1,0 +1,9 @@
+To use either of the FLUID soundfonts (gm or gs), comment out the default
+paths and uncomment either of the fluid lines in /usr/share/timidity/timidity.cfg.
+
+When using pulseaudio the use of timidity as a system wide daemon is discouraged,
+because both pulseaudio and timidity need the same device exclusively.
+However timidity can be started as a daemon for the user to provide the midi
+ports he/she needs for i.e. canorus. On the console of the user give the command:
+
+timidity -iAq -Oe -s 44100

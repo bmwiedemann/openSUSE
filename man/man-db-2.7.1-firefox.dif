@@ -1,0 +1,17 @@
+---
+ src/man.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- src/man.c
++++ src/man.c	2018-11-23 13:08:52.119497206 +0000
+@@ -2020,7 +2020,9 @@ static void format_display (pipeline *de
+ 				error (CHILD_FAIL, 0,
+ 				       "no browser configured, so cannot show "
+ 				       "HTML output");
+-		}
++		} else if (!disp_status)
++			sleep (5);	/* firefox runs into background to fast */
++
+ 		free (browser_list);
+ 		if (remove_directory (htmldir, 0) == -1)
+ 			error (0, errno, _("can't remove directory %s"),

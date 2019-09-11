@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Dec 10 06:27:48 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Test-CleanNamespaces/Changes
+
+  0.24      2018-12-09 20:20:01Z
+    - fix detection of constant subs on some platforms for perls [5.10,5.20)
+
+-------------------------------------------------------------------
+Tue Jun 26 06:05:41 UTC 2018 - coolo@suse.com
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Test-CleanNamespaces/Changes
+
+  0.23      2018-06-26 00:00:13Z
+    - properly skip potentially-problematic tests when needed, due to circular
+      dependencies between Moose and Test::CleanNamespaces (RT#125678)
+
+-------------------------------------------------------------------
+Fri Aug 19 06:01:59 UTC 2016 - coolo@suse.com
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Test-CleanNamespaces/Changes
+
+  0.22      2016-08-19 03:45:32Z
+    - properly find the list of modules to test (regression since 0.19)
+
+-------------------------------------------------------------------
+Tue Aug 16 05:55:27 UTC 2016 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Test-CleanNamespaces/Changes
+
+  0.21      2016-08-16 01:31:28Z
+    - no changes since 0.20
+  
+  0.20      2016-06-19 02:41:02Z (TRIAL RELEASE)
+    - switch to plain old Exporter, removing build_* subs from the API,
+
+-------------------------------------------------------------------
+Thu Jun 23 07:07:32 UTC 2016 - coolo@suse.com
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-Test-CleanNamespaces/Changes
+
+  0.19      2016-06-17 05:00:35Z
+    - removed dependencies on namespace::clean, Sub::Exporter, File::Find::Rule
+
+-------------------------------------------------------------------
+Thu Apr 16 04:56:58 UTC 2015 - coolo@suse.com
+
+- initial package 
+

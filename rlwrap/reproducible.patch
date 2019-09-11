@@ -1,0 +1,25 @@
+https://github.com/hanslub42/rlwrap/pull/89
+https://bugzilla.opensuse.org/show_bug.cgi?id=1102408
+
+commit 2bca93239ebf14578871ece5c4d83d8c4898824e
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Aug 17 17:33:18 2018 +0200
+
+    Fix detection of ENABLE_MIRROR_ARGS
+    
+    While working on reproducible builds for openSUSE, I found that
+    without this patch,
+    this produced different results on VMs with 1 and 4 cores
+
+Index: rlwrap-0.43/configure
+===================================================================
+--- rlwrap-0.43.orig/configure
++++ rlwrap-0.43/configure
+@@ -7094,6 +7094,7 @@ _ACEOF
+   $CC -o conftest conftest.c
+   ./conftest $random_nonsense1 >/dev/null 2>&1 &
+   CONFTEST_PID=$!
++  sleep 1
+   if grep $random_nonsense2 $opt_proc_mountpoint/$CONFTEST_PID/cmdline >/dev/null 2>&1; then
+ 
+ $as_echo "#define ENABLE_MIRROR_ARGS 1" >>confdefs.h

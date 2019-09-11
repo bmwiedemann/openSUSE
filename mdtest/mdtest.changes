@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Oct 21 07:06:38 UTC 2017 - mpluskal@suse.com
+
+- Update mpi dependencies
+
+-------------------------------------------------------------------
+Sun Nov 13 20:40:17 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Sat Jul  2 13:46:02 UTC 2016 - mpluskal@suse.com
+
+- Use mpicc from openmpi
+- Build with optflags
+
+-------------------------------------------------------------------
+Thu Apr 16 12:54:12 UTC 2015 - mpluskal@suse.com
+
+- Update url
+
+-------------------------------------------------------------------
+Thu Apr 16 06:48:40 UTC 2015 - jhura@suse.com
+
+- initial package for version 1.9.3
+

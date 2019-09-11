@@ -1,0 +1,27 @@
+From 155aa52dca9272db492990ad737256dada1c4364 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Mon, 8 Oct 2018 17:52:07 +0200
+Subject: [PATCH] Make profiles a package.
+
+Add UTF-8 encoding
+
+Add a docstring
+---
+ salt/cli/support/profiles/__init__.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 salt/cli/support/profiles/__init__.py
+
+diff --git a/salt/cli/support/profiles/__init__.py b/salt/cli/support/profiles/__init__.py
+new file mode 100644
+index 0000000000..b86aef30b8
+--- /dev/null
++++ b/salt/cli/support/profiles/__init__.py
+@@ -0,0 +1,4 @@
++# coding=utf-8
++'''
++Profiles for salt-support.
++'''
+-- 
+2.19.0
+
+

@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Mon Apr  2 13:04:38 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.5.10
+  * Fixed a warning in ibus-anthy.appdata.xml 
+  * Fix page_up, page_down, candidate_clicked 
+  * Fixed circle_typing_method for Alt-Romaji, Ctrl-/
+  * Added Shift-F7 shortcut key to convert all to Katakana
+  * tests: Add automation testing
+  * Migrated DConf to GSettings 
+  * Added ISSUE_TEMPLATE
+  * Updated emoji dictionary
+  * Added po/es.po po/cs.po
+- Switch to python3.
+
+-------------------------------------------------------------------
+Sun May 21 14:45:49 UTC 2017 - ftake@geeko.jp
+
+- update to 1.5.9
+  * Renamed anthy.appdata.xml to ibus-anthy.appdata.xml
+    and update information
+  * Fixed environment variables in anthy.xml and scripts (#4)
+  * Fixed __cmd_predict()
+  * Enabled to click candidate and page up/down on Emoji lookup table
+  * Updated Emoji dictionary for Unicode 9.0 and Emoji 3.0
+
+- update to 1.5.8
+  * Updated URL in anthy.appdata.xml.in
+  * Fixed bytes to str in thumb.py for python3
+  * Fixed get_xkb_layout in thumb.py
+  * setup: Delete a check button "Show input mode icon"
+  * Implement "Automatically commit" with periods
+  * Updated emoji.t
+  * Fixed PyGIWarning: GdkX11 was imported without specifying a version
+  * Added Variation Sector in emoji.t
+  * Split emoji.t into emoji-each.t and emoji-emoji.t
+
+-------------------------------------------------------------------
+Thu Oct  1 13:00:57 UTC 2015 - ftake@geeko.jp
+
+- fix no desktop DB update and icon theme cache update
+
+-------------------------------------------------------------------
+Tue Sep 22 09:39:47 UTC 2015 - ftake@geeko.jp
+
+- Stop providing locale(ja)
+  * Most of ja locale users do not need this anymore
+- Update the upstream URL
+
+-------------------------------------------------------------------
+Sat Jul 25 18:40:34 UTC 2015 - ftake@geeko.jp
+
+- update to 1.5.7
+  * Fixed no parent when click on shortcut keys
+  * Updated emoji table
+  * Added textdomain in default.xml
+  * Added anthy.appdata.xml
+  * Fixed to import sys
+  * Added icon_prop_key support for IBus 1.5.11 
+
+-------------------------------------------------------------------
+Sun Sep 28 12:05:16 UTC 2014 - ftake@geeko.jp
+
+-update to 1.5.6
+  * Remove references to deprecated GTK classes
+  * Replace FileNotFoundError with IOError for Python 2
+    (Fix bnc#898849)
+  * Change fequencies of symbols from 500 to 0
+  * Add emojis to the dictionary
+  * Set preview_lines to -1 for zip code
+  * Add search entry in the view dictionary dialog
+
+-------------------------------------------------------------------
+Wed Mar 19 20:13:11 CST 2014 - hillwood@linuxfans.org
+
+- update to 1.5.5
+  * Fixed IOError in print sys.stderr when the parent process exits.
+  * Added python3 (not enabled for this package).
+  * Launched an error dialog when .anthy/last-record2_default.utf8 is broken.
+  * Enabled python3 in data/zipcode-textdic.py
+
+-------------------------------------------------------------------
+Mon Feb 17 09:53:07 UTC 2014 - fcrozat@suse.com
+
+- Move libanthygobject-1.0.so.5 to main package, devel package
+  shouldn't be required by main package.
+
+-------------------------------------------------------------------
+Tue Oct  8 10:08:51 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.5.4
+  * Removed g_type_init() calls.
+  * Fixed ibus-engine-anthy --xml without display
+  * Fixed kana_voiced_consonant_no_rule for 'bo'.
+  * Fixed dicts.
+  * Updated symbol.t with Seiza.
+  * Added Era dict.
+  * Updated source files with the latest GPL 2.0.
+  * Imported anthy zipcode.t into ibus-anthy.
+  * Added to check the input purpose for gnome-shell password dialog.
+  * Implemented ISO 14755 with Ctrl+Shift+u in LATIN mode.
+  * Extracted prefix in ANTHY_ZIPCODE_FILE for sh test.
+
+-------------------------------------------------------------------
+Mon Jul  8 00:01:31 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.5.3
+  * Fixed some bugs
+
+-------------------------------------------------------------------
+Wed Jan 22 11:17:04 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.5.0
+  * Added ibus menu customization.
+  * Added us layout table for Kana.
+  * Added keyboard layout customization.
+  * Enabled IBusProperty.symbol with ibus 1.5 .
+  * Add a .desktop file for ibus-setup-anthy
+  * Updated configure.ac to use ibus pygobject3.
+  * Converted pygtk2 to gir gtk3.
+  * Added to sync the user config xml between versions.
+  * Updated translations.
+  * Added ibus menu customization.
+  * Replaced the legacy icon gtk-preferences with preferences-desktop.
+  * Added el.po.
+  * Fixed to delete arch depended lines. (#884031)
+
+-------------------------------------------------------------------
+Fri Dec 14 12:08:11 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.4.99.20121006.
+  * Fixed GtkBuilder bindtextdomain in ibus-setup.
+  * Updated configure.ac to use ibus pygobject3.
+  * Fixed MBCS dict file names (#1479)
+  * Add a .desktop file for ibus-setup-anthy
+  * Added IBUS_VERSION_TEST to make sure the latest ibus is used.
+  * First round of string fixes.
+  * Added anthy themed icon.
+  * Used ibus_config_get_values
+  * Added old repeated chars in symbol.t and oldchar.t
+  * Fixed IBus.Bus.get_config is null. (#848023)
+  * Fixed GLib.Variant.dup_strv for pygobject3 3.3.4 or later. (#854161)
+  * Fixed a UI string; katakana. (#1508)
+  * Enabled IBusProperty.symbol with ibus 1.5 .
+  * Fixed IBus.LookupTable->candidates->len > 0 (#860135)
+  * Added keyboard layout customization.
+  * Updated translations.
+  * Update French translation
+  * Disabled noinst data.
+
+-------------------------------------------------------------------
+Tue Jun 26 12:03:45 CEST 2012 - tiwai@suse.de
+
+- back to version 1.2.7, as 1.4rc is still too unstable and
+  doesn't work on M17N/12.1 systems at all
+
+-------------------------------------------------------------------
+Sat Jun  9 11:24:33 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.3.99.20120327(1.4rc).
+
+-------------------------------------------------------------------
+Wed Jun  6 22:31:17 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.2.7
+
+-------------------------------------------------------------------
+Fri Jul 22 16:54:55 CEST 2011 - tiwai@suse.de
+
+- Add missing locale-specific provides tag (bnc#707712)
+
+-------------------------------------------------------------------
+Tue Jun 14 03:17:14 UTC 2011 - swyear@gmail.com
+
+- Update to 1.2.6 
+  translation updates; gconf-SEGV fix; fixes for new ibus; etc
+
+-------------------------------------------------------------------
+Wed Mar 24 14:17:56 CET 2010 - tiwai@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Jan 28 08:39:54 UTC 2010 - mxwu@novell.com
+
+- Initial import 
+

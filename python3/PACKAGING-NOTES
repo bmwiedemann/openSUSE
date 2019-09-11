@@ -1,0 +1,93 @@
+Notes for packagers of Python3
+==============================
+
+0. Faster build turnaround
+--------------------------
+
+By default, python builds with profile-guided optimization. This needs
+an additional run of the test suite and it is generally slow.
+PGO build takes around 50 minutes.
+
+For development, use "--without profileopt" option to disable PGO. This
+shortens the build time to ~5 minutes including test suite.
+
+I. python3 and python3-base naming confusion
+--------------------------------------------
+
+1. the important stuff first
+
+This is package "python3". However, master spec file for this package is
+"python3-base.spec".  That means that all important changes should be put into
+"python3-base.spec" and then submitted against "python3" in OBS.
+
+Changelogs of python3-base and python3 will be merged at some point. Now they
+aren't, but feel free to enter changes in either or both.
+
+2. why is that?
+
+Technical reasons. python3-base was originally supposed to be a minimal package
+with no external dependencies - so that it can build early in the distribution
+rebuild. There were also some build loops involved.  Turns out, 90% of Python's
+standard library can be built without external dependencies. That's what we do -
+in python3-base. python3 then only contains the remaining bits -
+dependency-heavy subpackages, plus small bits depending on common packages
+(OpenSSL, expat, readline) Logically, python3-base must be the master spec
+because it builds the important parts.
+
+3. why not rename the whole package to python3-base?
+
+Because that would be stupid. The package is called python3.
+
+4. so why not make python3 the minimal package and put the rest in
+python3-the-rest?
+
+Because other distributions use python3-base as the minimal package as well.
+Also, packages that require python3 expect the whole deal, not a stripped-down
+version.
+
+5. alright, let's build python3-base from python3.spec and python3 from
+someother.spec
+
+Tried that, abandoned it. It is more trouble than it's worth.
+
+
+II. pre_checkin.sh
+------------------
+
+Our pre_checkin.sh takes care of copying relevant portions of python3-base.spec
+to python3.spec.  The "relevant portions" are:
+* list of patches list of macro definitions patch apply sequence in %prep
+* configure call and build setup for %build
+
+That means that when you're adding a patch, you need only add it to
+python3-base.spec and it will appear magically in python3.spec too.  (as long as
+you remember to run pre_checkin.sh or have automation in place to do it for you)
+
+If you want to replicate another section from py3-base to py3, just mark the
+section with NEW-SECTION-BEGIN and NEW-SECTION-END (in both py3-base and py3)
+and add NEW-SECTION to list of $sections in pre_checkin.sh
+(note however that the order of sections in pre_checkin.sh must be the same as
+they are found in the spec files)
+
+pre_checkin.sh also finds the newest python tarball in the source directory and
+updates versions in all specfiles to match it. Therefore, you usually don't need
+to update version numbers in specs when you update Python
+
+We also regenerate import_failed map and check test exclusion lists.
+
+III. import_failed.map
+----------------------
+
+This is a mechanism installed as part of python3-base, that places shim modules
+on python's path (through a generated zzzz-import-failed-hooks.pth file, so that
+it is imported as much at the end as makes sense; and an _import_failed subdir
+of /usr/lib/pythonX.Y). Then when the user tries to import a module that is part
+of a subpackage, the ImportError will contain a helpful message telling them
+which missing subpackage to install.
+
+This can sometimes cause problems on non-standard configurations, if the pth
+gets included too early (for instance if you are using a script to include all
+pths by hand in some strange order). Just something to look out for.
+
+All this is based on information in import_failed.map, which is generated from
+spec file filelists by pre_checkin.sh

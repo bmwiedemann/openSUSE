@@ -1,0 +1,24 @@
+---
+ libeppic/eppic_var.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/libeppic/eppic_var.c
++++ b/libeppic/eppic_var.c
+@@ -828,7 +828,7 @@ var_t*v;
+     evaluation of sizeof or typeof.
+ */
+ int eppic_getvlev() { return vlev; }
+-eppic_vpush()
++void eppic_vpush()
+ {
+     if(vlev==S_MAXSDEEP) {
+ 
+@@ -841,7 +841,7 @@ eppic_vpush()
+     }
+ }
+ 
+-eppic_vpop()
++void eppic_vpop()
+ {
+     if(vlev) {
+         eppic_setsvlev(sidx[--vlev]);

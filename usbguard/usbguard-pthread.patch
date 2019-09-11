@@ -1,0 +1,20 @@
+Index: usbguard-0.7.4/Makefile.am
+===================================================================
+--- usbguard-0.7.4.orig/Makefile.am
++++ usbguard-0.7.4/Makefile.am
+@@ -343,6 +343,7 @@ usbguard_daemon_CPPFLAGS=\
+ 	@audit_CFLAGS@
+ 
+ usbguard_daemon_LDADD=\
++	-lpthread \
+ 	$(top_builddir)/libusbguard.la \
+ 	@seccomp_LIBS@ \
+ 	@libcapng_LIBS@ \
+@@ -608,6 +609,7 @@ nodist_usbguard_applet_qt_SOURCES=\
+ 	src/GUI.Qt/TargetDelegate.moc.cpp
+ 
+ usbguard_applet_qt_LDADD=\
++	-lpthread \
+ 	$(top_builddir)/libusbguard.la \
+ 	@qt_LIBS@
+ 

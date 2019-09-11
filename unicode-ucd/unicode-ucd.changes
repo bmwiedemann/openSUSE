@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Nov 13 03:31:13 UTC 2018 - Cliff Zhao <qzhao@suse.com>
+
+- Drop copyright.html, add COPYING: Move copyright.html to a TXT 
+  file, to meet openSUSE packages law requirement. 
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:38 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 26 11:38:25 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Wed Jun 21 13:57:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to Unicode 10.0.0.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:46:36 UTC 2016 - zaitor@opensuse.org
+
+- Initial packaging for openSUSE, version 9.0.0.
+

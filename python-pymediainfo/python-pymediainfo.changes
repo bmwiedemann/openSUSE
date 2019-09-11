@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Apr 22 13:56:26 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0
+  * Drop Python 2.6 compatibility
+  * Allow pickling of Track instances (#68)
+  * Remove xml attributes from Track and MediaInfo objects,
+    populate the tracks attribute immediately (03f6242)
+  * Implement __eq__ forTrack and MediaInfo objects
+  * Add an option to obtain MediaInfo's text output (#66)
+  * Add an option to return non-complete MediaInfo (#66)
+  * Disable LegacyStreamDisplay explicitly by default, make it
+    configurable (see 9aa65d8 for details)
+  version 3.2.1:
+  * Generate sdists on Linux instead of OSX (#67)
+  version 3.2:
+  * Publish wheels containing libmediainfo (#59, thanks to
+    @bgermann)
+  version 3.1:
+  * Add an option to control parsing speed (#65)
+  version 3.0:
+  * Do not ignore exceptions when invalid XML is passed (#53)
+  * Raise RuntimeError if parsing fails
+  * Add an option to ignore UTF-8 encoding errors, fixes (#54)
+  * Use proper XPath to detect track elements in XML (#55)
+  * Fix handling of non-existent files
+  * Fix tests with libmediainfo ≥ 18.08 (#58)
+  * Try to load libmediainfo from the module folder
+
+-------------------------------------------------------------------
+Wed Sep 12 07:12:47 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.3.0
+  * Add setuptools to install_requires (#50)
+  * Add an option to extract cover_data for libmediainfo ≥ 18.03
+    (#51)
+  * Get version from setuptools_scm
+
+-------------------------------------------------------------------
+Sat Nov 11 23:21:26 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2.0
+  * Support MediaInfo v17.10
+  * Make parse support non-standard library locations (#24)
+  * Make parse support pathlib objects (#40)
+  * Add PyPy and PyPy3 support
+  * Run tests with pytest instead of nose
+
+- Dropped python-pymediainfo-skip_URL_test.patch (skipping network
+  test from the command line now)
+
+-------------------------------------------------------------------
+Fri Jul  7 10:43:14 UTC 2017 - aloisio@gmx.com
+
+- Initial package (2.1.9)

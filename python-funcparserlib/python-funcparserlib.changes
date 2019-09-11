@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:48:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 19 22:20:34 UTC 2017 - toddrme2178@gmail.com
+
+- Source must be https.
+
+-------------------------------------------------------------------
+Wed Apr 19 19:47:05 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Sun Mar 13 20:53:41 UTC 2016 - dmueller@suse.com
+
+- add license
+
+-------------------------------------------------------------------
+Thu Oct 31 14:45:17 UTC 2013 - mcihar@suse.cz
+
+- Initial packaging
+

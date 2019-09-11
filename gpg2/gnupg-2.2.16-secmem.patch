@@ -1,0 +1,35 @@
+Index: gnupg-2.2.16/g10/gpg.c
+===================================================================
+--- gnupg-2.2.16.orig/g10/gpg.c
++++ gnupg-2.2.16/g10/gpg.c
+@@ -973,7 +973,7 @@ make_libversion (const char *libname, co
+ 
+   if (maybe_setuid)
+     {
+-      gcry_control (GCRYCTL_INIT_SECMEM, 0, 0);  /* Drop setuid. */
++      gcry_control (GCRYCTL_INIT_SECMEM, 4096, 0);  /* Drop setuid. */
+       maybe_setuid = 0;
+     }
+   s = getfnc (NULL);
+@@ -1125,7 +1125,7 @@ build_list (const char *text, char lette
+   char *string;
+ 
+   if (maybe_setuid)
+-    gcry_control (GCRYCTL_INIT_SECMEM, 0, 0);  /* Drop setuid. */
++    gcry_control (GCRYCTL_INIT_SECMEM, 4096, 0);  /* Drop setuid. */
+ 
+   indent = utf8_charcount (text, -1);
+   len = 0;
+Index: gnupg-2.2.16/sm/gpgsm.c
+===================================================================
+--- gnupg-2.2.16.orig/sm/gpgsm.c
++++ gnupg-2.2.16/sm/gpgsm.c
+@@ -533,7 +533,7 @@ make_libversion (const char *libname, co
+ 
+   if (maybe_setuid)
+     {
+-      gcry_control (GCRYCTL_INIT_SECMEM, 0, 0);  /* Drop setuid. */
++      gcry_control (GCRYCTL_INIT_SECMEM, 4096, 0);  /* Drop setuid. */
+       maybe_setuid = 0;
+     }
+   s = getfnc (NULL);

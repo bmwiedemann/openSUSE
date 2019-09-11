@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:17:34 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Sun Apr 15 12:55:31 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to version 2.5.2
+  * Bugfix release: fixed additional MessageContent parameters not
+    working, reported by Frank Schmirler (see
+    http://draisberghof.de/usb_modeswitch/bb/viewtopic.php?p=18369).
+  * Fixed "early crash" when killed before libusb context
+    initialization (see
+    https://bugzilla.redhat.com/show_bug.cgi?id=1358472), reported
+    by Lubomir Rinteln.
+  * Fixed bad string reference, reported by Lubomir Rintel, (see
+    http://draisberghof.de/usb_modeswitch/bb/viewtopic.php?p=18238).
+  * Fixed detection of systemd if /sbin/init is a cascaded symlink
+    (see
+    http://draisberghof.de/usb_modeswitch/bb/viewtopic.php?p=18218).
+  * Fixed quirk in help message from usb_modeswitch binary.
+
+-------------------------------------------------------------------
+Tue Aug 22 20:27:49 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.5.1
+  * New parameter "HuaweiAltMode", uses an alternative Huawei
+    standard bulk message which will either provide NCM
+    (newer modems) or plain PPP ports (older modems).
+  * New option in the global configuration file
+    "HuaweiAltModeGlobal", allowing easy override of
+    "HuwaeiNewMode" with "HuaweiAltMode".
+  * Reworked USB configuration switching, configuring a device
+    reset first before setting the target configuration.
+  * Improved driver detachment, now taking all configured
+    interfaces into account.
+- Update usb-modeswitch-data package to version 20170806
+  * Added devices: [03f0:371d] HP un2430, [03f0:4b1d] HP hs2434,
+    [03f0:4e1d] HP lt4111, [03f0:a31d] HP lt4132,
+    [0846:0fff] Netgear AirCard 779S,
+    [12d1:15ec] Vodafone/Huawei K5150.
+  * Corrected/amended configs: [0922:1003] Dymo LabelManager 420P,
+    [0922:1007] Dymo LabelManager Wireless PnP,
+    [1199:0fff] Sierra devices.
+  * Removed configs: [1004:61aa] LG VL600.
+- Updated file device_reference.txt.
+- Added file parameter_reference.txt
+
+-------------------------------------------------------------------
+Fri Feb 24 18:57:27 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update usb-modeswitch-data package to version 20170205
+  * Bugfix release: Removed all catch-all fallback config files as
+    they can affect unrelated devices - fixes (rh#1374913).
+
+-------------------------------------------------------------------
+Sat Jan 28 22:39:32 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.5.0
+  * ATTENTION: Parameter transmitted from udev now reduced to %k
+    (kernel name), however, rules file parameters can be '%b/%k' or
+    '%k' - this fixes issues with parameter handling by the systemd
+    unit file.
+  * Remove endpoint reset ahead of bulk message transmission, only
+    reset if endpoints are actually stalled, helping with quirky
+    device behaviour (see www.draisberghof.de/usb_modeswitch/bb/
+    viewtopic.php?f=2&t=2582 ).
+  * Stability fix by making a buffer in the config parser static,
+    preventing problems seen in Fedora (thanks to Lubomir Rintel
+    for patches and hints regarding the three previous issues).
+  * Removed premature driver unbinding in wrapper which could
+    disrupt certain devices already in target mode (reported by
+    Aleksander Morgado).
+  * Improved check for determining install mode (essential with
+    generic config files present, e.g. 12d1:#linux).
+- Update usb-modeswitch-data package to version 20170120.
+
+-------------------------------------------------------------------
+Fri Oct 28 14:33:42 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update usb-modeswitch-data package to version 20160803.
+- Added systemd as BuildRequires and fixed install of service file.
+
+-------------------------------------------------------------------
+Tue Sep 13 16:04:56 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Avoid a race in make install, which lead to packaging a truncated
+  usb_modeswitch_dispatcher script. Fixes boo#998641
+
+-------------------------------------------------------------------
+Sat Aug 20 17:25:12 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Install required usb_modeswitch@.service, fixes boo#994763
+
+-------------------------------------------------------------------
+Fri Jul 29 13:55:21 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.4.0
+  * ATTENTION: All ad-hoc driver binding code (using new_id driver
+    attribute) removed - was a potential source of side effects and
+    should now be obsoleted by good kernel support for modems.
+  * Added "dummy" setting for config files, to conditionally
+    refrain from handling a device (see this topic:
+    www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&t=2458).
+  * Extended StandardEject sequence to include LUN 1, required for
+    some D-Link devices.
+  * Add device class 239 ("miscellaneous") to sanity check (thanks
+    to Daniel Drake for reporting).
+  * udev shell script - removed driver binding, removed almost all
+    waiting and forking, improved check for systemd (thanks to
+    Daniel Drake for problem analysis and solution, see this
+    topic/patch:
+    www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?p=16777#p16777,
+    gist.github.com/dsd/9f83c4830ab78ce94078aedb2cf16a8f).
+
+-------------------------------------------------------------------
+Tue Feb 16 15:03:17 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.3.0
+  * ATTENTION: -I flag is now history and being ignored - determining
+    SCSI attributes is really an 'outside task'.
+  * -n flag (NeedResponse) is being ignored, CSW response will now
+    always be read.
+  * Introduction of parameter "OptionMode", wrapping the standard
+    bulk message for all newer Huawei devices.
+  * Fixed missing variable initialization in dispatcher script which
+    could lead to crash (thanks, Dmitry Kunilov!).
+  * Fixed bug which prevented early logging.
+  * Fixed success report for Cisco AM10.
+  * Some source code formatting and clean-up.
+- Removed fix for bnc#899013, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Nov 13 14:03:47 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.2.6
+  * Renamed function abort(), avoiding possible conflicts in static
+    builds with libjim (thanks, Gustavo Zacharias).
+  * Removed storage class check of interface 0 from dispatcher,
+    enabling new multi-config devices in data package 20151101.
+
+-------------------------------------------------------------------
+Fri Jul 24 09:34:00 UTC 2015 - jweberhofer@weberhofer.at
+
+- Removed unused usb_modeswitch-data.rpmlintrc
+
+- Removed changelog from documentation
+
+- Cleaned up specfile
+
+- Update to version 2.2.5
+  * Fixed bug in configuration check, possibly leading to segfault (thanks,
+    Leonid Lisovskiy); 
+  * fixed Pantech commandline parameter evaluation (was not working at all);
+  * added driver unbind step via sysfs in wrapper, getting rid of the
+    USB subsystem complaint "interface 0 claimed by usb-storage while
+    'usb_modeswitch' <does this and that>"
+- Update to version 2.2.4
+  * Fixed buggy check of USB configuration selection (possibly leading
+    to segfault), tested with Alcatel X602D;
+  * removed call to 'libusb_strerror'
+    from libusb initialization - not available in earlier libusb1 versions
+- Update to version 2.2.3
+  * Fixed problem arising with systemd version 221 (220 untested), which
+    affects starting the usb_modeswitch systemd unit from the sh script
+    (reported by Archlinux users)
+- Update to version 2.2.2, 2015/06/27
+  * Added catch for libusb init error (thanks, Henrik Gustafsson);
+  * removed global function result variable; added catch for USB configuration
+    read error (both thanks to "otila"); 
+  * fixed wrapper script where port search for symlinking modem port was
+    broken ("/dev/gsmmodem");
+  * changed PantechMode parameter to represent different targets;
+  * added global config option to disable MBIM checking and setting 
+    alltogether (request from "kai");
+  * changed udev sh script so that systemd processing takes precedence over
+    upstart;
+  * changed systemd template unit parameter to avoid escaping problems
+
+- Update the data package to version 20150627
+
+-------------------------------------------------------------------
+Sat Apr 25 08:17:32 UTC 2015 - coolo@suse.com
+
+- use pkgconfig to detect udev install directory to avoid problems
+  during bootstrap
+
+-------------------------------------------------------------------
+Wed Apr  8 02:18:03 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.2.1
+  * Fixed unreliable switching function for Cisco AM10
+- Update the data package to version 20150115
+- Update device_reference.txt
+
+-------------------------------------------------------------------
+Tue Mar 24 10:36:01 UTC 2015 - cxiong@suse.com
+
+- add usb_modeswitch-fix_fsf_address.patch
+  * Update FSF address.
+
+-------------------------------------------------------------------
+Tue Nov  4 19:07:40 UTC 2014 - andrea@opensuse.org
+
+- removed patch obsolete huawei-timing.patch to fix boo#903753
+
+-------------------------------------------------------------------
+Mon Nov  3 21:46:05 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 2.2.0
+  * Introduction of parameter "HuaweiNewMode", wrapping the standard bulk
+    message for all newer Huawei devices; support for generic fall-back
+    config files, combined with OS switch (per vendor ID), implementation
+    to use a specific switching command on Android for all Huawei devices
+    (see README of data package for details); this change was suggested
+    by Huawei
+
+-------------------------------------------------------------------
+Sat Oct 11 10:04:38 UTC 2014 - andrea@opensuse.org
+
+- fix for bnc #899013 
+
+-------------------------------------------------------------------
+Thu Oct  2 10:35:44 UTC 2014 - andrea@opensuse.org
+
+- upgraded the data package to version 20140529
+
+-------------------------------------------------------------------
+Mon May 26 09:41:27 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 2.1.1
+  * Code cleanup
+  * Better usage of libusb1
+  * -I flag meaning reversed, default is to skip SCSI inquiry
+  * Experimental systemd and upstart integration
+
+-------------------------------------------------------------------
+Thu May 16 07:18:38 UTC 2013 - mvyskocil@suse.com
+
+- drop /bin/eject from dependencies, it is no longer called
+- install device_reference.txt as %doc
+- use URL in all relevant Source tags
+- drop obsoleted sections from spec
+
+-------------------------------------------------------------------
+Mon Dec  3 12:34:50 UTC 2012 - p.drouand@gmail.com
+
+- Update to 1.2.5:
+  * Initial support for MBIM devices, use with data package >= 20121109;
+    checking for these is the automatic default, new parameter NoMBIMCheck
+    prevents the check per device in case of problems; new global option
+    to set "delay_use" of usb-storage (as low values may prevent
+    mode-switching);
+  * fix for handling multi-configuration devices (thanks
+    to Bjørn Mork for advice)
+- Removed files:
+  * add_alcatel_ot_x220d.patch: supported on upstream release
+  * 1bbb:f017: supported on upstream release
+- Adapt huawei-timing.patch for 1.2.5
+
+-------------------------------------------------------------------
+Wed Oct 17 13:31:34 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev directory location
+
+-------------------------------------------------------------------
+Fri Sep 28 12:59:57 UTC 2012 - gschlotter@suse.com
+
+- huawei-timing.patch:
+   *fixed timing issues with huawei devices (E173, ...)
+    bnc#740354 
+
+-------------------------------------------------------------------
+Fri Jul 20 23:59:34 UTC 2012 - javier@opensuse.org
+
+- Update data package to 20120531
+- Add Alcatel OT-X220D support 
+
+-------------------------------------------------------------------
+Sun Apr  1 11:04:59 UTC 2012 - gankov@opensuse.org
+
+- New data package 20120120
+- Update to 1.2.3
+- Add BuildRequires tcl
+- Using fdupes
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:23 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue May 10 10:53:38 CET 2011 - andrea@opensuse.org
+
+- New data package 20110227
+- Update to 1.1.7:
+    *Attention: paths for runtime files and database have changed!
+    * fix for configuration setting race (thanks to Amit Mendapara);
+    * discovered incompatibility between Tcl versions <= 8.3
+      and >=8.4, so 8.4 is the minimum prerequisite now;
+
+
+-------------------------------------------------------------------
+Mon Jan 10 10:53:38 CET 2011 - dmueller@suse.de
+
+- fix dependency
+
+-------------------------------------------------------------------
+Wed Jan  5 10:10:59 UTC 2011 - bili@novell.com
+
+- Update to 1.1.6 including:
+  * Moved warm-boot driver binding to sh wrapper, was unreliable
+    in 1.1.5;
+  * initial device checking includes current "bConfigurationValue"
+    now, should work with config setting for multiple devices;
+  * made tcl script conform to limitations of "jimsh", the minimal
+    tcl shell (hint from Barry Kauler);
+  * fixes for "usbserial" fallback (driver binding for old systems);
+  * in the C program, changed parameter "MessageDelay" (hitherto
+    unused) to "ReleaseDelay", to be used in one device configuration
+- Update database to 20101222 state.
+
+-------------------------------------------------------------------
+Tue Dec 14 16:43:34 UTC 2010 - aj@suse.de
+
+- Update to 1.1.5 including:
+  * Added special control message for Kobil devices
+  * try to get active configuration for interface class checking
+  * fixed "0000" target product ID - again
+  * new bash and tcl wrapper logic: the convenience functions for
+    driver binding and symlinking will now start the tcl shell 
+    ONLY for known devices; 
+- Update database to 20101202 state.
+
+-------------------------------------------------------------------
+Mon Aug 23 10:09:57 UTC 2010 - pth@suse.de
+
+- Update to 1.1.4
+  * The package should work at boot time now (cold and warm)
+  * Product IDs of "0000" do exist but were not accepted, fixed
+  * Response endpoint is now always detected
+  * Wrapper script can now work with a packed collection of config
+    files as well as with the plain folder of files
+  * Wrapper fix for the symlink feature: handling of multiple interrupt
+    ports was incomplete
+  * Wrapper does not longer use a temporary file for the symlink feature
+
+-------------------------------------------------------------------
+Thu Jul  8 23:21:58 UTC 2010 - andrea@opensuse.org
+
+- New upstream version 1.1.3
+  * Added delay option to separate multiple message
+    transfers by millisecs
+  * fixed (possibly dangerous) sloppy string handling
+  * Added "clear_halt" for response endpoint
+  * Small additions in Makefile (install with -D)
+  * Changes in option handling (no more default config file!)
+  * Symlink feature in wrapper can now cope with devices providing
+    more than one interrupt port
+  * Wrapper now ignores package manager leftovers in config folder
+  * Replaced bash-specific syntax in wrapper
+  * Changed ZTE skipping (if existing rules are found) to warning
+- update data package to version 20100707
+- spec file clean up (sources support 'make install')
+
+-------------------------------------------------------------------
+Tue May 18 07:30:48 UTC 2010 - aj@suse.de
+
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Tue May 11 01:42:42 UTC 2010 - tuoma_mel@inbox.ru
+
+- update to version 1.1.2
+
+-------------------------------------------------------------------
+Wed Jan 21 18:37:22 CET 2009 - seife@suse.de
+
+- add dependency on /bin/eject (used in the udev rules)
+
+-------------------------------------------------------------------
+Wed Jan 21 16:40:28 CET 2009 - seife@suse.de
+
+- update usb_modeswitch.conf (from 2009-01-13)
+- add udev rules and a script to create them from the config file
+
+-------------------------------------------------------------------
+Mon Jan 12 18:43:57 CET 2009 - seife@suse.de
+
+- update to version 0.9.6
+  - special modes added for Sierra and Sony Ericsson, new devices
+
+-------------------------------------------------------------------
+Fri Nov  7 11:00:27 CET 2008 - seife@suse.de
+
+- copied the package from home:perosb (Thanks!)
+- added the latest config file from the home page
+- install README
+- use RPM_OPT_FLAGS
+- enable useful debug info by not stripping the binary

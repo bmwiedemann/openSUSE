@@ -1,0 +1,11 @@
+--- a/tgl/tl-parser/tl-parser.c
++++ b/tgl/tl-parser/tl-parser.c
+@@ -1903,7 +1903,7 @@ struct tl_combinator_tree *tl_parse_args
+       char *name = S->data;
+       static char s[21];
+       if (!name) {
+-        sprintf (s, "%lld", lrand48 () * (1ll << 32) + lrand48 ());
++        sprintf (s, "%llu", lrand48 () * (1ll << 32) + lrand48 ());
+         name = s;  // will be strdup'd, so reference-to-stack is fine.
+       }
+       struct tl_var *v = tl_add_var (name, S, tt);

@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Mar  3 09:43:05 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove bcond_with test preventing the tests from running
+- Remove unnecessary dependency on flake8
+- Increase dependency on bleach to fix test failure
+- Add cmarkgfm >= 0.2.0 from upstream
+
+-------------------------------------------------------------------
+Sun Dec 30 11:27:34 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 24.0:
+  * Remove dependency on ``future``. (#134)
+  * Breaking change: Move the cmarkgfm dependency into an extra (#130). Users
+    that want to render Markdown will need to install readme_render[md] instead.
+  * Unify handling of SVG and other images in RST. (#113)
+  * Support width and alignment of images in RST (#114)
+  * Allow <caption>. (#105)
+  * Add specific tests for the raw directive. (#103)
+  * Include docinfo when rendering rst. (#99)
+  * Make Python 3 the default lexer for highlighting Python code in Markdown (#97)
+  * Allow align attribute on <p> tags (#98)
+  * Reformat docutils messages into more human-friendly output. (#92)
+  * Fix incorrect escaping of html entities in pre tags when using markdown. (#89)
+  * Allow width, height, alt, and align attributes on img tags. (#91)
+  * Fix check to not report success when there is invalid RST. (#90)
+  * Allow details and summary tags. (#77)
+  * Add .pytest_cache to .gitignore. (#85)
+  * Warn about Markdown content type when checking RST. (#83)
+  * Update pep8 tox env to use py3.6. (#84)
+  * Add Pygments-based syntax highlighting for Markdown. (#82)
+  * Update docs about check to talk about Markdown. (#80)
+  * Change Github-flavored Markdown identifier from ``gfm`` to ``GFM``.
+  * Add support for GitHub-flavored Markdown. (#67)
+  * Switch to cmarkgfm completely for rendering Markdown. (#68)
+  * Warn about missing long description. (#69)
+  * Make Github-Flavored Markdown the default variant (#73)
+  * All renderers now accept arbitrary ``kwargs`` for future-proofing.
+  * Gracefully handle new exceptions from bleach.
+  * Fix an issue cleaning plaintext values.
+  * Fix an issue attempting to clean data that had ``<a>`` tags without a href.
+- Use %license macro
+
+-------------------------------------------------------------------
+Mon Aug 14 01:35:57 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

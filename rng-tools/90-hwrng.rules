@@ -1,0 +1,2 @@
+ACTION=="add", KERNEL=="hwrng|hw_random", SUBSYSTEM=="misc", ATTR{rng_available}=="?*", ATTR{rng_current}!="none", TAG+="systemd", ENV{SYSTEMD_WANTS}+="rng-tools.service"
+

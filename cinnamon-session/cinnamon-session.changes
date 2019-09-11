@@ -1,0 +1,326 @@
+-------------------------------------------------------------------
+Sun Jul 21 08:39:30 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.1:
+  * Fix wrong parameter type on gdbus logout call 
+
+-------------------------------------------------------------------
+Mon Jul  1 03:29:22 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 4.2.0:
+  * Implement suspend/hibernate via consolekit (#123)
+  * csm-manager.c: Don't let inhibitors stop a forced logout.
+  * Port to gdbus (#125)
+
+-------------------------------------------------------------------
+Fri Mar 15 01:28:32 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 4.0.0:
+  * csm-logout-dialog.c: Use the "destructive-action" style classes for (#120)
+
+-------------------------------------------------------------------
+Thu Jul  5 13:05:25 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.2:
+  * build: Fix PKGDATADIR define / use only one define.
+  * Autostart: Do not let a buggy GSettings condition break the
+    session.
+
+-------------------------------------------------------------------
+Thu Apr 19 20:07:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.1 (changes since 3.6.1):
+  * Switch to Meson.
+  * csm-manager: Detect D-Bus user-session at runtime.
+  * Add support for elogind.
+  * circleci: Add install of updated cinnamon-desktop.
+  * circleci: Remove mint18 job.
+  * Stop trying to handle Qt integration at all.
+  * Quit dialogue: Don't skip taskbar.
+  * debian: wrap-and-sort -bst.
+  * Fix generation of LOCALE_DIR.
+- Remove the no longer needed upower-glib dependency.
+- Replace cinnamon-session-fix-qt-themes.patch with
+  cinnamon-session-qt-5.7-styleoverride.patch.
+
+-------------------------------------------------------------------
+Wed Nov 22 14:00:23 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.1:
+  * configure: Add an option to disable support for D-Bus user
+    sessions.
+
+-------------------------------------------------------------------
+Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.0:
+  * Update environment for dbus and systemd user-session.
+  * Add support for "hybrid sleep".
+  * Remove unused code.
+  * csm-logout-dialog.c: Remove a couple uses of GtkStock.
+  * Restart dbus user-session if the last graphical session.
+  * Move translations to cinnamon-translations.
+
+-------------------------------------------------------------------
+Sun Aug 20 16:09:40 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.2:
+  * Add an issue template.
+  * Logout dialogue: Don't grab the keyboard and mouse when opening
+    the dialogue.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.1:
+  * autostart-blacklist: Add the new gnome settings daemon prefix.
+  * csm-manager.c: Listen to the power schema "lock-on-suspend"
+    setting instead of the normal screensaver setting of
+    "lock when the screensaver starts".
+
+-------------------------------------------------------------------
+Tue Jun 13 09:01:58 UTC 2017 - fvogt@suse.com
+
+- Fix installation on Leap 42.3, it has Qt 5.6 and does not provide
+  libqt5-qtstyleplugins-platformtheme-gtk2
+
+-------------------------------------------------------------------
+Sun May  7 11:23:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.0:
+  * Check stricter for presence of xtrans (with option to disable).
+  * Remove aclocal from autogen.sh.
+  * Fix redundant redeclarations.
+  * manager: Don't wait for all clients to exit before exiting.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.0:
+  * Migrate away from gnome-common deprecated vars and macros.
+  * Remove an old dialog icon code.
+  * gsettings: Stop using g_settings_list_schemas().
+  * Use a qt5ct platform theme on Qt 5.7+, qgnomeplatform on 5.6
+    and earlier.
+  * Use a build time option instead of pkgcheck.
+  * Incorporate feedback.
+  * Replace the deprecated gtk_icon_info_free() with g_object_unref().
+  * main: Fix a heap overflow in dbus-launch wrapping.
+  * Add cinnamon-session.pot and makepot.
+- Rename and rebase cinnamon-session-qt-5.7-styleoverride.patch to
+  cinnamon-session-fix-qt-themes.patch.
+
+-------------------------------------------------------------------
+Fri Oct 21 12:01:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Require libqt5-qtstyleplugins-platformtheme-gtk2 to make sure the
+  user actually gets native styling on Qt5 (boo#1002900).
+
+-------------------------------------------------------------------
+Sat Oct  8 19:13:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Add cinnamon-session-qt-5.7-styleoverride.patch: On Qt 5.7+ use
+  Gtk2 Platform Theme and don't set QT_STYLE_OVERRIDE to "gtk"
+  (boo#1002900).
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.1:
+  * Add support PreDisplayServer phase to fix gnome-keyring ssh
+    issue.
+  * Add new phase: CSM_MANAGER_PHASE_EARLY_INITIALIZATION, it's
+    needed for PRE_DISPLAY_SERVER phase to run.
+  * main.c: Add support for disabling gtk overlay scrollbars.
+
+-------------------------------------------------------------------
+Mon Apr 25 05:00:35 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.0:
+  * main.c: Remove CLUTTER_BACKEND=x11 (moved to cinnamon main.c).
+  * mdm: Fix logic error.
+  * Fix a typo in a warning message.
+  * Add a provides for x-session-manager.
+  * Support new libsystemd (which replaces libsystemd-login).
+  * Fix GTK+ regression in csm-inhibit-dialog.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:09:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.8.3:
+  * mdm: Fix logic error.
+  * Fix a typo in a warning message.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:53:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.2:
+  * Autostart: Blacklist xfce4-power-manager.
+- Change licence to GPL-2.0+ and LGPL-2.1+.
+
+-------------------------------------------------------------------
+Sat Oct 31 10:21:56 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.1:
+  * csm-logout-dialog.c: Add "automatically" to the msgids of the
+   countdown label. This uses the already-translated msgid.
+
+-------------------------------------------------------------------
+Tue Oct 20 15:56:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.0:
+  * Add a gsettings key to enable debug.
+  * Reject new XSMP clients earlier in the shutdown path.
+  * xsmp: Re-accept clients if session shutdown is cancelled.
+  * Avoid to keep zombie clients in the case when a IceError is
+    thrown between accept_ice_connection() and
+    accept_xsmp_connection().
+  * Only wait 1 second max on logout/shutdown.
+  * Log time delta in debug mode. Also, don't log dbus calls (they
+    don't show much info and they're very numerous).
+  * Make Qt5 apps follow the Gtk style.
+  * Make the session blacklist entirely configurable.
+  * Replace indicator- with indicator-session in session blacklist.
+  * Renamed blacklist -> autostart-blacklist.
+- Fix dependencies.
+- Generate icon cache.
+
+-------------------------------------------------------------------
+Tue Aug 11 01:25:36 UTC 2015 - i@marguerite.su
+
+- use systemd-logind for suspend and etc. by default
+
+-------------------------------------------------------------------
+Mon Aug 10 08:51:43 UTC 2015 - i@marguerite.su
+
+- update version 2.6.3
+  * main.c: prevent overlay-scrollbar from loading
+  * csm-manager: add a whitelist to override autostart hardcoded list
+
+-------------------------------------------------------------------
+Tue Jun  2 23:05:28 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.6.2
+
+-------------------------------------------------------------------
+Thu Apr 23 17:14:23 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.4.3
+
+-------------------------------------------------------------------
+Mon Nov 10 19:39:48 UTC 2014 - i@marguerite.su
+
+- drop zeitgeist Requires. check in minimal X it's no longer needed
+- change colord to Recommends. without it cinnamon-settings-daemon
+  will trigger a warning but won't prevent you from login
+
+-------------------------------------------------------------------
+Mon Nov 10 06:43:16 UTC 2014 - i@marguerite.su
+
+- update version 2.4.1
+  * switched locale path to standard /usr/share/locale
+  * re-add session timeout, disable by default
+
+-------------------------------------------------------------------
+Wed Nov  5 13:10:46 UTC 2014 - i@marguerite.su
+
+- update version 2.4.0
+- drop patch: cinnamon-session-2.2.0-64bit-portability.patch
+  * upstream fixed
+
+-------------------------------------------------------------------
+Tue Jul 15 17:22:54 UTC 2014 - i@marguerite.su
+
+- add nemo to requires 
+
+-------------------------------------------------------------------
+Mon Jul 14 17:14:54 UTC 2014 - i@marguerite.su
+
+- update version 2.3.0
+  * Remove 'remember open blah blah' in startup programs dialog
+
+-------------------------------------------------------------------
+Wed Jul  9 09:42:41 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.2
+
+-------------------------------------------------------------------
+Mon May 19 10:18:35 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.1
+
+-------------------------------------------------------------------
+Thu Apr 17 08:31:52 UTC 2014 - i@marguerite.su
+
+- update version 2.2.0
+
+-------------------------------------------------------------------
+Mon Nov 25 15:24:40 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.6
+  *Fixed wrong socket name for MDM
+
+-------------------------------------------------------------------
+Fri Nov  8 11:14:38 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.5
+  *Remove upstart files (was breaking Unity)
+
+-------------------------------------------------------------------
+Sat Nov  2 03:34:28 UTC 2013 - i@marguerite.su
+
+- update version 2.0.4
+  * fix screensaver command on inhibit dialog
+
+-------------------------------------------------------------------
+Fri Nov  1 18:23:49 UTC 2013 - i@marguerite.su
+
+- add cinnamon-screensaver to requirement
+
+-------------------------------------------------------------------
+Wed Oct 30 18:59:54 UTC 2013 - i@marguerite.su
+
+- add runtime requirement upstream didn't tell
+  * NetworkManager-gnome, colord, zeitgeist
+
+-------------------------------------------------------------------
+Mon Oct 28 17:50:58 UTC 2013 - i@marguerite.su
+
+- update version 2.0.3
+  * Add consolekit as runtime dep for debian package
+  * depend on cinnamon-session-common
+
+-------------------------------------------------------------------
+Mon Oct 21 17:18:08 UTC 2013 - i@marguerite.su
+
+- copypac from home:cyberorg:cinnamon
+- cleanup work
+- add glib schemas macros
+- remove --enable-systemd because by default it's auto and needs
+  systemd >= 183, while openSUSE 12.2 only has 44
+
+-------------------------------------------------------------------
+Mon Oct 21 11:38:07 UTC 2013 - stefan@fam-elser.de
+
+- Added systemd as requirement
+
+-------------------------------------------------------------------
+Sun Oct 20 23:04:43 UTC 2013 - stefan@fam-elser.de
+
+- Updated spec file to enable systemd
+
+-------------------------------------------------------------------
+Thu Oct 10 08:51:04 UTC 2013 - stefan@fam-elser.de
+
+- Updated to version 2.0.1
+
+-------------------------------------------------------------------
+Wed Oct  9 06:47:19 UTC 2013 - stefan@fam-elser.de
+
+- Updated to version 2.0.0
+
+-------------------------------------------------------------------
+Wed Oct  2 09:20:52 UTC 2013 - stefan@fam-elser.de
+
+- Initial release with version 1.9.2
+

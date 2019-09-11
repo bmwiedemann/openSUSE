@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Mon Jan 28 08:40:25 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.1
+- Changes in 2.0
+  * For UDF uuid is used same algorithm as in util-linux v2.30
+  * Fixed Unicode encode/decode functions to correctly process OSTA Unicode
+    d-string and d-characters
+  * New tool udfinfo which shows various information about UDF (incuding label,
+    uuid, free space)
+  * New tool udflabel which shows or changes UDF label or UDF uuid
+  * pktsetup:
+        Make dev_name argument for setup optional
+        Allow to setup and remove optical device by major:minor numbers
+        Include udev rule file for automatic managing of packet writing devices
+  * mkudffs:
+        Fixed support for VAT and CD-R disks
+        Fixed crashes and infinite loops on disks with small number of sectors
+        Allow to enable VAT via new --vat option for any disk type
+        Allow to enable Sparing Table via --spartable option also for any disk type
+	Allow to specify number of entries in Sparing Table via new --sparspace
+        option
+        Added support for CD-ROM, DVD-R and BD-R discs
+        Added new option --new-file for enforcing to create a new image file
+        Added new option --mode for specifying permissions of root directory
+	Added new option --locale for specifying that command line arguments
+        are encoded according to current locale and make it default
+	Added support for disks which have logical sector size 8192, 16384 or
+        32768 bytes
+        Check that block device is not mounted before format process starts
+
+- Changes in 2.1
+  * Fixed compilation with glibc >= 2.25
+  * Allow to compile without libreadline
+  * Use pkgconfig for detection of udev rules directory
+  * Set minimal version of autoconf to 2.64
+  * Enforce ISO C99 compiler
+  * Fixed support for big endian systems
+  * Fixed converting strings to integers
+  * Added support for UDF 1.50 Logical Volume Extended Information (contains
+    volume label)
+  * Added support for UDF 1.01 revision
+  * Added workaround for Year 2038 Bug
+  * udfinfo & udflabel:
+	Fixed accessing disks when MVDS and RVDS descriptors points to same
+        location
+        Fixed support for disks >= 4GB on 32bit systems
+        Implemented reading VAT outside of outside of ICB
+        Various fixes for reading UDF descriptors
+   * mkudffs:
+        Space optimization for small disks
+	Allow to set alignment of UDF structures via --packetlen option for any
+        media type
+        Fixed alignment of VAT and generation of DVD-R and BD-R discs
+  * cdrwtool:
+        Disallow specifying unsupported UDF revisions
+
+
+-------------------------------------------------------------------
+Sat Jan 28 16:08:27 UTC 2017 - idonmez@suse.com
+
+- Update to version 1.3
+  * No changelog upstream, see upstream git log
+    https://github.com/pali/udftools/compare/1.2...1.3
+- Drop cdmrw.c and cdmrw-include.patch, they are outdated.
+
+-------------------------------------------------------------------
+Fri Dec 16 13:24:36 UTC 2016 - idonmez@suse.com
+
+- Update to the maintained version
+	Changes in 1.2
+	* Manpage redirect for mkfs.udf(8)
+	* Manpage fix for pktsetup(8)
+	* Fixed compile and install procedure
+	* Fixed parsing cdrwtool --file parameter
+
+	Changes in 1.1
+	* Included various patches from Linux distributions
+	* Lots of fixes for compilation, crashes, buffer overflows,
+      memory corruptions, reading from uninitialized memory, etc.
+	* Fixed UTF-8 support
+	* Fixed detection of device blocksize
+	* Corrections and updates in man pages
+	* mkudffs:
+	  * Set first 16 chars of Volume Set Identifier to timestamp and
+        random value
+	  * Set default block-size to device logical block (sector) size
+	  * Add support for label and uuid options
+	  * Add support for setting uid and gid of the root directory
+	  * Fixed support for UDF 1.02
+	  * Symlink to mkfs.udf
+- Drop all the patches:
+	  udftools-1.0.0b3-extend-extsize.patch
+	  udftools-1.0.0b3-pktsetup-chardev.patch,
+	  udftools-HZ.patch, udftools-gcc4.patch,
+	  udftools-include.patch, udftools-open.patch,
+	  udftools-wrong-memset.patch, udftools-1.0.0b3.dif
+
+-------------------------------------------------------------------
+Mon Nov 16 14:12:44 UTC 2015 - wolfgang.engel@suse.com
+
+- Adding patch for fixing segfault (bnc#743773)
+  File: udftools-1.0.0b3-extend-extsize.patch
+
+-------------------------------------------------------------------
+Mon Jun  8 15:17:31 UTC 2015 - schwab@suse.de
+
+- Force gnu89 inline semantics
+
+-------------------------------------------------------------------
+Fri Nov  7 13:59:43 UTC 2014 - mpluskal@suse.com
+
+- Add license
+- Clean up spec file
+- Remove static library
+
+-------------------------------------------------------------------
+Tue Dec 27 15:23:24 UTC 2011 - idonmez@suse.com
+
+- Fix wrong size parameter in memset call 
+
+-------------------------------------------------------------------
+Wed Nov 23 09:31:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct  4 08:59:56 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc, %configure macros
+
+-------------------------------------------------------------------
+Sat Jan 12 14:35:10 CET 2008 - coolo@suse.de
+
+- fix build with glibc 2.7
+
+-------------------------------------------------------------------
+Thu Jan 10 17:42:20 CET 2008 - coolo@suse.de
+
+- fix includes
+
+-------------------------------------------------------------------
+Mon Aug  7 18:20:48 CEST 2006 - ro@suse.de
+
+- use sysconf(_SC_CLK_TCK) instead of HZ 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  4 15:23:46 CEST 2005 - sbrabec@suse.cz
+
+- Added cdmrw for preformatting of CD-MRW media.
+- Fixed missing includes.
+
+-------------------------------------------------------------------
+Wed Jun 15 17:39:47 CEST 2005 - hvogel@suse.de
+
+- Update to 1.0.0b3
+
+-------------------------------------------------------------------
+Thu Nov  6 17:35:58 CET 2003 - schwab@suse.de
+
+- Fix quoting in configure script.
+
+-------------------------------------------------------------------
+Wed Jun 12 18:24:39 CEST 2002 - ro@suse.de
+
+- fixed build for bigendian 
+
+-------------------------------------------------------------------
+Thu Apr 25 11:48:29 CEST 2002 - uli@suse.de
+
+- fixed for lib64
+
+-------------------------------------------------------------------
+Tue Apr  2 17:12:55 CEST 2002 - ro@suse.de
+
+- use AC_LIBOBJ for new automake/autoconf 
+
+-------------------------------------------------------------------
+Tue Feb 26 23:52:34 CET 2002 - ro@suse.de
+
+- copy/rename from udf package
+- update to 1.0.0b2 
+
+-------------------------------------------------------------------
+Wed Oct 10 13:10:57 CEST 2001 - stepan@suse.de
+
+- use kernel-source instead of lx_sus22 to get package
+  working on ia64, too. Kernel 2.4 is default now anyways.
+
+-------------------------------------------------------------------
+Mon Apr  2 15:59:45 CEST 2001 - uli@suse.de
+
+- update -> 0.9.3
+- don't build module (it's not going into the package anyway)
+
+-------------------------------------------------------------------
+Fri Dec  1 02:37:43 CET 2000 - ro@suse.de
+
+- use lx_sus22 for now 
+
+-------------------------------------------------------------------
+Thu Oct 26 14:36:38 CEST 2000 - ro@suse.de
+
+- LFS fixed 
+
+-------------------------------------------------------------------
+Tue Jun 20 15:07:32 CEST 2000 - ro@suse.de
+
+- fixed make oldconfig 
+
+-------------------------------------------------------------------
+Tue Mar  7 14:39:23 CET 2000 - ro@suse.de
+
+- don't try to compile packet-writing tools
+
+-------------------------------------------------------------------
+Tue Mar  7 00:54:06 CET 2000 - ro@suse.de
+
+- update to 0.9.1 
+- removed module from filelist (in suse-kernel now)
+
+-------------------------------------------------------------------
+Fri Jan 28 10:08:18 CET 2000 - ro@suse.de
+
+- update to 0.9.0
+
+-------------------------------------------------------------------
+Sat Oct 30 12:21:09 CEST 1999 - ro@suse.de
+
+- update to 0.8.9.3: they finally fixed the "73-files-in-a-dir" bug 
+
+-------------------------------------------------------------------
+Sun Oct 17 23:47:18 CEST 1999 - ro@suse.de
+
+- make oldconfig with 'yes "n"' 
+
+-------------------------------------------------------------------
+Tue Oct 12 00:35:39 CEST 1999 - ro@suse.de
+
+- update to 0.8.9.2 / fixed configure script
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 20 10:05:04 MEST 1999 - ro@suse.de
+
+- update to 0.8.8
+- hack to compile on alpha 
+
+-------------------------------------------------------------------
+Tue Aug 10 15:58:03 MEST 1999 - uli@suse.de
+
+- update -> 0.8.7
+
+-------------------------------------------------------------------
+Thu Jun  3 12:22:55 MEST 1999 - uli@suse.de
+
+- update 0.8.3 -> 0.8.5
+
+-------------------------------------------------------------------
+Mon May  3 08:36:56 MEST 1999 - ro@suse.de
+
+- use kernmod's .config on alpha as well
+
+-------------------------------------------------------------------
+Sun May  2 13:32:46 MEST 1999 - ro@suse.de
+
+- specfile fix for kernelconfig
+
+-------------------------------------------------------------------
+Sat May  1 23:50:25 MEST 1999 - ro@suse.de
+
+- use kernelconfig from kernmod-package
+
+-------------------------------------------------------------------
+Thu Apr 29 17:36:30 MEST 1999 - ro@suse.de
+
+- update to 0.8.3
+
+-------------------------------------------------------------------
+Thu Apr  8 23:36:13 MEST 1999 - ro@suse.de
+
+- update to 0.8.2
+
+-------------------------------------------------------------------
+Thu Mar 11 14:18:54 MET 1999 - uli@suse.de
+
+- added missing doc files
+
+-------------------------------------------------------------------
+Thu Mar 11 12:50:56 MET 1999 - uli@suse.de
+
+- new package, version 0.8
+

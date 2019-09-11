@@ -1,0 +1,11 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/python-k8sclient/python-k8sclient.spec.j2</param>
+    <param name="output-name">python-k8sclient.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/python-k8sclient/stable/ocata/requirements.txt</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

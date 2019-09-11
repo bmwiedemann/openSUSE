@@ -1,0 +1,18 @@
+--- src/cmd/ksh93/edit/edit.c
++++ src/cmd/ksh93/edit/edit.c	2013-02-01 17:18:31.405454238 +0000
+@@ -1769,8 +1769,13 @@ int ed_histgen(Edit_t *ep,const char *pa
+ 			mplast->next = mp;
+ 		mplast->next = 0;
+ 	}
+-	ep->hlist = (Histmatch_t**)argv;
+-	ep->hfirst = ep->hlist?ep->hlist[0]:0;
++	if (argv)
++	{
++		ep->hlist = (Histmatch_t**)argv;
++		ep->hfirst = ep->hlist?ep->hlist[0]:0;
++	}
++	else
++		ep->hfirst = 0;
+ 	return(ep->hmax=ac);
+ }
+ 

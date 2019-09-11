@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Mon Jun 17 14:29:58 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 0.79
+  0.79 Tue 11 Jun 2019 09:35:22 PM CEST
+     - Support aliasing scalars resolved as null or booleans (tinita)
+     - Add YAML::XS::LibYAML::libyaml_version() (tinita)
+     - Support standard !!int/!!float tags instead of dying (tinita)
+  0.78 Sat 18 May 2019 06:35:21 PM CEST
+     - Fix double free/core dump when Dump()ing binary data, see issue#91 (tinita)
+     - Update config.h from libyaml (tinita)
+  0.77 Mon 15 Apr 2019 10:55:13 PM CEST
+     - Update libyaml to version 0.2.2. Most important change for users is that plain
+       urls in flow style can be parsed now. Example: `[ http://yaml.org]`. (tinita)
+  0.76 Sun Dec 30 20:10:16 CET 2018
+     - Add $Indent - number of spaces when dumping. PR#89 @zdm++
+     - Fix typo in docs. PR#87 @mr-mixas++
+     - Fix links in docs. @manwar++
+  0.75 Sat Nov  3 14:17:28 CET 2018
+     - Implement $LoadCode (tinita)
+
+-------------------------------------------------------------------
+Fri Sep 14 09:13:57 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 0.74
+  * Fix tests on older perls
+  * Support back to perl.5.8.1
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 23 14:44:54 UTC 2018 - jbaier@suse.cz
+
+- update to 0.72 
+- update download source on metacpan
+- upstream changelog:
+  * Update to libyaml 0.2.1 (tinita) It's forbidden now to escape single
+  * quotes inside double quotes
+  * When disabling $LoadBlessed, return scalars not refs (tinita)
+  * Save anchors also for blessed scalars (tinita)
+  * Fix format specifier/argument mismatch PR#79 @a3f++
+  * Travis CI: Test on Perl 5.26 PR#80 @a3f++
+  * Fix a C90-compatibility issue PR#81 @stphnlyd++
+  * Security fix Add $LoadBlessed option to turn on/off loading objects
+  * PR#73 PR#74 TINITA++
+  * Fix regex roundtrip (fixes issue#69) PR#70 (TINITA++)
+  * Fix loading of many regexes (fixes issue#64) PR#71 (TINITA++)
+  * Support standard tags !!str, !!map and !!seq instead of dying. PR#67
+  * (TINITA++)
+  * Support JSON::PP::Boolean and boolean.pm via $YAML::XS::Boolean. PR#66
+  * (TINITA++) Thanks also to Björn Höhrmann for SvPV_nolen()
+  * Apply PR#55 (@vti++)
+  * Dump() was modifying original data, adding a PV to numbers
+  * Added a test for this (TINITA++)
+  * Prevent warning about unused variables (see issue#59)
+  * Clarify documentation about exported functions
+  * use lib FindBin::Bin in tests, preparing for perl 5.26 where '.' gets
+  * removed from @INC. Fixes issue#54 TINITA++
+  * Use the latest libyaml sources.
+  * Lazy load B::Deparse for faster startup time. Applied PR/53 by
+  * @perlpunk++ (submitted by @carnil++ from a Debian issue as GitHub
+  * issue#52)
+  * Apply PR/48 by @perlpunk++
+  * Fixes memory leaks
+  * Apply PR/42 @perlpunk++ (fix for detecting filehandles)
+  * Apply PR/37 @perlpunk++ (includes PR/36 @lameventanas++)
+  * Apply PR/33. @andygrundman++. Solaris fixes.
+
+-------------------------------------------------------------------
+Mon Mar 23 16:30:00 UTC 2015 - bjh21@cam.ac.uk
+
+- Added perl-YAML-LibYAML-no-plan.patch, which lets the package build
+  on SLES 11.
+
+-------------------------------------------------------------------
+Tue Feb 10 10:24:37 UTC 2015 - vcizek@suse.com
+
+- update to 0.59
+- this update fixes 3 vulnerabilities in the embedded LibYAML:
+  * CVE-2014-9130: libyaml: assert failure when processing
+    wrapped strings (bnc#907809)
+  * CVE-2014-2525: libyaml: heap overflow during parsing (bnc#868944)
+  * CVE-2013-6393: libyaml: heap based buffer, overflow due to
+    integer misuse (bnc#860617)
+- dropped CVE-2012-1152-YAML-LibYAML-0.35-format-error.patch (upstream)
+- upstream changelog:
+  * PR/23 Better scalar dump heuristics
+  * More closely match YAML.pm
+  * Add a VERSION statement to YAML::LibYAML (issue#8)
+  * Applied fix for PR/21. nawglan++
+  * Use Swim cpan-tail block functions in doc
+  * Get YAML::XS using latest libyaml
+  * Fix for
+    https://bitbucket.org/xi/libyaml/issue/10/wrapped-strings-cause-assert-failure
+  * Fix e1 test failure on 5.21.4
+  * Remove =travis section
+  * Meta 0.0.2
+  * Eliminate spurious trailing whitespace
+  * Add t/000-compile-modules.t
+  * Fix swim errors
+  * Add badges to doc
+  * Fix ReadMe
+  * Fix Meta and add Contributing.
+
+-------------------------------------------------------------------
+Mon Jul 28 05:30:44 UTC 2014 - coolo@suse.com
+
+- updated to 0.44
+  - Doc fix. GitHub-Issue-#6. Thanks to Debian Perl Group for finding this.
+ 
+ 0.43 Sat Jul 12 10:04:07 PDT 2014
+  - Test::Base tests needed 'inc' in @INC
+ 
+ 0.42 Fri Jul 11 14:45:58 PDT 2014
+  - Switch to Zilla::Dist
+  - No longer dep on Test::Base, Spiffy, and Filter::Util::Call
+  - Remove test/changes.t
+ 
+ 0.41 Wed Mar 13 10:34:55 PDT 2013
+  - Removed another C++ // style comment. jdb++
+ 
+ 0.40 Tue Mar 12 11:05:34 PDT 2013
+  - Removed C++ // style comments, for better portability. jdb++
+ 
+ 0.39 Mon Feb 11 18:08:04 PST 2013
+  - Using the latest libyaml codebase
+  - https://github.com/yaml/libyaml/tree/perl-yaml-xs
+  - Changes have been made to start moving libyaml to 1.2
+
+-------------------------------------------------------------------
+Wed May 30 07:57:03 UTC 2012 - coolo@suse.com
+
+- updated to 0.38
+  - Apply SPROUT++ deparse test patch. Thanks!
+
+-------------------------------------------------------------------
+Wed Apr 25 23:01:47 UTC 2012 - pascal.bleser@opensuse.org
+
+- CVE-2012-1152: added patch to fix multiple format string flaws:
+  A remote attacker could provide a specially-crafted YAML document, which once
+  processed by the perl-YAML-LibYAML interface would lead to perl-YAML-LibYAML
+  based process crash. bnc#751503
+
+-------------------------------------------------------------------
+Sun Oct 02 23:37:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.37:
+  * fix the bug that accidentally released YAML-XS instead of YAML-LibYAML
+
+- changes from 0.36:
+  * switch to Module::Package
+  * fix LoadFile on empty file failure
+
+-------------------------------------------------------------------
+Mon Apr  4 08:33:41 UTC 2011 - coolo@novell.com
+
+- updated to 0.35
+  - Apply bdfoy patch from rt-46172
+  - Update ppport.h to fix rt-64749 & rt-62054
+  - Add ANDK's regexp.t patch from rt-62266
+  - These changes from chansen++
+  - Handle misbehaved tied hashes
+  - Handle 'get' magic
+  - Added support for tied arrays and hashes
+  - Don't turn on the UTF-8 flag for strings containing US-ASCII (0x00-0x7F)
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:31 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Jun 14 05:26:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.33)
+

@@ -1,0 +1,487 @@
+-------------------------------------------------------------------
+Mon Apr  1 17:57:30 UTC 2019 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.1.0, see NEWS.md for details.
+- Bump bundled dependencies as required by the new v1.1.0.
+    * llvm: 6.0.1
+    * Pkg.jl: 853b3f1fd9895db32b402d89e9dee153b66b2316
+    * libuv: 2348256acf5759a544e5ca7935f638d2bc091d60
+
+-------------------------------------------------------------------
+Sun Dec 16 23:39:12 UTC 2018 - ronisbr@gmail.com
+
+- Version bump to 1.0.3.
+    * Bugfix release, no changelog available.
+
+-------------------------------------------------------------------
+Mon Nov  5 16:24:38 UTC 2018 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.0.1.
+    * Bugfix release, no changelog available.
+
+-------------------------------------------------------------------
+Mon Sep 24 18:58:18 UTC 2018 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.0.0.
+    * v1.0.0 is basically v0.7.0 without deprecation warnings.
+
+-------------------------------------------------------------------
+Wed Aug  8 22:56:27 UTC 2018 - ronisbr@gmail.com
+
+- Version bump to 0.7.0, see NEWS.md for details.
+- Add new required bundled dependency by the new v0.7.0.
+    * libwhich: 81e9723c0273d78493dc8c8ed570f68d9ce7e89e
+- Bump bundled dependencies as required by the new v0.7.0.
+    * libuv: ed3700c849289ed01fe04273a7bf865340b2bd7e
+    * llvm: 6.0.0
+- Update patch `julia-env-script-interpreter.patch`.
+- Remove unnecessary bundled dependency:
+    * Rmath: julia-0.1
+- Remove empty package `julia-examples`.
+
+-------------------------------------------------------------------
+Sun Jul 22 17:40:21 UTC 2018 - ronisbr@gmail.com
+
+- Version bump to 0.6.4.
+    * Bugfix release, no changelog available.
+
+-------------------------------------------------------------------
+Fri Jun  1 17:49:59 UTC 2018 - ronisbr@gmail.com
+
+- Version bump to 0.6.3.
+    * Bugfix release, no changelog available.
+- Bump utf8proc version as required by the new v0.6.3.
+- Change LICENSE.md from %doc to %license.
+
+-------------------------------------------------------------------
+Thu Apr 19 15:01:37 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Pass right MARCH value for ppc64le
+- Build only for supported architectures
+- Fix armv6 build by passing atomic lib to linker
+
+-------------------------------------------------------------------
+Tue Mar 27 09:18:51 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Pass right march option for %arm and aarch64
+
+-------------------------------------------------------------------
+Wed Dec 20 18:19:38 UTC 2017 - ronisbr@gmail.com
+
+- Remove patch `julia-0.6.1-dont-rebuild-docs-on-install.patch`,
+  since the issue was already fixed by upstream.
+- Version bump to 0.6.2.
+    * Bugfix release, no changelog available.
+- Update license information according to file `LICENSE.md`.
+
+-------------------------------------------------------------------
+Wed Nov  1 16:48:18 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Version bump to 0.6.1.
+    * Bugfix release, no changelog available.
+- Add patches:
+    * `julia-0.6.1-dont-rebuild-docs-on-install.patch`
+        This patch avoids documentation rebuilding in `make
+        install` command. For more information, see:
+
+            https://github.com/JuliaLang/julia/issues/24432
+    * `julia-env-script-interpreter.patch`
+        This patch removes a RPMLINT error.
+
+-------------------------------------------------------------------
+Sat Aug 19 14:12:56 UTC 2017 - ronisbr@gmail.com
+
+- Add script to get the right libgit2 version. Hence, it will not
+  be necessary anymore to update the .spec every time libgit2 is
+  updated.
+
+-------------------------------------------------------------------
+Fri Aug 18 13:23:38 UTC 2017 - ronisbr@gmail.com
+
+- Update runtime dependency: `libgit2-25` -> `libgit2-26`.
+
+-------------------------------------------------------------------
+Mon Jul  3 20:14:09 UTC 2017 - ronisbr@gmail.com
+
+- Version bump to 0.6.0, see NEWS.md for details.
+- Remove unneeded patch `julia-disable-llvm-timestamps.patch`.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:26:30 UTC 2017 - ronisbr@gmail.com
+
+- Update runtime dependency: `libgit2-24` -> `libgit2-25`.
+    * Fixes boo#1030824.
+
+-------------------------------------------------------------------
+Wed Mar  8 14:23:06 UTC 2017 - ronisbr@gmail.com
+
+- Version bump to 0.5.1.
+    * Bugfix release, no changelog available.
+- Update patch `julia-disable-llvm-timestamps.patch`.
+
+-------------------------------------------------------------------
+Mon Oct 31 11:51:42 UTC 2016 - ronisbr@gmail.com
+
+- Add `libdSFMT2_2` as runtime dependency, since rpm is not
+  automatically adding it.
+
+-------------------------------------------------------------------
+Tue Sep 20 15:48:03 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.5.0, see NEWS.md for details.
+
+-------------------------------------------------------------------
+Tue Sep 13 17:15:36 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.5.0~rc4.
+    * The changelog will be available when the version 0.5.0 is
+      released.
+- Julia is now built using `libopenblas_openmp0` as the lapack and
+  blas libraries due to upstream advice. For more information, see:
+
+    https://github.com/JuliaLang/julia/issues/18394
+
+- Remove white spaces in .changes files.
+
+-------------------------------------------------------------------
+Tue Aug 30 13:04:20 UTC 2016 - ronisbr@gmail.com
+
+- Fix `julia-debug` dependency.
+- Move `libccalltest.so.debug` to `julia-debug` package
+
+-------------------------------------------------------------------
+Thu Aug 25 14:21:56 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.5.0~rc3;
+    * The changelog will be available when the version 0.5.0 is
+      released.
+- Remove unnecessary build options `USE_SYSTEM_MBEDTLS=1` and
+  `USE_SYSTEM_LIBSSH2=1`, because we are using the system libgit2
+  to build julia. For more information, see:
+      https://github.com/JuliaLang/julia/issues/17884
+
+-------------------------------------------------------------------
+Mon Aug 22 19:20:57 UTC 2016 - ronisbr@gmail.com
+
+- Add `libgit2` as a runtime dependency.
+
+-------------------------------------------------------------------
+Fri Aug 12 13:40:51 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.5.0~rc2.
+    * The changelog will be available when the version 0.5.0 is
+      released.
+
+-------------------------------------------------------------------
+Thu Aug 11 20:54:41 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.5.0~rc1.
+    * The changelog will be available when the version 0.5.0 is
+      released.
+- Add package `julia-debug`, which contains a debugging version of
+  Julia system image and Julia library.
+
+-------------------------------------------------------------------
+Thu Aug  4 17:46:57 UTC 2016 - ronisbr@gmail.com
+
+- User oertel (ro@suse.com) fix the `_constraints` file because the
+  sse flags only exists in x86 architectures. See Request 416497.
+
+-------------------------------------------------------------------
+Wed Jun 22 12:24:50 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.4.6.
+    * Bugfix release, no changelog available.
+- Re-enable i586 architecture.
+    * After the full rebuild caused by gcc6, julia started to
+      correctly build against i586 again. The root cause of the
+      problem was not identified yet.
+
+-------------------------------------------------------------------
+Fri Apr 29 17:49:43 UTC 2016 - ronisbr@gmail.com
+
+- Due to a bug, it is not possible now to build julia against i586
+  with glibc 2.23. The root of the problem has not been determined
+  yet. Two bugs were filled in upstream:
+    _ https://github.com/JuliaLang/julia/issues/16087
+    _ https://llvm.org/bugs/show_bug.cgi?id=27548
+  Thus, the support for julia in i586 architectures is being
+  dropped until this bug is fixed.
+
+-------------------------------------------------------------------
+Mon Mar 21 21:07:12 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.4.5.
+    * Bugfix release, no changelog available.
+    * Note: Version 0.4.4 has a known bug with Pkg.publish
+      (gh#JuliaLang/julia#15381). Thus, it was skipped.
+
+-------------------------------------------------------------------
+Fri Jan 29 14:52:45 UTC 2016 - dimstar@opensuse.org
+
+- Do not install julia.appdata.xml when building julia-compat:
+  The application 'julia' must exist only once in the repository.
+
+-------------------------------------------------------------------
+Thu Jan 21 11:21:38 UTC 2016 - ronisbr@gmail.com
+
+- Add in _constraints the information to build julia package in a
+  machine that supports the following extensions: mmx, sse, sse2,
+  sse3, and ssse3. This is necessary because the main package is
+  built for core2 architecture to improve the performance. The
+  package julia-compat, on the other hand, is built for x86_64 and
+  can be used if the user does not support core2 extensions.
+
+-------------------------------------------------------------------
+Tue Jan 19 11:57:08 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0.4.3.
+    * Bugfix release, no changelog available.
+- libuv updated to commit efb40768b7c7bd9f173a7868f74b92b1c5a61a0e
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Dec  8 15:15:19 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4.2.
+    * Bugfix release, no changelog available.
+- libuv updated to commit 9ab431a88fe255dd21e19a11f7fa2dd95774abf4.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Nov 16 12:22:47 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4.1.
+    * Bugfix release, no changelog available.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:27:17 UTC 2015 - lorddarthfener@gmail.com
+
+- Add missing runtime dependency on libpcre2-8-0
+
+-------------------------------------------------------------------
+Fri Oct  9 21:19:00 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4.0, see NEWS.md for details.
+
+-------------------------------------------------------------------
+Wed Oct  7 23:04:24 UTC 2015 - ronisbr@gmail.com
+
+- Remove unneeded build dependencies.
+- Version bump to 0.4.0~rc4.
+    * Bugfix and backports towards 0.4 release. No changelog
+      available.
+
+-------------------------------------------------------------------
+Sat Oct  3 20:18:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Add julia-compat package without CPU optimizations
+
+-------------------------------------------------------------------
+Thu Oct  1 01:29:34 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4.0~rc3.
+    * Bugfix and backports towards 0.4 release. No changelog
+      available.
+
+-------------------------------------------------------------------
+Tue Sep 22 21:25:05 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4.0~rc2.
+    * Bugfix and backports towards 0.4 release. No changelog
+      available.
+
+-------------------------------------------------------------------
+Fri Sep 18 18:10:24 UTC 2015 - ronisbr@gmail.com
+
+- LLVM 3.3 will be bundle for 0.4 branch.
+    * LLVM 3.3 will be bundle until upstream change the supported
+      version. As it can be seen in upstream issues #9336 and
+      #13209, there are still many problems related with LLVM 3.5,
+      regarding both the build process and the JIT compiler used
+      by Julia. Thus, it is better for now stick with LLVM 3.3.
+      For more information, see:
+        https://github.com/JuliaLang/julia/issues/13208
+        https://github.com/JuliaLang/julia/issues/9336
+
+-------------------------------------------------------------------
+Fri Sep 18 04:38:14 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 0.4 branch (0.4.0~rc1).
+    * This version needs utf8proc > 1.3. Since it is not available
+      in openSUSE yet, it was decided to bundle the selected
+      upstream version.
+    * This version seems to build correctly with both LLVM 3.5 and
+      3.7, which are the versions available in 13.2 and
+      Tumbleweed. Thus, it was decided to build julia against
+      system LLVM.
+    * The build process now requires libgit2 and pcre2.
+    * The changes in .spec were obtained from Fedora's
+      julia-nightlies.spec.
+
+- Changelog of verion 0.4.0~rc1.
+    * The complete list of changes related to this release
+      candidate can be seen in:
+      https://github.com/JuliaLang/julia/issues?q=milestone%3A0.4.0+is%3Aclosed
+
+    * Note: a changelog with the notable changes between 0.3 and
+      0.4 versions are expected in the Julia 0.4 release
+      announcement.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:17:31 UTC 2015 - ronisbr@gmail.com
+
+- Revert: "Build julia using llvm-3_3 package" (Revision 15)
+  * The llvm-3_3 package is conflicting with other packages that
+    depends on llvm and it turns out that it will need a huge
+    amount of work to modify every package spec that depends on
+    llvm to circumvent this problem. Thus, by now, the safest
+    approach is just bundle the supported llvm version in julia
+    package.
+
+-------------------------------------------------------------------
+Wed Jul 29 20:47:04 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.11
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Sun Jul 26 19:10:15 UTC 2015 - ronisbr@gmail.com
+
+- Drop obsolete julia-disable-llvm-timestamps.patch
+- Fix compiler names (clang++ -> clang++-3.3 in llvm-3_3-clang)
+
+-------------------------------------------------------------------
+Sun Jul 26 18:50:18 UTC 2015 - ronisbr@gmail.com
+
+- Build julia using llvm-3_3 package.
+
+-------------------------------------------------------------------
+Wed Jul 15 06:40:15 UTC 2015 - ronisbr@gmail.com
+
+- Use build-in LLVM 3.3
+- Disable LLVM timestamps
+  * julia-disable-llvm-timestamps.patch
+- Drop obsolete julia_Fix-building-with-MCJIT-LLVM.patch
+- Set required memory to 4 Gb
+
+-------------------------------------------------------------------
+Mon Jul  6 13:53:29 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.10
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Tue Jun  2 15:33:00 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.9
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Sat May  2 18:11:07 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.8
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Wed Mar 25 16:20:44 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.7
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Fri Feb 20 14:22:10 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.6
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Sat Jan 10 02:37:17 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.3.5
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Mon Dec 29 02:29:15 UTC 2014 - ronisbr@gmail.com
+
+- Update to version 0.3.4
+  * Bugfix release, no changelog available
+
+- Set USE_SYSTEM_LIBM=0
+  * If USE_SYSTEM_LIBM is set to 1, then julia will not use
+    openlibm.
+
+- Set MARCH=pentium4 (32 bits) / MARCH=core2 (64 bits)
+
+- Add libarpack2 to the dependency list
+
+- Remove upstreamed julia-upstream-9221.patch
+
+-------------------------------------------------------------------
+Sat Dec 20 19:42:31 UTC 2014 - ronisbr@gmail.com
+
+- Add julia-upstream-9221.patch to temporarily fix the upstream issue:
+  https://github.com/JuliaLang/julia/issues/8690
+
+-------------------------------------------------------------------
+Sat Dec 20 19:35:16 UTC 2014 - ronisbr@gmail.com
+
+- Fix bug related with build architecture (JULIA_CPU_TARGET) that
+  was added by revision 15 of science repo.
+
+-------------------------------------------------------------------
+Fri Dec 19 13:07:48 UTC 2014 - matwey.kornilov@gmail.com
+
+- Deduce JULIA_TARGET_ARCH from RPM build flags, specifying just
+  JULIA_CPU_TARGET=core2 is not portable
+
+-------------------------------------------------------------------
+Wed Nov 26 13:41:38 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.3
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Tue Oct 21 21:05:20 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.2
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Fri Oct 17 13:21:48 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.1
+  * Bugfix release, no changelog available
+
+-------------------------------------------------------------------
+Thu Aug 21 05:39:43 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.0
+  * See included NEWS.md for details
+- Add _service in disabled mode for Rmath and libuv sources
+
+-------------------------------------------------------------------
+Fri Aug 15 13:32:56 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.0-rc4
+
+-------------------------------------------------------------------
+Sun Aug 10 07:16:17 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.0-rc3
+
+-------------------------------------------------------------------
+Wed Aug  6 06:37:16 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3.0-rc2
+- spec file cleanup
+- Use system openlibm, openspecfun, utf8proc
+- Use FFTW3 with multithreading support
+- Move build parameters to juliabuildopts file
+- Move code examples to separate package
+
+-------------------------------------------------------------------
+Wed Jul 16 00:00:00 UTC 2014 - ronisbr@gmail.com
+
+- Julia 0.3.0-rc1 (0.2.0+git4218.gc5acc8d)

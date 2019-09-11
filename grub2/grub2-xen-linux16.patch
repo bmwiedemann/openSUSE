@@ -1,0 +1,31 @@
+Index: grub-2.02~beta2/grub-core/loader/i386/xen.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/loader/i386/xen.c
++++ grub-2.02~beta2/grub-core/loader/i386/xen.c
+@@ -688,7 +688,7 @@ fail:
+   return grub_errno;
+ }
+ 
+-static grub_command_t cmd_xen, cmd_initrd, cmd_module, cmd_multiboot;
++static grub_command_t cmd_xen, cmd_initrd, cmd_module, cmd_multiboot, cmd_xen16, cmd_initrd16;
+ 
+ GRUB_MOD_INIT (xen)
+ {
+@@ -700,6 +700,10 @@ GRUB_MOD_INIT (xen)
+ 				      0, N_("Load initrd."));
+   cmd_module = grub_register_command ("module", grub_cmd_module,
+ 				      0, N_("Load module."));
++  cmd_xen16 = grub_register_command ("linux16", grub_cmd_xen,
++				     0, N_("Load Linux."));
++  cmd_initrd16 = grub_register_command ("initrd16", grub_cmd_initrd,
++					0, N_("Load initrd."));
+   my_mod = mod;
+ }
+ 
+@@ -709,4 +713,6 @@ GRUB_MOD_FINI (xen)
+   grub_unregister_command (cmd_initrd);
+   grub_unregister_command (cmd_multiboot);
+   grub_unregister_command (cmd_module);
++  grub_unregister_command (cmd_xen16);
++  grub_unregister_command (cmd_initrd16);
+ }

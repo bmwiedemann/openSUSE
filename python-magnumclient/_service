@@ -1,0 +1,12 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/python-magnumclient/python-magnumclient.spec.j2</param>
+    <param name="output-name">python-magnumclient.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/python-magnumclient/stable/stein/requirements.txt</param>
+    <param name="changelog-email">cloud-devel@suse.de</param>
+    <param name="changelog-provider">gh,openstack,python-magnumclient</param>
+  </service>
+  <service mode="disabled" name="download_files">
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

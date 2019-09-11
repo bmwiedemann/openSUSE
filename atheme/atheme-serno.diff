@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2016-05-04 11:21:18.899894344 +0200
+References: https://github.com/atheme/atheme/issues/488
+
+Avoid build failure because of serno.h non-existence.
+
+---
+ include/Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: atheme-atheme-7.2.6/include/Makefile
+===================================================================
+--- atheme-atheme-7.2.6.orig/include/Makefile
++++ atheme-atheme-7.2.6/include/Makefile
+@@ -68,6 +68,6 @@ hooktypes.h: hooktypes.in mkhooktypes.sh
+ serno.h:
+ 	$(info Generate: $@)
+ 	@revh=`git log -1 --pretty=oneline | cut -d' ' -f1 2>/dev/null` || :; \
+-	[ -z "$$revh" ] || echo "#define SERNO \"$$revh\"" >serno.h
++	echo "#define SERNO \"$$revh\"" >serno.h
+ 
+ include ../buildsys.mk

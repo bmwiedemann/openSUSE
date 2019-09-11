@@ -1,0 +1,28 @@
+Alias /nextcloud "@DATAPATH@/"
+<Directory "@DATAPATH@">
+    Options +FollowSymLinks
+    AllowOverride All
+
+    <IfModule mod_dav.c>
+      Dav off
+    </IfModule>
+
+    <IfModule mod_headers.c>
+      Header set Referrer-Policy no-referrer
+      Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+    </IfModule>
+
+    SetEnv HOME @DATAPATH@
+    SetEnv HTTP_HOME @DATAPATH@
+</Directory>
+
+<Directory "@DATAPATH@/data/">
+  # just in case if .htaccess gets disabled
+  Require all denied
+</Directory>
+
+Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
+Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
+
+Redirect 301 /ocm-provider/ /nextcloud/ocm-provider/
+Redirect 301 /ocs-provider/ /nextcloud/ocs-provider/

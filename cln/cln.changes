@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Mon Mar 11 13:46:42 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- riscv.patch: Add support for riscv64 platform
+- Use %license
+
+-------------------------------------------------------------------
+Tue Nov 18 15:05:37 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.3.4:
+  * Fix input of huge floats.
+  * Support the AArch64 and the Mips64 ABIs.
+    => dropped cln-aarch64.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 14:32:41 UTC 2013 - pgajdos@suse.com
+
+- updated to 1.3.3:
+  * Fix integer input of leading zeros in power-of-two base.
+  * Fix several floating-poing conversion bugs involving huge 
+    numbers.
+  * Fix bug that would set input stream fail state when reading 
+    a number at EOF.
+- removed upstreamed s390x.patch
+- refreshed aarch64.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 14:10:33 UTC 2013 - schwab@suse.de
+
+- cln-aarch64.patch: add support for aarch64
+
+-------------------------------------------------------------------
+Tue Nov 20 11:27:06 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (%make_install is not expanded)
+- Install the license file
+
+-------------------------------------------------------------------
+Fri Jan 20 20:05:12 UTC 2012 - crrodriguez@opensuse.org
+
+- build with -fvisibility-inlines-hidden, in the unlikely
+  case this cause trouble, drop me a note (the test suite passes
+  so I expect none) . This reduces the exported symbol table
+  in around 200(!!) symbols.
+
+-------------------------------------------------------------------
+Tue Dec 20 14:54:13 CET 2011 - dmueller@suse.de
+
+- build with optflags again
+- fix build on arm
+
+-------------------------------------------------------------------
+Mon Nov 28 02:07:36 CET 2011 - ro@suse.de
+
+- make it build on s390x 
+
+-------------------------------------------------------------------
+Mon Oct 17 19:38:13 UTC 2011 - arun@gmx.de
+
+- Update to version 1.3.2: (changes taken from git log)
+ * Fix scale_float for large factors on x86.
+ * Update documentation about infrastructure requirements.
+ * Support for MSVC.
+ * Fix yet another dependent base C++ language issue.
+ * Fix compilation with clang.
+ * Configure: be more cross-compilation friendly.
+ * Fix the documentation build failure (wrong texinfo).
+ * Remove 'auto' keyword used as storage specifier.
+
+-------------------------------------------------------------------
+Mon Aug  8 10:34:25 UTC 2011 - toddrme2178@gmail.ccom
+ 
+- Fixed group (fix for RPMLINT warning)
+- Removed commented files  (fix for RPMLINT warning)
+- Switched hard-coded paths and commands to RPM macros in spec file
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Mon Jun 28 00:00:00 UTC 2010 - pgajdos@suse.cz
+
+- Added pkg-config to BuildRequires to generate right Provides
+
+-------------------------------------------------------------------
+Mon Sep 28 00:00:00 UTC 2009 - masterpatricko@gmail.com
+
+- Update to verion 1.3.1
+
+-------------------------------------------------------------------
+Sat Aug  8 00:00:00 UTC 2009 - masterpatricko@gmail.com
+
+- Update to version 1.3
+
+-------------------------------------------------------------------
+Mon Mar 17 00:00:00 UTC 2008 - bwalle@suse.de
+
+- fix build on ia64
+
+-------------------------------------------------------------------
+Wed Dec 19 00:00:00 UTC 2007 - bwalle@suse.de
+
+- fix build for gcc 4.3 after the gmp update (CL_GMP_SET_UINTD
+  needs to be run with C and not with C++ language)
+- require emacs-nox instead of emacs-x11 because emacs-x11 requires
+  a terminal as standard input even in batch mode
+- changed RPM Group for devel subpackage to "Development/Lib-
+  raries/C and C++" because of rpmlint
+
+-------------------------------------------------------------------
+Wed Oct 24 00:00:00 UTC 2007 - bwalle@suse.de
+
+- update to latest CVS
+- fix build for gcc 4.3
+
+-------------------------------------------------------------------
+Fri Jun 22 00:00:00 UTC 2007 - bwalle@suse.de
+
+- update to 1.1.13
+  o Compilation fixes for 64-bit
+  o Fix rare assertion when printing quite large floats.
+  o Compilation fixes for several platforms: *BSD, Intel Mac, and
+    MinGW.
+- created -devel subpackage
+- fixed dependency for 10.3
+
+-------------------------------------------------------------------
+Thu Mar 23 00:00:00 UTC 2006 - schwab@suse.de
+
+- Don't generate debug information twice.
+
+-------------------------------------------------------------------
+Thu Jan 26 00:00:00 UTC 2006 - sbrabec@suse.cz
+
+- Added %%install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 00:00:00 UTC 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 00:00:00 UTC 2006 - ro@suse.de
+
+- added gmp-devel to nfb
+
+-------------------------------------------------------------------
+Thu Nov 24 00:00:00 UTC 2005 - jj@suse.de
+
+- update to new version, disabled patch
+
+-------------------------------------------------------------------
+Mon May 23 00:00:00 UTC 2005 - schwab@suse.de
+
+- Add  -fno-reorder-blocks to work around design bug.
+- Fix missing declaration.
+
+-------------------------------------------------------------------
+Thu Jan 27 00:00:00 UTC 2005 - uli@suse.de
+
+- update -> 1.1.9 (bugfixes, speedups, new function sintL
+  ldegree(const cl_UP& x))
+
+-------------------------------------------------------------------
+Fri Jan  9 00:00:00 UTC 2004 - adrian@suse.de
+
+- add %%run_ldconfig
+
+-------------------------------------------------------------------
+Thu Nov  6 00:00:00 UTC 2003 - ro@suse.de
+
+- use -fno-unit-at-a-time (constructor detection in configure)
+
+-------------------------------------------------------------------
+Thu Jul 10 00:00:00 UTC 2003 - meissner@suse.de
+
+- Fixed ppc64 fix (use __powerpc64__, not __ppc64__). Now crashes
+  the assembler with slightly invalid assembler.
+- Added s390x.
+- Merged all diffs into 1.
+
+-------------------------------------------------------------------
+Mon Jul  7 00:00:00 UTC 2003 - meissner@suse.de
+
+- Reenabled make check.
+- Fixed ppc/ppc64 build.
+- Fixed ia64 build.
+- Fixed so that it will at least run the testsuite on x86_64.
+
+-------------------------------------------------------------------
+Thu Jul  3 00:00:00 UTC 2003 - jj@suse.de
+
+- support for ppc64: cln-1.1.5-ppc64.diff
+- RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Jun 19 00:00:00 UTC 2003 - ro@suse.de
+
+- fix filelist
+
+-------------------------------------------------------------------
+Mon May 26 00:00:00 UTC 2003 - ro@suse.de
+
+- added info page to filelist
+- added info page installation handling
+
+-------------------------------------------------------------------
+Mon Feb 24 00:00:00 UTC 2003 - ro@suse.de
+
+- use libdir
+
+-------------------------------------------------------------------
+Wed Feb  5 00:00:00 UTC 2003 - jj@suse.de
+
+- disabled 'make check' because it is expensive
+
+-------------------------------------------------------------------
+Fri Aug  2 00:00:00 UTC 2002 - jj@suse.de
+
+- update to version 1.1.5 (bugfix-version)
+
+-------------------------------------------------------------------
+Tue Jun 11 00:00:00 UTC 2002 - stepan@suse.de
+
+- add type defines for x86-64
+
+-------------------------------------------------------------------
+Mon Jan 14 00:00:00 UTC 2002 - schwab@suse.de
+
+- Fix use of namespaces.
+
+-------------------------------------------------------------------
+Sat Dec  8 00:00:00 UTC 2001 - jj@suse.de
+
+- update to version 1.1.3
+
+-------------------------------------------------------------------
+Thu Aug 30 00:00:00 UTC 2001 - jj@suse.de
+
+- upgraded to 1.1.2 that should fix all problems
+- disabled patches cln-ia64.dif and cln-namesp.dif
+
+-------------------------------------------------------------------
+Mon Jul 16 00:00:00 UTC 2001 - schwab@suse.de
+
+- Fix namespace bug.
+
+-------------------------------------------------------------------
+Wed Apr  4 00:00:00 UTC 2001 - jj@suse.de
+
+- fixed permissions for /usr/bin/pi
+
+-------------------------------------------------------------------
+Wed Mar  7 00:00:00 UTC 2001 - jj@suse.de
+
+- entered patch for ia64
+- added example program /usr/bin/pi  ;-)
+
+-------------------------------------------------------------------
+Mon Feb 19 00:00:00 UTC 2001 - jj@suse.de
+
+- initial version
+

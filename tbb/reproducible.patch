@@ -1,0 +1,36 @@
+Index: tbb-2019_U8/build/version_info_linux.sh
+===================================================================
+--- tbb-2019_U8.orig/build/version_info_linux.sh
++++ tbb-2019_U8/build/version_info_linux.sh
+@@ -16,10 +16,10 @@
+ 
+ # Script used to generate version info string
+ echo "#define __TBB_VERSION_STRINGS(N) \\"
+-echo '#N": BUILD_HOST'"\t\t"`hostname -s`" ("`uname -m`")"'" ENDL \'
++echo '#N": BUILD_HOST'"\t\t"openSUSE" ("`uname -m`")"'" ENDL \'
+ # find OS name in *-release and issue* files by filtering blank lines and lsb-release content out
+ echo '#N": BUILD_OS'"\t\t"`lsb_release -sd 2>/dev/null | grep -ih '[a-z] ' - /etc/*release /etc/issue 2>/dev/null | head -1 | sed -e 's/["\\\\]//g'`'" ENDL \'
+-echo '#N": BUILD_KERNEL'"\t"`uname -srv`'" ENDL \'
++echo '#N": BUILD_KERNEL'"\t"Linux'" ENDL \'
+ echo '#N": BUILD_GCC'"\t\t"`g++ --version </dev/null 2>&1 | grep 'g++'`'" ENDL \'
+ [ -z "$COMPILER_VERSION" ] || echo '#N": BUILD_COMPILER'"\t"$COMPILER_VERSION'" ENDL \'
+ echo '#N": BUILD_LIBC'"\t"`getconf GNU_LIBC_VERSION | grep glibc | sed -e 's/^glibc //'`'" ENDL \'
+@@ -27,4 +27,4 @@ echo '#N": BUILD_LD'"\t\t"`ld -v 2>&1 |
+ echo '#N": BUILD_TARGET'"\t$arch on $runtime"'" ENDL \'
+ echo '#N": BUILD_COMMAND'"\t"$*'" ENDL \'
+ echo ""
+-echo "#define __TBB_DATETIME \""`date -u`"\""
++echo "#define __TBB_DATETIME \""`date -u -r $(dirname $0)/../CHANGES`"\""
+Index: tbb-2019_U8/build/linux.inc
+===================================================================
+--- tbb-2019_U8.orig/build/linux.inc
++++ tbb-2019_U8/build/linux.inc
+@@ -57,7 +57,7 @@ endif
+ ifndef runtime
+         export gcc_version:=$(shell gcc -dumpfullversion -dumpversion)
+         os_version:=$(shell uname -r)
+-        os_kernel_version:=$(shell uname -r | sed -e 's/-.*$$//')
++        os_kernel_version:=4.0
+         export os_glibc_version_full:=$(shell getconf GNU_LIBC_VERSION | grep glibc | sed -e 's/^glibc //')
+         os_glibc_version:=$(shell echo "$(os_glibc_version_full)" | sed -e '2,$$d' -e 's/-.*$$//')
+         export runtime:=cc$(gcc_version)_libc$(os_glibc_version)_kernel$(os_kernel_version)

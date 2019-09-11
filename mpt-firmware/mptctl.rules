@@ -1,0 +1,6 @@
+# Autoload mptctl module
+ACTION!="add", GOTO="mptctl_end"
+
+SUBSYSTEM=="pci", DRIVER=="mpt*", ENV{MODALIAS}=="?*", RUN{builtin}="kmod load mptctl"
+
+LABEL="mptctl_end"

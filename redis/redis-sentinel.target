@@ -1,0 +1,3 @@
+[Unit]
+Description=Redis Sentinel target allowing to start/stop all redis-sentinel@.service instances at once
+

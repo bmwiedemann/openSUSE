@@ -1,0 +1,2366 @@
+Thu Jul 25 13:43:52 UTC 2019 - alex <atoptsoglou@suse.com>
+
+- update to exim 4.92.1
+ * CVE-2019-13917: Fixed an issue with ${sort} expansion which could 
+   allow remote attackers to execute other programs with root privileges 
+   (boo#1142207)
+
+-------------------------------------------------------------------
+Wed Jun  5 07:14:44 CEST 2019 - wullinger@rz.uni-kiel.de
+
+- spec file cleanup
+ * fix DANE inclusion guard condition
+ * re-enable i18n and remove misleading comment
+ * EXPERIMENTAL_SPF is now SUPPORT_SPF
+ * DANE is now SUPPORT_DANE
+
+-------------------------------------------------------------------
+Sat Mar 23 05:03:11 UTC 2019 - seanlew@opensuse.org 
+
+- update to exim 4.92
+ * ${l_header:<name>} expansion
+ * ${readsocket} now supports TLS
+ * "utf8_downconvert" option (if built with SUPPORT_I18N)
+ * "pipelining" log_selector
+ * JSON variants for ${extract } expansion
+ * "noutf8" debug option
+ * TCP Fast Open support on MacOS
+ * CVE-2019-10149: Fixed a Remote Command Execution (bsc#1136587)
+- add workaround patch for compile time error on missing printf
+  format annotation (gnu_printf.patch)
+
+-------------------------------------------------------------------
+Mon Apr 16 13:57:17 UTC 2018 - wullinger@rz.uni-kiel.de
+
+- update to 4.91
+ * DEFER rather than ERROR on redis cluster MOVED response.
+ * Catch and remove uninitialized value warning in exiqsumm
+ * Disallow '/' characters in queue names specified for the "queue=" ACL
+    modifier.  This matches the restriction on the commandline.
+ * Fix pgsql lookup for multiple result-tuples with a single column.
+    Previously only the last row was returned.
+ * Bug 2217: Tighten up the parsing of DKIM signature headers.
+ * Bug 2215: Fix crash associated with dnsdb lookup done from DKIM ACL.
+ * Fix issue with continued-connections when the DNS shifts unreliably.
+ * Bug 2214: Fix SMTP responses resulting from non-accept result of MIME ACL.
+ * The "support for" informational output now, which built with Content
+   Scanning support, has a line for the malware scanner interfaces compiled
+   in.  Interface can be individually included or not at build time.
+ * The "aveserver", "kavdaemon" and "mksd" interfaces are now not included
+   by the template makefile "src/EDITME".  The "STREAM" support for an older
+   ClamAV interface method is removed.
+ * Bug 2223: Fix mysql lookup returns for the no-data case (when the number of
+   rows affected is given instead).
+ * The runtime Berkeley DB library version is now additionally output by
+   "exim -d -bV".  Previously only the compile-time version was shown.
+ * Bug 2230: Fix cutthrough routing for nonfirst messages in an initiating
+   SMTP connection.
+ * Bug 2229: Fix cutthrough routing for nonstandard port numbers defined by
+   routers.
+ * Bug 2174: A timeout on connect for a callout was also erroneously seen as
+   a timeout on read on a GnuTLS initiating connection, resulting in the
+   initiating connection being dropped.
+ * Relax results from ACL control request to enable cutthrough, in
+   unsupported situations, from error to silently (except under debug)
+   ignoring.
+ * Fix Buffer overflow in base64d() (CVE-2018-6789)
+ * Fix bug in DKIM verify: a buffer overflow could corrupt the malloc
+   metadata, resulting in a crash in free().
+ * Fix broken Heimdal GSSAPI authenticator integration.
+ * Bug 2113: Fix conversation closedown with the Avast malware scanner.
+ * Bug 2239: Enforce non-usability of control=utf8_downconvert in the mail ACL.
+ * Speed up macro lookups during configuration file read, by skipping non-
+   macro text after a replacement (previously it was only once per line) and
+   by skipping builtin macros when searching for an uppercase lead character.
+ * DANE support moved from Experimental to mainline.  The Makefile control
+   for the build is renamed.
+ * Fix memory leak during multi-message connections using STARTTLS.
+ * Bug 2236: When a DKIM verification result is overridden by ACL, DMARC
+   reported the original.  Fix to report (as far as possible) the ACL
+   result replacing the original.
+ * Fix memory leak during multi-message connections using STARTTLS under
+   OpenSSL
+ * Bug 2242: Fix exim_dbmbuild to permit directoryless filenames.
+ * Fix utf8_downconvert propagation through a redirect router.
+ * Bug 2253: For logging delivery lines under PRDR, append the overall
+   DATA response info to the (existing) per-recipient response info for
+   the "C=" log element.
+ * Bug 2251: Fix ldap lookups that return a single attribute having zero-
+   length value.
+ * Support Avast multiline protocol, this allows passing flags to
+   newer versions of the scanner.
+ *  Ensure that variables possibly set during message acceptance are marked
+    dead before release of memory in the daemon loop.
+ * Bug 2250: Fix a longstanding bug in heavily-pipelined SMTP input (such
+   as a multi-recipient message from a mailinglist manager).
+ * The (EXPERIMENTAL_DMARC) variable $dmarc_ar_header is withdrawn, being
+   replaced by the ${authresults } expansion.
+ * Bug 2257: Fix pipe transport to not use a socket-only syscall.
+ * Set a handler for SIGTERM and call exit(3) if running as PID 1. This
+   allows proper process termination in container environments.
+ * Bug 2258: Fix spool_wireformat in combination with LMTP transport.
+   Previously the "final dot" had a newline after it; ensure it is CR,LF.
+ * SPF: remove support for the "spf" ACL condition outcome values "err_temp"
+   and "err_perm", deprecated since 4.83 when the RFC-defined words
+   " temperror" and "permerror" were introduced.
+ * Re-introduce enforcement of no cutthrough delivery on transports having
+   transport-filters or DKIM-signing.
+ * Cutthrough: for a final-dot response timeout (and nonunderstood responses)
+   in defer=pass mode supply a 450 to the initiator.  Previously the message
+      would be spooled.
+ * DANE: add dane_require_tls_ciphers SMTP Transport option; if unset,
+      tls_require_ciphers is used as before.
+ * Malware Avast: Better match the Avast multiline protocol.
+ * Fix reinitialisation of DKIM logging variable between messages.
+ * Bug 2255: Revert the disable of the OpenSSL session caching.
+ * Add util/renew-opendmarc-tlds.sh script for safe renewal of public
+   suffix list.
+ * DKIM: accept Ed25519 pubkeys in SubjectPublicKeyInfo-wrapped form,
+   since the IETF WG has not yet settled on that versus the original
+   "bare" representation.
+ * Fix syslog logging for syslog_timestamp=no and log_selector +millisec.
+   Previously the millisecond value corrupted the output.
+   Fix also for syslog_pid=no and log_selector +pid, for which the pid
+   corrupted the output.
+
+-------------------------------------------------------------------
+Thu Mar 15 20:22:09 UTC 2018 - crrodriguez@opensuse.org
+
+- Replace xorg-x11-devel by individual pkgconfig() buildrequires. 
+
+-------------------------------------------------------------------
+Tue Feb 13 13:39:34 UTC 2018 - kbabioch@suse.com
+
+- update to 4.90.1
+  * Allow PKG_CONFIG_PATH to be set in Local/Makefile and use it correctly
+    during configuration.  Wildcards are allowed and expanded.
+  * Shorten the log line for daemon startup by collapsing adjacent sets of
+    identical IP addresses on different listening ports.  Will also affect
+    "exiwhat" output.
+  * Tighten up the checking in isip4 (et al): dotted-quad components larger
+    than 255 are no longer allowed.
+  * Default openssl_options to include +no_ticket, to reduce load on peers.
+    Disable the session-cache too, which might reduce our load.  Since we
+    currrectly use a new context for every connection, both as server and
+    client, there is no benefit for these.
+  * Add $SOURCE_DATE_EPOCH support for reproducible builds, per spec at
+    <https://reproducible-builds.org/specs/source-date-epoch/>.
+  * Fix smtp transport use of limited max_rcpt under mua_wrapper. Previously
+    the check for any unsuccessful recipients did not notice the limit, and
+    erroneously found still-pending ones.
+  * Pipeline CHUNKING command and data together, on kernels that support
+    MSG_MORE.  Only in-clear (not on TLS connections).
+  * Avoid using a temporary file during transport using dkim.  Unless a
+    transport-filter is involved we can buffer the headers in memory for
+    creating the signature, and read the spool data file once for the
+    signature and again for transmission.
+  * Enable use of sendfile in Linux builds as default.  It was disabled in
+    4.77 as the kernel support then wasn't solid, having issues in 64bit
+    mode.  Now, it's been long enough.  Add support for FreeBSD also.
+  * Add commandline_checks_require_admin option.
+  * Do pipelining under TLS.
+  * For the "sock" variant of the malware scanner interface, accept an empty
+    cmdline element to get the documented default one.  Previously it was
+    inaccessible.
+  * Prevent repeated use of -p/-oMr
+  * DKIM: enforce the DNS pubkey record "h" permitted-hashes optional field,
+    if present.
+  * DKIM: when a message has multiple signatures matching an identity given
+    in dkim_verify_signers, run the dkim acl once for each.
+  * Support IDNA2008.
+  * The path option on a pipe transport is now expanded before use
+  * Have the EHLO response advertise VRFY, if there is a vrfy ACL defined.
+- Several bug fixes
+- Fix for buffer overflow in base64decode() (bsc#1079832 CVE-2018-6789)
+- removed patches (included upstream now):
+  * exim-CVE-2017-1000369.patch
+  * exim-CVE-2017-16943.patch
+  * exim-CVE-2017-16944.patch
+  * exim-4.86.2-mariadb_102_compile_fix.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 08:32:50 UTC 2017 - wullinger@rz.uni-kiel.de
+
+- add exim-CVE-2017-16944.patch:
+  backport of commit 178ecb70987f024f0e775d87c2f8b2cf587dd542
+  fix for CVE-2017-16944 (#bsc1069859)
+
+-------------------------------------------------------------------
+Mon Nov 27 10:36:17 UTC 2017 - dmueller@suse.com
+
+- update to 4.88:
+  drops fix-CVE-2016-9963-31c02defdc5118834e801d4fe8f11c1d9b5ebadf.patch,
+     exim-4.86.2+fixes-867e8fe25dbfb1e31493488ad695bde55b890397.patch
+- remove exim4-manpages.tar.bz2: upstream does not exist anymore
+- update keyring
+
+-------------------------------------------------------------------
+Mon Nov 27 08:52:33 UTC 2017 - kstreitova@suse.com
+
+- add exim-4.86.2-mariadb_102_compile_fix.patch to fix compilation
+   with the mariadb 10.2 (in our case the build with libmariadb
+   library from the mariadb-connector-c package)
+   * upstream commits: a12400fd4493b676e71613ab429e731f777ebd1e and
+   31beb7972466a33a88770eacbce13490f2ddadc2
+
+-------------------------------------------------------------------
+Mon Nov 27 06:45:14 UTC 2017 - meissner@suse.com
+
+- exim-CVE-2017-16943.patch: fixed possible code execution (CVE-2017-16943 bsc#1069857)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:43:04 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Oct  9 11:36:38 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly buildrequire libnsl-devel on suse_version >= 1330:
+  libnsl used to be an integrated part of glibc. Since the build
+  system / makefiles explicitly reference libnsl, it is our own
+  duty to ensure we have our deps in place.
+
+-------------------------------------------------------------------
+Tue Jul  4 11:15:20 UTC 2017 - meissner@suse.com
+
+- specify users with ref:mail, to make them dynamic. bsc#1046971
+
+-------------------------------------------------------------------
+Mon Jun 19 16:27:45 UTC 2017 - meissner@suse.com
+
+- exim-CVE-2017-1000369.patch: Fixed memory leaks that could be
+  exploited to "stack crash" local privilege escalation (bsc#1044692)
+
+- Require user(mail) group(mail) to meet new users handling in TW.
+
+- Prerequire permissions (fixes rpmlint).
+
+-------------------------------------------------------------------
+Mon Apr 24 07:45:00 UTC 2017 - wullinger@rz.uni-kiel.de
+
+- conditionally disable DANE on SuSE versions with OpenSSL < 1.0
+
+- exim-4.86.2+fixes-867e8fe25dbfb1e31493488ad695bde55b890397.patch:
+  import exim-4_86_2+fixes branch
+    + fix CVE-2016-1531 
+      when installed setuid root, allows local users to gain privileges via the perl_startup
+      argument. 
+    + fix Bug 1805: store the initial working directory, expand $initial_cwd
+    + fix Bug 1671: segfault after delivery (https://bugs.exim.org/show_bug.cgi?id=1671)
+    + Don't issue env warning if env is empty
+
+- fix-CVE-2016-9963-31c02defdc5118834e801d4fe8f11c1d9b5ebadf.patch:
+  DKIM information leakage
+  
+
+-------------------------------------------------------------------
+Mon Apr  4 15:55:31 UTC 2016 - e.istomin@edss.ee
+
+- Makefile tuning:
+	+ add sqlite support
+    + disable WITH_OLD_DEMIME
+    + enable AUTH_CYRUS_SASL
+    + enable AUTH_TLS
+    + enable SYSLOG_LONG_LINES
+    + enable SUPPORT_PAM
+    + MAX_NAMED_LIST=64
+    + enable EXPERIMENTAL_DMARC
+    + enable EXPERIMENTAL_EVENT
+    + enable EXPERIMENTAL_PROXY
+    + enable EXPERIMENTAL_CERTNAMES
+    + enable EXPERIMENTAL_DSN
+    + enable EXPERIMENTAL_DANE
+    + enable EXPERIMENTAL_SOCKS
+    + enable EXPERIMENTAL_INTERNATIONAL
+
+-------------------------------------------------------------------
+Wed Mar  2 21:05:04 UTC 2016 - lmuelle@suse.com
+
+- Update to 4.86.2
+  + Fix minor portability issues for *BSD and OS/X.
+
+-------------------------------------------------------------------
+Mon Feb 29 17:26:20 UTC 2016 - lmuelle@suse.com
+
+- Update to 4.86.1
+  + Add support for keep_environment and add_environment options;
+    CVE-2016-1531; (boo#968844).
+
+-------------------------------------------------------------------
+Wed Feb  3 19:07:16 UTC 2016 - opensuse@cboltz.de
+
+- Move AppArmor profile to /usr/share/apparmor/extra-profiles/, which is
+  the directory for inactive profiles since AppArmor 2.9
+
+-------------------------------------------------------------------
+Fri Dec 11 10:44:26 UTC 2015 - lmuelle@suse.com
+
+- Update the Exim Maintainers Keyring file 'exim.keyring'.
+- Use URL for the source line of the main tar ball.
+
+-------------------------------------------------------------------
+Fri Oct  2 21:56:18 UTC 2015 - michal.hrusecky@opensuse.org
+
+- Update to 4.86
+  * Support for using the system standard CA bundle.
+  * New expansion items $config_file, $config_dir, containing the file
+    and directory name of the main configuration file. Also $exim_version.
+  * New "malware=" support for Avast.
+  * New "spam=" variant option for Rspamd.
+  * Assorted options on malware= and spam= scanners.
+  * A commandline option to write a comment into the logfile.
+  * If built with EXPERIMENTAL_SOCKS feature enabled, the smtp transport can
+    be configured to make connections via socks5 proxies.
+  * If built with EXPERIMENTAL_INTERNATIONAL, support is included for
+    the transmission of UTF-8 envelope addresses.
+  * If built with EXPERIMENTAL_INTERNATIONAL, an expansion item for a commonly
+    used encoding of Maildir folder names.
+  * A logging option for slow DNS lookups.
+  * New ${env {<variable>}} expansion.
+  * A non-SMTP authenticator using information from TLS client certificates.
+  * Main option "tls_eccurve" for selecting an Elliptic Curve for TLS.
+    Patch originally by Wolfgang Breyha.
+  * Main option "dns_trust_aa" for trusting your local nameserver at the
+    same level as DNSSEC.
+- Dropped exim-enable_ecdh_openssl.patch as included in upstream
+
+-------------------------------------------------------------------
+Wed May  6 21:25:49 UTC 2015 - lmuelle@suse.com
+
+- Fix the systemd service file by not passing EXIM_ARGS as one single
+  argument by removing the curly brackets (shell syntax).
+
+-------------------------------------------------------------------
+Fri Apr 17 15:53:24 UTC 2015 - lmuelle@suse.com
+
+- Install fitting eximstats.conf depending on SUSE version; (bsc#926861).
+- Add attribute dir to /etc/apache2 and /etc/apache2/conf.d in the file list.
+
+-------------------------------------------------------------------
+Fri Mar 13 12:26:23 UTC 2015 - lmuelle@suse.com
+
+- Replace the fixed ExecStart arguments by ${EXIM_ARGS} as defined in
+  /etc/sysconfig/exim; (bsc#922145).
+
+-------------------------------------------------------------------
+Sat Jan 24 23:04:19 UTC 2015 - lmuelle@suse.com
+
+- Set CFLAGS_OPT_WERROR only on post-5 CentOS and RHEL systems.
+
+-------------------------------------------------------------------
+Sat Jan 24 22:33:59 UTC 2015 - lmuelle@suse.com
+
+- Drop BuildRequires xorg-x11-server-sdk for non SUSE systems in particular to
+  build on RHEL 6 again.
+
+-------------------------------------------------------------------
+Sat Jan 24 22:16:09 UTC 2015 - lmuelle@suse.com
+
+- Let ld know the path to mysqlclient.
+
+-------------------------------------------------------------------
+Sat Jan 24 19:33:39 UTC 2015 - lmuelle@suse.com
+
+- update to 4.85
+  + When running the test suite, the README says that variables such as
+    no_msglog_check are global and can be placed anywhere in a specific
+    test's script, however it was observed that placement needed to be near
+    the beginning for it to behave that way. Changed the runtest perl
+    script to read through the entire script once to detect and set these
+    variables, reset to the beginning of the script, and then run through
+    the script parsing/test process like normal.
+  + Expand the EXPERIMENTAL_TPDA feature.  Several different events now
+    cause callback expansion.
+  + Bugzilla 1518: Clarify "condition" processing in routers; that
+    syntax errors in an expansion can be treated as a string instead of
+    logging or causing an error, due to the internal use of bool_lax
+    instead of bool when processing it.
+  + Add EXPERIMENTAL_DANE, allowing for using the DNS as trust-anchor for
+    server certificates when making smtp deliveries.
+  + Support secondary-separator specifier for MX, SRV, TLSA lookups.
+  + Add ${sort {list}{condition}{extractor}} expansion item.
+  + Bugzilla 1216: Add -M (related messages) option to exigrep.
+  + GitHub Issue 18: Adjust logic testing for true/false in redis lookups.
+    Merged patch from Sebastian Wiedenroth.
+  + Fix results-pipe from transport process.  Several recipients, combined
+    with certificate use, exposed issues where response data items split
+    over buffer boundaries were not parsed properly.  This eventually
+    resulted in duplicates being sent.  This issue only became common enough
+    to notice due to the introduction of conection certificate information,
+    the item size being so much larger.  Found and fixed by Wolfgang Breyha.
+  + Bug 1533: Fix truncation of items in headers_remove lists.  A fixed
+    size buffer was used, resulting in syntax errors when an expansion
+    exceeded it.
+  + Add support for directories of certificates when compiled with a GnuTLS
+    version 3.3.6 or later.
+  + Rename the TPDA expermimental facility to Event Actions.  The #ifdef
+    is EXPERIMENTAL_EVENT, the main-configuration and transport options
+    both become "event_action", the variables become $event_name, $event_data
+    and $event_defer_errno.  There is a new variable $verify_mode, usable in
+    routers, transports and related events.  The tls:cert event is now also
+    raised for inbound connections, if the main configuration event_action
+    option is defined.
+  + In test suite, disable OCSP for old versions of openssl which contained
+    early OCSP support, but no stapling (appears to be less than 1.0.0).
+  + When compiled with OpenSSL and EXPERIMENTAL_CERTNAMES, the checks on
+    server certificate names available under the smtp transport option
+    "tls_verify_cert_hostname" now do not permit multi-component wildcard
+    matches.
+  + Time-related extraction expansions from certificates now use the main
+    option "timezone" setting for output formatting, and are consistent
+    between OpenSSL and GnuTLS compilations.  Bug 1541.
+  + Fix a crash in mime ACL when meeting a zero-length, quoted or RFC2047-
+    encoded parameter in the incoming message.  Bug 1558.
+  + Bug 1527: Autogrow buffer used in reading spool files.  Since they now
+    include certificate info, eximon was claiming there were spoolfile
+    syntax errors.
+  + Bug 1521: Fix ldap lookup for single-attr request, multiple-attr return.
+  + Log delivery-related information more consistently, using the sequence
+    "H=<name> [<ip>]" wherever possible.
+  + Bug 1547: Omit RFCs from release. Draft and RFCs have licenses which
+    are problematic for Debian distribution, omit them from the release
+    tarball.
+  + Updates and fixes to the EXPERIMENTAL_DSN feature.
+  + Fix string representation of time values on 64bit time_t anchitectures.
+    Bug 1561.
+  + Fix a null-indirection in certextract expansions when a nondefault
+    output list separator was used.
+
+-------------------------------------------------------------------
+Sun Dec 21 10:25:47 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Enable SPF
+
+-------------------------------------------------------------------
+Sun Dec 21 09:48:18 UTC 2014 - michal.hrusecky@opensuse.org
+
+- Fix service file; (boo#935601)
+- Using bcond for mysql, pgsql and ldap
+- mysql, pgsql and ldap enabled by default
+
+-------------------------------------------------------------------
+Fri Dec  5 12:47:28 UTC 2014 - lmuelle@suse.com
+
+- Removed executable permission bits from exim.service file; (boo#935601).
+
+-------------------------------------------------------------------
+Wed Nov 26 14:38:41 UTC 2014 - lmuelle@suse.com
+
+- Remove dependency on gpg-offline as signature checking is implemented in the
+  source validator.
+
+-------------------------------------------------------------------
+Wed Nov 26 13:13:38 UTC 2014 - lmuelle@suse.com
+
+- update to 4.84
+  + Re-add a 'return NULL' to silence complaints from static checkers that
+    were complaining about end of non-void function with no return;
+    (beo#1506); obsoletes silence-static-checkers.patch.
+  + Fix parsing of quoted parameter values in MIME headers.
+    This was a regression intruduced in 4.83 by another bugfix; (beo#1513).
+  + Fix broken compilation when EXPERIMENTAL_DSN is enabled.
+  + Fix exipick for enhanced spoolfile specification used when
+    EXPERIMENTAL_DNS is enabled; (beo#1509).
+
+-------------------------------------------------------------------
+Tue Aug 12 13:46:29 UTC 2014 - p.drouand@gmail.com
+
+- Use %insserv_cleanup only for openSUSE < 12.2
+
+-------------------------------------------------------------------
+Wed Jul 23 13:09:41 UTC 2014 - lmuelle@suse.com
+
+- Add silence-static-checkers.patch; (beo#1506).
+
+-------------------------------------------------------------------
+Wed Jul 23 10:08:04 UTC 2014 - lmuelle@suse.com
+
+- update to 4.83
+  This release of Exim includes one incompatible fix:
+  + the behavior of expansion of arguments to math comparison functions
+    (<, <=, =, =>, >) was unexpected, expanding the values twice;
+    CVE-2014-2972; (bnc#888520)
+  This release contains the following enhancements and bugfixes:
+  + PRDR was promoted from Experimental to mainline
+  + OCSP Stapling was promoted from Experimental to mainline
+  + new Experimental feature Proxy Protocol
+  + new Experimental feature DSN (Delivery Status Notifications)
+  + TLS session improvements
+  + TLS SNI fixes
+  + LDAP enhancements
+  + DMARC fixes (previous CVE-2014-2957) and new $dmarc_domain_policy
+  + several new operations (listextract, utf8clean, md5, sha1)
+  + enforce header formatting with verify=header_names_ascii
+  + new commandline option -oMm
+  + new TLSA dns lookup
+  + new malware "sock" type
+  + cutthrough routing enhancements
+  + logging enhancements
+  + DNSSEC enhancements
+  + exiqgrep enhancements
+  + deprecating non-standard SPF results
+  + build and portability fixes
+  + documentation fixes and enhancements
+- Verify source tar ball gpg signature.
+- Refresh exim-enable_ecdh_openssl.patch and strip version number from the
+  patch filename.
+
+-------------------------------------------------------------------
+Thu Jan 23 09:25:36 UTC 2014 - meissner@suse.com
+
+- exim482-enable_ecdh_openssl.patch: Enable ECDH (elliptic curve diffie
+  hellman) support, taken from http://bugs.exim.org/show_bug.cgi?id=1397
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:42 UTC 2013 - lars@smaba.org
+
+- BuildRequire libopenssl-devel only on SUSE systems.
+- Fix suse_version condition of the pre- and postun scriptlets.
+
+-------------------------------------------------------------------
+Fri Dec  6 17:52:27 UTC 2013 - lars@smaba.org
+
+- Call service_add_pre from pre scriptlet on post-12.2 systems.
+
+-------------------------------------------------------------------
+Fri Dec  6 17:37:11 UTC 2013 - lmuelle@suse.com
+
+- update to 4.82
+  - Add -bI: framework, and -bI:sieve for querying sieve capabilities.
+  - Make -n do something, by making it not do something.
+    When combined with -bP, the name of an option is not output.
+  - Added tls_dh_min_bits SMTP transport driver option, only honoured
+    by GnuTLS.
+  - First step towards DNSSEC, provide $sender_host_dnssec for
+    $sender_host_name and config options to manage this, and basic check
+    routines.
+  - DSCP support for outbound connections and control modifier for inbound.
+  - Cyrus SASL: set local and remote IP;port properties for driver.
+    (Only plugin which currently uses this is kerberos4, which nobody should
+    be using, but we should make it available and other future plugins might
+    conceivably use it, even though it would break NAT; stuff *should* be
+    using channel bindings instead).
+  - Handle "exim -L <tag>" to indicate to use syslog with tag as the process
+    name; added for Sendmail compatibility; requires admin caller.
+    Handle -G as equivalent to "control = suppress_local_fixups" (we used to
+    just ignore it); requires trusted caller.
+    Also parse but ignore: -Ac -Am -X<logfile>
+    Bugzilla 1117.
+  - Bugzilla 1258 - Refactor MAIL FROM optional args processing.
+  - Add +smtp_confirmation as a default logging option.
+  - Bugzilla 198 - Implement remove_header ACL modifier.
+  - Bugzilla 1197, 1281, 1283 - Spec typo.
+  - Bugzilla 1290 - Spec grammar fixes.
+  - Bugzilla 1285 - Spec omission, fix docbook errors for spec.txt creation.
+  - Add Experimental DMARC support using libopendmarc libraries.
+  - Fix an out of order global option causing a segfault.  Reported to dev
+    mailing list by by Dmitry Isaikin.
+  - Bugzilla 1201 & 304 - New cutthrough-delivery feature, with TLS support.
+  - Support "G" suffix to numbers in ${if comparisons.
+  - Handle smtp transport tls_sni option forced-fail for OpenSSL.
+  - Bugzilla 1196 - Spec examples corrections
+  - Add expansion operators ${listnamed:name} and ${listcount:string}
+  - Add gnutls_allow_auto_pkcs11 option (was originally called
+    gnutls_enable_pkcs11, but renamed to more accurately indicate its
+    function.
+  - Let Linux makefile inherit CFLAGS/CFLAGS_DYNAMIC.
+    Pulled from Debian 30_dontoverridecflags.dpatch by Andreas Metzler.
+  - Add expansion item ${acl {name}{arg}...}, expansion condition
+    "acl {{name}{arg}...}", and optional args on acl condition
+    "acl = name arg..."
+  - Permit multiple router/transport headers_add/remove lines.
+  - Add dnsdb pseudo-lookup "a+" to do an "aaaa" + "a" combination.
+  - Avoid using a waiting database for a single-message-only transport.
+    Performance patch from Paul Fisher.  Bugzilla 1262.
+  - Strip leading/trailing newlines from add_header ACL modifier data.
+    Bugzilla 884.
+  - Add $headers_added variable, with content from use of ACL modifier
+    add_header (but not yet added to the message).  Bugzilla 199.
+  - Add 8bitmime log_selector, for 8bitmime status on the received line.
+    Pulled from Bugzilla 817 by Wolfgang Breyha.
+  - SECURITY: protect DKIM DNS decoding from remote exploit.
+    CVE-2012-5671
+    (nb: this is the same fix as in Exim 4.80.1)
+  - Add A= logging on delivery lines, and a client_set_id option on
+    authenticators.
+  - Add optional authenticated_sender logging to A= and a log_selector
+    for control.
+  - Unbreak server_set_id for NTLM/SPA auth, broken by 4.80 PP/29.
+  - Dovecot auth: log better reason to rejectlog if Dovecot did not
+    advertise SMTP AUTH mechanism to us, instead of a generic
+    protocol violation error.  Also, make Exim more robust to bad
+    data from the Dovecot auth socket.
+  - Fix ultimate retry timeouts for intermittently deliverable recipients.
+  - When a queue runner is handling a message, Exim first routes the
+    recipient addresses, during which it prunes them based on the retry
+    hints database. After that it attempts to deliver the message to
+    any remaining recipients. It then updates the hints database using
+    the retry rules.
+  - So if a recipient address works intermittently, it can get repeatedly
+    deferred at routing time. The retry hints record remains fresh so the
+    address never reaches the final cutoff time.
+  - This is a fairly common occurrence when a user is bumping up against
+    their storage quota. Exim had some logic in its local delivery code
+    to deal with this. However it did not apply to per-recipient defers
+    in remote deliveries, e.g. over LMTP to a separate IMAP message store.
+  - This change adds a proper retry rule check during routing so that the
+    final cutoff time is checked against the message's age. We only do
+    this check if there is an address retry record and there is not a
+    domain retry record; this implies that previous attempts to handle
+    the address had the retry_use_local_parts option turned on. We use
+    this as an approximation for the destination being like a local
+    delivery, as in LMTP.
+  - I suspect this new check makes the old local delivery cutoff check
+    redundant, but I have not verified this so I left the code in place.
+  - Correct gecos expansion when From: is a prefix of the username.
+  - Test 0254 submits a message to Exim with the header
+    Resent-From: f
+  - When I ran the test suite under the user fanf2, Exim expanded
+    the header to contain my full name, whereas it should have added
+    a Resent-Sender: header. It erroneously treats any prefix of the
+    username as equal to the username.
+    This change corrects that bug.
+  - DCC debug and logging tidyup
+    Error conditions log to paniclog rather than rejectlog.
+    Debug lines prefixed by "DCC: " to remove any ambiguity.
+  - Avoid unnecessary rebuilds of lookup-related code.
+  - Fix OCSP reinitialisation in SNI handling for Exim/TLS as server.
+    Bug spotted by Jeremy Harris; was flawed since initial commit.
+    Would have resulted in OCSP responses post-SNI triggering an Exim
+    NULL dereference and crash.
+  - Add $router_name and $transport_name variables.  Bugzilla 308.
+  - Define SIOCGIFCONF_GIVES_ADDR for GNU Hurd.
+    Bug detection, analysis and fix by Samuel Thibault.
+    Bugzilla 1331, Debian bug #698092.
+  - Update eximstats to watch out for senders sending 'HELO [IpAddr]'
+  - SMTP PRDR (http://www.eric-a-hall.com/specs/draft-hall-prdr-00.txt).
+    Server implementation by Todd Lyons, client by JH.
+    Only enabled when compiled with EXPERIMENTAL_PRDR.  A new
+    config variable "prdr_enable" controls whether the server
+    advertises the facility.  If the client requests PRDR a new
+    acl_data_smtp_prdr ACL is called once for each recipient, after
+    the body content is received and before the acl_smtp_data ACL.
+    The client is controlled by bolth of: a hosts_try_prdr option
+    on the smtp transport, and the server advertisement.
+    Default client logging of deliveries and rejections involving
+    PRDR are flagged with the string "PRDR".
+  - Fix problems caused by timeouts during quit ACLs trying to double
+    fclose().  Diagnosis by Todd Lyons.
+    Update configure.default to handle IPv6 localhost better.
+    Patch by Alain Williams (plus minor tweaks).
+    Bugzilla 880.
+  - OpenSSL made graceful with empty tls_verify_certificates setting.
+    This is now consistent with GnuTLS, and is now documented: the
+    previous undocumented portable approach to treating the option as
+    unset was to force an expansion failure.  That still works, and
+    an empty string is now equivalent.
+  - Renamed DNSSEC-enabling option to "dns_dnssec_ok", to make it
+    clearer that Exim is using the DO (DNSSEC OK) EDNS0 resolver flag,
+    not performing validation itself.
+  - Added force_command boolean option to pipe transport.
+    Patch from Nick Koston, of cPanel Inc.
+  - AUTH support on callouts (and hence cutthrough-deliveries).
+    Bugzilla 321, 823.
+  - Added udpsend ACL modifer and hexquote expansion operator
+  - Fix eximon continuous updating with timestamped log-files.
+    Broken in a format-string cleanup in 4.80, missed when I repaired the
+    other false fix of the same issue.
+    Report and fix from Heiko Schlichting.
+    Bugzilla 1363.
+  - Guard LDAP TLS usage against Solaris LDAP variant.
+    Report from Prashanth Katuri.
+  - Support safari_ecdhe_ecdsa_bug for openssl_options.
+    It's SecureTransport, so affects any MacOS clients which use the
+    system-integrated TLS libraries, including email clients.
+  - Fix segfault from trying to fprintf() to a NULL stdio FILE* if
+    using a MIME ACL for non-SMTP local injection.
+    Report and assistance in diagnosis by Warren Baker.
+  - Adjust exiqgrep to be case-insensitive for sender/receiver.
+  - Fix comparisons for 64b.  Bugzilla 1385.
+  - Add expansion variable $authenticated_fail_id to keep track of
+    last id that failed so it may be referenced in subsequent ACL's.
+  - Bugzilla 1375 - Prevent TLS rebinding in ldap. Patch provided by
+    Alexander Miroch.
+  - Bugzilla 1382 - Option ldap_require_cert overrides start_tls
+    ldap library initialization, allowing self-signed CA's to be
+    used. Also properly sets require_cert option later in code by
+    using NULL (global ldap config) instead of ldap handle (per
+    session). Bug diagnosis and testing by alxgomz.
+  - Enhanced documentation in the ratelimit.pl script provided in
+    the src/util/ subdirectory.
+  - Bug 1301 - Imported transport SQL logging patch from Axel Rau
+    renamed to Transport Post Delivery Action by Jeremy Harris, as
+    EXPERIMENTAL_TPDA.
+  - Bugzilla 1217 - Redis lookup support has been added. It is only enabled
+    when Exim is compiled with EXPERIMENTAL_REDIS. A new config variable
+    redis_servers = needs to be configured which will be used by the redis
+    lookup.  Patch from Warren Baker, of The Packet Hub.
+  - Fix exiqsumm summary for corner case. Patch provided by Richard Hall.
+  - Bugzilla 1289 - Clarify host/ip processing when have errors looking up a
+    hostname or reverse DNS when processing a host list. Used suggestions
+    from multiple comments on this bug.
+  - Bugzilla 1057 - Multiple clamd TCP targets patch from Mark Zealey.
+  - Had previously added a -CONTINUE option to runtest in the test suite.
+    Missed a few lines, added it to make the runtest require no keyboard
+    interaction.
+  - Bugzilla 1402 - Test 533 fails if any part of the path to the test suite
+    contains upper case chars. Make router use caseful_local_part.
+  - Bugzilla 1400 - Add AVOID_GNUTLS_PKCS11 build option. Allows GnuTLS
+    support when GnuTLS has been built with p11-kit.
+
+-------------------------------------------------------------------
+Sun Oct 27 17:35:43 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support for openSUSE > 12.2
+- Remove some obsolete conditionnal macros
+
+-------------------------------------------------------------------
+Sun Jun 16 02:13:52 UTC 2013 - jengelh@inai.de
+
+- exim.spec forces the use of SSL libraries,
+  so make sure the BuildRequires are there.
+  Also add previously implicit cyrus-sasl back.
+
+-------------------------------------------------------------------
+Wed Jan  9 19:02:27 UTC 2013 - lars@samba.org
+
+- Execute the run_permissions macro on pre-11.4 systems and else the
+  set_permission one if available; (bnc#764120).
+
+-------------------------------------------------------------------
+Thu Oct 25 10:36:19 UTC 2012 - lars@samba.org
+
+- update to 4.80.1
+  - SECURITY: protect DKIM DNS decoding from remote exploit; CVE-2012-5671;
+    (bnc#786652).
+
+-------------------------------------------------------------------
+Sun Aug 19 13:36:59 UTC 2012 - lars@samba.org
+
+- update to 4.80
+  - Bugzilla 949 - Documentation tweak.
+  - Bugzilla 1093 - eximstats DATA reject detection regexps improved.
+  - Bugzilla 1169 - primary_hostname spelling was incorrect in docs.
+  - Implemented gsasl authenticator.
+  - Implemented heimdal_gssapi authenticator with "server_keytab" option.
+  - Local/Makefile support for (AUTH|LOOKUP)_*_PC=foo to use
+    `pkg-config foo` for cflags/libs.
+  - Swapped $auth1/$auth2 for gsasl GSSAPI mechanism, to be more consistent
+    with rest of GSASL and with heimdal_gssapi.
+  - Local/Makefile support for USE_(GNUTLS|OPENSSL)_PC=foo to use
+    `pkg-config foo` for cflags/libs for the TLS implementation.
+  - New expansion variable $tls_bits; Cyrus SASL server connection
+    properties get this fed in as external SSF.  A number of robustness
+    and debugging improvements to the cyrus_sasl authenticator.
+  - cyrus_sasl server now expands the server_realm option.
+  - Bugzilla 1214 - Log authentication information in reject log.
+  - Added dbmjz lookup type.
+  - Let heimdal_gssapi authenticator take a SASL message without an authzid.
+  - MAIL args handles TAB as well as SP, for better interop with
+    non-compliant senders.
+  - Bugzilla 1237 - fix cases where printf format usage not indicated.
+  - tls_peerdn now print-escaped for spool files.
+    Observed some $tls_peerdn in wild which contained \n, which resulted
+    in spool file corruption.
+  - TLS fixes for OpenSSL: support TLS 1.1 & 1.2; new "openssl_options"
+    values; set SSL_MODE_AUTO_RETRY so that OpenSSL will retry a read
+    or write after TLS renegotiation, which otherwise led to messages
+    "Got SSL error 2".
+  - Bugzilla 1239 - fix DKIM verification when signature was not inserted
+    as a tracking header (ie: a signed header comes before the signature).
+  - Bugzilla 660 - Multi-valued attributes from ldap now parseable as a
+    comma-sep list; embedded commas doubled.
+  - Refactored ACL "verify =" logic to table-driven dispatch.
+  - LDAP: Check for errors of TLS initialisation, to give correct diagnostics.
+  - Removed "dont_insert_empty_fragments" fron "openssl_options".
+    Removed SSL_clear() after SSL_new() which led to protocol negotiation
+    failures.  We appear to now support TLS1.1+ with Exim.
+  - OpenSSL: new expansion var $tls_sni, which if used in tls_certificate
+    lets Exim select keys and certificates based upon TLS SNI from client.
+    Also option tls_sni on SMTP Transports.  Also clear $tls_bits correctly
+    before an outbound SMTP session.  New log_selector, +tls_sni.
+  - Bugzilla 1122 - check localhost_number expansion for failure, avoid
+    NULL dereference.
+  - Revert part of NM/04, it broke log_path containing %D expansions.
+    Left warnings.  Added "eximon gdb" invocation mode.
+  - Defaulting "accept_8bitmime" to true, not false.
+  - Added -bw for inetd wait mode support.
+  - Added PCRE_CONFIG=yes support to Makefile for using pcre-config to
+    locate the relevant includes and libraries.  Made this the default.
+  - Fixed headers_only on smtp transports (was not sending trailing dot).
+    Bugzilla 1246, report and most of solution from Tomasz Kusy.
+  - ${eval } now uses 64-bit and supports a "g" suffix (like to "k" and "m").
+    This may cause build issues on older platforms.
+  - Revamped GnuTLS support, passing tls_require_ciphers to
+    gnutls_priority_init, ignoring Exim options gnutls_require_kx,
+    gnutls_require_mac & gnutls_require_protocols (no longer supported).
+    Added SNI support via GnuTLS too.
+    Made ${randint:..} supplier available, if using not-too-old GnuTLS.
+  - Added EXPERIMENTAL_OCSP for OpenSSL.
+  - Applied dnsdb SPF support patch from Janne Snabb.
+    Applied second patch from Janne, implementing suggestion to default
+    multiple-strings-in-record handling to match SPF spec.
+  - Added expansion variable $tod_epoch_l for a higher-precision time.
+  - Fix DCC dcc_header content corruption (stack memory referenced,
+    read-only, out of scope).
+    Patch from Wolfgang Breyha, report from Stuart Northfield.
+  - Fix three issues highlighted by clang analyser static analysis.
+    Only crash-plausible issue would require the Cambridge-specific
+    iplookup router and a misconfiguration.
+    Report from Marcin Mirosław.
+  - Another attempt to deal with PCRE_PRERELEASE, this one less buggy.
+  - %D in printf continues to cause issues (-Wformat=security), so for
+    now guard some of the printf checks behind WANT_DEEPER_PRINTF_CHECKS.
+    As part of this, removing so much warning spew let me fix some minor
+    real issues in debug logging.
+  - GnuTLS was always using default tls_require_ciphers, due to a missing
+    assignment on my part.  Fixed.
+  - Added tls_dh_max_bits option, defaulting to current hard-coded limit
+    of NSS, for GnuTLS/NSS interop.
+  - Validate tls_require_ciphers on startup, since debugging an invalid
+    string otherwise requires a connection and a bunch more work and it's
+    relatively easy to get wrong.  Should also expose TLS library linkage
+    problems.
+  - Pull in <features.h> on Linux, for some portability edge-cases of
+    64-bit ${eval} (JH/03).
+  - Define _GNU_SOURCE in exim.h; it's needed for some releases of
+    protection layer was required, which is not implemented.  Bugzilla 1254
+  - Overhaul DH prime handling, supply RFC-specified DH primes as built
+    into Exim, default to IKE id 23 from RFC 5114 (2048 bit).  Make
+    tls_dhparam take prime identifiers.  Also unbreak combination of
+    OpenSSL+DH_params+TLSSNI.
+  - Disable SSLv2 by default in OpenSSL support.
+
+-------------------------------------------------------------------
+Sat Mar 17 19:42:30 UTC 2012 - lars@samba.org
+
+- Disable format-security and missing-format-attribute warnings via CFLAGS on
+  pre-11.2 systems.
+
+-------------------------------------------------------------------
+Wed Mar  7 16:13:51 UTC 2012 - lars@samba.org
+
+- Remove obsoleted Authors lines from spec file.
+
+-------------------------------------------------------------------
+Wed Mar  7 15:33:12 UTC 2012 - lars@samba.org
+
+- update to 4.77
+  - DKIM Verification: Fix relaxed canon for empty headers w/o
+    whitespace trailer
+  - Fix a couple more cases where we did not log the error message
+    when unlink() failed. See also change 4.74-TF/03.
+  - Make the exiwhat support code safe for signals. Previously Exim might
+    lock up or crash if it happened to be inside a call to libc when it
+    got a SIGUSR1 from exiwhat.
+  - The SIGUSR1 handler appends the current process status to the process
+    log which is later printed by exiwhat. It used to use the general
+    purpose logging code to do this, but several functions it calls are
+    not safe for signals.
+  - The new output code in the SIGUSR1 handler is specific to the process
+    log, and simple enough that it's easy to inspect for signal safety.
+    Removing some special cases also simplifies the general logging code.
+    Removing the spurious timestamps from the process log simplifies
+    exiwhat.
+  - Improved ratelimit ACL condition.
+  - Removed obsolete $Cambridge$ CVS revision strings.
+  - Removed a few PCRE remnants.
+  - Automatically extract Exim's version number from tags in the git
+    repository when doing development or release builds.
+  - Raise smtp_cmd_buffer_size to 16kB.
+    Bugzilla 879.  Patch from Paul Fisher.
+  - Implement SSL-on-connect outbound with protocol=smtps on smtp transport.
+    Heavily based on revision 40f9a89a from Simon Arlott's tree.
+    Bugzilla 97.
+  - Use .dylib instead of .so for dynamic library loading on MacOS.
+  - Variable $av_failed, true if the AV scanner deferred.
+    Bugzilla 1078.  Patch from John Horne.
+  - Stop make process more reliably on build failure.
+    Bugzilla 1087.  Patch from Heiko Schlittermann.
+  - Make maildir_use_size_file an _expandable_ boolean.
+    Bugzilla 1089.  Patch from Heiko Schlittermann.
+  - Handle ${run} returning more data than OS pipe buffer size.
+    Bugzilla 1131.  Patch from Holger Weiß.
+  - Handle IPv6 addresses with SPF.
+    Bugzilla 860.  Patch from Wolfgang Breyha.
+  - GnuTLS: support TLS 1.2 & 1.1.
+    Bugzilla 1156.
+    Use gnutls_certificate_verify_peers2() [patch from Andreas Metzler].
+    Bugzilla 1095.
+  - match_* no longer expand right-hand-side by default.
+    New compile-time build option, EXPAND_LISTMATCH_RHS.
+    New expansion conditions, "inlist", "inlisti".
+  - fix uninitialised greeting string from PP/03 (smtps client support).
+  - shell and compiler warnings fixes for RC1-RC4 changes.
+  - fix log_write() format string regression from TF/03.
+    Bugzilla 1152.  Patch from Dmitry Isaikin.
+
+- update to 4.77
+  - The new ldap_require_cert option would segfault if used.  Fixed.
+  - Harmonised TLS library version reporting; only show if debugging.
+    Layout now matches that introduced for other libraries in 4.74 PP/03.
+  - New openssl_options items: no_sslv2 no_sslv3 no_ticket no_tlsv1
+  - New "dns_use_edns0" global option.
+  - Don't segfault on misconfiguration of ref:name exim-user as uid.
+    Bugzilla 1098.
+  - Extra paranoia around buffer usage at the STARTTLS transition.
+    nb: Exim is not vulnerable to http://www.kb.cert.org/vuls/id/555316
+  - Updated PolarSSL code to 0.14.2.
+    Bugzilla 1097. Patch from Andreas Metzler.
+  - Catch divide-by-zero in ${eval:...}.
+    Fixes bugzilla 1102.
+  - Condition negation of bool{}/bool_lax{} did not negate.  Fixed.
+    Bugzilla 1104.
+  - Bugzilla 1106: CVE-2011-1764 - DKIM log line was subject to a
+    format-string attack -- SECURITY: remote arbitrary code execution.
+  - SECURITY - DKIM signature header parsing was double-expanded, second
+    time unintentionally subject to list matching rules, letting the header
+    cause arbitrary Exim lookups (of items which can occur in lists, *not*
+    arbitrary string expansion). This allowed for information disclosure.
+  - Fix another SIGFPE (x86) in ${eval:...} expansion, this time related to
+    INT_MIN/-1 -- value coerced to INT_MAX.
+
+-------------------------------------------------------------------
+Wed Mar  7 14:58:55 UTC 2012 - lars@samba.org
+
+- Package /var/log/exim owned by user and group mail; (bnc#670711).
+
+-------------------------------------------------------------------
+Fri May 20 17:05:34 CEST 2011 - meissner@suse.de
+
+- Fixed another remote code execution issue (CVE-2011-1407 / bnc#694798)
+- Fixed STARTTLS command injection (bnc#695144)
+
+-------------------------------------------------------------------
+Mon May  9 13:32:55 CEST 2011 - dmueller@suse.de
+
+- check format strings
+
+-------------------------------------------------------------------
+Sat May  7 13:12:08 UTC 2011 - lars@samba.org
+
+- The new ldap_require_cert option would segfault if used; use upstream patch
+  to address the ldap_set_option() issue; (beo#230); (beo#1108).
+
+-------------------------------------------------------------------
+Fri May  6 20:00:38 UTC 2011 - lars@samba.org
+
+- Cast third arg to void * when calling ldap_set_option().
+
+-------------------------------------------------------------------
+Fri May  6 19:14:37 UTC 2011 - lars@samba.org
+
+- update to 4.75
+  - Workround for PCRE version dependency in version reporting
+    Bugzilla 1073
+  - Permit LOOKUP_foo enabling on the make command-line.
+    Also via indented variable definition in the Makefile.
+  - Restore caching of spamd results with expanded spamd_address.
+  - Build issue: lookups-Makefile now exports LC_ALL=C
+    Improves build reliability.
+  - Fix wide character breakage in the rfc2047 coding; Fixes bug 1064.
+  - Allow underscore in dnslist lookups; Fixes bug 1026.
+  - Bugzilla 230: Support TLS-enabled LDAP (in addition to ldaps).
+  - Fixed exiqgrep to cope with mailq missing size issue
+    Fixes bug 943.
+  - Bugzilla 1083: when lookup expansion defers, escape the output which
+    is logged, to avoid truncation.
+  - Bugzilla 1042: implement freeze_signal on pipe transports.
+  - Bugzilla 1061: restrict error messages sent over SMTP to not reveal
+    SQL string expansion failure details.
+  - Bugzilla 486: implement %M datestamping in log filenames.
+  - New lookups functionality failed to compile on old gcc which rejects
+    extern declarations in function scope.
+  - Use sig_atomic_t for flags set from signal handlers.
+    Check getgroups() return and improve debugging.
+    Fixed developed for diagnosis in bug 927 (which turned out to be
+    a kernel bug).
+  - Bugzilla 1055: Update $message_linecount for maildir_tag.
+  - Bugzilla 1056: Improved spamd server selection.
+  - Bugzilla 1086: Deal with maildir quota file races.
+  - Bugzilla 1019: DKIM multiple signature generation fix.
+  - Fix to spam.c to accommodate older gcc versions which dislike
+    variable declaration deep within a block.
+  - Make DISABLE_DKIM build knob functional.
+  - Bugzilla 968: child_open_uid: restore default SIGPIPE handler
+
+-------------------------------------------------------------------
+Fri May  6 18:18:00 UTC 2011 - lars@samba.org
+
+- Don't pass DKIM compound log line as format string; (beo#1106); (bnc#692227).
+
+-------------------------------------------------------------------
+Thu Mar 10 18:30:11 UTC 2011 - poeml@cmdline.net
+
+- postgresql-enabled build when build_with_pgsql is defined (which is done in a
+  linked package named server:mail/exim-postgresql)
+
+-------------------------------------------------------------------
+Fri Feb  4 22:13:39 UTC 2011 - lars@samba.org
+
+- Workround for PCRE version dependancy in version reporting; (beo#1073).
+
+-------------------------------------------------------------------
+Fri Feb  4 19:33:40 UTC 2011 - lars@samba.org
+
+- update to 4.74
+  - Failure to get a lock on a hints database can have serious
+    consequences so log it to the panic log.
+  - Log LMTP confirmation messages in the same way as SMTP,
+    controlled using the smtp_confirmation log selector.
+  - Include the error message when we fail to unlink a spool file.
+  - Bugzilla 139: Support dynamically loaded lookups as modules.
+  - Bugzilla 139: Documentation and portability issues.
+    Avoid GNU Makefile-isms, let Exim continue to build on BSD.
+    Handle per-OS dynamic-module compilation flags.
+  - Let /dev/null have normal permissions.
+    The 4.73 fixes were a little too stringent and complained about the
+    permissions on /dev/null.  Exempt it from some checks.
+  - Report version information for many libraries, including
+    Exim version information for dynamically loaded libraries.  Created
+    version.h, now support a version extension string for distributors
+    who patch heavily. Dynamic module ABI change.
+  - CVE-2011-0017 - check return value of setuid/setgid. This is a
+    privilege escalation vulnerability whereby the Exim run-time user
+    can cause root to append content of the attacker's choosing to
+    arbitrary files.
+  - Bugzilla 1041: merged DCC maintainer's fixes for return code.
+  - Bugzilla 1071: fix delivery logging with untrusted macros.
+    If dropping privileges for untrusted macros, we disabled normal logging
+    on the basis that it would fail; for the Exim run-time user, this is not
+    the case, and it resulted in successful deliveries going unlogged.
+- update to 4.73
+  - Date: & Message-Id: revert to normally being appended to a message,
+    only prepend for the Resent-* case.  Fixes regression introduced in
+    Exim 4.70 by NM/22 for Bugzilla 607.
+  - Include check_rfc2047_length in configure.default because we're seeing
+    increasing numbers of administrators be bitten by this.
+  - Added DISABLE_DKIM and comment to src/EDITME
+  - Bugzilla 994: added openssl_options main configuration option.
+  - Bugzilla 995: provide better SSL diagnostics on failed reads.
+  - Bugzilla 834: provide a permit_coredump option for pipe transports.
+  - Adjust NTLM authentication to handle SASL Initial Response.
+  - If TLS negotiated an anonymous cipher, we could end up with SSL but
+    without a peer certificate, leading to a segfault because of an
+    assumption that peers always have certificates.  Be a little more
+    paranoid.  Problem reported by Martin Tscholak.
+  - Bugzilla 926: switch ClamAV to use the new zINSTREAM API for content
+    filtering; old API available if built with WITH_OLD_CLAMAV_STREAM=yes
+    NB: ClamAV planning to remove STREAM in "middle of 2010".
+    CL also introduces -bmalware, various -d+acl logging additions and
+    more caution in buffer sizes.
+  - Implemented reverse_ip expansion operator.
+  - Bugzilla 937: provide a "debug" ACL control.
+  - Bugzilla 922: Documentation dusting, patch provided by John Horne.
+  - Bugzilla 973: Implement --version.
+  - Bugzilla 752: Refuse to build/run if Exim user is root/0.
+  - Build without WITH_CONTENT_SCAN. Path from Andreas Metzler.
+  - Bugzilla 816: support multiple condition rules on Routers.
+  - Add bool_lax{} expansion operator and use that for combining multiple
+    condition rules, instead of bool{}.  Make both bool{} and bool_lax{}
+    ignore trailing whitespace.
+  - prevent non-panic DKIM error from being sent to paniclog
+  - added tcp_wrappers_daemon_name to allow host entries other than
+    "exim" to be used
+  - Fix malware regression for cmdline scanner introduced in PP/08.
+    Notification from Dr Andrew Aitchison.
+  - Change ClamAV response parsing to be more robust and to handle ClamAV's
+    ExtendedDetectionInfo response format.
+    Notification from John Horne.
+  - OpenSSL 1.0.0a compatibility const-ness change, should be backwards
+    compatible.
+  - Added a CONTRIBUTING file.  Fixed the documentation build to use http:
+    XSL and documented dependency on system catalogs, with examples of how
+    it normally works.
+  - Added Valgrind hooks in store.c to help it capture out-of-bounds store
+    access.
+  - Bugzilla 1044: CVE-2010-4345 - partial fix: restrict default behaviour
+    of CONFIGURE_OWNER and CONFIGURE_GROUP options to no longer allow a
+    configuration file which is writeable by the Exim user or group.
+  - Bugzilla 1044: CVE-2010-4345 - part two: extend checks for writeability
+    of configuration files to cover files specified with the -C option if
+    they are going to be used with root privileges, not just the default
+    configuration file.
+  - Bugzilla 1044: CVE-2010-4345 - part three: remove ALT_CONFIG_ROOT_ONLY
+    option (effectively making it always true).
+  - Add TRUSTED_CONFIG_PREFIX_FILE option to allow alternative configuration
+    files to be used while preserving root privileges.
+  - Set FD_CLOEXEC on SMTP sockets after forking in the daemon, to ensure
+    that rogue child processes cannot use them.
+  - Bugzilla 1047: change the default for system_filter_user to be the Exim
+    run-time user, instead of root.
+  - Add WHITELIST_D_MACROS option to let some macros be overriden by the
+    Exim run-time user without dropping privileges.
+  - Remove use of va_copy() which breaks pre-C99 systems. Duplicate the
+    result string, instead of calling string_vformat() twice with the same
+    arguments.
+  - Allow TRUSTED_CONFIG_PREFIX_FILE only for Exim or CONFIGURE_OWNER, not
+    for other users. Others should always drop root privileges if they use
+    -C on the command line, even for a whitelisted configure file.
+  - Turn TRUSTED_CONFIG_PREFIX_FILE into TRUSTED_CONFIG_FILE. No prefixes.
+  - Fixed bug #1002 - Message loss when using multiple deliveries
+
+-------------------------------------------------------------------
+Fri Feb  4 15:19:44 UTC 2011 - lars@samba.org
+
+- Check return values of setgid/setuid; CVE-2011-0017; (bnc#668599).
+
+-------------------------------------------------------------------
+Fri Dec 10 20:51:18 UTC 2010 - lars@samba.org
+
+- Fix memory corruption in string_format code for pre-11.3 systems;
+  CVE-2010-4344; (beo#787); (bnc#658731).
+- Fix remote root vulnerability; CVE-2010-4345; (bnc#658731).
+
+-------------------------------------------------------------------
+Wed Jul 14 10:45:19 CEST 2010 - dmueller@suse.de
+
+- fix mysql provides to be versioned again
+
+-------------------------------------------------------------------
+Tue Jun  8 15:36:36 UTC 2010 - poeml@cmdline.net
+
+- update to 4.72
+  - installed exipick 20100104.1, adding $max_received_linelength, $data_path,
+    and $header_path variables; fixed documentation bugs and typos
+  - installed exipick 20100222.0, added --input-dir and --finput to allow
+    exipick to access non-standard spools, including the "frozen" queue
+    (Finput)
+  - Bugzilla 965: Support mysql stored procedures.  Patch from Alain Williams
+  - Bugzilla 961: Spacing fix (syntax error) on Makefile directives for NetBSD
+  - Bugzilla 955: Documentation fix for max_rcpts.  Patch from Andreas Metzler
+  - Bugzilla 954: Fix for unknown responses from Dovecot authenticator.  Patch
+    from Kirill Miazine
+  - Bugzilla 671: Added umask to procmail example.
+  - installed exipick 20100323.0, fixing doc bug
+  - Bugzilla 988: CVE-2010-2023 - prevent hardlink attack on sticky mail
+    directory.  Notification and patch from Dan Rosenberg.
+  - PDKIM: Upgrade PolarSSL files to upstream version 0.12.1.
+  - Improve log output when DKIM signing operation fails.
+  - Treat the transport option dkim_domain as a colon separated list, not as a
+    single string, and sign the message with each element, omitting multiple
+    occurences of the same signer.
+  - Null terminate DKIM strings, Null initialise DKIM variable Bugzilla 985,
+    986.  Patch by Simon Arlott
+  - Bugzilla 967. dnsdb DNS TXT record bug fix (DKIM-related) Patch by Simon
+    Arlott
+  - Bugzilla 989: CVE-2010-2024 - work round race condition on MBX locking.
+    Notification from Dan Rosenberg.
+
+-------------------------------------------------------------------
+Wed May 26 11:24:50 UTC 2010 - poeml@cmdline.net
+
+- fix build of exim-mysql package by correcting path in postinstall script;
+  patch kindly provided by Christian Schweingruber
+
+-------------------------------------------------------------------
+Tue Nov 24 14:09:54 UTC 2009 - poeml@cmdline.net
+
+- update to 4.71
+  Bugfixes over 4.70:
+  * Bugzilla 912: Fix DKIM segfault on empty headers/body
+  * Bugzilla 913: Documentation fix for gnutls_* options.
+  * Bugzilla 722: Documentation for randint. Better randomness defaults.
+  * Bugzilla 847: Enable DNSDB lookup by default.
+  * Bugzilla 915: Flag broken perl installation during build.
+
+-------------------------------------------------------------------
+Sat Nov 14 10:54:59 UTC 2009 - poeml@cmdline.net
+
+- update to 4.70
+  This release is a combination feature and bug fix release.
+  The major new features are:-
+   * Native DKIM support without an external library.
+   * Experimental DCC support via dccifd (contributed by Wolfgang Breyha).
+  Other changes:-
+   * PCRE is no longer included with the Exim distribution. You will
+     need a separate PCRE library (and matching headers) to compile
+     Exim. You will need to change your Local/Makefile to support
+     this. Most modern systems have a packaged PCRE library,
+     alternatively PCRE can be found at http://www.pcre.org/
+   * Experimental Yahoo! Domainkeys support dropped in favor of
+     native DKIM support.
+   * The documentation has been updated and regenerated.
+  As usual, all changes are in the doc/ChangeLog file:
+  http://vcs.exim.org/viewvc/exim/exim-doc/doc-txt/ChangeLog?view=markup&pathrev=exim_4_70
+
+-------------------------------------------------------------------
+Tue Jun  9 17:47:56 CEST 2009 - poeml@suse.de
+
+- silence some rpmlint warnings, by removing executable permissions
+  from utilities packaged under documentation.
+- in the exim-mysql package, remove the versioned Provides, because
+  rpmlint doesn't like it at all.
+
+-------------------------------------------------------------------
+Wed Oct 29 18:39:31 CET 2008 - poeml@suse.de
+
+- add Required-Stop to init script, as required by LSB.
+
+-------------------------------------------------------------------
+Wed Aug 20 16:22:17 CEST 2008 - poeml@suse.de
+
+- also add "spamd postgresql mysql" to should-start and should-stop
+  in the LSB headers of /etc/init.d/exim
+
+-------------------------------------------------------------------
+Mon Aug 18 12:00:46 CEST 2008 - poeml@suse.de
+
+- fix init script LSB headers -- Should-Stop added
+
+-------------------------------------------------------------------
+Sun Jun 15 14:27:56 CEST 2008 - poeml@suse.de
+
+- fix logic of decision (in logrotate snippet) whether to send the
+  weekly reports
+
+-------------------------------------------------------------------
+Fri Jan 25 23:22:38 CET 2008 - meissner@suse.de
+
+- fixed an array overflow spotted by gcc4.3.
+
+-------------------------------------------------------------------
+Thu Jan 10 19:25:40 CET 2008 - poeml@suse.de
+
+- update to 4.69, which is mainly a bug fix release (although there
+  is also preliminary DKIM support available if compiled with
+  appropriate flags, which we don't do). The major change is an
+  update to the embedded PCRE library in response to security
+  issues, which are not relevant here, since we link against the
+  system pcre library, assuming that it has been fixed already.
+  TK/01 Add preliminary DKIM support. Currently requires a forked version of
+        ALT-N's libdkim that I have put here:
+        http://duncanthrax.net/exim-experimental/
+        Note to Michael Haardt: I had to rename some vars in sieve.c. They
+        were called 'true' and it seems that C99 defines that as a reserved
+        keyword to be used with 'bool' variable types. That means you could
+        not include C99-style headers which use bools without triggering
+        build errors in sieve.c.
+  NM/01 Bugzilla 592: --help option is handled incorrectly if exim is invoked
+        as mailq or other aliases.  Changed the --help handling significantly
+        to do whats expected.  exim_usage() emits usage/help information.
+  SC/01 Added the -bylocaldomain option to eximstats.
+  NM/02 Bugzilla 619: Defended against bad data coming back from gethostbyaddr
+  NM/03 Bugzilla 613: Documentation fix for acl_not_smtp
+  NM/04 Bugzilla 628: PCRE update to 7.4 (work done by John Hall)
+
+-------------------------------------------------------------------
+Fri Sep 28 01:55:04 CEST 2007 - poeml@suse.de
+
+- add #include <abstractions/consoles> to apparmor profile, to
+  allow for interactive usage (mailq, exim -M, ...)
+
+-------------------------------------------------------------------
+Thu Aug 30 17:37:17 CEST 2007 - poeml@suse.de
+
+- update to 4.68
+  PH/01 Another patch from the Sieve maintainer.
+  PH/02 When an IPv6 address is converted to a string for single-key lookup
+        in an address list (e.g. for an item such as "net24-dbm;/net/works"),
+        dots are used instead of colons so that keys in lsearch files need not
+        contain colons. This was done some time before quoting was made available
+        in lsearch files. However, iplsearch files do require colons in IPv6 keys
+        (notated using the quote facility) so as to distinguish them from IPv4
+        keys. This meant that lookups for IP addresses in host lists did not work
+        for iplsearch lookups.
+        This has been fixed by arranging for IPv6 addresses to be expressed with
+        colons if the lookup type is iplsearch. This is not incompatible, because
+        previously such lookups could never work.
+        The situation is now rather anomolous, since one *can* have colons in
+        ordinary lsearch keys. However, making the change in all cases is
+        incompatible and would probably break a number of configurations.
+  TK/01 Change PRVS address formatting scheme to reflect latests BATV draft
+        version.
+  MH/01 The "spam" ACL condition code contained a sscanf() call with a %s
+        conversion specification without a maximum field width, thereby enabling
+        a rogue spamd server to cause a buffer overflow. While nobody in their
+        right mind would setup Exim to query an untrusted spamd server, an
+        attacker that gains access to a server running spamd could potentially
+        exploit this vulnerability to run arbitrary code as the Exim user.
+  TK/02 Bugzilla 502: Apply patch to make the SPF-Received: header use
+        $primary_hostname instead of what libspf2 thinks the hosts name is.
+  MH/02 The dsearch lookup now uses lstat(2) instead of stat(2) to look for
+        a directory entry by the name of the lookup key. Previously, if a
+        symlink pointed to a non-existing file or a file in a directory that
+        Exim lacked permissions to read, a lookup for a key matching that
+        symlink would fail. Now it is enough that a matching directory entry
+        exists, symlink or not. (Bugzilla 503.)
+  PH/03 The body_linecount and body_zerocount variables are now exported in the
+        local_scan API.
+  PH/04 Added the $dnslist_matched variable.
+  PH/05 Unset $tls_cipher and $tls_peerdn before making a connection as a client.
+        This means they are set thereafter only if the connection becomes
+        encrypted.
+  PH/06 Added the client_condition to authenticators so that some can be skipped
+        by clients under certain conditions.
+  PH/07 The error message for a badly-placed control=no_multiline_responses left
+        "_responses" off the end of the name.
+  PH/08 Added -Mvc to output a copy of a message in RFC 2822 format.
+  PH/09 Tidied the code for creating ratelimiting keys, creating them explicitly
+        (without spaces) instead of just copying the configuration text.
+  PH/10 Added the /noupdate option to the ratelimit ACL condition.
+  PH/11 Added $max_received_linelength.
+  PH/12 Added +ignore_defer and +include_defer to host lists.
+  PH/13 Installed PCRE version 7.2. This needed some changes because of the new
+        way in which PCRE > 7.0 is built.
+  PH/14 Implemented queue_only_load_latch.
+  PH/15 Removed an incorrect (int) cast when reading the value of SIZE in a
+        MAIL command. The effect was to mangle the value on 64-bit systems.
+  PH/16 Another patch from the Sieve maintainer.
+  PH/17 Added the NOTQUIT ACL, based on a patch from Ted Cooper.
+  PH/18 If a system quota error occurred while trying to create the file for
+        a maildir delivery, the message "Mailbox is full" was not appended to the
+        bounce if the delivery eventually timed out. Change 4.67/27 below applied
+        only to a quota excession during the actual writing of the file.
+  PH/19 It seems that peer DN values may contain newlines (and other non-printing
+        characters?) which causes problems in log lines. The DN values are now
+        passed through string_printing() before being added to log lines.
+  PH/20 Added the "servers=" facility to MySQL and PostgreSQL lookups. (Oracle
+        and InterBase are left for another time.)
+  PH/21 Added message_body_newlines option.
+  PH/22 Guard against possible overflow in moan_check_errorcopy().
+  PH/23 POSIX allows open() to be a macro; guard against that.
+  PH/24 If the recipient of an error message contained an @ in the local part
+        (suitably quoted, of course), incorrect values were put in $domain and
+        $local_part during the evaluation of errors_copy.
+
+-------------------------------------------------------------------
+Fri Aug 24 08:33:24 CEST 2007 - poeml@suse.de
+
+- "Novell apparmor" doesn't own /etc/apparmor and
+  /etc/apparmor/profiles... fix build in autobuild
+
+-------------------------------------------------------------------
+Thu Aug 23 13:19:32 CEST 2007 - poeml@suse.de
+
+- do not install apparmor profile by default [#285727]
+
+-------------------------------------------------------------------
+Fri Jul 13 13:44:42 CEST 2007 - poeml@suse.de
+
+- use the LSB equivalent Should-Start instead of
+  X-UnitedLinux-Should-Start [#285553]
+
+-------------------------------------------------------------------
+Fri Jul 13 12:57:46 CEST 2007 - poeml@suse.de
+
+- init script: add amavis to Should-Start [#285553]
+
+-------------------------------------------------------------------
+Thu May 31 02:29:50 CEST 2007 - poeml@suse.de
+
+- improve apparmor profile: use abstractions/user-mail; allow
+  procmail and cyrus deliver (assuming that their profiles are in
+  effect as well)
+
+-------------------------------------------------------------------
+Thu May 24 16:40:10 CEST 2007 - poeml@suse.de
+
+- add apparmor profile, active in "complain" mode once installed.
+  Use logprof to check for needed adjustments. Use "enforce
+  /usr/sbin/exim" to put the profile into effect.
+- remove support for building on and updating from SuSE Linux 7.3
+  and older
+
+-------------------------------------------------------------------
+Tue Apr 17 16:13:15 CEST 2007 - poeml@suse.de
+
+- update to 4.67
+  MH/01 Fix for bug #448, segfault in Dovecot authenticator when interface_address
+        is unset (happens when testing with -bh and -oMi isn't used). Thanks to
+        Jan Srzednicki.
+  PH/01 Added a new log selector smtp_no_mail, to log SMTP sessions that do not
+        issue a MAIL command.
+  PH/02 In an ACL statement such as
+          deny dnslists = X!=127.0.0.2 : X=127.0.0.2
+        if a client was not listed at all, or was listed with a value other than
+        127.0.0.2, in the X list, but was listed with 127.0.0.2 in the Y list,
+        the condition was not true (as it should be), so access was not denied.
+        The bug was that the ! inversion was incorrectly passed on to the second
+        item. This has been fixed.
+  PH/03 Added additional dnslists conditions == and =& which are different from
+        = and & when the dns lookup returns more than one IP address.
+  PH/04 Added gnutls_require_{kx,mac,protocols} to give more control over the
+        cipher suites used by GnuTLS. These options are ignored by OpenSSL.
+  PH/05 After discussion on the list, added a compile time option ENABLE_DISABLE_
+        FSYNC, which compiles an option called disable_fsync that allows for
+        bypassing fsync(). The documentation is heavily laced with warnings.
+  SC/01 Updated eximstats to collate all SpamAssassin rejects into one bucket.
+  PH/06 Some tidies to the infrastructure of the Test Suite that is concerned
+        with the auxiliary C programs that it uses: (1) Arrange for BIND_8_COMPAT
+        to be defined when compiling on OSX (Darwin); (2) Tidies to the Makefile,
+        including adding "make clean"; (3) Added -fPIC when compiling the test
+        dynamically loaded module, to get rid of a warning.
+  MH/02 Fix for bug #451, causing paniclog entries to be written if a bounce
+        message fails, move_frozen_messages = true and ignore_bounce_errors_after
+        = 0s. The bug is otherwise harmless.
+  PH/07 There was a bug in the dovecot authenticator such that the value of
+        $auth1 could be overwritten, and so not correctly preserved, after a
+        successful authentication. This usually meant that the value preserved by
+        the server_setid option was incorrect.
+  PH/08 Added $smtp_count_at_connection_start, deliberately with a long name.
+  PH/09 Installed PCRE release 7.0.
+  PH/10 The acl_not_smtp_start ACL was, contrary to the documentation, not being
+        run for batched SMTP input. It is now run at the start of every message
+        in the batch. While fixing this I discovered that the process information
+        (output by running exiwhat) was not always getting set for -bs and -bS
+        input. This is fixed, and it now also says "batched" for BSMTP.
+  PH/11 Added control=no_pipelining.
+  PH/12 Added $sending_ip_address and $sending_port (mostly Magnus Holmgren's
+        patch, slightly modified), and move the expansion of helo_data till after
+        the connection is made in the smtp transport (so it can use these
+        values).
+  PH/13 Added ${rfc2047d: to decoded RFC 2047 strings.
+  PH/14 Added log_selector = +pid.
+  PH/15 Flush SMTP output before delaying, unless control=no_delay_flush is set.
+  PH/16 Add ${if forany and ${if forall.
+  PH/17 Added dsn_from option to vary the From: line in DSNs.
+  PH/18 Flush SMTP output before performing a callout, unless control =
+        no_callout_flush is set.
+  PH/19 Change 4.64/PH/36 introduced a bug: when address_retry_include_sender
+        was true (the default) a successful delivery failed to delete the retry
+        item, thus causing premature timeout of the address. The bug is now
+        fixed.
+  PH/20 Added hosts_avoid_pipelining to the smtp transport.
+  PH/21 Long custom messages for fakedefer and fakereject are now split up
+        into multiline reponses in the same way that messages for "deny" and
+        other ACL rejections are.
+  PH/22 Applied Jori Hamalainen's speed-up changes and typo fixes to exigrep,
+        with slight modification.
+  PH/23 Applied sieve patches from the maintainer "tracking the latest notify
+        draft, changing the syntax and factoring some duplicate code".
+  PH/24 When the log selector "outgoing_port" was set, the port was shown as -1
+        for deliveries of the second and subsequent messages over the same SMTP
+        connection.
+  PH/25 Applied Magnus Holmgren's patch for ${addresses, ${map, ${filter, and
+        ${reduce, with only minor "tidies".
+  SC/02 Applied Daniel Tiefnig's patch to improve the '($parent) =' pattern match.
+  PH/26 Added a "continue" ACL modifier that does nothing, for the benefit of its
+        expansion side effects.
+  PH/27 When a message times out after an over-quota error from an Exim-imposed
+        quota, the bounce message says "mailbox is full". This message was not
+        being given when it was a system quota that was exceeded. It now should
+        be the same.
+  MH/03 Made $recipients available in local_scan(). local_scan() already has
+        better access to the recipient list through recipients_list[], but
+        $recipients can be useful in postmaster-provided expansion strings.
+  PH/28 The $smtp_command and $smtp_command_argument variables were not correct
+        in the case of a MAIL command with additional options following the
+        address, for example: MAIL FROM:<foo@bar> SIZE=1234. The option settings
+        were accidentally chopped off.
+  PH/29 SMTP synchronization checks are implemented when a command is read -
+        there is a check that no more input is waiting when there shouldn't be
+        any. However, for some commands, a delay in an ACL can mean that it is
+        some time before the response is written. In this time, more input might
+        arrive, invalidly. So now there are extra checks after an ACL has run for
+        HELO/EHLO and after the predata ACL, and likewise for MAIL and RCPT when
+        pipelining has not been advertised.
+  PH/30 MH's patch to allow iscntrl() characters to be list separators.
+  PH/31 Unlike :fail:, a custom message specified with :defer: was not being
+        returned in the SMTP response when smtp_return_error_details was false.
+        This has been fixed.
+  PH/32 Change the Dovecot authenticator to use read() and write() on the socket
+        instead of the C I/O that was originally supplied, because problems were
+        reported on Solaris.
+  PH/33 Compile failed with OpenSSL 0.9.8e. This was due to a coding error in
+        Exim which did not show up earlier: it was assuming that a call to
+        SSL_CTX_set_info_callback() might give an error value. In fact, there is
+        no error. In previous releases of OpenSSL, SSL_CTX_set_info_callback()
+        was a macro that became an assignment, so it seemed to work. This has
+        changed to a proper function call with a void return, hence the compile
+        error. Exim's code has been fixed.
+  PH/34 Change HDA_SIZE in oracle.c from 256 to 512. This is needed for 64-bit
+        cpus.
+  PH/35 Applied a patch from the Sieve maintainer which fixes a bug in "notify".
+  PH/36 Applied John Jetmore's patch to add -v functionality to exigrep.
+  PH/37 If a message is not accepted after it has had an id assigned (e.g.
+        because it turns out to be too big or there is a timeout) there is no
+        "Completed" line in the log. When some messages of this type were
+        selected by exigrep, they were listed as "not completed". Others were
+        picked up by some special patterns. I have improved the selection
+        criteria to be more general.
+  PH/38 The host_find_failed option in the manualroute router can now be set
+        to "ignore", to completely ignore a host whose IP address cannot be
+        found. If all hosts are ignored, the behaviour is controlled by the new
+        host_all_ignored option.
+  PH/39 In a list of hosts for manualroute, if one item (either because of multi-
+        homing or because of multiple MX records with /mx) generated more than
+        one IP address, and the following item turned out to be the local host,
+        all the secondary addresses of the first item were incorrectly removed
+        from the list, along with the local host and any following hosts (which
+        is what is supposed to happen).
+  PH/40 When Exim receives a message, it writes the login name, uid, and gid of
+        whoever called Exim into the -H file. In the case of the daemon it was
+        behaving confusingly. When first started, it used values for whoever
+        started the daemon, but after a SIGHUP it used the Exim user (because it
+        calls itself on a restart). I have changed the code so that it now always
+        uses the Exim user.
+  PH/41 (Following a suggestion from Tony Finch) If all the RCPT commands in a
+        message are rejected with the same error (e.g. no authentication or bad
+        sender address), and a DATA command is nevertheless sent (as can happen
+        with PIPELINING or a stupid MUA), the error message that was given to the
+        RCPT commands is included in the rejection of the DATA command. This is
+        intended to be helpful for MUAs that show only the final error to their
+        users.
+  PH/42 Another patch from the Sieve maintainer.
+  SC/02 Eximstats - Differentiate between permanent and temporary rejects.
+        Eximstats - Fixed some broken HTML links and added missing column headers
+                    (Jez Hancock).
+        Eximstats - Fixed Grand Total Summary Domains, Edomains, and Email
+                    columns for Rejects, Temp Rejects, Ham, and Spam rows.
+  SC/03 Eximstats - V1.58 Fix to get <> and blackhole to show in edomain tables.
+  PH/43 Yet another patch from the Sieve maintainer.
+  PH/44 I found a way to check for a TCP/IP connection going away before sending
+        the response to the final '.' that terminates a message, but only in the
+        case where the client has not sent further data following the '.'
+        (unfortunately, this is allowed). However, in many cases there won't be
+        any further data because there won't be any more messages to send. A call
+        to select() can be used: if it shows that the input is "ready", there is
+        either input waiting, or the socket has been closed. An attempt to read
+        the next input character can distinguish the two cases. Previously, Exim
+        would have sent an OK response which the client would never have see.
+        This could lead to message repetition. This fix should cure that, at
+        least in a lot of common cases.
+  PH/45 Do not advertise STARTTLS in response to HELP unless it would be
+        advertised in response to EHLO.
+
+-------------------------------------------------------------------
+Fri Mar  9 10:59:59 CET 2007 - poeml@suse.de
+
+- build fix for openssl-0.9.8e: SSL_CTX_set_info_callback is now a
+  function with void return
+- sync buildservice package with autobuild
+
+-------------------------------------------------------------------
+Thu Jan 25 23:59:41 CET 2007 - sndirsch@suse.de
+
+- move from /usr/X11R6 to /usr
+
+-------------------------------------------------------------------
+Tue Jan  9 11:03:05 CET 2007 - poeml@suse.de
+
+- update to 4.66
+  PH/01 Two more bugs that were introduced by 4.64/PH/07, in addition to the one
+        fixed by 4.65/MH/01 (is this a record?) are fixed:
+        (i)  An empty string was always treated as zero by the numeric comparison
+             operators. This behaviour has been restored.
+        (ii) It is documented that the numeric comparison operators always treat
+             their arguments as decimal numbers. This was broken in that numbers
+             starting with 0 were being interpreted as octal.
+        While fixing these problems I realized that there was another issue that
+        hadn't been noticed. Values of message_size_limit (both the global option
+        and the transport option) were treated as octal if they started with 0.
+        The documentation was vague. These values are now always treated as
+        decimal, and I will make that clear in the documentation.
+
+-------------------------------------------------------------------
+Tue Jan  2 12:54:48 CET 2007 - poeml@suse.de
+
+- update to 4.65
+  TK/01 Disable default definition of HAVE_LINUX_SENDFILE. Clashes with
+        Linux large file support (_FILE_OFFSET_BITS=64) on older glibc
+        versions. (#438)
+  MH/01 Don't check that the operands of numeric comparison operators are
+        integers when their expansion is in "skipping" mode (fixes bug
+        introduced by 4.64-PH/07).
+  PH/01 If a system filter or a router generates more than SHRT_MAX (32767)
+        child addresses, Exim now panics and dies. Previously, because the count
+        is held in a short int, deliveries were likely to be lost. As such a
+        large number of recipients for a single message is ridiculous
+        (performance will be very, very poor), I have chosen to impose a limit
+        rather than extend the field.
+
+-------------------------------------------------------------------
+Wed Dec 20 13:33:22 CET 2006 - poeml@suse.de
+
+- update to 4.64
+  TK/01 Bugzilla #401. Fix DK spooling code so that it can overwrite a
+        leftover -K file (the existence of which was triggered by #402).
+        While we were at it, introduced process PID as part of the -K
+        filename. This should rule out race conditions when creating
+        these files.
+  TK/02 Bugzilla #402. Apply patch from Simon Arlott, speeding up DK signing
+        processing considerably. Previous code took too long for large mails,
+        triggering a timeout which in turn triggers #401.
+  TK/03 Introduced HAVE_LINUX_SENDFILE to os.h-Linux. Currently only used
+        in the DK code in transports.c. sendfile() is not really portable,
+        hence the _LINUX specificness.
+  TF/01 In the add_headers option to the mail command in an Exim filter,
+        there was a bug that Exim would claim a syntax error in any
+        header after the first one which had an odd number of characters
+        in the field name.
+  PH/01 If a server that rejects MAIL FROM:<> was the target of a sender
+        callout verification, Exim cached a "reject" for the entire domain. This
+        is correct for most verifications, but it is not correct for a recipient
+        verification with use_sender or use_postmaster set, because in that case
+        the callout does not use MAIL FROM:<>. Exim now distinguishes the special
+        case of MAIL FROM:<> rejection from other early rejections (e.g.
+        rejection of HELO). When verifying a recipient using a non-null MAIL
+        address, the cache is ignored if it shows MAIL FROM:<> rejection.
+        Whatever the result of the callout, the value of the domain cache is
+        left unchanged (for any other kind of callout, getting as far as trying
+        RCPT means that the domain itself is ok).
+  PH/02 Tidied a number of unused variable and signed/unsigned warnings that
+        gcc 4.1.1 threw up.
+  PH/03 On Solaris, an unexpectedly close socket (dropped connection) can
+        manifest itself as EPIPE rather than ECONNECT. When tidying away a
+        session, the daemon ignores ECONNECT errors and logs others; it now
+        ignores EPIPE as well.
+  PH/04 Applied Nico Erfurth's refactoring patch to tidy up mime.c
+        (quoted-printable decoding).
+  PH/05 Applied Nico Erfurth's refactoring patch to tidy up spool_mbox.c, and
+        later the small subsequent patch to fix an introduced bug.
+  PH/06 Installed the latest Cygwin Makefile from the Cygwin maintainer.
+  PH/07 There was no check for overflow in expansions such as ${if >{1}{4096M}}.
+  PH/08 An error is now given if message_size_limit is specified negative.
+  PH/09 Applied and tidied up Jakob Hirsch's patch for allowing ACL variables
+        to be given (somewhat) arbitrary names.
+  JJ/01 exipick 20060919.0, allow for arbitrary acl_ variables introduced
+        in 4.64-PH/09.
+  JJ/02 exipick 20060919.0, --show-vars args can now be regular expressions,
+        miscellaneous code fixes
+  PH/10 Added the log_reject_target ACL modifier to specify where to log
+        rejections.
+  PH/11 Callouts were setting the name used for EHLO/HELO from $smtp_active_
+        hostname. This is wrong, because it relates to the incoming message (and
+        probably the interface on which it is arriving) and not to the outgoing
+        callout (which could be using a different interface). This has been
+        changed to use the value of the helo_data option from the smtp transport
+        instead - this is what is used when a message is actually being sent. If
+        there is no remote transport (possible with a router that sets up host
+        addresses), $smtp_active_hostname is used.
+  PH/12 Installed Andrey Panin's patch to add a dovecot authenticator. Various
+        tweaks were necessary in order to get it to work (see also 21 below):
+        (a) The code assumed that strncpy() returns a negative number on buffer
+            overflow, which isn't the case. Replaced with Exim's string_format()
+            function.
+        (b) There were several signed/unsigned issues. I just did the minimum
+            hacking in of casts. There is scope for a larger refactoring.
+        (c) The code used strcasecmp() which is not a standard C function.
+            Replaced with Exim's strcmpic() function.
+        (d) The code set only $1; it now sets $auth1 as well.
+        (e) A simple test gave the error "authentication client didn't specify
+            service in request". It would seem that Dovecot has changed its
+            interface. Fortunately there's a specification; I followed it and
+            changed what the client sends and it appears to be working now.
+  PH/13 Added $message_headers_raw to provide the headers without RFC 2047
+        decoding.
+  PH/14 Corrected misleading output from -bv when -v was also used. Suppose the
+        address A is aliased to B and C, where B exists and C does not. Without
+        -v the output is "A verified" because verification stops after a
+        successful redirection if more than one address is generated. However,
+        with -v the child addresses are also verified. Exim was outputting "A
+        failed to verify" and then showing the successful verification for C,
+        with its parentage. It now outputs "B failed to verify", showing B's
+        parentage before showing the successful verification of C.
+  PH/15 Applied Michael Deutschmann's patch to allow DNS black list processing to
+        look up a TXT record in a specific list after matching in a combined
+        list.
+  PH/16 It seems that the options setting for the resolver (RES_DEFNAMES and
+        RES_DNSRCH) can affect the behaviour of gethostbyname() and friends when
+        they consult the DNS. I had assumed they would set it the way they
+        wanted; and indeed my experiments on Linux seem to show that in some
+        cases they do (I could influence IPv6 lookups but not IPv4 lookups).
+        To be on the safe side, however, I have now made the interface to
+        host_find_byname() similar to host_find_bydns(), with an argument
+        containing the DNS resolver options. The host_find_byname() function now
+        sets these options at its start, just as host_find_bydns() does. The smtp
+        transport options dns_qualify_single and dns_search_parents are passed to
+        host_find_byname() when gethostbyname=TRUE in this transport. Other uses
+        of host_find_byname() use the default settings of RES_DEFNAMES
+        (qualify_single) but not RES_DNSRCH (search_parents).
+  PH/17 Applied (a modified version of) Nico Erfurth's patch to make
+        spool_read_header() do less string testing, by means of a preliminary
+        switch on the second character of optional "-foo" lines. (This is
+        overdue, caused by the large number of possibilities that now exist.
+        Originally there were few.) While I was there, I also converted the
+        str(n)cmp tests so they don't re-test the leading "-" and the first
+        character, in the hope this might squeeze out yet more improvement.
+  PH/18 Two problems with "group" syntax in header lines when verifying: (1) The
+        flag allowing group syntax was set by the header_syntax check but not
+        turned off, possible causing trouble later; (2) The flag was not being
+        set at all for the header_verify test, causing "group"-style headers to
+        be rejected. I have now set it in this case, and also caused header_
+        verify to ignore an empty address taken from a group. While doing this, I
+        came across some other cases where the code for allowing group syntax
+        while scanning a header line wasn't quite right (mostly, not resetting
+        the flag correctly in the right place). These bugs could have caused
+        trouble for malformed header lines. I hope it is now all correct.
+  PH/19 The functions {pwcheck,saslauthd}_verify_password() are always called
+        with the "reply" argument non-NULL. The code, however (which originally
+        came from elsewhere) had *some* tests for NULL when it wrote to *reply,
+        but it didn't always do it. This confused somebody who was copying the
+        code for some other use. I have removed all the tests.
+  PH/20 It was discovered that the GnuTLS code had support for RSA_EXPORT, a
+        feature that was used to support insecure browsers during the U.S. crypto
+        embargo. It requires special client support, and Exim is probably the
+        only MTA that supported it -- and would never use it because real RSA is
+        always available. This code has been removed, because it had the bad
+        effect of slowing Exim down by computing (never used) parameters for the
+        RSA_EXPORT functionality.
+  PH/21 On the advice of Timo Sirainen, added a check to the dovecot
+        authenticator to fail if there's a tab character in the incoming data
+        (there should never be unless someone is messing about, as it's supposed
+        to be base64-encoded). Also added, on Timo's advice, the "secured" option
+        if the connection is using TLS or if the remote IP is the same as the
+        local IP, and the "valid-client-cert option" if a client certificate has
+        been verified.
+  PH/22 As suggested by Dennis Davis, added a server_condition option to *all*
+        authenticators. This can be used for authorization after authentication
+        succeeds. (In the case of plaintext, it servers for both authentication
+        and authorization.)
+  PH/23 Testing for tls_required and lost_connection in a retry rule didn't work
+        if any retry times were supplied.
+  PH/24 Exim crashed if verify=helo was activated during an incoming -bs
+        connection, where there is no client IP address to check. In this
+        situation, the verify now always succeeds.
+  PH/25 Applied John Jetmore's -Mset patch.
+  PH/26 Added -bem to be like -Mset, but loading a message from a file.
+  PH/27 In a string expansion for a processed (not raw) header when multiple
+        headers of the same name were present, leading whitespace was being
+        removed from all of them, but trailing whitespace was being removed only
+        from the last one. Now trailing whitespace is removed from each header
+        before concatenation. Completely empty headers in a concatenation (as
+        before) are ignored.
+  PH/28 Fixed bug in backwards-compatibility feature of PH/09 (thanks to John
+        Jetmore). It would have mis-read ACL variables from pre-4.61 spool files.
+  PH/29 [Removed. This was a change that I later backed out, and forgot to
+        correct the ChangeLog entry (that I had efficiently created) before
+        committing the later change.]
+  PH/30 Exim was sometimes attempting to deliver messages that had suffered
+        address errors (4xx response to RCPT) over the same connection as other
+        messages routed to the same hosts. Such deliveries are always "forced",
+        so retry times are not inspected. This resulted in far too many retries
+        for the affected addresses. The effect occurred only when there were more
+        hosts than the hosts_max_try setting in the smtp transport when it had
+        the 4xx errors. Those hosts that it had tried were not added to the list
+        of hosts for which the message was waiting, so if all were tried, there
+        was no problem. Two fixes have been applied:
+        (i)  If there are any address or message errors in an SMTP delivery, none
+             of the hosts (tried or untried) are now added to the list of hosts
+             for which the message is waiting, so the message should not be a
+             candidate for sending over the same connection that was used for a
+             successful delivery of some other message. This seems entirely
+             reasonable: after all the message is NOT "waiting for some host".
+             This is so "obvious" that I'm not sure why it wasn't done
+             previously. Hope I haven't missed anything, but it can't do any
+             harm, as the worst effect is to miss an optimization.
+        (ii) If, despite (i), such a delivery is accidentally attempted, the
+             routing retry time is respected, so at least it doesn't keep
+             hammering the server.
+  PH/31 Installed Andrew Findlay's patch to close the writing end of the socket
+        in ${readsocket because some servers need this prod.
+  PH/32 Added some extra debug output when updating a wait-xxx database.
+  PH/33 The hint "could be header name not terminated by colon", which has been
+        given for certain expansion errors for a long time, was not being given
+        for the ${if def:h_colon_omitted{...  case.
+  PH/34 The spec says: "With one important exception, whenever a domain list is
+        being scanned, $domain contains the subject domain." There was at least
+        one case where this was not true.
+  PH/35 The error "getsockname() failed: connection reset by peer" was being
+        written to the panic log as well as the main log, but it isn't really
+        panic-worthy as it just means the connection died rather early on. I have
+        removed the panic log writing for the ECONNRESET error when getsockname()
+        fails.
+  PH/36 After a 4xx response to a RCPT error, that address was delayed (in queue
+        runs only) independently of the message's sender address. This meant
+        that, if the 4xx error was in fact related to the sender, a different
+        message to the same recipient with a different sender could confuse
+        things. In particualar, this can happen when sending to a greylisting
+        server, but other circumstances could also provoke similar problems.
+        I have changed the default so that the retry time for these errors is now
+        based a combination of the sender and recipient addresses. This change
+        can be overridden by setting address_retry_include_sender=false in the
+        smtp transport.
+  PH/37 For LMTP over TCP/IP (the smtp transport), error responses from the
+        remote server are returned as part of bounce messages. This was not
+        happening for LMTP over a pipe (the lmtp transport), but now it is the
+        same for both kinds of LMTP.
+  PH/38 Despite being documented as not happening, Exim was rewriting addresses
+        in header lines that were in fact CNAMEs. This is no longer the case.
+  PH/39 If -R or -S was given with -q<time>, the effect of -R or -S was ignored,
+        and queue runs started by the daemon processed all messages. This has
+        been fixed so that -R and -S can now usefully be given with -q<time>.
+  PH/40 Import PCRE release 6.7 (fixes some bugs).
+  PH/41 Add bitwise logical operations to eval (courtesy Brad Jorsch).
+  PH/42 Give an error if -q is specified more than once.
+  PH/43 Renamed the variables $interface_address and $interface_port as
+        $received_ip_address and $received_port, to make it clear that these
+        values apply to message reception, and not to the outgoing interface when
+        a message is delivered. (The old names remain recognized, of course.)
+  PH/44 There was no timeout on the connect() call when using a Unix domain
+        socket in the ${readsocket expansion. There now is.
+  PH/45 Applied a modified version of Brad Jorsch's patch to allow "message" to
+        be meaningful with "accept".
+  SC/01 Eximstats V1.43
+       Bug fix for V1.42 with -h0 specified. Spotted by Chris Lear.
+  SC/02 Eximstats V1.44
+        Use a glob alias rather than an array ref in the generated
+        parser. This improves both readability and performance.
+  SC/03 Eximstats V1.45 (Marco Gaiarin / Steve Campbell)
+        Collect SpamAssassin and rejection statistics.
+        Don't display local sender or destination tables unless
+        there is data to show.
+        Added average volumes into the top table text output.
+  SC/04 Eximstats V1.46
+        Collect data on the number of addresses (recipients)
+        as well as the number of messages.
+  SC/05 Eximstats V1.47
+        Added 'Message too big' to the list of mail rejection
+        reasons (thanks to Marco Gaiarin).
+  SC/06 Eximstats V1.48
+        Mainlog lines which have GMT offsets and are too short to
+        have a flag are now skipped.
+  SC/07 Eximstats V1.49 (Alain Williams)
+        Added the -emptyok flag.
+  SC/08 Eximstats V1.50
+        Fixes for obtaining the IP address from reject messages.
+  JJ/03 exipick.20061117.2, made header handling as similar to exim as possible
+        (added [br]h_ prefixes, implemented RFC2047 decoding.  Fixed
+        whitesspace changes from 4.64-PH/27
+  JJ/04 exipick.20061117.2, fixed format and added $message_headers_raw to
+        match 4.64-PH/13
+  JJ/05 exipick.20061117.2, bug fixes (error out sooner when invalid criteria
+        are found, allow negative numbers in numeric criteria)
+  JJ/06 exipick.20061117.2, added new $message_body_missing variable
+  JJ/07 exipick.20061117.2, added $received_ip_address and $received_port
+        to match changes made in 4.64-PH/43
+  PH/46 Applied Jori Hamalainen's patch to add features to exiqsumm.
+  PH/47 Put in an explicit test for a DNS lookup of an address record where the
+        "domain" is actually an IP address, and force a failure. This locks out
+        those revolvers/nameservers that support "A-for-A" lookups, in
+        contravention of the specifications.
+  PH/48 When a host name was looked up from an IP address, and the subsequent
+        forward lookup of the name timed out, the host name was left in
+        $sender_host_name, contrary to the specification.
+  PH/49 Although default lookup types such as lsearch* or cdb*@ have always been
+        restricted to single-key lookups, Exim was not diagnosing an error if
+        * or *@ was used with a query-style lookup.
+  PH/50 Increased the value of DH_BITS in tls-gnu.c from 768 to 1024.
+  MH/01 local_scan ABI version incremented to 1.1. It should have been updated
+        long ago, but noone interested enough thought of it. Let's just say that
+        the "1.1" means that there are some new functions that weren't there at
+        some point in the past.
+  PH/51 Error processing for expansion failure of helo_data from an smtp
+        transport during callout processing was broken.
+  PH/52 Applied John Jetmore's patch to allow tls-on-connect and STARTTLS to be
+        tested/used via the -bh/-bhc/-bs options.
+  PH/53 Added missing "#include <time.h>" to pcre/pcretest.c (this was a PCRE
+        bug, fixed in subsequent PCRE releases).
+  PH/54 Applied Robert Bannocks' patch to avoid a problem with references that
+        arises when using the Solaris LDAP libraries (but not with OpenLDAP).
+  PH/55 Check for a ridiculously long file name in exim_dbmbuild.
+- build with AUTH_DOVECOT and LOOKUP_NIS
+
+-------------------------------------------------------------------
+Mon Oct 23 15:39:15 CEST 2006 - poeml@suse.de
+
+- define SYSLOG_LOG_PID in src/EDITME, so the process id is
+  included when logging via syslog. Pointed out by Florian Laws.
+
+-------------------------------------------------------------------
+Fri Oct 20 18:20:37 CEST 2006 - lmuelle@suse.de
+
+- add sendmail to the Provides tag in the init script
+
+-------------------------------------------------------------------
+Fri Aug  4 15:14:35 CEST 2006 - poeml@suse.de
+
+- add support for building with mysql lookup support, by defining
+  %build_with_mysql at the top of the spec file [#188586]
+- don't use %name macro in %setup therefore (so another spec file
+  can have a different Name tag)
+- remove stray bzcat %{S:30} line
+
+-------------------------------------------------------------------
+Thu Aug  3 16:18:54 CEST 2006 - poeml@suse.de
+
+- update to 4.63
+  * Use a glob alias rather than an array ref in eximstats generated
+    parser. This improves both readability and performance.
+  * Collect SpamAssassin and rejection statistics in eximstats.
+    Don't display local sender or destination tables in eximstats unless
+    there is data to show.
+    Added average volumes into the eximstats top table text output.
+  * Collect data on the number of addresses (recipients) as well
+    as the number of messages in eximstats.
+  * Correct an error in the documentation for the redirect router. Exim
+    does (usually) call initgroups() when daemonizing.
+  * Call initgroups() when dropping privilege in exim.c, so that Exim runs
+    with consistent privilege compared to when running as a daemon.
+  * Note in the spec that $authenticated_id is not set for local
+    submissions from trusted users.
+  * The ratelimit per_rcpt option now works correctly in acl_not_smtp.
+    Thanks to Dean Brooks <dean@iglou.com> for the patch.
+  * Make it easier to get SMTP authentication and TLS/SSL support working
+    by adding some example configuration directives to the default
+    configuration file. A little bit of work is required to uncomment the
+    directives and define how usernames and passwords are checked, but
+    there is now a framework to start from.
+  * Added #define LDAP_DEPRECATED 1 to ldap.c because some of the "old"
+    functions that Exim currently uses aren't defined in ldap.h for OpenLDAP
+    without this. I don't know how relevant this is to other LDAP libraries.
+  * Add the verb name to the "unknown ACL verb" error.
+  * Magnus Holmgren's patch for filter_prepend_home.
+  * Fixed Bugzilla #101: macro definition between ACLs doesn't work.
+  * Applied Magnus Holmgren's patch to fix Bugzilla #98: transport's home
+    directory not expanded when it should be if an expanded home directory
+    was set for the address (which is overridden by the transport).
+  * Applied Alex Kiernan's patch to fix Bugzilla #99: a problem with
+    libradius.
+  * Added acl_not_smtp_start, based on Johannes Berg's patch, and set the
+    bit to forbid control=suppress_local_fixups in the acl_not_smtp ACL,
+    because it is too late at that time, and has no effect.
+  * Changed ${quote_pgsql to quote ' as '' instead of \' because of a
+    security issue with \' (bugzilla #107). I could not use the
+    PQescapeStringConn() function, because it needs a PGconn value as one of
+    its arguments.
+  * When testing addresses using -bt, indicate those final addresses that
+    are duplicates that would not cause an additional delivery. At least one
+    person was confused, thinking that -bt output corresponded to deliveries.
+    (Suppressing duplicates isn't a good idea as you lose the information
+    about possibly different redirections that led to the duplicates.)
+  * Applied patch from Erik to use select() instead of poll() in spam.c on
+    systems where poll() doesn't work, in particular OS X.
+  * Added more information to debugging output for retry time not reached.
+  * Applied patch from Arkadiusz Miskiewicz to apply a timeout to read
+    operations in malware.c.
+  * Applied patch from Magnus Holmgren to include the "h" tag in Domain Keys
+    signatures.
+  * If write_rejectlog was set false when logging was sent to syslog with
+    syslog_duplication set false, log lines that would normally be written
+    both the the main log and to the reject log were not written to syslog at
+    all.
+  * In the default configuration, change the use of "message" in ACL warn
+    statements to "add_header".
+  * Diagnose a filter syntax error for "seen", "unseen", or "noerror" if not
+    not followed by a command (e.g. "seen endif").
+  * Recognize SMTP codes at the start of "message" in ACLs and after :fail:
+    and :defer: in a redirect router. Add forbid_smtp_code to suppress the
+    latter.
+  * Added extra conditions to the default value of delay_warning_condition
+    so that it is now:
+      ${if or { \
+          { !eq{$h_list-id:$h_list-post:$h_list-subscribe:}{} } \
+          { match{$h_precedence:}{(?i)bulk|list|junk} } \
+          { match{$h_auto-submitted:}{(?i)auto-generated|auto-replied} } \
+          }{no}{yes}}
+    The Auto-Submitted: and various List- headers are standardised, whereas I
+    don't think Precedence: ever was.
+  * Refactored debugging code in route_finduser() to show more information,
+    in particular, the error code if getpwnam() issues one.
+  * Added PQsetClientEncoding(conn, "SQL_ASCII") to the pgsql code module.
+    This is apparently needed in addition to the     - change above to avoid
+    any possible encoding problems.
+  * Perl can change the locale. Exim was resetting it after a ${perl call,
+    but not after initializing Perl.
+  * Added a call to PQsetNoticeProcessor() to catch pgsql "notices" and
+    output them only if debugging. By default they are written stderr,
+    apparently, which is not desirable.
+  * Added Alain Williams' LDAP patch to support setting REFERRALS=off on
+    queries.
+  * exipick: added --reverse (and -R synonym), --random, --size, --sort and
+    --not options
+  * exipick: rewrote --help documentation to hopefully make more clear.
+  * Made -oMaa and -oMt work with -bh and -bs to pretend the connection is
+    authenticated or an ident call has been made. Suppress the default
+    values for $authenticated_id and $authenticated_sender (but permit -oMai
+    and -oMas) when testing with -bh.
+  * Re-jigged the order of the tests in the default configuration so that the
+    tests for valid domains and recipients precede the DNS black list and CSA
+    tests, on the grounds that those ones are more expensive.
+  * Exim was not testing for a space following SMTP commands such as EHLO
+    that require one. Thus, EHLORHUBARB was interpreted as a valid command.
+    This bug exists in every version of Exim that I still have, right back to
+    0.12.
+  * (n)wildlsearch lookups are documented as being done case-insensitively.
+    However, an attempt to turn on case-sensitivity in a regex key by
+    including (?-i) didn't work because the subject string was already
+    lowercased, and the effects were non-intuitive. It turns out that a
+    one-line patch can be used to allow (?-i) to work as expected.
+- fix build requires for older SUSE distributions
+
+-------------------------------------------------------------------
+Tue May 30 16:07:30 CEST 2006 - poeml@suse.de
+
+- upstream 4.62
+  . The ${readsocket expansion item now supports Internet domain sockets as well
+    as Unix domain sockets.
+  . If a redirect router sets up file or pipe deliveries for more than one
+    incoming address, and the relevant transport has batch_max set greater than
+    one, a batch delivery now occurs.
+  . The appendfile transport has a new option called maildirfolder_create_regex.
+  . An option called disable_ipv6, to disable the use of IPv6 completely.
+  . An increase in the number of ACL variables to 20 of each type.
+  . A change to use $auth1, $auth2, and $auth3 in authenticators instead of $1,
+    $2, $3, (though those are still set) because the numeric variables get used
+    for other things in complicated expansions.
+  . The default for rfc1413_query_timeout has been changed from 30s to 5s.
+  . It is possible to use setclassresources() on some BSD OS to control the
+    resources used in pipe deliveries.
+  . A new ACL modifier called add_header, which can be used with any verb.
+  . More errors are detectable in retry rules.
+  . Support for SQLite.
+  . Support for IGNOREQUOTA in LMTP.
+  . Extensions to the "submission mode" features.
+  . Support for Client SMTP Authorization (CSA).
+  . Support for ratelimiting hosts and users.
+  . New expansion items to help with the BATV "prvs" scheme.
+  . A "match_ip" condition, that matches an IP address against a list.
+  - numerous bug fixes and minor changes
+- add eximstats-html subpackage, which, if installed and enabled in
+  /etc/sysconfig/exim, puts HTML reports of the 'eximstats' log
+  analyzer into /srv/www/eximstats
+- try to adapt BuildRequires and suse specific rpm macros to build
+  on Fedora Core
+
+-------------------------------------------------------------------
+Wed Mar  8 17:16:33 CET 2006 - poeml@suse.de
+
+- build as non-root user
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 14:34:09 CEST 2005 - rhafer@suse.de
+
+- added LDAP_DEPRECATED to CFLAGS to build correctly with
+  OpenLDAP 2.3
+
+-------------------------------------------------------------------
+Fri Sep  2 15:39:15 CEST 2005 - poeml@suse.de
+
+- link against external pcre library (patch from Debian) [#112647]
+
+-------------------------------------------------------------------
+Sat Aug 13 10:56:12 CEST 2005 - ro@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Aug 11 16:06:51 CEST 2005 - poeml@suse.de
+
+- the permissions files are now maintained centrally and packaged
+  in the permissions package [#66304]
+- add run_permissions macro and verifyscript
+
+-------------------------------------------------------------------
+Fri Jul 29 10:43:47 CEST 2005 - poeml@suse.de
+
+- remove world read/execute permissions from /var/log/exim, so log
+  files are not readable regardless of how logrotate deals with
+  them, or dealt with them in the past. Give group ownership to
+  group mail, so exim still can chdir() after dropping permissions.
+  [#99167]
+
+-------------------------------------------------------------------
+Tue Jun 21 00:46:39 CEST 2005 - ro@suse.de
+
+- build with fPIE/pie
+
+-------------------------------------------------------------------
+Wed May 18 17:35:49 CEST 2005 - poeml@suse.de
+
+- update to 4.51
+  This release contains some new features, but a lot of the changes
+  fix bugs of varying severity. See doc/ChangeLog.
+
+-------------------------------------------------------------------
+Mon Feb 21 17:23:57 CET 2005 - poeml@suse.de
+
+- update to 4.50.  This release includes the merging of the exiscan
+  patch into the main source. Thus, compile with the new
+  WITH_CONTENT_SCAN=yes and add WITH_OLD_DEMIME=yes for backwards
+  compatibility (old demime condition)
+- update filelist of documentation files
+
+-------------------------------------------------------------------
+Mon Jan 17 10:38:56 CET 2005 - poeml@suse.de
+
+- update to 4.44
+- update exiscan to 4.44-28
+
+-------------------------------------------------------------------
+Sat Jan 15 21:19:28 CET 2005 - schwab@suse.de
+
+- Use <owner>:<group> in permissions file.
+
+-------------------------------------------------------------------
+Tue Jan 11 15:34:07 CET 2005 - poeml@suse.de
+
+- security fixes:
+  - CAN-2005-0021 host_aton() Buffer Overflow Vulnerability
+    [#49675]
+  - CAN-2005-0022 auth_spa_server() Buffer Overflow Vulnerability
+    SPA support is not compiled in. Fix added nevertheless [#49676]
+
+-------------------------------------------------------------------
+Fri Dec 10 21:47:47 CET 2004 - poeml@suse.de
+
+- update to 4.43
+- update exiscan to 4.43-28
+
+-------------------------------------------------------------------
+Tue Sep 28 23:11:15 CEST 2004 - poeml@suse.de
+
+- if a service named greylistd is started, start it before exim
+
+-------------------------------------------------------------------
+Mon Sep  6 15:41:18 CEST 2004 - poeml@suse.de
+
+- update to 4.42
+- update exiscan to 4.42-27
+
+-------------------------------------------------------------------
+Mon May 10 23:32:42 CEST 2004 - poeml@suse.de
+
+- update to 4.34
+- update exiscan to 4.34-21
+
+-------------------------------------------------------------------
+Sun May  9 20:14:07 CEST 2004 - poeml@suse.de
+
+- update to 4.33
+- update exiscan to 4.33-20
+- add patch against buffer overflow with header name when
+  headers_check_syntax is enabled (CAN-2004-0400) [#40126]
+  http://www.exim.org/pipermail/exim-users/Week-of-Mon-20040503/071126.html
+
+-------------------------------------------------------------------
+Tue Apr 27 20:43:27 CEST 2004 - poeml@suse.de
+
+- update exiscan to 4.32-19 due to crash bug in -18 affecting the
+  MIME ACL.
+
+-------------------------------------------------------------------
+Sun Apr 25 15:57:26 CEST 2004 - poeml@suse.de
+
+- update to 4.32
+- update exiscan to 4.32-18
+- new file /usr/sbin/exipick
+
+-------------------------------------------------------------------
+Fri Mar 19 10:10:08 CET 2004 - mmj@suse.de
+
+- Remove superflous backup files
+
+-------------------------------------------------------------------
+Wed Mar  3 19:31:08 CET 2004 - poeml@suse.de
+
+- update exiscan to 4.30-16. Major new feature: the MIME ACL.
+
+-------------------------------------------------------------------
+Wed Feb 25 23:17:54 CET 2004 - poeml@suse.de
+
+- update to 4.30
+- update exiscan to 4.30-14
+- compile with support for LDAP lookups
+- add openldap2-devel cyrus-sasl-devel to #neededforbuild
+- compile with support for cdb, dnsdb, passwd lookups
+- compile with support for mailstore and mbx mailboxes
+- compile with -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 so large
+  files can be handled
+
+-------------------------------------------------------------------
+Wed Feb  4 15:17:56 CET 2004 - mmj@suse.de
+
+- Lower rfc1413_query_timeout to 5 seconds instead of 30
+
+-------------------------------------------------------------------
+Wed Nov 19 11:15:23 CET 2003 - poeml@suse.de
+
+- fix comments in sysconfig.exim (Kevin Ivory) [#32575]
+
+-------------------------------------------------------------------
+Tue Nov 18 15:51:21 CET 2003 - poeml@suse.de
+
+- logrotate configuration: removed postrotate reloading, since it's
+  not needed; add missingok; make report mails configurable via
+  sysconfig/exim (Kevin Ivory) [#32575]
+
+-------------------------------------------------------------------
+Mon Sep  8 12:00:40 CEST 2003 - poeml@suse.de
+
+- exim.rc: delete <feedback@suse.de> address
+
+-------------------------------------------------------------------
+Tue Aug 26 14:52:29 CEST 2003 - poeml@suse.de
+
+- don't remove empty log files in %preun, since it's actually run
+  after %post in update mode [#29368]
+
+-------------------------------------------------------------------
+Mon Aug 18 17:40:23 CEST 2003 - poeml@suse.de
+
+- update to 4.22, which fixes a few bugs in 4.21
+- improve start section of init script. Don't start multiple
+  processes; don't disrupt mail transfer
+
+-------------------------------------------------------------------
+Fri Aug 15 03:52:55 CEST 2003 - poeml@suse.de
+
+- update to 4.21. many changes, see NewStuff and ChangeLog file!
+  - prevent possible overflow in HELO/EHLO command by
+    (a) rewrite of the offending code in a cleaner fashion.
+    (b) If an incoming SMTP command contains a NULL character, it
+        is rejected as invalid.
+  - sieve support (rfc 3028)
+  - support for saslauthd authentication
+  - cramtest.pl utility updated
+  - eximstats 1.28 (addition of -nt option)
+  - If a DNS black list lookup found a CNAME record, but there were
+    no A records associated with the domain it pointed at, Exim
+    crashed.
+  - add new Auto-Submitted header on e.g. bounces
+  - new option syslog_duplication
+  - more flexible way to specify listening addresses/ports
+- use -Wall
+- add -fno-strict-aliasing, due to warnings about code where
+  dereferencing type-punned pointers will break strict aliasing
+- add activation metadata to sysconfig template [#28874]
+- add patch for IPv6 breakage until 4.22 is out
+- don't use startproc to start exim. It can't distinguish the
+  parent daemon from queue runners or other children [#28082]
+
+-------------------------------------------------------------------
+Wed Jul 30 16:51:00 CEST 2003 - poeml@suse.de
+
+- new macros for stop/restart of services on rpm update/removal
+
+-------------------------------------------------------------------
+Wed May 21 09:19:13 CEST 2003 - coolo@suse.de
+
+- avoid empty %pre
+- avoid absolute symlinks below /usr
+
+-------------------------------------------------------------------
+Thu May 15 00:50:04 CEST 2003 - poeml@suse.de
+
+- update to 4.20
+  - bug fixes
+  - upgraded to PCRE 4.2
+  - upgraded eximstats to 1.27
+  - added versioning to the local_scan() API
+  - Added acl_smtp_helo
+  - added the "discard" verb to ACLs.
+  - for building, DESTDIR can be used now instead of ROOT
+  - behaviour of -t in the presence of Resent- headers has been
+    changed for compatibility
+  - added new syslog facilities:
+    (i)  SYSLOG_LOGS_PID and LONG_SYSLOG_LINES in src/EDITME.
+    (ii) syslog_facility and syslog_processname main options.
+  - the documentation was brought up to date.
+- update exiscan patch to exiscan-acl-4.20-02
+- remove filelist hack from %clean, since now we have rpm4 :-)
+- create logfiles from %post, not in the init script [#24262]
+
+-------------------------------------------------------------------
+Tue Apr 22 13:53:06 CEST 2003 - poeml@suse.de
+
+- update to 4.14. As always, there are lots of minor fixes and
+  cleanups. New features include MySQL lookups over Unix domain
+  sockets, the ability to en/disable parts of the configuration
+  file with ".if", new options for fine-tuning the behavior with
+  respect to unknown SMTP commands, announcing of AUTH and
+  pipelining, and lots of new expansion operators.
+- remove the obsolete (3.x style) %s in pidfile name
+- the eximstats utility contains an official manpage, so we can
+  drop Andreas' version from the manpages tar ball
+- add Tom Kistner's exiscan patch
+- include the exiqgrep script
+- improve the logrotate configuration, so the eximstats report is
+  sent upon rotation (weekly), and not every night. Sending the
+  report can be disabled by touching /var/log/exim/no_report_mail.
+
+-------------------------------------------------------------------
+Thu Apr 10 00:37:27 CEST 2003 - ro@suse.de
+
+- fix deprecated tail call syntax (-1)
+
+-------------------------------------------------------------------
+Thu Feb 13 12:49:28 CET 2003 - lmuelle@suse.de
+
+- fix typo in sysconfig metadata
+
+-------------------------------------------------------------------
+Wed Feb 12 15:12:33 CET 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#22641]
+
+-------------------------------------------------------------------
+Wed Dec 18 13:07:56 CET 2002 - poeml@suse.de
+
+- update to 4.12 (more bug fixes: lookup search bug, too many
+  non-mail commands bug, and others)
+- package the installed exim.conf as configure.default, since it
+  has all substitutions done (since 4.11, SYSTEM_ALIASES_FILE is
+  replaced at install time)
+
+-------------------------------------------------------------------
+Wed Dec 11 12:51:39 CET 2002 - poeml@suse.de
+
+- update to 4.11, with security and bug fixes. The more important
+  changes are:
+  - [in short] Make exim cope with strace -f
+  - Make sure Exim doesn't overrun the buffer if an oversize packet
+    is received from a nameserver.
+  - Exim crashed on an attempt to check senders or sender domains
+    in an ACL other than after RCPT or DATA. It's now a temporary
+    error.
+  - Minor security problem involving pid_file_path (admin user
+    could get root) has been fixed.
+  - If an ACL that was read from a file was used in more than one
+    message in a single SMTP transaction, Exim could crash or
+    misbehave in arbitrary ways. [...]
+  - A similar problem to 127: memory corruption could occur for
+    multiple messages in one SMTP connection if the data from DNS
+    black list lookups was being used in log or user messages, e.g.
+    references to $dnslists_text.
+  For the complete list of changes, see
+  ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/ChangeLogs/
+- remove rmail symlink as it conflicts with rmail from the uucp
+  package
+
+-------------------------------------------------------------------
+Mon Nov 11 15:31:46 CET 2002 - poeml@suse.de
+
+- use #neededforbuild macro 'x-devel-packages' instead of xf86
+- add man pages, provided by Andreas Metzler
+- add some symlinks that exim might be called under
+
+-------------------------------------------------------------------
+Tue Aug 13 20:07:30 CEST 2002 - poeml@suse.de
+
+- remove stupid arch-dependant path from filelist
+
+-------------------------------------------------------------------
+Tue Aug 13 19:06:33 CEST 2002 - poeml@suse.de
+
+- mv exim.conf to /etc/exim/
+- add scripts for conversion of 3.xx config files
+- add symbolic link "runq" (same as exim -q)
+- use %defattr
+
+-------------------------------------------------------------------
+Mon Aug 12 16:17:18 CEST 2002 - poeml@suse.de
+
+- improve logrotate configuration
+- fix PreReq
+- install exim.8 manpage and gzip the remaining documentation
+- Moved log file creation from %post to rcexim
+
+-------------------------------------------------------------------
+Tue Aug  6 12:57:10 MEST 2002 - draht@suse.de
+
+- added /etc/permissions.d/exim for setuid /usr/sbin/exim
+
+-------------------------------------------------------------------
+Fri Aug  2 21:55:31 CEST 2002 - poeml@suse.de
+
+- package created (4.10)
+

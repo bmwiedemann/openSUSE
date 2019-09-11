@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jan 22 12:17:07 UTC 2018 - jengelh@inai.de
+
+- Trim SRPM and devel descriptions. Put in accurate summaries.
+- Remove Obsoletes for non-existing package.
+- Rename %soname to %sover to better reflect its use.
+
+-------------------------------------------------------------------
+Sun Jan 21 15:38:48 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 5.0.0
+ * No changelog available
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Jan 10 08:23:58 UTC 2018 - ecsos@opensuse.org
+
+- update to 4.1.2
+
+-------------------------------------------------------------------
+Tue Jan  9 19:53:04 UTC 2018 - ecsos@opensuse.org
+
+- initial version 4.0.11

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sat Dec 22 02:44:02 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.11.1
+  + New features
+    * Dask interface
+    * Fast transform planning utility
+    * Expanded support for norm keyword argument in the numpy interfaces
+    * Support for norm keyword argument in FFTW builders
+    * Dynamic library detection at build and run time
+    * OpenMP threading support
+    * Custom Configuration of Planners and Interfaces
+  + Bugs Fixed
+    * A platform-dependent bug that results in potentially overwriting a previously
+      computed output upon repeated calls to the numpy interfaces was fixed (#199).
+    * Fix to potential platform-dependent integer overflow in empty_aligned (#192).
+    * rfftfreq is now present in the numpy fft interfaces for numpy >= 1.8 (#207)
+  + Other changes
+    * float16 inputs are now transformed using single rather than double precision.
+    * The default planning for the numpy and scipy interfaces has changed from
+      FFTW_MEASURE to FFTW_ESTIMATE.  This results in faster planning.  In cases
+      where the same transform is to be repeated many times, it is likely
+      advantageous to manually specify FFTW_MEASURE instead (or use the FFTW builders
+      to pre-plan the FFT).
+    * FutureWarnings related to NumPy multiindexing in NumPy 1.15 are avoided by
+      using more modern indexing conventions.
+    * version number handling is now automatically handled by versioneer
+    * All documentation is now built and hosted at Read the Docs (
+      http://pyfftw.readthedocs.io).
+
+-------------------------------------------------------------------
+Sun Oct  8 00:21:14 UTC 2017 - jengelh@inai.de
+
+- Replace future aims in description.
+
+-------------------------------------------------------------------
+Wed Aug 23 20:40:16 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.10.4
+  + Fixed bugs:
+    * Numpy interface can fail with non-writeable arrays.
+    * undefined symbol: simd\_alignment with gcc 5.3.0
+    * FTBFS: TypeError: can't pickle Cython.Compiler.FlowControl.NameAssignment objects
+  + Closed issues:
+    * pyfftw fails with ImportError/undefined symbol fftwl\_plan\_with\_nthreads
+    * pyfftw does not appear to be using available wisdom files
+    * Accuracy of non-power 2 data
+    * Cannot find fftw3l when installing from pip
+    * Incorrect links to docs
+    * PyFFTW returning all zero array after transform...
+    * Move to separate pyFFTW project page
+    * Release GIL during planning?
+    * Merging/sharing wisdom
+    * scipy interface patching.
+    * very slow test suite
+    * setup: some targets should not require numpy to be installed
+    * 2x margin on the planning timelimit test is inadequate in windows on Complex64
+
+-------------------------------------------------------------------
+Mon Feb  1 10:50:25 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 0.10.1:
+  * it seems that pypi has an annoying feature that minor tweaks can't
+    be pushed without a new release.
+
+- changes from version 0.10.0:
+  * Closed issues:
+    + Conda downloads are failing
+    + Python 3.4 and WinPython
+    + Installing pyfftw on Anaconda3 on Windows 7
+    + is python 3.5 supported?
+    + deadlock of cache handler at interpreter shutdown
+    + pyFFTW breaks when forked
+    + build with mingw
+    + Striding in n\_byte\_align not on a uniform standard
+    + No exception on wrong arguments of function call of
+      pyfftw.FFTW\(...\)
+    + pyfftw vs numpy.fft: faster and slower
+    + simple transposes?
+    + `Datatype not supported` with scipy
+    + Update tutorial with new byte align functions
+    + OS X Installation errors:
+    + Wrong results for pyfftw's ifft?
+    + Installing on OS X Mavericks
+    + Install error. Ld cannot find -lfftw3f
+    + new source release with updated licensing
+    + Crash during initialization of FFTW plan for r2c and c2r with
+      Intel compiler
+    + Move FFTW class definition to pyfftw.pxd
+    + Provide transform metadata such as axes and direction
+    + Provide shape and dtype properties
+    + problem with very large arrays: OverflowError: value too large
+      to convert to int
+    + add support for in-place multidimensional r2c transform
+    + Add numpy interface for hfft
+    + add cython as a build dependency
+    + Potential memory leak in caching
+    + Allow GIL to be released with threads=1
+    + Building for 64bit windows
+    + Test failure using numpy 1.6.2
+    + Remove the requirement for users to specify alignment
+    + pyfftw.interfaces can only handle numpy arrays
+  * Merged pull requests:
+    + Release GIL during both single- and multi-thread execution
+    + Support FFTW\_WISDOM\_ONLY
+    + Release GIL around FFTW planning
+    + Updated the tutorial to reflect changes with new aligned array
+    + Add description for installing on OS X
+    + close issue \#8 (More numpy like aligned array creation)
+    + Discrete sine transform imports
+
+
+-------------------------------------------------------------------
+Sat Apr 19 19:32:09 UTC 2014 - mardnh@gmx.de
+
+- cleanup package
+
+-------------------------------------------------------------------
+Tue Apr 15 22:00:16 UTC 2014 - mardnh@gmx.de
+
+- initial package
+

@@ -1,0 +1,8 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("no-binary")
+addFilter("name-repeated-in-summary")
+addFilter("incorrect-fsf-address")
+addFilter("file-contains-date-and-time")
+addFilter("strict-aliasing-punning")

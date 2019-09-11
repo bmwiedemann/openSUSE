@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Jul  6 11:44:49 UTC 2017 - idonmez@suse.com
+
+- Update to version 110.81
+
+  Successor ML:
+  * The 110.81 release adds additional support for Successor ML
+    syntactic extensions. It is now possible to use record-punning
+    syntax in expressions (as well as in patterns).
+  * And we have added support for do syntax in let bindings.
+  * We have also changed the way that Successor ML features are
+    enabled from the REPL. Instead of assigning true to the
+    Control.succML variable, one should use the function
+    Control.setSuccML is used to enable or disable Successor ML.
+
+  Compiler
+  * This version eliminates dependencies on FLINT types in the
+    front end. In particular, uses of PlambdaType have been eliminated.
+
+  SML/NJ Library:
+  * Added the JSONUtil module to the JSON library.
+
+  ml-lpt
+  * Added --debug command-line option to ml-antlr. This flag causes
+    ml-antlr to generate debug actions that print the left-hand-side
+    non-terminal of the production.
+  * Added %tokentype directive to ml-antlr, which allows user-defined
+    datatypes to be used to represent tokens.
+
+  MLRISC:
+  * Changed the interface to AMD64Gen; the signBit and negateSignBit
+    callback functions now return an MLTree.rexp (instead of a label).
+
+  Bugfixes:
+  * 129	Symbolic identifiers are allowed as strids
+  * 149	Datatype replication exposes hidden constructors
+  * 153	Enabling Successor ML features is delayed
+  * 175	Executable stack on Linux
+  * 179	ml-ulex writing debug messages to stdOut
+  * Parser bugfix: we now allow `*` as a field label in record-punning patterns.
+
+- Drop smlnj-linux-4.0.patch, upstream.
+
+-------------------------------------------------------------------
+Wed May 20 16:13:16 UTC 2015 - dimstar@opensuse.org
+
+- Add smlnj-linux-4.0.patch: Fix build with Linux kernel 4.x.
+
+-------------------------------------------------------------------
+Tue Mar 27 09:41:18 UTC 2012 - idonmez@suse.com
+
+- Update to version 110.74
+  
+  Compiler:
+    * Added cuprit tracking
+  
+  SML/NJ Library: 
+    * Added hash-table-based implementation of sets to the utility 
+      library.
+    * Added new S-expression library for I/O of semi-structured data.
+    * Fixed bug in JSON scanner.
+
+  Fixed Bugs:
+    * Incorrect type inference with functor taking/producing 
+      polymorphic type (bug #60)
+    * Errors in ml-lpt manual (bug #74)
+    * blastWrite crashes (bug #76)
+    * strange error message for syntax error (bug #77)
+    * Installation fails on Linux 3.0 (bug #80)
+    * sml/nj does not work with Linux 3.0 (bug #81)
+    * No support for Kernel 3.x (bug #83)
+
+- Drop config.diff, runtime.diff
+- Add pack_new_version.sh to pack new versions
+
+-------------------------------------------------------------------
+Mon Feb 16 18:49:33 CET 2009 - schwab@suse.de
+
+- Update to version 110.69.
+
+-------------------------------------------------------------------
+Thu Oct 30 13:15:42 CET 2008 - schwab@suse.de
+
+- Fix embedded paths.
+
+-------------------------------------------------------------------
+Wed Feb 13 14:59:06 CET 2008 - schwab@suse.de
+
+- Update to version 110.67.
+
+-------------------------------------------------------------------
+Fri Aug 10 13:16:16 CEST 2007 - schwab@suse.de
+
+- Update to version 110.65.
+
+-------------------------------------------------------------------
+Thu Mar  1 15:19:08 CET 2007 - schwab@suse.de
+
+- Hack to build as non-root.
+
+-------------------------------------------------------------------
+Tue Nov 21 14:33:26 CET 2006 - schwab@suse.de
+
+- Update to version 110.60.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul  1 16:26:08 CEST 2005 - schwab@suse.de
+
+- Update to version 110.54.
+
+-------------------------------------------------------------------
+Fri Feb 11 22:28:00 CET 2005 - schwab@suse.de
+
+- Update to version 110.52.
+
+-------------------------------------------------------------------
+Tue Nov 16 17:14:32 CET 2004 - schwab@suse.de
+
+- Update to version 110.50.
+
+-------------------------------------------------------------------
+Thu Aug  5 18:57:36 CEST 2004 - schwab@suse.de
+
+- Update to version 110.47.
+
+-------------------------------------------------------------------
+Mon May 17 14:38:03 CEST 2004 - schwab@suse.de
+
+- Update to version 110.45.
+- Also build on ppc.
+
+-------------------------------------------------------------------
+Mon May 12 22:08:09 CEST 2003 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Nov 14 13:30:58 CET 2002 - schwab@suse.de
+
+- Fix invalid token pasting.
+
+-------------------------------------------------------------------
+Sat Feb 10 19:21:42 CET 2001 - schwab@suse.de
+
+- Initial version 110.0.7.
+

@@ -1,0 +1,126 @@
+#!/bin/sh
+# Copyright (c) 2003 SUSE LINUX AG Nuernberg, Germany.
+#
+# Submit feedback to http://www.suse.de/feedback/
+
+# Local settings
+LOCKFILE=/var/lock/appldata
+CONFIGFILE=/etc/sysconfig/appldata
+
+# Source config file
+if [ -f $CONFIGFILE ]; then
+	. $CONFIGFILE
+else
+	echo "No config file found (should be $CONFIGFILE)."
+	exit 1
+fi
+
+RETVAL=0
+
+start() {
+	echo "Starting \"Linux - z/VM Monitor Stream\" ..."
+	echo -n "(interval $APPLDATA_INTERVAL milliseconds) "
+	echo $APPLDATA_INTERVAL > /proc/sys/appldata/interval
+	if [ "$APPLDATA_MEM" = "yes" ]; then
+	    if [ ! -e /proc/sys/appldata/mem ]; then
+		echo -n "(mem) "
+		modprobe appldata_mem 2>&1
+		if [ "$?" -ne 0 ] ; then
+		    exit 1
+		else
+		    echo 1 > /proc/sys/appldata/mem
+		fi
+	    fi
+	fi
+	if [ "$APPLDATA_OS" = "yes" ]; then
+	    if [ ! -e /proc/sys/appldata/os ]; then
+		echo -n "(os) "
+		modprobe appldata_os 2>&1
+		if [ "$?" -ne 0 ]; then
+		    exit 1
+		else
+		    echo 1 > /proc/sys/appldata/os
+		fi
+	    fi
+	fi
+	if [ "$APPLDATA_NET_SUM" = "yes" ]; then
+	    if [ ! -e /proc/sys/appldata/net_sum ]; then
+		echo -n "(net_sum) "
+		modprobe appldata_net_sum 2>&1
+		if [ "$?" -ne 0 ]; then
+		    exit 1
+		else
+		    echo 1 > /proc/sys/appldata/net_sum
+		fi
+	    fi
+	fi
+	echo -n "(timer)"
+	echo 1 > /proc/sys/appldata/timer
+	touch $LOCKFILE
+}
+
+stop() {
+	echo -n "Stopping \"Linux - z/VM Monitor Stream\" "
+	echo -n "(timer"
+	echo 0 > /proc/sys/appldata/timer
+	if [ -e /proc/sys/appldata/mem ]; then
+		echo -n ",mem"
+		echo 0 > /proc/sys/appldata/mem
+		rmmod appldata_mem
+	fi
+	if [ -e /proc/sys/appldata/os ]; then
+		echo -n ",os"
+		echo 0 > /proc/sys/appldata/os
+		rmmod appldata_os
+	fi
+	if [ -e /proc/sys/appldata/net_sum ]; then
+		echo -n ",net_sum"
+		echo 0 > /proc/sys/appldata/net_sum
+		rmmod appldata_net_sum
+	fi
+	echo -n ")"
+	rm -f $LOCKFILE
+}
+
+status() {
+	echo "\"Linux - z/VM Monitor Stream\" status..."
+	echo -n "interval "
+	cat /proc/sys/appldata/interval
+	echo -n "timer    "
+	cat /proc/sys/appldata/timer
+	echo -n "mem      "
+	if [ -e /proc/sys/appldata/mem ]; then
+		cat /proc/sys/appldata/mem
+	else
+		echo 0
+	fi
+	echo -n "os       "
+	if [ -e /proc/sys/appldata/os ]; then
+		cat /proc/sys/appldata/os
+	else
+		echo 0
+	fi
+	echo -n "net_sum  "
+	if [ -e /proc/sys/appldata/net_sum ]; then
+		cat /proc/sys/appldata/net_sum
+	else
+		echo 0
+	fi
+}
+
+# How are we called?
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	status)
+		status
+		;;
+	*)
+		RETVAL=1
+esac
+
+exit $RETVAL

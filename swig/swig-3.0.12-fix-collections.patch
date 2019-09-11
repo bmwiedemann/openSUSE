@@ -1,0 +1,76 @@
+From 4079fb927b3761ee4e44ff103f37440cb8f3e260 Mon Sep 17 00:00:00 2001
+From: William S Fulton <wsf@fultondesigns.co.uk>
+Date: Tue, 12 Jun 2018 21:05:07 +0100
+Subject: [PATCH] Python 3.7 support - deprecation of classes in the
+ collections module
+
+Change the base classes in the pyabc.i file to use the
+collections.abc module instead of collections due to the deprecation
+of the classes in the collections module in Python 3.7.
+---
+ .../python/python_abstractbase_runme3.py      | 24 +++++++++++++------
+ Lib/python/pyabc.i                            | 14 +++++------
+ 4 files changed, 53 insertions(+), 18 deletions(-)
+
+diff --git a/Examples/test-suite/python/python_abstractbase_runme3.py b/Examples/test-suite/python/python_abstractbase_runme3.py
+index 4fdc799352..9f99dcb546 100644
+--- a/Examples/test-suite/python/python_abstractbase_runme3.py
++++ b/Examples/test-suite/python/python_abstractbase_runme3.py
+@@ -1,5 +1,11 @@
++import sys
++
++# collections.abc requires Python 3.3+
++if sys.version_info[0:2] < (3, 3):
++    exit(0)
++
+ from python_abstractbase import *
+-from collections import *
++import collections.abc
+ 
+ # This is expected to fail with -builtin option
+ # Builtin types can't inherit from pure-python abstract bases
+@@ -10,12 +16,16 @@
+ if not is_swig_py3:
+     exit(0)
+ 
+-assert issubclass(Mapii, MutableMapping)
+-assert issubclass(Multimapii, MutableMapping)
+-assert issubclass(IntSet, MutableSet)
+-assert issubclass(IntMultiset, MutableSet)
+-assert issubclass(IntVector, MutableSequence)
+-assert issubclass(IntList, MutableSequence)
++def check_issubclass(derived, base):
++    if not issubclass(derived, base):
++        raise RuntimeError("{} is not a subclass of {}".format(derived, base))
++
++check_issubclass(Mapii, collections.abc.MutableMapping)
++check_issubclass(Multimapii, collections.abc.MutableMapping)
++check_issubclass(IntSet, collections.abc.MutableSet)
++check_issubclass(IntMultiset, collections.abc.MutableSet)
++check_issubclass(IntVector, collections.abc.MutableSequence)
++check_issubclass(IntList, collections.abc.MutableSequence)
+ 
+ mapii = Mapii()
+ multimapii = Multimapii()
+diff --git a/Lib/python/pyabc.i b/Lib/python/pyabc.i
+index 12ce65985e..fbd91dce44 100644
+--- a/Lib/python/pyabc.i
++++ b/Lib/python/pyabc.i
+@@ -1,10 +1,10 @@
+ %define %pythonabc(Type, Abc)
+   %feature("python:abc", #Abc) Type;
+ %enddef
+-%pythoncode %{import collections%}
+-%pythonabc(std::vector, collections.MutableSequence);
+-%pythonabc(std::list, collections.MutableSequence);
+-%pythonabc(std::map, collections.MutableMapping);
+-%pythonabc(std::multimap, collections.MutableMapping);
+-%pythonabc(std::set, collections.MutableSet);
+-%pythonabc(std::multiset, collections.MutableSet);
++%pythoncode %{import collections.abc%}
++%pythonabc(std::vector, collections.abc.MutableSequence);
++%pythonabc(std::list, collections.abc.MutableSequence);
++%pythonabc(std::map, collections.abc.MutableMapping);
++%pythonabc(std::multimap, collections.abc.MutableMapping);
++%pythonabc(std::set, collections.abc.MutableSet);
++%pythonabc(std::multiset, collections.abc.MutableSet);

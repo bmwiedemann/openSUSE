@@ -1,0 +1,14 @@
+/var/log/atftpd/atftp.log {
+    su tftp tftp
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+4096k
+    notifempty
+    missingok
+    create 640 tftp tftp
+    postrotate
+     /etc/init.d/atftpd restart
+    endscript
+}

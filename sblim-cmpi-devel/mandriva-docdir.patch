@@ -1,0 +1,16 @@
+Index: Makefile.am
+===================================================================
+RCS file: /cvsroot/sblim/cmpi-devel/Makefile.am,v
+retrieving revision 1.7
+diff -u -w -r1.7 Makefile.am
+--- Makefile.am	28 Feb 2009 04:23:31 -0000	1.7
++++ Makefile.am	6 Mar 2009 11:05:28 -0000
+@@ -5,7 +5,7 @@
+ AM_CPPFLAGS=-I$(srcdir)/cmpi \
+             @SBLIM_CMPI_PLATFORM@
+ 
+-docdir=$(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir=$(datadir)/doc/$(PACKAGE)
+ 
+ if INSTALL_LIBRARY
+ lib_LTLIBRARIES=libcmpiCppImpl.la

@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Sat Aug 25 05:52:01 UTC 2018 - coolo@suse.com
+
+- updated to 3.101
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.101     2018-08-06T14:32:38Z
+  
+    - Ensure local_module_url_prefix defaults to current perldoc_url_prefix.
+
+-------------------------------------------------------------------
+Mon Aug  6 06:05:48 UTC 2018 - coolo@suse.com
+
+- updated to 3.100
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.100     2018-08-06T02:07:18Z
+  
+    - Add "local_module_url_prefix" and "local_module_re" args
+      to allow pointing links for local modules to another site [rt-120452].
+
+-------------------------------------------------------------------
+Fri Mar 11 10:39:58 UTC 2016 - coolo@suse.com
+
+- updated to 3.005
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.005     2016-03-06T02:51:24Z
+  
+    - Fix pod.
+  
+  3.004     2016-03-06T02:22:21Z
+  
+    - Leave email addresses (<foo@bar.com>) in tact for Markdown to process.
+      Thanks to Andreas Boesen for reporting [rt-112631].
+
+-------------------------------------------------------------------
+Mon Sep 28 09:05:45 UTC 2015 - coolo@suse.com
+
+- updated to 3.003
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.003     2015-09-28T00:29:45Z
+  
+    - Bump Pod::Simple prereq to fix bugs that were causing test failures.
+    - Use Pod::Simple's nbsp_for_S(1) by default instead of handling S<> sequences internally.
+      This means the feature can now also be disabled if desired.
+    - Portability improvements for non-ascii platforms.
+
+-------------------------------------------------------------------
+Sun Aug 23 09:15:33 UTC 2015 - coolo@suse.com
+
+- updated to 3.002
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.002     2015-08-21T03:24:24Z
+  
+    - Add attribution to changelog.
+  
+  3.001     2015-08-21T03:17:57Z
+  
+    - Increase Pod::Simple requirement to 3.26 for detected_encoding().
+      Thanks to Lee J for reporting! (gh-15).
+  
+  3.000     2015-08-16T21:55:14Z
+  
+    [Bug Fixes]
+    - Literal ampersands and left angle brackets are encoded as html entities
+      when necessary to avoid interpretation as html.
+      http://stackoverflow.com/questions/28496298/escape-angle-brackets-using-podmarkdown
+  
+    [API Changes]
+    - Make accessors read/write (instead of read-only)
+      for consistency with Pod::Simple classes.
+    - Passing unknown arguments to the constructor now produces a warning
+      and in the future may throw an error.
+    - For consistency with the other html-entity changes, NBSP characters (U+00A0)
+      are now used literally for S<> sequences.
+      This also fixes a bug with code spans nested inside of S<> sequences.
+  
+    [New Attributes]
+    - Add `html_encode_chars` attribute to allow customizing what characters
+      should be html entity encoded.
+    - Add `match_encoding` attribute to use the same encoding as the input pod
+      when writing to the output handle.
+    - Add `output_encoding` attribute to specify the desired encoding
+      to apply to the output handle.
+  
+    [pod2markdown script]
+    - Add command line options corresponding to new module attributes.
+    - The script now defaults to UTF-8 encoding if no encoding options are specified.
+      Previous versions did not produce consistent output and would sometimes emit warnings.
+      Closes gh-14 and rt-101536.
+  
+    [Documentation]
+    - Remove documentation for deprecated API
+      (parse_from_file(), parse_from_filehandle(), and as_markdown())
+      to further discourage use.
+  
+    [New Packages]
+    - Added Pod::Perldoc::ToMarkdown to enable `perldoc -o Markdown ...`
+      Pod::Markdown maintains a backward compatible interface that is incompatible
+      with perldoc's `-o` so this module has been added to enable the functionality.
+      Thanks to Alberto Simões for investigating (gh-12) and providing some code to fix it (gh-13).
+
+-------------------------------------------------------------------
+Thu Apr 16 19:10:49 UTC 2015 - coolo@suse.com
+
+- updated to 2.002
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  2.002     2014-07-05T15:20:40Z
+  
+    - Docs: Add example of command line usage to Synopsis.
+      Thanks, Cindy Wang!
+  
+  2.001     2014-04-20T02:40:11Z
+  
+    - Use double-asterisk instead of double-underscore for bold Markdown.
+      This allows bold and italic to be nested without confusing parsers.
+      Thanks to Mike Covington for the great pull request (gh-9)!
+  
+  2.000     2014-02-01T14:38:27Z
+  
+    - Releasing previous (1.99[01]) as stable
+      (now uses Pod::Simple instead of Pod::Parser).
+      See below for changes.
+  
+  1.991-TRIAL 2014-01-03T04:07:49Z
+  
+    [Test Fixes]
+    - Ignore worthless testing of empty links that fail with Pod::Simple 3.16.
+  
+  1.990-TRIAL 2014-01-02T14:13:40Z
+  
+    [Enhancements]
+    - Change backend from Pod::Parser to Pod::Simple.
+      Previous documented API has been ported
+      however the Pod::Simple API should be preferred for new code.
+    - Improve escaping of markdown characters.
+    - Accept for/begin 'markdown' and 'html' regions by default.
+    - Represent over/back regions without items as blockquotes.
+  
+    [Backward Incompatible Changes]
+    - E<> codes used to produce equivalent html entities (&foo;).
+      These now simply print the corresponding unicode character as utf-8.
+      If you desire alternate behavior please report a bug.
+    - Tabs are now expanded.
+  
+  1.500     2013-11-22T15:05:31Z
+  
+      - Format url fragments (in links to perldoc sections)
+        according to the destination site (perldoc_url_prefix).
+        This makes links to sections work where they probably never did before.
+        They are also customizable.
+  
+      - Use multiple backticks to delimit code spans
+        that contain literal backticks.
+  
+  1.401     2013-11-06T05:30:55Z
+  
+      - Require Pod::Parser 1.51 for bug fixes.
+  
+  1.400     2013-11-05T14:18:19Z
+  
+      [Output Changes]
+      - Change perldoc urls to point to metacpan.
+  
+      [Bug Fixes]
+      - Recognize numbered pod items that do not have a period.
+        Thanks to Yasutaka ATARASHI for the pull request (gh-4).
+      - Remove extraneous blank line between verbatim paragraphs.
+        Thanks to Graham Ollis for the pull request (gh-5).
+      - Do not escape markdown characters inside links (or file paths).
+        Thanks to Taiki Kawakami for the pull request (gh-6).
+  
+  1.322     2012-11-17T15:51:36Z
+  
+      - Fix incorrect escaping of characters
+        that are inside inline code blocks in headers.
+        Thanks to Peter Vereshagin for the pull req (gh-3).
+  
+  1.321     2012-10-27T01:23:56Z
+  
+      - Improved list handling including support for ordered (numbered)
+        and nested lists.
+        Thanks to Yasutaka ATARASHI for the pull req (gh-2).
+  
+  1.320     2012-04-30T23:30:11Z
+  
+      - End markdown output with a newline to be more consistent with...
+        everything.  If this causes a problem for you please report it.
+  
+      - Enable pod2markdown to accept file paths as arguments
+        (for both input and output (defaulting to STDIN/STDOUT)).
+        Thanks to Mike Doherty for the suggestion [rt-76726].
+  
+  1.301     2012-04-25T03:56:11Z
+  
+      - Fix double-interpolation of list headings
+        which caused escaping of the markdown characters.
+        Thanks to motemen for the pull request (gh-1).
+  
+      - Add TODO tests for improving list handling.
+  
+  1.300000  2012-04-08T00:08:25Z
+  
+      - Document that characters in varbatim paragraphs and code sections
+        are not escaped.
+      - Bump release number to demonstrate major formatting difference
+        of last change (backslash-escaped characters).
+        (Forgot to do it last time.)
+  
+  1.200001  2012-04-07T23:16:23Z
+  
+      - Escape characters that are special to Markdown
+        (but normal in Pod) with backslashes.
+        Thanks to Florian (fschlich at zedat dot fu-berlin dot de)
+        for the initial patch (rt-75620).
+  
+  1.200000  2011-11-28T17:57:01Z
+      [Enhancements]
+      - Handle POD formatting codes embedded in links
+      - Render Z<> and X<> as blank strings
+      - Handle numeric (hex, octal, and decimal) E<> escapes
+      - Convert spaces in S<> to &nbsp;
+  
+      [Format Changes]
+      - S<> no longer produces backticks (code sections).
+        This is consistent with perlpod and perlpodspec.
+        Use something like S<C<$x + $y>> if you intend it to be treated as code.
+      - Author meta tag with no title meta tag does not produce a leading newline.
+        This was considered a bug.
+  
+      [Tests]
+      - More tests, increased coverage
+  
+  1.120001  2011-11-27T04:07:30Z
+      [Prereqs]
+      - Require version 1.10 of Pod::ParseLink (core in perl 5.12)
+        to handle alt text with schemes/absolute URLs.
+        This can be changed from "requires" to "recommends" if it poses a problem.
+  
+      [Test Fix]
+      - Skip tests (rather than fail) for alt text with absolute url
+        if Pod::ParseLink < 1.10
+  
+  1.120000  2011-11-19T05:44:51Z
+      [Enhancements]
+      - Use Pod::ParseLink to dramatically improve (and simplify) link parsing
+        (including sections, alternate text, and man pages).
+  
+      [Format Change]
+      - NOTE: L</foo> now becomes ["foo"](#foo) instead of [foo](#pod_foo).
+        This is consistent with perldoc, perlpodspec, and Pod::Simple::(X)HTML
+        which is used for metacpan.org and search.cpan.org.
+        No '#pod_' id/name attributes were ever generated so the links
+        probably weren't very useful (and probably still aren't).
+        If this change presents a problem please report it.
+  
+  1.110732  2011-11-18T04:06:06Z
+      - Change /\h/ to /[ 	]/ for compatibility with older perls.
+        Thanks to David Golden for reporting [rt-71961]
+  
+  1.110731  2011-11-18T03:28:34Z
+      - Ensure verbatim pod becomes verbatim markdown
+        by increasing indentation if necessary [rt-72414]
+      - Co-maintainership granted to RWSTAUNER
+
+-------------------------------------------------------------------
+Mon Aug 29 13:38:22 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  * ExtUtils::MakeMaker >= 6.31
+  * Test::More >= 0.94
+
+-------------------------------------------------------------------
+Sun Apr  3 14:55:34 UTC 2011 - coolo@novell.com
+
+- updated to 1.110730
+   - make bulleted lists work at least minimally (thanks ap)
+
+-------------------------------------------------------------------
+Sat Jan 22 19:44:23 UTC 2011 - coolo@novell.com
+
+- initial package 1.103491
+  * created by cpanspec 1.78.03
+

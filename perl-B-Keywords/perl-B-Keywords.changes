@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sat Feb 16 06:02:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.20 2019-02-15 11:03:00 rurban
+    - extern was added with 5.29.0c
+
+-------------------------------------------------------------------
+Fri Aug 24 05:05:07 UTC 2018 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.19 Thu Aug 23 11:16:09 CEST 2018
+    - our was added with 5.005_61
+
+-------------------------------------------------------------------
+Wed Feb  7 15:08:24 UTC 2018 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.17 Mon Jan 29 17:57:05 CET 2018 rurban
+    - Added 5.27.8 changes, whereis/whereso is gone for good.
+      There's still a chance for perl6 compat
+  1.18 Mon Jan 29 18:09:23 CET 2018 rurban
+    - Oops, forgot break
+
+-------------------------------------------------------------------
+Fri Dec 29 06:05:06 UTC 2017 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.16 Thu Dec 28 2017 rurban
+    - Added 5.27.7 changes, RT #123948
+    - Added cperl class keywords
+    - Added keywords per version back to 5.004
+
+-------------------------------------------------------------------
+Sat Nov 14 09:29:26 UTC 2015 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 12:11:52 UTC 2015 - coolo@suse.com
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.14 rurban
+    - removed err from Barewords, RT #102259 (Alex Efros a.k.a. Powerman)
+
+-------------------------------------------------------------------
+Mon Jun  3 11:37:53 UTC 2013 - coolo@suse.com
+
+- updated to 1.13
+  - removed diag before each big t/11keywords.t loop
+  - added suggested keywords from RT #62382: 
+     *_ and DATA to @FileHandles (the deprecated lowercase: stdin, stdout, stderr not),
+    import unimport to @Functions,
+    BINMODE CLEAR CLEARERR CLONE CLONE_SKIP CLOSE DELETE EOF
+    ERROR EXISTS EXTEND FDOPEN FETCH FETCHSIZE FILENO FILL FIRSTKEY FLUSH
+    GETC NEXTKEY OPEN POP POPPED PRINT PRINTF PUSH PUSHED READ READLINE
+    SCALAR SEEK SETLINEBUF SHIFT SPLICE STORE STORESIZE SYSOPEN TELL
+    TIEARRAY TIEHANDLE TIEHASH TIESCALAR UNREAD UNSHIFT UNTIE UTF8 WRITE to @TieIOMethods,
+    can isa DOES VERSION to @UNIVERSALMethods,
+    @EXPORT @EXPORT_OK @EXPORT_FAIL
+    @EXPORT_TAGS _push_tags _rebuild_cache as_heavy export export_fail
+    export_fail_in export_ok_tags export_tags export_to_level heavy_export
+    heavy_export_ok_tags heavy_export_tags heavy_export_to_level
+    heavy_require_version require_version  to @ExporterSymbols (Zsbán Ambrus)
+  - Moved exp from @Barewords to @Functions
+  - Added $^CHILD_ERROR_NATIVE $^GLOBAL_PHASE $^LAST_FH $^MATCH $^PREMATCH
+    $^POSTMATCH $^UTF8CACHE $^WIN32_SLOPPY_STAT to @Scalars
+  - Added English names for %!, @F (perlrun) and @ARG for @_ (Zsbán Ambrus)
+  - Added %+ %- (Zsbán Ambrus) and $LAST_SUBMATCH_RESULT
+
+-------------------------------------------------------------------
+Fri Feb 10 23:02:44 UTC 2012 - coolo@suse.com
+
+- updated to 1.12
+  - Add new keywords for 5.16, __SUB__ and evalbytes.
+  - Add new keyword fc (Unicode casefolding) for 5.16 added with commit 838f2281
+  - added diag before each big t/11keywords.t loop
+
+-------------------------------------------------------------------
+Mon Jun 20 08:44:29 UTC 2011 - coolo@novell.com
+
+- fix license
+
+-------------------------------------------------------------------
+Mon Apr  4 17:15:50 UTC 2011 - coolo@novell.com
+
+- updated to 1.10
+  - Fix typo in SYNOPSIS
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:23 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:21 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Oct 21 16:07:44 CEST 2009 - rschweikert@novell.com
+
+- Add this file to project
+- Add %dir for B directory
+- Change changelog to only include initial entry
+- Package initial creation Mon Aug 31 2009
+

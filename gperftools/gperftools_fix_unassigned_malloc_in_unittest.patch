@@ -1,0 +1,13 @@
+Index: google-perftools-1.8/src/tests/heap-checker_unittest.cc
+===================================================================
+--- google-perftools-1.8.orig/src/tests/heap-checker_unittest.cc
++++ google-perftools-1.8/src/tests/heap-checker_unittest.cc
+@@ -681,7 +681,7 @@ static void ScopedDisabledLeaks() {
+   HeapLeakChecker::Disabler disabler;
+   AllocHidden(3 * sizeof(int));
+   TransLeaks();
+-  (void)malloc(10);  // Direct leak
++  void* p = malloc(10);  // Direct leak
+ }
+ 
+ // have different disabled leaks

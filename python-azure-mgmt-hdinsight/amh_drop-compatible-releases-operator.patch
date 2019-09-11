@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-hdinsight-0.2.1.orig/setup.py azure-mgmt-hdinsight-0.2.1/setup.py
+--- azure-mgmt-hdinsight-0.2.1.orig/setup.py	2019-01-28 19:19:12.000000000 +0100
++++ azure-mgmt-hdinsight-0.2.1/setup.py	2019-03-27 14:47:50.083131419 +0100
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

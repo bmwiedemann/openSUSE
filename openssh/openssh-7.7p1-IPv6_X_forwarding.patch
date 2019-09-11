@@ -1,0 +1,54 @@
+# HG changeset patch
+# Parent  8df645ca39d64de025d8838c5713812e72308c92
+Correctly parse DISPLAY variable for cases where it contains an IPv6 address
+(which should - but not always is - in (square) brackets).
+
+bnc#847710 - https://bugzilla.novell.com/show_bug.cgi?id=847710
+
+diff --git a/openssh-7.7p1/channels.c b/openssh-7.7p1/channels.c
+--- openssh-7.7p1/channels.c
++++ openssh-7.7p1/channels.c
+@@ -4590,33 +4590,42 @@ x11_connect_display(struct ssh *ssh)
+ 			return -1;
+ 
+ 		/* OK, we now have a connection to the display. */
+ 		return sock;
+ 	}
+ 	/*
+ 	 * Connect to an inet socket.  The DISPLAY value is supposedly
+ 	 * hostname:d[.s], where hostname may also be numeric IP address.
++	 * Note that IPv6 numeric addresses contain colons (e.g. ::1:0)
+ 	 */
+ 	strlcpy(buf, display, sizeof(buf));
+-	cp = strchr(buf, ':');
++	cp = strrchr(buf, ':');
+ 	if (!cp) {
+ 		error("Could not find ':' in DISPLAY: %.100s", display);
+ 		return -1;
+ 	}
+ 	*cp = 0;
+ 	/*
+ 	 * buf now contains the host name.  But first we parse the
+ 	 * display number.
+ 	 */
+ 	if (sscanf(cp + 1, "%u", &display_number) != 1) {
+ 		error("Could not parse display number from DISPLAY: %.100s",
+ 		    display);
+ 		return -1;
+ 	}
++	
++	/* Remove brackets surrounding IPv6 addresses if there are any. */
++	if (buf[0] == '[' && (cp = strchr(buf, ']'))) {
++		*cp = 0;
++		cp = buf + 1;
++	} else {
++		cp = buf;
++	}
+ 
+ 	/* Look up the host address */
+ 	memset(&hints, 0, sizeof(hints));
+ 	hints.ai_family = ssh->chanctxt->IPv4or6;
+ 	hints.ai_socktype = SOCK_STREAM;
+ 	snprintf(strport, sizeof strport, "%u", 6000 + display_number);
+ 	if ((gaierr = getaddrinfo(buf, strport, &hints, &aitop)) != 0) {
+ 		error("%.100s: unknown host. (%s)", buf,

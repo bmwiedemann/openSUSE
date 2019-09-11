@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/regit/coccigrep</param>
+          <param name="changesrevision">2e7322d19c8e0e8e162a633c0c3572bacbc7714b</param></service></servicedata>

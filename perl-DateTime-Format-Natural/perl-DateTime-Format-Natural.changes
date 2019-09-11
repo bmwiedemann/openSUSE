@@ -1,0 +1,452 @@
+-------------------------------------------------------------------
+Mon Apr  1 05:09:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.07  2019-03-29  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.06_01  2019-03-13  <schubiger@cpan.org>
+  
+   - New supported format: <variant> quarter. [Xiao Yafeng]
+
+-------------------------------------------------------------------
+Thu Nov  8 06:14:43 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.06  2018-10-28  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.05_02  2018-10-27  <schubiger@cpan.org>
+  
+   - Amend description of prefer_future option.
+  
+   - Include the time zone when constructing DateTime objects
+     for the datetime option in dateparse.
+  
+   - Minor tweaks to dateparse.
+  
+  1.05_01  2018-10-25  <schubiger@cpan.org>
+  
+   - Fix advancing to future when both datetime and prefer_future
+     options are provided.
+
+-------------------------------------------------------------------
+Mon Apr 24 05:26:48 UTC 2017 - coolo@suse.com
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.05  2017-04-23  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.04_01  2017-03-03  <schubiger@cpan.org>
+  
+   - New supported format: beginning/end of last month.
+     [rt #120436 - Shawn M. Moore]
+
+-------------------------------------------------------------------
+Mon Jul 25 05:12:52 UTC 2016 - coolo@suse.com
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.04  2016-07-24  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.03_02  2016-07-15  <schubiger@cpan.org>
+  
+   - Document format: ISO 8601 <date>T<time>.
+  
+   - Amend introduction text for examples section.
+  
+   - List Ricardo Signes in credits.
+  
+  1.03_01  2016-07-09  <schubiger@cpan.org>
+  
+   - New supported format: ISO 8601 <date>T<time>.
+     [rt #115737 - Ricardo Signes]
+
+-------------------------------------------------------------------
+Sun Sep 20 15:48:14 UTC 2015 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.03  2015-08-02  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.02_03  2015-07-21  <schubiger@cpan.org>
+  
+   - Suggestions for simple documentation improvements.
+     [rt #98634 - Tim Bunce]
+  
+  1.02_02  2015-06-05  <schubiger@cpan.org>
+  
+   - Add encoding directive to POD. [rt #105000 - Debian Perl Group]
+  
+  1.02_01  2014-02-09  <schubiger@cpan.org>
+  
+   - Add metadata repository link. [David Steinbrunner]
+
+-------------------------------------------------------------------
+Mon Apr 13 18:41:03 UTC 2015 - coolo@suse.com
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.02  2013-04-30  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.01_05  2013-04-01  <schubiger@cpan.org>
+  
+   - Parse and extract relative durations in reversed order.
+  
+   - Document reversed relative durations under examples.
+  
+   - Treat for <count> <unit> grammar expressions as durations.
+  
+   - Refine gathering idents for from <count> to <count> durations.
+  
+   - Use rightmost matching token on left side of duration as type.
+  
+   - Split duration string only if accompanied by whitespace.
+  
+   - Strengthen matching duration substrings against regexes.
+  
+   - Extract regex captured punctuation marks in loop body.
+  
+   - Undo some loop indentation in test files.
+  
+   - Reorder version number variable in Calc class.
+  
+  1.01_04  2013-01-17  <schubiger@cpan.org>
+  
+   - Concatenate duration expression chunks with separator.
+  
+   - Merge calls for extracting duration expressions.
+  
+   - Distinguish between expression types when finalizing.
+  
+   - Simplify finalizing date/grammar duration expressions.
+  
+   - Test that expressions do not overlap with duration ones.
+  
+   - Strip timespan separators from extract string.
+  
+   - Normalize whitespace of duration expressions.
+  
+   - Keep duration extract methods private.
+  
+   - Don't declare a plan for extract-expression tests.
+  
+   - Enhance comment in extract-expression test file.
+  
+  1.01_03  2012-12-06  <schubiger@cpan.org>
+  
+   - Fix fatal error from extract tests on 5.{8.9,10.0}.
+  
+   - Display extracted strings for dateparse.
+  
+  1.01_02  2012-11-29  <schubiger@cpan.org>
+  
+   - Extract relative and rewritten duration expressions.
+  
+   - Check parsing of extracted expressions.
+  
+  1.01_01  2012-10-25  <schubiger@cpan.org>
+  
+   - Narrow scope of variables in _extract_expressions().
+  
+   - Improve finalizing duration expressions.
+  
+  1.01  2012-09-07  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.00_02  2012-09-01  <schubiger@cpan.org>
+  
+   - Duplicate and extend types only for grammar expansion.
+  
+   - Initialize subscript variable.
+  
+   - Remove trailing semicolon in do block.
+  
+  1.00_01  2012-07-21  <schubiger@cpan.org>
+  
+   - Extract expanded expressions and add a test.
+  
+  1.00  2012-05-30  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+   - Replace use of constant pragma with boolean.
+  
+  0.99_01  2012-05-20  <schubiger@cpan.org>
+  
+   - Introduce ::Expand which handles expanding grammar.
+  
+   - Enhance main grammar loop to enable grammar expansion.
+  
+   - Include count of tokens for expanded grammar in lookup map.
+  
+   - Add test file for expansions.
+  
+   - Make the truncate_to grammar option an array reference.
+  
+   - Truncate values after each worker method called.
+  
+   - Move truncating code to a separate method.
+  
+   - Require Clone as prerequisite.
+  
+   - Mention expansion of grammar in docs.
+  
+  0.99  2012-04-26  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.98_03  2012-04-22  <schubiger@cpan.org>
+  
+   - Check if daytime exists in _daytime_variant().
+  
+   - Load modules in test files where missing.
+  
+  0.98_02  2012-04-22  <schubiger@cpan.org>
+  
+   - Add validation rules to allow passing DateTime::TimeZone
+     objects. [Roman Filippov]
+  
+   - Test providing a DateTime::TimeZone object.
+  
+   - Load DateTime::TimeZone explicitly.
+  
+   - Test validation of constructor arguments.
+  
+   - List Roman Filippov in credits.
+  
+  0.98_01  2012-01-01  <schubiger@cpan.org>
+  
+   - Mention and link to dateparse in the See also section.
+  
+  0.98  2011-10-29  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.97_02  2011-10-27  <schubiger@cpan.org>
+  
+   - Strip leading and trailing spaces from input strings.
+  
+  0.97_01  2011-10-25  <schubiger@cpan.org>
+  
+   - Support parsing timestamp. [Xiao Yafeng]
+  
+  0.97  2011-08-17  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.96_04  2011-08-16  <schubiger@cpan.org>
+  
+   - Check that the datetime string for dateparse has at most
+     two chunks (date/time); also require DateTime.
+  
+   - Elaborate on the format of dateparse's datetime string.
+  
+  0.96_03  2011-08-13  <schubiger@cpan.org>
+  
+   - Add the datetime switch to dateparse and document it.
+  
+   - Print dateparse's dates formatted according to ISO 8601.
+  
+  0.96_02  2011-08-10  <schubiger@cpan.org>
+  
+   - Revert truncating of <count> <unit> ago formats.
+  
+   - Add Xiao Yafeng to credits.
+  
+  0.96_01  2011-08-01  <schubiger@cpan.org>
+  
+   - New supported format: today <count> <unit> ago. [Xiao Yafeng]
+  
+   - Truncate for this and other ago formats to day if there is
+     no time component in order to produce more consistent results.
+  
+   - Add new and adjust existing regular tests for these formats;
+     moreover, complete the list of parse failure tests.
+  
+   - List the added grammar in the documentation.
+  
+  0.96  2011-06-01  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.95_03  2011-05-30  <schubiger@cpan.org>
+  
+   - Add the extract switch to dateparse and document it.
+  
+   - Change dateparse's prefer_future option to be not negatable.
+  
+  0.95_02  2011-05-28  <schubiger@cpan.org>
+  
+   - Reorder the nested extract loop iterating through the grammar
+     entries to process only one subentry for all matching tokens.
+  
+   - Move the check for a date when extracting expressions to a method.
+  
+   - Add assert tests for extract_datetime(): one for the context
+     dependant return and another for the nested extract loop fix.
+  
+   - Improve code visually of the parse success and failure test files.
+  
+  0.95_01  2011-05-19  <schubiger@cpan.org>
+  
+   - Do no longer recommend Test::Pod and Test::Pod::Coverage.
+  
+   - Use quantifier which matches 1 or more times when extracting
+     subroutine or method names.
+  
+   - Assign a list instead of pushing a string for time entries.
+
+-------------------------------------------------------------------
+Mon Apr 13 18:40:59 UTC 2015 - coolo@suse.com
+
+- updated to 0.98
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  0.98  2011-10-29  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.97_02  2011-10-27  <schubiger@cpan.org>
+  
+   - Strip leading and trailing spaces from input strings.
+  
+  0.97_01  2011-10-25  <schubiger@cpan.org>
+  
+   - Support parsing timestamp. [Xiao Yafeng]
+  
+  0.97  2011-08-17  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.96_04  2011-08-16  <schubiger@cpan.org>
+  
+   - Check that the datetime string for dateparse has at most
+     two chunks (date/time); also require DateTime.
+  
+   - Elaborate on the format of dateparse's datetime string.
+  
+  0.96_03  2011-08-13  <schubiger@cpan.org>
+  
+   - Add the datetime switch to dateparse and document it.
+  
+   - Print dateparse's dates formatted according to ISO 8601.
+  
+  0.96_02  2011-08-10  <schubiger@cpan.org>
+  
+   - Revert truncating of <count> <unit> ago formats.
+  
+   - Add Xiao Yafeng to credits.
+  
+  0.96_01  2011-08-01  <schubiger@cpan.org>
+  
+   - New supported format: today <count> <unit> ago. [Xiao Yafeng]
+  
+   - Truncate for this and other ago formats to day if there is
+     no time component in order to produce more consistent results.
+  
+   - Add new and adjust existing regular tests for these formats;
+     moreover, complete the list of parse failure tests.
+  
+   - List the added grammar in the documentation.
+  
+  0.96  2011-06-01  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  0.95_03  2011-05-30  <schubiger@cpan.org>
+  
+   - Add the extract switch to dateparse and document it.
+  
+   - Change dateparse's prefer_future option to be not negatable.
+  
+  0.95_02  2011-05-28  <schubiger@cpan.org>
+  
+   - Reorder the nested extract loop iterating through the grammar
+     entries to process only one subentry for all matching tokens.
+  
+   - Move the check for a date when extracting expressions to a method.
+  
+   - Add assert tests for extract_datetime(): one for the context
+     dependant return and another for the nested extract loop fix.
+  
+   - Improve code visually of the parse success and failure test files.
+  
+  0.95_01  2011-05-19  <schubiger@cpan.org>
+  
+   - Do no longer recommend Test::Pod and Test::Pod::Coverage.
+  
+   - Use quantifier which matches 1 or more times when extracting
+     subroutine or method names.
+  
+   - Assign a list instead of pushing a string for time entries.
+
+-------------------------------------------------------------------
+Tue May 17 23:10:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.95:
+   * new supported format: <monthday> <month> <year> <time am/pm> [RT#67780]
+   * conditionally rewrite date strings, currently ones with an 'at' followed
+     by a time or daytime (e.g., noon)
+   * parse times with AM/PM at word boundary separated by a space (through
+     removing the space before parsing) [RT#67561]
+   * parse and document formatted dates with an abbreviated month name in the
+     middle [RT#67395]
+   * remove commas from date string now before rewriting aliases
+   * set month and implicit day explicitly to avoid overlap parse failures
+   * keep the minute or higher precision requirement when extracting one token
+     time expressions, but undo the grammar change
+   * introduce a class to extract parsable expressions from strings
+   * add and document the extract_datetime() method
+   * require precision in hour or higher for one token time expressions,
+     otherwise extracting expressions would be impeded
+   * new supported format: <month> <monthday>, <year> <time am/pm> [RT#65072]
+   * allow for time regexes to match times with precision in seconds
+   * conditionally truncate to units and remove unit assignments of zero
+   * new supported format: <weekday> <daytime> [RT#63438]
+   * new supported format: <year> <month> <monthday> [RT#63429]
+   * don't parse ambiguous <time>, <monthday> and <month> expressions
+   * new supported formats: <time> <month> <monthday> and <time> AM/PM <month>
+     <monthday> [RT#62164]
+   * add support for the <time am/pm> <month> <monthday> format
+   * new supported formats: <monthday> <month> <time>, <monthday> <month>
+     <time> AM/PM and <month> <monthday> <time> AM/PM [RT#62164]
+   * add support for the <monthday> <month> <time am/pm> format
+   * new supported formats: <variant> <weekday> <time> AM/PM and <time> AM/PM
+     <variant> <weekday> [RT#62164]
+   * add support for the <variant> <weekday> <time am/pm> format
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:32 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:43 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Aug 22 23:33:10 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.89)
+

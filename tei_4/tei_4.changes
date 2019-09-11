@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Dec 24 13:01:40 UTC 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers, they're not needed anymore.
+
+-------------------------------------------------------------------
+Mon Aug 14 17:17:05 CEST 2006 - ke@suse.de
+
+-  Remove obsolete compatibility link for <= SL 9.0.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb 24 14:16:55 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Thu Feb 12 16:46:19 CET 2004 - ke@suse.de
+
+- Update upstream source archive (downloaded 2003-02-12).
+
+-------------------------------------------------------------------
+Thu Jan 29 16:57:46 CET 2004 - ke@suse.de
+
+- Adjust directories according to FHS 2.3:
+  * Move SGML DTDs to /usr/share/sgml/tei/dtd/4.0.
+  * Keep CATALOG.* files in /usr/share/sgml for the time being.
+  * Provide compatibility links for SL =< 9.0 (log this info in
+    /var/adm/SuSEconfig/run-sgmldir-links for later processing).
+  * Fix catalog files.
+
+-------------------------------------------------------------------
+Mon Jun 16 17:09:24 CEST 2003 - ke@suse.de
+
+- Fix %files list.
+- Fix catalog entry; it's file:///, not file://// .
+
+-------------------------------------------------------------------
+Tue Jun 10 13:53:53 CEST 2003 - coolo@suse.de
+
+- fix syntax error
+
+-------------------------------------------------------------------
+Thu Jun  5 14:32:40 CEST 2003 - ke@suse.de
+
+- Use edit-xml-catalog for registring XML catalog.
+- Register sgml catalog in /etc/sgml/catalog.
+
+-------------------------------------------------------------------
+Fri Aug 16 11:06:21 CEST 2002 - ke@suse.de
+
+- Provide PreReq and Requires [# 17910].
+
+-------------------------------------------------------------------
+Mon Jun 24 00:51:44 CEST 2002 - ro@suse.de
+
+- fixed directory permissions 
+
+-------------------------------------------------------------------
+Mon May 27 10:31:09 CEST 2002 - ke@suse.de
+
+- Fix spec file: Create links to help psgml and improve catalog files
+  using scripts coming with sgml-skel.
+
+-------------------------------------------------------------------
+Thu May 23 13:26:55 CEST 2002 - ke@suse.de
+
+- New package: It's the successor of the TEI 3 DTD and will work for
+  SGML and XML files.
+
+

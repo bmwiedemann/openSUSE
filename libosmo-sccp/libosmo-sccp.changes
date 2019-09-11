@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Mon Jan 28 23:21:43 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.0.0
+  * Bugfix release only.
+    The full changelog is available via
+    http://git.osmocom.org/libosmo-sccp/plain/debian/changelog?h=1.0.0
+- Update patch:
+  * 0001-build-fixes.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 00:47:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.10.0
+  * ipa: Patch DPC/OPC information into SCCP Calling/Called Party
+    Address
+  * ipa: Automatically create / destroy route on IPA
+    connect/disconnect
+  * ss7: Re-bind xUA server socket after setting new IP
+  * osmo_ss7: Register 5000 as default port for IPA/SCCPlite
+  * fix infinite recursion with routing by global title
+  * fix use after free in osmo_sccp_simple_server_add_clnt()
+  * fix memleak in ipa_rx_msg_sccp
+  * fix two memleaks in ipa_rx_msg_sccp()
+
+-------------------------------------------------------------------
+Sat Mar 17 16:50:04 UTC 2018 - mardnh@gmx.de
+
+- Derive libversion from version
+- Create subpackage for osmo-stp
+- Show testsuite.log when tests are failing
+- Cosmetic fixes
+- Fix url
+
+-------------------------------------------------------------------
+Thu Dec 28 00:32:03 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.8.1
+  * sccp_scrc: fix Network Indicator in SIO composition
+  * osmo_sccp_addr_encode(): Fix truncation of point codes
+
+-------------------------------------------------------------------
+Thu Oct 26 13:05:31 UTC 2017 - dimstar@opensuse.org
+
+- Fix names of shared library packages: the version is 0.7.0.284
+  and the soname contains the entire version. As this results in
+  package rename, we exceptionally obsolete the old/wrong package
+  name in order to facilitate error-free upgrades.
+
+-------------------------------------------------------------------
+Mon Oct  2 23:10:26 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.7.0.284
+  * vty: add 'asp' / 'local-ip' command
+  * osmo_ss7_vty: fix 'as' / 'routing-key' command
+  * OsmoSTP: Install our default set of signal handlers
+  * Fix SCCP client crash on xUA server (STP) disconnect
+  * vty: hide SG commands when running as ASP
+  * sccp: fix creating of the default route in simple client
+  * sccp: derive local address from given sccp instance
+
+-------------------------------------------------------------------
+Fri Apr 28 22:48:03 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.7.0.208
+  * Add new 'osmo_ss7' SS7 core code with M3UA, ASP/AS FSM, ...
+  * Add SCCP <-> SUA message transcoding routines
+  * Add tests for xUA code + SCCP/SUA transcoding
+  * Add new SCCP implementation
+  * Add M3UA RKM (routing key management) support, SGW side only
+  * SCCP: Add VTY interface for SCCP
+
+-------------------------------------------------------------------
+Fri Jan 22 18:33:36 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.7.0.11
+* Add missing OSMO_SCCP_SSN_RANAP for RANAP SSN
+* Properly define SCCP_SAP_USER without random magic number
+* Import SUA (SCCP User Adaptation) and SCCP User SAP
+
+-------------------------------------------------------------------
+Thu Sep 10 21:34:08 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.7.0
+* sccp: Allow to specify the context of the incoming message
+* mtp: Correct the pointcode mask
+* mtp: Add implementation from cellmgr
+* m3ua: Add the definition of the protocol data header
+* xua: Generalize the m2ua_msg and call it xua_msg
+* XUA: Move m2ua headers to sigtran, create xua_types.h
+  and m3ua_types.h
+* sccp: Create sccp_create_cr and use it in the connection creation
+
+-------------------------------------------------------------------
+Mon Jul 21 08:37:45 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 0.0.6.3) for build.opensuse.org

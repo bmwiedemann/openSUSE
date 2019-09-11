@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:22:50 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Wed Aug 14 07:13:19 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.3.2
+  - Preferences: Improve spacing (bxo#14672)
+  - Fix stats on some openbsd drivers (bxo#13853)
+  - set a name on the 'text to display' widget so that it can be styled
+    (closes bxo#13906)
+  - Fix bxo#11477, bxo#12957, bxo#11328
+  - css styling improvements
+  - fix autotools warnings 
+- Dropped obsolete patch xfce4-netload-plugin-fix-array-out-of-bounds.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 17:29:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Move COPYING under %license macro 
+- Renamed patch xfce4-panel-plugin-netload-fix-array-out-of-bounds.patch
+  to xfce4-netload-plugin-fix-array-out-of-bounds.patch
+
+-------------------------------------------------------------------
+Wed Apr 19 20:23:42 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 1.3.1
+  - set progressbar minimal width and height depending on
+    orientation (bxo#12941, bxo#12949)
+  - apply css on the correct widget class for Gtk 3.16/3.18
+  - rework the use of GtkCssProvider to use a singleton
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Nov 27 12:18:55 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 1.3.0
+  - port to gtk+3/libxfce4ui-2/libxfce4panel-2.0
+  - fix progress bar grow direction in deskbar and vertical modes
+- do not package ChangeLog; NEWS is good enough
+
+-------------------------------------------------------------------
+Sun Nov 23 18:34:15 UTC 2014 - gber@opensuse.org
+
+- update to version 1.2.4
+  - option to show values as bits
+  - reverted "Do not enforce max length for text/device entries"
+  - set iface length name to 32 chars max
+  - translation updates
+- add xfce4-panel-plugin-netload-fix-array-out-of-bounds.patch in
+  order to fix an array out of bounds write (bxo#11328)
+
+-------------------------------------------------------------------
+Sat Nov 15 23:04:25 UTC 2014 - gber@opensuse.org
+
+- update to version 1.2.3
+  - fix a small bug reported by JR, with really big values the code
+    segfaulted in the format_byte_humanreadable function
+
+-------------------------------------------------------------------
+Sun Nov  2 16:52:23 UTC 2014 - gber@opensuse.org
+
+- update to version 1.2.2
+  - fix plugin installation path
+
+-------------------------------------------------------------------
+Sun Nov  2 15:36:58 UTC 2014 - gber@opensuse.org
+
+- update to version 1.2.1
+  - build plugin as a module
+  - update build environment
+  - only round to 0 digits for KiB/s values
+  - pack progress bars inside event box and hide/show
+  - do not enforce max length for text/device entries
+  - fix stringsize - 1
+
+-------------------------------------------------------------------
+Sun Jul 15 16:07:12 UTC 2012 - gber@opensuse.org
+
+- update to version 1.2.0
+  - some code cleanup and respect the Panel HIG
+  - update monitor labels sizes gracefully
+  - rectify tooltip information
+  - support new panel mode Deskbar
+  - drop if_ppp headers
+  - reorganize code in monitor_new, setup_monitor and
+    monitor_set_orientation
+  - keep colorized values after orientation change
+  - fix widget visibility on orientation change
+
+-------------------------------------------------------------------
+Fri Apr 20 11:32:14 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 22:34:12 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 21:41:24 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Fri Jan 13 15:04:50 UTC 2012 - gber@opensuse.org
+
+- update to version 1.1.0
+  - add option to show values in panel in addition to the bars
+  - format units automatically
+  - port to libxfce4ui
+  - fix two calls to snprintf
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

@@ -1,0 +1,47 @@
+--- xselection.c
++++ xselection.c
+@@ -72,15 +72,14 @@
+ static unsigned char *get_selection();
+ 
+ static void
+-usage()
++usage(FILE *output, int return_code)
+ {
+-	fprintf(stderr,
+-		"usage: %s [ -display display_name ] [ -append | -prepend",
+-		PROG_NAME);
+-	fprintf(stderr, " | -replace | -clear ]\n");
+-	fprintf(stderr, "\t\t  [ PROPERTY_NAME | -cutbuffer [0-7] ]");
+-	fprintf(stderr, " [ - | [--] new_value ]\n");
+-	exit (-1);
++	fprintf(output, "usage: %s -help\n", PROG_NAME);
++	fprintf(output, "       %s [ -display display_name ]\n", PROG_NAME);
++	fprintf(output, "\t\t  [ -append | -prepend | -replace | -clear ]\n");
++	fprintf(output, "\t\t  [ PROPERTY_NAME | -cutbuffer [0-7] ]\n");
++	fprintf(output, "\t\t  [ - | [--] new_value ]\n");
++	exit (return_code);
+ }
+ 
+ 
+@@ -179,8 +178,11 @@
+ 		exit (-1);
+ 	}
+ 
++	if ((argc == 2) && (!strcmp(argv[1],"-help")))
++		usage(stdout, 0);
++
+ 	if (argc < 2 || argc > 4)
+-		usage();
++		usage(stderr, -1);
+ 
+ 	XrmMergeDatabases(dpy->db, &db);
+ 	XrmMergeDatabases(odb, &db);
+@@ -227,7 +229,7 @@
+ 			/* I bet this will never get used! .. but be safe */
+ 			current_selection = (unsigned char *)argv[3];
+ 		else
+-			usage();
++			usage(stderr, -1);
+ 		want_to_own = 1;
+ 	}
+ 

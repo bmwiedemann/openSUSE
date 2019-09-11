@@ -1,0 +1,64 @@
+Index: gnome-packagekit-3.21.4/src/gpk-update-viewer.c
+===================================================================
+--- gnome-packagekit-3.21.4.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-3.21.4/src/gpk-update-viewer.c
+@@ -209,7 +209,17 @@ gpk_update_viewer_check_restart (void)
+ 		message = _("Some of the updates that were installed require you to log out and back in before the changes will be applied.");
+ 		/* TRANSLATORS: the button text for the log out */
+ 		button = _("Log Out");
+-
++	} else if (restart_update == PK_RESTART_ENUM_APPLICATION) {
++        	/* TRANSLATORS: the message text for the application restart */
++              	message = _("Some of the updates that were installed require you to restart this application before the changes will be applied.");
++              	/* TRANSLATORS: the button text for the application restart */
++              	button = _("Restart Application");
++
++                ret = pk_control_suggest_daemon_quit (control, cancellable, &error);
++                if (!ret) {
++                    gpk_update_viewer_error_dialog (_("Could not terminate PackageKit"), NULL, error->message);
++                    g_error_free (error);
++                }
+ 	} else if (restart_update == PK_RESTART_ENUM_SECURITY_SESSION) {
+ 		/* TRANSLATORS: the message text for the log out */
+ 		message = _("Some of the updates that were installed require you to log out and back in to remain secure.");
+@@ -261,6 +271,21 @@ gpk_update_viewer_check_restart (void)
+ 			gpk_update_viewer_error_dialog (_("Could not restart"), NULL, error->message);
+ 		}
+ #endif
++	} else if (restart_update == PK_RESTART_ENUM_APPLICATION) {
++		char cmd[256] = {0};
++		/* need to wait for PackageKit to finish too */
++		sprintf(cmd, "/bin/bash -c 'while ps -p %d > /dev/null; do sleep 1; done; while pgrep packagekitd > /dev/null; do sleep 1; done;/usr/bin/gpk-update-viewer'", getpid());
++
++		/* restart asynchronously after gpk-update-viewer was quit */
++		ret = g_spawn_command_line_async (cmd, &error);
++
++		if (!ret) {
++			gpk_update_viewer_error_dialog (_("Could not restart application"), NULL, error->message);
++			g_error_free (error);
++		}
++
++		/* needed to force gpk-update-viewer to quit */
++		ret = FALSE;
+ 	}
+ 	return ret;
+ }
+@@ -432,6 +457,7 @@ gpk_update_viewer_update_packages_cb (Pk
+ 	/* check restart */
+ 	if (restart_update == PK_RESTART_ENUM_SYSTEM ||
+ 	    restart_update == PK_RESTART_ENUM_SESSION ||
++	    restart_update == PK_RESTART_ENUM_APPLICATION ||
+ 	    restart_update == PK_RESTART_ENUM_SECURITY_SESSION ||
+ 	    restart_update == PK_RESTART_ENUM_SECURITY_SYSTEM) {
+ 		gpk_update_viewer_check_restart ();
+@@ -1803,6 +1829,10 @@ gpk_update_viewer_populate_details (PkUp
+ 		/* TRANSLATORS: reboot required */
+ 		gtk_text_buffer_insert_with_tags_by_name (text_buffer, &iter, _("The computer will have to be restarted after the update for the changes to take effect."), -1, "para", NULL);
+ 		gtk_text_buffer_insert (text_buffer, &iter, "\n", -1);
++	} else if (restart == PK_RESTART_ENUM_APPLICATION) {
++        /* TRANSLATORS: application restart required */
++        gtk_text_buffer_insert_with_tags_by_name (text_buffer, &iter, _("This application will have to be restarted after the update for the changes to take effect."), -1, "para", NULL);
++        gtk_text_buffer_insert (text_buffer, &iter, "\n", -1);
+ 	} else if (restart == PK_RESTART_ENUM_SESSION) {
+ 		/* TRANSLATORS: log out required */
+ 		gtk_text_buffer_insert_with_tags_by_name (text_buffer, &iter, _("You will need to log out and back in after the update for the changes to take effect."), -1, "para", NULL);

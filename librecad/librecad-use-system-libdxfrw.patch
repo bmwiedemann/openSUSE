@@ -1,0 +1,40 @@
+build: avoid using bundled libdxfrw
+[asterios.dramis@gmail.com: imported the patch from Fedora into openSUSE's librecad]
+[jslaby@suse.com: rebase/rework on top of 2.1.0]
+
+---
+ libraries/libraries.pro |    1 -
+ librecad/src/src.pro    |    5 ++---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+--- a/libraries/libraries.pro
++++ b/libraries/libraries.pro
+@@ -9,7 +9,6 @@ TEMPLATE = subdirs
+ TARGET = libraries
+ 
+ SUBDIRS     = \
+-        libdxfrw \
+         jwwlib
+ 
+ macx|win32|equals(build_muparser, "true")|!packagesExist(muparser){
+--- a/librecad/src/src.pro
++++ b/librecad/src/src.pro
+@@ -35,8 +35,7 @@ greaterThan( QT_MAJOR_VERSION, 4 ) {
+ }
+ 
+ GEN_LIB_DIR = ../../generated/lib
+-PRE_TARGETDEPS += $$GEN_LIB_DIR/libdxfrw.a \
+-		$$GEN_LIB_DIR/libjwwlib.a
++PRE_TARGETDEPS += $$GEN_LIB_DIR/libjwwlib.a
+ 
+ DESTDIR = $${INSTALLDIR}
+ 
+@@ -84,7 +83,7 @@ LIBS += -L../../generated/lib  \
+     -ljwwlib
+ 
+ INCLUDEPATH += \
+-    ../../libraries/libdxfrw/src \
++    $${DXFRW_INCLUDEDIR} \
+     ../../libraries/jwwlib/src \
+     cmd \
+     lib/actions \

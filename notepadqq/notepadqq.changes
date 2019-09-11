@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Mon Apr 30 15:24:03 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.4.0:
+  * Introduce a Math Rendering mode that can be used to insert math
+    formulae within comments by using the TeX syntax, which can be
+    enabled via the “View -> Math Rendering” menu.
+  * Use custom context menu to avoid reload bug.
+  * Refactoring.
+  * misc: Update to adm-zip upstream code.
+  * Don't ask to save empty orphan tabs anymore.
+  * Add Language Cache.
+  * Update translations.
+- Fix node.js-related env-script-interpreter rpmlint errors.
+
+-------------------------------------------------------------------
+Wed Apr 18 09:07:24 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to 1.3.6:
+  * l10n: add Brazilian localization (#347)
+  * feat: Update CodeMirror to 5.36.1-nqq (#613)
+  * fix: use VeryCoarseTimer for stats collection in order to
+    reduce power consumption
+  * feat: Add option to backup documents periodically (#615)
+
+-------------------------------------------------------------------
+Sat Apr 14 20:25:15 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to 1.3.4:
+  * feat: add Japanese translation
+  * fix: Load simple.js to avoid CodeMirror.defineSimpleMode errors.
+    (#600)
+  * feat: Save custom indentation mode for sessions. (#606)
+  * feat: Add '--line' and '--column' commandline arguments. (#604)
+  * feat: ask user to allow us to collect anonymous usage statistics
+    (#607)
+  * feat: Add warning when opening large files. (#610)
+
+- Version 1.3.2:
+  * revert
+
+- Version 1.3.1:
+  * fix crash on start on Ubuntu 14.04
+
+- Version 1.3.0:
+  * Added Spanish Translation by inukaze. Fixes #507. (#508)
+  * Fix Qt5 version detection.
+  * Ability to disable saving search history (#528)
+  * Advanced Search Dock
+  * Support loading Qt 5.10 through /opt/ or ~/
+  * Update CodeMirror to 5.33.0
+  * Add menu options to toggle visibility of toolbar and menubar.
+  * Add option to quit Nqq when closing last open tab. (#550)
+  * Improve high Dpi looks
+  * Fix infinite loop when searching for 0-length regex
+  * Fix editor focus issues (fixes #265)
+  * Back references now working for regex search using the search
+    dock.
+  * Add help dialog about regular expression use
+  * Prevent appmenu-qt5 from removing our menubar
+  * feat: implement --allow-root and prohibit running as root by
+    default.
+  * feat: Add customizable Toolbar
+  * feat: Enable basic document printing
+  * fix: Prefer GTK's icon theme if XDG_CURRENT_DESKTOP is not set
+  * feat: allow horizontal scrolling when holding shift + mouse
+    wheel (closes #582)
+- Removed notepadqq-1.2.0-fix-qt-5.10.patch, fixed upstream.
+- Delete all hidden files from %{buildroot}.
+
+-------------------------------------------------------------------
+Thu Feb  1 11:38:09 UTC 2018 - sor.alexei@meowr.ru
+
+- Fix the RPM group.
+- Add notepadqq-1.2.0-fix-qt-5.10.patch: Fix Qt 5.10+ version
+  detection (commit c340237) (boo#1078736,
+  gh#notepadqq/notepadqq#516).
+
+-------------------------------------------------------------------
+Tue Oct 17 16:30:41 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to 1.2.0:
+  * Allow banners to stretch horizontally and vertically (#349).
+  * Preferences menu now has an "Apply" button in addition to "Ok"
+    and "Cancel". That way users can immediately see visual changes
+    (like themes) without having to exit the menu all the time.
+  * The Shortcuts tab now has a "Reset Selected Shortcut" in
+    addition to the "Reset All Shortcut" button.
+  * The Preferences menu remembers the last selected settings tab
+    and will automatically switch to it when re-opened (this is not
+    a saved setting. Only implemented as a static variable).
+  * Turned the "File Format" and "Encoding" labels in the status
+    bar into ClickableLabels. When clicked, they open the
+    Format/Encoding QMenu that is also used in Nqq's menu bar.
+  * File encoding in the status bar wasn't properly updated. Fixed
+    that by calling updateEditorUiInfo() when switching encoding.
+  * Added menu shortcuts for accessibility.
+  * l10n: add Slovenian translation (#352).
+  * Sessions: during session load, show BannerFileRemoved when the
+    file is missing (#353).
+  * Preferences: fix theme loading glitch (closes #246) (#356).
+  * UI: disable "reload" actions if no file to reload exists (#354).
+  * Update notepadqq launcher (fedora) (#366).
+  * Support Qt 5.8 and 5.9 (#376).
+  * Fix: user was not allowed to exit Nqq if session.xml couldn't
+    be saved.
+  * Title bar has wrong tab title after launch (fixes #421) (#422).
+  * Warn about missing icons; fix potential crash.
+  * %directory% in run command (#434).
+  * Fix segfault on start (fixes #440).
+  * Open folder contents if a folder is dropped onto Nqq. (#455).
+  * Add handel-c language (#443).
+  * Apply group replacement across the entire matched string.
+  * Fixed "^F Find ENTER does not search for the currently selected
+    text" (#417) (#468).
+  * Convert text to path in svg logo (#477).
+  * Added a "Retry as Root" to Nqq's save dialog (#480).
+  * Keep file names of deleted files when loading a session.
+    Otherwise they just show up as 'new X' (#483).
+  * Don't load tabs from session that don't exist and aren't cached
+    since they're just empty (#484).
+  * Prompt user when opening a file from recent history that does
+    not exist anymore. Fixes #248.
+  * Remember "Enable Smart Indent" setting #488 (#492).
+
+-------------------------------------------------------------------
+Fri Feb 10 11:11:27 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to 1.0.1:
+  * Fix: settings were not saved.
+
+- Version 1.0.0:
+  * Sessions.
+  * Run menu.
+  * Option to disable smart indentation.
+  * Option to change line height.
+  * Support special characters in replacement strings when
+    searching.
+  * Improved shortcut settings.
+  * Speed improvements in search in files.
+  * Use the system language as default language.
+  * Swedish localization.
+
+-------------------------------------------------------------------
+Wed Sep 14 10:28:31 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to 0.53.0:
+  * Allow users to configure a custom font (and size) (e246e81).
+  * Support for showing tabs, spaces and end of line symbols
+    (a4866d9).
+  * Fix regression regarding whitespaces and word-wrap (84048d8).
+  * Fix Zenburn theme not loading properly at startup (f761810).
+  * Fix left editor panel not updating when switching languages
+    (01fae47).
+  * UI improvements for custom keyboard shortcuts (2f05245).
+
+-------------------------------------------------------------------
+Mon Aug 15 11:12:14 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to 0.52.1:
+  * Fonts fix.
+
+- Version 0.52.0:
+  * Added Alt+digit, Ctrl+PageUp and Ctrl+PageDown shortcuts to
+    switch between tabs.
+  * Added ability to shift lines up/down.
+  * Added localization switch within Preferences.
+  * Added regex groups support for text replacement.
+  * Russian localization.
+  * Polish localization.
+
+-------------------------------------------------------------------
+Mon Mar 14 22:59:31 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to 0.51.0:
+  * Always use tabSize from the preferences when converting tabs
+    to spaces
+  * Keyboard shortcuts compatibility with translations
+  * HU localization
+  * Fix casing bug for search dialog
+  * Shift+Insert to paste
+  * Ctrl+Insert to copy
+  * Identify TCL scripts by shebang
+  * Recognize more Fortran extensions
+- Remove hidden files/directories
+
+-------------------------------------------------------------------
+Tue Dec 29 05:32:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.50.6:
+  * Support for translations.
+  * New icon.
+
+-------------------------------------------------------------------
+Sun Sep 27 15:37:48 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.50.4 (changes since 0.50.2):
+  * Fullscreen.
+  * UI fixes.
+
+-------------------------------------------------------------------
+Thu Sep 10 15:13:59 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.50.2:
+  * Support for Qt 5.5.
+
+-------------------------------------------------------------------
+Thu Jul  2 21:29:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

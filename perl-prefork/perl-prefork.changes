@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Sep 12 13:20:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- add fix-build.diff from RT#120832
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:40 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:56 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Sep  1 04:50:37 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.04)
+

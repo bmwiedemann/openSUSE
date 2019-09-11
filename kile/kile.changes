@@ -1,0 +1,683 @@
+-------------------------------------------------------------------
+Mon Feb 25 19:20:52 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 3.0 Beta 2
+  * Uses KDE Frameworks 5
+  * Features:
+    + New live preview feature
+    + Integration of Okular viewer
+    + Customizable user menu
+  * Numerous fixes
+- Add patches to git master at 09910015:
+  * 0001-Silence-CMake-s-CMP0071-policy-warning.patch
+  * 0003-Remove-X-DBUS-StartupType-from-desktop-file.patch
+  * 0004-GIT_SILENT-made-messages-after-extraction.patch
+  * 0005-Fix-minor-EBN-issues.patch
+  * 0006-Fix-minor-EBN-issues.patch
+  * 0007-GIT_SILENT-made-messages-after-extraction.patch
+  * 0008-no-op-open-save-.ui-files.patch
+  * 0009-Use-KMessageWidget-in-PostscriptDialog.patch
+  * 0010-Fix-minor-EBN-issues.patch
+  * 0011-Fix-minor-EBN-issues-explicit-normalize.patch
+  * 0012-GIT_SILENT-made-messages-after-extraction.patch
+  * 0013-i18n-fix-few-string-puzzles.patch
+  * 0014-User-menu-do-not-attempt-to-load-an-empty-file-name.patch
+  * 0015-Fix-minor-typo.patch
+  * 0016-GIT_SILENT-made-messages-after-extraction.patch
+  * 0017-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0018-no-need-to-declare-void-functions-with-no-parameters.patch
+  * 0019-Fix-tab-icons-for-informing-the-user-of-clandestine-.patch
+  * 0020-Use-more-functor-based-signal-slot-connections-in-Ki.patch
+  * 0021-Search-for-the-file_save_copy_as-action-inside-KText.patch
+  * 0022-Fix-Appstreamercli-minor-issues.patch
+  * 0023-GIT_SILENT-made-messages-after-extraction.patch
+  * 0024-GIT_SILENT-made-messages-after-extraction.patch
+  * 0025-GIT_SILENT-made-messages-after-extraction.patch
+  * 0026-GIT_SILENT-made-messages-after-extraction.patch
+  * 0027-actually-initialize-kcrash-properly.patch
+  * 0028-GIT_SILENT-made-messages-after-extraction.patch
+  * 0029-GIT_SILENT-made-messages-after-extraction.patch
+  * 0030-GIT_SILENT-made-messages-after-extraction.patch
+  * 0031-GIT_SILENT-made-messages-after-extraction.patch
+  * 0032-GIT_SILENT-made-messages-after-extraction.patch
+  * 0033-GIT_SILENT-made-messages-after-extraction.patch
+  * 0034-Avoid-crashing-when-closing-a-document-that-is-being.patch
+  * 0035-GIT_SILENT-made-messages-after-extraction.patch
+- Drop patches, now upstream:
+  * fix-user-editable-menus.patch
+
+-------------------------------------------------------------------
+Thu Dec  8 19:58:02 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Tue Sep 13 15:29:49 UTC 2016 - wbauer@tmo.at
+
+- Add fix-user-editable-menus.patch to prevent the "Settings" menu
+  entry disappearing if adding buttons to the toolbar (kde#328712)
+
+-------------------------------------------------------------------
+Thu Jun 16 09:26:50 UTC 2016 - wbauer@tmo.at
+
+- Require konsole4-part on Leap as well, konsole is KF5 based and
+  doesn't work in the KDE4 based kile (boo#984980)
+
+-------------------------------------------------------------------
+Tue Jun 14 21:57:26 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Tue Mar  8 18:17:14 UTC 2016 - bwiedemann@suse.com
+
+- drop build time from png file to fix build-compare
+
+-------------------------------------------------------------------
+Fri May 29 06:36:04 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix required packages for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Sun Nov 09 05:19:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Thu Feb 14 18:24:12 UTC 2013 - ctrippe@opensuse.org
+
+- Recommend texlive-pdfsync for forward/inverse search with pdflatex
+
+-------------------------------------------------------------------
+Sun Sep 23 17:14:01 UTC 2012 - ctrippe@opensuse.org
+
+- Update to 2.1.3
+  * Allow letters as shortcuts (kde#268570)
+  * Avoid executing unwanted commands in the console when changing
+    tabs (kde#301653)
+  * Ensure that the ViewBib tool opens the correct bibliography file
+    (kde#301175)
+  * Correctly display output produced by ConTeXt (kde#303230)
+  * Correctly handle text with foreground colour in the tabular wizard
+    (kde#299410)
+  * Correctly save and restore the encodings of previously opened files
+    (kde#304853)
+  * Fix a problem which causes that projects sometimes cannot be opened
+    correctly (kde#301808)
+  * Force termination of Kile when the main window is closed (kde#299569)
+  * Add a completion file for the 'ifplatform' package 
+    (Patch by Thomas Braun)
+  * Add 'Save', 'Save As' and 'Save Copy As' entries to the tab context
+    menus (kde#249293)
+  * Add tool tips to structure view entries (Patch by Eugene Shalygin)
+  * Provide Unicode characters for the symbols in the symbol view
+    (Patch by Olivier Delaune, kde#159515)
+
+-------------------------------------------------------------------
+Sun Aug 26 18:58:23 UTC 2012 - reddwarf@opensuse.org
+
+- Change okular from Requires to Recommends (bnc#777423)
+
+-------------------------------------------------------------------
+Mon Aug 20 18:23:51 UTC 2012 - ctrippe@opensuse.org
+
+- Recommend texlive-dvips and texlive-dvipdfmx after the texlive 
+  split (bnc#776274)
+
+-------------------------------------------------------------------
+Thu Apr 26 17:51:54 UTC 2012 - ctrippe@opensuse.org
+
+- Update to 2.1.2
+  * Correctly convert special characters that were typed with caps
+    lock enabled into LaTeX. This fix works from KDE 4.3 upwards. 
+    (kde#296123)
+  * Use 'utf8' instead of 'utf8x' as default encoding (in document
+    templates). It should be sufficient in most cases and it is 
+    installed by default in LaTeX distributions.
+  * Correctly insert '\c{c}' for the cedilla character (kde#296006,
+    kde#289529)
+  * Use the correct name for some icons. In this way, they can be
+    used even if the current icon theme is not Oxygen.
+    (Patch by Pino Toscano)
+  * Correctly restore VI input mode key settings (kde#293262)
+  * Update 'biblatex.cwl'. Thanks to Denis Bitouzé!
+
+-------------------------------------------------------------------
+Fri Jan 27 18:40:14 UTC 2012 - ctrippe@opensuse.org
+
+- Update to Kile 2.1.1
+  * Add tool tip which explains the available placeholders in the 
+    user tag dialog (Patch by Felix Mauch)
+  * Allow to configure whether the directory shown in the console
+    is kept synchronized with the document tabs (kde#265165)
+  * Restore the behaviour of LaTeX environment completion to what
+    it was in version 2.0 (Patch by Holger Danielsson)
+  * Ensure that Kile can be offered as application to open LaTeX
+    documents in Nautilus, for instance (kde#275438)
+  * Avoid crashes when closing Kile with two (or more) opened 
+    projects (Patch by Eugene Shalygin, kde#289458)
+  * Ensure that the correct number of errors/warnings/badboxes is
+    reported in translated versions of Kile, which notably affected
+    the French version (kde#275700)
+- Removed a special handling of a locale for an obolete version of
+  openSUSE
+
+-------------------------------------------------------------------
+Mon Dec 12 21:09:14 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Simplified License: to GPL-2.0+ (made it also SDPX style).
+  * Added libktexteditor in Requires: (because the package needs katepart).
+
+-------------------------------------------------------------------
+Wed Jun 22 19:32:10 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates
+  * Added update-mime-database in %post/%postun scripts for the mime file
+    installed by the package.
+  * Fix locales removal if suse_version is not set.
+  * Removed support for openSUSE < 11.2.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Sat Jun 11 14:41:46 UTC 2011 - ctrippe@opensuse.org
+
+- Update to Kile 2.1
+  Changes since Beta 5
+  Fixes:
+  * Fix a potential memory leak related to the parser progress bar
+  * Fix a crash that occurred when typing "exit" in the embedded console 
+    (#263405)
+  * Improve the wording of the message box which pops up when the user
+    wants to create a new project but no project name has been given yet 
+    (#263661)
+  * Correctly handle '.' characters that occur in citation labels (#266670)
+  * Run the tool 'asymptote' automatically when 'asymptote' figures are present
+    in the document (Patch by Felix Mauch, #258352)
+  * Fix a typo present in the LaTeX markup when inserting a description list
+    environment via the 'LaTeX' menu (Patch by Mark  Morschhäuser, #268043)
+  * Fix some bugs in the tabular wizard (Patch by Felix Mauch)
+  * Revive the automatic insertion of $ feature (Patch by Dominik Haumann)
+  * Fix the problem that dead keys are sometimes treated as 'alive' (#269590)
+  * Avoid crashes when running Kile in a non-English locale (#271910)
+
+  Features:
+  * Make the background colour of the quick preview pane configurable (#265879)
+  * Add a directory selection button (and the corresponding dialog) which allows
+    it to select the default location for projects in a more comfortable way
+    (Patch by Felix Mauch, #116670)
+  * Also add a directory selection button for the TeX documentation (Patch by
+    Felix Mauch)
+  * Allow users to comfortably install custom completion files (Patch by Libor
+    Bukata, #265284)
+  * Add the possibility to copy tables from the clipboard into the tabular
+    wizard (Patch by Felix Mauch)
+  * New CWL file for the 'soul package' (Patch by Thomas Braun, #271688)
+
+-------------------------------------------------------------------
+Tue Mar  1 20:11:27 UTC 2011 - ctrippe@gmx.net
+
+- Fix the black icons in the toolbar (bnc#676046)
+
+-------------------------------------------------------------------
+Thu Feb 24 19:58:39 UTC 2011 - ctrippe@gmx.net
+
+- recommend and not only suggest the lang package
+
+-------------------------------------------------------------------
+Sun Feb 13 14:56:19 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates
+   * Changes based on rpmdevtools templates and spec-cleaner run.
+   * Changed License: to "GPLv2+ and GFDL".
+   * Updated %description.
+   * Updated BuildRequires:, Requires:, Recommends: entries and added Suggests:
+     entries.
+   * Moved the english help files in the main package.
+- Fixed rpmlint warnings ("wrong-icon-size" and "non-executable-script").
+
+-------------------------------------------------------------------
+Thu Dec 30 20:45:14 UTC 2010 - ctrippe@gmx.net
+
+- update to Kile 2.1 Beta 5
+
+  Fixes:
+  - Ensure that LaTeX root documents are recognised correctly when Kile is starting up (#233667)
+  - Don't prepend the base directory to absolute file names returned by 'grep' (#234235)
+  - Fix some crashes in the find-in-files dialog
+  - Fix problems that could occur when using custom tools in combination with a translated GUI (#224130)
+  - Make the 'smart new line' feature respect custom indentation (#226161)
+  - Restore the master document setting (for single files) when Kile is starting up (#222029)
+  - Correct the tool tip for the symbol panel in the side bar (Patch by Christian Herzberg)
+  - Fix the problem that the LaTeX root icon isn't shown for project items if they aren't opened
+  - Fix problems related to opening files from the file browser widget (#222325)
+  - Correctly split strings containing line breaks in the log widget (#237885)
+  - Fix some bugs related to the new-document wizard (#238544)
+  - Correct the problem of changing the focus when auto-save is triggered (#228321)
+  - Rename the 'BibTeX' and 'Biblatex' actions in the LaTeX menu to avoid confusion within the shortcut configuration dialog (#184847)
+  - After a manual invocation, abbreviations are now replaced immediately even if longer matches are possible (#238897).
+  - Add icons for the 'Split Cells' and 'Join Cells' actions in the tabular dialog (#237897)
+  - Add missing fields to 'bibtexentries.rc' (Patch by Martin Weis)
+  - Add support for the '%absolute_target' keyword, which enables ForwardPDF (with Okular) to work correctly in embedded mode (#245483)
+  - Reduce GUI flickering a little more
+  - Ensure that the $PATH variable is respected when tools are launched (#204397)
+  - Fix a problem related to opening non-existing files in projects which can freeze the GUI (#241181)
+  - Fix the bug which causes keyboard shortcuts to change when switching between documents (#247646)
+  - Correct a bug which results in references to appear as undefined (#241730)
+
+  Features:
+  - Make it configurable whether the splash screen is shown or not (#244909)
+  - Add an embedded viewer configuration for the 'ForwardPDF' tool
+  - Add completion files for 'units.sty' and 'nomencl.sty' (Patch by Andreas Weder)
+  - Update 'todonotes.sty' (2009/12/25) (Patch by by Andreas Weder)
+  - Make the document tabs movable (Initial patch by Nicolas Pavillon, #200890)
+
+-------------------------------------------------------------------
+Wed Jul 21 06:25:53 UTC 2010 - beineri@opensuse.org
+
+- updated to newer developemnt snapshot to fix build
+
+-------------------------------------------------------------------
+Thu Apr  8 14:33:08 UTC 2010 - ctrippe@gmx.net
+
+- update to Kile 2.1 Beta 4 release tarball- 
+
+-------------------------------------------------------------------
+Wed Feb 17 18:42:05 UTC 2010 - ctrippe@gmx.net
+
+- updated to newer svn snapshot (r1091641)
+  + Avoid flickering when redrawing the structure view.
+- changed version to 2.0.99
+
+-------------------------------------------------------------------
+Wed Feb 17 09:55:06 UTC 2010 - ctrippe@gmx.net
+
+- update to Kile 2.1 Beta 3 release tarball
+- fix installation of the manual (bko # 227239)
+- recommend texlive-latex (bnc # 548657)
+
+-------------------------------------------------------------------
+Tue Aug 25 06:50:07 UTC 2009 - beineri@opensuse.org
+
+- update to Kile 2.1 Beta 2 release tarball
+
+-------------------------------------------------------------------
+Thu Aug 13 07:44:33 UTC 2009 - tittiatcoke@gmail.com
+
+- updated to newer svn snapshot (r1010674)
+  + Use the KDE system colours for displaying entries. (bko #185529)
+  + save/restore when painting an item, so they don't alter 
+    each other drawing (and thus no more glitches)
+
+-------------------------------------------------------------------
+Mon Aug 10 14:49:21 CEST 2009 - beineri@opensuse.org
+
+- add missing requirement on kile-lang
+
+-------------------------------------------------------------------
+Tue Jul 28 16:24:34 CEST 2009 - llunak@novell.com
+
+- small build adjustments
+
+-------------------------------------------------------------------
+Fri Jul 24 19:42:27 CEST 2009 - tittiatcoke@gmail.com
+
+- Fix build error
+
+-------------------------------------------------------------------
+Wed Jul 22 14:22:06 CEST 2009 - jcnengel@googlemail.com
+
+- Update to svn r996817
+- New icon size
+
+-------------------------------------------------------------------
+Mon Jul 13 15:25:09 CEST 2009 - jcnengel@googlemail.com
+
+- Update to svn r990130 (Beta 1) of KDE4 port
+- remove TODO from doc files
+
+-------------------------------------------------------------------
+Sat May 30 09:37:32 CEST 2009 - beineri@opensuse.org
+
+- fix last change
+
+-------------------------------------------------------------------
+Sat May  2 13:58:44 CEST 2009 - beineri@opensuse.org
+
+- don't require kdegraphics3-tex on 11.2 and later (bnc#498374)
+
+-------------------------------------------------------------------
+Mon Mar 16 18:29:21 CET 2009 - wstephenson@suse.de
+
+- update to 2.0.3:
+  * Add {} to special characters in symbolview for easier handling
+    (#170144) 
+  * Don't blend user defined symbols because we don't know how they
+    look like
+  * Misplaced cursor with intelligent double quotes and selections
+    (#174937)
+  * Fixed a case where the autocompletion dies (#164231,#174003)
+  * Make the statistics pane work also for non latex files (#173745)
+  * Don't report certain log messages as tex errors (#174665)
+  * Properly escape the log messages so that also <...> shows up
+    (#175148)
+  * some cwl typos
+  * Added babel, todonotes (thanks to Salim), glosstex, nicefrac,
+    float
+  * latex: -- fixed corner case where \newcommand got highlighted
+    wrong
+
+-------------------------------------------------------------------
+Sat Feb 14 12:51:18 CET 2009 - coolo@suse.de
+
+- make it build without kdegraphics3 - it will default to acroread
+  for now.
+
+-------------------------------------------------------------------
+Sat Sep 20 19:46:28 CEST 2008 - stbinner@suse.de
+
+- update to version 2.0.2: bugfixes
+
+-------------------------------------------------------------------
+Thu Apr 24 11:17:37 CEST 2008 - stbinner@suse.de
+
+- update to version 2.0.1rc1:
+   - Add \newlength as a variation of newcommand
+   - Add url.cwl, svninfo.cwl, svn-multi.cwl, yfonts.cwl, virginialake.cwl
+   - Allow ":" and "-" in citation keys, important for codecompletion
+   - Highlight & and @{} in tabular like environments
+   - Ignore Noweb blocks
+   - and many bugfixes
+-------------------------------------------------------------------
+Wed Nov 21 11:17:13 CET 2007 - stbinner@suse.de
+
+- update to version 2.0:
+  * Add auto completion in abbreviation mode
+  * Added commands to work directly with sectioning on the structure
+    view: copy, cut, paste, select, delete, comment, quick preview
+  * New symbol view
+  * Added a scripting interface to kile
+  * Add support for TexLive 2005/2007
+  * Preview of mathgroups
+  * For whole new features and bugfix list see ChangeLog
+
+-------------------------------------------------------------------
+Mon Jul  9 09:44:08 CEST 2007 - stbinner@suse.de
+
+- Recommend instead of require gnuplot and xfig (#288403)
+
+-------------------------------------------------------------------
+Sun Apr 22 18:04:30 CEST 2007 - aj@suse.de
+
+- Use texlive.
+
+-------------------------------------------------------------------
+Mon Dec  4 15:34:58 CET 2006 - stbinner@suse.de
+
+- update to version 1.9.3:
+   * Prepared the latex syntax file for beamer commands
+   - Recognize escaped chars in \newcommand. 
+   - Use KPDF as embedded viewer for quick preview, because KPDF can
+     remember current settings. 
+   - Bugs in tabular wizard, when merging, breaking and merging again
+     some cells
+   - Quote replacement should not happen inside verbatim/verb environment
+   - Fix bug in tabular wizard, when breaking some multicolumn cells
+   - Don't use default permissions for backup file (CVE CAN-2005-1920
+     also applies to kile)
+   - Fix bug in syntax highlighting: mathmode in optional parameter
+   - Allow tools with brackets in the configuration string also in
+     sequence tools, fixed also the crash which hid the bug. 
+   - One fix in latex-document-cwl and color.cwl
+   - Fix crash when adding a file to a project (with no open documents)
+     which contains an undefined reference
+   - Improve the logic for closing environments
+   - Don't treat \\[foo] as a math environment
+   - Remove selected text also if we insert a "
+
+-------------------------------------------------------------------
+Sat Aug 26 14:41:09 CEST 2006 - stbinner@suse.de
+
+- update to version 1.9.2
+   * Add autoref command to standard reference commands
+   * Remember the setting of MakeIndexOptions checkbox in the
+     project settings dialog.
+   * Added utf-8 and other encodings to the quickdocument dialog.
+   * Make the "New Tool" dialog box big enough.
+   * Check if masterdocs in kilepr files exist, should fix some
+     problems with upgrades from kile 1.8.
+   * Searching for environments in Edit functions improved.
+   * Take array as math environment instead of tabular in
+     Configure->Latex Environments.
+   * Don't crash if a user changes the icon of a toolbar item.
+   * Allow a few more punctuation in codecompletion of citation keys.
+   * Remember last working directory in 'find in files' dialog
+   * Tabular wizard should insert all entered elements.
+   * Only autosave files which have been modified.
+   * Delete comma of last bibtex entry if Bibliographie->Clean is called.
+   * Quick Preview fails if graphics are included in selection
+
+-------------------------------------------------------------------
+Mon Jul  3 15:14:03 CEST 2006 - adrian@suse.de
+
+- update to version 1.9.1
+  * a number of bugfixes
+  * Add the possibility to use bullets in user tags via a new placeholder %B.
+  * Colour bullets so that they can be spotted easily.
+  * new cwl file for the textcomp and import package.
+  * we now highlight TODO, FIXME in comments. (only if they are not in normal text)
+
+-------------------------------------------------------------------
+Tue May 30 07:39:04 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Tue Mar 28 16:15:18 CEST 2006 - stbinner@suse.de
+
+- update to version 1.9
+   * over 50 bug fixes and wishes implemented
+
+-------------------------------------------------------------------
+Fri Mar 24 11:28:41 CET 2006 - coolo@suse.de
+
+- require latex (#160482)
+
+-------------------------------------------------------------------
+Fri Mar  3 14:10:48 CET 2006 - coolo@suse.de
+
+- fix array subscription (#154849)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 17:25:06 CEST 2005 - stbinner@suse.de
+
+- update to version 1.8.1
+
+-------------------------------------------------------------------
+Mon May 23 10:09:11 CEST 2005 - adrian@suse.de
+
+- update to version 1.8
+
+-------------------------------------------------------------------
+Thu Feb 10 14:10:09 CET 2005 - adrian@suse.de
+
+- do not require te_pdf anymore
+
+-------------------------------------------------------------------
+Sun Nov 14 19:59:42 CET 2004 - ro@suse.de
+
+- fix file conflicts with kdelibs3
+
+-------------------------------------------------------------------
+Tue Oct 19 17:08:59 CEST 2004 - adrian@suse.de
+
+- update to version 1.7.1
+
+-------------------------------------------------------------------
+Thu May 13 16:34:20 CEST 2004 - adrian@suse.de
+
+- update to version 1.6.3
+
+-------------------------------------------------------------------
+Fri Apr 23 14:06:39 CEST 2004 - adrian@suse.de
+
+- fix typo in Requires: (reported by Hendric Stattmann)
+
+-------------------------------------------------------------------
+Mon Apr 19 18:29:29 CEST 2004 - adrian@suse.de
+
+- update to version 1.6.2
+- add Requires to kdegrpahics3-tex
+
+-------------------------------------------------------------------
+Sun Feb  1 10:56:13 CET 2004 - adrian@suse.de
+
+- update to version 1.6.1
+  * crash fixes
+  * KDE 3.2 related changes
+
+-------------------------------------------------------------------
+Sat Nov  1 12:42:31 CET 2003 - adrian@suse.de
+
+- update to version 1.6
+  * New editor part (katepart)
+  * Project management (group files, let Kile detect the master document 
+    automatically, etc.)
+
+-------------------------------------------------------------------
+Tue Aug 12 11:00:32 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Fri Jul 18 15:30:45 CEST 2003 - adrian@suse.de
+
+- update to version 1.5.2
+
+-------------------------------------------------------------------
+Thu Jun 12 14:41:12 CEST 2003 - coolo@suse.de
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Tue Apr 15 12:05:01 CEST 2003 - adrian@suse.de
+
+- update to version 1.5
+
+-------------------------------------------------------------------
+Tue Feb 11 10:21:16 CET 2003 - adrian@suse.de
+
+- update to 1.4
+
+-------------------------------------------------------------------
+Sat Jan 25 19:51:18 CET 2003 - adrian@suse.de
+
+- fix build with gcc 3.3
+
+-------------------------------------------------------------------
+Sat Jan 18 14:52:22 CET 2003 - adrian@suse.de
+
+- update to 1.32
+
+-------------------------------------------------------------------
+Fri Dec 13 15:36:37 CET 2002 - adrian@suse.de
+
+- update to 1.31
+
+-------------------------------------------------------------------
+Mon Nov 11 14:12:47 CET 2002 - coolo@suse.de
+
+- update to 1.3
+
+-------------------------------------------------------------------
+Sun Aug 25 20:13:35 CEST 2002 - adrian@suse.de
+
+- update to 1.2
+  * translation and bugfix release
+- fix postscript preview
+
+-------------------------------------------------------------------
+Mon Jul 29 11:47:31 CEST 2002 - coolo@suse.de
+
+- update to 1.1
+
+-------------------------------------------------------------------
+Sat Jun 15 10:57:04 CEST 2002 - adrian@suse.de
+
+- update to 1.0 final release
+
+-------------------------------------------------------------------
+Mon May 27 12:05:34 CEST 2002 - adrian@suse.de
+
+- use update_admin
+
+-------------------------------------------------------------------
+Tue Apr 16 12:21:52 CEST 2002 - adrian@suse.de
+
+- add missing Requires as suggested by Kand-ALF
+
+-------------------------------------------------------------------
+Wed Apr 10 13:54:50 CEST 2002 - adrian@suse.de
+
+- rename to kile
+- update to beta 1.0 
+- KDE 3 based now
+
+-------------------------------------------------------------------
+Tue Dec 18 16:05:15 CET 2001 - adrian@suse.de
+
+- fix build root
+
+-------------------------------------------------------------------
+Mon Dec 17 14:53:30 CET 2001 - adrian@suse.de
+
+- update to version 1.7
+
+-------------------------------------------------------------------
+Tue Nov 13 00:59:51 CET 2001 - ro@suse.de
+
+- fix for automake 1.5 
+
+-------------------------------------------------------------------
+Fri Nov  9 12:24:30 CET 2001 - ro@suse.de
+
+- use kde2-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Mon Aug 13 15:51:56 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sp_libs> to <sp-devel>
+
+-------------------------------------------------------------------
+Tue Aug  7 23:59:46 CEST 2001 - adrian@suse.de
+
+- autoconf 2.52 fixes
+
+-------------------------------------------------------------------
+Sun Jul 15 17:07:32 CEST 2001 - adrian@suse.de
+
+- new version 1.5
+
+-------------------------------------------------------------------
+Thu Jul  5 12:22:40 CEST 2001 - ro@suse.de
+
+- autoconf 2.50 fixes 
+
+-------------------------------------------------------------------
+Thu Apr 19 16:39:47 CEST 2001 - adrian@suse.de
+
+- Spec file created from ktexmaker2-1.3.tar.bz2 by autospec
+
+

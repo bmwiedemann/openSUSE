@@ -1,0 +1,18 @@
+[Unit]
+Description=HylaFAX faxgetty for %I
+Documentation=man:faxgetty(8C)
+After=hylafax-faxq.service
+PartOf=hylafax.target
+
+[Service]
+ExecStart=-/usr/sbin/faxgetty /dev/%I
+Type=idle
+Restart=always
+RestartSec=0
+UtmpIdentifier=%I
+TTYPath=/dev/%I
+KillMode=process
+IgnoreSIGPIPE=no
+
+[Install]
+WantedBy=multi-user.target 

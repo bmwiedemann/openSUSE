@@ -1,0 +1,604 @@
+-------------------------------------------------------------------
+Sun Jun 23 17:44:06 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to afl++ 2.52c version, community fork. It integrates 
+  various community patches.
+  - community patches to make llvm_mode and qemu_mode faster, plus new features and bugfixes
+  - qemu upgraded to 3.1
+  - aflfast powerschedules added
+  - llvm_mode now supports llvm up to version 8
+
+-------------------------------------------------------------------
+Thu Aug 30 15:03:49 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non X86* platforms
+
+-------------------------------------------------------------------
+Sun Nov  5 07:57:53 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.52b:
+  * Upgraded QEMU patches from 2.3.0 to 2.10.0. Required troubleshooting
+    several weird issues.
+  * Added setsid to afl-showmap. See the notes for 2.51b.
+  * Added target mode (deferred, persistent, qemu, etc) to fuzzer_stats.
+  * afl-tmin should now save a partially minimized file when Ctrl-C
+    is pressed.
+  * Added an option for afl-analyze to dump offsets in hex.
+  * Added support for parameters in triage_crashes.sh.
+
+-------------------------------------------------------------------
+Sun Sep  3 12:08:41 UTC 2017 - astieger@suse.com
+
+- afl 2.51b:
+  * Make afl-tmin call setsid to prevent glibc traceback junk from
+    showing up on the terminal
+- includes changes form 2.50b:
+  * Fix a timing corner case
+  * Address a libtokencap / pthreads incompatibility issue
+  * Add AFL_FAST_CAL.
+  * In-place resume now preserves .synced
+
+-------------------------------------------------------------------
+Sat Jul 29 23:04:43 UTC 2017 - meissner@suse.com
+
+- include docs/README
+
+-------------------------------------------------------------------
+Wed Jul 26 06:47:03 UTC 2017 - meissner@suse.com
+
+- Version 2.49b
+  - Added AFL_TMIN_EXACT to allow path constraint for crash minimization.
+  - Added dates for releases (retroactively for all of 2017).
+- Version 2.48b
+  - Added AFL_ALLOW_TMP to permit some scripts to run in /tmp.
+  - Fixed cwd handling in afl-analyze (similar to the quirk in afl-tmin).
+  - Made it possible to point -o and -f to the same file in afl-tmin.
+- Version 2.47b
+  - Fixed cwd handling in afl-tmin. Spotted by Jakub Wilk.
+- Version 2.46b
+  - libdislocator now supports AFL_LD_NO_CALLOC_OVER for folks who do not
+    want to abort on calloc() overflows.
+  - Made a minor fix to libtokencap. Reported by Daniel Stender.
+  - Added a small JSON dictionary, inspired on a dictionary done by Jakub Wilk.
+
+-------------------------------------------------------------------
+Fri Jul  7 14:59:31 UTC 2017 - meissner@suse.com
+
+- update to 2.45b:
+  - Added strstr, strcasestr support to libtokencap. Contributed by
+    Daniel Hodson.
+  - Fixed a resumption offset glitch spotted by Jakub Wilk.
+  - There are definitely no bugs in afl-showmap -c now.
+
+-------------------------------------------------------------------
+Mon Jul  3 08:08:58 UTC 2017 - astieger@suse.com
+
+- update to 2.44b:
+  * Add visual indicator of ASAN / MSAN mode when compiling
+  * Add support for afl-showmap coredumps (-c)
+  * Add LD_BIND_NOW=1 for afl-showmap by default
+  * Added AFL_NO_ARITH to aid in the fuzzing of text-based formats
+  * Renamed the R() macro to avoid a problem with llvm_mode in the
+    latest versions of LLVM
+
+-------------------------------------------------------------------
+Wed Apr 12 06:25:50 UTC 2017 - meissner@suse.com
+
+- update to 2.41b:
+  - Addressed a major user complaint related to timeout detection. Timing out
+    inputs are now binned as "hangs" only if they exceed a far more generous
+    time limit than the one used to reject slow paths.
+- update to 2.40b:
+  - Fixed a minor oversight in the insertion strategy for dictionary words.
+    Spotted by Andrzej Jackowski.
+  - Made a small improvement to the havoc block insertion strategy.
+  - Adjusted color rules for "is it done yet?" indicators.
+
+-------------------------------------------------------------------
+Wed Mar  8 20:52:05 UTC 2017 - sfalken@opensuse.org
+
+- Changed %doc line, to clear buildfailure in openSUSE:Factory
+  Due to unpackaged files
+
+-------------------------------------------------------------------
+Fri Feb 10 12:09:01 UTC 2017 - meissner@suse.com
+
+- update to 2.39b:
+  - Improved error reporting in afl-cmin. Suggested by floyd.
+  - Made a minor tweak to trace-pc-guard support. Suggested by kcc.
+  - Added a mention of afl-monitor.
+
+-------------------------------------------------------------------
+Mon Jan 30 14:21:37 UTC 2017 - astieger@suse.com
+
+- update to  2.38b:
+  * Added -mllvm -sanitizer-coverage-block-threshold=0 to
+    trace-pc-guard mode
+  * Fixed a cosmetic bad free() bug when aborting -S sessions
+  * Made a small change to afl-whatsup to sort fuzzers by name.
+  * Fixed a minor issue with malloc(0) in libdislocator
+  * Changed the clobber pattern in libdislocator to a slightly more
+    reliable one
+  * Added a note about THP performance
+  * Added a somewhat unofficial support for running afl-tmin with a
+    baseline "mask" that causes it to minimize only for edges that
+    are unique to the input file, but not to the "boring" baseline.
+  * "Fixed" a getPassName() problem with never versions of clang.
+
+-------------------------------------------------------------------
+Wed Oct 19 20:05:42 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.35b:
+  * Fixed a minor cmdline reporting glitch, spotted by Leo Barnes.
+  * Fixed a silly bug in libdislocator. Spotted by Johannes Schultz.
+- Changes for version 2.34b:
+  * Added a note about afl-tmin to technical_details.txt.
+  * Added support for AFL_NO_UI, as suggested by Leo Barnes.
+- Changes for version 2.33b:
+  * Added code to strip -Wl,-z,defs and -Wl,--no-undefined for
+    fl-clang-fast, since they interfere with -shared. Spotted and
+    iagnosed by Toby Hutton.
+  * Added some fuzzing tips for Android.
+
+-------------------------------------------------------------------
+Thu Aug 25 12:45:55 UTC 2016 - meissner@suse.com
+
+- Version 2.32b:
+  - Added a check for AFL_HARDEN combined with AFL_USE_*SAN. Suggested by Hanno Boeck.
+  - Made several other cosmetic adjustments to cycle timing in the wake of the big tweak made in 2.31b.
+
+- Version 2.31b:
+  - Changed havoc cycle counts for a marked performance boost, especially
+    with -S / -d. See the discussion of FidgetyAFL in:
+
+    https://groups.google.com/forum/#!topic/afl-users/fOPeb62FZUg
+
+    While this does not implement the approach proposed by the authors of
+    the CCS paper, the solution is a result of digging into that research;
+    more improvements may follow as I do more experiments and get more
+    definitive data.
+- Version 2.30b:
+  - Made minor improvements to persistent mode to avoid the remote
+    possibility of "no instrumentation detected" issues with very low
+    instrumentation densities.
+  - Fixed a minor glitch with a leftover process in persistent mode.
+    Reported by Jakub Wilk and Daniel Stender.
+  - Made persistent mode bitmaps a bit more consistent and adjusted the way
+    this is shown in the UI, especially in persistent mode.
+
+- Version 2.29b:
+  - Made a minor #include fix to llvm_mode. Suggested by Jonathan Metzman.
+  - Made cosmetic updates to the docs.
+- Version 2.28b:
+  - Added "life pro tips" to docs/.
+  - Moved testcases/_extras/ to dictionaries/ for visibility.
+  - Made minor improvements to install scripts.
+  - Added an important safety tip.
+- Version 2.27b:
+  - Added libtokencap, a simple feature to intercept strcmp / memcmp and
+    generate dictionary entries that can help extend coverage.
+  - Moved libdislocator to its own dir, added README.
+  - The demo in experimental/instrumented_cmp is no more.
+- Version 2.26b:
+  - Made a fix for libdislocator.so to compile on MacOS X.
+  - Added support for DYLD_INSERT_LIBRARIES.
+  - Renamed AFL_LD_PRELOAD to AFL_PRELOAD.
+- Version 2.25b:
+  - Made some cosmetic updates to libdislocator.so, renamed one env
+    variable.
+- Version 2.24b:
+  - Added libdislocator.so, an experimental, abusive allocator. Try
+    it out with AFL_LD_PRELOAD=/path/to/libdislocator.so when running
+    afl-fuzz.
+- Version 2.23b:
+  - Improved the stability metric for persistent mode binaries. Problem
+    spotted by Kurt Roeckx.
+  - Made a related improvement that may bring the metric to 100% for those
+    targets.
+- Version 2.22b:
+  - Mentioned the potential conflicts between MSAN / ASAN and FORTIFY_SOURCE.
+    There is no automated check for this, since some distros may implicitly
+    set FORTIFY_SOURCE outside of the compiler's argv[].
+  - Populated the support for AFL_LD_PRELOAD to all companion tools.
+  - Made a change to the handling of ./afl-clang-fast -v. Spotted by
+    Jan Kneschke.
+
+-------------------------------------------------------------------
+Sat Jul 23 19:10:30 UTC 2016 - astieger@suse.com
+
+- afl 2.21b:
+  * Minor UI fixes
+- includes changes from 2.20b:
+  * Revamp handling of variable paths
+  * Stablility improvements
+  * Include current input bitmap density in UI
+  * Add experimental support for parallelizing -M.
+- includes changes from 2.19b:
+  * Ensure auto CPU binding happens at non-overlapping times
+- includes changes from 2.18b
+  * Performance improvements
+
+-------------------------------------------------------------------
+Tue Jun 28 06:26:03 UTC 2016 - astieger@suse.com
+
+- afl 2.17b:
+  * Remove error-prone and manual -Z option
+  * automatically bind to the first free core
+
+-------------------------------------------------------------------
+Wed Jun 15 18:26:54 UTC 2016 - astieger@suse.com
+
+- afl 2.14b:
+  - Added FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION as a macro
+    defined when compiling with afl-gcc and friends
+  - Refreshed some of the non-x86 docs.
+
+-------------------------------------------------------------------
+Tue May 31 11:18:02 UTC 2016 - astieger@suse.com
+
+- afl 2.13b:
+  * Fixed a spurious build test error with trace-pc and
+    llvm_mode/Makefile.
+  * Fixed a cosmetic issue with afl-whatsup
+- includes changes from 2.12b
+  * Fixed a minor issue in afl-tmin that can make alphabet
+    minimization less efficient during passes > 1
+
+-------------------------------------------------------------------
+Mon May  2 11:02:02 UTC 2016 - astieger@suse.com
+
+- afl 2.11b:
+  - Fixed a minor typo in instrumented_cmp
+  - Added a missing size check for deterministic insertion steps.
+  - Made an improvement to afl-gotcpu when -Z not used.
+  - Fixed a typo in post_library_png.so.c in experimental/
+
+-------------------------------------------------------------------
+Sat Apr 16 15:12:46 UTC 2016 - astieger@suse.com
+
+- afl 2.10b:
+  * Fix a minor core counting glitch
+
+-------------------------------------------------------------------
+Mon Mar 28 19:11:03 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.09b
+  * Made several documentation updates.
+  * Added some visual indicators to promote and simplify the use 
+    of -Z.
+- Changes for 2.08b
+  * Added explicit support for -m32 and -m64 for llvm_mode. 
+    Inspired by a request from Christian Holler.
+  * Added a new benchmarking option, as requested by Kostya 
+    Serebryany.
+- Changes for 2.07b
+  * Added CPU affinity option (-Z) on Linux. With some caution, 
+    this can offer a significant (10%+) performance bump and 
+    reduce jitter. Proposed by Austin Seipp.
+  * Updated afl-gotcpu to use CPU affinity where supported.
+  * Fixed confusing CPU_TARGET error messages with QEMU build.
+    Spotted by Daniel Komaromy and others.
+- Changes for 2.06b
+  * Worked around LLVM persistent mode hiccups with -shared code.
+    Contributed by Christian Holler.
+  * Added __AFL_COMPILER as a convenient way to detect that 
+    something is built under afl-gcc / afl-clang / afl-clang-fast 
+    and enable custom optimizations in your code. Suggested by 
+    Pedro Corte-Real.
+  * Upstreamed several minor changes developed by Franjo Ivancic to
+    allow AFL to be built as a library. This is fairly use-specific
+    and may have relatively little appeal to general audiences.
+
+-------------------------------------------------------------------
+Sun Feb 28 13:59:04 UTC 2016 - astieger@suse.com
+
+- afl 2.05b:
+  * Put __sanitizer_cov_module_init & co behind #ifdef to avoid
+    problems with ASAN.
+
+-------------------------------------------------------------------
+Wed Feb 24 21:52:33 UTC 2016 - astieger@suse.com
+
+- afl 2.04b:
+  * remove indirect-calls coverage from -fsanitize-coverage
+  * LLVM: Added experimental -fsanitize-coverage=trace-pc support
+  - LLVM: better support non-standard map sizes
+  - LLVM: use thread-local execution tracing
+  - Force-disabled symbolization for ASAN
+  - Added AFL_LD_PRELOAD to allow LD_PRELOAD to be set for targets
+    without affecting AFL itself
+  - Fixed a "lcamtuf can't count to 16" bug in the havoc stage.
+
+-------------------------------------------------------------------
+Tue Feb 16 15:37:01 UTC 2016 - astieger@suse.com
+
+- afl 2.01b:
+  - updates to color handling
+  - Fixed an installation issue with afl-as
+
+-------------------------------------------------------------------
+Thu Feb 11 12:21:39 UTC 2016 - astieger@suse.com
+
+- afl 1.99b:
+  - Revamp the output and the internal logic of afl-analyze.
+  - Clean up color handling code
+  - added support for background colors.
+
+-------------------------------------------------------------------
+Wed Feb 10 20:25:47 UTC 2016 - astieger@suse.com
+
+- afl 1.98b:
+  - new tool afl-analyze
+
+-------------------------------------------------------------------
+Sat Dec 19 15:45:22 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.96b
+  * Added -fpic to CFLAGS for the clang plugin, as suggested by 
+		Hanno Boeck.
+  * Made another clang change (IRBuilder) suggested by Jeff Trull.
+  * Fixed several typos, spotted by Jakub Wilk.
+  * Added support for AFL_SHUFFLE_QUEUE, based on discussions with
+    Christian Holler.
+
+-------------------------------------------------------------------
+Fri Nov 13 09:06:47 UTC 2015 - astieger@suse.com
+
+- afl 1.95b:
+  * Fixed a harmless bug when handling -B
+  * Made the exit message a bit more accurate when
+    AFL_EXIT_WHEN_DONE is set.
+  * Added some error-checking for old-style forkserver syntax.
+  * Switched from exit() to _exit() in injected code to avoid
+    snafus with destructors in C++ code.
+  * Made a change to avoid spuriously setting __AFL_SHM_ID when
+    AFL_DUMB_FORKSRV is set in conjunction with -n.
+
+-------------------------------------------------------------------
+Fri Oct  2 15:11:23 UTC 2015 - astieger@suse.com
+
+- afl 1.94b:
+  * Changed allocator alignment to improve support for non-x86 systems
+    (now that llvm_mode makes this more feasible).
+  * Fixed an obscure bug that would affect people trying to use afl-gcc
+    with $TMP set but $TMPDIR absent.
+
+-------------------------------------------------------------------
+Mon Sep  7 13:22:07 UTC 2015 - astieger@suse.com
+
+- afl 1.92b:
+  * C++ fix (namespaces)
+
+-------------------------------------------------------------------
+Thu Sep  3 14:32:09 UTC 2015 - astieger@suse.com
+
+- afl 1.91b:
+  * C++ instrumentation fixes
+- includes changes from 1.90b:
+  * documentation updates
+  * Fixed a potential problem with deferred mode signatures getting
+    optimized out by the linker (with --gc-sections).
+
+-------------------------------------------------------------------
+Wed Sep  2 07:57:31 UTC 2015 - astieger@suse.com
+
+- afl 1.89b:
+  * Revamped the support for persistent and deferred forkserver
+    modes. Both now feature simpler syntax and do not require
+    companion env variables.
+  * Added a bit more info about afl-showmap.
+
+-------------------------------------------------------------------
+Sun Aug 30 23:40:19 UTC 2015 - astieger@suse.com
+
+- afl 1.88b:
+  * Make AFL_EXIT_WHEN_DONE work in non-tty mode. 
+
+-------------------------------------------------------------------
+Thu Aug 27 14:32:46 UTC 2015 - astieger@suse.com
+
+- afl 1.87b:
+  * Add QuickStartGuide.txt and other documentation updates
+
+-------------------------------------------------------------------
+Mon Aug 10 19:49:56 UTC 2015 - astieger@suse.com
+
+- afl 1.86b:
+  * Added support for AFL_SKIP_CRASHES
+  * Removed the hard-fail terminal size check
+
+-------------------------------------------------------------------
+Wed Aug  5 13:46:26 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.85b
+  * Fixed a garbled sentence in notes on parallel fuzzing.
+  * Fixed a minor glitch in afl-cmin.
+- Changes for 1.84b
+  * Made SIMPLE_FILES behave as expected when naming backup 
+    directories for crashes and hangs.
+  * Added the total number of favored paths to fuzzer_stats.
+  * Made afl-tmin, afl-fuzz, and afl-cmin reject negative values 
+    passed to -t and -m, since they generally won't work as 
+    expected.
+  * Made a fix for no lahf / sahf support on older versions of 
+    FreeBSD.
+
+-------------------------------------------------------------------
+Mon Jun 15 09:07:34 UTC 2015 - astieger@suse.com
+
+- afl 1.83b:
+  * fixes for platforms other than GNU/Linux
+
+-------------------------------------------------------------------
+Sat Jun 13 10:41:30 UTC 2015 - astieger@suse.com
+
+- afl 1.82b:
+  * Fixed a harmless but annoying race condition in persistent mode
+  * Updated persistent mode documentation
+  - Tweaked AFL_PERSISTENT to force AFL_NO_VAR_CHECK.
+- afl 1.81b:
+  * Added persistent mode for in-process fuzzing. 
+  * in-place resume code to preserve crashes/README.txt.
+
+-------------------------------------------------------------------
+Tue May 26 10:59:53 UTC 2015 - astieger@suse.com
+
+- afl 1.80b:
+  - Made afl-cmin tolerant of whitespaces in filenames
+  - Added support for AFL_EXIT_WHEN_DONE
+
+-------------------------------------------------------------------
+Mon May 25 07:43:23 UTC 2015 - astieger@suse.com
+
+- afl 1.79b:
+  - Added support for dictionary levels, see testcases/README.testcases.
+  - Reworked the SQL dictionary to use levels.
+  - Added a note about Preeny.
+
+-------------------------------------------------------------------
+Tue May 19 07:26:27 UTC 2015 - astieger@suse.com
+
+- builds for i586 x86_64 only
+
+-------------------------------------------------------------------
+Mon May 18 17:12:36 UTC 2015 - astieger@suse.com
+
+- afl 1.78b:
+  - Added a dictionary for PDF
+  - Added several references to afl-cov
+
+-------------------------------------------------------------------
+Fri May  8 13:05:09 UTC 2015 - astieger@suse.com
+
+- afl 1.77b:
+  * additional fuzzing functionality
+  * reduce number of duplicates
+  * documentation updates  
+  * qemu_mode with qemu 2.3.0
+
+-------------------------------------------------------------------
+Mon Apr 27 08:45:05 UTC 2015 - astieger@suse.com
+
+- afl 1.73b:
+  - Fixed a bug in effector maps that could sometimes cause more
+    fuzzing than necessary, or SEGV
+- includes changes from 1.72b:
+  - Fixed a glitch in non-x86 install
+  - Added a minor safeguard to llvm_mode Makefile
+
+-------------------------------------------------------------------
+Mon Apr 20 17:20:09 UTC 2015 - astieger@suse.com
+
+- afl 1.71b:
+  - Fix bug with installed copies of AFL trying to use QEMU mode.
+  - Add last path / crash / hang times to fuzzer_stats
+- with changes from 1.70b:
+  - Modify resumption code to reuse the original timeout value when
+    resuming a session if -t is not given. This prevents timeout
+    creep in continuous fuzzing.
+  - Add improved error messages for failed handshake when
+    AFL_DEFER_FORKSRV is set.
+  - slight improvement to llvm_mode/Makefile
+  - Refresh several bits of documentation.
+
+-------------------------------------------------------------------
+Thu Apr 16 07:19:18 UTC 2015 - astieger@suse.com
+
+- afl 1.69b:
+  - Added support for deferred initialization in LLVM mode.
+- afl 1.68b:
+  - Fixed a minor PRNG glitch that would make the first seconds of
+    a fuzzing job deterministic.
+  - Made tmp[] static in the LLVM runtime to keep Valgrind happy
+  - Clarified the footnote in README.
+
+-------------------------------------------------------------------
+Mon Apr 13 19:58:55 UTC 2015 - astieger@suse.com
+
+- afl 1.67b:
+  - One more correction to llvm_mode Makefile
+- afl 1.66b:
+  - Added CC / CXX support to llvm_mode Makefile
+  - Fixed 'make clean' with gmake
+  - Fixed 'make -j n clean all'
+  - Removed build date and time from banners to give people deterministic
+    builds
+  - drop afl-1.46b-nodate.patch, thus obsoleted
+
+-------------------------------------------------------------------
+Mon Apr 13 15:11:11 UTC 2015 - astieger@suse.com
+
+- afl 1.65b:
+  - Fixed a snafu with some leftover code in afl-clang-fast.
+  - Corrected even moar typos.
+
+-------------------------------------------------------------------
+Sun Apr 12 09:41:38 UTC 2015 - astieger@suse.com
+
+- afl 1.64b:
+  - improve compatibility with non-ELF platforms.
+  - Fixed a problem with afl-clang-fast and -shared libraries.
+  - Removed unnecessary instrumentation density adjustment for LLVM
+- includes changes from 1.63b:
+  - Updated cgroups_asan/
+  - Fixed typos
+
+-------------------------------------------------------------------
+Sat Apr 11 07:15:12 UTC 2015 - astieger@suse.com
+
+- afl 1.62b:
+  - Improved the handling of -x in afl-clang-fast,
+  - Improved the handling of low AFL_INST_RATIO settings for QEMU and
+    LLVM modes.
+  - Fixed the llvm-config bug for good
+- includes changes from 1.61b:
+  - Fixed an obscure bug compiling OpenSSL with afl-clang-fast.
+  - Fixed a 'make install' bug on non-x86 systems
+  - Fixed a problem with half-broken llvm-config
+
+-------------------------------------------------------------------
+Thu Apr  9 13:12:37 UTC 2015 - astieger@suse.com
+
+- afl 1.60b:
+  * Allowed experimental/llvm_instrumentation/ to graduate to llvm_mode/.
+  * Removed experimental/arm_support/, since it's completely broken and likely
+    unnecessary with LLVM support in place.
+  * Added ASAN cgroups script to experimental/asan_cgroups/, updated existing
+    docs. Courtesy Sam Hakim and David A. Wheeler.
+  * Refactored afl-tmin to reduce the number of execs in common use cases.
+    Ideas from Jonathan Neuschafer and Turo Lamminen.
+  * Added a note about CLAs at the bottom of README.
+  * Renamed testcases_readme.txt to README.testcases for some semblance of
+    consistency.
+  * Made assorted updates to docs.
+- includes changes from 1.59b
+  * Imported Laszlo Szekeres' experimental LLVM instrumentation into
+    experimental/llvm_instrumentation. I'll work on including it in the 
+    "mainstream" version soon.
+- updates afl-1.46b-nodate.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 20:26:35 UTC 2015 - astieger@suse.com
+
+- fix SLE 11 SP3 build, add afl-1.58b-fix-paths.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 14:40:09 UTC 2015 - astieger@suse.com
+
+- afl 1.58b:
+  * Added a workaround for abort() behavior in -lpthread programs in
+    QEMU mode.
+  * Made several documentation updates, including links to the
+    static instrumentation tool (sister_projects.txt).
+- use libexecdir
+
+-------------------------------------------------------------------
+Tue Mar 24 15:58:08 UTC 2015 - meissner@suse.com
+
+- updated to 1.57b
+
+-------------------------------------------------------------------
+Mon Feb 16 12:53:36 UTC 2015 - astieger@suse.com
+
+- initial package
+

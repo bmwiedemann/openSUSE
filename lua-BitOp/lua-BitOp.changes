@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Mon Aug  7 23:10:54 UTC 2017 - jengelh@inai.de
+
+- Move single-file -doc subpackage into main package.
+
+-------------------------------------------------------------------
+Thu Jul 13 15:14:48 UTC 2017 - tchvatal@suse.com
+
+- Switch to mutlibuild providing package for all compatible lua
+  versions
+
+-------------------------------------------------------------------
+Tue Jul 11 08:12:10 UTC 2017 - tchvatal@suse.com
+
+- Fix build with properly namespaced lua5.1
+
+-------------------------------------------------------------------
+Wed Dec  2 14:27:12 UTC 2015 - ronisbr@gmail.com
+
+- Initial version based on devel:languages:lua/lua-bitop
+

@@ -1,0 +1,92 @@
+--- aalib.m4
++++ aalib.m4
+@@ -9,7 +9,7 @@
+ dnl AM_PATH_AALIB([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+ dnl Test for AALIB, and define AALIB_CFLAGS and AALIB_LIBS
+ dnl
+-AC_DEFUN(AM_PATH_AALIB,
++AC_DEFUN([AM_PATH_AALIB],
+ [dnl 
+ dnl Get the cflags and libraries from the aalib-config script
+ dnl
+--- aavga-1.0/aavga.c
++++ aavga-1.0/aavga.c
+@@ -506,7 +506,7 @@
+       if (i >= AA_UNKNOWN && i < AA_RELEASE)
+ 	{
+ 	  /*fprintf (stderr, "key: %x pressed\n",i);*/
+-		return;
++		return -1;
+ 	  continue;
+ 	}
+       if (i >= AA_RELEASE)
+--- configure.in
++++ configure.in
+@@ -1,4 +1,3 @@
+-include(aclocal.m4)
+ AC_INIT(src/aalib.c)
+ AM_INIT_AUTOMAKE(aalib,1.4.0)
+ AC_CANONICAL_HOST
+@@ -126,7 +125,7 @@
+ 
+ 
+ search_ncurses=true
+-AC_DEFUN(AC_USE_SUNOS_CURSES, [
++AC_DEFUN([AC_USE_SUNOS_CURSES], [
+ 	search_ncurses=false
+ 	curses_driver=true
+ 	screen_manager="SunOS 4.x /usr/5include curses"
+@@ -140,7 +139,7 @@
+ 	AC_WARN(Reconsider using Slang)
+ ])
+ 
+-AC_DEFUN(AC_USE_OSF1_CURSES, [
++AC_DEFUN([AC_USE_OSF1_CURSES], [
+        AC_MSG_RESULT(Using OSF1 curses)
+        search_ncurses=false
+        curses_driver=true
+@@ -152,7 +151,7 @@
+        AALIB_LIBS="$AALIB_LIBS -lcurses"
+ ])
+ 
+-AC_DEFUN(AC_USE_SYSV_CURSES, [
++AC_DEFUN([AC_USE_SYSV_CURSES], [
+ 	AC_MSG_RESULT(Using SysV curses)
+         curses_driver=true
+ 	AC_DEFINE(USE_SYSV_CURSES)
+@@ -208,7 +207,7 @@
+ )
+ 
+ if test  "$slang_driver_test" = yes; then
+-  AC_DEFUN(AC_SLANG, [
++  AC_DEFUN([AC_SLANG], [
+     if $search_slang
+     then
+         if test -f $1/$2
+@@ -246,7 +245,7 @@
+ dnl
+ dnl Parameters: directory filename LIBS_append CFLAGS_append nicename
+ dnl
+-AC_DEFUN(AC_NCURSES, [
++AC_DEFUN([AC_NCURSES], [
+     if $search_ncurses
+     then
+         if test -f $1/$2
+@@ -274,7 +273,7 @@
+ dnl
+ dnl Parameters: directory filename LIBS_append CFLAGS_append nicename
+ dnl
+-AC_DEFUN(AC_CURSES, [
++AC_DEFUN([AC_CURSES], [
+     if $search_ncurses
+     then
+         if test -f $1/$2
+@@ -320,7 +319,7 @@
+     if $search_ncurses 
+     then
+         AC_EGREP_HEADER(init_color, /usr/include/curses.h,
+-	    AC_USE_SYSV_CURSES)
++	    [AC_USE_SYSV_CURSES])
+     fi
+ 
+     dnl

@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jul 22 12:54:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.2:
+  * FIX: Shortcut last descendant calculation if possible for performance.
+  * FIX: Fix issue where Doctype strings can be mistaken for a normal text node in some cases.
+  * FIX: A top level tag is not a :root tag if it has sibling text nodes or tag nodes. This is an issue that mostly manifests when using html.parser as the parser will allow multiple root nodes.
+
+-------------------------------------------------------------------
+Mon May 20 08:57:36 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.1
+  - FIX: `:root`, `:contains()`, `:default`, `:indeterminate`, 
+    `:lang()`, and `:dir()` will properly account for HTML
+    `iframe` elements in their logic when selecting or matching
+     an element. Their logic will be restricted to the document
+     for which the element under consideration applies.
+  - FIX: HTML pseudo-classes will check that all key elements
+    checked are in the XHTML namespace (HTML parsers that do
+    not provide namespaces will assume the XHTML namespace).
+  - FIX: Ensure that all pseudo-class names are case
+    insensitive and allow CSS escapes.
+
+-------------------------------------------------------------------
+Fri Apr  5 08:26:37 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9
+  * NEW: Allow :contains() to accept a list of text to search 
+    for. (#115)
+  * NEW: Add new escape function for escaping CSS identifiers. (#125)
+  * NEW: Deprecate comments and icomments functions in the API to ensure
+    Soup Sieve focuses only in CSS selectors. comments and icomments
+    will most likely be removed in 2.0. (#130)
+  * NEW: Add Python 3.8 support. (#133)
+  * FIX: Don't install test files when installing the soupsieve
+    package. (#111)
+  * FIX: Improve efficiency of :contains() comparison.
+  * FIX: Null characters should translate to the Unicode REPLACEMENT
+    CHARACTER (U+FFFD) according to the specification. This applies
+    to CSS escaped NULL characters as well. (#124)
+  * FIX: Escaped EOF should translate to U+FFFD outside of CSS strings.
+    In a string, they should just be ignored, but as there is no case
+    where we could resolve such a string and still have a valid selector,
+    string handling remains the same. (#128)
+
+-------------------------------------------------------------------
+Thu Mar  7 11:20:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix test macro expansion
+
+-------------------------------------------------------------------
+Fri Mar  1 11:34:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fetch package from pypi
+- Update to 1.8:
+  * no obvious changelog
+- Run tests
+- Add missing dependencies
+
+-------------------------------------------------------------------
+Sun Feb  3 10:28:53 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- initial package version 1.7.3
+  (needed for beautifulsoup4 4.7)

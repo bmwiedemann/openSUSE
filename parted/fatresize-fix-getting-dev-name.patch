@@ -1,0 +1,73 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Sun, 3 Dec 2017 12:09:44 +0100
+Subject: Fix getting the device name from partition name
+References: boo#959181
+Patch-mainline: submitted, https://github.com/ya-mouse/fatresize/pull/4
+
+There are many partition device names like e.g. /dev/mmcblk0p1 where
+it is not enough to trim the trailing digits to get the disk device
+name. Using open() here would depend on a POSIX platform. So do it
+like _ped_device_probe() and silence libparted exceptions and try
+to get the device with ped_device_get(). Trim further trailing
+characters until libparted finds it. Print an error and exit if
+the partition name is invalid.
+
+Fixes #2
+
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ fatresize/fatresize.c |   29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+--- a/fatresize/fatresize.c
++++ b/fatresize/fatresize.c
+@@ -9,6 +9,7 @@
+ #include <unistd.h>
+ #include <ctype.h>
+ 
++#include <parted/parted.h>
+ #include <parted/device.h>
+ #include <parted/filesys.h>
+ 
+@@ -79,6 +80,18 @@ resize(const char* disk_device, int part
+ }
+ 
+ 
++/* Code parts have been taken from _ped_device_probe(). */
++static void
++probe_device(PedDevice **dev, const char *path)
++{
++	ped_exception_fetch_all();
++	*dev = ped_device_get(path);
++	if (!*dev)
++		ped_exception_catch();
++	ped_exception_leave_all();
++}
++
++
+ int
+ main(int argc, char** argv)
+ {
+@@ -126,6 +139,22 @@ main(int argc, char** argv)
+ 	disk_device = strndup(argv[1], pos - argv[1] + 1);
+ 	partition_number = strtol(pos + 1, NULL, 10);
+ 
++	PedDevice *peddev = NULL;
++	/* check if the device really exists */
++	while (pos != argv[1] && *pos != '/' && !peddev)
++	{
++		disk_device[pos - argv[1] + 1] = '\0';
++		probe_device(&peddev, disk_device);
++		--pos;
++	}
++	if (!peddev)
++	{
++		free(disk_device);
++		fprintf(stderr, "invalid device\n");
++		exit(EXIT_FAILURE);
++	}
++	ped_device_destroy(peddev);
++
+ 	if (argc == 3)
+ 	{
+ 		char* endptr = NULL;

@@ -1,0 +1,20 @@
+--- jna-4.5.1/native/dispatch.c~	2017-12-27 20:27:16.000000000 +0100
++++ jna-4.5.1/native/dispatch.c	2018-06-13 13:33:07.683171230 +0200
+@@ -652,7 +652,7 @@
+       int err = GET_LAST_ERROR();
+       JNA_set_last_error(env, err);
+       if ((flags & THROW_LAST_ERROR) && err) {
+-        char emsg[MSG_SIZE];
++        char emsg[MSG_SIZE - 13];
+         snprintf(msg, sizeof(msg), "[%d] %s", err, STR_ERROR(err, emsg, sizeof(emsg)));
+         throw_type = ELastError;
+         throw_msg = msg;
+@@ -1891,7 +1891,7 @@
+       int err = GET_LAST_ERROR();
+       JNA_set_last_error(env, err);
+       if (data->throw_last_error && err) {
+-        char emsg[MSG_SIZE];
++        char emsg[MSG_SIZE - 13];
+         snprintf(msg, sizeof(msg), "[%d] %s", err, STR_ERROR(err, emsg, sizeof(emsg)));
+         throw_type = ELastError;
+         throw_msg = msg;

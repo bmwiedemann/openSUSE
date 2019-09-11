@@ -1,0 +1,621 @@
+-------------------------------------------------------------------
+Wed Jul 17 13:08:41 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.1 (changes since 1.22.1):
+  * Update translations.
+  * schemas: Define schema for a default messenger
+  * check both {$prefix,/usr}/share/locale dirs for translation
+  * Add test code for mate-languages.
+  * Change url project's website
+  * configure: drop check for itstool
+  * build: use localedir instead of DATADIRNAME
+  * add abi check
+  * treewide: add meson build
+  * Simplify icons/Makefile.am
+  * i18n: port from intltool to gettext
+  * mate-about: subdir mate-version.xml.in.in
+  * configure.ac: subdir some of the build cruft
+  * mate-desktop-thumbnail: avoid 'NULL' parameter
+  * mate-hsv: avoid duplicate initialization in variable
+  * mate-hsv: avoid deprecated 'gdk_device_grab/ungrab'
+  * mate-colorsel: avoid deprecated 'GtkHSV', use 'MateHSV' instead
+  * MateHSV implementation (GtkHSV fork) 
+- html gtk-doc doesn't get build anymore, so we don't install it
+  anymore
+- remove patch:
+  * mate-desktop-gtk-3.20.patch: we don't support gtk3.22 anymore
+- build require gtk >= 3.22 and glib >= 2.50
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Use mate-desktop icon instead of mate for mate-about.
+  * Use radial gradient (Blur 13.9%, Opacity 73.4%) for MATE logo
+    shadow.
+  * mate-thumbnail-pixbuf-utils: Fix division by zero.
+  * mate-bg: Fix memory leak.
+  * GEN png icons from hicolor_apps_scalable_mate.svg.
+  * Make translatable the application name in mate about dialogue.
+  * Make translatable the copyright info in mate about dialogue.
+  * [Security] Use "g_strlcpy" instead of "strcpy".
+  * [Security] test-ditem: Use "g_strlcat" instead of "strcat".
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * interface: Add a key to enable/disable primary paste from the
+    middle mouse button.
+  * mate-desktop-item: Replace deprecated gdk_error_trap_push/pop.
+  * mate-rr-config: Replace deprecated gdk_flush.
+  * mate-rr: Replace deprecated Gdk functions.
+  * mate-bg-crossfade: Replace deprecated gdk_error_trap_push/pop.
+  * mate-bg: Replace deprecated gdk_error_trap_push/pop.
+  * Add mate-language apis.
+  * Add a new setting to control XKB modifier latching.
+  * Fix make distcheck fail on debian.
+  * mate-colorsel: Avoid deprecated gtk_widget_modify_bg.
+  * [mate-rr] Avoid deprecated g_type_class_add_private.
+  * Avoid deprecated g_type_class_add_private.
+  * [mate-colorsel] Avoid deprecated g_type_class_add_private.
+  * mate-bg: Avoid deprecated g_settings_list_keys.
+  * Disable deprecation warnings for distcheck.
+  * mate-bg: Corrected some comments.
+  * schemas: Define schema for a default calculator.
+  * Update translations.
+- Rebase mate-desktop-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.4:
+  * Disable deprecation warnings for distcheck.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Jun  5 11:44:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3 (changes since 1.20.1):
+  * Add toggle for synchronising QT_SCALE_FACTOR to
+    GDK_SCALE_FACTOR.
+  * Change default cursor-size to 24px.
+  * Support background fallback on HiDPI.
+  * mate-rr-labeler: Fix font-color for dark themes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Add Global Menu support.
+  * Avoid deprecated gdk_screen_get_width/height().
+  * mate-desktop-item, mate-about: Avoid deprecated gtk_show_uri().
+  * mate-about: Avoid deprecated gtk_show_uri().
+  * Avoid deprecated gdk_screen_get_monitor_,
+    gdk_screen_get_n_monitors(), gdk_screen_make_display_name(),
+    gdk_screen_get_number() functions.
+  * Correct little imprecision in man mate-about.
+  * Fix broken fallback cursor in mate-colorsel.c.
+  * mate-colorsel: Don't use deprecated GtkStock.
+  * Drop MateAboutDialog and switch to GtkAboutDialog.
+  * mate-about: Remove remains of libunique references.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * gschema: Drop the can-change-accels key, won't work with GTK+3.
+  * Add gsettings for window scaling factor.
+  * Update translations.
+- Add mate-desktop-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20
+  support.
+
+-------------------------------------------------------------------
+Wed Jan 24 10:09:10 UTC 2018 - sor.alexei@meowr.ru
+
+- Require xdg-user-dirs instead of xdg-user-dirs-gtk.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Drop the mpaste tool (won't work without the website anyway).
+  * Background: Fix crossfade issues with recent GTK+ versions.
+  * Background: Fix more graphics issues to allow Caja to use
+    background for directory windows.
+  * Background: Fix memleaks and other misc issues.
+  * Colour select: Fix some GTK+ deprecations.
+  * Schemas: Some fixes and cleanups.
+  * mate-about: Fix URL centring.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Oct 18 21:32:03 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * mate-bg: Fix a regression that caused font color in Caja to be
+    always black (even on dark backgrounds).
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * mate-bg: Remove an unneeded ignore-pending-change property
+    (not needed anymore since font colour fix in Caja 1.14).
+  * GTK+3: Fix various deprecations.
+  * distcheck: Explicitly use a currently selected GTK+ version.
+  * Some minor cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Backgrounds: Take EXIF rotation tags into consideration.
+  * Enable installation of mate.svg.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Colorbutton: Handle alpha for GdkRGBA.
+  * Fix deprecated usage of GtkHBox and GtkVBox in GTK+3 build.
+  * Drop MateConf migration script.
+  * Remove ancient mate-conf-import tool.
+
+-------------------------------------------------------------------
+Wed Jan  6 13:21:22 UTC 2016 - sor.alexei@meowr.ru
+
+- Enable GObject Introspection.
+- Rename mate-desktop-gsettings-schemas to mate-desktop-gschemas.
+- Add mate-desktop-gschemas branding, for now to alter default
+  cursor theme.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * RR: fix crash.
+  * Fix colour select in Gtk3.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Thu Oct  8 15:35:25 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Require dconf 0.13.4.
+  * Require xrandr 1.3.
+  * Add gsettings key to toggle overlay scrolling in GTK+3.
+  * Add some icons to fix missing icons in GTK+3 with custom icon
+    theme.
+  * Mouse schema: Enabled enable middle-click emulation by default.
+  * RR: implement missing mate_rr_output_get_possible_crtcs function.
+  * RR: fix laptop identification by output name.
+  * RR: show output name in addition to display name.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Moved docbook user guide to a separate project.
+  * Dropped dependency on yelp (not needed after moving user guide).
+  * Several minor fixes.
+- Remove mate-user-guide subpackage.
+
+-------------------------------------------------------------------
+Mon Aug 24 21:40:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.10.2:
+  * Check for NULL pointers in slideshow.
+  * Fix crash when system date is earlier than start date.
+  * Fix crash when XRRSetCrtcConfig fails.
+  * Drop non-existent mate_rr_screen_create_clone_modes from
+    headers.
+  * Embedded Display Port outputs are considered a laptop built-in
+    display.
+  * Add annotations and fix documentation syntax warnings.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jul 15 21:36:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Make mate-user-guide architecture-independent again.
+
+-------------------------------------------------------------------
+Sat Jul 11 16:38:00 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.10.1:
+  * Restore docbook user-guide.
+- Supersede the mate-user-guide package.
+
+-------------------------------------------------------------------
+Wed Apr 15 01:30:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * Bugfixes release
+- Remove mate-desktop-no-return-in-nonvoid-function.patch.patch; fixed
+  on upstream release
+
+-------------------------------------------------------------------
+Mon Mar 23 15:57:52 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.90 (unstable)
+  * Bugfixes release
+
+-------------------------------------------------------------------
+Thu Jan 22 18:47:42 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.4 (unstable)
+  * Turn MateRRScreen, GnomeRRConfig and GnomeOutputInfo into a GObject.
+  * Add gobject introspection
+  * Many RANDR fixes
+  * interface: add automatic-mnemonics key for Gtk xsetting
+  * use GDK_WINDOW_XID for inter-GTK compatibility
+
+-------------------------------------------------------------------
+Tue Nov 11 17:02:37 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.3 (unstable)
+  + Updated mpaste for website change
+
+-------------------------------------------------------------------
+Sun Oct 26 10:26:12 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.2 (unstable)
+  + Added org.mate.debug GSettings schema
+- Changes from version 1.9.1 (unstable)
+  + Added MateColorButton class to have traditional color selection
+    dialog with GTK3
+- Changes from version 1.9.0
+  + Removed desktop-docs
+  + Removed user guide
+  + Removed libunique optional dependency
+  + Added MateAboutDialog class to have traditional about dialog with
+    GTK3 too
+- Remove pkgconfig(unique-1.0) BuildRequires; upstream removed 
+  dependency 
+
+-------------------------------------------------------------------
+Sat May 10 11:43:36 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + org.mate.interface schema: Added gtk-decoration-layout key for GTK3
+
+-------------------------------------------------------------------
+Wed Mar 12 14:39:54 UTC 2014 - p.drouand@gmail.com
+
+- Remove conflicting files with Gnome3
+  It's needed the time upstream fix this issue
+
+-------------------------------------------------------------------
+Thu Mar  6 12:53:57 UTC 2014 - p.drouand@gmail.com
+
+- Fix gsettings-shemas post/postun
+
+-------------------------------------------------------------------
+Wed Mar  5 10:12:22 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 13:25:24 UTC 2014 - p.drouand@gmail.com
+
+- Split out gsettings schemas as these are shared between other
+  application; get them usable without installing mate-desktop 
+  package
+- Add Requires: mate-desktop-gsettings-schemas now schemas are 
+  splitted out of main package
+
+-------------------------------------------------------------------
+Sat Feb 15 17:32:54 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + Added helpers for dconf and GSettings
+  + Fix build with GTK3
+  + Added MATE user guide
+  + Added MATE_DESKTOP_CHECK_VERSION function
+  + Added mpaste tool
+  + Added replacement for gdk_spawn_command_line_on_screen in GTK3
+- Replace mate-doc-utils with yelp tools requirement; upstream use
+  it now to build documentation
+- Add dconf build require; new dependency
+
+-------------------------------------------------------------------
+Wed Jan  1 16:15:51 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + mate-about: Update contributors
+  + mate-about: Add headers between MATE and GNOME devs
+  + Always include mate-conf-import script in dist
+  + Update POTFILES for new tools folder
+  + Remove tools/mate-gsettings-toggle from EXTRA_DIST
+  + Add mate-gsettings-toggle.sh
+  + Move mate-conf-import to tools dir
+  + fix summary in disable-theme-settings key
+
+-------------------------------------------------------------------
+Wed Oct  2 17:42:06 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and LGPL-2.1+ and MIT
+
+-------------------------------------------------------------------
+Thu Sep 19 22:18:12 UTC 2013 - p.drouand@gmail.com
+
+- Change group of lib package for System/Libraries
+- Don't use %exclude macro; remove unwanted file instead
+
+-------------------------------------------------------------------
+Wed Sep 11 19:36:11 UTC 2013 - p.drouand@gmail.com
+
+- Drop old "Obsoletes" entries due to packages dropping; Factory is 
+  a new start and there are not needed
+
+-------------------------------------------------------------------
+Mon May 13 11:50:21 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + fix g_type_init deprecation in glib 2.36 in mate-about
+  + fix email address in mate-about
+  + disable mate-conf-import by default
+  + some improvements for mate-conf-import
+    * add makefile and desktop file
+    * add support for mate-terminal default profile
+    * add support for more applets
+    * add support for more applets and different default panel layouts
+    * check if mateconf files exists and are valid before use them
+    * check if an applet/object file exists
+    * add support for matecomponent-applet
+    * fix empty string values
+    * add support for action applets
+  + fixes to use make dist
+  + fix makefile for automake 1.13
+  + remove gnucat
+- Remove conditionnal macro to enable gnucat; it has been deleted in upstream
+- No version for Recommends: %{name}-lang
+
+-------------------------------------------------------------------
+Wed Apr  3 13:01:53 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + change backgrounds installation path in gsettings file
+  + update translations
+
+-------------------------------------------------------------------
+Sun Mar 24 14:45:24 UTC 2013 - p.drouand@gmail.com
+
+- Add a Obsoltes for libmatenotify1/libmatenotify-devel, dropped by
+  upstream
+- Build with libnotify instead of libmatenotify
+
+-------------------------------------------------------------------
+Sat Mar 23 09:23:21 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.8
+  + use Menta as default theme
+  + add some MATE contributors in about window
+
+-------------------------------------------------------------------
+Thu Mar  7 14:58:04 UTC 2013 - p.drouand@gmail.com
+
+- Reverse previous changes, must be called by a branding package
+- Remove gsettings.override file, it must be move in a branding
+  package
+
+-------------------------------------------------------------------
+Wed Mar  6 23:28:27 CST 2013 - hillwood@linuxfans.org
+
+- fix default background.
+- fix default theme for gtk3
+
+-------------------------------------------------------------------
+Sat Feb 23 21:06:34 CST 2013 - hillwood@linuxfans.org
+
+- Set sonar as default theme.
+
+-------------------------------------------------------------------
+Thu Feb 21 21:16:11 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.7:
+  * Add check if default MATE background exists before to use it
+    Closes https://github.com/mate-desktop/mate-settings-daemon/issues/39
+  * Don't thumbnail thumbnails in .cache/thumbnails
+- Remove Default-mate-background-exists.patch; merged on upstream release
+
+-------------------------------------------------------------------
+Thu Feb 21 16:52:21 UTC 2013 - p.drouand@gmail.com
+
+- Testing remove default fonts config
+
+-------------------------------------------------------------------
+Thu Feb 21 15:57:53 UTC 2013 - p.drouand@gmail.com
+
+- Add Default-mate-background-exists.patch
+- Remove --with-mate-distributor=%{distribution} on configure options
+
+-------------------------------------------------------------------
+Fri Feb  8 10:13:47 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.6:
+  + Changes in mate-bg;
+    + Cleanup, refactor, plug possible X client leak(s)
+    + Change cache dir from "wallpaper" to "mate/background"
+    + Small cleanup
+    + Do not add timeout for one-slide slideshows
+    + Cache resized wallpaper to help CPU at startup
+
+-------------------------------------------------------------------
+Sun Dec  9 18:08:58 UTC 2012 - nmo.marques@gmail.com
+
+- Add Obsoletes for python-caja/python-caja-devel, dropped by
+  upstream
+
+-------------------------------------------------------------------
+Fri Dec  7 16:59:01 UTC 2012 - nmo.marques@gmail.com
+
+- Split gsettings overrides to %{name}-default-settings
+
+-------------------------------------------------------------------
+Tue Dec  4 19:58:20 UTC 2012 - nmo.marques@gmail.com
+
+- Add 'mate-mime-data' and 'python-mate-desktop' sub-packages to
+  Obsoletes, dropped by upstream
+
+-------------------------------------------------------------------
+Mon Dec  3 23:16:18 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.5
+  + bump GIO to version 2.26.0
+  + add 2 new gsettings functions
+  + add background fase setting and define key
+  + many fixes
+- Disable branding dependencies breaking in 12.1
+
+-------------------------------------------------------------------
+Thu Nov 29 14:37:33 UTC 2012 - nmo.marques@gmail.com
+
+- Fix typo in libmate Obsoletes
+
+-------------------------------------------------------------------
+Sun Nov 25 18:53:14 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.4
+  + fix FSF addresses
+  + honor workarea so labels don't over/under panels
+  + Properly support GTK3, simplify GTK2 compat, and some fixes
+  + use the new GTK3 draw event instead of expose-event
+  + make error traps use the new GTK APIs
+  + bump GTK version to 2.24.0
+  + fix desktop schemas paths
+
+-------------------------------------------------------------------
+Sun Nov 25 01:26:52 UTC 2012 - nmo.marques@gmail.com
+
+- Obsolete all packages from MATE 1.4.0 that are dropped by
+  upstream in 1.5.0. Doing this in a central package to keep
+  track due to the elevated number of sub-packages involved. The
+  repository shouldn't have much consumers, so we should be OK.
+  This will involve a temporary loss of features while other
+  packages are being ported to MATE 1.5.
+
+-------------------------------------------------------------------
+Tue Nov 20 18:00:25 UTC 2012 - nmo.marques@gmail.com
+
+- Add themes/engine packages used in branding override to Requires
+- Conditionalize gtk2-*-clearlooks for >= 1220 and add old package
+  names to Requires for 12.1.
+
+-------------------------------------------------------------------
+Tue Nov 20 09:30:29 UTC 2012 - nmo.marques@gmail.com
+
+- Revert Obsoletes
+
+-------------------------------------------------------------------
+Sat Nov 17 20:22:44 UTC 2012 - nmo.marques@gmail.com
+
+- For MATE 1.6 a set of packages were dropped; this should be
+  minimum impact for users with X11:MATE repository installed. We
+  add this packages to Obsoletes just on this package and hope
+  that zypper does his magic.
+
+-------------------------------------------------------------------
+Mon Nov 12 16:08:20 UTC 2012 - nmo.marques@gmail.com
+
+- Update overrides file and dependencies
+
+-------------------------------------------------------------------
+Wed Nov  7 21:59:44 UTC 2012 - nmo.marques@gmail.com
+
+- Add xdg-user-dirs-gtk to Requires, user-dirs-update-mate.desktop
+  to sources. We want users common folders to be update on locale
+  changes. XDG doesn't support mate.
+- Add mate-desktop-openSUSE.gschema.override - override some
+  defaults - enable in the future through branding
+- Move gnucat stuff to bcond and leave it enabled by default
+
+-------------------------------------------------------------------
+Sun Nov  4 20:38:09 UTC 2012 - nmo.marques@gmail.com
+
+- Enable gnucat :)
+
+-------------------------------------------------------------------
+Sat Nov  3 19:19:46 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.3
+  + add function to load system settings instead of the user
+    settings 
+
+-------------------------------------------------------------------
+Sat Oct 27 22:44:42 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.2
+  + remove MATE from Categories in .desktop files
+  + add missing key in gsettings schema
+
+-------------------------------------------------------------------
+Wed Oct 17 12:04:50 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + update authors list
+  + fix several compiler errors and warnings
+- Remove mate-desktop-1.5.0-fix_glib230_compat.patch: upstreamed
+- Remove mate-desktop-1.5.0-fix_g_free_call.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue Oct 16 08:52:26 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-desktop-1.5.0-fix_g_free_call.patch: fixes g_free call,
+  taken from upstream
+
+-------------------------------------------------------------------
+Mon Oct 15 14:10:36 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-desktop-1.5.0-fix_glib230_compat.patch: fixes glib 2.30
+  compatibiltiy, taken from upstream (required for 12.1 builds)
+
+-------------------------------------------------------------------
+Mon Oct  8 14:40:22 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + port to new thumbnail spec (code from gnome-desktop 3.x)
+  + added gsettings schemas from now deprecated libmate
+- Remove mateconf dependecies (deprecated)
+
+-------------------------------------------------------------------
+Sat Sep  8 01:59:54 UTC 2012 - nmo.marques@gmail.com
+
+- update to version 1.4.1
+- copypac to X11:MATE
+  + minor cosmetic fixes
+
+-------------------------------------------------------------------
+Sat Jun 16 18:19:57 UTC 2012 - nmo.marques@gmail.com
+
+- update to version 1.2.0
+
+-------------------------------------------------------------------
+Sat Dec 31 03:10:52 UTC 2011 - nmarques@opensuse.org
+
+- initial package from version 1.1.0
+

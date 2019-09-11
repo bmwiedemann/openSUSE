@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Aug 16 17:20:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 version
+
+-------------------------------------------------------------------
+Thu Aug 15 20:47:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.1.1
+  * Improved extension install instructions for lab vs. notebook
+- Update to 2.1.0
+  * Update deps within semver range
+  * Fix computeBoundingSphere
+  * Update traits.py for collections deprecation warning
+  * Update pythreejs.py to silence traitlets warning
+  * Fix faceVertexArray
+  * Use async in scripts
+  * Fix ArrowHelper
+  * radiusSegments -> radialSegments
+  * Update package-lock.json
+  * Add EdgesGeometry definition
+  * Avoid importing twice in autogen
+  * Ensure ImageTexture error is Error 
+  * use Undefined pattern instead of global
+  * Replaces CFloat class by CFloat() instances in __init__ methods
+  * Add support for ipywebrtc
+  * Add a watch script
+  * tweak manifix setting
+
+-------------------------------------------------------------------
+Tue Apr 30 01:51:05 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

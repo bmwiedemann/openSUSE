@@ -1,0 +1,53 @@
+--- pm_common/CMakeLists.txt.orig	2011-02-26 18:09:05.000000000 +0100
++++ pm_common/CMakeLists.txt	2011-02-26 18:09:41.000000000 +0100
+@@ -120,8 +120,8 @@
+ # install the libraries (Linux and Mac OS X command line)
+ if(UNIX)
+   INSTALL(TARGETS portmidi-static pmjni
+-    LIBRARY DESTINATION /usr/local/lib
+-    ARCHIVE DESTINATION /usr/local/lib)
++    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++    ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+ # .h files installed by pm_dylib/CMakeLists.txt, so don't need them here
+ #  INSTALL(FILES portmidi.h ../porttime/porttime.h
+ #    DESTINATION /usr/local/include)
+--- pm_java/CMakeLists.txt.orig	2011-02-26 18:10:33.000000000 +0100
++++ pm_java/CMakeLists.txt	2011-02-26 18:11:07.000000000 +0100
+@@ -41,7 +41,7 @@
+     INSTALL(FILES ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults.jar
+       DESTINATION /usr/share/java)
+     INSTALL(PROGRAMS ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults
+-      DESTINATION /usr/local/bin)
++      DESTINATION ${BIN_INSTALL_DIR})
+   endif(APPLE)
+ endif(UNIX)
+ # In windows, use pm_java/make.bat
+--- pm_dylib/CMakeLists.txt.orig	2011-02-26 18:11:15.000000000 +0100
++++ pm_dylib/CMakeLists.txt	2011-02-26 18:16:02.000000000 +0100
+@@ -59,7 +59,7 @@
+ 
+     set(JAVAVM_LIB "${FRAMEWORK_PATH}/JavaVM.framework")
+     set(JAVA_INCLUDE_PATHS ${JAVAVM_LIB}/Headers)
+-    set(INSTALL_NAME_DIR "/usr/local/lib")
++    set(INSTALL_NAME_DIR ${LIB_INSTALL_DIR})
+     message(STATUS "SYSROOT: " ${CMAKE_OSX_SYSROOT})
+   else(APPLE)
+     # LINUX settings...
+@@ -115,13 +115,14 @@
+ 
+ add_library(portmidi-dynamic SHARED ${LIBSRC})
+ set_target_properties(portmidi-dynamic PROPERTIES OUTPUT_NAME "portmidi")
++set_target_properties(portmidi-dynamic PROPERTIES SOVERSION ${LIB_SOVERSION} VERSION ${LIB_VERSION})
+ target_link_libraries(portmidi-dynamic ${PM_NEEDED_LIBS})
+ 
+ # install the libraries (Linux and Mac OS X command line)
+ if(UNIX)
+   INSTALL(TARGETS portmidi-dynamic
+-    LIBRARY DESTINATION /usr/local/lib
+-    ARCHIVE DESTINATION /usr/local/lib)
++    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++    ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+   INSTALL(FILES ../pm_common/portmidi.h ../porttime/porttime.h
+-    DESTINATION /usr/local/include)
++    DESTINATION ${INC_INSTALL_DIR})
+ endif(UNIX)

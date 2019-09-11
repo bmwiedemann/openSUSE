@@ -1,0 +1,21 @@
+## Path:	Network/Mail/Amavis
+## Description: AMaViS configuration	
+## Type:	yesno
+## Default:	yes
+## Config:	sendmail,postfix
+## ServiceReload: amavis
+#
+# Set USE_AMAVIS to yes, if you want to use the email virus scanning
+# facility AMaViS within sendmail or postfix. If set to yes, SuSEconfig
+# will create the correct sendmail or postfix configuration for using
+# AMaViS.
+#
+USE_AMAVIS="no"
+
+## Type:        yesno
+## Default:     "no"
+#
+# Use sendmail and it's milter interface (that will start an additional
+# process called amavis-milter
+#
+AMAVIS_SENDMAIL_MILTER="no"

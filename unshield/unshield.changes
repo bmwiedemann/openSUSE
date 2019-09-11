@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu May 11 08:48:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4.2:
+  * exit run-tests.sh with non-zero if there were failed tests
+- Changes for 1.4.1:
+  * Security and distro fixes
+- Changes for 1.4.0:
+  * Including fix for CVE-2015-1386 (boo#915181)
+- Drop upstreamed patch:
+  * libconvert_utf_static.patch
+- Some packaging cleanups
+
+-------------------------------------------------------------------
+Tue Jun  7 10:19:27 UTC 2016 - matwey.kornilov@gmail.com
+
+- Add armv7l-fpic.patch: fix armv7l build issue:
+  convert_utf/libconvert_utf.a(ConvertUTF.c.o):
+  relocation R_ARM_MOVW_ABS_NC against `a local symbol' can not be
+  used when making a shared object
+
+-------------------------------------------------------------------
+Mon Jul  6 12:29:18 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.3
+  * move build system cmake
+- Add libconvert_utf_static.patch
+- Drop unnecessary patches
+  * unshield-zlib_test.patch
+  * unshield-0.6-allow_ruu_extract.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 12:55:22 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Update dependencies
+- Do not install .la file
+
+-------------------------------------------------------------------
+Wed Nov 23 09:32:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Aug  3 10:49:00 UTC 2011 - andrea@opensuse.org
+
+- added unshield-0.6-allow_ruu_extract.patch to allow extraction
+  of some exe files like HTC RUUs 
+
+-------------------------------------------------------------------
+Wed Jan  5 19:11:58 UTC 2011 - tejas.guruswamy@opensuse.org
+
+- Fix provides/obsoletes for proper upgrade path
+
+-------------------------------------------------------------------
+Sun May  2 13:50:49 UTC 2010 - masterpatricko@gmail.com
+
+- BuildRequires pkgconfig
+
+-------------------------------------------------------------------
+Fri Dec  4 14:14:26 UTC 2009 - masterpatricko@gmail.com
+
+- Recreate zlib_test.patch to remove fuzz
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Sat Jul 18 20:48:41 CEST 2009 - masterpatricko@gmail.com
+
+- Update to 0.6
+  * Fixes to the command line tool
+
+-------------------------------------------------------------------
+Tue Jan 29 12:10:01 CET 2008 - pth@suse.de
+
+- Enable prototypes.
+
+-------------------------------------------------------------------
+Thu Dec 27 01:12:05 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-post* errors 
+- remove static libraries and "la" files
+- fix -devel package dependencies
+
+-------------------------------------------------------------------
+Mon Mar 12 18:54:37 CET 2007 - pth@suse.de
+
+- Initial package creation
+
+

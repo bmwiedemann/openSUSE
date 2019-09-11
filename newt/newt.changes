@@ -1,0 +1,501 @@
+-------------------------------------------------------------------
+Wed Mar 20 08:32:24 UTC 2019 - lars@linux-schulserver.de - 0.52.20
+
+- use new license string compatible with latest spdx.org changes
+- ran spec-cleaner
+- adjust spec file to be able to build for SLE-12 and below:
+  + re-add BuildRoot definition
+  + re-add defattr definitions
+  + define python2_sitearch if the macro is not defined
+- added newt-0.52.20-implicit-pointer-decl.patch to get rid of 
+  compiler warnings about implicit definitions of functions 
+
+-------------------------------------------------------------------
+Wed Jan  3 14:38:04 UTC 2018 - tchvatal@suse.com
+
+- Build without py2 if needed
+- Fix upstream url
+
+-------------------------------------------------------------------
+Wed Nov  8 16:43:04 UTC 2017 - mpluskal@suse.com
+
+- Use current factory dependencies
+- Always build python3 bindings
+- Small cleanup with spec-clenaer
+
+-------------------------------------------------------------------
+Mon Oct  2 21:35:26 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups.
+
+-------------------------------------------------------------------
+Sun Sep 24 13:04:01 UTC 2017 - mc@suse.com
+
+- build python3 subpackage
+
+-------------------------------------------------------------------
+Mon Jul  3 15:24:29 UTC 2017 - lars@linux-schulserver.de
+
+- update to 0.52.20:
+  + improve handling of long strings in whiptail menu (#1353792)
+  + support screen resize as hotkey in form (#1432926)
+  from 0.52.19:
+  + support --notags in whiptail checklist and radiolist (#1319794)
+  + don't hard-code -I/usr/include/slang in CPPFLAGS (Alex Suykov)
+  + use $(CC) instead of $(CPP) to generate .depend files (Samuel Martin)
+  + update translations from Zanata
+
+-------------------------------------------------------------------
+Sun Mar  1 09:42:43 UTC 2015 - jengelh@inai.de
+
+- Set RPM groups
+
+-------------------------------------------------------------------
+Sun Mar  1 09:28:46 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Remove conditions dealing with unsupported releases of SLES
+- Update to 0.52.18
+  * fix widget key collision in snack on 64-bit archs (#1151455)
+  * handle NEWT_EXIT_ERROR in snack
+  * fix preprocessor warnings in snack
+  * optimize textbox reflowing
+  * remove newtListitem declarations (#1074092)
+
+-------------------------------------------------------------------
+Wed Nov  6 19:13:27 UTC 2013 - lars@linux-schulserver.de
+
+- update to 0.52.16
+  + add newtComponentGetSize and newtComponentGetPosition
+  + modify Makefile to use SOEXT
+  + free gpm socket name and unlink gpm socket on form exit
+  + fix memory leaks in whiptail
+  + add missing whiptail options to help and man page
+  + fix errors found by gcc-with-cpychecker
+  + fix building with tcl8.6 
+  + add fallback to python-config
+  + replace tabs in snack.py 
+  + compile snackmodule.c with flag -fPIC (Kang Kai)
+  + include new translations from transifex
+  + allow newtWinMenu and newtWinEntries with no buttons or items
+  + don't draw scale when not mapped
+  + build with large-file support for stat64
+  + remove unused variables in test code
+  + update FSF address
+  + remove obsolete macros
+  + make some dependencies arch-specific
+- removed upstream newt-0.52.14-incorrect-fsf-address.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 05:57:36 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Jul 30 15:33:08 UTC 2012 - werner@suse.de
+
+- Use suse-version not sles-version 
+
+-------------------------------------------------------------------
+Tue Jul 10 10:01:52 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+
+-------------------------------------------------------------------
+Wed Feb  1 10:23:33 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.52.14:
+  + fix returning strings in whiptail and whiptcl (rh#752818)
+  + fix configure to work with multiple python versions (rh#737998)
+- removed newt-0.52.13-python_version.patch : fixed upstream
+- compile with fPIC - fixes problems with _snackmodule.so
+  thanks to Joerg Steffens (bnc#734171)
+- newt-doc recommends the main package as the examples need it
+- added newt-0.52.14-incorrect-fsf-address.patch
+
+-------------------------------------------------------------------
+Sun Jan 29 19:32:51 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Mon Aug  8 11:32:27 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.52.13:
++ add support for changing colors in individual labels, scrollbars, entries,
+  textboxes and scales, add custom colorsets
++ add support for NEWT_COLORS and NEWT_COLORS_FILE variables (rh#689903)
++ allow resizing of form
++ fix errors found by coverity
++ fix va_list usage (Gwenole Beauchesne)
++ fix building and installing on Mac OS X (rh#652479)
++ check for slang.h header, support DESTDIR variable, add --without-python
+  option (Otavio Salvador)
++ add Persian, Low German translations
+- added newt-0.52.13-python_version.patch to fix detection of 
+  python version in configure script
+
+-------------------------------------------------------------------
+Thu Mar 17 11:44:10 UTC 2011 - chris@computersalat.de
+
+- add comment to keep static lib
+
+-------------------------------------------------------------------
+Tue Mar  8 15:01:38 UTC 2011 - chris@computersalat.de
+
+- fix baselibs.conf
+  o newt > libnewt0_52
+- fix naming
+  o define libname libnewt
+  o define libsoname {libname}0_52
+- fix deps
+  o add pkg-config
+  o move {py_requires} to subpkg python-newt
+- remove Author from description
+
+-------------------------------------------------------------------
+Fri Feb  4 19:08:58 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.52.12:
+  + fix whiptail --gauge and its description in man page (#620083)
+  + remove space after \n in whiptail texts (#620083)
+  + remove NLS code from snack (#599608)
+  + expose more keys to python as shortcuts in dialogs (Jakob Kemi)
+  + release python global-thread-lock during dialog displays (Jakob Kemi)
+  + fix warnings in whiptcl.c and include Tcl_PkgProvide() call (Mikhail T.)
+  + don't NULL deref when an invalid array is specified in checkboxtree
+    (Arnaldo Carvalho de Melo)
+- build on older distributions by owning locale/as
+
+-------------------------------------------------------------------
+Mon Feb  1 12:07:52 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jan  9 14:49:53 UTC 2010 - chris@computersalat.de
+
+- update to 0.52.11
+  * fix buffer overflow in textbox when reflowing (#523955, CVE-2009-2905)
+  * use full textbox width when reflowing and allow minimal width 1
+  * fix writing lines longer than width in textbox
+  * don't use va_list in newtvwindow more than once (#523696)
+  * bind \E[Z to back-tab in built-in keymap (#468046)
+  * terminate string after reading file in whiptail
+  * add newtRadioSetCurrent function (Thomas Jarosch)
+  * add pkgconfig support (Thomas Jarosch)
+  * add Malay, Malayalam, Assamese, Gujarati, Bengali India, Kannada, Telugu
+    translations
+  * include tutorial in txt format
+  * include debian patches
+    - fix crash in textbox SetText when topLines != 0
+    - don't link modules with libraries already linked with libnewt
+    - add Asturian and Marathi translations
+- cleanup spec
+  * sorted TAGS
+  * macros __make, __install, ...
+    name -> {name}
+    version -> {version}
+    buildroot -> {buildroot}
+    _defaultdocdir -> {_defaultdocdir}
+    ....
+- removed obsolete newt-CVE-2009-2905.patch    
+
+-------------------------------------------------------------------
+Wed Sep 23 10:17:40 CEST 2009 - lrupp@suse.de
+
+- fix heap-based buffer overflow in function doReflow in textbox.c
+  (fix bnc#540930 and CVE-2009-2905 : newt-CVE-2009-2905.patch)
+
+-------------------------------------------------------------------
+Mon Sep  1 12:48:05 CEST 2008 - lrupp@suse.de
+
+- update to 0.52.10:
+  + added support for help
+  + added cusor on/off stuff
+- rename newt-python to python-newt to follow the naming policy
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Apr  7 17:10:48 CEST 2008 - lrupp@suse.de
+
+- update to 0.52.9:
+  + handle component destruction (patch by Richard W.M. Jones)
+  + fix newtWinEntry definition
+  + don't use uninitialized values in newtWinMenu
+  + remove workarounds for old bug in SLsmg_write_nstring
+  + improve SIGWINCH handling in form
+  + don't abort from whiptail gauge on SIGWINCH
+  + redisplay also last line
+  + update Polish translation
+  + enable slang utf8 mode (rh#425992)
+  + support --disable-nls option (patch by Natanael Copa)
+  + redraw screen when using entry in euc encodings
+- removed upstreamed patches
+- devel package should require poptd-, python- and slang-devel and 
+  recommend the main package (not really needed)
+- updated rpmlintrc
+
+-------------------------------------------------------------------
+Mon Dec 17 18:33:12 CET 2007 - lrupp@suse.de
+
+- split libnewt0_52 to follow the shared library packaging policy
+- build on older distributions
+- build parallel
+
+-------------------------------------------------------------------
+Thu Oct 11 16:55:38 CEST 2007 - lrupp@suse.de
+
+- split python module to -python subpackage
+- add back support for list of Entries in EntryWindow prompts in 
+  snack (RH#248878) (newt-0.52.7-snack.patch) 
+- fix segfault in whiptail when no entry is selected in radiolist
+  (newt-0.52.7-whiptail.patch)
+- fix handling of UTF-8 characters (#289291)
+  (newt-0.52.7-utf8.patch)
+
+-------------------------------------------------------------------
+Tue Sep 11 15:11:13 CEST 2007 - cthiel@suse.de
+
+- removed bogus Provides: snack (to avoid name clash with package snack)
+
+-------------------------------------------------------------------
+Tue Jun 26 14:16:28 CEST 2007 - lrupp@suse.de
+
+- update to 0.52.7:
+  + add support to snack for multiple selection and border in listbox
+    and cursorAtEnd in entry (patch by Shawn Starr)
+  + fix scrollbar positioning in listbox
+  + cope with backward system time jumps (RH#240691)
+  + free helplines and windows in newtFinished, check for overflow (RH#239992)
+- remove included patches
+- created doc package for tutorial (N#287087)
+
+-------------------------------------------------------------------
+Wed Jun 13 17:30:43 CEST 2007 - lrupp@suse.de
+
+- included patches from Miroslav Lichvar:
+  + fix cursor positioning when setting entry or checkbox flags
+    (newt-0.52.6-cursor.patch)
+  + fix counting of items in checkboxtree
+    (newt-0.52.6-countitems.patch)
+  + fix some memory leaks
+    (newt-0.52.6-memleaks.patch)
+  + fix entry scrolling (RH#234829) and
+  + fix multibyte character handling in entry
+    (newt-0.52.6-entry.patch)
+- disable gpm-support - seems to smash the stack 
+- remove libbz2-1 from buildreq
+- re-arange buildrequires
+
+-------------------------------------------------------------------
+Tue Jun  5 20:02:15 CEST 2007 - ro@suse.de
+
+- buildreq: libbz2 -> libbz2-1 
+
+-------------------------------------------------------------------
+Sun Apr  1 15:34:34 CEST 2007 - lrupp@suse.de
+
+- added distribution specfic parts for build service
+- added libbz2 to BuildRequires for suse_version > 1020
+
+-------------------------------------------------------------------
+Wed Mar  7 13:15:18 CET 2007 - lrupp@suse.de
+
+- update to 0.52.6:
+  + add newtSetColor() to allow changing individual colors
+  + add newtPopWindowNoRefresh() (patch by Forest Bond)
+- branched newt-static package containing static library
+
+-------------------------------------------------------------------
+Wed Feb 14 19:34:16 CET 2007 - lrupp@suse.de
+
+- update to 0.52.5
+  + provide option to change text of buttons (rh#126768)
+  + don't add escape key to hot keys by default (rh#216157)
+  + fix cursor position in checkboxtree, radio button and checkbox
+  + don't force monochrome terminals to output colors
+  + highlight active compact button on monochrome terminals
+  + update translations from debian
+- removed unnecessary ldconfig call in devel package
+- removed obsolete newt-0.52.4-if1close.patch
+
+-------------------------------------------------------------------
+Thu Dec 21 14:13:09 CET 2006 - lrupp@suse.de
+
+- new upstream version 0.52.4: patches included upstream
+  + fix entry corruption when reading multibyte characters
+    and double width character handling
+  + avoid overflow/crash in scale
+- makefile, configure and spec cleanup
+- package whiptail.1 and locale files
+
+-------------------------------------------------------------------
+Fri Sep 22 13:56:14 CEST 2006 - lrupp@suse.de
+
+- fix build with python 2.5 (thanks to aj)
+- useful fixes from RH bugzilla included:
+  * #137957 : fix screen corruption 
+  * #81352  : fix help dialog
+  * #83203  : make textbox with scrollbar focusable
+  * #86074  : turn off cursor when entry terminated form
+  * #186053 : better handling of listbox and checkboxtree focus
+  * #187545 : be more color friendly to 8-color terminals
+  * #189981 : fix handling windows larger than screen size
+  * fix checkboxtree positioning
+  * unfocus when displaying help
+  * fix double width character handling in checkboxtree and listbox
+ 
+
+-------------------------------------------------------------------
+Tue May  9 07:32:24 CEST 2006 - lrupp@suse.de
+
+- add "Provides: snack" to specfile
+- do not build whiptcl to avoid dependency on tcl (RH #177346)
+  (whiptcl is currently not used by anything)
+- Apply patch by Bill Nottingham (thanks) to improve scrollbar appearance
+  (RH #174771)
+- Fix a crash in checkboxtree.c (RH #165347)
+- draw correct dialog sizes on the screen (see RH #185950) - applying 
+  patch from Tomas Mraz (thanks)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 13:54:46 CET 2005 - lrupp@suse.de
+
+- new version 0.52.2
+- include whiptcl.so
+
+-------------------------------------------------------------------
+Thu Nov 10 16:12:21 CET 2005 - lrupp@suse.de
+
+- only do gpmclose if gpmopen succeeed 
+  (see https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=118530)
+- include example files (peanuts.py, popcorn.py) in devel package
+- use "-fPIC -Wall -fno-strict-aliasing" in CFLAGS
+
+-------------------------------------------------------------------
+Mon Sep 26 23:20:44 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Mon Jul 25 12:40:44 CEST 2005 - lrupp@suse.de 0.51.6
+
+- use of %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jun 17 15:07:42 CEST 2005 - lrupp@suse.de 0.51.6
+
+- use more macros: fix build on 64bit
+
+-------------------------------------------------------------------
+Fri Jun 17 13:21:24 CEST 2005 - lrupp@suse.de 0.51.6
+
+- use $RPM_OPT_FLAGS
+- delete /usr/lib/phyton in build to avoid errors from abuild
+=> we've a symlink to /usr/lib/python2.4
+
+-------------------------------------------------------------------
+Thu Jun 16 14:13:06 CEST 2005 - ro@suse.de
+
+- fix files pagaged twice (real path and over symlink) 
+
+-------------------------------------------------------------------
+Tue Feb 15 21:03:05 CET 2005 - ro@suse.de
+
+- added python deps 
+
+-------------------------------------------------------------------
+Mon Jan 24 01:43:15 CET 2005 - ro@suse.de
+
+- fix lib64 build 
+
+-------------------------------------------------------------------
+Tue Nov 30 17:30:44 CET 2004 - cwh@suse.de
+
+- updated to 0.51.6
+
+-------------------------------------------------------------------
+Wed Jun  2 02:03:54 CEST 2004 - ro@suse.de
+
+- get rid of some compiler warnings
+
+-------------------------------------------------------------------
+Thu Feb 26 11:27:51 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Tue Feb 24 18:34:40 CET 2004 - cwh@suse.de
+
+- added soname link to package 
+
+-------------------------------------------------------------------
+Mon Sep 15 17:30:25 CEST 2003 - cwh@suse.de
+
+- removed wrong "Provides: snack" from spec-file
+
+-------------------------------------------------------------------
+Wed Aug 20 23:30:35 CEST 2003 - ro@suse.de
+
+- expand filelist
+- fix lib64 issues 
+
+-------------------------------------------------------------------
+Wed Aug 20 14:36:15 CEST 2003 - cwh@suse.de
+
+- fixed to compile with tcl8.4
+
+-------------------------------------------------------------------
+Tue Jan 16 18:08:37 CET 2001 - schwab@suse.de
+
+- Fix missing -fPIC in Makefile.
+- Fix use of varargs.
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:55 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Wed Nov 29 14:18:53 CET 2000 - smid@suse.cz
+
+- subpackage renamed: newtd => newt-devel
+
+-------------------------------------------------------------------
+Fri Nov 24 09:03:48 CET 2000 - ro@suse.de
+
+- fixes for 2.0-python 
+
+-------------------------------------------------------------------
+Sun Oct 29 09:47:19 CET 2000 - kukuk@suse.de
+
+- Add python-devel to need for build 
+
+-------------------------------------------------------------------
+Mon May 22 14:51:39 CEST 2000 - smid@suse.cz
+
+- fixed to compile with tcl8.3
+
+-------------------------------------------------------------------
+Wed May 10 14:19:41 CEST 2000 - nadvornik@suse.cz
+
+- update to 0.50.8
+- added BuildRoot
+
+-------------------------------------------------------------------
+Mon Jan 17 08:34:23 CET 2000 - nashif@suse.de
+
+- Initial Release ( Version 0.50)
+

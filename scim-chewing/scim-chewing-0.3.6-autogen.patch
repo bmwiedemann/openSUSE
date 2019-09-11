@@ -1,0 +1,11 @@
+Index: scim-chewing-0.3.6git20140424/autogen.sh
+===================================================================
+--- scim-chewing-0.3.6git20140424.orig/autogen.sh
++++ scim-chewing-0.3.6git20140424/autogen.sh
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-AM_VERSION=-1.11
++AM_VERSION=
+ AC_VERSION=
+ 
+ set -x

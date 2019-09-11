@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue May 21 05:26:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.4015
+   see /usr/share/doc/packages/perl-Starman/Changes
+
+  0.4015  2019-05-20 18:43:46 PDT
+          - Fixed a bug incorrectly handling content body of '0' (olsonanl) #133
+
+-------------------------------------------------------------------
+Sun Jun  7 09:02:40 UTC 2015 - coolo@suse.com
+
+- updated to 0.4014
+   see /usr/share/doc/packages/perl-Starman/Changes
+
+  0.4014  2015-06-03 12:01:00 PDT
+          - Treat ECONNRESET like EPIPE (i.e. ignore), not as a fatal error #114 (Tim Bunce)
+
+-------------------------------------------------------------------
+Fri May 15 11:24:57 UTC 2015 - coolo@suse.com
+
+- updated to 0.4013
+   see /usr/share/doc/packages/perl-Starman/Changes
+
+  0.4013  2015-05-14 15:01:20 PDT
+          - Fixed some bad git merges.
+  
+  0.4012  2015-05-14 14:59:48 PDT
+          - Add --net_server-* options to pass directly to Net::Server backend (#109)
+          - Updated documentation
+
+-------------------------------------------------------------------
+Mon Apr 13 19:26:43 UTC 2015 - coolo@suse.com
+
+- updated to 0.4011
+   see /usr/share/doc/packages/perl-Starman/Changes
+
+  0.4011  2014-11-11 08:07:43 PST
+          - Move the app dispatch into a method #107
+  
+  0.4010  2014-08-22 09:37:22 PDT
+          - Support --read-timeout #103 (slobo)
+          - Handle Expect header case insensitively #101 (oschwald)
+
+-------------------------------------------------------------------
+Fri May 23 11:15:39 UTC 2014 - ncutler@suse.com
+
+- initial package 0.4009
+    * created by cpanspec 1.78.07
+- took over
+- checked License
+

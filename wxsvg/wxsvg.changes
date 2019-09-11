@@ -1,0 +1,349 @@
+-------------------------------------------------------------------
+Thu Feb 14 12:49:45 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.16
+  * wxFfmpegMediaDecoder.SetPosition(): added parameter
+    seekBackward
+  version 1.5.15
+  * added skia backend (experimental) (thanks to Zicheng Yang) 
+
+-------------------------------------------------------------------
+Tue Feb 12 18:15:57 UTC 2019 - bjorn.lie@gmail.com
+
+- No longer force ffmpeg-3 libs during build.
+
+-------------------------------------------------------------------
+Fri Aug  3 11:13:20 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.5.14
+  * fixed calculation of bounding box if viewbox is specified
+  * fixed GetResultBBox()
+  * wxSVGCanvasImage: added support of data base64 href
+
+-------------------------------------------------------------------
+Fri Aug  3 09:47:38 UTC 2018 - davejplater@gmail.com
+
+- Build with ffmpeg-3 libs to match DVDStyler, see boo#1103008
+
+-------------------------------------------------------------------
+Tue Jan 30 22:18:12 UTC 2018 - jengelh@inai.de
+
+- Replace %soname by %sover to better reflect its use.
+
+-------------------------------------------------------------------
+Tue Jan 30 17:25:18 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.5.13
+  * added support of <a> element
+  * fixed wxSVGImageElement::GetBBox()
+  * fixed wxSVGUseElement::GetBBox() 
+
+-------------------------------------------------------------------
+Fri Nov 24 16:40:42 UTC 2017 - aloisio@gmx.com
+
+- Removed overly specific runtime dependency. 
+
+-------------------------------------------------------------------
+Tue Nov 21 15:32:41 UTC 2017 - jengelh@inai.de
+
+- Update RPM groups and summaries.
+
+-------------------------------------------------------------------
+Sat Nov 18 12:01:44 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.5.12
+- Upstream changes:
+  * wxSVGSVGElement: fixed GetIntersectionList()
+
+-------------------------------------------------------------------
+Tue Jan  3 04:13:54 UTC 2017 - davejplater@gmail.com
+
+- Update to 1.5.11
+- Upstream changes:
+  * wxSVGImage: fixed displaying of first video frame
+  * added support of EXIF metadata
+
+-------------------------------------------------------------------
+Wed Sep  7 17:51:55 UTC 2016 - davejplater@gmail.com
+
+- Update to 1.5.9
+- Upstream changes:
+  * changed GetBBox() and GetResultBBox()
+  * added some missing header files
+
+-------------------------------------------------------------------
+Sun Jun 26 17:19:43 UTC 2016 - davejplater@gmail.com
+
+- Update to version 1.5.8
+- Upstream changes:
+  Version 1.5.8 <2016-06-05>
+  * fixed ApplyAnimation
+  Version 1.5.7 <2016-05-03>
+  * wxFfmpegMediaDecoder: added GetChapters() and GetMetadata()
+  * fixed SVGAnimationElement
+  Version 1.5.6 <2016-03-11>
+  * fixed SVGAnimationElement
+  Version 1.5.5 <2015-10-03>
+  * fixed rendering image element with mask
+  * wxFfmpegMediaDecoder: added GetFormatName() and GetCodecTag()
+  * wxFfmpegMediaDecoder: fixed wxSVGCanvasVideo
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr  5 13:52:06 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.5.4:
+  * added support of 3-digit hex color codes.
+
+-------------------------------------------------------------------
+Tue Mar 10 17:34:16 UTC 2015 - aloisio@gmx.com
+
+- Update to version 1.5.3 <2015-01-18>
+  * applied patch from Sebastian Vater to fix memory leak
+- version 1.5.2 <2014-12-14>
+  * fixed memory leak (thanks to Sebastian Vater)
+- version 1.5.1 <2014-11-23>
+  * fixed some compiler errors
+
+-------------------------------------------------------------------
+Sat Nov 15 16:09:48 UTC 2014 - fisiu@opensuse.org
+
+- Update to 1.5:
+  * added support of marker element
+  * added support of patternTransform attribute
+  * added support of stroke-dasharray (1.4.2)
+  * fixed handling of preserveAspectRatio="none" (1.4.2)
+  * fixed rendering of tspan-element (1.4.1)
+  * fixed rendering of use element in pattern and mask elements (1.4.1)
+  * added support of pattern element (1.4)
+
+-------------------------------------------------------------------
+Fri May 23 09:14:13 UTC 2014 - fisiu@opensuse.org
+
+- Update to 1.3:
+  * added support of animations
+  * fixed some GetBBox() methods
+  * fixed loading images with relative path (in 1.2.1)
+
+-------------------------------------------------------------------
+Sat Sep 21 14:21:02 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2:
+  * added initial support of animations
+  * added support of mask for image element
+  * removed obsolete backends (libart and agg)
+  * removed svgui classes
+
+-------------------------------------------------------------------
+Thu Sep  5 16:08:56 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.1.16:
+  * added support of wxProgressDialog
+
+-------------------------------------------------------------------
+Tue Jul 23 17:28:33 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.1.15:
+  * fixed text rendering using PangaCairo.
+
+-------------------------------------------------------------------
+Tue Apr  9 18:54:43 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.1.14:
+  * fixed wxSVGPathSegList::GetValueAsString()
+  * fixed wxSVGLengthList::SetValueAsString()
+  * fixed rendering of text if text-anchor is set to end
+  * fixed rendering of wxSVGCanvasVideo
+
+-------------------------------------------------------------------
+Mon Feb 25 20:31:52 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.1.13:
+  + fixed handling of clipPath element
+- Drop wxsvg-libtoolize-fix.patch and use sed instead in spec so 
+  no need to adjust patch with every DVDStyler update
+-------------------------------------------------------------------
+Sat Jan 26 14:19:46 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.1.12:
+  + fixed text rendering using PangaCairo
+  + fixed GetPosition() in wxFfmpegMediaDecoder (1.1.10)
+- wxsvg-libtoolize-fix.patch updated
+
+-------------------------------------------------------------------
+Thu Dec 27 18:04:57 UTC 2012 - fisiu@opensuse.org
+
+- Use proper Requires for -devel package.
+
+-------------------------------------------------------------------
+Thu Dec 13 20:16:30 UTC 2012 - fisiu@opensuse.org
+
+- Update to 1.1.9:
+  + support for ffmpeg 0.11 and libav 0.9
+
+- wxsvg-libtoolize-fix.patch updated
+
+- Fixes since last package version on packman:
+  + fixed memory leak and storing xml file
+  + fixed rendering of radial gradients
+  + fixed handling of aspect ratio of video
+  + clipPath element and visibility style property supported
+
+-------------------------------------------------------------------
+Sat May 19 19:30:41 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build with newer libtool (12.2)
+
+-------------------------------------------------------------------
+Sun Nov 27 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.1.5>
+
+  * wxSVGTextContentElement: added handling of xml:space attribute
+  * wxSVGVideoElement: added handling of attributes begin, dur, clipBegin and
+    clipEnd
+
+-------------------------------------------------------------------
+Thu Nov 17 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.1.3>
+
+  * SVGImageElement: added support of SVG images
+  * added support of Gaussian blur filter
+
+-------------------------------------------------------------------
+Sat Aug 20 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.1.2>
+
+  * added handling of preserveAspectRatio attribute
+
+-------------------------------------------------------------------
+Fri Aug 05 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.1.1>
+
+  * fixed text rendering
+  * fixed rendering of video
+
+-------------------------------------------------------------------
+Sat Jun 18 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.0.10>
+
+  * fixed wxSVGCanvasImage::Init()
+
+-------------------------------------------------------------------
+Sun Feb 27 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.0.8>
+  * fixed wxFfmpegMediaDecoder::GetFrameAspectRatio()
+
+-------------------------------------------------------------------
+Mon Aug 30 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.7.1>
+
+-------------------------------------------------------------------
+Sun Aug 29 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.6>
+  * fixed rendering of video frame
+
+-------------------------------------------------------------------
+Fri Jul 23 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.5>
+  * added possibility to render without preserving aspect ratio.
+  * fixed bug in wxSVGCanvasTextFreetype
+
+-------------------------------------------------------------------
+Wed Mar 31 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.4>
+  * fixed memory leak (thanks to Lucian Ion)
+
+-------------------------------------------------------------------
+Fri Mar 12 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.3>
+  * fixed handling of image alpha channel
+  * changed to use system expat library
+
+-------------------------------------------------------------------
+Sat Jan 30 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.0.2>
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.0f>
+  * added ffmpeg media decoder
+  * added support of agg 2.5
+  * implemented baseline
+  * fixed text-anchor
+  * added support of svg gradients
+  * implemented GetResultBBox() (SVG1.2)
+  * added parameter coordinates (wxSVG_COORDINATES) to GetBBox()
+  * fixed text rendering under some platforms
+  * implemented saving
+  * added GetOwnerDocument()
+  * added GetAttribute()
+  * fixed CloneNode() and copy constructors
+  * added copy constructor to wxSVGPathSegList
+  * added rect parameter to wxSVGDocument::Render()
+  * wxSVGCtrl: fixed refresh (redraw buffer only in OnPaint)
+  * added cairo backend (disabled by default)
+  * some other small changes and bug fixes
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.0b11>
+
+-------------------------------------------------------------------
+Wed Apr  2 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- change to wxWidgets
+
+-------------------------------------------------------------------
+Thu Mar  6 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.0b10>
+
+-------------------------------------------------------------------
+Mon Jan  7 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.0b8>
+
+-------------------------------------------------------------------
+Fri Jan  5 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version
+
+-------------------------------------------------------------------
+Thu Jun 15 00:00:00 UTC 2006 - detlef@links2linux.de
+
+- first build for SUSE (Packman)
+
+-------------------------------------------------------------------
+Tue Apr 11 00:00:00 UTC 2006 - jmartin@mandriva.org
+
+- beta6
+- Fixed licence
+
+-------------------------------------------------------------------
+Fri Feb  3 00:00:00 UTC 2006 - austin@mandriva.org
+
+- beta5 + fixes from cvs
+
+-------------------------------------------------------------------
+Fri Dec 30 00:00:00 UTC 2005 - austin@mandriva.org
+
+- initial package
+

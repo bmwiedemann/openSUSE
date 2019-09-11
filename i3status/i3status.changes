@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Fri May 18 15:47:31 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sat May 12 03:32:58 UTC 2018 - avindra@opensuse.org
+
+- update to version 2.12:
+ * show IP address when address has a label
+ * treat zero battery capacity as "not available"
+ * add IPv6 address when IPv4 isn't available
+ * call tzset at each time print to pick up time zone changes
+ * doc: fixed minor typos
+ * be more cautious about handling invalid battery measurements.
+ * fix CPU unit tests
+ * use local timezone for battery %emptytime
+ * fix memory leak/use BEGINS_WITH macro
+ * _first_: add check for virtual ethernet devices
+ * add battery capacity parsing
+ * multiple CPU support for cpu_usage
+ * remove useless checks (we use char, not unsigned char) to fix
+   compilation warnings
+ * disk: sanitize trailing slashes
+ * suppress printing :00 seconds of remaining battery lifetime, as
+   apm(4)'s estimate only has a granularity of minutes.
+ * Makefile: make PKG_CONFIG overridable
+ * man page updates
+- cleanup with spec-cleaner
+- use https urls
+- remove yajl fallback from source to ensure ours is used
+- remove SLOC comment from description (no longer valid)
+
+-------------------------------------------------------------------
+Wed Apr 12 20:47:43 UTC 2017 - arun@gmx.de
+
+- update to version 2.11:
+  * re-add forgotten wakeup call from SIGUSR1 handler
+  * disk_info: bugfix: check format_not_mounted is not NULL before
+    using it
+  * revert back to using nanosleep
+  * man: give more descriptive symbols to battery format
+  * battery: removes the 'remaining' time when the battery is full
+  * add separator and separator_block_width as universal module
+    options
+  * man: fix link to contrib
+  * cpu_temperature: add glob check
+  * battery: add status_unk
+  * reconnect to PluseAudio when connection is lost
+  * wireless: add ifdef to compile on macOS
+  * order default configuration paths the same as in i3
+  * add version files for release tarball
+  * man: make tztime example config match the context
+  * cpu_usage: add color thresholds
+  * battery: support multiple batteries
+  * disk: use empty string for not mounted disks
+  * default config: remove DHCP, VPN
+  * wireless: fix FTBFS on hurd and kFreeBSD
+  * parse uevent file to detect network device type
+  * allow pulse device to be specified by name
+  * battery: find batteries using glob
+  * tztime: support locales
+  * wireless: use blank padding for quality
+  * add unit tests
+  * fix compilation with -fno-common
+
+-------------------------------------------------------------------
+Tue Mar  8 08:03:19 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * add libnl3-devel, libpulse-devel
+
+- update to version 2.10:
+  * man: fix typo in battery example
+  * Pass the "instance" JSON property key for tztime blocks
+  * Fix build (and build warnings) on FreeBSD
+  * Fix build on OpenBSD
+  * path_exists, run_watch: add format_down
+  * volume: add PulseAudio support. This significantly reduces battery
+    consumption on systems that use PulseAudio, which is the default
+    on any modern Linux desktop.
+  * wireless/OpenBSD: use the maximum rssi, not the scaled percentage
+    for the signal level.
+  * make: Add support for differing PREFIX and MANPREFIX.
+  * battery: make output HH:MM across all platforms.
+  * battery: clamp the percentage at 100% when last_full_capacity is
+    enabled.
+  * Use format_not_mounted if the directory for a disk_info block does
+    not exist.
+  * disk_info/OS X: Fix build.
+  * volume/OpenBSD: use SndIO.
+  * eth, wireless: Use "color_degraded" when interface has no IP.
+  * eth, wireless/FreeBSD: Fix for recent FreeBSD versions.
+  * wireless/Linux: switch from libiw to libnl. This allows you to run
+    i3status on kernels which don’t have the wext compatibility module
+    enabled.
+  * battery/FreeBSD: properly detect charging status
+  * eth: first_eth_interface: ignore MAC addresses, look for IPv4/IPv6
+    addresses
+  * Implement support for Pango markup.
+  * format detection: recognise swaybar
+
+-------------------------------------------------------------------
+Mon Jun  8 04:52:20 UTC 2015 - arun@gmx.de
+
+- update to version 2.9:
+  * meta: i3status is now on GitHub and uses clang-format
+  * allow customization of the module separator
+  * add “align” and “min_width” options for each module
+  * fix CFLAGS and LDFLAGS for DragonFly and FreeBSD
+  * add contrib/net-speed, a more light-weight reimplementation of
+  * contrib/measure-net-speed.bash
+  * battery: add hide_seconds option
+  * battery: fix for systems without POWER_SUPPLY_VOLTAGE_NOW
+  * battery: for %percentage, drop leading 0 for values < 10
+  * battery: add NetBSD support
+  * battery: use absolute values for (dis)charging rates
+  * battery: introduce status_{chr,bat,full}
+  * cpu_temperature: fix displaying multiple sensors
+  * cpu_temperature: fix NetBSD support
+  * cpu_temperature: fix DragonFly support
+  * disk: introduce threshold_type and low_threshold
+  * disk: add format_not_mounted for unmounted paths
+  * ethernet, wireless: support special interface name _first_
+  * run_watch: check all matching pid files until first valid one
+  * volume: fix wrong color tags with xmobar
+  * wireless: support %frequency (2.4 vs. 5 GHz)
+
+-------------------------------------------------------------------
+Sun Feb  1 00:41:34 UTC 2015 - arun@gmx.de
+
+- replaced tar-ball with tar-ball from Source location
+  (they were different for some location, which was the
+  reason the package didn't get updated in Factory)
+- Removed i3status-2.7-makefile.patch
+
+-------------------------------------------------------------------
+Sa Jul 26 22:2:11 UTC 2014 - email@pfeiffer.pw
+
+  Fix build on GNU/Hurd
+  Add format_down for battery if no battery is available
+  Use degraded color in case volume is muted with OSS
+  Support mixer_idx with OSS
+  Enable colored output for battery on FreeBSD
+  print_volume: don’t return, complete the buffer first
+  Support colored output for CPU temperature on FreeBSD
+  manpage: mention i3bar in the description
+  manpage: be more explicit about the path option
+  battery: use path as i3bar JSON “instance”
+  print_volume(linux): Open a new mixer every time
+  Implement term output format
+  signal handler: set flag because directly calling fprintf() is unsafe
+  Makefile: use .SILENT and support V=1 for verbose builds
+  load: allow max_threshold to be a float
+  manpage: Add example path for CPU temperature
+  Fix build on NetBSD
+  Implement cpu usage, ethernet status, cpu temperature on NetBSD
+  fix slurp(), it needs to read size-1 for the trailing NUL
+  format detection: simplify code, handle "sh" processes in the hierarchy
+  default config: show %avail disk space instead of %free
+  Added different format string for volume in case it is muted
+  manpage: document format_muted
+  add support for path_exists directive
+  disk: Distinguish between IEC, SI and custom prefixes
+
+-------------------------------------------------------------------
+Thu Mar 14 08:52:47 UTC 2013 - toganm@opensuse.org
+
+- Update to 2.7 version
+  * Skip a day in the Discordian calendar when St. Tib's Day has
+    passed
+  * colors: Handle down wireless interfaces just like ethernet
+    interfaces
+  * temperature: introduce max_threshold
+  * battery: colorize output even without discharge rate
+  * ddate: Reduce the season day to 0-9 to properly print ordinal
+    suffixes
+  * add good, degraded and bad colors per module
+  * config: introduce an utf-8 character so that editors are forced
+    to use utf-8
+  * ddate: Teen ordinal numbers always use a 'th' suffix.
+  * make SIGUSR1 do nothing, so that killall -USR1 i3status will
+    force an update
+  * changing volume color from bad to degraded if muted
+  * make refreshs align with minutes
+  * wifi: properly display ad-hoc networks
+  * Bugfix: output auto detect: properly detect ambiguous situations
+  * Add tztime module to support multiple different timezones
+  * battery: add option to show capacity without decimals
+  * Add colorized output for load avg
+  * ipv6: properly handle colors for output_format == xmobar
+  * contrib: fix premature insetion of status message into JSON
+
+- Spec file cleanup
+  * rebased i3status-makefile.patch and renamed as
+    i3status-2.7-makefile.patch
+
+-------------------------------------------------------------------
+Sat Nov 24 18:39:30 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (2.6)

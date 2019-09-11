@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Apr 16 11:07:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix compilation issue order:
+  * Add bam-0.5.1-fix-compilation-order.patch.
+  * Enable tests (they actually showed the problem).
+- Clean spec file with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Feb  2 16:03:25 UTC 2018 - mailaender@opensuse.org
+
+- update to version 0.5.1
+  * Fixed issues with CC environment variables
+  * Out of bounds fixed to debug output and output cache
+  * XLC compiler support
+  * Fixed parallel build with make
+- disable tests
+- enforce Lua 5.3
+
+-------------------------------------------------------------------
+Sat Jul 30 12:27:20 UTC 2016 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Sat Jul 30 10:14:37 UTC 2016 - mpluskal@suse.com
+
+- Use pretty name for archive
+- Build with optflags
+
+-------------------------------------------------------------------
+Sat Jul 30 07:46:18 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.5.0
+  * Upgraded to Lua 5.3.3 from 5.1
+  * More accurate cache to reduce recompiles when switching parameters
+  * Make use of CC environment variables when available by default
+  * Build should now be reproducable and not add date or timestamps into the executable
+  * Bug-fixes

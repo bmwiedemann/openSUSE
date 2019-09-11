@@ -1,0 +1,32 @@
+Index: vorta-0.6.10/src/vorta/assets/UI/archivetab.ui
+===================================================================
+--- vorta-0.6.10.orig/src/vorta/assets/UI/archivetab.ui
++++ vorta-0.6.10/src/vorta/assets/UI/archivetab.ui
+@@ -28,11 +28,6 @@
+        <bold>false</bold>
+       </font>
+      </property>
+-     <property name="styleSheet">
+-      <string notr="true">QToolBox::tab {
+-font-weight: bold;
+-}</string>
+-     </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+Index: vorta-0.6.10/src/vorta/assets/UI/scheduletab.ui
+===================================================================
+--- vorta-0.6.10.orig/src/vorta/assets/UI/scheduletab.ui
++++ vorta-0.6.10/src/vorta/assets/UI/scheduletab.ui
+@@ -25,11 +25,6 @@
+        <bold>false</bold>
+       </font>
+      </property>
+-     <property name="styleSheet">
+-      <string notr="true">QToolBox::tab {
+-font-weight: bold;
+-}</string>
+-     </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Jun 11 11:34:25 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create package version 0.2.1 with fixed spec files. Now the package
+  is available in all SLE12 and SLE15 versions
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)
+
+-------------------------------------------------------------------
+Tue Jun  4 07:29:24 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create package version 0.2.0 after adding drbd module
+
+-------------------------------------------------------------------
+Thu May 16 09:03:43 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update secondary registration methods to use the new parameters
+
+-------------------------------------------------------------------
+Fri May 07 12:00:53 UTC 2019 - Nick Wang <nwang@suse.com>
+
+- Add salt module and state to manage DRDB resources
+
+-------------------------------------------------------------------
+Fri Apr 26 08:56:53 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Add ha-cluster-init and ha-cluster-join usage when crmsh version
+  is older than 3.0.0
+- Add methods to customize sbd and corosync configuration files
+
+-------------------------------------------------------------------
+Tue Apr 25 10:24:07 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- Renamed the package from salt-saphana to salt-shaptools
+  * This package is intended to host SAP Applications and SLE-HA
+    salt modules and states, so a more meaningful name is needed.
+
+-------------------------------------------------------------------
+Tue Apr 23 13:44:07 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update system replication states constants usage
+
+-------------------------------------------------------------------
+Mon Mar  4 15:17:24 UTC 2019 - xarbulu@suse.com
+
+- Improved the use of keystore access. When the key_name is informed,
+  the user_name/user_password is not needed.
+- Removed salt warnings because of non usage of 'name' parameter as
+  the first parameter of the state.
+
+-------------------------------------------------------------------
+Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
+
+- Improve test case to check the last modification
+- Format instance number properly to have 2 digits in configuration file creation
+
+-------------------------------------------------------------------
+Wed Feb  6 14:09:24 UTC 2019 - xarbulu@suse.com
+
+- Update the way crm installation is checked
+
+-------------------------------------------------------------------
+Thu Jan 17 13:24:33 UTC 2019 - xarbulu@suse.com
+
+- Create crmsh cluster_configure new state
+
+-------------------------------------------------------------------
+Fri Jan 11 08:22:59 UTC 2019 - xarbulu@suse.com
+
+- Create crmsh core functionalities salt module and states code
+
+-------------------------------------------------------------------
+Thu Dec 20 08:33:10 UTC 2018 - xarbulu@suse.com
+
+- First package version

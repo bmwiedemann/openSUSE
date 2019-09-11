@@ -1,0 +1,14 @@
+IMPORTANT: Please change binutils.spec and then run ./pre_checkin.sh!
+Do not change cross-*.spec directly!
+
+The spec file triggers by it's %name if it compiles the native or the
+cross version and pre_checkin.sh (called automatically by checkin too)
+copies over the binutils.spec and changes the Name field, so you shouldn't
+need to worry too much about the cross packages
+
+Updating to some branch head:
+> cvs -z 9 -d :pserver:anoncvs@stravinsky:/cvs/src export -r binutils-2_23-branch binutils
+
+Thanks,
+Stephan Kulow
+

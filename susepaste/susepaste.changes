@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sun Aug 11 15:17:41 UTC 2019 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- updated to version 0.6
+  - error out when pasting unreadable file
+  - fix one bashism
+  - allow to specify protocol
+
+-------------------------------------------------------------------
+Sun Nov 26 10:47:28 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec 16 20:48:02 CET 2011 - mhrusecky@suse.cz
+
+- minor spec file beautifications
+
+-------------------------------------------------------------------
+Thu Apr 21 16:04:27 CEST 2011 - mhrusecky@suse.cz
+
+- updated to version 0.5
+  - support for pasting with key
+  - fixed infinite loop on syntax error
+
+-------------------------------------------------------------------
+Mon Jan  3 00:10:02 CET 2011 - mhrusecky@suse.cz
+
+- updated to version 0.4.1
+  - fixed screenshot pasting script to cleanup temporaly files
+
+-------------------------------------------------------------------
+Sat Jan  1 20:45:05 CET 2011 - mhrusecky@suse.cz
+
+- updated to version 0.4
+  - adding screenshot pasting script
+
+-------------------------------------------------------------------
+Mon Dec  6 16:16:04 CET 2010 - mhrusecky@suse.cz
+
+- updated to version 0.3
+  - support for commandline option
+  - support for pasting images
+  - automatic recognition of several file types 
+
+-------------------------------------------------------------------
+Mon Aug 30 12:15:06 CEST 2010 - mhrusecky@suse.cz
+
+- adding http://paste.opensuse.org as another output
+- adding man page
+
+-------------------------------------------------------------------
+Fri Jul 30 22:46:21 CEST 2010 - mhrusecky@suse.cz
+
+- packaged first version of the script
+

@@ -1,0 +1,36 @@
+Index: apipkg-1.5/test_apipkg.py
+===================================================================
+--- apipkg-1.5.orig/test_apipkg.py
++++ apipkg-1.5/test_apipkg.py
+@@ -13,7 +13,7 @@ ModuleType = types.ModuleType
+ class TestRealModule:
+ 
+     def setup_class(cls):
+-        cls.tmpdir = py.test.ensuretemp('test_apipkg')
++        cls.tmpdir = py.path.local('test_apipkg')
+         sys.path = [str(cls.tmpdir)] + sys.path
+         pkgdir = cls.tmpdir.ensure('realtest', dir=1)
+ 
+@@ -319,8 +319,10 @@ def test_error_loading_one_element(monke
+     import errorloading1
+     assert isinstance(errorloading1, apipkg.ApiModule)
+     assert errorloading1.y == 0
+-    py.test.raises(ImportError, 'errorloading1.x')
+-    py.test.raises(ImportError, 'errorloading1.x')
++    with pytest.raises(ImportError):
++        errorloading1.x
++    with pytest.raises(ImportError):
++        errorloading1.x
+ 
+ 
+ def test_onfirstaccess(tmpdir, monkeypatch):
+@@ -493,7 +495,8 @@ def test_aliasmodule_proxy_methods(tmpdi
+     assert doit is orig.doit
+ 
+     del proxy.doit
+-    py.test.raises(AttributeError, "orig.doit")
++    with pytest.raises(AttributeError):
++        orig.doit
+ 
+     proxy.doit = doit
+     assert orig.doit is doit

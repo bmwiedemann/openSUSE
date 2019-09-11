@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Sat Mar 23 00:17:25 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.14.0:
+  - relicensing to LGPLv3+
+  - bugfixes
+
+-------------------------------------------------------------------
+Thu Mar  7 11:16:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix expansion of test removal
+
+-------------------------------------------------------------------
+Mon Feb 11 11:01:31 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.12.0:
+    * gh#python-rope/rope#218: support for all of the new
+      async-related nodes.
+    * gh#python-rope/rope#259: fix installation issues on Windows
+
+-------------------------------------------------------------------
+Wed Jan 16 17:41:43 CET 2019 - mcepl@suse.com
+
+- Workaround gh#python-rope/rope#247 (some tests fail on Python 3.7)
+
+-------------------------------------------------------------------
+Wed Aug 29 11:52:04 UTC 2018 - tchvatal@suse.com
+
+- Fix buildrequires to not require devel
+- Run tests without conditional
+
+-------------------------------------------------------------------
+Thu Aug  9 07:55:22 UTC 2018 - mcepl@suse.com
+
+- update to 0.11.0
+  + Upstream provides no changelog
+- Remove patch CVE-2014-3539-disable-doa.patch (included upstream)
+
+-------------------------------------------------------------------
+Mon Aug 28 16:14:30 UTC 2017 - toddrme2178@gmail.com
+
+- update to 0.10.7
+  + Upstream provides no changelog
+- Add tag for CVE-2014-3539-disable-doa.patch
+
+-------------------------------------------------------------------
+Fri Jul 21 14:11:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+- update to 0.10.5
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Wed Feb 18 17:05:54 UTC 2015 - jmatejek@suse.com
+
+- update to version 0.10.2
+  * new maintainer revives project
+  * accumulated bugfixes
+  * better test coverage and all tests pass
+- disable dynamic object analysis by default, as it is a security risk
+  (CVE-2014-3539-disable-doa.patch, CVE-2014-3539, boo#916890)
+
+-------------------------------------------------------------------
+Wed Jun  6 11:07:01 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.9.4:
+  + Upstream provides no changelog
+
+-------------------------------------------------------------------
+Tue Jan 31 10:37:36 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Dec  5 13:14:57 UTC 2011 - toddrme2178@gmail.com
+
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Tue Jan 25 14:01:04 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.9.3
+- Added COPYING to documentation
+- Recompressed tarbal with bzip2
+
+-------------------------------------------------------------------
+Wed Aug  5 16:03:28 CEST 2009 - hpj@urpla.net
+
+- Initial creation of package python-rope-0.9.2
+
+-------------------------------------------------------------------

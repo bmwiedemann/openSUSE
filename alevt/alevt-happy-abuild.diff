@@ -1,0 +1,39 @@
+Index: alevt-1.6.2/edline.c
+===================================================================
+--- alevt-1.6.2.orig/edline.c
++++ alevt-1.6.2/edline.c
+@@ -87,7 +87,7 @@ ev_handler(struct edline *el, struct vt_
+ 
+ 	    while (n-- && el->len < (int)sizeof(el->buf)-1)
+ 	    {
+-		if (*p >= 0x20 && *p <= 0x7e || *p >= 0xa0 && *p <= 0xff)
++		if ((*p >= 0x20 && *p <= 0x7e) || *p >= 0xa0) //  && *p <= 0xff)
+ 		    el->buf[el->len++] = *p;
+ 		p++;
+ 	    }
+Index: alevt-1.6.2/misc.h
+===================================================================
+--- alevt-1.6.2.orig/misc.h
++++ alevt-1.6.2/misc.h
+@@ -1,6 +1,8 @@
+ #ifndef MISC_H
+ #define MISC_H
+ 
++#include <string.h>	/* strcmp */
++
+ //////////////////////////
+ // generic macros/typedefs
+ //////////////////////////
+Index: alevt-1.6.2/Makefile
+===================================================================
+--- alevt-1.6.2.orig/Makefile
++++ alevt-1.6.2/Makefile
+@@ -44,7 +44,7 @@ font2.xbm: bdf2xbm $(FONT)-latin-2.bdf
+ 	./bdf2xbm font2 <$(FONT)-latin-2.bdf >font2.xbm
+ 
+ bdf2xbm: bdf2xbm.c
+-	$(HOSTCC) bdf2xbm.c -o bdf2xbm
++	$(HOSTCC) $(OPT) bdf2xbm.c -o bdf2xbm
+ 
+ alevt.1x: alevt.1x.in
+ 	sed s/VERSION/$(VER)/g <alevt.1x.in >alevt.1x

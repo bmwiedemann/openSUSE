@@ -1,0 +1,2890 @@
+-------------------------------------------------------------------
+Fri Aug  9 12:27:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:01 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Get rid of obsolete QString::null
+  * Fix typo, remove extra QByteArray() (thanks to Albert Astals Cid)
+  * Use new logging category directory when ECM>=5.59
+  * Use new syntax
+  * Make audiocd:/ conformant with other KIO from KF5 by adding JSON file
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Use Unicode by default for CD-info data (kde#406262)
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Use the correct MIME type for CDDB information.txt (kde#405783)
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:03 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Fix stat to actually recognize the info dir exists
+  * Use more https in links
+  * Include KDECMakeSettings & KDECompilerSettings first
+  * Use KF_MIN_VERSION also for ECM, given it's released as part of KF now
+  * Bump min cmake version to 3.0
+  * Remove not existing include dir
+  * Install kio binary into kf5/kio subdir, like other kio binaries
+  * Fix minor typos
+  * Add Audiocd KCM docs
+  * Use override as suggested by compiler
+  * Use tabs consistently, add some initialization (do not know if it works).
+  * Add Opus support for KIO AudioCD (kde#313768)
+  * Use more loose permissions for the ripped files (kde#203183)
+  * Fix KCM installation
+  * Fix minor typos and antics
+  * Add Mainpage.dox to test Doxygen documentation with Krazy
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Remove incorrect <provides><library> from appdata, not a real library
+  * Call KLocalizedString::setApplicationDomain only after QApp instance done
+  * Fix Ogg Vorbis logic for Average and Min/Max bitrates
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:05 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Fix KCM installation
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:12 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Fix switching between quality and bitrate for Vorbis Ogg plugin
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Use the current date and time for the created files to avoid confusions (kde#400114)
+  * Fix switching between constant and variable bitrate for LAME configuration module (kde#386014)
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:24 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Use the right version of kcmshell (kde#398368)
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:04:36 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * generate and use a local cdda_interface headerfile copy
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:48 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:56 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:23 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:31 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Restore entity &etc;
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:52 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:19 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:11 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:06 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:10 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:13 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:36 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * None
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:31 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:56 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Use kioclient5 instead of kioclient from KDE 4.x (kde#373819)
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:50 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:36:21 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:30 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * None
+
+-------------------------------------------------------------------
+Thu Mar  9 12:38:27 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 06:58:11 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:57:23 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:45:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:31:35 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:31:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:18:46 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:57:25 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:26:08 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:18:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 15:06:37 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:58:52 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:59:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:30:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:05:58 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:42:25 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:45:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:12:41 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:21:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:20:42 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:09:36 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:32:28 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:16:22 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:21 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 06:55:13 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 05:20:18 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.3
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 14:13:36 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.2
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 11:02:25 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 13:16:02 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.0
+   * KDE Applications 15.04.0
+   * https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+
+-------------------------------------------------------------------
+Sat Mar 21 18:09:25 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.95
+   * KDE Applications 15.04 RC
+
+
+-------------------------------------------------------------------
+Sun Mar  8 12:45:27 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.80
+   * KDE Applications 15.04 Beta
+
+
+-------------------------------------------------------------------
+Tue Mar  3 10:39:35 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.3
+   * KDE Applications 14.12.3
+   * See https://www.kde.org/announcements/announce-applications-14.12.3.php
+
+-------------------------------------------------------------------
+Sun Feb  1 10:59:41 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.2
+   * KDE Applications 14.12.2
+   * See https://www.kde.org/announcements/announce-applications-14.12.2.php
+
+-------------------------------------------------------------------
+Mon Jan 12 19:58:39 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.1
+   * KDE Applications 14.12.1
+   * See https://www.kde.org/announcements/announce-applications-14.12.1.php
+
+-------------------------------------------------------------------
+Wed Dec 17 20:37:17 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.0
+   * KDE Applications 14.12.0
+   * See https://www.kde.org/announcements/announce-applications-14.12.0.php
+
+-------------------------------------------------------------------
+Sun Nov  9 20:39:30 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.3
+   * KDE 4.14.3 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.3.php
+
+-------------------------------------------------------------------
+Sun Oct 12 12:08:50 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.2
+   * KDE 4.14.2 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.2.php
+
+-------------------------------------------------------------------
+Sat Sep 13 16:35:39 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.1
+   * KDE 4.14.1 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.1.php
+
+-------------------------------------------------------------------
+Fri Aug 15 08:36:38 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.0
+   * KDE 4.14.0 SC Final Release
+   * See http://www.kde.org/announcements/4.14/
+
+-------------------------------------------------------------------
+Thu Jul 17 16:43:41 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.90
+   * KDE 4.14 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.14-beta2.php
+
+-------------------------------------------------------------------
+Thu Jul 10 22:16:05 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.80
+   * KDE 4.14 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.14-beta1.php
+
+-------------------------------------------------------------------
+Sun Jun  8 18:37:43 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.2
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/announce-4.13.2.php
+
+-------------------------------------------------------------------
+Fri May  9 16:49:51 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.1
+   * KDE 4.13.1  bug fix release
+   * See http://www.kde.org/announcements/announce-4.13.1.php
+
+-------------------------------------------------------------------
+Fri Apr 11 16:53:00 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.0
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/4.13/
+
+-------------------------------------------------------------------
+Thu Mar 27 17:51:28 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.97
+   * KDE 4.13 RC  release
+   * See http://www.kde.org/announcements/announce-4.13-rc.php
+
+-------------------------------------------------------------------
+Thu Mar 20 18:13:17 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.95
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+-------------------------------------------------------------------
+Thu Mar 13 20:20:04 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.90
+   * KDE 4.13 Beta 2  release
+   * See http://www.kde.org/announcements/announce-4.13-beta2.php
+
+-------------------------------------------------------------------
+Fri Mar  7 10:12:18 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.80
+   * KDE 4.13 Beta 1  release
+   * See http://www.kde.org/announcements/announce-4.13-beta1.php
+
+-------------------------------------------------------------------
+Sat Feb  1 10:16:42 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.2
+   * KDE 4.12.2  release
+   * See http://www.kde.org/announcements/announce-4.12.2.php
+
+-------------------------------------------------------------------
+Sat Jan 11 15:42:25 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.1
+   * KDE 4.12.1  release
+   * See http://www.kde.org/announcements/announce-4.12.1.php
+
+-------------------------------------------------------------------
+Sat Dec 14 18:09:39 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12.0
+   * KDE 4.12.0  release
+   * See http://www.kde.org/announcements/4.12.php
+
+-------------------------------------------------------------------
+Fri Nov 29 07:13:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.97
+   * KDE 4.12 RC 1 release
+   * See http://www.kde.org/announcements/announce-4.12-rc.php
+
+-------------------------------------------------------------------
+Sat Nov 23 22:27:39 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.95
+   * KDE 4.12 Beta 3 release
+   * See http://www.kde.org/announcements/announce-4.12-beta3.php
+
+-------------------------------------------------------------------
+Sat Nov 16 18:00:17 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.90
+   * KDE 4.12 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.12-beta2.php
+
+-------------------------------------------------------------------
+Sat Nov  9 23:01:41 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.80
+   * KDE 4.12 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.12-beta1.php
+
+-------------------------------------------------------------------
+Sat Nov  2 15:15:06 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.3
+   * KDE 4.11.3 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.3.php
+
+-------------------------------------------------------------------
+Sat Sep 28 15:14:49 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.2
+   * KDE 4.11.2 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.2.php
+
+-------------------------------------------------------------------
+Sun Sep  1 10:06:44 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.1
+   * KDE 4.11.1 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.1.php
+
+-------------------------------------------------------------------
+Thu Aug  8 15:12:07 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.0
+   * KDE 4.11 Final release
+   * See http://www.kde.org/announcements/4.11/
+
+-------------------------------------------------------------------
+Thu Jul 25 22:59:28 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 4.10.97
+  * KDE 4.11 RC 2 release
+  * See http://www.kde.org/announcements/announce-4.11-rc2.php
+
+-------------------------------------------------------------------
+Mon Jul 15 08:13:22 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.10.95
+ * KDE 4.11 RC 1 release
+ * See http://www.kde.org/announcements/announce-4.11-rc1.php
+
+-------------------------------------------------------------------
+Thu Jun 27 18:21:43 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.90
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta2.php
+
+-------------------------------------------------------------------
+Thu Jun 13 19:30:03 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.80
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta1.php
+
+-------------------------------------------------------------------
+Sat Jun  1 09:47:08 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.4
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.4.php
+   * resolves bnc#8122760
+
+-------------------------------------------------------------------
+Sat May  4 17:02:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.3
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.3.php
+   * resolves bnc#818500
+
+-------------------------------------------------------------------
+Mon Apr  1 19:21:15 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.2 \n  * Bugfixes
+
+-------------------------------------------------------------------
+Sat Mar  2 15:43:35 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.1
+ * Contains bug fixes. See http://www.kde.org/announcements/
+   for more information
+
+-------------------------------------------------------------------
+Thu Jan 31 17:55:15 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.0
+ * This is the final release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan 17 08:12:30 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.98
+ * This is the third RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  3 21:18:46 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.97
+ * This is the second RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 19 18:45:11 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.95
+ * This is the first RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Dec  1 20:11:14 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.90
+ * This is the second Beta release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Nov 24 12:58:46 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.80
+  * See http://www.kde.org/announcements/announce-4.10-beta1.php
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Sun Nov 18 19:46:05 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Enable flac and ogg encoders
+
+-------------------------------------------------------------------
+Fri Nov  2 16:56:16 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.3
+  * see http://kde.org/announcements/announce-4.9.3.php for details
+
+-------------------------------------------------------------------
+Sat Sep 29 10:20:51 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+  * see http://kde.org/announcements/announce-4.9.2.php for details
+
+-------------------------------------------------------------------
+Sat Sep 29 10:17:54 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+
+-------------------------------------------------------------------
+Tue Sep  4 11:02:15 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+
+-------------------------------------------------------------------
+Tue Jul 31 11:02:37 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 4.9.0
+  * see http://kde.org/announcements/4.9/ for details
+
+-------------------------------------------------------------------
+Thu Jul 19 13:14:09 UTC 2012 - toddrme2178@gmail.com
+
+- update to 4.8.97
+  * RC2 milestone release of KDE 4.9
+  *  see http://kde.org/announcements/announce-4.9-rc2.php for details
+
+-------------------------------------------------------------------
+Fri Jun 29 09:47:58 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.8.95_20120629
+
+-------------------------------------------------------------------
+Sun Jun 17 07:47:43 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.8.90_20120617
+
+-------------------------------------------------------------------
+Tue May 29 15:06:01 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.8.80_20120529
+
+-------------------------------------------------------------------
+Sun May 13 16:31:51 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.8.42_20120513
+
+-------------------------------------------------------------------
+Sun May  6 14:04:42 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.8.42_20120506
+
+-------------------------------------------------------------------
+Tue Nov 22 09:14:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.80_20111122
+
+-------------------------------------------------------------------
+Sun Nov 20 08:41:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.80_20111120
+
+-------------------------------------------------------------------
+Fri Nov 18 09:38:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.80_20111118
+
+-------------------------------------------------------------------
+Wed Nov 16 17:45:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.46_20111116
+
+-------------------------------------------------------------------
+Tue Nov 15 06:02:23 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.46_20111115
+
+-------------------------------------------------------------------
+Mon Nov 14 20:20:10 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.46_20111114
+
+-------------------------------------------------------------------
+Sun Nov 13 09:22:22 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.46_20111113
+
+-------------------------------------------------------------------
+Fri Nov 11 15:49:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111111
+
+-------------------------------------------------------------------
+Mon Nov  7 14:19:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111107
+
+-------------------------------------------------------------------
+Sun Nov  6 16:01:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111106
+
+-------------------------------------------------------------------
+Fri Nov  4 09:45:40 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111104
+
+-------------------------------------------------------------------
+Thu Nov  3 10:28:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111103
+
+-------------------------------------------------------------------
+Tue Nov  1 21:01:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111101
+
+-------------------------------------------------------------------
+Mon Oct 31 13:12:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111031
+
+-------------------------------------------------------------------
+Sat Oct 29 17:12:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111029
+
+-------------------------------------------------------------------
+Fri Oct 28 13:55:11 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111028
+
+-------------------------------------------------------------------
+Wed Oct 26 09:10:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111026
+
+-------------------------------------------------------------------
+Tue Oct 25 16:58:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111025
+
+-------------------------------------------------------------------
+Mon Oct 24 16:40:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111024
+
+-------------------------------------------------------------------
+Sun Oct 23 07:03:47 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111023
+
+-------------------------------------------------------------------
+Fri Oct 21 06:23:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.45_20111021
+
+-------------------------------------------------------------------
+Wed Oct 19 17:57:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111019
+
+-------------------------------------------------------------------
+Tue Oct 18 18:43:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111018
+
+-------------------------------------------------------------------
+Mon Oct 17 18:11:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111017
+
+-------------------------------------------------------------------
+Mon Oct 17 05:51:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111017
+
+-------------------------------------------------------------------
+Sun Oct 16 16:30:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111016
+
+-------------------------------------------------------------------
+Sat Oct 15 15:26:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111015
+
+-------------------------------------------------------------------
+Fri Oct 14 16:49:55 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111014
+
+-------------------------------------------------------------------
+Thu Oct 13 19:24:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111013
+
+-------------------------------------------------------------------
+Wed Oct 12 16:26:49 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.44_20111012
+
+-------------------------------------------------------------------
+Tue Oct 11 20:03:16 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111011
+
+-------------------------------------------------------------------
+Mon Oct 10 18:52:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111010
+
+-------------------------------------------------------------------
+Sun Oct  9 07:06:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111009
+
+-------------------------------------------------------------------
+Fri Oct  7 08:08:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111007
+
+-------------------------------------------------------------------
+Wed Oct  5 15:50:11 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111005
+
+-------------------------------------------------------------------
+Tue Oct  4 05:37:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111004
+
+-------------------------------------------------------------------
+Mon Oct  3 17:56:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111003
+
+-------------------------------------------------------------------
+Sun Oct  2 07:23:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111002
+
+-------------------------------------------------------------------
+Sat Oct  1 14:52:51 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20111001
+
+-------------------------------------------------------------------
+Thu Sep 29 16:17:01 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20110929
+
+-------------------------------------------------------------------
+Wed Sep 28 12:21:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.43_20110928
+
+-------------------------------------------------------------------
+Tue Sep 27 09:06:54 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110927
+
+-------------------------------------------------------------------
+Sun Sep 25 12:38:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110925
+
+-------------------------------------------------------------------
+Sat Sep 24 14:16:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110924
+
+-------------------------------------------------------------------
+Thu Sep 22 05:52:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110922
+
+-------------------------------------------------------------------
+Wed Sep 21 05:59:24 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110921
+
+-------------------------------------------------------------------
+Tue Sep 20 17:55:28 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110920
+
+-------------------------------------------------------------------
+Sun Sep 18 17:36:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110918
+
+-------------------------------------------------------------------
+Fri Sep 16 14:47:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110916
+
+-------------------------------------------------------------------
+Thu Sep 15 08:35:55 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110915
+
+-------------------------------------------------------------------
+Tue Sep 13 16:00:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110913
+
+-------------------------------------------------------------------
+Tue Sep 13 10:54:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110913
+
+-------------------------------------------------------------------
+Mon Sep 12 16:29:48 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110912
+
+-------------------------------------------------------------------
+Mon Sep 12 05:13:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110912
+
+-------------------------------------------------------------------
+Fri Sep  9 18:14:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110909
+
+-------------------------------------------------------------------
+Wed Sep  7 18:30:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110907
+
+-------------------------------------------------------------------
+Tue Sep  6 14:21:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110906
+
+-------------------------------------------------------------------
+Sun Sep  4 12:34:09 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110904
+
+-------------------------------------------------------------------
+Sat Sep  3 06:57:54 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110903
+
+-------------------------------------------------------------------
+Fri Sep  2 15:24:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110902
+
+-------------------------------------------------------------------
+Thu Sep  1 06:44:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110901
+
+-------------------------------------------------------------------
+Tue Aug 30 06:02:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110830
+
+-------------------------------------------------------------------
+Mon Aug 29 18:47:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110829
+
+-------------------------------------------------------------------
+Sun Aug 28 07:48:23 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110828
+
+-------------------------------------------------------------------
+Sat Aug 27 15:43:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110827
+
+-------------------------------------------------------------------
+Fri Aug 26 06:39:40 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110826
+
+-------------------------------------------------------------------
+Thu Aug 25 18:32:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110825
+
+-------------------------------------------------------------------
+Tue Aug 23 17:30:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110823
+
+-------------------------------------------------------------------
+Mon Aug 22 16:37:51 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110822
+
+-------------------------------------------------------------------
+Sun Aug 21 11:23:49 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110821
+
+-------------------------------------------------------------------
+Sat Aug 20 08:43:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110820
+
+-------------------------------------------------------------------
+Fri Aug 19 15:20:12 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110819
+
+-------------------------------------------------------------------
+Thu Aug 18 17:06:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110818
+
+-------------------------------------------------------------------
+Wed Aug 17 15:05:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110817
+
+-------------------------------------------------------------------
+Wed Aug 17 07:11:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.42_20110817
+
+-------------------------------------------------------------------
+Tue Aug 16 07:25:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.41_20110816
+
+-------------------------------------------------------------------
+Thu Aug 11 03:41:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.41_20110811
+
+-------------------------------------------------------------------
+Wed Aug 10 16:36:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.41_20110810
+
+-------------------------------------------------------------------
+Tue Aug  9 16:26:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.41_20110809
+
+-------------------------------------------------------------------
+Sun Aug  7 08:31:47 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110807
+
+-------------------------------------------------------------------
+Fri Aug  5 16:40:01 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110805
+
+-------------------------------------------------------------------
+Thu Aug  4 18:07:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110804
+
+-------------------------------------------------------------------
+Wed Aug  3 17:43:58 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110803
+
+-------------------------------------------------------------------
+Tue Aug  2 19:55:20 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110802
+
+-------------------------------------------------------------------
+Tue Aug  2 07:20:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110802
+
+-------------------------------------------------------------------
+Mon Aug  1 09:28:32 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110801
+
+-------------------------------------------------------------------
+Fri Jul 29 16:49:47 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110729
+
+-------------------------------------------------------------------
+Wed Jul 27 08:29:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110727
+
+-------------------------------------------------------------------
+Mon Jul 25 20:26:46 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110725
+
+-------------------------------------------------------------------
+Sun Jul 24 11:35:23 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110724
+
+-------------------------------------------------------------------
+Sun Jul 24 08:22:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110724
+
+-------------------------------------------------------------------
+Fri Jul 22 15:41:02 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110722
+
+-------------------------------------------------------------------
+Thu Jul 21 20:01:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110721
+
+-------------------------------------------------------------------
+Thu Jul 21 17:41:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110721
+
+-------------------------------------------------------------------
+Wed Jul 20 06:17:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110720
+
+-------------------------------------------------------------------
+Tue Jul 19 17:08:32 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110719
+
+-------------------------------------------------------------------
+Mon Jul 18 19:26:47 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110718
+
+-------------------------------------------------------------------
+Sun Jul 17 16:55:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110717
+
+-------------------------------------------------------------------
+Sun Jul 17 14:38:34 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110717
+
+-------------------------------------------------------------------
+Sun Jul 17 09:07:12 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110717
+
+-------------------------------------------------------------------
+Thu Jul 14 11:39:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110714
+
+-------------------------------------------------------------------
+Mon Jul  4 06:50:50 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.7.40_20110704
+
+-------------------------------------------------------------------
+Tue Jun 21 06:29:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110621
+
+-------------------------------------------------------------------
+Mon Jun 20 17:52:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110620
+
+-------------------------------------------------------------------
+Sat Jun 18 18:51:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110618
+
+-------------------------------------------------------------------
+Sat Jun 18 07:43:32 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110618
+
+-------------------------------------------------------------------
+Wed Jun 15 06:18:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110615
+
+-------------------------------------------------------------------
+Tue Jun 14 16:37:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110614
+
+-------------------------------------------------------------------
+Mon Jun 13 10:21:34 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110613
+
+-------------------------------------------------------------------
+Sun Jun 12 08:38:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110612
+
+-------------------------------------------------------------------
+Sat Jun 11 07:17:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110611
+
+-------------------------------------------------------------------
+Thu Jun  9 11:50:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110609
+
+-------------------------------------------------------------------
+Thu Jun  9 04:59:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110609
+
+-------------------------------------------------------------------
+Wed Jun  8 17:02:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110608
+
+-------------------------------------------------------------------
+Wed Jun  8 16:29:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110608
+
+-------------------------------------------------------------------
+Tue Jun  7 16:55:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110607
+
+-------------------------------------------------------------------
+Tue Jun  7 16:21:09 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110607
+
+-------------------------------------------------------------------
+Tue Jun  7 05:50:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110607
+
+-------------------------------------------------------------------
+Mon Jun  6 16:55:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110606
+
+-------------------------------------------------------------------
+Sun Jun  5 17:47:12 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110605
+
+-------------------------------------------------------------------
+Sat Jun  4 14:28:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110604
+
+-------------------------------------------------------------------
+Fri Jun  3 15:53:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110603
+
+-------------------------------------------------------------------
+Thu Jun  2 16:34:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110602
+
+-------------------------------------------------------------------
+Thu Jun  2 09:32:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110602
+
+-------------------------------------------------------------------
+Wed Jun  1 06:05:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110601
+
+-------------------------------------------------------------------
+Tue May 31 16:42:11 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110531
+
+-------------------------------------------------------------------
+Mon May 30 16:18:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110530
+
+-------------------------------------------------------------------
+Sat May 28 18:53:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110528
+
+-------------------------------------------------------------------
+Fri May 27 18:13:46 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110527
+
+-------------------------------------------------------------------
+Fri May 27 06:34:50 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110527
+
+-------------------------------------------------------------------
+Thu May 26 09:56:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110526
+
+-------------------------------------------------------------------
+Thu May 26 07:15:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110526
+
+-------------------------------------------------------------------
+Wed May 25 17:07:44 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110525
+
+-------------------------------------------------------------------
+Tue May 24 16:24:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110524
+
+-------------------------------------------------------------------
+Tue May 24 06:11:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110524
+
+-------------------------------------------------------------------
+Mon May 23 17:53:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110523
+
+-------------------------------------------------------------------
+Sat May 21 20:21:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.80_20110521
+
+-------------------------------------------------------------------
+Fri May 20 16:31:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110520
+
+-------------------------------------------------------------------
+Thu May 19 20:24:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110519
+
+-------------------------------------------------------------------
+Thu May 19 16:09:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110519
+
+-------------------------------------------------------------------
+Wed May 18 18:32:56 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110518
+
+-------------------------------------------------------------------
+Tue May 17 17:22:16 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110517
+
+-------------------------------------------------------------------
+Mon May 16 16:53:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110516
+
+-------------------------------------------------------------------
+Sun May 15 09:34:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110515
+
+-------------------------------------------------------------------
+Sat May 14 19:18:48 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110514
+
+-------------------------------------------------------------------
+Fri May 13 06:13:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110513
+
+-------------------------------------------------------------------
+Thu May 12 19:37:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110512
+
+-------------------------------------------------------------------
+Thu May 12 13:08:58 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110512
+
+-------------------------------------------------------------------
+Wed May 11 13:51:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110511
+
+-------------------------------------------------------------------
+Tue May 10 15:35:16 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110510
+
+-------------------------------------------------------------------
+Mon May  9 13:29:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110509
+
+-------------------------------------------------------------------
+Sun May  8 16:47:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110508
+
+-------------------------------------------------------------------
+Sat May  7 18:45:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110507
+
+-------------------------------------------------------------------
+Fri May  6 16:02:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110506
+
+-------------------------------------------------------------------
+Thu May  5 16:08:24 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110505
+
+-------------------------------------------------------------------
+Wed May  4 18:53:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110504
+
+-------------------------------------------------------------------
+Wed May  4 18:13:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110504
+
+-------------------------------------------------------------------
+Tue May  3 18:11:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110503
+
+-------------------------------------------------------------------
+Mon May  2 17:31:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110502
+
+-------------------------------------------------------------------
+Sat Apr 30 21:10:53 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110430
+
+-------------------------------------------------------------------
+Fri Apr 29 19:48:09 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110429
+
+-------------------------------------------------------------------
+Thu Apr 28 15:34:46 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110428
+
+-------------------------------------------------------------------
+Thu Apr 28 11:32:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110428
+
+-------------------------------------------------------------------
+Sat Apr 23 13:52:47 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110423
+
+-------------------------------------------------------------------
+Fri Apr 22 18:27:48 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110422
+
+-------------------------------------------------------------------
+Thu Apr 21 18:45:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110421
+
+-------------------------------------------------------------------
+Wed Apr 20 19:31:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110420
+
+-------------------------------------------------------------------
+Tue Apr 19 18:04:16 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110419
+
+-------------------------------------------------------------------
+Mon Apr 18 18:56:44 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110418
+
+-------------------------------------------------------------------
+Sat Apr 16 21:10:56 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110416
+
+-------------------------------------------------------------------
+Fri Apr 15 16:44:22 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110415
+
+-------------------------------------------------------------------
+Thu Apr 14 18:34:20 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110414
+
+-------------------------------------------------------------------
+Wed Apr 13 18:52:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110413
+
+-------------------------------------------------------------------
+Tue Apr 12 18:39:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110412
+
+-------------------------------------------------------------------
+Mon Apr 11 20:44:20 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110411
+
+-------------------------------------------------------------------
+Mon Apr 11 19:49:28 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to .._20110411
+
+-------------------------------------------------------------------
+Sun Apr 10 13:22:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110410
+
+-------------------------------------------------------------------
+Sat Apr  9 18:55:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110409
+
+-------------------------------------------------------------------
+Fri Apr  8 17:34:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110408
+
+-------------------------------------------------------------------
+Thu Apr  7 17:09:48 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110407
+
+-------------------------------------------------------------------
+Wed Apr  6 19:43:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110406
+
+-------------------------------------------------------------------
+Tue Apr  5 19:45:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110405
+
+-------------------------------------------------------------------
+Mon Apr  4 15:29:23 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110404
+
+-------------------------------------------------------------------
+Sun Apr  3 07:25:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110403
+
+-------------------------------------------------------------------
+Fri Apr  1 14:28:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110401
+
+-------------------------------------------------------------------
+Thu Mar 31 17:52:24 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110331
+
+-------------------------------------------------------------------
+Wed Mar 30 17:41:37 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110330
+
+-------------------------------------------------------------------
+Tue Mar 29 16:41:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110329
+
+-------------------------------------------------------------------
+Mon Mar 28 15:56:12 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110328
+
+-------------------------------------------------------------------
+Thu Mar 24 19:07:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110324
+
+-------------------------------------------------------------------
+Wed Mar 23 18:02:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110323
+
+-------------------------------------------------------------------
+Mon Mar 21 19:38:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110321
+
+-------------------------------------------------------------------
+Mon Mar 21 07:16:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110321
+
+-------------------------------------------------------------------
+Sat Mar 19 16:13:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110319
+
+-------------------------------------------------------------------
+Fri Mar 18 18:18:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110318
+
+-------------------------------------------------------------------
+Thu Mar 17 18:15:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110317
+
+-------------------------------------------------------------------
+Wed Mar 16 18:07:27 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110316
+
+-------------------------------------------------------------------
+Tue Mar 15 12:12:55 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110315
+
+-------------------------------------------------------------------
+Tue Mar 15 07:29:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110315
+
+-------------------------------------------------------------------
+Mon Mar 14 17:56:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110314
+
+-------------------------------------------------------------------
+Sun Mar 13 18:04:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110313
+
+-------------------------------------------------------------------
+Sat Mar 12 07:03:53 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110312
+
+-------------------------------------------------------------------
+Fri Mar 11 11:13:05 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110311
+
+-------------------------------------------------------------------
+Fri Mar 11 08:28:02 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110311
+
+-------------------------------------------------------------------
+Thu Mar 10 21:30:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110310
+
+-------------------------------------------------------------------
+Thu Mar 10 18:18:51 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110310
+
+-------------------------------------------------------------------
+Wed Mar  9 19:07:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110309
+
+-------------------------------------------------------------------
+Tue Mar  8 18:54:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110308
+
+-------------------------------------------------------------------
+Mon Mar  7 16:36:48 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110307
+
+-------------------------------------------------------------------
+Sun Mar  6 15:56:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110306
+
+-------------------------------------------------------------------
+Sat Mar  5 18:56:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110305
+
+-------------------------------------------------------------------
+Fri Mar  4 22:09:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Fri Mar  4 17:45:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Fri Mar  4 06:56:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Thu Mar  3 20:13:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110303
+
+-------------------------------------------------------------------
+Thu Mar  3 15:36:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110303
+
+-------------------------------------------------------------------
+Wed Mar  2 18:41:58 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110302
+
+-------------------------------------------------------------------
+Tue Mar  1 17:18:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110301
+
+-------------------------------------------------------------------
+Mon Feb 28 19:43:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110228
+
+-------------------------------------------------------------------
+Mon Feb 28 10:07:14 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110228
+
+-------------------------------------------------------------------
+Sun Feb 27 08:52:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110227
+
+-------------------------------------------------------------------
+Sat Feb 26 13:28:51 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110226
+
+-------------------------------------------------------------------
+Fri Feb 25 21:16:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110225
+
+-------------------------------------------------------------------
+Thu Feb 24 20:24:20 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110224
+
+-------------------------------------------------------------------
+Tue Feb 22 08:06:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110222
+
+-------------------------------------------------------------------
+Sun Feb 20 20:58:54 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110220
+
+-------------------------------------------------------------------
+Sat Feb 19 19:49:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110219
+
+-------------------------------------------------------------------
+Fri Feb 18 16:47:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110218
+
+-------------------------------------------------------------------
+Thu Feb 17 20:19:16 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110217
+
+-------------------------------------------------------------------
+Wed Feb 16 23:29:38 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110217
+
+-------------------------------------------------------------------
+Wed Feb 16 17:28:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110216
+
+-------------------------------------------------------------------
+Tue Feb 15 23:47:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110216
+
+-------------------------------------------------------------------
+Tue Feb 15 06:04:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110215
+
+-------------------------------------------------------------------
+Mon Feb 14 18:34:46 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110214
+
+-------------------------------------------------------------------
+Sun Feb 13 18:14:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110213
+
+-------------------------------------------------------------------
+Sat Feb 12 13:37:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110212
+
+-------------------------------------------------------------------
+Sat Feb 12 08:57:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110212
+
+-------------------------------------------------------------------
+Thu Feb 10 18:26:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110210
+
+-------------------------------------------------------------------
+Wed Feb  9 20:57:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110209
+
+-------------------------------------------------------------------
+Wed Feb  9 07:14:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110209
+
+-------------------------------------------------------------------
+Mon Feb  7 17:58:51 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110207
+
+-------------------------------------------------------------------
+Sun Feb  6 15:41:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110206
+
+-------------------------------------------------------------------
+Sat Feb  5 18:35:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110205
+
+-------------------------------------------------------------------
+Fri Feb  4 07:22:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110204
+
+-------------------------------------------------------------------
+Thu Feb  3 22:22:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110203
+
+-------------------------------------------------------------------
+Wed Feb  2 20:11:34 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110202
+
+-------------------------------------------------------------------
+Tue Feb  1 18:25:34 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110201
+
+-------------------------------------------------------------------
+Mon Jan 31 18:32:28 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110131
+
+-------------------------------------------------------------------
+Sun Jan 30 12:50:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110130
+
+-------------------------------------------------------------------
+Sun Jan 30 12:15:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110130
+
+-------------------------------------------------------------------
+Wed Jan  5 23:01:58 CET 2011 - dmueller@suse.de
+
+- update to 4.6.41_20110106
+
+-------------------------------------------------------------------
+Sun Dec 19 16:36:52 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 4.5.86svn1207757
+
+-------------------------------------------------------------------
+Fri Dec 10 17:44:48 CET 2010 - dmueller@suse.de
+
+- update to 4.5.86svn1205247
+
+-------------------------------------------------------------------
+Thu Dec  2 00:46:45 CET 2010 - dmueller@suse.de
+
+- update to 4.5.82svn1202688
+
+-------------------------------------------------------------------
+Mon Nov 29 17:44:49 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 4.5.81svn1202101
+
+-------------------------------------------------------------------
+Sun Nov 21 18:05:43 UTC 2010 - coolo@novell.com
+
+- remove patch not adapted since 4.1
+
+-------------------------------------------------------------------
+Fri Nov 19 17:18:48 CET 2010 - dmueller@suse.de
+
+- update to 4.5.80
+  * KDE 4.6 Beta1
+  * no upstream changelog available.
+
+
+-------------------------------------------------------------------
+Thu Oct 28 22:12:46 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.3
+  * see http://kde.org/announcements/changelogs/changelog4_5_2to4_5_3.php for details
+
+-------------------------------------------------------------------
+Fri Oct  1 00:05:57 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.2
+  * see http://kde.org/announcements/changelogs/changelog4_5_1to4_5_2.php for details
+
+-------------------------------------------------------------------
+Fri Aug 27 15:46:01 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.1
+  * see http://kde.org/announcements/changelogs/changelog4_5_0to4_5_1.php for details
+
+-------------------------------------------------------------------
+Thu Jul 29 16:54:56 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.0
+  * KDE 4.5.0 final (version bump over RC3)
+
+
+-------------------------------------------------------------------
+Tue Jul 27 08:00:29 UTC 2010 - coolo@novell.com
+
+- libakode doesn't seem to be required
+
+-------------------------------------------------------------------
+Sat Jul 24 00:03:33 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.95
+  * KDE 4.5 RC3 (not announced)
+  * critical fixes for 4.5.0 release
+
+-------------------------------------------------------------------
+Fri Jul 16 18:20:02 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.93svn1149349
+
+-------------------------------------------------------------------
+Thu Jul  8 01:23:51 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.5
+  * bugfixes over 4.4.4
+  * see http://kde.org/announcements/changelogs/changelog4_4_4to4_4_5.php for details
+
+-------------------------------------------------------------------
+Fri Jun 18 16:31:27 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.4
+  * bugfixes over 4.4.3
+  * see http://kde.org/announcements/changelogs/changelog4_4_3to4_4_ 4.php for details
+  * for most modules only version number as a change (4_4_BRANCH.diff already contained the diff
+
+-------------------------------------------------------------------
+Wed May 19 19:32:42 UTC 2010 - cmorve69@yahoo.es
+
+- Remove __DATE__ from source so build-compare can do its work
+
+-------------------------------------------------------------------
+Mon May 17 13:05:21 UTC 2010 - llunak@novell.com
+
+- update 4_4_BRANCH.diff: various fixes, translation updates
+
+-------------------------------------------------------------------
+Thu Apr 29 22:40:27 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.3
+  * bugfixes over 4.4.2
+  * see http://kde.org/announcements/changelogs/changelog4_4_2to4_4_3.php for details
+
+-------------------------------------------------------------------
+Fri Mar 26 19:19:34 CET 2010 - dmueller@suse.de
+
+- update to 4.4.2
+  * bugfixes over 4.4.1
+  * see http://kde.org/announcements/changelogs/changelog4_4_1to4_4_2.php for details
+
+-------------------------------------------------------------------
+Fri Feb 26 20:55:19 CET 2010 - dmueller@suse.de
+
+- update to 4.4.1
+  * bugfixes over 4.4.0
+  * see http://kde.org/announcements/changelogs/changelog4_4_0to4_4_1.php for details
+
+-------------------------------------------------------------------
+Thu Feb  4 12:53:44 CET 2010 - dmueller@suse.de
+
+- update to 4.4.0
+  * Critical bugfixes only over 4.3.98
+  * see http://www.kde.org/announcements/4.4/ for general overview
+
+-------------------------------------------------------------------
+Sun Jan 31 21:38:39 CET 2010 - dmueller@suse.de
+
+- update to 4.3.98
+  * see http://www.kde.org/announcements/announce-4.4-rc3.php for details
+
+-------------------------------------------------------------------
+Thu Jan 28 07:36:51 UTC 2010 - adrian@suse.de
+
+- require cdparanoia-devel also for openSUSE:11.2
+  (enables kio_audiocd again)
+
+-------------------------------------------------------------------
+Wed Jan 20 02:10:25 CET 2010 - dmueller@suse.de
+
+- update to 4.3.95
+  * see http://www.kde.org/announcements/announce-4.4-rc2.php for details
+
+-------------------------------------------------------------------
+Wed Jan  6 19:07:06 CET 2010 - dmueller@suse.de
+
+- update to 4.3.90
+  * see http://www.kde.org/announcements/announce-4.4-rc1.php for details
+
+-------------------------------------------------------------------
+Fri Dec 18 13:47:56 CET 2009 - dmueller@suse.de
+
+- update to 4.3.85
+  * see http://www.kde.org/announcements/announce-4.4-beta2.php for details
+
+-------------------------------------------------------------------
+Fri Dec  4 19:00:37 CET 2009 - dmueller@suse.de
+
+- update to 4.3.80:
+  * see http://techbase.kde.org/Schedules/KDE4/4.4_Feature_Plan
+
+-------------------------------------------------------------------
+Mon Nov 16 21:45:40 CET 2009 - llunak@novell.com
+
+- obsolete only old versions of kdemultimedia3-kmix (bnc#542094)
+
+-------------------------------------------------------------------
+Mon Nov  2 22:02:55 CET 2009 - dmueller@suse.de
+
+- update to 4.3.3
+  * see http://kde.org/announcements/changelogs/changelog4_3_2to4_3_3.php for details
+
+-------------------------------------------------------------------
+Thu Oct 22 14:25:11 UTC 2009 - crrodriguez@opensuse.org
+
+- fix Provides/Obsoletes of kmix
+
+-------------------------------------------------------------------
+Thu Sep 24 19:33:35 UTC 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff: few bug fixes and translation updates
+
+-------------------------------------------------------------------
+Fri Aug 28 13:58:34 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.1
+  * see http://kde.org/announcements/changelogs/changelog4_3_0to4_3_1.php for details
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Sat Aug 15 12:42:21 CEST 2009 - beineri@opensuse.org
+
+- fix menu categories of juk and dragonplayer (for smaller menu)
+
+-------------------------------------------------------------------
+Mon Aug 10 08:40:27 CEST 2009 - beineri@opensuse.org
+
+- remove libpulse-devel build requires
+
+-------------------------------------------------------------------
+Fri Aug  7 17:29:15 CEST 2009 - llunak@suse.cz
+
+- solid action for audiocd:/ (bnc#505997)
+
+-------------------------------------------------------------------
+Wed Jul 29 18:10:15 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.0
+  * see http://kde.org/announcements/4.3 for details
+
+-------------------------------------------------------------------
+Tue Jul 21 22:26:25 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.98
+
+-------------------------------------------------------------------
+Wed Jul  8 18:32:17 CEST 2009 - wstephenson@suse.de
+
+- Update BuildRequires for new cdparanoia-devel
+
+-------------------------------------------------------------------
+Wed Jul  8 18:32:17 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.96
+
+-------------------------------------------------------------------
+Wed Jun 24 21:16:37 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.95
+
+-------------------------------------------------------------------
+Sat Jun 20 10:37:30 CEST 2009 - beineri@opensuse.org
+
+- drop kde4- package prefixes
+
+-------------------------------------------------------------------
+Wed Jun  3 18:28:09 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.90
+
+-------------------------------------------------------------------
+Wed May 27 22:10:54 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.88svn973768
+
+-------------------------------------------------------------------
+Tue May 19 14:37:04 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.87svn969966
+
+-------------------------------------------------------------------
+Mon May 18 21:43:04 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.86svn967995
+
+-------------------------------------------------------------------
+Thu May 14 19:31:22 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.85 (KDE 4.3 Beta1)
+
+-------------------------------------------------------------------
+Thu May 14 10:51:11 CEST 2009 - dmueller@suse.de
+
+- fix versioned deps
+
+-------------------------------------------------------------------
+Thu Apr 30 21:21:06 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.3
+  * see http://kde.org/announcements/changelogs/changelog4_2_2to4_2_3.php
+
+-------------------------------------------------------------------
+Fri Mar 27 00:43:26 CET 2009 - dmueller@suse.de
+
+- update to 4.2.2
+  * see http://kde.org/announcements/changelogs/changelog4_2_1to4_2_2.php
+
+-------------------------------------------------------------------
+Fri Feb 27 01:44:15 CET 2009 - dmueller@suse.de
+
+- update to 4.2.1
+  * see http://kde.org/announcements/changelogs/changelog4_2_0to4_2_1.php
+
+-------------------------------------------------------------------
+Thu Jan 22 02:34:47 CET 2009 - dmueller@suse.de
+
+- update to 4.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 17:26:28 CET 2009 - dmueller@suse.de
+
+- fix versioned deps
+
+-------------------------------------------------------------------
+Tue Jan 13 18:50:48 CET 2009 - dmueller@suse.de
+
+- update to 4.1.96
+
+-------------------------------------------------------------------
+Fri Jan  9 14:54:47 CET 2009 - dmueller@suse.de
+
+- update to 4.1.87 (KDE 4.2 Januar snapshot)
+
+-------------------------------------------------------------------
+Tue Dec 16 13:42:12 CET 2008 - stbinner@suse.de
+
+- versionized split-provides are not supported
+
+-------------------------------------------------------------------
+Thu Nov 20 18:00:50 CET 2008 - stbinner@suse.de
+
+- add SLE provides/obsoletes
+
+-------------------------------------------------------------------
+Wed Nov  5 11:45:23 CET 2008 - dmueller@suse.de
+
+- add missing runtime requires for dragonplayer
+
+-------------------------------------------------------------------
+Tue Nov  4 17:11:19 CET 2008 - llunak@suse.cz
+
+- assign multimedia volume shortcuts to KMix (bnc#384745)
+
+-------------------------------------------------------------------
+Fri Oct 31 11:12:28 CET 2008 - dmueller@suse.de
+
+- update to 4.1.3
+  * see http://kde.org/announcements/changelogs/changelog4_1_2to4_1_3.php
+
+-------------------------------------------------------------------
+Thu Sep 25 18:59:27 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.2
+  * see http://kde.org/announcements/changelogs/changelog4_1_1to4_1_2.php
+
+-------------------------------------------------------------------
+Mon Sep 15 17:43:31 CEST 2008 - dmueller@suse.de
+
+- fix requires
+
+-------------------------------------------------------------------
+Thu Aug 28 12:34:48 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.1
+  * see http://kde.org/announcements/changelogs/changelog4_1to4_1_1.php
+
+-------------------------------------------------------------------
+Wed Jul 23 13:23:27 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.0
+
+-------------------------------------------------------------------
+Fri Jul 18 01:59:27 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.99
+
+-------------------------------------------------------------------
+Fri Jul 11 12:36:25 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.98
+
+-------------------------------------------------------------------
+Fri Jul  4 00:21:53 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.85
+
+-------------------------------------------------------------------
+Thu Jun 26 17:47:53 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.84
+
+-------------------------------------------------------------------
+Wed Jun 18 21:22:20 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.83
+
+-------------------------------------------------------------------
+Tue Jun 10 14:27:20 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.82
+
+-------------------------------------------------------------------
+Mon Jun  9 23:38:10 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81
+
+-------------------------------------------------------------------
+Fri May  9 18:16:22 CEST 2008 - dmueller@suse.de
+
+- 4_0_BRANCH.diff update:
+  * remove kio progress popups in juk
+
+-------------------------------------------------------------------
+Thu May  1 18:43:26 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.4
+   * http://www.kde.org/announcements/changelogs/changelog4_0_3to4_0_4.php
+
+-------------------------------------------------------------------
+Fri Apr 18 11:40:01 CEST 2008 - dmueller@suse.de
+
+- another 4_0_BRANCH.diff update:
+  * hopefully fixes kmix crash on exit (bnc#373639)
+
+-------------------------------------------------------------------
+Mon Apr 14 16:08:45 CEST 2008 - dmueller@suse.de
+
+- 4_0_BRANCH.diff update
+
+-------------------------------------------------------------------
+Thu Mar 27 22:59:11 CET 2008 - dmueller@suse.de
+
+- update to 4.0.3
+
+-------------------------------------------------------------------
+Wed Feb 27 16:20:47 CET 2008 - dmueller@suse.de
+
+- update to 4.0.2
+
+-------------------------------------------------------------------
+Fri Feb 15 02:43:11 CET 2008 - dmueller@suse.de
+
+- update 4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Mon Feb  4 16:01:45 CET 2008 - stbinner@suse.de
+
+- port kmix-autostart.diff
+
+-------------------------------------------------------------------
+Thu Jan 31 02:28:02 CET 2008 - dmueller@suse.de
+
+- update to 4.0.1
+
+-------------------------------------------------------------------
+Sun Jan 20 10:11:36 CET 2008 - stbinner@suse.de
+
+- update KDE_4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Sat Jan  5 19:43:50 CET 2008 - stbinner@suse.de
+
+- update to 4.0 release
+
+-------------------------------------------------------------------
+Wed Jan  2 16:10:13 CET 2008 - stbinner@suse.de
+
+- update to 3.97.2
+
+-------------------------------------------------------------------
+Sun Dec 16 15:21:02 CET 2007 - dmueller@suse.de
+
+- update to 3.97.1
+
+-------------------------------------------------------------------
+Wed Dec  5 19:07:14 CET 2007 - dmueller@suse.de
+
+- update to 3.97.0
+
+-------------------------------------------------------------------
+Tue Dec  4 16:37:00 CET 2007 - dmueller@suse.de
+
+- update to 3.96.3
+
+-------------------------------------------------------------------
+Wed Nov 28 11:24:31 CET 2007 - dmueller@suse.de
+
+- update to 3.96.2
+
+-------------------------------------------------------------------
+Wed Nov 21 18:57:35 CET 2007 - dmueller@suse.de
+
+- update to 3.96.1
+
+-------------------------------------------------------------------
+Wed Nov 14 17:36:23 CET 2007 - dmueller@suse.de
+
+- update to 3.96.0
+
+-------------------------------------------------------------------
+Wed Nov  7 10:41:33 CET 2007 - dmueller@suse.de
+
+- update to 3.95.2
+
+-------------------------------------------------------------------
+Thu Nov  1 12:21:08 CET 2007 - dmueller@suse.de
+
+- update to 3.95.1
+
+-------------------------------------------------------------------
+Fri Oct 26 13:34:00 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 beta4
+
+-------------------------------------------------------------------
+Sat Oct 20 17:40:59 CEST 2007 - dmueller@suse.de
+
+- update to 3.94.1
+
+-------------------------------------------------------------------
+Tue Oct  9 23:31:01 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta3
+
+-------------------------------------------------------------------
+Tue Oct  2 16:07:10 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn720130
+
+-------------------------------------------------------------------
+Wed Sep 26 14:51:12 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn717255
+
+-------------------------------------------------------------------
+Thu Sep 13 15:05:34 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn712059
+
+-------------------------------------------------------------------
+Sat Sep  1 19:07:42 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 23 17:53:51 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn703910
+
+-------------------------------------------------------------------
+Thu Aug 16 13:52:54 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn700761
+
+-------------------------------------------------------------------
+Thu Aug  9 10:10:59 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn697375
+
+-------------------------------------------------------------------
+Sun Jul 29 04:33:21 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 1
+
+-------------------------------------------------------------------
+Thu Jul 12 15:50:16 CEST 2007 - stbinner@suse.de
+
+- update to 3.91.0.svn685969
+
+-------------------------------------------------------------------
+Sat Jun 23 10:33:01 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn679140
+
+-------------------------------------------------------------------
+Wed Jun 13 17:09:14 CEST 2007 - stbinner@suse.de
+
+- disable build of Noatun's splitplaylist (#276925)
+
+-------------------------------------------------------------------
+Fri Jun  8 09:31:04 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn670093
+
+-------------------------------------------------------------------
+Fri Jun  1 13:31:58 CEST 2007 - coolo@suse.de
+
+- simplify spec file by using macros from kde4-filesystem
+
+-------------------------------------------------------------------
+Fri May 25 14:13:33 CEST 2007 - stbinner@suse.de
+
+- split off -devel package
+
+-------------------------------------------------------------------
+Fri May 18 18:32:26 CEST 2007 - stbinner@suse.de
+
+- initial version in abuild
+

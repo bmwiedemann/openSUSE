@@ -1,0 +1,27 @@
+From c5ed50ef195391c14f869af04c7200d23b170c99 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 19 Jan 2016 10:10:11 +0100
+Subject: [PATCH] Adapt to new NetworkManager include directory layout
+
+Latest NetworkManager seems to have moved include files from
+/usr/include to /usr/include/NetworkManager.
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9b3f8c4be731..a654437e8011 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -46,7 +46,7 @@ add_library(${LIBRARY_NAME} SHARED
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMPI_INCLUDE_DIR}
+     ${KONKRETCMPI_INCLUDE_DIR} ${DBUSGLIB_INCLUDE_DIRS} ${GLIB_INCLUDE_DIRS}
+-    ${NM_INCLUDE_DIR} ${UUID_INCLUDE_DIR} ${OPENLMI_INCLUDE_DIR}
++    ${NM_INCLUDE_DIRS} ${UUID_INCLUDE_DIR} ${OPENLMI_INCLUDE_DIR}
+ )
+ 
+ target_link_libraries(${LIBRARY_NAME} ${KONKRETCMPI_LIBRARIES} ${DBUSGLIB_LIBRARIES}
+-- 
+2.7.0
+

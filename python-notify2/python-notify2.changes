@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Mon Dec 10 12:53:58 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Use singlespec everywhere as we rather update packages on older
+  releases to be singlespeced instead of using py2 only variants
+
+-------------------------------------------------------------------
+Sun Jul  2 09:11:09 UTC 2017 - antoine.belvire@opensuse.org
+
+- Fix build for Leap 42.3, which does not have a singlespec version
+  of python-dbus (boo#1046811).
+
+-------------------------------------------------------------------
+Sat May  6 11:32:19 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 0.3.1:
+  * Wrap notifications_registry lookup in try block not to show
+    irrelevant errors.
+  * Add LICENSE file.
+- Convert to singlespec.
+- Fix license.
+
+-------------------------------------------------------------------
+Wed Dec 28 08:53:49 UTC 2016 - tbechtold@suse.com
+
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Fri Feb 12 08:08:04 UTC 2016 - olaf@aepfle.de
+
+- Avoid BuildArch noarch in SLE_11 to fix build
+
+-------------------------------------------------------------------
+Thu Jul 30 18:34:25 UTC 2015 - antoine.belvire@laposte.net
+
+- Initial package (v0.3).
+

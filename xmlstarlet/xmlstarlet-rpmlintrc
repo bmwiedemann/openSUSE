@@ -1,0 +1,7 @@
+##
+
+#
+addFilter("files-duplicate .*/xmlstarlet/ChangeLog .*/xmlstarlet/NEWS")
+
+# The package is pretty small, it doesn't pay off to split documentation
+addFilter("package-with-huge-docs")

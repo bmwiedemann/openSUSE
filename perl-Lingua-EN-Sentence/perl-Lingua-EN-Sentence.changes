@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Aug 20 05:37:18 UTC 2018 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Lingua-EN-Sentence/Changes
+
+  0.31 Aug 19 2018
+      Declared min version of Perl. Fix for RT bug #124686
+
+-------------------------------------------------------------------
+Tue Aug  9 05:38:09 UTC 2016 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Lingua-EN-Sentence/Changes
+
+  	
+  0.30 Aug 08 2016
+      used github as repository
+  	added more abbreviations
+  	set the default character set to en_US.UTF-8
+  	added example/demo.pl script
+
+-------------------------------------------------------------------
+Sun Jun  7 08:39:55 UTC 2015 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Lingua-EN-Sentence/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:21:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Lingua-EN-Sentence/Changes
+
+  	
+  0.26 Mar 12 2015
+      - Fixed POD errors
+  	- Fixed RT bug 97681, setlocale work around for Android systems
+  	- Added Build.PL
+  	- Added tests harness and more tests
+  	- update to newer Perl idioms such as 'our' variables
+  	
+  0.27 Mar 12 2015
+      - added main.t to MANIFEST
+  	- added more prefixes and suffixes for people' snames, such as Mme. , Msgr.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:03 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon Apr  4 12:02:17 UTC 2011 - coolo@novell.com
+
+- update license
+
+-------------------------------------------------------------------
+Fri Apr  1 08:37:39 UTC 2011 - coolo@novell.com
+
+- initial package 0.25
+  * created by cpanspec 1.78.03
+

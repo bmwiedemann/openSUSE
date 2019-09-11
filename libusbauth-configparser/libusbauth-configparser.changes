@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Feb 20 18:02:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use a full Source URL and original tarball.
+- Avoid double-shipping documentation.
+
+-------------------------------------------------------------------
+Tue Jan 22 22:00:00 UTC 2019 - Stefan Koch <stefan.koch10@gmail.com>
+
+- update to 1.0.1:
+  * Support string quoting
+
+-------------------------------------------------------------------
+Thu Feb  1 23:12:01 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Thu Oct 12 06:45:40 UTC 2017 - meissner@suse.com
+
+- initial package, used for parsing usbauth global config files.

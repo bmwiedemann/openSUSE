@@ -1,0 +1,10 @@
+--- swh-lv2-5098e09/xslt/source.xsl	2017-08-03 05:17:15.405704915 +0200
++++ swh-lv2-5098e09/xslt/source.xsl	2017-08-03 05:17:29.745878601 +0200
+@@ -11,6 +11,7 @@
+ <xsl:variable name="PLUGINLABEL"><xsl:call-template name="allCaps"><xsl:with-param name="in" select="$pluginLabel" /></xsl:call-template></xsl:variable>
+ #include &lt;math.h&gt;
+ #include &lt;stdlib.h&gt;
++#include &lt;string.h&gt;
+ #include "lv2.h"
+ 
+ typedef struct _<xsl:value-of select="$PluginLabel"/> {

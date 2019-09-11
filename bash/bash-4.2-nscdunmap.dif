@@ -1,0 +1,51 @@
+---
+ shell.c |   24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+--- shell.c
++++ shell.c	2018-09-20 08:08:34.242204532 +0000
+@@ -43,6 +43,7 @@
+ #endif
+ 
+ #if defined (HAVE_UNISTD_H)
++#  include <sys/types.h>
+ #  include <unistd.h>
+ #endif
+ 
+@@ -1800,6 +1801,28 @@ init_interactive_script ()
+ #endif
+ }
+ 
++static void
++maybe_unmap_nscd (void)
++{
++  unsigned long start, end, off;
++  char path[PATH_MAX];
++  FILE *maps;
++
++  if (getppid() != 1)
++    return;
++  if ((maps = fopen("/proc/self/maps", "r")) == NULL)
++    return;
++
++  while (fscanf(maps, "%lx-%lx %*s %lx %*x:%*x %*lu %s", &start, &end, &off, &path[0]) == 4)
++    {
++      if (strncmp(path, "/var/run/nscd/", 14) != 0)
++	continue;
++      munmap((void*)start, end - start);
++    }
++
++  fclose(maps);
++}
++
+ void
+ get_current_user_info ()
+ {
+@@ -1831,6 +1854,7 @@ get_current_user_info ()
+ #if defined (HAVE_GETPWENT)
+       endpwent ();
+ #endif
++      maybe_unmap_nscd ();
+     }
+ }
+ 

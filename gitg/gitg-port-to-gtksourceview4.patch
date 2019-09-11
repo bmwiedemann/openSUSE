@@ -1,0 +1,74 @@
+From 4617a08deaa3b3e007c7e0b04c06cc7f43841a6a Mon Sep 17 00:00:00 2001
+From: Martin Blanchard <tchaik@gmx.com>
+Date: Sun, 19 May 2019 22:03:51 +0200
+Subject: [PATCH] Port to GtkSourceView 4
+
+GtkSourceView 3 isn't maintained any more.
+
+https://gitlab.gnome.org/GNOME/gitg/issues/131
+---
+ libgitg/gitg-diff-view-file-selectable.vala | 6 +++---
+ meson.build                                 | 2 +-
+ org.gnome.gitgDevel.json                    | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libgitg/gitg-diff-view-file-selectable.vala b/libgitg/gitg-diff-view-file-selectable.vala
+index 369d7ae6..46673c6f 100644
+--- a/libgitg/gitg-diff-view-file-selectable.vala
++++ b/libgitg/gitg-diff-view-file-selectable.vala
+@@ -54,7 +54,7 @@ class Gitg.DiffViewFileSelectable : Object
+ 
+ 		buffer.get_start_iter(out iter);
+ 
+-		while (buffer.forward_iter_to_source_mark(ref iter, d_selection_category))
++		while (buffer.forward_iter_to_source_mark(iter, d_selection_category))
+ 		{
+ 			ret += iter.get_line();
+ 		}
+@@ -321,7 +321,7 @@ class Gitg.DiffViewFileSelectable : Object
+ 
+ 		var buffer = source_view.buffer as Gtk.SourceBuffer;
+ 
+-		if (!buffer.forward_iter_to_source_mark(ref iter, "header"))
++		if (!buffer.forward_iter_to_source_mark(iter, "header"))
+ 		{
+ 			iter.forward_to_end();
+ 		}
+@@ -493,7 +493,7 @@ class Gitg.DiffViewFileSelectable : Object
+ 		}
+ 		else
+ 		{
+-			something_selected = (buffer as Gtk.SourceBuffer).forward_iter_to_source_mark(ref iter, d_selection_category);
++			something_selected = (buffer as Gtk.SourceBuffer).forward_iter_to_source_mark(iter, d_selection_category);
+ 		}
+ 
+ 		if (something_selected != has_selection)
+diff --git a/meson.build b/meson.build
+index fada8986..7b27b8ec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -132,7 +132,7 @@ gobject_introspection_dep = dependency('gobject-introspection-1.0', version: '>=
+ gsettings_desktop_schemas_dep = dependency('gsettings-desktop-schemas')
+ gtk_dep = dependency('gtk+-3.0', version: '>= 3.20.0')
+ gtkspell_dep = dependency('gtkspell3-3.0')
+-gtksourceview_dep = dependency('gtksourceview-3.0', version: '>= 3.10')
++gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.3')
+ libgit2_glib_dep = dependency('libgit2-glib-1.0', version: ['>= 0.27.8'])
+ libpeas_dep = dependency('libpeas-1.0')
+ libsecret_dep = dependency('libsecret-1')
+diff --git a/org.gnome.gitgDevel.json b/org.gnome.gitgDevel.json
+index 4349a709..08acddb2 100644
+--- a/org.gnome.gitgDevel.json
++++ b/org.gnome.gitgDevel.json
+@@ -140,7 +140,7 @@
+                 {
+                     "type" : "git",
+                     "url" : "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+-                    "tag" : "gnome-3-24"
++                    "tag" : "gtksourceview-4-2"
+                 }
+             ]
+         },
+-- 
+2.21.0
+

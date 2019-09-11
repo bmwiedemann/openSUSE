@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Mar 19 14:26:44 UTC 2018 - dimstar@opensuse.org
+
+- BuildRequire python3-2to3: the spec calls 2to3.
+
+-------------------------------------------------------------------
+Sat Sep  2 09:48:35 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Thu Aug 24 13:45:29 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Oct 24 11:08:48 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri May  3 09:26:17 UTC 2013 - speilicke@suse.com
+
+- Fixed the obsoletes to '<' after last version update
+
+-------------------------------------------------------------------
+Mon Apr 29 12:29:43 UTC 2013 - dmueller@suse.com
+
+- Update to 1.2.8:
+  * add python 3.x support 
+
+-------------------------------------------------------------------
+Sun May 27 07:58:11 UTC 2012 - highwaystar.ru@gmail.com
+
+- python3 package added
+- spec files section improved 
+
+-------------------------------------------------------------------
+Wed Aug 31 14:04:17 UTC 2011 - saschpe@suse.de
+
+- Initial version
+
+

@@ -1,0 +1,8 @@
+# The documentation is generated from sources. Thus it contains date and time.
+addFilter("file-contains-date-and-time")
+
+
+# Elektra Modules are installed into one directory for use by independent 
+# versions of the core library. API checks happen inside Elektra.
+addFilter("shlib-policy-nonversioned-dir")
+

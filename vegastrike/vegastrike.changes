@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Wed Jun 21 16:50:18 UTC 2017 - klaussfreire@gmail.com
+
+- add patch vegastrike-src-0.5.1.r1-r13729-gcc7fix.patch
+  GCC 7 fix, use proper member dereference through pointers.
+  Fixes bsc#1041256
+
+-------------------------------------------------------------------
+Thu Feb  2 15:18:59 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Aug 30 12:07:07 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new vegastrike_ppc64.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 19:39:14 UTC 2016 - klaussfreire@gmail.com
+
+- add patch vegastrike-src-0.5.1.r1-gcc6_compat.patch
+  Fixes build with GCC 6 due to redefinition of copysign,
+  uncastable return values in pk3 and name clashes
+- add patch vegastrike-src-0.5.1.r1-gcc6_math_h.patch
+  Fixes detection of math.h system include file
+- add autoconf and automake build dependencies
+- add autoreconf at build time
+
+-------------------------------------------------------------------
+Mon May 11 22:00:04 UTC 2015 - dmueller@suse.com
+
+- add vegastrike-aarch64.patch: Fix build for aarch64
+
+-------------------------------------------------------------------
+Mon Mar 16 16:23:23 UTC 2015 - klaussfreire@gmail.com
+
+- Reduce memory constraints again, new ones weren't realistic
+- Disable parallel build to decrease memory consumption
+
+-------------------------------------------------------------------
+Wed Nov 26 15:08:30 UTC 2014 - klaussfreire@gmail.com
+
+- Increase memory constraint to reflect increased build memory
+  requirements on Factory x86_64
+
+-------------------------------------------------------------------
+Fri Oct 10 17:01:24 UTC 2014 - klaussfreire@gmail.com
+
+- Add _constraints to avoid resource exhaustion during build
+
+-------------------------------------------------------------------
+Tue Mar 19 17:44:41 UTC 2013 - klaussfreire@gmail.com
+
+- Add patch vegastrike-src-0.5.1.r1-boost150_compat.patch
+  Fixes build with latest boost versions (1.5x)
+
+-------------------------------------------------------------------
+Fri Feb 15 09:45:06 UTC 2013 - pgajdos@suse.com
+
+- build also with libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Thu Jan 31 22:59:57 UTC 2013 - klaussfreire@gmail.com
+
+- Add patch vegastrike-src-0.5.1.r1-r13498-al_fix.patch
+  Fixes build when openal is missing (SLE 11 exposed it)
+- Explicitly require openal (SLE 11 fix)
+
+-------------------------------------------------------------------
+Sat Jan  5 17:54:34 UTC 2013 - joop.boonen@opensuse.org
+
+- cleaned the spec file up
+
+-------------------------------------------------------------------
+Tue Sep 18 12:27:58 UTC 2012 - coolo@suse.com
+
+- add explict buildrequire on glu
+
+-------------------------------------------------------------------
+Mon May  7 05:08:44 UTC 2012 - klaussfreire@gmail.com
+
+- Tag patches in spec file
+
+-------------------------------------------------------------------
+Tue May  1 16:37:04 UTC 2012 - klaussfreire@gmail.com
+
+- Disable building with Ogre, for more repeatable builds
+
+-------------------------------------------------------------------
+Fri Apr 27 19:50:52 UTC 2012 - klaussfreire@gmail.com
+
+- GCC 4.7 compatibility fix
+
+-------------------------------------------------------------------
+Wed Apr 18 17:02:55 UTC 2012 - klaussfreire@gmail.com
+
+- Update license to use spdx.org
+- Use fdupes to collapse identical man files
+- Update license text to update FSF address
+
+-------------------------------------------------------------------
+Wed Apr 11 01:04:17 UTC 2012 - klaussfreire@gmail.com
+
+- Fix music (upstream r13353-r13354)
+
+-------------------------------------------------------------------
+Sun Apr  1 00:53:02 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream 0.5.1.r1 source release
+  * Fixed: MIP loading on rectangular textures
+  * Fixed: tumbling capships while docking
+  * Issues #3487109, #2531359, #2808586, #2812869, #2879873, 
+    #2929602 fixed
+
+-------------------------------------------------------------------
+Mon Feb 13 01:31:14 UTC 2012 - klaussfreire@gmail.com
+
+- Added expat buildreq for fedora 
+
+-------------------------------------------------------------------
+Mon Jan 30 05:06:13 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream 0.5.1.beta2 source release
+  * Intel MESA DRI fixes
+  * Fixed beam weapons
+  * Fixed repair bot levels
+  * Cargo mules - allow cargo inside fleet vessels
+  * Offline Vertex de-duplication by mesh_tool
+  * Fixed "-d" option, supporting alternate data dirs
+  * Set correct unit for cargo on vdu manifest. 
+    Should be m^3 for cubic meters, not m^2.
+  * Some smaller fixes and enhancements and code cleanup
+  * Patches #3211661, #3250877, #3353864, #3353868, #3376191, 
+    #3376207, #3373653, #3373650, #3372844, #3373595, #3373583, 
+    #3438260, #3372847, #3372846, #3372837, #3372839, #3372494,
+    #3372591, #3372832, #2121764 applied
+  * Issues #3211697, #3315526, #3413675, #3413685, #3434184,
+    #3440480, #3440493, #3441556, #3311033, #3462191, #3325181,
+    #3191110, #3473367, #3325177 fixed
+
+-------------------------------------------------------------------
+Tue Mar  8 17:27:55 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Upgraded to upstream 0.5.1.beta1-2 source release (by patch)
+
+-------------------------------------------------------------------
+Fri Mar  4 01:17:52 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Fidex module search path ordering so that mod modules take precedence over system modules
+
+-------------------------------------------------------------------
+Sat Feb 26 18:37:48 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Merged upstream changes from SVN rev 13079-13087
+- Reduced message clutter in the console for release builds.
+- feature fix for tracker id #2143066 (upgarde item named "basic repair & refuel).
+- font fix for stroke font size on base computer screen.
+
+-------------------------------------------------------------------
+Fri Feb 25 04:40:33 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Upgraded to upstream 0.5.1.beta1 source release
+
+-------------------------------------------------------------------
+Sun Nov 23 15:40:40 CET 2008 - claes.backstrom@fsfe.org
+
+- New version of vegastrike-0.4.2-vssetup-fix.patch
+
+-------------------------------------------------------------------
+Wed May 21 21:49:18 CEST 2008 - claes.backstrom@fsfe.org
+
+- Initial package 
+

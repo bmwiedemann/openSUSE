@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Sun Jun 30 20:33:02 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.2
+  * Fix restore of tracks with missing metadata in playlist (this
+    was the case for tracks without album metadata)
+  * Fix view selector not following the color theme (kde#408435)
+
+-------------------------------------------------------------------
+Sat Jun 22 16:34:26 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.1
+  * Improve accessibility by providing metadata for UI elements
+  * Use full-height separators in ContentView
+  * Make Playlist items span full width (kde#408210)
+  * Fix focus rectangle not visible in single album view mode
+  * Port GridBrowser Delegate UI changes to FileBrowserDelegate too
+    (kde#407945)
+
+-------------------------------------------------------------------
+Tue May 21 12:51:03 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.0
+  * Support for progress bar on Plasma Desktop taskbar entries
+  * Improved party mode
+  * Undo Support when Playlist is Cleared
+  * New Browsing Views: most recently played tracks, most
+    frequently played tracks
+  * A new context view that is now able to show some of the
+    metadata from the currently playing track like the composer,
+    lyricist, play count, lyrics ...
+  * Optimizations And Reduced Memory Usage
+  * Support for Embedded Cover Images
+  * Easy Navigation to Album or Artist of the Currently Playing
+    Track
+  * Improved Grid Views Elements
+- Add kirigami2 dependency, which is used/required now also for the
+  desktop version
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 30 21:32:09 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.3.0
+  * Fix scrolling in the Album, Artist, etc. and Now Playing views
+    is much too fast (kde#397446)
+  * Fix status box is too small (kde#398924)
+  * Fix Elisa being unaware of Baloo if it starts after Elisa
+    (kde#387437)
+  * User should be able to start typing to search after pressing
+     Ctrl+F (kde#398718)
+  * Fix high memory usage (kde#396840)
+    (improvements have landed in 0.3.0 release and more will come
+    to 0.3.1)
+  * Elisa should better handle being scaled down to a small size
+    (kde#392778)
+    (not yet finished but some improvements are in 0.3.0 release)
+  * Hide stars when there is no rating
+  * Implement interface of Baloo to watch renamed files
+  * Upgrade some code using deprecated features in KDeclarative
+    framework
+  * Align the action buttons with the big icon in the views header
+  * Allow the playlist to be hidden when browsing your music
+  * Always display the title of the playlist entries
+  * Internal improvements to various non graphical components to
+    allow future improvements to the header bar
+  * Resize track metadata view dynamically
+  * Improvements to the header of the play list
+  * Add a mode where Elisa can show only the header but in the full
+    window
+  * Optimize the data methods of model and use
+    QAbstractItemModelTester
+  * Makes KIO and KFileMetaData be optional dependencies
+
+-------------------------------------------------------------------
+Sun Sep 16 13:18:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.2.1
+  * Fixed issues that could lead to wrong data shown for albums
+    with multiple discs
+  * The buttons in the header on top of the views are now aligned
+    with the top and bottom of the big icon
+- Update to 0.2.0
+  * All views are now sorted in ascending order by default
+  * New button to toggle between ascending and descending
+  * New view allows you to browse your home directory, only music
+    files and directories are shown
+  * New view allows you to browse by going from genres to artists,
+    their albums and its tracks
+  * Now has a proper icon
+  * The player bar is now featuring all playback controls, the look
+    of the playlist view and the views selector have been refreshed
+    and improved
+  * Now uses the new icons from Breeze to differentiate between
+    actions (play, pause, etc) and states (playing, paused, etc)
+  * To avoid scanning files for changes at the start, Elisa now
+    keeps the last modified time of files
+  * The browsing views are now only loaded when shown
+  * Elisa is now finding more cover images and most common cases
+    should work
+  * A few fixes to Mpris2 support
+  * Various fixes to the internal tracks database
+- Use macros for the minimum Qt5 and KF5 versions in the specfile
+
+-------------------------------------------------------------------
+Tue Apr 17 11:21:08 UTC 2018 - kbabioch@suse.com
+
+- Update to 0.1.1
+  * Minor bugfixes
+- Download and verify signature for source archive
+- Cleaned up spec file (spec-cleaner)
+
+-------------------------------------------------------------------
+Sun Apr  8 07:59:07 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.1
+  * First stable release
+- Update build requirements
+- Add necessary runtime requirements
+- Mark license files as %license instead of %doc
+
+-------------------------------------------------------------------
+Mon Feb  5 23:35:32 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+- Replace vision statement by what the software is about.
+
+-------------------------------------------------------------------
+Fri Feb  2 16:12:19 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of elisa

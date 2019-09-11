@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Fri Jul 19 08:56:40 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:42:39 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Feb 26 11:42:31 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Nov 26 06:25:02 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:55:00 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu May 18 08:46:12 UTC 2017 - howard@suse.de
+
+- Fix a minor error in translation string on main dialog.
+  (bsc#1038440)
+  Bump version to 3.1.6.
+
+-------------------------------------------------------------------
+Tue Oct 18 14:48:11 UTC 2016 - hguo@suse.com
+
+- The fix of bsc#1002744 was slightly faulty and causes VPN to
+  continuelly overwrite user's firewall script, it also introduced
+  a regression making it unable to turn off TCP MSS reduction.
+  This update 3.1.5 addresses both issues.
+
+-------------------------------------------------------------------
+Mon Oct 10 12:04:12 UTC 2016 - hguo@suse.com
+
+- Instead of creating its own firewall custom-rules, put firewall
+  commands into user's own custom-rules file.
+  Bump version to 3.1.4 for bsc#1002744.
+
+-------------------------------------------------------------------
+Mon Oct  3 12:00:46 UTC 2016 - igonzalezsosa@suse.com
+
+- Fix translation in the connection status dialog (bsc#994349)
+
+-------------------------------------------------------------------
+Thu Mar 24 11:15:40 UTC 2016 - hguo@suse.com
+
+- Fix several important issues:
+  * Properly reduce TCP MSS instead of setting it to a fixed value.
+  * Force UDP encapsulation in case of IPv4 gateway.
+  * Fix two cases of incorrect SUSEfirewall and iptables configuration.
+
+Further implements fate#320616.
+
+-------------------------------------------------------------------
+Tue Oct 27 08:42:26 UTC 2015 - hguo@suse.com
+
+- Fix build failure on Leap.
+
+-------------------------------------------------------------------
+Mon Sep  7 12:45:26 UTC 2015 - hguo@suse.com
+
+- Display a warning if ipsec.conf or ipsec.secrets appear to have
+  been manually manipulated.
+
+-------------------------------------------------------------------
+Fri Jul 17 11:49:05 UTC 2015 - hguo@suse.com
+
+- New package. Initial version, initial release.
+  yast2-vpn: A module for creating VPN gateway and client connections
+  to secure site-to-site communication via IPSec VPN.

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:37:29 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Oct 12 22:07:29 UTC 2014 - dimstar@opensuse.org
+
+- Add nautilus-terminal-vte2.91.patch: Fix usage with Vte 2.91.
+- Add vte-devel BuildRequires: needed in order to be able to detect
+  if we need to apply the patch during build. If vte-2.91.pc exist,
+  we apply the patch and make the resulting package depend on
+  Vte 2.91.
+
+-------------------------------------------------------------------
+Mon Mar  4 10:02:03 UTC 2013 - dimstar@opensuse.org
+
+- Fix dependencies (bnc#807207):
+  + Add gobject-introspection BuildRequires: Needed for the
+    automatic typelib()-Requires generator.
+  + Drop python-nautilus and python-gobject Requires: they are no
+    longer needed, as nautilus-terminal was ported to pygobject. 
+
+-------------------------------------------------------------------
+Wed Jan 18 09:27:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0:
+  + Implement about dialog.
+  + Add accelerators for copy/paste.
+  + Implement drag and drop.
+  + Bug fixes.
+- Drop nautilus-terminal-gi-gobject.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 28 17:17:45 UTC 2011 - vuntz@opensuse.org
+
+- Update to a bzr checkout of the GNOME 3 port (revision 9 of the
+  1.x branch):
+  + Rewrite for GNOME 3 technologies.
+- Add nautilus-terminal-gi-gobject.patch: finish port to pygobject
+  3.0, which has some differences with pygobject 2.x.
+- Add python-gobject Requires as introspection-based bindings are
+  now used.
+- Drop python-vte Requires since we don't want the
+  non-introspection-based bindings.
+- Add python-xdg Recommends: this is an optional dependency, to
+  find the configuration file for this extension.
+- Mark package as noarch.
+- Add have_lang macro, and make all the lang subpackage handling
+  depend on its value. Set it to 0 for now, since there is no
+  translation in the new branch.
+
+-------------------------------------------------------------------
+Thu Oct 28 17:53:01 UTC 2010 - prusnak@opensuse.org
+
+- Updated to version 0.7:
+  + Fixes the "Terminal on desktop" bug
+  + The terminal is now resizable with mouse (instead of buttons)
+  + Updated translations.
+- Changes from version 0.6:
+  + Add optional scrollbar
+  + Nautilus Terminal is now enabled for non-local folders (but
+    with the path set on the home folder).
+  + The install script now check the dependencies
+  + The "terminal on desktop" bug is fixed (lp#642222)
+  + Updated translations.
+- Changes from version 0.5:
+  + Fixes the refresh issue when the terminal is resized
+  + Nautilus Terminal is again available in /media.
+  + Nautilus Terminal Now support the drag & drop of file.
+  + Updated translations.
+- Changes from version 0.4:
+  + Fixes a lot of bug and add some improvement (restart the shell
+    after an "exit" command, Ctrl+Shift+T now toggle Show/Hide).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 14:32:59 CEST 2010 - sbrabec@suse.cz
+
+- New package, version 0.3.
+

@@ -1,0 +1,13 @@
+Index: remind-03.01.07/src/Makefile.in
+===================================================================
+--- remind-03.01.07.orig/src/Makefile.in	2008-09-03 05:36:50.000000000 +0200
++++ remind-03.01.07/src/Makefile.in	2010-01-22 14:22:27.000000000 +0100
+@@ -62,8 +62,6 @@ install-nostripped: all
+ 	done
+ 
+ install: install-nostripped
+-	strip $(DESTDIR)$(bindir)/remind || true
+-	strip $(DESTDIR)$(bindir)/rem2ps || true
+ 
+ clean:
+ 	rm -f *.o *~ core *.bak $(PROGS)

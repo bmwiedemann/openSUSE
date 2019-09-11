@@ -1,0 +1,26 @@
+Index: kjs/collector.cpp
+===================================================================
+--- kjs/collector.cpp.orig
++++ kjs/collector.cpp
+@@ -524,6 +524,9 @@ static inline void* currentThreadStackBa
+     return stackBase;
+ }
+ 
++#ifdef __ia64__
++extern "C" void *__libc_ia64_register_backing_store_base __attribute__((weak));
++#endif
+ 
+ void Collector::markCurrentThreadConservatively()
+ {
+@@ -543,6 +546,11 @@ void Collector::markCurrentThreadConserv
+     void* stackBase = currentThreadStackBase();
+ 
+     markStackObjectsConservatively(stackPointer, stackBase);
++#ifdef __ia64__
++    __builtin_ia64_flushrs();
++    void *bsp = __builtin_ia64_bsp();
++    markStackObjectsConservatively(__libc_ia64_register_backing_store_base, bsp);
++#endif
+ }
+ 
+ #if USE(MULTIPLE_THREADS)

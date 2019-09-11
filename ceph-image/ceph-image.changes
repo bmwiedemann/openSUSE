@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Jul 24 11:40:15 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Adding build arch to kiwi file
+
+-------------------------------------------------------------------
+Wed Jul 24 07:28:33 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid 'no space left' error
+
+-------------------------------------------------------------------
+Mon Jul 22 16:29:27 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Mon Jul 22 12:03:25 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- base on pattern instead of independent packages 
+
+-------------------------------------------------------------------
+Wed Jul  3 16:14:28 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- adding xml template to generalize the kiwi creation for the different 
+  platrorms 
+
+-------------------------------------------------------------------
+Wed Jul  3 10:14:28 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- correct service to get full Ceph version for the unique tag
+
+-------------------------------------------------------------------
+Tue May 21 17:38:38 CEST 2019 - denis.kondratenko@suse.com
+
+- Initial version 
+

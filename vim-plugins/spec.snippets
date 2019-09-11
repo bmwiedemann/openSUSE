@@ -1,0 +1,123 @@
+# Specfile snippets for snipMate vim plugin
+# http://www.vim.org/scripts/script.php?script_id=2540
+# by Petr Uzel <petr.uzel@suse.cz>
+snippet Pa
+	Patch${1:N}:         ${2:NAME}	
+snippet So
+	Source${1:N}:        ${2:NAME}
+snippet BR
+	BuildRequires:  ${1:PKG}
+snippet Re
+	Requires:       ${1:PKG}
+snippet pa
+	%patch${1:N} -p${2:1}	
+snippet bd
+	%{_bindir}
+snippet sbd
+	%{_sbindir}
+snippet infd
+	%{_infodir}
+snippet md
+	%{_mandir}
+snippet ddd
+	%{_defaultdocdir}
+snippet ld
+	%{_libdir}
+snippet incd
+	%{_includedir}
+snippet files
+	%files ${1:NAME}
+	%defattr{-,root,root}
+	${2}
+snippet filesn
+	%files -n ${1:NAME}
+	%defattr{-,root,root}
+	${2}
+snippet Name
+	Name:           `expand("%:t:r")`
+	Version:        ${1:VERSION}
+	Release:        0
+	Summary:        ${2:SUMMARY}
+	Group:          ${3:GROUP}
+	License:        ${4:LICENSE}
+	Url:            ${5:URL}
+	PreReq:         ${6:PKG}
+	Provides:       ${7:SYMBOL}
+	BuildRequires:  ${8:PKG}
+	Source:         ${9:FILE}
+	BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+	AutoReqProv:    on
+	
+	%description
+	${10:LONG DESCRIPTION}
+
+	
+	Authors:
+	--------
+	    ${11:AUTHOR}
+	
+	%prep
+	%setup
+	
+	%build
+	%configure
+	make %{?jobs:-j%jobs}
+	
+	%install
+	%makeinstall
+	
+	%clean
+	rm -rf $RPM_BUILD_ROOT
+	
+	%post
+	%postun
+	
+	%files
+	%defattr(-,root,root)
+	%doc ChangeLog README COPYING
+	
+	%changelog
+snippet packagen
+	%package -n ${1:PKGNAME}
+	License:        ${2:LICENSE}
+	Summary:        ${3:SUMMARY}
+	Group:          ${4:GROUP}
+	AutoReqProv:    on
+
+	%description -n $1
+	${5:LONG DESCRIPTION}
+snippet package
+	%package        ${1:PKGNAME}
+	License:        ${2:LICENSE}
+	Summary:        ${3:SUMMARY}
+	Group:          ${4:GROUP}
+	AutoReqProv:    on
+
+	%description    $1
+	${5:LONG DESCRIPTION}
+snippet if
+	%if ${1:COND}
+	${2:# STUFF}
+	%endif
+	${3}
+snippet ifarch
+	%ifarch ${1:ARCH}
+	${2:# STUFF}
+	%endif
+	${3}
+snippet ifnarch
+	%ifnarch ${1:ARCH}
+	${2:# STUFF}
+	%endif
+	${3}
+snippet install
+	install -m ${1:644} %{_buildroot}/%{_${2:DIR}}/${3:FILE}
+snippet installd
+	install -d -m ${1:644} %{_buildroot}/%{_${2:DIR}}/${3:FILE}
+snippet ifsusever
+	%if 0%{?suse_version} >= ${1:1130}
+	${2:# STUFF}
+	%else
+	${3:# STUFF}
+	%endif
+	${4}

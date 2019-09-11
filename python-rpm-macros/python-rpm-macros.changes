@@ -1,0 +1,266 @@
+-------------------------------------------------------------------
+Mon Jun 10 11:34:32 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190610.2ee3233:
+  * Fix typo, missing opening brace.
+  * Add the first draft of pyproject_wheel and pyproject_install macros.
+  * Yet another attempt to preserve $PYTHONPATH set in the environment.
+  * Document also %pytest_arch
+  * Document %pytest in README.md
+  * Multiline macros don't work correctly on older RPMs.
+  * Add missing $ expansion on the pytest call
+  * Rewrite pytest and pytest_arch into Lua macros with multiple arguments.
+  * We should preserve existing PYTHONPATH.
+  * Add --ignore to pytest calls to ignore build directories.
+
+-------------------------------------------------------------------
+Mon Jun 10 11:27:22 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190610.2ee3233:
+  * Fix typo, missing opening brace.
+
+-------------------------------------------------------------------
+Mon May 20 12:38:10 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190511.2ed22b6:
+  * Add the first draft of pyproject_wheel and pyproject_install macros.
+
+-------------------------------------------------------------------
+Thu May 02 06:10:17 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190430.5260267:
+  * Yet another attempt to preserve $PYTHONPATH set in the environment.
+  * Document also %pytest_arch
+  * Document %pytest in README.md
+
+-------------------------------------------------------------------
+Mon Apr 08 12:43:06 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190408.32abece bsc#1128323:
+  * Multiline macros don't work correctly on older RPMs.
+
+-------------------------------------------------------------------
+Tue Apr 02 11:25:58 UTC 2019 - tchvatal@suse.com
+
+- Update to version 20190402.c88be49:
+  * Add missing $ expansion on the pytest call
+
+-------------------------------------------------------------------
+Fri Mar 15 14:18:06 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190315.d3034bf bsc#1128323:
+  * Rewrite pytest and pytest_arch into Lua macros with multiple arguments.
+
+-------------------------------------------------------------------
+Thu Mar 07 13:40:24 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20190307.81ca329:
+  * We should preserve existing PYTHONPATH.
+
+-------------------------------------------------------------------
+Thu Mar 07 11:18:35 UTC 2019 - mcepl@cepl.eu
+
+- bsc#1128323: Update to version 20190307.fbaed33
+  * Add --ignore to pytest calls to ignore build directories.
+
+-------------------------------------------------------------------
+Thu Feb 21 17:54:59 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 20190221.08f1194:
+  * Actually make pytest into function to capture arguments as well
+  * Add pytest definitions.
+
+-------------------------------------------------------------------
+Wed Dec 19 19:29:44 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+- Include license and readme.
+
+-------------------------------------------------------------------
+Tue Dec 11 11:27:17 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 20181211.ab6f37c:
+  * Fix an issue with epoch printing having too many \
+  * Remove packaging/ dir
+
+-------------------------------------------------------------------
+Mon Dec 10 20:09:43 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1540475376.149a499:
+  * add epoch while printing "Provides:"
+- Update URL
+- Add _service and use the tar_scm/recompress/set_version source
+  services to update the package.
+  Package updates can now be done with "osc service run"
+- Drop README.packaging
+- Drop update.sh . This is now handled via the source services
+
+-------------------------------------------------------------------
+Wed Oct 24 07:20:44 UTC 2018 - sjamgade@suse.com
+
+- version bump to 2018.08.15.ada6d63
+
+-------------------------------------------------------------------
+Fri Dec 22 15:57:10 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.12.22.d9968ab
+  * better fix for macro usage in rpm 4.14
+
+-------------------------------------------------------------------
+Thu Dec  7 19:58:36 UTC 2017 - tchvatal@suse.com
+
+- version bump to 2017.12.07.9d4e9eb
+  * Fix macro usage for rpm 4.14
+
+-------------------------------------------------------------------
+Wed Aug  9 13:37:32 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.08.09.32550d0
+- use %_specfile macro to locate the spec file, this should help with
+  factory-auto bot problems as well as issue#3
+
+-------------------------------------------------------------------
+Thu Jun 29 13:20:02 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.06.29.107ac7a
+- fix skip_python2 in environment where python2 is not actually present
+
+-------------------------------------------------------------------
+Wed Jun 21 13:16:38 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.06.21.6641889
+- introduce smarter buildset support
+- fix %python_files on nonstandard build sets
+- introduce %python_for_executables in favor of magically taking
+  "last python in %pythons"
+- fix %licence tag handling (gh#opensuse/python-rpm-macros#4)
+
+-------------------------------------------------------------------
+Tue May  9 15:38:41 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.05.09.fc237de
+- fix badly generated %posttrans snippets in cases where
+  old %python_install_alternative syntax is used for secondary files
+- rework %if-macros
+- introduce %python_flavor, which configures behavior of generic %python_*
+  macros, and can be overriden by the user
+- add --force to %python_install, to make install order fully deterministic
+
+-------------------------------------------------------------------
+Thu Apr 27 15:43:20 UTC 2017 - jmatejek@suse.com
+
+- version bump to 2017.04.27.d2ca08c
+- switch versioning scheme to date-based
+- switch from using service to a custom script update.sh
+- auto-generate Provides: python2-modname in old distributions
+  (only for main package though)
+
+-------------------------------------------------------------------
+Wed Mar 29 12:53:05 UTC 2017 - jmatejek@suse.com
+
+- generate %posttrans sections to fix up alternatives after package
+  rename
+- fix condition where %python_files would emit wrong thing when
+  %have_python2 is undefined
+- add --quiet to uninstall_alternative, to silence spurious errors
+- check for file existence instead of package number in uninstall_alternative
+
+-------------------------------------------------------------------
+Thu Mar 23 17:08:46 UTC 2017 - jmatejek@suse.com
+
+- remove spurious warnings about "unknown arguments" (by making ALL
+  possible arguments known)
+- fix a bug with %python_clone not working without
+  %python_install_alternative being used
+- in %python_files, detect and emit an error if %python_subpackages
+  is not used
+
+-------------------------------------------------------------------
+Mon Mar 13 16:05:15 UTC 2017 - jmatejek@suse.com
+
+- more intelligent %python_install_alternatives
+- multiline macro support
+- support for %requires_ge and %requires_eq as well as Requires(pre)
+  and friends
+- "%python_clone -a" auto-creates alternative entries
+
+-------------------------------------------------------------------
+Thu Mar  9 17:20:12 UTC 2017 - jmatejek@suse.com
+
+- implement %python_clone to clone files for alternatives
+
+-------------------------------------------------------------------
+Wed Mar  8 15:22:55 UTC 2017 - jmatejek@suse.com
+
+- support "Supplements" and "Enhances" tags
+- support packageand() expression
+- fix handling of %name in requires
+
+-------------------------------------------------------------------
+Wed Mar  8 13:18:14 UTC 2017 - jmatejek@suse.com
+
+- make macros more resilient to missing %python_subpackages
+- expand %python_bin_suffix properly
+
+-------------------------------------------------------------------
+Fri Feb 24 13:50:03 UTC 2017 - jmatejek@suse.com
+
+- let %python_module expand *all* its arguments, not just the first
+  (so that %{python_module x >= 1.0} works as intended)
+
+-------------------------------------------------------------------
+Wed Feb 22 14:38:28 UTC 2017 - jmatejek@suse.com
+
+- copy BuildArch to subpackages
+- on requires/provides etc., perform macro expansion *after* replacing
+  'python' name, to allow for tricking the rewriter to not replace
+
+-------------------------------------------------------------------
+Tue Feb 21 14:55:08 UTC 2017 - jmatejek@suse.com
+
+- add BuildRoot to make SLE11 happy
+- check presence of %python_files even on new-style distros
+- better visibility of the %python_files error
+
+-------------------------------------------------------------------
+Mon Feb 13 14:46:25 UTC 2017 - jmatejek@suse.com
+
+- update service, use repository and tarball name "python-rpm-macros"
+
+-------------------------------------------------------------------
+Tue Feb  7 16:31:04 UTC 2017 - jmatejek@suse.com
+
+- introduce %python_prefix
+
+-------------------------------------------------------------------
+Mon Feb  6 14:30:38 UTC 2017 - jengelh@inai.de
+
+- Set RPM group
+
+-------------------------------------------------------------------
+Wed Jan 11 14:28:48 UTC 2017 - jmatejek@suse.com
+
+- change service version generator to use "1.0.git" instead of "1.0git"
+
+-------------------------------------------------------------------
+Fri Jan  6 17:36:58 UTC 2017 - jmatejek@suse.com
+
+- rework %python_alternative and remove support for %python_alternative_man
+- tell service to compress the tar file
+
+-------------------------------------------------------------------
+Fri Jan  6 14:54:21 UTC 2017 - jmatejek@suse.com
+
+- set service to localonly mode
+
+-------------------------------------------------------------------
+Tue Jan  3 15:06:29 UTC 2017 - jmatejek@suse.com
+
+- current macro version
+
+-------------------------------------------------------------------
+Thu Nov 24 14:57:13 UTC 2016 - jmatejek@suse.com
+
+- initial commit
+

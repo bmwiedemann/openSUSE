@@ -1,0 +1,24 @@
+Index: kadu-core/plugin/dependency-graph/plugin-dependency-graph-builder.h
+===================================================================
+--- kadu-core/plugin/dependency-graph/plugin-dependency-graph-builder.h.orig
++++ kadu-core/plugin/dependency-graph/plugin-dependency-graph-builder.h
+@@ -22,6 +22,7 @@
+ #include <QtCore/QObject>
+ #include <map>
+ #include <set>
++#include <functional>
+ 
+ #include "plugin/dependency-graph/plugin-dependency-graph.h"
+ #include "exports.h"
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -39,6 +39,7 @@ else ()
+ 	set (C_FLAGS "-Wwrite-strings")
+ 	set (CXX_FLAGS "-Woverloaded-virtual -Wnon-virtual-dtor ${CXX_FLAGS}")
+ 	set (CMAKE_CXX_STANDARD 14)
++    set (CXX_STANDARD_REQUIRED ON)
+ 
+ 	if (NOT WIN32)
+ 		set (COMMON_COMPILE_FLAGS "${COMMON_COMPILE_FLAGS} -fvisibility=hidden")

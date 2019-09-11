@@ -1,0 +1,11 @@
+--- hollywood-718960725551c64a2419aab9bd8b60ee0b95b762/bin/wallstreet	2016-12-04 18:17:40.000000000 +0100
++++ hollywood-718960725551c64a2419aab9bd8b60ee0b95b762/bin/wallstreet	2016-12-26 23:20:19.429361376 +0100
+@@ -50,7 +50,7 @@
+ fi
+ 
+ version=$(tmux -V | sed -e "s/.*\s//")
+-if dpkg --compare-versions $version le 2.1; then
++if [[ "$(echo -e "$version\\n2.1" | sort -V | tail -n 1)" != 2.1 ]]; then
+ 	tmux new-window -n $PKG "$widget_dir/w3m" \; \
+ 		set-option -g pane-active-border-bg "default" \; \
+ 		set-option -g pane-active-border-fg "default" \; \

@@ -1,0 +1,33 @@
+Index: wmakerconf-2.12/configure.ac
+===================================================================
+--- wmakerconf-2.12.orig/configure.ac
++++ wmakerconf-2.12/configure.ac
+@@ -292,6 +292,9 @@ AC_SUBST(DATADIR)
+ WWWGET=$wwwget
+ AC_SUBST(WWWGET)
+ 
++# mkpreview requries X11 symbols XOpenDisplay
++PKG_CHECK_MODULES(X11, x11)
++
+ if test -n "$www_support"; then
+         AC_DEFINE(WWWREQUEST, 1, [Define if you want to use WWW requests])
+ fi
+Index: wmakerconf-2.12/src/Makefile.am
+===================================================================
+--- wmakerconf-2.12.orig/src/Makefile.am
++++ wmakerconf-2.12/src/Makefile.am
+@@ -11,12 +11,12 @@
+ bin_PROGRAMS		= wmakerconf @MKPREVIEW@
+ EXTRA_PROGRAMS		= mkpreview
+ 
+-wmakerconf_LDADD	= $(GDK_IMLIB_LIBS) @INTLLIBS@ @WRASTERLIBS@ @WMFUNLIBS@
++wmakerconf_LDADD	= $(GDK_IMLIB_LIBS) $(X11_LIBS) @INTLLIBS@ @WRASTERLIBS@ @WMFUNLIBS@
+ wmakerconf_SOURCES	= dialog.c dndtree.c error.c icons.c keys.c load.c \
+ 			  menu.c misc.c path.c previews.c rimage.c rootmenu.c \
+ 			  shortcuts.c simple.c texture.c themebrowser.c \
+ 			  window.c wmconfig.c
+-mkpreview_LDADD		= @WRASTERLIBS@
++mkpreview_LDADD		= $(X11_LIBS) @WRASTERLIBS@
+ 
+ noinst_HEADERS		= dndtree.h misc.h menu.h error.h window.h icons.h \
+ 			  dialog.h path.h rootmenu.h shortcuts.h simple.h \

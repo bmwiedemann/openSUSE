@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Fri Dec  2 12:43:58 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Jun  2 13:52:54 CEST 2009 - crrodriguez@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Thu Mar 29 11:35:36 CEST 2007 - schwab@suse.de
+
+- Add flex and bison to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul  6 16:14:02 CEST 2005 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Fri Aug 27 13:52:23 CEST 2004 - schwab@suse.de
+
+- Fix for new flex.
+
+-------------------------------------------------------------------
+Sat Apr 17 11:16:46 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Thu Mar 25 16:05:53 CET 2004 - mmj@suse.de
+
+- Fix sendmail path
+
+-------------------------------------------------------------------
+Fri Mar  5 14:20:27 CET 2004 - schwab@suse.de
+
+- Remove fixed sized buffers.
+
+-------------------------------------------------------------------
+Sun Jan 11 10:17:17 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug  1 15:41:46 CEST 2003 - coolo@suse.de
+
+- don't strip explictly
+
+-------------------------------------------------------------------
+Tue Apr 22 14:19:14 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Jan 26 22:31:20 CET 2002 - schwab@suse.de
+
+- Fix for bison 1.32.
+
+-------------------------------------------------------------------
+Mon Sep 25 16:57:55 CEST 2000 - schwab@suse.de
+
+- Add group tag.
+
+-------------------------------------------------------------------
+Thu Jan 20 15:50:14 CET 2000 - schwab@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Wed Sep 22 09:39:08 CEST 1999 - schwab@suse.de
+
+- buffer overflow fixes from Thomas
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug 30 12:51:22 CEST 1999 - schwab@suse.de
+
+- specfile cleanup
+- apply patch from
+  ftp://ftp.uu.se/pub/unix/networking/mail/emil/emil-2.1.0-beta9.patch1
+
+-------------------------------------------------------------------
+Fri Sep 25 16:07:25 MEST 1998 - ro@suse.de
+
+- moved initialisation of file* into main
+
+----------------------------------------------------------------------------
+Thu Oct 17 16:11:55 CEST 1996 - florian@suse.de
+
+
+- Update auf neue Version 2.1.0-beta9.
+
+

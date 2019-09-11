@@ -1,0 +1,56 @@
+---
+ Xrm.cc |   14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+--- Xrm.cc
++++ Xrm.cc	2016-12-05 10:31:19.076186648 +0000
+@@ -9,6 +9,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>	//  For snprintf().
++#include <sys/stat.h>   //  For stat().
+ #include <ctype.h>
+ #include <unistd.h>  //  for access(), etc.  BCG
+ #include <iostream>
+@@ -135,34 +136,35 @@ Listed from weakest to strongest:
+ 
+   //  Merge in the system resource database.
+   char rfilename[2048];
++  struct stat st;
+   int result;
+   const int rlen = sizeof rfilename;
+ 
+   // Get the app-defaults
+   result = snprintf(rfilename, sizeof rfilename, "/etc/X11/app-defaults/%s",
+     XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+   result = snprintf(rfilename, sizeof rfilename, "/usr/lib/X11/app-defaults/%s",
+     XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+   result = snprintf(rfilename, sizeof rfilename, "/usr/X11R6/lib/X11/app-defaults/%s",
+     XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+   result = snprintf(rfilename, sizeof rfilename, "/usr/share/X11/app-defaults/%s",
+     XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+   //  Try a few more, for SunOS/Solaris folks.
+   result = snprintf(rfilename, sizeof rfilename, "/usr/openwin/lib/X11/app-defaults/%s",
+     XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+   result = snprintf(rfilename, sizeof rfilename, "/usr/local/X11R6/lib/X11/app-defaults/%s",
+       XrmQuarkToString(_class));
+-  if (result >= 0 && result < rlen)
++  if (result >= 0 && result < rlen && stat(rfilename, &st) == 0)
+     XrmCombineFileDatabase (rfilename, &_db, 1);
+ 
+   //  Now, check for an XOSView file in the XAPPLRESDIR directory...

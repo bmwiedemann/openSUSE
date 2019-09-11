@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Feb 24 02:10:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove nose custom test runner and unittest2 on Python 3
+- Added CHANGES.rst to docs
+- Add missing Provides to accompany Obsoletes
+- Add CFLAGS="%{optflags}"
+- Update to v1.2
+  * Included tests in the pypi package.
+- from v1.1
+  * Fixed README encoding.
+  * Included documentation in the pypi package.
+
+-------------------------------------------------------------------
+Wed Aug  8 15:36:35 UTC 2018 - jengelh@inai.de
+
+- Fix irrelevant description.
+
+-------------------------------------------------------------------
+Wed Aug  1 12:40:59 UTC 2018 - tchvatal@suse.com
+
+- Install license file
+- Make sure tests are run
+
+-------------------------------------------------------------------
+Wed Oct 25 09:17:02 UTC 2017 - buschmann23@opensuse.org
+
+- obsolete python-siphashc3
+
+-------------------------------------------------------------------
+Wed Oct 25 06:58:46 UTC 2017 - buschmann23@opensuse.org
+
+- initial package

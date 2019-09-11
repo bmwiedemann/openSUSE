@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Oct  2 10:48:16 UTC 2013 - max@suse.com
+
+- Avoid an unneeded explicit dependency on a certain version of
+  libtcl (pgtcl-stubs.patch).
+
+-------------------------------------------------------------------
+Wed Jul 31 13:36:15 UTC 2013 - max@suse.com
+
+- Set -DUSE_INTERP_ERRORLINE to fix build with Tcl 8.6.
+
+-------------------------------------------------------------------
+Wed Jan 11 17:30:06 UTC 2012 - max@suse.com
+
+- Update to version 1.7 to fix an issue with Tcl 8.5 (bnc#739978).
+
+-------------------------------------------------------------------
+Tue Dec 20 11:21:37 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 10:06:33 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 13 18:32:48 CET 2005 - max@suse.de
+
+- Fixed a typo in tcl.m4 that broke configure with bash 3.1.
+
+-------------------------------------------------------------------
+Thu Jul 28 09:30:26 CEST 2005 - max@suse.de
+
+- New version: 1.5.
+- Move script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Thu Nov 18 15:46:59 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Fri Jul  2 18:36:08 CEST 2004 - max@suse.de
+
+- Updated to the final 1.4 release.
+
+-------------------------------------------------------------------
+Thu Apr  1 16:50:50 CEST 2004 - max@suse.de
+
+- Added heimdal-lib to neededforbuild to fix the creation
+  of pkgIndex.tcl.
+
+-------------------------------------------------------------------
+Fri Mar  5 16:00:26 CET 2004 - max@suse.de
+
+- Added patch to current CVS head.
+
+-------------------------------------------------------------------
+Tue Nov 18 15:57:05 CET 2003 - max@suse.de
+
+- Enabled building as a non-root user.
+
+-------------------------------------------------------------------
+Mon Jan 27 13:25:30 CET 2003 - max@suse.de
+
+- Renamed from postgresql-tcl to PgTcl.
+
+- New version: 1.4b3
+
+- This becomes a package of it's own, because libpgtcl
+  has become a separate project.

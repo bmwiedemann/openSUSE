@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Nov 16 10:03:17 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups. Trim redundant wording from description.
+
+-------------------------------------------------------------------
+Tue Nov  7 22:45:07 UTC 2017 - mardnh@gmx.de
+
+- License clarification
+
+-------------------------------------------------------------------
+Sun Apr 23 17:44:39 UTC 2017 - mardnh@gmx.de
+
+- add patch for fixing issues with pkgconfig on 64bit platforms
+  * libmirisdr-cmake-libsuffix.diff
+- Use package-meta for tar_scm service and add git-core
+  to BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar  8 18:40:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.1+git.20151211:
+  * include auto-generated GIT_REVISION into the DFU and firmware builds
+  * change si570.h permissions to 644
+  * disable e4k enhanced mixer gain as it seems to have no effect
+  * implement a more robust cancelation mechanism of async reader
+  * install (and uninstall) udev rules file
+  * don't install udev rules by default, as it may pollute the system
+  * software/libosmosdr: remove spaces from Makefile template
+  * cmake: detect libusb on FreeBSD
+  * slim_pro.c: Fix format string related compiler warning
+  * cross platform usleep()
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov  4 16:41:23 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Changes to spec file:
+  * Update udev paths for openSUSE 13.1 and ensure udev rules are
+    updated when package is installed / updated / uninstalled.
+  * Define %libname to ease reuse of %post(un) macros
+
+-------------------------------------------------------------------
+Sat Aug 17 13:47:37 UTC 2013 - dl8fcl@darc.de
+
+- import into build service
+

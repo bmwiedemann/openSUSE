@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Jul 23 20:35:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.16.0
+  * The Python API naming has been overhauled and a few functions have been
+    deprecated. Also the documentation for the Python API has been extended
+    to inlcude more uses cases and potential applications.
+
+-------------------------------------------------------------------
+Fri Nov 23 18:47:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and odd grammar from descriptions.
+
+-------------------------------------------------------------------
+Tue Nov 13 17:54:10 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
+

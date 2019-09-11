@@ -1,0 +1,67 @@
+---
+ src/main.c    |   18 ++++++++++++------
+ src/u_print.c |    1 +
+ 2 files changed, 13 insertions(+), 6 deletions(-)
+
+--- src/main.c
++++ src/main.c	2018-09-06 11:16:21.842867881 +0000
+@@ -59,11 +59,13 @@
+ 
+ /* input extensions for an input tablet */
+ #ifdef USE_TAB
+-#include "X11/extensions/XInput.h"
++#include <X11/extensions/XInput.h>
+ #endif /* USE_TAB */
+ 
+ #ifdef I18N
+ #include <X11/keysym.h>
++#include <locale.h>
++#include <langinfo.h>
+ #endif  /* I18N */
+ 
+ #include <X11/IntrinsicP.h>
+@@ -781,11 +783,6 @@ void main(int argc, char **argv)
+ 	}
+     }
+ 
+-#ifdef I18N
+-    setlocale(LC_ALL, "");
+-    XtSetLanguageProc(NULL, NULL, NULL);
+-#endif  /* I18N */
+-
+     /*
+      * save the command line arguments
+      */
+@@ -890,6 +887,10 @@ void main(int argc, char **argv)
+ 		setup_icons_big();
+ 
+ #ifdef I18N
++    if (NULL == strcasestr(nl_langinfo(CODESET),"ANSI") &&
++	NULL == strcasestr(nl_langinfo(CODESET),"ISO-8859-"))
++	appres.international = True;
++
+     /************************************************************/
+     /* if the international option has been set, set the locale */
+     /************************************************************/
+@@ -1612,6 +1613,11 @@ setup_visual(int *argc_p, char **argv, A
+ 	 */
+ 	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options), argc_p, argv,
+ 			       (String *) NULL, args, 0);
++#ifdef I18N
++	setlocale(LC_ALL, "");
++	setlocale(LC_NUMERIC, "C");
++	XtSetLanguageProc(tool_app, NULL, NULL);
++#endif  /* I18N */
+ 	/* save important info */
+ 	tool_d = XtDisplay(tool);
+ 	tool_s = XtScreen(tool);
+--- src/u_print.c
++++ src/u_print.c	2018-09-06 09:47:09.839191953 +0000
+@@ -16,6 +16,7 @@
+  *
+  */
+ 
++#include <locale.h>
+ #include "fig.h"
+ #include "resources.h"
+ #include "object.h"

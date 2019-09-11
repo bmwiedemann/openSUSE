@@ -1,0 +1,81 @@
+libxl: disable autoballooning
+
+Xen 4.12 introduced a CONFIG_DOM0_MEM option, which our xen package uses
+to configure dom0 with a sensible initial memory value and disables
+autoballooning. This patch changes libvirt to also disable autoballooning
+by default. It can only be enabled with the 'autoballoon' setting in
+libxl.conf. See jsc#SLE-3059 for more details.
+
+Index: libvirt-5.6.0/src/libxl/libxl.conf
+===================================================================
+--- libvirt-5.6.0.orig/src/libxl/libxl.conf
++++ libvirt-5.6.0/src/libxl/libxl.conf
+@@ -4,12 +4,11 @@
+ 
+ # Enable autoballooning of domain0
+ #
+-# By default, autoballooning of domain0 is enabled unless its memory
+-# is already limited with Xen's "dom0_mem=" parameter, in which case
+-# autoballooning is disabled.  Override the default behavior with the
+-# autoballoon setting.
++# By default, autoballooning of domain0 is disabled. Traditionally it
++# could also be disabled by using Xen's "dom0_mem=" parameter. Set to
++# 1 to enable autoballooning.
+ #
+-#autoballoon = 1
++#autoballoon = 0
+ 
+ 
+ # In order to prevent accidentally starting two domains that
+Index: libvirt-5.6.0/src/libxl/libxl_conf.c
+===================================================================
+--- libvirt-5.6.0.orig/src/libxl/libxl_conf.c
++++ libvirt-5.6.0/src/libxl/libxl_conf.c
+@@ -22,7 +22,6 @@
+ 
+ #include <config.h>
+ 
+-#include <regex.h>
+ #include <libxl.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+@@ -1763,14 +1762,12 @@ libxlMakeBuildInfoVfb(virPortAllocatorRa
+ /*
+  * Get domain0 autoballoon configuration.  Honor user-specified
+  * setting in libxl.conf first.  If not specified, autoballooning
+- * is disabled when domain0's memory is set with 'dom0_mem'.
+- * Otherwise autoballooning is enabled.
++ * is disabled.
+  */
+ static int
+ libxlGetAutoballoonConf(libxlDriverConfigPtr cfg,
+                         virConfPtr conf)
+ {
+-    regex_t regex;
+     int res;
+ 
+     res = virConfGetValueBool(conf, "autoballoon", &cfg->autoballoon);
+@@ -1779,21 +1776,8 @@ libxlGetAutoballoonConf(libxlDriverConfi
+     else if (res == 1)
+         return 0;
+ 
+-    if ((res = regcomp(&regex,
+-                      "(^| )dom0_mem=((|min:|max:)[0-9]+[bBkKmMgG]?,?)+($| )",
+-                       REG_NOSUB | REG_EXTENDED)) != 0) {
+-        char error[100];
+-        regerror(res, &regex, error, sizeof(error));
+-        virReportError(VIR_ERR_INTERNAL_ERROR,
+-                       _("Failed to compile regex %s"),
+-                       error);
+-
+-        return -1;
+-    }
+-
+-    res = regexec(&regex, cfg->verInfo->commandline, 0, NULL, 0);
+-    regfree(&regex);
+-    cfg->autoballoon = res == REG_NOMATCH;
++    /* make it explicit */
++    cfg->autoballoon = 0;
+     return 0;
+ }
+ 

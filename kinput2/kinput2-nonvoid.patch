@@ -1,0 +1,28 @@
+--- lib/Canna.c
++++ lib/Canna.c
+@@ -1005,6 +1005,7 @@
+ 	ibuf->ics[ibuf->curgseg].attr |= ICAttrCurrentSegment;
+       }
+     }
++    return 0;
+ }
+ 
+ /* cfuncdef
+@@ -1249,6 +1250,7 @@
+   wcKanjiControl((int)obj, KC_DO, (char *)&ksv);
+ #endif
+   changeTextForCanna(obj, &ks);
++  return 0;
+ }
+ 
+ /* checkIfFunctionalChar -- シフトキーのように無意味なキーかどうかの判別
+--- lib/CcWnn.c
++++ lib/CcWnn.c
+@@ -905,6 +905,7 @@
+ {
+     if (current_obj != NULL)
+ 	XtAppWarning(XtWidgetToApplicationContext((Widget)current_obj), s);
++    return 0;
+ }
+ 
+ static int

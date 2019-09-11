@@ -1,0 +1,578 @@
+-------------------------------------------------------------------
+Mon May 27 14:46:02 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
+
+- removed old ICU patch ( fix_issue6690_compilation_with_icu61.patch ). Bugtracker MIA (#6690) and no longer is needed
+
+- Update to 1.9.1
+  
+  
+ 1.9.1 (2019-04-08)
+------------------------------------------------------------------------
+- Fix #6564: Enforce types of arguments for station name strings (#7419)
+- Fix #7433: Don't use AirportSpec substitute if it's not enabled (#7435)
+- Fix #7447, #7466, #7476: Missing NewGRF strings due to Action 4 feature check skipping pseudo-feature 48 (#7449)
+- Fix #6222: Advanced sprite layout sometimes showed incorrect railtype ground tile. (#7460)
+- Fix #7439: CompanyRemoveReason overwritten by ClientID (#7465)
+- Fix: [Windows] Incorrect error handling could lead to cascading error windows (#7482)
+- Fix #7478: Don't remove NewGRF objects on company take-over. (#7483)
+
+
+1.9.0 (2019-04-01)
+------------------------------------------------------------------------
+- Fix #7411: Use industry production callback (if used) on initial industry cargo generation (#7412)
+
+
+1.9.0-RC2 (2019-03-24)
+------------------------------------------------------------------------
+- Fix #7400: WaterClass for tree tiles was not converted for old saves preventing industry creation (#7405)
+- Fix: Filtered file list did not scroll properly (#7402)
+- Fix #7391: Don't invalidate go to depot orders of non-aircraft when invalidating hangar orders that happen to share IDs (#7392)
+- Fix #7386: Measurement tooltip for tunnels, aqueducts & docks did not display or flickered (#7389)
+- Fix: Wrong company performance rating when money exceeds INT_MAX (#7382)
+- Fix: Permit loading of industry production callback with invalid cargo type (#7364)
+- Fix: Spelling for a few real town names (#7338)
+- Fix: Runway too short for large aircraft message should not depend on plane crashes setting (#7325)
+- Fix #7334: Ship lost after crossing bridge due to path cache not being consumed while on final bridge end (#7335)
+
+
+1.9.0-RC1 (2019-03-03)
+------------------------------------------------------------------------
+- Add: Various AI/GS functions for vehicle groups (#7225)
+- Change: Synchronise introduction date and reliability randomness across vehicles with the same base introduction date (#7147)
+- Change: Allow towns to build bridges over rails and one-way roads (#7291)
+- Fix: Detection of coast tiles with trees on them (#7309)
+- Fix: Emergency netsave saved the title game instead of the broken game in question (#7298)
+- Fix: Company livery window showed incorrect groups when opened in multiplayer (#7288)
+- Fix: Unable to select last group in open livery window (#7283)
+- Fix: Goto hangar orders were not invalidated when rebuilding airports (#7100)
+
+
+1.9.0-beta3 (2019-02-24)
+------------------------------------------------------------------------
+- Feature: Option to adjust font size separately from GUI size (#7003)
+- Feature: Increase maximum number of orders from 64000 to ~16.7m (#7220)
+- Add: Show performance of AI and GS in framerate window
+- Add: News menu entry and shortcut for deleting all messages (#7240)
+- Change: [OSX] Improved scrolling behaviour when using touchpads
+- Change: Add scrollbar to cargo legend in cargo payment rates window
+- Change: Owner of vehicle with exclusive transport rights may now load cargo from neutral stations (#7256)
+- Change: Improved UI behaviour when dragging sound volume sliders with the mouse (#7227)
+- Change: Use selected vehicle group as parent when creating a new group (#7224)
+- Change: Use SlErrorCorrupt() on pool index error when loading a savegame, instead of terminating (#7219)
+- Change: Skip reliability decay if servicing is disabled
+- Fix: Remove desert around lakes upon generation
+- Fix: Re-sorting file list did not update filtered rows
+- Fix #7159: Waiting time at red one-way signals was too short
+- Fix #7189: Fluidsynth volume gain too high
+- Fix #7004: Cargo flow legend was not properly refreshed after zooming (#7265)
+- Fix: Possibility to modify wrong AI/GS settings when switching AI/GS scripts around (#7090, #7091)
+- Fix: Use more descriptive "spectator" strings for story book and goal dropdown menus
+- Fix #6599: Disable build and rename button in build vehicle window when no vehicle is selected
+- Fix: Do not mangle tagged revision strings for network revision strings
+- Fix #7151: AI start date deviation was still applied when not set to a random AI (#7223)
+- Fix #7197: Invalidate depot buttons when necessary (#7212)
+- Doc: [AI] UnshareOrders empties the orders list of the vehicle
+
+
+1.9.0-beta2 (2019-02-09)
+------------------------------------------------------------------------
+- Fix: Non-Windows builds did not get correct git hash
+
+
+1.9.0-beta1 (2019-02-09)
+------------------------------------------------------------------------
+Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbers have been replaced with Pull Requests and Issue numbers
+- Feature: Group liveries, and livery window usability enhancements (#7108)
+- Feature: Overhaul of music system, support MPSMIDI music files (TTD DOS/TTO) (#6839)
+- Feature: [Win32] Rewritten DMusic and WinMM music drivers
+- Feature: [Win32] New XAudio2 sound driver
+- Feature: [Linux] New Fluidsynth music driver
+- Feature: Framerate display window (#6822)
+- Feature: [NewGRF] Ability for industries & houses to produce and/or accept up to 16 different cargoes
+- Feature #6610: Allow towns to build houses on road turns (#6758)
+- Feature: Replace independent map scrolling GUI settings with single option, and add choice to not lock cursor position when scrolling (#6756)
+- Feature #6459: API for querying network clients from GS (#6736)
+- Feature: New Russian Ruble & Mexican Peso as currencies (#6678, #7035)
+- Feature #4186: Append '(City)' after city names in the town directory
+- Feature #986: Automatic save when losing connection to a network game
+- Add: [NewGRF] Flag to hide rail types from construction (#7118)
+- Add: [NewGRF] Airport animation trigger for plane landing (#6334)
+- Add #4115: Default starting company colour setting (#6998)
+- Add: Mixer feature for streaming sampled music
+- Add #6460: [AI] start_date parameter for Random AIs on new game
+- Add: BACKSPACE can be mapped as a hotkey
+- Add: 32bpp SSE2 blitter palette animator (#6795)
+- Change: Make ships turn slowly when changing direction and stop when going up or down a lock (#7065, #7150)
+- Change: Improve ship pathfinder performance
+- Change: Decouple GUI timing from game ticks (#6780)
+- Change: Desert tiles are now half-desert if a neighboured tile is non-desert or sea/coast (#4754)
+- Change: Gradually slow down aircraft speed on breakdown (#6932)
+- Change: [NewGRF] Increase rail type & cargo type limits to 64
+- Change: [NewGRF] Increase size of persistent storage to 256
+- Change: [NewGRF] Use last OpenTTD SVN revision in NewGRF version number (#6843)
+- Change: Clone tool in depot window now behaves like clone button in vehicle window (#6754)
+- Change #6397: Keep town growth rate in sync with house count
+- Change: Scale default FreeType font size selection by UI zoom level
+- Change: [OSX] Reversed pinch to zoom behaviour
+- Change: Switch town growth rate and counter to actual game ticks (#6763)
+- Change: Non-tag revisions are now named '<commitdate>-<branch>-g<shorthash><modified>'
+- Change: Rewrite several bits of documentation in markdown
+- Fix: Reinitialise graph GUI on game restart (#7191)
+- Fix: Potential crash during shutdown after unpacking downloaded content (#7185)
+- Fix #6584: Text layout in engine preview dialogue
+- Fix #6636: Airplanes could be sent to helicopter station depots
+- Fix: Deadlock when launched with -n switch (#7103)
+- Fix: Various corrections to town names in non-English languages (#7038, 7141)
+- Fix: Only consider airport tiles when placing (for non-rectangular airports) (#6613)
+- Fix: Spelling fixes on some Latin American town names
+- Fix #7001: Pathfinders should see standard road stations as tiles where to reverse
+- Fix #6676: Prevent helicopters from stopping in midair during some kinds of landing
+- Fix: Remove need to use Ctrl+Click when building stations next to competitors (#6906)
+- Fix: [NewGRF] Make VA2 operator 11 (ror) behave well-defined when rotating by 0 bits
+- Fix #4109: Add more water checks to the Oil Rig layout
+- Fix #6938: Incorrect value for "Cost to Clear" was displayed for Company Headquarters in tile inspector (#6939)
+- Fix #6920: Make 9.8m/s^2 a common constant for TE-calculation
+- Fix #6892: [Script] CONFIG_RANDOM did not use the full parameter range (#6902)
+- Fix #6622: News message when GS constructs a town had empty company name
+- Fix: [NewGRF] Action7 variable 0x85 had no bounds checks
+- Fix #6875: Depot building cost did not include foundation build cost (#6883)
+- Fix: Some pixels in ship autoreplace icon (sprite 106) were transparent
+- Fix: Poor contrast in cargo dest flow legend window cargo labels
+- Fix #6553: Make viewport button text unambiguous
+- Fix: [OSX] Setting mouse-wheel to scroll the map does not disable pinch to zoom
+- Fix #6969: Account for BOM when reading script files
+- Fix #6898: Ability to use seeds above INT_MAX (#6936)
+- Fix #6659: Bus stations could be demolished when not in demolish mode (#6815)
+- Fix: One-way roads could be over-built by road stops regardless of road owner
+- Fix: Use name of cargo instead of Passengers/Mail in town statistics (#6801)
+- Fix: Prevent ships moving into docks after finishing (un)loading (#6791)
+- Fix: Tractive effort was slightly too high as per NewGRF spec (#6785)
+- Fix #6465: Add {NORMAL_FONT} and {MONO_FONT} control codes to GS strings (#6726)
+- Fix: Four group action icons were misplaced and cropped
+- Remove: PSP, WinCE support
+
+
+-------------------------------------------------------------------
+Fri May 18 17:47:44 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix compilation with ICU61 (#6690)
+  Add fix_issue6690_compilation_with_icu61.patch
+- Use SOURCE_DATE_EPOCH as build date, instead of "openSUSE BuildService"
+
+-------------------------------------------------------------------
+Mon Apr  2 12:09:16 UTC 2018 - mimi.vx@gmail.com
+
+- update to new release 1.8.0
+ * Feature:
+   - [GFX] Climate-specific Action5 extra airport sprites
+   - Draw vertical separators at tile distance in the train depot GUI
+   - [Build] Project file generator for kdevelop 4/5
+   - Add option to close windows with right click
+   - Vehicle Group Info: Add profits and occupancy display to group vehicle list
+   - Display aircraft type in vehicle preview/purchase/detail windows
+ * Change:
+   - [NewGRF] Various performance improvements to resolving VA2
+   - [NewGRF] Increase maximum allowed vehicle sprite size to reduce
+       clipping of ships
+   - Check companies for bankruptcy before subtracting reoccuring monthly costs
+   - [GFX] Replace the office building sprite on various toyland airports
+       with a better fitting sprite
+   - [GFX] The switch-toolbar icon contained pixels from the fire cycle.
+       Replace the whole icon with a new version
+   - Reword texts in industry view, when stockpiling is used
+   - Remove the gap between windows when positioning them after opening
+   - [Build] Preserve PKG_CONFIG_PATH and PKG_CONFIG_LIBDIR environment
+       variables in config.cache file
+   - Do not cancel headquarter construction and engine-preview-query
+       when shift-clicking
+   - Parse extmidi command string for parameters to pass on
+   - Draw images in centre of buttons
+ * Fix:
+   - Store the map variety setting in the savegame like the other mapgen
+       settings, so restarting maps considers it
+   - Hair selection was missing one option
+   - Avoid tile operations outside map border when building lock
+   - Catenary sprites got mixed up for depots
+   - Make automatic window-positioning RTL-aware
+   - Automatic window-positioning now uses GUI-scale/style dependent
+       sizes/distances instead of fixed pixel values
+   - [NewGRF] While executing random triggers, var 5F should include
+       the new triggers
+   - [NewGRF] Reset used random triggers only after all A123 chains have
+       been resolved, so that all RA2 in all chains can test the shared triggers
+   - [NewGRF] Industry random triggers are stored per tile, even when
+       randomising the shared random bits of the parent industry
+   - [NPF] Reserved track bits were not accounted for when trying to find
+       any safe position
+   - Do not modify argv[0]
+   - Do not search directories when opening ini files as we already have
+       their full path
+   - Road tunnel/bridge heads have no trackbits wrt. catenary drawing
+
+-------------------------------------------------------------------
+Tue Dec 26 11:26:28 UTC 2017 - vcizek@suse.com
+
+- update to new release 1.7.2
+  * Change: When train depots have a horizontal scrollbar, allow
+    scrolling 1 tile beyond the longest train, so you can actually
+    attach a wagon at the end
+  * Fixes:
+    - When moving wagons in the depot, the drag highlight did not
+      exactly match the length of the dragged wagon chain (r27936)
+    - Forest, candyfloss forest and battery farm skipped the first
+      animation frame
+    - Glyphs in range U+0020 to U+00FF may only be defined in
+      orig_extra.grf, not in openttd.grf
+    - 'unban' console command was not handling IPv6 adresses properly
+    - Keep the 'link' between industry chain and smallmap windows
+      whenever possible
+    - When the last vehicle is removed from a shared orders group,
+      hide the 'Stop sharing' button in the vehicle orders window
+    - Tooltip of 'increase service interval' said 'decrease'
+    - Console command parser passed invalid strings to the debug
+      output, if command lines had many parameters
+
+-------------------------------------------------------------------
+Sat Aug  5 20:30:29 UTC 2017 - jengelh@inai.de
+
+- Update to new maintenance release 1.7.1
+  * Add missing game script event for ships arriving at a station
+  * Avoid an infinite loop in pathfinder when checking safe
+    waiting position from a waypoint
+  * YAPF: Consider depot as destination before reversing path and
+    applying penalty
+  * Don't consider locks or ship depots as clear water when
+    placing industries
+  * Resolve a failure to load LZO compressed savegames sometimes
+
+-------------------------------------------------------------------
+Sun Apr  2 06:23:00 UTC 2017 - mimi.vx@gmail.com
+
+- update to version 1.7.0
+  * Waypoint area is now limited to the max station spread while
+    dragging.
+  * Rearranged GUI for the vehicle autoreplace feature.
+  * Realistic acceleration is now enabled by default for trains
+    and road vehicles.
+- drop gcc-version-detection.patch - upstreamed
+
+-------------------------------------------------------------------
+Sat Jul 16 08:42:48 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 1.6.1 (see changelog.txt)
+- Drop openttd-gcc5.patch as it is not required anymore.
+- Add gcc-version-detection.patch in collaboration with upstream.
+- Add a man page for the dedicated server binary.
+- Remove unnecessary desktop category macros.
+- Use standard post macros for icons and starters.
+- Eliminate duplicate files using fdupes.
+
+-------------------------------------------------------------------
+Thu Jun 16 18:18:17 UTC 2016 - dimstar@opensuse.org
+
+- Update openttd-gcc5.patch: Have gcc6 use the same flags as gcc5.
+
+-------------------------------------------------------------------
+Thu Apr  7 06:07:45 UTC 2016 - bwiedemann@suse.com
+
+- Fix build-compare
+
+-------------------------------------------------------------------
+Sat Dec  5 16:45:40 UTC 2015 - mailaender@opensuse.org
+
+- maintenance update 1.5.3
+  * fixes a long standing desync issue with railtypes
+
+-------------------------------------------------------------------
+Thu Oct 15 08:20:23 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.5.2:
+  * For details see changelog.txt
+
+-------------------------------------------------------------------
+Wed Sep 30 12:03:50 UTC 2015 - lnussel@suse.de
+
+- build with proper optflags
+
+-------------------------------------------------------------------
+Fri Jun 19 12:33:54 UTC 2015 - dimstar@opensuse.org
+
+- Add openttd-gcc5.patch: Fix build with gcc 5.
+
+-------------------------------------------------------------------
+Sat Jun  6 07:29:09 UTC 2015 - mailaender@opensuse.org
+
+- update to version 1.5.1 (check changelog.txt)
+
+-------------------------------------------------------------------
+Sun Apr 26 12:52:01 UTC 2015 - mailaender@opensuse.org
+
+- Removed openttd-freetype-2.5.4.patch (included by upstream)
+- Updated to version 1.5.0
+  * higher mountains
+  * better UI for high resolution screens
+  * much more rural intro screen.
+- Recommend adobe-sourcehansans-fonts as backfall when there is no
+  sprite font (yet). Workaround https://bugs.openttd.org/task/6226
+
+-------------------------------------------------------------------
+Mon Dec 22 09:45:17 UTC 2014 - dimstar@opensuse.org
+
+- Add openttd-freetype-2.5.4.patch: Fix build with freetype 2.5.4.
+- Move the man page to the binary, where it belongs (and drop
+  the rpmlintrc-, which is now no longer valid).
+
+-------------------------------------------------------------------
+Sun Nov 09 20:23:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post scripts
+
+-------------------------------------------------------------------
+Sun Oct 26 18:16:11 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.4.4 (check changelog.txt)
+
+-------------------------------------------------------------------
+Sun Sep 28 16:30:25 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.4.3 (bug fix release)
+- added missing build requires:
+  * libxdg-basedir
+  * libtimidity
+  * grfcodec
+- avoid redundancy in %description
+
+-------------------------------------------------------------------
+Sat Jun 14 15:50:19 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.4.1 (regular bug fix release)
+- use LZMA compressed source
+
+-------------------------------------------------------------------
+Fri Apr  4 06:54:35 UTC 2014 - adrian@suse.de
+
+- update to 1.4.0
+  (check changelog.txt)
+
+-------------------------------------------------------------------
+Tue Dec 10 12:10:58 UTC 2013 - suse@ammler.ch
+
+- update to 1.3.3 (security bugfix)
+  - many bugfixes including:
+    Fix: Aircraft crashing near the map's border due to a lack of airports
+    could trigger a crash [CVE-2013-6411] [FS#5820] (bnc#853041)
+
+-------------------------------------------------------------------
+Mon Sep 30 08:56:22 UTC 2013 - suse@ammler.ch
+
+- update to 1.3.2 (bugfix release)
+
+-------------------------------------------------------------------
+Sun Jun  2 10:47:07 UTC 2013 - coder.tux@gmail.com
+
+- update to 1.3.1
+
+-------------------------------------------------------------------
+Tue Apr  2 09:11:54 UTC 2013 - suse@ammler.ch
+
+- update to 1.3.0
+  (check changelog.txt)
+
+-------------------------------------------------------------------
+Sun Feb 17 23:42:16 UTC 2013 - suse@ammler.ch
+ 
+- update to 1.3.0-beta2
+  (check changelog.txt)
+
+-------------------------------------------------------------------
+Fri Nov  2 21:02:28 UTC 2012 - suse@ammler.ch
+
+- update to 1.2.3 (bugfix release)
+
+-------------------------------------------------------------------
+Thu Aug 16 21:10:54 UTC 2012 - suse@ammler.ch
+
+- update to 1.2.2
+  - many bugfixes including:
+    Fix: In some cases ships could be covered with land [FS#5254]
+    (CVE-2012-3436, bnc#775023)
+
+-------------------------------------------------------------------
+Thu May 31 21:44:55 UTC 2012 - suse@ammler.ch
+
+- update to 1.2.1
+  - many minor bugfixes (see changelog.txt)
+
+-------------------------------------------------------------------
+Wed May  9 10:47:47 UTC 2012 - suse@ammler.ch
+
+- remove BuildRequires hicolor-icon-them (build on SLE_10)
+
+-------------------------------------------------------------------
+Fri May  4 11:45:51 UTC 2012 - suse@ammler.ch
+
+- remove __DATE__ and __TIME__ reference for build-compare
+- disable strip so we get debug rpms (also for stable releases)
+
+-------------------------------------------------------------------
+Mon Apr 16 08:35:42 UTC 2012 - suse@ammler.ch
+
+- update to 1.2.0
+  * too many changes to list here, please see changelog.txt
+    (files data/* moved to baseset/, no gm/ anymore)
+
+-------------------------------------------------------------------
+Mon Apr  9 15:49:44 UTC 2012 - suse@ammler.ch
+
+- remove update-alternatives again (bnc#749128)
+- symlink openttd to openttd-dedicated
+
+-------------------------------------------------------------------
+Mon Apr  2 08:27:32 UTC 2012 - suse@ammler.ch
+
+- update to 1.2.0-RC4
+
+-------------------------------------------------------------------
+Tue Mar  6 13:08:00 UTC 2012 - suse@ammler.ch
+
+- upstream update to 1.2.0-RC2
+- spec overhaul for openSUSE Factory
+
+-------------------------------------------------------------------
+Mon Jan 16 13:34:07 UTC 2012 - suse@ammler.ch
+
+- upstream update 1.1.5
+  * Fix: Make default timeouts for certain network states lower
+    and configurable [CVE-2012-0049]
+- disable dependency grfcodec
+
+-------------------------------------------------------------------
+Tue Dec  6 10:57:01 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Dec  6 09:26:21 UTC 2011 - suse@ammler.ch
+
+- upstream update 1.1.4
+  * various small bugfixes
+
+-------------------------------------------------------------------
+Sun Sep 18 09:19:00 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 1.1.3
+  * Add: River graphics for the original base set
+
+-------------------------------------------------------------------
+Wed Aug 17 11:31:17 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 1.1.2
+- no obs services anymore
+
+-------------------------------------------------------------------
+Thu Jun  2 10:41:12 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 1.1.1
+
+-------------------------------------------------------------------
+Fri Apr  1 05:20:48 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 1.1.0
+  * Change newgrfs settings aren't allowed anymore on running
+    game per default, needs scenario_developer to be set
+  * Feature: XZ/LZMA2 savegame support. New default reduces
+    savegame size by 10 to 30% with slightly more CPU usage.
+    (requires xz-devel)
+  * Feature: Remote administration
+  * Feature: a lot improvements with GUI
+  * Feature: Customizable hotkeys
+  * Sources for openttd.grf are pngs (requires grfcodec >= 5.1)
+
+-------------------------------------------------------------------
+Sun Nov 21 11:11:38 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.5
+  * Fix: Reading (very) recently freed memory [CVE-2010-4168]
+
+-------------------------------------------------------------------
+Sun Oct 31 17:53:41 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.4
+  * build openttd.grf from source
+
+-------------------------------------------------------------------
+Tue Aug 10 20:16:03 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.3
+
+-------------------------------------------------------------------
+Wed Jun 23 11:42:59 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.2
+  * Feature: Translated desktop shortcut comments (r19884)
+  * many minor Bugfixes
+
+-------------------------------------------------------------------
+Sat May  1 15:59:32 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.1
+  * Fix: Leaking a file descriptor
+  * Fix a lot small bugs, like minor desync issues on Mulitplayer
+- no strip on make
+
+-------------------------------------------------------------------
+Thu Apr  1 08:53:54 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.0 (finally!)
+  * completely independend game but still working also
+    with ttd original gaphics, sounds and music
+- Add: Recommends openmsx
+- requires lzo2
+
+-------------------------------------------------------------------
+Fri Dec 18 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.4
+
+- support for differen branches
+- easy support for dedicated branch
+- let openttd build system make the dektop file
+- split the package to data and gui
+- disable requires
+
+-------------------------------------------------------------------
+Thu Oct 01 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.3
+
+- disable libicu for RHEL4
+
+-------------------------------------------------------------------
+Sat Sep 26 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.2
+
+- no subfolder games for datadir
+- cleanup: no post and postun anymore
+- Recommends: opengfx (for suse and mandriva)
+- add SUSE support
+
+-------------------------------------------------------------------
+Mon Oct 20 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Added libicu dependency
+
+-------------------------------------------------------------------
+Thu Sep 23 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Merged both versions of the spec file
+
+-------------------------------------------------------------------
+Fri Aug 29 2008 Jonathan Coome <maedhros@openttd.org>
+
+- Rewrite spec file from scratch.
+
+-------------------------------------------------------------------
+Sat Aug 02 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Updated spec file
+
+-------------------------------------------------------------------
+Thu Mar 27 2008 Denis Burlaka <burlaka@yandex.ru>
+
+- Universal spec file
+

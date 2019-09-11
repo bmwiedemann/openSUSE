@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Apr 25 19:29:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.9:
+  * clipboard changed: check pointer before read (fix segfault on
+    wayland)
+  * don't collapse tree on refresh
+
+-------------------------------------------------------------------
+Wed Mar 20 08:32:55 UTC 2019 - mvetter@suse.com
+
+- Update to 6.1.8:
+  * Fix segfault if D-Bus is missing and QtFM is built with D-Bus support
+  * Fix execute file path (with spaces)
+
+-------------------------------------------------------------------
+Tue Feb 12 08:37:49 UTC 2019 - mvetter@suse.com
+
+- Update to 6.1.7:
+  * context menu fixes
+  * settings dialog: fix performance issues on old CPUs
+
+-------------------------------------------------------------------
+Fri Feb  1 07:08:42 UTC 2019 - mvetter@suse.com
+
+- Update to 6.1.6:
+  * progress dialog fix
+  * path tab-completion. Thanks to @kubaroth[3]
+  * completer handles expansion of ~ path. Thanks to @kubaroth[3]
+  * support mouse back button
+
+-------------------------------------------------------------------
+Mon Dec 10 11:35:02 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.5:
+  * fix build if CONFIG+=no_dbus enabled
+  * fixed broken multiple file copy/move instances
+
+-------------------------------------------------------------------
+Tue Nov 27 09:21:56 UTC 2018 - mvetter@suse.com
+
+- Update to 6.1.4:
+  * fix potential config corruption. Thanks to @slackuser0xae34[3] for the patch
+  * fix segfault on thumbnail update (view may have changed since loading thumbnails)
+  * don't cut file(s) if moving to same directory in bookmarks
+  * verify reply from udisks (avoid crash)
+  * populate view if not watched
+  * fix refresh view
+  * improved performance
+
+-------------------------------------------------------------------
+Wed Oct 31 05:32:22 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.3:
+  * update grid on paste/remove
+  * settings: don't show "launcher" in application dialog
+  * added manual refresh of path
+
+-------------------------------------------------------------------
+Mon Oct  1 11:52:19 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package
+

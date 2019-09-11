@@ -1,0 +1,113 @@
+From 8b938adede60ee52693a2ad9c7344132d3cc4f8c Mon Sep 17 00:00:00 2001
+From: Hrvoje Senjan <hrvoje.senjan@gmail.com>
+Date: Wed, 11 Dec 2013 04:16:52 +0100
+Subject: [PATCH 1/1] Ommit Solid's qDebug and qWarning messages
+
+---
+ cmake/modules/FindKDE4Internal.cmake                 | 2 +-
+ solid/solid/CMakeLists.txt                           | 3 ++-
+ solid/solid/backends/hal/halstorageaccess.cpp        | 2 ++
+ solid/solid/backends/udisks/udisksstorageaccess.cpp  | 3 ++-
+ solid/solid/backends/udisks2/udisksstorageaccess.cpp | 3 ++-
+ solid/solid/backends/upower/upowermanager.cpp        | 2 ++
+ 6 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/modules/FindKDE4Internal.cmake b/cmake/modules/FindKDE4Internal.cmake
+index 784f18e..d2d426e 100644
+--- a/cmake/modules/FindKDE4Internal.cmake
++++ b/cmake/modules/FindKDE4Internal.cmake
+@@ -1305,7 +1305,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+             endif(NOT _compile_result)
+        else(_basic_compile_result)
+          message("${_compile_output_var}")
+-         message(FATAL_ERROR "Unable to compile a basic Qt application. Qt has not been found correctly.")
++         message(STATUS "Unable to compile a basic Qt application. Qt has not been found correctly.")
+        endif(_basic_compile_result)
+ 
+       if (GCC_IS_NEWER_THAN_4_2)
+diff --git a/solid/solid/CMakeLists.txt b/solid/solid/CMakeLists.txt
+index ab5bfd4..06d1656 100644
+--- a/solid/solid/CMakeLists.txt
++++ b/solid/solid/CMakeLists.txt
+@@ -272,6 +272,7 @@ if(NOT WIN32 AND NOT APPLE)
+    )
+ 
+    message(STATUS "Building Solid UPower backend." )
++   add_definitions(-DQT_NO_DEBUG_OUTPUT)
+    set(solid_LIB_SRCS ${solid_LIB_SRCS}
+    backends/upower/upowermanager.cpp
+    backends/upower/upowerdevice.cpp
+@@ -286,7 +287,7 @@ if(NOT WIN32 AND NOT APPLE)
+ 
+        if ( WITH_SOLID_UDISKS2 )
+            message(STATUS "Building Solid UDisks2 backend." )
+-           add_definitions(-DWITH_SOLID_UDISKS2)
++           add_definitions(-DWITH_SOLID_UDISKS2 -DQT_NO_DEBUG_OUTPUT)
+            set(solid_LIB_SRCS ${solid_LIB_SRCS}
+            backends/udisks2/udisksmanager.cpp
+            backends/udisks2/udisksdevice.cpp
+diff --git a/solid/solid/backends/hal/halstorageaccess.cpp b/solid/solid/backends/hal/halstorageaccess.cpp
+index c92358d..ba61a2f 100644
+--- a/solid/solid/backends/hal/halstorageaccess.cpp
++++ b/solid/solid/backends/hal/halstorageaccess.cpp
+@@ -340,9 +340,11 @@ bool StorageAccess::requestPassphrase()
+                                                 returnService, m_lastReturnObject,
+                                                 wId, appId);
+     m_passphraseRequested = reply.isValid();
++#ifndef QT_NO_DEBUG_STREAM
+     if (!m_passphraseRequested) {
+         qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
+     }
++#endif
+     return m_passphraseRequested;
+ }
+ 
+diff --git a/solid/solid/backends/udisks/udisksstorageaccess.cpp b/solid/solid/backends/udisks/udisksstorageaccess.cpp
+index 63470ec..88310da 100644
+--- a/solid/solid/backends/udisks/udisksstorageaccess.cpp
++++ b/solid/solid/backends/udisks/udisksstorageaccess.cpp
+@@ -339,9 +339,10 @@ bool UDisksStorageAccess::requestPassphrase()
+     QDBusReply<void> reply = soliduiserver.call("showPassphraseDialog", udi, returnService,
+                                                 m_lastReturnObject, wId, appId);
+     m_passphraseRequested = reply.isValid();
++#ifndef QT_NO_DEBUG_STREAM
+     if (!m_passphraseRequested)
+         qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
+-
++#endif
+     return m_passphraseRequested;
+ }
+ 
+diff --git a/solid/solid/backends/udisks2/udisksstorageaccess.cpp b/solid/solid/backends/udisks2/udisksstorageaccess.cpp
+index 6958459..b1cede9 100644
+--- a/solid/solid/backends/udisks2/udisksstorageaccess.cpp
++++ b/solid/solid/backends/udisks2/udisksstorageaccess.cpp
+@@ -341,9 +341,10 @@ bool StorageAccess::requestPassphrase()
+     QDBusReply<void> reply = soliduiserver.call("showPassphraseDialog", udi, returnService,
+                                                 m_lastReturnObject, wId, appId);
+     m_passphraseRequested = reply.isValid();
++#ifndef QT_NO_DEBUG_STREAM
+     if (!m_passphraseRequested)
+         qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
+-
++#endif
+     return m_passphraseRequested;
+ }
+ 
+diff --git a/solid/solid/backends/upower/upowermanager.cpp b/solid/solid/backends/upower/upowermanager.cpp
+index 1bfd37a..70739d7 100644
+--- a/solid/solid/backends/upower/upowermanager.cpp
++++ b/solid/solid/backends/upower/upowermanager.cpp
+@@ -142,7 +142,9 @@ QStringList UPowerManager::allDevices()
+     QDBusReply<QList<QDBusObjectPath> > reply = m_manager.call("EnumerateDevices");
+ 
+     if (!reply.isValid()) {
++#ifndef QT_NO_DEBUG_STREAM
+         qWarning() << Q_FUNC_INFO << " error: " << reply.error().name();
++#endif
+         return QStringList();
+     }
+ 
+-- 
+1.8.5
+

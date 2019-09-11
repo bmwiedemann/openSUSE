@@ -1,0 +1,1884 @@
+-------------------------------------------------------------------
+Wed Jul 31 09:55:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from git to fix build with new pytest:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 11:12:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add ringdisabled to avoid pulling the test deps in rings to
+  keep them from growing too much
+
+-------------------------------------------------------------------
+Wed Jul 24 10:50:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to not pull moto everywhere
+
+-------------------------------------------------------------------
+Fri Jul 19 12:48:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.3.0:
+  * See the changelog for in-depth details
+- Remove merged patches:
+  * python37-1.patch
+  * python37-2.patch
+  * python37-3.patch
+  * disable-pytest-log-capturing.patch
+  * celery-no-redis.patch
+  * relax-billiard-pin.patch
+- Rebase patch unpin-pytest.patch
+
+-------------------------------------------------------------------
+Wed Apr 24 14:10:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- shelve (used in beat.py) needs python3-dbm for one particular task
+
+-------------------------------------------------------------------
+Thu Feb 21 10:48:26 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace no-async.patch with three Python 3.7 patches merged upstream
+  python37-1.patch, python37-2.patch & python37-3.patch
+- Replace sed invocation with unpin-pytest.patch for clarity
+
+-------------------------------------------------------------------
+Thu Feb 21 09:44:59 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing dependency on pytz, needed by celery.utils
+- Remove unused build dependency on cl
+
+-------------------------------------------------------------------
+Fri Feb 15 11:07:36 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add relax-billiard-pin.patch to allow billiard 3.6.0.0
+
+-------------------------------------------------------------------
+Thu Jan 31 13:33:40 CET 2019 - mcepl@suse.com
+
+- Add no-async.patch renaming async package to async_tools to
+  make package 3.7 compatible.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:28:53 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:31 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 16 11:04:24 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.2.1:
+  * Fix to build with newest kombu
+  * Many bugfixes around
+- Add patch to skip test that should not be run:
+  * celery-no-redis.patch
+
+-------------------------------------------------------------------
+Wed May  2 08:47:12 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix testrun with new pytest:
+  * disable-pytest-log-capturing.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 09:57:28 UTC 2017 - tchvatal@suse.com
+
+- Add missing runtime deps (mostly same as build time ones...)
+
+-------------------------------------------------------------------
+Sat Sep 30 16:39:25 UTC 2017 - arun@gmx.de
+
+- update to version 4.1.0:
+  * Configuration: CELERY_SEND_EVENTS instead of CELERYD_SEND_EVENTS
+    for 3.1.x compatibility (#3997)
+  * App: Restore behavior so Broadcast queues work. (#3934)
+  * Sphinx: Make appstr use standard format (#4134) (#4139)
+  * App: Make id, name always accessible from logging.Formatter via
+    extra (#3994)
+  * Worker: Add worker_shutting_down signal (#3998)
+  * PyPy: Support PyPy version 5.8.0 (#4128)
+  * Results: Elasticsearch: Fix serializing keys (#3924)
+  * Canvas: Deserialize all tasks in a chain (#4015)
+  * Systemd: Recover loglevel for ExecStart in systemd config (#4023)
+  * Sphinx: Use the Sphinx add_directive_to_domain API. (#4037)
+  * App: Pass properties to before_task_publish signal (#4035)
+  * Results: Add SSL option for Redis backends (#3831)
+  * Beat: celery.schedule.crontab: fix reduce (#3826) (#3827)
+  * State: Fix celery issues when using flower REST API
+  * Results: Elasticsearch: Fix serializing document id.
+  * Beat: Make shallow copy of schedules dictionary
+  * Beat: Populate heap when periodic tasks are changed
+  * Task: Allow class methods to define tasks (#3952)
+  * Platforms: Always return boolean value when checking if signal is
+    supported (#3962).
+  * Canvas: Avoid duplicating chains in chords (#3779)
+  * Canvas: Lookup task only if list has items (#3847)
+  * Results: Allow unicode message for exception raised in task
+    (#3903)
+  * Python3: Support for Python 3.6 (#3904, #3903, #3736)
+  * App: Fix retried tasks with expirations (#3790)
+  * * Fixes items format route in docs (#3875)
+  * Utils: Fix maybe_make_aware (#3850)
+  * Task: Fix task ETA issues when timezone is defined in
+    configuration (#3867)
+  * Concurrency: Consumer does not shutdown properly when embedded in
+    gevent application (#3746)
+  * Canvas: Fix #3725: Task replaced with group does not complete
+    (#3731)
+  * Task: Correct order in chains with replaced tasks (#3730)
+  * Result: Enable synchronous execution of sub-tasks (#3696)
+  * Task: Fix request context for blocking task apply (added hostname)
+    (#3716)
+  * Utils: Fix task argument handling (#3678) (#3693)
+  * Beat: Provide a transparent method to update the Scheduler heap
+    (#3721)
+  * Beat: Specify default value for pidfile option of celery
+    beat. (#3722)
+  * Results: Elasticsearch: Stop generating a new field every time
+    when a new result is being put (#3708)
+  * Requirements
+    + Now depends on :ref:`Kombu 4.1.0 <kombu:version-4.1.0>`.
+  * Results: Elasticsearch now reuses fields when new results are
+    added.
+  * Results: Fixed MongoDB integration when using binary encodings
+    (Issue #3575).
+  * Worker: Making missing "*args" and "kwargs" in Task protocol 1
+    return empty value in protocol 2 (Issue #3687).
+  * App: Fixed :exc:`TypeError` in AMQP when using deprecated signal
+    (Issue #3707).
+  * Beat: Added a transparent method to update the scheduler heap.
+  * Task: Fixed handling of tasks with keyword arguments on Python 3
+    (Issue #3657).
+  * Task: Fixed request context for blocking task apply by adding
+    missing hostname attribute.
+  * Task: Added option to run subtasks synchronously with
+    "disable_sync_subtasks" argument.
+  * App: Fixed chaining of replaced tasks (Issue #3726).
+  * Canvas: Fixed bug where replaced tasks with groups were not
+    completing (Issue #3725).
+  * Worker: Fixed problem where consumer does not shutdown properly
+    when embedded in a gevent application (Issue #3745).
+  * Results: Added support for using AWS DynamoDB as a result backend
+    (#3736).
+  * Testing: Added caching on pip installs.
+  * Worker: Prevent consuming queue before ready on startup (Issue
+    #3620).
+  * App: Fixed task ETA issues when timezone is defined in
+    configuration (Issue #3753).
+  * Utils: "maybe_make_aware" should not modify datetime when it is
+    already timezone-aware (Issue #3849).
+  * App: Fixed retrying tasks with expirations (Issue #3734).
+  * Results: Allow unicode message for exceptions raised in task
+    (Issue #3858).
+  * Canvas: Fixed :exc:`IndexError` raised when chord has an empty
+    header.
+  * Canvas: Avoid duplicating chains in chords (Issue #3771).
+  * Utils: Allow class methods to define tasks (Issue #3863).
+  * Beat: Populate heap when periodic tasks are changed.
+  * Results: Added support for Elasticsearch backend options settings.
+  * Events: Ensure "Task.as_dict()" works when not all information
+    about task is available.
+  * Schedules: Fixed pickled crontab schedules to restore properly
+    (Issue #3826).
+  * Results: Added SSL option for redis backends (Issue #3830).
+  * Documentation and examples improvements
+
+-------------------------------------------------------------------
+Thu Aug 24 13:33:50 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon Jul 10 12:08:37 UTC 2017 - jengelh@inai.de
+
+- Drop redundant wording from description.
+
+-------------------------------------------------------------------
+Tue Jun 27 19:08:20 UTC 2017 - benoit.monin@gmx.fr
+
+- update to version 4.0.2:
+  * Requirements: Now depends on Kombu 4.0.2.
+  * Tasks: Fixed problem with JSON serialization of group (``keys
+    must be string`` error, Issue #3688).
+  * Worker: Fixed JSON serialization issue when using inspect
+    active and friends (Issue #3667).
+  * App: Fixed saferef errors when using signals (Issue #3670).
+  * Prefork: Fixed bug with pack requiring bytes argument on Python
+    2.7.5 and earlier (Issue #3674).
+  * Tasks: Saferepr did not handle unicode in bytestrings on Python
+    2 (Issue #3676).
+  * Testing: Added new celery_worker_paremeters fixture.
+  * Tasks: Added new app argument to GroupResult.restore
+    (Issue #3669).
+  * Tasks: Fixed type checking crash when task takes *args on
+    Python 3 (Issue #3678).
+  * Documentation and examples improvements
+- additional changes from version 4.0.1:
+  * [Security: CELERYSA-0003] Fix Insecure default configuration
+  * Tasks: Added new method to register class-based tasks
+    (Issue #3615).
+  * Tasks: Argument checking now supports keyword-only arguments on
+    Python3 (Issue #3658).
+  * Tasks: The task-sent event was not being sent even if
+    configured to do so (Issue #3646).
+  * Worker: Fixed AMQP heartbeat support for eventlet/gevent pools
+    (Issue #3649).
+  * App: app.conf.humanize() would not work if configuration not
+    finalized (Issue #3652).
+  * Utils: saferepr attempted to show iterables as lists and
+    mappings as dicts.
+  * Utils: saferepr did not handle unicode-errors when attempting
+    to format bytes on Python 3 (Issue #3610).
+  * Utils: saferepr should now properly represent byte strings with
+    non-ascii characters (Issue #3600).
+  * Results: Fixed bug in elasticsearch where _index method missed
+    the body argument (Issue #3606).
+  * Canvas: Fixed ValueError in chord with single task header
+    (Issue #3608).
+  * Task: Ensure class-based task has name prior to registration
+    (Issue #3616).
+  * Beat: Fixed problem with strings in shelve (Issue #3644).
+  * Worker: Fixed KeyError in inspect stats when -O argument set to
+    something other than fast or fair (Issue #3621).
+  * Task: Retried tasks were no longer sent to the original queue
+    (Issue #3622).
+  * Worker: Python 3: Fixed None/int type comparison in
+    apps/worker.py (Issue #3631).
+  * Results: Redis has a new redis_socket_connect_timeout setting.
+  * Results: Redis result backend passed the socket_connect_timeout
+    argument to UNIX socket based connections by mistake, causing a
+    crash.
+  * Worker: Fixed missing logo in worker splash screen when running
+    on Python 3.x (Issue #3627).
+  * Deps: Fixed celery[redis] bundle installation (Issue #3643).
+  * Deps: Bundle celery[sqs] now also requires pycurl
+    (Issue #3619).
+  * Worker: Hard time limits were no longer being respected
+    (Issue #3618).
+  * Worker: Soft time limit log showed Trues instead of the number
+    of seconds.
+  * App: registry_cls argument no longer had any effect
+    (Issue #3613).
+  * Worker: Event producer now uses connection_for_Write
+    (Issue #3525).
+  * Results: Redis/memcache backends now uses result_expires to
+    expire chord counter (Issue #3573).
+  * Django: Fixed command for upgrading settings with Django
+    (Issue #3563).
+  * Testing: Added a celery_parameters test fixture to be able to
+    use customized Celery init parameters. (#3626)
+  * Documentation improvements
+- additional changes from version 4.0:
+  see http://docs.celeryproject.org/en/latest/whatsnew-4.0.html
+- change source url to pythonhosted.org
+- update the BuildRequires for test:
+  * remove mock, nose and unittest2
+  * add case, pytest and netcfg
+- remove specfile reference to openSUSE 11.1 / SLE11
+- update kombu and billiard required versions
+- remove anyjson Requires, not needed anymore
+- call fdupes to fix duplicate files
+
+-------------------------------------------------------------------
+Wed Jan 13 17:43:19 UTC 2016 - antoine.belvire@laposte.net
+
+- Update to 3.1.19:
+  * Requirements: Now depends on Kombu 3.0.29.
+  * Requirements: Now depends on billiard 3.3.0.21.
+  * Results: Fixed MongoDB result backend URL parsing problem
+    (Issue celery/kombu#375).
+  * Worker: Task request now properly sets priority in
+    delivery_info.
+  * Beat: PyPy shelve may raise KeyError when setting keys (Issue
+    #2862).
+  * Programs: celery beat --deatched now working on PyPy.
+  * Results: Redis result backend now ensures all pipelines are
+    cleaned up.
+  * Results: Redis result backend now allows for timeout to be set
+    in the query portion of the result backend URL.
+  * Results: result.get now properly handles failures where the
+    exception value is set to None (Issue #2560).
+  * Prefork pool: Fixed attribute error proc.dead.
+  * Worker: Fixed worker hanging when gossip/heartbeat disabled
+    (Issue #1847).
+  * Results: MongoDB result backend now supports pymongo 3.x (Issue
+    #2744).
+  * Results: RPC/amqp backends did not deserialize exceptions
+    properly (Issue #2691).
+  * Programs: Fixed problem with celery amqp‘s basic_publish (Issue
+    #2013).
+  * Worker: Embedded beat now properly sets app for thread/process
+    (Issue #2594).
+  * Documentation: Many improvements and typos fixed.
+
+-------------------------------------------------------------------
+Wed Apr 29 19:53:02 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.1.18:
+  * Requirements: Now depends on Kombu 3.0.25.
+  * Requirements: Now depends on billiard 3.3.0.20.
+  * Django: Now supports Django 1.8 (Issue #2536).
+  * Results: MongoDB result backend now compatible with pymongo 3.0
+  * Tasks: Fixed bug only happening when a task has multiple
+    callbacks (Issue #2515).
+  * Commands: Preload options now support --arg value syntax.
+  * Compat: A typo caused celery.log.setup_logging_subsystem to be
+    undefined.
+  * init scripts: The celerybeat generic init script now uses
+    /bin/sh instead of bash (Issue #2496).
+  * Django: Fixed a :exc:`TypeError` sometimes occurring in logging
+    when validating models.
+  * Commands: Worker now supports new --executable argument that
+    can be used with --detach.
+  * Canvas: Fixed crash in chord unlock fallback task (Issue #2404)
+  * Worker: Fixed rare crash occurring with --autoscale enabled
+    (Issue #2411).
+  * Django: Properly recycle worker Django database connections
+    when the Django CONN_MAX_AGE setting is enabled (Issue #2453).
+- additional changes from version 3.1.17:
+  * Admonition: Do not enable the CELERYD_FORCE_EXECV setting!
+  * Requirements: Now depends on Kombu 3.0.24.
+  * Requirements: Now depends on billiard 3.3.0.19.
+  * Requirements: celery[librabbitmq] now depends on librabbitmq
+    1.6.1.
+  * Task: The timing of ETA/countdown tasks were off after the
+    example LocalTimezone implementation in the Python
+    documentation no longer works in Python 3.4. (Issue #2306).
+  * Task: Raising celery.exceptions.Ignore no longer sends
+    task-failed event (Issue #2365).
+  * Redis result backend: Fixed unbound local errors.
+  * Task: Callbacks was not called properly if link was a list of
+    signatures (Issuse #2350).
+  * Canvas: chain and group now handles json serialized signatures
+    (Issue #2076).
+  * Results: .join_native() would accidentally treat the STARTED
+    state as being ready (Issue #2326).
+  * Canvas: The chord_size attribute is now set for all canvas
+    primitives, making sure more combinations will work with the
+    new_join optimization for Redis (Issue #2339).
+  * Task: Fixed problem with app not being properly propagated to
+    trace_task in all cases.
+  * Worker: Expires from task message now associated with a
+    timezone.
+  * Cassandra result backend: Fixed problems when using detailed
+    mode.
+  * Mongodb Result backend: Pickling the backend instance will now
+    include the original url (Issue #2347).
+  * Task: Exception info was not properly set for tasks raising
+    celery.exceptions.Reject (Issue #2043).
+  * Worker: Duplicates are now removed when loading the set of
+    revoked tasks from the worker state database (Issue #2336).
+  * celery.contrib.rdb: Fixed problems with rdb.set_trace calling
+    stop from the wrong frame.
+  * Canvas: chain and chord can now be immutable.
+  * Canvas: chord.apply_async will now keep partial args set in
+    self.args (Issue #2299).
+  * Results: Small refactoring so that results are decoded the same
+    way in all result backends.
+  * Logging: The processName format was introduced in Py2.6.2 so
+    for compatibility this format is now excluded when using
+    earlier versions (Issue #1644).
+- increase required version of python-kombu to 3.0.25
+- increase required version of python-billiard to 3.3.0.20
+- reenable the tests, expect for SLE11. And add -q to avoid
+  spamming the build log
+- add the license to package documentation
+
+-------------------------------------------------------------------
+Wed Nov 12 09:57:50 UTC 2014 - oliver.bengs@opensuse.org
+
+- Update to version 3.1.16
+  + Worker: 3.1.15 broke -Ofair behavior (Issue #2286).
+  + Canvas: celery.signature now properly forwards app argument in all cases.
+  + Task: .retry() did not raise the exception correctly when called without a current exception.
+  + Worker: The enable_events remote control command disabled worker-related events by mistake (Issue #2272).
+  + Django: Adds support for Django 1.7 class names in INSTALLED_APPS when using app.autodiscover_tasks() (Issue #2248).
+  + Redis/Cache Backends: Chords will now run at most once if one or more tasks in the chord are executed multiple times for some reason.
+
+-------------------------------------------------------------------
+Sun Dec  1 16:36:56 UTC 2013 - oliver.bengs@opensuse.org
+
+- Update to version 3.1.1
+  + Now depends Kombu 3.0.6
+  + Now depends on billiard 3.3.0.8
+  + App: ``config_from_object`` is now lazy
+  + App: ``autodiscover_tasks`` is now lazy
+    Django users should now wrap access to the settings object in
+    a lambda:
+       app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+    this ensures that the settings object is not prepared
+    prematurely
+  + Fixed regression for ``--app`` argument experienced by
+    some users
+  + Worker: Now respects the ``--uid`` and ``--gid`` arguments
+    even if ``--detach`` is not enabled
+  + Beat: Now respects the ``--uid`` and ``--gid`` arguments
+    even if ``--detach`` is not enabled
+  + Python 3: Fixed unorderable error occuring with the worker ``-B``
+    argument enabled
+  + ``celery.VERSION`` is now a named tuple
+  + ``maybe_signature(list)`` is now applied recursively
+  + ``celery shell`` command: Fixed ``IPython.frontend`` deprecation warning
+  + The default app no longer includes the builtin fixups
+       This fixes a bug where ``celery multi`` would attempt
+       to load the Django settings module before entering
+       the target working directory
+  + The Django daemonization tutorial was changed
+       Users no longer have to explicitly export ``DJANGO_SETTINGS_MODULE``
+       in :file:`/etc/default/celeryd` when the new project layout is used
+  + Redis result backend: expiry value can now be 0 
+  + Censoring settings now accounts for non-string keys
+  + App: New ``autofinalize`` option
+       Apps are automatically finalized when the task registry is accessed.
+       You can now disable this behavior so that an exception is raised
+       instead.
+  + The worker did not send monitoring events during shutdown
+  + Worker: Mingle and gossip is now automatically disabled when
+    used with an unsupported transport
+  + ``celery`` command: Preload options now supports
+    the rare ``--opt value`` format
+  + ``celery`` command: Accidentally removed options
+    appearing before the subcommand, these are now moved to the end
+    instead
+  + Worker now properly responds to ``inspect stats`` commands
+    even if received before startup is complete
+  + :signal:`task_postrun` is now sent within a finally block, to make
+    sure the signal is always sent
+  + Beat: Fixed syntax error in string formatting
+  + Fixed typos in the documentation
+  + Nested chains now works properly when constructed using the
+    ``chain`` type instead of the ``|`` operator
+
+-------------------------------------------------------------------
+Thu Oct 24 10:59:40 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Sep 25 19:03:47 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.0.23
+  + Now depends on :ref:`Kombu 2.5.14 <kombu:version-2.5.14>`.
+  + ``send_task`` did not honor ``link`` and ``link_error`` arguments.
+    This had the side effect of chains not calling unregistered tasks,
+    silently discarding them.
+  + :mod:`celery.state`: Optimized precedence lookup.
+  + Posix: Daemonization did not redirect ``sys.stdin`` to ``/dev/null``.
+  + Canvas: group bug caused fallback to default app when ``.apply_async`` used
+    (Issue #1516)
+  + Canvas: generator arguments was not always pickleable
+- Use source url as source
+
+-------------------------------------------------------------------
+Tue Apr 30 19:34:54 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.19:
+  - Now depends on billiard 2.7.3.28
+  - A Python 3 related fix managed to disable the deadlock fix
+    announced in 3.0.18.
+    Tests have been added to make sure this does not happen again.
+  - Task retry policy: Default max_retries is now 3.
+    This ensures clients will not be hanging while the broker is down.
+        You can set a longer retry for the worker by
+        using the celeryd_after_setup signal:
+            from celery.signals import celeryd_after_setup
+
+            @celeryd_after_setup.connect
+            def configure_worker(instance, conf, **kwargs):
+                conf.CELERY_TASK_PUBLISH_RETRY_POLICY = {
+                    'max_retries': 100,
+                    'interval_start': 0,
+                    'interval_max': 1,
+                    'interval_step': 0.2,
+                }
+  - Worker: Will now properly display message body in error messages
+    even if the body is a buffer instance.
+  - 3.0.18 broke the MongoDB result backend (Issue #1303).
+
+-------------------------------------------------------------------
+Fri Apr 12 17:52:35 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.18:
+  - Now depends on kombu 2.5.10.
+    See the kombu changelog.
+  - Now depends on billiard 2.7.3.27.
+  - Can now specify a whitelist of accepted serializers using
+    the new CELERY_ACCEPT_CONTENT setting.
+    This means that you can force the worker to discard messages
+    serialized with pickle and other untrusted serializers.
+    For example to only allow JSON serialized messages use::
+        CELERY_ACCEPT_CONTENT = ['json']
+    you can also specify MIME types in the whitelist::
+        CELERY_ACCEPT_CONTENT = ['application/json']
+  - Fixed deadlock in multiprocessing's pool caused by the
+    semaphore not being released when terminated by signal.
+  - Processes Pool: It's now possible to debug pool processes using GDB.
+  - celery report now censors possibly secret settings, like passwords
+    and secret tokens.
+    You should still check the output before pasting anything
+    on the internet.
+  - Connection URLs now ignore multiple '+' tokens.
+  - Worker/statedb: Now uses pickle protocol 2 (Py2.5+)
+  - Fixed Python 3 compatibility issues.
+  - Worker:  A warning is now given if a worker is started with the
+    same node name as an existing worker.
+  - Worker: Fixed a deadlock that could occur while revoking tasks (Issue #1297).
+  - Worker: The :sig:`HUP` handler now closes all open file descriptors
+    before restarting to ensure file descriptors does not leak (Issue #1270).
+  - Worker: Optimized storing/loading the revoked tasks list (Issue #1289).
+    After this change the --statedb file will take up more disk space,
+    but loading from and storing the revoked tasks will be considerably
+    faster (what before took 5 minutes will now take less than a second).
+  - Celery will now suggest alternatives if there's a typo in the
+    broker transport name (e.g. ampq -> amqp).
+  - Worker: The auto-reloader would cause a crash if a monitored file
+    was unlinked.
+    Fix contributed by Agris Ameriks.
+  - Fixed AsyncResult pickling error.
+    Fix contributed by Thomas Minor.
+  - Fixed handling of Unicode in logging output when using log colors
+    (Issue #427).
+  - celery.app.utils.ConfigurationView is now a MutableMapping.
+    Contributed by Aaron Harnly.
+  - Fixed memory leak in LRU cache implementation.
+    Fix contributed by Romuald Brunet.
+  - celery.contrib.rdb: Now works when sockets are in non-blocking mode.
+    Fix contributed by Theo Spears.
+  - The inspect reserved remote control command included active (started) tasks
+    with the reserved tasks (Issue #1030).
+  - The task_failure signal received a modified traceback object
+    meant for pickling purposes, this has been fixed so that it now
+    receives the real traceback instead.
+  - The @task decorator silently ignored positional arguments,
+    it now raises the expected TypeError instead (Issue #1125).
+  - The worker will now properly handle messages with invalid
+    eta/expires fields (Issue #1232).
+  - The pool_restart remote control command now reports
+    an error if the CELERYD_POOL_RESTARTS setting is not set.
+  - celery.conf.add_defaults can now be used with non-dict objects.
+  - Fixed compatibility problems in the Proxy class (Issue #1087).
+    The class attributes __module__, __name__ and __doc__
+    are now meaningful string objects.
+    Thanks to Marius Gedminas.
+  - MongoDB Backend: The MONGODB_BACKEND_SETTINGS setting
+    now accepts a option key that lets you forward arbitrary kwargs
+    to the underlying pymongo.Connection object (Issue #1015).
+  - Beat: The daily backend cleanup task is no longer enabled
+    for result backends that support automatic result expiration (Issue #1031).
+  - Canvas list operations now takes application instance from the first
+    task in the list, instead of depending on the current_app (Issue #1249).
+  - Worker: Message decoding error log message now includes traceback
+    information.
+  - Worker: The startup banner now includes system platform.
+  - celery inspect|status|control now gives an error if used
+    with an SQL based broker transport.
+- Aditional changes from 3.0.17:
+  - Now depends on kombu 2.5.8
+  - Now depends on billiard 2.7.3.23
+  - RabbitMQ/Redis: thread-less and lock-free rate-limit implementation.
+    This means that rate limits pose minimal overhead when used with
+    RabbitMQ/Redis or future transports using the eventloop,
+    and that the rate-limit implementation is now thread-less and lock-free.
+    The thread-based transports will still use the old implementation for
+    now, but the plan is to use the timer also for other
+    broker transports in Celery 3.1.
+  - Rate limits now works with eventlet/gevent if using RabbitMQ/Redis as the
+    broker.
+  - A regression caused task.retry to ignore additional keyword arguments.
+    Extra keyword arguments are now used as execution options again.
+    Fix contributed by Simon Engledew.
+  - Windows: Fixed problem with the worker trying to pickle the Django settings
+    module at worker startup.
+  - generic-init.d:  No longer double quotes $CELERYD_CHDIR (Issue #1235).
+  - generic-init.d: Removes bash-specific syntax.
+    Fix contributed by Pär Wieslander.
+  - Cassandra Result Backend: Now handles the
+    pycassa.AllServersUnavailable error (Issue #1010).
+    Fix contributed by Jared Biel.
+  - Result: Now properly forwards apps to GroupResults when deserializing
+    (Issue #1249).
+    Fix contributed by Charles-Axel Dein.
+  - GroupResult.revoke now supports the terminate and signal
+    keyword arguments.
+  - Worker: Multiprocessing pool workers now import task modules/configuration
+    before setting up the logging system so that logging signals can be
+    connected before they're dispatched.
+  - chord:  The AsyncResult instance returned now has its parent
+    attribute set to the header GroupResult.
+    This is consistent with how chain works.
+
+-------------------------------------------------------------------
+Fri Mar  8 21:35:29 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.16:
+  - Happy International Women's Day!
+    We have a long way to go, so this is a chance for you to get
+    involved in one of the organizations working for making our
+    communities more diverse.
+     - PyLadies — http://pyladies.com
+     - Girls Who Code — http://www.girlswhocode.com
+     - Women Who Code — http://www.meetup.com/Women-Who-Code-SF/
+  - Now depends on :mod:`kombu` version 2.5.7
+  - Now depends on :mod:`billiard` version 2.7.3.22
+  - AMQP heartbeats are now disabled by default.
+      Some users experiences issues with heartbeats enabled,
+      and it's not strictly necessary to use them.
+      If you're experiencing problems detecting connection failures,
+      you can re-enable heartbeats by configuring the BROKER_HEARTBEAT
+      setting.
+  - Worker: Now propagates connection errors occurring in multiprocessing
+    callbacks, so that the connection can be reset (Issue #1226).
+  - Worker: Now propagates connection errors occurring in timer callbacks,
+    so that the connection can be reset.
+  - The modules in CELERY_IMPORTS and CELERY_INCLUDE
+    are now imported in the original order (Issue #1161).
+      The modules in CELERY_IMPORTS will be imported first,
+      then continued by CELERY_INCLUDE.
+      Thanks to Joey Wilhelm.
+  - New bash completion for celery available in the git repository:
+      https://github.com/celery/celery/tree/3.0/extra/bash-completion
+      You can source this file or put it in bash_completion.d to
+      get auto-completion for the celery command-line utility.
+  - The node name of a worker can now include unicode characters (Issue #1186).
+  - The repr of a crontab object now displays correctly (Issue #972).
+  - events.State no longer modifies the original event dictionary.
+  - No longer uses Logger.warn deprecated in Python 3.
+  - Cache Backend: Now works with chords again (Issue #1094).
+  - Chord unlock now handles errors occurring while calling the callback.
+  - Generic worker init.d script: Status check is now performed by
+    querying the pid of the instance instead of sending messages.
+      Contributed by Milen Pavlov.
+  - Improved init scripts for CentOS.
+      - Updated to support celery 3.x conventions.
+      - Now uses CentOS built-in status and killproc
+      - Support for multi-node / multi-pid worker services.
+      - Standard color-coded CentOS service-init output.
+      - A test suite.
+      Contributed by Milen Pavlov.
+  - ResultSet.join now always works with empty result set (Issue #1219).
+  - A group consisting of a single task is now supported (Issue #1219).
+  - Now supports the pycallgraph program (Issue #1051).
+  - Fixed Jython compatibility problems.
+  - Django tutorial: Now mentions that the example app must be added to
+    INSTALLED_APPS (Issue #1192).
+
+-------------------------------------------------------------------
+Tue Feb 12 21:42:37 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.15:
+  - Now depends on billiard 2.7.3.21 which fixed a syntax error crash.
+  - Fixed bug with CELERY_SEND_TASK_SENT_EVENT.
+
+-------------------------------------------------------------------
+Fri Feb  8 20:10:26 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.14:
+  - Now depends on Kombu 2.5.6
+  - Now depends on billiard 2.7.3.20
+  - execv is now disabled by default.
+    It was causing too many problems for users, you can still enable
+    it using the CELERYD_FORCE_EXECV setting.
+    execv was only enabled when transports other than amqp/redis was used,
+    and it's there to prevent deadlocks caused by mutexes not being released
+    before the process forks.  Sadly it also changes the environment
+    introducing many corner case bugs that is hard to fix without adding
+    horrible hacks.  Deadlock issues are reported far less often than the
+    bugs that execv are causing, so we now disable it by default.
+    Work is in motion to create non-blocking versions of these transports
+    so that execv is not necessary (which is the situation with the amqp
+    and redis broker transports)
+  - Chord exception behavior defined (Issue #1172).
+    From Celery 3.1 the chord callback will change state to FAILURE
+    when a task part of a chord raises an exception.
+    It was never documented what happens in this case,
+    and the actual behavior was very unsatisfactory, indeed
+    it will just forward the exception value to the chord callback.
+    For backward compatibility reasons we do not change to the new
+    behavior in a bugfix release, even if the current behavior was
+    never documented.  Instead you can enable the
+    CELERY_CHORD_PROPAGATES setting to get the new behavior
+    that will be default from Celery 3.1.
+    See more at chord-errors.
+  - worker: Fixes bug with ignored and retried tasks.
+    The on_chord_part_return and Task.after_return callbacks,
+    nor the task_postrun signal should be called when the task was
+    retried/ignored.
+    Fix contributed by Vlad.
+  - GroupResult.join_native now respects the propagate argument.
+  - subtask.id added as an alias to subtask['options'].id
+        >>> s = add.s(2, 2)
+        >>> s.id = 'my-id'
+        >>> s['options']
+        {'task_id': 'my-id'}
+
+        >>> s.id
+        'my-id'
+  - worker: Fixed error `Could not start worker processes` occurring
+    when restarting after connection failure (Issue #1118).
+  - Adds new signal task-retried (Issue #1169).
+  - `celery events --dumper` now handles connection loss.
+  - Will now retry sending the task-sent event in case of connection failure.
+  - amqp backend:  Now uses Message.requeue instead of republishing
+    the message after poll.
+  - New BROKER_HEARTBEAT_CHECKRATE setting introduced to modify the
+    rate at which broker connection heartbeats are monitored.
+    The default value was also changed from 3.0 to 2.0.
+  - celery.events.state.State is now pickleable.
+    Fix contributed by Mher Movsisyan.
+  - celery.datastructures.LRUCache is now pickleable.
+    Fix contributed by Mher Movsisyan.
+  - The stats broadcast command now includes the workers pid.
+    Contributed by Mher Movsisyan.
+  - New conf remote control command to get a workers current configuration.
+    Contributed by Mher Movsisyan.
+  - Adds the ability to modify the chord unlock task's countdown
+    argument (Issue #1146).
+    Contributed by Jun Sakai
+  - beat: The scheduler now uses the now() method of the schedule,
+    so that schedules can provide a custom way to get the current date and time.
+    Contributed by Raphaël Slinckx
+  - Fixed pickling of configuration modules on Windows or when execv is used
+    (Issue #1126).
+  - Multiprocessing logger is now configured with loglevel ERROR
+    by default.
+    Since 3.0 the multiprocessing loggers were disabled by default
+    (only configured when the MP_LOG environment variable was set).
+
+-------------------------------------------------------------------
+Mon Jan  7 16:34:24 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.0.13:
+  - Now depends on Kombu 2.5
+    - py-amqp has replaced amqplib as the default transport,
+      gaining support for AMQP 0.9, and the RabbitMQ extensions
+      including Consumer Cancel Notifications and heartbeats.
+    - support for multiple connection URLs for failover.
+    - Read more in the Kombu 2.5 changelog.
+  - Now depends on billiard 2.7.3.19
+  - Fixed a deadlock issue that could occur when the producer pool
+    inherited the connection pool instance of the parent process.
+  - The --loader option now works again (Issue #1066).
+  - celery umbrella command: All subcommands now supports
+    the --workdir option (Issue #1063).
+  - Groups included in chains now give GroupResults (Issue #1057)
+    Previously it would incorrectly add a regular result instead of a group
+    result, but now this works:
+
+        # [4 + 4, 4 + 8, 16 + 8]
+        >>> res = (add.s(2, 2) | group(add.s(4), add.s(8), add.s(16)))()
+        >>> res
+        <GroupResult: a0acf905-c704-499e-b03a-8d445e6398f7 [
+            4346501c-cb99-4ad8-8577-12256c7a22b1,
+            b12ead10-a622-4d44-86e9-3193a778f345,
+            26c7a420-11f3-4b33-8fac-66cd3b62abfd]>
+
+  - Chains can now chain other chains and use partial arguments (Issue #1057).
+    Example:
+        >>> c1 = (add.s(2) | add.s(4))
+        >>> c2 = (add.s(8) | add.s(16))
+
+        >>> c3 = (c1 | c2)
+
+        # 8 + 2 + 4 + 8 + 16
+        >>> assert c3(8).get() == 38
+
+  - Subtasks can now be used with unregistered tasks.
+    You can specify subtasks even if you just have the name:
+
+        >>> s = subtask(task_name, args=(), kwargs=())
+        >>> s.delay()
+
+  - The celery shell command now always adds the current
+    directory to the module path.
+  - The worker will now properly handle the pytz.AmbiguousTimeError
+    exception raised when an ETA/countdown is prepared while being in DST
+    transition (Issue #1061).
+  - force_execv: Now makes sure that task symbols in the original
+    task modules will always use the correct app instance (Issue #1072).
+  - AMQP Backend: Now republishes result messages that have been polled
+    (using result.ready() and friends, result.get() will not do this
+    in this version).
+  - Crontab schedule values can now "wrap around"
+    This means that values like ``11-1`` translates to ``[11, 12, 1]``.
+    Contributed by Loren Abrams.
+  - multi stopwait command now shows the pid of processes.
+    Contributed by Loren Abrams.
+  - Handling of ETA/countdown fixed when the CELERY_ENABLE_UTC
+    setting is disabled (Issue #1065).
+  - A number of uneeded properties were included in messages,
+    caused by accidentally passing Queue.as_dict as message properties.
+  - Rate limit values can now be float
+    This also extends the string format so that values like "0.5/s" works.
+    Contributed by Christoph Krybus
+  - Fixed a typo in the broadcast routing documentation (Issue #1026).
+  - Rewrote confusing section about idempotence in the task user guide.
+  - Fixed typo in the daemonization tutorial (Issue #1055).
+  - Fixed several typos in the documentation.
+    Contributed by Marius Gedminas.
+  - Batches: Now works when using the eventlet pool.
+    Fix contributed by Thomas Grainger.
+  - Batches: Added example sending results to celery.contrib.batches.
+    Contributed by Thomas Grainger.
+  - Mongodb backend: Connection max_pool_size can now be set in
+    CELERY_MONGODB_BACKEND_SETTINGS.
+    Contributed by Craig Younkins.
+  - Fixed problem when using earlier versions of pytz.
+    Fix contributed by Vlad.
+  - Docs updated to include the default value for the
+    CELERY_TASK_RESULT_EXPIRES setting.
+  - Improvements to the django-celery tutorial.
+    Contributed by Locker537.
+  - The add_consumer control command did not properly persist
+    the addition of new queues so that they survived connection failure
+    (Issue #1079).
+
+-------------------------------------------------------------------
+Tue Nov  6 18:00:40 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.12:
+  - Now depends on kombu 2.4.8
+    - [Redis] New and improved fair queue cycle algorithm (Kevin McCarthy).
+    - [Redis] Now uses a Redis-based mutex when restoring messages.
+    - [Redis] Number of messages that can be restored in one interval is no
+              longer limited (but can be set using the
+              unacked_restore_limit
+              transport option <BROKER_TRANSPORT_OPTIONS>.)
+    - Heartbeat value can be specified in broker URLs (Mher Movsisyan).
+    - Fixed problem with msgpack on Python 3 (Jasper Bryant-Greene).
+  - Now depends on billiard 2.7.3.18
+  - Celery can now be used with static analysis tools like PyDev/PyCharm/pylint
+    etc.
+  - Development documentation has moved to Read The Docs.
+    The new URL is: http://docs.celeryproject.org/en/master
+  - New CELERY_QUEUE_HA_POLICY setting used to set the default
+    HA policy for queues when using RabbitMQ.
+    New method Task.subtask_from_request returns a subtask using the current
+    request.
+  - Results get_many method did not respect timeout argument.
+    Fix contributed by Remigiusz Modrzejewski
+  - generic_init.d scripts now support setting CELERY_CREATE_DIRS to
+    always create log and pid directories (Issue #1045).
+    This can be set in your /etc/default/celeryd.
+  - Fixed strange kombu import problem on Python 3.2 (Issue #1034).
+  - Worker: ETA scheduler now uses millisecond precision (Issue #1040).
+  - The --config argument to programs is now supported by all loaders.
+  - The CASSANDRA_OPTIONS setting has now been documented.
+    Contributed by Jared Biel.
+  - Task methods celery.contrib.methods cannot be used with the old
+    task base class, the task decorator in that module now inherits from the new.
+  - An optimization was too eager and caused some logging messages to never emit.
+  - celery.contrib.batches now works again.
+  - Fixed missing whitespace in bdist_rpm requirements (Issue #1046).
+  - Event state's tasks_by_name applied limit before filtering by name.
+    Fix contributed by Alexander A. Sosnovskiy.
+
+-------------------------------------------------------------------
+Wed Sep 26 17:42:49 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.11:
+  - generic-init.d scripts changed permissions of /var/log & /var/run
+    In the daemonization tutorial the recommended directories were as follows:
+
+        CELERYD_LOG_FILE="/var/log/celery/%n.log"
+        CELERYD_PID_FILE="/var/run/celery/%n.pid"
+
+    But in the scripts themselves the default files were /var/log/celery%n.log
+    and /var/run/celery%n.pid, so if the user did not change the location
+    by configuration, the directories /var/log and /var/run would be
+    created - and worse have their permissions and owners changed.
+
+    This change means that:
+
+        - Default pid file is /var/run/celery/%n.pid
+        - Default log file is /var/log/celery/%n.log
+
+        - The directories are only created and have their permissions
+          changed if *no custom locations are set*.
+
+    Users can force paths to be created by calling the create-paths
+    subcommand:
+
+        $ sudo /etc/init.d/celeryd create-paths
+
+    Upgrading Celery will not update init scripts
+
+        To update the init scripts you have to re-download
+        the files from source control and update them manually.
+        You can find the init scripts for version 3.0.x at:
+
+            http://github.com/celery/celery/tree/3.0/extra/generic-init.d
+
+  - Now depends on billiard 2.7.3.17
+  - Fixes request stack protection when app is initialized more than
+    once (Issue #1003).
+  - ETA tasks now properly works when system timezone is not the same
+    as the configured timezone (Issue #1004).
+  - Terminating a task now works if the task has been sent to the
+    pool but not yet acknowledged by a pool process (Issue #1007).
+
+    Fix contributed by Alexey Zatelepin
+  - Terminating a task now properly updates the state of the task to revoked,
+    and sends a ``task-revoked`` event.
+  - Multi: No longer parses --app option (Issue #1008).
+  - Generic worker init script now waits for workers to shutdown by default.
+  - Multi: stop_verify command renamed to stopwait.
+  - Daemonization: Now delays trying to create pidfile/logfile until after
+    the working directory has been changed into.
+  - celery worker and celery beat commands now respects
+    the --no-color option (Issue #999).
+  - Fixed typos in eventlet examples (Issue #1000)
+
+    Fix contributed by Bryan Bishop.
+    Congratulations on opening bug #1000!
+  - Tasks that raise celery.exceptions.Ignore are now acknowledged.
+  - Beat: Now shows the name of the entry in sending due task logs.
+
+
+-------------------------------------------------------------------
+Thu Sep 20 22:24:32 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.10:
+  - Now depends on kombu 2.4.7
+  - Now depends on billiard 2.7.3.14
+    - Fixes crash at startup when using Django and pre-1.4 projects
+      (setup_environ).
+    - Hard time limits now sends the KILL signal shortly after TERM,
+      to terminate processes that have signal handlers blocked by C extensions.
+    - Billiard now installs even if the C extension cannot be built.
+        It's still recommended to build the C extension if you are using
+        a transport other than rabbitmq/redis (or use forced execv for some
+        other reason).
+    - Pool now sets a ``current_process().index`` attribute that can be used to create
+      as many log files as there are processes in the pool.
+  - Canvas: chord/group/chain no longer modifies the state when called
+    Previously calling a chord/group/chain would modify the ids of subtasks
+    so that:
+
+        >>> c = chord([add.s(2, 2), add.s(4, 4)], xsum.s())
+        >>> c()
+        >>> c() <-- call again
+
+    at the second time the ids for the tasks would be the same as in the
+    previous invocation.  This is now fixed, so that calling a subtask
+    won't mutate any options.
+  - Canvas: Chaining a chord to another task now works (Issue #965).
+  - Worker: Fixed a bug where the request stack could be corrupted if
+    relative imports are used.
+
+    Problem usually manifested itself as an exception while trying to
+    send a failed task result (NoneType does not have id attribute).
+
+    Fix contributed by Sam Cooke.
+  - Tasks can now raise celery.exceptions.Ignore to skip updating states
+    or events after return.
+
+    Example:
+
+        from celery.exceptions import Ignore
+
+        @task
+        def custom_revokes():
+            if redis.sismember('tasks.revoked', custom_revokes.request.id):
+                raise Ignore()
+
+  - The worker now makes sure the request/task stacks are not modified
+    by the initial Task.__call__.
+
+    This would previously be a problem if a custom task class defined
+    __call__ and also called super().
+  - Because of problems the fast local optimization has been disabled,
+    and can only be enabled by setting the USE_FAST_LOCALS attribute.
+  - Worker: Now sets a default socket timeout of 5 seconds at shutdown
+    so that broken socket reads do not hinder proper shutdown (Issue #975).
+  - More fixes related to late eventlet/gevent patching.
+  - Documentation for settings out of sync with reality:
+
+    - CELERY_TASK_PUBLISH_RETRY
+
+        Documented as disabled by default, but it was enabled by default
+        since 2.5 as stated by the 2.5 changelog.
+
+    - CELERY_TASK_PUBLISH_RETRY_POLICY
+
+        The default max_retries had been set to 100, but documented as being
+        3, and the interval_max was set to 1 but documented as 0.2.
+        The default setting are now set to 3 and 0.2 as it was originally
+        documented.
+
+    Fix contributed by Matt Long.
+  - Worker: Log messages when connection established and lost have been improved.
+  - The repr of a crontab schedule value of '0' should be '*'  (Issue #972).
+  - Revoked tasks are now removed from reserved/active state in the worker
+    (Issue #969)
+
+    Fix contributed by Alexey Zatelepin.
+  - gevent: Now supports hard time limits using gevent.Timeout.
+  - Documentation: Links to init scripts now point to the 3.0 branch instead
+    of the development branch (master).
+  - Documentation: Fixed typo in signals user guide (Issue #986).
+
+    instance.app.queues -> instance.app.amqp.queues.
+  - Eventlet/gevent: The worker did not properly set the custom app
+    for new greenlets.
+  - Eventlet/gevent: Fixed a bug where the worker could not recover
+    from connection loss (Issue #959).
+
+    Also, because of a suspected bug in gevent the
+    BROKER_CONNECTION_TIMEOUT setting has been disabled
+    when using gevent
+
+
+-------------------------------------------------------------------
+Fri Aug 31 23:44:00 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.9:
+  - Important note for users of Django and the database scheduler!
+    Recently a timezone issue has been fixed for periodic tasks,
+    but erroneous timezones could have already been stored in the
+    database, so for the fix to work you need to reset
+    the last_run_at fields.
+
+    You can do this by executing the following command:
+
+        $ python manage.py shell
+        >>> from djcelery.models import PeriodicTask
+        >>> PeriodicTask.objects.update(last_run_at=None)
+
+    You also have to do this if you change the timezone or
+    CELERY_ENABLE_UTC setting.
+  - Note about the CELERY_ENABLE_UTC setting.
+    If you previously disabled this just to force periodic tasks to work with
+    your timezone, then you are now *encouraged to re-enable it*.
+  - Now depends on Kombu 2.4.5 which fixes PyPy + Jython installation.
+  - Fixed bug with timezones when :setting:`CELERY_ENABLE_UTC` is disabled
+    (Issue #952).
+  - Fixed a typo in the celerybeat upgrade mechanism (Issue #951).
+  - Make sure the exc_info argument to logging is resolved (Issue #899).
+  - Fixed problem with Python 3.2 and thread join timeout overflow (Issue #796).
+  - A test case was occasionally broken for Python 2.5.
+  - Unit test suite now passes for PyPy 1.9.
+  - App instances now supports the with statement.
+    This calls the new :meth:`~celery.Celery.close` method at exit, which
+    cleans up after the app like closing pool connections.
+
+    Note that this is only necessary when dynamically creating apps,
+    e.g. for "temporary" apps.
+
+  - Support for piping a subtask to a chain.
+
+    For example:
+
+        pipe = sometask.s() | othertask.s()
+        new_pipe = mytask.s() | pipe
+
+    Contributed by Steve Morin.
+  - Fixed problem with group results on non-pickle serializers.
+    Fix contributed by Steeve Morin.
+
+-------------------------------------------------------------------
+Wed Aug 29 18:02:17 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.8:
+  - Now depends on Kombu 2.4.4
+  - Beat: Fixed another timezone bug with interval and crontab schedules
+    (Issue #943).
+  - Beat: The schedule file is now automatically cleared if the timezone
+    is changed.
+    The schedule is also cleared when you upgrade to 3.0.8 from an earlier
+    version, this to register the initial timezone info.
+  - Events: The worker-heartbeat event now include processed and active
+    count fields.
+    Contributed by Mher Movsisyan.
+  - Fixed error with error email and new task classes (Issue #931).
+  - BaseTask.__call__ is no longer optimized away if it has been monkey
+    patched.
+  - Fixed shutdown issue when using gevent (Issue #911 & Issue #936).
+    Fix contributed by Thomas Meson.
+
+-------------------------------------------------------------------
+Fri Aug 24 22:30:22 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.7:
+  - Fixes several problems with periodic tasks and timezones (Issue #937).
+  - Now depends on kombu 2.4.2
+    - Redis: Fixes a race condition crash
+    - Fixes an infinite loop that could happen when retrying establishing
+      the broker connection.
+  - Daemons now redirect standard file descriptors to /dev/null
+    Though by default the standard outs are also redirected
+    to the logger instead, but you can disable this by changing
+    the CELERY_REDIRECT_STDOUTS setting.
+  - Fixes possible problems when eventlet/gevent is patched too late.
+  - LoggingProxy no longer defines fileno() (Issue #928).
+  - Results are now ignored for the chord unlock task.
+    Fix contributed by Steeve Morin.
+  - Cassandra backend now works if result expiry is disabled.
+    Fix contributed by Steeve Morin.
+  - The traceback object is now passed to signal handlers instead
+    of the string representation.
+    Fix contributed by Adam DePue.
+  - Celery command: Extensions are now sorted by name.
+  - A regression caused the task-failed event to be sent
+    with the exception object instead of its string representation.
+  - The worker daemon would try to create the pid file before daemonizing
+    to catch errors, but this file was not immediately released (Issue #923).
+  - Fixes Jython compatibility.
+  - billiard.forking_enable was called by all pools not just the
+    processes pool, which would result in a useless warning if the billiard
+    C extensions were not installed.
+
+-------------------------------------------------------------------
+Fri Aug 17 22:34:07 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.6:
+  - Now depends on kombu 2.4.0
+  - Now depends on billiard 2.7.3.12
+  - Redis: Celery now tries to restore messages whenever there are no messages
+    in the queue.
+  - Crontab schedules now properly respects CELERY_TIMEZONE setting.
+    It's important to note that crontab schedules uses UTC time by default
+    unless this setting is set.
+    Issue #904 and django-celery #150.
+  - billiard.enable_forking is now only set by the processes pool.
+  - The transport is now properly shown by celery report
+    (Issue #913).
+  - The --app argument now works if the last part is a module name
+    (Issue #921).
+  - Fixed problem with unpickleable exceptions (billiard #12).
+  - Adds task_name attribute to EagerResult which is always
+    None (Issue #907).
+  - Old Task class in celery.task no longer accepts magic kwargs by
+    default (Issue #918).
+    A regression long ago disabled magic kwargs for these, and since
+    no one has complained about it we don't have any incentive to fix it now.
+  - The inspect reserved control command did not work properly.
+  - Should now play better with static analyzation tools by explicitly
+    specifying dynamically created attributes in the celery and
+    celery.task modules.
+  - Terminating a task now results in
+    celery.exceptions.RevokedTaskError instead of a WorkerLostError.
+  - AsyncResult.revoke now accepts terminate and signal arguments.
+  - The task-revoked event now includes new fields: terminated,
+    signum, and expired.
+  - The argument to celery.exceptions.TaskRevokedError is now one
+    of the reasons revoked, expired or terminated.
+  - Old Task class does no longer use classmethods for push_request and
+    pop_request  (Issue #912).
+  - GroupResult now supports the children attribute (Issue #916).
+  - AsyncResult.collect now respects the intermediate argument
+    (Issue #917).
+  - Fixes example task in documentation (Issue #902).
+  - Eventlet fixed so that the environment is patched as soon as possible.
+  - eventlet: Now warns if celery related modules that depends on threads
+    are imported before eventlet is patched.
+  - Improved event and camera examples in the monitoring guide.
+  - Disables celery command setuptools entrypoints if the command can't be
+    loaded.
+  - Fixed broken dump_request example in the tasks guide.
+
+-------------------------------------------------------------------
+Wed Aug  1 18:58:47 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.5:
+  - Now depends on kombu 2.3.1 + billiard 2.7.3.11
+  - Fixed a bug with the -B option (``cannot pickle thread.lock objects``)
+    (Issue #894 + Issue #892, + django-celery #154).
+  - The restart_pool control command now requires the
+    CELERYD_POOL_RESTARTS setting to be enabled
+    This change was necessary as the multiprocessing event that the restart
+    command depends on is responsible for creating many semaphores/file
+    descriptors, resulting in problems in some environments.
+  - chain.apply now passes args to the first task (Issue #889).
+  - Documented previously secret options to the Django-Celery monitor
+    in the monitoring userguide (Issue #396).
+  - Old changelog are now organized in separate documents for each series,
+    history.
+
+-------------------------------------------------------------------
+Thu Jul 26 22:18:34 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.4:
+  - Now depends on Kombu 2.3
+  - New experimental standalone Celery monitor: Flower
+    See monitoring-flower to read more about it!
+
+    Contributed by Mher Movsisyan.
+  - Now supports AMQP heartbeats if using the new pyamqp:// transport.
+    - The py-amqp transport requires the amqp library to be installed:
+
+        $ pip install amqp
+
+    - Then you need to set the transport URL prefix to pyamqp://.
+
+    - The default heartbeat value is 10 seconds, but this can be changed using
+      the BROKER_HEARTBEAT setting
+
+        BROKER_HEARTBEAT = 5.0
+
+    - If the broker heartbeat is set to 10 seconds, the heartbeats will be
+      monitored every 5 seconds (double the hertbeat rate).
+
+    See the Kombu 2.3 changelog for more information.
+
+  - Now supports RabbitMQ Consumer Cancel Notifications, using the pyamqp://
+    transport.
+    This is essential when running RabbitMQ in a cluster.
+
+    See the Kombu 2.3 changelog for more information.
+
+  - Delivery info is no longer passed directly through.
+
+    It was discovered that the SQS transport adds objects that can't
+    be pickled to the delivery info mapping, so we had to go back
+    to using the whitelist again.
+
+    Fixing this bug also means that the SQS transport is now working again.
+
+  - The semaphore was not properly released when a task was revoked (Issue #877).
+
+    This could lead to tasks being swallowed and not released until a worker
+    restart.
+
+    Thanks to Hynek Schlawack for debugging the issue.
+
+  - Retrying a task now also forwards any linked tasks.
+
+    This means that if a task is part of a chain (or linked in some other
+    way) and that even if the task is retried, then the next task in the chain
+    will be executed when the retry succeeds.
+
+  - Chords: Now supports setting the interval and other keyword arguments
+    to the chord unlock task.
+    - The interval can now be set as part of the chord subtasks kwargs::
+
+        chord(header)(body, interval=10.0)
+
+    - In addition the chord unlock task now honors the Task.default_retry_delay
+      option, used when none is specified, which also means that the default
+      interval can also be changed using annotations:
+
+            CELERY_ANNOTATIONS = {
+                'celery.chord_unlock': {
+                    'default_retry_delay': 10.0,
+                }
+            }
+
+  - New @Celery.add_defaults method can add new default configuration
+    dicts to the applications configuration.
+
+    For example:
+
+        config = {'FOO': 10}
+
+        celery.add_defaults(config)
+
+    is the same as celery.conf.update(config) except that data will not be
+    copied, and that it will not be pickled when the worker spawns child
+    processes.
+
+    In addition the method accepts a callable:
+
+        def initialize_config():
+            # insert heavy stuff that can't be done at import time here.
+
+        celery.add_defaults(initialize_config)
+
+    which means the same as the above except that it will not happen
+    until the celery configuration is actually used.
+
+    As an example, Celery can lazily use the configuration of a Flask app::
+
+        flask_app = Flask()
+        celery = Celery()
+        celery.add_defaults(lambda: flask_app.config)
+
+  - Revoked tasks were not marked as revoked in the result backend (Issue #871).
+
+    Fix contributed by Hynek Schlawack.
+
+  - Eventloop now properly handles the case when the epoll poller object
+    has been closed (Issue #882).
+
+  - Fixed syntax error in funtests/test_leak.py
+
+    Fix contributed by Catalin Iacob.
+
+  - group/chunks: Now accepts empty task list (Issue #873).
+  - New method names:
+
+    - Celery.default_connection() ➠  @Celery.connection_or_acquire.
+    - Celery.default_producer()   ➠  @Celery.producer_or_acquire.
+
+    The old names still work for backward compatibility.
+
+-------------------------------------------------------------------
+Fri Jul 20 21:12:59 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.3:
+  - amqplib passes the channel object as part of the delivery_info
+    and it's not pickleable, so we now remove it.
+
+-------------------------------------------------------------------
+Tue Jul 10 22:43:17 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.1:
+  - Now depends on kombu 2.2.5
+  - inspect now supports limit argument::
+    myapp.control.inspect(limit=1).ping()
+  - Beat: now works with timezone aware datetime's.
+  - Task classes inheriting from celery import Task
+    mistakingly enabled accept_magic_kwargs.
+  - Fixed bug in inspect scheduled (Issue #829).
+  - Beat: Now resets the schedule to upgrade to UTC.
+  - The celery worker command now works with eventlet/gevent.
+    Previously it would not patch the environment early enough.
+  - The celery command now supports extension commands
+    using setuptools entry-points.
+    Libraries can add additional commands to the celery
+    command by adding an entry-point like::
+
+        setup(
+            entry_points=[
+                'celery.commands': [
+                    'foo = my.module:Command',
+            ],
+        ],
+        ...)
+
+    The command must then support the interface of
+    celery.bin.base.Command.
+  - contrib.migrate: New utilities to move tasks from one queue to another.
+    - celery.contrib.migrate.move_tasks
+    - celery.contrib.migrate.move_task_by_id
+  - The task-sent event now contains exchange and routing_key
+    fields.
+  - Fixes bug with installing on Python 3.
+    Fix contributed by Jed Smith.
+
+-------------------------------------------------------------------
+Sat Jul  7 14:05:06 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.0:
+  - A new and improved API, that is both simpler and more powerful.
+  - The worker is now thread-less, giving great performance improvements.
+  - The new “Canvas” makes it easy to define complex workflows.
+  - All of Celery’s command line programs are now available from a
+    single celery umbrella command.
+  - This is the last version to support Python 2.5.
+  - Support for the new librabbitmq C client.
+  - Redis support is more reliable with improved ack emulation.
+  - Celery now always uses UTC
+  - Over 600 commits, 30k additions/36k deletions.
+- Please read documentation for full list of changes:
+  http://docs.celeryproject.org/en/latest/whatsnew-3.0.html#whatsnew-3-0
+
+-------------------------------------------------------------------
+Thu Jun 28 09:04:40 UTC 2012 - saschpe@suse.de
+
+- Conflict with kombu >= 2.2.0 (see previous changes entry)
+
+-------------------------------------------------------------------
+Wed Jun  6 17:31:29 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.5:
+  This is a dummy release performed for the following goals:
+    - Protect against force upgrading to Kombu 2.2.0
+    - Version parity with django-celery
+
+-------------------------------------------------------------------
+Mon Apr 16 22:47:39 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.3:
+  * A bug causes messages to be sent with UTC timestamps even though
+    CELERY_ENABLE_UTC was not enabled (Issue #636).
+  * celerybeat: No longer crashes if an entry's args is set to None
+    (Issue #657).
+  * Autoreload did not work if a module's __file__ attribute
+    was set to the modules '.pyc' file.  (Issue #647).
+  * Fixes early 2.5 compatibility where __package__ does not exist
+    (Issue #638).
+
+-------------------------------------------------------------------
+Wed Mar 14 13:19:14 UTC 2012 - alexandre@exatati.com.br
+
+- Do not touch files without a submitrequest.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:00:41 UTC 2012 - alexandre@exatati.com.br
+
+- License tag fixed to BSD-3-Clause.
+
+-------------------------------------------------------------------
+Wed Mar 14 10:29:11 UTC 2012 - saschpe@suse.de
+
+- Don't buildrequire pymongo, it's not yet in Factory and only needed to let
+  some additional tests pass. It's however still suggested.
+
+-------------------------------------------------------------------
+Sat Mar 10 17:44:01 UTC 2012 - saschpe@gmx.de
+
+- Suggest python-eventlet, python-gevent, python-pymongo, python-pytyrant
+- Recommend python-curses, python-pyOpenSSL
+- Run testsuite
+- Changes file cleanup
+
+-------------------------------------------------------------------
+Thu Mar  1 17:47:07 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.1:
+  * Eventlet/Gevent: A small typo caused celeryd to hang when eventlet/gevent
+    was used, this was because the environment was not monkey patched
+    early enough.
+  * Eventlet/Gevent: Another small typo caused the mediator to be started
+    with eventlet/gevent, which would make celeryd sometimes hang at shutdown.
+  * Mulitprocessing: Fixed an error occurring if the pool was stopped
+    before it was properly started.
+  * Proxy objects now redirects __doc__ and __name__ so help(obj)
+    works.
+  * Internal timer (timer2) now logs exceptions instead of swallowing them
+  * celeryctl shell: can now be started with --eventlet or
+    --gevent options to apply their monkey patches.
+
+-------------------------------------------------------------------
+Fri Feb 24 22:26:12 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.0:
+  - Considerable size of changelog, please read
+    http://docs.celeryproject.org/en/latest/whatsnew-2.5.html or
+    the Changelog file inside the package.
+
+-------------------------------------------------------------------
+Wed Dec 28 17:52:49 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.6:
+  - The group id was not changed if both --uid and --gid specified.
+
+-------------------------------------------------------------------
+Fri Dec  2 23:43:13 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.5:
+  - Periodic task interval schedules were accidentally rounded down,
+    resulting in some periodic tasks being executed early.
+  - Logging of humanized times in the celerybeat log is now more detailed.
+  - New brokers section in the Getting Started part of the Documentation
+    This replaces the old tut-otherqueues tutorial, and adds
+    documentation for MongoDB, Beanstalk and CouchDB.
+
+-------------------------------------------------------------------
+Fri Nov 25 21:56:24 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.4:
+  - [Security: CELERYSA-0001] Daemons would set effective id’s
+    rather than real id’s when the --uid/--gid arguments to
+    celeryd-multi, celeryd_detach, celerybeat and celeryev were used.
+  - Processes pool: Fixed rare deadlock at shutdown
+  - Webhook tasks issued the wrong HTTP POST headers
+    The Content-Type header has been changed from
+    application/json ⇒ application/x-www-form-urlencoded, and adds
+    a proper Content-Length header.
+  - Daemonization cookbook: Adds a configuration example using
+    Django and virtualenv together
+  - Generic init scripts now automatically creates log and pid
+    file directories
+
+-------------------------------------------------------------------
+Tue Nov 22 22:25:20 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.3:
+  * Fixes module import typo in celeryctl
+
+-------------------------------------------------------------------
+Mon Nov 14 12:35:54 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.2:
+  - Program module no longer uses relative imports so that it is
+    possible to do python -m celery.bin.name.
+
+-------------------------------------------------------------------
+Mon Nov  7 23:26:56 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.1:
+  * celeryctl inspect commands was missing output.
+  * processes pool: Decrease polling interval for less idle CPU usage.
+  * processes pool: MaybeEncodingError was not wrapped in ExceptionInfo
+  * celeryd: would silence errors occuring after task consumer started.
+  * logging: Fixed a bug where unicode in stdout redirected log messages
+    couldn't be written
+
+-------------------------------------------------------------------
+Fri Nov  4 17:20:46 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.0:
+  * Now supports Python 3.
+  * Fixed deadlock in worker process handling
+  * AMQP Result backend: Now expires results by default.
+  * Eventlet: Fixed problem with shutdown
+  * Broker transports can be now be specified using URLs
+  * The deprecated celery.loaders.setup_loader() function has been
+    removed.
+  * The CELERY_TASK_ERROR_WHITELIST setting has been replaced by a
+    more flexible approach
+  * There are additional deprecations.
+  * No longer depends on pyparsing.
+  * Now depends on Kombu 1.4.3.
+  * CELERY_IMPORTS can now be a scalar value
+  * Fixed a memory leak when using the thread pool
+  * The statedb was not saved at exit.
+  * Adds EMAIL_USE_TLS to enable secure SMTP connections
+  * Now handles missing fields in task messages as documented in the
+    message format documentation.
+  * Fixed race condition in celery.events.state (celerymon/celeryev)
+    where task info would be removed while iterating over it
+  * The Cache, Cassandra, MongoDB, Redis and Tyrant backends now respects
+    the CELERY_RESULT_SERIALIZER setting
+  * Logging calls no longer manually formats messages, but delegates that
+    to the logging system, so tools like Sentry can easier work with the
+    messages
+  * celeryd_multi now supports a stop_verify command to wait for
+    processes to shutdown.
+  * Cache backend did not work if the cache key was unicode
+  * New setting CELERY_RESULT_DB_SHORT_LIVED_SESSIONS added, which if
+    enabled will disable the caching of SQLAlchemy sessions
+  * All result backends now implements __reduce__ so that they can be pickled
+  * celeryd-multi did not work on Windows
+  * New-style CELERY_REDIS_* settings now takes precedence over the old
+    REDIS_* configuration keys
+  * Generic celerybeat init script no longer sets bash -e
+  * Documented that Chords do not work well with redis-server versions
+    before 2.2.
+  * The CELERYBEAT_MAX_LOOP_INTERVAL setting was not respected.
+  * inspect.registered_tasks renamed to inspect.registered for naming
+    consistency.
+  * Worker logged the string representation of args and kwargs without
+    safe guards
+  * RHEL init script: Changed celeryd startup priority.
+  * KeyValueStoreBackend.get_many did not respect the timeout argument
+  * celerybeat/celeryev’s –workdir option did not chdir before after
+    configuration was attempted
+  * After deprecating 2.4 support we can now name modules correctly,
+    since we can take use of absolute imports.
+  * AUTHORS file is now sorted alphabetically.
+
+-------------------------------------------------------------------
+Fri Sep 23 12:35:58 UTC 2011 - oliver.bengs@opensuse.org
+
+- Added python-dateutil to Requires, 
+  needed by %py_sitedir/celery/schedules.py 
+
+-------------------------------------------------------------------
+Mon Sep 19 18:42:37 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.3:
+  * Monkey patching sys.stdout could result in the worker
+    crashing if the replacing object did not define isatty
+  * CELERYD option in /etc/default/celeryd should not
+    be used with generic init scripts.
+
+-------------------------------------------------------------------
+Thu Sep  8 01:42:58 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.2:
+  * Improved Contributing guide.
+  * Now depends on Kombu 1.3.1.
+  * Task.request now contains the current worker host name
+  * It is now easier for app subclasses to extend how they are
+    pickled.
+  * purge/discard_all was not working correctly
+  * he coloring of log messages didn’t handle non-ASCII data well
+  * [Windows] the multiprocessing pool tried to import os.kill even
+    though this is not available there
+  * Fixes case where the worker could become unresponsive because of
+    tasks exceeding the hard time limit.
+  * The task-sent event was missing from the event reference.
+  * ResultSet.iterate now returns results as they finish
+  * Retries will no longer be performed when tasks are called directly
+    (using __call__).
+  * Eventlet no longer crashes if autoscale is enabled.
+  * py24 target removed from tox.ini.
+
+-------------------------------------------------------------------
+Mon Aug  8 01:02:52 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.1:
+  * The CELERY_AMQP_TASK_RESULT_EXPIRES setting did not work,
+    resulting in an AMQP related error about not being able to
+    serialize floats while trying to publish task states
+
+-------------------------------------------------------------------
+Fri Aug  5 18:03:01 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.0:
+    - Please refer to the Changelog file or
+      http://celery.readthedocs.org/en/latest/changelog.html#version-2-3-0.
+
+-------------------------------------------------------------------
+Tue Jul  5 12:51:47 UTC 2011 - appleonkel@opensuse.org
+
+- fixed Requires: 
+  * python-tyrant is renamed to python-pytyrant
+  * added python-pyparsing
+
+-------------------------------------------------------------------
+Mon Jun 13 15:35:25 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.7:
+  * New signals: after_setup_logger and after_setup_task_logger
+    These signals can be used to augment logging configuration
+    after Celery has set up logging.
+  * Redis result backend now works with Redis 2.4.4.
+  * celeryd_multi: The :option:--gid option now works correctly.
+  * celeryd: Retry wrongfully used the repr of the traceback instead
+    of the string representation.
+  * App.config_from_object: Now loads module, not attribute of module.
+  * Fixed issue where logging of objects would give "<Unrepresentable: ...>"
+
+-------------------------------------------------------------------
+Wed Jun  8 12:25:02 UTC 2011 - alexandre@exatati.com.br
+
+- Fix Require from python-daemon to python-python-daemon.
+
+-------------------------------------------------------------------
+Fri Apr 15 15:27:33 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.6:
+  - Please read Changelog file for News and Fixes notes.
+
+-------------------------------------------------------------------
+Tue Mar 29 01:09:32 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.5:
+  - Please read Changelog file for News and Fixes notes.
+
+-------------------------------------------------------------------
+Sat Mar 26 02:05:53 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Add Changelog, README and TODO files as documentation.
+
+-------------------------------------------------------------------
+Sun Feb 20 18:43:50 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.4:
+  * celeryd: 2.2.3 broke error logging, resulting in tracebacks not being logged.
+  * AMQP result backend: Polling task states did not work properly if there were
+    more than one result message in the queue.
+  * TaskSet.apply_async() and TaskSet.apply() now supports an optional
+    taskset_id keyword argument (Issue #331).
+  * The current taskset id (if any) is now available in the task context as
+    request.context (Issue #329).
+  * SQLAlchemy result backend: date_done was no longer part of the results as it had
+    been accidentally removed.  It is now available again (Issue #325).
+  * SQLAlchemy result backend: Added unique constraint on Task.task_id and
+    TaskSet.taskset_id.  Tables needs to be recreated for this to take effect.
+  * Fixed exception raised when iterating on the result of TaskSet.apply().
+  * Tasks Userguide: Added section on choosing a result backend.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:06:00 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.3:
+  - Now depends on Kombu 1.0.3
+  - Task.retry now supports a max_retries argument, used to change
+    the default value.
+  - multiprocessing.cpu_count may raise NotImplementedError on
+    platforms where this is not supported (Issue #320).
+  - Coloring of log messages broke if the logged object was not a
+    string.
+  - Fixed several typos in the init script documentation.
+  - A regression caused Task.exchange and Task.routing_key to no
+    longer have any effect. This is now fixed.
+  - Routing Userguide: Fixes typo, routers in CELERY_ROUTES must be
+    instances, not classes.
+  - celeryev did not create pidfile even though the --pidfile
+    argument was set.
+  - Task logger format was no longer used. (Issue #317).
+      The id and name of the task is now part of the log message
+      again.
+  - A safe version of repr() is now used in strategic places to
+    ensure objects with a broken __repr__ does not crash the
+    worker, or otherwise make errors hard to understand (Issue #298).
+  - Remote control command active_queues: did not account for
+    queues added at runtime.
+      In addition the dictionary replied by this command now has a
+      different structure: the exchange key is now a dictionary
+      containing the exchange declaration in full.
+  - The -Q option to celeryd removed unused queue declarations, so
+    routing of tasks could fail.
+      Queues are no longer removed, but rather
+      app.amqp.queues.consume_from() is used as the list of queues
+      to consume from.
+      This ensures all queues are available for routing purposes.
+  - celeryctl: Now supports the inspect active_queues command.
+
+-------------------------------------------------------------------
+Thu Feb  3 22:37:08 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.2:
+  * Celerybeat could not read the schedule properly, so entries in
+    :setting:CELERYBEAT_SCHEDULE would not be scheduled.
+  * Task error log message now includes exc_info again.
+  * The eta argument can now be used with task.retry.
+    Previously it was overwritten by the countdown argument.
+  * celeryd-multi/celeryd_detach: Now logs errors occuring when
+    executing the celeryd command.
+  * daemonizing cookbook: Fixed typo --time-limit 300 ->
+    --time-limit=300
+  * Colors in logging broke non-string objects in log messages.
+  * setup_task_logger no longer makes assumptions about
+    magic task kwargs.
+
+-------------------------------------------------------------------
+Wed Feb  2 17:33:41 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.1;
+  * Eventlet pool was leaking memory (Issue #308).
+  * Deprecated function celery.execute.delay_task was
+    accidentally removed,
+    now available again.
+  * BasePool.on_terminate stub did not exist
+  * celeryd detach: Adds readable error messages if user/group
+    name does not exist.
+  * Smarter handling of unicode decod errors when logging errors.
+
+-------------------------------------------------------------------
+Tue Feb  1 11:22:43 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.2.0:
+  - Lot of fixes, deprecations, and incompatible changes.
+    Please refer to
+    http://packages.python.org/celery/changelog.html#version-2-2-0
+    for a full description.
+
+-------------------------------------------------------------------
+Sat Dec  4 09:22:02 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.1.4:
+  * Celery programs now hijacks the root logger by default (Issue #250).
+  * Execution options to apply_async now takes precedence over options
+    returned by active routers.  This was a regression introduced recently
+    (Issue #244).
+  * celeryev curses monitor: Long arguments are now truncated so curses
+    doesn't crash with out of bounds errors.  (Issue #235).
+  * celeryd: Channel errors occurring while handling control commands no
+    longer crash the worker but are instead logged with severity error.
+  * SQLAlchemy database backend: Fixed a race condition occurring when
+    the client wrote the pending state.  Just like the Django database backend,
+    it does no longer save the pending state (Issue #261 + Issue #262).
+  * task.apply: propagate=True now raises exceptions from the original
+    frame, keeping the same stacktrace (Issue #256).
+  * Error email body now uses repr(exception) instead of str(exception),
+    as the latter could result in Unicode decode errors (Issue #245).
+  * Error e-mail timeout value is now configurable by using the
+    :setting:EMAIL_TIMEOUT setting.
+  * celeryev: Now works on Windows (but the curses monitor won't work without
+    having curses).
+  * Unit test output no longer emits non-standard characters.
+  * celeryd: The broadcast consumer is now closed if the connection is reset.
+  * celeryd: Now properly handles errors occurring while trying to acknowledge
+    the message.
+
+-------------------------------------------------------------------
+Tue Nov  9 16:41:30 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.1.3.
+
+-------------------------------------------------------------------
+Fri Oct 29 16:17:05 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.1.2.
+
+-------------------------------------------------------------------
+Thu Oct 14 14:34:14 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.1.1.
+
+-------------------------------------------------------------------
+Sat Oct  9 21:02:51 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.1.0.
+
+-------------------------------------------------------------------
+Sat Aug 28 17:02:01 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.0.3.
+
+-------------------------------------------------------------------
+Mon Jul 26 01:13:28 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.0.2.
+
+-------------------------------------------------------------------
+Wed Jul 14 12:46:22 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.0.1.
+
+-------------------------------------------------------------------
+Mon Jul  5 11:36:44 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.0.0.
+
+-------------------------------------------------------------------
+Wed Jun 30 17:59:25 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.6.
+
+-------------------------------------------------------------------
+Tue Jun  1 16:26:12 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.5.
+
+-------------------------------------------------------------------
+Mon May 31 11:12:11 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.4.
+
+-------------------------------------------------------------------
+Sat May 15 16:38:22 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.3.
+
+-------------------------------------------------------------------
+Wed Mar 31 13:13:02 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.2;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Mar 22 02:48:51 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.1.
+
+-------------------------------------------------------------------
+Wed Feb 10 15:57:58 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.0.
+
+-------------------------------------------------------------------
+Fri Feb  5 14:02:37 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.8.4.
+
+-------------------------------------------------------------------
+Tue Dec 22 18:42:32 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 0.8.3.
+
+-------------------------------------------------------------------
+Fri Nov 20 15:37:27 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 0.8.2;
+- Building as noarch for openSUSE >= 11.2.
+
+-------------------------------------------------------------------
+Tue Nov 17 17:21:26 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 0.8.1.
+
+-------------------------------------------------------------------
+Tue Sep 22 15:07:28 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.8) for openSUSE.
+

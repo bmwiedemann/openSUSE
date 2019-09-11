@@ -1,0 +1,107 @@
+--- a/blitz/CMakeLists.txt
++++ b/blitz/CMakeLists.txt
+@@ -21,7 +21,7 @@ if(NOT MSVC)
+ endif(NOT MSVC)
+ 
+ if (Qt5Core_FOUND)
+-  SET(BLITZ_LIB_MAJOR_VERSION "5")
++  SET(BLITZ_LIB_MAJOR_VERSION "1")
+ else()
+   SET(BLITZ_LIB_MAJOR_VERSION "4")
+ endif()
+@@ -50,35 +50,37 @@ if(COMMAND cmake_policy)
+       cmake_policy(SET CMP0003 NEW)
+ endif(COMMAND cmake_policy)
+ 
+-add_library(qimageblitz SHARED ${blitz_LIB_SRCS} ${blitz_LIB_EXTRA_SRCS})
++add_library(qimageblitz${BLITZ_QT_SUFFIX} SHARED ${blitz_LIB_SRCS} ${blitz_LIB_EXTRA_SRCS})
+ 
+ if (Qt5Core_FOUND)
+-  target_link_libraries(qimageblitz Qt5::Core Qt5::Gui)
++  target_link_libraries(qimageblitz${BLITZ_QT_SUFFIX} Qt5::Core Qt5::Gui)
+ endif()
+ 
+-target_link_libraries(qimageblitz ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
++target_link_libraries(qimageblitz${BLITZ_QT_SUFFIX} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+ if (NOT CMAKE_COMPILER_IS_GNUCXX AND CMAKE_SYSTEM_NAME MATCHES SunOS)
+-    target_link_libraries(qimageblitz -lm -lsunmath)
++    target_link_libraries(qimageblitz${BLITZ_QT_SUFFIX} -lm -lsunmath)
+ endif (NOT CMAKE_COMPILER_IS_GNUCXX AND CMAKE_SYSTEM_NAME MATCHES SunOS)
+ 
+-set_target_properties(qimageblitz PROPERTIES
++set_target_properties(qimageblitz${BLITZ_QT_SUFFIX} PROPERTIES
+                             VERSION ${BLITZ_LIB_MAJOR_VERSION}.${BLITZ_LIB_MINOR_VERSION}.${BLITZ_LIB_PATCH_VERSION}
+                             SOVERSION ${BLITZ_LIB_MAJOR_VERSION}
+                             DEFINE_SYMBOL MAKE_QIMAGEBLITZ_LIB
+ )
+-install( TARGETS qimageblitz
++install( TARGETS qimageblitz${BLITZ_QT_SUFFIX}
+     RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+     LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+     ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+ )
+ 
+-install( FILES qimageblitz.h qimageblitz_export.h blitzcpu.h DESTINATION include/qimageblitz COMPONENT Devel )
++install( FILES qimageblitz.h qimageblitz_export.h blitzcpu.h
++         DESTINATION include/qimageblitz${BLITZ_QT_SUFFIX} COMPONENT Devel )
+ 
+ if(NOT WIN32)
+-  configure_file("qimageblitz.pc.cmake" "${CMAKE_CURRENT_BINARY_DIR}/qimageblitz.pc"
++  configure_file("qimageblitz.pc.cmake"
++                 "${CMAKE_CURRENT_BINARY_DIR}/qimageblitz${BLITZ_QT_SUFFIX}.pc"
+   @ONLY)
+ 
+-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qimageblitz.pc DESTINATION
++  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qimageblitz${BLITZ_QT_SUFFIX}.pc DESTINATION
+   ${LIB_INSTALL_DIR}/pkgconfig)
+ endif(NOT WIN32)
+ 
+--- a/blitz/qimageblitz.pc.cmake
++++ b/blitz/qimageblitz.pc.cmake
+@@ -6,6 +6,6 @@ includedir=@INCLUDE_INSTALL_DIR@
+ Name: Blitz
+ Description: Blitz image effect and filter library
+ Version: @BLITZ_LIB_VERSION_STRING@
+-Requires: QtGui
+-Libs: -L${libdir} -lqimageblitz
++Requires: Qt@BLITZ_QT_SUFFIX@Gui
++Libs: -L${libdir} -lqimageblitz@BLITZ_QT_SUFFIX@
+ Cflags: -I${includedir}
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,10 +15,12 @@ if (Qt5Core_FOUND)
+   find_package(Qt5Core REQUIRED)
+   find_package(Qt5Gui REQUIRED)
+   find_package(Qt5Widgets REQUIRED)
++  SET(BLITZ_QT_SUFFIX "5")
+ else()
+   find_package(Qt4 REQUIRED)
+   # properly set up compile flags (QT_DEBUG/QT_NO_DEBUG, ...)
+   include(${QT_USE_FILE})
++  SET(BLITZ_QT_SUFFIX "")
+ endif()
+ 
+ set(LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)" )
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -23,14 +23,15 @@ if(COMMAND cmake_policy)
+   cmake_policy(SET CMP0003 NEW)
+ endif(COMMAND cmake_policy)
+ 
+-add_executable(blitztest ${blitztest_SRCS})
++add_executable(blitztest${BLITZ_QT_SUFFIX} ${blitztest_SRCS})
+ 
+ if (Qt5Core_FOUND)
+-  target_link_libraries(blitztest Qt5::Core Qt5::Gui Qt5::Widgets)
++  target_link_libraries(blitztest${BLITZ_QT_SUFFIX} Qt5::Core Qt5::Gui
++                        Qt5::Widgets qimageblitz${BLITZ_QT_SUFFIX})
+ endif()
+ 
+-target_link_libraries(blitztest ${QT_QTCORE_LIBRARY}
+-${QT_QTGUI_LIBRARY} qimageblitz)
++target_link_libraries(blitztest${BLITZ_QT_SUFFIX} ${QT_QTCORE_LIBRARY}
++                      ${QT_QTGUI_LIBRARY} qimageblitz${BLITZ_QT_SUFFIX})
+ 
+-install(TARGETS blitztest DESTINATION ${BIN_INSTALL_DIR})
++install(TARGETS blitztest${BLITZ_QT_SUFFIX} DESTINATION ${BIN_INSTALL_DIR})
+ 

@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Mon Mar 25 23:24:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.6:
+  + Bug fixes, bug fixes everywhere! Also: documentation changes to
+    clarify what we do behind the veil of the various matrix
+    multiplication functions. Hopefully, this should help people
+    using Graphene especially when it comes to integration with
+    other libraries.
+  + Fix matrix multiplication when the result matrix is also one of
+    the operands.
+  + Fix check when converting a 4x4 matrix into an affine
+    transformation matrix.
+  + Fix interpolation between matrices with a perspective
+    component.
+  + Documentation fixes for matrix/matrix and matrix/vector
+    multiplication operators.
+- Changes from version 1.8.4:
+  + Mostly a bug fixing release, with an especially glaring bug fix
+    in the point transformation function of graphene_matrix_t that
+    was found thanks to GTK 4. Now the function is covered by the
+    test suite, so it should not regress.
+  + Another major fix is the ensuring that we have a description of
+    the SIMD types through introspection, which means that language
+    bindings can finally know how big every other structure using
+    them is. The SIMD API is still not available through
+    introspection, as it's a pure C convenience.
+  + Require Meson ≥ 0.48.0.
+  + Fix matrix/point transformation.
+  + Build fixes for MSVC.
+  + Introspection fixes for bool.
+  + Fix the InitOnce checks on Windows.
+  + Correctly parse SIMD types for introspection.
+  + Build fixes for the pkg-config file.
+  + Documentation fixes:
+    - Clarify matrix/vector/point multiplication.
+    - Clarify plane description.
+    - Clarify the units for the matrix skew factors.
+    - Document use of graphene-gobject with Meson.
+
+-------------------------------------------------------------------
+Thu Jun 14 19:37:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.2:
+  + The main change is that we've now disabled SIMD optimisations
+    on 32 bit Intel architectures; there aren't many of those left,
+    and in general compilers have been less than stellar when
+    supporting SIMD types on them. This is especially problematic
+    when it comes to using Graphene types inside other allocated
+    structures, where SIMD alignment rules break system allocators
+    on platforms like Windows. To avoid introducing weird bugs, if
+    you're on 32 bit IA, you're only going to have access to the
+    scalar SIMD implementation.
+
+-------------------------------------------------------------------
+Fri Feb 23 01:05:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.8.0:
+  + No new API, this cycle, but it's time to spin a new stable
+    release.
+  + The major news for this release is that we dropped the
+    Autotools build from the repository; Graphene is now built
+    exclusively with Meson.
+  + We've added various fixes to the build on macOS, in order to
+    maintain compatibility with the old Autotools build.
+  + The variables in the pkg-config file that expose the SIMD
+    functionality built inside Graphene have been updated, to
+    ensure that they can be easily consumed by other projects;
+    instead of a single string that needs to be split, we now
+    expose boolean variables for all SIMD implementations.
+  + We've also improved the ability to use Graphene as a Meson
+    sub-project; this allows Meson to check out, build, and depend
+    on Graphene when building complex projects, like GTK. This is
+    really useful inside CI pipelines, as it minimises the amount
+    of separate steps needed when setting up the build.
+- Update options passed to meson, following upstream changes:
+  gtk_doc=true, gobject_types=true, introspection=true,
+  gcc_vector=true, sse2=true, arm-neon=true, tests=true and
+  benchmarks=true.
+
+-------------------------------------------------------------------
+Thu Feb 22 23:34:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.6.2:
+  + Mostly fixes for the Meson build, to ensure it's a bit more
+    idiomatic and conforms to what newer versions of Meson expect
+    from a project.
+- Do a minor spec clean, use autosetup and license macros.
+- Stop exporting LANG=C.UTF-8, fixed upstream.
+- Stop exporting i586 conditional SUSE_ASNEEDED=0, fixed upstream.
+- Pass explict enable-gtk-doc=true, enable-gobject-types=true,
+  enable-introspection=true, enable-gcc-vector=true,
+  enable-sse2=true and enable-arm-neon=true to meson, ensure we
+  build the features we want.
+- Following the above, add gtk-doc BuildRequires and package the
+  now built documentation in devel subpackage.
+- Stop using sed to ensure we are using python3, fixed upstream.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+
+-------------------------------------------------------------------
+Wed Nov 29 12:22:26 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3:
+  + Update the shebang in src/identfilter.py using sed.
+  + Replace --identifier-filter-cmd=python in src/meson.build with
+    --identifier-filter-cmd=python3 (using sed).
+  + Add python3-base BuildRequires: needed to have the python3
+    interpreter present.
+
+-------------------------------------------------------------------
+Thu Aug 10 01:57:07 CEST 2017 - ro@suse.de
+
+- on i586, disable sse2 for the moment, otherwise the package
+  fails in the testsuite on the "box" test
+
+-------------------------------------------------------------------
+Sat Mar  4 08:47:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + The Meson dependency has been bumped to 0.37.0.
+  + Added graphene_frustum_equal() method.
+  + Dropped the -Denable-debug option for the Meson build;
+    debugging levels are handled through the --buildtype Meson
+    option; you can use release to disable all debugging code paths
+    when building Graphene.
+  + Graphene now automatically builds binaries for Windows (i686
+    and x86_64) using Appveyor; you can find the builds attached to
+    the release notes.
+
+-------------------------------------------------------------------
+Tue Feb 28 18:30:47 UTC 2017 - dimstar@opensuse.org
+
+- Add baselibs.conf: produce libgraphene-1_0-0-32bit, required by
+  gtk4.
+
+-------------------------------------------------------------------
+Wed Jan 11 13:19:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.5.4:
+  + For the time being and after requests from distributors, the
+    autotools build environment has been reinstated in Git, though
+    Meson is still the preferred build environment; I still expect
+    to drop the autotools build in the near future.
+  + Graphene now correctly identifies whether the platform has an
+    aligned memory allocator.
+  + Compatibility fixes for printing int64_t to terminal.
+  + Fixed the cross-references to GLib types in the API reference
+    build.
+  + Improve the builtin detection in the Meson build and the build
+    of Graphene under MingW.
+- Switch to github url, gnome url is currently broken.
+- Pass export LANG=C.UTF-8, workaround meson issue.
+- Drop sed call to workaround Mesa issue.
+
+-------------------------------------------------------------------
+Tue Dec  6 14:13:57 UTC 2016 - dimstar@opensuse.org
+
+- Use meson provided macros to build instead of carrying the long
+  meson command lines.
+
+-------------------------------------------------------------------
+Mon Nov 28 00:01:10 UTC 2016 - jengelh@inai.de
+
+- Trim description outside the main subpackage of interest;
+  reflow summaries.
+
+-------------------------------------------------------------------
+Thu Nov 24 14:38:15 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, version 1.5.2.
+

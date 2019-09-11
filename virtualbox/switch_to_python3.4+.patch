@@ -1,0 +1,178 @@
+Index: VirtualBox-6.0.2/configure
+===================================================================
+--- VirtualBox-6.0.2.orig/configure
++++ VirtualBox-6.0.2/configure
+@@ -1969,17 +1969,17 @@ extern "C" int main(void)
+ {
+   Py_Initialize();
+   printf("found version %s", PY_VERSION);
+-#if PY_VERSION_HEX >= 0x02060000
++#if PY_VERSION_HEX >= 0x03040000
+   printf(", OK.\n");
+   return 0;
+ #else
+-  printf(", expected version 2.6 or higher\n");
++  printf(", expected version 3.4 or higher\n");
+   return 1;
+ #endif
+ }
+ EOF
+   found=
+-  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m"
++  SUPPYTHONLIBS="python3.4 python3.4m python3.5 python3.5m python3.6m python3.6 python3.7m python3.7"
+   for p in $PYTHONDIR; do
+     for d in $SUPPYTHONLIBS; do
+       for b in lib/x86_64-linux-gnu lib/i386-linux-gnu lib64 lib/64 lib; do
+Index: VirtualBox-6.0.2/src/VBox/Installer/linux/routines.sh
+===================================================================
+--- VirtualBox-6.0.2.orig/src/VBox/Installer/linux/routines.sh
++++ VirtualBox-6.0.2/src/VBox/Installer/linux/routines.sh
+@@ -391,8 +391,8 @@ terminate_proc() {
+ maybe_run_python_bindings_installer() {
+     VBOX_INSTALL_PATH="${1}"
+ 
+-    PYTHON=python
+-    if [ "`python -c 'import sys
++    PYTHON=python3
++    if [ "`python3 -c 'import sys
+ if sys.version_info >= (2, 6):
+     print \"test\"' 2> /dev/null`" != "test" ]; then
+         echo  1>&2 "Python 2.6 or later not available, skipping bindings installation."
+Index: VirtualBox-6.0.2/src/bldprogs/scm.cpp
+===================================================================
+--- VirtualBox-6.0.2.orig/src/bldprogs/scm.cpp
++++ VirtualBox-6.0.2/src/bldprogs/scm.cpp
+@@ -2206,7 +2206,7 @@ static int scmProcessFileInner(PSCMRWSTA
+                             pszTreatAs = "shell";
+                         else if (   (cchFirst >= 15 && strncmp(pchFirst, "/usr/bin/python", 15) == 0)
+                                  || (cchFirst >= 19 && strncmp(pchFirst, "/usr/bin/env python", 19) == 0) )
+-                            pszTreatAs = "python";
++                            pszTreatAs = "python3";
+                         else if (   (cchFirst >= 13 && strncmp(pchFirst, "/usr/bin/perl", 13) == 0)
+                                  || (cchFirst >= 17 && strncmp(pchFirst, "/usr/bin/env perl", 17) == 0) )
+                             pszTreatAs = "perl";
+Index: VirtualBox-6.0.2/src/libs/libxml2-2.9.4/configure
+===================================================================
+--- VirtualBox-6.0.2.orig/src/libs/libxml2-2.9.4/configure
++++ VirtualBox-6.0.2/src/libs/libxml2-2.9.4/configure
+@@ -15153,10 +15153,10 @@ PYTHON_SITE_PACKAGES=
+ PYTHON_TESTS=
+ pythondir=
+ if test "$with_python" != "no" ; then
+-    if test -x "$with_python/bin/python"
++    if test -x "$with_python/bin/python3"
+     then
+-        echo Found python in $with_python/bin/python
+-        PYTHON="$with_python/bin/python"
++        echo Found python in $with_python/bin/python3
++        PYTHON="$with_python/bin/python3"
+     else
+         if test -x "$with_python/python.exe"
+         then
+@@ -15174,7 +15174,8 @@ if test "$with_python" != "no" ; then
+                     with_python=`$PYTHON -c "import sys; print(sys.exec_prefix)"`
+                 else
+                     # Extract the first word of "python python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5", so it can be a program name with args.
+-set dummy python python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5; ac_word=$2
++PYTHON=python3
++set dummy python3 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+ if ${ac_cv_path_PYTHON+:} false; then :
+Index: VirtualBox-6.0.2/src/VBox/ValidationKit/testboxscript/setup.sh
+===================================================================
+--- VirtualBox-6.0.2.orig/src/VBox/ValidationKit/testboxscript/setup.sh
++++ VirtualBox-6.0.2/src/VBox/ValidationKit/testboxscript/setup.sh
+@@ -652,7 +652,7 @@ import sys;\
+ x = sys.version_info[0] == 2 and (sys.version_info[1] >= 6 or (sys.version_info[1] == 5 and sys.version_info[2] >= 1));\
+ sys.exit(not x);\
+ ";
+-    for python in python2.7 python2.6 python2.5 python;
++    for python in python3.6 python2.7 python2.6 python2.5 python;
+     do
+         python=`which ${python} 2> /dev/null`
+         if [ -n "${python}" -a -x "${python}" ]; then
+Index: VirtualBox-6.0.2/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+===================================================================
+--- VirtualBox-6.0.2.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
++++ VirtualBox-6.0.2/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+@@ -20,7 +20,7 @@
+ %define %PYTHON% 1
+ %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
+ %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$
+-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
++%{!?python_sitelib: %define python_sitelib python3 -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+ 
+ Summary:   Oracle VM VirtualBox
+ Name:      %NAME%
+@@ -89,7 +89,7 @@ install -m 755 -d $RPM_BUILD_ROOT/usr/sh
+ %if %{?with_python:1}%{!?with_python:0}
+ (export VBOX_INSTALL_PATH=/usr/lib/virtualbox && \
+   cd ./sdk/installer && \
+-  %{__python} ./vboxapisetup.py install --prefix %{_prefix} --root $RPM_BUILD_ROOT)
++  %{python3} ./vboxapisetup.py install --prefix %{_prefix} --root $RPM_BUILD_ROOT)
+ %endif
+ rm -rf sdk/installer
+ mv nls $RPM_BUILD_ROOT/usr/share/virtualbox
+Index: VirtualBox-6.0.2/src/libs/libxml2-2.9.4/libxml.spec.in
+===================================================================
+--- VirtualBox-6.0.2.orig/src/libs/libxml2-2.9.4/libxml.spec.in
++++ VirtualBox-6.0.2/src/libs/libxml2-2.9.4/libxml.spec.in
+@@ -101,11 +101,11 @@ rm -fr %{buildroot}
+ 
+ make install DESTDIR=%{buildroot}
+ 
+-%if 0%{?with_python3}
++%if 0%{?with_python}
+ make clean
+-%configure --with-python=%{__python3}
++%configure --with-python=python3
+ make install DESTDIR=%{buildroot}
+-%endif # with_python3
++%endif # with_python
+ 
+ 
+ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+Index: VirtualBox-6.0.2/src/libs/libxml2-2.9.4/libxml2.spec
+===================================================================
+--- VirtualBox-6.0.2.orig/src/libs/libxml2-2.9.4/libxml2.spec
++++ VirtualBox-6.0.2/src/libs/libxml2-2.9.4/libxml2.spec
+@@ -103,7 +103,7 @@ make install DESTDIR=%{buildroot}
+ 
+ %if 0%{?with_python3}
+ make clean
+-%configure --with-python=%{__python3}
++%configure --with-python=python3
+ make install DESTDIR=%{buildroot}
+ %endif # with_python3
+ 
+Index: VirtualBox-6.0.2/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+===================================================================
+--- VirtualBox-6.0.2.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
++++ VirtualBox-6.0.2/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+@@ -439,6 +439,8 @@ char *PyTraceback_AsString(PyObject *exc
+ 	{ // a temp scope so I can use temp locals.
+ #if PY_MAJOR_VERSION <= 2
+ 	char *tempResult = PyString_AsString(obResult);
++#elif PY_MINOR_VERSION <= 6
++	char *tempResult = PyUnicode_AsUTF8(obResult);
+ #else
+     /* PyUnicode_AsUTF8() is const char * as of Python 3.7, char * earlier. */
+ 	const char *tempResult = (const char *)PyUnicode_AsUTF8(obResult);
+Index: VirtualBox-6.0.2/src/libs/xpcom18a4/python/src/PyGBase.cpp
+===================================================================
+--- VirtualBox-6.0.2.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
++++ VirtualBox-6.0.2/src/libs/xpcom18a4/python/src/PyGBase.cpp
+@@ -183,7 +183,11 @@ PyG_Base::~PyG_Base()
+ // Get the correct interface pointer for this object given the IID.
+ void *PyG_Base::ThisAsIID( const nsIID &iid )
+ {
+-	if (this==NULL) return NULL;
++#if PY_MINOR_VERSION <= 6
++	if (!this) return NULL;
++#else
++	if (!this) return NULL;
++#endif
+ 	if (iid.Equals(NS_GET_IID(nsISupports)))
+ 		return (nsISupports *)(nsIInternalPython *)this;
+ 	if (iid.Equals(NS_GET_IID(nsISupportsWeakReference)))

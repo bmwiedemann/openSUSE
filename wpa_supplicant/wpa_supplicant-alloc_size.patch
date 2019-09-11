@@ -1,0 +1,20 @@
+--- wpa_supplicant-2.4.orig/src/utils/os.h
++++ wpa_supplicant-2.4/src/utils/os.h
+@@ -253,7 +253,7 @@ int os_file_exists(const char *fname);
+  *
+  * Caller is responsible for freeing the returned buffer with os_free().
+  */
+-void * os_zalloc(size_t size);
++void * os_zalloc(size_t size) __attribute((malloc, alloc_size(1)));
+ 
+ /**
+  * os_calloc - Allocate and zero memory for an array
+@@ -267,6 +267,8 @@ void * os_zalloc(size_t size);
+  *
+  * Caller is responsible for freeing the returned buffer with os_free().
+  */
++
++__attribute((malloc, alloc_size(1,2)))
+ static inline void * os_calloc(size_t nmemb, size_t size)
+ {
+ 	if (size && nmemb > (~(size_t) 0) / size)

@@ -1,0 +1,77 @@
+--- groovy-core-GROOVY_1_8_9/build.xml	2013-02-15 09:42:29.000000000 +0100
++++ groovy-core-GROOVY_1_8_9/build.xml	2018-12-18 11:19:59.976323534 +0100
+@@ -92,7 +92,7 @@
+                 srcdir="config/ant/src"
+                 destdir="${targetDirectory}/tools"
+                 includeantruntime="false"
+-                source="1.5" target="1.5" fork="true" classpathref="compilePath"/>
++                source="1.6" target="1.6" fork="true" classpathref="compilePath"/>
+         <java classpath="${targetDirectory}/tools"
+               classpathref="compilePath"
+               classname="org.codehaus.groovy.ExceptionUtilsGenerator">
+@@ -176,7 +176,7 @@
+         <mkdir dir="${mainClassesDirectory}/META-INF"/>
+ 
+         <javac srcdir="${mainSourcePath}" includeantruntime="false" destdir="${mainClassesDirectory}"
+-               deprecation="on" debug="yes" source="1.5" target="1.5" fork="true" classpathref="compilePath">
++               deprecation="on" debug="yes" source="1.6" target="1.6" fork="true" classpathref="compilePath">
+             <exclude name="groovy/ui/**/*.java"/>
+         </javac>
+         <java classname="org.codehaus.groovy.tools.DgmConverter"
+@@ -200,7 +200,7 @@
+                 <pathelement path="${mainClassesDirectory}"/>
+                 <path refid="compilePath"/>
+             </classpath>
+-            <javac deprecation="on" debug="yes" source="1.5" target="1.5"/>
++            <javac deprecation="on" debug="yes" source="1.6" target="1.6"/>
+         </groovyc>
+     </target>
+ 
+@@ -248,7 +248,7 @@
+                 <path refid="groovyMainClasses"/>
+                 <path refid="testLibPath"/>
+             </classpath>
+-            <javac source="1.5" target="1.5" nowarn="on"/>
++            <javac source="1.6" target="1.6" nowarn="on"/>
+         </groovyc>
+     </target>
+ 
+@@ -264,8 +264,7 @@
+                 <path refid="groovyMainClasses"/>
+                 <path refid="testLibPath"/>
+             </classpath>
+-            <!-- currently not needed, add in if/when required -->
+-            <!--<javac source="1.5" target="1.5" nowarn="on"/>-->
++            <javac source="1.6" target="1.6" nowarn="on"/>
+         </groovyc>
+     </target>
+ 
+@@ -287,8 +286,8 @@
+         </groovyc>
+         <javac srcdir="${examplesSourceDirectory}"
+                destdir="${examplesClassesDirectory}"
+-               source="1.5"
+-               target="1.5"
++               source="1.6"
++               target="1.6"
+                fork="true">
+             <classpath>
+                 <pathelement path="${mainClassesDirectory}"/>
+@@ -308,7 +307,7 @@
+                 <path refid="compilePath"/>
+                 <path refid="examplesPath"/>
+             </classpath>
+-            <javac source="1.5" target="1.5"/>
++            <javac source="1.6" target="1.6"/>
+         </groovyc>
+ 
+     </target>
+@@ -777,7 +776,7 @@
+             unless="_skipDocs_" description="Create the javadoc documentation.">
+         <javadoc destdir="${docsDirectory}/api" author="true" version="true"
+                  windowtitle="${title}" doctitle="${title}"
+-                 encoding="ISO-8859-1" useexternalfile="true" source="1.5"
++                 encoding="ISO-8859-1" useexternalfile="true" source="1.6"
+                  footer="${docFooter}"
+                  overview="src/main/overviewj.html"
+                  maxmemory="${javaDoc_mx}"

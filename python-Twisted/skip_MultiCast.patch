@@ -1,0 +1,10 @@
+--- a/src/twisted/test/test_udp.py
++++ b/src/twisted/test/test_udp.py
+@@ -503,6 +503,7 @@ class ReactorShutdownInteractionTests(un
+ class MulticastTests(unittest.TestCase):
+ 
+     def setUp(self):
++        raise unittest.SkipTest("Multicast networking doesn't work with OBS")
+         self.server = Server()
+         self.client = Client()
+         # multicast won't work if we listen over loopback, apparently

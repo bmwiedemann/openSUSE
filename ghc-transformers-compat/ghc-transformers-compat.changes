@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sun May 12 02:02:22 UTC 2019 - psimons@suse.com
+
+- Update transformers-compat to version 0.6.5.
+  0.6.5 [2019.05.11]
+  ------------------
+  * Ensure that the backported `MonadFail` instance for `ExceptT` is available
+    when built against `transformers-0.4.*`.
+
+-------------------------------------------------------------------
+Wed Apr  3 02:01:41 UTC 2019 - psimons@suse.com
+
+- Update transformers-compat to version 0.6.4.
+  0.6.4 [2019.04.01]
+  ------------------
+  * Use more conservative CPP to guard the backported `MonadFix` instance for
+    `ListT`.
+
+-------------------------------------------------------------------
+Tue Apr  2 07:14:17 UTC 2019 - psimons@suse.com
+
+- Update transformers-compat to version 0.6.3.
+  0.6.3 [2019.04.01]
+  ------------------
+  * Backport changes from `transformers-0.5.6.*`:
+    * Backport the `MonadFix` instance for `ListT` in
+      `Control.Monad.Trans.Instances`.
+    * Generalize the type of `except` in `Control.Monad.Trans.Except`.
+  * Backport `MonadFail` instances for `AccumT`, `Reverse`, and `SelectT` on
+    pre-8.0 versions of GHC by depending on the `fail` package if necessary.
+  * Backport `MonadFail` instances for monad transformer types in
+    `Control.Monad.Trans.Instances`.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:09 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:45 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update transformers-compat to version 0.6.2.
+  * `transformers-compat` now uses automatic flags instead of manual ones.
+    This has a number of benefits:
+
+    * There is no need for making several simultaneous releases to support each
+      flag combination.
+    * As a result, the `cabal-install` constraint solver should have a much
+      easier time figuring out install-plans involving `transformers-compat`.
+
+    Due to old `cabal-install` bugs, `cabal-install-1.16` and older may have a
+    harder time installing this package, so it is recommended that you use
+    `cabal-install-1.18` or later. (Or, if you must use `cabal-install-1.16` or
+    older, installing `transformers-compat` with the appropriate flags should
+    help.)
+  * Fix an oversight in which the `Control.Monad.Trans.Accum` and
+    `Control.Monad.Trans.Select` modules were not backported when built with the
+    `-ffour` flag.
+  * Introduce the `Data.Functor.Classes.Generic` module, which provides functions that can generically implement methods in the `Eq1`, `Ord1`, `Read1`, and `Show1` classes (without the usual boilerplate involved).
+  * Introduce the `generic-deriving` flag. When enabled, `transformers-compat` will depend on the `generic-deriving` library on older versions of GHC to backport `GHC.Generics` support for `Generic` instances and the machinery in `Data.Functor.Classes.Generic`.
+  * Some instances were present in `Data.Functor.Sum` but not in `Control.Monad.Trans.Instances` (e.g., the `Generic`, `Typeable`, and `Data` instances for `Sum`). This has been fixed.
+  * Backport changes from `transformers-0.5.5`:
+    * Backport the `Semigroup` instance for `Constant`
+    * Add `mapSelect` and `mapSelectT`
+    * Define `selectToContT` (and deprecate `selectToCont` in favor of that)
+    * Define some explicit `(*>)` definitions to avoid space leaks
+  * Backport changes from `transformers-0.5.4` (i.e., add `Bifoldable` and `Bitraversable` instances for `Data.Functor.Constant`)
+  * Backport changes from `transformers-0.5.3`:
+    * Backport the `Control.Monad.Trans.Accum` and `Control.Monad.Trans.Select` modules
+    * Backport the `eitherToErrors` and `elimLift` functions to `Control.Applicative.Lift`
+    * Backport `Bits`, `FiniteBits`, `IsString`, `Num`, `Real`, `Integral`, `Fractional`, `Floating`, `RealFrac`, and `RealFloat` instances for `Data.Functor.Identity`
+    * Backport `Monad`, `MonadFail`, and `MonadPlus` instances for `Data.Functor.Reverse`
+    * Backport `Eq1`, `Ord1`, `Read1`, and `Show1` instances for `Data.Proxy`
+  * Backport changes from `transformers-0.5.2` (i.e., add more `INLINE` annotations)
+  * Backport changes from `transformers-0.5.1` (i.e., add `Bounded`, `Enum`, `Ix`, and `Storable` instances for `Identity`)
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:34:32 UTC 2016 - psimons@suse.com
+
+- Update to version 0.5.1.4 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:05:56 UTC 2016 - psimons@suse.com
+
+- Update to version 0.4.0.4 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed May 13 06:24:16 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.4.0.4
+
+-------------------------------------------------------------------
+Tue Apr 21 12:37:50 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

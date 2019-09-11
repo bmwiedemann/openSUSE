@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Thu Jun 13 06:31:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Co-own %{_datadir}/gdb: so far we just relied on gcc9 in
+  the build stack to coincidentially own this directory for us, but
+  gcc9 split the gdb pretty printers out in a separate sub-package.
+
+-------------------------------------------------------------------
+Wed Feb  1 13:14:43 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Apr 15 07:54:39 UTC 2016 - dimstar@opensuse.org
+
+- Do not BuildRequire gdb: there is no need to be ordered behind
+  gdb in the build tree. Configure does check for the presence of
+  the gdb binary, but the detected value is not used in the entire
+  source tree.
+
+-------------------------------------------------------------------
+Tue Jan 12 09:14:06 UTC 2016 - fstrba@suse.com
+
+- Version bump to 0.0.4:
+  * Fix possible crash in raw generators for unbalanced open/close
+    calls.
+  * Fix build in C++11 mode.
+  * Fix gdb pretty printers and make them compatible with Python 3.
+  * Fix RVNGString::Iter::last(), which only worked correctly for
+    strings containing only ASCII characters.
+  * Document the difference between RVNGString::len() and
+    RVNGString::size().
+  * Considerably improve performance of RVNGString iterator (a
+    crude measurement shows at least 45% improvement).
+
+-------------------------------------------------------------------
+Sat Dec 26 12:56:57 UTC 2015 - fstrba@suse.com
+
+- Version bump to 0.0.3:
+  * SVG generator: fix the center of rotation.
+  * Remove bashism in configure (libwpd#5).
+  * Fix some syntax errors in documentation.
+  * Text generator: handle footnotes and endnotes.
+  * Improve performance of RVNGPropertyListVector::append() and
+    RVNGBinaryData::append().
+  * Fix several crashes or hangs when reading broken OLE2 or Zip
+    files, found with the help of american-fuzzy-lop.
+  * Fix build with boost 1.59 (libwpd#6).
+  * Handle table:number-columns-repeated and
+    table:number-rows-repeated in all spreadsheet generators.
+  * CSV generator: handle rows with uneven number of columns
+    correctly.
+  * CSV generator: ignore empty rows at the end.
+  * Several minor improvements and fixes.
+
+-------------------------------------------------------------------
+Wed Nov 11 11:15:58 UTC 2015 - idonmez@suse.com
+
+- Fix compilation with boost 1.59 
+
+-------------------------------------------------------------------
+Fri Jan  2 13:13:55 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.0.2:
+  - Better handling of invalid input in RVNGDirectoryStream functions.
+  - Add documentation for RVNGDirectoryStream.
+  - Add text:outline-level to allowed paragraph properties. This is to allow
+    import libraries to handle headings properly.
+  - Properly handle units in all generators, instead of expecting everything is
+    in inches.
+  - Implement open/closeGroup for RVNGSVGDrawingGenerator.
+  - Improve handling of layers in RVNGSVGPresentationGenerator.
+  - Handle master pages in RVNGSVGDrawingGenerator and
+    RVNGSVGPresentationGenerator.
+  - Simple handling of tables in RVNGSVGDrawingGenerator and
+    RVNGSVGPresentationGenerator: just create a text box for each cell.
+  - Fix return value of RVNGStringStream::seek when seeking to end.
+  - Fix some warnings found by Coverity.
+  - Use symbol visibility on Linux. The library only exports public functions
+    now.
+  - Fix several crashes or hangs when reading broken OLE2 or Zip files, found
+    with the help of american-fuzzy-lop.
+  - Add fo:language, fo:country and fo:script to allowed span properties.
+  - Handle headings in RVNGHTMLTextGenerator
+
+-------------------------------------------------------------------
+Tue Jul  1 14:16:51 UTC 2014 - tchvatal@suse.com
+
+- Add gdb dep to provide /usr/share/gdb directory
+
+-------------------------------------------------------------------
+Tue Jul  1 14:12:01 UTC 2014 - tchvatal@suse.com
+
+- Disable silent rules
+
+-------------------------------------------------------------------
+Tue Jul  1 14:08:50 UTC 2014 - tchvatal@suse.com
+
+- Add group
+
+-------------------------------------------------------------------
+Tue Jun  3 07:07:46 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 0.0.1 release
+  * Fix license headers in some files.
+  * Export API symbols on windows.
+  * Really allow to disable build without streams and generators.
+  * Detect CppUnit in configure already.
+  * Drop dependency of librevenge-stream to Boost.Filesystem.
+  * Do not throw exception when constructing RVNGDirectoryStream
+    for an unexistent directory. Instead, create a valid dummy
+    stream that will respond negatively to all operations (for
+    consistency with RVNGFileStream).
+  * Fix return type of RVNGBinaryData::getDataStream(). This change
+    does affect neither API nor ABI.
+  * Add some documentation for RVNGBinaryData.
+  * Create a Coverity model covering the majority of librevenge data
+    types, for the benefit of projects that use librevenge.
+  * Several minor improvements and fixes.
+- Remove upstreamed patches:
+  * 0001-fix-type-sizes-for-CPPUNIT_ASSERT_EQUAL.patch
+  * 0001-fix-license-headers-for-gdb-printers.patch
+
+-------------------------------------------------------------------
+Mon May 26 08:08:57 UTC 2014 - fstrba@suse.com
+
+- Initial package for librevenge
+- 0001-fix-type-sizes-for-CPPUNIT_ASSERT_EQUAL.patch
+  * fix make check on some architectures.
+- 0001-fix-license-headers-for-gdb-printers.patch
+  * pretty printers are licensed MPL-2.0 by their author.
+

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sun Apr 15 09:16:11 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.17.0 (no changelog supplied)
+- Refreshed dxflib-versioning.diff
+- Switched build to Qt5
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Dec  8 13:40:56 UTC 2015 - jengelh@inai.de
+
+- Add dxflib-versioning.diff. Turns out our shlib build is custom,
+  and needs to be tagged appropriately.
+
+-------------------------------------------------------------------
+Tue Dec  8 12:17:04 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.12.2
+  * No changelog available
+
+-------------------------------------------------------------------
+Sat Mar 21 10:30:15 UTC 2015 - jengelh@inai.de
+
+- Ensure appropriate symlinking between shared library and its
+  SONAME symlink(s) [bnc#923494]
+
+-------------------------------------------------------------------
+Tue Jan  6 21:51:34 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.7.5
+* No changelog available
+- Remove obsolete patches: dxflib-automake.diff, dxflib-type92.diff
+
+-------------------------------------------------------------------
+Wed Dec 19 01:11:39 UTC 2012 - jengelh@inai.de
+
+- Run the spec formatter and update homepage URL
+- Replace broken %make_install (SLE, others)
+
+-------------------------------------------------------------------
+Mon Oct 17 23:18:32 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

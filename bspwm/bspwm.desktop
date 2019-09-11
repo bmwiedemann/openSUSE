@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=bspwm
+Comment=Binary space partitioning window manager
+Exec=bspwm
+X-LightDM-DesktopName=GNOME
+Type=Xsession

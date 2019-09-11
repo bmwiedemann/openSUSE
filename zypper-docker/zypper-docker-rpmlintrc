@@ -1,0 +1,4 @@
+addFilter (".*W: files-duplicate /usr/share/man/man1/zypper-docker-lp.1.gz /usr/share/man/man1/zypper-docker-list-patches.1.gz")
+addFilter (".*W: files-duplicate /usr/share/man/man1/zypper-docker-up.1.gz /usr/share/man/man1/zypper-docker-update.1.gz")
+addFilter (".*W: files-duplicate /usr/share/man/man1/zypper-docker-patch-check.1.gz /usr/share/man/man1/zypper-docker-pchk.1.gz")
+addFilter (".*W: files-duplicate /usr/share/man/man1/zypper-docker-list-updates.1.gz /usr/share/man/man1/zypper-docker-lu.1.gz")

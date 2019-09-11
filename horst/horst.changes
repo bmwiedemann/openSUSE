@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Nov 16 14:43:09 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- horst-ncurses6w.patch: Must call setlocale too. 
+
+-------------------------------------------------------------------
+Fri Nov 16 13:28:49 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- horst-ncurses6w.patch: switch to ncurses6w. 
+- Only modify __DATE__ and __TIME__ in sources if no 
+  SOURCE_DATE_EPOCH is set in the environment.
+
+-------------------------------------------------------------------
+Mon Apr  2 21:07:44 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri Mar 30 11:33:59 UTC 2018 - mardnh@gmx.de
+
+- Fix build for Leap15 and Tumbleweed
+
+-------------------------------------------------------------------
+Mon Feb  5 15:06:50 UTC 2018 - astieger@suse.com
+
+- update to 5.1:
+  * Fix time issues
+
+-------------------------------------------------------------------
+Sat Jul 30 08:36:37 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 5.0
+

@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Tue Jun 11 13:00:00 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Build xmobar with 'datezone' extension enabled.
+
+-------------------------------------------------------------------
+Sun Mar 17 03:01:54 UTC 2019 - psimons@suse.com
+
+- Update xmobar to version 0.29.5.
+  ## Version 0.29.5 (March, 2019)
+
+  _Bug fixes_
+
+    - Honour command line flags when starting xmobar without any
+      configuration file (issue #375).
+    - `Alsa` plugin: restart `alsactl` if it quits, e.g. because of a
+      sleep/awake cycle (issue #376).
+    - `Weather` using the new HTTPS URL, which requires http-conduit as
+      a dependency (issue #378).
+    - `MarqueePipeReader` exported at the API level (issue #381).
+
+-------------------------------------------------------------------
+Tue Dec 25 03:01:32 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.29.4.
+  ## Version 0.29.4 (December, 2018)
+
+  Upgrade to alsa-mixer 0.3.0.  See issues #372 and #373.
+
+-------------------------------------------------------------------
+Tue Dec 11 03:01:47 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.29.3.
+  ## Version 0.29.3 (December, 2018)
+
+  _Bug fixes_
+
+    - Upper bound for alsa_mixer (see [issue #372])
+
+  [issue #372]: https://github.com/jaor/xmobar/issues/372
+
+-------------------------------------------------------------------
+Sun Dec  9 03:01:29 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.29.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.29.2/src/changelog.md
+
+-------------------------------------------------------------------
+Thu Dec  6 03:01:54 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.29.1.
+  ## Version 0.29.1 (December, 2018)
+
+  _Bug fixes_
+
+    - Honour command line flags (fixes [issue #370])
+    - Expose Cmd and CmdX in Xmobar interface
+
+  [issue #370]: https://github.com/jaor/xmobar/issues/370
+
+-------------------------------------------------------------------
+Sat Dec  1 08:41:36 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.29.
+
+  - New `Alsa` monitor for volume display that doesn't use polling, by
+    Daniel Schüssler.
+  - `ThermalZone` retries reading missing files, thanks to Reed Koser.
+  - `TopProc` ignores kernel threads (see also [issue #369]).
+  - `Wireless` simple autodetection of wirless interface name (if set
+    to "").
+  - Experimental support for using xmobar as a library, so that
+    configurations are in fact Haskell programs a la Xmonad (beta
+    stage, with help from Pavan Rikhi). Traditional config files are
+    still (and will continue to be) supported.
+  - Correctly parsing configuration options `mwClass` and `wmName`.
+
+  [issue #369]: https://github.com/jaor/xmobar/issues/369
+
+-------------------------------------------------------------------
+Sun Oct  7 02:01:15 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.28.1.
+
+  - Dependencies updated to work with GHC 8.6, avoiding [issue #354].
+
+  [issue #354]: https://github.com/jaor/xmobar/issues/354
+
+-------------------------------------------------------------------
+Wed Aug 22 09:18:05 UTC 2018 - psimons@suse.com
+
+- Update xmobar to version 0.28.
+  ## Version 0.28
+
+  _New features_
+
+    - New `ComX`, which runs a command with custom exit error message.
+
+  _Bug fixes_
+
+    - hinotify version upgraded ([issue #356])
+
+  [issue #356]: https://github.com/jaor/xmobar/issues/356
+
+-------------------------------------------------------------------
+Tue Jul 31 14:10:05 UTC 2018 - psimons@suse.com
+
+- Add xmobar at version 0.27.

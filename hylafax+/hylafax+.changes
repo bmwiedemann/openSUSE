@@ -1,0 +1,468 @@
+-------------------------------------------------------------------
+Thu Jul 18 12:45:43 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 7.0.0
+* add LDAP features for compatibility with ActiveDirectory (25 Mar-1 Apr 2019)
+* fix recovery after SSL Fax "accept failure" (18 Mar 2019)
+* add TextFormat overstrike option and disable by default (6 Feb 2019)
+* fix the page size of cover sheets returned via notify (8 Jan 2019)
+* fix or silence numerous compiler warnings (19, 22, 28 Dec 2018)
+* fix pagehandling updating after a proxy has been used (7-8 Dec 2018)
+* add faxmail stderr output of RFC2047 decoding results (5 Dec 2018)
+* fix faxmail handling of headers encoded with UTF-8 (4 Dec 2018)
+* fix faxmail handling of base64-encoded text parts (4 Dec 2018)
+* add SSL Fax support (9-26, 29 Nov; 11, 18, 25 Dec 2018; 2, 7, 23 Jan 2019)
+
+-------------------------------------------------------------------
+Wed Jan 23 00:45:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce boilerplate generated from %service_* by calling it just
+  once.
+
+-------------------------------------------------------------------
+Fri Jan 18 14:10:13 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- faxgetty@ service removed from %pre section, as it is only a placeholder
+
+-------------------------------------------------------------------
+Wed Jan 16 17:11:37 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Dependency on hylafax-hfaxd for timers added
+
+-------------------------------------------------------------------
+Tue Jan  8 19:53:15 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- migrate from cron to systemd timers (boo#1115442)
+
+-------------------------------------------------------------------
+Tue Nov 27 21:18:13 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- move textfmt to client package (used by sendfax only)
+
+-------------------------------------------------------------------
+Wed Nov 14 12:33:37 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use tabs in spec
+
+-------------------------------------------------------------------
+Mon Nov 12 15:50:24 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- boo#1115532 JBIG-in-tiff conversion added 
+  (Build Requirement tiff, libtiff)
+
+-------------------------------------------------------------------
+Wed Sep 19 13:38:15 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add systemd hylafax.target
+
+-------------------------------------------------------------------
+Tue Sep 18 18:31:26 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 5.6.1:
+  * CVE-2018-17141: fixes multiple JPEG vulnerabilities affecting
+    fax page reception in JPEG format. Specially crafted input may
+    have allowed remote execution of arbitrary code (boo#1109084)
+
+-------------------------------------------------------------------
+Mon Sep 17 10:15:34 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- use systemd template unit file for hylafax-faxgetty services
+- fix services
+
+-------------------------------------------------------------------
+Sat Aug 25 19:03:25 UTC 2018 - jengelh@inai.de
+
+- Trim "enterprise" nonsense marketing.
+
+-------------------------------------------------------------------
+Wed Aug 15 05:47:30 UTC 2018 - axel.braun@gmx.de
+
+- version 5.6.0
+
+* notification.diff removed (part of 5.6.0 now)
+* some adjustments to assist AIX 6.1 builds (29 Jun 2018)
+* initial support for systemd in faxsetup (29 Jun 2018)
+* fix RFC2047 encoding by notify (27 Jun, 3 Jul 2018)
+* add jobcontrol PageSize feature (27 Jun 2018)
+* fix various compiler warnings (27 Jun 2018)
+* fix build on musl-based distribution (27 Jun 2018)
+* don't wait forever after +FRH:3 (18 Jun 2018)
+* add -A and -B options to tagtest (22 Feb 2018)
+* make tagtest use the TSI and CallerID data, if available (21 Feb 2018)
+* make tagtest use the date from the TIFF tags, if available,
+  instead of "now" (20 Feb 2018)
+* pass Content-Type name and Content-Disposition filename
+  information to faxmail MIMEHandlers (15 Jan 2018)
+* fix faxmail transition between a message and external types (15 Jan 2018)
+* fix warning for major and minor macros move to sysmacros.h (19 Dec 2017)
+* avoid pagehandling from introducing some unnecessary EOM signals (15 Dec 2017)
+* improve proxy connection error handling and logging (5 Dec 2017)
+* fix for reproducible builds (11 Sep 2017)
+* fix quote escaping in client apps (5 Sep 2017)
+* treat callingnumber  as null (25, 31 Aug 2017)
+* add initial ModemGroup limits feature (24 Aug 2017)
+* add CLEANFAXDATA and BADFAXLINES TIFF tags for ECM receptions (10 Aug 2017)
+* pass the user's uid onto the session log file for sent faxes (25 Jul 2017)
+* improve job waits to minimize triggers (30 May 2017)
+* increase FIFO read size and add logging information (25 May 2017)
+* add ProxyTaglineFormat and ProxyTSI features (13 Mar 2017)
+ 
+-------------------------------------------------------------------
+Sun Jun 17 20:04:35 UTC 2018 - axel.braun@gmx.de
+
+- boo#1091476: hfaxd needs to run as root
+  otherwise error message '550 Cannot set privileges'
+
+-------------------------------------------------------------------
+Wed May  9 11:28:36 UTC 2018 - axel.braun@gmx.de
+
+- boo#1091476: faxq must always run as real user root
+
+-------------------------------------------------------------------
+Sun Mar  4 12:19:04 UTC 2018 - jengelh@inai.de
+
+- Remove uucp user creation for pre-1500: aaa_base provides
+  this user/group already.
+
+-------------------------------------------------------------------
+Wed Feb 21 20:49:11 UTC 2018 - axel.braun@gmx.de
+
+- create user/group uucp
+  adapt services to use uucp
+  boo#1081899
+
+-------------------------------------------------------------------
+Sat Nov  4 15:42:28 UTC 2017 - axel.braun@gmx.de
+
+- bnc1052195 localized Email notification chops german Umlauts
+  correction in bin/notify common_functions dictionary
+  * notification.diff
+
+-------------------------------------------------------------------
+Fri Jul 21 13:54:38 UTC 2017 - tchvatal@suse.com
+
+- Drop hylafax+_rh.init
+- Drop conditionals for distros we never build against in OBS
+- Switch to LCMS2
+- Add jbikgit-devel dependency so it is detected by configure
+
+-------------------------------------------------------------------
+Mon Apr  3 11:40:04 UTC 2017 - axel.braun@gmx.de
+
+- hylafax+ 5.5.9
+* fix a handful of compiler warnings for gcc v7 (13, 17 Feb 2017)
+* fix job rescheduling if the proxy connection attempt fails (13 Jul 2016)
+* increase the maximum number of triggers from 1024 to 4096 (13 Jul 2016)
+* eliminate faxq job priority "bounding" (13 Jul 2016)
+* attempt to detect premature non-ECM Phase C carrier loss (15 Jun 2016)
+* add missing recvq error message indications (6 May 2016)
+* fix tagtest support for multi-strip images (25 Mar 2016)
+* enhance textfmt wrapping to occur on word boundaries (24 Feb 2016)
+
+-------------------------------------------------------------------
+Sun Apr  3 10:39:42 UTC 2016 - axel.braun@gmx.de
+
+- hylafax+ 5.5.8
+* stop using mktemp() (5 Feb 2016)
+* fix LDAP authentication broken in 5.5.4 (24-26 Jan 2016)
+* reset senderinfo properly when receiving faxes (22 Jan 2016)
+* cope with V.21 HDLC carrier loss following +FRH:3 better (22, 26 Jan 2016)
+* increase the time Class1SwitchingCmd will wait for a response (14 Jan 2016)
+* undo faulty/incorrect previous "fix" to ntries/npages (13 Jan 2016)
+* fix short blocking problems in reading from the device (12 Jan 2016)
+
+-------------------------------------------------------------------
+Sun Feb  7 08:48:04 UTC 2016 - axel.braun@gmx.de
+
+- Fixed file list entry for faxcron
+
+-------------------------------------------------------------------
+Sat Feb  6 19:03:34 UTC 2016 - axel.braun@gmx.de
+
+- put texfmt manpage into the right package
+
+-------------------------------------------------------------------
+Tue Dec 29 12:12:19 UTC 2015 - axel.braun@gmx.de
+
+- hylafax 5.5.7
+* fix ntries counter to apply to pages instead of documents (5 Dec 2015)
+* reject jobs rejected by the proxy (18-19 Nov 2015)
+* add RewriteFaxName and RewriteFaxNumber jobcontrol features (14 Nov 2015)
+* improve Chinese translation (7 Oct 2015)
+* make faxsetup fix blind references in Fontmap.HylaFAX (3 Oct 2015)
+* use the remote time on proxy job submisisons (17 Sep 2015)
+* create more-secure hosts.hfaxd passwords by default (28 Aug 2015)
+* add admin login feature for faxstat (27 Aug 2015)
+* add ProxyJobTag jobcontrol feature (26 Aug 2015)
+* fix grevious calculation problem with Class1RestrictPoorSenders and 
+  Class1RestrictPoorDestinations (20 Aug 2015)
+* add application/binary MIMEConverter (17 Jul 2015)
+* fix DynamicConfig for Class 1 modem data format support (15 Jul 2015)
+* fix crash in tagline imaging due to glyph ascent (23 Jun 2015)
+* stop messing with the FIFO during installs and uninstalls (16 Jun 2015)
+* avoid conflicts with a TTY environment variable (15 Jun 2015)
+* fix dataTimeout esp for modems with large buffers in non-ECM (22 May 2015)
+* fix dataTimeout primarily affecting 7200 bps ECM sending (15 May 2015)
+
+-------------------------------------------------------------------
+Wed Dec 16 13:41:18 CET 2015 - pth@suse.de
+
+- the proper name of the symlink is rchylafax.
+
+-------------------------------------------------------------------
+Mon Dec 14 09:19:47 CET 2015 - pth@suse.de
+
+- Guard the inclusion of rchylafax+.
+
+-------------------------------------------------------------------
+Fri Dec 11 10:23:38 CET 2015 - pth@suse.de
+
+- Only run cron jobs if hylafax is configured (boo#958150)
+- Clean up the spec file a bit.
+- Fix build.
+- Export CFLAGS and CXXFLAGS so that the flags are imported by
+  configure.
+- Use 'make -j1' to prevent parallel building.
+- post and postun sections are always need.
+
+-------------------------------------------------------------------
+Tue Jul 14 10:14:08 UTC 2015 - axel.braun@gmx.de
+
+- release 5.5.6
+* add typerules suggestion for PNG conversion (19 Mar 2015)
+* support more than 256 pages in Class 1 ECM (26 Feb 2015)
+* cope with application/pdf being encoded with quoted-printable
+  in faxmail (13 Feb 2015)
+* fix npages and totpages recording in sendq when proxied (31 Jan 2015)
+* fix EOF reading fault on badly-formatted MIME in faxmail (12 Jan 2015)
+* fix hi-res tagline imaging on 64-bit systems (10 Dec 2014)
+* add support for seqf.increment files to indicate seqf
+  incrementation (14 Nov 2014)
+* add support to faxmail to decode long-wrapped base64 (11, 14-15 Oct 2014)
+* fix proxy setting of null taglines (16 Sep 2014)
+* fix ModemWaitForConnect configuration setting (16 Sep 2014)
+* add debug messages for the attempt to locate a suitable modem
+  for jobs (12 Aug 2014)
+* fix missed data type for libtiff v4 (31 Jul, 11 Aug 2014)
+* fix faxsend segfault caused by an empty TagLine field introduced in
+  alignment features added in 5.5.5 (25 Jul 2014)
+* pass job priority to the proxy server (21 Jul 2014)
+* add JobHostID feature (16, 29-31 Jul 2014)
+* fix instances where a NULL return of crypt() is ignored (13 Jul 2014)
+* improve support for utmpx on BSD (10 Jul 2014)
+* apply some downstream patches from FreeBSD ports (10 Jul 2014)
+* use ps2write in faxmail pdf converter if pswrite is missing (6 Jul 2014)
+* modify FIFO usage and remove CONFIG_FIFOBUG and CONFIG_OPENFIFO (5 Jul 2014)
+
+-------------------------------------------------------------------
+Mon May  4 11:35:17 UTC 2015 - axel.braun@gmx.de
+
+- bnc#922402 update overwrites send-only settings to systemd config
+
+-------------------------------------------------------------------
+Thu Mar 12 19:52:34 UTC 2015 - hpj@urpla.net
+
+- fix standalone hylafax+-client fallout
+
+-------------------------------------------------------------------
+Thu Mar 12 17:45:09 CET 2015 - pth@suse.de
+
+- Move libfaxutil into its own sub package (bnc#922017).
+
+-------------------------------------------------------------------
+Tue Feb 24 18:46:08 UTC 2015 - axel.braun@gmx.de
+
+- fix for bnc#856906 also for client package
+
+-------------------------------------------------------------------
+Wed Feb 18 15:48:26 UTC 2015 - axel.braun@gmx.de
+
+- dependency on tiff added
+- build dependency on ghostscript
+
+-------------------------------------------------------------------
+Thu Feb 12 13:31:55 UTC 2015 - axel.braun@gmx.de
+
+- fix for bnc#856906 
+
+-------------------------------------------------------------------
+Sun Dec 14 10:50:26 UTC 2014 - axel.braun@gmx.de
+
+- corrected typo (path) in README.SUSE
+
+-------------------------------------------------------------------
+Fri Nov 14 17:48:58 UTC 2014 - axel.braun@gmx.de
+
+-fix inclusion of initscript for SysV startup 
+
+-------------------------------------------------------------------
+Wed Nov 12 10:23:05 UTC 2014 - axel.braun@gmx.de
+
+- Adapt README.SUSE to renamed service files
+
+-------------------------------------------------------------------
+Thu Nov  6 10:30:15 CET 2014 - pth@suse.de
+
+- Rename README.SuSE to README.SUSE
+- Remove systemd from service file names and adapt contents
+  accordingly.
+- Fix suse_version tests.
+
+-------------------------------------------------------------------
+Wed Nov  5 16:43:51 CET 2014 - pth@suse.de
+
+- Fix spec file
+
+-------------------------------------------------------------------
+Tue Nov  4 17:46:08 CET 2014 - pth@suse.de
+
+- Use macros for service handling
+
+-------------------------------------------------------------------
+Mon Nov  3 14:01:53 CET 2014 - pth@suse.de
+
+- Include tarball.
+- License is BSD-3-Clause.
+- Set obsoletes and provides for hylafax-client.
+
+-------------------------------------------------------------------
+Mon Oct 27 10:54:09 CET 2014 - pth@suse.de
+
+- Make spec a bit more readable.
+
+-------------------------------------------------------------------
+Sat Oct 18 06:45:24 UTC 2014 - axel.braun@gmx.de
+
+- added documentation for send-only environment 
+
+-------------------------------------------------------------------
+Tue Oct 14 15:01:38 UTC 2014 - axel.braun@gmx.de
+
+- README.suse added (systemd-setup for hylafax) 
+
+-------------------------------------------------------------------
+Mon Oct 13 15:33:12 UTC 2014 - axel.braun@gmx.de
+
+- added systemd-example for faxgetty 
+
+-------------------------------------------------------------------
+Thu Nov 28 22:55:17 UTC 2013 - axel.braun@gmx.de
+
+- Split out hylafax client
+
+-------------------------------------------------------------------
+Tue Oct 29 16:27:15 UTC 2013 - axel.braun@gmx.de
+
+- New release 5.5.4
+
+* Wed Jan 15 2013 Axel Braun <axel.braun@gmx.de>
+- adapt spec for use with open Build service
+
+* Tue Dec 11 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-6
+- make dependency on systemd-units and system instead of /bin/systemctl
+- modify systemd scriptlets
+- use defattr to accomodate correct permissions for mock builds
+
+* Sat Dec 8 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-5
+- remove defattr from files
+- rename patches and all but Source0 to hylafax+
+- remove config(noreplace) from FIFO
+- add /bin/systemctl build dependency for Fedora > 16
+
+* Mon Dec 3 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-4
+- add missing man pages
+
+* Thu Nov 4 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-3
+- spec optimizations
+- clarify linkage in libfaxserver
+- add systemd support
+
+* Thu Nov 1 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-2
+- change package name to hylafax+
+- add Provides: hylafax
+
+* Sat Oct 13 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.2-1
+- update to 5.5.2
+
+* Mon Jan 12 2012 Lee Howard <faxguy@howardsilvan.com> - 5.5.1-1
+- update to 5.5.1
+
+* Sat Dec 18 2010 Lee Howard <faxguy@howardsilvan.com> - 5.5.0-1
+- update to 5.5.0
+
+* Sun Oct 13 2010 Lee Howard <faxguy@howardsilvan.com> - 5.4.3-1
+- update to 5.4.3
+
+* Sun May 2 2010 Lee Howard <faxguy@howardsilvan.com> - 5.4.2-1
+- update to 5.4.2
+
+* Mon Feb 22 2010 Lee Howard <faxguy@howardsilvan.com> - 5.4.1-1
+- update to 5.4.1
+
+* Tue Dec 23 2009 Lee Howard <faxguy@howardsilvan.com> - 5.4.0-1
+- update to 5.4.0
+- add lcms-devel build dependency
+
+* Mon Oct 25 2009 Lee Howard <faxguy@howardsilvan.com> - 5.3.0-1
+- update to 5.3.0
+
+* Sat Feb 28 2009 Lee Howard <faxguy@howardsilvan.com> - 5.2.9-1
+- update to 5.2.9
+- remove "Provides: hylafax"
+
+* Sun Dec 21 2008 Lee Howard <faxguy@howardsilvan.com> - 5.2.8-1
+- update to 5.2.8
+
+* Mon Apr 28 2008 Lee Howard <faxguy@howardsilvan.com> - 5.2.4-3
+- openldap-devel and pam-devel build dependencies
+
+* Wed Apr 23 2008 Lee Howard <faxguy@howardsilvan.com> - 5.2.4-1
+- update to 5.2.4
+
+* Sat Mar 29 2008 Lee Howard <faxguy@howardsilvan.com> - 5.2.3-1
+- update to 5.2.3
+
+* Fri Jan 18 2008 Lee Howard <faxguy@howardsilvan.com> - 5.2.2-1
+- make licensing BSD, initscript is not config, remove libtiff dependency
+
+* Thu Nov 8 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.11-1
+- add libtiff dependency
+
+* Thu Aug 2 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.7-1
+- update to 5.1.7
+
+* Sat Jul 14 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.6-1
+- accomodate MIMEConverter script location change
+
+* Fri Mar 23 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.2-1
+- made faxq's FIFO "noreplace" to keep upgrades from messing up a running faxq
+
+* Thu Mar  8 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.1-1
+- update to 5.1.1
+
+* Thu Feb 22 2007 Lee Howard <faxguy@howardsilvan.com> - 5.1.0-1
+- update to 5.1.0
+
+* Thu Jan 11 2007 Lee Howard <faxguy@howardsilvan.com> - 5.0.4-1
+- update to 5.0.4
+
+* Tue Jan 1 2007 Lee Howard <faxguy@howardsilvan.com> - 5.0.3-1
+- update to 5.0.3
+
+* Wed Dec 13 2006 Lee Howard <faxguy@howardsilvan.com> - 5.0.2-1
+- update to 5.0.2
+
+* Wed Nov 1 2006 Lee Howard <faxguy@howardsilvan.com> - 5.0.0-1
+- update to 5.0.0
+- disable build of debuginfo package
+- change ownership of config and dev to root,root
+- move changelog to the end of the spec file
+
+* Mon Sep 18 2006 Lee Howard <faxguy@howardsilvan.com> - 4.3.0.11-1
+- update to 4.3.0.1
+
+* Tue Apr 11 2006 Lee Howard <faxguy@howardsilvan.com> - 4.2.5.6-1
+- update to 4.2.5.6
+
+* Tue Apr 11 2006 Lee Howard <faxguy@howardsilvan.com> - 4.2.5.5-1
+- initial 4.2.5.5 build

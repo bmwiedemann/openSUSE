@@ -1,0 +1,295 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+
+-------------------------------------------------------------------
+Sun Aug  6 09:31:51 UTC 2017 - mardnh@gmx.de
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Sat Jan 14 14:15:17 UTC 2017 - michael@stroeder.com
+
+- update to 0.7.19:
+  * added a new SubnetSplitter class for those looking to divide up subnets.
+    Thanks alanwill and RyPeck and those on (Stack Overflow discussion).
+  * removed bundled pytest dependency code for "python setup.py test".
+  * setup.py now uses setuptools only (no more distutils) and setup_egg.py removed.
+  * cleaned up INSTALL docs so they accurately reflect current Python packaging.
+  * fixed broken parsing, generating and reading of IEEE index files when switching
+    between Python 2.x and 3.x.
+  FIXED Issue 133: https://github.com/drkjam/netaddr/issues/133
+      - Splitting a single network into multiple prefixed networks
+  FIXED Issue 129: https://github.com/drkjam/netaddr/issues/129
+      - fix IPAddress().netmask_bits to return 0 for 0.0.0.0 and [::] addresses
+  FIXED Issue 117: https://github.com/drkjam/netaddr/issues/117
+      - (python setup.py test) failing with python3 >= 3.5
+  FIXED Issue 137: https://github.com/drkjam/netaddr/issues/137
+      - API reference is broken on ReadTheDocs
+  FIXED Issue 143: https://github.com/drkjam/netaddr/issues/143
+      - Please refresh the bundled IANA and IEEE databases
+
+-------------------------------------------------------------------
+Fri Sep 25 16:49:07 UTC 2015 - michael@stroeder.com
+
+- update to 0.7.18:
+    * cidr_merge() algorithm is now O(n) and much faster.
+    * nmap target specification now fully supported including IPv4 CIDR
+      prefixes and IPv6 addresses.
+    FIXED Issue 100: https://github.com/drkjam/netaddr/issues/100
+        - nmap.py - CIDR targets
+    FIXED Issue 112: https://github.com/drkjam/netaddr/issues/112
+        - Observation: netaddr slower under pypy
+    * Fixed a regression with valid_mac due to shadow import in the
+      netaddr module.
+    FIXED Issue 114: https://github.com/drkjam/netaddr/issues/114
+        - netaddr.valid_mac('00-B0-D0-86-BB-F7')==False for 0.7.16 but True for 0.7.15
+    * IPv4 networks with /31 and /32 netmasks are now treated according to
+        RFC 3021. Thanks to kalombos and braaen.
+    FIXED Issue 109: https://github.com/drkjam/netaddr/issues/109
+        - Identify registry of global IPv6 unicast allocations
+    FIXED Issue 108: https://github.com/drkjam/netaddr/issues/108
+        - One part of docs unclear?
+    FIXED Issue 106: https://github.com/drkjam/netaddr/issues/106
+        - Eui64 Updated (pull request for Issue 105)
+    FIXED Issue 105: https://github.com/drkjam/netaddr/issues/105
+        - Support dialects for EUI-64 addresses
+    FIXED Issue 102: https://github.com/drkjam/netaddr/issues/102
+        - 0.7.15 tarball is missing tests.
+    FIXED Issue 96: https://github.com/drkjam/netaddr/issues/96
+        - Wrong hosts and broadcasts for /31 and /32 networks.
+    * Fix slowness in IPSet.__contains__. Thanks to novas0x2a for noticing.
+    * Normalize IPNetworks when they are added to an IPSet
+    * Converted test suite to py.test
+
+-------------------------------------------------------------------
+Sun Apr 19 09:40:50 UTC 2015 - benoit.monin@gmx.fr
+
+- update to 0.7.14:
+  * Fix weird build breakage in 0.7.13
+  * EUI, OUI, and IAB objects can now be compared with strings
+  * Implement the "!=" operator for OUI and IAB under Python2
+  * 64 bit EUIs could only be created from strings with "-" as
+    a separator
+  * FIXED: Compare L2 addresses with their representations
+  * FIXED: OUI database tests fail in 0.7.13
+  * FIXED: Incorrect python executable path in
+    netaddr-0.7.13-py2.py3-none-any.whl
+  * FIXED: Handle eui64 addresses with colon as a delimiter and
+    without delimeter
+- set the source URL to pypi
+- remove chmod call: file mode fixed upstream
+
+-------------------------------------------------------------------
+Tue Jan  6 23:51:18 UTC 2015 - michael@stroeder.com
+
+- update to 0.7.13:
+  * IPAddress objects can now be added to/subtracted from each other
+  * compute static global ipv6 addr from the net prefix and mac address
+  * add classifiers for python 3.3 and 3.4 support
+  
+-------------------------------------------------------------------
+Thu Sep 11 12:40:27 UTC 2014 - dmueller@suse.com
+
+- update to 0.7.12:
+  * Added method IPSet.iter_ipranges().
+  * bool(IPSet()) works now for large IPSets, e.g. IPSet(['2405:8100::/32']).
+  * IPNetwork.iter_hosts now skips the subnet-router anycast address for IPv6.
+  * Removed function fbsocket.inet_aton because it is unused and unnecessary
+
+-------------------------------------------------------------------
+Mon May 12 20:10:14 UTC 2014 - hpj@urpla.net
+
+- Update to 0.7.11:
+  * Performance of IPSet increased dramatically, implemented by
+      Stefan Nordhausen and Martijn van Oosterhout. As a side effect,
+      IPSet(IPNetwork("10.0.0.0/8")) is now as fast as you'd expect.
+  * Various performance improvements all over the place.
+  * netaddr is now hosted on PyPI and can be installed via pip.
+  * Doing "10.0.0.42" in IPNetwork("10.0.0.0/24") works now.
+  * IPSet has two new methods: iscontiguous() and iprange(), thanks to Louis des Landes.
+  * Re-added the IPAddress.netmask_bits() method that was accidently removed.
+  * Networks 128.0.0.0/16, 191.255.0.0/16, and 223.255.255.0/24 are not marked as
+      reserved IPv4 addresses any more. Thanks to marnickv for pointing that out.
+  * Various bug fixes contributed by Wilfred Hughes, 2*yo and Adam Goodman.
+  FIXED Issue 58: https://github.com/drkjam/netaddr/issues/58
+      - foo.bar doesn't throw AddrFormatError
+  FIXED Issue 57: https://github.com/drkjam/netaddr/issues/57
+      - netaddr packages not hosted on PyPI
+  FIXED Issue 56: https://github.com/drkjam/netaddr/issues/56
+      - Fix comparison with large IPSet()
+  FIXED Issue 55: https://github.com/drkjam/netaddr/pull/55
+      - Fix smallest_matching_cidr and all_matching_cidrs
+  FIXED Issue 53: https://github.com/drkjam/netaddr/issues/53
+      - Exclude 128.0.0.0/16 and possibly others from reserved range set?
+  FIXED Issue 51: https://github.com/drkjam/netaddr/issues/51
+      - Encoding errors in netaddr/eui/oui.txt
+  FIXED Issue 46: https://github.com/drkjam/netaddr/issues/46
+      - len(IPSet()) fails on python3
+  FIXED Issue 43: https://github.com/drkjam/netaddr/issues/43
+      - Method to check if IPSet is contiguous
+  FIXED Issue 38: https://github.com/drkjam/netaddr/issues/38
+      - netmask_bits is missing from the IPAddress
+  FIXED Issue 37: https://github.com/drkjam/netaddr/issues/37
+      - Test failures with Python 3.3
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:05 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Sep 10 02:34:53 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 0.7.10:
+  * A bunch of Python 3.x bug fixes. Thanks Arfrever.
+  * Extended nmap support to cover full target specification.
+  FIXED Issue 36 - http://github.com/drkjam/netaddr/issues/36
+    - ResourceWarnings with Python >=3.2
+  FIXED Issue 35 - http://github.com/drkjam/netaddr/issues/35
+    - netaddr-0.7.9: Test failure with Python 3
+  FIXED Issue 34 - http://github.com/drkjam/netaddr/issues/34
+    - netaddr.ip.iana.SaxRecordParser.endElement() incompatible
+      with Python 3.1
+  FIXED Issue 33 - http://github.com/drkjam/netaddr/issues/33
+    - netaddr script not installed with Python 3
+  FIXED Issue 23 - http://github.com/drkjam/netaddr/issues/23
+    - valid_nmap_range() does not validate nmap format case.
+  FIXED Issue 22 - http://github.com/drkjam/netaddr/issues/22
+    - all_matching_cidrs: documentation incorrect
+
+-------------------------------------------------------------------
+Wed Aug 29 05:12:38 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 0.7.9:
+  * Re-release to fix build removing Sphinx dependency.
+- Aditional changes from 0.7.8:
+  * New SAX parser for IANA data source files (contributed by
+    Andrew Stromnov)
+  * Fixed pickling failures with EUI, OUI and IAB classes.
+  FIXED Issue 31 - http://github.com/drkjam/netaddr/issues/31
+    - Exclude '39.0.0.0/8' network from reserved set. Thanks
+      Andrew Stromnov
+  FIXED Issue 28 - http://github.com/drkjam/netaddr/issues/28
+    - Fix algorithm in ipv6_link_local to fully conform to rfc4291.
+      Thanks Philipp Wollermann
+  FIXED Issue 25 - http://github.com/drkjam/netaddr/issues/25
+    - install_requires is too aggressive? Thanks Adam Lindsay and
+      commenters.
+  FIXED Issue 21 - http://github.com/drkjam/netaddr/issues/21
+    - deepcopy for EUI fails. Thanks Ryan Nowakowski.
+
+-------------------------------------------------------------------
+Thu May 31 05:08:00 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 0.7.7:
+  * Comprehensive documentation update! It's only taken 4 years
+    to get around to using Sphinx and I can confirm it is
+    **TOTALLY AWESOME!**
+  * Various bug fixes
+  * Refreshed IEEE OUI and IAB data
+  * FIXED Issue 24 - http://github.com/drkjam/netaddr/issues/24
+    - Fixed TypeError when comparing BaseIP instance with
+      non-BaseIP objects. Thanks pvaret
+  * FIXED Issue 17 - http://github.com/drkjam/netaddr/issues/17
+    - For large ipv6 networks the .subnet() method fails. Thanks
+      daveyss
+  * FIXED Issue 20 - http://github.com/drkjam/netaddr/issues/20
+    - Test failure with Python 3. Thanks Arfrever
+
+-------------------------------------------------------------------
+Tue Sep 20 13:43:05 UTC 2011 - saschpe@suse.de
+
+- Changed license to 'BSD-3-Clause' (SPDX style)
+
+-------------------------------------------------------------------
+Tue Sep 20 13:40:39 UTC 2011 - saschpe@suse.de
+
+- Fixed non-executable script rpmlint warning
+- Readded dependency on python-setuptools (with python-distribute):
+  You can't simply remove this, it will break RPMs update mechanism!
+- Preparatory stuff belongs into the %prep section and the %clean
+  section has a sane default
+
+-------------------------------------------------------------------
+Wed Sep 14 00:32:39 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Removed unneded python-setuptools BuildRequires;
+- Update to 0.7.6:
+  * A bug fix point release
+  * Refreshed 3rd party data caches
+  * Tested against Python 3.2.x and PyPy 1.6.x
+  * Fixed unit tests under for Mac OSX
+  Specific bug fixes addressed in this release
+  --------------------------------------------
+  * FIXED Issue 15 - http://github.com/drkjam/netaddr/issues/15
+    - Incorrect and invalid glob produced when last octet is not *
+  * FIXED Issue 13 - http://github.com/drkjam/netaddr/issues/13
+    - Added support for IPython 0.11 API changes. Thanks juliantaylor
+  * FIXED Issue 11 - http://github.com/drkjam/netaddr/issues/11
+    - Calling valid_glob on cidr raises ValueError. Thanks radicand
+  * FIXED Issue 7 - http://github.com/drkjam/netaddr/issues/7
+    - Unpickling Bug in IPSet. Thanks LuizOz and labeneator
+  * FIXED Issue 2 - http://github.com/drkjam/netaddr/issues/2
+    - UnboundLocalError raised in IPNetwork constructor. Thanks keesbos
+
+  Miscellanea
+  -----------
+  - Has a famous soft drink company started making it own NICs?
+
+-------------------------------------------------------------------
+Thu Mar  3 09:51:36 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Added %changelog
+  * Removed empty lines
+  * Added AUTHORS, CHANGELOG, COPYRIGHT, README, LICENSE and
+    THANKS files (all documentation)
+
+-------------------------------------------------------------------
+Wed Oct  6 01:41:45 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.7.5:
+  * Python 3.x is now fully supported. The paint is still drying on this so
+    please help with testing and raise bug tickets when you find any issues!
+  * Moved code hosting to github. All history ported thanks to the most
+    excellent tool, svn2git (http://github.com/nirvdrum/svn2git).
+  * All netaddr objects now use approx. 65% less memory due to the use of
+    __slots__ in classes throughout the codebase. Thanks to Stefan Nordhausen
+   and his Python guru for this suggestion!
+  * Applied many optimisations and speedups throughout the codebase.
+  * Fixed the behaviour of the IPNetwork constructor so it now behaves in
+    a much more sensible and expected way (i.e. no longer uses inet_aton
+    semantics which is just plain odd for network addresses).
+  * One minor change to behaviour in this version is that the .value property
+    on IPAddress and IPNetwork objects no longer support assignment using a
+    string IP address. Only integer value assignments are now valid. The impact
+    of this change should be minimal for the majority of users.
+  * FIXED Issue 49 - http://code.google.com/p/netaddr/issues/detail?id=49
+    - Incorrect IP range recognition on IPs with leading zeros
+  * FIXED Issue 50 - http://code.google.com/p/netaddr/issues/detail?id=50
+    - CIDR block parsing
+  * FIXED Issue 52 - http://code.google.com/p/netaddr/issues/detail?id=52
+    - ipv6 cidr matches incorrectly match ipv4 [sic]
+  * FIXED Issue 53 - http://code.google.com/p/netaddr/issues/detail?id=53
+    - Error in online documentation
+  * FIXED Issue 54 - http://code.google.com/p/netaddr/issues/detail?id=54
+    - IP recognition failure 
+  * FIXED Issue 55 - http://code.google.com/p/netaddr/issues/detail?id=55
+    - Support for Python 3.x
+ * FIXED Issue 56 - http://code.google.com/p/netaddr/issues/detail?id=56
+    - checking IPAddress in IPNetwork
+ * FIXED Issue 57 - http://code.google.com/p/netaddr/issues/detail?id=57
+    - netaddr objects can't pickle
+ * FIXED Issue 58 - http://code.google.com/p/netaddr/issues/detail?id=58
+    - IPSet operations should accept the same arguments as IPAddress
+ * FIXED Issue 59 - http://code.google.com/p/netaddr/issues/detail?id=59
+    - netaddr fails to load when imported by a PowerDNS coprocess
+
+-------------------------------------------------------------------
+Wed May 12 11:36:17 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (0.7.4) for openSUSE.

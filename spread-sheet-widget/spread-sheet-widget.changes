@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Jan 13 10:34:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace boilerplate package description.
+
+-------------------------------------------------------------------
+Mon Nov 12 11:50:02 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix build for Fedora.
+
+-------------------------------------------------------------------
+Wed Nov  7 13:23:49 UTC 2018 - lars@linux-schulserver.de - 0.3
+
+- Update to 0.3:
+  + Fix bug where when there was no active cell, the place where it 
+    would have been was blanked.
+  + Update NEWS
+  + Fix crash when pasting from primary
+  + SswXpaned: Remove unused code
+- do not package static libs
+- run install-info macros 
+- removed Fix_crash_when_pasting_from_primary.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Nov 23 15:31:31 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- spread-sheet-widget 0.2 – initial RPM package for openSUSE.
+

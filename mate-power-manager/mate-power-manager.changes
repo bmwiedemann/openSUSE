@@ -1,0 +1,445 @@
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Help: Remove About section.
+  * Add conf option to disable warnings for low mouse power.
+  * Help: Update copyright.
+  * Help: Use XInclude instead of ENTITY for legal.xml.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * gpm-control: Avoid deprecated "g_settings_list_schemas".
+  * media-keys: Always round the render coordinates for media
+    icons.
+  * media-keys: Tweak the OSD's bright bar position.
+  * osd-window: Make the window smaller.
+  * media-keys: Make icon smaller in OSD.
+  * media-keys: Use constant for icon size in OSD.
+  * Fix spelling and grammar mistakes.
+  * gpm-kbd-backlight: Replace deprecated GdkDeviceManager.
+  * gpm-backlight: Replace deprecated GdkDeviceManager.
+  * gpm-brightness: Replace deprecated Gdk functions.
+  * Use libtool generated during build instead of external one.
+- Rebase mate-power-manager-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3:
+  * Disable deprecation warnings for distcheck.
+  * Use make functions for HELP_LINGUAS.
+  * Add m-p-m help to transifex config.
+  * gpm-button: Replace deprecated Gdk functions.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * inhibit: Always scale icon to match panel size.
+  * Inhibit Applet: Fix excessive CPU use.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Add a missing window icon to the About dialogue.
+  * Scale OSD size correctly on HiDPI displays.
+  * Grammar fix.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Avoid deprecated gdk_screen_get_monitor_,
+    gdk_screen_get_width/height(), gdk_display_get_screen()
+    functions.
+  * Don't use deprecated gtk_show_uri().
+  * Actually check the $XPROTO_REQUIRED variable's value.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * Avoid deprecated GtkStock.
+  * inhibit applet: Fix rendering of the icon.
+  * Correct spelling mistakes.
+  * Update translations.
+- Add mate-power-manager-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Nov  1 16:17:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Don't abort on unknown DBus signal name.
+  * Refresh tray icon on icon theme change.
+  * Statistics UI: Add style class mpm-statistics.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require xproto >= 7.0.15.
+  * Build: Require mate-panel >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Replace deprecated upower suspend/hibernate functions with
+    ConsoleKit2 equivalents.
+  * Use manpages as is instead of generating them from sgml (and
+    don't require docbook2man for build anymore).
+  * Some more fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Feb 18 11:01:24 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.2:
+  * Build: Remove strict options, they just get in the way.
+  * GTK+3: Properly hide brightness applet popup on pressing
+    Esc/Enter/Space keys (fixes popup becoming wide instead and
+    random applet crashes).
+  * GTK+3: Fix mouse scroll over brightness applet icon when
+    no popup is shown.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:04:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Check both the "Backlight" and "BACKLIGHT" xrandr properties
+    (fixes inability to adjust screen backlight on some systems).
+  * Statistics: Stop runtime warnings spam on desktop systems.
+  * GTK+3: Fix runtime warning in inhibit applet.
+  * GTK+3: Fix OSD rendering on non-composited desktop.
+  * GTK+3: Add OSD style class for non-composited desktop.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Use GtkAboutDialog instead of MateAboutDialog.
+  * Stop depending on libmate-desktop.
+  * Show the primary device time remaining as the first entry in
+    the context menu.
+  * Do not issue a console warning when laptop batteries are empty.
+  * GTK+3: Port from libunique to GtkApplication.
+  * GTK+3: Add css theming for OSD (MsdOsdWindow).
+  * GTK+3: Fix an empty space in tray when system has no battery.
+  * GTK+3: Fix lots of deprecations.
+  * Some more fixes and cleanups.
+  * Make distcheck use a currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * GTK+3: Fix deprecations in brightness applet.
+  * Some more fixes and cleanups.
+  * Update Translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Wed Jan 27 06:26:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Drop MateConf migration script.
+  * Fix a possible crash when an Xorg function call fails.
+  * Some code cleanup.
+
+-------------------------------------------------------------------
+Wed Jan  6 13:21:22 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing pkgconfig(xrandr), pkgconfig(xrender),
+  pkgconfig(x11), pkgconfig(xext), pkgconfig(xproto) dependencies.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Allow disabling of power button.
+  * Multiple backlight fixes.
+  * Gtk3: Do not remove slider background in brightness applet
+    (fixes background in some themes).
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * Require XRandR 1.3.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Gtk3: support custom themes.
+  * Gtk3: fix brightness applet behaviour.
+  * Some fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Oct  9 22:04:39 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11:
+  * backlight-helper: Add gmux_backlight to backlight_interfaces.
+  * Switch to org.gnome.SessionManager.
+  * Show vendor/model information.
+  * Fixes change keyboard back light for laptops with levels less
+    then 10.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:42:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Fix keyboard backlight adjustment for laptops with non-standard
+    levels.
+  * Some bugfixes.
+
+-------------------------------------------------------------------
+Wed Jul 15 11:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Multiple help fixes.
+  * Some bugfixes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon May  4 20:23:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.0):
+  * Fix memory leaks.
+  * Rename D-Bus service file.
+  * Add mate-power-manager-bugreport, and
+    mate-power-backlight-helper manpages.
+  * Fix GTKBuilder script for media keys popup window.
+  * Removed the property that made UI load fail.
+  * UPower: handle UP_DEVICE_STATE_UNKNOWN, avoid assert.
+  * Fix mate-power-statistics GUI while using Gtk3.
+  * Drop udisks1 support.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Dec  8 19:59:03 UTC 2014 - p.drouand@gmail.com
+
+- Remove obsolete "--disable-scrollkeeper" option
+- Add requirement to pkgconfig(mate-desktop-2.0); new dependency
+
+-------------------------------------------------------------------
+Mon Dec  8 15:29:27 UTC 2014 - p.drouand@gmail.com
+
+- Remove mate-power-manager_dbus_interface_keyboard_backlight_controls.patch
+  fixed on upstream release
+- Remove autoreconf -fiv; not needed anymore
+
+-------------------------------------------------------------------
+Sun Oct 26 20:30:11 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Add support for UPower 0.99
+- Fix version requirements
+
+-------------------------------------------------------------------
+Fri Oct  3 15:05:42 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Fixed "levels is 0" warning if no kbd backlight present
+  + Added support for upower-0.99 API
+  + Added keywords key to .desktop file
+  + Removed "battery recall" logic
+- Remove upstreamed patches
+  + mate-power-manager-avoid-levels_is_0-warning.patch
+  + mate-power-manager-port-to-upower-0.99_API.patch
+  + mate-power-manager-remove-battery-recall-logic.patch 
+  + mate-power-manager-fixes-for-upower1-api-changes.patch
+  + mate-power-manager-improve-upower1-support.patch
+
+-------------------------------------------------------------------
+Thu Apr 24 20:24:35 UTC 2014 - p.drouand@gmail.com
+
+- Add mate-power-manager-fixes-for-upower1-api-changes.patch
+- Add mate-power-manager-improve-upower1-support.patch
+
+-------------------------------------------------------------------
+Thu Apr 17 10:24:28 UTC 2014 - p.drouand@gmail.com
+
+- Rebase upower-0.99 support :
+  + Remove mate-power-manager_fix-use-g_signal-notify.patch; 
+    mate-power-manager_upower-remove-recall.patch; 
+    mate-power-manager_upower-update-for-libupower-glib-API-changes.patch;
+    mate-power-manager_upower-use-g_signal-notify.patch
+    mate-power-manager_upower.patch
+  + Add mate-power-manager-avoid-levels_is_0-warning.patch; 
+    mate-power-manager-port-to-upower-0.99_API.patch;
+    mate-power-manager-remove-battery-recall-logic.patch
+- Explicitely require upower
+    
+-------------------------------------------------------------------
+Sun Apr 13 17:36:45 UTC 2014 - p.drouand@gmail.com
+
+- Add mate-power-manager_upower-update-for-libupower-glib-API-changes-fix.patch,
+  mate-power-manager_fix-pref-apply.patch and 
+  mate-power-manager-statistics-fix.patch; more fixes for upower >= 0.99 
+  compatibility
+- Remove hard requirement of pm-utils, udisks and splashy; package works
+  without these packages
+
+-------------------------------------------------------------------
+Wed Mar  5 13:08:14 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 21:09:31 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + use yelp-tools instead of mate-doc-utils
+  + fix systemd support
+  + switch to libgnome-keyring
+- Add mate-power-manager_dbus_interface_keyboard_backlight_controls.patch
+- Add mate-power-manager_fix-mouse-click-on-brightness-applet.patch
+- Add mate-power-manager_fix-use-g_signal-notify.patch
+- Add mate-power-manager_upower-remove-recall.patch
+- Add mate-power-manager_upower-update-for-libupower-glib-API-changes.patch
+- Add mate-power-manager_upower-use-g_signal-notify.patch
+- Add mate-power-manager_upower.patch
+
+-------------------------------------------------------------------
+Tue Dec 31 16:08:13 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.3
+  + Add option to enable deprecations and hide warnings under
+    --enable-extra-warn
+  + Update changelog generation.
+  + Remove distro folder
+  + Add NEWS.GNOME to EXTRA_DIST
+  + fix typo in gpm_control_suspend, gpm-control.c
+    this fix 'suspend on lid close'
+    Close brc#1012718 https://bugzilla.redhat.com/show_bug.cgi?id=1012718
+  + fix comment in gpm-manager.c
+  + fix systemd-login1 support for gpm_manager_blank_screen
+  + fix dbus path gpm phone manager
+  + Code improvements and deprecation fixes
+  + Remove systemd from configure summary
+- Remove mate-power-manager_fix-display-to-sleep-when-inactive.patch;
+  merged on upstream release
+
+-------------------------------------------------------------------
+Tue Sep 10 18:37:34 UTC 2013 - p.drouand@gmail.com
+
+- Add switch-to-gnome-keyring.patch; mate-keyring will be drop by upstream
+  and use gnome-keyring instead
+- Add mate-power-manager_fix-display-to-sleep-when-inactive.patch; 
+  fix systemd-login1 support for gpm_manager_blank_screen
+- Use gnome-keyring instead of mate-keyring; add pkgconfig(gnome-keyring-1)
+  BuildRequires
+  
+-------------------------------------------------------------------
+Tue Sep  3 13:16:36 UTC 2013 - p.drouand@gmail.com
+
+- Remove rpmlintrc file; org.mate.power.backlight-helper is now allow
+  by default in OpenSUSE (bnc#831404)
+
+-------------------------------------------------------------------
+Thu Jul 25 13:52:14 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + removed systemd-daemon dependency and check at runtime if
+    systemd-logind is running
+  + improved systemd-logind support
+  + dont rely only on consolekit for button pressed event 
+
+-------------------------------------------------------------------
+Thu May  2 15:55:10 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.1 
+  + use 'make dist' for tarball
+  + add support to use systemd logind for suspend and hibernate instead
+    of upower
+  + dont print an error if optional hardware is missing
+    Closes #54 (https://github.com/mate-desktop/mate-power-manager/issues/54)
+- Add --with-systemdsleep to configure otpions
+
+-------------------------------------------------------------------
+Mon Apr 29 13:52:41 UTC 2013 - p.drouand@gmail.com
+
+- No version for Recommends: %{name}-lang
+
+-------------------------------------------------------------------
+Thu Apr  4 00:09:53 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + update translations
+
+-------------------------------------------------------------------
+Sat Mar 16 19:19:15 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.2:
+  + move from libmatenotify to libnotify
+  + apply 'dont eat logs' patch
+  + update translations
+  + improve systemd detection/fallback
+  + mate-keyring support is now optional
+  + manuy other fixes
+- Remove mate-power-manager-1.5.1-add_systemd_checks.patch, merged
+  upstream
+- Remove mate-power-manager-1.5.1-show_power_statistics.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Wed Dec  5 14:09:51 UTC 2012 - nmo.marques@gmail.com
+
+- Add 'splashy' to Requires; without splashy available 'hibernate'
+  doesn't work properly.
+
+-------------------------------------------------------------------
+Thu Nov 29 00:59:47 UTC 2012 - nmo.marques@gmail.com
+
+- Add %{name}-1.5.1-add_systemd_checks.patch: systemd inhibit
+  support; requires systemd >= 195, only Factory should enable.
+
+-------------------------------------------------------------------
+Mon Nov 26 19:55:40 UTC 2012 - nmo.marques@gmail.com
+
+- Add libsystemd-login and libsystemd-daemon to BR's and enabled
+  systemd-inhibit
+
+-------------------------------------------------------------------
+Sun Nov 25 04:15:20 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-power-manager-1.5.1-show_power_statistics.patch; select
+  Power Statistics in Applications/System Tools
+
+-------------------------------------------------------------------
+Fri Nov 23 04:26:21 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + Systemd inhibit support for MPM
+  + Adds on screen display support to keyboard backlight controls
+  + Fix FSF headers
+  + other minor fixes
+- Removed 0001-update-gpl-2.0-to-latest-legal-text.patch
+
+-------------------------------------------------------------------
+Fri Nov 23 04:21:27 UTC 2012 - nmo.marques@gmail.com
+
+- Add pm-utils and udisks to Requires; bnc#790787
+
+-------------------------------------------------------------------
+Fri Nov  9 20:23:44 UTC 2012 - nmo.marques@gmail.com
+
+- Add upower to Requires, otherwise we have a crash and no applet
+
+-------------------------------------------------------------------
+Thu Nov  8 01:42:43 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package
+- Add mate-power-manager-rpmlintrc - setBadness to allows package
+  to build for testing (polkit policies)
+- Add 0001-update-gpl-2.0-to-latest-legal-text.patch - upstreamed
+  can be removed next update
+

@@ -1,0 +1,447 @@
+--- khunphan/Music/Makefile.am
++++ khunphan/Music/Makefile.am
+@@ -4,16 +4,14 @@
+ EXTRA_DIST = Cymbals.ogg Earth.ogg Mystery.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Music/
+-	$(INSTALL_DATA) $(srcdir)/Cymbals.ogg $(datadir)/khunphan/Music/Cymbals.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Music/
+-	$(INSTALL_DATA) $(srcdir)/Earth.ogg $(datadir)/khunphan/Music/Earth.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Music/
+-	$(INSTALL_DATA) $(srcdir)/Mystery.ogg $(datadir)/khunphan/Music/Mystery.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Music/
++	$(INSTALL_DATA) $(srcdir)/Cymbals.ogg $(DESTDIR)$(datadir)/khunphan/Music/Cymbals.ogg
++	$(INSTALL_DATA) $(srcdir)/Earth.ogg $(DESTDIR)$(datadir)/khunphan/Music/Earth.ogg
++	$(INSTALL_DATA) $(srcdir)/Mystery.ogg $(DESTDIR)$(datadir)/khunphan/Music/Mystery.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Music/Cymbals.ogg
+-	-rm -f $(datadir)/khunphan/Music/Earth.ogg
+-	-rm -f $(datadir)/khunphan/Music/Mystery.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Music/Cymbals.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Music/Earth.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Music/Mystery.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/Makefile.am
++++ khunphan/Sounds/Makefile.am
+@@ -5,28 +5,22 @@
+ EXTRA_DIST = changesetting.ogg gamesolved.ogg movetoken.ogg opengame.ogg openmenu.ogg quitgame.ogg tutorialnext.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/changesetting.ogg $(datadir)/khunphan/Sounds/changesetting.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/gamesolved.ogg $(datadir)/khunphan/Sounds/gamesolved.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/movetoken.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/opengame.ogg $(datadir)/khunphan/Sounds/opengame.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/openmenu.ogg $(datadir)/khunphan/Sounds/openmenu.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/quitgame.ogg $(datadir)/khunphan/Sounds/quitgame.ogg
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/
+-	$(INSTALL_DATA) $(srcdir)/tutorialnext.ogg $(datadir)/khunphan/Sounds/tutorialnext.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/
++	$(INSTALL_DATA) $(srcdir)/changesetting.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/changesetting.ogg
++	$(INSTALL_DATA) $(srcdir)/gamesolved.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/gamesolved.ogg
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/movetoken.ogg
++	$(INSTALL_DATA) $(srcdir)/opengame.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/opengame.ogg
++	$(INSTALL_DATA) $(srcdir)/openmenu.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/openmenu.ogg
++	$(INSTALL_DATA) $(srcdir)/quitgame.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/quitgame.ogg
++	$(INSTALL_DATA) $(srcdir)/tutorialnext.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/tutorialnext.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/changesetting.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/gamesolved.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/movetoken.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/opengame.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/openmenu.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/quitgame.ogg
+-	-rm -f $(datadir)/khunphan/Sounds/tutorialnext.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/changesetting.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/gamesolved.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/opengame.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/openmenu.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/quitgame.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/tutorialnext.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/bubbles/Makefile.am
++++ khunphan/Sounds/bubbles/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/bubbles/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/bubbles/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/bubbles/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/bubbles/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/bubbles/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/bubbles/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/marble/Makefile.am
++++ khunphan/Sounds/marble/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/marble/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/marble/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/marble/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/marble/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/marble/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/marble/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/metal/Makefile.am
++++ khunphan/Sounds/metal/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/metal/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/metal/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/metal/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/metal/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/metal/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/metal/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/painting/Makefile.am
++++ khunphan/Sounds/painting/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/painting/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/painting/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/painting/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/painting/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/painting/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/painting/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/rock/Makefile.am
++++ khunphan/Sounds/rock/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/rock/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/rock/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/rock/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/rock/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/rock/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/rock/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Sounds/smily/Makefile.am
++++ khunphan/Sounds/smily/Makefile.am
+@@ -4,10 +4,10 @@
+ EXTRA_DIST = movetoken.ogg 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Sounds/smily/
+-	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(datadir)/khunphan/Sounds/smily/movetoken.ogg
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Sounds/smily/
++	$(INSTALL_DATA) $(srcdir)/movetoken.ogg $(DESTDIR)$(datadir)/khunphan/Sounds/smily/movetoken.ogg
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Sounds/smily/movetoken.ogg
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/smily/movetoken.ogg
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/Makefile.am
++++ khunphan/Textures/Makefile.am
+@@ -5,22 +5,18 @@
+ EXTRA_DIST = characters.png logo.png music_on.png sound_on.png soundmusic_off.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/
+-	$(INSTALL_DATA) $(srcdir)/characters.png $(datadir)/khunphan/Textures/characters.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/
+-	$(INSTALL_DATA) $(srcdir)/logo.png $(datadir)/khunphan/Textures/logo.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/
+-	$(INSTALL_DATA) $(srcdir)/music_on.png $(datadir)/khunphan/Textures/music_on.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/
+-	$(INSTALL_DATA) $(srcdir)/sound_on.png $(datadir)/khunphan/Textures/sound_on.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/
+-	$(INSTALL_DATA) $(srcdir)/soundmusic_off.png $(datadir)/khunphan/Textures/soundmusic_off.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/
++	$(INSTALL_DATA) $(srcdir)/characters.png $(DESTDIR)$(datadir)/khunphan/Textures/characters.png
++	$(INSTALL_DATA) $(srcdir)/logo.png $(DESTDIR)$(datadir)/khunphan/Textures/logo.png
++	$(INSTALL_DATA) $(srcdir)/music_on.png $(DESTDIR)$(datadir)/khunphan/Textures/music_on.png
++	$(INSTALL_DATA) $(srcdir)/sound_on.png $(DESTDIR)$(datadir)/khunphan/Textures/sound_on.png
++	$(INSTALL_DATA) $(srcdir)/soundmusic_off.png $(DESTDIR)$(datadir)/khunphan/Textures/soundmusic_off.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/characters.png
+-	-rm -f $(datadir)/khunphan/Textures/logo.png
+-	-rm -f $(datadir)/khunphan/Textures/music_on.png
+-	-rm -f $(datadir)/khunphan/Textures/sound_on.png
+-	-rm -f $(datadir)/khunphan/Textures/soundmusic_off.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/characters.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/logo.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/music_on.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/sound_on.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/soundmusic_off.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/bubbles/Makefile.am
++++ khunphan/Textures/bubbles/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/bubbles/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/bubbles/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/bubbles/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/bubbles/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/bubbles/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/bubbles/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/bubbles/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/bubbles/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/bubbles/board.png
+-	-rm -f $(datadir)/khunphan/Textures/bubbles/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/bubbles/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/bubbles/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/marble/Makefile.am
++++ khunphan/Textures/marble/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/marble/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/marble/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/marble/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/marble/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/marble/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/marble/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/marble/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/marble/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/marble/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/marble/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/marble/board.png
+-	-rm -f $(datadir)/khunphan/Textures/marble/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/marble/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/marble/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/marble/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/metal/Makefile.am
++++ khunphan/Textures/metal/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/metal/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/metal/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/metal/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/metal/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/metal/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/metal/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/metal/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/metal/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/metal/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/metal/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/metal/board.png
+-	-rm -f $(datadir)/khunphan/Textures/metal/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/metal/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/metal/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/metal/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/painting/Makefile.am
++++ khunphan/Textures/painting/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/painting/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/painting/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/painting/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/painting/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/painting/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/painting/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/painting/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/painting/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/painting/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/painting/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/painting/board.png
+-	-rm -f $(datadir)/khunphan/Textures/painting/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/painting/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/painting/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/painting/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/rock/Makefile.am
++++ khunphan/Textures/rock/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/rock/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/rock/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/rock/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/rock/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/rock/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/rock/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/rock/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/rock/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/rock/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/rock/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/rock/board.png
+-	-rm -f $(datadir)/khunphan/Textures/rock/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/rock/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/rock/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/rock/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/smily/Makefile.am
++++ khunphan/Textures/smily/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/smily/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/smily/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/smily/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/smily/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/smily/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/smily/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/smily/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/smily/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/smily/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/smily/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/smily/board.png
+-	-rm -f $(datadir)/khunphan/Textures/smily/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/smily/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/smily/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/smily/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/Textures/wood/Makefile.am
++++ khunphan/Textures/wood/Makefile.am
+@@ -4,19 +4,16 @@
+ EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/wood/
+-	$(INSTALL_DATA) $(srcdir)/board.png $(datadir)/khunphan/Textures/wood/board.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/wood/
+-	$(INSTALL_DATA) $(srcdir)/texture1.png $(datadir)/khunphan/Textures/wood/texture1.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/wood/
+-	$(INSTALL_DATA) $(srcdir)/texture2.png $(datadir)/khunphan/Textures/wood/texture2.png
+-	$(mkinstalldirs) $(datadir)/khunphan/Textures/wood/
+-	$(INSTALL_DATA) $(srcdir)/texture3.png $(datadir)/khunphan/Textures/wood/texture3.png
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/Textures/wood/
++	$(INSTALL_DATA) $(srcdir)/board.png $(DESTDIR)$(datadir)/khunphan/Textures/wood/board.png
++	$(INSTALL_DATA) $(srcdir)/texture1.png $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture1.png
++	$(INSTALL_DATA) $(srcdir)/texture2.png $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture2.png
++	$(INSTALL_DATA) $(srcdir)/texture3.png $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture3.png
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/Textures/wood/board.png
+-	-rm -f $(datadir)/khunphan/Textures/wood/texture1.png
+-	-rm -f $(datadir)/khunphan/Textures/wood/texture2.png
+-	-rm -f $(datadir)/khunphan/Textures/wood/texture3.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/wood/board.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture1.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture2.png
++	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture3.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+--- khunphan/locale/Makefile.am
++++ khunphan/locale/Makefile.am
+@@ -4,16 +4,14 @@
+ EXTRA_DIST = 900.lang 901.lang 999.lang 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(datadir)/khunphan/locale/
+-	$(INSTALL_DATA) $(srcdir)/900.lang $(datadir)/khunphan/locale/900.lang
+-	$(mkinstalldirs) $(datadir)/khunphan/locale/
+-	$(INSTALL_DATA) $(srcdir)/901.lang $(datadir)/khunphan/locale/901.lang
+-	$(mkinstalldirs) $(datadir)/khunphan/locale/
+-	$(INSTALL_DATA) $(srcdir)/999.lang $(datadir)/khunphan/locale/999.lang
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/khunphan/locale/
++	$(INSTALL_DATA) $(srcdir)/900.lang $(DESTDIR)$(datadir)/khunphan/locale/900.lang
++	$(INSTALL_DATA) $(srcdir)/901.lang $(DESTDIR)$(datadir)/khunphan/locale/901.lang
++	$(INSTALL_DATA) $(srcdir)/999.lang $(DESTDIR)$(datadir)/khunphan/locale/999.lang
+ 
+ uninstall-local:
+-	-rm -f $(datadir)/khunphan/locale/900.lang
+-	-rm -f $(datadir)/khunphan/locale/901.lang
+-	-rm -f $(datadir)/khunphan/locale/999.lang
++	-rm -f $(DESTDIR)$(datadir)/khunphan/locale/900.lang
++	-rm -f $(DESTDIR)$(datadir)/khunphan/locale/901.lang
++	-rm -f $(DESTDIR)$(datadir)/khunphan/locale/999.lang
+ 
+ ####### kdevelop will overwrite this part!!! (end)############

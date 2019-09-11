@@ -1,0 +1,40 @@
+---
+ ramzswap_drv.c |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/ramzswap_drv.c
++++ b/ramzswap_drv.c
+@@ -1178,6 +1178,7 @@
+ 
+ 	set_capacity(rzs->disk, rzs->disksize >> SECTOR_SHIFT);
+ 
++#ifdef blk_queue_nonrot
+ 	/*
+ 	 * We have ident mapping of sectors for ramzswap and
+ 	 * and the backing swap device. So, this queue flag
+@@ -1186,6 +1187,7 @@
+ 	if (!rzs->backing_swap ||
+ 			blk_queue_nonrot(rzs->backing_swap->bd_disk->queue))
+ 		queue_flag_set_unlocked(QUEUE_FLAG_NONROT, rzs->disk->queue);
++#endif
+ 
+ 	rzs->mem_pool = xv_create_pool();
+ 	if (!rzs->mem_pool) {
+@@ -1233,9 +1235,17 @@
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28)
+ static int ramzswap_ioctl(struct block_device *bdev, fmode_t mode,
+ 			unsigned int cmd, unsigned long arg)
++#else
++static int ramzswap_ioctl(struct inode *inode, struct file *file,
++			unsigned int cmd, unsigned long arg)
++#endif
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,28)
++	struct block_device *bdev = I_BDEV(inode);
++#endif
+ 	int ret = 0;
+ 	size_t disksize_kb, memlimit_kb;
+ 

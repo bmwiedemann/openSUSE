@@ -1,0 +1,45 @@
+From ddd83dc5ae1989be904181cbe9148d518c9722ed Mon Sep 17 00:00:00 2001
+From: Werner Fink <werner@suse.de>
+Date: Mon, 13 May 2019 09:24:34 +0200
+Subject: [PATCH] Make it build again
+
+Signed-off-by: Werner Fink <werner@suse.de>
+---
+ configure.ac | 2 +-
+ src/paps.c   | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git configure.ac configure.ac
+index 87f43df..be91ebd 100644
+--- configure.ac
++++ configure.ac
+@@ -14,7 +14,7 @@ dnl Requires to declare wcwidth()
+ AC_GNU_SOURCE
+ 
+ PKG_PROG_PKG_CONFIG
+-PKG_CHECK_MODULES([PANGO], [pangocairo pangoft2])
++PKG_CHECK_MODULES([PANGO], [pangocairo pangoft2 gobject-2.0 glib-2.0])
+ 
+ AC_PROG_INTLTOOL([0.23])
+ 
+diff --git src/paps.c src/paps.c
+index 29e7098..d8105eb 100644
+--- src/paps.c
++++ src/paps.c
+@@ -282,11 +282,13 @@ parse_enum (GType       type,
+   char *possible_values = NULL;
+   gboolean ret;
+ 
++G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+   ret = pango_parse_enum (type,
+                           arg,
+                           value,
+                           FALSE,
+                           &possible_values);
++G_GNUC_END_IGNORE_DEPRECATIONS
+ 
+   if (!ret && error)
+     {
+-- 
+2.16.4
+

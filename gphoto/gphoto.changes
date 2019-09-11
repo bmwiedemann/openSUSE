@@ -1,0 +1,606 @@
+-------------------------------------------------------------------
+Sun Jun  2 16:40:32 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.23 release
+  - bugfixes
+
+-------------------------------------------------------------------
+Sat Oct 27 16:24:50 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.20 release
+  * maximum number in file ranges bumped from 16384 to 65536
+  * add shell commands to match commandline: summary, storage-info, trigger-capture
+  * fixed a fd leak
+  * translations: updated simplified chinese
+
+-------------------------------------------------------------------
+Mon Apr 16 20:00:37 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.17 release
+  * report new GP_EVENT_FILE_CHANGED event
+  * some bugfixes
+
+-------------------------------------------------------------------
+Fri Oct  6 11:20:23 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.15 release
+  * In the config getters, print out the Readonly flag and also an END marker
+  * Fixed "now" timesetting also for set-config-value
+
+-------------------------------------------------------------------
+Mon Jun  5 19:09:31 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.14 release
+  * translation updates: french, esperanto
+  * some bugfixes
+
+-------------------------------------------------------------------
+Sun Nov 20 21:42:04 UTC 2016 - meissner@suse.com
+
+- updated to 2.5.11 release
+* some errors result in exit 0, where it should have been an error exit
+* some windows bugfixes
+* translation updates: icelandic
+
+-------------------------------------------------------------------
+Wed Mar 23 21:14:03 UTC 2016 - meissner@suse.com
+
+- updated to 2.5.10 release
+* use new single configuration set/get if possible
+* updated translations: serbian, russian, hungarian, vietnamese, ukrainian, polish, swedish, brazilian portuguese
+* require libgphoto2 2.5.10 or newer
+
+-------------------------------------------------------------------
+Wed Nov 18 21:51:19 UTC 2015 - meissner@suse.com
+
+- updated to 2.5.9 release
+  Now maintained (source and issue tracker) in GIT at https://github.com/gphoto/gphoto2 
+
+  * Added testcamera.pl, a tool for testing attached cameras with gphoto2.
+  * fixed some bugs
+  * report trigger capture in --ability
+  * capture-preview can honor filename and prefixes
+  * updated translations: french, ukrainian, vietnamese, polish, russian, italian
+
+-------------------------------------------------------------------
+Sun Jul  5 21:45:55 UTC 2015 - meissner@suse.com
+
+- updated to 2.5.8 release
+  * --keep-raw option added, which leaves non-JPEG files on camera during
+    capture or wait-event-and-download
+  * --show-preview option split out of --capture-preview. --show-preview
+    now displays the ascii art preview, --capture-preview no longer does.
+  * updated translations: french, ukrainian, vietnamese, russian, polish,
+    dutch, hungarian, esperanto, serbian, danish
+- updated gphoto2.keyring to use my new key
+
+-------------------------------------------------------------------
+Mon Dec 22 13:54:44 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.6 release
+  wait-event can now match on strings
+  translations updates
+  do not use trigger capture in multi-frame capture
+
+-------------------------------------------------------------------
+Sun Nov 16 07:56:58 UTC 2014 - meissner@suse.com
+
+- remove gpg-offline usage, now checked by source services.
+
+-------------------------------------------------------------------
+Sun Aug 17 18:26:12 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.5 release
+  manpage updated
+  updated translations
+  bugfix for DST usage in handling date/time widgets
+  adjusted wait time heuristics after capture
+  --debug-loglevel=(debug|verbose|data|all) option added to select debug verbosity
+  fixed --filename with cross-device usage
+
+-------------------------------------------------------------------
+Sun Mar 23 19:45:42 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.4 release
+  - --skip-existing option that skips if a local file would already exist
+  - %F for foldername inclusion added to format strings for --filename
+  - add the commandline arguments to the debug log
+
+-------------------------------------------------------------------
+Mon Jan 13 12:52:36 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.3 final
+  - --show-exif bugfix
+  - translations updates
+- make check
+
+-------------------------------------------------------------------
+Sun May  5 21:03:15 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.2 final
+  * new --reset option to reset usb devices.
+  * using --filename, if the camera reports 1. Jan 1970, fall back to
+    use the current date/time.
+  * translations updated: french, polish, vietnamese, russian, simplified chinese, danish
+- gpg tarball checking
+
+-------------------------------------------------------------------
+Sun Jan 27 21:25:15 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.1 final
+  - timing bugfixes after capture
+
+-------------------------------------------------------------------
+Wed Jan  9 14:59:21 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.0.2 temp snapshot
+ * Fixed that the meaning of --keep and --no-keep was switched.
+ * Allow passing absolute filenames to
+   -p, -d, -r/--rmdir, -m/--mkdir, -t, --show-info, --get-metadata,
+   --get-raw-data, --get-audio-data,
+   like e.g.:
+   gphoto2 -p /store_00010001/DCIM/100D7000/DSC_0001.JPG
+ * -L --quiet  now prints a list of all files, 1 per line.
+ * -l --quiet  now prints a list of all folders, 1 per line.
+
+-------------------------------------------------------------------
+Thu Sep 13 08:54:25 UTC 2012 - meissner@suse.com
+
+- updated to 2.5.0
+  - match libgphoto2 2.5.0 api release
+
+-------------------------------------------------------------------
+Mon Apr 16 00:01:27 CEST 2012 - meissner@suse.de
+
+- updated to 2.4.14
+  - --list-all-config
+  - translation updates
+  - small bugfixes
+
+-------------------------------------------------------------------
+Sat Dec 10 11:03:51 CET 2011 - meissner@suse.de
+
+- Updated to 2.4.11.1 temp snapshot
+  - aalib disabled by default
+  - linker issue fixed
+  - some translation updates
+  - bugfixes
+
+-------------------------------------------------------------------
+Tue Apr 19 15:13:12 CEST 2011 - meissner@suse.de
+
+- Updated to 2.4.11
+  - minor bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Aug 15 20:03:47 CEST 2010 - meissner@suse.de
+
+- Updated to 2.4.10
+  - --capture-movie added
+  - event handling fixed
+  - translations
+
+-------------------------------------------------------------------
+Fri Jun 18 09:14:21 CEST 2010 - meissner@suse.de
+
+- merge over the wait event loop fix from the branch.
+
+-------------------------------------------------------------------
+Sun Apr 11 23:21:53 CEST 2010 - meissner@suse.de
+
+- Updated to 2.4.9 final
+	- Capture main event loop rewritten to always use wait event
+	  to also support multiple image captures. (JPEG+RAW)
+	- Fixed various bugs and memory leaks.
+	- Translation updates.
+
+-------------------------------------------------------------------
+Mon Jan 25 11:27:16 CET 2010 - meissner@suse.de
+
+- updated to 2.4.8 final
+	- added CAPTURECOMPLETE event
+	- --bulb / -B addable for interval
+	- added readonly widget support
+	- translation updates
+
+-------------------------------------------------------------------
+Fri Aug 21 18:58:45 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.7 final
+	- fixed --port selection bug
+	- proper COPYING file (this package is GPL v2 and later)
+
+-------------------------------------------------------------------
+Mon Jul 27 16:34:38 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.5.2 temp snapshot
+	- wait-event now with second wait time
+	- added wait-event and wait-event-and-download and capture-tethered
+	  to shell mode.
+
+-------------------------------------------------------------------
+Thu Jun 25 20:13:56 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.5.1 temp snapshot
+        - 4GB files now possible (instead of 2GB limit)
+	- --set-config-index and --set-config-value
+        - save files based on umask
+
+-------------------------------------------------------------------
+Thu Apr  2 21:15:11 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.5 release
+  * fixed ctrl-c handling in tethered capture
+  * translation updates
+
+-------------------------------------------------------------------
+Thu Jan 22 23:46:31 CET 2009 - meissner@suse.de
+
+- upgraded to 2.4.4 release
+ * SIGUSR2 termination of interval capture
+ * translation updates
+
+-------------------------------------------------------------------
+Sun Oct 19 22:23:49 CEST 2008 - meissner@suse.de
+
+- upgraded to 2.4.3 release
+ * --port usb:XXX,YYY is now sufficient to specify
+   one of multiple cameras
+
+-------------------------------------------------------------------
+Sun Jul 13 23:35:04 CEST 2008 - meissner@suse.de
+
+- upgraded to 2.4.2 release
+ * translation updates
+ * --capture-image split into --capture-image and
+   --capture-image-and-download
+
+-------------------------------------------------------------------
+Fri Mar 28 22:48:37 CET 2008 - meissner@suse.de
+
+- upgraded to 2.4.1 release
+ * Made capture preview that saves to files work
+ * capture-image has no arguments
+ * version check for libgphoto2 fixed
+ * cs,da,it,vi translations updated
+
+-------------------------------------------------------------------
+Sun Feb 24 18:05:45 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro.
+
+-------------------------------------------------------------------
+Mon Jul 30 09:08:29 CEST 2007 - meissner@suse.de
+
+- upgrade to 2.4.0 final (only minimal other changes)
+
+-------------------------------------------------------------------
+Wed Jan 10 10:57:32 CET 2007 - meissner@suse.de
+
+- Upgraded to current TRUNK version.
+	- uses the new download features, no longer
+	  needs sizeof(IMAGE) memory.
+	- new --storage-info option.
+
+-------------------------------------------------------------------
+Tue Dec  5 15:38:06 CET 2006 - meissner@suse.de
+
+- upgraded to 2.3.0 final
+	- small fixes only
+
+-------------------------------------------------------------------
+Sat Oct 21 19:24:43 CEST 2006 - meissner@suse.de
+
+- buildrequires libgphoto2-devel
+
+-------------------------------------------------------------------
+Tue Oct 17 13:51:06 CEST 2006 - meissner@suse.de
+
+- Upgraded to 2.2.1.4.trunk
+	- moving headers around mostly.
+
+-------------------------------------------------------------------
+Wed Sep 27 11:25:43 CEST 2006 - meissner@suse.de
+
+- Upgraded to 2.2.0.2.trunk
+	- option handling changed to use popt exclusively
+	- shell fixes mostly (rmdir, cd)
+	- bugfixes
+
+-------------------------------------------------------------------
+Mon Jun 19 13:11:27 CEST 2006 - meissner@suse.de
+
+- Upgraded to 2.2.0 release.
+	- More shell commands (mkdir,put,*config)
+	- -u *.ogg *.mp3 for MTP devices
+	- Meta data support for MTP
+	- Wait for event handling
+	- Translation updates
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jul 12 08:00:18 CEST 2005 - meissner@suse.de
+
+- Upgraded to current 2.1.99head development branch.
+	- builds with libgphoto 2.1.99 branch.
+
+-------------------------------------------------------------------
+Fri Feb  4 16:06:20 CET 2005 - meissner@suse.de
+
+- Upgraded to current 2.1.6 development branch.
+	- property set support
+
+-------------------------------------------------------------------
+Thu Dec 16 13:36:24 CET 2004 - meissner@suse.de
+
+- Upgraded to 2.1.5:
+	- property list and get support
+
+-------------------------------------------------------------------
+Tue Oct 19 00:39:05 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Fri Jul 30 08:45:59 CEST 2004 - meissner@suse.de
+
+- Upgraded to current HEAD branch.
+	- work with libexif 0.6.10
+	- more translations.
+	- timelapsed capture support.
+	- bugfixes.
+
+-------------------------------------------------------------------
+Mon Jan 19 15:53:01 CET 2004 - meissner@suse.de
+
+- Upgraded to 2.1.4 release:
+	- bugfixes, translations, some small new features.
+
+-------------------------------------------------------------------
+Sat Jan 10 19:29:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Sep 15 17:15:49 CEST 2003 - meissner@suse.de
+
+- Added hungarian translation from Peter Varkoly.
+
+-------------------------------------------------------------------
+Tue Aug 12 16:45:50 CEST 2003 - meissner@suse.de
+
+- Upgraded to 2.1.2 release. (Not much changes inside).
+
+-------------------------------------------------------------------
+Tue May 13 16:35:28 CEST 2003 - meissner@suse.de
+
+- Upgraded to current CVS version.
+- Package missing manpage.
+
+-------------------------------------------------------------------
+Tue Dec  3 16:13:13 CET 2002 - meissner@suse.de
+
+- Upgraded to final 2.1.1 version.
+
+-------------------------------------------------------------------
+Mon Nov 18 17:36:19 CET 2002 - meissner@suse.de
+
+- Upgraded to 2.1.1rc1 release candidate snapshot.
+	- popt option handling.
+	- Lots of bugfixes.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Jul 29 12:00:20 CEST 2002 - meissner@suse.de
+
+- splitted away libgphoto2, updated to latest upstream.
+
+-------------------------------------------------------------------
+Sat Jul 27 17:04:41 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jul  2 14:16:44 CEST 2002 - meissner@suse.de
+
+- Upgraded to 2.1.0 release, removed fPIC hack.
+
+-------------------------------------------------------------------
+Tue Jun 25 16:00:17 CEST 2002 - uli@suse.de
+
+- build libgphoto2_port.a with -fPIC
+
+-------------------------------------------------------------------
+Wed Jun 19 10:33:22 CEST 2002 - meissner@suse.de
+
+- Upgraded to upstream 2.1.0rc2 (translation changes only)
+- Do not link against libreadline in the camera libraries.
+
+-------------------------------------------------------------------
+Tue Jun 18 11:33:00 CEST 2002 - meissner@suse.de
+
+- Upgraded to upstream 2.1.0rc1:
+   * support for periodic keep-alive-messages
+   * support for Canon EOS D60, Canon PowerShot A40, Canon PowerShot A30, 
+        Canon PowerShot S200, Canon Digital IXUS 330,
+        Canon PowerShot S10 (fixed it)
+   * Added SiPix Web2 support.
+
+-------------------------------------------------------------------
+Wed Apr  3 14:58:05 CEST 2002 - meissner@suse.de
+
+- Upgraded to current development snapshot.
+	- PTP camera support enhanced, bugfixes and enhancements in others.
+	- Fixed automake/autoconf problems.
+	- Started to enable documentation building.
+
+-------------------------------------------------------------------
+Mon Feb 25 17:02:45 CET 2002 - meissner@suse.de
+
+- Upgraded to 2.0 final, contains:
+	- Svensk translation
+	- Several fixes for bugs found during release candidate testing
+	- Documentation updates.
+	- Some fixes in the build / Makefile structure.
+
+-------------------------------------------------------------------
+Thu Feb 14 13:19:37 CET 2002 - meissner@suse.de
+
+- do not call gphoto in %post, use a static list for now. 
+- compile without static libraries, we do not use them anyway.
+
+-------------------------------------------------------------------
+Wed Feb 13 16:46:37 CET 2002 - meissner@suse.de
+
+- Usb agent added that chowns the device to the logged in user,
+  so users can use USB Digital Cameras without any need for setuid
+  wrappers. (Modified usb.usermap in post/postun of package)
+- added a patch to make digikam compile with the headers
+
+-------------------------------------------------------------------
+Mon Feb 11 16:57:09 CET 2002 - meissner@suse.de
+
+- Upgraded to beta5, lib64 patch is now included already in upstream source.
+
+-------------------------------------------------------------------
+Fri Jan 25 14:20:33 CET 2002 - meissner@suse.de
+
+- lib64 patches to fix s390x build
+
+-------------------------------------------------------------------
+Tue Jan 22 01:01:14 CET 2002 - ro@suse.de
+
+- help libtool with RPM_BUILD_ROOT by exporting LIBRARY_PATH 
+
+-------------------------------------------------------------------
+Mon Jan 21 17:08:26 CET 2002 - meissner@suse.de
+
+- update -> 2.0beta4dev9 (needs newer libusb)
+- moved from /opt/gnome back to /usr since gphoto2 is just a library,
+  without GUI components.
+- removed bugbuddy requirement, this was a gphoto 0.4.3ism.
+
+-------------------------------------------------------------------
+Fri Dec  7 12:36:30 CET 2001 - uli@suse.de
+
+- update -> 2.0beta3
+
+-------------------------------------------------------------------
+Mon Nov 19 12:00:44 CET 2001 - uli@suse.de
+
+- moved to /opt/gnome, added req. on bug-buddy (bug #11523)
+- bzipped tarball
+
+-------------------------------------------------------------------
+Mon Jul  2 16:35:41 CEST 2001 - uli@suse.de
+
+- disabled RT scheduling (may hang machine)
+
+-------------------------------------------------------------------
+Wed Jun 27 15:26:11 CEST 2001 - schwab@suse.de
+
+- Fix strcat calls.
+
+-------------------------------------------------------------------
+Tue Apr 17 17:07:28 CEST 2001 - uli@suse.de
+
+- 64 bit fixes for some backends
+
+-------------------------------------------------------------------
+Thu Mar  1 16:12:35 MET 2001 - egger@suse.de
+
+- Major overhaul. Use BuildRooting, RPM_OPT_FLAGS and
+  cleaned up specfile a lot. 
+
+-------------------------------------------------------------------
+Sun Feb 25 18:28:47 MET 2001 - egger@suse.de
+
+- Remove unnecessary dependencies from #neededforbuild,
+  especially imlib-config. 
+
+-------------------------------------------------------------------
+Tue Jan 30 23:35:01 CET 2001 - ro@suse.de
+
+- changed neededforbuild <imlibcfe> to <imlib-config>
+
+-------------------------------------------------------------------
+Sat Jan 27 15:47:17 CET 2001 - violiet@suse.de
+
+- added gphoto call gtk_set_locale() _BEFORE_ gtk_init().
+
+-------------------------------------------------------------------
+Thu Nov 30 08:58:40 CET 2000 - ro@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Tue Jun  6 17:08:38 MEST 2000 - uli@suse.de
+
+- update -> 0.4.3
+- moved docs to %{_docdir}
+
+-------------------------------------------------------------------
+Sat Apr  8 22:27:14 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Wed Mar  1 18:02:51 CET 2000 - uli@suse.de
+
+- moved man page to /usr/share
+
+-------------------------------------------------------------------
+Fri Jan 14 16:06:34 MET 2000 - uli@suse.de
+
+ - New version 0.4.2
+
+-------------------------------------------------------------------
+Thu Oct  7 18:40:30 MEST 1999 - uli@suse.de
+
+ - New version 0.4.0
+
+-------------------------------------------------------------------
+Tue Sep 28 19:03:41 MEST 1999 - uli@suse.de
+
+ - New version 0.3.9
+
+-------------------------------------------------------------------                                 
+Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
+
+- Reinserted old # Commandline: line.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 13 12:42:22 MEST 1999 - bs@suse.de
+
+- use gtk and glib instead of gtkn and glibn
+
+-------------------------------------------------------------------
+Thu Jul  8 17:29:39 MEST 1999 - uli@suse.de
+
+ - New version 0.3.4
+
+-------------------------------------------------------------------
+Wed Jun 23 13:40:05 MEST 1999 - uli@suse.de
+
+ - Spec file created from gphoto-0.3.2.tar.gz by autospec

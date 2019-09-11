@@ -1,0 +1,15 @@
+[Unit]
+Description=HylaFAX faxq (job scheduler service)
+ConditionPathExists=/var/spool/hylafax/etc/setup.cache
+PartOf=hylafax.target
+
+[Service]
+User=root
+Group=root
+Restart=always
+SuccessExitStatus=255
+ExecStart=/usr/sbin/faxq -D
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target 

@@ -1,0 +1,11 @@
+--- a/cpulimit.c	2014-12-26 10:24:53.788487238 +0100
++++ b/cpulimit.c	2014-12-26 10:25:17.024096912 +0100
+@@ -80,7 +80,7 @@
+ #endif
+ 
+ #ifndef VERSION
+-#define VERSION 2.4
++#define VERSION 2.5
+ #endif
+ 
+ //pid of the controlled process

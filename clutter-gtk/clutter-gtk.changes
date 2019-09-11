@@ -1,0 +1,570 @@
+-------------------------------------------------------------------
+Thu Dec 27 21:26:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + clutter-gtk-Add-private-header.patch: Add private header for
+    GtkClutterEmbed.
+  + clutter-gtk-Declare-private-callbacks-static.patch: Declare
+    private callbacks as static.
+
+-------------------------------------------------------------------
+Sat Mar 10 00:10:43 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:20 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug  9 10:40:01 UTC 2017 - zaitor@opensuse.org
+
+- Switch to meson build:
+  + Drop libtool BuildRequires.
+  + Add meson BuildRequires.
+  + Replace autotools macros for meson ones.
+  + Temporary disable check as it is missing from meson build.
+- Run spec-cleaner, modernize spec, pkgconfig BuildRequires added.
+
+-------------------------------------------------------------------
+Wed Aug  9 10:26:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.4:
+  + Add Meson build, in parallel with Autotools.
+  + Fix cruft in the Autotools build.
+  + Fix a snafu in the name of the getter for the
+    GtkClutterEmbed:use-layout-size property; the ABI is preserved.
+  + Bugs fixed: bgo#783431.
+
+-------------------------------------------------------------------
+Sun Sep 18 15:06:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + Ensure that embedding works when using GTK+ 3.22.
+  + Bump dependency of GTK+.
+  + Bugs fixed: bgo#767627, bgo#769097.
+  + Updated translations.
+- Drop clutter-gtk-fix-double-buffer.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug 29 22:00:16 UTC 2016 - zaitor@opensuse.org
+
+- Add clutter-gtk-fix-double-buffer.patch: embed: remove non double
+  buffer setting. This started causing problems with Gtk+ 3.21. As
+  the documentation explains, disabling double buffering might
+  trigger rendering issues (bgo#769097).
+
+-------------------------------------------------------------------
+Thu Apr 14 11:04:50 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Wed Mar 30 08:27:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Correctly handle HiDPI displays.
+  + Bump dependency of GTK.
+  + Bugs fixed: bgo#759375, bgo#758937.
+- Drop upstream fixed/applied patches:
+  + cg-Actor-fix-incorrect-allocation-logic.patch.
+  + cg-Actor-propagate-scale-factor.patch.
+  + cg-Silence-deprecation-warnings.patch.
+
+-------------------------------------------------------------------
+Sun Feb 21 09:20:44 UTC 2016 - zaitor@opensuse.org
+
+- Add upstream patches fixing various wayland and hidpi issues:
+  + cg-Actor-fix-incorrect-allocation-logic.patch (bgo#758937).
+  + cg-Actor-propagate-scale-factor.patch (bgo#758937).
+  + cg-Silence-deprecation-warnings.patch (bgo#759375).
+
+-------------------------------------------------------------------
+Mon Oct 12 22:07:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.6:
+  + Fix the build of the API reference so it's usable in DevHelp.
+  + Add missing symbol indices to the API reference.
+
+-------------------------------------------------------------------
+Sat Oct 10 21:42:17 UTC 2015 - zaitor@opensuse.org
+
+- Replace pkgconfig(clutter-x11-1.0) for pkgconfig(clutter-1.0)
+  BuildRequires: This is what configure really looks for now.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:50:00 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.6.4:
+  + Stop using deprecated API wherever possible.
+  + Fix embedding of the stage on Wayland when using the GDK
+    backend.
+  + Fix event handling on GDK and X11.
+  + Bugs fixed: bgo#754891, bgo#754944, bgo#755016, bgo#755017,
+    bgo#755053.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 30 13:25:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + Require Clutter 1.22.4 for the GDK-specific API needed to
+    retrieve the correct Cogl visual; this fixes Clutter embedding
+    inside GTK on systems using the nVidia proprietary Linux binary
+    driver.
+  + Documentation updates.
+  + Bugs fixed: bgo#747489, bgo#699202, bgo#697945.
+
+-------------------------------------------------------------------
+Mon Sep 22 11:16:43 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.6.0:
+  + Revert to the X11 backend by default; the GDK backend is not
+    ready for Wayland, yet.
+  + Improve support for Wayland.
+  + bgo#736564: problem with gtkclutterembed and gtkstack under
+    wayland.
+
+-------------------------------------------------------------------
+Thu Aug 21 15:47:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.5.4:
+  + Improve initialization sequence.
+  + Require GDK backend when using Clutter-GTK.
+  + Use subsurface protocol when using Wayland.
+  + Bugs fixed: bgo#695737, bgo#734905, bgo#734906.
+
+-------------------------------------------------------------------
+Wed Feb 19 18:36:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.5.2:
+  + Allow falling back to Cairo-based embedding of GTK+ widgets if
+    the Clutter-X11 API is not available.
+  + Support window scaling factor in GtkClutterEmbed.
+  + Bugs fixed: bgo#724055.
+
+-------------------------------------------------------------------
+Tue Mar 19 14:25:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Bump the dependency on GTK, to remove a workaround for broken
+    state propagation in the style code.
+  + Bump the dependency on Clutter, to enable using the 
+    accessibility support in GTK without conflicting with the one
+    in Clutter.
+  + Improve the multi-backend support, to prepare ourselves for the
+    shiny Wayland future.
+  + Bugs fixed: bgo#691468, bgo#695685, bgo#692399.
+
+-------------------------------------------------------------------
+Wed Dec 19 10:03:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  + Remove annotation from constructor function.
+  + Ensure the event filter installed by GtkClutterEmbed works
+    correctly when multiple embeds are realized/unrealized.
+  + Fix links in the DOAP file.
+  + Bugs fixed: bgo#686697, bgo#689879.
+
+-------------------------------------------------------------------
+Thu Oct 18 06:15:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Drop deprecated Clutter API usage from classes and examples.
+  + Ensure that GtkClutterEmbed works with GTK+ < 3.4.
+  + Documentation fixes.
+  + Track the size requests from the embedded ClutterStage.
+  + Bugs fixed: bgo#669877, bgo#681462, bgo#684171.
+  + Updated translations.
+- Add pkgconfig(gdk-3.0) and pkgconfig(gtk+-3.0) BuildRequires:
+  Configure explicitly uses those packages to configure folders.
+
+-------------------------------------------------------------------
+Fri Jun  8 09:38:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.3.2:
+  + Ensure that redraws follow resizing, to avoid the contents of
+    the Stage "lagging" behind.
+  + Allow GtkClutterEmbed to use the embedded stage layout manager
+    to request its size.
+  + Avoid warnings when hiding or removing GtkWidgets embedded
+    inside a GtkClutterActor.
+  + Make GtkClutterActor reactive by default.
+  + Bugs fixed: bgo#675867, bgo#677282, bgo#677493.
+
+-------------------------------------------------------------------
+Fri Mar 23 13:20:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2.0:
+  + Ensure that style changes are propagated to embedded widgets.
+  + Avoid segfaults when unrealizing.
+  + Introspection fixes.
+  + Bugs fixed: bgo#670662, bgo#667742.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Thu Dec  8 15:03:24 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-GtkClutter-1_0 subpackage.
+- Add typelib-1_0-GtkClutter-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:26:51 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Nov 23 21:31:28 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.1.2:
+  + Drop all flavours (since Clutter 1.9 and GTK+ 3.0 support
+    multiple backends with selection at run-time).
+  + Do not disable multi-device.
+  + Make GtkClutterEmbed expand by default.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:49 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 27 11:39:04 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.0.4:
+  + Build fixes
+    - Link against libm
+    - Fix build on non-X11 systems
+    - Fix out of tree builds
+- Drop clutter-gtk-link-libm.patch: fixed upstream.
+- Remove call to autoreconf: it was only needed for the patch
+  above.
+
+-------------------------------------------------------------------
+Sat Sep 17 23:10:40 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Sep  2 10:35:47 UTC 2011 - vuntz@opensuse.org
+
+- Add clutter-gtk-link-libm.patch: fix build by linking to libm.
+- Add call to autoreconf, needed by the patch.
+
+-------------------------------------------------------------------
+Wed Jul 27 12:10:28 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.0.2:
+  + Build fixes
+  + Make sure that GtkClutterActor works with GTK+ ≥ 3.1
+  + Check before unmapping the stage
+  + Fix for introspection annotations
+- Create lang subpackage now that there are translations.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Apr  5 12:54:26 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.0.0:
+  + Depend on gtk+ ≥ 3.0.0.
+  + Depend on clutter ≥ 1.4.0.
+  + Fix build for GLES environments.
+  + Use a global filter for GDK events.
+  + Fix various compiler warnings.
+  + Allow calling gtk_clutter_init* multiple times.
+  + Append the API version to the API reference.
+  + Do not export private symbols from the shared library.
+- Drop clutter-gtk-no-DISABLE_DEPRECATED.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar  3 13:11:18 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.91.8:
+  + Disable multi-device support in GDK to unbreak the event
+    filter function we use to dispatch events from GDK to Clutter.
+  + Update to the new StyleContext API.
+  + Remove the GdkColor/GtkStyle/ClutterColor utility API: the
+    old GtkStyle colors have been deprecated in GTK+.
+  + Use gettext to localize messages.
+
+-------------------------------------------------------------------
+Wed Mar  2 17:18:11 CET 2011 - vuntz@opensuse.org
+
+- Manually merged change from Factory (from Feb 16 09:23:10 CET),
+  and revert it since it's not needed with 0.90.x.
+- Remove the libclutter-gtk-0_90-0 Conflicts that was used as
+  workaround in 11.4: it's not needed anymore now that we have a
+  new higher version.
+
+-------------------------------------------------------------------
+Wed Feb 16 09:23:10 CET 2011 - vuntz@opensuse.org
+
+- Add libclutter-gtk-0_90-0 <= 0.90.1 Conflicts to
+  libclutter-gtk-0_10-0: in 11.3, we had clutter-gtk 0.90.1 and
+  upgrading to 11.4 will leave this package around. However, this
+  means that the 0.90.1 introspection files will be used by
+  default, since they have a higher version, and that's just plain
+  wrong. So we have to conflict with the old package.
+  Fix bnc#672202.
+
+-------------------------------------------------------------------
+Thu Dec 23 15:54:56 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.91.6:
+  + General clean up of the code.
+  + Introspection fixes.
+  + Moved the texture integration with gtk+ types into a separate
+    class, GtkClutterTexture.
+  + Fixes to work with gtk+ ≥ 2.91.7.
+  + Added translation domain.
+- Add clutter-gtk-no-DISABLE_DEPRECATED.patch to build without the
+  DISABLE_*_DEPRECATED flags: they create some issues on x86_64.
+
+-------------------------------------------------------------------
+Fri Dec 17 11:38:46 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.91.4:
+  + Update after the removal of gtk_widget_hide_all()
+- Changes from version 0.91.2:
+  + Depend on gtk+ ≥ 2.91.1
+  + Use cairo surfaces to replace the deprecated GdkPixmap.
+  + Remove GdkColormap.
+  + Use GtkWidget instead of GtkSizeRequest.
+  + Introspection and build fixes.
+- Changes from version 0.90.2:
+  + Depend on Clutter 1.3 and GTK+ 2.90, in preparation for the 1.4
+    and 3.0 cycles, respectively.
+  + Allow embedding GTK+ widgets inside the ClutterStage provided
+    by GtkClutterEmbed.
+  + Whenever possible, use a GDK filter function to let Clutter
+    update its internal state.
+  + Allow retrieving the GOptionGroup for Clutter-GTK, to defer
+    the initialization.
+  + Remove GtkClutterScrollable and GtkClutterViewport.
+- Change clutter-devel and gtk2-devel BuildRequires to
+  pkgconfig(clutter-x11-1.0) and pkgconfig(gtk+-x11-3.0).
+- Rename libclutter-gtk-0_10-0 to libclutter-gtk-1_0-0, following
+  the library name change.
+- Remove explicit gtk2-devel, clutter-devel Requires in devel
+  package: they will be automatically added the pkgconfig() way.
+- Drop clutter-fixes-from-git.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct  1 13:38:19 CEST 2010 - vuntz@opensuse.org
+
+- Add clutter-fixes-from-git.patch to fix build with
+  gobject-introspection 0.9.7 and later.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:48:13 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Sat Sep 18 14:30:04 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.10.8:
+  + Clean up build environment
+  + Fix deprecations from GTK 2.21.*
+
+-------------------------------------------------------------------
+Sun aug 15 13:33:25 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.6:
+  + Fix event handling with Clutter 1.3.*
+
+-------------------------------------------------------------------
+Sat Aug  7 11:50:43 CEST 2010 - vuntz@opensuse.org
+
+- Go back to a real upstream tarball instead of a git checkout.
+  This means we're going back to version 0.10.4 (instead of 0.90.x,
+  where there's no tarball).
+- Changes from version 0.10.4 compared to earlier 0.10 versions:
+  + Depend on gtk+ >= 2.19.5
+  + Depend on clutter >= 1.2.0
+  + Fix introspection annotations for GtkClutterEmbed,
+    GtkClutterScrollable and GtkClutterZoomable
+  + Do no use deprecated gtk+ API
+  + Documentation fixes
+- Package libclutter-gtk-0_90-0 gets renamed to
+  libclutter-gtk-0_10-0.
+
+-------------------------------------------------------------------
+Fri Apr  2 05:19:52 CEST 2010 - vuntz@opensuse.org
+
+- Improve description of package.
+
+-------------------------------------------------------------------
+Sun Mar 14 19:11:20 UTC 2010 - dimstar@opensuse.org
+
+- Update to git commit 649e233810, which is close to 0.90.1.
+  0.90 or newer is needed for gnome-games 2.29.92.
+- Drop clutter-gtk-no-deprecated.patch and remove the autoreconf
+  call.
+- Put make check in the proper check section.
+
+-------------------------------------------------------------------
+Thu Jan 28 12:35:52 CET 2010 - vuntz@opensuse.org
+
+- Add clutter-gtk-no-deprecated.patch to not use some clutter
+  deprecated API, and therefore fix the build.
+- Fix self-obsoletion of clutter-gtk-doc.
+
+-------------------------------------------------------------------
+Wed Dec 23 12:03:56 CET 2009 - vuntz@opensuse.org
+
+- Drop gir-repository BuildRequires: it's not needed with recent
+  gtk2 that have introspection data.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:20:51 CEST 2009 - vuntz@novell.com
+
+- Add gobject-introspection-devel and gir-repository BuildRequires
+  to build the gir data.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:33:01 CEST 2009 - vuntz@novell.com
+
+- Remove Obsoletes for libclutter-gtk-0_9-0.
+- Drop clutter-gtk-rpmlintrc as it's not needed anymore.
+
+-------------------------------------------------------------------
+Wed Jul 29 15:03:32 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10.2:
+  + Make GtkClutterEmbed derive from GtkContainer
+  + [util] Add error arguments to texture functions
+  + [zoomable] Add Zoomable interface
+  + [zoomable] Fix Introspection data generation
+  + [viewport] Implement Zoomable
+  + Update the Viewport example
+  + [examples] Add a Notebook case
+  + [viewport] Use the ::apply_transform vfunc
+  + Merge branch 'zoomable'
+  + [build] Use symbolic values for clutter-gtk version
+  + [build] Depend on Clutter 1.0.0
+  + [docs] Update the API Reference
+  + [docs] Update the Since tags
+- Rename libclutter-gtk-0_9-0 to libclutter-gtk-0_10-0 and make it
+  obsolete the old package.
+- Add clutter-rpmlintrc.
+
+-------------------------------------------------------------------
+Sun Jun 28 00:37:24 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.9.2:
+  + [embed] Fix on_stage_queue_redraw signature
+  + Build GObject introspection data for clutter-gtk
+  + Post-release bump to 0.9.1
+  + Update for Clutter 1.0 API changes
+  + Updates for 1.0 API changes in Clutter
+  + [examples] Use different sized stages
+  + Merge branch '1.0-integration'
+  + Use clutter_event_get_key_symbol()
+  + [build] Use the right inclusion path in the pc file
+  + Use variables for the include path and linker flags
+  + [doap] Update description and maintainer
+  + [build] Remove the reference to introspection.m4
+  + [build] Depend on the latest stable release of Clutter
+  + [build] Fixes for distcheck
+  + [build] Use AS_COMPILER_FLAGS
+  + [gtk-clutter-test] Update for the clutter timeline changes
+  + guard against hiding priv->stage when already destroyed during
+    dispose
+- Remove pango-devel and xmlto from BuildRequires
+- Merge -doc into -devel package since it only contains gtk-doc
+- Remove "%define debug_package_requires libclutter-gtk-0_9-0 =
+  %{version}-%{release}". Should not be needed
+- Remove Mesa-devel from Requires in -devel package
+
+-------------------------------------------------------------------
+Thu Jun 11 03:13:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.9.0:
+  + [embed] Do NOT realize from GtkWidgetClass::show
+  + Add gtk_clutter_init_with_args()
+  + Use ClutterText in the events example
+  + Ensure that the viewport is updated when resizing
+  + Rename cogl_translatex() to cogl_translate()
+  + Move to ClutterClone
+  + Load the image asynchronously
+  + Make the Stage redraw cycle part of GTK+
+  + [docs] Rename SGML to XML
+  + [docs] Remove newline in the version
+  + [viewport] Remove units-based API
+  + [docs] Remove the get_originu() method
+  + [embed] Use GTK+ settings
+  + Change the GtkClutter macro namespace
+  + Move init functions out of Embed source
+  + [tests] Remove compiler warnings
+  + [build] Improve build environment
+  + [docs] Improve the documentation
+  + [readme] Update the dependencies
+  + [examples] Tweak multistage example
+  + [gtk-clutter-embed] Fill in the unicode_value field of ClutterKeyEvent
+  + [embed] Update "queue-redraw" signal handler prototype
+
+-------------------------------------------------------------------
+Thu Apr 30 02:21:09 CEST 2009 - vuntz@novell.com
+
+- Pass --disable-static to configure and remove .la files.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Sat Feb 21 22:11:00 CET 2009 - vuntz@novell.com
+
+- Update to version 0.8.3:
+  + Require Clutter >= 0.8.7
+  + Emit the ::activate and ::deactivate signals on the stage when
+    we get a focus event on the embedding widget
+  + Propagate the modifiers state for motion events
+
+-------------------------------------------------------------------
+Wed Oct 22 10:44:31 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}.
+
+-------------------------------------------------------------------
+Sun Oct 19 13:51:18 EST 2008 - mboman@suse.de
+
+- Update to version 0.8.2:
+  + Fix the GdkPixbuf loading for images without an alpha channel.
+  + Update the layout of the stage when getting an allocation from
+    GtkClutterEmbed.
+  + Fix bug #1114 - Mouse wheel events ignored in GtkClutterEmbed
+  + Add more API for extracting the style colors from a GtkWidget
+
+-------------------------------------------------------------------
+Tue Aug 19 23:52:51 CEST 2008 - maw@suse.de
+
+- Fix up the -devel subpackage's requirements.
+
+-------------------------------------------------------------------
+Mon Aug 11 16:04:32 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 0.8.1
+ * Fix the pkg-config file
+ * Really fix bug #907 and enable motion events
+
+-------------------------------------------------------------------
+Fri Aug  1 17:21:46 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package 
+
+-------------------------------------------------------------------
+Wed Jul 16 10:40:26 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 0.8.0
+ * lot of changes
+ * new API
+
+-------------------------------------------------------------------
+Fri Jul  4 10:39:08 EDT 2008 - hfiguiere@suse.de
+
+- Initial package
+

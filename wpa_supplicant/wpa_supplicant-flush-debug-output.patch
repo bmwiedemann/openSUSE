@@ -1,0 +1,51 @@
+Index: src/utils/wpa_debug.c
+===================================================================
+--- a/src/utils/wpa_debug.c
++++ b/src/utils/wpa_debug.c
+@@ -45,6 +45,7 @@ void wpa_debug_print_timestamp(void)
+ 	if (out_file) {
+ 		fprintf(out_file, "%ld.%06u: ", (long) tv.sec,
+ 			(unsigned int) tv.usec);
++		fflush(out_file);
+ 	} else
+ #endif /* CONFIG_DEBUG_FILE */
+ 	printf("%ld.%06u: ", (long) tv.sec, (unsigned int) tv.usec);
+@@ -111,6 +112,7 @@ void wpa_printf(int level, const char *f
+ 		if (out_file) {
+ 			vfprintf(out_file, fmt, ap);
+ 			fprintf(out_file, "\n");
++			fflush(out_file);
+ 		} else {
+ #endif /* CONFIG_DEBUG_FILE */
+ 		vprintf(fmt, ap);
+@@ -146,6 +148,7 @@ static void _wpa_hexdump(int level, cons
+ 			fprintf(out_file, " [REMOVED]");
+ 		}
+ 		fprintf(out_file, "\n");
++		fflush(out_file);
+ 	} else {
+ #endif /* CONFIG_DEBUG_FILE */
+ 	printf("%s - hexdump(len=%lu):", title, (unsigned long) len);
+@@ -191,12 +194,14 @@ static void _wpa_hexdump_ascii(int level
+ 			fprintf(out_file,
+ 				"%s - hexdump_ascii(len=%lu): [REMOVED]\n",
+ 				title, (unsigned long) len);
++			fflush(out_file);
+ 			return;
+ 		}
+ 		if (buf == NULL) {
+ 			fprintf(out_file,
+ 				"%s - hexdump_ascii(len=%lu): [NULL]\n",
+ 				title, (unsigned long) len);
++			fflush(out_file);
+ 			return;
+ 		}
+ 		fprintf(out_file, "%s - hexdump_ascii(len=%lu):\n",
+@@ -221,6 +226,7 @@ static void _wpa_hexdump_ascii(int level
+ 			pos += llen;
+ 			len -= llen;
+ 		}
++		fflush(out_file);
+ 	} else {
+ #endif /* CONFIG_DEBUG_FILE */
+ 	if (!show) {

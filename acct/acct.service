@@ -1,0 +1,13 @@
+[Unit]
+Description=Process accounting
+Documentation=man:accton(8)
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStartPre=/usr/bin/chmod 600 /var/log/account/pacct
+ExecStart=/usr/sbin/accton /var/log/account/pacct
+ExecStop=/usr/sbin/accton off
+
+[Install]
+WantedBy=multi-user.target

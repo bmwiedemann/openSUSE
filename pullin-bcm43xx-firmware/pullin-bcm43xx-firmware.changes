@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Sep  5 11:41:59 UTC 2017 - bwiedemann@suse.com
+
+- Mark .service file as non-executible (boo#1053657)
+
+-------------------------------------------------------------------
+Sun Nov 30 12:50:10 UTC 2014 - bwiedemann@suse.com
+
+- initial version to pull in broadcom firmware (bnc#904025)
+

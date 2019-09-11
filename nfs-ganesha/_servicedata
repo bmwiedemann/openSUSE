@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/SUSE/nfs-ganesha.git</param>
+          <param name="changesrevision">6b4788aff033da44d78786fc47cad0bfc980df25</param></service></servicedata>

@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Thu Jun 23 06:47:54 UTC 2016 - coolo@suse.com
+
+- updated to 1.058
+   see /usr/share/doc/packages/perl-Net-SSLGlue/Changes
+
+  1.058 2016/06/17
+  - RT#109887 - fix t/01_load.t in case only very old version of LWP was
+    installed which did not have LWP::Protocol::https
+
+-------------------------------------------------------------------
+Thu Apr  7 09:45:56 UTC 2016 - coolo@suse.com
+
+- updated to 1.057
+   see /usr/share/doc/packages/perl-Net-SSLGlue/Changes
+
+  1.057 2016/04/04
+  - removed warning with very old versions of LWP where
+    LWP::Protocol::https::VERSION was not defined yet.
+    Thanks to denis[AT]fateyev[DOT]com for reporting
+  
+  1.056 2015/10/31
+  - fix another memory leak which happened on data connections only
+  - make sure that context reuse is done properly, see
+    https://github.com/noxxi/p5-net-sslglue/pull/3
+
+-------------------------------------------------------------------
+Fri Nov  6 10:13:55 UTC 2015 - coolo@suse.com
+
+- updated to 1.055
+   see /usr/share/doc/packages/perl-Net-SSLGlue/Changes
+
+  1.055 2015/10/25
+  - fix memory leak in Net::SSLGlue::Socket, RT#107816.
+    Thanks to kasyap.mr[AT]gmail[DOT]com  for reporting
+
+-------------------------------------------------------------------
+Wed Apr 29 10:18:10 UTC 2015 - coolo@suse.com
+
+- updated to 1.054
+   see /usr/share/doc/packages/perl-Net-SSLGlue/Changes
+
+  1.054 2015/04/28
+  - if a version of libnet is detected which already supports TLS (i.e.
+    libnet 3.0+) warn and use this instead.
+
+-------------------------------------------------------------------
+Tue Apr 14 20:53:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.053
+   see /usr/share/doc/packages/perl-Net-SSLGlue/Changes
+
+  1.053 2014/05/28
+  - if current LWP is detected is use this mostly unpatched
+  - fix Net::SSLGlue::FTP to use the same hostname when verifying the
+    certificate of the data connection
+  
+  1.052 2014/01/16
+  - FTPS: reuse same SSL session for control and data channnel to work
+    with default configuration of proftpd. 
+  
+  1.051 2014/01/10
+  - fixes to Net::FTP SSL support
+  - examples/ftps-tests.pl has lots of tests for FTP against live server
+  
+  1.05 2014/01/09
+  - added support for SSL+IPv6 in Net::FTP
+  - new package Net::SSLGlue::Socket for a socket which combines plain,ssl,ipv6
+  - fixed some tests - some checks for bad certificates do not work anymore
+    because these certs were fixed
+
+-------------------------------------------------------------------
+Wed Dec 18 10:41:09 UTC 2013 - coolo@suse.com
+
+- updated to 1.04
+ replace Net::Cmd::getline via Net::SSLGlue::POP3 because it assumed, that it
+ just needs to wait for read events on the sockets - which is not the case for
+ SSL (e.g. SSL_WANT_READ, SSL_WANT_WRITE).
+ Fixes https://rt.cpan.org/Ticket/Display.html?id=87507.
+ fixed documentation for Net::SSLGlue::POP3
+ added Net::SSLGlue::POP3
+
+-------------------------------------------------------------------
+Sun May  5 12:23:53 UTC 2013 - mc@suse.com
+
+- update to version 1.01
+  * Net::SSLGlue::LDAP as wrongly named Net::DNSGlue::LDAP
+  * Net::SSLGlue::SMTP: save hello domain from last hello call, so that the 
+    hello after the starttls uses the same domain argument.
+  * Net::SSLGlue::SMTP: fixed stripping of port from host/ip for name 
+    verification. Added hello after successful starttls. Extented tests
+    to check, if we can actually talk after starttls.
+  * fixed wrong position for include encode_base64 and uri_unescape in *::LWP.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:12 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed May  4 10:56:06 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.6
+  fixed english, thanks to dom, https://rt.cpan.org/Ticket/Display.html?id=46284
+
+-------------------------------------------------------------------
+Thu Mar 31 11:51:59 UTC 2011 - coolo@novell.com
+
+- update to 0.5:
+  documentation fixes: http://rt.cpan.org/Ticket/Display.html?id=65258
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:12 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 20 13:51:48 UTC 2010 - chris@computersalat.de
+
+- update to 0.4
+  * added Changes, put examples into examples/ dir
+- 0.3 2010/05/13
+  * rewrite parts of Net::SSLGlue::LWP so that it sends the correct request
+    to the peer even if https_proxy is used. In former version it ommitted
+    the HTTP version number in the request (thus the request was invalid).
+    Bug report by PMOONEY https://rt.cpan.org/Ticket/Display.html?id=57365
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon May 18 12:36:07 CEST 2009 - mc@suse.de
+
+- initial version 0.2 
+

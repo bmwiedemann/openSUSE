@@ -1,0 +1,4150 @@
+-------------------------------------------------------------------
+Thu Feb 21 12:44:01 CET 2019 - vliaskovitis@suse.com
+
+- Add issue5509-fix-utf-8-validation-issue.patch (bsc#1118118)
+  Fixes https://github.com/apple/cups/issues/5509
+- Remove libcupscgi1, libcupsmime1, libcupsppdc1 from
+  baselibs.conf
+
+-------------------------------------------------------------------
+Mon Dec 10 14:09:12 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 2.3b6:
+  This is the sixth beta of the CUPS 2.3 series which adopts the
+  new CUPS license, adds support for IPP presets and finishing
+  templates, and fixes a number of bugs and "polish" issues.
+  For details see https://github.com/apple/cups/releases
+  or the CHANGES.md file.
+  Backward incompatible changes:
+  * The cupsaddsmb program has been removed (Issue #5449)
+  * The cupstestdsc program has been removed (Issue #5450)
+  * The cupscgi, cupsmime, and cupsppdc support libraries
+    are no longer installed as shared libraries.
+  Changes include:
+  * CVE-2018-4700: Linux session cookies used a predictable
+    random number seed.
+  * The lpoptions command now works with IPP Everywhere printers
+    that have not yet been added as local queues (Issue #5045)
+  * The lpadmin command would create a non-working printer
+    in some error cases (Issue #5305)
+  * The scheduler would crash if an empty AccessLog directive
+    was specified (Issue #5309)
+  * The scheduler did not idle-exit on some
+    Linux distributions (Issue #5319)
+  * Fixed a regression in the changes to ippValidateAttribute
+    (Issue #5322, Issue #5330)
+  * Fixed a crash bug in the Epson dot matrix driver (Issue #5323)
+  * Automatic debug logging of job errors did not work
+    with systemd (Issue #5337)
+  * The web interface did not list the
+    IPP Everywhere "driver" (Issue #5338)
+  * The scheduler did not report all of the supported job options
+    and values (Issue #5340)
+  * The IPP Everywhere "driver" now properly supports
+    face-up printers (Issue #5345)
+  * Fixed some typos in the label printer drivers (Issue #5350)
+  * Setting the Community name to the empty string in snmp.conf
+    now disables SNMP supply level monitoring by all the
+    standard network backends (Issue #5354)
+  * Multi-file jobs could get stuck if the backend failed
+    (Issue #5359, Issue #5413)
+  * The IPP Everywhere "driver" no longer does local filtering
+    when printing to a shared CUPS printer (Issue #5361)
+  * The lpadmin command now correctly reports IPP errors
+    when configuring an IPP Everywhere printer (Issue #5370)
+  * Fixed some memory leaks discovered by Coverity (Issue #5375)
+  * The PPD compiler incorrectly terminated JCL options
+    (Issue #5379)
+  * The cupstestppd utility did not generate errors for
+    missing/mismatched CloseUI/JCLCloseUI keywords (Issue #5381)
+  * The scheduler now reports the actual location
+    of the log file (Issue #5398)
+  * The generated PPD files for IPP Everywhere printers
+    did not contain the cupsManualCopies keyword (Issue #5433)
+  * Kerberos credentials might be truncated (Issue #5435)
+  * The handling of MaxJobTime 0 did not match the documentation
+    (Issue #5438)
+  * Fixed a bug adding a queue with the -E option (Issue #5440)
+  * The scheduler did not validate that required initial request
+    attributes were in the operation group (rdar://41098178)
+  * Fixed an issue with HTTP Digest authentication
+    (rdar://41709086)
+  * The scheduler could crash when job history was purged
+    (rdar://42198057)
+  * Fixed a crash bug when mapping PPD duplex options
+    to IPP attributes (rdar://46183976)
+  * Fixed a memory leak for some IPP (extension) syntaxes.
+  * The snmp backend is now deprecated.
+- issue5453.patch fixes https://github.com/apple/cups/issues/5453
+- Version upgrade to 2.3b5:
+  This is the fifth beta of the CUPS 2.3 series which adopts the
+  new CUPS license, adds support for IPP presets and finishing
+  templates, and fixes a number of bugs and "polish" issues.
+  For details see https://github.com/apple/cups/releases
+  or the CHANGES.md file.
+  Changes include:
+  * The ipptool program no longer checks for duplicate attributes
+    when running in list or CSV mode (Issue #5278)
+  * The cupsCreateJob, cupsPrintFile2, and cupsPrintFiles2 APIs
+    did not use the supplied HTTP connection (Issue #5288)
+  * Fixed another crash in the scheduler when adding an IPP
+    Everywhere printer (Issue #5290)
+  * Added a workaround for certain web browsers that
+    do not support multiple authentication schemes
+    in a single response header (Issue #5289)
+  * Fixed policy limits containing the All operation (Issue #5296)
+  * The scheduler was always restarted after idle-exit
+    with systemd (Issue #5297)
+  * The mailto notifier did not wait for the
+    welcome message (Issue #5312)
+  * Fixed a parsing bug in the pstops filter (Issue #5321)
+  * The scheduler allowed environment variables to be specified
+    in the cupsd.conf file (rdar://37836779, rdar://37836995,
+    rdar://37837252, rdar://37837581)
+  * Fax queues did not support pause (p) or
+    wait-for-dialtone (w) characters (rdar://39212256)
+  * The scheduler did not validate notify-recipient-uri values
+    properly (rdar://40068936)
+  * The IPP parser allowed invalid group tags (rdar://40442124)
+  * Fixed a parsing bug in the new authentication code.
+- issue5296_fix_policy_limits_using_All.patch is obsolete
+  because it is fixed upstream (see "Issue #5296" above)
+
+-------------------------------------------------------------------
+Thu Oct 18 05:42:23 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch let-cupsd-start-after-network.patch
+  Let cuspd start after possible network connection (boo#1111351)
+  This let cupsd also stop before a used network connection goes
+  down, hence the cusp does not lock due waiting on remote printers.
+
+-------------------------------------------------------------------
+Fri Sep 14 05:30:55 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix warning message upon update (boo#1050845): Remove template
+  service cups-lpd@ from service_* macro in scriptlets.
+
+-------------------------------------------------------------------
+Wed Apr 18 13:44:46 CEST 2018 - jsmeix@suse.de
+
+- issue5296_fix_policy_limits_using_All.patch fixes
+  https://github.com/apple/cups/issues/5296
+  by only the actually relevant part of
+  https://github.com/apple/cups/commit/0873f681e43c04972b3d6bc90bdbdedb29e6e913
+  (follow-up of boo#936309 and bsc#577936 starting at comment 13)
+
+-------------------------------------------------------------------
+Wed Mar 28 13:58:32 CEST 2018 - jsmeix@suse.de
+
+- Version upgrade to 2.3b4:
+  This is the fourth beta of the CUPS 2.3 series.
+  For details see https://github.com/apple/cups/releases
+  or the CHANGES.md file.
+  Changes include:
+  * Additional security fixes for:
+    bsc#1061066 DBUS library aborts caller process
+    in _dbus_check_is_valid_utf8 (in particular that aborts cupsd)
+    and
+    bsc#1087018 CVE-2017-18248: cups: The add_job function in
+    scheduler/ipp.c in CUPS before 2.2.6, when D-Bus support is
+    enabled, can be crashed by remote attackers by sending print
+    jobs with an invalid username, related to a D-Bus notification
+    which are the CUPS upstream issues
+    https://github.com/apple/cups/issues/5143
+    Remote DoS attack against cupsd via invalid username
+    and malicious D-Bus library
+    and
+    https://github.com/apple/cups/issues/5186
+    squash non-UTF-8 strings into ASCII on plain IPP level
+    and
+    https://github.com/apple/cups/issues/5229
+    persistently substitute invalid job attributes
+    with default values - not only in add_job
+    see also
+    bsc#1087072 dbus-1:
+    Disable assertions to prevent un-expected DDoS attacks
+  * NOTICE: Raw print queues are now deprecated (Issue #5269)
+    so that now there is a warning message when you
+    add or modify a queue to use the "raw driver" but
+    raw printing will continue to work through CUPS 2.3.x, cf.
+    https://lists.cups.org/pipermail/cups/2018-March/074060.html
+  * Kerberized printing to another CUPS server did not work
+    correctly (Issue #5233)
+  * The scheduler now supports using temporary print queues
+    for older IPP/1.1 print queues like those shared by CUPS 1.3
+    and earlier (Issue #5241)
+  * Systemd did not restart cupsd when configuration changes
+    were made that required a restart (Issue #5263)
+  * Fixed an Avahi crash bug in the scheduler (Issue #5268)
+  * TLS connections now properly timeout (rdar://34938533)
+  * Removed support for the `-D_PPD_DEPRECATED=""` developer
+    cheat - the PPD API should no longer be used.
+  * Removed support for `-D_IPP_PRIVATE_STRUCTURES=1` developer
+    cheat - the IPP accessor functions should be used instead.
+  * The symlink rastertodymo -> rastertolabel
+    in /usr/lib/cups/filter is no longer provided.
+- Removed fix_filter_Makefile.patch
+  because since CUPS 2.3b4 it is fixed in the upstream code via
+  https://github.com/apple/cups/issues/5247 more precisely via
+  https://github.com/apple/cups/commit/ab89234de2d9bf36bb59f2aa4873d98e95ca4df2
+
+-------------------------------------------------------------------
+Thu Feb  8 14:21:22 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 2.3b3:
+  This is the third beta of the CUPS 2.3 series.
+  For details see https://github.com/apple/cups/releases
+  Changes include:
+  * More fixes for printing to old CUPS servers (Issue #5211)
+  * Additional changes for the scheduler to substitute
+    default values for invalid job attributes
+    when running in "relaxed conformance" mode
+    (Issue #5229 - a follow-up of issues #5186 and #5143)
+  A detailed list of changes can be found in the CHANGES.md file.
+- fix_filter_Makefile.patch fixes
+  https://github.com/apple/cups/issues/5247
+
+-------------------------------------------------------------------
+Thu Jan 18 10:26:58 CET 2018 - jsmeix@suse.de
+
+- Version upgrade to 2.3b2:
+  This is the second beta of the CUPS 2.3 series.
+  For details see https://github.com/apple/cups/releases
+  Changes include:
+  * Printing to old CUPS servers has been fixed (Issue #5211)
+  A detailed list of changes can be found in the CHANGES.md file.
+
+-------------------------------------------------------------------
+Wed Dec 20 11:40:23 CET 2017 - jsmeix@suse.de
+
+- Version upgrade to 2.3b1:
+  This is the first beta of the CUPS 2.3 series which
+  adopts the new CUPS license (Apache License, Version 2.0),
+  adds support for IPP presets and finishing templates,
+  and fixes a number of bugs and "polish" issues.
+  For details see https://github.com/apple/cups/releases
+  Changes include:
+  * CUPS is now provided under the Apache License, Version 2.0
+  * The CUPS library now supports the latest HTTP Digest
+    authentication specification including support for SHA-256
+    (Issue #4862)
+  * Dropped RSS subscription management from the
+    web interface (Issue #5012)
+  * The lpadmin command now provides a better error message when
+    an unsupported System V interface script is used (Issue #5111)
+  * The SSLOptions directive now supports MinTLS and MaxTLS
+    options to control the minimum and maximum TLS versions
+    that will be allowed, respectively (Issue #5119)
+  * Dropped hard-coded CGI scripting language support (Issue #5124)
+  * The scheduler now substitutes default values for invalid
+    job attributes when running in "relaxed conformance"
+    mode (Issue #5186 - a follow-up of issue #5143)
+  A detailed list of changes can be found in the CHANGES.md file.
+
+-------------------------------------------------------------------
+Tue Nov 14 13:23:21 UTC 2017 - christophe@krop.fr
+
+- Make sure cups-libs-<targettype> is removed.
+
+-------------------------------------------------------------------
+Tue Nov  7 14:40:42 CET 2017 - jsmeix@suse.de
+
+- Version upgrade to 2.2.6:
+  CUPS 2.2.6 is a general bug fix release.
+  For details see https://github.com/apple/cups/releases
+  Changes include:
+  * DBUS notifications could crash the scheduler (Issue #5143)
+    (see also bsc#1061066 "DBUS library aborts caller process")
+  A detailed list of changes can be found in the CHANGES.md file.
+
+-------------------------------------------------------------------
+Fri Oct 20 14:01:23 CEST 2017 - jsmeix@suse.de
+
+- Use again the baselibs.conf from Fri Oct 13 11:11:10 UTC 2017
+  that got broken by the change on Wed Oct 18 06:11:10 UTC 2017.
+- Version upgrade to 2.2.5:
+  CUPS 2.2.5 is a general bug fix release.
+  For details see https://github.com/apple/cups/releases
+- Version upgrade to 2.2.4:
+  CUPS 2.2.4 is a general bug fix release.
+  For details see https://github.com/apple/cups/releases
+- Removed
+  0001-Update-cupsEnumDests-implementation-to-return-early-if-all.patch
+  0002-Save-work-on-Avahi-code.patch
+  0003-Avahi-fixes-for-cupsEnumDests.patch
+  because since CUPS 2.2.4 it is fixed in the upstream code
+  via https://github.com/apple/cups/pull/4989 more precisely via
+  https://github.com/apple/cups/commit/a2187a63425a3d6c05de1e1cbf8c26fd39a1aced
+  https://github.com/apple/cups/commit/657c5b5f91e6d5120c4ad7b118cf9098dd27f03d
+  https://github.com/apple/cups/commit/3fae3b337df0be1a766857be741173d8a9915da7
+
+-------------------------------------------------------------------
+Wed Oct 18 06:11:10 UTC 2017 - opensuse@dstoecker.de
+
+- Fix typo in requires
+
+-------------------------------------------------------------------
+Fri Oct 13 11:11:10 UTC 2017 - jengelh@inai.de
+
+- Implement shared library packaging guideline [boo#862112]
+- Update package descriptions.
+
+-------------------------------------------------------------------
+Sat Sep 30 08:52:42 UTC 2017 - jengelh@inai.de
+
+- Remove redundant Requires(pre) line — the use of %post -p
+  already implies it.
+
+-------------------------------------------------------------------
+Wed Sep 20 08:24:24 UTC 2017 - schwab@suse.de
+
+- Pre-require user(lp) in cups-libs
+
+-------------------------------------------------------------------
+Thu Jun  8 15:52:34 CEST 2017 - jsmeix@suse.de
+
+- In /usr/lib/tmpfiles.d/cups.conf use
+  group 'root' for /run/cups/certs (boo#1042916).
+
+-------------------------------------------------------------------
+Fri Jun  2 10:32:33 CEST 2017 - jsmeix@suse.de
+
+- Major backward incompatible change since CUPS 2.2.0:
+  There is no longer the directory /etc/cups/interfaces because
+  since CUPS 2.2.0 so called "System V style Interface Scripts"
+  are no longer supported for security reasons (see below the
+  entry about the changes included in CUPS 2.2.0).
+- Disabled cups-2.1.0-cups-systemd-socket.patch
+  because it does no longer apply which needs to be examined
+  and decided by someone who knows about systemd internals.
+- Disabled
+  0001-Update-cupsEnumDests-implementation-to-return-early-if-all.patch
+  0002-Save-work-on-Avahi-code.patch
+  0003-Avahi-fixes-for-cupsEnumDests.patch
+  because they do no longer apply which needs to be examined
+  and decided by someone who knows about Avahi internals.
+- Version upgrade to 2.2.3:
+  CUPS 2.2.3 is a general bug fix release.
+  See https://github.com/apple/cups/releases
+  Changes include:
+  * The IPP backend could get into an infinite loop for certain
+    errors, causing a hung queue (rdar://problem/28008717)
+  * The scheduler could pause responding to client requests in
+    order to save state changes to disk (rdar://problem/28690656)
+  * Added support for PPD finishing keywords
+    (Issue #4960, Issue #4961, Issue #4962)
+  * The IPP backend did not send a media-col attribute for just
+    the source or type (Issue #4963)
+  * IPP Everywhere print queues did not always support all print
+    qualities supported by the printer (Issue #4953)
+  * IPP Everywhere print queues did not always support all media
+    types supported by the printer (Issue #4953)
+  * The IPP Everywhere PPD generator did not return useful error
+    messages (Issue #4954)
+  * The IPP Everywhere finishings support did not work correctly
+    with common UI or command-line options (Issue #4976)
+  * Fixed an error handling issue for the network backends
+    (Issue #4979)
+  * The "reprint job" option was not available for some canceled
+    jobs (Issue #4915)
+  * Updated the job listing in the web interface (Issue #4978)
+  A detailed list of changes can be found in the CHANGES.txt file.
+- Version upgrade to 2.2.2:
+  CUPS 2.2.2 is a general bug fix release.
+  See https://github.com/apple/cups/releases
+  Changes include:
+  * Fixed some issues with IPP Everywhere printer support
+    (Issue #4893, Issue #4909, Issue #4916, Issue #4921,
+     Issue #4923, Issue #4932, Issue #4933, Issue #4938)
+  * The rastertopwg filter could crash with certain input
+    (Issue #4942)
+  * The scheduler did not detect when an encrypted connection
+    was closed by the client on Linux (Issue #4901)
+  * The cups-lpd program did not catch all legacy usage
+    of ISO-8859-1 (Issue #4899)
+  * The scheduler no longer creates log files on startup
+    (<rdar://problem/28332470>)
+  * The ippContainsString function now uses case-insensitive
+    comparisons for mimeMediaType, name, and text values in
+    conformance with RFC 2911.
+  * The network backends now log the addresses that were found
+    for a printer (<rdar://problem/29268474>)
+  * Let's Encrypt certificates did not work when the hostname
+    contained uppercase letters (Issue #4919)
+  * Fixed reporting of printed pages in the web interface
+    (Issue #4924)
+  * Updated systemd config files (Issue #4935)
+  A detailed list of changes can be found in the CHANGES.txt file.
+- Version upgrade to 2.2.1:
+  CUPS 2.2.1 is a general bug fix release.
+  See https://github.com/apple/cups/releases
+  Changes include:
+  * Added "CreateSelfSignedCerts" directive for cups-files.conf
+    to control whether the scheduler automatically creates
+    its own self-signed X.509 certificates for TLS connections
+    (Issue #4876)
+  * http*Connect did not handle partial failures (Issue #4870)
+  * cupsHashData did not use the correct hashing algorithm
+    (<rdar://problem/28209220>)
+  * Updated man pages (PR #4885)
+  A detailed list of changes can be found in the CHANGES.txt file.
+- Version upgrade to 2.2.0:
+  CUPS 2.2.0 adds support for local IPP Everywhere print queues
+  and includes several performance and security improvements.
+  See https://github.com/apple/cups/releases
+  Changes include:
+  * Normalized the TLS certificate validation code and added
+    additional error messages to aid troubleshooting.
+  * http*Connect did not work on Linux when cupsd was not running
+    (Issue #4870)
+  * The --no-remote-any option of cupsctl had no effect
+    (Issue #4866)
+  * http*Connect did not return early when all addresses failed
+    (Issue #4870)
+  * The IPP backend did not validate TLS credentials properly.
+  * The printer-state-message attribute was not cleared after a
+    print job with no errors (Issue #4851)
+  * The CUPS-Add-Modify-Class and CUPS-Add-Modify-Printer
+    operations did not always return an error for failed
+    adds (Issue #4854)
+  * PPD files with names longer than 127 bytes did not work
+    (Issue #4860)
+  * CUPS now supports Let's Encrypt certificates on Linux.
+  * All CUPS commands now support POSIX options (Issue #4813)
+  * The scheduler now restarts faster (Issue #4760)
+  * Improved performance of web interface with large numbers
+    of jobs (Issue #3819)
+  * Encrypted printing can now be limited to only trusted
+    printers and servers (<rdar://problem/25711658>)
+  * The scheduler now advertises PWG Raster attributes for
+    IPP Everywhere clients (Issue #4428)
+  * The scheduler now logs informational messages for jobs
+    at LogLevel "info" (Issue #4815)
+  * The scheduler now uses the getgrouplist function
+    when available (Issue #4611)
+  * The IPP backend no longer enables compression by default
+    except for certain raster formats that generally benefit
+    from it (<rdar://problem/25166952>)
+  * The scheduler did not handle out-of-disk situations
+    gracefully (Issue #4742)
+  * The LPD mini-daemon now detects invalid UTF-8 sequences
+    in job, document, and user names (Issue #4748)
+  * The IPP backend now continues on to the next job
+    when the remote server/printer puts the job on hold
+    (<rdar://problem/24858548>)
+  * The scheduler did not cancel multi-document jobs immediately
+    (<rdar://problem/24854834>)
+  * The scheduler did not return non-shared printers to local
+    clients unless they connected to the domain socket
+    (<rdar://problem/24566996>)
+  * The scheduler now reads the spool directory if one or more
+    job cache entries point to deleted jobs
+    (<rdar://problem/24048846>)
+  * Added support for disc media sizes (<rdar://problem/20219536>)
+  * The httpAddrConnect and httpConnect* APIs now try connecting
+    to multiple addresses in parallel (<rdar://problem/20643153>)
+  * Interface scripts are no longer supported for security reasons
+    (<rdar://problem/23135640>)
+  A detailed list of changes can be found in the CHANGES.txt file.
+- Version upgrade to 2.1.4:
+  CUPS 2.1.4 is a general bug fix release.
+  See https://github.com/apple/cups/releases
+  Changes include:
+  * Fixed reporting of 1284 Device IDs (Issue #3835, PR #3836)
+  * Fixed printing of multiple files to raw queues (Issue #4782)
+  * The scheduler did not implement the Hold-New-Jobs opertion
+    correctly (Issue #4767)
+  * The cups-lpd mini-daemon incorrectly included the document-name
+    attribute when creating a job.  It should only be included when
+    sending a job (Issue #4790)
+  A detailed list of changes can be found in the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Sat May 20 08:24:11 UTC 2017 - dimstar@opensuse.org
+
+- Replace krb5-devel BuildRequires with pkgconfig(krb5) on
+  suse_version >= 1315: give OBS a better chance to break up build
+  cycles.
+
+-------------------------------------------------------------------
+Thu Apr 20 16:26:52 UTC 2017 - alarrosa@suse.com
+
+- Drop cups-1.7.5-cupsEnumDests-react-to-all-for-now.diff and add
+  0001-Update-cupsEnumDests-implementation-to-return-early-if-all.patch,
+  0002-Save-work-on-Avahi-code.patch and
+  0003-Avahi-fixes-for-cupsEnumDests.patch which is what upstream
+  finally commited to cups 2.2 sources in response to
+  https://github.com/apple/cups/pull/4989 in order to fix cupsEnumDests
+  to react to the ALL_FOR_NOW avahi event (and also include a similar
+  fix for the dnssd case). Related to bsc#955432.
+
+-------------------------------------------------------------------
+Mon Apr 10 17:37:16 UTC 2017 - alarrosa@suse.com
+
+- Add cups-2.1.3-cupsEnumDests-react-to-all-for-now.diff .
+  Avahi sends an ALL_FOR_NOW event when it finishes sending
+  its cache contents. This patch makes cupsEnumDests finish
+  when the signal is received so it doesn't block the caller
+  doing nothing until the timeout finishes (related to bsc#955432,
+  submitted upstream at https://github.com/apple/cups/pull/4989)
+
+-------------------------------------------------------------------
+Wed Mar 29 13:41:15 UTC 2017 - kukuk@suse.com
+
+- Add /etc/cups to cups-libs package [bsc#1025689]
+
+-------------------------------------------------------------------
+Mon Dec 12 13:59:53 UTC 2016 - dimstar@opensuse.org
+
+- Replace pkgconfig(libsystemd-daemon) BuildRequires with
+  pkgconfig(libsystemd) on openSUSE 13.2 and newer: the various
+  sub-libraries have been merged into libsystemd since version 209.
+  openSUSE 13.1 was the last product to ship systemd 208.
+
+-------------------------------------------------------------------
+Tue Jun 28 10:43:40 UTC 2016 - kamikazow@web.de
+
+- Remove CUPS.desktop and pixmap
+  * Obsoletes patch cups-1.3.9-desktop_file.patch
+
+-------------------------------------------------------------------
+Mon Feb 29 14:06:50 UTC 2016 - michael@stroeder.com
+
+- Version upgrade to 2.1.3:
+  CUPS 2.1.3 fixes some issues in the scheduler, sample drivers,
+  and user commands.
+  A detailed list of changes can be found in the CHANGES.txt file.
+  Changes include (excerpt):
+  * The scheduler should not exit under memory pressure
+    (<rdar://problem/23255001>)
+  * Fixed some issues in ipptool for skipped tests
+    (<rdar://problem/24137160>)
+  * The "lp -H resume" command did not reset the
+    "job-state-reasons" attribute value (STR #4752)
+  * The scheduler did not allow access to resource files
+    (icons, etc.) when the web interface was disabled (STR #4755)
+- Version upgrade to 2.1.2:
+  CUPS 2.1.2 fixes an issue in the 2.1.1 source archives which
+  actually contained a current 2.2 snapshot.
+  There are no other changes.
+- Version upgrade to 2.1.1:
+  CUPS 2.1.1 fixes a number of USB and IPP printing issues,
+  addresses some error reporting and hardening issues in
+  the scheduler, and updates some localizations.
+  A detailed list of changes can be found in the CHANGES.txt file.
+  Changes include (excerpt):
+  * Security hardening fixes (<rdar://problem/23131948>,
+    <rdar://problem/23132108>, <rdar://problem/23132353>,
+    <rdar://problem/23132803>, <rdar://problem/23133230>,
+    <rdar://problem/23133393>, <rdar://problem/23133466>,
+    <rdar://problem/23133833>, <rdar://problem/23133998>,
+    <rdar://problem/23134228>, <rdar://problem/23134299>,
+    <rdar://problem/23134356>, <rdar://problem/23134415>,
+    <rdar://problem/23134506>, <rdar://problem/23135066>,
+    <rdar://problem/23135122>, <rdar://problem/23135207>,
+    <rdar://problem/23144290>, <rdar://problem/23144358>,
+    <rdar://problem/23144461>)
+  * The cupsGetPPD* functions did not work with IPP printers
+    (STR #4725)
+  * Some older HP LaserJet printers need a delayed close when
+    printing using the libusb-based USB backend (STR #4549)
+  * The libusb-based USB backend did not unload the kernel usblp
+    module if it was preventing the backend from accessing the
+    printer (STR #4707)
+  * Current Primera printers were incorrectly reported as Fargo
+    printers (STR #4708)
+  * The IPP backend did not always handle jobs getting canceled
+    at the printer (<rdar://problem/22716820>)
+  * Added USB quirk for Canon MP530 (STR #4730)
+  * The scheduler did not deliver job notifications for jobs
+    submitted to classes (STR #4733)
+  * Changing the printer-is-shared value for a remote queue
+    did not produce an error (STR #4738)
+  * The IPP backend incorrectly included the job-password
+    attribute in Validate-Job requests (<rdar://problem/23531939>)
+
+-------------------------------------------------------------------
+Sun Sep 20 08:54:01 UTC 2015 - meissner@suse.com
+
+- add -devel to build a 32bit wine on 64bit only Leap systems.
+
+-------------------------------------------------------------------
+Tue Sep  1 11:55:07 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 2.1.0:
+  CUPS 2.1.0 offers improved support for IPP Everywhere,
+  adds support for advanced logging using journald on Linux, and
+  includes new security features for encrypted printing and
+  reduced network visibility in the default configuration.
+  A detailed list of changes can be found in the CHANGES.txt file.
+  Changes include (excerpt):
+  * Added support for 3D printers (basic types only,
+    no built-in filters) based on PWG white paper.
+  * The IPP backend now stops sending print data
+    if the printer indicates the job has been aborted
+    or canceled (<rdar://problem/17837631>)
+  * The IPP backend now sends the job-pages-per-set
+    attribute when printing multiple copy jobs with
+    finishings (<rdar://problem/16792757>)
+  * The IPP backend now updates the cupsMandatory values when the
+    printer configuration changes (<rdar://problem/18126570>)
+  * No longer install banner files since third-party banner
+    filters now supply their own (STR #4518)
+  * The scheduler no longer listens on the loopback
+    interface unless the web interface or printer sharing
+    are enabled (<rdar://problem/9136448>)
+  * Added a PPD generator for IPP Everywhere printers (STR #4258)
+  * Now install "default" versions of more configuration
+    files (<rdar://problem/19024491>) in particular
+    cups-files.conf.default and snmp.conf.default
+  * Added SSLOptions values to allow Diffie-Hellman key exchange
+    and disable TLS/1.0 support.
+  * Updated the scheduler to support more IPP Everywhere
+    attributes (STR #4630)
+  * The scheduler now supports advanced ASL and journald logging
+    when "syslog" output is configured (STR #4474)
+  * The scheduler now supports logging to stderr when running
+    in the foreground (STR #4505)
+- Adapted patches so that they apply to CUPS 2.1.0 sources:
+  * cups-2.1.0-choose-uri-template.patch replaces
+    cups-1.2rc1-template.patch
+  * cups-2.1.0-default-webcontent-path.patch replaces
+    cups-1.4.3-default-webcontent-path.patch
+  * cups-2.1.0-cups-systemd-socket.patch replaces
+    cups-systemd-socket.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 07:36:59 UTC 2015 - tchvatal@suse.com
+
+- Fix bnc#943950, escape the macro call %systemd-tmpfiles
+  in comment.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:07:47 UTC 2015 - tchvatal@suse.com
+
+- Add gpg verification for the tarball
+- Version update to 2.0.4:
+  * Fixed a bug in cupsRasterWritePixels (STR #4650)
+  * Fixed redirection in the web interface (STR #4538)
+  * The IPP backend did not respond to side-channel
+    requests (STR #4645)
+  * The scheduler did not start all pending jobs
+    at once (STR #4646)
+  * The web search incorrectly searched time-at-xxx
+    values (STR #4652)
+  * Fixed an RPM spec file issue (STR #4657)
+  * The scheduler incorrectly started jobs while canceling
+    multiple jobs (STR #4648)
+  * Fixed processing of server overrides without
+    port numbers (STR #4675)
+  * Documentation changes (STR #4651, STR #4674)
+
+-------------------------------------------------------------------
+Wed Jul  1 14:44:57 CEST 2015 - jsmeix@suse.de
+
+- cups-2.0.3-additional_policies.patch replaces
+  cups-1.7-additional_policies.patch that still adds the same
+  "allowallforanybody" policy but now with separated "Limit All"
+  to avoid https://www.cups.org/str.php?L4659 (boo#936309).
+- Added "-p /bin/bash" to RPM shell commands scriptlets that
+  enforces bash to be safe against any possible "bashisms", cf
+  https://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
+
+-------------------------------------------------------------------
+Thu Jun 25 08:00:20 UTC 2015 - tchvatal@suse.com
+
+- Fix the previous commit by using direct systemd call and
+  ensuring we work even on older distros
+
+-------------------------------------------------------------------
+Mon Jun 22 12:22:42 UTC 2015 - tchvatal@suse.com
+
+- Fix postin-without-tmpfile-creation and run %tmpfiles_create
+  macro on our cups.conf
+
+-------------------------------------------------------------------
+Tue Jun  9 10:07:17 CEST 2015 - jsmeix@suse.de
+
+- Version upgrade to 2.0.3:
+  The new release addresses two security vulnerabilities,
+  add localizations for German and Russian, and includes several
+  general bug fixes. Changes include (excerpt):
+  * Security: Fixed CERT VU #810572 CVE-2015-1158 CVE-2015-1159
+    exploiting the dynamic linker (STR #4609) (bsc#924208)
+  * Security: The scheduler could hang with malformed gzip data
+    (STR #4602)
+  * Restored missing generic printer icon file (STR #4587)
+  * Fixed logging of configuration errors to show up as errors
+    (STR #4582)
+  * Fixed potential buffer overflows in raster code and filters
+    (STR #4598, STR #4599, STR #4600, STR #4601)
+  * Fixed <Limit> inside <Location> (STR #4575)
+  * Fixed lpadmin when both -m and -o are used (STR #4578)
+  * The web interface always showed support for 2-sided printing
+    (STR #4595)
+  * cupsRasterReadHeader did not fully validate the raster header
+    (STR #4596)
+  * The rastertopwg filter did not check for truncated input
+    (STR #4597)
+  * The cups-lpd mini-daemon did not check for request parameters
+    (STR #4603)
+  * The scheduler could get caught in a busy loop (STR #4605)
+  * The sample Epson driver could crash (STR #4616)
+  * The IPP backend now correctly monitors jobs
+    (<rdar://problem/20495955>)
+  * The ppdhtml and ppdpo utilities crashed when the -D option
+    was used before a driver information file (STR #4627)
+  * ippfind incorrectly substituted "=port" for service_port.
+  * The IPP/1.1 test file did not handle the initial print job
+    completing early (STR #4576)
+  * Fixed a memory leak in cupsConnectDest (STR #4634)
+  * PWG Raster Format output contained invalid ImageBox values
+    (<rdar://problem/21144309>)
+  * Added Russian translation (STR #4577)
+  * Added German translation (STR #4635)
+- cups-busy-loop.patch fixed STR #4605 is obsolete because
+  it is fixed upstream (see above).
+- cleaned up this whole RPM changlog (wrapped too long lines if
+  possible and removed trailing whitespaces).
+
+-------------------------------------------------------------------
+Sat Mar 28 13:03:28 UTC 2015 - mimi.vx@gmail.com
+
+- Add patch cups-busy-loop.patch to fix rh#1179596 , cups#4605
+
+-------------------------------------------------------------------
+Thu Feb 12 13:50:58 UTC 2015 - tchvatal@suse.com
+
+- Add back the posttrans cleanup script as it is needed
+
+-------------------------------------------------------------------
+Thu Feb 12 09:22:30 UTC 2015 - tchvatal@suse.com
+
+- Add patch cups-systemd-socket.patch to fix socket activation
+  and to match socket approach Fedora has.
+
+-------------------------------------------------------------------
+Thu Feb 12 09:12:05 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 2.0.2:
+  * Security: cupsRasterReadPixels buffer overflow with invalid
+    page header and compressed raster data (STR #4551)
+  * Mapping of PPD keywords to IPP keywords did not work if the PPD
+    keyword was already an IPP keyword (<rdar://problem/19121005>)
+  * cupsGetPPD* sent bad requests (STR #4567)
+  * For detailed list see CHANGES.txt file
+
+-------------------------------------------------------------------
+Thu Feb 12 09:10:09 UTC 2015 - tchvatal@suse.com
+
+- Enable PIE for build
+
+-------------------------------------------------------------------
+Fri Jan 30 10:44:47 UTC 2015 - tchvatal@suse.com
+
+- Remove legacy paralel-port support as it is not really needed
+  as most do not want it
+
+-------------------------------------------------------------------
+Fri Jan 30 10:39:41 UTC 2015 - tchvatal@suse.com
+
+- Update descriptions to just state what changed and let user
+  find it out.
+- Add back comment about %fdupes
+- Remove exit 0 on scriptlets as it is provided by
+  the %service bla ones already
+- Fix the comment about openSUSE version on tmpfilesdir declaration
+
+-------------------------------------------------------------------
+Fri Jan 16 16:00:20 UTC 2015 - tchvatal@suse.com
+
+- cups-2.0.1 update:
+  * lengthy list of changes see the upstream CHANGES.txt that is
+    distributed with the package
+  * Disabling of sslv3 to mitigate poodle
+- Use gnutls to provide SSLOPtions configuration directive
+  * openssl is no longer supported upstream
+  * Remove the with-openssl-exception from license
+- Remove cups.sysconfig as it is not used with systemd based distros
+- Purposely lose support for SLE11 as it doubles size of some of the
+  sections and keep suppor for openSUSE+SLE12
+  * even with the conditions we would have to go unencrypted only
+    as needs newer gnutls, so don't bother with keeping the compat
+- Use upstream service and socket files to allow more working tools
+- Removed patches:
+  * cups-0001-systemd-add-systemd-socket-activation-and-unit-files.patch
+  * cups-0002-systemd-listen-only-on-localhost-for-socket-activation.patch
+  * cups-0003-systemd-secure-cups.service-unit-file.patch
+  * cups-1.3.6-access_conf.patch
+  * cups-1.5-additional_policies.patch
+  * cups-1.5.4-CVE-2012-5519.patch
+  * cups-1.5.4-strftime.patch
+  * cups-move-everything-to-run.patch
+  * cups-polld_avoid_busy_loop.patch
+  * cups-provides-cupsd-service.patch
+  * str4190.patch
+  * str4351.patch
+  * str4450.CVE-2014-3537.str4455.CVE-2014-5029.CVE-2014-5030.CVE-2014-5031.CUPS-1.5.4.patch
+- Refreshed patches:
+  * cups-1.3.9-desktop_file.patch
+  * cups-config-libs.patch
+- Added patches:
+  * cups-1.7-additional_policies.patch
+  * cups-systemd-socket.patch
+
+-------------------------------------------------------------------
+Tue Sep 23 13:57:31 CEST 2014 - ro@suse.de
+
+- change BuildRequires for systemd to pkgconfig(systemd)
+  and pkgconfig(libsystemd-daemon) to avoid build-cycles
+
+-------------------------------------------------------------------
+Mon Aug 25 13:19:19 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.7.5:
+  CUPS 1.7.5 addresses some minor issues and expands upon the
+  symlink security protection. Changes include (excerpt):
+  * Security: Addressed some more situations where symlinked
+    files would be served by the web interface (CVE-2014-5029
+    CVE-2014-5030 CVE-2014-5031 STR #4455 and bnc#887240).
+  * The LPD backend did not work with some versions
+    of glibc (STR #4452)
+  * CGI scripts did not work (STR #4454)
+- str4455-1.7.patch (see the previous entry below)
+  is obsolete because it is fixed upstream since CUPS 1.7.5.
+- Let fdupes only create symlinks in /usr/share/cups/templates/ to
+  avoid a symlink /usr/share/cups/webcontent/images/cups-icon.png
+  because since CUPS 1.7.4/1.7.5 the cupsd web server does
+  no longer follow symlinks to avoid the security issues
+  mentioned in the previous two entries below
+  (fixes bnc#892587 a regression of bnc#887240).
+
+-------------------------------------------------------------------
+Tue Jul 29 16:41:10 CEST 2014 - jsmeix@suse.de
+
+- str4455-1.7.patch complements the incomplete fix for
+  CVE-2014-3537 STR#445 in the CUPS 1.7.4 sources
+  to fix the subsequent CVE-2014-5029 CVE-2014-5030
+  CVE-2014-5031 STR#4455 (bnc#887240).
+
+-------------------------------------------------------------------
+Tue Jul 15 11:13:14 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.7.4:
+  CUPS 1.7.4 fixes several networking and build issues,
+  and addresses a symlink security issue CVE-2014-3537.
+  Changes since 1.7.3 include (excerpt):
+  * Security: The web interface incorrectly served symlinked files
+    and files that were not world-readable, potentially leading to
+    a disclosure of information (CVE-2014-3537, STR #4450,
+    and bnc#887240).
+  * The "snmp" option did not work with the network backends
+    (STR #4422).
+  * The User directive in client.conf did not override the USER
+    environment variable (STR #4426).
+  * The web interface now properly shows a "Go" button for
+    all text-based browsers (STR #4425).
+  * The MaxJobTime directive now properly supports time
+    values (STR #4434).
+  * Fixed an "IPP read error" race condition issue (STR #4440).
+
+-------------------------------------------------------------------
+Mon Jun  2 13:21:31 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.7.3:
+  CUPS 1.7.3 includes a number of general bug fixes.
+  Changes since 1.7.2 include (excerpt):
+  * Fixed mapping of OutputBin values such as "Tray1".
+  * Several ippGet* functions incorrectly returned -1
+    instead of 0 on error.
+  * Fixed an authentication race condition in
+    cupsSendRequest (STR #4403).
+  * The scheduler did not add the "job-hold-until-specified"
+    reason when holding a job using the lp command (STR #4405).
+  * Auto-typing of PWG Raster files did not work (STR #4417).
+  * IPP queues using hardcoded credentials would ask
+    for credentials (STR #4371).
+
+-------------------------------------------------------------------
+Wed Apr 23 14:24:12 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.7.2:
+  CUPS 1.7.2 addresses a web interface redirection security issue,
+  some scheduler crashed on Linux, and other general bug fixes.
+  Changes since 1.7.1 include (excerpt):
+  * CVE-2014-2856: The scheduler now blocks URLs containing
+    embedded HTML (STR #4356 and bnc#873899).
+  * cupsDoIORequest could miss the server status, causing failed
+    lpadmin and other administrative commands (STR #4386).
+  * Fixed a D-BUS threading issue that caused the scheduler
+    to crash (STR #4347).
+  * The scheduler now automatically reconnects to Avahi
+    as needed (STR #4370, STR #4373).
+- str4351.patch that fixed STR #4351: cups-lpd hugh jobs (>2G) fail
+  is obsolete because it is fixed upstream since CUPS 1.7.2.
+- Removed the CUPS banner files in /usr/share/cups/banners/ and
+  the CUPS testpage /usr/share/cups/data/testprint (which is also
+  a CUPS banner file type) because they do no longer work
+  since CUPS >= 1.6 (see http://www.cups.org/str.php?L4120)
+  because there is no longer a filter for Linux that can convert
+  the CUPS banner files. Since CUPS >= 1.6 only the banner files
+  and testpage in the cups-filters package work via the
+  cups-filters PDF workflow and the cups-filters package also
+  provides the matching bannertopdf filter (bnc#873376).
+
+-------------------------------------------------------------------
+Fri Apr 11 14:52:41 CEST 2014 - jsmeix@suse.de
+
+- In case of systemd use --with-rundir=/run/cups
+  instead of --with-rundir=/run (bnc#871640).
+
+-------------------------------------------------------------------
+Thu Feb 27 12:49:42 CET 2014 - jsmeix@suse.de
+
+- str4351.patch from CUPS upstream fixes
+  https://www.cups.org/str.php?L4351
+  "STR #4351 cups-lpd hugh jobs (>2G) fail"
+  (bnc#864782).
+
+-------------------------------------------------------------------
+Wed Feb 26 15:20:02 CET 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.7.1 (fate#314630):
+  CUPS >= 1.6 has major incompatible changes compared to CUPS
+  up to version 1.5.4 in particular when printing via network:
+  * The IPP protocol default version increased form 1.1 to 2.0.
+    Older IPP servers like CUPS 1.3.x (e.g. in SLE11)
+    reject IPP 2.0 requests with "Bad Request" (STR #4231).
+    By adding '/version=1.1' to ServerName in client.conf
+    (e.g. ServerName older.server.example.com/version=1.1)
+    or the CUPS_SERVER environment variable value or by
+    adding it to the server name value of the '-h' opion
+    (e.g. lpstat -h older.server.example.com/version=1.1 -p)
+    the older IPP protocol version for older servers
+    must be explicitly specified.
+  * CUPS Browsing is dropped in CUPS but the new package
+    cups-filters provides the cups-browsed that provides
+    basic CUPS Browsing and Polling functionality.
+    The native protocol in CUPS for automatic client discovery
+    of printers is now DNS-SD.
+  * Some printing filters and backends are dropped in CUPS
+    but the new package cups-filters provides them so that
+    cups-filters is usually needed (recommended by RPM)
+    but cups-filters is not strictly required.
+  * The cupsd configuration directives are split into two files
+    cupsd.conf (can also be modified via HTTP PUT e.g. via cupsctl)
+    and cups-files.conf (can only be modified manually by root)
+    to have better default protection against misuse of privileges
+    by normal users who have been specifically allowed
+    by root to do cupsd configuration changes
+    (STR #4223 CVE-2012-5519 bnc#789566).
+  See the entries below for more information.
+  For details see the openSUSE Bugzilla bnc#735404 issue.
+  CUPS 1.7.1 improves network and USB printing, fixes some
+  scheduler issues, and addresses a minor security issue
+  in the lppasswd program.
+  Changes since 1.7.0 include (excerpt):
+  * Security: the lppasswd program incorrectly used settings
+    from ~/.cups/client.conf (STR #4319)
+  * ATTR messages could cause string pool memory corruption
+    in the scheduler (<rdar://problem/15382819>)
+  * Printing to a raw queue could result in corrupt output
+    due to opportunistic compression (<rdar://problem/15008524>)
+  * Japanese PPDs using with the Shift-JIS encoding
+    did not work (<rdar://problem/15427759>)
+  * The libusb-based USB backend incorrectly used write
+    timeouts (<rdar://problem/15564888>)
+  * The IPP backend did not wait for a busy printer
+    to become available before attempting to print
+    (<rdar://problem/15465667>)
+  * Using "@IF(name)" in an Allow or Deny rule
+    did not work (STR #4328)
+  * The D-BUS notifier did not remove its lockfile (STR #4314)
+  * CUPS incorrectly used the USER environment variable when
+    the name did not match the user ID (STR #4327)
+  For details see the CHANGES.txt file.
+- cups-1.7-additional_policies.patch adds the 'allowallforanybody'
+  policy to cupsd.conf (fate#303515) and replaces
+  cups-1.6.2-adapt_cupsd.conf_defaults_for_SUSE.patch
+- Clean up of systemd unit files (bnc#857372):
+  Make it working again as simple and secure as it worked
+  all the time in the past by providing only one single
+  systemd unit file cups.service. In particular currently YaST
+  cannot manage services with additional other systemd unit files.
+  Furthermore systemd socket activation is currently insecure
+  in case of IPv6 (CVE-2012-6094 bnc#795624).
+- Clean up how cupsd is launched (via SysVinit or systemd)
+  by maintaining strictly separated sections in cups.spec:
+  Either for launching cupsd via systemd (if have_systemd is set)
+  or for launching cupsd via SysVinit (if have_systemd is not set).
+  SysVinit support cannot be removed because CUPS 1.7.1 still
+  builds and can be used even for SLE11.
+- The default group of users who are allowed to do cupsd
+  configuration changes via requests to the running cupsd
+  (i.e. the SystemGroup directive in cupsd.conf) is set
+  to 'root' only (related to STR #4223 CVE-2012-5519 bnc#789566).
+  In this context a general security advice:
+  When root allows normal users to do system administration tasks
+  (in particular when root allows normal users to administer
+  system processes - i.e. processes that run as root), then
+  this or that kind of privilege escalation will be possible.
+  Only trustworthy users who do not misuse their privileges
+  may get allowed to do specific system administration tasks.
+
+-------------------------------------------------------------------
+Wed Oct 30 10:25:24 CET 2013 - jsmeix@suse.de
+
+- Version upgrade to 1.7.0
+  CUPS >= 1.6 has major incompatible changes compared to CUPS 1.5.
+  See the entries below for more information.
+  For details see the openSUSE Bugzilla bnc#735404 issue.
+  Changes since 1.7rc1 include (excerpt):
+  * The lpadmin command did not send the PPD name from
+    the "-m" option (<rdar://problem/15264697>).
+  * The scheduler did not respond using the hostname
+    specified by the client (<rdar://problem/14583574>).
+  * Fixed a couple memory leaks in ippfind that were
+    reported by Clang.
+  * Fixed a compile issue on 64-bit Linux with Clang - need
+    to use the -pie option instead of -Wl,-pie now
+    (<rdar://problem/14480938>).
+  * The scheduler incorrectly did not pass a FINAL_CONTENT_TYPE
+    environment variable to the filters or backend
+    (<rdar://problem/14355011>).
+  For details see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Tue Jul 16 16:40:56 CEST 2013 - jsmeix@suse.de
+
+- Version upgrade to 1.7rc1 only for testing purpose.
+  CUPS >= 1.6 has major incompatible changes compared to CUPS 1.5.
+  After a version upgrade to CUPS >= 1.6 printing in the network
+  would no longer work as it did up to CUPS 1.5.
+  For details regarding incompatible changes in CUPS >= 1.6 see
+  https://bugzilla.novell.com/show_bug.cgi?id=735404
+  and follow the links therein.
+  The 1.7 series is primarily a "polish" release with improved
+  support for paid, PIN, and release printing, expanded support
+  for IPP Everywhere, automatic support for data compression,
+  and improved CUPS APIs.
+  CUPS 1.7rc1 is the first release candidate for CUPS 1.7.0
+  and includes the fixes from CUPS 1.6.3, adds a new
+  ippfind utility, fixes some issues in the ipptool utility,
+  and fixes some general printing bugs.
+  For details what is new in CUPS 1.7 see the CHANGES.txt file.
+  Excerpt:
+  * Printer xxx-default values were not reported by
+    Get-Printer-Attributes or lpoptions (<rdar://problem/14401795>)
+  * Added a new ippfind tool for finding IPP printers and
+    other Bonjour services (<rdar://problem/13876199>)
+- Version upgrade to 1.6.3
+  CUPS 1.6.3 fixes some compatibility issues with servers
+  running CUPS 1.3.12 or older, fixes some general printing bugs,
+  and fixes some minor security issues.
+  For details what is new in CUPS 1.6 see the CHANGES-1.6.txt file.
+  Excerpt:
+  * The lp, lpq, lpr, and lpstat now display an error message
+    advising the use of the /version=1.1 ServerName option
+    (<rdar://problem/14290628>)
+  * Added documentation about the /version=1.1 option to ServerName
+    in client.conf (<rdar://problem/14216262>)
+  * The lp, lpq, lpr, and lpstat commands incorrectly ignored
+    the default printer set in the lpoptions file
+    (<rdar://problem/14216472>)
+  * Printing using "ipps" URIs was not encrypted.
+
+-------------------------------------------------------------------
+Tue Mar 19 10:19:41 CET 2013 - jsmeix@suse.de
+
+- Version upgrade to 1.6.2.
+  CUPS 1.6 has major incompatible changes compared to CUPS 1.5.
+  For details regarding incompatible changes in CUPS 1.6 see
+  https://bugzilla.novell.com/show_bug.cgi?id=735404
+  and follow the links therein.
+  For details what is new in CUPS 1.6 see the CHANGES.txt file.
+  Excerpt:
+  * Security: All file, directory, user, and group settings
+    are now stored in a separate cups-files.conf configuration
+    file that cannot be set through the CUPS web interface
+    or APIs (STR #4223).
+  * The IPP backend could crash if the printer disconnects
+    early (STR #4284).
+  * cupsGetPPD did not work with statically-configured CUPS
+    shared queues (STR #4178).
+  * Bad IPP responses could crash ipptool (STR #4262).
+  * Updated USB quirk rules for various printers
+    (STR #4217, STR #4263, STR #4286).
+  * Added USB blacklisting for printers that require a custom
+    backend (STR #4218).
+  * The CUPS library did not always detect a timed out connection
+    to the server which could cause temporary loss of printing
+    from applications (STR #4187).
+  * The IPP backend now stops queues when the server configuration
+    prevents successful job submission (STR #4125).
+  * CUPS 1.6 clients using the ServerName directive in client.conf
+    did not work with CUPS 1.3.x or older servers
+    (STR #4231, STR #4291).
+  * The scheduler could crash when using Avahi
+    (STR #4183, STR #4192, STR #4200, STR #4213).
+  * The IPP backend could get stuck in an endless loop on certain
+    network errors (STR #4194).
+  * The scheduler no longer allows job-name values that are
+    not valid network Unicode strings (STR #4072).
+  * The network backends now support disabling of SNMP supply
+    level queries via the "snmp" URI option (STR #4106).
+  * The IPP backend did not specify the compression used
+    (STR #4181).
+  * The scheduler did not recognize dnssd: or ipps: URIs as
+    Bonjour shared queues (STR #4158).
+  * Applications could not get the PPD file for
+    statically-configured Bonjour-shared print queues (STR #4159).
+  * Fixed a USB backend compatibility issue on systems using
+    libusb (STR #4155, STR #4191).
+  * Some Bonjour features were not available on systems
+    with Avahi (STR #4156).
+- cups-1.6.1-revertSTR3929_to_default_IPP_1.1_again.patch is
+  obsolete because it is fixed upstream (STR #4231, STR #4291).
+- cups-1.6.2-adapt_cupsd.conf_defaults_for_SUSE.patch
+  replaces cups-1.6.1-adapt_cupsd.conf_defaults_for_SUSE.patch
+- Adapted cups-client.conf template file for CUPS 1.6.
+
+-------------------------------------------------------------------
+Wed Nov 28 15:04:58 CET 2012 - jsmeix@suse.de
+
+- cups-1.6.1-adapt_cupsd.conf_defaults_for_SUSE.patch
+  adapts the defaults in cupsd.conf for SUSE.
+  It replaces cups-1.3.6-access_conf.patch that
+  added 'Allow 127.0.0.2' to cupsd.conf to allow access
+  for the loopback IP address 127.0.0.2 which is set for
+  the hostname by SUSE in /etc/hosts at least up to
+  SLE10 products.
+  It also replaces cups-1.5-additional_policies.patch
+  that added the 'allowallforanybody' policy to cupsd.conf
+  see https://fate.novell.com/303515
+  Furthermore it fixes some issues with the CUPS upstream
+  defaults i.e. removal of no longer supported keywords
+  BrowseOrder BrowseAllow DefaultAuthType (otherwise cupsd
+  prints error messages of the form "Unknown directive
+  BrowseOrder on line 22").
+- cups-1.6.1-revertSTR3929_to_default_IPP_1.1_again.patch
+  reverts the incompatible change in CUPS 1.6
+  that makes IPP version 2.0 default
+  (see https://www.cups.org/str.php?L3929)
+  back to using IPP version 1.1 by default.
+  Otherwise CUPS 1.6 on clients cannot talk to older CUPS
+  servers in particular not to CUPS 1.3.9 on SLE11.
+  E.g. on a CUPS 1.6 client "lpstat -h sle11.cups.server -p"
+  would fail on the client with "lpstat: Bad Request" and
+  the CUPS 1.3.9 server logs in /var/log/cups/error_log the
+  lines "E ... cupsdReadClient: ... IPP Read Error!"
+  and "D ... cupsdSendError: ... code=400 (Bad Request)".
+
+-------------------------------------------------------------------
+Tue Nov 27 15:50:16 CET 2012 - jsmeix@suse.de
+
+- Version upgrade to 1.6.1.
+  CUPS 1.6 has major incompatible changes compared to CUPS 1.5.
+  After a version upgrade to CUPS 1.6 printing in the network
+  would no longer work as it did up to CUPS 1.5.
+  For an overview about what is new in CUPS 1.6 see
+  http://www.cups.org/documentation.php/doc-1.6/whatsnew.html
+  For details regarding incompatible changes in CUPS 1.6 see
+  https://bugzilla.novell.com/show_bug.cgi?id=735404
+  and follow the links therein.
+  For details what is new in CUPS 1.6 see the CHANGES.txt file.
+  Excerpt:
+  * CUPS now supports color management using colord (STR #3808).
+  * CUPS now supports Bonjour using Avahi (STR #3066).
+  * The "brightness", "columns", "fitplot", "gamma", "hue",
+    "natural-scaling", "penwidth", "position", "ppi",
+    "saturation", and "scaling" options are not longer
+    supported (STR #4010).
+  * Added new destination connection and enumeration functions
+    via new dynamic destination APIs (STR #3924).
+  * Added new option, localization, and job submission functions
+    via new APIs that do not depend on PPD files (STR #3925).
+  * The scheduler now supports a DefaultAuthType of "auto" to
+    automatically choose between Basic (username/password)
+    and Negotiate (Kerberos) authentication.
+  * CUPS no longer supports automatic remote printers or
+    implicit classes via the CUPS, LDAP, or SLP protocols
+    (STR #3922, STR #3923).
+  * The PPD APIs are now deprecated and will be removed
+    in a future version of CUPS (STR #3927).
+  * The default IPP version for requests is now 2.0 (STR #3929).
+  * The IPP APIs no longer expose the ipp_t or ipp_attribute_t
+    structures and instead provide accessor functions (STR #3928).
+  * The scheduler will no longer run programs with group write
+    permission.
+  * The PHP module has been removed (STR #3932).
+  * The bannertops, commandtoescpx, commandtopclx, imagetops,
+    imagetoraster, pdftops, rastertoescpx, rastertopclx,
+    and texttops filters have been removed (STR #3930).
+  * The serial and parallel backends have been removed (STR #3935).
+- Adapted cups-config-libs.patch for CUPS 1.6.1
+  (IMGLIBS is no longer present in cups-config.in).
+
+-------------------------------------------------------------------
+Thu Oct 18 12:07:09 UTC 2012 - coolo@suse.com
+
+- buildrequire systemd through the pkgconfig provide to get
+  systemd-mini in build environment (to break cycle)
+
+-------------------------------------------------------------------
+Thu Sep 27 07:27:01 UTC 2012 - mmeister@suse.com
+
+- Version upgrade to 1.5.4 (mainly a bugfix release) that fixes
+  some IPP printing issues.
+  Excerpt:
+  * The IPP backend no longer tries to get the job status for
+    printers that do not implement the required operation
+    (STR #4083).
+  * Sending a document in an unsupported format to an IPP printer
+    now automatically cancels the job (STR #4093).
+  * The IPP backend now treats the client-error-not-possible
+    status code as a job history issue, allowing IPP printing to
+    Windows to work(STR #4047).
+  For a complete list see the CHANGES.txt file.
+- revert_cups-ssl.m4_to_1.5.2.patch is now obsolete because of
+  an upstream fix.
+
+-------------------------------------------------------------------
+Tue Sep  4 14:55:57 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0-with-openssl-exception and LGPL-2.1
+  Apple grant an openssl linking exception (and an exception for
+  linking on Apple owned operating systems).
+
+-------------------------------------------------------------------
+Wed Aug  1 11:32:13 CEST 2012 - jsmeix@suse.de
+
+- Save /etc/cups/cupsd.conf and /etc/cups/cupsd.conf.default
+  from becoming hardlinked via the fdupes run in cups.spec
+  (see the 'Wed Aug 26 21:43:03 CEST 2009' entry below)
+  by making their content different and at the same time
+  fix the misleading comment (openSUSE Bugzilla bnc#773971).
+- Minor clean-up in cups.spec (the "Remove unpackaged files"
+  via "rm -rf <some_man-pages>") is no longer needed because
+  those man pages are no longer installed.
+
+-------------------------------------------------------------------
+Wed May 16 14:32:36 CEST 2012 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.5.3 (mainly a bugfix release) that fixes
+  a number of PostScript, SSL, authenticated printing,
+  and networking issues.
+  Excerpt:
+  * The scheduler could crash if a PPD file contained
+    an invalid paper size (STR #4049).
+  * Missing localizations caused empty output (STR #4033).
+  * Changed how timeouts are implemented in the LPD backend
+    (STR #4013).
+  * The default InputSlot setting was never used (STR #3957).
+  * Fixed the IPP backend's handling of HTTP/1.0 compatibility
+    (STR #3988).
+  For a complete list see the CHANGES.txt file.
+- revert_cups-ssl.m4_to_1.5.2.patch reverts cups-ssl.m4 to what
+  it was in CUPS 1.5.2 so that autoconf produces a syntactically
+  correct configure script otherwise "bash -n configure" fails
+  with "syntax error: unexpected end of file",
+  see http://www.cups.org/str.php?L4084
+
+-------------------------------------------------------------------
+Thu Apr 12 10:53:55 CEST 2012 - jsmeix@suse.de
+
+- No longer require Ghostscript but only "Recommends: ghostscript"
+  because the Ghostscript device "cups" is needed by several CUPS
+  filters (in particular the "rasterto..." filters) but those
+  filters are not used on all systems (e.g. on a print server
+  with only "raw" queues) so that a weak Recommends fits better.
+  Furthermore this avoids a build dependency cycle between the
+  main-packages cups and ghostscript.
+- No longer require /usr/bin/pdftops but only a "Recommends"
+  because the CUPS filter /usr/lib/cups/filter/pdftops
+  (which calls /usr/bin/pdftops) is not used on all systems
+  (e.g. on a print server with only "raw" queues) so that
+  a weak Recommends fits better.
+
+-------------------------------------------------------------------
+Tue Apr 10 16:25:24 CEST 2012 - jsmeix@suse.de
+
+- In cups.spec only "Requires: ghostscript" but no longer require
+  ghostscript-fonts-std in cups.spec because in ghostscript.spec
+  there is already "Requires: ghostscript-fonts-std"
+  (related to openSUSE Bugzilla bnc#735824).
+- In cups.spec remove the Obsoletes/Provides cups-SUSE-ppds-dat
+  because cups-SUSE-ppds-dat.rpm existed only up to SLE10
+  but it does no longer exist since 11.1/SLE11
+  and CUPS 1.5.x is not provided for SLE10.
+- Use traditional bash scriptlets for post/postun with
+  an explicite "exit 0" line at the end to be fail safe and
+  therefore also "PreReq: /sbin/ldconfig" explicitly for the
+  cups-libs sub-package, see the "Shared_libraries" section in
+  http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
+
+-------------------------------------------------------------------
+Tue Feb  7 14:42:59 CET 2012 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.5.2 (mainly a bugfix release). This release
+  fixes a number of printing, encryption, and ipptool issues.
+  Excerpt:
+  * The scheduler incorrectly used free() on a POSIX ACL value,
+    which could cause a crash (STR #3970).
+  * Encryption was broken with OpenSSL (probably STR #3933
+    and bnc#739410 ).
+  * Badly formed GIF files could cause the image filters
+    to crash (STR #3914).
+  For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Tue Jan 10 04:58:44 UTC 2012 - crrodriguez@opensuse.org
+
+- Use explicit buildrequires on the needed libraries.
+  otherwise build will fail after libtiff-devel deps cleanup
+- Cleanup requires of -devel package, which only needs glibc-devel
+- cups-config-libs.patch fixes cups-config script,
+  which with option --libs adds:
+  LIBS="-lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lssl -lcrypto
+        -lz -lpthread -lm -lcrypt "
+  IMGLIBS="-ltiff -ljpeg -lpng"
+  This only makes sense when using static linking but we do not
+  ship static libraries and it will only bloat dependant packages.
+
+-------------------------------------------------------------------
+Sat Dec 17 18:19:14 UTC 2011 - crrodriguez@opensuse.org
+
+- Update systemd patch, Bind to datagram socket as well in
+  systemd cups.socket unit file, to prevent that port being
+  stolen by another service (from RH).
+- There is no need to use -fno-strict-aliasing
+  in cflags any longer.
+
+-------------------------------------------------------------------
+Sat Dec  3 20:09:32 UTC 2011 - crrodriguez@opensuse.org
+
+- Update systemd patch to a newer version that uses
+  libsystemd-daemon instead of bundling sd-daemon wrappers.
+
+-------------------------------------------------------------------
+Sat Dec  3 19:11:36 UTC 2011 - crrodriguez@opensuse.org
+
+- cups-0001-systemd-add-systemd-socket-activation-and-unit-files.patch
+  adds complete systemd support, the hardware stuff is handled in
+  builtin udev rules (see /lib/udev/rules.d/99-systemd.rules).
+  See also http://0pointer.de/blog/projects/socket-activation2.html
+
+-------------------------------------------------------------------
+Thu Oct  6 11:00:09 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.5.0 (openSUSE Bugzilla bnc#722057)
+  Backward incompatible changes:
+  * The main header cups/cups.h no longer includes the PPD header
+    cups/ppd.h which may require code changes to applications.
+  * CUPS no longer supports the old ~/.cupsrc or ~/.lpoptions files
+    from CUPS 1.1.x. The ~/.cups/client.conf and ~/.cups/lpoptions
+    files that were introduced in CUPS 1.2 must now be used.
+  * The scheduler now requires that filters and backends
+    have group write permissions disabled (security).
+  * The HP-GL/2 filter is no longer included (STR #3322).
+  * The SCSI backend is no longer included (STR #3500).
+  Other changes:
+  * Updated the PostScript filter to support IncludeFeature
+    in more circumstances (STR #3417).
+  * The scheduler now sets the process group for child processes
+    and manages the group (STR #2829).
+  * The scheduler now more carefully creates and removes
+    configuration, cache, and state files (STR #3715).
+  * The lpadmin command now allows default option values
+    to be deleted (STR #2959).
+  * Restored support for GNU TLS and OpenSSL with threading
+    enabled (STR #3605, STR #3461).
+    Therefore cups-1.4.4-str3461-1.4.reverted.patch
+    is no longer needed (openSUSE Bugzilla bnc#617026).
+  * Increased the default RIPCache value to 128MB (STR #3535).
+    Therefore cups-1.4.4-set_default_RIPCache_128m.patch
+    is no longer needed (openSUSE Bugzilla bnc#628233).
+  * Updated PDF filter to support Ghostscript ps2write (STR #3766).
+  * Updated PDF filter to support Poppler option to preserve page
+    sizes in PDF files when the user has not selected a particular
+    media size (STR #3689).
+  * Added new PWG Raster filter for IPP Everywhere printer support.
+  * Added support for a new cupsFilter2 keyword in PPD files
+    to allow for the propagation of the actual MIME media type
+    produced by a filter.
+  * Name resolution errors no longer no longer cause
+    queues to stop (STR #3719, STR #3753). See also
+    https://bugzilla.novell.com/show_bug.cgi?id=337794#c16
+  * Added a new cups-exec helper program that applies security
+    profiles to filters, port monitors, backends, CGI programs,
+    and mini-daemons.
+  * The web interface can now be disabled using the WebInterface
+    directive in cupsd.conf (STR #2625).
+  * The ipptest tool is now a first-class user program (STR #3484).
+  For a complete list see the CHANGES.txt file.
+- cups-1.4.4-str3461-1.4.reverted.patch (bnc#617026) and
+  cups-1.4.4-set_default_RIPCache_128m.patch (bnc#628233)
+  are no longer needed because the issues are fixed upstream.
+  cups-1.5-additional_policies.patch (fate#303515) replaces the
+  cups-1.4-additional_policies.patch which does no longer apply.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:52 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Thu Sep 29 15:10:07 CEST 2011 - jsmeix@suse.de
+
+- Reverted the change from meissner below dated
+  "Fri Sep 23 09:54:39 CEST 2011" so that baselibs.conf again
+  contains only one line "cups-libs" as before because the
+  submitrequest 85423 Printing/cups -> openSUSE:Factory/cups
+  was declined by coolo with the following reason:
+  "cups-devel-32bit requires cups-32bit (default requires),
+   which does not exist".
+
+-------------------------------------------------------------------
+Thu Sep 29 11:51:21 CEST 2011 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.4.8
+   * network backends could crash if a printer returned a value
+     of 0 for the maximum capacity for a supply (STR #3875)
+   * For a complete list see the CHANGES.txt file.
+- Upgraded to CUPS 1.4.7
+   * imageto* filters could crash with bad GIF files (STR #3867)
+   * CUPS did not work with some printers that incorrectly
+     implemented the HTTP/1.1 standard (STR #3778, STR #3791)
+   * Fixed crash in scheduler when the application/octet-stream
+     MIME type was not defined (STR #3690)
+   * The web interface no longer tries to use multi-part delivery
+     when adding printers (STR #3455) using Epiphany or IE
+   * "lp" and "lpr" failed with Kerberos enabled (STR #3768)
+   * Remote printer URIs with options did not work (STR #3717)
+   * The scheduler now only looks up interface hostnames
+     if HostNameLookups are enabled (STR #3737)
+   * The scheduler could crash if a browsed printer times out
+     while a job is printing (STR #3754)
+   * For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Thu Sep 29 11:20:00 CEST 2011 - jsmeix@suse.de
+
+- cups-1.4.4-set_default_RIPCache_128m.patch enlarges
+  the CUPS upstream default RIPCache from 8m to 128m
+  to avoid various kind of printout failures
+  (STR #3535, and Novell/openSUSE Bugzilla bnc#628233).
+
+-------------------------------------------------------------------
+Fri Sep 23 09:54:39 CEST 2011 - meissner@suse.de
+
+- cups-devel baselibs package for Wine 32bit on 64bit building
+  (added "cups-devel requires cups-libs..." to baselibs.conf).
+
+-------------------------------------------------------------------
+Sun Sep 18 00:09:02 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (removed "norootforbuild" and the "clean" section).
+
+-------------------------------------------------------------------
+Mon Jul 25 12:08:35 CEST 2011 - meissner@suse.de
+
+- "no" locale is "nb" (norwegian bokmal) these days
+  (move /usr/share/locale/no to /usr/share/locale/nb).
+- "zh" is probably meant as "zh_CN", as "zh_TW" exists
+  (move /usr/share/locale/zh to /usr/share/locale/zh_CN).
+
+-------------------------------------------------------------------
+Thu Feb 10 11:51:56 CET 2011 - jsmeix@suse.de
+
+- Cleaned up the RPM Requires:
+  Removed the needless "Suggests: poppler-tools" because there
+  is "Requires: /usr/bin/pdftops" which should be sufficient.
+  Replaced the RPM Requires for foomatic-filters by Recommends
+  because foomatic-rip is only needed by CUPS in a few cases
+  and printer driver packages which need foomatic-rip require
+  foomatic-filters on their own.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:25:39 CET 2011 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.4.6
+  CUPS 1.4.6 fixes in particular a regression:
+  * A change was made in CUPS 1.4.5's pstops filter
+    that it did not support landscape printing
+    of PostScript files (STR #3722)
+  * For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Thu Dec  9 13:26:06 CET 2010 - jsmeix@suse.de
+
+- Fixed coolo's quick and ditry unconditioned
+  "PreReq: sysvinit(syslog)" stuff from below because build fails
+  everywhere except openSUSE:Factory (i.e. openSUSE 11.4)
+  because sysvinit(syslog) is nowhere else provided.
+  Now the PreReq is only if suse_version > 1130.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:18:59 UTC 2010 - coolo@novell.com
+
+- prereq init script syslog
+
+-------------------------------------------------------------------
+Fri Nov 12 08:47:49 CET 2010 - jsmeix@suse.de
+
+-  Upgraded to CUPS 1.4.5
+   CUPS 1.4.5 fixes several scheduler and printing bugs
+   as well as a reported security bug, in particular:
+   * Fixed a IPP parsing memory corruption bug
+     (CVE-2010-2941, STR #3648, Novell/Suse Bugzilla bnc#649256)
+   * Fixed a PPD loader bug that could crash the cupsd (STR #3680)
+   * The scheduler restarts jobs while shutting down (STR #3679)
+   * Did not initialize Kerberos in all cases (STR #3662)
+   * The socket backend could go into an infinite loop
+     with certain printers (STR #3622)
+   * Moving a job via the web interface failed without
+     asking for authentication (STR #3559)
+   * The web interface did not allow a user to change
+     the driver (STR #3537, STR #3601)
+   * For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Thu Jul 15 15:03:20 CEST 2010 - jsmeix@suse.de
+
+- Fixed /etc/init.d/cups (cups.init source file) so that stopping
+  the cupsd waits up to 10 seconds until the cupsd had actually
+  finished (if not SIGKILL would be sent to it) to make sure
+  that "rccups restart" and "rccups stop ; rccups start" work
+  correctly (see Novell/Suse Bugzilla bnc#622058).
+
+-------------------------------------------------------------------
+Fri Jun 25 11:28:41 CEST 2010 - jsmeix@suse.de
+
+- cups-1.4.4-str3461-1.4.reverted.patch reverts changes
+  by CUPS STR #3461 as band-aid workaround for now to avoid
+  that Mozilla.org applications crash when they try to print
+  (STR #3461, STR #3605, and Novell/Suse Bugzilla bnc#617026).
+
+-------------------------------------------------------------------
+Fri Jun 18 09:11:02 CEST 2010 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.4.4
+  CUPS 1.4.4 fixes several security, scheduler, printing,
+  and conformance issues, in particular:
+  * The web interface now includes additional CSRF protection
+    (CVE-2010-0540, STR #3498, STR #3593, and
+     Novell/Suse Bugzilla bnc#601830)
+  * The texttops filter did not check the results of allocations
+    (CVE-2010-0542, STR #3516, Novell/Suse Bugzilla bnc#601352)
+  * The web admin interface could disclose the contents of memory
+    (CVE-2010-1748, STR #3577, Novell/Suse Bugzilla bnc#604271)
+  * The fix for CVE-2009-3553 (STR #3200) was incomplete
+    for systems that use kqueue or epoll (STR #3490)
+  * CUPS could overwrite files as root in directories owned or
+    writable by non-root users (STR #3510)
+  * The OpenSSL interfaces have been made thread-safe and
+    the GNU TLS interface is explicitly forbidden
+    when threading is enabled (STR #3461)
+  * The scheduler could crash on restart if classes
+    were defined (STR #3524)
+  * The socket backend no longer waits for back-channel data
+    on platforms other than Mac OS X (STR #3495)
+  * For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Mon Jun 14 14:47:29 CEST 2010 - vuntz@opensuse.org
+
+- Update cups-1.3.9-desktop_file.patch: add the Settings category
+  (required since we use HardwareSettigns) and add NotShowIn=GNOME:
+  in GNOME, the configuration tool we want to use is
+  system-config-printer.
+
+-------------------------------------------------------------------
+Wed Jun  2 15:16:02 CEST 2010 - jsmeix@suse.de
+
+- Explicitly set configure option '--enable-debug' because
+  otherwise the cups-debuginfo RPM would be empty.
+- Removed no longer recognized configure option '--enable-pie'
+  (it compiles and links with '-pie -fPIE -fPIC' by default).
+- Disabled .SILENT in Makedefs.in so that make is verbose as usual.
+
+-------------------------------------------------------------------
+Mon May 10 20:12:43 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- In cups.spec removed '-r' from the suse_update_desktop_file call
+  to not replace valid (and previously patched via
+  cups-1.3.9-desktop_file.patch) categories of the desktop file
+  so that it shows up in the right place (this is particularly
+  an issue with the LXDE/XFCE menu).
+
+-------------------------------------------------------------------
+Thu May  6 12:39:41 CEST 2010 - jsmeix@suse.de
+
+- cups-1.4.3-default-webcontent-path.patch changes the default path
+  whereto the web content is installed from /usr/share/doc/...
+  to /usr/share/cups/webcontent because the files of the CUPS
+  web content are no documentation (see CUPS STR #3578 and
+  Novell/Suse Bugzilla bnc#546023 starting at comment#6).
+- In cups.spec replaced usage of the RPM macro 'name' by the
+  explicite value 'cups' (except for the BuildRoot) so that
+  CUPS could be built as well with a different package name
+  (e.g. when someone likes to provide a CUPS SVN revision
+  as 'cupsSVN' or a specifically adapted CUPS as 'cups4me').
+
+-------------------------------------------------------------------
+Tue Apr 27 09:40:34 CEST 2010 - jsmeix@suse.de
+
+- cups-krb5-config wrapper script for krb5-config is no longer
+  needed because since April 2008 krb5-config works correctly
+  (see Novell/Suse Bugzilla bnc#378270 and compare STR #3556).
+
+-------------------------------------------------------------------
+Tue Apr 20 15:53:26 CEST 2010 - jsmeix@suse.de
+
+- In cups.xinetd replaced '@LIB@' by '/usr/lib' and removed
+  the perl substitute calls regarding '@LIB@' in cups.spec because
+  since the upstream compliant CUPS 1.4 it is '/usr/lib/cups/'
+  on all platforms (see Novell/Suse Bugzilla bnc#575544).
+
+-------------------------------------------------------------------
+Wed Mar 31 12:52:02 CEST 2010 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.4.3:
+  * The scheduler could try responding on a closed client
+    connection, leading to a crash
+    (CVE-2009-3553, STR #3200, and bnc#554861).
+  * The lppasswd program allowed the localization files
+    to be overridden when running in setuid mode
+    (CVE-2010-0393, STR #3482, and bnc#574336).
+  * The scheduler would crash when an active printer was deleted.
+  * The DBUS notifier did not build (STR #3447).
+  * The scheduler did not reset the SIGPIPE handler
+    of child processes (STR #3399).
+  * For a complete list see the CHANGES.txt file.
+- cups-1.3.9-CVE-2009-3553.patch has become
+  obsolete because it is fixed in the source.
+
+-------------------------------------------------------------------
+Wed Jan 27 14:43:37 CET 2010 - jsmeix@suse.de
+
+- CUPS 1.3 -> 1.4 version upgrade and major cleanup:
+  For the CUPS upstream changes see the CHANGES.txt file.
+  Such a major version upgrade is the perfect chance
+  to drop almost all our own patches to enforce a
+  reset to almost 100% compliance with upstream.
+  Here our openSUSE CUPS versions and their number of patches
+  (i.e. the "Patch" entries in the cups.spec files):
+    CUPS version 1.2.12 in openSUSE 10.3: 37
+    CUPS version 1.3.7  in openSUSE 11.0: 29
+    CUPS version 1.3.9  in openSUSE 11.1: 26
+    CUPS version 1.3.11 in openSUSE 11.2: 17
+  Of course this includes patches with backported bug fixes
+  via our maintenance but nevertheless there were really
+  too much openSUSE specific patches.
+  Therefore I would like to provide CUPS 1.4 "as is" to the
+  furthest possible extent (there are still 6 patches left).
+  Then let's see if we get bug reports because of this.
+  I did such a reset to 100% compliance with upstream
+  already in the past for sane-backends and guess what:
+  I got no single bug report at all because of this.
+  I guess what they do at upstream is actually not so bad ;-)
+- Added the explicite path to '--with-cachedir=/var/cache/cups'
+  in cups.spec to avoid that the fallback value 'yes' results
+  the cache directory '/etc/cups/yes/'.
+- cups-1.3.11-CVE-2009-2820-regression-fix.patch and
+  cups-1.3.11-CVE-2009-2820.patch have become
+  obsolete because it is fixed in the source.
+- cups-1.4-full_path_to_configure_with-pdftops.patch has become
+  obsolete because it is fixed in the source.
+
+-------------------------------------------------------------------
+Tue Dec 15 22:22:18 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Dec 15 13:58:13 CET 2009 - jsmeix@suse.de
+
+- Fixed the URL and MD5 sum comments for Source0 in cups.spec.
+- cups-1.3.9-CVE-2009-3553.patch fixes a use-after-free bug
+  in the scheduler which leads to remote denial of service,
+  (CVE-2009-3553, CUPS STR #3200,
+   and Novell/Suse Bugzilla bnc#554861)
+
+-------------------------------------------------------------------
+Wed Nov 11 11:56:12 CET 2009 - jsmeix@suse.de
+
+- cups-1.3.11-CVE-2009-2820-regression-fix.patch
+  fixes a regression which was introduced by
+  the previous cups-1.3.11-CVE-2009-2820.patch
+  which lets adding a class via CUPS Web Interface fail
+  with an 'Unknown operation "{op}"' error message
+  (CUPS STR #3401 and
+   Novell/Suse Bugzilla bnc#548317 starting at comment #24).
+- cups-1.3.11-CVE-2009-2820.patch fixes CUPS Web Interface
+  Cross-Site Scripting (XSS) and CRLF injection in HTTP headers
+  (CVE-2009-2820 and CUPS STR #3367 and
+   Novell/Suse Bugzilla bnc#548317).
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:12 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Aug 26 21:43:03 CEST 2009 - meissner@suse.de
+
+- Fixed as-needed issues when compiling additional tools
+  by using the right ordering of source and linked library
+  in 'gcc -opoll_ppd_base ... SOURCE1 -lcups'
+  and 'gcc -olphelp ... SOURCE2 -lcups' which
+  obsoletes the 'export SUSE_ASNEEDED=0' workaround,
+  see the 'Fri Jul 10 12:34:54 CEST 2009' entry below.
+- Run fdupes.
+
+-------------------------------------------------------------------
+Fri Jul 31 15:08:41 CEST 2009 - jsmeix@suse.de
+
+- full_path_to_configure_with-pdftops.patch
+  adds support to specify a full path in
+  'configure --with-pdftops=/usr/bin/pdftops'
+  to avoid 'BuildRequires: xpdf-tools' which would
+  bloat the build system but would be only needed to
+  satisfy 'AC_PATH_PROG(CUPS_PDFTOPS, pdftops)'
+  in cups-pdf.m4 if only 'configure --with-pdftops=pdftops'
+  was possible (Novell/Suse Bugzilla bnc#526847).
+
+-------------------------------------------------------------------
+Tue Jul 28 10:08:12 CEST 2009 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.3.11:
+  * The scheduler and cupsfilter utility would crash with
+  certain MIME .types rules (CUPS STR #3159).
+  * cups-1.3.10-fix-DNS-rebinding-protection.patch
+  (Novell/Suse Bugzilla bnc#516511 and CUPS STR #3238)
+  is obsolete since CUPS 1.3.11 because it is fixed
+  in the source (it is fixed via CUPS STR #3164).
+  * For a complete list see the CHANGES.txt file.
+
+-------------------------------------------------------------------
+Fri Jul 10 12:34:54 CEST 2009 - jsmeix@suse.de
+
+- Set 'export SUSE_ASNEEDED=0' in cups.spec because build fails
+  with --as-needed so that this is for now simply disabled.
+
+-------------------------------------------------------------------
+Fri Jun 26 12:50:22 CEST 2009 - jsmeix@suse.de
+
+- cups-1.3.10-fix-DNS-rebinding-protection.patch fixes
+  a regression of the CUPS 1.3.10 DNS rebinding protection which
+  lets e.g. "lpoptions -h localhost -p <queue> -l" fail with
+  "lpoptions: Unable to get PPD file for <queue>: Bad Request"
+  and in /var/log/cups/error_log there is the warning
+  W ... Request from "localhost" using invalid Host: field "::1"
+  but "::1" is the IPv6 loopback IP address for "localhost"
+  (Novell/Suse Bugzilla bnc#489624 comment#19 and bnc#516511).
+
+-------------------------------------------------------------------
+Wed Jun 24 14:02:29 CEST 2009 - jsmeix@suse.de
+
+- Upgraded to CUPS 1.3.10:
+  * Use a wrapper program filter/pdftops.c which only calls
+  /usr/bin/pdftops (via configure --with-pdftops=/usr/bin/pdftops)
+  instead of the CUPS fork of the Xpdf source code which was in
+  the pdftops directory (CUPS STR #3129). Because of this
+  cups-1.4svn-pdftops_as_filter.patch and
+  cups-1.4svn-pdftops_dont_fail_on_cancel.patch are obsolete
+  since CUPS 1.3.10 (the latter was fixed via CUPS STR #2808).
+  * The scheduler now protects against DNS rebinding attacks
+  (CUPS STR #3118 and Novell/Suse Bugzilla bnc#489624).
+  * cups-1.3.9-cupstestppd.patch is obsolete since CUPS 1.3.10
+  because it is fixed in the source (CUPS STR #2979).
+  * cups-1.3.9-max_subscription.patch is obsolete
+  since CUPS 1.3.10 because it is fixed in the source
+  (no CUPS STR but mentioned in CHANGES.txt "The scheduler
+  would crash if you exceeded the MaxSubscriptions limit").
+  * cups-1.3.9-filter_png_overflow2.patch is obsolete
+  since CUPS 1.3.10 because it is fixed in the source
+  (CUPS STR #2974 and Novell/Suse Bugzilla bnc#448631).
+  * cups-1.3.9-hpgltops2.patch is obsolete since CUPS 1.3.10
+  because it is fixed in the source (CUPS STR #2966 which is the
+  successor of CUPS STR #2911 and Novell/Suse Bugzilla bnc#430543).
+  * cups-1.3.9-cupsImageReadTiff.patch is obsolete
+  since CUPS 1.3.10 because it is fixed in the source
+  (CUPS STR #3031 and Novell/Suse Bugzilla bnc#485895).
+  * For a complete list see the CHANGES.txt file.
+- cups-1.1.21rc2-preauth_security.patch and
+  cups-1.1.21rc2-usermode.patch and
+  cups-1.1.21-umlaut_printer.patch and
+  cups-1.1.23-testpage.patch are finally removed
+  since CUPS 1.3.10 because they were made for CUPS 1.1 and
+  were no longer applied since CUPS 1.2 in Suse Linux 10.3.
+  In particular cups-1.1.21rc2-usermode.patch can no longer
+  apply since CUPS 1.2 because RunAsUser in cupsd.conf is
+  no longer supported since CUPS 1.2, for more info see e.g. the
+  "RunAsUser removed; reassurance wanted" mails on cups@easysw.com.
+  Furthermore we neither got any Suse Linux/openSUSE user request
+  nor any SLE11 beta-tester/customer request for them.
+
+-------------------------------------------------------------------
+Mon Jun  8 15:09:10 CEST 2009 - crrodriguez@suse.de
+
+- Replaced "--enable-static" by "--disable-static" in configure
+  so that the static libraries /usr/lib[64]/libcups.a and
+  /usr/lib[64]/libcupsimage.a are no longer built and included
+  in the cups-devel package to enforce detection of other software
+  which might be built with static CUPS libraries so that those
+  other software could be fixed to use the dynamic libraries
+  (see also Novell/Suse Bugzilla bnc#509945).
+
+-------------------------------------------------------------------
+Wed Jun  3 14:20:36 CEST 2009 - jsmeix@suse.de
+
+- Set BROADCAST="ipp" in cups.SuSEfirewall2 source file (which
+  gets installed as /etc/sysconfig/SuSEfirewall2.d/services/cups)
+  so that adding "cups" to allowed services in the firewall
+  also allows CUPS Browsing information via UDP broadcasts
+  (Novell/Suse Bugzilla bnc#498429).
+
+-------------------------------------------------------------------
+Thu Mar 26 12:59:36 CET 2009 - jsmeix@suse.de
+
+- cups-1.3.9-cupsImageReadTiff.patch fixes an integer overflow
+  in the "_cupsImageReadTIFF()" function CVE-2009-0163
+  (CUPS STR #3031 and Novell/Suse Bugzilla bnc#485895).
+
+-------------------------------------------------------------------
+Wed Jan 21 14:17:25 CET 2009 - kssingvo@suse.de
+
+- added directory %{libdir}/cups/driver to %files of cups
+  (bnc#465794)
+
+-------------------------------------------------------------------
+Wed Jan 14 10:32:13 CET 2009 - olh@suse.de
+
+- obsolete old cups-libs-XXbit and cups-devel-XXbit correctly
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during
+  distupgrade (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov 28 16:09:12 CET 2008 - kssingvo@suse.de
+
+- fixed permission of snmp.conf (bnc#449570)
+
+-------------------------------------------------------------------
+Tue Nov 25 16:50:12 CET 2008 - kssingvo@suse.de
+
+- fix for png size validation CVE-2008-??? (bnc#448631)
+- correction for hpgl pen selection fix CVE-2008-3641 (bnc#430543)
+
+-------------------------------------------------------------------
+Thu Nov 20 15:05:36 CET 2008 - kssingvo@suse.de
+
+- fixed rss subscription issue (bnc#446975)
+
+-------------------------------------------------------------------
+Tue Nov  4 13:54:37 CET 2008 - kssingvo@suse.de
+
+- missed to fix a further PPD file: stcolor2.ppd
+
+-------------------------------------------------------------------
+Thu Oct 30 16:44:01 CET 2008 - kssingvo@suse.de
+
+- Obsoletes: cups-SUSE-ppds-dat (bnc#438763)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 23 15:17:38 CEST 2008 - kssingvo@suse.de
+
+- fixed issues in PPD files: failing through internal tests
+
+-------------------------------------------------------------------
+Mon Oct 13 11:04:21 CEST 2008 - kssingvo@suse.de
+
+- update to 1.3.9, which is mainly a bugfix version. For a complete
+  list see included CHANGES.txt file, but important changes were
+  already included via patches before.
+  Deleted patches:
+  cups-1.3.8-custom_ppd_fix.patch (CUPS STR #2889)
+  cups-1.3.8-ssl_firefox.patch (CUPS STR #2892)
+  cups-1.3.8-cupsfilter_path.patch (CUPS STR #2908)
+  cups-1.3.8-pjl_ready_message.patch (CUPS STR #2909)
+  cups-1.3.8-listener_compare.patch (CUPS STR #2910)
+  cups-1.3.8-manyjob_finish.patch (CUPS STR #2913)
+  cups-1.3.8-resolver_reinit.patch (CUPS STR #2920)
+  cups-1.3.8-startstop_msg.patch (CUPS STR #2927)
+  cups-1.3.8-noclobber_symlink.patch (CUPS STR #2937)
+  cups-1.3.8-more_debuginfo.patch (CUPS STR #2943)
+  cups-1.3.8-hostlookup.patch (CUPS STR #2946)
+  cups-1.3.8-ipp_stop_after_pause.patch
+  cups-1.3.8-lose_printers_on_allowed_users.patch
+  Updated patches:
+  cups-1.2.5-desktop_file.patch
+
+-------------------------------------------------------------------
+Thu Oct  2 14:11:00 CEST 2008 - kssingvo@suse.de
+
+- bugfixes:
+  * printer stops after IPP pause
+  * pritners got lost when users are set in Set Allowed Users Dialog
+
+-------------------------------------------------------------------
+Thu Sep 25 12:33:59 CEST 2008 - kssingvo@suse.de
+
+- added und integrated latest patches from upstream bugzilla:
+  cups-1.3.8-custom_ppd_fix.patch (CUPS STR #2889)
+  cups-1.3.8-ssl_firefox.patch (CUPS STR #2892)
+  cups-1.3.8-cupsfilter_path.patch (CUPS STR #2908)
+  cups-1.3.8-pjl_ready_message.patch (CUPS STR #2909)
+  cups-1.3.8-listener_compare.patch (CUPS STR #2910)
+  cups-1.3.8-manyjob_finish.patch (CUPS STR #2913)
+  cups-1.3.8-resolver_reinit.patch (CUPS STR #2920)
+  cups-1.3.8-startstop_msg.patch (CUPS STR #2927)
+  cups-1.3.8-noclobber_symlink.patch (CUPS STR #2937)
+  cups-1.3.8-more_debuginfo.patch (CUPS STR #2943)
+  cups-1.3.8-hostlookup.patch (CUPS STR #2946)
+
+-------------------------------------------------------------------
+Thu Sep 11 11:50:47 CEST 2008 - kssingvo@suse.de
+
+- removed hplip in init script: hplip is no more (bnc#390663)
+
+-------------------------------------------------------------------
+Tue Sep  9 13:56:14 CEST 2008 - kssingvo@suse.de
+
+- beautified $BUILD_DISTRIBUTION_NAME setting
+
+-------------------------------------------------------------------
+Sat Aug 23 15:57:04 CEST 2008 - aj@suse.de
+
+- Remove -p from fillups call.
+
+-------------------------------------------------------------------
+Wed Jul 23 11:14:05 CEST 2008 - kssingvo@suse.de
+
+- update to version 1.3.8:
+  * bugfix version, which includes CVE-2008-1722
+  * also includes some performance changes
+  * refer to included CHANGES.txt file for full information
+- removed obsolete patches
+
+-------------------------------------------------------------------
+Mon Jul 14 17:30:57 CEST 2008 - kssingvo@suse.de
+
+- removed deprecated use of %run_ldconfig
+- added avahi-compat-mDNSResponder-devel to BuildRequieres
+  (bnc#398700)
+- fixed typo in Policy "easy"
+
+-------------------------------------------------------------------
+Thu Jul 10 17:08:55 CEST 2008 - kssingvo@suse.de
+
+- added two additional policies to cupsd.conf (fate#303515)
+
+-------------------------------------------------------------------
+Tue Jul  9 13:19:34 CEST 2008 - kssingvo@suse.de
+
+- fixed abuild failure: ownership of lppasswd
+
+-------------------------------------------------------------------
+Tue Jul  1 15:59:34 CEST 2008 - kssingvo@suse.de
+
+- fix directory/setgid permissions for lppasswd use (bnc#404142)
+
+-------------------------------------------------------------------
+Wed Jun  4 11:35:27 CEST 2008 - kssingvo@suse.de
+
+- crash on startup when BrowseAddress has no value (bnc#396969)
+
+-------------------------------------------------------------------
+Mon May 19 21:35:24 CEST 2008 - kssingvo@suse.de
+
+- added pdftops_any for 11.0 to Requires: (bugzilla#378434)
+
+-------------------------------------------------------------------
+Thu May 15 11:53:11 CEST 2008 - kssingvo@suse.de
+
+- renamed use of CUPS_PDFTOPS to HAVE_PDFTOPS in pdftops.c, to
+  avoid execute of gs (bnc#390435)
+- removed earlykdm from init script, due to new less CPU consuming
+  start of daemon now (bnc#388007)
+
+-------------------------------------------------------------------
+Wed May  7 13:39:21 CEST 2008 - kssingvo@suse.de
+
+- merged both pdftops patches to one
+- removed "recommended" remover (bnc#387267)
+
+-------------------------------------------------------------------
+Tue Apr 22 20:24:19 CEST 2008 - kssingvo@suse.de
+
+- new version of pdftops filter from svn extracted
+- changed the perror() calls in pdftops.c for cups-1.3.x
+  compatibility
+- fixed the ghostscript call via new variable
+  (unnecessary -> removed)
+- grabbed and applied the wait() fix for childs from cups STR
+
+-------------------------------------------------------------------
+Wed Apr 16 12:06:57 CEST 2008 - kssingvo@suse.de
+
+- fix for integer overflow in png filter CVE-2008-1722
+  (bugzilla#378335)
+- not affected: CVE-2008-1693 (bugzilla#377872)
+- added /usr/bin/pdftops to Requires:, and poppler-tools
+  to Suggests:
+
+-------------------------------------------------------------------
+Fri Apr 11 11:06:33 CEST 2008 - ro@suse.de
+
+- explicitly specify pdftops binary for configure to avoid
+  adding buildrequires just for a binary path
+
+-------------------------------------------------------------------
+Thu Apr 10 20:38:26 CEST 2008 - coolo@suse.de
+
+- take out poppler for now to break the cycle, Klaus will
+  fix correctly later
+
+-------------------------------------------------------------------
+Thu Apr 10 15:17:39 CEST 2008 - kssingvo@suse.de
+
+- changes for PDF.ppd
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  9 19:38:27 CEST 2008 - kssingvo@suse.de
+
+- pdftops uses now system command e.g. xpdf-tools
+  (as in cups-1.4svn)
+- due to requests: client.conf is back in /etc/cups
+
+-------------------------------------------------------------------
+Wed Apr  9 12:30:55 CEST 2008 - kssingvo@suse.de
+
+- fix for buildsystem: added wrapper script for krb5-config as the
+  original output shows $CFLAGS $LIBDIR of cups.spec
+  and rpath flags (bugzilla#378270)
+
+-------------------------------------------------------------------
+Tue Apr  8 20:47:47 CEST 2008 - kssingvo@suse.de
+
+- added missing directory /var/cache/cups to %files
+- added pstopdf filter (from cups-mailto project at sourceforge.net)
+
+-------------------------------------------------------------------
+Tue Apr  8 10:11:36 CEST 2008 - kssingvo@suse.de
+
+- enabled krb5 support on request (bugzilla#377645)
+- enabled further configure options: gcc's relro, gssapi
+- and for run of cupsd: java, php, python (needs further activation)
+
+-------------------------------------------------------------------
+Wed Apr  2 10:29:42 CEST 2008 - kssingvo@suse.de
+
+- update to version 1.3.7:
+  bugfix version only, includes CVE-2008-0047 and CVE-2008-1373.
+  Refer to included CHANGES.txt file for full information
+- worked on INFO in init file
+- removed references to version SUSE 8.01 in specfile
+
+-------------------------------------------------------------------
+Thu Mar  6 10:56:10 CET 2008 - kssingvo@suse.de
+
+- fixed issue in cgi-bin search CVE-2008-0047 (bugzilla#367225)
+
+-------------------------------------------------------------------
+Fri Feb 29 13:37:18 CET 2008 - kssingvo@suse.de
+
+- update to version 1.3.6:
+  * Documentation updates
+  * Fixed a problem with the web interface "Use Kerberos
+    Authentication" check box
+  * The scheduler unconditionally overwrote the printer-state-
+    message with "process-name failed" when a filter or backend
+    failed, preventing a useful error message from being shown
+    to the user.
+  * Policies on CUPS-Move-Job didn't work as expected
+  * The configure script only supported D-BUS on Linux
+  * The scheduler did not support </LimitExcept>
+  * The scheduler did not reset the job-hold-until attribute after
+    a job's hold time was reached.
+  * The scheduler did not support printer supply attributes
+  * The Kerberos credentials provided by some Windows KDCs were
+    still too large - now use a dynamic buffer to support
+    credentials up to 64k in size
+  * Printing a test page from the web interface incorrectly
+    defaulted to the "guest" user
+  * The cupsEncodeOptions2() function did not parse multiple-
+    value attribute values properly
+  * The scheduler incorrectly sent printer-stopped events for
+    status updates from the print filters
+  * The IPP backend could crash when handling printer errors
+  * Multi-file jobs did not print to remote CUPS servers
+  * The scheduler did not provide the Apple language ID to job
+    filters.
+  * Kerberos authentication did not work with the web interface
+  * The requesing-user-name-allowed and -denied functionality
+    did not work for Kerberos-authenticated usernames
+  * CUPS didn't compile on HP-UX 11i
+  * cupsEncodeOptions2() did not handle option values like "What's
+    up, doc?" properly.
+  * Added lots of memory allocation checks (Fortify)
+  * The scheduler would crash if it was unable to add a job file
+    (Fortify)
+  * ppdOpen*() did not check all memory allocations (Coverity)
+  * ippReadIO() did not check all memory allocations (Coverity)
+  * The PostScript filter did not detect read errors (Coverity)
+  * The scheduler did not check for a missing job-sheets-completed
+    attribute when sending an event notification (Coverity)
+  * "Set Printer Options" might not work with raw queues (Coverity)
+  * cupsRasterInterpretPPD() could crash on certain PostScript
+    errors (Coverity)
+  * The USB backend did not check for back-channel support properly
+    on all systems (Coverity)
+  * Fixed memory leaks in the GIF and PNM image loading code
+    (Coverity)
+  * Removed some dead code in the CUPS API and scheduler (Coverity)
+  * Fixed two overflow bugs in the HP-GL/2 filter (Coverity)
+  * Fixed another ASN1 string parsing bug
+  * The RSS notifier directory was not installed with the correct
+    permissions.
+  * The standard CUPS backends could use 100% CPU while waiting for
+    print data
+  * Filename-based MIME rules did not work
+  * The cups-polld program did not exit if the scheduler crashed
+  * The scheduler would crash if you tried to set the port-monitor
+    on a raw queue
+  * The scheduler could crash if a polled remote printer was
+    converted to a class
+  * The web interface and cupsctl did not correctly reflect the
+    "allow printing from the Internet" state
+  * The scheduler incorrectly treated MIME types as case- sensitive
+  * The Java support classes did not send UTF-8 strings to the
+    scheduler
+  * The CGI code did not handle interrupted POST requests properly
+  * The PostScript filter incorrectly handled number-up when the
+    number of pages was evenly divisible by the number-up value.
+  * The PDF filter incorrectly filtered pages when page-ranges and
+    number-up were both specified
+  * The IPP backend did not handle printing of pictwps files to a
+    non-Mac CUPS server properly.
+  * The scheduler did not detect network interface changes on
+    operating systems other than Mac OS X
+  * The scheduler now logs the UNIX error message when it is unable
+    to create a request file such as a print job.
+  * Added support for --enable-pie on Mac OS X.
+- adapted access_conf.patch to 1.3.6
+
+-------------------------------------------------------------------
+Tue Jan 15 19:41:54 CET 2008 - kssingvo@suse.de
+
+- changed permissions in %files according to cups (bugzilla#342772)
+
+-------------------------------------------------------------------
+Mon Jan  7 19:39:28 CET 2008 - kssingvo@suse.de
+
+- update to version 1.3.5:
+  * The SNMP backend did not check for negative string lengths
+  * The scheduler incorrectly removed auth-info attributes,
+    potentially leading to a loss of all options for a job.
+  * The scheduler stopped sending CUPS browse packets on a restart
+    when using fixed addresses
+  * Fixed PDF filter security issues (CVE-2007-4352 CVE-2007-5392
+    CVE-2007-5393)
+  * Changing settings would always change the DefaultAuthType and
+    Allow lines
+  * The scheduler would crash when submitting an undefined format
+    file from Samba with LogLevel debug2
+  * The scheduler did not use poll() when epoll() was not supported
+    by the running kernel
+  * Fixed a compile problem with Heimdal Kerberos
+  * The USB backend now retries connections to a printer
+    indefinitely rather than stopping the queue.
+  * Printers with untranslated JCL options were not exported to
+    Samba correctly
+  * The USB backend did not work with some Minolta USB printers
+  * The strcasecmp() emulation code did not compile
+  * The scheduler would crash if a job was sent to an empty class
+  * The lpc command did not work in non-UTF-8 locales
+  * Subscriptions for printer-stopped events also received other
+    state changes
+  * cupstestppd incorrectly reported translation errors for the
+    "en" locale.
+  * ppdOpen() did not handle custom options properly when the
+    Custom attribute appeared before the OpenUI for that option.
+  * The scheduler could crash when deleting a printer or listing
+    old jobs.
+  * The Mac OS X USB backend did not allow for requeuing of jobs
+    submitted to a class.
+  * lpmove didn't accept a job ID by itself.
+  * The scheduler incorrectly removed job history information for
+    remote print jobs.
+  * The scheduler incorrectly sent the
+    "com.apple.printerListChanged" message for printer state
+    changes.
+  * The PostScript filter drew the page borders (when enabled)
+    outside the imageable area.
+  * The LPD and IPP backends did not default to the correct port
+    numbers when using alternate scheme names.
+  * The scheduler incorrectly deleted hardwired remote printers on
+    system sleep.
+  * The scheduler would abort if a bad browse protocol name was
+    listed in the cupsd.conf file.
+  * The online cupsd.conf help file incorrectly showed "dns-sd"
+    instead of "dnssd" for Bonjour sharing.
+  * The scheduler could crash changing the port-monitor value.
+  * The scheduler generated CoreFoundation errors when run as a
+    background process.
+  * When printing with number-up > 1, it was possible to get an
+    extra blank page.
+- removed CVE patches, which are already applied upstream
+
+-------------------------------------------------------------------
+Wed Dec 19 18:42:19 CET 2007 - crivera@suse.de
+
+- Add dbus-1-devel to the BuildRequires.
+
+-------------------------------------------------------------------
+Mon Dec 17 21:10:37 CET 2007 - crivera@suse.de
+
+- Add the --enable-dbus flag to the configure line to
+ send DBUS signals out for queue change events.  This helps
+ fix 345163.
+
+-------------------------------------------------------------------
+Wed Nov  7 12:05:41 CET 2007 - kssingvo@suse.de
+
+- upgrade to version 1.3.4:
+  * Documentation updates
+  * CUPS now maps the "nb" locale to "no" on all platforms
+  * CUPS did not work with a Windows 2003 R2 KDC
+  * ippReadIO() could read past the end of a buffer
+  * The scheduler would crash on shutdown if it was unable to
+    create a Kerberos context.
+  * Multiple AuthTypes in cupsd.conf did not work
+  * The snmp.conf file referenced the wrong man page
+  * The cupsaddsmb program didn't handle domain sockets properly
+  * The scheduler now validates device URIs when adding printers.
+  * Updated httpSeparateURI() to support hostnames with the
+    backslash character.
+  * Updated the Japanese localization
+  * The parallel backend now gets the current IEEE-1284 device ID
+    string on Linux
+  * The IPP backend now checks the job status at variable
+    intervals (from 1 to 10 seconds) instead of every 10 seconds
+    for faster remote printing
+  * "lpr -p" and "lpr -l" did not work
+  * Compilation failed when a previous version of CUPS was
+    installed and was included in the SSL include path
+  * The scheduler did not reject requests with charsets other
+    than US-ASCII or UTF-8, and the CUPS API incorrectly passed
+    the locale charset to the scheduler instead of UTF-8
+  * cups-deviced did not filter out duplicate devices.
+  * The AppleTalk backend incorrectly added a scheme listing when
+    AppleTalk was disabled or no printers were found.
+  * The PostScript filter generated N^2 copies when the printer
+    supported collated copies and user requested reverse-order
+    output.
+  * The scheduler did not reprint all of the files in a job that
+    was held.
+  * The scheduler did not update the printcap file after removing
+    stale remote queues.
+  * The cupsd.conf man page incorrectly referenced "AuthType
+    Kerberos" instead of "AuthType Negotiate".
+- fixes for xpdf CVE-2007-4352, CVE-2007-5393, CVE-2007-5392
+  (bugzilla#335637)
+
+-------------------------------------------------------------------
+Tue Oct 23 12:31:31 CEST 2007 - kssingvo@suse.de
+
+- fix for IPP boundaries swamp-14294, CVE-2007-4351
+  (bugzilla#335635)
+
+-------------------------------------------------------------------
+Mon Oct 15 19:40:33 CEST 2007 - kssingvo@suse.de
+
+- upgrade to version 1.3.3. Main features to 1.2.x:
+  * Networking
+    * Kerberos: CUPS now supports Kerberos authentication
+    * Mac OS X Authorization Services: CUPS now supports the
+      Authorization Services framework, providing role-based
+      access control in addition to the tradition UNIX model
+    * Peer Credentials: CUPS now supports authentication using
+      peer credentials provided over UNiX domain sockets
+    * SNMP Support: SNMP lookups are no longer performed by
+      default, and IPP is no longer used for discovered printers
+    * LPD Support; The LPD backend now supports a faster streaming
+      mode that does not require a temporary file
+  * Browsing
+    * CUPS Browsing: The default configuration now shows shared
+      printers from any address (not just @LOCAL)
+    * DNS-SD (Bonjour/Zeroconf) Support: CUPS now supports printer
+      sharing via DNS service discovery
+    * LDAP w/SSL: CUPS now supports encrypted LDAP sessions
+  * Web Interface
+    * Internet Printer Sharing: You can now share printers over the
+      Internet via the basic server settings
+    * Improved On-Line Help: Searching the on-line help now shows
+      results for all text, not just headings and links
+    * Printer Setup: The available printer list is now only show
+      when requested and the Add This Printer button now allows you
+      to change the default name, location, and description
+    * Printer Configuration: Raw printers and classes can now be
+      configured using the Set Printer Options button
+  * IPP Support
+    * Job Printer Attributes: CUPS now provides
+      job-printer-state-message and job-printer-state-reasons
+      attributes containing copies of the corresponding printer
+      attributes to provide important history information with each
+      job
+    * PPD Operations and Attributes: The new CUPS_GET_PPD operation
+      allows you to retrieve PPD files from the scheduler; also,
+      CUPS_GET_PPDS now reports more information and supports more
+      value filters
+    * Printer Defaults: The document-forma-default,
+      notify-events-default, and notify-lease-duration-default
+      attributes can be set for each printer and class
+    * PWG Printer Alert Support: CUPS now supports the
+      printer-alert and printer-alert-description attributes
+    * Server-Side Options: Server-side default options can now be
+      retrieved using the "printer-defaults" group keyword
+  * Scheduler
+    * Client Support: The scheduler now uses poll(), epoll(), or
+      /dev/kqueue on platforms that provide them to support large
+      numbers of clients
+    * "Default" Authentication: You can now specify an AuthType of
+      Default in locations and policies, which maps to the
+      DefaultAuthType value
+    * Larger Numbers of Clients: The scheduler now uses poll(),
+      epoll(), or /dev/kqueue instead of select() when possible
+    * New cupsctl Command: The new cupsctl command allows you to
+      perform basic server configuration from the command-line
+  * Printer Drivers
+    * cupstestppd Improvements: The test utility now provides more
+      extensive tests and options
+    * Label Printer Driver: Added support for the Intellibar label
+      printers
+    * Localized Printer Drivers: The CUPS sample drivers are now
+      localized in several languages
+    * PJL Support: New cupsPJLCharset attribute controls character
+      set for PJL strings
+    * Pre-Filter Support: Drivers can now register format-specific
+      filters to pre-screen print jobs
+    * Side-Channel API; This new API provides out-of-band control
+      of devices
+  * CUPS API
+    * Administration API: New cupsAdminGetServerSettings() and
+      cupsAdminSetServerSettings() functions
+    * Array API: New cupsArrayGetIndex(), cupsArrayGetInsert(),
+      and cupsArrayNew2() functions
+    * Destination API: New cupsRemoveDest() and
+      cupsSetDefaultDest() functions
+    * HTTP API: The http_t structure is now completely private
+    * PPD API: New ppdLocalizeIPPReason()function and greatly
+      improved ppdConflicts() performance
+- added new files, adapted patches, and removed already
+  included ones
+
+-------------------------------------------------------------------
+Tue Sep 18 13:28:30 CEST 2007 - kssingvo@suse.de
+
+- fix for missing newline before EOF in compressed files
+  (bugzilla#309823)
+
+-------------------------------------------------------------------
+Mon Sep 17 19:32:08 CEST 2007 - kssingvo@suse.de
+
+- fix for exitcode on uiconstraints in cupstestppd
+  (bugzilla#309822)
+
+-------------------------------------------------------------------
+Mon Sep 10 15:16:15 CEST 2007 - kssingvo@suse.de
+
+- patch: "None" needs to be valid value for cupstestppd
+  (bugzilla#309219)
+
+-------------------------------------------------------------------
+Mon Aug  6 17:46:56 CEST 2007 - kssingvo@suse.de
+
+- fix for xpdf bugzilla#291690, CVE-2007-3387, swamp-11865
+
+-------------------------------------------------------------------
+Mon Jul 30 15:41:27 CEST 2007 - kssingvo@suse.de
+
+- upgrade to cups-1.2.12:
+  * The PHP cups_print_file() function crashed if the options
+    array contained non-string option values
+  * The image/tiff file matching rule incorrectly identified some
+    text files as TIFF files
+  * The filter(7) man page incorrectly documented the "PAGE: total
+    #-pages" message
+  * PCL text files were mis-identified as HP-GL/2 and caused the
+    HP-GL/2 filter to hang
+  * When printing to a queue with user ACLs, the scheduler
+    incorrectly returned a quota error instead of a "not allowed
+    to print" error
+  * cupsaddsmb could get in a loop if no printer drivers were
+    installed
+  * cupsRasterReadHeader() did not byte-swap the header properly
+    when compiled with certain versions of GCC.
+  * The IPP backend did not send the document-format attribute for
+    filtered jobs
+  * Some PPD files could cause a crash in ppdOpen2
+  * The web admin interface incorrectly handled the "share
+    printers" and "show remote printers" settings
+  * The scheduler's log messages about AuthClass and AuthGroupName
+    advised using a replacement directive but had the wrong syntax
+  * Updated the PostScript/PJL and HP-GL/2 MIME rules to look in
+    the first 4k of the file, not just the first 1k
+  * Updated the Italian localization
+- updated the mime and the psrewrite patch
+
+-------------------------------------------------------------------
+Mon Jun 25 10:19:33 CEST 2007 - kssingvo@suse.de
+
+- added quosnmp script to %doc
+
+-------------------------------------------------------------------
+Wed Jun 20 18:35:47 CEST 2007 - kssingvo@suse.de
+
+- removed rccupsrenice: cups-1.2.x does no longer traversing of
+  filesystem during startup. reason no longer present.
+
+-------------------------------------------------------------------
+Wed May 23 20:02:24 CEST 2007 - kssingvo@suse.de
+
+- fixed as many rpmlint errors as possible
+
+-------------------------------------------------------------------
+Thu May 10 14:07:56 CEST 2007 - kssingvo@suse.de
+
+- Upgrade to cups-1.2.11:
+  * "make distclean" didn't remove all generated files
+  * Fixed a bug in the advertisement of classes
+  * The IPP backend now stays running until the job is actually
+    printed by the remote server; previously it would stop
+    monitoring the job if it was held or temporarily stopped
+  * PDF files were not always printed using the correct orientation
+  * The scheduler could crash if you specified a bad file: URI for
+    a printer
+  * The Renew-Subscription operation now returns the
+    notify-lease-duration value that was used
+  * The IPP backend sent job options to IPP printers, however some
+    printers tried to override the options embedded in the PS/PCL
+    stream with those job options
+  * ppdLocalize() now also tries a country-specific localization
+    for when localizing to a generic locale name.
+  * The cupstestppd program now allows for partial localizations to
+    reduce the size of universal PPD files.
+  * Chinese PPD files were incorrectly tagged with the "cn" locale
+    (should have been "zh")
+  * The backends now manage the printer-state-reasons attribute
+    more accurately
+  * Java, PHP, Perl, and Python scripts did not work properly
+  * The scheduler would take forever to start if the maximum number
+    of file descriptors was set to "unlimited"
+  * The page-ranges option was incorrectly applied to the banner
+    pages
+  * Fixed some GCC compile warnings
+  * The DBUS notification code was broken for older versions of
+    DBUS
+  * The IPv6 code did not compile on HP-UX 11.23
+  * PPD constraints did not work properly with custom options.
+  * Regular PPD options with the name "CustomFoo" did not work.
+  * The USB backend did not work on NetBSD
+  * The printer-state-reasons attribute was incorrectly cleared
+    after a job completed
+  * The scheduler did not set the printer operation policy on
+    startup, only on soft reload
+  * The AP_FIRSTPAGE_InputSlot option did not clear any ManualFeed
+    setting that was made, which caused problems with some PPD
+    files
+  * cupsDoFileRequest() and cupsDoRequest() did not abort when
+    getting an error in the response
+  * The scheduler did not schedule jobs properly to remote or
+    nested classes
+  * Updated the mime.types and mime.convs headers to warn that the
+    files are overwritten when CUPS is installed. Local changes
+    should go in local.types or local.convs, respectively
+  * The scheduler could get in an infinite loop if a printer in an
+    implicit class disappeared
+  * The pstops filter did not handle %%EndFeature comments properly
+  * Fixed a problem with the Polish web page printer icons
+  * ppdLocalize() now also localizes the cupsICCProfile attributes.
+  * The scheduler still had a reference to the incorrect
+    "notify-recipient" attribute
+  * The "make check" and "make test" subscription tests did not set
+    the locale
+  * The "make check" and "make test" subscription tests incorrectly
+    used the notify-recipient attribute instead of
+    notify-recipient-uri
+  * cupsRasterInterpretPPD() incorrectly limited the
+    cupsBorderlessScalingFactor when specified in the job options.
+- adapted cupstestppd patch
+
+-------------------------------------------------------------------
+Wed Apr 25 19:11:21 CEST 2007 - kssingvo@suse.de
+
+- added SuSEfirewall2 rules (bugzilla#247746)
+
+-------------------------------------------------------------------
+Mon Apr  2 20:29:16 CEST 2007 - kssingvo@suse.de
+
+- Upgrade to cups-1.2.10:
+  * ppdLocalize() now supports localizing for Japanese using the
+    "jp" locale name used by the ppdmerge program from the CUPS
+    DDK 1.1.0
+  * _cupsAdminSetServerSettings() did not support changing of
+    top-level directives as designed.
+  * The init script path check was broken.
+  * CUPS incorrectly used the attribute "notify-recipient" instead
+    of "notify-recicpient-uri" in several places
+  * Fixed a configure script bug on MirBSD
+  * The pdftops filter did not limit the amount of recursion of
+    page sets
+  * Custom page sizes with fractional point sizes did not work
+  * The lpoptions command would crash when adding or removing
+    options on a system with no printers
+  * The scheduler did not use the default job-sheets (banners) for
+    implicit classes
+  * The scheduler could crash when listing complete jobs that had
+    been unloaded from memory
+  * The French localization was doubled up
+  * Build system fixes for several platforms
+  * The scheduler's openssl certificate generation code was broken
+    on some platforms
+  * The scheduler's log rotation check for devices was broken
+  * The LPD mini-daemon did not handle the document-format option
+    correctly
+  * The pdftops filter ignored the "match" size option in the
+    pdftops.conf file
+  * cupstestppd now validates UTF-8 text strings in globalized PPD
+    files
+  * The outputorder=reverse option did not work with all printers
+  * Classes containing other classes did not always work
+  * Printer location and description information was lost if the
+    corresponding string contained the "#" character
+  * cupsRemoveOption() did not work properly
+  * The USB backend did not work with some USB to parallel cables
+    on Mac OS X.
+  * The test page did not print the rulers properly on large media
+    sizes
+  * The text filter could crash when pretty printing certain types
+    of files
+- removed already included security patch xpdf_CVE_2007_0104
+
+-------------------------------------------------------------------
+Tue Feb 20 10:55:46 CET 2007 - kssingvo@suse.de
+
+- Upgrade to cups-1.2.8:
+  * Documentation fixes
+  * The HTTP upgrade redirection used by the scheduler did not work
+    with Internet Explorer
+  * Members of a class with Unicode names did not appear correctly
+    in the web interface
+  * Changing the "Save debugging information" setting in the web
+    interface no longer affects the other server settings
+  * The scheduler did not choose SSL certificates correctly on Mac
+    OS X
+  * The scheduler could get in an infinite loop when printing to a
+    remote class
+  * The jobs web page did not have separating space after the
+    number of pages column
+  * Added French localization
+  * Updated Spanish localization
+  * Updated Japanese localization
+  * cupsBorderlessScalingFacter was limited to a range of 0.9 to
+    1.1, but some printers need larger values
+  * Landscape printing of PDF files did not always work
+  * Fixed slow USB printing on Minolta printers
+  * The ZPL label printer driver could produce stretched output
+  * The IPP backend now clears the printer-state-message when there
+    are no outstanding errors or warnings
+  * The CUPS Java scripting support did not work with recent
+    versions of Java due to the use of Sun's private Base64 class
+  * The scheduler did not pass HTTP GET form variables to custom
+    CGI programs
+  * The lpoptions command now displays the reason why a PPD file
+    cannot be found
+  * The scheduler did not accept "none" as a browse protocol name
+  * The scheduler still loaded the remote printer cache, even when
+    browsing was disabled
+  * The SNMP backend now shows OfficeJet printers with the "HP"
+    manufacturer prefix
+  * Web interface HTML cleanup
+  * The parallel backend consumed 100% CPU on FreeBSD due to an
+    apparently common parallel port driver bug
+  * ippReadIO() incorrectly returned IPP_IDLE when the initial IPP
+    message header could not be read
+  * cupsRasterInterpretPPD() did not support custom options
+  * Collated output produced by the PostScript filter could lose
+    some options
+  * job-hold-until with time values for the next day would be held
+    for 60 days
+  * Some types of Sun raster files did not print correctly
+  * Raw PBM files did not print correctly
+  * The SNMP backend no longer uses IPP with HP printers, as some
+    recent firmware versions appear to not work
+  * cupsMarkOptions() did not handle the multiple-document-handling
+    option
+  * lpstat did not show the local job ID of active printers
+  * The backends incorrectly used STATUS: media-tray-empty-error
+    messages for out-of-paper conditions
+  * cupsGetPPD2() returned the wrong error when the PPD file did
+    not exist
+  * cupsDoAuthentication() did not translate the password prompt
+  * httpGetLength2() did not handle error messages without content
+    correctly
+  * Added support for 32/64-bit libraries on HP-UX Itanium systems
+  * Fixed a configure script problem with the 32/64-bit library
+    support
+  * The PostScript filter did not properly output document setup
+    commands for reversed output
+  * The scheduler did not parse IPv6 netmasks properly
+- removed backported, unnecessary patches
+
+-------------------------------------------------------------------
+Tue Feb 13 19:16:38 CET 2007 - kssingvo@suse.de
+
+- fixed tcp_wrapper warnings (bugzilla#230730)
+- fixed ps interpretation (bugzilla#242042)
+- backported fixes from various issues, only in svn avail atm
+
+-------------------------------------------------------------------
+Mon Jan 22 19:32:26 CET 2007 - kssingvo@suse.de
+
+- enabled LDAP on request (bugzilla#223007), no build cycle present
+
+-------------------------------------------------------------------
+Tue Jan 16 11:31:02 CET 2007 - kssingvo@suse.de
+
+- fix for xpdf bugzilla#233113, CVE-2007-0104, swamp-7887
+
+-------------------------------------------------------------------
+Wed Jan 10 11:32:34 CET 2007 - kssingvo@suse.de
+
+- added Required-Start: to rccupsrenice (bugzilla#231675)
+
+-------------------------------------------------------------------
+Fri Jan  5 15:41:34 CET 2007 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Tue Dec 12 11:40:20 CET 2006 - kssingvo@suse.de
+
+- removed broken locale patch: PS generation fails
+  (bugzilla#227205)
+
+-------------------------------------------------------------------
+Thu Nov 16 16:26:30 CET 2006 - kssingvo@suse.de
+
+- Upgrade to 1.2.7 (another bugfix version):
+  * Documentation updates
+  * The PostScript filter now rotates the bounding box values
+    as needed
+  * The scheduler no longer loads the remote printer cache when
+    browsing is disabled
+  * The scheduler no longer writes a new launchd configuration file
+    if it doesn't have to
+  * The scheduler now picks up on changes to IPv6
+    and DNS configuration
+  * The lpstat program could still hang
+  * Fixed an inefficiency in the SNMP IPP detection code
+  * The SSL negotiation code did not implement short timeouts
+
+-------------------------------------------------------------------
+Tue Nov 14 17:11:34 CET 2006 - kssingvo@suse.de
+
+- fixed non conform PPD values in PSLEVEL*.PPD (bugzilla#219779)
+
+-------------------------------------------------------------------
+Thu Nov  9 15:32:28 CET 2006 - kssingvo@suse.de
+
+- fixed perm problem of /etc/cups regarding lppasswd
+  (bugzilla#218745)
+
+-------------------------------------------------------------------
+Tue Nov  7 14:44:54 CET 2006 - kssingvo@suse.de
+
+- Upgrade to 1.2.6 (bugfix version):
+  * "lpc status" did not show the number of queued jobs for
+    disabled queues
+  * The lpstat program could hang
+  * The serial backend did not support the new USB serial filenames
+    on Linux
+  * The parallel backend did not support bidirectional I/O properly
+  * The network backends now log the numeric address that is being
+    used
+  * Fixed a compile error when using libpaper
+  * Fixed a compile error when compiling on Solaris with threading
+    enabled
+  * Missing printer-state-changed event for printer-state-message
+    updates
+
+-------------------------------------------------------------------
+Mon Nov  6 15:35:37 CET 2006 - kssingvo@suse.de
+
+- coolo's patch seems not to work, now using desktop-launch
+  (bugzilla#207915)
+
+-------------------------------------------------------------------
+Mon Nov  6 14:54:04 CET 2006 - kssingvo@suse.de
+
+- fixed cups.desktop file (bugzilla#207915)
+- suse_update_desktop_file produces strange results in my xterm.
+  redirecting output to /dev/null
+- removed duplicate entry in %files: %{_libdir}/cups/monitor/*
+
+-------------------------------------------------------------------
+Mon Oct 23 10:13:18 CEST 2006 - kssingvo@suse.de
+
+- Upgrade to 1.2.5:
+ * Documentation updates
+ * The SNMP backend no longer uses IPP for Epson printers
+ * Updated the configure script for Tru64 UNIX 5.1
+ * Tru64 5.1B's getaddrinfo() and getnameinfo() functions leak file
+   descriptors
+ * cupsAddDest() didn't add the parent destination's options and
+   attributes.
+ * ppdConflicts() did not handle custom option constraints.
+ * Raw printing of gzip'd files did not work
+ * The scheduler no longer preserves default option choices when
+   the new PPD no longer provides the old default choice
+ * The Linux SCSI backend is now only built if the SCSI development
+   headers are installed.
+ * USB printing to Minolta printers did not work
+ * Windows clients could not monitor the queue status
+ * The scheduler didn't log the operation name in the access_log
+   file for Create*Job and Print-Job requests.
+ * The PostScript filter now separates collated copies with any
+   required JCL commands so that JCL*based finishing options act on
+   the individual copies and not all of the copies as a single
+   document.
+ * The PostScript filter now disables duplex printing when printing
+   a 1*page document.
+ * cups-lpd didn't pass the correct job-originating-host-name value
+ * Fixed some speling errors in the German message catalog
+ * cupstestppd did not catch PPD files with bad UIConstraints
+   values
+ * The USB backend did not work with the current udev- created
+   printers if the first printer was disconnected
+ * Mirrored and rotated printing did not work with some documents
+ * 2-sided printing with banners did not work properly on some
+   printers
+ * Updated the raw type rule to handle PJL within the first 4k of a
+   print job
+ * Added an Estonian translation
+ * Clarified the documentation for the cupsd.conf @LOCAL and
+   @IF(name) allow/deny functionality
+ * The PostScript filters did not escape the Title and For comments
+   in the print job header
+ * The scheduler would use 100% CPU if browsing was disabled and
+   the cupsd.conf file contained BrowsePoll lines
+ * The cupsDirRead() function did not work properly on
+   non*POSIX-compliant systems
+ * The cupsFile functions didn't handle read/write errors properly
+
+-------------------------------------------------------------------
+Fri Sep 22 12:19:14 CEST 2006 - kssingvo@suse.de
+
+- CUPS 1.2.4 fixes a number of web interface, scheduler,
+  and CUPS API issues.
+  Changes include:
+- The --with-printcap configure option did not work
+- The character set reported by cupsLangGet() did not always
+  reflect the default character set of a given locale
+- Older Lexmark and Tektronix printers did not work with IPP
+- Failsafe printing did not work
+- Some web interface redirects did not work
+- The web interface change settings button could introduce
+  a "Port 0" line in cupsd.conf if there was no loopback
+  connection available
+- The web interface change settings and edit configuration file
+  buttons would truncate the cupsd.conf file
+- The German web interface used the wrong printer icon images
+- The "All Documents" link in the on-line help was missing a
+  trailing slash
+- The Polish web interface translation used the wrong URLs for
+  the job history
+- The "reprint job" button did not work
+- The scheduler did not always report printer or job events
+  properly
+- The scheduler always stopped the queue on error, regardless
+  of the exit code, if the error policy was set to "stop-printer"
+- ppdEmitJCL() included UTF-8 characters in the JCL job name,
+  which caused problems on some printers
+- Fixed a buffering problem that cause high CPU usage
+- The command-line applications did not convert command-line
+  strings to UTF-8 as needed
+- cupsDirRead() incorrectly aborted when reading a symbolic link
+  that pointed to a file/directory that did not exist
+- The cupsInterpretRasterPPD() function did not handle custom page
+  sizes properly.
+
+-------------------------------------------------------------------
+Thu Sep 14 14:07:57 CEST 2006 - kssingvo@suse.de
+
+- Upgrade to 1.2.3:
+* The scheduler did not send job-state or job-config-changed events
+  when a job was held, released, or changed
+* The scheduler now aborts if the configuration file and directory
+  checks fail
+* Fixed a problem with ippPort() not using the port number that was
+  set via the client.conf file or CUPS_SERVER environment variable
+* HTTP headers were not buffered
+* Some IPP printers (HP) did not like UTF-8 job names
+* The CUPS desktop icon is now localized for Polish
+* Printer options were not always honored when printing
+* The openssl command would lock up the scheduler when generating
+  an encryption certificate on some platforms due to a lack of
+  entropy for the random number generator
+* The web admin page did not recognize that "Listen 631" enabled
+  remote access
+* The web admin page did not check whether changes were made to the
+  Basic Server Settings check boxes
+* The IPP backend could generate N*N copies in certain edge cases.
+* The scheduler did not restore remote printers properly when
+  BrowseShortNames was enabled
+* Polling did not handle changes to the network environment on Mac
+  OS X
+* The "make test" subscription tests used invalid
+  notify-recipient-uri values
+* Printers could be left in an undefined state on system sleep
+* The Berkeley and System V commands did not always use the
+  expected character set
+* Remote printing fixes
+* The cupstestppd utility did not validate translation strings for
+  custom options properly.
+* Multi-language PPD files were not properly localized in the web
+  interface
+* The admin page's simple settings options did not check for local
+  domain socket or IPv6 addresses and did not use "localhost" as
+  the listen address.
+* An empty BrowseProtocols, BrowseLocalProtocols, or
+  BrowseRemoteProtocols line would crash the scheduler instead of
+  disabling the corresponding browsing options.
+* The scheduler now logs IPP operation status as debug messages
+  instead of info or error.
+* cupsFileRewind() didn't clear the end-of-file state.
+* cupstestppd didn't report the actual misspelling of the
+  1284DeviceID attribute
+* BrowseRelay didn't work on Debian
+* configure --without-languages didn't work
+* Manually added remote printers did not work
+* The <cups/backend.h> header was not installed.
+* Updated the build files for Autoconf 2.60
+* The scheduler incorrectly terminated the polling processes after
+  receiving a partial log line.
+* The cups-lpd mini-daemon reported "No printer-state attribute
+  found" errors when reporting the queue status
+* SNMP backend improvements
+* The scheduler erroneously reported an error with the CGI pipe
+* Fixed HP-UX compile problems
+* cupstestppd crashed with some PPD files
+* The <cups/dir.h> and <cups/file.h> header files did not work with
+  C++.
+
+-------------------------------------------------------------------
+Tue Jul 25 19:21:19 CEST 2006 - kssingvo@suse.de
+
+- upgrade to version 1.2.2, which fixes several build, platform,
+  notification, and printing bugs. Changes include:
+    * Documentation updates
+    * CUPS didn't know about alternate character set names for
+      Asian text
+    * The lpoptions -o and -r options did not work unless you
+      specified a printer.
+    * The lpoptions command incorrectly allowed users to set
+      printer attributes like printer-type
+    * httpWait() did not flush the write buffer, causing
+      "bad request" errors when communicating with CUPS 1.1.x
+      servers
+    * Polling did not sanitize the printer description, location,
+      or make and model strings like broadcasts did.
+    * Polled printers did not show the server's default job-sheets
+      option value.
+    * The Samba password prompt was not properly localized
+    * Added a German translation
+    * The scheduler now creates self-signed SSL certficates
+      automatically when using OpenSSL and CDSA for encryption,
+      just as for GNU TLS.
+    * The SNMP backend sporatically reported some printers
+      as "unknown"
+    * The scheduler now forces BrowseTimeout to be at least twice
+      the BrowseInterval value and non-zero to avoid common
+      configuration errors.
+    * The scheduler incorrectly returned printer URIs of the form
+      "ipp://server/printers/classname" for classes
+    * Updated Japanese localization
+    * The scheduler's SSL certificate/key directory was not created
+      on installation
+    * Added a mailto.conf man page and help page
+    * The parallel and USB backends no longer wait for the printer
+      to go on-line - this caused problems with certain printers
+      that don't follow with the IEEE-1284 standard
+    * The scheduler could crash on a reload when implicit classes
+      were present
+    * The IPP backend incorrectly used the CUPS_ENCRYPTION
+      environment variable to determine the default encryption
+      mode when printing
+    * USB printing did not work on Solaris
+    * The scheduler sorted job priorities in the wrong order
+    * The scheduler did not automatically restart notifiers
+      that exited or crashed
+    * IPv6 support did not work on NetBSD
+    * The EPM packaging file did not work
+    * The scheduler used up the CPU if BrowseRemoteProtocols
+      was empty
+    * Custom page sizes did not work
+    * The SNMP backend could crash on some systems when SNMP
+      logging was enabled
+    * Browsing could produce some funny printer names when
+      ServerName was set to an IP address
+    * Fixed the log message for BrowseRelay
+    * Fixes to allow CUPS to compile on MirBSD
+    * The scheduler incorrectly set the FINAL_CONTENT_TYPE
+      environment variable
+    * The pdftops filter incorrectly embedded a "produced by"
+      comment, causing PDF printing not to work on some
+      operating systems
+    * Sending raw jobs from a client system could cause the
+      client's scheduler to eventually crash
+    * The scheduler now checks that the notifier exists prior
+      to accepting a new subscription request.
+    * The scheduler now reports the supported notify-recipient
+      schemes based on the contents of the ServerBin/notifier
+      directory.
+    * Event notifications did not include the
+      notify-sequence-number or other required attributes
+    * Allow/Deny addresses of the form "11.22.33.*" did not work
+      on Linux
+    * cupsGetPPD() did not work if the scheduler was only
+      listening on a domain socket
+    * The scheduler could crash advertising a class
+    * The scheduler could crash if the default printer was deleted
+    * Added a new default CUPS raster format (v3) which does not
+      compress the raster stream in order to provide the same
+      cupsRasterReadPixels() and cupsRasterWritePixels()
+      performance as CUPS 1.1.x.
+    * The cupsaddsmb man page listed the wrong files for
+      the CUPS driver.
+    * Some configure --with options did not work
+    * "Allow @IF(name)" didn't work if "name" wasn't the first
+      network interface
+    * The lpstat command did not use the correct character set
+      when reporting the date and time
+    * The cupsaddsmb command and web interface did not update
+      the Windows PPD files properly, resulting in corrupt PPD
+      files for the Windows client to use
+    * The cupsd.conf man page didn't describe the Listen domain
+      socket syntax
+    * The scheduler no longer tries to support more than
+      FD_SETSIZE file descriptors.
+    * CDSA (encryption) support fixes for MacOS X.
+    * The lppasswd program needs to be setuid to root to create
+      and update the /etc/cups/passwd.md5 file
+    * 32/64-bit library installation was broken
+    * The USB backend now reports a "no such device" error
+      when using the old filename-based USB URIs instead of
+      the "success" error.
+    * Increased the HTTP and IPP read timeouts to 10 seconds,
+      as 1 second was too short on congested networks
+    * The SNMP backend now uses the device description over the
+      printer-make-and-model attribute when the attribute
+      contains a generic name
+    * Fixed another file descriptor leak when printing raw files
+    * Raw queues were not shared via LDAP
+    * The pstops filter didn't always embed PageSetup commands
+      from the PPD file
+    * "make install" didn't work if you disabled all of the
+      localizations.
+    * The scheduler didn't always choose the least costly filter.
+    * Fixed parsing of IPv6 addresses in Allow, Deny, BrowseAllow,
+      BrowseDeny, and BrowseRelay directives
+    * Printers that were shared via LDAP did not get added to
+      the LDAP server properly
+    * LDAP browsing would crash the scheduler if a required value
+      was missing
+    * Special cases for the "localhost" hostname did not work,
+      causing printing to not work when the /etc/hosts file
+      did not contain a localhost entry
+    * Updated the Spanish translation
+    * Reverse-order page output was broken when N-up or landscape
+      orientations were used
+    * The parallel, serial, socket, and USB backends needed print
+      data before they would report back-channel data, causing
+      problems with several new drivers
+- fixed randomly crash when testing many PPD files
+  (bugzilla#193354)
+
+-------------------------------------------------------------------
+Thu Jul 13 14:44:10 CEST 2006 - kssingvo@suse.de
+
+- moved 3.0 from BETA to STABLE
+
+-------------------------------------------------------------------
+Thu Jun 29 17:25:50 CEST 2006 - nadvornik@suse.cz
+
+- do not use deprecated libpng function png_read_destroy
+
+-------------------------------------------------------------------
+Wed Jun 28 11:41:34 CEST 2006 - kssingvo@suse.de
+
+- reinjected lost --datadir into configure
+
+-------------------------------------------------------------------
+Thu Jun 22 14:20:30 CEST 2006 - kssingvo@suse.de
+
+- upgrade to version 1.2.1: a major release after long (>1y)
+  development with new functions, many enhancements, bugfixes
+  and new bugs
+
+-------------------------------------------------------------------
+Mon May 22 20:49:14 CEST 2006 - kssingvo@suse.de
+
+- removed Required-Start: in rccupsrenice; real fix for
+  (bugzilla#172708)
+
+-------------------------------------------------------------------
+Mon May 22 12:43:13 CEST 2006 - lmuelle@suse.de
+
+- Only activate cupsrenice on initial install; [#172708].
+
+-------------------------------------------------------------------
+Tue Apr 25 11:48:29 CEST 2006 - kssingvo@suse.de
+
+- fixed pswrite.patch (bugzilla#169068)
+
+-------------------------------------------------------------------
+Tue Apr 11 17:09:39 CEST 2006 - kssingvo@suse.de
+
+- fixed the usb naming for special HP printers (bugzilla#163833)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 17:50:52 CET 2006 - lmuelle@suse.de
+
+- Move cups-config to the libs sub package.  Then we do not bother
+  anyone as cups-libs is required by cups-devel and cups; [#142004].
+
+-------------------------------------------------------------------
+Fri Jan 13 10:48:29 CET 2006 - meissner@suse.de
+
+- Use -fstack-protector.
+
+-------------------------------------------------------------------
+Wed Jan 11 19:03:06 CET 2006 - kssingvo@suse.de
+
+- moved cups-config into main package (bugzilla#142004)
+
+-------------------------------------------------------------------
+Tue Jan 10 15:21:33 CET 2006 - kssingvo@suse.de
+
+- fixed %files for /etc/cups/printcap (bugzilla#140308)
+- fixed various xpdf security issues (bugzilla#137156)
+  CVE-2005-3624, CVE-2005-3625, CVE-2005-3626, CVE-2005-3627,
+  CVE-2005-3628, CVE-2005-3193
+
+-------------------------------------------------------------------
+Tue Dec  6 21:00:55 CET 2005 - kssingvo@suse.de
+
+- fixed xpdf overflow CVE-2005-3193 (bugzilla#137156)
+
+-------------------------------------------------------------------
+Wed Nov 23 14:51:48 CET 2005 - kssingvo@suse.de
+
+- fixed the info of last printer in printcap file (bugzilla#132152)
+
+-------------------------------------------------------------------
+Wed Nov 23 12:24:43 CET 2005 - kssingvo@suse.de
+
+- added global lpoptions file (bugzilla#118982)
+- fixed $ppid test in rccupsrenice (bugzilla#119822)
+- fixed short description in rccupsrenice (bugzilla#121873)
+- changed filtering of mozilla-ps (bugzilla#130623)
+
+-------------------------------------------------------------------
+Mon Sep 12 15:14:03 CEST 2005 - kssingvo@suse.de
+
+- fixed segfault in cupstestppd (bugzilla#116468)
+
+-------------------------------------------------------------------
+Thu Sep  8 11:47:28 CEST 2005 - kssingvo@suse.de
+
+- fixed rccupsrenice: can handle mutliple pids in $ppid now
+  (bugzilla#115863)
+- fixed rccupsrenice: link points to correct script
+
+-------------------------------------------------------------------
+Mon Sep  5 10:21:41 CEST 2005 - kssingvo@suse.de
+
+- fixed rccupsrenice: requires changed to cupsd (bugzilla#115261)
+
+-------------------------------------------------------------------
+Fri Sep  2 16:03:06 CEST 2005 - kssingvo@suse.de
+
+- fixed length of stftime array in lpstat (bugzilla#105732)
+
+-------------------------------------------------------------------
+Thu Sep  1 10:43:15 CEST 2005 - kssingvo@suse.de
+
+- rccupsrenice checks if cupsd is running before processing
+  (bugzilla#114650)
+
+-------------------------------------------------------------------
+Tue Aug 23 11:10:52 CEST 2005 - kssingvo@suse.de
+
+- coolo wants a speedup of system boot:
+  rccups: cupsd gets now a lower ionice value if booting in level 5
+  and rccupsrenice (new introduced) brings those io values back,
+  later when system is up and running
+
+-------------------------------------------------------------------
+Tue Jul 26 13:34:13 CEST 2005 - kssingvo@suse.de
+
+- removed backends pipe and novell; now in cups-backends
+
+-------------------------------------------------------------------
+Mon Jul 11 17:52:34 CEST 2005 - kssingvo@suse.de
+
+- further changes for PIE
+- renamed latest patches to my naming schema
+
+-------------------------------------------------------------------
+Thu Jun 30 18:37:37 CEST 2005 - uli@suse.de
+
+- build with -fPI[CE] (not -fpi[ce]) to avoid GOT overflows in
+  certain packages (e.g. scribus) on s390*
+
+-------------------------------------------------------------------
+Mon Jun 20 17:20:31 CEST 2005 - ro@suse.de
+
+- build as PIE
+
+-------------------------------------------------------------------
+Wed Jun 15 18:11:53 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #41006 "Charset detection in CUPS":
+  add missing includes and fix charset and language detection.
+
+-------------------------------------------------------------------
+Mon Jun 13 16:43:59 CEST 2005 - kssingvo@suse.de
+
+- removed permissions file from package (bugzilla#66305)
+- changed permission of xinetd.d file
+- fixed SUSE version in testpage (bugzilla#78075)
+
+-------------------------------------------------------------------
+Thu Apr  7 17:13:54 CEST 2005 - kssingvo@suse.de
+
+- gcc4.0 compilation fixes (thx to mls)
+
+-------------------------------------------------------------------
+Thu Mar 10 16:05:43 CET 2005 - kssingvo@suse.de
+
+- fixed problem in lppasswd file generation (bugzilla#64370)
+- fixed problem in library with authorization
+- cupstestppd checks now PageSize more properly
+
+-------------------------------------------------------------------
+Tue Mar  1 16:49:53 CET 2005 - kssingvo@suse.de
+
+- fixed lpstat segfault issue (bugzilla#66328)
+
+-------------------------------------------------------------------
+Mon Feb 21 19:33:16 CET 2005 - kssingvo@suse.de
+
+- added "hplip" to rccups (bugzilla#65378)
+
+-------------------------------------------------------------------
+Tue Feb 15 15:42:14 CET 2005 - kssingvo@suse.de
+
+- introduced norootforbuild
+
+-------------------------------------------------------------------
+Fri Jan 21 14:40:50 CET 2005 - kssingvo@suse.de
+
+- update to version 1.1.23 and adaption of patches
+- added xpdf buffer overflow fix; CAN-2005-0064 (bugzilla#49840)
+
+-------------------------------------------------------------------
+Sat Jan 15 21:09:14 CET 2005 - schwab@suse.de
+
+- Use <owner>:<group> in permissions file.
+
+-------------------------------------------------------------------
+Sun Dec 19 14:08:43 CET 2004 - kssingvo@suse.de
+
+- added additional xpdf buffer overflow patches (missing in this
+  version)
+
+-------------------------------------------------------------------
+Wed Dec 15 17:00:23 CET 2004 - kssingvo@suse.de
+
+- updated novell backend (bugzilla#41773)
+- updated pipe backend (bugzilla#33659)
+
+-------------------------------------------------------------------
+Wed Nov 17 14:44:27 CET 2004 - kssingvo@suse.de
+
+- updated to cups-1.1.22
+- adapted spec file, patches, etc.
+
+-------------------------------------------------------------------
+Mon Nov  8 17:13:35 CET 2004 - kukuk@suse.de
+
+- Include common-* PAM config files in cups configuration
+
+-------------------------------------------------------------------
+Fri Sep 24 14:04:06 CEST 2004 - kssingvo@suse.de
+
+- added creation of group ntadmin in %pre (bugzilla#45719)
+
+-------------------------------------------------------------------
+Mon Sep 20 16:15:08 CEST 2004 - kssingvo@suse.de
+
+- cupstestppd fails on some doubtful Sharp PPDs (bugzilla#45648)
+- removed ed from neededforbuild list
+
+-------------------------------------------------------------------
+Wed Sep 15 16:46:52 CEST 2004 - kssingvo@suse.de
+
+- fix for umlaut names when download of queue ppds (bugzilla#44975)
+
+-------------------------------------------------------------------
+Tue Sep 14 14:16:29 CEST 2004 - kssingvo@suse.de
+
+- cups-1.1.21 is now released
+- cupsomatic removed (will be replaced by
+  foomatic-rip/foomatic-filters)
+- more useable messages in preauth patch
+
+-------------------------------------------------------------------
+Thu Sep  2 18:13:40 CEST 2004 - kssingvo@suse.de
+
+- ignores now short living childs in ppds.dat generation case
+
+-------------------------------------------------------------------
+Wed Sep  1 11:58:57 CEST 2004 - kssingvo@suse.de
+
+- fixed security problem in cupsomatic, CAN-2004-0801
+  (bugzilla#44233)
+
+-------------------------------------------------------------------
+Tue Aug 31 15:58:54 CEST 2004 - kssingvo@suse.de
+
+- first try for cups-1.1.21rc2
+- renumbered patches
+- adapted old SuSE patches to this version
+- removed /var/adm/notify -- ancient and no longer needed
+
+-------------------------------------------------------------------
+Thu Aug 12 13:54:08 CEST 2004 - kssingvo@suse.de
+
+- added test for /.buildenv to make users happy (bugzilla#43503)
+
+-------------------------------------------------------------------
+Wed Apr 21 19:59:10 CEST 2004 - kssingvo@suse.de
+
+- removed needless "rm -rf $RPM_BUILD_ROOT" in %install
+- added -fno-strict-aliasing compile option (*sic*)
+- added missing mime handling of pswrite (bugzilla#33862)
+
+-------------------------------------------------------------------
+Tue Apr 13 15:18:46 CEST 2004 - kssingvo@suse.de
+
+- removed x-devel-packages from neededforbuild
+
+-------------------------------------------------------------------
+Tue Apr  6 18:11:08 CEST 2004 - kssingvo@suse.de
+
+- fixed segfault in library (bugzilla#38381) - tested and
+  works fine
+
+-------------------------------------------------------------------
+Mon Mar 22 18:18:56 CET 2004 - kssingvo@suse.de
+
+- fixed image links in web interface (bugzilla#36403)
+- fixed cupstestppd (bugzilla#36688)
+
+-------------------------------------------------------------------
+Wed Mar 17 16:56:23 CET 2004 - kssingvo@suse.de
+
+- cupstestppd failed if PPD file has default for non-existance
+  names (STR#476)
+- patch for CPU excess if CGI is sending faster than client
+  receiving (STR#595)
+- faster scan of ppd files (bugzilla#33222)
+- patch for broken HTTP authentication cache (STR#517)
+- redirect administration tasks to primary server (STR#491)
+
+-------------------------------------------------------------------
+Wed Mar 17 14:15:56 CET 2004 - kssingvo@suse.de
+
+- added pswrite filter script to produce PostScript1 output
+- beautified filter ogonki
+  "mktemp -q /tmp/dvitops.XXXXXX" -> ogonki.XXXXXX
+- removed cups-1.1.19-no_dvi.patch, fixed cups-mime.patch instead
+- added PS1 and PS2 PPD files (bugzilla#34938)
+
+-------------------------------------------------------------------
+Tue Mar 16 20:35:44 CET 2004 - kssingvo@suse.de
+
+- backport of signed char usage for weird platforms (STR#518)
+- cups-lpd mini-daemon rejects jobs if queue behing is
+  rejecting (STR#515)
+- fix for too fast CGI data delivery (STR#484)
+
+-------------------------------------------------------------------
+Mon Mar  8 17:51:46 CET 2004 - kssingvo@suse.de
+
+- backport of fixes in CVS repository for scheduler and library,
+  with many fixes, like crash on remote reject, close client on
+  errors, propper http flushing, etc. -- first print tests
+  work fine.
+
+-------------------------------------------------------------------
+Mon Mar  8 17:13:30 CET 2004 - kssingvo@suse.de
+
+- many backports of fixes in CVS repository
+- upgrade of pdftops to version 2.03
+
+-------------------------------------------------------------------
+Mon Feb 23 19:22:59 CET 2004 - kssingvo@suse.de
+
+- memory overwrite fixed in rastertoepson
+- fixed md5sum revealing problem (bugzilla#32862)
+- fixed naming of some usb printers
+
+-------------------------------------------------------------------
+Wed Feb 11 17:08:25 CET 2004 - kssingvo@suse.de
+
+- activated incidentally removed usermode patch (bugzilla#34438)
+- added "printbill" to rccups
+
+-------------------------------------------------------------------
+Fri Jan 16 13:12:55 CET 2004 - kukuk@suse.de
+
+- Add pam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 26 13:42:17 CET 2003 - kssingvo@suse.de
+
+- fixed permission of directory interfaces (bugzilla#33337)
+- added new option "-p" to generate ppds.dat only and exit
+  (bugzilla#33222)
+- added openslp support
+- upgraded to 1.1.20 (final)
+
+-------------------------------------------------------------------
+Wed Oct  1 13:33:17 CEST 2003 - kssingvo@suse.de
+
+- changed LC_MESSAGES -> LC_CTYPE (= fixed bugzilla#26006)
+
+-------------------------------------------------------------------
+Thu Sep 25 12:54:29 CEST 2003 - kssingvo@suse.de
+
+- update to 1.1.20rc2
+
+-------------------------------------------------------------------
+Wed Sep 17 17:09:29 CEST 2003 - kssingvo@suse.de
+
+- authentication method for /admin changed (bugzilla#31158)
+
+-------------------------------------------------------------------
+Mon Sep 15 16:23:00 CEST 2003 - kssingvo@suse.de
+
+- fixed PPDs defaults: Letter -> A4 (bugzilla#30662)
+
+-------------------------------------------------------------------
+Thu Sep 11 17:42:26 CEST 2003 - kukuk@suse.de
+
+- Set sticky bit for /var/spool/cups/tmp
+
+-------------------------------------------------------------------
+Thu Sep 11 13:30:41 CEST 2003 - kssingvo@suse.de
+
+- changed rcfile, as suggested in bugzilla#28444
+
+-------------------------------------------------------------------
+Tue Sep  9 13:36:00 CEST 2003 - kssingvo@suse.de
+
+- fixed typo in configuration for preauth security patch
+
+-------------------------------------------------------------------
+Mon Sep  8 18:02:40 CEST 2003 - kssingvo@suse.de
+
+- fix for the SLP browsing patch (missing/wrong initialize
+  of variables)
+
+-------------------------------------------------------------------
+Wed Sep  3 16:59:12 CEST 2003 - kssingvo@suse.de
+
+- fix for boolean options in filters (CUPS STR#249)
+- fix for check of written bytes in 4 backends (CUPS STR#253)
+- fix for segfault when browsing and SLP is set on (CUPS STR#259)
+- fix for restart problem of processed jobs (CUPS STR#226)
+- fix for LPD port number in URI (CUPS STR#249)
+- fix for Landscape PDF offset rotation position (CUPS STR#243)
+- generated /etc/cups/printcap and link /etc/printcap due
+  to UserMode (bugzilla#29671)
+
+-------------------------------------------------------------------
+Tue Sep  2 18:00:22 CEST 2003 - kssingvo@suse.de
+
+- fixed %_libdir problem in xinetd.d/cups-lpd (bugzilla#29877)
+
+-------------------------------------------------------------------
+Mon Sep  1 15:04:49 CEST 2003 - kssingvo@suse.de
+
+- last fix of bugzilla#29418 didn't work in reality. on specfile
+  again.
+- "-y" for fillup_and_insserv
+
+-------------------------------------------------------------------
+Mon Sep  1 13:34:47 CEST 2003 - kssingvo@suse.de
+
+- DOCDIR removed to fix bugzilla#29418
+- specfile: daemon has now security patches -> start it on boot
+  per default
+- specfile: restart of daemon on package update
+
+-------------------------------------------------------------------
+Fri Aug 29 10:38:25 CEST 2003 - kukuk@suse.de
+
+- Set explicit correct permissions of /etc/cups contents, else
+  cups will do it.
+
+-------------------------------------------------------------------
+Tue Aug 26 15:22:28 CEST 2003 - kssingvo@suse.de
+
+- changed attributes for files (bugzilla#28736)
+
+-------------------------------------------------------------------
+Mon Aug 25 19:10:40 CEST 2003 - kssingvo@suse.de
+
+- fix for locale destroying (bugzilla#29218)
+
+-------------------------------------------------------------------
+Mon Aug 25 16:53:29 CEST 2003 - kssingvo@suse.de
+
+- made restrictrions in cupsd.conf to take preauthorization effect
+
+-------------------------------------------------------------------
+Thu Aug 21 16:36:04 CEST 2003 - kssingvo@suse.de
+
+- cupsd runs now as lp:lp (as suggested in bugzilla#28444)
+
+-------------------------------------------------------------------
+Thu Aug 21 15:58:33 CEST 2003 - kssingvo@suse.de
+
+- added preauthorization patch from okir - seems to work - thx
+
+-------------------------------------------------------------------
+Thu Aug 21 10:16:53 CEST 2003 - kssingvo@suse.de
+
+- fixed USB backend to report manufacturer and model, if
+  description string is missing (cups STR#174)
+- fixed problem with some embedded Type1C fonts (cups STR#177)
+- fixed problem when reading files and using the POSIX locale
+  (cups STR#159)
+
+-------------------------------------------------------------------
+Wed Aug 20 18:53:37 CEST 2003 - kssingvo@suse.de
+
+- added official patch for cupstestppd problem (bugzilla#27950)
+- fixed problem with "keepalive on" (bugzilla#28154)
+- fixed encode options to honor "yes" and "on" as values too
+
+-------------------------------------------------------------------
+Mon Aug 18 11:05:14 CEST 2003 - kssingvo@suse.de
+
+- fixed metadata in sysconfig file (bugzilla#28861)
+
+-------------------------------------------------------------------
+Wed Aug 13 13:48:32 CEST 2003 - kssingvo@suse.de
+
+- fixed cupstestppd (bugzilla#27950)
+
+-------------------------------------------------------------------
+Thu Jul 31 11:10:50 CEST 2003 - coolo@suse.de
+
+- don't strip explicitly, but let the brp scripts handle it
+
+-------------------------------------------------------------------
+Tue Jul 29 13:41:27 CEST 2003 - kssingvo@suse.de
+
+- fixed ogonkify (bugzilla#28307)
+
+-------------------------------------------------------------------
+Thu Jul 10 14:03:57 CEST 2003 - kssingvo@suse.de
+
+- fixed 64bit problem in printers.cgi (bugzilla#24786)
+- removed dvi printing support due to missing packages
+  (bugzilla#27032)
+
+-------------------------------------------------------------------
+Fri Jul  4 13:49:48 CEST 2003 - kssingvo@suse.de
+
+- splitted out foomatic-filters package, which is cups independed
+  (except Coolo's faulty checking)
+
+-------------------------------------------------------------------
+Mon Jun 23 17:30:04 CEST 2003 - kssingvo@suse.de
+
+- fixed mandir problem under non-i386 architecture
+
+-------------------------------------------------------------------
+Mon Jun 23 14:17:57 CEST 2003 - lmuelle@suse.de
+
+- remove smb backand from file list and init script; it's now part
+  of the samba-client package
+
+-------------------------------------------------------------------
+Tue Jun 17 21:28:54 CEST 2003 - kssingvo@suse.de
+
+- added ptal to Should-Start in rccups (bugzilla#27159)
+
+-------------------------------------------------------------------
+Thu Jun 12 11:51:32 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Mon Jun  2 15:33:02 CEST 2003 - kssingvo@suse.de
+
+- 1.1.19 is released -> updated
+
+-------------------------------------------------------------------
+Fri May 30 15:38:09 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Tue Apr 29 10:00:36 CEST 2003 - kssingvo@suse.de
+
+- updated to 1.1.19rc3
+- removed unnecessary patches
+- removed README.SuSE (bugzilla#26479)
+
+-------------------------------------------------------------------
+Wed Apr  9 12:09:56 CEST 2003 - kssingvo@suse.de
+
+- added patch for cgi-interface: hostname is now mapped
+  to localhost
+- updated PrintAnalyzer script
+
+-------------------------------------------------------------------
+Wed Mar 12 18:06:38 CET 2003 - kssingvo@suse.de
+
+- fixed "endless attempts to print" problem (bugzilla#25152)
+
+-------------------------------------------------------------------
+Wed Mar 12 13:44:25 CET 2003 - kssingvo@suse.de
+
+- installs now correct pam file (bugzilla#23277)
+
+-------------------------------------------------------------------
+Mon Mar 10 16:18:21 CET 2003 - kssingvo@suse.de
+
+- fixed location of foomatic-rip filters -> /usr/bin
+- added link for foomatic-rip
+- updated foomatic-rip (to latest, fixed version)
+
+-------------------------------------------------------------------
+Thu Mar  6 13:18:04 CET 2003 - kssingvo@suse.de
+
+- fixed typo for manpage installation of foomatic-rip
+- fixed file list of cups and cups-client (foomatic-rip is part
+  of cups and therefore the corresponding package should contain
+  the manpage too)
+
+-------------------------------------------------------------------
+Mon Mar  3 10:32:34 CET 2003 - kssingvo@suse.de
+
+- updated cupsomatic to linuxprinting.org (hopefully fixed
+  accounting problem)
+
+-------------------------------------------------------------------
+Thu Feb 27 11:14:51 CET 2003 - kssingvo@suse.de
+
+- fix for add printer with KDE util (from CVS head)
+
+-------------------------------------------------------------------
+Wed Feb 26 17:20:33 CET 2003 - kssingvo@suse.de
+
+- fixed again filelist :)
+- fixed documenation path (buzgzilla#24083)
+- fixed PPD file parsing (from CVS head)
+- tested daemon
+
+-------------------------------------------------------------------
+Wed Feb 26 16:54:55 CET 2003 - ro@suse.de
+
+- fix filelist (file listed twice)
+
+-------------------------------------------------------------------
+Wed Feb 26 14:34:38 CET 2003 - kssingvo@suse.de
+
+- updated foomatic-gswrapper
+- added new foomatic-rip: filter, config file and manpage
+
+-------------------------------------------------------------------
+Mon Feb 24 12:28:12 CET 2003 - kssingvo@suse.de
+
+- updated backends novell and pipe
+- renamed sysconfig metadata:  sysconfig.cups -> cups.sysconfig
+- renamed permissions file:    permissions.cups -> cups.permissions
+- fixed problem in lpoptions (no more loops! :)
+
+-------------------------------------------------------------------
+Thu Feb 20 12:37:07 CET 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#22629]
+
+-------------------------------------------------------------------
+Fri Feb  7 12:15:53 CET 2003 - kukuk@suse.de
+
+- Use pam_unix2.so instead of pam_unix.so
+
+-------------------------------------------------------------------
+Tue Jan 28 17:45:38 CET 2003 - kssingvo@suse.de
+
+- fixed "Error message when starting cups daemon" problem
+  (bugzilla#22472)
+- removed unnecessary DocumentRoot setting cupsd.conf
+
+-------------------------------------------------------------------
+Tue Jan 28 14:57:11 CET 2003 - kssingvo@suse.de
+
+- changed replacement of distribution in testprint.ps
+- rccups: moved hotplug from required start to should-start
+  (bugzilla#23054)
+- added /usr/bin/cupstestppd (bugzilla#23143)
+- created xinetd.d file for cups-lpd
+
+-------------------------------------------------------------------
+Thu Jan 23 17:55:27 CET 2003 - kssingvo@suse.de
+
+- added usb patch (for epson printers)
+- added herrno patch in IPP protocol
+
+-------------------------------------------------------------------
+Fri Jan 17 14:09:05 CET 2003 - kssingvo@suse.de
+
+- added two backends (pipe + novell), written by jsrain@suse.cz
+- welcome back foomatic filter (makes more sense to have it here)
+
+-------------------------------------------------------------------
+Fri Dec 20 13:09:43 CET 2002 - kssingvo@suse.de
+
+- updated to 1.1.18, adapted testpage.diff for new version
+
+-------------------------------------------------------------------
+Mon Dec 16 11:02:35 CET 2002 - kssingvo@suse.de
+
+- fixed test for link problem in rccups
+
+-------------------------------------------------------------------
+Tue Dec 10 17:11:45 CET 2002 - kssingvo@suse.de
+
+- removed foomatic filter. with next suse release will be
+  in pkg cups-drivers
+
+-------------------------------------------------------------------
+Wed Dec  4 10:55:34 CET 2002 - kssingvo@suse.de
+
+- updated to version 1.1.17, removed lib64 patch (now already
+  in source tree)
+
+-------------------------------------------------------------------
+Thu Nov  7 17:08:49 CET 2002 - kssingvo@suse.de
+
+- updated %files for all cups subpackages.
+  (Now new cups files are included too :-)
+
+-------------------------------------------------------------------
+Thu Nov  7 14:56:27 CET 2002 - kssingvo@suse.de
+
+- removed debuging option in spec file.
+
+-------------------------------------------------------------------
+Thu Nov  7 11:00:45 CET 2002 - kssingvo@suse.de
+
+- updated to version 1.1.16, removed or adapted SuSE patches
+
+-------------------------------------------------------------------
+Tue Sep 10 12:38:47 CEST 2002 - ro@suse.de
+
+- added prereq for groupadd (#19300)
+
+-------------------------------------------------------------------
+Thu Sep  5 22:25:25 CEST 2002 - ro@suse.de
+
+- fix postinstall
+
+-------------------------------------------------------------------
+Thu Sep  5 16:12:02 CEST 2002 - kssingvo@suse.de
+
+- changed %post: removed "insserv" to make yast2 and security happy
+
+-------------------------------------------------------------------
+Mon Sep  2 18:13:43 CEST 2002 - kssingvo@suse.de
+
+- changed cupsd.conf for 127.0.0.2 access (bugzilla#18764)
+
+-------------------------------------------------------------------
+Mon Sep  2 17:55:42 CEST 2002 - kssingvo@suse.de
+
+- added directory /usr/share/cups/drivers for cupsaddsmb/samba
+
+-------------------------------------------------------------------
+Tue Aug 27 17:34:29 CEST 2002 - kssingvo@suse.de
+
+- fixed foomatic and foomatic-gswrapper (bugzilla#18425)
+
+-------------------------------------------------------------------
+Wed Aug 21 16:36:29 CEST 2002 - kssingvo@suse.de
+
+- gave %files sections a %deffattr and gave special files and dirs
+  a required %attr permissions of lp.sys (bugzilla#18126)
+
+-------------------------------------------------------------------
+Tue Aug 20 13:02:41 CEST 2002 - uli@suse.de
+
+- fixed hardcoded path CUPS_SERVERBIN (fixes ghostscript on lib64
+  archs)
+
+-------------------------------------------------------------------
+Tue Aug 20 11:13:05 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Mon Aug 12 17:11:16 CEST 2002 - kssingvo@suse.de
+
+- cups-devel now requires exact matching version of cups-libs
+- added /var/log/cups to cups-libs (bugzilla#17617)
+
+-------------------------------------------------------------------
+Sat Jul 27 18:26:55 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 22 15:47:18 CEST 2002 - kssingvo@suse.de
+
+- fix for author patch: crashed on reload signal
+  (tested for stability)
+
+-------------------------------------------------------------------
+Fri Jul 19 16:29:48 CEST 2002 - kssingvo@suse.de
+
+- using now fillup to generate sysconfig file
+- replaced delayed exit patch by CUPS authors one
+
+-------------------------------------------------------------------
+Thu Jul 18 16:02:20 CEST 2002 - kssingvo@suse.de
+
+- again rccups: rc.config only parsed, if present
+  (for backward compatibility)
+
+-------------------------------------------------------------------
+Thu Jul 18 10:14:15 CEST 2002 - kssingvo@suse.de
+
+- updated rccups to satisfy new SuSE requirements
+- added delayed exit of cupsd patch (for processing many PPD files)
+
+-------------------------------------------------------------------
+Wed Jul 10 21:22:30 CEST 2002 - kssingvo@suse.de
+
+- adapted the pam file for SuSE (according to Thorstens proposal)
+
+-------------------------------------------------------------------
+Tue Jul  9 21:11:53 CEST 2002 - kssingvo@suse.de
+
+- upgraded to version 1.1.15 and adapted all the old patches
+- moved %{_sysconfdir}/cups to libs (as suggested by jsmeix)
+
+-------------------------------------------------------------------
+Tue Jul  2 16:57:33 CEST 2002 - kssingvo@suse.de
+
+- added symbolic link /usr/bin/lpc (bugzilla #16652)
+- changed umask in rccups (bugzilla #16567)
+
+-------------------------------------------------------------------
+Thu Jun 13 20:00:27 MEST 2002 - draht@suse.de
+
+- Running cupsd if no printer is configured makes no sense.
+  Do not activate cupsd after installation in %post.
+
+-------------------------------------------------------------------
+Tue Jun  4 18:49:05 CEST 2002 - kssingvo@suse.de
+
+- fixed g++/cups-config problems in other cups subpackages
+
+-------------------------------------------------------------------
+Tue Jun  4 16:00:21 CEST 2002 - kssingvo@suse.de
+
+- added 'cups-config' to devel
+
+-------------------------------------------------------------------
+Wed May  8 18:06:35 CEST 2002 - kssingvo@suse.de
+
+- fixed linker problem (rpath) under x86_64
+- therefore old x86_64 fix is no longer necessary: removed.
+
+-------------------------------------------------------------------
+Mon Apr 22 16:20:21 CEST 2002 - kssingvo@suse.de
+
+- added %ifarch x86_64 to avoid linking problems in specfile.
+
+-------------------------------------------------------------------
+Thu Apr 18 17:30:40 CEST 2002 - kssingvo@suse.de
+
+- updated to 1.1.14
+- removed unnecessary patches
+- adapted testpage.ps patch to new file
+- fixed permission problem with lppasswd
+- fixed %files section (now includes all %dirs too)
+
+-------------------------------------------------------------------
+Wed Apr 10 11:18:40 CEST 2002 - ro@suse.de
+
+- don't call autoreconf, we can't use autoheader and automake here
+
+-------------------------------------------------------------------
+Tue Feb 26 11:29:00 CET 2002 - kssingvo@suse.de
+
+- fixed too restrictive IPP security fix
+- fixed documentation path (#13889)
+
+-------------------------------------------------------------------
+Mon Feb 25 20:20:43 CET 2002 - kssingvo@suse.de
+
+- reorganized online documentation. old structure might confuse
+  people (#13849)
+
+-------------------------------------------------------------------
+Wed Feb 20 15:33:13 CET 2002 - kssingvo@suse.de
+
+- completed the IPP security fix again (hopefully the last time)
+
+-------------------------------------------------------------------
+Mon Feb 18 17:27:56 CET 2002 - kssingvo@suse.de
+
+- completed the IPP security fix
+
+-------------------------------------------------------------------
+Tue Feb 12 10:58:49 CET 2002 - kssingvo@suse.de
+
+- updated perl scripts cupsomatic, and foomatic-gswrapper
+
+-------------------------------------------------------------------
+Tue Feb 12 10:52:12 CET 2002 - kssingvo@suse.de
+
+- made patch cups-cs-utf8.dif again. got build problems with
+  last version.
+
+-------------------------------------------------------------------
+Mon Feb 11 17:49:40 CET 2002 - kssingvo@suse.de
+
+- Added iso-8859-2 patch for czech utf-8 locale.
+  Thanks to Petr Blahos <pblahos@suse.cz>.
+
+-------------------------------------------------------------------
+Mon Feb 11 17:31:46 CET 2002 - kssingvo@suse.de
+
+- added IPP security fix
+
+-------------------------------------------------------------------
+Fri Feb  1 18:36:44 MET 2002 - draht@suse.de
+
+- log tcp-wrappers based connection refusals to cups' own logfiles
+  instead of syslog.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 29 20:28:51 MET 2002 - draht@suse.de
+
+- added support for tcp-wrappers (cups-1.1.12-libwrap-addition.dif)
+  token for /etc/hosts.{allow,deny} is "cupsd".
+
+-------------------------------------------------------------------
+Mon Jan 21 15:40:50 CET 2002 - schwab@suse.de
+
+- Fix gcc version check.
+
+-------------------------------------------------------------------
+Tue Jan  8 14:02:01 CET 2002 - pblahos@suse.cz
+
+- cups-client does not provide print_daemon anymore. print_daemon
+  is required by aps but cups-client does not satisfy aps
+  regarding this.
+- START_CUPS variable removed
+- up to 1.1.12
+
+-------------------------------------------------------------------
+Sun Nov 11 00:59:05 CET 2001 - bjacke@suse.de
+
+- fixes specfile
+
+-------------------------------------------------------------------
+Sat Nov 10 19:16:26 CET 2001 - bjacke@suse.de
+
+- add standard postscript PPD
+- set DefaultPage{Size,Region} to A4 in ppd files
+- now reqiures ghostscript_any
+- add /etc/permissions.d/cups-client (#4094)
+- personalize test page
+- move old font directory if existing and send mail
+- up to 1.1.11
+
+-------------------------------------------------------------------
+Mon Oct 22 00:14:34 CEST 2001 - ro@suse.de
+
+- remove ghostscript-fonts-std from neededforbuild, this is only
+  a runtime requirement
+
+-------------------------------------------------------------------
+Tue Sep  4 19:02:36 CEST 2001 - bjacke@suse.de
+
+- work around cups' broken tmp file handling (#10142)
+
+-------------------------------------------------------------------
+Sun Sep  2 19:50:26 CEST 2001 - bjacke@suse.de
+
+- move client.conf to libs package
+- activate cat8 man pages
+- add README.SuSE
+- update lphelp
+
+-------------------------------------------------------------------
+Thu Aug 30 23:55:33 CEST 2001 - bjacke@suse.de
+
+- split into cups-client and cups(-server) package
+- add %ghosty smb printer backend support
+- re-add ogonky for non-latin1 charsets (#9864)
+- add printanalyzer script in doc
+
+-------------------------------------------------------------------
+Mon Aug 27 09:48:10 CEST 2001 - utuerk@suse.de
+
+- removed cups.conf (now provided by susehelp)
+
+-------------------------------------------------------------------
+Mon Aug 27 07:46:07 CEST 2001 - kukuk@suse.de
+
+- Remove -j parameter from spec file
+
+-------------------------------------------------------------------
+Sat Aug 25 19:33:57 CEST 2001 - bjacke@suse.de
+
+- update to 1.1.10-1 (many fixes)
+- fix output for dvi's (bug #9862)
+- new poll_ppd_base
+
+-------------------------------------------------------------------
+Sun Aug 19 23:36:28 CEST 2001 - bjacke@suse.de
+
+- split out cups-libs from cups
+- add ssl directory
+- make correct links for cups libraries
+
+-------------------------------------------------------------------
+Thu Aug 16 17:05:19 CEST 2001 - bjacke@suse.de
+
+- use ghostscript fonts which are the same as the cups fonts
+  and adjust dependecy for ghostscript-fonts-std
+
+-------------------------------------------------------------------
+Sun Aug 12 18:42:27 CEST 2001 - bjacke@suse.de
+
+- enable SSL
+
+-------------------------------------------------------------------
+Fri Aug 10 15:14:38 CEST 2001 - bjacke@suse.de
+
+- correct init script
+
+-------------------------------------------------------------------
+Fri Jul 20 12:53:46 CEST 2001 - max@suse.de
+
+- new version 1.1.9 .
+- updated init script to new skeleton (Bug #8981).
+
+-------------------------------------------------------------------
+Mon Jun 18 14:33:50 CEST 2001 - max@suse.de
+
+- added support for PS files created by Netscape.
+
+-------------------------------------------------------------------
+Sun Apr 15 21:14:03 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Thu Apr 12 18:06:07 CEST 2001 - max@suse.de
+
+- moved foomatic-gswrapper and cupsomatic
+  from cups-drivers to cups
+
+-------------------------------------------------------------------
+Thu Apr 12 11:43:40 CEST 2001 - max@suse.de
+
+- patched cupsd to use /dev/urandom instead of /dev/random.
+  This fixes bug #6703
+
+-------------------------------------------------------------------
+Wed Apr 11 16:18:20 CEST 2001 - max@suse.de
+
+- spec file overhaul
+- using RPM_BUILD_ROOT now
+- removed /etc/printcap from file list
+- removed dependency to cups-drivers
+
+-------------------------------------------------------------------
+Tue Apr 10 16:00:42 CEST 2001 - kendy@suse.cz
+
+- Wake up Epson Stylus USB printers before sending the print job.
+- Added czech translations (czech.dif).
+
+-------------------------------------------------------------------
+Mon Apr  2 15:41:58 CEST 2001 - utuerk@suse.de
+
+- added cups.conf for susehelp
+
+-------------------------------------------------------------------
+Fri Mar 23 16:42:05 CET 2001 - kendy@suse.cz
+
+- USB printers can be now addressed using URI
+  usb:<device_without_number>?vendor=<xxxx>&prod_id=<yyyy>
+  where <xxxx> and <yyyy> are USB identification numbers. (e.g.
+  usb:/dev/usb/lp?vendor=04a9&prod_id=1052 for Canon BJC-6100)
+- fixed pplication/dvi -> application/dvi in conf/mime.convs
+
+-------------------------------------------------------------------
+Mon Feb 26 14:31:15 CET 2001 - mhafner@suse.de
+
+- update to 1.1.6-3 (fixing several security issues)
+
+-------------------------------------------------------------------
+Tue Jan 30 09:27:36 CET 2001 - mhafner@suse.de
+
+- update to 1.1.6 (fixes possible DoS attack)
+
+-------------------------------------------------------------------
+Mon Jan  8 13:54:58 MET 2001 - bjacke@suse.de
+
+- added missing reqiures for cups-drivers
+
+-------------------------------------------------------------------
+Fri Dec 22 11:56:46 MET 2000 - mhafner@suse.de
+
+- update to version 1.1.5
+
+-------------------------------------------------------------------
+Mon Dec  4 15:51:50 MET 2000 - mhafner@suse.de
+
+- cups configuration changed - Browsing now Off by default
+
+-------------------------------------------------------------------
+Thu Nov 30 10:29:44 MET 2000 - mhafner@suse.de
+
+- added DVI filter
+
+-------------------------------------------------------------------
+Wed Nov 29 18:56:40 CET 2000 - ro@suse.de
+
+- fixed spec
+
+-------------------------------------------------------------------
+Tue Nov 28 18:21:53 CET 2000 - ro@suse.de
+
+- fixed startscript
+
+-------------------------------------------------------------------
+Fri Nov 24 13:29:07 MET 2000 - mhafner@suse.de
+
+- added rc.config fillup and SuSEconfig script to automatically
+  set browse address if demanded
+
+-------------------------------------------------------------------
+Wed Nov 22 12:40:01 MET 2000 - mhafner@suse.de
+
+- split into system and development package
+
+-------------------------------------------------------------------
+Fri Oct  6 13:58:49 CEST 2000 - mhafner@suse.de
+
+- documentation root changed
+
+-------------------------------------------------------------------
+Fri Oct  6 08:58:06 CEST 2000 - mhafner@suse.de
+
+- update to version 1.1.4
+- small changes in spec file
+
+-------------------------------------------------------------------
+Mon Sep 25 10:06:38 CEST 2000 - mhafner@suse.de
+
+- make post-script succeed unconditionally
+
+-------------------------------------------------------------------
+Tue Sep 19 08:25:32 CEST 2000 - mhafner@suse.de
+
+- update to version 1.1.3
+
+-------------------------------------------------------------------
+Thu Sep 14 11:54:23 CEST 2000 - mhafner@suse.de
+
+- restart daemon if already started
+- added two little tools (poll_ppd_base, lphelp)
+- added a few compatibility links
+
+-------------------------------------------------------------------
+Thu Sep 14 11:06:33 CEST 2000 - mhafner@suse.de
+
+- turned automatic generation of printcap on
+- turned implicit classes off since they are buggy
+
+-------------------------------------------------------------------
+Wed Sep 13 16:20:40 CEST 2000 - mhafner@suse.de
+
+- fixed directory structure
+- added links to lpd and rclpd
+
+-------------------------------------------------------------------
+Fri Sep  1 09:16:39 CEST 2000 - adrian@suse.de
+
+- added Conflicts line
+
+-------------------------------------------------------------------
+Mon Aug 28 15:10:28 CEST 2000 - adrian@suse.de
+
+- initial package
+

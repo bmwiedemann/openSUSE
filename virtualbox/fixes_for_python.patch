@@ -1,0 +1,19 @@
+To eliminate an rpmlint error, the shebang for this script should be
+changed to use python directly, rather than through env.
+
+When openSUSE switches to Python3, the shebang below should be changed
+to "#!/usr/bin/python3".
+
+Larry Finger
+
+Index: VirtualBox-5.1.30/src/VBox/Frontends/VBoxShell/vboxshell.py
+===================================================================
+--- VirtualBox-5.1.30.orig/src/VBox/Frontends/VBoxShell/vboxshell.py
++++ VirtualBox-5.1.30/src/VBox/Frontends/VBoxShell/vboxshell.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # $Id: vboxshell.py $
+ 
+

@@ -1,0 +1,363 @@
+--- Makefile
++++ Makefile
+@@ -14,8 +14,8 @@
+ # the executable is only used in a .forward so /usr/local/bin may
+ # not be the most appropriate place - though it doesn't hurt.
+ 
+-BINDIR		= /usr/local/bin
+-MANDIR		= /usr/local/man/man1
++BINDIR		= /usr/lib/news/bin
++MANDIR		= /usr/man/man1
+ 
+ 
+ #########################################################
+@@ -28,12 +28,12 @@
+ 
+ # ACTIVE_PATH is the full pathname for your news active file. This
+ # file is used to validate newgroup names.
+-ACTIVE_PATH	=
++ACTIVE_PATH	= /var/lib/news/active
+ 
+ 
+ # NEWSGROUPS_PATH is the fill pathname for your newsgroups file. This
+ # file is used to provide descriptions for each newsgroup.
+-NEWSGROUPS_PATH	=
++NEWSGROUPS_PATH	= /var/lib/news/newsgroups
+ 
+ # BACKSTOP_MAILID is used if gup cannot find a FROM: or a REPLY-TO: or
+ # a valid site command, this is where the mail goes to.
+@@ -41,7 +41,7 @@
+ 
+ # MAIL_COMMAND is the mailer that accepts a mail with rfc822 headers and
+ # body from stdin.
+-MAIL_COMMAND	=	"/usr/lib/sendmail -t"
++MAIL_COMMAND	=	"/usr/sbin/sendmail -t"
+ 
+ # With a command like "include alt.*" the resultant list is, long.
+ # LOG_MATCH_LIMIT, defines the upper bound on the number of pattern
+@@ -50,7 +50,7 @@
+ LOG_MATCH_LIMIT	=	28
+ 
+ # The UMASK to use when creating files and directories.
+-UMASK	=	022
++UMASK	=	002
+ 
+ 
+ #################################################
+@@ -71,18 +71,18 @@
+ xmakefile:	Makefile main.mk ./config/$(CONFIG)
+ 	@echo
+ 	@echo	Constructing xmakefile with ./config/$(CONFIG)
+-	(						\
+-	cat	./config/$(CONFIG)			;\
+-	echo	CONFIG=$(CONFIG)			;\
+-	echo 	BINDIR=$(BINDIR)			;\
+-	echo 	MANDIR=$(MANDIR)			;\
+-	echo 	ACTIVE_PATH=$(ACTIVE_PATH)	 	;\
+-	echo 	NEWSGROUPS_PATH=$(NEWSGROUPS_PATH)	;\
+-	echo 	BACKSTOP_MAILID=$(BACKSTOP_MAILID) 	;\
+-	echo 	MAIL_COMMAND=$(MAIL_COMMAND)	 	;\
+-	echo 	LOG_MATCH_LIMIT=$(LOG_MATCH_LIMIT) 	;\
+-	echo 	UMASK=$(UMASK)			 	;\
+-	cat	main.mk					;\
++	@(						\
++	cat	./config/$(CONFIG)			; \
++	echo	CONFIG=$(CONFIG)			; \
++	echo 	BINDIR=$(BINDIR)			; \
++	echo 	MANDIR=$(MANDIR)			; \
++	echo 	ACTIVE_PATH=$(ACTIVE_PATH)	 	; \
++	echo 	NEWSGROUPS_PATH=$(NEWSGROUPS_PATH)	; \
++	echo 	BACKSTOP_MAILID=$(BACKSTOP_MAILID) 	; \
++	echo 	MAIL_COMMAND=$(MAIL_COMMAND)	 	; \
++	echo 	LOG_MATCH_LIMIT=$(LOG_MATCH_LIMIT) 	; \
++	echo 	UMASK=$(UMASK)			 	; \
++	cat	main.mk					; \
+ 	) >xmakefile
+ 	@echo
+ 
+--- README.linux
++++ README.linux
+@@ -0,0 +1,24 @@
++How to get gup running:			Florian La Roche
++=======================
++
++- add "newsgup: news" to /etc/aliases and don't forward "news"-postings
++  to "root" (delete the line with "news: root")
++  So "news" has no its own mail-folder and "newsgup" is an alias for it.
++- "mkdir /usr/lib/news/Mail"
++- create "/usr/lib/news/.procmailrc" with the followin lines:
++  (but do write the 2 last lines into one line...)
++	MAILDIR=$HOME/Mail
++	LOGFILE=$MAILDIR/from
++	LOCKFILE=$HOME/.lockmail
++
++	:0
++	* ^TO.*gup
++	|/usr/lib/news/bin/gup -P -d /var/lib/news/gup -l log \
++		-m gup_headers -s sites
++- Look at all files in /var/lib/news/gup/ and edit them to your taste.
++  Don't forget to change "gup_headers" to have a Reply-To: with
++  a complete hostname.
++- You should run gupdate to update your newsfeeds file. Maybe use
++  the following entry in /etc/crontab:
++	49 */6 * * * news /usr/lib/news/bin/gupdate
++
+--- config/vanilla
++++ config/vanilla
+@@ -1,4 +1,5 @@
+ #
+ # Ultrix V4.3			Aherbert
+ 
+-P_CFLAGS	= -g
++P_CFLAGS	= -Wall -O2 -pipe $(RPM_OPT_FLAGS)
++
+--- gup.c
++++ gup.c
+@@ -37,7 +37,7 @@
+ 
+ 
+ char	*progname = "gup";		/* GC */
+-FILE	*log_fp = stderr;
++FILE	*log_fp;
+ 
+ static	char	*usage =
+ "\n\
+@@ -166,6 +166,7 @@
+     int		changed;
+ 
+     umask(UMASK);
++    log_fp = stderr;
+ 
+     parse_options(argc, argv);		/* Decode our command line options */
+ 
+--- rfc822.h
++++ rfc822.h
+@@ -246,7 +246,9 @@
+ extern int	errno;
+ extern int	sys_nerr;
+ extern int	optind;
++#if !(defined __GLIBC__ && __GLIBC__ >=2)
+ extern char	*sys_errlist[];
++#endif
+ extern char	**environ;
+ extern char	*optarg;
+ 
+--- sample/config
++++ sample/config
+@@ -1,2 +1,4 @@
+-t	t	andrew@werple
+-
++#  Each line should have three entries:
++#  The name of the host, the password and an email address
++#  to which the result is emailed.
++#host	passwd	mail@host.domain.com
+--- sample/default/exclude
++++ sample/default/exclude
+@@ -0,0 +1 @@
++control
+--- sample/default/groups
++++ sample/default/groups
+@@ -0,0 +1,2 @@
++local.*
++!local.lists*
+--- sample/default/header
++++ sample/default/header
+@@ -0,0 +1,2 @@
++# HOST Eintrag (HOST wird ersetzt durch site-namen)
++HOST/HOST.saar.de:wg.*,\
+--- sample/default/trailer
++++ sample/default/trailer
+@@ -0,0 +1 @@
++local.adm/!local:Tm:uucp!
+--- sample/gup_headers
++++ sample/gup_headers
+@@ -0,0 +1,2 @@
++Reply-To: postmaster
++Subject: Your GUP request processing result
+--- sample/gupadd
++++ sample/gupadd
+@@ -0,0 +1,29 @@
++#! /bin/sh
++umask 077
++if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
++	cat <<EOM
++addsite: add a new site to feed
++usage: addsite [-f] "sitename" "gup passwort" "email address for replies"
++Be aware of the fact that the newsfeeds-file is not updated, but
++must be brought up to date with gupdate
++EOM
++	exit 0
++fi
++# configuration variables
++site=$1
++passwd=$2
++mail=$3
++. /var/lib/news/gup/gupconfig
++if [ -d $sitedir ] || grep -s "^$site[ \t]" $gupdir/config ; then
++	echo "The directory $sitedir already exists or this host is already"
++	echo "in your $gupdir/config file."
++	exit 1
++fi
++mkdir -p $sitedir
++ln -sf $defhdr $sitedir/header
++ln -sf $deftrail $sitedir/trailer
++sed -e "s/HOST/$site/g" $defgroup >$sitedir/groups
++ln -sf $defexcl $sitedir/exclude
++echo "creating new entry in config file"
++echo "$site $passwd $mail" >>$gupdir/config
++exit 0
+--- sample/gupconfig
++++ sample/gupconfig
+@@ -0,0 +1,25 @@
++#
++# set variables for gup configuration
++# (you should not need to edit this file)
++#
++gupdir=/var/lib/news/gup
++newsdir=/var/lib/news
++newsspool=/var/spool/news
++sitesdir=$gupdir/sites
++sitedir=$sitesdir/$site
++default=$gupdir/default
++defhdr=$default/header
++deftrail=$default/trailer
++defgroup=$default/groups
++defexcl=$default/exclude
++# the username that gup runs as
++gup_uid=news
++
++# gupdate writes a new newsfeeds file $newsfeeds.new is also used
++# as temporary file
++newsfeeds=/var/lib/news/newsfeeds
++mailcmd=/bin/mail
++# error mails go to this person
++news_admin=postmaster
++ctlinnd=/usr/lib/news/bin/ctlinnd
++
+--- sample/gupdate
++++ sample/gupdate
+@@ -0,0 +1,51 @@
++#! /bin/sh
++# A script to rebuild the newsfeed file after a gup run
++
++. /var/lib/news/gup/gupconfig
++PATH=/usr/bin:/bin:/usr/lib/news/bin
++
++########################### end of user-config stuff ##########################
++
++cd $gupdir
++(
++	cat newsfeeds.start
++	cd sites
++	for h in * ; do
++		if [ -s "$h/groups" ]; then
++			echo
++			sed -e "s/HOST/$h/g" $h/header			#header
++			sed -e 's/$/,\\/g' -e 's/\\.\\*$//g' $h/groups	#body
++			sed -e "s/HOST/$h/g" $h/trailer			#trailer
++		fi
++	done
++	cd ..
++	cat newsfeeds.end
++) >$newsfeeds.new
++
++# commit the new version
++mv -f $newsfeeds.old $newsfeeds.old1
++mv -f $newsfeeds $newsfeeds.old
++mv $newsfeeds.new $newsfeeds
++
++# verify that it's ok
++$ctlinnd checkfile >/dev/null 2>/dev/null
++ok=$?
++if [ "$ok" -ne 0 ]; then
++  echo "argh!  $newsfeeds verification failed - moving back previous version"
++  mv $newsfeeds $newsfeeds.broken
++  mv -f $newsfeeds.old $newsfeeds
++  $mailcmd -s "gup newsfeeds failure!" $news_admin <<SIGH
++gup has gone weird - the generated newsfeeds file has been rejected by
++$ctlinnd checkfile.  Please check:
++	$newsfeeds.broken
++
++to determine the source of the problem.
++
++yours in efficiency,
++the gupdate daemon
++SIGH
++  exit 1
++fi
++
++# tell INN about it
++$ctlinnd reload newsfeeds gupup 2>&1 >/dev/null
+--- sample/gupverify
++++ sample/gupverify
+@@ -0,0 +1,21 @@
++#! /bin/sh
++# A script to check gup consistency
++
++. /var/lib/news/gup/gupconfig
++verify_file () {
++	[ -f "$1" ] && return
++	echo "linking $1 -> $2"
++	ln -sf $1 $2
++}
++for h in $sitesdir/* ; do
++  site=`basename $h`
++  echo $site
++  verify_file $h/header $defhdr			# header
++  if [ ! -f $h/groups ]; then			# body
++    echo "copying basic groups entry (performing customization) -> $h/groups"
++    sed -e "s/HOST/$site/g" $defgroup >$h/groups
++  fi
++  verify_file $h/trailer $deftrail		# trailer
++  verify_file $h/exclude $defexcl		# exclusions
++done
++chown $gup_uid $sitesdir/*/groups
+--- sample/newsfeeds.end
++++ sample/newsfeeds.end
+@@ -0,0 +1,6 @@
++# Beginning of /var/lib/news/gup/newsfeeds.end.
++# This is used as the end of /var/lib/news/newsfeeds.
++
++# This is currently empty, we don't need any entries here...
++
++# End of /var/lib/news/gup/newsfeeds.end.
+--- sample/newsfeeds.start
++++ sample/newsfeeds.start
+@@ -0,0 +1,26 @@
++# Beginning of /var/lib/news/gup/newsfeeds.start.
++# This is used as the start of /var/lib/news/newsfeeds.
++
++ME:*::
++
++# for NOV overview database
++OVERVIEW!:*:Tc,WO:/usr/lib/news/bin/overchan
++
++# sample entry for UUCP
++#hugo/hugo.suse.de:*,!junk,!control*:Tf,Wnb,B4096/1024:
++
++# sample entry for NNTP
++#hugo.suse.de:*,!junk,!control*:Tf,Wnm:hugo.suse.de
++
++uucp!:!*:Tx,Wnb*:/usr/lib/news/bin/buffchan -f 2
++
++nntp!:!*:Tx,Wnm*:/usr/lib/news/bin/buffchan -f 2
++
++# the upstream uucp news server
++#server/server.com\
++#	:*,!junk/!local:Tm:uucp!
++# the upstream nntp news server
++#server/server.com\
++#	:*,!junk/!local:Tm:nntp!
++ 
++# End of /var/lib/news/gup/newsfeeds.start
+--- lock.c.orig	2008-01-24 11:12:09.000000000 +0100
++++ ./lock.c	2008-01-24 11:12:20.000000000 +0100
+@@ -38,7 +38,7 @@ lockit()
+ 	sleep(LOCK_SLEEP);
+     }
+     if (fd < 0 && errno == EEXIST) {
+-	fd = open("LOCK", O_CREAT | O_WRONLY);
++	fd = open("LOCK", O_CREAT | O_WRONLY, 0600);
+ 	if (fd >= 0)
+ 	    logit(L_LOG, "WARNING", "Trashed pre-existing lock");
+     }

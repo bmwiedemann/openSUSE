@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Thu Jul 11 18:31:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on x86_64 and aarch64, do not overwrite -fPIC with -fPIE
+- Spec cleanup, remove defattr, use license macro
+- Use graphviz-gd instead of graphviz-gnome
+
+-------------------------------------------------------------------
+Tue Feb 12 16:51:13 UTC 2019 - bjorn.lie@gmail.com
+
+- Add audaspace-support-ffmpeg4.patch: Fix build with ffmpeg 4.
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Sat Apr 21 12:56:08 UTC 2018 - jengelh@inai.de
+
+- Explicitly request ffmpeg 3.x for building
+
+-------------------------------------------------------------------
+Mon Oct 23 16:17:58 UTC 2017 - davejplater@gmail.com
+
+- Added upstream patch audaspace-plugin-build-options.patch as
+  final fix for boo#1057965 and audaspace issue#10.
+- Build example executables as position independent executables.
+
+-------------------------------------------------------------------
+Wed Oct 18 08:45:37 UTC 2017 - davejplater@gmail.com
+
+- Delete plugin symlinks and remove version suffixes to further fix
+  boo#1057965 and audaspace issue#10
+
+-------------------------------------------------------------------
+Fri Sep 22 08:35:04 UTC 2017 - davejplater@gmail.com
+
+- Moved lib*.so plugin symlinks from the devel package to the
+  pluginsn package as a temporary work around for boo#1057965
+  reported upstream https://github.com/audaspace/audaspace/issues/10
+
+-------------------------------------------------------------------
+Tue Mar 28 15:22:34 UTC 2017 - davejplater@gmail.com
+
+- Fix gcc7 build by requiring graphviz-gnome and creating
+  audaspace-gcc7.patch to add missing #include <functional>
+
+-------------------------------------------------------------------
+Sat Feb 11 13:48:08 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+  Update descriptions.
+
+-------------------------------------------------------------------
+Fri Feb 10 09:14:52 UTC 2017 - davejplater@gmail.com
+
+- Update to release 1.3.0
+- Removed patch audaspace-findffmpeg.patch Fixed upstream
+- Upstream changes:
+  * Audaspace 1.3.0 is a bug fixing release without changes to the
+    API, but two small new features:
+    linear interpolation for volume changes in the software mixer
+    dynamic Loading for JACK
+  * Bug fixes:
+    renamed Jack to JACK
+    C API was not working
+    filter python API parameter check
+    finding ffmpeg with pkgconfig
+
+-------------------------------------------------------------------
+Sun Jul  3 16:58:36 UTC 2016 - mpluskal@suse.com
+
+- Fix building with recent cmake (macros), which default to -fPIE
+
+-------------------------------------------------------------------
+Mon Jun 27 12:41:10 UTC 2016 - davejplater@gmail.com
+
+- Fixed build with upstream patch audaspace-findffmpeg.patch
+
+-------------------------------------------------------------------
+Tue Apr 19 17:14:44 UTC 2016 - davejplater@gmail.com
+
+- Update to release 1.2
+- Upstream changes :
+   New features:
+        sound list
+        random sounds
+        dynamic music playing
+        playback manager
+        convolution/reverbation
+        multi-threading
+        binaural audio
+    API changes:
+        changing default sample rate from 44.1 to 48 kHz
+    Bug fixes:
+        several standard library fixes.
+    Bindings API:
+        mixdown C API refactored
+    CMake/Building:
+        assuring numpy is installed
+
+-------------------------------------------------------------------
+Tue Feb 16 05:29:29 UTC 2016 - davejplater@gmail.com
+
+- Added ffmpeg to build for newer that 13.2
+
+-------------------------------------------------------------------
+Thu Oct 22 09:28:25 UTC 2015 - normand@linux.vnet.ibm.com
+
+- for ppc64le architecture disable __ALTIVEC__ to avoid build error
+  to avoid contention between SDL vector and gcc defines
+
+-------------------------------------------------------------------
+Sat Oct 17 07:08:39 UTC 2015 - davejplater@gmail.com
+
+- Update to version 1.1
+- Remove audaspace-datetime.patch and audaspace-pkgcnflib.patch
+  issues fixed upstream.
+- Upstream changes:
+  *Bug fixes:
+    pkgconfig uses cmake configured library directory
+    FFMPEG file writing crashed, also corrected pts for encoding
+    silenced Doxygen warnings about undefined defines
+  *C++ API:
+    ResampleReader uses specs instead of sample rate
+  *Bindings API:
+    writing sounds to files
+    reading sound data, specs and length
+    resampling sounds
+  *CMake/Building:
+    first steps towards building for Mac
+    windows builds copy dlls automatically
+  *Python module:
+    using distutils instead of setuptools
+    added numpy as dependency
+  *Documentation:
+    added windows building and plugin documentation
+    disabled html timestamps in doxygen
+    updated sphinx template
+    build binding documentation without installing the python module
+
+-------------------------------------------------------------------
+Fri Aug  7 09:29:53 UTC 2015 - davejplater@gmail.com
+
+- Created package audaspace which was previously a part of blender
+  but is an external standalone library as from blender 2.80.
+- Created audaspace-datetime.patch to remove time stamps from the
+  documentation.
+- Created audaspace-pkgcnflib.patch to give the correct _libdir for
+  x86_64 builds, it was hardcoded to /lib.
+- Features:
+  *input/output devices
+   input from microphones, line in, etc.
+   output devices including 3D audio support
+  *file reading/writing
+  *filters like low-/highpass and effects like delay, reverse
+   or fading
+  *generators for simple waveforms like silence, sine and triangle
+  *respecification - is used for changing stream parameters which are
+   channel count - channel remapping
+   sample format - the library internally uses 32 bit floats
+   sample rate - resampling
+  *simple (superposition, joining and ping-pong aka forward-reverse)
+   and more complex (non-linear audio editing) sequencing of sounds
+

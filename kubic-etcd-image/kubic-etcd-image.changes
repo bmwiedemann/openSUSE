@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sat Jul 20 10:22:15 CEST 2019 - kukuk@suse.de
+
+- Split from CaaSP image
+  - add labes
+  - include special etcd package
+  - include etcd migraton script for kubeadm (disabled)
+
+-------------------------------------------------------------------
+Thu Jan 10 13:30:41 UTC 2019 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 32945a3 by David Cassany dcassany@suse.de 
+
+  Update image names
+
+  This commit updates image names to match factory-auto review name policy.
+
+  Fixes #70
+
+-------------------------------------------------------------------
+Wed Jan  9 14:22:59 UTC 2019 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 7b9e3cc by David Cassany dcassany@suse.de 
+
+  Update Tumbleweed base image reference
+
+  Tag of the latest build of Tumbleweed changed from `current` to
+  `latest`.
+
+-------------------------------------------------------------------
+Fri Dec 14 12:46:22 UTC 2018 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 6649435 by David Cassany dcassany@suse.de 
+
+  Do not fail if no new change log entries are found
+
+  This commit makes pre_checkin.sh script to exit 0 if no new changelog 
+  entries are found (when using --mkchanges flag). This way the CI does not
+  report a failre when it is executed having nothing new to commit at OBS.
+
+-------------------------------------------------------------------
+Wed Dec 12 09:21:19 UTC 2018 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 3dbfb55 by David Cassany dcassany@suse.de 
+
+  Distinguish between namespace and product
+
+  For caasp we started using namespaces like 'caasp/head' or 'caasp/vX'. The
+  slash is not an accepted character for 'name' attribute of <image> section.
+  The image name ends up to the filename, thus adding slashes is prohibited
+  there.
+
+- Commit 2278d29 by David Cassany dcassany@suse.de 
+
+  Updating the SLE15 base image tag
+
+  Current SLE15 image is published under 'latest' tag.
+
+- Commit c9f588f by David Cassany dcassany@suse.de 
+
+  Adding custom caasp namespaces
+
+  With this commit the caasp templates can be generated including a a caasp
+  suffix. For instance `./pre_checkin.sh caasp/v4` will generate the template
+  with image namespace of `caasp/v4`.
+
+- Commit 92c129f by David Cassany dcassany@suse.de 
+
+  Make pre_checkin.sh sript more usable
+
+  With this commit pre_checkin.sh script does no create the changes file by
+  default, so it can easily be used to recreate the KIWI files while testing
+  and debugging without requiring to commit anything. Also it only recreates
+  the KIWI files for the given product (caasp|kubic), kubic is the default if
+  none is given.
+
+-------------------------------------------------------------------
+Fri Nov 16 10:49:47 UTC 2018 - mjura@suse.com
+
+- Commit 61f2a43 by Michal Jura mjura@suse.com 
+
+  Build etcd container image for kubic project
+
+-------------------------------------------------------------------
+Thu Nov 14 09:09:45 UTC 2018 - mjura@suse.com
+
+- Initial etcd image build
+

@@ -1,0 +1,46 @@
+From: Egbert Eich <eich@suse.de>
+Date: Fri Jan 15 16:52:18 2016 +0100
+Subject: [PATCH]Panning: Set panning state in xf86RandR12ScreenSetSize()
+Patch-mainline: to be upstreamed
+
+References: boo#771521
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Right after verifying the panning area the per-crtc panning state should
+be set.
+This fixes panning when set in the configuration.
+
+Bugzilla: https://bugzilla.suse.com/show_bug.cgi?id=771521
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ hw/xfree86/modes/xf86RandR12.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
+index eae7016..9f444dd 100644
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -681,6 +681,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+     WindowPtr pRoot = pScreen->root;
+     PixmapPtr pScrnPix;
+     Bool ret = FALSE;
++    Bool panning = FALSE;
+     int c;
+ 
+     if (randrp->virtualX == -1 || randrp->virtualY == -1) {
+@@ -709,6 +710,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+             if (crtc->panningTrackingArea.y2 > crtc->panningTrackingArea.y1)
+                 crtc->panningTrackingArea.y2 += height - pScreen->height;
+             xf86RandR13VerifyPanningArea(crtc, width, height);
++            panning = panning ? TRUE : PANNING_ENABLED (crtc);
+             xf86RandR13Pan(crtc, randrp->pointerX, randrp->pointerY);
+         }
+     }
+@@ -718,6 +720,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+     pScreen->height = pScrnPix->drawable.height = height;
+     randrp->mmWidth = pScreen->mmWidth = mmWidth;
+     randrp->mmHeight = pScreen->mmHeight = mmHeight;
++    randrp->panning = panning;
+ 
+     xf86SetViewport(pScreen, pScreen->width - 1, pScreen->height - 1);
+     xf86SetViewport(pScreen, 0, 0);

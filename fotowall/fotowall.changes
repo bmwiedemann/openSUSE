@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Tue Jul 17 04:06:08 UTC 2018 - plinnell@opensuse.org
+
+- add fotowall-1.0-fix-build-against-qt-5.11.0.patch from Mageia
+
+-------------------------------------------------------------------
+Wed Jan  3 19:35:27 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon Jan  1 09:45:47 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.0
+  * Picture cropping [requested by Rossana]
+  * Exporters: vast improvements: high-quality PDF output, easy
+    Printing
+  * Wordcloud editor
+  * Text: Color Triangle picker, and Shaking
+  * Re-Arrange Contents
+  * View perspective and rotation [requested by Nicolas Brisset]
+  * Port to Qt 5 - Andy Sardina
+  * Traditional Chinese Translation - Estea Chen / Fantix King
+  * Arnaud’s Undo/Redo system (not active yet)
+
+- Dropped fotowall.png, fotowall.desktop, fotowall-0.9_v4l1.patch
+  and Fotowall.patch
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Oct  3 00:00:00 CEST 2014 - avvissu@yandex.ru
+
+- Patch to fix build (v4l1.patch)
+
+-------------------------------------------------------------------
+Tue Dec  8 00:00:00 CET 2009 - toni@links2linux.de
+
+- update to 0.9 the alchimia release
+ - Fast, Solid and Integrated Workflow
+ - New Contents: Canvas and Wordcloud
+ - Graphics Effects
+ - Nested Editors
+ - LikeBack feedback system
+ - Zoomable canvas
+ - more than 250 other changes
+-------------------------------------------------------------------
+Thu Apr 30 00:00:00 CEST 2009 - toni@links2linux.de
+
+- update to 0.6
+
+-------------------------------------------------------------------
+Sun Apr 12 00:00:00 CEST 2009 - toni@links2linux.de
+
+- update to 0.5
+
+-------------------------------------------------------------------
+Fri Mar 13 00:00:00 CET 2009 - detlef@links2linux.de
+
+- new upstream release <0.3.1>
+  * Configuration Panel: right click on an image and edit properties
+  * More Frame types (default, heart, Plasma backgrounds) (David Eccher)
+  * More Image Formats (bmp, tiff, gif, ...) (Superstoned)
+  * Reflections, and really cool ones
+  * Mirror the photo by clicking on an axis (Alberto Scarpa)
+  * DoubleClick on a picture -> set it as background, and vice-versa (Alberto Scarpa)
+  * More pretty (plasma icons) and usable (behavior) frame buttons
+  * Stacking order (Superstoned)
+  * Export a single picture as-you-see-it on disk
+  * Fixed-ratio resize: hold CTRL while resizing
+  * Visual Help (Alberto Scarpa)
+  * Drag&Drop: better behavior and can change a picture inside an existing frame too
+  * Pictures stay on-screen
+-------------------------------------------------------------------
+Sun May 18 00:00:00 CEST 2008 - detlef@links2linux.de
+
+- new upstream release <0.21>
+
+-------------------------------------------------------------------
+Sat Dec  8 00:00:00 CET 2007 - detlef@links2linux.de
+
+- initial build for packman <0.2>
+

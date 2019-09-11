@@ -1,0 +1,11 @@
+--- a/sources/std_main.c	2018-02-18 16:15:23.343772104 -0500
++++ b/sources/std_main.c	2018-02-18 16:16:00.502843082 -0500
+@@ -133,7 +133,7 @@
+ 		}
+ 		if (strcmp(pg->mode, "pre")) {
+ 			po->pagecount++;
+-			if (po->outfile != "-" && po->pagecount > 0) {
++			if (strcmp(po->outfile, "-") != 0 && po->pagecount > 0) {
+ 				sprintf(thepage, "%d", po->pagecount);
+ 				strcpy(po->outfile, savedname);
+ 				if (strstr(po->outfile, pg->mode))

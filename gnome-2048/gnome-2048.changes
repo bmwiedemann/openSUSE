@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Mon Mar 11 18:09:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + An unfullscreen button was added.
+  + First launch of the app immediatly starts on a new game.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 13:24:24 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Some crashes avoided, notably if loading a manually edited
+    saved game file, and a better tiles look on non-square grids,
+    that should be all the things important for users. From the
+    technical side, the internal representation of the board
+    changed, to make it less error-prone, and many parts of the
+    code have moved around. Some tests were also added.
+  + Updated translations.
+- Changes from version 3.31.90:
+  + Various changes. The main is probably the removing of the
+    Preferences dialog: the Undo action is now hidden (and a bug in
+    score restoration was fixed); the game is now responsive, and
+    proposing to change speed was now mostly useless; and multiple
+    game sizes are now proposed when you click on the New Game
+    button (including a 3 by 3). Also, the game can now be played
+    with gestures (and with WASD keys). About technical things, the
+    application changed to use the org.gnome.TwentyFortyEight
+    app-id, and it can be built using the Gitlab CI.
+  + Updated translations.
+- Drop libxml2-tools and perl(XML::Parser) BuildRequires: No longer
+  needed, nor used.
+
+-------------------------------------------------------------------
+Wed Jan  9 21:50:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + On the UI side, the migration from an app-menu to a hamburger
+    menu is done. And on the technical side, the migration to Meson
+    is done also.
+  + Updated translations.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Drop intltool BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:05:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Some Gitlab-migration-related.
+  + Updated translations.
+- Add autosetup and make_build macros, build it properly.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:58 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 00:35:27 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+- Drop %glib2_gsettings_schema_* post/postun and
+  %glib2_gsettings_schema_requires macros: functionality now
+  covered by file triggers.
+
+-------------------------------------------------------------------
+Tue Sep 20 16:54:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + AppData fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 16:17:21 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:36:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + A simple technical update (dependency renamed).
+  + Updated translations.
+- Replace pkgconfig(libgnome-games-support-1.0) with
+  pkgconfig(libgnome-games-support-1) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
+Thu Aug 18 15:14:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Some small technical updates, including metadatas.
+- Replace pkgconfig(libgames-support-1.0) for
+  pkgconfig(libgnome-games-support-1.0) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
+Mon May  9 20:03:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Bugs fixed: bgo#765825.
+
+-------------------------------------------------------------------
+Thu Apr 14 16:29:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:59:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:39:50 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 12:15:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + New hires icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 17 16:33:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + +Changes for this release are mainly some code cleanings.
+- Changes from version 3.19.4:
+  + Make new game work in if game does not exist.
+  + Fixed new game glitch.
+  + Stop using deprecated gnome-common.
+  + Add pre-commit and pre-applypatch hooks.
+  + Fixed congrat message.
+  + Undo score changes with undo.
+  + Disable undo on new game.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 12 09:30:59 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 17:11:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix starting game for the first time.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:24:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 09:23:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 14:51:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 18:30:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Adapt to libgames-support .pc name change.
+  + libgames-support now has an API-versioned vapi file.
+  + Show window after creating scores dialog.
+  + Dynamically set version in about dialog.
+  + Updated translations.
+- Replace pkgconfig(libgames-support) for
+  pkgconfig(libgames-support-1.0) BuildRequires due to name change.
+
+-------------------------------------------------------------------
+Wed Jun 24 19:14:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Initial tarball release.
+  + Updated translations.
+- Drop gnome-common and NOCONFIGURE call, bootstraping no longer
+  needed as we are using a tarball release now.
+- Add intltool, itstool and libxml2-tools BuildRequires: They were
+  pulled in by gnome-common before.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:00:06 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata for openSUSE 42.
+
+-------------------------------------------------------------------
+Mon Mar 30 16:32:14 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, based on git snapshot (no release available
+  yet).
+

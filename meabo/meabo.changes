@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Mar  5 12:29:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git.20180412:
+  * Add missing #ifdef _OPENMP
+
+-------------------------------------------------------------------
+Sun Sep 04 13:25:35 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 1.0+git.20160823
+

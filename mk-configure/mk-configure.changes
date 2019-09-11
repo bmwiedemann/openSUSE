@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Thu Apr 11 15:32:46 UTC 2019 - vle@gmx.net
+
+- Update to 0.31.0:
+
+  * Fix in MKC_CHECK_PROTOTYPES.  The problem was it says "found" for
+    undeclared prototypes.
+
+  * All FEATURES now check for _MKC_CHECK_<xxx> define.  A check for
+    this define guarantees that #include <mkc_XXX.h> are not used
+    without appropriate MKC_FEATURES += <xxx> in Makefile.
+
+  * New publicly available mkc.conf.mk header was introduced.  With a
+    help of it one can implement custom "FEATURES".
+
+  * MKC_CHECK_HEADERS, MKC_CHECK_HEADER_FILES, MKC_CHECK_DEFINES,
+    MKC_CHECK_TYPES, MKC_CHECK_VARS, MKC_CHECK_MEMBERS,
+    MKC_CHECK_FUNCS<n>, MKC_CHECK_PROTOTYPES, MKC_CHECK_SIZEOF and
+    MKC_PROTOTYPE_HEADERS.<name> now accepts a list of comma-separated
+    headers for checking at once.
+    For example, on NetBSD sys/fts.h requires preceding sys/types.h and
+    sys/stat.h. So, now we can write
+     MKC_CHECK_HEADERS  = sys/types.h,sys/stat.h,fts.h
+
+  * MKC_CHECK_FUNCS<n>: new variable MKC_FUNC_OR_DEFINE.<func> was introduced.
+    With a help of it one can check for
+    function declaration of equivalent define.
+
+  * mkc_imp.conf-final.mk: duplicated entries are not added to CPPFLAGS,
+    CFLAGS, LDADD and SRCS.
+
+  * Man page for mkc_check_decl, mkc_check_sizeof and mkc_check_headers
+    were updated.
+
+  * mkc.minitest.mk: new variable MKC_DIFF was introduced for diff(1)
+    command.
+
+  * mkc_check_decl: new check type funcordefine was introduced.
+
+  * Improvements and minor fixes in regression tests and examples.
+
+  * This release was sucessfully tested on FreeBSD-11.1, diverse
+    glibc-based Linuxes, NetBSD-8.99, OpenBSD-6.4 and SunOS-5.11.
+
+  * Deprecated features were removed: DPLIBS and PKG_CONFIG_DEPS variables,
+    builtin "endianess".
+
+-------------------------------------------------------------------
+Mon Aug  6 22:22:46 UTC 2018 - jengelh@inai.de
+
+- Update description from manpage.
+
+-------------------------------------------------------------------
+Fri Jul 13 17:32:51 UTC 2018 - dap.darkness@gmail.com
+
+- Update to 0.30.0:
+  * Variables MKC_{CHECK,REQUIRE}_HEADER_FILES were introduced.
+  * Improvements and addons to regression tests.
+  * Improvements and minor fixes in
+    mkc_check_{header,decl,funclib,sizeof}.
+  * This may fix checking failure if -Werror=strict-prototyping
+    is passed to CFLAGS.
+  * OBJDIR_<project> is now set correctly with MAKEOBJDIRPREFIX.
+  * Fix build failure (mkc_check_prog not found).
+  * Fix MKC_FEATURES "fgenln".
+  * mkc_check_common.sh is installed to libexec directory.
+- Let's ignore more tests (mkshlib, mkstaticlib, mkpiclib, mkdll,
+  mkprofilelib) & examples (hello_cxx, hello_cxxlib)
+  to prevent build-time issue.
+
+-------------------------------------------------------------------
+Sun May 29 08:52:12 UTC 2016 - dap.darkness@gmail.com
+
+- Added mkcmake.macros to provide rpm macros.
+- Added mk-configure-rpmlintrc to skip some useless warnings.
+- Don't override upstream's files permissions.
+- Prevented files-duplicate warnings.
+- Group was fixed.
+
+-------------------------------------------------------------------
+Sun Jan 17 20:05:56 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.29.1
+  * FIX: features "progname", "warn", "err" and "fgetln" as well 
+    as _mkcfake.c file were added to the list of installed ones.
+
+-------------------------------------------------------------------
+Tue Dec  2 16:03:44 UTC 2014 - dap.darkness@gmail.com
+
+- 0.29.0 version:
+  * New variables MKC_CHECK_CC_OPTS and MKC_CHECK_CXX_OPTS were
+    introduced for checking C/C++ compiler's options;
+  * Makefile.inc and Makefile.common are included after
+    system variables are set, in particular CC and CXX;
+  * CC_TYPE is now set in mk.init.mk;
+  * Fixes for "err" and "warn" features.  Now verr(3), verrx(3),
+    vwarn(3) and vwarnx(3) functions are detected correctly
+    (the problem was seen on gcc-4.9/armv7);
+  * Fix support for COMPATLIB.  Objects for "features" should not
+    be generated outside compatibility library;
+  * A number of fixes in regression tests: support for latest GCC,
+    lib64 and lib/tri-ple-ts Linuxes;
+  * mkc_check_custom:
+    - new option -e for checking stderr for emptyness,
+    - new option -b for printing yes/no instead of 1/0,
+    - additional options to compiler are passed.
+- `bmake cleandir-*` to clean examples dir after %check.
+
+-------------------------------------------------------------------
+Sun Sep 14 16:16:07 UTC 2014 - dap.darkness@gmail.com
+
+- 0.28.0 version:
+  * no upstream changelog.
+- Disabled not Linux friendly hello_libdeps test.
+
+-------------------------------------------------------------------
+Sun Jun  1 14:48:33 UTC 2014 - dap.darkness@gmail.com
+
+- Imported from repoforge.
+- SUSEficated.
+
+-------------------------------------------------------------------
+Wed Apr 17 00:00:00 UTC 2013 - david@hrbac.cz
+
+- new upstream release
+
+-------------------------------------------------------------------
+Sun Jul 22 00:00:00 UTC 2012 - vle@gmx.net
+
+- update to 0.23.0
+
+-------------------------------------------------------------------
+Sun Apr  8 00:00:00 UTC 2012 - denis@fateyev.com
+
+- Bump to 0.22.0
+
+-------------------------------------------------------------------
+Mon Jan  2 00:00:00 UTC 2012 - vle@gmx.net
+
+- adapted for repoforge
+
+-------------------------------------------------------------------
+Tue Dec 27 00:00:00 UTC 2011 - mike@altlinux.org
+
+- tweak examples so that they're built as well but packaged pristine
+
+-------------------------------------------------------------------
+Mon Dec 26 00:00:00 UTC 2011 - mike@altlinux.org
+
+- don't install just-built examples as docs
+
+-------------------------------------------------------------------
+Sat Dec 24 00:00:00 UTC 2011 - mike@altlinux.org
+
+- further spec cleanup
+- check fixup (thx upstream)
+- extended BR: properly
+
+-------------------------------------------------------------------
+Mon Nov 21 00:00:00 UTC 2011 - mike@altlinux.org
+
+- dropped MKCATPAGES (thx upstream)
+
+-------------------------------------------------------------------
+Mon Nov  7 00:00:00 UTC 2011 - mike@altlinux.org
+
+- 0.21.2
+- minor spec cleanup
+
+-------------------------------------------------------------------
+Tue Jun 29 00:00:00 UTC 2010 - lav@altlinux.ru
+
+- add check section
+
+-------------------------------------------------------------------
+Fri Jun 25 00:00:00 UTC 2010 - lav@altlinux.ru
+
+- disable examples build
+
+-------------------------------------------------------------------
+Thu Jun 24 00:00:00 UTC 2010 - lav@altlinux.ru
+
+- fix install, disable lua test, enable all tests
+- update buildreqs
+
+-------------------------------------------------------------------
+Fri Jun 18 00:00:00 UTC 2010 - lav@altlinux.ru
+
+- new version 0.16.0 (with rpmrb script)
+
+-------------------------------------------------------------------
+Tue Nov 17 00:00:00 UTC 2009 - lav@altlinux.ru
+
+- new version 0.12.0 (with rpmrb script)
+
+-------------------------------------------------------------------
+Wed Jul 29 00:00:00 UTC 2009 - lav@altlinux.ru
+
+- build for Sisyphus
+
+-------------------------------------------------------------------
+Thu Jul 23 00:00:00 UTC 2009 - vle@gmx.net
+
+- Not it depends on pkgsrc-mk-files, fixes and clean-ups
+
+-------------------------------------------------------------------
+Sun Jul 12 00:00:00 UTC 2009 - lav@altlinux.ru
+
+- initial build for ALT Linux Sisyphus
+

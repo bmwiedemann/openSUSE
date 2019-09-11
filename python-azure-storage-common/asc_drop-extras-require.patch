@@ -1,0 +1,11 @@
+diff -Nru azure-storage-common-1.4.0.orig/setup.py azure-storage-common-1.4.0/setup.py
+--- azure-storage-common-1.4.0.orig/setup.py	2018-11-10 00:24:52.000000000 +0100
++++ azure-storage-common-1.4.0/setup.py	2019-04-15 11:36:53.190409751 +0200
+@@ -76,7 +76,4 @@
+         'python-dateutil',
+         'requests',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-storage-nspkg'],
+-    }
+ )

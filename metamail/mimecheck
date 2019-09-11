@@ -1,0 +1,59 @@
+#!/bin/bash -f
+
+MIME="application/octet-stream"
+CTYPE="[Cc]ontent-[Tt]ype:[[:blank:]]${MIME}"
+CAPPD="(;[[:print:]]*(\n[[:blank:]]+[[:print:]]+)?)?\n"
+CREST="([Cc]ontent-[[:print:]]+${CAPPD})*"
+
+MATCH="${1}"
+INPUT="${2}"
+
+OUTER="^-+${MATCH}"
+INNER=".*\n-+${MATCH}\n${CTYPE}${CAPPD}${CREST}\n(.*)\n-+${MATCH}-*.*"
+
+type -p file	    &> /dev/null || { echo "${0##*/}: Missing \`file' in path" 1>&2; exit 1; }
+type -p mimencode   &> /dev/null || { echo "${0##*/}: Missing \`mimencode' in path" 1>&2; exit 1; }
+case "${0##*/}" in
+mimezip)
+    type -p funzip  &> /dev/null || { echo "${0##*/}: Missing \`funzip' in path" 1>&2; exit 1; }
+    ;;
+mimebzip)
+    type -p bunzip2 &> /dev/null || { echo "${0##*/}: Missing \`bunzip2' in path" 1>&2; exit 1; }
+    ;;
+mimegzip)
+    type -p gunzip &> /dev/null || { echo "${0##*/}: Missing \`gunzip' in path" 1>&2; exit 1; }
+    ;;
+esac
+
+if test -z "$MATCH" ; then
+    echo "${0##*/}: No boundary for mail attachment provided" 1>&2;
+    exit 1;
+fi
+if test -n "$INPUT" ; then
+    if test -r "$INPUT" ; then
+	exec 0< "$INPUT"
+    elif test "$INPUT" != "-" ; then
+	echo "${0##*/}: No such file \`$INPUT'" 1>&2;
+	exit 1;
+    fi
+fi
+
+exec 3> >(exec -a file file -bin - 2>/dev/null)
+case "${0##*/}" in
+mimezip)
+    exec 4> >(exec -a funzip funzip 2>/dev/null 1>&3)
+    exec 5> >(exec -a mimencode mimencode -u 1>&4)
+    ;;
+mimebzip)
+    exec 4> >(exec -a bunzip2 bunzip2 -f 2>/dev/null 1>&3)
+    exec 5> >(exec -a mimencode mimencode -u 1>&4)
+    ;;
+mimegzip)
+    exec 4> >(exec -a gunzip gunzip -f 2>/dev/null 1>&3)
+    exec 5> >(exec -a mimencode mimencode -u 1>&4)
+    ;;
+*)
+    exec 5> >(exec -a mimencode mimencode -u 1>&3)
+    ;;
+esac
+exec -a sed sed -rn "\|${OUTER}|,\|${OUTER}--|H;\${g;s%${INNER}%\6%p;}" 1>&5

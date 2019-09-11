@@ -1,0 +1,21 @@
+--- asm-5.2/build.xml	2012-05-13 16:05:26.000000000 +0200
++++ asm-5.2/build.xml	2018-06-13 10:44:47.527619676 +0200
+@@ -48,6 +48,9 @@
+ 	<property name="config" value="${basedir}/config" />
+ 	<property name="archive" value="${basedir}/archive" />
+ 
++	<property name="compile.source"     value="8"/>
++	<property name="compile.target"     value="8"/>
++
+ 	<property name="out" value="${basedir}/output" />
+ 	<property name="out.build" value="${out}/build" />
+ 	<property name="out.instr" value="${out}/instr" />
+@@ -180,7 +183,7 @@
+ 	</target>
+ 
+ 	<target name="compile-debug" depends="init,compile-init,compile-config">
+-		<javac destdir="${out.build}/tmp" debug="on" source="1.5" target="1.5">
++		<javac destdir="${out.build}/tmp" debug="on" source="${compile.source}" target="${compile.target}" encoding="ISO-8859-1">
+ 			<classpath>
+ 				<pathelement location="${out.build}/tmp" />
+ 			</classpath>

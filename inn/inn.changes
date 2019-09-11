@@ -1,0 +1,523 @@
+-------------------------------------------------------------------
+Fri Dec 14 14:23:32 CET 2018 - mls@suse.de
+
+- update to inn-2.6.2
+  * support for compressed newsfeeds
+  * many bug fixes and documentation improvements
+  * dropped patch: inn-2.5.4.diff
+  * new patch: inn-2.6.2.diff
+- use native systemd service [#1116017]
+  * new file: inn.service
+
+-------------------------------------------------------------------
+Tue Feb 21 10:15:45 CET 2017 - kukuk@suse.de
+
+- Add directories formerly owned by filesystem
+- Require group and user news
+- Require group uucp
+
+-------------------------------------------------------------------
+Wed Oct 26 13:30:59 CEST 2016 - kukuk@suse.de
+
+- Fix tmpfiles.d usage to give it at least a chance to work
+
+-------------------------------------------------------------------
+Sat Dec 13 21:41:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms
+- updated patches:
+  + inn-2.5.4.diff
+
+-------------------------------------------------------------------
+Thu Dec 11 14:04:03 CET 2014 - mls@suse.de
+
+- enable IPv6
+- get rid of gpg-offline as we nowadays check signatures in
+  the source validator
+
+-------------------------------------------------------------------
+Wed Jul 16 14:25:29 CEST 2014 - mls@suse.de
+
+- update to inn-2.5.4
+  * updated control.ctl file
+  * improved signature checking in pgpverify
+  * new "htmlstatus" config option
+  * many bugs fixed
+  * removed patches: inn-linereset.diff
+  * renamed patches: inn-2.5.2.diff -> inn-2.5.4.diff
+- fix innbind file mode
+- fix empty history database on 64bit [bnc#876287]
+
+-------------------------------------------------------------------
+Mon Sep  9 10:58:57 CEST 2013 - mls@suse.de
+
+- make /usr/lib/news/bin owned by root
+
+-------------------------------------------------------------------
+Thu Sep  5 17:40:15 CEST 2013 - mls@suse.de
+
+- add libperl_requires, as we link against libperl and thus
+  need a specific version of perl
+
+-------------------------------------------------------------------
+Tue Nov 27 22:05:59 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:19:18 UTC 2012 - coolo@suse.com
+
+- fix ownership of directories so subpackages can be installed with
+  rpm 4.10
+
+-------------------------------------------------------------------
+Tue Sep  4 17:22:48 CEST 2012 - mls@suse.de
+
+- fix starttls command injection issue [bnc#776967]
+- fix /var/run/news permission and handling.
+
+-------------------------------------------------------------------
+Tue Jun 19 11:01:16 UTC 2012 - aj@suse.de
+
+- Use set_permissions instead of run_permissions.
+- Handle /var/run on tmpfs.
+
+-------------------------------------------------------------------
+Thu Mar 22 11:37:45 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and BSD-4-Clause
+  SPDX format and also include *.in files from control/ as BSD-4-Clause
+
+-------------------------------------------------------------------
+Fri Mar 16 12:10:57 UTC 2012 - lmuelle@suse.de
+
+- require perl-MIME-tools
+
+-------------------------------------------------------------------
+Wed May 19 17:09:38 CEST 2010 - mls@suse.de
+
+- adapt innbind modes to permissions file
+
+-------------------------------------------------------------------
+Thu Apr  8 17:26:36 CEST 2010 - mls@suse.de
+
+- compile with largefile support
+
+-------------------------------------------------------------------
+Wed Apr  7 14:38:44 CEST 2010 - mls@suse.de
+
+- update to inn-2.5.2
+  * implement CAPABILITIES command
+  * decent parser for NNTP commands
+  * multiple LIST commands allow pattern matching
+
+-------------------------------------------------------------------
+Fri Sep  4 11:46:44 CEST 2009 - mls@suse.de
+
+- fix fd leak [bnc#525827]
+
+-------------------------------------------------------------------
+Sun Aug 30 20:05:26 CEST 2009 - coolo@novell.com
+
+- provide Patch0
+
+-------------------------------------------------------------------
+Thu Jul 10 17:01:48 CEST 2008 - mls@suse.de
+
+- fix segfault in perl_call_argv [bnc#405186]
+
+-------------------------------------------------------------------
+Thu Jun 19 12:47:26 CEST 2008 - werner@suse.de
+
+- Add missing Provides to the init script
+
+-------------------------------------------------------------------
+Wed May 30 15:02:17 CEST 2007 - mls@suse.de
+
+- split devel package
+- remove some file duplicates
+
+-------------------------------------------------------------------
+Mon Apr  2 11:49:51 CEST 2007 - rguenther@suse.de
+
+- Add gdbm-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Mar 29 17:47:42 CEST 2007 - rguenther@suse.de
+
+- Add bison BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb 14 15:34:29 CET 2007 - schwab@suse.de
+
+- Fix building as non-root.
+
+-------------------------------------------------------------------
+Mon Nov 13 20:06:48 CET 2006 - mls@suse.de
+
+- initialize mechusing variable to shut up intel compiler [#197713]
+
+-------------------------------------------------------------------
+Mon Jan 30 16:19:05 CET 2006 - mls@suse.de
+
+- add -fstack-protector to CFLAGS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 27 00:57:29 CEST 2005 - ro@suse.de
+
+- build with fPIE/pie 
+
+-------------------------------------------------------------------
+Fri Mar 11 20:36:29 CET 2005 - mls@suse.de
+
+- fix off-by-one error in parsedate_rfc2822
+
+-------------------------------------------------------------------
+Fri Mar  4 17:34:38 CET 2005 - mls@suse.de
+
+- package startinnfeed with mode 4755
+
+-------------------------------------------------------------------
+Fri Feb  4 17:27:10 CET 2005 - mls@suse.de
+
+- update to inn-2.4.2
+
+-------------------------------------------------------------------
+Thu Nov 11 00:59:59 CET 2004 - ro@suse.de
+
+- permissions handling fix
+
+-------------------------------------------------------------------
+Sun Apr  4 21:46:00 CEST 2004 - mls@suse.de
+
+- made /usr/lib/news/bin owned by root:root as it contains
+  a suid-root program
+
+-------------------------------------------------------------------
+Thu Mar 25 23:58:31 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Thu Mar 18 17:30:35 CET 2004 - mls@suse.de
+
+- provide slp regfile
+- pack manpages with owner root:root
+
+-------------------------------------------------------------------
+Fri Feb 27 12:29:29 CET 2004 - mls@suse.de
+
+- update to inn-2.4.1
+- updated inn faq
+
+-------------------------------------------------------------------
+Fri Jan 16 13:11:47 CET 2004 - kukuk@suse.de
+
+- Cleanup neededforbuild
+
+-------------------------------------------------------------------
+Mon Jan 12 11:51:08 CET 2004 - adrian@suse.de
+
+- package startinnfeed with 0555 permissions 
+  (following permissions scripts)
+
+-------------------------------------------------------------------
+Fri Jan  9 11:59:00 CET 2004 - thomas@suse.de
+
+- fixed remotely exploitable buffer overflow (#33882)
+
+-------------------------------------------------------------------
+Tue Sep  2 16:00:46 CEST 2003 - mls@suse.de
+
+- use stop_on_removal/restart_on_update macros
+- convertspool: use split -a 5
+
+-------------------------------------------------------------------
+Wed Jul 30 16:10:25 CEST 2003 - mls@suse.de
+
+- update to inn-2.4.0
+
+-------------------------------------------------------------------
+Mon Jun 23 14:57:55 CEST 2003 - mls@suse.de
+
+- create link targets as ghost
+- don't pack /etc/news, /usr/lib/news, /var/lib/news, they
+  are already in filesystem.rpm
+
+-------------------------------------------------------------------
+Fri Apr 11 01:26:09 CEST 2003 - ro@suse.de
+
+- fix deprecated head/tail calling syntax (-1)
+ 
+-------------------------------------------------------------------
+Mon Mar  3 17:30:23 CET 2003 - mls@suse.de
+
+- touch /var/log/news/news in postinstall (#24555)
+
+-------------------------------------------------------------------
+Fri Jan 10 12:50:39 CET 2003 - mls@suse.de
+
+- update to inn-2.3.4
+
+-------------------------------------------------------------------
+Wed Sep 11 10:57:07 MEST 2002 - mls@suse.de
+
+- corrected Required-Start in rc file (#19402)
+
+-------------------------------------------------------------------
+Tue Aug 20 11:35:36 MEST 2002 - mls@suse.de
+
+- added PreReqs
+- dropped superfluous (and dangerous) "Provides: inn"
+
+-------------------------------------------------------------------
+Fri Aug  9 16:14:13 MEST 2002 - mls@suse.de
+
+- made it work with threaded perl-5.8.0
+
+-------------------------------------------------------------------
+Fri Jul 12 12:36:58 MEST 2002 - mls@suse.de
+
+- fixed postinstall script to be sh -e resistant
+- check if compress binary really works in uucp scripts
+
+-------------------------------------------------------------------
+Tue Jul  2 10:45:44 CEST 2002 - meissner@suse.de
+
+- rerun auto* tools.
+
+-------------------------------------------------------------------
+Thu May  2 14:15:59 MEST 2002 - mls@suse.de
+
+- use gzip if compress is not available (bug #15793)
+- make inn header files available, suck needs them
+
+-------------------------------------------------------------------
+Thu Apr  4 17:57:33 MEST 2002 - mls@suse.de
+
+- fix LIBOBJS in configure.in for new autoconf version
+
+-------------------------------------------------------------------
+Wed Mar  6 18:45:05 MET 2002 - mls@suse.de
+
+- put innd in xrefslave mode in convertspool script
+- fix innconfval segfault if pathhost is not set
+
+-------------------------------------------------------------------
+Mon Feb 25 14:12:26 MET 2002 - mls@suse.de
+
+- fixed permissions of inn libraries
+- added comment about overchan and controlchan
+
+-------------------------------------------------------------------
+Thu Feb 14 12:49:53 MET 2002 - mls@suse.de
+
+- added detection of old history format to rc.news
+- added convertspool script
+- updated README.linux
+- use "rc.news stop" to stop inn
+
+-------------------------------------------------------------------
+Mon Feb 11 15:09:04 MET 2002 - mls@suse.de
+
+- update to inn-2.3.2.
+- rcinn now LSB compliant.
+
+-------------------------------------------------------------------
+Tue Jan 15 16:04:00 CET 2002 - ro@suse.de
+
+- removed START_INN 
+
+-------------------------------------------------------------------
+Tue Jan 15 14:36:12 CET 2002 - egmont@suselinux.hu
+
+- Removed colons from startup/shutdown messages.
+
+-------------------------------------------------------------------
+Wed Jun 13 18:15:31 CEST 2001 - schwab@suse.de
+
+- Fix for new autoconf.
+
+-------------------------------------------------------------------
+Tue Mar 13 15:47:28 CET 2001 - ma@suse.de
+
+- Explicitly set permissions for inews(sgid news), rnews(suid news), 
+  inndstart and startinnfeed (both suid root) in specfile. 
+
+-------------------------------------------------------------------
+Mon Dec  4 12:18:44 CET 2000 - ma@suse.de
+
+- adopt LSB runlevel and init script scheme
+
+-------------------------------------------------------------------
+Thu Nov 23 16:05:14 CET 2000 - ma@suse.de
+
+- IPv6 patch removed
+
+-------------------------------------------------------------------
+Fri Oct 13 17:30:26 CEST 2000 - ma@suse.de
+
+- Update to inn-2.2.3
+- IPv6 patch form http://bofh.st/ipv6/downloads/sith.mimuw.edu.pl
+  added.
+  
+-------------------------------------------------------------------
+Wed Sep  6 12:38:25 CEST 2000 - ma@suse.de
+
+- fixed restart, status and reload section in rcinn (#3889)
+
+-------------------------------------------------------------------
+Thu Jul 27 10:20:26 CEST 2000 - ma@suse.de
+
+- fixed wrong ownership of ~news
+
+-------------------------------------------------------------------
+Thu Jul  6 19:58:35 CEST 2000 - ma@suse.de
+
+- fixed wrong pathnames in send-uucp.pl
+
+-------------------------------------------------------------------
+Mon Jun 19 14:47:15 CEST 2000 - ma@suse.de
+
+- fixes some possible on-stack buffer overflows
+- using BuildRoot
+- add directories for control, control.cancel and junk (#2644)
+- article filters marked as config (#1760)
+
+-------------------------------------------------------------------
+Fri Mar 31 18:59:25 CEST 2000 - schwab@suse.de
+
+- Update config.{guess,sub} from automake.
+
+-------------------------------------------------------------------
+Wed Mar  1 23:55:15 CET 2000 - ro@suse.de
+
+- use %{_mandir} 
+
+-------------------------------------------------------------------
+Wed Mar  1 18:20:08 CET 2000 - werner@suse.de
+
+- Fix config.guess selection
+
+-------------------------------------------------------------------
+Wed Jan 12 17:20:14 CET 2000 - ma@suse.de
+
+- update to 2.2.2 STABLE snapshot 2000-10-01.
+  Y2K bugs fixed
+- added rnews to mininews subpackage
+
+-------------------------------------------------------------------
+Wed Nov 24 17:16:33 MET 1999 - ma@suse.de
+
+- update to 2.2.1 STABLE snapshot 1999-11-23.
+  fixes some bugs that cause inn to crash.  
+
+-------------------------------------------------------------------
+Mon Sep 20 17:30:27 CEST 1999 - ro@suse.de
+
+- added Provides nntp_daemon for mininews
+
+-------------------------------------------------------------------
+Mon Sep 20 17:08:51 CEST 1999 - ro@suse.de
+
+- added Provides nntp_daemon
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug 30 17:51:28 MEST 1999 - ma@suse.de
+
+- update to 2.2.1 (Fixes for possible buffer overflow)
+
+-------------------------------------------------------------------
+Tue Jan 19 17:59:15 MET 1999 - uli@suse.de
+
+- update to newer inn sources
+- do not have an open inn server as default configuration
+
+-------------------------------------------------------------------
+Tue Jan 19 17:59:15 MET 1999 - uli@suse.de
+
+- mininews: fixed missing binary, added /etc/news/inn.conf
+
+-------------------------------------------------------------------
+Fri Jan  8 11:51:29 MET 1999 - florian@suse.de
+
+- add the FAQ again
+- add /usr/sbin/rcinn
+
+-------------------------------------------------------------------
+Thu Dec 17 20:40:41 MET 1998 - florian@suse.de
+
+- update to current cvs-version
+- fix innfeed.conf to use "inn.feed" directory
+
+-------------------------------------------------------------------
+Fri Dec 11 16:35:03 MET 1998 - ro@suse.de
+
+- update to 2.2
+
+-------------------------------------------------------------------
+Sat Nov 14 16:59:54 MET 1998 - ro@suse.de
+
+- fix type-conflict for mmap in include/clibrary.h
+- build mininews from same specfile
+
+-------------------------------------------------------------------
+Sun Sep 20 18:51:08 MEST 1998 - ro@suse.de
+
+- dont redeclare sys_errlist for glibc
+- change return value of exit in include/clibrary.h to explicit "void"
+- add -lcrypt for glibc
+
+-------------------------------------------------------------------
+Fri Oct 24 16:14:03 MEST 1997 - florian@suse.de
+
+- rework autobuild support
+
+- update to inn 1.7
+
+
+-------------------------------------------------------------------
+Tue Oct 21 18:15:55 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+----------------------------------------------------------------------------
+Mon Jun  2 16:13:01 MEST 1997 - florian@suse.de
+
+
+- mv fillup to /var/adm/fillup-templates/
+
+- include correct postinstall script
+
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- always use gzip to decompress news-batches
+
+
+----------------------------------------------------------------------------
+Thu Apr 10 00:32:47 MEST 1997 - florian@suse.de
+
+
+- all log files are in /var/lib/news/log
+
+- inn doesn't try to look at syslog files
+
+- pgp-verification is ready to be used
+
+- all known security patches and some bug-reports installed
+
+- new faq files and docu cleanup
+

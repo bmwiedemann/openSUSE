@@ -1,0 +1,21 @@
+# default: off
+# description: The ftpd server serves FTP connections. It uses normal, \
+#       unencrypted usernames and passwords for authentication. This ftpd is \
+#       the pure-ftpd.
+#    ** NOTE ** when using pure-ftpd from xinetd the arguments to control
+#               it's behaviour should be added here in this file in the
+#               "server_args" line since the configuration file
+#               /etc/pure-ftpd.conf is only for standalone pure-ftpd.
+#               The command "/usr/sbin/pure-config-args /etc/pure-ftpd.conf"
+#               will print the arguments needed for behaviour like standalone
+#               pure-ftpd.
+service ftp
+{
+    socket_type = stream
+    server = /usr/sbin/pure-ftpd
+#    server_args =
+    protocol = tcp
+    user = root
+    wait = no
+    disable = yes
+}

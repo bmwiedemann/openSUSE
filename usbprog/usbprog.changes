@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Fri Nov  4 20:22:07 UTC 2016 - jengelh@inai.de
+
+- Replace usbprog-wxwidgets-2.4.diff~ and
+  ubsprog-wxwidgets-3.0.patch by
+  usbprog-wxwidgets-3.0.diff and enable STL mode
+
+-------------------------------------------------------------------
+Wed Oct  5 09:18:27 UTC 2016 - zaitor@opensuse.org 
+
+- Add patch ubsprog-wxwidgets-3.0.patch to port usbprog to
+  wxWidgets 3.0; patch taken from upstream. 
+
+-------------------------------------------------------------------
+Wed Oct  5 09:16:39 UTC 2016 - badshah400@gmail.com
+
+- Drop outdated macros "%define __find_requires %wx_requires" and
+  "%define _use_internal_dependency_generator 0"; no longer
+  required and causes build failures.
+- Drop conditionals intended to support openSUSE versions that are
+  now old and unmaintained.
+- Switch to pkgconfig based BuildRequires.
+
+-------------------------------------------------------------------
+Thu May  9 06:01:17 UTC 2013 - crrodriguez@opensuse.org
+
+- Place udev rules in the correct directory, /etc/udev/* 
+  will be soon blacklisted for use in packages.
+
+-------------------------------------------------------------------
+Tue Dec 13 13:00:10 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and CC-BY-SA-3.0
+  Aggregation of GPL-2.0+ code and CC-BY-SA-3.0 doc, using SPDX format
+  (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Thu Dec  8 11:14:32 UTC 2011 - coolo@suse.com
+
+- the license seems to be GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Dec 29 15:06:27 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets (STL variant).
+
+-------------------------------------------------------------------
+Wed Jan  6 21:27:21 CET 2010 - bernhard@bwalle.de
+
+- Add patch 'usbprog-wxwidgets-2.4.diff' that allows the package
+  to be built on SLE 10.
+
+-------------------------------------------------------------------
+Tue Jan  5 16:02:37 CET 2010 - bernhard@bwalle.de
+
+- Update to 0.2.0
+  o Install PDF documentation and add a new menu entry in "Help"
+    that opens a PDF viewer and shows that PDF documentation.
+  o Rename "JP" to "JP4" in the pin information dialog to make it
+    more clear that the "JP4" jumper is the firmware-specific one.
+  o MacOS:
+    - Fix the problem that the menu bar is not displayed on MacOS.
+    - Build system fixes for MacOS.
+  o Windows:
+    - Don't install the filter driver on Win32. This makes USBprog
+      compatible with Windows Vista and Windows 7.
+    - Register the uninstaller on Windows in the Control Panel.
+    - Install the driver files in c:\Program Files\USBprog\driver.
+    - Ensure that the complete program directory gets uninstalled.
+
+-------------------------------------------------------------------
+Tue Jan  5 15:54:26 CET 2010 - bernhard@bwalle.de
+
+- SUSE only: Change 'uucp' to 'dialout' for openSUSE >= 11.2 since
+  the serial devices belong to 'dialout' since that release.
+
+-------------------------------------------------------------------
+Sun Jan  3 13:35:41 CET 2010 - bernhard@bwalle.de
+
+- Make spec file more generic (cleanup).
+- Fedora/RHEL/CentOS only: Add udev rules file also for that
+  distribution. Use 'uucp' group on RHEL 5/CentOS 5 and 'dialout'
+  on recent Fedora versions. See also README.$distribution.
+
+-------------------------------------------------------------------
+Sun Jan  3 11:35:19 CET 2010 - bernhard@bwalle.de
+
+- Don't install the static library.
+- SUSE only: Add udev rules file (98-usbprog.rules) to add USBprog
+  devices to the 'uucp' group. See also README.SUSE.
+
+-------------------------------------------------------------------
+Sat Jan  2 21:12:25 CET 2010 - bernhard@bwalle.de
+
+- Remove workaround (BuildRequires) in spec file for Fedora since
+  that seems to be fixed in Fedora build targets of the OBS.
+
+-------------------------------------------------------------------
+Sun Nov 29 18:35:21 UTC 2009 - bernhard@bwalle.de
+
+- update to 0.1.10 (no functional changes on Linux)
+
+-------------------------------------------------------------------
+Sun Apr  5 18:52:50 CEST 2009 - bernhard@bwalle.de
+
+- update to 0.1.9
+  o Print error when downloading fails with a non 400 status code.
+  o Fix GUI on MacOS X (contributed by Nabil Sayegh)
+
+-------------------------------------------------------------------
+Tue Jan 27 19:50:28 CET 2009 - bwalle@suse.de
+
+- update to 0.1.8
+  o fix tab completion for multiple matches (like 'device' and
+    'devices')
+  o Fix problem with recent wxGtk versions that the whole GUI was
+    hanging when updating the progress bar.
+
+-------------------------------------------------------------------
+Thu Jul  3 22:40:38 CEST 2008 - bwalle@suse.de
+
+- update to 0.1.7
+  o fix problem that firmware with more than 16k can't be flashed
+- remove usbprog-fix-nonvoid: merged upstream
+
+-------------------------------------------------------------------
+Mon May  5 15:16:40 CEST 2008 - bwalle@suse.de
+
+- fix usbprog no-return-in-nonvoid-function commands.cc: 987
+
+-------------------------------------------------------------------
+Wed Mar 26 10:34:04 CET 2008 - bwalle@suse.de
+
+- use %postun -p to avoid extra shell
+
+-------------------------------------------------------------------
+Tue Mar 25 10:29:04 CET 2008 - bwalle@suse.de
+
+- update to 0.1.6
+  o CLI: fix mechanism to avoid downloading the index file again
+    and again if the CLI is invoked repeatedly in small intervals
+  o remove GPL-incompatible md5_loc.h from source distribution
+- remove usbprog-build-fixes: fix for usbprog.desktop upstream
+
+-------------------------------------------------------------------
+Fri Mar 21 00:10:49 CET 2008 - bwalle@suse.de
+
+- don't package INSTALL
+- run ldconfig
+
+-------------------------------------------------------------------
+Tue Mar 18 19:32:19 CET 2008 - bwalle@suse.de
+
+- fix build on SUSE Linux 10.0 (RPM parser problem)
+
+-------------------------------------------------------------------
+Tue Mar 18 09:25:49 CET 2008 - bwalle@suse.de
+
+- don't build GUI package on CentOS/RHEL
+
+-------------------------------------------------------------------
+Sun Mar 16 23:21:31 CET 2008 - bwalle@suse.de
+
+- update to 0.1.5 final
+  o GUI: implemented -h / -v / -D command line options for GUI
+  o CLI: implement command completion
+
+-------------------------------------------------------------------
+Sun Mar  9 19:04:31 CET 2008 - bwalle@suse.de
+
+- don't build the GUI for CentOS and RHEL due to lacking wxGtk
+
+-------------------------------------------------------------------
+Sun Mar  2 00:21:11 CET 2008 - bwalle@suse.de
+
+- update to 0.1.5
+  o install icon and destop file
+
+-------------------------------------------------------------------
+Sat Feb  9 22:52:36 CET 2008 - bwalle@suse.de
+
+- update to 0.1.4
+  o Windows: honor IE proxy settings
+  o CLI: make (Internet) download progress working
+  o CLI: always re-discover devices with the "devices" command
+  o CLI: new "start" command to only start the firmware without
+    uploading anything and added "-nostart" option to "upload"
+    command
+  o Unix: build system fixes
+
+-------------------------------------------------------------------
+Sun Jan 13 19:29:42 CET 2008 - bwalle@suse.de
+
+- update to 0.1.3
+  o GUI: fix local upload
+  o GUI: make offline mode working, show only firmwares that are
+    available offline
+
+-------------------------------------------------------------------
+Sun Jan  6 22:51:34 CET 2008 - bwalle@suse.de
+
+- update to 0.1.2
+  o improved error handling
+  o autoconf fixes (building without GUI is now possible)
+  o CLI: new string tokenizer to be able to deal with spaces
+    (use "string with spaces" or string\ with\ spaces like in bash)
+  o GUI: new firmware and pin information
+
+-------------------------------------------------------------------
+Fri Jan  4 11:20:05 CET 2008 - bwalle@suse.de
+
+- fix build for Fedora 8
+
+-------------------------------------------------------------------
+Wed Jan  2 00:38:52 CET 2008 - bwalle@suse.de
+
+- update to 0.1.1
+  o compilation and build fixes
+  o CLI: improve debugging messages
+  o GUI: new "logfile" option for debugging
+  o Windows: fix problem that download is corrupted
+  o add support for checksum testing after download to ensure that
+    the download was correct
+
+-------------------------------------------------------------------
+Thu Dec 27 23:14:54 CET 2007 - bwalle@suse.de
+
+- fix build for gcc 4.3
+
+-------------------------------------------------------------------
+Thu Dec 27 20:26:17 CET 2007 - bwalle@suse.de
+
+- intial SUSE package
+
+-------------------------------------------------------------------

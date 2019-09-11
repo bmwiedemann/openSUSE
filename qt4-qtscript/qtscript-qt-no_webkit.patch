@@ -1,0 +1,17 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Do not build parts depending on Qt WebKit
+
+Qt WebKit is unmaintained and must not be used anymore.
+
+Index: qtscriptgenerator-src-0.2.0/qtbindings/qtbindings.pro
+===================================================================
+--- qtscriptgenerator-src-0.2.0.orig/qtbindings/qtbindings.pro
++++ qtscriptgenerator-src-0.2.0/qtbindings/qtbindings.pro
+@@ -7,7 +7,6 @@ SUBDIRS = qtscript_core \
+ 	  qtscript_svg \
+ 	  qtscript_xml \
+ #	  qtscript_phonon \
+-	  qtscript_webkit \
+ 	  qtscript_xmlpatterns \
+ 	  qtscript_uitools \
+ 	  qs_eval

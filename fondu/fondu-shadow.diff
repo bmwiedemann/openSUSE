@@ -1,0 +1,64 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-19 17:09:20.582742817 +0200
+
+build: fix compilation of fondu.c in optimizing mode
+
+Glibc expands strdup to a big statement involving strlen().
+Since there however is a local variable with the same name,
+*boom*.
+
+$ gcc -Wmissing-prototypes -Wunused -Wimplicit -Wreturn-type
+  -Wparentheses -pedantic -g -O2   -c -o fondu.o fondu.c
+fondu.c: In function ‘BuildFondList’:
+fondu.c:429:18: warning: value computed is not used [-Wunused-value]
+fondu.c:515:20: error: called object ‘strlen’ is not a function
+
+---
+ fondu.c |   18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+Index: fondu-060102/fondu.c
+===================================================================
+--- fondu-060102.orig/fondu.c
++++ fondu-060102/fondu.c
+@@ -473,7 +473,7 @@ static FOND *BuildFondList(FILE *f,long
+ 	}
+ 	if ( styleoff!=0 ) {
+ 	    unsigned char stringoffsets[48];
+-	    int strcnt, strlen, format;
++	    int strcnt, slen, format;
+ 	    char **strings, *pt;
+ 	    fseek(f,styleoff,SEEK_SET);
+ 	    /* class = */ getushort(f);
+@@ -484,11 +484,11 @@ static FOND *BuildFondList(FILE *f,long
+ 	    strcnt = getushort(f);
+ 	    strings = malloc(strcnt*sizeof(char *));
+ 	    for ( j=0; j<strcnt; ++j ) {
+-		strlen = getc(f);
+-		strings[j] = malloc(strlen+2);
+-		strings[j][0] = strlen;
+-		strings[j][strlen+1] = '\0';
+-		for ( k=0; k<strlen; ++k )
++		slen = getc(f);
++		strings[j] = malloc(slen+2);
++		strings[j][0] = slen;
++		strings[j][slen+1] = '\0';
++		for ( k=0; k<slen; ++k )
+ 		    strings[j][k+1] = getc(f);
+ 	    }
+ 	    for ( j=0; j<48; ++j ) {
+@@ -498,11 +498,11 @@ static FOND *BuildFondList(FILE *f,long
+ 		if ( k!=-1 || stringoffsets[j]==0 )
+ 	    continue;		/* this style doesn't exist */
+ 		format = stringoffsets[j]-1;
+-		strlen = strings[0][0];
++		slen = strings[0][0];
+ 		if ( format!=0 && format!=-1 )
+ 		    for ( k=0; k<strings[format][0]; ++k )
+-			strlen += strings[ strings[format][k+1]-1 ][0];
+-		pt = cur->psnames[j] = malloc(strlen+1);
++			slen += strings[ strings[format][k+1]-1 ][0];
++		pt = cur->psnames[j] = malloc(slen+1);
+ 		strcpy(pt,strings[ 0 ]+1);
+ 		pt += strings[ 0 ][0];
+ 		if ( format!=0 && format!=-1 )

@@ -1,0 +1,32 @@
+---
+ fig2dev-3.2.7a/fig2dev/alloc.h |   20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+--- fig2dev-3.2.7a/fig2dev/alloc.h
++++ fig2dev-3.2.7a/fig2dev/alloc.h	2018-05-07 08:49:32.048501663 +0000
+@@ -16,15 +16,15 @@
+  *
+  */
+ 
+-#define		Line_malloc(z)		z = malloc(LINOBJ_SIZE)
+-#define		Pic_malloc(z)		z = malloc(PIC_SIZE)
+-#define		Spline_malloc(z)	z = malloc(SPLOBJ_SIZE)
+-#define		Ellipse_malloc(z)	z = malloc(ELLOBJ_SIZE)
+-#define		Arc_malloc(z)		z = malloc(ARCOBJ_SIZE)
+-#define		Compound_malloc(z)	z = malloc(COMOBJ_SIZE)
+-#define		Text_malloc(z)		z = malloc(TEXOBJ_SIZE)
+-#define		Point_malloc(z)		z = malloc(POINT_SIZE)
+-#define		Control_malloc(z)	z = malloc(CONTROL_SIZE)
+-#define		Arrow_malloc(z)		z = malloc(ARROW_SIZE)
++#define		Line_malloc(z)		z = calloc(LINOBJ_SIZE,1)
++#define		Pic_malloc(z)		z = calloc(PIC_SIZE,1)
++#define		Spline_malloc(z)	z = calloc(SPLOBJ_SIZE,1)
++#define		Ellipse_malloc(z)	z = calloc(ELLOBJ_SIZE,1)
++#define		Arc_malloc(z)		z = calloc(ARCOBJ_SIZE,1)
++#define		Compound_malloc(z)	z = calloc(COMOBJ_SIZE,1)
++#define		Text_malloc(z)		z = calloc(TEXOBJ_SIZE,1)
++#define		Point_malloc(z)		z = calloc(POINT_SIZE,1)
++#define		Control_malloc(z)	z = calloc(CONTROL_SIZE,1)
++#define		Arrow_malloc(z)		z = calloc(ARROW_SIZE,1)
+ 
+ extern char	Err_mem[];

@@ -1,0 +1,77 @@
+From f40c1d989762c4f3b585c86ca5d9a216d120fa12 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Fri, 16 Sep 2011 11:41:16 +0200
+Subject: [PATCH] dump certificate as PEM in debug mode
+
+---
+ src/crypto/tls_openssl.c | 13 +++++++++++++
+ src/utils/wpa_debug.c    |  5 +++++
+ src/utils/wpa_debug.h    |  8 ++++++++
+ 3 files changed, 26 insertions(+)
+
+Index: wpa_supplicant-2.4/src/crypto/tls_openssl.c
+===================================================================
+--- wpa_supplicant-2.4.orig/src/crypto/tls_openssl.c
++++ wpa_supplicant-2.4/src/crypto/tls_openssl.c
+@@ -1484,6 +1484,19 @@ static int tls_verify_cb(int preverify_o
+ 					 SSL_get_ex_data_X509_STORE_CTX_idx());
+ 	X509_NAME_oneline(X509_get_subject_name(err_cert), buf, sizeof(buf));
+ 
++	if (wpa_debug_enabled(MSG_DEBUG)) {
++		long len;
++		char* data = NULL;
++		BIO* bio = BIO_new(BIO_s_mem());
++		//X509_print_ex(bio, err_cert, (XN_FLAG_MULTILINE|ASN1_STRFLGS_UTF8_CONVERT)&~ASN1_STRFLGS_ESC_MSB, 0);
++		PEM_write_bio_X509(bio, err_cert);
++		len = BIO_get_mem_data(bio, &data);
++		if (len) {
++			wpa_printf(MSG_DEBUG, "OpenSSL certificate at depth %d:\n%*s", depth, (int)len, data);
++		}
++		BIO_free(bio);
++	}
++
+ 	conn = SSL_get_app_data(ssl);
+ 	if (conn == NULL)
+ 		return 0;
+Index: wpa_supplicant-2.4/src/utils/wpa_debug.c
+===================================================================
+--- wpa_supplicant-2.4.orig/src/utils/wpa_debug.c
++++ wpa_supplicant-2.4/src/utils/wpa_debug.c
+@@ -62,6 +62,11 @@ static FILE *out_file = NULL;
+ #endif /* CONFIG_DEBUG_FILE */
+ 
+ 
++int wpa_debug_enabled(int level)
++{
++	return level >= wpa_debug_level;
++}
++
+ void wpa_debug_print_timestamp(void)
+ {
+ #ifndef CONFIG_ANDROID_LOG
+Index: wpa_supplicant-2.4/src/utils/wpa_debug.h
+===================================================================
+--- wpa_supplicant-2.4.orig/src/utils/wpa_debug.h
++++ wpa_supplicant-2.4/src/utils/wpa_debug.h
+@@ -24,6 +24,7 @@ enum {
+ 
+ #ifdef CONFIG_NO_STDOUT_DEBUG
+ 
++#define wpa_debug_enabled(x) do { } while (0)
+ #define wpa_debug_print_timestamp() do { } while (0)
+ #define wpa_printf(args...) do { } while (0)
+ #define wpa_hexdump(l,t,b,le) do { } while (0)
+@@ -50,6 +51,13 @@ void wpa_debug_close_file(void);
+ void wpa_debug_setup_stdout(void);
+ 
+ /**
++ * wpa_debug_enabled: check whether given debug level is enabled
++ * @level: priority level (MSG_*) of the message
++ * @return: 0 or 1
++ */
++int wpa_debug_enabled(int level);
++
++/**
+  * wpa_debug_printf_timestamp - Print timestamp for debug output
+  *
+  * This function prints a timestamp in seconds_from_1970.microsoconds

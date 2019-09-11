@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:29:31 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 15 18:24:08 UTC 2013 - zaitor@opensuse.org
+
+- Add translation-update-upstream BuildRequires in order to add 
+  support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:05:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+- Replace pkgconfig(gnome-doc-utils) BuildRequires with yelp-tools:
+  Even though not specified in the NEWS, this version was ported
+  to the new documentation infrastructure.
+- Do not pass --disable-scrollkeeper to configure: it's no longer a
+  known parameter.
+
+-------------------------------------------------------------------
+Wed Aug  8 15:26:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Port to GSettings
+  + Updated translations.
+- Drop pkgconfig(gconf-2.0) BuildRequires after the port to
+  GSettings.
+- Replace gconf-schema handling with gsettings equivalents.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:22:03 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 19 16:44:24 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice) and pkgconfig(sm) BuildRequires: this used to
+  be pulled in by something else, but the relayout of xorg-x11
+  packages changed that.
+
+-------------------------------------------------------------------
+Tue Nov  1 19:18:03 UTC 2011 - dimstar@opensuse.org
+
+- Initial package after upstream split gnome-utils up. 
+

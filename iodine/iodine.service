@@ -1,0 +1,21 @@
+# /lib/systemd/system/iodine.service
+#
+# Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
+#
+
+[Unit]
+Description=iodine lets you tunnel IPv4 data through a DNS server
+After=network.target syslog.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/iodine
+Environment=TERM=linux
+ExecStart=/bin/sh -c "/usr/sbin/iodine ${IODINE_PASS} ${IODINE_OPTIONS}"
+StandardOutput=syslog
+Restart=always
+RestartSec=0
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=multi-user.target

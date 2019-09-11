@@ -1,0 +1,7 @@
+<multibuild>
+  <package>postgresql93</package>
+  <package>postgresql94</package>
+  <package>postgresql95</package>
+  <package>postgresql96</package>
+  <package>postgresql10</package>
+</multibuild>

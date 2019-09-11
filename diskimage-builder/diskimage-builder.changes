@@ -1,0 +1,644 @@
+-------------------------------------------------------------------
+Mon Jul 15 11:21:56 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Update to 2.25.0
+  * Only enable dbus-daemon on fedora-29
+  * Set router solicitation delay with using NM
+  * [RHEL-8] Set _clear_old_files=0 in install-pip element
+  * disable autounmask for emerge
+  * ironic-agent: Use targetcli & python3-devel on rhel8
+  * Mailing lists change openstack-dev to openstack-discuss
+  * install gnupg2 by default in debian-minimal
+  * set default sources conf for buster as it now has a release
+  * Enable nodepool testing for opensuse 15.1
+  * Replace nodepool func jobs
+  * Move existing Zuul project config to projects.yaml
+  * Move Zuul config in-repo
+  * Add DIB_UBUNTU_KERNEL to ubuntu-minimal
+  * Sync Sphinx requirement
+  * Update test coverage for openSUSE/-minimal to 15.1
+  * Remove the rhel 8 check for xfs
+  * debootstrap: make default network interface names configurable
+  * Move pypi to dib-python
+  * ironic-agent: install mdadm on the ramdisk
+  * Use architecture-specific grub2 RPMs on RHEL8
+  * Increase size of EFI system partition (again)
+  * bindep: exclude zypper from debian-stretch
+  * Makes image caching more resilient
+  * fail early when lates build information can not be fetched
+  * Deprecate rhel7 in favor of rhel
+  * Add version-less RHEL element for RHEL7 and RHEL8
+  * allow the use of non-bzip compressed stages for building gentoo
+  * Replace git.openstack.org URLs with opendev.org URLs
+  * Use megabyte granularity for image extra space
+  * bindep: add sudo
+  * Update test coverage for openSUSE/-minimal to 15.0
+  * Use fedora-release-common for fedora 30+
+  * openssh-server: harden sshd config
+  * Support defining the free space in the image
+  * Allow specification of filesystem journal size
+  * Document the various global filesystem options
+  * Add option to skip update packages
+
+-------------------------------------------------------------------
+Wed May 15 23:41:19 UTC 2019 - Jonathan Harker <jharker@suse.com>
+
+- Upgrade to 2.22.0
+  * Only enable dbus-daemon for fedora-29 and below
+  * Switch simple-init to support python3
+  * openssh-server: harden sshd config
+  * Support defining the free space in the image
+  * Allow specification of filesystem journal size
+  * Document the various global filesystem options
+  * Constraint networkx to <2.3 for Python 2
+  * Fix Fedora aarch64 image location
+  * debian-minimal buster support
+  * Also use selinuxenabled to check selinux status
+
+-------------------------------------------------------------------
+Fri Apr 12 13:36:52 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 2.21.0
+  * Minor clarifications in centos7 element docs
+  * Unmount internal mounts on finalise errors
+  * Add DIB_APT_MINIMAL_CREATE_INTERFACES toggle
+  * [lvm] Add Ubuntu bionic as supported distro
+
+-------------------------------------------------------------------
+Tue Mar 19 01:32:35 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Relax egg-info requirement flake8 >=2.5.4,<2.6.0 which is
+  incompatible with available flake8 3.x
+
+-------------------------------------------------------------------
+Fri Mar  1 15:40:31 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 2.20.3
+  * Update gentoo-releng gpg key
+  * Fix opensuse 42.3 pip-and-virtualenv
+  * Keep git after ironic-agent post
+  * set rhel minor release
+  * update spelling errors
+
+-------------------------------------------------------------------
+Fri Feb 15 12:57:22 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 2.20.1
+  * pip-and-virtualenv: handle centos image-based builds
+  * pip-and-virtualenv : only remove system files on centos
+  * Enable dbus-broker for Fedora 29
+  * fix systemd import-tar for gentoo
+  * Add python3-setuptools to bindep.txt for Fedora
+  * support cracklib in pam for Gentoo's musl profile
+  * Make sure $TMP_BUILD_DIR/mnt is owned by root
+  * change to python36 for gentoo
+  * source-repositories: Replace documentation http with https links
+  * Delete the duplicate words in  50-zipl
+  * Change phase to check for dracut-regenerate in iscsi-boot
+  * Add policycoreutils-python-utils to bindep
+  * Use template for lower-constraints
+  * simple-init: allow for NetworkManager support
+  * package-installs: provide for skip from env var
+  * Add an element to configure iBFT network interfaces
+  * move selinux-permissive configure to pre-install phase
+  * Update to Fedora 29
+  * Increase size of EFI system partition 
+
+-------------------------------------------------------------------
+Mon Nov  5 16:31:48 UTC 2018 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 2.18.0
+  * Add ubuntu-systemd-container operating-system element
+  * Turn on quiet mode when logfile specified
+  * Fix epel repo rewrite, add to testing
+  * Add a post-root.d phase
+  * Fix DIB_DISTRIBUTION_MIRROR_UBUNTU_IGNORE regex typo
+  * Add support for Fedora 28, remove EOL Fedora 26
+  * ubuntu: Add options to ignore mirror components and use insecure repos
+  * simplify overlay logic for Gentoo
+  * simplify python3.6 selection on gentoo
+  * Turn down pkg-map and hook copy tracing output
+  * enable caching for gentoo builds
+  * Add a pre-finalise.d phase
+  * Minor documentation updates
+  * Allow debootstrap to cleanup without a kernel
+  * Fail build due to missing kauditd only when SELinux is enabled
+  * Fix DIB ubuntu-minimal running on bionic (18.04)
+  * ubuntu-common: Update default DIB_RELEASE to bionic
+  * Move common ubuntu environment setting to ubuntu-common element
+  * allow building non-gentoo images on gentoo hosts
+
+-------------------------------------------------------------------
+Fri Sep 14 09:16:45 UTC 2018 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 2.17.0
+  * Only append DIB_BOOTLOADER_DEFAULT_CMDLINE to default grub entry
+  * Fix CentOS image build failure when dib runs on system where audit disabled
+  * Fix bootloader packages for aarch64
+  * Install ca-certificate with redhat-common
+  * Add netcat to redhat-common map-packages
+  * Only detach device if all partitions have been cleaned
+  * Move LVM cleanup phase into cleanup
+  * Add DIB element to blacklist nouveau
+  * modprobe DIB_MODPROBE_BLACKLIST should be optional
+  * cache-url requires curl
+  * Fix for proper LVM support
+  * Call kpartx remove in umount, not cleanup
+  * block-device lvm: fix umount phase
+  * Don't quote names with sgdisk
+  * better handle existing keywords files/directories
+  * IPA requires iptables
+  * Install sudo on Gentoo images by deault
+
+-------------------------------------------------------------------
+Wed Jul 18 14:52:24 UTC 2018 - mchandras@suse.de
+
+- Version bump to 2.16.0
+  * Update pylint to 1.7.6, uncap networkx
+  * Add expected semicolons for dhclient.conf
+  * Add keyring if supplied
+  * Add new modprobe element
+  * Add iscsi-boot element for CentOS images
+  * Fix /etc/network/interfaces file contents
+  * Convert labels to upper case
+  * Fix bootloader for efi on rhel systems
+  * Don't run setfiles on /boot/efi
+  * Add iscsi-boot element
+  * Fix bootloader packages for rhel
+  * Don't install zypper on bionic
+  * Rename output log files
+  * Save and close stdout on exit
+  * Reduce path length in PS4 for debug
+  * Use surrogateescape with outfilter.py
+  * Fix encoding issue during processing output
+- Package improvements
+  * convert to python3
+  * Improve description
+  * spec-cleaner fixes
+
+-------------------------------------------------------------------
+Thu Jun  7 13:13:28 UTC 2018 - mchandras@suse.de
+
+- Version bump to 2.15.1 (bsc#1097115)
+  * elements: pip-and-virtualenv: Handle openSUSE Leap 15
+  * Allow to rebuild arbitrary images
+  * Replace the ubuntu-minimal trusty test with a bionic one
+  * Remove non-maintained ubuntu-core element
+  * elements: zypper-minimal: Add support for openSUSE Leap 15.X
+  * Add Ubuntu 18.04 support
+  * Remove duplicate GRUB command line entry
+  * rpm-distro: set the contentdir yum var
+  * Trivial: update url to new url
+  * Fixes add-apt-keys in dpkg element
+  * Add pip cache cleanup to pip-and-virtualenv
+  * pip-and-virtualenv: fix install-pip when centos-release-openstack is enabled
+  * Stop using slave_scripts/install-distro-packages.sh
+
+-------------------------------------------------------------------
+Mon Apr 30 11:48:07 UTC 2018 - mchandras@suse.de
+
+- Version bump to 2.14.1
+  * Fix epel element for centos-minimal
+  * Revert "debootstrap: Call update-initramfs explicitly"
+  * Remove installed packages before pip install
+  * Don't only install python3-virtualenv
+  * Don't use -e to test for what might be broken symlink
+  * add lower-constraints job
+  * Set the dhclient timeout to match DIB_DHCP_TIMEOUT
+  * Formalise saving of /etc/resolv.conf
+  * Restore tracing on exit points of block_device_create_config_file
+  * delete unused module
+  * debootstrap: Call update-initramfs explicitly
+  * Change the GENTOO_PORTAGE_CLEANUP variable default
+  * Fix element-provides in debian element
+  * Revert "Remove tripleo jobs"
+  * enable systemd profile for Gentoo
+  * install sudo in the devuser element
+  * Fix default partition type
+  * Remove tripleo jobs
+  * remove portage git directory
+  * Updated from global requirements
+  * Updated from global requirements
+  * proliant-tools: add net-tools package to support hpsum utility
+  * Make the build reproducible
+  * Updated from global requirements
+  * secondary architectures use different url
+  * Fix for rhel7 iso image creation.
+  * Fix for passing user defined value for satellite cert for rhel-common.
+  * arm64: use HWE kernel and fix console
+  * Choose appropriate bootloader for block-device
+  * Add block-device defaults
+  * Fail if two elements provide the same thing
+  * GPT partitioning support
+  * update Gentoo Hardened profiles (now stable)
+  * Checking link status according to DIB_DHCP_TIMEOUT
+  * Remove some redundant indents
+  * Update Fedora defaults to 27
+  * zypper-minimal: Set default locale env to C.UTF-8
+  * Clean up dib-python symlink
+
+-------------------------------------------------------------------
+Fri Mar  9 10:52:39 UTC 2018 - mchandras@suse.de
+
+- Version bump to 2.11.0
+  * Install systemd earlier for Ubuntu Bionic
+  * update gentoo vars for new profile and python
+  * Set default label for XFS disks
+  * Don't install dmidecode on Fedora ppc64le
+  * Updated from global requirements
+  * Add support for Fedora 27, remove EOL Fedora 25
+  * Don't fstrim vfat partitions
+  * Remove RH1 check OVB jobs from configuration
+  * upgrade pip before using -c option
+  * Correct link address
+  * Updated from global requirements
+  * Add SUSE Mapping
+  * Revert "Dont install python-pip for py3k"
+  * Adding mapping for SUSE package
+  * Check source-repository-* files for trailing newline
+  * ironic-agent: don't remove make
+  * Remove architecture rules on lshw dependency in ironic-agent
+  * zypper: fix package removal
+  * Avoid tox_install.sh for constraints support
+  * Fix wrong epel-release-7* package URL
+  * Add the groundwork for musl profile support
+  * Enable support for Gentoo overlays
+  * Pre-install curl
+  * Install fedora-gpg-keys for F27
+  * Make preinstall.d more deterministic
+  * Use EPEL for debootstrap on centos
+  * Fix /dev/pts mount options handling
+  * Make python changes more reliable
+  * Remove setting of version/release from releasenotes
+  * elements: zypper-minimal: Refresh repositories where necessary
+  * Updated from global requirements
+  * elements: Respect devpts mount options 
+  * Dont install python-pip for py3k
+  * Enable gentoo in pip-and-virtualenv element
+  * Add zipl element as s390x architecture bootloader
+  * diskimage_builder: lib: common-functions: Fix options for devpts mount
+  * Move to a common lock-file directory
+  * Create rescue user on ironic agent
+  * Use -t devpts for /dev/pts mounts
+  * Dont install python-virtualenv for py3k in deb
+  * Import legacy playbooks
+  * Add debian minimal requirement for arm64
+  * Fix grub2 dependency on arm64
+  * Remove dd from LVM element
+  * Update Gentoo element for element changes
+  * Update proliant-tools to support Gen10 Proliant servers
+  * Move fstrim to block device layer
+  * Actually sort mount-point list
+  * Change to install a package in 'proliant-tools'
+  * Clear /etc/machine-id to avoid duplicate machine-ids
+  * Add timestamp output filter
+
+-------------------------------------------------------------------
+Mon Dec  4 13:41:57 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.9.0
+  * Add initramfs-tools for ubuntu-minimal
+  * Create /etc/machine-id for fedora
+  * Use latest Fedora .qcow URL
+  * Updated from global requirements
+  * Add missing package dependency for yaml
+  * Mention the need of dracut-regenerate element
+  * Move the ordering of the dracut regenerate command
+  * Fix cylical systemd config for dhcp-all-interfaces
+  * LVM support for dib-block-device
+  * Increase timeout for removal
+  * Add netbase to ensure /etc/protocols is placed for debian
+  * Add kpartx as a requirement to build images
+  * Clear up debian element documentation
+  * Bump fedora/fedora-minimal DIB_RELEASE 26
+  * Allow users to specify partition type in the MBR PTE
+- Fix env-script-interpreter rpmlint warnings.
+
+-------------------------------------------------------------------
+Mon Aug 14 06:22:03 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.8.0
+  * Move selinux packages to redhat-common
+  * Use SELinuxfs to check selinux status
+  * Switch openSUSE to 42.3 by default
+
+-------------------------------------------------------------------
+Wed Jul 26 09:22:29 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.7.1
+  * elements: zypper-minimal: Install tar package
+  * zypper: Clean caches and don't cache packages locally
+
+-------------------------------------------------------------------
+Mon Jul 24 09:24:46 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.7.0 
+  * Move setfiles to outside chroot with runcon
+  * doc: supported_distros: Add openSUSE Leap 42.2/3 and Tumbleweed
+  * Add -m flag to setfiles for Fedora 26
+  * yum-minimal: pre-install coreutils
+  * Force install during pip-and-virtualenv
+  * Fix latest-limit command line
+  * opensuse-minimal: install glibc-locale
+  * elements: openstack-ci-mirrors: Use openSUSE mirrors for gating jobs
+  * Remove DIB_[DISTRO]_DISTRIBUTION_MIRROR
+  * doc: Switch from oslosphinx to openstackdocstheme
+  * The correct option for label name in fat and vfat is '-n'
+  * zypper-minimal: No point in preserving the environment here
+  * Remove additional Bumblebee repository for opensuse element
+  * Enable console during kernel boot on Power
+  * fix readme.rst to reflect correct environment variable
+  * Add symlink test for resolv.conf restore
+  * pip-and-virtualenv: Install python3 on openSUSE
+  * Support for Cloud Images on ppc64le for rhel7 and centos7
+  * bindep.txt: Exclude gnupg2 package on openSUSE
+  * Avoid hanging endlessly on unreachable cache urls
+  * elements: pip-and-virtualenv: Use common packages for openSUSE
+  * Remove mirror create
+  * Remove centos and rhel elements
+  * Updated from global requirements
+  * dib-lint: Ignore editor temp files for linting run
+  * Fix mkfs use wrong label option for vfat
+  * Use the dib python to do cleanup
+  * Replace architecture-emulation-binaries with qemu-debootstrap
+
+-------------------------------------------------------------------
+Fri Jul 14 11:11:17 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.6.1
+  * On suse the python2 dev package is python-devel        
+  * Move ironic-agent test to fedora-minimal               
+  * Start at using CI mirrors for fedora/centos            
+  * Use local mirror for ubuntu-minimal jobs               
+  * Move apt-sources to ubuntu-minimal / move debian to skip list                                                      
+  * Sync after writing partition table                     
+  * Install systemd earlier for Stretch
+  * Fix mkfs failure when loop device is not ready
+
+-------------------------------------------------------------------
+Tue Jun 13 06:43:16 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.6.0
+  * PPC bootloader; install to boot partition
+  * Pass all blockdevices to bootloader
+  * Move global mount tracking into state
+  * Use global state to check for duplicate fs labels
+  * Remove 'state' argument from later cmd_* calls
+  * Use picked nodes for later cmd_* calls
+  * Don't make image & loopdev functions static
+  * Add env var to dump config graph
+  * Move ppc block-device default to right $ARCH
+  * Update tracing in block_device_create_config_file
+  * Pad state dump
+  * Adjust package mapping for SUSE family
+  * Drop support for Ubuntu precise
+  * Adjust package installation for openSUSE
+  * Refactor mount-point sorting
+  * Remove dracut-network element
+  * Remove ccache
+  * Test openSUSE 42.2/42.3 image builds
+  * Add state object, rename "results", add unit tests
+  * allow uninstalls to fail on gentoo
+  * Refactor: use lazy logging
+  * drop deprecated map-services/packages from zypper element
+  * dhcp-all-interfaces.sh - Add support for InfiniBand interface DHCP
+
+-------------------------------------------------------------------
+Sun Jun 11 16:59:45 UTC 2017 - mchandras@suse.de
+
+- Version bump 2.5.0
+  * Disable recommended package installations for zypper-minimal
+  * Use networkx for digraph
+  * Various internal fixes
+  * Adding unit testing for configuration
+  * Produce API documentation
+
+-------------------------------------------------------------------
+Thu May 25 07:59:42 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.4.1
+  * Set manifest permissions in the image
+  * Move parts of Partition creation into object
+  * Split partition into it's own file
+  * Move exception to it's own file (again)
+  * Add weights to digraph
+  * Switch debian to deb.debian.org
+  * Add dracut-regenerate elements
+  * Set manifests to mode 600 and owner root
+  * Only unmount directories that are mounted
+  * Apply setfiles on all mountpoints
+
+-------------------------------------------------------------------
+Wed May 17 15:25:37 UTC 2017 - mchandras@suse.de
+
+- Version bump to 2.4.0
+  * Refactor: block-device filesystem creation, mount and fstab
+  * Take --params from environment
+  * Refactor documentation on image creation
+  * Add a test to validate we can build debian vms
+  * Introduce exec_sudo command
+  * Fix py3 error in block-device
+  * Refactor block-device base functions.
+  * Add bzip2 to test install
+  * Add refactor of tree-like vs graph
+  * Set LC_ALL in disk-image-create
+  * Improve documentation for image creation
+  * Refactor block_device: isolate the getval call
+  * Refactor block_device: passing command line parameters
+  * Make Gentoo package updates work more often
+  * Turn off strict_id mode for Ec2 datasource
+  * Clean out apt index caches at end of image build
+
+-------------------------------------------------------------------
+Wed Apr 21 10:07:28 UTC 2017 - mchandras@suse.de
+
+- Update to version 2.3.3
+  * Add yum-utils as EPEL dependency
+  * Skip python3-virtualenv on <= trusty
+  * pip-and-virtualenv : install python2 & 3, and default to 2
+  * Install pip with python interpreter
+  * Move do_extra_package_install to run in install phase
+  * Updated from global requirements
+  * Unify and fix doc of several Debian and Ubuntu elements
+  * Fix package-installs-v2 output
+  * Basic logging for package-installs-squash
+  * Use DIB_PYTHON_EXEC to run commands
+  * Fix typo in pip-and-virtualenv
+  * Ignore missing path in unmount_dir
+  * Run dib-run-parts out of /tmp
+  * Don't provide dib-run-parts
+  * Add flag to disable EPEL
+  * Fix code-block in README of rhel7 element
+  * Fix opensuse-minimal element on non-SUSE hosts
+  * Use stevedore for plugin config of block device
+  * Adding aarch64 support for CentOS7
+  * Have simple-init enable network.service
+  * Use correct Ubuntu distro url on non-x86 arches
+  * Typo fix: curent => current
+  * functests: skip qcow2 generically but add specific test
+  * Add default PPC block-device layout
+  * Capture output in _exec_sudo
+  * Fix typo in CMDLINE env var for bootloader
+  * Allow ELEMENTS_DIR to be configurable
+  * Use sphinx warning-is-error
+  * Updated from global requirements
+  * squash-package-install to use the correct python
+  * Make our virtualenv source py3 safe
+  * blockdevice.py: python3 fixes
+  * Fix dib-init-system for Debian Jessie and Debian Stretch
+  * Send custom parameters in bootloader to GRUB_CMDLINE
+
+-------------------------------------------------------------------
+Mon Mar 13 12:19:38 UTC 2017 - mchandras@suse.de
+
+- Update to version 2.0.0
+  * Add 2.0.0 release notes
+  * Run indent checks in diskimage_builder/lib
+  * Use OrderedDict for partitions instead of simple dictionary
+  * Refactor: block-device partitioning cleanup
+  * fix grub2 element for ubuntu xenial [lp##1627402]
+  * Semi-automatic doc generation of element dependency
+  * Fix up element doc generation
+  * Check return of _load_state
+  * block-device: change top level config from dict to list
+  * Handle blank lines in element-deps
+  * Don't run unit tests from run_functests.sh
+  * Refactor: block-device handling (partitioning)
+  * Add get_elements; preserve backwards compat for expand_dependencies
+  * Fix --version display
+  * Activate virtualenv in disk-image-create
+  * Remove execute perm from disk-image-create
+  * Move dib-run-parts into diskimage-builder
+  * Move diskimage-image-create to an entry point
+  * Move elements & lib relative to diskimage_builder package
+  * Fail on element-info error
+  * Remove deploy element
+  * Remove deprecated deploy-ironic element
+  * Remove deprecated ironic-discoverd-ramdisk
+  * Remove deprecated expand-dependencies arg
+  * Remove deprecated serial-console element
+  * Remove deprecated map-services
+  * Add release notes for block device handling.
+  * Move element-info to a standard entry-point
+  * Refactor: block-device handling (local loop)
+  * Convert pkg-map and svc-map copies to explicit variables
+  * Add IMAGE_ELEMENT_YAML and get_image_element_array
+  * Making element overriding explicit
+  * For developer and low-level oriented changes please read the following thread
+    - http://lists.openstack.org/pipermail/openstack-dev/2017-February/111833.html
+
+-------------------------------------------------------------------
+Fri Mar  3 01:02:44 UTC 2017 - mchandras@suse.de
+
+- Update to version 1.28.0
+  * [suse] Handle pip-and-virtualenv install for opensuse
+  * pip-and-virtualenv: also handle rhel distros
+  * [suse] remove --no-confirm from zypper invocation
+  * gentoo: do not manually clean /tmp
+  * Fix requirements update
+  * Fix up doc errors
+  * python-brickclient: accommodate python2/3 changes
+  * Move Ubuntu specific use_tempaddr setting to ubuntu-common element
+  * Fix typo in README.rst
+  * yum/install-packages output cleanup
+  * Preinstall pyOpenSSL
+  * Target map-packages deprecation message
+  * Turn down some low-value tracing output
+  * Move generation of dib_[environment|args] to manifest element
+  * Use strings in package-installs follow output
+
+-------------------------------------------------------------------
+Thu Feb 16 17:46:42 UTC 2017 - mchandras@suse.de
+
+- Update to version 1.27.0
+  * Add DIB_IPA_COMPRESS_CMD option
+  * ironic-agent: use /sbin for modprobe
+  * move post-install.d to finalize.d
+  * Bump fedora release to 25
+  * Fix dhcp-all-interfaces for ubuntu-minimal xenial
+  * Don't set base element path in run_functests.sh
+  * Use %i instead of %I in dhcp-interface@.service
+  * Remove hardcoded components
+  * Set grub device in /etc/default/grub
+  * Replace yaml.load() with yaml.safe_load()
+  * Unify tidy up logs in lib/img-functions
+  * Also check bin/ for tabs
+  * Handle failure of carrier check in dhcp-all-interfaces.sh
+  * Make DHCP timeout configurable
+  * Run dhcp-interface@.service after network.target
+  * update pkg-map entries for python3
+  * dib-lint: python3 compatibility fixes
+  * debootstrap: avoid duplicate network configuration
+  * Remove yum chroot caching
+  * Speed up chroot checking loop
+  * Allow disto-specific mirror settings
+  * Update hpssacli to ssacli in proliant-tools element
+
+-------------------------------------------------------------------
+Thu Dec 22 17:33:25 UTC 2016 - mchandras@suse.de
+
+- Update to version 1.26.1
+  * Generate ssh-hostkeys on boot for ironic agent
+  * add option to configure cloud-init to allow password authentication
+  * elements: Drop unneeded DIB_INIT_SYSTEM usage
+  * Replace six.iteritems() with .items()
+  * Catch errors in DIB_INIT_SYSTEM export
+  * DIB element to support cinder local attach/detach functionality
+  * elements: Drop executable bits from environment files
+  * Update sysctl-write-value to do conflict checking
+  * Put MKFS_OPTS after filesystem type
+  * Make dib-python use the default python for distro
+  * Don't set the executable bit on dhcp-interface@.service
+  * Move pip-and-virtualenv source install to 10-
+  * Add install-types as pip-and-virtualenv dep
+  * Allow package-installs to parse DIB_PYTHON_VERSION
+  * Fix pip-and-virtualenv to work with python3
+  * elements: dib-python: Add python2 as the default version for openSUSE
+  * Support sysv init system used by Debian Wheezy
+  * Pip install as 10- incompatible with 05-heat-cfntools
+  * Recreate initramfs within loopback image
+  * Fix bootloader element on ppc
+  * Add ubuntu-precise support to dib-python
+  * FIx the DIB_CLOUD_INIT_ALLOW_SSH_PWAUTH variable name in README file
+  * Switch to openSUSE Leap 42.2 release by default
+  * Install dracut-generic-config package
+  * Add output image format tgz support
+  * Add squashfs output image format
+  * set default DIB_PYTHON_VERSION=2 for rhel7
+  * Set grub timeout default
+  * Dont run with VIRTUAL_ENV set
+
+-------------------------------------------------------------------
+Mon Dec  5 15:24:49 UTC 2016 - mchandras@suse.de
+
+- Update to version 1.24.0
+  * elements: pip-and-virtualenv: Add python-xml dependency
+  * Trace package install in package-installs-v2
+  * elements: zypper-minimal: Add ca-certificates-mozilla package
+  * Improve checksum performance for images
+  * Perform package install outside of debootstrap
+  * Remove obsolete patches for the time being
+    - 0001-lib-Drop-shebang-from-library-scripts.patch
+    - 0002-elements-Drop-executable-bits-from-environment-files.patch 
+
+-------------------------------------------------------------------
+Tue Oct 18 11:05:19 UTC 2016 - mchandras@suse.de
+
+- Use addFilter instead of setBadness in the rpmlintrc file.
+
+-------------------------------------------------------------------
+Mon Oct 17 12:19:14 UTC 2016 - mchandras@suse.de
+
+- Initial commit. Taken from the Cloud OBS project
+  * diskimage-builder-rpmlintrc: Add rpmlint file to prevent build
+    failures due to the 'wrong-script-interpreter' check. It's a
+    spurious warning since the interpreter is only used within the
+    generated image and it does not affect the host or the package
+    itself.
+  * 0001-lib-Drop-shebang-from-library-scripts.patch: Add patch to
+    drop the shebang from the lib/* files which are meant to be
+    sourced instead of executed (fixes: 'non-executable-script')
+  * 0002-elements-Drop-executable-bits-from-environment-files.patch:
+    Add patch to drop the executable bit from files which are meant to
+    be sourced instead of executed. (fixes: 'script-without-shebang')
+

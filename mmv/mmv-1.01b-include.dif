@@ -1,0 +1,32 @@
+--- mmv.c
++++ mmv.c
+@@ -120,13 +120,12 @@
+ #else
+ /* for various flavors of UN*X */
+ 
++#include <stdlib.h>
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/file.h>
+-
+-extern char *getenv();
+-extern long lseek();
+-extern char *malloc();
++#include <unistd.h>
+ 
+ #ifdef HAS_DIRENT
+ #include <dirent.h>
+@@ -191,10 +190,8 @@
+ #ifdef IS_SYSV
+ 
+ /* for System V and Version 7*/
+-struct utimbuf {
+-	time_t actime;
+-	time_t modtime;
+-};
++#include <utime.h>
++
+ #define utimes(f, t) utime((f), &(t))
+ 
+ #ifndef HAS_RENAME

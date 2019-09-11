@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/klee/klee.git</param>
+          <param name="changesrevision">0cf14d6d70b939ad29a9da42b33a4a5d4697b947</param></service></servicedata>

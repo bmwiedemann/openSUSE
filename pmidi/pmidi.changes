@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Mon Sep 23 15:11:29 UTC 2013 - stephan.barth@suse.com
+
+- update to version 1.7.0. This is mainly a bugfix release.
+- the following two patches are not needed anymore, since they have been
+  included by upstream and have been removed:
+  - pmidi-mts-fix.diff
+  - pmidi-link-fix.diff
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:44 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Tue Dec 13 11:59:57 CET 2011 - tiwai@suse.de
+
+- fix license to GPL-2.0 only (bnc#735050)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:30:44 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Mar 27 17:17:35 CEST 2007 - tiwai@suse.de
+
+- build with included glib support, don't use gtk1-compat
+- fix the handle of MTS (MIDI Tuning Standard)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 12 19:23:37 CEST 2005 - sbrabec@suse.cz
+
+- Force glib2 using gtk1-compat-devel.
+
+-------------------------------------------------------------------
+Mon Jan 12 12:58:51 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jan  9 16:25:28 CET 2004 - tiwai@suse.de
+
+- updated to version 1.6.0.
+
+-------------------------------------------------------------------
+Mon Dec 10 12:23:07 CET 2001 - tiwai@suse.de
+
+- updated to ver.1.5.4.
+  built on the standard configure procedure now.
+- added glib and glib-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Mon Dec  3 16:32:37 CET 2001 - tiwai@suse.de
+
+- updated to ver.1.5.1 with ALSA 0.9.0 support.
+
+-------------------------------------------------------------------
+Thu Nov  2 17:44:16 CET 2000 - tiwai@suse.de
+
+- Fixed spec file for long package-name support.
+
+-------------------------------------------------------------------
+Tue Sep 26 16:57:18 CEST 2000 - tiwai@suse.de
+
+- Changed to bzip2
+
+-------------------------------------------------------------------
+Tue Jul 11 18:11:58 CEST 2000 - tiwai@suse.de
+
+- 1st version: 0.4.1
+

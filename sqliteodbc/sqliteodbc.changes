@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon Mar 18 07:43:43 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to version 0.9996
+	* update to SQLite 3.22.0
+	* fixes in handling DDL in SQLExecDirect() et.al., thanks Andre Mikulec for testing
+    * cleanup utf8/unicode conversion functions
+
+-------------------------------------------------------------------
+Fri Dec  9 07:31:10 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.9225:
+	* update to SQLite 3.15.2
+	* don't statically buffer result of localeconv()
+	* increased some internal string buffers
+	* fixes in SQLSetPos() 
+	* fix locking in xpath module, thanks Abramo Bagnara
+- Changes for version 0.9994:
+	* update to SQLite 3.13.0
+	* fix to present file names with slashes to sqlite3_load_extension()
+
+-------------------------------------------------------------------
+Mon Apr  4 06:48:00 UTC 2016 - tuukka.pasanen@ilmi.fi
+
+- Update to 0.9223
+  * update to SQLite 3.10.0
+  * fixes in SQLStatistic() for decting unique indices
+  * for SQLGetPrivateProfileString() try to load libodbcinst.so.2
+    first, then libodbcinst.so.1
+  * eliminated some valgrind warnings regarding strcpy()
+  * increased max. length for data source name in Win32
+    config dialog
+  * configure: detect presence of sqlite3_columndatabasename()
+    and sqlite3_columnoriginname()
+- Doxygen.conf add 'HTML_TIMESTAMP         = NO' (boo#969496)
+
+-------------------------------------------------------------------
+Mon Feb  8 13:03:53 UTC 2016 - mpluskal@suse.com
+
+- Fix removal of .la and .a files
+
+-------------------------------------------------------------------
+Wed Feb  3 22:38:21 UTC 2016 - mpluskal@suse.com
+
+- Add missing build dependencies
+
+-------------------------------------------------------------------
+Fri Dec 18 09:02:14 UTC 2015 - mpluskal@suse.com
+
+- Add sqliteodbc-rpmlintrc
+  * this is not regular shared library but plugin for unixODBC 
+
+-------------------------------------------------------------------
+Fri Apr 17 13:16:23 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.9992
+  * update to SQLite 3.8.9
+  * fixed buffer length return in SQLGetStmtAttr*()
+  * report SQL_SC_SQL92_ENTRY level for 
+    SQLGetInfo(...SQL_SQL_CONFORMANCE...)
+  * improved configure for cross-compiling
+
+-------------------------------------------------------------------
+Tue Feb 10 12:17:18 UTC 2015 - mpluskal@suse.com
+
+- Enable building of documentation
+- Add unixODBC dependency for scriplets
+
+-------------------------------------------------------------------
+Mon Feb  9 12:36:22 UTC 2015 - tuukka.pasanen@ilmi.fi
+
+- New version 0.9991 released 
+
+-------------------------------------------------------------------
+Mon Feb  9 12:33:20 UTC 2015 - tuukka.pasanen@ilmi.fi
+
+- Adding changes file to project
+

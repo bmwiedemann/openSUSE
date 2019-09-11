@@ -1,0 +1,100 @@
+moinmoin-wiki
+=============
+
+This package provides the MoinMoin wiki engine, ready for use with the Apache
+web server on openSUSE.
+
+
+1. Installation
+---------------
+
+Following package installation, do the following (as root) to complete the
+installation:
+
+1. Create a fresh wiki instance by running "mkwiki.moin /srv/moin/default".
+
+2. Make sure that the WSGI module is enabled in your Apache instance. To enable
+it, run "a2enmod wsgi", then restart the web server ("systemctl restart
+apache2").
+
+3. If your web server is behind a firewall and you want the wiki to be
+accessible from other machines, remember to open a port on the firewall for
+HTTP(S). The command "yast firewall" offers an easy-to-use tool to accomplish
+this for SuSEfirewall.
+
+4. In a browser, navigate to <http://host/wiki> where "host" is the name of the
+machine on which MoinMoin was installed. You should see a welcome page with the
+title "LanguageSetup".
+
+5. Finalize the configuration of the wiki by editing its configuration file at
+/srv/moin/default/wikiconfig.py according to the instructions on the
+"LanguageSetup" wiki page.
+
+
+2. Configuration
+----------------
+
+By default, the installed MoinMoin instance is configured to serve a single
+wiki with multiple users.
+
+If you want to operate the wiki in a different configuration (e.g., to serve a
+forest of wikis), consult the documentation on the MoinMoin home page (at
+http://moinmo.in) for more information on how to do this. The sample
+configuration files in /usr/share/moin/config may be useful, too. The
+mkwiki.moin command can be used to create wikis in the farm.
+
+
+3. File system layout
+---------------------
+
+This package stores files relevant to MoinMoin in the following locations:
+
+/srv/moin
+	The location where all dynamic MoinMoin content (wiki pages,
+configuration files, etc.) is kept.
+
+/usr/share/moin
+	The location where all static MoinMoin files are installed.
+
+/usr/share/moin/data
+/usr/share/moin/underlay
+	Skeleton directories for new wikis.
+
+/usr/share/moin/config
+/usr/share/moin/server
+	Various sample configuration files.
+
+/srv/moin/moin.wsgi
+	The WSGI configuration used by the default installation. It expects to
+find the wiki to serve in /srv/moin/default.
+
+/etc/apache2/conf.d/moin.conf
+	The entry point to the Apache2 configuration of MoinMoin. It expects
+wikis to be stored under /srv/moin.
+
+/usr/lib/python2.7/site-packages/MoinMoin
+	MoinMoin implementation - python code and data.
+
+
+4. Backup
+---------
+
+To make a backup of your wiki, first shut down the Apache instance serving it,
+then make a copy of the data directory under /srv/moin (e.g., for the default
+wiki created in 1.1 above, the folder to backup is /srv/moin/default).
+
+
+5. Editing drawings
+-------------------
+
+MoinMoin ships with two different editors for drawings, both as pre-built Java
+Applet JARs (see http://moinmo.in/HelpOnDrawings): TWikiDraw and AnyWikiDraw.
+
+This package only contains the TWikiDraw applet.
+
+The AnyWikiDraw is not included, primarily due to a license issue (SR 356378).
+Another issue is that it originally ships as a pre-built signed JAR, which
+cannot be packaged as-is due to the openSUSE requirement that all binaries must
+be built from source code. Even though the AnyWikiDraw JAR can be rebuilt from
+source for packaging, the signing of the JAR cannot be recreated by openSUSE.
+

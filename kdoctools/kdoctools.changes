@@ -1,0 +1,749 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+
+-------------------------------------------------------------------
+Fri Jul 19 11:40:44 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Update pt-BR user.entities
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Update Ukrainian translation
+  * Catalan updates
+  * it entities: update URLs to use https
+  * Update URLs to use https
+  * Use Indonesian translation
+  * Update design to look more similar to kde.org
+  * Add necessary files to use native Indonesian language for all Indonesian docs.
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * It compiles find with QT5.13 without deprecated method
+  * Make it compiles without foreach
+  * Port cross-compilation support to KF5_HOST_TOOLING
+  * Only report DocBookXML as found if it was actually found
+  * Update Spanish entities
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:06 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * No code changes since 5.54.0
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sat Dec 15 14:02:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summaries.
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Fix running kdoctools-install autotest without kdoctools installed
+  * It builds without deprecated method
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Fix autotests with -DBUILD_QCH:BOOL=TRUE
+  * API dox: fix typo
+  * API dox: add minimal docs to KDocTools namespace, so doxygen covers it
+  * Create a QCH file with the API dox, optionally, using ECMAddQCH
+  * Wait for docbookl10nhelper to be built before building our own manpages
+  * Use specified Perl interpreter instead of relying on PATH
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:07 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * No code changes since 5.50.0
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * add acronym ASCII to general.entities
+  * add JSON to general.entities
+  * Let test.cmake find the files where they were installed
+  * Let meinproc5 be more verbose in 'install' auto test
+  * Let 'install' autotest build in verbose mode to see KDE CI build issues
+  * Fix KDE CI compile issue
+  * In kdoctools_install test use absolute pathes to find installed files
+  * Convert manual install test to an autotest
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:02 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Update the list of Ukrainian entities
+  * add entity OSD to general.entites > > 10 hits in trunk l10n-kf5/documentation Differential Revision: https://phabricator.kde.org/D13024
+  * Add entities CIFS, NFS, Samba, SMB to general.entities
+  * Add Falkon, Kirigami, macOS, Solid, USB, Wayland, X11, SDDM to general entities
+
+-------------------------------------------------------------------
+Sun May 13 21:03:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use const'ref
+  * Translate to Catalan gpl-notice.docbook and lgpl-notice.docbook
+  * customization/ru: Translate gpl-notice.docbook and lgpl-notice.docbook
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Add entities for Elisa, Markdown, KParts, DOT, SVG to general.entities
+  * customization/ru: Fix translation of underCCBYSA4.docbook and underFDL.docbook
+  * Fix duplicate lgpl-notice/gpl-notice/fdl-notice
+  * customization/ru: Translate fdl-notice.docbook
+  * change spelling of kwave requested by the maintainer
+  * Remove not necessary QtCore and co
+- Don't mark /usr/share/doc/HTML*/kdoctools5-common as %doc,
+  they're files needed to display help properly (boo#1088562)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * customization/entities/contributor.entities - fix typo . missing '>'
+  * rename KDE-Partitionsmanager to Partitionsverwaltung, KDE does not make any sense here
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:16 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * add entity for Michael Pyne
+  * Remove obsolete reviewboardrc file
+  * add entities for Martin Koller to contributor.entities
+  * fix debian entry
+  * add entity Debian to general.entities
+  * add entity kbackup, it was imported
+  * add entity latex, we have already 7 entities in different index.docbooks in kf5
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Update Brasilian Portuguese translation
+  * Update Russian translation
+  * Update Russian translation
+  * Update customization/xsl/ru.xml (nav-home was missing)
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Update Catalan translation
+  * Update Ukrainian translation
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:39 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * CMake: Fix target name shortening when build dir has special characters (kde#377573)
+  * Add CC BY-SA 4.0 International and set it as default
+
+-------------------------------------------------------------------
+Sun Aug 20 10:03:36 UTC 2017 - fabian@ritter-vogt.de
+
+- Require docbook-xsl-stylesheets, the included XSL files reference
+  docbook XSL files
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:25 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Move meinproc5's man page from section 8 to section 1
+
+-------------------------------------------------------------------
+Tue Jul 25 10:54:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to also return the KDE4 documentation directories:
+  * 0001-Also-return-KDE4-docs-in-documentationDirs.patch
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * New function to retrieve the documentation directories
+  * Fix a few MSVC warnings
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * add entity kmplayer
+
+-------------------------------------------------------------------
+Mon May 15 13:53:12 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Workaround for MSVC and catalog loading
+  * Solve a visibility conflict for meinproc5 (kde#379142)
+  * Quote few other variables with path (avoid issues with spaces)
+  * Quote few variables with path (avoid issues with spaces)
+  * Temporarily disable the local doc on Windows
+  * FindDocBookXML4.cmake, FindDocBookXSL.cmake - search in homebrew installations
+- Use %find_lang --all-name --with-man for .lang filelist
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+  * meinproc5: link to the files, not to the library
+
+-------------------------------------------------------------------
+Mon Mar 20 06:10:22 UTC 2017 - lbeltrame@kde.org
+
+- Add a new subpackage to track the new shared library provided
+  by doctools
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:32 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * meinproc5: link to the files, not to the library
+  * Commit translations from l10n-kf5
+  * Remove the KF5::XsltKde static library
+  * Port to categorized logging and clean includes
+  * Export a proper shared library for KDocTools
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Add function to extract a single file
+  * Revert "Port to categorized logging and clean includes"
+  * Port to categorized logging and clean includes
+  * Fail the build early if xmllint is not available
+  * Upgrade KF5 version to 5.32.0.
+  * add entity for application Kst
+
+-------------------------------------------------------------------
+Thu Feb  9 09:27:26 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:40:27 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:58:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:04:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Fix 'checkXML5 generates html files in workdir for
+    valid docbooks' (kde#371987)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:53:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Fix 'checkXML5 prints generated html to stdout for valid docbooks'
+    (kde#369415)
+  * Fix bug not been able to run native tools in package using cross
+    compiled kdoctools
+  * Setup targets for cross compiling running kdoctools from
+    other packages
+  * Add cross compiling support for docbookl10nhelper
+  * Add cross compile support for meinproc5
+  * Convert checkxml5 into a qt executable for cross platform support
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:49:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Add paths for config, cache + data to general.entities
+  * Made up-to-date with the English version
+  * Add Space and Meta key entities to
+    src/customization/en/user.entities
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:52:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:03:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Allow KDocTools to always locate at least its own installed stuff
+  * Use CMAKE_INSTALL_DATAROOTDIR to look for docbook instead of share
+  * Update qt5options manpage docbook to qt 5.4
+  * Update kf5options manpage docbook
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:24:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Add commonly used entities for keys to en/user.entities
+  * Update man-docbook template
+  * Update book template + man template + add arcticle template
+  * Call kdoctools_create_handbook only for index.docbook
+    (kde#357428)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:31:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Added entity applications
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:20:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:57:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Use unicode characters for callouts
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:01:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:59 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:05:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:59:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Update pt_BR entities
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Sync Catalan user.entities with English (en) version.
+  * Add entities for sebas and plasma-pa
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Change sentence about reporting bugs, ack'ed by dfaure
+  * Adapt german user.entities to en/user.entities
+  * Update general.entities: change markup for frameworks + plasma
+    from application to productname
+  * Update en/user.entities
+  * Update book and man page templates
+  * Use CMAKE_MODULE_PATH in cmake_install.cmake
+  * Update general.entities
+  * Search for required perl modules.
+  * Namespace a helper macro in the installed macros file.
+  * Adapted key name tranlations to standard tranlations provided
+    by Termcat
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Update K5 docbook templates
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Update translations
+  * Update customization/ru
+  * Fix entities with wrong links
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:46:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Fix the build on MacOSX when using Homebrew
+  * Better styling of media objects (images, ...) in documentation
+  * Encode invalid chars in paths used in XML DTDs, avoiding errors
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+- Drop karchive-devel from devel package requires
+- Added perl-URI buildrequires
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Thu Oct 16 15:09:25 UTC 2014 - vpelcak@suse.com
+
+- moving meinproc and checkXML5 and manpages to main package.
+  Reason is to make these tools available to translators, who use
+  automated tools for translation handling (pology) without need
+  to install devel package which brings many otherwise unnecessary
+  dependencies
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Added ki18n-devel for new lang subpackage
+- Let main package Recommend lang package
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+
+-------------------------------------------------------------------
+Sun May  4 01:41:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Fri Feb 21 15:30:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Mark license as LGPL-2.1+ and MIT
+- Include license as %doc
+
+-------------------------------------------------------------------
+Sat Feb  8 02:18:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kdoctools package
+

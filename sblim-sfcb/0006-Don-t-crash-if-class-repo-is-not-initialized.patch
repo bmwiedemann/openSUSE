@@ -1,0 +1,25 @@
+From 9a75c16a1c525a6924d47403fd0b520fe9232360 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 8 Aug 2013 12:25:35 +0200
+Subject: [PATCH 06/25] Don't crash if class repo is not initialized
+
+---
+ classProviderSf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/classProviderSf.c b/classProviderSf.c
+index 9b0de415eb0f..e1b83a063b3b 100644
+--- a/classProviderSf.c
++++ b/classProviderSf.c
+@@ -723,7 +723,7 @@ getResolvedClass(ClassRegister * cr, const char *clsName,
+   _SFCB_TRACE(1, ("--- classname %s cReg %p", clsName, cr));
+ 
+   /* if standard repo, skip straight to normal gc */
+-  if (cr->vr->options != ClTypeClassReducedRep) {
++  if (cr->vr && cr->vr->options != ClTypeClassReducedRep) {
+     return getClass(cr, clsName, rctl);
+   }
+ 
+-- 
+2.15.0
+

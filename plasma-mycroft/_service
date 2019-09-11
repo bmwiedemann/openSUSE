@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://anongit.kde.org/plasma-mycroft.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">0.1git~%ci~%h</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service> 
+  <service name="set_version" mode="disabled"/>
+</services>
+

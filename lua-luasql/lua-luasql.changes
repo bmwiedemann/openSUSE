@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Dec  5 22:14:00 CET 2018 - mcepl@suse.com
+
+- Upgrade to 2.4.0:
+    * Added support in MySQL driver for opening a connection
+      based on a Unix socket (thanks to rafis)
+    * Added connection ping method (thanks to rafis)
+    * Added Makefile for mingw (thanks to watercoldyi)
+    * Bug correction on retrieving varchar2 data (thanks to David
+      Gao)
+- Rewrite to multibuild, standard openSUSE Lua SPEC file.
+
+-------------------------------------------------------------------
+Sat Feb  8 04:46:07 UTC 2014 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add luasql-fix-configuration.patch: Clean up building and add rpm
+  optflags.
+

@@ -1,0 +1,13 @@
+Index: cfe-6.0.0rc1.src/lib/Driver/Driver.cpp
+===================================================================
+--- cfe-6.0.0rc1.src.orig/lib/Driver/Driver.cpp
++++ cfe-6.0.0rc1.src/lib/Driver/Driver.cpp
+@@ -115,7 +115,7 @@ Driver::Driver(StringRef ClangExecutable
+ 
+   // Compute the path to the resource directory.
+   StringRef ClangResourceDir(CLANG_RESOURCE_DIR);
+-  SmallString<128> P(Dir);
++  SmallString<128> P((Dir != "") ? Dir : "/usr/bin/");
+   if (ClangResourceDir != "") {
+     llvm::sys::path::append(P, ClangResourceDir);
+   } else {

@@ -1,0 +1,91 @@
+Index: examples/Matrix.java
+===================================================================
+--- examples/Matrix.java.orig	2011-05-09 20:04:38.000000000 +0200
++++ examples/Matrix.java	2012-01-13 11:31:47.275360948 +0100
+@@ -249,7 +249,7 @@
+      * Use the convenience method from Context that takes care of calling
+      * toString, etc.
+      */
+-    public Object getDefaultValue(Class<?> typeHint) {
++    public Object getDefaultValue(Class typeHint) {
+         return "[object Matrix]";
+     }
+ 
+Index: examples/PrimitiveWrapFactory.java
+===================================================================
+--- examples/PrimitiveWrapFactory.java.orig	2011-05-09 20:04:38.000000000 +0200
++++ examples/PrimitiveWrapFactory.java	2012-01-13 11:31:47.276360983 +0100
+@@ -57,7 +57,7 @@
+ public class PrimitiveWrapFactory extends WrapFactory {
+   @Override
+   public Object wrap(Context cx, Scriptable scope, Object obj,
+-                     Class<?> staticType)
++                     Class staticType)
+   {
+     if (obj instanceof String || obj instanceof Number ||
+         obj instanceof Boolean)
+Index: src/org/mozilla/javascript/WrapFactory.java
+===================================================================
+--- src/org/mozilla/javascript/WrapFactory.java.orig	2011-05-09 20:04:34.000000000 +0200
++++ src/org/mozilla/javascript/WrapFactory.java	2012-01-13 11:31:47.277361018 +0100
+@@ -75,7 +75,7 @@
+      * @return the wrapped value.
+      */
+     public Object wrap(Context cx, Scriptable scope,
+-                       Object obj, Class<?> staticType)
++                       Object obj, Class staticType)
+     {
+         if (obj == null || obj == Undefined.instance
+             || obj instanceof Scriptable)
+Index: toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java
+===================================================================
+--- toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java.orig	2011-05-09 20:04:36.000000000 +0200
++++ toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java	2012-01-13 11:31:47.278361053 +0100
+@@ -67,7 +67,7 @@
+             return super.defineClass(name, data, 0, data.length, domain);
+         }
+ 
+-        public void linkClass(Class<?> cl) {
++        public void linkClass(Class cl) {
+             resolveClass(cl);
+         }
+     }
+Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java
+===================================================================
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java.orig	2011-05-09 20:04:38.000000000 +0200
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/Namespace.java	2012-01-13 11:31:47.282361193 +0100
+@@ -120,7 +120,7 @@
+     }
+ 
+     @Override
+-    public Object getDefaultValue(Class<?> hint) {
++    public Object getDefaultValue(Class hint) {
+         return uri();
+     }
+ 
+Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java
+===================================================================
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java.orig	2011-05-09 20:04:38.000000000 +0200
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/QName.java	2012-01-13 11:31:47.284361263 +0100
+@@ -150,7 +150,7 @@
+     }
+ 
+     @Override
+-    public Object getDefaultValue(Class<?> hint) {
++    public Object getDefaultValue(Class hint) {
+         return toString();
+     }
+ 
+Index: xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java
+===================================================================
+--- xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java.orig	2011-05-09 20:04:38.000000000 +0200
++++ xmlimplsrc/org/mozilla/javascript/xmlimpl/XMLObjectImpl.java	2012-01-13 11:31:47.285361298 +0100
+@@ -165,7 +165,7 @@
+     }
+ 
+     @Override
+-    public final Object getDefaultValue(Class<?> hint) {
++    public final Object getDefaultValue(Class hint) {
+         return this.toString();
+     }
+ 

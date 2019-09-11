@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Jun 12 21:09:13 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.3.3:
+  * Upstream some patches submitted by contributors to facilitate
+    the package build process.
+  * Fix a number of old urls to point to the Github location.
+- Drop upstreamed patches:
+  * appdata.patch.
+  * sar2-2.3.2-optflags.patch.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Sat Jul 15 16:19:51 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 2.3.2
+- Add appdata.xml
+- Build with optflags
+
+-------------------------------------------------------------------
+Thu Jan 17 21:04:35 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed the spec file to be able to build for openSUSE > 12.2 
+
+-------------------------------------------------------------------
+Fri Dec  2 15:24:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Dec  2 10:59:07 UTC 2011 - jreidinger@suse.com
+
+- fix building (libs.patch) 
+
+-------------------------------------------------------------------
+Mon Jun 13 11:55:25 UTC 2011 - prusnak@opensuse.org
+
+- split off data subpackage
+
+-------------------------------------------------------------------
+Mon Jun 13 11:21:52 UTC 2011 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Sun Apr 24 23:05:34 UTC 2011 - hector1987@gmail.com
+
+- initial build (v 2.3.0)
+

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Mar  5 18:49:14 UTC 2018 - bwiedemann@suse.com
+
+- Add hardinfo-0.5.1-reproducible.patch to not record build host
+
+-------------------------------------------------------------------
+Thu Mar 30 09:19:07 UTC 2017 - meissner@suse.com
+
+- buildrequire libmount
+
+-------------------------------------------------------------------
+Fri Jun 19 15:46:09 UTC 2015 - crrodriguez@opensuse.org
+
+- Force GNU inline semantics, fixes build with GCC5 
+
+-------------------------------------------------------------------
+Sun Jul 20 10:13:50 UTC 2014 - sor.alexei@meowr.ru
+
+- Remove fixsensors.patch because sensors was fixed in upstream
+  by "gchar *temp = g_strdup("")" in arch/linux/common/sensors.h.
+
+-------------------------------------------------------------------
+Thu Jul 17 10:03:11 UTC 2014 - cfarrell@suse.com
+
+- License update: GPL-2.0
+  This package is GPL-2.0 - i.e. "only"
+
+-------------------------------------------------------------------
+Sun Jul 13 13:16:50 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Aug 14 07:24:10 UTC 2018 - tchvatal@suse.com
+
+- Use %license to install License file
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Sat Apr  1 14:24:37 UTC 2017 - aloisio@gmx.com
+
+- Updated to version 1.6.0
+  * let acceptable types specify their quality (#26)
+  * more readable formatting of test data
+  * Run PyPy tests with pypy-5.4 on Travis (#30)
+  * Ignore more dirs in flake8 tests (#31)
+  * ignore .venv instead of venv
+  * flake8 tweaks (#27)
+  * ignore build/ and venv/ dirs
+  version 1.5.4:
+  * Release as a universal wheel (#28)
+  * Remove __init__.py (#29)
+  version 1.5.3:
+  * extra test based on RFC 7231 page 38
+  * cleaner code for quality_and_fitness_parsed
+  * more readable testdata.json
+  * readme tweaks
+  * setup.py sanity check + pep8 tweaks to mimeparse.py
+  * setup.py + README tidying (#22)
+  * Document return types (#24)
+  * Add pypy3 to test matrix
+  * update download_url (fixes #18)
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Tue Nov 15 12:45:22 UTC 2016 - dmueller@suse.com
+
+- update to 1.5.2
+
+-------------------------------------------------------------------
+Tue Apr 30 11:24:11 UTC 2013 - speilicke@suse.com
+
+- Add LICENSE to documentation
+
+-------------------------------------------------------------------
+Mon Apr 29 12:35:22 UTC 2013 - dmueller@suse.com
+
+- update to 0.1.4:
+  * no changelog available
+- rename to proper package name 
+
+-------------------------------------------------------------------
+Wed Mar 21 22:17:52 UTC 2012 - saschpe@gmx.de
+
+- Initial version
+

@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Mar  5 16:01:17 UTC 2018 - jengelh@inai.de
+
+- Fix wrongly assigned %post scriptlets. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:37 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 27 08:15:12 UTC 2014 - dimstar@opensuse.org
+
+- Allow building with newer gdk-pixbuf: gtkimageview is legacy and
+  will not be ported to the new API.
+  + Remove -DGDK_PIXBUF_DISABLE_DEPRECATED and -Werror from CFLAGS.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:08 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Jan  4 17:35:33 CET 2010 - vuntz@opensuse.org
+
+- Rename source package from libgtksourceview0 to gtksourceview.
+  Fixes bnc#450605.
+- Update to version 1.6.4:
+  + Experimental support for the build tool waf.
+  + Fix test failures when compiling with -O0.
+  + Ensure that conversions from double to int are performed
+    correctly.
+  + Clarify what gtk_image_view_get_draw_rect() and
+    gtk_image_view_get_viewport() returns when the view is not
+    allocated.
+- Changes from version 1.6.3:
+  + Distribute testlib.h.
+- Changes from version 1.6.2:
+  + Too small zoom factors are disallowed, to prevent memory abuse.
+  + Horizontal scrolls should not crash GtkImageView anymore.
+  + gtk_image_view_image_to_widget_rect() ceils the size of the
+    output rectangle.
+  + Various bug fixes.
+- Clean up packaging.
+- Remove gnome-common, gtk-doc BuildRequires.
+- Drop gtkimageview-nowerror.patch: this should not be needed.
+- Move the make check step to %check.
+
+-------------------------------------------------------------------
+Mon Apr 14 18:09:23 CEST 2008 - postadal@suse.cz
+
+- updated to 1.6.1
+  * bugfixes, improved documentation
+
+-------------------------------------------------------------------
+Tue Feb 19 11:07:11 CET 2008 - nadvornik@suse.cz
+
+- new package, required by ufraw
+- originally packaged by hfiguiere@novell.com for OBS
+- update to 1.6.0
+- submitted to abuild
+

@@ -1,0 +1,280 @@
+-------------------------------------------------------------------
+Tue Dec  4 20:59:22 UTC 2018 - mfasheh@suse.com
+
+- Use source tarball from github
+
+-------------------------------------------------------------------
+Fri Nov 30 22:04:37 UTC 2018 - mfasheh@suse.com
+
+- Update to v0.11.1
+  - Add 'quiet' mode - duperemove will only print errors and a
+    short summary of any dedupe.
+  - Revert block dedupe default, it is causing excessive
+    fragmentation on users systems.
+
+-------------------------------------------------------------------
+Tue May 15 20:05:26 UTC 2018 - mfasheh@suse.com
+
+- Update to v0.11
+  - Fix a minor fd leak in hyperthreading detection code
+  - Clean up some typos in documentation
+  - Some build fixes
+  - Removed patch: v0.11.beta4_to_git_f95e429.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 20:05:02 UTC 2016 - mark@fasheh.com
+
+- Update to v0.11.beta4 git commit f95e429
+  * Use proper len of tail blocks during block dedupe
+  * run_dedupe: avoid size_list corruption in push_blocks()
+  - Added patch: v0.11.beta4_to_git_f95e429.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 20:41:37 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta4
+  - Many man page and FAQ updates
+  - Much lower memory usage (changed to use block-dedupe by default)
+  - removed unused sha256 module
+
+-------------------------------------------------------------------
+Fri Sep 16 19:49:06 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta3
+  - Bugfixes
+  - Large (2.5x) performance improvement to find dupes stage
+  - Added '--cpu-threads' for user control of cpu bound tasks
+
+-------------------------------------------------------------------
+Fri Sep  9 21:39:39 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta2
+  - Many bugfixes
+  - Improved dedupe coverage with better extent selection algorithm
+  - Improved (easier to read) output for csum stage
+  - Progress counter added for dedupe stage
+  - Removed patch v0.11.beta1_to_git_d4b9818.patch
+  - Removed patch v0.11-d4b9818_to_82234f5.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 20:02:21 UTC 2016 - mfasheh@suse.com
+
+- Update to v0.11.beta1 git commit 82234f5
+  - Set file->dedupe_seq if we drop out in add_file_db()
+  - add_file_db(): collapse all cases of ino/subvol/filename being
+    different
+  - Simplify the logic in add_file_db()
+  - add_file_db(): check for same filename in filerec table
+  - Store filerecs in a tree by filename
+
+-------------------------------------------------------------------
+Wed Aug 24 19:25:45 UTC 2016 - mfasheh@suse.com
+
+- Update to git commit d4b9818:
+  - Set scan flag on renamed file
+  - Remove db record if a file was renamed
+  - More vprints in add_file_db()
+  - Fix confused error handling in dbfile_load_one_filerec()
+  - Return 0 if user specified --help
+  - Don't list '-?' as a valid option
+  - add_file_db() Properly account for __add_file() skipping a file
+  - Add hashstats to the man page
+
+-------------------------------------------------------------------
+Fri Aug 12 23:03:06 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta1
+  - Greatly increased performance during extent search
+  - Hashfiles are reusable now, Duperemove will only scan files which have
+    changed since the last time it was run.
+  - Better selection of target extent during dedupe
+    - reduces fragmentation of deduped space
+  - Support for dedupe on xfs (experimental)
+
+-------------------------------------------------------------------
+Sat Apr  2 13:43:23 UTC 2016 - mpluskal@suse.com
+
+- Use pretty name for tarball
+- Cleanup spec file with spec-cleaner
+- Use pkgconfig style dependnencies
+
+-------------------------------------------------------------------
+Fri Oct  9 22:37:04 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10
+  - Documentation updates for latest stable version
+    - document --fdupes mode in manpage
+    - update man page headers
+    - update FAQ
+
+-------------------------------------------------------------------
+Thu Jul 16 21:45:34 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta4
+  - Better memory usage with hashstats utility
+
+-------------------------------------------------------------------
+Fri Jul 10 19:53:46 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta3
+  - fixes many crashes in the dedupe stage
+  - fixed an issue with our alignment function which would throw dedupe into
+    a loop
+  - improvements to output formatting
+  - better logic when throwing out already-deduped extents won't give as
+    many false positives
+
+-------------------------------------------------------------------
+Tue Jun 30 06:21:21 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta2
+  - multi-threaded dedupe stage (increased performance)
+  - hashfile mode for drastically improved memory consumption
+  - now uses murmur3 hash internally for improved cpu usage
+  - can now take input from 'fdupes'
+
+-------------------------------------------------------------------
+Mon Apr  6 19:45:42 UTC 2015 - mfasheh@suse.com
+
+- Update with correct tarball (last one didn't have version number bump)
+
+-------------------------------------------------------------------
+Mon Apr  6 19:14:50 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.3
+  - Fix hang during file scan phase (bsc#926098)
+
+- References: bsc#926098
+
+-------------------------------------------------------------------
+Thu Mar 26 23:07:33 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.2
+  - Now compiles on SLE11 targets
+  - Fallback to stat on filesystems that don't report file type from
+    readdir
+  - Don't assert on failed open during dedupe
+
+- References: bsc#923277 bsc#924577
+
+-------------------------------------------------------------------
+Thu Mar 19 16:29:24 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.1
+  - Fallback to stat on filesystems that don't report file type from
+    readdir
+
+-------------------------------------------------------------------
+Thu Jan 29 20:17:58 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09
+  - start with first node in free_compare_tree
+  - fix small typos in duperemove man page
+  - add test_progs variable in Makefile
+- References: bsc#915354 FATE#318171
+- Removed patch: do-not-install-test-binary.patch
+
+-------------------------------------------------------------------
+Tue Jan 20 10:02:26 UTC 2015 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner and fix few tiny issues
+- Use install phase from upstream Makefile
+- Move csum-test to test progs to prevent its install:
+  * do-not-install-test-binary.patch
+
+-------------------------------------------------------------------
+Tue Dec  9 04:12:43 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta5
+  - Documentation updates
+    - FAQ and README are more relevant now
+    - added man pages for show-shared-extents and hashstats programs
+    - updated duperemove man page, and duperemove usage() function
+  - Have show-shared-extents take a file list as arguments.
+  - Change default of --lookup-extents option back to 'no'
+  - Write hash type into hashfile header, check against what hash we were
+    compiled with.
+
+-------------------------------------------------------------------
+Mon Nov 17 19:40:06 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta3
+  - Fix leak of directory fd during file scan
+  - Fix EMFILES (too many file descriptors) error during dedupe
+  - Fix corner case with dedupe leaving a file open and not-queued
+  - Support '-x' (one file system) option
+  - Add option to turn off extent lookup during csum phase
+    - Useful if running against snapshotted volumes
+  - show-shared-extents program to help users examine file state before or
+    after dedupe.
+
+-------------------------------------------------------------------
+Mon Nov 10 14:49:27 UTC 2014 - schwab@suse.de
+
+- Build with %optflags
+
+-------------------------------------------------------------------
+Fri Oct 31 02:44:53 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta2
+  - fix memory leak
+  - fix hardlink detection on btrfs
+  - print file number status during csum phase
+  - print a status bar during extent seearch
+  - several bugfixes and performance improvements to extent search
+- Removed patch: 001-fix-build.patch
+
+-------------------------------------------------------------------
+Sat Sep 27 00:18:33 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.09.beta1
+ - parallel checksum calculation
+ - performance improvements
+ - allow to store the hash tree to a file
+ - hashstats: new utility to analyze hash files
+ - add --version option
+ - build: add install target
+ - documentatin updates
+
+- Added patch: 001-fix-build.patch
+
+-------------------------------------------------------------------
+Sun Apr 20 22:13:45 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.08
+  - fixes many bugs
+  - a few more usability improvements
+  - adds fiemap support to better estimate space savings
+
+-------------------------------------------------------------------
+Fri Apr 11 17:38:32 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.07
+
+- fix usability of command line arguments
+
+- large documentation update
+
+-------------------------------------------------------------------
+Fri Apr 11 00:30:41 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.06. This adds several fixes and features:
+        - fixes bnc#871804 (duperemove not looping on entire range)
+
+- also includes important usability fixes
+
+- updates hashing library to libgcrypt to reflect upstream
+
+-------------------------------------------------------------------
+Wed Mar 12 06:43:13 UTC 2014 - mfasheh@suse.com
+
+- add duperemove rpm
+
+- add new tarball with manpages for all binaries
+
+-------------------------------------------------------------------
+Wed Mar 12 00:07:33 UTC 2014 - mfasheh@suse.com
+
+- Initial creation of rpm and rpm changelog
+
+

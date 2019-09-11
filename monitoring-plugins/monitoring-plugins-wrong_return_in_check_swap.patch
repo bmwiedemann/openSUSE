@@ -1,0 +1,44 @@
+From f3e6c9663369d011b241c6fb2c8fd5312f98cacf Mon Sep 17 00:00:00 2001
+From: Jan ONDREJ <ondrejj@salstar.sk>
+Date: Thu, 7 Oct 2010 17:28:48 +0400
+Subject: [PATCH 6/6] Prevent check_swap from returning OK, if no swap activated
+
+My swap was not activated on boot for unknown reason and nagios does not
+report this as a problem. Here is an example:
+
+[root@kecom ~]# rpm -q nagios-plugins
+nagios-plugins-1.4.13-11.fc10.i386
+[root@kecom ~]# /usr/lib/nagios/plugins/check_swap -w 80% -c 40% -c 1 -w 2
+SWAP CRITICAL - 100% free (0 MB out of 0 MB) |swap=0MB;0;0;0;0
+
+If there is no swap and users is trying to test percentage of free swap,
+consider 0 MB free swap space as problem, or of free/total raises division
+by zero, then set percentage to 0%, not to 100%.
+
+Steps to Reproduce:
+1. make sure, your swap is empty or it's usage is not large
+2. swapoff -a
+3. /usr/lib/nagios/plugins/check_swap -w 80% -c 40%
+
+Actual results:
+SWAP OK - 100% free (0 MB out of 0 MB) |swap=0MB;0;0;0;0
+
+Expected results:
+SWAP CRITICAL - 0% free (0 MB out of 0 MB) |swap=0MB;0;0;0;0
+
+Additional info:
+https://bugzilla.redhat.com/512559
+
+Index: monitoring-plugins-2.2/plugins/check_swap.c
+===================================================================
+--- monitoring-plugins-2.2.orig/plugins/check_swap.c
++++ monitoring-plugins-2.2/plugins/check_swap.c
+@@ -125,7 +125,7 @@ main (int argc, char **argv)
+ 			free_swap_mb += dskfree_mb;
+ 			if (allswaps) {
+ 				if (dsktotal_mb == 0)
+-					percent=100.0;
++					percent= 0.0;
+ 				else
+ 					percent = 100 * (((double) dskused_mb) / ((double) dsktotal_mb));
+ 				result = max_state (result, check_swap (percent, dskfree_mb));

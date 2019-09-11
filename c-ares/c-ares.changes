@@ -1,0 +1,293 @@
+-------------------------------------------------------------------
+Wed Feb 13 15:44:18 UTC 2019 - adam.majer@suse.de
+
+- Version update to 1.15.0:
+  * Add ares_init_options() configurability for path to resolv.conf file
+  * Ability to exclude building of tools (adig, ahost, acountry) in CMake
+  * Report ARES_ENOTFOUND for .onion domain names as per RFC7686
+    (bsc#1125306)
+  * Apply the IPv6 server blacklist to all nameserver sources
+  * Prevent changing name servers while queries are outstanding
+  * ares_set_servers_csv() on failure should not leave channel in a
+    bad state
+- enable unit tests
+- disable-live-tests.patch: disable tests to live servers
+- onion-crash.patch: backport fix for a crash affecting .onion TLD
+
+-------------------------------------------------------------------
+Tue Feb 20 13:34:46 UTC 2018 - jengelh@inai.de
+
+- Remove ineffective --with-pic.
+
+-------------------------------------------------------------------
+Tue Feb 20 09:35:43 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.14.0:
+  * Fix patch for CVE-2017-1000381 to not be overly aggressive
+  * gethostbyaddr should fail with ECANCELLED not ENOTFOUND when ares_cancel is called
+  * ares_gethostbyname.3: fix callback status values
+  * docs: Document WSAStartup requirement
+  * Fix a typo in init_by_resolv_conf
+
+-------------------------------------------------------------------
+Tue Feb 20 09:35:01 UTC 2018 - tchvatal@suse.com
+
+- Rename everything to c-ares
+
+-------------------------------------------------------------------
+Tue Jun 20 19:35:16 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.13.0:
+  * Fixes bsc#1044946 CVE-2017-1000381
+  * Bunch of bugfixes
+- Drop cares-1.9.1-ocloexec.patch as it broke again and it is
+  not really worth all the fwdporting
+- Drop check phase there is only return 0
+
+-------------------------------------------------------------------
+Mon Oct 31 12:05:59 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.12.0:
+  * Fixes bsc#1007728 CVE-2016-5180
+  * api: add ARES_OPT_NOROTATE optmask value
+  * Collection of bugfixes
+
+-------------------------------------------------------------------
+Thu Jun  9 20:41:26 UTC 2016 - astieger@suse.com
+
+- update to 1.11.0:
+  * Allow multiple -s options to the ahost command
+  * api: Expose the ares_library_initialized() function
+  * api: Add ares_set_sortlist(3) entrypoint
+  * api: Add entrypoints to allow use of per-server ports
+  * api: introduce `ares_parse_txt_reply_ext`
+  * api: Add ares_set_socket_configure_callback()
+  * Add -t u option to ahost
+  * collection of bug fixes
+
+-------------------------------------------------------------------
+Fri Nov 14 09:18:41 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Thu May 15 12:07:42 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.10.0:
+  * Various small updates all around
+  * Cleanup of automake to build with latest tools
+  * For more see CHANGES
+- Remove upstreamed patches:
+  * cares-autotools.diff
+- Remove patch that needs quite work and was never acceted upstream:
+  * 0001-cares-1.9.1-add-symbol-versioning-support.patch
+- Added patches:
+  * 0001-Use-RPM-compiler-options.patch
+
+-------------------------------------------------------------------
+Fri May  3 07:12:14 UTC 2013 - mvyskocil@suse.com
+
+- Use the genuine upstream tarball
+- Verify tarball using gpg-offline
+
+-------------------------------------------------------------------
+Thu May  2 13:24:49 UTC 2013 - jengelh@inai.de
+
+- Get rid of outdated autotools construct to fix build with
+  new automake-1.13
+
+-------------------------------------------------------------------
+Sun Jan  6 21:14:16 UTC 2013 - p.drouand@gmail.com
+
+- Update to 1.9.1 version:
+  * include the ares_parse_soa_reply.* files in the tarball
+- Removed patches (fixed and merged on upstream release)
+  * 0001-ares_destroy.c-fix-segfault-in-ares_destroy_options.patch
+  * 0002-ares_getnameinfo-fix-random-results-with-c-ares-1.7..patch
+  * 0003-ares_init.c-fix-segfault-triggered-in-ares_init_opti.patch
+- Updated and versionned patchs for upstream release:
+  * 0001-add-symbol-versioning-support.patch
+  * cares-ocloexec.patch 
+-------------------------------------------------------------------
+Fri Feb  3 20:27:55 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix license
+- provide symbol versioning support
+- fix -debuginfo packages
+
+-------------------------------------------------------------------
+Tue Nov 15 09:16:32 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Mon Nov 14 23:42:39 UTC 2011 - crrodriguez@opensuse.org
+
+- Open all fds with O_CLOEXEC. 
+
+-------------------------------------------------------------------
+Mon Oct 17 03:29:31 UTC 2011 - crrodriguez@opensuse.org
+
+- Cherry-pick 3 patches from HEAD
+  * ares_destroy.c: fix segfault in ares_destroy_options() 
+  * ares_getnameinfo: fix random results, memory corruption
+  * ares_init.c: fix segfault triggered in ares_init_options() 
+    upon previous failure of init_by_defaults()
+
+-------------------------------------------------------------------
+Wed Aug 17 21:17:44 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.7.4
+* Drop obsolete patch
+* detection of semicolon comments in resolv.conf
+* fixed ares_parse_*_reply memory leaks
+* only fall back to AF_INET searches when looking for AF_UNSPEC addresses
+
+-------------------------------------------------------------------
+Sat Mar 19 21:16:09 UTC 2011 - crrodriguez@opensuse.org
+
+- fix NULL ptr dereference
+
+
+-------------------------------------------------------------------
+Mon Dec 13 16:17:56 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- c-ares version 1.7.4
+ * local-bind: Support binding to local interface/IPs, see
+   ares_set_local_ip4, ares_set_local_ip6, ares_set_local_dev
+
+ * memory leak in ares_getnameinfo
+ * add missing break that caused get_ares_servers to fail
+ * ares_parse_a_reply: fix CNAME response parsing
+ * init_by_options: don't copy an empty sortlist
+ * Replaced uint32_t with unsigned int to fix broken builds
+   on a couple of platforms
+ * Fix lookup with HOSTALIASES set
+ * adig: fix NAPTR parsing
+ * compiler warning cleanups 
+
+-------------------------------------------------------------------
+Fri Oct 29 16:51:25 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Fix aliasing warning in gcc
+- Add missing break that caused get_ares_servers to fail
+
+-------------------------------------------------------------------
+Sun Jul 25 19:02:16 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- update to version 1.7.3
+ * ares_init: Last, not first instance of domain or search should win
+ * Added ares_parse_mx_reply()
+ * Fix memory leak 
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:19 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Wed Mar 24 18:26:05 UTC 2010 - crrodriguez@opensuse.org
+
+- update to version 1.7.1, includes IPV6 nameservers support 
+
+-------------------------------------------------------------------
+Wed Mar 10 14:25:32 UTC 2010 - crrodriguez@opensuse.org
+
+- remove invalid configure options 
+
+-------------------------------------------------------------------
+Mon Feb 22 21:53:18 UTC 2010 - crrodriguez@opensuse.org
+
+- fix build
+- update to version 1.7.0, see RELEASE_NOTES for detail 
+
+-------------------------------------------------------------------
+Mon Feb  1 11:14:59 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Sep 30 20:54:42 UTC 2009 - crrodriguez@opensuse.org
+
+- add gcc visibility support 
+
+-------------------------------------------------------------------
+Mon Jan  5 21:03:53 CET 2009 - crrodriguez@suse.de
+
+- update to version 1.6.0
+ * Added support for the glibc "rotate" resolv.conf option (or ARES_OPT_ROTATE)
+ * Added ares_gethostbyname_file()
+ * Added ares_dup()
+ * Added ares_set_socket_callback()
+ * improved configure detection of several functions
+ * improved source code portability
+ * adig supports a regular numerical dotted IP address for the -s option
+ * handling of EINPROGRESS for UDP connects
+ * ares_parse_ptr_reply() would cause a buffer to shrink instead of expand if a
+   reply contained 8 or more records
+ * buildconf works on OS X
+ 
+
+-------------------------------------------------------------------
+Wed Sep  3 16:37:43 CEST 2008 - crrodriguez@suse.de
+
+- update to c-ares 1.5.3 final
+  * address an issue in which a response could be sent back to the
+  source port of a client from a different address than the request was made to.
+  This is one form of a DNS cache poisoning attack.
+  Only necessary on UDP sockets as they are connection-less, TCP
+  is unaffected.
+ 
+
+-------------------------------------------------------------------
+Sat Aug  9 23:56:49 CEST 2008 - crrodriguez@suse.de
+
+- update to c-ares 1.5.3+20080809
+  * users found that the second and subsequent DNS lookups from 
+    fresh processes using c-ares to resolve the same
+  address would randomly cause the process to never see a reply.
+
+-------------------------------------------------------------------
+Sun Jun 15 20:44:19 CEST 2008 - crrodriguez@suse.de
+
+- update to version 1.5.2 final
+	* code refactoring in ares_gethostbyaddr
+ 	* improved checking of /dev/urandom in configure script
+    * new sample application, acountry
+ 	* improved MSVC6 dsp files
+ 	* adig sample application supports NAPTR records
+ 	* improved file seeding randomizer
+ 	* improved parsing of resolver configuration files
+    * updated configure script to remove autoconf 2.62 warnings
+ 	* use monotonic time source if available
+ 	* return all PTR-records when doing reverse lookups
+ 	* millisecond resolution support for the timeout option
+ 
+
+-------------------------------------------------------------------
+Fri Apr 25 23:30:06 CEST 2008 - crrodriguez@suse.de
+
+- update to current c-ares from curl cvs
+  * Eino Tuominen improved the code when a file is used to seed the randomizer.
+  * Alexey Simak made adig support NAPTR records
+  * Erik Kline cleaned up ares_gethostbyaddr.c:next_lookup() somewhat
+  * add pkgconfig script
+
+-------------------------------------------------------------------
+Tue Apr 15 15:09:51 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file for multilib support (libcurl4) 
+
+-------------------------------------------------------------------
+Fri Nov 30 01:09:51 CET 2007 - crrodriguez@suse.de
+
+- version 1.5.1 
+
+-------------------------------------------------------------------
+Wed Aug  8 17:48:05 UTC 2007 - crrodriguez@suse.de
+
+- run ldconfig 
+

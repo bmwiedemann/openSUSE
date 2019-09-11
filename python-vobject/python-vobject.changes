@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Dec  6 14:25:23 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove useless service file
+- Make the tests unconditional
+- Fix the fdupes call
+
+-------------------------------------------------------------------
+Tue Nov 20 21:23:56 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 0.9.6.1:
+  * Revert too-strict serialization of timestamp values
+    - broke too many other implementations
+
+- update to version 0.9.6:
+  * Correctly order calendar properties before calendar components
+    (#98)
+  * Correctly serialize timestamp values (i.e. REV) (#99)
+  * Pass correct formatting string to logger (#102) 
+    - thanks @CruzR!
+  * RRULE: Fix floating UNTIL with dateutil > 2.6.1 (#115) 
+    - thanks @Unrud!
+  * Encode params if necessary in serialization (#109) 
+    - thanks @matthias-k!
+  * Ignore escaped semi-colons in UNTIL value (#114) 
+    - thanks @Unrud!
+  * RRULE: Fix VTODO without DTSTART (#116) 
+    - thanks @Unrud!
+  * Fixed regexp for VCF Version 2.1 (#121) 
+    - thanks @farmovit!
+  * repr changed for datetime.timedelta in python 3.7 (#122) 
+    - thanks @sharkcz!
+
+- enable testing
+
+-------------------------------------------------------------------
+Thu Aug  3 20:00:25 UTC 2017 - benoit.monin@gmx.fr
+
+- update to version 0.9.5:
+  * Make ics_diff.py work with Python 3
+  * Huge changes to text encoding for Python 2/3 compatibility
+  * Autogenerate DTSTAMP if not provided
+  * Fix getrruleset() for Python 3 and in the case that
+    addRDate=True
+  * Update vCard property validation to match specifications
+  * Handle offset-naive and offset-aware datetimes in recurrence
+    rules
+  * Improved documentation for multi-value properties
+
+-------------------------------------------------------------------
+Mon Jun 19 11:01:08 UTC 2017 - okurz@suse.com
+
+- Fix source validation
+
+-------------------------------------------------------------------
+Tue Jun 13 05:54:04 UTC 2017 - okurz@suse.com
+
+- Update to 0.9.4.1
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Tue Jul  5 10:15:57 UTC 2016 - axel.braun@gmx.de
+
+- add obsoletes: vobject to spec file (request from Factory)
+
+-------------------------------------------------------------------
+Fri Jun  3 15:23:52 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

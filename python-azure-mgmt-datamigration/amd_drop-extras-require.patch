@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-datamigration-2.1.0.orig/setup.py azure-mgmt-datamigration-2.1.0/setup.py
+--- azure-mgmt-datamigration-2.1.0.orig/setup.py	2019-04-12 11:56:30.765760615 +0200
++++ azure-mgmt-datamigration-2.1.0/setup.py	2019-04-12 11:58:39.976106482 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

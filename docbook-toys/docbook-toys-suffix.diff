@@ -1,0 +1,39 @@
+--- docbook-toys-1.51.0/db2x.sh.in	2002-11-12 20:19:13.000000000 +0100
++++ docbook-toys-1.51.0/db2x.sh.in	2003-07-01 13:36:34.000000000 +0200
+@@ -174,7 +174,12 @@
+ case $suffix in
+   sgm | sgml) flavor=sgml ;;
+   xml) flavor=xml ;;
+-  *) echo $"Filename suffix \"$suffix\" ambiguous: $file" ; exit 1 ;;
++  *) if file "$file" | cut -d: -f 2 | grep -q XML; then
++    flavor=xml
++    else
++    flavor=sgml
++    fi ;;
++    # echo $"Filename suffix \"$suffix\" ambiguous: $file" ; exit 1 ;;
+ esac
+ 
+ # SuSE Linux >= 7.2
+@@ -352,14 +357,16 @@
+ 
+ 
+ do_html(){
+-  if echo "$file" | egrep -i '\.sgml$|\.sgm$|\.xml$' >/dev/null 2>&1; then
++  #if echo "$file" | egrep -i '\.sgml$|\.sgm$|\.xml$' >/dev/null 2>&1; then
+     end=
+     gen_outfile
++  #else
++    #output="${file}-html"
+     # input_file=${file##*/}
+     # output="`echo $input_file | sed 's,\.\(sgml\|sgm\|xml\)$,,'`"
+-    if [ -z "$quiet" ]; then
+-      echo "input file was called $input_file -- output will be in $output"
+-    fi
++  #fi
++  if [ -z "$quiet" ]; then
++    echo "input file was called $input_file -- output will be in $output"
+   fi
+ 
+   TMPDIR=$(mktemp -d db2html.XXXXXX) || exit 1
+
+Diff finished at Tue Jul  1 13:37:22

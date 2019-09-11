@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Mon Aug 12 07:29:20 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.18
+  * no code changes
+- disabled failing 32bit builds, not anymore supported
+
+-------------------------------------------------------------------
+Mon Jul  8 17:08:04 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.13
+  * no code changes
+
+-------------------------------------------------------------------
+Tue Jun 25 13:00:57 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.10
+  * no code changes
+
+-------------------------------------------------------------------
+Fri Jun 14 07:57:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix build with current libArcus
+- fix build with gcc9 (CuraEngine-gcc9.patch)
+
+-------------------------------------------------------------------
+Mon May 27 14:54:24 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.9
+   T7039: Fixed material first layer flow setting
+
+-------------------------------------------------------------------
+Mon May  6 08:25:30 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.8
+  * no code changes
+
+-------------------------------------------------------------------
+Wed May  1 11:18:03 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.7
+  * no code changes
+
+-------------------------------------------------------------------
+Thu Apr 18 06:33:44 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.6
+    T6357: Changed extruder switch mechanics
+    T5146: fixed extruder slowing if time < min_layer_time
+
+-------------------------------------------------------------------
+Fri Apr  5 12:05:33 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.5
+  * merged 32bit fixes, obsoletes fix-32bit-build.patch
+
+-------------------------------------------------------------------
+Thu Feb 21 09:05:20 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix 32bit build
+  * adding fix-32bit-build.patch
+
+-------------------------------------------------------------------
+Wed Feb 20 09:35:40 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.4
+  * no code changes
+
+-------------------------------------------------------------------
+Mon Jan  7 15:01:49 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.1
+  https://code.alephobjects.com/w/cura-lulzbot/
+- run test suite during build
+- Add fix-build.patch to use upstream libArcus lib
+
+-------------------------------------------------------------------
+Tue Nov 20 15:47:01 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.2.32
+  * version update only
+
+-------------------------------------------------------------------
+Mon Oct 22 06:55:38 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.2.29
+  * version update only
+
+-------------------------------------------------------------------
+Tue Sep 25 14:52:06 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.2.28
+  * version update only
+  * obsoletes fix-build.patch
+
+-------------------------------------------------------------------
+Mon Aug  6 07:04:14 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.24
+  * version update only
+
+-------------------------------------------------------------------
+Wed Jul 25 10:59:01 UTC 2018 - adrian@suse.de
+
+- use upstream libArcus instead of lulzbot flavor
+
+-------------------------------------------------------------------
+Fri Jul 13 05:00:52 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.23
+  * version update only
+
+-------------------------------------------------------------------
+Tue Jul  3 13:03:52 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.22
+  * added backlash_fading option
+
+-------------------------------------------------------------------
+Wed May 30 06:31:09 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.21
+  * version update only
+
+-------------------------------------------------------------------
+Mon May 14 09:55:28 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.20
+  * version update only
+
+-------------------------------------------------------------------
+Wed May  2 14:41:45 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.19
+  * version update only
+
+-------------------------------------------------------------------
+Thu Apr 19 07:58:36 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.18
+  * version only
+
+-------------------------------------------------------------------
+Fri Apr 13 14:37:04 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Link private lib_CuraEngine statically to binary
+- Use CMAKE_POSITION_INDEPENDENT_CODE instead of mangling CFLAGS
+
+-------------------------------------------------------------------
+Tue Apr  3 06:46:04 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.16
+  * Layer hight and count fixes
+
+-------------------------------------------------------------------
+Thu Mar  8 20:24:52 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.9
+  * version update only
+
+-------------------------------------------------------------------
+Mon Mar  5 08:06:34 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.7
+  * version update only
+
+-------------------------------------------------------------------
+Mon Feb 12 09:06:23 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.3
+
+-------------------------------------------------------------------
+Wed Jan 31 14:08:21 UTC 2018 - jengelh@inai.de
+
+- Trim rhetorics from description.
+
+-------------------------------------------------------------------
+Wed Jan 31 08:08:14 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.1
+
+-------------------------------------------------------------------
+Fri Nov  3 07:49:32 UTC 2017 - adrian@suse.de
+
+- forked and update to lulzbot version 2.6.43

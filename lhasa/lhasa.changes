@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Mon Apr  4 17:32:33 UTC 2016 - kstreitova@suse.com
+
+- Update to new upstream release 0.3.1
+  * This release fixes an integer underflow vulnerability in the
+    code for doing LZH level 3 header decodes (TALOS-CAN-0095)
+    [bnc#973790] [CVE-2016-2347]
+
+-------------------------------------------------------------------
+Sat Nov  7 09:38:52 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.3.0
+* PMarc -pm1- archives that contain truncated compressed data (the
+  decompressed length is longer than what can be read from the
+  compressed data) now decompress as intended. Certain archives in
+  the wild make the assumption that this can be done.
+* LArc -lz5- archives that make use of the initial history buffer
+  now decompress correctly.
+* The tests no longer use predictable temporary paths.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:41:34 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Aug  7 21:20:14 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.2.0
+* Decompression of archives using the -lhx- file format supported
+  by unlha32.dll is now supported.
+* The -p (print to stdout) command line option is now supported.
+* A bug where archives read from pipes (e.g. stdin) were not
+  extracted beyond the first file in the archive was fixed.
+* Output when using the -w (extract directory) option now correctly
+  matches the output of Unix lha.
+
+-------------------------------------------------------------------
+Thu Mar 28 21:28:20 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.1.0
+* This version adds better support for OS-9 lzh archives and fixes
+  several security vulnerabilities related to handling of symbolic
+  links.
+- Remove 0001-build-support-for-automake-1.13.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Mar  7 13:13:00 UTC 2013 - jengelh@inai.de
+
+- Add 0001-build-support-for-automake-1.13.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 23:10:57 UTC 2013 - jengelh@inai.de
+
+- Remove redundant call to autoreconf
+
+-------------------------------------------------------------------
+Sat Jun  2 23:05:27 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.0.7
+* This release adds support for extraction of Unix symbolic links
+  and parsing of Unix-level 0 extended header areas. A decompressor
+  has been added for the "old" PMarc compression algorithm (-pm1-).
+
+-------------------------------------------------------------------
+Sun May 13 01:24:32 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

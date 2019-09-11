@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Thu Oct 11 14:49:01 UTC 2018 - kstreitova@suse.com
+
+- Add unzip60-cfactorstr_overflow.patch to fix buffer overflow in
+  list.c [bsc#1110194] [CVE-2018-18384]
+
+-------------------------------------------------------------------
+Wed Jun 27 11:39:10 UTC 2018 - kstreitova@suse.com
+
+- Add unzip60-total_disks_zero.patch that fixes a bug when unzip is
+  unable to process Windows zip64 archives because Windows
+  archivers set total_disks field to 0 but per standard, valid
+  values are 1 and higher [bnc#910683]
+- Add Fix-CVE-2014-9636-unzip-buffer-overflow.patch to fix heap
+  overflow for STORED field data [bnc#914442] [CVE-2014-9636]
+
+-------------------------------------------------------------------
+Wed May 16 19:44:45 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix "remove failed: No such file or directory" warnings upon
+  package removal:
+  * Call 'update-alternative --remove' in %postun, not in %preun.
+
+-------------------------------------------------------------------
+Thu Feb  8 14:11:25 UTC 2018 - kbabioch@suse.com
+
+- Add CVE-2018-1000035.patch: Fix a heap-based buffer overflow in 
+  password protected ZIP archives (CVE-2018-1000035 bsc#1080074)
+
+-------------------------------------------------------------------
+Thu Jul  6 13:25:44 UTC 2017 - nico.kruber@gmail.com
+
+- Updated Fix-CVE-2014-8139-unzip.patch: the original patch was
+  causing errors testing valid jar files:
+  $ unzip -t foo.jar
+  Archive:  foo.jar
+      testing: META-INF/               bad extra-field entry:
+        EF block length (0 bytes) invalid (< 4)
+      testing: META-INF/MANIFEST.MF     OK
+      testing: foo                      OK
+  (see https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2014-8139
+   where the updated patch was taken from)
+
+-------------------------------------------------------------------
+Wed Feb 15 08:31:05 UTC 2017 - josef.moellers@suse.com
+
+- Fixed two potential buffer overflows.
+  The patches were extracted from
+  http://antinode.info/ftp/info-zip/unzip60/zipinfo.c and
+  http://antinode.info/ftp/info-zip/unzip60/list.c
+  (bsc#1013992, bsc#1013993, CVE-2016-9844, CVE-2014-9913,
+  CVE-2016-9844.patch, CVE-2014-9913.patch)
+
+-------------------------------------------------------------------
+Wed Oct 12 07:23:03 UTC 2016 - josef.moellers@suse.com
+
+- When decrypting an encrypted file,
+  quit early if compressed size < HEAD_LEN.
+  When extracting avoid an infinite loop
+  if a file never finishes unzipping.
+  (bsc#950110, bsc#950111, CVE-2015-7696, CVE-2015-7697,
+  CVE-2015-7696.patch, CVE-2015-7697.patch)
+
+-------------------------------------------------------------------
+Thu Jun 16 14:58:41 UTC 2016 - tchvatal@suse.com
+
+- Require properly the update-alternatives to not throw out errors
+  when installing in OBS chroot
+
+-------------------------------------------------------------------
+Mon Jan 26 13:25:54 UTC 2015 - tbehrens@suse.com
+
+- Add Fix-CVE-2014-8139-unzip.patch: fix heap overflow condition in
+  the CRC32 verification (fixes bnc#909214)
+- Add Fix-CVE-2014-8140-and-CVE-2014-8141.patch: fix write error
+  (*_8349_*) shows a problem in extract.c:test_compr_eb(), and:
+  read errors (*_6430_*, *_3422_*) show problems in
+  process.c:getZip64Data() (fixes bnc#909214)
+
+-------------------------------------------------------------------
+Sun Dec 21 13:43:32 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Fri Aug  2 18:29:07 UTC 2013 - coolo@suse.com
+
+- fix defaultattr for old distros
+
+-------------------------------------------------------------------
+Fri Aug  2 13:55:08 UTC 2013 - coolo@suse.com
+
+- split the rcc dependency into a spec file of it's own, we don't
+  need that complexity during build causing cycles like this:
+    unzip -> librcc -> libproxy -> libXau -> xorg-x11-proto-devel -> docbook-xsl-stylesheets
+
+-------------------------------------------------------------------
+Fri Apr  5 10:07:44 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Aug  5 13:57:24 CEST 2011 - pth@suse.de
+
+- Don't call isprint (bnc#620483).
+
+-------------------------------------------------------------------
+Mon May 23 14:21:44 UTC 2011 - lnussel@suse.de
+
+- remove use of __DATE__ from correct file
+
+-------------------------------------------------------------------
+Sat May 07 23:16:45 UTC 2011 - idoenmez@novell.com
+
+- Sync our compile time flags with Debian except Acorn stuff, this enables 
+   UTF-8, saves an unrelated warning about lchmod being not implemented.
+- Enable make check
+
+-------------------------------------------------------------------
+Fri Jan 28 13:50:13 UTC 2011 - lnussel@suse.de
+
+- use dlopen for librcc0. A direct requires causes lots of other
+  packages to get installed such as aspell which bloats a minimal
+  install.
+
+-------------------------------------------------------------------
+Mon Aug 30 19:44:17 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build host specific info like build dates In
+  binaries. 
+
+-------------------------------------------------------------------
+Fri Jun 25 18:21:34 CEST 2010 - pth@suse.de
+
+- Doing open(O_WRONLY) and then fdopen("w+") will now fail with
+  "Invalid Argument" whereas former glibcs would succeed. So now
+  do open(O_RDWR).
+- Print error message when open(2) fails.
+- Add debugging traces in open_outfile.
+
+-------------------------------------------------------------------
+Fri May 21 16:39:24 CEST 2010 - pth@suse.de
+
+- Update to 6.0:
+  *  Support PKWARE ZIP64 extensions, allowing Zip archives and Zip archive
+     entries larger than 4 GiBytes and more than 65536 entries within a
+     single Zip archive.  This support is currently only available for Unix,
+     OpenVMS and Win32/Win64.
+  * Support for bzip2 compression method.
+  * Support for UTF-8 encoded entry names, both through PKWARE's "General
+    Purpose Flags Bit 11" indicator and Info-ZIP's new "up" unicode path
+    extra field.  (Currently, on Windows the UTF-8 handling is limited to
+    the character subset contained in the configured non-unicode "system
+    code page".)
+  * Fixed "Time of Creation/Time of Use" vulnerability when setting
+    attributes of extracted files, for Unix and Unix-like ports.
+  * Fixed memory leak when processing invalid deflated data.
+  * Fixed long-standing bug in unshrink (partial_clear), added boundary
+    checks against invalid compressed data.
+  * On Unix, keep inherited SGID attribute bit for extracted directories
+    unless restoration of owner/group id or SUID/SGID/Tacky attributes was
+    requested.
+  * On Unix, allow extracted filenames to contain embedded control
+    characters when explicitly requested by specifying the new command line
+    option "-^".
+  * On Unix, support restoration of symbolic link attributes.
+  * On Unix, support restoration of 32-bit UID/GID data using the new "ux"
+    IZUNIX3 extra field introduced with Zip 3.0.
+  * Support symbolic links zipped up on VMS.
+  * New -D option to suppress restoration of timestamps for extracted
+    directory entries (on those ports that support setting of directory
+    timestamps).  By specifying "-DD", this new option also allows to
+    suppress timestamp restoration for ALL extracted files on all UnZip
+    ports which support restoration of timestamps.  On VMS, the default
+    behaviour is now to skip restoration of directory timestamps; here,
+    "--D" restores ALL timestamps, "-D" restores none.
+  * On OS/2, Win32, and Unix, the (previously optional) feature UNIXBACKUP
+    to allow saving backup copies of overwritten files on extraction is now
+    enabled by default.
+
+-------------------------------------------------------------------
+Mon May 10 16:39:20 UTC 2010 - pth@suse.de
+
+- Use librcc to convert russian/slavic file names (bnc#540598).
+
+-------------------------------------------------------------------
+Sun Dec  6 17:51:30 CET 2009 - jengelh@.medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Dec  9 15:53:53 CET 2008 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Mon Sep 15 12:32:57 CEST 2008 - ro@suse.de
+
+- use hardlink instead of softlink 
+
+-------------------------------------------------------------------
+Mon Feb  4 13:29:27 CET 2008 - pth@suse.de
+
+- Add patch to fix erroneous freeing of buffers (bnc#358425)
+
+-------------------------------------------------------------------
+Fri Dec  7 12:52:06 CET 2007 - pth@suse.de
+
+- Pass file mode when calling open with O_CREAT.
+
+-------------------------------------------------------------------
+Mon Dec  3 13:24:27 CET 2007 - pth@suse.de
+
+- Add patch to extend the maximum file/archive size to 2^32-8193
+  (4294959103) bytes.
+- Add patch to fix CVE-2005-2475 (bnc#274156)
+
+-------------------------------------------------------------------
+Thu Jun 21 17:34:10 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Thu May  3 15:25:39 CEST 2007 - pth@suse.de
+
+- Add patch from Takashi Iwai that adds a new option (-S) to
+  unzip and infozip that disables file name translation (bnc#267901).
+- Recompress tarball with bzip2
+
+-------------------------------------------------------------------
+Fri Jan 27 02:30:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 26 15:28:44 CET 2006 - pth@suse.de
+
+- Reject file names that are too long (bnc#140304)
+- Use stack protector.
+
+-------------------------------------------------------------------
+Fri Jan 20 17:41:23 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Thu Dec 15 11:31:51 CET 2005 - pth@suse.de
+
+- Compile with (limited) large file support. This will support
+  single files exceeding 2 GB as long as the archive stays below
+  that theshold.
+
+-------------------------------------------------------------------
+Mon Jun 13 22:46:31 CEST 2005 - rommel@suse.de
+
+- update to version 5.52 (bnc#67279)
+
+-------------------------------------------------------------------
+Sat Aug  7 15:03:23 CEST 2004 - rommel@suse.de
+
+- update to version 5.51
+  (fixes old security bugs, adds PKWARE's compression code Deflate64)
+
+-------------------------------------------------------------------
+Wed May 19 18:36:21 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+- really use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Sun Jan 11 13:00:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Sep 23 16:53:44 CEST 2003 - rommel@suse.de
+
+- replaced fix for ../ exploit with a fix both for
+  the ../ exploit and '/' exploit (Bugzilla #29311)
+
+-------------------------------------------------------------------
+Thu Jul  3 12:57:38 CEST 2003 - rommel@suse.de
+
+- added fix for ../ exploit (Bugzilla #27667)
+
+-------------------------------------------------------------------
+Fri Jan 17 14:42:19 CET 2003 - rommel@suse.de
+
+- fixed Summary: to be more verbose about what this package does
+
+-------------------------------------------------------------------
+Wed Sep 18 00:57:21 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Jul  5 11:09:32 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Mon Mar 11 2002 - rommel@suse.de
+
+- Update to 5.50
+- took over parts of pmladek's patch (see below)
+
+-------------------------------------------------------------------
+Thu Jan 24 13:43:46 CET 2002 - grimmer@suse.de
+
+- added unzip-5.42-iso8859_2.patch to fix coding conversion
+  between Microsoft and Linux file names
+  (originally from http://www.axis.cz/linux/zip_unzip.php3,
+  enhanced to support both ISO8859-1 and ISO8859-2 by Petr Mladek
+  <pmladek@suse.cz>)
+
+-------------------------------------------------------------------
+Mon Apr  9 13:42:07 CEST 2001 - grimmer@suse.de
+
+- Update to 5.42
+- file list fixes (new license file, documentation renames)
+
+-------------------------------------------------------------------
+Wed Dec 13 17:49:59 CET 2000 - grimmer@suse.de
+
+- Update to 5.41 (now includes decryption support)
+- now Provides and Obsoletes crunzip
+- bzipped sources
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Feb 29 18:33:38 CET 2000 - schwab@suse.de
+
+- Add support for ia64.
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Wed Dec 22 16:19:18 MET 1999 - grimmer@suse.de
+
+- Added "Conflicts: crzip" to spec file
+- cleaned up Provides: tag
+
+-------------------------------------------------------------------
+Fri Dec 17 16:40:10 MET 1999 - grimmer@suse.de
+
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Sat Nov 27 15:03:07 MET 1999 - kukuk@suse.de
+
+- Use linux_noasm Makefile target on SPARC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  8 16:34:57 CEST 1999 - uli@suse.de
+
+- uses target linux_noasm for PPC
+
+-------------------------------------------------------------------
+Wed Feb 24 09:42:16 MET 1999 - grimmer@suse.de
+
+- new version (5.40)
+- specfile modifications
+- added french description
+
+-------------------------------------------------------------------
+Mon Jan 11 14:29:14 MET 1999 - ro@suse.de
+
+- use target linux_noasm for alpha
+
+-------------------------------------------------------------------
+Fri Jan 23 15:03:52 MET 1998 - rj@suse.de
+
+- version 5.32
+-------------------------------------------------------------------
+Thu Feb  6 11:56:09 CET 1997 - rj@suse.de
+
+- version 5.12
+- new test/changes/plist files
+

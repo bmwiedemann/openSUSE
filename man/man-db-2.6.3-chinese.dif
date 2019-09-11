@@ -1,0 +1,54 @@
+---
+ lib/encodings.c |   13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+--- lib/encodings.c
++++ lib/encodings.c	2016-12-15 14:07:01.072034899 +0000
+@@ -224,6 +224,7 @@ static struct charset_entry charset_tabl
+ 	{ "EUC-CN",		"nippon"	},
+ 	{ "EUC-JP",		"nippon"	},
+ 	{ "EUC-TW",		"nippon"	},
++	{ "GB18030",		"nippon"	},
+ 	{ "GBK",		"nippon"	},
+ # else /* !MULTIBYTE_GROFF */
+ 	/* If we have a smarter version of groff, this is better dealt with
+@@ -311,6 +312,7 @@ static struct less_charset_entry less_ch
+ 
+ #ifdef MULTIBYTE_GROFF
+ 	{ "CP1251",		"windows",	NULL		},
++	{ "GB18030",		"zh",		NULL		},
+ 	{ "EUC-JP",		"iso8859",	"japanese-ujis"	},
+ 	{ "KOI8-R",		"koi8-r",	NULL		},
+ 	/* close enough? */
+@@ -502,6 +504,13 @@ char *get_page_encoding (const char *lan
+  *     roff encoding = ISO-8859-15
+  *     output encoding = ISO-8859-15
+  *     ISO-8859-15 -> groff -Tascii8 -> ISO-8859-15 -> iconv -> UTF-8
++ *
++ *   /usr/share/man/zh_CN.GB18030, locale zh_CN.UTF-8
++ *     page encoding = GB18030
++ *     source encoding = GB18030
++ *     roff encoding = UTF-8
++ *     output encoding = UTF-8
++ *     GB18030 -> iconv -> UTF-8 -> groff -Tutf8 -> UTF-8
+  */
+ const char *get_source_encoding (const char *lang)
+ {
+@@ -667,7 +676,7 @@ static int compatible_encodings (const c
+ 	 */
+ 	if ((STREQ (input, "BIG5") || STREQ (input, "BIG5HKSCS") ||
+ 	     STREQ (input, "EUC-JP") ||
+-	     STREQ (input, "EUC-CN") || STREQ (input, "GBK") ||
++	     STREQ (input, "EUC-CN") || STREQ (input, "GB18030") || STREQ (input, "GBK") ||
+ 	     STREQ (input, "EUC-KR") ||
+ 	     STREQ (input, "EUC-TW")) &&
+ 	    STREQ (output, "UTF-8"))
+@@ -771,7 +780,7 @@ const char *get_roff_encoding (const cha
+ 		    STRNEQ (ctype, "zh_HK", 5) ||
+ 		    STRNEQ (ctype, "zh_SG", 5) ||
+ 		    STRNEQ (ctype, "zh_TW", 5))
+-			roff_encoding = "UTF-8";
++			roff_encoding = source_encoding; /* "UTF-8"; */
+ 	}
+ #endif /* MULTIBYTE_GROFF */
+ 

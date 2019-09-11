@@ -1,0 +1,16 @@
+The scheme48.image entry point procedure prints a welcome message that
+includes "built by Fred" where Fred is the username of the user that
+built Scheme48.  Make this be the output of `hostname -s`
+Index: scheme48/build/build-usual-image
+===================================================================
+--- scheme48.orig/build/build-usual-image	2013-03-14 10:12:04.000000000 +0100
++++ scheme48/build/build-usual-image	2013-03-14 10:12:04.000000000 +0100
+@@ -14,7 +14,7 @@
+ image=$4
+ vm=$5
+ initial=$6
+-USER=${USER-`logname 2>/dev/null || echo '*GOK*'`}
++USER=$(hostname -s)
+ 
+ $vm -i $initial -a batch <<EOF
+ ,load $srcdir/scheme/env/init-defpackage.scm

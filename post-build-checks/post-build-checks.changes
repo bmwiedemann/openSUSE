@@ -1,0 +1,600 @@
+-------------------------------------------------------------------
+Tue Jul 16 11:32:46 UTC 2019 - ro@suse.com
+
+- Update to version 84.88+git20190716.5a0e034:
+  * Remove unused tests.
+
+-------------------------------------------------------------------
+Fri Jul 12 10:06:12 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable tests as GCC checks are gone.
+
+-------------------------------------------------------------------
+Thu Jul 11 15:57:33 UTC 2019 - ro@suse.com
+
+- Update to version 84.88+git20190711.2b1c662:
+  https://github.com/openSUSE/post-build-checks/pull/26
+  * Remove GCC check output check.
+
+-------------------------------------------------------------------
+Tue Jul 02 13:25:27 UTC 2019 - ro@suse.com
+
+- Update to version 84.88+git20190702.429d0e0:
+  * Completly don't use ghosts like files
+  * Ignore ghosts
+
+-------------------------------------------------------------------
+Thu Jun 20 11:54:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO as some warnings are emitted late and
+  disappear with usage of -c (boo#1138834).
+
+-------------------------------------------------------------------
+Mon Oct 15 12:31:31 UTC 2018 - ro@suse.de
+
+- Update to version 84.88+git20181015.ceb5c96:
+  * Add suse-ignored-rpaths.conf (bsc#1109470)
+
+-------------------------------------------------------------------
+Thu Sep 20 15:31:19 UTC 2018 - ro@suse.de
+
+- Update to version 84.88+git20180920.ef3d8cb:
+  * 50-check-kernel-build-id
+    - add archs i686 ppc ppc64 s390 armv6l armv7l
+
+-------------------------------------------------------------------
+Thu Sep 20 13:36:08 UTC 2018 - ro@suse.de
+
+- Update to version 84.88+git20180920.51eb861:
+  * 50-check-kernel-build-id
+    - regroup checks for image and debuginfo
+    - make arch list a little more robust
+    - Handle i586. Also improve error handling when arch not found.
+    - Change err() to return 0. Only return 1 if we successfully
+      compared the id's and there was a discrepancy.
+    - change file mode to 755 for 50-check-kernel-build-id to match
+      all other checks
+  * make all OBS tex pdf builds reproducible by exporting
+    FORCE_SOURCE_DATE as 1
+
+-------------------------------------------------------------------
+Mon Sep 17 16:15:35 UTC 2018 - ro@suse.de
+
+- Update to version 84.88+git20180917.23b80ae:
+  * check for -fstack-clash-protection instead of -fmessage-length,
+    as that one will be removed from optflags
+  * Add kernel-build-id consistency check
+
+-------------------------------------------------------------------
+Thu Aug 09 14:16:06 UTC 2018 - adrian@suse.de
+
+- Update to version 84.88+git20180809.3be1b09:
+  * Warnings for core files, no errors yet
+  * QT_HASH_SEED has to be 0
+
+-------------------------------------------------------------------
+Wed Apr 11 23:06:35 UTC 2018 - ro@suse.de
+
+- Update to version 84.87+git20180412.b38aed4:
+  * Mark test as broken due to GCC 8 and fortification.
+
+-------------------------------------------------------------------
+Tue Jan 16 10:11:15 UTC 2018 - tchvatal@suse.com
+
+- Update to version 84.87+git20171221.9eed556:
+  * Move all scripts that can run in parallel to the same run-level (50).
+
+-------------------------------------------------------------------
+Fri Nov 24 15:48:17 UTC 2017 - ro@suse.de
+
+- Update to version 84.87+git20171124.8f470bc:
+  * export QT_HASH_SEED
+  * Fix incorrect matching due to greedy regexp (Fixes: #14)
+  * Also treat c++ as a valid compiler
+  * check_gcc_output: drop ansi escape sequences (colors)
+    before checking for warnings
+
+-------------------------------------------------------------------
+Sun Oct 22 22:31:48 UTC 2017 - ro@suse.de
+
+- Update to version 84.87+git20170929.5b244d1:
+  * Fix performance regression in warning match regexp
+
+-------------------------------------------------------------------
+Wed Jul 12 15:28:01 UTC 2017 - tchvatal@suse.com
+
+- Update to version 84.87+git20170712.7ededdb:
+  * Fix spacing in sequence-point warning
+  * Try harder matching soname changes/tweaks (this fixes lua name change)
+
+-------------------------------------------------------------------
+Tue Apr 11 11:58:03 UTC 2017 - lnussel@suse.de
+
+- Update to version 84.87+git20170411.08a40e3:
+  * use PYTHONHASHSEED=0
+
+-------------------------------------------------------------------
+Tue Apr 11 09:04:29 UTC 2017 - lnussel@suse.de
+
+- Update to version 84.87+git20170411.50017fe:
+  * use fixed hash seed values for perl+python
+  * Support new buffer overflow format for GCC7.
+
+-------------------------------------------------------------------
+Thu May 12 06:47:37 UTC 2016 - lnussel@suse.de
+
+- Update to version 13.2+git20160512.be9650e:
+  * Do not remove packages that had a corresponding -mini installed
+
+-------------------------------------------------------------------
+Mon Aug 10 11:17:20 UTC 2015 - lnussel@suse.de
+
+- Update to version 13.2+git20150810.2703d2a:
+  + Fix quoting of TOPDIR in regex pattern
+  + Skip 03-check-binary-kernel-log for kernel-docs package
+
+-------------------------------------------------------------------
+Tue Mar 24 11:42:39 UTC 2015 - lnussel@suse.de
+
+- Update to version 13.2+git20150324.8993d63:
+  + an empty main() is now allowed in C, use a different function
+
+-------------------------------------------------------------------
+Tue Oct  7 17:01:49 UTC 2014 - dmueller@suse.com
+
+- Update to version 13.2+git20141007.c6e35c3:
+  + Fix check for skipping libgcc/libstdc++
+
+-------------------------------------------------------------------
+Tue Mar 18 10:38:54 UTC 2014 - ro@suse.com
+
+- also allow -MM additional to -MD to asssume were only generating deps
+
+-------------------------------------------------------------------
+Thu Feb 20 16:29:33 CET 2014 - ro@suse.de
+
+- test for existence before trying to modify /etc/sysconfig/clock 
+
+-------------------------------------------------------------------
+Tue Feb  4 14:19:50 UTC 2014 - ro@suse.com
+
+- do not remove libgcc or libstdc++ packages in install-check
+
+-------------------------------------------------------------------
+Fri Jan 31 15:31:34 CET 2014 - ro@suse.de
+
+- adapt uname linking in specfile to /usr move (bnc#860600) 
+
+-------------------------------------------------------------------
+Fri Jan 31 14:26:05 UTC 2014 - ro@suse.com
+
+- adapt uname.sh helper to 3.XX.Y kernel versioning scheme
+- obs removes dashes...
+- fix mktar to match service file
+- do not mount and umount /proc in checks - the build script handles that
+
+-------------------------------------------------------------------
+Thu Jan  9 11:06:05 UTC 2014 - coolo@suse.com
+
+- the switching to services undid the mounting fix - without me
+  noticing. Now really pushed to the right git and redid tar
+
+-------------------------------------------------------------------
+Tue Jan  7 20:11:44 UTC 2014 - coolo@suse.com
+
+- switch to _service file to avoid silent tar updates
+
+-------------------------------------------------------------------
+Tue Jan  7 16:15:28 UTC 2014 - coolo@suse.com
+
+- remove mounting and unmounting of /proc - build handles it
+
+-------------------------------------------------------------------
+Mon Dec  9 15:41:16 UTC 2013 - ro@suse.com
+
+- merge rest of quoting fixes from schwab
+
+-------------------------------------------------------------------
+Mon Dec  9 14:54:26 UTC 2013 - ro@suse.com
+
+- fix quoting in libtool deps check
+
+-------------------------------------------------------------------
+Fri Oct 11 10:59:20 UTC 2013 - coolo@suse.com
+
+- make use of the same findfileconflicts as the one repo-checker uses
+- switched repo location to github
+
+-------------------------------------------------------------------
+Mon Dec 10 14:00:50 UTC 2012 - coolo@suse.com
+
+- buildrequire malloc check
+
+-------------------------------------------------------------------
+Wed Nov 14 00:34:25 UTC 2012 - ro@suse.com
+
+- Remove timestamp prefix in check_gcc_output (thanks to schwab)
+
+-------------------------------------------------------------------
+Sat Oct 27 18:30:38 UTC 2012 - coolo@suse.com
+
+- the scripts call awk, so we need to require it
+
+-------------------------------------------------------------------
+Thu Oct  4 12:32:06 UTC 2012 - dmueller@suse.com
+
+- merge /proc mount/umounting patch from AJ
+- add _service file to easily recreate the tarball from git
+
+-------------------------------------------------------------------
+Sun Sep 23 09:37:34 UTC 2012 - coolo@suse.com
+
+- change the permissions check to use chkstat directly,
+  possibly this check outdated itself though
+
+-------------------------------------------------------------------
+Mon Sep 17 14:42:44 UTC 2012 - coolo@suse.com
+
+- with rpm 4.10, two packages packaging the same directory with
+  different owners is a bug - so catch it early
+
+-------------------------------------------------------------------
+Tue Jun 26 14:21:41 UTC 2012 - lnussel@suse.de
+
+- use mkpackage from aaa_base, more advanced
+- merge package patches into git
+
+-------------------------------------------------------------------
+Tue Jun 26 08:24:21 UTC 2012 - saschpe@suse.de
+
+- Update reserved init script names from LANANA.
+  The current authoritative list is currently found here:
+  http://stewbenedict.org/lsb/lanana/lsbreg/init/init.txt 
+
+-------------------------------------------------------------------
+Mon Jun  4 10:14:34 UTC 2012 - coolo@suse.com
+
+- ld.so is basically empty nowadays, so put together a config file
+  just to ignore rpaths
+
+-------------------------------------------------------------------
+Mon May 28 08:18:18 UTC 2012 - coolo@suse.com
+
+- strim white space in check_gcc_output - this reduces the time
+  to check an openSUSE-images log file (38M mostly whitespace due
+  to zypper output) from several hours to some seconds
+
+-------------------------------------------------------------------
+Tue Dec 20 10:14:40 UTC 2011 - werner@suse.de
+
+- ignore empty rpm as in 09-check-packaged-twice as those will be
+  detected by rpmlint rules with a clear message 
+
+-------------------------------------------------------------------
+Wed Dec  7 10:00:08 UTC 2011 - coolo@suse.com
+
+- ignore debuginfo and debugsource packages for packaged-twice
+
+-------------------------------------------------------------------
+Thu Dec  1 16:36:29 UTC 2011 - coolo@suse.com
+
+- fix usage of perl's index()
+
+-------------------------------------------------------------------
+Mon Nov 28 11:46:44 UTC 2011 - coolo@suse.com
+
+- ignore files that are %ghost in both packages
+
+-------------------------------------------------------------------
+Fri Nov 25 21:59:53 UTC 2011 - coolo@suse.com
+
+- make "packaged twice" fatal if packages do not conflict
+
+-------------------------------------------------------------------
+Thu Oct 20 10:01:31 UTC 2011 - ro@suse.com
+
+- use /.build.packages instead of /usr/src/packages if it exists
+
+-------------------------------------------------------------------
+Fri Jul 22 16:43:16 CEST 2011 - lnussel@suse.de
+
+- Fix filelist check for new rpm
+
+-------------------------------------------------------------------
+Wed Jun 22 22:59:31 CEST 2011 - dmueller@suse.de
+
+- fix strict-aliasing compiler check with gcc 4.6
+
+-------------------------------------------------------------------
+Tue Jun 21 08:31:44 CEST 2011 - dmueller@suse.de
+
+- re-enable fatal checks in 04-check-filelist as the deadline has
+  passed
+
+-------------------------------------------------------------------
+Fri Mar 25 01:29:44 CET 2011 - ro@suse.de
+
+- drop sync workaround again 
+
+-------------------------------------------------------------------
+Mon Mar 21 00:52:59 CET 2011 - ro@suse.de
+
+- add helper/sync.sh to disable sync inside build environment 
+
+-------------------------------------------------------------------
+Tue Dec  7 14:38:10 UTC 2010 - lnussel@suse.de
+
+- re-enable fatal checks in 04-check-filelist as the deadline has
+  passed
+
+-------------------------------------------------------------------
+Tue Nov 30 10:11:31 UTC 2010 - lnussel@suse.de
+
+- maintain sources in git
+
+-------------------------------------------------------------------
+Mon Nov  8 12:27:21 UTC 2010 - lnussel@suse.de
+
+- disarm 04-check-filelist for now. Too many failures.
+
+-------------------------------------------------------------------
+Thu Nov  4 15:29:40 UTC 2010 - lnussel@suse.de
+
+- revive 04-check-filelist part that checks for unpackaged
+  directory. Not possible to implement with rpmlint atm.
+
+-------------------------------------------------------------------
+Mon May 31 17:35:14 CEST 2010 - sbrabec@suse.cz
+
+- Removed 11-check-pkgconfig-deps as it is now part of rpm
+  (bnc#610280).
+
+-------------------------------------------------------------------
+Thu May  6 17:41:41 UTC 2010 - lnussel@suse.de
+
+- finally remove 04-check-filelist as it's obsoleted by
+  CheckFilelist.py in rpmlint
+
+-------------------------------------------------------------------
+Wed Apr  7 16:48:52 CEST 2010 - ro@suse.de
+
+- remove debuginfo packages for nosrc rpms unless
+  package is either kernel or java or texlive-bin or glibc
+  or removal is disabled in specfile by adding a line
+  #KEEP NOSOURCE DEBUGINFO 
+  to the specfile (bnc#572695)
+
+-------------------------------------------------------------------
+Tue Feb 23 12:21:52 CET 2010 - ro@suse.de
+
+- check gcc warnings: wording for non-void return has changed 
+
+-------------------------------------------------------------------
+Fri Feb 19 12:00:32 CET 2010 - mls@suse.de
+
+- allow /usr/src/parrot in parrot-devel
+
+-------------------------------------------------------------------
+Sat Feb  6 17:31:27 CET 2010 - detlef@links2linux.de
+
+- add umount patch: Umount $BUILD_ROOT/proc after finished job
+
+-------------------------------------------------------------------
+Mon Dec  7 14:58:27 CET 2009 - mmarek@suse.cz
+
+- do not mess with sysconfig files when installed in a live system
+  (no more missed appointments...).
+
+-------------------------------------------------------------------
+Thu Nov  5 15:48:37 CET 2009 - meissner@suse.de
+
+- move strcasecmp and strlcpy to "implict warning" as we have
+  no specific fortify checking for those.
+
+-------------------------------------------------------------------
+Tue Oct 20 10:51:08 CEST 2009 - meissner@suse.de
+
+- merge debuginfo patch into tarball
+- check for "implicit declaration of function 'xxxx'" with a fixed
+  list of standard library xxxx which will change behaviour when having
+  correct declaration.
+
+-------------------------------------------------------------------
+Mon Aug 10 02:17:25 CEST 2009 - ro@suse.de
+
+- allow /selinux in filelist check 
+
+-------------------------------------------------------------------
+Thu Jul 30 10:11:52 CEST 2009 - rguenther@suse.de
+
+- simplify and fix empty debuginfo/source deletion
+
+-------------------------------------------------------------------
+Mon Jul 27 16:53:13 CEST 2009 - rguenther@suse.de
+
+- also remove empty debugsource packages
+
+-------------------------------------------------------------------
+Wed Jun 24 16:45:44 CEST 2009 - coolo@novell.com
+
+- reenable -as-needed now that most of the fallout is fixed
+
+-------------------------------------------------------------------
+Sat Jun 13 09:59:44 CEST 2009 - coolo@novell.com
+
+- take out AS_NEEDED for now to see a before-after comparision
+
+-------------------------------------------------------------------
+Wed Jun 10 21:47:05 CEST 2009 - coolo@novell.com
+
+- add a profile.d script that sets -as-needed when in build environment
+
+-------------------------------------------------------------------
+Tue May 26 12:33:20 CEST 2009 - ro@suse.de
+
+- fix last change 
+
+-------------------------------------------------------------------
+Fri May 22 15:56:48 CEST 2009 - ro@suse.de
+
+- more ugly tweaks to uname hack 
+
+-------------------------------------------------------------------
+Mon Feb 23 15:43:35 CET 2009 - ro@suse.de
+
+- cleanup uname hack in preun (bnc#476885) 
+
+-------------------------------------------------------------------
+Fri Feb 20 08:18:17 CET 2009 - coolo@suse.de
+
+- don't make the sequence point gcc warnings fatal, but let security
+  team review them case by case
+
+-------------------------------------------------------------------
+Tue Oct 28 09:57:02 CET 2008 - lnussel@suse.de
+
+- remove suid check. replaced by rpmlint script
+
+-------------------------------------------------------------------
+Mon Oct 27 23:57:31 CET 2008 - meissner@suse.de
+
+- added warning checks for: array subscript over/underflow,
+  void return not expected warnings. bnc#240922,bnc#439283
+
+-------------------------------------------------------------------
+Thu Oct 23 11:51:25 CEST 2008 - lnussel@suse.de
+
+- suid check: tetex -> texlive
+
+-------------------------------------------------------------------
+Wed Oct 22 16:08:24 CEST 2008 - lnussel@suse.de
+
+- don't fail for setuid/setgid directories (bnc#437721)
+- some cleanups
+
+-------------------------------------------------------------------
+Wed Oct 22 14:12:58 CEST 2008 - lnussel@suse.de
+
+- failed setuid check is fatal (bnc#431592)
+
+-------------------------------------------------------------------
+Tue Oct 14 15:27:56 CEST 2008 - dmueller@suse.de
+
+- remove extra whitespace in warning output that confuses people
+
+-------------------------------------------------------------------
+Mon Oct 13 11:46:14 CEST 2008 - ro@suse.de
+
+- allow /opt/IBMJava2-* 
+
+-------------------------------------------------------------------
+Tue Oct  7 21:40:17 CEST 2008 - meissner@suse.de
+
+- testsuite for check_gcc_output. marked the currently non
+  working tests as "BROKEN.C" (not built).
+- fixed implicit fortify function check to work with newer gccs.
+
+-------------------------------------------------------------------
+Mon Oct  6 17:53:46 CEST 2008 - meissner@suse.de
+
+- added checks for newer glibcs destination buffer overflow
+  warning.
+
+-------------------------------------------------------------------
+Tue Sep 30 11:24:47 CEST 2008 - ro@suse.de
+
+- make uname.sh more robust 
+
+-------------------------------------------------------------------
+Tue Sep 23 12:17:28 CEST 2008 - dmueller@suse.de
+
+- remove uses-function-address debug statement, confuses more
+  people than it helps
+
+-------------------------------------------------------------------
+Mon Sep 15 18:09:40 CEST 2008 - ro@suse.de
+
+- allow /opt/IBMJava2-142 
+
+-------------------------------------------------------------------
+Fri Sep  5 02:13:09 CEST 2008 - ro@suse.de
+
+- next hack for uname.sh: if /.kernelversion does not exist
+  use a readlink on /usr/src/linux to find out
+  and then get the flavor by the same hack as kernel-source
+
+-------------------------------------------------------------------
+Thu Sep  4 14:19:20 CEST 2008 - ro@suse.de
+
+- added COPYING file
+
+-------------------------------------------------------------------
+Wed Sep  3 15:11:13 CEST 2008 - ro@suse.de
+
+- try not to remove library packages during initial build
+  (when updating soname bnc#421981) 
+
+-------------------------------------------------------------------
+Wed Aug 20 14:28:07 CEST 2008 - ro@suse.de
+
+- allow /var/crash for crash-dumps (FHS-2.3)
+- allow /branding (installation-images) 
+
+-------------------------------------------------------------------
+Fri Aug 15 17:00:24 CEST 2008 - ro@suse.de
+
+- make sure LOGFILE is set for gcc warning check 
+
+-------------------------------------------------------------------
+Mon Aug 11 15:24:46 CEST 2008 - ro@suse.de
+
+- eliminate use of BUILD_IS_RUNNING 
+
+-------------------------------------------------------------------
+Mon Aug 11 14:46:27 CEST 2008 - ro@suse.de
+
+- eliminate use of BUILD_BASENAME and package_name 
+
+-------------------------------------------------------------------
+Sun Aug 10 12:06:17 CEST 2008 - ro@suse.de
+
+- add uname hack: let "uname -r" return the version of the
+  installed kernel-sources, not the one of the running kernel
+
+-------------------------------------------------------------------
+Fri Aug  8 11:55:35 CEST 2008 - ro@suse.de
+
+- some sysconfig hacks:
+  sysconfig/security:PERMISSION_SECURITY to secure
+  sysconfig/clock:TIMEZONE to UTC
+- add PreReq "aaa_base permissions sed" to make this work 
+
+-------------------------------------------------------------------
+Mon Aug  4 15:03:00 CEST 2008 - ro@suse.de
+
+- change debuginfo dependency checker:
+  only fail on dependencies not referring to debuginfo packages 
+
+-------------------------------------------------------------------
+Tue Jul 29 01:00:20 CEST 2008 - ro@suse.de
+
+- fail if a debuginfo or debugsource package has
+  an unresolvable dependency 
+
+-------------------------------------------------------------------
+Tue Jul 15 15:54:08 CEST 2008 - ro@suse.de
+
+- replace last cleanup_and_exit by exit
+- make sure proc is mounted before uninstalling rpms 
+- export YAST_IS_RUNNING during all install/uninstall tests
+
+-------------------------------------------------------------------
+Mon Jul 14 18:11:26 CEST 2008 - ro@suse.de
+
+- added 00-install and 99-remove as next part of main build script 
+
+-------------------------------------------------------------------
+Mon Jul 14 15:52:16 CEST 2008 - ro@suse.de
+
+- created package 
+

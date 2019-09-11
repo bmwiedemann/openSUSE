@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:40:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct  3 19:26:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.0:
+  + No code changes since 0.1.17.
+
+-------------------------------------------------------------------
+Wed Sep 18 17:26:55 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.1.17:
+  + This is a release candidate for telepathy-idle 0.2, recommended
+    for use with GNOME 3.10.
+  + Dependencies:
+    - GLib >= 2.32
+    - telepathy-glib >= 0.21
+  + Fixes:
+    - Don't crash when a channel with multiple requests fails.
+    - Add handle-name to RoomList properties (fdo#65614).
+    - Kill async read when disconnecting (fdo#64923).
+    - Fix tests with automake 1.13 (fdo#69258).
+    - Stop using deprecated telepathy-glib API (fdo#64122,
+      fdo#69311).
+
+-------------------------------------------------------------------
+Sun May  5 07:00:16 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.1.16:
+  + Enhancements:
+    - Add support for interactive TLS certificate validation,
+      fixing the regression in 0.1.15 that self-signed certificates
+      could not be used any more (fdo#57130).
+- Changes from version 0.1.15:
+  + Fixes:
+    - Validate TLS certificates properly, preventing
+      man-in-the-middle attacks (CVE-2007-6746, fdo#63810).
+    - Fix compilation and regression tests with GLib 2.36.
+- Drop libopenssl-devel BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Sun Nov 18 17:02:56 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.1.14:
+  + Parse PONG replies more leniently. bip's PONGs were rejected by
+    0.1.13.
+
+-------------------------------------------------------------------
+Thu Nov 15 21:45:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.13:
+  + Enhancements:
+    - Initial support for listing rooms (fdo#23005).
+    - Chat room channels now respawn if you Close() them
+      (fdo#24614).
+  + Fixes:
+    - Fix for "make -j" safety (fdo#54016).
+    - Sending well-formed but invalid UTF-8 no longer gets Idle
+      kicked off the bus (fdo#30741).
+    - Idle now disconnects if it doesn't get a reply to its pings
+      after a while (fdo#56589).
+    - Don't wedge and stop sending messages in a situation we
+      believe was triggered by a short-lived GIO bug (fdo#49163).
+
+-------------------------------------------------------------------
+Wed Aug  8 12:29:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.12:
+  + Fixes:
+    - Implement the the ActorHandle property on the Subject
+      interface, to fix showing who changed the topic in Empathy
+    - Idle no longer gets stuck in a 100% CPU loop when the
+      connection is lost in some situations (fdo#48084)
+    - Get rid of deprecated things (fdo#49600)
+    - Renamed variables to avoid warnings with "-Werror=shadow"
+      (fdo#51906)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:56:42 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 15 09:58:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.11:
+  + Enhancements:
+    - fdo#21168: Idle now implements the Contacts interface (which
+      has officially been mandatory for a while).
+    - fdo#37145: Rather than using its own home-grown network code,
+      Idle now uses GIO. This should make it more robust and
+      maintainable.
+    - fdo#40734: The new Subject interface is now implemented. The
+      old Properties interface is no longer supported, and hence
+      various other aspects of room configuration are no longer
+      exposed. In future, they should be reincarnated on the
+      RoomConfig interface.
+- Add pkgconfig(gio-2.0) BuildRequires.
+- Change telepathy-glib-devel BuildRequires to
+  pkgconfig(telepathy-glib).
+
+-------------------------------------------------------------------
+Tue Aug 30 19:45:03 UTC 2011 - andrea.turrini@gmail.com
+
+- Fix typo in description.
+
+-------------------------------------------------------------------
+Wed May 18 17:35:23 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.10:
+  + Enhancements:
+    - The ContactInfo interface is now implemented, allowing you to
+      discover contacts' real names and other attributes exposed
+      via /whois in the IRC protocol [fdo#34796]
+  + Fixes:
+    - Should send keep-alive packets to detect dropped connections
+      [fdo#35058]
+    - Use AM_PATH_PYTHON to check for more Python versions instead
+      of check for each binary [fdo#36624]
+    - NewChannels fired twice when connecting to a bip account
+      [fdo#28918]
+    - Pass the message type to tp_cm_message_new_text [fdo#37038]
+
+-------------------------------------------------------------------
+Mon Apr 11 12:56:30 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.1.9:
+  + Correctly implement Destroyable to avoid Idle eating 100% CPU
+    if there is no text handler (fdo#34166).
+  + Correctly quote message in PART commands (fdo#34812)
+  + Don't truncate room names at ! in the parser (fdo#28371,
+    fdo#31343, fdo#30609).
+  + Using an underscore '_' in IRC login name causes network error
+    (fdo#33913).
+  + The 'username' parameter is now validated for its conformance
+    to RFC 2812 (fdo#35239).
+  + Additionally, the human-readable information from ERROR
+    messages is now exposed in the ConnectionError signal's Details
+    dictionary, as server-message. (also fdo#35239).
+  + Add Messages properties to immutable properties.
+  + Add the password-prompt to the manager file.
+  + Set the 'message-sender-id' key in messages.
+
+-------------------------------------------------------------------
+Wed Mar  9 09:48:51 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.1.8:
+  + Enhancements:
+    - Implements SASL channel.
+  + Fixes:
+    - Properly advertise that text channels implement Messages.
+
+-------------------------------------------------------------------
+Wed Dec  8 08:46:35 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.7:
+  + Enhancements:
+    - Implement the Messages interface.
+    - Implement Protocol objects.
+    - Stop using tp_get_bus.
+  + Fixes:
+    - Fix a buffer overrun in channel name validation.
+    - Fix the handling of the +t channel flag.
+    - Fix free of invalid size using g_slice.
+
+-------------------------------------------------------------------
+Sun Feb 21 17:14:34 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.6:
+  + Enhancements:
+    - Implement IDLE_LOGFILE to divert output to a file.
+    - Implement Debug interface.
+  + Fixes:
+    - Add username parameter to the manager file.
+    - Fix some memory leaks.
+    - Add ourself to remote-pending when creating a room channel.
+      (fdo#25039)
+    - Flag password parameter as secret (fdo#24559)
+
+-------------------------------------------------------------------
+Mon Sep 28 16:53:39 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 0.1.5:
+  + Enhancements:
+    - Use automake 1.11's silent build option. Use
+      --enable-silent-rules to enable it.
+    - Implement Destroyable for IM channels.
+    - Implement o.fd.Tp.Connection.Interface.Requests.
+    - Allow parting MUCs with RemoveMembers.
+  + Fixes:
+    - fdo#22291: Define _GNU_SOURCE not __USE_GNU to get
+      strnlen(3), which was causing a build failure on openSUSE,
+      which has a glibc from the future.
+    - fdo#22958: Don't explicitly return void in void functions as
+      Sun's C compiler doesn't support this.
+- Drop telepathy-idle-glibc-header.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jun 15 11:18:55 CEST 2009 - vuntz@novell.com
+
+- Add telepathy-idle-glibc-header.patch to fix build with latest
+  glibc.
+
+-------------------------------------------------------------------
+Thu May 28 20:25:35 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.1.4:
+  + Enhancements:
+    - Added a connection parameter for "username" (fdo#16499).
+    - Removed the default quit message advertising Idle
+      (fdo#20916).
+  + Fixes:
+    - Parses nicknames in incoming messages more liberally, to
+      allow nicknames like "-bip" which are illegal but appear in
+      the wild.
+    - Uniquify connections' object paths to permit two connections
+      to the same server with the same username (fdo#17430).
+
+-------------------------------------------------------------------
+Sat Feb 21 21:03:37 CET 2009 - mboman@suse.de
+
+- Update to version 0.1.3:
+  + Added automated test infrastructure
+  + Fixed a bunch of memory leaks reported by valgrind
+  + handle buggy servers that don't quit properly
+  + Fix parsing error that resulting in not receiving any messages
+    that started with a leading space (fdo#17390)
+  + Handle user renames in room channels properly
+  + Validate nicknames properly when attempting to create a new
+    connection
+  + Fix bug where data was lost due to improper splitting of long
+    messages (fdo#17392)
+  + Don't split utf-8 codepoints in half when splitting long
+    messages (fdo#13532)
+  + Fix bug where a user named 'foo' that was a member of a channel
+    of the same name ('#foo') would have private messages delivered
+    to both the private chat and the group chat (fdo#19766)
+  + Fix some infinite loop failures when connections fail
+  + Fixed various warnings
+- Remove export CFLAGS="$RPM_OPT_FLAGS" and export
+  CXXFLAGS="$CFLAGS". These are default
+- Remove required versions for BuildRequires. We don't generally
+  use it in our .spec files
+- Use %makeinstall instead of 'make install...'
+- Use --libexecdir=%{_prefix}/lib/%{name} since upstream changed
+
+-------------------------------------------------------------------
+Thu Jul 24 13:15:27 EDT 2008 - hfiguiere@suse.de
+
+- Initial checkin

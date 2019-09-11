@@ -1,0 +1,254 @@
+-------------------------------------------------------------------
+Mon Sep 24 05:36:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.74
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.74      2018-09-23 23:41:10Z
+   - fix init_arg when used in combination with an underscored attribute read
+     from the config file (Andreas Koenig, github #11)
+
+-------------------------------------------------------------------
+Wed Sep 19 05:40:03 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.73
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+-------------------------------------------------------------------
+Sun Aug  5 05:41:09 UTC 2018 - coolo@suse.com
+
+- updated to 0.72
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+-------------------------------------------------------------------
+Thu Jun 23 06:43:20 UTC 2016 - coolo@suse.com
+
+- updated to 0.71
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.71      2016-06-19 04:08:13Z
+   - private attributes (i.e., lead "_) with a public init_arg now work.
+
+-------------------------------------------------------------------
+Mon May 23 12:15:14 UTC 2016 - coolo@suse.com
+
+- updated to 0.70
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.70      2016-05-10 20:32:32Z
+   - In 0.69, an undefined init_arg would cause warnings and exception.
+     Attributes with an undefined init_arg are now ignored. (thanks, Greg
+     Oschwald! -- PR #7)
+
+-------------------------------------------------------------------
+Thu May  5 09:44:01 UTC 2016 - coolo@suse.com
+
+- updated to 0.69
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.69      2016-04-22 11:27:12Z
+   - attributes' "init_arg" settings are now respected when retrieving command
+     line options (thanks, Olaf Alders! -- PR#6)
+
+-------------------------------------------------------------------
+Tue Apr 14 15:49:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.68
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.68      2015-03-04 18:16:30Z
+   - fix tests that look for the wrong prereqs (0.67)
+  
+  0.67      2015-02-28 04:37:19Z
+   - remove argv from passed-through buildargs if no argv attribute exists, to
+     mollify MooseX::StrictConstructor (RT#101938, Jose Luis Martinez)
+  
+  0.66      2015-01-28 02:05:54Z
+   - fix tests for formatting changes in Getopt::Long::Descriptive 0.099
+     (RT#101724)
+
+-------------------------------------------------------------------
+Tue Sep 16 08:07:57 UTC 2014 - coolo@suse.com
+
+- updated to 0.65
+ - re-release to remove README.pod from shipped dist
+ - bump required version of Getopt::Long::Descriptive to avoid an infinite
+   loop problem (thanks, Bram!)
+ - fix test prereq on Test::Warnings (thanks, omega!)
+
+-------------------------------------------------------------------
+Mon Mar 10 06:26:53 UTC 2014 - coolo@suse.com
+
+- updated to 0.62
+ - fix test that assumes option parsing is case-insensitive, which is no
+   longer true with Getopt::Long::Descriptive 0.097
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:12 UTC 2014 - coolo@suse.com
+
+- updated to 0.61
+  - fix potentially-broken check-breaks test when a conflicting module fails to
+    compile
+  - avoid failing an optional test when YAML is not installed
+
+-------------------------------------------------------------------
+Mon Dec  9 11:15:23 UTC 2013 - coolo@suse.com
+
+- updated to 0.59
+ - re-release to fix compile test
+
+-------------------------------------------------------------------
+Mon Nov 25 07:38:55 UTC 2013 - coolo@suse.com
+
+- updated to 0.58
+ - remove use of deprecated $Config::Any::YAML::NO_YAML_XS_WARNING in tests
+ - warnings tests bypassed during installation
+ - author metadata moved to contributors
+ - spelling fixes (RT#87780, David Steinbrunner)
+ - removed use of deprecated Class::MOP::load_class
+ - repository migrated from shadowcat to the github moose organization
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:43 UTC 2013 - coolo@suse.com
+
+- updated to 0.56
+   - depend on newest Path::Tiny, to regain 5.8.x compatibility (gone since
+     v0.52)
+   - fix broken tests on win32 with file comparisons
+   - fix broken tests on win32 with file comparisons
+   - allow configfiles called "0"
+   - support more mechanisms for overriding default configfile
+   - when using in conjunction with MooseX::ConfigFromFile, configfile value now
+     properly passed to new()
+   - properly indicate optional dependency in tests using
+     MooseX::ConfigFromFile
+   - tests converted from using Path::Class to Path::Tiny
+   - missing test prereqs now declared (thanks for the automated reports, David
+     Cantrell!)
+   - unbreak Catalyst::Runtime tests (etc) by keeping _getopt_full_usage in the
+     callstack. (RT#82249)
+   - silence a warning in tests if the user does not have YAML::XS installed
+     (thanks for the report, Getty!)
+   - fix off-by-one issues in test plans if optional requirements are not met
+   - documentation and tests amended to prefer usage of 'trait' over 'metaclass'
+     as much as possible
+   - print_usage_text() exposed as a public method, to make it easier for
+     consuming classes to modify the behaviour when usage text is printed
+   - re-release to remove double $VERSION declarations
+   - -h is also treated as a --help option
+- remove old perl-MooseX-Getopt-use_lib.patch
+
+-------------------------------------------------------------------
+Mon May 28 13:46:00 UTC 2012 - coolo@suse.com
+
+- updated to 0.45
+ - use Path::Class in test to avoid test failures on MSWin32 with filename
+   construction
+
+ - now respecting value of configfile passed to the constructor, when used in
+   conjunction with MooseX::ConfigFromFile. (Karen Etheridge)
+
+ - reformatted the Changes file, with the help of CPAN::Changes, to something
+   a little more standard.
+ - more release-only tests added
+
+ - Now bails with exit status 0, rather than dying, when printing
+   requested --usage/--help information (usage printed via invalid arguments
+   will still die, however). (Karen Etheridge)
+
+ - Fix tests when MooseX::ConfigFromFile is installed, with
+   Getopt::Long::Descriptive >= 0.091. RT#76287
+ - Pod fix from debian. Salvatore Bonaccorso <carnil@debian.org> RT#74681
+ - Spelling fix from debian. Jonathan Yu <jawnsy@cpan.org> RT#74681
+
+-------------------------------------------------------------------
+Tue Feb 14 07:52:08 UTC 2012 - coolo@suse.com
+
+- updated to 0.39
+  * Fix argument parseing in process_argv when used with ConfigFromFile so that
+    -v can be used as expected, rather than being grabbed as --version
+  * More documentation on Getopt::Long settings and how they alter this role's
+    behaviour, in particular with regards to extra_argv capturing.
+    (Karen Etheridge)
+
+-------------------------------------------------------------------
+Sat Jun  4 21:06:15 UTC 2011 - lars@linux-schulserver.de
+
+- fix build for distributions with old Test::More module
+  ( perl-MooseX-Getopt-use_lib.patch )
+
+-------------------------------------------------------------------
+Fri Apr 15 09:19:42 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.37
+    * Fix missing dependency. (RT#67077)
+    * Fix dist.ini 'Prereq' into 'Prereqs' (Damien Krotkine)
+    * MooseX::Getopt::GLD
+      - change it to a MooseX::Role::Parameterized, so that it accepts
+        'getopt_conf' parameter (Damien Krotkine)
+    * Fix missed change from Test::Exception to Test::Fatal
+    * The test suite now uses Test::Fatal instead of Test::Exception. (Karen
+      Etheridge)
+    * Move most of new_with_options logic into separate publically
+      accessible process_argv method, so that arg processing can be
+      done without actually creating object (Jonathan Swartz)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:49 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:37 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Aug 26 18:56:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.33:
+  * remove Test::Most from newly added test (RT#60766)
+
+-------------------------------------------------------------------
+Thu Aug 26 12:18:43 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.32:
+  * fix handling of Union types (RT#58417)
+
+- changes from 0.31:
+  * fix issue causing tests to fail if MooseX::SimpleConfig isn't installed
+
+- changes from 0.30:
+  * MooseX::Getopt::Basic
+    - uses attribute insertion order when determining the order in which options are documented in the usage (e.g. in $obj->usage->text)
+  * MooseX::Getopt::Basic
+    - store the usage object to the usage attr (RT#58715)
+    - properly checks whether the *option* --help, --usage, or --? were used, rather than the attribute 'help', 'usage' or '?' were set
+  * MooseX::Getopt::GLD
+    - add the usage attribute for storing the Getopt::Long::Descriptive::Usage object, and the help attribute for storing --help, --usage and --? state (RT#47865, RT#56783, RT#52474)
+  * MooseX::Getopt::Basic
+    - disable auto_help config in Getopt::Long, to avoid calling into pod2usage when the --help option is used while MooseX::ConfigFromFile is in use (the intent is just to fetch the value of the configfile option) (RT#57683)
+
+- changes from 0.29:
+  * fix repository metadata
+
+- changes from 0.28:
+  * MooseX::Getopt::Strict
+    - make it work with Getopt attribute traits in addition to attribute metaclasses
+
+- changes from 0.27:
+  * bump dependency to Getopt::Long::Descriptive to 0.081 in an attempt to avoid test failures
+  * MooseX::Getopt::Dashes
+    - document that using a cmd_flag argument to attributes can be used to override the tr/_/-/ replacement ::Dashes does on attribute names
+
+-------------------------------------------------------------------
+Tue Feb  9 00:00:00 UTC 2010 - nine@detonation.org
+
+- Re-added tests since there's now an updated Test::More available
+
+
+-------------------------------------------------------------------
+Tue Jan 12 00:00:00 UTC 2010 - nine@detonation.org
+
+- Specfile autogenerated by cpanspec 1.78.
+

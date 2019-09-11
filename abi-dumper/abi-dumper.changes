@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Wed Jul  3 14:27:05 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add 0001-Fixed-license-to-LGPL-2.1.patch
+  Add 0002-Fixed-license-file.patch
+  Add 0003-Support-for-new-elfutils-Fedora-30.patch
+  fixes incorrect debuginfo extraction with new elfutils
+
+-------------------------------------------------------------------
+Sun Sep  3 18:55:56 UTC 2017 - astieger@suse.com
+
+- update to 1.1:
+  * Support for compressing of ABI dumps before writing to drive
+    from RAM
+  * Fix analysis of inline functions (WARNING: old dumps should be
+    regenerated before comparing by ABICC)
+  * Deny analysis of static libraries
+  * Bumped ABI dump version
+
+-------------------------------------------------------------------
+Wed Jul  5 15:54:15 UTC 2017 - astieger@suse.com
+
+- update to 1.0:
+  * Up to 4 times less RAM usage
+  * Reduce RAM usage on large compressed debug info
+  * Minimal support for lambda expressions
+  * Improve search for header files
+  * Carefully handle lexical blocks
+  * Detection of symbols in header files missed by Ctags
+  * Detection of public typedefs
+  * Support for unspecified_type
+  * More debug messages
+  * Print errors of the vtable-dumper
+  * Add -ld-library-path option to specify paths to add to
+    LD_LIBRARY_PATH variable before executing vtable-dumper
+  * Add -lambda option to enable support for lambda and checking of
+    lexical blocks
+  * Add -ctags-def option to add '-D DEF' option to the ctags call
+  * Add -all-units option to extract ABI info after reading of all
+    compilation units
+  * Add -include-defines option to add defines when creating TU
+    dumps
+  * Fix detection of a function header file
+  * Fix analysis of inline functions
+  * Fix analysis of template unions
+  * Fix analysis of parameters
+  * Fix analysis of typedefs
+  * Fix analysis of zero-size structs
+  * Fix -public-headers option
+  * Fix analysis of global data
+  * Fix analysis of templates
+  * Fix analysis of anon data types
+  * Fix analysis of symbol versions
+  * Removed duplicates from ABI dump
+  * Fix 'Copied' attribute of a class
+  * Fix parameter offsets in the ABI dump
+  * Fix analysis of standard C++ libraries
+  * Fix analysis of MethodPtr types
+
+-------------------------------------------------------------------
+Thu May 11 09:01:37 UTC 2017 - astieger@suse.com
+
+- update to 0.99.19:
+  * Improved support for incomplete debug-info
+
+-------------------------------------------------------------------
+Thu Oct  6 17:20:44 UTC 2016 - davejplater@gmail.com
+
+- Update to version 0.99.18
+- Upstream changes since 0.99.17
+  Improved support for incomplete debug-info.
+- For previous version changes see:
+  https://github.com/lvc/abi-dumper
+
+-------------------------------------------------------------------
+Mon May 11 15:03:16 UTC 2015 - lnussel@suse.de
+
+- new version 0.99.8.1
+
+-------------------------------------------------------------------
+Tue Mar 17 14:56:36 UTC 2015 - lnussel@suse.de
+
+- initial package version 0.99.8
+

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jul  2 17:51:17 UTC 2018 - kstreitova@suse.com
+
+- BuildRequires p7zip-full for TW as 7z binary needed for
+  extracting the source is packaged there now 
+
+-------------------------------------------------------------------
+Sun Oct 12 08:02:29 UTC 2014 - nemysis@gmx.ch
+
+- Fix typo
+- Remove PreReq for shadow and pwdutils
+
+-------------------------------------------------------------------
+Sun Oct  5 12:00:43 UTC 2014 - nemysis@gmx.ch
+
+- Use check for openSUSE > 12.2 for and use shadow else pwdutils
+
+-------------------------------------------------------------------
+Sun Oct  5 09:13:36 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+- fdupes is ineffective, please look
+  https://github.com/adrianlopezroche/fdupes/issues/5

@@ -1,0 +1,24 @@
+Index: libofa-0.9.3/examples/uselame.cpp
+===================================================================
+--- libofa-0.9.3.orig/examples/uselame.cpp
++++ libofa-0.9.3/examples/uselame.cpp
+@@ -7,6 +7,7 @@
+ 
+ -------------------------------------------------------------------*/
+ #include <cstring>
++#include <unistd.h>
+ #include "protocol.h"
+ #ifdef WIN32
+ #include "windows.h"
+Index: libofa-0.9.3/examples/wavefile.cpp
+===================================================================
+--- libofa-0.9.3.orig/examples/wavefile.cpp
++++ libofa-0.9.3/examples/wavefile.cpp
+@@ -6,6 +6,7 @@
+    No rights reserved.
+ 
+ -------------------------------------------------------------------*/
++#include <unistd.h>
+ #include "protocol.h"
+ #ifdef WIN32
+ #include "io.h"

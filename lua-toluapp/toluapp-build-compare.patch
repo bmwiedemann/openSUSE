@@ -1,0 +1,22 @@
+No need to record version or buildtime.
+If the source changes build-compare will trigger republish.
+--- a/src/bin/lua/package.lua
++++ b/src/bin/lua/package.lua
+@@ -108,7 +108,7 @@ end
+ function classPackage:preamble ()
+  output('/*\n')
+  output('** Lua binding: '..self.name..'\n')
+- output('** Generated automatically by '..TOLUA_VERSION..' on '..date()..'.\n')
++ output('** Generated automatically.\n')
+  output('*/\n\n')
+ 
+ 	output('#ifndef __cplusplus\n')
+@@ -198,7 +198,7 @@ end
+ -- write header file
+ function classPackage:header ()
+  output('/*\n') output('** Lua binding: '..self.name..'\n')
+- output('** Generated automatically by '..TOLUA_VERSION..' on '..date()..'.\n')
++ output('** Generated automatically.\n')
+  output('*/\n\n')
+ 
+  if not flags.h then

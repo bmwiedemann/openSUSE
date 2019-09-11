@@ -1,0 +1,47 @@
+Index: mutter-3.23.2/src/core/constraints.c
+===================================================================
+--- mutter-3.23.2.orig/src/core/constraints.c
++++ mutter-3.23.2/src/core/constraints.c
+@@ -1466,6 +1466,12 @@ constrain_to_single_monitor (MetaWindow
+ }
+ 
+ static gboolean
++constraint_is_sle_classic(void){
++  char * session_mode = (char *) g_getenv ("GNOME_SHELL_SESSION_MODE");
++  return g_strcmp0("sle-classic", session_mode) == 0;
++}
++
++static gboolean
+ constrain_fully_onscreen (MetaWindow         *window,
+                           ConstraintInfo     *info,
+                           ConstraintPriority  priority,
+@@ -1481,6 +1487,11 @@ constrain_fully_onscreen (MetaWindow
+   if (window->type == META_WINDOW_DESKTOP ||
+       window->type == META_WINDOW_DOCK    ||
+       window->fullscreen                  ||
++      /* in SLE Classic, there is no top bar and to avoid issues like
++       * bnc#883491, remove some constraints on CSD windows, which tends to have
++       * invisible wrapper box. Do the same for "constrain_titlebar_visible".
++       */
++      (constraint_is_sle_classic() && !window->decorated) ||
+       !window->require_fully_onscreen     ||
+       info->is_user_action                ||
+       meta_window_get_placement_rule (window))
+@@ -1518,11 +1529,12 @@ constrain_titlebar_visible (MetaWindow
+    * is only meant for normal windows (e.g. we don't want docks to be shoved
+    * "onscreen" by their own strut).
+    */
+-  if (window->type == META_WINDOW_DESKTOP ||
+-      window->type == META_WINDOW_DOCK    ||
+-      window->fullscreen                  ||
+-      !window->require_titlebar_visible   ||
+-      unconstrained_user_action           ||
++  if (window->type == META_WINDOW_DESKTOP                 ||
++      window->type == META_WINDOW_DOCK                    ||
++      window->fullscreen                                  ||
++      (constraint_is_sle_classic() && !window->decorated) ||
++      !window->require_titlebar_visible                   ||
++      unconstrained_user_action                           ||
+       meta_window_get_placement_rule (window))
+     return TRUE;
+ 

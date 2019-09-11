@@ -1,0 +1,33 @@
+from http://sourceforge.net/mailarchive/message.php?msg_id=15505755
+
+[xine-devel] LibMMS continued
+From: Mathrick <mnews2@wp...> - 2004-02-18 13:06
+OK, now that libmms has been finally started, there are some things that
+still need to be resolved. There were few people I haven't been able to
+contact, namely:
+
+Stephen Torri
+Robin Kay
+
+I'll be grateful if someone could give me working way of contacting
+them, I hope this list will be enough :) (Robin's mailbox doesn't seem
+to like either my ISP or Sourceforge alias, accusing them of spamming
+incidents).
+All others I asked agreed for relicensing (thanks guys! :D).
+
+Now, for current issues:
+We're currently cleaning source up to make it independent of xine-lib,
+however mms.c includes demuxers/asfheader.h for some needed ASF defines.
+My question is: is it okay for us to just copy it over under LGPL and
+change accordingly? Most of it is taken almost verbatim from specs
+anyway, I'm just not particularly fond of redoing all that work,
+byteswapping macros were already stupid enough ;).
+That's all for now, I will ask more if need arises.
+
+Cheers,
+Maciej
+
+--
+"Tautologizm to coś tautologicznego"
+   Maciej Katafiasz <mnews2@...>
+       http://mathrick.blog.pl

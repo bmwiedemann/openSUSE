@@ -1,0 +1,38 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-04-28 22:38:15.425823291 +0200
+
+Rewrite section that invokes undefined behavior.
+
+
+src/aio/usock_posix.inc: In function 'nn_usock_recv_raw':
+src/aio/usock_posix.inc:1143:21: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+                     *self->in.pfd = *((int*) CMSG_DATA (cmsg));
+                     ^
+cd build/src && /usr/bin/cc  -DNN_HAVE_ACCEPT4=1 -DNN_HAVE_BACKTRACE=1 -DNN_HAVE_CLOCK_GETTIME=1 -DNN_HAVE_CLOCK_MONOTONIC=1 -DNN_HAVE_EPOLL=1 -DNN_HAVE_EVENTFD=1 -DNN_HAVE_GCC_ATOMIC_BUILTINS -DNN_HAVE_GETADDRINFO_A=1 -DNN_HAVE_LIBNSL=1 -DNN_HAVE_LINUX -DNN_HAVE_MSG_CONTROL=1 -DNN_HAVE_PIPE2=1 -DNN_HAVE_PIPE=1 -DNN_HAVE_POLL=1 -DNN_HAVE_SEMAPHORE -DNN_HAVE_SEMAPHORE_PTHREAD=1 -DNN_HAVE_SOCKETPAIR=1 -DNN_HAVE_UNIX_SOCKETS=1 -DNN_SHARED_LIB -DNN_USE_EPOLL -DNN_USE_EVENTFD -D_GNU_SOURCE -D_POSIX_PTHREAD_SEMANTICS -D_REENTRANT -D_THREAD_SAFE -Dnanomsg_EXPORTS  -fmessage-length=0 -grecord-gcc-switches -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -g -DNDEBUG -O2 -g -DNDEBUG -fPIC   -o CMakeFiles/nanomsg.dir/utils/chunk.c.o   -c src/utils/chunk.c
+src/aio/usock_posix.inc:1147:21: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+                     nn_closefd (*((int*) CMSG_DATA (cmsg)));
+                     ^~~~~~~~~~
+---
+ src/aio/usock_posix.inc |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: nanomsg-1.0.0/src/aio/usock_posix.inc
+===================================================================
+--- nanomsg-1.0.0.orig/src/aio/usock_posix.inc
++++ nanomsg-1.0.0/src/aio/usock_posix.inc
+@@ -1140,11 +1140,13 @@ static int nn_usock_recv_raw (struct nn_
+         while (cmsg) {
+             if (cmsg->cmsg_level == SOL_SOCKET && cmsg->cmsg_type == SCM_RIGHTS) {
+                 if (self->in.pfd) {
+-                    *self->in.pfd = *((int*) CMSG_DATA (cmsg));
++                    memcpy(self->in.pfd, CMSG_DATA(cmsg), sizeof(int));
+                     self->in.pfd = NULL;
+                 }
+                 else {
+-                    nn_closefd (*((int*) CMSG_DATA (cmsg)));
++                    int tmp;
++                    memcpy(&tmp, CMSG_DATA(cmsg), sizeof(tmp));
++                    nn_closefd(tmp);
+                 }
+                 break;
+             }

@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://git.openstack.org/cgit/openstack/rpm-packaging/plain/openstack/pymod2pkg/pymod2pkg.spec.j2</param>
+    <param name="output-name">python-pymod2pkg.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/pymod2pkg/master/requirements.txt</param>
+    <param name="changelog-email">cloud-devel@suse.de</param>
+    <param name="changelog-provider">gh,openstack,pymod2pkg</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

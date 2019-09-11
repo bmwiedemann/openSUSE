@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:20:02 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Aug 12 07:33:00 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.8.1
+  * Cleanup old xfce4-popup-places code
+  * Fix uninitialized value
+  * Update the build system to be compliant with other plugins
+  * Updated translations
+- Changes from version 1.8.0
+  * Port to GTK+ 3!
+  * Bumped dependencies to modern stack:
+    - GTK 3.22
+    - GLib 2.42
+    - Xfce 4.12
+  * Added support for Xfce Panel's icon size preference
+  * Improved appearance of the preferences dialog
+  * Fixed crash with undefined symbol (bxo#11939)
+  * Updated translations 
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Use %license for COPYING
+- Only include NEWS as changelog
+- Added bcond for git master builds 
+
+-------------------------------------------------------------------
+Mon Sep 28 09:08:01 UTC 2015 - cyberorg@opensuse.org
+
+- add -fgnu89-inline fix undefined symbol: places_bookmark_destroy
+  see https://bugzilla.redhat.com/show_bug.cgi?id=1225713
+
+-------------------------------------------------------------------
+Thu Mar  5 21:49:25 UTC 2015 - gber@opensuse.org
+
+- update to version 1.7.0
+  - use Gtk+-3.0 bookmark location
+  - recent documents are sorted by most recently used
+  - button occupies the whole panel height/width when the label is
+    shown
+  - updated translations
+
+-------------------------------------------------------------------
+Sun Nov 24 10:34:29 UTC 2013 - gber@opensuse.org
+
+- update to version 1.6.0
+  - added support for network devices in ~/.gtk-bookmarks
+  - updated translations
+
+-------------------------------------------------------------------
+Tue Aug 28 14:10:14 UTC 2012 - gber@opensuse.org
+
+- update to version 1.4.0
+  - updated translations
+  - compile plugin as a library/module
+  - save settings when the configuration dialog box is closed
+  - improved plugin button layout
+  - use a preferred file manager as set in Xfce settings
+  - fixed "Mount and Open" function
+
+-------------------------------------------------------------------
+Fri Apr 20 11:36:38 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 22:35:55 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Sat Apr 14 12:05:33 UTC 2012 - gber@opensuse.org
+
+- update to version 1.3.0
+  - several long-standing issues were patched, which should reduce
+    burden on distributors
+  - compatibility with xfce4-panel v4.9
+- dropped obsolete
+  xfce4-panel-plugin-places-1.2.0-fix-build-with-4.7.patch,
+  xfce4-panel-plugin-places-fix-linking.patch,
+  xfce4-places-plugin-1.2.0-port-to-gio.patch
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Sat Aug 27 13:20:31 UTC 2011 - gber@opensuse.org
+
+- added xfce4-panel-plugin-places-fix-linking.patch in order to fix
+  an underlinking issue
+
+-------------------------------------------------------------------
+Mon May 30 18:52:40 UTC 2011 - gber@opensuse.org
+
+- added xfce4-places-plugin-1.2.0-port-to-gio.patch which includes
+  a port from thunar-vfs to GIO (from bxo#6663)
+- more accurate dependencies
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

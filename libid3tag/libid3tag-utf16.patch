@@ -1,0 +1,38 @@
+From: Karol Babioch <kbabioch@suse.com>
+Date: Tue Feb 20 17:52:15 CET 2018
+Upstream: dead
+References: https://sources.debian.org/patches/libid3tag/0.15.1b-13/10_utf16.dpatch/
+Subject: Fixes utf16 handling in case of an odd number of bytes
+
+Fixes id3_utf16_deserialize() in utf16.c, which previously misparsed ID3v2 tags
+encoded in UTF-16 with an odd number of bytes, triggering an endless loop
+allocating memory until OOM leading to DoS. (CVE-2004-2779 bsc#1081959
+CVE-2017-11551 bsc#1081961)
+
+---
+ utf16.c |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+Index: libid3tag-0.15.1b/utf16.c
+===================================================================
+--- libid3tag-0.15.1b.orig/utf16.c
++++ libid3tag-0.15.1b/utf16.c
+@@ -282,5 +282,18 @@ id3_ucs4_t *id3_utf16_deserialize(id3_by
+ 
+   free(utf16);
+ 
++  if (end == *ptr && length % 2 != 0)
++  {
++     /* We were called with a bogus length.  It should always
++      * be an even number.  We can deal with this in a few ways:
++      * - Always give an error.
++      * - Try and parse as much as we can and
++      *   - return an error if we're called again when we
++      *     already tried to parse everything we can.
++      *   - tell that we parsed it, which is what we do here.
++      */
++     (*ptr)++;
++  }
++
+   return ucs4;
+ }

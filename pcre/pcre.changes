@@ -1,0 +1,1142 @@
+-------------------------------------------------------------------
+Thu Oct 25 10:24:59 UTC 2018 - lauffer@ph-freiburg.de
+
+- pcreposix patch taken from debian. Solves cyrus-imapd issue #1731, too.
+  pcre-8.42-pcreposix.patch
+
+-------------------------------------------------------------------
+Tue Sep  4 11:46:19 UTC 2018 - astieger@suse.com
+
+- pcre 8.42:
+  * Fix outdated real_pcre definitions in pcre.h.in
+  * pcregrep was truncating components of file names to 128
+    characters when processing files with the -r option, and also
+    truncating path names to 512 characters. There is now a check on
+    the absolute length of full path file names, which may be up to
+    2047 characters long
+  * Using pcre_dfa_exec(), in UTF mode when UCP support was not
+    defined, there was the possibility of a false positive match when
+    caselessly matching a "not this character" item such as
+    [^\x{1234}] (with a code point greater than 127) because the
+    "other case" variable was not being initialized
+  * Although pcre_jit_exec checks whether the pattern is compiled
+    in a given mode, it was also expected that at least one mode is
+    available. This is fixed and pcre_jit_exec returns with
+    PCRE_ERROR_JIT_BADOPTION when the pattern is not optimized by JIT
+    at all.
+  * The line number and related variables such as match counts in
+    pcregrep were all int variables, causing overflow when files with
+    more than 2147483647 lines were processed (assuming 32-bit ints).
+    They have all been changed to unsigned long ints.
+  * If a backreference with a minimum repeat count of zero was first in
+    a pattern, apart from assertions, an incorrect first matching
+    character could be recorded. For example, for the pattern
+    /(?=(a))\1?b/, "b" was incorrectly set as the first character of
+    a match.
+  * Fix out-of-bounds read for partial matching of /./ against an
+    empty string when the newline type is CRLF.
+  * When matching using the the REG_STARTEND feature of the POSIX
+    API with a non-zero starting offset, unset capturing groups
+    with lower numbers than a group that did capture something were
+    not being correctly returned as "unset" (that is, with offset
+    values of -1).
+  * Matching the pattern /(*UTF)\C[^\v]+\x80/ against an 8-bit
+    string containing multi-code-unit characters caused bad
+    behaviour and possibly a crash. This issue was fixed for other
+    kinds of repeat in release 8.37 by change 38, but repeating
+    character classes were overlooked.
+  * A small fix to pcregrep to avoid compiler warnings for
+    -Wformat-overflow=2.
+  * Added --enable-jit=auto support to configure.ac.
+  * Fix misleading error message in configure.ac.
+
+-------------------------------------------------------------------
+Sun Apr 15 00:59:20 UTC 2018 - bwiedemann@suse.com
+
+- Do not run profiling 'check' in parallel
+  to make package build reproducible (boo#1040589)
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:43 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Wed Nov  1 17:46:54 UTC 2017 - kstreitova@suse.com
+
+- add pcre-8.41-stack_frame_size_detection.patch to fix pcre stack
+  frame size detection because modern compilers broke it by cloning
+  and inlining pcre match() function [bsc#1058722]
+
+-------------------------------------------------------------------
+Tue Sep 12 13:10:30 UTC 2017 - matz@suse.com
+
+- RunTest needs much stack, on s390x more than the default
+  8 MB.  [bnc#1046102]
+
+-------------------------------------------------------------------
+Tue Jul 25 08:15:58 UTC 2017 - astieger@suse.com
+
+- pcre 8.41:
+  * If pcregrep in multiline mode with --only-matching matched
+    several lines, it restarted scanning at the next line instead
+    of moving on to the end of the matched string, which can be
+    several lines after the start.
+  * Fix a missing else in the JIT compiler reported by 'idaifish'.
+    CVE-2017-6004 bsc#1025709
+  * A (?# style comment is now ignored between a basic quantifier
+    and a following '+' or '?' (example: /X+(?#comment)?Y/.
+  * Avoid use of a potentially overflowing buffer in pcregrep
+  * Fix issues reported by fuzzers in pcretest:
+    - Check for values < 256 when calling isprint() in pcretest.
+    - Give an error for too big a number after \O.
+  * In the 32-bit library in non-UTF mode, an attempt to find a 
+    Unicode property for a character with a code point greater than
+    0x10ffff (the Unicode maximum) caused a crash.
+    CVE-2017-7186 bsc#1030066, CVE-2017-7244 bsc#1030807
+  * The alternative matching function, pcre_dfa_exec() misbehaved
+    if it encountered a character class with a possessive repeat,
+    for example [a-f]{3}+.
+  * When pcretest called pcre_copy_substring() in 32-bit mode, it
+    set the buffer length incorrectly, which could result in buffer
+    overflow. CVE-2017-7245 bsc#1030805, CVE-2017-7246 bsc#1030803
+
+-------------------------------------------------------------------
+Fri Jun  2 12:42:01 UTC 2017 - mpluskal@suse.com
+
+- Enable jit on aarch64
+- Enable profiled building
+
+-------------------------------------------------------------------
+Thu Feb  9 08:55:30 UTC 2017 - astieger@suse.com
+
+- pcre 8.40:
+  * Using -o with -M in pcregrep could cause unnecessary repeated
+    output when the match extended over a line boundary.
+  * Fix register overwite in JIT when SSE2 acceleration is enabled.
+  * Ignore "show all captures" (/=) for DFA matching.
+  * Fix JIT unaligned accesses on x86
+  * In any wide-character mode (8-bit UTF or any 16-bit or 32-bit
+    mode), without PCRE_UCP set, a negative character type such as
+    \D in a positive class should cause all characters greater than
+    255 to match, whatever else is in the class. There was a bug
+    that caused this not to happen if a Unicode property item was
+    added to such a class, for example [\D\P{Nd}] or [\W\pL].
+  * When pcretest was outputing information from a callout, the
+    caret indicator for the current position in the subject line
+    was incorrect if it was after an escape sequence for a
+    character whose code point was greater than \x{ff}.
+  * A pattern such as (?<RA>abc)(?(R)xyz) was incorrectly compiled
+    such that the conditional was interpreted as a reference to
+    capturing group 1 instead of a test for recursion. Any group
+    whose name began with R was misinterpreted in this way. (The
+    reference interpretation should only happen if the group's name
+    is precisely "R".)
+  * A number of bugs have been mended relating to match start-up
+    optimizations when the first thing in a pattern is a positive
+    lookahead. These all applied only when PCRE_NO_START_OPTIMIZE
+    was *not* set:
+    + A pattern such as (?=.*X)X$ was incorrectly optimized as if
+      it needed both an initial 'X' and a following 'X'.
+    + Some patterns starting with an assertion that started with
+      .* were incorrectly optimized as having to match at the start
+      of the subject or after a newline. There are cases where this
+      is not true, for example, (?=.*[A-Z])(?=.{8,16})(?!.*[\s])
+      matches after the start in lines that start with spaces.
+      Starting .* in an assertion is no longer taken as an
+      indication of matching at the start (or after a newline).
+
+-------------------------------------------------------------------
+Tue Feb  7 16:17:44 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package %{_docdir}/%{name} to fix build with RPM 4.13.
+
+-------------------------------------------------------------------
+Mon Aug  1 15:22:09 UTC 2016 - astieger@suse.com
+
+- record minor vulnerabilities fixed in 8.39
+
+-------------------------------------------------------------------
+Wed Jun 15 07:44:27 UTC 2016 - mpluskal@suse.com
+
+- Update to version 8.39:
+  * Some appropriate PCRE2 JIT improvements have been retro-fitted 
+    to PCRE1.
+  * CVE-2016-3191: workspace overflow for (*ACCEPT) with deeply
+                   nested parentheses (boo#971741)
+  * CVE-2016-1283: Heap buffer overflow DoS (boo#960837)
+  * Apart from that, this is another bug-fix release.
+
+-------------------------------------------------------------------
+Thu Nov 26 08:28:01 UTC 2015 - astieger@suse.com
+
+- pcre 8.38:
+  * CVE-2015-3217: Call Stack Overflow Vulnerability in match()
+    bsc#933878
+  * Other fixes to assertions, crashes, buffer overflows and 
+    performance issues found by fuzzer, affecting applications
+    accepting regular expression from untrusted sources
+
+-------------------------------------------------------------------
+Thu Apr 30 22:08:31 UTC 2015 - astieger@suse.com
+
+- pcre 8.37:
+  * CVE-2015-2325: Patterns with certain groups specifying a zero
+    minimum quantifier caused incorrect code to be compiled,
+    leading to an incorrect memory read. [boo#924960]
+  * CVE-2015-2326: Specific patterns containing a forward reference
+    with subroutine calls caused incorrect code to be compiled
+    [boo#924961]
+  * CVE-2014-8964: If an assertion condition was quantified with a
+    minimum of zero, SIGSEGV or other misbehaviour could occur.
+    [boo#906574]
+  * further bug fixes as listed in ChangeLog
+
+-------------------------------------------------------------------
+Mon Mar  9 00:43:18 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.16
+  * This is primarily a bug-fix release.
+  * The Unicode data tables have been updated to Unicode 7.0.0.
+- Remove pcre-commit1472.patch; fixed on upstream release
+- Remove obsolete "Obsoletes" tag
+
+-------------------------------------------------------------------
+Tue Sep  2 07:30:08 UTC 2014 - jengelh@inai.de
+
+- Improve on RPM group classification
+- Remove defunct %gpg_verify (replaced by source validators),
+  defunct freecode link
+
+-------------------------------------------------------------------
+Thu Aug 28 03:10:39 UTC 2014 - crrodriguez@opensuse.org
+
+- Harden build with full RELRO as this libraries end linked
+  to at least one setuid root executable.
+
+-------------------------------------------------------------------
+Mon Jun 16 14:44:43 UTC 2014 - dvaleev@suse.com
+
+- Enable JIT on ppc64le as well 
+
+-------------------------------------------------------------------
+Sat May  3 06:07:56 UTC 2014 - coolo@suse.com
+
+- update to 0.35:
+  There have been performance improvements for classes containing non-ASCII
+  characters and the "auto-possessification" feature has been extended. Other
+  minor improvements have been implemented and bugs fixed. There is a new callout
+  feature to enable applications to do detailed stack checks at compile time, to
+  avoid running out of stack for deeply nested parentheses. The JIT compiler has
+  been extended with experimental support for ARM-64, MIPS-64, and PPC-LE.
+- add pcre-commit1472.patch from SVN to work with gcc49, see
+  http://bugs.exim.org/show_bug.cgi?id=1463
+
+-------------------------------------------------------------------
+Sun Mar 23 20:50:04 UTC 2014 - tchvatal@suse.com
+
+- Add automake and autoconf as explicit deps as we run autoreconf
+
+-------------------------------------------------------------------
+Sun Mar 23 20:49:02 UTC 2014 - tchvatal@suse.com
+
+- Add patch pcre-8.21-multilib.patch to fix RPATH issues.
+  * The patch is taken from RedHat.
+
+-------------------------------------------------------------------
+Sun Mar 23 20:47:05 UTC 2014 - tchvatal@suse.com
+
+- Clean up with the spec cleaner. Use -j1 in tests as it is not
+  really thread safe
+
+-------------------------------------------------------------------
+Sun Mar 23 20:35:09 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 8.34:
+  * warning fixes
+  * perl fixes
+  * unocode6.3.0 support
+  * gconv support
+
+-------------------------------------------------------------------
+Wed Nov 13 19:06:09 UTC 2013 - sweet_f_a@gmx.de
+
+- enable tests for all archs
+- --enable-jit for sparc
+
+-------------------------------------------------------------------
+Thu Jun 13 16:20:10 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 8.33
+* The Just-In-Time compiler (JIT) now supports all pattern
+  features, including callouts and the backtracking verbs. In
+  addition, some bugs are fixed and there are minor performance
+  enhancements.
+- More robust make install call. Provide signature verification
+  files (avoid depending on gpg-offline due to bootstrap cycle).
+
+-------------------------------------------------------------------
+Sat Jun  8 20:16:10 UTC 2013 - crrodriguez@opensuse.org
+
+- Ensure the PCRE library and tools are built with large file 
+  support in 32 bit archs.
+
+-------------------------------------------------------------------
+Sun Jan  6 15:40:59 UTC 2013 - p.drouand@gmail.com
+
+- Update to 8.32 version:
+  * There is now support for 32-bit character strings and UTF-32. Like the
+    16-bit support, this is done by compiling a separate 32-bit library.
+  * \X now matches a Unicode extended grapheme cluster.
+  * Case-independent matching of Unicode characters that have more than one
+    "other case" now makes all three (or more) characters equivalent. This
+    applies, for example, to Greek Sigma, which has two lowercase versions.
+  * Unicode character properties are updated to Unicode 6.2.0.
+  * The EBCDIC support, which had decayed, has had a spring clean.
+  * A number of JIT optimizations have been added, which give faster JIT
+    execution speed. In addition, a new direct interface to JIT execution is
+    available. This bypasses some of the sanity checks of pcre_exec() to give a
+    noticeable speed-up.
+  * A number of issues in pcregrep have been fixed, making it more compatible
+    with GNU grep. In particular, --exclude and --include (and variants) apply
+    to all files now, not just those obtained from scanning a directory
+    recursively. In Windows environments, the default action for directories is
+    now "skip" instead of "read" (which provokes an error).
+  * If the --only-matching (-o) option in pcregrep is specified multiple
+    times, each one causes appropriate output. For example, -o1 -o2 outputs the
+    substrings matched by the 1st and 2nd capturing parentheses. A separating
+    string can be specified by --om-separator (default empty).
+  * When PCRE is built via Autotools using a version of gcc that has the
+    "visibility" feature, it is used to hide internal library functions that are
+    not part of the public API.
+-  updated and versionned pcre-visibility.patch to svn trunk
+   * Modifications on configure.ac and makefile have been merged on upstream release
+
+-------------------------------------------------------------------
+Fri Nov 23 19:13:09 UTC 2012 - jengelh@inai.de
+
+- Update package descriptions about the differences between the
+  PCRE library subpackages.
+
+-------------------------------------------------------------------
+Wed Nov  7 13:35:35 UTC 2012 - cgiboudeaux@gmx.com
+
+- Use the --enable-pcre16 configure flag.
+  This switch enables 16 bit character support that will be required by Qt5
+
+-------------------------------------------------------------------
+Fri Aug 17 14:18:53 UTC 2012 - dimstar@opensuse.org
+
+- Upate to version 8.31:
+  + The JIT compiler now supports partial matching and the (*MARK)
+    and (*COMMIT) verbs
+  + PCRE_INFO_MAXLOOKBEHIND can be used to find the longest
+    lookbehing in a pattern.
+  + There should be a performance improvement when using the heap
+    instead of the stack for recursion
+  + pcregrep can now be linked with libedit as an alternative to
+    libreadline
+  + pcregrep now has a --file-list option where the list of files
+    to scan is given as a file
+  + pcregrep now recognizes binary files and there are related
+    options
+  + The Unicode tables have been updated to 6.1.0
+- Rebase pcre-visibility.patch.
+
+-------------------------------------------------------------------
+Thu Jul 19 17:18:04 UTC 2012 - jengelh@inai.de
+
+- Only use --enable-jit on supported architectures; the build will
+  otherwise fail (e.g. on sparc).
+
+-------------------------------------------------------------------
+Thu May 10 15:59:21 UTC 2012 - afaerber@suse.de
+
+- Add devel-static package
+
+-------------------------------------------------------------------
+Tue Feb  7 15:10:59 UTC 2012 - crrodriguez@opensuse.org
+
+- fix baselibs 
+
+-------------------------------------------------------------------
+Tue Feb  7 04:40:59 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to PCRE 8.30, upstream SONAME bump, libpcre1 
+- Drop no longer needed ppc patch.
+- move library back to %{_libdir}
+
+-------------------------------------------------------------------
+Wed Feb  1 10:44:38 UTC 2012 - dvaleev@suse.com
+
+- Fix cache-flush on PPC 
+
+-------------------------------------------------------------------
+Wed Nov 16 08:17:40 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov  1 16:16:49 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 8.20 
+  * too many fixes to list here, see included ChangeLog
+  * replace pcre-visibility patch with the one I submitted to 
+    upstream for inclusion.
+
+-------------------------------------------------------------------
+Tue Oct 11 22:39:57 UTC 2011 - dmueller@suse.de
+
+- udpate to 8.13:
+  * too many fixes to list here, see included ChangeLog
+  * the Unicode data tables have been updated to Unicode 6.0.0. 
+
+-------------------------------------------------------------------
+Mon Sep 19 15:15:41 UTC 2011 - coolo@suse.com
+
+- remove fragile _service 
+
+-------------------------------------------------------------------
+Wed Mar  9 14:20:37 UTC 2011 - coolo@novell.com
+
+- Update to version 8.12
+
+ * This release fixes some bugs in pcregrep, one of which caused the tests to fail
+   on 64-bit big-endian systems. There are no changes to the code of the library.
+
+- Update to version 8.11
+ * A number of bugs in the library and in pcregrep have been fixed. As always, see
+  ChangeLog for details. The following are the non-bug-fix changes:
+
+  Added --match-limit and --recursion-limit to pcregrep.
+
+  Added an optional parentheses number to the -o and --only-matching options
+  of pcregrep.
+
+  Changed the way PCRE_PARTIAL_HARD affects the matching of $, \z, \Z, \b, and
+  \B.
+
+  Added PCRE_ERROR_SHORTUTF8 to make it possible to distinguish between a
+  bad UTF-8 sequence and one that is incomplete when using PCRE_PARTIAL_HARD.
+
+  Recognize (*NO_START_OPT) at the start of a pattern to set the PCRE_NO_
+   START_OPTIMIZE option, which is now allowed at compile time
+
+-------------------------------------------------------------------
+Sat Oct 30 02:15:06 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Support GCC visibility, symbol clashes no more. 
+
+-------------------------------------------------------------------
+Sun Sep 19 11:03:57 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 8.10:
+  + Major additions:
+    - support for (*MARK) and friends
+    - PCRE_UCP option, which changes the behaviour of \b, \d, \s,
+      and \w (and their opposites) so that they make use of Unicode
+      properties
+  + Other additions:
+    - support for \N, which always matches any character other than
+      newline
+    - added --line-buffered to pcregrep
+  + Several small new features and bugfixes
+- Changes from version 8.02:
+  + Update Unicode data tables to Unicode 5.2.0
+  + Update the licensing terms in the pcregexp.pas file
+  + Several bug fixes
+- Changes from version 8.01:
+  + Several bug fixes and build system improvements
+- Changes from version 8.00:
+  + Enhancements:
+    - remove restrictions on patterns used for partial matching
+    - give extra information for partial matches
+    - improve the partial matching process
+    - add option to make a partial match override a full match
+    - enhance "study" process by finding a lower bound matching
+      length
+    - groups with duplicate numbers may now have duplicated names
+      without the use of PCRE_DUPNAMES, but they may not have
+      different names
+    - add REG_UNGREEDY to the pcreposix interface, which maps to
+      PCRE_UNGREEDY.
+  + Several bug fixes
+- Drop pcre-7.9.patch: fixed upstream.
+- Rearrange spec file to have all the %files sections together, as
+  well as all the scriptlets together.
+- Kill the main package that only included doc files like AUTHORS,
+  NEWS, and license, and put those files in libpcre0: this really
+  makes more sense. Therefore, make libpcre0 Provides/Obsoletes
+  libpcre0.
+- We can also remove the other dependencies on the main package,
+  since everything already depends on libpcre0.
+- Remove AutoReqProv: it's default now.
+- Remove references to perl 5.005 in descriptons: it's not
+  mentioned anywhere anymore upstream.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Apr 24 10:38:30 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Feb 25 16:49:20 UTC 2010 - prusnak@suse.cz
+
+- build noarch docs only for >= 11.2
+
+-------------------------------------------------------------------
+Wed Feb 10 16:16:56 CET 2010 - ms@suse.de
+
+- fixed license statement according to the conversation
+  and permissions granted in (bnc #578724)
+
+-------------------------------------------------------------------
+Sat Dec 12 18:38:47 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Wed Oct  7 12:51:05 UTC 2009 - coolo@novell.com
+
+- add obsolete/provides for pcre-32bit (bnc#539543)
+
+-------------------------------------------------------------------
+Wed Jun 10 13:03:11 CEST 2009 - coolo@novell.com
+
+- split package into tools, docs and libraries
+
+-------------------------------------------------------------------
+Fri Jun  5 23:13:22 CEST 2009 - crrodriguez@suse.de
+
+- disable static libraries, shouldn't be used now 
+
+-------------------------------------------------------------------
+Sat May 30 22:02:07 CEST 2009 - dmueller@suse.de
+
+- fix symlinks to libpcre and libpcreposix to fix the build
+
+-------------------------------------------------------------------
+Wed May 27 18:03:13 CEST 2009 - ms@suse.de
+
+- moved libpcre and libpcreposix to %{_lib} (bnc #507449)
+
+-------------------------------------------------------------------
+Tue May  5 14:24:17 CEST 2009 - ms@suse.de
+
+- Release 7.9 11-Apr-09 (bnc #500734)
+  Mostly bugfixes and tidies with just a couple of minor
+  functional additions. 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Sep 12 01:51:31 CEST 2008 - crrodriguez@suse.de
+
+- update to PCRE 7.8
+	* More bug fixes, plus a performance improvement 
+	in Unicode character property lookup.
+    see complete changelog at http://www.pcre.org/changelog.txt
+
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Feb  1 19:43:16 CET 2008 - crrodriguez@suse.de
+
+- update to version 7.6
+- The main reason for having this release so soon after 7.5 
+  is because it fixes a potential buffer overflow problem in pcre_compile() 
+  when run in UTF-8 mode. In addition, the CMake configuration files have been brought up to date. 
+
+-------------------------------------------------------------------
+Sun Jan 13 09:08:22 CET 2008 - crrodriguez@suse.de
+
+- update version 7.5
+	1.  Applied a patch from Craig: "This patch makes it possible to 'ignore'
+    values in parens when parsing an RE using the C++ wrapper."
+
+	2.  Negative specials like \S did not work in character classes in UTF-8 mode.
+    Characters greater than 255 were excluded from the class instead of being
+    included.
+
+	3.  The same bug as (2) above applied to negated POSIX classes such as
+    [:^space:].
+
+	4.  PCRECPP_STATIC was referenced in pcrecpp_internal.h, but nowhere was it
+    defined or documented. It seems to have been a typo for PCRE_STATIC, so
+    I have changed it.
+
+	5.  The construct (?&) was not diagnosed as a syntax error (it referenced the
+    first named subpattern) and a construct such as (?&a) would reference the
+    first named subpattern whose name started with "a" (in other words, the
+    length check was missing). Both these problems are fixed. "Subpattern name
+    expected" is now given for (?&) (a zero-length name), and this patch also
+    makes it give the same error for \k'' (previously it complained that that
+    was a reference to a non-existent subpattern).
+
+	6.  The erroneous patterns (?+-a) and (?-+a) give different error messages;
+    this is right because (?- can be followed by option settings as well as by
+    digits. I have, however, made the messages clearer.
+
+	7.  Patterns such as (?(1)a|b) (a pattern that contains fewer subpatterns
+    than the number used in the conditional) now cause a compile-time error.
+    This is actually not compatible with Perl, which accepts such patterns, but
+    treats the conditional as always being FALSE (as PCRE used to), but it
+    seems to me that giving a diagnostic is better.
+
+	8.  Change "alphameric" to the more common word "alphanumeric" in comments
+    and messages.
+
+	9.  Fix two occurrences of "backslash" in comments that should have been
+    "backspace".
+
+	10. Remove two redundant lines of code that can never be obeyed (their function
+    was moved elsewhere).
+
+	11. The program that makes PCRE's Unicode character property table had a bug
+    which caused it to generate incorrect table entries for sequences of
+    characters that have the same character type, but are in different scripts.
+    It amalgamated them into a single range, with the script of the first of
+    them. In other words, some characters were in the wrong script. There were
+    thirteen such cases, affecting characters in the following ranges:
+
+      U+002b0 - U+002c1
+      U+0060c - U+0060d
+      U+0061e - U+00612
+      U+0064b - U+0065e
+      U+0074d - U+0076d
+      U+01800 - U+01805
+      U+01d00 - U+01d77
+      U+01d9b - U+01dbf
+      U+0200b - U+0200f
+      U+030fc - U+030fe
+      U+03260 - U+0327f
+      U+0fb46 - U+0fbb1
+      U+10450 - U+1049d
+
+	12. The -o option (show only the matching part of a line) for pcregrep was not
+    compatible with GNU grep in that, if there was more than one match in a
+    line, it showed only the first of them. It now behaves in the same way as
+    GNU grep.
+
+	13. If the -o and -v options were combined for pcregrep, it printed a blank
+    line for every non-matching line. GNU grep prints nothing, and pcregrep now
+    does the same. The return code can be used to tell if there were any
+    non-matching lines.
+
+	14. Added --file-offsets and --line-offsets to pcregrep.
+
+	15. The pattern (?=something)(?R) was not being diagnosed as a potentially
+    infinitely looping recursion. The bug was that positive lookaheads were not
+    being skipped when checking for a possible empty match (negative lookaheads
+    and both kinds of lookbehind were skipped).
+
+	16. Fixed two typos in the Windows-only code in pcregrep.c, and moved the
+    inclusion of <windows.h> to before rather than after the definition of
+    INVALID_FILE_ATTRIBUTES (patch from David Byron).
+
+	17. Specifying a possessive quantifier with a specific limit for a Unicode
+    character property caused pcre_compile() to compile bad code, which led at
+    runtime to PCRE_ERROR_INTERNAL (-14). Examples of patterns that caused this
+    are: /\p{Zl}{2,3}+/8 and /\p{Cc}{2}+/8. It was the possessive "+" that
+    caused the error; without that there was no problem.
+
+	18. Added --enable-pcregrep-libz and --enable-pcregrep-libbz2.
+
+	19. Added --enable-pcretest-libreadline.
+
+	20. In pcrecpp.cc, the variable 'count' was incremented twice in
+    RE::GlobalReplace(). As a result, the number of replacements returned was
+    double what it should be. I removed one of the increments, but Craig sent a
+    later patch that removed the other one (the right fix) and added unit tests
+    that check the return values (which was not done before).
+
+	21. Several CMake things:
+
+    (1) Arranged that, when cmake is used on Unix, the libraries end up with
+        the names libpcre and libpcreposix, not just pcre and pcreposix.
+
+    (2) The above change means that pcretest and pcregrep are now correctly
+        linked with the newly-built libraries, not previously installed ones.
+
+    (3) Added PCRE_SUPPORT_LIBREADLINE, PCRE_SUPPORT_LIBZ, PCRE_SUPPORT_LIBBZ2.
+
+	22. In UTF-8 mode, with newline set to "any", a pattern such as .*a.*=.b.*
+    crashed when matching a string such as a\x{2029}b (note that \x{2029} is a
+    UTF-8 newline character). The key issue is that the pattern starts .*;
+    this means that the match must be either at the beginning, or after a
+    newline. The bug was in the code for advancing after a failed match and
+    checking that the new position followed a newline. It was not taking
+    account of UTF-8 characters correctly.
+
+	23. PCRE was behaving differently from Perl in the way it recognized POSIX
+    character classes. PCRE was not treating the sequence [:...:] as a
+    character class unless the ... were all letters. Perl, however, seems to
+    allow any characters between [: and :], though of course it rejects as
+    unknown any "names" that contain non-letters, because all the known class
+    names consist only of letters. Thus, Perl gives an error for [[:1234:]],
+    for example, whereas PCRE did not - it did not recognize a POSIX character
+    class. This seemed a bit dangerous, so the code has been changed to be
+    closer to Perl. The behaviour is not identical to Perl, because PCRE will
+    diagnose an unknown class for, for example, [[:l\ower:]] where Perl will
+    treat it as [[:lower:]]. However, PCRE does now give "unknown" errors where
+    Perl does, and where it didn't before.
+
+	24. Rewrite so as to remove the single use of %n from pcregrep because in some
+    Windows environments %n is disabled by default. 
+
+-------------------------------------------------------------------
+Tue Nov  6 08:15:28 CET 2007 - crrodriguez@suse.de
+
+- update to version 7.4, since version 7.2, more than 40 bugs were fixed
+ including multiple vulnerabilities [#325921] . The list of changes is too long
+ to mention here, see changelog.txt for details. 
+
+-------------------------------------------------------------------
+Wed Aug  8 12:46:16 CEST 2007 - ms@suse.de
+
+- added fix to run ldconfig for libpcre*, Thanks to
+  Cristian Rodriguez <crrodriguez@novell.com> who provided
+  the patch (#298291)
+
+-------------------------------------------------------------------
+Mon Jul 23 15:22:40 CEST 2007 - ms@suse.de
+
+- update to version 7.2, fixes bug: (#293752)
+- Changes from 7.1 to 7.2
+
+ 1. If the fr_FR locale cannot be found for test 3, try the "french" locale,
+    which is apparently normally available under Windows.
+
+ 2. Re-jig the pcregrep tests with different newline settings in an attempt
+    to make them independent of the local environment's newline setting.
+
+ 3. Add code to configure.ac to remove -g from the CFLAGS default settings.
+
+ 4. Some of the "internals" tests were previously cut out when the link size
+    was not 2, because the output contained actual offsets. The recent new
+    "Z" feature of pcretest means that these can be cut out, making the tests
+    usable with all link sizes.
+
+ 5. Implemented Stan Switzer's goto replacement for longjmp() when not using
+    stack recursion. This gives a massive performance boost under BSD, but just
+    a small improvement under Linux. However, it saves one field in the frame
+    in all cases.
+
+ 6. Added more features from the forthcoming Perl 5.10:
+
+    (a) (?-n) (where n is a string of digits) is a relative subroutine or
+        recursion call. It refers to the nth most recently opened parentheses.
+
+    (b) (?+n) is also a relative subroutine call; it refers to the nth next
+        to be opened parentheses.
+
+    (c) Conditions that refer to capturing parentheses can be specified
+        relatively, for example, (?(-2)... or (?(+3)...
+
+    (d) \K resets the start of the current match so that everything before
+        is not part of it.
+
+    (e) \k{name} is synonymous with \k<name> and \k'name' (.NET compatible).
+
+    (f) \g{name} is another synonym - part of Perl 5.10's unification of
+        reference syntax.
+
+    (g) (?| introduces a group in which the numbering of parentheses in each
+        alternative starts with the same number.
+
+    (h) \h, \H, \v, and \V match horizontal and vertical whitespace.
+
+ 7. Added two new calls to pcre_fullinfo(): PCRE_INFO_OKPARTIAL and
+    PCRE_INFO_JCHANGED.
+
+ 8. A pattern such as  (.*(.)?)*  caused pcre_exec() to fail by either not
+    terminating or by crashing. Diagnosed by Viktor Griph; it was in the code
+    for detecting groups that can match an empty string.
+
+ 9. A pattern with a very large number of alternatives (more than several
+    hundred) was running out of internal workspace during the pre-compile
+    phase, where pcre_compile() figures out how much memory will be needed. A
+    bit of new cunning has reduced the workspace needed for groups with
+    alternatives. The 1000-alternative test pattern now uses 12 bytes of
+    workspace instead of running out of the 4096 that are available.
+
+10. Inserted some missing (unsigned int) casts to get rid of compiler warnings.
+
+11. Applied patch from Google to remove an optimization that didn't quite work.
+    The report of the bug said:
+
+      pcrecpp::RE("a*").FullMatch("aaa") matches, while
+      pcrecpp::RE("a*?").FullMatch("aaa") does not, and
+      pcrecpp::RE("a*?\\z").FullMatch("aaa") does again.
+
+12. If \p or \P was used in non-UTF-8 mode on a character greater than 127
+    it matched the wrong number of bytes.
+
+-------------------------------------------------------------------
+Tue May  1 11:02:54 CEST 2007 - ms@suse.de
+
+- added --enable-unicode-properties configure option to support
+  UTF-8 character strings in \P, \p, and \X (#269749)
+
+-------------------------------------------------------------------
+Mon Apr 30 10:12:10 CEST 2007 - trenn@suse.de
+
+- corrected assert compile error
+
+-------------------------------------------------------------------
+Wed Apr 25 13:39:55 CEST 2007 - ms@suse.de
+
+- update to pcre 7.1
+
+ 1. Applied Bob Rossi and Daniel G's patches to convert the build system to one
+    that is more "standard", making use of automake and other Autotools. There
+    is some re-arrangement of the files and adjustment of comments consequent
+    on this.
+
+ 2. Part of the patch fixed a problem with the pcregrep tests. The test of -r
+    for recursive directory scanning broke on some systems because the files
+    are not scanned in any specific order and on different systems the order
+    was different. A call to "sort" has been inserted into RunGrepTest for the
+    approprate test as a short-term fix. In the longer term there may be an
+    alternative.
+
+ 3. I had an email from Eric Raymond about problems translating some of PCRE's
+    man pages to HTML (despite the fact that I distribute HTML pages, some
+    people do their own conversions for various reasons). The problems
+    concerned the use of low-level troff macros .br and .in. I have therefore
+    removed all such uses from the man pages (some were redundant, some could
+    be replaced by .nf/.fi pairs). The 132html script that I use to generate
+    HTML has been updated to handle .nf/.fi and to complain if it encounters
+    .br or .in.
+
+ 4. Updated comments in configure.ac that get placed in config.h.in and also
+    arranged for config.h to be included in the distribution, with the name
+    config.h.generic, for the benefit of those who have to compile without
+    Autotools (compare pcre.h, which is now distributed as pcre.h.generic).
+
+ 5. Updated the support (such as it is) for Virtual Pascal, thanks to Stefan
+    Weber: (1) pcre_internal.h was missing some function renames; (2) updated
+    makevp.bat for the current PCRE, using the additional files
+    makevp_c.txt, makevp_l.txt, and pcregexp.pas.
+
+ 6. A Windows user reported a minor discrepancy with test 2, which turned out
+    to be caused by a trailing space on an input line that had got lost in his
+    copy. The trailing space was an accident, so I've just removed it.
+
+ 7. Add -Wl,-R... flags in pcre-config.in for *BSD* systems, as I'm told
+    that is needed.
+
+ 8. Mark ucp_table (in ucptable.h) and ucp_gentype (in pcre_ucp_searchfuncs.c)
+    as "const" (a) because they are and (b) because it helps the PHP
+    maintainers who have recently made a script to detect big data structures
+    in the php code that should be moved to the .rodata section. I remembered
+    to update Builducptable as well, so it won't revert if ucptable.h is ever
+    re-created.
+
+ 9. Added some extra #ifdef SUPPORT_UTF8 conditionals into pcretest.c,
+    pcre_printint.src, pcre_compile.c, pcre_study.c, and pcre_tables.c, in
+    order to be able to cut out the UTF-8 tables in the latter when UTF-8
+    support is not required. This saves 1.5-2K of code, which is important in
+    some applications.
+
+    Later: more #ifdefs are needed in pcre_ord2utf8.c and pcre_valid_utf8.c
+    so as not to refer to the tables, even though these functions will never be
+    called when UTF-8 support is disabled. Otherwise there are problems with a
+    shared library.
+
+10. Fixed two bugs in the emulated memmove() function in pcre_internal.h:
+
+    (a) It was defining its arguments as char * instead of void *.
+
+    (b) It was assuming that all moves were upwards in memory; this was true
+        a long time ago when I wrote it, but is no longer the case.
+
+    The emulated memove() is provided for those environments that have neither
+    memmove() nor bcopy(). I didn't think anyone used it these days, but that
+    is clearly not the case, as these two bugs were recently reported.
+
+11. The script PrepareRelease is now distributed: it calls 132html, CleanTxt,
+    and Detrail to create the HTML documentation, the .txt form of the man
+    pages, and it removes trailing spaces from listed files. It also creates
+    pcre.h.generic and config.h.generic from pcre.h and config.h. In the latter
+    case, it wraps all the #defines with #ifndefs. This script should be run
+    before "make dist".
+
+12. Fixed two fairly obscure bugs concerned with quantified caseless matching
+    with Unicode property support.
+
+    (a) For a maximizing quantifier, if the two different cases of the
+        character were of different lengths in their UTF-8 codings (there are
+        some cases like this - I found 11), and the matching function had to
+        back up over a mixture of the two cases, it incorrectly assumed they
+        were both the same length.
+
+    (b) When PCRE was configured to use the heap rather than the stack for
+        recursion during matching, it was not correctly preserving the data for
+        the other case of a UTF-8 character when checking ahead for a match
+        while processing a minimizing repeat. If the check also involved
+        matching a wide character, but failed, corruption could cause an
+        erroneous result when trying to check for a repeat of the original
+        character.
+
+13. Some tidying changes to the testing mechanism:
+
+    (a) The RunTest script now detects the internal link size and whether there
+        is UTF-8 and UCP support by running ./pcretest -C instead of relying on
+        values substituted by "configure". (The RunGrepTest script already did
+        this for UTF-8.) The configure.ac script no longer substitutes the
+        relevant variables.
+
+    (b) The debugging options /B and /D in pcretest show the compiled bytecode
+        with length and offset values. This means that the output is different
+        for different internal link sizes. Test 2 is skipped for link sizes
+        other than 2 because of this, bypassing the problem. Unfortunately,
+        there was also a test in test 3 (the locale tests) that used /B and
+        failed for link sizes other than 2. Rather than cut the whole test out,
+        I have added a new /Z option to pcretest that replaces the length and
+        offset values with spaces. This is now used to make test 3 independent
+        of link size. (Test 2 will be tidied up later.)
+
+14. If erroroffset was passed as NULL to pcre_compile, it provoked a
+    segmentation fault instead of returning the appropriate error message.
+
+15. In multiline mode when the newline sequence was set to "any", the pattern
+    ^$ would give a match between the \r and \n of a subject such as "A\r\nB".
+    This doesn't seem right; it now treats the CRLF combination as the line
+    ending, and so does not match in that case. It's only a pattern such as ^$
+    that would hit this one: something like ^ABC$ would have failed after \r
+    and then tried again after \r\n.
+
+16. Changed the comparison command for RunGrepTest from "diff -u" to "diff -ub"
+    in an attempt to make files that differ only in their line terminators
+    compare equal. This works on Linux.
+
+17. Under certain error circumstances pcregrep might try to free random memory
+    as it exited. This is now fixed, thanks to valgrind.
+
+19. In pcretest, if the pattern /(?m)^$/g<any> was matched against the string
+    "abc\r\n\r\n", it found an unwanted second match after the second \r. This
+    was because its rules for how to advance for /g after matching an empty
+    string at the end of a line did not allow for this case. They now check for
+    it specially.
+
+20. pcretest is supposed to handle patterns and data of any length, by
+    extending its buffers when necessary. It was getting this wrong when the
+    buffer for a data line had to be extended.
+
+21. Added PCRE_NEWLINE_ANYCRLF which is like ANY, but matches only CR, LF, or
+    CRLF as a newline sequence.
+
+22. Code for handling Unicode properties in pcre_dfa_exec() wasn't being cut
+    out by #ifdef SUPPORT_UCP. This did no harm, as it could never be used, but
+    I have nevertheless tidied it up.
+
+23. Added some casts to kill warnings from HP-UX ia64 compiler.
+
+24. Added a man page for pcre-config.
+
+-------------------------------------------------------------------
+Fri Feb  9 10:07:29 CET 2007 - ms@suse.de
+
+- fixed wrong usage of assert() call
+
+-------------------------------------------------------------------
+Tue Jan  9 11:28:53 CET 2007 - ms@suse.de
+
+- fixed build for all architectures
+
+-------------------------------------------------------------------
+Mon Jan  8 16:07:02 CET 2007 - ms@suse.de
+
+- update to new version 7.0
+  Changes: As well as a number of bugfixes, there has been a major
+  refactoring of the compiling code, which makes it easier to add new
+  features, including some new optimizations. A QuoteMeta function has been
+  added to the C++ wrapper. There is now a mode in which all Unicode newline
+  sequences are recognized. Support for the Perl 5.10 syntax for features
+  that were previously in PCRE but not in Perl (named groups, possessive
+  quantifiers) has been added.
+
+-------------------------------------------------------------------
+Sat Oct 28 17:50:04 CEST 2006 - meissner@suse.de
+
+- CXXFLAGS needs RPM_OPT_FLAGS too.
+
+-------------------------------------------------------------------
+Mon Jul 10 16:29:14 CEST 2006 - ms@suse.de
+
+- update to new version 6.7
+- finally removed evil configure patch
+- When UTF-8 mode was not set, PCRE looped when compiling certain patterns
+  containing an extended class (one that cannot be represented by a bitmap
+  because it contains high-valued characters or Unicode property items, e.g.
+  [\pZ]). Almost always one would set UTF-8 mode when processing such a
+  pattern, but PCRE should not loop if you do not (it no longer does).
+  [Detail: two cases were found: (a) a repeated subpattern containing an
+  extended class; (b) a recursive reference to a subpattern that followed a
+  previous extended class. It wasn't skipping over the extended class
+  correctly when UTF-8 mode was not set.]
+- Applied a patch from the folks at Google to pcrecpp.cc, to fix "another
+  instance of the 'standard' template library not being so standard".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 13:53:17 CET 2006 - mmj@suse.de
+
+- build with -fstack-protector
+
+-------------------------------------------------------------------
+Thu Dec  1 01:39:04 CET 2005 - ro@suse.de
+
+- hack libtool core in configure script
+  since configure.in is too broken for a autoreconf ...
+
+-------------------------------------------------------------------
+Mon Sep 19 17:53:52 CEST 2005 - mmj@suse.de
+
+- update to the latest version v6.4
+
+-------------------------------------------------------------------
+Tue Aug  2 11:19:20 CEST 2005 - mmj@suse.de
+
+- update to the latest version v6.2
+
+-------------------------------------------------------------------
+Thu Jun 23 13:18:50 CEST 2005 - mmj@suse.de
+
+- update to latest version v6.1
+
+-------------------------------------------------------------------
+Mon Jun 13 08:51:51 CEST 2005 - mmj@suse.de
+
+- add gcc-c++ to #nfb as well
+
+-------------------------------------------------------------------
+Wed Jun  8 23:41:35 CEST 2005 - mmj@suse.de
+
+- update to latest version v6.0
+
+-------------------------------------------------------------------
+Mon May 23 11:17:20 CEST 2005 - mmj@suse.de
+
+- use --enable-utf8
+- use $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Mar 31 17:39:53 CEST 2005 - uli@suse.de
+
+- ignore test suite errors on ARM
+
+-------------------------------------------------------------------
+Mon Nov 22 17:12:31 CET 2004 - choeger@suse.de
+
+- update to latest version v5.0 
+
+-------------------------------------------------------------------
+Mon Jun  7 11:40:27 CEST 2004 - choeger@suse.de
+
+- update to latest version v4.5
+
+-------------------------------------------------------------------
+Mon Jan  5 15:39:13 CET 2004 - schwab@suse.de
+
+- Move pcre-config to pcre-devel.
+
+-------------------------------------------------------------------
+Fri Oct 31 17:05:26 CET 2003 - choeger@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Thu Aug 21 15:22:38 CEST 2003 - choeger@suse.de
+
+- update to v4.4
+
+-------------------------------------------------------------------
+Fri Aug  1 12:07:27 CEST 2003 - choeger@suse.de
+
+- disabled Test2, because it is not 64bit arch clean
+  (contacted author, he knows about that problem)
+
+-------------------------------------------------------------------
+Wed Jul 30 14:56:52 CEST 2003 - choeger@suse.de
+
+- update to most recent version v4.3
+- splitted into -devel subpackage
+
+-------------------------------------------------------------------
+Fri Dec  6 04:42:15 CET 2002 - coolo@suse.de
+
+- removed undefined symbols in libpcreposix
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Apr  5 10:57:15 CEST 2002 - coolo@suse.de
+
+- fixing autoheader usage
+- forward ported %libdir changes from sles7-s390x
+
+-------------------------------------------------------------------
+Tue Jan 22 19:07:26 CET 2002 - choeger@suse.de
+
+- update to version 3.9
+- added BuildRoot
+
+-------------------------------------------------------------------
+Tue Aug 21 01:11:46 MEST 2001 - mge@suse.de
+
+- pcre 3.5 
+
+-------------------------------------------------------------------
+Wed Apr 11 22:26:54 CEST 2001 - froh@suse.de
+
+- suse_update_config
+
+-------------------------------------------------------------------
+Mon Dec  4 12:08:52 MET 2000 - mge@suse.de
+
+- pcre 3.4
+
+-------------------------------------------------------------------
+Tue Jun 27 19:41:41 MEST 2000 - mge@suse.de
+
+- pcre 3.2
+
+-------------------------------------------------------------------
+Thu Mar  2 12:22:48 CET 2000 - mge@suse.de
+
+- fixed manpath 
+
+-------------------------------------------------------------------
+Sun Feb 13 16:54:53 MET 2000 - mge@suse.de
+
+- update to 3.1
+- group tag
+
+-------------------------------------------------------------------
+Mon Oct 25 23:38:47 MEST 1999 - mge@suse.de
+
+- initial SuSE-RPM: changed Makefile to install into /usr
+

@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Tue Jun 12 13:04:46 UTC 2018 - mvetter@suse.com
+
+- Update to version 20180505 (important changes since 20151002):
+  * fix potential hang with small input size
+  * configure enhancement: objdump may be named gobjdump
+  * fix tape end of file marker may be ignored
+  * removed obsolete alpha code
+  * fix: fix listen's backlog argument, which can cause issues on Linux 4.4
+  * fix: fix potential assertion triggered by interrupted system call
+  * fix: use thread-safe mt_usleep instead of sleep(3) for watchdog timing
+  * enhancement: ignore EINTR for I/O syscalls
+  * enhancement: report percent done, when input size is known (is a file)
+  * enhancement: watchdog raises SIGKILL if SIGINT had no effect
+  * added an example config file, with documentation of all options
+  * added parameter StatusInterval
+  * fix false warning on comments in config files
+  * performance optimized defaults
+  * fix: potential hang, when one output fails to open
+- Remove mbuffer-fix_pointer_cast.patch: dont see a reason for this
+
+-------------------------------------------------------------------
+Tue Dec  1 16:26:25 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2015100 :
+  * fix: SegV when argument to -v is missing
+  * fix: potential infinite loop on output error
+- Changes from version 20150412 :
+  * fix: watchdog cannot do its job if it is cleaned up to early
+  * fix: clear sa_flags and sa_mask before use, although ignored
+- Changes from version 20141227 :
+  * added option --pid to print PID of current process
+  * updated usage to include option -W
+  * man page formatting fixes
+  * configure updates
+  * support compiling on systems that do not define PATH_MAX
+
+-------------------------------------------------------------------
+Sat Jan 24 21:55:43 UTC 2015 - andreas.stieger@gmx.de
+
+- version 20141227:
+  + added option --pid to print PID of current process
+  + updated usage to include option -W
+  + man page formatting fixes
+  + configure updates
+  + support compiling on systems that do not define PATH_MAX 
+
+-------------------------------------------------------------------
+Wed Apr 16 22:51:24 UTC 2014 - crrodriguez@opensuse.org
+
+- version 20140310
+* added memory advise for buffer memory
+* prevent buffer overflow attack via defaults file
+* ignore defaults file from other users
+* updated documentation for use with cron
+* minor bugfixes
+* new feature: set option defaults in ~/.mbuffer.rc
+* enhancement: write status to the log file
+* enhancement: added option to suppress status logging
+* fix: formatting fix for summary message
+- spec file changes:
+  * refresh patch with p1
+  * the mhash library is abandonware, this is no good
+    since we are talking about crypto software, use openSSL instead.
+
+-------------------------------------------------------------------
+Mon Apr  8 21:22:36 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 20132020:
+  * reverted incorrect fix for -P 100, which may lead to data corruption
+  * reenable hash libraries (no correlation with data corruption)
+  * bail out if any output fails to initialize
+  * refixed hang on -P 100
+  * reduced sending overhead
+  * fixed handling of option -f
+
+- changes from 20130209:
+  * hash names should be compared case insensitive for convenience
+  * safeguard against missing argument to option --hash
+  * support for hash calculation withdrawn, due to potential data corruption,
+    when the buffer runs full
+
+-------------------------------------------------------------------
+Sat Nov 17 14:09:22 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 20121111:
+  * support float values as argument to memory options
+  * added a watchdog that terminates mbuffer if input
+    or output activity stalls (option -W)
+
+-------------------------------------------------------------------
+Sat May 05 13:40:48 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 20120505:
+  * fix: suppress summary on stderr if -q is used with -l
+  *  fix: option -P 100 may lead to hang
+
+-------------------------------------------------------------------
+Sun Jul 24 20:21:45 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 20110724:
+  * fix: garbage might be written after input error
+  * enhancement: prompt for additional volumes for argument "-n 0"
+  * enhancement: prompt for next volume on I/O error if -n is set (some tape
+    devices incorrectly return -1/EIO instead of 0)
+  * enhancement: added option to append to output file
+  * update: remove use of deprecated interface sigignore
+
+-------------------------------------------------------------------
+Fri Mar 18 09:47:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 20110317:
+  * an option was added to terminate on any kind of error
+  * a hang when starting mbuffer in the background was fixed
+  * the displayed dimensions were changed to be compliant to SI standards
+
+-------------------------------------------------------------------
+Thu Jan 20 02:20:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 20110119:
+  * fixes an incorrect sanity check for the interaction between hashing and
+    multiple outputs
+
+-------------------------------------------------------------------
+Thu Dec 30 22:21:48 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 20101230:
+  * hash values now are also written to log files
+  * this release will report the last block number on volume, report time per
+    volume
+
+-------------------------------------------------------------------
+Fri May 28 21:53:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 20100526:
+  * fixes an interaction between watermark and rate limitation algorithms that
+    messed up rate limitation
+  * fixes a potential deadlock on SIGINT
+
+-------------------------------------------------------------------
+Sat Mar 27 21:01:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 20100327:
+  * a problem in which hash calculation was being omitted if no output file is
+    specified was fixed
+  * a summary is included in the log file in quiet mode
+  * some typographical errors in the man page were fixed
+
+-------------------------------------------------------------------
+Mon Dec 28 19:52:33 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 20091227:
+  * rate limitation now uses a monotonic time source if available
+  * lockup on input error has been fixed
+  * segfault in quiet mode has been fixed
+  * cancellation fixes
+
+-------------------------------------------------------------------
+Sun Nov 22 22:34:53 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 20091122:
+  * multiple fixes for assertion failures raised during error situations
+
+-------------------------------------------------------------------
+Wed Nov 11 00:00:00 CET 2009 - pascal.bleser@opensuse.org
+
+- update to 20091110:
+  * code is compiled for 64-bit word size by default, if that capability is
+    available
+  * a hang which occurred on SIGINT when input is idle was fixed
+  * fixes were made for the IPv6 code
+
+-------------------------------------------------------------------
+Tue Oct 13 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 20091012:
+  * adds a separate thread for hash calculation
+  * adds support for libmhash with all provided hash algorithms
+  * fixes a typo in the examples section
+  * fixes a potential race condition
+  * fixes a potential lockup on SIGINT
+
+-------------------------------------------------------------------
+Mon Jun 29 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 20090628:
+  * adds support for IPv6 and service name lookup
+  * reintegrates a lost fix for libmhash initialization
+
+-------------------------------------------------------------------
+Sun Feb 15 00:00:00 CET 2009 - guru@unixtech.be
+
+- update to 20090215:
+  * fixes a hang on transfer sizes smaller than blocksize with status display
+    active
+  * man page update, summary display update
+  * libmhash initialization fix
+  * termination latency with active status display is reduced
+  * fix for -q suppressing the output of -H
+
+-------------------------------------------------------------------
+Thu Jan 15 00:00:00 CET 2009 - guru@unixtech.be
+
+- update to 20090113:
+  * a fix for an assertion failure in network mode when compiled for 64-bit
+    architectures
+
+-------------------------------------------------------------------
+Wed Jan  7 00:00:00 CET 2009 - guru@unixtech.be
+
+- scrapped old %%changelog entries
+- update to 20090106
+
+-------------------------------------------------------------------
+Mon Dec  8 00:00:00 CET 2008 - guru@unixtech.be
+
+- update to 20081207:
+  * more intelligent TCP buffer tuning plus an undocumented option to manually
+    set the TCP buffer size
+  * fixes several typos, and fixes for some message formatting issues
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 20081023:
+  * mbuffer should not abort on SIGTERM
+  * a segv which occurred when an invalid option was given was fixed
+  * a minor codepath optimization was made
+  * the status display now waits for the first block to be read
+
+-------------------------------------------------------------------
+Wed Oct 15 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 20081015:
+  * autoloader commands are now prevented from corrupting mbuffer's output
+  * cancellation issues were fixed
+  * sendfile should fall back to write
+  * manpath needs to be created
+  * support was added for O_DIRECT on systems that provide it
+  * documentation updates
+

@@ -1,0 +1,30 @@
+Index: src/tools/tools86.c
+===================================================================
+--- src/tools/tools86.c.orig	2007-05-04 07:59:48.000000000 +0200
++++ src/tools/tools86.c	2008-10-09 02:23:10.000000000 +0200
+@@ -170,7 +170,7 @@ static int change_aout(char *objfile, in
+     return errno;
+   }
+ #ifdef __linux__
+-  if (fread(&bsd,sizeof(gnu),1,f) != 1 ) {
++  if (fread(&bsd,sizeof(bsd),1,f) != 1 ) {
+     fclose(f);
+     return -1;
+   }
+Index: src/plugin/translate/Makefile
+===================================================================
+--- src/plugin/translate/Makefile.orig	2007-05-04 07:59:48.000000000 +0200
++++ src/plugin/translate/Makefile	2008-10-09 02:48:45.000000000 +0200
+@@ -37,10 +37,10 @@ clean::
+ include $(REALTOPDIR)/src/Makefile.common
+ 
+ crunch_UnicodeData: crunch_UnicodeData.c
+-	$(CC) $(INCDIR) -o $@ $<
++	$(CC) $(CFLAGS) $(INCDIR) -o $@ $<
+ 
+ make_attributes: make_attributes.c
+-	$(CC) $(INCDIR) -o $@ $<
++	$(CC) $(CFLAGS) $(INCDIR) -o $@ $<
+ 
+ keysym_attributes.c: UnicodeCrunchedAttributes make_attributes
+ 	./make_attributes < $< > $@

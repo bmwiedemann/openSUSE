@@ -1,0 +1,13 @@
+[Unit]
+Description=HylaFAX hfaxd (client service)
+ConditionPathExists=/var/spool/hylafax/etc/setup.cache
+PartOf=hylafax.target
+
+[Service]
+User=root	
+Group=root
+Restart=always
+ExecStart=/usr/sbin/hfaxd -d -i hylafax
+
+[Install]
+WantedBy=multi-user.target 

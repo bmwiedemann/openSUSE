@@ -1,0 +1,121 @@
+From 663bfdd55000b17aeb4f236f23cc8abf5cd108d3 Mon Sep 17 00:00:00 2001
+From: "Jonatan \"jaw\" Wallmander" <jonatan@vovoid.com>
+Date: Sun, 15 Mar 2015 19:04:14 -0700
+Subject: [PATCH] Updated cal3d for building as vsxu module
+
+---
+ cal3d/src/cal3d/calxmlbindings.cpp | 11 ++++++++++
+ cal3d/src/cal3d/loader.h           |  2 +-
+ cal3d/src/cal3d/tinybind.cpp       | 45 ++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 55 insertions(+), 3 deletions(-)
+
+diff --git a/cal3d/src/cal3d/calxmlbindings.cpp b/cal3d/src/cal3d/calxmlbindings.cpp
+index 5b7368c..b8b65e7 100644
+--- a/cal3d/src/cal3d/calxmlbindings.cpp
++++ b/cal3d/src/cal3d/calxmlbindings.cpp
+@@ -275,6 +275,17 @@ ConvertFromString( char const * inStr, CalIndex (*vertexId)[2] )
+   str >> *vertexId[0] >> *vertexId[1] ;
+ }
+ 
++void
++ConvertFromString( char const * inStr, int *vertexId )
++{
++  static std::stringstream str;
++  str.str("");
++  str << inStr;
++  str >> *vertexId ;
++}
++
++
++
+ TiXmlBinding<CalCoreSubmesh::Influence> const *
+ GetTiXmlBinding( CalCoreSubmesh::Influence const &,IdentityBase  )
+ {
+diff --git a/cal3d/src/cal3d/loader.h b/cal3d/src/cal3d/loader.h
+index 43f847d..b8656c9 100644
+--- a/cal3d/src/cal3d/loader.h
++++ b/cal3d/src/cal3d/loader.h
+@@ -162,7 +162,6 @@ class CAL3D_API CalLoader
+ 
+   static CalCoreMaterialPtr loadXmlCoreMaterial(const void *);
+ 
+-private:
+   static CalCoreBone *loadCoreBones(CalDataSource& dataSrc, int version);
+   static CalCoreKeyframe *loadCoreKeyframe(CalDataSource& dataSrc, CalCoreBone * coreboneOrNull, 
+                                              int version, CalCoreKeyframe * lastCoreKeyframe, 
+@@ -177,6 +176,7 @@ class CAL3D_API CalLoader
+   static CalCoreMeshPtr loadXmlCoreMesh(cal3d::TiXmlDocument& doc);
+   static CalCoreMaterialPtr loadXmlCoreMaterial(cal3d::TiXmlDocument& doc);
+ 
++private:
+   static int loadingMode;
+   static double translationTolerance;
+   static double rotationToleranceDegrees;
+diff --git a/cal3d/src/cal3d/tinybind.cpp b/cal3d/src/cal3d/tinybind.cpp
+index c887a62..fe56e49 100644
+--- a/cal3d/src/cal3d/tinybind.cpp
++++ b/cal3d/src/cal3d/tinybind.cpp
+@@ -91,7 +91,26 @@ char const *
+ ConvertToString<long>(long const & d )
+ {
+   static char buffer[2048];
+-  sprintf(buffer, "%l", d);
++  sprintf(buffer, "%ld", d);
++  return buffer;
++}
++
++template<>
++char const *
++ConvertToString< int[2] >(int const (&d) [2] )
++{
++  static char buffer[2048];
++  sprintf(buffer, "%d %d", d[0], d[1] );
++  return buffer;
++}
++
++template<>
++char const *
++ConvertToString< int[3] >(int const (&d) [3] )
++{
++
++  static char buffer[2048];
++  sprintf(buffer, "%d %d %d", d[0], d[1], d[2]);
+   return buffer;
+ }
+ 
+@@ -161,6 +180,28 @@ ConvertFromString<float>( char const * strIn,  float * dataOut )
+ {
+   *dataOut = (float)atof(strIn);
+ }
++
++
++template<>
++void
++ConvertFromString< int[2] >( char const * strIn,  int (*dataOut)[2] )
++{
++  static std::stringstream str;
++  str.str("");
++  str << strIn;
++  str >> *dataOut[0] >> *dataOut[1] ;
++}
++
++template<>
++void
++ConvertFromString< int[3] >( char const * strIn,  int (*dataOut)[3] )
++{
++  static std::stringstream str;
++  str.str("");
++  str << strIn;
++  str >> *dataOut[0] >> *dataOut[1] >> *dataOut[2];
++}
++
+ //#endif
+ 
+ 
+@@ -262,4 +303,4 @@ namespace {
+     }
+   } _;
+ 
+-}
+\ No newline at end of file
++}

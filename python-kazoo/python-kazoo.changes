@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:20:18 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.5.1
+  **client:**  add missing paren (#550)
+  **core:** support deprecated KazooRetry argument (#545)
+  **core:** reduce timeout for the first Connect() request (#540)
+  **handlers:**  make AsyncResult call all registered callbacks
+    instantly if the handler has stopped running (#549)
+  **recipe:** No more memory leak when ChildrenWatch was stopped (#543)
+  **recipe:** No more memory leak once TreeCache was closed (#524)
+
+-------------------------------------------------------------------
+Thu Nov  1 13:46:56 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.0:
+  * Various fixes for gevent and python 3.7
+- Fix homepage
+
+-------------------------------------------------------------------
+Tue Aug 22 13:40:43 UTC 2017 - tbechtold@suse.com
+
+- update to 2.4.0:
+  * add missed parens to LockingQueue function call.
+  * revert PR #305 SetWatches which caused RuntimeError
+  * pep8 all the things
+  * drop Python 2.6/3.3 official support, add 3.5/3.6 testing
+  * allow multiple endpoints in KazooClient hosts arg
+  * use epoll when available to support fds > 1023
+  * Add TreeCache recipe
+  * update MANIFEST.in to reflect changes to filenames
+  * add travis deployment and update ZK versions
+  * allow having observers and different sized clusters
+  * fully resolve multiple records for hosts in the zookeeper
+    connection string
+  * Fix the recipe examples, so they actually work by connecting to
+    ZooKeeper. Without start() they just hang and can't be killed.
+
+-------------------------------------------------------------------
+Thu Sep 29 14:41:34 UTC 2016 - dmueller@suse.com
+
+- update to 2.2.1:
+  *  Issue #234: Add support for reconfig cluster membership operation
+  * Start running tests against Zookeeper 3.5.0 alpha and explicitly configure
+    the `admin.serverPort` in tests to avoid port conflicts. The Zookeeper
+    alpha version is not yet officially supported.
+  * Integrate eventlet *handler* support into kazoo so that along with [gevent,
+    threading] handlers there can now be a dedicated eventlet handler for
+    projects that need to (or want to) use eventlet (such as those working
+    in the openstack community). The ``requirements_eventlet.txt`` file lists
+    the optional eventlet requirement(s) that needs to be satisfied when this
+    new handler is used.
+  * Use ``six`` to nicely handle the cross compatibility of kazoo with
+    python 2.x and 3.x (reducing/removing the need to have custom compatibility
+    code that replicates what six already provides).
+  * Add ``state_change_event`` to ``kazoo.recipe.partitioner.SetPartitioner``
+    which is set on every state change.
+  * Add a NonBlockingLease recipe.  The recipe allows e.g. cron jobs scheduled
+    on multiple machines to ensure that at most N instances will run a particular
+    job, with lease timeout for graceful handover in case of node failures.
+
+-------------------------------------------------------------------
+Mon Sep 15 12:13:02 UTC 2014 - tbechtold@suse.com
+
+- update to version 2.0
+  * Extend support to Python 3.4, deprecating Python 3.2.
+  * Issue #198: Mention Zake as a sophisticated kazoo mock testing library.
+  * Issue #181: Add documentation on basic logging setup.
+  * Null or None data is no longer treated as "". Pull req #165, patch by
+    Raul Gutierrez S. This will affect how you should treat null data in a
+    znode vs. an empty string.
+  * Passing acl=[] to create() now works properly instead of an InvalidACLError
+    as it returned before. Patch by Raul Gutierrez S in PR #164.
+  * Removed the dependency on zope.interface. The classes in the interfaces
+    module are left for documentation purposes only (issue #131).
+  * Logging levels have been reduced.
+    + Logging previously at the ``logging.DEBUG`` level is now logged at
+      the ``kazoo.loggingsupport.BLATHER`` level (5).
+    + Some low-level logging previously at the ``logging.INFO`` level is
+      now logged at the ``logging.DEBUG`` level.
+  * Issue #133: Introduce a new environment variable `ZOOKEEPER_PORT_OFFSET`
+    for the testing support, to run the testing cluster on a different range.
+  * When authenticating via add_auth() the auth data will be saved to ensure that
+    the authentication happens on reconnect (as is the case when feeding auth
+    data via KazooClient's constructor). PR #172, patch by Raul Gutierrez S.
+  * Change gevent import to remove deprecation warning when newer gevent is
+    used. PR #191, patch by Hiroaki Kawai.
+  * Lock recipe was failing to use the client's sleep_func causing issues with
+    gevent. Issue #150.
+  * Calling a DataWatch or ChildrenWatch instance twice (decorator) now throws
+    an exception as only a single function can be associated with a single
+    watcher. Issue #154.
+  * Another fix for atexit handling so that when disposing of connections the
+    atexit handler is removed. PR #190, patch by Devaev Maxim.
+  * Fix atexit handling for kazoo threading handler, PR #183. Patch by
+    Brian Wickman.
+  * Partitioner should handle a suspended connection properly and restore
+    an allocated state if it was allocated previously. Patch by Manish Tomar.
+  * Issue #167: Closing a client that was never started throws a type error.
+    Patch by Joshua Harlow.
+  * Passing dictionaries to KazooClient.__init__() wasn't actually working
+    properly. Patch by Ryan Uber.
+  * Issue #119: Handler timeout takes the max of the random interval or
+    the read timeout to ensure a negative number isn't used for the read
+    timeout.
+  * Fix ordering of exception catches in lock.acquire as it was capturing a
+    parent exception before the child. Patch by ReneSac.
+  * Fix issue with client.stop() not always setting the client state to
+    KeeperState.CLOSED. Patch by Jyrki Pulliainen in PR #174.
+  * Issue #169: Fixed pipes leaking into child processes.
+  * Add section on contributing recipes, add maintainer/status information for
+    existing recipes.
+  * Add note about alternate use of DataWatch.
+- Remove Require python-zope.interfaces
+
+
+-------------------------------------------------------------------
+Wed Apr  2 08:25:32 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

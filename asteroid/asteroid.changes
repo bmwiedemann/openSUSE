@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Jun  1 17:37:33 UTC 2016 - nemysis@openSUSE.org
+
+* Update for gtk3 (and gtk2)
+* Fix gtk3 incompatibilities
+* Fix GTK check in code
+* Update to gtk3
+
+- Recreate tarball, new 64869df commit
+- Remove BuildRequires, changed by Upstream for gtk2-devel
+- Add BuildRequires, changed by Upstream for gtk3-devel
+
+-------------------------------------------------------------------
+Sun May 29 21:00:51 UTC 2016 - nemysis@openSUSE.org
+
+- Use -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} instead of -DCMAKE_INSTALL_PREFIX=/usr
+
+-------------------------------------------------------------------
+Sun May 29 14:07:23 UTC 2016 - nemysis@openSUSE.org
+
+- After discussion with Upstream removed asteroid-1.2.1-CMakeLists.txt.patch
+  and sed for path, use cmake . -DCMAKE_INSTALL_PREFIX=/usr
+- Add AUTHORS to Documentation
+- Change generate-service-file.sh to use <service name="tar_scm" mode="disabled">
+  and more
+- Add _servicedata
+
+-------------------------------------------------------------------
+Wed May 25 21:07:49 UTC 2016 - nemysis@openSUSE.org
+
+- Used "osc service localrun" that works check script
+
+-------------------------------------------------------------------
+Wed May 25 15:43:42 UTC 2016 - nemysis@openSUSE.org
+
+- Add asteroid-1.2.1+git-4efc7fc.tar.bz2 that works
+  "osc service localrun source_validator"
+
+-------------------------------------------------------------------
+Tue May 24 20:48:43 UTC 2016 - nemysis@openSUSE.org
+
+- Rerolled tarball
+- Add %global commit and %global shortcommit
+- Add _service and generate-service-file.sh
+- Remove check %if 0%{?suse_version}, because is only for openSUSE
+
+-------------------------------------------------------------------
+Thu Oct 30 15:23:11 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

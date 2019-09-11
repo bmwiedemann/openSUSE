@@ -1,0 +1,25 @@
+#! /bin/sh
+
+params=""
+
+if test -n "$ICECREAM_NETNAME"; then
+    params="$params -n $ICECREAM_NETNAME"
+fi
+
+if test -n "$ICECREAM_SCHEDULER_HOST"; then
+    params="$params -s $ICECREAM_SCHEDULER_HOST"
+fi
+
+if test "$ICECREAM_ALLOW_REMOTE" = "no" 2> /dev/null; then
+        params="$params --no-remote"
+fi
+
+if test -n "$ICECREAM_MAX_JOBS"; then
+    if test "$ICECREAM_MAX_JOBS" -eq 0 2> /dev/null; then
+        params="$params -m 1 --no-remote"
+    else
+        params="$params -m $ICECREAM_MAX_JOBS"
+    fi
+fi
+
+exec /usr/sbin/iceccd $@ $params

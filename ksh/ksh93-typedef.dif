@@ -1,0 +1,37 @@
+--- src/cmd/ksh93/bltins/typeset.c
++++ src/cmd/ksh93/bltins/typeset.c	2013-03-19 17:21:08.667413362 +0100
+@@ -461,6 +461,7 @@ static void print_value(Sfio_t *iop, Nam
+ {
+ 	char	 *name;
+ 	int	aflag=tp->aflag;
++	Namval_t	*table;
+ 	if(nv_isnull(np))
+ 	{
+ 		if(!np->nvflag)
+@@ -504,7 +505,9 @@ static void print_value(Sfio_t *iop, Nam
+ 		sfwrite(iop,"}\n",2);
+ 		return;
+ 	}
++	table = tp->sh->last_table;
+ 	sfputr(iop,nv_name(np),aflag=='+'?'\n':'=');
++	tp->sh->last_table = table;
+ 	if(aflag=='+')
+ 		return;
+ 	if(nv_isarray(np) && nv_arrayptr(np))
+@@ -675,6 +678,7 @@ static int     setall(char **argv,regist
+ 			{
+ 				if(comvar || (shp->last_root==shp->var_tree && (tp->tp || (!shp->st.real_fun && (nvflags&NV_STATIC)) || (!(flag&(NV_EXPORT|NV_RDONLY)) && nv_isattr(np,(NV_EXPORT|NV_IMPORT))==(NV_EXPORT|NV_IMPORT)))))
+ {
++				if((flag&(NV_HOST|NV_INTEGER))!=NV_HOST)
+ 					_nv_unset(np,0);
+ }
+ 			}
+@@ -790,7 +794,7 @@ static int     setall(char **argv,regist
+ 				else
+ 				{
+ 					char *oldname=0;
+-					int len=strlen(name);
++					size_t len=strlen(name);
+ 					if(tp->argnum==1 && newflag==NV_INTEGER && nv_isattr(np,NV_INTEGER))
+ 						tp->argnum = 10;
+ 					if(np->nvfun && !nv_isarray(np) && name[len-1]=='.')

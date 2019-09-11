@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Mon Feb 25 09:32:58 UTC 2019 - manfred99@gmx.ch
+
+- Update to version 1.0.4:
+  * added test data
+  * fixed include file
+
+- Update to version 1.0.3:
+  * Improvements to testing and fuzzing by Kurt Schwehr
+  * fixed various ubsan issues
+
+-------------------------------------------------------------------
+Tue Oct 24 16:29:44 UTC 2017 - junghans@votca.org
+
+- version bump to v1.0.2
+  * C99 requirement in all build systems
+
+-------------------------------------------------------------------
+Mon Oct  2 08:22:42 UTC 2017 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libsz2 and libaec0 for biarch setups
+  (needed by hdf5).
+
+-------------------------------------------------------------------
+Wed Aug 23 22:14:15 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups, and slightly expand summaries.
+
+-------------------------------------------------------------------
+Mon Jul 24 17:07:54 CEST 2017 - manfred99@gmx.ch
+
+- Add fallback for SLE12 and older opensuse versions: use autoconf/make
+
+-------------------------------------------------------------------
+Mon Jul 24 11:40:00 CEST 2017 - manfred99@gmx.ch
+
+- fix compilation, package now needs c99 standard
+- avoid rpmlint warning "W: description-shorter-than-summary"
+- do not add README.SZIP twice
+
+-------------------------------------------------------------------
+Mon Jul 17 20:21:30 UTC 2017 - junghans@votca.org
+
+- version bump to v1.0.1, switch to cmake
+  * Fixes: Potential security vulnerabilities in decoder exposed by libFuzzer.
+  * Added: Fuzz target for decoding and encoding.
+
+-------------------------------------------------------------------
+Thu Jul  6 09:32:32 UTC 2017 - badshah400@gmail.com
+
+- Rename subpackage libsz2-devel to sz2-devel (see, e.g.
+  https://build.opensuse.org/request/show/508143);
+  provide/obsolete old devel package libsz2-devel for consistency.
+- Minor cleanup of specfile:
+  * Move README.SZIP to libsz2 subpackage, this is the shared lib
+    actually replacing szip.
+  * Use `find` instead of `rm -f` to clean up libtool archives.
+  * For devel packages, remove release number dependency on
+    corresponding shared libs.
+
+-------------------------------------------------------------------
+Wed Jun 28 10:55:15 UTC 2017 - jengelh@inai.de
+
+- Remove static libraries.
+- Trim description a little.
+
+-------------------------------------------------------------------
+Sat Jun 10 01:27:52 CEST 2017 - manfred99@gmx.ch
+
+- minor spec cleanup to comply with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jun  1 09:29:44 CEST 2017 - manfred99@gmx.ch
+
+- Don't require lock-step of libsz and libaec
+
+-------------------------------------------------------------------
+Wed Feb  8 01:25:12 CET 2017 - manfred99@gmx.ch
+
+- Update to version 1.0.0:
+  * Include CCSDS test data with libaec
+  * Better compatibility with OSX for make check
+  * Allow Cygwin to build DLLs
+- remove 121B2TestData.zip from repo, now included in source, adjust spec
+
+-------------------------------------------------------------------
+Tue Nov 29 14:13:40 CET 2016 - manfred99@gmx.ch
+
+- Update to version 0.3.4:
+  * Pad incomplete last line when in SZ compatibility mode
+- tighten spec dependencies
+
+-------------------------------------------------------------------
+Sun Jul 31 13:10:07 CEST 2016 - manfred99@gmx.ch
+
+- split into 4 subpackages
+
+-------------------------------------------------------------------
+Wed Jul  6 23:08:15 CEST 2016 - manfred99@gmx.ch
+
+- initial packaging

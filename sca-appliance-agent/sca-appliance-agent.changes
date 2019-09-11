@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Thu Jan 25 00:33:59 UTC 2018 - jason.record@suse.com
+
+- Added sle15 detection and processing (bsc#1075250)
+
+-------------------------------------------------------------------
+Wed Jan  3 17:53:05 UTC 2018 - jason.record@suse.com
+
+- Removed /usr/bin/[ dependence
+
+-------------------------------------------------------------------
+Mon Dec 18 22:23:01 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jun  2 23:12:18 UTC 2017 - jason.record@suse.com
+
+- Fixed incorrect SLE12SP2 global library value (bsc#1042515)
+
+-------------------------------------------------------------------
+Fri Mar  6 00:35:55 UTC 2015 - jrecord@suse.com
+
+- Fixed archiving when ARCHIVE_MODE is set
+- Updated Documentation link in SCA Report
+
+-------------------------------------------------------------------
+Fri Nov 14 23:03:25 UTC 2014 - jrecord@suse.com
+
+- Added SUSE Manager pattern support to sdagent-supportconfig
+
+-------------------------------------------------------------------
+Tue Jul 15 20:17:36 UTC 2014 - jrecord@suse.com
+
+- Email update report when patterns are updated
+
+-------------------------------------------------------------------
+Thu Jul  3 19:50:27 UTC 2014 - jrecord@suse.com
+
+- Removed sdagent-monitor
+- Updated man pages
+
+-------------------------------------------------------------------
+Thu Jun 26 22:43:19 UTC 2014 - jrecord@suse.com
+
+- Created uniform email address
+- Fixed sdagent-patterns email notification
+- Added ftp link to archive email
+- Fixed SCA Report subject line
+
+-------------------------------------------------------------------
+Fri Jun 13 17:14:46 UTC 2014 - jrecord@suse.com
+
+- Added email from address
+
+-------------------------------------------------------------------
+Wed Jun 11 17:14:55 UTC 2014 - jrecord@suse.com
+
+- Added missing email boundary
+- Changed email message to HTML and plain text
+- Fixed pattern source links (bnc#881411)
+- Fixed HAE preprocessor (bnc#881404)
+
+-------------------------------------------------------------------
+Tue Jun  3 20:51:13 UTC 2014 - jrecord@suse.com
+
+- Updated SCA Report subject
+
+-------------------------------------------------------------------
+Wed May 14 19:04:12 UTC 2014 - jrecord@suse.com
+
+- Created local reportfull.php (bnc#877420)
+- Fixed local reportfull.php validation (bnc#876347)
+
+-------------------------------------------------------------------
+Mon May  5 15:45:39 UTC 2014 - jrecord@suse.com
+
+- Fetch SR number from basic-environment.txt, not filename.
+
+-------------------------------------------------------------------
+Fri May  2 16:28:51 UTC 2014 - jrecord@suse.com
+
+- Fixed sdagent-supportconfig patternPreProcessor() detection (bnc#876180)
+
+-------------------------------------------------------------------
+Fri Apr 25 17:07:26 UTC 2014 - jrecord@suse.com
+
+- Cleaned up pattern errors for defect reports
+- Removed clearn screen and -c
+
+-------------------------------------------------------------------
+Mon Apr 21 19:21:34 UTC 2014 - jrecord@suse.com
+
+- Fixed pattern evaluation errors (bnc#874027)
+
+-------------------------------------------------------------------
+Wed Apr 16 16:29:43 UTC 2014 - jrecord@suse.com
+
+- Changed to lowercase directories
+- Removed SLE/all and OES/all preprocessor option
+
+-------------------------------------------------------------------
+Tue Apr  8 19:36:04 UTC 2014 - jrecord@suse.com
+
+- Fixed SQL import error on invalid SR numbers (bnc#871657)
+
+-------------------------------------------------------------------
+Thu Mar 27 19:05:23 UTC 2014 - jrecord@suse.com
+
+- Removed unused Samba filter
+
+-------------------------------------------------------------------
+Mon Mar 24 21:10:40 UTC 2014 - jrecord@suse.com
+
+- Updated man page with sub options
+- Moved UPDATE_FROM_PATTERN_REPO to sdagent-patterns.conf
+
+-------------------------------------------------------------------
+Thu Mar 20 20:38:08 UTC 2014 - jrecord@suse.com
+
+- Default MAX_ARCHIVE_SIZE changed to 2Gb
+- Fixed huge file download issue
+- Archives moved to ARCHIVE_DIR when ARCHIVE_MODE enabled
+- Added sdagent-supportconfig.conf for ARCHIVE_DIR
+- Updated all references from sdagent-worker to sdagent-supportconfig
+- Renamed sdagent-worker to sdagent-supportconfig
+- Fixed man page headers
+- Updated man page references to sections
+- Added sdagent-health man page
+- Moved section 1 man pages to section 8
+
+-------------------------------------------------------------------
+Thu Mar 13 20:13:56 UTC 2014 - jrecord@suse.com
+
+- Fixed FSF address in files
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Thu Mar  6 18:43:56 UTC 2014 - jrecord@suse.com
+
+- Fixed sdagent-patterns update within sdagent-config
+
+-------------------------------------------------------------------
+Sat Feb  8 22:02:41 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 00:22:49 UTC 2014 - jrecord@suse.com
+
+- Added changes file
+
+-------------------------------------------------------------------
+Thu Jan 16 15:32:28 MST 2014 jrecord@suse.com
+
+- SCADIAG_HOME renamed to SCA_WORK
+- SPRSRC renamed to SCA_PATTERN_PATH
+- Relocated files according to FHS
+
+-------------------------------------------------------------------
+Thu Jan 07 15:32:28 MST 2014 jrecord@suse.com
+
+- Updated pattern filter in sdagent-patterns
+- sdagent-patterns has more explicit zypper startup options
+- Separated sca-appliance-common files
+
+-------------------------------------------------------------------
+Tue Dec 24 15:32:28 MST 2013 jrecord@suse.com
+
+- Added ARCH_LOCATION to sdagent.conf
+- sdagent-worker inserts ARCH_LOCATION into SQL import file
+
+-------------------------------------------------------------------
+Thu Dec 20 15:32:28 MST 2013 jrecord@suse.com
+
+- Separated as individual RPM package
+- Sends email for pattern updates when $EMAIL_LEVEL -gt $EMAIL_MIN
+- Correctly checks for SUSE Linux Enterpise archives only
+- sdagent-patterns now updates from the OBS pattern repo
+  * using -u prevents updates
+

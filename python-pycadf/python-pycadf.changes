@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Mon Apr  8 14:04:16 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.9.0
+  - add lib-forward-testing-python3 test job
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Enabling FIPS mode by using sha256 instead of md5
+  - Add release note for MD5 hash removal
+  - Don't quote {posargs} in tox.ini
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Switch to stestr
+  - Use templates for cover and lower-constraints
+
+-------------------------------------------------------------------
+Mon Sep  3 17:25:51 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.8.0
+  - Trivial: Update pypi url to new url
+  - fix tox python3 overrides
+  - Updated from global requirements
+  - add lower-constraints job
+  - Remove moxstubout usage
+
+-------------------------------------------------------------------
+Fri Feb 23 13:39:51 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 10:09:33 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.7.0 (bsc#1078607)
+  - Turn on warning-is-error for sphinx build
+  - Removed references to events api
+  - Stopping using norm_ns
+  - Update URL in docs as per the doc-migration spec
+  - Adding panko_api_audit_map.conf to pycadf
+  - Adding gnocchi_api_audit_map.conf to pycadf
+  - Avoid tox_install.sh for constraints support
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme
+  - changed 'target_endpoint_type' value
+
+-------------------------------------------------------------------
+Mon Aug  7 14:45:59 UTC 2017 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - Make `is_valid` more flexible with uuid validation
+  - Updated from global requirements
+  - Use https for *.openstack.org references
+
+-------------------------------------------------------------------
+Mon Feb 13 08:54:16 UTC 2017 - tbechtold@suse.com
+
+update to version 2.5.0
+  * Remove references to Python 3.4
+  * Add Constraints support
+  * cleanup string
+  * Show team and repo badges on README
+  * Changed the home-page link
+  * Updated from global requirements
+  * Clean oslo.i18n
+
+-------------------------------------------------------------------
+Fri Sep  2 19:17:09 UTC 2016 - tbechtold@suse.com
+
+- update to version 2.4.0
+  * Remove discover from test-requirements
+  * Updated from global requirements
+  * Fix order of arguments in assertEqual
+  * Don't include openstack/common in flake8 exclude list
+
+-------------------------------------------------------------------
+Wed Aug 10 12:05:28 UTC 2016 - tbechtold@suse.com
+
+- update to 2.3.0:
+  * Add missing os-volumes_boot to nova_api_audit_map.conf
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove unused pngmath Sphinx extension
+  * Updated from global requirements
+- update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Thu Mar  3 14:56:01 UTC 2016 - tbechtold@suse.com
+
+- update to 2.1.0:
+  * Updated from global requirements
+  * Add docstring validation
+  * Adding ironic api specific audit map configuration
+  * Updated from global requirements
+  * Updated from global requirements
+  * Enable cadf support for Heat
+  * Fix wrong use of comma
+  * Updated from global requirements
+  * remove suport for py33
+  * Put py34 first in the env order of tox
+  * relax id validation
+  * Updated from global requirements
+  * Remove Python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+  * make generate_uuid return valid uuid
+  * Updated from global requirements
+  * Add authenticate and evaluate actions
+  * Change ceilometer endpoint name from telemetry to metering
+  * No need for Oslo Incubator Sync
+  * Document and update existing hacking violations
+  * Add shields.io version/downloads links/badges into README.rst
+  * Include changelog/history in docs
+  * Fix event example
+  * Add event name
+  * Event doc indentation issue
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fixed typo error
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Sep  7 11:25:58 UTC 2015 - dmueller@suse.com
+
+- update to 1.1.0:
+  * Adding barbican specific base resources
+  * Updated from global requirements
+  * ensure id is not empty
+  * Add api_audit_map.conf for Ceilometer project
+  * Remove script already nuked from oslo-incubator
+  * Add unit tests to increase coverage of cadftype
+  * Remove run_cross_tests.sh
+  * drop audit middleware
+  * Add trove conf file to setup.cfg
+  * Added a testcase to cover ValueError in tag.py
+  * Add test to cover mask value for utils.mask_value
+  * Uncap library requirements for liberty
+  * update README.rst to include additional links
+  * Remove empty _templates folder
+  * Add a section for audit maps
+  * Fix formatting error for geolocation note
+  * add a new set of release notes
+  * Clean up pycadf's doc landing page
+  * Add api_audit_map.conf for Trove project
+  * Additional doc clean up
+  * cleanup documentation
+  * Add deprecation message to Audit API
+  * Do not depend on endpoint id existing in the service catalog
+  * Fix oslo.messaging link in docs
+  * Use oslo_context
+  * Use oslo namespaces
+  * Add a new CADF type for keystone trusts
+  * add helper module
+  * Add new CADF taxonomy types
+  * Pull out some CADF taxonomy to be constants
+  * upgrade hacking to 0.10.0
+  * deprecate audit middleware
+  * sync oslo
+  * Workflow documentation is now in infra-manual
+  * Add classifiers for Python 3
+  * Add release notes
+  * Use correct name of oslo debugger script
+  * Remove unused dependencies from pycadf
+  * Use oslo tests fixture
+  * Use oslo.serialization
+  * Sync oslo libraries
+  * Remove dependencies from docs test env in tox.ini
+  * Stop using intersphinx
+  * Use oslo_debug_helper and remove our own version
+  * Work toward Python 3.4 support and testing
+  * add federated credential
+  * define the project goal
+  * Enable PEP8 checks E128, E251 and E265
+  * clean up license headers
+  * add CONTRIBUTING doc
+  * revise readme with a project description
+  * Debug env for tox
+  * Fix a grammatical error in contributing doc
+  * Fix typo comments
+  * Enabled hacking checks H305 and H307
+  * Bump hacking to version 0.9.2
+  * Remove docutils pin
+  * Expand © and remove unnecessary encoding lines
+  * Bump hacking to 0.9.x series
+  * add audit_maps for more OpenStack components
+
+-------------------------------------------------------------------
+Tue May 27 07:17:07 UTC 2014 - dmueller@suse.com
+
+- update to 0.5.1:
+  * sync oslo
+  * remove token from notifier middleware
+  * Updated from global requirements
+  * reorder documentation
+  * import run_cross_tests.sh from incubator
+
+-------------------------------------------------------------------
+Wed Apr  2 08:51:51 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.5:
+  * Updated from global requirements
+  * add OpenStack Foundation as author
+  * pycadf documentation
+  * Updated from global requirements
+  * add docstrings to functions
+- Add _service file for easier updates
+
+-------------------------------------------------------------------
+Thu Mar  6 09:07:35 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.4.1:
+  + catch empty json body
+- Changes from version 0.4:
+  + add constant for security service
+  + audit middleware in pycadf
+  + oslo common code sync and requirements cleanup
+  + Rollback change to that Install configs into /etc
+  + Update .gitreview after repo rename
+  + Install configs into /etc, not /usr/etc
+- Changes from version 0.3.1:
+  + update audit_map
+  + update build_typeURI to drop query string
+  + sync common code and requirements
+  + add path to event
+  + mask token values
+  + adjust typeURI to capture target better
+  + Python 3: update setup.cfg to advertise python 3 compatibility
+- Fixed requirements
+
+-------------------------------------------------------------------
+Fri Feb 14 09:42:27 UTC 2014 - speilicke@suse.com
+
+- Run testr directly
+- Fix requirements
+
+-------------------------------------------------------------------
+Mon Jan 13 13:57:11 UTC 2014 - dmueller@suse.com
+
+- update to 0.3:
+  * Python 3.x support
+
+-------------------------------------------------------------------
+Fri Dec 20 15:19:42 UTC 2013 - dmueller@suse.com
+
+- Initial package 
+

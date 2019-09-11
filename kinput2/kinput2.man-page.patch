@@ -1,0 +1,11 @@
+--- kinput2-v3.1-beta3.orig/cmd/kinput2.man	Thu Jan 10 17:06:44 2002
++++ kinput2-v3.1-beta3/cmd/kinput2.man	Sat Jan 19 18:15:12 2002
+@@ -338,7 +338,7 @@
+ .TP 4
+ \fBccdef\fP
+ This resource specifies the input character conversion rule file.
+-The default is \fB/usr/lib/X11/ccdef/ccdef.kinput2\fP.
++The default is \fB/usr/lib/X11/ccdef/ccdef.kinput2.egg\fP.
+ .RE
+ .PP
+ .B Canna

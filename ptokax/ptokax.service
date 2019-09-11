@@ -1,0 +1,11 @@
+[Unit]
+Description=PtokaX DC++ server
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/ptokax -c /etc/ptokax
+User=ptokax
+Group=ptokax
+
+[Install]
+WantedBy=multi-user.target

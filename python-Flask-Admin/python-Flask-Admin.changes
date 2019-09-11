@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Dec 30 19:01:04 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.5.3:
+  * Fixed XSS vulnerability
+  * Support nested categories in the navbar menu
+  * SQLAlchemy
+    + sort on multiple columns with column_default_sort
+    + sort on related models in column_sortable_list
+    + fix: inline model forms can now also be used for models with
+      multiple primary keys
+    + support for using mapped column_property
+  * Upgrade Leaflet and Leaflet.draw plugins, used for geoalchemy
+    integration
+  * Specify minimum_input_length for ajax widget
+  * Peewee: support composite keys
+  * MongoEngine: when searching/filtering the input is now regarded as
+    case-insensitive by default
+  * FileAdmin
+    + handle special characters in filename
+    + fix a bug with listing directories on Windows
+    + avoid raising an exception when unknown sort parameter is
+      encountered
+  * WTForms 3 support
+
+-------------------------------------------------------------------
+Tue Oct 30 10:24:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 30 09:41:06 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by acitoolkit

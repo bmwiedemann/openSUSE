@@ -1,0 +1,35 @@
+From: Philipp Thomas <pth@suse.de>
+Date: 2013-02-25 13:08:49+01:00
+Subject: Make ibnodes output help
+References: bnc#740144
+
+Make ibnodes output its own help message.
+
+---
+ scripts/ibnodes.in |   14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+Index: scripts/ibnodes.in
+===================================================================
+--- scripts/ibnodes.in.orig	2013-08-18 08:08:16.000000000 +0200
++++ scripts/ibnodes.in	2014-01-22 00:57:45.736751796 +0100
+@@ -1,5 +1,19 @@
+ #!/bin/sh
+ 
++usage()
++{
++	echo Usage: $(basename $0) "[-h] [<topology-file> | -C ca_name" \
++	                           "-P ca_port -t(imeout) timeout_ms]"
++	exit -1
++}
++
++while [ "$1" ]; do
++	case $1 in
++		-h) usage
++		;;
++	esac
++done
++
+ IBPATH=${IBPATH:-@IBSCRIPTPATH@}
+ 
+ $IBPATH/ibhosts $@; $IBPATH/ibswitches $@

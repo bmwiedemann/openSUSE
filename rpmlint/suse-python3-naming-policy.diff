@@ -1,0 +1,22 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:37 +0200
+Subject: [PATCH] suse-python3-naming-policy.diff
+
+===================================================================
+---
+ NamingPolicyCheck.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: rpmlint-rpmlint-1.10/NamingPolicyCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.10.orig/NamingPolicyCheck.py
++++ rpmlint-rpmlint-1.10/NamingPolicyCheck.py
+@@ -89,7 +89,7 @@ check = NamingPolicyCheck()
+ # if somone as a elegant solution, I will be happy to implement and test it.
+ 
+ check.add_check('xmms', '^xmms(-|$)', '^/usr/lib(64)?/xmms/')
+-check.add_check('python', '^python(-|$)', '^/usr/lib(64)?/python[1-9](-[1-9])?')
++#check.add_check('python', '^python(2|3)?(-|$)', '^/usr/lib(64)?/python[1-9](-[1-9])?')
+ check.add_check('perl5', '^perl(-|$)', '^/usr/lib(64)?/perl5/vendor_perl')
+ check.add_check('apache2', '^apache2-mod_', '^/usr/lib(64)?/apache2-')
+ check.add_check('fortune', '^fortune(-|$)', '^/usr/share/games/fortunes/')

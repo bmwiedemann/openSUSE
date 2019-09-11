@@ -1,0 +1,12 @@
+Index: xpenguins-2.2/configure.in
+===================================================================
+--- xpenguins-2.2.orig/configure.in
++++ xpenguins-2.2/configure.in
+@@ -1,6 +1,6 @@
+ AC_INIT(src/main.c)
+ AM_INIT_AUTOMAKE(xpenguins,2.2)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl Checks for programs.
+ AC_PROG_CC

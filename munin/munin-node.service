@@ -1,0 +1,12 @@
+[Unit]
+Description=Munin Node
+Requires=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/munin-node
+ExecStartPre=/usr/bin/mkdir -p /var/run/munin/
+PIDFile=/var/run/munin/munin-node.pid
+
+[Install]
+WantedBy=multi-user.target

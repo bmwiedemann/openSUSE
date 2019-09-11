@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Mon Apr  8 08:21:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Rename to apache-commons-fileupload and upgrade to version 1.4
+- Generate and customize ant build.xml file
+
+-------------------------------------------------------------------
+Fri Dec  7 06:28:14 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against xml-commons-apis instead of xerces-j2-xml-apis
+
+-------------------------------------------------------------------
+Mon Sep 18 11:22:00 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+- Clean spec file and fix rpmlint warnings
+
+-------------------------------------------------------------------
+Tue Jul  8 09:18:04 UTC 2014 - tchvatal@suse.com
+
+- Not needed condition.
+
+-------------------------------------------------------------------
+Tue Jul  8 09:16:56 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and fix build on sle11 properly.
+
+-------------------------------------------------------------------
+Fri Jun 27 12:58:58 UTC 2014 - jmatejek@suse.com
+
+- added Xerces xml-apis to dependencies to fix build
+
+-------------------------------------------------------------------
+Thu May 15 15:18:30 UTC 2014 - darin@darins.net
+
+- disable bytecode check on sle_11
+- remove removal of buildroot in %install 
+
+-------------------------------------------------------------------
+Wed Apr  2 13:16:52 UTC 2014 - tchvatal@suse.com
+
+- Fix bnc#862781/CVE-2014-0050: buffer overflow
+  http://svn.apache.org/viewvc?view=revision&revision=1565143
+    * jakarta-commons-fileupload-CVE-2014-0050-DOS-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Fri Oct 18 11:50:53 UTC 2013 - mvyskocil@suse.com
+
+- remove gcj part and deprecated macros 
+
+-------------------------------------------------------------------
+Thu Oct 17 08:32:35 UTC 2013 - mvyskocil@suse.com
+
+- fix bnc#846174/CVE-2013-2186: null byte injection flaw
+  http://svn.apache.org/viewvc?view=revision&revision=1507048
+  * jakarta-commons-fileupload-CVE-2013-2186.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:47 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Mar 13 16:23:38 CET 2008 - mvyskocil@suse.cz
+
+- merged with jpackage 1.7
+- update to 1.1.1
+
+-------------------------------------------------------------------
+Fri Sep 22 14:09:58 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 18 11:46:47 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.0 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 29 00:13:02 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Sep 17 01:33:21 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Sun Sep  5 22:42:53 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.0 (JPackage 1.5)
+

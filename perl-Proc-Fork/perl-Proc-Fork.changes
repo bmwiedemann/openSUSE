@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Aug 25 05:53:14 UTC 2018 - coolo@suse.com
+
+- updated to 0.806
+   see /usr/share/doc/packages/perl-Proc-Fork/Changes
+
+  0.806 Fri 24 Aug 2018
+  	- No functional changes
+  	- Documentation server example fix, spotted by Shoichi Kaji
+
+-------------------------------------------------------------------
+Wed Aug 22 05:58:55 UTC 2018 - coolo@suse.com
+
+- updated to 0.805
+   see /usr/share/doc/packages/perl-Proc-Fork/Changes
+
+  0.805 Tue 21 Aug 2018
+  	- No functional changes
+  	- No compile test and no test dependencies any more
+
+-------------------------------------------------------------------
+Tue Apr 14 15:37:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.804
+   see /usr/share/doc/packages/perl-Proc-Fork/Changes
+
+-------------------------------------------------------------------
+Mon Jun 10 10:46:27 UTC 2013 - coolo@suse.com
+
+- updated to 0.802
+ No monkeying with C<bless>, also dropped dependencies on Object::Tiny::Lvalue and Scalar::Util.
+ Figured out how to add the credit to Eric Roode for the docs back into the POD under Pod::Weaver.
+ All operation and error checking is now in a single function.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:24 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:41 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:56 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Jan 25 13:40:03 CET 2010 - anicka@suse.cz
+
+- update to 0.71
+ * Completely new internal structure; modified API, now with a 
+   C<run_fork> wrapper.
+ * L<Exporter::Tidy> replaces some local code.
+ * POD examples extracted and provided as files in an F<eg/> directory.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Feb 26 13:58:23 CET 2007 - pkirsch@suse.de
+- initial package
+

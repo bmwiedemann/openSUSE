@@ -1,0 +1,403 @@
+-------------------------------------------------------------------
+Tue Mar 20 17:41:06 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:22:52 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 10 21:45:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Sun Aug 20 20:40:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + bgo#690373: The syntax-highlighting for Gtk types does not work
+    from version 3.x.
+  + bgo#711771: The edge-column variable is not taken into account
+    by anjuta for scintilla editor.
+  + Update to scintilla 3.7.5.
+  + Update new styles to use the one defined in Anjuta.
+  + Replace deprecated types.
+  + Fix typo.
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Tue Sep 24 07:44:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + No changes since version 3.9.5.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:04:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  +  scintilla: Update to scintilla 3.3.4.
+  + extra: Switch from gnome-doc-utils to yelp-tools.
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams change of the documentation infrastructure.
+
+-------------------------------------------------------------------
+Mon Mar 25 20:32:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + scintilla:
+    - bgo#689896: Unable to save scintilla indentation preferences.
+    - Initialize editor settings when creating a new instance.
+    - Implement new indentation functions.
+    - bgo#690373: The syntax-highlighting for Gtk types does not
+      work from version 3.x.
+    - Fix compiler warnings.
+    - Allow to open a file by dropping it in the editor pane.
+    - Fix behavior of Scintilla to match GtkSourceView.
+  + scratchbox: Fix compiler warnings.
+  + Updated translations.- Bump _major_minor to 3.8.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:45:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + bgo#690320: Typo: loose should be lose
+  + scintilla:
+    - Initialize editor settings when creating a new instance
+    - Implement new indentation functions
+    - bgo#690373: The syntax-highlighting for Gtk types does not
+      work from version 3.x
+    - Fix compiler warnings
+    - Allow to open a file by dropping it in the editor pane
+  + scratchbox: Fix compiler warnings
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 10 10:06:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Bugs fixed: bgo#684001, bgo#689896
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 27 07:55:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Minor bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 23 18:41:57 UTC 2012 - dimstar@opensuse.org
+
+- Rework BuildRequires to be close to what configure checks for:
+  + Old, removed one: anjuta-devel
+  + New, added ones (pkgconfig()-style: glib-2.0, gmodule-2.0,
+    gthread-2.0, libanjuta-3.0, libxml-2.0.
+- This change allows us to correctly version the BuildRequires,
+  following configure as closely as possible.
+
+-------------------------------------------------------------------
+Wed Jul 18 11:19:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Scintilla:
+    - Use common settings for indentation
+    - Fix a crash when closing editors
+    - Initialize indentation settings (indent with tab/unindent
+      with
+    - Fix default foreground and background text color
+    - Update to scintilla 3.2.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:38:11 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + scintilla:
+    - Update to include scintilla 3.0.3.
+    - Respect theme colours and blinking cursor preference
+      (bgo#348850, bgo#351214).
+    - Explicitly set GDK_SCROLL_MASK as recent gtk+ versions
+      require.
+    - Build fixes.
+  + Updated translations.
+- Pass %{?no_lang_C} to %find_lang, as we want to make sure the
+  english documentation is in the main package.
+
+-------------------------------------------------------------------
+Tue Feb 21 12:45:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + scintilla:
+    - Update for anjuta changes.
+    - Keep window position when reloading a file.
+    - bgo#669359: yellow debugger color in dark theme
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:52:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + scintilla:
+    - Add editor view settings
+    - Improve style setting dialog
+    - Fix reload comparison when removing trailing space
+    - Fix a crash when saving an empty file
+    - Move preferences to org/gnome/anjuta/plugins/scintilla
+    - Add an id column to GtkComboBox used in preferences
+    - Add one page of documentation in Mallard format
+    - Link to gmodule to fix build against glib >= 2.31
+    - Other bugs fixed: bgo#610371, bgo#664514.
+  + scratchbox:
+    - Move preferences to org/gnome/anjuta/plugins/scratchbox
+    - Add an id column to GtkComboBox used in preferences
+  + Updated translations.
+- Drop anjuta-extras-link-gmodule.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  that were only needed for above patch.
+- Add gnome-doc-utils-devel BuildRequires for new documentation.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Wed Dec 21 14:45:34 UTC 2011 - vuntz@opensuse.org
+
+- Add anjuta-extras-link-gmodule.patch: fix build against glib
+  2.31.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for above patch.
+
+-------------------------------------------------------------------
+Wed Oct 12 15:38:32 UTC 2011 - vuntz@opensuse.org
+
+- Add anjuta BuildRequires to fix a build failure caused by
+  directory not being owned. It's okay since we have a Requires on
+  anjuta.
+
+-------------------------------------------------------------------
+Mon Sep 26 21:28:36 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Various Scintilla fixes
+
+-------------------------------------------------------------------
+Wed Sep 21 17:53:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Scintilla updated to 2.29
+  + Various other Scintilla fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 17 11:03:41 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Jul 25 22:45:50 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + scintilla: bgo#631157: unix is not defined on OpenBSD
+  + bgo#654073: Avoid to pass a directory to builder2schema when
+    there is no key file
+
+-------------------------------------------------------------------
+Wed Jul  6 11:04:23 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + scratchbox: Stop using deprecated GTK+ API (bgo#652700)
+- Drop anjuta-extras-gtk3.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 15 23:43:38 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Sample, scintilla, and scratchbox plugins updated to work with
+    GTK+ 3.x
+  + Profiler and valgrind plugins removed
+- Switch from gconf schema handling to gsettings schema handling.
+- Remove --disable-schemas-install from configure: it was needed
+  for gconf.
+- Remove now unused binutils-devel, gconf2-devel, graphviz-devel,
+  libgnomecanvas-devel and libgnomeui-devel BuildRequires.
+- Change -lang Requires to Recommends.
+- Add gsettings-desktop-schemas Requires.
+- Add anjuta-extras-gtk3.patch: Fix build of scratchbox plugin. The
+  plugin still used long deprecated GTK2 symbols, which are no
+  longer existing. Taken from git.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:39:07 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.32.1.1:
+  + profiler: bgo#633018: fix crash happening because misuse of
+                          xmlCleanupParser
+
+-------------------------------------------------------------------
+Tue Sep 28 19:42:26 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 09:41:12 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  1 12:27:56 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91.0:
+  + scintilla: bgo#625397: Critical warning on project unload.
+                           Crash on reload.
+
+-------------------------------------------------------------------
+Thu Aug 19 12:14:46 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90.0:
+  + Profiler updated to use new symbol-db API
+  + Some changes to Scintilla for snippets support
+- Drop anjuta-extras-fixes-from-git.patch
+- Use %{?smp_mflags}
+
+-------------------------------------------------------------------
+Fri Aug  6 18:21:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.1.0:
+  + scintilla: Apparently sourceview doesn't change the iterator
+    when inserting text now
+  + class-inheritance: Removed plugin as it got moved to anjuta
+- Add anjuta-extras-fixes-from-git.patch to fix build with latest
+  anjuta.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:29:29 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Fri May 28 19:18:08 UTC 2010 - dimstar@opensuse.org
+
+- Drop anuta-extras-rpmlintrc, fixed by upstream; the plugins
+  properly are linked with -avoid-version -module.
+
+-------------------------------------------------------------------
+Wed May 26 08:18:50 UTC 2010 - dimstar@opensuse.org
+
+- Use valid RPM group Development/Tools/IDE.
+
+-------------------------------------------------------------------
+Wed Apr 28 21:49:12 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1.0:
+  + scintilla: Added missing file to EXTRA_DIST
+  + Fix COPYING to state GPLv2 correctly
+  + Bugs fixed: bgo#615412, bgo#615360
+
+-------------------------------------------------------------------
+Thu Apr  1 15:33:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Updates
+    - Class inheritance plugin completely redone
+    - Use Scintilla 2.03
+  + Bugs fixed:
+    - bgo#610738 - Missing license.txt in anjuta-extras scintilla
+      plugin
+    - symbol-db: bgo#612089 - Styles choosen for class-inheritance
+      is broken for some themes
+
+-------------------------------------------------------------------
+Sun Jan 31 23:50:42 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.2.0:
+  + Updates:
+    - Unify scintilla and gtksourceview behaviour
+  + Bugs fixed:
+    - bgo#600923 - anjuta-extras: ANJUTA_PLUGIN_LDFLAGS not defined
+    - bgo#585529 - Replace AnjutaMessageArea with GtkInfoBar
+- Drop anjuta-extras-build-latest-anjuta.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan 16 19:16:22 CET 2010 - vuntz@opensuse.org
+
+- Add anjuta-extras-build-latest-anjuta.patch to fix build with
+  anjuta 2.29.x.
+- Add anjuta Requires.
+- Remove gnome-common BuildRequires, and call to gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Thu Oct  1 17:38:08 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.0:
+  + Updates:
+    - Use scintilla 2.0
+  + Bugs fixed:
+    - scintilla: bgo#571816 – Scintilla no longer highlights
+      typedefs
+    - bgo#590334 – Fix -I ordering
+    - bgo #586750 – Tooltips are interestingly irritating
+    - scintilla: bgo#575926 – 'Maintain past indentation' disables
+      itself
+    - class-inheritance: fixed bgo#590522 remove libgnome(ui)
+    - scintilla: bgo#590633 – Add libgthread-2.0 to link
+    - bgo#590963 – Anjuta-extras make distcheck fail
+- Drop anjuta-extras-libgnome.patch: fixed upstream.
+- Drop anjuta-gthread.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug  3 14:30:07 CEST 2009 - vuntz@novell.com
+
+- Add anjuta-extras-libgnome.patch to fix build with newer anjuta.
+- Add libgnomeui-devel and libgnomecanvas-devel BuildRequires.
+- Add anjuta-gthread.patch to fix build again (missing library
+  during link).
+
+-------------------------------------------------------------------
+Fri Jul 31 12:28:54 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + Remove libglade dependency
+  + Various build issues
+- Drop anjuta-extras-no-libglade.patch.bz2: fixed usptream.
+- Drop anjuta-extras-fix_valgrind_detection.patch: fixed upstream.
+- Remove autoreconf call, and gnome-common BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jun 11 03:38:14 CEST 2009 - vuntz@novell.com
+
+- Add anjuta-extras-no-libglade.patch.bz2 to fix build with latest
+  anjuta.
+- Use autoreconf and add gnome-common BuildRequires.
+
+-------------------------------------------------------------------
+Tue May 19 11:28:29 CEST 2009 - vuntz@novell.com
+
+- Do not use tabs, remove trailing white spaces.
+- Pass --disable-schemas-install to configure.
+- Use parallel build.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Mon May 18 10:10:30 CEST 2009 - dominique-obs@leuenberger.net
+
+- New BuildRequires for graphviz plugins and binutils-devel for
+  valgrind plugin
+- Created patch to fix libbfd detection (bnc483449, bgo#578486)
+- Added rpmlintrc. The .so files are plugins and belong here. 
+
+-------------------------------------------------------------------
+Thu May 14 00:00:59 CEST 2009 - dominique-obs@leuenberger.net
+
+- Initial package for openSUSE, Community Week effort.
+

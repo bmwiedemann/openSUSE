@@ -1,0 +1,59 @@
+[gdb/testsuite] Add missing initial prompt read in multidictionary.exp
+
+When running multidictionary.exp in conjunction with:
+...
+$ stress -c $(($(cat /proc/cpuinfo | grep -c "^processor") + 1))
+...
+we get:
+...
+Running gdb/testsuite/gdb.dwarf2/multidictionary.exp ...
+ERROR: Couldn't load multidictionary into gdb.
+
+                === gdb Summary ===
+
+nr of unresolved testcases       1
+...
+
+The multidictionary test-case needs -readnow, and achieves this using:
+...
+gdb_spawn_with_cmdline_opts "-readnow"
+gdb_load
+...
+but the initial gdb prompt is not read.  Usually, the following gdb_load
+command accidentally consumes that initial prompt (at the gdb_expect for the
+kill command in gdb_file_cmd).  But under high load, that doesn't happen and
+we run into the error.
+
+Fix this by consuming the initial gdb prompt after spawning gdb.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-07-23  Tom de Vries  <tdevries@suse.de>
+
+	PR testsuite/24842
+	* gdb.dwarf2/multidictionary.exp: Consume initial prompt after
+	gdb_spawn_with_cmdline_opts.
+
+---
+ gdb/testsuite/gdb.dwarf2/multidictionary.exp | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/multidictionary.exp b/gdb/testsuite/gdb.dwarf2/multidictionary.exp
+index 5588ef2144..c307ed8adc 100644
+--- a/gdb/testsuite/gdb.dwarf2/multidictionary.exp
++++ b/gdb/testsuite/gdb.dwarf2/multidictionary.exp
+@@ -148,6 +148,12 @@ if {[build_executable $testfile.exp $testfile [list $asm_file $srcfile] {}] \
+ 
+ # We force the DIEs above to be read in via "-readnow".
+ gdb_spawn_with_cmdline_opts "-readnow"
++set test "initial prompt"
++gdb_test_multiple "" $test {
++    -re ".*$gdb_prompt $" {
++	pass "$test"
++    }
++}
+ gdb_load $binfile
+ 
+ # All we need to do is check whether GDB is alive.  Without

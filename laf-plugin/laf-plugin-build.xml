@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="laf-plugin" default="all">
+
+	<!-- Compiler options -->
+	<property name="compiler.debug" value="on" />
+	<property name="compiler.generate.no.warnings" value="off" />
+	<property name="compiler.args" value="" />
+	<property name="compiler.max.memory" value="128m" />
+	<patternset id="compiler.excluded" />
+	<patternset id="compiler.resources">
+		<include name="**/?*.properties" />
+		<include name="**/?*.xml" />
+		<include name="**/?*.gif" />
+		<include name="**/?*.png" />
+		<include name="**/?*.jpeg" />
+		<include name="**/?*.jpg" />
+		<include name="**/?*.html" />
+		<include name="**/?*.dtd" />
+		<include name="**/?*.license" />
+		<include name="**/?*.tld" />
+		<include name="**/?*.ttf" />
+	</patternset>
+	
+	<dirname property="module.laf-plugin.basedir" file="${ant.file}" />
+
+	<property name="compiler.args.laf-plugin" value="${compiler.args}" />
+
+	<property name="laf-plugin.build.dir" value="${module.laf-plugin.basedir}/build/" />
+	<property name="laf-plugin.output.dir" value="${laf-plugin.build.dir}/classes50" />
+	<property name="laf-plugin.drop.dir" value="${module.laf-plugin.basedir}/drop" />
+	<property name="laf-plugin.src.dir" value="${module.laf-plugin.basedir}/src/" />
+
+	<path id="laf-plugin.module.bootclasspath">
+		<!-- Paths to be included in compilation bootclasspath -->
+	</path>
+
+	<path id="laf-plugin.module.classpath">
+		<pathelement location="${laf-plugin.drop.dir}/nanoxml-lite-2.2.3.jar" />
+	</path>
+
+	<patternset id="excluded.from.module.laf-plugin" />
+
+	<patternset id="excluded.from.compilation.laf-plugin">
+		<patternset refid="excluded.from.module.laf-plugin" />
+		<patternset refid="compiler.excluded" />
+	</patternset>
+
+	<path id="laf-plugin.module.sourcepath">
+		<dirset dir="${laf-plugin.src.dir}">
+			<include name="org/jvnet/lafplugin" />
+		</dirset>
+	</path>
+
+	<target name="compile.module.laf-plugin" depends="compile.module.laf-plugin.production" description="compile module laf-plugin" />
+
+	<target name="compile.module.laf-plugin.production" description="compile module laf-plugin production classes">
+		<mkdir dir="${laf-plugin.output.dir}" />
+		<javac destdir="${laf-plugin.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memoryMaximumSize="${compiler.max.memory}" fork="true" >
+			<compilerarg line="${compiler.args.laf-plugin}" />
+			<bootclasspath refid="laf-plugin.module.bootclasspath" />
+			<classpath refid="laf-plugin.module.classpath" />
+			<src refid="laf-plugin.module.sourcepath" />
+			<patternset refid="excluded.from.compilation.laf-plugin" />
+		</javac>
+		<copy todir="${laf-plugin.output.dir}">
+			<fileset dir="${laf-plugin.src.dir}">
+				<patternset refid="compiler.resources" />
+				<type type="file" />
+				<patternset refid="excluded.from.compilation.laf-plugin" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean.module.laf-plugin" description="cleanup module">
+		<delete dir="${laf-plugin.output.dir}" />
+	</target>
+
+	<target name="init" description="Build initialization">
+		<!-- Perform any build initialization in this target -->
+	</target>
+
+	<target name="jar-bin" description="create runtime jar">
+		<delete file="${laf-plugin.drop.dir}/laf-plugin-50.jar" />
+		<jar compress="true" destfile="${laf-plugin.drop.dir}/laf-plugin-50.jar" manifest="${laf-plugin.src.dir}/META-INF/MANIFEST.MF">
+			<fileset dir="${laf-plugin.output.dir}/" excludes="test/**" />
+			<fileset dir="${module.laf-plugin.basedir}/" includes="resources/**" />
+		</jar>
+	</target>
+
+	<target name="distro" description="create distribution">
+		<delete file="${module.laf-plugin.basedir}/laf-plugin-all.zip" />
+		<zip destfile="${module.laf-plugin.basedir}/laf-plugin-all.zip" compress="true">
+			<fileset dir="${module.laf-plugin.basedir}">
+				<include name="src/**" />
+				<include name="drop/**" />
+				<include name="build*.xml" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="jar" depends="jar-bin" description="create all jars" />
+
+	<target name="clean" depends="clean.module.laf-plugin" description="cleanup all" />
+
+	<target name="all" depends="init, clean, compile.module.laf-plugin, jar" description="build all" />
+</project>

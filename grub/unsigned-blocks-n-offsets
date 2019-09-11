@@ -1,0 +1,606 @@
+diff -urp grub-0.97.orig/grub/asmstub.c grub-0.97/grub/asmstub.c
+--- grub-0.97.orig/grub/asmstub.c	2010-05-10 12:48:00.000000000 +0200
++++ grub-0.97/grub/asmstub.c	2010-05-10 12:54:54.000000000 +0200
+@@ -970,7 +970,7 @@ hex_dump (void *buf, size_t size)
+ 
+ int
+ biosdisk (int subfunc, int drive, struct geometry *geometry,
+-	  int sector, int nsec, int segment)
++	  unsigned sector, unsigned nsec, int segment)
+ {
+   char *buf;
+   int fd = geometry->flags;
+diff -urp grub-0.97.orig/stage2/bios.c grub-0.97/stage2/bios.c
+--- grub-0.97.orig/stage2/bios.c	2004-03-27 17:34:04.000000000 +0100
++++ grub-0.97/stage2/bios.c	2010-05-10 12:54:54.000000000 +0200
+@@ -47,7 +47,7 @@ extern int get_diskinfo_floppy (int driv
+    return the error number. Otherwise, return 0.  */
+ int
+ biosdisk (int read, int drive, struct geometry *geometry,
+-	  int sector, int nsec, int segment)
++	  unsigned sector, unsigned nsec, int segment)
+ {
+   int err;
+   
+diff -urp grub-0.97.orig/stage2/builtins.c grub-0.97/stage2/builtins.c
+--- grub-0.97.orig/stage2/builtins.c	2010-05-10 12:48:01.000000000 +0200
++++ grub-0.97/stage2/builtins.c	2010-05-10 12:54:54.000000000 +0200
+@@ -127,7 +127,7 @@ check_password (char *entered, char* exp
+ 
+ /* Print which sector is read when loading a file.  */
+ static void
+-disk_read_print_func (int sector, int offset, int length)
++disk_read_print_func (unsigned sector, unsigned offset, int length)
+ {
+   grub_printf ("[%d,%d,%d]", sector, offset, length);
+ }
+@@ -143,11 +143,11 @@ blocklist_func (char *arg, int flags)
+   int num_entries = 0;
+   int last_length = 0;
+ 
+-  auto void disk_read_blocklist_func (int sector, int offset, int length);
++  auto void disk_read_blocklist_func (unsigned sector, unsigned offset, int length);
+   
+   /* Collect contiguous blocks into one entry as many as possible,
+      and print the blocklist notation on the screen.  */
+-  auto void disk_read_blocklist_func (int sector, int offset, int length)
++  auto void disk_read_blocklist_func (unsigned sector, unsigned offset, int length)
+     {
+       if (num_sectors > 0)
+ 	{
+@@ -1821,11 +1821,11 @@ install_func (char *arg, int flags)
+   char *stage2_os_file = 0;
+ #endif /* GRUB_UTIL */
+   
+-  auto void disk_read_savesect_func (int sector, int offset, int length);
+-  auto void disk_read_blocklist_func (int sector, int offset, int length);
++  auto void disk_read_savesect_func (unsigned sector, unsigned offset, int length);
++  auto void disk_read_blocklist_func (unsigned sector, unsigned offset, int length);
+   
+   /* Save the first sector of Stage2 in STAGE2_SECT.  */
+-  auto void disk_read_savesect_func (int sector, int offset, int length)
++  auto void disk_read_savesect_func (unsigned sector, unsigned offset, int length)
+     {
+       if (debug)
+ 	printf ("[%d]", sector);
+@@ -1841,7 +1841,7 @@ install_func (char *arg, int flags)
+ 
+   /* Write SECTOR to INSTALLLIST, and update INSTALLADDR and
+      INSTALLSECT.  */
+-  auto void disk_read_blocklist_func (int sector, int offset, int length)
++  auto void disk_read_blocklist_func (unsigned sector, unsigned offset, int length)
+     {
+       if (debug)
+ 	printf("[%d]", sector);
+@@ -3307,8 +3307,8 @@ savedefault_func (char *arg, int flags)
+   int saved_lengths[2];
+ 
+   /* Save sector information about at most two sectors.  */
+-  auto void disk_read_savesect_func (int sector, int offset, int length);
+-  void disk_read_savesect_func (int sector, int offset, int length)
++  auto void disk_read_savesect_func (unsigned sector, unsigned offset, int length);
++  void disk_read_savesect_func (unsigned sector, unsigned offset, int length)
+     {
+       if (sector_count < 2)
+ 	{
+diff -urp grub-0.97.orig/stage2/disk_io.c grub-0.97/stage2/disk_io.c
+--- grub-0.97.orig/stage2/disk_io.c	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/disk_io.c	2010-05-10 12:54:54.000000000 +0200
+@@ -125,8 +125,8 @@ int buf_track;
+ struct geometry buf_geom;
+ 
+ /* filesystem common variables */
+-int filepos;
+-int filemax;
++unsigned filepos;
++unsigned filemax;
+ 
+ static inline unsigned long
+ grub_log2 (unsigned long word)
+@@ -138,7 +138,7 @@ grub_log2 (unsigned long word)
+ }
+ 
+ int
+-rawread (int drive, int sector, int byte_offset, int byte_len, char *buf)
++rawread (int drive, unsigned sector, unsigned byte_offset, unsigned byte_len, char *buf)
+ {
+   int slen, sectors_per_vtrack;
+   int sector_size_bits = grub_log2 (buf_geom.sector_size);
+@@ -148,7 +148,7 @@ rawread (int drive, int sector, int byte
+ 
+   while (byte_len > 0 && !errnum)
+     {
+-      int soff, num_sect, track, size = byte_len;
++      unsigned soff, num_sect, track, size = byte_len;
+       char *bufaddr;
+ 
+       /*
+@@ -168,7 +168,7 @@ rawread (int drive, int sector, int byte
+ 	}
+ 
+       /* Make sure that SECTOR is valid.  */
+-      if (sector < 0 || sector >= buf_geom.total_sectors)
++      if (sector >= buf_geom.total_sectors)
+ 	{
+ 	  errnum = ERR_GEOM;
+ 	  return 0;
+@@ -192,7 +192,8 @@ rawread (int drive, int sector, int byte
+ 
+       if (track != buf_track)
+ 	{
+-	  int bios_err, read_start = track, read_len = sectors_per_vtrack;
++	  int bios_err;
++	  unsigned read_start = track, read_len = sectors_per_vtrack;
+ 
+ 	  /*
+ 	   *  If there's more than one read in this entire loop, then
+@@ -292,13 +293,12 @@ rawread (int drive, int sector, int byte
+ 
+ 
+ int
+-devread (int sector, int byte_offset, int byte_len, char *buf)
++devread (unsigned sector, unsigned byte_offset, unsigned byte_len, char *buf)
+ {
+   /*
+    *  Check partition boundaries
+    */
+-  if (sector < 0
+-      || ((sector + ((byte_offset + byte_len - 1) >> SECTOR_BITS))
++  if ( ((sector + ((byte_offset + byte_len - 1) >> SECTOR_BITS))
+ 	  >= part_length))
+     {
+       errnum = ERR_OUTSIDE_PART;
+@@ -1734,14 +1734,14 @@ grub_open (char *filename)
+ 
+ 
+ int
+-grub_read (char *buf, int len)
++grub_read (char *buf, unsigned len)
+ {
+   /* Make sure "filepos" is a sane value */
+-  if ((filepos < 0) || (filepos > filemax))
++  if (filepos > filemax)
+     filepos = filemax;
+ 
+   /* Make sure "len" is a sane value */
+-  if ((len < 0) || (len > (filemax - filepos)))
++  if ((len > (filemax - filepos)))
+     len = filemax - filepos;
+ 
+   /* if target file position is past the end of
+@@ -1831,9 +1831,9 @@ grub_read (char *buf, int len)
+ #ifndef STAGE1_5
+ /* Reposition a file offset.  */
+ int
+-grub_seek (int offset)
++grub_seek (unsigned offset)
+ {
+-  if (offset > filemax || offset < 0)
++  if (offset > filemax)
+     return -1;
+ 
+   filepos = offset;
+diff -urp grub-0.97.orig/stage2/filesys.h grub-0.97/stage2/filesys.h
+--- grub-0.97.orig/stage2/filesys.h	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/filesys.h	2010-05-10 12:50:07.000000000 +0200
+@@ -52,7 +52,7 @@ int fat_dir (char *dirname);
+ #ifdef FSYS_EXT2FS
+ #define FSYS_EXT2FS_NUM 1
+ int ext2fs_mount (void);
+-int ext2fs_read (char *buf, int len);
++int ext2fs_read (char *buf, unsigned len);
+ int ext2fs_dir (char *dirname);
+ #else
+ #define FSYS_EXT2FS_NUM 0
+@@ -70,7 +70,7 @@ int minix_dir (char *dirname);
+ #ifdef FSYS_REISERFS
+ #define FSYS_REISERFS_NUM 1
+ int reiserfs_mount (void);
+-int reiserfs_read (char *buf, int len);
++int reiserfs_read (char *buf, unsigned len);
+ int reiserfs_dir (char *dirname);
+ int reiserfs_embed (int *start_sector, int needed_sectors);
+ #if defined(__linux__) && defined (GRUB_UTIL)
+diff -urp grub-0.97.orig/stage2/fsys_ext2fs.c grub-0.97/stage2/fsys_ext2fs.c
+--- grub-0.97.orig/stage2/fsys_ext2fs.c	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/fsys_ext2fs.c	2010-05-10 12:50:07.000000000 +0200
+@@ -22,7 +22,7 @@
+ #include "shared.h"
+ #include "filesys.h"
+ 
+-static int mapblock1, mapblock2;
++static unsigned mapblock1, mapblock2;
+ 
+ /* sizes are always in bytes, BLOCK values are always in DEV_BSIZE (sectors) */
+ #define DEV_BSIZE 512
+@@ -351,9 +351,9 @@ struct ext4_extent_header
+ #define INODE \
+     ((struct ext2_inode *)((int)GROUP_DESC + EXT2_BLOCK_SIZE(SUPERBLOCK)))
+ #define DATABLOCK1 \
+-    ((int)((int)INODE + sizeof(struct ext2_inode)))
++    ((unsigned int)((int)INODE + sizeof(struct ext2_inode)))
+ #define DATABLOCK2 \
+-    ((int)((int)DATABLOCK1 + EXT2_BLOCK_SIZE(SUPERBLOCK)))
++    ((unsigned int)(DATABLOCK1 + EXT2_BLOCK_SIZE(SUPERBLOCK)))
+ 
+ /* linux/ext2_fs.h */
+ #define EXT2_ADDR_PER_BLOCK(s)          (EXT2_BLOCK_SIZE(s) / sizeof (__u32))
+@@ -365,7 +365,7 @@ struct ext4_extent_header
+ /* linux/ext2_fs.h */
+ #define EXT2_BLOCK_SIZE_BITS(s)        ((s)->s_log_block_size + 10)
+ /* kind of from ext2/super.c */
+-#define EXT2_BLOCK_SIZE(s)	(1 << EXT2_BLOCK_SIZE_BITS(s))
++#define EXT2_BLOCK_SIZE(s)	(1UL << EXT2_BLOCK_SIZE_BITS(s))
+ /* linux/ext2fs.h */
+ /* sizeof(struct ext2_group_desc) is changed in ext4 
+  * in kernel code, ext2/3 uses sizeof(struct ext2_group_desc) to calculate 
+@@ -425,7 +425,7 @@ ext2fs_mount (void)
+ 
+ /* Takes a file system block number and reads it into BUFFER. */
+ static int
+-ext2_rdfsb (int fsblock, int buffer)
++ext2_rdfsb (unsigned fsblock, int buffer)
+ {
+ #ifdef E2DEBUG
+   printf ("fsblock %d buffer %d\n", fsblock, buffer);
+@@ -439,8 +439,8 @@ ext2_rdfsb (int fsblock, int buffer)
+ */
+ /* Maps LOGICAL_BLOCK (the file offset divided by the blocksize) into
+    a physical block (the location in the file system) via an inode. */
+-static int
+-ext2fs_block_map (int logical_block)
++static unsigned
++ext2fs_block_map (unsigned logical_block)
+ {
+ 
+ #ifdef E2DEBUG
+@@ -481,7 +481,7 @@ ext2fs_block_map (int logical_block)
+ 	  && !ext2_rdfsb (INODE->i_block[EXT2_IND_BLOCK], DATABLOCK1))
+ 	{
+ 	  errnum = ERR_FSYS_CORRUPT;
+-	  return -1;
++	  return (unsigned)-1;
+ 	}
+       mapblock1 = 1;
+       return ((__u32 *) DATABLOCK1)[logical_block];
+@@ -489,14 +489,14 @@ ext2fs_block_map (int logical_block)
+   /* else */
+   logical_block -= EXT2_ADDR_PER_BLOCK (SUPERBLOCK);
+   /* now try the double indirect block */
+-  if (logical_block < (1 << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2)))
++  if (logical_block < (1UL << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2)))
+     {
+-      int bnum;
++      unsigned bnum;
+       if (mapblock1 != 2
+ 	  && !ext2_rdfsb (INODE->i_block[EXT2_DIND_BLOCK], DATABLOCK1))
+ 	{
+ 	  errnum = ERR_FSYS_CORRUPT;
+-	  return -1;
++	  return (unsigned)-1;
+ 	}
+       mapblock1 = 2;
+       if ((bnum = (((__u32 *) DATABLOCK1)
+@@ -505,20 +505,20 @@ ext2fs_block_map (int logical_block)
+ 	  && !ext2_rdfsb (bnum, DATABLOCK2))
+ 	{
+ 	  errnum = ERR_FSYS_CORRUPT;
+-	  return -1;
++	  return (unsigned)-1;
+ 	}
+       mapblock2 = bnum;
+       return ((__u32 *) DATABLOCK2)
+ 	[logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
+     }
+   /* else */
+-  mapblock2 = -1;
+-  logical_block -= (1 << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2));
++  mapblock2 = (unsigned)-1;
++  logical_block -= (1UL << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2));
+   if (mapblock1 != 3
+       && !ext2_rdfsb (INODE->i_block[EXT2_TIND_BLOCK], DATABLOCK1))
+     {
+       errnum = ERR_FSYS_CORRUPT;
+-      return -1;
++      return (unsigned)-1;
+     }
+   mapblock1 = 3;
+   if (!ext2_rdfsb (((__u32 *) DATABLOCK1)
+@@ -527,7 +527,7 @@ ext2fs_block_map (int logical_block)
+ 		   DATABLOCK2))
+     {
+       errnum = ERR_FSYS_CORRUPT;
+-      return -1;
++      return (unsigned)-1;
+     }
+   if (!ext2_rdfsb (((__u32 *) DATABLOCK2)
+ 		   [(logical_block >> EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK))
+@@ -535,7 +535,7 @@ ext2fs_block_map (int logical_block)
+ 		   DATABLOCK2))
+     {
+       errnum = ERR_FSYS_CORRUPT;
+-      return -1;
++      return (unsigned)-1;
+     }
+   return ((__u32 *) DATABLOCK2)
+     [logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
+@@ -659,13 +659,13 @@ ext4fs_block_map (int logical_block)
+ 
+ /* preconditions: all preconds of ext2fs_block_map */
+ int
+-ext2fs_read (char *buf, int len)
++ext2fs_read (char *buf, unsigned len)
+ {
+-  int logical_block;
+-  int offset;
+-  int map;
++  unsigned logical_block;
++  unsigned offset;
++  unsigned map;
+   int ret = 0;
+-  int size = 0;
++  unsigned size = 0;
+ 
+ #ifdef E2DEBUG
+   static char hexdigit[] = "0123456789abcdef";
+@@ -700,7 +700,7 @@ ext2fs_read (char *buf, int len)
+ #ifdef E2DEBUG
+       printf ("map=%d\n", map);
+ #endif /* E2DEBUG */
+-      if (map < 0)
++      if (map == (unsigned)-1)
+ 	break;
+ 
+       size = EXT2_BLOCK_SIZE (SUPERBLOCK);
+@@ -758,7 +758,7 @@ ext2fs_read (char *buf, int len)
+ static inline
+ int ext2_is_fast_symlink (void)
+ {
+-  int ea_blocks;
++  unsigned long ea_blocks;
+   ea_blocks = INODE->i_file_acl ? EXT2_BLOCK_SIZE (SUPERBLOCK) / DEV_BSIZE : 0;
+   return INODE->i_blocks == ea_blocks;
+ }
+@@ -773,12 +773,12 @@ int ext2_is_fast_symlink (void)
+ int
+ ext2fs_dir (char *dirname)
+ {
+-  int current_ino = EXT2_ROOT_INO;	/* start at the root */
+-  int updir_ino = current_ino;	/* the parent of the current directory */
+-  int group_id;			/* which group the inode is in */
+-  int group_desc;		/* fs pointer to that group */
+-  int desc;			/* index within that group */
+-  int ino_blk;			/* fs pointer of the inode's information */
++  unsigned current_ino = EXT2_ROOT_INO;	/* start at the root */
++  unsigned updir_ino = current_ino;	/* the parent of the current directory */
++  unsigned group_id;			/* which group the inode is in */
++  unsigned group_desc;		/* fs pointer to that group */
++  unsigned desc;			/* index within that group */
++  unsigned ino_blk;			/* fs pointer of the inode's information */
+   int str_chk = 0;		/* used to hold the results of a string compare */
+   struct ext4_group_desc *ext4_gdp;
+   struct ext2_inode *raw_inode;	/* inode info corresponding to current_ino */
+@@ -789,10 +789,10 @@ ext2fs_dir (char *dirname)
+   char *rest;
+   char ch;			/* temp char holder */
+ 
+-  int off;			/* offset within block of directory entry (off mod blocksize) */
+-  int loc;			/* location within a directory */
+-  int blk;			/* which data blk within dir entry (off div blocksize) */
+-  long map;			/* fs pointer of a particular block from dir entry */
++  unsigned off;			/* offset within block of directory entry (off mod blocksize) */
++  unsigned loc;			/* location within a directory */
++  unsigned blk;			/* which data blk within dir entry (off div blocksize) */
++  unsigned map;			/* fs pointer of a particular block from dir entry */
+   struct ext2_dir_entry *dp;	/* pointer to directory entry */
+ #ifdef E2DEBUG
+   unsigned char *i;
+@@ -846,7 +846,7 @@ ext2fs_dir (char *dirname)
+ 	}
+ 
+       /* reset indirect blocks! */
+-      mapblock2 = mapblock1 = -1;
++      mapblock2 = mapblock1 = (unsigned)-1;
+ 
+       raw_inode = (struct ext2_inode *)( (unsigned long)INODE +
+ 	((current_ino - 1) & (EXT2_INODES_PER_BLOCK (SUPERBLOCK) - 1))
+@@ -884,7 +884,7 @@ ext2fs_dir (char *dirname)
+       /* If we've got a symbolic link, then chase it. */
+       if (S_ISLNK (INODE->i_mode))
+ 	{
+-	  int len;
++	  unsigned len;
+ 	  if (++link_count > MAX_LINK_COUNT)
+ 	    {
+ 	      errnum = ERR_SYMLINK_LOOP;
+@@ -1038,8 +1038,8 @@ ext2fs_dir (char *dirname)
+ #ifdef E2DEBUG
+ 	  printf ("fs block=%d\n", map);
+ #endif /* E2DEBUG */
+-	  mapblock2 = -1;
+-	  if (map < 0) 
++	  mapblock2 = (unsigned)-1;
++	  if (map == (unsigned)-1) 
+ 	  {
+ 	      *rest = ch;
+ 	      return 0;
+diff -urp grub-0.97.orig/stage2/fsys_reiserfs.c grub-0.97/stage2/fsys_reiserfs.c
+--- grub-0.97.orig/stage2/fsys_reiserfs.c	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/fsys_reiserfs.c	2010-05-10 12:50:07.000000000 +0200
+@@ -382,7 +382,7 @@ is_power_of_two (unsigned long word)
+ }
+ 
+ static int 
+-journal_read (int block, int len, char *buffer) 
++journal_read (__u32 block, unsigned len, char *buffer) 
+ {
+   return devread ((INFO->journal_block + block) << INFO->blocksize_shift, 
+ 		  0, len, buffer);
+@@ -393,17 +393,17 @@ journal_read (int block, int len, char *
+  * journal taken.  
+  */
+ static int
+-block_read (int blockNr, int start, int len, char *buffer)
++block_read (unsigned blockNr, unsigned start, unsigned len, char *buffer)
+ {
+   int transactions = INFO->journal_transactions;
+-  int desc_block = INFO->journal_first_desc;
+-  int journal_mask = INFO->journal_block_count - 1;
+-  int translatedNr = blockNr;
++  unsigned desc_block = INFO->journal_first_desc;
++  unsigned journal_mask = INFO->journal_block_count - 1;
++  unsigned translatedNr = blockNr;
+   __u32 *journal_table = JOURNAL_START;
+   while (transactions-- > 0) 
+     {
+-      int i = 0;
+-      int j_len;
++      unsigned i = 0;
++      unsigned j_len;
+       if (*journal_table != 0xffffffff)
+ 	{
+ 	  /* Search for the blockNr in cached journal */
+@@ -435,7 +435,7 @@ block_read (int blockNr, int start, int
+ 	  
+ 	  if (j_len >= JOURNAL_TRANS_HALF)
+ 	    {
+-	      int commit_block = (desc_block + 1 + j_len) & journal_mask;
++	      unsigned commit_block = (desc_block + 1 + j_len) & journal_mask;
+ 	      if (! journal_read (commit_block, 
+ 				  sizeof (commit), (char *) &commit))
+ 		return 0;
+@@ -527,7 +527,7 @@ journal_init (void)
+ 	    }
+ 	  else
+ 	    {
+-	      int i;
++	      unsigned i;
+ 	      /* Cache the length and the realblock numbers in the table.
+ 	       * The block number of descriptor can easily be computed.
+ 	       * and need not to be stored here.
+@@ -569,7 +569,7 @@ int
+ reiserfs_mount (void)
+ {
+   struct reiserfs_super_block super;
+-  int superblock = REISERFS_DISK_OFFSET_IN_BYTES >> SECTOR_BITS;
++  unsigned superblock = REISERFS_DISK_OFFSET_IN_BYTES >> SECTOR_BITS;
+ 
+   if (part_length < superblock + (sizeof (super) >> SECTOR_BITS)
+       || ! devread (superblock, 0, sizeof (struct reiserfs_super_block), 
+@@ -775,8 +775,8 @@ next_key (void)
+       
+       do
+ 	{
+-	  int nr_item = BLOCKHEAD (cache)->blk_nr_item;
+-	  int key_nr = INFO->next_key_nr[depth]++;
++	  unsigned nr_item = BLOCKHEAD (cache)->blk_nr_item;
++	  unsigned key_nr = INFO->next_key_nr[depth]++;
+ #ifdef REISERDEBUG
+ 	  printf ("  depth=%d, i=%d/%d\n", depth, key_nr, nr_item);
+ #endif /* REISERDEBUG */
+@@ -821,8 +821,8 @@ search_stat (__u32 dir_id, __u32 objecti
+ {
+   char *cache;
+   int depth;
+-  int nr_item;
+-  int i;
++  unsigned nr_item;
++  unsigned i;
+   struct item_head *ih;
+ #ifdef REISERDEBUG
+   printf ("search_stat:\n  key %d:%d:0:0\n", dir_id, objectid);
+@@ -883,7 +883,7 @@ search_stat (__u32 dir_id, __u32 objecti
+ }
+ 
+ int
+-reiserfs_read (char *buf, int len)
++reiserfs_read (char *buf, unsigned len)
+ {
+   unsigned int blocksize;
+   unsigned int offset;
+@@ -931,7 +931,7 @@ reiserfs_read (char *buf, int len)
+ 	      disk_read_func = disk_read_hook;
+ 	      
+ 	      block_read (INFO->blocks[DISK_LEAF_NODE_LEVEL],
+-			  (INFO->current_item - LEAF + offset), to_read, buf);
++			  (unsigned)(INFO->current_item - LEAF + offset), to_read, buf);
+ 	      
+ 	      disk_read_func = NULL;
+ 	    }
+@@ -951,7 +951,7 @@ reiserfs_read (char *buf, int len)
+ 	    {
+ 	      __u32 blocknr = ((__u32 *) INFO->current_item)
+ 		[offset >> INFO->fullblocksize_shift];
+-	      int blk_offset = offset & (INFO->blocksize-1);
++	      unsigned blk_offset = offset & (INFO->blocksize-1);
+ 	      
+ 	      to_read = INFO->blocksize - blk_offset;
+ 	      if (to_read > len)
+@@ -1027,7 +1027,7 @@ reiserfs_dir (char *dirname)
+       /* If we've got a symbolic link, then chase it. */
+       if (S_ISLNK (mode))
+ 	{
+-	  int len;
++	  unsigned len;
+ 	  if (++link_count > MAX_LINK_COUNT)
+ 	    {
+ 	      errnum = ERR_SYMLINK_LOOP;
+diff -urp grub-0.97.orig/stage2/fsys_vstafs.c grub-0.97/stage2/fsys_vstafs.c
+--- grub-0.97.orig/stage2/fsys_vstafs.c	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/fsys_vstafs.c	2010-05-10 12:50:07.000000000 +0200
+@@ -39,7 +39,7 @@ static struct dir_entry *vstafs_nextdir
+  * In f_sector we store the sector number in which the information about
+  * the found file is.
+  */
+-extern int filepos;
++extern unsigned filepos;
+ static int f_sector;
+ 
+ int 
+diff -urp grub-0.97.orig/stage2/shared.h grub-0.97/stage2/shared.h
+--- grub-0.97.orig/stage2/shared.h	2010-05-10 12:49:49.000000000 +0200
++++ grub-0.97/stage2/shared.h	2010-05-10 12:54:54.000000000 +0200
+@@ -713,8 +713,8 @@ extern int buf_track;
+ extern struct geometry buf_geom;
+ 
+ /* these are the current file position and maximum file position */
+-extern int filepos;
+-extern int filemax;
++extern unsigned filepos;
++extern unsigned filemax;
+ 
+ /*
+  *  Common BIOS/boot data.
+@@ -857,7 +857,7 @@ int checkkey (void);
+ /* Low-level disk I/O */
+ int get_diskinfo (int drive, struct geometry *geometry);
+ int biosdisk (int subfunc, int drive, struct geometry *geometry,
+-	      int sector, int nsec, int segment);
++	      unsigned sector, unsigned nsec, int segment);
+ void stop_floppy (void);
+ 
+ /* Command-line interface functions. */
+@@ -970,8 +970,8 @@ int gunzip_test_header (void);
+ int gunzip_read (char *buf, int len);
+ #endif /* NO_DECOMPRESSION */
+ 
+-int rawread (int drive, int sector, int byte_offset, int byte_len, char *buf);
+-int devread (int sector, int byte_offset, int byte_len, char *buf);
++int rawread (int drive, unsigned sector, unsigned byte_offset, unsigned byte_len, char *buf);
++int devread (unsigned sector, unsigned byte_offset, unsigned byte_len, char *buf);
+ int rawwrite (int drive, int sector, char *buf);
+ int devwrite (int sector, int sector_len, char *buf);
+ 
+@@ -1000,10 +1000,10 @@ int grub_open (char *filename);
+ 
+ /* Read LEN bytes into BUF from the file that was opened with
+    GRUB_OPEN.  If LEN is -1, read all the remaining data in the file.  */
+-int grub_read (char *buf, int len);
++int grub_read (char *buf, unsigned len);
+ 
+ /* Reposition a file offset.  */
+-int grub_seek (int offset);
++int grub_seek (unsigned offset);
+ 
+ /* Close a file.  */
+ void grub_close (void);

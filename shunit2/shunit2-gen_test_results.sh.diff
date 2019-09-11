@@ -1,0 +1,11 @@
+--- bin/gen_test_results.sh.bak	2012-02-02 09:50:10.000000000 +0100
++++ bin/gen_test_results.sh	2012-02-02 09:50:21.000000000 +0100
+@@ -20,7 +20,7 @@
+   exit 1
+ }
+ 
+-BASE_DIR="`dirname $0`/.."
++BASE_DIR="@SHUNIT_HOME@"
+ LIB_DIR="${BASE_DIR}/lib"
+ 
+ # load libraries

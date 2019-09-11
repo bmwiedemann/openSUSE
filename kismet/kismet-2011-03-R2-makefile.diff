@@ -1,0 +1,74 @@
+--- Makefile.inc.in
++++ Makefile.inc.in
+@@ -1,7 +1,3 @@
+-INSTGRP 	?= "@instgrp@"
+-MANGRP 		?= "@mangrp@"
+-INSTUSR 	?= "root"
+-
+ ZAURUS 		= @zaurus@
+ 
+ PCAPLNK 	= @pcaplnk@
+--- Makefile.in.orig	2011-03-04 06:34:42.000000000 +0100
++++ Makefile.in	2011-09-29 12:48:46.000000000 +0200
+@@ -113,26 +113,26 @@
+ 
+ 	if test -e $(NC); then \
+ 		echo "Installing client"; \
+-		$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 555 scripts/kismet $(BIN)/kismet; \
+-		$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 555 $(NC) $(BIN)/$(NC); \
++		$(INSTALL) -m 555 scripts/kismet $(BIN)/kismet; \
++		$(INSTALL) -m 555 $(NC) $(BIN)/$(NC); \
+ 	fi;
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 555 $(PS) $(BIN)/$(PS); 
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 555 $(DRONE) $(BIN)/$(DRONE);
++	$(INSTALL) -m 555 $(PS) $(BIN)/$(PS); 
++	$(INSTALL) -m 555 $(DRONE) $(BIN)/$(DRONE);
+ 
+ 	mkdir -p $(MAN)/man1
+-	$(INSTALL) -o $(INSTUSR) -g $(MANGRP) -m 644 man/kismet.1 $(MAN)/man1/kismet.1
+-	$(INSTALL) -o $(INSTUSR) -g $(MANGRP) -m 644 man/kismet_drone.1 $(MAN)/man1/kismet_drone.1
++	$(INSTALL) -m 644 man/kismet.1 $(MAN)/man1/kismet.1
++	$(INSTALL) -m 644 man/kismet_drone.1 $(MAN)/man1/kismet_drone.1
+ 
+ 	mkdir -p $(MAN)/man5
+-	$(INSTALL) -o $(INSTUSR) -g $(MANGRP) -m 644 man/kismet.conf.5 $(MAN)/man5/kismet.conf.5
+-	$(INSTALL) -o $(INSTUSR) -g $(MANGRP) -m 644 man/kismet_drone.conf.5 $(MAN)/man5/kismet_drone.conf.5
++	$(INSTALL) -m 644 man/kismet.conf.5 $(MAN)/man5/kismet.conf.5
++	$(INSTALL) -m 644 man/kismet_drone.conf.5 $(MAN)/man5/kismet_drone.conf.5
+ 
+ 	mkdir -p $(WAV)
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 wav/new.wav $(WAV)/new.wav
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 wav/packet.wav $(WAV)/packet.wav
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 wav/alert.wav $(WAV)/alert.wav
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 wav/gpslost.wav $(WAV)/gpslost.wav
+-	$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 wav/gpslock.wav $(WAV)/gpslock.wav
++	$(INSTALL) -m 644 wav/new.wav $(WAV)/new.wav
++	$(INSTALL) -m 644 wav/packet.wav $(WAV)/packet.wav
++	$(INSTALL) -m 644 wav/alert.wav $(WAV)/alert.wav
++	$(INSTALL) -m 644 wav/gpslost.wav $(WAV)/gpslost.wav
++	$(INSTALL) -m 644 wav/gpslock.wav $(WAV)/gpslock.wav
+ 
+ suidinstall: $(CS)
+ 	-groupadd -f $(SUIDGROUP)
+@@ -175,8 +175,8 @@
+ 		echo "if there have been any changes to the base config you will need"; \
+ 		echo "to add them to your config file."; \
+     else \
+-		$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 conf/kismet.conf $(ETC)/kismet.conf;  \
+-		echo install -o $(INSTUSR) -g $(INSTGRP) -m 644 conf/kismet.conf $(ETC)/kismet.conf;  \
++		$(INSTALL) -m 644 conf/kismet.conf $(ETC)/kismet.conf;  \
++		echo install -m 644 conf/kismet.conf $(ETC)/kismet.conf;  \
+ 		echo "Installed config into $(ETC)/kismet.conf."; \
+ 	fi
+ 	@if test -f $(ETC)/kismet_drone.conf; then \
+@@ -184,8 +184,8 @@
+ 		echo "if there have been any changes to the base config you will need"; \
+ 		echo "to add them to your config file."; \
+     else \
+-		$(INSTALL) -o $(INSTUSR) -g $(INSTGRP) -m 644 conf/kismet_drone.conf $(ETC)/kismet_drone.conf;  \
+-		echo install -o $(INSTUSR) -g $(INSTGRP) -m 644 conf/kismet_drone.conf $(ETC)/kismet_drone.conf;  \
++		$(INSTALL) -m 644 conf/kismet_drone.conf $(ETC)/kismet_drone.conf;  \
++		echo install -m 644 conf/kismet_drone.conf $(ETC)/kismet_drone.conf;  \
+ 		echo "Installed drone config into $(ETC)/kismet_drone.conf."; \
+ 	fi
+ 	@echo "Installed kismet into $(BIN)/."

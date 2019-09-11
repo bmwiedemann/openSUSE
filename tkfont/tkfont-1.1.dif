@@ -1,0 +1,123 @@
+--- install-sh
++++ install-sh
+@@ -1,6 +1,6 @@
+-cp tkfont /usr/local/bin
+-mkdir /usr/local/lib/tkfont
+-cp COPYING FindFont GetFontDirs *.txt /usr/local/lib/tkfont
+-chmod 755 /usr/local/lib/tkfont/FindFont
+-chmod 755 /usr/local/lib/tkfont/GetFontDirs
+-chmod 755 /usr/local/bin/tkfont
++cp tkfont /usr/X11R6/bin
++mkdir /usr/lib/tkfont
++cp COPYING FindFont GetFontDirs *.txt /usr/lib/tkfont
++chmod 755 /usr/lib/tkfont/FindFont
++chmod 755 /usr/lib/tkfont/GetFontDirs
++chmod 755 /usr/X11R6/bin/tkfont
+--- tkfont
++++ tkfont
+@@ -1,4 +1,8 @@
+-#!/usr/X11/bin/wish
++#!/bin/sh
++# -*- Tcl -*-
++#	Time-stamp: "2000-02-20 15:41:45 as"
++# the next line restarts using wish \
++exec wish "$0" "$@"
+ # TkFont 1.1 -- Copyright Neil Grant 1996, 1997
+ # Bug reports, praise, and so on to grantj@sfu.ca
+ 
+@@ -8,7 +12,6 @@
+ set SizedFont "fixed"
+ set Editor tkedit
+ set CurFileName ""
+-
+ proc GetFontList { } {
+ 	.f1.fontlistbox delete 0 end
+ 	update
+@@ -32,18 +35,14 @@
+ 
+ proc GetFontDirs { } {
+ 	global FontDirList
+-	set TempFileName "/tmp/dirs.list.[pid]"
+-	exec /usr/local/lib/tkfont/GetFontDirs > $TempFileName
+-	list FontDirList_a
+ 
+-	set Chan [open $TempFileName r]
+-	set chars 1
+-	while {$chars > 0} {
+-		set chars [gets $Chan onedirname]
+-		lappend FontDirList_a $onedirname
++	set xset_font [string trim [exec  xset -q | grep "/fonts" ] ]
++	set FontDirList_b     [split $xset_font ","]
++	set FontDirList_a  {}
++	foreach i $FontDirList_b {
++		regsub ":unscaled$" $i "" dir_unscaled
++		lappend FontDirList_a $dir_unscaled
+ 	}
+-	close $Chan
+-	exec rm $TempFileName
+ 	set FontDirList [lreplace $FontDirList_a 0 0 \
+ 		[string trim [lindex $FontDirList_a 0]]]
+ 	set FontDirList [lreplace $FontDirList end end]
+@@ -120,8 +119,15 @@
+ 	set MangledFont [string range $CurFont 1 end]
+ 	set i 0
+ 	foreach i $FontDirList {
+-		set result [exec /usr/local/lib/tkfont/FindFont $MangledFont $i/fonts.dir]
++		set file [ open "$i/fonts.dir" r]
++		while {[gets $file line] >=0 } {
++			if {[string match "*$MangledFont*" $line]} {
++				set result $line
++			}
++		}
++		close $file
+ 		if {[string length $result]} {break}
++		
+ 	}
+ 	set EndOfName [string first " " $result]
+ 	set FontFileName [string range $result 0 [expr $EndOfName-1]]
+@@ -159,20 +165,21 @@
+ 
+ proc ShowDirs {} {
+ 	global FontDirList
++	global Which
+ 	if {[winfo exists .dirs]} {return}
+ 	
+ 	toplevel .dirs
+ 	listbox .dirs.dirlist -width 40 -height 11 -setgrid 1
+ 	frame .dirs.f1
+-	radiobutton .dirs.f1.realones -text "Actual" -value 0 -variable Which
+-	radiobutton .dirs.f1.aliases -text "Aliases" -value 1 -variable Which
++	set Which 0
++	radiobutton .dirs.f1.realones -text "Actual" -value 0 -variable Which -highlightthickness {2}
++	radiobutton .dirs.f1.aliases -text "Aliases" -value 1 -variable Which -highlightthickness {2}
+ 	pack .dirs.f1.realones -side left -in .dirs.f1 -expand 1 -fill x
+ 	pack .dirs.f1.aliases -side right -in .dirs.f1 -expand 1 -fill x
+ 
+ 	pack .dirs.f1 -in .dirs -fill x -side bottom
+ 	pack .dirs.dirlist -in .dirs -fill both -side top -expand 1
+ 	wm title .dirs "Font Directories"
+-	set Which 0
+ 
+ 	set i 0
+ 	foreach i $FontDirList {
+@@ -285,7 +292,8 @@
+ 	} else {
+ 		.usage.helptext delete 0.0 end
+ 	}
+-	.usage.helptext insert end [exec cat /usr/local/lib/tkfont/$file]
++	.usage.helptext insert end \
++	    [exec cat /usr/share/doc/packages/tkfont/$file]
+ 	.usage.helptext mark set insert 0.0
+ 	.usage.helptext configure -state disabled
+ }
+@@ -335,8 +343,8 @@
+ 
+ proc CreateSampTextWidget { } {
+ 	toplevel .s
+-	entry .s.sample -bd 2 -relief sunken -width 11
+-	.s.sample insert 0 "Sample Text"
++	entry .s.sample -bd 2 -relief sunken -width 41
++    .s.sample insert 0 "Sample Text; öäüßÖÄÜ; 1Il!|t; O0o; '`';"
+ 	pack .s.sample -in .s -fill x
+ 	wm transient .s .
+ 	wm title .s "Sample Text"

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Oct  8 10:49:42 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags/sections
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:34 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 16:15:59 CET 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Jan 20 15:36:21 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Sat Jan 10 21:28:53 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Aug 30 08:53:07 CEST 2002 - ro@suse.de
+
+- corrected changes file 
+
+-------------------------------------------------------------------
+Tue Nov 28 12:00:00 CEST 2000 - violiet@susekorea.net
+
+- initial RPM release for SuSE Linux.

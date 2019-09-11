@@ -1,0 +1,672 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Add public holidays' substitute days in Russia, for 2019-2020 
+  * Update holidays in Russia
+
+-------------------------------------------------------------------
+Fri Jul 19 11:41:25 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Update UK Early May bank holiday for 2020 (kde#409189)
+  * Fix ISO code for Hesse / Germany
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * holidays/plan2/holiday_zm_en-gb - add Zambia holidays
+  * holidays/plan2/holiday_lv_lv - fix Midsummer's Day
+  * holiday_mu_en - Holidays 2019 in Mauritius
+  * holiday_th_en-gb - update for 2019
+  * Update Japanese holidays by N.Higa
+  * Add public holidays for Lower Saxony (Germany) Committed for mmustac
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Sort the polish holidays categories.
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Rename as REQUIRED_QT_VERSION. All other module use it
+  * Make it compiles without foreach
+  * I don't know why it's not sync with other modules.
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:09 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * holidays/plan2/holiday_ua_uk - updated for 2019
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * README.md - add basic instructions for testing holiday files
+  * various calendars - fix syntax errors
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Use the right maintainer username.
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Add Bahrain Holiday File
+  * Make KHolidays work as static library too
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:11 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * add Ivory Coast holidays (French) Thanks Lukas. seems to work from my limited testing (kde#398161)
+  * holiday_hk_* - fix date for Tuen Ng Festival in 2019 BUG: 398670 FIXED-IN: 5.51.0 (kde#398670)
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Implement proper equinox and solstice calculation algorithm (kde#396750)
+  * src/CMakeLists.txt - install headers the frameworks-way
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:06 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Install the sunrise/sunset computation header
+  * Added leap year day as (cultural) holiday for Norway
+  * Minor formatting changes (e.g. newlines)
+  * Added ‘name’ entry for Norwegian holiday files
+  * Added descriptions for Norwegian holiday files
+  * more Japanese holiday updates from phanect
+  * Update holiday_jp_ja and holiday_jp-en_us (kde#365241)
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:40 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use more nullptr
+  * holidays/plan2/holiday_jp_* - add missing metainfo
+  * updated Japanese holidays (in Japanese and English) BUG: 365241 FIXED-IN: 5.48.0 (kde#365241)
+  * holidays/plan2/holiday_th_en-gb - updated Thailand (UK English) for 2018 BUG: 393770 FIXED-IN: 5.48.0 (kde#393770)
+  * add Venezula holidays (Spanish) BUG: 334305 FIXED-IN: 5.48.0 (kde#334305)
+
+-------------------------------------------------------------------
+Fri Jun 15 10:17:54 UTC 2018 - wbauer@tmo.at
+
+- Rename the lang package to libKF5Holidays5-lang and recommend it
+  by libKF5Holidays5 so that it actually gets installed, kholidays
+  just contains a "DESIGN" document and is not pulled in by
+  anything
+- Provide/Obsolete kholidays-lang in case somebody installed it
+  manually
+- Use %{lname} instead of libKF5Holidays5 everywhere
+- Remove outdated minimum versions
+- Mark license files as %license instead of %doc
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 12 21:35:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Fix warning
+  * holiday_es_es - Fix day of the "Comunidad de Madrid" Patch by juanmanuelm
+
+-------------------------------------------------------------------
+Sun May 13 21:03:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * holidays/plan2/holiday_sk_sk - Teacher's Day fix BUG: 393245 FIXED-IN: 5.46 (kde#393245)
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:04 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * holidays/plan2/holiday_in_en-gb - update holiday file for India Thank you for the patch. BUG: 392503 (kde#392503)
+  * We depend against 5.8.0
+  * This package was not be updated. Perhaps a problem with script
+  * Reworked the holiday files for Germany. (kde#373686)
+  * Format README.md as the tools expect (with an Introduction section)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * various - use camelcase headers, minor coding style
+  * Use override
+  * I'll take maintainership --Allen
+
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:13 CET 2018 - lbeltrame@kde.org
+
+  - Update to 5.43.0
+    * Now part of KDE Frameworks 5
+    * For more details please see:
+    * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:16 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:05 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Fix require
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:12 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Make sure we include CMakeFindDependencyMacro.
+  * Initialize variables
+  * Make run without install them
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:44 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Russia: Internal Troops Day renamed
+  * holidays/plan2/holiday_kr_ko - Added Korean lunar holiday entries until 2037/12/31 Authored by Mnkai_rin on Thu, Oct 26, 23:01
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:06 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:11 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * holiday_mu_en - new Holidays for Mauritius BUG: 383971 (kde#383971)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:32 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * Revert "Update Turkish Holiday File (EN and TR)"
+  * Update Turkish Holiday File (EN and TR) Differential Revision: https://phabricator.kde.org/D6009
+  * Update Japanese holidays
+  * Port qSort
+  * Add .gitignore
+  * Activate by default QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+  * Const'ify
+  * Adding Cameroon Holidays
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:50 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.07.90.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:54 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Update Turkish Holiday File (EN and TR)
+  * Revert "Update Turkish Holiday File (EN and TR)"
+- Remove patches, now upstream:
+  * revert-turkish-holiday-update.patch
+
+-------------------------------------------------------------------
+Thu Jun  8 18:20:31 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch revert-turkish-holiday-update.patch:
+  * Revert changes to Turkish holidays, as they cause Plasma to
+    crash on startup
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:49 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Update Turkish Holiday File (EN and TR) Differential Revision: https://phabricator.kde.org/D6009
+
+-------------------------------------------------------------------
+Wed May 17 20:36:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Remove GPL-licensed file
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:28 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.03.80.php
+- Changes since 16.12.3:
+  * We depend against 5.6.0
+  * Use for(...:..)
+
+-------------------------------------------------------------------
+Mon Mar 13 19:34:25 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch revert-dep-freeze.patch: revert accidental
+  version / dependency bump
+
+-------------------------------------------------------------------
+Thu Mar  9 12:38:07 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * holiday_ua_uk - updated patch from guerrillamailblock (kde#359708)
+  * CMakeLists.txt - tiny cleaning
+  * holiday_hk_en-gb, holiday_hk_zh-cn - update Hong Kong holidays patch from Michael Tsang (kde#375530)
+  * Add a new holiday for Serbia
+  * Add nullptr
+  * Add missing Q_DECL_OVERRIDE
+  * Add ECMCoverageOption
+
+
+-------------------------------------------------------------------
+Thu Feb  9 06:57:12 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:56:34 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:44:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Thu Dec  8 10:38:45 UTC 2016 - jengelh@inai.de
+
+- Reword summaries
+- Drop unnecessary extra pkgconfig require (generally autodetected)
+
+-------------------------------------------------------------------
+Sat Dec  3 16:29:05 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:30:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:18:11 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:56:31 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:24:46 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:17:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 15:04:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.07.90.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:56:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Thu Jun 30 07:57:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Drop all unneeded (Build)Requires
+
+-------------------------------------------------------------------
+Fri Jun 10 17:58:39 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:28:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:04:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:41:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+- Drop kholidays-glibc-2.23.patch, this is no longer needed as the
+  issue was fixed upstream
+
+-------------------------------------------------------------------
+Sun Mar 13 15:44:26 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Mar  5 07:34:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Add kholidays-glibc-2.23.patch to fix build with glibc 2.23
+
+-------------------------------------------------------------------
+Sat Feb 13 08:11:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:20:12 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:19:37 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Fri Dec 11 01:27:17 UTC 2015 - p.drouand@gmail.com
+
+- Remove superfluous libpth-devel dependency
+
+-------------------------------------------------------------------
+Tue Nov 10 20:08:45 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Thu Oct 29 17:34:15 UTC 2015 - alarrosa@suse.com
+
+- Separated library in a new package named libKF5Holidays5 as required
+  by the openSUSE shared library packaging policy
+- Duplicated BuildRequired package removed
+
+-------------------------------------------------------------------
+Sun Oct 11 13:31:36 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:15:16 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:18 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 08:25:45 UTC 2015 - tittiatcoke@gmail.com
+
+- Initial version based on KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.07.90.php
+
+

@@ -1,0 +1,21 @@
+#  -*- Mode: makefile; indent-tabs-mode: t -*- */
+# RPM macros for packages creating system accounts
+#
+###
+#
+# When a package creates a system account, it should use the following macros:
+#
+# add %sysusers_requires in the package section
+#
+# add "%sysusers_generate_pre <source file> <account>" to build section
+#
+# add "%pre -f <account>.pre" to spec file
+#
+###
+
+# This is for useradd/usermod/groupadd
+%sysusers_requires	Requires(pre): useradd_or_adduser_dep sysuser-shadow \
+Suggests:        shadow
+
+%sysusers_generate_pre()	\
+%{_prefix}/lib/rpm/sysusers-generate-pre  "%1" > "%2".pre

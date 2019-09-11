@@ -1,0 +1,366 @@
+#!/usr/bin/perl
+#
+# -- makes BDF font italic
+#     version 0.00.1
+#     programmed by Yasuyuki Furukawa <furukawa@vinelinux.org>
+#			* public domain *
+#
+# -- translated for Perl, hoping speed it up... (e-kagen)
+#     2001/5/26 
+#	by SHINYAMA Yusuke <euske@cl.cs.titech.ac.jp>  * public domain *
+#    
+
+$dy = 3;	# level of slant deep (2; Minimum and deepest)
+$correct = 3;	# level of pixel correction
+$debug = 0;
+$verbose = 0;
+$verbose_min = 100;
+
+# The table for pixel correction
+# format:
+#                   before  <- | ->  after
+#  "height  offset  pattern... | height  offset  pattern... "
+# if the offset is zero, the pattern starts from last
+# slant step immidiately.
+
+# pattern of 'left down to up right'
+$i = 0;
+if ($correct >= 3) {
+    $ptable[$i++] = "5 -2 ..@  .@   .@   @..  @.   1 -1 .\$";  # fixed
+    $ptable[$i++] = "5 -4 ... @@@. ..@. .@. @. 2 -2 .\$, \$, ";
+#     $ptable[$i++] = "5 -1 ...@. ...@. ..@. .@. @. 1 3 @\$";    # XXX
+    $ptable[$i++] = "5 -2 .....@ ....@ ...@. ..@. @@. 1 0 ...@\$";
+    $ptable[$i++] = "4 -3 ...@ ...@ ..@. @@..  1 -1 .\$@";
+    $ptable[$i++] = "4 -3 ..@  ..@  .@.  @..   1  0 @\$";
+    $ptable[$i++] = "4 -1 .@   .@   @..  @.    2 -1 \$, ,\$";
+    $ptable[$i++] = "4 -2 ..@  ..@@ @@.. .@.   2 -1 .\$@ @@\$";
+    $ptable[$i++] = "4 -2 .@   .@.  @..  @.    2 -1 \$, ,\$";
+}
+if ($correct >= 2) {
+    $ptable[$i++] = "3 -2 ....@. ..@@.   @@... 1  0 @@\$...";
+    $ptable[$i++] = "3 -1 ..@  .@  .@.        1  0 .,\$";
+    $ptable[$i++] = "3 -2 .@   .@   @.@        1 -1 \$@";
+    $ptable[$i++] = "3 -2 .@   .@.  @..        1 -1 \$.";
+    $ptable[$i++] = "3 -2 .@   .@@  @..        1 -1 \$@";
+    $ptable[$i++] = "3 -1 ..@  .@.  @@.        1  0 .,\$";
+    $ptable[$i++] = "3 -2 @@.  .@.  @..        1 -1 \$,";
+    $ptable[$i++] = "3 -1 @.@  .@.  ...        1  0 .@\$";
+    $ptable[$i++] = "3 -1 ..@  .@.  .@@        1  0 .,\$";
+#     $ptable[$i++] = "3 -2 ..@  .@@  @.@        1  0 @\$";  # XXX
+}
+
+
+# pattern of 'left up to down right'
+if ($correct >= 3) {
+    $ptable[$i++] = "6 -2 ..@. ...@. ...@. ...@. ..@. @@. 4 -1 ..\$, ...@ ..\$, .\$,";
+    $ptable[$i++] = "4 -1 @..  @.@  .@.  .@.   1  1 \$@";
+    $ptable[$i++] = "4 -3 @.   @@@  .@   .@    1 -1 \$.";
+    $ptable[$i++] = "4 -3 ..   @@.  ..@. ..@.  2 -2 @, .\$,";
+    $ptable[$i++] = "3 -2 @..  .@   .@         1 -1 \$.";
+    $ptable[$i++] = "4 -1 .@. .@. ..@. ..@. 1 0 .,\$";
+    $ptable[$i++] = "4 -1 .@. @@. ..@. ..@. 2 -1 @, @@\$"; # XXX
+}
+if ($correct >= 2) {
+    $ptable[$i++] = "3 -1 @..  .@@  ..         1  0 .,@"; #
+    $ptable[$i++] = "3 -2 @..  @@.  .@         1 -1 \$.";
+    $ptable[$i++] = "3 -2 @.@  .@   .@         1 -1 \$@";
+    $ptable[$i++] = "3 -1 .@.  .@.  ..@.       1  0 ..\$";
+#     $ptable[$i++] = "4 -2 @.   @.   @.  .@@    1  0 \$."; # fixed , XXX
+    $ptable[$i++] = "4 -1 @.   @.   .@@ ..     2  0 ,\$ .,\$";
+    $ptable[$i++] = "3 -1 @.   @.   .@@        1  0 ,\$";
+    $ptable[$i++] = "3 -2 ..   @@.  ..@        1 -1 @,.";
+}
+
+# least pattern
+$ptable[$i++] = "4 -2 ..@ .@  @@@ ..      2 -1 \$@ @,@";
+$ptable[$i++] = "3 -1 .@.. @.@. .@@.  1 0 \$";   # fixed
+$ptable[$i++] = "2 -1 .@  @.          1 -1 \$";
+
+$flag = 0;		# reading status
+if ($ARGV[0] eq "-h") {
+    &usage();
+    exit(0);
+}
+if ($ARGV[0] eq "-V") {
+    $verbose = 1;
+    shift @ARGV;
+}
+if ($ARGV[0] eq "-d") {
+    $debug = 1;
+    shift @ARGV;
+}
+if ($ARGV[0] eq "-D") {
+    $debug = 2;
+    shift @ARGV;
+}
+if (@ARGV[0] eq "-p") {
+    &print_ptable();
+    exit(1);
+}
+
+@vmeter = ( "|", "\\", "-", "/" );
+
+@x=split(/\s/, `stty size 2>/dev/null`);
+$col = $x[1];
+$col = 0 if ($col !~ /^[1-9]/ || $col < 30);
+
+sub usage() {
+    print "usage: mkitalic [-V|-d|-p] {input BDF} > {output BDF}\n";
+    print "      -V   verbose\n";
+    print "      -p   output pettern table for pixel correction\n";
+    print "      -d   debug level 1\n";
+    print "      -D   debug level 2\n";
+}
+
+
+#
+# correct_pixel(width, height)
+#
+# Correct the pixels to make pettern
+# more clear after the slanting.
+# Reference the ptable at the BEGIN
+# routine.
+#
+sub correct_pixel {
+    my $x, $y, $xx, $n, $nn, $d, $dd, $i, $j, $t;
+    return if ($correct == 0);
+
+    # add padding pixels from both side
+    $line[$height] = "." x $width;
+    for ($y = 0; $y <= $height; $y++) {
+	$line[$y] = ".$line[$y].";
+    }
+    
+    # pattern matching with ptable
+    for ($y = $dy; $y < $height ; $y += $dy) {
+	foreach $i (@ptable) {
+	    @p = split(" ", $i);
+	    $n = $p[1]; $d = $p[0];
+	    next if ($y+$n < 0 || $y+$n+$d > $height + 1);
+	    for ($x = 0; $x < $width-1; $x++) {
+		$x = index($line[$y+$n], $p[2], $x);
+		last if ($x == -1);
+		for ($j = 1; $j < $d; $j++) {
+		    $xx = index($line[$y+$n+$j], $p[$j+2], $x);
+		    last if ($x != $xx);
+		}
+		if ($x == $xx) { # matched !
+		    print "==== MATCH with \"$i\" ==== ($x,$y)\n" if ($debug > 1);
+		    $nn = $p[$d+3]; $dd = $p[$d+2];
+		    for ($j = 0; $j < $dd; $j++) {
+			$t = $p[$j+$d+4];
+			substr($line[$y+$nn+$j], $x, length($t)) = $t;
+		    }
+		    last;
+		}
+	    }
+	}
+    }
+
+    # delete padding pixels from both side
+    for ($y = 0; $y < $height; $y++) {
+      	$line[$y] =~ s/^\.//;
+      	$line[$y] =~ s/\.$//;
+    }
+}
+
+
+#
+# make_slant(width, height)
+#
+# Just slant the pattern of font.
+#
+sub make_slant {
+    my $y, $i, $dcount=$dx, $ncount=0, $tp= '#' x $pad, $ts, $te;
+
+    for ($y = 0; $y < $height; $y++) {
+	if ($y % $dy == 0) {
+	    $ts = '#' x ($dcount-- - 1);
+	    $te = ('#' x $ncount++) . $tp;
+	}
+        $line[$y] = $ts . substr($line[$y], 0, $width) . $te;
+    }
+}
+
+
+#
+# print_ptable()
+#
+# Visualize ptable.
+#
+sub print_ptable {
+    my $i, $j, $n, $d, $nn, $dd, $p, $pp, $t;
+    
+    print "\t==== PATTERN TABLE ====\n";
+    print "\nFollowing patterns is for pixel correction in slant.\n";
+    print "Priority between patterns depends on pattern ID.\n";
+
+    foreach $i (@ptable) {
+	@p = split(" ", $i);
+	$n = $p[2]; $d = $p[1];
+	for ($j = 0; $j < $d; $j++) { $pp[$j] = $p[$j+2]; }
+
+	$nn = $p[$d+4]; $dd = $p[$d+3];
+	for ($j = 0; $j < $dd; $j++) {
+	    $t = $p[$j+$d+4];
+	    substr($p[-$n+$nn+2+$j], 0, length($t)) = $t;
+	}
+
+	print "\n\t--- pattern \"$i\" ---\n\n";
+	for ($j = 0; $j < $d; $j++) {
+	    print " " , $pp[$j] , " " x (7 - length($pp[$j]));
+	    if ($j == int($d/2)) {
+		print " ==>    ";
+	    } else {
+		print "        ";
+	    }
+
+	    print " " if ($j +$n < $dy);
+	    print " " if ($j +$n < 0);
+	    print $pp[$j];
+
+	    print " " x (7 - length($pp[$j]));
+	    if ($j == int($d/2)) {
+		print " ==>    ";
+	    } else {
+		print "        ";
+	    }
+	    
+	    print $p[$j+2] , "\n";
+	}
+    }
+}
+
+
+#
+# MAIN LOOP
+#
+# All of the follows is the main
+# loop routine.
+#
+
+sub main {
+    my $x, $y, $tmp, $width, $height, $flag, $count, $max_chars, @F;
+    my $ch_count, $m, $n, $l;
+    while(<>) {
+	chop;
+	@F = split(/\s+/);
+	# Change the font property
+	if ($F[0] eq 'FONT') {
+	    die("error: the input font is already italic.\n") if (/-I-/);
+	    $F[1] =~ s/-[Rr]-/-I-/;
+	    print join(" ", @F), "\n";
+	
+	# Change the font property
+	} elsif ($F[0] eq 'SLANT') {
+	    $F[1] =~ s/\042[Rr]\042/\042I\042/;
+	    print join(" ", @F), "\n";
+	
+	# Get the metric information from the bounding box.
+	} elsif ($F[0] eq 'BBX' || $F[0] eq 'FONTBOUNDINGBOX') {
+	    $width  = $F[1];
+	    $height = $F[2];
+	    $dx = int(($height + $dy - 1)/$dy);
+	    if (0< $height && 0 < $width) {
+		$F[1] = $F[1] + $dx - 1;
+		$F[3] = $F[3] - int(($dx -1)/2);
+		$pad = (8 - ($F[1] % 8)) % 8;
+	    } else {
+		$pad = 0;
+	    }
+	    print join(" ", @F), "\n";
+	
+	# Get the number of characters.
+	} elsif ($F[0] eq 'CHARS') {
+	    $max_chars = $F[1];
+	    print $_, "\n";
+	    
+	# Change inner state.
+	} elsif ($F[0] eq 'BITMAP') {
+	    $flag = 1;
+	    $count = 0;
+	    print $_, "\n";
+	
+	# Modify the every font pattern.
+	} elsif ($F[0] eq 'ENDCHAR') {
+	    # var @line is shared:
+	    $tmp = $_;
+	    
+	    # correct pixel as pre-processing
+	    &correct_pixel;
+	    
+	    # make simple slant font
+	    &make_slant;
+	    
+	    # output font image
+	    for ($y = 0; $y < $height; $y++) {
+		if (!$debug) {
+		    $_ = $line[$y];
+		    s/\#/\./g;
+		    s/\,/\./g;
+		    s/\$/\@/g;
+		    s/([.@][.@][.@][.@])/\1_/g;
+		    s/\.\.\.\._/0/g;
+		    s/\.\.\.\@_/1/g;
+		    s/\.\.\@\._/2/g;
+		    s/\.\.\@\@_/3/g;
+		    s/\.\@\.\._/4/g;
+		    s/\.\@\.\@_/5/g;
+		    s/\.\@\@\._/6/g;
+		    s/\.\@\@\@_/7/g;
+		    s/\@\.\.\._/8/g;
+		    s/\@\.\.\@_/9/g;
+		    s/\@\.\@\._/A/g;
+		    s/\@\.\@\@_/B/g;
+		    s/\@\@\.\._/C/g;
+		    s/\@\@\.\@_/D/g;
+		    s/\@\@\@\._/E/g;
+		    s/\@\@\@\@_/F/g;
+		    $line[$y] = $_;
+		}
+		print $line[$y], "\n";
+	    }
+	    print $tmp, "\n";
+	    
+	    # Display progress bar in verbose mode
+	    if (($ch_count++ % 20) == 0 && 
+		$verbose && $max_chars > $verbose_min) {
+		$n = int($ch_count * 100 / $max_chars);
+		$m = int($n * ($col - 21) / 100);
+		$l = $col - 20 - $m;
+		print STDERR "\rprogress|" , "=" x $m , " " x $l , $n , "%" , $vmeter[$ch_count2++ % 4];
+	    }
+	    
+	    $flag = 0;
+
+	# Default
+	} else {
+	    if (0 < $flag) {
+		s/0/\.\.\.\./g;
+		s/1/\.\.\.\@/g;
+		s/2/\.\.\@\./g;
+		s/3/\.\.\@\@/g;
+		s/4/\.\@\.\./g;
+		s/5/\.\@\.\@/g;
+		s/6/\.\@\@\./g;
+		s/7/\.\@\@\@/g;
+		s/8/\@\.\.\./g;
+		s/9/\@\.\.\@/g;
+		s/a/\@\.\@\./ig;
+		s/b/\@\.\@\@/ig;
+		s/c/\@\@\.\./ig;
+		s/d/\@\@\.\@/ig;
+		s/e/\@\@\@\./ig;
+		s/f/\@\@\@\@/ig;
+		$line[$count++] = $_;
+	    } else {
+		print $_, "\n";
+	    }
+	}
+    }
+}
+
+&main;
+
+print STDERR "\r" , " " x ($col - 3) , "\r" if ($verbose != 0 && $max_chars > $verbose_min);
+exit(0);

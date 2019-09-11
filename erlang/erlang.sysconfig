@@ -1,0 +1,20 @@
+## Path:	Network/Erlang/epmd
+## Description:	epmd port
+## Type:	string
+## Default:	"127.0.0.1"
+## ServiceRestart: epmd
+#
+# IPs that EPMD should listen on.
+# Comma seperated
+#
+EPMD_ADDRESSES="127.0.0.1"
+
+## Path:	Network/Erlang/epmd
+## Description:	epmd port
+## Type:	string
+## Default:	"4369"
+## ServiceRestart: epmd
+#
+# Port that EPMD should listen on.
+#
+EPMD_PORT="4369"

@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:45:21 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Sun Aug 11 23:32:28 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.4.9
+  * Fix path exclusions (deb#926850) 
+  * Translation updates
+ 
+-------------------------------------------------------------------
+Sat Jul 27 11:35:54 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.4.8
+  * Thunar: Select file after opening file manager (bxo#14494)
+  * Adjust locate parameters for the host OS (OpenBSD support)
+  * Fix running on Wayland (bxo#15297)
+  * Fix opening directories without XDG_CURRENT_DESKTOP (bxo#15099)
+  * Fix exclusion of non-standard paths with the walk method
+    (bxo#15206)
+  * Add 'translator-credits' string to po files
+    (bxo#15564)
+  * Change "…" to "..." for consistency with other Xfce apps
+    (bxo#15407)
+  * Translation updates
+
+-------------------------------------------------------------------
+Thu Jan 31 08:19:26 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- dropped failing and obsolete --record-rpm build flag (boo#1123781)
+
+-------------------------------------------------------------------
+Sun Jan 27 12:14:41 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 1.4.7
+  * General:
+    - Cleaner, easier to read manpage contents
+    - Added information about the --path flag to help and the manpage
+    - Updated AppStream requirements to align with the latest spec
+    - Replaced project URLs with HTTPS where possible
+
+  * Desktop Integration:
+    - The window layout now respects the current desktop (bxo#14486)
+    - headerbar layout is used for Budgie, GNOME, and Pantheon
+    - All other desktops use the traditional titlebar layout
+    - This option can be overridden using the use-headerbar option in the
+      Catfish configuration file (~/.config/catfish/catfish.rc)
+    - Files can now be dragged into other applications (bxo#14492)
+    - For file managers, the files will usually be copied to that
+      location
+    - For other applications, the files will be opened by the application
+
+   * Performance:
+    - Thumbnails will now only be generated when the thumbnail view is
+      active (bxo#14689)
+    - Added /dev to list of standard excluded directories
+    - Files within /dev can still be searched if explicitly selected by
+      the user
+
+   * Bug Fixes:
+    - Quoted search strings now allow for searching for specific phrases,
+      instead of searching for actual quote characters (bxo#14501)
+    - The file context menu can now be opened multiple times (bxo#14621)
+    - Fix crash as startup with multi-file selection (lp#1753163)
+
+  * Translation Updates 
+
+-------------------------------------------------------------------
+Sat Jan 19 08:01:02 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 1.4.6
+  * Upgraded thumbnailer, based on the FD.o Thumbnail Spec:
+    - Improved error handling
+    - Proper permissions for thumbnail directories and files
+    - Logging of failed thumbnail generation
+    - Saving of thumbnail file attributes
+    - Support for relative thumbnail directories
+   * The minimum GTK+ version has been bumped to 3.16.
+   * Added inode/directory mimetype to desktop entry (bxo#14505)
+   * Disabled overlay scrollbars to improve interacting with the results
+     list (bxo#14487)
+   * Enabled launching of executable AppImage files (bxo#14500)
+   * Fixed invalid date in appdata (bxo#14502)
+   * Replaced stock icons with standard Mime Type icons (bxo#14503)
+   * Improved handling of exceptions when parsing settings (bxo#14491)
+   * Improved handling of UnicodeDecodeErrors (bxo#14490)
+   * Improved handling of PermissionErrors (bxo#14488)
+   * Improved support for hidden files (bxo#14497)
+   * Remember window size and position between sessions (bxo#14504)
+   * Xfce: Open directories with the preferred file manager (bxo#14483)
+   * Translation Updates
+   
+ - dropped outdated macros
+ - added missing dep python3-gobject-Gdk required
+
+-------------------------------------------------------------------
+Fri Apr 27 15:37:42 UTC 2018 - badshah400@gmail.com
+
+- Drop Requires: gnome-icon-theme; all necessary icons are already
+  provided by adwaita-icon-theme, a hard requirement for gtk3.
+- Only run post(un) scripts on openSUSE < 1500; for later versions
+  rpm file triggers take care of updating the icon cache already.
+
+-------------------------------------------------------------------
+Sat Apr 14 17:19:03 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.4.5:
+  * Translation Updates:
+   - Catalan, Danish, Dutch, Lithuanian, Spanish, Swedish, Turkish
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jan 30 19:53:07 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.4.4:
+  * Installer cleanup
+  * Updated appdata requirements
+  * Add Keywords to desktop file (lintian), extend Categories 
+    with GTK (desktop-file-validate)
+  * Catfish 1.4.3:
+  * pycodestyle improvements
+  * Improve search speed by discarding .cache and .gvfs when 
+    possible, add --basename to locate query
+  * Stop all search methods when engine is stopped, improve error 
+    handling with thumbnails 
+- Update the sourceurl
+- Use appdata instead of metainfo
+- Fix: non-executable-script
+
+-------------------------------------------------------------------
+Tue Jun 13 14:41:07 UTC 2017 - jengelh@inai.de
+
+- Cure grammar problems in description.
+
+-------------------------------------------------------------------
+Sun Apr 10 16:20:57 UTC 2016 - and.november@opensuse.org
+
+- update to version 1.4.2
+
+-------------------------------------------------------------------
+Fri Oct  9 17:57:01 UTC 2015 - and.november@opensuse.org
+
+- update to version 1.3.3
+
+-------------------------------------------------------------------
+Sun Oct  5 12:28:38 UTC 2014 - and.november@opensuse.org
+
+- update to version 1.2.2
+
+-------------------------------------------------------------------
+Mon Mar 10 18:17:47 UTC 2014 - and.november@opensuse.org
+
+- update to version 1.0.2 
+
+-------------------------------------------------------------------
+Sun Mar  2 03:59:13 UTC 2014 - and.november@opensuse.org
+
+- update to version 1.0.1 
+
+-------------------------------------------------------------------
+Sat Feb  8 14:49:13 UTC 2014 - and.november@opensuse.org
+
+- update to version 1.0.0 
+

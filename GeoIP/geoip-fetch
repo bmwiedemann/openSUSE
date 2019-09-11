@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+baseurl="http://geolite.maxmind.com/download/geoip/database"
+geoipdir='/var/lib/GeoIP'
+
+tempdir=`mktemp -d`
+cd "$tempdir"
+trap "/bin/rm -rf $tempdir" EXIT
+
+sources=(GeoLiteCountry/GeoIP.dat.gz GeoIPv6.dat.gz asnum/GeoIPASNum.dat.gz -- GeoLiteCity.dat.gz)
+targets=(GeoIP.dat                   GeoIPv6.dat    GeoIPASNum.dat          -- GeoIPCity.dat)
+
+verbose=
+if [ -t 0 ]; then
+	verbose="-#"
+fi
+skiplarge=1
+if [ "$1" = "-a" ]; then
+	skiplarge=
+	shift
+fi
+
+i=0
+while [ $i -lt ${#sources[@]} ]; do
+	if [ ${sources[$i]} = '--' ]; then
+		i=$((i+1))
+		[ -z "$skiplarge" ] || break
+		continue
+	fi
+	[ -z "$verbose" ] || echo "${targets[$i]} ..."
+	if curl ${verbose:--s} -f -o "$tempdir/${targets[$i]}.gz" "$baseurl/${sources[$i]}"; then
+		if gzip -d ${targets[$i]}.gz; then
+			mv ${targets[$i]} "$geoipdir/${targets[$i]}"
+		fi
+	fi
+	i=$((i+1))
+done

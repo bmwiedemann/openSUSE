@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri Oct  5 12:21:07 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
+
+- Remove FluidSynth and fluid-soundfont-gm dependencies for 
+  openSUSE Leap 15 and newer versions.
+
+-------------------------------------------------------------------
+Sun Oct 22 13:43:13 UTC 2017 - fstrba@suse.com
+
+- Build with java and source target levels 1.6
+  * Solves one of the issues raised in boo#1062807
+
+-------------------------------------------------------------------
+Fri Sep 22 05:16:12 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Add tuxguitar-do-not-force-java-1.5.patch: Don't force JAVA 1.5
+
+-------------------------------------------------------------------
+Fri Jun 23 20:00:08 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Rewrite spec file, based on spec file from Fedora Project.
+- Updated to version 1.4 (bnc#1038205)
+  * New edit Toolbar
+  * Several bugs fixed
+
+-------------------------------------------------------------------
+Fri Dec 11 15:21:29 UTC 2015 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix building for openSUSE Leap 42.1 by removing itext dependency.
+  Itext used for printing to PDFs.
+
+-------------------------------------------------------------------
+Mon Nov 10 00:41:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Tue Jun 26 13:59:19 UTC 2012 - mvyskocil@suse.cz
+
+- build require java-devel >= 1.6.0 
+
+-------------------------------------------------------------------
+Sun Oct  2 07:00:49 UTC 2011 - embar@users.berlios.de
+
+- added itext to requires section 
+
+-------------------------------------------------------------------
+Sun Sep  18 13:00:49 UTC 2011 - embar@users.berlios.de
+
+- don't strict to swt 3.4 version
+
+-------------------------------------------------------------------
+Tue Jun  8 16:00:49 UTC 2010 - mseben@novell.com
+
+- added libswt3-gtk2 to requires section (bnc#611710)
+
+-------------------------------------------------------------------
+Tue Dec  1 08:25:52 UTC 2009 - mseben@novell.com
+
+- added timidity to requires section (bnc#556711)
+
+-------------------------------------------------------------------
+Thu Nov  5 08:20:50 UTC 2009 - mseben@novell.com
+
+- updated to version 1.2 
+  * Support measure range to loop
+  * Transpose notes feature
+  * Optionally transpose afected notes when change tuning
+  * Move beats left|right support
+  * More song properties options.
+  * Add multiple measure support
+  * Clean multiple measure support
+  * Number of pastes support
+  * Better lilypond plugin
+  * Better fluidsynth plugin
+  * New jack plugin
+  * New community integration plugin
+  * New cocoa integration plugin
+  * New audio unit plugin
+  * Many bug fixes
+
+-------------------------------------------------------------------
+Tue Jun 16 15:42:49 CEST 2009 - mseben@suse.cz
+
+- initial openSUSE package for tuxguitar 1.1 (modified spec from tarball)
+

@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="filename">package-translations</param>
+		<param name="versionformat">%cd.%h</param>
+		<!-- it's tumbleweed -->
+		<param name="versionprefix">84.87</param>
+		<param name="url">git://github.com/openSUSE/packages-i18n.git</param>
+		<param name="scm">git</param>
+		<param name="changesgenerate">enable</param>
+<param name="changesauthor">opensuse-packaging@opensuse.org</param>
+</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

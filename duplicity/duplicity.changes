@@ -1,0 +1,882 @@
+-------------------------------------------------------------------
+Mon Aug 12 15:31:08 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.03:
+    * Some changes to provide Python test coverage:
+    * Fixed bugs #1838427 and #1838702 with a fix
+      suggested by Stephen Miller.  The fix was to
+      supply tarfile with a unicode grpid, not bytes.
+    * Fixed some 2to3 issues in dup_main.py
+    * Fixed division differences with futurize
+    * Merged in translation updates
+- Rebase duplicity-remove_shebang.patch.
+
+-------------------------------------------------------------------
+Thu Jul 25 22:15:21 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.02:
+    * Remove python-gettext from requirements.txt.  Normal
+      Python installation includes gettext.
+    * Mod README to include Python 3.6 and 3.7
+    * Fixed bug #1836829 progress.py: old_div not defined
+      - also fixed old_div in _boto_multi.py
+    * Merged in lp:~limburgher/duplicity/dropbox
+      - Fixes bug #1836611 dropbox mixing bytes and strings
+    * Merged in lp:~stragerneds/duplicity/duplicity
+      - Cache results of filename parsing for speedup
+    * Removed python-gettext from setup.py.  Whoops!
+    * Merged in lp:~mterry/duplicity/pytest-runner-move
+      - Move pytest-runner to testing requirements in setup
+    * Fix language classifiers in setup.py
+    * Remove speedup in testing backup.  The math was correct,
+      but it's failing on Docker and Launchpad testing.
+    * Fix so Docker image duplicity_test will update and pull
+      new bzr revisions if changed since last build.
+    * Enhanced build_duplicity_test.sh
+      - Use -h to get help and defaults
+      - Takes arguments for distro, revno, help
+      - Distros supported are 18.04, 18.10, 19.04, 19.10
+      - Revnos are passed to bzr -r option
+    * Merged in po-updates.
+    * Fixed bug #1829416 with help from charlie4096
+      - onedrive: Can’t convert ‘bytes’ object to str implicitly
+    * Fix dist/makedist to run on python3
+- Drop duplicity-dropbox-strings.patch and duplicity-old-div.patch:
+  fixed upstream.
+- Rebase duplicity-remove_shebang.patch.
+
+-------------------------------------------------------------------
+Sat Jul 20 08:04:02 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- require python3-future: fixes runtime error starting duplicity
+
+-------------------------------------------------------------------
+Fri Jul 19 15:10:05 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add duplicity-old-div.patch: fix "old_div not defined" errors
+  (lp#1836829). 
+- Add duplicity-dropbox-strings.patch: fix dropbox backend mixing
+  bytes and strings (lp#1836611).
+
+-------------------------------------------------------------------
+Tue Jul 16 01:31:53 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.01: 
+    * Comment out HSIBackendTest since shim is not up-to-date.
+    * Merged in po-updates.
+    * Make sure test filenames a bytes not unicode.
+    * Fix test_glob_to_regex to work on Python 3.7
+    * Fix warning in _librsync.c module.
+    * Add encoding to logging.FileHandler call to make log file
+      utf8
+    * Ensure _librsync.so is regenned before tox testing.
+    * Adjust POTFILES.in for compilec.py move.
+    * Fix so we start duplicity with the base python we run under.
+    * Fix some issues found by test_code.py.
+    * Normalize shebang to just python, no version number
+    * Fix so most testing/*.py files have the future suggested
+      lines
+      - from __future__ import print_function
+        from future import standard_library
+        standard_library.install_aliases()
+    * Merged lp:~mterry/duplicity/boto-import
+      - A couple functions in the boto backend were using the boto
+      module without importing it first.
+    * Merged in lp:~mterry/duplicity/s3fsdecode
+      - Fix s3 backups by encoding remote filenames
+    * Fix reimport problem where "from future.builtins" was being
+      treated the differently than "from builtins".  They are both
+      the same, so converted to shorter form "from builtins" and
+      removed duplicates.
+    * Fixed bug #1833573 0.8.00 does not work on Python 2
+      - Fixed shebang to use /usr/bin/python instead of python
+    * Fixed bug #1833559 0.8 test fails with 'duplicity not found'
+      errors
+      - Fixed assumption that duplicity/rdiffdir were in $PATH
+    * Fixed failing test in testing/unit/test_globmatch.py
+      - Someone is messing with regex.  Fix same.
+      - See https://bugs.python.org/issue29995 for details
+    * Fix some import conflicts with the "past" module
+      - Rename collections.py to dup_collections.py
+      - Remove all "from future.utils import old_div"
+      - Replace old_div() with "//" (in py27 for a while).
+      - All tests run for py3, unit tests run for py2.  The new
+        import fail is "from future import standard_library"
+    * Fixed bug #1831178 sequence item 0: expected str instance,
+      int found
+      - Simply converted int to str when making list
+    * Merged in lp:~kaffeekiffer/duplicity/azure-python3-fix
+      - Use util.fsencode to encode file string
+    * Merged in lp:~mterry/duplicity/uexc-string
+      - The return type of util.uexc should always be a string.
+    * Merged in lp:~mterry/duplicity/gio-pydrive-fsdecode
+      - Fix gio and pydrive backends to use fsdecode
+    * See CHANGELOG for changes in version 0.8.00
+- Drop duplicity-refresh-collections-status.patch: fixed upstream.
+- Rebase duplicity-remove_shebang.patch, and adapt to use python 3
+- Adjust dependencies, build, and files to use python 3
+  (bsc#1082695).
+- Add python3-pytest-runner to BuildRequires.
+- Adjust egg-info line in files: the directory name doesn't
+  precisely match the version name.
+
+-------------------------------------------------------------------
+Mon May 20 09:10:55 UTC 2019 - mgorse@suse.com
+
+- Add duplicity-refresh-collections-status.patch: refresh
+  collections status after sync (lp#1828869). 
+
+-------------------------------------------------------------------
+Tue Apr 30 10:54:15 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.19:
+  * Fixed bug #1798206 and bug #1798504
+    - Made paramiko a global with import during __init__ so it would
+      not be loaded unless needed.
+  * Merged in lp:~mterry/duplicity/pydrive-root-0.7
+    - Just a tiny fix to clean up the temporary file we create to find the root ID.
+      It's a little surprising for the user if they wind up with this file called
+      "i_am_in_root" that they don't know where it came from. Almost sounds like
+      they were hacked.
+  * Merged in lp:~yajo/duplicity/duplicity
+    - Support partial metadata sync.
+    - Fixes bug #1823858 by letting the user to choose partial syncing.
+      Only the metadata for the target chain will be downloaded. If older
+      (or newer) chains are encrypted with a different passphrase, the user will
+      be able to restore to a given time by supplying only the
+      passphrase for the chain selected by the `--restore-time` option
+      when using this new option.
+    - A side effect is that using this flag reduces dramatically the
+      sync time when moving files from one to another location, in
+      cases where big amounts of chains are found.
+- Update duplicity-remove_shebang.patch
+
+-------------------------------------------------------------------
+Fri Oct 19 10:38:23 UTC 2018 - mvetter@suse.com
+
+- Update to 0.7.18.2
+  * Fixed bug #1788558 again
+    - If we get None for size skip check.
+
+-------------------------------------------------------------------
+Tue Aug 28 13:18:58 UTC 2018 - mpluskal@suse.com
+
+- Cleanup spec file a bit
+- Use modern python macros
+- Drop no-longer needed duplicity-rpmlintrc
+- Reduce duplicities
+- Split lang subpackage
+
+-------------------------------------------------------------------
+Tue Aug 28 11:35:14 UTC 2018 - mvetter@suse.com
+
+- Update to 0.7.18.1:
+  * Fixed bug #1788558
+    Treat None as zero when printing log.
+  * Revert fix for bug #1788599.
+    Was causing problems with directory names
+- Update duplicity-remove_shebang.patch
+
+-------------------------------------------------------------------
+Thu Aug 23 10:51:47 UTC 2018 - mvetter@suse.com
+
+- Update to 0.7.18:
+  * Fixed bug #1756550 Online html man page is showing a 0 byte file
+  * Partial fix of bug #1734144 with patch from Joris van Eijden
+    - Note: this is really just a partial fix for now, since it only covers
+      the case where the local size does not yet match the remote size.  A
+      case where -1 is the returned length is not fixed.
+    - Number of retries is now same as globals.num_retries.
+    - Added standoff delay of 0.5 sec per attempt.
+  * Fixed bug #1764432 with patch from Robke Geenen
+    - Just join the parts together.
+  * Fixed bug #1717935 with suggestion from strainu
+    - Use urllib.quote_plus() to properly quote pathnames passed via URL
+  * Fixed bug #1780617 Test fail when GnuPG >= 2.2.8
+    - Relevant change in GnuPG 2.2.8: https://dev.gnupg.org/T3981
+    - Added '--ignore-mdc-error' to all gpg calls made.
+  * Fixed bug #1785520 with patch from Chris Hunt
+    - Fix for B2 version 1.3.4 just released
+  * Fix a 2to3 error in ssh_paramiko_backend.py
+- Update duplicity-remove_shebang.patch
+
+-------------------------------------------------------------------
+Sat Mar  3 08:24:22 UTC 2018 - wr@rosenauer.org
+
+- update to 0.7.17
+  * Removed changes made in bug #1044715 Provide a file history feature
+    - Changes required too much memory to carry in the manifest
+    - The option --file-changed in collection-status is now invalid
+    - This will close bugs: #1730451, #896728, #1526557, #1550176
+    - Starting a full backup will be needed to fully utilize this fix
+  * Fix update of Launchpad Translations. Translations were not being
+    picked up on a daily basis and we got several months behind.
+
+-------------------------------------------------------------------
+Sun Jan 14 15:59:32 UTC 2018 - wr@rosenauer.org
+
+- update to 0.7.16
+  * Fixed AttributeError: 'GPGError' object has no attribute 'decode'
+  * More fixes for Unicode handling
+  * Fixed "BackendException with oauth2client 4.0.0"
+  * Fixed "Dropbox support needs to be updated for Dropbox SDK v7.1"
+  * Fixed small file upload changes made in Dropbox SDK v7.1
+  * Fix pylint error in webdavbackend.py
+
+-------------------------------------------------------------------
+Thu Dec 14 22:03:11 UTC 2017 - wr@rosenauer.org
+
+- update to 0.7.15
+  * fixed several issues
+    (for upstream changes see
+     http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Sun Sep  3 13:50:07 UTC 2017 - wr@rosenauer.org
+
+- update to 0.7.14
+  * collection-status should not sync metadata
+    syncing metadata might require to download several GBs
+  * Fixed slowness in 'collection-status' by basing the status on the
+    remote system only.  The local cache is treated as empty.
+  * Fixed encrypted remote manifest handling to merely put out a non-fatal
+    error message and continue if the private key is not available.
+  * giobackend: handle a wider variety of gio backends by making
+    less assumptions; in particular, this fixes the google-drive: backend
+  * Fixed PEP8 errors in bin/duplicity
+  * gio: be slightly more correct and get child GFiles based on display name
+  * log.Warn was invoked with log.warn in webdavbackend.py
+  * Support gpg versions numbers that have tags on them.
+  * uses megatools from https://megatools.megous.com/ instead of
+    mega.py library which has been deprecated
+  * Fixed bug #1713640 with patch from Aleksandar Ivanisevic
+    replace 2.7 syntax with 2.6 equivalent
+  * Fixed bug #1638033 Remove leading slash on --file-to-restore
+    - code already used rstrip('/') so change to just strip('/')
+  * find all details on http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Jul  4 19:55:08 UTC 2017 - wr@rosenauer.org
+
+- requires python(2)-fasteners (boo#1047137)
+
+-------------------------------------------------------------------
+Sun Jun 25 15:46:17 UTC 2017 - wr@rosenauer.org
+
+- update to 0.7.13.1
+  * Fixed bug #1680682 - Only specify --pinentry-mode=loopback when
+    --use-agent is not specified
+  * Fixed man page that had 'cancel' instead of 'loopback' for
+    pinentry mode
+  * Fixed bug #1684312
+    - Use shutil.copyfile instead of os.system('cp ...')
+    - Should reduce overhead of os.system() memory usage.
+  * Fixed bug #1320832 - Use chunks instead of reading it all in
+    swiftbackend
+  * Fixed bug #1320641 and others regarding lockfile
+  * May have finally fixed bug #1556553, "Too many open files...".
+  * Fix bug #1672540
+    Rename would fail to move par files when moving across filesystems.
+    Patch uses shutil.move() to do the rename instead.
+  * Fixed bug #1265765
+    SSH Paramiko backend now uses BufferedFile implementation to enable
+    collecting the entire list of files on the backend.
+  * Copy.com is gone so remove copycombackend.py
+  * Fix a bug when swift backend is used in a multibackend configuration.
+
+-------------------------------------------------------------------
+Sat Mar 25 13:49:26 UTC 2017 - wr@rosenauer.org
+
+- update to 0.7.12
+  * Fixed bug #1655268 "--gpg-binary option not working"
+    If gpg binary is specified rebuild gpg profile using new binary location
+  * Fixed bug #1658283 "Duplicity 0.7.11 broken with GnuPG 2.0"
+    - Made gpg version check more robust than just major version
+    - Now use --pinentry-mode=loopback on gpg 2.1 and greater
+    - Removed check for non-Linux systems, a false problem
+  * Fixed bug #1657916
+    B2 provider cannot handle two backups in the same bucket
+  * Fixed bug #1603704
+    Crash with UnicodeEncodeError
+  * Fixed bug #1367675 - IMAP Backend does not work with Yahoo server
+  * Fixed bug #1668750 - Don't mask backend errors
+
+-------------------------------------------------------------------
+Sun Jan  8 09:25:25 UTC 2017 - wr@rosenauer.org
+
+- update to 0.7.11
+  * Changed default --volsize to 200MB
+  * Backblaze announced a new domain for the b2 api
+  * Fixes Bug #1620085: --exclude-if-present gives OSError looking
+    for tag in locked folders
+  * GPG: enable truly non-interactive operation with gpg2
+  * Do backup to google drive working without a service account
+  * Added new command line option --backend-retry-delay
+    that allows to determine the time that duplicity sleeps
+    before retrying after an error has occured.
+  * Added some robustness to dpbxbackend.py that ensures re-authentication
+    happens in case that a socket is changed (e.g. due to a forced reconnect
+    of a dynamic internet connection).
+  * Add --copy-links to copy symlink contents, not just the link itself.
+  * Fixed Bug #1624725, so that an include glob ending in "/" now
+    includes folder contents (for globs with and without special
+    characters). This preserves the behaviour that an expression
+    ending in "/" only matches a folder, but now the contents of
+    any matching folder is included.
+  * If stat() returns None, don't attempt to set perms.
+  * if a space is entered while duplicity asks for the URL, it fails.
+    Since all important spaces are URL encoded anyway, this should
+    be fine even if there are spaces in the URL at all. I also
+    patched it in the onedrive backend, because it must have similar
+    issues.
+
+-------------------------------------------------------------------
+Tue Aug 23 07:40:58 UTC 2016 - wr@rosenauer.org
+
+- update to 0.7.10
+  * fixed several issues
+    - Restore from S3 fails with --with-prefix-archive if prefix
+      includes '/'
+  * Changes for connecting to IBM Bluemix ObjectStorage. See man page
+  * Allow duplicity to create remote folder
+
+-------------------------------------------------------------------
+Sat Aug  6 08:47:12 UTC 2016 - wr@rosenauer.org
+
+- update to 0.7.09
+  * Fixed bug #1600692 with patch from Wolfgang Rohdewald
+    - Allow symlink to have optional trailing slash during verify.
+  * Merged in lp:~aaron-whitehouse/duplicity/07-fix_deja_dup_error_on_locked_files
+    - Revert log.Error to log.Warn, as it was prior to the merge in rev 1224,
+      as this was affecting other applications (e.g. deja dup; Bug #1605939).
+  * Merged in lp:~duplicity-team/duplicity/po-updates
+
+-------------------------------------------------------------------
+Sun Jul 10 09:04:30 UTC 2016 - wr@rosenauer.org
+
+- update to 0.7.08
+  * adds the ability to use path in the swift backend, in order to
+    have multiple backups to the same container neatly organized.
+  * Increased default volume size to 200M, was 25M
+  * further bugfixes as outlined here
+    http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Wed Jun 15 05:29:10 UTC 2016 - wr@rosenauer.org
+
+- update to 0.7.07.1
+  * upgrade dropbox backend: update to SDK v2, use chunked upload
+  * added --ssl-cacert-path parameter
+  * Backend for https://www.mediafire.com
+    (Requires https://pypi.python.org/pypi/mediafire/ installed)
+  * support GSSAPI authentication in webdav backend
+  * further bugfixes as outlined here
+    http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Wed Dec  9 09:44:40 UTC 2015 - wr@rosenauer.org
+
+- update to 0.7.06
+  * This adds support for AWS S3's newly announced Infrequent Access
+    storage class and is intended to implement Blueprint:
+    https://blueprints.launchpad.net/duplicity/+spec/aws-s3-std-ia-class
+  * A new command line option, --s3-use-ia, is added, and boto backend
+    will automatically use the correct storage class value depending on
+    whether --s3-use-rrs and --s3-use-ia is set. Command line parser will
+    prompt error if both --s3-use-ia and --s3-use-rrs are used together,
+    as they conflict with each other.
+  * Upgrade to newest version of pep8 and pylint
+  * WindowsAzureMissingResourceError and WindowsAzureConflictError
+    changed due to SDK changes.
+  * make sure packages using python's tempfile create temp files in
+    duplicity's temp dir
+  * Fixed bug #1511308 - Cannot restore no-encryption, no-compression backup
+  * Fix missing SWIFT_ENDPOINT_TYPE env var, bug #1519694.
+  * Fix bug #1520691 - Shell Code Injection in hsi backend
+  * Support new version of Azure Storage SDK
+  * Adds a backend for BackBlaze's (currently beta) B2 backup service.
+
+-------------------------------------------------------------------
+Mon Nov 23 10:53:35 UTC 2015 - wr@rosenauer.org
+
+- current FTP default is lftp; therefore recommend that instead
+  of ncftp
+
+-------------------------------------------------------------------
+Sat Sep 19 15:20:21 UTC 2015 - wr@rosenauer.org
+
+- update to 0.7.05
+  * bugfix release
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Aug  4 12:28:45 UTC 2015 - wr@rosenauer.org
+
+- update to 0.7.04
+  * bugfix release
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Sat Mar 21 14:22:03 UTC 2015 - wr@rosenauer.org
+
+- update to 0.7.02
+  * bugfix release
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+- removed obsolete duplicity-librsync-1.0.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 21:41:25 UTC 2015 - dimstar@opensuse.org
+
+- Add duplicity-librsync-1.0.patch: Fix build with librsync 1.0.0.
+
+-------------------------------------------------------------------
+Wed Feb 25 20:23:30 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.7.01:
+  http://duplicity.nongnu.org/CHANGELOG
+- Clean-up with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Nov  9 17:40:47 UTC 2014 - wr@rosenauer.org
+
+- Update to version 0.7.0
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+- updated duplicity-remove_shebang.patch
+
+-------------------------------------------------------------------
+Wed Jul  9 14:42:07 UTC 2014 - kruber@zib.de
+
+- Update to version 0.6.24
+  * lot of bugfixes
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+- requires python-setuptools
+
+-------------------------------------------------------------------
+Sat Feb  1 19:20:58 UTC 2014 - wr@rosenauer.org
+
+- Update to version 0.6.23
+  * lot of bugfixes
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+- requires python-lockfile
+
+-------------------------------------------------------------------
+Sun Sep 15 20:58:30 UTC 2013 - wr@rosenauer.org
+
+- Update to version 0.6.22:
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+    some highlights:
+    - Add Dropbox backend
+      Install Dropbox Python SDK first
+    - Add support for Swift, the OpenStack Object Storage service
+    - Add support for Google Cloud Storage via the boto backend
+    - Add support for Mega (mega.co.nz) backend
+
+-------------------------------------------------------------------
+Thu Feb  7 15:13:06 UTC 2013 - wr@rosenauer.org
+
+- Update to version 0.6.21:
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+    some highlights:
+    - Allow .netrc auth for lftp backend
+    - Generate encrypted backups without revealing the user's key id
+      via option --hidden-encrypt-key
+
+-------------------------------------------------------------------
+Sat Nov 10 21:07:51 UTC 2012 - wr@rosenauer.org
+
+- Update to version 0.6.20:
+  * several improvements and bugfixes
+    http://duplicity.nongnu.org/CHANGELOG
+
+-------------------------------------------------------------------
+Mon Jun 18 06:03:26 UTC 2012 - wr@rosenauer.org
+
+- Update to version 0.6.19:
+  * several bugfixes and ssh backends enhancements
+
+-------------------------------------------------------------------
+Mon Mar  5 08:37:26 UTC 2012 - wr@rosenauer.org
+
+- Update to version 0.6.18:
+  * Added option to not compress the backup, when no encryption
+     is selected
+  * Adding --file-prefix option so different sets of backups can
+    be stored in the same bucket
+  * more bugfixes
+
+-------------------------------------------------------------------
+Mon Feb 20 19:11:26 UTC 2012 - coolo@suse.com
+
+- factory has split librsync into devel and lib package
+
+-------------------------------------------------------------------
+Wed Feb  8 20:35:18 UTC 2012 - wr@rosenauer.org
+
+- Update to version 0.6.17:
+  * Added --rsync-options flag to allow user to pass options to
+    rsync at will
+  * Added --s3-use-multiprocessing to select the new s3
+    multiprocessing backend.
+    Default is to use the single processing backend.  A helper,
+    filechunkio.py, requires Python 2.6+, so this option is not
+    usable in earlier versions.
+- Update to version 0.6.16:
+  * Usability enhancement: sign passphrase prompt has no second
+    verification prompt anymore, symmetric passphrases are
+    still verified
+  * Fixed Unicode errors when translations are used.
+  * Replaced old tarfile.py with Python 2.7 version, modded
+    to support Python 2.4 syntax.
+
+-------------------------------------------------------------------
+Sat Oct  1 22:41:35 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.15:
+  + Ignore 404 errors when deleting a file on Ubuntu One.
+  + Ignore ENOENT (file missing) errors where it is safe.
+  + Set minimum Python version to 2.4 in README.
+  + introduce --numeric-owner parameter
+  + duplicity:restore_check_hash "Invalid data - *** hash mismatch"
+    lists the offending filename
+  + fixes to unit tests to support SIGN_PASSPHRASE
+  + Bugs fixed: lp#524922, lp#703142, lp#794576, lp#815635,
+    lp#818178, lp#821368, lp#823556, lp#824678
+- Changes from version 0.6.14:
+  + Provide Ubuntu One integration
+  + Bugs fixed: lp#433591, lp#487720, lp#507904, lp#512628,
+    lp#680425, lp#705499, lp#739438, lp#753858, lp#761688,
+    lp#777377, lp#778215, lp#782294, lp#782321, lp#792704,
+    lp#782294, lp#782337, lp#794123, lp#797758, lp#793096.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Jun 20 15:18:31 UTC 2011 - wr@rosenauer.org
+
+- update to 0.6.13
+  fixed bugs:
+  * Assertion error "time not moving forward at appropriate pace"
+  * silent data corruption with checkpoint/restore
+  * File "/usr/bin/duplicity", error after upgrade from 6.11 to 6.12
+  features:
+  * In boto backend check for existing bucket before trying to create
+- update to 0.6.12
+  fixed bugs:
+  * Only full backups done on webdav
+  * Use log codes for common backend errors
+  * Inverted "Current directory" "Previous directory" in error message
+  * OSError: [Errno 2] No such file or directory
+  * sslerror: The read operation timed out with cf
+  * boto backend uses Python 2.5 conditional
+  * symbolic link ownership not preserved
+  * Cygwin: TypeError: basis_file must be a (true) file
+  * Duplicity 0.6.11 aborts if RSYNC_RSH not set
+  * Backup fails silently when target is full (sftp, verbosity=4)
+  * Exception in log module
+  features:
+  * ftps support using lftp (ftpsbackend)
+
+-------------------------------------------------------------------
+Sat Jan  1 18:17:06 UTC 2011 - wr@rosenauer.org
+
+- update to 0.6.11
+  * Add an option to connect to S3 with regular HTTP (and not HTTPS)
+  * Use log codes for common backend errors
+  * missing ssh on rsyncd url - rsync: Failed to exec ssh: ...
+  * backed up to S3, wiped drive, reinstalled, unable to restore backup
+  * os.execve should get passed program as first argument
+  * sftp: "Couldn't delete file: Failure'" only logged on level 9
+  * 0.6.10 does not work with S3
+  * RsyncBackend instance has no attribute 'subprocess_popen_persist'
+
+-------------------------------------------------------------------
+Tue Sep 28 08:18:11 UTC 2010 - wr@rosenauer.org
+
+- update to 0.6.10
+  - changes in 0.6.10
+    * Offer command to remove old incremental backups from target
+    * Use log codes for common backend errors
+    * duplicity --short-filenames crashes with TypeError
+    * NameError: global name 'parsed_url' is not defined
+    * ftpbackend fails if target directory doesn't exist
+    * Command-line verbosity parsing crash
+  - changes in 0.6.9
+    * Unknown error while uploading duplicity-full-signatures
+    * Duplicity returns 1 when continuing an interrupted backup
+    * duplicity doesn't handle with large files well
+    * --ssh-options options passing options to ssh do not work
+    * username not url decoded in backend (at least rsync)
+    * Assertion error "time not moving forward at appropriate pace"
+    * Diminishing performance on large files
+    * Upgraded tahoebackend to new parse_url.
+    * Fix two warning messages in sshbackend.
+- GnuPGInterface and pexpect are part of duplicity
+  -> removed RPM requirements
+- Require ncftp
+- Recommend (optional components depending on which backup medium
+  should be used)
+  * ncftp 
+  * python-boto (optional requirement for use with S3; module not 
+    in Factory yet though)
+
+-------------------------------------------------------------------
+Mon Mar 15 07:03:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.6.08b:
+  * fix bug where encrypted backup without --gpg-options crashes;
+
+- changes from 0.6.08:
+  * fix lp#519110: need accurate man page info on use of scp/sftp usage
+  * fix lp#532051: rdiffdir attempts to reference undefined variables with
+    some command arguments
+  * fix lp#529869: TypeError: unsupported operand type(s) for -:
+    'NoneType' and 'int'
+  * fix lp#530910: TypeError: unsupported operand type(s) for +:
+    'NoneType' and 'str'
+
+- changes from 0.6.07:
+  * fix lp#459511: --tempdir option doesn't override TMPDIR
+  * fix lp#467391: WebDAV backend doesn't work
+  * fix lp#487686: re-add scp backend and make available via command line option
+  * fix lp#490619: use optparse not getopt
+  * fix lp#497243: 0.6.06, archive dir: cache desynchronization caused by remove*
+  * fix lp#501093: SSHBackend doesn't handle spaces in path
+  * fix lp#505739: "sslerror: The read operation timed out" with S3
+  * fix lp#520470: don't warn when there's old backup to delete
+  * fix lp#522544: OSError: [Errno 40] Too many levels of symbolic links
+  * fix lp#388673: allow renaming paths as they are restored
+
+-------------------------------------------------------------------
+Mon Feb  8 10:26:24 UTC 2010 - rhafer@novell.com
+
+- Update to version 0.6.06: 
+  * Merged in lp:~mterry/duplicity/list-old-chains
+    List/keep old signature chains
+  * Applied patches from Kasper Brand that fixed device file handling.
+  * Applied 422477; [PATCH] IMAP Backend Error in delete()
+  * Merged in lp:~mterry/duplicity/iterate-warnings Add machine 
+    codes to various warnings when iterating over source files
+  * Fixed 435975 gpg asks for password in 0.6.05, but not in 0.5.18
+- Bugs fixed in v0.6.05 (2009/08/28)
+  * 407968: GIO backend can't restore
+  * 408059: Failure due to _logger.log failure for content with special
+    characters: TypeError decoding Unicode not supported
+  * 409593: deja-dup (or duplicity) deletes all signatures
+  * 412667: "duplicity remove-older-than" asks for passphrase even though
+    not required
+  * 418170: [PATCH] file names longer then 512 symbols are not supported
+- Bugs fixed in v0.6.04
+  * 405734: duplicity fails to restore files that contain a newline character
+  * 403790: Backup error: No such file or directory
+- Bugs fixed in v0.6.03
+  * 377528: --file-to-restore doesn't work with trailing slash
+  * 394757: Backend imports should be made optional
+  * 398230: Deja-dup backup fails with message: "Unable to locate last file"
+  * 401303: 0.6.2 manpage inconsistent wrt. archive-dir/name
+  * 405646: Small i18n error
+  * 405975: duplicity.gpg.gpg_failed() breaks and spews on GnuPG error
+  * 402794: duplicity public-key-only incompatible with gnupg 2.0.11
+- Bugs fixed in v0.6.02
+  * 394629: Hang on first collection-status
+  * 379386: Fix 'list-current-files' with missing archive dir
+  * 395826: "No such file or directory" when backing up second time
+  * 394627: User-friendly archive dir print
+  * 388699: Manifest mismatch error
+- Bugs fixed in v0.6.01
+  * 388034: Unable to backup
+  * 378940: python2-6 issue / UTF-8 charset / Ubuntu 9.04
+  * 379386: Fix list-current-files w/ missing archive dir
+  * 387102: Asynchronous upload not working properly
+  * 387218: Make scp/ssh into sftp-only backend
+  * 388992: List of Orphaned Files Growing
+  * 392905: NoneType object has no attribute 'startswith'
+  * 393372: Error creating directory
+  * 383412: Add InfoCodes for upload events
+  * 383419: Add gio backend
+- For older changes please see 
+  /usr/share/doc/packages/duplicity/CHANGELOG 
+  or http://duplicity.nongnu.org/CHANGELOG
+-------------------------------------------------------------------
+Fri Aug 29 11:48:00 ADT 2008 - jfunk@funktronics.ca
+
+- Apply fix for http://savannah.nongnu.org/bugs/?23985
+  --no-encryption option does no more work with duplicity 0.4.12
+
+-------------------------------------------------------------------
+Thu Jul 24 22:04:48 CEST 2008 - cthiel@suse.de
+
+- update to version 0.4.12
+  * Dan Muresan created a patch to minimize the number of password
+    prompts.  To do so, it sometimes requests a password once without
+    confirmation; if later it turns out that a full backup is needed,
+    the user is prompted for confirmation.
+  * bug #23540: doc bug in man page (environment FTP_PASSWORD)
+    https://savannah.nongnu.org/bugs/index.php?23540
+  * bug #23362: Documentation for --version, --time-separator <char>
+    https://savannah.nongnu.org/bugs/index.php?23362
+  * bug #23283: interactive passphrase query is suboptimal
+    https://savannah.nongnu.org/bugs/index.php?23283
+  * bug #23066 was not actually applied to 0.4.11.  Its here now.
+    https://savannah.nongnu.org/bugs/index.php?23066
+  * bug #22826: regressions caused by boto 1.1c
+  * https://savannah.nongnu.org/bugs/index.php?22826
+- changes in 0.4.11
+  * Changes applied to allow duplicity to run under Python 2.3 again.
+  * patch #6485: Reinstate patch #6340 with a detailed explanation.
+   https://savannah.nongnu.org/patch/index.php?6485
+  * bug #23066: ssh uris with given portnumbers are not handled correctly
+    https://savannah.nongnu.org/bugs/index.php?23066
+
+-------------------------------------------------------------------
+Thu Apr 17 13:41:21 CEST 2008 - cthiel@suse.de
+
+- update to version 0.4.10
+  * bug #22728: FTP backend fails on empty directory
+  * patch #6374: Duplicity --tempdir patch documentation.
+  * patch #6375: Duplicity reports the epoch for a nonexistant last full
+    backup date
+  * patch #6380: add additional named logging levels
+  * patch #6389: Possible Fix for pagefile.sys on Win32 systems
+  * patch #6403: Restore by overwriting files/directories by using --force
+    option
+  * patch #6449: add additional debug level logging
+  * patch #6453: handle absolute urls in webdav backend
+  * Fix problem where S3 prefix was prepended with 'd'.  This caused a
+    failure in the regression tests.
+- changes in version 0.4.9
+  * NOTE: URL format correction in rsync://.  The rsync backend
+    now properly supports absolute and relative pathnames and 
+    module access.  The formats are:
+      rsync://user@host::/module/some_dir
+      rsync://user@host/relative_path
+      rsync://user@host//absolute_path
+  * Fixed regression caused by changeover to new urlparse.py.
+  * bug #21475: FTP Usernames that contain '@' are not recognized
+  * Added section URL FORMAT in the duplicity man page.
+  * Added 2nd patch to bug #21475 that forces all versions of
+    Python to use the fixed urlparse.py.
+  * Fixed so that remove-older-than and remove-all-but-n-full
+    will not request a GPG passphrase.
+  * Fixed issue with Pure-FTPd that would always return an empty directory
+    listing and thus force a full backup every time.  A side effect of the
+    change is that we now only make one call to ncftpls to get the listing,
+    thereby reducing the overhead on systems with a large number of backup
+    files.
+  * bug #21896: Two problems with rsync under 0.4.8 + patch
+  * bug #21909: Problematic typo in compare_verbose() method
+  * patch #6354: S3 staight typo results in a bogus exception
+  * patch #6356: Command line option for the temporary directory root.
+  * patch #6357: Explicit restore action is missing from the command list,
+- changes in version 0.4.8
+  * First pass at bringing unittest cases up to date.  All unit tests are
+    working, but more test cases need to be added to handle the new
+    protocols, plus there is some print leakage even with logging turned
+    off.
+  * Allow pexpect to force the close of the child on sftp calls.  We already
+    do that with scp calls.  This cleans up that exception.
+  * bug #21751: rsync module urls do not work in 0.4.7
+  * bug #21752: Boto backend needs version 0.9d or later
+  * patch #6340: S3 short filename regression
+  * patch #6344: S3 bad bad key key handling
+- changes in version 0.4.7
+  * Applied patch from Eric Hanchrow to fix logging error in botoBackend,
+    and fix delete() in rsyncBackend.
+  * bug #21673: remove-all-but-n-full wrong arg usage
+  * bug #21686: NcFTPGet 3.2.0 tempfile incompatibility
+  * patch #6292: Amazon S3 bucket creation deferral
+  * patch #6293: left-over patch from remove-all-but-n-full
+  * patch #6296: Generic S3 url support for Duplicity 0.4.6
+  * patch #6298: URI unquoting patch for FTP backend
+  * patch #6299: re-design tempfile handling
+  * patch #6300: Standard library replacement for ParsedUrl class
+  * patch #6301: log sftp commands at verbosity 5
+
+-------------------------------------------------------------------
+Tue Dec  4 17:08:49 CET 2007 - cthiel@suse.de
+
+- update to version 0.4.6
+  * https://savannah.nongnu.org/bugs/index.php?21508
+    bug #21508: Change delete implementation of ftpBackend to 
+    only send one "DELE" instead of multiple per delete.
+  * https://savannah.nongnu.org/bugs/index.php?21646
+    bug #21646: --archive-dir causes delete of remote full
+    sigs and orphaned sig files
+  * https://savannah.nongnu.org/bugs/index.php?21651
+    bug #21651, add https support for webdav.
+  * https://savannah.nongnu.org/bugs/index.php?21657
+    bug #21657: ncftpls fails to create dir in ver 0.4.5
+  * https://savannah.nongnu.org/patch/?6284
+    patch #6284: document TMPDIR and friends
+  * https://savannah.nongnu.org/patch/?6284
+    patch #6285: security fix: eliminate use of mktemp()
+  * https://savannah.nongnu.org/patch/index.php?6289
+    patch #6289: Amazon S3 key prefix patch for Duplicity 0.4.5
+  * https://savannah.nongnu.org/patch/index.php?6291
+    patch #6291: Alternative WebDAV HTTPS patch
+- changes in 0.4.5
+  * https://savannah.nongnu.org/bugs/index.php?21646
+    Fix to handling of collections when --archive-dir is used.  Prior to
+    this, duplicity would write the full sig files to both local and remote,
+    then delete the remote.  Now, it does not delete the remote full sigs.
+  * Applied the following patches from Peter Schuller
+    patch #6279, add command 'remove-all-but-n-full'
+    patch #6280, clarify --archive-dir option
+    patch #6281, --help should print to stdout, not stderr
+    patch #6282, collection-status: output in more consistent order
+- changes in 0.4.4
+  * Changes to ftpBackend to use a temp login config file rather than
+    putting the username and password on the command line.  This requires
+    the use of NcFTP 3.1.9 or later.
+  * Thanks to a patch from Greg Hewgill the Amazon S3 backend now uses
+    --num-retries to retry IO repeatedly if needed.
+  * Changes to commandline processing to allow non-ambiguous short strings
+    for commands, i.e. 'i', 'inc', 'incr' for 'incremental', 'f' for 'full',
+    etc..  A warning message is printed if the short command is not unique. 
+    Note: this already works for options, so I just applied the same idea to
+    commands.
+  * Applied a patch from Gregory Hartman to correct handling of DST
+    in time calculations.  This affects backups made the night of
+    a DST time switch.
+
+-------------------------------------------------------------------
+Sun Oct  7 12:34:26 CEST 2007 - cthiel@suse.de
+
+- update to version 0.4.3
+  * Move get_password() to Backend class to standardize.
+  * Fix problem with ftpBackend to create target directory if needed.  Note:
+    this creates only one level.
+  * Dropped ssh-command and added ssh-options to allow users to add options
+    to the scp and sftp commmands.
+  * Removed use of tempfile.TemporaryFile().  This fixes the restore problem
+    on Windows that was due to Python bug 1776696 reported on Sourceforge.
+  * Fixed Debian Bug#437694: Make bzip2 compression optional.  The default
+    is not to do bzip2 compression.  To use bzip2 add the following command
+    line option: --gpg-options='--compress-algo=bzip2
+    --bzip2-compress-level=9' Note: do not add spaces in the string value.
+  * Fixed bug 20764 - unable to use port in ssh backend. 
+    https://savannah.nongnu.org/bugs/?20764
+  * Remove ssh_command option, add ssh_options.  This adds options to the
+    scp and sftp commands that are used by the ssh backend.
+  * Change ssh backend to send 'quit' instead of EOF when using sftp.  This
+    allows it to run under cron as long as the password is supplied
+    non-interactively.
+  * Change ssh backend to not pass :port part of URL to scp or sftp.  We
+    already supply -oPort=xx for port.
+
+-------------------------------------------------------------------
+Mon May 14 23:25:39 CEST 2007 - cthiel@suse.de
+
+- initial package (version 0.4.2)
+

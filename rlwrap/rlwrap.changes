@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Fri Aug 17 15:40:33 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix a build race (boo#1102408)
+
+-------------------------------------------------------------------
+Sun Sep  3 14:43:32 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 0.43:
+ * New features
+   - Filters can now be written in python 
+   - Filters can respond to hotkeys (i.e. single keypresses bound to rlwrap-hotkey in .inputrc)
+ * Bug fixes
+   - rlwrap now always searches terminfo before termcap.
+   - playing back a readline macro consisting of more than one line would crash rlwrap.
+   - rlwrap --one-shot could accept more than one line when input in quick succession.
+
+-------------------------------------------------------------------
+Sun Jan 18 21:41:44 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 0.42:
+  + Changes from 0.37 to 0.40
+    - configure will now find tgentent() in libtinfo
+    - compiling with gcc -O2 made rlwrap hang after Ctrl-D on
+      empty line
+    - HP-UX 11 has weird tgentent() return values, confusing rlwrap
+    - Solaris: rlwrap would sometimes fail with "TIOCSWINSZ failed
+      on slave pty"
+    - Single quote ' is now word-breaking by default
+    - multi-line edit would mangle upper ASCII and UTF-8 (and still
+      does that to UTF-16 :( )
+    - added --extra-char-after-completion and --multi-line-ext
+    - rlwrap now recognizes the 'rmcup' and 'rmkx' character
+      sequences used by programs that use an alternate screen
+      (like editors and pagers) to return from it.
+    - configure will now correctly determine pty type on SCO
+    - rlwrap --no-children would leak file descriptors to
+      /proc/<command_pid>/wchan
+    - non-ASCII characters in multi-lin input are no longer
+      replaced by spaces after calling an external editor
+    - running rlwrap within emacs would crash (division by zero)
+      rlwrap now bails out whenever terminal width == 0
+    - added --enable-proc-mountpoint config option to use alternate
+      linux-like proc filesystems (like in FreeBSD) for finding 
+      <command>s working dir (-c option) and kernel function in which
+      <command> is sleeping (-N option)
+    - added prototype for copy_without_ignore_markers, fixing a
+      segfault on FreeBSD
+    - Filters now get complete echo lines even if the echo comes
+      back in chunks
+  + Changes from 0.40 to 0.41
+    - Slightly late SIGCHLD could cause an I/O error on master pty
+    - Added -W (-polling) option to poll slave pty for changes in
+      its interrupt character and ISIG flag.
+    - if $TERM is not found in termcap/terminfo database, use vt100
+  + Changes from 0.41 to 0.42
+    - Added --mirror-arguments (-U) option
+    - On SunOS tcgetattr(slave pty) failed with "Invalid argument"
+    - If the completion list contained two words, one of which a
+      prefix of the other (e.g. "sea" and "seagull") the shorter
+      one would be skipped when displaying a list of completions
+    - reading completion files (with the -f option, or from
+      $RLWRAP_HOME/<command>_completions) could fail with an
+      incorrect ENOENT ("No such file or directory")
+    - rlwrap -z listing wouldn't list filters
+    - When both master and slave pty are unfit for sensing slave
+      commands terminal settings, rlwrap now bails out with an
+      error "cannot determine terminal mode of slave command"
+  + Dropped:
+    - rlwrap-0.37.tar.bz2
+  + Added:
+    - rlwrap-0.42.tar.gz
+
+-------------------------------------------------------------------
+Sun Sep 19 11:47:49 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.37:
+  + Commands that emit "status lines" using backspaces and carriage
+    returns could confuse rlwrap
+  + rlwrap uses C strings internally, and thus cannot cope with
+    command output that contains zero bytes (padding). It used to
+    replace these with spaces, now the zero bytes are removed.
+  + If the RLWRAP_HOME is set, but $RLWRAP_HOME doesn't exist,
+    rlwrap will create it
+  + Typo: SIGERR instead of SIG_ERR in signals.c
+
+-------------------------------------------------------------------
+Tue Apr  6 14:40:29 UTC 2010 - hvogel@novell.com
+
+- Update to version 0.36
+ * When rlwrap kills itself after a command crash it will not dump
+   core, in order to avoid clobbering command's core dump.
+ * Many small improvements and fixes for multi-line input 
+ * Many small fixes and improvements in signal handling 
+ * Added --one-shot (-o) and --only-cook (-O) options
+ * Added EXAMPLES section and -t option to rlwrap manpage
+ * prefix arguments are now correctly reset
+ * Hyphens in rlwrap manpage are now all properly escaped
+ * Major new feature: filtering. Filters sit between rlwrap and the
+   wrapped command, re-writing command output, input, prompts,
+   history, and completion word lists. 
+ * At program exit, rlwrap now outputs a newline only when the client 
+   didn't.       
+ * Added -g, -I, -N, -S, -w and -z options
+ * -p option now takes colour names (-pYellow)
+
+-------------------------------------------------------------------
+Wed Jan 16 16:05:45 CET 2008 - hvogel@suse.de
+
+- Update to version 0.30:
+  * EOF on stdin (e.g. by pressing CTRL-D) would end prompt colouring.
+  * added -q option 
+  * added -A option to handle (ANSI-)coloured prompts
+  * added -p option to colourise uncoloured prompts 
+  * added -t option to set terminal type for client command
+  * rlwrap now copies its terminal settings from the client
+    even when this has put its terminal in single-keypress
+    (uncooked) mode. A rlwrapped emacs will now respond to CTRL-C 
+    and CTRL-G as it should.
+  * error messages and warnings now include the rlwrap version number 
+  * added a very simple custom malloc/free debugger for use with the 
+    --debug option. Rather fragile and not well tested, use with care.
+  * Whenever TERM is not set, rlwrap assumes vt100. Set TERM=dumb if
+    you really have a dumb terminal.
+  * rlwrap now leaves the handling of multi-line prompts and edit
+    buffers to readline (except when in horizontal-scroll mode or when 
+    configured with --enable-homegrown-redisplay).  
+  * whenever --always-readline is set, SIGWINCH not passed to 
+    client command immediately, but only *after* accepting a line.
+  * --spy-on-readline now enabled by default
+
+-------------------------------------------------------------------
+Wed May 16 15:26:03 CEST 2007 - hvogel@suse.de
+
+- Initial package, Version 0.28
+

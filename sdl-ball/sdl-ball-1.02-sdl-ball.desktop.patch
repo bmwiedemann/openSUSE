@@ -1,0 +1,12 @@
+--- sdl-ball.desktop.orig	2014-10-01 08:45:50.000000000 +0200
++++ sdl-ball.desktop	2014-11-07 12:18:37.864952424 +0100
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
+ Name=SDL-Ball
++GenericName=DX-Ball/MegaBall/Breakout
+ Exec=sdl-ball
+ Icon=sdl-ball
+ Type=Application
+-Comment=A Breakout clone
++Comment=A DX-Ball/MegaBall/Breakout clone
+ Categories=Game;ActionGame;ArcadeGame;

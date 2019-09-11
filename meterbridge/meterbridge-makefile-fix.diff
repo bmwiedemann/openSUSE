@@ -1,0 +1,9 @@
+--- src/Makefile.am-dist	2007-01-16 16:00:16.000000000 +0100
++++ src/Makefile.am	2007-01-16 16:00:30.000000000 +0100
+@@ -1,5 +1,5 @@
+ #CFLAGS = -O6 `sdl-config --cflags` -DPKG_DATA_DIR=\"$(pkgdatadir)\"
+-CFLAGS = -Wall -g $(SDL_CFLAGS) $(JACK_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\"
++AM_CFLAGS = $(SDL_CFLAGS) $(JACK_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\"
+ 
+ bin_PROGRAMS = meterbridge
+ 

@@ -1,0 +1,75 @@
+diff -urEbwB boost_1_60_0.orig/libs/math/build/Jamfile.v2 boost_1_60_0/libs/math/build/Jamfile.v2
+--- boost_1_60_0.orig/libs/math/build/Jamfile.v2	2015-12-23 17:26:17.352006018 +0100
++++ boost_1_60_0/libs/math/build/Jamfile.v2	2015-12-23 20:41:51.707246969 +0100
+@@ -4,23 +4,17 @@
+ # http://www.boost.org/LICENSE_1_0.txt.
+ 
+ import testing ;
+-import pch ;
+ 
+ project  
+     : requirements 
+       <toolset>intel-win:<cxxflags>-nologo 
+       <toolset>intel-win:<linkflags>-nologo 
+-      #<toolset>intel-linux:<pch>off
+-      <toolset>intel-darwin:<pch>off
+-      <toolset>msvc-7.1:<pch>off
+-      <toolset>gcc,<target-os>windows:<pch>off
+       #<toolset>gcc:<cxxflags>-fvisibility=hidden
+       <toolset>intel-linux:<cxxflags>-fvisibility=hidden
+       #<toolset>sun:<cxxflags>-xldscope=hidden
+       [ check-target-builds ../config//has_gcc_visibility "gcc visibility" : <toolset>gcc:<cxxflags>-fvisibility=hidden : ]
+     ;
+ 
+-cpp-pch pch : ../src/tr1/pch.hpp : <include>../src/tr1 <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1 ; 
+ 
+ C99_SOURCES = acosh
+ asinh
+@@ -80,19 +74,19 @@
+ explicit long_double_check ;
+         
+ # Library targets
+-lib boost_math_tr1 : ../src/tr1/$(TR1_SOURCES).cpp pch
++lib boost_math_tr1 : ../src/tr1/$(TR1_SOURCES).cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <include>../src/tr1
+    ;
+ 
+-lib boost_math_tr1f : ../src/tr1/$(TR1_SOURCES)f.cpp pch
++lib boost_math_tr1f : ../src/tr1/$(TR1_SOURCES)f.cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <include>../src/tr1
+    ;
+ 
+-lib boost_math_tr1l : ../src/tr1/$(TR1_SOURCES)l.cpp pch
++lib boost_math_tr1l : ../src/tr1/$(TR1_SOURCES)l.cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <dependency>../config//has_long_double_support
+@@ -100,19 +94,19 @@
+          [ check-target-builds ../config//has_long_double_support "long double support" : : <build>no ]
+    ;
+ 
+-lib boost_math_c99 : ../src/tr1/$(C99_SOURCES).cpp pch
++lib boost_math_c99 : ../src/tr1/$(C99_SOURCES).cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <include>../src/tr1
+    ;
+ 
+-lib boost_math_c99f : ../src/tr1/$(C99_SOURCES)f.cpp pch
++lib boost_math_c99f : ../src/tr1/$(C99_SOURCES)f.cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <include>../src/tr1
+    ;
+ 
+-lib boost_math_c99l : ../src/tr1/$(C99_SOURCES)l.cpp pch
++lib boost_math_c99l : ../src/tr1/$(C99_SOURCES)l.cpp
+     :         
+          <link>shared:<define>BOOST_MATH_TR1_DYN_LINK=1
+          <dependency>../config//has_long_double_support
+Only in boost_1_60_0/libs/math/build: Jamfile.v2.orig
+Only in boost_1_60_0/libs/math/build: Jamfile.v2.rej

@@ -1,0 +1,26 @@
+## Description: Firewall Configuration for NFS client.
+#
+# Only the variables TCP, UDP, RPC, IP and BROADCAST are allowed.
+# More may be supported in the future.
+#
+# For a more detailed description of the individual variables see
+# the comments for FW_SERVICES_*_EXT in /etc/sysconfig/SuSEfirewall2
+#
+
+## Name: NFS Client
+## Description: Opens ports for NFS client to allow connection to an NFS server.
+
+# space separated list of allowed TCP ports
+TCP=""
+
+# space separated list of allowed UDP ports
+UDP=""
+
+# space separated list of allowed RPC services
+RPC="portmap status nlockmgr"
+
+# space separated list of allowed IP protocols
+IP=""
+
+# space separated list of allowed UDP broadcast ports
+BROADCAST=""

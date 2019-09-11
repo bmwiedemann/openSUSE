@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Aug 15 05:06:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.101
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.101		2019-08-14	T. R. Wyant
+      - Fix broken POD links, and add test to ensure they stay fixed.
+
+-------------------------------------------------------------------
+Sat Dec 22 06:04:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.100
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+-------------------------------------------------------------------
+Mon Jun 19 07:38:05 UTC 2017 - werner@suse.de
+
+- Silent one of the bots complaining about wrong syntax of the
+  instead of comlaining a bit for fixing the perl packages would
+  be perfect
+
+-------------------------------------------------------------------
+Thu Apr 14 08:10:30 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.04
+    * created by cpanspec 1.78.04
+

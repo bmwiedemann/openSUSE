@@ -1,0 +1,27 @@
+# RPM macros for packages installing a Pango module
+#
+###
+#
+# When a package installs a Pango module, it should use all
+# three macros:
+#
+#  - %pango_module_requires in the preamble
+#  - %pango_module_post in %post
+#  - %pango_module_postun in %postun
+#
+###
+
+# Since pango 1.37.0, the macros are just there for compatibility, but no longer perform any action
+# Pango no loner has config and module support
+
+%pango_module_requires                                                        \
+%nil
+
+# On install, update the cache
+%pango_module_post                                                            \
+%nil
+
+# On uninstall, update the cache. Note: we ignore upgrades (already
+# handled in %post of the new package).
+%pango_module_postun                                                          \
+%nil

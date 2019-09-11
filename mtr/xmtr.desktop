@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/xdg-su -c /usr/sbin/xmtr
+Icon=xmtr_icon
+Name=Xmtr
+GenericName=Network Diagnostic Tool

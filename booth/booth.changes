@@ -1,0 +1,815 @@
+-------------------------------------------------------------------
+Mon Apr 30 06:52:34 UTC 2018 - ckowalczyk@suse.com
+
+- Doc: fix the documentation build with asciidoctor (bsc#1075764):
+  * fix_asciidoc_build.patch
+- Service: restart arbitrator on failure
+- Upstream version cs: c2389e3020e8a3780b679cf0c9857bd608e99fa1
+
+-------------------------------------------------------------------
+Thu Feb 22 09:23:51 UTC 2018 - ckowalczyk@suse.com
+
+- Build: replace SuSEFirewall2 by firewalld (fate#320794) in booth.spec
+- Upstream version cs: 80199f9477fb4fbf8809f31986139efe3f4ef790
+
+-------------------------------------------------------------------
+Fri Dec  1 10:50:28 UTC 2017 - ckowalczyk@suse.com
+
+- Tickets: added manual tickets, which allow handling 2-site setup
+  (fate#322100)
+- Debug mode: fixed the interaction with resource agents (bsc#1046790)
+- Patch file bug-1045067_booth-fix-booth-grant-cmd.patch has been removed
+  after the code being merged to upstream:
+  * Clinet commands: fixed local IP addresses for booth grant, list,
+    and peers commands (bsc#1045067)
+- Upstream version cs: d4cb8cbdaf87e46f636c3d06730b902b79bdcb9c 
+
+-------------------------------------------------------------------
+Thu Jun 22 15:32:53 UTC 2017 - ckowalczyk@suse.com
+
+- Clinet commands: fixed local IP addresses for booth grant, list, and peers
+  commands (bsc#1045067)
+  * bug-1045067_booth-fix-booth-grant-cmd.patch
+- Patch bug-1039727_booth-build.patch merged to upstream:
+  * Build: create and set working directory (bsc#1039727)
+- Upstream version cs: 766d61881b2cb576645821322edda0edea04828d
+
+-------------------------------------------------------------------
+Thu Jun  2 14:11:42 UTC 2017 - ckowalczyk@suse.com
+
+- Build: create and set working directory (bsc#1039727)
+  * bug-1039727_booth-build.patch
+- Configuration: handle hostnames in booth.conf file (bsc#1037422)
+- Upstream version cs: bbddf969550969784b76b743baecdcf72796bdf7
+
+-------------------------------------------------------------------
+Wed Feb 15 14:38:58 UTC 2017 - ygao@suse.com
+
+- spec: fix booth-test containing undesired build sources
+- make log contain source address of unknown site
+- main: initialize Libcrypt properly before the first use (bsc#1025463)
+- extprog: fix race condition on ticket loss (bsc#1025463)
+- attr: fix wrong order for hash free functions (bsc#1025463)
+- attr: set time string to "" when time is not set
+- extprog: fix pid test
+- ticket: reset next state on ticket reset
+- alternative logger (in service-runnable script)
+- allow skipping "coredump nursing" phase
+- alternative "nametag" provider: libsystemd
+- alternative range2random provider: glib
+- alternative logging provider: libqb
+- offer alternatives to libraries from (cluster-)glue
+- setup_tcp_listener: close socket when no longer needed
+- read_client: sizeof(*struct_ptr) instead of sizeof(struct_ptr) (bsc#1025463)
+- get_local_id: denoopize dependent condition (signedness issue) (bsc#1025463)
+- list_ticket: fix a memleak in case of buffer too small (bsc#1025463)
+- do_status: close lock file when no longer needed
+- format_peers: fix a memleak in case of buffer too small (bsc#1025463)
+- read_config: close config file when no longer needed
+- make foreach_* macros use variable refs passed as arguments (bsc#1025463)
+- prevent possible truncation w/ invalid geoattrs in CIB (bsc#1025463)
+- build: add proper zlib build-time check + link flag + spec's BR
+- build: allow requesting no HTML man + use in spec
+- fixup: sanitize true-false logic for "daemonize"
+- Upstream version cs: b270a78130f40e648844671b3652919d86e1aef4
+
+-------------------------------------------------------------------
+Wed Jul 13 12:53:22 UTC 2016 - ygao@suse.com
+
+- spec: Set the owner of /etc/booth and booth.conf.example to hacluster:haclient (bsc#968865)
+
+-------------------------------------------------------------------
+Thu Jun 30 13:57:46 UTC 2016 - tchvatal@suse.com
+
+- Reduce conditionals to only keep the default values
+- Run systemd macros in proper phases
+- Convert to pkgconfig dependencies
+
+-------------------------------------------------------------------
+Fri Apr  8 12:54:22 UTC 2016 - dmuhamedagic@suse.com
+
+- Update to version v1.0_14_g4d35ac7:
+  + main: fix address matching procedure (bsc#994999)
+
+-------------------------------------------------------------------
+Wed Mar 23 16:35:54 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version v1.0_6_g106efdf:
+  + Feature: extprog: add capability to run a set of programs
+  + Medium: extprog: external tests timeout after renewal interval
+
+-------------------------------------------------------------------
+Wed Mar 16 15:53:29 UTC 2016 - dmuhamedagic@suse.com
+
+- Update to release v1.0
+  + systemd: add booth-arbitrator.service (bsc#967036)
+  + main: improve address matching procedure
+
+-------------------------------------------------------------------
+Tue Jan 12 14:00:41 UTC 2016 - dmuhamedagic@suse.com
+
+- Update to release candidate v1.0 rc1
+  + main: prevent segfault on no arguments
+  + ticket: term 0 is a valid term (bsc#952426)
+
+-------------------------------------------------------------------
+Thu Dec 03 10:59:27 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_130_g9c5c19f:
+  + test: use SSH_OPTS for rsync too
+  + test: fix external/booth ip use
+
+-------------------------------------------------------------------
+Wed Dec 02 11:31:24 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version v0.2.0_128_g29be3ec:
+  + test: create and distribute authfile
+  + test: allow alternative ip addresses
+  + config: support for comments
+
+-------------------------------------------------------------------
+Mon Nov 30 18:20:49 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_126_g2154ade:
+  + main: add 'other' as possible site reference
+  + attr: GEO attributes OCF RA support (fate#318182)
+  + ocf: add geostore sample RA (fate#318182)
+
+-------------------------------------------------------------------
+Tue Nov 24 13:11:00 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_120_gf3d73a5:
+  + arbitrator: mark expired tickets as lost (bsc#956321)
+  + attr: better control of election cause
+
+-------------------------------------------------------------------
+Fri Nov 20 11:37:43 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_116_g88c3d6a:
+  + attr: attribute prerequisites (fate#318182)
+  + attr: keep attributes in the CIB (fate#318182)
+
+-------------------------------------------------------------------
+Fri Nov  6 09:16:45 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_113_gaeef08d:
+  + doc: add the geostore(8) man page
+  + geo attributes (fate#318182)
+
+-------------------------------------------------------------------
+Mon Aug 31 12:55:06 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_107_g3e73b68:
+  + booth-keygen: older dd don't have status=none option
+  + ticket: move election start out of the signal handler (bsc#942346)
+  + extprog: handle better multiple children signal delivery
+  + client: prevent garbage characters at the end of the list
+  + service-runnable: improve error checking
+
+-------------------------------------------------------------------
+Mon Aug  3 15:40:24 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_97_gda68360:
+  + add booth-keygen (fate#319318)
+
+-------------------------------------------------------------------
+Fri Jul 31 12:00:39 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_96_g9dae592:
+  + ticket: prevent running external program twice
+  + ticket: make sure that we're the leader if granting ticket (bsc#940037)
+  + docs: add booth operation FSM dot graphs
+  + main: add peer statistics
+  + main: add booth peers command
+
+-------------------------------------------------------------------
+Tue Jul 21 11:28:34 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_89_gd9f16ba:
+  + main: don't allow zero poll timeout (bsc#938820)
+  + pcmk: don't log error when ticket not in CIB
+
+-------------------------------------------------------------------
+Sat Jul 18 10:09:17 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_87_gf59231b:
+  + auth: add support for libgcrypt (bsc#938403)
+
+-------------------------------------------------------------------
+Fri Jul 10 10:34:21 UTC 2015 - dmuhamedagic@suse.com
+
+- Update to version v0.2.0_86_g62eee28:
+  + auth: hmac based authentication (fate#318466)
+  + auth: test timestamps in packets (replay attacks defense)
+  + doc: describe auth in the README
+  + transport: use non-blocking read (fate#318465)
+  + clients: free request when removing client
+  + extprog: run programs asynchronously (fate#318463)
+  + extprog: preserve pclose(2) child exit status
+  + pacemaker: report error if crm_ticket fails
+  + doc: remove warning about running external program synchronously
+  + client: don't allow SIGPIPE to kill the server (if the client leaves too early)
+  + extprog: update ticket grant/reacquire procedure
+  + client: make sure that the client is still there to be notified
+  + extprog: ignore running external program on revoke
+  + main: don't comment on successful list
+  + client: fix memory growing indefinitely on new client connect
+  + client: reference client fd instead of pointer in requests
+  + client: fix memory leak in ticket list
+
+-------------------------------------------------------------------
+Thu Apr 09 14:45:37 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version v0.2.0_50_g03bdf8a:
+  + build: update spec, doc, add AUTHORS
+  + doc: add sample pacemaker configuration to the testing README
+  + spec: skip the update procedure on new installations
+  + use subsecond timers internally
+  + ticket: allow finer resolution time in messages
+  + test: add sharedrsc OCF test RA
+  + raft: better control of term increment
+  + raft: ignore messages with invalid term (lower than already committed)
+  + booth-site: exit early in start if daemon cannot start
+  + raft: handle duplicate ticket release requests
+  + ticket: add -C option (wait for commit)
+  + ticket: restart elections after last candidate disappears
+  + contrib: add geo-cluster.fwd (suse firewall rules)
+  + ticket: ignore late MY_INDEX requests
+  + timer: round to seconds when converting from timeval
+
+-------------------------------------------------------------------
+Wed Feb 18 13:23:24 UTC 2015 - dmuhamedagic@suse.com
+
+- booth-arbitrator: fix exit codes for all actions
+- booth-arbitrator: set the right LSB exit code in status
+- booth-arbitrator: fix stop exit code (bsc#914306)
+- main: use /proc/self/oom_score_adj instead of oom_adj (bsc#914037)
+- upstream version: v0.2.0-6-g9eae45f
+
+-------------------------------------------------------------------
+Fri Oct  3 14:07:24 UTC 2014 - dmuhamedagic@suse.com
+
+- doc: clarify the meaning of renewal-freq
+- ra: add restart and reload actions (bnc#899244)
+- upstream version: v0.2.0
+
+-------------------------------------------------------------------
+Fri Sep 12 14:42:30 UTC 2014 - dmuhamedagic@suse.com
+
+- doc: add documentation for upgrade from v0.1
+- build: stop arbitrator on update from previous v0.1
+- ra: support the previously released v0.1
+- build: better support for sysv and systemd init files
+- ra: update library location
+- upstream version: 644df54
+
+-------------------------------------------------------------------
+Thu Aug 21 14:30:50 UTC 2014 - dmuhamedagic@suse.com
+
+- Doc: update client help
+- upstream version: 063bc2c
+
+-------------------------------------------------------------------
+Thu Aug 21 12:01:53 UTC 2014 - dmuhamedagic@suse.com
+
+- doc: man page update
+- upstream version: 1e41e32
+
+-------------------------------------------------------------------
+Wed Aug 20 12:50:17 UTC 2014 - dmuhamedagic@suse.com
+
+- service-runnable: test also if the ticket is in standby
+- service-runnable: unset -e, crm_resource fails if the meta
+  attribute doesn't exist
+- upstream version: 2928215
+
+-------------------------------------------------------------------
+Thu Aug 14 15:59:48 UTC 2014 - dmuhamedagic@suse.com
+
+- ticket: drop expired tickets in elections too (gh#17)
+- upstream version: 5c48dbb
+
+-------------------------------------------------------------------
+Mon Aug  4 14:30:56 UTC 2014 - dmuhamedagic@suse.com
+
+- config: prevent segfaults on bad usage
+- config: allow configuring more than one ticket (bnc#889806) 
+- upstream version: 58a2b61
+
+-------------------------------------------------------------------
+Fri Jul 25 11:23:27 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: be more permissive for elections for valid tickets
+- build: fix doc dir for redhat based distros
+- upstream version: 2ecb536
+
+-------------------------------------------------------------------
+Thu Jul 17 14:20:58 UTC 2014 - dmuhamedagic@suse.com
+
+- build: update setting build information
+- doc: update server operation description
+- client: add the -w option
+- upstream version: 49c0f3d
+
+-------------------------------------------------------------------
+Thu Jul 17 10:54:20 UTC 2014 - dmuhamedagic@suse.com
+
+- build: fix setting package version in configure
+- build: update booth.spec for redhat platforms
+- client: wait for request outcome (bnc#887689)
+- ticket: add renewal frequency (bnc#887113)
+- ra: simplify process status and removal
+- config: fix copying name from the configuration file name (bnc#886674) 
+- upstream version: 3bfdd5b
+
+-------------------------------------------------------------------
+Thu Jul  3 15:36:32 UTC 2014 - dmuhamedagic@suse.com
+
+- add git version info and GNUmakefile for easier rpm package building
+- raft: make sure that elections restart if the last candidate disappears 
+- use monotonic clock if available (bnc#884746) 
+- raft: reset election on rejects too 
+- raft: accept OP_UPDATE in candidate and init states too 
+- ticket: don't write to CIB if we're in elections 
+- upstream version: ff5b114
+
+-------------------------------------------------------------------
+Thu Jun 26 17:36:55 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: match the request in acks too (bnc#882209)
+- raft: add the request in reply packets
+- raft: resend ticket updates (bnc#882209)
+- raft: add short delay before election start (bnc#883785)
+- ra: exit with success if validation fails in stop (bnc#883762)
+- raft: make server stepdown more robust
+- raft: remove unused commit_index (bnc#883216)
+- raft: reset ticket leader before elections (bnc#883150)
+- upstream version: 21b3f0
+
+-------------------------------------------------------------------
+Sun Jun 15 14:08:50 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: preserve term for status messages 
+- raft: ignore VOTE_FOR if we lost the candidate status (bnc#882209) 
+- raft: always accept heartbeats and updates from a valid leader (bnc#882209) 
+- raft: ack revokes (bnc#882057)
+- config: don't allow too long packet retry period 
+- config: don't change ticket defaults in ticket stanzas (use __defaults__) 
+- raft: don't ignore duplicate vote_for packets 
+- upstream version: 4c1e97
+
+-------------------------------------------------------------------
+Fri Jun  6 09:04:17 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: don't reset acks prematurely (bnc#881508)
+- test: add more tests to live_test.sh
+- raft: on server step down reset the ticket state too
+- service-runnable: remove crm_simulate's tmp shadow (bnc#879934)
+- raft: invalidate ticket if the leader wants to step down
+- raft: delay revoke if there's another operation in progress
+- main: enable coredumps
+- upstream version: 465245
+
+-------------------------------------------------------------------
+Tue May 27 08:09:59 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: account for slow servers in elections
+- raft: improve ticket update on status message
+- raft: increment term if election ends in tie
+- booth operation testing facility
+- ticket: update status/startup ticket processing
+- upstream version: 63c908
+
+-------------------------------------------------------------------
+Mon May 19 11:12:32 UTC 2014 - dmuhamedagic@suse.com
+
+- ticket: delay ticket processing a bit at startup
+- raft: improve reacquire on startup 
+- ticket: run new election on ticket reacquire 
+- ticket: always reacquire tickets granted here (bnc#878359) 
+- config: reacquire ticket granted here always (bnc#877773) 
+- improve logging 
+- transport: prefer exact address matches (bnc#877669) 
+- doc: describe server operation in the README 
+- upstream version: 1bcef0c
+
+-------------------------------------------------------------------
+Mon May 12 17:30:47 UTC 2014 - dmuhamedagic@suse.com
+
+- build: add the service-still-runnable script
+- raft: set ticket wakeup after MY_INDEX (bnc#877356)
+- ticket: allow enforcing immediate grant (bnc#876191)
+- raft: test for misled lost ticket condition
+- raft: include reason for RPC
+- raft: wait a short delay before starting new elections
+- raft: reduce the election timeout to the ticket timeout
+- doc: add booth description to README
+- raft: delay ticket commit to the CIB on manual grants (bnc#876321)
+- raft: don't update the ticket expiry before leader got elected
+- raft: fix external program handling
+- raft: send heartbeat only on restart (bnc#876516)
+- upstream version: c18e68
+
+-------------------------------------------------------------------
+Mon May  5 11:30:48 UTC 2014 - dmuhamedagic@suse.com
+
+- doc: hawk uses booth, not crm_ticket
+- upstream version: 7f10ce
+
+-------------------------------------------------------------------
+Mon May  5 11:01:30 UTC 2014 - dmuhamedagic@suse.com
+
+- raft: accept valid heartbeats in the candidate state
+- raft: elections not allowed if the term's still valid (bnc#876300)
+- raft: on vote request reply to sender only
+- upstream version: 8be1aa
+
+-------------------------------------------------------------------
+Fri May  2 17:25:23 UTC 2014 - dmuhamedagic@suse.com
+
+- status: test TCP socket bind instead of UDP (bnc#874139)
+- doc: update the man page and add section on booth ticket management
+- raft: always run election before acquiring tickets
+- raft: reset expired tickets on load
+- ticket: query status on startup (bnc#873205)
+- config: use only address for the site id (bnc#875237)
+- raft: update election logic (bnc#872103)
+- ticket: adjust acquire-after use to the manpage
+- doc: clarify the acquire-after use (bnc#874148)
+- transport: use local address for address matching (bnc#875148)
+- ticket: increment lease time only when majority held
+- raft: reduce the default timeout to 5 seconds
+- ticket: allow revoke only on leaders
+- ticket: write ticket to CIB on revoke
+- raft: no vote on revoked tickets (bnc#872918)
+- raft: increment the term on new election when ticket lost (bnc#873643)
+- raft: don't broadcast req_vote twice on ticket grant
+- raft: expire tickets on no heartbeat acks (bnc#873483)
+- ticket: start election if the ticket was granted to us (bnc#873400)
+- transport: reuse port/address on bind (bnc#873382)
+- ticket: write ticket on majority heartbeat acks (bnc#873175)
+- upstream version: 36d94a
+
+-------------------------------------------------------------------
+Mon Apr 14 11:50:44 UTC 2014 - dmuhamedagic@suse.com
+
+- transport: reuse port/address on bind (bnc#873382)
+- ticket: write ticket on majority heartbeat acks (bnc#873175)
+- upstream version: 3af8b0
+
+-------------------------------------------------------------------
+Mon Apr  7 15:04:43 UTC 2014 - dmuhamedagic@suse.com
+
+- init script is not needed in this package (bnc#872063)
+- upstream version: 60de8d
+
+-------------------------------------------------------------------
+Wed Apr  2 12:18:43 UTC 2014 - dmuhamedagic@suse.com
+
+- fix building manpages
+
+-------------------------------------------------------------------
+Wed Apr  2 10:11:34 UTC 2014 - dmuhamedagic@suse.com
+
+- fix format related warnings
+
+-------------------------------------------------------------------
+Mon Mar 31 17:13:12 CET 2014 - philipp.marek@linbit.com
+
+- Small fine-tuning changes
+
+-------------------------------------------------------------------
+Thu Mar 27 14:45:31 CET 2014 - philipp.marek@linbit.com
+
+- Rewrite, using Raft instead of Paxos.
+- Version 0.2.0
+
+-------------------------------------------------------------------
+Wed Mar  5 10:31:42 CET 2014 - philipp.marek@linbit.com
+
+- Provided a script to check resource health
+- Replaced "resource_monitor" functionality; now an external
+  script is called before the ticket is acquired/renewed.
+- Version 0.1.7
+
+-------------------------------------------------------------------
+Mon Feb 24 13:32:21 CET 2014 - philipp.marek@linbit.com
+
+- Systemd integration
+- Atomic ticket writes (grant/revoke with attributes)
+  Automatic fallback for older 'crm_ticket' binaries
+- Autoconf/Configure check for moved log_cib_diff() function
+  Make package build again with newer Pacemaker libraries.
+- Small fixes, cleanups, and enhancements for the unit tests.
+- Version 0.1.6
+
+-------------------------------------------------------------------
+Mon Feb 17 13:12:42 CET 2014 - philipp.marek@linbit.com
+
+- Enhancements to the unit-tests - more data when they fail.
+- A few other fixes
+- Version 0.1.5
+
+-------------------------------------------------------------------
+Wed Feb 12 13:31:21 CET 2014 - philipp.marek@linbit.com
+
+- Tim Serong reported problems, I'd guess because of compiler
+  optimizations. Converted a macro to a (less clever) function.
+- Some other fixes for catchup and ticket re-acquiration.
+
+-------------------------------------------------------------------
+Mon Feb 10 15:25:00 CET 2014 - philipp.marek@linbit.com
+
+- New sub-package that includes all the test scripts and data.
+  Doesn't work yet; but available to make testing (the packaging
+  problem) easier.
+
+-------------------------------------------------------------------
+Fri Jan 24 16:00:00 CET 2014 - philipp.marek@linbit.com
+
+- Version 0.1.3
+- New (extended) version of man pages
+- First draft of unit-tests
+- Run as non-root user
+- Transmission retry counter configureable
+- Lots of fixes for the state engine
+- Improve timeout handling mechanism to make booth more robust
+  (fate#316131)
+- reconfiguration of boothd while running (fate#316126)
+- Multi-tenancy for booth (fate#316123)
+- booth should support IPv6 in full (fate#316122)
+
+-------------------------------------------------------------------
+Fri Jan 10 13:53:48 CET 2014 - philipp.marek@linbit.com
+
+- Nearly full rewrite, version number 0.1.2.
+  github.com:ClusterLabs/booth.git 7fce594
+  - Use UDP for initial catchup, to avoid blocking on simultaneous restarts
+  - Automatic ticket renewal after first half of the expire interval
+  - Fixed building for OSC (libs in LDADD instead of LDFLAGS)
+  - Many cleanups.
+  - Daemon restart won't lose information, tickets loaded from CIB
+  - Multi-tenancy via multiple config files (FATE 316123)
+    Init script starts all instances.
+  - Cleaned up config file parsing, is now more user-friendly
+  - Type (site/arbitrator) deduced from configuration and local IP addresses
+  - Should (might) work with IPv6, too.
+- booth-resource-monitor-build-issue.patch 
+
+-------------------------------------------------------------------
+Thu Sep 12 10:09:31 UTC 2013 - xli@suse.com
+
+- Fixed resource monitor build issue 
+  + booth-resource-monitor-build-issue.patch 
+
+-------------------------------------------------------------------
+Tue Sep 10 09:21:09 UTC 2013 - xli@suse.com
+
+- Update to git version 1a00ea1.
+- Correction of the problem by which booth_resource_monitord
+  was not contained in "make rpm".
+- Correction of the problem that is the compilation error when
+  combined with the latest Pacemaker.
+- Return the correct daemon state.
+- Add "starting" and "started" to better reflect daemon state
+  to the caller.
+- Correction for merging into the sauce tree of booth
+- Implemented the monitoring function of the resource to depend
+  on the ticket.
+- Changed a level of the log to tell that the expiration date
+  of the ticket expired.
+
+-------------------------------------------------------------------
+Thu Mar 28 08:19:19 UTC 2013 - jjzhang@suse.com
+
+- Not setting realtime scheduling (bnc#804707) 
+
+-------------------------------------------------------------------
+Thu Mar 14 05:29:38 UTC 2013 - jjzhang@suse.com
+
+- Update to git version 5ca725b. (bnc#802289)
+- correction to let existing master do preferential lease
+- modified the 'rcbooth-arbitrator status' that it should only show
+  'Running' if a boothd is running in arbitrator mode.
+- Fixed: booth fails in realocating a memory 
+- Add function: booth client can use the host name.
+- spec: add booth.spec.in file
+- Makefile.am: enable matching non-annotated tags
+- Fixed: change return value
+- Check the validity of lease retry and renew operations
+
+-------------------------------------------------------------------
+Mon Jul  9 01:54:32 UTC 2012 - jjzhang@suse.com
+
+- Update to git version fa436b4. (bnc#790499)
+- add icon for booth
+- Fix the wrong timer assignment while catching up
+- Fixed: Change initial round 
+- Fixed: Acceptor log error mistake
+- Fix the wrong error message when multiple booth daemons being started.
+- Disable the cast-align warnings
+- build: no need to link to glib2
+- build: properly test for libplumb, remove useless -lplumbgpl
+- build: use AM_CPPFLAGS instead of INCLUDES
+- build: simplify check for glib2
+- build: don't uselessly link against dl and rt libraries
+- Fixed: tcp listener error and trivial fix
+- man pages: invoke help2man with -s 8
+- Correct the return value when running grant/revoke command failed
+- Get the highest ballot when catchup
+- Add lease ownership checking when releasing the lease
+- Add error handling when call ops of p_op
+- Remove reject of paxos_msghdr
+- Add judgment before use acceptor.plv
+- Add support for fast revoke of ticket
+- modify gitignore for ignore cscope and ctags files
+- memory leak of proposer_propose and paxos_propose
+- When a expire was not set on a ticket, made modifications to use the default value
+- Remove "-f" option in grant and revoke commands
+- Code cleanup and trivial fix
+- Fix some usability issues
+
+-------------------------------------------------------------------
+Thu Mar 29 07:45:25 UTC 2012 - lmb@novell.com
+
+- Require appropriate version of ticket support in pacemaker
+  (bnc#752241)
+
+-------------------------------------------------------------------
+Tue Mar 27 14:28:47 GMT 2012 - aspiers@suse.com
+
+- Update to git version 84b6583b
+- Improve error reporting (bnc#749798)
+- Enhance the ticket information catch-up from other sites
+- Notify pacemaker about the ticket status after catching up
+  and fix CIB sign-on error (bnc#753619)
+- Add missing header file "time.h"
+- Add a timeout on TCP connect
+- Invoke the new crm_ticket command in pacemaker
+- Use strerror(3) in more places
+- Add messages warning of expected errors in test output.
+- Add some debug messages during ticket_catchup()
+- Refactor code duplication between do_grant() and do_revoke()
+- Fix tests to deal with addition of ticket_catchup() to setup() phase (f16e6d1a)
+
+-------------------------------------------------------------------
+Wed Mar 21 10:56:47 GMT 2012 - aspiers@suse.com
+
+- Update to git version d158b493
+- Fix building of man page for booth/boothd (bnc#753276)
+
+-------------------------------------------------------------------
+Wed Mar 21 09:56:05 GMT 2012 - aspiers@suse.com
+
+- Update to git version 616d832c
+- Improve output of booth client list to display human-readable
+  time not UNIX epoch time (bnc#752815)
+- Before each test, ensure leftover boothd is not running
+- Don't restart/stop booth daemon on rpm update/erase respectively
+  to avoid nasty surprises during cluster maintenance
+- Add "--force" option when calling crm_ticket command
+
+-------------------------------------------------------------------
+Sun Mar 18 12:32:41 UTC 2012 - jjzhang@suse.com
+
+- Update to git version 0a4f94c
+- Deliver revoke operation to each cluster site 
+
+-------------------------------------------------------------------
+Tue Mar 13 13:34:05 UTC 2012 - jjzhang@suse.com
+
+- Update to git version ab8f7be
+- Rework catch-up functionality
+- Fix compiling error on some architecture after adding -Werror
+- Correction of the problem that daemon starts in foreground by a value of HA_debug.
+- Fix "warning: ‘addrlen’ may be used uninitialized in this function"
+- Don't try to unlink lockfile if we failed to create one.
+- Rework del_timer function (bnc#751703)
+- Fix paxos lease renew issue (bnc#751485)
+- Fix compiling warnings on x86 architecture
+- Fix compiling warnings on x86_64 architecture
+- Enhance log output in paxos implementation
+- Fix typo when refactoring the code
+- Change default configuration file to /etc/booth/booth.conf
+- Fix "warning: too many arguments for format"
+- Fix "warning: assignment discards qualifiers from pointer target type"
+- Fix "warning: no previous prototype for 'safe_copy'" 
+
+-------------------------------------------------------------------
+Thu Mar  8 17:34:59 GMT 2012 - aspiers@suse.com
+
+- Move README/COPYING to /usr/share/doc/packages/booth
+- rpmlint fixes
+
+-------------------------------------------------------------------
+Thu Mar  8 12:44:49 GMT 2012 - aspiers@suse.com
+
+- Update to git version 7fa35c
+- Add missing import of 're'.
+- Fix config file parser to cope with trailing whitespace at end of lines (bnc#749551)
+- Fix bug with parsing of files with no final new-line (bnc#749551)
+- Test how config file parser deals with invalid transport protocol value
+- Check transport line is not missing from config file (bnc#749551)
+- Test debug mode (-D)
+- Test how config file parser handles missing quotes (bnc#749551)
+- Test a working configuration file
+- Make daemonization happen later, after setup (bnc#739015)
+- log errors when setup_transport() fails
+- Fix buffer overflows with -s and -t CLI options (bnc#750256)
+- The beginnings of a test suite.
+- config.c: make parser error messages and variable names more useful
+- fix cpu 100%, while using tcp
+
+-------------------------------------------------------------------
+Wed Mar  7 03:04:01 UTC 2012 - jjzhang@suse.com
+
+- Update to git version 55b237
+- Refactoring: extract initialization code from loop() into setup()
+- fix type of booth_config->proto
+- Avoid tabs in STDOUT in case terminal doesn't use 8-column tabs.
+- main.c: Fix compile warning and usage output in read_arguments()
+- Fix warning about signedness of boothc_header.len
+- Refactor code duplicated between do_site() and do_arbitrator()
+- Use cl_log for logging
+- Fix error handling problems of function do_arbitrator and do_site
+- Fix ticket automatic failover issue between different sites
+- Get the correct ballot number if the proposer has ever been down
+
+-------------------------------------------------------------------
+Fri Mar  2 10:20:54 GMT 2012 - aspiers@suse.com
+
+- Update to latest version in git
+- Fixes 'gloablly' typo (bnc#746362)
+
+-------------------------------------------------------------------
+Wed Feb 29 15:05:24 GMT 2012 - aspiers@suse.com
+
+- Add rcbooth-arbitrator symlink (bnc#743777)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:09:09 UTC 2012 - jjzhang@suse.com
+
+- Remove unsupported command line parameter
+- Implement booth client list command
+- Implement ticket revoking functions
+- Revoke the ticket in CIB when ticket expires
+- documentation: build man pages with help2man 
+
+-------------------------------------------------------------------
+Fri Jan 13 11:17:11 UTC 2012 - jjzhang@suse.com
+
+- Set proposer state to PREPARING at the right place
+- Avoid NULL pointer dereference in paxos lease
+- Fix PIDFile name in lsp startscript
+- Fix pacemaker ticket handling
+- Return EXIT_FAILURE if initialization fails
+- Modify the timer expiration when accepting a new lease
+- Reset proposer state when starting a new paxos round
+- Rework some functions in timer.c
+- Change daemon name and default values in OCF script
+- Fix daemon name in LSB startscript
+- Fix not existing function name in booth-ste OCF script
+- Add semi-colon character to config parser whilelist
+- Rework paxos_propose function
+- Initial autotools support
+- Add COPYING file 
+
+-------------------------------------------------------------------
+Mon Dec 12 10:04:42 UTC 2011 - jjzhang@suse.com
+
+- Initialize the value before customized proposing. 
+
+-------------------------------------------------------------------
+Thu Nov 24 07:14:03 UTC 2011 - jjzhang@suse.com
+
+- Add an example of the booth configuration file. 
+
+-------------------------------------------------------------------
+Thu Nov 24 06:50:15 UTC 2011 - jjzhang@suse.com
+
+- Fix uninitialized paxos lease handler.
+- Not to send duplicate propose message when already having quorum.
+- Initialize ticket owner and default expiry.
+- Fix the sending data length in acceptor promise stage.
+- Fix tge uninitialized "ps" pointer which results in a core dump.
+- Fix the improper package length conversion.
+- Set the default "force" option to zero. 
+
+-------------------------------------------------------------------
+Tue Aug 23 10:52:33 UTC 2011 - jjzhang@suse.de
+
+- Integrate with Pacemaker
+- Fix booth daemon initialization bugs
+
+-------------------------------------------------------------------
+Mon Aug 15 08:47:23 UTC 2011 - jjzhang@suse.de
+
+- Implement the Basic-Paxos and Multi-Paxos algorithm.
+- Implement Paoxs Lease algorithm.
+
+--------------------------------------------------------------------
+Thu Jul 28 13:16:20 CST 2011 - jjzhang@suse.de
+
+- version 0.1
+- Initial package check-in
+

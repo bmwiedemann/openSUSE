@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Wed Jun 28 05:47:20 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM group and trim filler words.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:32:24 UTC 2017 - mimi.vx@gmail.com
+
+- update to 2.23.1
+* Updated FFmpeg APIs used
+* Added new API that can read/write indexes to a memory buffer
+* Added support for high bitdepth output in Avisynth+
+* vapoursource: Add nfMakeLinear flag to better performance in most cases
+* Remove bad colorspace matrix guessing for YUV
+* Tell libavformat to discard packets we don't want
+* Restore original FFCopyrightInfringement behavior
+* Make FFMS_Init threadsafe
+* Support latest libav* APIs
+
+-------------------------------------------------------------------
+Sun May  1 20:23:18 UTC 2016 - aloisio@gmx.com
+
+- Update to 2.22
+  * Fix possible off by 1 frame until first seek issue introduced
+    in 2.21 (Myrsloik)
+  * avisynth: Make FFMS2 a shorter alias for FFmpegSource2 to save
+    some typing (Myrsloik)
+  * avisynth: Moved all source functions in ffms2.avsi into the
+    actual plugin (Myrsloik)
+  * avisynth: Use 2.6 RC API and add output support for all new
+    colorspaces (Myrsloik)
+  * vapoursource: Fix swapped RGB channels bug introduced in
+    2.21 (Myrsloik)
+  * swscale: Drop pointless and slow bitexact flag from resizer
+    settings (kodabb)
+  * Add support for files with gaps between the audio packets
+    (Plorkyeran)
+  2.21:
+  * Add missing constants for log levels (Myrsloik)
+  * Fix bad decoder flush that discards the palette of raw video
+    (Myrsloik)
+  * Remove the SWScale function from Avisynth since SWScale is
+    useless (Myrsloik)
+  * Fix common framerate correction (Myrsloik)
+  * vapoursource: The framerate and frame durations are now
+    normalized (Myrsloik)
+  * vapoursource: Add support for outputting the alpha channel
+    too (Myrsloik)
+  * vapoursource: Fix resizer selection so bicubic isn't always
+    used (Myrsloik)
+  * vapoursource: Set chroma location and full colorspace
+    information (Myrsloik)
+  * Add support for indexing files with more than 32 tracks and
+    the possibility to skip indexing of video tracks (Myrsloik)
+  * The Avisynth plugin now sets all per frame variables in all
+    modes to avoid ugly and slow FFInfo() errors (Myrsloik)
+  * vapoursource: Fix crash on single frame files (Myrsloik)
+  * Remove the Matroska and Haali demuxers (qyot27, Plorkyeran)
+  * Fix adjustments for positive audio delay (tophf)
+  * Don't try to index video tracks in unsupported formats
+    (Daemon404)
+  * Don't use scientific notation in timecode files (Daemon404)
+  * Fix utf8 support in FFVideoSource (nixxquality)
+  * Improve handling of files where only some packets have
+    timestamps (Plorkyeran)
+  * Fix memory leaks in the VapourSynth error handling (Plorkyeran)
+  2.20:
+  * Add support for Opus in MKV when ffmpeg/libav are built with
+    libopus (qyot27)
+  * vapoursource: Provide _AbsoluteTime metadata (Daemon404)
+  * Fix a pile of small things found by Coverity (Daemon404)
+  * Add support for HEVC in MKV (qyot27)
+  * Fix infinite loop on garbage data at the beginning of AAC
+    files (Plorkyeran)
+  * Deal with the never-ending bitrot from FFmpeg/Libav API changes
+    (Daemon404, Plorkyeran)
+  * Make indexes not arch-specific and trivially smaller (Plorkyeran)
+  * Fix bug where the first b-frame was replaced with the frame
+    before it with open-gop h.264 (Plorkyeran)
+  * Fix seeking issues with open-gop h.264 (Plorkyeran)
+  * Fix corruption when seeking in interlaced h.264 (Plorkyeran)
+  * Add support for multiple frames per audio packet as FFmpeg seems
+    to have started doing that (Plorkyeran)
+  * Fix seeking in Y4M files (Plorkyeran)
+  * Fix dumping audio while indexing files
+  * Add support for Matroska files with extremely large CodecPrivate
+    sections
+  * Speed up indexing Matroska files a bit
+
+- Bumped soname to 4
+
+- Switched to ffmpeg 3.0
+
+-------------------------------------------------------------------
+Wed Feb 17 08:34:19 UTC 2016 - olaf@aepfle.de
+
+- Remove unused Requires from pkgconfig file
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 21 03:14:39 UTC 2014 - i@margueirte.su
+
+- update version 2.19.2
+- drop patch: ffms2-2.17-ffmpeg_011.patch, upstreamed
+- drop patch: ffms2-2.17-ffmpeg_10.patch, upstreamed
+- drop patch: ffms2-2.17-ffmpeg_20.patch, upstream fixed
+
+-------------------------------------------------------------------
+Tue Jul 30 19:14:28 UTC 2013 - i@margueirte.su
+
+- Fix build with ffmpeg 2.0
+
+-------------------------------------------------------------------
+Fri Nov 16 14:25:39 UTC 2012 - reddwarf@opensuse.org
+
+- Fix build with ffmpeg 1.0
+- Adapt the file list to be compatible with old RPMs
+
+-------------------------------------------------------------------
+Sun May 27 23:13:47 UTC 2012 - reddwarf@opensuse.org
+
+- Fix build with ffmpeg 0.11
+
+-------------------------------------------------------------------
+Fri Feb 10 16:23:48 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 2.1.7
+
+-------------------------------------------------------------------
+Sat Oct 29 15:25:08 UTC 2011 - reddwarf@opensuse.org
+
+- First version
+

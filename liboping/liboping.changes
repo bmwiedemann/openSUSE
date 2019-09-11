@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Sun Jul 31 20:18:10 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.9.0
+  * liboping: The new "PING_OPT_MARK" option allows to mark packets,
+    which can be used for filtering and routing such packets on Linux.
+  * oping, noping: The new "-m" command line option allows to set a mark
+    on packets sent by the tool.
+  * oping, noping: The new "-O" command line option allows to write
+    measurements to an CSV file.
+  * oping, noping: The new "-w" command line option allows to specify
+    the timeout after which a packet/reply is considered "dropped".
+
+-------------------------------------------------------------------
+Mon Mar 30 14:46:54 UTC 2015 - p.drouand@gmail.com
+
+- Add support for distributions which provide automake older than
+  1.14
+- Add pkg-config build require; needed to find devel dependencies
+
+-------------------------------------------------------------------
+Thu Feb 12 16:36:07 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  * oping, noping: Average and standard deviation have been removed from
+	the status output, which show median and 95th percentile instead.
+	The percentile can be chosen with the "-P" option.
+  * noping: The additional graph types "histogram" and "boxplot" have
+    been added, which can be selected with the "-g" option.
+- Spec file refactoring
+- liboping requires automake >= 1.14; fix version dependency
+- Do not copy manâges in package documentation directory
+
+-------------------------------------------------------------------
+Wed Feb 15 21:00:17 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.6.2:
+  * Build system: Setting capabilities and the set-UID bit has been made
+    more fault-tolerant, so that it will work with Debian's fakeroot(1)
+    utility.
+  * src/liboping.c: Fixed a compiler warning about an non-static format
+    string. Thanks to Brian Edwards for pointing this out.
+- specfile cleanup
+
+-------------------------------------------------------------------
+Mon Feb 13 10:49:02 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Sep 16 17:09:45 UTC 2011 - jengelh@medozas.de
+
+- Implement baselibs for package
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Correct description of SRPM
+
+-------------------------------------------------------------------
+Mon Mar 07 23:02:16 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.6.1:
+  * compatibility with ncurses 5.8 has been added to the "noping" application
+
+-------------------------------------------------------------------
+Wed Jan 26 14:08:01 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.6.0:
+  * improved timing information accuracy on systems that provide the
+    SO_TIMESTAMP socket option
+
+-------------------------------------------------------------------
+Thu Nov 18 16:52:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.5.1:
+  * an alias for the "Voice Admit" PHB (RFC 5865) has been added to the QoS
+    option of oping
+  * compiler errors have been fixed and outdated documentation has been updated
+
+-------------------------------------------------------------------
+Fri Oct 29 21:36:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- add perl module
+
+- update to 1.5.0:
+  * adds the ability to set the Quality of Service (QoS) byte of outgoing
+    packets and read the QoS byte of incoming packets; support for this feature
+    has been added to the oping and noping command line utilities
+  * the license of the library has been changed to LGPL 2.1
+
+-------------------------------------------------------------------
+Mon Jun 14 13:47:09 UTC 2010 - pascal.bleser@opensuse.org
+
+- removed liboping-no_IPV6_RECVHOPLIMIT.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Jun 14 12:20:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.0:
+  * a new ncurses-based front-end to liboping, called noping, has been added:
+    the new command line application displays ping statistics "live" and
+    highlights aberrant round-trip times
+
+- fixed whitespaces in spec file
+- packaged new noping binary into its own subpackage ("noping")
+
+-------------------------------------------------------------------
+Sun Dec 20 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.4:
+  * improved handling of sockets with error conditions: previously, such an
+    error could lead to indefinite busy looping
+  * improved oping utility to allow reading from files even when running
+  * SetUID-root: privileges are dropped temporarily when supported by the
+    system
+  * an off-by-one error has been fixed in the Perl bindings
+
+
+-------------------------------------------------------------------
+Sat Sep 26 00:00:00 UTC 2009 - kkaempf@suse.de
+
+- rename .spec to match liboping0 package name
+
+
+-------------------------------------------------------------------
+Mon Jul 27 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.2:
+  * ability to specify the network device to use has been added to the library
+  * the included “oping” application has been enhanced to provide this
+    functionality and allow reading hostnames from a file or standard input
+  * argument checking has been improved
+  * a bug which could lead to incorrect measurements has been fixed
+
+
+-------------------------------------------------------------------
+Tue May 12 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- moved to openSUSE Build Service
+- update to 1.1.2
+

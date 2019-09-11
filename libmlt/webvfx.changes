@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Jan 10 13:33:27 UTC 2019 - davejplater@gmail.com
+
+- Update to release version 1.0.0
+- Add webvfx-nobrowser.patch to fix Factory build.
+- Upstream changes:
+  Set version to 1.0.0
+
+-------------------------------------------------------------------
+Sun May  6 10:30:53 UTC 2018 - davejplater@gmail.com
+
+- Update to version 0.44+git20180523
+- Rebase webvfx-versioned-libdir.patch.
+- Upstream changes:
+  *check pointers before using them.
+
+-------------------------------------------------------------------
+Sun Mar 11 10:58:37 UTC 2018 - davejplater@gmail.com
+
+- Fix Leap:15.0 build and run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jan 24 14:20:40 UTC 2018 - davejplater@gmail.com
+
+- Removed mlt patches: 
+  6c658e5d8cd11933bf799a2a985aa4b24cfbcb60.patch,
+  libmlt-nomorexlocale_h.patch, em_close.patch and
+  use-recommended-freetype-include.patch.
+- Package LICENSE and README.md.
+
+-------------------------------------------------------------------
+Fri Aug 25 11:40:56 UTC 2017 - davejplater@gmail.com
+
+- Apply all mlt patches before building.
+
+-------------------------------------------------------------------
+Thu Jul  6 22:21:18 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from descriptions; fix identical
+  descriptions being used in different subpackages.
+- Cure "useless use of cat" (`ls -1`) by replacing with just *.
+
+-------------------------------------------------------------------
+Sun Jun 11 09:35:09 UTC 2017 - davejplater@gmail.com
+
+- Added man pages for binaries.
+
+-------------------------------------------------------------------
+Thu Jun  8 05:18:03 UTC 2017 - davejplater@gmail.com
+
+- Created initial package version 0.44+git20160823 from current
+  git rev: e918ce4667e623c3d60735cb898223e730c6d7af needed by
+  shotcut. See boo#1043070
+- Added webvfx-versioned-libdir.patch to enable arch dependent
+  library directory install

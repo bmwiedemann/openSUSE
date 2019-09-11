@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="">
+  <component id="rhino"
+             licenseType=""
+             version="@VERSION@"
+             tag="@TAG@"
+             description=""
+             
+             > 
+              
+    <artifact id="js.jar"/>
+
+
+    <export>
+      <include input="js.jar"/>
+
+    </export>
+  </component>
+</project>

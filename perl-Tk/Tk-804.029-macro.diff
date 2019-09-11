@@ -1,0 +1,76 @@
+--- objGlue.c
++++ objGlue.c
+@@ -393,7 +393,7 @@
+         */
+        if (SvREFCNT(sv) <= 0 || SvTEMP(sv))
+         {
+-         LangDebug("%s %d:\n",__FUNCTION__, objc);
++         LangDebug("%s %d:\n", __func__, objc); 
+          sv_dump(sv);
+         }
+        av_store(av,objc,sv);
+--- tkGlue.c
++++ tkGlue.c
+@@ -201,7 +201,7 @@
+   ( Tcl_SprintfResult args, Expire(TCL_ERROR) )
+ 
+ #ifdef DEBUG_TAINT
+-#define do_watch() do { if (PL_tainting) taint_proper("tainted", __FUNCTION__); } while (0)
++#define do_watch() do { static const char *f = __func__; if (PL_tainting) taint_proper("tainted", f); } while (0)
+ #else
+ extern void do_watch _((void));
+ void
+@@ -1248,7 +1248,7 @@
+  result = Tcl_GetObjResult(interp);
+  if (!count)
+   {
+-   LangDebug("%s - No Results\n",__FUNCTION__);
++  LangDebug("%s - No Results\n", __func__); 
+    abort();
+    Tcl_Panic("No results");
+   }
+@@ -1548,7 +1548,7 @@
+      SV *save = sv_2mortal(newSVsv(sv));
+      s = SvPV(save, len);
+ #if 0
+-     LangDebug("%s error:%.*s\n",__FUNCTION__,na,s);
++     LangDebug("%s error:%.*s\n",__func__,na,s);
+ #endif
+      if (!interp)
+       croak("%s",s);
+@@ -2009,7 +2009,7 @@
+  int old_taint = PL_tainted;
+  TAINT_NOT;
+ #if 0
+- warn(__FUNCTION__);
++ warn("%s",__func__);
+ #endif
+  if (InterpHv(interp,0))
+   {
+@@ -2477,7 +2477,7 @@
+       */
+      sv = newSVpvn(p, numItems);
+ #if 0
+-     LangDebug("%s %d '%.*s'\n",__FUNCTION__,numItems,numItems,p);
++     LangDebug("%s %d '%.*s'\n",__func__,numItems,numItems,p);
+      LangDumpVec(strType,1,&sv);
+      abort();
+ #endif
+@@ -3223,7 +3223,7 @@
+      /* Tk_CheckHash((SV *) hash, NULL); */
+      if (SvREFCNT(hash) < 1)
+       {
+-       LangDebug("%s %s has REFCNT=%d\n",__FUNCTION__,cmdName,(int) SvREFCNT(hash));
++       LangDebug("%s %s has REFCNT=%d\n",__func__,cmdName,(int) SvREFCNT(hash));
+        sv_dump(obj);
+       }
+ 
+@@ -3290,7 +3290,7 @@
+    /* Tk_CheckHash((SV *) hash, NULL); */
+    if (SvREFCNT(hash) < 2)
+     {
+-     LangDebug("%s %s has REFCNT=%d",__FUNCTION__,cmdName,(int) SvREFCNT(hash));
++     LangDebug("%s %s has REFCNT=%d",__func__,cmdName,(int) SvREFCNT(hash));
+     }
+    SvREFCNT_dec(hash);
+   }

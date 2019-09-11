@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Tue Aug  6 15:11:54 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Adjust a patch that no longer applies due to upstream (non-code)
+  changes
+
+-------------------------------------------------------------------
+Thu Mar 14 19:11:49 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Add python3 tweak to be compatible with v5.0 kernel source
+  (bsc#1116822)
+  + 0050-tools-kvm_stat-switch-python-reference-again.patch
+
+-------------------------------------------------------------------
+Thu Nov 29 19:51:15 UTC 2018 - Larry Dewey <ldewey@suse.com>
+
+* Changed the spec file to build SLE15-SP1 with the s390x patches,
+  and added logic to the spec file to uniquely build Factory and
+  SLE-15 as they do not require the first 44 patches, and the code
+  base is not the same
+- Making kvm_stat use python3 for openSUSE (bsc#1116822)
+  - 0047-tools-kvm_stat-switch-python-reference-to-be-explici.patch
+  + 0047-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat2.patch
+  + 0048-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat3.patch
+  + 0049-tools-kvm_stat-switch-python-reference-to-be-explici.patch
+
+-------------------------------------------------------------------
+Mon Nov 26 18:41:52 UTC 2018 - Bruce Rogers <brogers@suse.com>
+
+- Make kvm_stat use python3 (bsc#1116822)
+  + 0044-tools-kvm_stat-Don-t-use-deprecated-file.patch
+  + 0045-tools-kvm_stat-fix-python3-issues.patch
+  + 0046-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat.patch
+  + 0047-tools-kvm_stat-switch-python-reference-to-be-explici.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 20:58:23 UTC 2018 - Larry Dewey <ldewey@suse.com>
+
+* Incorporating patches and comments produced by Fei Li for
+  SLE15-SP1
+- Backport 43 kvm_stat patches between kernel v4.16-* and current
+  v4.12.14 for the kvm_stat package. Actually some of the patches
+  are s390x specific, and some are noarch. (FATE#325017)
+  + 0001-tools-kvm_stat-fix-event-counts-display-for-interrup.patch
+  + 0002-tools-kvm_stat-fix-undue-use-of-initial-sleeptime.patch
+  + 0003-tools-kvm_stat-remove-unnecessary-header-redraws.patch
+  + 0004-tools-kvm_stat-simplify-line-print-logic.patch
+  + 0005-tools-kvm_stat-remove-extra-statement.patch
+  + 0006-tools-kvm_stat-simplify-initializers.patch
+  + 0007-tools-kvm_stat-move-functions-to-corresponding-class.patch
+  + 0008-tools-kvm_stat-show-cursor-in-selection-screens.patch
+  + 0009-tools-kvm_stat-display-message-indicating-lack-of-ev.patch
+  + 0010-tools-kvm_stat-make-heading-look-a-bit-more-like-top.patch
+  + 0011-tools-kvm_stat-rename-Current-column-to-CurAvg-s.patch
+  + 0012-tools-kvm_stat-add-new-interactive-command-h.patch
+  + 0013-tools-kvm_stat-add-new-interactive-command-s.patch
+  + 0014-tools-kvm_stat-add-new-interactive-command-o.patch
+  + 0015-tools-kvm_stat-display-guest-list-in-pid-guest-selec.patch
+  + 0016-tools-kvm_stat-fix-error-on-interactive-command-g.patch
+  + 0017-tools-kvm_stat-add-new-command-line-switch-i.patch
+  + 0018-tools-kvm_stat-add-new-interactive-command-b.patch
+  + 0019-tools-kvm_stat-add-f-help-to-get-the-available-event.patch
+  + 0020-tools-kvm_stat-Add-Python-3-support-to-kvm_stat.patch
+  + 0021-tools-kvm_stat-fix-command-line-option-g.patch
+  + 0022-tools-kvm_stat-fix-drilldown-in-events-by-guests-mod.patch
+  + 0023-tools-kvm_stat-fix-missing-field-update-after-filter.patch
+  + 0024-tools-kvm_stat-fix-extra-handling-of-help-with-field.patch
+  + 0025-tools-kvm_stat-add-hint-on-f-help-to-man-page.patch
+  + 0026-tools-kvm_stat-fix-child-trace-events-accounting.patch
+  + 0027-tools-kvm_stat-handle-invalid-regular-expressions.patch
+  + 0028-tools-kvm_stat-suppress-usage-information-on-command.patch
+  + 0029-tools-kvm_stat-stop-ignoring-unhandled-arguments.patch
+  + 0030-tools-kvm_stat-add-line-for-totals.patch
+  + 0031-tools-kvm_stat-sort-f-help-output.patch
+  + 0032-tools-kvm_stat-simplify-the-sortkey-function.patch
+  + 0033-tools-kvm_stat-use-a-namedtuple-for-storing-the-valu.patch
+  + 0034-tools-kvm_stat-use-a-more-pythonic-way-to-iterate-ov.patch
+  + 0035-tools-kvm_stat-avoid-is-for-equality-checks.patch
+  + 0036-tools-kvm_stat-fix-crash-when-filtering-out-all-non-.patch
+  + 0037-tools-kvm_stat-print-error-on-invalid-regex.patch
+  + 0038-tools-kvm_stat-fix-debugfs-handling.patch
+  + 0039-tools-kvm_stat-mark-private-methods-as-such.patch
+  + 0040-tools-kvm_stat-eliminate-extra-guest-pid-selection-d.patch
+  + 0041-tools-kvm_stat-separate-drilldown-and-fields-filteri.patch
+  + 0042-tools-kvm_stat-group-child-events-indented-after-par.patch
+  + 0043-tools-kvm_stat-print-Total-line-for-multiple-events-.patch
+
+-------------------------------------------------------------------
+Fri Nov  9 21:50:56 UTC 2018 - Bruce Rogers <brogers@suse.com>
+
+- Add "Requires: python-curses" in kvm_stat.spec as this package
+  needs to be installed to make kvm_stat work. (bsc#1114465)
+
+-------------------------------------------------------------------
+Thu Jul 26 16:00:40 UTC 2018 - brogers@suse.com
+
+- Add a qemu package conflicts directive since SLE releases provided
+  the kvm_stat script via the qemu package, while older openSUSE
+  releases had provided it through qemu-kvm, which is already
+  handled. (bsc#1102746 related)
+- Change package to be noarch. kvm_stat is written in python, and
+  is useful to multiple architectures which have kvm support.
+- Drop the kernel README and CREDITS files, since they don't really
+  represent this package in any meaningful way.
+- Minor spec file tweaks performed.
+
+-------------------------------------------------------------------
+Thu Dec  7 11:11:39 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Sun Oct 30 15:57:20 UTC 2016 - jengelh@inai.de
+
+- Simplify copying around
+
+-------------------------------------------------------------------
+Mon Oct 17 18:00:04 UTC 2016 - brogers@suse.com
+
+- soften runtime Requires kernel version to a Recommends since it
+  really doesn't fully enforce anything which is "required".
+
+-------------------------------------------------------------------
+Mon Oct 17 14:02:18 UTC 2016 - brogers@suse.com
+
+- fix conflicts line to be against qemu-kvm, not qemu.
+
+-------------------------------------------------------------------
+Wed Jun 22 22:06:42 UTC 2016 - brogers@suse.com
+
+- initial check-in of kvm_stat package. Previously the kvm_stat
+tool was included with the qemu sources, but because kvm_stat simply
+represents kvm module information, as of v4.7.0 of the linux kernel,
+kvm_stat was included in the tools directory under the linux source,
+hence this package was born.

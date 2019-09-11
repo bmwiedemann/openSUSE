@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Feb 25 08:54:01 UTC 2019 - jbrielmaier@suse.de
+
+- set libssh minimum version to 0.6.4 
+
+-------------------------------------------------------------------
+Mon Feb 25 08:43:14 UTC 2019 - jbrielmaier@suse.de
+
+- enable the libssh_threads patch also on Leap/SLE 15.1, as
+  libssh_threads is there also in libssh
+
+-------------------------------------------------------------------
+Wed Sep 12 08:16:34 UTC 2018 - jbrielmaier@suse.de
+
+- don't link against libssh_threads anymore, as it gots removed in
+  libssh 0.8. gh#artyom-poptsov/guile-ssh#9
+  Add and use it on Tumbleweed and Factory:
+  * 0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 08:36:38 UTC 2018 - jbrielmaier@suse.de
+
+- correct installation of info files 
+
+-------------------------------------------------------------------
+Sat Jul 14 06:27:25 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Thu Jun 28 11:10:27 UTC 2018 - jbrielmaier@suse.de
+
+- libguile-ssh subpackage for shared libraries
+- devel depend on libguile-ssh
+- improve descriptions
+- install example scripts to correct place and make them executable
+- don't install static library
+- install info file 
+
+-------------------------------------------------------------------
+Wed May 30 08:42:02 UTC 2018 - jbrielmaier@suse.de
+
+- inital version of guile-ssh 0.11.3 

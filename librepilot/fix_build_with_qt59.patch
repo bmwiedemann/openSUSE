@@ -1,0 +1,12 @@
+--- ground/gcs/src/plugins/uploader/op_dfu.h.orig	2017-10-10 09:37:16.744655757 +0200
++++ ground/gcs/src/plugins/uploader/op_dfu.h	2017-10-10 09:37:25.392656127 +0200
+@@ -31,6 +31,9 @@
+ #define MAX_PACKET_BUF_SIZE (1 + 1 + MAX_PACKET_DATA_LEN + 2)
+ 
+ namespace OP_DFU {
++
++Q_NAMESPACE
++
+ enum TransferTypes {
+     FW,
+     Descript

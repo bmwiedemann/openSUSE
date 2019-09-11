@@ -1,0 +1,9 @@
+--- swext/mediawiki/src/META-INF/manifest.xml.old	2012-03-27 18:22:01.000000000 +0200
++++ swext/mediawiki/src/META-INF/manifest.xml	2012-03-30 16:56:56.000000000 +0200
+@@ -46,6 +46,4 @@
+                        manifest:full-path="Types.xcu"/>
+   <manifest:file-entry manifest:media-type="application/vnd.sun.star.configuration-data"
+                        manifest:full-path="Paths.xcu"/>
+-  <manifest:file-entry manifest:media-type="application/vnd.sun.star.help"
+-                       manifest:full-path="help"/>
+ </manifest:manifest>

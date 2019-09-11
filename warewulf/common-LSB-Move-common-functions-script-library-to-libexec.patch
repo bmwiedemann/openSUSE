@@ -1,0 +1,46 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 28 09:00:00 2018 +0100
+Subject: common: LSB: Move common functions script library to libexec
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 668bf036d159f01f16929a1c34feddba216bd16f
+References: 
+
+Per LSB only config files are allowed in /etc.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/etc/Makefile.am                   | 2 +-
+ common/libexec/wwinit/Makefile.am        | 2 +-
+ common/{etc => libexec/wwinit}/functions | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+diff --git a/common/etc/Makefile.am b/common/etc/Makefile.am
+index ed01448..36a420f 100644
+--- a/common/etc/Makefile.am
++++ b/common/etc/Makefile.am
+@@ -8,7 +8,7 @@ dist_confDATA_INSTALL = ${INSTALL} -m 640
+ 
+ confdir = $(sysconfdir)/warewulf/
+ 
+-dist_conf_DATA = database.conf database-root.conf functions
++dist_conf_DATA = database.conf database-root.conf
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+diff --git a/common/libexec/wwinit/Makefile.am b/common/libexec/wwinit/Makefile.am
+index 8b9a715..56eaebb 100644
+--- a/common/libexec/wwinit/Makefile.am
++++ b/common/libexec/wwinit/Makefile.am
+@@ -1,6 +1,6 @@
+ wwinitdir = $(libexecdir)/warewulf/wwinit
+ 
+-dist_wwinit_SCRIPTS = 10-database.init 25-wwsh.init
++dist_wwinit_SCRIPTS = 10-database.init 25-wwsh.init functions
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+diff --git a/common/etc/functions b/common/libexec/wwinit/functions
+similarity index 100%
+rename from common/etc/functions
+rename to common/libexec/wwinit/functions

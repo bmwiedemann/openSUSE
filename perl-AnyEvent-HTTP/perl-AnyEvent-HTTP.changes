@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Fri Aug 31 05:01:49 UTC 2018 - coolo@suse.com
+
+- updated to 2.24
+   see /usr/share/doc/packages/perl-AnyEvent-HTTP/Changes
+
+-------------------------------------------------------------------
+Mon Aug 29 05:01:04 UTC 2016 - coolo@suse.com
+
+- updated to 2.23
+   see /usr/share/doc/packages/perl-AnyEvent-HTTP/Changes
+
+  TODO: default rbuf_max value maybe? how about reading large chunks in small parts?
+  
+  2.23 Sun Aug 28 11:30:33 CEST 2016
+  	- relative redirects used the proxy schema instead of the request
+            url schema to generate the new url, which is wrong (analyzed by Felix
+            Ostmann).
+          - fix download example (reported by Felix Ostmann).
+
+-------------------------------------------------------------------
+Thu May 14 08:02:22 UTC 2015 - coolo@suse.com
+
+- updated to 2.22
+   see /usr/share/doc/packages/perl-AnyEvent-HTTP/Changes
+
+-------------------------------------------------------------------
+Fri Jul 25 09:32:00 UTC 2014 - coolo@suse.com
+
+- updated to 2.21
+        - correctly keep body when redirecting POSTs, instead of
+           deleting them.
+ 
+ 2.2  Mon Jun  9 01:31:46 CEST 2014
+        - connection header was malformed (patch by Raphael Geissert).
+        - add lots of known idempotent methods from httpbis.
+         - implement relative location headers (rfc 7231), with fallback on URI.
+         - add support for status code 308 from rfc 7238.
+         - recommend URI.
+
+-------------------------------------------------------------------
+Mon Jun  3 11:26:23 UTC 2013 - coolo@suse.com
+
+- updated to 2.15
+      - use the recurse parameter to also limit the number of retries to be
+         done, avodiing endless loops with broken servers, as reported
+         by Carl Chambers.
+
+-------------------------------------------------------------------
+Fri May 25 03:26:07 UTC 2012 - coolo@suse.com
+
+- updated to 2.14
+    - Time::Local::timegm croaks on out-of-range values. Don't let
+       this disturb AnyEvent::HTTP (reported by: tell me, I forgot...).
+
+-------------------------------------------------------------------
+Thu Aug 25 15:51:20 UTC 2011 - chris@computersalat.de
+
+- update to 2.13
+  - garbled chunked responses caused AnyEvent::HTTP to malfunction
+    (patch by Dmitri Melikyan).
+  - fix GET => HEAD in one case in the documentation (James Bromberger).
+- fix deps
+  * perl(AnyEvent) >= 5.33
+  * perl(common::sense) >= 3.3
+
+-------------------------------------------------------------------
+Tue Jun 14 09:45:02 UTC 2011 - coolo@novell.com
+
+- updated to 2.12
+  - fix a possible 'Can't call method "destroyed"' error (which would
+    have been reported by Carl Chambers).
+  - the keepalive session cache wouldn't take port and scheme into account
+    when reusing connection - potentially causing information leaks
+    (reported by Nick Kostirya).
+  - bump AnyEvent dependency version (reported by Richard Harris).
+  - the keepalive and persistent parameters were actually named
+    differently in the code - they now work as documented.
+  - fix a bug where callbacks would sometimes never be called when
+    the request timeout is near or below the persistent connection
+    timeout (testcase by Cindy Wang).
+  - destroying the guard would have no effect when a request was
+    recursing or being retired.
+  - "proxy => undef" now overrides any global proxy when specified.
+  - require scheme in urls, also use a stricter match to match urls,
+    leading or trailing garbage is no longer tolerated.
+  - EXPERIMENTAL: allow '=' in cookie values.
+  - do not lowercase cookie names, only parameter names.
+  - add missing dependency on common::sense.
+  - add a resume download example.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:16 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Oct  7 11:17:19 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.46)
+

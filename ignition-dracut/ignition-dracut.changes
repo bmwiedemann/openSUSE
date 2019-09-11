@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Wed Aug 14 09:30:48 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190806.343b886:
+  * dracut/30ignition: fix typo in module_setup
+  * ignition: split ignition-setup into base and user
+  * dracut/30ignition: scramble disk uuid on 1st boot
+
+-------------------------------------------------------------------
+Thu Aug 01 16:01:58 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190625.8551bc7:
+  * dracut: add 99emergency-timeout
+  * 30ignition: drop CoreOS specific bits
+
+-------------------------------------------------------------------
+Mon Apr 15 11:58:29 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190405.85f2e65:
+  * dracut/30ignition: link to RHBZ in ignition-complete
+  * dracut/30ignition: add OnFailure= for ExecStop= services
+  * dracut/30ignition: order ExecStop= units before initrd-switch-root.target
+  * dracut/30ignition: re-order directives in remount-sysroot
+  * dracut/30ignition: add missing Before= for mount unit
+  * dracut/30ignition: order ignition-complete.target before initrd.target
+  * module_setup: include cdrom rules for openstack
+  * dracut: add CoreOS integration services
+  * dracut/30ignition: Add mount stage and drop OSTree-specific bits
+  * dracut/30ignition: Explicitly add OnFailure=emergency.target
+  * 30ignition: ignore coreos.randomize_disk_guid
+  * 30ignition: drop check for coreos.oem.id
+  * grub: support overriding network kcmdline args
+  * README.md: update documentation
+  * 02_ignition_firstboot: Enable networking if Ignition will run
+  * dracut/30ignition: expect ignition binary in module directory
+
+-------------------------------------------------------------------
+Mon Mar 18 13:27:50 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190314.f6eb01f:
+  * dracut/30ignition: add ignition-complete.target
+  * dracut/30ignition: split out ignition-setup.service
+
+-------------------------------------------------------------------
+Tue Mar 12 12:46:04 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Add GRUB firstboot variable support
+- Weaken hard dependencies to boot partition
+- Mount volumes flagged with "x-initrd.mount" before applying
+  Ignition configuration; umount afterwards
+
+-------------------------------------------------------------------
+Sat Mar 09 13:24:00 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190306.d4e8899:
+  * dracut/30ignition: Only write ignition-setup.service on first boot
+  * grub: find boot partition and use it directly
+  * module-setup.sh: Check for module qemu_fw_cfg not build-in, so it works out of box on all arches
+
+-------------------------------------------------------------------
+Mon Mar 04 14:10:00 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190301.ca593a1:
+  * dracut/30ignition: general hack cleanups
+  * dracut: adapt for s/oem/platform in Ignition
+
+-------------------------------------------------------------------
+Tue Feb 19 15:20:46 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190215.2c69925:
+  * ignition-setup: don't perform umount, rely on systemd
+  * ignition-setup: rename copy function
+  * services: fixup unit deps to more match CL
+  * ignition-setup: use MountFlags=slave for systemd unit
+  * ignition-setup: changes from code review
+  * ignition-setup: mount/unmount boot to grab user.ign
+  * dracut: add /usr/sbin/ignition-setup to initramfs
+  * generator: try to get ignition-setup to run on boot
+  * generator: RemainAfterExit=yes for ignition-setup
+  * ignition-setup: support boot or platform base/user configs
+  * ignition-setup: remove support for default configs
+
+-------------------------------------------------------------------
+Fri Feb 15 12:17:13 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190207.9e18211:
+  * Remove the check for OEM partition, not used
+  * Always check for boot, needs to exist
+  * Replace OEM with boot
+  * Add ability to parse config.ign file on boot
+
+-------------------------------------------------------------------
+Wed Jan 30 14:16:43 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190125.fa7131b:
+  * journal: add clarifying comment for context
+
+-------------------------------------------------------------------
+Wed Jan 09 15:44:14 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190109.a6551f1:
+  * Remount /sysroot rw (#38)
+
+-------------------------------------------------------------------
+Wed Jan 09 10:15:42 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190103.996d527:
+  * ignition-firstboot-complete.service: Remount /boot rw
+
+-------------------------------------------------------------------
+Sun Dec 23 15:26:15 CET 2018 - kukuk@suse.de
+
+- Remout /sysroot read-write for ignition-files.service
+
+-------------------------------------------------------------------
+Wed Dec 19 16:02:12 CET 2018 - kukuk@suse.de
+
+- Generate initrd after installation/update
+
+-------------------------------------------------------------------
+Wed Dec 12 15:47:25 UTC 2018 - kukuk@suse.de
+
+- Update to version 0.0+git20181120.7b83454:
+  * Rename `coreos.firstboot` kernel cmdline arg to `ignition.firstboot` to make options more distribution neutral. Update dracut/README.txt to take into account recent changes.
+  * 30ignition: only instmods if module available
+  * remove ignition-remount-sysroot.service files
+  * ignition: run files stage at original CL ordering
+  * ignition-disks.service: drop Requires=network.target
+  * ignition-ask-var-mount.service: use RemainAfterExit=yes
+
+-------------------------------------------------------------------
+Wed Oct 17 11:41:20 UTC 2018 - kukuk@suse.de
+
+- Update to version 0.0+git20181016.b7d4424:
+  * module-setup.sh: explicitly install qemu_fw_cfg
+
+-------------------------------------------------------------------
+Tue Oct 16 13:32:29 CEST 2018 - kukuk@suse.de
+
+- Add requires for ignition and gptfdisk
+
+-------------------------------------------------------------------
+Tue Oct 16 09:59:39 CEST 2018 - kukuk@suse.de
+
+- Initial version
+

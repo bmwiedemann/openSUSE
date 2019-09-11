@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Dec 29 15:56:26 UTC 2017 - aloisio@gmx.com
+
+- Update to forked version 1.8.6
+- Added torrentinfo-fix_man.patch and manpage
+- Added torrentinfo-fix_tests_py3.patch and switched to python3
+- Added torrentinfo.changes as source
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Jan  1 00:00:00 UTC 2009 - guru@unixtech.be
+
+- initial package
+
+

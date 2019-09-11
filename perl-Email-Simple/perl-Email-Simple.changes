@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Thu Jun  7 05:22:34 UTC 2018 - coolo@suse.com
+
+- updated to 2.216
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.216     2018-06-06 11:47:52-04:00 America/New_York
+          - no changes since v2.215
+  
+  2.215     2018-05-04 16:21:28+10:00 Australia/Melbourne (TRIAL RELEASE)
+          - do not re-fold folded lines (Marc Bradshaw)
+
+-------------------------------------------------------------------
+Sat Sep  9 05:30:17 UTC 2017 - coolo@suse.com
+
+- updated to 2.214
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.214     2017-09-08 14:21:20-04:00 America/New_York
+          - the method header_raw_prepend is now available on emails and headers
+
+-------------------------------------------------------------------
+Mon Feb 13 11:51:06 UTC 2017 - coolo@suse.com
+
+- updated to 2.213
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.213     2017-01-11 09:21:54-05:00 America/New_York
+          - no changes since v2.212
+  
+  2.212     2016-12-18 20:05:09-05:00 America/New_York (TRIAL RELEASE)
+          - add an $index arg to ->header to get the nth header (thanks, Pali
+            Rohár)
+
+-------------------------------------------------------------------
+Sun Nov 13 06:24:59 UTC 2016 - coolo@suse.com
+
+- updated to 2.211
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.211     2016-11-12 09:39:09-05:00 America/New_York
+          - fix a fencepost error in headers and header_names that led to a
+            spurious undef in return and to a warning (thanks, Pali Rohár)
+
+-------------------------------------------------------------------
+Tue Mar  8 10:13:26 UTC 2016 - coolo@suse.com
+
+- updated to 2.210
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.210     2016-03-05 12:16:16-05:00 America/New_York
+          - fix a bug where folding treated the string "0" as an empty string
+            (thanks, Pali Rohár)
+  
+  2.209     2015-10-11 22:57:04-04:00 America/New_York (TRIAL RELEASE)
+          - avoid opportunity for pathological backtracking behavior on
+            malformed messages
+
+-------------------------------------------------------------------
+Tue Jul 21 08:47:53 UTC 2015 - coolo@suse.com
+
+- updated to 2.208
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.208     2015-07-20 20:34:04-04:00 America/New_York
+          - same as v2.207
+          - ...but bump perl required to v5.8
+  
+  2.207     2015-07-04 14:23:36-04:00 America/New_York (TRIAL RELEASE)
+          - fold headers passed to header arg in create method
+            https://github.com/rjbs/Email-Simple/issues/7
+
+-------------------------------------------------------------------
+Tue Apr 14 20:10:16 UTC 2015 - coolo@suse.com
+
+- updated to 2.206
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.206     2015-03-26 23:30:51-04:00 America/New_York
+          - the changes from 2.204 are back (and re-listed here), but now with
+            the added benefit of not breaking Email::MIME; see the git repository
+            for the sordid details
+          - provide header_raw and header_raw_set for consistent behavior between
+            Email::Simple and Email::MIME; also, header_raw_pairs
+  
+  2.205     2015-03-26 14:54:45-04:00 America/New_York
+          - undo changes from 2.204 until safe Email::MIME upgrade path is
+            available
+  
+  2.204     2015-03-25 22:50:49-04:00 America/New_York
+          - provide header_raw and header_raw_set for consistent behavior between
+            Email::Simple and Email::MIME; also, header_raw_pairs
+
+-------------------------------------------------------------------
+Mon Feb 24 06:29:48 UTC 2014 - coolo@suse.com
+
+- updated to 2.203
+        - translate vertical whitespace in headers into horizontal whitespace,
+          with a warning
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:20 UTC 2013 - coolo@suse.com
+
+- updated to 2.202
+ repackage with Dist::Zilla; update repo and bug tracker
+
+-------------------------------------------------------------------
+Tue Jun  4 08:42:21 UTC 2013 - coolo@suse.com
+
+- updated to 2.201
+          preserve the original header layout unless changed
+          fix a bug in header unfolding where "0\n 1" could be unfolded to "01"
+          recognize crlf correctly even if there is no body (thanks, Christian
+          Walde)
+
+-------------------------------------------------------------------
+Sat Dec 24 10:18:19 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.101:
+  * remove instruction to use ::Creator instead of just ->create
+  * documentation improvements
+
+-------------------------------------------------------------------
+Fri Dec  2 09:34:07 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 19:03:16 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- changelog to changes file
+- fix changelog
+
+-------------------------------------------------------------------
+Fri Sep 14 11:42:56 UTC 2007 - coolo@novell.com
+
+- update to 2.100
+  - merge Email-Simple-Creator into Email-Simple distribution
+- 2.005     2009-01-22
+  - add repository metadata
+- 2.004     2008-06-25
+  - publicize default_header_class method
+  - remove the long-deprecated Headers.pm
+
+-------------------------------------------------------------------
+Fri Sep 14 11:42:56 UTC 2007 - jfunk@funktronics.ca
+
+- Initial release 2.003

@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon Apr  8 20:16:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to fix build with Exiv2 0.27:
+  0001-Switch-to-FindLibExiv2-from-ECM-5.53.0.patch
+  0002-Fix-build-with-exiv2-0.27.patch
+
+-------------------------------------------------------------------
+Wed Jun  6 21:09:38 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.7.1:
+  * Fix: Animated images would not load
+  * Fix: The more images in a directory the slower PhotoQt would 
+    load first image
+  * Fix: Deleting an image would lead to infinite 'loading' indicator
+  * Fix: List of releases in appdata file was in reverse order
+  * Add: Show 'busy' cursor while loading a Loader item
+
+-------------------------------------------------------------------
+Fri May 25 12:05:21 UTC 2018 - bwiedemann@suse.com
+
+- Use constant CRYPTKEY to make build reproducible (boo#1062303)
+
+-------------------------------------------------------------------
+Wed May 16 18:33:17 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.7:
+  * Add: proper support for formats supported by KDE image plugins
+  * Add: FreeImage image library
+  * Add: DevIL image library
+  * Add: Poppler (for: PDF (inline or document viewer mode))
+  * Add: libarchive (for: comic book archives, ZIP, RAR, 7ZIP, TAR)
+  * Add: unrar (Unix-only) (for: better RAR support)
+  * Add: Detect images also by MIME type and not only by file ending
+  * Add: Detect, display and manage people tags (stored in XMP metadata)
+  * Add: Current Zoom level to quick info label
+  * Add: Setting to adjust step size of zoom
+  * Add: Basic Window Management (using quick info labels)
+  * Improve: GraphicsMagick speed
+  * Improve: Usability of PhotoQt on small screens
+  * Improve: More efficient and compact fileformats handling
+  * Improve: overall speed and responsiveness
+  * Fix: Trash for files on removable drive
+  * Fix: Masking image display shown when needed
+  * Fix: many small bugs
+- Fix build with freeimage (photoqt-1.7-link.patch)
+- Add dependencies: extra-cmake-modules, pkgconfig(libarchive),
+  pkgconfig(poppler-qt5), pkgconfig(IL), freeimage-devel
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Feb 21 06:57:27 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.6:
+  * see: /usr/share/doc/packages/photoqt/CHANGELOG 
+
+-------------------------------------------------------------------
+Wed May 10 16:04:53 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed Jan 18 20:11:42 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.5.1:
+  * see: /usr/share/doc/packages/photoqt/CHANGELOG
+
+-------------------------------------------------------------------
+Thu Jan 12 15:06:46 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.5:
+  * see: /usr/share/doc/packages/photoqt/CHANGELOG
+
+-------------------------------------------------------------------
+Fri Nov  4 21:18:00 UTC 2016 - avvissu@yandex.by
+
+- Update to 1.4.1.1:
+  * see: /usr/share/doc/packages/photoqt/CHANGELOG
+- Add support libraw
+- Update the icon theme cache
+- Drop photoqt-1.2_invalid-desktopfile.patch
+
+-------------------------------------------------------------------
+Sat Jun 20 15:50:16 UTC 2015 - avvissu@yandex.ru
+
+- Update to 1.2.1:
+  * see: /usr/share/doc/packages/photoqt/CHANGELOG
+  
+-------------------------------------------------------------------
+Tue May 12 12:46:37 UTC 2015 - avvissu@yandex.ru
+
+- Initial release
+

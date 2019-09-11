@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Dec 11 12:30:26 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against objectweb-asm >= 5 in order to avoid hard
+  dependency on a particular asmN package
+
+-------------------------------------------------------------------
+Thu Nov  1 11:30:39 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the newest asm5 instead of the old 1.5.3
+
+-------------------------------------------------------------------
+Thu Sep 21 23:31:17 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target level 1.6
+- Clean spec files and run fdupes on documentation
+
+-------------------------------------------------------------------
+Fri May 19 10:44:05 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+- spec cleaned using spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:14 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Sep 10 11:58:59 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:05 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Jun 20 12:41:18 UTC 2012 - mvyskocil@suse.cz
+
+- drop tests (needed dropped cglib-nohook package) 
+
+-------------------------------------------------------------------
+Mon Mar 26 12:59:36 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  uncritical open source license is not acceptable
+
+-------------------------------------------------------------------
+Mon Apr 27 10:09:39 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE build of version 1.2.0 (from jpp5) 
+

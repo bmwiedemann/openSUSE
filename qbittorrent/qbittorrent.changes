@@ -1,0 +1,2763 @@
+-------------------------------------------------------------------
+Sun Aug  4 14:47:56 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.7
+  * FEATURE: Add 12 hour and 24 hour speed graphs (dzmat)
+  * FEATURE: Change "Add new torrent" dialog to horizontal
+    layout (Evgeny Lensky)
+  * BUGFIX: Fix messed up symbols in log (Chocobo1)
+  * BUGFIX: Fix incomplete file extension not applied for new
+    torrents (Chocobo1)
+  * BUGFIX: Save updated resume data for completed torrents
+    (Vladimir Golovnev (Glassez))
+  * BUGFIX: Fix requested torrent resume data handling (Vladimir
+    Golovnev (Glassez))
+  * BUGFIX: Prevent command injection via "Run external program"
+    function (Chocobo1)
+  * BUGFIX: Avoid race conditions when adding torrent (Vladimir
+    Golovnev (Glassez))
+  * BUGFIX: Fix torrent checking issues (Vladimir Golovnev
+    (Glassez))
+  * BUGFIX: Use proper log message when there are no error
+    (Chocobo1)
+  * BUGFIX: Fix torrent properties not saved for paused torrents
+    (Chocobo1)
+  * BUGFIX: Some improvements on qtsingleapplication code
+    (Chocobo1)
+  * BUGFIX: Remove limits of "Disk cache expiry interval"
+    setting (Chocobo1)
+  * BUGFIX: Remove upper limit of "Disk cache" setting (Chocobo1)
+  * BUGFIX: Fix crash when removing phantom tags (Chocobo1)
+  * BUGFIX: Improve handleFileErrorAlert error message (Chocobo1)
+  * BUGFIX: Fix updated save path not saved for paused torrents
+    (Chocobo1)
+  * BUGFIX: Log save_resume_data_failed_alert (Chocobo1)
+  * BUGFIX: Don't remove parent directories (Chocobo1)
+  * BUGFIX: Properly remove empty leftover folders after rename
+    (Chocobo1)
+  * BUGFIX: Focus behavior row in Options dialog (silverqx)
+  * BUGFIX: Fix unable to rename folder on Windows when same is
+    used in different case(Chocobo1)
+  * BUGFIX: Fix unable to control add torrent dialogs when
+    opened simultaneously (Chocobo1)
+  * BUGFIX: Disable "Upload mode" when start preloaded torrent
+    (Vladimir Golovnev (Glassez))
+  * BUGFIX: Fix wrong comparison result when sorting
+    items(Chocobo1)
+  * BUGFIX: Fix sequential downloading when redirected (Vladimir
+    Golovnev (Glassez))
+  * BUGFIX: Fix typos (Chocobo1)
+  * BUGFIX: Fix assertion fail (Chocobo1)
+  * BUGFIX: Change number of time axis divisions from 5 to 6 for
+    convenience (dzmat)
+  * BUGFIX: Don't turn window blank when closed to system tray
+    (Ekin Dursun)
+  * WEBUI: Fix WebUI encoding of special characters (Thomas
+    Piccirello)
+  * WEBUI: Change the speed unit from Bytes/s to KiB/s for the
+    rate limiter(jerrymakesjelly)
+  * WEBUI: Fix '+' char not decoded to space correctly (Chocobo1)
+  * RSS: Ignore RSS articles with non-unique identifiers
+    (Vladimir Golovnev (Glassez))
+  * RSS: Perform more RSS parsing in working thread (Vladimir
+    Golovnev (Glassez))
+  * RSS: Download RSS enclosure element if no proper MIME type
+    is found (Matan Bareket)
+
+-------------------------------------------------------------------
+Mon May 20 12:43:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing zlib requirement.
+
+-------------------------------------------------------------------
+Mon May  6 07:58:32 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.6
+  * BUGFIX: Force recheck multiple torrents one by one in all
+    possible cases. Closes #9120 (glassez)
+  * BUGFIX: Don't query Google for tracker favicons, for privacy
+    reasons (sledgehammer999)
+  * BUGFIX: Work around the crash occurred in QTimer. Closes
+    #9985 (Chocobo1)
+  * BUGFIX: Increase the .torrent file download size limit to
+    100 MiB (thalieht)
+  * BUGFIX: Disable downloading tracker favicons by default.
+    Works around reported crashes in Linux. Closes #9667
+    (Chocobo1)
+  * WEBUI: Separate URL components before percent-decoding.
+    Allow special characters in query string parameters. Closes
+    #9116 (glass>
+  * WEBUI: Prevent login credential appearing in URL. Closes
+    #10221 (Chocobo1)
+  * WEBUI: Display warning when Javascript is disabled (Chocobo1)
+  * WEBUI: Fix translatable strings (Chocobo1)
+  * WEBUI: Correctly handle '+' sign in x-www-form-urlencoded
+    data. Closes #10451 (Chocobo1)
+  * WEBUI: Remove closed connections immediately. Closes #10487
+    (Chocobo1)
+  * WEBUI: Fix "Create subfolder" option is not working. Closes
+    ##10392 (Chocobo1)
+  * SEARCH: Make num enter key work the same as return in
+    searchjobwidget (thalieht)
+  * LINUX: Make window title bar icon work in Wayland (Peter
+    Eszlari)
+  * LINUX: Update appdata.xml file (Chocobo1)
+  * OTHER: Mention more translators in the about tab. Closes
+    #10043 (sledgehammer999)
+
+-------------------------------------------------------------------
+Mon Dec 24 21:17:36 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.5
+  * FEATURE: Add checking_mem_usage option to AdvancedSettings
+    (FranciscoPombal)
+  * FEATURE: Save torrents queue in separate file. Now a new
+    file named 'queue' is created, saving on each line the infohash
+    of each queued torrent in sorted order. (glassez)
+  * BUGFIX: Fix regression on resuming torrents without metadata
+    (thalieht)
+  * BUGFIX: Reorder and rename Tracker list context menu option
+    (Thomas Piccirello)
+  * BUGFIX: Rename Tracker List columns (Thomas Piccirello)
+  * BUGFIX: Show error message when Session failed to start
+    (glassez)
+  * BUGFIX: Embedded tracker: Use ip parameter from tracker
+    request if provided (Chocobo1)
+  * BUGFIX: Fix weekday names translations (Chocobo1)
+  * BUGFIX: Fix strings not translated (Chocobo1)
+  * WEBUI: Change qBittorrent exit message to HTML5 (Chocobo1)
+  * WEBUI: Revise CSP header (Chocobo1)
+  * WEBUI: Enforce referrer-policy in WebUI (Chocobo1)
+  * WEBUI: Add torrent name filtering to WebUI (Thomas
+    Piccirello)
+  * WEBUI: Send numeric status without translation (Thomas
+    Piccirello)
+  * WEBUI: Add WebUI Trackers context menu (Thomas Piccirello)
+  * WEBUI: Add DHT, PeX, and LSD to WebUI Tracker list (Thomas
+    Piccirello)
+  * WEBUI: Add additional Tracker columns to WebUI (Thomas
+    Piccirello)
+  * WEBUI: Bump Web API version
+  * WEBUI: Fix display bugs in WebUI Files tab. Remove <IE9
+    support (Thomas Piccirello)
+  * WEBUI: Fix incorrect priority value sent from WebUI (Thomas
+    Piccirello)
+  * WEBUI: Set priority for multiple files in one WebAPI request
+    (Thomas Piccirello)
+  * WEBUI: Match WebUI Peers table column order to GUI (Thomas
+    Piccirello)
+  * WEBUI: Fetch data less frequently when torrents tab isn't
+    visible (Thomas Piccirello)
+  * WEBUI: Add Search tab to WebUI (Thomas Piccirello)
+  * WEBUI: Add ability to pass urls to the webui download page
+    (Thomas Piccirello)
+  * WEBUI: Fix JavaScript error (Tom Piccirello)
+  * WEBUI: Disallow setting a blank alternative WebUI location
+    (Thomas Piccirello)
+  * WEBUI: Add slow torrent options (Thomas Piccirello)
+  * WEBUI: Add "Use alternative Web UI" option (Thomas
+    Piccirello)
+  * WEBUI: Add "Apply rate limit to peers on LAN" option (Thomas
+    Piccirello)
+  * WEBUI: Add email "From" option (Thomas Piccirello)
+  * WEBUI: Set WebUI download options using set preferences
+    (Thomas Piccirello)
+  * WEBUI: Show list of categories on WebUI download page
+    (Thomas Piccirello)
+  * WEBUI: Hide WebUI text input for custom monitor save
+    locations (Thomas Piccirello)
+  * WEBUI: Add "When adding a torrent" options (Thomas
+    Piccirello)
+  * WEBUI: Add WebUI Auto TMM options (Thomas Piccirello)
+  * WEBUI: Add speed limit icons to WebUI Speed options (Thomas
+    Piccirello)
+  * WEBUI: Add WebUI Random port button and proxy unencrypted
+    password notice (Thomas Piccirello)
+  * WEBUI: Replace WebUI Options fixed-width labels (Thomas
+    Piccirello)
+  * WEBUI: Reorder WebUI options to match GUI (Thomas Piccirello)
+  * WEBUI: Allow WebUI sidebar to be collapsed (Thomas
+    Piccirello)
+  * WEBUI: Show ellipsis when WebUI sidebar is too narrow
+    (Thomas Piccirello)
+  * WEBUI: Fix WebUI bug on override of Start Download
+    option.Closes #9855. (Tom Piccirello)
+  * WEBUI: Fix missing words in WebUI (Chocobo1)
+  * WEBUI: Add SameSite attribute to WebUI session cookie
+    (Thomas Piccirello)
+  * WEBUI: Put WebUI security related options into a groupbox
+    (Chocobo1)
+  * WEBUI: Add option for WebUI Host header validation (Chocobo1)
+  * WEBUI: Show icon in WebUI sorted column (Thomas Piccirello)
+  * RSS: Keep track of REPACK/PROPER downloads. Closes #9898.
+    (Stephen Dawkins)
+  * SEARCH: Only instantiate SearchPluginManager as needed
+    (Thomas Piccirello)
+
+-------------------------------------------------------------------
+Mon Nov 19 03:41:38 UTC 2018 - sean@suspend.net
+
+- Update to version 4.1.4
+  * FEATURE: Recognize *.ts files as previewable (silver)
+  * FEATURE: Allow to disable speed graphs (dzmat)
+  * FEATURE: Clear LineEdit on ESC (silverqx)
+  * BUGFIX: Fix divide-by-zero crash (Chocobo1)
+  * BUGFIX: Remove speed limit checkbox in Options dialog
+  * BUGFIX: FIX speed graph "high speeds" bug
+  * BUGFIX: Don't update torrent status unnecessarily
+  * BUGFIX: Improve force recheck of paused torrent
+  * BUGFIX: Restore torrent in two steps
+  * BUGFIX: Improve scaling of speed graphs 
+  * BUGFIX: Add isNetworkFileSystem() detection on Windows
+  * BUGFIX: Reduce horizontal graphs resolution for perf
+  * BUGFIX: Don't recheck just checked torrent
+  * BUGFIX: Add SMB2 magic number
+  * BUGFIX: Restore startup performance to v4.1.2 times
+  * BUGFIX: Make strings actually translatable
+  * WEBUI: Handle downloading .torrent files as success
+  * WEBUI: Fix Alternative WebUI to be available
+  * WEBUI: Consider empty locale setting as not set
+  * WEBUI: Add free disk space to WebUI status bar
+  * WEBUI: Add WebUI search API controller
+  * WEBUI: Fix WebUI Auto TMM context menu bug
+  * WEBUI: Use independent translation for WebUI
+  * WEBUI: Add categories WebAPI
+  * WEBUI: Fix mior JavaScript defects
+  * WEBUI: Add locale to js file path
+  * WEBUI: Translate WebUI torrents Status column
+  * WEBUI: Bump Web API version
+  * RSS: Allow to disable downloading REPACK/PROPER matches
+  * RSS: Improve RSS Feed updating
+  * SEARCH: Allow resizing search filter in search job
+  * SEARCH: Improve parser for search engine versions.txt
+  * SEARCH: Update Python URLs
+  * SEARCH: Fix asking to install Python
+  * SEARCH: Reformat python code to be compliant with PEP8
+  * OTHER: cmake: restore out-of-source build
+  * OTHER: cmake: cmake: use C++14 when available
+ 
+-------------------------------------------------------------------
+Wed Sep 19 07:06:06 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.3
+  * FEATURE: Preselect name without extension when renaming
+    files (thalieht)
+  * FEATURE: Allow setting seq & first/last from context menu
+    without metadata (thalieht)
+  * BUGFIX: Show "N/A" if there is no scrape (thalieht)
+  * BUGFIX: Save option about tracker favicons under correct key
+    (sledgehammer999)
+  * BUGFIX: When file data are unreachable pause torrent and
+    show "Missing Files" status (temporary fix) (sledgehammer999)
+  * BUGFIX: Don't disable DHT when using force proxy (Thomas
+    Piccirello)
+  * BUGFIX: Correctly save torrent queue position/state/priority
+    changes in fastresume (glassez, thalieht, sledgehammer999)
+  * BUGFIX: Fix icon height/width ratio (Chocobo1)
+  * BUGFIX: Fix values sorted wrong in "Last Activity" column
+    (Chocobo1)
+  * BUGFIX: Replace png icons with svg (Chocobo1)
+  * WEBUI: Allow WebUI sidebar filters to be hidden (Thomas
+    Piccirello)
+  * WEBUI: Increase WebUI Options initial height (Thomas
+    Piccirello)
+  * WEBUI: Adjust WebUI Options form alignment (Thomas
+    Piccirello)
+  * WEBUI: Fix WebUI unreachable issue (Chocobo1)
+  * WEBUI: Require torrent category creation to be explicit
+    (Thomas Piccirello)
+  * WEBUI: Include category save path in web api sync data
+    (Thomas Piccirello)
+  * WEBUI: Add save path and editing to WebUI new category
+    dialog (Thomas Piccirello)
+  * WEBUI: Bump Web API version
+  * SEARCH: Refactor in searchjob to always color visited
+    entries (thalieht)
+  * SEARCH: Set "enter" as shortcut to download the selected
+    torrents in search job (thalieht)
+  * SEARCH: Add regex option in the search filter's context menu
+    (thalieht)
+  * LINUX: Fix GUI scaling issue on Linux (Chocobo1)
+  * LINUX: Fix regression that broke installing desktop file
+    (Eli Schwartz)
+  * OPENBSD: Better filesystem support for filewatcher (Elias M.
+    Mariani)
+
+-------------------------------------------------------------------
+Sun Sep 16 17:13:11 UTC 2018 - sor.alexei@meowr.ru
+
+- Hardcode building with the C++14 ABI for now, as otherwise
+  qbittorrent gets built with the C++11 one for odd reasons, which
+  is not what boost and libtorrent-rasterbar are built with
+  (boo#1108567).
+
+-------------------------------------------------------------------
+Thu Aug 16 10:30:16 UTC 2018 - jengelh@inai.de
+
+- Avoid bashisms in build script.
+
+-------------------------------------------------------------------
+Mon Aug 13 10:24:32 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 4.1.2:
+  * FEATURE: New options for "inhibit sleep".
+  * FEATURE: Add option for regexps in the transferlist search
+    filter's context menu.
+  * FEATURE: Add async io threads option to AdvancedSettings.
+  * FEATURE: Allow save resume interval to be disabled.
+  * FEATURE: Add checkbox for recursive download dialogue.
+  * FEATURE: Add a changelog link in the application updater.
+  * BUGFIX: Avoid allocating large memory when loading a .torrent
+    file.
+  * BUGFIX: Notify users on 1st time close/minimise to tray.
+  * BUGFIX: Fix I/O error after fetching magnet metadata.
+  * BUGFIX: Never save resume data for already paused torrents.
+  * BUGFIX: Put temporary files in qbt own temp folder.
+  * BUGFIX: Avoid potentially setting the wrong piece priorities.
+  * BUGFIX: Various code refactorings/improvements.
+  * BUGFIX: Add options "Download in sequential order" and
+    "Download first and last pieces first" in AddNewTorrentDialog.
+  * BUGFIX: Download favicon using appropriate protocol.
+  * BUGFIX: Apply proxy settings on DownloadManager creation.
+  * BUGFIX: Improve torrent initialisation.
+  * BUGFIX: Save resume data on torrent change events.
+  * BUGFIX: Increase default resume data save interval.
+  * BUGFIX: Work around crash when procesing recursive download.
+  * BUGFIX: Reduce queries to python version.
+  * BUGFIX: Disable certain mouse wheel events in Options dialogue.
+  * WEBUI: Send all rechecks in one request.
+  * WEBUI: Add WebUI Force Reannounce option.
+  * WEBUI: Create non-existing path in setLocationAction().
+  * WEBUI: Add WebUI support for Mac ⌘ (Command) key.
+  * WEBUI: Show current save path in the "Set location" window.
+  * WEBUI: Fix WebUI cache behavior for css files.
+  * WEBUI: Send Cache-Control header in WebUI responses.
+  * WEBUI: Add form-action to CSP.
+  * WEBUI: Add upgrade-insecure-requests to CSP when HTTPS is
+    enabled.
+  * WEBUI: Reset WebUI ban counter on login success.
+  * WEBUI: Add logging messages in WebUI login action.
+  * WEBUI: Add option to control CSRF protection.
+  * WEBUI: Add option to control WebUI clickjacking protection.
+  * RSS: Implement "Sequential downloading" feature.
+  * RSS: Don't use Atom/RSS feed URLs as base for file names.
+  * SEARCH: Add a name filter for search results.
+  * SEARCH: Fix python version detection.
+  * SEARCH: Clear python cache conditionally.
+  * SEARCH: Properly normalise version string before parsing it.
+  * OTHER: Fix CMake build with QtSingleApplication.
+
+-------------------------------------------------------------------
+Mon May 28 06:59:05 UTC 2018 - aloisio@gmx.com
+
+- Update to version 4.1.1
+  * FEATURE: Add 'Moving' state for torrents being
+    relocated/moved (sledgehammer999)
+  * FEATURE: Show rechecking progress (sledgehammer999)
+  * FEATURE: Add option to remember last used save path (glassez)
+  * FEATURE: Torrent name is also renamed if the content was
+    renamed in the "Add New Torrent" dialog (glassez)
+  * FEATURE: Relax behavior of "Download first and last piece
+    first". It applies to all files and not only to the
+    previewable. (Chocobo1)
+  * BUGFIX: Fix issues with translatable strings (Chocobo1)
+  * BUGFIX: Fix displayed tracker messages (Chocobo1)
+  * BUGFIX: Make settings file recovery more robust (Chocobo1)
+  * BUGFIX: Retry saving settings when operation failed
+    (Chocobo1)
+  * BUGFIX: Log successful torrent move (sledgehammer999)
+  * BUGFIX: Fix deletion of old logs (sledgehammer999)
+  * BUGFIX: Delete non-commited fastresume files
+    (sledgehammer999)
+  * BUGFIX: Don't migrate torrents that have newer fastresumes
+    (sledgehammer999)
+  * BUGFIX: Fix adding multiple torrents at once from WebUI
+    (glassez)
+  * BUGFIX: Improve "Run External Program" behavior. On Windows,
+    a backslash isn't appended to paths from path variables
+    (Chocobo1)
+  * BUGFIX: Suppress multiple I/O errors for the same torrent
+    (sledgehammer999)
+  * BUGFIX: Replace raster qbt logo with vector version
+    (Chocobo1)
+  * WEBUI: Fix wrong API method names (glassez)
+  * WEBUI: Filter torrent info endpoint by hashes (Marcel
+    Petersen)
+  * WEBUI: Fix invalid API calls in WebUI (glassez)
+  * WEBUI: Improve legacy API params handling (glassez)
+  * WEBUI: Fix params handling for some legacy API methods
+    (glassez)
+  * WEBUI: Apply locale changes immediately in WebUI (Chocobo1)
+  * WEBUI: Use 32px icons for favicon (Chocobo1)
+  * WEBUI/RSS: Properly set RSS settings via API (glassez)
+  * RSS: Fix auto-downloading rule when Smart filter with
+    regular Episode filter are used (glassez)
+  * RSS: Make "Ignoring days" to behave like other filters
+    (glassez)
+  * RSS: Place "Use Smart Episode Filter" more correctly
+    (glassez)
+  * RSS: Use RSS feed update time as a fallback (glassez)
+  * COSMETIC: Fix Stats dialog size (sledgehammer999)
+  * Fix open destination folder with Nautilus > 3.28
+    (Evgeny Lensky)
+  * OTHER: Code improvements and refactoring (thalieht, Nick
+    Korotysh, Chocobo1)
+
+-------------------------------------------------------------------
+Sat May  5 06:11:00 UTC 2018 - aloisio@gmx.com
+
+- Update to version 4.1.0
+  * FEATURE: Add "Coalesce reads & writes" checkbox in advanced
+    options (Chocobo1)
+  * FEATURE: Smart Filter for RSS (Stephen Dawkins)
+  * FEATURE: Possibility to configure at which speed a torrent
+    is considered slow (thalieht)
+  * FEATURE: When creating a torrent you can choose to preserve
+    the file order (toster, Chocobo1)
+  * FEATURE: A new, redesigned and refactored WebAPI (glassez)
+  * BUGFIX: Redefine CacheStatus.readRatio field. (Chocobo1)
+  * BUGFIX: Clarify some terms in stats dialog (Chocobo1)
+  * BUGFIX: Fix possible crash when using both share limits
+    (thalieht)
+  * BUGFIX: Disable options when `Disable connections not
+    supported by proxies` is enabled (Thomas Piccirello)
+  * BUGFIX: Add link to an explanation of `Disable connections
+    not supported by proxies` (Thomas Piccirello)
+  * BUGFIX: Fix typo in a log message (Andrei Stepanov)
+  * BUGFIX: Fix loading very large torrents. Closes #8449.
+    (Chocobo1)
+  * BUGFIX: Fix reverting backslashes to slashes in run external
+    program. Closes #7800 (Chocobo1)
+  * BUGFIX: Use https for documentation links (Chocobo1)
+  * BUGFIX: Use original scheme when downloading favicons
+    (Chocobo1)
+  * BUGFIX: Parse URL query string at application level (glassez)
+  * BUGFIX: Properly reply to announce request (embedded
+    tracker) (glassez)
+  * BUGFIX: Add `Tags` parameter to "Run External Program"
+    (Chocobo1)
+  * BUGFIX: Fix various typos (Chocobo1)
+  * BUGFIX: Refactor filesystem watcher. Delay before processing
+    new files. (Chocobo1)
+  * BUGFIX: Don't strip empty arguments passed to external
+    program. Closes #8454. (Chocobo1)
+  * BUGFIX: Stop creating Download folder on start (Chocobo1)
+  * BUGFIX: Avoid data corruption when rechecking paused
+    torrents (sledgehammer999)
+  * BUGFIX: Fix crashes due to invalid iterator use (Luís
+    Pereira)
+  * BUGFIX: Fix renaming completed files (Chocobo1)
+  * BUGFIX: Fix path separator in log messages (Chocobo1)
+  * WEBUI: Switch built-in Web UI html to HTML5 (glassez)
+  * WEBUI: WebUI Save user's resized window sizes (Thomas
+    Piccirello)
+  * WEBUI: Make download + upload windows resizable (Thomas
+    Piccirello)
+  * WEBUI: Add option to show/hide webui status bar (Thomas
+    Piccirello)
+  * WEBUI: Add "Use proxy only for torrents" option to webui
+    (Thomas Piccirello)
+  * WEBUI: Various fixes in the html code (Thomas Piccirello)
+  * WEBUI: Don't unselect selected torrents after a few seconds
+    (Thomas Piccirello)
+  * WEBUI: Enable Http/1.1 persistence connection (Chocobo1)
+  * WEBUI: Format Read cache hits as percentage (Thomas
+    Piccirello)
+  * WEBUI: Re-order and rename stats (Thomas Piccirello)
+  * WEBUI: Right align stat values (Thomas Piccirello)
+  * WEBUI: Enable Statistics window to be scrolled and resized
+    (Tom Piccirello)
+  * WEBUI: Save WebUI Statistics window size (Thomas Piccirello)
+  * WEBUI: Make WebUI iframe windows scrollable on iOS (Thomas
+    Piccirello)
+  * WEBUI: Remove unused CSS from WebUI login page (Thomas
+    Piccirello)
+  * WEBUI: Consolidate CSS into style.css (Thomas Piccirello)
+  * WEBUI: Resolve JavaScript errors (Thomas Piccirello)
+  * WEBUI: Fix spacing in login form(Thomas Piccirello)
+  * WEBUI: Update WebUI to be more compliant with HTML5 standard
+    (Chocobo1)
+  * WEBUI: Update clipboard.js to v2.0.0 (Chocobo1)
+  * WEBUI: Remove unused JavaScript library (Chocobo1)
+  * WEBUI: Fix setting preferences via WebAPI (glassez)
+  * WEBUI: Rename property to match its definition (Thomas
+    Piccirello)
+  * WEBUI: Add Limit Share Ratio context menu option (Thomas
+    Piccirello)
+  * RSS: Disable Auto TMM when RSS rule has save path (glassez)
+  * RSS: Process loaded RSS articles in case of error (glassez)
+  * RSS: Resolve (X)HTML entities in RSS content (glassez)
+  * SEARCH: Improve Search handling (glassez)
+  * SEARCH: Calculate supported categories based on selected
+    plugin (Thomas Piccirello)
+  * SEARCH: Fix memory leak (Chocobo1)
+  * COSMETIC: Use spinbox suffix to display rate/time units
+    (thalieht)
+  * COSMETIC: Avoid showing an empty row in AdvancedSettings
+    (Chocobo1)
+  * OTHER: Various code optimizations and fixes (Luís Pereira,
+    Chocobo1)
+  * OTHER: Fix build when using Clang under CMake (Luís Pereira)
+  * OTHER: Allow to disable Stacktrace support (Nick Korotysh)
+  * OTHER: Use RNG provided by OS (Chocobo1)
+
+-------------------------------------------------------------------
+Fri Feb 16 07:25:56 UTC 2018 - aloisio@gmx.com
+
+- Update to version 4.0.4
+  * FEATURE: Add source field in Torrent creator. Closes
+    #7965. (Chocobo1)
+  * FEATURE: Torrent creator: raise maximum piece size to 32
+    MiB (Chocobo1)
+  * FEATURE: Add a force reannounce option in the transfer
+    list context menu. Closes #6448. (Jesse Bryan)
+  * BUGFIX: Fix sorting of country flags column in Peers tab.
+    (sledgehammer999)
+  * BUGFIX: Fix natural sorting when the common part of 2
+    strings ends partially in a number which continues in the
+    uncommon part. Closes #8080 #6732. (sledgehammer999)
+  * BUGFIX: Fix application of speed limits on LAN and μTP
+    connections. Closes #7745. (sledgehammer999)
+  * BUGFIX: Make peer information flags in peerlist more
+    readable. (thalieht)
+  * BUGFIX: Fix gui issues on high DPI monitor. (Chocobo1)
+  * BUGFIX: Fix dialog and column size on high DPI monitors.
+    (Chocobo1)
+  * BUGFIX: Fix constant status of '[F] Downloading'. Closes
+    #7628. (sledgehammer999)
+  * BUGFIX: Fix translation context. Closes #8211.
+    (sledgehammer999)
+  * BUGFIX: Separate subnet whitelist options into two lines.
+    (Thomas Piccirello)
+  * BUGFIX: Don't set application name twice. (Luís Pereira)
+  * BUGFIX: Set default file log size to 65 KiB and delete
+    backup logs older than 1 month. (sledgehammer999)
+  * WEBUI: Only prepend scheme when it is not present. Closes
+    #8057. (Chocobo1)
+  * WEBUI: Add "Remaining" and "Availability" columns to webui
+    Content tab. (Thomas Piccirello)
+  * WEBUI: Make value formatting consistent with GUI (Thomas
+    Piccirello)
+  * WEBUI: Reposition Total Size column to match gui (Thomas
+    Piccirello)
+  * WEBUI: Add Tags and Time Active columns (Thomas Piccirello)
+  * WEBUI: Use https for www.qbittorrent.org (Thomas
+    Piccirello)
+  * WEBUI: Match webui statuses to gui, closes #7516 (Thomas
+    Piccirello)
+  * WEBUI: Right-align stat values (Thomas Piccirello)
+  * WEBUI: Add missing units. (Thomas Piccirello)
+  * RSS: Fix crash when deleting rule because it tries to
+    update. Closes #8094 (glassez)
+  * RSS: Don't process new/updated RSS rules when disabled
+    (glassez)
+  * RSS: Remove legacy and corrupted RSS settings (glassez)
+  * SEARCH: Search only when category is supported by plugin.
+    Closes #8053. (jan.karberg)
+  * SEARCH: Only add search separators as needed. (Thomas
+    Piccirello)
+  * COSMETIC: Tweak spacing in torrent properties widget and
+    speed widget. (Chocobo1)
+  * OTHER: Fix splitting of compiler flags in configure.
+    Autoconf removes a set of [] during script translation,
+    resulting in a wrong sed command. (sledgehammer999)
+  * OTHER: configure: Parse all compiler related flags
+    together. (sledgehammer999)
+  * OTHER: Update copyright year. (sledgehammer999)
+
+-------------------------------------------------------------------
+Mon Dec 18 02:39:20 UTC 2017 - avindra@opensuse.org
+
+- Update to version 4.0.3
+  * BUGFIX: Add height padding to the transfer list icons.
+  * BUGFIX: Allow to drag-n-drop URLs into mainwindow to start
+    download.
+  * BUGFIX: Fix crash when filtering search results. Stable
+    sorting is removed.
+  * WEBUI: Fix missing logo on login page in webUI.
+  * WEBUI: Add check to avoid type error after logout.
+  * WEBUI: Use POST for logout command. This is to avoid browser
+    being smart to prefetch the link then logging out the user.
+  * WEBUI: Fix WebUI is not reachable via IPv6.
+  * WINDOWS: Disable the "?" help button in all dialogs on Windows.
+    Requires Qt 5.10.
+
+-------------------------------------------------------------------
+Fri Dec  1 06:03:35 UTC 2017 - aloisio@gmx.com
+
+- Update to version 4.0.2
+  * BUGFIX: Fix crash on some systems when creating address object
+    for 255.255.255.255. Closes #7735. (sledgehammer999)
+  * PERFORMANCE: Change MixedModeAlgorithm default to TCP. This
+    was the v3_3_x default and should sustain higher speeds. Closes
+    #7779. (Chocobo1)
+  * PERFORMANCE: Stop logging IP filter parsing errors after a
+    while, otherwise the GUI freezes or qBittorrent doesn't start.
+    (sledgehammer999)
+  * GUI: Implement stable sort. Rows in transfer list shouldn't
+    flicker anymore. (Chocobo1)
+  * WEBUI: Fix build when webui is disabled. (Heiko Becker)
+  * RSS: Fix build because of missing header. Closes #7805.
+    (thoradia)
+  * RSS: Fix RSS parser. (glassez)
+  * RSS: Implement Import/Export RSS rules in legacy(aka v3_3_x)
+    format. (glassez)
+  * RSS: Implement Import/Export RSS rules in JSON format.
+    (glassez)
+  * LINUX: Fix i386 build. (Evgeny Lensky)
+
+- A bit of cleanup
+
+-------------------------------------------------------------------
+Wed Nov 22 07:28:06 UTC 2017 - aloisio@gmx.com
+
+- Update to version 4.0.1
+  * BUGFIX: Fix crash on opening torrent/magnet (uninitialized
+    pointer). Closes #7739 #7723. (sledgehammer999)
+  * BUGFIX: Enable preferences Apply button when ip banlist is
+    modified (Thomas Piccirello)
+  * BUGFIX: Allow drag-n-drop magnet links to mainwindow. Closes
+    #7742. (Chocobo1)
+  * BUGFIX: Fix crash when aborting a torrent creation process.
+    Closes #7783. (Chocobo1)
+  * BUGFIX: Correctly check if torrent passed during application
+    start already exists. (sledgehammer999)
+  * WEBUI: Add ip subnet whitelist for bypassing webui auth
+    (Thomas Piccirello)
+  * WEBUI: Fix logo missing in login page (Chocobo1)
+  * COSMETIC: Fix english typo. (sledgehammer999)
+  * OTHER: cmake: qtsingleapplication should always be built
+    statically (luigino)
+
+- Dropped static_qtsingleapplication.patch (merged upstream)
+
+- Addressed some rpmlint complaints
+ 
+-------------------------------------------------------------------
+Tue Nov 21 07:59:10 UTC 2017 - aloisio@gmx.com
+
+- Remove the actually useless fix_systemd_detection.patch
+  and other systemd-related foolishness 
+
+-------------------------------------------------------------------
+Mon Nov 20 09:31:17 UTC 2017 - aloisio@gmx.com
+
+- Update to version 4.0.0
+  * FEATURE: Change qbittorrent logo. Issue #6467. (HVS, Atif
+    Afzal, sledgehammer999)
+  * FEATURE: New icon theme with SVG source, so we can scale it
+    appropriately in the future. (Bert Verhelst)
+  * FEATURE: Drop Qt 4 support. Raise minimum Qt version to 5.5.1
+    (evsh)
+  * FEATURE: UI for managing locally banned IP list (dzmat)
+  * FEATURE: Support for specifying where to save/load config
+    files. Support for portable mode. (evsh)
+  * FEATURE: It is now possible to pass options via ENV variables
+    instead of cmd options. (evsh)
+  * FEATURE: Allow to strip subfolder in multifile torrents.
+    (glassez, sledgehammer999)
+  * FEATURE: Allow cmd args to specify options when adding
+    torrents. (Brian Kendall)
+  * FEATURE: Widget for showing filesystem paths while typing.
+    Used in the Add New Torrent and Options dialogs. (evsh)
+  * FEATURE: Trackerlist: Allow to toggle columns (thalieht)
+  * FEATURE: Add availability column to torrent content model and
+    torrent properties window (evsh)
+  * FEATURE: Implemented share limit by seeding time (naikel)
+  * FEATURE: Revamp Torrent creator (Chocobo1)
+  * FEATURE: Enable drag n drop to create torrent on mainwindow
+    (Chocobo1)
+  * FEATURE: Add show/hide statusbar option (takiz)
+  * FEATURE: Show number of pieces. Closes #6774. (Chocobo1)
+  * FEATURE: Allow to select & delete multiple entries in "Manage
+    Cookies" dialog (Chocobo1)
+  * FEATURE: Fetch Favicons via google as a final fallback
+    (KingLucius)
+  * FEATURE: Add a Tags (multi-label) feature to the GUI. Closes
+    #13. (tgregerson)
+  * FEATURE: Use the system icons for each file type in the
+    Content tab (evsh)
+  * FEATURE: Use SVG files for monochrome tray icons. Closes
+    #6085. (evsh)
+  * FEATURE: Prefill torrent name when creating a new torrent.
+    Closes #7229. (Chocobo1)
+  * FEATURE: Expose more libtorrent options in advanced settings
+    (Chocobo1)
+  * FEATURE: Add comboBox for selecting BitTorrent protocol.
+    Closes #6316. (Chocobo1)
+  * FEATURE: Allow SMTP sender to be set. Closes #7575. (Chocobo1)
+  * FEATURE: Allow to specify if announcing to all tiers is
+    desired. (sledgehammer999)
+  * FEATURE: Configurable number of history of paths in Add New
+    Torrent dialog. (evsh)
+  * BUGFIX: Adjust icons names to better fit FDO scheme (evsh)
+  * BUGFIX: Optimized IP filter parsing, making blazingly fast
+    (sledgehammer999, evsh)
+  * BUGFIX: Fix dialogs didn't position on the correct screen
+    which qBittorrent window is on. Closes #1690, #2474, #3538.
+    (Chocobo1)
+  * BUGFIX: Refactor and improve StatusBar (glassez)
+  * BUGFIX: Set expiration date for newly added cookie to +2 years
+    from now, instead of +99 years. (Chocobo1)
+  * BUGFIX: Don't create subfolder inside temp folder (glassez)
+  * BUGFIX: Don't replace existing files when relocating torrent
+    (glassez)
+  * BUGFIX: Fix explicit Torrent Management Mode in Add New
+    Torrent dialog. Closes #5602. (sledgehammer999)
+  * BUGFIX: Fix calculation of 'Average time in queue' stat under
+    libtorrent 1.1.x (sledgehammer999)
+  * BUGFIX: Don't disable bandwidth scheduler when manually
+    switching speed limits. Closes #7306. (glassez)
+  * BUGFIX: Fix dereferencing freed pointer. Closes #7420.
+    (Chocobo1)
+  * BUGFIX: Change the default cache size to 64MiB. (Chocobo1)
+  * BUGFIX: The previous "Disk write cache size" is not accurate
+    since it is also being used for read cache, so rename it to
+    "Disk cache". (Chocobo1)
+  * BUGFIX: Replace dialog ok-cancel buttons with
+    QDialogButtonBox, which follows the platform specific button
+    order. (Chocobo1)
+  * BUGFIX: Better reporting of success/failure of torrent and
+    file deletion. (sledgehammer999)
+  * BUGFIX: Fix last activity calculation. Closes #7461. (Chocobo1)
+  * BUGFIX: Save state of options windows on cancel too. (silverqx)
+  * BUGFIX: Persist size and treeview header state in preview
+    dialog. (silverqx)
+  * BUGFIX: Show torrent name in "add new torrent" dialog on
+    merging trackers (Chocobo1)
+  * BUGFIX: Properly pre-select the selected torrent's current
+    ratio limiting options in  UpDownRatioDlg dialogs. Fixes #7352
+    (thalieht)
+  * BUGFIX: Optimize code for SpeedWidget. (dzmat)
+  * BUGFIX: Disable processing events when adding
+    torrents(prevents crashes). Closes #7436. (Chocobo1)
+  * BUGFIX: Open links in browser. Closes #7651. (Chocobo1)
+  * BUGFIX: Change default settings for tracker/tier announces to
+    mimick μTorrent behavior. (sledgehammer999)
+  * BUGFIX: Explicitly set UPnP state on start-up. Closes #7338.
+    (Chocobo1)
+  * BUGFIX: Include/print caught signal in stackdump (Chocobo1)
+  * COSMETIC: Trackerlist: Set text alignment of columns with
+    numbers to the right (thalieht)
+  * COSMETIC: Enable alternatingRowColors for "Manage Cookie"
+    dialog (Chocobo1)
+  * COSMETIC: Remove indentation for category/tag filter widgets
+    in all platforms (thalieht)
+  * COSMETIC: Add space between widgets in left side panel. Closes
+    #7224. (Chocobo1, glassez)
+  * COSMETIC: Unify preference window borders across the tabs
+    (vit9696)
+  * COSMETIC: Center Options dialog when showed. (silverqx)
+  * COSMETIC: Show delete accelerator key in menu. closes #7508
+    (Nick Korotysh)
+  * COSMETIC: Set QTextOption::NoWrap property in "Download from
+    URLs" dialog (Chocobo1)
+  * COSMETIC: Use SVG icons for the country flags. Closes #6223.
+    (sledgehammer999)
+  * WEBUI: Allow to load/use ECDSA certificate in webUI. (Chocobo1)
+  * WEBUI: Add copy options to webui context menu (addresses
+    #6815) (#7036) (Tom Piccirello)
+  * WEBUI: Set torrent location from webui context menu (addresses
+    #6815) (#7062) (Tom Piccirello)
+  * WEBUI: Add option to rename torrent from WebUI (Thomas
+    Piccirello)
+  * WEBUI: Add auto torrent management to webui context menu
+    (addresses #6815) (Thomas Piccirello)
+  * WEBUI: Option for "Create subfolder" when adding new torrent.
+    (thalieht)
+  * WEBUI: Fix addPaused wrong default behavior. (Chocobo1)
+  * WEBUI: Reposition "Priority" menu option in WebUI to match
+    gui. Closes #7072. (Thomas Piccirello)
+  * WEBUI: Report TCPServer errorString() if webui fails to listen
+    to port. (Matthew Fioravante)
+  * WEBUI: Exit gracefully when failed to initialize web server
+    with qbt-nox (Chocobo1)
+  * WEBUI: Add file-to-piece-index mappings in
+    /query/propertiesFiles command (Chocobo1)
+  * WEBUI: Add optional parameters for /command/download &
+    /command/upload (Chocobo1)
+  * WEBUI: Print error messages upon receiving invalid header
+    fields. (Chocobo1)
+  * WEBUI: Add WebUi\Address config option. (Matthew Fioravante)
+  * WEBUI: Reinitialize webUI server when "IP address" setting
+    changed. An app restart won't be necessary from now on.
+    (Chocobo1)
+  * WEBUI: Improve log and error messages (Chocobo1)
+  * SEARCH: Use explicit class for search plugin versions (evsh)
+  * SEARCH: Remove all search plugins from repo. There is another
+    repo named 'search-plugins'. (sledgehammer999)
+  * SEARCH: Update the backend when a new plugin favicon is
+    downloaded. (sledgehammer999)
+  * SEARCH: Allow search plugins sorting. Closes #7526. (Nick
+    Korotysh)
+  * RSS: Redesigned RSS subsystem (glassez)
+  * RSS: Do not use hardcoded colors in RSS feed view (evsh)
+  * RSS: Improve RSS events logging (glassez)
+  * LINUX: Allow custom tray icons when system icon theme is used.
+    Closes #7403. (evsh)
+  * OTHER: Use new classes/methods from libtorrent and stop using
+    deprecate ones. (glassez)
+  * OTHER: Various string fixes (Allan Nordhøy, sledgehammer999)
+  * OTHER: cmake: do not use Qt5Widgets when locating
+    QtSingleApplication. Closes #7551. (evsh)
+  * OTHER: Update BOOST m4 macros and simplify AX_BOOST_BASE usage
+    (Chocobo1)
+  * OTHER: Optimize file size of PNG and SVG files.
+    (sledgehammer999)
+  * OTHER: Add new translators in the About page.
+
+- Switched build to cmake
+
+- Dropped qbittorrent-libtorrent-1.1.1.patch (no target uses that
+  version anymore and in any case a newer one is required now)
+
+- Dropped bittorrent_missing_ppc64le_in_ax_boost_base.m4.patch
+  (not used by cmake)
+
+- Added fix_systemd_detection.patch
+
+- Added static_qtsingleapplication.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 06:48:45 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.16
+  * BUGFIX: Better memory footprint when using libtorrent 1.1.x.
+    The cache is turned off by default(`0 (disabled)` value in
+    the settings). The value `-1 (auto)` makes it use 1/8 of
+    your RAM. (sledgehammer999)
+  * BUGFIX: Skip user input events when adding torrent. Closes
+    #7327. (glassez)
+  * BUGFIX: Avoid memory leak in the speed graph. (Chocobo1)
+  * WEBUI: Fix validating wrong header field. X-Forwarded-Host is
+    a foreign proxy setting, it isn't the same as qbt's local
+    setting and thus it makes no sense to verify it. Closes #7311.
+    (Chocobo1)
+
+- Refreshed qbittorrent-libtorrent-1.1.1.patch
+
+-------------------------------------------------------------------
+Fri Aug  4 08:08:26 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.15
+  * BUGFIX: Temporary subfolder wasn't being deleted. (glassez)
+
+-------------------------------------------------------------------
+Thu Jul 20 09:38:27 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.14:
+  * BUGFIX: Set interface for outgoing traffic (libtorrent 1.1.x
+    series).
+  * WEBUI: Fix KEEP_ALIVE_DURATION value.
+  * WEBUI: Relax CSRF defence. Allow HTTP request which has
+    neither Origin nor Referer header included
+    (gh#qbittorrent/qBittorrent#6882).
+  * WEBUI: Skip username/password check for active sessions
+    (gh#qbittorrent/qBittorrent#6860).
+  * WEBUI: Fix javascript errors and follow best practices.
+  * WEBUI: Fix value comparison (gh#qbittorrent/qBittorrent#7081).
+  * WEBUI: Avoid modifying request headers.
+  * WEBUI: Implement HTTP host header filtering. This filtering is
+    required to defend against DNS rebinding attack.
+  * WEBUI: Add Status column to webui
+    (gh#qbittorrent/qBittorrent#6815,
+    gh#qbittorrent/qBittorrent#7032).
+  * WEBUI: Bump API_VERSION and API_VERSION_MIN to 15.
+  * SEARCH: Pad shorter python versions
+    (gh#qbittorrent/qBittorrent#6877).
+  * LINUX: systemd service with user switch and other
+    fixes/optimisations.
+- Dropped qbittorrent-fix-qt-5.4-compat.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri Jun  2 20:12:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Rebase qbittorrent-libtorrent-1.1.1.patch.
+- Add qbittorrent-fix-qt-5.4-compat.patch: Fix compatibility with
+  Qt 5.4 or older.
+
+-------------------------------------------------------------------
+Thu Jun  1 18:03:55 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.13
+  * BUGFIX: Fixed UI glitch about torrent numbers in the sidepanel. 
+    Fixes #6454. (evsh)
+  * BUGFIX: Fix downloaded/uploaded columns were not highlighted 
+    properly when selected. (Chocobo1)
+  * BUGFIX: Always draw background in files list and search result 
+    list (Chocobo1)
+  * BUGFIX: Remove torrent temp folder if it becomes unneeded 
+    (glassez)
+  * BUGFIX: Remove torrent temp folder when torrent is deleted 
+    (glassez)
+  * BUGFIX: Setup DPI at startup (Chocobo1)
+  * BUGFIX: Do not attempt to show detailed tooltips without torrent 
+    metadata. Closes #6768. (evsh)
+  * BUGFIX: Better detection of already present files when adding a 
+    torrent. (fbriere)
+  * BUGFIX: Fix double click on system tray icon causing program to 
+    open and minimize immediately. Closes #5826. (Chocobo1)
+  * BUGIFX: Fix categories sorting in AddNewTorrentDialog. Partially 
+    fixes #6708. (fbriere)
+  * BUGFIX: Set "category" column as case-insensitive in transfer 
+    list. (fbriere)
+  * BUGFIX: Properly sort categories case-insensitively in filter 
+    widget. Closes #6708. (fbriere)
+  * BUGFIX: Fix renaming files is not case sensitive on Windows 
+    platform. Closes #5128. (Chocobo1)
+  * BUGFIX: Fix crash in download piece bar (evsh)
+  * BUGFIX: Fix focusing on the previously opened dialog didn't work 
+    (Chocobo1)
+  * WEBUI: Bugfix: `RequestParser::splitMultipartData` drop extra 
+    trailing newline. (OpenGG)
+  * WEBUI: Add `skip_checking` and `paused` to `/command/download` 
+    and `/command/upload` (OpenGG)
+  * WEBUI: Fix checkbox hidden. Closes #6642. (Chocobo1)
+  * WEBUI: Implement http persistence connection. Max simultaneous 
+    connection limit set to 500. This also release allocated memory of 
+    Connection instances at runtime instead of at program shutdown. 
+    (Chocobo1)
+  * WEBUI: Always send Content-Length header. (Chocobo1)
+  * WEBUI: Send Date http header (Chocobo1)
+  * WEBUI: Fix "Content-Encoding" header is always created. 
+    (Chocobo1)
+  * WEBUI: Implement robust checking for gzip encoding and revise 
+    gzip compressing/decompressing code. (Chocobo1)
+  * WEBUI: Make the context obligatory for translatable strings. 
+    Also delete duplicate strings from extra translations. 
+    (sledgehammer999)
+  * WEBUI: Use translatable strings in Statistics dialog. 
+    (sledgehammer999)
+  * WEBUI: Add missing unit sizes in misc.js (sledgehammer999)
+  * WEBUI: Use the same layout in the Speed tab in preferences as 
+    the GUI. (sledgehammer999)
+  * WEBUI: Return status indicating if at least one torrent was 
+    successfully added (Thomas Piccirello)
+  * WEBUI: Increase the number of digits after the decimal point 
+    (thalieht)
+  * WEBUI: Use less permissive Content Security Policy (Thomas 
+    Piccirello)
+  * WEBUI: Fix connection status icon too large. Closes #6804. 
+    (Chocobo1)
+  * WEBUI: Cosmetic fixes for WebUI upload and download windows 
+    (naikel)
+  * WEBUI: Fix slow filtering in WebUI. (naikel)
+  * WEBUI: Make cookie parsing robust (Chocobo1)
+  * WEBUI: New API for getting torrent piece info (Chocobo1)
+  * WEBUI: Implement Cross-Site Request Forgery defense. Due to this 
+    the HTTP referer header is now expected in (almost) all HTTP 
+    requests. qBittorrent will drop the request sent without the 
+    referer header. That's why we bump the API_VERSION_MIN too. 
+    (reported by OpenGG, fixed by Chocobo1)
+  * SEARCH: Update demonoid, legittorrents plugins (ngosang)
+  * SEARCH: Remove mininova, ExtraTorrent plugins (ngosang, 
+    KingLucius)
+  * SEARCH: Add btdb plugin (ngosang)
+  * LINUX: Rename .desktop and appdata files to match executable 
+    name. Fixes #6625. (evsh)
+
+-------------------------------------------------------------------
+Fri Apr  7 08:40:50 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.12
+  * FEATURE: Indicate bitness in stackstrace and about dialog. 
+    Closes #6172. (sledgehammer999)
+  * BUGFIX: Fix incomplete type compile error with Qt4 (Chocobo1)
+  * BUGFIX: Fix compile error: ‘escape’ is not a member of ‘Qt’ 
+    (Chocobo1)
+  * BUGFIX: Use system locale to format dates/time/etc 
+    (sledgehammer999)
+  * BUGFIX: Follow http user-agent format (Chocobo1)
+  * BUGFIX: Fix cancel "Set location" causes files move to 
+    installation dir. (Chocobo1)
+  * WEBUI: Improve performance of updating 'progress' column 
+    (buinsky)
+  * WEBUI: Implement statistics window in web UI 
+    (FranciscoPombal)
+  * WEBUI: fixed "remaining" column in WebUI (FranciscoPombal)
+  * WEBUI: Set HttpOnly attribute to SID cookie (Chocobo1)
+  * WEBUI: Fire up the timer to clean inactive sessions 
+    (Chocobo1)
+  * WEBUI: Set cookie SID value to empty on logout (Chocobo1)
+  * LINUX: Add keywords to the .desktop file. (sledgehammer999)
+  * LINUX: Update stuff in appdata.xml and run 'appstream-utl 
+    upgrade' on it. (sledgehammer999)
+  * OTHER: Replace rand() by a true uniform distribution 
+    generator (Chocobo1)
+  * OTHER: Change our user-agent format as indicated earlier in 
+    the news section (Chocobo1)
+  * OTHER: cmake: fix OSX bundle creation (evsh)
+
+- Refreshed qbittorrent-libtorrent-1.1.1.patch but probably
+  useless at this point
+
+- Dropped qbittorrent-fix_qt4_build.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sat Mar  4 08:53:48 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.11
+  * FEATURE: Always show progress and remaining bytes for 
+    unselected files. (sledgehammer999)
+  * FEATURE: Allow to change priority for unselected files 
+    through the combobox like it is done via the context menu. 
+    (sledgehammer999)
+  * FEATURE: Remove settings to exchange trackers. It wasn't 
+    used by non-libtorrent clients. Also it has a privacy risk 
+    and you might be DDoSing someone. (sledgehammer999)
+  * FEATURE: Put temp files in .qBittorrent directory. Closes 
+    #4462. (Chocobo1)
+  * FEATURE: Use the numbers from tracker scrape response. 
+    Closes #5048, #6117. (Chocobo1)
+  * FEATURE: Implement category filter widget. Show categories 
+    in tree mode when subcategories are enabled. (glassez)
+  * FEATURE: Allow to toggle columns in searchtab (thalieht)
+  * FEATURE: PeerList: allow to hide zero values for the 
+    "uploaded" and "downloaded" columns (thalieht)
+  * FEATURE: Display more information in tracker tab (ngosang)
+  * FEATURE: Use Ctrl+F to search torrents. Closes #5797. (Tim 
+    Delaney)
+  * FEATURE: Transferlist: add hotkeys for double click and 
+    recheck selected torrents (thalieht)
+  * FEATURE: Add hotkey for execution log tab, Trackerlist, 
+    Peerlist etc (thalieht)
+  * FEATURE: Seperate seeds from peers for DHT, PeX and LSD 
+    (thalieht)
+  * BUGFIX: Do not remove added files unconditionally. Closes 
+    #6248 (Eugene Shalygin)
+  * BUGFIX: Ignore mouse wheel events in Advanced Settings. 
+    Closes #866. (Chocobo1)
+  * BUGFIX: Add queue repair code. It should fix missing 
+    torrents after restarting. (Eugene Shalygin, nxd4)
+  * BUGFIX: Fetch torrent status when generating final 
+    fastresume data. It should fix missing torrents after 
+    restarting. (Eugene Shalygin)
+  * BUGFIX: Fix queue overload for add torrent at session 
+    start. It should fix missing torrents after restarting. 
+    (falco)
+  * BUGFIX: After files relocate, don't remove the old folder 
+    even if it is empty. (Chocobo1)
+  * BUGFIX: Fix finding 'English' item in language dropdown 
+    menu when an unrecognized locale is requested. Closes #6109. 
+    (sledgehammer999)
+  * BUGIFX: Speedlimitdlg: raise slider default value to 
+    10000. Closes #6150. (Chocobo1)
+  * BUGFIX: TransferListWidget: keep columns width even if 
+    they are hidden on qBittorrent startup (unless something 
+    goes wrong) (thalieht)
+  * BUGFIX: fix index overflow for torrents with invalid meta 
+    data or empty progress (Falco)
+  * BUGFIX: Immediately update torrent_status after 
+    manipulating super seeding mode. Partially fixes #6072. 
+    (sledgehammer999)
+  * BUGFIX: Use case-insensitive comparsion for torrent 
+    content window. Closes #6327. (Chocobo1)
+  * BUGFIX: Fixed sort order for datetime columns with empty 
+    values (closes #2988) (Vladimir Sinenko)
+  * BUGFIX: Disable proxy in WebUI HTTP server. Closes #6349. 
+    (Eugene Shalygin)
+  * COSMETIC: Use a disabled progressbar's palette for 
+    unselected files. (sledgehammer999)
+  * COSMETIC: Support fallback when selecting theme icons 
+    (Eugene Shalygin)
+  * COSMETIC: Do not resize SVG icons (Eugene Shalygin)
+  * COSMETIC: Align text to the right in columns that handle 
+    numbers for PeerList and SearchTab (thalieht)
+  * COSMETIC: Increased number of digits after the decimal 
+    point for Gibibytes and above (thalieht)
+  * COSMETIC: Use non-breaking spaces between numbers and 
+    units (thalieht)
+  * WEBUI: Fix proxy type bug (Oke Atime)
+  * WEBUI: Use the correct value for 
+    KEY_TORRENT_NUM_COMPLETE/KEY_TORRENT_NUM_INCOMPLETE 
+    (Chocobo1)
+  * WEBUI: Make torrents table scrollable horizontally 
+    (buinsky)
+  * WEBUI: Make torrent peers table scrollable horizontally 
+    (buinsky)
+  * WEBUI: Add tooltips to dynamic table header (buinsky)
+  * WEBUI: Implement dynamic table columns resizing, 
+    reordering and hiding (buinsky)
+  * WEBUI: Add some missing columns to dynamic tables (buinsky)
+  * WEBUI: Make too tall menus scrollable (buinksy)
+  * WEBUI: Prevent text wrapping in menus (buinsky)
+  * WEBUI: Add a vertical separator between columns (buinsky)
+  * WEBUI: Implement resizable progress bar in "Done" column 
+    (buinsky)
+  * WEBUI: Fix scrollbar covers menu item with long text 
+    (buinsky)
+  * WEBUI: Remove 300px limit of column width (buinsky)
+  * WEBUI: Avoid lags in firefox on resizing progress column 
+    (buinsky)
+  * WEBUI: Fix category in torrent upload. Closes #6260 
+    (ngosang)
+  * WEBUI: Turn off port forwarding of WebUI by default for 
+    GUI users (Chocobo1)
+  * WEBUI: Exclude insecure ciphers. Fixes security issues 
+    reported by @beardog108 privately. (Chocobo1)
+  * WEBUI: Avoid clickjacking attacks. Fixes security issues 
+    reported by @beardog108 privately. (ngosang) (bsc#1028073)
+  * WEBUI: Add X-XSS-Protection, X-Content-Type-Options, CSP 
+    header. Fixes security issues reported by @beardog108 
+    privately. (Chocobo1) (bsc#1028072)
+  * WEBUI: Escape various values that might contain injected 
+    html. Fixes security issues reported by @beardog108 
+    privately. (Chocobo1)
+  * WEBUI: Bump API_VERSION to 12.
+  * SEARCH: Update extratorrent plugin. Closes #6261 (ngosang)
+  * SEARCH: SearchTab: can now save sorting column changes 
+    (thalieht)
+  * SEARCH: Use case-insensitive sort for Name column in 
+    Search tab. Closes #407. (Chocobo1)
+  * RSS: Fix tab order in RSS downloader. Closes #6164. (Tim 
+    Delaney)
+  * RSS: Move old RSS items to separate config file. Closes 
+    #6167. (Tim Delaney)
+  * RSS: Episode filter code refactoring (Tim Delaney)
+  * RSS: Allow resetting rule to no category. Closes #5539. 
+    (Tim Delaney)
+  * RSS: Save rule on enable/disable even if not selected. 
+    Closes #6163. (Tim Delaney)
+  * RSS: Allow | in RSS must contain. Closes #6171. (Tim 
+    Delaney)
+  * RSS: RSS use red text to indicate invalid filter. Closes 
+    #6165. (Tim Delaney)
+  * RSS: Allow episode zero (special) and leading zeroes in 
+    RSS episode filter. (Tim Delaney)
+  * RSS: RSS parse torrent episodes like 1x01 as well as 
+    S01E01. Closes #2749. (Tim Delaney)
+  * RSS: RSS allow infinite range to extend beyond current 
+    season. Closes #800, #3876, #6170. (Tim Delaney)
+  * RSS: Improve UI responsiveness during RSS downloading. 
+    Closes #873, #1089, #1235, #5423. (Tim Delaney)
+  * RSS: Show name of feed list and sort rules in editor. 
+    Closes #3782, #6281. (Tim Delaney)
+  * RSS: Fix regex matching. Closes #6337. (Tim Delaney)
+  * MACOS: Fix qbittorrent-nox build (Oke Atime)
+  * LINUX: fixes default indicator name (Bilal Elmoussaoui)
+  * OTHER: Workaround problem with moc from Qt4 and #if 
+    (Eugene Shalygin)
+  * OTHER: Print warning to the user if stacktrace contains no 
+    function names (Eugene Shalygin)
+  * OTHER: Various cmake fixes (Eugene Shalygin)
+    - OTHER: Fix finding qmake in configure when cross-compiling 
+    (Zach Bacon)
+
+- Added qbittorrent-fix_qt4_build.patch
+    
+-------------------------------------------------------------------
+Sun Feb  5 12:42:15 UTC 2017 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Thu Feb  2 11:59:30 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Dec 17 19:49:56 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.3.10
+  * BUGFIX: Fix share ratio limiting. Broken by commit 
+    259b5e51c49b744. Closes #6039 #6048. (sledgehammer999)
+  * BUGFIX: Case insensitive sort for client column. Closes 
+    #6054. (Oke Atime)
+  * BUGFIX: Make resume/pause menu items clickable. Closes 
+    #6040. (Oke Atime)
+  * WINDOWS: Make the updater to look for the x64 installer if 
+    running x64 version. (sledgehammer999)
+
+-------------------------------------------------------------------
+Wed Dec 14 18:44:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.3.9:
+  * BUGFIX: Fix slider for per torrent speed limits when no global
+    speed limit has been set (gh#qbittorrent/qBittorrent#6046).
+  * BUGFIX: Fix GUI for proxy settings
+    (gh#qbittorrent/qBittorrent#6045).
+- Add qbittorrent-libtorrent-1.1.1.patch: fix building with
+  libtorrent-rasterbar 1.1.1.
+
+-------------------------------------------------------------------
+Wed Dec 14 15:25:03 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.3.8:
+  * FEATURE: Start using new libtorrent 1.1.2+ APIs.
+    Still unofficial support.
+  * FEATURE: Add a new DHT bootstrap node run by the libtorrent
+    author arvidn.
+  * FEATURE: Option to disable tracker's favicon download.
+  * FEATURE: Shift + scroll = horizontal scroll.
+    Only for TransferListWidget, PeerListWidget
+    (gh#qbittorrent/qBittorrent#5980).
+  * BUGFIX: Actually set new path as default when checkBox is
+    enabled in Add New Torrent dialog.
+  * BUGFIX: Properly fix the handling of default save path
+    store/load.
+  * BUGFIX: Fix a crash when restoring from tray
+    (gh#qbittorrent/qBittorrent#5854).
+  * BUGFIX: Export torrents added only after the setting was enabled.
+  * BUGFIX: Delete old Atom/RSS favicon before assigning new one.
+  * BUGFIX: Don't revert save path value in the Dialogue when
+    metadata are received (gh#qbittorrent/qBittorrent#5482).
+  * BUGFIX: Don't ever stop seeding forced torrents
+    (gh#qbittorrent/qBittorrent##5784).
+  * BUGFIX: Fix a potential crash in TransferList widget
+    (gh#qbittorrent/qBittorrent#5873).
+  * BUGFIX: Sort torrent names case insensitively.
+  * BUGFIX: Fix ma istake in getting values for sorting in
+    TransferList widget. 
+  * BUGFIX: Fix memory leaks.
+  * WEBUI: Fix webui port overflow.
+  * WEBUI: Changed meaning of the value of 'dl_limit', 'up_limit',
+    'alt_dl_limit' and 'alt_up_limit' tokens. The value is
+    expressed in bytes and not in KiB.
+  * WEBUI: Don't request client SSL certificate
+    (gh#qbittorrent/qBittorrent#3883).
+  * WEBUI: Bump API_VERSION and API_VERSION_MIN to 11.
+  * SEARCH: Fixed extratorrent search not working
+    (gh#qbittorrent/qBittorrent#5736,
+    gh#qbittorrent/qBittorrent#5753).
+  * SEARCH: Update Demonoid plugin.
+  * SEARCH: Remove TorrentReactor plugin.
+  * SEARCH: Fix python auto install, deletion of installer and use
+    3.5.x series for Vista+ (gh#qbittorrent/qBittorrent#5871).
+  * COSMETIC: Log: set embedded Tracker [OFF] msg type as info.
+  * COSMETIC: Remove (mostly) useless log warnings about tracker's
+    favicon.
+  * COSMETIC: Change Atom/RSS view layout to horizontal
+    (gh#qbittorrent/qBittorrent#5920).
+  * LINUX: Workaround a Qt5 bug which results in a flood of network
+    interface change singals.
+  * OTHER: New translations: Icelandic, Latvian, Malay, Occitan,
+    Uzbek.
+  * OTHER: A whole lot of code refactoring.
+
+-------------------------------------------------------------------
+Mon Sep 12 06:43:08 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.3.7
+  * FEATURE: Delete torrent+files with Shift+Delete (pieniacy)
+  * BUGFIX: Fix 6-hour speedplot point push rate. Close #5545 
+    (Daniel Segesdi)
+  * BUGFIX: Avoid spawning a new explorer.exe process when 
+    selecting "Open containing folder". Closes #5564. (Chocobo1)
+  * BUGFIX: Fix loading of new geoip db due to an artificial 
+    size limit. (SagePtr)
+  * BUGFIX: Better error handling and logging with smtp 
+    communication. (Brian Kendall)
+  * SEARCH: Remove KickassTorrents search engine (ngosang)
+  * SEARCH: Remove BTDigg search engine (ngosang)
+  * SEARCH: Update Torrentz search engine (ngosang)
+
+-------------------------------------------------------------------
+Sat Jul 23 16:04:21 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.3.6:
+  * BUGFIX: Do not create save directory in advance.
+  * BUGFIX: Fix icons are missing when using RTL languages in
+    Options dialog.
+- Only recommend python3.
+
+-------------------------------------------------------------------
+Mon Jun 20 06:54:00 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.3.5
+  * FEATURE: Implement Torrent Management Mode(TMM) (glassez)
+  * FEATURE: New cookies management dialog and various related 
+    fixes (glassez)
+  * FEATURE: Use unique temp directories 
+    (temp_path/<truncated_torrent_hash>). Closes #5154. (glassez)
+  * FEATURE: Display notifications when a torrent is added. 
+    Closes #334 and #915. (sledgehammer999)
+  * FEATURE: Sort labels with natural sort algorithm in the 
+    right-click menu. Closes #3919. (Chocobo1)
+  * FEATURE: Add option to automatically remove .torrent files 
+    upon adding (Eugene Shalygin)
+  * FEATURE: Add option to bind directly to an IP instead of 
+    using a network Interface (Sjoerd van der Berg, 
+    sledgehammer999)
+  * FEATURE: Detailed tooltips on the progress and 
+    availability bars in the General button of each torrent. 
+    (Eugene Shalygin)
+  * FEATURE: Let user able to specifiy a filter when choosing 
+    an IP filter file (Chocobo1)
+  * FEATURE: Improve usability of "Run External Program". 
+    Users can write (platform dependent) shell scripts now. 
+    (Chocobo1)
+  * PERFORMANCE: Optimize drawing in speed graph (Anton 
+    Lashkov, Chocobo1)
+  * BUGFIX: Fix memory leak. (sledgehammer999)
+  * BUGFIX: Fix resizing bug in "add torrent dialog". Closes 
+    #5036. (Chocobo1)
+  * BUGFIX: Fix qBittorrent doesn't exit immediately when "all 
+    donwloads are done -> exit" option enabled. (glassez, Chocobo1)
+  * BUGFIX: Display the filepath when a torrent fails to load. 
+    Closes #100 and #805. (sledgehammer999)
+  * BUGFIX: Fix Add tracker dialog empty trackers (ngosang)
+  * BUGFIX: Fix Add tracker dialog URL download (ngosang)
+  * BUGFIX: Fix torrent adding with existing data (glassez)
+  * BUGFIX: Try to find incomplete files for new torrent 
+    (glassez)
+  * BUGFIX: Fix rechecking after torrent is finished (glassez)
+  * BUGFIX: Fix duplicate network interfaces. Closes #5131 
+    (ngosang)
+  * BUGFIX: Fix .!qB extension is added when disabled (glassez)
+  * BUGFIX: Fix "IP Filtering - Apply to trackers" wasn't 
+    being applied. Closes #5217. (Chocobo1)
+  * BUGFIX: Don't resize the Country column needlessly 
+    (thalieht)
+  * BUGFIX: Fix crashing when exiting the program while the 
+    Options window was showing. Closes #4871, #5049. (Chocobo1)
+  * BUGFIX: Fix parsing of eMule .DAT filters. Closes #5281. 
+    (thalieht, sledgehammer999)
+  * WEBUI: Implement in setting/removing/showing categories. 
+    (buinsky)
+  * WEBUI: Add 'Added on' column in Webui. Closes 
+    #5145,#1092,#738 (Ibrahim Tachijian)
+  * WEBUI: Add command to get the logs (pmzqla)
+  * WEBUI: Expose Add trackers feature (pmzqla)
+  * WEBUI: Bump API_VERSION and API_VERSION_MIN to 10. 
+    (sledgehammer999)
+  * SEARCH: Implement search filters in the proxy model. 
+    (Eugene Shalygin)
+  * SEARCH: Optimize widgets inside of the search tab (Eugene 
+    Shalygin)
+  * SEARCH: Remove duplicated code from search tab and widget 
+    (Eugene Shalygin)
+  * SEARCH: Use nova2dl.py script instead of DownloadManager. 
+    Closes #5026. (glassez)
+  * SEARCH: Various UI cleanups and optimizations. (Chocobo1, 
+    ngosang)
+  * SEARCH: Fix Torrentz, Mininova, LegitTorrents, PirateBay 
+    plugins (ngosang)
+  * SEARCH: Fix toolbar resizing when m_searchFilter 
+    appears/disappears. Closes #5120. (Chocobo1)
+  * SEARCH: Use QPalette::LinkVisited color for downloaded 
+    items in search results (Eugene Shalygin)
+  * SEARCH: Update Python version requirements (min 2.7.9 / 
+    3.3.0) (ngosang)
+  * SEARCH: Remove filters from Torrentreactor, BTDigg and 
+    Demonoid. It is done in the GUI now. (ngosang)
+  * RSS: default refresh interval to 30 mins (botmtl)
+  * COSMETIC: Improve TransferListDelegate::sizeHint (Chocobo1)
+  * COSMETIC: Fix long text clipping. Closes #5091. (Chocobo1)
+  * COSMETIC: Minor change in Stats dialog (ngosang)
+  * COSMETIC: Fix Update all button height in RSS tab (ngosang)
+  * COSMETIC: Disable `comboHideZero` when `checkHideZero` is 
+    unchecked. (Chocobo1)
+  * COSMETIC: Disable `checkLimituTPConnections` when 
+    `checkuTP` is unchecked. (Chocobo1)
+  * COSMETIC: Enable word wrap for "Run external program" help 
+    text (Chocobo1)
+  * COSMETIC: Fix mutually exclusive radio buttons can be 
+    unselected. (Chocobo1)
+  * COSMETIC: Set About tab font-size to default (zywo)
+  * COSMETIC: Improve wordings in "Auto download torrent" 
+    section (Chocobo1)
+  * COSMETIC: Change "Auto download torrent" default save path 
+    to "default location". (Chocobo1)
+  * COSMETIC: Change ambiguous text "Copy selected" to "Copy 
+    IP:port" (Chocobo1)
+  * COSMETIC: Improve error messages for "Auto download 
+    torrents" (Chocobo1)
+  * COSMETIC: Slim down 'Downloads' page of options window. 
+    (sledgehammer999)
+  * COSMETIC: Cleanup Connection page in Option dialog. Closes 
+    #845. (Chocobo1)
+  * COSMETIC: Fix reload button size is not the same size as 
+    "..." button in options dialog. (Chocobo1)
+  * WINDOWS: Let Windows handle all widgets scaling. (Chocobo1)
+  * WINDOWS: Improve stack trace for windows by including 
+    source filenames and line numbers (SeigneurSerpent)
+  * OSX: Fix qt5 bundle on OSX. Closes #4014. (sledgehammer999)
+  * OTHER: Make AddNewTorrentDialog behavior uniform (glassez)
+  * OTHER: Optimize the shutdown dialog (Chocobo1)
+  * OTHER: Enable access to shutdown functions when configured 
+    with `--disable-gui` option (Chocobo1)
+  * OTHER: Delete Import Torrent Dialog. Just use the "add new 
+    torrent" dialog. (glassez)
+  * OTHER: Optimize code for natural sorting (Chocobo1)
+  * OTHER: Use new alert dispathing API for libtorrent 1.1.x 
+    (glassez)
+  * OTHER: Fix gcc 6 compilation with qmake. See #5237.
+    (sledgehammer999)
+
+- Added new qbittorrent.keyring for 4096R/5B7CC9A2
+
+- Dropped qbittorrent-gcc6.patch that was merged upstream
+
+-------------------------------------------------------------------
+Fri Jun 17 17:03:09 UTC 2016 - sor.alexei@meowr.ru
+
+- Add qbittorrent-gcc6.patch from commit e2bf462: fix GCC 6 errors
+  with qmake (boo#985244).
+
+-------------------------------------------------------------------
+Wed Mar 30 21:12:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.3.4:
+   * FEATURE: Download more pieces in
+     "Download first and last pieces first" feature.
+   * FEATURE: Unlock first column in peerlist too.
+   * FEATURE: Add "Hide zero values" option.
+   * FEATURE: Add a "remaining" column to the torrent content model.
+   * FEATURE: Allow to toggle columns in peerlist.
+   * FEATURE: Add ability to filter log messages by type.
+   * FEATURE: Add ability to write the log to file.
+   * FEATURE: Add 'never show again' checkbox/pref to auto-exit
+     confirm dialog.
+   * PERFORMANCE: Perform fastresume data saving in separate thread.
+   * PERFORMANCE: Optimise session startup.
+   * BUGFIX: Save resume data using QSaveFile (Qt5 only). This
+     reduces chances of corrupt files.
+   * BUGFIX: Check torrent file permissions before opening.
+   * BUGFIX: Always update native session's announce_ip setting.
+   * BUGFIX: Fix loading *.magnet files from watched directories.
+   * BUGFIX: Fix upgrade corrupted fastresume file.
+   * BUGFIX: Fix total values for "Seeds" & "Peers".
+   * BUGFIX: Fix potential race condition.
+   * BUGFIX: Don't merge trackers for private torrents.
+   * BUGFIX: Fix double buttons in "Add New Torrent" dialog.
+   * BUGFIX: Fix malformed date header in email.
+   * BUGFIX: Save "Run external programme" input as is.
+   * BUGFIX: Enable "filename" column in peers list again.
+     Crash is fixed now.
+   * BUGFIX: Don't display warning when directory name stayed the
+     same after rename.
+   * BUGFIX: Fix selection of Portuguese translation files.
+   * BUGFIX: Fix selection of Esperanto locale.
+   * BUGFIX: Fix "caja" file manager opens the file instead of
+     opens the directory.
+   * BUGFIX: Potentially fix a random crash coming from the sidepanel.
+   * WEBUI: Fix max_ratio precision.
+   * WEBUI: Fix JavaScript exception on WebUI load.
+   * WEBUI: Fix translation.
+   * WEBUI: Submit the label in the new label dialog on pressing
+     enter key.
+   * WEBUI: Check WebUI username and password length.
+   * WEBUI: Minor changes in CSS styles.
+   * WEBUI: Add "Added on" and "Completion on" fields to
+     query/torrents query response.
+   * WEBUI: Do not try to parse request message when content-length
+     is 0.
+   * WEBUI: Support SSL certificate bundles.
+   * WEBUI: Change the order of the values of speed labels.
+   * WEBUI: Bump WebUI API_VERSION.
+   * SEARCH: Update PirateBay plugin.
+   * SEARCH: Added TorLock search engine.
+   * COSMETIC: Fix splash screen staying on top of all windows.
+   * COSMETIC: Rearrange advanced settings.
+   * COSMETIC: Cleanup "about" dialog.
+   * COSMETIC: Cleanup "Add New Torrent" dialog.
+   * COSMETIC: Use short date in addnewtorrentdialog.
+   * COSMETIC: Change "Free disk space" to "Free space on disk".
+   * COSMETIC: Let OS handle DPI scaling for now. Should let Qt do
+     the work when it's more mature.
+   * COSMETIC: Put comment_lbl in QScrollArea.
+   * COSMETIC: Change the order of the values of speed labels.
+   * COSMETIC: Cleanup the Log tab.
+   * COSMETIC: Cleanup the Atom/RSS tab.
+   * OTHER: Set "Show splash screen on start up" option default to
+     off.
+   * OTHER: Support for cross-compilation with MXE.
+   * OTHER: Add basic (and unofficial) cmake support.
+   * OTHER: Move some URLs overs to https.
+   * OTHER: Add appveyor suppor.
+   * OTHER: Many other internal code restructuring, cleaning and
+     fixing.
+- Check tarball signing.
+
+-------------------------------------------------------------------
+Mon Jan 25 10:12:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.3.3:
+  * BUGFIX: Temporarily disable "filename" column of peers view.
+    It has a bug that causes frequent crashes.
+  * WEBUI: Move style of dynamic table header to CSS.
+  * WEBUI: Fix unnecessary updates of torrent peers table.
+
+-------------------------------------------------------------------
+Tue Jan 19 17:45:21 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.3.2:
+  * FEATURE: Add a new column to peers list that shows list of
+    files which are downloaded right now from a peer.
+  * FEATURE: Improve the "Watch directories" UI.
+    You'll need to redo your watch directories settings.
+  * FEATURE: Support loading multiple magnets/hashes/urls per
+    .magnet file in the watched directory (one per line).
+  * BUGFIX: Fix resolution of peer host names.
+  * BUGFIX: Don't recheck twice after 'Force Recheck' with
+    'Recheck torrents on completion' enabled.
+  * BUGFIX: Don't apply some settings again if they weren't changed.
+  * BUGFIX: Update ISO 3166 country codes.
+  * BUGFIX: Fix moving torrents to Temp after application restart.
+  * BUGFIX: Fix crash in favicon code due to null pointer
+    dereference.
+  * BUGFIX: Move the 'qBittorrent-resume' file even when no magnets
+    were recovered. Also make sure to rename it with a unique name.
+  * BUGFIX: Don't add the watch directory before the user closes
+    the Preferences window.
+  * BUGFIX: Remove watch directories permanently only if the user
+    accepts the Preferences dialog.
+  * BUGFIX: Better handling of cookies in the download manager.
+  * BUGFIX: Use the download manager for Atom/RSS, the application
+    updater and the DNS updater.
+  * BUGFIX: Fix reconfigure additional trackers.
+  * BUGFIX: Fix loading corrupted .fastresume file.
+  * WEBUI: Show filtered torrents number.
+  * WEBUI: Fix paused, active and inactive filters.
+  * WEBUI: Fixed bug when uploading several files and only the last
+    one was considered.
+  * WEBUI: Implemented WebUI interface for the new
+    Watched Directories feature.
+  * WEBUI: Fix possible showing "qBittorrent client is not reachable"
+    message on deleting torrents.
+  * WEBUI: Don't show "Limit download speed" menu item for
+    downloaded torrents.
+  * WEBUI: Update webui run application parameters.
+  * WEBUI: Allow to remove the label assigned to a torrent.
+  * WEBUI: Repair translation.
+  * WEBUI: Remember last opened tab.
+  * WEBUI: Bump WebUI API_VERSION and API_VERSION_MIN.
+  * COSMETIC: Update native names for Chinese locales.
+  * COSMETIC: Rename column header in Content view.
+  * COSMETIC: Edit speed limits and upload ratio icons.
+  * SEARCH: Code refactoring.
+  * SEARCH: Fix PirateBay plugin implementation for Python 3.
+  * SEARCH: Update PirateBay URL.
+  * ATOM/RSS: Code refactoring.
+  * OTHER: Fix lrelease version due to the default Qt5 build.
+  * OTHER: Indicate to the user that he's going to download the
+    new version.
+  * OTHER: Don't require GUI libs for qt4 nox build.
+  * OTHER: Fix cross-compilation.
+  * OTHER: Allow GeoIP in nox builds.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.3.1:
+  * FEATURE: New "Set as default label" option in "Add torrent" dialog.
+  * FEATURE: Support wildcards for filtering torrent list and torrent content.
+  * BUGFIX: Fix -1 is displayed instead of the infinity symbol.
+  * BUGFIX: Fix scan dirs settings saving.
+  * BUGFIX: Exported torrents now use name instead of hash.
+  * BUGFIX: Improve upgrade to v3.3.0. Now undownloaded magnets will be migrated too.
+  * BUGFIX: Fix wrong encoding for listen failed error message.
+  * BUGFIX: Fix Atom/RSS not automarking articles as read.
+  * BUGFIX: Fix possible deadlock during application exit.
+  * WEBUI: Cookies support on WebUI when downloading torrent from an URL.
+  * WEBUI: Modify download and upload windows to allow autocompletion of browsers.
+  * WEBUI: Fixed the spinner in the WebUI upload page.
+  * WEBUI: Modify height of the WebUI download page.
+  * WEBUI: Fix all the JavaScript functions for download and upload pages.
+  * WEBUI: Add seeds tab to WebUI.
+  * WEBUI: Bump WebUI API_VERSION.
+  * COSMETIC: Cleanup "Trackers", "Peers", "HTTP Sources", "Speed" and "Content" page layout.
+  * COSMETIC: Reduce mainwindow border width.
+  * COSMETIC: Use QLineEdit built-in ClearButton (Qt5 only).
+  * COSMETIC: Change text description for half-open connection.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.3.0:
+  * FEATURE: Huge core code refactoring. Problems with labels, temp
+    directories etc should be eliminated. Smoother UI should be
+    observed too.
+  * FEATURE: Speed graph.
+  * FEATURE: Add multiple peers in Peers addition dialog.
+  * FEATURE: Allow to copy all peers with a keyboard shortcut.
+  * FEATURE: Use GeoIP2 database, allows for country resolution of
+    IPv6 peers. It is no longer embedded in the program but
+    downloaded and updated monthly.
+  * FEATURE: Add more "Run External Program" parameters.
+  * FEATURE: Add an option to allow the use of proxies only for
+    torrents.
+  * FEATURE: Detect network interface state changes. It should
+    detect VPN connection resets.
+  * FEATURE: Switch to using C++11.
+  * FEATURE: Automatically add trackers to new downloads.
+  * FEATURE: You can now choose the path to download for watched
+    folders.
+  * BUGFIX: Fix progress calculation in Content tab.
+  * BUGFIX: Fix label filter.
+  * BUGFIX: Fix "Run External Program Launches too Early" issue.
+  * BUGFIX: Don't remove torrent contents parent folder, even it is
+    empty. 
+  * BUGFIX: Always apply filter for manually banned IPs.
+  * BUGFIX: Fix reporting of tracker status.
+  * BUGFIX: Don't connect to "any interface" when the configured
+    network interface is missing.
+  * BUGFIX: Fix reordering of first column with Qt5.
+  * COSMETIC: Add back "qBittorrent" in program updater title.
+  * COSMETIC: Use infinity symbol rather than -1 for nb_connections.
+  * COSMETIC: Move uTP options to it's own section.
+  * COSMETIC: Fix availability bar & progress bar height being too
+    small on high DPI displays.
+  * COSMETIC: Fix availability label & progress label clipped on
+    high DPI displays.
+  * COSMETIC: Add tooltips/legend for availability bar & progress
+    bar.
+  * COSMETIC: Use theme colour for background in PropertiesWidget.
+  * COSMETIC: Replace horizontal line with border in bottom panel.
+  * COSMETIC: Various visual changes in the side panel.
+  * COSMETIC: Use thin border for transfer list.
+  * COSMETIC: Make URL in "Add Torrent File..." clickable.
+  * COSMETIC: New view for errored torrents.
+  * WEBUI: Add information in General tab.
+  * WEBUI: Reorder "Super seeding mode" option in right click menu.
+  * WEBUI: Clean up JavaScript code.
+  * WEBUI: Added labels support.
+  * WEBUI: Fix accessing the WebUI through IPv6.
+  * WEBUI: Bump WebUI API_VERSION to 6.
+  * WEBUI: Change selected colour to differentiate from the
+    progressbar.
+  * SEARCH: Add "Copy description page URL" button in search tab.
+  * SEARCH: Add https_proxy env variable. This forces Python to use
+    the HTTP proxy for HTTPS connections.
+  * SEARCH: Detect new plugin URL from clipboard.
+  * SEARCH: Update Torrentz trackers.
+  * WINDOWS: Fix german translation of the installer.
+  * NOX: Don't ask the user questions in nox build when in
+    non-interactive mode.
+  * OTHER: Fixed typos, spelling correction.
+  * OTHER: Fix need for restart to enable/disable peer countries
+    resolution.
+  * OTHER: Unload the GeoIP db when disabled.
+  * OTHER: Reduce max value of "Disk cache size" to 1536MB for
+    32bit. Closes to #4028.
+  * OTHER: Make "Download in sequential order" and
+    "Download first and last piece first" options independent.
+
+-------------------------------------------------------------------
+Sat Oct 31 17:12:31 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.5:
+  + BUGFIX: Fix difficult to reproduce crash.
+
+-------------------------------------------------------------------
+Sat Oct 10 13:26:03 UTC 2015 - aloisio@gmx.com
+
+- Update to version 3.2.4
+  * FEATURE: Select the file of single file torrents when opening
+    destination folder (pmzqla)
+  * BUGFIX: Fix crash with invalid favicon. Closes #3632. (glassez)
+  * BUGFIX: Try to download favicon.png when the download of
+    favicon.ico fails (pmzqla)
+  * BUGFIX: Try to avoid loading a corrupted configuration file.
+    Also log errors encountered while saving/loading the configuration.
+    Closes #3503. (sledgehammer999)
+  * BUGFIX: Allow adding torrent link from Torcache (jsayol)
+  * BUGFIX: Don't limit the number of torrents that can be announced to
+    the tracker/dht/lsd. Closes #3473. (sledgehammer999)
+  * BUGFIX: Fix potential crash when memory allocation failed.
+    Closes #3877. (Chocobo1)
+  * COSMETIC: Change Queue buttons order in the Toolbar (GUI & Web
+    UI) (ngosang)
+  * COSMETIC: Move option "Ignore transfer limits on local network"
+    to Speed page (Chocobo1)
+  * COSMETIC: Move option "Confirm torrent deletion" to Behavior
+    page (Chocobo1)
+  * COSMETIC: Fix typos. Make `μTP` untranslatable. Use American
+    variation of words. Closes #3654. (sledgehammer999)
+  * COSMETIC: Optimize text color for dark themes. Closes #3633
+    and #3815. (sledgehammer999)
+  * COSMETIC: Show current label in the torrent context menu.
+    Closes #3776. (sledgehammer999)
+  * WEBUI: Add save_path to /query/torrents (Casey Bodley)
+  * WEBUI: Bump API_VERSION to 5
+  * SEARCH: Fix python detection when the 'Anaconda' software is
+    installed. Closes #3731. (sledgehammer999)
+  * RSS: Handle magnet links as torrents instead of news URLs.
+    Closes #3560 (ngosang)
+  * RSS: Trim elements text in RSS articles (ngosang)
+  * RSS: Fix contextual menu in RSS torrents list (ngosang)
+  * RSS: Improve error handling when a RSS feed doesn't contain
+    torrents (ngosang)
+  * RSS: More precise message and code simplification in RSS feeds
+    deletion (ngosang)
+  * RSS: Don't hide the elements in Unread list when clicked (ngosang)
+  * RSS: Allow multiple selection in RSS torrents list (ngosang)
+  * RSS: Simplify string translation (ngosang)
+  * RSS: Handle more types of RSS feeds (ngosang)
+  * RSS: Fix RSS panel position not saved (ngosang)
+  * RSS: Fix forgetting label changes to first item in RSS rule
+    list. (Gelmir)
+  * RSS: Add label to UI when a new one is creating during rule
+    addition. (Gelmir)
+  * RSS: Removes refresh message when adding a new feed (ngosang)
+  * RSS: Fix RSS crash when deleting RSS feeds. Closes #997, #2152
+  , #2461, #3718,
+    #3747, #3766, #3806, #3814, #3829 and #3846. (ngosang)
+  * RSS: Sort labels in RSS Downloader dialog, closes #3140. (Chocobo1)
+  * WINDOWS: Correctly show german letters in the installer. Closes #3574,
+    #3566. (sledgehammer999)
+  * WINDOWS: Fix file selection on Explorer when the filename contains
+    weird characters. Closes #3185. (sledgehammer999)
+  * WINDOWS: Fix wrong default download directory in Windows.
+    Closes #2625. (Chocobo1)
+  * WINDOWS: Fix German translation of the installer. (netswap)
+  * LINUX: Fix broken .desktop file icon for some locales.
+    See #3905. (sledgehammer999)
+  * OTHER: Fix ppc64le detection during configure (sledgehammer999)
+  * OTHER: Don't use sed in configure. Closes #3169. (pmzqla)
+  * OTHER: Fix broken donation link. Closes #3771. (sledgehammer999)
+  * OTHER: Add forum link in README. Closes #3853. (sledgehammer999)
+  * OTHER: New translation: Esperanto
+  * OTHER: Fix Qt5 nox build on non-Windows. (sledgehammer999)
+
+-------------------------------------------------------------------
+Mon Aug 10 04:52:27 UTC 2015 - normand@linux.vnet.ibm.com
+
+- add ppc64le support with new patch
+  bittorrent_missing_ppc64le_in_ax_boost_base.m4.patch
+
+-------------------------------------------------------------------
+Sun Aug  2 17:25:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.3:
+  * BUGFIX: Fix crash when closing a search tab while search is
+    running.
+  * SEARCH: Other minor search fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Aug  2 09:32:36 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.2:
+  + FEATURE: Allow to force reannounce DHT too.
+  + FEATURE: Implement an option to disable confirmation of torrent
+    recheck.
+  + FEATURE: Allow to copy all the trackers with a keyboard shortcut.
+  + BUGFIX: Fix torrent renaming.
+  + BUGFIX: Fix localhost address (::ffff:127.0.0.1) is not
+    recognized when connecting to WebUI.
+  + BUGFIX: Fix '&' character in label name becomes accelerator
+    key.
+  + BUGFIX: Fix HTTP header parsing when torrent filename contains
+    a semicolon.
+  + BUGFIX: Fix installing search plugin from local file.
+  + BUGFIX: Fix installing search plugin by drag-n-dropping file.
+  + COSMETIC: Update color scheme of completed.png icon.
+  + COSMETIC: Fix printing of the copyright symbol in the About
+    dialog.
+  + COSMETIC: Minor changes in Preview File dialog.
+  + COSMETIC: Add Force Resume icon.
+  + COSMETIC: Add count of unread items to Atom/RSS tab label.
+  + WEBUI: Ports between 1 and 65535 as in the GUI.
+  + WEBUI: Fix an error in Content tab when the torrent does not
+    have metadata.
+  + WEBUI: New option Web UI port UPNP.
+  + WEBUI: Fix API Content Types.
+  + WEBUI: Fix empty trackers addition.
+  + WEBUI: Torrent download from hash.
+  + WEBUI: Fix sort by queue number.
+  + WEBUI: Open external links in a new window/tab.
+  + WEBUI: Massive increase in performance.
+  + SEARCH: Search status per tab.
+  + SEARCH: Remove the word 'torrent' in ExtraTorrent results.
+  + SEARCH: Prefer python3 over python2 on GNU/Linux and OS X.
+  + SEARCH: Show notification if Python is not found and a search
+    is started.
+  + SEARCH: Improve checks for python. Print python version and
+    path to log.
+  + SEARCH: Improve Python detection.
+  + OTHER: Improvements on the build system.
+  + OTHER: Bump minimum libtorrent version required to
+    1.0.6/0.16.19.
+  + OTHER: New translation: Slovenian.
+- Require libtorrent-rasterbar 1.0.6 for all releases of openSUSE.
+- Build with Qt5 for openSUSE Leap 42.x and 13.2 as well.
+
+-------------------------------------------------------------------
+Mon Jul 13 15:27:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.1:
+  + FEATURE: Change default preferences.
+  + FEATURE: Add "Add link to torrent" menu in TrayIconMenu
+  + FEATURE: Allow to Open files from the properties pane by
+    pressing "Enter".
+  + FEATURE: Add checkbox option for IpFilterTrackers.
+  + FEATURE: Download-from-URL textbox change focus on tab key.
+  + FEATURE: Increase priority value of "High".
+  + FEATURE: Add 16 KiB, 8 MiB and 16 MiB piece sizes in
+    Torrent Creator.
+  + BUGFIX: Disable Auto piece size when creating a new torrent.
+  + BUGFIX: Set default focus to cancel button in delete confirm
+    dialog.
+  + BUGFIX: Set default focus to ok button in add new torrent dlg.
+  + BUGFIX: Set default focus to no button in exit confirm box.
+  + BUGFIX: Fix Start Minimized checkbox in Options.
+  + BUGFIX: Remove limits on alternative speeds setting.
+  + BUGFIX: Fix sorting torrents by ETA.
+  + BUGFIX: Improve ratio calculation formula.
+  + BUGFIX: Clear missing files flag when resuming or force
+    rechecking.
+  + BUGFIX: Delete tempfile when downloading favicon.ico.
+  + BUGFIX: Don't close downloadFromURL dialog when showing empty
+    url warning.
+  + BUGFIX: Minimize to tray only if the relevant option is enabled.
+  + BUGFIX: Update disk space label after changing partition.
+  + BUGFIX: Don't use a default upload limit.
+  + BUGFIX: Fix Properties bar size when started minimized to tray.
+  + BUGFIX: Fix issue when the theme doesn't have a corresponding
+    icon.
+  + COSMETIC: Change option text "Confirmation on exit when
+    torrents are active".
+  + COSMETIC: Enable to choose dark/light tray icons on all
+    platforms.
+  + COSMETIC: Use AllUppercase for label text.
+  + COSMETIC: Changes in typography.
+  + COSMETIC: Menu revamp.
+  + COSMETIC: Revamp general tab info.
+  + COSMETIC: Better update message for users.
+  + COSMETIC: Fix ugly 'C++' wrapping in About dialog.
+  + WEBUI: Fix login and logout relative URLs.
+  + WEBUI: Fix resumeAll and pauseAll.
+  + WEBUI: Changes in title bar.
+  + WEBUI: Complete translatable strings.
+  + WEBUI: Minor changes in style.
+  + WEBUI: Fix Max connections and Time active in transfer
+    information.
+  + WEBUI: New config - Global maximum number of upload slots.
+  + WEBUI: Display wasted data with friendly units.
+  + WEBUI: add delay in shutdown command in order to send out
+    response message.
+  + WEBUI: Option to hide Top Toolbar.
+  + WEBUI: Reorder the tabs/groups in Options window.
+  + WEBUI: Add new options.
+  + WEBUI: Increase API_VERSION.
+  + WEBUI: Add Web Seeds (HTTP Sources) tab.
+  + WEBUI: Don't update the tabs if tab's panel is collapsed.
+  + WEBUI: Fix alternative global rate limits.
+  + SEARCH: Fix thepiratebay.
+  + SEARCH: Improve torrentz engine to return more results.
+  + SEARCH: Change width of columns in search tab.
+  + SEARCH: Make strings translatable in seach engine.
+  + SEARCH: Aborting search engine process during closure.
+  + SEARCH: Perform searches in parallel.
+  + SEARCH: Add Demonoid search engine.
+  + SEARCH: Minor fixes in search engines.
+  + SEARCH: Show the version of search engines.
+  + SEARCH: Update Legit Torrent to remove sgmllib.
+  + SEARCH: Update KickassTorrents, BTDigg, Torrentz, ExtraTorrent,
+    TorrentReactor.
+  + SEARCH: Fix Python 2 implementation of Torrentz.
+  + SEARCH: Cosmetic changes in search engine.
+  + SEARCH: Fix column sort in search engine.
+  + ATOM/RSS: Update matching Atom/RSS articles while editing rules.
+  + OTHER: Add translator to credits.
+  + OTHER: New translation: Indonesian.
+  + OTHER: Split Chinese locales into Chinese Simplified,
+    Chinese Traditional (Taiwan), Chinese Traditional (Hong Kong).
+
+-------------------------------------------------------------------
+Sun May 10 10:12:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.0:
+  + FEATURE: Show actual protocol for listen success/failure in the
+    log (needs libtorrent v1.0).
+  + FEATURE: Support per tracker re-announce (needs libtorrent v1.0),
+  + FEATURE: Support saving in network locations.
+  + FEATURE: Support Qt5.
+  + FEATURE: Code optimizations resulting in a more CPU efficient
+    and snappier qBittorrent.
+  + FEATURE: WEBUI code rewritten, refactored and improved.
+  + FEATURE: Add option to hibernate computer in Auto-Shutdown menu.
+  + FEATURE: Cache preferences in memory. Minimize chance of
+    settings corruption.
+  + FEATURE: Option to disable connections not supported by proxies.
+  + FEATURE: Add a save resume data interval option (useful for SSD).
+  + FEATURE: Add "Last Seen Complete" column.
+  + FEATURE: Add "Last Activity" column.
+  + FEATURE: Add "Total Size" column.
+  + FEATURE: Show current speed limits in the status bar.
+  + FEATURE: Episode filtering for RSS.
+  + FEATURE: Highlight files when opening containing directory on
+    Nautilus, Dolphin, Konqueror).
+  + FEATURE: Setting to ignore RSS rule matches for X days.
+  + FEATURE: Add hotkeys and buttons for Top and Bottom priorities.
+  + FEATURE: Implement peer relevance column.
+  + FEATURE: Show reason why a peer was blocked (needs libtorrent
+    1.0.x).
+  + FEATURE: Use the 'fastest_upload' setting as seed choking
+    algorithm.
+  + FEATURE: Allow to set text options for the toolbar icons.
+  + FEATURE: Add 'Resumed' torrent filter.
+  + FEATURE: 'Add New Torrent` dialog has a button for quickly
+    choosing a location.
+  + FEATURE: Copy selected peers as IP:Port format.
+  + FEATURE: Show info hash in the torrent details in
+    'Add New Torrent' dialog.
+  + FEATURE: New feature: Remove empty labels.
+  + FEATURE: Add "Copy name" option in right-click menu of torrent
+    list.
+  + FEATURE: Implement tracker list in the side panel.
+  + FEATURE: Implement a 'Completed' status.
+  + FEATURE: Columns for session-based download and upload
+    statistics.
+  + FEATURE: Distribute systemd service file for the nox build.
+  + FEATURE: Create qBittorrent.appdata.xml.
+  + BUGFIX: Use completed time from libtorrent directly.
+  + BUGFIX: Speedup and fix a bug in torrent moving.
+  + BUGFIX: Scan Folder dialog now remembers last location.
+  + BUGFIX: Show input box to filter torrent list only when the
+    list is shown.
+  + BUGFIX: Add placeholder text to the input to filter the torrent
+    list.
+  + BUGFIX: Put directories first when sorting torrent content by
+    name.
+  + BUGFIX: Fix missing icon for open action in file list.
+  + BUGFIX: Set placeholder text to torrent content filter.
+  + BUGFIX: Fix torrent creation when data is too large.
+  + BUGFIX: Load torrents that have big metadata file.
+  + BUGFIX: Use correct separator for "OR" condition in Atom/RSS
+    rules.
+  + BUGFIX: Don't waste UI space in 'Content' window.
+  + BUGFIX: Fix the language selection in the combobox when the
+    system locale only has a lang equivalent and not a lang_COUNTRY
+    one.
+  + BUGFIX: Don't overwrite the 'Add Paused' setting from the
+    'Add New Torrent' Dialog.
+  + BUGFIX: Fix file preview when .!qB extension is used.
+  + BUGFIX: Ensure that the priority column has enough width when
+    queueing is enabled.
+  + BUGFIX: Don't put limits to the alternative speed limits.
+  + BUGFIX: Make space key change all selected files' checkboxes.
+  + BUGFIX: Don't block peers that use privileged ports.
+  + BUGFIX: Accept multiple files at once.
+  + BUGFIX: Don't touch torrents whose files are missing.
+  + BUGFIX: Save the new save path first in the history.
+  + BUGFIX: Fix default tracker in 'Create Torrent' dialog.
+  + BUGFIX: Let the OS decide the default interface regardless of
+    IPv4/IPv6. Closes #2156.
+  + BUGFIX: Delete the correct selected torrents when the list is
+    filtered.
+  + BUGFIX: Fix crash when trying to open destination folder on a
+    torrent with no metadata.
+  + BUGFIX: Change torrent name when metadata is retrieved.
+  + COSMETIC: Removes white bar in the labels list.
+  + COSMETIC: Fix speed printing in the tray icon and in the
+    title bar.
+  + COSMETIC: Change the colour scheme used.
+  + ATOM/RSS: Display remote images in the preview.
+  + ATOM/RSS: Format html descriptions in the preview.
+  + ATOM/RSS: Support overriding global "Add paused" option on per
+    rule basis.
+  + SEARCH: Update kickasstorrents, mininova, thepiratebay, and
+    legittorrents plugins.
+  + SEARCH: Remove vertor engine.
+  + SEARCH: Add combo box for fast search engine switch.
+  + SEARCH: Add Torrentz search engine.
+  + OTHER: Drop libtorrent-rasterbar 0.15.x support
+  + OTHER: Drop Qt < 4.8.0 support
+  + OTHER: Migrate build system to autotools.
+  + OTHER: Remove deprecated feature of separate DHT port.
+  + OTHER: Speedup compilation speed.
+  + OTHER: New translation: Hindi (India).
+- Build with Qt5 for openSUSE after 13.2.
+- Add systemd service for noX version.
+- Remove qbittorrent-libtorrent-1.0.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri May  1 19:31:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Extend qbittorrent-libtorrent-1.0.patch to deprecations removal
+  (fixes segmentation fault while torrent adding).
+
+-------------------------------------------------------------------
+Sun Apr 26 10:06:30 UTC 2015 - sor.alexei@meowr.ru
+
+- Add qbittorrent-libtorrent-1.0.patch for libtorrent-rasterbar
+  1.0 support.
+
+-------------------------------------------------------------------
+Mon Feb 23 21:20:55 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.1.12:
+  + BUGFIX: Don't use internal libtorrent-rasterbar API.
+  + BUGFIX: Fix compilation with libtorrent-rasterbar 0.15.x.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Oct 25 21:40:04 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.1.11:
+  + FEATURE: Allow relative torrent paths when qBittorrent is already running.
+  + FEATURE: Make Windows icons suitable for high dpi screens.
+  + FEATURE: Increase maximum size of system icons.
+  + BUGFIX: Fix crash in the "Content" widget when user would right click in it without a torrent selected.
+  + BUGFIX: Don't show multiple unlock UI dialogs. Closes #2040.
+  + SEARCH: Fix bug where python would falsely be detected and nothing worked.
+  + SEARCH: Fix TorrentReactor search plugin.
+  + SEARCH: Pirate bay search engine update.
+  + SEARCH: Internal improvements in the python code.
+  + WEBUI: Set correct HTTP Content-Type in case of forbidden access.
+  + COSMETIC: Remove unneeded tooltip.
+  + COSMETIC: Don't stretch the last section in the transfer list.
+  + COSMETIC: Set minimum width of the left panel in the preferences.
+  + OTHER: Optimize sorting of rows. This should have less CPU impact when many torrents are present.
+  + OTHER: Use the correct character encoding for exceptions coming from libtorrent.
+  + OTHER: Use boost:bind() as the docs show. Allows compilation with older gcc versions.
+
+-------------------------------------------------------------------
+Fri Sep 26 12:28:37 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.1.10:
+  + FEATURE: Allow disabling of OS cache. Closes #1699.
+  + FEATURE: Add 'Completed' column. Closes #1241.
+  + FEATURE: Added 'Ratio Limit' column. Closes #936.
+  + FEATURE: Add 'Open' and 'Open Containing Folder' entries in the content's right-click menu. Closes #1143.
+  + FEATURE: Don't listen on IPv6 address by default. Prevents network connectivity problems. Closes #1880.
+  + FEATURE: Added 'Shutdown now' button in shutdown confirmation dialog. Closes #969.
+  + FEATURE: Add peer port column to PeerListWidget. Closes #1650.
+  + COSMETIC: Fix weird ratio values when torrent was imported or downloaded history was lost due to crash.
+  + COSMETIC: Use 'μTP' instead of 'uTP'.
+  + COSMETIC: Show the loaded torrents in the transferlist when qBT is launched with a torrent/magnet and the AddNewTorrentDialog is showing. Closes #1564.
+  + COSMETIC: Don't mix finished/unifinished torrents when sorting by ETA. Closes #1688.
+  + COSMETIC: Sort finished torrents by completed date when sorting by queue number.
+  + COSMETIC: Right align numerical values in the transfer list. Partially revert 51a9a9aab. Closes #1903.
+  + COSMETIC: Don't display the Search Engine tab by default.
+  + WEBUI: Correctly save/load settings and other improvements
+  + WEBUI: Removed broken 'Report a bug' iframe. Closes #1343
+  + WEBUI: Removed broken 'Documentation'. Improves fix for #1343
+  + WEBUI: Removed essentially useless 'Visit website' iframe and changed it to a regular link. Improves fix for #1343
+  + BUGFIX: Fix RSS feed icon. The tmp file gets deleted in the feed destructor. Closes #1639
+  + BUGFIX: fix issue #1674: AddNewTorrentDialog is shown again and again even if checkbox "dont ask me again" is set
+  + BUGFIX: Don't show availability bar for magnet links
+  + BUGFIX: Fix crash when the selected torrent disappears from the transfer list. Closes #1661
+  + BUGFIX: Fix tracker announcing problem(hit-and-run) when many torrents are being active. Closes #1571
+  + BUGFIX: Count magnet links in the 'downloading' filter and make them prevent system inhibition. Closes #1558
+  + BUGFIX: Pick up updated plugins. Closes #1745.
+  + BUGFIX: Bring mainwindow in front when notification is clicked and other windows are in front.
+  + BUGFIX: Speedup torrent moving
+  + BUGFIX: Fix bug when moving a torrent before the previous move is completed
+  + BUGFIX: Add option to hibernate computer in Auto-Shutdown menu
+  + BUGFIX: Fix column resizing issues
+  + BUGFIX: Fix possible crashes. Closes #1814.
+  + BUGFIX: Limit max cache to 1800MiB for 32bits compiled binaries and to 4GiB for other. Closes #1698.
+  + BUGFIX: Don't localize double numbers in the webui. Closes #1525.
+  + BUGFIX: Don't shrink transferlist rows when scrolling horizontally. Closes #1613.
+  + BUGFIX: When qBT is launched with a magnet don't show it in the transferlist while the metadata are being loaded in the background.
+  + BUGFIX: Show disk space while retrieving metadata. Closes #1693.
+  + BUGFIX: Don't disable DHT/LSD/UPnP in the GUI when anonymous mode is enabled.
+  + BUGFIX: Possible fix for crash in RSS code. Closes #1901.
+  + BUGFIX: Fixed SMTP emailing code
+  + BUGFIX: Don't display the context menu in 'Content' and 'HTTP Sources' buttons when no torrent is selected. It prevents crashes. Closes #1906, #1900.
+  + BUGFIX: Don't translate file extensions. Closes #1907.
+  + BUGFIX: Fix available disk space label on single file torrents.
+  + BUGFIX: Show stalled downloads that are uploading under the 'Active' filter. Closes #1654."
+  + BUGFIX: fix import torrent with "Keep incomplete torrents in:" enabled (lojack5)
+  + BUGFIX: Send a spoofed user agent for the search engines(fixes some of them)
+  + BUGFIX: Support URLs that redirect to magnet links
+  + BUGFIX: Consider queued items before deciding to 'auto-shutdown on downloads completion'. Closes #1942.
+
+-------------------------------------------------------------------
+Fri Mar 21 23:50:25 UTC 2014 - fisiu@opensuse.org
+
+- Update to 3.1.9:
+  + BUGFIX: Fix nox build. Closes #1368.
+  + BUGFIX: Fix build with libtorrent 0.15.x.
+  + BUGFIX: Fix missing percentage signs. Closes #1392.
+  + BUGFIX: Fix queue sorting order.
+  + BUGFIX: Fix build using qt < 4.7 Closes #1385.
+  + FEATURE: Add button for links in toolbar.
+
+-------------------------------------------------------------------
+Thu Feb 13 15:12:50 UTC 2014 - fisiu@opensuse.org
+
+- Update to 3.1.8 (changes from 3.1.5):
+  + BUGFIX: Really fix build of v3.1.6, to keep it short: it's next bugfix
+    update after v 3.1.5.
+  + BUGFIX: Fix 'preview file' regression. Closes #1285.
+  + BUGFIX: Fix peers and seeds sorting in transfer list.
+  + BUGFIX: Fix btdigg search engine.
+  + BUGFIX: Save statistics every 15min and only if there was new traffic.
+    Fixes #1288 and partially #1272.
+  + BUGFIX: Fix share ratio text in the 'general' tab.
+  + BUGFIX: Output a more generic message when blocking IPs and don't use
+    italics in the log.
+  + BUGFIX: Allow 2 decimals when setting the share ratio. Closes #1303.
+  + BUGFIX: Fix extratorrents search plugin.
+  + BUGFIX: Use shorter names for amount columns in main UI.
+  + BUGFIX: Fix overstretched options dialog. Closes #1293.
+  + BUGFIX: Don't show a popup menu when no torrent is selected.
+  + BUGFIX: Launch external programs async and don't block. Closes #1252.
+  + BUGFIX: Don't re-announce to trackers when torrent is paused. Closes #1310.
+  + BUGFIX: Bring dialog boxes in the front when qbt doesn't have focus.
+  + BUGFIX: Correctly resize 'name' column of the content tab. Closes #1360.
+  + BUGFIX: Correctly restore 'name' column width when loading magnet links in
+    the 'Add new torrent dialog'. Closes #1334.
+  + WEBUI: Fix sorting by size in WebUI when non-default locale used.
+  + UI: Reposition statistics menu item.
+  + UI: Convert more accurately decimal numbers to text.
+  + LINUX: Explicitle tell that we don't support freedesktop's startup notify
+    standard. Fixes GNOME issues. Closes #1217.
+  + LINUX: Add our WM_CLASS in the .desktop file so window managers know how to
+    group our windows.
+  + OTHER: Sync translations from Transifex.
+
+-------------------------------------------------------------------
+Fri Jan 17 12:02:38 UTC 2014 - fisiu@opensuse.org
+
+- Update to 3.1.5:
+  + BUGFIX: Fix compilation with Qt 4.7. Closes #1215.
+  + BUGFIX: Third attempt at fixing saving settings on OS shutdown.
+  + BUGFIX: Preview now correctly uses the selected file. Closes #1222 #1182.
+  + BUGFIX: Allow to resize the columns in Add New Torrent dialog. Closes #1207, #676.
+  + BUGFIX: Ensure that at least one column in the tranferlist is always visible. Closes #1165.
+  + BUGFIX: Ensure that the options window will always be placed onscreen. Closes #1226.
+  + BUGFIX: Delete temporary files after they aren't needed. Closes #1188.
+  + BUGFIX: Correctly detect libtorrent version.
+  + BUGFIX: Various code cppcheck fixes.
+  + BUGFIX: Remove isohunt search engine and update thepiratebay url.
+  + BUGFIX: Fix rss settings corruption when checking regexp and going to other rule.
+  + BUGFIX: Don't count paused torrents for the autoshutdown. Closes #1280.
+  + LINUX: Fix notifications with xfce4-notifyd.
+  + OTHER: Sync translations from Transifex.
+
+-------------------------------------------------------------------
+Mon Dec 30 15:34:22 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.1.4:
+  + FEATURE: Statistics dialog.
+  + FEATURE: Tooltips explaining each peer's connection flags.
+  + BUGFIX: Better dialog message for torrent delete confirmation.
+  + BUGFIX: Fix resizing grip location. Closes #1146.
+  + BUGFIX: Lock toolbar in place. Closes #1144.
+  + BUGFIX: Second attempt at fixing saving settings on shutdown.
+  + BUGFIX: Sort labels in 'Add new torrent' dialog. Closes #1150, #411.
+  + BUGFIX: Make sleep and shutdown functions work on systemd's logind.
+
+-------------------------------------------------------------------
+Thu Nov 21 11:15:32 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.1.3:
+  + FEATURE: Add a key shortcut to "Add link to torrent...".
+  + BUGFIX: Make all columns and headers use the same text alignment in the transferlist.
+  + BUGFIX: Fix build system for Unix/Linux.
+  + BUGFIX: Case insensitive sort in Peers list.
+  + BUGFIX: Small optimization of WebUI responses when there isn't a data payload.
+  + BUGFIX: Hide empty folders after filtering.
+  + BUGFIX: Expand folders when filtering files.
+  + BUGFIX: Updated search plugin's URL.
+  + BUGFIX: Strip some png to fix incorrect sRGB profiles.
+  + BUGFIX: Fixed font issues on OSX Mavericks.
+  + BUGFIX: Improve text in the About dialog.
+  + BUGFIX: Always show a peer IP address as a tool tip.
+  + BUGFIX: Fix inhibit system functionality.
+  + BUGFIX: WebUI: Don't gzip too small payloads.
+  + BUGFIX: Correctly detect if the browser supports gzip compression.
+  + BUGFIX: Fix WebUI link to 'Anonymous mode' explanation.
+  + BUGFIX: Correctly update tracker tier number in the trackers tab.
+  + BUGFIX: Speed improvements.
+  + OTHER: Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov  8 12:56:59 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.1.2:
+  + BUGFIX: Fix WebUI gzip compression.
+  + BUGFIX: Fix compilation with qt < 4.8.0.
+  + OTHER: Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  4 23:09:49 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.1.1:
+  + FEATURE: Show external IP in the log.
+  + FEATURE: Enable gzip compression in the webui. It should be faster now.
+  + FEATURE: Torrents show more states (queued for checking, downloadin
+    metadata, allocating, checking resume).
+  + FEATURE: Reenable "force reannounce" to all trackers.
+  + FEATURE: Allow to clear the UI lock password.
+  + FEATURE: New translations: English(Australia) and English(United Kingdom)
+  + BUGFIX: Expose all available translation in the WebUI.
+  + BUGFIX: Copy IP copied wrong data.
+  + BUGFIX: "Preview file..." didn't work on single file torrents.
+  + BUGFIX: Fix and improve the scheduler.
+  + BUGFIX: RSS fixes.
+  + BUGFIX: Fix 'append label to save path' with magnet links.
+  + BUGFIX: Can download up to 10MB .torrent file when a link is provided.
+  + OTHER: Updated translations.
+  + LINUX: Fix missing conf.pri error.
+
+-------------------------------------------------------------------
+Sun Oct 13 17:29:27 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.1.0:
+  + FEATURE: Add command line option to daemonize qbittorrent-nox
+  + FEATURE: Add "Shutdown qBittorrent" button to Web UI
+  + FEATURE: Add setting to copy .torrent files for finished downloads
+  + FEATURE: Add option to start qBittorrent on Windows startup
+  + FEATURE: Add context menu to Web seed list
+  + FEATURE: Add support for tracker tiers / groups to creator
+  + FEATURE: Allow clearing execution and ban logs
+  + FEATURE: Add option to use random port on each startup
+  + FEATURE: Expose the cache expiry to the user
+  + FEATURE: Support Atom feeds
+  + FEATURE: Add "save path" column
+  + FEATURE: Add µTorrent-compatible "Flags" column in the peer tab
+  + FEATURE: Load magnet metadata in the background while the "Add New
+    Torrent" Dialog is showing
+  + FEATURE: Allow to enter only an info-hash for download
+  + FEATURE: Bring the "Add New Torrent" Dialog to the front
+  + BUGFIX: Add confirmation dialog for "Force recheck" action loses
+  + BUGFIX: Greatly improve RSS manager performance
+  + BUGFIX: Ensure that all columns in the tranferlist have a size > 0.
+  + BUGFIX: Don't mark RSS item as read when it failed to download
+  + BUGFIX: Fix ETA calculation when some files are downloaded and marked
+    afterwards as 'do not download'
+  + BUGFIX: Make the UI show that PEX/DHT/LSD are actually disabled on
+    private torrents
+  + BUGFIX: Scheduler should be much more robust and correct now
+  + BUGFIX: Now qBt won't forget torrent settings after an unclean
+    shutdown
+  + BUGFIX: Text boxes in edit dialogs will fit to text width
+  + BUGFIX: Enable edit/rename via F2 or double click in various places
+  + BUGFIX: Allow to edit trackers and copy their urls
+  + BUGFIX: Add Uploaded column to main view
+  + BUGFIX: Calculate ETA for seeding torrents
+  + BUGFIX: Add option to ignore global share ratio limits for created
+    torrents
+  + OTHER: Many RSS bugfixes and improvements all over the place
+  + OTHER: Generate translations at configure time to reduce tarball size
+  + OTHER: Make peer tab sortable by ip too
+  + OTHER: Translations moved to Transifex
+    https://www.transifex.com/projects/p/qbittorrent/
+  + OTHER: New Translation - Vietnamese 
+  + PERFORMANCE: Impove drawing speed of tranferlist when there are many
+    torrents(>100)
+  + PERFORMANCE: Impove drawing speed of peers list when there are many
+    peers
+
+-------------------------------------------------------------------
+Thu Aug  1 19:30:49 UTC 2013 - fisiu@opensuse.org
+
+- Upstream update to 3.0.11:
+  + FEATURE: Allow more fine tuning of upload slots.
+  + FEATURE: Enable edit/rename via F2 or double click in various places.
+  + BUGFIX: Don't allow newlines in rename dialog.
+  + BUGFIX: Treat unfinished dates as the newest ones when sorting.
+  + BUGFIX: Respect UI lock when clicking on tray notification.
+  + BUGFIX: Fix kickass torrents search plugin.
+  + BUGFIX: Use system language as default language. Closes #780.
+  + BUGFIX: Move completed files to .unwanted folder when they are
+    unselected by the user.
+  + BUGFIX: Show delete action when multiple feeds are selected.
+  + BUGFIX: Use Unicode for libtorrent alert messages.  
+  + OTHER: Update translations.
+
+-------------------------------------------------------------------
+Wed Jul 10 12:41:15 UTC 2013 - fisiu@opensuse.org
+
+- Upstream update to 3.0.10:
+  + BUGFIX: Fix LegitTorrents search plugin
+  + BUGFIX: Improve peer host name resolution (closes #360)
+  + BUGFIX: Context menu fix in the Web UI
+  + BUGFIX: Respect 'don't show' torrent dialog in Search
+  + BUGFIX: Torrent creator can now use files/folders from disk root (Gelmir)
+  + BUGFIX: Update free disk space when changing drives in the add new torrent
+    dialog
+  + BUGFIX: Various fixes relating to RSS drag and drop (Gelmir)
+  + BUGFIX: Properly rename torrent which changes position in filter model (Gelmir)
+  + BUGFIX: Actually show tray notifications when a torrent finishes
+    downloading
+  + BUGFIX: Don't download RSS items based on rules still being edited (Gelmir)
+  + COSMETIC: Native look for the search boxes (Hyperz)
+  + IMPROVEMENT: Use natural sorting where possible (Gelmir and sledgehammer999)
+  + LINUX: Drop Boost.Thread dependency from configure script
+  + OTHER: Update translations.
+  + Impove drawing speed of tranferlist and peers list when there
+    are many torrents(>100)
+
+-------------------------------------------------------------------
+Sun Jun  2 15:10:38 UTC 2013 - dap.darkness@gmail.com
+
+- Upstream update to 3.0.9:
+  + BUGFIX: Raise qBittorrent windows when another instance is launched
+  + BUGFIX: Enable 'copy magnet uri' for torrents without metadata too
+  + BUGFIX: Fix a few JSON parser issues (Gelmir)
+  + BUGFIX: Add support for gzipped encoded HTTP responses (daimor)
+  + BUGFIX: Fix possibly missing "Add torrent" icon (Driim)
+  + OTHER: Add search plugin for Legit Torrents
+  + BUGFIX: Fix support for --no-splash command line argument
+  + BUGFIX: Fix compilation error with libtorrent v0.15
+  + BUGFIX: Fix search issues with Python3
+  + BUGFIX: Fix dead link about certificates in program preferences
+- Removed qbittorrent-3.0.7.-fix-for-libtorrent-rasterbar-0.15.x.patch
+  as merged into upstream
+- Url tag was updated.
+
+-------------------------------------------------------------------
+Sat Jan 19 15:46:47 UTC 2013 - fisiu@opensuse.org
+
+- Upstream update to 3.0.7:
+  + Search engine plugins cleanup.
+  + WebUI Mootools updated to v1.4.5
+  + Add m4v to the list of previewable file extensions.
+  + Fix "Set as default save path" setting.
+  + Use https links in search plugins when possible.
+- Add qbittorrent-3.0.7.-fix-for-libtorrent-rasterbar-0.15.x.patch
+
+-------------------------------------------------------------------
+Wed Oct 31 10:59:49 UTC 2012 - saschpe@suse.de
+
+- Set download_files service to mode="localonly" and add tarball
+
+-------------------------------------------------------------------
+Tue Oct 30 15:30:19 UTC 2012 - dap.darkness@gmail.com
+
+- Upstream update to 3.0.6:
+  + FEATURE: Add command line option to daemonize qbittorrent-nox
+  + FEATURE: Add "Shutdown qBittorrent" button to Web UI
+  + FEATURE: Add setting to copy .torrent files for finished downloads
+  + FEATURE: Add option to start qBittorrent on Windows startup
+  + BUGFIX: Add confirmation dialog for "Force recheck" action
+  + BUGFIX: Greatly improve RSS manager performance
+  + FEATURE: Brand new torrent addition dialog
+  + FEATURE: Add the ability to choose the save path when using magnet links
+  + FEATURE: Add support for adding multiple local torrents at once
+  + COSMETIC: Improve style of left panel
+  + BUGFIX: Lower panels no longer gets disabled
+  + BUGFIX: Major code refactoring and various optimizations.
+  + BUGFIX: No longer strip root folder from torrent files
+  + OTHER: Drop support for libtorrent v0.14.x
+  + OTHER: Drop support for Qt 4.5
+- Duplicate files warning was resolved.
+
+-------------------------------------------------------------------
+Tue Jul  3 19:55:33 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.11, bugfix release:
+  + Bring window to front after restoring from systray
+  + Fix keyboard focus problems on main window
+  + Fix ThePirateBay search plugin
+
+-------------------------------------------------------------------
+Mon Jun 25 22:00:33 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.10, bugfix release:
+  + Various webui fixes
+  + Fix ratio limiting bug
+  + Fix possible crash when showing torrent content
+  + Add support for RSS feeds using magnet links
+
+-------------------------------------------------------------------
+Sun May 20 21:35:37 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.9, bugfix release:
+  + Improved RSS reader performance
+  + Various UI fixes
+
+-------------------------------------------------------------------
+Sat May  5 11:28:30 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.8, bugfix release:
+  + UI style fixes
+  + Update Italian translation
+- Drop qbittorrent-gcc47.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Mar 25 12:35:32 UTC 2012 - dimstar@opensuse.org
+
+- Add qbittorrent-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Mar 19 12:06:29 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.7, bugfix release.
+
+-------------------------------------------------------------------
+Mon Feb 20 15:17:07 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 2.9.5, bugfix release.
+
+-------------------------------------------------------------------
+Thu Dec 29 21:06:39 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.9.3, bufix release.
+- Change license to spdx.org format.
+
+-------------------------------------------------------------------
+Sun Oct 30 15:04:55 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.9.2, bugfix release.
+
+-------------------------------------------------------------------
+Sun Oct 23 17:29:13 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.9.1, bugfix release.
+
+-------------------------------------------------------------------
+Fri Oct 14 13:49:03 UTC 2011 - fisiu@opensuse.org
+
+- Upstream release 2.9.0:
+  + Support for anonymous mode (libtorrent-rasterbar >= 0.16.0)
+  + Setting to ignore slow torrent in queueing system
+  + Improved settings for option "announce to all trackers"
+  + Minor cosmetic fixes
+
+-------------------------------------------------------------------
+Sat Sep 24 14:18:50 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.8.5, bugfix release.
+
+-------------------------------------------------------------------
+Sun Jun 26 19:50:23 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.8.2, bugfix release.
+- Drop webui_password_fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 21 19:52:21 UTC 2011 - fisiu@opensuse.org
+
+- Upstream release 2.8.0:
+  + HTTPS support in Web UI
+  + Dynamic DNS support (DynDNS, no-ip)
+  + RSS downloader can use regex
+  + Display connection type in peer list
+  + Added SSL and Auth for SMTP Settings
+- Fixed Web UI user/pass change: webui_password_fix.patch
+
+-------------------------------------------------------------------
+Sun Apr 10 21:44:07 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.7.2, bugfix release.
+- Spec cleanup, use pkgconfig in BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar 29 23:50:41 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.7.1, bugfix release.
+- Bumped Qt version to >= 4.6
+
+-------------------------------------------------------------------
+Mon Mar 21 16:50:48 UTC 2011 - fisiu@opensuse.org
+
+- Upstram release 2.7.0:
+  + Customize IP reported to trackers
+  + Inhibit system sleep when torrents are active
+  + Minor cosmetic changes
+
+-------------------------------------------------------------------
+Mon Mar 14 18:26:06 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.9, bugfix release.
+- Drop ntfs-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  9 16:24:26 UTC 2011 - fisiu@opensuse.org
+
+- Fixed downloading data to ntfs partition: ntfs-fix.patch
+- Fixed magnet url handler
+
+-------------------------------------------------------------------
+Sun Feb 27 20:35:20 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.7, bugfix release.
+
+-------------------------------------------------------------------
+Tue Feb  8 22:23:04 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.6, bugfix release.
+
+-------------------------------------------------------------------
+Mon Jan 24 20:12:28 UTC 2011 - fisiu@opensuse.org
+
+- use %{optflags} to build binaries properly
+
+-------------------------------------------------------------------
+Sun Jan 23 21:18:02 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.4, bugfix only.
+
+-------------------------------------------------------------------
+Sat Jan 15 21:58:34 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.3, bugfix only.
+
+-------------------------------------------------------------------
+Mon Jan 10 19:23:39 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.6.1, bugfix and UI polish
+
+-------------------------------------------------------------------
+Sun Jan  9 13:56:47 UTC 2011 - fisiu@opensuse.org
+
+- Upstream release 2.6.0:
+  + Use system icons (Linux, Qt >= 4.6)
+  + Simplify program preferences
+  + Imporved IP filter handling
+  + all changes in Changelog file
+
+-------------------------------------------------------------------
+Thu Jan  6 21:17:32 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.5.5, bugfix only.
+
+-------------------------------------------------------------------
+Mon Jan  3 21:45:54 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 2.5.3, bugfix only.
+
+-------------------------------------------------------------------
+Mon Dec 20 12:04:52 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.5.2, bugfix only.
+
+-------------------------------------------------------------------
+Sun Dec  5 16:00:38 UTC 2010 - fisiu@opensuse.org
+
+- Upstream release 2.5.1:
+  + qBittorrent can now act as a tracker
+  + improved RSS feed automated downloader
+  + new feature to shutdown qbittorrent on torrents completion
+  + all changes in Changelog file
+
+-------------------------------------------------------------------
+Tue Nov 23 13:12:44 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.11, bugfix only.
+
+-------------------------------------------------------------------
+Wed Nov 10 23:53:07 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.10, bugfix only.
+
+-------------------------------------------------------------------
+Sun Oct 31 20:13:03 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.9, bugfix only.
+- Drop qbittorrent-2.4.x-fix-addition-crash.patch: fixed upstream.
+- Bumped Qt version to >= 4.5.
+
+-------------------------------------------------------------------
+Tue Oct 26 22:15:07 UTC 2010 - fisiu@opensuse.org
+
+- added:  qbittorrent-2.4.x-fix-addition-crash.patch
+  It fixes crash when one presses enter in the save path field
+  of the torrent addition.
+
+-------------------------------------------------------------------
+Mon Oct 25 12:21:32 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.8, bugfix only.
+
+-------------------------------------------------------------------
+Wed Oct 20 22:22:55 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.7, bugfix only.
+
+-------------------------------------------------------------------
+Thu Oct 14 23:13:27 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.4.5, bugfix only.
+
+-------------------------------------------------------------------
+Sat Oct  9 15:21:32 UTC 2010 - fisiu@opensuse.org
+
+- Upstream release 2.4.4.
+- Drop alternative-speed-limits.patch: fixed upstream.
+- Drop parameter-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 29 17:25:36 UTC 2010 - fisiu@opensuse.org
+
+- Fixed toggling to alternative speed limits.
+
+-------------------------------------------------------------------
+Thu Jun 24 12:54:50 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.2.10, bugfix only.
+
+-------------------------------------------------------------------
+Thu Jun 17 14:33:43 UTC 2010 - fisiu@opensuse.org
+
+- Fixed WebUI in -nox package.
+
+-------------------------------------------------------------------
+Sun Jun 13 12:47:55 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.2.9, bugfix only.
+
+-------------------------------------------------------------------
+Tue May 25 17:44:33 UTC 2010 - fisiu@opensuse.org
+
+- Upstream update to 2.2.8, bugfix only.
+
+-------------------------------------------------------------------
+Fri May 14 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.7, bugfix only.
+
+-------------------------------------------------------------------
+Thu Apr 22 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.6, bugfix only.
+
+-------------------------------------------------------------------
+Fri Apr 09 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.5, bugfix only.
+
+-------------------------------------------------------------------
+Tue Apr 06 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.4, bugfix only.
+
+-------------------------------------------------------------------
+Sun Apr 04 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.3, bugfix only.
+
+-------------------------------------------------------------------
+Tue Mar 23 2010 fisiu@opensuse.org
+
+- Upstream update to 2.2.2, bugfix only.
+
+-------------------------------------------------------------------
+Mon Mar 15 2010 fisiu@opensuse.org
+
+- Upstream release 2.2.0:
+  + bandwidth scheduler
+  + many new features in WebUI
+  + full list of changes in Changelog file
+
+-------------------------------------------------------------------
+Sun Mar 07 2010 fisiu@opensuse.org
+
+- Upstream update to 2.1.6, bugfix only
+
+-------------------------------------------------------------------
+Sat Feb 13 2010 fisiu@opensuse.org
+
+- Upstream update to 2.1.5, bugfix only
+
+-------------------------------------------------------------------
+Tue Feb 02 2010 fisiu@opensuse.org
+
+- Upstream update to 2.1.3, bugfix only
+
+-------------------------------------------------------------------
+Wed Jan 27 2010 fisiu@opensuse.org
+
+- Upstream update to 2.1.2, bugfix only
+
+-------------------------------------------------------------------
+Wed Jan 20 2010 fisiu@opensuse.org
+
+- Upstream update to 2.1.1, bugfix only
+
+-------------------------------------------------------------------
+Mon Jan 18 2010 fisiu@opensuse.org
+
+- Upstream release 2.1.0
+  + new -nox package, allows install qbittorent without X
+
+-------------------------------------------------------------------
+Wed Jan 13 2010 fisiu@opensuse.org
+
+- Upstream update to 2.0.7, bugfix release
+- This update requires libtorrent-rasterbar >= 0.14.8
+
+-------------------------------------------------------------------
+Wed Jan 06 2010 fisiu@opensuse.org
+
+- Upstream update to 2.0.6, bugfix only
+
+-------------------------------------------------------------------
+Fri Jan 01 2010 fisiu@opensuse.org
+
+- Upstream update to 2.0.5, bugfix only
+
+-------------------------------------------------------------------
+Wed Dec 30 2009 fisiu@opensuse.org
+
+- Upstream update to 2.0.4, bugfix only
+
+-------------------------------------------------------------------
+Wed Dec 23 2009 fisiu@opensuse.org
+
+- Upstream update to 2.0.3, bugfix only
+
+-------------------------------------------------------------------
+Fri Dec 18 2009 fisiu@opensuse.org
+
+- Upstream update to 2.0.2, critical bugfix
+
+-------------------------------------------------------------------
+Mon Dec 14 2009 fisiu@opensuse.org
+
+- Upstream update to 2.0.1, bugfix only
+
+-------------------------------------------------------------------
+Thu Dec 10 2009 fisiu@opensuse.org
+
+- Upstream release 2.0.0
+  + many new features
+  + new UI
+  + many more... look into Changelog
+
+-------------------------------------------------------------------
+Wed Nov 18 2009 fisiu82@gmail.com
+
+- Upstream update to 1.5.6, bugfix only
+
+-------------------------------------------------------------------
+Mon Nov 09 2009 fisiu82@gmail.com
+
+- Upstream update to 1.5.5, bugfix only
+
+-------------------------------------------------------------------
+Tue Oct 27 2009 fisiu82@gmail.com
+
+- Upstream update to 1.5.4, bugfix only
+
+-------------------------------------------------------------------
+Thu Oct 22 2009 fisiu82@gmail.com
+
+- Upstream update to 1.5.3
+
+-------------------------------------------------------------------
+Wed Jul 15 2009 fisiu82@gmail.com
+
+- Upstream release 1.3.4
+
+-------------------------------------------------------------------
+Mon Apr 13 2009 fisiu82@gmail.com
+
+- Upstream version, bugfix release 1.3.3
+
+-------------------------------------------------------------------
+Mon Jan 26 2009 fisiu82@gmail.com
+
+- Upstream update to 1.3.1
+
+-------------------------------------------------------------------
+Mon Jan 12 2009 fisiu82@gmail.com
+
+- Upstream release 1.3.0
+
+-------------------------------------------------------------------
+Sun Nov 15 2008 fisiu82@gmail.com
+
+- Upstream update to 1.2.1
+
+-------------------------------------------------------------------
+Fri Oct 31 2008 fisiu82@gmail.com
+
+- Update to 1.2.0 release
+
+-------------------------------------------------------------------
+Sun Aug 03 2008 fisiu82@gmail.com
+
+- Update package to 1.1.1
+
+-------------------------------------------------------------------
+Thu Jul 03 2008 fisiu82@gmail.com
+
+- Initial package, 1.0.0 version.

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>SUSE YaST Cluster</short>
+  <description>This allows you to open various ports related to SUSE YaST Cluster module. Ports are opened for mgmtd, hawk, dlm and csync2.</description>
+  <port protocol="tcp" port="5560"/>
+  <port protocol="tcp" port="7630"/>
+  <port protocol="tcp" port="21064"/>
+  <port protocol="tcp" port="30865"/>
+</service>
+

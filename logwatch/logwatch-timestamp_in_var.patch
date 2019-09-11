@@ -1,0 +1,13 @@
+Such data belongs to /var not /etc.
+
+--- Logwatch_Setup_Files/dmeventd
++++ Logwatch_Setup_Files/dmeventd
+@@ -31,7 +31,7 @@
+ # Set the location of the folder to store last time stamp
+ # (This is used to record the last log sent out so repeats 
+ #  are not mailed in error.)
+-$Storage_file = "/etc/logwatch/scripts/services/timestamp.txt";
++$Storage_file = "/var/lib/logwatch/timestamp.txt";
+ $count = 0;
+ $Detail = $ENV{'LOGWATCH_DETAIL_LEVEL'} || 0;
+ 

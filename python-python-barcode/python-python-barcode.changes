@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sat May 25 09:01:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.0:
+  * Various minor fixes and tweaks
+  * CI integration fixes
+
+-------------------------------------------------------------------
+Sat Apr  6 22:21:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Unbundle DejaVu font and reuse the one from the system.
+
+-------------------------------------------------------------------
+Thu Apr  4 09:24:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Provide and obsolete pyBarcode as we are fork of it
+
+-------------------------------------------------------------------
+Wed Apr  3 08:08:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run the spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar 25 16:28:57 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Verion 0.9 of python-barcode (fork of pyBarcode)
+  initial OBS build

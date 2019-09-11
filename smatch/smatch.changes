@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Nov 22 13:54:10 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20181114:
+  * trinity: Proof of concept to auto-generate trinity spec files
+  * user_data: rename to smatch_kernel_user_data.c
+  * assigned_expr: rename to smatch_assigned_expr.c
+  * smatch: make the --enable/disable options take strings
+  * clock() is already defined on illumos, so rename the local function.
+  * Ignore "#ident" as found in some old sources.
+  * Use $(CFLAGS) when compiling smatch.c itself.
+  * smatch_nul_terminated: fix compile
+  * untracked_param: fix a NULL dereference
+  * uninitialized: fix a crashing bug parsing "return (foo);"
+  * nul_terminator: track when strings have a NUL terminator
+  * and many more small fixes and updates
+
+-------------------------------------------------------------------
+Sat Mar 24 00:00:00 CET 2018 - dsterba@suse.cz
+
+- Update to version 20180125
+
+-------------------------------------------------------------------
+Wed Aug 10 13:44:22 UTC 2016 - jslaby@suse.com
+
+- Update to version 20160715:
+  * capped: set it to uncapped if it's modified
+  * smatch.h: silence a compile warning
+  * smatch.h: shuffle some declarations around
+  * smatch.h: reserve some db types for later
+  * *new* continue_vs_break: complain if continue is used in a do {} while (0)
+  * smatch_address: don't crash on invalid code
+  * continue_vs_break: add it checklist.h
+  * dma_mapping_error: add pci_dma_mapping_error() to this check
+  * user_data: short circuit a bunch of code
+  * debug: add a __smatch_absolute()
+
+-------------------------------------------------------------------
+Wed Mar  9 14:10:10 UTC 2016 - jslaby@suse.com
+
+- update to 20160307
+
+-------------------------------------------------------------------
+Wed Dec 16 07:50:48 UTC 2015 - jslaby@suse.com
+
+- update to 20151208
+
+-------------------------------------------------------------------
+Fri Oct  9 10:20:11 UTC 2015 - jslaby@suse.com
+
+- initial package (taken over from morbidrsa)
+

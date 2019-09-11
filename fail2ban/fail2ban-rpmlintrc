@@ -1,0 +1,3 @@
+addFilter("W: htaccess-file .*tests.*")
+addFilter("W: hidden-file-or-dir .*tests.*")
+addFilter("W: no-manual-page-for-binary fail2ban-testcases")

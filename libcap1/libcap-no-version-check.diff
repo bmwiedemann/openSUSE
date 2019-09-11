@@ -1,0 +1,20 @@
+Index: libcap/libcap.h
+===================================================================
+--- libcap/libcap.h.orig
++++ libcap/libcap.h
+@@ -47,6 +47,7 @@ struct _cap_struct {
+  * Do we match the local kernel?
+  */
+ 
++#if 0
+ #if !defined(_LINUX_CAPABILITY_VERSION) || \
+             (_LINUX_CAPABILITY_VERSION != 0x19980330)
+ 
+@@ -54,6 +55,7 @@ struct _cap_struct {
+ # error "file "libcap.h" --> fix and recompile libcap"
+ 
+ #endif
++#endif
+ 
+ /*
+  * kernel API cap set abstraction

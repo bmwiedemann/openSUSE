@@ -1,0 +1,37 @@
+--- xfree.c
++++ xfree.c	2012-10-17 12:48:37.862344784 +0000
+@@ -48,3 +48,6 @@ xfree (string)
+   if (string)
+     free (string);
+ }
++
++#undef xfree
++extern void xfree PARAMS((void *)) __attribute__ ((weak, alias ("_rl_xfree")));
+--- xmalloc.c
++++ xmalloc.c	2012-10-17 12:48:28.430844890 +0000
+@@ -77,3 +77,8 @@ xrealloc (pointer, bytes)
+     memory_error_and_abort ("xrealloc");
+   return (temp);
+ }
++
++#undef xmalloc
++#undef xrealloc
++extern PTR_T xmalloc PARAMS((size_t)) __attribute__ ((weak, alias ("_rl_xmalloc")));
++extern PTR_T xrealloc PARAMS((void *, size_t)) __attribute__ ((weak, alias ("_rl_xrealloc")));
+--- xmalloc.h
++++ xmalloc.h	2012-10-17 12:27:20.325156790 +0000
+@@ -38,6 +38,14 @@
+ 
+ #endif /* !PTR_T */
+ 
++#undef xmalloc
++#undef xrealloc
++#undef xfree
++
++#define xmalloc  _rl_xmalloc
++#define xrealloc _rl_xrealloc
++#define xfree    _rl_xfree
++
+ extern PTR_T xmalloc PARAMS((size_t));
+ extern PTR_T xrealloc PARAMS((void *, size_t));
+ extern void xfree PARAMS((void *));

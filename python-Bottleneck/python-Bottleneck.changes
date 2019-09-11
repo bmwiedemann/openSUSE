@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Wed Sep 27 22:20:10 UTC 2017 - arun@gmx.de
+
+- update to version 1.2.1:
+  * #156 Installing bottleneck when two versions of NumPy are present
+  * #157 Compiling on Ubuntu 14.04 inside a Windows 7 WMware
+  * #159 Occasional segmentation fault in nanargmin, nanargmax,
+    median, and nanmedian when all of the following conditions are
+    met: axis is None, input array is 2d or greater, and input array
+    is not C contiguous.
+  * #163 Reducing np.array([2**31], dtype=np.int64) overflows on
+    Windows
+
+-------------------------------------------------------------------
+Wed Apr 19 18:37:17 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Mon Nov 14 14:24:23 UTC 2016 - dmueller@suse.com
+
+- update to 1.2.0:
+  This release is a complete rewrite of Bottleneck.
+  - Bottleneck is now written in C
+  - Cython is no longer a dependency
+  - Source tarball size reduced by 80%
+  - Build time reduced by 66%
+  - Install size reduced by 45%
+
+-------------------------------------------------------------------
+Mon Apr 27 19:23:55 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.0.0:
+  * "python setup.py build" is 18.7 times faster
+  * Function-call overhead cut in half---a big speed up for small
+    input arrays
+  * Arbitrary ndim input arrays accelerated; previously only 1d,
+    2d, and 3d
+  * bn.nanrankdata is twice as fast for float input arrays
+  * bn.move_max, bn.move_min are faster for int input arrays
+  * No speed penalty for reducing along all axes when input is
+    Fortran ordered
+  * Compiled binaries 14.1 times smaller
+  * Source tarball 4.7 times smaller
+  * 9.8 times less C code
+  * 4.3 times less Cython code
+  * 3.7 times less Python code
+  * Requires numpy 1.9.1
+  * Single API, e.g.: bn.nansum instead of bn.nansum and
+    nansum_2d_float64_axis0
+  * On 64-bit systems bn.nansum(int32) returns int32 instead of
+    int64
+  * bn.nansum now returns 0 for all NaN slices (as does numpy
+    1.9.1)
+  * Reducing over all axes returns, e.g., 6.0; previously
+    np.float64(6.0)
+  * bn.ss() now has default axis=None instead of axis=0
+  * bn.nn() is no longer in bottleneck
+  * Previous releases had moving window function pairs: move_sum,
+    move_nansum
+  * This release only has half of the pairs: move_sum
+  * Instead a new input parameter, min_count, has been added
+  * min_count=None same as old move_sum; min_count=1 same as old
+    move_nansum
+  * If # non-NaN values in window < min_count, then NaN assigned
+    to the window
+  * Exception: move_median does not take min_count as input
+  * Can now install bottleneck with pip even if numpy is not
+    already installed
+  * bn.move_max, bn.move_min now return float32 for float32 input
+- increase required numpy version to 1.9.1
+
+-------------------------------------------------------------------
+Thu May  8 10:58:17 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 0.8.0
+  - This version of Bottleneck requires NumPy 1.8
+  - nanargmin and nanargmax behave like the corresponding functions in NumPy 1.8
+  - nanargmax/nanargmin wrong for redundant max/min values in 1d int arrays
+
+-------------------------------------------------------------------
+Tue Oct 22 12:07:46 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 0.7.0
+  + bn.rankdata() is twice as fast (with input a = np.random.rand(1000000))
+  + C files now included in github repo; cython not needed to try latest
+  + C files are now generated with Cython 0.19.1 instead of 0.16
+  + Test bottleneck across multiple python/numpy versions using tox
+  + Source tarball size cut in half
+
+-------------------------------------------------------------------
+Fri Jun 22 13:11:43 UTC 2012 - saschpe@suse.de
+
+- %py_requires is only needed for SLE_11_SP2 (and older), newer Python
+  package releases generate the RPM requires for the Python ABI automatically
+
+-------------------------------------------------------------------
+Fri Jun 22 12:25:12 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.6.0:
+  + replace(arr, old, new), e.g, replace(arr, np.nan, 0)
+  + nn(arr, arr0, axis) nearest neighbor and its index of 1d arr0 in 2d arr
+  + anynan(arr, axis) faster alternative to np.isnan(arr).any(axis) 
+  + allnan(arr, axis) faster alternative to np.isnan(arr).all(axis) 
+  + Python 3.2 support (may work on earlier verions of Python 3)
+  + C files are now generated with Cython 0.16 instead of 0.14.1
+  + Upgrade numpydoc from 0.3.1 to 0.4 to support Sphinx 1.0.1
+  + Support for Python 2.5 dropped
+  + Default axis for benchmark suite is now axis=1 (was 0)
+  + #31 Confusing error message in partsort and argpartsort
+  + #32 Update path in MANIFEST.in
+  + #35 Wrong output for very large (2**31) input arrays
+
+-------------------------------------------------------------------
+Fri Jun  1 09:05:36 UTC 2012 - toddrme2178@gmail.com
+
+- spec file cleanups
+- fix license tag
+
+-------------------------------------------------------------------
+Mon Feb 27 21:55:40 UTC 2012 - scorot@free.fr
+
+- version 0.5.0 
+
+-------------------------------------------------------------------
+Fri Jan 22 00:00:00 UTC 2011 - scorot@gtt.fr
+
+- Initial release

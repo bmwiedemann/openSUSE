@@ -1,0 +1,45 @@
+From ab7d69b3438c719f7ad6b4b346e56556e8a7bd10 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Fri, 21 Sep 2018 17:31:39 +0200
+Subject: [PATCH] Do not load pip state if there is no 3rd party
+ dependencies
+
+Safe import 3rd party dependency
+---
+ salt/modules/pip.py | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/pip.py b/salt/modules/pip.py
+index eac40c719c..988ae695a7 100644
+--- a/salt/modules/pip.py
++++ b/salt/modules/pip.py
+@@ -79,7 +79,10 @@ from __future__ import absolute_import, print_function, unicode_literals
+ # Import python libs
+ import logging
+ import os
+-import pkg_resources
++try:
++    import pkg_resources
++except ImportError:
++    pkg_resources = None
+ import re
+ import shutil
+ import sys
+@@ -116,7 +119,12 @@ def __virtual__():
+     entire filesystem.  If it's not installed in a conventional location, the
+     user is required to provide the location of pip each time it is used.
+     '''
+-    return 'pip'
++    if pkg_resources is None:
++        ret = False, 'Package dependency "pkg_resource" is missing'
++    else:
++        ret = 'pip'
++
++    return ret
+ 
+ 
+ def _clear_context(bin_env=None):
+-- 
+2.17.1
+
+

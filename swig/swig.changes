@@ -1,0 +1,980 @@
+-------------------------------------------------------------------
+Fri Nov 30 12:58:08 UTC 2018 - badshah400@gmail.com
+
+- Add swig-3.0.12-support-octave-4.4.patch to add support for
+  octave 4.4; patch taken from upstream git (gh#swig/swig#1256).
+
+-------------------------------------------------------------------
+Mon Sep 17 12:15:04 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patches to build with python 3.7 properly:
+  * swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_ConvertF.patch
+  * swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_FixMetho.patch
+  * swig-3.0.12-Coverity-fix-issue-reported-for-wrapper-argument-che.patch
+  * swig-3.0.12-Fix-Coverity-issue-reported-for-setslice-pycontainer.patch
+  * swig-3.0.12-Fix-generated-code-for-constant-expressions-containi.patch
+  * swig-3.0.12-fix-collections.patch
+- Use version req to check for 1500 instead for non-existing release
+- Move to generic requires those that are true under both conditions
+- Use autopatch to apply all the patches at once
+
+-------------------------------------------------------------------
+Wed Jan  3 14:30:52 UTC 2018 - tchvatal@suse.com
+
+- Reduce some conditionals for old distros lets consider sle11/rhel6
+  as minimal supported configuration
+- Make sure we can be built and distributed with python3 only
+  present in the system
+
+-------------------------------------------------------------------
+Tue Nov  7 20:07:12 UTC 2017 - mpluskal@suse.com
+
+- Run python2 and python3 tests for Factory
+
+-------------------------------------------------------------------
+Sun Sep 24 10:47:22 UTC 2017 - coolo@suse.com
+
+- add swig-perl526.patch from upstream to work with perl 5.26
+
+-------------------------------------------------------------------
+Thu Feb  2 14:56:53 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jan 30 07:58:10 UTC 2017 - kkaempf@suse.com
+
+- Update to 3.0.12
+  - Add support for Octave-4.2.
+  - Enhance %extend to support template functions.
+  - Language specific enhancements and fixes for C#, D, Guile,
+    Java, PHP7.
+
+-------------------------------------------------------------------
+Fri Dec 30 08:01:35 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.0.11
+  - PHP 7 support added.
+  - C++11 alias templates and type aliasing support added.
+  - Minor fixes and enhancements for C# Go Guile Java Javascript
+    Octave PHP Python R Ruby Scilab XML.
+
+-------------------------------------------------------------------
+Mon Jun 13 06:10:47 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.0.10
+  - Regression fixes for smart pointers and importing Python modules.
+
+-------------------------------------------------------------------
+Mon May 30 09:51:37 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.0.9
+  - Add support for Python's implicit namespace packages.
+  - Fixes to support Go 1.6.
+  - C++11 std::array support added for Java.
+  - Improved C++ multiple inheritance support for Java/C# wrappers.
+  - Various other minor fixes and improvements for C#, D, Go, Java,
+    Javascript, Lua, Python, R, Ruby, Scilab.
+
+- drop swig308-Fix-li_boost_array-test.patch, upstream
+
+-------------------------------------------------------------------
+Mon May 23 15:19:08 UTC 2016 - olaf@aepfle.de
+
+- Add disabled build conditional for ocaml support (fate#320836)
+- Add swig-ocaml-int64.patch (ocaml PR#6517, fate#320836)
+
+-------------------------------------------------------------------
+Tue Feb  2 14:45:14 UTC 2016 - rguenther@suse.com
+
+- Add swig308-isfinite.diff to fix isfinite issue with new glibc.
+
+-------------------------------------------------------------------
+Thu Jan  7 21:08:33 UTC 2016 - idonmez@suse.com
+
+- Add swig308-Fix-li_boost_array-test.patch to fix boost::array
+  test on PPC.
+
+-------------------------------------------------------------------
+Thu Jan  7 08:13:38 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.0.8
+  - pdf documentation enhancements.
+  - Various Python 3.5 issues fixed.
+  - std::array support added for Ruby and Python.
+  - shared_ptr support added for Ruby.
+  - Minor improvements for CFFI, Go, Java, Perl, Python, Ruby.
+
+-------------------------------------------------------------------
+Tue Aug  4 07:43:49 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.0.7
+  - Add support for Octave-4.0.0.
+  - Remove potential Android security exploit in generated Java classes.
+  - Minor new features and bug fixes.
+
+- drop swig-octave4.patch and swig-3.0.6.patch, upstream now
+
+-------------------------------------------------------------------
+Fri Jul 10 14:02:07 UTC 2015 - badshah400@gmail.com
+
+- Add swig-octave4.patch to fix swig bindings for octave >= 4.0
+  (patch taken from Fedora, and has been submitted upstream).
+
+-------------------------------------------------------------------
+Mon Jul  6 08:43:00 UTC 2015 - kkaempf@suse.com
+
+- Fix ocaml check (swig-3.0.6.patch)
+
+-------------------------------------------------------------------
+Mon Jul  6 06:22:21 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.0.6
+  - Stability and regression fixes.
+  - Fixed parsing of C++ corner cases.
+  - Language improvements and bug fixes for C#, Go, Java, Lua,
+    Python, R.
+
+- explicitly disable ocaml (bug in configure script)
+
+-------------------------------------------------------------------
+Sun Feb  1 18:32:16 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.0.5 
+  * Added support for Scilab.
+  * Important Python regression fix when wrapping C++ default arguments.
+  * Minor improvements for C#, Go, Octave, PHP and Python.
+
+-------------------------------------------------------------------
+Thu Jan 15 06:57:56 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.0.4
+  - Python regression fix when wrapping C++ default arguments.
+  - Improved error messages.
+
+-------------------------------------------------------------------
+Wed Jan  7 08:23:35 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.0.3
+  - Add support for C++11 strongly typed enumerations.
+  - Numerous bug fixes and minor enhancements for C#, D, Go, Java,
+    Javascript, PHP, Perl and Python wrappers.
+
+- drop nested_classes.diff, patch is upstream
+
+-------------------------------------------------------------------
+Sun Sep 14 15:34:33 UTC 2014 - schwab@linux-m68k.org
+
+- Fix syntax error in find command
+
+-------------------------------------------------------------------
+Mon Aug 25 14:17:29 CEST 2014 - mls@suse.de
+
+- support nested classes in ruby [bnc#892480]
+  new patch: nested_classes.diff
+
+-------------------------------------------------------------------
+Thu Jun  5 07:20:40 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.0.2
+  - Bug fix during install and a couple of other minor changes.
+
+-------------------------------------------------------------------
+Wed May 28 06:33:31 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.0.1
+  - Javascript module added. This supports JavascriptCore (Safari/Webkit),
+    v8 (Chromium) and node.js currently.
+  - A few notable regressions introduced in 3.0.0 have been fixed - in
+    Lua, nested classes and parsing of operator <<.
+  - The usual round of bug fixes and minor improvements for:
+    C#, GCJ, Go, Java, Lua, PHP and Python.      
+
+-------------------------------------------------------------------
+Mon Mar 17 07:46:53 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.0.0
+  - This is a major new release focusing primarily on C++
+    improvements.
+  - C++11 support added. Please see documentation for details of
+    supported features:
+    http://www.swig.org/Doc3.0/CPlusPlus11.html
+  - Nested class support added. This has been taken full advantage
+    of in Java and C#. Other languages can use the nested classes,
+    but require further work for a more natural integration into
+    the target language.
+  - We urge folk knowledgeable in the other target languages to
+    step forward and help with this effort.
+  - Lua: improved metatables and support for %nspace.
+  - Go 1.3 support added.
+  - Python import improvements including relative imports.
+  - Python 3.3 support completed.
+  - Perl director support added.
+  - C# .NET 2 support is now the minimum. Generated using statements
+    are replaced by fully qualified names.
+  - Bug fixes and improvements to the following languages:
+    C#, Go, Guile, Java, Lua, Perl, PHP, Python, Octave, R, Ruby, Tcl
+  - Various other bug fixes and improvements affecting all
+    languages.
+  - Note that this release contains some backwards incompatible
+    changes in some languages.
+  - Full detailed release notes are in the changes file.
+
+- drop 0001-Fix-Ruby-tracking-code-to-use-C-hash.patch,
+  ruby-1.8.6-newobject.patch, and swig-fix_ocaml_type.patch.
+  All upstreamed.
+
+-------------------------------------------------------------------
+Mon Mar 10 01:00:30 CET 2014 - ro@suse.de
+
+- set CCSHARED to "-fPIC" on s390/s390x 
+
+-------------------------------------------------------------------
+Sun Feb  9 18:30:13 UTC 2014 - kkaempf@suse.com
+
+- Update to 2.0.12
+  - This is a maintenance release backporting some fixes from the
+    pending 3.0.0 release.
+  - Octave 3.8 support added.
+  - C++11 support for new versions of erase/insert in the STL
+    containers.
+  - Compilation fixes on some systems for the generated Lua, PHP,
+    Python and R wrappers.
+ 
+  - Drop upstreamed patches:
+    swig-lua-fix-void-return-for-int-functions.patch
+    swig-support-octave-3.8.0.patch
+    ruby-2.0-encoding-utf8.patch
+
+-------------------------------------------------------------------
+Wed Jan 29 19:57:02 UTC 2014 - badshah400@gmail.com
+
+- Add patch swig-support-octave-3.8.0.patch: adds support for
+  octave version 3.8.0 to swig; patch taken from upstream git
+  and rebased for present version. 
+
+-------------------------------------------------------------------
+Mon Sep 30 20:18:08 UTC 2013 - badshah400@gmail.com
+
+- Add swig-lua-fix-void-return-for-int-functions.patch to fix
+  void returns in non-void functions for its lua binding; patch
+  submitted upstream (bnc#84331,
+  https://github.com/swig/swig/issues/93).
+
+-------------------------------------------------------------------
+Thu Sep 26 07:04:29 UTC 2013 - kkaempf@suse.com
+
+- Update to SWIG 2.0.11
+  - Minor bug fixes and enhancements mostly in Python, but also
+    C#, Lua, Ocaml, Octave, Perl, PHP, Python, R, Ruby, Tcl.
+
+-------------------------------------------------------------------
+Wed May 29 08:10:19 UTC 2013 - kkaempf@suse.com
+
+- Ruby 1.8.6 (SLE10) tracks objects differently
+  Add ruby-1.8.6-newobject.patch
+
+- Remove skip-python-li_std_containers_int.patch, fixed upstream
+- Remove python-2.4.patch, fixed upstream
+
+- Fix Fedora/RHEL builds (BuildRequires:  perl-Test-Simple)
+
+-------------------------------------------------------------------
+Tue May 28 14:37:51 UTC 2013 - kkaempf@suse.com
+
+- Change Ruby 1.9+ object tracking to use C hashes, fixes all
+  failed Ruby tests.
+  Patch added:   0001-Fix-Ruby-tracking-code-to-use-C-hash.patch
+  Patch removed: 0008-Ruby-Disable-broken-tests.patch
+
+-------------------------------------------------------------------
+Tue May 28 13:04:21 UTC 2013 - kkaempf@suse.com
+
+- Ruby 2.0 strictly enforces encoding
+  Add ruby-2.0-encoding-utf8.patch
+
+-------------------------------------------------------------------
+Tue May 28 06:43:48 UTC 2013 - kkaempf@suse.com
+
+- Update to SWIG 2.0.10
+  - Ruby 1.9 support is now complete.
+  - Add support for Guile 2.0 and Guile 1.6 support (GH interface) has
+    been dropped.
+  - Various small language neutral improvements and fixes.
+  - Various bug fixes and minor improvements specific to C#, CFFI, D,
+    Java, Octave, PHP, Python,
+  - Minor bug fix in ccache-swig.
+  - Development has moved to Github with Travis continuous integration
+    testing - patches using https://github.com/swig/swig are welcome.     
+
+- drop 0012-Python-Disable-broken-test-in-threads_exception.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 11:56:54 CET 2013 - pth@suse.de
+
+- Add swig-fix_ocaml_type.patch to change the declaration of 
+  caml_array_length to match that in ocaml's header.
+
+-------------------------------------------------------------------
+Thu Dec 20 09:40:06 UTC 2012 - kkaempf@suse.com
+
+- Fix RHEL4 and 6 build
+
+-------------------------------------------------------------------
+Mon Dec 17 12:52:34 UTC 2012 - kkaempf@suse.com
+
+- Update to SWIG 2.0.9
+  SWIG-2.0.9 summary:
+  - Improved typemap matching.
+  - Ruby 1.9 support is much improved.
+  - Various bug fixes and minor improvements in C#, CFFI, Go, Java,
+    Modula3, Octave, Perl, Python, R, Ruby, Tcl and in ccache-swig.
+
+- Removed patches (included in 2.0.9 release)
+  - 0001-Ruby-replace-obsolete-STR2CSTR-macro-with-StringValu.patch
+  - 0002-Ruby-use-RbConfig-instead-of-deprecated-Config-modul.patch
+  - 0003-Ruby-Fix-include-pathes-for-Ruby-1.9.patch
+  - 0004-Ruby-Add-local-dir-to-loadpath-for-Ruby-1.9.patch
+  - 0007-Ruby-1.9-methods-returns-array-of-Symbols-now.patch
+
+- Removed broken patch
+  - swig-2.0.4-guile2.patch
+
+- Disable tests failing on (deprecated) Python 2.4
+  - new patch: python-2.4.patch
+
+-------------------------------------------------------------------
+Mon Nov  5 09:57:55 UTC 2012 - kkaempf@suse.com
+
+- fix build on SLE10: disable autogen.sh
+  Add patch: PyInt_FromSize_t unavailable under Python 2.4
+
+-------------------------------------------------------------------
+Sun Nov  4 21:21:01 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.0.8
+  * Fix a couple of regressions introduced in 2.0.5 and 2.0.7.
+  * Improved using declarations and using directives support.
+  * Minor fixes/enhancements for C#, Java, Octave, Perl and Python.
+
+-------------------------------------------------------------------
+Sun May 27 13:31:49 UTC 2012 - kkaempf@suse.com
+
+- Fix segfault in constructor/destructor warning (upstream ID 3530078)
+
+-------------------------------------------------------------------
+Sat May 26 11:55:46 UTC 2012 - kkaempf@suse.com
+
+- Port SWIG to Ruby 1.9 (various patches)
+- Disable broken tests
+
+-------------------------------------------------------------------
+Sat May 26 11:32:12 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.0.7
+  * Important regression fixes since 2.0.5 for typemaps in general and
+    in Python.
+  * Fixes and enhancements for Go, Java, Octave and PHP.
+
+-------------------------------------------------------------------
+Mon Apr 30 08:30:32 UTC 2012 - idonmez@suse.com
+
+- Update to 2.0.6
+  * Various fixes with templates and typedef types.
+  * Some template lookup problems fixed.
+  * Templated type fixes to use correct typemaps.
+  * Autodoc documentation generation improvements.
+  * Python STL container wrappers improvements including addition of
+    stepped slicing.
+  * Approximately 70 fixes and minor enhancements for the following
+    target languages: AllegroCL, C#, D, Go, Java, Lua, Ocaml, Octave,
+    Perl, PHP, Python, R, Ruby, Tcl, Xml.
+
+-------------------------------------------------------------------
+Mon Apr  9 19:29:34 UTC 2012 - asterios.dramis@gmail.com
+
+- Added a patch (r12814.patch) to fix regression leading to uncompilable code
+  when using typedef and function pointer references (taken from Debian).
+
+-------------------------------------------------------------------
+Tue Mar  6 19:24:07 UTC 2012 - dvaleev@suse.com
+
+- The perl 5.12 packages are compiled with -Duse64bitint, which 
+  means that IVs are 64-bits even on 32-bit architectures. When 
+  converting IVs, SWIG assumes that an IV is the same size as a 
+  long, which causes OverflowErrors with  unsigned longs when 
+  the value is greater than 2^31. 
+
+-------------------------------------------------------------------
+Tue Mar  6 09:15:47 UTC 2012 - kkaempf@suse.com
+
+- fix SLES 10 build, disable failing test (bnc#750618)
+
+-------------------------------------------------------------------
+Mon Mar  5 13:19:56 UTC 2012 - kkaempf@suse.com
+
+- fix build, add Group field to subpackages
+
+-------------------------------------------------------------------
+Fri Dec  9 08:55:59 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Dec  5 13:37:26 UTC 2011 - pgajdos@suse.com
+
+- generate guile 2 friendly code
+
+-------------------------------------------------------------------
+Tue Sep 20 09:31:28 UTC 2011 - kkaempf@suse.com
+
+- Update to swig 2.0.4
+  (see CHANGES.current for complete list)
+  * [Perl] Patch #3260265 fixing overloading of non-primitive types and integers in 
+    Perl 5.12 and later.
+  * [Ruby] Fix %import where one of the imported files %include one of the STL include
+    files such as std_vector.i.
+  * [python] Additional fixes for python3.2 support.
+  * [python] Fixed PyGetSetDescr for python3.2.
+  * Bug 2635919: Convenience method to convert std::map to a python dict.
+  * Fixed bug 1163440: vararg typemaps.
+  * [Python] Applied patch #1932484: migrate PyCObject to PyCapsule.
+  * [Python] Merged in the szager-python-builtin branch, adding the -builtin feature
+    for python.  The -builtin option may provide a significant performance gain
+    in python wrappers.  For full details and limitations, refer to Doc/Manual/Python.html.
+    A small test suite designed to demonstrate the performance gain is in
+    Examples/python/performance.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:46:19 UTC 2011 - kkaempf@suse.com
+
+- Fix RHEL/Fedora build
+
+-------------------------------------------------------------------
+Thu May 19 19:50:42 UTC 2011 - idoenmez@novell.com
+
+- Drop adapt-perl512.diff and replace it with swig-2.0.3-perl512.patch
+  which is applied upstream.
+
+-------------------------------------------------------------------
+Thu May 19 08:47:42 UTC 2011 - idoenmez@novell.com
+
+- Add swig-2.0.3-perl514.patch: fix test failures with Perl 5.14 
+
+-------------------------------------------------------------------
+Mon May  2 15:36:04 UTC 2011 - idoenmez@novell.com
+
+- Update to swig 2.0.3 
+  * Much better nested class/struct support.
+  * Much improved template partial specialization and explicit 
+    specialization handling.
+  * Namespace support improved with the 'nspace' feature where 
+    namespaces can be automatically translated into Java packages or C# namespaces.
+  * Improved typemap and symbol table debugging.
+  * Numerous subtle typemap matching rule changes when using the 
+    default (SWIGTYPE) type. These now work much like C++ class template 
+    partial specialization matching.
+  * Other small enhancements for typemaps. 
+    Typemap fragments are also now official and documented.
+  * Warning and error display refinements.
+  * Wrapping of shared_ptr is improved and documented now.
+  * Numerous C++ unary scope operator (::) fixes.
+  * Better support for boolean expressions.
+  * Various bug fixes and improvements in the Allegrocl, C#, Java, 
+    Lua, Octave, PHP, Python, R, Ruby and XML modules.
+
+-------------------------------------------------------------------
+Tue Apr  6 13:38:47 UTC 2010 - coolo@novell.com
+
+- fix build with new perl 5.12: there is no Reference type anymore,
+  but references and integers are the same, so a 0L was seen as 0
+  pointer - breaking the test suite. The fix is to remove the check
+
+-------------------------------------------------------------------
+Sun Feb 14 09:54:04 UTC 2010 - coolo@novell.com
+
+- take patch from swig svn to fix assertion on -xmlout (fix
+  yast2-storage build)
+
+-------------------------------------------------------------------
+Thu Dec 17 10:21:40 UTC 2009 - kkaempf@novell.com
+
+- tune .spec file to build on multiple distros
+
+-------------------------------------------------------------------
+Wed Dec 16 10:29:50 CET 2009 - jengelh@medozas.de
+
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Tue Nov 24 14:16:48 CET 2009 - kkaempf@suse.de
+
+- updated to 1.3.40
+  * SWIG now supports directors for PHP.
+  * PHP support improved in general.
+  * Octave 3.2 support added.
+  * Various bug fixes/enhancements for Allegrocl, C#, Java, Octave,
+    Perl, Python, Ruby and Tcl.
+  * Other generic fixes and minor new features.
+
+-------------------------------------------------------------------
+Wed Aug 12 14:31:43 CEST 2009 - mmarek@suse.cz
+
+- updated to 1.3.39
+  * Python 3 support added
+  * PHP4 support dropped
+  * many bugfixes and improvements
+- ccache support disabled as it didn't work (todo after 11.2)
+
+-------------------------------------------------------------------
+Tue Oct 21 10:01:26 CEST 2008 - mmarek@suse.cz
+
+- fixed two integer overflows in perlprimtypes.swg. These were
+  actually why the two tests on ppc failed. *sigh* (bnc#431945)
+
+-------------------------------------------------------------------
+Fri Sep 26 11:21:13 CEST 2008 - mmarek@suse.cz
+
+- disable two perl tests on ppc
+
+-------------------------------------------------------------------
+Wed Sep 24 15:29:33 CEST 2008 - mmarek@suse.cz
+
+- updated to 1.3.36
+  * Enhancement to directors to wrap all protected members
+  * Optimisation feature for objects returned by value
+  * A few bugs fixes in the PHP, Java, Ruby, R, C#, Python, Lua and
+    Perl modules
+  * Other minor generic bug fixes
+
+-------------------------------------------------------------------
+Tue Apr  8 09:55:39 CEST 2008 - mmarek@suse.cz
+
+- updated to 1.3.35
+  * Octave language module added
+  * Bug fixes in Python, Lua, Java, C#, Perl modules
+  * A few other generic bugs and runtime assertions fixed
+
+-------------------------------------------------------------------
+Wed Mar 26 15:04:30 CET 2008 - mmarek@suse.cz
+
+- remove the croak patch, croak(Nullch) is correct (see
+  https://sourceforge.net/tracker/?func=detail&atid=301645&aid=1925121&group_id=1645)
+- testsuite-warnings.patch not needed
+
+-------------------------------------------------------------------
+Thu Mar 20 14:28:40 CET 2008 - pth@suse.de
+
+- define SWIG_croak_null as croak("%s","") not croak(Nullch)
+  as croak is defined to take a string constant as 1st arg.
+- Don't return an unitialized local variable in template code.
+- Bracket if clauses so that the compiler doesn't warn in template code.
+
+-------------------------------------------------------------------
+Fri Feb 29 14:21:25 CET 2008 - mmarek@suse.cz
+
+- updated to 1.3.34
+  + shared_ptr support for Python
+  + Support for latest R - version 2.6
+  + Various minor improvements/bug fixes for R, Lua, Python, Java,
+    C#
+  + A few other generic bug fixes, mainly for templates and using
+    statements
+
+
+-------------------------------------------------------------------
+Wed Nov 28 17:48:16 CET 2007 - mmarek@suse.cz
+
+- updated to 1.3.33
+  + shared_ptr support for Java and C#
+  + Enhanced STL support for Ruby
+  + Fixed long-standing memory leak in PHP Module
+  + Numerous fixes and minor enhancements for Allegrocl, C#, cffi,
+    Chicken, Guile, Java, Lua, Ocaml, Perl, PHP, Python, Ruby, Tcl
+  + Improved warning support
+
+-------------------------------------------------------------------
+Wed Sep 19 16:54:03 CEST 2007 - mmarek@suse.cz
+
+- don't "update" autofoo when building for  older dists in the
+  buildservice
+
+-------------------------------------------------------------------
+Tue May 29 11:13:24 CEST 2007 - mmarek@suse.cz
+
+- install examples in '%%_libdir/swig/examples' (not Examples) to
+  pass the devel-file-in-non-devel-package rpmlint check
+
+-------------------------------------------------------------------
+Thu May 24 12:04:24 CEST 2007 - mmarek@suse.cz
+
+- fixed some rpmlint errors
+
+-------------------------------------------------------------------
+Wed Apr  4 16:23:51 CEST 2007 - mmarek@suse.cz
+
+- install the precompiled examples to %%_libdir/swig
+
+-------------------------------------------------------------------
+Wed Jan 24 12:22:40 CET 2007 - mmarek@suse.cz
+
+- temporarily disabled li_std_string run test under perl5 on ix86
+  and s390
+- build examples and testsuite with -fno-strict-aliasing (packages
+  using swig & python should do the same for now)
+- fixed testsuite-warnings.patch
+
+-------------------------------------------------------------------
+Fri Dec 15 10:19:15 CET 2006 - mmarek@suse.cz
+
+- updated to 1.3.31, for changes see
+  http://swig.svn.sourceforge.net/viewvc/swig/trunk/CHANGES?r1=9073&r2=9585&diff_format=u
+
+-------------------------------------------------------------------
+Wed Nov  8 15:23:27 CET 2006 - mmarek@suse.cz
+
+- fixed bug in the python module that caused aborts on some
+  architectures
+
+-------------------------------------------------------------------
+Tue Nov  7 13:59:52 CET 2006 - mmarek@suse.cz
+
+- don't install executable documentation files
+
+-------------------------------------------------------------------
+Fri Sep  8 11:00:48 CEST 2006 - mmarek@suse.cz
+
+- fixed for Python 2.5 (further fixes may be needed, at least it
+  builds again)
+  (python25.patch)
+- use $RPM_OPT_FLAGS, unhide compilation of test wrappers (ditto)
+  (testsuite.patch)
+
+-------------------------------------------------------------------
+Wed Sep  6 09:30:14 CEST 2006 - mmarek@suse.de
+
+- fixed build
+
+-------------------------------------------------------------------
+Wed Jul 26 13:21:08 CEST 2006 - mmarek@suse.cz
+
+- update to version 1.3.29
+  * support for Common Lisp with CFFI
+  * new %extend_smart_pointer() directive to extend SWIG smart
+    pointer support in Python
+  * new %bang directive for methods ending with exclamation marks
+    in Ruby
+  * New -autorename option for Ruby to rename methods to match
+    Ruby naming conventions
+  * enhancements to the %rename directive
+  * initial support for wrappint Java code in scripting languages
+    using gcj
+  * new %copyctor directive for automatic generation of copy
+    constructors
+  * many more enhancements + bugfixes
+- fixed top-level Makefile.in to work with autoconf-2.60
+  (autoconf260.patch)
+- added python-devel to buildrequires to test the Python module
+  during build
+  
+-------------------------------------------------------------------
+Thu Jul 20 16:06:53 CEST 2006 - schwab@suse.de
+
+- Fix missing slash.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:00:20 CET 2006 - mmarek@suse.cz
+
+- split documentation into swig-doc and swig-examples
+  [#153015]
+
+-------------------------------------------------------------------
+Mon Jan 30 11:04:51 CET 2006 - mmarek@suse.cz
+
+- fix build with perl-5.8.8 (thanks to Olaf Hering)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 15:28:45 CET 2006 - mmarek@suse.cz
+
+- use -fPIC instead of -fpic (-fpic didn't pass testsuite on s390x)
+
+-------------------------------------------------------------------
+Tue Jan 10 17:51:17 CET 2006 - mmarek@suse.cz
+
+- fix endless loop when write fails
+  [#141754] (write-loop.patch)
+
+-------------------------------------------------------------------
+Wed Nov 16 15:09:33 CET 2005 - ro@suse.de
+
+- fix build on x86_64 (fPIC in gifplot) 
+
+-------------------------------------------------------------------
+Wed Nov  2 22:27:06 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Nov  2 17:48:11 CET 2005 - uli@suse.de
+
+- update -> 1.3.27
+- parallelize build
+- run test suite
+
+-------------------------------------------------------------------
+Mon Apr 11 11:56:46 CEST 2005 - mcihar@suse.cz
+
+- update to 1.3.24 again, I hope that subversion guys will fix their
+  problems till next release
+
+-------------------------------------------------------------------
+Mon Jan 24 01:49:21 CET 2005 - ro@suse.de
+
+- fix swigpy build on lib64 
+
+-------------------------------------------------------------------
+Thu Jan  6 11:51:21 CET 2005 - mcihar@suse.cz
+
+- back to 1.3.21 due to subversion incompatibility
+
+-------------------------------------------------------------------
+Tue Dec 21 16:51:38 CET 2004 - mcihar@suse.cz
+
+- update to 1.3.24
+- our python now has sys.lib, so no need for patching
+- spec file cleanup
+- swiglibdir is now same as upstream - $datadir/swig/version
+
+-------------------------------------------------------------------
+Tue Nov 23 17:05:25 CET 2004 - mcihar@suse.cz
+
+- update to 1.3.23
+- runtime no more included
+- remove most of buildrequires, as they're needed just for examples and
+  they anyway don't compile out of the source directory
+
+-------------------------------------------------------------------
+Mon Apr 19 13:04:38 CEST 2004 - mcihar@suse.cz
+
+- -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Mar  8 14:49:52 CET 2004 - ro@suse.de
+
+- added php4 to neededforbuild
+- renamed mod_php4-devel to php4-devel in neededforbuild
+
+-------------------------------------------------------------------
+Fri Jan 23 15:19:38 CET 2004 - mcihar@suse.cz
+
+- updated to 1.3.21
+
+-------------------------------------------------------------------
+Thu Dec 18 12:37:25 CET 2003 - mcihar@suse.cz
+
+- Updated to 1.3.20. This release includes a large number of
+  enhancements including improved C++ support, directors, contracts, and
+  more.
+
+-------------------------------------------------------------------
+Fri Aug 15 12:21:49 CEST 2003 - mcihar@suse.cz
+
+- handle libdir correctly
+
+-------------------------------------------------------------------
+Thu Aug 14 19:27:27 CEST 2003 - mcihar@suse.cz
+
+- try to force swig compilation to accept CFLAGS
+- cleaned up specfile
+
+-------------------------------------------------------------------
+Wed May 28 16:26:51 CEST 2003 - mcihar@suse.cz
+
+- add -fPIC
+- fix libtool problems
+
+-------------------------------------------------------------------
+Tue May 27 19:23:41 CEST 2003 - mcihar@suse.cz
+
+- fixed permissions for files in lib
+
+-------------------------------------------------------------------
+Thu May 15 12:22:38 CEST 2003 - mcihar@suse.cz
+
+- fix permissions for documentation
+
+-------------------------------------------------------------------
+Mon May 12 17:23:12 CEST 2003 - mcihar@suse.cz
+
+- use swiglibdir to have save setup as previous versions
+
+-------------------------------------------------------------------
+Mon May 12 13:01:30 CEST 2003 - mcihar@suse.cz
+
+- updated to 1.3.19
+- compile with -fPIC (should fix #26765)
+
+-------------------------------------------------------------------
+Thu Feb 13 12:54:18 CET 2003 - mcihar@suse.cz
+
+- configure scripts finds correctly more requirements:
+    - java includes
+    - python on lib64
+    - ocaml on lib64
+- build more runtimes:
+    - added php4
+    - fixed perl
+
+-------------------------------------------------------------------
+Wed Jan 22 16:34:50 CET 2003 - mcihar@suse.cz
+
+- not marking files as config, as they do not contain configuration
+- simplified file list
+
+-------------------------------------------------------------------
+Mon Jan 06 12:20:08 CET 2003 - mcihar@suse.cz
+
+- updated to 1.3.17:
+    * added pike and ocaml bindings
+    * many bugfixes
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Aug 14 14:39:41 MEST 2002 - mls@suse.de
+
+- made it work with threaded perl-5.8
+
+-------------------------------------------------------------------
+Thu Jun 27 13:57:22 CEST 2002 - mcihar@suse.cz
+
+- updated to 1.3.13
+- added more documentation (html manual and some others)
+
+-------------------------------------------------------------------
+Tue Jun 11 16:46:48 MEST 2002 - mls@suse.de
+
+- delete bogus config.{log,status} from Examples/GIFPlot
+
+-------------------------------------------------------------------
+Tue May 21 14:41:20 CEST 2002 - meissner@suse.de
+
+- compile with tcl again (needs --with-tclconfig)
+
+-------------------------------------------------------------------
+Tue May 21 13:39:50 CEST 2002 - ro@suse.de
+
+- fix libdir usage 
+
+-------------------------------------------------------------------
+Mon Jan 28 10:58:32 CET 2002 - tcrhak@suse.cz
+
+- fixed parser.yxx to compile with bison 1.32
+
+-------------------------------------------------------------------
+Tue Jan  8 11:29:12 CET 2002 - cihlar@suse.cz
+
+- fixed to compile with python 2.2
+
+-------------------------------------------------------------------
+Thu Dec  6 11:00:16 CET 2001 - cihlar@suse.cz
+
+- update to version 1.3.9:
+  * many fixes and improvements
+- added libraries in /usr/lib
+
+-------------------------------------------------------------------
+Fri Jul 27 08:21:51 CEST 2001 - cihlar@suse.cz
+
+- update to version 1.3.6
+- fixed call of suse_update_config
+- call autoconf also in subdirs
+- added xf86 to neededforbuild
+
+-------------------------------------------------------------------
+Sat Jan 20 19:38:42 CET 2001 - schwab@suse.de
+
+- Fix last change to do it right.
+
+-------------------------------------------------------------------
+Fri Jan 19 08:38:33 CET 2001 - cihlar@suse.cz
+
+- added swig1.3a5-Printv.dif.bz2 - fixed to work on ia64
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:51 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Mon Nov 27 08:14:56 CET 2000 - cihlar@suse.cz
+
+- removed kaffe from neededforbuild
+
+-------------------------------------------------------------------
+Fri Nov 17 09:23:28 CET 2000 - ro@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Thu Nov 16 10:34:29 CET 2000 - cihlar@suse.cz
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Thu Nov 16 08:46:06 CET 2000 - cihlar@suse.cz
+
+- update to version 1.3a5
+- fixed file list
+- fixed neededforbuild
+- improved optimalization
+
+-------------------------------------------------------------------
+Thu Aug 24 08:33:09 CEST 2000 - cihlar@suse.cz
+
+- update to version 1.3a3
+- bzipped sources
+
+-------------------------------------------------------------------
+Wed Aug 16 14:31:54 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+
+-------------------------------------------------------------------
+Fri Jun  2 11:28:17 CEST 2000 - kukuk@suse.de
+
+- Use doc macro
+
+-------------------------------------------------------------------
+Mon Jan 31 18:39:02 CET 2000 - ro@suse.de
+
+- fixed to compile
+- man to /usr/share 
+
+-------------------------------------------------------------------
+Sun Oct 17 02:24:35 CEST 1999 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------                                 
+Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
+
+- Reinserted old # Commandline: line.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon May  3 15:43:56 MEST 1999 - kettner@suse.de
+
+ - Spec file created from swig1.1p5.tar.gz by autospec

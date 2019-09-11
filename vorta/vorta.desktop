@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Categories=Utility;Archiving;
+Name=Vorta
+Icon=vorta
+GenericName=Backup Client
+Exec=/usr/bin/vorta
+Encoding=UTF-8
+Terminal=false
+Comment=Backup Client for Borgbackup
+

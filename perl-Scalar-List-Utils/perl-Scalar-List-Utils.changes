@@ -1,0 +1,282 @@
+-------------------------------------------------------------------
+Fri Aug  9 05:26:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.51 -- 2019-08-08 14:31:32
+  	[CHANGES]
+  	 * Add TO_JSON to List::Util::_Pair (thanks ilmari)
+  	 * Various minor docs fixes
+  	
+  	[BUGFIXES]
+  	 * Don't segfault in subname() on deleted stashes (thanks ilmari)
+  	 * Fix uniqnum for large floats and numeric strings (thanks ilmari)
+
+-------------------------------------------------------------------
+Wed Feb 21 06:59:03 UTC 2018 - coolo@suse.com
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.50 -- 2018-02-20 19:13:27
+  	[CHANGES]
+  	 * Added head() and tail() functions (thanks preaction)
+  	 * Support binary and Unicode in symbol names for set_subname()
+  
+  	[BUGFIXES]
+  	 * Fix building with C++ and C89 compilers
+  	 * Fix uniq() test for old Test::More
+  	 * Fix example get_code_info for unnamed subs (RT#116962)
+  	 * Fixes for symbol names containing ' characters
+           * Don't leak SVs from sum0/product1 when called with zero args
+  	   (RT#124017)
+           * Use sv_rvunweaken() in Scalar::Util::unweaken() (thanks ilmari)
+  	 * Misc. fixes for perl 5.6
+
+-------------------------------------------------------------------
+Sat Sep  9 06:19:59 UTC 2017 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.49 -- 2017-09-08 12:25:54
+  	[CHANGES]
+  	 * Fixes for unit tests to pass on perl 5.6.2
+  	 * Fix typo in documentation
+
+-------------------------------------------------------------------
+Sat Jun 24 06:19:49 UTC 2017 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.48 -- 2017/06/23 17:29:42
+  	[CHANGES]
+  	 * Note in documentation that outer function's @_ can be accessed in
+  	   some blocks, but ought not be (thanks wchristian)
+  
+  	[BUGFIXES]
+  	 * Ensure pairmap extends its stack correctly (thanks davem)
+  	 * Fix name of List::Util::unpairs in its error messages
+
+-------------------------------------------------------------------
+Fri Dec 23 07:05:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.47 -- 2016/12/22 18:54:45
+  	[CHANGES]
+  	 * Make XS code ppport.h-free when in core
+  
+  	[BUGFIXES]
+  	 * Fix compliling on C++11
+  	 * Perform taint checks using $^X instead of some %ENV key because of
+  	   the Test::Simple vars (RT119169)
+
+-------------------------------------------------------------------
+Sat Oct  1 06:12:57 UTC 2016 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.46 -- 2016/09/28 23:17:07
+  	[CHANGES]
+  	 * Remember to add unpairs and uniq to SYNOPSIS
+  	 * Document the behaviour of uniqnum() on NaN
+  
+  	[BUGFIXES]
+  	 * C89 fixes
+  	 * Various internal bugfixes backported from perl core
+
+-------------------------------------------------------------------
+Mon Apr  4 10:21:07 UTC 2016 - coolo@suse.com
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.45 -- 2016/03/25 16:09:40
+  	[CHANGES]
+  	 * Renamed existing uniq() to uniqstr()
+  	 * Canonicalise undef to {empty string,zero} in uniq{str,num}()
+  	 * Add a new uniq() with more DWIMish semantics around undef
+  
+  	[BUGFIXES]
+  	 * Fix uses of GET magic by the uniq*() family of functions. GET magic
+  	   is now always invoked exactly once if it exists.
+
+-------------------------------------------------------------------
+Wed Mar 23 11:05:28 UTC 2016 - coolo@suse.com
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.44 -- 2016/03/17 23:08:46
+  	[CHANGES]
+  	 * Added List::Util::uniq() and uniqnum()
+  	   (with thanks to randir and ilmari for assistance writing code and
+  	    tests)
+
+-------------------------------------------------------------------
+Sat Feb 13 10:39:02 UTC 2016 - coolo@suse.com
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.43 -- 2016/02/08 15:05:23
+  	[CHANGES]
+  	 * Updated documentation
+  	 * Added MIN_PERL_VERSION to Makefile.PL
+  	 * Added "use warnings" to all tests
+  	 * Added MANIEST.SKIP patterns for common editor backup/swapfiles
+  	 * Test product(0,0) (RT105415)
+  
+  	[BUGFIXES]
+  	 * Fix build on non-C99 compilers
+  	 * Avoid divide-by-zero exception if product()'s accumulator is IV zero
+  	   (RT105415)
+  	 * Possible fix for SvTEMP issues in first and any/all/none/notall
+  	   (RT96343)
+
+-------------------------------------------------------------------
+Wed Jul  8 07:49:36 UTC 2015 - coolo@suse.com
+
+- recompile with perl 5.22
+
+-------------------------------------------------------------------
+Sat May  2 08:21:55 UTC 2015 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.42 -- 2015/04/32 01:25:55
+  	[CHANGES]
+  	 * Added List::Util::unpairs() - the inverse of pairs()
+  	 * Documentation to pre-warn users about the possible behaviour in a
+  	   later version where the pair* higher-order functionals are no longer
+  	   transparent to $_
+  
+  	[BUGFIXES]
+  	 * Silence some warnings at test time
+  	 * Ensure that the List::Util we're loading the XS via is a sufficient
+  	   version when Scalar::Util or Sub::Util load it (RT100863)
+  
+  1.41 -- 2014/09/05 15:49:50
+  	[BUGFIXES]
+  	 * Avoid pre-C99 declaration after statements (RT98624)
+  	 * Fix use of GetMagic in List::Util::reduce (RT63211)
+  
+  1.40 -- 2014/08/30 11:36:36
+  	[CHANGES]
+  	 * Added entire new module, Sub::Util to contain functions related
+  	   to CODE refs
+  	 * Added subname inspired by Sub::Identify
+  	 * Added set_subname copied and renamed from Sub::Name
+  	 * Also moved set_prototype into Sub::Name, with back-compat wrapper
+  	   in Scalar::Util
+  	 * Added prototype wrapper of CODE::prototype, for completeness
+  	 * Nicer module documentation format, allows neater use of L</...>
+  	
+  	[THANKS]
+  	 * This change was written at the YAPC::EU 2014 Hackathon hosted by
+  	   Liz Mattijsen and Wendy van Dijk; much thanks to them for being its
+  	   catalyst.
+  
+  1.39 -- 2014/06/05 15:54:59
+  	[CHANGES]
+  	 * Have pairs() return blessed objects that recognise ->key and
+  	   ->value as well as being two-element ARRAYs
+  	 * Booleanise the result of looks_like_number() so as not to
+  	   accidentally leak abstraction (RT94806)
+  	 * Document the version each function was added in (RT96220)
+  
+  	[BUGFIXES]
+  	 * Try to preserve UV precision in sum() where possible (RT95902)
+  	 * Document known lexical capture in pairmap bug RT95409
+  	 * SvGETMAGIC() in set_prototype() (RT72080)
+  
+  1.38 -- 2014/01/22 15:33:24
+          [BUGFIXES]
+  	 * Avoid Perl_ckwarn() in unweaken() because it's missing on older
+  	   perls; ckWARN() like the rest of the code (RT92363)
+  
+  1.37 -- 2014/01/21 14:44:34
+          [BUGFIXES]
+  	 * Fix unweaken() for perls < 5.14; need to use sv_setsv() to undef
+  	   rather than sv_clear() (RT92226)
+
+-------------------------------------------------------------------
+Fri Jan 17 18:53:15 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.36:
+  * Added Scalar::Util::unweaken()
+  * Various documentation changes/updates
+  * Correct uses of overload operators in unit tests (RT91969)
+- do not run weak test on SLE_11
+
+-------------------------------------------------------------------
+Fri Dec 13 12:20:17 UTC 2013 - coolo@suse.com
+
+- update to 1.35:
+   * Added List::Util::product()
+   * Ensure that List::Util::{any,all,none,notall} return PL_sv_{yes,no}
+   * Implement reduce() and first() even in the absence of MULTICALL
+   * Avoid C99/C++-style comments in XS code
+   * Fix dualvar tests for perl 5.6; fix skip() test counts in dualvar.t
+   * Neater documentation examples of other functions that can be built using
+     reduce
+   * Added any, all, none, notall list reduction functions
+     (inspired by List::MoreUtils)
+
+-------------------------------------------------------------------
+Sat Oct  5 06:30:51 UTC 2013 - coolo@suse.com
+
+- update to 1.32:
+  * Skip pairmap()'s MULTICALL implementation 5.8.9 / 5.10.0 as it doesn't
+    work (RT87857)
+  * Comment on the fact that package "0" is defined but false (RT88201)
+  * TODO test in t/readonly.t now passes since 5.19.3 (RT88223)
+
+-------------------------------------------------------------------
+Mon Aug 19 05:31:34 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.31:
+  + Bugfix pairmap to return list length in scalar context
+  + Added "Odd number of elements" warnings to all pair* functions
+  + Added pairfirst
+  + Added MULTICALL implementations to pairmap/pairgrep/pairfirst
+  + Fix declaration-after-code for C99-challenged compilers
+  + Documentation updates to List::Util
+  + Bugfix to pairmap/pairgrep when stack moves beneath them 
+    during operation
+  + Added pairgrep, pairmap, pairs (inspired by List::Pairwise)
+  + Added pairkeys and pairvalues
+  + Fix multicall refcount bug RT#80646
+  + Merge patch from JDHEDDEN - Add Scalar::Util::isdual() RT#76150
+  + Fix a hash order dependency bug t/tainted.t
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Mar 11 08:00:20 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.23:
+  + Use PERL_NO_GET_CONTEXT for efficiency (see perlguts)
+  + avoid non-portable warnings
+  + Fix PP::reftype in edge cases
+  + RT#51484 Preserve utf8 flag of string passed to dualvar()
+  + RT#51454 Check first argument to first/reduce is a code 
+    reference
+  + RT#50528 [PATCH] p_tainted.t fix for VMS [Craig A. Berry]
+  + RT#48550 fix pure perl looks_like_number not to match 
+    non-ascii digits
+
+-------------------------------------------------------------------
+Tue Sep 15 22:17:03 CEST 2009 - lars@linux-schulserver.de
+
+- initial package build 
+

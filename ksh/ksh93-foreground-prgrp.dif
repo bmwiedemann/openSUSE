@@ -1,0 +1,13 @@
+--- src/cmd/ksh93/sh/jobs.c
++++ src/cmd/ksh93/sh/jobs.c	2012-02-08 10:52:14.000000000 +0000
+@@ -845,7 +845,9 @@ static void job_reset(register struct pr
+ {
+ 	/* save the terminal state for current job */
+ #ifdef SIGTSTP
+-	job_fgrp(pw,tcgetpgrp(job.fd));
++	pid_t tgrp;
++	if((tgrp=tcgetpgrp(job.fd))!=job.mypid)
++		job_fgrp(pw,tgrp);
+ 	if(tcsetpgrp(job.fd,job.mypid) !=0)
+ 		return;
+ #endif	/* SIGTSTP */

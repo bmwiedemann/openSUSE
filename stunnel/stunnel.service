@@ -1,0 +1,14 @@
+[Unit]
+Description=SSL tunnel for network daemons
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+ExecStart=/usr/sbin/stunnel
+Type=forking
+# stunnel is chrooted, so pidpath is combination of 2 configfile options
+PIDFile=/var/lib/stunnel/var/run/stunnel.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

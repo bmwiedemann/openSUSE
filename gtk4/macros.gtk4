@@ -1,0 +1,27 @@
+# RPM macros for packages installing a GTK+ IM module
+#
+###
+#
+# When a package installs a GTK+ IM module, it should use all
+# three macros:
+#
+#  - %gtk4_immodule_requires in the preamble
+#  - %gtk4_immodule_post in %post
+#  - %gtk4_immodule_postun in %postun
+#
+###
+
+%gtk4_immodule_requires                                  \
+Requires(post): gtk4-tools                               \
+Requires(postun): gtk4-tools
+
+# On install, update the cache
+%gtk4_immodule_post                                      \
+  %{_bindir}/gtk4-query-immodules --update-cache         \
+
+# On uninstall, update the cache. Note: we ignore upgrades (already
+# handled in %post of the new package).
+%gtk3_immodule_postun                                    \
+if [ $1 -eq 0 ]; then                                    \
+    %{_bindir}/gtk4-query-immodules --update-cache       \
+fi

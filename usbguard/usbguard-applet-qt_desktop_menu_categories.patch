@@ -1,0 +1,12 @@
+Index: usbguard-0.7.4/src/GUI.Qt/usbguard-applet-qt.desktop.in
+===================================================================
+--- usbguard-0.7.4.orig/src/GUI.Qt/usbguard-applet-qt.desktop.in
++++ usbguard-0.7.4/src/GUI.Qt/usbguard-applet-qt.desktop.in
+@@ -6,6 +6,6 @@ Comment=USBGuard Qt Applet
+ TryExec=usbguard-applet-qt
+ Exec=usbguard-applet-qt
+ Icon=usbguard-icon
+-Categories=System;
++Categories=System;Security;
+ Keywords=USB;USBGuard;Applet;Qt;
+ X-Desktop-File-Install-Version=@VERSION@

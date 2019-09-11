@@ -1,0 +1,194 @@
+diff -ru a/man/Makefile.in b/man/Makefile.in
+--- a/man/Makefile.in
++++ b/man/Makefile.in
+@@ -43,12 +43,12 @@
+ test:
+ 
+ install: $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man3
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man3
+ 	@for i in $(MANUAL) ; do ( \
+ 	    if test -f $(srcdir)/$$i; then file=$(srcdir)/$$i; \
+ 	    else file=$$i; fi; \
+ 	    fn=`basename $$i` ; \
+-	    $(INSTALL_DATA) $$file $(MANDIR)/man3/$$fn \
++	    $(INSTALL_DATA) $$file $(DESTDIR)$(MANDIR)/man3/$$fn \
+ 	; ) ; done
+ 
+ uninstall:
+diff -ru a/src/lib/Makefile.in b/src/lib/Makefile.in
+--- a/src/lib/Makefile.in
++++ b/src/lib/Makefile.in
+@@ -93,12 +93,12 @@
+ 	$(RANLIB) $(LIBRARY)
+ 
+ install: $(LIBRARY)
+-	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL_DATA) $(LIBRARY) $(LIBDIR)/$(LIBRARY)
+-	$(INSTALL) -d -m 755 $(INCDIR)
+-	$(INSTALL_DATA) $(HEADER) $(INCDIR)/$(HEADER)
+-	$(INSTALL) -d -m 755 $(LIBDIR)/pkgconfig
+-	$(INSTALL_DATA) $(PKGCONFIG) $(LIBDIR)/pkgconfig/$(PKGCONFIG)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)
++	$(INSTALL_DATA) $(LIBRARY) $(DESTDIR)$(LIBDIR)/$(LIBRARY)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(INCDIR)
++	$(INSTALL_DATA) $(HEADER) $(DESTDIR)$(INCDIR)/$(HEADER)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)/pkgconfig
++	$(INSTALL_DATA) $(PKGCONFIG) $(DESTDIR)$(LIBDIR)/pkgconfig/$(PKGCONFIG)
+ 
+ uninstall:
+ 	$(RM) -f $(LIBDIR)/pkgconfig/$(PKGCONFIG)
+diff -ru a/src/libcxx/Makefile.in b/src/libcxx/Makefile.in
+--- a/src/libcxx/Makefile.in
++++ b/src/libcxx/Makefile.in
+@@ -71,8 +71,8 @@
+ 	) ; done
+ 
+ install:
+-	$(INSTALL) -d -m 755 $(INCDIR)
+-	$(INSTALL_DATA) $(CXX_HEADER) $(INCDIR)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(INCDIR)
++	$(INSTALL_DATA) $(CXX_HEADER) $(DESTDIR)$(INCDIR)
+ 
+ uninstall:
+ 	$(RM) -f $(INCDIR)/$(CXX_HEADER)
+diff -ru a/src/libf/Makefile.in b/src/libf/Makefile.in
+--- a/src/libf/Makefile.in
++++ b/src/libf/Makefile.in
+@@ -391,8 +391,8 @@
+ 	$(SED) -e "s%/\*%!%g" -e "s%\*/%%g" $< > $@
+ 
+ install:
+-	$(INSTALL) -d -m 755 $(INCDIR)
+-	$(INSTALL_DATA) pnetcdf.inc $(INCDIR)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(INCDIR)
++	$(INSTALL_DATA) pnetcdf.inc $(DESTDIR)$(INCDIR)
+ 
+ uninstall:
+ 	$(RM) -f $(INCDIR)/pnetcdf.inc
+diff -ru a/src/libf90/Makefile.in b/src/libf90/Makefile.in
+--- a/src/libf90/Makefile.in
++++ b/src/libf90/Makefile.in
+@@ -69,8 +69,8 @@
+ $(PNETCDF_MOD): $(SRCS)
+ 
+ install: $(PNETCDF_MOD)
+-	$(INSTALL) -d -m 755 $(INCDIR)
+-	$(INSTALL_DATA) $(PNETCDF_MOD) $(INCDIR)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(INCDIR)
++	$(INSTALL_DATA) $(PNETCDF_MOD) $(DESTDIR)$(INCDIR)
+ 
+ uninstall:
+ 	$(RM) -f $(INCDIR)/$(PNETCDF_MOD)
+diff -ru a/src/utils/ncmpidiff/Makefile.in b/src/utils/ncmpidiff/Makefile.in
+--- a/src/utils/ncmpidiff/Makefile.in
++++ b/src/utils/ncmpidiff/Makefile.in
+@@ -34,11 +34,11 @@
+ 	$(LINK.c) $(OBJS) $(LDFLAGS) $(LIBS) 
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
+ 
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)
+diff -ru a/src/utils/ncmpidump/Makefile.in b/src/utils/ncmpidump/Makefile.in
+--- a/src/utils/ncmpidump/Makefile.in
++++ b/src/utils/ncmpidump/Makefile.in
+@@ -45,11 +45,11 @@
+ 	     echo "*** $(PROGRAM) test successful ***"
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
+ 
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)
+diff -ru a/src/utils/ncmpigen/Makefile.in b/src/utils/ncmpigen/Makefile.in
+--- a/src/utils/ncmpigen/Makefile.in
++++ b/src/utils/ncmpigen/Makefile.in
+@@ -47,11 +47,11 @@
+ test:           $(PROGRAM) b-test c-test FORCE
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
+ 
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)
+diff -ru a/src/utils/ncmpivalid/Makefile.in b/src/utils/ncmpivalid/Makefile.in
+--- a/src/utils/ncmpivalid/Makefile.in
++++ b/src/utils/ncmpivalid/Makefile.in
+@@ -34,11 +34,11 @@
+ 	$(LINK.c) $(OBJS) $(LDFLAGS) $(LIBS) 
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
+ 
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)
+diff -ru a/src/utils/ncoffsets/Makefile.in b/src/utils/ncoffsets/Makefile.in
+--- a/src/utils/ncoffsets/Makefile.in
++++ b/src/utils/ncoffsets/Makefile.in
+@@ -25,10 +25,10 @@
+ 	$(SEQ_CC) -o $@ $<
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)
+diff -ru a/src/utils/pnetcdf_version/Makefile.in b/src/utils/pnetcdf_version/Makefile.in
+--- a/src/utils/pnetcdf_version/Makefile.in
++++ b/src/utils/pnetcdf_version/Makefile.in
+@@ -41,10 +41,10 @@
+ 	$(SEQ_CC) $(DEFS) -o $@ $<
+ 
+ install: $(PROGRAM) $(MANUAL)
+-	$(INSTALL) -d -m 755 $(MANDIR)/man1
+-	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(MANDIR)/man1/$(MANUAL)
+-	$(INSTALL) -d $(BINDIR)
+-	$(INSTALL) -m 755 $(PROGRAM) $(BINDIR)/$(PROGRAM)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL_DATA) $(srcdir)/$(MANUAL) $(DESTDIR)$(MANDIR)/man1/$(MANUAL)
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(PROGRAM) $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 
+ uninstall:
+ 	$(RM) -f $(BINDIR)/$(PROGRAM)

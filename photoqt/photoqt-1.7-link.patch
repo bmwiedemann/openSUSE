@@ -1,0 +1,12 @@
+diff -ruN photoqt-1.7.orig/CMakeLists.txt photoqt-1.7/CMakeLists.txt
+--- photoqt-1.7.orig/CMakeLists.txt	2018-05-15 17:00:49.468725114 +0300
++++ photoqt-1.7/CMakeLists.txt	2018-05-16 22:24:29.497781168 +0300
+@@ -220,7 +220,7 @@
+         message(FATAL_ERROR "** Unable to locate FreeImage... is it installed?")
+     elseif(${FREEIMAGE_FOUND})
+         include_directories(${FREEIMAGE_INCLUDE_DIRS})
+-        target_link_libraries(${PROJECT_NAME} ${FREEIMAGE_LIBRARIES})
++        target_link_libraries(${PROJECT_NAME} ${FREEIMAGE_LIBRARIES} -lfreeimage)
+         message("** FreeImage enabled")
+         add_definitions(-DFREEIMAGE)
+     endif(NOT ${FREEIMAGE_FOUND})

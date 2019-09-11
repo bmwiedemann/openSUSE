@@ -1,0 +1,854 @@
+-------------------------------------------------------------------
+Mon Aug  1 02:16:08 UTC 2016 - sflees@suse.de
+
+- Update to 2.37
+  * Changes from 2.36 to 2.37
+    * Fix issue with empty glyphs in condensed typefaces in the released source files.
+  * Changes from 2.35 to 2.36
+    * Math: added DejaVu Math Tex Gyre by B. Jackowski, P. Strzelczyk and P. Pianowski (on behalf of TeX users groups)
+    * Sans: removed dot of U+06BA in all forms
+    * Sans: fixed position of three dots of U+06BD in init and medi forms (by Denis Jacquerye)
+    * Sans: corrected direction of contours in U+05E7 (by Lior Halphon]])
+    * Sans: added U+1F643 (by Olleg Samoylov)
+    * Serif: moved up U+0360-0361 (by Gee Fung Sit 薛至峰]])
+    * Serif: increased spacing of Roman numerals U+2161-2163, U+2165-2168, U+216A-216B (by Gee Fung Sit 薛至峰)
+    * Serif: fixed anchor position of U+00E6 (by Gee Fung Sit 薛至峰)
+    * Sans: fixed vertical position of U+20BA (by Gee Fung Sit 薛至峰)
+    * Sans, Serif: fixed glyph height of Block Elements (by Gee Fung Sit 薛至峰)
+    * Sans, Serif: added U+A698-A699 (by Gee Fung Sit 薛至峰)
+    * Sans, Mono, Serif: added U+037F (by Gee Fung Sit 薛至峰)
+    * Mono: added U+0376-0377, U+037B-037D (by Gee Fung Sit 薛至峰)
+    * Serif: removed duplicate point from U+1D05 (by Gee Fung Sit 薛至峰)
+    * Mono: added U+20BA, U+20BD (by Gee Fung Sit 薛至峰)
+    * Sans: Added moon symbols U+1F311-1F318 (by Ben Laenen) 
+
+-------------------------------------------------------------------
+Thu Jul 16 01:17:08 UTC 2015 - cornelis@solcon.nl
+
+- Update to 2.35:
+  * For details see: http://dejavu-fonts.org/wiki/Changelog
+
+-------------------------------------------------------------------
+Mon Aug 26 12:41:13 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.34:
+  * This release includes the addition of Lisu, an update of Georgian,
+    the addition of some symbols and the addition and modification
+    of several Latin characters.
+  * Sans, SansMono, Serif: unlinked references of U+2596 for bug 50848
+  * Sans, SansMono, Serif: added U+A7AA
+  * Sans, SansMono, Serif: added U+2A6A, U+2A6B, U+2E1F based on U+223B
+  * Sans, Serif: removed superfluous ligature definitions for
+    ffl und ffi (bug 55363)
+  * Sans, Serif: swapped glyphs for U+25D2 and U+25D3 (bug 55197)
+  * Sans, Serif: added U+A740, U+A741
+  * Sans: added U+20BA Turkish Lira sign
+  * Sans: replaced Georgian Asomtavruli U+10A0-U+10C5 and Mkhedruli
+    U+10D0-U+10FC with new version
+  * Sans: added Georgian Nuskhuri U+2D00-U+U+2D25
+  * Sans: added Private Use Area glyphs for Georgian U+F400-U+F441
+  * Sans: tweaked U+0250, U+0254
+  * Sans: adjusted hinting of U+032C-U+032D, avoiding problem on
+    some platforms
+  * Sans: added U+A7A0-U+A7A9, pre-1921 Latvian letters with
+    oblique stroke
+  * Sans: added anchors to U+2C6D
+  * Sans: added cedilla anchor to some Latin characters
+  * Sans: added ogonek anchor to A, E, O, U, Y
+  * Sans: adjusted ogonek reference in U+0172, U+01EA, U+01EB
+  * Sans: added anchors to U+0104, U+0105
+  * Sans: added U+1F600, U+1F611, U+1F615, U+1F617, U+1F619,
+    U+1F61B, U+1F61F, U+1F626-U+1F627, U+1F62E-U+1F62F, U+1F634
+  * Sans: replaced U+27A1 with mirror image of U+2B05 for consistency
+  * Sans: copied hints from U+14A3, U+14A7 to U+2142-U+2143
+  * Sans: added Lisu block
+  * Sans: typographical improvements to U+0166-U+0167, U+02A6, U+02AA
+  * Sans: slightly change hinting of "2" to fix bug 37395
+  * Sans: fixed U+1444 which had wrong top dot that shouldn't be there
+  * Sans: added anchors for diacritics to U+01B7, U+01B8, U+01B9, U+0292
+  * Sans: added U+01B7, U+01B8 to context for case diacritics above
+  * SansMono: fixed U+0574
+  * SansMono: added U+2016, U+27C2
+  * SansMono: added U+02CE, U+02CF
+  * SansMono: added U+2148, U+27E6-U+27E7, U+2B05-U+2B0D, U+1D55A
+  * Serif: added U+02BA, U+02C2-U+02C5, U+02CA-U+02CB, U+02D7, U+02F3,
+    U+02F7, U+046C-U+046D, U+0476-U+0477, U+1D7C-U+1D7F, U+20B8, U+2132,
+    U+214E, U+2C7B to Serif
+  * Serif: typographic improvements to U+0194, U+01B1, U+0263, U+028A,
+    U+02A6, U+02A8, U+02AA, U+02E0, U+03DC, U+1D3B, U+1D7B
+  * Serif: added small cap versions of q, x (in italic styles), delta,
+    theta, xi, sigma, phi, omega, not wired in yet
+  * Serif: added anchors to U+0234-U+0236
+  * Serif: added U+02EC, U+02EF, U+02F0, U+0360
+
+-------------------------------------------------------------------
+Fri Mar 22 12:21:07 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:55 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan  3 11:39:19 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  Use this SPDX proprietary extension tag until upstream SPDX adopts a
+  permissive category
+
+-------------------------------------------------------------------
+Wed Dec 21 16:16:27 UTC 2011 - toms@suse.de
+
+- Renamed dejavu -> dejavu-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Wed Jun 15 12:04:42 UTC 2011 - vlado.paskov@gmail.com
+
+- update to version 2.33
+  * added Old Italic block to Sans
+  * added U+051E, U+051F to Sans
+  * added U+01BA, U+0372-U+0373, U+0376-U+0377, U+03CF, U+1D00-U+1D01, 
+    U+1D03-U+1D07, U+1D0A-U+1D13, U+1D15, U+1D18-U+1D1C, U+1D20-U+1D2B, 
+    U+1D2F, U+1D3D, U+1D5C-U+1D61, U+1D66-U+1D6B, U+1DB8, U+1E9C-U+1E9D, 
+    U+1EFA-U+1EFB, U+2C60-U+2C61, U+2C63, U+A726-U+A73C, U+A73E-U+A73F, 
+    U+A746-U+A747, U+A74A-U+A74B, U+A74E+U+A74F, U+A768-U+A769, 
+    U+A77B-U+A77C, U+A780-U+A787, U+A790-U+A791, U+A7FA-U+A7FF to Serif
+  * added alternate forms to U+014A and U+01B7 in Serif
+  * typographical improvements to U+0166-U+0167, U+0197, U+01B5-U+01B6, 
+    U+01BB, U+0222-U+0223, U+023D, U+0250-U+0252, U+026E, U+0274, U+028F, 
+    U+029F, U+02A3-U+02A5, U+02AB, U+03FE-U+03FF, U+1D02, U+1D14, 
+    U+1D1D-U+1D1F, U+1D3B, U+1D43-U+1D46, U+1D59, U+1D9B, U+2C71, U+2C73 in Serif
+  * fixed bugs #31762 and #34700 plus other small fixes 
+    (wrong direction, duplicate points, etc.) for Sans and Serif 
+  * added U+204B to Mono
+  * added U+26E2 to Sans
+  * added Playing Cards block (U+1F0A0-U+1F0DF) to Sans
+  * emoticons in Sans: replace U+2639-U+263B with better versions, 
+    add U+1F601-U+1F610, U+1F612-U+1F614, U+1F616, U+1F618, 
+    U+1F61A, U+1F61C-U+1F61E, U+1F620-U+1F624, U+1F625, 
+    U+1F628-U+1F62B, U+1F62D, U+1F630-U+1F633, U+1F635-U+1F640
+  * added U+A78E, U+A790-U+A791 to Sans and Mono
+  * added U+A7FA to Sans
+  * subscripts: added U+2095-U+209C to Sans, Serif and Mono, 
+    adjusted U+1D49-U+1D4A in Sans and Mono
+  * added U+0243 to Mono
+  * adjusted U+0307 to match dot of i, replaced dotaccent U+02D9 with 
+    U+0307 in most dependencies in Sans
+  * adjusted anchors of f and added them to long s in Sans
+  * added anchors to precomposed dependencies of D and d
+  * added debug glyphs U+F002 and U+F003 which will show current point size
+  * use correct version for Serbian italic be
+  * added pictograms U+1F42D-U+1F42E, U+1F431, U+1F435
+  * improved Hebrew in Sans
+  * improved Armenian in Sans, and added Armenian in Serif and Mono
+  * remove "locl" feature for Romanian for S/T/s/t with cedilla/comma accent
+  * replace wrong "dflt" script tag in Mono with "DFLT"
+
+-------------------------------------------------------------------
+Tue Aug 24 08:44:14 CEST 2010 - tiwai@suse.de
+
+- updated to version 2.32:
+ * added to Sans: Latin small letter p with stroke (U+1D7D),
+   Latin capital letter p with stroke through descender (U+A750),
+   Latin small letter p with stroke through descender (U+A751),
+   Latin capital letter thorn with stroke (U+A764),
+   Latin small letter thorn with stroke (U+A765),
+   Latin capital letter thorn with stroke through descender (U+A766),
+   Latin small letter thorn with stroke through descender (U+A767),
+   Latin capital letter q with stroke through descender (U+A756),
+   Latin small letter q with stroke through descender (U+A757),
+   Latin capital letter p with flourish (U+A752),
+   Latin small letter p with flourish (U+A753)
+ * add new Indian rupee symbol (U+20B9) to Sans, Serif and Mono
+ * Sans: adjusted U+0E3F, U+20AB, U+20AD-U+20AE, U+20B1, U+20B5, U+20B8
+   to have them take up the same width as digits
+ * added U+23E8 to Sans
+ * fixed numerous bugs (#22579, #28189, #28977, N'Ko in Windows, fixed U+FB4F,
+   anchors for U+0332-U+0333, made extensions in Misc. Technical connect,
+   and other small fixes)
+ * added looptail g as stylistic variant to Serif
+ * added the remaining precomposed characters in Latin Extended Additional
+   in Serif
+ * added Georgian Mkhedruli (U+10D0-U+10FC) to Sans ExtraLight
+ * fix spacing in hinting of U+042E in Mono
+ * replaced U+2650 and minor changes to U+2640-U+2642, U+2699,
+   U+26A2-U+26A5, U+26B2-U+26B5, U+26B8 in Sans
+ * added U+1E9C-U+1E9D, U+1EFA-U+1EFB, U+2028-U+2029, U+20B8, U+2150-U+2152,
+   U+2189, U+26C0-U+26C3, U+A722-U+A725, U+1F030-U+1F093 to Sans
+ * added U+1E9C-U+1E9E, U+1EFA-U+1EFB, U+2028-U+2029, U+20B8, U+2181-U+2182,
+   U+2185 U+A722-U+A725, to Sans ExtraLight
+ * added U+20B8, U+22A2-U+22A5, U+A722-U+A725 to Mono
+ * added U+02CD, U+01BF, U+01F7, U+0222-U+0223, U+0243-U+0244, U+0246-U+024F,
+   U+2150-U+2152, U+2189, U+239B-U+23AD and U+A73D to Serif
+
+- updated to version 2.31:
+ * Fixed bug where Serif Condensed Italic wouldn't get proper subfamily tags
+ * Added math operators U+2234-U+2237 to Mono
+ * Removed buggy instructions of U+032D
+ * added U+2C70, U+2C7E, U+2C7F to Sans and Sans Mono
+ * added U+2C7D to Sans Mono
+ * added U+2C6D, U+2C70-2C73, U+2C7E-2C7F to Serif
+ * added extremas to alpha U+03B1 in Serif-Italic
+ * added U+4A4, U+4A5 to Mono
+ * added Arabic letters U+0657, U+0670, U+0688-U+0690, U+0693-U+0694,
+   U+0696-U+0697, U+0699-U+06A0, U+06A2-U+06A3, U+06A5, U+06A7-U+06A8,
+   U+06AA-U+06AE, U+06B0-U+06B4, U+06B6-U+06B9, U+06BB-U+06BE and their
+   contextual forms to Sans
+ * added U+A78D LATIN CAPITAL LETTER TURNED H for coming Unicode 6.0
+
+-------------------------------------------------------------------
+Thu Apr  8 17:51:33 CEST 2010 - tiwai@suse.de
+
+- removed unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Mon Feb 22 12:35:09 UTC 2010 - coolo@novell.com
+
+- updated to version 2.30:
+ * added U+0462-U+0463 to Mono
+ * corrected U+1E53 in Serif
+ * added U+1E4C-U+1E4D to Mono and Serif
+ * added U+1E78-U+1E79 to Mono
+ * fixed missing diacritics in Latin Extended Additional in Sans ExtraLight
+ * fixed anchors on U+1E78 in Serif
+ * added U+1DC4-U+1DC9 to Serif
+ * renamed above-mark to above-mark in Serif-Italic
+ * added U+1DC4-U+1DC9 to context class for dotless substitution
+ * changed Doubleacute to Doublegrave in Sans ExtraLight
+ * removed redundant reference in U+01FB in Sans Oblique
+ * added U+A726-U+A727 to Mono
+ * changed U+04BE and U+04BF according to recommedations of Sasha Ankwab in Sans
+ * remove "Symbol Charset" from set of codepages in Sans
+
+-------------------------------------------------------------------
+Mon Jul 27 15:35:38 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.29:
+ * modified U+10FB in Sans to be a mirror image of U+2056
+ * added U+2B1F, U+2B24, U+2B53, U+2B54 in Sans
+ * fixed TUR opentype language tag to TRK in Serif (bug 19825)
+ * early implementation of Abkhaz letter U+0524-U+0525 in Sans
+ * flipped U+1D538 in Sans
+ * added U+26B3-U+26B8, U+1D7D8-U+1D7E1 in Sans
+ * corrected U+1D7A9 in Sans Bold Oblique
+ * Fixed U+0649 to be dual-joining in Sans Mono
+ * Remove unnecessary 'isol' feature from Sans Mono
+ * Remove 'cmap' mappings for U+066E, U+066F, U+067C, U+067D, U+0681,
+   U+0682, U+0685, U+0692, U+06A1, U+06B5, U+06BA, U+06C6, U+06CE,
+   and U+06D5 in Sans Mono (bug 20323)
+ * add half brackets (U+2E22 - U+2E25, by Steve Tinney) 
+
+-------------------------------------------------------------------
+Tue Jan 13 16:26:31 CET 2009 - mfabian@suse.de
+
+- update to 2.28.
+- changes from 2.27 to 2.28
+  • added U+A789, U+A78A in Sans and Sans Mono (by Denis Jacquerye)
+  • modified U+02D6, U+02D7, U+02EE in Sans and Sans Mono
+    (by Denis Jacquerye)
+  • added U+1E9E (German capital ß) to Sans and Serif
+    (by Denis Jacquerye)
+  • adjusted width of U+01B7-U+01B9 in Serif Italic
+    (by Denis Jacquerye)
+  • modified U+021C, U+021D in Sans (by Denis Jacquerye)
+  • added U+021C, U+021D in Mono (by Denis Jacquerye)
+  • added U+F428 (Georgian Nuskhuri "f") in private use area
+    (by Besarion Gugushvili)
+  • updated Georgian mkhedruli (U+10D0-U+10FA) with new version
+    (by Besarion Gugushvili)
+  • updated Georgian asomtavruli (U+10A0-U+10C5) with new version
+    (by Besarion Gugushvili)
+  • added Georgian nuskhuri (U+2D00-U+2D25)
+    (by Besarion Gugushvili)
+  • added Georgian mtavruli in private use area (U+F400-U+F426)
+    (by Besarion Gugushvili)
+  • added mark anchors above to Cyrillic U+0430-U+0438,
+    U+043A-U+044F, U+0454-U+0455 in Mono (by Ben Laenen)
+  • modified/moved up U+0318-U+0319, U+031C-U+031F,
+    U+0329-U+032A, U+032C-U+032D, U+0339-U+033B, U+0348 and U+0353
+    in Sans to prevent cut-off (by Gee Fung Sit 薛至峰)
+  • added U+035A to Sans (by Gee Fung Sit 薛至峰)
+  • updated fontconfig files (by Nicolas Mailhot)
+  • added U+2032-2037 to Mono (by Denis Jacquerye)
+  • added Ogham to Sans ExtraLight (by Gee Fung Sit 薛至峰)
+  • added U+2C6F, U+2C79, U+2C7C-2C7D to Mono
+    (by Gee Fung Sit 薛至峰)
+  • added U+210F to Serif and Sans ExtraLight
+    (by Gee Fung Sit 薛至峰)
+  • changed U+210F to a more common glyph in Sans and Mono
+    (by Gee Fung Sit 薛至峰)
+
+-------------------------------------------------------------------
+Tue Nov 18 15:41:03 CET 2008 - mfabian@suse.de
+
+- update to 2.27.
+- changes from 2.26 to 2.27:
+  • added some of Michael Everson's new Cyrillic glyphs to Sans
+    (by Wesley Transue)
+  • removed blank glyph at U+05EF from Sans Bold Oblique (by
+    Gee Fung Sit)
+  • small adjustments to existing tone bars in Sans and Mono
+    (by Gee Fung Sit)
+  • added U+0372-U+0373, U+0376-U+0377, U+03CF, U+A668-U+A66E,
+    U+A708-U+A711, U+A71B-U+A71F to Sans (by Gee Fung Sit)
+  • copied U+02E5-U+02E9 over from Sans to fix inconsistencies
+    in Serif (by Gee Fung Sit)
+  • added U+021C-U+021D, U+0370-U+0371, U+037B-U+037D,
+    U+0470-U+0471, U+0510-U+0515, U+051A-U+051D, U+1E9F,
+    U+2C64, U+2C6E-U+2C6F, U+2C79, U+2C7C-U+2C7D,
+    U+A644-U+A647, U+A650-U+A651, U+A654-U+A657, U+A708-U+A716,
+    U+A71B-U+A71F to Serif (by Gee Fung Sit)
+  • added U+A708-U+A716, U+A71B-U+A71F to Mono (by Gee Fung
+    Sit)
+  • added anchors to U+017F (ſ) and fixed U+1E9B (ẛ) in Serif
+    (by Gee Fung Sit)
+  • made U+0325 smaller in Sans Bold and Serif to match Sans
+    Book (by Gee Fung Sit)
+  • fixes to U+02F3 (moved up), U+228F-U+2294 (more
+    square-like) and U+22CE-U+22CF (stroke width) in Sans (by
+    Gee Fung Sit)
+  • replaced U+2202 ∂ (Sans and Mono) and U+221D ∝, U+221E ∞
+    (Sans) with glyphs from Arev (with small changes) (by Gee
+    Fung Sit)
+  • added U+22B0-U+22B1, U+22C7, U+22D0-U+22D5 from Arev to
+    Sans to complete the block (by Gee Fung Sit)
+  • added U+0514-U+0515 to Sans ExtraLight (by Gee Fung Sit)
+  • skewed U+A78C in all Oblique/Italic fonts (by Gee Fung Sit)
+  • moved U+2215 to U+2044 in Sans and Serif and replaced
+    U+2215 with reference to U+002F in all fonts (by Gee Fung
+    Sit)
+  • added U+2C6E to Mono (by Denis Jacquerye)
+  • added U+A782 and U+A783 in Sans (by Wesley Transue)
+  • added U+0244, U+024C-024D, U+2C64 in Sans Mono (by Denis
+    Jacquerye)
+  • modified U+01AE in Sans Mono (by Denis Jacquerye)
+  • added U+2C7A to all fonts (by Gee Fung Sit)
+  • italicized/small changes to U+2C76 in Serif (Bold) Italic
+    (by Gee Fung Sit)
+  • improved outlines of U+2C68, U+2C6A, U+2C6C in Serif (Bold)
+    Italic (by Gee Fung Sit)
+  • rounded U+2C77 at the bottom in Serif (by Gee Fung Sit)
+  • added joining behavior for tone letters (U+02E5-U+02E9) in
+    Sans (bug #15669) (by Gee Fung Sit)
+  • fixed outline of y.alt in Sans Regular (by Denis Jacquerye)
+  • changed references of U+1D5A8, U+1D5C5, U+1D5DC, U+1D5F9,
+    U+1D610, U+1D62D, U+1D644 and U+1D661 to stylistic
+    alternates to have a better distinction (by Gee Fung Sit)
+  • hinted I.alt in Sans Regular (by Gee Fung Sit)
+  • added U+0487, completing Cyrillic block (by Gee Fung Sit)
+  • extended the bar of U+0463 to the right and moved the
+    anchor (by Gee Fung Sit)
+  • added anchors to glyphs in Cyrillic block (by Gee Fung Sit)
+  • added (preliminary) hints to tone letter forms (U+02E5.5,
+    U+02E9.1, stem) in Sans Book (by Gee Fung Sit)
+
+-------------------------------------------------------------------
+Mon Jul 28 19:31:41 CEST 2008 - mfabian@suse.de
+
+- update to 2.26.
+- changes from 2.25 to 2.26:
+  • added glyphs for Cyrillic-B to Sans (by Wesley Transue)
+  • added U+0370-U+0371 to Sans (by Wesley Transue)
+  • added U+019C, U+01A2-U+01A3, U+01A6, U+01E4-U+01E5,
+    U+024C-U+024D, U+0285, U+0290, U+02A0, U+0370-U+0371, U+03F1,
+    U+03FC to Sans ExtraLight (by Wesley Transue)
+  • added U+20A0-U+20A5, U+20A7-U+20B3, U+2105, U+210D, U+210F,
+    U+2115, U+2117, U+2119-U+211A, U+211D, U+2124, U+212E,
+    U+2200-U+2204 to Mono (by Heikki Lindroos)
+  • added U+01BA and U+01BF to Mono (by Heikki Lindroos)
+  • merged OpenType "aalt" feature in Latin in Sans
+    (by Denis Jacquerye)
+  • added alternative shape for y in Sans (by Denis Jacquerye)
+  • added saltillo (U+A78B-U+A78C) to all faces (by James Cloos)
+  • changed U+047C-U+047D to references instead of outlines in
+    Sans (by Wesley Transue)
+  • added Latin letter tresillo U+A72A-U+A72B to Sans
+    (by Wesley Transue)
+  • added U+A734-U+A737 to Sans (by Wesley Transue)
+  • added U+2053 to Serif and fixed it bug:9425 in Sans
+    (by Gee Fung Sit 薛至峰)
+  • removed problematic hints for U+0423 bug:10025
+    (by Gee Fung Sit 薛至峰)
+  • added U+27C5-U+27C6 bug:10255 to all faces
+    (by Gee Fung Sit 薛至峰)
+  • fixed width of U+2016 in Sans Oblique
+    (by Gee Fung Sit 薛至峰)
+  • added U+2016, U+2032-U+2038, U+2042, U+2045-U+2046,
+    U+204B-U+204F, U+2051-U+2052, U+2057 to Serif
+    (by Gee Fung Sit 薛至峰)
+  • made U+2140 bigger to match other n-ary operators
+    (by Gee Fung Sit 薛至峰)
+  • added U+0606-U+0607, U+0609-U+060A to Sans
+    (by Gee Fung Sit 薛至峰)
+  • added U+221B-U+221C to Mono (by Gee Fung Sit 薛至峰)
+  • small adjustments to U+221B-U+221C in Sans and Serif
+    (by Gee Fung Sit 薛至峰)
+  • update U+04B4-U+04B5 in Serif (by Andrey V. Panov)
+  • increased max-storage value from maxp table to 153
+    (by Andrey V. Panov)
+  • added U+0472-U+0473, U+0510-U+0511, U+051A-U+051D,
+    U+0606-U+0607, U+0609-U+060A, U+1E26-U+1E27, U+1E54-U+1E55,
+    U+1E7C-U+1E7D, U+1E8C-U+1E8D, U+1E90-U+1E91, U+1E97-U+1E99,
+    U+1E9F, U+1EAC-U+1EAD, U+1EB6-U+1EB7, U+1EC6-U+1EC7,
+    U+1ED8-U+1EDD, U+1EE0-U+1EE3, U+1EE8-U+1EEB, U+1EEE-U+1EF1
+    to Mono (by Gee Fung Sit 薛至峰)
+  • added locl rules for S/T cedilla for Romanian and Moldavian
+    so they get rendered as S/T with comma accent
+    (see Redhat bug #455981) (by Ben Laenen)
+  • removed ligature rule from Armenian U+0587 bug:16113
+    (by Gee Fung Sit 薛至峰) 
+
+-------------------------------------------------------------------
+Mon May 19 15:07:24 CEST 2008 - mfabian@suse.de
+
+- update to 2.25.
+- changes from 2.24 to 2.25:
+  •  moved/added U+2E18 (by Gee Fung Sit 薛至峰)
+  • added empty glyph for U+2064 in Sans and Serif
+    (by Gee Fung Sit 薛至峰)
+  • added U+22CE-U+22CF to Sans (by Gee Fung Sit 薛至峰)
+  • Sans Oblique and Bold Oblique, Serif: reverted digits hinting
+    instructions back to before revision 1590, which fixed mistaken
+    debian bug #471024. This fixes Debian bug #411308.
+    The original bug was in freetype not in the fonts
+    (by Denis Jacquerye)
+  • added U+A726-U+A729, U+A730-U+A733, U+A738-U+A73F,
+    U+A746-U+A74B, U+A74E-U+A74F, U+A780-U+A781, U+A7FB-U+A7FF to
+    Sans (by Gee Fung Sit 薛至峰)
+  • added Macedonian italic glyph shape for U+0453 in Serif (by Ben Laenen)
+  • changed descenders in U+0446, U+0449, U+0497, U+04A3,
+    U+04AD (by Andrey V. Panov)
+  • updated main SFD files to SplineFontDB 3.0
+    (Denis Jacquerye and Gee Fung Sit 薛至峰)
+  • moved U+0561 2 up since it wasn't aligned with the baseline
+    well (by Ben Laenen)
+  • added U+2E2E to Sans (by Gee Fung Sit 薛至峰)
+  • replaced U+2699 with simpler version in Sans (
+    by Gee Fung Sit 薛至峰)
+  • added a lot of hinting instructions to Latin Extended B,
+    Greek and Coptic glyphs Sans Book (by Wesley Transue)
+  • differentiated U+2219 from U+22C5 and adjusted affected
+    references in Sans and Mono (by Gee Fung Sit 薛至峰)
+  • made Hebrew narrower in Sans Bold and Sans Bold Oblique
+    (by Denis Jacquerye)
+  • added Kurdish and Chuvash letters from Unicode 5.1 Cyrillic
+    Extended block (by Wesley Transue)
+  • added U+1E9F, U+A644-U+A647, U+A64C-U+A64D, U+A650-U+A651,
+    U+A654-U+A655, U+A712U+A716 to Sans (by Gee Fung Sit 薛至峰)
+  • added several glyphs to Sans ExtraLight (by Gee Fung Sit 薛至峰)
+  • added hinting instructions to U+046A-U+046B, U+0508-U+0509,
+    U+050B, U+0512-U+0513 in Sans Book (by Wesley Transue)
+  • corrected width of U+027E in Sans Book (by Gee Fung Sit 薛至峰)
+  • added U+2C79, U+2C7B-U+2C7D to Sans (by Gee Fung Sit 薛至峰)
+  • added a bunch of glyphs+small corrections to Sans Light
+    (by Gee Fung Sit 薛至峰)
+  • added U+0496, U+0497, U+04B0, U+04B1 (by Andrey V. Panov)
+  • updated U+0493, U+049B, U+04B3, U+04B7, U+04F7
+    (by Andrey V. Panov)
+  • further improvements in extended Cyrillic (by Andrey V. Panov)
+
+-------------------------------------------------------------------
+Tue Mar 11 13:03:36 CET 2008 - mfabian@suse.de
+
+- update to 2.24.
+- Changes from 2.23 to 2.24:
+  • instructions for U+05C0 ׀, U+05C3 ׃, U+05F3 ׳, and U+05F4 ״
+    in DejaVu Sans. (by Wesley Transue)
+  • instructions for U+2116 in Sans (by Andrey V. Panov)
+  • Unicode 5.1 update: moved U+F208 to U+2C6D, U+F25F to U+2C71,
+    added U+2C6E-U+2C6F, U+2C72-U+2C73, updated outline of U+2C71
+    in Sans. (by Denis Jacquerye)
+  • updated and instructed U+0401 in Sans (by Andrey V. Panov)
+  • fixed the bug in Sans faces where U+02EC ˬ faced the wrong
+    direction. Also, added a few more glyph instructions.
+    (by Wesley Transue)
+  • removed OS2Sub and OS2Strike that weren't intentional in
+    Sans ExtraLight. (by Denis Jacquerye)
+  • updated instructions for U+401, U+44F in Serif Book.
+    (by Andrey V. Panov)
+  • instructions for U+02C4 ˄, U+02C5 ˅, U+03D8 Ϙ, U+03D9 ϙ,
+    U+0494 Ҕ, and U+0495 ҕ in Sans Book. (by Wesley Transue)
+  • instructions for U+01A6 Ʀ, U+0238 ȸ, U+0239 ȹ, U+02EC ˬ,
+    and U+05C6 ׆ in Sans Book. (by Wesley Transue)
+  • DejaVuSans.sfd DejaVuSerif.sfd: updated instructions for
+    U+447 and U+451 using code generated with xgridfit
+    (by Andrey V. Panov)
+  • instructions for a few glyphs in the Latin Extended-B Block,
+    Greek Block, Cyrillic Block, and N'Ko block.
+    (by Wesley Transue)
+  • updated sfdnormalize.pl, and SFD files to new SFD format
+    with empty lines. (by Denis Jacquerye) 
+
+-------------------------------------------------------------------
+Fri Feb 01 13:25:44 CET 2008 - mfabian@suse.de
+
+-  update to 2.23.
+-  Changes from 2.22 to 2.23:
+   • fixed bug which made Condensed fonts appear instead of
+     normal width ones
+   • added U+20DB, U+20DC, and U+20E1 to Sans
+     (by Roozbeh Pournader)
+   • added hinting instructions to U+01A7, U+01AA-U+01AC,
+     U+01AE-U+01AF, U+01BC-U+01BD, U+01BF, U+01F7, U+0277,
+     U+027F, U+0285-U+0286, U+0297, U+02AF, U+02B4-U+02B5,
+     U+02BD, U+030D, U+0311, U+0329, U+04A0-U+04A1 in Sans Book
+     (by Wesley Transue)
+   • modified hinting instructions of U+04A2 in Sans Book
+     (by Wesley Transue)
+   • added hinting instructions to U+237D, U+2423 in Mono Book
+     and Mono Bold (by Wesley Transue)
+   • added mathematical alphanumeric symbols to all styles
+     (by Max Berger)
+   • added Unicode 5.1 U+2E18 as U+2E18.u51 (not yet usable)
+     to Sans (by Roozbeh Pournader)
+   • dereferenced all glyphs with mixed references and outlines
+     (by Denis Jacquerye)
+   • removed non-zero width from U+0344 in Sans
+     (by Denis Jacquerye)
+
+-------------------------------------------------------------------
+Fri Jan 04 16:44:54 CET 2008 - mfabian@suse.de
+
+- update to 2.22.
+- Changes from 2.21 to 2.22:
+  • modified Armenian U+0565 in Sans (by Սահակ Պետրոսյան)
+  • added double struck letters and numbers U+2102, U+210D,
+    U+2115, U+2119-U+211A, U+211D, U+2124, U+213C-U+2140,
+    U+2145-U+2149, U+1D538-U+1D539, U+1D53B-U+1D53E,
+    U+1D540-U+1D544, U+1D546, U+1D54A-U+1D550, U+1D552-U+1D56B,
+    U+1D7D8-U+1D7E1 to Serif (by Stephen Hartke)
+  • added letterlike symbols U+2103, U+2109, U+2127, U+214B,
+    U+2141-U+2144 to Serif (by Ben Laenen)
+  • fixed outline direction of U+2143 in Sans Bold/Bold Oblique
+    (by Ben Laenen)
+  • added arrow set in Serif: arrows: U+2194-U+21FF;
+    dingbats: U+27A1; supplemental arrows A: U+27F0-U+27FF;
+    supplemental arrows B: U+2900-U+2975, U+297A;
+    miscellaneous symbols and arrows: U+2B00-U+2B11 (by Ben Laenen)
+  • added U+0180, U+01DE, U+01E0-01E1, U+022A, U+022C, U+0230,
+    U+1E08-U+1E09, U+1E10-U+1E11, U+1EB0-U+1EB1 to Mono
+    (by Denis Jacquerye)
+  • adjusted U+01D5, U+01D7, U+01D9, U+1DB in Mono
+    (by Denis Jacquerye)
+  • added Ogham in Sans (by Wesley Transue)
+  • added Yijing Hexagram Symbols in Sans (by Wesley Transue)
+  • hinting instructions added to Cyrillic U+0460, U+04A6-U+04A7,
+    U+04AC-U+04AD, U+04C7-U+04C8, U+04F6-U+04F7, U+04FA-U+04FB,
+    U+050C-U+050D in Sans Book (by Wesley Transue)
+  • adjusted Cyrillic letters U+042A, U+044A, U+044C, U+0459-U+045B,
+    U+0462, U+048C-U+048D in Serif (by Andrey V. Panov)
+  • hinting instructions added to Lao U+0EB7 in Sans
+    (by Wesley Transue)
+  • added Roman numerals and Claudian letter U+2160-U+2184 in
+    Serif (by Ben Laenen)
+  • added U+FFF9-U+FFFD to Sans, Serif and Mono
+    (by Lars Næsbye Christensen)
+  • added mathematical symbols to Serif: U+2200, U+2203-U+2204,
+    U+2213-U+2214, U+2217-U+2218, U+2223-U+2226, U+2250-U+2255,
+    U+2295-U+22AF, U+22C5 (by Ben Laenen)
+  • modified bullet symbol U+2219 in Serif (by Ben Laenen
+
+-------------------------------------------------------------------
+Tue Nov 20 20:50:56 CET 2007 - mfabian@suse.de
+
+- update to 2.21.
+- Changes from 2.20 to 2.21:
+  • added U+FE20-U+FE23 (half diacritics) to Sans
+   (by Denis Jacquerye)
+  • added anchor "half" to position right half of double marks,
+   U+FE21 or U+FE23 to Sans (by Denis Jacquerye)
+  • shifted U+0360 up to avoid collision with some outlines in
+   Sans (by Denis Jacquerye)
+  • added anchor above-mark anchor to U+035D, U+035E, U+0360, U+0361
+   in Sans (by Denis Jacquerye)
+  • added instructions for ff, ffi, ffl ligatures in Serif Bold
+   (by Євгеній Мещеряков)
+  • added instructions to some N'Ko glyphs (by Wesley Transue)
+  • added instructions to some Lao glyphs (by Wesley Transue)
+  • cleaning up 'liga' Standard Ligature in Latin, in Sans and
+   Sans Mono (by Denis Jacquerye)
+  • added U+046A, U+046B (big yus) in Serif (by Andrey V. Panov)
+  • added box drawing symbols to Sans and Serif
+   (by Lars Næsbye Christensen)
+  • added Makefile to improve font and packages generating
+   (by Nicolas Mailhot) 
+
+-------------------------------------------------------------------
+Thu Oct 04 13:07:11 CEST 2007 - mfabian@suse.de
+
+- update to 2.20.
+- Changes from 2.19 to 2.20:
+  • removed TeX and TeXData tags from all sfd files
+   (by Євгеній Мещеряков)
+  • removed all 'frac' lookups (by Євгеній Мещеряков)
+  • fixed duplicate glyph names (by Євгеній Мещеряков)
+  • removed standard ligatures with U+00B7 in Mono
+   (by Євгеній Мещеряков)
+  • use reference to U+002D in U+00AD in Sans Oblique, and adjust
+   instructions (by Євгеній Мещеряков)
+  • updated Cyrillic in Sans Extra Light (by Andrey V. Panov)
+  • added instructions to N'Ko U+07C1-U+07C6, U+07CA,
+   U+07CE-U+07CF, U+07D1, U+07D3-U+07D4, U+07D8, U+07DB and U+07EB
+   in Sans (by Wesley Transue)
+  • added instructions to Lao U+0E8A, U+0E95, U+0E97, U+EA5, U+0EB4
+   and U+0EB5 (by Wesley Transue)
+  • adjusted instructions for Hebrew glyphs (by Denis Jacquerye)
+  • added instructions for U+0265 in Sans Bold (by Denis Jacquerye)
+  • fix U+1D68 in Sans: it had the shape of delta, where it should
+   be a rho (by Ben Laenen)
+  • remove U+1D5C glyph in Sans Oblique (it was empty)
+   (by Ben Laenen)
+  • fix instructions of U+01AD in Sans Bold (by Ben Laenen)
+  • fix instructions of U+042D in Serif (by Ben Laenen)
+  • remove buggy instructions of U+2328 in Serif (by Ben Laenen)
+  • corrected width of U+2C75-U+2C76 in Sans Bold and Serif Bold
+   (by Gee Fung Sit 薛至峰)
+  • added U+2C75-U+2C77 to Mono (by Gee Fung Sit 薛至峰)
+
+-------------------------------------------------------------------
+Tue Aug 07 14:20:26 CEST 2007 - mfabian@suse.de
+
+- update to 2.19.
+- Changes from 2.18 to 2.19:
+  • fixed misplaced symbols (U+2325,2326) in Sans Oblique
+   (by John Karp)
+  • added Mark to Base anchors: 'cedilla' for combining
+   cedilla and 'above-legacy' for stacking above precomposed
+   glyphs (just a,e,i,o,u with macron for now) in Sans (by
+   Denis Jacquerye).
+  • added contextual substitution for Case and Dotless
+   forms in all Sans variants (by Denis Jacquerye).
+  • renamed 'ccmp' lookups for RTL and Basic (LGC, etc.) 
+   (by Denis Jacquerye)
+  • added anchor 'cedilla' for vowels in Sans. (by Denis
+   Jacquerye)
+  • extended contextual dotless and case substitutions to
+   handle both below and above diacritics (by Denis
+   Jacquerye)
+  • renamed Dotless and Case Form GSUB lookups in Sans with
+   meaningful names (by Denis Jacquerye)
+
+-------------------------------------------------------------------
+Tue Jul 03 15:15:36 CEST 2007 - mfabian@suse.de
+
+- update to 2.18.
+- Changes from 2.17 to 2.18:
+  • Re-encoded the source files for Full Unicode (by Ben Laenen)
+  • Re-enabled the "ff", "fl", "fi", "ffl", "ffi" ligatures by
+    default in Serif (by Ben Laenen)
+  • Disabled the "fi", "ffi" ligatures for languages with dotless
+    i in Serif (by Ben Laenen)
+  • added Tifinagh to Sans Book and Bold, U+2D30-U+2D65, U+2D6F,
+    partially hinted in Sans Book. (by Denis Jacquerye)
+  • added Tai Xuan Jing Symbols (U+1D300-1D356) to Sans
+    (by Rémy Oudompheng)
+  • added double-struck letters (U+1D538-U+1D56B minus reserved
+    code points) to Sans (by Gee Fung Sit 薛至峰)
+  • added U+22EE-U+22F1 to Sans (by Gee Fung Sit 薛至峰)
+  • added U+2C67-U+2C6C, U+2C75-U+2C77 to Serif
+    (by Gee Fung Sit 薛至峰)
+  • italicized various glyphs in Latin Extended-B,
+    IPA Extensions, Spacing Modifier Letters, Phonetic Extension
+    (Supplement) and Super- and Subscripts in Serif Oblique fonts
+    (by Gee Fung Sit 薛至峰)
+  • modified outlines, bearings of Hebrew U+05D6, U+05D8, U+05DB,
+    U+05DE, U+05E0, U+05E1, U+05E2, U+05EA in Sans Book and
+    Oblique, adjusted hinting in Book based on Yotam Benshalom's
+    comments. (by Denis Jacquerye)
+  • added Braille Patterns (U+2800-U+28FF) to Serif fonts
+    (by Gee Fung Sit 薛至峰)
+  • added N'Ko to Sans Book and Bold: U+07C0-U+07E7,
+    U+07EB-U+07F5, U+07F8-U+07FA (by Євгеній Мещеряков)
+  • added U+0ED8 (Lao digit 8) to Sans (by Rémy Oudompheng)
+  • added Lao diacritics U+0EB0-0EB9, U+0EBB-0EBC, U+0EC8-0ECD
+    to Mono (by Rémy Oudompheng)
+  • renamed Serif [Bold] Oblique, make it Italic
+    (by Євгеній Мещеряков)
+  • added U+29FA-U+29FB to Sans and Sans Mono
+    (by Gee Fung Sit 薛至峰)
+  • swapped glyphs for Eng U+014A from Sami Eng to African Eng,
+    the latter being more common (by Denis Jacquerye)
+  • swapped ae U+00E6 and ae.alt in Serif Italics fonts,
+    thus fixing #8213 (by Denis Jacquerye)
+  • minor improvements to Misc. Symbols in Sans
+    (by Gee Fung Sit 薛至峰)
+  • minor improvements and additions to Sans ExtraLight
+    (by Gee Fung Sit 薛至峰)
+  • improved instructions for various Cyrillic letters
+    (by Євгеній Мещеряков)
+  • fixed hinting of theta and chi in Sans Book (by Ben Laenen)
+  • added Georgian Mkhedruli to Sans, Serif and Mono, ASumtavruli
+    to Sans and Serif (by Besarion Gugushvili) 
+
+-------------------------------------------------------------------
+Wed May 16 17:56:47 CEST 2007 - mfabian@suse.de
+
+- update to 2.17.
+- Changes from 2.16 to 2.17
+  • Sans fonts: fix position for certain combinations of Arabic
+  fatha, kasra, shadda, damma, kasratan, dammatan, fathatan and
+  hamza (by Ben Laenen)
+  • added 'ae.alt' to Serif Oblique fonts, with design matching
+  shape of italic 'a' instead of slanted 'a', see bug:8213 (by
+  Denis Jacquerye)
+  • added super- and subscripts to Serif and Mono:
+  U+1D2C-U+1D2E, U+1D30-U+1D3C, U+1D3E-U+1D42, U+1D62-U+1D65,
+  U+1D78, U+2071, U+207A-U+207E, U+208A-U+208E, U+2090-U+2094
+  (by Gee Fung Sit 薛至峰)
+- Changes from 2.15 to 2.16
+  • fixed hinting instructions for digits in DejaVu Sans
+  Oblique, Bold Oblique, and Serif Book to not change glyph
+  width (by Євгеній Мещеряков)
+  • added instructions for U+0404, U+0411, U+0413, U+0414,
+  U+0417-U+041B, U+041F, U+0423, U+0424, U+0426-U+0429, U+042C,
+  U+042E, U+042F, U+0490 in Serif Bold (by Євгеній Мещеряков)
+  • added U+0220 and Eng.alt to Serif fonts (by Denis
+  Jacquerye)
+  • added U+232C, U+2394, U+23E3 to Sans fonts (by John Karp)
+  • added U+230C-U+230F, U+231C-U+231F to Sans fonts, fixing
+  bug:9547 (by John Karp)
+  • adjusted dot below, dot above, dieresis above, dieresis
+  below in Sans fonts (by Denis Jacquerye)
+  • added U+2300, U+2301, U+2303, U+2304, U+2305, U+2307,
+  U+2326, U+2327, U+232B, arrow.base to Sans fonts (by John
+  Karp)
+  • adjusted dot and dieresis below and above in Serif fonts
+  (by Denis Jacquerye)
+  • added U+1E1C-U+1E1D to Serif fonts (by Denis Jacquerye)
+  • added U+22BE, U+22BF (by Wesley Transue)
+  • added U+2324; modified U+2325: more standard proportions,
+  and matches U+2324 and U+2387; added U+2387 : flipped U+2325
+  with standard arrowhead (by John Karp)
+  • added Lao digits U+0ED0-0ED7, U+0ED9 (by Rémy Oudompheng)
+  • added to Mono in Arabic block : U+060C, U+0615, U+061B,
+  U+061F, U+0621-U+063A, U+0640-0655, U+065A, U+0660-066F,
+  U+0674, U+0679-0687, U+0691, U+0692, U+0698, U+06A1, U+06A4,
+  U+06A9, U+06AF, U+06B5, U+06BA, U+06BE, U+06C6, U+06CC,
+  U+06CE, U+06D5, U+06F0-06F9 (by Rémy Oudompheng)
+  • added to Mono in Arabic Presentations Forms-A :
+  U+FB52-FB81, U+FB8A-FB95, U+FB9E, U+FB9F, U+FBAA-FBAD, U+FBE8,
+  U+FBE9, U+FBFC-FBFF (by Rémy Oudompheng)
+  • added to Mono in Arabic Presentations Forms-B :
+  U+FE70-FE74, U+FE76-FEFC, U+FEFF (by Rémy Oudompheng)
+  • added U+05BA, U+05BE, U+05F3, U+05F4, U+FB1E,
+  U+FB21-U+FB28, U+FB4F to Sans (by Євгеній Мещеряков)
+  • added U+2102 to Mono (by Євгеній Мещеряков)
+  • added U+2983-U+2984 to Sans (by Gee Fung Sit 薛至峰)
+  • added U+2A2F to Sans, Serif and Mono
+  (by Gee Fung Sit 薛至 峰)
+  • added U+2373-2375, U+237A to Sans (by John Karp)
+  • converted kern pairs to kern classes with Tavmjong Bah's
+  scripts (by Denis Jacquerye)
+  • set ScriptLang of kerning classes to just latn because of
+  Pango bug (by Denis Jacquerye)
+  • added DNK to ScriptLang latn otherwise it is excluded, and
+  SRB and MDK to cyrl (by Denis Jacquerye)
+  • removed flag 0x80 in generate.pe, otherwise it generates
+  kerning tables some systems don't like; thus loosing Apple
+  tables (by Denis Jacquerye)
+  • removed ligature for precomposed legacy characters of Sans
+  Oblique fonts (by Denis Jacquerye)
+  • added bearings to en dash U+2013, em dash U+2014 and figure
+  dash U+2012 by making dashes shorter, preserving character
+  width (by Denis Jacquerye)
+  • reduced U+031C, U+0325 (ring below), U+0339 to be entirely
+  visible; added instructions in Sans Book; changed
+  U+1e00-U+1e01 to use new ring below (by Denis Jacquerye)
+  • adjusted circumflex below on U+1E12-U+1E13, U+1E18-U+1E19,
+  U+1E3C-U+1E3D, U+1E4A-U+1E4B, U+1E70-U+1E71, U+1E76-U+1E77 in
+  Sans fonts (by Denis Jacquerye)
+  • Added U+0ED4, U+0ED5 to DejaVu Sans (by Rémy Oudompheng)
+  • Lao-specific anchors (by Rémy Oudompheng)
+  • added alternate I to match the small capital in Sans (by
+  Gee Fung Sit 薛至峰
+
+-------------------------------------------------------------------
+Wed Mar 14 13:28:19 CET 2007 - mfabian@suse.de
+
+- update to 2.15.
+  + improved hinting in Sans Oblique to deal with some spacing
+    and inconsistency issues (by Ben Laenen)
+  + added anchors to Mono Book, and added GPOS rules for combining
+    diacritics to show up as zero width glyphs (by Ben Laenen)
+  + removed U+F21C (PUA), it was copy of U+2C64 from Latin
+    Extended C (by Eugeniy Meshcheryakov)
+  + added U+27E6-U+27E7 to Sans (by Gee Fung Sit 薛至峰)
+  + added U+1407, U+1409, U+140C-U+141B, U+141D-U+1425,
+    U+1427-U+142E, U+1435-U+1438, U+143A-U+1449, U+1452, U+1454,
+    U+1457-U+1465, U+1467-U+146A, U+1471, U+1474-U+1482,
+    U+1484-U+1488, U+148F, U+1492, U+14A0, U+14A2, U+14A9,
+    U+14AC-U+14BA, U+14BC, U+14BD, U+14C6, U+14C9-U+14CF, U+14D1,
+    U+14D2, U+14D9, U+14DC-U+14E9, U+14EC, U+14F3, U+14F6-U+1504,
+    U+1506, U+1507, U+1510-U+1525, U+152C, U+152F-U+153D, U+1540,
+    U+1541, U+154E, U+154F, U+1552, U+155B, U+155C, U+1568,
+    U+1569, U+1574-U+157B, U+157D, U+15A7-U+15AE, U+1646,
+    U+1647 (by Eugeniy Meshcheryakov)
+  + fixed several contours to not intersect, use horizontal or
+    vertical tangents, use integer coordinates, etc in
+    Sans Book (by Denis Jacquerye)
+  + added U+0496-U+0497 in Serif (by Andrey V. Panov) 
+
+-------------------------------------------------------------------
+Tue Jan 23 22:05:49 CET 2007 - mfabian@suse.de
+
+- update to 2.14.
+
+-------------------------------------------------------------------
+Tue Oct 10 14:08:11 CEST 2006 - mfabian@suse.de
+
+- add "mk" and "vi" to "Provides: locale"
+
+-------------------------------------------------------------------
+Sun Oct 08 17:36:58 CEST 2006 - mfabian@suse.de
+
+- update to 2.10.
+
+-------------------------------------------------------------------
+Mon Aug 28 18:53:24 CEST 2006 - mfabian@suse.de
+
+- update to 2.9.
+  (By the way, the update to 2.8 already fixed bug #74601).
+
+-------------------------------------------------------------------
+Tue Aug 08 12:18:28 CEST 2006 - mfabian@suse.de
+
+- BuildRequires: xorg-x11-devel is necessary to detect Xorg X11R7.
+
+-------------------------------------------------------------------
+Mon Aug 07 15:09:36 CEST 2006 - mfabian@suse.de
+
+- update to 2.8.
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+
+-------------------------------------------------------------------
+Wed Mar 01 13:16:46 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(bg;el;ru)".
+
+-------------------------------------------------------------------
+Wed Feb 15 15:34:07 CET 2006 - mfabian@suse.de
+
+- add Provides: desktop-data-SuSE:/usr/X11R6/lib/X11/fonts/truetype/SUSESans-Roman.ttf
+
+-------------------------------------------------------------------
+Fri Feb 10 15:34:43 CET 2006 - mfabian@suse.de
+
+- Bugzilla #132577.
+- new package: dejavu, version 2.2.

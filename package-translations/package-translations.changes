@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Mon May 13 08:13:14 UTC 2019 - Karl Eichwalder <ke@suse.de>
+
+- Update to version 84.87.20190506.9674f864:
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Finnish)
+  * update translations
+
+-------------------------------------------------------------------
+Mon May  6 08:45:03 UTC 2019 - Karl Eichwalder <ke@suse.de>
+
+- Update to version 84.87.20190504.098d3e84:
+  * Add output of rpm groups
+  * Add rpm-group POT file deduplication and merging
+  * Apply provided patch in https://progress.opensuse.org/issues/25074
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Swedish)
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Apr 11 08:20:47 UTC 2019 - Karl Eichwalder <ke@suse.de>
+
+- Update to version 84.87.20190409.959f468b:
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Swedish)
+
+-------------------------------------------------------------------
+Mon Mar 25 09:43:28 UTC 2019 - Karl Eichwalder <ke@suse.de>
+
+- Update to version 84.87.20190321.3eb73b8b:
+  * Merge missing LCN translations for patterns
+  * Add missing supported po files
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (German)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Spanish)
+
+-------------------------------------------------------------------
+Tue Feb 12 15:43:28 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20190212.03559d3a:
+  * Fix more glitches
+
+-------------------------------------------------------------------
+Tue Feb 12 14:32:51 UTC 2019 - ke@suse.com
+
+- Update to version 84.87.20190212.57f204a5:
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Spanish)
+  * fix glitch
+
+-------------------------------------------------------------------
+Tue Feb 12 08:17:17 UTC 2019 - ke@suse.com
+
+- Update to version 84.87.20190208.4199a3f6:
+  * Add 15.1 and non-oss repos
+  * Added translation using Weblate (Chinese (Taiwan))
+  * Added translation using Weblate (Kabyle)
+  * Consistently use LF line ending
+  * Fixed a typo fistChar --> firstChar
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Kabyle)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+  * Update strings
+
+-------------------------------------------------------------------
+Mon May 14 08:30:23 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20180514.1ea260af:
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (German)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Lithuanian)
+
+-------------------------------------------------------------------
+Tue May 08 15:27:17 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20180507.1934f9b1:
+  * Added translation using Weblate (Hindi)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+  * weblate supplementary script update
+
+-------------------------------------------------------------------
+Tue Apr 24 10:24:12 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20180423.8e00def2:
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+
+-------------------------------------------------------------------
+Mon Apr 16 12:03:31 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20180416.1a836422:
+  * Adjust for Leap 15
+- remove translate_packages.pl, no longer needed with product builder
+
+-------------------------------------------------------------------
+Wed Jul 19 14:47:59 UTC 2017 - lnussel@suse.de
+
+- Update to version 84.87.20170719.aabc165:
+  * Added translation using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+
+-------------------------------------------------------------------
+Mon Jul 17 13:25:59 UTC 2017 - lnussel@suse.de
+
+- Update to version 84.87.20170717.198bd14:
+  * Update package strings
+  * Added translation using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Ukrainian)
+
+-------------------------------------------------------------------
+Mon Jul 10 14:38:56 UTC 2017 - lnussel@suse.de
+
+- switch to using a _service file
+- Update to version 84.87.20170709.7ea0b2c:
+  * Translated using Weblate (German)
+
+-------------------------------------------------------------------
+Thu Apr 20 19:47:52 UTC 2017 - alex239@gmail.com
+
+- automated update on 2017-04-20
+
+-------------------------------------------------------------------
+Tue Nov 08 20:55:52 UTC 2016 - alex239@gmail.com
+
+- automated update on 2016-11-08
+- added source service for OBS
+
+-------------------------------------------------------------------
+Sun Oct  2 12:21:02 UTC 2016 - alex239@gmail.com
+
+- automated update on 2016-10-02
+
+-------------------------------------------------------------------
+Thu Sep  1 16:00:02 MSK 2016 - alex239@gmail.com
+
+- automated update on 2016-09-01
+
+-------------------------------------------------------------------
+Thu Oct  8 09:58:54 CEST 2015 - coolo@suse.com
+
+- automated update on 2015-10-08
+
+-------------------------------------------------------------------
+Tue Oct 29 08:24:16 UTC 2013 - coolo@suse.com
+
+- manual update for 13.1
+
+-------------------------------------------------------------------
+Tue Jul  9 16:14:13 CEST 2013 - coolo@suse.com
+
+- automated update on 2013-07-09
+
+-------------------------------------------------------------------
+Fri Oct 28 08:53:01 UTC 2011 - coolo@suse.com
+
+- insert EULAs into the suse tags
+
+-------------------------------------------------------------------
+Thu Oct 27 13:46:34 CEST 2011 - coolo@suse.com
+
+- automated update on 2011-10-27
+
+-------------------------------------------------------------------
+Tue Oct 11 11:41:44 UTC 2011 - coolo@suse.com
+
+- update .changes file and skip non-existant changes
+
+-------------------------------------------------------------------
+Wed Aug 31 08:06:32 UTC 2011 - coolo@suse.com
+
+- update translations
+
+-------------------------------------------------------------------
+Fri May 27 14:32:24 CEST 2011 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Sat May 29 06:41:08 UTC 2010 - coolo@novell.com
+
+- fix the PREPAPRE_PACKAGE script
+
+-------------------------------------------------------------------
+Fri May 28 15:16:22 UTC 2010 - coolo@novell.com
+
+- make sure we create utf-8 output
+- update translations
+
+-------------------------------------------------------------------
+Wed Oct 28 09:28:12 UTC 2009 - coolo@novell.com
+
+- require perl-gettext
+
+-------------------------------------------------------------------
+Wed Oct 28 08:28:02 UTC 2009 - coolo@novell.com
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Oct 26 15:55:40 UTC 2009 - coolo@novell.com
+
+- initial package
+

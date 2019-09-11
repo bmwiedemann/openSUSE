@@ -1,0 +1,50 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+
+Let the module work on python2 and python3
+Index: duckduckgo2-0.242/duckduckgo.py
+===================================================================
+--- duckduckgo2-0.242.orig/duckduckgo.py
++++ duckduckgo2-0.242/duckduckgo.py
+@@ -1,7 +1,11 @@
+-import urllib
+-import urllib2
+ import json as j
+ import sys
++try:
++    from urllib.parse import urlencode
++    from urllib.request import urlopen, Request
++except ImportError:
++    from urllib import urlencode
++    from urllib2 import urlopen, Request
+ 
+ __version__ = 0.242
+ 
+@@ -40,11 +44,11 @@ def query(query, useragent='python-duckd
+         'd': meanings,
+         }
+     params.update(kwargs)
+-    encparams = urllib.urlencode(params)
++    encparams = urlencode(params)
+     url = 'http://api.duckduckgo.com/?' + encparams
+ 
+-    request = urllib2.Request(url, headers={'User-Agent': useragent})
+-    response = urllib2.urlopen(request)
++    request = Request(url, headers={'User-Agent': useragent})
++    response = urlopen(request)
+     json = j.loads(response.read())
+     response.close()
+ 
+Index: duckduckgo2-0.242/setup.py
+===================================================================
+--- duckduckgo2-0.242.orig/setup.py
++++ duckduckgo2-0.242/setup.py
+@@ -1,7 +1,8 @@
++from io import open
+ from setuptools import setup
+ from duckduckgo import __version__
+ 
+-long_description = open('README.rst').read()
++long_description = open('README.rst', encoding='utf-8').read()
+ 
+ setup(name='duckduckgo2',
+       version=__version__,

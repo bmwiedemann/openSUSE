@@ -1,0 +1,157 @@
+Index: tftpd_file.c
+===================================================================
+--- tftpd_file.c.orig
++++ tftpd_file.c
+@@ -406,7 +406,6 @@ int tftpd_send_file(struct thread_data *
+      int timeout_state = state;
+      int result;
+      long block_number = 0;
+-     long last_requested_block = -1;
+      long last_block = -1;
+      int data_size;
+      struct sockaddr_storage *sa = &data->client_info->client;
+@@ -434,6 +433,11 @@ int tftpd_send_file(struct thread_data *
+      long prev_file_pos = 0;
+      int temp = 0;
+ 
++     long prev_sent_block = -1;
++     int prev_sent_count = 0;
++     int prev_ack_count = 0;
++     int curr_sent_count = 0;
++
+      /* look for mode option */
+      if (strcasecmp(data->tftp_options[OPT_MODE].value, "netascii") == 0)
+      {
+@@ -819,8 +823,8 @@ int tftpd_send_file(struct thread_data *
+                                                &client_info->client));
+                                    sa = &client_info->client;
+ 
+-                                   /* rewind the last_requested_block counter */
+-                                   last_requested_block = -1;
++                                   /* rewind the prev_sent_block counter */
++                                   prev_sent_block = -1;
+ 
+                                    state = S_SEND_OACK;
+                                    break;
+@@ -895,6 +899,7 @@ int tftpd_send_file(struct thread_data *
+                                           "source port mismatch, check bypassed");
+                          }
+                     }
++
+                     /* The ACK is from the current client */
+                     number_of_timeout = 0;
+ 		    if (multicast)
+@@ -908,24 +913,82 @@ int tftpd_send_file(struct thread_data *
+                          logger(LOG_DEBUG, "received ACK <block: %ld>",
+                                 block_number);
+ 
+-                    /* if turned on, check whether the block request isn't already fulfilled */
+-                    if (tftpd_prevent_sas) {
+-                         /* multicast, block numbers could contain gaps */
+-                         if (multicast) {
+-                              if (last_requested_block >= block_number) {
++                    /* Now check the ACK number and possibly ignore the request */
++
++                    /* multicast, block numbers could contain gaps */
++                    if (multicast) {
++                         /* if turned on, check whether the block request isn't already fulfilled */
++                         if (tftpd_prevent_sas) {
++                              if (prev_sent_block >= block_number) {
+                                    if (data->trace)
+-                                        logger(LOG_DEBUG, "received duplicated ACK <block: %d >= %d>", last_requested_block, block_number);
++                                        logger(LOG_DEBUG, "received duplicated ACK <block: %d >= %d>", prev_sent_block, block_number);
+                                    break;
+                               } else
+-                                   last_requested_block = block_number;
+-                              /* unicast, blocks should be requested one after another */
+-                         } else {
+-                              if (last_requested_block + 1 != block_number && last_requested_block != -1) {
++                                   prev_sent_block = block_number;
++                         }
++                         /* don't prevent thes SAS */
++                         /* use a heuristic suggested by Vladimir Nadvornik */
++                         else {
++                              /* here comes the ACK again */
++                              if (prev_sent_block == block_number) {
++                                   /* drop if number of ACKs == times of previous block sending */
++                                   if (++prev_ack_count == prev_sent_count) {
++                                        logger(LOG_DEBUG, "ACK count (%d) == previous block transmission count -> dropping ACK", prev_ack_count);
++                                        break;
++                                   }
++                                   /* else resend the block */
++                                   logger(LOG_DEBUG, "resending block %d", block_number + 1);
++                              }
++                              /* received ACK to sent block -> move on to next block */
++                              else if (prev_sent_block < block_number) {
++                                   prev_sent_block = block_number;
++                                   prev_sent_count = curr_sent_count;
++                                   curr_sent_count = 0;
++                                   prev_ack_count = 1;
++                              }
++                              /* block with low number -> ignore it completely */
++                              else {
++                                   logger(LOG_DEBUG, "ignoring ACK %d", block_number);
++                                   break;
++                              }
++                         }
++                         /* unicast, blocks should be requested one after another */
++                    } else {
++                         /* if turned on, check whether the block request isn't already fulfilled */
++                         if (tftpd_prevent_sas) {
++                              if (prev_sent_block + 1 != block_number) {
++                                   logger(LOG_WARNING, "timeout: retrying...");
+                                    if (data->trace)
+-                                        logger(LOG_DEBUG, "received out of order ACK <block: %d != %d>", last_requested_block + 1, block_number);
++                                        logger(LOG_DEBUG, "received out of order ACK <block: %d != %d>", prev_sent_block + 1, block_number);
+                                    break;
+-                              } else
+-                                   last_requested_block = block_number;
++                              } else {
++                                   prev_sent_block = block_number;
++                              }
++                              /* don't prevent thes SAS */
++                              /* use a heuristic suggested by Vladimir Nadvornik */
++                              } else {
++                              /* here comes the ACK again */
++                              if (prev_sent_block == block_number) {
++                                   /* drop if number of ACKs == times of previous block sending */
++                                   if (++prev_ack_count == prev_sent_count) {
++                                        logger(LOG_DEBUG, "ACK count (%d) == previous block transmission count -> dropping ACK", prev_ack_count);
++                                        break;
++                                   }
++                                   /* else resend the block */
++                                   logger(LOG_DEBUG, "resending block %d", block_number + 1);
++                              }
++                              /* received ACK to sent block -> move on to next block */
++                              else if (prev_sent_block < block_number) {
++                                   prev_sent_block = block_number;
++                                   prev_sent_count = curr_sent_count;
++                                   curr_sent_count = 0;
++                                   prev_ack_count = 1;
++                              }
++                              /* nor previous nor current block number -> ignore it completely */
++                              else {
++                                   logger(LOG_DEBUG, "ignoring ACK %d", block_number);
++                                   break;
++                              }
+                          }
+                     }
+ 
+@@ -934,6 +997,8 @@ int tftpd_send_file(struct thread_data *
+                          state = S_END;
+                          break;
+                     }
++
++                    curr_sent_count++;
+                     state = S_SEND_DATA;
+                     break;
+                case GET_ERROR:
+@@ -1028,7 +1093,7 @@ int tftpd_send_file(struct thread_data *
+                          state = S_SEND_OACK;                
+                          fseek(fp, 0, SEEK_SET);
+ 			 /* reset the last block received counter */
+-			 last_requested_block = -1;
++			 prev_sent_block = -1;
+                     }
+                     else
+                     {

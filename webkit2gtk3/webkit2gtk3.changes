@@ -1,0 +1,2447 @@
+-------------------------------------------------------------------
+Sun Jul 14 14:21:58 UTC 2019 - Rich Coe <rcoe@wi.rr.com>
+
+- Add webkit2gtk3-bwo197558-hang.patch for hang (bwo#197558)
+
+-------------------------------------------------------------------
+Mon Jul  8 16:50:58 UTC 2019 - mgorse@suse.com
+
+- Drop webkit2gtk3-boo1088932-a11y-state-set.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jul  2 11:17:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.3:
+  + Deprecate WebSQL APIs.
+  + Make Previous/Next gesture work in RTL mode.
+  + Fix content disappearing when using CSS transforms.
+  + Fix rendering artifacts in youtube volume button.
+  + Fix trapezoid artifact in github comment box.
+  + Fix video pause that sometimes caused to skip to finish.
+  + Fix volume level changes when playing a video.
+  + Fix HLS streams being slow to start.
+  + Fix some radio streams that could not be played.
+  + Fix the build with older versions of GStreamer.
+  + Fix the build with video and audio disabled.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + webkit2gtk3-bug196440-build-fix.patch.
+  + webkit2gtk3-bug198080-build-fix.patch.
+
+-------------------------------------------------------------------
+Sat Jun 22 18:34:57 UTC 2019 - mgorse@suse.com
+
+- Add webkit2gtk3-bug196440-build-fix.patch and
+  webkit2gtk3-bug198080-build-fix.patch: fix build failures on
+  SLE/Leap 15 and SLE 12. 
+
+-------------------------------------------------------------------
+Fri May 24 08:00:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.2 (boo#1135715):
+  + Fix rendering of emojis copy-pasted from GTK emoji chooser.
+  + Fix space characters not being rendered with some CJK fonts.
+  + Fix adaptive streaming playback with older GStreamer versions.
+  + Set a maximum zoom level for pinch zooming gesture.
+  + Fix navigation gesture to not interfere with scrolling.
+  + Fix SSE2 detection at compile time, ensuring the right flags
+    are passed to the compiler.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2019-8595, CVE-2019-8607, CVE-2019-8615.
+  + Updated translations.
+- Drop webkit2gtk3-fix-i586-build.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Apr 24 17:45:53 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133291).
+
+-------------------------------------------------------------------
+Mon Apr 15 11:06:10 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add webkit2gtk3-fix-i586-build.patch: Fix build on i586.
+
+-------------------------------------------------------------------
+Wed Apr 10 21:50:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.1 (boo#1132256):
+  + Do not allow changes in active URI before provisional load
+    starts for non-API requests.
+  + Stop the threaded compositor when the page is not visible or
+    layer tree state is frozen.
+  + Use WebKit HTTP source element again for adaptive streaming
+    fragments downloading.
+  + Properly handle empty resources in
+    webkit_web_resource_get_data().
+  + Add quirk to ensure outlook.live.com uses the modern UI.
+  + Fix methods returing GObject or boxed types in JavaScriptCore
+    GLib API.
+  + Ensure callback data is passed to functions and constructors
+    with no parameters in JavaScriptCore GLib API.
+  + Fix rendering of complex text when the font uses x,y origins.
+  + Fix sound loop with Google Hangouts and WhatsApp notifications.
+  + Fix the build with GStreamer 1.12.5 and GST GL enabled.
+  + Detect SSE2 at compile time.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2019-6251, CVE-2019-11070.
+- Drop webkitgtk-gstreamer-gl-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar 26 22:39:18 UTC 2019 - mgorse@suse.com
+
+- Add webkitgtk-gstreamer-gl-build-fix.patch: fix build on
+  SLE/Leap 15 (webkit#196178).
+
+-------------------------------------------------------------------
+Tue Mar 19 19:52:23 UTC 2019 - mgorse@suse.com
+
+- Disable openjpeg on SLE 12. Our version isn't new enough. 
+
+-------------------------------------------------------------------
+Wed Mar 13 13:40:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.0:
+  + Added support fot content filtering.
+  + Variation fonts support.
+  + Fully emoji rendering support.
+  + Added navigation and pinch zoom gestures for touchpads.
+  + Support for JPEG2000 images.
+  + Script dialogs are now modal to the current web view only.
+  + New API to convert URI to format for display.
+  + Security fixes: CVE-2019-8375 (boo#1126768), CVE-2019-8506,
+    CVE-2019-8524, CVE-2019-8535, CVE-2019-8536, CVE-2019-8544,
+    CVE-2019-8551, CVE-2019-8558, CVE-2019-8559, CVE-2019-8563.
+
+-------------------------------------------------------------------
+Wed Mar  6 16:25:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.23.92:
+  + Fix constructors returning a GObject in JSC GLib API.
+  + Do not scan NPAPI plugins when plugins are disabled in
+    settings.
+  + Add WebKitUserContentFilterStore to the API docs.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  3 18:37:51 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.23.91:
+  + Add new API to handle user content filters.
+  + Fix a UI process crash while filling selection data during drag
+    and drop.
+  + Fix deadlock on Linux/x64 between SamplingProfiler and VMTraps.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  3 16:05:51 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.23.90:
+  + Add a new setting to disable JavaScript elments from documents
+    during parsing.
+  + Add new API to expose JavaScriptCore options.
+  + Add support for JPEG2000 images.
+  + Add support for back/forward touchpad gesture.
+  + Add support for pinch zoom on touchpad.
+  + Use a scrolled window in alert dialogs to handle long contents.
+  + Sleep disabler now inhibits idle when a "System" sleep disabler
+    is requested.
+  + Remove experimental sandboxing support, it's not yet ready for
+    stable release.
+  + Fix a web process deadlock when starting the remote inspector.
+  + Fix a crash when browsing inspector:// URI without port set.
+  + Fix several crashes and rendering issues.
+- Add openjpeg2 and openjpeg2-devel BuildRequires: New
+  dependencies.
+- Drop webkit2gtk3-python3.patch: Not needed anymore.
+- Disable bubblewrap, xdg-dbus-proxy and pkgconfig(libseccomp)
+  BuildRequires and bubblewrap, xdg-dbus-proxy Requires: Sandbox
+  support was disabled by upstream again.
+- Stop passing -DENABLE_ACCELERATED_2D_CANVAS=ON to cmake, follow
+  upstream default.
+
+-------------------------------------------------------------------
+Sun Mar  3 16:05:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.23.3:
+  + Fix rendering of emoji sequences containing zero with joiner.
+  + Fallback to a colored font when rendering emojis.
+  + Fix rendering artifacts on Youtube while scrolling under X11.
+  + Remove DConf permissions from sandbox.
+  + Fix build from release tarball with gtkdoc enabled.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  3 16:05:49 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.23.2:
+  + Fix rendering artifacts in some websites with accelerated
+    compositing enabled.
+  + Add initial support for variation fonts.
+  + Add new API to convert a URI to a format for display.
+  + Make scrollbars follow gtk-primary-button-warps-slider setting.
+  + Fix crashes when closing the WebDriver session.
+  + Fix the build with OpenGL disabled.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.23.1:
+  + Add initial support for subprocess sandboxing in Linux.
+  + Add new permission request type for media device information.
+  + Make scrollbars follow gtk-primary-button-warps-slider setting.
+  + Script dialogs are now modal to the current web view only.
+  + Fix several crashes and rendering issues.
+- Add bubblewrap, xdg-dbus-proxy and pkgconfig(libseccomp)
+  BuildRequires: New dependencies for subprocess sandboxing.
+- Add bubblewrap and xdg-dbus-proxy Requires: They are needed at
+  runtime.
+- Disable webkit2gtk3-python3.patch: Needs rebase or possibly
+  outright dropping as fixed, as some parts of them are checked in
+  upstream.
+
+-------------------------------------------------------------------
+Sat Mar  2 16:34:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.22.7:
+  + Fix rendering of glyphs in Hebrew (and possibly other
+    languages) when Unicode NFC normalization is used.
+  + Fix several crashes and race conditions.
+  + Security fixes: CVE-2019-8518, CVE-2019-8523.
+
+-------------------------------------------------------------------
+Wed Feb 13 17:16:52 UTC 2019 - mgorse@suse.com
+
+- Replace webkit2gtk3-boo1088932-a11y-state-set.patch with a patch
+  proposed for webkit#188599. The original patch didn't always
+  prevent crashes.
+
+-------------------------------------------------------------------
+Sat Feb  9 15:44:38 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.22.6 (boo#1124937):
+  + Make kinetic scrolling slow down smoothly when reaching the
+    ends of pages, instead of abruptly, to better match the GTK+
+    behaviour.
+  + Fix Web inspector magnifier under Wayland.
+  + Fix garbled rendering of some websites (e.g. YouTube) while
+    scrolling under X11.
+  + Fix several crashes, race conditions, and rendering issues.
+- CVE identifiers fixed: CVE-2019-6212, CVE-2019-6215,
+  CVE-2019-6216, CVE-2019-6217, CVE-2019-6226, CVE-2019-6227,
+  CVE-2019-6229, CVE-2019-6233, CVE-2019-6234, CVE-2019-6201,
+  CVE-2019-7285, CVE-2019-7292, CVE-2019-8503, CVE-2019-8515.
+
+-------------------------------------------------------------------
+Wed Dec 26 19:21:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Pass DENABLE_ACCELERATED_2D_CANVAS=ON to cmake, build accelerated
+  2d canvas support, we already build the needed support in cairo.
+- Switch to Ninja build, add ninja BuildRequires and pass GNinja to
+  cmake and use ninja_build and ninja_make macros.
+
+-------------------------------------------------------------------
+Wed Dec 26 16:54:29 UTC 2018 - schwab@suse.de
+
+- Don't use gold on ppc.
+
+-------------------------------------------------------------------
+Mon Dec 17 10:12:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.22.5:
+  + Improved the logic to determine for which architectures to
+    enable the JIT compiler support and USE_SYSTEM_MALLOC at build
+    time.
+  + Fix the build with ENABLE_VIDEO=OFF and ENABLE_OPENGL=OFF.
+  + Fix several crashes.
+  + Security fixes: CVE-2018-4437 (boo#1119553), CVE-2018-4438
+    (boo#1119554), CVE-2018-4441 (boo#1119555), CVE-2018-4442
+    (boo#1119556), CVE-2018-4443 (boo#1119557), CVE-2018-4464
+    (boo#1119558).
+
+-------------------------------------------------------------------
+Fri Dec  7 22:34:19 UTC 2018 - mgorse@suse.com
+
+- Disable media source extension on SLE/Leap 15 and earlier, since
+  it requires gstreamer 1.14.0.
+
+-------------------------------------------------------------------
+Wed Nov 28 10:47:03 UTC 2018 - schwab@suse.de
+
+- Reduce memory constraints for riscv64
+
+-------------------------------------------------------------------
+Thu Nov 22 12:02:43 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.22.4 (boo#1116998):
+  + Expose ENABLE_MEDIA_SOURCE as a public build option.
+  + Fix a crash when using Cairo versions between 1.15 and 1.16.0
+  + Fix the build with -DLOG_DISABLED=0.
+  + Fix the build with ENABLE_VIDEO=OFF and ENABLE_WEB_AUDIO=OFF.
+  + Fix debug builds of JavaScriptCore.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4372.
+
+-------------------------------------------------------------------
+Mon Nov 12 10:32:01 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to latest values to avoid OOM erros
+
+-------------------------------------------------------------------
+Mon Oct 29 11:04:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.22.3:
+  + Many improvements and fixes for video playback with media
+    source extensions (MSE), which improve the user experience
+    across the board, and in particular for playback of WebM
+    videos.
+  + Fix a memory leak during media playback when using playbin3.
+  + Fix portions of Web views not being rendered after resizing.
+  + Fix Resource Timing reporting for <iframe> elements.
+  + Fix the build with the remote Web Inspector disabled.
+  + Fix the build on ARMv7 with NEON extensions.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4345, CVE-2018-4386.
+
+-------------------------------------------------------------------
+Thu Oct 11 14:20:21 UTC 2018 - mgorse@suse.com
+
+- Re-enable building with python 3 for SLE/Leap 15 and Tumbleweed
+- Update webkit2gtk3-python3.patch.
+
+-------------------------------------------------------------------
+Thu Oct  4 21:04:10 UTC 2018 - mgorse@suse.com
+
+- Integrate changes needed for SLE 12 / leap 42.3:
+  + depend on gcc7-c++, and pass appropriate executables to cmake.
+  + Disable web crypto API: libgcrypt is too old.
+  + Define USE_GSTREAMER_GL=FALSE: needs gstreamer 1.10.0 or newer.
+- disable libwoff2 for SLE 15/12 and Leap 15/42.3, since it is not
+  available there.
+
+-------------------------------------------------------------------
+Wed Sep 26 15:19:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.22.2:
+  + Several fixes for video playback with media source extensions
+    (MSE). This allows using WebM support for YouTube, which no
+    longer works through regular video source. Note that MSE is
+    still disabled by default and
+    webkit_settings_set_enable_mediasource() has to be used to
+    enable the feature.
+  + Fix the build when only Wayland support is enabled and X11
+    headers are not available.
+- Changes from version 2.22.1:
+  + Fix printing in landscape.
+  + Fix the build in several platforms: s390x, ppc64le, armv7hl.
+  + Fix the build with a11y disabled.
+  + Fix the build with video disabled.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4375, CVE-2018-4376, CVE-2018-4378,
+    CVE-2018-4382, CVE-2018-4392, CVE-2018-4416.
+- Add new upstream maintainer's GPG key to the keyring.
+
+-------------------------------------------------------------------
+Tue Sep  4 10:18:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.22.0 (boo#1110279):
+  + New JavaScriptCore GLib API.
+  + Switched to use complex text code path unconditionally.
+  + Added playbin3 support to GStreamer media backend.
+  + Support for WebDriver advance user insteraction commands.
+  + Default option menu implementation now uses a GtkTreeView.
+  + Security fixes: CVE-2018-4191, CVE-2018-4197, CVE-2018-4299,
+    CVE-2018-4306, CVE-2018-4309, CVE-2018-4312, CVE-2018-4314,
+    CVE-2018-4315, CVE-2018-4316, CVE-2018-4317, CVE-2018-4318,
+    CVE-2018-4319, CVE-2018-4323, CVE-2018-4328, CVE-2018-4358,
+    CVE-2018-4359, CVE-2018-4361, CVE-2018-4373.
+
+-------------------------------------------------------------------
+Fri Aug 24 11:28:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.21.92:
+  + Add new API to inject/register user content in isolated worlds.
+  + Add more API to JSCException to handle column number, convert
+    exception to string, get the exception backtrace, create
+    exceptions with a custom error name and report exception
+    message with full details.
+  + Fix excessive CPU usage when getting the process memory
+    footprint.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 16 12:44:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.21.91:
+  + Add enable-media-capabilities setting.
+  + Stop pushing buffers when seeking status changes in media
+    player.
+  + Fix rendering of theme styled buttons.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Add explict pkgconfig(gstreamer-app-1.0),
+  pkgconfig(gstreamer-audio-1.0),
+  pkgconfig(gstreamer-codecparsers-1.0),
+  pkgconfig(gstreamer-fft-1.0), pkgconfig(gstreamer-mpegts-1.0),
+  pkgconfig(gstreamer-pbutils-1.0), pkgconfig(gstreamer-tag-1.0)
+  and pkgconfig(gstreamer-video-1.0) BuildRequires: align with what
+  configure checks for.
+- Disable webkit2gtk3-python3.patch via bcond_with: Patch currently
+  breaks the build.
+
+-------------------------------------------------------------------
+Mon Aug 13 07:59:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.20.5:
+  + Fix rendering artifacts in some web sites due to a bug
+    introduced in 2.20.4.
+
+-------------------------------------------------------------------
+Wed Aug  8 02:21:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.21.5:
+  + Add API to evaluate code in a new object to JavaScriptCore GLib
+    API.
+  + Add API to check for syntax errors in given code to
+    JavaScriptCore GLib API.
+  + Update jsc_context_evaluate_with_source_uri() to receive also a
+    starting line number.
+  + Add API to allow creating variadic functions to JavaScriptCore
+    GLib API.
+  + Add –host option to WebDriver process.
+  + Handle acceptInsecureCertificates capability in WebDriver.
+  + Fix video freezes when GStreamerGL is not installed.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Refresh webkit2gtk3-boo1088932-a11y-state-set.patch and
+  webkit2gtk3-python3.patch with quilt.
+
+-------------------------------------------------------------------
+Wed Aug  8 02:21:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.21.4:
+  + Switch to use a popup window with a tree view instead of a menu
+    for option menu default implementation.
+  + Add API to run javascript from a WebKitWebView in an isolated
+    world.
+  + Fix UI process crash in WebKitFaviconDatabase when pageURL is
+    unset.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Wed Aug  8 02:21:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.21.3:
+  + Ensure memory monitor properly notifies all child processes.
+  + Add maximize, minimize and fullscreen window commands to
+    WebDriver.
+  + Fix a network process crash when trying to get cookies of
+    about:blank page.
+  + Fix UI process crash when closing the window under Wayland.
+  + Disable Gigacage if mmap fails to allocate in Linux.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.21.2:
+  + Remove resource load statistics API, it's not ready yet.
+  + Add initial implementation of WebDriver advance user
+    insteraction commands.
+  + Add introspectable alternatives for functions using vargars to
+    JavaScriptCore GLib API.
+  + Implement MouseEvent.buttons.
+  + Fix downloads started by context menu failing in some websites
+    due to missing user agent HTTP header.
+- Rebase webkit2gtk3-python3.patch generate-bytecode-files chunks.
+
+-------------------------------------------------------------------
+Wed Aug  8 02:21:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.21.1:
+  + Add initial JavaScriptCore GLib API.
+  + Use JavaScriptCore GLib API in WebKit layer and deprecate most
+    of the DOM bindings API as well as
+  + methods using the JavaScriptCore C API.
+  + Switch to use complex text code path unconditionally.
+  + Properly close the connection to the Wayland nested compositor
+    in the WebProcess.
+  + Add playbin3 support to GStreamer media backend.
+  + Fix a deadlock when destroying the media player in non
+    accelerated compositing mode.
+- Drop webkitgtk-typelib-sharelib-link.patch: there is no
+  JavaScriptCore.gir.in file to be patched anymore.
+
+-------------------------------------------------------------------
+Tue Aug  7 08:59:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.20.4:
+  + Fix a crash when leaving accelerated compositing mode.
+  + Fix non-deterministic build failure due to missing
+    JavaScriptCore/JSContextRef.h.
+  + Security fixes: CVE-2018-4261, CVE-2018-4262, CVE-2018-4263,
+    CVE-2018-4264, CVE-2018-4265, CVE-2018-4266, CVE-2018-4267,
+    CVE-2018-4270, CVE-2018-4272, CVE-2018-4273, CVE-2018-4278,
+    CVE-2018-4284.
+- Drop webkit2gtk3-boo1101999-off-by-one.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jul 20 15:15:12 UTC 2018 - mgorse@suse.com
+
+- Add webkit2gtk3-boo1101999-off-by-one.patch: fix off-by-one in
+  xdg_mime_get_simple_globs (boo#1101999 CVE-2018-12911).
+
+-------------------------------------------------------------------
+Mon Jun 11 13:22:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.20.3:
+  + Fix installation directory of API documentation.
+  + Disable Gigacage if mmap fails to allocate in Linux.
+  + Add user agent quirk for paypal website.
+  + Properly detect compiler flags, needed libs, and fallbacks for
+    usage of 64-bit atomic operations.
+  + Fix a network process crash when trying to get cookies of
+    about:blank page.
+  + Fix UI process crash when closing the window under Wayland.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4190, CVE-2018-4199, CVE-2018-4218,
+    CVE-2018-4222, CVE-2018-4232, CVE-2018-4233, CVE-2018-4246,
+    CVE-2018-11646.
+- Drop webkit2gtk3-boo1095611-null-page-url.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jun  8 20:49:13 UTC 2018 - mgorse@suse.com
+
+- Add webkit2gtk3-boo1095611-null-page-url.patch: don't crash if
+  the page URL is null (CVE-2018-11646).
+
+-------------------------------------------------------------------
+Mon May 14 20:59:33 UTC 2018 - bjorn.lie@gmail.com
+
+- Split out the MiniBrowser in own sub-package, there might be
+  users who just want to test it without having to pull all of the
+  builddependencies.
+
+-------------------------------------------------------------------
+Tue May  8 15:48:15 UTC 2018 - schwab@suse.de
+
+- Disable JIT on riscv64
+
+-------------------------------------------------------------------
+Mon May  7 16:00:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.20.2:
+  + Do TLS error checking on GTlsConnection::accept-certificate to
+    finish the load earlier in case of errors.
+  + Properly close the connection to the nested wayland compositor
+    in the Web Process.
+  + Avoid painting backing stores for zero-opacity layers.
+  + Fix downloads started by context menu failing in some websites
+    due to missing user agent HTTP header.
+  + Fix video unpause when GStreamerGL is disabled.
+  + Fix several GObject introspection annotations.
+  + Update user agent quiks to fix Outlook.com and Chase.com.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4200 (boo#1092280), CVE-2018-11712
+    (boo#1096061).
+
+-------------------------------------------------------------------
+Tue May  1 17:00:12 UTC 2018 - bjorn.lie@gmail.com
+
+- Enable pkgconfig(libbrotlidec), and add pkgconfig(libwoff2dec)
+  BuildRequires and no longer pass -DUSE_WOFF2=false to cmake.
+  Woff2 is now available in openSUSE.
+- Pass -DENABLE_MINIBROWSER=ON to cmake, build the MiniBrowser and
+  package it in devel subpackage. Usefull for developers.
+
+-------------------------------------------------------------------
+Wed Apr 11 15:53:22 UTC 2018 - mgorse@suse.com
+
+- Add webkit2gtk3-boo1088932-a11y-state-set.patch: fix crash when
+  atk_object_ref_state_set is called on an AtkObject that's being
+  destroyed (boo#1088932 webkit#184366).
+
+-------------------------------------------------------------------
+Tue Apr 10 10:23:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.20.1:
+  + Improve error message when Gigacage cannot allocate virtual
+    memory.
+  + Add missing WebKitWebProcessEnumTypes.h to
+    webkit-web-extension.h.
+  + Improve web process memory monitor thresholds.
+  + Fix a web process crash when the web view is created and
+    destroyed quickly.
+  + Fix a network process crash when load is cancelled while
+    searching for stored HTTP auth credentials.
+  + Fix the build when ENABLE_VIDEO, ENABLE_WEB_AUDIO and
+    ENABLE_XSLT are disabled.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2018-4204.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:18:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.20.0 (boo#1088182):
+  + New API to retrieve and delete cookies with
+    WebKitCookieManager.
+  + New web process API to detect when form is submitted via
+    JavaScript.
+  + Several improvements and fixes in the touch/gestures support.
+  + Support for the “system” CSS font family.
+  + Complex text rendering improvements and fixes.
+  + Added a low power mode.
+  + More complete and spec compliant WebDriver implementation.
+  + Security fixes: CVE-2018-4101, CVE-2018-4113, CVE-2018-4114,
+    CVE-2018-4117, CVE-2018-4118, CVE-2018-4119,
+    CVE-2018-4120, CVE-2018-4122, CVE-2018-4125,
+    CVE-2018-4127, CVE-2018-4128, CVE-2018-4129,
+    CVE-2018-4133, CVE-2018-4146, CVE-2018-4161,
+    CVE-2018-4162, CVE-2018-4163, CVE-2018-4165, CVE-2018-11713,
+    CVE-2018-4207, CVE-2018-4208, CVE-2018-4209, CVE-2018-4210,
+    CVE-2018-4212, CVE-2018-4213.
+
+-------------------------------------------------------------------
+Tue Mar  6 21:49:48 UTC 2018 - mgorse@suse.com
+
+- Add webkit2gtk3-python3.patch: port to python 3 (bsc#1079812,
+  webkit#156674).
+- Add conditional to optionally require python3, rather than
+  python2 + python-xml, and adjust %build to use python3.
+
+-------------------------------------------------------------------
+Tue Mar  6 10:36:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.19.92:
+  + Ensure DNS prefetching cannot be re-enabled if disabled by
+    settings.
+  + Fix seek sometimes not working.
+  + Fix rendering of emojis that were using the wrong scale factor
+    in some cases.
+  + Fix rendering of combining enclosed keycap.
+  + Fix rendering scale of some layers in HiDPI.
+  + Fix a crash in Wayland when closing the web view.
+  + Fix crashes upower crashes when running inside a chroot or on
+    systems with broken dbus/upower.
+  + Fix memory leaks in GStreamer media backend when using
+    GStreamer 1.14.
+  + Fix the build with Enchant 2.x.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Replace pkgconfig(enchant) with enchant-devel BuildRequires:
+  Allow webkit2gtk3 to build with whatever enchant is available in
+  target distro.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:40:57 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:51 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.19.91:
+  + Add ENABLE_ADDRESS_SANITIZER to make it easier to build with
+    asan support.
+  + Fix a crash a under Wayland when using mesa software
+    rasterization.
+  + Make fullscreen video work again.
+  + Fix handling of missing GStreamer elements.
+  + Fix rendering when webm video is played twice.
+  + Fix kinetic scrolling sometimes jumping around.
+  + Fix build with ICU configured without collation support.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Do a minor spec cleanup.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:50 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.19.90:
+  + WebSockets use system proxy settings now (requires libsoup
+    2.61.90).
+  + Show the context menu on long-press gesture.
+  + Add support for Shift + mouse scroll to scroll horizontally.
+  + Fix zoom gesture to actually zoom instead of changing the page
+    scale.
+  + Implement support for Graphics ARIA roles.
+  + Make sleep inhibitors work under Flatpak.
+  + Add get element CSS value command to WebDriver.
+  + Fix a crash aftter a swipe gesture.
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-fix-wayland-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.19.6:
+  + Fix crashes due to duplicated symbols in libjavascriptcoregtk
+    and libwebkit2gtk.
+  + Fix parsing of timeout values in WebDriver.
+  + Implement get timeouts command in WebDriver.
+  + Fix deadlock in GStreamer video sink during shutdown when
+    accelerated compositing is disabled.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:05 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 2.19.5:
+  + This is a follow up release to export
+    webkit_dom_dom_window_webkit_message_handlers_post_message()
+    symbol that was hidden in 2.19.4 by mistake.
+- Changes from version 2.19.4:
+  + Add web process API to detect when form is submitted via
+    JavaScript.
+  + Add new API to replace
+    webkit_form_submission_request_get_text_fields() that is now
+    deprecated.
+  + Add WebKitWebView::web-process-terminated signal and deprecate
+    web-process-crashed.
+  + Fix rendering issues when editing text areas.
+  + Use FastMalloc based GstAllocator for GStreamer.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:04 UTC 2018 - dimstar@opensuse.org
+
+- Apply -DUSE_SYSTEM_MALLOC=ON unconditionally in all builds
+  (bmalloc seems to be exhausting memory on run time).
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:03 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.19.3:
+  + Fix web process crash at startup in bmalloc.
+  + Fix several memory leaks in GStreamer media backend.
+  + WebKitWebDriver process no longer links to
+    libjavascriptcoregtk.
+  - Fix several crashes and rendering issues.
+- Changes from version 2.19.2:
+  + Add new API to add, retrieve and delete cookies via
+    WebKitCookieManager.
+  + Add functions to WebSettings to convert font sizes between
+    points and pixels.
+  + Ensure cookie operations take effect when they happen before a
+    web process has been spawned.
+  + Automatically adjust font size when GtkSettings:gtk-xft-dpi
+    changes.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:02 UTC 2018 - dimstar@opensuse.org
+
+- Allow OBS service to verify the tarball signature:
+  + Add webkit2gtk3.keyring: Carlos Garcia Campos' public key.
+
+-------------------------------------------------------------------
+Mon Mar  5 02:19:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.19.1:
+  + Add initial resource load statistics support.
+  + Add API to expose availability of certain editing commands in
+    WebKitEditorState.
+  + Add API to query whether a WebKitNavigationAction is a redirect
+    or not.
+  + Improve complex text rendering.
+  + Add support for the "system" CSS font family.
+  + Implement low power mode.
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-no-return-in-nonvoid.patch: fixed upstream.
+- Add pkgconfig(libbrotlidec) and pkgconfig(upower-glib)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Fri Mar  2 16:38:52 UTC 2018 - fcrozat@suse.com
+
+- Add webkit2gtk3-fix-wayland-crash.patch: fix crash when using
+  Wayland with QXL/virtio (bsc#1079512, webkit#182490).
+
+-------------------------------------------------------------------
+Thu Mar  1 14:32:34 UTC 2018 - dimstar@opensuse.org
+
+- Add missing dependencies from the -devel package to the build
+  typelib-1_0-*: just like libraries, a consumer of the devel
+  package can assume the typelibs to be present:
+  + typelib-1_0-WebKit2-%{_sonameverpkg}.
+  + typelib-1_0-WebKit2WebExtension-%{_sonameverpkg}.
+
+-------------------------------------------------------------------
+Tue Jan 30 17:12:00 CET 2018 - ro@suse.de
+
+- even on recent codestreams there is no binutils gold on s390
+  only on s390x.
+
+-------------------------------------------------------------------
+Wed Jan 24 15:46:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.18.6:
+  + Fix deadlock in GStreamer video sink during shutdown when
+    accelerated compositing is disabled.
+  + Several fixes and improvements in WebDriver.
+  + Security fixes: CVE-2018-4088, CVE-2017-13885, CVE-2017-7165,
+    CVE-2017-13884, CVE-2017-7160, CVE-2017-7153, CVE-2017-7153,
+    CVE-2017-7161, CVE-2018-4096.
+
+-------------------------------------------------------------------
+Wed Jan 10 12:45:30 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 2.18.5:
+  + Disable SharedArrayBuffers from Web API.
+  + Reduce the precision of “high” resolution time to 1ms.
+  + Fix API documentation generation with newer gtk-doc.
+  + bsc#1075419 - Security fixes: includes improvements to mitigate
+    the effects of Spectre (CVE-2017-5753 and CVE-2017-5715).
+
+-------------------------------------------------------------------
+Wed Dec 27 14:04:51 UTC 2017 - jengelh@inai.de
+
+- Update package descriptions.
+
+-------------------------------------------------------------------
+Tue Dec 19 13:43:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.18.4:
+  + Make WebDriver implementation more spec compliant.
+  + Fix a bug when trying to remove cookies before a web process is
+    spawned.
+  + WebKitWebDriver process no longer links to
+    libjavascriptcoregtk.
+  + Fix several memory leaks in GStreamer media backend.
+  + bsc#1073654 - Security fixes: CVE-2017-13866, CVE-2017-13870,
+    CVE-2017-7156, CVE-2017-13856.
+
+-------------------------------------------------------------------
+Tue Dec  5 13:10:53 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly buildrequire python2-xml: the build system is (for
+  now) hard locked on python2 and relies on the presence of
+  python2-xml (used to be pulled in by glib2-devel in the past).
+
+-------------------------------------------------------------------
+Fri Nov 10 17:43:56 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.18.3:
+  + Improve calculation of font metrics to prevent scrollbars from
+    being shown unnecessarily in some cases.
+  + Fix handling of null capabilities in WebDriver implementation.
+  + bsc#1069925 - Security fixes: CVE-2017-13798, CVE-2017-13788,
+    CVE-2017-13803.
+
+-------------------------------------------------------------------
+Fri Oct 27 13:53:37 UTC 2017 - idonmez@suse.com
+
+- Update to version 2.18.2:
+  + Fix rendering of arabic text.
+  + Fix a crash in the web process when decoding GIF images.
+  + Fix rendering of wind in Windy.com.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Fri Oct 27 08:26:09 UTC 2017 - idonmez@suse.com
+
+- Update to version 2.18.1:
+  + Improve performance of GIF animations.
+  + Fix garbled display in GMail.
+  + Fix rendering of several material design icons when using the
+    web font.
+  + Fix flickering when resizing the window in Wayland.
+  + Prevent default kerberos authentication credentials from being
+    used in ephemeral sessions.
+  + Fix a crash when webkit_web_resource_get_data() is cancelled.
+  + Correctly handle touchmove and touchend events in
+    WebKitWebView.
+  + Fix the build with enchant 2.1.1.
+  + Fix the build in HPPA and Alpha.
+  + Fix several crashes and rendering issues.
+  + bsc#1066892 - Security fixes: CVE-2017-7081, CVE-2017-7087,
+    CVE-2017-7089, CVE-2017-7090, CVE-2017-7091, CVE-2017-7092,
+    CVE-2017-7093, CVE-2017-7094, CVE-2017-7095, CVE-2017-7096,
+    CVE-2017-7098, CVE-2017-7099, CVE-2017-7100, CVE-2017-7102,
+    CVE-2017-7104, CVE-2017-7107, CVE-2017-7109, CVE-2017-7111,
+    CVE-2017-7117, CVE-2017-7120, CVE-2017-7142.
+  + bsc#1073654 - Security fixes: CVE-2017-7157.
+
+-------------------------------------------------------------------
+Tue Oct 24 14:29:11 UTC 2017 - fcrozat@suse.com
+
+- Enable gold linker on s390/s390x on SLE15/Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Sep 14 14:57:43 UTC 2017 - fezhang@suse.com
+
+- Drop gcc6-c++ build conditionals for SLE12 / Leap42.
+
+-------------------------------------------------------------------
+Mon Sep 11 08:07:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.18.0:
+  + Initial WebDriver support.
+  + New remote inspector infrastructure.
+  + WebCrypto API support is now enabled by default.
+  + GStreamerGL is enabled by default when building with GStreamer
+    >= 1.10.
+  + Kinetic scrolling support.
+  + New API to create a WebKitContextMenuItem from a GAction.
+  + New API to allow overriding the popup menu of select elements.
+
+-------------------------------------------------------------------
+Thu Sep  7 10:17:51 UTC 2017 - dimstar@opensuse.org
+
+- Add webkit2gtk3-no-return-in-nonvoid.patch: Fix brp error based
+  on "warning: control reaches end of non-void function".
+
+-------------------------------------------------------------------
+Mon Sep  4 15:25:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.17.92:
+  + Improve CPU usage when rendering under Wayland in accelerated
+    compositing mode.
+  + Improve the memory consumption of the UI process under Wayland.
+  + Fix rendering issues in some web sites with accelerated
+    compositing enabled.
+  + Fix a web process crash when closing the WebView.
+  + Initialize libgcrypt in the network process too.
+  + Show controls if a video element isn’t allowed to play inline.
+  + Add support for cookies and screenshots commands in WebDriver.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 20 20:50:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.17.91:
+  + Fix proxy HTTP authentication for HTTPS requests.
+  + Stop kinetic scrolling when a zero movement is reached.
+  + Fix UI process crash when selecting text.
+  + Fix UI process crash when loading a favicon.
+  + Properly handle WebDriver click command on option elements.
+  + Fix web process crash when resizing the window with accelerated
+    compositing enabled.
+  + Fix crashes in 32 bit systems due to incorrect use of GVariant.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Wed Aug  9 11:34:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.17.90:
+  + WebCrypto API support is now enabled by default.
+  + Add API to provide browser information required by automation.
+  + Fix the expiration date of manually added cookies.
+  + Add support for alerts in WebDriver.
+  + WebKitDatabaseProcess binary has been renamed to
+    WebKitStorageProcess.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Wed Jul 26 11:36:10 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.17.5:
+  + Add initial implementation of WebDriver.
+  + Enable GStreamerGL by default when building with GStreamer >=
+    1.10.
+  + Fix position of context menu in Wayland.
+  + Properly close cookies database at network process exit.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop webkit2gtk3-gcc7.patch and
+  webkit2gtk3-machine-context.patch: Fixed upstream.
+- Add pkgconfig(gstreamer-gl-1.0) BuildRequires: New dependency.
+- Add explicit Mesa-libEGL-devel, Mesa-libGL-devel,
+  Mesa-libGLESv1_CM-devel, Mesa-libGLESv2-devel and
+  Mesa-libGLESv3-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 24 15:34:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.17.4:
+  + Add API to allow overriding popup menus.
+  + Add kinetic scrolling support.
+  + Improve theme rendering performance when using GTK+ >= 3.20.
+  + Improve error message when webkit_web_view_run_javascript()
+    fails due to a JavaScript exception.
+  + Fix artifacts when rendering large images.
+  + Fix blob downloads.
+  + Fix web process deadlock when seeking youtube videos.
+  + Fix alpha premultiplying when using cairo to draw the video
+    frames.
+  + Fix web process deadlock when closing the remote inspector
+    frontend.
+  + Update several web inspector icons.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Changes from version 2.17.3:
+  + Add new API to create a WebKitContextMenuItem from a GAction.
+  + Fix graphics repaint hungs in accelerated compositing mode
+    after a resize.
+  + Fix rendering glitches in HiDPI in long GitHub Gist pages when
+    focusing the comments textarea.
+  + Remove Firefox user agent quirk for Google domains.
+  + Remove LATEST_RECORD_VERSION from GnuTLS priority string.
+  + Improve colors of inspector SVG icons.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Changes from version 2.17.2:
+  + Update user agent quirks to make Youtube and new Google login
+    page work.
+  + Fix URL shown in the title of beforeunload dialogs.
+  + Focus first input field of HTTP authentication dialog.
+  + Fix rendering of PNG images when decoded in more than one
+    chunk.
+  + Update several web inspector icons.
+  + Fix the build with OpenGL disabled.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.17.1:
+  + Switch to use new remote inspector infraestructure instead of
+    legacy Web Sockets based one.
+  + Add API to enable and handle Web Automation.
+  + Load large images asynchronously off the main theead.
+  + Use GtkFileChooserNative for open/save dialogs when available.
+  + Make file chooser run as modal by default if possible.
+  + Fix position of dropdown menus in Wayland.
+  + Keep URI fragments after a server redirection.
+  + Implement support for aria-haspopup and aria-autocomplete.
+  + Implement aria-value support for focusable separators.
+  + Fix playing of some live streams.
+- Add webkit2gtk3-gcc7.patch: Fix build with gcc7 (webkit#173544).
+- Add webkit2gtk3-machine-context.patch: Fix build for ppc64le
+  (webkit#173590).
+
+-------------------------------------------------------------------
+Mon Jul 24 15:33:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.6:
+  + Fix rendering of spin buttons with GTK+ >= 3.20 when the entry
+    width is too short.
+  + Fix the build when Wayland target is enabled and X11 disabled.
+  + Fix several crashes and rendering issues.
+  + bsc#1050469 - Security fixes: CVE-2017-7039, CVE-2017-7018,
+    CVE-2017-7030, CVE-2017-7037, CVE-2017-7034, CVE-2017-7055,
+    CVE-2017-7056, CVE-2017-7064, CVE-2017-7061, CVE-2017-7048,
+    CVE-2017-7046.
+
+-------------------------------------------------------------------
+Tue Jun 27 20:19:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.5:
+  + Fix a web process crash when page finishes loading in several
+    web sites.
+  + Fix the menu of select elements not showing in some cases under
+    Wayland.
+
+-------------------------------------------------------------------
+Wed Jun 21 18:28:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.4 (CVE-2017-2538):
+  + Fix web process deadlock when seeking youtube videos.
+  + Fix blob downloads.
+  + Improve theme rendering performance when using GTK+ >= 3.20.
+  + Fix positioning of popup menus in Wayland.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2017-2538.
+  + bsc#1050469 - Security fixes: CVE-2017-7052.
+
+-------------------------------------------------------------------
+Mon May 29 16:31:21 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional gcc6-c++ BuildRequires and #!BuildIgnore:
+  libgcc_s1 and also and pass -DCMAKE_C_COMPILER=gcc-6 and
+  -DCMAKE_CXX_COMPILER=g++-6 to cmake for SLE/Leap, so we can fully
+  build Webkit2gtk3 without disabling features.
+- Drop webkitgtk-disable-gcc-version-checks.patch, no longer needed
+  following above changes.
+- Remove the compilation flag to disable FTL JIT, no longer needed
+  following above changes.
+
+-------------------------------------------------------------------
+Thu May 25 09:33:35 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.3:
+  + Fix URL shown in the title of beforeunload dialogs.
+  + Focus first input field of HTTP authentication dialog.
+  + Fix rendering glitches in HiDPI in long GitHub Gist pages when
+    focusing the comments textarea.
+  + Remove Firefox user agent quirk for Google domains.
+  + Remove LATEST_RECORD_VERSION from GnuTLS priority string.
+  + Fix several crashes and rendering issues.
+  + bsc#1050469 - Security fixes: CVE-2017-2496, CVE-2017-2539,
+    CVE-2017-2510, CVE-2017-7011, CVE-2017-7040, CVE-2017-7059,
+  CVE-2017-1000121, CVE-2017-1000122.
+
+-------------------------------------------------------------------
+Tue May 23 07:19:42 UTC 2017 - dimstar@opensuse.org
+
+- Drop ncurses-devel BuildRequires: this is no longer required.
+
+-------------------------------------------------------------------
+Tue May  9 23:32:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.2:
+  + Update user agent quirks to make Youtube and new Google login
+    page work.
+  + Fix rendering of animated PNGs.
+  + Fix playing of some live streams.
+  + Update several web inspector icons.
+  + Fix the build with NPAPI plugins enabled but X11 disabled.
+  + Fix the build with OpenGL disabled.
+  + Fix several crashes and rendering issues.
+  + bsc#1050469 - Security fixes: CVE-2017-7006, CVE-2017-7012,
+    CVE-2017-7019, CVE-2017-7038, CVE-2017-7041, CVE-2017-7042,
+    CVE-2017-7043, CVE-2017-7049.
+
+-------------------------------------------------------------------
+Wed Apr  5 12:34:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.1:
+  + Fix no-third-party cookies policy in case of redirections.
+  + Keep URL fragments after server redirections.
+  + Honor GTK+ font settings.
+  + Ensure depth and stencil renderbuffers are created on GLESv2.
+  + Prevent new navigations from onbeforeunload handler and
+    document unload.
+  + Disallow beforeunload alerts from web pages users have never
+    interacted with.
+  + Fix several crashes and rendering issues.
+  + bsc#1050469 - Security fixes: CVE-2017-7020.
+
+-------------------------------------------------------------------
+Mon Mar 20 12:36:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.16.0:
+  + Add missing types to WebKitAutocleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 11:34:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.15.92:
+  + Show the context menu when triggered by the keyboard.
+  + Fix web process deadlocks when destroying the media player.
+  + Fix web process crashes when loading animated GIFs.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  1 10:33:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.15.91:
+  + Fix rendering artifacts when resizing the window in accelerated
+    compositing mode.
+  + Remove flickering when leaving accelerated compositing mode.
+  + Fix a web process crash when loading duck duck go.
+  + Properly handle copy drag and drop operations.
+  + Fix a hang when sending an IPC messages fails because socket
+    read buffers are full.
+  + Ensure we never try to load GTK2 plugins in Wayland.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Mon Feb 20 21:17:11 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.15.90:
+  + Add an API to add a custom tab into the print dialog.
+  + Update cookie manager API to properly work with ephemeral
+    sessions.
+  + Fix rendering issues in long documents with transparent
+    background.
+  + Handle extended colors in cairo and texture mapper backends.
+  + Release unused UpdateAtlas and reduce the tile coverage on
+    memory pressure.
+  + The media backend now stores preloaded media in /var/tmp
+    instead of user cache dir.
+  + Fix a deadlock when the media player is destroyed.
+  + Fast replay on video hide/unhide on platforms with limited
+    video buffer pools.
+  + Fix network process crashes when loading custom URI schemes.
+  + Fix video rendering when switching to accelerated compositing
+    mode.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop upstream fixed patches:
+  - webkit2gtk3-167785.patch
+  - webkit2gtk3-167876.patch
+  - webkit2gtk3-167890.patch
+  - webkit2gtk3-167929.patch
+
+-------------------------------------------------------------------
+Fri Feb 17 19:56:21 UTC 2017 - dimstar@opensuse.org
+
+- Add webkit2gtk3-167785.patch: Fix build with disabled JIT (such
+  as on ppc564le).
+
+-------------------------------------------------------------------
+Thu Feb 16 10:45:36 UTC 2017 - dimstar@opensuse.org
+
+- Add webkit2gtk3-167876.patch, webkit2gtk3-167890.patch and
+  webkit2gtk3-167929.patch: fix webkit stalling on loading
+  resources over the network.
+
+-------------------------------------------------------------------
+Wed Feb 15 14:15:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.15.4:
+  + Make accelerating compositing mode on-demand again. By default
+    it will only be used for websites that require it, saving a lot
+    of memory on websites that don’t need it.
+  + Add API to manage hardware acceleration policy.
+  + Enable CSS Grid Layout by default.
+  + Add API to create ephemeral WebViews to replace the legacy
+    private browsing setting that is now deprecated.
+  + Handle HTTP authentication for downloads having a WebView
+    associated.
+  + Add API to WebKitWebsiteDataManager to handle websites data.
+  + Fix BadDamage X errors happening when resizing the WebView.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.15.3:
+  + Add API to set network proxy settings.
+  + Add API to set initial notification permissions.
+  + Add WebKitSecurityOrigin to the API.
+  + Add tag property to WebKitNotification.
+  + Create GLX OpenGL contexts using version 3.2 (core profile)
+    when available to reduce the memory consumption on Mesa based
+    drivers.
+  + Improve memory pressure handler to reduce the CPU usage on
+    memory pressure situations.
+  + Add support for key and code properties on keyboard events.
+  + More user agent string improvements to improve compatibility
+    with several websites.
+  + Fix network process crashes when loading custom URI schemes.
+  + Fix web process crash when closing the web view in X11.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 14:14:02 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.15.2:
+  + Add new API to notify about dynamically added forms to Web
+    Extensions.
+  + Implement selection interface and states for elements
+    supporting aria-selected and for menu roles.
+  + Expose STATE_SINGLE_LINE and STATE_MULTI_LINE for ARIA
+    searchbox role.
+  + Enable WebMemorySampler.
+  + Downloads started by context menu actions now have a web view
+    associated.
+  + Fix a network process crash when main resource load is
+    converted into a download.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.15.1:
+  + GObject DOM bindings API marked as unstable has been removed.
+  + Switch to use GMenu internally in the context menu
+    implementation.
+  + The network backend now always sniff contents for Downloads.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:48:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.14.5:
+  + Fix rendering of non-accelerated contents with HiDPI.
+  + Revert the fix for rendering issues in long documents with
+    transparent background because it caused issues in HiDPI.
+
+-------------------------------------------------------------------
+Fri Feb 10 13:38:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.14.4:
+  + Make accelerating compositing mode on-demand again. By default
+    it will only be used for websites that require it, saving a lot
+    of memory on websites that don’t need it.
+  + Fix rendering issues in long documents with transparent
+    background.
+  + Release unused UpdateAtlas and reduce the tile coverage on
+    memory pressure.
+  + The media backend now stores preloaded media in /var/tmp
+    instead of user cache dir.
+  + Make inspector work again when accelerated compositing support
+    is disabled.
+  + Fix a deadlock when the media player is destroyed.
+  + Fix network process crashes when loading custom URI schemes.
+  + Fix overlay scrollbars that are over a subframe.
+  + Fix a crash in GraphicsContext3D::drawArrays when using OpenGL
+    3.2 core profile.
+  + Fix BadDamage X errors happening when resizing the WebView.
+  + Fix several crashes and rendering issues.
+  + bsc#1024749 - Security fixes: CVE-2017-2365, CVE-2017-2366,
+    CVE-2017-2373, CVE-2017-2363, CVE-2017-2362, CVE-2017-2350,
+    CVE-2017-2350, CVE-2017-2354, CVE-2017-2355, CVE-2017-2356,
+    CVE-2017-2371, CVE-2017-2364, CVE-2017-2369.
+
+-------------------------------------------------------------------
+Tue Jan 17 19:27:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.14.3:
+  + Create GLX OpenGL contexts using version 3.2 (core profile)
+    when available to reduce the memory consumption on Mesa based
+    drivers.
+  + Improve memory pressure handler to reduce the CPU usage on
+    memory pressure situations.
+  + Fix a regression in WebKitWebView title notify signal emission
+    that caused the signal to be emitted multiple times.
+  + Fix high CPU usage in the web process loading hyphenation
+    dictionaries.
+  + More user agent string improvements to improve compatibility
+    with several websites.
+  + Fix web process crash when closing the web view in X11.
+  + Fix the build with OpenGL ES2 enabled.
+  + Fix several crashes and rendering issues.
+  + bsc#1020950 - Security fixes: CVE-2016-7656, CVE-2016-7635,
+    CVE-2016-7654, CVE-2016-7639, CVE-2016-7645, CVE-2016-7652,
+    CVE-2016-7641, CVE-2016-7632, CVE-2016-7599, CVE-2016-7592,
+    CVE-2016-7589, CVE-2016-7623, CVE-2016-7586.
+
++ Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov  8 11:11:15 UTC 2016 - dimstar@opensuse.org
+
+- Do not recommend the -lang package with a version: it has close
+  to no effect anyway, as the solver could simply ignore it to
+  find a solution.
+
+-------------------------------------------------------------------
+Thu Nov  3 19:12:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.14.2:
+  + Expose WebKitDOMHTMLInputElement APIs for form autofill in
+    unstable DOM API.
+  + Properly update WebKitWebView and WebKitWebPage URI properties
+    when request is modified by WebKitWebPage:send-request signal.
+  + Restore user agent quirk for Yahoo.
+  + Dot not leak the default WebKitWebsiteDataManager in
+    WebKitWebContext.
+  + Use eglGetPlatformDisplay when available instead of
+    eglGetDisplay.
+  + Avoid strstr() when checking (E)GL extensions.
+  + Fix several crashes and rendering issues.
+  + Fix the build with ENABLE_OPENGL=OFF and allow to build on
+    Wayland without OpenGL again.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 17 07:37:46 UTC 2016 - schwab@suse.de
+
+- Disable JIT on armv6 (webkit#141288).
+
+-------------------------------------------------------------------
+Wed Oct 12 23:20:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.14.1:
+  + MiniBrowser and jsc binaries are now installed in pkglibexecdir
+    instead of bindir.
+  + Improve performance when resizing a window with multiple web
+    views in X11.
+  + Check whether GDK can use GL before using
+    gdk_cairo_draw_from_gl() in Wayland.
+  + Updated default UserAgent string for better compatibility.
+  + Fix a crash on github.com in
+    IntlDateTimeFormat::resolvedOptions when using the C locale.
+  + Fix BadDamage X errors when closing the web view in X11.
+  + Fix UIProcess crash when using Japanese input method.
+  + Fix build with clang due to missing header includes.
+  + Fix the build with USE_REDIRECTED_XCOMPOSITE_WINDOW disabled.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+  + bsc#1020950 - Security fixes: CVE-2016-4692, CVE-2016-7610.
+
+-------------------------------------------------------------------
+Tue Sep 20 15:16:41 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.14.0:
+  + Use gdk_cairo_draw_from_gl() when possible in Wayland to render
+    directly using the GPU in the UI process.
+  + Ensure we don't send an empty referrer header after session
+    restore.
+  + Fix a web process crash in pages using filter animations.
+  + Fix main frame scrolling jumps when scrolling acclerated
+    subframes.
+  + Fix the size of the cairo surface created in the UI process on
+    Wayland.
+  + Fix memory leak in JavaScriptCore.
+  + Fix the build when '.' is not in @INC by default in perl.
+  + Updated translations.
+  + bsc#1020950 - Security fixes: CVE-2016-4743, CVE-2016-7587,
+    CVE-2016-7598.
+
+- Rebase webkitgtk-disable-gcc-version-checks.patch.
+
+-------------------------------------------------------------------
+Fri Sep 16 17:41:45 UTC 2016 - junrrein@gmail.com
+
+- Reintroduce support for Gtk2 plugins like Flash.
+  + Add pkgconfig(gtk+-2.0) BuildRequires.
+  + No longer pass -DENABLE_PLUGIN_PROCESS_GTK2=OFF to configure.
+  + Split the built plugin to it's own sub-package,
+    webkit2gtk3-plugin-process-gtk2, and make sure it's excluded
+    from the main package.
+  + Only apply these changes to openSUSE via conditional.
+
+-------------------------------------------------------------------
+Thu Sep 15 15:37:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.92:
+  + Add clipboard support in Wayland.
+  + Improve rendering of scrollbars with themes setting a minimum
+    width for the scrollbar CSS gadget.
+  + Fix another WebProcess crash when the last WebView is
+    destroyed.
+  + Fix the build with GCC 6.
+- Drop webkitgtk-fix-clipboard.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 10 07:35:15 UTC 2016 - zaitor@opensuse.org
+
+- Add webkitgtk-fix-clipboard.patch: Fix clipboard support in
+  wayland (webkit#146574).
+
+-------------------------------------------------------------------
+Fri Sep  9 23:46:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.91:
+  + Improve the performance when resizing the WebView with the
+    threaded compositor.
+  + Do not try to use GL_PACK_ROW_LENGTH when compiling with GLES2,
+    since it's not available.
+  + Use a different plugins cache file in Wayland and X11.
+  + Fix UI process crash visiting sites protected with HTTP auth
+    when using GTK+ < 3.14.
+  + Fix a WebProcess crash when the last WebView is destroyed.
+  + Fix build configure without Wayland support.
+  + Fix the build when compiling with Clang.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:05:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.90:
+  + Add initial implementation of accelerating compositing support
+    under Wayland.
+  + Fix performance with the modesetting intel driver and DRI3
+    enabled.
+  + Improved performance when resizing the web view on X11.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:04:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.4:
+  + Switched to use the threaded compositor. Accelerated
+    compositing mode is now always enabled by default and happens
+    in a separate thread in the web process.
+  + Make web view background colors work in accelerated
+    compositing mode.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:03:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.3:
+  + Fix Web Process deadlocks when loading HLS videos.
+  + Make videos work when painted into a canvas when accelerated
+    compositing is enabled.
+  + Fix flickering with animated GIFs.
+  + Fix a Web Process crash when video repaint is requested with
+    GStreamer GL enabled.
+  + Reduce the amount of file descriptors that the Web Process
+    keeps open.
+  + Make memory pressure handler work when cgroups are not
+    available.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:02:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.2:
+  + Properly redraw the web view when reparented in force
+    compositing mode.
+  + Flip the volume control layout in media controls on RTL.
+  + Add support for video orientation to the GStreamer media
+    backend.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:01:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.13.1:
+  + CSS Grid Layout has been unprefixed and can be enabled as an
+    experimental feature at runtime.
+  + The HTTP disk cache implements speculative resources
+    revalidation.
+  + Add a new WebKitSetting to allow universal access from file
+    URLs.
+  + Fix several crashes and rendering issues.
+- Rebase webkitgtk-typelib-sharelib-link.patch.
+- Add pkgconfig(gnutls) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Sep  6 09:41:19 UTC 2016 - fezhang@suse.com
+
+- Rebase webkitgtk-disable-gcc-version-checks.patch for 2.12.5
+
+-------------------------------------------------------------------
+Mon Sep  5 17:00:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.5:
+  + Fix a regression introduced in 2.12.4 that caused a hang in the
+    network process after a load failure.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Thu Aug 25 23:14:56 UTC 2016 - sreeves@suse.com
+
+- Rebase webkitgtk-disable-gcc-version-checks.patch for 2.12.4
+
+-------------------------------------------------------------------
+Thu Aug 25 07:13:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.4:
+  + Security fixes: CVE-2016-4622, CVE-2016-4624, CVE-2016-4591,
+    CVE-2016-4590.
+  + Fix performance in accelerated compositing mode with the
+    modesetting intel driver and DRI3 enabled.
+  + Reduce the amount of file descriptors that the Web Process
+    keeps open.
+  + Fix Web Process deadlocks when loading HLS videos.
+  + Make CSS and SVG animations run at 60fps.
+  + Make meter elements accessible.
+  + Improve accessibility name and description of elements to make
+    it more compatible with W3C specs and fix several bugs in which
+    the accessible name of objects was missing or broken.
+  + Fix a crash when running windowed plugins under Wayland.
+  + Fix a crash at process exit under Wayland.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Update _constraints memory requirements.
+
+-------------------------------------------------------------------
+Mon Jun 20 13:46:09 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  version.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:38:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.3:
+  + Security fixes: CVE-2016-1857, CVE-2016-1856.
+  + Improved the detection of supported MIME types supported by the
+    media player.
+  + Fix web process crash when playing adaptive streaming media.
+  + Change the volume while thumb slider is dragged, not only when
+    released.
+  + Fix leaked thread in network process.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun  7 09:12:46 UTC 2016 - dimstar@opensuse.org
+
+- Also apply webkitgtk-disable-gcc-version-checks.patch on Leap
+  and use GCC 4.8.
+- Change condition to pass -DENABLE_DATABASE_PROCESS=OFF,
+  -DENABLE_INDEXED_DATABASE=OFF and -DENABLE_FTL_JIT=OFF to cmake:
+  newly on all SLE12 based systems (incl. Leap).
+
+-------------------------------------------------------------------
+Fri May 27 11:59:29 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20.2 FATE#318572
+
+-------------------------------------------------------------------
+Thu May  5 23:34:03 CEST 2016 - ro@suse.de
+
+- add -DUSE_SYSTEM_MALLOC=ON as in factory on ppc/s390
+
+-------------------------------------------------------------------
+Wed May  4 15:07:26 CEST 2016 - ro@suse.de
+
+- handle s390 like s390x to fix build
+
+-------------------------------------------------------------------
+Mon May  2 14:05:38 CEST 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  version.
+
+-------------------------------------------------------------------
+Thu Apr 28 08:30:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.2:
+  + Fix rendering of scrollbars with GTK themes using stepper
+    buttons.
+  + Fix compatibility issue with 2.12.1 regarding local storage
+    access from file URLs.
+  + Make menu list buttons use the text color from the theme.
+  + Do not show resize grip in non-resizable text fields.
+  + Fix accessibility events causing Orca to echo key presses
+    instead of speaking the inserted characters in password fields.
+  + Fix an off by one error in hyphenation.
+  + Fix several crashes and rendering issues.
+  + Fix the build with libjpeg v9.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 25 14:28:33 UTC 2016 - zaitor@opensuse.org
+
+- Drop pkgconfig(gtk+-2.0) BuildRequires and pass
+  -DENABLE_PLUGIN_PROCESS_GTK2=OFF to configure. We do no longer
+  ship the flash-plugin in openSUSE, and it were the last consumer
+  of this functionality. This also have the added bonus of freeing
+  zenity and dependant packages of gtk2 dependencies.
+
+-------------------------------------------------------------------
+Fri Apr 15 12:50:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.1:
+  + Fix spotify player.
+  + Improve themed control elements rendering to better match GTK+
+    widgets.
+  + Make remote web inspector work again.
+  + Fix several crashes and rendering issues.
+  + Fix several memory leaks.
+  + Fix the build in Linux / PowerPC.
+  + Fix detection of S390X and PPC64 architectures.
+  + Fix the build in glibc-based BSD systems.
+  + Updated translations.
+- Add -DUSE_SYSTEM_MALLOC=ON  to configure for ppc ppc64 ppc64le
+  and s390x, needed now for build to complete.
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:21 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  version.
+
+-------------------------------------------------------------------
+Tue Mar 22 14:26:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.12.0:
+  + Enable GSS-Negotiate support when available in libsoup.
+  + Fix overlay scrollbar indicator position.
+  + Fix smooth scrolling behavior that was not fixed in all cases
+    in 2.11.92.
+  + Fix the build with newer versions of GCC and clang.
+
+-------------------------------------------------------------------
+Thu Mar 17 13:25:21 UTC 2016 - fcrozat@suse.com
+
+- Update webkitgtk-disable-gcc-version-checks.patch (partially
+  merged).
+
+-------------------------------------------------------------------
+Wed Mar 16 16:14:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.11.92:
+  + Revert the patch to limit the number of tiles according to the
+    visible area introduced in 2.11.90, because it caused rendering
+    issues in several popular websites.
+  + Fix scrollbars rendering again with GTK+ >= 3.19.11.
+  + Fix rendering of slider input elements.
+  + Fix rendering artifacts when using a web view background color.
+  + Make webkit_web_context_clear_cache() work again.
+  + Fix smooth scrolling behavior that was changed by mistake.
+  + Don’t force ENABLE_INTROSPECTION=OFF on Mac.
+  + Install WebProcess and NetworkProcess on OSX when not building
+    the Mac port.
+
+-------------------------------------------------------------------
+Wed Mar  2 16:51:29 UTC 2016 - fcrozat@suse.com
+
+- Update webkitgtk-disable-gcc-version-checks.patch to properly
+  disable terminateDatabaseProcess method when it is disabled at
+  compilation time.
+
+-------------------------------------------------------------------
+Wed Mar  2 14:00:04 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  webkitgtk.
+
+-------------------------------------------------------------------
+Tue Mar  1 14:30:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.11.91:
+  + Do not show stale contents after session restore.
+  + Fix flickering and rendering artifacts when entering
+    accelerated compositing mode before the web view is realized.
+  + Fix several rendering issues and crashes.
+  + Fix build with FTL enabled in FreeBSD.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 23 11:34:42 CET 2016 - fcrozat@suse.com
+
+- Update webkitgtk-disable-gcc-version-checks.patch to fix building
+  with gcc 4.8 (fix from Mike Gorse).
+
+-------------------------------------------------------------------
+Fri Feb 19 15:19:20 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.11.90:
+  + Switch to use overlay scrollbars like all other GTK+ widgets
+    and ensure the behavior is consistent with GTK+ too.
+  + Limit the number of tiles according to the visible area. This
+    was causing a huge memory consumption with some websites.
+  + Fix toggle buttons rendering with GTK+ 3.19.
+  + Fix HTTP authentication dialog rendering when accelerated
+    compositing mode is enabled.
+  + Use G_TYPE_ERROR instead of G_TYPE_POINTER for GError
+    parameters of signals.
+  + Fix several memory leaks.
+- Rebase webkitgtk-disable-gcc-version-checks.patch.
+
+-------------------------------------------------------------------
+Tue Feb 16 14:42:11 UTC 2016 - fcrozat@suse.com
+
+- Do not use binutils-gold on s390x and try to minimize memory used
+  there at linking time.
+- Ensure JIT is also disabled on s390x.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:16:42 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  webkitgtk.
+
+-------------------------------------------------------------------
+Fri Feb 12 22:59:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.11.5:
+  + Switch FTL to use B3 backend instead of LLVM.
+  + Add support for windowless NPAPI plugins with no UI in non X11
+    platforms.
+  + Fix a deadlock in the Web Process when JavaScript garbage
+    collector was running for a web worker thread that made google
+    maps to hang.
+  + Fix a Web Process crash when quickly attempting many DnD
+    operations.
+  + Fix scrollbars rendering with older versions of GTK+.
+  + Fix a crash when creating a WebKitWebView without providing a
+    WebKitWebContext.
+- Drop llvm-devel BuildRequires as upstream now supports B3 instead
+  of LLVM.
+
+-------------------------------------------------------------------
+Thu Feb 11 09:43:20 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  webkitgtk.
+
+-------------------------------------------------------------------
+Thu Feb  4 22:23:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.11.4:
+  + Prefer to link to LLVM shared libraries when building with FTL
+    enabled.
+  + Fix runtime errors when serializing/deserializing session
+    state.
+  + Fix critical warnings when loading a URL after a session
+    restore.
+  + Fix the build with GTK+ < 3.14.
+  + Fix the build with video support disabled.
+- Drop webkitgtk-llvm-shared-libs.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:08:39 UTC 2016 - fcrozat@suse.com
+
+- Refresh webkitgtk-disable-gcc-version-checks.patch for latest
+  webkitgtk.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:07:39 UTC 2016 - mcatanzaro@igalia.com
+
+- Update to version 2.11.3:
+  - NetworkProcess is now used unconditionally. The shared
+    secondary process model is now the same as using the multiple
+    process model and setting a process limit of 1.
+  - Disable DNS prefetch when a proxy is configured.
+  - Reduce the maximum simultaneous network connections to match
+    other browsers.
+  - Extend notifications API to notify WebKit when a notification
+    is clicked by the user.
+  - Add new API to save and restore a WebView session.
+  - Add Web Extensions API to be notified about console messages.
+  - Add WebKitURIRequest API to get the HTTP method.
+  - Add API to handle beforeunload events.
+  - Make WebKitWebView always propagate motion-notify-event signal.
+  - Add a way to force accelerating compositing mode at runtime
+    using an environment variable.
+  - Fix input elements and scrollbars rendering with GTK+ 3.19.
+  - Fix a crash in the UI process when the WebView is destroyed
+    while the screensaver DBus proxy is being created.
+  - Fix a WebProcess crash when loading large contents with
+    custom URI schemes API.
+  - Fix UI process crashes related to not having a main resource
+    response when the load is committed for pages restored from
+    the history cache.
+- Reenable JIT on SLE, except for the fourth tier (FTL) which
+  requires LLVM 3.7.
+- Add webkitgtk-llvm-shared-libs.patch to replace llvm-config
+  wrapper script.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:06:39 UTC 2016 - fcrozat@suse.com
+
+- Disable database support on SLE, which is requiring gcc >= 4.9:
+  Add patch webkitgtk-disable-gcc-version-checks.patch to allow
+  building with gcc 4.8, change BuildRequires to gcc-c++ /
+  libedit-devel on SLE, instead of gcc-c++ >= 4.9 and llvm-devel,
+  disable database and indexed database on SLE and disable JIT
+  support on all platforms on SLE, which requires llvm >= 3.7.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:05:39 UTC 2016 - mcatanzaro@igalia.com
+
+- Miscellaneous cleanups.
+- Stop setting ENABLE_YARR_JIT=OFF on secondary arches. Nowadays
+  ENABLE_YARR_JIT is a private option, and setting ENABLE_JIT=OFF
+  is sufficient to do the right thing.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:04:39 UTC 2016 - dimstar@opensuse.org
+
+- Fix build:
+  + Add llvm-devel and ncurses-devel BuildRequires.
+  + Inject a llvm-config wrapper script into ~/bin, which replaces
+    the original's output of static libs with dynamic shared
+    objects. This is supposedly going to be corrected with
+    LLVM 3.8.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:03:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.11.2:
+  + Enable FTL by default in JavaScriptCore for x86_64.
+  + Improved media backend performance by better handling glib main
+    loop sources.
+  + Fix rendering of lines when using solid colors.
+  + Fix web process crashes due to BadDrawable X errors in
+    accelerated compositing mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:02:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.10.7:
+  + Fix the build with GTK+ < 3.16.
+
+-------------------------------------------------------------------
+Thu Jan 28 10:20:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.10.6:
+  + Fix a deadlock in the Web Process when JavaScript garbage
+    collector was running for a web worker thread that made google
+    maps to hang.
+  + Fix media controls displaying without controls attribute.
+  + Fix a Web Process crash when quickly attempting many DnD
+    operations.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:40:17 UTC 2015 - zaitor@opensuse.org
+
+- Add binutils-gold BuildRequires: Use the gold linker for build
+  and remove --reduce-memory-overheads from RPMOPT flags since
+  gold-linker does not know it.
+
+-------------------------------------------------------------------
+Wed Nov 11 18:31:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.11.1:
+  + Improved general performance by better handling glib main loop
+    sources.
+  + Add autocleanups support to GObjects exposed in public API.
+  + Upload the accelerated canvas as a texture by copying via GPU
+    directly.
+  + Popup menus no longer use a nested main loop.
+
+-------------------------------------------------------------------
+Wed Nov 11 10:36:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.10.4:
+  + Fixed dashed and dotted border painting.
+  + Properly cancel navigation policy checks.
+  + Several crashes fixed when running editor commands.
+  + Fix several crashes due to assertions in Debug builds.
+  + Fix the build on Mac OSX and bring back the Quartz target.
+  + Fix the build on glibc-based BSD systems.
+
+-------------------------------------------------------------------
+Mon Oct 26 21:18:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.10.3:
+  + Fix graphics artifacts when entering/leaving Accelerated
+    Compositing mode.
+  + Honour 'forwards' fill-mode in Multiple-keyframe and delayed
+    instantaneous animations.
+  + Fix runtime warning when the inspector is closed.
+  + Fix the build with GTK+2 plugin process disabled.
+  + Gracefully handle errors when sending/receiving IPC messages
+    data on connection close.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Thu Oct 15 14:57:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.10.2:
+  + Fix a regression introduced in 2.10.1 that disabled accelerated
+    compositing.
+  + Fix build with cmake 3.4.
+
+-------------------------------------------------------------------
+Wed Oct 14 11:59:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.10.1:
+  + Fix rendering of accelerated content in HiDPI screens.
+  + Fix several media controls rendering issues.
+  + Fix rendering of progress element with recent versions of GTK+.
+  + Add and update some web inspector icons.
+  + Correctly handle websites sending an invalid auth header.
+  + Fix a crash when creating the UI process backing store in
+    Wayland.
+  + Fix the build with spellchecker disabled.
+  + Fix the build with touch events disabled.
+  + Fix the build with OpenGL disabled.
+  + Several build fixes on Mac OSX.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Mon Sep 21 19:08:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.10.0:
+  + New HTTP disk cache for the Network Process.
+  + IndexedDB support.
+  + New Web Inspector UI.
+  + Automatic ScreenServer inhibition when playing fullscreen
+    videos.
+  + Improved font matching algorithm.
+  + Initial Editor API.
+  + Performance improvements.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:16:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.92:
+  + Data URLs are now decoded in the Web Process instead of the
+    Network Process.
+  + Fix Web Process crash recovery.
+  + Fix a crash when sqlite3_initialize() is called from multiple
+    threads.
+  + Fix the volume bar in media controls.
+  + Fix JavaScriptCore build with GCC 5.
+  + Fix the build when accelerated 2D canvas is enabled but cairo
+    was built without GLX.
+  + Fix everal memory leaks.
+  + Updated translations.
+- Drop webkitgtk-gcc5-buildfix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug 26 20:04:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.91:
+  + Fix performance regression introduced in previous release when
+    scaling images.
+  + Fix runtime critical warning when there are missing media
+    plugins.
+  + Fix the build on systems with GTK+ compiled with an old version
+    of wayland.
+
+-------------------------------------------------------------------
+Sun Aug 16 11:39:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.90:
+  + Add API to request permission before showing PackageKit codec
+    installation notifications.
+  + Fix a crash closing a page when a context menu is open.
+  + Fix DNS prefetch when using the network process.
+  + Improve image quality when using newer versions of
+    cairo/pixman.
+  + Fix a crash when the web view is destroyed while the
+    screensaver DBus proxy is being created.
+
+-------------------------------------------------------------------
+Tue Aug 11 09:26:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.5:
+  + Add API to set the maximum number of web processes per
+    WebKitWebContext.
+  + Add API to allow executing editing commands that require an
+    argument.
+  + Prevent clipboard contents from being lost when web process
+    finishes.
+  + Always allow font matching for strong aliases.
+  + Move GStreamer missing plugins installer to the UI process.
+  + Fix empty space in popup menus when first item is selected.
+  + Fix a crash when SoupSession is destroyed in exit handler.
+  + Disable NPAPI plugins when running on Wayland.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  6 18:40:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.4:
+  + Fix the window size reported when the web view isn't realized
+    yet. This fixes the layout of some websites when opening new
+    tabs in the browser and anchor links when opened in new tabs
+    too.
+  + Add API to be notified about editor state changes.
+  + Add selection-changed signal to the Web Extensions API.
+  + Add initial WebKitWebsiteDataManager API for process
+    configuration options.
+  + Make WebSQL work by using a default quota instead of always
+    failing in openDatabase with DOM Exception 18.
+  + Correctly restore accelerated compositing after a WebProcess
+    crash.
+  + Only enable the input methods filter when there's an editable
+    element focused.
+  + Fix a crash on memory allocation using bmalloc on 32bit
+    systems.
+  + Allow to build with X11 and Wayland targets at the same time.
+  + Fix a crash when spell checker returns no guesses.
+  + Update and optimize some of the web inspector icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  6 18:39:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.3:
+  + Inhibit screen saver when playing full screen video.
+  + Fix DOCUMENT_VIEWER cache model to actually disable the memory
+    cache.
+  + Fix a regression that prevented the WebKitWebView::context-menu
+    signal from being emitted.
+  + Update web inspector icon so Rendering Frames timeline
+    distinguish between layout and painting.
+  + Ensure fragment identifier part of URI is not removed for
+    custom URI scheme requests.
+  + Improve performance of keyboard events handling.
+  + Expose element tag name as an object attribute to
+    accessibility.
+  + Fix the build with Wayland target enabled.
+
+-------------------------------------------------------------------
+Thu Aug  6 18:38:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.2:
+  + Add IndexedDB support using a dedicated database process.
+  + Add construct property to WebKitWebContext to set the IndexedDB
+    database directory.
+  + Add allow-file-access-from-file-urls to WebKitSettings.
+  + Improve network process disk cache performance by mapping
+    cached resources in the web process instead of sending the
+    resources data via IPC.
+  + Prevent WorkQueue objects from being leaked and ensure its
+    worker thread always exits.
+  + webkit_dom_html_element_get_children() has been deprecated in
+    favor of webkit_dom_element_get_children() to match the DOM
+    spec.
+  + ARIA menu items no longer have anonymous block children.
+  + Map pre element to ATK_ROLE_SECTION instead of ATK_ROLE_PANEL.
+  + Always include rows in the tree of accessible tables.
+  + Fix the build with Netscape plugins disabled.
+  + Fix XPixmaps leaked by GLContext when using EGL on X11.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  6 18:37:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.1:
+  + New disk cache implementation when using the network process.
+  + Web inspector UI has been redesigned.
+  + Add support for automatic hyphenation using libhyphen when it's
+    available.
+  + Fix network redirection to a non HTTP destination.
+- Add hyphen-devel BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Aug  6 18:36:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.8.5:
+  + Fix the window size reported when the web view isn't realized
+    yet. This fixes the layout of some websites when opening new
+    tabs in the browser and anchor links when opened in new tabs
+    too.
+  + Prevent clipboard contents from being lost when web process
+    finishes.
+  + Always allow font matching for strong aliases.
+  + Move GStreamer missing plugins installer to the UI process.
+  + Fix a crash when spell checker returns no guesses.
+  + Fix a crash when SoupSession is destroyed in exit handler.
+  + Fix a crash closing a page when default context menu is open.
+  + Several crashes and rendering issues fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  4 20:44:29 UTC 2015 - zaitor@opensuse.org
+
+- Modify _constraints file for armv6l/armv7l arches to sizes so low
+  that in practice it's disabled.
+
+-------------------------------------------------------------------
+Thu Jul  9 11:00:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.8.4:
+  + Make WebSQL work by using a default quota instead of always
+    failing in openDatabase with DOM Exception 18.
+  + Improve detection and usage of GL/GLES/EGL libraries.
+  + Fix a crash on memory allocation using bmalloc on 32bit
+    systems.
+  + Fix DOCUMENT_VIEWER cache model to actually disable the memory
+    cache.
+  + Fix a WebProcess crash after too many redirect error when
+    there's an active NPAPI plugin.
+  + Fix a WebProcess crash when gtk-font-name setting is empty.
+  + Ensure Math.abs() doesn't return negative.
+  + Correctly restore accelerated compositing after a WebProcess
+    crash.
+  + Respect X-Frame-Options headers when loading from application
+    cache.
+  + Several crashes and rendering issues fixed.
+  + Fix the MIPS N64 detection.
+  + Fix several memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 21 20:32:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.8.3:
+  + Fixed a regression introduced in 2.8.2 that broke downloads
+    when using the network process.
+  + Fix the build with Netscape plugins disabled.
+  + Fix XPixamps leaked by GLContext when using EGL on X11.
+- Changes from version 2.8.2:
+  + Fix network redirection to a non HTTP destination.
+  - Use a webkit subdirectory for the disk cache to avoid conflicts
+    with other files in the cache directory when the disk cache is
+    cleaned up.
+  - Do not preserve the Origin header on on cross-origin redirects.
+  - Prevent WorkQueue objects from being leaked and ensure its
+    worker thread always exits.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:03:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.8.1:
+  + Handle keep-alive connections in GStreamer HTTP source element.
+  + Fix a crash in DOMObjectCache when a wrapped object owned by.
+    the cache is unreffed by the user.
+  + Fix rendering of drag and drop icon.
+  + Fix the build with REDIRECTED_XCOMPOSITE_WINDOW disabled in X11
+    platform.
+  + Fix the build with Wayland target enabled.
+  + Fix the build for HPPA.
+- Add webkitgtk-gcc5-buildfix.patch: Fix build with gcc5.
+
+-------------------------------------------------------------------
+Thu Apr  9 01:09:44 UTC 2015 - mcatanzaro@igalia.com
+
+- Add BuildRequires pkgconfig(libnotify) to build with support for
+  HTML5 notifications (bnc#926482).
+
+-------------------------------------------------------------------
+Thu Mar 26 12:44:51 UTC 2015 - dimstar@opensuse.org
+
+- Change webkit2gtk-4_0-injected-bundles Recommends to Requires:
+  apps fail to load webkit if the bunldes are not available.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:06:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.8.0:
+  + Initial gestures support.
+  + HTML5 notifications.
+  + User script messages.
+  + HTML5 color input.
+  + APNG support.
+  + Performance improvements.
+  + Playing audio notification signal.
+  + Web view background colors.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:55:52 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.7.92:
+  + Add APNG support.
+  + Disable RC4 support in networking backend.
+  + Add a configure option to build with OpenGL ES 2.
+  + Add an option to enable MiniBrowser for non developer builds
+    and always install it.
+  + Check TLS errors as soon as they are set in the SoupMessage to
+    prevent any data from being sent to the server in case of
+    invalid certificate.
+  + Make WebKitWebView always hold a reference on WebKitWebContext
+    now that it’s possible to create new web contexts.
+  + Fix a crash when entering accelerated compositing mode before
+    the WebView is realized.
+  + Fix some transfer annotations used in GObject DOM bindings.
+  + Fix GObject DOM objects leaked when the web view contents are
+    updated.
+  + Fix a crash viewing http://www.last.fm/.
+  + Fix an infinite loop in ARM Linux when parallel GC is enabled
+    it again.
+  + Fix the build with older versions of GStreamer.
+  + Fix the build when NEON_INTRINSICS is enabled.
+  + Fix the build with video enabled but WebAudio disabled.
+- Changes from version 2.7.91:
+  + Enable concurrent JIT.
+  + Add support for ARIA 1.1 ‘switch’ and ‘searchbox’ roles.
+  + Fix synchronous loads when maximum connection limits are
+    reached.
+  + Fix web timing calculations when loading resources from the
+    disk cache.
+  + Fix a crash when loading a local file with
+    webkit_web_view_load_alternate_html.
+  + Fix a WebProcess crash when entering accelerating compositing
+    mode before the WebView is realized.
+  + Improve the appearance of fonts loaded via @font-face.
+  + Fix undefined symbol issue when loading web extensions.
+  + Build bmalloc as a static library.
+  + Fix the build with CMake 3.2.
+  + Fix the C-Loop LLInt build.
+  + Updated translations.
+- Drop webkitgtk-bmalloc-as-static.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 26 21:27:36 UTC 2015 - dimstar@opensuse.org
+
+- Add webkitgtk-bmalloc-as-static.patch: Build libbmalloc as static
+  library. Only webkitgtk depends on it.
+
+-------------------------------------------------------------------
+Thu Feb 19 18:31:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.7.90:
+  + Use the new memory allocator bmalloc instead of TCMalloc which
+    drastically improves the overall performance.
+  + Remove WebKitWebView::close-notification signal and add
+    WebKitNotification::closed instead.
+  + Implement support for new AtkRole types for MathML.
+  + Add support for input color type.
+  + Add API to allow overriding the default color chooser
+    implementation.
+  + Resize the accelerating compositing window to a minimum size
+    again after leaving accelerated compositing mode to save
+    memory.
+  + Ensure WebKitFrame objects are released when the frame is
+    destroyed.
+  + Clear the GObject DOM bindings internal cache when frames are
+    destroyed.
+  + Implement page overlays to bring back the inspector element
+    highlighting.
+  + Fix startup runtime critical warnings when using the network
+    process.
+  + Fix the build with recent versions of GLib that have
+    GMutexLocker.
+  + Fix the gtk-doc generation to appear in DevHelp.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:20:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.7.4:
+  + Add API to change the WebKitWebView background color.
+  + Add an option to create WebKitWebView snapshots with
+    transparent background.
+  + Add API to make the WebKitWebView editable.
+  + Add is-playing-audio property to WebKitWebView.
+  + Do not resize the accelerating compositing window to the web
+    size until accelerated compositing mode is activated.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:20:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.7.3:
+  + Add API to support HTML5 notifications.
+  + Add UserMedia Permission Request API.
+  + GObject DOM bindings API now correctly returns NULL intead of
+    empty strings to be able to differentiate between not present
+    and present but empty.
+  + Add support for text-decoration-skip.
+  + Improve the HTTP authentication dialog.
+  + Expose the ID attribute of Meter and Option elements to
+    accessibility.
+  + Use latin1 instead of UTF-8 for HTTP header values.
+  + Update NavigationItemProbes inspector icon.
+  + Add video/mp2t as alternative mimetype for MPEG TS.
+  + Add application/x-mpegurl and video/flv to the list of
+    supported mimetypes.
+  + Add SCHEDULING query support to HTTP media source element.
+  + Fix deadlock when shutting down AudioDestination.
+  + Updated translations.
+- Changes from version 2.7.2:
+  + Fix SSL connection issues with some websites after the POODLE
+    vulnerability fix.
+  + Add API to handle user script messages.
+  + Add context menu API to Web Process Extensions.
+  + Add API to create a WebKitWebContext.
+  + Add API to override the default local storage directory.
+  + Add WebKitWebResource::failed-with-tls-errors signal to notify
+    about load failures due to TLS errors also in sub-resources.
+  + Fix several crashes in accessibility implementation.
+  + Fix XMLHttpRequest with a timeout when using the network
+    process.
+  + Fix XMLHttpRequest with cookies disabled when using the network
+    process.
+  + Fix a crash in the network process when a synchronous load
+    redirects to a new url in a different security origin.
+  + Fix a crash in TextureMapper when video resolution changes.
+  + Correctly report the memory used by the media player to the
+    garbage collector to make sure it’s freed when the video
+    element is removed from the DOM.
+  + Fix documentation of webkit_print_operation_get_page_setup().
+
+-------------------------------------------------------------------
+Fri Jan 23 19:16:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.5:
+  + Fix issue that caused some text to be inserted when trying to
+    delete a word from the Twitter message box.
+  + GObject DOM bindings API now correctly returns NULL intead of
+    empty strings to be able to differentiate between not present
+    and present but empty.
+  + Do not resize the accelerating compositing window to the web
+    size until accelerated compositing mode is activated.
+  + Use latin1 instead of UTF-8 for HTTP header values.
+  + Add SCHEDULING query support to HTTP media source element.
+  + Add application/x-mpegurl and video/flv to the list of
+    supported mimetypes.
+  + Update NavigationItemProbes inspector icon.
+  + Fix the build with recent GStreamer.
+  + Fix the build on FreeBSD.
+  + Fix build on OS X.
+  + Fix the build on powerpc 32 bits.
+  + Fixed several crashes in WebCore and JavaScriptCore.
+  + Updated translations.
+- Drop webkitgtk-libatomic.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jan 13 15:27:07 UTC 2015 - schwab@suse.de
+
+- Add webkitgtk-libatomic.patch: Check if libatomic is needed in
+  order to use std::atomic; fixes build on ppc.
+
+-------------------------------------------------------------------
+Wed Dec 17 21:56:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.6.4:
+  + Fix SSL connection issues with some websites after the POODLE
+    vulnerability fix.
+  + Fix several crashes in accessibility implementation.
+  + Fix XMLHttpRequest with a timeout when using the network
+    process.
+  + Fix XMLHttpRequest with cookies disabled when using the network
+    process.
+  + Fix a crash in the network process when a synchronous load
+    redirects to a new url in a different security origin.
+  + Fix documentation of webkit_print_operation_get_page_setup().
+  + Allow to build with GObject introspection disabled.
+  + Fix the remote inspector when settings don't change after page
+    initialization.
+
+-------------------------------------------------------------------
+Wed Nov 12 16:21:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.6.3:
+  + Fix a crash when loading flash plugins.
+  + Correctly report the memory used by the media player to the
+    garbage collector to make sure it's freed when the video
+    element is removed from the DOM.
+  + Fix a crash in TextureMapper when video resolution changes.
+  + Ensure that CSS-generated text content is exposed to assistive
+    technologies.
+  + Enable CSS_IMAGE_SET on production builds to fix some icons
+    that are not rendered in the web inspector.
+  + Fix the build on FreeBSD and GNU Hurd.
+  + Fix the build with video disabled.
+
+-------------------------------------------------------------------
+Sat Oct 25 11:51:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.2:
+  + SSLv3 is now disabled to protect us against POODLE
+    vulnerability.
+  + TLS errors are no longer ignored by default.
+  + Fix the remote web inspector.
+  + Fix rendering of buttons, selections and lists with recent GTK+
+    versions.
+  + Improve performance of timers scheduled after a delay in
+    microseconds.
+  + Fix WebKitSettings:enable-smooth-scrolling to actually enable
+    smooth scrolling.
+  + Fix the build with drag and drop support disabled.
+
+-------------------------------------------------------------------
+Tue Oct 14 09:34:12 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.1:
+  + Ensure WebKitWebView:is-loading is TRUE right after a new load
+    starts.
+  + Fix a crash in the plugin process with some windowed flash
+    plugins.
+  + Allow to dock the inspector again once undocked when building
+    with GTK+ >= 3.10.
+  + TLS errors now take precedence over the HTTP authentication
+    dialog.
+  + Do not shrink on-disk cache to its default size on startup.
+  + Improve the proportion and visibility of some web inspector
+    icons.
+  + Fix GTK+2 plugins not working after being updated.
+  + Don’t include full path names in WebKitEnumTypes.h to ensure
+    the generated headers are always identical.
+  + Updated transations.
+
+-------------------------------------------------------------------
+Mon Oct 13 14:59:24 UTC 2014 - dvaleev@suse.com
+
+- Disable JIT on Power architectures
+  (-DEANBLE_JIT=OFF -DENABLE_YARR_JIT=0)
+
+-------------------------------------------------------------------
+Thu Sep 25 08:13:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.0:
+  + Make vimeo videos work again with the GStreamer media backend.
+  + Add more free icons for the web inspector.
+  + Fix a WebSocket crash when a connection is closed from server
+    side.
+  + Fixed a memory leak in JavaScriptCore.
+  + Fix the build with video support disabled.
+  + Fix CLoop on the 32-bit Big-Endians.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 21 13:18:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.5.90:
+  + Use free icons for the web inspector.
+  + Change WebKitWebView::load-failed-with-tls-errors signal to
+    pass the failing URI as signal argument instead of the host.
+  + Add new API to allow overwrite existing files when downloading
+    a file.
+  + Add webkit_uri_response_get_http_headers() API.
+  + Improve the UI of the HTTP authentication dialog.
+  + Fix a crash when navigating away from a web page containing an
+    ogg video.
+  + Fix race condition when downloading a file due to the
+    intermediate temporary file.
+  + Fix toggle buttons rendering with recent GTK+ versions.
+  + Fix selection rendering when unfocused with recent GTK+
+    versions.
+  + Mak e the GStreamer media backend not send the transferMode
+    HTTP header.
+- Setup environment to prefer GOLD linker (softlink
+  /usr/bin/ld.gold to ~/bin/ld).
+
+-------------------------------------------------------------------
+Mon Sep  8 16:54:04 UTC 2014 - dimstar@opensuse.org
+
+- Pass -DCMAKE_{EXE,MODULE,SHARED}_LINKER_FLAGS="-Wl,--as-needed
+  -Wl,-z,now" to cmake call: cmake changed the default to not
+  accept libraries to have undefined symbols (-Wl,--no-undefined).
+  In this case though, it is understood and expected, so we remove
+  --no-undefined from the FLAGS.
+
+-------------------------------------------------------------------
+Wed Aug 13 16:47:40 UTC 2014 - dimstar@opensuse.org
+
+- Initial package, version 2.5.3; based on webkitgtk3.spec.
+

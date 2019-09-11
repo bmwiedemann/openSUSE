@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:32:17 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:49 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update zlib to version 0.6.2.
+ * New cabal flag 'pkg-config' for discovering 'zlib` via pkg-config(1) (#16)
+ * Use CApiFFI where available for cross-compile friendliness (#14)
+ * Change the window bits range from 8..15 to 9..15 (#11)
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Oct 30 16:26:14 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6.1.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:32:48 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6.1.1 revision 3 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Dec 30 11:25:25 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.6.1.1
+- regenerated spec file with cabal-rpm
+* Support for concatenated gzip files (multiple back-to-back streams)
+* Fixed warnings with new GHC
+* Fixed testsuite
+* New incremental interface for compression and decompression
+* Provide access to unconsumed trailing data
+* Simplified structured error type, and instance of Exception
+* Fixed memory leak of zlib z_stream C structure
+* More derivied instances (Eq, Show, Typeable, Generic)
+
+-------------------------------------------------------------------
+Sat Apr 11 09:09:18 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.5.4.2
+* no upstreqm changelog
+
+-------------------------------------------------------------------
+Fri Sep 12 06:54:28 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update copyright notice (year) in spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:31:27 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 10:45:21 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.5.4.1
+* no changelog
+- part of Haskell Platform 2013.2 update
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Thu Dec 27 12:28:22 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fix license tag (intentionally empty 3rd clause)
+- expand macro in name tag (help factory-auto)
+
+-------------------------------------------------------------------
+Sat Nov 17 14:58:26 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Tue Oct  2 11:21:27 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.5.4.0 from upstream (no changelog)
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Mon Jun  4 06:51:40 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.5.3.3 from upstream (no changelog)
+- required by Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Thu Feb 23 13:42:43 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Added BuildRoot for sle11-sp1
+
+-------------------------------------------------------------------
+Thu Dec 15 09:33:05 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added requires zlib-devel
+
+-------------------------------------------------------------------
+Thu Dec 15 09:08:25 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Add arches for OBS.
+
+-------------------------------------------------------------------
+Thu Dec 15 09:06:35 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

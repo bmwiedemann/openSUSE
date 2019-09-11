@@ -1,0 +1,42 @@
+--- schemas/desktop_gnome_url_handlers.schemas.in
++++ schemas/desktop_gnome_url_handlers.schemas.in
+@@ -340,5 +340,39 @@
+         <long>True if the command used to handle this type of URL should be run in a terminal.</long>
+       </locale>
+     </schema>
++
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/news/enabled</key>
++      <applyto>/desktop/gnome/url-handlers/news/enabled</applyto>
++      <owner>gnome</owner>
++      <type>bool</type>
++      <default>true</default>
++      <locale name="C">
++        <short>Whether the specified command should handle "news" URLs</short>
++        <long>True if the command specified in the "command" key should handle "news" URLs.</long>
++      </locale>
++    </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/news/command</key>
++      <applyto>/desktop/gnome/url-handlers/news/command</applyto>
++      <owner>gnome</owner>
++      <type>string</type>
++      <default></default>
++      <locale name="C">
++        <short>The handler for "news" URLs</short>
++        <long>The command used to handle "news" URLs, if enabled.</long>
++      </locale>
++    </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/news/needs_terminal</key>
++      <applyto>/desktop/gnome/url-handlers/news/needs_terminal</applyto>
++      <owner>gnome</owner>
++      <type>bool</type>
++      <default>false</default>
++      <locale name="C">
++        <short>Run the command in a terminal</short>
++        <long>True if the command used to handle this type of URL should be run in a terminal.</long>
++      </locale>
++    </schema>
+   </schemalist>
+ </gconfschemafile>

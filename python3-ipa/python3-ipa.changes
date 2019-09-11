@@ -1,0 +1,319 @@
+-------------------------------------------------------------------
+Tue May  7 20:28:57 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.3.1 (2019-05-07)
+  + Add stable release repository.
+  + Check default dirs exist in `ipa list`.
+  + Add retry on ec2 image download.
+
+-------------------------------------------------------------------
+Tue Mar 26 19:42:16 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.3.0 (2019-03-26)
+  + Cast timeout to integer.
+  + Fix Azure service test on SLES 11.
+  + Combine libcloud class with GCE.
+  + Cleanup gce tests.
+  + Rename ipa cloud test module.
+
+-------------------------------------------------------------------
+Fri Mar 15 13:46:22 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.2.1 (2019-03-15)
+  + EC2 instances may have ipv6 addresses set to None.
+
+-------------------------------------------------------------------
+Thu Mar 14 21:14:38 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.2.0 (2019-03-14)
+  + Add repos for 15sp1.
+  + Use pytest fail instead of raise exception.
+  + Make ec2 network test more expressive.
+  + Add replacefiles option to zypper update.
+  + Use format string for motd check.
+
+-------------------------------------------------------------------
+Thu Feb 28 16:39:22 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.1.1 (2019-02-28)
+  + Add new license directories for SLES test bsc#1127149.
+
+-------------------------------------------------------------------
+Fri Feb 22 22:36:00 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.1.0 (2019-02-22)
+  + Check for ssh key file separately in ec2.
+  + Add specific commands for GCE credentials setup.
+  + SSH user key in ec2utils config is user.
+  + Accept availability zones as ec2 region.
+
+-------------------------------------------------------------------
+Mon Feb  4 15:48:30 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.0.0 (2019-02-04)
+  + Add missing security group id to ssh class.
+  + Add collect vm info to gce class super call.
+  + Cleanup ini config handling.
+  + Allow use of ipa config for provider options.
+  + Compare wait on instance states as lowercase.
+  + Remove references to provider with cloud, cloud frameworks.
+  + Don't pass unused args to cloud classes.
+
+-------------------------------------------------------------------
+Fri Jan  4 16:27:48 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.6.0 (2019-01-04)
+  + Remove duplication when logging.
+  + Allow azure instance to start in existing subnet.
+  + Treat uuid always lowercase.
+  + Use base provider waiter method.
+
+-------------------------------------------------------------------
+Wed Dec 12 02:06:50 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Remove ec2_types.patch.
+  + Switched to boto3 from libcloud. Patch no longer needed.
+- Update to v2.5.0 (2018-12-11)
+  + Switch EC2 provider back to boto3.
+  + Add note on installing SLES test suite.
+  + Add option allowing collect info about VM in cloud.
+  + With running instance don't cleanup.
+  + Systemd cleanup in distro.
+  + Process pytest errors in results. 
+
+-------------------------------------------------------------------
+Fri Dec  7 00:21:45 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.4.0 (2018-12-06)
+  + Auto deploy IPA package in pypi on new tag release.
+  + Add security-group-id option for ec2 provider.
+
+-------------------------------------------------------------------
+Fri Nov  9 22:59:00 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.3.0 (2018-11-09)
+  + Move docs to Sphinx.
+  + Update python version support.
+  + Allow ipa to run without config file.
+  + No need for gpg auto import keys.
+  + Add --name option to az creds example.
+  + Explicit validation of GCE region input.
+  + Update license tests for content changes. 
+
+-------------------------------------------------------------------
+Wed Oct 31 23:13:46 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.2.0 (2018-10-31)
+  + Add network test for sles in ec2.
+  + Remove azure billing tag test.
+  + Fix typo in azure services test name.
+  + Add python3.7 to CI testing.
+  + Add repos for 12SP4 in conftest
+
+-------------------------------------------------------------------
+Mon Oct  1 19:39:29 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.1.0 (2018-10-01)
+  + Add azure accelerated networking option.
+  + Add IPA logo.
+  + Cloud init services are one-shot in EC2.
+  + Curl directly for placement in metadata when determining
+    region.
+- Add ec2_types.patch to allow passing instance type strings to
+  libcloud driver.
+
+-------------------------------------------------------------------
+Wed Sep 12 21:32:35 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v2.0.1 (2018-09-12)
+  + Update project status to stable.
+  + Update root pass test to work with SLE11.
+  + Account for sysvinit in SLE11.
+  + Convert azure regions from id to display format.
+  + Update repo URL to correct org.
+
+-------------------------------------------------------------------
+Thu Aug 16 15:40:49 UTC 2018 - sean.marlow@suse.com
+
+- Update to v2.0.0 (2018-08-16)
+  + Remove deprecated --ssh-private-key option.
+    Option was renamed to --ssh-private-key-file. 
+
+-------------------------------------------------------------------
+Wed Aug 15 16:43:18 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.4.0 (2018-08-15)
+  + Add archive management option to CLI.
+  + openSUSE Leap requires auto import of repo keys.
+  + Update Leap test description.
+  + Sync tests should not raise exception.
+  + Use the GCE service account in the launched instance.
+  + Add serviceAccountUser role requirement for GCE.
+  + Rename pretty\_name to be generic value.
+  + Use temp directory for results in tests.
+  + Move docs to markdown for better support.
+  + Determine provider and region from instance.
+  + Add SLE\_15 repos.
+  + Update GCE services test.
+  + Rename `--ssh-private-key` option.
+  + Add ip address option for SSH testing.
+  + Add SSH provider.
+
+-------------------------------------------------------------------
+Thu Jul 23 22:11:00 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.3.0 (2018-07-23)
+  + Add ec2 tests to check billing code in metadata.
+  + Using token normalize breaks region shortcode. Remove region
+  + shortcode which overlaps running instance id.
+  + Allow new paths for history log option. when testing.
+  + If a test dir does not exist just continue.
+  + Update GCE setup/configuration docs.
+  + Move requirements to txt files.
+  + Raise useful exception msg if GCE service account file is
+    invalid.
+  + Add certifi requirement for Libcloud GCE driver.
+  + Update pycrypto requirement to pycryptodome.
+
+-------------------------------------------------------------------
+Thu Jun 14 20:28:43 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.2.0 (2018-06-14)
+  + Add SLES test to ensure root user has no password.
+  + Fix typo in force new reg test.
+  + Add --timeout cli and configuration option.
+  + Add a test to wait on registration for on-demand instances.
+  + Add azure tests to check billing tag in metadata.
+  + Handle custom Azure image vhd id's.
+
+-------------------------------------------------------------------
+Wed May 16 21:03:53 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.1.1 (2018-05-16)
+  + Cleanup typo in docs.
+  + Explicitly close SSH connections.
+- Update to v1.1.0 (2018-05-15)
+  + Added the --inject option.
+  + Adds the option to inject packages, archives and files.
+  + Also provides the ability to execute commands and install
+    packages from an existing repository. 
+
+-------------------------------------------------------------------
+Fri Mar 30 16:40:53 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.0.0 (2018-03-30)
+  + Tests argument is now optional.
+  + This allows for the use of --no-cleanup option to start an
+    instance in the given framework.
+  + Add regression test to check for valid UUID on SLES instance
+    in EC2.
+  + Add regression test to confirm lscpu binary returns successful
+    exit code.
+  + Subnet option has been added to launch a new instance in the
+    given network/subnet (--subnet-id).
+  + Remove requirement on case with distro and provider options.
+  + Use Testinfra run module to check hostname. System Info module
+    was removed from package.
+  + Migrate Azure provider to the ARM (resource manager API).
+  + Add option to use user-data for loading SSH public key to
+    instance in EC2.
+  + Add delete history item option to results command.
+
+-------------------------------------------------------------------
+Tue Dec 12 02:01:45 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.5.1.
+  + Cleanup MANIFEST.
+  + Fix README.
+
+-------------------------------------------------------------------
+Tue Dec 12 00:11:36 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.5.0
+  + Allow EC2 testing without a config file.
+  + Use cpe_name to determine SAP product in SLES tests.
+  + Update README overview with more info.
+  + Provide log_file and results_file in results dict.
+  + Other formatting and bug fixes.
+- Update spec to point at pypi source.
+
+-------------------------------------------------------------------
+Thu Oct 12 16:12:31 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.4.0
+  + Migrate EC2 provider to apache-libcloud.
+  + Remove vcrpy integration tests.
+
+-------------------------------------------------------------------
+Thu Sep 21 20:54:30 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.3.0
+  + Add SLES update infrastructure tests.
+  + Add test_dirs to args for test endpoint.
+  + Fix bug if test fails before sync point.
+  + Add command line option --no-default-test-dirs.
+  + Add skipped tests to results output.
+  + Update man pages and and cleanup docs.
+
+-------------------------------------------------------------------
+Wed Sep 13 22:09:53 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.2.0
+  + Add test suite for testing SLES images.
+  + Add SLES tests to MANIFEST.
+  + Fix change log in MANIFEST.
+  + Ignore SLES tests in setup.cfg.
+  + Fix ipa provider test, include region and platform in results dict.
+  + Add tests package to spec and mv to python3-ipa.spec.
+  + Pass region and platform to pytest for use in tests.
+- Update to v0.1.3
+  + Check format of unit/integration tests.
+  + Run flake8 on tests in tox/travis.
+  + Cleanup flake8 format in azure integration test.
+- Update to v0.1.2
+  + Check host key does not change.
+  + After soft and hard reboot ensure host key has not changed.
+- Update to v0.1.1
+  + Sync spec file.
+  + Python3 format spec instead of Python single spec.
+  + Add missing requirements for GCE to spec.
+- Update to v0.1.0
+  + Integrate GCE provider using apache-libcloud.
+
+-------------------------------------------------------------------
+Wed Aug 30 20:17:59 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.0.5
+  + Explicit ignore of tests/data directory in spec file.
+
+-------------------------------------------------------------------
+Wed Aug 30 19:52:39 UTC 2017 - sean.marlow@suse.com
+
+- Update to v0.0.4
+  + Account for classes and parameterized tests.
+- Update to v0.0.3
+  + Cleanup azure unit tests.
+- Update to v0.0.2
+  + Update Travis to build only master + tags.
+  + Use deault dicts in results summary.
+  + Clenaup error message usage.
+  + Add shebang to shell script.
+  + Use yaml safe_load.
+  + Spelling fixes.
+  + Cleanup spec file.
+
+-------------------------------------------------------------------
+Tue Aug 29 20:33:19 UTC 2017 - sean.marlow@suse.com
+
+- Account for older versions of pytest.
+  + Explicitly ignore tests/data directory.
+
+-------------------------------------------------------------------
+Tue Aug 22 20:34:22 UTC 2017 - sean.marlow@suse.com
+
+- Update spec for python3 only.
+
+-------------------------------------------------------------------
+Tue Aug 16 15:02:06 UTC 2017 - sean.marlow@suse.com
+
+- Initial release v0.0.1 2017-08-16 

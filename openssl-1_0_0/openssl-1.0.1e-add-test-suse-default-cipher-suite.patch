@@ -1,0 +1,37 @@
+Index: openssl-1.0.2j/test/testssl
+===================================================================
+--- openssl-1.0.2j.orig/test/testssl	2017-08-31 17:25:43.067383637 +0200
++++ openssl-1.0.2j/test/testssl	2017-08-31 17:50:29.255888601 +0200
+@@ -191,6 +191,32 @@ for protocol in TLSv1.2 SSLv3; do
+   fi
+ done
+ 
++echo "Testing default ciphersuites"
++
++for cipher_suite in DEFAULT_SUSE DEFAULT; do
++    ../util/shlib_wrap.sh ../apps/openssl ciphers $cipher_suite
++    if [ $? -ne 0 ]; then
++        echo "Failed default ciphersuite $cipher_suite"
++        exit 1
++    fi
++done
++
++echo "Testing if MD5, DES and RC4 are excluded from DEFAULT_SUSE cipher suite"
++../util/shlib_wrap.sh ../apps/openssl ciphers -v DEFAULT_SUSE | grep "MD5\|RC4\|DES"
++
++if [ $? -ne 1 ];then
++    echo "weak ciphers are present in DEFAULT_SUSE cipher suite"
++    exit 1
++fi
++
++echo "Testing if ECDSA ciphers are included in DEFAULT_SUSE cipher suite"
++../util/shlib_wrap.sh ../apps/openssl ciphers -v DEFAULT_SUSE | grep "ECDSA"
++
++if [ $? -ne 0 ];then
++    echo "ECDSA is not present in DEFAULT_SUSE cipher suite"
++    exit 1
++fi
++
+ #############################################################################
+ 
+ if ../util/shlib_wrap.sh ../apps/openssl no-dh; then

@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Fri May 11 15:00:04 CEST 2007 - coolo@suse.de
+
+- copy documentation that disappeared from SVN
+
+-------------------------------------------------------------------
+Fri May  4 14:52:49 CEST 2007 - coolo@suse.de
+
+- update to 20070504:
+  - fix python's help modules (#258385)
+
+-------------------------------------------------------------------
+Tue Mar  7 22:43:09 CET 2006 - dmueller@suse.de
+
+- update to 20060307:
+  - ignore generated .ui4 files in Qt4 build environments 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 11:00:17 CET 2006 - dmueller@suse.de
+
+- update to 20060111 
+
+-------------------------------------------------------------------
+Wed Dec 21 06:13:25 CET 2005 - dmueller@suse.de
+
+- update to 20051221 
+
+-------------------------------------------------------------------
+Tue Nov  1 16:12:24 CET 2005 - dmueller@suse.de
+
+- update to 20051101 
+
+-------------------------------------------------------------------
+Thu Oct  6 10:58:05 CEST 2005 - coolo@suse.de
+
+- fixed another error ;(
+
+-------------------------------------------------------------------
+Wed Oct  5 14:40:19 CEST 2005 - coolo@suse.de
+
+- fix syntax
+
+-------------------------------------------------------------------
+Wed Oct  5 11:20:52 CEST 2005 - coolo@suse.de
+
+- make command line handling way more complex to
+  support VERBOSE=1 at random places 
+
+-------------------------------------------------------------------
+Thu Sep  8 17:15:22 CEST 2005 - coolo@suse.de
+
+- fixing file permissions
+
+-------------------------------------------------------------------
+Wed Aug  3 14:32:04 CEST 2005 - ro@suse.de
+
+- fix requires 
+
+-------------------------------------------------------------------
+Thu Jul 28 21:02:34 CEST 2005 - coolo@suse.de
+
+- add require to python
+
+-------------------------------------------------------------------
+Tue Jul 19 17:54:35 CEST 2005 - coolo@suse.de
+
+- update from svn
+
+-------------------------------------------------------------------
+Thu Apr 14 12:06:37 CEST 2005 - coolo@suse.de
+
+- another fix for man pages
+
+-------------------------------------------------------------------
+Tue Mar 15 09:27:34 CET 2005 - coolo@suse.de
+
+- fix man page support
+
+-------------------------------------------------------------------
+Mon Mar 14 15:49:14 CET 2005 - coolo@suse.de
+
+- fix assembler files (and reduce the tar size _slightly_)
+
+-------------------------------------------------------------------
+Thu Feb 23 11:51:19 CET 2005 - adrian@suse.de
+
+- update to current CVS
+
+-------------------------------------------------------------------
+Mon Feb 14 14:40:43 CET 2005 - adrian@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Fri Feb 11 10:28:27 CET 2005 - adrian@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Mon Feb  7 11:27:51 CET 2005 - adrian@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Tue Feb  1 18:08:22 CET 2005 - adrian@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Mon Jan 31 13:24:43 CET 2005 - coolo@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Mon Jan 31 11:07:28 CET 2005 - adrian@suse.de
+
+- fix build on released distributions
+
+-------------------------------------------------------------------
+Tue Jan 25 09:15:18 CET 2005 - coolo@suse.de
+
+- new package
+

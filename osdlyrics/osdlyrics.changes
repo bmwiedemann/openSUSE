@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Tue May 14 03:00:53 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.5.5RC1
+  * Fix autoreconf with "foreign" flag
+  * Upgrade PyGObject from 2 to 3
+- Use python3.
+
+-------------------------------------------------------------------
+Tue Oct  2 14:37:33 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 0.4.3+git20180723.
+  * Add netease source
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Sep 25 08:18:34 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repetition of program name.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:55:33 UTC 2018 - astieger@suse.com
+
+- License is GPL-3.0-or-later
+
+-------------------------------------------------------------------
+Mon Sep 24 13:54:39 UTC 2018 - hillwood@opensuse.org
+
+- Fix boo#1109453. Set Requires tag for python-curl and python-chardet 
+
+-------------------------------------------------------------------
+Sun Dec 17 13:03:34 UTC 2017 - hillwood@opensuse.org
+
+- Update appdata install. 
+
+-------------------------------------------------------------------
+Tue Nov 28 03:05:24 UTC 2017 - hillwood@opensuse.org
+
+- Enable appindicator.
+- Update %suse_update_desktop_file Macro. 
+
+-------------------------------------------------------------------
+Sun Nov 26 07:36:10 UTC 2017 - hillwood@opensuse.org
+
+- Add appdata.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:32:20 UTC 2017 - hillwood@opensuse.org
+
+- Update to 0.4.3+git8661927 
+  * Fixed lyric download failed form Xiami source
+  * Fix ensure_utf8() after
+  * Make decode_by_charset work under both Python 2 and 3
+  * Make ensure_unicode and ensure_utf8 no-op under Python 3
+  * Make ElementTree produce a normal Unicode string
+  * Use a key function instead of cmp in sort()
+  * PEP8 fixes and Python3 compatibility for daemon/main.py
+  * Skip the daemon's name when detecting MPRIS2 players.
+  * Many features update.
+- Drop osdlyrics-includes.patch, merged by upstream
+- Update OSD Lyrics' home URL
+- Update description.
+- Drop Obsoletes tags.
+- Use %fdupes macro.
+
+-------------------------------------------------------------------
+Fri Nov  6 07:35:11 UTC 2015 - hillwood@linuxfans.org
+
+- Fix build in Leap: disable xmms2
+
+-------------------------------------------------------------------
+Fri Nov 16 19:26:26 UTC 2012 - aj@suse.de
+
+- Fix missing include (add patch patches/osdlyrics-includes.patch).
+
+-------------------------------------------------------------------
+Mon Jun  4 23:17:32 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 0.4.3
+ * Player support:
+  - Add cmus support, thanks to alepulver (not enable)
+ * Bug fix:
+  - Dir is not closed in _prepend_subdirs (ol_app_info.c)
+  - Show player chooser if connected player quits in 1 minute
+
+-------------------------------------------------------------------
+Thu Mar 01 21:37:17 UTC+8 2012 - hillwood@linuxfans.org
+
+- add xmms2 spport
+- split the translations in a lang subpackage
+- rename patch file
+- fixed some RPMLINT report warnings
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:32 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+------------------------------------------------------------------
+Thu Jan 19 09:37:47 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 0.4.2
+ * UI improvements:
+  - Player choose dialog redesigned
+  - Fade out on the edge of lyric text in OSD mode if it is too long
+  - Drag-to-seek in scrolling mode
+ * Player support:
+  - Bring back support for Rhythmbox prior to 0.13
+  - Support RhythmCat
+  - Auto-detect the launch command for Audacious 2 and 3
+  - Do not require root privilege to launch MPD
+ * Bug fixes:
+  - Blurring in OSD mode will not cause a frame around lyrics
+  - Fix compilation issue in BDS systems.
+  - Fix track duration in MPRIS support
+  - Deal with player launch commands with %f or %U as arguments
+  - ttPlayer engine can search lyrics with ' in the title
+  - CUE sheets are supported now
+  - Don't show invalid search result of Xiami engine
+
+------------------------------------------------------------------
+Sat Dec 10 00:29:35 UTC+8 2011 - hillwood@linuxfans.org
+
+- Fix %post* , change the license to "GPL-3.0" .
+
+------------------------------------------------------------------
+Mon Nov 14 00:15:47 UTC+8 2011 - hillwood@linuxfans.org
+
+- support openSUSE 12.1
+
+------------------------------------------------------------------
+Thu Jul 19 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- Uptate to 0.4.1
+- Choose player if no supported player running on launch
+- Outline blur on OSD mode
+- Support all MPRIS-compatible players
+- New lyrics search site: xiami.com
+- Fix ttPlayer search
+- Search lyrics from more than one sites
+- All files with the name of osd-lyrics are replaced to osdlyrics
+ 
+------------------------------------------------------------------
+Sun Jul 10 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- rewrite description.
+ 
+------------------------------------------------------------------
+Mon Jun 28 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- rename the package name.
+ 
+------------------------------------------------------------------
+Mon Jun 27 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- add support for Fedora and Mandriva.
+ 
+------------------------------------------------------------------
+Thu Jun 11 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- Uptate to 0.4.0
+ 
+------------------------------------------------------------------
+Thu May 30 00:00:00 UTC+8 2011 - hillwood@linuxfans.org
+
+- Uptate to 0.4.0b1
+ 
+------------------------------------------------------------------
+Thu Apr 21 00:00:00 UTC+8 2011 hillwood@linuxfans.org
+
+- Inital package for opensuse and SLE.

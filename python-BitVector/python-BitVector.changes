@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Apr  1 12:55:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.9:
+   * Version 3.4.9, in addition to implementing __iadd__, also includes a
+     significantly faster implementation for __add__.  For extending a given
+     instance of BitVector, the implementation for __iadd__ adds bits to the
+     existing instance as opposed to creating a new instance.  These changes
+     to the module should make it easier to solve larger problems more
+     quickly with BitVector.
+
+-------------------------------------------------------------------
+Fri Aug 10 15:46:03 UTC 2018 - tchvatal@suse.com
+
+- Initial version, needed by python-raet

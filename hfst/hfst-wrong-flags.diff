@@ -1,0 +1,41 @@
+Date: 2014-09-12 11:37:08.444984219 +0200
+From: Jan Engelhardt <jengelh@inai.de>
+
+build: fix potential linking hazards
+
+-L/-l belong into LDADD/LIBADD, *not* LDFLAGS.
+
+---
+ back-ends/foma/Makefile.am |   11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+Index: hfst-3.12.2/back-ends/foma/Makefile.am
+===================================================================
+--- hfst-3.12.2.orig/back-ends/foma/Makefile.am
++++ hfst-3.12.2/back-ends/foma/Makefile.am
+@@ -17,20 +17,19 @@ libfoma_la_SOURCES = int_stack.c define.
+ 
+ hfst_foma_LDADD = $(top_builddir)/back-ends/foma/libfoma.la
+ 
++hfst_foma_LDADD += -lz
+ if WANT_READLINE
+-hfst_foma_LDFLAGS=-lreadline -lz
+-else
+-hfst_foma_LDFLAGS=-lz
++hfst_foma_LDADD += -lreadline
+ endif
+ 
+ if HAVE_TERMCAP
+-hfst_foma_LDFLAGS += -ltermcap
++hfst_foma_LDADD += -ltermcap
+ else
+ if HAVE_NCURSES
+-hfst_foma_LDFLAGS += -lncurses
++hfst_foma_LDADD += -lncurses
+ else
+ if HAVE_CURSES
+-hfst_foma_LDFLAGS += -lcurses
++hfst_foma_LDADD += -lcurses
+ endif
+ endif
+ endif

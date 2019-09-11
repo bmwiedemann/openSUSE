@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Aug 20 14:34:59 UTC 2018 - tchvatal@suse.com
+
+- Just require python-setuptools not use macros as it gets auto-expanded
+  by lua parser properly
+
+-------------------------------------------------------------------
+Mon Aug 20 08:59:29 UTC 2018 - asn@cryptomilk.org
+
+- Update to version 0.3.1
+  * Fixed bug when sorting releases: the older come first
+  * Added missing runtime requirement for setuptools
+  * Added manpage generation
+
+-------------------------------------------------------------------
+Wed Aug  8 17:50:53 UTC 2018 - asn@cryptomilk.org
+
+- Add missing Requires for python-setuptools
+- Remove noarch from doc (the whole package is noarch)
+- Remove unneeded build require on python-devel
+
+-------------------------------------------------------------------
+Fri Aug  3 15:40:38 UTC 2018 - asn@cryptomilk.org
+
+- Initial package
+- Add abimap-0.3.0-disable-pytest-console-script-tests.patch
+  * We need to disable the pytest-console-script tests temporarily. The package
+    can't be built yet as the tests are not working. The upstream maintainer of
+    pytest-console-script is aware.

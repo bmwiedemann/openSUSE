@@ -1,0 +1,21 @@
+Index: mp-5.2.10/makefile.in
+===================================================================
+--- mp-5.2.10.orig/makefile.in
++++ mp-5.2.10/makefile.in
+@@ -144,12 +144,12 @@ install: $(INSTALL_MSG) installdoc $(INS
+ 	( cd $(MPSL) ; make install )
+ 
+ installdoc:
+-	./mkinstalldirs $(PREFIX)/share/doc/$(APPNAME)
++	./mkinstalldirs $(PREFIX)/share/doc/packages/$(APPNAME)
+ 	( cd $(MPDM); $(MAKE) installdoc )
+ 	( cd $(MPSL); $(MAKE) installdoc )
+-	install -m 644 doc/* $(PREFIX)/share/doc/$(APPNAME)
+-	install -m 644 $(ADD_DOCS) $(PREFIX)/share/doc/$(APPNAME)
+-	[ -f doc/mp_index.html ] && install -m 644 doc/mp_index.html $(PREFIX)/share/doc/$(APPNAME)/index.html || true
++	install -m 644 doc/* $(PREFIX)/share/doc/packages/$(APPNAME)
++	install -m 644 $(ADD_DOCS) $(PREFIX)/share/doc/packages/$(APPNAME)
++	[ -f doc/mp_index.html ] && install -m 644 doc/mp_index.html $(PREFIX)/share/doc/packages/$(APPNAME)/index.html || true
+ 
+ uninstall: $(UNINSTALLMO)
+ 	rm -f $(PREFIX)/bin/$(APPNAME)

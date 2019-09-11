@@ -1,0 +1,28 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -1686,9 +1686,9 @@ else
+   ttf=yes
+   AC_DEFINE([HAVE_TTF], [1], [True Text Font])
+   if test "x$prefix" = "xNONE"; then
+-    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/lib/X11/xlock/fonts/"], [True Text Font])
++    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/share/fonts/truetype/"], [True Text Font])
+   else
+-    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["${prefix}/lib/X11/xlock/fonts/"], [True Text Font])
++    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/share/fonts/truetype/"], [True Text Font])
+   fi
+   XLOCKLIBS="${XLOCKLIBS} -lttf"
+   test "x$ttf_includes" = xNONE && ttf_includes=$ac_ttf_includes
+@@ -2086,9 +2086,9 @@ else
+   freetype=yes
+   AC_DEFINE([HAVE_FREETYPE], [1], [Free Type])
+   if test "x$prefix" = "xNONE"; then
+-    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/lib/X11/xlock/fonts/"], [True Text Font])
++    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/share/fonts/truetype/"], [True Text Font])
+   else
+-    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["${prefix}/lib/X11/xlock/fonts/"], [True Text Font])
++    AC_DEFINE_UNQUOTED([DEF_TTFONT], ["/usr/share/fonts/truetype/"], [True Text Font])
+   fi
+   XLOCKLIBS="${XLOCKLIBS} -lfreetype"
+   test "x$freetype_includes" = xNONE && freetype_includes=$ac_freetype_includes

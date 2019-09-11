@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon Jun 17 12:07:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Testsuite expansion mostly
+
+-------------------------------------------------------------------
+Mon May  6 10:35:38 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8.0
+  * Fix few more instances of inefficient struct format 
+
+-------------------------------------------------------------------
+Mon Mar  4 11:54:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.0:
+  * Various updates and fixes for ghc/cabal
+  * Drop unnecessary imports
+- Enable tests
+
+-------------------------------------------------------------------
+Thu Jan 24 15:23:49 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * Depend on xcb-types 0.9.0
+  * Fix spelling mistakes
+  * Support the new eventstruct element
+  * Use xcb-types HEAD instead of a released version
+  * List: keep around the raw underlying represenation
+  * Fix linter errors
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 19 19:44:53 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.5.1.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Wed Nov 23 22:02:10 UTC 2016 - hpj@urpla.net
+
+- add python-cffi runtime dependency
+
+-------------------------------------------------------------------
+Mon Nov 21 10:51:53 UTC 2016 - hpj@urpla.net
+
+- version 0.4.2: initial build
+

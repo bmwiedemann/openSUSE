@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sat Mar 17 05:22:56 UTC 2018 - bwiedemann@suse.com
+
+- Fix build
+
+-------------------------------------------------------------------
+Wed Apr 22 06:46:10 UTC 2015 - coolo@suse.com
+
+- updated to 1.6.5
+   see /usr/share/doc/packages/perl-Text-RecordParser/Changes
+
+  1.6.5   April 21 2015
+  
+  -   Changes to make installation work better, address 
+      https://rt.cpan.org/Public/Bug/Display.html?id=54816
+
+-------------------------------------------------------------------
+Tue Apr 14 21:13:25 UTC 2015 - coolo@suse.com
+
+- updated to 1.6.3
+   see /usr/share/doc/packages/perl-Text-RecordParser/Changes
+
+  1.6.3   August 9 2012
+  
+  -   Fixed bug in "Build.PL" regarding "podselect," updated Build.PL reqs
+  
+  1.6.2   August 9 2012
+  
+  -   Made output of "tablify -v" prettier using Text::Autoformat
+  
+  1.6.1   April 30 2013
+  
+  -   Removed a debug statement
+  -   Fixed INSTALL
+  
+  1.6.0   April 30 2013
+  
+  -   Moved to Git repo at github.com:kyclark/text-recordparser.git
+  -   Changes to "tablify"
+      - Allow for comment lines 
+      - Added more single-letter argument names
+      - Allow for definition of column names
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Oct 15 14:57:24 UTC 2010 - jw@novell.com
+
+- testcase fails on 11.2, 11.1 without a font.
+  Added (Build)Requires for ghostscript-fonts-std
+
+-------------------------------------------------------------------
+Tue Oct 12 16:37:05 UTC 2010 - jw@novell.com
+
+- initial package 1.5.0
+  * created by cpanspec 1.78.02
+  * needed by SQL::Translator
+

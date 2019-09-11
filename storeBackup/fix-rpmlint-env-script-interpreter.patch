@@ -1,0 +1,190 @@
+Index: storeBackup/bin/linkToDirs.pl
+===================================================================
+--- storeBackup.orig/bin/linkToDirs.pl
++++ storeBackup/bin/linkToDirs.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+Index: storeBackup/bin/llt
+===================================================================
+--- storeBackup.orig/bin/llt
++++ storeBackup/bin/llt
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Heinz-Josef Claes (2000-2013)
+Index: storeBackup/bin/multiTail.pl
+===================================================================
+--- storeBackup.orig/bin/multiTail.pl
++++ storeBackup/bin/multiTail.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Heinz-Josef Claes (2000-2014)
+Index: storeBackup/bin/storeBackup.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackup.pl
++++ storeBackup/bin/storeBackup.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2001-2014)
+Index: storeBackup/bin/storeBackupCheckBackup.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupCheckBackup.pl
++++ storeBackup/bin/storeBackupCheckBackup.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+Index: storeBackup/bin/storeBackupCheckSource.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupCheckSource.pl
++++ storeBackup/bin/storeBackupCheckSource.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+Index: storeBackup/bin/storeBackupConvertBackup.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupConvertBackup.pl
++++ storeBackup/bin/storeBackupConvertBackup.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+Index: storeBackup/bin/storeBackupDel.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupDel.pl
++++ storeBackup/bin/storeBackupDel.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2003-2014)
+Index: storeBackup/bin/storeBackupMergeIsolatedBackup.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupMergeIsolatedBackup.pl
++++ storeBackup/bin/storeBackupMergeIsolatedBackup.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+Index: storeBackup/bin/storeBackupMount.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupMount.pl
++++ storeBackup/bin/storeBackupMount.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2004-2014)
+Index: storeBackup/bin/storeBackupRecover.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupRecover.pl
++++ storeBackup/bin/storeBackupRecover.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+Index: storeBackup/bin/storeBackupReplicationWizard.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupReplicationWizard.pl
++++ storeBackup/bin/storeBackupReplicationWizard.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+Index: storeBackup/bin/storeBackupSearch.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupSearch.pl
++++ storeBackup/bin/storeBackupSearch.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+Index: storeBackup/bin/storeBackupSetupIsolatedMode.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupSetupIsolatedMode.pl
++++ storeBackup/bin/storeBackupSetupIsolatedMode.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+Index: storeBackup/bin/storeBackupUpdateBackup.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupUpdateBackup.pl
++++ storeBackup/bin/storeBackupUpdateBackup.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+Index: storeBackup/bin/storeBackupVersions.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupVersions.pl
++++ storeBackup/bin/storeBackupVersions.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+Index: storeBackup/bin/storeBackup_du.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackup_du.pl
++++ storeBackup/bin/storeBackup_du.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Heinz-Josef Claes (2002-2014)
+Index: storeBackup/bin/storeBackupls.pl
+===================================================================
+--- storeBackup.orig/bin/storeBackupls.pl
++++ storeBackup/bin/storeBackupls.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+Index: storeBackup/lib/stbuLog.pl
+===================================================================
+--- storeBackup.orig/lib/stbuLog.pl
++++ storeBackup/lib/stbuLog.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ #   Copyright (C) Heinz-Josef Claes (2012-2014)

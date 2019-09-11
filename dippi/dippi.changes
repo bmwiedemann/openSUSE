@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon Apr 15 19:06:32 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.3:
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed Jan  9 16:44:22 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.2:
+  * Comment out problematic "contact" url for now
+  * Update com.github.cassidyjames.dippi.appdata.xml.in
+  * Add help and contact URLs
+  * Add donation URL
+  * Fix app-id & add some missings tags (#68)
+
+-------------------------------------------------------------------
+Mon Nov 19 18:53:12 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.1:
+  * Support dark preference if it exists (#66)
+  * Update README.md
+
+-------------------------------------------------------------------
+Sun Jul  1 19:40:38 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.7.0:
+  * Whitespace fixes
+- Switch to metainfo from appdata
+
+-------------------------------------------------------------------
+Sun Jun 10 23:40:54 UTC 2018 - jengelh@inai.de
+
+- Use noun phrasing in descriptions.
+
+-------------------------------------------------------------------
+Sat Apr 21 10:47:35 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.6.3:
+  * Update appdata
+
+-------------------------------------------------------------------
+Sat Apr 14 17:29:11 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.6.2:
+  * Update lt.po (#62)
+
+-------------------------------------------------------------------
+Mon Mar 26 14:27:35 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.6.1:
+  * Fix deprecation warning for set accel
+  * Prep for tiny release
+  * Clear Resolution Label when invalid (#61)
+  * Prep for new release (#60)
+  * Missed one
+  * Force update to new badges
+  * Split out into Utils (#58)
+  * Fix error in appdata and bump version
+  * Fix editoronfig
+  * Actually update travis deps
+  * Better editorconfig
+  * Add editorconfig
+
+-------------------------------------------------------------------
+Fri Feb  9 13:38:01 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.5.4:
+  * Update README.md
+  * Update com.github.cassidyjames.dippi.appdata.xml.in
+  * Update appdata with new release
+  * Set a size of the main grid (#53)
+  * Prepare for new release
+  * Add process-completed to GResource
+
+-------------------------------------------------------------------
+Sat Jan 20 11:55:11 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.5.1:
+  * Prep appdata for new release
+  * Actually add all icon sizes
+  * Try out new ranges
+  * Add OARS data
+  * Update es.po (#48)
+- Add the package with translations
+
+-------------------------------------------------------------------
+Mon Jan 15 15:57:18 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

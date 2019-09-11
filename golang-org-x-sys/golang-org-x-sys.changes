@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Wed Feb 07 07:14:55 UTC 2018 - boris@steki.net
+
+- Update to version 0.0.0+git20180202.37707fd:
+  * unix: move gccgo redeclared *SyscallNoError functions to a separate file
+  * unix: fix cpuset size argument in sched_affinity syscall
+  * unix: use SyscallNoError and RawSyscallNoError on Linux only
+  * unix: fix godoc comment for clen
+  * unix: add godoc for Sockaddr* types
+  * plan9: add arm support
+  * unix: add sockaddr_l2 definitions
+  * unix: don't export padding fields on all platforms
+  * unix: use ParseDirent from syscall
+  * unix: adjust replacement regex for removed struct fields for linux/s390x
+- added CONTRIBUTING.md to package documentation
+
+-------------------------------------------------------------------
+Tue Dec 13 10:46:47 UTC 2016 - tboerger@suse.com
+
+- Update to version 0.0.0+git20161205.478fcf5:
+  * x/sys/unix: add *linkat functions on linux
+  * unix: Fix *linkat on sparc64 and s390x
+  * unix: Add FADV_* constants for linux/arm
+  * unix: fix name of prlimit parameters
+  * x/sys/unix: add Getsid on linux
+  * x/sys/unix: added SockaddrCAN struct to allow creation of AF_CAN sockets
+  * unix: Use syscall.SysctlRaw in Sysctl
+  * windows: run "go generate"
+  * windows/registry: add code to access remote pc registry
+  * x/sys/unix: added linux/mips{,le} support
+
+-------------------------------------------------------------------
+Tue Dec 13 10:26:01 UTC 2016 - tboerger@suse.com
+
+- Updated service definition
+
+-------------------------------------------------------------------
+Wed Aug 17 08:20:03 UTC 2016 - tboerger@suse.com
+
+- Added rpmlintrc for common golang linting
+
+-------------------------------------------------------------------
+Tue Aug 16 15:35:34 UTC 2016 - tboerger@suse.com
+
+- Applied latest changes for golang-packaging
+
+-------------------------------------------------------------------
+Fri Jul  8 10:58:54 UTC 2016 - tboerger@suse.com
+
+- Refactoed spec with a new unified layout
+- Switched to disabled run service
+
+-------------------------------------------------------------------
+Sun Jul 12 05:56:10 UTC 2015 - i@marguerite.su
+
+- rename to golang-org-x-sys
+- update version 0.0.0+git20150612.b4e2899
+- use golang-packaging for packaging
+
+-------------------------------------------------------------------
+Mon Mar 23 15:08:41 UTC 2015 - i@marguerite.su
+
+- initial version 0.0.0+git20150320.8642817
+

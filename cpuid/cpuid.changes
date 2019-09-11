@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Sat May 19 23:47:56 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 20180519
+  * Added 7/ecx bit 7: CET_SS and 7/edx bit 20: CET_IBT fields.
+  * Added 7/ecx bit 16: 5-level paging.
+  * Improved 14/0/ecx descriptions.
+  * Added hypervisor leaf descriptions from Microsoft's
+    Hypervisor Top Level Functional Specification (Released
+    Version 5.0b).
+  * Added CPUID features documented in PPR for AMD Family 17h
+    Model 01h B1 (54945 Rev 1.14):
+  * Added PCOMMIT to 7/ebx: PCOMMIT instruction (a deprecated
+    instruction).
+  * Added bits to 80000001/ecx (amd).
+  * Added bits to 80000007/edx, 8000000a/edx, 8000001a/eax,
+    8000001b/eax.
+  * Added 80000007/ebx, 80000007/ecx, 80000008/ebx.
+  * Added tentative 8000001f descriptions.
+
+-------------------------------------------------------------------
+Fri Apr 20 06:33:28 UTC 2018 - josef.moellers@suse.com
+
+- Update to new upstream release 20180419
+  * Added synth decoding for AMD Zen, Pentium Silver (Gemini
+    Lake), Xeon Scalable (Bronze, Silver, Gold, Platinium)
+    (Skylake), Core X-Series (Skylake-X), Bay Trail D0, Bay Trail
+    A0, Xeon E7-4800/8800 (Broadwell-EX B0), Xeon D-1500N
+    (Broadwell-DE A1), Bay Trail-I (E3800), Avoton C0 stepping.
+  * Corrected synth decoding for Bay Trail-M C0 steppings.
+  * Added new Intel 1b leaf from Intel Architecture.
+  * Added various bit fields.
+
+-------------------------------------------------------------------
+Mon Jan 23 09:54:56 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 20170122
+  * Added synth decoding for Intel Knights Landing B0.
+  * Added new synth decodings for Intel Kaby Lake.
+  * Fixed synth decodings for AMD Steamroller and Jaguar.
+  * Added synth decodings for AMD Puma and Excavator.
+  * For (6,15),(0,2) Piledriver processors, detect FX series and
+    report it as Vishera instead of Abu Dhabi/Seoul/Delhi.
+  * Added general microarchitecure names for AMD (e.g.
+    Piledriver) in addition to specific core names (e.g. Trinity)
+    for later generation processors. If I have trouble
+    remembering these, it seems likely other people do too.
+  * Added synth decoding for Quark X1000.
+  * Added Intel Atom Z2760 (Clover Trail).
+  * Added extra synth decodings for some Ivy Bridge and Sandy
+    Bridge processors.
+
+-------------------------------------------------------------------
+Fri Dec  2 08:55:37 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20161201
+  * Fixed bugs in the subleaf walks for 0x8000001d (AMD cache
+    information) and 0x40000003 (Xen hypervisor information) because
+    the code for them was under wholly the wrong loops.
+
+-------------------------------------------------------------------
+Tue Nov 15 08:43:11 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20161114
+* cpuid.c: Added -l/--leaf and -s/--subleaf options to cause
+  cpuid to dump just the specified leaf and subleaf. If
+  -s/--subleaf is not specified, it is assumed to be 0. The
+  intended purpose for this is to display raw dumps of
+  not-yet-supported leaves.
+* cpuid.c: Added AVX512DQ, AVX512IFMA, AVX512BW, AVX512VL, and
+  CLWB decoding to 7/ebx.
+* cpuid.c: Added AVX512VBMI to 7/ecx.
+* cpuid.c: Added print_f_0_edx to show L3 cache QoS monitoring
+  support.
+* cpuid.c: Added total & local bandwidth monitoring to 0xf/1/edx.
+* cpuid.c: Added 0x15/ecx nominal core crystal clock decoding.
+* cpuid.c: In print_17_0_ebx, corrected reversed scheme
+  encodings.
+* cpuid.c: Added synth decoding for Xeon D-1500 (Broadwell-DE) Y0
+  stepping.
+* cpuid.c: Added synth decoding comment about Braswell D1
+  stepping, but its stepping number is not documented.
+* cpuid.c: Added synth decoding for (0,6),(8,14) Kaby Lake
+  processors.
+* cpuid.c: Added synth decoding for Apollo Lake processors.
+* cpuid.c: Added vague synth decoding for (0,6),(9,14) Kaby Lake
+  processors.
+* cpuid.c: Add AVX512_4VNNIW & AVX512_4FMAPS flags.
+* cpuid.c: Add Knights Mill (KNM) CPUID.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:57:28 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160814
+* cpuinfo2cpuid: Added a script that takes input from a
+  /proc/cpuinfo file and converts it into suitable input to
+  cpuid. The information that cpuid is capable of producing based
+  on this very limited input information is slight, but
+  apparently there is interest in getting the synthesized (synth)
+  leaf from this.
+* Support SGX, MPX, BNDLDX/BNDSTX, RDPID, and IA32_XSS PT state.
+* Add information for Skylake, Broadwell, Broadwell-E and -EX
+  processors, Atom C2000 (Avoton) with A0/A1 steppings, Atom
+  Z3n00 (Bay Trail) stepping 1, Xeon D-1500 (Broadwell-DE) V2
+  stepping, corrected Atom Z8000 (Cherry Trail), added Atom S1200
+  (Centerton) and VIA Eden.
+
+-------------------------------------------------------------------
+Sat Nov  7 11:37:43 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 20151017
+* Updated synth decoding for Broadwell processors.
+* Added 0xd leaf field.
+* Updated and expanded 0x14 leaf fields.
+* Added synth decoding for Intel Xeon E7 v2 (Ivy Bridge-EX).
+* Added synth decoding for Intel Core i5/i7 (Skylake).
+* Decode new leaf 2 cache descriptors: 6a, 6b, 6c, 6d.
+* added synth decoding for Knights Landing.
+* Added new & missing decodings for: 4/ecx, 6/eax, 7/ebx, 7/ecx.
+* Renamed 0xf leaves to include "Monitoring".
+* Added 0x10 leaves for QoS Enforcement.
+* Added new leaf 2 cache meanings: 0x1d, 0x24, 0xa0, 0xc3.
+* Added missing i7 synth decoding for (0,6),(3,14).
+* Corrected Atom Z3000 model & stepping which were bafflingly
+  wrong: (0,6)(3,5),1 -> (0,6)(3,7),8.
+* Corrected other Bay Trail stepping names for Celeron/Pentium
+  N and J series.
+* Added synth decoding for Intel Xeon Phi (Knights Corner).
+* Added synth decoding for Intel Atom C2000 (Avoton).
+* Added synth decoding for Intel Xeon E5-x600 (Haswell-EP).
+* Added synth decoding for Intel Xeon E5-[48]800 (Haswell-EP).
+* Added synth decoding for Intel Core M (Broadwell-Y).
+* Added synth decoding for Intel Xeon D-1500 (Broadwell-DE).
+* Added synth decoding for Intel i7-5000 Extreme (Haswell R2).
+* Added synth decoding for Intel Atom Z8000 (Cherry Trail).
+* Added synth decoding for Intel Pentium/Celeron N3000
+
+-------------------------------------------------------------------
+Tue Jun  9 16:25:47 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 20150606
+* Support for several leaf updates, including information on
+  XSAVEC, XGETBV, and XSAVES/XRSTORS instructions. Decoding for
+  more Haswell processors, Broadwell, Cherry Trail, and Avoton.
+- %doc is already implicit for manpages
+
+-------------------------------------------------------------------
+Mon Aug 12 10:33:26 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130610
+* Add lost Opteron 3200 strings
+
+-------------------------------------------------------------------
+Mon Jun 10 14:01:53 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130609
+* support for many new CPU types
+- Wrap description at 70 cols; remove redundant %clean section
+
+-------------------------------------------------------------------
+Wed Jun  1 22:05:31 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 20110305
+- moved to utilities
+
+-------------------------------------------------------------------
+Sat Dec 22 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to openSUSE Build Service
+
+
+-------------------------------------------------------------------
+Mon Sep 18 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Aug 23 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Tue Aug  8 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Jul 31 00:00:00 UTC 2006 - guru@unixtech.be
+
+- added binary stripping on SUSE < 9.3
+- removed Packager and Distribution, injected by rpmmacros
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Apr  3 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new package
+
+

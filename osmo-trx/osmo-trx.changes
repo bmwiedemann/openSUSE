@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Jan 29 21:05:16 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.0.0
+  * Introduce OsmoTRX user manual
+  * Direct support of LimeSuite as osmo-trx-lms without the detour
+    of uhd+soapy-uhd+soapysdr
+  * split device-specific parts into their own classes + binaries:
+    osmo-trx-{uhd,lms,usrp1}
+  * make better use of diferent logging sub-systems / log levels
+  * Full changelogs since 0.2.0:
+    http://git.osmocom.org/osmo-trx/plain/debian/changelog?h=1.0.0
+    http://git.osmocom.org/osmo-trx/plain/debian/changelog?h=0.4.0
+    http://git.osmocom.org/osmo-trx/plain/debian/changelog?h=0.3.0
+- Create dedicated subpackages for each supported device-type
+  * lms
+  * uhd
+  * usrp1
+
+-------------------------------------------------------------------
+Thu Dec 28 13:44:49 UTC 2017 - mardnh@gmx.de
+
+- Update to new upstream release 0.2.0
+  * No changelog was provided
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Wed Mar 22 18:44:05 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1490207482.38b6987:
+  * uhd: Add support for UHD-3.11 logging control
+  * uhd: Increase MC-BTS FPGA clock rate to 51.2 MHz
+  * Add autoconf-archive to dependencies
+  * CommonLibs: Remove unused files.
+  * sigProcLib: Typo sybols -> symbols
+  * radioBuffer: Remove extra ; at the end of inline function definitions.
+  * sigProcLib: Fix documentation, sync argument names in .cpp and .h files.
+  * sigProcLib: make energyDetect() simpler by returning actual energy.
+  * sigProcLib: Rename demodulateBurst() to demodGmskBurst() for clarity.
+  * sigProcLib: Slice SoftVector instead of signalVector for GMSK demod.
+  * Call vectorSlicer() right before packing bits for transmission to osmo-bts.
+  * CommonLibs: Print soft bits with less confidence to console when printing a soft vector.
+  * BitVector: Remove convolutional codec - we don't use it in osmo-trx.
+  * BitVector: Convert SoftVector from 0..1 to -1..+1 soft bits.
+
+-------------------------------------------------------------------
+Fri Mar 03 11:21:36 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1485446766.2dee3e9:
+  * uhd: Add X300 sample timing for 4 SPS
+  * Revert "uhd: Set minimum supported version to 3.9.0"
+  * debian: Require fftw3 header files for osmo-trx
+  * Add gerrit settings
+  * Integrate Debian packaging changes
+  * Do not embed sqlite3 when building
+  * Remove embedded sqlite3
+  * Fix building against sqlite3
+
+-------------------------------------------------------------------
+Wed Dec 28 21:57:30 UTC 2016 - mardnh@gmx.de
+
+- initial package

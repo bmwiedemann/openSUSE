@@ -1,0 +1,28 @@
+OLD_PATH=$PATH
+PATH=/usr/bin:/usr/X11R6/bin/:$PATH
+
+if ! type -p kinput2 > /dev/null 2>&1 ; then
+    echo "kinput2 is not available."
+    return 1
+fi
+if ! pidof jserver > /dev/null 2>&1 ; then
+    echo "jserver is not running."
+    return 1
+fi
+
+export XMODIFIERS="@im=kinput2"
+export GTK_IM_MODULE=xim
+export QT_IM_SWITCHER=imsw-multi
+export QT_IM_MODULE=xim
+
+if [ -r /usr/local/OMRONWnn6/wnn6linux/ja_JP/wnnenvr ] ; then
+    kinput2 -xim -kinput -wnn \
+            -wnnenvrc6 /usr/local/OMRONWnn6/wnn6linux/ja_JP/wnnenvrc &
+else
+    kinput2 -xim -kinput -wnn &
+fi
+
+PATH=$OLD_PATH
+
+# success:
+return 0

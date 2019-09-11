@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon Feb 13 10:44:30 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 19:29:47 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  2 15:13:53 CET 2004 - mmj@suse.de
+
+- Update to 0.9.7
+
+-------------------------------------------------------------------
+Sun Sep  5 14:16:02 CEST 2004 - mmj@suse.de
+
+- Add patch to fix Content-Type specification, thanks Steffen Hansen
+
+-------------------------------------------------------------------
+Fri Jun 11 06:51:30 CEST 2004 - mmj@suse.de
+
+- Update to 0.9.6 which adds support for multiple attachments to
+  multiple people. Support for mimetype is also better.
+
+-------------------------------------------------------------------
+Wed Apr 28 16:17:38 CEST 2004 - mmj@suse.de
+
+- Require /usr/sbin/sendmail, not smtp_daemon
+
+-------------------------------------------------------------------
+Mon Nov 10 11:59:04 CET 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Mon Jun  2 15:17:39 CEST 2003 - mmj@suse.de
+
+- Up to 0.9.5 which add quotes to enable filenames with spaces
+
+-------------------------------------------------------------------
+Wed Apr  2 18:51:05 CEST 2003 - mmj@suse.de
+
+- Update VERSION too
+
+-------------------------------------------------------------------
+Thu Mar 27 15:04:04 CET 2003 - mmj@suse.de
+
+- Update to 0.9.4 which adds a missing backtick
+
+-------------------------------------------------------------------
+Wed Mar 19 20:31:51 CET 2003 - mmj@suse.de
+
+- Update to 0.9.3 including:
+  · Quotation of filenames
+  · Uses /bin/bash instead of /bin/sh which might be linked to some-
+    thing else
+  · Uses `file' to guess the mime type if available
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue May  7 12:53:46 CEST 2002 - ro@suse.de
+
+- fixed specfile: no macro allowed in Version: line 
+
+-------------------------------------------------------------------
+Tue Mar 12 11:30:56 CET 2002 - kukuk@suse.de
+
+- Fix filelist (don't include /usr/bin as directory)
+
+-------------------------------------------------------------------
+Wed Apr 18 02:28:19 CEST 2001 - mmj@suse.de
+
+- Initial 
+

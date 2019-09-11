@@ -1,0 +1,12 @@
+--- src/osdep/unix/Makefile
++++ src/osdep/unix/Makefile
+@@ -48,7 +48,8 @@
+ # Try to have some consistency in GCC builds.  We want optimization, but we
+ # also want to be able to debug.
+ 
+-GCCCFLAGS= -g $(GCCOPTLEVEL) -pipe -fno-omit-frame-pointer
++#GCCCFLAGS= -g $(GCCOPTLEVEL) -pipe -fno-omit-frame-pointer 
++GCCCFLAGS=${MYCFLAGS}
+ GCC4CFLAGS= $(GCCCFLAGS) -Wno-pointer-sign
+ 
+ 

@@ -1,0 +1,12 @@
+Index: boost_1_67_0/tools/build/src/tools/gcc.jam
+===================================================================
+--- boost_1_67_0.orig/tools/build/src/tools/gcc.jam
++++ boost_1_67_0/tools/build/src/tools/gcc.jam
+@@ -360,7 +360,6 @@ local rule compile-link-flags ( * )
+     local generic-os = [ set.difference $(all-os) : aix hpux ] ;
+     local arch = power sparc x86 ;
+     compile-link-flags <target-os>$(generic-os)/<architecture>$(arch)/<address-model>32 : -m32 ;
+-    compile-link-flags <target-os>$(generic-os)/<architecture>$(arch)/<address-model>64 : -m64 ;
+ }
+ 
+ {

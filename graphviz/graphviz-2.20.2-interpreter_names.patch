@@ -1,0 +1,8 @@
+--- tclpkg/gv/demo/modgraph.lua
++++ tclpkg/gv/demo/modgraph.lua
+@@ -1,4 +1,4 @@
+-#!/usr/bin/lua
++#!/usr/bin/lua5.1
+ 
+ -- display the kernel module dependencies
+ 

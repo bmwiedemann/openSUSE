@@ -1,0 +1,14 @@
+Index: django-pipeline-1.6.14/tests/settings.py
+===================================================================
+--- django-pipeline-1.6.14.orig/tests/settings.py
++++ django-pipeline-1.6.14/tests/settings.py
+@@ -9,7 +9,8 @@ def local_path(path):
+ DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+-        'TEST_NAME': ':memory:'
++        'TEST_NAME': ':memory:',
++        'NAME': ':memory:'
+     }
+ }
+ 

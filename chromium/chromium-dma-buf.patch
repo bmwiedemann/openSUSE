@@ -1,0 +1,22 @@
+Index: chromium-76.0.3800.0/ui/gfx/linux/client_native_pixmap_dmabuf.cc
+===================================================================
+--- chromium-76.0.3800.0.orig/ui/gfx/linux/client_native_pixmap_dmabuf.cc
++++ chromium-76.0.3800.0/ui/gfx/linux/client_native_pixmap_dmabuf.cc
+@@ -24,9 +24,6 @@
+ #include "build/build_config.h"
+ #include "ui/gfx/switches.h"
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+-#include <linux/dma-buf.h>
+-#else
+ #include <linux/types.h>
+ 
+ struct dma_buf_sync {
+@@ -41,7 +38,6 @@ struct dma_buf_sync {
+ 
+ #define DMA_BUF_BASE 'b'
+ #define DMA_BUF_IOCTL_SYNC _IOW(DMA_BUF_BASE, 0, struct dma_buf_sync)
+-#endif
+ 
+ namespace gfx {
+ 

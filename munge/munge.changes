@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Sat Sep 22 15:24:40 UTC 2018 - eich@suse.com
+
+- Add coreutils to the Requires(post/postun).
+
+-------------------------------------------------------------------
+Tue Jun 19 06:34:58 UTC 2018 - eich@suse.com
+
+- Handle license file using %license where applicable.
+
+-------------------------------------------------------------------
+Sat Jun 16 05:11:21 UTC 2018 - eich@suse.com
+
+- Package sysconfig.munge only on non-systemd systems.
+- Fix group settings for non-systemd systems in spec file:
+  group 'munge' is used there as well.
+- Some macro cleanup.
+
+-------------------------------------------------------------------
+Fri Mar 16 13:50:22 UTC 2018 - cgoll@suse.com
+
+- added README.SUSE file  (bsc#1085665)
+
+-------------------------------------------------------------------
+Wed Dec  6 16:23:04 UTC 2017 - eich@suse.com
+
+- Update to 0.5.13:
+  * Added support for OpenSSL 1.1.0.
+  * Added support for UID/GID values >= 2^31.
+  * Added support for getentropy() and getrandom().
+  * Added --trusted-group cmdline opt to munged.
+  * Added --log-file and --seed-file cmdline opts to munged.
+  * Changed default MAC algorithm to SHA-256.
+  * Fixed autoconf installation directory variable substitution.
+  * Fixed all gcc, clang, and valgrind warnings.
+  * Improved resilience and unpredictability of PRNG.
+  * Improved hash table performance.
+  * Removed libmissing dependency from libmunge.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:54:02 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Feb  7 17:27:18 UTC 2017 - eich@suse.com
+
+- Fix BuildRequires for zlib-devel.
+
+-------------------------------------------------------------------
+Wed Feb  1 20:13:51 UTC 2017 - eich@suse.com
+
+- Replace group/user add macros with function calls.
+- Make sure we update the user/group of files/directories correctly
+  when updating - in case they have changed.
+
+-------------------------------------------------------------------
+Tue Jan  3 16:18:13 UTC 2017 - eich@suse.com
+
+- Use user 'munge', group 'munge' for systemd and user 'daemon', group 'root' 
+  for non-systemd by setting the appropriate macros '%munge_u' and '%munge_g'.
+- Create user/group munge if they don't exist.
+- Add 'BuildRequires: libbz2-devel'
+- Fix typo.
+
+-------------------------------------------------------------------
+Tue Jan  3 15:56:53 UTC 2017 - eich@suse.com
+
+- Add 'Recommends: munge' to libmunge:
+  This library requires the munge service to run on the
+  local system to be useful.
+
+-------------------------------------------------------------------
+Mon Dec 12 09:34:54 UTC 2016 - vetter@physik.uni-wuerzburg.de
+
+- Fix typo in init script (SLE11) introduced by last change
+- Fix rpm preun/postun-scripts (SLE11)
+- Fix empty /etc/sysconfig/munge after update (SLE11)
+
+-------------------------------------------------------------------
+Thu Dec  8 09:44:36 UTC 2016 - vetter@physik.uni-wuerzburg.de
+
+- change USER from munge to daemon for non-systemd OSes
+
+-------------------------------------------------------------------
+Fri Dec  2 15:43:40 UTC 2016 - eich@suse.com
+
+- Switch to user 'munge', group 'munge'.
+
+-------------------------------------------------------------------
+Wed Oct 19 15:48:26 UTC 2016 - eich@suse.com
+
+- Adding to SLE12 SP2 FATE#321706.
+
+-------------------------------------------------------------------
+Mon Oct 17 13:24:31 UTC 2016 - eich@suse.com
+
+- Setting 'download_files' service to mode='localonly'
+  and adding source tarball. (Required for Factory).
+
+-------------------------------------------------------------------
+Mon Oct 17 06:10:25 UTC 2016 - eich@suse.com
+
+- Add baselib.conf as Source to spec file.
+- Remove tar ball of version 0.5.11.
+
+-------------------------------------------------------------------
+Sat Oct 15 18:43:05 UTC 2016 - eich@suse.com
+
+- version 0.5.12
+  * Changed project homepage to <https://dun.github.io/munge/>.
+  * Changed RPM specfile from sysvinit to systemd. (#33)
+  * Added --max-ttl cmdline opt to munged. (#28)
+  * Added --pid-file cmdline opt to munged. (#41)
+
+-------------------------------------------------------------------
+Fri Oct 14 11:07:23 UTC 2016 - eich@suse.com
+
+- Add source service to download sources.
+- Remove static libraries: If they are needed, they should be packaged
+  separately.
+- Add a %define have_systemd to clearer identify systemd relevant parts.
+- Add define of lversion insead of hard conding this.
+- remove README.MULTILIB: Package is built already.
+- Add BuildRequires: for bzip2-devel, systemd-rpm-macros.
+- Spell out files under %{_sysconfdir}/
+- Fix symlink to %{_sbindir}/rcmunge for initV and systemd.
+
+-------------------------------------------------------------------
+Thu Oct  9 09:36:15 UTC 2014 - bugs@vdm-design.de
+
+- Create /run/munge when package is installed
+  before a restart was needed for the directory to be created
+
+-------------------------------------------------------------------
+Thu Sep 18 14:01:22 UTC 2014 - bugs@vdm-design.de
+
+- We are using daemon:root as user and group for munge.
+  Therefor start it with this user instead of munge:munge
+
+-------------------------------------------------------------------
+Sat Jul 26 10:02:26 UTC 2014 - scorot@free.fr
+
+- version 0.5.11
+  * Added --mlockall cmdline opt to munged.
+  * Added --syslog cmdline opt to munged.
+  * Added --uid and --gid cmdline opts to munge.
+  * Added numeric timezone to unmunge timestamp output.
+  * Added timer to munged for periodically stirring PRNG entropy
+    pool.
+  * Added support for pkg-config.
+  * Added support for systemd.
+  * Changed timer thread to better accommodate misbehaving system
+    clocks.
+  * Changed behavior of munge --string cmdline opt to not append
+    newline.
+  * Changed init script chkconfig priority levels to start after
+    ntpd/ntpdate.
+  * Changed init script so munged runs as munge user by default.
+  * Fixed HMAC validation timing attack vulnerability.
+  * Fixed bug with munged being unable to restart if daemon not
+    cleanly shutdown.
+  * Fixed bug with large groups triggering "numerical result out
+    of range" error.
+  * Fixed bug causing high CPU utilization on FreeBSD when
+    processing group info.
+  * Fixed bug causing IPv6-only hosts to exit due to failed
+    hostname resolution.
+  * Fixed autoconf check that was not portable across shells.
+  * Fixed init script LSB Header on openSUSE.
+  * Replaced perl build-time dependency with awk.
+- add systemd support openSUSE >= 12.1
+
+-------------------------------------------------------------------
+Fri Nov 16 20:59:41 UTC 2012 - scorot@free.fr
+
+- first package based on spec file from hornos project
+

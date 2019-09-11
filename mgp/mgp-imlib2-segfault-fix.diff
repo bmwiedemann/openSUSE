@@ -1,0 +1,50 @@
+---
+ image/imlib_loader.c |   12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+--- a/image/imlib_loader.c
++++ b/image/imlib_loader.c
+@@ -9,7 +9,8 @@
+ #include <Imlib2.h>
+ 
+ #define IMFILENUM 500
+-static char imfile[IMFILENUM][1024];
++#define MAXPATHLEN 1024
++static char imfile[IMFILENUM][MAXPATHLEN];
+ static Imlib_Image *imdata[IMFILENUM];
+ static Image *imagedata[IMFILENUM];
+ static int imnum;
+@@ -42,6 +43,7 @@ Image *imLoad(char *fullname, char *name
+ 		imlib_context_set_display(disp);
+ 		imlib_context_set_visual(DefaultVisual(disp, DefaultScreen(disp)));
+ 		imlib_context_set_colormap(DefaultColormap(disp, DefaultScreen(disp)));
++		imlib_context_set_drawable(DefaultRootWindow(disp));
+ 	}
+ 	if ((im = search_imdata(fullname), image) == NULL) {
+ 		/* im = Imlib_load_image(id, fullname); */
+@@ -126,7 +128,10 @@ void regist_imdata(fullname, im, image)
+ 	Imlib_Image *im;
+ 	Image *image;
+ {
+-	strcpy(imfile[imnum], fullname);	
++	if (imnum >= IMFILENUM)
++		return;
++	strncpy(imfile[imnum], fullname, MAXPATHLEN - 1);
++	imfile[imnum][MAXPATHLEN - 1] = 0;
+ 	imdata[imnum] = im;
+ 	imagedata[imnum] = image;
+ 	imnum ++;
+@@ -136,11 +141,12 @@ Pixmap pixmap_fromimimage(imimage, width
+ 	Imlib_Image *imimage;
+ 	int width, height;
+ {
+-	static Pixmap pixmap;
++	Pixmap pixmap;
+ #if 0
+ 	Imlib_render(id, imimage, width, height);
+ 	pixmap = Imlib_move_image(id, imimage);
+ #else
++	imlib_context_set_image(imimage);
+ 	imlib_render_pixmaps_for_whole_image_at_size(&pixmap, NULL, width, height);
+ #endif
+ 

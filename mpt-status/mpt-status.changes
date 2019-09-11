@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Apr 16 10:15:36 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Fri Sep 30 15:39:06 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Aug  5 22:14:18 CEST 2007 - olh@suse.de
+
+- remove inclusion of linux/compiler.h
+
+-------------------------------------------------------------------
+Tue Nov 14 18:59:03 CET 2006 - mjancar@suse.cz
+
+- update to 1.2.0
+  * works on 64bit architectures (FATE #301702)
+
+-------------------------------------------------------------------
+Fri Apr  7 14:56:21 CEST 2006 - mjancar@suse.cz
+
+- update to 1.1.6
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 12:07:51 CEST 2005 - anicka@suse.cz
+
+- package created 
+

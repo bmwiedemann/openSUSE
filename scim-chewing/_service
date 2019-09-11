@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/chewing/scim-chewing</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.3.6+git%cd.%h</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">scim-chewing-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">scim-chewing</param>
+  </service>
+</services>

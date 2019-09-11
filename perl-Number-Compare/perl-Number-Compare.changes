@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Sep 22 12:49:59 UTC 2011 - vcizek@suse.com
+
+- update to 0.03
+        Generate a new tarball on linux.  Doing the C<make dist> on OSX
+        generated a tarball that upset dumb tars
+        tar: Ignoring unknown extended header keyword `SCHILY.dev'
+        tar: Ignoring unknown extended header keyword `SCHILY.ino'
+        tar: Ignoring unknown extended header keyword `SCHILY.nlink'
+
+-------------------------------------------------------------------
+Tue Sep 13 08:13:22 UTC 2011 - vcizek@suse.com
+
+- update to 0.02
+        - apply warning-related fix -
+          https://rt.cpan.org/Public/Bug/Display.html?id=58466
+
+-------------------------------------------------------------------
+Wed May 11 05:05:40 UTC 2011 - coolo@opensuse.org
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Feb  2 13:41:23 UTC 2011 - vcizek@novell.com
+
+- bzipped source tarball 
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:48 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:53 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jun  8 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.01
+

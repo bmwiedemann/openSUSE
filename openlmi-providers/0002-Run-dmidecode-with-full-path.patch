@@ -1,0 +1,124 @@
+From 2c3f4189ffe69fd29b47d160a441732de9f585c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 7 Oct 2014 14:18:16 +0200
+Subject: [PATCH 02/11] Run dmidecode with full path
+
+---
+ src/hardware/dmidecode.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/hardware/dmidecode.c b/src/hardware/dmidecode.c
+index a80391a0eae0..1b5b2db5281d 100644
+--- a/src/hardware/dmidecode.c
++++ b/src/hardware/dmidecode.c
+@@ -156,7 +156,7 @@ short dmi_get_processors(DmiProcessor **cpus, unsigned *cpus_nb)
+     }
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 4", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 4", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -531,7 +531,7 @@ short dmi_get_cpu_caches(DmiCpuCache **caches, unsigned *caches_nb)
+     dmi_free_cpu_caches(caches, caches_nb);
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 7", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 7", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -830,7 +830,7 @@ short dmi_get_memory(DmiMemory *memory)
+     }
+ 
+     /* get dmidecode output for memory modules */
+-    if (run_command("dmidecode -t 17", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 17", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -996,7 +996,7 @@ short dmi_get_memory(DmiMemory *memory)
+ 
+     /* get additional dmidecode output for memory modules */
+     if (!skip_slots) {
+-        if (run_command("dmidecode -t 6", &buffer, &buffer_size) != 0) {
++        if (run_command("/usr/sbin/dmidecode -t 6", &buffer, &buffer_size) != 0) {
+             goto done;
+         }
+     }
+@@ -1057,7 +1057,7 @@ short dmi_get_memory(DmiMemory *memory)
+     free_2d_buffer(&buffer, &buffer_size);
+ 
+     /* get dmidecode output for memory array */
+-    if (run_command("dmidecode -t 19", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 19", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -1245,7 +1245,7 @@ short dmi_get_chassis(DmiChassis *chassis)
+     init_dmi_chassis_struct(chassis);
+ 
+     /* get dmidecode output for chassis */
+-    if (run_command("dmidecode -t 3", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 3", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -1324,7 +1324,7 @@ short dmi_get_chassis(DmiChassis *chassis)
+     free_2d_buffer(&buffer, &buffer_size);
+ 
+     /* get additional dmidecode output for chassis */
+-    if (run_command("dmidecode -t 1", &buffer, &buffer_size) == 0
++    if (run_command("/usr/sbin/dmidecode -t 1", &buffer, &buffer_size) == 0
+             && buffer_size > 4) {
+         for (i = 0; i < buffer_size; i++) {
+             /* Model */
+@@ -1477,7 +1477,7 @@ short dmi_get_baseboard(DmiBaseboard *baseboard)
+     init_dmi_baseboard_struct(baseboard);
+ 
+     /* get dmidecode output for baseboard */
+-    if (run_command("dmidecode -t 2", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 2", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -1613,7 +1613,7 @@ short dmi_get_ports(DmiPort **ports, unsigned *ports_nb)
+     dmi_free_ports(ports, ports_nb);
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 8", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 8", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -1775,7 +1775,7 @@ short dmi_get_system_slots(DmiSystemSlot **slots, unsigned *slots_nb)
+     dmi_free_system_slots(slots, slots_nb);
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 9", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 9", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -1963,7 +1963,7 @@ short dmi_get_pointing_devices(DmiPointingDevice **devices, unsigned *devices_nb
+     dmi_free_pointing_devices(devices, devices_nb);
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 21", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 21", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+@@ -2138,7 +2138,7 @@ short dmi_get_batteries(DmiBattery **batteries, unsigned *batteries_nb)
+     dmi_free_batteries(batteries, batteries_nb);
+ 
+     /* get dmidecode output */
+-    if (run_command("dmidecode -t 22", &buffer, &buffer_size) != 0) {
++    if (run_command("/usr/sbin/dmidecode -t 22", &buffer, &buffer_size) != 0) {
+         goto done;
+     }
+ 
+-- 
+2.1.2
+

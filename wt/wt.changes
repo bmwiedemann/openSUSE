@@ -1,0 +1,475 @@
+-------------------------------------------------------------------
+Mon Mar 25 21:25:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the Qt4 dependency. Qt4 will be removed from factory soon.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:09:12 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.0.5
+  + ItemDataRole: updated the following methods, so version bump,
+    WIdentityProxyModel::setHeaderData()
+    WSuggestionPopup::setEditRole()
+    WSuggestionPopup::editRole()
+  + Dbo: reentrant statement use
+  + Flex layout fixes
+- Changes in 4.0.4:
+  + WCartesianChart improvements
+    - Multiple Y axis support
+    - On-demand loading
+  + Added support for transparency in PDFs
+  + Disabled TLS v. 1.0 and 1.1 support
+- Changes in 4.0.3:
+  + WFileUpload: added display widget
+  + WFileDropWidget: added drop indication and global drop
+  + WTableView: exposed touch events
+For detailed list of changes, please see ReleaseNotes.html
+
+- Removed upstreamed patches
+  + Asio-Fixed-for-older-versions-of-Boost.patch
+  + Several-changes.patch
+  + Adding-missing-libraries-issue-6198.patch
+- install license correctly
+
+-------------------------------------------------------------------
+Mon Jan  8 13:26:18 UTC 2018 - eich@suse.com
+
+- Updated to 4.0.2
+  * Release 4.0.2 (November 24, 2017)
+    This is a patch release that fixes a few problems with the build of 
+  * Wt 4.0.1, and fixes a bug in Wt::Auth.
+    Release 4.0.1 (November 21, 2017)
+    This is a smaller release with mostly bugfixes, and some new features:
+  * Added WContainerWidget::addNew() and similar methods
+    Because writing code like this:
+    auto text = root()->addWidget(std::make_unique<Wt::WText>("Hello!"));
+    is a bit verbose, a shorthand was added that creates the widget and adds
+    it
+    to the container in one go:
+    auto text = root()->addNew<Wt::WText>("Hello!");
+    addNew forwards its arguments to the constructor, just like
+    std::make_unique. Along those lines, we added
+    WContainerWidget::insertNew()
+    and WTemplate::bindNew().
+    Added the <max-formdata-size> configuration option
+    Previously, the maximum size of form data sent by Wt in a single POST
+    request was capped to 5 MiB. In applications with a large amount of forms
+    with a lot of data, that may not be enough, so <max-formdata-size> can be
+    used to adjust this independently. Note that the maximum request size (and
+    by consequence, the form data size) is still capped by <max-request-size>.
+  * Release 4.0.0 (September 19, 2017)
+    This release has all of the added features of Wt 3.3.8, but comes with 
+    many notable changes. In general, Wt 4 employs the more modern C++ style 
+    of C++11 and beyond. Support for compilers without sufficient C++11 
+    support is dropped competely. Wt 4 aligns more with the C++ Core 
+    Guidelines in a pragmatic way, while keeping the API familiar.
+    Changes in Wt's memory model
+    Header files now end in .h
+    Replacements for Boost
+    Removal of deprecated functionality
+  * Release 3.3.8 (August 16, 2017)
+    OpenID Connect support
+    Wt::Dbo: added sql_value_traits for Wt::Json::Object and Wt::Json::Array.
+    Added <allowed-hosts> configuration option for CORS
+    Other small improvements:
+  * Release 3.3.7 (March 31, 2017)
+    This release fixes many bugs, but also introduces some new features:
+    - WFileDropWidget
+    - Scroll visibility
+    - Touch events
+    - Combined session tracking mode
+    - Wraparound for WSpinBox and WTimeEdit
+    - Some minor extra features
+  * Release 3.3.6 (July 13, 2016)
+    This release has a focus on bug fixes and some new features:
+    - Support for WebSocket compression in wthttp
+    - Time entry improvements
+    - Skia version updated
+    - Wt::Dbo
+  For a full list of changes please refer to:
+  https://www.webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+- boost_1_63_fix.patch: removed (obsoleted by update)
+- Several-changes.patch
+  Asio-Fixed-for-older-versions-of-Boost.patch:
+  Fix issues with boost 1.66 (boo#1074999).
+- Adding-missing-libraries-issue-6198.patch
+  Fix build.
+- Reduce libboost-*-devel dependencies to the ones suggested by
+  upstream - see: https://redmine.emweb.be/issues/6198 -
+  added libboost-atomic-devel.
+
+-------------------------------------------------------------------
+Wed Nov 29 14:22:15 UTC 2017 - dimstar@opensuse.org
+
+- Replace openssl-devel (Build)Requires with pkgconfig(openssl):
+  allow OBS to pick openssl 1.0 if needed.
+
+-------------------------------------------------------------------
+Tue Feb  7 14:51:27 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+- boost_1_63_fix.patch: Compilation fix for Boost 1.63 (boo#1023886)
+
+-------------------------------------------------------------------
+Mon Apr 11 15:46:03 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 3.3.5:
+  * WCartesianChart has several new features. 
+  * WAxisSliderWidget lets you easily focus on a particular range. 
+  * WPainter, WJavascriptHandle, WCanvasPaintDevice functionality
+    was implemented by making client-side interaction possible. 
+  * WAnchor target (such as this window, or new window) moved to WLink. 
+  * A new TargetDownload target was added for links.
+  * The included SQLite version was updated.
+  * Support for seconds editing in WTimePicker.
+  * Before it was only possible to set the partial state of the
+    WCheckbox when creating the Widget.
+  * The WApplication::setConnectionMonitor() method will let the
+    user register a Javascript object that will be notified.
+  * Support for custom HTML tags for a widgets.
+  * Wt::Dbo: allow to forward declare related classes.
+- Removed base64.patch as particularly merged into upstream.
+- Removed doc subpackage: no content any more.
+
+-------------------------------------------------------------------
+Wed Oct 21 09:40:00 UTC 2015 - schwab@suse.de
+
+- base64.patch: Fix invalid narrowing conversion
+
+-------------------------------------------------------------------
+Fri Apr 10 19:28:30 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.3.4
+  * Support for dedicated session processes with wthttp connector.
+  * WIdentityProxyModel : This new proxy model simply forwards the
+    structure of the source model, without any transformation, and
+    can be used for implementing proxy models that reimplement data(),
+    but retain all other characteristics of the source model. 
+  * Chart::WAbstractChart::setAutoLayoutEnabled() : Until now, you were
+    responsible for configuring the padding around the chart area to
+    accomodate for axis labels, titles, and legend. While this is
+    still the default behaviour, we added an option to let the chart
+    derive the required padding (using approximate font-metrics
+    available server-side). 
+  * Chart::WCartesianChart::setAxis() : Whereas previously a chart axis
+    was a "value class", it is now a proper polyymorphic class, and you
+    can provide your own implementation. In this way you can customize
+    things like for example label strings. 
+  * setPointSprite(): ability to define sprites for drawing a data series
+  * pickSurface(): find out which points on a surface are under a given pixel
+  * pickBar(): find out which points on a bar on are under a given pixel.
+  * setIsoLevels(): draw iso lines (on the ground plane of the chart)
+    corresponding to selected z values.
+  * setClippingLinesEnabled(): ability to clip and optionally draw
+    clipping planes
+  * setIntersectionsEnabled(): ability to draw surface-surface
+    intersection lines.
+- Remove wt-boost-1.56.0.patch; merged on upstream relese
+
+-------------------------------------------------------------------
+Thu Dec  4 14:18:05 UTC 2014 - tchvatal@suse.com
+
+- Add various missing dependencies and switches to ensure we build
+  against system libraries
+- add -dbo-* subpackages for db connectors, thus our core does not
+  pull in all various database providers
+- Cleanup with spec cleaner
+- Remove support for < 12.3 as it failed to build there anyway
+- Use %cmake macro instead of directly calling %cmake
+- Version bump to 3.3.3:
+  * various bugfixes
+  * improved meta header support
+- Add patch to build on Factory with boost 5.16.0:
+  * wt-boost-1.56.0.patch
+
+-------------------------------------------------------------------
+Thu Apr 14 07:17:02 UTC 2014 - dap.darkness@gmail.com
+
+- Added _constraints file to prevent out of memory issue.
+
+-------------------------------------------------------------------
+Thu Apr  3 17:17:02 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 3.3.2:
+  * WRasterImage: now also support skia as backend.
+  * Namespace Wt::Signals was created.
+  * Checkboxes are rendered when CheckStateRole is present.
+  * Client SSL certificates can be queried from WResources.
+  * Fixed regression in resource continations.
+  * Added binary WebGL VBO buffers.
+  * Layouts: various bug fixes and improvements.
+  * Render: added support for repeating table headers.
+  * Render: added support for explicit page breaks and % widths.
+  * Fix popup widgets confusing preferred size calculations.
+  * New API for payment with an implementation for PayPal.
+  * layouts: fix various issues.
+  * WTextEdit: fix behaviour inside a WPanel.
+  * Render: code reorganizations for java port.
+  * QueryModel: added stableResultRow() method.
+  * Dbo/Exception: add support for SQLSTATE code information.
+  * Mail/Client: log configuration that will be used on first use.
+  * WAnchor: use <a> tag even if no link has been provided.
+  * WDoubleSpinBox: fix formatting.
+  * WSlider: add more hooks for custom styles.
+- Added SourceUrl.
+- doxygen, firebird-devel, libharu-devel and pango-devel
+  became required to build because of cmake warnings.
+- Rpm_opt_flags became set via cmake option.
+- DWT_CMAKE_FINDER_INSTALL_DIR cmake option became broken
+  and was replaced by manual file moving.
+- DBUILD_EXAMPLES cmake option was enabled
+  because of FIXME comment at spec-file.
+- DENABLE_EXT cmake option was enabled
+  to satisfy leechcraft requirements.
+- Don't package INSTALL file.
+- RPM_BUILD_ROOT macro was replaced by buildroot.
+- Let make be verbose: V=1.
+
+-------------------------------------------------------------------
+Sat Feb 11 09:12:27 UTC 2012 - poletti.marco@gmail.com
+
+- Update to 3.2.0:
+  * Backward incompatibile changes: WValidator::validate() now
+    returns a WValidator::Result instead of a WValidator::State;
+    major changes to WTestEnvironment.
+  * New namespaces: Wt::Json, Wt::Mail, Wt::Auth.
+  * New classes: WException, WIOService, WStringStream,
+    Http::Client, Http::Message, Dbo::Firebird.
+  * Add a Closeable property for dialogs.
+  * Many log-related changes.
+  * DOS mitigation measures.
+  * Other changes (including deprecated API!) and bug fixes.
+
+-------------------------------------------------------------------
+Sat Jan 28 23:31:46 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Sep 26 09:59:45 UTC 2011 - poletti.marco@gmail.com
+
+- Update to 3.1.11:
+  * New classes: WLink, WMediaPlayer.
+  * WDialog(s) can now optionally be resizeable.
+  * Backward-incompatible change: the item data roles UrlRole and
+    InternalPathRole have been removed, and replaced by a LinkRole.
+  * Many ref(), resource(), imageRef(), url(), internalPath()
+    methods have been deprecated in favor of a new link() method.
+    The same has happened to the respective set*() methods.
+  * WHTMLMedia, WHTMLVideo and WHTMLAudio have been renamed to
+    WAbstractMedia, WVideo and WAudio. The old names are still
+    available, but are now deprecated.
+  * Other minor improvements (notably to WResource,
+    Http::ResponseContinuation, WPopupMenu).
+  * Many bug fixes.
+
+-------------------------------------------------------------------
+Tue Jul 12 07:11:42 UTC 2011 - poletti.marco@gmail.com
+
+- Update to 3.1.10:
+  * Backward-incompatibile change: The signature of the virtual
+    method WWidget::setHidden() has changed. This will break
+    existing code which specializes the WWidget::setHidden()
+    method. This code should be updated to pass the WAnimation
+    object.
+  * New classes: WAnimation (for using CSS3 animations, when
+    supported by the browser) and WStreamResource.
+  * Now multiple WServer instances can be launched, but only when
+    using the built-in httpd.
+  * WTemplate and WText have now a setInternalPathEncoding()
+    method.
+  * WApplication has now a findWidget() method that searches among
+    all widgets, even those outside WApplication::root().
+  * WApplication has now a changeSessionId() method, that generates
+    a new session ID (useful to prevent session fixation attacks).
+  * WWidget has now an additional argument to the setToolTip()
+    method, that allows to use XHTML tooltips (<div> blocks).
+  * Other fixes and improvements.
+
+-------------------------------------------------------------------
+Sat Apr  9 17:55:28 UTC 2011 - poletti.marco@gmail.com
+
+- Disable the generation of tests, because a boost bug prevents
+  successful compilation of tests.
+- Update to 3.1.9:
+  * Refactoring of WSpinBox and WSlider widgets
+  * Support the HTML5 History API
+  * Font rendering improvements in WPdfImage, WRasterImage (C++)
+  * Plural nouns in localization of strings (C++)
+  * Thread-safe and lock-free user event delivery to sessions (C++)
+
+-------------------------------------------------------------------
+Mon Feb 21 10:34:14 UTC 2011 - max@novell.com
+
+- The build requirement on postgresql-libs isn't needed anymore.
+
+-------------------------------------------------------------------
+Tue Feb  8 07:57:58 UTC 2011 - poletti.marco@gmail.com
+
+- Update to 3.1.8:
+  * New classes: WFontMetrics, Render::WTextRenderer and
+    Render::WPdfRenderer.
+  * Dbo: add support for foreign key constraints (NotNull,
+    OnDeleteCascade, etc.).
+  * Dbo: add SQL mappings for the C++ bool and long types.
+  * wt.css was modified, so custom styles may need changes, too.
+  * Wt::WBrushstyle has been renamed to Wt::BrushStyle.
+
+-------------------------------------------------------------------
+Tue Jan 11 11:25:03 UTC 2011 - poletti.marco@gmail.com
+
+- Update to 3.1.7a:
+  * fixed a regression in layout managers
+
+- Update to 3.1.7:
+  * WAbstractItemView: added support for column hiding
+  * WebSession: add Web Sockets support.
+  * Some bug fixes.
+
+- Update to 3.1.6:
+  * WFileUpload: allow multi-file uploads.
+  * WFileUpload, WResource: support upload progress tracking (currently
+    only with wthttpd).
+  * WInteractWidget, WMouseEvent: add mouseWheel() event
+  * Support IE9, enabling HTML5 features.
+  * Wt::Dbo: handle more complex queries.
+  * WPaintDevice: remove paintFlags() method; PaintUpdate is a property of
+    the painted widget, and no longer something which has to do with
+    WPainter. The library is reverted to the old behaviour of
+    supporting multiple WPainters on a single paint device.
+  * Many other improvements, too many to be listed here.
+  * Some bug fixes.
+
+-------------------------------------------------------------------
+Wed Sep 22 07:56:21 UTC 2010 - coolo@novell.com
+
+- Update to 3.1.5
+ * This release contains mostly bug fixes.  
+- Update to 3.1.4
+ * This release contains several new features, but also a few 
+   changes that break backwards compatibility (but are unlikely 
+   to affect an average application). 
+  See http://www.webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+
+-------------------------------------------------------------------
+Thu Jun  3 17:04:40 UTC 2010 - poletti.marco@gmail.com
+
+- Build the Postgres libraries, too.
+- Build the builtin httpd (wthttpd), too.
+
+-------------------------------------------------------------------
+Thu Jun  3 11:09:23 UTC 2010 - poletti.marco@gmail.com
+
+- Update to 3.1.3
+  * WTableView has been reimplemented to provide both horizontal
+    and vertical scrolling for arbitrary large models.
+  * Inline editing was implemented for WTableView and WTreeView.
+  * WSuggestionPopup now supports server-side filtering.
+  * Improved plain-HTML fall-back and progressive enhancement.
+  * Many improvements in the ORM library.
+  * Changes that may break existing applications (but are unlikely
+    to affect an average application) have been made in
+    Dbo::sql_result_traits and WTableView.
+
+-------------------------------------------------------------------
+Tue Mar 30 06:03:33 UTC 2010 - poletti.marco@gmail.com
+
+- Update to 3.1.2
+  * New classes: WShadow and Dbo/backend/Postgres
+  * New features in: WBoxLayout, WGridLayout, WCalendar, WDateTime, WFormWidget
+    WPainter, WResource, WString, WWidget, Http::Request, Http::Response,
+    Dbo::Session, Dbo::field(), Dbo::SqlConnection, Dbo::SqlStatement,
+    Dbo::sql_value_traits
+  * Performance improvements in serializing the widgets to HTML and/or JavaScript
+  * Added options --max-request-size  and --max-memory-request-size to the
+    built-in httpd
+    
+-------------------------------------------------------------------
+Thu Feb 25 10:07:09 UTC 2010 - poletti.marco@gmail.com
+
+- Update to 3.1.1
+  * mxml: replace mxml with an (adapted) rapidxml browser.
+  * WCanvasPaintDevice: Use HTML5 native canvas text when available
+  * Improved themes
+  * Chart/WAxis: added setLabelFont(), labelFont() methods
+  * WContainerWidget: support resetting a layout manager
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 26 12:24:39 UTC 2010 - poletti.marco@gmail.com
+
+- Update to 3.1.0
+- Update patch file
+- Build most examples
+- Run fdupes on /usr/share/wt too
+- Silence command echoing while building
+
+-------------------------------------------------------------------
+Sun Nov 30 08:18:39 CET 2008 - coolo@suse.de
+
+- there is no boost anymore and the requires should be over
+  shared libs anyway (bnc#450287)
+
+-------------------------------------------------------------------
+Wed Oct 29 12:19:03 CET 2008 - puzel@suse.cz
+
+- fix-include-condition-hpp.patch - fix build
+
+-------------------------------------------------------------------
+Sat Jul 26 21:45:29 CEST 2008 - puzel@suse.cz
+
+- update to 2.1.5
+  * rich-text editor (WTextEdit) added
+  * API for interactive areas on WImage and WPaintedWidget
+  * configurable logging
+  * bug fixes
+- do not use interactive cp (cp -i) in specfile
+
+-------------------------------------------------------------------
+Mon Jul  7 17:40:04 CEST 2008 - puzel@suse.cz
+
+- updated to 2.1.4
+  * layout managers for plain Wt container widgets
+  * a new API for controlling the embedded web server (WServer)
+  * Wt applications now validate using the W3C (X)HTML validator
+  * preliminary support for AJAX on old IE Mobile browser
+  * support for integrating Wt in Qt-based applications
+  * bug fixes
+  * new configuration file: /etc/wt/wt_config.xml
+
+-------------------------------------------------------------------
+Mon Jun 30 13:39:12 CEST 2008 - puzel@suse.cz
+
+- update to 2.1.3
+  - adds a new charting library
+- removed wt-2.1.2-missing_includes.patch (fixed in upstream)
+- LIB_INSTALL_DIR is now a relative path
+
+-------------------------------------------------------------------
+Fri Apr 18 10:41:58 CEST 2008 - pcerny@suse.cz
+
+- update to 2.1.2 (details in package Changelog)
+  * wt-2.1.2-cmake_config.patch - fixes broken cmake config files
+- removed -fpermissive (building against boost 1.34.1 works now)
+
+-------------------------------------------------------------------
+Fri Feb  1 18:09:33 CET 2008 - pcerny@suse.cz
+
+- upgrade to 2.0.6
+  * removed patches included in upstream
+    (wt-2.0.3-libinstdir.patch, wt-2.0.3-rundir.patch)
+  * added missing includes (wt-2.0.6-missing_includes.patch)
+  * temporary fix to build against boost 1.33 with gcc 4.3
+    (-fpermissive)
+
+-------------------------------------------------------------------
+Mon Sep  3 18:32:13 CEST 2007 - schwab@suse.de
+
+- Use $RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Mon Jul  9 16:55:39 CEST 2007 - pcerny@suse.cz
+
+- initial package created v2.0.3
+

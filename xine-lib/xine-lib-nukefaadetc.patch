@@ -1,0 +1,11 @@
+Index: contrib/Makefile.am
+===================================================================
+--- contrib/Makefile.am.orig	2018-01-11 14:49:46.000000000 +0200
++++ contrib/Makefile.am	2018-12-29 14:25:07.143736494 +0200
+@@ -1,5 +1,4 @@
+-SUBDIRS = libmpcdec libxdg-basedir libdca nosefart gsm610 libmad a52dec \
+-	libfaad
++SUBDIRS = libmpcdec libxdg-basedir libdca nosefart gsm610 libmad a52dec
+ 
+ 
+ if BUILD_DHA_KMOD

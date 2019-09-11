@@ -1,0 +1,35 @@
+Index: llvm-6.0.1.src/cmake/modules/HandleLLVMOptions.cmake
+===================================================================
+--- llvm-6.0.1.src.orig/cmake/modules/HandleLLVMOptions.cmake
++++ llvm-6.0.1.src/cmake/modules/HandleLLVMOptions.cmake
+@@ -402,8 +402,6 @@ if( MSVC )
+ elseif( LLVM_COMPILER_IS_GCC_COMPATIBLE )
+   append_if(LLVM_ENABLE_WERROR "-Werror" CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
+   append_if(LLVM_ENABLE_WERROR "-Wno-error" CMAKE_REQUIRED_FLAGS)
+-  add_flag_if_supported("-Werror=date-time" WERROR_DATE_TIME)
+-  add_flag_if_supported("-Werror=unguarded-availability-new" WERROR_UNGUARDED_AVAILABILITY_NEW)
+   if (LLVM_ENABLE_CXX1Y)
+     check_cxx_compiler_flag("-std=c++1y" CXX_SUPPORTS_CXX1Y)
+     append_if(CXX_SUPPORTS_CXX1Y "-std=c++1y" CMAKE_CXX_FLAGS)
+@@ -570,7 +568,6 @@ if (LLVM_ENABLE_WARNINGS AND (LLVM_COMPI
+     append("-Wno-long-long" CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
+   endif()
+ 
+-  add_flag_if_supported("-Wcovered-switch-default" COVERED_SWITCH_DEFAULT_FLAG)
+   append_if(USE_NO_UNINITIALIZED "-Wno-uninitialized" CMAKE_CXX_FLAGS)
+   append_if(USE_NO_MAYBE_UNINITIALIZED "-Wno-maybe-uninitialized" CMAKE_CXX_FLAGS)
+ 
+@@ -707,13 +704,6 @@ add_definitions( -D__STDC_CONSTANT_MACRO
+ add_definitions( -D__STDC_FORMAT_MACROS )
+ add_definitions( -D__STDC_LIMIT_MACROS )
+ 
+-# clang doesn't print colored diagnostics when invoked from Ninja
+-if (UNIX AND
+-    CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND
+-    CMAKE_GENERATOR STREQUAL "Ninja")
+-  append("-fcolor-diagnostics" CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
+-endif()
+-
+ # lld doesn't print colored diagnostics when invoked from Ninja
+ if (UNIX AND CMAKE_GENERATOR STREQUAL "Ninja")
+   include(CheckLinkerFlag)

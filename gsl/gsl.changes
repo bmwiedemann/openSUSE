@@ -1,0 +1,632 @@
+-------------------------------------------------------------------
+Thu Feb 14 09:00:22 UTC 2019 - adam.majer@suse.de
+
+- mark examples as a noarch package
+- install license for examples and remove unnecessary dependencies
+
+-------------------------------------------------------------------
+Wed Feb 13 08:51:31 UTC 2019 - Antoine Ginies <aginies@suse.com>
+
+- add an examples sub package to test in production env
+
+-------------------------------------------------------------------
+Mon Feb 11 19:09:54 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Simplify package naming for HPC.
+- Fix dependencies for HPC.
+- Library directory is always available when module file is
+  installed, do not hide it.
+- Properly create and tear down default version links when the
+  HPC master packages are installed/uninstalled.
+- Create pkgconfig file for gslcblas as well.
+- Add missing env variables to modules file: MANPATH, INFOPATH,
+  PKG_CONFIG_PATH.
+
+-------------------------------------------------------------------
+Tue Oct 23 16:30:44 UTC 2018 - jjolly@suse.com
+
+- Convert package to _multibuild
+- Add HPC build macros and evironment modules
+  * (FATE#324138)
+- Add master packages for libraries and devel package
+- Remove BLAS build dependency
+
+-------------------------------------------------------------------
+Sat Jul 28 13:49:30 UTC 2018 - jengelh@inai.de
+
+- Remove useless --with-pic only useful for static libs.
+- Fix RPM groups, diversify summaries, trim long descriptions.
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Jun 26 07:07:15 UTC 2018 - adam.majer@suse.de
+
+- updated license tags in spec file
+
+-------------------------------------------------------------------
+Fri Jun 15 07:58:16 UTC 2018 - astieger@suse.com
+
+- gsl 2.5:
+  * doc bug fix in binomial distribution figure
+  * added Wishart distribution
+  * added new module for digital filtering (gsl_filter); current
+    filters include:
+     Gaussian filter
+     median filter
+     recursive median filter
+     impulse detection filter
+  * added new module for moving window statistics (gsl_movstat)
+  * added statistics functions:
+     gsl_stats_median()
+     gsl_stats_select()
+     gsl_stats_mad()
+     gsl_stats_mad0()
+     gsl_stats_Sn_from_sorted_data()
+     gsl_stats_Qn_from_sorted_data()
+     gsl_stats_gastwirth_from_sorted_data()
+     gsl_stats_trmean_from_sorted_data()
+  * added Romberg integration (gsl_integration_romberg)
+  * bug fix in deprecated functions gsl_multifit_wlinear_svd and
+    gsl_multifit_wlinear_usvd (reported by Vlad Koli)
+  * documention corrected to state that gsl_sf_legendre functions
+    do not include Condon-Shortley phase by default
+  * bug fix in exponential fitting example when using larger number
+    of points
+  * changed internal workspace inside gsl_spmatrix to a union to
+    avoid casting
+  * bug fixes in ode-initval2 for very rare solver crashing cases
+  * add histogram2d figure to manual
+  * bug fix in gsl_spmatrix_add for duplicate input arguments
+  * add support for negative arguments nu in gsl_sf_bessel_Jnu and
+    gsl_sf_bessel_Ynu (Konrad Griessinger)
+  * better texinfo documentation for gsl_sf_hyperg functions
+  * fix vector and matrix fread/fwrite testing on windows systems
+    when tmpfile() fails
+- drop rstat_test.patch, is upstream
+
+-------------------------------------------------------------------
+Mon May 14 13:07:21 UTC 2018 - adam.majer@suse.de
+
+- temporarily disable unit tests on i586 (boo#1092530)
+
+-------------------------------------------------------------------
+Tue Jun 20 08:26:18 UTC 2017 - adam.majer@suse.de
+
+- rstat_test.patch - Fix rstat test on PPC platform
+- re-enable multi-job support in unit tests (check make target)
+
+-------------------------------------------------------------------
+Mon Jun 19 14:11:18 UTC 2017 - adam.majer@suse.de
+
+- Update to new upstream version 2.4:
+  * add const to declaration of appropriate gsl_rstat routines
+  * added routines for Hermite polynomials, gsl_sf_hermite_*
+  * added routines to compute integrals with fixed-point
+    quadrature, based on IQPACK
+  * added new nonlinear least squares example for fitting
+    a Gaussian to data
+  * deprecated routines:
+     gsl_sf_coupling_6j_INCORRECT
+     gsl_sf_coupling_6j_INCORRECT_e
+  * deprecated routine 'gsl_linalg_hessenberg' (replaced
+    by gsl_linalg_hessenberg_decomp)
+  * removed routines which were deprecated in v2.1:
+     gsl_bspline_deriv_alloc
+     gsl_bspline_deriv_free
+  * changed COD expression to Q R Z^T instead of Q R Z to
+    be consistent with standard texts
+  * added check for nz == 0 in gsl_spmatrix_get
+  * permit zero-dimension blocks, vectors, matrics, subvectors,
+    submatrices, and views of the above
+  * added routine gsl_linalg_COD_lssolve2 for regularized
+    least squares problems
+- obsoletes patches:
+  * ppc_test_tolerence.patch
+  * fix_legendre_test.patch
+- unit tests re-enabled
+
+-------------------------------------------------------------------
+Wed Jun 14 11:54:35 UTC 2017 - adam.majer@suse.de
+
+- Update to test version 2.3.90. 
+
+-------------------------------------------------------------------
+Thu May 18 08:57:35 UTC 2017 - adam.majer@suse.de
+
+- Add unit test error logs to build logs when there is a failure
+- ppc_test_tolerence.patch: Fix unit tests on PPC64 and PPC64LE
+- fix_legendre_test.patch: Ignore part of failing unit test on i586
+  (boo#1030250)
+
+-------------------------------------------------------------------
+Fri Jan  6 09:31:46 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.3:
+  * bug fix in documentation for gsl_linalg_LU_refine
+  * added gsl_multifit_linear_tsvd and gsl_multifit_wlinear_tsvd
+  * improved rstat example program and added documentation for
+  * added function gsl_multifit_linear_rank
+  * bug fix in nonlinear least squares when using data weights with
+  * add 2D subspace method for large systems (multilarge_nlinear)
+  * bug fix in gsl_ran_beta for small parameters
+  * bug fix in gsl_complex_tan for negative imaginary arguments
+  * doc bug fix: value of golden ratio
+  * fixed scaling issue in 2D subspace nonlinear least squares
+    method
+  * optimize dogleg methods to calculate Gauss-Newton point
+    only when needed
+  * reverted gsl_linalg_cholesky_decomp to its previous behavior
+    so it is backward compatible; new cholesky routine is
+    gsl_linalg_cholesky_decomp1
+  * updated gsl_linalg_cholesky_invert to use Level-2 BLAS
+  * added functions gsl_linalg_tri_*_invert for inverting
+  * fix GSL_EIGEN_SORT_VAL_{ASC,DESC} for nonsymmetric
+  * added complete orthogonal decomposition routines
+  * and many more - see ChangeLog for full list
+- Drop upstreamed patches:
+  * gsl-disable-multifit-test.patch
+  * gsl-rstat-test-powerpc.patch
+- Packaging changes:
+  * use https url's for download
+  * fetch keyring from savannah
+
+-------------------------------------------------------------------
+Fri Jul 29 11:08:14 UTC 2016 - adam.majer@suse.de
+
+- Add missing Requires in -devel following package split
+
+-------------------------------------------------------------------
+Fri Jul 29 07:48:04 UTC 2016 - dmitry_r@opensuse.org
+
+- Move gslcblas library to separate package [boo#991155]
+
+-------------------------------------------------------------------
+Sat Jun 18 20:39:30 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.1
+  * added gsl_multifit_linear_rcond() to compute reciprocal
+    condition number of least squares matrix
+  * added gsl_multilarge module for large linear least squares
+    systems
+  New in version 2.0
+  * added L-curve analysis routines for linear Tikhonov regression
+  * add running statistics module
+  * added bilinear and bicubic interpolation
+  * added function gsl_multifit_robust_residuals to compute robust
+    fit residuals
+  * added Steffen monotonic interpolation method
+  * added new nonlinear least squares solver 'lmniel' suitable for
+    systems with large numbers of data
+  * nonlinear least squares solver now tracks the number of function
+    Jacobian evaluations, see example program for details
+  * the 'fdf' field of gsl_multifit_function_fdf is now deprecated
+    and does not need to be specified for nonlinear least squares
+    problems
+  * added extensive test suite to nonlinear least squares module,
+    resulting in a few minor bug fixes; the routine
+    gsl_multifit_fdfsolver_driver has been rewritten (with API change)
+    to handle the various error codes of the lmsder iterate
+    routine, resulting in a high level caller which is highly robust
+    for a wide class of problems
+  * added support for sparse matrices, including a GMRES
+    iterative linear solver
+  * added routines gsl_linalg_givens and gsl_linalg_givens_gv
+    for Givens rotations
+  * added Tikhonov (ridge) regularization to least squares module
+    (linear and nonlinear)
+  * Drop obsolete gsl-sorting-complex-numbers.patch
+- Disable multifit test for 32-bit systems
+  * gsl-disable-multifit-test.patch
+- Fix build on PowerPC systems
+  * gsl-rstat-test-powerpc.patch
+
+-------------------------------------------------------------------
+Mon Jun  8 07:25:20 UTC 2015 - dimstar@opensuse.org
+
+- Add gsl-sorting-complex-numbers.patch: fix in sorting of complex
+  numbers (http://savannah.gnu.org/bugs/?39055).
+
+-------------------------------------------------------------------
+Wed Feb 25 20:04:58 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg keys
+- Update dependencies
+- Split documentation to separate package
+- Run only one job for checks
+
+-------------------------------------------------------------------
+Sat Jul 19 14:23:59 UTC 2014 - jengelh@inai.de
+
+- Utilize shared library package naming guidelines
+  (split gsl -> gsl,libgsl0)
+- Set RPM groups
+
+-------------------------------------------------------------------
+Mon Sep  9 19:46:07 UTC 2013 - badshah400@gmail.com
+
+- Update to version 1.16:
+  + fixed error in gsl_rng_fwrite where uninitialized padding
+    bytes were being written (bug #39104)
+  + fixed error in gsl_block_alloc where padding bytes were not
+    properly initialized (bugs #39101,#39102,#39103)
+  + fixed error in ntuple/test.c where padding bytes were not
+    properly initialized (bug #39105)
+  + fixed triangle selection bug in gsl_sf_coupling_6j_e and
+    gsl_sf_coupling_9j_e (bugs #39466 and #29606)
+  + added higher level wrapper routine
+    gsl_multifit_fdfsolver_driver
+  + converted gsl_multifit_linear_residuals to use dgemv to
+    improve efficiency (bug #39153)
+  + added functions gsl_stats_spearman and gsl_sort_vector2 to
+    compute Spearman rank correlation
+  + added function gsl_poly_dd_hermite_init for Hermite
+    interpolation
+  + Added support for robust linear least squares
+  + Added function gsl_linalg_SV_leverage for computing
+    statistical leverages from SVD decomposition
+  + Added support for approximating the Jacobian of nonlinear least
+    squares fits using forward finite differences
+  + Extended gsl_sf_coupling_3j to allow larger range and to
+    handle the special case (ja jb jc; 0 0 0)=0 when ja+jb+jc is
+    odd
+  + Fixed gsl_sf_mathieu_se_array to return zero when the order is
+    zero [bug #33679]
+  + Fixed overflow in gsl_sf_lncosh for large negative x (x<-354)
+  + Improved gsl_ran_negative_binomial_pdf to avoid
+    underflow/overflow for large arguments
+  + Multisets now allow k strictly greater than n
+  + Fixed gsl_matrix_complex_fwrite/fread failure for
+    noncontiguous matrices
+
+-------------------------------------------------------------------
+Fri Jun 29 07:10:33 UTC 2012 - coolo@suse.com
+
+- the buildrequire for specific gcc libraries seems unneeded (and broke)
+
+-------------------------------------------------------------------
+Wed Mar 28 18:16:16 CEST 2012 - pth@suse.de
+
+- Remove the unneccessary -fno-strict-aliasing.
+- Replace FSF address in headers by link to the FSF licenses web
+  page.
+- prefix all patch files with a 'gsl-'
+
+-------------------------------------------------------------------
+Tue Feb 28 11:58:37 UTC 2012 - idonmez@suse.com
+
+- Disable FMA support, see the following message for details:
+  http://lists.gnu.org/archive/html/bug-gsl/2011-11/msg00019.html 
+- Still disable %check on i586 because it fails.
+
+-------------------------------------------------------------------
+Sat Feb  4 17:19:18 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections (see specfile guidelines)
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Feb  4 17:13:11 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections (see specfile guidelines)
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:13 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Oct  1 01:08:56 UTC 2011 - crrodriguez@opensuse.org
+
+- Workaround qemu-arm bugs. 
+
+-------------------------------------------------------------------
+Thu Sep 29 08:01:43 UTC 2011 - andrea.turrini@gmail.com
+
+- Made descriptions in gls.spec more readable
+
+-------------------------------------------------------------------
+Sun Jul 17 10:18:18 UTC 2011 - badshah400@gmail.com
+
+- Update to 1.15: New functions, improvements and bug-fixes; see
+  NEWS for full list 
+
+-------------------------------------------------------------------
+Wed Dec  8 08:40:55 UTC 2010 - kkaempf@novell.com
+
+- Update to 1.14
+  Bugfixes, improvements and new functions. See NEWS for full list.	    
+
+-------------------------------------------------------------------
+Mon Dec  6 13:51:36 UTC 2010 - kkaempf@novell.com
+
+- Fix build on non-SUSE distros
+
+-------------------------------------------------------------------
+Mon Dec  6 10:30:41 UTC 2010 - kkaempf@novell.com
+
+- Add pkg-config to BuildRequires so pkgconfig(gsl) gets created
+  as provides of the -devel package
+
+-------------------------------------------------------------------
+Thu Feb 11 17:47:24 CET 2010 - rguenther@suse.de
+
+- Drop all fancy compile flags as long as we need -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Thu Jul 30 17:57:56 CEST 2009 - garloff@suse.de
+
+- Run make check on all archs, relax precision for qawc elist on x86.
+
+-------------------------------------------------------------------
+Thu Jul 30 11:37:34 CEST 2009 - aj@suse.de
+
+- Update to gsl-1.12:
+  * Many bugfixes (see NEWS for full list)
+  * Improvements: faster simplex mininimser gsl_multimin_fminimizer_nmsimplex2,
+    gsl_monte_vegas to avoid catastrophic cancellation,
+  * New functions: gsl_bspline_eval_deriv, new auxiliary functions 
+    gsl_cheb_order, gsl_cheb_size, gsl_cheb_coeffs for Chebyshev series,
+    gsl_vector_complex_{isnonneg,add,sub,mul, div,scale,add_constant} 
+    and gsl_matrix_complex_float_isnonn, gsl_linalg_cholesky_invert
+
+-------------------------------------------------------------------
+Tue Jul 28 15:16:32 CEST 2009 - aj@suse.de
+
+- Fix build - disable html generation which fails.
+
+-------------------------------------------------------------------
+Wed Jan 14 00:09:09 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Fri Aug 22 23:08:44 CEST 2008 - garloff@suse.de
+
+- Update to gsl-1.11:
+  * Bugfixes (underflow in ODE solver, overflow in 
+    gsl_cdf_hypergeometric_{P,Q}, brent_minimiser)
+  * Improvements (asymptotic regime in gsl_sf_bessel_jl,
+    large arguments in cum. distr. functions using incomplete beta
+    function, missing error terms in gsl_sf_exp_mult_e10_e,
+    gsl_sf_hyperg_2F1 now handles x==1, gsl_ldexp and gsl_frexp,
+    gsl_multiroots_test_delta)
+  * Optimizations in gsl_ran_gaussian_ziggurat.
+  * New function gsl_multifit_linear_residuals.
+  * Updated some constants to match CODATA 2006 values.
+- Update to gsl-1.10:
+  * The package license changed from GNU GPL v2 or later to 
+    GNU GPL v3 or later!
+  * Support for generalized eigensystems.
+  * gsl_stats_correlation computes Pearson correlation of two data sets
+  * New functions: gsl_sf_expint(n,x), gsl_{vector,matrix}_isnonneg,
+    gsl_matrix_sub{row,column}
+  * Cholesky routines now handle complex matrices
+  * Many other improvements and additions, see NEWS for a detailed list.
+
+-------------------------------------------------------------------
+Wed Nov  7 11:29:55 CET 2007 - garloff@suse.de
+
+- disable -fstack-protector (we don't want it for HPC code)
+- avoid wrapping assumption sort testcase (gcc-4.3 fix)
+- move make check to %check section
+- require gsl = %{version} from -devel package
+- call install-info in -devel %post/%postun
+- add note on license
+
+-------------------------------------------------------------------
+Mon Apr 16 16:26:33 CEST 2007 - dmueller@suse.de
+
+- run autoreconf
+- fix devel package requires
+- run ldconfig
+
+-------------------------------------------------------------------
+Tue Mar 13 09:16:30 CET 2007 - garloff@suse.de
+
+- Update to gsl-1.9:
+  * Fixed the elliptic integrals F,E,P,D so that they have the 
+    correct behavior for phi > pi/2 and phi < 0.
+  * New BFGS minimisation method gsl_multimin_fdfminimizer_vector_bfgs2
+    based on the algorithm given by R.Fletcher in "Practical Methods
+    of Optimisation" (2nd ed).
+  * Beta functions gsl_sf_beta_e(a,b) and gsl_sf_lnbeta_e(a,b) now
+    handle negative arguments a,b. New function gsl_sf_lnbeta_sgn_e
+    for computing magnitude and sign of negative beta values.
+  * gsl_cheb_eval_mode now uses the same error estimate as
+    gsl_cheb_eval_err.
+  * Improved gsl_sf_legendre_sphPlm_e to avoid underflow with large
+    arguments.
+  * Added updated Knuth generator, gsl_rng_knuthran2002, from 9th
+    printing of "The Art of Computer Programming". See
+    http://www-cs-faculty.stanford.edu/~knuth/news02.htm 
+  * The functions gsl_multifit_fsolver_set, gsl_multifit_fdfsolver_set
+    and gsl_multiroot_fsolver_set, gsl_multiroot_fdfsolver_set now 
+    have a const qualifier for the input vector x.
+  * gsl_sf_expint_E2(x) now returns the correct value 1 for x==0,
+    instead of NaN.
+  * The gsl_ran_gamma function now uses the Marsaglia-Tsang fast gamma
+    method of gsl_ran_gamma_mt by default.
+  * The matrix and vector min/max functions now always propagate any
+    NaNs in their input.
+  * Prevented NaN occuring for extreme parameters in
+    gsl_cdf_fdist_{P,Q}inv and gsl_cdf_beta_{P,Q}inv
+  * Corrected error estimates for the angular reduction functions
+    gsl_sf_angle_restrict_symm_err and gsl_sf_angle_restrict_pos_err.
+  * Corrected an error in the higher digits of M_PI_4 (this was beyond
+    the limit of double precision, so double precision results are not
+    affected).
+  * gsl_root_test_delta now always returns success if two iterates are
+    the same, x1==x0.
+  * A Japanese translation of the reference manual is now available
+    from the GSL webpage at http://www.gnu.org/software/gsl/ thanks to
+    Daisuke TOMINAGA.
+  * Added new functions for basis splines, see the "Basis Splines"
+    chapter in the GSL Reference Manual for details.
+  * Added new functions for testing the sign of vectors and matrices,
+    gsl_vector_ispos, gsl_vector_isneg, gsl_matrix_ispos and
+    gsl_matrix_isneg.
+  * Fixed a bug in gsl_sf_lnpoch_e and gsl_sf_lnpoch_sgn_e which caused
+    the incorrect value 1.0 instead of 0.0 to be returned for x==0.
+  * Fixed cancellation error in gsl_sf_laguerre_n for n > 1e7 so that
+    larger arguments can be calculated without loss of precision.
+  * Improved gsl_sf_zeta_e to return exactly zero for negative even
+    integers, avoiding less accurate trigonometric reduction.
+  * Fixed a bug in gsl_sf_zetam1_int_e where 0 was returned instead of
+    -1 for negative even integer arguments.
+  * When the differential equation solver gsl_odeiv_apply encounters a
+    singularity it returns the step-size which caused the error code from
+    the user-defined function, as opposed to leaving the step-size
+    unchanged.
+  * Added support for nonsymmetric eigensystems
+  * Added Mathieu functions
+
+-------------------------------------------------------------------
+Wed Feb  7 14:05:18 CET 2007 - garloff@suse.de
+
+- -l2h and BuildRequire latex2html for formulas in manual (#242160). 
+
+-------------------------------------------------------------------
+Fri Nov 24 00:39:14 CET 2006 - garloff@suse.de
+
+- -momit-leaf-frame-pointer was only enabled on x86_64 and i386;
+  however, it should have been enabled on all ix86. Fixed.
+
+-------------------------------------------------------------------
+Mon Oct 16 14:57:00 CEST 2006 - garloff@suse.de
+
+- Don't use -ffast-math any more (-ffast-math was enabled on x86, 
+  x86-64) as otherwise we get inexact (8e-8) results with latest
+  compiler for log1p(1e-10), div by zero, SVD.
+
+-------------------------------------------------------------------
+Fri Aug 25 09:22:13 CEST 2006 - garloff@suse.de
+
+- Update to gsl-1.8.
+- Enable make check in build process.
+
+-------------------------------------------------------------------
+Mon Feb 20 12:35:06 CET 2006 - stbinner@suse.de
+
+- make gsl-devel depend on gsl
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 17:37:38 CET 2005 - garloff@suse.de
+
+- Split package into gsl and gsl-devel.
+- Update to gsl-1.7: 
+  * Various speedups, accuracy improvements and fixes.
+
+-------------------------------------------------------------------
+Mon Apr 25 15:23:01 CEST 2005 - coolo@suse.de
+
+- fix library dependencies - at least needed for prelink
+
+-------------------------------------------------------------------
+Mon Jan 31 15:32:11 CET 2005 - ro@suse.de
+
+- adapted to texi2html changes
+
+-------------------------------------------------------------------
+Thu Jan 20 17:51:06 CET 2005 - garloff@suse.de
+
+- Remove -momit-frame-pointer from most archs, the compiler does
+  not support it there.
+
+-------------------------------------------------------------------
+Wed Jan 19 16:20:37 CET 2005 - garloff@suse.de
+
+- Avoid uninitialized variables, and fix a size_t vs. unsigned
+  int issue.
+- Update to gsl-1.6:
+  * Wavelet functions
+  * LQ decomposition
+  * Various bugfixes and minor improvements (SYRK, HERK, 
+    swap_vectors, cheb_eval_n_err, sf_gamma_inc, cspline,
+    akima, ode-initval, sf_psi_1, sf_expint_Ei_e, cdf_beta_X,
+    eigen_jacobi, error stream flushes prior to abort).
+
+-------------------------------------------------------------------
+Sat Aug 21 00:35:29 CEST 2004 - garloff@suse.de
+
+- Fix build on non-x86/x86-64 (no -monit-leaf-frame-pointer).
+- Allow parallel build.
+
+-------------------------------------------------------------------
+Sun Aug 15 01:10:10 CEST 2004 - garloff@suse.de
+
+- Update to version 1.5. 
+- More aggressive compiler optimization flags.
+
+-------------------------------------------------------------------
+Tue May 18 02:18:06 CEST 2004 - ro@suse.de
+
+- use -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Feb 25 15:17:21 CET 2004 - stepan@suse.de
+
+- update to version 1.4
+
+-------------------------------------------------------------------
+Sat Jan 10 11:11:14 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue May 27 14:30:02 CEST 2003 - ro@suse.de
+
+- add pkgconfig file to filelist 
+
+-------------------------------------------------------------------
+Wed Jan 15 23:16:40 CET 2003 - garloff@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Jan 15 22:36:27 CET 2003 - garloff@suse.de
+
+- Update to gsl-1.3:
+  * Fixed gsl_sf_coupling
+  * exponential integral exp(-x)*Ei(x)
+  * many bugfixes
+- Update to gsl-1.2:
+  * new functions for combining permutations etc.
+  * multiroot functions
+  * dflt error handler outputs message before aborting
+  * gsl_linalg_SV_decomp handles exact zeros now
+  * unsymmetric tridiagonal solvers added
+  * bugfixes
+- Update to gsl-1.1.1:
+  * bugfixes
+- Update to gsl-1.1:
+  * permutation copy function
+  * gsl_sf_gamma_inc improved
+  * IEEE handling of FP numbers tested in configure
+  * gsl_histogram_sum
+  * More physical constants (r_B, eps_0)
+  * Knuth's random number generators
+  * bugfixes
+
+-------------------------------------------------------------------
+Fri Jul  5 10:25:04 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Wed May  8 15:51:29 MEST 2002 - garloff@suse.de
+
+- Fix %lib64 issues
+- Remove -freduce-all-givs from compiler flags.
+
+-------------------------------------------------------------------
+Mon Dec 10 02:53:25 MET 2001 - garloff@suse.de
+
+- Creation of gsl-1.0
+- Produce and install HTML docu
+

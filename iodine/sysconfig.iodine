@@ -1,0 +1,21 @@
+## Description: systemd iodine.service configuration file
+## URL: 
+## License: GPL-2.0
+## Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
+## Path: System/iodine
+## Description:	iodine systemd service parameters
+## Type:	string
+## Default:	""
+## ServiceRestart: systemctl restart iodine.service
+#
+# You may provide a password in two ways, via IODINE_PASS, or provide it in IODINE_OPTIONS
+#
+IODINE_PASS=""
+
+## Type:        string
+## Default:     ""
+#
+# Additional parameters for iodine, see the iodine man page for more options.
+# Example option -P PASSWORD NAMESERVER DOMAIN
+#
+IODINE_OPTIONS="-u iodine"

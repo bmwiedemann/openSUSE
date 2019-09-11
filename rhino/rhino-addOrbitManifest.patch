@@ -1,0 +1,39 @@
+diff -up rhino1_7R3/src/manifest.fixManifest rhino1_7R3/src/manifest
+--- rhino1_7R3/src/manifest.fixManifest	2011-05-09 20:04:34.000000000 +0200
++++ rhino1_7R3/src/manifest	2011-09-14 17:46:28.331978606 +0200
+@@ -1,6 +1,31 @@
+ Manifest-Version: 1.0
+ Main-Class: org.mozilla.javascript.tools.shell.Main
+-Implementation-Version: 1.7R2
+-Implementation-Title: Mozilla Rhino 1.7R2
++Implementation-Version: 1.7R3
++Implementation-Title: Mozilla Rhino 1.7R3
+ Implementation-Vendor: Mozilla Foundation
+-Implementation-URL: http://www.mozilla.org/rhino
+\ Chybí znak konce řádku na konci souboru
++Implementation-URL: http://www.mozilla.org/rhino
++Bundle-Vendor: %Bundle-Vendor.0
++Bundle-Localization: plugin
++Bundle-RequiredExecutionEnvironment: J2SE-1.5
++Bundle-Name: %Bundle-Name.0
++Bundle-SymbolicName: org.mozilla.javascript
++Bundle-Version: 1.7.2.v201005080400
++Export-Package: org.mozilla.classfile,org.mozilla.javascript,org.mozil
++ la.javascript.debug,org.mozilla.javascript.jdk13,org.mozilla.javascri
++ pt.jdk15,org.mozilla.javascript.optimizer,org.mozilla.javascript.rege
++ xp,org.mozilla.javascript.serialize,org.mozilla.javascript.tools,org.
++ mozilla.javascript.tools.debugger,org.mozilla.javascript.tools.debugg
++ er.treetable,org.mozilla.javascript.tools.idswitch,org.mozilla.javasc
++ ript.tools.jsc,org.mozilla.javascript.tools.shell,org.mozilla.javascr
++ ipt.xml,org.mozilla.javascript.xml.impl.xmlbeans,org.mozilla.javascri
++ pt.xmlimpl
++Bundle-ManifestVersion: 2
++Import-Package: javax.swing;resolution:=optional,javax.swing.border;re
++ solution:=optional,javax.swing.event;resolution:=optional,javax.swing
++ .filechooser;resolution:=optional,javax.swing.table;resolution:=optio
++ nal,javax.swing.text;resolution:=optional,javax.swing.tree;resolution
++ :=optional,javax.xml.namespace;resolution:=optional,javax.xml.parsers
++ ;resolution:=optional,javax.xml.transform;resolution:=optional,javax.
++ xml.transform.dom;resolution:=optional,javax.xml.transform.stream;res
++ olution:=optional,org.w3c.dom;resolution:=optional,org.xml.sax;resolu
++ tion:=optional

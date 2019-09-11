@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Tue Nov 28 19:20:44 UTC 2017 - sndirsch@suse.com
+
+- Update to release 1.5.4
+  * Open files with O_NOFOLLOW. (CVE-2017-16611, bsc#1050459)
+
+-------------------------------------------------------------------
+Fri Oct 20 13:56:21 UTC 2017 - sndirsch@suse.com
+
+- Update to release 1.5.3
+  * Check for end of string in PatternMatch (CVE-2017-13720)
+  * pcfGetProperties: Check string boundaries (CVE-2017-13722)
+
+-------------------------------------------------------------------
+Tue May 30 10:07:46 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041641)
+  boo#958383, bnc#921978, bnc#857544 (bsc#1041641)
+  CVE-2015-1802, CVE-2015-1803, CVE-2015-1804 (bsc#1041641)
+  CVE-2014-0209, CVE-2014-0210, CVE-2014-0211 (bsc#1041641)
+
+-------------------------------------------------------------------
+Thu Sep 22 13:07:50 UTC 2016 - sndirsch@suse.com
+
+-  Update to release 1.5.2
+   Maintenance branch release, primarily for bdftopcf's benefit as it's
+   the only thing that really needs the Xfont1 API. (xfs uses it too, I
+   believe, but could be ported to Xfont2). If someone wanted to step up
+   and merge Xfont1 into bdtopcf directly, that'd be great.
+- supersedes U_bdfReadCharacters-Allow-negative-DWIDTH-values.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 15:57:08 UTC 2015 - eich@suse.com
+
+- U_bdfReadCharacters-Allow-negative-DWIDTH-values.patch
+  Negative DWIDTH is legal. This was broken by the fix for
+  CVE-2015-1804. Fixed upstream with commit 1a73d6 (boo#958383).
+
+-------------------------------------------------------------------
+Wed Mar 18 09:23:04 UTC 2015 - sndirsch@suse.com
+
+- Update to release 1.5.1
+  * This release of libXfont provides the fixes for the
+    security advisory about BDF font parsing bugs (CVE-2015-1802,
+    CVE-2015-1803, CVE-2015-1804)
+
+-------------------------------------------------------------------
+Mon Jul 21 13:56:20 UTC 2014 - sndirsch@suse.com
+
+- Update to final release 1.5.0
+  * no changes since 1.4.99.901
+
+-------------------------------------------------------------------
+Wed Jul  9 12:24:00 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.4.99.901
+  * This is a release candidate of libXfont 1.5.0 - please test and
+    report any issues found, so we can have a final/stable release
+    soon to go with the xorg-server 1.16 release.
+  * *IMPORTANT* This release works with fontsproto 2.1.3 or later
+    and is for use with the upcoming release of xorg-server 1.16
+    and later.  It will *not* work with older versions of
+    fontsproto or xorg-server (prior to 1.15.99.901).
+  * This release includes all the security & bug fixes from
+    libXfont 1.4.8, plus these additional significant changes:
+    - Support for SNF font format (deprecated since X11R5 in 1991)
+      is now disabled by default at build time.  For now, adding
+      --enable-snfformat to configure flags may re-enable it, but
+      support may be fully removed in future libXfont releases.
+    - Many compiler warnings cleaned up, including some which
+      required API changes around type declarations (const char *,
+      Pointer, etc.).
+    - README file expanded to explain all the different formats/
+      options.
+- supersedes patches:
+  * U_0001-CVE-2014-0209-integer-overflow-of-realloc-size-in-Fo.patch
+  * U_0002-CVE-2014-0209-integer-overflow-of-realloc-size-in-le.patch
+  * U_0003-CVE-2014-0210-unvalidated-length-in-_fs_recv_conn_se.patch
+  * U_0004-CVE-2014-0210-unvalidated-lengths-when-reading-repli.patch
+  * U_0005-CVE-2014-0211-Integer-overflow-in-fs_get_reply-_fs_s.patch
+  * U_0006-CVE-2014-0210-unvalidated-length-fields-in-fs_read_q.patch
+  * U_0007-CVE-2014-0211-integer-overflow-in-fs_read_extent_inf.patch
+  * U_0008-CVE-2014-0211-integer-overflow-in-fs_alloc_glyphs.patch
+  * U_0009-CVE-2014-0210-unvalidated-length-fields-in-fs_read_e.patch
+  * U_0010-CVE-2014-0210-unvalidated-length-fields-in-fs_read_g.patch
+  * U_0011-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+  * U_0012-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+- added baselibs.conf as source to spec file
+
+-------------------------------------------------------------------
+Mon May 19 13:33:08 UTC 2014 - msrb@suse.com
+
+- U_0001-CVE-2014-0209-integer-overflow-of-realloc-size-in-Fo.patch,
+  U_0002-CVE-2014-0209-integer-overflow-of-realloc-size-in-le.patch,
+  U_0003-CVE-2014-0210-unvalidated-length-in-_fs_recv_conn_se.patch,
+  U_0004-CVE-2014-0210-unvalidated-lengths-when-reading-repli.patch,
+  U_0005-CVE-2014-0211-Integer-overflow-in-fs_get_reply-_fs_s.patch,
+  U_0006-CVE-2014-0210-unvalidated-length-fields-in-fs_read_q.patch,
+  U_0007-CVE-2014-0211-integer-overflow-in-fs_read_extent_inf.patch,
+  U_0008-CVE-2014-0211-integer-overflow-in-fs_alloc_glyphs.patch,
+  U_0009-CVE-2014-0210-unvalidated-length-fields-in-fs_read_e.patch,
+  U_0010-CVE-2014-0210-unvalidated-length-fields-in-fs_read_g.patch,
+  U_0011-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch,
+  U_0012-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+  * Security fixes. (CVE-2014-0209, CVE-2014-0210, CVE-2014-0211,
+    bnc#857544)
+
+-------------------------------------------------------------------
+Tue Mar 18 14:24:59 UTC 2014 - sndirsch@suse.com
+
+- update to current git commit a96cc1f to match current fontsproto
+  git sources
+
+-------------------------------------------------------------------
+Wed Jan  8 09:51:40 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.4.7
+  This release includes the fix for CVE-2013-6462, as well as
+  other security hardening and code cleanups, and makes libXfont
+  compatible with libXtrans 1.3 on Solaris. (bnc#854915)
+
+-------------------------------------------------------------------
+Sat Aug 17 22:04:16 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.4.6:
+  + Require ANSI C89 pre-processor, drop pre-C89 token pasting
+    support.
+  + Protect config.h inclusion with ifdef HAVE_CONFIG_H, like
+    usual.
+  + Replace deprecated Automake INCLUDES variable with AM_CPPFLAGS.
+  + autogen.sh: Implement GNOME Build API.
+  + configure: Remove AM_MAINTAINER_MODE.
+  + catalogue: Fix obvious thinko.
+  + Omit catalogue support on systems without symlinks.
+  + If socket is interrupted with signal EINTR, re-attempt read.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Thu Apr 12 06:24:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.4.5:
+  + Updates to better handle fonts compressed with compress(1)
+  + Do proper input validation to fix for CVE-2011-2895
+  + Fix crash if pcf header is corrupted
+  + Cleanups for compiler warnings
+  + Improvements for the developer documentation
+  + Build configuration improvements
+- Changes from version 1.4.4:
+  + LZW decompress: fix for CVE-2011-2895
+  + Fix memory leak
+  + Build configuration improvements
+- Drop U_libXfont_LZW-decompress-fix-for-CVE-2011-2895.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

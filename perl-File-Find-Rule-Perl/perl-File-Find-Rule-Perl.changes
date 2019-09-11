@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu May  7 07:13:18 UTC 2015 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-File-Find-Rule-Perl/Changes
+
+  1.15    2015-04-05
+          - fix tests from 1.14 release
+  
+  1.14    2015-04-05
+          - fix tests for ExtUtils::MakeMaker 7.05_* (ETHER)
+          - use warnings in module and tests
+          - switch off of Module::Install again
+  
+  1.13 Wed 30 Oct 2012
+  	- Updating Module::Install (ADAMK)
+  
+  1.12 Mon 31 Oct 2011
+  	- Ignore debian directory in tests (ADAMK)
+  	- Ignore all dot dirs in tests (ADAMK)
+  
+  1.11 Mon 31 Oct 2011
+  	- Updating to Module::Install::DSL 1.04 (ADAMK)
+          - Skip MYMETA.json too (CHORNY)
+  	- Do not import from Params::Util (ADAMK)
+
+-------------------------------------------------------------------
+Sat Jan 22 20:16:27 UTC 2011 - coolo@novell.com
+
+- initial package 1.10
+  * created by cpanspec 1.78.03
+

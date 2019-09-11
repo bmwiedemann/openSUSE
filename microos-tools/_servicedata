@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/kubic-project/microos-tools.git</param>
+    <param name="changesrevision">6211f74e41dcf26b46cd0484d784ecb9e23de72f</param>
+ </service>
+</servicedata>

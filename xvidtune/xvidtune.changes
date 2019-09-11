@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Jan 19 11:09:06 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Remove unneeded second declaration of buf that shadows the
+    first.
+  + man: remove trailing spaces and tabs.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR
+    - Move man pages into their own directory.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Remove unrequired AC_SUBST([*_LIBS]).
+    - Remove unrequired AC_SUBST([*_CFLAGS]).
+    - Remove AC_PROG_CC as it overrides AC_PROG_C_C99.
+    - Use AC_PROG_INSTALL now supplied by XORG_DEFAULT_OPTIONS.
+    - Upgrade to util-macros 1.8 for additional man page support.
+    - Update AC_PREREQ statement to 2.60.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xvidtune from xorg-x11. Initial version: 1.0.2.
+

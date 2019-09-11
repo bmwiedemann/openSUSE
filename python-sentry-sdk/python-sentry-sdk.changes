@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Aug 16 21:37:16 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.11.0
+  - mostly bug fixes
+  - integration with SQLAlchemy and Apache Beam
+
+-------------------------------------------------------------------
+Mon Aug 12 14:19:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Run tests
+
+-------------------------------------------------------------------
+Fri Aug  9 22:36:25 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Set BuildArch to noarch.
+
+-------------------------------------------------------------------
+Fri Aug  9 22:30:15 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.10.2.
+
+-------------------------------------------------------------------
+Fri Jun  7 10:19:06 UTC 2019 - ecsos@opensuse.org
+
+- initial version 0.9.0

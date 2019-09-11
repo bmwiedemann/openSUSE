@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-07-04 13:53:32.386698982 +0200
+
+Build all own programs exclusively with libldap_r and not libldap.
+
+References: http://bugzilla.redhat.com/1370065
+References: http://bugzilla.opensuse.org/996551
+---
+ build/top.mk |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: openldap-2.4.45/build/top.mk
+===================================================================
+--- openldap-2.4.45.orig/build/top.mk
++++ openldap-2.4.45/build/top.mk
+@@ -171,7 +171,7 @@ LDAP_LIBLUNICODE_A = $(LDAP_LIBDIR)/libl
+ LDAP_LIBLUTIL_A = $(LDAP_LIBDIR)/liblutil/liblutil.a
+ 
+ LDAP_L = $(LDAP_LIBLUTIL_A) \
+-	$(LDAP_LIBLDAP_LA) $(LDAP_LIBLBER_LA)
++	$(LDAP_LIBLDAP_R_LA) $(LDAP_LIBLBER_LA)
+ SLAPD_L = $(LDAP_LIBLUNICODE_A) $(LDAP_LIBREWRITE_A) \
+ 	$(LDAP_LIBLUTIL_A) $(LDAP_LIBLDAP_R_LA) $(LDAP_LIBLBER_LA)
+ 

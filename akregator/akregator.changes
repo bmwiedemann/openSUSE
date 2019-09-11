@@ -1,0 +1,574 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:29:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 19 08:24:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:32 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * i18n: use rc.cpp for extra sources
+  * [articleviewerwebengine] Reinstate crash "workaround" for Qt 5.13 (kde#371511)
+  * Bug 398516 - UI - Akregator comments section font seems to be hard coded. Font is tiny on a 4k monitor (kde#398516)
+- Dropped patches, now upstream:
+  * Reinstate-crash-workaround-for-Qt-5.13.patch
+
+-------------------------------------------------------------------
+Thu Jul  4 16:39:46 UTC 2019 - wbauer@tmo.at
+
+- Add Reinstate-crash-workaround-for-Qt-5.13.patch to fix possible
+  crashes when opening/closing tabs with Qt 5.13 too (kde#371511)
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Fix crashes with Qt 5.12 (kde#371511)
+  * Add DesktopEntry to notifyrc
+- Dropped patches, now upsteam:
+  * Fix-crashes-with-Qt-5.12.patch
+
+-------------------------------------------------------------------
+Tue May 21 16:28:53 UTC 2019 - wbauer@tmo.at
+
+- Add Fix-crashes-with-Qt-5.12.patch to fix possible crashes when
+  opening/closing tabs (kde#371511)
+
+-------------------------------------------------------------------
+Fri May 10 05:37:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Fix Bug 394946 - Delete key no longer works in articles list after using search - keyboard focus stays in search field (kde#394946)
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Make sure to copy imported file from tmp to localdata directory
+  * Fix Bug 402132 - Make it more obvious that the search didn't find anything (kde#402132)
+  * Fix Bug 402639 - akregator doesn't know how to deal with "/tmp/mozilla_user0/0ZFsmr25.atom" (kde#402639)
+  * Don't crash with Qt 5.11+ (kde#371511)
+- Removed patches, now upstream:
+  * Dont-crash-with-Qt-5.11.patch
+
+-------------------------------------------------------------------
+Sat Dec 15 16:02:57 UTC 2018 - wbauer@tmo.at
+
+- Add Dont-crash-with-Qt-5.11.patch to fix possible crashes when
+  opening and closing webpages in Akregator (boo#1118052,
+  kde#371511)
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Zoom is not implemented so remove it from the settings
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:47 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:26 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Fix Bug 398162 - Current blog scaling not applied on next/previous blog (kde#398162)
+
+-------------------------------------------------------------------
+Sat Sep  1 09:22:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Remove unused WebKitWidgets dependency
+
+-------------------------------------------------------------------
+Thu Aug 16 22:00:01 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Jul 28 22:48:51 UTC 2018 - wbauer@tmo.at
+
+- Build with gcc7 on Leap 42.3, it doesn't compile with 4.8 anymore
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:24 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:32 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:40 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Fix going to prev/next article with keyboard when using load full website
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:32 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:40 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:50:56 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Apply patch from mgannon (kde#381929)
+  * Don't call it twice
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:53 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:35 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Revert this changes. We can add KDEPIM_DEV_VERSION so I don't understand why it was removed. Or it was necessary to remove KDEPIM_DEV_VERSION. but it always used
+
+-------------------------------------------------------------------
+Mon Nov 20 06:55:28 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:41 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Do not remove read messages from the unread filter immediately (kde#350731)
+  * When backing up feeds.opml, remove any existing backup first
+  * [akregator] Make sure part is created before main windows is restored (kde#381822, kde#378513, kde#381825, kde#377129)
+- Drop patches, now upstream:
+  * make-sure-part-is-created.patch
+
+-------------------------------------------------------------------
+Mon Sep 11 18:01:26 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix various crashes (kde#381822, kde#378513,
+  kde#381825, kde#377129):
+  * make-sure-part-is-created.patch
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:10 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Don"t change messageviewer setting here. We don"t need to do it here
+  * Fix Bug 383380 - Duplicate overwrite warning when exporting feeds (kde#383380)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:47 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:27 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:58:51 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * frame/framemanager.cpp - crash guard if we don't have a current frame yet
+  * akregator_part.cpp - add a crash guard in case the mainWidget isn't set yet BUG: 38416 (kde#38416)
+- Drop upstreamed patches:
+  * fix-crash-if-no-current-frame.patch
+  * fix-crash.patch
+
+-------------------------------------------------------------------
+Thu Jul  6 19:53:26 UTC 2017 - wbauer@tmo.at
+
+- Add fix-crash-if-no-current-frame.patch to fix another possible
+  crash (kde#381241)
+
+-------------------------------------------------------------------
+Thu Jul  6 12:10:33 UTC 2017 - wbauer@tmo.at
+
+- Add fix-crash.patch to fix a possible crash on start (kde#381416)
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:39 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:35:30 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Keep cookies
+  * Don't complexify code for creating path
+  * Fix Bug 378757 - Archive: Archive folder not created if missing, articles not saved (kde#378757)
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Don't complexify code for creating path
+  * Fix Bug 378757 - Archive: Archive folder not created if missing, articles not saved (kde#378757)
+  * Use nullptr
+  * Use QFileInfo::exists()
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:10 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Astyle kdelibs
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:05 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:33:21 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Sat Feb 11 13:24:04 UTC 2017 - jengelh@inai.de
+
+- Update description with text from Debian
+
+-------------------------------------------------------------------
+Thu Feb  9 06:39:07 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:48:25 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Fri Dec 16 10:16:12 UTC 2016 - lbeltrame@kde.org
+
+- Add ExclusiveArch to prevent building on platforms without
+  QWebEngine like ppc
+
+-------------------------------------------------------------------
+Tue Dec 13 19:27:56 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Thu Dec  8 08:31:48 UTC 2016 - lbeltrame@kde.org
+
+- Adjust license to GPL-2.0+ as pointed out by legal review
+
+-------------------------------------------------------------------
+Sat Dec  3 15:55:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:16:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Sun Nov 27 12:27:08 UTC 2016 - tittiatcoke@gmail.com
+
+- Update spec-files to be consistent wiht KA
+
+-------------------------------------------------------------------
+Fri Nov 25 18:11:44 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial package based on KDE Apps 16.12 Beta (16.11.80)
+  + Split of kdepim
+

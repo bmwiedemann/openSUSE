@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Sat Apr  6 12:04:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future visions from descriptions.
+
+-------------------------------------------------------------------
+Tue Apr  2 09:24:03 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- Update to SuiteSparse 5.4.0
+  * GraphBLAS 2.2.2: many upgrades and new features, a few bug fixes
+- Update to SuiteSparse 5.3.0
+  * new package: Mongoose (version 2.0.2)
+- doc packages for AMD, CAMD, KLU, LDL, and Mongoose.
+
+-------------------------------------------------------------------
+Wed Mar 20 23:23:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove openmpi BuildRequires, all SuiteSparse libraries are MPI
+  agnostic.
+
+-------------------------------------------------------------------
+Wed Jun 27 00:38:48 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix conditional to select the right gcc-c++ package, also for the
+  devel subpackge
+
+-------------------------------------------------------------------
+Mon Feb 26 19:58:00 UTC 2018 - toddrme2178@gmail.com
+
+- Update to SuiteSparse 5.2.0
+  * GraphBLAS 2.0.1: bug fix to GxB_kron
+  * SuiteSparse_config: corrected back to SO_VERSION 5
+  * GraphBLAS 2.0.0: with changes to API to conform to the latest
+    specification.  The SO_VERSION of GraphBLAS must change,
+    as a result, since this affects both the ABI and API interface.
+  * CHOLMOD 3.1.12: bug fix (no change to the CHOLMOD ABI or API)
+  * KLU 1.3.9: minor edit, not a bug fix, but code is more clear now
+- Update to SuiteSparse 5.1.2
+  * improved build process for GraphBLAS
+  * minor change to CSparse/Lib/Makefile, no change in CSparse version
+- Update to SuiteSparse 5.1.1
+  * GraphBLAS added to top-level SuiteSparse/Makefile
+  * GraphBLAS 1.1.1: bug fix to *assign, split AxB for faster compile,
+    added memory usage statistics, AxB performance improvment
+  * minor update to [AMD CAMD KLU]/Doc/Makefile's, no change to
+    version numbers of AMD, CAMD, or KLU
+- Update to SuiteSparse 5.1.0
+  * GraphBLAS 1.1.0
+  * minor update to SPQR Makefile (version remains unchanged;
+    no change to source)
+- Update to SuiteSparse 5.0.0
+  * added GraphBLAS Version 1.0.0
+  * replaced UFget with ssget
+- Use build-in build system instead of manually building everything
+- Simplify spec file
+- Add build_csparse_shared.patch to build CSparse as a shared library
+
+-------------------------------------------------------------------
+Wed Feb 14 10:36:16 UTC 2018 - schwab@suse.de
+
+- Make openblas optional, using lapack instead
+
+-------------------------------------------------------------------
+Mon Oct 16 13:53:59 UTC 2017 - dimstar@opensuse.org
+
+- Fix csparselib define: libcsparse-%{csparseso}. This results in
+  the (wrongly named) package libcsparsever-3_1_9 being renamed to
+  libcsparse-3_1_9, matching the content of the package. The old
+  name is, exceptionally, obsoleted by the new package name (not
+  provided, as nothing but the -devel package should ever have
+  referenced the package by name). The obsolete is guarded to no
+  longer apply, should the version change.
+
+-------------------------------------------------------------------
+Mon Jul 10 23:33:01 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+- Trim pointless trailing line whitespace from descriptions.
+  % must be encoded as %%.
+- Trim past-time history from suistesparse_config description.
+
+-------------------------------------------------------------------
+Sun Jun 11 01:49:03 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 4.5.5
+  * minor fix to SuiteSparse/Makefile for 'make install'
+- Update to version 4.5.4
+  * minor update to SPQR for ACM TOMS submission
+- Update to version 4.5.3
+  * minor changes to Makefiles
+- Update to version 4.5.2
+  * licensing simplified (no other change); refer to PACKAGE/Doc/License.txt
+    for the license for each package.
+- Update to version 4.5.1
+  * update to Makefiles.  Version 4.5.0 is broken on the Mac.
+	That version also compiles *.so libraries on Linux with
+	underlinked dependencies to other libraries in SuiteSparse.
+	For example, AMD requires SuiteSparse_config.  The links to
+	required libraries are now explicitly included in each library,
+	in SuiteSparse 4.5.1.
+  * minor change to CHOLMOD/Check/cholmod_write.c, when compiling with
+	options that disable specific modules
+- Update to version 4.5.0
+  * better Makefiles for creating and installing shared libraries
+  * CHOLMOD now uses METIS 5.1.0, which is distributed with SuiteSparse
+  * fix for MATLAB R2015b, which changed how it creates empty matrices,
+	as compared to prior versions of MATLAB.  This change in MATLAB
+	breaks many of the mexFunctions in prior versions of SuiteSparse.
+	If you use MATLAB R2015b, you must upgrade to SuiteSparse 4.5.0
+	or later.
+- Update to version 4.4.7
+  * note that this minor update fails on the Mac, so its
+    listed on my web page as a 'beta' release.
+  * Improved the Makefiles of all packages.  They now create *.so
+    shared libraries (*.dylib on the Mac).  Also, there is now
+    only a single SuiteSparse_config.mk file.  It now determines
+    your system automatically, and whether or not you have METIS
+    and CUDA.  It also automatically detects if you have the Intel
+    compiler or not, and uses it if it finds it.  There should be
+    no need to edit this file for most cases, but you may need to
+    for your particular system.  With this release, there are almost
+    no changes to the source code, except for the VERSION numbers
+    defined in the various include *.h files for each package.
+- Use faster openblas.
+  * Remove blas-instead-of-openblas-SuiteSparse_config_mk.patch
+- Remove upstream-included no-removal-of-suitesparse_config-output.patch
+
+-------------------------------------------------------------------
+Sat Dec  5 13:40:52 UTC 2015 - foss@grueninger.de
+
+- Update to version 4.4.6
+  * SPQR 2.0.2: changed default tol when A has infs, from inf to realmax (~1e308)
+
+-------------------------------------------------------------------
+Wed Nov 18 21:43:05 UTC 2015 - foss@grueninger.de
+
+- Package forgotten C++ includes (*.hpp), too.
+- Adjust download link
+
+-------------------------------------------------------------------
+Wed Sep 23 08:26:49 UTC 2015 - foss@grueninger.de
+
+- Update to version 4.4.5
+  + CHOLMOD 3.0.6:
+    * minor fix to CHOLMOD (-DNGPL did not work as expected)
+    * added MATLAB interface for row add/delete (lurowmod)
+  + KLU 1.3.3: Fix for klu_dump.c (debugging case only)
+  + UFcollection:  added additional stats for matrix collection
+  + AMD: changed the license.  Was LGPL only, now either LGPL or BSD,
+    at the user's option.  See AMD/Doc/License.txt for details.
+
+-------------------------------------------------------------------
+Wed Apr  1 11:57:58 UTC 2015 - foss@grueninger.de
+
+- Update to version 4.4.4
+  + CHOLMOD version number corrected.  In 4.4.3, the CHOLMOD_SUBSUB_VERSION
+    string was left at '4' (it should have been '5', for CHOLMOD 3.0.5).
+    This version of SuiteSparse corrects this glitch.
+  + Minor changes to comments in SuiteSparse_config.
+  + SPQR version 2.0.1 released (minor update to documentation)
+
+-------------------------------------------------------------------
+Tue Jan 27 11:18:35 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix linking config
+- Add linking tests
+
+-------------------------------------------------------------------
+Tue Jan 20 19:27:14 UTC 2015 - foss@grueninger.de
+
+- Update to version 4.4.3
+  + CHOLMOD 3.0.5: minor bug fix to MatrixOps/cholmod_symmetry
+- Update to version 4.4.2
+  + CHOLMOD 3.0.4: serious bug fix in supernodal factorization,
+	introduced in CHOLMOD 3.0.0 (SuiteSparse 4.3.0).  Can cause segfault,
+	and has no user workaround.
+- Upstream SuiteSparse preferes OpenBLAS, added patch
+    blas-instead-of-openblas-SuiteSparse_config_mk.patch
+  to use BLAS as SuiteSparse 4.4.1 did
+
+-------------------------------------------------------------------
+Mon Nov 10 06:30:46 UTC 2014 - foss@grueninger.de
+
+- Update to version 4.4.1
+  + Minor update:  two bug fixes (affecting Windows only) for
+    CHOLMOD and KLU
+
+-------------------------------------------------------------------
+Wed Oct 22 14:19:33 UTC 2014 - foss@grueninger.de
+
+- Update to version 4.4.0
+  + (added GPU acceleration to CHOLMOD and SPQR.  Up to 10x faster
+    than a multicore CPU.) Not yet working in the package
+  + changed to a consistent method for all of SuiteSparse, for
+    malloc/calloc/realloc, and printf, using SuiteSparse_config.
+
+-------------------------------------------------------------------
+Sun Jun 22 06:49:20 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix libraries linking [bnc#883683]
+
+-------------------------------------------------------------------
+Sun Nov 10 16:14:00 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 4.2.1
+  + no changelog available
+- Fix Groups to respect new standards
+
+-------------------------------------------------------------------
+Fri Nov  2 15:50:19 UTC 2012 - jengelh@inai.de
+
+- shlib naming: libsuitesparseconfig-4_0_2, not -4.0.2
+
+-------------------------------------------------------------------
+Thu Aug 23 16:07:47 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- need to escape % in comments -- Fedora builds choked on them 
+
+-------------------------------------------------------------------
+Thu Aug 16 19:33:14 UTC 2012 - i@marguerite.su
+
+- also re-fix bnc#746867:
+  * cholmod from suitesparse should be GPL-2.0 and/or LGPL-2.0 licensed
+
+-------------------------------------------------------------------
+Wed Aug 15 02:51:27 UTC 2012 - i@marguerite.su
+
+- fix bnc#775418: SuiteSparse does not ship library which contains
+the symbol SuiteSparse_time
+  * it's because latest SuiteSparse prefers NTIMER.(try to depreciate)
+    so when there's NTIMER avaiable, tic/toc will not be enabled.
+  * easy solution is to use "-lSuiteSparse" in the UMFPACK_LIBS 
+    variable in the affected packages like Octave.
+  * but this seems to affect many packages in science repo, so I 
+    just add a patch comment #IF NTIMER off.
+  * http://comments.gmane.org/gmane.comp.gnu.octave.general/42837
+- add sub-package libsuitesparse_config which is formly known as UFconfig.
+  * also add provides/obsoltes of UFconfig.
+  * add patch0 to prevent removal of .o after .a is built.
+    we still need .o to make shared libsuitesparseconfig.so
+
+-------------------------------------------------------------------
+Tue Jul 31 17:57:45 UTC 2012 - i@marguerite.su
+
+- Update to version 4.0.2
+  * no changelog available.
+
+-------------------------------------------------------------------
+Wed Jun  6 12:05:34 UTC 2012 - i@marguerite.su
+
+- fix bnc#751746.
+
+-------------------------------------------------------------------
+Mon Jun  4 13:45:07 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 4.0.0. Major changes:
+  * added GPU support for CHOLMOD
+  * Renamed UFconfig to SuiteSparse_config
+- Fix licenses (some libraries are LGPL-2.1+, some are GPL-2.0+,
+  and one is both).
+- Change descriptions to upstream versions
+- Build csparse package
+- Clean up spec file
+  * Remove hard-coded library versions everywhere.  Each library
+    version only needs to be changed in two places, which are right
+    next to each other
+- Move README to -devel package and remove now-empty base package
+- Changed group to match lapack/blas group (which this package is
+  essentially an extension of)
+
+-------------------------------------------------------------------
+Sun Feb 19 06:41:09 UTC 2012 - i@marguerite.su
+
+- fix timestamp error in changelog, dont know why it omit zero in
+  time format.
+
+-------------------------------------------------------------------
+Sat Feb 18 16:15:32 UTC 2012 - jengelh@medozas.de
+
+- add rpmlintrc to shut up false positives (after inquiry by
+  MargueriteSu)
+
+-------------------------------------------------------------------
+Fri Feb 17 14:01:01 UTC 2012 - i@marguerite.su
+
+- fix libraries version tags of suitesparse-devel requires. 
+
+-------------------------------------------------------------------
+Wed Feb 15 07:36:47 UTC 2012 - i@marguerite.su
+
+- fix bug#746867. cholmod is licensed under GPL-2.0 and LGPL-2.0 only,
+  GPL-2.0 only prevents other components to be licensed under a high
+  version of the same license.
+
+-------------------------------------------------------------------
+Tue Feb  7 17:10:48 UTC 2012 - jengelh@medozas.de
+
+- Apply shared library policy
+  http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
+
+-------------------------------------------------------------------
+Sat Feb  4 11:38:15 UTC 2012 - i@marguerite.su
+
+- update to version 3.7.0
+
+-------------------------------------------------------------------
+Sun Dec 21 00:00:00 UTC 2011 - coyoteuser@gmail.com
+
+- updated to latest version 3.2.0
+- added gcc4.3.2 fix for spqr.hpp
+- changed source to bz2 archive
+
+-------------------------------------------------------------------
+Mon Dec  8 00:00:00 UTC 2008 - coyoyeuser@gmail.com
+
+- Initial release

@@ -1,0 +1,298 @@
+From 4c38389917a54e137a4578b45f0f6a821c8c591a Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Wed, 5 Dec 2018 15:03:19 +0100
+Subject: [PATCH 1/3] pam_slurm_adopt: avoid running outside of the sshd PAM
+ service context
+
+This pam module is tailored towards running in the context of remote ssh
+logins. When running in a different context like a local sudo call then
+the module could be influenced by e.g. passing environment variables
+like SLURM_CONF.
+
+By limiting the module to only perform its actions when running in the
+sshd context by default this situation can be avoided. An additional pam
+module argument service=<service> allows an Administrator to control
+this behaviour, if different behaviour is explicitly desired.
+
+Signed-off-by: Christian Goll <cgoll@suse.de>
+---
+ contribs/pam_slurm_adopt/README            | 172 ++++++++++++++++++++++++++++-
+ contribs/pam_slurm_adopt/pam_slurm_adopt.c |  46 ++++++++
+ 2 files changed, 217 insertions(+), 1 deletion(-)
+
+diff --git a/contribs/pam_slurm_adopt/README b/contribs/pam_slurm_adopt/README
+index 07039740f8..8baece6d2e 100644
+--- a/contribs/pam_slurm_adopt/README
++++ b/contribs/pam_slurm_adopt/README
+@@ -1,5 +1,175 @@
+ Current documentation can be found here:
+ 
+ 	https://slurm.schedmd.com/pam_slurm_adopt.html
+-
+ (Which is generated from docs/html/pam_slurm_adopt.shtml.)
++
++=======
++AUTHOR
++  Ryan Cox <ryan_cox@byu.edu>
++
++MODULE TYPES PROVIDED
++  account
++
++DESCRIPTION
++  This module attempts to determine the job which originated this connection.
++  The module is configurable; these are the default steps:
++
++  1) Check the local stepd for a count of jobs owned by the non-root user
++    a) If none, deny (option action_no_jobs)
++    b) If only one, adopt the process into that job
++    c) If multiple, continue
++  2) Determine src/dst IP/port of socket
++  3) Issue callerid RPC to slurmd at IP address of source
++    a) If the remote slurmd can identify the source job, adopt into that job
++    b) If not, continue
++  4) Pick a random local job from the user to adopt into (option action_unknown)
++
++  Jobs are adopted into a job's allocation step.
++
++MODULE OPTIONS
++This module has the following options (* = default):
++
++    ignore_root - By default, all root connections are ignored. If the RPC
++                  is sent to a node which drops packets to the slurmd port, the
++                  RPC will block for some time before failing. This is
++                  unlikely to be desirable. Likewise, root may be trying to
++                  administer the system and not do work that should be in a job.
++                  The job may trigger oom-killer or just exit. If root restarts
++                  a service or similar, it will be tracked and killed by Slurm
++                  when the job exits. This sounds bad because it is bad.
++
++        1* = Let the connection through without adoption
++        0  = I am crazy. I want random services to die when root jobs exit. I
++             also like it when RPCs block for a while then time out.
++
++
++    action_no_jobs - The action to perform if the user has no jobs on the node
++
++        ignore = Do nothing. Fall through to the next pam module
++        deny*  = Deny the connection
++
++
++    action_unknown - The action to perform when the user has multiple jobs on
++                     the node *and* the RPC does not locate the source job.
++                     If the RPC mechanism works properly in your environment,
++                     this option will likely be relevant *only* when connecting
++                     from a login node.
++
++        newest* = Pick the newest job on the node. The "newest" job is chosen
++                  based on the mtime of the job's step_extern cgroup; asking
++                  Slurm would require an RPC to the controller. The user can ssh
++                  in but may be adopted into a job that exits earlier than the
++                  job they intended to check on. The ssh connection will at
++                  least be subject to appropriate limits and the user can be
++                  informed of better ways to accomplish their objectives if this
++                  becomes a problem
++        allow   = Let the connection through without adoption
++        deny    = Deny the connection
++
++
++    action_adopt_failure - The action to perform if the process is unable to be
++                           adopted into any job for whatever reason. If the
++                           process cannot be adopted into the job identified by
++                           the callerid RPC, it will fall through to the
++                           action_unknown code and try to adopt there. A failure
++                           at that point or if there is only one job will result
++                           in this action being taken.
++
++        allow* = Let the connection through without adoption
++        deny   = Deny the connection
++
++    action_generic_failure - The action to perform if there are certain failures
++			     such as the inability to talk to the local slurmd
++			     or if the kernel doesn't offer the correct
++			     facilities.
++
++        ignore* = Do nothing. Fall through to the next pam module
++        allow   = Let the connection through without adoption
++        deny    = Deny the connection
++
++    log_level - See SlurmdDebug in slurm.conf(5) for available options. The
++                default log_level is info.
++
++    disable_x11 - turn off Slurm built-in X11 forwarding support.
++
++        1  = Do not check for Slurm's X11 forwarding support, and no not
++             alter the DISPLAY variable.
++        0* = If the step the job is adopted into has X11 enabled, set
++             the DISPLAY variable in the processes environment accordingly.
++
++    service - The pam service name for which this module should run. By default
++              it only runs for sshd for which it was designed for. A
++              different service name can be specified like "login" or "*" to
++              allow the module to in any service context. For local pam logins
++              this module could cause unexpected behaviour or even security
++              issues. Therefore if the service name does not match then this
++              module will not perform the adoption logic and returns
++              PAM_IGNORE immediately.
++
++SLURM.CONF CONFIGURATION
++  PrologFlags=contain must be set in slurm.conf. This sets up the "extern" step
++  into which ssh-launched processes will be adopted.
++
++                       **** IMPORTANT ****
++  PrologFlags=contain must be in place *before* using this module.
++  The module bases its checks on local steps that have already been launched. If
++  the user has no steps on the node, such as the extern step, the module will
++  assume that the user has no jobs allocated to the node. Depending on your
++  configuration of the pam module, you might deny *all* user ssh attempts.
++
++NOTES
++  This module and the related RPC currently support Linux systems which
++  have network connection information available through /proc/net/tcp{,6}.  A
++  proccess's sockets must exist as symlinks in its /proc/self/fd directory.
++
++  The RPC data structure itself is OS-agnostic.  If support is desired for a
++  different OS, relevant code must be added to find one's socket information
++  then match that information on the remote end to a particular process which
++  Slurm is tracking.
++
++  IPv6 is supported by the RPC data structure itself and the code which sends it
++  and receives it.  Sending the RPC to an IPv6 address is not currently
++  supported by Slurm.  Once support is added, remove the relevant check in
++  slurm_network_callerid().
++
++  For the action_unknown=newest setting to work, the memory cgroup must be in
++  use so that the code can check mtimes of cgroup directories. If you would
++  prefer to use a different subsystem, modify the _indeterminate_multiple
++  function.
++
++FIREWALLS, IP ADDRESSES, ETC.
++  slurmd should be accessible on any IP address from which a user might launch
++  ssh. The RPC to determine the source job must be able to reach the slurmd
++  port on that particular IP address.
++
++  If there is no slurmd on the source node, such as on a login node, it is
++  better to have the RPC be rejected rather than silently dropped.  This
++  will allow better responsiveness to the RPC initiator.
++
++EXAMPLES / SUGGESTED USAGE
++  Use of this module is recommended on any compute node.
++
++  Add the following line to the appropriate file in /etc/pam.d, such as
++  system-auth or sshd:
++
++    account    sufficient     pam_slurm_adopt.so
++
++  If you always want to allow access for an administrative group (e.g. wheel),
++  stack the pam_access module after pam_slurm_adopt. A success with
++  pam_slurm_adopt is sufficient to allow access but the pam_access module can
++  allow others, such as staff, access even without jobs.
++
++    account    sufficient   pam_slurm_adopt.so
++    account    required     pam_access.so
++
++
++  Then edit the pam_access configuration file (/etc/security/access.conf):
++
++    +:wheel:ALL
++    -:ALL:ALL
++
++  When access is denied, the user will receive a relevant error message.
++
++  pam_systemd.so is known to not play nice with Slurm's usage of cgroups. It is
++  recommended that you disable it or possibly add pam_slurm_adopt.so after
++  pam_systemd.so.
+diff --git a/contribs/pam_slurm_adopt/pam_slurm_adopt.c b/contribs/pam_slurm_adopt/pam_slurm_adopt.c
+index 51f21e8729..dccad90185 100644
+--- a/contribs/pam_slurm_adopt/pam_slurm_adopt.c
++++ b/contribs/pam_slurm_adopt/pam_slurm_adopt.c
+@@ -94,6 +94,7 @@ static struct {
+ 	log_level_t log_level;
+ 	char *node_name;
+ 	bool disable_x11;
++	char *pam_service;
+ } opts;
+ 
+ static void _init_opts(void)
+@@ -107,6 +108,7 @@ static void _init_opts(void)
+ 	opts.log_level = LOG_LEVEL_INFO;
+ 	opts.node_name = NULL;
+ 	opts.disable_x11 = false;
++	opts.pam_service = NULL;
+ }
+ 
+ static slurm_cgroup_conf_t *slurm_cgroup_conf = NULL;
+@@ -576,6 +578,9 @@ static void _parse_opts(pam_handle_t *pamh, int argc, const char **argv)
+ 			opts.node_name = xstrdup(v);
+ 		} else if (!xstrncasecmp(*argv, "disable_x11=1", 13)) {
+ 			opts.disable_x11 = true;
++		} else if (!xstrncasecmp(*argv, "service=", 8)) {
++			v = (char *)(8 + *argv);
++			opts.pam_service = xstrdup(v);
+ 		}
+ 	}
+ 
+@@ -601,6 +606,40 @@ static int _load_cgroup_config()
+ 	return SLURM_SUCCESS;
+ }
+ 
++/* Make sure to only continue if we're running in the sshd context
++ *
++ * If this module is used locally e.g. via sudo then unexpected things might
++ * happen (e.g. passing environment variables interpreted by slurm code like
++ * SLURM_CONF or inheriting file descriptors that are used by _try_rpc()).
++ */
++static int check_pam_service(pam_handle_t *pamh)
++{
++	const char *allowed = opts.pam_service ? opts.pam_service : "sshd";
++	char *service = NULL;
++	int rc;
++
++	if (!strcmp(allowed, "*"))
++		// any service name is allowed
++		return PAM_SUCCESS;
++
++	rc = pam_get_item(pamh, PAM_SERVICE, (void*)&service);
++
++	if (rc != PAM_SUCCESS) {
++		pam_syslog(pamh, LOG_ERR, "failed to obtain PAM_SERVICE name");
++		return rc;
++	}
++	else if (service == NULL) {
++		// this shouldn't actually happen
++		return PAM_BAD_ITEM;
++	}
++
++	if (!strcmp(service, allowed)) {
++		return PAM_SUCCESS;
++	}
++
++	pam_syslog(pamh, LOG_INFO, "Not adopting process since this is not an allowed pam service");
++	return PAM_IGNORE;
++}
+ 
+ /* Parse arguments, etc then get my socket address/port information. Attempt to
+  * adopt this process into a job in the following order:
+@@ -622,6 +661,12 @@ PAM_EXTERN int pam_sm_acct_mgmt(pam_handle_t *pamh, int flags
+ 
+ 	_init_opts();
+ 	_parse_opts(pamh, argc, argv);
++
++	retval = check_pam_service(pamh);
++	if (retval != PAM_SUCCESS) {
++		return retval;
++	}
++
+ 	_log_init(opts.log_level);
+ 
+ 	switch (opts.action_generic_failure) {
+@@ -765,6 +810,7 @@ cleanup:
+ 	xfree(buf);
+ 	xfree(slurm_cgroup_conf);
+ 	xfree(opts.node_name);
++	xfree(opts.pam_service);
+ 	return rc;
+ }
+ 
+-- 
+2.16.4
+

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Dec  3 12:19:13 UTC 2016 - fvogt@suse.com
+
+- Add Conflicts: libusbg-tools to libusbgx-tools
+
+-------------------------------------------------------------------
+Fri Dec  2 10:39:29 UTC 2016 - fvogt@suse.com
+
+- Initial package, based on libusbg
+- Add patches to make rpmlint happy:
+  - cleanup-return-void.patch
+  - stdio-include.patch
+- Add patch to fix pkgconfig file:
+  - link-correct-library.patch
+
+

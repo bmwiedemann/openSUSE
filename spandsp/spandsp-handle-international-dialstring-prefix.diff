@@ -1,0 +1,51 @@
+Index: b/src/at_interpreter.c
+===================================================================
+--- a/src/at_interpreter.c
++++ b/src/at_interpreter.c
+@@ -847,6 +847,7 @@ static const char *at_cmd_A(at_state_t *
+ static const char *at_cmd_D(at_state_t *s, const char *t)
+ {
+     int ok;
++    int first;
+     char *u;
+     char num[100 + 1];
+     char ch;
+@@ -858,6 +859,7 @@ static const char *at_cmd_D(at_state_t *
+     s->command_dial = FALSE;
+     t += 1;
+     ok = FALSE;
++    first = TRUE;
+     /* There are a numbers of options in a dial command string.
+        Many are completely irrelevant in this application. */
+     u = num;
+@@ -867,6 +869,7 @@ static const char *at_cmd_D(at_state_t *
+         {
+             /* V.250 6.3.1.1 Basic digit set */
+             *u++ = ch;
++            first = FALSE;
+         }
+         else
+         {
+@@ -880,7 +883,10 @@ static const char *at_cmd_D(at_state_t *
+             case '#':
+                 /* V.250 6.3.1.1 Full DTMF repertoire */
+                 if (!s->p.pulse_dial)
++                {
+                     *u++ = ch;
++                    first = FALSE;
++                }
+                 break;
+             case ' ':
+             case '-':
+@@ -890,7 +896,10 @@ static const char *at_cmd_D(at_state_t *
+                 break;
+             case '+':
+                 /* V.250 6.3.1.1 International access code */
+-                /* TODO: */
++                /* Allow + as first symbol in a dial string. */
++                if (first)
++                    *u++ = ch;
++                first = FALSE;
+                 break;
+             case ',':
+                 /* V.250 6.3.1.2 Pause */

@@ -1,0 +1,23 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: allow service stop
+References: https://lists.fedoraproject.org/pipermail/devel/2012-June/169411.html
+References: https://www.redhat.com/archives/linux-audit/2013-July/msg00048.html
+---
+
+legacy-actions is Fedora specific, so blocking manual stop won't work for
+SUSE since we lack the ability to use a custom stop/restart
+
+
+ init.d/auditd.service |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/init.d/auditd.service
++++ b/init.d/auditd.service
+@@ -7,7 +7,6 @@ DefaultDependencies=no
+ After=local-fs.target systemd-tmpfiles-setup.service
+ Conflicts=shutdown.target
+ Before=sysinit.target shutdown.target
+-RefuseManualStop=yes
+ ConditionKernelCommandLine=!audit=0
+ Documentation=man:auditd(8) https://github.com/linux-audit/audit-documentation
+ 

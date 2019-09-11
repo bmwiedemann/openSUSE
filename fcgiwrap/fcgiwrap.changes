@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Fri Feb 15 11:09:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Dynamically create the supplements to automatically follow
+  sover changes of libfcgi.
+
+-------------------------------------------------------------------
+Mon Feb 11 12:00:38 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix broken "supplements".
+
+-------------------------------------------------------------------
+Mon Feb 11 10:57:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+- Avoid bash-specific code in %postun.
+
+-------------------------------------------------------------------
+Thu Feb  7 12:07:31 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Quit without listening socket
+  *added Quit-without-listening-socket.patch
+
+-------------------------------------------------------------------
+Wed Feb  6 22:17:31 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix run-fcgiwrap script
+  * added fix-run-fcgiwrap-script.patch
+
+-------------------------------------------------------------------
+Wed Feb  6 21:56:14 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added fixes from reviewed upstream pull requests
+  * added Declare-cgi_error-noreturn.patch
+    (obsoletes fix-Werror-implicit-fallthrough-problem.patch)
+  * added fix-kill-parameter-sequence.patch
+
+-------------------------------------------------------------------
+Wed Feb 06 21:33:18 UTC 2019 - mwilck@suse.com
+
+- Update to version 1.1.0+18+g99c942c:
+  * Add documentation for FCGI_CHDIR
+  * Explicit license info in README and COPYING
+  * Clean up unix socket on exit so we can start properly.
+  * Let chdir be overriden with FCGI_CHDIR
+  * prefork: Fix 100% CPU usage in parent process
+
+-------------------------------------------------------------------
+Wed Feb 06 21:05:37 UTC 2019 - mwilck@suse.com
+
+- Update to version 1.1.0+1.g3a94c23:
+  * Add `-p path` option to restrict scripts
+  * support -p option in sysconfig
+    (added support-p-flag-in-sysconfig.patch)
+
+-------------------------------------------------------------------
+Wed Feb  6 20:38:05 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Moved systemd service files to separate package fcgiwrap-nginx
+  and added sysconfig
+  * added support-p-flag-in-sysconfig.patch
+- Fixed dependencies
+
+-------------------------------------------------------------------
+Tue Feb  5 23:12:09 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Use very weak dependencies for spawn-fcgi and nginx
+
+-------------------------------------------------------------------
+Tue Feb  5 22:40:38 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- SUSE / nginx adaptations
+  * added fix-configure.ac-test-for-libsytemd.patch
+  * added adapt-user-and-group-for-nginx.patch
+
+-------------------------------------------------------------------
+Fri Feb 08 2013 Hiroaki Nakamura <hnakamur@gmail.com>
+
+- 1.1.0-1
+- new upstream release.
+
+-------------------------------------------------------------------
+Fri Jan 11 2013 Hiroaki Nakamura <hnakamur@gmail.com>
+
+- 1.0.3.20120908-1
+- Change version to increase monotonously.
+
+-------------------------------------------------------------------
+Wed Jan  9 2013 Hiroaki Nakamura <hnakamur@gmail.com>
+
+- 1.0.3-3.gitb9f03e6377
+- Make the rpm relocatable.
+
+-------------------------------------------------------------------
+Tue Dec 25 2012 Hiroaki Nakamura <hnakamur@gmail.com>
+
+ - 1.0.3-2.gitb9f03e6377
+
+-------------------------------------------------------------------
+Tue Jan 31 2012 Craig Barnes <cr@igbarn.es>
+
+- 1.0.3-1.git1328862
+- Initial package
+

@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Tue Jul 30 04:41:40 UTC 2019 - mvetter@suse.com
+
+- Update to 3.5.0:
+  Added:
+  * Add external download command #543 #348.
+  * Added ephemeral mode by new option --incognito#562.
+  Changed:
+  * Hinting shows the current focused elements URI in the statusbar.
+  * Show error if printing with :hardcopy fails #564.
+  Fixed:
+  * Fixed compilation if source is not in a git repo (Thanks to Patrick Steinhardt).
+  * Fixed partial hidden hint labels on top of screen.
+  * Fix segfault on open in new tabe from context menu #556.
+  * Fix "... (null)" shown in title during url sanitization.
+  Removed:
+  * Setting private-browsing was removed in favor of --incognito option.
+- Remove vim-3.4.0-fixbuild.patch: included upstream
+
+-------------------------------------------------------------------
+Wed Mar 27 08:55:32 UTC 2019 - mvetter@suse.com
+
+- Update to 3.4.0:
+  Added:
+  * Allow to show video in fullscreen, without statusbar and inputbox, if requested.
+  * Added option --no-maximize to no start with maximized window #483.
+  * New setting prevent-newwindow to enforce opening links into same window
+    even if they are crafted by target="_blank" or using window.open(...)#544.
+  Changed:
+  * Increased min required webkit version to 2.20.x.
+  * Use man page date instead of build date to make reproducible builds.
+  * URLs shown on statusbar and title are now shown as punicode if they contain
+    homographs.
+  Fixed:
+  * Fix out-of-bounds buffer access in parse_command (Thanks to Sören Tempel) #529.
+  * Fixed none shown hint labels by Content-Security-Policy headers #531.
+  * Fixed segfault on JavaScript window.close() call #537.
+  * Fixed no char inserted in input mode after timeout and imap/inoremap
+    candidate #546.
+- Add vim-3.4.0-fixbuild.patch: fix non git build
+
+-------------------------------------------------------------------
+Wed Feb 13 13:50:08 UTC 2019 - mvetter@suse.com
+
+- Support parallel builds
+
+-------------------------------------------------------------------
+Wed Feb 13 12:14:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Feb 12 15:26:28 UTC 2019 - mvetter@suse.com
+
+- Initial package vimb 3.3.0 for openSUSE

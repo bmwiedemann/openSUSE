@@ -1,0 +1,72 @@
+--- build.xml.orig	2007-07-06 14:15:52.166982000 -0400
++++ build.xml	2007-07-06 14:19:06.827134000 -0400
+@@ -159,6 +159,7 @@
+         <echo message="Building Slide WebDAV client lib"/>
+         <javac srcdir="clientlib/src/java" destdir="${clientlib.build}/classes" 
+          debug="${compile.debug}" deprecation="${compile.deprecation}" 
++         source="1.6"  target="1.6"
+          optimize="${compile.optimize}" excludes="**/CVS/**">
+             <classpath refid="clientlib.classpath"/>
+         </javac>
+@@ -187,11 +188,13 @@
+         </copy>
+         <javac srcdir="commandline/src/java" destdir="${cmd.build}/classes" 
+ 	       debug="${compile.debug}" deprecation="${compile.deprecation}" 
++               source="1.6"  target="1.6"
+ 	       optimize="${compile.optimize}" excludes="**/Slide.java">
+             <classpath refid="cmd.classpath"/>
+         </javac>
+         <javac srcdir="${cmd.build}/src" destdir="${cmd.build}/classes" 
+ 	       debug="${compile.debug}" deprecation="${compile.deprecation}" 
++               source="1.6"  target="1.6"
+ 	       optimize="${compile.optimize}" includes="**/Slide.java">
+             <classpath refid="cmd.classpath"/>
+         </javac>
+@@ -204,6 +207,7 @@
+         <echo message="Building WebDAV ant tasks"/>
+         <javac srcdir="ant/src/java" destdir="${ant.build}/classes" 
+ 	       debug="${compile.debug}" deprecation="${compile.deprecation}" 
++               source="1.6"  target="1.6"
+ 	       optimize="${compile.optimize}" excludes="**/*Test.java">
+             <classpath refid="ant.classpath"/>
+         </javac>
+@@ -222,6 +226,7 @@
+         <echo message="Building WebDAV JCA connector"/>
+         <javac srcdir="connector/src/java" destdir="${jca.build}/classes" 
+ 	       debug="${compile.debug}" deprecation="${compile.deprecation}" 
++               source="1.6"  target="1.6"
+ 	       optimize="${compile.optimize}" excludes="**/*Test.java">
+             <classpath refid="jca.classpath"/>
+         </javac>
+@@ -235,6 +240,7 @@
+     <target name="javadoc-clientlib" depends="prepare-build" description="Create WebDAV client javadocs" unless="skip.javadoc">
+         <property name="copyright" value="2004"/>
+         <javadoc sourcepath="clientlib/src/java" destdir="${clientlib.build}/${clientlib.javadoc.path}" 
++                 source="1.6"
+ 		 doctitle="Slide ${version} WebDAV Client JavaDoc" windowtitle="Slide WebDAV Client Javadoc" 
+ 		 package="true" noindex="false" author="true" version="true" packagenames="org.apache.webdav.lib.*">
+             <classpath refid="clientlib.classpath"/>
+@@ -245,6 +251,7 @@
+     <target name="javadoc-ant" depends="prepare-build" description="Create ant tasks javadocs" unless="skip.javadoc">
+         <property name="copyright" value="2004"/>
+         <javadoc sourcepath="ant/src/java" destdir="${ant.build}/${ant.javadoc.path}" 
++                 source="1.6"
+            doctitle="Slide ${version} WebDAV ant tasks JavaDoc" windowtitle="Slide WebDAV ant tasks Javadoc" 
+            package="true" noindex="false" author="true" version="true" packagenames="org.apache.webdav.ant.*">
+             <classpath refid="ant.classpath"/>
+@@ -255,6 +262,7 @@
+     <target name="javadoc-jca" depends="prepare-build" description="Create JCA connector javadocs" unless="skip.javadoc">
+         <property name="copyright" value="2004"/>
+         <javadoc sourcepath="connector/src/java" destdir="${jca.build}/${jca.javadoc.path}" 
++                 source="1.6"
+            doctitle="Slide ${version} WebDAV JCA connector JavaDoc" windowtitle="Slide WebDAV JCA connector Javadoc" 
+            package="true" noindex="false" author="true" version="true" packagenames="org.apache.webdav.connector.*">
+             <classpath refid="jca.classpath"/>
+@@ -395,6 +403,7 @@
+ 	    description="Create connector example war">
+         <javac destdir="${jca.build}/classes"
+           debug="${compile.debug}"
++          source="1.6"  target="1.6"
+           deprecation="${compile.deprecation}"
+           optimize="${compile.optimize}" >
+           <src path="${basedir}/connector/example/src/java"/>

@@ -1,0 +1,53 @@
+<constraints>
+  <!-- All builds are fine with 8GB disk -->
+  <overwrite>
+    <conditions>
+      <package>qemu</package>
+      <package>qemu-linux-user</package>
+      <package>qemu-testsuite</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">8</size>
+      </disk>
+    </hardware>
+  </overwrite>
+  <!-- To build qemu, s390x needs more than the default memory -->
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <package>qemu</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">1200</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- Excluding ARM, qemu-testsuite needs more than the default memory -->
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+      <arch>x86_64</arch>
+      <arch>ppc64le</arch>
+      <package>qemu-testsuite</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">4400</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- And for some reason ppc64 needs even more -->
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <package>qemu-testsuite</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">4800</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

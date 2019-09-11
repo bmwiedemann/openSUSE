@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Fri Aug  9 10:44:01 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.8.2
+  - Implement new status API call
+  - Update pod network and kured daemonsets in case of kubernetes
+    upgrade
+
+-------------------------------------------------------------------
+Tue Aug  6 14:48:53 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.8.1
+  - Unify and fix kubernetes version handling for installation
+    and upgrade
+
+-------------------------------------------------------------------
+Sat Aug  3 14:56:39 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0
+  - Rework adding and removing of nodes to make this more
+    robust and support master nodes
+
+-------------------------------------------------------------------
+Mon Jul 29 13:45:44 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.7.0
+  - Add multi master support
+
+-------------------------------------------------------------------
+Sun Jul 28 16:56:33 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.6.3
+  - Unifiy function to reset the master
+  - Cleanup behind kubeadm reset, else kubeadm init will fail
+  - Add support for weave and make it the default pod network
+
+-------------------------------------------------------------------
+Wed Jun 26 16:09:34 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.6.2
+  - New function: destroy whole cluster
+  - Remove Nodes: allow to specify multiple nodes or '*' for all nodes
+  - Fix timeout option for draining nodes
+
+-------------------------------------------------------------------
+Fri Jun 21 15:20:09 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.6.1
+  - Store kubeadm join token for 23 hours to not create too many for every single node
+  - Fix kubernetes version argument for kubeadm
+  - Open rbac.conf with every call, else we don't see our own changes
+
+-------------------------------------------------------------------
+Fri Jun 21 13:03:10 CEST 2019 - kukuk@suse.de
+
+- Don't build on i586 to make some scripts happy...
+
+-------------------------------------------------------------------
+Mon Jun 17 15:38:03 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.6.0
+  - Add --adv-addr option to kubicctl init
+  - Refactor code
+  - Many, many bug fixes
+
+-------------------------------------------------------------------
+Wed Jun 12 14:04:17 CEST 2019 - kukuk@suse.de
+
+- Add requires to the k8s-yaml files we really always need
+
+-------------------------------------------------------------------
+Fri Jun  7 14:39:18 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.5.1
+  - Use local flannel.yaml file to deploy flannel
+
+-------------------------------------------------------------------
+Mon Jun  3 15:56:57 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.5.0
+  - Improve documentation
+  - Fix typos in help text
+  - Run kubicd-init.service only after time is set [bsc#1136246]
+  - Create user certificate on server side and download it
+  - Use cilium k8s yaml file from cilium package
+
+-------------------------------------------------------------------
+Fri Apr 26 14:09:33 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.4.0
+  - Rework communication for removing nodes
+  - Add support for cilium
+  - Bug fixes
+
+-------------------------------------------------------------------
+Thu Apr 25 16:12:15 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.3.0
+  - Add support for RBAC management to kubicctl
+  - Add support to create user certificates to kubicctl
+
+-------------------------------------------------------------------
+Thu Apr 18 14:40:20 CEST 2019 - kukuk@suse.de
+
+- Release version 0.2.1
+  - kubicctl: use admin certificates if there are no root user
+    certificates
+
+-------------------------------------------------------------------
+Tue Apr 16 15:51:21 CEST 2019 - kukuk@suse.de
+
+- Release version 0.2.0
+  - many, many bug fixes
+
+-------------------------------------------------------------------
+Mon Apr 15 12:56:19 CEST 2019 - kukuk@suse.de
+
+- Initial Version
+

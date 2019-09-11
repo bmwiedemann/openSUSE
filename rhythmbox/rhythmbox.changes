@@ -1,0 +1,1582 @@
+-------------------------------------------------------------------
+Sun Jan  6 11:32:17 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.4.3:
+  + Android plugin works better with Samsung and Android 9 devices.
+  + Status bar replaced with floating bar as used by Nautilus.
+  + Bugs fixed: bgo#727670, bgo#767255, bgo#781664, bgo#788676,
+    bgo#788677, bgo#788706, bgo#789155, bgo#789494, bgo#789632,
+    bgo#789706, bgo#789795, bgo#789839, bgo#789157, bgo#790876,
+    bgo#791815, glgo#GNOME/rhythmbox#1626,
+    glgo#GNOME/rhythmbox#1646, glgo#GNOME/rhythmbox#1660,
+    glgo#GNOME/rhythmbox#7, glgo#GNOME/rhythmbox#8,
+    glgo#GNOME/rhythmbox#10, glgo#GNOME/rhythmbox#11,
+    glgo#GNOME/rhythmbox#21.
+  + Updated translations.
+- Drop rhythmbox-gstreamer-1.14.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Apr 17 12:42:05 UTC 2018 - dimstar@opensuse.org
+
+- Add rhythmbox-gstreamer-1.14.patch: Fix build against GStreamer
+  1.14 (bgo#788706).
+
+-------------------------------------------------------------------
+Tue Mar 20 16:50:21 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Mar  7 22:38:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Export PYTHON=%%{_bindir}/python3 before calling configure,
+  switch to python3.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:24 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  9 02:38:54 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.4.2:
+  + Bug fix release for 3.4.
+  + Visualization plugin removed.
+  + Responsiveness improvements during media player sync.
+  + Better network buffering when crossfading is enabled.
+  + Bugs fixed: bgo#697567, bgo#701608, bgo#770358, bgo#770462,
+    bgo#770486, bgo#770920, bgo#770983, bgo#771335, bgo#771337,
+    bgo#771405, bgo#771884, bgo#772997, bgo#773404, bgo#773466,
+    bgo#773695, bgo#773729, bgo#773858, bgo#774336, bgo#775294,
+    bgo#775447, bgo#776292, bgo#781184, bgo#783016, bgo#784957,
+    bgo#785304, bgo#785805, bgo#787785.
+  + Updated translations.
+- Add --without-hal to %configure: HAL has been discontinued.
+- Add --with-* to %configure for the alredy had BuildRequires:
+  gudev, ipod, mtp, libsecret, brasero.
+- Drop conditional use for visualization plugin: the plugin has
+  been removed upstream from the package as aforementioned.
+- Drop %glib2_gsettings_schema_*, %desktop_database_* and
+  %icon_theme_cache_* post/postun/requires macros: functionality
+  now covered by file triggers.
+- Align BuildRequires with configure:
+  Added: gdk-pixbuf, glib2 and libxml2.
+  Dropped: libdiscid, ice and sm.
+- Change Url to https://wiki.gnome.org/Apps/Rhythmbox: current
+  Rhythmbox web page.
+
+-------------------------------------------------------------------
+Sat Sep  9 16:14:18 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-ugly Recommends: Recommend often used
+  codecs for music playback.
+
+-------------------------------------------------------------------
+Sat Sep 10 10:44:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.4.1:
+  + Bugs fixed: bgo#770044, bgo#770071, bgo#770134, bgo#770148,
+    bgo#770167, bgo#770209, bgo#770212, bgo#770262, bgo#770411,
+    bgo#770601, bgo#770920.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 20:15:03 UTC 2016 - zaitor@opensuse.org
+
+- Delete context plugin, upstream intended to disable it.
+- Stop passing V=1 to make, we do debugging locally. Also remove an
+  obsolete clean section.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Sun Aug 14 16:10:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.4:
+  + New web remote control plugin.
+  + Grilo plugin now uses Grilo 0.3.
+  + Soundcloud plugin fetches more search results and allows
+    pausing.
+  + No longer uses webkit (partly due to OpenBSD W^X enforcement).
+  + Slightly better handling of keyboard shortcuts for playback.
+  + Core and some plugin data files compiled into binaries using
+    GResources.
+  + Bugs fixed: bgo#703910, bgo#721926, bgo#759589, bgo#765833,
+    bgo#766584, bgo#767318, bgo#767466, bgo#767524, bgo#768545,
+    bgo#769404.
+  + Updated translations.
+- Drop rhythmbox-grilo-0.3.patch: Fixed upstream.
+- Drop pkgconfig(webkit2gtk-4.0) BuildRequires: No longer in use.
+  Following the above, drop now obsolete bcond_without webkit,
+  libtool BuildRequires and stop exporting autopoint infront of
+  configure.
+
+-------------------------------------------------------------------
+Wed May 18 15:32:16 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.2 Fate#318572
+
+-------------------------------------------------------------------
+Wed May 18 12:14:46 UTC 2016 - alarrosa@suse.com
+
+- Added BuildRequires: fdupes. Use it to link duplicated files in
+  /usr/lib64/rhythmbox/plugins/ and /usr/share/help
+
+-------------------------------------------------------------------
+Sun May  8 16:33:08 UTC 2016 - badshah400@gmail.com
+
+- Add Requires: python3-gobject-Gdk, since this was split out of
+  python3-gobject into its own sub-package and should now be
+  required by all applications requiring X-server.
+
+-------------------------------------------------------------------
+Fri Apr 15 18:31:59 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sun Apr  3 18:17:57 UTC 2016 - badshah400@gmail.com
+
+- Update to version 3.3.1:
+  + Better handling of locked Android devices.
+  + Simplified ReplayGain processing that might crash less.
+  + Switched to webkit2 API, except for the context plugin which
+    is disabled.
+  + Notifications behave better when actions aren't available.
+  + Bugs fixed: bgo#678349, bgo#744775, bgo#752019, bgo#762087,
+    bgo#762203, bgo#763206, bgo#763435, bgo#763874.
+  + Updated translations.
+- Drop rhythmbox-Port-to-webkit2.patch, incorporated upstream.
+
+-------------------------------------------------------------------
+Sun Feb 14 10:33:47 UTC 2016 - zaitor@opensuse.org
+
+- Add rhythmbox-Port-to-webkit2.patch: Port to webkit2gtk3, patches
+  from upstream bug (bgo#752019).
+- Due to above port, replace pkgconfig(webkitgtk-3.0) for
+  pkgconfig(webkit2gtk-4.0) BuildRequires.
+
+-------------------------------------------------------------------
+Sun Feb 14 09:00:43 UTC 2016 - zaitor@opensuse.org
+
+- Remove with_daap defines since all versions of openSUSE we build
+  for have the required version of libdmapsharing. It was also set
+  up wrong so we had the unfortunate error that we didn't build
+  daap support for any release.
+
+-------------------------------------------------------------------
+Mon Jan 25 09:48:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.3:
+  + New plugin supporting Android devices via gvfs-mtp.
+  + Encoding settings are now configurable per device type.
+  + Encoding settings can force lossless files to be transcoded.
+  + Bugs fixed: bgo#733830, bgo#748857, bgo#749015, bgo#751265,
+    bgo#751630, bgo#751961, bgo#752433, bgo#753359, bgo#753767,
+    bgo#755881, bgo#756992, bgo#757225, bgo#760192, bgo#761030.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 23 22:12:27 UTC 2015 - dimstar@opensuse.org
+
+- Port to grilo 0.3 (bgo#759589):
+  + Add rhythmbox-grilo-0.3.patch: do the port.
+  + Replace pkgconfig(grilo-0.2) BuildRequires with
+    pkgconfig(grilo-0.3).
+  + Add libtool BuildRequires and call to autoreconf, as the patch
+    touches the build system.
+
+-------------------------------------------------------------------
+Sun Apr 19 11:38:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.2.1:
+  + Bugs fixed:
+    - bgo#746975: Core dump when using shuffle and playing track
+      changes.
+    - bgo#747053: Rhythmbox plugins fail to connect to signal
+      handlers with libpeas 1.14.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  7 15:52:37 UTC 2015 - dimstar@opensuse.org
+
+- Introduce visualizer build condition:
+  + Conditionally enable pkgconfig()-BuildRequires: clutter-1.0,
+    clutter-gst-2.0, clutter-gtk-1.0, clutter-x11-1.0 and newly
+    added mx-1.0.
+  + Disabled per default, as mx-1.0 is not maintained and not
+    available on openSUSE anymore.
+- No longer replace clutter-gst-2.0 with clutter-gst-3.0 in
+  configure: the change is useless, as the visualisation plugin can
+  not be built in any case.
+
+-------------------------------------------------------------------
+Tue Apr  7 07:47:13 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.2:
+  + Support for disc and track total tags.
+  + Soundcloud plugin.
+  + Ability to clear, re-fetch and manually set cover art using the
+    song info window.
+  + Build fixes for Mac OS X.
+  + Many style and layout fixes.
+  + Bugs fixed: bgo#330686, bgo#554574, bgo#592706, bgo#601747,
+    bgo#733795, bgo#737058, bgo#737655, bgo#738101, bgo#738529,
+    bgo#743012, bgo#743493, bgo#743761, bgo#745395, bgo#745399,
+    bgo#746047.
+  + Updated translations.
+- Replace defines with more flexible bcond_with/wihtout variants.
+
+-------------------------------------------------------------------
+Thu Jan  1 15:57:51 UTC 2015 - zaitor@opensuse.org
+
+- Replace pkgconfig(clutter-gst-2.0) for pkgconfig(clutter-gst-3.0)
+  BuildRequires, use sed to inject the bump into configure, until
+  upstream does the needed changes.
+
+-------------------------------------------------------------------
+Sun Sep 28 12:19:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.1:
+  + Assorted bug fixes.
+  + GTK+ 3.14 compatible.
+  + Now includes an AppData file.
+  + Bugs fixed: bgo#637747, bgo#686082, bgo#702885, bgo#723020,
+    bgo#725884, bgo#729373, bgo#731025, bgo#731202, bgo#731236,
+    bgo#732764, bgo#732880, bgo#733499, bgo#733526, bgo#733586,
+    bgo#733636, bgo#734057, bgo#734123, bgo#734235, bgo#735021,
+    bgo#735056, bgo#735083, bgo#735954, bgo#737053, bgo#737368.
+  + Updated translations.
+- Drop rhythmbox-3.0.1-libsecret018.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jul 12 13:17:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.0.3:
+  + Assorted bug fixes.
+  + Embedded cover art no longer applied to following tracks.
+  + Bugs fixed: bgo#632266, bgo#682574, bgo#724931, bgo#727254,
+    bgo#727437, bgo#727838, bgo#727937, bgo#730547.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 23 15:40:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.0.2:
+  + Bugs fixed: bgo#678938, bgo#692485, bgo#701598, bgo#705105,
+    bgo#707144, bgo#707525, bgo#707618, bgo#708084, bgo#708201,
+    bgo#708341, bgo#710493, bgo#710832, bgo#711285, bgo#712237,
+    bgo#712699, bgo#715177, bgo#719514, bgo#719777, bgo#720116,
+    bgo#720217, bgo#720819, bgo#721550, bgo#721758, bgo#722069,
+    bgo#722782, bgo#723839, bgo#724931, bgo#725625, bgo#726167.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 18 09:54:56 UTC 2014 - fcrozat@suse.com
+
+- Add rhythmbox-3.0.1-libsecret018.patch: fix dependency with
+  libsecret 0.18 (bgo#725884).
+
+-------------------------------------------------------------------
+Wed Oct 16 21:43:20 UTC 2013 - firebird209@gmail.com
+
+- Update to version 3.0.1:
+  + Bugs fixed: bgo#706470, bgo#708476, bgo#709143, bgo#708341
+  + Translation Updates
+
+-------------------------------------------------------------------
+Thu Sep  5 17:26:20 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.0:
+  + Plugins now use Python 3
+  + New task progress display below the track list
+    (used for various things including track transfers and
+    import jobs)
+  + Support for composer tags
+  + Restyled playback controls
+  + Restyled source list using symbolic icons
+  + Better introspection of everything
+  + Separate CBR and VBR encoding styles with different sets
+    of exposed properties
+  + Playlist settings (browser visibility etc.) saved in 
+    playlists.xml
+  + Better use of RTL icons where appropriate
+  + Bugs fixed: bgo#127939, bgo#516846, bgo#652892, bgo#672044,
+    bgo#675145, bgo#677645, bgo#697533, bgo#697915, bgo#697959,
+    bgo#698043, bgo#698429, bgo#698460, bgo#698810, bgo#698979,
+    bgo#700017, bgo#700177, bgo#700401, bgo#700424, bgo#700590,
+    bgo#701032, bgo#701194, bgo#701307, bgo#702679, bgo#702683,
+    bgo#703624, bgo#703626, bgo#703627, bgo#703798, bgo#705307,
+    bgo#705427, bgo#705626, bgo#706760, bgo#707082, bgo#707184,
+    bgo#707360.
+- Drop rhythmbox-gtk3.9.patch, fixed upstream.
+- Exchange gstreamer010-plugins-base and gstreamer010-plugins-good
+  Requires for gstreamer-plugins-base and gstreamer-plugins-good,
+  rhythmbox is portet to gst-1.0.
+- Exchange python-gobject for python3-gobject requires as plugins
+  ported to python3.
+
+-------------------------------------------------------------------
+Fri May 17 07:28:57 UTC 2013 - dimstar@opensuse.org
+
+- Add rhythmbox-gtk3.9.patch: Fix build with GTK+ 3.9: avoid doing
+  work in class init functions.
+
+-------------------------------------------------------------------
+Sat Apr 13 13:16:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.99.1:
+  + Several missing accelerator keys (re-)added.
+  + XI_BadDevice crashes fixed.
+  + Bugs fixed: bgo#697526, bgo#697527, bgo#697534, bgo#697915.
+
+-------------------------------------------------------------------
+Thu Apr 11 10:06:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.99:
+  + Menu bar replaced with app menu or menu button.
+  + Port to GStreamer 1.0.
+  + Uses libsecret instead of gnome-keyring.
+  + Supports GNOME notification filtering.
+  + Small improvements to podcast browsing and updating.
+  + Play button now turns into a pause or stop button while
+    playing.
+  + Buffering progress now appears in the song position slider
+    rather than an unlabelled progress indicator in the status bar.
+  + Media player sync works better with transcoded files.
+  + Bugs fixed: bgo#376372, bgo#381196, bgo#399012, bgo#454239,
+    bgo#592455, bgo#663440, bgo#672306, bgo#673533, bgo#674178,
+    bgo#678032, bgo#679880, bgo#679982, bgo#681469, bgo#683375,
+    bgo#684301, bgo#685004, bgo#685565, bgo#685820, bgo#685821,
+    bgo#685822, bgo#685893, bgo#685910, bgo#685945, bgo#686320,
+    bgo#686470, bgo#687109, bgo#688432, bgo#688515, bgo#688638,
+    bgo#689413, bgo#689883, bgo#689899, bgo#690113, bgo#690235,
+    bgo#690993, bgo#692158, bgo#692941, bgo#694293, bgo#694981,
+    bgo#696517, bgo#697267.
+  + Updated translations.
+- Replace pkgconfig() BuildRequires for GStreamer 1.0 port:
+  + Old: gstreamer-0.10, gstreamer-interfaces-0.10,
+    gstreamer-pbutils-0.10, gstreamer-plugins-base-0.10.
+  + New: gstreamer-1.0, gstreamer-audio-1.0, gstreamer-base-1.0,
+    gstreamer-pbutils-1.0, gstreamer-plugins-base-1.0.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstream.
+- Enable pkgconfig(clutter-gst-2.0) BuildRequires: with the port
+  to GStreamer 1.0, also clutter-gst was ported.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port to the new documentation infrastructure.
+- Drop rhythmbox-no-webkit-no-context-pane.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to autogen.sh, as we
+  don't carry patches touching the build system anymore.
+- Change with_webkit defines to %{suse_version} > 1220: the
+  GStreamer 1.0 / 0.10 conflictt is no longer a problem on opeSUSE
+  12.3 and newer (webkit and rhythmbox both link Gst 1.0 in this
+  case).
+- Introduce with_daap defines: libdmapsharing >= 2.9.16 is
+  required, which does not yet exist.
+- No longer pass --disable-scrollkeeper to configure: it is no
+  longer recognized after the move to yelp-tools.
+
+-------------------------------------------------------------------
+Wed Oct 31 20:33:36 UTC 2012 - dimstar@opensuse.org
+
+- Disable webkit support (define with_webkit 0) (bnc#787216,
+  bnc#783923).
+  Based on the defines, we conditionally:
+  + Enable pkgconfig(webkitgtk-3.0) BuildRequires (with_webkit 1).
+  + Enable packaging of the context pane plugin (with_webkit 1).
+  + Pass --without-webkit to configure (with_webkit 0).
+- Add rhythmbox-no-webkit-no-context-pane.patch: if webkit support
+  is disabled, the context pane plugin should not be built (as it
+  can't work without webkit).
+- Add gnome-common BuildRequires and call to autogen.sh, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Mon Oct  1 19:49:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.98:
+  + New dialog for importing music into the library
+  + New audio CD metadata lookup library, replacing libmusicbrainz
+  + Improved transitions between album art images
+  + Nautilus cluebar buttons now result in the right source being
+    selected
+  + Update notification buttons when playback state changes
+  + Grilo plugin ported to grilo 0.2 API
+  + Search musicbrainz for album art by album and artist name
+  + Love/ban buttons visible in last.fm/libre.fm sources
+  + Bugs fixed: bgo#604734, bgo#653781, bgo#671705, bgo#673956,
+    bgo#676007, bgo#676689, bgo#677079, bgo#677464, bgo#677955,
+    bgo#678138, bgo#678208, bgo#678254, bgo#678261, bgo#678661,
+    bgo#678923, bgo#678995, bgo#679222, bgo#679326, bgo#680204,
+    bgo#680842, bgo#681018, bgo#681178, bgo#681259, bgo#681924,
+    bgo#682309, bgo#682404, bgo#682677, bgo#682970, bgo#684142,
+    bgo#684304, bgo#684333.
+  + Updated translations.
+- Drop pkgconfig(libmusicbrainz4): upstream replaced libmusicbrain
+  usage with GStreamer and libsoup.
+- Replace pkgconfig(clutter-gst-1.0) BuildRequires with
+  pkgconfig(clutter-gst-2.0): openSUSE 12.3 no longer ships
+  clutter-gst-1.0. The replacement BuildRequire is currently
+  commented out, as rhythmbox can't make use of clutter-gst-2.0 yet
+  due to the changed APIs. As a consequence we do not provide the
+  visualizer plugin at the moment.
+- Drop pkgconfig(gconf-2.0) BuildRequires: no longer needed.
+- Drop rhythmbox-CVE-2012-3355.patch: fixed upstream.
+- Drop rhythmbox-link-discid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug  6 13:14:46 UTC 2012 - dimstar@opensuse.org
+
+- Add rhythmbox-link-discid.patch: Link against libdiscid: this
+  used to be linked to by libmusicbrainz, but this changed lately
+  (bnc#771436).
+- Add gnome-common BuildRequires and call to autogen.sh: above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Tue Jul 24 11:15:36 UTC 2012 - vuntz@opensuse.org
+
+- Add rhythmbox-CVE-2012-3355.patch: fix insecure temporary
+  directory use in context plugin. Fix bnc#768681, CVE-2012-3355.
+
+-------------------------------------------------------------------
+Tue Jun 12 07:22:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.97:
+  + Uses libmusicbrainz4 for audio CD metadata
+  + New more compact header layout, including album art
+  + Deprecated artdisplay plugin
+  + Fixed buffering for network streams
+  + Configurable encoding settings for the library, using GStreamer
+    presets or simple quality settings
+  + Doesn't preserve mtime on metadata updates
+  + Fixed audio CD extraction speed
+  + New podcast subscription interface, including iTunes and
+    Miroguide searching and auditioning before subscription.
+  + Bugs fixed: bgo#338452, bgo#343660, bgo#344595, bgo#419914,
+    bgo#447082, bgo#526838, bgo#540726, bgo#608295, bgo#612274,
+    bgo#635895, bgo#661217, bgo#661341, bgo#665402, bgo#666010,
+    bgo#666066, bgo#668262, bgo#668395, bgo#668402, bgo#671706,
+    bgo#671839, bgo#671840, bgo#671950, bgo#672084, bgo#672198,
+    bgo#672410, bgo#672412, bgo#673799, bgo#674897, bgo#675345,
+    bgo#676860, bgo#677318
+  + Updated translations.
+- Replace pkgconfig(libmusicbrainz3) BuildRequires with
+  pkgconfig(libmusicbrainz4), following upstreams switch.
+- Add libdiscid-devel BuildRequires: new depenency.
+
+-------------------------------------------------------------------
+Sun Mar 11 10:15:34 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.96:
+  + Revived Magnatune plugin.
+  + Better handling of non-media files.
+  + Dbus media server plugin improved again.
+  + Bugs fixed: bgo#454247, bgo#622874, bgo#644045, bgo#654637,
+    bgo#661957, bgo#663353, bgo#667971, bgo#668864, bgo#670666,
+    bgo#670772, bgo#671379.
+  + Updated translations.
+- Remove xz BuildRequires, since it comes for free in the
+  buildsystem now.
+  
+-------------------------------------------------------------------
+Tue Feb 21 21:31:23 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice) and pkgconfig(sm) BuildRequires: this used to
+  be pulled in by something else, but the xorg-x11 packaging
+  relayout changed that.
+
+-------------------------------------------------------------------
+Tue Jan 17 13:38:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.95:
+  + GTK+ 3, GObject introspection, GNOME 3 compatible
+  + New album art database
+  + Grilo plugin for UPNP and Jamendo
+  + Rewritten visualization plugin (using clutter)
+  + First steps in redesigning some parts of the UI that sorely
+    need it
+  + New encoding profile system
+  + Plugins now based on libpeas
+  + Much improved dbus media server plugin
+- Some of those changes were already in our package thanks to
+  rhythmbox-port-gtk3.patch. Drop it now rhythmbox-port-gtk3.patch.
+- Re-enable translation-update-upstream in %setup, now that
+  rhythmbox-port-gtk3.patch is gone.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  that were only needed for rhythmbox-port-gtk3.patch.
+- Remove fdupes BuildRequires since we don't call %fdupes.
+- Add and remove pkgconfig() BuildRequires, following upstream
+  changes:
+  + Added: clutter-1.0, clutter-gst-1.0, clutter-gtk-1.0,
+    clutter-x11-1.0, gconf-2.0, grilo-0.1,
+    gstreamer-interfaces-0.10, gstreamer-pbutils-0.10, mx-1.0, tdb.
+  + Removed: dbus-glib-1, libgnome-media-profiles-3.0.
+- Change pkgconfig(pygobject-2.0) BuildRequires to
+  pkgconfig(pygobject-3.0).
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Remove python-coherence Recommends: the upnp-coherencde plugin is
+  now gone.
+- Change --disable-vala configure option to --enable-vala.
+- Remove now non-existing --disable-schemas-install configure
+  option.
+- Stop changing libexecdir.
+
+-------------------------------------------------------------------
+Thu Oct  6 15:24:58 UTC 2011 - vuntz@opensuse.org
+
+- Change vala-devel BuildRequires to vala as vala-devel is an old
+  deprecated name (bnc#720908).
+
+-------------------------------------------------------------------
+Wed Jul 27 14:33:34 CEST 2011 - vuntz@opensuse.org
+
+- Remove mozilla-xulrunner-devel BuildRequires: it was only there
+  for the NPAPI headers, but rhythmbox actually uses a private copy
+  of those headers.
+
+-------------------------------------------------------------------
+Thu Jul  7 16:15:27 CEST 2011 - vuntz@opensuse.org
+
+- Package the DAAP plugin again, now that the version of
+  libdmapsharing in Factory is new enough.
+
+-------------------------------------------------------------------
+Mon Jul  4 11:30:52 CEST 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Note that the package won't build on old distributions anyway
+    because of the GNOME 3 port, so using pkgconfig()-style doesn't
+    break anything.
+  + Old ones: brasero-devel, dbus-1-glib-devel,
+    gstreamer010-plugins-base-devel, json-glib-devel,
+    libavahi-glib-devel, libgnome-keyring-devel, libgpod-devel,
+    libgudev-1_0-devel, libmtp-devel, libmusicbrainz3-devel,
+    libnotify-devel, libsoup-devel, totem-pl-parser-devel.
+  + New ones: avahi-glib, dbus-glib-1, json-glib-1.0,
+    gnome-keyring-1, gstreamer-0.10, gstreamer-plugins-base-0.10,
+    gudev-1.0, libbrasero-media3, libgpod-1.0, libmtp,
+    libmusicbrainz3, libnotify, libsoup-2.4, libsoup-gnome-2.4,
+    totem-plparser.
+- Change libwebkit-devel BuildRequires to pkgconfig(), to build
+  against the GTK+ 3 version of webkit.
+- Change python-gstreamer-0_10-devel, python-gtk-devel
+  BuildRequires to pkgconfig(pygobject-2.0) as only python-gobject
+  is needed for the GTK+ 3 port.
+- Change python-gstreamer-0_10 Requires to python-gobject, for the
+  same reason.
+- Remove unneeded gcc-c++, libmusicbrainz-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jun  9 13:38:13 UTC 2011 - dimstar@opensuse.org
+
+- Add rhythmbox-port-gtk3.patch: Port rhythmbox to GTK3 and GNOME3
+  infrastructure. This patch brings us to git commit e0e5d06e.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for the patch.
+- Disable translation-update-upstream for the moment as the patch
+  breaks this.
+- Add pkgconfig() BuildRequires for GNOME 3: gtk+-3.0,
+  libgnome-media-profiles-3.0, libpeas-1.0, libpeas-gtk-1.0.
+- Add gobject-introspection-devel BuildRequires.
+- Remove now non-existing gnome-media-devel BuildRequires.
+- Pass --disable-vala to configure. The plugins are not working
+  on the GNOME 3 platform yet.
+- Replace gconf schema handling with gsettings schema handling.
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:24 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:50:10 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Jan 17 12:28:12 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.13.3:
+  + Reimplemented source list, allowing for things that aren't
+    sources
+  + Updated notifications, mostly for GNOME Shell
+  + Expose playlists in MPRIS and MediaServer2 DBus interfaces
+  + New context pane tab showing links to various websites
+  + Bugs fixed: bgo#510679, bgo#599294, bgo#609009, bgo#622980,
+    bgo#633531, bgo#633542, bgo#634065, bgo#634114, bgo#635323,
+    bgo#635963, bgo#635964, bgo#636482, bgo#636550, bgo#637174,
+    bgo#637819, bgo#639266
+  + Updated translations.
+- Drop rhythmbox-fix-upnp-plugin.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Nov 19 10:42:42 CET 2010 - vuntz@opensuse.org
+
+- Add json-glib-devel BuildRequires to build the last.fm plugin.
+- Explicitly list the plugins in the file list, so we can know when
+  we lose a plugin because of missing dependencies.
+
+-------------------------------------------------------------------
+Sat Nov  6 19:07:50 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.13.2:
+  + Much improved Last.fm (and Libre.fm) plugin
+  + Support for DACP (iTunes remote)
+  + Zeitgeist plugin
+  + New podcast sub-sources showing newly posted and recently
+    downloaded episodes
+  + Slightly improved integration with the GNOME Shell message tray
+  + Various fixes for iPod support
+  + Bugs fixed: bgo#341462, bgo#345957, bgo#381679, bgo#589886,
+    bgo#591841, bgo#592428, bgo#601152, bgo#604170, bgo#612156,
+    bgo#618619, bgo#623200, bgo#625030, bgo#625054, bgo#625214,
+    bgo#628254, bgo#628330, bgo#628791, bgo#628794, bgo#629038,
+    bgo#630689, bgo#631008, bgo#631191, bgo#631218, bgo#631355,
+    bgo#631698, bgo#631817, bgo#632119, bgo#632475, bgo#632655,
+    bgo#633531.
+- Drop rhythmbox-vala-detection.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to autogen.sh.
+- Use xulrunner 2.0 for openSUSE 11.4.
+
+-------------------------------------------------------------------
+Sat Oct  9 20:50:27 CEST 2010 - vuntz@opensuse.org
+
+- Add media-player-info Recommends: the data is important for media
+  player devices support.
+
+-------------------------------------------------------------------
+Mon Sep  6 10:34:53 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.13.1:
+  + Support for MPRIS version 2
+  + RhythmDBEntryType converted to a GObject to improve binding
+    sanity
+  + Improved handling of files on unmounted devices and network
+    shares
+    - Only attempts to check files on core filesystems and mounted
+      local devices
+    - Doesn't check files on network shares, relying on playback
+      error reporting to identify missing files
+  + New less annoying method of handling invocation for media
+    player devices
+  + rhythmbox-client now waits long enough to control a newly
+    started instance
+  + More reliably imports and plays files specified on the command
+    line (opening a file with nautilus will now do something useful
+    most of the time)
+  + Use the current sorting column for typeahead searching
+  + Extended (static) vala bindings
+  + Initial implementation of the Rygel MediaServer2 D-Bus
+    specification
+  + Bugs fixed: bgo#329984, bgo#482813, bgo#488308, bgo#498582,
+    bgo#544154, bgo#581076, bgo#609542, bgo#623024, bgo#623153,
+    bgo#623667, bgo#623992, bgo#624646, bgo#624895, bgo#625103,
+    bgo#625105, bgo#625124, bgo#625130, bgo#625375, bgo#626608,
+    bgo#626986, bgo#627050, bgo#627396, bgo#627949, bgo#627951,
+    bgo#628076, bgo#628254
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  2 12:59:23 CEST 2010 - vuntz@opensuse.org
+
+- Add libdmapsharing-devel BuildRequires on 11.4 and later, to
+  enable DAAP support.
+
+-------------------------------------------------------------------
+Mon Aug 30 14:02:19 UTC 2010 - dimstar@opensuse.org
+
+- Add rhythmbox-vala-detection.patch, properly detect vala. Newer
+  versions do no longer provide a .pc file (bgo#628330).
+- Add gnome-common BuildRequires and call to autogen.sh.
+
+-------------------------------------------------------------------
+Wed Aug 11 15:46:18 CEST 2010 - vuntz@opensuse.org
+
+- Add libwebkit-devel BuildRequires.
+- Merge doc subpackage in devel subpackage, since it's the
+  developer documentation.
+
+-------------------------------------------------------------------
+Fri Aug  6 13:59:46 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.13.0:
+  + Improved GStreamer codec installation
+  + New metadata fields: comment, BPM, Album artist
+  + MMS and RTSP streams should work properly now
+  + Always visible on startup when started manually
+  + New implementation of the MPRIS D-Bus interface spec
+  + Creates nested folders on MTP devices
+  + Installs header, VAPI and pkg-config files for external
+    plugins
+  + DAAP plugin now uses libdmapsharing
+  + Library, playlist and podcast syncing for media players
+  + Fixed interaction with Brasero for CD burning
+  + New application icon
+  + Displays HTML podcast episode descriptions using WebKit
+  + Updates for Magnatune's new purchase process
+  + Bugs fixed: bgo#310774, bgo#320507, bgo#324845, bgo#341702,
+    bgo#404698, bgo#454889, bgo#457088, bgo#501554, bgo#520046,
+    bgo#525094, bgo#527898, bgo#530775, bgo#537868, bgo#538240,
+    bgo#559849, bgo#560940, bgo#566852, bgo#581885, bgo#592470,
+    bgo#593641, bgo#593968, bgo#595425, bgo#596615, bgo#612714,
+    bgo#612867, bgo#612942, bgo#613526, bgo#613941, bgo#614084,
+    bgo#614139, bgo#614184, bgo#614351, bgo#616411, bgo#616636,
+    bgo#617157, bgo#617587, bgo#618025, bgo#618520, bgo#619247,
+    bgo#619576, bgo#619677, bgo#619907, bgo#619925, bgo#620069,
+    bgo#620199, bgo#620256, bgo#620857, bgo#621434, bgo#622215,
+    bgo#622613, bgo#622723, bgo#622753
+  + Updated translations.
+- Split out a devel package.
+
+-------------------------------------------------------------------
+Sun Mar 28 13:53:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.12.8:
+  + Last.fm cover art search
+  + Automatically unmount MTP devices mounted by gvfs
+  + More improvements to mixed-direction text display
+  + Bugs fixed:
+    - bgo#520121 - MTP plugin fights with gvfs' gphoto2 backend
+    - bgo#609651 - Album Artwork Does Not Display Immediately For
+      Embedded Artwork
+    - bgo#610753 - Fix mixed-direction text in header widget
+    - bgo#482955, bgo#527898, bgo#528513, bgo#551402, bgo#600494,
+      bgo#603261, bgo#607073, bgo#611541, bgo#611714, bgo#611772,
+      bgo#612570, bgo#613163, bgo#613540, bgo#613542, bgo#613606,
+      bgo#613658, bgo#613715, bgo#613784
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  1 12:23:57 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.12.7:
+  + New ReplayGain plugin, replacing the old broken ReplayGain code
+  + Nautilus-sendto plugin
+  + Support for Magnatune streaming and download accounts
+  + Support for pidgin in the IM status plugin
+  + Context pane plugin now uses the GTK+ font settings
+  + Support for artist and album sort names
+  + Now depends on GTK+ 2.16, GLib 2.18, and pygobject 2.16 (no
+    more libgnome, libgnomeui, gnome-vfs, or libsexy code anywhere)
+  + As GSEAL-ready as we can make it for now
+  + Compatible with the new totem-plparser save API
+  + Disentangled 'delete', 'remove', and 'remove from playlist'
+    actions
+  + Improvements to display of mixed-direction text
+  + Simplified selection of audio CD tracks to extract
+  + Playlist creation should work on more generic player devices
+    now
+  + Bugs fixed: bgo#316257, bgo#338221, bgo#378355, bgo#384483,
+    bgo#424878, bgo#485730, bgo#518540, bgo#533727, bgo#537483,
+    bgo#542055, bgo#547174, bgo#559582, bgo#564800, bgo#584593,
+    bgo#584704, bgo#593188, bgo#594132, bgo#595795, bgo#601524,
+    bgo#602015, bgo#602140, bgo#602615, bgo#602616, bgo#602679,
+    bgo#603258, bgo#603263, bgo#603444, bgo#603876, bgo#603929,
+    bgo#604186, bgo#604188, bgo#604189, bgo#604292, bgo#604771,
+    bgo#605023, bgo#605038, bgo#605031, bgo#605313, bgo#605583,
+    bgo#605584, bgo#605725, bgo#606470, bgo#606472, bgo#607263,
+    bgo#607265, bgo#607538, bgo#607672, bgo#607897, bgo#607935,
+    bgo#608397, bgo#609306, bgo#609767, bgo#609908, bgo#609916,
+    bgo#610440, bgo#610643, bgo#610655
+- Drop libsexy-devel BuildRequires.
+- Drop rhythmbox-fix-build-with-totem.patch, upstream included
+
+-------------------------------------------------------------------
+Sat Jan 30 22:13:56 CET 2010 - captain.magnus@opensuse.org
+
+- Add rhythmbox-fix-build-with-totem.patch to fix build with latest
+  totem-pl-parser. Patch taken from upstream and can be removed
+  with the next version update
+
+-------------------------------------------------------------------
+Thu Jan 21 14:26:36 CET 2010 - vuntz@opensuse.org
+
+- Add rhythmbox-fix-upnp-plugin.patch to make UPnP plugin not fail
+  on startup. Fix bnc#564206, bgo#599294.
+
+-------------------------------------------------------------------
+Thu Jan  7 19:26:28 CET 2010 - vuntz@opensuse.org
+
+- Build against mozilla-xulrunner192-devel on openSUSE > 11.2.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:02:52 CET 2010 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel on 11.3 and later, following the module
+  split upstream.
+
+-------------------------------------------------------------------
+Wed Dec  2 20:51:47 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.12.6:
+  + Context pane plugin
+  + Power management plugin reworked to use new D-Bus API
+  + MTP plugin reworked to do everything asynchronously
+  + Volume slider levels match what PulseAudio displays
+  + Playback pipeline filter interfaces actually work properly now
+  + Much improved visualization performance when crossfading is
+    enabled
+  + Bugs fixed:
+    - bgo#499048 - Filter insertion and removal on non-xfade
+      backend is not robust.
+    - bgo#499051 - xfade backend doesn't play nice with LADSPA
+      filters (or is it the reverse ?)
+    - bgo#499052 - Filter removal on xfade backend is not robust.
+    - bgo#534981 - Add multi threading to MTP Support
+    - bgo#564772 - MTP plugin crash when I plug-in my Creative Zen
+    - bgo#564800 - GnomeGoals: Remove deprecated GTK+ symbols
+    - bgo#589845 - im-status: use mission control dbus interface
+    - bgo#590474 - Podcast entry disappears from display during
+      download
+    - bgo#594901 - fails to display cover image from id3 tag
+    - bgo#595966 - leaked string in rb_stock_icons_init
+    - bgo#596573 - [PATCH] Do not use gnome-power-manager for
+      inhibits, instead use gnome-session
+    - bgo#597706 - rhythmbox crashed with SIGSEGV in g_object_get()
+    - bgo#597708 - rhythmbox crashed with SIGSEGV in
+      rb_source_get_config_widget()
+    - bgo#597708 - DAAP plugin doesn't link to libsoup
+    - bgo#598135 - Should init error before call
+      libhal_device_get_property_string
+    - bgo#598302 - Use GDK spawn functions to handle multi-screen
+    - bgo#598613 - Rhythmbox shows cover art of previous track in
+      Notification Bubble if current track has no cover art
+    - bgo#598955 - Use Cubic volume when StreamVolume interface is
+      available
+    - bgo#600058 - Feed is not parsed when title tag is empty
+    - bgo#600513 - Generates invalid Brasero project
+    - bgo#600549 - Crash when transferring a track over MTP with a
+      slash in the track title
+    - bgo#600624 - track information is not displayed correctly
+      sometimes when playing internet radios
+    - bgo#600995 - Elapsed time indicator is wrong when seeking
+    - bgo#601352 - Crash while editing automatic playlist
+    - bgo#601460 - Rhythmbox gets laggy when copying music to iPod
+    - bgo#601528 - Play button doesn't work after finishing a
+      playlist
+    - bgo#602615 - rhythmbox fails to build if python bindings are
+      built and ld's --no-add-needed is used
+  + Updated translations.
+- Drop rhythmbox-fix-inhibit.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct  7 11:37:31 CEST 2009 - vuntz@opensuse.org
+
+- Add rhythmbox-fix-inhibit.patch to fix the inhibit plugin, so it
+  uses the new dbus API.
+
+-------------------------------------------------------------------
+Mon Sep 28 17:11:12 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 0.12.5:
+  + New cover art search code using discogs.com and MusicBrainz,
+    replacing the Amazon cover art search that no longer works
+  + Updated Coherence UPnP plugin
+  + Clicking on the status icon summons the main window to the
+    current workspace
+  + Bugs fixed:
+    - bgo#410684 - MusicBrainz cover art search
+    - bgo#590184 - Update .desktop file for new GenericName
+      conventions
+    - bgo#592404 - use correct icon name for the throbber
+    - bgo#592763 - fix some button definitions so the button-images
+      setting works
+    - bgo#593494 - display location column in playlists if enabled
+    - bgo#594008 - fix reading of symlinks with non-ASCII targets
+    - bgo#594124 - fix incorrect variable name in gio chunk loader
+    - bgo#594419 - disable non-functional lyricwiki search
+    - bgo#594728 - deadlock setting replaygain-adjusted volume
+  + Updated translations.
+- Do not change the Name in the desktop file: it's fixed usptream
+  now.
+
+-------------------------------------------------------------------
+Sun Aug 23 22:03:06 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 0.12.4:
+  + New HAL-free media player detection code (using GUdev and the
+    media-player-id collection of device info files)
+  + Improved MTP device detection allowing multiple devices and
+    devices not explicitly supported by libmtp
+  + Audio CD improvements: allow metadata retrieval to be retried,
+    link to the musicbrainz submission page when data is missing
+  + Configurable action for mouse-wheel events on the status icon
+    (volume control or next/previous track)
+  + Rearranged to link properly (should help building on Windows or
+    with -Wl,-as-needed, probably)
+  + Variety of crashes fixed
+  + Occasional transfer problems with MTP devices fixed
+  + Bugs fixed:
+    - bgo#322265 - Can't reload CD metadata
+    - bgo#376863 - option to configure default action of mouse roll
+                   event on tray icon
+    - bgo#437110 - librhythmbox-core.so missing some library links
+    - bgo#535065 - If a cd is not listed in musicbrainz it can not
+                   be added
+    - bgo#561953 - Scan Removable Devices don't works with MTP
+                   music players
+    - bgo#563544 - rework MTP device detection for libmtp 0.3.0
+    - bgo#580440 - lists with only one song don't repeat with both
+                   "repeat" and "shuffle" selected
+    - bgo#585595 - crash at end of playlist with crossfading
+                   disabled
+    - bgo#586598 - use streaming song titles for lyrics searches
+    - bgo#587662 - improved warning message in python plugin
+                   support code
+    - bgo#588248 - link last.fm plugin with libsoup-gnome
+    - bgo#588257 - occasional crash on shutdown
+    - bgo#590108 - crashes if there are no saveable metadata types
+    - bgo#591874 - pack right sidebar with shrinking disabled
+    - bgo#592325 - crashes initialising an iPod Touch
+  + Updated translations
+- Replace hal-devel BuildRequires with libgudev-1_0-devel.
+
+-------------------------------------------------------------------
+Fri Aug 21 14:28:40 CEST 2009 - vuntz@novell.com
+
+- Add missing BuildRequires for optionale features: hal-devel (fix
+  bnc#532989), gnome-keyring-devel and vala-devel.
+
+-------------------------------------------------------------------
+Mon Jul 20 13:23:49 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.12.3:
+  + Only attempts to install GStreamer audio decoder plugins
+  + More accurate lyrics and cover art searches
+  + Problems with M4A files in podcasts fixed
+  + CD playback and ripping improvements:
+    - Fixed playback when crossfading is enabled
+    - New entry fields for album artist, genre, year, disc number
+    - Album artist is used when constructing filenames
+    - Song title, genre, and artist can be edited in the track list
+    - Increased extraction buffer size, meaning faster ripping
+  + Playback position slider updates more frequently
+  + Better behaviour with PulseAudio's flat volume
+  + Support for automatic proxy configuration (via libsoup-gnome)
+  + Clean up empty directories on media player devices
+  + Improved playback from MTP devices
+  + Some improvements manually added and IPv6 addressed DAAP
+    servers
+  + Bugs fixed: bgo#331272, bgo#345712, bgo#349066, bgo#358313,
+    bgo#382906, bgo#425239, bgo#437324, bgo#479897, bgo#501217,
+    bgo#502670, bgo#516192, bgo#531310, bgo#537113, bgo#539007,
+    bgo#550491, bgo#556296, bgo#576005, bgo#583108, bgo#583700,
+    bgo#583934, bgo#584182, bgo#584248, bgo#584378, bgo#584394,
+    bgo#584588, bgo#584726, bgo#584770, bgo#584804, bgo#584927,
+    bgo#584930, bgo#584958, bgo#585043, bgo#585114, bgo#585524,
+    bgo#586363, bgo#586365, bgo#586803, bgo#586922, bgo#586985,
+    bgo#587329, bgo#587479, bgo#587595, bgo#587691
+
+-------------------------------------------------------------------
+Sun Jun 14 02:17:25 CEST 2009 - vuntz@novell.com
+
+- Add python-coherence Recommends for the UPnP plugin.
+
+-------------------------------------------------------------------
+Tue Jun  2 17:56:46 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.12.2:
+  + Support for cover art images embedded in song metadata
+  + New plugin that sets your IM status to describe the current
+    playing song
+  + Last.fm submission protocol v1.2 (including the 'now playing'
+    feature)
+  + New status icon plugin
+  + Replaced libglade with GtkBuilder
+  + Switched from playbin to playbin2 when crossfading is disabled,
+    providing gapless playback and better support for visualization
+  + Bugs fixed:
+    - bgo#158168 - Rhythmbox should minimize to tray on Exit
+    - bgo#317982 - Notification icon redundant when applet is used
+    - bgo#324114 - Minimize to nothing (no tray)
+    - bgo#331019 - Show notification when unfocused but not
+      minimized
+    - bgo#345975 - Show album covers embedded in files e.g. mp3 ID3
+      tags
+    - bgo#349280 - Move to GtkStatusIcon (Help kill libegg)
+    - bgo#396409 - Radio stations using chained oggs break
+      rhythmbox
+    - bgo#397196 - rhythmbox error report "Unknown playback error"
+      needs improvement
+    - bgo#406807 - visualisation plugin blocks video output when
+      not active
+    - bgo#501998 - Mouse pointer should disappear in fullscreen
+      visualization
+    - bgo#509845 - Keyboard shortcuts should work with fullscreen
+      visuals
+    - bgo#526493 - New plugin: change IM status according played
+      song
+    - bgo#542922 - Use playbin2 instead of playbin
+    - bgo#551002 - "Don't Really Close" should have an animation
+    - bgo#562016 - Migrate from libglade to GtkBuilder
+    - bgo#567335 - Crash in while playing file and visualizing
+    - bgo#579137 - Cannot rearange playlists longer than one screen
+      size
+    - bgo#580269 - Rhythmbox won't compile with latest
+      totem-pl-parser
+    - bgo#580663 - WKNC Radio streams have changed URL
+    - bgo#580721 - Crashes when not selecting the limiting kind
+    - bgo#580743 - Rhythmbox doesn't support the newest
+      audioscrobbler api
+    - bgo#581468 - Missing im-status plugin file in POTFILES.in
+    - bgo#581574 - Rhythmbox tries to import desktop files
+    - bgo#582130 - [PATCH] New Jamendo Logo
+    - bgo#583171 - crash due to plugins.ui not being installed
+    - bgo#583926 - NetBSD doesn't have sys/vfs.h
+    - bgo#583938 - Unportable test(1) construct in configure script
+  + Updated translations.
+- Drop rhythmbox-totem-pl-parser-api.patch: fixed upstream.
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon May 25 13:52:39 CEST 2009 - lnussel@suse.de
+
+- lirc -> lirc-devel in BuildRequires
+
+-------------------------------------------------------------------
+Wed May 20 17:52:22 CEST 2009 - vuntz@novell.com
+
+- Add rhythmbox-totem-pl-parser-api.patch to fix build with latest
+  totem-pl-parser.
+- Do not package omf files twice.
+
+-------------------------------------------------------------------
+Mon May 18 01:13:59 CEST 2009 - vuntz@novell.com
+
+- Change python-gstreamer-0_10 BuildRequires to
+  python-gstreamer-0_10 to fix build.
+
+-------------------------------------------------------------------
+Wed May  6 15:04:04 CEST 2009 - vuntz@novell.com
+
+- Build against mozilla-xulrunner191 on openSUSE > 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 28 12:37:17 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.12.1:
+  + Removal of libgnome dependency when building with gtk+ 2.14+
+  + Greatly reduced memory usage when accessing Jamendo catalog
+  + Cover art improvements:
+    - Provide cover art for all songs transferred to iPods
+    - Support for transferring cover art to MTP devices
+    - Cover art image widget is better behaved when resized
+  + Switched to decodebin2, notably allowing playback of chained
+    ogg streams
+  + Better support for lossless encoded files in the UI
+  + Compatibility with the DeviceKit-disks gvfs volume monitor
+  + Some support for 'album sortname' tags
+  + Allow configuration of the audioscrobbler handshake URL
+    (libre.fm)
+  + Improved network buffering in the crossfading player backend
+  + Bugs fixed: bgo#576031, bgo#513828, bgo#529873, bgo#576238,
+    bgo#510236, bgo#576846, bgo#576987, bgo#576925, bgo#576673,
+    bgo#365154, bgo#576038, bgo#577840, bgo#577465, bgo#578060,
+    bgo#337438, bgo#576574, bgo#426164, bgo#443720, bgo#578514,
+    bgo#578398, bgo#570600, bgo#577753, bgo#473757, bgo#579262,
+    bgo#579465
+- Drop libgnomeui-devel BuildRequires since it's not needed
+  anymore.
+
+-------------------------------------------------------------------
+Thu Mar 19 18:06:20 CET 2009 - vuntz@novell.com
+
+- Update to version 0.12.0:
+  + Replaced gnome-vfs with GIO
+  + New CD burning plugin using Brasero
+  + Improvements to the cross-fading player backend
+  + Various improvements to MTP device support
+  + Updated audio CD metadata code, supporting CD-Text and
+    musicbrainz3
+  + User data and cached files moved to XDG base directory spec
+    locations
+  + Much clearer indication of problems with last.fm login and
+    streaming
+  + Where possible, provide a simple means to duplicate audio CDs
+  + Greatly improved performance when accessibility is enabled
+  + Updated Coherence UPnP plugin
+  + iPod improvements: avoid creating duplicates, add a device
+    properties dialog, initialize brand new ipods
+  + Support for more last.fm stream types
+  + GTK+ and GLib usage cleanups: use single header includes,
+    stop using deprecated functions and widgets
+  + Reworked tray icon tooltip using GtkTooltip instead of
+    SexyTooltip
+  + Random play order should repeat itself far less often
+  + If using pulseaudio, control the output volume using the PA
+    stream volume
+  + Reworked search infrastructure that might make interesting
+    things possible
+  + Updated translations.
+- Drop libmtp8.patch: fixed upstream.
+- Remove unneeded BuildRequires: gnome-common, gtk-doc,
+  libid3tag-devel, python-devel, scrollkeeper.
+- Add libmusicbrainz3-devel BuildRequires.
+- Remove nautilus-cd-burner-devel from BuildRequires and use
+  brasero-devel instead.
+- Use py_requires.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Pass --enable-python to make sure we fail if python plugins can
+  not be built for some reason.
+- Stop adding DocPath to the desktop file: yelp doesn't need this.
+- Remove sr@latin workaround.
+- Don't package non-existing README.iPod and TODO.
+
+-------------------------------------------------------------------
+Sat Jan 31 20:55:28 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Wed Jan 28 23:37:22 CET 2009 - vuntz@novell.com
+
+- Remove perl-XML-Parser BuildRequires.
+- Remove check for SUSE/openSUSE <= 1010
+
+-------------------------------------------------------------------
+Mon Oct 27 13:47:45 CET 2008 - vuntz@novell.com
+
+- Don't call "autoreconf -f -i": we don't need it, and for some
+  weird reason, it blocks the python plugins build.
+
+-------------------------------------------------------------------
+Tue Oct  7 13:16:18 CEST 2008 - meissner@suse.de
+
+- build with xulrunner190 instead of 181
+
+-------------------------------------------------------------------
+Mon Aug 25 18:27:06 CEST 2008 - vuntz@novell.com
+
+- Update to version 0.11.6:
+  + Relicensed with GPL exception for GStreamer plugins
+  + Improvements to the cross-fading playback backend
+  + Use Amazon ECS 4.0 web service for cover art searches
+  + Remember browser state for (some) removable devices
+  + Automatically remove podcast episodes that are no longer
+    available
+  + Only display error dialogs for manually triggered podcast
+    updates
+  + Allow playlists from DAAP shares to be sorted
+  + Fix transcoding when transferring to MTP devices
+  + Start moving cached data to XDG_CACHE_HOME
+  + More inclusive local cover art search
+  + Lots of improvements to the iPod plugin
+  + Switch to the new last.fm streaming system
+  + Much improved API documentation coverage
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  1 15:06:32 CEST 2008 - aj@suse.de
+
+- Build fix for libmtp8.
+
+-------------------------------------------------------------------
+Fri Mar 21 13:58:07 CET 2008 - vuntz@suse.de
+
+- Also require python-gstreamer-0_10. 
+
+-------------------------------------------------------------------
+Fri Mar 21 12:50:04 CET 2008 - vuntz@suse.de
+
+- Update to version 0.11.5:
+  + Improvements to the cross-fading playback backend
+  + Assorted bug fixed for MTP device support
+  + Add "shuffle playlist" command for playlists
+  + Improvements to iPod art and podcast support
+  + Fix some issues causing problems for accessability tools
+  + Several major improvements to UPnP support (including acting as
+    a renderer)
+  + List Rhythmbox as supporting lastfm:// URIs
+  + Updated translations.
+- Remove rhythmbox-check.patch, fix upstream.
+- Reenable audioscrobbler and daap plugins since we have libsoup2.4
+  now.
+- Build require libmtp-devel to enable the mtp plugin.
+- Build require python-gstreamer-0_10 to enable python plugins.
+- Build require gcc-c++ and xulrunner to enable the itunes
+  detection browser plugin. Put the plugin in
+  %{_libdir}/browser-plugins and add it to the package.
+
+-------------------------------------------------------------------
+Thu Feb 28 16:09:51 CET 2008 - jpr@suse.de
+
+- Update to 0.11.4
+* Support automatic GStreamer plugin installation
+* Improved cross-fading backend
+* Improved Podcast feed support, including Atom and APML
+* Add optional mozilla plugin to handle itms:// links
+* Fade volume when pausing and unpausing
+* Improve performance and stability of MTP device support
+* Stop putting deleted tracks on iPods in the Garbage Bin
+* Support PSPs with newer firmware
+* Improvements to the Coherence-based UPnP support
+* Minor improvements to Python bindings for plugins
+* Allow drag-and-drop of images to the cover art display
+* Allow DAAP shares to be connected to manually
+* Support DAAP smart playlists and radio streams
+* Handle file name being passed on the command line again
+* Add "donate to artist" action to Jamendo plugin
+* Support some more lyric sites
+* Improvements and fixes to the cross-fading player
+* Improve UPnP support
+* Improve track importing, especially on generic audio players
+* Allow python plugins to use threads
+* Enable music store plugins by default
+* Support playback from fm radio tuner cards
+* add partial support for UPnP A/V using Coherence
+* large memory usage reductions for the Jamendo plugin
+* read some keys from .is_audio_player files, like Banshee
+* handle playlist-paths given to us by HAL better
+* allow plugins to add new play orders
+* notify last.fm about songs played on iPods
+* more new icons
+* make gapless/xfade playback and visualisations work together better
+* handle lastfm:// URIs
+* make Magnatune/Jamendo loading intro saner on small screens
+* fix last.fm streaming
+* allow the user of Magnatune gift cards
+* do iPod DB saving in the background, not blocking the UI
+* vastly reduce the Jamendo plugin's memory usage
+* add support for MTP audio players
+* clean up the playback preferences UI
+* update play count, rating and last played on iPods
+* add support for multiple lyrics sites, and allow editing of lyrics
+* Add gapless/cross-fading playback backend (130426)
+* Add awesome Tango-style icons (388648, 380896, 388650, 314608)
+* Don't wake up the CPU all the time while doing nothing (399012)
+* Allow plugins to add filer and tee elements/sub-piplines
+  to the gstreamer pipeline (345181)
+* Group sources together (359740)
+* Add DB support for keywords (324540)
+* Save modified iPod playlists (436744), and
+  marks podcasts as such (424086)
+* Fix Unicode normalisation, which also makes searching
+  ignore diacritical marks (421253, 338824)
+* Use xdg-user-dirs, and kill the druid (yay!) (411247)
+* Write art out to the DB on iPods (357400)
+* Parse last.fm group radio URLs too (407320)
+* Add support for MusicBrainz id tags (410681)
+* Minor improvements to the cover-art plugin
+* Retrieve cover art from last.fm (414065) and Magnatune (411622)
+* Add some more useful options to rhythmbox-client (414648)
+* Add preliminary support for Vala plugins
+* Use GSequence instead of EggSequence (419599)
+* plus a heap of bug fixes and minor improvements
+* fix saving of db on iPod shuffles (386662)
+* fix some crashes on Solaris (418886)
+* fix crasher due to python logging (429687)
+* fix crash when MusicBrainz returns nothing (414864)
+* prefer id3v2 over v1, even when they arrive later (428276)
+* fix crash when doing entry.get() from python (432949)
+* cancel async gnomevfs transfers correctly (434003)
+* fix query model reorder issues (436329)
+* remove timeout correctly (436355)
+* don't remove items from list being iterated (404169)
+* build against totem-plparser 2.19's new API
+* Updated translations
+- Remove rhythmbox-0.9.6-uninit-debug.patch, the problematic code
+  was removed upstream
+
+-------------------------------------------------------------------
+Wed Feb  6 02:03:29 CET 2008 - ro@suse.de
+
+- use --disable-audioscobbler and --disable-daap for the moment
+  the required libsoup has changed its api
+
+-------------------------------------------------------------------
+Thu Oct 11 15:46:54 CEST 2007 - sbrabec@suse.cz
+
+- Use binding specific avahi package.
+
+-------------------------------------------------------------------
+Tue Sep  4 11:59:32 CEST 2007 - ro@suse.de
+
+- kill fdupes for the moment, breaks bundle-lang 
+
+-------------------------------------------------------------------
+Wed Aug  8 19:03:10 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Sun Jul 15 17:11:47 CEST 2007 - aj@suse.de
+
+- Use fdupes to shrink size.
+- Add explicit build requirement on lirc.
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:13 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Apr 11 11:18:58 CDT 2007 - maw@suse.de
+
+- Update to version 0.10.0
+- Fixes for bugzilla.gnome.org #410601, #411783, #411558, #411189,
+  #413206, #393642, #416024, #411141, #380411, #411145, #413301,
+  #419874, #411584, #413640, #411703, #411038, #410940, #412931,
+  #409164, #416213, #420444, #395124, #414980, and #419153
+- Updated translations for the ar, da, dz, en_GB, fr, hu, it,
+  pt_BR, sv, and zh_CN locales.
+
+-------------------------------------------------------------------
+Tue Apr 10 16:28:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.9.8:
+  * UI and usability changes.
+  * More player devices supported.
+  * Plugin design.
+  * New plugins and music servers supported.
+  * Translation updates.
+  * See NEWS for more.
+
+-------------------------------------------------------------------
+Tue Apr 10 01:09:26 CEST 2007 - ro@suse.de
+
+- fix build with updated check package 
+
+-------------------------------------------------------------------
+Fri Mar  9 11:36:00 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Thu Mar  1 15:48:09 CET 2007 - sbrabec@suse.cz
+
+- Fixed autoreconf (#249608).
+
+-------------------------------------------------------------------
+Mon Feb 19 16:02:43 CET 2007 - mvaner@suse.cz
+
+- Removing debug print of not yet inicialized variable (bug #228710)
+  - uninit-debug.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 12:31:17 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Nov 16 16:36:16 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.96:
+  * fix DAAP seeking
+  * display track numbers in playlists too
+  * retrieve playlsit and audio folder information from HAL
+  * make search box coloured when active
+  * improve ID3 tag writing
+  * load local cover art, and large improvements to plugin
+  * build fixes: Solaris
+  * Store MusicBrainz track IDs in the DB
+  * fix some i18n issues
+  * add gnome-keyring support to DAAP
+  * allow hiding of plugins and disabler per-user plugins
+  * plugin improvements
+  * HTTP proxy-related fixes/improvements
+  * drag-and-drop improvements
+  * importing fixes
+  * add "property changed" signal for dbus clients
+  * turn CD burning into a plugin
+  * turn audio CD support into a plugin
+  * LIRC plugin fixes
+  * improve database thread usage
+  * make DB handle unknown entry-types
+  * improve plugin debug output, and bindings
+  * improve "import errors" and "missing files" source
+  * fix many memory leaks
+  * use GMapperFiles for DAAP transfers, fixing some iTunes clients
+  * add support for alternate playlists files
+  * handle transparent panels correctly
+  * fix playlists subset searching
+  * make iradio playlists handling better
+  * use GOption instead og popt
+  * remember visibility for remote files, as well as local ones
+  * be smarter about creating podcast file names
+  * allow multiple selections in the Import Folder dialog
+  * Bug fixes, performance and memory improvements, and minor
+    features
+  * Translation updates
+- Enabled all optional features.
+
+-------------------------------------------------------------------
+Sat Oct 14 18:44:04 CEST 2006 - danw@suse.de
+
+- Remove a patch that's been disabled since at least SLED10
+
+-------------------------------------------------------------------
+Fri Oct 13 07:39:47 CEST 2006 - aj@suse.de
+
+- Adjust BuildRequires for gnome-doc-utils.
+
+-------------------------------------------------------------------
+Sun Sep  3 19:13:36 CEST 2006 - aj@suse.de
+
+- Update to rhythmbox 0.95:
+  * Adjust for libnautilus-burn 2.15.3 API
+  * Fixes for ipod
+  * improve DBus interface
+  * many bug fixes
+
+-------------------------------------------------------------------
+Mon Apr  3 23:02:09 CEST 2006 - jpr@suse.de
+
+- Update to rhythmbox 0.93.1 for gstreamer 0.10 support
+- Remove upstreamed patches
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:34 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Mon Feb 20 12:19:55 CET 2006 - stbinner@suse.de
+
+- fix Name in .desktop file, second try
+
+-------------------------------------------------------------------
+Wed Feb 15 12:58:25 CET 2006 - stbinner@suse.de
+
+- fix Name in .desktop file
+
+-------------------------------------------------------------------
+Thu Feb  9 21:38:16 CET 2006 - ro@suse.de
+
+- added avahi-glib to BuildRequires 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 17:28:22 CET 2006 - sbrabec@suse.cz
+
+- Fixed audioscrobbler track lenth bug (GNOME#323639).
+
+-------------------------------------------------------------------
+Wed Dec 21 02:29:09 CET 2005 - ro@suse.de
+
+- fix build with current dbus 
+
+-------------------------------------------------------------------
+Tue Dec  6 15:10:45 CET 2005 - sbrabec@suse.cz
+
+- Fixed neededforbuild for 10.0 (lzo lzo-devel).
+
+-------------------------------------------------------------------
+Mon Dec  5 13:14:30 CET 2005 - sbrabec@suse.cz
+
+- Fixed gstreamer scriptlet neededforbuild (krb5 fam).
+
+-------------------------------------------------------------------
+Thu Dec  1 17:58:19 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.9.2.
+- Enabled all optional features.
+
+-------------------------------------------------------------------
+Tue Aug  2 17:42:08 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.8.8.
+- Build with iPod and Dashboard integration support.
+
+-------------------------------------------------------------------
+Thu Mar 17 14:54:46 CET 2005 - sbrabec@suse.cz
+
+- Do not require gstreamer-plugins-extra (#73637).
+
+-------------------------------------------------------------------
+Wed Mar 16 16:49:13 CET 2005 - sbrabec@suse.cz
+
+- Require sufficient basic set of gstreamer plugins.
+
+-------------------------------------------------------------------
+Wed Mar 16 05:34:39 CET 2005 - clahey@suse.de
+
+- Update name and category.
+
+-------------------------------------------------------------------
+Fri Nov 19 14:20:36 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Wed Nov  3 02:07:36 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Aug 31 21:40:00 CEST 2004 - clahey@suse.de
+
+- Cache rhythmbox help and show rhythmbox in khelpcenter.
+
+-------------------------------------------------------------------
+Mon Aug  2 01:33:58 CEST 2004 - ro@suse.de
+
+- regenerate skip-druid.diff and rename it to do-skip-druid.diff
+
+-------------------------------------------------------------------
+Fri Jul 30 11:54:57 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60998
+  Skips the druid of Rhythmbox. 
+
+-------------------------------------------------------------------
+Tue May 11 12:10:06 CEST 2004 - sbrabec@suse.cz
+
+- Fixed gconftool-2 prerequirements.
+
+-------------------------------------------------------------------
+Mon May 10 16:10:06 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 0.8.3 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Wed Mar 10 11:21:15 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Wed Mar  3 10:19:07 CET 2004 - hhetter@suse.de
+
+- updated to version 0.6.7 
+
+-------------------------------------------------------------------
+Mon Feb 23 11:39:12 CET 2004 - adrian@suse.de
+
+- move menu entry to Jukebox menu
+- fix build as user
+
+-------------------------------------------------------------------
+Thu Feb 19 16:10:42 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.6.5.
+
+-------------------------------------------------------------------
+Mon Oct 27 15:21:53 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.5.88.
+
+-------------------------------------------------------------------
+Fri Oct 10 14:20:39 CEST 2003 - sbrabec@suse.cz
+
+- New SuSE package, version 0.5.1.
+

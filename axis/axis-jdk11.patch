@@ -1,0 +1,766 @@
+--- axis-1_4/src/org/apache/axis/deployment/wsdd/providers/WSDDJavaCORBAProvider.java	2006-04-23 03:57:26.000000000 +0200
++++ axis-1_4/src/org/apache/axis/deployment/wsdd/providers/WSDDJavaCORBAProvider.java	2018-07-10 18:45:14.056601034 +0200
+@@ -1,45 +0,0 @@
+-/*
+- * Copyright 2001-2004 The Apache Software Foundation.
+- * 
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- * 
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- * 
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-package org.apache.axis.deployment.wsdd.providers;
+-
+-import org.apache.axis.EngineConfiguration;
+-import org.apache.axis.Handler;
+-import org.apache.axis.deployment.wsdd.WSDDConstants;
+-import org.apache.axis.deployment.wsdd.WSDDProvider;
+-import org.apache.axis.deployment.wsdd.WSDDService;
+-
+-
+-/**
+- * A WSDD CORBA provider
+- * 
+- * @author Davanum Srinivas (dims@yahoo.com)
+- */
+-public class WSDDJavaCORBAProvider
+-    extends WSDDProvider
+-{
+-    public String getName() {
+-        return WSDDConstants.PROVIDER_CORBA;
+-    }
+-    /**
+-     *
+-     */
+-    public Handler newProviderInstance(WSDDService service,
+-                                       EngineConfiguration registry)
+-        throws Exception
+-    {
+-        return new org.apache.axis.providers.java.CORBAProvider();
+-    }
+-}
+--- axis-1_4/src/org/apache/axis/deployment/wsdd/providers/WSDDJavaEJBProvider.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/deployment/wsdd/providers/WSDDJavaEJBProvider.java	2018-07-10 18:45:55.864833720 +0200
+@@ -1,45 +0,0 @@
+-/*
+- * Copyright 2001-2004 The Apache Software Foundation.
+- * 
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- * 
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- * 
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-package org.apache.axis.deployment.wsdd.providers;
+-
+-import org.apache.axis.EngineConfiguration;
+-import org.apache.axis.Handler;
+-import org.apache.axis.deployment.wsdd.WSDDConstants;
+-import org.apache.axis.deployment.wsdd.WSDDProvider;
+-import org.apache.axis.deployment.wsdd.WSDDService;
+-
+-
+-/**
+- * A WSDD EJB provider
+- * 
+- * @author Glen Daniels (gdaniels@apache.org)
+- */
+-public class WSDDJavaEJBProvider
+-    extends WSDDProvider
+-{
+-    public String getName() {
+-        return WSDDConstants.PROVIDER_EJB;
+-    }
+-    /**
+-     *
+-     */
+-    public Handler newProviderInstance(WSDDService service,
+-                                       EngineConfiguration registry)
+-        throws Exception
+-    {
+-        return new org.apache.axis.providers.java.EJBProvider();
+-    }
+-}
+--- axis-1_4/src/org/apache/axis/deployment/wsdd/WSDDConstants.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/deployment/wsdd/WSDDConstants.java	2018-07-10 19:12:50.137806540 +0200
+@@ -66,19 +66,15 @@
+     public static final String PROVIDER_RPC = "RPC";
+     public static final String PROVIDER_MSG = "MSG";
+     public static final String PROVIDER_HANDLER = "Handler";
+-    public static final String PROVIDER_EJB = "EJB";
+     public static final String PROVIDER_COM = "COM";
+     public static final String PROVIDER_BSF = "BSF";
+-    public static final String PROVIDER_CORBA = "CORBA";
+     public static final String PROVIDER_RMI = "RMI";
+     
+     public static final QName QNAME_JAVARPC_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_RPC);
+     public static final QName QNAME_JAVAMSG_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_MSG);
+     public static final QName QNAME_HANDLER_PROVIDER = new QName("", PROVIDER_HANDLER);
+-    public static final QName QNAME_EJB_PROVIDER     = new QName(URI_WSDD_JAVA, PROVIDER_EJB);
+     public static final QName QNAME_COM_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_COM);
+     public static final QName QNAME_BSF_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_BSF);
+-    public static final QName QNAME_CORBA_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_CORBA);
+     public static final QName QNAME_RMI_PROVIDER = new QName(URI_WSDD_JAVA, PROVIDER_RMI);
+ 
+     public static final String ELEM_WSDD_PARAM = "parameter";
+--- axis-1_4/src/org/apache/axis/deployment/wsdd/WSDDProvider.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/deployment/wsdd/WSDDProvider.java	2018-07-10 18:39:07.494560669 +0200
+@@ -21,8 +21,6 @@
+ import org.apache.axis.deployment.wsdd.providers.WSDDBsfProvider;
+ import org.apache.axis.deployment.wsdd.providers.WSDDComProvider;
+ import org.apache.axis.deployment.wsdd.providers.WSDDHandlerProvider;
+-import org.apache.axis.deployment.wsdd.providers.WSDDJavaCORBAProvider;
+-import org.apache.axis.deployment.wsdd.providers.WSDDJavaEJBProvider;
+ import org.apache.axis.deployment.wsdd.providers.WSDDJavaMsgProvider;
+ import org.apache.axis.deployment.wsdd.providers.WSDDJavaRMIProvider;
+ import org.apache.axis.deployment.wsdd.providers.WSDDJavaRPCProvider;
+@@ -65,10 +63,8 @@
+         providers.put(WSDDConstants.QNAME_JAVARPC_PROVIDER, new WSDDJavaRPCProvider());
+         providers.put(WSDDConstants.QNAME_JAVAMSG_PROVIDER, new WSDDJavaMsgProvider());
+         providers.put(WSDDConstants.QNAME_HANDLER_PROVIDER, new WSDDHandlerProvider());
+-        providers.put(WSDDConstants.QNAME_EJB_PROVIDER, new WSDDJavaEJBProvider());
+         providers.put(WSDDConstants.QNAME_COM_PROVIDER, new WSDDComProvider());
+         providers.put(WSDDConstants.QNAME_BSF_PROVIDER, new WSDDBsfProvider());
+-        providers.put(WSDDConstants.QNAME_CORBA_PROVIDER, new WSDDJavaCORBAProvider());
+         providers.put(WSDDConstants.QNAME_RMI_PROVIDER, new WSDDJavaRMIProvider());
+         try {
+             loadPluggableProviders();
+--- axis-1_4/src/org/apache/axis/providers/java/CORBAProvider.java	2006-04-23 03:57:26.000000000 +0200
++++ axis-1_4/src/org/apache/axis/providers/java/CORBAProvider.java	2018-07-10 18:44:57.384508242 +0200
+@@ -1,131 +0,0 @@
+-/*
+- * Copyright 2001-2004 The Apache Software Foundation.
+- * 
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- * 
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- * 
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-package org.apache.axis.providers.java;
+-
+-import org.apache.axis.Constants;
+-import org.apache.axis.Handler;
+-import org.apache.axis.MessageContext;
+-import org.apache.axis.components.logger.LogFactory;
+-import org.apache.axis.utils.ClassUtils;
+-import org.apache.commons.logging.Log;
+-import org.omg.CORBA.ORB;
+-import org.omg.CosNaming.NameComponent;
+-import org.omg.CosNaming.NamingContext;
+-import org.omg.CosNaming.NamingContextHelper;
+-
+-import java.lang.reflect.Method;
+-import java.util.Properties;
+-
+-/**
+- * A basic CORBA Provider
+- *
+- * @author Davanum Srinivas (dims@yahoo.com)
+- */
+-public class CORBAProvider extends RPCProvider
+-{
+-    protected static Log log =
+-        LogFactory.getLog(CORBAProvider.class.getName());
+-
+-    private static final String DEFAULT_ORB_INITIAL_HOST = "localhost";
+-    private static final String DEFAULT_ORB_INITIAL_PORT = "900";
+-    
+-    // The enterprise category is for stuff that an enterprise product might
+-    // want to track, but in a simple environment (like the AXIS build) would
+-    // be nothing more than a nuisance.
+-    protected static Log entLog =
+-        LogFactory.getLog(Constants.ENTERPRISE_LOG_CATEGORY);
+-
+-    public static final String OPTION_ORB_INITIAL_HOST = "ORBInitialHost";
+-    public static final String OPTION_ORB_INITIAL_PORT = "ORBInitialPort";
+-    public static final String OPTION_NAME_ID = "NameID";
+-    public static final String OPTION_NAME_KIND = "NameKind";
+-    public static final String OPTION_INTERFACE_CLASSNAME = "InterfaceClassName";
+-    public static final String OPTION_HELPER_CLASSNAME = "HelperClassName";
+-
+-    /**
+-     * Return a object which implements the service.
+-     * 
+-     * @param msgContext the message context
+-     * @param clsName The JNDI name of the EJB home class
+-     * @return an object that implements the service
+-     */
+-    protected Object makeNewServiceObject(MessageContext msgContext,
+-                                          String clsName)
+-        throws Exception
+-    {
+-        // Read deployment descriptor options
+-        String orbInitialHost = getStrOption(OPTION_ORB_INITIAL_HOST,msgContext.getService()); 
+-        if (orbInitialHost == null)
+-          orbInitialHost = DEFAULT_ORB_INITIAL_HOST;
+-        String orbInitialPort = getStrOption(OPTION_ORB_INITIAL_PORT,msgContext.getService());
+-        if (orbInitialPort == null)
+-          orbInitialPort = DEFAULT_ORB_INITIAL_PORT;
+-        String nameId = getStrOption(OPTION_NAME_ID,msgContext.getService());
+-        String nameKind = getStrOption(OPTION_NAME_KIND,msgContext.getService());
+-        String helperClassName = getStrOption(OPTION_HELPER_CLASSNAME,msgContext.getService());
+-
+-        // Initialize ORB
+-        Properties orbProps = new Properties();
+-        orbProps.put("org.omg.CORBA.ORBInitialHost", orbInitialHost);
+-        orbProps.put("org.omg.CORBA.ORBInitialPort", orbInitialPort);
+-        ORB orb = ORB.init(new String[0], orbProps);
+-
+-        // Find the object
+-        NamingContext root = NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
+-        NameComponent nc = new NameComponent(nameId, nameKind);
+-        NameComponent[] ncs = {nc};
+-        org.omg.CORBA.Object corbaObject = root.resolve(ncs);
+-
+-        Class helperClass = ClassUtils.forName(helperClassName);
+-        // Narrow the object reference
+-        Method narrowMethod = helperClass.getMethod("narrow", CORBA_OBJECT_CLASS);
+-        Object targetObject = narrowMethod.invoke(null, new Object[] {corbaObject});
+-
+-        return targetObject;
+-    }
+-
+-    private static final Class[] CORBA_OBJECT_CLASS = new Class[] {org.omg.CORBA.Object.class};
+-
+-    /**
+-     * Return the option in the configuration that contains the service class
+-     * name.  
+-     */
+-    protected String getServiceClassNameOptionName()
+-    {
+-        return OPTION_INTERFACE_CLASSNAME;
+-    }
+-
+-    /**
+-     * Get a String option by looking first in the service options,
+-     * and then at the Handler's options.  This allows defaults to be
+-     * specified at the provider level, and then overriden for particular
+-     * services.
+-     *
+-     * @param optionName the option to retrieve
+-     * @return String the value of the option or null if not found in
+-     *                either scope
+-     */
+-    protected String getStrOption(String optionName, Handler service)
+-    {
+-        String value = null;
+-        if (service != null)
+-            value = (String)service.getOption(optionName);
+-        if (value == null)
+-            value = (String)getOption(optionName);
+-        return value;
+-    }
+- }
+--- axis-1_4/src/org/apache/axis/providers/java/EJBProvider.java	2006-04-23 03:57:26.000000000 +0200
++++ axis-1_4/src/org/apache/axis/providers/java/EJBProvider.java	2018-07-10 18:45:30.176690761 +0200
+@@ -1,489 +0,0 @@
+-/*
+- * Copyright 2001-2004 The Apache Software Foundation.
+- * 
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- * 
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- * 
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-package org.apache.axis.providers.java;
+-
+-import java.lang.reflect.Method;
+-import java.lang.reflect.InvocationTargetException;
+-import java.util.Properties;
+-
+-import javax.naming.Context;
+-import javax.naming.InitialContext;
+-
+-import org.apache.axis.AxisFault;
+-import org.apache.axis.Constants;
+-import org.apache.axis.Handler;
+-import org.apache.axis.MessageContext;
+-import org.apache.axis.components.logger.LogFactory;
+-import org.apache.axis.handlers.soap.SOAPService;
+-import org.apache.axis.utils.ClassUtils;
+-import org.apache.axis.utils.Messages;
+-import org.apache.commons.logging.Log;
+-
+-/**
+- * A basic EJB Provider
+- *
+- * @author Carl Woolf (cwoolf@macromedia.com)
+- * @author Tom Jordahl (tomj@macromedia.com)
+- * @author C?dric Chabanois (cchabanois@ifrance.com)
+- */
+-public class EJBProvider extends RPCProvider
+-{
+-    protected static Log log =
+-        LogFactory.getLog(EJBProvider.class.getName());
+-
+-    // The enterprise category is for stuff that an enterprise product might
+-    // want to track, but in a simple environment (like the AXIS build) would
+-    // be nothing more than a nuisance.
+-    protected static Log entLog =
+-        LogFactory.getLog(Constants.ENTERPRISE_LOG_CATEGORY);
+-
+-    public static final String OPTION_BEANNAME = "beanJndiName";
+-    public static final String OPTION_HOMEINTERFACENAME = "homeInterfaceName";
+-    public static final String OPTION_REMOTEINTERFACENAME = "remoteInterfaceName";
+-    public static final String OPTION_LOCALHOMEINTERFACENAME = "localHomeInterfaceName";
+-    public static final String OPTION_LOCALINTERFACENAME = "localInterfaceName";
+-    
+-    
+-    public static final String jndiContextClass = "jndiContextClass";
+-    public static final String jndiURL = "jndiURL";
+-    public static final String jndiUsername = "jndiUser";
+-    public static final String jndiPassword = "jndiPassword";
+-    
+-    protected static final Class[] empty_class_array = new Class[0];
+-    protected static final Object[] empty_object_array = new Object[0];
+-    
+-    private static InitialContext cached_context = null;
+-
+-    ///////////////////////////////////////////////////////////////
+-    ///////////////////////////////////////////////////////////////
+-    /////// Default methods from JavaProvider ancestor, overridden
+-    ///////   for ejbeans
+-    ///////////////////////////////////////////////////////////////
+-    ///////////////////////////////////////////////////////////////
+-
+-    /**
+-     * Return a object which implements the service.
+-     * 
+-     * @param msgContext the message context
+-     * @param clsName The JNDI name of the EJB home class
+-     * @return an object that implements the service
+-     */
+-    protected Object makeNewServiceObject(MessageContext msgContext,
+-                                           String clsName)
+-        throws Exception
+-    {
+-        String remoteHomeName = getStrOption(OPTION_HOMEINTERFACENAME, 
+-                                                msgContext.getService());
+-        String localHomeName = getStrOption(OPTION_LOCALHOMEINTERFACENAME, 
+-                                                msgContext.getService());
+-        String homeName = (remoteHomeName != null ? remoteHomeName:localHomeName);
+-
+-        if (homeName == null) {
+-            // cannot find both remote home and local home  
+-            throw new AxisFault(
+-                Messages.getMessage("noOption00", 
+-                                    OPTION_HOMEINTERFACENAME, 
+-                                    msgContext.getTargetService()));
+-        }
+-                                                        
+-        // Load the Home class name given in the config file
+-        Class homeClass = ClassUtils.forName(homeName, true, msgContext.getClassLoader());
+-
+-        // we create either the ejb using either the RemoteHome or LocalHome object
+-        if (remoteHomeName != null)
+-            return createRemoteEJB(msgContext, clsName, homeClass);
+-        else 
+-            return createLocalEJB(msgContext, clsName, homeClass);
+-    }
+-
+-    /**
+-     * Create an EJB using a remote home object
+-     * 
+-     * @param msgContext the message context
+-     * @param beanJndiName The JNDI name of the EJB remote home class
+-     * @param homeClass the class of the home interface
+-     * @return an EJB
+-     */
+-    private Object createRemoteEJB(MessageContext msgContext, 
+-                                    String beanJndiName,
+-                                    Class homeClass)
+-        throws Exception
+-    {
+-        // Get the EJB Home object from JNDI 
+-        Object ejbHome = getEJBHome(msgContext.getService(),
+-                                    msgContext, beanJndiName);
+-        Object ehome = javax.rmi.PortableRemoteObject.narrow(ejbHome, homeClass);
+-
+-        // Invoke the create method of the ejbHome class without actually
+-        // touching any EJB classes (i.e. no cast to EJBHome)
+-        Method createMethod = homeClass.getMethod("create", empty_class_array);
+-        Object result = createMethod.invoke(ehome, empty_object_array);
+-        
+-        return result;        
+-    }
+-
+-    /**
+-     * Create an EJB using a local home object
+-     * 
+-     * @param msgContext the message context
+-     * @param beanJndiName The JNDI name of the EJB local home class
+-     * @param homeClass the class of the home interface
+-     * @return an EJB
+-     */
+-    private Object createLocalEJB(MessageContext msgContext, 
+-                                   String beanJndiName,
+-                                   Class homeClass)
+-        throws Exception
+-    {
+-        // Get the EJB Home object from JNDI 
+-        Object ejbHome = getEJBHome(msgContext.getService(),
+-                                    msgContext, beanJndiName);
+-
+-        // the home object is a local home object
+-        Object ehome;
+-        if (homeClass.isInstance(ejbHome))
+-          ehome = ejbHome;
+-        else
+-          throw new ClassCastException(
+-                  Messages.getMessage("badEjbHomeType"));
+-          
+-        // Invoke the create method of the ejbHome class without actually
+-        // touching any EJB classes (i.e. no cast to EJBLocalHome)
+-        Method createMethod = homeClass.getMethod("create", empty_class_array);
+-        Object result = createMethod.invoke(ehome, empty_object_array);
+-                               
+-        return result;
+-    }
+-
+-    /**
+-     * Tells if the ejb that will be used to handle this service is a remote
+-     * one
+-     */
+-    private boolean isRemoteEjb(SOAPService service)
+-    {
+-        return getStrOption(OPTION_HOMEINTERFACENAME,service) != null; 
+-    }
+-
+-    /**
+-     * Tells if the ejb that will be used to handle this service is a local
+-     * one
+-     */
+-    private boolean isLocalEjb(SOAPService service)
+-    {
+-        return (!isRemoteEjb(service)) && 
+-          (getStrOption(OPTION_LOCALHOMEINTERFACENAME,service) != null);
+-    }
+-
+-
+-    /**
+-     * Return the option in the configuration that contains the service class
+-     * name.  In the EJB case, it is the JNDI name of the bean.
+-     */
+-    protected String getServiceClassNameOptionName()
+-    {
+-        return OPTION_BEANNAME;
+-    }
+-
+-    /**
+-     * Get a String option by looking first in the service options,
+-     * and then at the Handler's options.  This allows defaults to be
+-     * specified at the provider level, and then overriden for particular
+-     * services.
+-     *
+-     * @param optionName the option to retrieve
+-     * @return String the value of the option or null if not found in
+-     *                either scope
+-     */
+-    protected String getStrOption(String optionName, Handler service)
+-    {
+-        String value = null;
+-        if (service != null)
+-            value = (String)service.getOption(optionName);
+-        if (value == null)
+-            value = (String)getOption(optionName);
+-        return value;
+-    }
+-
+-    /**
+-     * Get the remote interface of an ejb from its home class.
+-     * This function can only be used for remote ejbs
+-     * 
+-     * @param beanJndiName the jndi name of the ejb
+-     * @param service the soap service
+-     * @param msgContext the message context (can be null)
+-     */
+-    private Class getRemoteInterfaceClassFromHome(String beanJndiName,
+-                                                   SOAPService service,
+-                                                   MessageContext msgContext)
+-        throws Exception                                       
+-    {
+-        // Get the EJB Home object from JNDI
+-        Object ejbHome = getEJBHome(service, msgContext, beanJndiName);
+-
+-        String homeName = getStrOption(OPTION_HOMEINTERFACENAME,
+-                                       service);
+-        if (homeName == null)
+-            throw new AxisFault(
+-                    Messages.getMessage("noOption00",
+-                                        OPTION_HOMEINTERFACENAME,
+-                                        service.getName()));
+-
+-        // Load the Home class name given in the config file
+-        ClassLoader cl = (msgContext != null) ?
+-                msgContext.getClassLoader() :
+-                Thread.currentThread().getContextClassLoader();
+-        Class homeClass = ClassUtils.forName(homeName, true, cl);
+-
+-
+-        // Make sure the object we got back from JNDI is the same type
+-        // as the what is specified in the config file
+-        Object ehome = javax.rmi.PortableRemoteObject.narrow(ejbHome, homeClass);
+-
+-        // This code requires the use of ejb.jar, so we do the stuff below
+-        //   EJBHome ejbHome = (EJBHome) ehome;
+-        //   EJBMetaData meta = ejbHome.getEJBMetaData();
+-        //   Class interfaceClass = meta.getRemoteInterfaceClass();
+-
+-        // Invoke the getEJBMetaData method of the ejbHome class without
+-        // actually touching any EJB classes (i.e. no cast to EJBHome)
+-        Method getEJBMetaData =
+-                homeClass.getMethod("getEJBMetaData", empty_class_array);
+-        Object metaData = getEJBMetaData.invoke(ehome, empty_object_array);
+-        Method getRemoteInterfaceClass =
+-                metaData.getClass().getMethod("getRemoteInterfaceClass",
+-                                                  empty_class_array);
+-        return (Class) getRemoteInterfaceClass.invoke(metaData,
+-                                                       empty_object_array);
+-    }                                      
+-
+-    
+-    /**
+-     * Get the class description for the EJB Remote or Local Interface, 
+-     * which is what we are interested in exposing to the world (i.e. in WSDL).
+-     * 
+-     * @param msgContext the message context (can be null)
+-     * @param beanJndiName the JNDI name of the EJB
+-     * @return the class info of the EJB remote or local interface
+-     */ 
+-    protected Class getServiceClass(String beanJndiName,
+-                                    SOAPService service,
+-                                    MessageContext msgContext)
+-        throws AxisFault
+-    {
+-        Class interfaceClass = null;
+-        
+-        try {
+-            // First try to get the interface class from the configuation
+-            // Note that we don't verify that remote remoteInterfaceName is used for
+-            // remote ejb and localInterfaceName for local ejb. Should we ?
+-            String remoteInterfaceName = 
+-                    getStrOption(OPTION_REMOTEINTERFACENAME, service);
+-            String localInterfaceName = 
+-                    getStrOption(OPTION_LOCALINTERFACENAME, service);
+-            String interfaceName = (remoteInterfaceName != null ? remoteInterfaceName : localInterfaceName);
+-
+-            if(interfaceName != null){
+-                ClassLoader cl = (msgContext != null) ?
+-                        msgContext.getClassLoader() :
+-                        Thread.currentThread().getContextClassLoader();
+-                interfaceClass = ClassUtils.forName(interfaceName,
+-                                                    true,
+-                                                    cl);
+-            } 
+-            else
+-            {
+-                // cannot get the interface name from the configuration, we get
+-                // it from the EJB Home (if remote)
+-                if (isRemoteEjb(service)) {
+-                    interfaceClass = getRemoteInterfaceClassFromHome(beanJndiName,
+-                                                                     service,
+-                                                                     msgContext);
+-                }
+-                else 
+-                if (isLocalEjb(service)) {
+-                    // we cannot get the local interface from the local ejb home
+-                    // localInterfaceName is mandatory for local ejbs
+-                    throw new AxisFault(
+-                            Messages.getMessage("noOption00", 
+-                                                OPTION_LOCALINTERFACENAME, 
+-                                                service.getName()));
+-                }
+-                else
+-                {
+-                    // neither a local ejb or a remote one ...
+-                    throw new AxisFault(Messages.getMessage("noOption00", 
+-                                                OPTION_HOMEINTERFACENAME,
+-                                                service.getName()));
+-                }
+-            }
+-        } catch (Exception e) {
+-            throw AxisFault.makeFault(e);
+-        }
+-
+-        // got it, return it
+-       return interfaceClass;
+-    }
+-
+-    /**
+-     * Common routine to do the JNDI lookup on the Home interface object
+-     * username and password for jndi lookup are got from the configuration or from
+-     * the messageContext if not found in the configuration
+-     */ 
+-    private Object getEJBHome(SOAPService serviceHandler,
+-                              MessageContext msgContext,
+-                              String beanJndiName)
+-        throws AxisFault
+-    {
+-        Object ejbHome = null;
+-        
+-        // Set up an InitialContext and use it get the beanJndiName from JNDI
+-        try {
+-            Properties properties = null;
+-
+-            // collect all the properties we need to access JNDI:
+-            // username, password, factoryclass, contextUrl
+-
+-            // username
+-            String username = getStrOption(jndiUsername, serviceHandler);
+-            if ((username == null) && (msgContext != null))
+-               username = msgContext.getUsername();
+-            if (username != null) {
+-                if (properties == null)
+-                    properties = new Properties();
+-                properties.setProperty(Context.SECURITY_PRINCIPAL, username);
+-            }
+-
+-            // password
+-            String password = getStrOption(jndiPassword, serviceHandler);
+-            if ((password == null) && (msgContext != null))
+-                password = msgContext.getPassword();
+-            if (password != null) {
+-                if (properties == null)
+-                    properties = new Properties();
+-                properties.setProperty(Context.SECURITY_CREDENTIALS, password);
+-            }
+-
+-            // factory class
+-            String factoryClass = getStrOption(jndiContextClass, serviceHandler);
+-            if (factoryClass != null) {
+-                if (properties == null)
+-                    properties = new Properties();
+-                properties.setProperty(Context.INITIAL_CONTEXT_FACTORY, factoryClass);
+-            }
+-
+-            // contextUrl
+-            String contextUrl = getStrOption(jndiURL, serviceHandler);
+-            if (contextUrl != null) {
+-                if (properties == null)
+-                    properties = new Properties();
+-                properties.setProperty(Context.PROVIDER_URL, contextUrl);
+-            }
+-
+-            // get context using these properties 
+-            InitialContext context = getContext(properties);
+-
+-            // if we didn't get a context, fail
+-            if (context == null)
+-                throw new AxisFault( Messages.getMessage("cannotCreateInitialContext00"));
+-            
+-            ejbHome = getEJBHome(context, beanJndiName);
+-
+-            if (ejbHome == null)
+-                throw new AxisFault( Messages.getMessage("cannotFindJNDIHome00",beanJndiName));
+-        }
+-        // Should probably catch javax.naming.NameNotFoundException here 
+-        catch (Exception exception) {
+-            entLog.info(Messages.getMessage("toAxisFault00"), exception);
+-            throw AxisFault.makeFault(exception);
+-        }
+-
+-        return ejbHome;
+-    }
+-    
+-    protected InitialContext getCachedContext()
+-        throws javax.naming.NamingException
+-    {
+-        if (cached_context == null)
+-            cached_context = new InitialContext();
+-        return cached_context;
+-    }
+-        
+-
+-    protected InitialContext getContext(Properties properties)
+-        throws AxisFault, javax.naming.NamingException
+-    {
+-        // if we got any stuff from the configuration file
+-        // create a new context using these properties 
+-        // otherwise, we get a default context and cache it for next time
+-        return ((properties == null)
+-                ? getCachedContext()
+-                : new InitialContext(properties));
+-    }
+-
+-    protected Object getEJBHome(InitialContext context, String beanJndiName)
+-        throws AxisFault, javax.naming.NamingException
+-    {
+-        // Do the JNDI lookup
+-        return context.lookup(beanJndiName);
+-    }
+-
+-    /**
+-     * Override the default implementation such that we can include
+-     * special handling for {@link java.rmi.ServerException}.
+-     * <p/>
+-     * Converts {@link java.rmi.ServerException} exceptions to
+-     * {@link InvocationTargetException} exceptions with the same cause.
+-     * This allows the axis framework to create a SOAP fault.
+-     * </p>
+-     *
+-     * @see org.apache.axis.providers.java.RPCProvider#invokeMethod(org.apache.axis.MessageContext, java.lang.reflect.Method, java.lang.Object, java.lang.Object[])
+-     */
+-    protected Object invokeMethod(MessageContext msgContext, Method method,
+-                                  Object obj, Object[] argValues)
+-            throws Exception {
+-        try {
+-            return super.invokeMethod(msgContext, method, obj, argValues);
+-        } catch (InvocationTargetException ite) {
+-            Throwable cause = getCause(ite);
+-            if (cause instanceof java.rmi.ServerException) {
+-                throw new InvocationTargetException(getCause(cause));
+-            }
+-            throw ite;
+-        }
+-    }
+-
+-    /**
+-     * Get the cause of an exception, using reflection so that
+-     * it still works under JDK 1.3
+-     *
+-     * @param original the original exception
+-     * @return the cause of the exception, or the given exception if the cause cannot be discovered.
+-     */
+-    private Throwable getCause(Throwable original) {
+-        try {
+-            Method method = original.getClass().getMethod("getCause", null);
+-            Throwable cause = (Throwable) method.invoke(original, null);
+-            if (cause != null) {
+-                return cause;
+-            }
+-        } catch (NoSuchMethodException nsme) {
+-            // ignore, this occurs under JDK 1.3 
+-        } catch (Throwable t) {
+-        }
+-        return original;
+-    }
+-}

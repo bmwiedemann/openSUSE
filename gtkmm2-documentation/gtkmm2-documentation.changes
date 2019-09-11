@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:32:40 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jun  2 16:15:41 UTC 2013 - varkoly@suse.com
+
+- Fix spec to avoid conflict between gtkmm2-tutorial-lang gtkmm3-tutorial-lang
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:16 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Tue Jun 28 17:34:09 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.24.1:
+  + Put a 2 in the name, so this is now Programming with gtkmm 2.
+- Changes from version 2.24.0:
+  + Replace mentions of the deprecated ComboBoxEntry with CombBox
+    plus has-entry.
+  + Add Gtk::Tooltip example.
+  + Build: Check for mm-common.
+- Changes from version 2.23.0:
+  + Adapted to recent API deprecations in gtkmm 2.23/24.
+
+-------------------------------------------------------------------
+Fri May 27 12:34:55 CEST 2011 - vuntz@opensuse.org
+
+- Rename gtkmm-documentation source package to gtkmm2-documentation
+  as gtkmm-documentation now tracks gtkmm3.
+- Change packaging to be as close as possible as the
+  gtkmm-documentation one:
+  + Replace glibmm2-devel and gtkmm2-devel BuildRequires with
+    pkgconfig(giomm-2.4) and pkgconfig(gtkmm-2.4).
+  + Stop shipping the HTML-generated version of the doc: we're
+    completely happy with having the docbook version, as it's visible
+    in yelp.
+  + Add gtkmm2-documentation Provides to gtkmm2-tutorial.
+  + Update descriptions.
+
+-------------------------------------------------------------------
+Sun Feb 13 18:43:56 CET 2011 - vuntz@opensuse.org
+
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Dec 15 10:24:16 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/doc/packages/gtkmm2, /usr/share/gnome and
+  /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Fri Oct 29 17:18:06 EDT 2010 - vuntz@opensuse.org
+
+- Update to version 2.22.0:
+  + Make the API reference links go to /stable instead of
+    /unstable, to avoid sending people to the (different) gtkmm 3
+    API.
+  + Example code links: Use the gtkmm-2-22 branch instead of
+    master, to avoid sending people to the examples for the gtkmm 3
+    API.
+
+-------------------------------------------------------------------
+Tue Sep 21 23:24:33 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.21.8.1:
+  + Builds with the latest gtkmm-2.4 (2.21.8.1) release.
+  + Improve the Assistant example.
+  + Buttons chapter: Remove text about non-existant XPMLabelBox
+    class.
+  + Recommend non-deprecated Tooltip API in Tooltips chapter.
+  + Remove the optional API appendix, because it is not supported
+    in recent gtkmm versions.
+  + Remove use of reduced API.
+
+-------------------------------------------------------------------
+Fri Jul 23 12:45:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.20.1:
+  + Multiple-Item Widgets chapter: Added Assistant sub-section.
+
+-------------------------------------------------------------------
+Mon Mar 29 18:06:31 CEST 2010 - vuntz@opensuse.org
+
+- New package.
+

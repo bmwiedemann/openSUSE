@@ -1,0 +1,336 @@
+From 550357486d093e60ddf8102cf3ff474c7fa1721d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Fri, 12 Dec 2014 15:43:00 +0100
+Subject: [PATCH 1/6] Install libraries without exec permission
+
+---
+ src/genpmda/genpmda               | 4 ++--
+ src/libpcp/src/GNUmakefile        | 4 ++--
+ src/libpcp_fault/src/GNUmakefile  | 4 ++--
+ src/libpcp_gui/src/GNUmakefile    | 4 ++--
+ src/libpcp_import/src/GNUmakefile | 4 ++--
+ src/libpcp_mmv/src/GNUmakefile    | 4 ++--
+ src/libpcp_pmcd/src/GNUmakefile   | 2 +-
+ src/libpcp_pmda/src/GNUmakefile   | 4 ++--
+ src/libpcp_trace/src/GNUmakefile  | 4 ++--
+ src/pmdas/aix/GNUmakefile         | 2 +-
+ src/pmdas/darwin/GNUmakefile      | 2 +-
+ src/pmdas/freebsd/GNUmakefile     | 2 +-
+ src/pmdas/linux/GNUmakefile       | 2 +-
+ src/pmdas/linux_proc/GNUmakefile  | 2 +-
+ src/pmdas/lustrecomm/GNUmakefile  | 2 +-
+ src/pmdas/pmcd/src/GNUmakefile    | 2 +-
+ src/pmdas/sendmail/GNUmakefile    | 2 +-
+ src/pmdas/solaris/GNUmakefile     | 2 +-
+ 18 files changed, 26 insertions(+), 26 deletions(-)
+
+Index: pcp/src/genpmda/genpmda
+===================================================================
+--- pcp.orig/src/genpmda/genpmda
++++ pcp/src/genpmda/genpmda
+@@ -899,7 +899,7 @@ install: default
+ 	\$(INSTALL) -m 755 -d \$(PCP_VAR_DIR)/pmdas
+ 	\$(INSTALL) -m 755 -d \$(PMDADIR)
+ 	\$(INSTALL) -m 755 \$(CMDTARGET) \$(PMDADIR)/\$(CMDTARGET)
+-	\$(INSTALL) -m 755 \$(LIBTARGET) \$(PMDADIR)/\$(LIBTARGET)
++	\$(INSTALL) -m 644 \$(LIBTARGET) \$(PMDADIR)/\$(LIBTARGET)
+ 	\$(INSTALL) -m 755 $oflag/Install \$(PMDADIR)/Install
+ 	\$(INSTALL) -m 755 $oflag/Remove \$(PMDADIR)/Remove
+ 	\$(INSTALL) -m 644 $oflag/Makefile.install \$(PMDADIR)/Makefile
+@@ -962,7 +962,7 @@ install: default
+ 	\$(INSTALL) -m 755 -d \$(PCP_VAR_DIR)/pmdas
+ 	\$(INSTALL) -m 755 -d \$(PMDADIR)
+ 	\$(INSTALL) -m 755 -f \$(CMDTARGET) \$(PMDADIR)/\$(CMDTARGET)
+-	\$(INSTALL) -m 755 -f \$(LIBTARGET) \$(PMDADIR)/\$(LIBTARGET)
++	\$(INSTALL) -m 644 -f \$(LIBTARGET) \$(PMDADIR)/\$(LIBTARGET)
+ 	\$(INSTALL) -m 755 -f $oflag/Install \$(PMDADIR)/Install
+ 	\$(INSTALL) -m 755 -f $oflag/Remove \$(PMDADIR)/Remove
+ 	\$(INSTALL) -m 644 -f $oflag/Makefile.install \$(PMDADIR)/Makefile
+Index: pcp/src/libpcp/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp/src/GNUmakefile
++++ pcp/src/libpcp/src/GNUmakefile
+@@ -124,7 +124,7 @@ endif
+ 
+ install : default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 $(LIBCONFIG) $(PCP_LIB_DIR)/pkgconfig/$(LIBCONFIG)
+ endif
+ ifneq ($(SYMTARGET),)
+@@ -133,7 +133,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ $(EXT_FILES):
+Index: pcp/src/libpcp_fault/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_fault/src/GNUmakefile
++++ pcp/src/libpcp_fault/src/GNUmakefile
+@@ -145,7 +145,7 @@ endif
+ 
+ install : default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ endif
+ ifneq ($(SYMTARGET),)
+ 	for tt in $(SYMTARGET); do \
+@@ -153,7 +153,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 	$(INSTALL) -m 644 $(TOPDIR)/src/include/pcp/fault.h $(PCP_INC_DIR)/fault.h
+ 
+Index: pcp/src/libpcp_gui/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_gui/src/GNUmakefile
++++ pcp/src/libpcp_gui/src/GNUmakefile
+@@ -54,7 +54,7 @@ include $(BUILDRULES)
+ 
+ install: default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ endif
+ ifneq ($(SYMTARGET),)
+ 	for tt in $(SYMTARGET); do \
+@@ -62,7 +62,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ default_pcp:	default
+Index: pcp/src/libpcp_import/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_import/src/GNUmakefile
++++ pcp/src/libpcp_import/src/GNUmakefile
+@@ -54,7 +54,7 @@ include $(BUILDRULES)
+ 
+ install: default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 $(LIBCONFIG) $(PCP_LIB_DIR)/pkgconfig/$(LIBCONFIG)
+ endif
+ ifneq ($(SYMTARGET),)
+@@ -63,7 +63,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ default_pcp: default
+Index: pcp/src/libpcp_mmv/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_mmv/src/GNUmakefile
++++ pcp/src/libpcp_mmv/src/GNUmakefile
+@@ -47,7 +47,7 @@ include $(BUILDRULES)
+ 
+ install: default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ endif
+ ifneq ($(SYMTARGET),)
+ 	for tt in $(SYMTARGET); do \
+@@ -55,7 +55,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ default_pcp: default
+Index: pcp/src/libpcp_pmcd/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_pmcd/src/GNUmakefile
++++ pcp/src/libpcp_pmcd/src/GNUmakefile
+@@ -73,7 +73,7 @@ include $(BUILDRULES)
+ 
+ install : default
+ ifeq "$(TARGET_OS)" "mingw"
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ endif
+ 
+ ifeq "$(ENABLE_PROBES)" "true"
+Index: pcp/src/libpcp_pmda/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_pmda/src/GNUmakefile
++++ pcp/src/libpcp_pmda/src/GNUmakefile
+@@ -64,7 +64,7 @@ include $(BUILDRULES)
+ 
+ install: default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 $(LIBCONFIG) $(PCP_LIB_DIR)/pkgconfig/$(LIBCONFIG)
+ endif
+ ifneq ($(SYMTARGET),)
+@@ -73,7 +73,7 @@ ifneq ($(SYMTARGET),)
+ 	done
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ $(XFILES):
+Index: pcp/src/libpcp_trace/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/libpcp_trace/src/GNUmakefile
++++ pcp/src/libpcp_trace/src/GNUmakefile
+@@ -56,13 +56,13 @@ include $(BUILDRULES)
+ 
+ install : default
+ ifneq ($(LIBTARGET),)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_LIB_DIR)/$(LIBTARGET)
+ endif
+ ifneq ($(SYMTARGET),)
+ 	$(INSTALL) -S $(LIBTARGET) $(PCP_LIB_DIR)/$(SYMTARGET)
+ endif
+ ifneq ($(STATICLIBTARGET),)
+-	$(INSTALL) -m 755 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
++	$(INSTALL) -m 644 $(STATICLIBTARGET) $(PCP_LIB_DIR)/$(STATICLIBTARGET)
+ endif
+ 
+ default_pcp : default
+Index: pcp/src/pmdas/aix/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/aix/GNUmakefile
++++ pcp/src/pmdas/aix/GNUmakefile
+@@ -44,7 +44,8 @@ build-me: common.h root_aix $(CMDTARGET)
+ install: build-me
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h help.dir help.pag $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 root_aix $(PCP_VAR_DIR)/pmns/root_aix
+ else
+ build-me:
+Index: pcp/src/pmdas/darwin/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/darwin/GNUmakefile
++++ pcp/src/pmdas/darwin/GNUmakefile
+@@ -48,7 +48,8 @@ build-me: root_darwin $(LIBTARGET) $(CMD
+ install: build-me
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h help.dir help.pag $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 root_darwin $(PCP_VAR_DIR)/pmns/root_darwin
+ else
+ build-me:
+Index: pcp/src/pmdas/freebsd/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/freebsd/GNUmakefile
++++ pcp/src/pmdas/freebsd/GNUmakefile
+@@ -49,7 +49,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) help
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h help help.dir help.pag $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 root_freebsd $(PCP_VAR_DIR)/pmns/root_freebsd
+ 	$(INSTALL) -m 644 freebsd_disk_units.conf $(LOGREWRITEDIR)/freebsd_disk_units.conf
+ 	$(INSTALL) -m 644 freebsd_misc.conf $(LOGREWRITEDIR)/freebsd_misc.conf
+Index: pcp/src/pmdas/linux/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/linux/GNUmakefile
++++ pcp/src/pmdas/linux/GNUmakefile
+@@ -88,7 +88,8 @@ install: default
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h help $(HELPTARGETS) $(PMDADIR)
+ 	$(INSTALL) -m 644 bandwidth.conf $(PMDADIR)/samplebandwidth.conf
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 root_linux $(PCP_VAR_DIR)/pmns/root_linux
+ 	$(INSTALL) -m 644 proc_fs_nfsd_fixups.conf $(LOGREWRITEDIR)/linux_proc_fs_nfsd_fixups.conf
+ 	$(INSTALL) -m 644 proc_net_snmp_migrate.conf $(LOGREWRITEDIR)/linux_proc_net_snmp_migrate.conf
+Index: pcp/src/pmdas/linux_proc/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/linux_proc/GNUmakefile
++++ pcp/src/pmdas/linux_proc/GNUmakefile
+@@ -69,7 +69,8 @@ build-me: root_proc $(LIBTARGET) $(CMDTA
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h help help.dir help.pag root root_proc samplehotproc.conf $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(SCRIPTS) $(PMDADIR)
+ 	$(INSTALL) -m 644 root_proc $(PCP_VAR_DIR)/pmns/root_proc
+ 	$(INSTALL) -m 644 $(LOGREWRITERS) $(PCP_VAR_DIR)/config/pmlogrewrite
+ 	@$(INSTALL_MAN)
+Index: pcp/src/pmdas/lustrecomm/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/lustrecomm/GNUmakefile
++++ pcp/src/pmdas/lustrecomm/GNUmakefile
+@@ -51,7 +51,7 @@ build-me:	$(TARGETS)
+ install:	default
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
+-	#$(INSTALL) -m 755 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
++	#$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 755 Install Remove $(PMDADIR)
+ 	$(INSTALL) -m 644 $(DFILES) root pmns domain.h help $(PMDADIR)
+ 	@$(INSTALL_MAN)
+Index: pcp/src/pmdas/pmcd/src/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/pmcd/src/GNUmakefile
++++ pcp/src/pmdas/pmcd/src/GNUmakefile
+@@ -55,7 +55,7 @@ default: $(LIBTARGET)
+ 
+ install: default
+ 	$(INSTALL) -m 755 -d $(PCP_PMDAS_DIR)/pmcd
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PCP_PMDAS_DIR)/pmcd/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PCP_PMDAS_DIR)/pmcd/$(LIBTARGET)
+ 
+ include $(BUILDRULES)
+ 
+Index: pcp/src/pmdas/sendmail/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/sendmail/GNUmakefile
++++ pcp/src/pmdas/sendmail/GNUmakefile
+@@ -40,7 +40,7 @@ include $(BUILDRULES)
+ 
+ install install_pcp:	default
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/pmda$(IAM)$(EXECSUFFIX)
+ 	$(INSTALL) -m 755 $(SCRIPTS) $(PMDADIR)
+ 	$(INSTALL) -m 644 $(DFILES) pmns help root domain.h $(PMDADIR)
+Index: pcp/src/pmdas/solaris/GNUmakefile
+===================================================================
+--- pcp.orig/src/pmdas/solaris/GNUmakefile
++++ pcp/src/pmdas/solaris/GNUmakefile
+@@ -53,7 +53,8 @@ build-me: root_solaris $(LIBTARGET) $(CM
+ install: build-me
+ 	$(INSTALL) -m 755 -d $(PMDADIR)
+ 	$(INSTALL) -m 644 domain.h $(HELPTARGETS) $(PMDADIR)
+-	$(INSTALL) -m 755 $(LIBTARGET) $(CMDTARGET) $(PMDADIR)
++	$(INSTALL) -m 755 $(CMDTARGET) $(PMDADIR)/$(CMDTARGET)
++	$(INSTALL) -m 644 $(LIBTARGET) $(PMDADIR)/$(LIBTARGET)
+ 	$(INSTALL) -m 644 root_solaris $(PCP_VAR_DIR)/pmns/root_solaris
+ else
+ build-me:

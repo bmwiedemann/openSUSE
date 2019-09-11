@@ -1,0 +1,42 @@
+From f8f6b14088637fd87de7cf385b840d6b5e5f9b22 Mon Sep 17 00:00:00 2001
+From: Ben Nemec <bnemec@redhat.com>
+Date: Tue, 28 May 2019 17:04:19 +0000
+Subject: [PATCH] Stop testing mock functionality
+
+There's no particular reason for us to be verifying mock's behavior.
+They have their own unit tests for doing that.
+
+This is specifically a problem right now because mock changed its
+behavior in 3.0.0 and broke this test: "Issue #36366: Calling stop()
+on an unstarted or stopped unittest.mock.patch() object will now
+return None instead of raising RuntimeError, making the method
+idempotent."
+
+Change-Id: I57db9bad15cab343e152615e115e2ba3ac4d87fe
+Closes-Bug: 1830429
+---
+ oslotest/tests/unit/test_base.py | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/oslotest/tests/unit/test_base.py b/oslotest/tests/unit/test_base.py
+index 93c3c52..b98c672 100644
+--- a/oslotest/tests/unit/test_base.py
++++ b/oslotest/tests/unit/test_base.py
+@@ -126,14 +126,6 @@ class TestManualMock(base.BaseTestCase):
+         self.addCleanup(patcher.stop)
+         super(TestManualMock, self).setUp()
+         self.useFixture(fixtures.MockPatch('fixtures.Timeout'))
+-        self.unstopped = mock.patch('os.environ.put')
+-
+-    def tearDown(self):
+-        super(TestManualMock, self).tearDown()
+-        self.assertRaises(
+-            RuntimeError,
+-            self.unstopped.stop,
+-        )
+ 
+     def test_mock_patch_manually(self):
+         # Verify that if a test instance creates its own mock and
+-- 
+2.22.0
+

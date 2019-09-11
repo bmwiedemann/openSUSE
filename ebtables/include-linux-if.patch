@@ -1,0 +1,12 @@
+diff --git a/include/ebtables_u.h b/include/ebtables_u.h
+index 35a5bcc..f120eb8 100644
+--- a/include/ebtables_u.h
++++ b/include/ebtables_u.h
+@@ -24,6 +24,7 @@
+ #ifndef EBTABLES_U_H
+ #define EBTABLES_U_H
+ #include <netinet/in.h>
++#include <linux/if.h>
+ #include <linux/netfilter_bridge/ebtables.h>
+ #include <linux/netfilter/x_tables.h>
+ 

@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Thu Feb 21 17:12:55 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Add ppc64le support from https://github.com/PPC64/LuaJIT (boo#1126363).
+  * 0001-PPC64-Fix-sradi-machine-code-offsets.patch
+  * 0002-PPC64-Add-method-for-external-branch-by-using-got-fo.patch
+  * 0003-PPC64-Add-LJ_GC64-mode-interpreter-for-ppc.patch
+  * 0004-PPC64-Add-special-instructions-for-PIC-code-setup.patch
+  * 0005-PPC64-Add-ffi-support.patch
+  * 0006-PPC64-Enable-support-for-ppc64-little-endian.patch
+  * 0007-PPC64-Fix-external-branches-that-should-address-on-R.patch
+  * 0008-luajit-2.1-fix-fp-parameter-passing-for-ppc64.patch
+  * 0009-PPC64-Fix-tab-indentation-from-last-commit.patch
+  * 0010-PPC64-Define-13-FPs-regs-as-arguments.patch
+  * 0011-PPC64-Fix-indentation-code-style.patch
+  * 0012-Fix-debug-information-for-PPC64.patch
+  * 0013-Fix-TOC-pointer-value-on-ffi-callback-handling.patch
+  * 0014-Improve-readability-of-a-load-instruction.patch
+  * 0015-Fix-remaining-unwind-values-on-vm-frames.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 17:08:59 CET 2018 - ro@suse.de
+
+- add s390/s390x to excludearch list, no code yet 
+
+-------------------------------------------------------------------
+Wed Feb 14 15:32:16 UTC 2018 - pousaduarte@gmail.com
+
+- Add baselibs.conf to provide 32bit library for libluajit
+
+-------------------------------------------------------------------
+Wed Jun 14 10:32:19 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.1.0-beta3
+  * Includes more fixes and tweaks for aarch64 support
+- Refresh patch luajit-lua-versioned.patch
+
+-------------------------------------------------------------------
+Mon Dec 12 14:48:27 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.1.0-beta2 to allow arm64 support wrt fate#321974
+- Refresh patch:
+  * luajit-lua-versioned.patch
+
+-------------------------------------------------------------------
+Sun Jul 10 14:32:20 UTC 2016 - i@marguerite.su
+
+- remove redundant pkgconfig(luajit)
+
+-------------------------------------------------------------------
+Mon Jun 20 07:55:21 UTC 2016 - tchvatal@suse.com
+
+- Add provider for luajit-devel = %{version} to allow that in spec
+  as build dependency
+- Fix multilib building wrt bnc#976720
+
+-------------------------------------------------------------------
+Mon May 23 08:22:27 UTC 2016 - glin@suse.com
+
+- Update luajit-lua-versioned.patch to change the default luajit
+  share path since we already installed all the lua files to
+  %{_datadir}/luajit-5_1-2.0.4 instead of the deafult path:
+  %{_datadir}/luajit-2.0.4
+
+-------------------------------------------------------------------
+Wed Oct 28 13:56:47 UTC 2015 - mlin@suse.com
+
+- Removed unneeded symbol pkgconfig(luajit)
+
+-------------------------------------------------------------------
+Mon Oct 26 14:30:53 UTC 2015 - mlin@suse.com
+
+- Provides pkgconfig(luajit) as well in -devel
+- Update luajit-lua-versioned.patch
+  * do not change pkgconfig file name otherwise many of packages
+    could not found luajit while configuring
+
+-------------------------------------------------------------------
+Sun Oct 18 14:01:45 UTC 2015 - i@marguerite.su
+
+- rename to lua51-luajit, w/ versioned lua as suffix
+- add patch: luajit-lua-versioned.patch
+- use update-alternatives to provide /usr/bin/luajit
+  and its manpage
+- provides luajit and luajit-devel
+
+-------------------------------------------------------------------
+Thu Aug 13 16:59:33 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch:	ppc64 ppc64le
+  lj_arch.h do not support ppc64/ppc64le
+
+-------------------------------------------------------------------
+Wed Jul  1 08:31:37 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 2.0.4:
+  * Fix stack check in narrowing optimization.
+  * Fix Lua/C API typecheck error for special indexes.
+  * Fix string to number conversion.
+  * Fix lexer error for chunks without tokens.
+  * Don't compile IR_RETF after CALLT to ff with-side effects.
+  * Fix BC_UCLO/BC_JMP join optimization in Lua parser.
+  * Fix corner case in string to number conversion.
+  * Gracefully handle lua_error() for a suspended coroutine.
+  * Avoid error messages when building with Clang.
+  * Fix snapshot #0 handling for traces with a stack check on entry.
+  * Fix fused constant loads under high register pressure.
+  * Invalidate backpropagation cache after DCE.
+  * Fix ABC elimination.
+  * Fix debug info for main chunk of stripped bytecode.
+  * Fix FOLD rule for string.sub(s, ...) == k.
+  * Fix FOLD rule for STRREF of SNEW.
+  * Fix frame traversal while searching for error function.
+  * Prevent GC estimate miscalculation due to buffer growth.
+  * Prevent adding side traces for stack checks.
+  * Fix top slot calculation for snapshots with continuations.
+  * Fix check for reuse of SCEV results in FORL.
+  * Add PS Vita port.
+  * Fix compatibility issues with Illumos.
+  * Fix DragonFly build (unsupported).
+  * OpenBSD/x86: Better executable memory allocation for W^X mode.
+  * x86: Fix argument checks for ipairs() iterator.
+  * x86: lj_math_random_step() clobbers XMM regs on OSX Clang.
+  * x86: Fix code generation for unused result of math.random().
+  * x64: Allow building with LUAJIT_USE_SYSMALLOC and LUAJIT_USE_VALGRIND.
+  * x86/x64: Fix argument check for bit shifts.
+  * x86/x64: Fix code generation for fused test/arith ops.
+  * ARM: Fix write barrier check in BC_USETS.
+  * PPC: Fix red zone overflow in machine code generation.
+  * PPC: Don't use mcrxr on PPE.
+  * Various archs: Fix excess stack growth in interpreter.
+  * FFI: Fix FOLD rule for TOBIT + CONV num.u32.
+  * FFI: Prevent DSE across ffi.string().
+  * FFI: No meta fallback when indexing pointer to incomplete struct.
+  * FFI: Fix initialization of unions of subtypes.
+  * FFI: Fix cdata vs. non-cdata arithmetic and comparisons.
+  * FFI: Fix __index/__newindex metamethod resolution for ctypes.
+  * FFI: Fix compilation of reference field access.
+  * FFI: Fix frame traversal for backtraces with FFI callbacks.
+  * FFI: Fix recording of indexing a struct pointer ctype object itself.
+  * FFI: Allow non-scalar cdata to be compared for equality by address.
+  * FFI: Fix pseudo type conversions for type punning.
+
+-------------------------------------------------------------------
+Fri Mar 13 12:44:38 UTC 2015 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 18 19:46:59 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.0.3
+  * Add support for multilib distro builds.
+  * Improve ULOAD forwarding for open upvalues.
+  * Fix GC steps threshold handling when called by JIT-compiled code.
+  * Fix argument checks for math.deg() and math.rad().
+  * Fix jit.flush(func|true).
+  * Respect jit.off(func) when returning to a function, too.
+  * Fix compilation of string.byte(s, nil, n).
+  * Fix line number for relocated bytecode after closure fixup
+  * Fix frame traversal for backtraces.
+  * Fix ABC elimination.
+  * Fix handling of redundant PHIs.
+  * Fix snapshot restore for exit to function header.
+  * Fix type punning alias analysis for constified pointers
+  * Fix call unroll checks in the presence of metamethod frames.
+  * Fix initial maxslot for down-recursive traces.
+  * Prevent BASE register coalescing if parent uses IR_RETF.
+  * Don't purge modified function from stack slots in BC_RET.
+  * Fix recording of BC_VARG.
+  * Don't access dangling reference to reallocated IR.
+  * Fix frame depth display for bytecode dump in -jdump.
+  * ARM: Fix register allocation when rematerializing FPRs.
+  * x64: Fix store to upvalue for lightuserdata values.
+  * FFI: Add missing GC steps for callback argument conversions.
+  * FFI: Properly unload loaded DLLs.
+  * FFI: Fix argument checks for ffi.string().
+  * FFI/x64: Fix passing of vector arguments to calls.
+  * FFI: Rehash finalizer table after GC cycle, if needed.
+  * FFI: Fix cts->L for cdata unsinking in snapshot restore.
+
+-------------------------------------------------------------------
+Thu Apr 17 12:57:05 UTC 2014 - simon@simotek.net
+
+- %make_install replaced with make DESTDIR=%{buildroot} install
+  to fix fedora builds
+
+-------------------------------------------------------------------
+Wed Oct 23 17:33:38 UTC 2013 - tchvatal@suse.com
+
+- Export CFLAGS, funny localy it used them properly.
+
+-------------------------------------------------------------------
+Wed Oct 23 11:52:47 UTC 2013 - tchvatal@suse.com
+
+- Drop STRIP=true from the args.
+
+-------------------------------------------------------------------
+Wed Oct 23 11:48:45 UTC 2013 - tchvatal@suse.com
+
+- Change lib group to libraries only.
+
+-------------------------------------------------------------------
+Thu Oct 17 20:28:34 UTC 2013 - tchvatal@suse.com
+
+- Make the thing acutally build&install.
+
+-------------------------------------------------------------------
+Thu Oct 17 20:00:13 UTC 2013 - tchvatal@suse.com
+
+- Inital package. Used in mpv multimedia player.
+

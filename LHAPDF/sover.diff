@@ -1,0 +1,36 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-02-13 18:39:04.166820498 +0100
+
+build: enforce library versioning
+
+Bad things happen when the ABI changes and there is no way
+to notice it.
+
+---
+ src/Makefile.am |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: LHAPDF-6.2.0/src/Makefile.am
+===================================================================
+--- LHAPDF-6.2.0.orig/src/Makefile.am
++++ LHAPDF-6.2.0/src/Makefile.am
+@@ -18,15 +18,19 @@ libLHAPDF_la_SOURCES = \
+ libLHAPDFInfo_la_SOURCES = Info.cc
+ libLHAPDFInfo_la_CPPFLAGS = -I$(srcdir)/yamlcpp -DYAMLCPP_API=3 -DYAML_NAMESPACE=LHAPDF_YAML $(AM_CPPFLAGS)
+ libLHAPDFInfo_la_LIBADD = $(builddir)/yamlcpp/liblhapdf-yaml-cpp.la
++libLHAPDFInfo_la_LDFLAGS = -release ${PACKAGE_VERSION}
+ 
+ libLHAPDFPaths_la_SOURCES = Paths.cc
+ libLHAPDFPaths_la_CPPFLAGS = $(AM_CPPFLAGS) -DLHAPDF_INSTALL_PREFIX=\"$(prefix)\" -DLHAPDF_DATA_PREFIX=\"$(datadir)\"
++libLHAPDFPaths_la_LDFLAGS = -release ${PACKAGE_VERSION}
+ 
+ libLHAPDF_la_LIBADD = libLHAPDFInfo.la libLHAPDFPaths.la
++libLHAPDF_la_LDFLAGS = -release ${PACKAGE_VERSION}
+ 
+ if ENABLE_LHAGLUE
+   noinst_LTLIBRARIES += libLHAPDFGlue.la
+   libLHAPDFGlue_la_SOURCES = LHAGlue.cc
+   libLHAPDFGlue_la_CPPFLAGS = $(AM_CPPFLAGS) -DENABLE_LHAGLUE_CXX
++  libLHAPDFGlue_la_LDFLAGS = -release ${PACKAGE_VERSION}
+   libLHAPDF_la_LIBADD += libLHAPDFGlue.la
+ endif

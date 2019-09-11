@@ -1,0 +1,228 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:20:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.2.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Oct 11 06:07:44 UTC 2017 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed CHANGELOG.md
+
+  ## [2.1.0](https://github.com/jwt/ruby-jwt/tree/2.1.0) (2017-10-06)
+  [Full Changelog](https://github.com/jwt/ruby-jwt/compare/v2.0.0...2.1.0)
+  
+  **Implemented enhancements:**
+  
+  - Ed25519 support planned? [\#217](https://github.com/jwt/ruby-jwt/issues/217)
+  - Verify JTI Proc [\#207](https://github.com/jwt/ruby-jwt/issues/207)
+  - Allow a list of algorithms for decode [\#241](https://github.com/jwt/ruby-jwt/pull/241) ([lautis](https://github.com/lautis))
+  - verify takes 2 params, second being payload closes: \#207 [\#238](https://github.com/jwt/ruby-jwt/pull/238) ([ab320012](https://github.com/ab320012))
+  - simplified logic for keyfinder [\#237](https://github.com/jwt/ruby-jwt/pull/237) ([ab320012](https://github.com/ab320012))
+  - Show backtrace if rbnacl-libsodium not loaded [\#231](https://github.com/jwt/ruby-jwt/pull/231) ([buzztaiki](https://github.com/buzztaiki))
+  - Support for ED25519 [\#229](https://github.com/jwt/ruby-jwt/pull/229) ([ab320012](https://github.com/ab320012))
+  
+  **Fixed bugs:**
+  
+  - JWT.encode failing on encode for string [\#235](https://github.com/jwt/ruby-jwt/issues/235)
+  - The README says it uses an algorithm by default [\#226](https://github.com/jwt/ruby-jwt/issues/226)
+  - Fix string payload issue [\#236](https://github.com/jwt/ruby-jwt/pull/236) ([excpt](https://github.com/excpt))
+  
+  **Closed issues:**
+  
+  - Change from 1.5.6 to 2.0.0 and appears a "Completed 401 Unauthorized" [\#240](https://github.com/jwt/ruby-jwt/issues/240)
+  - Why doesn't the decode function use a default algorithm? [\#227](https://github.com/jwt/ruby-jwt/issues/227)
+  
+  **Merged pull requests:**
+  
+  - Update README.md [\#242](https://github.com/jwt/ruby-jwt/pull/242) ([excpt](https://github.com/excpt))
+  - Update ebert configuration [\#232](https://github.com/jwt/ruby-jwt/pull/232) ([excpt](https://github.com/excpt))
+  - added algos/strategy classes + structs for inputs [\#230](https://github.com/jwt/ruby-jwt/pull/230) ([ab320012](https://github.com/ab320012))
+  - Add HS256 algorithm to decode default options [\#228](https://github.com/jwt/ruby-jwt/pull/228) ([madkin10](https://github.com/madkin10))
+
+-------------------------------------------------------------------
+Mon Sep 11 12:42:21 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.0
+ see installed CHANGELOG.md
+
+  ## [v2.0.0](https://github.com/jwt/ruby-jwt/tree/v2.0.0) (2017-09-03)
+  [Full Changelog](https://github.com/jwt/ruby-jwt/compare/v2.0.0.beta1...v2.0.0)
+  
+  **Fixed bugs:**
+  
+  - Support versions outside 2.1 [\#209](https://github.com/jwt/ruby-jwt/issues/209)
+  - Verifying expiration without leeway throws exception [\#206](https://github.com/jwt/ruby-jwt/issues/206)
+  - Ruby interpreter warning [\#200](https://github.com/jwt/ruby-jwt/issues/200)
+  - TypeError: no implicit conversion of String into Integer [\#188](https://github.com/jwt/ruby-jwt/issues/188)
+  - Fix JWT.encode\(nil\) [\#203](https://github.com/jwt/ruby-jwt/pull/203) ([tmm1](https://github.com/tmm1))
+  
+  **Closed issues:**
+  
+  - Possibility to disable claim verifications [\#222](https://github.com/jwt/ruby-jwt/issues/222)
+  - Proper way to verify Firebase id tokens [\#216](https://github.com/jwt/ruby-jwt/issues/216)
+  
+  **Merged pull requests:**
+  
+  - Skip 'exp' claim validation for array payloads [\#224](https://github.com/jwt/ruby-jwt/pull/224) ([excpt](https://github.com/excpt))
+  - Use a default leeway of 0 [\#223](https://github.com/jwt/ruby-jwt/pull/223) ([travisofthenorth](https://github.com/travisofthenorth))
+  - Fix reported codesmells [\#221](https://github.com/jwt/ruby-jwt/pull/221) ([excpt](https://github.com/excpt))
+  - Add fancy gem version badge [\#220](https://github.com/jwt/ruby-jwt/pull/220) ([excpt](https://github.com/excpt))
+  - Add missing dist option to .travis.yml [\#219](https://github.com/jwt/ruby-jwt/pull/219) ([excpt](https://github.com/excpt))
+  - Fix ruby version requirements in gemspec file [\#218](https://github.com/jwt/ruby-jwt/pull/218) ([excpt](https://github.com/excpt))
+  - Fix a little typo in the readme [\#214](https://github.com/jwt/ruby-jwt/pull/214) ([RyanBrushett](https://github.com/RyanBrushett))
+  - Update README.md [\#212](https://github.com/jwt/ruby-jwt/pull/212) ([zuzannast](https://github.com/zuzannast))
+  - Fix typo in HS512256 algorithm description [\#211](https://github.com/jwt/ruby-jwt/pull/211) ([ojab](https://github.com/ojab))
+  - Allow configuration of multiple acceptable issuers [\#210](https://github.com/jwt/ruby-jwt/pull/210) ([ojab](https://github.com/ojab))
+  - Enforce `exp` to be an `Integer` [\#205](https://github.com/jwt/ruby-jwt/pull/205) ([lucasmazza](https://github.com/lucasmazza))
+  - ruby 1.9.3 support message upd [\#204](https://github.com/jwt/ruby-jwt/pull/204) ([maokomioko](https://github.com/maokomioko))
+  - Guard against partially loaded RbNaCl when failing to load libsodium [\#202](https://github.com/jwt/ruby-jwt/pull/202) ([Dorian](https://github.com/Dorian))
+  
+  ## [v2.0.0.beta1](https://github.com/jwt/ruby-jwt/tree/v2.0.0.beta1) (2017-02-27)
+  [Full Changelog](https://github.com/jwt/ruby-jwt/compare/v1.5.6...v2.0.0.beta1)
+  
+  **Implemented enhancements:**
+  
+  - Error with method sign for String [\#171](https://github.com/jwt/ruby-jwt/issues/171)
+  - Refactor the encondig code [\#121](https://github.com/jwt/ruby-jwt/issues/121)
+  - Refactor [\#196](https://github.com/jwt/ruby-jwt/pull/196) ([EmilioCristalli](https://github.com/EmilioCristalli))
+  - Move signature logic to its own module [\#195](https://github.com/jwt/ruby-jwt/pull/195) ([EmilioCristalli](https://github.com/EmilioCristalli))
+  - Add options for claim-specific leeway [\#187](https://github.com/jwt/ruby-jwt/pull/187) ([EmilioCristalli](https://github.com/EmilioCristalli))
+  - Add user friendly encode error if private key is a String, \#171 [\#176](https://github.com/jwt/ruby-jwt/pull/176) ([xamenrax](https://github.com/xamenrax))
+  - Return empty string if signature less than byte\_size \#155 [\#175](https://github.com/jwt/ruby-jwt/pull/175) ([xamenrax](https://github.com/xamenrax))
+  - Remove 'typ' optional parameter [\#174](https://github.com/jwt/ruby-jwt/pull/174) ([xamenrax](https://github.com/xamenrax))
+  - Pass payload to keyfinder [\#172](https://github.com/jwt/ruby-jwt/pull/172) ([CodeMonkeySteve](https://github.com/CodeMonkeySteve))
+  - Use RbNaCl for HMAC if available with fallback to OpenSSL [\#149](https://github.com/jwt/ruby-jwt/pull/149) ([mwpastore](https://github.com/mwpastore))
+  
+  **Fixed bugs:**
+  
+  - ruby-jwt::raw\_to\_asn1: Fails for signatures less than byte\_size [\#155](https://github.com/jwt/ruby-jwt/issues/155)
+  - The leeway parameter is applies to all time based verifications [\#129](https://github.com/jwt/ruby-jwt/issues/129)
+  - Add options for claim-specific leeway [\#187](https://github.com/jwt/ruby-jwt/pull/187) ([EmilioCristalli](https://github.com/EmilioCristalli))
+  - Make algorithm option required to verify signature [\#184](https://github.com/jwt/ruby-jwt/pull/184) ([EmilioCristalli](https://github.com/EmilioCristalli))
+  - Validate audience when payload is a scalar and options is an array [\#183](https://github.com/jwt/ruby-jwt/pull/183) ([steti](https://github.com/steti))
+  
+  **Closed issues:**
+  
+  - Different encoded value between servers with same password [\#197](https://github.com/jwt/ruby-jwt/issues/197)
+  - Signature is different at each run [\#190](https://github.com/jwt/ruby-jwt/issues/190)
+  - Include custom headers with password [\#189](https://github.com/jwt/ruby-jwt/issues/189)
+  - can't create token - 'NotImplementedError: Unsupported signing method' [\#186](https://github.com/jwt/ruby-jwt/issues/186)
+  - Why jwt depends on json \< 2.0 ? [\#179](https://github.com/jwt/ruby-jwt/issues/179)
+  - Cannot verify JWT at all?? [\#177](https://github.com/jwt/ruby-jwt/issues/177)
+  - verify\_iss: true is raising JWT::DecodeError instead of JWT::InvalidIssuerError [\#170](https://github.com/jwt/ruby-jwt/issues/170)
+  
+  **Merged pull requests:**
+  
+  - Version bump 2.0.0.beta1 [\#199](https://github.com/jwt/ruby-jwt/pull/199) ([excpt](https://github.com/excpt))
+  - Update CHANGELOG.md and minor fixes [\#198](https://github.com/jwt/ruby-jwt/pull/198) ([excpt](https://github.com/excpt))
+  - Add Codacy coverage reporter [\#194](https://github.com/jwt/ruby-jwt/pull/194) ([excpt](https://github.com/excpt))
+  - Add minimum required ruby version to gemspec [\#193](https://github.com/jwt/ruby-jwt/pull/193) ([excpt](https://github.com/excpt))
+  - Code smell fixes [\#192](https://github.com/jwt/ruby-jwt/pull/192) ([excpt](https://github.com/excpt))
+  - Version bump to 2.0.0.dev [\#191](https://github.com/jwt/ruby-jwt/pull/191) ([excpt](https://github.com/excpt))
+  - Basic encode module refactoring \#121 [\#182](https://github.com/jwt/ruby-jwt/pull/182) ([xamenrax](https://github.com/xamenrax))
+  - Fix travis ci build configuration [\#181](https://github.com/jwt/ruby-jwt/pull/181) ([excpt](https://github.com/excpt))
+  - Fix travis ci build configuration [\#180](https://github.com/jwt/ruby-jwt/pull/180) ([excpt](https://github.com/excpt))
+  - Fix typo in README [\#178](https://github.com/jwt/ruby-jwt/pull/178) ([tomeduarte](https://github.com/tomeduarte))
+  - Fix code style [\#173](https://github.com/jwt/ruby-jwt/pull/173) ([excpt](https://github.com/excpt))
+  - Fixed a typo in a spec name [\#169](https://github.com/jwt/ruby-jwt/pull/169) ([Mingan](https://github.com/Mingan))
+
+-------------------------------------------------------------------
+Sat Oct  8 04:33:08 UTC 2016 - coolo@suse.com
+
+- updated to version 1.5.6
+ see installed CHANGELOG.md
+
+  ## [v1.5.6](https://github.com/jwt/ruby-jwt/tree/v1.5.6) (2016-09-19)
+  [Full Changelog](https://github.com/jwt/ruby-jwt/compare/v1.5.5...v1.5.6)
+  
+  **Fixed bugs:**
+  
+  - Fix missing symbol handling in aud verify code [\#166](https://github.com/jwt/ruby-jwt/pull/166) ([excpt](https://github.com/excpt))
+  
+  **Merged pull requests:**
+  
+  - Fix rubocop code smells [\#167](https://github.com/jwt/ruby-jwt/pull/167) ([excpt](https://github.com/excpt))
+
+-------------------------------------------------------------------
+Sat Sep 17 04:38:05 UTC 2016 - coolo@suse.com
+
+- updated to version 1.5.5
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Apr  6 06:24:08 UTC 2016 - coolo@suse.com
+
+- updated to version 1.5.4
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb 25 05:34:50 UTC 2016 - coolo@suse.com
+
+- updated to version 1.5.3
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Oct 28 05:30:34 UTC 2015 - coolo@suse.com
+
+- updated to version 1.5.2
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jun 23 04:30:30 UTC 2015 - coolo@suse.com
+
+- updated to version 1.5.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sun May 10 04:28:58 UTC 2015 - coolo@suse.com
+
+- updated to version 1.5.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Mar 13 05:31:08 UTC 2015 - coolo@suse.com
+
+- updated to version 1.4.1
+
+-------------------------------------------------------------------
+Wed Mar 11 05:31:34 UTC 2015 - coolo@suse.com
+
+- updated to version 1.4.0
+
+-------------------------------------------------------------------
+Wed Feb 25 05:32:14 UTC 2015 - coolo@suse.com
+
+- updated to version 1.3.0
+
+-------------------------------------------------------------------
+Tue Feb 10 18:00:27 UTC 2015 - coolo@suse.com
+
+- updated to version 1.2.1
+
+-------------------------------------------------------------------
+Mon Oct 13 14:19:02 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:33 UTC 2014 - coolo@suse.com
+
+- updated to version 1.0.0
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:08 UTC 2014 - coolo@suse.com
+
+- updated to version 0.1.11
+
+-------------------------------------------------------------------
+Sun May 26 07:48:57 UTC 2013 - coolo@suse.com
+
+- updated to version 0.1.8
+
+-------------------------------------------------------------------
+Mon Jul 30 19:17:02 UTC 2012 - coolo@suse.com
+
+- initial package
+

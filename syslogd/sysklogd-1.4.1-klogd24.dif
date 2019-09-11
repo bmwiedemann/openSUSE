@@ -1,0 +1,494 @@
+--- klogd.c
++++ klogd.c	2003-09-09 14:15:47.000000000 +0000
+@@ -879,7 +879,7 @@ static void LogLine(char *ptr, int len)
+            {
+ 	       auto int sym_space;
+ 
+-	       unsigned long value;
++	       uintptr_t value;
+ 	       auto struct symbol sym;
+ 	       auto char *symbol;
+ 
+@@ -904,7 +904,7 @@ static void LogLine(char *ptr, int len)
+                   break;
+                }
+ 
+-               delta = sprintf( sym_start, "%s+%d/%d]",
++               delta = sprintf( sym_start, "%s+%llu/%zu]",
+                                 symbol, sym.offset, sym.size );
+ 
+                space = sym_space + delta;
+--- ksym.c
++++ ksym.c	2003-09-09 14:15:47.000000000 +0000
+@@ -122,7 +122,7 @@
+ /* Variables static to this module. */
+ struct sym_table
+ {
+-	unsigned long value;
++	uintptr_t value;
+ 	char *name;
+ };
+ 
+@@ -151,7 +151,7 @@ extern int debugging;
+ 
+ /* Function prototypes. */
+ static char * FindSymbolFile(void);
+-static int AddSymbol(unsigned long, char*);
++static int AddSymbol(uintptr_t, char*);
+ static void FreeSymbols(void);
+ static int CheckVersion(char *);
+ static int CheckMapVersion(char *);
+@@ -185,7 +185,7 @@ extern int InitKsyms(mapfile)
+ 
+ 	auto int version = 0;
+ 
+-	auto unsigned long int address;
++	auto uintptr_t address;
+ 
+ 	auto FILE *sym_file;
+ 
+@@ -237,16 +237,24 @@ extern int InitKsyms(mapfile)
+ 	 */
+ 	while ( !feof(sym_file) )
+ 	{
+-		if ( fscanf(sym_file, "%lx %c %s\n", &address, &type, sym)
+-		    != 3 )
++#if __WORDSIZE == 64
++		if ( fscanf(sym_file, "%lx %c %s\n", &address, &type, sym) != 3 )
++#else
++		if ( fscanf(sym_file, "%x %c %s\n", &address, &type, sym) != 3 )
++#endif
+ 		{
+ 			Syslog(LOG_ERR, "Error in symbol table input (#1).");
+ 			fclose(sym_file);
+ 			return(0);
+ 		}
+ 		if ( VERBOSE_DEBUGGING && debugging )
++#if __WORDSIZE == 64
+ 			fprintf(stderr, "Address: %lx, Type: %c, Symbol: %s\n",
+ 				address, type, sym);
++#else
++			fprintf(stderr, "Address: %x, Type: %c, Symbol: %s\n",
++				address, type, sym);
++#endif
+ 
+ 		if ( AddSymbol(address, sym) == 0 )
+ 		{
+@@ -521,7 +529,7 @@ static int CheckMapVersion(fname)
+ {
+ 	int	version;
+ 	FILE	*sym_file;
+-	auto unsigned long int address;
++	auto uintptr_t address;
+ 	auto char	type,
+ 			sym[512];
+ 
+@@ -536,16 +544,24 @@ static int CheckMapVersion(fname)
+ 		version = 0;
+ 		while ( !feof(sym_file) && (version == 0) )
+ 		{
+-			if ( fscanf(sym_file, "%lx %c %s\n", &address, \
+-				    &type, sym) != 3 )
++#if __WORDSIZE == 64
++			if ( fscanf(sym_file, "%lx %c %s\n", &address, &type, sym) != 3 )
++#else
++			if ( fscanf(sym_file, "%x %c %s\n", &address, &type, sym) != 3 )
++#endif
+ 			{
+ 				Syslog(LOG_ERR, "Error in symbol table input (#2).");
+ 				fclose(sym_file);
+ 				return(0);
+ 			}
+ 			if ( VERBOSE_DEBUGGING && debugging )
++#if __WORDSIZE == 64
+ 				fprintf(stderr, "Address: %lx, Type: %c, " \
+ 				    "Symbol: %s\n", address, type, sym);
++#else
++				fprintf(stderr, "Address: %x, Type: %c, " \
++				    "Symbol: %s\n", address, type, sym);
++#endif
+ 
+ 			version = CheckVersion(sym);
+ 		}
+@@ -583,7 +599,7 @@ static int CheckMapVersion(fname)
+  * Purpose:	This function is responsible for adding a symbol name
+  *		and its address to the symbol table.
+  *
+- * Arguements:	(unsigned long) address, (char *) symbol
++ * Arguements:	(uintptr_t) address, (char *) symbol
+  *
+  * Return:	int
+  *
+@@ -593,7 +609,7 @@ static int CheckMapVersion(fname)
+ 
+ static int AddSymbol(address, symbol)
+ 
+-	unsigned long address;
++	uintptr_t address;
+ 	
+ 	char *symbol;
+ 	
+@@ -639,7 +655,7 @@ static int AddSymbol(address, symbol)
+ 
+ char * LookupSymbol(value, sym)
+ 
+-	unsigned long value;
++	uintptr_t value;
+ 
+ 	struct symbol *sym;
+ 	
+@@ -739,7 +755,7 @@ extern char * ExpandKadds(line, el)
+ 			*symbol;
+ 
+ 	char num[15];
+-	auto unsigned long int value;
++	auto uintptr_t value;
+ 
+ 	auto struct symbol sym;
+ 
+@@ -821,7 +837,7 @@ extern char * ExpandKadds(line, el)
+ 					value = strtol(kp2, (char **) 0, 16);
+ 					if ( (symbol = LookupSymbol(value, &sym)) ) {
+ 						if (sym.size)
+-							elp += sprintf(elp, " (%s+%d/%d)", symbol, sym.offset, sym.size);
++							elp += sprintf(elp, " (%s+%ll/%zu)", symbol, sym.offset, sym.size);
+ 						else
+ 							elp += sprintf(elp, " (%s)", symbol);
+ 					}
+@@ -830,7 +846,7 @@ extern char * ExpandKadds(line, el)
+ 					value = strtol(kp3, (char **) 0, 16);
+ 					if ( (symbol = LookupSymbol(value, &sym)) ) {
+ 						if (sym.size)
+-							elp += sprintf(elp, " (%s+%d/%d)", symbol, sym.offset, sym.size);
++							elp += sprintf(elp, " (%s+%ll/%zu)", symbol, sym.offset, sym.size);
+ 						else
+ 							elp += sprintf(elp, " (%s)", symbol);
+ 					}
+@@ -841,7 +857,7 @@ extern char * ExpandKadds(line, el)
+ 					value = strtol(kp2, (char **) 0, 16);
+ 					if ( (symbol = LookupSymbol(value, &sym)) ) {
+ 						if (sym.size)
+-							elp += sprintf(elp, " (%s+%d/%d)", symbol, sym.offset, sym.size);
++							elp += sprintf(elp, " (%s+%ll/%zu)", symbol, sym.offset, sym.size);
+ 						else
+ 							elp += sprintf(elp, " (%s)", symbol);
+ 					}
+@@ -877,17 +893,24 @@ extern char * ExpandKadds(line, el)
+ 		strcat(elp, symbol);
+ 		elp += strlen(symbol);
+ 		if ( debugging )
+-			fprintf(stderr, "Symbol: %s = %lx = %s, %x/%d\n", \
++#if __WORDSIZE == 64
++			fprintf(stderr, "Symbol: %s = %lx = %s, %llx/%zu\n", \
+ 				sl+1, value, \
+ 				(sym.size==0) ? symbol+1 : symbol, \
+ 				sym.offset, sym.size);
++#else
++			fprintf(stderr, "Symbol: %s = %x = %s, %llx/%zu\n", \
++				sl+1, value, \
++				(sym.size==0) ? symbol+1 : symbol, \
++				sym.offset, sym.size);
++#endif
+ 
+ 		value = 2;
+ 		if ( sym.size != 0 )
+ 		{
+ 			--value;
+ 			++kp;
+-			elp += sprintf(elp, "+%x/%d", sym.offset, sym.size);
++			elp += sprintf(elp, "+%llx/%zu", sym.offset, sym.size);
+ 		}
+ 		strncat(elp, kp, value);
+ 		elp += value;
+--- ksym_mod.c
++++ ksym_mod.c	2003-09-09 16:51:08.000000000 +0000
+@@ -89,43 +89,101 @@
+ #include <errno.h>
+ #include <sys/fcntl.h>
+ #include <sys/stat.h>
+-#if !defined(__GLIBC__)
+-#include <linux/time.h>
+-#include <linux/module.h>
+-#else /* __GLIBC__ */
+-#include <linux/module.h>
+-extern __off64_t lseek64 __P ((int __fd, __off64_t __offset, int __whence));
+-extern int get_kernel_syms __P ((struct kernel_sym *__table));
+-#endif /* __GLIBC__ */
+ #include <stdarg.h>
+ #include <paths.h>
+-#include <linux/version.h>
++#include <asm/atomic.h>
++#include <limits.h>
++/* #include <linux/version.h> */
+ 
+ #include "klogd.h"
+ #include "ksyms.h"
+ 
++/* Used by get_kernel_syms, which is obsolete.  */
++struct kernel_sym
++{
++	uintptr_t value;
++	char name[60];			/* should have been 64-sizeof(long); oh well */
++};
++
++extern __off64_t lseek64 __P ((int __fd, __off64_t __offset, int __whence));
++extern int get_kernel_syms __P ((struct kernel_sym *__table));
++
++static inline __off64_t seek64(int fd, uintptr_t address)
++{
++	__off64_t off = (__off64_t)address;
++	__off64_t ret = (__off64_t)-1;
++
++	if (off < 0) {
++		__off64_t rel;
++		if (lseek64(fd, LONG_MAX, SEEK_SET) != LONG_MAX && errno)
++			goto err;
++		rel = (__off64_t)(address - LONG_MAX);
++		if ((ret = lseek64(fd, rel, SEEK_CUR)) != off && errno)
++			goto err;
++		ret = -ret;  /* Relative to LONG_MAX */
++	} else
++		ret = lseek64(fd, off, SEEK_SET);
++err:
++        return ret;
++}
+ 
+-#if !defined(__GLIBC__)
+-/*
+- * The following bit uses some kernel/library magic to product what
+- * looks like a function call to user level code.  This function is
+- * actually a system call in disguise.  The purpose of the getsyms
+- * call is to return a current copy of the in-kernel symbol table.
+- */
+-#define __LIBRARY__
+-#include <linux/unistd.h>
+-#define __NR_getsyms __NR_get_kernel_syms
+-_syscall1(int, getsyms, struct kernel_sym *, syms);
+-#undef __LIBRARY__
+-extern int getsyms(struct kernel_sym *);
+-#else /* __GLIBC__ */
+ #define getsyms get_kernel_syms
+-#endif /* __GLIBC__ */
++
++struct module
++{
++        size_t size_of_struct;   /* == sizeof(module) */
++        struct module *next;
++        const char *name;
++        size_t size;
++
++        union
++        {
++                atomic_t usecount;
++                long pad;
++        } uc;                           /* Needs to keep its size - so says rth */
++
++        unsigned long flags;            /* AUTOCLEAN et al */
++
++        unsigned nsyms;
++        unsigned ndeps;
++
++        struct module_symbol *syms;
++        struct module_ref *deps;
++        struct module_ref *refs;
++        int (*init)(void);
++        void (*cleanup)(void);
++        const struct exception_table_entry *ex_table_start;
++        const struct exception_table_entry *ex_table_end;
++#ifdef __alpha__
++        unsigned long gp;
++#endif
++        /* Members past this point are extensions to the basic
++           module support and are optional.  Use mod_member_present()
++           to examine them.  */
++        const struct module_persist *persist_start;
++        const struct module_persist *persist_end;
++        int (*can_unload)(void);
++        int runsize;                    /* In modutils, not currently used */
++        const char *kallsyms_start;     /* All symbols for kernel debugging */
++        const char *kallsyms_end;
++        const char *archdata_start;     /* arch specific data for module */
++        const char *archdata_end;
++        const char *kernel_data;        /* Reserved for kernel internal use */
++};
++
++struct module_info
++{
++        uintptr_t addr;
++        size_t    size;
++        unsigned long flags;
++        long usecount;
++};
++
+ 
+ /* Variables static to this module. */
+ struct sym_table
+ {
+-	unsigned long value;
++	uintptr_t value;
+ 	char *name;
+ };
+ 
+@@ -136,9 +194,7 @@ struct Module
+ 
+ 	char *name;
+ 	struct module module;
+-#if LINUX_VERSION_CODE >= 0x20112
+ 	struct module_info module_info;
+-#endif
+ };
+ 
+ static int num_modules = 0;
+@@ -155,8 +211,8 @@ extern int debugging;
+ 
+ /* Function prototypes. */
+ static void FreeModules(void);
+-static int AddSymbol(struct Module *mp, unsigned long, char *);
+-static int AddModule(unsigned long, char *);
++static int AddSymbol(struct Module *mp, uintptr_t, char *);
++static int AddModule(uintptr_t, char *);
+ static int symsort(const void *, const void *);
+ 
+ 
+@@ -344,7 +400,7 @@ static void FreeModules()
+  * Purpose:	This function is responsible for adding a module to
+  *		the list of currently loaded modules.
+  *
+- * Arguements:	(unsigned long) address, (char *) symbol
++ * Arguements:	(uintptr_t) address, (char *) symbol
+  *
+  *		address:->	The address of the module.
+  *
+@@ -355,7 +411,7 @@ static void FreeModules()
+ 
+ static int AddModule(address, symbol)
+ 
+-     unsigned long address;
++     uintptr_t address;
+ 
+      char *symbol;
+ 
+@@ -403,10 +459,14 @@ static int AddModule(address, symbol)
+ 			Syslog(LOG_WARNING, "Error opening /dev/kmem\n");
+ 			return(0);
+ 		}
+-		if ( lseek64(memfd, address, SEEK_SET) < 0 )
++		if ( seek64(memfd, address) < 0 )
+ 		{
+ 			Syslog(LOG_WARNING, "Error seeking in /dev/kmem\n");
++#if __WORDSIZE == 64
++			Syslog(LOG_WARNING, "Symbol %s, value %16lx\n", symbol, address);
++#else
+ 			Syslog(LOG_WARNING, "Symbol %s, value %08x\n", symbol, address);
++#endif
+ 			return(0);
+ 		}
+ 		if ( read(memfd, \
+@@ -450,7 +510,7 @@ static int AddModule(address, symbol)
+  * Purpose:	This function is responsible for adding a symbol name
+  *		and its address to the symbol table.
+  *
+- * Arguements:	(struct Module *) mp, (unsigned long) address, (char *) symbol
++ * Arguements:	(struct Module *) mp, (uintptr_t) address, (char *) symbol
+  *
+  *		mp:->	A pointer to the module which the symbol is
+  *			to be added to.
+@@ -469,7 +529,7 @@ static int AddSymbol(mp, address, symbol
+ 
+ 	struct Module *mp;     
+ 
+-	unsigned long address;
++	uintptr_t address;
+ 	
+ 	char *symbol;
+ 	
+@@ -508,7 +568,7 @@ static int AddSymbol(mp, address, symbol
+  * Purpose:	Find the symbol which is related to the given address from
+  *		a kernel module.
+  *
+- * Arguements:	(long int) value, (struct symbol *) sym
++ * Arguements:	(uintptr_t) value, (struct symbol *) sym
+  *
+  *		value:->	The address to be located.
+  * 
+@@ -524,7 +584,7 @@ static int AddSymbol(mp, address, symbol
+ 
+ extern char * LookupModuleSymbol(value, sym)
+ 
+-	unsigned long value;
++	uintptr_t value;
+ 
+ 	struct symbol *sym;
+ 	
+@@ -574,15 +634,9 @@ extern char * LookupModuleSymbol(value,
+ 		 * If it is in this range we can at least return the
+ 		 * name of the module.
+ 		 */
+-#if LINUX_VERSION_CODE < 0x20112
+-		if ( (void *) value >= mp->module.addr &&
+-		     (void *) value <= (mp->module.addr + \
+-					mp->module.size * 4096) )
+-#else
+ 		if ( value >= mp->module_info.addr &&
+ 		     value <= (mp->module_info.addr + \
+-					mp->module.size * 4096) )
+-#endif
++					mp->module.size * getpagesize()) )
+ 		{
+ 			/*
+ 			 * A special case needs to be checked for.  The above
+@@ -601,13 +655,8 @@ extern char * LookupModuleSymbol(value,
+ 			if ( mp->num_syms > 0 )
+ 			{
+ 				last = &mp->sym_array[mp->num_syms - 1];
+-#if LINUX_VERSION_CODE < 0x20112
+-				sym->size = (int) mp->module.addr + \
+-					(mp->module.size * 4096) - value;
+-#else
+ 				sym->size = (int) mp->module_info.addr + \
+-					(mp->module.size * 4096) - value;
+-#endif
++					(mp->module.size * getpagesize()) - value;
+ 				sym->offset = value - last->value;
+ 				return(last->name);
+ 			}
+@@ -617,12 +666,8 @@ extern char * LookupModuleSymbol(value,
+ 			 * Return the module name and the offset of the
+ 			 * faulting address in the module.
+ 			 */
+-			sym->size = mp->module.size * 4096;
+-#if LINUX_VERSION_CODE < 0x20112
+-			sym->offset = (void *) value - mp->module.addr;
+-#else
++			sym->size = mp->module.size * getpagesize();
+ 			sym->offset = value - mp->module_info.addr;
+-#endif
+ 			return(mp->name);
+ 		}
+ 	}
+--- ksyms.h
++++ ksyms.h	2003-09-09 14:15:47.000000000 +0000
+@@ -20,16 +20,19 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
++#include <sys/types.h>
++#include <stdint.h>
++
+ /* Variables, structures and type definitions static to this module. */
+ 
+ struct symbol
+ {
+ 	char *name;
+-	int size;
+-	int offset;
++	size_t size;
++	__off64_t offset;
+ };
+ 
+ 
+ /* Function prototypes. */
+-extern char * LookupSymbol(unsigned long, struct symbol *);
+-extern char * LookupModuleSymbol(unsigned long int, struct symbol *);
++extern char * LookupSymbol(uintptr_t, struct symbol *);
++extern char * LookupModuleSymbol(uintptr_t, struct symbol *);

@@ -1,0 +1,20 @@
+pkgname=obs-service-set_version
+pkgver=0.5.12
+pkgrel=0
+pkgdesc="An OBS source service: Update spec file version"
+arch=('i686' 'x86_64')
+url="https://www.github.com/openSUSE/obs-service-set_version"
+license=('GPL-2.0+' 'GPL-2.0')
+groups=('base-devel')
+depends=('python')
+source=(obs-service-set_version-${pkgver}.tar.gz)
+md5sums=('SKIP')
+
+package() {
+  msg "Installing build ..."
+  cd "${srcdir}"/obs-service-set_version-${pkgver}
+  mkdir -p ${pkgdir}/usr/lib/obs/service
+  install -m 0755 set_version ${pkgdir}/usr/lib/obs/service
+  install -m 0644 set_version.service ${pkgdir}/usr/lib/obs/service
+}
+

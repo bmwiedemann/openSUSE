@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Fri Jul  7 10:34:07 UTC 2017 - tchvatal@suse.com
+
+- Update to 0.6.2:
+  * ISRC and MCN support on BSD
+  * LIB-60: fix make check for default device on generic/unknown platform
+  * make Doxygen output reproducible (no timestamps)
+  * remove newline for Linux device "1" from proc
+- Refresh patch libdiscid-no-crypto.patch
+
+-------------------------------------------------------------------
+Thu Mar 23 15:15:33 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul  4 21:53:59 UTC 2016 - jengelh@inai.de
+
+- Remove useless --with-pic (it's for unbuilt static libs).
+  Remove redundant %clean.
+- Remove nonsense provide, it is not requested by debuginfo.
+
+-------------------------------------------------------------------
+Tue Feb 17 10:55:42 UTC 2015 - idonmez@suse.com
+
+- Add baselibs.conf as source 
+
+-------------------------------------------------------------------
+Tue Feb 17 03:01:01 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.6.1
+  * LIB-59: windows: fix bug preventing ISRC reads
+- Changes from version 0.6.0
+  * LIB-41: add discid_get_troc_string() for fuzzy toc lookup
+  * LIB-54: add libmusicbrainz example with fuzzy toc lookup
+  * LIB-43: windows: the default drive is the first cd drive letter
+  * LIB-45: Linux/BSD/Solaris: try several possible default device names
+  * LIB-28: Mac: allow drive numbers as devices, default now "1"
+  * LIB-55, LIB-56: allow drive numbers for Windows and Linux
+  * LIB-53: discid_get_submission_url() returns the new NGS url
+    currently no functional change, the old url was redirected
+  * LIB-52: more validation for parameters of discid_put()
+  * LIB-48: assert successful read/put when API is used
+  * the discisrc example prints the name of the device used
+- Add pkgconfig(libmusicbrainz5) build require; new upstream dependency
+- Update libdiscid-no-crypto.patch 
+
+-------------------------------------------------------------------
+Fri Aug  2 09:49:06 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
+
+- update to version 0.5.2:
+ - LIB-40: discid_get_webservice_url() (web service version 1) is deprecated
+           please use libmusicbrainz to gather metadata by disc ID
+ - LIB-7:  rewrote data track handling, releases with multiple data tracks
+           This also fixes LIB-18 (no ID for DVDs) and LIB-9 (PS/PS2 CDs)
+ - LIB-44: fix invalid disc IDs on first read of multi-session discs
+ - LIB-26: add a better test suite, including valgrind memcheck target
+ - LIB-37: Autotools optimization (non-recursive build etc.)
+ - print time information in the discid example
+- libdiscid-no-crypto.patch: refreshed via quilt
+
+-------------------------------------------------------------------
+Tue Apr 16 10:05:28 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
+
+- update to version 0.5.0:
+ - LIB-29: add read_sparse() for faster reading again
+ - LIB-35: add HAVE_SPARSE_READ and VERSION_* defines
+ - LIB-36: hide internal symbols on Linux/Unix
+- libdiscid-visibility.patch removed (implemented upstream)
+- libdiscid-no-crypto.patch:
+ - refreshed via quilt
+ - provided meta information: no upstream, opensuse feature
+
+-------------------------------------------------------------------
+Fri Mar  8 19:54:35 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
+
+- updated to 0.4.1
+ - LIB-23: add has_feature() and get_feature_list() to API (platform check)
+ - add get_version_string() to API
+ - CMake : add FreeBSD, NetBSD, OpenBSD -> all platforms supported
+ - LIB-32: change libtool from -version-info to -version-name
+- libdiscid-visibility.patch refreshed via quilt
+- libdiscid-no-crypto.patch refreshed via quilt
+
+-------------------------------------------------------------------
+Tue Feb 12 16:16:25 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
+
+- updated to 0.3.2
+  - ISRC and MCN support on Linux
+  - Autotools: fix Windows, remove unneeded libs on SunOS
+  - CMake: add Cygwin, add SunOS, fix Mac OS X
+  - updated docs, created INSTALL file
+  - fix distribution so it works for autotools AND cmake
+- libdiscid-visibility.patch refreshed for 0.3.2 via quilt
+
+-------------------------------------------------------------------
+Mon Jan 14 18:14:36 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
+
+- updated to 0.3.0
+  - Fixed reading of 99 track CDs on Mac OS X.
+  - Added API for reading ISRCs and MCNs (implemented on Windows and Mac OS X).
+  - Added Solaris, OpenBSD and kFreeBSD support.
+- libdiscid-visibility.patch, libdiscid-no-crypto.patch
+  Adapted to the 0.3 release
+
+-------------------------------------------------------------------
+Tue Jul 31 01:34:06 UTC 2012 - crrodriguez@opensuse.org
+
+- autotools fixes, all C files must include config.h
+- Use openSSL for crypto, we have waay too many internal
+  implementations of common digest algos.
+- Run make check
+
+-------------------------------------------------------------------
+Sat Jan 28 10:57:50 UTC 2012 - coolo@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Sat Nov 19 15:53:34 UTC 2011 - coolo@suse.com
+
+- update to 0.2.2
+  - Set libtool version number to 2:1:2 because it is backwards compatible
+    with versions 0.1.x. Thanks to Luks for spotting this.
+- ran spec-cleaner and rename shared library package
+
+-------------------------------------------------------------------
+Sat Nov 19 15:43:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+
+- Added 32bit compatibility libraries
+- Fixed spec file line breaks
+- Added BuildRequires:  pkg-config (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Wed Oct  7 15:45:49 UTC 2009 - crrodriguez@opensuse.org
+
+- support GCC visilibity features 
+
+-------------------------------------------------------------------
+Thu Aug 14 06:37:47 CEST 2008 - crrodriguez@suse.de
+
+- update to version 0.2.1 libdiscid1
+ 	* Addded the discid_get_webservice_url() function
+    * other non linux relevant changes
+
+-------------------------------------------------------------------
+Wed Dec  5 14:42:53 CET 2007 - ro@suse.de
+
+- provide main package name in library package for debuginfo
+
+-------------------------------------------------------------------
+Sat Sep  1 02:58:21 CEST 2007 - crrodriguez@suse.de
+
+- initial version for CODE 11 as a dependency of libmusicbrainz3.
+
+-------------------------------------------------------------------
+Sat Aug 18 22:17:42 CEST 2007 - crrodriguez@suse.de
+
+- firs version for the opensuse buildservice 
+

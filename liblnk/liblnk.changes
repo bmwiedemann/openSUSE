@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Thu Mar 28 23:36:52 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181227
+	* Changes for handling location information strings
+	* worked on Python bindings
+	* various improvements associated with corrupt files
+	* Fixed infinite loop in getopt fallback functions
+	* Worked on dtfabric support (used by the developers, not an API issue)
+
+-------------------------------------------------------------------
+Wed Jan 27 15:38:22 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160107
+	* 2016 update
+	* applied updates
+	* worked on Python 3 support
+	  - added support for distributed link tracker functions
+	* worked on Python bindings
+	* worked on tests
+	* worked on setup.py
+	* bug fixes after fuzzing with AFL
+	* Bug fix for handling volume label
+
+-------------------------------------------------------------------
+Tue Jan 13 23:47:36 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150105
+	* 2015 update
+	* worked on Python 3 support
+	* worked on tests
+	* code clean up
+- update source URL to point to new github site
+- use new libyal packages from OBS instead of internal versions
+
+-------------------------------------------------------------------
+Mon Dec 22 22:16:18 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20141026
+	* changes for deployment
+	* worked on utility scripts
+	* update Python-bindings tests
+
+-------------------------------------------------------------------
+Fri Sep 19 19:28:49 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140905
+	* bug fix in Python-bindings
+	* worked on property store data block support
+	* updated libfwsi version check
+- change Source: field to fullpath, delete DL_URL
+- use external libcerror package
+
+-------------------------------------------------------------------
+Tue Aug 26 16:54:30 UTC 2014 - Greg.Freemyer@gmail.com
+
+- add these 2 lines to python sub-project to ensure proper syncronization between versions
+	* Requires:     %lname = %version
+	* Provides:	pylnk = %version
+
+-------------------------------------------------------------------
+Wed Aug 13 16:35:28 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140731
+	* bug fix in Python-bindings
+	* worked on Python bindings
+	  - changes regarding integer object signedness on 32-bit architectures
+	* worked on shell items support
+	* small changes in debug output
+	* small changes in lnkinfo output
+	* updated dependencies
+	* worked on updates
+	* 2014 update
+
+-------------------------------------------------------------------
+Thu Nov 21 03:38:47 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20131015
+	* updated dependencies
+	* improved pyolecf as integer functions
+	* worked on setup.py, largely for MSI builds
+- cleanup BuildRequires statements
+
+-------------------------------------------------------------------
+Fri Sep 20 02:28:51 UTC 2013 - Greg.Freemyer@gmail.com
+
+- updated to v0~20130829
+	* change to API to expose link target identifier data
+	* fixes for building with stand-alone libuna and libbfio
+	* updated dependencies
+	* worked on automated tests
+	* bug fix in pymsiecf file object libbfio glue code
+	* worked on shell items
+	  - detection of delegate 0x2e item
+	* fix in debug output for local path
+	* worked on tests
+	* textual changes
+
+-------------------------------------------------------------------
+Tue Jul 30 01:07:48 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20130413
+	* updated dependencies
+	* moved examples to project site
+	* updated lnkinfo man page
+	* worked on tests
+	* updates and bug fixes in pylnk
+	* fixed codepage 949, 950, 1255 restriction
+	* added PackageMaker files
+	* added functions to retrieve drive type, drive serial number and volume label
+	* fix trailing \ for local and network path when common path is an emtpy string
+- use gz compression to simplify download/convert
+- use factory version of sub-packages as possible
+
+-------------------------------------------------------------------
+Fri Apr  5 01:24:57 UTC 2013 - jengelh@inai.de
+
+- Cleanups: Set RPM group, license, summary and description
+  metadata; remove unused %py_requires; do not bloat shlib package
+  with documentation
+- Use system libraries instead of bundled ones where possible
+- Name the tools package according to upstream's recommendation
+- Drop unnecessary -fno-strict-aliasing
+- Drop Windows_Shell_Item pdf, this belongs to a different package
+
+-------------------------------------------------------------------
+Wed Mar 27 16:57:05 UTC 2013 - Greg.Freemyer@gmail.com
+
+- initial package (version 0~20130304) for build.opensuse.org

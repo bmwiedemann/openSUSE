@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Mon Nov 20 23:06:03 UTC 2017 - zaitor@opensuse.org
+
+- Add U_xrandr_suppress-misleading-indentation-warning.patch: When
+  printing out rotations, we print a space before any item other
+  than the first, and set `first = False` in each block where we
+  print. However, this is done in the same line as the conditional
+  that checks if first is set, which may give the impression that
+  the assignment is also under the conditional. This is not the
+  case, and recent GCC warns about this.
+- Add U_xrandr_add-filter-flag.patch: Flag can be set to
+  "nearest" or "bilinear".
+
+-------------------------------------------------------------------
+Mon May 29 15:02:34 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041382)
+- Add xrandr-print-outputs-per-provider.patch from sle12. This makes
+  the --listproviders option in xrandr(1) also print which outputs are
+  supported by each provider or GPU. (patch by federico@suse.com)
+
+-------------------------------------------------------------------
+Thu Feb 25 09:49:51 UTC 2016 - mimi.vx@gmail.com
+
+- update to version 1.5.0
+ This release adds support for the new monitor objects added in RandR 1.5, and
+ fixes a few bugs.
+
+-------------------------------------------------------------------
+Wed Aug  6 20:48:00 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.4.3:
+  This minor bugfix release fixes gamma ramp calculations on GPUs with unusual
+  gamma table configurations, removes redundant "Setting reflection" messages
+  when - --verbose is specified, adds the ability for the -x and -y switches
+  to be used to undo previous reflections, and adds the missing --brightness
+  option to the - --help usage summary.
+
+-------------------------------------------------------------------
+Sat Mar 29 01:24:09 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.4.2:
+  This minor bugfix release restores the ability to disconnect
+  providers from each other using "0x0" as the provider XID.  For
+  example, to disconnect a display offload sink from its source,
+  use: "xrandr --setprovideroutputsource <sink> 0x0"
+  This release also formats the GUID provided by DisplayPort 1.2
+  displays in traditional GUID form.
+  Finally, this release increases the precision of refresh rate
+  calculations to disambiguate modes with very similar refresh
+  rates and to improve the accuracy for interlaced modes.
+
+-------------------------------------------------------------------
+Thu Oct 17 13:55:55 UTC 2013 - sndirsch@suse.com
+
+- install the package by default; currently xrandr is required in
+  order to make use of RANDR 1.4 enhancements, which have been
+  implemented by the following drivers: intel, radeon, nouveau,
+  modesetting and nvidia
+
+-------------------------------------------------------------------
+Sun Jul 21 19:21:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Combine usage message strings.
+  + Declare capability_name() as returning const char *.
+  + fdo#56923 - Make command line options consistent (single vs
+    double dash).
+  + Protect config.h like usual.
+  + xrandr: calloc XRRModeInfo's passed to libXrandr.
+  + Print spaces between XA_ATOM property values.
+
+-------------------------------------------------------------------
+Wed Feb 13 18:01:19 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.4.0:
+- New features:
+  + Support for RandR 1.4's provider objects.  See the --listproviders,
+    --setprovideroutputsource, and --setprovideroffloadsink options for more
+    information.
+  + --set now allows a comma-separated list of values.  This is useful with the
+    Border property to configure different border adjustments for different edges
+    of the screen.
+  + --scale-from, which specifies a scaling transform based on the desired
+    desktop size.
+  + --query now indicates which output, if any, is primary.
+ - Also contains a number of bug fixes.
+  One notable behavior change is that the --gamma option now takes the actual
+  gamma value rather than the reciprocal of the gamma value.  This matches the
+  behavior of other programs such as xgamma and the gamma configuration options in
+  xorg.conf.
+
+-------------------------------------------------------------------
+Sat Apr 14 15:18:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.3.5:
+  + Correct several issues found by static code analysis tools.
+  + Clean up some build configuration issues.
+- Add pkgconfig(xproto) BuildRequires: new upstream dependency.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xrandr from xorg-x11. Initial version: 1.3.4.
+

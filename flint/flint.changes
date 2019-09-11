@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun May 28 07:21:16 UTC 2017 - bwiedemann@suse.com
+
+- Sort input files to make build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Nov 13 19:15:35 UTC 2016 - jengelh@inai.de
+
+- Adjust 0001-build-provide-autotools-files.patch for new
+  NTL-10.x header file names.
+
+-------------------------------------------------------------------
+Sun Mar 13 09:43:42 UTC 2016 - jengelh@inai.de
+
+- Update to git snapshot of 3.0.x branch
+* Add implementation of Moller-Granlund invert_limb
+* Add implementations of n_div2_preinv and n_divrem2_preinv.
+* Add primitive flint exception mechanism.
+* Add n_powmod2_ui_preinv
+* Add exception for impossible inverse to n_invmod and remove resulting exceptions throughout Flint.
+* Remove smooth factorisation since it is completely broken.
+- Remove 0002-compile-fixes.diff
+
+-------------------------------------------------------------------
+Sat Nov 14 12:39:56 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.5.2
+* LLL (rational, Nguyen-Stehle, from Gram matrix, with_removal,
+  Storjohann/ULLL)
+* Hermite normal form (naive, xgcd, Domich-Kannan-Trotter,
+  Kannan-Bachem, Pernet-Stein)
+* Smith normal form (diagonal, Kannen-Bachem, Iliopoulos)
+* Paterson-Stockmeyer algorithm
+* modular resultant; hgcd resultant; polynomial discriminant
+* multithreaded multimodular Taylor shift
+* multithreaded Brent-Kung composition
+* multithreaded Kaltofen-Shoup distinct degree factorisation
+* multiplication based reduced row echelon form
+* place inline functions in library for foreign function interfaces
+* Primality tests for large integers (Pocklington, Morrison)
+* Probable prime tests for large integers (Lucas, Baillie-PSW,
+  strong-psp, Brillhart-Lehmer-Selfridge)
+* CRT for large integers
+* Dixon algorithm for nullspace
+* Brent-Kung composition in irreducibility and distinct degree
+  factorisation
+* floating point QR decomposition
+* Schwarz-Rutishauser Gram-Schmidt algorithm
+* Ogita-Rump-Oishi dot product
+* Bodrato matrix squaring
+* matrix concatenation functions
+* additional functions for returning factor of modulus in polys
+  over Z/nZ
+* Hadamard matrix construction
+* series addition/subtraction
+* teach flint_printf/sprintf about explicit width format specifiers
+
+-------------------------------------------------------------------
+Fri Jun 26 11:06:51 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.4.5
+* fixed a severe bug in flint's fmpz_poly_gcd_heuristic
+
+-------------------------------------------------------------------
+Thu Feb 19 12:41:41 UTC 2015 - jengelh@inai.de
+
+- Add 0002-compile-fixes.diff to fend off improper usage of NTL
+  headers.
+
+-------------------------------------------------------------------
+Mon Oct 20 15:59:39 UTC 2014 - schwab@suse.de
+
+- Don't use unknown option -mno-popcnt
+
+-------------------------------------------------------------------
+Sun Aug 10 05:42:27 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.4.4
+* Fix a bug in the ARM assembly
+
+-------------------------------------------------------------------
+Fri Feb  7 12:25:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.4.1
+* C++ expressions template wrapper
+* Fast factorisation of polynomials over Z/nZ
+* improved p-adics
+* polynomials/matrices over p-adics
+* qadics
+* Finite fields (small and large F_q), polynomials/matrices over F_q
+* Finite fields with Zech logarithm representation
+* Fast factorisation of polynomials over F_q
+* Faster Brent-Kung modular composition
+* New prime sieving code
+* Lambert-W function
+* Precomputed inverses for polynomials and large integers
+* Williams' P+1 integer factoring algorithm
+* Harvey's KS2/KS4 polynomial multiplication  
+* Faster primality testing up to 64 bits
+* Support for GMP
+* Support for Boehm-Demers-Weiser GC
+* Support for flint extension modules
+
+-------------------------------------------------------------------
+Thu Dec  6 16:11:21 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 2.3+, revision 375f4c8696b4)
+  for build.opensuse.org

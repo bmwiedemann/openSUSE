@@ -1,0 +1,48 @@
+autofs5 is a major update with lots of code changes and new features.
+Most of the changes enhance the functionality to be more compliant
+with current industry standards.
+
+Here is a list of the most important changes:
+
+Differences v4 vs. v5
+---------------------
+- Master map is now read and parsed by the `automount' daemon
+- The master map default is "auto.master" and nsswitch is used to
+  locate it. The line "+auto.master" has been added to the default
+  installed "/etc/auto.master" to ensure that those using NIS will
+  still find their master map. This is in line with other industry
+  automount implementations.
+- The `automount' daemon is now a multi-threaded application
+- `autofs' filesystem mounts only appear in /proc/mounts and not
+  /etc/mtab.
+- `autofs' version 5.0.0 will refuse to run if it cannot find an
+   autofs4 kernel module that supports protocol version 5.00 or above.
+- mount options present in the master map are now overridden by mount
+  options in map entries instead of being accumulated. This behaviour
+  is in line with other industry automount implementations.
+
+New features in v5
+------------------
+- improved direct mount map support
+- `+' map inclusion
+- added nsswitch map source support
+- rewrote multi-mount map code
+- added LDAP encryption and authentication support
+- improved shutdown and restart
+- a "hosts" map module has been added
+
+Update hints
+============
+Since autofs now uses nsswitch to locate the master map, the
+sysconfig variable NISMASTERMAP is obsolete.
+Also the UNDERSCORETODOT parameter is not support anymore.
+Some new sysconfig parameters are available, please take
+a look to /etc/sysconfig/autofs.
+Note also, that the old Suse config syntax style is not
+supported anymore. If you had a configuration like
+
+/mnt                yp auto.home            [options]
+
+you'll have to change this to
+
+/mnt                yp:auto.home            [options]

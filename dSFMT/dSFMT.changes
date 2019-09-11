@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Thu Jul 24 16:02:07 UTC 2014 - dmitry_r@opensuse.org
+
+- Initial package, version 2.2.3
+- Build shared library
+  * dSFMT-sharedlib.patch
+- Export functions required to use the library
+  * dSFMT-export_functions.patch

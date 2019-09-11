@@ -1,0 +1,2 @@
+addFilter("engauge-digitizer-doc.* file-contains-date-and-time")
+addFilter("engauge-digitizer-devel-doc.* file-contains-date-and-time")

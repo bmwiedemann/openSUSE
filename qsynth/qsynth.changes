@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Fri Jul 12 18:44:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.7
+  * Updated for the newer Qt5 development tools (>= 5.13).
+  * Configure updated to check for qtchooser availability.
+  * Updated icon files into 128x128 base resolution.
+
+-------------------------------------------------------------------
+Thu Apr 11 10:53:43 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.6
+  * Re-defined all main application UNIX signal handling.
+
+-------------------------------------------------------------------
+Mon Mar 11 10:29:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.5 (Pre-LAC2019 Release Frenzy)
+  * Refactored all singleton/unique application instance
+    setup logic away from X11/Xcb hackery.
+  * HiDPI display screen support (Qt >= 5.6).
+  * Bumped copyright headers into the New Year (2019).
+
+-------------------------------------------------------------------
+Wed Dec  5 17:18:05 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.5.4
+  * Reset button now also resets master Gain, Reverb and
+    Chorus to their "factory default" values.
+  * Fixed Reverb and Chorus effects processing when audio
+    output peak-meters are enabled on FluidSynth API V2.
+  * Old deprecated Qt4 build support is no more.
+  * System tray options now subject to current desktop
+    environment availability.
+
+-------------------------------------------------------------------
+Wed Oct 10 15:39:47 UTC 2018 - aloisio@gmx.com
+
+
+- Update to version 0.5.3
+  * Current FluidSynth version information added to command
+    line output (-V, --version).
+  * Overhaul adaptations to the FluidSynth API V2 (>= 2.0.0).
+  * AppStream metadata updated to be the most compliant with
+    latest freedesktop.org specification and recommendation.
+
+- Dropped fluidsynthv2_overhaul.patch, fluidsynthv2_cmake.patch,
+  fluidsynthv2_more.patch, fluidsynthv2_copyright.patch,
+  fluidsynthv2_last.patch and fluidsynthv2_version.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
+Thu Sep 27 11:37:32 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.2
+  * AppData/AppStream metadata is now settled under an all
+    permisssive license (FSFAP).
+  version 0.5.1
+  * Disable singleton/unique application instance setup logic
+    when the display server platform is not X11.
+  * Fixed deprecated calls to fluid_synth_get_channel_info(),
+    fluid_synth_set_midi_router() and fluid_settings_getstr()
+    (as signaled on libfluidsynth >= 1.1.9).
+  * A little hardening on the configure (autoconf) macro side.
+
+- Backported fluidsynthv2_overhaul.patch, fluidsynthv2_cmake.patch,
+  fluidsynthv2_more.patch, fluidsynthv2_copyright.patch,
+  fluidsynthv2_last.patch and fluidsynthv2_version.patch to
+  support fluidsynth 2.0.0
+
+-------------------------------------------------------------------
+Tue Feb 20 13:28:15 UTC 2018 - jengelh@inai.de
+
+- Remove unrealized future visions from description.
+
+-------------------------------------------------------------------
+Tue Feb 20 11:35:15 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.5.0
+  * Added *.SF3 to soundfont files filter on Setup > Soundfonts
+    > Open... file dialog.
+  * Increased Soundfont bank-offset limit to 16384 (was 128).
+  * Desktop entry specification file is now finally independent
+    from build/configure template chains.
+  * Updated target path for freedesktop.org's AppStream metainfo
+    file (formerly AppData).
+  version 0.4.4
+  * Added French man page (by Olivier Humbert, thanks).
+  * Make builds reproducible byte for byte, by getting rid of
+    the configure build date and time stamps.
+  version 0.4.3
+  * Fixed a potential crash on the singleton/unique application
+    instance setup.
+  * Almost complete overhaul on the configure script command
+    line options, wrt. installation directories specification,
+    eg. --prefix, --bindir, --libdir, --datadir and --mandir.
+  * Late French (fr) translation update (by Olivier Humbert,
+    thanks).
+  version 0.4.2
+  * Old "Start minimized to system tray" option returns to setup.
+  * Dropped the --enable-qt5 from configure as found redundant
+    given that's the build default anyway (suggestion by Guido
+    Scholz, while for Qtractor, thanks).
+  version 0.4.1
+  * Dropped old "Start minimized to system tray" option from setup.
+  * CMake script lists update (patch by Orcan Ogetbil, thanks).
+  * Added application keywords to freedesktop.org's AppData.
+  * System-tray icon context menu has been fixed/hacked to show up
+    again on Plasma 5 (aka. KDE5) notifications status area.
+  * Prevent x11extras module from use on non-X11/Unix plaforms.
+  * Messages standard output capture has been improved in both ways
+    a non-blocking pipe may get.
+  * Regression fix for invalid system-tray icon dimensions reported
+    by some desktop environment frameworks.
+  version 0.4.0
+  * Desktop environment session shutdown/logout management has been
+    also adapted to Qt5 framework.
+  * Single/unique application instance control adapted to Qt5/X11.
+  * Output meter scale text color fixed on dark color schemes.
+  * Prefer Qt5 over Qt4 by default with configure script.
+  * Complete rewrite of Qt4 vs. Qt5 configure builds.
+  * A new top-level widget window geometry state save and restore
+    sub-routine is now in effect.
+  * Fixed for some strict tests for Qt4 vs. Qt5 configure builds.
+  * German (de) translation update (by Guido Scholz, thanks).
+  version 0.3.9
+  * Added application description as freedesktop.org's AppData.
+  * New user preference option on whether to show the nagging
+    'program will keep running in the system tray' message, on
+    main window close.
+  * Application close confirm warning is now raising the main
+    window as visible and active for due top level display,
+    especially applicable when minimized to the system tray.
+  * A man page has been added.
+  * Translations install directory change.
+  * Allow the build system to include an user specified LDFLAGS.
+  * Czech (cs) translation updated (by Pavel Fric, thanks).
+
+- Refreshed qsynth-fix_desktop_file.patch
+
+- Dropped qsynth-remove_build_timestamps.patch (no longer
+  necessary)
+
+- Switched to Qt5 build
+
+- Split locale files into separate -lang subpackage
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sat Jan 04 17:16:45 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 0.3.8:
+  * Serbian (sr) translation added
+
+- changes from 0.3.7:
+  * new French (fr) translation
+  * reversed (mouse) scroll-wheel effect on dial knob widgets
+  * MIDI bank select mode control added to engine setup dialog
+  * main window is now brought to front and (re)activated when clicking on the
+    system tray icon instead of just hiding it
+
+-------------------------------------------------------------------
+Thu Jan 05 19:02:36 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.3.6)
+

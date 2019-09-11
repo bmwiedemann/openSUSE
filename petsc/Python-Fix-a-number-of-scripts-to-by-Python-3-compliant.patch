@@ -1,0 +1,529 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Feb 24 19:41:46 2018 +0100
+Subject: Python: Fix a number of scripts to by Python 3 compliant.
+Patch-mainline: Not yet
+Git-commit: 4a44f39b12a255e42cbee85177427b270ceb8889
+References: 
+
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ bin/FASTMathInstaller.py             | 94 ++++++++++++++++++------------------
+ bin/PetscBinaryIOTrajectory.py       |  2 +-
+ bin/TOPSGenerator.py                 |  4 +-
+ bin/configVars.py                    | 12 ++---
+ bin/parseargs.py                     |  4 +-
+ bin/petsclogformat.py                | 48 +++++++++---------
+ bin/portabilitycheck.py              |  8 +--
+ bin/saws/SAWs.py                     |  2 +-
+ bin/taucc.py                         |  6 +--
+ bin/update.py                        |  2 +-
+ src/ts/examples/tutorials/extchem.py |  2 +-
+ 11 files changed, 92 insertions(+), 92 deletions(-)
+
+diff --git a/bin/FASTMathInstaller.py b/bin/FASTMathInstaller.py
+index 49cab5a..9da0594 100755
+--- a/bin/FASTMathInstaller.py
++++ b/bin/FASTMathInstaller.py
+@@ -61,13 +61,13 @@ except:
+   sys.exit('Python is NOT installed with Tkinter on this system')
+ 
+ if TkVersion < 8.0 :
+-	print "\n" * 3
+-	print "*"*75
+-	print "Running Tk version:", TkVersion
+-	print "You must be using Tk version 8.0 or greater to use EasyGui."
+-	print "Terminating."
+-	print "*"*75
+-	print "\n" * 3
++	print("\n" * 3)
++	print("*"*75)
++	print("Running Tk version:", TkVersion)
++	print("You must be using Tk version 8.0 or greater to use EasyGui.")
++	print("Terminating.")
++	print("*"*75)
++	print("\n" * 3)
+ 	sys.exit(0)
+ 
+ 
+@@ -202,10 +202,10 @@ def buttonbox(message="Shall I continue?", title="", choices = ["Button1", "Butt
+ 	messageWidget.configure(font=(DEFAULT_FONT_FAMILY,fontSize))
+ 	messageWidget.pack(side=TOP, expand=YES, fill=X, padx='3m', pady='3m')
+ 
+-        if message2:
+-  	  messageWidget = Message(messageFrame, text=message2, width=len(message)*fontSize+4)
+-	  messageWidget.configure(font=(DEFAULT_FONT_FAMILY,DEFAULT_FONT_SIZE))
+-	  messageWidget.pack(expand=YES, fill=X, padx='3m', pady='3m')
++	if message2:
++		messageWidget = Message(messageFrame, text=message2, width=len(message)*fontSize+4)
++		messageWidget.configure(font=(DEFAULT_FONT_FAMILY,DEFAULT_FONT_SIZE))
++		messageWidget.pack(expand=YES, fill=X, padx='3m', pady='3m')
+ 
+ 	__put_buttons_in_buttonframe(choices)
+ 
+@@ -311,10 +311,10 @@ def multenterbox(message="Fill in values for the fields."
+ 
+ 	----------------------------------------------------------------------
+ 	"""
+-        if not argListOfFieldNames:
+-                argListOfFieldNames = ['']
+-                for i in range(0,len(argListOfFieldValues)+2):
+-                       argListOfFieldNames.append('')
++	if not argListOfFieldNames:
++		argListOfFieldNames = ['']
++		for i in range(0,len(argListOfFieldValues)+2):
++			argListOfFieldNames.append('')
+ 	return __multfillablebox(
+ 		message,title,argListOfFieldNames,argListOfFieldValues,None)
+ 
+@@ -360,9 +360,9 @@ def __multfillablebox(message="Fill in values for the fields."
+ 
+ 	lastWidgetIndex = len(argListOfFieldNames) - 1
+ 
+-        max = 40
+-        for i in range(len(argListOfFieldNames)):
+-                if len(argListOfFieldValues[i]) > max: max = len(argListOfFieldValues[i])+2
++	max = 40
++	for i in range(len(argListOfFieldNames)):
++		if len(argListOfFieldValues[i]) > max: max = len(argListOfFieldValues[i])+2
+ 	for widgetIndex in range(len(argListOfFieldNames)):
+ 		argFieldName  = argListOfFieldNames[widgetIndex]
+ 		argFieldValue = argListOfFieldValues[widgetIndex]
+@@ -745,8 +745,8 @@ def __choiceboxGetChoice(event):
+ 		choice_index = choiceboxWidget.curselection()
+ 		__choiceboxResults = choiceboxWidget.get(choice_index)
+ 
+-	# print "Debugging> mouse-event=", event, " event.type=", event.type
+-	# print "Debugging> choice =", choice_index, __choiceboxResults
++	# print("Debugging> mouse-event=", event, " event.type=", event.type)
++	# print("Debugging> choice =", choice_index, __choiceboxResults)
+ 	root.quit()
+ 
+ 
+@@ -1093,7 +1093,7 @@ def __put_buttons_in_buttonframe(choices):
+ 
+ def _test():
+ 	# simple way to clear the console
+-	print "\n" * 100
++	print("\n" * 100)
+ 	# START DEMONSTRATION DATA ===================================================
+ 	choices_abc = ["This is choice 1", "And this is choice 2"]
+ 	message = "Pick one! This is a huge choice, and you've got to make the right one " \
+@@ -1164,67 +1164,67 @@ for someItem in myListOfStuff:
+ 
+ 		if   reply[0] == "msgbox":
+ 			reply = msgbox("short message", "This is a long title")
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "buttonbox":
+ 			reply = buttonbox()
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 			reply = buttonbox(message, "Demo of Buttonbox with many, many buttons!", choices)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "boolbox":
+ 			reply = boolbox()
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "integerbox":
+ 			reply = integerbox(
+ 				"Enter a number between 3 and 333",
+ 				"Demo: integerbox WITH a default value",
+ 				222, 3, 333)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 			reply = integerbox(
+ 				"Enter a number between 0 and 99",
+ 				"Demo: integerbox WITHOUT a default value"
+ 				)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "diropenbox":
+ 			title = "Demo of diropenbox"
+ 			msg = "This is a test of the diropenbox.\n\nPick the directory that you wish to open."
+ 			d = diropenbox(msg, title)
+-			print "You chose directory...:", d
++			print("You chose directory...:", d)
+ 
+ 		elif reply[0] == "fileopenbox":
+ 			f = fileopenbox()
+-			print "You chose to open file:", f
++			print("You chose to open file:", f)
+ 
+ 		elif reply[0] == "filesavebox":
+ 			f = filesavebox()
+-			print "You chose to save file:", f
++			print("You chose to save file:", f)
+ 
+ 		elif reply[0] == "indexbox":
+ 			title = reply[0]
+ 			msg   =  "Demo of " + reply[0]
+ 			choices = ["Choice1", "Choice2", "Choice3", "Choice4"]
+ 			reply = indexbox(msg, title, choices)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "enterbox":
+ 			reply = enterbox("Enter the name of your best friend:", "Love!", "Suzy Smith")
+-			print "Reply was:", str(reply)
++			print("Reply was:", str(reply))
+ 
+ 			reply = enterbox("Enter the name of your worst enemy:", "Hate!")
+-			print "Reply was:", str(reply)
++			print("Reply was:", str(reply))
+ 
+ 		elif reply[0] == "ynbox":
+ 			reply = ynbox(message, title)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "ccbox":
+ 			reply = ccbox(message)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "choicebox":
+ 			longchoice = "This is an example of a very long option which you may or may not wish to choose."*2
+@@ -1233,15 +1233,15 @@ for someItem in myListOfStuff:
+ 
+ 			message = "Pick something. " + ("A wrapable sentence of text ?! "*30) + "\nA separate line of text."*6
+ 			reply = choicebox(message, None, listChoices)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 			message = "Pick something. "
+ 			reply = choicebox(message, None, listChoices)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 			message = "Pick something. "
+ 			reply = choicebox("The list of choices is empty!", None, [])
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "multchoicebox":
+ 			listChoices = ["aaa", "bbb", "ccc", "ggg", "hhh", "iii", "jjj", "kkk"
+@@ -1250,17 +1250,17 @@ for someItem in myListOfStuff:
+ 
+ 			message = "Pick as many choices as you wish."
+ 			reply = multchoicebox(message,"DEMO OF multchoicebox", listChoices)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "textbox":
+ 			message = "Here is some sample text. " * 16
+ 			reply = textbox(message, "Text Sample", text_snippet)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		elif reply[0] == "codebox":
+ 			message = "Here is some sample code. " * 16
+ 			reply = codebox(message, "Code Sample", code_snippet)
+-			print "Reply was:", reply
++			print("Reply was:", reply)
+ 
+ 		else:
+ 			msgbox("Choice\n\n" + choice + "\n\nis not recognized", "Program Logic Error")
+@@ -1277,10 +1277,10 @@ The software installed is covered by a variety of licenses, please refer to
+ each package's license information before redistributing it. This installer
+ can also install additional packages that are used by the FASTMath packages."""
+ 
+-	result = buttonbox(message=message1, title="FASTMath Software Installer", choices = ["Cancel", "Continue"],fontSize = 20,message2=message2)
++        result = buttonbox(message=message1, title="FASTMath Software Installer", choices = ["Cancel", "Continue"],fontSize = 20,message2=message2)
+         if result == "Cancel": sys.exit()
+ 
+-	result = buttonbox(message='Should you encounter problems please send email\nto petsc-maint@mcs.anl.gov with all output\n', title="FASTMath Software Installer", choices = ["Cancel", "Continue"])
++        result = buttonbox(message='Should you encounter problems please send email\nto petsc-maint@mcs.anl.gov with all output\n', title="FASTMath Software Installer", choices = ["Cancel", "Continue"])
+         if result == "Cancel": sys.exit()
+ 
+         options = []
+@@ -1387,19 +1387,19 @@ can also install additional packages that are used by the FASTMath packages."""
+               import urllib
+               try:
+                 urllib.urlretrieve('http://ftp.mcs.anl.gov/pub/petsc/petsc.tar.gz', os.path.join(reply,'petsc.tar.gz'))
+-              except Exception, e:
++              except Exception as e:
+                 raise RuntimeError('Unable to download PETSc')
+               import commands
+               try:
+                 commands.getoutput('cd '+reply+'; gunzip petsc.tar.gz ; tar xf petsc.tar')
+-              except RuntimeError, e:
++              except RuntimeError as e:
+                 raise RuntimeError('Error unzipping petsc.tar.gz'+str(e))
+               os.unlink(os.path.join(reply, 'petsc.tar'))
+             else:
+               import commands
+               try:
+                 commands.getoutput('cd '+reply+'; git clone https://bitbucket.org/petsc/petsc.git')
+-              except RuntimeError, e:
++              except RuntimeError as e:
+                 raise RuntimeError('Error trying to obtain development version of PETSc with git'+str(e))
+             ldir = os.listdir(reply)
+             for i in ldir:
+@@ -1422,7 +1422,7 @@ can also install additional packages that are used by the FASTMath packages."""
+         f.write('  configure_options = '+repr(args)+'\n')
+         f.write('  configure.petsc_configure(configure_options)\n')
+         f.close()
+-        os.chmod(configfile,0755)
++        os.chmod(configfile,0o755)
+         msgbox('After hitting OK run\n\n cd '+petscroot+'\npython config-'+arch+'.py\n\nto continue the install')
+         print("Execute the following two commands and follow the directions")
+         print('cd '+petscroot)
+diff --git a/bin/PetscBinaryIOTrajectory.py b/bin/PetscBinaryIOTrajectory.py
+index b5db184..7985354 100755
+--- a/bin/PetscBinaryIOTrajectory.py
++++ b/bin/PetscBinaryIOTrajectory.py
+@@ -41,7 +41,7 @@ def ReadTrajectory(directory):
+   return (t,v,names)
+ 
+ def PlotTrajectories(t,v,names,subnames):
+-  print names
++  print(names)
+   sub = []
+   for s in subnames:
+     sub.append(names.index(s))
+diff --git a/bin/TOPSGenerator.py b/bin/TOPSGenerator.py
+index c65a673..0767d29 100755
+--- a/bin/TOPSGenerator.py
++++ b/bin/TOPSGenerator.py
+@@ -17,10 +17,10 @@ information on TOPS may be found at http://www.tops-scidac.org. \n\n
+ This tool allows you to define the class of algebraic problem you are solving
+ and generates the appropriate "glue" code needed to use the TOPS Solver Components"""
+ 
+-	result = buttonbox(message=message1, title=title, choices = ["Cancel", "Continue"],fontSize = 20,message2=message2)
++        result = buttonbox(message=message1, title=title, choices = ["Cancel", "Continue"],fontSize = 20,message2=message2)
+         if result == "Cancel": sys.exit()
+ 
+-	dim = int(buttonbox(message="Dimension of the grid?", title=title, choices = ["1", "2", "3"],fontSize = 20))
++        dim = int(buttonbox(message="Dimension of the grid?", title=title, choices = ["1", "2", "3"],fontSize = 20))
+ 
+         lin = buttonbox(message="Type of algebraic problem?", title=title, choices = ["linear", "nonlinear"],fontSize = 20)
+         if lin == "nonlinear":
+diff --git a/bin/configVars.py b/bin/configVars.py
+index 73664e7..ee7f5c6 100755
+--- a/bin/configVars.py
++++ b/bin/configVars.py
+@@ -21,16 +21,16 @@ class ConfigReader(script.Script):
+     self.setup()
+     framework = self.loadConfigure()
+     mpi = framework.require('config.packages.MPI', None)
+-    print mpi.include, mpi.lib
++    print(mpi.include, mpi.lib)
+     arch = framework.require('PETSc.options.arch', None)
+-    print arch.arch
+-    print 'Configure is cached:',('configureCache' in self.argDB)
++    print(arch.arch)
++    print('Configure is cached:',('configureCache' in self.argDB))
+     for k in framework.argDB.keys():
+       if k.startswith('known'):
+-        print k,framework.argDB[k]
++        print(k,framework.argDB[k])
+     return
+ 
+ if __name__ == '__main__':
+-  print 'Starting'
++  print('Starting')
+   ConfigReader().run()
+-  print 'Ending'
++  print('Ending')
+diff --git a/bin/parseargs.py b/bin/parseargs.py
+index 8a109bf..c880b2f 100755
+--- a/bin/parseargs.py
++++ b/bin/parseargs.py
+@@ -34,8 +34,8 @@ def parseargs(search_arg,return_nargs,arg_list):
+         return 1,None
+ 
+     if index+1 == len(arg_list):
+-        print 'Error! Option has no value!'
+-        print 'Expecting value with option: ' + search_arg
++        print('Error! Option has no value!')
++        print('Expecting value with option: ' + search_arg)
+         sys.exit()
+     else:
+         ret_arg = arg_list[index+1]
+diff --git a/bin/petsclogformat.py b/bin/petsclogformat.py
+index 30e874f..de3598c 100755
+--- a/bin/petsclogformat.py
++++ b/bin/petsclogformat.py
+@@ -257,24 +257,24 @@ def ObjectsCompare(a,b):
+ def PrintPercentTable(localTimes,localFlops,localMessages,localMessageLens,localReductions,Stages,Latex = False):
+   ''' Prints a simple table that displays the percent of time, flops, etc for each event in each stage'''
+   if Latex:
+-    print "\documentclass{article}"
+-    print "\\begin{document}"
+-    print "\\begin{table}[!htbp]"
+-    print "\centering"
++    print("\documentclass{article}")
++    print("\\begin{document}")
++    print("\\begin{table}[!htbp]")
++    print("\centering")
+     if len(localTimes) > 1:
+-      print "\\begin{tabular}{lcccccc}"
+-      print " &  & \multicolumn{4}{c}{--------------- Percent of -------------} &  \\\\"
+-      print "Event & Count & Time & Flops & Messages & Reductions & Flop rate \\\\"
+-      print "\hline"
++      print("\\begin{tabular}{lcccccc}")
++      print(" &  & \multicolumn{4}{c}{--------------- Percent of -------------} &  \\\\")
++      print("Event & Count & Time & Flops & Messages & Reductions & Flop rate \\\\")
++      print("\hline")
+   else:
+     if len(localTimes) > 1:
+-       print "                                       ---------  Percent of  ------"
+-       print "Event                       Count     Time  Flops Messages Reductions     Flop rate"
+-       print "============================================================================"
++       print("                                       ---------  Percent of  ------")
++       print("Event                       Count     Time  Flops Messages Reductions     Flop rate")
++       print("============================================================================")
+     else:
+-       print "                                      Percent of"
+-       print "Event                       Count     Time  Flops      Flop rate"
+-       print "========================================================="
++       print("                                      Percent of")
++       print("Event                       Count     Time  Flops      Flop rate")
++       print("=========================================================")
+ 
+   time,flops,numMessages,numMessageLen,numReductions  = ComputeTotals(localTimes,localFlops,localMessages,localMessageLens,localReductions)
+   if not numMessages: numMessages = 1
+@@ -304,30 +304,30 @@ def PrintPercentTable(localTimes,localFlops,localMessages,localMessageLens,local
+         space = 2
+         if not seperatoradded: 
+           if Latex:
+-            print "--Overlapping events---\\\\"
++            print("--Overlapping events---\\\\")
+           else:
+-            print "--Overlapping events---"
++            print("--Overlapping events---")
+           seperatoradded = True
+ 
+       if len(localTimes) > 1:
+         values = [100*sumStages[stage][event]["time"]/time,100*sumStages[stage][event]["flops"]/flops,100*sumStages[stage][event]["numMessages"]/numMessages,100*sumStages[stage][event]["numReductions"]/numReductions]
+         if max(values) > .5:
+           if Latex:
+-            print '\\hspace{%1dem}' % space,event,"&",'%6.0f' % sumStages[stage][event]["count"],"&",'%5.0f' % values[0],"&",'%5.0f' % values[1],"&",'%5.0f' % values[2],"&",'%5.0f' % values[3],"&",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0),"\\\\"
++            print('\\hspace{%1dem}' % space,event,"&",'%6.0f' % sumStages[stage][event]["count"],"&",'%5.0f' % values[0],"&",'%5.0f' % values[1],"&",'%5.0f' % values[2],"&",'%5.0f' % values[3],"&",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0),"\\\\")
+           else:
+-            print "            "[0:space],event.ljust(26-space),'%6.0f' % sumStages[stage][event]["count"],"   ",'%5.0f' % values[0],'%5.0f' % values[1],'%5.0f' % values[2],'%5.0f' % values[3],"        ",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0)
++            print("            "[0:space],event.ljust(26-space),'%6.0f' % sumStages[stage][event]["count"],"   ",'%5.0f' % values[0],'%5.0f' % values[1],'%5.0f' % values[2],'%5.0f' % values[3],"        ",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0))
+       else:
+         values = [100*sumStages[stage][event]["time"]/time,100*sumStages[stage][event]["flops"]/flops]
+         if max(values) > .5:
+           if Latex:
+-            print '\\hspace{%1dem}' % space,event,"&",'%6.0f' % sumStages[stage][event]["count"],"&",'%5.0f' % values[0],"&",'%5.0f' % values[1],"&",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0),"\\\\"
++            print('\\hspace{%1dem}' % space,event,"&",'%6.0f' % sumStages[stage][event]["count"],"&",'%5.0f' % values[0],"&",'%5.0f' % values[1],"&",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0),"\\\\")
+           else:
+-            print "  ",event.ljust(24),'%6.0f' % sumStages[stage][event]["count"],"   ",'%5.0f' % values[0],'%5.0f' % values[1],"   ",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0)
++            print("  ",event.ljust(24),'%6.0f' % sumStages[stage][event]["count"],"   ",'%5.0f' % values[0],'%5.0f' % values[1],"   ",'%8.0f' % ((sumStages[stage][event]["flops"]/sumStages[stage][event]["time"])/1000000.0))
+ 
+   if Latex:
+-    print "\end{tabular}"
+-    print "\end{table}"
+-    print "\end{document}"
++    print("\end{tabular}")
++    print("\end{table}")
++    print("\end{document}")
+ 
+ if __name__ == '__main__':
+   import sys
+@@ -339,4 +339,4 @@ if __name__ == '__main__':
+   latex = False
+   if len(sys.argv) > 2: latex = True
+ 
+-  PrintPercentTable(data.LocalTimes,data.LocalFlops,data.LocalMessages,data.LocalMessageLens,data.LocalReductions,data.Stages,Latex = latex)
+\ No newline at end of file
++  PrintPercentTable(data.LocalTimes,data.LocalFlops,data.LocalMessages,data.LocalMessageLens,data.LocalReductions,data.Stages,Latex = latex)
+diff --git a/bin/portabilitycheck.py b/bin/portabilitycheck.py
+index f733730..4fb8478 100755
+--- a/bin/portabilitycheck.py
++++ b/bin/portabilitycheck.py
+@@ -13,8 +13,8 @@ def portabilityCheck(filename,includes):
+     pipe = os.popen("nm " + filename)
+     for line in pipe.readlines():
+       if bad.search(line):
+-        print 'For portability avoid direct read, write, or system commands in file ' + filename
+-        print 'Function: '+ line
++        print('For portability avoid direct read, write, or system commands in file ' + filename)
++        print('Function: '+ line)
+         os.unlink(filename)
+         return 1
+     return 0
+@@ -34,8 +34,8 @@ def portabilityCheck(filename,includes):
+             if portabilityCheck(l,sys.argv[2:]): return 1
+             found = 1
+         if not found:
+-          print 'For portability avoid direct use of generic system #include files in ' + filename
+-          print 'Line: '+ line
++          print('For portability avoid direct use of generic system #include files in ' + filename)
++          print('Line: '+ line)
+           return 1
+     file.close()
+     return 0
+diff --git a/bin/saws/SAWs.py b/bin/saws/SAWs.py
+index 813b210..2daa0d1 100755
+--- a/bin/saws/SAWs.py
++++ b/bin/saws/SAWs.py
+@@ -25,6 +25,6 @@ j = json.loads(r.content)
+ #  Example that access the functions in the stack
+ j = j['directories']['SAWs_ROOT_DIRECTORY']['directories']['PETSc']['directories']['Stack']['variables']['functions']['data']
+ 
+-print j
++print(j)
+ 
+ 
+diff --git a/bin/taucc.py b/bin/taucc.py
+index 38a2ec2..5537683 100755
+--- a/bin/taucc.py
++++ b/bin/taucc.py
+@@ -19,12 +19,12 @@ import string
+ import tempfile
+ def runcmd(cmd,verbose):
+   if verbose:
+-    print cmd
++    print(cmd)
+   (status, output) = commands.getstatusoutput(cmd)
+   if status:
+     raise RuntimeError('Unable to run '+cmd+':\n'+output)
+   elif output:
+-    print output
++    print(output)
+ 
+ def getTauFlags(tau_lib_dir):
+   fd,name=tempfile.mkstemp(prefix='taucc-')
+@@ -161,5 +161,5 @@ def main():
+ if __name__ ==  '__main__':
+   try:
+     main()
+-  except Exception, e:
++  except Exception as e:
+     sys.exit('ERROR: '+str(e))
+diff --git a/bin/update.py b/bin/update.py
+index 566e77e..fc694df 100755
+--- a/bin/update.py
++++ b/bin/update.py
+@@ -72,7 +72,7 @@ def updatePatches():
+     import urllib
+     try:
+       urllib.urlretrieve(patchfile1, patches1)
+-    except Exception, e:
++    except Exception as e:
+       raise RuntimeError('Unable to download patches. Perhaps you are off the network?\n  '+str(e))
+   else:
+     log.write('Using '+patches1+' for PETSc patches\n')
+diff --git a/src/ts/examples/tutorials/extchem.py b/src/ts/examples/tutorials/extchem.py
+index 2800598..52abfc6 100644
+--- a/src/ts/examples/tutorials/extchem.py
++++ b/src/ts/examples/tutorials/extchem.py
+@@ -19,6 +19,6 @@ if __name__ ==  '__main__':
+ #  Code is currently hardwired to display certain species only, edit the list below to display the species you want displayed
+ #
+   for i in range(0,len(t)-1):
+-    print t[i],v[i][names.index('Temp')],v[i][names.index('CH4')],v[i][names.index('O2')],v[i][names.index('N2')],v[i][names.index('CO')],v[i][names.index('CO2')],v[i][names.index('O')],v[i][names.index('OH')],v[i][names.index('H2O')]
++    print (t[i],v[i][names.index('Temp')],v[i][names.index('CH4')],v[i][names.index('O2')],v[i][names.index('N2')],v[i][names.index('CO')],v[i][names.index('CO2')],v[i][names.index('O')],v[i][names.index('OH')],v[i][names.index('H2O')])
+ 
+ 

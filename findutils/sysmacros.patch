@@ -1,0 +1,13 @@
+Index: findutils-4.6.0/gl/lib/mountlist.c
+===================================================================
+--- findutils-4.6.0.orig/gl/lib/mountlist.c
++++ findutils-4.6.0/gl/lib/mountlist.c
+@@ -37,6 +37,8 @@
+ # include <sys/param.h>
+ #endif
+ 
++#include <sys/sysmacros.h>
++
+ #if defined MOUNTED_GETFSSTAT   /* OSF_1 and Darwin1.3.x */
+ # if HAVE_SYS_UCRED_H
+ #  include <grp.h> /* needed on OSF V4.0 for definition of NGROUPS,

@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Mon May  6 19:35:45 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.2:
+  * Update com.github.philip-scott.notes-up.appdata.xml
+  * Add Issue and PR Templates
+  * 2.0.1 Release
+  * Editor: Search and highlight text
+  * Load editor theme separate from app style
+  * Viewer: Search within a page
+
+-------------------------------------------------------------------
+Mon Mar 25 19:16:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.0:
+  * Fix typo on classic editor theme
+  * Search by page name & load page data in page item
+  * Update README
+  * Add solarized light/dark themes for the app
+  * Current changelog
+  * Make sure headerbar title is updated correctly
+  * Remove warning and fix PageItem alignment
+  * Autocompletion when typing tags
+  * Do not open null page
+  * Add tags to PageInfoEditor
+  * Show tags in sidebar & load all pages with tag
+  * Add PageLink.vala
+  * New Plugin: Link to page
+  * Fix: Crash when loading a null page
+  * Move page loading to a single place
+  * Add page title to PageInfoEditor
+  * Add symbolic notebook icon
+  * Add Notebook icons
+  * Add patched Granite.SourceList
+  * Toggle PageInfoEditor via a keyboard shortcut
+  * Move more elements to the state manager
+  * Align page item to new PageInfoBar
+  * Introduce app state class
+  * Add page information box
+  * Initial work to show all notes
+  * Remove notebook-data from dconf
+  * Viewer and Editor: Don't use singletons anymore
+  * PageList: simplify style
+  * Make sure StyleLoader is initialized
+  * Export to Markdown
+
+-------------------------------------------------------------------
+Tue Dec 25 15:26:56 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.3:
+  * Merge branch 'master' of github.com:Philip-Scott/Notes-up
+  * 1.6.2 Release
+  * Update .travis.yml
+  * Only add new page on empty notebooks when creating the 
+    notebook
+  * Refresh headerbar title on page save
+  * Fix travis builds
+  * HelpBox: Fix styling for Juno
+  * Remove deprecated warnings
+  * Use new Granite.markup_accel_tooltip
+  * Fix amps in title
+  * Add tooltip to page deletion button
+  * Remember all sidebar sizes
+
+-------------------------------------------------------------------
+Mon Sep 24 10:37:26 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.1:
+  * Update com.github.philip-scott.notes-up.appdata.xml
+  * Update CMakeLists.txt
+
+-------------------------------------------------------------------
+Mon Sep 17 18:00:37 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.0:
+  * Rename com.github.philip_scott.notes_up.appdata.xml to 
+    com.github.philip-scott.notes-up.appdata.xml
+  * Show trashed pages as insensitive on PagesList
+  * Fix misaligned line numbers
+  * Show New Notebook option on right-clicking the Notebooks 
+    expandable (#261)
+  * Remove default parameter and change author name
+  * Use GObject-style construction expandable
+  * Use elementary palette with icon
+  * Update README.md
+  * Fix reveler expanding on Gtk3.22
+  * Removed Discount library (#244)
+  * Add note in README about building in distros which are not 
+    elementary OS (#240)
+  * Don't override the system CFLAGS
+  * Add a note in the README about Arch Linux installation (#234)
+  * Add a sub category for the .desktop file (#237)
+- Drop desktop.patch (fixed)
+- Build with libmarkdown
+- Build with vala >= 0.39.0
+- Add README.md
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jun 14 18:41:33 UTC 2018 - avvissu@yandex.by
+
+- Change the Group tag to Productivity/Office/Word Processor
+
+-------------------------------------------------------------------
+Thu Dec 28 16:22:47 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.5.2
+  * Pages are better summarized when they have markdown symbols
+  * When applying styles to the text, it will automatically wrap around it properly
+  * You can now move Notebooks
+  * Fixed some errors from exporting, and some other bugs
+  * Notes-Up is now translated to Lithuanian, French, Portuguese and Czech
+  * Change executable to use RRDN!
+  * Remove about dialog action
+- replace %suse_update_desktop_files macro with desktop.patch
+
+-------------------------------------------------------------------
+Tue Dec 26 13:38:49 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon Aug 21 19:39:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.4.7:
+  * Update control
+  * Update com.github.philip-scott.notes-up.appdata.xml
+  * Order files
+  * Use title like in elementary HIG (#165)
+
+-------------------------------------------------------------------
+Mon Aug 14 18:10:54 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.4.5:
+  * Merge branch 'master' of github.com:Philip-Scott/Notes-up
+  * Add spellcheck
+  * Update README.md
+  * Fix: Preview showed markdown elements instead of styling
+  * Merge pull request #156 from psylock/master
+  * Merge pull request #155 from onirica/master
+  * Update de.po
+  * Removing items from cmake (#136)
+- Remove cmake.patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Sun Jul 23 11:08:06 UTC 2017 - mailaender@opensuse.org
+
+- Update to 1.4.4
+- Add cmake.patch to fix build with cmake > 3.8
+- Require contractor as it is a hard dependency by default
+
+-------------------------------------------------------------------
+Sat May 20 22:48:30 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.4.2
+
+-------------------------------------------------------------------
+Wed May 17 15:44:24 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.4.0:
+  * Merge pull request #125 from demonpig/fix-transient_window
+  * Merge pull request #124 from demonpig/fix bookmark button 
+    huge when selected
+  * Fix warning message about transient window
+  * Fixes bookmark button from increasing to 48px
+  * Merge pull request #121 from cassidyjames/patch-1
+  * Fix #120
+
+-------------------------------------------------------------------
+Mon May  1 15:38:53 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.3.9:
+  * see: /usr/share/package/notes-up/changelog.md
+_ Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Oct 25 01:04:33 UTC 2016 - avvissu@yandex.by
+
+- Initial package
+

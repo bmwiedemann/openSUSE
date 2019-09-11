@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Feb 11 10:13:04 UTC 2018 - kasimir_@outlook.de
+
+- Fix build for armv7l
+
+-------------------------------------------------------------------
+Tue Jan 23 22:54:53 UTC 2018 - jengelh@inai.de
+
+- Trim bias from description. Fix SRPM group.
+
+-------------------------------------------------------------------
+Sat Jan  6 17:15:33 UTC 2018 - matwey.kornilov@gmail.com
+
+- Version 0.5.5
+  * No changelog available
+- Fix build for armv6l armv7l aarch64
+
+-------------------------------------------------------------------
+Sun May 22 20:35:23 CEST 2016 - ro@suse.de
+
+- add aarch64, s390 s390x to excluded archs 
+
+-------------------------------------------------------------------
+Fri Apr  1 22:34:57 UTC 2016 - dvaleev@suse.com
+
+- Enable ppc64 and ppc64le
+- v0.5.0: PowerPC support and many small bugfixes and enhancements 
+
+-------------------------------------------------------------------
+Thu Aug 13 09:38:51 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch: ppc ppc64 ppc64le
+
+-------------------------------------------------------------------
+Tue Aug  5 12:03:34 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.4
+  * No changelog available
+- Remove obsolute openlibm-build-targets.patch
+
+-------------------------------------------------------------------
+Tue Jul 22 18:46:02 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.3
+  * No changelog available
+- Add build target for i586
+  * openlibm-build-targets.patch
+- spec file cleanup
+
+-------------------------------------------------------------------
+Thu Mar 13 16:19:53 UTC 2014 - dan.weatherill@cantab.net
+
+- initial import of tagged openlibm-0.2 package from JuliaLang
+  project 

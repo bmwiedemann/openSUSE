@@ -1,0 +1,28 @@
+prun: Add user config
+
+Common config file: /etc/prunrc
+User config file: $HOME/.prunrc
+
+--- prun	2016-10-17 09:59:23.092593217 +0200
++++ prun.suse	2016-10-19 17:23:30.473084829 +0200
+@@ -26,7 +26,8 @@
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #-------------------------------------------------------------------------------
+ 
+-CONFIG=/etc/sysconfig/prun
++CONFIG=/etc/prunrc
++LOCALCONFIG=$HOME/.prunrc
+ MODE=native
+ LOGLEVEL=2     # 0=error,1=warn,2=info,3=debug
+ RM=slurm
+@@ -48,7 +49,9 @@
+ 
+ function parse_config_file () {
+ 
+-    if [ -e $CONFIG ];then
++    if [ -e $LOCALCONFIG ];then
++        source $CONFIG 2> /dev/null
++    elif [ -e $CONFIG ];then
+         source $CONFIG 2> /dev/null
+     fi
+ }

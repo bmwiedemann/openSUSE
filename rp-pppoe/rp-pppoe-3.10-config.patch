@@ -1,0 +1,20 @@
+--- rp-pppoe-3.12.orig/scripts/pppoe-connect.in	2015-11-11 17:10:02.000000000 +0200
++++ rp-pppoe-3.12/scripts/pppoe-connect.in	2016-11-16 17:25:28.510472180 +0200
+@@ -18,7 +18,7 @@
+ # Usage: pppoe-connect [config_file]
+ #        pppoe-connect interface user [config_file]
+ # Second form overrides USER and ETH from config file.
+-# If config_file is omitted, defaults to /etc//ppp/pppoe.conf
++# If config_file is omitted, defaults to /etc/ppp/pppoe.conf
+ #
+ #***********************************************************************
+ 
+@@ -48,7 +48,7 @@ if test "$SETSID" != "" -a ! -x "$SETSID
+     SETSID=""
+ fi
+ 
+-CONFIG=/etc//ppp/pppoe.conf
++CONFIG=/etc/ppp/pppoe.conf
+ USER=""
+ ETH=""
+ 

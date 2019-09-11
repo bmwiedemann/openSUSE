@@ -1,0 +1,54 @@
+--- manifest.stub.orig	2014-11-17 14:56:10.568212293 +0000
++++ manifest.stub	2014-11-17 15:00:31.395686692 +0000
+@@ -9,10 +9,28 @@
+ Bundle-ManifestVersion: 2
+ Bundle-Name: ICU4J
+ Bundle-Description: International Components for Unicode for Java
+-Bundle-SymbolicName: com.ibm.icu
++Bundle-SymbolicName: com.ibm.icu; singleton:=true
+ Bundle-Version: @IMPLVERSION@
+ Bundle-Vendor: Unicode, Inc.
+ Bundle-Copyright: @COPYRIGHT@
+ Bundle-RequiredExecutionEnvironment: @EXECENV@
+ Main-Class: com.ibm.icu.util.VersionInfo
+-Export-Package: com.ibm.icu.lang,com.ibm.icu.math,com.ibm.icu.text,com.ibm.icu.util
+\ No newline at end of file
++Export-Package: com.ibm.icu.lang;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.math;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.text;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.util;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.impl;x-internal:=true,
++ com.ibm.icu.impl.data;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.brkitr;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.coll;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.curr;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.lang;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.rbnf;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.region;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.translit;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.zone;x-internal:=true,
++ com.ibm.icu.impl.duration;x-internal:=true,
++ com.ibm.icu.impl.locale;x-internal:=true
++Eclipse-LazyStart: true
++Eclipse-ExtensibleAPI: true
+--- main/shared/build/common-targets.xml.orig	2014-11-17 14:59:05.335849961 +0000
++++ main/shared/build/common-targets.xml	2014-11-17 14:59:36.868423736 +0000
+@@ -75,6 +75,7 @@
+             <filterset>
+                 <filter token="SPECVERSION" value="${jar.spec.version}"/>
+                 <filter token="IMPLVERSION" value="${jar.impl.version}"/>
++                <filter token="DATAVERSION" value="${icu4j.data.version}"/>
+                 <filter token="COPYRIGHT" value="${jar.copyright.info}"/>
+                 <filter token="EXECENV" value="${jar.exec.env}"/>
+             </filterset>
+--- build.xml.orig	2014-11-17 21:45:53.308610711 +0000
++++ build.xml	2014-11-17 21:46:29.969096734 +0000
+@@ -693,6 +693,7 @@
+             <filterset>
+                 <filter token="SPECVERSION" value="${jar.spec.version}"/>
+                 <filter token="IMPLVERSION" value="${jar.impl.version}"/>
++                <filter token="DATAVERSION" value="${icu4j.data.version}"/>
+                 <filter token="COPYRIGHT" value="${jar.copyright.info}"/>
+                 <filter token="EXECENV" value="${jar.exec.env}"/>
+             </filterset>

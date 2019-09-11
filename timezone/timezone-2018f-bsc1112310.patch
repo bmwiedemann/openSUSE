@@ -1,0 +1,33 @@
+From: Andreas Stieger <astieger@suse.com>
+References: https://bugzilla.suse.com/show_bug.cgi?id=1112310
+Summary: avoid timezone-java build failures
+Date: Thu, 18 Oct 2018 13:19:51 +0000
+
+javazic is unable to parse the time zone data contained in 2018f:
+https://github.com/eggert/tz/compare/2018e...2018f#diff-cffe819d4413b95dd8c35c0085930789R1656
+
+- Rule	Japan	1948	1951	-	Sep	Sun>=9	 0:00	0	S
++ Rule	Japan	1948	1951	-	Sep	Sat>=8	25:00	0	S
+
+Base:System/timezone (timezone-java.spec) fails with:
+
+[   16s] + java -jar /usr/share/java/tzdb.jar -srcdir . -dstfile javazi/tzdb.dat africa antarctica asia australasia europe northamerica pacificnew southamerica backward etcetera systemv /usr/share/tzdb/tzdata_jdk/gmt /usr/share/tzdb/tzdata_jdk/jdk11_backward
+[   16s] Failed: java.lang.Exception: Failed while parsing file './asia' on line 1659 'Rule     Japan   1948    1951    -       Sep     Sat>=8 25:00    0       S'
+[   16s] java.lang.Exception: Failed while parsing file './asia' on line 1659 'Rule     Japan   1948    1951    -       Sep     Sat>=8  25:00  0S'
+
+The bug is actually in Java. Use an alternative format to fix build.
+
+
+Index: timezone-2018f/asia
+===================================================================
+--- timezone-2018f.orig/asia	2018-10-18 15:18:13.461299301 +0200
++++ timezone-2018f/asia	2018-10-18 15:23:20.330642692 +0200
+@@ -1657,7 +1657,7 @@ Zone	Asia/Jerusalem	2:20:54 -	LMT	1880
+ 
+ # Rule	NAME	FROM	TO	TYPE	IN	ON	AT	SAVE	LETTER/S
+ Rule	Japan	1948	only	-	May	Sat>=1	24:00	1:00	D
+-Rule	Japan	1948	1951	-	Sep	Sat>=8	25:00	0	S
++Rule	Japan	1948	1951	-	Sep	Sun>=9	 1:00	0	S
+ Rule	Japan	1949	only	-	Apr	Sat>=1	24:00	1:00	D
+ Rule	Japan	1950	1951	-	May	Sat>=1	24:00	1:00	D
+ 

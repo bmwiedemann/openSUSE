@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Mon Jul 18 12:29:42 UTC 2016 - fvogt@suse.com
+
+- Use update-xml-catalog
+
+-------------------------------------------------------------------
+Tue Aug  5 10:48:58 UTC 2014 - rsalevsky@suse.com
+
+- fix I/O error on installation
+
+-------------------------------------------------------------------
+Wed May 28 11:26:49 UTC 2014 - rsalevsky@suse.com
+
+- using the xml-group-manager to manage the catalog entrys
+
+-------------------------------------------------------------------
+Thu Dec 24 12:34:30 UTC 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers, they're not needed anymore.
+
+-------------------------------------------------------------------
+Tue Jan 27 00:29:12 CET 2009 - crrodriguez@suse.de
+
+- test if /usr/bin/edit-xml-catalog is executable before using it.
+
+-------------------------------------------------------------------
+Thu Mar 29 11:09:59 CEST 2007 - ke@suse.de
+
+- Add BuildRequires: unzip
+
+-------------------------------------------------------------------
+Thu Jan 11 14:51:37 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Thu Aug 17 10:52:32 CEST 2006 - ke@suse.de
+
+- Remove SuSEconfig call and a %post warning for SL < 8.1.
+
+-------------------------------------------------------------------
+Sun Feb 19 20:40:26 CET 2006 - ro@suse.de
+
+- modify setup line in spec file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  3 11:25:34 CET 2004 - ke@suse.de
+
+- catalog.xml: Add namespace attribute as reported by Thomas Schraitle.
+
+-------------------------------------------------------------------
+Mon May 24 15:23:19 CEST 2004 - ke@suse.de
+
+- Fix syntax of catalog.xml.
+
+-------------------------------------------------------------------
+Mon Feb  9 17:24:38 CET 2004 - ke@suse.de
+
+- Adjust directories according to FHS 2.3:
+  * Move entity files to /usr/share/xml/entities/xmlcharent
+  * Provide compatibility links for SL =< 9.0 (log this info in
+    /var/adm/SuSEconfig/run-sgmldir-links for later processing).
+
+-------------------------------------------------------------------
+Thu Feb  5 11:24:43 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Jul 11 18:04:25 CEST 2003 - ke@suse.de
+
+- Fix typo in suse-catalog.xml entry: s/MathML/ISO 8879:1986/ .
+
+-------------------------------------------------------------------
+Fri Jun  6 13:26:47 CEST 2003 - ke@suse.de
+
+- Unregister sgml catalog at deinstallation only.
+
+-------------------------------------------------------------------
+Wed Apr 30 10:38:49 CEST 2003 - ke@suse.de
+
+- Use /etc/xml/suse-catalog.xml instead of /etc/xml/catalog.
+
+-------------------------------------------------------------------
+Fri Dec 13 13:27:50 CET 2002 - ke@suse.de
+
+- Now use the original .zip file.
+- Remove spurious entry from CATALOG.xmlcharent; reported by Thomas
+  Schraitle.
+- Register catalog file using sgml-register-catalog.
+
+-------------------------------------------------------------------
+Mon Jun 24 15:13:38 CEST 2002 - ke@suse.de
+
+- Initial package: version 0.3cvs (released zip file isn't
+  accessible since several days...).
+
+

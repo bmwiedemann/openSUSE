@@ -1,0 +1,390 @@
+-------------------------------------------------------------------
+Sat Jun  1 21:01:22 UTC 2019 - wbauer@tmo.at
+
+- Update to version 2.6.0
+- New features:
+  * Histogram
+  * Import from MQTT sources
+  * Import of ROOT (CERN) TH1 histograms
+  * Import of Ngspice raw files (ASCII and binary)
+  * Import of data in JSON format (JSON arrays and objects)
+  * Improved import of NetCDF files
+  * Added file type specific summary and content for special file
+    types in info box of import dialog
+  * Convolution/Deconvolution of data sets (sampling interval,
+    linear/circular, normalization, wrap, standard kernel)
+  * Cross-/Autocorrelation of data sets (sampling interval,
+    linear/circular, normalization)
+  * Allow to specify the number format when exporting spreadsheet
+    and matrix
+  * Improved user interface for data fitting (add fit function
+    preview, show parameters directly, make options foldable)
+  * [spreadsheet] when filling a float column with row numbers,
+    automatically convert its type to integer
+  * [spreadsheet] when filling an integer column with function
+    values, automatically convert its type to float
+  * [spreadsheet] data manipulation: add/subtract/multiply/divide
+    for column values
+  * [spreadsheet] export to SQLite
+  * [matrix] data manipulation: add/subtract/multiply/divide for
+    matrix values
+  * [worksheet] Allow to specify different border shapes for labels
+    (rectangle, eclipse, etc.)
+  * [worksheet] Allow to rotate plot legends
+  * [worksheet] Better positioning of rotated axis tick labels
+  * [worksheet] Allow to make plots not-interactive (ignore mouse
+    drag and wheel events) to avoid unwanted occasional panning and
+    zooming
+  * Allow to connect to SQL databases via ODBC
+  * Show the amount of consumed memory in the status bar (optional)
+  * Allow to change the settings for different computer algebra
+    systems (Maxima, etc.) directly in LabPlot (embedd Cantor's
+    settings widgets)
+
+- Bug fixes:
+  * Fixed several problems in live data support
+  * [spreadsheet] properly calculate function values out of integer
+    x-values
+  * [matrix] fix editing integer values
+  * [import] fix preview update and add missing close of netcdf
+    files
+  * Don't crash when a scaling factor equal to zero was set for
+    axis
+
+-------------------------------------------------------------------
+Thu Jun 21 14:05:16 UTC 2018 - wbauer@tmo.at
+
+- Update to version 2.5.0
+- New features:
+  * Support for reading and plotting of live-data
+  * Improved data fitting
+    + Automatically guess parameter of custom models
+    + Better result presentation
+    + Support different weight types
+    + Consider given x- and y-error when fitting (can be switched off)
+    + Show t statistics, P > |t| and confidence interval
+    + Calculate p-value for chi-square and F test in nonlinear fitting
+    + added fit models for most statistical distributions
+  * Improved theming
+    + Apply themes to worksheet and to all its children
+    + Respect theme settings also in plot legends and labels
+    + Allow to disable theming in worksheets and plots after a theme
+      was selected
+    + Show currently active theme in the "Apply theme" button
+    + New application option in the settings for the default theme
+      used for new worksheets.
+  * Support different data types
+    + auto detect integer and datetime data in import
+    + support number locale and datetime formats
+    + improved data type support in spreadsheets
+  * Import from SQL databases (tables or custom queries)
+  * Import Origin OPJ projects
+  * Much better support for Windows and macOS
+  * Syntax highlighting for LaTeX in the text label
+  * Allow to set the background color for LaTeX labels
+  * Support Hermite polynomials from GSL 2.4
+  * Support error functions and related functions from libcerf
+  * "Used in" sub-menu in column contex menu for faster navigation
+    to the curves consuming the column
+  * Direct application of analysis functions (smoothing,
+    interpolating, etc.) on the ploted data via curve's context menu
+  * Direct application of analysis functions  on the data in the
+    spreadsheet and plotting of the results via spreadsheet's context menu
+  * Drag columns in the project explorer and drop them on plots (either in
+    a worksheet view or in the project explorer) to create curves
+  * "Show last N points" and "Show first N points" data ranges in cartesian plot
+  * Added CLI option --presenter to start LabPlot directly in the presenter mode
+  * Added CLI parameter to directly open project files (LabPlot or Origin)
+  * Allow drag&drop of projects files (LabPlot and Origin) on the main
+    window to load the project
+  * Allow drag&drop of data files on the main window to import the data
+  * Show tooltips for the supported mathematical functions and
+    constants in the expression text field
+  * Automatically switch to the scientific representation for numbers
+    bigger than 10^4 on the axis tick labels
+  * Automatically allow the latex typesetting in the application after
+    the latex environment was installed later without making the user
+    to go to the settings dialog
+  * Allow to change the color scheme for the application
+  * Smooth and animated zooming in the worksheet view
+  * Allow to add text labels to plots
+  * Improved building with MSVC, Intel and PGI compiler
+
+- Performance improvements:
+  * Faster copy&paste in the spreadsheet
+
+- Bug fixes:
+  * masked rows in spreadsheet not restored in project (kde#379877)
+  * Calculation of fit results corrected
+  * Axes now support values larger than FLT_MAX (~10^38) and smaller
+    than FLT_MIN (~10^-38)
+  * When a LabPlot project is being droped in the main window, load
+    the project directly instead of showing the import file dialog
+  * Correctly save and restore masked cells
+  * Don't crash if the rc-file was not found during the startup
+
+- Drop Fix-compilation-on-Qt5.11.patch, merged upstream
+- Update Url to point to labplot's homepage
+- Update build requirements
+
+-------------------------------------------------------------------
+Tue Jun  5 11:36:46 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-compilation-on-Qt5.11.patch to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Wed May  3 22:49:50 UTC 2017 - wbauer@tmo.at
+
+- Update to version 2.4.0
+- New features:
+  * Support themes for plots
+  * Import and editing of FITS data files
+  * Data reduction by removing data points using multiple algorithms
+  * Numerical differentiation and integration with several options
+  * Many new pre-defined fit models (Gompertz, Weibull, Log-Normal,
+    Gumbel, etc.) sorted in categories
+  * Fit parameter now support fixed values, lower/upper limits and
+    use Unicode
+  * Fit model and random number distribution formulas are now
+    rendered with LaTeX
+  * Support user specified x range in all analysis functions
+  * Allow to enter complete LaTeX documents in text labels
+  * Configuration parameter to use different LaTex engines
+    (LuaLaTex, XeLatex, pdfLaTex, LaTex)
+  * Disable LaTeX typesetting if no LaTex installation (and other
+    required tools) were found at runtime
+  * Presenter mode for worksheets
+  * Support for Mac OS
+  * Support for Julia’s vectors and tuples in CAS worksheets
+    (requires Cantor v. 16.12 or higher)
+  * Allow to jump directly to the data source spreadsheet via
+    XYCurve’s context menu
+  * Select and delete multiple objects in project explorer
+  * Improved and extended internal parser for mathematical expressions
+  * Copy of worksheet elements as image to the clipboard via CTRL+C
+
+- Bug fixes:
+  * Allow to select curves with overlapping bounding boxes (kde#361326)
+  * Correctly load worksheet sizes from saved templates
+  * Fixed crash when removing columns in spreadsheet
+  * Fixed crash when fitting using GSL >= 2
+  * List of available functions corrected
+  * Constants are now available with full accuracy
+  * Windows: Import of files and open recent files fixed
+
+- Drop upstreamed fix-desktop-file.patch
+- Add new BuildRequires: cmake(KF5NewStuff)
+- Do not rename the .desktop and appstream data files any more, the
+  names have been changed upstream
+
+-------------------------------------------------------------------
+Mon Sep  5 13:03:35 UTC 2016 - badshah400@gmail.com
+
+- Add Provides: labplot = %{version} and Obsoletes: labplot <
+  2.3.0 to enable easy upgrade from openSUSE Leap 42.1 to 42.2,
+  where labplot-kf5 2.3.0 should replace labplot. This assumes
+  that the Leap 42.1 labplot (currently at version 2.0.2) itself
+  does not get upgraded to a version above 2.3.0 via official
+  maintenance updates. Remove Conflicts on labplot as a
+  consequence.
+
+-------------------------------------------------------------------
+Wed Jul 27 11:37:08 UTC 2016 - wbauer@tmo.at
+
+- Add fix-desktop-file.patch to fix the Exec line in the .desktop
+  file so labplot can be started from the application menu
+- Add cantor-devel to the build requires to enable the new cantor
+  integration
+
+-------------------------------------------------------------------
+Tue Jul 26 20:19:43 UTC 2016 - wbauer@tmo.at
+
+- Update to version 2.3.0
+- New features:
+  * Integration of Cantor - Support for different open-source
+    computer algebra systems
+  * Statistics on spreadsheets and matrices
+  * Export of spreadsheets and matrices to LaTeX tables
+  * Interpolation of data including different splines, cosine,
+    exponential, cubic Hermite (Catmull-Rom, cardinal,
+    Kochanek-Bartels) and rational functions
+  * Data smoothing using moving average (centered or lagged),
+    percentile filter or Savitzky-Golay algorithm
+  * Fourier filter (low pass, high pass, band pass, band reject)
+    with ideal, Butterworth, Chebychev I+II, Legendre or
+    Bessel-Thomson filter
+  * Fourier transform with many window functions (Welch, Hann,
+    Hamming, etc.) calculating magnitude, amplitude, power, phase,
+    dB, etc. and supporting one/two sided spectrum with or without
+    shift and x scaling to frequency, index or period
+  * Filter and search capabilities in the drop down box for the
+    selection of data sources
+  * Sigmoid function as a new pre-defined fit model
+  * Support for compiling on Microsoft Windows
+
+- Performance improvements:
+  * Faster generation of random values
+  * Global option to enable/disable the double-buffering for faster
+    painting of curves (enabled on default)
+
+- Bug fixes:
+  * Save and restore last used setting in RandomValuesDialog
+  * Update axis title shape on title rotations correctly
+  * Save and restore custom column widths in the spreadsheet
+  * Fixed sporadic crashes during project close
+
+- Drop upstreamed labplot-kf5-gcc5-isnan.patch
+
+-------------------------------------------------------------------
+Fri Jul 15 19:03:51 UTC 2016 - badshah400@gmail.com
+
+- Labplot does not show up in application centers (e.g.
+  gnome-software) as appstream-builder expects the .appdata.xml
+  file and .desktop file to have matching names; rename .desktop
+  file to org.kde.labplot2.desktop as referenced in the
+  appdata.xml file, and rename appdata.xml file accordingly.
+
+-------------------------------------------------------------------
+Sun May  8 10:58:41 UTC 2016 - badshah400@gmail.com
+
+- Add labplot-kf5-gcc5-isnan.patch: Replace isnan by std::isnan
+  to fix building with gcc5.
+
+-------------------------------------------------------------------
+Wed May  4 05:06:30 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 2.2.0
+  * Added the DataPicker which converts input graph (images) into numbers.
+  * A new custom point was implemented
+  * LabPlot now acccepts now drag&drop-events
+  * Rendering of the image view of the matrix recieved a speed up
+
+-------------------------------------------------------------------
+Wed Oct 28 15:44:53 UTC 2015 - toddrme2178@gmail.com
+
+- Conflict with labplot, not labplot2.
+
+-------------------------------------------------------------------
+Mon Oct 26 12:11:14 UTC 2015 - toddrme2178@gmail.com
+
+- Initial Frameworks 5 version.
+
+-------------------------------------------------------------------
+Mon Oct 26 11:51:24 UTC 2015 - toddrme2178@gmail.com
+
+- Enable HDF5 and NetCDF support.  Support for these formats is
+  considered stable now.
+
+-------------------------------------------------------------------
+Mon Oct 26 10:02:26 UTC 2015 - freitag@owncloud.com
+
+- Fixing build issues by upgrading to new upstream version 2.1.0
+
+- 2.1.0 new features:
+  * New Matrix view for handling matrix data.
+  * Workbook - a new container for grouping several objects of type
+    Spreadsheet and/or Matrix.
+  * Import of binary, image, NetCDF and HDF data into spreadsheet or
+    matrix.
+  * Visual HDF and NetCDF parser to view content of files and import
+    data sets.
+  * Preview of all supported file types in import dialog.
+  * Transparently import compressed data files.
+  * In xy-curve the points may not be connected by the line if there
+    are NANs in-between. This behaviour is controlled by the parameter
+    "skip gaps".
+  * Multiplier of Pi format of the plot axis for periodical functions.
+  * New operations on columns in Spreadsheet - reverse, drop values
+    and mask values.
+  * Formula used to generate the values in a column is stored and can
+    be changed/adjusted in the formula dialog afterwards.
+  * Curve filling: the area below, under, left to or right to the
+    curve can be filled.
+  * Support for multiple variables in "Function Values"-dialog - new
+    data in the spreadsheet can be calculated out of multiple columns.
+
+- Performance improvements:
+  * Speeded up the creation of new columns during the import
+
+- Bug fixes:
+  * Fixed wrong behaviour when doing "zoom&select" in a plot and then
+    deselecting the plot - it was not possible anymore to select the
+    plot again on the worksheet.
+
+-------------------------------------------------------------------
+Tue Apr 14 19:02:03 UTC 2015 - mailaender@opensuse.org
+
+- update to version 2.0.2
+
+-------------------------------------------------------------------
+Sat Nov 15 21:08:41 UTC 2014 - dmitry_r@opensuse.org
+
+- Install documentation
+
+-------------------------------------------------------------------
+Tue Apr 22 16:57:07 UTC 2014 - dmitry_r@opensuse.org
+
+- labplot 2.0 doesn't support HDF5, NetCDF and Origin file formats,
+  so disable not needed build requirements
+
+-------------------------------------------------------------------
+Sun Feb  2 22:23:29 UTC 2014 - mailaender@opensuse.org
+
+- update to 2.0.1
+  * Fixed wrong scaling of legend's text labels in pdf-export
+  * Fixed memory corruption in CartesianPlotDock that can lead to crashes
+
+-------------------------------------------------------------------
+Sun Jan 19 18:39:39 UTC 2014 - mailaender@opensuse.org
+
+- update to release 2.0.0
+
+-------------------------------------------------------------------
+Sun Dec 22 07:48:59 UTC 2013 - mailaender@opensuse.org
+
+- update to 2.0.0.beta2
+
+-------------------------------------------------------------------
+Wed Oct 23 19:49:49 UTC 2013 - mailaender@opensuse.org
+
+- packaged re-release of 2.0.0.beta1 to fix segfault on startup
+- https://en.opensuse.org/SourceUrls
+- use pkgconfig where possible
+
+-------------------------------------------------------------------
+Mon Oct 21 11:33:32 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 2.0.0 beta 1
+  * No changelog
+
+-------------------------------------------------------------------
+Sat Feb 16 21:57:13 UTC 2013 - dmitry_r@opensuse.org
+
+- qwt no longer needed
+- use external liborigin library
+
+-------------------------------------------------------------------
+Tue Dec 25 14:25:24 UTC 2012 - mailaender@opensuse.org
+
+- update to version 2.0.0.alpha3
+
+-------------------------------------------------------------------
+Fri Aug 31 17:23:44 UTC 2012 - scorot@free.fr
+
+- fix libpng deps for SLE_11
+
+-------------------------------------------------------------------
+Fri Aug 31 17:15:37 UTC 2012 - scorot@free.fr
+
+- fix build for old qt4 with patch0
+
+-------------------------------------------------------------------
+Sun May  6 13:35:29 UTC 2012 - idonmez@suse.com
+
+- Fix factory build
+
+-------------------------------------------------------------------
+Tue Feb 14 12:39:12 UTC 2012 - alinm.elena@gmail.com
+
+- initial commit
+

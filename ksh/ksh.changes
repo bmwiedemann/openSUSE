@@ -1,0 +1,2781 @@
+-------------------------------------------------------------------
+Wed Dec 20 13:18:32 CET 2017 - mls@suse.de
+
+- fix build with new glibc versions
+  new patch: ksh93-filedefined.dif
+
+-------------------------------------------------------------------
+Wed Oct 12 13:23:14 CEST 2016 - mls@suse.de
+
+- fix locking error in spawn implementation [bnc#988213]
+  new patch: ksh93-spawnlock.dif
+- make patch ordering the same as in sle-11
+
+-------------------------------------------------------------------
+Tue Jul  5 14:49:03 CEST 2016 - mls@suse.de
+
+- own the ksh files in /etc/alternatives [bnc#987362] [bnc#962069]
+- fix leak in optimize processing [bnc#982423]
+  new patch: ksh93-optimizeleak.dif
+- fix editor prediction code garbling input [bnc#964966]
+  new patch: ksh93-edpredict.dif
+
+-------------------------------------------------------------------
+Wed Dec 16 16:00:53 CET 2015 - mls@suse.de
+
+- add ast suffix to optbin manpages to prevent file conflicts
+- fix fd leak when doing redirects in a subshell [bnc#954856]
+  new patch: ksh93-redirectleak.dif
+- rewrite ksh93-backtick.dif to a more correct version
+  [bnc#953533] [bnc#955221]
+- also tweak ksh93-backtick.dif so that the pipe is drained after
+  io_restore is called.
+
+-------------------------------------------------------------------
+Tue Sep 15 18:07:09 CEST 2015 - mls@suse.de
+
+- fix freeing memory twice if an array is turned into an
+  compound variable and then unset [bnc#924043]
+  new patch: ksh93-nvtree-free.dif
+- backport fix for segmentation fault with 'typeset -RF'
+  new patch: ksh93-int16double.dif
+- backport hanging command substitution with large output fix from
+  upstream [bnc#887320] [bnc#926172] [bnc#934437]
+  new patch: ksh93-backtick.dif
+- backport job list corruption fix from ksg93v [bnc#924318]
+  new patch: ksh93-jpold.dif
+
+-------------------------------------------------------------------
+Fri Jun 12 13:54:45 CEST 2015 - mls@suse.de
+
+- go back to ksh93u to have a stable version in SLE-12
+  use 93vu as version so that the software stack sees this
+  as an update. (FATE#319107, bsc#939252)
+- add back the following patches:
+  * astksh_builtin_poll20120806_001.diff
+  * ksh93-backticks.dif
+  * ksh93-crashes.dif
+  * ksh93-dttree-crash.dif
+  * ksh93-fdstatus.dif
+  * ksh93-heredoclex.dif
+  * ksh93-jobs.dif
+  * ksh93-sfio.dif
+  * ksh93-uninitialized.dif
+- fix stk aliasing code [bnc#844071]
+  new patch: ksh93-stkalias.dif
+- fix stk restoration in sh_exec [bnc#844071]
+  new patch: ksh93-stkfreeze.dif
+- make a unknown location fatal in stkset so that we get a core
+  dump right away instead of later in an unrelated part of code
+  new patch: ksh93-stkset-abort.dif
+- fix build with std malloc
+  new patch: ksh93-malloc-hook.dif
+- backport job locking code fix
+  new patch: ksh93-joblock.dif
+- disable vfork, use fork instead
+  new patch: ksh93-disable-vfork.dif
+- fix crash when the subshell number overflows [bnc#893031]
+  new patch: ksh93-longenv.dif
+- fix path normalization in cd command [bnc#867401]
+  new patch: ksh93-cdpwd.dif
+- fix segfault in dirname when cwd is gone [bnc#852160]
+  new patch: ksh93-subshellpwd.dif
+- Fix ksh using wrong files is some elements in the path do not
+  exist [bnc#899014]
+  new patch: ksh93-path-skip.dif
+
+-------------------------------------------------------------------
+Thu Jun 11 10:42:59 UTC 2015 - schwab@suse.de
+
+- cpp.patch: fix use of cc -E without -P
+
+-------------------------------------------------------------------
+Fri Aug  1 06:58:17 UTC 2014 - werner@suse.de
+
+- Disable patch ksh93-backticks.dif as it breaks several test cases 
+
+-------------------------------------------------------------------
+Thu Jul 31 12:42:49 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Fri Jul 18 14:14:23 UTC 2014 - werner@suse.de
+
+-  Add patch ksh93-backticks.dif to allow the ksh to use more than
+   65536 characters in the output of old fashion `...` commands (bnc#887320)
+
+-------------------------------------------------------------------
+Thu Jul 17 11:07:34 UTC 2014 - werner@suse.de
+
+- Skip signal test as currently ksh93 uses malloc() within signal
+  handlers and this cause deadlocks even with libast memory
+  management
+
+-------------------------------------------------------------------
+Tue Jul  8 12:54:51 UTC 2014 - werner@suse.de
+
+- Update to 2014-06-26 of ksh93v- version
+  * A bug on some systems in which cd to a directory without execute
+    permission would not fail has been fixed.
+  * The BASH_SOURCE variable was added when ksh is run in bash mode.
+  * The -D and -E options have been added to the complete builtin.
+  * References to dgk@research.att.com were deleted.
+  * The -l flag to trap and the -p flag to umask were added as in bash.
+  * In bash mode ${!parameter} is treated like ${$parameter}.
+  * Fixed a bug in which eval inside a dot script invoked by a profile file
+    terminated the dot script prematurely after running the eval command.
+  * Added parameter expansion operator ${$parameter} for variables and
+    positional parameters.
+  * Added -a option to read which is equivalent to -A.
+  * Fixed a bug in builtin -p.
+  * Added -n option to builtin to disable builtins.
+  * Fixed a couple of file completion bugs.
+  * When compiled with the SHOPT_BASH and run with the name bash,
+    the shell now uses dynamic scoping for name() and function name. 
+    In addition the builtins declare and local are supported.
+    The SHOPT_BASH option is on by default in the Makefile.
+    More work remains with the bash compatibility option.
+  * Fixed a bug in vi command completion in which tab did not work
+    after a space.
+  * Replaced the -p option for read with -p prompt.  For backword
+    compatibility, if a coprocess is running and prompt begins with -
+    or is a valid variable name, -p causes the read from a pipe.
+  * Modified the -u option for read and print so that it accepts the
+    option argument p to indicate the coprocess file descriptor.
+- Remove patch ksh93-cd_pwd.dif and ksh93-jobs.dif as now upstream
+
+-------------------------------------------------------------------
+Fri Jun 27 10:29:17 UTC 2014 - werner@suse.de
+
+- Add patches 
+  ksh93-cd_pwd.dif to see error if a directory does not have execution bit
+  ksh93-jobs.dif to avoid a crash due broken optimization in job locking
+
+-------------------------------------------------------------------
+Thu May 15 07:02:32 UTC 2014 - werner@suse.de
+
+- Add SIGALRM to sigexec
+- Enforce reentrant usage of glibc
+
+-------------------------------------------------------------------
+Wed May 14 11:07:39 UTC 2014 - werner@suse.de
+
+- Update to 2014-05-09 of ksh93v- version
+  * A bug in the option parser which could cause 'X -a v=((...)...) to
+    core dump has been fixed. 
+  * A change to improve the performance of appending an element to an
+    array has been fixed.
+  * A complilation option to add programmable completion with the two
+    new builtins, complete and compgen has been added.  It should behave
+    the same as it does with bash.  Please try this out and report any
+    problems you find.  Use compgen --man and complete --man to get the
+    man pages.  Use the bash documentation for now for information about
+    programmable completion.  The compilation is on by default for now.
+  14-05-12 libast:
+  * features/lib: mmap() error return may be ((caaddr_t)0) or ((caaddr_t)-1)
+  * misc/optget.c: save opt_info state in case infof callout munges it
+  * misc/spawnvex.c: fix nil pointer deref
+- Modified patch ksh93-crashes.dif to remove fixed issues
+
+-------------------------------------------------------------------
+Tue Apr 29 11:47:11 UTC 2014 - werner@suse.de
+
+- Update to 2014-04-15 of ksh93v- version
+  * A bug in which type name starting with the letter a, did not
+    allow instances to be created has been fixed.
+  * A bug which caused a syntax error when a here-doc was embedded
+    in `` command substitution has been fixed.
+  * A bug in `` command substition of a pipeline which could cause
+    memory problems has been fixed.
+  * A bug in which the assignment A=() when A is an index array of types
+    did not eliminate the zero-th element has been fixed.
+  * A bug in which the braceexpand option was ignored when noglob was
+    on has been fixed.
+  * A bug in which a timer alarm during a built-in could cause a core
+    dump has been fixed.
+  * A bug in which creating an empty array of a type variable with
+    required fields has been fixed
+  * A bug which occurs in an interactive shell when a file is opened as
+    file descriptor 3 for reading which causes a subsequent read
+    command to fail to read a line from the file  has been fixed.
+ 14-04-15 libast:
+ * sfio/sfcvt.c: fix flot bug that printed |x|<1 as 0
+- Modified patch ksh93-crashes.dif to fix two new issues
+
+-------------------------------------------------------------------
+Wed Apr 23 10:10:17 UTC 2014 - dmueller@suse.com
+
+- avoid hanging build on probe run
+
+-------------------------------------------------------------------
+Fri Apr 11 15:07:59 UTC 2014 - werner@suse.de
+
+- Update to 2014-03-01 of ksh93v- version
+  * The description of .sh.match in the sh.1 man page was fixed.
+  * A typeset -p bug for an associative array of types has been fixed.
+  * A process substitution bug which caused a process to hang has been
+    fixed.
+  * Another bug in which extended regular expressions give with the =~
+    operator in [[...]] gave syntax errors with multiple (...){...} has
+    been fixed.
+  * The value of errno is now saved and restored during shell interrupt
+    handlers.
+  * A bug in which a read from a script invoked with set -m could stop
+    when trying to read, and cause the parent to try to restart which
+    causes a loop has been fixed.
+  * A bug in the right shift operator in arithmetic expressions when the
+    shift count is greated then the number of bits in a long integer has
+    been fixed.
+  * Another memory leak which occured for functions defined in subshells
+    has been fixed.
+- Add patch ksh93-crashes.dif to fix various crashes as shown in
+  bnc #844071
+  * Avoid double free() as well as sfclose()
+
+-------------------------------------------------------------------
+Thu Feb 20 12:29:05 UTC 2014 - werner@suse.de
+
+- Update to 2014-01-14 of ksh93v- version
+  13-12-05 cmd/builtin:
+     * Round about 10 bugs had been fixed
+  14-01-14  --- Release ksh93v- ---
+     * More than 120 bugs had been fixed
+  14-01-14 libast:
+     * Round about 80 changes
+  13-12-05 libcmd:
+     * Round about 35 changes
+  13-07-24 libcoshell:
+     * Two fixes had been done
+- Deleted the following patches
+  * astksh_builtin_poll20120806_001.diff
+  * ksh93-dttree-crash.dif
+  * ksh93-fdstatus.dif
+  * ksh93-heredoclex.dif
+  * ksh93-jobs.dif
+  * ksh93-pwd.dif
+  * ksh93-sfio.dif
+  * ksh93-uninitialized.dif
+  as now upstream
+- Modify or extend the following patches
+  * ksh-locale.patch
+  * ksh-qemu.patch
+  * ksh93-alias-k.dif
+  * ksh93-aso.dif
+  * ksh93-builtin.dif
+  * ksh93-compat.dif
+  * ksh93-env.dif
+  * ksh93-foreground-prgrp.dif
+  * ksh93-gcc.dif
+  * ksh93-heredoc.dif
+  * ksh93-ia64.dif
+  * ksh93-limit-name-len.dif
+  * ksh93-pathtemp.dif
+  * ksh93-profile.dif
+  * ksh93-reg.dif
+  * ksh93-s390.dif
+  * ksh93-shift_ijs.dif
+  * ksh93-signals.dif
+  * ksh93-suid_exec.dif
+  * ksh93-test.dif
+  * ksh93-typedef.dif
+  * ksh93-unset-f.dif
+  * ksh93-vi.dif
+  * ksh93-vm.dif
+  * ksh93.dif
+  * workaround-stupid-build-system.diff
+  to work with new ksh93v release
+
+-------------------------------------------------------------------
+Sat Feb  8 13:13:22 UTC 2014 - gber@opensuse.org
+
+- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html)
+
+-------------------------------------------------------------------
+Fri Dec  6 21:13:42 UTC 2013 - matz@suse.de
+
+- Recognize ppc64le (setting HOSTTYPE to powerpc64le)
+
+-------------------------------------------------------------------
+Fri Nov 29 15:45:44 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-pwd.dif to fix crash if cwd is gone (bnc#852160)
+
+-------------------------------------------------------------------
+Wed Nov 20 11:42:55 UTC 2013 - werner@suse.de
+
+- Make typeset builtin not crash but show an error (bnc#851300) 
+
+-------------------------------------------------------------------
+Mon Nov 18 16:04:27 UTC 2013 - werner@suse.de
+
+- Extend patch ksh93-sfio.dif which may avoid yet an other crash 
+
+-------------------------------------------------------------------
+Thu Nov 14 13:55:13 UTC 2013 - werner@suse.de
+
+- Finally the last changes had fixed the crash reportd in bnc#844071 
+
+-------------------------------------------------------------------
+Tue Oct 29 17:44:05 UTC 2013 - gber@opensuse.org
+
+- deliver %{_sysconfdir}/ksh.kshrc as a packaged symlink on
+  openSUSE >= 13.2
+
+-------------------------------------------------------------------
+Fri Oct 25 14:07:57 UTC 2013 - werner@suse.de
+
+- Add missing sfsetbuf() in patch ksh93-fdstatus.dif
+- Rework patch ksh93-dttree-crash.dif 
+- Rework patch ksh93-uninitialized.dif
+
+-------------------------------------------------------------------
+Tue Oct 22 11:58:21 UTC 2013 - werner@suse.de
+
+- Change patch ksh93-fdstatus.dif by adding some more EINTR wrapper 
+
+-------------------------------------------------------------------
+Fri Oct 18 12:21:58 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-sfio.dif as on overlapping memory areas there
+  should memmove be used instead of memcopy (backport 2013-10-10)
+
+-------------------------------------------------------------------
+Fri Oct 18 10:41:05 UTC 2013 - werner@suse.de
+
+- Change patch ksh93-fdstatus.dif which may solve bnc#844071
+- Add patch ksh93-fs3d.dif to avoid crash due dummy function call
+  fs3d_mount(3ast) during valgrind sessions
+- Add patch ksh93-uninitialized.dif to avoid sometimes random
+  errors on busy systems which may also related to bnc#844071
+
+-------------------------------------------------------------------
+Thu Sep 19 08:43:37 UTC 2013 - werner@suse.de
+
+- Make vmbalance awk script more clear for small vm page sizes
+
+-------------------------------------------------------------------
+Wed Sep 18 11:09:34 UTC 2013 - werner@suse.de
+
+- Extend patch ksh93-fdstatus.dif to solve bnc#835885
+- Modify patch ksh93-builtin.dif to reduce timeouts of pty utility
+
+-------------------------------------------------------------------
+Tue Aug 13 09:59:45 UTC 2013 - dmueller@suse.com
+
+- rediff ksh-qemu.patch 
+
+-------------------------------------------------------------------
+Thu Aug  1 12:32:53 UTC 2013 - werner@suse.de
+
+- Use own subsection 1ast in manual section 1 to avoid name space
+  conflicts
+
+-------------------------------------------------------------------
+Tue Jun 11 16:55:30 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-alias-k.dif as fix for bnc#824187
+
+-------------------------------------------------------------------
+Tue Apr 23 12:31:35 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-fdstatus.dif as fix for bnc#814135 and bnc#808449
+
+-------------------------------------------------------------------
+Tue Mar 19 16:48:37 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-typedef.dif as found during debugging 
+
+-------------------------------------------------------------------
+Tue Mar 19 15:14:00 UTC 2013 - werner@suse.de
+
+- Make Shift_JIS patch more reliable as requestef from upstream
+- Drop remaining part of the patch ksh93-zerofill.dif for zerofilled
+  variables (bnc#785360 as the first part of the patch is upstream
+  together with an other change. This fix a side effect of cutting
+  variables if TMOUT is used (bnc#808956)
+
+-------------------------------------------------------------------
+Thu Feb 28 13:10:09 UTC 2013 - werner@suse.de
+
+- Add patch ksh93-heredoclex.dif: substitution in here-document
+  results in syntax error (bnc#804998)
+
+-------------------------------------------------------------------
+Fri Feb 15 14:40:41 UTC 2013 - werner@suse.de
+
+- Avoid segmentation fault on typeset on ENV variable (bnc#803613) 
+
+-------------------------------------------------------------------
+Thu Feb  7 13:56:58 UTC 2013 - werner@suse.de
+
+- Do not use Shift-JIS work around with UTF-8 
+
+-------------------------------------------------------------------
+Tue Feb  5 17:41:08 UTC 2013 - werner@suse.de
+
+- Update to 2012-08-01 of ksh93u+ for bugfix version
+  12-08-01 A bug that ignored interrupts for some builtins (e.g. cmdtst::grep) 
+	   that read from stdin has been fixed.
+  12-08-01 A bug that interpreted "cd .foo" as "cd foo" has been fixed.
+  12-07-30 Added automatic restart for EINTR for ioctl, tcgetattr, and tcsetattr.
+  12-07-23 A scoping error with namrefs to compound associative arrays has
+	   been fixed.
+  12-07-20 A bug where builtin -d /path/foo deleted foo has been fixed.
+  12-07-18 A bug in which /dev/stdout did not work in command substitution on
+	   some systems has been fixed.
+  12-07-17 A bug in which the restricted option set in a subshell prevented
+	   some variables from getting restored when the subshell completed
+	   has been fixed.
+  12-07-09 A bug in which the directory is not restored after a subshell changes
+	   the name of the directory for subshells executed in the same process
+	   has been fixed.
+  12-07-09 A bug in which file descriptors created with {n}< file were not being
+	   closed has been fixed.
+  12-07-09 The 12-04-04 fix for cd .. was not correct causing cd /etc;cd .. to
+	   remain in /etc.  This has been fixed.
+  12-07-02 A bug in which builtin name did now work for builtins found in a
+	   library added by builtin -f lib has been fixed.
+  12-07-02 A bug in the edit modes which <tab> after a directory did not refresh
+	   the input line has been fixed.
+  12-07-02 A bug in which an exit status > 256 corresponding to a signal was
+	   not returned by a function to indicate a signal exit has been fixed.
+  12-06-28 Fix ulimit -a to list (Kibytes) instead of (kbytes).
+  12-06-27 Fix unitialized data reference for <CR> as first char in --vi mode.
+  12-06-26 The formatting of printf "%q" for multibyte locales has changed to
+	   output using \u[xxx] format for valid wide characters.
+  12-06-25 The size limit for read -N and read -n has been raised to INT_MAX.
+  12-06-22 A bug in which an exit trap set in a subshell might not be triggered
+	   when the last command was a simple executable has been fixed.
+  12-06-22 A bug which could cause the shell to hang when a coprocess exits
+	   while a command inside a command substitution is reading from it has
+	   been fixed.
+  12-06-21 +ksh new accepts for commands of the form for i; <nl> do;...;done
+  12-06-19 Tab completion after a / when there is only one match not completes
+	   with that match rather than generating a menu of matches.
+  12-06-19 A bug in which patterns containing {...} where not processed
+	   correctly inside ${var/pattern/string} has been fixed.  
+  12-06-18 Code modified to eliminate fts_notify variable.
+  12-06-15 Change the .paths plugin/builtin library variable name from
+	   BUILTIN_LIB to PLUGIN_LIB to prevent new plugin_version() aware
+  	  -lcmd from causing older non-plugin_version() aware ksh to dump core.
+  12-06-14 builtin without argument no longer lists .sh.tilde as a built-in.
+  12-06-12 For assignments if the form x=(foo bar), foo is only check for an
+	   alias if it is float, integer, compound, or nameref.
+  12-06-12 +The shell supports 64 bit i-nodes even for 32 bit binaries.
+  12-06-11 A bug wth >; redirection systems for which vfork() was the same a
+	   fork() has been fixed.
+  12-06-11 A bug in path lookup that ignored buffer boundaries has been fixed.
+  12-06-08 typeset -a var and typeset -A var, first unset var when var is
+	   a compound variable.
+  12-06-08 A bug in which running shcomp on a program containg namespace
+	   could core dump has been fixed.
+  12-06-06 A bug in which unset of an associative array of compound variables
+	   did not completely unset the variable has been fixed.
+  12-06-06 A bug in which exporting left or right justfied fields could loose
+	   the field width has been fixed.
+  12-06-06 A bug on Solaris11 in which >; did not work for /dev/null was fixed.
+  12-06-05 A race condition which occured when stopping a builtin command
+	   invoked from a subshell has been fixed.
+  12-06-05 A bug with appending elements to an empty indexed array has been
+	   fixed.
+  12-06-04 A bug in which continuing a stopped builtin could cause it to
+	   terminate has been fixed.
+  12-06-04 By default, builtins added at runtime will restore the current
+	   directory if they are killed or stopped.
+  12-06-04 A bug in handling \\ in read has been fixed.
+  12-05-31 Use getrlimit64/setrlimit64 on systems that support it.
+  12-05-31 Fix 64 bit big-endian arithmentic bug that mishandled nan and inf.
+  12-05-31 Handle ECONNRESET like EPIPE.
+  12-05-31 Change .paths parse to use only the last BUILTIN_LIB from the top
+	   and treat BUILTIN_LIB value as a ':' separated list of lib names.
+  12-05-29 Fix BUILTIN_LIB binding bug that ignored subsequent lookups.
+  12-05-29 shtests: --nocompile omits the compile test and --compile does only
+	   the compile test.
+  12-05-25 A command subsitution containing a here-document that itself contains
+	   a here-document no longer hangs.
+  12-05-24 When the redirection operatory >; is directed to a symlink, it now
+	   overwrites the file named by the link rather than the link.
+  12-05-21 +Added printf formats %(type)q where type can be html, url, pattern,
+	   ere, or csv. 
+  12-05-18 A bug with appending elements to an indexed array has been fixed.
+  12-05-18 The exit status from getopts --man interactively was 0 instead of 2
+	   and has been fixed.
+  12-05-18 Another bug with SHOPT_EDPREDICT which could cause a core dump has
+	   been fixed.  
+  12-05-17 A bug with fixed size arrays which could cause a core dump has been
+	   fixed.
+  12-05-17 A bug in which the here-document <<< $(<file) was not processed
+	   correctly has been fixed.
+  12-05-15 The default value for -L, -R, and -Z when the size was not set was
+	   incorrectly defaulting to 1 and has been fixed.
+  12-05-15 A bug in which a subshell of the form (name=value exec ...) could
+	   coredump when name is an environment variable and xtrace is on has
+	   been fixed.
+  12-05-15 Fixed a .paths bug in which only the first BUILTIN_LIB assignment worked.
+  12-05-14 Arithmetic expressions and subexpressions that are not floating point
+	   now treat -0 as 0, so that $((-0)) is 0 and $((-0.0)) is -0. 
+  12-05-11 'unset .sh' now fails with readonly message instead of coredump. 
+  12-05-11 A bug which left an associative array arr containing one element in
+	   the wrong state after expanding with ${arr[@]} has been fixed. 
+  12-05-10 A bug in which typeset -f did not display options that called getopts
+	   has been fixed.
+  12-05-08 Fixed a number of potential bugs uncovered by valgrind.
+  12-05-08 A bug in which typeset -b -Z10 var did not initialize var to the
+	   empty string has been fixed.
+  12-05-07 A bug in which the exit value of an interactive shell could be
+	   affected by the evaluation of the PS1 prompt has been fixed.
+  12-05-04 A bug in which x=() was not unsetting the old value of x before
+	   creating an empty compound variable has been fixed.
+  12-05-01 A bug in vi edit mode in which after <ESC>^V, the terminal was not
+	   restored to insert mode after a character is entered has been fixed.
+  12-04-27 A bug in which old attributes were not cleared when assigning a
+	   value using typeset has been fixed.
+  12-04-26 +Enabled multiline editing by default.  set +o multiline can disable.
+  12-04-25 The 12-04-17 PATH fix created a new bug which was fixed.
+  12-04-25 Fixed a big memory leak problem in which unsetting compound variables
+	   did not free all the space.
+  12-04-25 A bug in which test ! ! ! was treated as an error has been fixed.
+  12-04-24 A bug with print -v for a compound variable that contained fixed
+	   arrays which prevented the output from being used again as input
+	   has been fixed.
+  12-04-23 +kill provides the STKFLT signal on systems that support it.
+  12-04-23 +The -L option was added to kill.  The -L option is the same as -l
+	   except that without arguments the output format is in the form of
+	   a select menu.
+  12-04-23 A bug in which the exit status for an interactive shell was always 
+  	  0 has been fixed. 
+  12-04-20 Entering blank lines interactively no longer resets the exit status.
+  12-04-18 A bug in file completion in which the second tab completion on a file
+	   would list the completion rather than inserting the completion has
+	   been fixed.
+  12-04-18 A bug in which "${arr[@]:i:j}" and "${@:i:j}" generated the empty
+	   string when i was a valid subscript and j was <=0 rather than
+	   generating nothing has been fixed.
+  12-04-17 A bug in which read -d delim from a terminal did not respond to
+	   interrupt and did not termrinate when the delimiter was entered
+	   has been fixed.
+  12-04-17 A bug in which a directory in PATH containing a .paths file that
+	   contains a line with FPATH=dir, where dir does not exist could
+	   cause the path search to fail has been fixed.
+  12-04-16 A bug in which $(trap -p) did not display traps such as ERR and
+	   DEBUG that are not associated with signals has been fixed.
+  12-04-11 A bug in which unsetting a variable did not unset attributes when
+	   the variable did not have a value has been fixed.
+  12-04-11 A bug in which read -A for an array whose index is an enumeration
+	   type, lost the enumeration type has been fixed.
+  12-04-10 Shared libraries loaded from a library named by a BUILTIN_LIB= found
+	   in a .paths file found in a directory on PATH now add builtins that
+	   are associated with the directory in PATH containing the .paths file.
+  12-04-09 Increased I/O buffer sizes for better performance.
+  12-04-09 A bug in which the leading 0 was stripped from $x, when $x contained
+	   a heximadecimal constant inside an arithmetic expression inside
+	   a for or while loop.
+  12-04-06 Modified namespaces to hand variabes FPATH, PATH, and OPTIND that
+	   are defined in name spaces appropriately.  This also fixed OPTIND
+	   and OPTARG processing for functions.
+  12-04-04 A bug in which cd .. fails when the current directory has been
+	   renamed has been fixed.
+  12-04-02 Made some namespace changes and added a regression test.
+  12-03-30 A bug with namespaces in which PATH and FPATH set in a namespace was
+	   not restored when leaving the namespace has been fixed.
+  12-03-29 A bug in which appending an index array onto an array without elements
+	   caused the first element to be 1 rather than 0 has been fixed.
+  12-03-29 A bug which could cause a core dump when copying a large index array
+	   has been fixed.
+  12-03-28 The shell now generates an error message when the sizes with L, Z, and
+	   R are > 32767 on 32 bit binaries instead of generating a core dump.
+  12-03-28 A bug in left and right justification in which the width of invalid
+	   characters was not taken as zero has been fixed.
+  12-03-26 A bug in which typeset -p ref, when ref is a reference to an index
+	   array element did not display the subscript has been fixed.
+  12-03-23 A bug in lowercase and uppercase fields when expanding ${name:=val}
+	   when name is the empty string has been fixed.
+  12-03-22 A namespace bug in which a type t defined in namespace foo could not
+	   be referenced outside the namespace as .foo.t has been fixed.
+  12-03-22 A bug in name reference scoping in which a name function called from
+	   another function is pass a name reference to a compound variable
+	   instance to be created and the compound variable is in the global
+	   scope.
+  12-03-22 A bug in which ${ref[@}} did not behave like ${arr[i][@]} when
+	   ref is a name reference to arr[i] has been fixed.
+  12-03-21 A bug in which assigning a compound variable into arr[i], where
+	   arr[i] is an array variable did not work correctly has been fixed.
+  12-03-21 A bug with multi-dimenstional index arrays in which ${arr[i][j]}
+	   could generate a bogus error message when i was > 9 has been fixed.
+  12-03-21 A bug in which typeset v=foo, typeset -p v[0] generated a core dump
+	   has been fixed.
+  12-03-20 A bug in vi edit mode in which the sequence bar<ESC>0i<ESC>l left the
+	   cursor on the b rather than the a has been fixed.
+  12-03-20 A bug which caused a core dump when defining a type with a field
+	   as ' integer -a data=([0]=0)' has been fixed.
+  12-03-19 Using typeset -a array when array is an associative arry not
+	   generated an error message.
+  12-03-19 typeset +a, typeset +A, and typeset +C not displays the variables
+	   with the attributes a, A, and C respectively instead of an error.
+  12-03-19 A bug in which typeset -pC, typeset -pa, and typeset -pA output all
+	   variables rather than those of type C, a, or A only has been fixed.
+  12-03-18 A bug in which unset foo where foo is a name reference to a compound
+	   variable defined inside a function is not unset has been fixed.
+  12-03-18 A bug with SHOPT_EDPREDICT which could cause a core dump when the
+	   list of matches became empty has been fixed.  
+  12-03-15 The assignment, typeset -C foo=(a b c) now generates a syntax
+	   error since a is not an assignment command.
+  12-03-16 A bug in which an unset discipline from a variable defined in a
+	   subshell is not invoked in the subshell has been fixed.
+  12-03-08 The assignment typeset -a (x=1 y=2) now creates an index array
+	   of two elements rathern than an array of one element which is
+	   a compound variable.
+  12-03-02 +The vi and emacs edit modes now list all the entries in a directory
+	   when entering a <tab> for completion after a /.  
+  12-03-02 A bug in which a program that exits with value 12 when called
+	   from a command substitution in which standard output has been
+	   redirected caused the shell to hang has been fixed.
+  12-03-01 A bug in which the shell could not parse [[ ']' == ~(E)[]] ]]
+	   has been fixed.
+  12-02-29 A bug in which ~user expanded first in a subshell prevented it
+	   from expanding later in a program has been fixed.
+- Remove our patches which are part of this update
+- Re-add Shift-JIS patch to make it work again
+
+-------------------------------------------------------------------
+Wed Jan 30 11:17:34 UTC 2013 - werner@suse.de
+
+- Finally found the reason for bnc#795324, that is avoid to free
+  data which is used lateron in the has tree of reloaded shell
+  functions.
+
+-------------------------------------------------------------------
+Thu Jan 17 11:19:59 UTC 2013 - werner@suse.de
+
+- Avoid to skip builtin functions of the gcc if the libast does not
+  provide them. Maybe related, to bnc#795324, where a crash happens
+  in libc strcmp() if optimized for sse2 on AMD Opteron[tm] 6128.
+
+-------------------------------------------------------------------
+Thu Dec 20 12:48:02 UTC 2012 - werner@suse.de
+
+- Add ksh93-dttree-crash.dif - Allow empty strings in (dt)trees
+  (bnc#795324)
+- Modify ksh93-jobs.dif - make sure that tty is closed even if an
+  interrupt has been happen at close and also be aware that the
+  return value of tcgetpgrp() is greater than `1' that does not
+  match the process group ID of any existing process group (bnc#790315)
+
+-------------------------------------------------------------------
+Fri Oct 26 15:05:09 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on grof for man pages
+
+-------------------------------------------------------------------
+Thu Oct 25 12:09:48 UTC 2012 - werner@suse.de
+
+- Make last patch smart that is use /dev/shm for temporary file
+  descriptors
+
+-------------------------------------------------------------------
+Tue Oct 23 13:23:12 UTC 2012 - werner@suse.de
+
+- Add a workaround for filled /tmp file systems (bnc#786134)
+- Check for subshell if tmp file can be used otherwise use a
+  a pipe (bnc#786134)
+- Restore shell variables before any outpur will be placed in
+  a temp file or buffer (bnc#786134)
+
+-------------------------------------------------------------------
+Fri Oct 19 15:06:50 UTC 2012 - werner@suse.de
+
+- Be able to export justified and zerofilled variables (bnc#785360)
+- This requires that variables with this attributes should be really
+  cleared if unset
+
+-------------------------------------------------------------------
+Wed Oct 17 09:22:34 UTC 2012 - werner@suse.de
+
+- Do not chrash if the value of an environment variable is NULL (bnc#785266) 
+
+-------------------------------------------------------------------
+Tue Sep 18 14:18:09 UTC 2012 - werner@suse.de
+
+- Add polling builtin patch (bnc #779888)
+
+-------------------------------------------------------------------
+Fri Jul 13 12:47:35 UTC 2012 - agraf@suse.com
+
+- Fix qemu-user build by not evaluating ps output that doesn't reflect
+  what the virtual processes see
+
+-------------------------------------------------------------------
+Wed Jun  6 12:16:52 UTC 2012 - werner@suse.de
+
+- Do not ignore backslashes/escapes for read builtin (bnc#765171) 
+
+-------------------------------------------------------------------
+Wed May 23 10:33:09 UTC 2012 - werner@suse.de
+
+- Better check on update for postun scriptlet and error correct with
+  an posttrans scriptlet, that is do not remove /etc/ksh.kshrc on
+  an update of an older ksh version (bnc#759730)
+
+-------------------------------------------------------------------
+Thu Mar 15 12:32:36 UTC 2012 - werner@suse.de
+
+- Port and readd memory leak patch to put_ifs() of sh/init.c
+- Make sigexec more smart to help the pty helper binary to work as
+  this helper is used in the test suite
+
+-------------------------------------------------------------------
+Wed Mar 14 11:58:12 UTC 2012 - werner@suse.de
+
+- Update to 2012-02-29 of ksh93u+ for final version
+  12-02-29 A bug which could lead to a core dump when more that four shared
+	   libraries were added with the builtin command has been fixed.
+  12-02-29 Fixed a few bugs which caused SIGCHLD to be blocked preventing
+	   background jobs from being reaped until a foreground job was run.
+  12-02-27 A bug in which sh -c for a simple command caused a fork() has been
+	   fixed.
+  12-02-27 A timing bug on systems such as AIX that doesn't support vfork()
+	   that could cause the exist status to get lost has been fixed.
+  12-02-22 A private file descriptor that was not close-on-exec for a command
+	   substitution and has been fixed.
+  pty:
+  12-02-28 pty.c: change --verbose[=level] to --debug=level
+
+  libast:
+  12-03-10 misc/optget.c: HELP_index for "PLUGIN" too
+  12-02-29 include/shcmd.h: PLUGIN_VERSION 20111111 for cdt disc/meth change
+  12-02-29 comp/spawnveg.c: fix sigcritical() to include waitpid() for internal child
+  12-02-29 malloc.c: make __malloc_hook initialization thread safe
+  12-02-24 comp/iconv.c: fix winix UTF-8 vs UCS-2 over-conversion
+  12-02-24 astsa/*.h: clean up header guards
+  12-02-24 astsa/astsa.omk: clean up standalone old make makefile interactions
+  12-02-21 misc/cmdarg.c: fix bug that set argv[0]
+
+  libcoshell:
+  12-02-22 coinit.c: handle non-identifier export var names
+
+  libpp:
+  12-02-29 pp.probe: handle predefined function-like macro definitions
+
+  libsum:
+  12-02-29 sum-sha2.c: bitcount[] order reversed to allow a single noalias buffer copy
+
+-------------------------------------------------------------------
+Mon Feb 27 15:24:02 UTC 2012 - werner@suse.de
+
+- Add CLOEXEC flag on file descriptors for pipe handling (bnc#704898)
+
+-------------------------------------------------------------------
+Fri Feb 24 11:38:56 UTC 2012 - werner@suse.de
+
+- Remove check-build.sh as the memory leaks are fixed now
+
+-------------------------------------------------------------------
+Tue Feb 21 10:43:58 UTC 2012 - werner@suse.de
+
+- Avoid possible problems pointed out by a gcc warning about overflow
+  in arraysubscript, that is use full size of structure Namval as
+  well as access this area at position 0 
+
+-------------------------------------------------------------------
+Mon Feb 20 14:09:55 UTC 2012 - werner@suse.de
+
+- Update to 2012-02-14 of ksh93u+ which includes the real fix for
+  the IFS crash, the ulimit, and the mem leaks (bnc#743244, bnc#744355,
+  bnc#744589, and bnc#744992) as well as other fixes like:
+  12-02-14 A bug in which ^Z did not stop a pipeline when the last component
+           was a shell built-in has been fixed.
+  12-02-14 getconf("PATH") used to initialize ed(1) path.
+  12-02-13 +In earlier version read from standard input would fail when called
+           from the KEYBD trap.  Now read options -N, -n, and -t should work
+           when called from a KEYBD trap.
+  12-02-13 If FCEDIT is not set and fc is invoked without the -e option,
+           ed will be invoked if found instead of /bin/ed. 
+  12-02-10 Another bug in the saving and restoring of IFS in a subshell
+           that caused a core dump has been fixed.
+  12-02-08 A bug in which .sh.fun disciplines could be cleared after a
+           function completes has been fixed.
+  12-02-08 A bug in job control in which the foregroup process group was not
+           set correctly after restarting a stopped pipeline has been fixed.
+  12-02-07 A bug in which numbers with leading zeros could be treated as
+           octal constants outside of ((...)) has been fixed.
+  12-02-06 A bug in arithmetic with compound variables containing multiple
+           array elements has been fixed.
+  libast:
+  12-02-10 sfvprintf.c: fix 1 byte too long buffer access
+  12-02-07 malloc.c/features/vmalloc: add gnu __malloc_hook tests
+  12-02-06 vmmopen.c: fix ALIGN vs sys/param.h macro conflict
+  libcmd:
+  12-02-14 rm.c: --force ignores no file operands specified
+  libpp:
+  12-02-14 ppproto.c: fix "already noticed" logic
+  cmd/builtin:
+  12-02-11 what.c: fix boyer moore cut n paste bug -- thanks werner
+
+-------------------------------------------------------------------
+Tue Feb 14 15:36:22 UTC 2012 - werner@suse.de
+
+- Fix a nasty crash in IFS handling 
+
+-------------------------------------------------------------------
+Fri Feb 10 17:11:36 UTC 2012 - werner@suse.de
+
+- Fix bug in src/cmd/builtin/what.c
+
+-------------------------------------------------------------------
+Fri Feb 10 15:45:09 UTC 2012 - werner@suse.de
+
+- Make pty and other ast-base command available as this helps to
+  test out some major features of the ksh (compare with bnc#743244) 
+
+-------------------------------------------------------------------
+Thu Feb  9 14:14:53 UTC 2012 - werner@suse.de
+
+- Modify some tests of the test suite not to show false results on
+  highly loaded build hosts as well as on build shares mounted with
+  noatime option
+
+-------------------------------------------------------------------
+Thu Feb  9 09:47:38 UTC 2012 - werner@suse.de
+
+- Add patch from David Korn to fix foreground job control (bnc #743244)
+
+-------------------------------------------------------------------
+Mon Feb  6 12:01:10 UTC 2012 - werner@suse.de
+
+- Update to 2012-02-02 of ksh93u+ which includes some of our patches
+  and fixes for the observerd memory leaks
+  12-02-02  A bug in the ulimit option table was fixed.
+  12-01-26  A bug in which a set command that did not change monitor could
+            effect the behavior of the monitor when monitor mode is on is fixed.
+  12-01-21 +You can now test whether the shell implements a math function using
+            typeset -f .sh.math.name, where name is the name of the function.
+  12-01-21  A bug in which typeset -L and typeset -R did not handle multibyte
+            characters correctly has been fixed.
+  12-01-20  A bug that could cause the shell to hang waiting for an incorrect
+            job pid has been fixed.
+  12-01-19  A memory leak which occured for a nested command subtiution has been
+            fixed.
+  12-01-17  A bug in which typeset -u PS1 could enable the uppercase attribute
+            for some other variables, for exampe, HISTFILE has been fixed.
+  12-01-16  A bug in which .sh.match was not correct after a substring match when
+            the replacement string contained a substring match has been fixed.
+  12-01-12 +Files that are sourced from profile files are now read and executed
+            one command at a time so that alias definitions take effect as they
+            do for profile files.
+  12-01-12  A bug in which whence -p would find a function if one existed and
+            there was no command of that name on PATH.
+  12-01-11  Change b_* prototype (int, char**, void*) => (int, char**, Shbltin_t*).
+  12-01-05  A bug in which read was not terminating for a signal that had a trap
+            set has been fixed.
+  libast:
+  12-01-31 spawnveg.c: fix transient bug that made invalid setpgid() call
+  12-01-27 pathpath.c: fix buffer size math when internal allocation requested
+  12-01-24 malloc.c: fix _vmkeep() bug that did not return previous state
+  12-01-23 malloc.c: add VMALLOC_OPTIONS=break to try sbrk() block allocator first
+  12-01-18 malloc.c: disable multiple regions for tracing or !vmbest or ASO_SIGNAL
+  12-01-12 sfpkrd.c: add __sun I_PEEK+rsh runtime workaround
+  12-01-10 shcmd.h: void* => Shbltin_t*
+  12-01-10 tmxdate.c: handle { n>=1000 } TM_PARTS
+  libcmd:
+  12-01-10 b_* (int, char**, void*) => (int, char**, Shbltin_t*)
+
+-------------------------------------------------------------------
+Thu Feb  2 11:32:15 UTC 2012 - werner@suse.de
+
+- Fix an off-by-one error which cause that the builtin ulimit may
+  fail (bnc#744355), patch from Li Bin.
+
+-------------------------------------------------------------------
+Tue Jan 24 18:42:48 UTC 2012 - werner@suse.de
+
+- Make ex really work that is vim is required for build otherwise
+  libpp API does not work correct
+
+-------------------------------------------------------------------
+Tue Jan 24 16:06:20 UTC 2012 - werner@suse.de
+
+- Make sigexec using a contolling terminal
+
+-------------------------------------------------------------------
+Mon Jan 23 12:53:26 UTC 2012 - werner@suse.de
+
+- Avoid compiler optimizers which may cause asynchrony behaviour
+
+-------------------------------------------------------------------
+Fri Jan 20 14:49:47 UTC 2012 - werner@suse.de
+
+- Update to 2012-01-01 of ksh93u+ which includes some of our patches
+  12-01-01 A timing problem with >; has been fixed.
+  12-01-01 A macro expansion memory leak has been fixed.
+  11-12-26 A bug in array assignments of the form arr=( $arr[i] ...) in which
+           arr was not unset before the assignment has been fixed. 
+  11-12-20 A number of code changes were made based on the results of errors
+           indicated by static code analysis.
+  11-12-13 In vi edit mode a lteral <TAB> can now be entered by preceding it
+           with a backshash.
+  11-12-13 When tab is entered for completion after a ' or ", the ' and "
+           characters are no longer deleted.
+  11-12-07 A bug in which a program in the current direcotry with a . in the
+           name could fail to execute when both PATH and FPATH end with :. has
+           been fixed.
+  11-12-07 I fixed a bug in which a variable expansion in a large here-document
+           could be expanded to a null string.
+  11-12-06 An optimization to read was added in the case the the read command
+           was redirected from a file.
+  11-12-06 Changes were made to make the line limit for read unlimited by
+           default.
+  11-12-05 A bug in which unsetting an array variable did not completely clear
+           the variable in some cases has been fixed.
+  11-12-02 +The printf alternative character # when applied to the %q format will
+           quote argument in a form suitable for a field in a .csv format file.
+  11-12-02 +A -S option was added to read to be able to read .csv format files.
+  11-11-28 A bug in which redirection of standard error in a function called from
+           command substitution caused standard error to be lost has ben fixed.
+  11-11-21 [[ (-n foo) ]] no longer requires a space before (.
+  11-11-11 The readonly attribute for a variable now applies to compound
+           assignments to that variable.
+  11-11-07 Changes were made to reduce the stack size to allow deeper function
+           recursion.
+  11-10-10 +Added alternate flag to printf %H for encoding of URI's.
+  11-10-10 A bug which could lead to a core dump when the shell was invoked
+           with more than twenty five open files has been fixed.
+  11-10-06 A bug in the scoping of name references in functions called by other
+           functions has been fixed.
+  11-10-05 A bug in which wait on a pid may return the exit status of an
+           earlier background job with that pid instead has been fixed.
+  11-09-22 A bug in which a read timed out with TMOUT did not always restore
+           the terminal state has been fixed.
+  11-09-21 An optimization that allowed the last command in a script to use
+           the same process id as the script has been eliminated.
+  11-09-21 Added letoctal option that enables the let command to recognize
+           octal constants starting with 0.
+  11-09-20 A bug in which ${var.} could cause a core dump has been fixed.
+  11-09-20 A bug with SHOPT_EDPREDICT when neither vi or emacs was enabled for
+           lines beginning with # when in a multibyte locale has been fixed.
+  11-09-20 A bug in emacs edit mode with SHOPT_EDPREDICT that would cause
+           history searches matching comments lines to generate predictions
+           has been fixed.  Only user typed comment lines generate predictions.
+  11-09-20 A bug in emacs edit mode with a search that matches a comment line
+           that could cause a core dump has been fixed.
+  11-09-16 A bug in which a command name ending in .. could cause the shell to
+           abort has been fixed.
+  11-09-16 The characters ! + - % and @ in file names are no longer escaped with
+           file name completion.
+  11-09-13 The let command no longer treats numbers starting with 0 as octal
+           constants.  
+  11-09-08 A bug in which printf "%R" could cause a core dump for invalid shell
+           patterns has been fixed.
+  11-08-09 With set -u, ${var#pattern} reported that var was unset for special
+           variables.
+  11-08-03 A bug in which the shell did not preserve the exit status for a
+           coprocess has been fixed.
+  11-08-02 A bug in the saving and restoring of IFS in command substitution that
+           cause case a core dump has been fixed.
+  11-07-21 Modified the 10-08-27 bug fix so that background jobs started in for
+           and while loops created interactively generate completion messages.
+  11-07-20 I fixed a bug in here documents in which multi-byte characters that
+           crossed buffer boundaries were not processed correctly.
+- Extend workaround for bug in glibc with signbit() macro that is that
+  the inlined part for long doubles does not work on IA64
+- Extend check for __sync_fetch_and_add gcc builtins for uint64_t, uint16_t,
+  and uint8_t to avoid those functions is missed in gcc from older SLES versions
+- Avoid to have to large default mimimum region size at an initial memory mapping
+- Avoid MAP_FIXED on IA-64 and S/390x, use MAP_32BIT
+- Avoid compiler options which increase the risk of memory leaks
+
+-------------------------------------------------------------------
+Sun Dec  4 23:00:26 UTC 2011 - agraf@suse.com
+
+- Don't run tests in qemu - they fail
+
+-------------------------------------------------------------------
+Tue Aug 30 16:44:06 UTC 2011 - werner@suse.de
+
+- Implement a patch for both regressions reported here
+  mailman.research.att.com/pipermail/ast-developers/2011q3/000951.html 
+
+-------------------------------------------------------------------
+Mon Aug 15 16:46:10 UTC 2011 - werner@suse.de
+
+- Add patch from mailing list to avoid stupid crahs on empty job list. 
+
+-------------------------------------------------------------------
+Fri Jul 22 14:56:27 UTC 2011 - werner@suse.de
+
+- Fix a typo in the patch 
+
+-------------------------------------------------------------------
+Fri Jul 22 11:29:02 UTC 2011 - werner@suse.de
+
+- Add and modify a patch from David korn to be able to handle multi
+  byte characters at the boundary of the buffer used for parsing
+  here documents (bnc#705032) 
+
+-------------------------------------------------------------------
+Thu Jul  7 12:48:24 UTC 2011 - werner@suse.de
+
+- Check for ascii8 troff device, if not available use utf8 
+
+-------------------------------------------------------------------
+Wed Jul  6 14:15:44 UTC 2011 - werner@suse.de
+
+- Extract messages from ksh source code automagic by using msgcc and
+  libpp from upstream ast-base packages (realted to bnc#703854) only
+  missing are the translations for those messages
+
+-------------------------------------------------------------------
+Tue Jul  5 15:17:58 UTC 2011 - werner@suse.de
+
+- Drop locale support as it is out of sync since year 2000 (bnc#703854) 
+
+-------------------------------------------------------------------
+Mon Jul  4 15:19:20 UTC 2011 - werner@suse.de
+
+- Avoid crash on unset of function within the same function 
+
+-------------------------------------------------------------------
+Thu Jun 30 16:04:22 CEST 2011 - werner@suse.de
+
+- Update to 2011-06-30 of ksh93u which includes our patches for
+  several problems (e.g. Shift.JIS, S390, bnc#697394):
+  11-06-22 The shell compiler now supports process substitution.
+  11-06-22 +Added code to support process substitution on systems that do
+           not supply the /dev/fd directory.
+  11-06-21 Fixed extraneous jobs Done messages when builin is at the end of a
+           pipeline.
+  11-06-20 Fixed two regression tests.
+  11-06-20 Fixed a bug introduced on last update.
+  11-06-14 A bug with pipefail in which the shell would wait for background
+           jobs to complete has been fixed.
+  11-06-09 A bug which caused the options.sh regression test to fail on OS390
+           Linux has been fixed.  The bug could also have affected other systems.
+  11-06-07 A number of changes to support the still undocuments namespace option
+           have been added.
+  11-06-06 A bug in which command substitution of eval would hang when it  had
+           standard error redirected to standard output has been fixed.
+  11-06-01 A bug in case statement fall through (;&) ignoring set -e was fixed.
+  11-06-01 A bug in which creating a left or right justified upper or lowercase
+           variable with an empty string has been fixed.
+  11-06-01 A bug in which the .paths directory wasn't read when a subshell was
+           executed before any other command has been fixed.
+  11-05-31 The shell now gives an error when a type variable is assigned to
+           an array instance when the array has been declared a compound variable
+           array.
+  11-05-31 A bug in which typeset -m of an array instance did not remove the
+           original instance has been fixed. 
+  11-05-28 A bug in which typeset -m dest=src fails when src and are passed as
+           name references was fixed.
+  11-05-28 A bug in which typeset -m "c.board[1][i]=el", where el is a compound
+           variable core dumps has been fixed.
+  11-05-28 Two bugs in the display of arrays of compound variables with print -v
+           have been fixed.
+  11-05-27 A bug with command substitution with the shift jis locale has been
+           fixed.
+  11-05-25 A bug in which unset -f foo, called within function foo could cause
+           the shell to core dump has been fixed.
+  11-05-24 A bug in unsetting arrays of compound variables that could lead to
+           a core dump has been fixed.
+  11-05-24 A scoping bug in with typeset -m for variables passed as references
+           has been fixed. 
+  11-05-09 A bug in which 'typeset +p array[$i]' in a subshell could cause an
+           exception has been fixed.
+
+-------------------------------------------------------------------
+Tue Jun 14 11:36:28 UTC 2011 - werner@suse.de
+
+- Fix off by one error which should make timetype.sh work now
+- Update the array fix as well as the pipe fix
+- This also fixes bnc#677790
+
+-------------------------------------------------------------------
+Fri Jun 10 19:11:07 CEST 2011 - werner@suse.de
+
+- Avoid redirection in subshell if an eval was used (bnc#697394)
+
+-------------------------------------------------------------------
+Wed Jun  8 15:14:46 CEST 2011 - werner@suse.de
+
+- Extend Shift.JIS patch to avoid breakage of the parsers above
+- Avoid mounting 3D file system as this does not exist on linux
+
+-------------------------------------------------------------------
+Wed Jun  1 11:23:03 CEST 2011 - werner@suse.de
+
+- Correct timetype.sh ... nevertheless typeset -T does not work
+  with array types as this requires ksh93u
+
+-------------------------------------------------------------------
+Tue May 24 18:34:36 CEST 2011 - werner@suse.de
+
+- gcc dumps out poerpc64 even on powerpc which does break the
+  binary in a very special way e.g. in getopt(3)
+- do not use CC but CCFLAGS and HOSTTYPE at make time
+
+-------------------------------------------------------------------
+Fri May 13 15:29:04 UTC 2011 - werner@suse.de
+
+- Add workaround to enforce synchronization on here documents done
+  for forked sub shell or processes (bnc#690623)
+
+-------------------------------------------------------------------
+Thu May 05 15:44:33 CEST 2011 - werner@suse.de
+
+- Update to 2011-05-05 of ksh93u which includes various fixes for
+  e.g. bnc#690623, bnc#661875, and bnc#636389, from RELEASE notes:
+  11-05-03 Two more scoping bug with name references and read -C were fixed.
+  11-05-03 A potential race condition which occurs when here-documents are
+  	   processed in asynchronous blocks has been eliminated.
+  11-05-02 Another scoping bug with name references defined in a function has
+  	   been fixed.
+  11-05-02 A bug in which the shell discards saved exit status of a job if it is
+  	   followed by a subshell execution has been fixed.
+  11-04-28 The shell now checks for numerical overflows with process ids.
+  11-04-28 Another scoping bug with compound variables defined by name references
+  	   inside a function has been fixed.
+  11-04-28 A bug which caused a core dump on 32 bit systems with the basic.sh
+  	   regression test has been fixed.
+  11-04-27 A scope binding error for name references has been fixed.
+  11-04-27 Assignment of compound variable to compound array element by name
+  	   is now working.
+  11-04-25 A bug in the references to two domensional compound arrays has
+  	   been fixed.
+  11-04-20 A bug in which a name reference to a multidimentional index array
+  	   index, nameref x=foo[3][4], did not work correctly has been fixed.
+  11-04-18 Changes were added to allow fixed size arrays of variable sized
+  	   objects when the SHOPT_FIXEDARRAY compile option defined on 10-09-28.
+  11-04-18 A bug in which name references to array elements could fail has
+  	   been fixed.
+  11-04-11 A bug in which readonly var, where var is exported could cause var
+  	   to be unset has been fixed.
+  11-04-06 A tokenizer bug in which ${x/{3}(\d)/ } would cause in infinite
+  	   loop has been fixed.
+  11-04-05 A bug in which ${!x.} could cause a core dump has been fixed.
+  11-04-04 A bug in which cleaning out the history file could terminate before
+  	   keeping all the recent history events has been fixed.
+  11-03-29 A bug in which ${#array[@]} was 1 rather than 0 after issuing
+  	   typeset array[7] has been fixed.
+  11-03-29 The subscript out or range message for fixed arrays has been fixed.
+  11-03-29 A bug in which suspend could cause a core dump has been fixed.
+  11-03-24 For the showme option added 09-09-09, commands beginning with a ;
+  	   inside an arithmetic for loop, no longer produce syntax errors.
+  11-03-18 A bug in _WINIX ~domain/user expansion has been fixed.
+  11-03-16 A bug in the pipefail option which could cause a script to hang
+  	   has been fixed.
+  11-03-12 The shell no longer treats ${##pattern} as a syntax error.
+  11-03-11 A bug in typeset -u on systems that don't supply the towctrans()
+  	   function has been fixed.
+  11-03-11 A bug in which a compound assignment of the form var[sub]=(...)
+  	   would evaluate sub for each assignment has been fixed.
+  11-03-07 A bug in which reassigning a compound variable to an associative
+  	   array index could incorrectly increase the count of the number
+  	   of elements has been fixed.
+  11-03-04 +The tilde expansion on windows has been modifed to handle user
+  	   names of the form domain/user so that ~domain/user now expands
+  	   to the home directory of that domain user.
+  11-03-03 A bug in which the width of the prompt was calculated incorectly
+  	   which cause the wrong line length for edit commands has been fixed.
+  11-03-02 A bug in which a global variables set from within a function inside
+  	   a subshell can leave side effects in parent shell has been fixed.
+  11-03-01 A bug in which whence -a could dump core when the first match
+  	   was due to : in PATH and the program was in the current directory.
+  11-02-28 A bug in emacs mode with SHOPT_EDPREDICT (added on 10-05-20) which
+  	   disabled prediction on a line starting with # when the cursor was not
+  	   at the end of line has been fixed.
+  11-02-28 The output format for compound variables with set has been fixed.
+  11-02-25 A bug which could lead to a core dump occurred when a shell script
+  	   without #! is invoked by name from a parent shell that has name
+  	   references defined and the script creates name references of the
+  	   same name.
+  11-02-21 The shell now fails with a syntax error when a here-document in a
+  	   command substition is not completed before the closing )
+  11-02-18 A bug in which the value of $0 in a function defined by name()
+  	   was changed to name has been fixed.
+  11-02-17 A bug in which the declaration typeset var[100] did not work
+  	   correctly has been fixed. 
+  11-02-15 A bug in which [[ -v sh.match ]] did not work correctly has been
+  	   fixed.
+  11-02-08 A bug in which opening standard output after it has been closed with
+  	   exec 1>&- doesn't work has been fixed.
+  11-02-07 A bug on some systems for which a command subtitution could hang
+  	   has been fixed.
+  11-01-28 A bug in file name completion for files containing both multibyte
+  	   characters shell special characters has been fixed.
+  11-01-18 The .sh.match variable now shows elements that do not match as
+  	   as not set rather than an empty string.
+  11-01-18 A bug with typeset -m of an array into an element of an indexed
+  	   array has been fixed.
+  11-01-13 A bug in handling of arrays of compound variables inside ((...)) which
+  	   reported a syntax error been fixed.
+  11-01-10 A bug in arithmetic assignment operators of the form op= for array
+  	   variables when the same array was referenced on the left and the
+  	   right hand side with different indices has been fixed.
+  11-01-10 A bug in which the output of time was lost when { time...;} 2>&1
+  	   occured inside command substition has been fixed.
+  11-01-07 [[ -v sh.match[i] ]] was returning false when sh.match[i] was set.
+  11-01-05 Added and modified warning messages with sh -n.
+  11-01-02 Fixed bugs with typeset -l/-u/-M and arrays.
+  10-12-28 Fixed a bug with typeset -l/-u/-M values in arithmetric expressions.
+  10-12-26 Fixed a time parsing bug in sleep and localeconv() initialization.
+  10-12-23 Prevented the shell from generating a core dump when it sends itself
+  	   a termination signal because the last command terminated with that
+  	   signal.  This prevents a core dump to be overwritten by the shell.
+  10-12-22 A bug in the expansion of  ${A[@]} ${B[@]}, introduced in 10-12-01
+  	    when A="" B=B has been fixed.
+  10-12-21 +Use MS_3D in b_vpath() for setting win32 WoW mount defaults.
+  10-12-17 A bug in the expansion of ${var:i:j} which caused a core dump when
+  	   i > ${#var} has been fixed.
+  10-12-16 +sleep now treats . as decimal point even in locales that use comma.
+  10-12-16 +typeset -M mapname was added to generalize on toupper and tolowwer
+  	   mapping as provided with wctrans(). 
+  10-12-10 A bug in which typeset -l displayed namespaces as well as lower case
+  	   variables has been fixed.
+  10-12-06 A bug in which a pipeline could terminate prematurely for a pipeline
+  	   whose right hand side is a builtin, and whose left hand side ends in
+  	   a simple command that has standard output redirected has been fixed.
+  10-12-06 A bug in hexfloat assignments when the right hand side is a string
+           variable starting with 0x has been fixed.
+  10-12-01 A bug in the expansion of ${$1+"$@"} which causes the last positional
+  	   parameter to disappear when it is empty has been fixed.
+  10-12-01 A number of changes were made to reduce the startup time.
+  10-11-29 When wait is interrupted by a signal that is caught, it now exits
+  	   with a non-zero exit status.
+  10-11-29 An incorrect warning message was eliminated with the -n option for
+  	   arithmetic expressions with associative arrays.
+  10-11-29 Some changes were made to slightly reduces startup time.
+  10-11-24 A bug in which a name reference is make to arr[0] when arr is not
+  	   an array has been fixed.
+  10-11-23 If a type definition is made without a compound variable assignment it
+  	   produces an error message and no longer shows up as a defined type. 
+  10-11-22 The handling of \ inside [...] for for shell and ~(E) patterns has
+  	   been fixed.
+  10-11-22 A patch was made to pfsh to handle an error case.
+  10-11-22 +Modified types defined in namespace so that they do not clash with
+  	   types in other namespaces.  Types can be referenced using .namespace.typename.
+  10-11-22 A bug which caused functions addressed as .namespace.funct to not
+  	   work has been fixed.
+  10-11-22 A bug in which if nr was a name reference to an unset associative
+  	   array subscript, then ${!nr} did not output the subscript correctly
+  	   has been fixed.
+  10-11-18 A bug in which shcomp -n was not processing double quotes correctly
+  	   has been fixed.
+  10-11-18 Fixed a bug in which typeset -T foo; typeset -T could cause a
+  	   core dump.
+  10-11-17 Fixed a bug in which the error message for set -u could come out
+  	   garbeled.
+  10-11-17 Modified the parser so that typeset -a var=(...) no longer checks
+  	  the first index for aliases and reserved words.
+  10-11-17 A bug in which a subshell command consisted of only a for or until
+  	   command has been fixed.
+  10-11-16 Fixed a bug in which typeset -u would display namespace variables
+  	   as well as upper case variables.
+  10-11-16 A bug which could cause a core dump when unsetting a type variable
+  	   when there are references to type elements has been fixed.
+  10-11-15 A bug which could cause a core dump when unsetting a compound
+  	   array variable when there are references to array subscripts has
+  	   been fixed.
+  10-11-15 A bug in which using typeset -m to move an indexed array instance
+  	   to another array could cause the array to display incorrectly has
+  	   been fixed.
+  10-11-12 A bug in which the unset discipline function for a type is called
+  	   when the type is initialized has been fixed.
+  10-11-12 The sequences \< and \> are now preserved after patterns contaning
+  	   ~(E) in ${var/pattern/string} expansions.
+  10-11-11 A bug in typeset -m when the variables were compound arrary instances
+  	   has been fixed.
+  10-11-10 A bug in output of a compound variable with types containing types
+  	   has been fixed.
+  10-11-10 Fixed ``name=value export [-p]'' to list environment.
+  10-11-09 shtests resets SIGPIPE to SIG_DFL for all tests.
+  10-11-09 Fixed a bug in expansion of $"..." when used in assignments.
+  10-11-09 Fixed a getaddrinfo() memory leak that didn't call freeaddrinfo()
+  	   after an interrupt.
+  10-11-08 Modified the behavior of set -u so that the shell terminates with
+  	   error message when when var is unset with ${!var} and ${#var}.
+  10-11-02 Fix a bug in which a signal received while in a subshell could be
+  	   ignored.
+  10-10-26 Fix a bug where terminal interrupt was ignored while in vi/emacs
+  	   edit search mode.
+  10-10-26 Fix $'a\0b'c to expand to 'ac'.
+  10-10-26 Provide user defined round() if not in <math.h>.
+  10-10-26 Fix bug where $((undefined_function(1))) dumped core.
+  10-10-22 Provide user defined iszero() if not in <math.h>.
+  10-10-22 Fixed a bug with BGX compile option that could cause the shell to hang.
+  10-10-22 Fixed a bug with user define math function on systems for which
+  	   char is unsigned.
+  10-10-21 A bug in which function autoloaded in a function leaves a file open
+  	   has been fixed.
+  10-10-20 Modified the behavior of set -u so that the shell terminates when
+  	   when var is unset with ${var op string} when op is #, % or /.
+  10-10-20 Fixed a bug with the AUDIT option in which the audit file was not
+  	   not close-on-exec.
+  10-10-20 +Made a number of changes and fixes for the NAMESPACE compile option
+  	   which as added on 10-06-09 but some problems still remain.
+  10-10-15 Fixed a bug in which arithmetic functions (added on 10-03-24) did
+  	   not work when the function definition was in the same compound
+  	   command in which the function was referenced.
+  10-10-13 A bug in which creating an associative array of compound variables
+  	   with no members as an element of a compound variable did not work
+  	   has been fixed.
+  10-10-08 A bug in which killing the last command in a function defined
+  	   with function name, terminated the calling script has been fixed. 
+  10-10-08 A bug which could cause a core dump if IFS is unset inside a function
+  	   has been fixed.
+  10-10-07 +To reduce unwanted side effects, invoking typeset without the export
+  	   option and without an assignment now causes the variables to be unset
+  	   if the variable is inherited from the environment.
+  10-10-06 The closing brace for ${ command } is now a token no matter what
+  	   character follows it.
+  10-10-04 The change for $'...' expansion on 10-08-09 did not expand parameters
+  	   contained in the error message and this has been fixed.
+  10-10-04 A bug in which a declaration of indexed array (-a_ in a type
+  	   definition would be displayed as a compound indexed array (-C -a)
+  	   has been fixed.
+  10-09-30 The C99 math funtion ldexp has been added.
+  10-09-30 A bug with two dimensional arrays with expansion of the form
+  	   ${ref[0..5]} where ref is a nameref to array[i] has been fixed.
+  10-09-29 A bug in which an eval with redirections invoked from a dot script
+  	   would not restore the file has been fixed.
+  10-09-29 A bug in which loading a function from FPATH could leave a file
+  	   descriptor open has been fixed.
+  10-09-28 +A new compile option SHOPT_FIXEDARRAY has been added and is being
+  	   evaluation.  It allows fixed sized indexed arrays be to defined
+  	   using "typeset array[dim1][dim2]...[dimn]".  Fixed sized arrays
+  	   are used the same way indexed arrays are.  Currently, only fixed
+  	   arrays of fixed objects (float, int, and justifies objects) are
+  	   supported.
+  10-09-22 A bug which could cause an excpetion when a function with static
+  	   variables was redefined has been fixed.
+  10-09-21 A bug in the processing of (command&) which created a job in the
+  	   parent process has been fixed.
+  10-09-21 A for loop optimization bug with arithmetic expression evaluation
+  	   has been fixed.
+  10-09-21 A bug in which a recursive function containing a pipeline could
+  	   lead to an exception fixed after 8 levels of recursion has been
+  	   fixed.
+  10-09-18 A bug in which the count of elements in an array was wrong leading
+  	   to an excpetion has been fixed.
+  10-09-13 A bug which occured when both xtrace and showme options where
+  	   specified in which the xtrace option disabled showme has been fixed.
+  10-09-13 A bug in which creating a reference to an array variable with any
+  	   elements could cause subsequent array elements to be treated as
+  	   compound variables has been fixed.
+  10-09-09 A bug which caused ((c.ar[x][y])) to be treated as a syntax error
+  	   has been fixed.
+  10-09-08 A bug in the processing of references to multidimensional arrays
+  	   in arithmetic expressions has been fixed.
+  10-09-08 A bug in the handling of multi-dimensional arrays which caused
+  	   the number of elements in each dimension to be incorrect has
+           been fixed.
+  10-09-07 The change for messages on 10-08-09 did not handle message in
+           assignments and this has been fixed.
+  10-09-07 A bug in the indentation of compound variables in arrays when
+           output with print -v has been fixed.
+  10-09-07 A rare bug with indexed arrays when assigned a null string that could
+           cause a core dump has been fixed.
+  10-09-03 A number of changes were made for jobs pools.
+  10-08-31 typeset -p was modified to output name references after other
+           variables so that the output could be used as input.
+  10-08-31 A bug with typeset -p in which variables with attributes but
+           without attributes were not displayed correctly has been fixed.
+  10-08-27 +When running a subshell, the current pool is unset.
+  10-08-27 A bug in which jobs started from within for or while lists in
+           interactive shells could generate completion messages has been fixed.
+  10-08-25 Fixed a couple of bugs related to job pools. 
+  10-08-24 +[[ -e /dev/xxx/ ]] can be used to check whether special files of
+           those names are handled by the shell.
+  10-08-24 A bug in the running of a compiled dot script in which only the
+           first command was executed has been fixed.
+  10-08-23 A bug which sometimes caused a core dump with a confgire script
+           has been fixed.
+  10-08-20 A bug in command substitution which caused a configure script to
+           hang has been fixed.
+  10-08-19 Eliminated unnecessary ; from output of compound variable with
+           typeset -p.
+  10-08-17 Fixed a bug in command substitution in which under certain
+           circumstances a file whose size is a power of 2 plus one, and the last
+           character was not a new-line, could cause memory corruption.
+  10-08-13 +Added static discipline functions to type similar to C++ static
+           class functions.
+  10-08-11 A bug in time when applied to a pipeline in which the shell did
+           not wait for all elements of the pipeline to complete has been fixed.
+  10-08-11 Restored sh_fmtq() quoting to not quote NAME= in NAME=VALUE.
+  10-08-09 +Modified the expansion of message strings, $"...", so that they
+           are expanded each time they are referenced rather than expanding
+           them when the script is compiled or read in.
+  10-08-06 +The process id for jobs in job pools is now of the form poolname.n
+           where n is the jobid in that pool.  Commands that accept job names
+           or numbers now understand names in this format.
+  10-08-05 A bug in which an assignment from within an arithmetic expression
+           inside a function would create a local variable has been fixed.
+  10-08-04 A bug in the expanding of variables whose names contain multibyte
+           characters has been fixed.
+  10-08-04 A bug which caused an exception when processing scripts compiled
+           with shcomp -n has been fixed.
+  10-08-02 Tests using very small buffer sizes uncovered a number of bug most
+           connected with here documents which have been fixed.
+  10-07-27 The format modifier , used for digit grouping with d and f formats
+           has been documented.
+  10-07-26 cd '' now produces and error rather than changing to the current
+           directory.
+  10-07-26 A bug in multi-byte locales which the last character of a
+           multi-byte character is a \ or pattern character which could occur
+           when the character was the last character of a command substitution
+           has been fixed.
+  10-07-23 Another bug in the processing of ${var:offset;len} in multi-byte
+           locales when len is larger than the number of characters has been
+           fixed.
+  10-07-23 Many coding changes have been made to eliminate most of the uses
+           of global variables in the shell code.
+  10-07-22 Fixed a bug in which discipline functions were not being invoked
+           when it was invoked as ref.discipline where ref was a name reference
+           to an array instance.
+  10-07-22 Fixed a bug in which discipline functions were not being invoked it
+           was invoked on a two dimensional array, i.e., arr[5][9].discipline.
+  10-07-19 Fixed a buffering problem which occured when running a script with
+           ssh and the parent ssh process is killed.
+  10-07-14 Modifed the parser to treat ((...)) inside [[...]] as ( (...) ) to
+           that it is a nested (...).
+  10-07-09 A bug in the handling of process substitution inside command
+           substitution as part of a pipeline has been fixed.
+  10-07-07 A bug in the output for compound variables containing
+           multi-dimensional arrays has been fixed.
+  10-07-06 ksh now recovers from changes made by bash to the history file without
+           loosing history commands.
+  10-06-25 A bug in which a large here document containing command substitutions
+           of a dynamically loaded function that contained a here document
+           could get truncated has been fixed.
+  10-06-24 If after executing a script found in FPATH, if a function, builtin,
+           or type name corresponding to that script is not defined, the shell
+           now outputs an error message and returns value 126.
+  10-06-23 Floating point functions that happened to return integer values
+           were being treated as if the function returned integers so that
+           integer division could be used instead of floating point division.
+  10-06-22 Fixed a bug in earlier ksh93u in which an arithmetic assignment to a
+           variable in the global scope would instead create a local variable if
+           the variable had an attribute but did not have a value.
+  10-06-18 Modified trap handling so that if the same signal is received when
+           executing the handler, it is deferred until the handler completes.
+  10-06-16 Fixed a bug in which ulimit -v was setting the the cpu limit
+           on Linux.
+  10-06-14 +The command 'typeset -T' now generates the list of type definitions
+           in a format that can be used as input to the shell.
+  10-06-09 Put in patch from Solaris for output quoting with %q.
+  10-06-09 +Made changes to the NAMESPACE compile option so that it now seems
+           to work.  With this option, namespace <name> { command;} will
+           run command in the namespace .name so that all variables and
+           functions created by command are accessable outside the name
+           space via .name.var and .name.fun.  Variables and functions that
+           are not in the namespace are not modifed when runnning command.
+  10-06-07 Change most internal interfaces to take Sh_t* argument.
+  10-06-03 +Types can be loaded on first reference by putting defintions in PFPATH.
+  10-06-03 +The shell is now able to parse commands which use type statements
+           before the typeset -T command to define the type executes.
+  10-06-03 A bug in the quoting for name reference declarations which did
+           not properly handle [ and ] in subscripts for associative arrays.
+  10-06-02 A bug in which a discipline function defined by a type instance to
+           override the default was not being registered has been fixed.
+  10-06-02 A bug in which read -C of an associative array of compound variables
+           was not working has been fixed.
+  10-06-02 A bug in which the error message for an unset parameter with set -u
+           did not contain the name of the variable has been fixed.
+  10-06-01 A bug in typeset -m for moving an indexed array instance to a variable
+           has been fixed.
+  10-06-01 A bug in which caused memory to be freed twice when unset was called
+           for an indexed array that had get or set disciplines has been fixed.
+  10-06-01 A bug in which the %b format of printf was not preserving NUL bytes
+           with \0 has been fixed.
+  10-06-01 A bug in the handling of name references to array variables in
+           arithmetic expressions has been fixed.
+  10-05-28 Fixed bugs in changing attributes for two dimensional arrays.
+  10-05-28 Eliminated a few unreferenced variables and a reference to
+           uninitialized memroy.
+  10-05-27 Rewrote the subshell code to avoid using pipes an many cases.
+  10-05-24 Fixed a bug which cause an exception when both -l and -s were
+
+-------------------------------------------------------------------
+Fri Mar  4 16:15:16 CET 2011 - werner@suse.de
+
+- Avoid to export local variables from real subshells
+
+-------------------------------------------------------------------
+Tue Feb 22 13:04:48 UTC 2011 - werner@suse.de
+
+- Make shell functions POSIX compliant (bnc#661875) 
+
+-------------------------------------------------------------------
+Wed Oct 27 14:14:28 CEST 2010 - werner@suse.de
+
+- Change fix for bnc#636389 to my first approach as this
+  does not hang on x86_64 
+
+-------------------------------------------------------------------
+Thu Oct 21 12:36:44 CEST 2010 - werner@suse.de
+
+- Yet an other file descriptor leak caused by audit feature
+
+-------------------------------------------------------------------
+Tue Oct 19 13:11:24 CEST 2010 - werner@suse.de
+
+- Close file descriptor leak caused by loading shell functions
+
+-------------------------------------------------------------------
+Mon Oct 11 14:53:35 CEST 2010 - werner@suse.de
+
+- Add script for testing out the previous bug
+
+-------------------------------------------------------------------
+Fri Oct  8 14:50:56 CEST 2010 - werner@suse.de
+
+- Fix crash on unset on local IFS within shell functions (bnc#636389)
+
+-------------------------------------------------------------------
+Tue Jun 29 16:09:17 CEST 2010 - werner@suse.de
+
+- Avoid memory leak as reported on mailing list
+
+-------------------------------------------------------------------
+Mon Jun 28 17:33:29 CEST 2010 - werner@suse.de
+
+- Update to 2010-06-21 of ksh93t+ bug fix version
+  ksh:
+  10-06-21  The next release this directory will be renamed ksh93t and will
+            install as ksh93t and ksh93u will become the default ksh.
+  10-05-27  Rewrote the subshell code to avoid using pipes in many cases.
+
+-------------------------------------------------------------------
+Fri May 28 13:21:46 CEST 2010 - werner@suse.de
+
+- Update to 2010-05-27 of ksh93t+ bug fix version
+  ksh:
+  10-05-24 --- Release ksh93t+  ---
+  10-05-24 Fixed a bug which cause an exception when both -s and -s were
+           specified with typeset -i.
+  10-05-21 Inputting of three dimensional indexed arrays with ( ( (...)...)...) 
+           was not working and has been fixed.
+  10-05-21 A bug in which adding the attributes -Ai to a variable via a name
+           reference could cause the value to display incorrectly has been fixed.
+  10-05-21 A bug in which using $var inside ((...)) did not work when var was
+           a hex float variable.
+  10-05-20 A bug which caused an exception when multiple levels of composite
+           functions in arithemtic expressions has been fixed.
+  10-05-19 <<< with an empty string no longer gives an error.
+  10-05-19 A bug in arithmetic evaluation when a name reference to an array
+           instance was used has been fixed. 
+  10-05-14 A bug in which the shell treats a valid index array assignment,
+           typeset -a x=(foo (x=3;y=4) bar) as a syntax error has been fixed.
+  10-05-13 A bug in creating name references to assocative array variable
+           after a lookup of one of its elements has been fixed.
+  10-05-12 Two bugs in the handling of function static type variables in
+           subshells have been fixed.  One could cause an exception and the
+           other would leave side effects in the parent shell.
+  10-05-10 A bug in which static variables in functions were not being saved and
+           restored properly when running subshells has been fixed.
+  10-05-05 A bug in which print -v did not work correctly when an operand was an
+           indexed array element refering to a compound variable has been fixed.
+  10-05-05 A change to improve performace by special casing empty string
+           assignments to avoid repeated malloc() and free().
+  10-05-05 A bug in which creating a name reference to a non-existant associative
+           array element would create the array element has been fixed.
+  10-05-04 A bug in which name references to static variables in the static
+           scope were not found has been fixed.
+  10-04-30 Do not use socketpair() on systems that implement ioctl(I_PEEK) on pipes.
+  10-04-28 A type defined with a member foo that is an associative array without
+           elements followed by an expansion ${bar.foo[a]} and an assignment
+           bar.foo[a]=b, no longer indicates that ${#bar.foo[@]} has 0 members.
+  10-04-27 Another bug in which a nested command substitution could hang if it
+           generated too much data has been fixed.
+  10-04-26 A type defined with a member that is an indexed array without elements
+           would behave as if the 0th element of each instance was defined after
+           a non-zero element was specified and this has been fixed.
+  10-04-26 A bug in which types defined in a subshell were not undefined when
+           the subshell completed has been fixed.
+  10-04-23 For file completion in commmand line editing, file names starting
+           with # are now escaped so that they are not treated as comments.
+  10-04-23 A bug in which ${t.var:=value}, where t is an instance of a type
+           variable, could assign value to the type variable rather than to
+           the type instance has been fixed.
+  10-04-22 A bug in which a nested command substitution could hang if it
+           generated too much data has been fixed.
+  10-04-20 A bug which corrupted one byte of memory when read was called with
+           reads that did not use a delimiter has been fixed.
+  10-04-19 The display of a compound variable with an embedded array with
+           attributes was sometimes not working correctly and has been fixed.
+  10-04-16 A bug in which attributes were not be propogated to elements in
+           an associative array has been fixed.
+  10-04-15 A bug which caused scripts containing user defined math functions to
+           fail to compile with shcomp has been fixed.
+  10-04-14 A bug in which a coprocess connection could terminate prematurely
+           when running a nested subshell has been fixed.
+  10-04-07 On Darwin on Mac/OS a bug has been fixed which generated an
+           inappropriate error message when continuing a background job.
+  10-04-07 A bug in which setting the trap on CHLD to ignore could cause
+           an incorrect exit status has been fixed.
+  10-04-06 A bug in which LINENO was not incremented for a here-document when
+           the here-document word was followed by a comment has been fixed.
+  10-04-06 The optimization that execs the last process of a script rather
+           than creating a new process has been removed when a trap on
+           interrupt has been set.
+  10-04-06 Unsetting the 'C', 'A' or 'a' typeset attribute now produces an
+           error message rather than generating an exception.
+  10-04-06 A bug in which .sh.name contained the subscript and .sh.subscript
+           was empty in some cases with discipline functions on array instances
+           has been fixed.
+  10-04-05 A bug in the edit modes where preceding the interrupt character with
+           the literal next character did not work has been fixed.
+  10-04-05 A bug in the creation of type instances of arrays which could cause
+           an exception has been fixed.
+  10-03-30 A bug in the display of a compound variable containing an indexed
+           array of compound variables has been fixed.
+  10-03-24 A bug in which integer division was mistakenly used when the
+           numerator was a binary operator with the first operand floating
+           point and the second integer, e.g. (.1**3)/3, has been fixed.
+  10-03-24 The >; file operator was modified so that the temporary file is
+           created in the same physical directory as file.
+  10-03-23 A warning message was added to sh -n when $var was used inside
+           ((...)) instead of var.
+  10-03-19 fmin was added to the list of math function on the man page.
+  10-03-19 Fixed the return value for unalias when the alias did not exist.
+  10-03-19 A bug in which the SHLVL variable exported the value it had on
+           input rather than the incremented value has been fixed.
+  10-03-19 A bug which causes whence -q to go into an infinite loop has been fixed.
+  10-03-19 Removed space between Stopped message and (SIGTTIN) and (SIGTTOUT).
+  10-03-17 Modified profile shell execution so that when builtins that
+           correspond to executable have extended attributes, they are
+           executed by pfksh instead of being treated as built-ins.
+  10-03-16 A bug in whence -a which produced duplicate lines of output has been fixed.
+  10-03-16 A bug in the handling of process groups in monitor mode for
+           command substitutions has been fixed.
+  10-03-12 A bug in which a here-document containing command substitutions
+           that contained here-documents did not process correctly has been fixed.
+  10-03-12 A bug in which the terminal is not restored to cannonical mode
+           after read times out when in a multibyte locale with no edit mode
+           enabled has been fixed.
+  libast:
+  10-05-25 include/sfhdr.h: adjust SF_NMAP according to _ptr_bits
+  10-05-25 include/shcmd.h: add sh_builtin() macro for lib_init() table initialization
+  10-05-21 misc/optget.c: --html \bfoo::bar([[:digit:]][[:upper:]]*) => foo-bar.html
+  10-05-15 include/proc.h,misc/procopen.c: add PROC_ORPHAN
+  10-05-09 misc/optget.c: add --???MAN[section] --???SECTION
+  10-05-07 sfio,stdio: fix all snprintf() variants to handle buf==0 and/or n==0
+  10-05-04 string/fmtesc.c: add mb iswsoace() and iswcntrl() quoting checks
+  10-05-03 fix LC_MESSAGES catalog lookup bugs, check for $set==3, accept $set==1
+  10-04-30 string/chresc.c: add chrexp() for FMT_EXP_*
+  10-04-30 string/stresc.c: add strexp() for FMT_EXP_*
+  10-04-30 string/chresc.c: fix \uXXXXY bug that consumed Y
+  10-04-22 misc/optget.c: check for html entities in <A name="...">
+  10-04-22 misc/getcwd.c: add features/syscall check for SYSGETCWD() { linux solaris }
+  10-04-22 string/stresc.c: wide chars absent locale guidance default to UTF-8
+  10-04-12 port/mnt.c: favor bsd getfsstat() over getmntinfo()
+  10-04-11 string/strtoi.h: k (1000) and ki (1024) now differentiated
+  10-04-10 misc/recstr.c: fix 'd[delimiter]' parse
+  10-04-08 include/vmalloc.h,vmalloc/vmstat.c: add Vmstat_t.mode region mode bits
+  10-04-05 misc/fts.c: drop 1997-01-07 fts_open()=0 is one file and stat() fails
+  10-04-05 misc/optget.c,optlib.h: add Optpass_t.release for --nroff .TH
+  10-04-02 misc/optget.c: fix $'[-n?\n...]' --version bug
+  10-04-02 regex/regcomp.c: ~(X) => REG_EXTENDED|REG_AUGMENTED, ~(PU) instead of ~(U)
+  10-03-24 misc/procopen.c: add PROC_FD_CTTY(fd)
+  10-03-24 path/pathtemp.c: fix pointer => int casts
+  10-03-15 regex/regcache.c: fix 1 byte buffer overflow (didn't count trailing \0)
+  libcmd:
+  10-05-09 tail.c: fix -0f bug that inially listed the entire file
+  10-05-06 basename.c: add { -a,--all -s,--suffux=suffix } from BSD
+  10-04-12 cat.c: fix -v bug that dumped core and make consistent with cmp --print-chars
+  10-04-11 cmp.c: add --print-bytes, --count=n, --differences=n
+  10-04-08 vmstate.c: add { method flags } vars for Vmstat_t.mode
+  10-04-08 mkdir.c: fix check for { S_ISUID S_ISGID S_ISVTX } after successful mkdir(2)
+  10-04-01 stty.c: add --fd=fd option
+  10-03-23 tail.c: fix -f large initial offset bug that didn't copy all data
+  
+-------------------------------------------------------------------
+Mon May  3 14:47:52 CEST 2010 - werner@suse.de
+
+- Add patch from mail list tp avoid deadlock in builtin `whence'
+
+-------------------------------------------------------------------
+Fri Apr  9 10:46:24 CEST 2010 - werner@suse.de
+
+- Add patch from upstream for problem with trap on SIGCHLD (bnc#591248)
+
+-------------------------------------------------------------------
+Mon Mar 15 10:59:42 CET 2010 - werner@suse.de
+
+- Add patch from upstream for minor problem with tty reset
+
+-------------------------------------------------------------------
+Wed Mar 10 12:34:45 CET 2010 - werner@suse.de
+
+- Use a wrapper to execute the ksh test suite without ignoring the
+  signals SIGPIPE and SIGQUIT
+- Update to 2010-03-09 of ksh93t+ for bug fix version
+
+  ksh:
+  10-03-05  --- Release ksh93t+  ---
+  10-03-05 A varibale unset memory leak has been fixed and tests/leaks.sh
+           has been added to verify the fix.
+  10-03-04 Documentation, comment, and disgnostic spelling typos corrected.
+   
+  libast:
+  10-03-08 features/tvlib: fix utimensat probe to include all macros/structs
+  10-03-07 features/lib: change stream_peek to test pipes only
+  10-03-07 string/strelapsed.c: fix next char return overrun
+  10-03-06 tm/tvtouch.c: use runtime fallback if utimensat() fails with ENOSYS
+  10-03-05 path/pathtemp.c: add pfx /seed for regression testing
+  10-03-04 vmalloc/vmwalk.c: add user supplied handle arg
+  10-03-04 path/pathtemp.c: properly handle mktemp()-style *+(X) templates
+  10-03-03 include/ast_getopt.h: remove NULL guard - _AST_GETOPT_H now handles it
+   
+  libcmd:
+  10-03-07 tail.c: sfsync(sfstdout) after all -f done, fix -f partial line
+  10-03-05 mktemp.c: add --regress=seed for testing
+  10-03-05 vmstate.c: add
+
+-------------------------------------------------------------------
+Mon Mar  8 15:10:07 CET 2010 - werner@suse.de
+
+- Make it build for SLES10 and SLES9
+- Check if the shell used for build ignores SIGPIPE
+
+-------------------------------------------------------------------
+Fri Mar  5 20:07:06 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- Add forgotten preun scriptlet for update-alternatives
+- Fixed typo
+
+-------------------------------------------------------------------
+Fri Mar  5 14:38:39 CET 2010 - werner@suse.de
+
+- Submit ksh93t+ from 2010-03-01 which fixes bnc#502622, bnc#523212,
+  bnc#548588, bnc#555938, bnc#561405, bnc#564967, and bnc#585244
+- Add bugfix from David Korn to close memleak again
+
+-------------------------------------------------------------------
+Wed Mar  3 14:25:52 CET 2010 - werner@suse.de
+
+- Update to 2010-03-01 of ksh93t+ for final version
+
+  ksh:
+  10-02-14 Fix sh_getenv() initialization to cooperate with the 3d fs.
+  10-02-12 A bug in which the get discipline function was not invoked for
+           associative array subscripts for unset array elements has been fixed.
+  10-02-12 A bug which could occur if the last line of a script was an eval
+           that executed multiple commands has been fixed.
+  10-02-02 A buffer overflow in read and another in binary type base64
+           encoding were fixed.
+  10-01-20 A bug in the evaluation of arithmetic expression in which the
+           subscript was evaluated twice for $((foo[x++]++)) has been fixed.
+  10-01-19 A workaround for a double-free of a trap in both a subshell and its
+           parent has been added.
+  10-01-18 A bug in type handling of typeset -H has been fixed.
+  10-01-15 The "adding empty subscript" warning now only emitted with -x set.
+  10-01-01 A bug in the parser in which '$((case i in i):;esac);:))' was not
+           parsed correctly was fixed.
+  10-01-01 A bug in the parser in which '$(( 2 , 3.6 ))' dumped core for locales
+           with radix char , and thousands separator . has been fixed.
+  09-12-28 A bug in the handling of SIGCLD on systems that generated SIGCLD
+           while blocked waiting for process to complete has been fixed.
+  09-12-24 ast setlocale() reworked to differentiate env var changes from user
+           override.
+
+  libast:
+  10-02-24 comp/getopt.h: fix ast_std.h interactions
+  10-02-24 vmalloc/malloc.c: empty { VMALLOC_OPTION VMDEBUG ... } => no debug!
+  10-02-02 string/base64.c: fix corner case output buffer overflow
+  10-02-01 misc/optget.c: uppercase --html heading -- doh
+  10-01-29 misc/optget.c: [+NAME?...] overrides error_info.id for >= STYLE_man
+  10-01-25 vmalloc/vmprivate.c: fix seg ptr initialization bug (24 years old!!)
+  10-01-20 misc/optget.c: handle nested {...} rendering
+  10-01-20 misc/state.c: add ast.version for runtime api version
+  10-01-20 port/astconf.c: "_AST_VERSION" now returns ast.version
+  10-01-20 include/ast_std.h: add ast.version for runtime api version
+  10-01-01 vmalloc: VMALLOC_OPTIONS env var for all runtime options
+  10-01-01 include: change some <ast.h> refs to less intrusive <ast_*.h>
+  10-01-01 setlocale.c,translate.c,fmterror.c: AST_LC_internal retains prev state
+  10-01-01 comp/setlocale.c: AST_LC_setenv defers to LC_ALL (for sh)
+  10-01-01 ast_std.h: add { AST_LC_internal AST_LC_setenv }
+  09-12-24 comp/setlocale.c: fix setlocale(LC_ALL,"") when already initialized
+
+  libcmd:
+  10-01-26 tail.c: -f sleep(1) only if no progress from last round of checks
+  10-01-20 fts_fix.[ch]: use <fts_fix.h> instead of <fts.h> (see fts_fix.c)
+  10-01-20 cp.c: free(state) if called from old shell
+
+-------------------------------------------------------------------
+Mon Mar  1 23:13:55 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- install /bin/ksh93 and /usr/bin/ksh93 symlinks
+- use update-alternatives
+
+-------------------------------------------------------------------
+Mon Dec 21 14:20:21 CET 2009 - werner@suse.de
+
+- Update to 2009-12-18 beta test of ksh93t+ for bug fixes
+
+  09-12-18  A bug with the SHOPT_BGX option set which disabled traps for signals
+            < SIGCHLD when a trap for a signal > SIGCHLD was set has been fixed.
+  09-12-18  A bug where [[ -v var ]] was incorrect for some variables (including
+            LC_* vars) has been fixed.
+  09-12-15  A bug that produced a syntax error when a multibyte character
+            straddled a buffer boundary has been fixed.
+  09-12-11  A bug where the subscript of an unset variable was not evaluated has
+            been fixed.
+  09-12-09  A bug where shcomp dumped core on certain syntax errors has been fixed.
+  09-12-07  A bug where a parent shell environment var reset in a subshell removed
+            the value in subsequent children of the parent shell has been fixed.
+
+-------------------------------------------------------------------
+Wed Dec  9 18:01:09 CET 2009 - werner@suse.de
+
+- Update to 2009-12-06 beta test of ksh93t+ for bug fixes
+
+  09-12-04  A bug in which in some cases a trap in a function executed in
+            a subshell could trigger twice has been fixed.
+  09-12-03  A bug in which SHLVL exported with some attributes could cause
+            the shell to abort at startup has been fixed.
+  09-12-02  A bug with pipefail in which the shell could hang waiting for the
+            writer to complete before the last reader command has been fixed.
+
+-------------------------------------------------------------------
+Wed Dec  3 10:54:02 CET 2009 - werner@suse.de
+
+- Update to 2009-11-30 beta test of ksh93t+ for bug fixes
+
+  09-11-30  A bug in which a trap could be inherited by the first element of
+            a pipeline when the command had more than 63 arguments that did
+            not contain any macro expansions has been fixed.
+  09-11-19  When read from a terminal was called from with a while or foo loop,
+            and an edit mode was on, a backspace or erase no longer will
+            overwrite the prompt.
+  09-11-17  Change .paths parse to handle BUILTIN_LIB=foo BUILTIN_LIB=foo-1.2.
+  09-11-17  Inside a function, typeset foo.bar will bind foo to global variable
+            foo if local variable foo does not exist, instead of creating a 
+            local variable.
+  09-11-17  "read -n1" from the terminal has been fixed to read exactly one character.
+  09-11-11  Job control now works for subshell commands, (...).
+  09-11-11  If set -e is on for an interractive shell errors in special builtins
+            now cause the shell to exit.
+  09-11-11  A bug in which an interrupt handler processed during the read builtin
+            when IFS did not contain a new line has been fixed.
+  09-11-09  A bug in which a variable that has been unset in a subshell and then
+            exported from that subshell does not show up in the environment
+            has been fixed.
+  09-11-02  ",2" is now a valid numeric constant for locales with
+            decimal_point=','.
+  09-11-02  A bug where "return" in .profile did not restore the shell state
+            has been fixed.
+  09-10-31  A bug that corrupted saved exit status when pids wrapped around has
+            been fixed.
+  09-10-26  A bug in { LANG LC_ALL LC_category } ordering has been fixed in -last.
+
+-------------------------------------------------------------------
+Fri Oct 30 16:23:36 CET 2009 - werner@suse.de
+
+- Update to 2009-10-21 beta test of ksh93t+ for bug fixes
+
+  09-10-16  A bug where notification to libast that the environment has changed
+            has been fixed.
+  09-10-12  A bug in which a function loaded in a subshell could leave side
+            effects in the parent shell has been fixed.
+  09-10-12  A bug in converting a printf %d operand to a number when the operand
+            contains multiple subscripts for the same variable has been fixed.
+  09-10-09  A bug in the handling of the escape character \ in directory prefixes
+            in command completion has been fixed.
+  09-10-09  $PATH processing has been changed to delay dir stat() and .paths
+            lookup until the directory is needed in the path search.
+  09-09-28  Call the ast setlocale() intercept on unset too.
+  09-09-24  A bug in which LANG=foo; LC_ALL=foo; unset LC_ALL; did not revert
+            LC_CTYPE etc. to the LANG value has been fixed.
+  09-09-17  A bug in which unsetting SVLVL could cause a script invoked by
+            name without #! to core dump has been fixed.
+  09-09-16  A bug in which a pipeline in a here-document could hang when the
+            pipefail option was on has been fixed. 
+  09-09-09  A bug in the processing of line joining in here documents which
+            occurred when a buffer began with <escape><new-line> has been fixed.
+  09-09-09  A leading ; with commands in a brace group or parenthesis group
+            no longer causes an error.  It now is used for the "showme" option.
+  09-09-09  A bug in which a subshell containing a background process could
+            block until the background process completed has been fixed.
+  09-09-04  A bug in handing ${var[sub]}, where var is a nameref has been fixed.
+  09-09-03  A bug which caused an index array to have the wrong number of elements
+            when it was converted from a compound variable by adding an another
+            element has been fixed.
+  09-09-03  Specifying export for a compound variable now generates an error.
+  09-09-02  $"..." localizations strings are no longer recognized inside `...`.
+  09-09-01  A bug in the for loop optimizer in the handling of type static
+            variables has been fixed.
+  09-09-01  An error message is not displayed when * and @ are used as subscripts.
+  09-09-01  Several bugs in the processing for types that included an associative
+            array of another type has been fixed.
+  09-09-01  A bug in the tracing of [[ a < b ]] and [[ a > b ]] has been fixed.
+  09-08-26  The .sh.file variable was not being set for a script that was run
+            by name and didn't start with #! and this has been fixed.
+  09-08-25  A bug in which a function called to deeply from command substitution
+            did not display an error message has been fixed.
+  09-08-24  When processing profiles, ksh93 now violates the POSIX standard and
+            treats &> as a redirection operator similar to bash.
+  09-08-23  A bug in the handling of the trap on SIGPIPE that could lead to a
+            memory fault has been fixed.
+  09-08-21  A bug in the handling of the comma operator in arithmetic expressions
+            that could cause a core dump on some systems has been fixed.
+  09-08-20  A bug in which a compound variable containing an array of a type
+            that doesn't have any elements now expands correctly.
+  09-08-19  A bug which disabled function tracing inside a function after
+            a call to another function has been fixed.
+  09-08-19  A bug in which initializing a compound variable instance to another
+            compound variable by name has been fixed.
+  09-08-18  A bug in which compound variable instances could be lost after
+            an instance that invoked a type method discipline has been fixed.
+  09-08-18  A bug in which a discipline function for a type applied to an
+            array instance when invoked in a function ignored the subscript
+            has been fixed.
+  09-08-18  A scoping error with variables in arithmetic expression with
+            type variables when reference with a name reference has been fixed.
+  09-08-10  Several memory leaks were fixed primarily related to subshells.
+  09-08-06  A bug in which setting the trap on CHLD to ignore could cause
+            a script to hang has been fixed. 
+  09-07-08  A bug in the processing of name reference assignments when it
+            contained pattern expansions with quoting has been fixed.
+
+-------------------------------------------------------------------
+Wed Aug 26 14:03:10 CEST 2009 - werner@suse.de
+
+- Add patch to avoid crash within pipes
+
+-------------------------------------------------------------------
+Tue Aug 11 11:39:45 CEST 2009 - werner@suse.de
+
+- Add three patches from David Korn for bug bnc#520598
+- Use mapping of libast virtual memory management (bnc#523212)
+
+-------------------------------------------------------------------
+Tue Aug  4 14:37:37 CEST 2009 - werner@suse.de
+
+- Work around three memory leaks (bnc#520598)
+- Use workaround for bug in s390 for all architecture where named
+  pipes aka fifos are in blocking mode which cause read failures
+  in some sort of shell code test cases
+- Update to 2009-06-30 beta test of ksh93t+ for bug fixes
+
+  09-06-22  The default width for typeset -X has been changed so that there
+            should be no loss of precision when converting to a string.
+  09-06-19  A bug in the printing of array elements for binary variables with
+            printf %B has been fixed.
+  09-06-19  A bug which caused a core dump with trap DEBUG set with an array
+            assignment with no elements has been fixed.
+  09-06-19  A bug with read with typeset -b -Z<num> has been fixed.
+  09-06-19  Two bugs related to read -b for array variables has been fixed.
+  09-06-19  A bug with typeset for compound variables containing arrays of
+            compound variables has been fixed.
+  09-06-18  A bug in appending a compound variable to a an indexed array of
+            compound variables has been fixed.
+  09-06-18  A bug which occurs when appending a compound variable to an indexed
+            array element has been fixed.
+  09-06-17  A bug in typeset -m when moving a local compound variable to a
+            global compound variable via a name reference has been fixed.
+  09-06-17  A bug in appending to nodes of an array of compound variables when
+            addressing them via nameref has been fixed.
+  09-06-17  A bug in typeset -p var, when var is an array of compound variables
+            in which the output only contained on array element has been fixed.
+  09-06-17  The prefix expansion ${!y.@} now works when y is a name
+            reference to an element of an array.
+  09-06-12  A bug in vi edit mode in which hitting the up arrow key at the
+            end of a line longer than 40 characters which caused a core dump
+            has been fixed. 
+  09-06-11  A bug in which "eval non-builtin &" would create two processes,
+            one for the & and another for non-builtin has been fixed.
+  09-06-08  When var is an identifier and is unset, ${var} no longer tries to
+            run command substitution on the command var.
+  09-06-08  Process substitution arguments of the form <(command) can now be
+            used following the < redirection operator to redirect from command.
+  09-05-13  A bug in which redirections of the form 2>&1 1>&5 inside command
+            substitution could cause the command substitution to hang has been
+            fixed.
+  09-05-12  To conform with POSIX, the -u option only checks for unset variables
+            and subscript elements rather than checking for all parameters.
+  09-05-12  A bug which could cause a core dump when a variable whose name
+            begins with a . was referenced as part of a name reference inside
+            a function has been fixed.
+  09-05-01  A bug that caused a core dump when SIGWINCH was received and
+            both vi and emacs mode were off has been fixed.
+  09-04-22  Default alias compound='typeset -C' added.
+  09-04-15  A bug that caused ${...;} to hang for large files has ben fixed.
+  09-04-08  A change was made in the -n option which printed out an incorrect
+            warning with <>.
+  09-04-05  A bug in handling new-lines with read -n has been fixed.
+  09-03-31  A bug in which a nested command substitution with redirections could
+            leave a file descriptor open has been fixed.
+  09-03-17  The sleep(1) builtin now accept and ISO 8601 PnYnMnDTnHnMnS
+            duration or date(1) compatible date/time operand.
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Mon May 25 15:00:58 CEST 2009 - werner@suse.de
+
+- Assigning to SECONDS in a subshell causes crash (bnc#502622)
+
+-------------------------------------------------------------------
+Mon Feb 16 11:11:27 CET 2009 - werner@suse.de
+
+- Update to 2009-03-10 beta test of ksh93t+ for bug fixes
+
+  09-03-10  If a variable that was left or right justified or zero-filled was
+            changed with a typeset statement that was left or right justified
+            or zero-filled, then the original justification no longer affects
+            the result.
+  09-03-10  A bug in the handling of traps when the last command in a script
+            is a subshell grouping command has been fixed.
+  09-03-03  A bug in which an expansion of the form ${!prefix@} could generate
+            an exception after the return from a function has been fixed.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:11:27 CET 2009 - werner@suse.de
+
+- Update to 2009-02-02 beta test of ksh93t+ for bug fixes (bnc#472889):
+
+  09-02-02  A bug in restricted mode in which the value of ENV could be
+            changed from within a function has been fixed.
+  09-02-02  A bug in which an erroneous message indicating that a process
+            terminated with a coredump has been fixed.
+  09-02-02  The exit status when exit was called without an argument from
+            a signal handler was incorrect and has been fixed.
+  09-02-02  A bug in which a function autoloaded in a subshell could cause
+            a core dump when the subshell completed has been fixed.
+  09-02-02  A bug in which 2>&1 inside a command substitution wasn't working
+            correctly has been fixed.
+  09-02-02  A bug in the call stack of arithmetic function with 2 args
+            returning int has been fixed.
+  09-01-30  A bug in which 'eval print \$0' inside a function was giving the
+            wrong value for $0 has been fixed.
+  09-01-28  A bug in which a command substitution could return an exit status
+            of 127 when the pipefail option is enabled has been fixed.
+
+-------------------------------------------------------------------
+Tue Feb 10 18:57:26 CET 2009 - werner@suse.de
+
+- Update to 2009-01-20 beta test of ksh93t+ for bug fixes (bnc#472889):
+
+  09-01-20 A bug in which the exit status specified in an exit trap was
+           not used when a process terminated with a signal has been fixed.
+  09-01-19 A bug in which a signal whose default action is to terminate
+           a process could be ingored when the process is running a sub-shell
+           has been fixed.
+  09-01-19 A bug in which sending SIGWINCH to a process that reads from a pipe
+           could cause a memory fault has been fixed.
+  09-01-13 A bug in which background jobs and pipelines that were not waited
+           for could, in rare instantes, cause the shell to go into an infinite
+           loop or fail has been fixed.
+  09-01-06 A bug in indexed arrays of compound variables in which referencing
+           non-existant sub-variable in an arithmetic expression could cause
+           the sub-variable to be created has been fixed.
+  09-01-05 A bug in which the \ character did not escape extened regular
+           expression pattern characters has been fixed.
+  08-12-24 A bug in which killing the last element of a pipe did not cause
+           a write to the pipe to generate a SIGPIPE has been fixed.
+  08-12-19 A bug which could cause command substitution to hang when the
+           last element of a pipeline in a command substitution was a built-in
+           and the output was more that PIPE_BUFF.
+  08-12-18 A bug which occurs when a here documented marker embedded in a
+           command substitution occurs on a buffer boundary has been fixed.
+  08-12-17 A bug in the output of typeset -p for variables that had attributes
+           but did not have a value has been fixed.
+  08-12-16 A bug in which a name reference to a name reference variable that
+           references an array element has been fixed.
+  08-12-16 A bug in which a variable given both the -A and -C attribute along
+           with an initial assignment didn't work correctly has been fixed.
+
+- Initialize flag variable for job handling
+
+-------------------------------------------------------------------
+Wed Dec 17 15:16:32 CET 2008 - werner@suse.de
+
+- Add workaround for bug in s390 architecture where named pipes aka
+  fifos are in blocking mode which cause read failures in some sort
+  of shell code test cases
+
+-------------------------------------------------------------------
+Wed Dec 17 13:25:33 CET 2008 - werner@suse.de
+
+- Add workaround for bug in glibc with signbit() macro that is that
+  the inlined part for long doubles does not work on IA64
+
+-------------------------------------------------------------------
+Mon Dec 15 11:25:24 CET 2008 - werner@suse.de
+
+- Switch to 2008-12-12 beta test of ksh93t+ for bug fixes:
+
+  08-12-10  The [[ -t fd ]] test was fixed to handle fd>9.
+  08-12-10  A bug where function stack misalignment could cause a
+            bus error has been fixed.
+  08-12-07  A bug in typeset -m which occured when the target node
+            was an associative array element has been fixed.
+  08-12-04  The sign of floating point zero is preserved across
+            arithmetic function calls.
+  08-12-04  A bug that caused print(1) to produce garbled
+            stdout/stderr output has been fixed.
+  08-12-04  A bug in which printf "%d\n" "'<euro>'" did not output
+            the numerical value of the EURO symbol has been fixed.
+  08-11-20  A bug which could cause a core dump if a function
+            compiled with shcomp was found has been fixed.
+  08-11-20  A bug in which jobs were not cleared from the jobs table
+            for interactive shells when the pipefail option is on
+            has been fixed.
+  08-11-11  A bug in which running a simple command & inside a
+            function would not return the correct process id has
+            been fixed.
+  08-11-06  A bug which could cause a core dump when the _ reference
+            variable was used as an embedded type with a compound
+            assignment has been fixed.
+
+-------------------------------------------------------------------
+Fri Nov  4 11:06:16 CET 2008 - werner@suse.de
+
+- Switch to 2008-11-04 of ksh93t for a minor and minimal fix within
+  the shell syntax parser.
+
+-------------------------------------------------------------------
+Fri Oct 31 11:07:06 CET 2008 - werner@suse.de
+
+- Switch to 2008-10-31 beta test of ksh93t to fix core dump
+  in scoping/initialization of variables and arrays.
+
+-------------------------------------------------------------------
+Tue Oct 14 12:19:38 CEST 2008 - werner@suse.de
+
+- Switch to 2008-10-10 beta test of ksh93t to fix multibyte handle
+  in the read builtin and fix a bug in array type handle.
+
+-------------------------------------------------------------------
+Mon Oct 13 13:57:27 CEST 2008 - werner@suse.de
+
+- Switch to 2008-10-09 beta test of ksh93t to fix a hang caused by
+  a subshell command substitution with redirection and a crash in
+  typeset with types that contain arrays of other types a members
+
+-------------------------------------------------------------------
+Thu Oct  9 15:08:12 CEST 2008 - werner@suse.de
+
+- Switch to 2008-10-01 beta test of ksh93t to fix several crashes
+- Do not install locale data as this do not work (bnc#433739)
+
+-------------------------------------------------------------------
+Mon Sep 22 11:52:33 CEST 2008 - werner@suse.de
+
+- Switch to 2008-09-21 beta test of ksh93t as this fix a crash
+- Change manual page: ksh uses socketpair(2) for pipes (bnc#422675)
+
+-------------------------------------------------------------------
+Fri Sep 19 16:02:05 CEST 2008 - werner@suse.de
+
+- Switch to 2008-09-17 beta test of ksh93t as this fix a crash
+- Install the shell functions pushd, popd, and dirs
+- Set FPATH accordingly to last change
+
+-------------------------------------------------------------------
+Fri Sep 12 15:45:45 CEST 2008 - werner@suse.de
+
+- Add compiler flags -fno-delete-null-pointer-checks and -fno-tree-vrp
+  to avoid miss-compile at least of strdup(ast3) maybe caused by a
+  missing volatile modifier
+- Update to release 2008-07-25 of ksh93t
+  Changes in ksh
+  08-07-09  The typeset -C option can be used with arrays to indicate that
+            each element should default to a compound variable.
+  08-07-08  The %B format now outputs compound variables and arrays.  The
+            alternate flag # can be used to cause output into a single line.
+  08-06-23  KSH_VERSION added as a name reference to .sh.version.
+  08-06-20  type now outputs 'special builtin' for special builtins.
+  08-06-16  When typeset -p is followed by variable names, it now displays
+            the attributes names and values for the specific names.
+  08-06-13  The .sh.lineno variable has been added.  When .sh.level is changed
+            inside a DEBUG trap, the .sh.lineno contains the calling line number
+            for the specified stack frame.
+  08-06-13  The .sh.level variable has been documented and now works.
+  08-06-11  The -C option has been added to read for reading compound command
+            definitions from a file.
+  08-06-11  The . command is now permitted inside a compound command definition.
+            The dot script can contain declaration commands and dot commands.
+  08-06-09  Add -C option to typeset so that typeset -C foo, is equivalent
+            to foo=().
+  08-06-09  Added -n warning message for typeset option orderings that are valid
+            with ksh88 but not valid with ksh93, for example Lx5.
+  08-06-02  When defining a type, the typeset -r attribute causes this field
+            to be required to be specified for each instance of the type and
+            does not allow a default value.
+  08-05-22  The ceil function has been added to the math functions.
+  08-05-19  The array expansions ${array[sub1..sub2]} and ${!array[sub1..sub2]}
+            to expand to the value (or subscripts) for array between sub1 and
+            sub2 inclusive.  For associative arrays, the range is based on
+            location in the POSIX locale.  The .. must be explicit and cannot
+            result from an expansion.
+  08-05-15  The trap on SIGCLD is no longer triggered by the completion of
+            the foreground job as with ksh88.
+  08-05-12  The unset built-in now returns non-zero when deleting an array
+            subscript that is not set.
+  08-05-08  Changing the value of HISTFILE or HISTSIZE will cause the old
+            history file to be close and reopened with the new name or size.
+  08-05-08  When FPATH is changed functions that were found via a path search
+            will be searched for again.
+  08-05-07  The typeset -S option was added for variables outside type
+            definitions to provide a storage class similar to C static
+            inside a function defined with function name.
+  08-05-01  In multiline edit mode, the refresh operation will now clear
+            the remaining portion of the last line.
+  08-04-30  The emacs and vi editors have been modified to handle window
+            change commands as soon as they happen rather than waiting for
+            the next command.
+  08-04-04  Choose the name _ as the sub-variable that holds type or instance
+            specific data used by discipline functions.
+  08-03-20  Associative array assignments of the form ([name]=value ...)
+            now allow ; as well as space tab and new line to separate elements.
+  08-03-17  --default option added to set(1) to handle set +o POSIX semantics.
+            set --state added as a long name alias for set +o.
+  08-03-10  The new ${...} command substitution will treat the trailing }
+            as a reserved word even if it is not at the beginning of a command,
+            for example, ${ date }.
+  08-03-10  If the name of the ENV begins with /./ or ././ then the
+            /etc/ksh.kshrc file will not be executed on systems that support
+            this interactive initialization file.
+  08-02-29  The redirection operator >; has been added which for non-special
+            files, generates the output in a temporary file and writes the
+            specified file only of the command has completed successfully.
+  08-02-14  The typeset -a option can now optionally be followed by the name
+            of an enumerication type which allows subscripts to be enumerations.
+  08-02-14  The enum builtin which creates enumeration types has been added.
+  08-02-12  The backoff logic when there are no more processes has been fixed.
+  08-02-07  The -X option has been added to typeset.  The -X option creates
+            a double precision number that gets displayed using the C99 %a
+            format.  It can be used along with -l for long double.
+  08-01-31  The -T option to typeset has been added for creating typed
+            variables.  Also the -h and -S options have been added to
+            typeset that are only applicable when defining a type.
+  08-01-31  The prefix expansion operator @ has been added.  ${@name}
+            expandes to the type of name or yields the attributes.
+  07-09-19  In both emacs and vi edit mode, the escape sequence \E[A (usually
+            cursor up, when the cursor is at the end of the line will fetch
+            the most recent line starting with the current line.
+  07-09-18  The value of ${!var} was correct when var was a reference to an
+            array instance.
+  07-09-18  The value of ${!var[sub]} was not expanding to var[sub] and this
+            was fixed.  It also fixed ${name} where name is a name reference
+            to var[sub].
+  07-09-18  It is now legal to create a name reference without an initialization.
+            It will be bound to a variable on the first assignment.
+  07-08-30  A discipline function can be invoked as ${x.foo} and is equivalent
+            to ${ x.foo;} and can be invoked as x.foo inside ((...)).
+  07-07-03  The command substitution ${ command;} has been added.  It behaves
+            like $(command) except that command is executed in the current
+            shell environment.  The ${ must be followed by a blank or an
+            operator.
+
+-------------------------------------------------------------------
+Mon May  5 13:23:13 CEST 2008 - werner@suse.de
+
+- Fix patch for option handling of echo builtin (bnc#385986)
+
+-------------------------------------------------------------------
+Tue Mar 25 12:22:48 CET 2008 - werner@suse.de
+
+- Add missing link to file list
+
+-------------------------------------------------------------------
+Mon Mar 17 14:30:03 CET 2008 - werner@suse.de
+
+- Work around a bug in former postun script
+
+-------------------------------------------------------------------
+Thu Feb 14 13:04:13 CET 2008 - werner@suse.de
+
+- Add locale for ksh and libraries in ast format
+- Update to official bugfix release 2008-02-02 of ksh93s+
+  *  A bug in which command substitution inside ((...)) could cause
+     syntax errors or lead to core dumps has been fixed.
+  *  A bug in which discipline functions could be deleted when invoked
+     from a subshell has been fixed.
+  *  A bug in which a command substitution consisting only of
+     assignments was treated as a noop has been fixed.
+  *  A bug in which discipline functions invoked from withing a
+     compound assignment could fail has been fixed.
+  *  Incomplete arithmetic assigments, for example ((x += )), now
+     generate an error message.
+  *  A bug in which a set discipline defined for a variable before
+     an array assignment could cause a core dump has been fixed. 
+  *  A bug in on some systems in which exit status 0 is incorrectly
+     returned by a process that catches the SIGCONT signal is stopped 
+     and then continued.
+  *  libast: string/strmatch.c: fix str="" pat="" sub values
+  *  libast: comp/conf.sh,conf.tab: handle /bin/sh \ in read data, redir subshell
+  *  libast: misc/magic.tab: amd-x68, 64-bit => x86-64
+  *  libast: string/strnton.c,strntonll.c: add
+  *  libcmd: expr.c: fix <=0 type that broke substr * 1 *
+
+-------------------------------------------------------------------
+Sun Jan 27 21:33:50 CET 2008 - coolo@suse.de
+
+- fix changelog
+
+-------------------------------------------------------------------
+Tue Jan  8 16:14:39 CET 2008 - werner@suse.de
+
+- Update to private bugfix release 2008-01-06 ksh93s+
+   *  A bug in on some systems in which exit status 0 is incorrectly
+      returned by a process that catches the SIGCONT signal is stopped 
+      and then continued.
+
+-------------------------------------------------------------------
+Fri Dec 21 14:05:34 CET 2007 - werner@suse.de
+
+- Update to private bugfix release 2007-12-15 of ksh93s+
+   *  A race condition in which a program that has been stopped and then
+      continued could loose the exit status has been fixed.
+   *  Code to check for file system out of space write errors for all
+      writes has been added.
+   *  A bug in the macro expander for multibyte characters in which
+      part of the character contains a file pattern byte has been fixed. 
+   *  A bug in the emacs edit mode when multiline was set that output
+      a backspace before the newline to the screen has been fixed.
+   *  A bug in which using <n>TAB after a variable name listing expansion
+      in the edit modes would cause the $ to disappear has been fixed.
+   *  A bug in which setting IFS to readonly could cause a subsequent
+      command substitution to fail has been fixed.
+   *  A work around for a gcc 4.* C99 "feature" that could cause a job
+      control shell to go into an infinite loop by adding the volatile
+      attribute to some auto vars in functions that call setjmp().
+   *  A bug in which the shell could read ahead on a pipe causing the
+      standard input to be incorrectly positioned has been fixed.
+   *  A bug in which compound variable UTF-8 multibyte values were not
+      expanded or traced properly has been fixed.
+   *  A bug where an unbalanced '[' in a command argument was not treated
+      properly has been fixed.
+   *  A bug in which compatibility mode (no long option names) getopts(1)
+      incorrectly set the value of OPTARG for flag options has been fixed.
+   *  A bug in which "hash -- name" treated "--" as an invalid name operand
+      has been fixed.
+   *  typeset now handles "-t -- [-r] [--]" for s5r4 hash(1) compatibility.
+   *  A bug in which the umask builtin mis-handled symbolic mode operands
+      has been fixed.
+   *  Bugs in which shell arithmetic and the printf builtin mis-handled the
+      signs of { -NaN -Inf -0.0 } have been fixed.
+   *  The full { SIGRTMIN SIGRTMIN+1 ... SIGRTMAX-1 SIGRTMAX } range
+      of signals, determined at runtime, are now supported.
+   *  A bug in which creating an index array with only subscript 0 created
+      only a simple variable has been fixed.
+   *  A bug in which appending to an indexed array using the form
+      name+=([sub]=value) could cause the array to become an associative
+      array has been fixed.
+   *  A bug in which typeset without arguments could coredump if a
+      variable is declared as in indexed array and  has no elements has
+      been fixed.
+   *  A bug in which creating a local SECONDS variable with typeset in
+      a function could corrupt memory has been fixed.
+   *  A bug which could cause a core dump when a script invoked by name
+      from a function used compound variables has been fixed.
+   *  A bug in which printf %d "'AB" did not diagnose unconverted
+      characters has been fixed.
+   *  printf %g "'A" support added for all floating point formats.
+   *  A bug in which typeset -f fun did not display the function
+      definition when invoked in a subshell has been fixed.
+   *  The sleep builtin was fixed so that all floating point
+      constants are valid operands.
+   *  A bug in which the locale was not being restored after
+      LANG=value command has been fixed.
+   *  A bug in which a nameref to a compound variable that was
+      local to the calling function would not expand correctly
+      when displaying is value has been fixed.
+   *  A bug which cause cause a core dump if .sh.edchar returned
+      80 characters or more from a keyboard trap has been fixed.
+   *  A bug in which could cause a core dump when more than 8 file
+      descriptors were in use has been fixed.
+   *  A bug in which creating a name reference to an instance of an
+      array when the array name is itself a reference has been fixed.
+   *  The file completion code has been modified so that after an
+      `=' in any word, each : will be considered a path delimiter.
+   *  A bug in which subprocess cleanup could corrupt the malloc()
+      heap has been fixed.
+   *  A bug in which a name reference to an associatve array
+      instance could cause the subscript to be evaluated as an
+      arithmetic expression has been fixed.
+   *  A bug in which the value of an array instance was of a
+      compound variable was not expanded correctly has been fixed.
+   *  A bug which could cause a core dump when a compound assignment
+      was made to a compound variable element with a typeset -a
+      attribute has been fixed.
+   *  A bug in which a trap ignored in a subshell caused it to be
+      ignored by the parent has been fixed.
+   *  A bug in which the set command would generated erroneous
+      output for a variable with the -RZ attribute if the variable
+      name had been passed to a function has been fixed.
+   *  A bug in which read x[1] could core dump has been fixed.
+   *  A second bug in which after read x[sub] into an associative
+      array of an element that hasn't been assigned could lead to
+      a core dump has been fixed.
+   *  A bug in which a pipeline that completed correctly could have
+      an exit status of 127 when pipefail was enabled has been fixed.
+   *  The SHOPT_AUDIT compile option has been added for keyboard
+      logging.
+   *  libast: string/strelapsed.c: "0" is a valid elapsed time!
+   *  libast: sfio/sfreserve.c: preserve SF_SHARE sfrd() via sfreserve(f,0,0)
+   *  libast: comp/setlocale.c: add sjis_mbtowc() to work around [\~] translation
+   *  libast: features/signal.c: RT(1) .. RT(MAX-1) => RTMIN+1 .. RTMAX-1
+   *  libast: features/float: favor sscanf() due to gnu strto[l]d() nan bugs
+   *  libast: regex/regcomp.c: fix REX_COLL_CLASS node allocation
+      size
+   *  libast: sfio/sfcvt.c: use signbit() if available
+   *  libast: features/isoc99: _ISOC99_SOURCE tests
+   *  libast: port/astmath.c: add -DN=8 for signbit()
+   *  libast: sfio/sfstrtod.h: don't forget about -0.0
+   *  libast: features/map.c: add { optopt optarg optind opterr }
+   *  libast: features/stdio: add _filbuf => _ast__filbuf
+   *  libast: comp/getsubopt.c: fix #undef that interfered with
+      <ast_map.h>
+   *  libast: regex/regcomp.c: fix bug that missed ')' in ~(F)...
+   *  libast: port/astconf.c: fix CONF_ALLOC 16 bit overflow
+   *  libast: misc/fts.c: fix fts_close() to free the handle
+   *  libast: comp/setlocale.c: second and subsequent
+      setlocale(*,"") reverts to previous
+   *  libast: path/pathprobe.c: add vfs ST_NOSUID check
+   *  libast: comp/conf.tab: add a few more xpg6 deferrals
+   *  libast: astsa: update to share with mainline src via
+      _PACKAGE_astsa
+   *  libast: sfio/sfgetr.c: no limit on string stream line size
+   *  libast: sfio/sfextern.c: increase _Sfmaxr to 256*1024
+   *  libast: misc/procopen.c: tighten up SIGCHLD logic between
+      parent/child
+   *  libast: misc/signal.c: unblock SIG_DFL after setting handler,
+      sig<0 => don't unblock
+   *  libast: misc/fs3d.c: no $LD_PRELOAD => no 3d and avoids
+      invalid mount(2) call
+   *  libast: vmalloc: vmstat(0,0)==1 => region in use, drop
+      VM_primary|VM_secondary
+   *  libast: misc/recstr.c: handle [lL] gobbled by strtol()
+   *  libast: path/pathprobe.c: handle '\r' in VERSION string
+   *  libast: regex/regcache.c: regcache(0,n,0) extends cache to
+      size n (no shrinking)
+   *  libast: tm/tmdata.c: add 2005-12-31, drop 1999-12-31
+   *  libcmd: cp.c: fix builtin state reinitialization
+   *  libcmd: rev.c: honor multibyte locales
+   *  libcmd: cp.c: open non-existent destination with O_EXCL
+   *  libcmd: stty.c: add -t,--terminal-group to list tty pgrp
+   *  libcmd: cksum.c: --silent -s => -S, -s == -x sys5 for gnu compatibility
+   *  libcmd: tee.c: drop ancient bsd compatibility "-" operand => SIGINT
+   *  libcmd: cksum.c: add SUM_LEGACY for -r
+   *  libcmd: cp.c: plug usage string memory leak by using
+      per-builtin state
+   *  libcmd: cksum.c: add sumprint() default scale arg,
+      --scale, --bsd for solaris
+   *  libcmd: chmod.c: add --show,-n
+   *  libcmd: wclib.c: bias <wchar.h> checks for modern unix
+   *  libcmd: cat.c: fix --squeeze-blank to reduce multiple blank
+      lines to *one*
+   *  libsum: sum.h, sumlib.c: add SUM_LEGACY for legacy output
+      format
+   *  libsum: sum-sha1.c: reinstate Steve Reid's public domain
+      implementation
+   *  libsum: sumlib.c: drop GPL sum-sha1.c
+
+-------------------------------------------------------------------
+Fri Nov 23 13:55:12 CET 2007 - werner@suse.de
+
+- Add missed limit patch
+- Fix problem with endless loop due missing reset of the SIGTSTP 
+  singal handler after a failed program execution (bug #343111)
+
+-------------------------------------------------------------------
+Tue Nov 20 14:13:58 CET 2007 - werner@suse.de
+
+- Fix bug in mbchar() macro to be able to run test for bug #341594
+- Make option -n for echo builtin work even for AT&T universe
+
+-------------------------------------------------------------------
+Fri Nov 16 17:16:36 CET 2007 - werner@suse.de
+
+- Fix the bug fix, that is decrement current size (bug #341594)
+
+-------------------------------------------------------------------
+Fri Nov 16 15:13:36 CET 2007 - werner@suse.de
+
+- Enable signal handling for non-interactive mode (bug #339875)
+- Ignore signal QUIT always (bug #339875)
+- Ignore signal INT in case of waiting on a job (bug #339875)
+- Handle multibyte chars in variable expansion (bug #341594)
+
+-------------------------------------------------------------------
+Mon Oct 29 15:11:30 CET 2007 - werner@suse.de
+
+- Work around a double -g problem which breaks debugging builds
+
+-------------------------------------------------------------------
+Mon Sep 17 13:16:53 CEST 2007 - werner@suse.de
+
+- Update to bugfix version 2007-06-28 of ksh93s+ (bug #263053)
+   *  In vi insert mode, ksh no longer emits a backspace character
+      before the carriage return when the newline is entered
+   *  A bug in which pipefail would cause a command to return 0
+      when the pipeline was the last command and the failure
+      happened on a component other than the last has been fixed
+   *  A bug in the expansion of ${var/pattern/rep} when pattern
+      or rep contained a left parenthesis in single quotes has
+      been fixed
+   *  The braces for a subscripted variable with ${var[sub]} are
+      now optional when inside [[...]], ((...)) or as a subscript
+   *  A bug in brace expansion in which single and double quotes
+      did not treat the comma as a literal character has been fixed
+   *  The -p option of whence now disables -v
+   *  Several bug fixes in compound variables and arrays of arrays
+      have been made
+   *  A bug in which the %B format of printf was affected  by the
+      locale has been fixed
+   *  A bug in which \ was not removed in the replacement pattern
+      with ${var/pattern/rep} when it was not followed by \ or a
+      digit has been fixed
+   *  A bug in which ksh -R file core dumped if no script was
+      specified has been fixed, it now displays an error message
+   *  Added additional Solaris signals to signal table
+   *  A bug in which a pipeline with command substitution inside
+      a function could cause a pipeline that invokes this function
+      to hang when the pipefail option is on has been fixed
+   *  Added -q to whence
+   *  A small memory leak with each redirection of a non-builtin
+      has been fixed
+- Fix many wrong detected limits for Linux like INT_MAX
+- Adapt FS3D file system: mount(2) of Linux uses five arguments
+- Fix bug in pointer arithmetic: after reallocation the addresses
+  of the old area of an pointer array are changed (bug #300653)
+- Overflow in keytrap(): strncpy(3) does not append ASCII 0 if
+  buffer is fully used
+- This updated version includes fix for bug #268488
+- Enable the AT&T UNIVERSE for ksh as pdksh does, see bug #249783
+
+-------------------------------------------------------------------
+Wed Jun 20 15:15:28 CEST 2007 - werner@suse.de
+
+- Fix pointer arithmetics within sh_trim() (bug #284611)
+
+-------------------------------------------------------------------
+Tue Jun 19 16:01:40 CEST 2007 - werner@suse.de
+
+- Correct bug ID (bug #284580)
+
+-------------------------------------------------------------------
+Fri May 25 10:25:51 CEST 2007 - werner@suse.de
+
+- Minor issuse like file permissions
+
+-------------------------------------------------------------------
+Thu May  3 15:22:49 CEST 2007 - werner@suse.de
+
+- Fix string conversion for high unsigned numbers (bug #268488)
+
+-------------------------------------------------------------------
+Wed Apr  4 12:07:04 CEST 2007 - werner@suse.de
+
+- Minor correction for builtin uname -i
+
+-------------------------------------------------------------------
+Mon Apr  2 17:46:01 CEST 2007 - werner@suse.de
+
+- Update to ksh93s+ (bug #239215)
+- Be sure that iffe can handle option -n even if bash is used
+
+-------------------------------------------------------------------
+Fri Mar 30 13:27:27 CEST 2007 - werner@suse.de
+
+- Disable AT&T UNIVERSE change
+
+-------------------------------------------------------------------
+Wed Mar 28 14:15:25 CEST 2007 - werner@suse.de
+
+- Reset exit status in case of catching SIGCONT (bug #254649)
+- Use the AT&T UNIVERSE for ksh as pdksh does   (bug #249783)
+
+-------------------------------------------------------------------
+Fri Jan 12 14:08:55 CET 2007 - werner@suse.de
+
+- Do not use binary OR instead of a logic OR (#233299)
+- Help the compile time and run time linker (#233299)
+
+-------------------------------------------------------------------
+Mon Nov 20 14:58:06 CET 2006 - werner@suse.de
+
+- Avoid that a sub shell close required file descriptors (#222411)
+
+-------------------------------------------------------------------
+Fri Nov 10 17:00:07 CET 2006 - werner@suse.de
+
+- On ia64 a cast of an integer to a character pointer and back to
+  an long integer may results into an unaligned access,  fix this
+  in the SIGWINCH handler (bug #209643)
+
+-------------------------------------------------------------------
+Tue Nov  7 01:07:46 CET 2006 - ro@suse.de
+
+- fix permissions for manpages 
+
+-------------------------------------------------------------------
+Mon Jul 10 11:32:18 CEST 2006 - werner@suse.de
+
+- Don't trim backslash part of a multibyte character away (#189239)
+
+-------------------------------------------------------------------
+Tue Jul  4 12:53:42 CEST 2006 - werner@suse.de
+
+- Builtin cut: allow last line without newline (#189231)
+- Utility shcomp: fix segfault and install it (#189778)
+
+-------------------------------------------------------------------
+Tue Jun 27 12:07:21 CEST 2006 - werner@suse.de
+
+- No segmentation fault if ksh uses shared command libray (#188404)
+
+-------------------------------------------------------------------
+Tue Jun 20 16:23:49 CEST 2006 - werner@suse.de
+
+- Make it build even on new beta with new glibc headers
+
+-------------------------------------------------------------------
+Wed May 31 17:18:43 CEST 2006 - werner@suse.de
+
+- Fix segmentation fault in vi command line mode (bug #179917)
+
+-------------------------------------------------------------------
+Mon May 29 15:16:03 CEST 2006 - werner@suse.de
+
+- Make -i and -p option of uname builtin work (bug #178962)
+
+-------------------------------------------------------------------
+Tue May  9 11:39:59 CEST 2006 - werner@suse.de
+
+- Change PreRequire /bin/bash to /etc/bash.bashrc  (bug #172633)
+
+-------------------------------------------------------------------
+Mon May  8 12:54:39 CEST 2006 - werner@suse.de
+
+- Correct order of souring order of the users profile and the
+  system kshrc files (bug #172753)
+
+-------------------------------------------------------------------
+Wed Apr 19 19:24:50 CEST 2006 - werner@suse.de
+
+- Do not source system rc files if ksh is not interactive
+- Correct string from GMT to UTC for Universal Time Coordinates
+
+-------------------------------------------------------------------
+Wed Apr 19 12:32:27 CEST 2006 - werner@suse.de
+
+- Fix the patch for the multi byte characters (bug #163665)
+
+-------------------------------------------------------------------
+Tue Apr 18 18:10:56 CEST 2006 - werner@suse.de
+
+- Fix multi byte handling even for command line mode emacs/vi
+
+-------------------------------------------------------------------
+Thu Apr  6 16:42:10 CEST 2006 - werner@suse.de
+
+- Handle multi byte characters within macro expansion (bug #163665)
+
+-------------------------------------------------------------------
+Mon Mar 27 16:23:05 CEST 2006 - werner@suse.de
+
+- Update to ksh 93r
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 20 11:46:03 CET 2005 - werner@suse.de
+
+- Move manual pages of libast to an own subsection 3ast (#140295)
+
+-------------------------------------------------------------------
+Fri Dec 16 18:31:22 CET 2005 - werner@suse.de
+
+- Make it build even with bash 3.1 and gcc 4.1.0
+
+-------------------------------------------------------------------
+Thu Nov 17 13:01:47 CET 2005 - uli@suse.de
+
+- disabled some tests on ARM (occasionally hang QEMU)
+
+-------------------------------------------------------------------
+Mon Oct 24 17:46:03 CEST 2005 - werner@suse.de
+
+- PreReqire the bash to get the system wide bash.bashrc
+
+-------------------------------------------------------------------
+Mon Sep 19 17:26:30 CEST 2005 - werner@suse.de
+
+- Make it compatible with parallel installed pdksh (bug #105126)
+
+-------------------------------------------------------------------
+Mon Sep 19 16:01:55 CEST 2005 - werner@suse.de
+
+- Avoid useless gcc warning of autogenerated sources
+
+-------------------------------------------------------------------
+Tue Aug 16 15:57:40 CEST 2005 - werner@suse.de
+
+- Move to group System/Shells (bug #104920)
+
+-------------------------------------------------------------------
+Wed Apr 13 18:10:15 CEST 2005 - werner@suse.de
+
+- Make it compile with gcc4
+
+-------------------------------------------------------------------
+Thu Mar 24 16:48:37 CET 2005 - werner@suse.de
+
+- Correct initialization for got_sigwinch variable
+
+-------------------------------------------------------------------
+Wed Mar 23 17:35:12 CET 2005 - werner@suse.de
+
+- Update to release date 2005-02-02 (bug #18698, bug #74348)
+
+-------------------------------------------------------------------
+Wed Mar  9 11:24:08 CET 2005 - werner@suse.de
+
+- Fix dead link in documentation (bug #71733)
+
+-------------------------------------------------------------------
+Fri Feb  4 15:46:53 CET 2005 - werner@suse.de
+
+- More on winsize changes: now it works after a new prompt
+  just like in the pdksh.
+
+-------------------------------------------------------------------
+Fri Feb  4 00:30:21 CET 2005 - schwab@suse.de
+
+- Workaround broken build system and enable building shared libraries on
+  x86-64.
+
+-------------------------------------------------------------------
+Thu Feb  3 18:28:51 CET 2005 - werner@suse.de
+
+- Do not build shared version on x64_86 the ELF macro R_X64_86_32S
+  breaks that a local symbol
+- Make it work on s390x
+
+-------------------------------------------------------------------
+Thu Feb  3 13:30:44 CET 2005 - werner@suse.de
+
+- Make winsize changes work
+- Enable /etc/ksh.kshrc support
+- lchmod is not implemented under Linux
+- error_exit does never return
+- Enable shared libraries instead of the static ones
+- Add a warning about CPL versus GPL
+
+-------------------------------------------------------------------
+Wed Feb  2 19:14:49 CET 2005 - werner@suse.de
+
+- Initial version of the AT&T ksh now under CPL1.0 (bug #3698)
+
+-------------------------------------------------------------------

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Mar  3 13:40:10 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+
+-------------------------------------------------------------------
+Wed Feb 26 10:43:16 CET 2014 - tiwai@suse.de
+
+- correct license to GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Dec 16 10:42:14 CET 2013 - tiwai@suse.de
+
+- Initial version 0.6.1: split from ladspa package
+

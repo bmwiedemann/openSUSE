@@ -1,0 +1,2 @@
+#KERNEL=="vhba_ctl", NAME="%k", MODE="0660", OWNER="root", GROUP="cdrom"
+KERNEL=="vhba_ctl", SUBSYSTEM=="misc", TAG+="uaccess"

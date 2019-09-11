@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Sep 18 23:11:43 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+- Added patch:
+  * jemmy-nosource.patch
+    + Don't hardcode java source so that it can be specified from
+      ant's build command-line
+
+-------------------------------------------------------------------
+Fri May 19 09:19:41 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies 
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:13 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Fri Jun 27 12:20:22 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Build on SLE11
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:59 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Mar  7 16:27:49 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0 or CDDL-1.0
+  previous spec file license made no sense
+
+-------------------------------------------------------------------
+Tue Mar  5 13:26:19 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Sun Dec 19 00:03:31 UTC 2010 - andreas.hanke@gmx-topmail.de
+
+- fix dependency to make -javadoc package installable
+
+-------------------------------------------------------------------
+Thu Apr  8 08:51:43 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#594443 - fix the license to CCDL or CCDL;GPLv2 
+
+-------------------------------------------------------------------
+Thu Mar 25 12:44:15 UTC 2010 - mvyskocil@suse.cz
+
+- Initial SUSE packaging
+  jemmy-2.3.0.0-5.jpp6.src.rpm
+

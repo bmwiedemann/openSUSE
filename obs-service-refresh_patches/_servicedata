@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/obs-service-refresh_patches.git</param>
+    <param name="changesrevision">ca402ea51c497ad94b75590fb4036ca79fc031d0</param>
+  </service>
+</servicedata>

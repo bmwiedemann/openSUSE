@@ -1,0 +1,38 @@
+---
+ poe.el |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+--- a/poe.el
++++ b/poe.el
+@@ -1079,11 +1079,11 @@ If the replaced text has at least one wo
+ then capitalize each word in NEWTEXT.
+ 
+ If third arg LITERAL is non-nil, insert NEWTEXT literally.
+-Otherwise treat `\' as special:
+-  `\&' in NEWTEXT means substitute original matched text.
+-  `\N' means substitute what matched the Nth `\(...\)'.
++Otherwise treat `\\' as special:
++  `\\&' in NEWTEXT means substitute original matched text.
++  `\\N' means substitute what matched the Nth `\(...\)'.
+        If Nth parens didn't match, substitute nothing.
+-  `\\' means insert one `\'.
++  `\\\\' means insert one `\\'.
+ FIXEDCASE and LITERAL are optional arguments.
+ Leaves point at end of replacement text.
+ 
+@@ -1131,11 +1131,11 @@ If the replaced text has at least one wo
+ then capitalize each word in NEWTEXT.
+ 
+ If third arg LITERAL is non-nil, insert NEWTEXT literally.
+-Otherwise treat `\' as special:
+-  `\&' in NEWTEXT means substitute original matched text.
+-  `\N' means substitute what matched the Nth `\(...\)'.
++Otherwise treat `\\' as special:
++  `\\&' in NEWTEXT means substitute original matched text.
++  `\\N' means substitute what matched the Nth `\(...\)'.
+        If Nth parens didn't match, substitute nothing.
+-  `\\' means insert one `\'.
++  `\\\\' means insert one `\\'.
+ FIXEDCASE and LITERAL are optional arguments.
+ Leaves point at end of replacement text.
+ 

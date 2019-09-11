@@ -1,0 +1,4 @@
+# cffi specifically installs C headers in site-packages, so :
+addFilter("devel-file-in-non-devel-package .*/site-packages/cffi/parse_c_type.h")
+addFilter("devel-file-in-non-devel-package .*/site-packages/cffi/_cffi_(include|errors).h")
+addFilter("devel-file-in-non-devel-package .*/site-packages/cffi/_embedding.h")

@@ -1,0 +1,56 @@
+--- hdf-4.2.11/hdf/src/hdfi.h	2018/03/17 10:41:43	1.1
++++ hdf-4.2.11/hdf/src/hdfi.h	2018/03/17 10:54:24
+@@ -931,7 +931,11 @@
+ 
+ #include <sys/file.h>               /* for unbuffered i/o stuff */
+ #include <sys/stat.h>
++#if defined(__LITTLE_ENDIAN__)
++#define DF_MT             DFMT_LINUX64
++#else
+ #define DF_MT             DFMT_POWERPC64
++#endif
+ typedef void              VOID;
+ typedef void              *VOIDP;
+ typedef char              *_fcd;
+@@ -955,6 +959,10 @@
+ #define _fcdtocp(desc) (desc)
+ #define FILELIB UNIXBUFIO
+ 
++#ifndef BIG_LONGS
++#define BIG_LONGS
++#endif
++
+ /* JPEG #define's - Look in the JPEG docs before changing - (Q) */
+ 
+ /* Determine the memory manager we are going to use. Valid values are: */
+--- hdf-4.2.11/mfhdf/libsrc/xdrposix.c	2018/03/17 11:02:34	1.1
++++ hdf-4.2.11/mfhdf/libsrc/xdrposix.c	2018/03/17 11:04:16
+@@ -435,7 +435,7 @@
+ #endif
+ {
+     unsigned char *up = (unsigned char *)lp ;
+-#if (defined AIX5L64 || defined __powerpc64__ || defined __s390x__ || (defined __hpux && __LP64__))  
++#if (defined AIX5L64 || (defined __powerpc64__ && __BIG_ENDIAN__) || defined __s390x__ || (defined __hpux && __LP64__))  
+     *lp = 0 ;
+     up += (sizeof(long) - 4) ;
+ #endif
+@@ -462,7 +462,7 @@
+     netlong mycopy = htonl(*lp);
+     up = (unsigned char *)&mycopy;
+ #endif
+-#if (defined AIX5L64  || defined __powerpc64__ || defined __s390x__ || (defined __hpux && __LP64__))
++#if (defined AIX5L64  || (defined __powerpc64__ && __BIG_ENDIAN__) || defined __s390x__ || (defined __hpux && __LP64__))
+     up += (sizeof(long) - 4) ;
+ #endif
+ 
+--- hdf-4.2.11/hdf/src/hconv.h	2018/03/17 11:28:46	1.1
++++ hdf-4.2.11/hdf/src/hconv.h	2018/03/17 11:29:35
+@@ -59,7 +59,7 @@
+ /* CONSTANT DEFINITIONS                                                      */
+ /*****************************************************************************/
+ /* Generally Big-Endian machines */
+-#if !defined(INTEL86) && !defined(MIPSEL) && !defined(DEC_ALPHA) && !defined(I860) && !defined(SUN386) && !(defined(__ia64) && !(defined(hpux) || defined(__hpux))) && !defined(__x86_64__) && !defined(__arm__) && !defined __aarch64__
++#if !defined(INTEL86) && !defined(MIPSEL) && !defined(DEC_ALPHA) && !defined(I860) && !defined(SUN386) && !(defined(__ia64) && !(defined(hpux) || defined(__hpux))) && !defined(__x86_64__) && !defined(__arm__) && !defined __aarch64__ && !(defined(__powerpc__) && defined(__LITTLE_ENDIAN__))
+ #       define UI8_IN     DFKnb1b   /* Unsigned Integer, 8 bits */
+ #       define UI8_OUT    DFKnb1b
+ #       define SI16_IN    DFKnb2b   /* S = Signed */

@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Wed Dec 26 23:25:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.8:
+  * Mint-themes: Fix expo workspace entry not expanding to fit
+    scaled fonts.
+  * Mint-X & Mint-Y: Fix Attached Dialogue Titlebar.
+  * Mint-Y-Grey*: Fix red GTK+2 menubar bg.
+
+-------------------------------------------------------------------
+Fri Dec 14 12:54:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.6 (changes since 1.7.4):
+  * Mint-X: Fix GWL styling in top/left/right panel orientations.
+  * Cinnamon: Increase padding and centre align text in applets.
+
+-------------------------------------------------------------------
+Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.4:
+  * Update old class name.
+  * Mint-X: Style new overview classes.
+  * Linux Mint: Style new overview classes.
+  * Mint-Y: Style new overview classes.
+  * Mint-Y-Gtk3: Set some darker initial foreground colours.
+  * Mint-Y: Darken window titles in the light variation.
+  * Mint-Y-Gtk3: Bring back menu separators.
+  * Mint-Y-Gtk3: Darken .dim-labels.
+  * Mint-Y-Gtk3: Match the filechooser sidebar to the nemo sidebar
+    colours.
+  * Mint-Y-Gtk3: Darken the border on primary-toolbars.
+  * Mint-Y-Gtk3: Darken header bar borders.
+  * Mint-Y-Gtk3: More headerbar styling improvements.
+  * Mint-Y-Gtk3: Fix the primary-toolbar border again.
+  * Mint-Y-Cinnamon: Bump panel height to 40px.
+  * Mint-Y-Gtk3: Use narrower titlebars.
+  * Mint-X-Gtk3: Improve the titlebar styling.
+  * Mint-X-Gtk3: Special case some headerbars.
+  * Mint-Y-Gtk3: A few more improvements for muffin window
+    decorations.
+  * Add support for the grouped window list applet.
+  * Mint-Y-Gtk3: Renegerate some css files.
+  * Mint-Y-Cinnamon: Improve contrast in panels and menus.
+  * Mint-X-Gtk3: Don't use pure white for file manager sidebar
+    foregrounds.
+  * Give the grouped window list applet unique class names.
+  * Mint-Y-Cinnamon: Make the focused window in the grouped list
+    more obvious.
+  * Mint-Y-Cinnamon: Add menu separators.
+  * Mint-Y-Gtk3: Fix the styling of GtkPaned wide separators.
+  * Mint-Y-Cinnamon: Fix flashing white when hovering in the
+    grouped window list.
+  * git: Ignore sass cache files by extension.
+  * Mint-Y-Gtk3: Improve the filechooser dialogue styling.
+  * Mint-Y-Gtk3: Fix selected colours in the caja inactive
+    treeview pane.
+  * Mint-Y-Gtk3: Improve the filechooser theming a bit more.
+  * Mint-Y-Cinnamon: Fix the menu search entry to work with larger
+    text.
+  * Gtk3: Fix support for drag and drop indication.
+  * Style menu favourites buttons as squares.
+  * Mint-X: Fix missing Cinnamon assets in Grey variation.
+  * Start implementation of Mint-Y colour variations.
+  * Colors: Overwrite assets.
+  * Remove metacity colour variations.
+  * Mint-Y: Remove xfce notify theme.
+  * Mint-Y: Remove XFWM4 from Darker variant.
+  * Colors: Start adding overrides.
+  * Don't list Metacity colour deviations in Cinnamon.
+  * Fix all GTK+ thumbnails and some Cinnamon thumbs.
+  * Add a script to extract all the green colors used in Mint-Y.
+  * Rename list-colors.py -> list-green-colors.py and let it accept
+    a path.
+  * list-green-colors: Count occurences.
+  * Fix typo in colour code.
+  * list-green-colors: Ignore success-color.
+  * list-green-colors: Ignore more dummy colours.
+  * Update generate-themes with new Mint-Y colours.
+  * Add a colorize script (to change the hue of a png).
+  * Update assets.
+  * Update thumbnails.
+  * Fix a couple of issues and regenerate assets.
+  * Fix typo and regen assets.
+  * Mint-Y-colors: Add close buttons for Xfce (xfwm4).
+  * Mint-Y: Fix the thumbnails for the darker variations.
+  * Mint-Y-Cinnamon: Fix the styling of vertical applet separators.
+  * Mint-Y: Improve close-prelight button in gtk-3.
+  * render-assets-script: Fix dpi for Mint19 inkscape.
+  * Mint-Y-variations: Update scripts.
+  * Mint-Y: Make sure we update the dark version within the -Darker
+    variations.
+  * Add mint-y palette.
+  * Add support for GWL number badges.
+  * Fix Cinnamon tiling colour in colour variations.
+  * Mint-Y-colors: Add missing xfwm4 close buttons.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:27:32 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.3:
+  * Gtk3: Properly place the "grab" area for pane separators.
+
+-------------------------------------------------------------------
+Fri Jul 20 09:32:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.2:
+  * Mint-X-Gtk3: Restore the Mint 18.3 styling of the mate-panel
+    taskbar.
+  * Mint-Y-Gtk3: Fix atril toolbar in the darker variation.
+  * Gtk3: Remove a white border from the nemo sidebar.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.7.1 (changes since 1.6.9):
+  * debian: Add ruby-sass to build-deps.
+- Add rubygem(sass) to BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jun 17 19:18:55 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.9:
+  * Gtk3: Add theming for MATE osd window when Marco with
+    compositing is enabled.
+  * Mint-X-Gtk3: Fix the colour of some more selected labels.
+  * Mint-X-metacity: Fix black border on focused titlebars under
+    hidpi.
+  * Mint-X-Gtk3: Fix a couple of issues with slick-greeter.
+
+-------------------------------------------------------------------
+Wed Jun  6 14:12:23 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.8 (changes since 1.6.6):
+  * Mint-X-Gtk3: Colour non-empty levelbar blocks.
+  * Mint-X-Gtk3: Fix a few issues from 1.6.6.
+  * Mint-X-Gtk3: Fix weirdness when hovering treeviews.
+  * Gtk3: Add theming for Marco tooltips.
+  * Mint-X: Fix rubberband style.
+  * Cleanup Caja tabs.
+  * Restore top scroll indicator in pluma.
+  * Mint-X-Gtk3: More tab alignment fixes.
+  * Mint-Y-Gtk3: Fix selected item colours in the Nemo inactive
+    view.
+  * Mint-X-Gtk3: Fix transparent background in mate-terminal.
+
+-------------------------------------------------------------------
+Sat May 26 10:16:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.6:
+  * Mint-X: Align tabs, application specific tab colouring, restore
+    caja sidebar colour, improve pane separator.
+
+-------------------------------------------------------------------
+Tue May 22 07:20:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.5:
+  * Improve window-list progress.
+
+-------------------------------------------------------------------
+Fri May 17 12:31:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.4:
+  * Mint-X-Cinnamon: Remove some unneeded icons sizes.
+  * Mint-X-Cinnamon: Theme the level bar in the volume OSD.
+  * Linux Mint: Remove some unneeded icons sizes.
+  * Mint-X-Cinnamon: Fix colour of selected window in the
+    workspace switcher.
+  * Mint-Y-Gtk3: Improve infobar insensitive colours.
+  * Mint-X GTK-3 "Character Palette" applet background.
+  * Set background colour in MATE terminal.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.3:
+  * Mint-Y-Cinnamon: Use the selected_bg_color in menus.
+  * Mint-Y-Cinnamon: Fix the styling of the sound applet.
+  * Mint-Y-Gtk2: Use selected_bg_color in menus.
+  * Mint-Y-Cinnamon: Fix the size of the main menu applet entry.
+
+-------------------------------------------------------------------
+Sat Apr 28 20:12:30 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.2:
+  * Remove an accidentally included directory from Mint-Y.
+  * Mint-Y: Add some theming for slick greeter.
+  * Mint-Y: Quiet a couple warnings in the gtk3 theme from unused
+    properties.
+  * Mint-X, Mint-Y: Add window-list-preview.
+  * Mint-Y-Cinnamon: Small cleanup for the window list preview.
+  * Mint-Y-Cinnamon: Clean up panel launcher placement.
+  * Mint-Y: Make a few improvements for mate-panel.
+  * Mint-Y-Cinnamon: Clean up a bunch of unused variables.
+  * Mint-Y-Gtk3: Improve the styling of the list box header in Mint
+    settings windows.
+  * Mint-Y-Gtk3: Improve the hover effect on listbox rows.
+  * Mint-Y-Gtk3: Fix the background color of the stacksidebar
+    listbox.
+  * Mint-Y-Gtk3: Fix the color of the sidebar in GtkFileChooser.
+  * Mint-Y-Gtk3: Make sure circular buttons are actually circular.
+  * Linux Mint: Add window-list-preview class.
+  * Mint-X-Gtk3: Start updating for gtk3.22
+  * Mint-X-Gtk3: Fix theming of wide paned vertical separators.
+  * [Mint-X/Cinnamon] Cleanup and fixes.
+  * Mint-X-Gtk3: Clean up the styling of cinnamon-apps a bit.
+  * Mint-X-Gtk3: Quiet the remaining warnings.
+  * Mint-X-Gtk3: Improve check and radio items a bit.
+  * Mint-X-Gtk3: Add some basic theming for GtkExpander.
+  * Mint-X-Gtk3: Clean up treeviews a bit.
+  * Mint-X-Gtk3: Fix a weird border on menus.
+  * Mint-X-Gtk3: Fix the style of popover menu items.
+  * Mint-X-Gtk3: Do some more small cleanups.
+  * Mint-X-Gtk3: Fix a double border on paned sidebars.
+  * Mint-X-Gtk3: Add theming for terminal and xed.
+  * Mint-X-Gtk3: Hide separator in file and font buttons.
+  * Mint-X-Gtk3: Fix styling of the appmenu button.
+  * Mint-X-Gtk3: Remove unused pix theming.
+  * Mint-X-Gtk3: Add styling for nemo rename entries.
+  * Mint-X-Gtk3: Improve some insensitive icon and label colours.
+  * Mint-X-Gtk3: Fix theming for GtkCalendar.
+  * Mint-X-Gtk3: Clean up some commented out garbage.
+  * Mint-X-Gtk3: Fix GtkAssistant styling.
+  * Mint-Y: Correct font to font-size in window list preview.
+  * Mint-X-Gtk3: Fix the styling for GtkColorChooser.
+  * Mint-X-Gtk3: Update some theming for content views.
+  * Remove unused style and unused images.
+  * Styling homogenisation.
+  * Mint-X-Gtk3: Add assets for header/titlebar window controls.
+  * Mint-X-Gtk3: Update theming for lightdm.
+  * Mint-X-Gtk3: Remove unused asset images.
+  * Mint-X-Gtk3: Update infobar styling.
+  * Mint-X-Gtk3: Fix toolbar padding.
+  * [Mint-X/Cinnamon] Cleanup and fixes.
+  * Mint-X-Gtk3: Fix some header/titlebar padding issues.
+  * Mint-X-Gtk3: Add support for GtkShortcutsWindow.
+  * Mint-Y-Gtk3: Fix oversized tabs in places like gnome terminal
+    notebooks.
+  * Mint-Y-Gtk3: Add back just a bit of padding to buttons in
+    terminal headers.
+  * Mint-Y-Gtk3: Fix disabled colors in dark header/toolbars.
+  * [Mint-X/Cinnamon] Fix modal dialogues button shifting when
+    buttons are focused.
+  * Mint-X-Gtk3: Fix a few random selectors.
+  * Mint-X-Gtk3: Add some catch all selectors for selected items.
+  * Mint-Y-Gtk3: Adapt to the changes in the nemo sidebar.
+  * Mint-Y-Gtk3: Couple of nemo improvements.
+  * Mint-Y-Gtk3: Use a dark sidebar in caja.
+  * Mint-Y-Gtk3: Update some xfce4 panel theming.
+  * Mint-Y: More Xfce4 panel fixes.
+  * Mint-Y: Add sticky/shade/menu icons.
+  * Mint-Y-Cinnamon: Use Noto Sans as the base font.
+  * Mint-X-Gtk3: Clean up a couple of errors and unused selectors.
+  * Mint-Y-Gtk3: Fix the Nemo sidebar separator.
+  * Cinnamon: Sound applet player buttons.
+  * Cinnamon: window-list modifications in LM theme.
+  * Mint-Y-Gtk3: Improve the styling of the linked entry in
+    mintinstall.
+  * Mint-X*: Improve assets and progress colours.
+  * Mint-X-Gtk3: Fix the colour of buttons inside of infobars.
+  * All-Gtk3: Add proper support for GtkTreeview dnd.
+  * Clean up unused styles.
+  * Some fixes.
+
+-------------------------------------------------------------------
+Thu Mar 15 16:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.6.1 (changes since 1.5.0):
+  * Remove duplicated files, generate colour variations during the
+    build.
+  * Add Mint-X GTK+3 and Mint-Y.
+  * Add Cinnamon themes.
+- Obsolete cinnamon-themes in metatheme-mint-common.
+- Recommend mint-y-icon-theme in metatheme-mint-common for Mint-Y.
+
+-------------------------------------------------------------------
+Wed May  4 17:44:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.5.0 (changes since 1.4.8):
+  * metacity-theme-2.xml: Fill the titlebar underneath the gradient.
+  * metacity-2: Improve styling for border type windows.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.4.8:
+  * Fix mintmenu background picture.
+
+-------------------------------------------------------------------
+Wed Jun 22 12:01:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.4.7:
+  * Metacity: Round corners in border style.
+
+-------------------------------------------------------------------
+Sun Nov  8 15:43:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.4.6:
+  * Xfce logout improvements.
+  * Remove extra themes.
+  * Pressed colour is inherited from style.
+  * Add Xfwm compact theme.
+  * Pressed buttons have shade and close button is rounded.
+  * Fix fill icons (it was 17x18 size, now 16x16 as it should be).
+  * 1000 new icons.
+  * Chromium r-click menu unclickable items gray.
+  * Separate libreoffice-style-mint.
+- Drop libreoffice-icon-theme-mint package.
+
+-------------------------------------------------------------------
+Sat Oct 17 15:54:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.4.5 (changes since 1.3.9+git20141119):
+  * Reduce file size of svg images.
+  * Update LibreOffice theme (compatible with LO 4.3 and 4.4).
+  * Add a metacity-2 theme for MATE 1.10+.
+  * Re-work the window control icons a bit to improve sharpness and
+    definition.
+  * Add a grey version of the Gtk2 theme.
+  * Add themeing for Xfce alt-tab and notifications.
+- Spec redone.
+
+-------------------------------------------------------------------
+Thu Apr 23 18:15:36 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2014.11.19 from git
+
+-------------------------------------------------------------------
+Mon Jun  2 10:23:56 UTC 2014 - stefan@fam-elser.de
+
+- Initial build

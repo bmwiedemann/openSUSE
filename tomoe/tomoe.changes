@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed Feb 15 17:14:16 CET 2012 - tiwai@suse.de
+
+- replace invalid glib/*.h inclusion to fix the build on FACTORY
+
+-------------------------------------------------------------------
+Sun Nov 27 06:49:32 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jan  9 00:57:49 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Fri Aug 01 17:55:15 CEST 2008 - mfabian@suse.de
+
+- update to 0.6.1. From the NEWS file:
+  • Simplified Chinese dictionary.
+  • Enhanced Japanese dictionary (Add JIS X 0208 level2 support).
+  • Choose default dictionary automatically according to current
+    locale.
+  • Python binding.
+  • Don't use RSpec for test anymore.
+  • Some minor fixes.
+- compile with optimization again for openSUSE >= 11.0
+
+-------------------------------------------------------------------
+Tue Nov  6 10:22:14 CST 2007 - pwu@suse.de
+
+- move .so files from tomoe-devel to tomoe.
+
+-------------------------------------------------------------------
+Fri Aug 03 19:20:37 CEST 2007 - mfabian@suse.de
+
+- update to 0.5.1:
+  • Add missing licence file.
+  • Some minor fixes.
+  • New modulized dictionaries:
+    - Hyper Estraier
+    - Unihan database
+    - MySQL
+  • Add radicals and variant element into dict.dtd.
+- add ldconfig to post scripts.
+- compile with -O0 for the moment because of bugzilla #297743.
+
+-------------------------------------------------------------------
+Wed Mar  7 15:21:02 CET 2007 - sbrabec@suse.cz
+
+- Created -doc subpackage (#248813).
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Dec 14 14:57:11 CET 2006 - mfabian@suse.de
+
+- update to 0.4.0
+  • Shortening startup time.
+  • Modularization handwriting recognizer and dictionary loader.
+  • Reconstruct and GObjectize all API.
+  • Release from libxml.
+  • Ruby binding.
+  • Test suite based on Ruby binding.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 16:07:09 CET 2006 - mfabian@suse.de
+
+- new package: tomoe, version 0.2.1.

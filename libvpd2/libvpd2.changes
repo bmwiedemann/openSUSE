@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Wed Jan 16 08:20:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to pkgconfig dependencies
+- Use %license macro
+
+-------------------------------------------------------------------
+Wed Jun 20 08:19:48 UTC 2018 - jloeser@suse.com
+
+- version update to 2.2.6 (fate#324940, fate#326425)
+  - Changes run.vpdupdate creation path from /var/lib/lsvpd to /run
+
+- removed patches:
+  * 0001-Modify-char-array-initialization-style.patch
+  * 0002-Null-check-before-passing-pointer-to-strlen-call.patch
+  * 0003-Typo-correction-in-README-file.patch
+  * 0004-libvpd-Validate-memory-allocation.patch
+  * 0005-libvpd-Corrects-data-type-of-variables.patch
+  * 0006-Changes-run.vpdupdate-creation-path-from-var-lib-lsv.patch
+  * libvpd.async.patch
+
+- modified patches:
+  * libvpd2.makefile.patch
+
+-------------------------------------------------------------------
+Fri Jun  1 13:49:07 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Add 6 patches from upstream:
+  0001-Modify-char-array-initialization-style.patch
+    this one differ from upstream as do not remove QUERY_BUF_LENGTH
+    still used in not upstream libvpd.async.patch
+  0002-Null-check-before-passing-pointer-to-strlen-call.patch
+  0003-Typo-correction-in-README-file.patch
+  0004-libvpd-Validate-memory-allocation.patch
+  0005-libvpd-Corrects-data-type-of-variables.patch
+  0006-Changes-run.vpdupdate-creation-path-from-var-lib-lsv.patch
+    last one to avoid reported error systemd-udevd error:
+    'touch /var/lib/lsvpd/run.vpdupdate' failed with exit code 1
+
+-------------------------------------------------------------------
+Tue Nov 24 16:37:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.2.5 (fate#322221)
+  * Fixed security issues like buffer overflow, memory allocation 
+    validation
+  * Replaced popen with secured version
+  * Improved error handling
+- Update libvpd.async.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 09:10:02 UTC 2015 - mpluskal@suse.com
+
+- Move autoreconf to build phase (avoids issues with quilt)
+
+-------------------------------------------------------------------
+Wed Sep  3 16:28:49 UTC 2014 - jloeser@suse.com
+
+- version update to 2.2.4 (BNC#894858) 
+
+- modified patches:
+  * libvpd2.makefile.patch
+-------------------------------------------------------------------
+Tue May 13 12:59:24 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 2.2.3:
+  * Restrict vpdupdate triggers to device change events 
+- Cleanup with spec-cleaner
+- Add libtool and autoconf as requirements and reconfigure the
+  autofoo*
+- Add download url proper for the tarball.
+- Remove no longer needed patch libvpd2-gcc47.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 09:59:59 UTC 2014 - jloeser@suse.com
+
+- version update to 2.2.2 (FATE#315460)
+  minor bugfixes
+  add udev rule for vpdupdate
+  no upstream changelog provided
+- libvpd2.makefile.patch: fix udev rules directory
+- add udev and automake to BuildRequires for correct udev rules.d 
+  directory 
+
+-------------------------------------------------------------------
+Thu Dec  6 10:24:50 UTC 2012 - dvaleev@suse.com
+
+- update to 2.2.0
+  No upstream changelog provided
+- don't run autoreconf
+- remove libtool from BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun  1 13:35:11 UTC 2012 - jloeser@suse.com
+
+- clean up spec file 
+
+-------------------------------------------------------------------
+Wed Mar 21 21:22:08 UTC 2012 - dimstar@opensuse.org
+
+- Add libvpd2-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Tue Dec 20 21:34:27 CET 2011 - dmueller@suse.de
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Nov  3 15:09:22 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel build
+- Remove redundant tags/sections (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Nov  1 17:33:23 UTC 2011 - dvaleev@suse.com
+
+- update to 2.1.3
+  - Rebuild rpms for ppc 32-bit.
+  - add pkg-config to BuildRequires to avoid rpmlint warings 
+  - drop libvpd-pkg.patch and libvpd.return-value.patch
+
+-------------------------------------------------------------------
+Tue Apr 19 00:21:14 CEST 2011 - ro@suse.de
+
+- update baselibs.conf 
+
+-------------------------------------------------------------------
+Mon Feb  1 11:57:43 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Mon Dec  8 16:36:36 CET 2008 - olh@suse.de
+
+- set 'PRAGMA synchronous = OFF;' to avoid fsync for each string
+  (bnc#449648)
+
+-------------------------------------------------------------------
+Fri Nov 21 13:33:25 CET 2008 - sassmann@suse.de
+
+- rename package to libvpd2 because it now contains libs for
+  both C and C++ (bnc#444531)
+- cleanup broken SONAME (bnc#444531)
+
+-------------------------------------------------------------------
+Wed Jun 25 14:25:46 CEST 2008 - olh@suse.de
+
+- add baselibs.conf
+- rename to libvpd_cxx2
+- update to libvpd-2.0.3 (fate#304148)
+  no changelog in package
+
+-------------------------------------------------------------------
+Wed Oct 24 14:48:48 CEST 2007 - sassmann@suse.de
+
+- fix includes to build on beta-i386, beta-x86_64
+
+-------------------------------------------------------------------
+Wed Oct 17 11:54:23 CEST 2007 - sassmann@suse.de
+
+- initial release of libvpd_cxx (version 1.3.5)
+

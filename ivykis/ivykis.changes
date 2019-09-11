@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Fri Sep  8 20:47:59 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.42.1
+  * Fixes a timer handling bug in the epoll/port poll methods
+    that was showing up with syslog-ng.
+  * Fixes a timer fairness handling bug, and a potential crash
+    when initializing a task handler.
+
+-------------------------------------------------------------------
+Tue Feb 21 00:42:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.41
+  * No changelog was provided
+- Reenable PPC/ARM builds, the pthread_nonshared edits of 0.40
+  should have fixed the issues there.
+
+-------------------------------------------------------------------
+Sun Oct 30 15:50:15 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.40
+* This release fixes a pthread_sigmask() pointer aliasing issue,
+  and significantly speeds up polling for events by using
+  timerfd_create(3) / EVFILT_TIMER / timer_create(3C) to avoid
+  creating and destroying a kernel timer for every fd readiness
+  polling system call.
+
+-------------------------------------------------------------------
+Fri Mar 22 19:22:54 UTC 2013 - jengelh@inai.de
+
+- Downgrade to 0.38+git16 to work around failure on PPC
+
+-------------------------------------------------------------------
+Sat Feb 16 01:34:16 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.39
+* This release increases the maximum rate of delivery of
+  inter-thread events when using the epoll poll method by about 40%.
+
+-------------------------------------------------------------------
+Wed Jan 16 09:23:26 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.38
+* This release fixes various bugs, speeds up timer handling a lot
+  on a number of BSD platforms, and adds several tests to the test
+  suite.
+
+-------------------------------------------------------------------
+Thu Dec 20 06:08:42 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.37
+* fixes falling back to eventfd(2) if eventfd2(2) was available at
+  build time but is not supported by the running kernel
+* adds support for ppoll(2)
+
+-------------------------------------------------------------------
+Tue Dec  4 22:35:28 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.36
+* Work around a kernel change in FreeBSD 9.0-STABLE where /dev/klog
+  has become pollable via kevent(), but returns -EINVAL if you try
+  to register an EVFILT_WRITE filter, which confused the
+  iv_fd_register_try() logic in iv_fd_kqueue.
+* Rework iv_timer to use less memory when only a small number of
+  timers is in use, and allow adding radix tree levels as needed
+  to remove the previous ~1M timer limit.
+- Update to new upstream release 0.35
+* Fix an abort on iv_work worker thread timeout introduced by the
+  race condition fix optimization that went into 0.32.
+* Two iv_event race condition fixes.
+
+-------------------------------------------------------------------
+Sat Sep 15 18:16:16 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.34
+* This release enables ELF symbol versioning, and adds various
+  optimizations and bugfixes.
+
+-------------------------------------------------------------------
+Fri Aug 31 00:11:10 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 0.33) for build.opensuse.org

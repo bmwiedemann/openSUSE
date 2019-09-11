@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Wed Jan  2 12:46:35 UTC 2019 - badshah400@gmail.com
+
+- Update to version 3.0.0:
+  * The deprecated AbstractMarkup API has been removed.
+  * Python 3.2 is no longer supported.
+  * The output now uses HTML5 instead of HTML4.
+  * The custom markups are now registered with entry points.
+  * The ``get_custom_markups()`` method has been removed.
+  * New required dependency: python-markdown-math.
+  * Python-Markdown 3.x release is now supported.
+- Add python-markdown-math to Requires (new dependency).
+- Run fdupes to clean up duplicate files wasting space (add
+  BuildRequires: fdupes).
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:17 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 31 06:25:00 UTC 2017 - toddrme2178@gmail.com
+
+- update to Version 2.0.1
+  * The new MathJax CDN is used, the old one will be shut down soon.
+  * When using MathJax with Markdown, the AMSmath and AMSsymbols extensions are
+    now enabled.
+- update to Version 2.0.0, 2016-05-09
+  * Changed the API of pymarkups to clearly separate the conversion step from
+    access to the various elements of the result. The old API is deprecated
+    and will be removed in a future release. Please see the documentation for
+    details on using the new API.
+  * The reStructuredText markup now includes document title and subtitle in
+    the HTML body.
+  * Added a ``markup2html.py`` reference script to show API usage.
+  * Improved support for specifying Markdown extensions in the document.
+
+-------------------------------------------------------------------
+Thu Aug 24 13:45:17 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May  7 16:12:55 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.6.1:
+  * PyMarkups now uses warnings system instead of printing messages
+    to stderr
+  * Improvements to Markdown markup:
+    + Fixed parsing math that contains nested environments
+    + Fixed crash on extensions names starting with dot
+  * Miscellaneous fixes
+- additional changes from version 0.6:
+  * Custom markups are now normal Python modules
+  * Web module no longer supports Python 2.x
+  * Refactor the code related to Markdown extensions to make it
+    work with upcoming Python-Markdown releases
+  * MathJax extension is now in a separate module
+- additional changes from version 0.5.2:
+  * Fixed loading of Markdown extensions with options
+- additional changes from version 0.5.1:
+  * Fixed Markdown markup crash on empty files
+  * Include documentation in the tarballs
+  * Testsuite improvements
+- additional changes from version 0.5:
+  * Improvements to Markdown markup:
+    + All math delimeters except $...$ are now enabled by default
+    + remove_extra extension now disables formulas support
+    + It is now possible to specify required extensions in the
+      first line of the file
+  * Add Sphinx documentation
+- additional changes from version 0.4:
+  * Add Textile markup
+  * reStructuredText markup now supports file names and settings
+    overrides
+  * Web module now raises WebUpdateError when updating fails
+- additional changes from version 0.3:
+  * MathJax support in Markdown has been improved and no longer
+    relies on tex2jax extension
+  * It is now possible to pass extensions list to MarkdownMarkup
+    constructor
+  * Pygments style is now configurable
+  * Testsuite improvements
+- update project URL
+- add python-importlib as a dependency for SLE11
+- rename README to README.rst: changed upstream
+
+-------------------------------------------------------------------
+Wed Feb  6 09:42:28 UTC 2013 - saschpe@suse.de
+
+- Completely redone spec file
+
+-------------------------------------------------------------------
+Sat Feb  2 11:46:51 UTC 2013 - i@marguerite.su
+
+- initial version 0.2.4
+  * no changelog for this version (yet).
+
+

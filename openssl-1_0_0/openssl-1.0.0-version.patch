@@ -1,0 +1,67 @@
+Index: openssl-1.0.2k/Configure
+===================================================================
+--- openssl-1.0.2k.orig/Configure
++++ openssl-1.0.2k/Configure
+@@ -1681,6 +1681,8 @@ if ($strict_warnings)
+ 		}
+ 	}
+ 
++$shared_ldflag .= " -Wl,--version-script=openssl.ld";
++
+ open(IN,'<Makefile.org') || die "unable to read Makefile.org:$!\n";
+ unlink("$Makefile.new") || die "unable to remove old $Makefile.new:$!\n" if -e "$Makefile.new";
+ open(OUT,">$Makefile.new") || die "unable to create $Makefile.new:$!\n";
+Index: openssl-1.0.2k/openssl.ld
+===================================================================
+--- /dev/null
++++ openssl-1.0.2k/openssl.ld
+@@ -0,0 +1,13 @@
++OPENSSL_1.0.0 {
++	global:
++		*;
++};
++
++OPENSSL_1.0.1 {
++	global:
++		SSL_CTX_set_next_proto_select_cb;
++} OPENSSL_1.0.0;
++
++OPENSSL_1.0.2 {
++} OPENSSL_1.0.1;
++
+Index: openssl-1.0.2k/engines/openssl.ld
+===================================================================
+--- /dev/null
++++ openssl-1.0.2k/engines/openssl.ld
+@@ -0,0 +1,13 @@
++OPENSSL_1.0.0 {
++	global:
++		*;
++};
++
++OPENSSL_1.0.1 {
++	global:
++		SSL_CTX_set_next_proto_select_cb;
++} OPENSSL_1.0.0;
++
++OPENSSL_1.0.2 {
++} OPENSSL_1.0.1;
++
+Index: openssl-1.0.2k/engines/ccgost/openssl.ld
+===================================================================
+--- /dev/null
++++ openssl-1.0.2k/engines/ccgost/openssl.ld
+@@ -0,0 +1,13 @@
++OPENSSL_1.0.0 {
++	global:
++		*;
++};
++
++OPENSSL_1.0.1 {
++	global:
++		SSL_CTX_set_next_proto_select_cb;
++} OPENSSL_1.0.0;
++
++OPENSSL_1.0.2 {
++} OPENSSL_1.0.1;
++

@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Copyright © 2001 SUSE LINUX GmbH Nuernberg, Germany
+#
+# Mike Fabian <mfabian@suse.de>, 2005
+# Egbert Eich <eich@suse.com>, 2015
+
+# usually, /etc/X11/xim is used to start a default input method.
+
+# If want to change the default, you have the following options:
+#
+#    1) Set the variable INPUT_METHOD in /etc/sysconfig/language.
+#       For example:
+#           INPUT_METHOD="scim"
+#       This changes the default for all users
+#    2) set and export the variable "INPUT_METHOD" in ~/.i18n in the
+#       home directory of a user.
+#       For example:
+#           export INPUT_METHOD="scim"
+#       This changes the default only for one user.
+#    
+#    The possible values for the variable INPUT_METHOD are the names
+#    of the scripts which exist in the directory /etc/X11/xim.d/
+#    for example if a script /etc/X11/xim.d/scim exists,
+#    and INPUT_METHOD is set to "scim", this script will be tried first
+#    to start an input method and only if this fails other input methods
+#    will be tried.
+#
+#    3) If you don't like the behaviour of any of the available
+#       scripts in /etc/X11/xim.d, you can write your own script
+#       containing the necessary lines to start your preferred input
+#       method and save it as ~/.xim. If a file ~/.xim exists, only
+#       this file is sourced to start an input method and nothing
+#       else.
+#       Usually you need only a few lines, the systemwide
+#       file to start an input method, /etc/X11/xim, is only so
+#       complicated because it tries to find a nice default depending
+#       on the language and the installed input methods.
+# 
+#       For example, if you want to use "scim" as your input method,
+#       it is enough to have the following 5 lines (and nothing else)
+#       in your ~/.xim file:
+
+#       export XMODIFIERS="@im=SCIM"
+#       export GTK_IM_MODULE=scim
+#       export QT_IM_SWITCHER=imsw-multi
+#       export QT_IM_MODULE=scim
+#       scim -d 

@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Wed Apr  4 07:45:35 UTC 2018 - aloisio@gmx.com
+
+- Added fbreader-0.99.4-qt5.patch and switched to Qt5 build
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Mar  7 13:09:28 UTC 2018 - bwiedemann@suse.com
+
+- Add FBReader-0.99.4-reproducible.patch to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Thu Jun 23 17:33:29 UTC 2016 - dap.darkness@gmail.com
+
+- Added fbreader-0.99.4-gcc6-Wno-narrowing.diff as a workaround
+  for https://github.com/geometer/FBReader/issues/289
+- Added %%description tag & noarch for zlibrary-data subpackage.
+
+-------------------------------------------------------------------
+Sun Jun 19 19:57:17 UTC 2016 - dap.darkness@gmail.com
+
+- Removed README.SuSE because there is only Qt GUI now.
+- pkgconfig().
+
+-------------------------------------------------------------------
+Sun Jun 19 13:44:31 UTC 2016 - jengelh@inai.de
+
+- Fixup shared library packaging
+
+-------------------------------------------------------------------
+Sun May 25 10:42:36 UTC 2014 - trcs@gmx.com
+
+- Update to version 0.99.4
+  * Fixed bug with freezing at start
+  * List of network libraries is updated now from fbreader.org
+  * Fixed working with secured connections (now authentification and books buying on LitRes.ru catalog works)
+  * Image support for Ms-Word doc format
+  * Esperanto interface localization has been added (by Katarína Nosková)
+  * Hyphenation patterns for Polish (by Tomasz Długosz)
+  * Polish interface localization (by Tomasz Długosz)
+  * Speed of library scanning has been increased
+  * Plugin for reading MsWord (*.doc) books
+  * Fixed zip reading for several ePub books (e.g. for "die Zeit" ePubs)
+  * Support for book series in ePubs with point format (e.g. "2.5") has been added
+  * Fixed image support in RTF books
+  * Encoding & language recognizing has been improved
+  * As from version 0.99.0 FBReader for Linux supports qt4 interface only
+  * Chinese text drawing optimization (thanks to You Sheng (SmartDevices) for idea)
+  * Mobipocket image processing has been fixed
+  * Standard file open dialog is now used instead of the old specially written for FBReader
+  * CSS processing for multi-xhtml epubs has been fixed (in 0.12.* the CSS loaded for the first xhtml was also applied for all other xhtmls)
+  * Chinese encodings detection has been improved
+  * Language/encoding detection for small files has been improved
+  * A problem with TOC in newest O'Reilly ePubs has been fixed
+  * A detection of book format by mime-type (not by file extension) has been partially implemented (in Gtk+ version only)
+  * Polish interface localization has been added (by Rafał Bakuła)
+- Updated FBReader.desktop
+- Cleaned spec file
+  * Removed GTK UI version build because it's broken an isn't supported anymore
+    See https://github.com/geometer/FBReader/issues/222 and the above changelog
+- Dropped unneeded fbreader-0.12.10-c++.patch
+- Added FBReader-0.99.4-fix-crash-with-fb2.zip-files.patch
+  * fixes crashes with fb2.zip files
+  
+-------------------------------------------------------------------
+Tue Oct 16 19:26:18 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on libbz2-devel
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:01 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Wed Aug 31 00:53:19 UTC 2011 - kirill.kirillov@gmail.com
+
+- cleaned spec using spec-cleaner
+- fixed generic-name-not-in-filelist RPMLINT warning
+
+-------------------------------------------------------------------
+Tue Aug 23 21:51:51 UTC 2011 - kirill.kirillov@gmail.com
+
+- split zlibrary and zlibrary-ui packages (based on Fedora spec)
+- used alternatives to select user interface (based of Fedora spec) 
+
+-------------------------------------------------------------------
+Fri Dec 31 20:07:03 UTC 2010 - kirill.kirillov@gmail.com
+
+- added mime support (fbreader.xml)
+
+-------------------------------------------------------------------
+Tue Aug 17 22:35:57 UTC 2010 - kirill.kirillov@gmail.com
+
+- added fbreader-0.12.10-c++.patch to fix compilation (from archlinux)
+
+-------------------------------------------------------------------
+Tue Aug 17 07:29:22 UTC 2010 - kirill.kirillov@gmail.com
+
+- Update to 0.12.10
+  + Processing of external hyperlinks in ePub files has been changed. 
+
+- Changes for 0.12.9
+  + Processing of epub local hyperlinks of form ../dir/file.html has been fixed.
+  + Code is now compilable with gcc 4.4.* (missing include directives have been added).
+
+- Changes for 0.12.8
+  + Smashwords library support has been improved: purchase links have been added.
+  + LitRes library support has been updated: since this version FBReader uses an OPDS proxy located at http://data.fbreader.org/ for most operations with the LitRes catalog.
+  + Processing of the xhtml hyperlinks in html encoded form (like /files/This%20is%20a%20link) has been fixed.
+  + A seg.fault during scanning several archives has been fixed.
+  + Lithuanian localization has been updated.
+  + Vietnamese language/encoding detection patterns have been added.
+
+- Changes for 0.12.7
+  + Vietnamese interface taranslation by Phạm Văn Hùng_Firestork has been added.
+  + LitRes integration broken in the previous version has been fixed.
+
+- Changes for 0.12.6
+  + The viewing of ePub files from fictionwise.com has been fixed. A set of files from this site are compressed with some errors. However other readers (like Adobe Digital Editions) allows to read these books. FBReader 0.12.6 supports such books too.
+
+-------------------------------------------------------------------
+Sat Jan 16 21:43:37 UTC 2010 - Kirill Kirillov <kirill.kirillov@gmail.com>
+
+- Update to 0.12.1
+  + Integration with LitRes.ru has been improved. A link for signing up has been added. A browsing by authors and by genres has been added.
+  + Scrolling preferences have been simplified. Tap scrolling has been fixed.
+  + Lithuanian localization has been added (thanks to Stanislovas Zacharovas).
+  + Open file dialog behaviour has been fixed (in Gtk+ version).
+  + A crach on some mobipocket files has been fixed.
+
+-------------------------------------------------------------------
+Thu Dec 10 21:33:48 UTC 2009 - Kirill Kirillov <kirill.kirillov@gmail.com>
+
+- Update to 0.12.0
+  + New presentation of library.
+  + Better integration with network libraries: FeedBooks, LitRes,
+    Shucang and SmashWords. This version allows to browse catalogs,
+    to search and download the books. For LitRes (Russian e-library)
+    it is also possible to purchase books.
+  + Added Chinese localization (by Shucang).
+  + Image scaling has been implemented.
+  + Better encoding/language detection. Arabic and Indonesian patterns are back.
+  + Mobipocket, eReader and chm support have been improved.
+
+-------------------------------------------------------------------
+Sun Apr  5 21:44:21 MSD 2009 - kirill.kirillov@gmail.com
+
+- Update to 0.10.7
+  + A conflict between hyperlink clicks and touch scrolling has been fixed
+  
+- Changes for 0.10.2
+  + A bug with images/css links in epub has been fixed
+
+-------------------------------------------------------------------
+Sat Mar 21 15:27:58 MSK 2009 - kirill.kirillov@gmail.com
+
+- Update to 0.10.5
+  + An FBReader freeze has been fixed
+  + Several text selection related issues have been fixed
+
+-------------------------------------------------------------------
+Fri Mar 20 00:00:15 MSK 2009 - kirill.kirillov@gmail.com
+
+- Update to 0.10.4
+  + Multiple fixes in the epub format support
+
+-------------------------------------------------------------------
+Wed Mar  4 03:31:49 MSK 2009 - kirill.kirillov@gmail.com
+
+- Update to 0.10.3
+  + Some issues related to multi-file tar, tar.gz and tar.bz2
+    archives have been fixed.
+  + Greek hyphenation patterns were regenerated from another
+    TeX source.
+  + New version has no license issues from the Debian point of view
+
+- Changes for 0.10.2
+  + Images order in mobipocket files has been corrected.
+  + Indonesian localization files have been updated.
+
+- Changes for 0.10.1
+  + Fixed an infinite loop in library building code.
+  + Fixed <Space> key processing in qt4-based version.
+  + Book description is visible for books found in network libraries.
+
+-------------------------------------------------------------------
+Tue Jan 13 12:35:09 CET 2009 - lars@linux-schulserver.de
+
+- update to 0.10.0:
+  + Network libraries integration has been added. FBReader can 
+    search and download books from Feedbooks.com and LitRes 
+    libraries.
+  + Partial CSS support for epub files has been added. 
+    CSS support in html and fb2 is coming soon.
+  + Epub and Mobipocket book formats support has been substantially 
+    improved.
+  + Library view usability has been improved: you can now organize 
+    the tree either by author or by tag.
+  + You can now select a word by double-click and a paragraph 
+    by triple-click.
+  + Right-to-left languages and bidirectional texts support has 
+    been added (GNU FriBidi library is used).
+  + Support for Arabic, Hebrew, Greek and Turkish has been added.
+  + Czech localization has been added (many thanks to Lubomír Čevela).
+  + FBReader now has a new set of icons.
+  + It's now possible to use OS scrollbar for navigating through the 
+    text.
+- add fribidi-devel, libcurl-devel, libqt4-devel to BuildRequires
+- build gtk and qt4 ports
+
+-------------------------------------------------------------------
+Sun Nov 30 22:57:27 CET 2008 - lars@linux-schulserver.de
+
+- require libexpat-devel on > 11.0 
+
+-------------------------------------------------------------------
+Mon Sep 22 17:52:04 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Sun Mar 23 20:09:44 MSK 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.17
+  + Fixed crash after removing a book from library
+  + Updated Finnish interface translation
+
+-------------------------------------------------------------------
+Sat Mar 22 14:51:15 MSK 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.16
+  + Book tags support has been added
+  + The standard Unicode algorithm for line breaking in now used for
+  all languages (including Chinese) provided by liblinebreak library
+  + Fixed a bug with tapping scrolling/selection
+
+-------------------------------------------------------------------
+Mon Mar 17 21:52:56 CET 2008 - lars@linux-schulserver.de
+
+- specfile beautify
+- fix changelog
+- use fdupes
+- compress the source tarball 
+- use %suse_update_desktopfile macro
+- run /sbin/ldconfig
+
+-------------------------------------------------------------------
+Mon Mar 10 21:37:48 CET 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.15
+  + Freeze during text scrolling has been fixed.
+  + Indonesian localization (by Ketut Putu Kumajaya) has been added.
+  + From now FBReader remembers list of recent search patterns.
+
+- Changes for 0.8.14
+  + Fixed crash. It was always reproducable for maemo platform and 
+  was possible for all othr platforms.	   
+
+- Changes for 0.8.13
+  + Freeze on several files has been fixed.
+  + Plain text format support has been improved.
+  + 'Go to page by number' feature has been added. In desktop version, 
+  this feature is assigned to 'G' key by default.
+	      
+-------------------------------------------------------------------
+Sun Jan 20 22:00:00 CET 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.12 bug fix release:
+  + #44 "Undo" / "Redo" does not work
+  + #73 "Go back" / "Go forward" does not work
+  + #74 90% of Books Loop back to page 3 after page 9/10 
+
+-------------------------------------------------------------------
+Sat Jan 19 00:22:00 CET 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.11
+  + Tap scrolling is now available for all platforms with touchscreen
+  + XML namespace processing has been fixed in formats: oeb, epub, fb2
+  + Plain text with UNIX line delimiters problem has been fixed
+  + Default settings files are now human-readable
+
+-------------------------------------------------------------------
+Fri Jan 10 01:27:00 CET 2008 - kirill.kirillov@gmail.com
+
+- Update to 0.8.10
+
+-------------------------------------------------------------------
+Sat Sep  1 20:47:00 CET 2007 - michel.sylvan@gmail.com
+
+- Strip debugging info into separate subpackage
+
+-------------------------------------------------------------------
+Wed Aug 29 22:02:00 CET 2007 - michel.sylvan@gmail.com
+
+- Adjust file listing to accomodate changes from previous version
+
+-------------------------------------------------------------------
+Wed Aug 29 20:21:00 CET 2007 - michel.sylvan@gmail.com
+
+- Add missing BR: on libjpeg-devel (upstream documentation is misleading)
+
+-------------------------------------------------------------------
+Wed Aug 29 15:48:00 CET 2007 - michel.sylvan@gmail.com
+
+- Update to 0.8.6b
+
+-------------------------------------------------------------------
+Mon Jul 02 00:00:00 CET 2007 - Wade Berrier <wberrier@gmail.com>
+
+- Update to 0.8.4a
+
+-------------------------------------------------------------------
+Mon Jun  4 00:00:00 CET 2007 - Wade Berrier <wberrier@gmail.com>
+
+- New package

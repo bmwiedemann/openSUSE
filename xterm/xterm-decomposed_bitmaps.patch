@@ -1,0 +1,42 @@
+From: Egbert Eich <eich@suse.de>
+Date: Tue Jun 3 18:17:07 2014 +0200
+Subject: [PATCH]Fix number of colormap entries for DirectColor and TrueColor visuals
+Patch-mainline: to be upstreamed
+Git-commit: 071525466531009223f1c21a40aa2e081d5ef99a
+Git-repo:
+References: bnc#
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+DirectColor and TrueColor have a decomposed colormap,
+therefore the colormap_size field in the XVisualInfo
+structure is meant per sub-field (take a look at the output
+of xdpyinfo).
+With 3 sub-fields there are colormap_size^3 entires.
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ xterm-299/misc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/misc.c b/misc.c
+--- a/misc.c
++++ b/misc.c
+@@ -2350,16 +2350,18 @@ ReportAnsiColorRequest(XtermWidget xw, i
+ }
+ 
+ static void
+ getColormapInfo(XtermWidget xw, unsigned *typep, unsigned *sizep)
+ {
+     if (getVisualInfo(xw)) {
+ 	*typep = (unsigned) xw->visInfo->class;
+ 	*sizep = (unsigned) xw->visInfo->colormap_size;
++	if (*typep > 3)
++		*sizep = (*sizep)*(*sizep)*(*sizep);
+     } else {
+ 	*typep = 0;
+ 	*sizep = 0;
+     }
+ }
+ 
+ #define MAX_COLORTABLE 4096
+ 

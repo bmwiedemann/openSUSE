@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue Jul  9 12:46:17 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.99.12p2
+  * (configure.ac): Fix IRIX detection. Permit nonnumeric versions
+    in Automake.
+- Added baselibs.conf as source
+- Added libcdaudio-getmntinfo.patch to fix Factory build
+  (courtesy of debian)
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Nov 23 18:53:00 UTC 2012 - jengelh@inai.de
+
+- Employ shared library packaging guidelines
+- Use %_smp_mflags for parallel build
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+ 
+- added 32bit compatibility libraries
+- updated group (fix for RPMLINT warning)
+- proper capitalization in summary (fix for RPMLINT warning)
+- added BuildRequires:  pkg-config (fix for RPMLINT warning)
+- added download url (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Fri Dec  4 15:41:17 CET 2009 - ro@suse.de
+
+- added missing fclose (bnc#550697) 
+
+-------------------------------------------------------------------
+Tue Aug  4 18:21:18 CEST 2009 - ro@suse.de
+
+- added closedir to prevent dirp leakage (bnc#527425) 
+
+-------------------------------------------------------------------
+Fri Jul 17 15:27:26 CEST 2009 - ro@suse.de
+
+- fix potential double-free (bnc#515027) 
+
+-------------------------------------------------------------------
+Tue Oct  7 18:03:15 CEST 2008 - dmueller@suse.de
+
+- safer reading of local cddb cache (bnc#432933)
+
+-------------------------------------------------------------------
+Thu Dec 27 05:33:07 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postun
+- remove useless libtool archive and static libraries 
+
+-------------------------------------------------------------------
+Sun Nov 26 23:33:13 CET 2006 - ro@suse.de
+
+- make devel package require main package (#223370) 
+
+-------------------------------------------------------------------
+Tue Oct 31 10:31:04 CET 2006 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 18:17:33 CEST 2005 - ro@suse.de
+
+- split package from mythplugins
+

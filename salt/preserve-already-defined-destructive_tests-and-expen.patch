@@ -1,0 +1,34 @@
+From 5a1e0b7b8eab900e03fa800cc7a0a2b59bf2ff55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 3 Jun 2019 11:38:36 +0100
+Subject: [PATCH] Preserve already defined DESTRUCTIVE_TESTS and
+ EXPENSIVE_TESTS env variables
+
+---
+ tests/support/parser/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/support/parser/__init__.py b/tests/support/parser/__init__.py
+index ed262d46c0..f269457670 100644
+--- a/tests/support/parser/__init__.py
++++ b/tests/support/parser/__init__.py
+@@ -574,12 +574,12 @@ class SaltTestingParser(optparse.OptionParser):
+ 
+         self.validate_options()
+ 
+-        if self.support_destructive_tests_selection:
++        if self.support_destructive_tests_selection and not os.environ.get('DESTRUCTIVE_TESTS', None):
+             # Set the required environment variable in order to know if
+             # destructive tests should be executed or not.
+             os.environ['DESTRUCTIVE_TESTS'] = str(self.options.run_destructive)
+ 
+-        if self.support_expensive_tests_selection:
++        if self.support_expensive_tests_selection and not os.environ.get('EXPENSIVE_TESTS', None):
+             # Set the required environment variable in order to know if
+             # expensive tests should be executed or not.
+             os.environ['EXPENSIVE_TESTS'] = str(self.options.run_expensive)
+-- 
+2.17.1
+
+

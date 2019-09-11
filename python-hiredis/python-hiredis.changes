@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Aug 29 12:50:09 UTC 2018 - tchvatal@suse.com
+
+- Initial commit, possibly used by python-redis
+- Add patch to use system hiredis package:
+  * 0001-Use-system-libhiredis.patch
+- Add two more patches from debian:
+  * reproducible-build.patch
+  * fix_build_dir_in_tests.patch
+

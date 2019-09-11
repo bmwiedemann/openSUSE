@@ -1,0 +1,30 @@
+commit c59ca3fa7a63c7c13fb6be2d9642feeeaef603e2
+Author: Christophe Giboudeaux <christophe@krop.fr>
+Date:   Sun Oct 21 11:29:04 2018 +0200
+
+    Don't strip files.
+    
+    This prevents the debug package from being created.
+
+diff --git a/siputils.py b/siputils.py
+index a29300d..d58537c 100644
+--- a/siputils.py
++++ b/siputils.py
+@@ -1473,7 +1473,7 @@ class ModuleMakefile(Makefile):
+     """
+     def __init__(self, configuration, build_file, install_dir=None, static=0,
+                  console=0, qt=0, opengl=0, threaded=0, warnings=1, debug=0,
+-                 dir=None, makefile="Makefile", installs=None, strip=1,
++                 dir=None, makefile="Makefile", installs=None, strip=0,
+                  export_all=0, universal=None, arch=None,
+                  deployment_target=None):
+         """Initialise an instance of a module Makefile.
+@@ -1784,7 +1784,7 @@ class SIPModuleMakefile(ModuleMakefile):
+     """
+     def __init__(self, configuration, build_file, install_dir=None, static=0,
+                  console=0, qt=0, opengl=0, threaded=0, warnings=1, debug=0,
+-                 dir=None, makefile="Makefile", installs=None, strip=1,
++                 dir=None, makefile="Makefile", installs=None, strip=0,
+                  export_all=0, universal=None, arch=None, prot_is_public=0,
+                  deployment_target=None):
+         """Initialise an instance of a SIP generated module Makefile.

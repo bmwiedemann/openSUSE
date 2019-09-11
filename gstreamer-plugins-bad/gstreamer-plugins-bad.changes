@@ -1,0 +1,2901 @@
+-------------------------------------------------------------------
+Mon Aug 12 07:15:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move openh264 plugin to build_orig and build it there
+  unconditionally.
+
+-------------------------------------------------------------------
+Mon Jul 22 07:26:09 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update fix-Werror=return-type.patch to upstream version.
+
+-------------------------------------------------------------------
+Wed Jul 17 01:49:58 UTC 2019 - Rich Coe <rcoe@wi.rr.com>
+
+- Add gst-plugins-bad-do-not-retry-downloads-during-shutdown.patch for hang (bwo#197558)
+
+-------------------------------------------------------------------
+Mon Jul 15 16:09:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(vdpau) BuildRequires and libgstvdpau sub-package.
+  Obsolete it from the main gstreamer-plugins-bad package. Upstream
+  have now dropped the package from master, and currently it only
+  supports mpeg2 and poorly even that one. It will not make a
+  comeback, so obsolete all versions.
+
+-------------------------------------------------------------------
+Mon Jul 15 14:46:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-bad-Fix-compilation-with-openh264-v2.0.patch: Fix build
+  with openh264 version 2.0 and newer.
+
+-------------------------------------------------------------------
+Mon Jul 15 11:15:14 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Fix -Werror=return-type error in configure script
+  (fix-Werror=return-type.patch).
+
+-------------------------------------------------------------------
+Sat Jul  6 13:28:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional pkgconfig(libmfx) and pkgconfig(libva-drm)
+  BuildRequires: Build intel-mediasdk support.
+
+-------------------------------------------------------------------
+Mon Jul  1 16:09:56 UTC 2019 - mgorse@suse.com
+
+- Re-enable musepack: depend on musepack-devel, rather than
+  libmpcdec-devel; the latter is no longer sufficient as of 1.16.0.
+  Add musepack plugin back into files.
+
+-------------------------------------------------------------------
+Thu Jun 27 08:37:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libgstsctp-1_0-0 to baselibs.conf:
+  gstreamer-plugins-bad-32bit requires it.
+
+-------------------------------------------------------------------
+Mon Jun 17 20:47:45 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0:
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support, as
+      well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+    - Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin (msdk):
+      dmabuf import/export for zero-copy integration with other
+      components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element that
+      allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Add incomplete meson support. Currently disabled.
+- Drop gstreamer-plugins-bad-reproducible.patch: fixed upstream.
+- Disable musepack plugin and remove from files, since it
+  requires a newer library than what we currently have.
+- Remove libgstcompositor.so and libgstopenglmixers.so: moved to
+  -base.
+-Removed libgststereo.so from files: merged with audiofx in -good.
+- Remove libgstvcdsrc.so from files: removed upstream.
+- Add libgstclosedcaption.so to files.
+- Remove libgstbadvideo package: now in -base.
+- Package libgstcp.
+
+-------------------------------------------------------------------
+Fri May 31 22:14:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + assrender: fix disappearing subtitles when seeking back in
+    time.
+  + decklinkvideosink: fix segfault when audiosink is closed before
+    videosink.
+  + decklinkvideosrc: respect pixel format property even if mode is
+    set to auto.
+  + d3dvideosink: Fix calculating buffer size of packed format;
+    don’t leak thread object.
+  + dtls: Don’t abort on non-fatal issues, make work with newer
+    OpenSSL versions.
+  + msdk: more robust error handling; fix intel sdk libdir path.
+  + nvenc: Ensure drain all frames on finish; fix element reuse and
+    clean up properly.
+  + openh264dec: Fix handling of errors when doing EOS.
+  + shmsrc: fixes a crash when is-live is true due a race
+    condition.
+  + shmsink: fix possible (racy) deadlock on shutdown.
+  + siren: Fix invalid floating point operation.
+  + tsdemux: Skew correction improvements: use upstream DTS if set.
+  + wasapi:
+    - Number of segments was always 2 (the absolute minimum) by
+      accident.
+    - Fix infinite loop when the device disappears.
+- Drop gst-bad-fdkaac2-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu May  2 15:42:08 UTC 2019 - olaf@aepfle.de
+
+- The license of fdk-aac is not GPL compatible, therefore this pkg
+  can not possibly be built with fdk-aac by default
+  To gain fdk-aac support, recompile it at home and keep it there
+- Restore code to handle faac/faad
+
+-------------------------------------------------------------------
+Thu Dec 13 06:09:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-bad-fdkaac2-fix.patch: fdkaac: Fixes for compatibility
+  with libfdk-aac 2.0.0 (boo#1120299).
+
+-------------------------------------------------------------------
+Wed Oct  3 15:46:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:27:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Fri Aug  3 16:45:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Add pkgconfig(aom) BuildRequires: Build AOMedia Video 1 (AV1)
+  support.
+
+-------------------------------------------------------------------
+Mon Jul 23 13:43:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + Update docs.
+  + find_codec_preferences: use received caps.
+  + player: Avoid trying to join the player thread from itself.
+  + decklink: Fix warning about HRESULT not being unsigned int.
+  + pitch: Flush only if there are unprocessed samples.
+  + pitch: preserve seek event seqnums.
+  + pitch: fix latency reporting.
+  + pitch: Fix single input buffer followed by EOS.
+  + videoaggregator: Fix string leak.
+  + videoaggregator: log an ERROR if we're going to return a flow
+    error.
+  + dvb: Fix typo in comment termination.
+  + dvb: camconditionalaccess: fix wrong license headers.
+  + webrtc: Fix memory leak.
+  + webrtc: Clean up and fix transportsendbin.
+  + webrtc: Move dtlssrtpenc state management.
+  + webrtc/dtlstransport: Add more debug. Rename category.
+  + webrtc: Clean up pad block allocs on dispose.
+  + webrtc: Move the transportsendbin pad block removal.
+  + webrtc: Fix wrong parent classes for DTLSTransport and
+    ICETransport.
+  + webrtc: Explicitly initialise mutex and condition.
+  + webrtc: Don't deadlock on block pads on shutdown.
+  + webrtcbin: copy sticky events on our ghostpads.
+  + webrtcbin: rtpstorage takes a 64-bit integer for "size-time"
+    property.
+  + webrtcbin: implement support for FEC and RTX.
+  + player: Fix duration-changed CRITICAL warning if duration did
+    not actually change.
+  + gst_webrtc_session_description_new: fix annotations.
+  + tsdemux: Don't set invalid seqnum on segment event.
+  + tsdemux: Don't query duration if program isn't active.
+  + mpegtsdemux: Fix SEGMENT seqnum propagation.
+  + codecparsers: mpeg2: don't mess the StartCode only packets.
+  + wasapisink: fix a rounding error when calculating the buffer
+    frame count.
+  + wasapisink: fix missing unlock in case IAudioClient_Start
+    fails.
+  + wasapi: use FAILED to detect errors.
+  + wasapi: Don't pass CoTaskMemFree to g_clear_pointer.
+
+-------------------------------------------------------------------
+Sat Jun 23 21:35:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Conditionalize pkgconfig(libopenmpt) and pkgconfig(lilv-0)
+  BuildRequires: fix build for SLE 12 SP3.
+
+-------------------------------------------------------------------
+Fri Jun 22 10:21:43 UTC 2018 - bjorn.lie@gmail.com
+
+- Conditionalize pkgconfig(libsrtp2) and pkgconfig(nice)
+  BuildRequires: fix build for Leap 42.3.
+
+-------------------------------------------------------------------
+Fri Jun  8 20:22:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Add back faac-devel, there are some old apps explicitly depending
+  on that plugin to to do aac encoding.
+
+-------------------------------------------------------------------
+Tue May 29 20:45:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Add pkgconfig(srt) BuildRequires: Build srt plugin.
+
+-------------------------------------------------------------------
+Mon May 28 10:01:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop faac-devel and faad2-devel BuildRequires: fdk-aac plugin
+  fills this role for both of them.
+- No longer pass conditional --disable-dvdspu to configure, plugin
+  files are all LGPL-2.1.
+
+-------------------------------------------------------------------
+Sun May 20 09:38:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Mon Apr 16 21:19:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+- Drop libgstgl-1_0-0 typelib-1_0-GstGL-1_0,
+  libgstbadallocators-1_0-0 libgstbadbase-1_0-0 and
+  typelib-1_0-GstBadAllocators-1_0 sub-packages, moved to
+  gst-plugins-base package. Also drop libgstgl-1_0-0 and
+  libgstbadbase-1_0-0 from baselibs.conf and corresponding Requires
+  and post(un) handling of various dropped sub-packages.
+- Add new sub-packages libgstisoff-1_0-0, libgstwebrtc-1_0-0, and
+  handle them in post(un), also add typelib-1_0-GstWebRTC-1_0 and
+  add respective Requires in devel sub-package. Finaly add
+  libgstisoff-1_0-0 and libgstwebrtc-1_0-0 to baselibs.conf.
+- Add pkgconfig(nice) BuildRequires: New dependency, build WebRTC
+  support.
+- Add pkgconfig(lcms2) BuildRequires: Build colormanagement
+  support.
+- Add pkgconfig(libopenmpt) BuildRequires: Build openmpt support.
+- Replace pkgconfig(libsrtp) with pkgconfig(libsrtp2)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Thu Mar 29 12:43:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: bgo#794069, bgo#794353, bgo#794620, bgo#794537,
+    bgo#793629, bgo#789476, bgo#789476, bgo#791910, bgo#791813,
+    bgo#791772, bgo#791330, bgo#791982.
+- Drop gst-bad-vtdec-destroy-create-fix.patch and
+  gst-bad-player-transfer-ownership.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 23 14:00:06 UTC 2018 - fcrozat@suse.com
+
+- Move BuildRequires pkgconfig(dvdnav/dvdread) to BUILD_ORIG
+  section. It is only needed when building BUILD_ORIG package,
+  which is not the case for official builds for openSUSE Leap,
+  Tumbleweed or SLE.
+
+-------------------------------------------------------------------
+Fri Mar  2 20:28:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-bad-revert-automake-autoconf-versions.patch: Revert the
+  autoconf and automake version bump upstream did without
+  consideration about us, allow to build with the automake we have
+  Leap 42.3 and SLE12.
+- Following the above patch, drop the explicit automake
+  BuildRequires, as libtool BuildRequires brings it in, and we can
+  now build with the old version we have in Leap/SLE.
+
+-------------------------------------------------------------------
+Wed Feb 28 21:02:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Split out fluidsynth plugin in new sub-package
+  gstreamer-plugins-bad-fluidsynth.
+- Following the above, add gstreamer-plugins-bad-fluidsynth and
+  already built sub-package gstreamer-plugins-bad-chromaprint to
+  baselibs.conf, build 32-bits support for these too.
+- Add conditional gstreamer-plugins-bad-fluidsynth and
+  gstreamer-plugins-bad-chromaprint Requires: to -devel
+  sub-package.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:38 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:19 UTC 2018 - bwiedemann@suse.com
+
+- Add gstreamer-plugins-bad-reproducible.patch to avoid variations
+  in gtk-doc output (boo#1048207).
+- Following the above, add automake and libtool BuildRequires and
+  pass autoreconf, as the above patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Thu Feb 22 21:36:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Move pkgconfig(mjpegtools) BuildRequires and resulting plugins to
+  normal build, mjpegtools with all needed features are now
+  available in openSUSE.
+- No longer pass --disable-mpegpsmux and --disable-mpegtsmux to
+  configure, and move the resulting plugins to normal build. This
+  was originally done due to a possible license issue, however on
+  closer inspection, the plugins in question clearly states that
+  one can use any of the four licenses listed, so we elect to use
+  LGPL-2.1+.
+- Remove conditional for libgstwayland-1_0-0 subpackage, need due
+  to it beeing in baselibs.conf, and lint bots declines this now.
+
+-------------------------------------------------------------------
+Fri Dec 29 19:26:46 UTC 2017 - zaitor@opensuse.org
+
+- Add gst-bad-player-transfer-ownership.patch: player: transfer
+  ownership of info properties (bgo#791982).
+
+-------------------------------------------------------------------
+Sat Dec 23 14:29:12 UTC 2017 - zaitor@opensuse.org
+
+- Add gst-bad-vtdec-destroy-create-fix.patch: vtdec: destroy and
+  create the GL context on start()/stop(). Removes a reference
+  count loop.
+- Add python3-xml BuildRequires and switch to using plain make
+  instead of make_build macro, and add conditional for
+  pkgconfig(graphene-1.0), pkgconfig(wayland-client),
+  pkgconfig(wayland-cursor), pkgconfig(wayland-egl),
+  pkgconfig(wayland-protocols) and pkgconfig(wayland-scanner)
+  BuildRequires and the .so and sub-package produced, fix build for
+  old versions of openSUSE.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:59:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + openjpeg: Support building with openjpeg 2.3 (bgo#788703).
+  + Bugs fixed: bgo#784593, bgo#787293, bgo#787942, bgo#789999,
+    bgo#790042, bgo#790812, bgo#791258.
+- Drop gstpb-support-openjpeg-2.3.patch: Fixed upstream. Following
+  this; drop autoconf, automake and libtool BuildRequires, and no
+  longer pass autoreconf, no needed anymore.
+
+-------------------------------------------------------------------
+Fri Dec  8 21:43:35 UTC 2017 - dimstar@opensuse.org
+
+- Move pkgconfig(libmodplug) BuildRequires, and thus libmodplug
+  module, to build-orig. This move is not legally motivated, but
+  rather build time optimization as it helps us eliminate a build
+  cycle in openSUSE.
+
+-------------------------------------------------------------------
+Wed Nov 29 14:46:34 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3:
+  + Replace python-base BuildRequires with python3-base.
+  + Export PYTHON=/usr/bin/python3 before calling configure.
+
+-------------------------------------------------------------------
+Mon Nov 27 12:55:41 UTC 2017 - zaitor@opensuse.org
+
+- Add pkgconfig(libde265) BuildRequires in orig-addon subpackage,
+  build h.265 (HVEC) decode support.
+
+-------------------------------------------------------------------
+Wed Nov  8 10:32:37 UTC 2017 - dimstar@opensuse.org
+
+- Disable %glib2_gsettings_schema_post/postun scriptlets on
+  suse_version >= 1330: this functionality is now covered by file
+  triggers and the macros expand to %nil.
+
+-------------------------------------------------------------------
+Wed Nov  8 00:51:14 UTC 2017 - kill_it@mail.ru
+
+- Enable gobject introspection bindings:
+  + Add gobject-introspection-devel BuildRequires: allow the build
+    system to find the needed infrastructure.
+  + Pass --enable-introspection to configure: enable the
+    introspection support.
+  + Split out new typelib- packages:
+    - typelib-1_0-GstBadAllocators-1_0
+    - typelib-1_0-GstGL-1_0
+    - typelib-1_0-GstInsertBin-1_0
+    - typelib-1_0-GstMpegts-1_0
+    - typelib-1_0-GstPlayer-1_0
+
+-------------------------------------------------------------------
+Mon Nov  6 21:56:56 UTC 2017 - zaitor@opensuse.org
+
+- Move pkgconfig(mjpegtools) BuildRequires to orig-addon: mplex
+  without mpeg2enc support is pointless, so keep those two in the
+  same build conditional.
+
+-------------------------------------------------------------------
+Fri Oct 27 09:43:39 UTC 2017 - idonmez@suse.com
+
+- Add gstpb-support-openjpeg-2.3.patch: fix build with openjpeg 2.3
+  (bgo#788703).
+- Add autoconf, automake and libtool BuildRequires and call
+  autoreconf, since above patch touches the build system.
+
+-------------------------------------------------------------------
+Thu Sep 28 11:42:21 UTC 2017 - dimstar@opensuse.org
+
+- Split out chromaprint plugin into
+  gstreamer-plugins-bad-chromaprint: the chromaprint plugin links
+  against ffmpeg (indirectly) which in turn can cause cycles in
+  various other builds, like webkit2).
+
+-------------------------------------------------------------------
+Mon Sep 18 21:29:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Bugs fixed: bgo#767462, bgo#782379, bgo#784887, bgo#785119,
+    bgo#785941, bgo#785957, bgo#785987, bgo#786036, bgo#786201,
+    bgo#786250, bgo#787234, bgo#787309, bgo#787442, bgo#787727.
+- Replace pkgconfig(libopenjpeg1) with pkgconfig(libopenjp2)
+  BuildRequires: Build against the new branch of libopenjpeg.
+
+-------------------------------------------------------------------
+Tue Sep  5 11:51:52 UTC 2017 - fcrozat@suse.com
+
+- Fix file list on SLE, libgstteletext.so is only built on
+  openSUSE.
+
+-------------------------------------------------------------------
+Fri Aug 25 20:26:16 UTC 2017 - zaitor@opensuse.org
+
+- Drop conditional valgrind-devel BuildRequires, this type of
+  debugging is probably not done by users of binary packages.
+- Simplify spec, drop obsolete conditionals for openSUSE, keep only
+  conditionals for new versions of SLE (and BUILD_ORIG).
+- Clean spec, modernize where appropriate, update macros.
+- Add explicit pkgconfig(glib-2.0), pkgconfig(gstreamer-1.0),
+  pkgconfig(gmodule-export-2.0) and
+  pkgconfig(gstreamer-plugins-base-1.0) BuildRequires: align with
+  what configure looks for.
+- Add missing Requires to devel sub-package:
+  + libgstbadallocators-1_0-0.
+  + libgstbadaudio-1_0-0.
+  + libgstwayland-1_0-0.
+
+-------------------------------------------------------------------
+Fri Jul 28 09:33:10 UTC 2017 - zaitor@opensuse.org
+
+- Add Mesa-libGLESv3-devel, pkgconfig(egl), pkgconfig(gl) and
+  pkgconfig(glesv1_cm) BuildRequires: Add missing dependencies to
+  build full EGL/GL/GLES support.
+
+-------------------------------------------------------------------
+Fri Jul 28 09:33:09 UTC 2017 - zaitor@opensuse.org
+
+- Add pkgconfig(libsrtp) BuildRequires: Build srtp support.
+
+-------------------------------------------------------------------
+Fri Jul 14 11:49:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Bugs fixed: bgo#764025, bgo#773159, bgo#782774, bgo#783028,
+    bgo#783075, bgo#783244, bgo#784027, bgo#784059, bgo#784210,
+    bgo#784439, bgo#784510, bgo#784755.
+
+-------------------------------------------------------------------
+Tue Jun 20 17:00:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + Bugs fixed: bgo#783028, bgo#773681, bgo#776609, bgo#779202,
+    bgo#781249, bgo#781561, bgo#782221, bgo#782352, bgo#782376,
+    bgo#782693, bgo#782697, bgo#782736, bgo#782771, bgo#782801,
+    bgo#782921, bgo#783066, bgo#783075, bgo#783255, bgo#783256,
+    bgo#783401, bgo#783626, bgo#781204.
+
+-------------------------------------------------------------------
+Mon Jun 12 21:14:34 UTC 2017 - zaitor@opensuse.org
+
+- Pass --disable-mpegpsmux, --disable-mpegtsmux and
+  --disable-resindvd to configure when building for openSUSE on the
+  OBS until we can get the licensing sorted upstream. Move the
+  plugins to the orig-addon package.
+
+-------------------------------------------------------------------
+Sat May 27 00:49:55 UTC 2017 - zaitor@opensuse.org
+
+- Add missing libgstplayer-1_0-0 Requires to
+  gstreamer-plugins-bad-devel sub package.
+
+-------------------------------------------------------------------
+Mon May  8 12:52:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + Bugs fixed: bgo#773681, bgo#764947, bgo#780976, bgo#782046,
+    bgo#782119, bgo#782078.
+- Changes from version 1.11.91:
+  + Bugs fixed: bgo#729371, bgo#764011, bgo#778237, bgo#780190,
+    bgo#780397, bgo#780402, bgo#780494, bgo#780569, bgo#780570,
+    bgo#780897, bgo#781017, bgo#781018, bgo#781019, bgo#781022,
+    bgo#781023, bgo#781024, bgo#781027, bgo#781037, bgo#781043,
+    bgo#781156, bgo#781170, bgo#781179, bgo#781188, bgo#781233,
+    bgo#781267, bgo#781320, bgo#781539, bgo#781725.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#736213, bgo#755782, bgo#764726, bgo#772811,
+    bgo#774544, bgo#775487, bgo#776436, bgo#776997, bgo#776999,
+    bgo#777847, bgo#778073, bgo#778333, bgo#778731, bgo#778825,
+    bgo#779011, bgo#779067, bgo#779309, bgo#779333, bgo#779447,
+    bgo#779453, bgo#779790, bgo#779831, bgo#779856, bgo#779869,
+    bgo#780064, bgo#780108, bgo#780179, bgo#780180, bgo#780330,
+    bgo#780367.
+- Stop passing --disable-fatal-warnings to configure, not needed on
+  stable branch.
+- Package new sub package libgstbadallocators-1_0-0.
+
+-------------------------------------------------------------------
+Fri Feb 24 23:39:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Bugs fixed: bgo#764947, bgo#758257, bgo#773709, bgo#775665,
+    bgo#776360, bgo#776490, bgo#777181, bgo#777206, bgo#777376,
+    bgo#777377, bgo#777394, bgo#777652, bgo#777682, bgo#777741,
+    bgo#777760, bgo#778028, bgo#778076, bgo#778142, bgo#778703,
+    bgo#779064, bgo#779070, bgo#779103, bgo#779154.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:05:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#696852, bgo#711155, bgo#746018, bgo#751324,
+    bgo#753003, bgo#755036, bgo#758232, bgo#760172, bgo#771992,
+    bgo#772357, bgo#773473, bgo#773521, bgo#773570, bgo#773932,
+    bgo#773936, bgo#774035, bgo#774112, bgo#774132, bgo#774177,
+    bgo#774178, bgo#774196, bgo#774223, bgo#774357, bgo#774400,
+    bgo#774463, bgo#774485, bgo#774493, bgo#774518, bgo#774530,
+    bgo#774576, bgo#774629, bgo#774637, bgo#774689, bgo#774850,
+    bgo#774886, bgo#775171, bgo#775248, bgo#775293, bgo#775306,
+    bgo#775377, bgo#775378, bgo#775379, bgo#775409, bgo#775746,
+    bgo#775791, bgo#775793, bgo#775967, bgo#776047, bgo#776076,
+    bgo#776141, bgo#776317, bgo#776352, bgo#776399, bgo#776431,
+    bgo#776722, bgo#776727, bgo#776787, bgo#776790, bgo#776900,
+    bgo#777048, bgo#777078, bgo#777097, bgo#777121, bgo#773927,
+    bgo#770990, bgo#774587, bgo#774793, bgo#775726, bgo#775288,
+    bgo#772822, bgo#774527.
+- Gstreamer-plugins-bad now allows for disabling of internal
+  dependency free plugins, hence we now pass conditional
+  --disable-dvdspu and --disable-siren to configure, as those are
+  the last internal plugins we disable.
+- Following the above drop pre_checkin.sh,
+  gstreamer-plugins-bad-patch-source.sh and
+  gst-plugins-bad-x.xx.x-patched.tar.xz, we no longer need to
+  generate a patched tarball.
+- Drop gstreamer-revert-bogus-automake-version.patch, gnome-common
+  BuildRequires and autogen.sh call, no longer needed since we are
+  not using the patched tarball.
+- Pass --disable-fatal-warnings to configure, and add fixme, needed
+  now with unstable tarball.
+- Tweak fdupes macro usage, less rpmlint warnings.
+- Add missing Requires in devel subpackage.
+- Pass --disable-festival to configure, unmaintained and slated for
+  removal upstream, currently causes rpmlint warnings (bgo#774508).
+- Add define ENABLE_OPENH264 and and conditional
+  pkgconfig(openh264) BuildRequires, currently set to disabled (0).
+  Build openh264 support. Using define so we can quickly enable it,
+  should we be able to get openh264 into the distro.
+- Replace gstreamer-devel and gstreamer-plugins-base-devel with
+  pkgconfig(gstreamer-video-1.0), pkgconfig(gstreamer-audio-1.0)
+  and pkgconfig(gstreamer-pbutils-1.0) BuildRequires: Align with
+  what configure checks for.
+- Enable conditional pkgconfig(graphene-1.0) BuildRequires for
+  openSUSE 1330 (TW) and newer.
+- Enable pkgconfig(libdc1394-2) BuildRequires: Plugin now ported
+  to gst-1.0.
+- Drop pkgconfig(libtimidity) BuildRequires: No longer needed nor
+  used.
+- Drop bcond_with divx4linux and divx4linux-devel BuildRequires:
+  Plugin no longer available.
+- Drop several disabled BuildRequires and plugins, the non-ported
+  plugins have been dropped from upstream source.
+- Add pkgconfig(fdk-aac) BuildRequires in ORIG: Build fdk-aac
+  support.
+- Drop obsolete libgstvdp subpackage and conditionals in place for
+  it (also from baselibs.conf).
+
+-------------------------------------------------------------------
+Thu Feb 23 19:05:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4 (CVE-2017-5848):
+  + Bugs fixed: bgo#776612, bgo#777841, bgo#777957, bgo#777979,
+    bgo#778297, bgo#778434, bgo#778452, bgo#778828.
+- Drop gstreamer-plugins-bad-CVE-2017-5848.patch: Fixed upstream.
+- Drop pkgconfig(libtimidity) BuildRequires: Not needed as plugin
+  is not ported to 1.0 branch, and even dropped entirely in
+  upcomming 1.12.0 release.
+
+-------------------------------------------------------------------
+Sat Feb  4 20:33:04 UTC 2017 - zaitor@opensuse.org
+
+- Fix CVE-2017-5847 (boo#1023259):
+  + Add gstreamer-plugins-bad-CVE-2017-5848.patch: psdemux: Rewrite
+    PSM parsing using GstByteReader. Avoid possible buffer
+    overflows and ignore invalid PSM packets better by using
+    GstByteReader (bgo#777957).
+
+-------------------------------------------------------------------
+Thu Feb  2 12:07:47 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-bad Requires in devel subpackage.
+
+-------------------------------------------------------------------
+Mon Jan 30 15:45:26 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3 (CVE-2017-5838):
+  + Bugs fixed: bgo#740101, bgo#775072, bgo#775292, bgo#775970,
+    bgo#776072, bgo#776244, bgo#776461, bgo#776591, bgo#776722,
+    bgo#776726, bgo#777143, bgo#777144, bgo#777400, bgo#777503,
+    bgo#777533, bgo#777742, bgo#777930.
+
+-------------------------------------------------------------------
+Fri Dec  9 06:47:32 UTC 2016 - olaf@aepfle.de
+
+- Wrap wayland support properly to fix builderrors in non-TW.
+
+-------------------------------------------------------------------
+Sat Dec  3 18:58:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Bugs fixed: bgo#774624, bgo#774702, bgo#774851, bgo#774896,
+    bgo#775048, bgo#775120, bgo#775127, bgo#775130.
+
+-------------------------------------------------------------------
+Sun Nov 27 10:54:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Bugs fixed: bgo#773681, bgo#773313, bgo#774287, bgo#774328,
+    bgo#774462.
+
+-------------------------------------------------------------------
+Wed Nov  2 22:36:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.0:
+  + Bugs fixed: bgo#758717, bgo#762717, bgo#769382, bgo#770528,
+    bgo#770587, bgo#772330, bgo#772499, bgo#772503, bgo#772698,
+    bgo#772699, bgo#772704, bgo#772706, bgo#772742, bgo#773026,
+    bgo#773423, bgo#773540, bgo#773635, bgo#773720, bgo#772608.
+  + Updated translations.
+- Rebase gstreamer-plugins-bad-patch-source.sh.
+- Package new plugins: musepack and timecode.
+- Replace disabled pkgconfig(slv2) BuildRequires with
+  pkgconfig(lilv-0), and enabled it following upstream changes.
+  Drop bcond_with lv2 and move built plugin to main package, all
+  dependencies are now available in openSUSE.
+- Add disabled pkgconfig(graphene-1.0) BuildRequires, new optional
+  dependency, not yet available in openSUSE.
+- Add pkgconfig(webrtc-audio-processing) BuildRequires: Build
+  webrtcdsp plugin.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Add pkgconfig(gstreamer-allocators-1.0), pkgconfig(libdrm) and 
+  pkgconfig(libkms) BuildRequires: Build new kmssink plugin, mainly
+  targeted for embedded systems.
+
+-------------------------------------------------------------------
+Sat Oct  8 22:34:12 UTC 2016 - zaitor@opensuse.org
+
+- Fix conditional for pkgconfig(tiger) to only apply for
+  Tumbleweed.
+
+-------------------------------------------------------------------
+Sun Sep 18 11:18:25 UTC 2016 - zaitor@opensuse.org
+
+- Enable pkgconfig(tiger) BuildRequires for Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:38:26 UTC 2016 - fezhang@suse.com
+
+- Disable libbs2b support when building on SLE.
+
+-------------------------------------------------------------------
+Mon Aug 22 19:27:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + Bugs fixed: bgo#767492, bgo#769376, bgo#736227, bgo#768160,
+    bgo#767553, bgo#761260, bgo#763044, bgo#763081, bgo#756866,
+    bgo#768771, bgo#766662, bgo#766163, bgo#768146, bgo#766663,
+    bgo#767792, bgo#767492, bgo#767635.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 12 19:29:57 UTC 2016 - zaitor@opensuse.org
+
+- Move libbs2b-devel BuildRequires and corresponding plugin to
+  main package. There is no need for this to be in the addon one.
+
+-------------------------------------------------------------------
+Mon Jul 11 14:33:12 UTC 2016 - fcrozat@suse.com
+
+- Really disable wayland support on SLE12.
+
+-------------------------------------------------------------------
+Mon Jun 20 12:13:30 UTC 2016 - fcrozat@suse.com
+
+- Disable zbar support when building on SLE.
+
+-------------------------------------------------------------------
+Wed Jun 15 09:20:35 UTC 2016 - dimstar@opensuse.org
+
+- Enable zbar support (needed for a new key-signing tool):
+  + Add pkgconfig(zbar) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jun 15 09:20:34 UTC 2016 - zaitor@opensuse.org
+
+- Drop pkgconfig(libcdaudio) BuildRequires: No longer needed, nor
+  used anymore.
+- Remove obsolete clean section and a no longer meaningful
+  conditional.
+
+-------------------------------------------------------------------
+Tue Jun 14 18:49:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo#756948: directsoundsrc: Audio Device not found on Windows
+    (string encoding not honored).
+  + bgo#764758: vulkan didn't build out of tree due to vkconfig.h.
+  + bgo#765324: compositor: crashes on NULL pointer in
+    _aggregate_frames().
+  + bgo#765456: vtdec: Strange bug re-encoding video with GST 1.8.1
+    on Mac OS 10.10.
+  + bgo#765926: mpegtsmux: Set PTS on aligned buffers.
+  + bgo#766190: vtdec: corrupted rendering on OSX.
+  + bgo#766213: openjpeg plugin needs to be ported to libopenjp2
+    v2.1.
+  + bgo#766289: amc: cannot play some files on android.
+  + bgo#766422: videoaggregator: rtspsrc ! compositor produces no
+    output.
+  + bgo#766441: OpenBSD does not use librt, but provides the needed
+    functions in libc.
+  + bgo#766520: gl: win32: race when handling window messages while
+    creating the internal window.
+  + bgo#766611: gl: buffer pool configuration error with
+    caopengllayersink.
+  + bgo#766638: ahc: fix possible NULL deref.
+  + bgo#766732: openjpegenc: Doesn't manage MCT switch for RGB and
+    YUV frames.
+  + bgo#767298: amc: gst_object_unref on caps.
+  + bgo#767302: ahcsrc: div by 0 warning.
+
+-------------------------------------------------------------------
+Thu Jun  2 14:36:37 CEST 2016 - sbrabec@suse.com
+
+- Make baselibs.conf consistent with spec file (boo#980893).
+
+-------------------------------------------------------------------
+Tue May 24 09:32:50 UTC 2016 - dimstar@opensuse.org
+
+- Drop pkgconfig(libmusicbrainz): gstreamer does not depend on it
+  directly.
+
+-------------------------------------------------------------------
+Thu May 19 11:49:12 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.2 (Fate#318572)
+
+-------------------------------------------------------------------
+Thu Apr 21 08:08:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + bgo#760473: OpenCV face detection does not work with OpenCV
+    newer than 2.4.11.
+  + bgo#747633: decklinkvideosrc: crash in
+    ::VideoInputFrameArrived() callback with video_frame=NULL.
+  + bgo#762924: interlace: negotiation fails unexpectedly.
+  + bgo#763324: nvenc fails to compile with Nvidia video SDK 6.0.
+  + bgo#763404: bad: video sink: Post un-handled keyboard/mouse
+    events as message to application.
+  + bgo#763862: mxfmux: Instead of releasing request pads on
+    stop(), clear them only.
+  + bgo#764148: gtkglsink doesn't fail to create on incompatible
+    hardware.
+  + bgo#764339: ahcsrc: g_object_class_install_property: assertion
+    'pspec- > flags & G_PARAM_WRITABLE' during initialization.
+  + bgo#764363: videoaggregator: Does not take into account the
+    best output format that is computed.
+  + bgo#764404: hlsdemux: Assertion with AES encrypted stream.
+  + bgo#764448: h264parse: constrained-baseline is a subset of
+    baseline.
+  + bgo#764523: -lole32 is missing for libgstdirectsoundsrc.
+  + bgo#764545: Crash when trying to use vulkan sink.
+  + bgo#765005: mpegtsmux: memory leak caused by pad_data- >
+    language.
+  + bgo#765194: caopengllayersink: renders blurry content on HiDPI
+    screens because contentsScale is ignored.
+  + bgo#765241: glimagesink: need to clean window_id when state
+    change form READY to NULL.
+  + bgo#765079: srtpdec request-key is not signaled if roc is
+    missing.
+- Clean up spec file, properly escape disabled plugins and macros.
+  Make rpmlint report readable again. Also remove an obsolete
+  source repack comment, we do it via pre_checkin.sh now.
+- No longer pass V=1 to make, stop littering buildlogs and
+  debugging is done local anyway.
+- Add some missing post/postun handling.
+- Add pkgconfig(bluez), pkgconfig(x265) and libbs2b-devel
+  BuildRequires and replace librtmp-devel for pkgconfig(librtmp):
+  Build more supported plugins.
+- Disable a few BuildRequires that are not ported yet, no need to
+  pull unused BuildRequires: SDL-devel, pkgconfig(daala),
+  pkgconfig(flite), pkgconfig(libdc1394-2), libaudio-devel and
+  libxvidcore-devel.
+- Split out a new libgstvdpau in an own sub-package, vdpau support
+  is not needed for people not running nvidia binary driver.
+- Add fdupes BuildRequires and add macro to install section.
+- Stop passing --enable-experimental to configure, currently we are
+  not building any experimental plugins, nor should we in the
+  future.
+
+-------------------------------------------------------------------
+Wed Apr 13 10:06:05 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Remove gstreamer-plugins-bad-real.patch
+
+-------------------------------------------------------------------
+Sat Mar 26 19:10:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+  + Bugs fixed: bgo#763756, bgo#763793, bgo#763877, bgo#763974,
+    bgo#764066, bgo#763262.
+- Add pkgconfig(xcb) and pkgconfig(wayland-scanner) BuildRequires:
+  New dependencies.
+- Add 2 new subpackages and handle them in post/un
+  + libsgtbadaudio and libgstplayer.
+
+-------------------------------------------------------------------
+Wed Feb 17 18:10:36 UTC 2016 - dimstar@opensuse.org
+
+- Add gstreamer-plugins-bad.appdata.xml so that the codecs can
+  show up in a Software Center.
+
+-------------------------------------------------------------------
+Thu Jan 28 13:20:33 UTC 2016 - dimstar@opensuse.org
+
+- Add libgstadaptivedemux-1_0-0 to baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Jan 21 22:04:12 UTC 2016 - badshah400@gmail.com
+
+- Update to version 1.6.3:
+  + Fix regression in GL library that made glimagesink unsable on
+    Android.
+  + Integer arithmetic overflow in queue2 element that could break
+    buffering or cause crashes due to NULL pointer dereference.
+  + Fix crash in AAC/ADTS typefinder caused by reading more memory
+    than is available.
+  + Stop ignoring encoder errors in the VP8/VP9 encoders.
+  + Deprecate GstVideoEncoder GST_VIDEO_ENCODER_FLOW_DROPPED. It's
+    redudant and was never actually implemented.
+  + Ensure to store the correct video info in GstVideoBufferPool.
+  + Fix caps in rtspsrc when doing SRTP over interleaved TCP.
+  + Fix crash in pcap parser on 0-sized packets.
+  + Clear EOS flag in appsrc to allow reuse after EOS and
+    flushing.
+  + Ignore flushing streams in streamsynchronizer during stream
+    switches to fix problems caused by this in
+    gst-editing-services.
+  + Ignore tags and other metadata in WAV files after the "data"
+    chunk in PUSH mode to prevent them from being interpreted as
+    audio.
+  + Correctly use colorimetry in v4l2 only for YUV color formats.
+  + Set reserved bits in MPEG TS muxer to 1s.
+  + Fix calculation of SBC frame lengths.
+  + Fix output of the RTP JPEG2000 depayloader to have one frame
+    per buffer and crash in the OpenJPEG decoder on incomplete
+    frames.
+  + Update ffmpeg snapshot in gst-libav to 2.8.5.
+  + Memory leak fixes in scaletempo, the raw video RTP
+    depayloader, and in playsink related to audio/video filters.
+  + Fixes for error handling in the OSX audio plugin.
+  + Various gobject-introspection annotation fixes and additions.
+  + Compiler warning fixes for latest clang compiler.
+
+-------------------------------------------------------------------
+Wed Jan  6 12:57:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.6.2:
+  + Crashes in gst-libav with sinks that did not provide a buffer
+    pool but supported video metadata were fixed. This affected
+    d3dvideosink and some 3rd party sinks. Also related fixes for
+    crashes when a downstream buffer pool failed allocation.
+  + Big GL performance improvement on iOS by a factor of 2 by using
+    Apple's sync extension.
+  + Deadlocks in the DirectSound elements on Windows, and the
+    behaviour of its mute property were fixed.
+  + The Direct3D video sink does not crash anymore when minimizing
+    the window.
+  + The library soname generation on Android >= 6.0 was fixed,
+    which previously caused GStreamer to fail to load there.
+  + File related elements have large-file (>2GB) support on Android
+    now.
+  + gst-libav was updated to ffmpeg 2.8.3.
+  + Deserialization of custom events in the GDP depayloader was
+    fixed.
+  + Missing OpenGL context initialization in the Qt/QML video sink
+    was fixed in certain situations.
+  + Interoperability with some broken RTSP servers using HTTP
+    tunnel was improved.
+  + Various compilation fixes for Windows.
+  + Various smaller memory leak and other fixes in different
+    places.
+  + Bugs fixed: bgo#734098, bgo#738292, bgo#741608, bgo#753823,
+    bgo#755106, bgo#755222, bgo#755614, bgo#756028, bgo#756951,
+    bgo#757155, bgo#757264, bgo#757453, bgo#757454, bgo#757732,
+    bgo#757854, bgo#757873, bgo#757895, bgo#757924, bgo#757929,
+    bgo#757935, bgo#758029, bgo#758151, bgo#758204, bgo#758205,
+    bgo#758276, bgo#758285, bgo#758286, bgo#758337, bgo#758344,
+    bgo#758512, bgo#758620, bgo#758861, bgo#758912, bgo#758913,
+    bgo#758921, bgo#759019, bgo#759380.
+
+-------------------------------------------------------------------
+Mon Dec 28 15:00:31 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Fix build for Leap 42.1.
+
+-------------------------------------------------------------------
+Thu Dec 17 10:25:47 UTC 2015 - fcrozat@suse.com
+
+- Do not BuildRequires pkgconfig(wayland-egl) on SLE.
+
+-------------------------------------------------------------------
+Fri Nov 27 23:18:59 UTC 2015 - zaitor@opensuse.org
+
+- Add pkgconfig(libssh2) BuildRequires: Build ssh support.
+- Add libcurl.so to BUILD_ORIG file list for openSUSE 13.1 only,
+  as packman builds against Update where a new enough version is
+  provided.
+
+-------------------------------------------------------------------
+Sat Oct 31 04:23:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + Bugs fixed: bgo#756567, bgo#752132, bgo#752230, bgo#754523,
+    bgo#755108, bgo#755132, bgo#755134, bgo#755239, bgo#755623,
+    bgo#755680, bgo#755738, bgo#755754, bgo#755759, bgo#755824,
+    bgo#755840, bgo#755850, bgo#755852, bgo#755892, bgo#755969,
+    bgo#755981, bgo#756001, bgo#756065, bgo#756070, bgo#756181,
+    bgo#756186, bgo#756383, bgo#756563, bgo#756578, bgo#756592,
+    bgo#756617, bgo#756653, bgo#756861, bgo#756876, bgo#757251.
+- Add gstreamer-revert-bogus-automake-version.patch, upstream
+  bumped automake req to high.
+
+-------------------------------------------------------------------
+Fri Oct  2 09:01:09 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + For changelog, see mainpackage changes, everything is condensed
+    there.
+- Rebase gstreamer-plugins-bad-patch-source.sh, add new plugins.
+- Drop gstreamer-plugins-bad-real.patch: real plugin was dropped
+  from gstreamer-bad package.
+- Add new sub-package libgstadaptivedemux-1_0-0 and handle it in
+  %post/postun.
+
+-------------------------------------------------------------------
+Thu Mar 26 17:01:38 UTC 2015 - dimstar@opensuse.org
+
+- Change from simple %defines to %bcond_with/without, as this
+  allows to be set in prjconf without the need to patch the .spec
+  files.
+- Create new subpackage libgstwayland-1_0-0.
+
+-------------------------------------------------------------------
+Tue Jan 13 21:43:50 UTC 2015 - adam@mizerski.pl
+
+- added BuildRequires: pkgconfig(nettle) to enable building hls plugin
+
+-------------------------------------------------------------------
+Fri Dec 26 11:30:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + Bugs fixed: bgo#722764, bgo#729768, bgo#739152, bgo#740191,
+    bgo#740201, bgo#740451, bgo#740953, bgo#741321.
+- Remove obsolete FIXME entries about pkgconfig(wayland-client)
+  BuildRequires, we have had this enabled for a while.
+
+-------------------------------------------------------------------
+Mon Dec 15 13:15:35 UTC 2014 - fcrozat@suse.com
+
+- Disable BuildRequires on libchromaprint, fluidsynth and openAL on
+  SLE12.
+
+-------------------------------------------------------------------
+Sat Nov 15 11:07:53 UTC 2014 - zaitor@opensuse.org
+
+- Enable pkgconfig(libchromaprint) BuildRequires, build
+  chromaprint plugin.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:21:35 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + bgo#732239, bgo#733510, bgo#734156, bgo#736319, bgo#737186,
+    bgo#737569, bgo#737658, bgo#737724, bgo#738067, bgo#738223,
+    bgo#738230, bgo#738243, bgo#738291, bgo#738449, bgo#738519,
+    bgo#738532, bgo#738674, bgo#738695, bgo#738696, bgo#739277,
+    bgo#739348, bgo#739368, bgo#739374.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 27 20:29:02 UTC 2014 - zaitor@opensuse.org
+
+- Add pkgconfig(fluidsynth), pkgconfig(gudev-1.0),
+  pkgconfig(libusb-1.0), pkgconfig(libwebp), pkgconfig(libxml-2.0),
+  pkgconfig(OpenEXR) and pkgconfig(sbc) BuildRequires, build more
+  plugins.
+
+-------------------------------------------------------------------
+Thu Sep 25 09:06:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.3:
+  + Bugs fixed: bgo#735861, bgo#736090, bgo#736390, bgo#736426,
+    bgo#736474, bgo#736490, bgo#736729, bgo#736730, bgo#736731,
+    bgo#736732, bgo#736733, bgo#736735, bgo#736750, bgo#736871,
+    bgo#736919, bgo#736951.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 17:47:58 UTC 2014 - idonmez@suse.com
+
+- Remove openal dependency bnc#886207
+
+-------------------------------------------------------------------
+Thu Sep 11 19:18:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Sync baselibs.conf with changes done with update to 1.4:
+  swap libgstegl-1_0-0 with libgstgl-1_0-0, and added new packages;
+  libgstbadbase-1_0-0 and libgstbadvideo-1_0-0.
+
+-------------------------------------------------------------------
+Thu Aug 28 20:01:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Bugs fixed: bgo#678485, bgo#725871, bgo#730509, bgo#731824,
+    bgo#733245, bgo#733426, bgo#733487, bgo#733490, bgo#733545,
+    bgo#733726, bgo#733837, bgo#734014, bgo#734015, bgo#734269,
+    bgo#734394, bgo#734517, bgo#734519, bgo#734520, bgo#734521,
+    bgo#734522, bgo#734524, bgo#734528, bgo#734531, bgo#734533,
+    bgo#734534, bgo#734536, bgo#734537, bgo#734539, bgo#734544,
+    bgo#734763, bgo#734830, bgo#735078.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 11:34:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Major changes:
+    - v4l2videodec element for accessing hardware codecs on
+      platforms that make them accessible via V4L2.
+      The v4l2videodec element replaces the mfcdec element.
+    - New downloadbuffer element that replaces the download
+      buffering feature of queue2. Compared to queue2's code
+      it is much simpler and only for this single use case.
+    - rtpstreampay and rtpstreamdepay elements for transmitting
+      RTP packets over a stream API (e.g. TCP) according to
+      RFC 4571.
+    - rtprtx elements for standard compliant implementation of
+      retransmissions, integrated into the rtpmanager plugin.
+    - audiomixer element that mixes multiple audio streams together
+      into a single one while keeping synchronization. This is
+      planned to become the replacement of the adder element.
+    - OpenNI2 plugin for 3D cameras like the Kinect camera.
+    - OpenEXR plugin for decoding high-dynamic-range EXR images.
+    - curlsshsink and curlsftpsink to write files via SSH/SFTP.
+    - videosignal, ivfparse and sndfile plugins ported from 0.10.
+    - avfvideosrc, vtdec and other elements were ported from 0.10
+      and are available on OS X and iOS now.
+- Add audiomixer and compositor to the list of allowed plugins.
+- Split new subpackages libgstbadbase-1_0-0, libgstgl-1_0-0  and
+  libgstbadvideo-1_0-0.
+- Drop old subpackage libgstegl-1_0-0.
+- Adjust -devel package requirements, following the subpackages.
+- Package baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Apr 28 16:29:09 UTC 2014 - fcrozat@suse.com
+
+- Do not build libopenjpeg support on SLE12.
+
+-------------------------------------------------------------------
+Fri Apr 25 12:11:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + Bugs fixed: bgo#724013, bgo#725137, bgo#725140.
+
+-------------------------------------------------------------------
+Sun Feb  9 20:59:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Bugs fixed: bgo#709241, bgo#711163, bgo#721382, bgo#721384,
+    bgo#721715, bgo#722158, bgo#722414, bgo#722622, bgo#723127,
+    bgo#723134, bgo#723230, bgo#723398.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 31 18:11:35 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Bugs fixed: bgo#667564, bgo#680700, bgo#706211, bgo#709416,
+    bgo#710223, bgo#711495, bgo#712219, bgo#712605, bgo#715166,
+    bgo#719657, bgo#720099, bgo#720421, bgo#720532, bgo#720673.
+
+-------------------------------------------------------------------
+Mon Nov 11 14:13:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.1:
+  + Bugs fixed: bgo#690148, bgo#707974, bgo#708161, bgo#708222,
+    bgo#708849, bgo#709145, bgo#709373, bgo#709531, bgo#709886,
+    bgo#710392, bgo#710433, bgo#710451, bgo#710657, bgo#710881,
+    bgo#711135, bgo#711156, bgo#711214, bgo#711615, bgo#711627,
+    bgo#711721.
+  + Updated translations.
+- Replace autoconf BuildRequires with gnome-common: we need to run
+  a full cycle of autogen.sh.
+- Run autogen.sh instead of autoconf (autoconf does not refresh all
+  files needed and some happen to have stale information
+  afterwards).
+- Define an alias for git=true: autogen.sh would want to update the
+  git snapshot for us, which we do not want to happen.
+
+-------------------------------------------------------------------
+Tue Oct 22 20:59:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + A bunch of API changes (new stable branch 1.2).
+  + New tool: gst-play-1.0 in gst-plugins-base for basic playback
+    testing on the command line.
+  + New plugins:
+    - mssdemux for Microsoft Smooth Streaming.
+    - dashdemux for DASH adaptive streaming protocol.
+    - bluez for interaction with Bluetooth devices.
+    - openjpeg for JPEG2000 decoding and encoding.
+    - daala for experimental Daala decoding and encoding.
+    - vpx plugin has experimental VP9 decoding and encoding
+      support.
+    - webp plugin for WebP decoding (encoding to be added later).
+    - Various others: yadif, srtp, sbc, fluidsynth, midiparse,
+      mfc, ivtv, accuraterip and audiofxbad.
+  + Moved plugins: dtmf, vp8rtp, scaletempo and rtpmux plugins are
+    now in gstreamer-plugins-good.
+  + Audio and Video related fixes.
+  + Other changes:
+    - gst-libav now uses libav 9.
+    - Static linking of plugins is supported now.
+    - rtspsrc: add support for NetClientClock.
+    - RTP retransmission / NACK support and big RTP jitterbuffer
+      improvements.
+    - SRTP and DTLS support.
+    - Changes to many elements and core to use the correct sticky
+      event order and also not lose any important sticky events
+      during flushing.
+    - >1000 fixed bug reports, and many other bug fixes and other
+      improvements everywhere that had no bug report.
+  + Notes:
+    - Single header includes for all libraries,
+      e.g. #include <gst/video/video.h>
+    - Stricter (correct) caps subset checking in some cases.
+    - x264enc now outputs data in byte-stream by default if
+      downstream has ANY caps.
+    - The MPEG TS demuxer posts messages contain the PMT, PAT,
+      etc, in a different format now.
+    - The GstContext API has changed between 1.1.4 and 1.1.90.
+- Disable translation-update-upstream, as it breaks the build.
+- Drop pkgconfig(directfb) BuildRequires: for one, DirectFB is
+  outdated and additionally, it's broken in 1.2.0.
+- Drop pkgconfig(celt) BuildRequires: celt was replaced by opus.
+- Remove library packages of no longer existing libs:
+  + libgstbasevideo-1_0-0
+  + libgstsignalprocessor-1_0-0
+- Add additional subpackages, according the shared library
+  packaging policy (also provide -32bit packages):
+  + libgstegl-1_0-0
+  + libgstinsertbin-1_0-0
+  + libgstmpegts-1_0-0
+  + libgsturidownloader-1_0-0
+- Update devel package dependencies on own libraries.
+
+-------------------------------------------------------------------
+Sat Aug 31 10:42:22 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.10:
+  + build: fix bz2 configure check on Windows.
+  + interaudiosrc: make silence memory actually contain silence.
+  + neonhttpsrc: allow building with neon-0.30.
+  + rtpvp8depay: mark key frames and delta frames properly.
+  + pcapparse: fix double unref causing criticals and/or crashes.
+  + mpegvideoparse: fix level detection.
+  + Bugs fixed: bgo#465924, bgo#705957, bgo#706369, bgo#705550.
+- Drop gstreamer-neon-0_30.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 24 12:20:19 UTC 2013 - zaitor@opensuse.org
+
+- Add gstreamer-neon-0_30.patch, fix build with neon-0.30.
+
+-------------------------------------------------------------------
+Sun Aug 18 11:11:28 UTC 2013 - zaitor@opensuse.org
+
+- Add pkgconfig(libopenjpeg1) BuildRequires, in order to build the
+  newly available openjpeg decoder/encoder. Also add it's .so to
+  filelist (libgstopenjpeg.so).
+
+-------------------------------------------------------------------
+Thu Aug 15 09:25:12 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.9:
+  + midi: add midi parser and fluidsynth midi renderer.
+  + winscreencap: port to 1.0.
+  + openjpeg: add OpenJPEG-based JPEG2000 decoder and encoder.
+  + decklink: add "device-number" to select from multiple devices.
+  + decklink: actually enable decklinksink.
+  + dvdspu: fix artefacts and invalid memory access when clipping
+    subtitles.
+  + Bugs fixed: bgo#704505, bgo#705039.
+- Add new element midi to gstreamer-plugins-bad-patch-source.sh and
+  add it's .so to filelist (libgstmidi.so).
+
+-------------------------------------------------------------------
+Sun Jul 28 21:40:43 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.8:
+  + rfbsrc, neonhttpsrc, ofa, and openal plugins ported to 1.0.
+  + mpegvideoparse: don't announce incomplete source caps.
+  + tsdemux: many fixes.
+  + Bugs fixed: bgo#702495, bgo#674536, bgo#685103, bgo#695412,
+    bgo#695879, bgo#697283, bgo#699786, bgo#700038, bgo#700402,
+    bgo#702597.
+
+-------------------------------------------------------------------
+Sat Apr 27 09:34:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.7:
+  + androidmedia plugin is ported to 1.0.
+  + Bugs fixed: bgo#690949, bgo#696361, bgo#696681, bgo#696785,
+    bgo#697884.
+
+-------------------------------------------------------------------
+Sat Apr 20 21:17:31 UTC 2013 - dimstar@opensuse.org
+
+- Add pkgconfig(glesv2) BuildRequires: libSDL-devel used to pull
+  in Mesa-devel, but that was fixed. And we make explicit use of
+  glesv2.
+
+-------------------------------------------------------------------
+Wed Mar 27 20:39:38 UTC 2013 - dimstar@opensuse.org
+
+- Introduce build_wayland defines (currently set to 0) and
+  conditionally:
+  + Add pkgconfig(wayland-client) BuildRequires.
+  + Pass --enable-wayland (resp. disable-wayland) to configure.
+  + Adjust the files section accordingly.
+
+-------------------------------------------------------------------
+Sat Mar 23 11:58:44 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + audiovisualizer: fix improper video frame clear operation.
+  + codecparsers:
+    - h264:
+      . add inferred value for slice_beta_offset_div2.
+      . zero-initialize SPS VUI parameters.
+    - mpeg2:
+      . add helpers to convert quantization matrices.
+      . store quantization matrices in zigzag scan order.
+    - vc1:
+      . fix bitplanes decoding.
+      . fix calculation of ALTPQUANT.
+      . fix parser for DQPROFILE in VOPDQUANT.
+      . fix VOPDQUANT parser for DQUANT == 2
+  + curltlssink: set correct level of SSL for the transfer.
+  + decklink: port to 1.0
+  + dvbsrc: handle EINTR from poll.
+  + dvdspu: fix rendering of PGS windows with left != 0
+  + eglglessink: port to 1.0
+  + element-maker: update for 1.0
+  + gdppay: fix buffer leak when new caps are same as old caps.
+  + interlace: fix negotiation for true interlaced modes.
+  + opensles: Port to 1.0
+  + opusdec: clear the state of the decoder.
+  + opusenc: fix crash when setting "cbr" property when encoder is
+    not running yet.
+  + opuspay: fix timestamps.
+  + tsdemux: expose VC1 streams with missing descriptor.
+  + Bugs fixed: bgo#681818, bgo#690738, bgo#692010, bgo#692265,
+    bgo#692267, bgo#692270, bgo#692271, bgo#692273, bgo#692312,
+    bgo#692698, bgo#692859, bgo#692929, bgo#693000, bgo#693146,
+    bgo#693212, bgo#693300, bgo#693324, bgo#695655.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:48:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.5:
+  + psdemux: tentative port to 1.0; take into account both DTS and
+    PTS
+  + shm: Actually get the permissions on get_property
+  + waylandsink: do not default to fullscreen mode
+  + bgo#690097, bgo#690442.
+
+-------------------------------------------------------------------
+Wed Dec 19 08:57:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + mpeg4videoparse:
+    - also parse divx 4/5
+    - export number of sprite warping points in caps (decoders
+      might have no or only limited GMC support)
+  + mpegtsmux: propagate flow returns upstream; don't crash when
+    reused
+  + rtmpsrc: disable seeking if the configured url specifies
+    live=true
+  + build fixes for OS/X (shm) and Windows (d3dvideosink)
+  + Bugs fixed: bgo#688870, bgo#689107, bgo#689183, bgo#690031,
+    bgo#690149.
+
+-------------------------------------------------------------------
+Thu Nov 22 08:04:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.3:
+  + mpegtsmux: fix DTS/PTS confusion
+  + tsdemux, tsparse: seeking fixes
+  + tsdemux, tsparse: fix timestamping with push-based input
+  + h264parse: fix PPS insertion
+  + mpg123audiodec: fix leaks from not chaining up in the finalize
+    function
+  + Bugs fixed: bgo#686871, bgo#687178, bgo#687806, bgo#688091,
+    bgo#688626, bgo#688510.
+
+-------------------------------------------------------------------
+Fri Oct 26 13:12:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + Parallel installability with 0.10.x series
+  + audioparse: add mode where caps are taken from upstream and
+    only timestamping is performed
+  + directsoundsrc: port to 1.0
+  + dtsdec: fix buffer parsing
+  + fieldanalysis: actually build (remove from the NONPORTED
+    plugins list)
+  + hlsdemux: numerous thread-safety fixes, and an invalid memory
+    access fix
+  + mpegdemux: handle and combine downstream flow returns better
+  + mpegdemux: make work properly with dvdreadsrc
+  + mpegtsdemux: PES header parsing fixes; fix potential crash
+  + mpegtsdemux: First push EOS, then destroy all programs
+  + mpegtsmux: fix buffer refcounting issue
+  + mpeg4videoparse: correctly parse the full first frame; properly
+    mark config data presence
+  + mpegvideoparse: correctly parse the full first frame; signal
+    interlacing properly in caps
+  + pitch: fix for start times > 0 (e.g. ogg streaming)
+  + rtmpsink: handle RTMP_Write() return value correctly, fix
+    memory leak
+  + scaletempo: fix timestamp and latency query handling, and event
+    leak
+  + subenc: port to 1.0
+  + Bugs fixed: bgo#623387, bgo#673414, bgo#681459, bgo#685709,
+    bgo#685895, bgo#686009, bgo#686294, bgo#686327, bgo#686358,
+    bgo#686520, bgo#686547, bgo#686595, bgo#686774, bgo#686829.
+
+-------------------------------------------------------------------
+Tue Oct 16 11:58:46 UTC 2012 - coolo@suse.com
+
+- Add explicit pkgconfig(bzip2) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct 10 11:48:18 UTC 2012 - reddwarf@opensuse.org
+
+- Remove unported plugins from the file list: LV2, mythtv, nas and xvid
+- Add the aac plugin to the file list
+- Correct the amr-wb plugin name in the file list
+
+-------------------------------------------------------------------
+Tue Oct  9 19:31:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.1:
+  + fieldanalysis and frei0r plugins ported to 1.0
+  + DVD playback fixes
+  + pitch: transform timestamps properly after a seek
+  + camerabin fixes
+  + Bugs fixed: bgo#667220, bgo#681562, bgo#681564, bgo#681678,
+    bgo#684740, bgo#684847, bgo#685065, bgo#685159.
+
+-------------------------------------------------------------------
+Tue Oct  2 11:26:44 UTC 2012 - dimstar@opensuse.org
+
+- Pass --disable-examples to configure: the examples are not being
+  installed anyway and as such it's useless to waste build power
+  to create the binaries.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:51:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + Minor bug fixes.
+  + opusenc: Rank as Primary.
+  + Bugs fixed: bgo#683192, bgo#684683
+
+-------------------------------------------------------------------
+Tue Sep 18 07:59:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.99:
+  + Move vp8 from -bad to -good
+  + freeze: remove freeze element, was replaced by imagefreeze in
+    -good years ago.
+  + Bugs fixed: bgo#683254, bgo#683263, bgo#683264, bgo#684116a
+- Remove libvpx-devel BuildRequires: no longer needed, as the vp8
+  encoder/decoder moved to -good.
+
+-------------------------------------------------------------------
+Fri Sep 14 21:21:59 UTC 2012 - zaitor@opensuse.org
+
+- Add pkgconfig(opus) BuildRequires: it's been packaged and landed
+  in Factory.
+
+-------------------------------------------------------------------
+Fri Sep 14 12:56:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.94:
+  + videoparsers: Disable PTS interpolation in the base parse class
+  + dvdspu: Advance video stream with gap events
+  + resindvd: Start with a larger subpicture queue for preroll
+  + Bugs fixed: bgo#611692, bgo#622482, bgo#629946, bgo#644890,
+    bgo#654485, bgo#658436, bgo#660233, bgo#666352, bgo#666626,
+    bgo#666674, bgo#667223, bgo#669310, bgo#670608, bgo#673118,
+    bgo#674069, bgo#677724, bgo#678060, bgo#678130, bgo#678211,
+    bgo#679164, bgo#679373, bgo#679886, bgo#679929, bgo#680494,
+    bgo#680667, bgo#680755, bgo#681003, bgo#681115, bgo#681117,
+    bgo#681453, bgo#681535, bgo#681952, bgo#682158, bgo#682589,
+    bgo#683169, bgo#683175, bgo#683727, bgo#683850, bgo#683858.
+
+-------------------------------------------------------------------
+Mon Aug 13 13:31:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.93:
+  + Bug fixes
+  + Sync with GStreamer changes.
+
+-------------------------------------------------------------------
+Sat Jul 28 14:25:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.92:
+  + Parallel installability with 0.10.x series.
+  + API cleanup and minor API improvements.
+  + Lots of bugfixes, cleanup and other improvement.
+
+-------------------------------------------------------------------
+Mon May 14 07:35:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.91:
+  + Ported asfmux, camerabin, coloreffects, gaudieffects,
+    geometrictransform, hls plugins
+  + Lots of bugfixes and other improvements
+- Update gstreamer-plugins-bad-patch-source.sh (and pre_checkin.sh)
+  to deal with xz tarballs.
+
+-------------------------------------------------------------------
+Fri Apr 20 13:04:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.90:
+  + Lots of bugfixes, cleanup and other improvements
+- Rename packages following upstream soname and typelib name
+  changes:
+  + libgstbasecamerabinsrc-0_11-0 to libgstbasecamerabinsrc-1_0-0
+  + libgstbasevideo-0_11-0 to libgstbasevideo-1_0-0
+  + libgstphotography-0_11-0 to libgstphotography-1_0-0
+  + libgstsignalprocessor-0_11-0 to libgstsignalprocessor-1_0-0
+  + libgstvdp-0_11-0 to libgstvdp-1_0-0
+  + libgstcodecparsers-0_11-0 to libgstcodecparsers-1_0-0
+- Add libgstcodecparsers-1_0-0 to baselibs.conf: it was forgotten.
+
+-------------------------------------------------------------------
+Fri Mar 23 09:56:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.2:
+  + Many cleanups
+  + Ported to new 0.11 core API changes
+  + bz2: Ported to 0.11
+  + celt: Ported to 0.11
+  + qtkitvideosrc: Ported to 0.11
+  + rawparse: Ported to 0.11
+  + removesilence: Ported to 0.11
+  + scaletempo: Ported to 0.11
+  + schro: Ported to 0.11
+  + segmentclip: Ported to 0.11
+  + shm: Ported to 0.11
+  + smooth: Ported to 0.11
+  + vtdec: Ported to 0.11
+  + Bugs fixed: bgo#658438, bgo#662618, bgo#665355, bgo#670367.
+- Drop libmms bcond: always build against libmms-devel since we
+  have it.
+- Remove glib-compat-private.h source as it's now in the tarball.
+- Add explicit glib2-devel and gstreamer-devel BuildRequires so
+  they can be versioned.
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: DirectFB-devel, dirac-devel, libass-devel,
+    libcdaudio-devel, libcelt-devel, libcurl-devel,
+    libdc1394-devel, libdvdnav-devel, libexif-devel, libkate-devel,
+    libmjpegutils-devel, libmms-devel, libmodplug-devel,
+    libmusicbrainz-devel, libofa-devel, libpng-devel,
+    librsvg-devel, libsndfile-devel, libtimidity-devel,
+    libvdpau-devel, lv2core-devel, neon-devel, opencv-devel,
+    openssl-devel, schroedinger-devel, slv2-devel,
+    soundtouch-devel.
+  + New ones: cairo, celt, dirac, directfb, dvdnav, dvdread,
+    gio-2.0, gmyth, kate, libass, libcdaudio, libcrypto, libcurl,
+    libdc1394-2, libexif, libmms, libmodplug, libmusicbrainz,
+    libofa, libpng, librsvg-2.0, libtimidity, mjpegtools,
+    neon, opencv, openssl, schroedinger-1.0, slv2, sndfile,
+    soundtouch, vdpau, x11.
+- Add pkgconfig(lrdf) BuildRequires: this enhances the ladspa
+  plugin.
+- Add pkgconfig(openal) BuildRequires to build new OpenAL sink and
+  source elements.
+- Add pkgconfig(spandsp) BuildRequires to build new spandsp plugin.
+- Add pkgconfig(zvbi-0.2) BuildRequires to build new teletext
+  decoder plugin.
+- Change python-devel BuildRequires to python-base as only python
+  is needed, not the development files.
+- Remove BuildRequires for plugins that got removed or moved
+  elsewhere: jack-devel, libexempi-devel, libiptcdata-devel,
+  libraptor-devel, libtheora-devel.
+- Remove BuildRequires that, as far as I can tell, are not needed
+  (else, they are implicitly brought in by something else):
+  check-devel, libglade2-devel, sgml-skel.
+- Remove Provides/Obsoletes for gstreamer010-* packages in
+  main and orig-addon subpackages.
+- Move to use GTK+ 3 for the build:
+  + Replace gtk2-devel BuildRequires with pkgconfig(gtk+-3.0) and
+    pkgconfig(gtk+-x11-3.0).
+  + Pass --with-gtk=3.0 to configure.
+- Add missing Requires for libgstbasecamerabinsrc-0_11-0,
+  libgstbasevideo-0_11-0, libgstsignalprocessor-0_11-0,
+  libgstvdp-0_11-0 to devel subpackage.
+- Add missing %post/%postun for libgstcodecparsers-0_11-0 to run
+  /sbin/ldconfig.
+- Add a build_gstvdp macro, so that we can easily re-enable the
+  packaging of the libgstvdp-0.11 library when it will be
+  re-enabled in the tarball.
+- Synchronize orig build with gstreamer-0_10-plugins-bad:
+  + Remove libamrwb-devel BuildRequires.
+  + Add pkgconfig(vo-aacenc) and pkgconfig(vo-amrwbenc)
+    BuildRequires.
+
+-------------------------------------------------------------------
+Sat Feb 18 19:44:38 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.1:
+  + Many cleanups
+  + Ported to new 0.11 core API changes
+- Rename package to gstreamer-plugins-bad.
+- Drop gstreamer-0_10-plugins-bad-mjpegtool2.patch: new codebase.
+
+-------------------------------------------------------------------
+Fri Jan  6 07:50:28 UTC 2012 - reddwarf@opensuse.org
+
+- Change mjpegtools-devel BR to libmjpegutils-devel to reflect new
+  name and fix build in OBS when the two versions are available
+
+-------------------------------------------------------------------
+Tue Dec 20 20:32:22 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Aug  6 20:28:16 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  o gstreamer-0_10-plugins-base-devel >= 0.10.33
+
+-------------------------------------------------------------------
+Fri Jun 24 17:05:15 CEST 2011 - sbrabec@suse.cz
+
+- Move autoconf call to %build phase where it belongs.
+
+-------------------------------------------------------------------
+Wed Jun  8 12:31:01 UTC 2011 - reddwarf@opensuse.org
+
+- fix build with mjpegtools 2.0.0
+
+-------------------------------------------------------------------
+Thu May 19 21:45:04 UTC 2011 - reddwarf@opensuse.org
+
+- enable the cURL plugin
+
+-------------------------------------------------------------------
+Wed May 11 14:24:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.22:
+  + aiffparse:
+    - add support for 32 bit and 64 bit floating point formats
+    - the SSND header is 16 bytes large, not 8 + 16 bytes
+  + assrender: refactor blitting, avoid writing past end of buffer
+  + camerabin2:
+    - Add a property to select the encoding profile
+    - Add custom filter properties
+    - Add image-done message
+    - Adding audio support for video recordings
+    - Adding properties for image capture settings
+    - Add methods for preview image message posting
+    - Add preview-filter property
+    - Adds new idle property
+    - Add viewfinder caps related properties
+    - Add viewfinder-sink property
+    - Implement previewing
+    - Implement tagsetter interface
+    - Move preview helper functions to basecamerabinsrc
+    - Move to encodebin
+    - Moving preview image properties to basecamerasrc
+  + camerabin:
+    - adding audio related properties
+    - Always take photo when preview-caps is set
+    - don't rely on the application running the default GLib main
+      loop
+    - Events with select-all in input-selector
+    - Fix corner case for preview posting
+    - Use running time for muxing
+  + celtenc: Fix compilation with celt >= 0.11.0
+  + colorspace:
+    - add 16-bit-per-channel handling
+    - add dithering and support for r210 and fix YUV->RGB matrixing
+  + curlsink: add libcurl-based sink element
+  + decklink: Add decklink plugin
+  + directdrawsink:
+    - avoid aspect-ratio borders overlying other windows
+    - avoid rendering to invalid area
+  + dshowvideosink: update for latest GstXOverlay changes
+  + dvbsuboverlay: Fix using alpha values in blitting
+  + dvdspu: don't write clipped lines to the output buffer
+  + dvdsubdec: make up clut values if they weren't set
+  + fieldanalysis: new fieldanalysis element
+  + fpsdisplaysink:
+    - add "silent" property, fix "sync" property default value
+    - add "frames-dropped" and "frames-rendered" properties
+    - add "last-message" property and never print anything to
+      stdout
+  + gme: fix infinite looping by fading out after two loops
+  + h263parse: add an h263parse element
+  + hlsdemux: Add HTTP live streaming parser/demuxer element
+  + id3mux: map new GST_TAG_ENCODED_BY to ID3v2 TENC frame
+  + jifmux: Add GstTagXmpWriter support
+  + jp2kdec, jp2kenc: add support v308 (4:4:4 YUV)
+  + jp2kdec: post proper error when the image's colour space is not
+    supported
+  + jpegparse: misc. fixes
+  + linsys: Add plugin for Linear Systems SDI boards
+  + logoinsert: add "data" property; fix memleaks
+  + mpegtsdemux: new (not-yet autoplugged) MPEG TS demuxer rewrite
+  + mpegtsmux:
+    - add byte-stream to h264 template pad caps
+    - don't error out if downstream fails to handle the newsegment
+      event
+  + mpegtspacketizer: Handle all ISO8859-x encodings in
+    get_encoding()
+  + opencv: make work with openCV 2.2
+  + patchdetect: new element
+  + rsvgoverlay:
+    - allow negative values for x/y/width/height
+    - implement x/y/width/height (absolute and relative)
+      positioning and dimensioning
+  + rtpvp8: Add simple payloaders and depayloaders for VP8
+  + scenechange: new scene change detection element
+  + sdi: Add raw SDI muxing/demuxing elements
+  + shm:
+    - Allow ShmPipe to save a data pointer for applications
+    - Keep the ShmPipe alive as long as there are blocks left
+    - Make default perm u+rw g+r for shm area
+  + shmsink:
+    - ensure gst_poll_wait is called first on descriptors
+    - Keep shmsink referenced while there are still buffers around
+  + shmsrc:
+    - Keep GstPoll for whole src lifetime
+    - Only connect to sink in PLAYING in live mode
+  + vdpau: fixup GstFlowReturn handling
+  + vdpausink: fix bug where we didn't setup vdpau on a user set
+    window
+  + videoparsers:
+    - new h263parse element
+    - baseparse-based dirac parser, new baseparse-based h264parse
+  + xvidenc: proxy downstream caps restrictions upstream via
+    get_caps()
+  + zebrastripe: New element
+  + Bugs fixed: bgo#646211, bgo#608786, bgo#334107, bgo#582167,
+    bgo#586848, bgo#591651, bgo#594035, bgo#594280, bgo#602847,
+    bgo#611061, bgo#615655, bgo#616814, bgo#617532, bgo#622276,
+    bgo#626618, bgo#632056, bgo#639502, bgo#639763, bgo#639841,
+    bgo#640286, bgo#640287, bgo#640327, bgo#640561, bgo#640637,
+    bgo#640885, bgo#641047, bgo#641178, bgo#641496, bgo#641530,
+    bgo#641712, bgo#641796, bgo#641857, bgo#641858, bgo#642116,
+    bgo#642658, bgo#642671, bgo#643469, bgo#643471, bgo#643607,
+    bgo#644176, bgo#644208, bgo#644429, bgo#645006, bgo#645053,
+    bgo#645412, bgo#645420, bgo#645502, bgo#645568, bgo#645711,
+    bgo#646256, bgo#646495, bgo#646840, bgo#646955, bgo#647030,
+    bgo#647364, bgo#647498, bgo#647564, bgo#647830, bgo#647852,
+    bgo#647853, bgo#647854, bgo#648001, bgo#648929, bgo#649005,
+    bgo#647751, bgo#621027.
+- Add new elements to gstreamer-0_10-plugins-bad-patch-source.sh:
+  + fieldanalysis, hls, mpegtsdemux, patchdetect, rtpvp8, sdi,
+    videofilters and videoparsers.
+- Remove libgstaudioparsersbad.so from files section: it's moved to
+  the -good package
+- libgstqtdemux has been renamed to libgstmpegtsdemux.so
+- Add newly appeared elements:
+  + libgstdecklink.so
+  + libgstfieldanalysis.so
+  + libgstfragmented.so
+  + libgstlinsys.so
+  + libgstpatchdetect.so
+  + libgstrtpvp8.so
+  + libgstsdi.so
+  + libgstvideofiltersbad.so
+  + libgstvideoparsersbad.so
+
+-------------------------------------------------------------------
+Wed Apr 27 11:33:05 UTC 2011 - toddrme2178@gmail.com
+
+- Add 32bit compatibility libraries
+
+-------------------------------------------------------------------
+Sat Apr 23 22:17:44 UTC 2011 - reddwarf@opensuse.org
+
+- Add GME support
+- Fix BUILD_ORIG build
+
+-------------------------------------------------------------------
+Mon Jan 31 23:48:02 UTC 2011 - davejplater@gmail.com
+
+- Update to version 0.10.21 : see documentation - NEWS for all
+   changes since 0.10.20
+- Upstream additions and removals :
+  *alsaspdif: removed alsaspdifsink element (replaced by alsasink
+   device=spdif)
+  *metadata: remove metadata plugin
+  *jack: jack plugin has moved to gst-plugins-good (0.10.27)
+  *selector: input-selector and output-selector have moved to
+   GStreamer core (0.10.32)
+  *valve: has moved to gstreamer core (0.10.32)
+  *camerabin2: new camerabin element (work-in-progress, experimental)
+  *camerabin: add "preview-source-filter","ready-for-capture",
+   "idle" properties
+  *camerabin: change "zoom" property from int to float
+  *camerabin: enable all conversion flags by default to make it
+   work out-of-the-box everywhere
+  *cog: improvements in colorspace and scaler; add fast paths for
+   colorspace conversion
+  *colorspace: revive element and add support for many more
+   pixellayouts/colorspaces
+  *colorspace: add support for SDTV/HDTV YUV conversions
+  *dvbsuboverlay: new element to overlay DVB subtitle
+  *interlace: new element
+  *jp2kdecimator: add a JPEG2000 decimator element (drop details
+   without reencoding)
+  *y4mdec: new y4mdec element
+  *new libgstbasecamerabinsrc-0.10.so.0
+-------------------------------------------------------------------
+Sun Jan 16 14:32:15 UTC 2011 - aj@suse.de
+
+- Remove buildrequire on pyxml, requiring python is enough.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:16:45 CET 2011 - vuntz@opensuse.org
+
+- Remove libgme-devel BuildRequires: it was not submitted to
+  Factory, so it makes the build fail. It means we don't have gme
+  support.
+
+-------------------------------------------------------------------
+Tue Dec 14 14:54:40 UTC 2010 - reddwarf@opensuse.org
+
+- Add gme support
+
+-------------------------------------------------------------------
+Fri Sep 24 16:38:56 CEST 2010 - vuntz@opensuse.org
+
+- Move libkate-devel BuildRequires out of the orig build, since
+  it's now in Factory.
+
+-------------------------------------------------------------------
+Tue Sep 21 11:19:12 CEST 2010 - vuntz@opensuse.org
+
+- Add libtimidity-devel BuildRequires to build the timidity plugin.
+- Drop gstreamer010-plugins-bad-libdca-shared.patch: this is not
+  needed anymore, since the orig build will have a recent-enough
+  version of libdca now.
+- Update the list of plugins we patch out of the source to make the
+  package really free:
+  + This is based on what Fedora does.
+  + See bnc#637056 for the discussion. We can ship the muxers and
+    demuxers now. However, we can't ship dvdspu, nor siren.
+  + Update gstreamer-0_10-plugins-bad-patch-source.sh to be based
+    on the gst-p-bad-cleanup.sh script used for
+    gstreamer-plugins-bad-free in Fedora.
+  + Drop gstreamer010-plugins-bad-patched.patch: the script now
+    patches the tarball too.
+  + Remove call to autogen.sh/autoconf: this is done by the script
+    too.
+  + Remove the call to rm after %makeinstall that removes plugins:
+    all plugins that we build are fine now, and since we explicitly
+    list plugins in the packages file lists, we can't have a plugin
+    there by accident.
+  + Regenerate gst-plugins-bad-0.10.20-patched.tar.bz2.
+
+-------------------------------------------------------------------
+Wed Sep  8 13:15:30 UTC 2010 - dimstar@opensuse.org
+
+- Fix files list for full build:
+  + amrwbparser has been removed since 0.10.14, migrated to -ugly.
+    See also bgo#584890.
+  + aacparser was merged into audioparse since 0.10.18.
+  + Add mpegpsmux.so, that appeared in version 0.10.14.
+- Due to the move of amr to -ugly, remove the libopencore-amr-devel
+  BuildRequires.
+- Remove obsolete FIXME lines:
+  + assrender is being built
+- Add some more FIXME lines:
+  + flite: a small, fast run time synthesis engine
+  + gme: game-music-emu
+  + lv2: a standard for plugins and matching host applications,
+         mainly targeted at audio processing and generation.
+- New built decoders/encoders/muxers:
+  + kate: add libkate-devel BuildRequires; plugin is packaged in
+    the original addon package.
+
+-------------------------------------------------------------------
+Tue Sep  7 07:55:24 UTC 2010 - dimstar@opensuse.org
+
+- Change xvid-devel BuildRequires to libxvidcore-devel and
+  amrwb-devel to libopencore-amr-devel. This is the name used by
+  exxternal repositories.
+
+-------------------------------------------------------------------
+Mon Sep  6 11:12:32 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Thu Sep  3 09:51:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.20:
+  + vdpau: H.264 and MPEG-4 decoder (not enabled for autoplugging
+    yet though)
+  + vp8enc: support multipass encoding and keyframe-only mode
+  + neonhttpsrc: timeout properties and cookie support
+  + h264parse and mpegvideoparse: can periodically insert codec
+    data into stream now
+  + build: require GLib >= 2.20, automake >= 1.10,
+    autoconf >= 2.60, want orc
+  + asfmux:
+    - deprecate "is-live" property, replaced by new "streamable"
+      property
+    - don't set the 'seekable' flag in headers if we are streaming
+    - put headers into "streamheader" field in output caps for
+      streaming
+    - write preroll info in the header at initialization
+  + bayer: support more formats in bayer2rgb, add rgb2bayer element
+  + camerabin: make viewfinder-sink property work with bins
+  + celt: add support for celt 0.8, remove support for celt < 0.5
+  + celtenc: add "prediction" and "start band" properties
+  + coloreffects: new element with heat, sepia, xray and
+    cross-process effects
+  + dshowvideosink: many fixes and improvements
+  + fpsdisplaysink: add "fps-update-interval" and read-only
+    "max-fps"/"min-fps" properties
+  + frei0r: check for plugins in /usr/{local/,}lib{32,64}/frei0r-1
+  + gaudieffects: new plugin with burn, chromium, dilate, dodge,
+    exclusion, gaussianblur and solarize video effect elements
+  + geometrictransform: new plugin with circle, diffuse,
+    kaleidoscope, marble, pinch, sphere, twirl, and waterripple,
+    fisheye, mirror, square, tunnel, bulge, stretch video effect
+    elements
+  + gsettings: new GSettings plugin with audio/video sources and
+    sinks (to replace gconf plugin)
+  + h264parse: add "config-interval" property to insert SPS/PPS at
+    periodic intervals
+  + h264parse: handle 3-byte bytestream sync codes; process
+    incoming timestamps more correctly
+  + id3mux: add support for beats-per-minute tag
+  + invtelecine: support more video formats, more pulldown formats,
+    add "verify-field-flags" property
+  + ivfparse: add simple IVF parser element (simple framing for VP8
+    video data)
+  + jpegformat: add exif writing to jifmux and exif parsing to
+    jpegparse
+  + jpegparse: skip extra 0xff markers, optimize jpeg image parsing
+  + mimic: lots of fixes and clean-ups
+  + mpeg4videoparse: add "config-interval" property to re-insert
+    config in stream
+  + mpegtsmux: start pmt at 0x020; take all the pmt in the
+    streamheaders
+  + mpegtsparse: actually work when we have small buffers coming in
+  + mpegvideoparse: apply previous timestamp when there isn't any
+    newer
+  + neonhttpsrc: add "connect-timeout", "read-timeout" and
+    "cookies" properties
+  + qtmux:
+    - write audio/video stream bitrates into header, if available
+    - write track-number etc. tags even if count is not available
+  + rtmpsrc: new RTMP source element based on librtmp
+  + rtpdtmfmux: add priority sink pads and drop buffers on
+    non-priority sink pads when something is incoming on the
+    priority sink
+  + rtpmux: add support for GstBufferLists; aggregate incoming
+    segments; fix buffer leak
+  + shm: add new shm-based shmsink and shmsrc elements for IPC
+    using shared memory
+  + vdpau: add H.264 decoder and MPEG-4 part 2 decoder; countless
+    other fixes and improvements
+  + videomaxrate: new plugin/element to limit videorate
+    conditionally based on threshold
+  + vp8dec:
+    - mark discont buffers, set decoder deadline from the QoS
+      information
+    - allow a maximum keyframe distance of 0, i.e. all frames are
+      keyframes
+    - fix handling of invisible/alt ref frames
+    - add support for enabling automatic insertion of alt-ref
+      frames by the encoder
+    - implement multipass encoding
+  + wildmidi: Add support for wildmidi 0.2.3
+  + Bugs fixed: bgo#625908, bgo#625076, bgo#620746, bgo#566614,
+    bgo#570428, bgo#574290, bgo#579926, bgo#580967, bgo#591622,
+    bgo#602551, bgo#602936, bgo#613346, bgo#616265, bgo#618336,
+    bgo#618522, bgo#618921, bgo#618936, bgo#620324, bgo#620717,
+    bgo#620825, bgo#620978, bgo#621205, bgo#621348, bgo#621523,
+    bgo#622369, bgo#622484, bgo#622690, bgo#622692, bgo#622725,
+    bgo#623272, bgo#623365, bgo#623550, bgo#623678, bgo#623710,
+    bgo#623713, bgo#623722, bgo#623802, bgo#623854, bgo#623881,
+    bgo#623883, bgo#625003, bgo#625138, bgo#625174, bgo#625496,
+    bgo#625722, bgo#625817, bgo#625959, bgo#626049, bgo#626603,
+    bgo#626670, bgo#626815, bgo#627413, bgo#627918, bgo#627991,
+    bgo#624212, bgo#619158, bgo#619484, bgo#621404
+- Drop gstreamer-0_10-plugins-bad-remove-cog_test.patch, upstream
+  included.
+- Rebase gstreamer010-plugins-bad-patched.patch.
+- Remove liboil-devel BuildRequires.
+- gst-camera.ui is no longer installed, so we can drop the hack to
+  delete it ourselves.
+- Add libvdpau-devel BuildRequires.
+- Split out libgstvdp-0_10-0 subpackage.
+- Add gsettings macros to preamble, post and postun.
+
+-------------------------------------------------------------------
+Mon Aug 30 10:16:02 CEST 2010 - vuntz@opensuse.org
+
+- Reenable the VP8 plugin by adding libvpx-devel BuildRequires
+  back.
+
+-------------------------------------------------------------------
+Mon Aug 30 10:07:24 CEST 2010 - vuntz@opensuse.org
+
+- Remove libvpx-devel BuildRequires for now since it's not in
+  Factory yet.
+
+-------------------------------------------------------------------
+Wed Aug 25 10:01:02 CEST 2010 - vuntz@opensuse.org
+
+- Add libvpx-devel BuildRequires for WebM support.
+- Manually remove gst-camera.ui since gst-camera is not installed
+  anymore.
+
+-------------------------------------------------------------------
+Thu Aug 12 15:56:49 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.19:
+  + audioparsers: add bitrate calculation
+  + camerabin:
+    - add API to query supported image capture resolution
+    - add block-after-capture property for viewfinder blocking
+    - add video-capture-width/height/framerate properties
+    - add video-source-filter and viewfinder-filter properties
+  + capssetter: element was moved to gst-plugins-good
+  + cogcolorspace: implement color-matrix handling and chroma-site
+  + dc1394: add iso-speed property
+  + dshowvideosrc: add support for YUY2 input format
+  + festival: don't open an infinite number of connections to the
+    server and close connections
+  + h264parse:
+    - fix writing NALU prefix for byte-stream output format
+    - fix wrong timestamps in some cases after seeking
+  + imagefreeze: plugin was moved to gst-plugins-good
+  + invtelecine: add invtelecine element
+  + jackaudiosrc: implement multichannel support
+  + jpegformat: add xmp reading and writing support
+  + ladspa, lv2: don't fail in plugin_init when having 0 elements
+    (which would cause the plugin to get blacklisted)
+  + mmssrc:
+    - Check URI for validity and work around URI parsing bugs in
+      libmms
+    - Use the escaped location for the RTSP redirect message
+  + mpegtsdemux: add support for Blu-Ray style DTS and the two DTS
+    HD stream types
+  + mpegtsparse: parse TDT table in mpegts
+  + mpegvideoparse: export profile and level in caps; estimate
+    bitrate; update caps when sequence header changes
+  + oss4: plugin was moved to gst-plugins-good
+  + qtmux: add support for the VP8 video codec and XMP tags
+  + segmentclip: add audio/video buffer segment clip elements
+  + vcdsrc: support the DVD URI scheme so a device can be specified
+    via the URI
+  + vp8: add libvpx-based VP8 encoder/decoder
+  + Bugs fixed: bgo#572551, bgo#603745, bgo#611302, bgo#612208,
+    bgo#612331, bgo#612454, bgo#612615, bgo#612687, bgo#612757,
+    bgo#613156, bgo#613160, bgo#613332, bgo#613708, bgo#613758,
+    bgo#613795, bgo#613920, bgo#614016, bgo#614037, bgo#614259,
+    bgo#614349, bgo#614475, bgo#614479, bgo#614591, bgo#614958,
+    bgo#614991, bgo#616078, bgo#616541, bgo#617145, bgo#617146,
+    bgo#617331, bgo#617650, bgo#618044, bgo#618388, bgo#618409,
+    bgo#618527, bgo#618710, bgo#618867, bgo#619064, bgo#619169,
+    bgo#619172, bgo#619290, bgo#619317, bgo#619318, bgo#619344,
+    bgo#619444, bgo#619502, bgo#619617, bgo#619916, bgo#614317
+- Drop gstreamer010-plugins-bad-libpng14.patch: fixed upstream.
+- Add gstreamer-0_10-plugins-bad-remove-cog_test.patch to fix
+  build, which chokes on BRP checks. The patch is from upstream,
+  commit 106cf3
+- Add librsvg-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jul 18 10:58:38 CEST 2010 - vuntz@opensuse.org
+
+- Add explicit BuildRequires on orc since it's needed for the cog
+  plugin (it was brought by the schroedinger-devel package before).
+
+-------------------------------------------------------------------
+Tue Apr 20 02:28:49 CEST 2010 - davejplater@gmail.com
+
+- Provides gstreamer-0_10-schroedinger = 1.0.8 to ensure a clean
+  update of gstreamer-0_10-schroedinger to this package
+
+-------------------------------------------------------------------
+Fri Apr  9 12:16:21 CEST 2010 - vuntz@opensuse.org
+
+- Add gstreamer010-plugins-bad-libpng14.patch taken from upstream,
+  to correctly detect recent libpng.
+
+-------------------------------------------------------------------
+Thu Mar 25 11:54:02 CET 2010 - vuntz@opensuse.org
+
+- Build the schroedinger plugin that was moved from schroedinger to
+  here:
+  + Add schroedinger-devel BuildRequires to build the schroedinger
+    plugin.
+  + Provides and Obsoletes gstreamer-0_10-schroedinger.
+
+-------------------------------------------------------------------
+Mon Mar  8 16:05:08 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.18:
+  + Features of tis release:
+    - aacparse: lots of fixes, now based on common baseparser class
+      and merged into audioparser plugin
+    - ac3parse: new AC3 parser element based on common baseparser
+      class and part of new audioparser plugin
+    - adpcmenc: new adpcm encoder element
+    - aiffmux: new aiff muxer element
+    - amrparse: use (default) time handling of baseparser class,
+      merged into audioparser plugin
+    - apexsink: change volume property to a double to make work
+      with playbin2
+    - asfmux: handle streams with different start times
+    - asfmux: improve compatibility with WMSP in WMP
+    - asfmux, rfbsrc, vmnc, mpegdemux, resindvd: fix alignment and
+      endianness issues
+    - assrender: countless fixes and improvements
+    - audioparsers: rename baseparse GType name to avoid possible
+      conflicts
+    - audioparsers: fix seek handling, newsegment sending, push
+      mode data draining
+    - celt: make compile against earlier CELT versions
+    - configure: call $PKG_CONFIG instead of pkg-config to fix
+      cross compilation
+    - dataurisrc: new source element for data:// URIs
+    - faac: lots of fixes (channel layout, output caps, bps
+      estimation etc.)
+    - flacparse: fix multiple channel frame parsing; merged into
+      new audioparser plugin
+    - fpsdisplaysink: expose video sink using a property
+    - h264parse: Correctly rewrite all nal prefixes
+    - h264parse: fix caps parameters setting, framerate calculation
+    - h264parse: fix regression in output buffer timestamping
+    - h264parse: optionally output AUs rather than NALUs or
+      transform from bytestream to sample format and vice versa
+    - h264parse: parse SPS some more (e.g. for width/height)
+    - ivorbisdec: moved to -base (to reuse same codebase as
+      vorbisdec)
+    - jpegformat: new jifmux element
+    - jpegparse: new jpeg parser element (not autoplugged for now)
+    - mmssrc: post error message in addition to redirect when
+      connect fails
+    - mpegtsdemux: Handle eac3 in PMT
+    - mpegtsmux: add pat-interval and pmt-interval properties
+    - mpegtsmux: Do not crash on misinterpreted h264
+    - mpegtsmux: Fix mistake on previous commit
+    - mpegtsmux: fix PAT/PMT insertion frequency, add PAT/PMT in
+      streamheader
+    - mpegtsmux: mark delta-unit on outgoing buffers
+    - qtmux: add moov recovery feature (to finalise recording after
+      crash or so)
+    - qtmux: improves compatibility with some hardware players
+    - qtmux: add support for ALAC, SVQ3, IMA ADPCM; improve j2k
+      handling
+    - qtmux: misc. tag writing fixes: write all udta children
+      atoms; crash less
+    - shapewipe: moved to -bad
+    - vdpau: lots of fixes and refactoring
+  + Bugs fixed: bgo#606657, bgo#607513, bgo#440476, bgo#530513,
+    bgo#563433, bgo#575878, bgo#583098, bgo#598350, bgo#598682,
+    bgo#598916, bgo#600409, bgo#601108, bgo#601417, bgo#602161,
+    bgo#602465, bgo#602524, bgo#602528, bgo#603938, bgo#603983,
+    bgo#603986, bgo#604099, bgo#604101, bgo#604280, bgo#604311,
+    bgo#604908, bgo#604925, bgo#605720, bgo#605721, bgo#605904,
+    bgo#606371, bgo#606636, bgo#606665, bgo#606677, bgo#606726,
+    bgo#606859, bgo#607105, bgo#607285, bgo#607555, bgo#607747,
+    bgo#608042, bgo#608651, bgo#608706, bgo#608751, bgo#608753,
+    bgo#608896, bgo#608998, bgo#609055, bgo#609215, bgo#609478,
+    bgo#164870, bgo#383478, bgo#606878, bgo#580731, bgo#587922,
+    bgo#601576
+
+-------------------------------------------------------------------
+Wed Mar  3 12:43:41 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.17:
+  + Fix DVD playback
+  + New elements: DTMF tone source and detector
+  + ASS subtitle support improvements
+  + Fix compilation on OS/X Snow Leopard
+  + Support DVB 3.3 API
+  + Inputselector fixes
+  + Bugs fixed:
+- Changes from version 0.10.16
+  + Fix various bugs in the 0.10.15 release
+  + Fix a deadlock in starting DVD
+  + Fix compilation problems
+  + Allow libneon versions >= 29.x
+- Changes from version 0.10.15
+  + Add barcode scanner plugin using the zbar library
+  + Improvements to camerabin
+  + Support audio-track format switching in DVD
+  + Improve parsing and display of PGS subpictures
+  + Add Cog plugin
+  + Add LV2 plugin support
+  + Improve VDPAU plugin. Add post-processing support
+  + Add videomeasure plugin
+  + Improve Siren codec
+  + Improved Directshow capture element
+  + Add EAC3 mapping in MPEG-TS playback
+  + Improve AAC encoding
+  + Improved MIDI file playback
+  + Improve H-264 parsing
+  + Add MPEG-PS muxer
+  + Add PNM encoder and decoder
+  + Add SVG decoder
+  + Update GLib dependency to GLib 2.16
+  + Various other bug fixes and improvements (see ChangeLog)
+- Changes from version 0.10.14
+  + Moved rtpmanager to -good
+  + Moved dirac elements from schroedinger to gst-plugins-bad
+    (new schroedinger release without the gstreamer elements
+    will follow shortly)
+  + amrwb: Remove AMR-WB parser and decoder and rename encoder
+    plugin from amrwb to amrwbenc (the removed elements will
+    re-appear in the next -ugly release; no migration strategy
+    provided in this case because of the special status of the
+    amrwb plugin)
+  + asfmux, rtpasfpay: add ASF muxer and windows media payloader
+  + basevideo: add experimental video base class library/API
+  + camerabin: lots of fixes and improvements
+  + capssetter: new element for debugging purposes
+  + directdraw: Implement GstNavigation interface
+  + directshow: refactor and improve dshowsrcwrapper, dshowideosrc,
+    dshowaudiosrc
+  + frei0r: wrapper for frei0r video filter plugins
+  + gme: add libgme plugin which supersedes the existing OpenSPC
+    spc plugin
+  + Implement SEEKING query in more demuxers and decoders (notably
+    mpeg-ps/mpeg-ts, mxf, musepack, rawparse)
+  + kate: add kate subtitle encoder, decoder and overlay
+  + mimic: lots of fixes for mimenc and mimdec; add "paused mode"
+  + mpegpsdemux: added caps for AAC and fixed playback of a clip
+    with LPCM
+  + mpegtsdemux: added VC1, EAC3 and LPCM related to blueray/hdmv
+  + qtmux: handle pixel-aspect-ratio; misc. other fixes and
+    improvements
+  + shapewipe: support ARGB/RGBA for video input/output; fix for
+    still images
+  + vdpau: add experimental vdpau plugin
+- Update gstreamer-0_10-plugins-bad-patch-source.sh and
+  gstreamer010-plugins-bad-patched.patch to also drop mpegpsmux
+  from the patched source tarball and from configure.ac
+- Drop gstreamer010-plugins-bad-libass-0.9.7.patch, upstream fixed.
+- Filelist: xdgmime has been moved to -base, rtpmanager to -good,
+  aiffparse was renamed to aiff.
+- Split out the two new libraries accoring SLPP.
+
+-------------------------------------------------------------------
+Mon Dec 14 12:39:12 UTC 2009 - aj@suse.de
+
+- Refresh patches with fuzz=0.
+
+-------------------------------------------------------------------
+Mon Oct 26 17:11:46 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Oct  1 07:36:46 UTC 2009 - lnussel@suse.de
+
+- optionally enable libmms
+- make divx4linux optional too as it's binary only
+
+-------------------------------------------------------------------
+Tue Aug 11 19:28:15 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.10.13:
+  * New shapewipe video transition plugin
+  * qtmux improvements
+  * camerabin improvements
+  * HDV MPEG-TS private streams support
+  * Output interlacing information in mpegvideoparse
+  * MS-ADPCM decoder
+  * RTP fixes and enhancements
+  * DTS decoder improvements
+  * New ID3 tagging plugin that supports v1, v2.3 and v2.4
+  * Support for PGS (BluRay) subtitles
+  * Many other bug fixes and enhancements
+  * Bugs fixed: bgo#584945, bgo#511097, bgo#561752, bgo#584164,
+    bgo#584165, bgo#584360, bgo#585015, bgo#585660, bgo#584114,
+    bgo#583188, bgo#583627
+- Split according to shard library packaging policy.
+
+-------------------------------------------------------------------
+Fri May 22 14:01:34 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10.12:
+  + Presets support in several elements
+  + Support ITV MPEG-TS streams
+  + New element: flvmux
+  + New element: osxvideosrc
+  + Fixes in RTP elements
+  + camerabin fixes
+  + Improved QT/mp4 muxing
+  + xdgmime based content type guessing
+  + deinterlace2 moved to the Good plugins (replacing deinterlace)
+  + Support for MXF muxing, and improved MXF demuxing
+  + Greatly improved DVD playback
+  + DirectDraw element moved back from Good plugins
+  + Many other bug fixes and improvements
+  + Bugs fixed: bgo#573852, bgo#574401, bgo#580091, bgo#153684,
+    bgo#537700, bgo#569437, bgo#569673, bgo#569781, bgo#573595,
+    bgo#573846, bgo#573847, bgo#573848, bgo#573849, bgo#575388,
+    bgo#575736, bgo#576408, bgo#577690, bgo#577864, bgo#578112,
+    bgo#578562, bgo#578563, bgo#580133, bgo#580144, bgo#580786,
+    bgo#580901, bgo#581375, bgo#582013, bgo#582074, bgo#582208,
+    bgo#582483, bgo#582656, bgo#582702, bgo#583337, bgo#580585,
+    bgo#577843, bgo#581593, bgo#575284, bgo#576021, bgo#576712,
+    bgo#581427
+- Drop gst-plugins-bad-soundtouch14.patch: fixed upstream.
+- Remove useless change in configure.ac for swfdec: this plugin
+  doesn't compile anyway.
+
+-------------------------------------------------------------------
+Mon May 11 19:27:35 CEST 2009 - sbrabec@suse.cz
+
+- Build with external modplug.
+- Fix for the latest soundtouch.
+- Don't call autogen in older products.
+- patch-source script included as source.
+
+-------------------------------------------------------------------
+Mon Mar 23 14:06:44 CET 2009 - vuntz@novell.com
+
+- Update to version 0.10.11:
+  + Add ASS/SSA subtitle handling element assrender
+  + Leak fixes in the QuickTime decoder wrapper
+  + Better DirectShow output on Windows
+  + Extend QT muxing support to include AMR and H.263
+  + mms seeking support
+  + Extended MXF file format handling
+  + camerabin and photography API for digital camera interfacing
+  + Merge elements from Farsight: liveadder, sirendec, sirenenc,
+    valve, rtpdtmfsrc, rtpdtmdepay, dtmfsrc, rtpdtmfmux,
+    autoconvert, mimdec, mimenc
+  + typefinder based on xdgmime
+  + Bugs fixed: bgo#573369, bgo#568704, bgo#354908, bgo#369912,
+    bgo#469930, bgo#481075, bgo#549645, bgo#567003, bgo#567371,
+    bgo#567828, bgo#567965, bgo#568480, bgo#568483, bgo#568837,
+    bgo#569323, bgo#570996, bgo#571560, bgo#572315, bgo#572900,
+    bgo#573288, bgo#573391, bgo#575157, bgo#575565, bgo#564114,
+    bgo#573850, bgo#573851, bgo#172043
+- Respin gstreamer010-plugins-bad-patched.patch.
+- Respin gstreamer010-plugins-bad-libdca-shared.patch.
+- Drop gstreamer010-plugins-bad-swfdec04.patch: this old patch
+  attempt that we don't use is for an old swfdec anyway.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Remove checks for old versions of openSUSE.
+- Remove unneeded BuildRequires: ladspa.
+- Update file list.
+- Add many FIXME about plugins which cannot build because we're
+  lacking some packages.
+- Add call to ldconfig since there's a library in the package now.
+
+-------------------------------------------------------------------
+Tue Feb 24 18:54:02 CET 2009 - sbrabec@suse.cz
+
+- Updated to version 0.10.10:
+  * New MXF demuxer added
+  * JPEG-2000 encoder - jp2enc added
+  * RTP support
+  * Fixes for RTP support
+  * Add parsers for AAC and AMR
+  * Move libgstapp and elements to -base
+  * Add Quicktime muxer element qtmux
+  * Enhance RFB capture
+  * Improve MPEG-TS and MPEG-PS demuxing
+  * Introduce audioringbuffer element
+  * Improve DVD playback of ResinDVD components
+  * Move old audioresample from -base as legacyaudioresample
+  * Improve speexresampler, and then move it to -base
+  * Improve FLV demuxing and parsing
+  * Various DVB input fixes
+  * Add support for frequency list descriptors for DVB
+  * Improve MPEG-TS muxer
+  * New CELT encoder and decoder
+  * New TwoLAME encoder
+  * New DCCP element
+  * New AIFF parser element
+  * New APEX sink element
+  * deinterlace2 element improvements
+  * New JACK audio src element
+  * New winscreencap, winks and pcapparse plugins
+  * x624enc fixes
+  * Support for ATSC tuning and channels.conf parsing
+  * RTP improvements
+  * New scaletempo element
+  * Add Fluendo MPEG-TS muxer
+  * Add Fluendo MPEG-TS and MPEG-PS demuxers
+  * New JPEG2000 element
+  * New FLAC parser element
+  * DVD playback improvements
+  * Improved DirectShow decoding support
+  * New Windows Audio Session audio src element
+  * New FLV muxer element
+  * Many other bug fixes and improvements
+
+-------------------------------------------------------------------
+Thu Feb  5 20:00:50 CET 2009 - vuntz@novell.com
+
+- Don't package the libgstapp-related files: they moved to
+  gstreamer-0_10-plugins-base. This can be removed once we upgrade
+  to latest upstream.
+
+-------------------------------------------------------------------
+Tue Nov 25 19:34:30 CET 2008 - sbrabec@suse.cz
+
+- Patch source code to remove unwanted codecs, added correct
+  conflicts for seamless upgrade. (bnc#441855)
+
+-------------------------------------------------------------------
+Thu Nov  6 11:08:15 CET 2008 - sbrabec@suse.cz
+
+- Build dc1394, dirac, mplex, musepack and sndfile modules
+  (bnc#441855).
+- Build with EXIF, IPTC, XMP support in metadata module.
+- Fixed valgrid BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct 22 15:32:17 CEST 2008 - sbrabec@suse.cz
+
+- Improvements of optional patches.
+
+-------------------------------------------------------------------
+Fri Sep 12 13:33:58 CDT 2008 - maw@suse.de
+
+- Update to version 0.10.8:
+  + OSS v4 support
+  + libdc1394 2.0.0 support
+  + AAC support fixes
+  + RTP support improved
+  + New OFA element
+  + SRT subtitle encoder added
+  + Windows Inet support for http/ftp
+  + Fixes in dc1394, MIDI, MPEG-2 encoding, MythTV input, NAS
+  + Fixes in Bayer decoder, replaygain analysis, GSM decoder
+  + DVB/MPEG-TS support improved
+  + NSF decoder updated
+  + 'metadata' plugin enhancements
+  + Dirac encoder ported to libschroedinger
+  + mplex element ported to 0.10
+  + VCD/CDXA parser ported to 0.10
+  + Directshow wrapper improvements
+  + 'selector' plugin enhancements
+  + souphttpsrc moved to the -good module
+  + Various other fixes and enhancements
+  + Support shared desktops in RFB input
+  + Make the Quicktime codec wrapper work on win32
+  + Experimental DVD navigation support
+  + Support AAC/H.264 in FLV files
+  + Fixes in the DirectShow codec wrapper
+  + Fix the Real codec wrapper plugin
+  + New deinterlace2 plugin incorporating TVtime deinterlacers
+  + Handle seeking, timestamps, duration in RAW video/audio parsers
+  + New DirectShow video sink for Win32
+  + FAAD reverse playback support
+  + OSS4 support improvements
+  + MythTV seeking support
+  + SPC decoder now supports seeking, tags and duration queries
+  + Replaygain elements moved to Good
+  + Deinterleave/interleave elements fixed and moved to Good
+  + MPEG-4 video stream parser fixes
+  + Improved MPEG-TS parsing for DVB support
+  + Improvements in App source/sink
+  + RTP manager enhancements
+  + Bugs fixed: bfo#498237, bfo#529378, bfo#351309, bfo#469979,
+    bfo#494499, bfo#514948, bfo#514964, bfo#517937, bfo#518227,
+    bfo#518722, bfo#519905, bfo#520329, bfo#520626, bfo#520892,
+    bfo#520894, bfo#520897, bfo#521749, bfo#522134, bfo#522212,
+    bfo#522884, bfo#523854, bfo#524035, bfo#525271, bfo#526337,
+    bfo#527622, bfo#528000, bfo#528011, bfo#528245, bfo#528266,
+    bfo#528614, bfo#529283, bfo#529285, bfo#517854, bfo#517895,
+    bfo#517896, bfo#525100, bfo#481354, bfo#533736, bfo#544050,
+    bfo#454151, bfo#506594, bfo#521392, bfo#525613, bfo#528618,
+    bfo#529359, bfo#530611, bfo#531840, bfo#531955, bfo#532723,
+    bfo#533435, bfo#533559, bfo#535043, bfo#536042, bfo#536258,
+    bfo#536856, bfo#538560, bfo#539292, bfo#539601, bfo#541522,
+    bfo#541543, bfo#543286, bfo#543846, bfo#543848, bfo#543860,
+    bfo#543861, bfo#544457, bfo#526905, bfo#532011, and bfo#536309.
+
+-------------------------------------------------------------------
+Mon May 19 19:13:24 CEST 2008 - schwab@suse.de
+
+- Fix real patch.
+
+-------------------------------------------------------------------
+Tue Apr  8 13:40:29 CEST 2008 - sbrabec@suse.cz
+
+- Fixed Obsoletes (bnc#357153).
+
+-------------------------------------------------------------------
+Mon Mar 10 16:45:20 CET 2008 - maw@suse.de
+
+- Update to version 0.10.6:
+  +       * DVB support added
+  + dc1394 support
+  + RTP-manager improvements
+  + Support for native QT codecs on OS/X and DirectShow codecs on Windows,
+    courtesy of Songbird and Fluendo
+  + New elements: flvdemux, flvparse, mpegtsparse, dvbsrc, dvdspu
+  + More new elements: mpeg4videoparse, metadatademux/mux, souphttpsrc,
+    speexresample, qtwrapper
+  + Even more new elements: rawaudioparse, fbdevsink
+  + Renamed elements/plugins: switch (now selector), pitch (now soundtouch)
+  + Elements graduated to good: multifilesrc/sink, spectrum, equalizer,
+    bpwsinc, lpwsinc
+  + Elements graduated to ugly: xingmux (now part of mpegaudioparse)
+  + OpenGL support moved to new module: gst-plugins-gl
+  + appsrc/appsink improvements
+  + Fixes in neonhttpsrc
+  + Fixes in amrwbparse
+  + Deinterlacer improvements
+  + Fixes in dtsdec
+  + Fixes in the Real codec wrappers
+  + Bugs fixed: bgo#321240, bgo#508029, bgo#508294, bgo#387251,
+    bgo#393461, bgo#395424, bgo#397759, bgo#403992, bgo#409974,
+    bgo#426657, bgo#433373, bgo#444499, bgo#450175, bgo#450605,
+    bgo#452009, bgo#452258, bgo#453636, bgo#454078, bgo#454313,
+    bgo#456901, bgo#456912, bgo#461068, bgo#461373, bgo#461377,
+    bgo#461601, bgo#462737, bgo#464678, bgo#468039, bgo#471554,
+    bgo#473562, bgo#474969, bgo#476128, bgo#476148, bgo#476159,
+    bgo#476370, bgo#477306, bgo#478566, bgo#481200, bgo#481276,
+    bgo#481279, bgo#483400, bgo#484990, bgo#485462, bgo#487496,
+    bgo#487892, bgo#487901, bgo#490060, bgo#490682, bgo#492406,
+    bgo#492798, bgo#496221, bgo#498430, bgo#498667, bgo#498755,
+    bgo#499008, bgo#500099, bgo#500142, bgo#501579, bgo#502335,
+    bgo#502879, bgo#503308, bgo#507020, bgo#507584, bgo#507940,
+    bgo#508515, bgo#508587, bgo#508979, bgo#510708, bgo#511001,
+    bgo#511146, bgo#511530, bgo#511683, bgo#511686, bgo#511920,
+    bgo#512654, bgo#512774, bgo#512826, bgo#514093, bgo#515564,
+    bgo#515567, bgo#515588, bgo#515720, bgo#515721, bgo#515722,
+    bgo#515815, bgo#515860, bgo#515919, bgo#515964, bgo#515970,
+    bgo#516061, bgo#516094, bgo#516114, bgo#516160, bgo#516436,
+    bgo#516448, bgo#516499, bgo#517391, bgo#517571, bgo#517684,
+    bgo#478159, bgo#497020, and bgo#501562
+- Drop gstreamer010-plugins-bad-ac.patch and
+  gstreamer010-plugins-bad-soundtouch-1.0.patch
+- Several plugins have been moved from this package to
+  gstreamer-0_10-plugins-good.
+
+-------------------------------------------------------------------
+Tue Jan 22 16:52:24 CET 2008 - sbrabec@suse.cz
+
+- Split package according to shared library packaging policy
+  (#223286).
+- Created lang package.
+
+-------------------------------------------------------------------
+Thu Oct 18 19:03:58 CEST 2007 - maw@suse.de
+
+- Only package %{_libdir}/gstreamer-%{gst_branch}/libgstneonhttpsrc.so
+  on 10.2 and 10.3
+- Add several requirements to the -devel subpackage.
+
+-------------------------------------------------------------------
+Tue Oct 16 13:48:55 CEST 2007 - sbrabec@suse.cz
+
+- Fixed backslash expansion in previous change.
+
+-------------------------------------------------------------------
+Mon Oct 15 15:45:25 CEST 2007 - sbrabec@suse.cz
+
+- Worked around OBS spec file corruption bug (#332132).
+
+-------------------------------------------------------------------
+Fri Oct  5 13:13:02 CEST 2007 - sbrabec@suse.cz
+
+- Use less restrictive Requires based on the sources.
+
+-------------------------------------------------------------------
+Fri Sep  7 11:07:05 CEST 2007 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:25:19 CEST 2007 - sbrabec@suse.cz
+
+- Use Enhances: gstreamer010 instead of Supplements (#294358).
+
+-------------------------------------------------------------------
+Thu Jun 21 15:11:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.5:
+  * New plugin - realdec for decoding Real streams using binary
+    libs
+  * New plugin - MythTV source
+  * New plugin - appsrc (for application data insertion)
+  * New plugin - VMnc VMware capture decoder
+  * New plugin - JACK audio output
+  * New plugin - interleave/deinterleave
+  * New plugin - RTP manager
+  * New plugin - Bayer to RGB converter
+  * New plugin - ReplayGain support
+  * New plugin - DirectShow win32 input support
+  * New plugin - videosignal/videoanalyse
+  * LADSPA plugin improvements
+  * IIR equaliser ported to 0.10 (iirequalizer)
+  * libsndfile output ported to 0.10
+  * mpegvideoparse ported to 0.10 and improved
+  * switch element ported to 0.10
+  * VCD source element ported to 0.10
+  * AMR-WB support fixes
+  * MIDI renderer plugin based on timidity
+  * qtdemux, wavpack and videocrop plugins moved to the Good module
+  * Many other bug fixes and improvements
+  * Parallel installability with 0.8.x series
+  * Threadsafe design and API
+
+-------------------------------------------------------------------
+Wed May 16 15:28:16 CEST 2007 - sbrabec@suse.cz
+
+- Use Supplements instead of not yet supported Enhances.
+
+-------------------------------------------------------------------
+Thu May 10 23:58:05 CEST 2007 - ro@suse.de
+
+- added ladspa-devel to buildrequires
+
+-------------------------------------------------------------------
+Thu Apr 19 13:10:42 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Tue Apr 17 15:45:06 CEST 2007 - sbrabec@suse.cz
+
+- Removed NoSource - there is no problematic code.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:24:41 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.4:
+  * V4L2 source element moved to Good plugins
+  * Many improvements in Quicktime playback
+  * Xvid encoding and decoding improvements
+  * FAAD decoder fixes
+  * New element: alsaspdifsink for IEC958 output
+  * Spectrum FFT analysis element ported
+  * New element: h264parse. H.264 Parser
+  * Fixes in bz2 support
+  * New element: theoraexpdec. Libtheoraexp based Theora decoder
+  * New element: wavpackenc. Wavpack decoder
+  * Improvements in the libneon based http source
+  * gstfilter ported to 0.10
+  * mpeg2enc ported to 0.10
+  * New element: nsfdec. NSF decoder
+  * New element: spcdec. libopenspc based SPC decoder
+  * videocrop ported/re-written from 0.8
+  * cdaudio element ported to 0.10
+  * New element: rganalysis. ReplayGain analysis element
+  * New element: dvbsrc. DVB source element (disabled by default)
+  * deinterlace (Simple deinterlacer) ported from 0.8
+  * New element: nuvdemux. NUV video demuxer
+  * Fixes in the DirectDraw output elements
+  * New elements: multifilesrc, multifilesink
+  * y4mencode ported from 0.8
+  * rfbsrc, librfb based capture source ported from 0.8
+  * New element: jackaudiosink. JACK audio output element
+  * Many fixes and improvements
+- Support for BUILD_ORIG and BUILD_ORIG_ADDON defines (#237351).
+
+-------------------------------------------------------------------
+Fri Mar  2 15:06:28 CET 2007 - sbrabec@suse.cz
+
+- Fixed BuildRequires to build on all products.
+
+-------------------------------------------------------------------
+Tue Feb  6 12:19:27 CET 2007 - sbrabec@suse.cz
+
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Mon Dec 18 16:38:47 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Dec 11 13:19:15 CET 2006 - sbrabec@suse.cz
+
+- Fixed build for 10.2.
+
+-------------------------------------------------------------------
+Tue Nov 28 19:17:06 CET 2006 - sbrabec@suse.cz
+
+- Build correctly in older products.
+
+-------------------------------------------------------------------
+Thu Nov  9 17:48:21 CET 2006 - sbrabec@suse.cz
+
+- Fixed linking of plugins with latest packages.
+
+-------------------------------------------------------------------
+Tue Oct 17 00:19:39 CEST 2006 - ro@suse.de
+
+- use DirectFB-devel in BuildRequires
+
+-------------------------------------------------------------------
+Sun Jul 23 10:59:20 CEST 2006 - olh@suse.de
+
+- readd gcc-c++ to buildrequires
+  adapt for neon 0.26 API
+
+-------------------------------------------------------------------
+Tue Jun 27 16:32:07 CEST 2006 - sbrabec@suse.cz
+
+- Build with libdca-devel.
+
+-------------------------------------------------------------------
+Tue Jun 20 19:07:31 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.3:
+  * FAAD/AAC decoder improvements
+  * Better QuickTime support
+  * Plugins ported from 0.8: modplug, v4l2src, Musicbrainz TRM
+  * New plugins: Xing muxer, libsoundtouch, AMR-WB, theora-exp
+  * Musepack decoder improved
+  * libneon based http input now supports iradio mode
+  * More uniform plugin descriptions
+  * Many bug fixes
+- Added support for more plugins.
+
+-------------------------------------------------------------------
+Wed Mar 22 12:13:28 CET 2006 - hvogel@suse.de
+
+- add gcc-c++ to buildrequires for some configure check
+
+-------------------------------------------------------------------
+Fri Feb 24 02:19:54 CET 2006 - jpr@suse.de
+
+- Update to 0.10.1
+- Changes since 0.10.0:
+
+      * Parallel installability with 0.8.x series
+      * Threadsafe design and API
+      * Lots of fixes for the QT/MOV demuxer, including restoring
+        the ability to play web streams, and more codecs supported
+      * AAC decoder fixes
+      * MMS source fixes
+      * DirectFB plugin updated
+      * New plugins ported to 0.10: swfdec, XVid, dtsdec, glimagesink
+      * New libneon based http source filter
+      * APE tag reader moved to gst-plugins-good module
+
+Bugs fixed since 0.10.0:
+
+      * 303167 : Add bzip2 support
+      * 322973 : [wavpack] erroneous sampling rates range
+      * 326524 : Support for Indeo 3-encoded QuickTime files
+      * 327133 : [qtdemux] QuickTime with 8-bit audio
+      * 328854 : AAC+ stream not working with FAAD plugin
+      * 330089 : [bz2] Wrong mimetype and no typefinding
+      * 331302 : bz2 plugin source files lack copyright notices
+      * 331543 : crash on iTunes MPEG v4 AAC-LC files
+      * 331582 : [qtdemux] protect log statement against invalid memory access
+
+-------------------------------------------------------------------
+Tue Feb 14 16:52:03 CET 2006 - sbrabec@suse.cz
+
+- Fixed Requires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 02:20:17 CET 2006 - ro@suse.de
+
+- avoid gstreamer installation (-gstreamer in nfb)
+
+-------------------------------------------------------------------
+Wed Jan 18 20:02:30 CET 2006 - sbrabec@suse.cz
+
+- Build again with -export-symbols-regex.
+
+-------------------------------------------------------------------
+Mon Jan  9 16:35:17 CET 2006 - sbrabec@suse.cz
+
+- Build GSM modules.
+
+-------------------------------------------------------------------
+Fri Jan  6 17:04:16 CET 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 0.10.0.
+- Worked around -export-symbols-regex libtool problems.
+

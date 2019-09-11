@@ -1,0 +1,15 @@
+diff -Nru azure-servicebus-0.50.0.orig/setup.py azure-servicebus-0.50.0/setup.py
+--- azure-servicebus-0.50.0.orig/setup.py	2019-01-18 00:37:32.000000000 +0100
++++ azure-servicebus-0.50.0/setup.py	2019-04-01 15:23:45.189117613 +0200
+@@ -77,9 +77,9 @@
+         'azure',
+     ]),
+     install_requires=[
+-        'uamqp~=1.1.0',
++        'uamqp>=1.1.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-nspkg', 'futures'],

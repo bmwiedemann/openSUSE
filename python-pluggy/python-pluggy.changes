@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Mon Jun  3 08:08:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * #215: Switch from pkg_resources to importlib-metadata for entrypoint
+    detection for improved performance and import time. This time with .egg support.
+
+-------------------------------------------------------------------
+Mon May 20 08:34:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.0:
+  * Small bugfixes only
+
+-------------------------------------------------------------------
+Tue Feb 26 11:51:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * #189: PluginManager.load_setuptools_entrypoints now accepts a name parameter that when given will load only entry points with that name.
+  * PluginManager.load_setuptools_entrypoints also now returns the number of plugins loaded by the call, as opposed to the number of all plugins loaded by all calls to this method.
+
+-------------------------------------------------------------------
+Mon Feb 25 08:23:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to avoid build loop
+
+-------------------------------------------------------------------
+Tue Feb 12 14:20:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+   * #166: Add stacklevel=2 to implprefix warning so that the reported location of warning is the caller of PluginManager.
+
+-------------------------------------------------------------------
+Fri Oct 26 13:01:53 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.0
+ * Add get_hookimpls() method to hook callers
+ * Add changelog in long package description and documentation.
+ * Add a test exemplifying the opt-in nature of spec defined args.
+ * Encapsulate hook specifications in a type for easier introspection.
+
+-------------------------------------------------------------------
+Thu Aug  2 12:22:54 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.7.1
+ * Deprecate the implprefix kwarg to PluginManager and instead expect users
+    to start using explicit HookimplMarker everywhere
+ * Add .plugin member to PluginValidationError to access failing plugin during post-mortem.
+ * Add per implementation warnings support for hookspecs allowing for both
+    deprecation and future warnings of legacy and (future) experimental hooks respectively.
+ * Fix a bug where _HookCaller.call_historic() would call the proc arg even
+    when the default is None resulting in a TypeError.
+ * Fix problem when handling VersionConflict errors when loading setuptools plugins.
+
+-------------------------------------------------------------------
+Thu Dec 21 16:12:04 UTC 2017 - jmatejek@suse.com
+
+- run tests conditionally (fixes bsc#1073845)
+
+-------------------------------------------------------------------
+Sun Nov 26 21:25:17 UTC 2017 - arun@gmx.de
+
+- update to version 0.6.0
+  * Add CI testing for the features, release, and master branches of
+    pytest (PR #79).
+  * Document public API for _Result objects passed to wrappers (PR
+    #85).
+  * Document and test hook LIFO ordering (PR #85).
+  * Turn warnings into errors in test suite (PR #89).
+  * Deprecate _Result.result (PR #88).
+  * Convert _Multicall to a simple function distinguishing it from the
+    legacy version (PR #90).
+  * Resolve E741 errors (PR #96).
+  * Test and bug fix for unmarked hook collection (PRs #97 and #102).
+  * Drop support for EOL Python 2.6 and 3.3 (PR #103).
+  * Fix inspect based arg introspection on py3.6 (PR #94).
+
+-------------------------------------------------------------------
+Thu Nov  9 06:02:35 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * changed from zip to tar.gz
+  * removed CHANGELOG fomr %doc (not in tar-ball anymore)
+
+- update to version 0.5.2:
+  * fix bug where firstresult wrappers were being sent an incorrectly
+    configured _Result (a list was set instead of a single value). Add
+    tests to check for this as well as _Result.force_result()
+    behaviour. Thanks to @tgoodlet for the PR #72.
+  * fix incorrect getattr of DeprecationWarning from the warnings
+    module. Thanks to @nicoddemus for the PR #77.
+    hide pytest tracebacks in certain core routines. Thanks to @nicoddemus for the PR #80.
+
+- changes from version 0.5.1:
+  * fix a bug and add tests for case where firstresult hooks return
+    None results. Thanks to @RonnyPfannschmidt and @tgoodlet for the
+    issue (#68) and PR (#69) respectively.
+
+- changes from version 0.5.0:
+  * fix bug where callbacks for historic hooks would not be called for
+    already registered plugins. Thanks @vodik for the PR and @hpk42
+    for further fixes.
+  * fix #17 by considering only actual functions for hooks this
+    removes the ability to register arbitrary callable objects which
+    at first glance is a reasonable simplification, thanks
+    @RonnyPfannschmidt for report and pr.
+  * fix #19: allow registering hookspecs from instances. The PR from
+    @tgoodlet also modernized the varnames implementation.
+  * resolve #32: split up the test set into multiple modules. Thanks
+    to @RonnyPfannschmidt for the PR and @tgoodlet for the initial
+    request.
+  * resolve #14: add full sphinx docs. Thanks to @tgoodlet for PR #39.
+  * add hook call mismatch warnings. Thanks to @tgoodlet for the PR
+    #42.
+  * resolve #44: move to new-style classes. Thanks to @MichalTHEDUDE
+    for PR #46.
+  * add baseline benchmarking/speed tests using pytest-benchmark in PR
+    #54. Thanks to @tgoodlet.
+  * update the README to showcase the API. Thanks to @tgoodlet for the
+    issue and PR #55.
+  * deprecate __multicall__ and add a faster call loop
+    implementation. Thanks to @tgoodlet for PR #58.
+  * raise a comprehensible error when a hookimpl is called with
+    positional args. Thanks to @RonnyPfannschmidt for the issue and
+    @tgoodlet for PR #60.
+  * fix the firstresult test making it more complete and remove a
+    duplicate of that test. Thanks to @tgoodlet for PR #62.
+
+-------------------------------------------------------------------
+Fri Apr  7 15:09:41 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- add project URL
+- enable test
+- update to 0.4.0
+  * add has_plugin(name) method to pluginmanager.  thanks Bruno Oliveira.
+  * fix issue11: make plugin parsing more resilient against exceptions
+    from __getattr__ functions. Thanks Bruno Oliveira.
+  * fix issue #4: specific HookCallError exception for when a hook call 
+    provides not enough arguments.
+  * better error message when loading setuptools entrypoints fails
+    due to a VersionConflict.  Thanks Daniel Hahler.
+
+-------------------------------------------------------------------
+Wed Sep 16 13:48:57 UTC 2015 - tbechtold@suse.com
+
+- Initial packagin (version 0.3.0)
+

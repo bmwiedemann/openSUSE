@@ -1,0 +1,13 @@
+Index: mathgl-2.4.1/CMakeLists.txt
+===================================================================
+--- mathgl-2.4.1.orig/CMakeLists.txt
++++ mathgl-2.4.1/CMakeLists.txt
+@@ -241,7 +241,7 @@ set(MGL_DEF_FONT "STIX" CACHE STRING "Se
+ if(NOT WIN32)
+ #	set(MGL_CGI_PATH "${CMAKE_INSTALL_PREFIX}/share/mathgl")
+ 	set(MGL_DATA_PATH "${CMAKE_INSTALL_PREFIX}/share/mathgl")
+-	set(MGL_DOC_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/mathgl")
++	set(MGL_DOC_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/packages/mathgl")
+ 	set(MGL_MAN_PATH "${CMAKE_INSTALL_PREFIX}/share/man")
+ 	set(MGL_INFO_PATH "${CMAKE_INSTALL_PREFIX}/share/info")
+ 	set(MGL_FONT_PATH "${MGL_DATA_PATH}/fonts")

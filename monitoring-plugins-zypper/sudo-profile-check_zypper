@@ -1,0 +1,4 @@
+nagios ALL=(ALL) NOPASSWD: /usr/sbin/zypp-refresh "",\
+                           /usr/bin/zypper refresh,\
+                           /usr/bin/zypper services,\
+                           /usr/bin/zypper --xmlout --non-interactive list-updates --type package --type patch

@@ -1,0 +1,28 @@
+--- a/setup.py
++++ b/setup.py
+@@ -262,13 +262,7 @@ setup(name='ConcurrentLogHandler',
+         "portalocker",
+         ],
+       package_dir={ '' : 'src', },
+-      data_files=[
+-        ('tests', ["stresstest.py"]),
+-        ('docs', [
+-            'README',
+-            'LICENSE',
+-            ]),
+-      ],
++      data_files=[],
+       url="http://launchpad.net/python-concurrent-log-handler",
+       license = "http://www.apache.org/licenses/LICENSE-2.0",
+       description=doc.pop(0),
+--- /dev/null
++++ b/run_tests.sh
+@@ -0,0 +1,8 @@
++#!/bin/sh
++set -x
++
++RET=$($1 stresstest.py \
++    |& sed -n '/^Running internal diff/,/^\s*--- end of diff ----/p' \
++    |wc -l)
++rm -f test/*.log*
++[ $RET -eq 2 ]

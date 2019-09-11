@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Mon Apr 29 10:45:23 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.5
+  * Bugfix: Fix compilation with exiv2 0.27
+  * Enhancement: Display dates when browsing categories. When
+    browsing categories, two columns "Start Date" and "End Date"
+    have been added. These columns correspond to the time range of
+    the images tagged with that particular tag.
+  * Enhancement: Faster display of browser overview page. Depending
+    on the current context, the overview should now be displayed
+    significantly faster (on my particular system the time to
+    display the "Home" page dropped from 500ms to 25ms).
+  * Change: More intuitive handling of down button in annotation
+    dialog. Pressing the "down" button in a ListSelect in the
+    annotation dialog now selects the first item, not the second
+    one.
+  * Change: Use non-linear scaling for DateBar by default
+    (kde#356810)
+  * Change: Instead of having "increase/decrease thumbnail storage
+    size buttons", show a "Thumbnail settings" button in the status
+    bar (kde#357239)
+  * Bugfix: Restore correct behaviour for "Statistics..." action
+  * Bugfix: Fix loading of user shortcuts for the annotation dialog
+  * Enhancement: Add "clear selection" menu item
+  * Change: More detailed debug output
+  * Deprecation: Removed compatibility with Qt versions < 5.9
+  * Deprecation: Removed support for MPlayer. For video thumbails,
+    only ffmpeg is supported.
+  * Enhancement: Smaller performance improvements during startup
+  * Bugfix: Fix zooming for raw images
+- Drop patches merged upstream:
+  * Use-Exiv2-0.27-if-available.patch
+  * Fix-compilation-with-exiv2-0.27.patch
+- Drop 0001-Fix-build-with-Qt-5.7-and-lower.patch, it requires Qt
+  5.9 and KF 5.44 now, the versions in Leap 42.3 are just too old
+- Use %kf5_find_htmldocs macro to generate the translated docs
+  filelist
+
+-------------------------------------------------------------------
+Wed Feb  6 12:04:33 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.4.2
+  * Prevent loss of tagging data when upgrading from v5.3 or older
+    (kde#403668)
+  * Fix crash when right-clicking in thumbnail view (kde#403721)
+
+-------------------------------------------------------------------
+Thu Jan  3 21:44:37 UTC 2019 - wbauer@tmo.at
+
+- Add upstream patches to fix build with exiv2-0.27:
+  * Use-Exiv2-0.27-if-available.patch
+  * Fix-compilation-with-exiv2-0.27.patch
+
+-------------------------------------------------------------------
+Sat Oct 13 23:32:23 UTC 2018 - wbauer@tmo.at
+
+- Update to 5.4
+  * Change: Database file now uses version 8 format.
+  * Update/Bugfix: Various l10n fixes concerning capitalization and
+    contexts.
+  * Update: Review default values for Settings, pre-define
+    contemporary ones:
+    - Ignore common auto-generated Exif comments by default.
+    - The database file is now optimized for speed by default
+      (old default value: optimized for human readability)
+    - If less than 20 images are matched, the thumbnail view is
+      shown (old default value: 0)
+    - The thumbnail grid is now optimized for a 3:2 aspect ratio
+      (old default value: 4:3)
+    - The size of thumbnails is now 256x256 pixels
+      (old default value: 150)
+    - When starting a slideshow, it is now shown in fullscreen by
+      default (old default value: 800x600px)
+    - Detect edited images by default
+      (old default value: feature was not configured)
+      This means that images that have been edited using the
+      "create a copy and open" feature now are recognized by
+      default. The tags of the original image are copied and both
+      images are automatically stacked.
+  * Bugfix: Use the correct initial value when renaming tag groups
+    using the settings page.
+  * Enhancement: Improve startup 10-15% by eliding unnecessary
+    category creation.
+  * Bugfixes: Don't continue accessing the Exif db if unusable,
+    reset failed state when recreating db.
+  * Bugfix: Fix display of "<=" and ">=" rating options in search
+    dialog.
+  * Bugfix: Fix overflow in parsing GPS information from Exif,
+    leading to false coordinates.
+  * Enhancement: Add FreeBSD as supported platform
+  * Bugfix: Fixed build with Qt 5.11, replace deprecated API usage.
+  * Enhancement: Do not write unnecessary data to index.xml by
+    using defaults.
+  * Enhancements: Improved thumbnail generation:
+    - Improve thumbnail generation speed and efficiency.
+    - Overlap thumbnail create with image load.
+    - Generate new thumbnails for moved images detected during load.
+  * Bugfix: More reliable auto-stacking of images.
+  * Enhancements: Improved speed of loading/removing new images:
+    - Insert Exif data for each loaded image as it's loaded, but
+      within a transaction.
+    - Elide unnecessary MD5 computations.
+    - Reduce I/O wait time of image loader by introducing a scout
+      thread.
+    - Improve I/O efficiency for MD5 calculation.
+    - Fetch Exif data only once during load.
+    - Improve efficiency of loading previews from RAW images.
+    - Ignore more sidecar files to improve performance
+      (.xmp, .pp3, and .pto).
+  * Enhancement/Bugfix: Scale the date bar appropriately upon
+    exposure, add one minute scaler.
+  * Update: Make Android app compilable with C++14 and later.
+  * Rework: General code cleanup, coding standard updates etc. all
+    over the place.
+- Drop Fix-build-with-Qt-511.patch, merged upstream
+- Add 0001-Fix-build-with-Qt-5.7-and-lower.patch to make it build
+  on Leap 42.3
+
+-------------------------------------------------------------------
+Mon Jun  4 09:54:35 UTC 2018 - christophe@krop.fr
+
+- Add Fix-build-with-Qt-511.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan 23 07:21:21 UTC 2018 - wbauer@tmo.at
+
+- Update to 5.3
+  * Removal of the face management, libkface is unmaintained.
+  * Bugfix: Fix crash with prepared SQL queries on Qt 5.10.
+  * Enhancement: Speed up startup by not counting images several
+    times.
+  * Enhancement: Improve robustness of video length detection and
+    thumbnail extraction.
+  * Enhancement: Made the full screen image preview in the
+    annotation dialog reachable by a button.
+  * Change: Display absolute numbers instead of percentage when
+    loading new images.
+  * Bugfix (kde#385551): Remove dead/unreachable code.
+  * Enhancement: Speed up video thumbnail creation.
+  * New: Added the "kpa-merge" script (by Robert Krawitz), which
+    can merge two (version 7) databases and also remove unused
+    labels.
+  * Enhancement: Speed up removal of images from database.
+  * Enhancement: Add a "Maximum megapixels" option to the search
+    dialog.
+  * Enhancement: Don't re-compute an MD5 sum we already have when
+    adding new images.
+  * Bugfix: Overall KF5 port regression fixes (missing buttons
+    etc.).
+  * Bugfix: Sometimes, areas weren't updated correctly when
+    annotating images and changing between them.
+- Update build requirements
+
+-------------------------------------------------------------------
+Tue Feb 28 18:57:25 UTC 2017 - wbauer@tmo.at
+
+- Update to 5.2
+  * Enhancement: Add the "Geo Position" selection page to the
+    browser (Thanks to Matthias Füssel for the original patch!)
+  * Bugfix: Fixed disabled items in browser overview page.
+  * Bugfix (kde#376635): Fix renaming and deletion of memberMap
+    members.
+  * Change: Maintained compatibility with Qt < 5.6 (for now).
+  * Bugfix: Fixed compilation with -fno-operator-names.
+  * Bugfix: Added .kim import test case and fixed the import when
+    using external images.
+  * Enhancement: Improved the default layout for annotation dialog.
+  * Bugfix (kde#374431): Prevent invalid characters in image
+    description.
+  * Bugfix: Fixed the path of kphotoalbumui.rc in kpa-backup.sh
+  * Bugfix: Reviewed and fixed the install directories.
+  * Bugfix: Fixed the date view on the birthdays page.
+  * Bugfix: Fixed some issues in the thumbnail build progress
+    counter.
+  * Bugfix: Don't show empty descriptions in the InfoBox.
+  * Bugfix: Fixed the search dialog.
+  * Bugfix: Fixed the "remove tokens" dialog.
+- Drop Maintain-compatibility-with-Qt-5.5.patch and
+  fix-build-with-ecm-5.31.patch, included in this release
+
+-------------------------------------------------------------------
+Sun Feb 19 03:02:03 UTC 2017 - wbauer@tmo.at
+
+- Update to 5.1
+  * Enhancement (kde#370373): Made writing index.xml deterministic,
+    so that diffing it produces minimal changes.
+  * Bugfix: Fixed areas not drawn when a photo was viewed after a
+    video in the Annotation Dialog.
+  * Bugfix (kde#373263): KPA crashed when editing a birth date.
+    Also restored the functionality if the whole birth date dialog,
+    which was broken due to the KF5/Qt5 port.
+  * Bugfix (kde#373128): Fixed the "Copy image(s) to..." and
+    "Link image(s) to..." menu.
+  * Bugfix: Prevent duplicate positionable tags. All except one are
+    lost when saving. Apparently, nobody noticed this flaw since
+    the introduction of positionable tags ;-)
+  * Bugfix: Prevent the image preview from flickering in the
+    Annotation Dialog.
+  * Bugfix: Fixed various issues with the Android Remote Control.
+- Drop fix-build-with-qt5.6.1.patch and fix-build-with-qt5.5.patch,
+  included in this release
+- Add fix-build-with-ecm-5.31.patch to fix build with KF 5.31.0
+- Add Maintain-compatibility-with-Qt-5.5.patch to make it build
+  with Qt 5.5 in Leap 42.1
+- Define ENABLE_PLAYGROUND to keep the face detection and
+  recognition features which are now disabled by default
+
+-------------------------------------------------------------------
+Thu Nov 10 13:54:43 UTC 2016 - wbauer@tmo.at
+
+- Add missing libexiv2-devel build requirement
+
+-------------------------------------------------------------------
+Mon Nov  7 20:26:38 UTC 2016 - wbauer@tmo.at
+
+- Add fix-build-with-qt5.6.1.patch and fix-build-with-qt5.5.patch
+  to fix the build for Leap 42.1
+
+-------------------------------------------------------------------
+Fri Oct 28 16:41:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+  * Ported KPA to Qt 5 and KF5, including updating all
+    depreceated code. We also do not depend on the KDE4LibsSupport
+    compatibility class.
+  * Cleaned up includes and stray references, dropped some
+    legacy compatibility code.
+  * Updated the (many/most of the) icons to get a uniform "KF5 look".
+  * Revised commandline options.
+  * Use ffmpeg/ffprobe for video if available.
+  * Usability improvements for HTML export.
+  * We now ship AppData.
+  * Fixed some leaks detected by Valgrind and warnings by
+    the clang static analyzer.
+
+-------------------------------------------------------------------
+Mon Aug  1 17:14:20 UTC 2016 - wbauer@tmo.at
+
+- Update to 4.7.2
+  * Bugfix: Annotation dialog: Fix up/down key if there's a single
+    match for an entered string.
+  * Enhancement: Tag names are now matched word by word against all
+    parts of the search string (using the Search dialog).
+  * Bugfix: Prevent duplication of special categories when updating
+    to dbv7.
+  * Bugfix: Don't exclude "Z" when filling the "Tokens" category
+    for the first time.
+  * Bugfix: Overall fixes of assertions.
+  * Change: Dropped compatibility with libkipi < 2.0.
+
+-------------------------------------------------------------------
+Mon May  2 13:25:18 UTC 2016 - wbauer@tmo.at
+
+- Update to 4.7.1
+  * too many changes to list here, please see
+    https://www.kphotoalbum.org/ or the included ChangeLog file
+- Add libkface-devel to the BuildRequires to enable the new face
+  detection and recognition features
+- adjust file list
+
+-------------------------------------------------------------------
+Sun Dec  8 10:08:06 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.4
+  * Support for kipi 2.0.0
+  * Greatly improved database save performance
+  * Merging duplicate images (based on md5sum) is now possible
+  * BUGFIX: Tooltips did not update when scrolling using the wheel
+  * BUGFIX: Tooltip did not work on videos
+
+-------------------------------------------------------------------
+Sun Feb 10 20:30:16 UTC 2013 - ctrippe@opensuse.org
+
+- Update to version 4.3
+  New features concentrate on video support improvements and background
+  tasks. Also the database backend has been dropped completely leaving
+  the XML backend as the only option. Automatic stacking of images 
+  based on file version detection has been brought to the maintenance
+  menu giving control to the user instead of only performing the 
+  action upon starting of KPhotoAlbum.
+- dropped patch kphotoalbum-4.2-docbook_xml.diff
+- added the following patches
+  * 0003-KIPI-Use-the-generic-way-of-passing-date-time-argume.patch
+  * fix_open_raw_desktop.diff
+  * kphotoalbum-4.3-libkdcraw.patch
+  * kphotoalbum-libkipi2.patch
+
+-------------------------------------------------------------------
+Tue Jul  3 11:00:10 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 4.2
+  * Rewrite of ThumbnailView with speed improvements, pre-loading 
+    and background thumbnail generation.
+  * ToolTip on ThumbnailView is activated only if mouse is not 
+    moving.
+  * Updated documentation.
+  * Copy-paste of tags from one image to the next one.
+  * RAW workflow improvements on speed and functionality. Use 
+    embedded thumbnail if available in decent size, open the RAW 
+    file in RAW editor instead of the developed JPEG, search for 
+    only RAW files.
+  * Rating images with number keys 0-5.
+  * Annotation dialog and search improvements.
+  * HTML export improvements.
+  * Option to skip symbolic links when detecting new files.
+  * Multi core CPU improvements.
+  * Plenty of crashes fixed.
+  * Usability improvements.
+
+-------------------------------------------------------------------
+Fri Jul 30 00:00:00 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to version 4.1.1
+
+-------------------------------------------------------------------
+Sat Aug  1 00:00:00 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 4.0.2
+
+-------------------------------------------------------------------
+Tue Jul 21 00:00:00 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 4.0.1
+
+-------------------------------------------------------------------
+Mon May 11 00:00:00 UTC 2009 - jcnengel@googlemail.com
+
+- Initial checkin version 4.0

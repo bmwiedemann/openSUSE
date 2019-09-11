@@ -1,0 +1,2 @@
+# we don't use find_lang macro as it doesn't searches in subdirectories
+addFilter("file-not-in-%lang .*")

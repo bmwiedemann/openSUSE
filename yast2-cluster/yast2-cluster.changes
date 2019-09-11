@@ -1,0 +1,341 @@
+-------------------------------------------------------------------
+Thu Aug 15 13:52:22 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Port to rake (by lcp) (bsc#1145754)
+- Removed obsolete BuildRequires
+- 4.2.2
+
+-------------------------------------------------------------------
+Mon Aug  5 06:23:32 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1144200, stop corosync instead of pacemaker.
+  The patch in corosync(bsc#872651) is dropped in bsc#1144200,
+  change back to stop corosync.
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:27:33 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Thu Apr 25 07:00:13 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1132881, using ruby base64 to replace uuencode/uudecode
+  Remove the requirement of sharutils
+
+-------------------------------------------------------------------
+Tue Apr 23 15:50:05 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
+
+- bsc#1132881, uuencode can't be executed if sharutils are not
+  installed:
+
+  added sharutils to the package requirements
+
+-------------------------------------------------------------------
+Wed Apr 17 05:19:04 UTC 2019 - nick wang <nwang@suse.com>
+
+- Warn rrp_mode active is deprecated (bsc#1132640)
+- 4.1.2
+
+-------------------------------------------------------------------
+Sun Nov 25 17:38:07 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.1
+
+-------------------------------------------------------------------
+Tue Oct 16 16:04:29 CEST 2018 - schubi@suse.de
+
+-  Added license file to spec.
+
+-------------------------------------------------------------------
+Fri Aug 22 07:33:57 UTC 2018 - dgonzalez@suse.com
+
+- Update calls to YaST2 systemd classes (related to fate#319428)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Aug 20 10:57:11 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Wed Jun 27 17:23:09 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- Version 4.0.8
+
+-------------------------------------------------------------------
+Wed Mar 28 10:11:42 UTC 2018 - nwang@suse.com
+
+- bsc#1087128, change the default cluster_name to hacluster
+- Version 4.0.7
+
+-------------------------------------------------------------------
+Fri Mar 23 09:49:15 UTC 2018 - nwang@suse.com
+
+- bsc#1086630, fix write err when upgrading without quorum section
+- Version 4.0.6
+
+-------------------------------------------------------------------
+Fri Mar  2 08:01:20 UTC 2018 - nwang@suse.com
+
+- bsc#1083439, fix traceback when starting without corosync.conf
+- Version 4.0.5
+
+-------------------------------------------------------------------
+Tue Jan 23 09:04:02 UTC 2018 - knut.anderssen@suse.com
+
+- SuSEFirewall2 replaced by firewalld(fate#323460)
+- Version 4.0.4
+
+-------------------------------------------------------------------
+Thu Jan 11 16:12:15 UTC 2018 - bliu@suse.com
+
+- bsc#1075507 two_node can not be enable when using qdevice
+- Version 4.0.3
+
+-------------------------------------------------------------------
+Fri Dec 22 07:04:15 UTC 2017 - nwang@suse.com
+
+- bsc#1070961, support corosync qdevice.
+- Version 4.0.2
+
+-------------------------------------------------------------------
+Fri Dec  1 06:08:41 UTC 2017 - nwang@suse.com
+
+- fate#323526, support python3.
+- Version 4.0.1
+
+-------------------------------------------------------------------
+Fri Oct 27 08:35:58 UTC 2017 - nwang@suse.com
+
+- bsc#1065393, remove checking bind address when unicast.
+- Version 4.0.0
+
+-------------------------------------------------------------------
+Wed Apr  5 05:20:44 UTC 2017 - nwang@suse.com
+
+- bsc#1032419, remove bind address for unicast.
+- Version 3.2.0
+
+-------------------------------------------------------------------
+Tue Jun  7 10:16:17 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- Version 3.1.24
+
+-------------------------------------------------------------------
+Fri Mar 25 08:25:25 UTC 2016 - nwang@suse.com
+
+- bsc#971961, fix error when using ipv6.
+- Add totem.ip_version for ipv6 support.
+- Version 3.1.23
+
+-------------------------------------------------------------------
+Tue Dec  1 09:21:16 UTC 2015 - nwang@suse.com
+
+- BSC#957305. Change required package from hawk to hawk2.
+- Version 3.1.22
+
+-------------------------------------------------------------------
+Thu Aug 13 08:14:22 UTC 2015 - nwang@suse.com
+
+- FATE#319318. Add directory /etc/booth to csync2 suggest list.
+- Version 3.1.21
+
+-------------------------------------------------------------------
+Fri Jul 31 08:49:27 UTC 2015 - nwang@suse.com
+
+- BSC#939497. Using systemd csync2.socket instead of xinetd.
+- Version 3.1.20
+
+-------------------------------------------------------------------
+Wed Jul 29 02:11:00 UTC 2015 - nwang@suse.com
+
+- BSC#939429. Fix for crash when fail to get empty mask of
+  tun device.
+- Version 3.1.19
+
+-------------------------------------------------------------------
+Mon Jul 20 06:51:20 UTC 2015 - nwang@suse.com
+
+- BSC#938325. Modify the not clear help and warning.
+- Version 3.1.18
+
+-------------------------------------------------------------------
+Thu Jul  2 07:16:47 UTC 2015 - nwang@suse.com
+
+- FATE#318190. Add a warning in corosync.conf to warn users
+  manually changes may get lost when reconfigured by Yast.
+- Version 3.1.17
+
+-------------------------------------------------------------------
+Mon Jun 29 07:08:17 UTC 2015 - nwang@suse.com
+
+- BNC#936352. Remove threads in security tab since it is
+  abandoned in corosync 2.0
+- Version 3.1.16
+
+-------------------------------------------------------------------
+Thu Dec  4 09:49:43 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Fri Sep 19 07:28:14 UTC 2014 - nwang@suse.com
+
+- BNC#716109. Change UI udp to multicast, udpu to unicast.
+- Version 3.1.15
+
+-------------------------------------------------------------------
+Tue Sep  9 02:39:15 UTC 2014 - nwang@suse.com
+
+- BNC#807780. Change word of UI from at booting to during boot.
+- Version 3.1.14
+
+-------------------------------------------------------------------
+Wed Sep  3 02:45:51 UTC 2014 - nwang@suse.com
+
+- BNC#787196. Change wrong unit names like mb to Mb, ghz to GHz.
+- Version 3.1.13 
+
+-------------------------------------------------------------------
+Tue Jul 15 10:17:03 UTC 2014 - nwang@suse.com
+
+- BNC#885018. Change "two_node" to "0" when using default value.
+- Version 3.1.12
+
+-------------------------------------------------------------------
+Mon Jul  7 07:47:28 UTC 2014 - nwang@suse.com
+
+- BNC#885319. Change text nodeid to Node ID. Change string
+  to translation.
+- Version 3.1.11
+
+-------------------------------------------------------------------
+Tue Jul  1 06:53:46 UTC 2014 - nwang@suse.com
+
+- BNC#883228 and BNC#885113. Fix various issues with YaST
+  Cluster help and the finish progress message.
+- Version 3.1.10
+
+-------------------------------------------------------------------
+Sun Jun 22 07:08:43 UTC 2014 - nwang@suse.com
+
+- BNC#883235. Auot enable "two_node" when using two node cluster.
+- Version 3.1.9
+
+-------------------------------------------------------------------
+Fri May 30 13:39:43 UTC 2014 - nwang@suse.com
+
+- BNC#879596. Detect corosync.conf format. Notice user when using
+  old format configuration.
+- Version 3.1.8
+
+-------------------------------------------------------------------
+Fri May 30 06:12:00 UTC 2014 - nwang@suse.com
+
+- BNC#880491. Check nodeid behavior when auto node id is disabled.
+  NodeID must be unique positive interger.
+- Version 3.1.7
+
+-------------------------------------------------------------------
+Thu May 29 08:57:49 UTC 2014 - nwang@suse.com
+
+- BNC#880483. Click edit button when member list is empty
+  will crash the application.
+
+-------------------------------------------------------------------
+Thu May 29 05:31:12 UTC 2014 - nwang@suse.com
+
+- BNC#880242. expected votes must have value when Transport 
+  protocol is using udp. Cluster name should not empty in 
+  any cases.
+- Version 3.1.6
+
+-------------------------------------------------------------------
+Thu May 22 09:45:56 UTC 2014 - nwang@suse.com
+
+- Modify SPEC file to make ibs and github same. Version 3.1.5 
+
+-------------------------------------------------------------------
+Wed May 21 06:49:25 UTC 2014 - nwang@suse.com
+
+- BNC#878073. Stating to run "journalctl -xn" manually for log.
+  Update version to 3.1.2 to trigger ibs/obs release.
+
+-------------------------------------------------------------------
+Wed Apr 23 07:41:49 UTC 2014 - nwang@suse.com
+
+- BNC#874710, Only active or passive of rrp_mode is valid 
+  for multiple interface.
+
+-------------------------------------------------------------------
+Tue Apr 22 08:13:18 UTC 2014 - nwang@suse.com
+
+- BNC#874563,stop pacemaker could stop corosync at the same time.
+  So change behavior to stop pacemaker directly. 
+
+-------------------------------------------------------------------
+Tue Apr 22 03:13:23 UTC 2014 - nwang@suse.com
+
+- BNC#871970.BNC#872000 could be fixed at the same time. 
+  Change udpu member addresses structure and the format of 
+  nodelist in "corosync.conf". 
+
+-------------------------------------------------------------------
+Mon Mar 10 10:12:18 UTC 2014 - dmzhang@suse.com
+
+- bnc#867090, fix expected_votes showing "nil" in case of ncurse
+
+-------------------------------------------------------------------
+Thu Feb 27 09:26:09 UTC 2014 - dmzhang@suse.com
+
+- upstream does not maintain yast2-python-bindings any more
+  remove the dependency for yast2-yast2-bindings 
+
+-------------------------------------------------------------------
+Tue Feb 25 10:46:43 UTC 2014 - dmzhang@suse.com
+
+- add yast2-python-bindings in spec files
+
+-------------------------------------------------------------------
+Tue Feb 25 02:51:18 UTC 2014 - dmzhang@suse.com
+
+- bnc#863953,  yast2 display issue 
+  add cluster.fwd, and fix disply issue
+
+-------------------------------------------------------------------
+Mon Jan 20 05:01:39 UTC 2014 - dmzhang@suse.com
+
+- add expected_votes field in GUI 
+
+-------------------------------------------------------------------
+Mon Jan 13 07:12:03 UTC 2014 - dmzhang@suse.com
+
+- edit yast2-cluster to adapt new corosync.conf  
+  fix bnc#854882,bnc#845910
+- remove SummaryDialog, OverviewDialog and aisexec options
+- convert ycp to ruby
+
+-------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Sun Dec  7 15:47:32 CST 2008 - xwhu@suse.de
+
+- Full functional checked in
+
+-------------------------------------------------------------------
+Fri Dec  5 10:36:14 2008 - cmeng@novell.com
+
+- initial version

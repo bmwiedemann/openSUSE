@@ -1,0 +1,43 @@
+--- libsx-2.03/libsx_defs
++++ libsx-2.03/libsx_defs
+@@ -44,7 +44,7 @@
+ #  CFLAGS = -O3 -D_POSIX_SOURCE
+ #
+ # On Linux, use CC=cc, RANLIB=ranlib, and:
+-CFLAGS = -Wall -O2 -D_POSIX_SOURCE $(RPM_OPT_FLAGS)
++CFLAGS = -Wall -O2 -fPIC -D_POSIX_SOURCE $(RPM_OPT_FLAGS)
+ #  
+ # On a Motorola Delta/88K box, you can use (with gcc):
+ #  CFLAGS = -O2 -DSYSV -DUSG -DMOTOROLA -DMOTOR32V2
+--- src/xstereograph.c
++++ src/xstereograph.c
+@@ -7,6 +7,8 @@
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <libsx.h>
++#include <ctype.h>
++#include <time.h>
+ 
+ #include "pixmaps.h"
+ #include "config.h"
+--- stereograph-0.28a/renderer.c
++++ stereograph-0.28a/renderer.c
+@@ -22,6 +22,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <math.h>
++#include <string.h>
+ 
+ #include "renderer.h"
+ 
+--- stereograph-0.28a/stereograph.c
++++ stereograph-0.28a/stereograph.c
+@@ -19,6 +19,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++
+ 
+ #define STEREOGRAPH_VERSION "0.28a"
+ 

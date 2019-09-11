@@ -1,0 +1,181 @@
+#
+# spec file for package swig
+#
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+%bcond_with  swig_ocaml
+%if 0%{?fedora} + 0%{?rhel_version} + 0%{?centos_version} > 0
+%define docpath %{_docdir}/%{name}-%{version}
+BuildRequires:  perl-Test-Simple
+BuildRequires:  perl-devel
+BuildRequires:  ruby
+%endif
+%if 0%{?suse_version} > 0
+%define docpath %{_docdir}/%{name}
+BuildRequires:  ruby-devel
+%endif
+Name:           swig
+Version:        3.0.12
+Release:        0
+Summary:        Simplified Wrapper and Interface Generator
+License:        GPL-3.0-or-later AND BSD-3-Clause
+Group:          Development/Languages/C and C++
+URL:            http://www.swig.org/
+Source:         http://sourceforge.net/projects/swig/files/swig/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
+Patch2:         swig308-isfinite.diff
+Patch3:         swig-ocaml-int64.patch
+Patch4:         swig-perl526.patch
+Patch5:         swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_ConvertF.patch
+Patch6:         swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_FixMetho.patch
+Patch7:         swig-3.0.12-Coverity-fix-issue-reported-for-wrapper-argument-che.patch
+Patch8:         swig-3.0.12-Fix-Coverity-issue-reported-for-setslice-pycontainer.patch
+Patch9:         swig-3.0.12-Fix-generated-code-for-constant-expressions-containi.patch
+Patch10:        swig-3.0.12-fix-collections.patch
+Patch11:        swig-3.0.12-support-octave-4.4.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  bison
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
+BuildRequires:  pcre-devel
+BuildRequires:  perl
+BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libboost_headers-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-tools
+%else
+BuildRequires:  boost-devel
+BuildRequires:  python-devel
+%endif
+%if %{with swig_ocaml}
+BuildRequires:  ncurses-devel
+BuildRequires:  ocaml
+BuildRequires:  ocaml-camlp4-devel
+BuildRequires:  ocaml-findlib
+%endif
+
+%description
+SWIG is a compiler that attempts to make it easy to integrate C, C++,
+or Objective-C code with scripting languages including Perl, Tcl, and
+Python.  In a nutshell, you give it a bunch of ANSI C/C++ declarations
+and it generates an interface between C and your favorite scripting
+language.  However, this is only scratching the surface of what SWIG
+can do--some of its more advanced features include automatic
+documentation generation, module and library management, extensive
+customization options, and more.
+
+%package doc
+Summary:        SWIG Manual
+License:        BSD-3-Clause
+Group:          Documentation/Man
+Requires:       swig
+BuildArch:      noarch
+
+%description doc
+SWIG is a compiler that attempts to make it easy to integrate C, C++,
+or Objective-C code with scripting languages including Perl, Tcl, and
+Python.  In a nutshell, you give it a bunch of ANSI C/C++ declarations
+and it generates an interface between C and your favorite scripting
+language.  However, this is only scratching the surface of what SWIG
+can do--some of its more advanced features include automatic
+documentation generation, module and library management, extensive
+customization options, and more.
+
+This package contains the SWIG manual.
+
+%package examples
+Summary:        SWIG example files
+License:        BSD-3-Clause
+Group:          Documentation/Howto
+Requires:       swig
+
+%description examples
+SWIG is a compiler that attempts to make it easy to integrate C, C++,
+or Objective-C code with scripting languages including Perl, Tcl, and
+Python.  In a nutshell, you give it a bunch of ANSI C/C++ declarations
+and it generates an interface between C and your favorite scripting
+language.  However, this is only scratching the surface of what SWIG
+can do--some of its more advanced features include automatic
+documentation generation, module and library management, extensive
+customization options, and more.
+
+This package contains SWIG examples, useful both for testing and
+understandig SWIG usage.
+
+%prep
+%setup -q
+%autopatch -p1
+
+%build
+%ifarch s390 s390x
+export CCSHARED="-fPIC"
+%endif
+./autogen.sh
+%configure \
+%if %{without swig_ocaml}
+	--without-ocaml \
+%endif
+	--disable-ccache
+make %{?_smp_mflags}
+
+%check
+%if 0%{?suse_version} >= 1500
+export PY3=true
+%endif
+make %{?_smp_mflags} check
+
+%install
+%make_install
+
+install -d %{buildroot}%{docpath}
+cp -a TODO ANNOUNCE CHANGES* LICENSE README Doc/{Devel,Manual} \
+	%{buildroot}%{docpath}
+install -d %{buildroot}%{_libdir}/swig
+cp -a Examples %{buildroot}%{_libdir}/swig/examples
+rm -rf %{buildroot}%{_libdir}/swig/examples/test-suite
+
+# rm files that are not needed for running or rebuilding the examples
+find %{buildroot}%{_libdir}/swig \
+	-name '*.dsp' -o -name '*.vcproj' -o -name '*.sln' -o \
+	-name '*.o' -o -name '*_wrap.c' | xargs rm
+
+# fix perms
+chmod -x %{buildroot}%{docpath}/Manual/*
+find %{buildroot}%{_libdir}/swig -name '*.h' -perm /111 | \
+	xargs --no-run-if-empty chmod -x
+ln -s %{_libdir}/swig/examples %{buildroot}%{docpath}/Examples
+
+%fdupes %{buildroot}
+
+%files
+%defattr(644,root,root,755)
+%dir %{docpath}
+%{docpath}/[A-Z][A-Z]*
+%{_datadir}/swig
+%attr(755,root,root) %{_bindir}/swig
+
+%files doc
+%{docpath}/Devel
+%{docpath}/Manual
+
+%files examples
+%{docpath}/Examples
+%{_libdir}/swig
+
+%changelog

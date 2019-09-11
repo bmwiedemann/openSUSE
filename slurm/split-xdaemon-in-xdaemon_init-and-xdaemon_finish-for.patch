@@ -1,0 +1,148 @@
+From 1f12c590038c7f738ff19159629fdc38de5cba82 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 9 Apr 2018 10:05:50 +0200
+Subject: [PATCH 1/6] split xdaemon in xdaemon_init and xdaemon_finish for
+ systemd compatibilty
+
+---
+ src/common/daemonize.c | 73 ++++++++++++++++++++++++++++++++++++++++++++------
+ src/common/daemonize.h | 10 +++++--
+ 2 files changed, 73 insertions(+), 10 deletions(-)
+
+diff --git a/src/common/daemonize.c b/src/common/daemonize.c
+index e22a1d0a7f..2987a40af0 100644
+--- a/src/common/daemonize.c
++++ b/src/common/daemonize.c
+@@ -53,31 +53,75 @@
+ #include "src/common/xassert.h"
+ 
+ /*
+- * Double-fork and go into background.
++ * Start daemonization with double-fork and go into background.
+  * Caller is responsible for umasks
+  */
+-int xdaemon(void)
++int xdaemon_init(void)
+ {
+-	int devnull;
+-
++	int fds [2];
++	int n;
++	signed char priority;
++	char ebuf [1024];
++	/*
++	 * Create pipe in order to get signal from grand child to terminate
++	 */
++	if (pipe (fds) < 0) {
++		error("Failed to create daemon pipe");
++	}
+ 	switch (fork()) {
+ 		case  0 : break;        /* child */
+ 		case -1 : return -1;
+-		default : _exit(0);     /* exit parent */
++		default : {
++			if (close (fds[1]) < 0) {
++				error("Failed to close write-pipe in parent process");
++			}
++
++			/*
++			 * get signal of grandchild to exit
++			 */
++			if ((n = read (fds[0], &priority, sizeof (priority))) < 0) {
++			    error("Failed to read status from grandchild process");
++			}
++			if ((n > 0) && (priority >= 0)) {
++			    if ((n = read (fds[0], ebuf, sizeof (ebuf))) < 0) {
++				error("Failed to read err msg from grandchild process");
++			    }
++			    if ((n > 0) && (ebuf[0] != '\0')) {
++				error("Error with forking and steeing up pipe: %s", ebuf);
++			    }
++			    return -1;
++			}
++			_exit(0);
++		}
+ 	}
+ 
+ 	if (setsid() < 0)
+ 		return -1;
+-
++	if (close (fds[0]) < 0) {
++		error("Failed to close read-pipe in child process");
++	}
+ 	switch (fork()) {
+ 		case 0 : break;         /* child */
+ 		case -1: return -1;
+ 		default: _exit(0);      /* exit parent */
+ 	}
++	return (fds[1]);
++}
+ 
++/*
++ * finish daemonization after pidfile was written
++ */
++
++
++void xdaemon_finish(int fd)
++{
+ 	/*
+-	 * dup stdin, stdout, and stderr onto /dev/null
++	 * PID file was written, now do dup stdin, stdout, 
++	 * and stderr onto /dev/null and close pipe
++	 * so that systemd realizes we are daemonized
+ 	 */
++	int devnull;
++
+ 	devnull = open("/dev/null", O_RDWR);
+ 	if (devnull < 0)
+ 		error("Unable to open /dev/null: %m");
+@@ -89,8 +133,21 @@ int xdaemon(void)
+ 		error("Unable to dup /dev/null onto stderr: %m");
+ 	if (close(devnull) < 0)
+ 		error("Unable to close /dev/null: %m");
++	if ((fd >= 0) && (close (fd) < 0)) {
++		error( "Failed to close write-pipe in grandchild process");
++	}
++}
++
++/* 
++ * keep depercated api
++ */
+ 
+-	return 0;
++int xdaemon(void)
++{
++	int ret_val;
++	ret_val= xdaemon_init();
++	xdaemon_finish(ret_val);
++	return ret_val;
+ }
+ 
+ /*
+diff --git a/src/common/daemonize.h b/src/common/daemonize.h
+index 22a31f6ccf..8b2a866b61 100644
+--- a/src/common/daemonize.h
++++ b/src/common/daemonize.h
+@@ -41,11 +41,17 @@
+ #define _HAVE_DAEMONIZE_H
+ 
+ /*
+- * Fork process into background and inherit new session.
++ * Start fork process into background and inherit new session.
+  *
+- * Returns -1 on error.
+  */
+ extern int xdaemon(void);
++extern int xdaemon_init(void);
++
++/*
++ * Finish daemonization by ending grandparen
++ */
++
++extern void xdaemon_finish(int fd);
+ 
+ /* Write pid into file pidfile if uid is not 0 change the owner of the
+  * pidfile to that user.
+-- 
+2.13.7
+

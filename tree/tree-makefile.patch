@@ -1,0 +1,16 @@
+--- Makefile.orig	2014-04-18 20:35:39.000000000 +0300
++++ Makefile	2014-06-10 19:47:01.947932291 +0300
+@@ -30,9 +30,10 @@
+ # Uncomment options below for your particular OS:
+ 
+ # Linux defaults:
+-CFLAGS=-ggdb -pedantic -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+-#CFLAGS=-O4 -Wall  -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+-#LDFLAGS=-s
++#CFLAGS=-ggdb -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
++OPTFLAGS=-O4
++CFLAGS=$(OPTFLAGS) -Wall  -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
++LDFLAGS=-s
+ 
+ # Uncomment for FreeBSD:
+ #CFLAGS=-O2 -Wall -fomit-frame-pointer

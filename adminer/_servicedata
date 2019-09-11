@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/vrana/adminer.git</param>
+    <param name="changesrevision">fd1691cb1d875cc23a7a51a0f890a6e932b6b304</param>
+  </service>
+</servicedata>

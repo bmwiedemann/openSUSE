@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright 2005 [ini4j] Development Team
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project basedir="." default="build" name="ini4j">
+  <description>
+    Build script for [ini4j] libary.
+  </description>
+
+<!-- config ============================================================== -->
+
+  <!-- external settings -->
+  <property file="build.properties"/>
+  <property file="${user.home}/build.properties"/>
+
+  <!-- general project attributes -->
+  <property name="build.app.name" value="ini4j"/>
+  <property name="build.app.title" value="[ini4j] library"/>
+
+  <!-- directory locations -->
+  <property name="build.dst" value="${basedir}/build"/>
+  <property name="build.src" value="${basedir}/src"/>
+  <property name="build.dist" value="${basedir}/dist"/>
+
+  <property name="build.src.classes" value="${build.src}"/>
+  <property name="build.dst.classes" value="${build.dst}"/>
+  <property name="build.src.doc"     value="${build.src}/doc"/>
+  <property name="build.dst.doc"     value="${build.dst}/doc"/>
+  <property name="build.src.etc"     value="${build.src}/etc"/>
+  
+  <property name="build.dst.compat"  value="${build.dst}/compat"/>
+
+  <!-- development tools -->
+  <property name="build.junit.jar" value="/path/to/junit.jar"/>
+  <property name="build.servlet.jar" value="/path/to/servlet.jar"/>
+  <property name="build.jetty.jar" value="/path/to/jetty.jar"/>
+
+  <!-- compiler options -->
+  <property name="build.compile.debug" value="true"/>
+  <property name="build.compile.deprecation" value="false"/>
+  <property name="build.compile.optimize" value="true"/>
+  <property name="build.compile.lint" value="-Xlint:unchecked"/>
+
+  <!-- check optional tools -->
+  <available file="${build.junit.jar}" property="build.junit.jar.ok"/>
+
+<!-- clean =============================================================== -->
+<target name="clean" description="Delete old build directory">
+    <delete dir="${build.dst}"/>
+    <delete dir="${build.dist}"/>
+</target>
+
+<!-- prepare ============================================================= -->
+<target name="prepare" description="Prepare build">
+    <path id="build.classpath">
+        <pathelement location="${build.dst.classes}"/>
+        <pathelement path="${java.class.path}"/>
+                
+        <pathelement location="${build.servlet.jar}"/>
+        <pathelement location="${build.junit.jar}"/>
+        <pathelement location="${build.jetty.jar}"/>
+    </path>
+
+    <mkdir dir="${build.dst}"/>
+    <mkdir dir="${build.dist}"/>
+    <mkdir dir="${build.dst.doc}"/>
+    
+    <!-- version info -->
+    <copy file="${build.src.etc}/buildinfo.properties" todir="${build.dst}" filtering="true"/>
+    <replaceregexp file="${build.dst}/buildinfo.properties" match=".Name:\s*\$" replace="HEAD" byline="true" flags="g"/>
+    <replaceregexp file="${build.dst}/buildinfo.properties" match=".Name:\s*\D*([\d_]*)(-\w+)*\s*\$" replace="\1\2" byline="true" flags="g"/>
+    <replaceregexp file="${build.dst}/buildinfo.properties" match="_(\d+)" replace=".\1" byline="true" flags="g"/>
+    <property file="${build.dst}/buildinfo.properties"/>
+
+    <!-- property definitions for filtering and testing -->
+    <echoproperties destfile="${build.dst}/build.properties"/>
+    <filter filtersfile="${build.dst}/build.properties"/>
+</target>
+
+<!-- compile ============================================================= -->
+<target name="compile" depends="prepare" description="Compile Java sources">
+    <mkdir dir="${build.dst.classes}"/>
+
+    <javac
+        classpathref="build.classpath"
+        debug="${build.compile.debug}"
+        deprecation="${build.compile.deprecation}"
+        optimize="${build.compile.optimize}"
+        encoding="ISO-8859-1"
+        destdir="${build.dst.classes}">
+        
+        <src path="${build.src.classes}"/>
+        
+        <compilerarg value="${build.compile.lint}"/>
+    </javac>
+
+    <!-- copy resources -->
+    <copy todir="${build.dst.classes}">
+      <fileset dir="${build.src.classes}" excludes="**/*.java **/*.html **/*.xml **/*.ini"/>
+    </copy>
+</target>
+
+<!-- javadoc ============================================================= -->
+<target name="javadoc" depends="compile" description="Create Javadoc">
+     <javadoc
+        linksource="yes"
+        access="protected"
+        locale="en_US"
+        encoding="ISO-8859-1"
+        docencoding="ISO-8859-1"
+        noqualifier="java.*:javax.*:org.ini4j.*"
+        destdir="${build.dst.doc}/api"
+        overview="${build.src.doc}/index.html"
+        windowtitle="[ini4j] API documentation">
+
+        <fileset dir="${build.src.classes}">
+          <include name="**/*.java"/>
+        </fileset>
+        <doctitle>[ini4j] API documentation</doctitle>
+        <header>&lt;b&gt;[ini4j]&lt;/b&gt;</header>
+
+        <link href="http://java.sun.com/j2se/1.5.0/docs/api/"/>
+
+        <classpath refid="build.classpath"/>
+    </javadoc>
+</target>
+
+<!-- build =============================================================== -->
+<target name="build" depends="compile" description="Build jar distribution files">
+  <jar destfile="${build.dist}/${build.app.name}.jar">
+    <fileset dir="${build.dst.classes}" excludes="**/*Test* **/*Sample* **/*Run* **/META-INF/**" />
+  </jar>
+</target>
+
+<!-- doc ================================================================= -->
+<target name="doc" depends="compile,javadoc" description="Build documentation">
+  <copy todir="${build.dst.doc}">
+    <fileset dir="${build.src.doc}"/>
+  </copy>
+  <loadfile property="header" srcFile="${build.dst.doc}/header.html" />
+  <replaceregexp byline="true">
+    <regexp pattern="&lt;!-- header --&gt;"/>
+    <substitution expression="${header}"/>
+    <fileset dir="${build.dst.doc}" includes="*.html"/>
+  </replaceregexp>
+  <loadfile property="footer" srcFile="${build.dst.doc}/footer.html" />
+  <replaceregexp byline="true">
+    <regexp pattern="&lt;!-- footer --&gt;"/>
+    <substitution expression="${footer}"/>
+    <fileset dir="${build.dst.doc}" includes="*.html"/>
+  </replaceregexp>
+  <copy file="${build.dst.doc}/sample/dwarfs.ini" tofile="${build.dst.doc}/sample/dwarfs.ini.txt"/>
+  <war
+    destfile="${build.dist}/${build.app.name}-doc.war"
+    webxml="${build.src.doc}/WEB-INF/web.xml">
+    <fileset dir="${build.dst.doc}" excludes="WEB-INF/*"/>
+  </war>
+</target>
+
+<!-- dist ================================================================ -->
+<target name="dist" depends="coverage,build,doc,test,sample,compat" description="Build distribution files">
+    <zip destfile="${build.dst}/${build.app.name}-${build.app.version}.zip">
+      <zipfileset dir="${basedir}" excludes="build/**"/>
+    </zip>
+    <zip destfile="${build.dst}/${build.app.name}-bin-${build.app.version}.zip">
+      <zipfileset dir="${basedir}" includes="dist/** License.txt"/>
+    </zip>
+    <zip destfile="${build.dst}/${build.app.name}-src-${build.app.version}.zip">
+      <zipfileset dir="${basedir}" excludes="build/** dist/**"/>
+    </zip>
+</target>
+
+<!-- test ================================================================ -->
+<target name="test" depends="compile" description="Compile and run test code">
+    <junit fork="yes" dir="${build.dst}" haltonfailure="yes" printsummary="yes" showoutput="yes">
+      <sysproperty key="basedir" value="${basedir}"/>
+      <classpath refid="build.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <batchtest todir="${build.dst}">
+        <fileset dir="${build.dst.classes}" includes="**/*Test.class"/>
+      </batchtest>
+    </junit>
+</target>
+
+<!-- sample =============================================================== -->
+<target name="sample" depends="compile" description="Compile and run sample code">
+    <junit fork="yes" dir="${build.dst}" haltonfailure="yes" printsummary="yes" showoutput="yes">
+      <sysproperty key="basedir" value="${basedir}"/>
+      <classpath refid="build.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <batchtest todir="${build.dst}">
+        <fileset dir="${build.dst.classes}" includes="**/SampleRunner.class"/>
+      </batchtest>
+    </junit>
+</target>
+
+<!-- run ================================================================== -->
+<target name="run" depends="compile" description="Compile and run current development code">
+    <junit fork="yes" dir="${build.dst}" haltonfailure="yes" printsummary="yes" showoutput="yes">
+      <classpath refid="build.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <batchtest todir="${build.dst}">
+        <fileset dir="${build.dst.classes}" includes="**/*Run.class"/>
+      </batchtest>
+    </junit>
+</target>
+
+<!-- coverage ============================================================= -->
+<target name="coverage" depends="clean, prepare" description="Create coverage reports">
+  <taskdef resource="clovertasks"/>
+  <clover-setup initString="${build.dst}/coverage.db"/>
+  <antcall target="test"/>
+  <mkdir dir="${build.dst.doc}/coverage"/>
+  <clover-report>
+    <current outfile="${build.dst.doc}/coverage" title="[ini4j]" titleAnchor="http://www.ini4j.org/">
+      <fileset dir="${build.src.classes}" includes="**/*java"/>
+      <format type="html"/>
+    </current>
+  </clover-report>
+  <clover-check haltOnFailure="yes">
+    <package name="org.ini4j" target="90%"/>
+    <package name="org.ini4j.addon" target="90%"/>
+  </clover-check>
+  <clover-setup enabled="false"/>
+  <delete dir="${build.dst.classes}"/>
+  </target>
+
+<!-- compat =============================================================== -->
+<target name="compat" depends="compat-build, compat-test" description="Build JDK 1.4 compatible code"/>
+
+<target name="compat-compile" depends="compile" description="Convert to target 1.4">
+  <taskdef name="retroweaver" classname="com.rc.retroweaver.ant.RetroWeaverTask">
+    <classpath>
+      <fileset dir="${build.retroweaver.home}" includes="**/*.jar"/>
+    </classpath>
+  </taskdef>
+    
+  <mkdir dir="${build.dst.compat}/org/ini4j"/>
+  <retroweaver  destdir="${build.dst.compat}/org/ini4j" verbose="true">
+    <fileset dir="${build.dst.classes}/org/ini4j" includes="*.class"/>
+  </retroweaver>
+
+  <mkdir dir="${build.dst.compat}/org/ini4j/addon"/>
+  <retroweaver  destdir="${build.dst.compat}/org/ini4j/addon" verbose="true">
+    <fileset dir="${build.dst.classes}/org/ini4j/addon" includes="*.class"/>
+  </retroweaver>
+  
+  <copy todir="${build.dist}">
+    <fileset dir="${build.retroweaver.home}/release" includes="retroweaver-rt*.jar"/>
+  </copy>
+</target>
+
+<target name="compat-test" depends="compat-compile" description="Run compat test">
+    <junit fork="yes" dir="${build.dst}" haltonfailure="yes" printsummary="yes" showoutput="yes"
+           jvm="${build.compat.java.home}\\bin\\java">
+      <sysproperty key="basedir" value="${basedir}"/>
+      <classpath>
+          <pathelement location="${build.dst.compat}"/>
+          <fileset dir="${build.dist}" includes="retroweaver-rt*.jar"/>
+      </classpath>
+      <classpath refid="build.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <batchtest todir="${build.dst}">
+        <fileset dir="${build.dst.compat}" includes="**/*Test.class"/>
+      </batchtest>
+    </junit>
+</target>  
+
+<target name="compat-build" depends="compat-compile" description="Build compat jar files">
+  <jar destfile="${build.dist}/${build.app.name}-compat.jar">
+    <fileset dir="${build.dst.compat}" excludes="**/*Test* **/*Sample* **/*Run* **/META-INF/**" />
+  </jar>
+</target>
+
+</project>

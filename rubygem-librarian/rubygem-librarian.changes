@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Oct 13 14:20:26 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:44 UTC 2014 - coolo@suse.com
+
+- updated to version 0.1.2
+ * \#153. Mark the license in the gemspec.
+ 
+ * \#158, \#160, \#159. Handle cyclic dependencies for adapters which opt in to
+   cyclic dependencies.
+ 
+ * \#154. Cache git repository sources which are identical but for their :path
+   attributes (where to look inside the repository for the manifest). Thanks
+   @bcatlin.
+ 
+ * \#161. Fix JRuby exception in posix run! method. Thanks @justenwalker.
+ 
+ * \#163. Don't fetch git repositories multiple times per run. Thanks @njam.
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:51 UTC 2013 - coolo@suse.com
+
+- updated to version 0.1.1
+ * \#147. Handle the case where HOME is not in the environment. Thanks @bradleyd.
+ * \#140. Properly handle the failure to clone a git repository. Avoid wiping out
+   the host project's changes.
+ * \#127. Support Rubinius and JRuby, including when shelling out to system
+   commands.
+ * \#144. Allow running the test suite with a simple `rake`. Thanks @nickhammond.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:11:03 UTC 2013 - coolo@suse.com
+
+- updated to version 0.1.0
+ * Extract the chef adapter to its own gem.
+
+-------------------------------------------------------------------
+Tue Mar 26 15:48:10 UTC 2013 - mvidner@suse.cz
+
+- Initial packaging
+

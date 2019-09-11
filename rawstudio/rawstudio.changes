@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Mon Apr  8 22:17:10 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add exiv2-0.27-buildfix.patch to fix build issues with Exiv2 0.27.
+
+-------------------------------------------------------------------
+Mon Apr 08 21:35:53 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.0+git20170413.003dd4f3:
+  * + Panasonic GH4 + GH5
+  * Remove plugin load-dcraw
+  * Update rawspeed to last version (Feb 8, 2016).
+  * Fix a crash when we don't have select lens.
+  * Removed rawstudio.org from readme.
+  * Do not link to defunct website. This fixes #22.
+  * Do more relaxed matching when displying camera profile choices.
+  * Removed debug printf.
+
+-------------------------------------------------------------------
+Mon Sep 11 18:51:17 UTC 2017 - jengelh@inai.de
+
+- Fix RPM categories and summaries.
+
+-------------------------------------------------------------------
+Thu Jul 27 16:55:36 UTC 2017 - tchvatal@suse.com
+
+- Update the service to generate sensible name for the tarball
+- Switch to lcms2 from lcms
+- Drop upstream merged patch:
+  * rawstudio-2.1_unraw.patch
+- Update to version 2.0+git20170413.003dd4f3:
+  * Do more relaxed matching when displying camera profile choices.
+  * Do not link to defunct website. This fixes #22.
+  * Removed rawstudio.org from readme.
+  * Fix a crash when we don't have select lens.
+  * Update rawspeed to last version (Feb 8, 2016).
+  * Remove plugin load-dcraw
+  * + Panasonic GH4 + GH5
+
+-------------------------------------------------------------------
+Mon Jul  4 06:31:59 UTC 2016 - adrian@suse.de
+
+- update to current code
+  The tar ball was just a html page, it is created by a service now.
+
+-------------------------------------------------------------------
+Fri Jun 17 12:07:11 UTC 2016 - avvissu@yandex.ru
+
+- Update to version 2.1+git.20160225:
+  * Use GSIZE_TO_POINTER and GPOINTER_TO_SIZE for GType
+  * Other: Use rather GPOINTER_TO_SIZE() to be safe.
+  * Silently avoid out-of-bounds warning in rs_filter_set_recursive() 
+    when setting integers.
+  * Added EOS 70D.
+  * Avoid setting the same adjustments multiple times in 
+    rs_navigator_set_adjustments().
+  * Fix 100% view.
+  * Removed debug printf.
+  * Do more relaxed matching when displying camera profile choices.
+  * Do not link to defunct website. This fixes #22.
+  * Removed rawstudio.org from readme.
+- Remove plugin load-dcraw (rawstudio-2.1_unraw.patch [bnc#985103])
+- Spec file cleanup 
+
+-------------------------------------------------------------------
+Mon Mar  2 05:06:15 UTC 2015 - avvissu@yandex.ru
+
+- update to 2.1git.20150227
+- remove all patches (fixed in upstream):
+ * add-gthread-reference.patch
+ * drop-deprecated-g_thread_init-call.patch
+ * rawstudio-2.0-plugindir.patch
+- use autogen.sh
+- remove *.la file
+- use %desktop_database_{post,postun} for MimeType inside the 
+  desktop file
+- spec file cleanup 
+  
+-------------------------------------------------------------------
+Mon Mar 26 12:40:25 UTC 2012 - fisiu@opensuse.org
+
+- Add drop-deprecated-g_thread_init-call.patch to fix build > 12.1.
+
+-------------------------------------------------------------------
+Mon Mar 26 11:06:13 UTC 2012 - fisiu@opensuse.org
+
+- Add symbolic link for plugins dir: fixed bnc#748464.
+- Adjust previous patch.
+
+-------------------------------------------------------------------
+Wed Mar 21 05:44:21 UTC 2012 - mrdocs@opensuse.org
+
+- patch  http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=661409
+  enables build on > 12.1
+
+-------------------------------------------------------------------
+Mon May 30 12:38:47 UTC 2011 - prusnak@opensuse.org
+
+- updated to 2.0
+

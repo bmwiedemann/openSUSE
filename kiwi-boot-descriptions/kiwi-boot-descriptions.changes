@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Mon Jul 29 09:26:18 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- Use %suse_version instead of %sle_version do detect SLE 15 (SP*)
+  %sle_version is different depending on SP1 vs GA, but %suse_version
+  is the same for all SLE 15.
+
+-------------------------------------------------------------------
+Wed Jul 24 10:13:48 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- modify 'dn' to avoid mangling /dev/sdp block names
+
+-------------------------------------------------------------------
+Fri Jul 19 13:55:30 UTC 2019 - ms@suse.com
+
+- Improve partition validation for PXE
+    
+  This commit includes a patch to relax the partition
+  size validation. It turned to happen that under some
+  specific partition size configurations in the PXE client
+  the partition layout was always seen as an invalid one
+  in each boot. This was causing a repartition and redeploy
+  of the PXE image in every single boot.
+    
+  Fixes bsc#1141156
+
+-------------------------------------------------------------------
+Fri Jul 19 13:54:33 UTC 2019 - ms@suse.com
+
+- Normalize partedGetPartitionID output (bsc#1136744)
+    
+  This commit ensures the partedGetPartitionID output returns the
+  same partition ID codes with or without the presence of sgdisk
+  utility. It basically trusts partition names provided by KIWI to map
+  partitions to specific IDs.
+    
+  Additionally this commit also makes sure that the partition stated
+  to be of `ef` type in config.<mac> is named `legacy`, to be consistent
+  with the partedGetPartitionID expectations.
+
+-------------------------------------------------------------------
+Mon Jul  8 09:44:37 UTC 2019 - ms@suse.com
+
+- Deleted obsolete boot image descriptions
+
+  The support for dracut in kiwi has settled some time ago and
+  for the custom boot descriptions deleted here there is a dracut
+  based replacement. See the following list and the reason for
+  the deletion:
+
+  * arm/oemboot
+    Any oem image created with kiwi-ng for arm uses dracut.
+    There is no tested support for oemboot on arm
+
+  * ppc/netboot and ppc/oemboot
+    Support for ppc with kiwi-ng is still being worked on.
+    We will not support custom oem code when we can have
+    dracut based support. This obsolete descriptions are an
+    artifact of the legacy kiwi version
+
+  * s390/oemboot
+    Any oem image created with kiwi-ng for s390 uses dracut
+    There is no tested support for oemboot on s390
+
+  * x86_64/oemboot/rhel-07.0 and x86_64/oemboot/ubuntu-xenial
+    Obsolete and replaced with generic dracut support in kiwi-ng
+
+  * x86_64/oemboot/suse-leap42.2 and x86_64/oemboot/suse-leap42.3
+    Distributions out of support per upstream kiwi policy
+
+  * x86_64/oemboot/suse-tumbleweed
+    Lots of changes on the udev and systemd side made oemboot
+    non functional anyway. The switch to dracut is inevitable here.
+    Thus no reason to keep broken oemboot code around
+
+-------------------------------------------------------------------
+Mon Jun 17 07:30:51 UTC 2019 - ms@suse.com
+
+- Use default values for nr_inode on devtmpfs mounts
+    
+  Using nr_inode=0 is causing mount failures in recent kernels. This
+  option was introduced to fix issues in split systems, which are no
+  longer supported. According to that we just remove this option and
+  let mount set the default value, which depends on available memory
+  of the system. Fixes SUSE/kiwi#1105
+
+-------------------------------------------------------------------
+Thu May 23 14:27:03 UTC 2019 - ms@suse.com
+
+- Allow disabling multipath
+
+-------------------------------------------------------------------
+Wed May 22 12:50:10 UTC 2019 - ms@suse.com
+
+- Fixed udev startup
+  Due to a change in the udev rules an error in kiwi was triggered
+  that outlines an incomplete udev startup sequence. This
+  patch fixes the creation of the dev tree by udev and is
+  related to bsc#1135762
+
+-------------------------------------------------------------------
+Wed May 22 12:49:55 UTC 2019 - ms@suse.com
+
+- Set SERVER variable as expected by netboot code (#674)
+  This commit sets $host from $SERVER variable if present and no
+  $kiwiserver is given from the command line.
+  The same criteria applies for $type and $SERVERTYPE variables.
+  Fixes bsc#1133537
+
+-------------------------------------------------------------------
+Wed Apr 24 15:23:58 UTC 2019 - David Cassany <dcassany@suse.com>
+
+- Added netboot definitions for Leap 15.1 (boo#1132839)
+
+-------------------------------------------------------------------
+Wed Mar  6 15:55:44 UTC 2019 - ms@suse.com
+
+- custom_boot/functions.sh: add support for PLABEL in config
+
+-------------------------------------------------------------------
+Wed Mar  6 15:54:55 UTC 2019 - ms@suse.com
+
+- Update spec file:
+  * syslinux is only available on x86*, so requires it only for x86
+  * Run format spec file
+
+-------------------------------------------------------------------
+Mon Jan  7 10:33:48 UTC 2019 - ms@suse.com
+
+- Fallback to sulogin if setctsid is missing
+
+-------------------------------------------------------------------
+Mon Jan  7 10:33:19 UTC 2019 - ms@suse.com
+
+- Use setctsid/bash instead of sulogin for debugging
+    
+  The custom kiwi boot descriptions supports a boot process
+  accompanying debug shell if the kiwidebug=1 option is
+  set on the kernel command line. That shell was invoked
+  using sulogin. Problem is that this call occupies the
+  controlling terminal and console such that the typical
+  multiplexing of consoles through plymouth is stopped.
+  This means it's not possible to run e.g an oem deployment
+  with several active/multiplexed consoles and a backgrounding
+  debuging shell. This patch moves away from sulogin and
+  calls a bash through setctsid on a free console
+
+-------------------------------------------------------------------
+Mon Dec 17 11:36:13 UTC 2018 - ms@suse.com
+
+- Fixed console multiplexer when dialogs get displayed.
+  https://github.com/SUSE/kiwi-descriptions/pull/30
+
+-------------------------------------------------------------------
+Fri Sep 28 16:16:39 UTC 2018 - David Cassany <dcassany@suse.com>
+
+- Added syslinux requirement for kiwi-image-iso-requires, this
+  fixes bnc#1103398 
+
+-------------------------------------------------------------------
+Thu Sep 20 08:45:29 UTC 2018 - ms@suse.com
+
+- Setup swap space with a label in any case
+    
+  Independently of the device persistency setup we create
+  the swap space with the label named SWAP and add it as
+  such to the fstab file
+
+-------------------------------------------------------------------
+Mon Aug 13 09:04:39 UTC 2018 - ms@suse.com
+
+- Clear the terminal I/O before dialog
+    
+  Call the reset program to clear the terminal I/O
+  prior to call the dialog program. This Fixes bsc#1095856
+
+-------------------------------------------------------------------
+Mon May 28 09:17:51 UTC 2018 - ms@suse.com
+
+- Make sure root entry in fstab is created for pxe
+    
+  On pxe deployment via netboot the root entry in fstab was
+  not created even if the client config file contains a DISK
+  setup
+
+-------------------------------------------------------------------
+Wed Apr  4 14:55:17 UTC 2018 - ms@suse.com
+
+- Add kiwi-image-tbz-requires to provide kiwi-image:tbz 
+
+-------------------------------------------------------------------
+Tue Mar 13 14:15:55 UTC 2018 - ms@suse.com
+
+- Added jing as required package in the *-requires sub packages
+
+-------------------------------------------------------------------
+Tue Feb 20 10:45:54 UTC 2018 - ms@suse.com
+
+- Update meta packages structure for the buildservice
+
+-------------------------------------------------------------------
+Tue Feb  6 20:30:33 CET 2018 - ms@suse.de
+
+- Move of kiwi boot descriptions to its own package

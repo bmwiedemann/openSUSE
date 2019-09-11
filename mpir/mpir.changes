@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Wed Feb 13 08:51:41 UTC 2019 - schwab@suse.de
+
+- Run autoreconf to get uptodate configure scripts
+- Use %license
+
+-------------------------------------------------------------------
+Thu Feb  8 13:08:38 UTC 2018 - dmueller@suse.com
+
+- build on armv6/7 using the generic code only
+
+-------------------------------------------------------------------
+Thu Feb  1 02:00:47 CET 2018 - ro@suse.de
+
+- make it build on ppc64le using generic code
+  found via https://trac.sagemath.org/ticket/19704
+
+-------------------------------------------------------------------
+Sat Apr 29 23:48:59 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0.0
+  * IA32 build failure resolved
+- Removed 0001-Fix-32-bit-fat-build.patch (included)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:48:31 UTC 2017 - jengelh@inai.de
+
+- Add explicit m4 BuildRequire
+
+-------------------------------------------------------------------
+Mon Feb 20 23:44:36 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 3.0.0~alpha3
+  * New Intel Skylake and Haswell assembly support
+  * Rudimentary Broadwell support (not optimisation)
+  * Improved AMD Bulldozer support
+  * Faster mpz_powm, mpz_powm_ui from GMP
+  * New mpz_limbs functionality from GMP 6
+  * New mpn_sizeinbase, mullow_basecase_n, binvert, redc_1, redc_2,
+    redc_n functions from GMP 6.
+  * New mpn_nsumdiff_n function (speeds up FFT on Haswell)
+- Add 0001-Fix-32-bit-fat-build.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 12:14:30 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.7.2
+* Remove recently added basecase division which to be proved buggy.
+- Drop 0001-Fix-bug-in-t-scan-test.patch, t_assign.diff
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Aug 13 15:54:25 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch ppc64le because asm files in
+  mpn/powerpc64/mode64/* are ABI version 1.
+
+-------------------------------------------------------------------
+Tue Mar 31 18:33:23 UTC 2015 - jengelh@inai.de
+
+- Remove implicit --with-pic (only useful for static libs)
+- Set license to LGPL-3.0+
+
+-------------------------------------------------------------------
+Wed Oct 15 10:39:04 UTC 2014 - jengelh@inai.de
+
+- Add t_assign.diff to fix a testsuite compile failure with gcc 4.3
+
+-------------------------------------------------------------------
+Sat Oct 11 20:01:02 UTC 2014 - jengelh@inai.de
+
+- Make package build on SLE11 again
+
+-------------------------------------------------------------------
+Fri Feb  7 12:54:35 UTC 2014 - jengelh@inai.de
+
+- Add patch 0001-Fix-bug-in-t-scan-test.patch to fix failure
+  in test suite
+
+-------------------------------------------------------------------
+Thu Dec  6 17:20:04 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.6.0
+* Completely new FFT implementation
+- Update to new upstream release 2.5.2
+* Support more CPUs
+* Additional macros for mpfr-3.1.0 support
+* Redc_1 assembly code for sandybridge and bobcat 
+- Update to new upstream release 2.5.1
+* Correct very rare errors in multiplication code
+* Correct very rare errors in GCD,GCDEXT and invert code
+- Update to new upstream release 2.5.0
+* Toom22 speedup via assembler
+* New x86_64 assembler code
+* New Toom eval function using the new assembler code
+* Detect another Sandybridge CPU
+* New GCD code (by the GMP project)
+
+-------------------------------------------------------------------
+Thu Sep 15 19:20:13 UTC 2011 - jengelh@medozas.de
+
+- Update to 2.4.0
+* Correct incorrect parameter type for mpz_cdiv_q_2exp
+* Sandybridge and Bobcat have been tuned
+* Bulldozer cpu detection
+* Initial support for intmax functions
+- Minor cleanups: blank lines/indent (rest is autoformatted), use
+  %{?_smp_mflags} for parallel building, and remove redundant
+  %clean section
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Wed Sep 16 02:30:29 CEST 2009 - crrodriguez@suse.de
+
+- update to version 1.2.1 
+
+-------------------------------------------------------------------
+Thu May 28 19:28:33 CEST 2009 - crrodriguez@suse.de
+
+- initial package 
+

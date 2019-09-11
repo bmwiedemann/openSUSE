@@ -1,0 +1,495 @@
+-------------------------------------------------------------------
+Tue May 28 08:43:17 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.1
+  * Multiple changes, mostly bugfixes - see provided NEWS for
+    details
+- Do not run any tests in parallel - this caused random failures
+
+-------------------------------------------------------------------
+Sat Feb 16 06:45:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run profiling without parallelism for reproducible build results
+  (boo#1040589)
+
+-------------------------------------------------------------------
+Mon Feb 04 17:11:14 UTC 2019 - seanlew@opensuse.org
+
+- bison 3.3.2:
+  * bison 3.3 failed to generate parsers for grammars with unused
+    nonterminal symbols
+
+-------------------------------------------------------------------
+Mon Jan 28 00:47:11 UTC 2019 - seanlew@opensuse.org
+
+- bison 3.3.1:
+  * The option -y makes extensions into simple warnings
+  * Removed support for DJGPP
+ 
+-------------------------------------------------------------------
+Sun Jan  6 20:44:43 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Do not build tests with -fprofile-generate in order to not to
+  overwrite gcda files (boo#1120868).
+
+-------------------------------------------------------------------
+Thu Dec 27 03:40:07 UTC 2018 - sean@suspend.net
+
+- bison 3.2.4:
+  * Fix the move constructor of symbol_type
+  * Always provide a copy constructor for symbol_type
+
+-------------------------------------------------------------------
+Sat Dec 22 16:55:04 UTC 2018 - sean@suspend.net
+
+- bison 3.2.3:
+  * c++: fix token constructors for types with commas
+  * data/variant.hh: Do not use user types
+  * tests/local.at: Adjust lex-related macros for tokenization
+  * test/types.at: Also ceck token constructors with commas
+
+-------------------------------------------------------------------
+Thu Nov 22 05:55:13 UTC 2018 - sean@suspend.net
+
+- bison 3.2.2:
+  * Support C++ 11 with move-only types for semantic values
+  * C++ 98 support is now deprecated
+
+-------------------------------------------------------------------
+Fri Nov 09 08:04:18 UTC 2018 - sean@suspend.net
+
+- bison 3.2:
+  * %printers should use yyo rather than yyoutput to denote the output stream.
+  * variant-based symbols in C++ should use emplace() rather than build()
+  * in C++ parsers, parser:;operator() is now a synonym for the parser::parse
+  * C++ support for move semantics (lalr1.cc)
+  * C++ implicit move of right-hand side values (lair1.cc)
+  * C++ the implicit default semantic action is always run
+  * C++ renaming locations.hh
+  * C++ stack.hh and position.hh are deprecated
+
+-------------------------------------------------------------------
+Tue Oct  2 09:27:28 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Use profile guided optimization (PGO) when building
+
+-------------------------------------------------------------------
+Tue Oct 2 05:28:01 UTC 2018 - sean@suspend.net
+
+- bison 3.1:
+  * Compiling Bison now requires a C99 compiler
+  * Typed midrule actions
+  * Reports include the type of symbols
+  * Diagnostics about useless rules now implemented
+  * C++: Generated parsers can be compiled with -fno-exceptions (lairi.cc)
+  * GLR: Predicates support broken by #line directives
+  * Printer and destructor with broken #line directives
+  * Portability on ICC
+
+-------------------------------------------------------------------
+Fri Jun 15 19:11:25 UTC 2018 - astieger@suse.com
+
+- bison 3.0.5:
+  * C++: Fix support of 'syntax_error'
+  * Fix various C++ warnings
+  * Fix issues with C++ parsers where out-of-bounds errors could
+    happen when a rule with an empty ride-hand side raises a
+    syntax error
+- drop gcc7-fix.patch, no longer required
+
+-------------------------------------------------------------------
+Fri Dec 16 09:45:23 UTC 2016 - mliska@suse.cz
+
+- gcc7-fix.patch: Add forward declaration to compile with GCC7.
+
+-------------------------------------------------------------------
+Wed Dec 14 11:04:29 UTC 2016 - tchvatal@suse.com
+
+- Update keyring file to not be 38 MB large...
+
+-------------------------------------------------------------------
+Tue Sep  1 14:24:58 UTC 2015 - tchvatal@suse.com
+
+- Set the installinfo in preun rather than postun to avoid ugly
+  warning about file not being present.
+- Remove the Obsolete for old ppc64 support that won't get triggered
+
+-------------------------------------------------------------------
+Fri Feb 20 21:14:39 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Update to 3.0.4:
+  * Fix a compiler warning when no %destructor use $$.
+  * Several portability issues in tests were fixed.
+
+-------------------------------------------------------------------
+Thu Jan 22 20:06:50 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.0.3
+Bug fixes
+  * C++ with Variants (lalr1.cc)
+    Problems with %destructor and '%define parse.assert' have been fixed.
+  * Named %union support (yacc.c, glr.c)
+    Bison 3.0 introduced a regression on named %union such as
+    %union foo { int ival; };
+    The possibility to use a name was introduced "for Yacc compatibility".
+    It is however not required by POSIX Yacc, and its usefulness is not clear.
+  * %define api.value.type union with %defines (yacc.c, glr.c)
+    The C parsers were broken when %defines was used together with "%define
+    api.value.type union".
+  * Redeclarations are reported in proper order
+Documentation
+  * Bison now installs various files in its docdir (which defaults to
+    '/usr/local/share/doc/bison'), including the three fully blown examples
+    extracted from the documentation:
+     - rpcalc
+       Reverse polish calculator, a simple introductory example.
+     - mfcalc
+       Multi-function Calc, a calculator with memory and functions and located
+       error messages.
+     - calc++
+       a calculator in C++ using variant support and token constructors.
+- Split out translation files
+- Pass "--docdir=%{_docdir}/%{name}" and do not perform %doc anymore
+
+
+-------------------------------------------------------------------
+Wed Dec 24 11:39:10 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 3.0.2
+  + Generated source files when errors are reported
+  + %empty is used in reports
+  + When C++ variant support is enabled, an error triggered via YYERROR,
+    but not caught via error recovery, resulted in a double deletion.
+- Remove location-eof-check.patch; merged on upstream release
+
+-------------------------------------------------------------------
+Fri Sep 27 20:13:38 UTC 2013 - schwab@linux-m68k.org
+
+- location-eof-check.patch: Fix broken EOF check
+
+-------------------------------------------------------------------
+Sat Aug  3 02:24:50 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to bision 3.0
+* deep overhaul/improvements of the diagnostics
+* more versatile means to describe semantic value types, 
+including the ability to store genuine C++ objects in C++ parsers
+* push-parser interface extended to Java
+* parse-time semantic predicates for GLR parsers.
+* This is a major update, please see https://lwn.net/Articles/561990/
+  for all details and backward incompatible changes.
+
+-------------------------------------------------------------------
+Tue Jul  9 07:53:58 UTC 2013 - schwab@suse.de
+
+- Override broken configure checks
+
+-------------------------------------------------------------------
+Thu Mar 21 07:52:06 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Feb  6 06:11:30 UTC 2013 - adrian@suse.com
+
+- bison update to 2.7
+  * Changes in the format of error messages
+  * New format for error reports: carets
+  * New value for %define variable: api.pure full
+  * New %define variable: api.location.type (glr.cc, lalr1.cc, lalr1.java)
+  * Exception safety (lalr1.cc)
+  * Graph improvements in DOT and XSLT
+  * %language is no longer an experimental feature.
+
+-------------------------------------------------------------------
+Mon Nov 12 16:23:50 UTC 2012 - crrodriguez@opensuse.org
+
+- bison 2.6.5
+* Incorrect definitions of YY_, issued by yacc.c when no parser header is
+  generated, are removed.
+* Fix compiler warnings in the generated parser (yacc.c, glr.c) 
+* Warnings about uninitialized yylval and/or yylloc for push parsers with a
+  pure interface have been fixed for GCC 4.0 up to 4.8, and Clang 2.9 to
+  3.2.
+
+-------------------------------------------------------------------
+Sun Sep 23 17:27:27 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 2.6.2:
+  + Buffer overruns, complaints from Flex, and portability issues
+    in the test suite have been fixed.
+  + Changelist too long to fit here, see NEWS
+- Source format is now .xz
+- Remove bison-stdio.in.patch: seems upstreamed
+- Add 'xz' to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jul 17 18:55:21 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Mon Jan  9 09:54:18 UTC 2012 - aj@suse.de
+
+- Own /usr/share/aclocal
+
+-------------------------------------------------------------------
+Sat Sep 17 19:52:28 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Jun  7 03:06:12 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 2.5
+- Fixes GCC 4.6 warnings 
+- Changelist too long to fit here, see NEWS.
+
+-------------------------------------------------------------------
+Wed Feb 10 16:57:10 CET 2010 - rguenther@suse.de
+
+- Update to version 2.4.1.
+- Apply fix for GCC 4.5 compliance.
+- Apply fix for unsupported output file names.
+
+-------------------------------------------------------------------
+Mon Feb  8 10:59:57 UTC 2010 - coolo@novell.com
+
+- package yacc.1 too
+
+-------------------------------------------------------------------
+Fri Jan 29 12:42:41 UTC 2010 - coolo@novell.com
+
+- fix patch name
+
+-------------------------------------------------------------------
+Tue Jan 26 11:53:49 CET 2010 - mmarek@suse.cz
+
+- updated to 2.4
+  * new experimental %language directive to select the used
+    skeleton and output file name
+  * experimantal Java parser support
+  * support for push parsers
+  * bison now removes unreachable states (this might require
+    updates to %expect and %expect-rr directives)
+  * support for per-type and default %destructor's and %printer's
+  * except for LALR(1) parsers in C with POSIX Yacc emulation enabled
+    (with `-y', `--yacc', or `%yacc'), Bison no longer generates
+    #define statements for associating token numbers with token
+    names
+  * For a detailed list of fixes and new features, see
+    /usr/share/doc/packages/bison/NEWS
+
+-------------------------------------------------------------------
+Sat Dec 12 20:36:01 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Jan 24 13:31:57 CET 2007 - mmarek@suse.cz
+
+- use more $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Jun 26 15:21:48 CEST 2006 - mmarek@suse.cz
+
+- updated to 2.3
+  * all generated scanners can be used in non-free programs
+    (previously, only LALR(1) scanners in C had the exception)
+  * multiple %union declarations can be used, they will be
+    concatenated
+  * unused values with a %destructor are warned about
+  * %destructors are not run for values in the action that called
+    YYABORT/YYACCEPT/YYERROR
+  * unsatisfied number of %expect/%expect-rr conflicts is an error,
+    not warning
+  * ability to depend on a minimal bison version via
+    %require "VERSION"
+  * no global YYSTYPE and YYLTYPE macros and token names in C++
+    scanners -- yy::parser::semantic_type, yy::parser::location_type
+    and yy::parser::token::<token> should be used instead
+    (can be reverted by '%define "global_tokens_and_yystype" "1"')
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 21 14:09:04 CET 2005 - mmarek@suse.cz
+
+- push the 2.1 update into factory
+
+-------------------------------------------------------------------
+Thu Dec 15 10:18:23 CET 2005 - mmarek@suse.cz
+
+- update to 2.1
+
+-------------------------------------------------------------------
+Fri Nov 05 13:44:55 CET 2004 - tcrhak@suse.cz
+
+- fixed wrong variable name (bug #47961, patch output)
+
+-------------------------------------------------------------------
+Mon Jan 26 14:17:04 CET 2004 - kukuk@suse.de
+
+- Readd m4 requirement
+
+-------------------------------------------------------------------
+Sun Jan 11 09:54:44 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Jan 06 11:37:15 CET 2004 - tcrhak@suse.cz
+
+- update to version 1.875
+- use %{_libdir}
+- run the testsuite
+- applied Michael Matz's patch
+- GCC does not support attributes on label in C++
+
+-------------------------------------------------------------------
+Fri Sep 12 19:11:55 CEST 2003 - tcrhak@suse.cz
+
+- require m4, issue an error message and return a non-zero
+  exit code if m4 binary is not found [bug #30653], patch readpipe
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Mar 07 16:47:08 CET 2003 - tcrhak@suse.cz
+
+- Improved fix for the scaner: treat @ and initial comments
+  the right way
+
+-------------------------------------------------------------------
+Fri Feb  7 01:16:20 CET 2003 - ro@suse.de
+
+- added install_info macros 
+
+-------------------------------------------------------------------
+Sat Nov  9 19:38:34 CET 2002 - aj@suse.de
+
+- Fix one more problem encountered in building gcc with $
+  (all work done by jh@suse.cz).
+
+-------------------------------------------------------------------
+Sat Nov  9 18:16:35 CET 2002 - aj@suse.de
+
+- Fix last patch to handle $ in comments correctly.
+
+-------------------------------------------------------------------
+Sat Nov  9 14:53:50 CET 2002 - aj@suse.de
+
+- Fix handling of $ in scan-gram.
+
+-------------------------------------------------------------------
+Wed Nov 06 15:36:22 CET 2002 - tcrhak@suse.cz
+
+- update to version 1.75
+- removed YYPARSE_RETURN_TYPE: no package uses this and yyparse()
+  relies on having its return type compatible with int
+- do not use C++ kludges fix with the new version
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Jul 23 18:33:57 CEST 2002 - tcrhak@suse.cz
+
+- a stack overflow fix for `C++ kludges': do extend stack
+  even if location tracking is not enabled
+
+-------------------------------------------------------------------
+Wed Jun 26 17:23:22 CEST 2002 - tcrhak@suse.cz
+
+- update to 1.35
+
+-------------------------------------------------------------------
+Wed Feb 13 13:50:05 CET 2002 - schwab@suse.de
+
+- Don't use NULL when it may not be defined.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:51:48 CET 2002 - tcrhak@suse.cz
+
+- update to version 1.33
+
+-------------------------------------------------------------------
+Fri Jan 25 20:05:16 CET 2002 - tcrhak@suse.cz
+
+- update to version 1.32
+
+-------------------------------------------------------------------
+Tue Dec 11 16:32:58 CET 2001 - schwab@suse.de
+
+- Fix double free.
+
+-------------------------------------------------------------------
+Fri Nov 30 17:14:00 CET 2001 - schwab@suse.de
+
+- Fix use of YYSTACK_USE_ALLOCA in parser skeleton.
+
+-------------------------------------------------------------------
+Fri Nov 30 13:55:50 CEST 2001 - tcrhak@suse.cz
+
+- update to 1.30
+
+-------------------------------------------------------------------
+Sun Dec  3 16:19:47 CET 2000 - schwab@suse.de
+
+- Fix line numbers in bison.simple.
+
+-------------------------------------------------------------------
+Thu Aug 24 14:03:49 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.28
+
+-------------------------------------------------------------------
+Fri Jan 28 11:26:45 CET 2000 - schwab@suse.de
+
+- Fix missing declaration
+- Specfile cleanup, get rid of Makefile.Linux
+- /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+------------------------------------------------------------------------------
+Fri Jun 13 11:28:39 CEST 1997 - rj@suse.de
+
+	- yacc emulation removed, because of existing mid-age technology
+
+------------------------------------------------------------------------------
+Fri May 16 14:47:52 CEST 1997 - rj@suse.de
+
+	- version 1.25
+	- yacc-functionality emulated thru script

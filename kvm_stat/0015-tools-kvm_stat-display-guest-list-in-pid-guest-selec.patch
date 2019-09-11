@@ -1,0 +1,107 @@
+From 8be25f3d6989b4a74115431589f475e3e65e576b Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:43 +0200
+Subject: [PATCH 15/43] tools/kvm_stat: display guest list in pid/guest
+ selection screens
+
+Display a (possibly inaccurate) list of all running guests. Note that we
+leave a bit of extra room above the list for potential error messages.
+Furthermore, we deliberately do not reject pids or guest names that are
+not in our list, as we cannot rule out that our fuzzy approach might be
+in error somehow.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 865279c53ca9d88718d974bb014b2c6ce259ac75)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 49 ++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 37 insertions(+), 12 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 0f74a0e1307e..b219bfd9781c 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -897,15 +897,9 @@ class Tui(object):
+             curses.nocbreak()
+             curses.endwin()
+ 
+-    @staticmethod
+-    def get_pid_from_gname(gname):
+-        """Fuzzy function to convert guest name to QEMU process pid.
+-
+-        Returns a list of potential pids, can be empty if no match found.
+-        Throws an exception on processing errors.
+-
+-        """
+-        pids = []
++    def get_all_gnames(self):
++        """Returns a list of (pid, gname) tuples of all running guests"""
++        res = []
+         try:
+             child = subprocess.Popen(['ps', '-A', '--format', 'pid,args'],
+                                      stdout=subprocess.PIPE)
+@@ -915,11 +909,40 @@ class Tui(object):
+             line = line.lstrip().split(' ', 1)
+             # perform a sanity check before calling the more expensive
+             # function to possibly extract the guest name
+-            if (' -name ' in line[1] and
+-                    gname == self.get_gname_from_pid(line[0])):
+-                pids.append(int(line[0]))
++            if ' -name ' in line[1]:
++                res.append((line[0], self.get_gname_from_pid(line[0])))
+         child.stdout.close()
+ 
++        return res
++
++    def print_all_gnames(self, row):
++        """Print a list of all running guests along with their pids."""
++        self.screen.addstr(row, 2, '%8s  %-60s' %
++                           ('Pid', 'Guest Name (fuzzy list, might be '
++                            'inaccurate!)'),
++                           curses.A_UNDERLINE)
++        row += 1
++        try:
++            for line in self.get_all_gnames():
++                self.screen.addstr(row, 2, '%8s  %-60s' % (line[0], line[1]))
++                row += 1
++                if row >= self.screen.getmaxyx()[0]:
++                    break
++        except Exception:
++            self.screen.addstr(row + 1, 2, 'Not available')
++
++    def get_pid_from_gname(self, gname):
++        """Fuzzy function to convert guest name to QEMU process pid.
++
++        Returns a list of potential pids, can be empty if no match found.
++        Throws an exception on processing errors.
++
++        """
++        pids = []
++        for line in self.get_all_gnames():
++            if gname == line[1]:
++                pids.append(int(line[0]))
++
+         return pids
+ 
+     @staticmethod
+@@ -1105,6 +1128,7 @@ class Tui(object):
+                                'This might limit the shown data to the trace '
+                                'statistics.')
+             self.screen.addstr(5, 0, msg)
++            self.print_all_gnames(7)
+ 
+             curses.echo()
+             self.screen.addstr(3, 0, "Pid [0 or pid]: ")
+@@ -1174,6 +1198,7 @@ class Tui(object):
+                                'This might limit the shown data to the trace '
+                                'statistics.')
+             self.screen.addstr(5, 0, msg)
++            self.print_all_gnames()
+             curses.echo()
+             self.screen.addstr(3, 0, "Guest [ENTER or guest]: ")
+             gname = self.screen.getstr()
+-- 
+2.12.3
+

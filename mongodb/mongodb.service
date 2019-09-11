@@ -1,0 +1,33 @@
+[Unit]
+Description=High-performance, schema-free document-oriented database
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/mongodb/mongod.pid
+User=mongodb
+Group=mongodb
+Environment=CONFIG=/etc/mongodb.conf
+Environment=OPTIONS=
+EnvironmentFile=-/etc/sysconfig/mongodb
+ExecStart=/usr/sbin/mongod -f $CONFIG $OPTIONS
+PrivateTmp=true
+# avoid hitting virtual memory limits with mmaps (bnc#876326)
+# add recommended ulimit settings via systemd Limit options
+# http://docs.mongodb.org/manual/reference/ulimit/#ulimit
+LimitFSIZE=infinity
+LimitCPU=infinity
+LimitAS=infinity
+LimitNOFILE=64000
+LimitNPROC=64000
+TimeoutStartSec=180
+StandardOutput=syslog
+StandardError=syslog
+# total threads (user+kernel)
+TasksMax=infinity
+TasksAccounting=false
+# Recommended limits for for mongod as specified in
+# http://docs.mongodb.org/manual/reference/ulimit/#recommended-settings
+
+[Install]
+WantedBy=multi-user.target

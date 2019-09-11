@@ -1,0 +1,346 @@
+-------------------------------------------------------------------
+Wed Jul 17 17:46:13 UTC 2019 - Lubos Kocman <Lubos.Kocman+factory@suse.de>
+
+- recognize Leap 15.2 via sle_version
+
+-------------------------------------------------------------------
+Sun May  5 07:31:47 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- recognize Leap 15 via sle_version (required for >= 15.1)
+
+-------------------------------------------------------------------
+Tue Apr 23 09:15:55 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- bump version to 60 for SLE compatibility (bsc#1128316)
+
+-------------------------------------------------------------------
+Sat Aug 25 15:48:57 UTC 2018 - wr@rosenauer.org
+
+- removed intl.locale.matchOS
+  * it's not used in recent versions and it was set in the general
+    openSUSE Firefox package since 2011
+
+-------------------------------------------------------------------
+Sun Apr  1 09:34:49 UTC 2018 - wr@rosenauer.org
+
+- recognize Leap 15.0 (boo#1087713)
+
+-------------------------------------------------------------------
+Mon Jun  5 07:19:51 UTC 2017 - wr@rosenauer.org
+
+- really fix boo#1036679 (recognize Leap 42.3)
+
+-------------------------------------------------------------------
+Fri Apr 28 06:28:06 UTC 2017 - wr@rosenauer.org
+
+- recognize Leap 42.3 (boo#1036679)
+
+-------------------------------------------------------------------
+Fri Dec  9 05:24:34 UTC 2016 - qantas94heavy@gmail.com
+
+- Fix openSUSE bookmarks not added to default profile (boo#1014292)
+  * Move openSUSE bookmarks from toolbar to menu
+  * Use local favicon for all bookmarks (Firefox 45+)
+  * Fix links to "openSUSE Documentation" and "How to Participate"
+    (boo#704121, boo#953164)
+- Remove DuckDuckGo search plugin (included upstream)
+- Clean up spec file
+  * Change $RPM_BUILD_ROOT to %{buildroot}
+  * Remove %clean section
+  * Escape % symbols
+
+-------------------------------------------------------------------
+Mon Jul 11 09:32:00 UTC 2016 - dimstar@opensuse.org
+
+- Identify the different Leap versions correctly (up to Leap 42.2)
+  (boo#987969).
+
+-------------------------------------------------------------------
+Fri Dec 18 00:55:52 UTC 2015 - wr@rosenauer.org
+
+- identify Tumbleweed correctly
+
+-------------------------------------------------------------------
+Mon Oct 19 09:54:57 UTC 2015 - wr@rosenauer.org
+
+- change homepage to https://www.opensuse.org/searchPage/
+  (boo#950948, boo#950949)
+
+-------------------------------------------------------------------
+Sun Jul 26 08:14:23 UTC 2015 - wr@rosenauer.org
+
+- identify Leap 42.1 correctly
+- searchplugins need to be placed under distribution with FF 40
+- disable susefox
+  * its main purpose the plugin finder service misses server
+    side maintenance and NPAPI plugins are being obsoleted sooner
+    or later
+- homepage setting moved back from susefox to distribution
+  configuration
+
+-------------------------------------------------------------------
+Mon Mar 25 22:41:28 UTC 2013 - wr@rosenauer.org
+
+- modified file locations for Firefox 21 and above
+
+-------------------------------------------------------------------
+Thu Jan 31 07:40:17 UTC 2013 - wr@rosenauer.org
+
+- added DuckDuckGo as search option (bnc#801121)
+
+-------------------------------------------------------------------
+Tue Aug  7 21:40:45 UTC 2012 - wr@rosenauer.org
+
+- move Firefox specific prefs to defaults/preferences (bnc#774914)
+
+-------------------------------------------------------------------
+Tue Jun 26 21:29:12 UTC 2012 - wr@rosenauer.org
+
+- update susefox to snapshot 20120626
+  * add window controls for Gnome 3 (bnc#768942)
+
+-------------------------------------------------------------------
+Thu Mar 15 08:18:11 UTC 2012 - wr@rosenauer.org
+
+- bumped version to 6.0
+- support firefox-esr RPM packages
+- removed MozillaFirefox build dependency and PreReq
+  * everything controlled by Supplements and Requirements from
+    base package
+
+-------------------------------------------------------------------
+Wed Dec 21 13:09:49 UTC 2011 - wr@rosenauer.org
+
+- make openSUSE software search version specific (bnc#737709)
+
+-------------------------------------------------------------------
+Fri Nov 18 14:03:18 UTC 2011 - wr@rosenauer.org
+
+- disable addon check completely as scopes are not working
+  correctly with Firefox 8
+
+-------------------------------------------------------------------
+Fri Nov 11 21:59:49 UTC 2011 - wr@rosenauer.org
+
+- do not disable global addons on update check
+
+-------------------------------------------------------------------
+Tue Nov  8 05:14:02 UTC 2011 - wr@rosenauer.org
+
+- update susefox to snapshot 20111108 (1.0.2)
+  * removed statusbar stuff (fix bnc#707628)
+
+-------------------------------------------------------------------
+Thu Oct 20 20:15:05 UTC 2011 - wr@rosenauer.org
+
+- make susefox compatible up to Firefox 9
+- browser.startup.homepage is now a property in susefox as the
+  resource:// URI is useless in omnijar setup (bnc#721421)
+- no welcome and override startpages
+
+-------------------------------------------------------------------
+Wed Sep 14 21:15:41 UTC 2011 - wr@rosenauer.org
+
+- update susefox
+  * marked compatible up to FF7
+
+-------------------------------------------------------------------
+Mon Jun 27 16:19:18 CEST 2011 - ro@suse.de
+
+- add directory to filelist to fix build
+
+-------------------------------------------------------------------
+Sat May 21 12:31:32 UTC 2011 - wr@rosenauer.org
+
+- update susefox
+  * marked compatible with FF5
+
+-------------------------------------------------------------------
+Fri Apr 15 06:08:26 UTC 2011 - wr@rosenauer.org
+
+- update to version 5.0
+  * supports openSUSE Firefox 5 and higher
+    (compatibility with standalone Firefox)
+- added all-openSUSE.js (previously in xulrunner)
+
+-------------------------------------------------------------------
+Tue Oct 26 09:41:05 CEST 2010 - wr@rosenauer.org
+
+- update susefox to snapshot 20101026
+  * Updated link to openSUSE wiki page
+  * Mistake in cs-CZ locale (bnc#637368)
+
+-------------------------------------------------------------------
+Mon Aug 30 15:22:41 CEST 2010 - wr@rosenauer.org
+
+- fixed build for Factory by getting the needed RPM macros
+- override browser.startup.homepage reference
+
+-------------------------------------------------------------------
+Thu Aug 12 09:12:49 CEST 2010 - wr@rosenauer.org
+
+- bumped package version to 4.0
+- update susefox to snapshot 20100812
+  * compatibility with Firefox 4
+
+-------------------------------------------------------------------
+Tue Jun  9 12:58:21 CEST 2010 - wr@rosenauer.org
+
+- update susefox to snapshot 20100609
+  * added HU translation
+
+-------------------------------------------------------------------
+Fri May 28 14:19:18 UTC 2010 - javier@opensuse.org
+
+- switch Planet openSUSE's feed to planet.opensuse.org 
+
+-------------------------------------------------------------------
+Sun Dec  6 13:51:22 CET 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20091206 (1.0.1)
+  * compatible with Firefox 3.6
+
+-------------------------------------------------------------------
+Wed Nov  4 19:53:19 UTC 2009 - wr@rosenauer.org
+
+- removed obsolete prefs
+
+-------------------------------------------------------------------
+Fri Oct 23 14:09:45 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20091023
+  * remove unneeded error dialog (bnc#549496)
+
+-------------------------------------------------------------------
+Mon Sep 28 07:23:19 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20090928
+  * fixed syntax error in install.rdf which prevented the addon from
+    being loaded
+
+-------------------------------------------------------------------
+Fri Sep 25 10:19:57 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20090925
+  * added pt-BR locale
+  * use pluginfinder.opensuse-community.org as official backend
+
+-------------------------------------------------------------------
+Mon Sep 14 00:01:16 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20090914
+  * offer the homepage link also in en-US locale
+
+-------------------------------------------------------------------
+Fri Jul 10 17:22:45 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20090710
+  * added link to the new "homepage" of the addon
+  * manage content plugins menuitem is always enabled now
+  * plugin installer wizard skips the results list correctly
+  * fixed a few issues
+
+-------------------------------------------------------------------
+Sat Jul  4 10:59:09 CEST 2009 - wr@rosenauer.org
+
+- update susefox to snapshot 20090703
+  * Remove superfluous select field
+  * Remove the bug reporting hint for missing upstream descriptions
+  * added nl locale from Freek de Kruijf
+  * Add it locale as provided by Andrea Turrini
+
+-------------------------------------------------------------------
+Tue Jun 30 10:05:46 CEST 2009 - wr@rosenauer.org
+
+- add distribution.ini (mainly for having a distribution version
+  in Firefox prefs e.g. needed for the susefox addon)
+- added susefox extension
+  * supports custom plugin finder service
+  * integrates PFS with YaST
+  * allows setting of the default mimetype handler plugin if there
+    are more than one installed
+
+-------------------------------------------------------------------
+Tue May 19 18:58:20 CEST 2009 - wr@rosenauer.org
+
+- set accessibility.typeaheadfind.soundURL to "default" (bnc#505289)
+  (that uses a wav packaged in toolkit and FF might not be able
+  to play it if esd is not functional)
+
+-------------------------------------------------------------------
+Mon May  4 08:40:26 CEST 2009 - wr@rosenauer.org
+
+- bumped version to 3.5 to reflect FF version bump
+- updated firefox.schemas
+- removed spec support for distributions before 10.3
+- removed obsolete prefs
+
+-------------------------------------------------------------------
+Mon Dec  8 11:16:41 EST 2008 - hfiguiere@suse.de
+
+- Fix a type in firefox-suse-default-prefs.js
+
+-------------------------------------------------------------------
+Thu Nov 20 18:56:10 CST 2008 - maw@suse.de
+
+- Review and approve changes.
+
+-------------------------------------------------------------------
+Fri Nov 14 13:42:38 CET 2008 - wr@rosenauer.org
+
+- Make sure that the base package is installed before installing
+  the branding packages (needed for gconf schema update)
+  (bnc#444682)
+
+-------------------------------------------------------------------
+Fri Nov  7 15:42:55 CST 2008 - maw@suse.de
+
+- Review and approve changes.
+
+-------------------------------------------------------------------
+Tue Nov  4 23:50:03 CET 2008 - wr@rosenauer.org
+
+- added the Firefox Gconf schema for system prefs and
+  changed the homepage URL to http://www.opensuse.org/ (bnc#441646)
+
+-------------------------------------------------------------------
+Mon Oct 20 18:16:42 CDT 2008 - maw@suse.de
+
+- Review and approve changes.
+
+-------------------------------------------------------------------
+Tue Oct  7 14:00:46 CEST 2008 - wr@rosenauer.org
+
+- bumped version to 3.0.3
+- removed browser.link.open_external override; we are opening
+  everything in a new tab; that also caused UI misbehaviour
+  (bnc#430077, bmo#457092)
+- Set browser.identity.ssl_domain.display to 1 (bnc#426263)
+
+-------------------------------------------------------------------
+Tue Oct  7 14:00:02 CEST 2008 - vuntz@novell.com
+
+- Add openSUSE documentation bookmark (fate#305003).
+- Also remove the Novell bookmarks and search addons. They will go
+  in the SLED branding package.
+
+-------------------------------------------------------------------
+Mon Oct  6 14:56:31 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Fri Sep 26 18:22:01 CEST 2008 - vuntz@suse.de
+
+- Add COPYING file (bnc#426320). 
+
+-------------------------------------------------------------------
+Sun Aug  3 23:01:38 CEST 2008 - wr@rosenauer.org
+
+- some polishing and minor changes
+
+-------------------------------------------------------------------
+Tue Jul 29 16:00:03 CEST 2008 - vuntz@novell.com
+
+- New package (bnc#390752).
+

@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Mar  1 11:07:49 UTC 2019 - Jozef Pupava <jpupava@suse.com>
+
+- Update to version 69
+  * No upstream changelog available
+- Add make dependency, needed for following tests:
+  * type_specific.io
+  * github-autotest-qemu.qemu_cpu.cpuid.custom.vendor.normal.kvm.
+  * cpu_model_unset.host_cpu_vendor_unknown.qemu_flavor_unknown
+
+-------------------------------------------------------------------
+Mon Feb 25 14:10:02 UTC 2019 - Jozef Pupava <jpupava@suse.com>
+
+- Update package dependencies
+
+-------------------------------------------------------------------
+Mon Nov  5 12:03:31 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update package dependencies
+
+-------------------------------------------------------------------
+Tue Sep 11 15:50:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups. Update description grammar.
+
+-------------------------------------------------------------------
+Mon Jul 30 15:38:18 UTC 2018 - mpluskal@suse.com
+
+- Initial changelog entry

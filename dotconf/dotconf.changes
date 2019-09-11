@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Oct 18 07:53:49 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Move documentation to devel package
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb  5 20:17:13 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+- Remove dependencies on main package, which only has docs
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed Sep 21 18:03:01 UTC 2011 - mgorse@suse.com
+
+- Fix docs
+- Fix package name to correspond with shared lib conventions, and obsolete
+  old package
+
+-------------------------------------------------------------------
+Tue Sep 20 20:01:42 UTC 2011 - mgorse@suse.com
+
+- Remove files that are no longer installed
+
+-------------------------------------------------------------------
+Tue Sep 20 18:16:33 UTC 2011 - mgorse@suse.com
+
+- Switch URL to github.com/williamh and upgrade to v1.3 from there
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Jun  6 20:20:00 CEST 2009 - coolo@suse.de
+
+- follow shared library policy
+
+-------------------------------------------------------------------
+Fri Mar 20 18:13:08 CET 2009 - crrodriguez@suse.de
+
+- fix packaging of libraries
+- remove static libraries except the ones only available in static form 
+
+-------------------------------------------------------------------
+Mon May 12 12:31:30 CEST 2008 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Remove junk.
+
+-------------------------------------------------------------------
+Sun Aug 12 11:59:38 CEST 2007 - marco@suse.de
+
+- moved some more files to devel package 
+- use bzip2 for source tarball
+
+-------------------------------------------------------------------
+Sat Jul 28 16:05:59 CEST 2007 - ro@suse.de
+
+- added defattr to devel package 
+
+-------------------------------------------------------------------
+Fri Jul 27 15:26:26 CEST 2007 - marco@suse.de
+
+- initial version for opensuse (1.0.13)
+    - James Cassidy sent in a little patch to add a 'pkg-config' file
+    - Bastian Kleineidam sent in a patch for better support of 64bit architectures
+    - Joost Remijn of eidetica.com sent in a patch fixing a nasty realloc()
+      bug
+	- Preston Smith fixed the compilation for systems where 'char' is
+	  handled as 'unsigned char' (like ARM)
+      (for infos see http://www.arm.linux.org.uk/docs/faqs/signedchar.shtml)
+	- Ross Alexander of NEC Europe sent in two patches to dotconf.m4, fixing
+	  version handling and prefix usage
+    - a small fix for all RPM users out there. dotconf up to 1.0.9 did not put
+      /usr/lib/libdotconf.so into the binary package
+
+-------------------------------------------------------------------

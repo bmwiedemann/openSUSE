@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Wed Jul 17 22:35:49 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Panel plugin sub-package renamed to follow upstream name:
+  xfce4-foo-plugin 
+
+-------------------------------------------------------------------
+Thu Jul  4 06:40:40 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add xfce4-mixer-find-dbus.patch to fix build failures
+- spec: move xdt-autogen from %prep to %build to allow quilt usage
+  for patch management
+- do not package ChangeLog, NEWS is good enough
+
+-------------------------------------------------------------------
+Sun Mar  3 04:39:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Switch to gk3 variants of libxfce4panel-2.0 libxfce4ui-2
+
+-------------------------------------------------------------------
+Sat Mar  2 22:09:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(unique-1.0) BuildRequires: No longer needed.
+- Drop xfce4-mixer-4.11.0.tar.bz2, we are using source service now.
+- Replace pkgconfig(gtk+-2.0) with pkgconfig(gtk+-3.0)
+  BuildRequires: Align with what configure checks for.
+
+-------------------------------------------------------------------
+Tue Dec 11 12:08:56 CET 2018 - tiwai@suse.de
+
+- Update ALSA patch to be applied to git version:
+  xfce4-mixer-alsa-git.patch 
+- Don't enable full debug for git build; otherwise the build with
+  _FORTIFY_SOURCE fails:
+  no-full-debug-default-for-git.patch
+- Add the missing buildreq for dbus-glib-1
+- Fix filelist for git version
+
+-------------------------------------------------------------------
+Mon Jan 23 22:59:22 CET 2017 - tiwai@suse.de
+
+- Drop gstreamer-0.10 usage, move to gstreamer-1.0;
+  this requires the additionally own GstMixer implementation:
+  xfce4-mixer-alsa.patch
+
+-------------------------------------------------------------------
+Thu May  1 08:33:02 UTC 2014 - gber@opensuse.org
+
+- update to version 4.11.0
+  - updated translations.
+  - fixed button sizing in some themes.
+  - g_thread_init is deprecated.
+  - refactor the handling of minimum volumes
+  - do not assume a minimum volume of 0 in the keyboard shortcut
+    handling
+  - correct debugging instructions
+  - avoid unused variable warning when buildwing without keybinder
+    (bxo#9544)
+  - move the XFCE_MIXER_PLUGIN_DEFAULT_COMMAND macro to where it is
+    used
+  - extend documentation in README
+  - rename variable which may shadow index(3) (bxo#9374)
+  - fix mnemonics in the plugin menu that conflict with those of
+    default menu items (bxo#9339)
+- drop obsolete xfce4-mixer-fix-default-window-size.patch
+
+-------------------------------------------------------------------
+Fri Jan 18 16:04:57 UTC 2013 - gber@opensuse.org
+
+- remove compat symlink causing the plugin to show up twice
+
+-------------------------------------------------------------------
+Thu Oct 11 21:26:17 UTC 2012 - gber@opensuse.org
+
+- added xfce4-mixer-fix-default-window-size.patch in order to
+  initialize window width and height to default values
+
+-------------------------------------------------------------------
+Wed Oct 10 15:06:33 UTC 2012 - gber@opensuse.org
+
+- update to version 4.10.0
+  - do not use G_VALUE_INIT which is only available in glib >= 2.30
+  - translation updates
+- drop obsolete xfce4-mixer-do-not-use-glib-2.30-symbols.patch and
+  xfce4-mixer-fix-typo.patch
+
+-------------------------------------------------------------------
+Thu Sep 27 16:14:52 UTC 2012 - gber@opensuse.org
+
+- added xfce4-mixer-do-not-use-glib-2.30-symbols.patch in order to
+  not use symbols that are only available in glib > 2.30.0
+  (backported from upstream git)
+- added compatibility symlink for the panel plugin to ease the
+  migration
+
+-------------------------------------------------------------------
+Thu Sep 27 15:00:44 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.0
+  - use standard icons where possible
+  - support xfce4-panel 4.10 with its deskbar mode
+  - handle unconfigured state more gracefully
+  - mute a track when the volume is set to 0% and unmute when set
+    to a higher value
+  - add global keyboard shortcuts for raising and lowering the
+    volume as well as muting
+  - store settings in xfconf and keep them in sync
+  - populate the mixer with whitelisted controls in the absence of
+    an existing configuration
+  - add a popup with a scale for setting the volume to the panel
+    plugin which is opened on left click, allow running the
+    user-defined command previously bound to left click from the
+    panel plugin context menu instead
+  - make xfce4-mixer a singleton application
+  - add runtime debugging mode to both the mixer and the panel
+    plugin
+  - add man page for xfce4-mixer
+  - handle identically named tracks and tracks which are read-only
+    or have no mute or record functionality
+- added xfce4-mixer-fix-typo to correct a typo causing build
+  failures with glib < 2.32.0 (backported from upstream git)
+
+-------------------------------------------------------------------
+Tue Apr  3 12:27:38 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Tue Mar  8 21:06:30 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.0
+  - Fix too small plugin button in the new panel.
+  - Ellipsize sound card names in the combo box (bug #6671).
+  - Remove deprecated Encoding key from desktop files.
+  - Port to libxfce4ui.
+  - Fix wrong use of GTK+ causing the panel plugin volume to be set no higher
+    than 90% (bug #5243).
+  - Fixed a lot of compiler warnnings and errors.
+  - Updated translations: Dutch, English (United Kingdom), Galician, Greek,
+    Italian, Kazakh, Portuguese, Romanian, Russian, Sinhala, Turkish, 
+    Uyghur and more.
+
+-------------------------------------------------------------------
+Thu Feb 17 23:54:05 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Thu Feb  3 20:13:49 UTC 2011 - gber@opensuse.org
+
+- update to current git snapshot (4.6.1.99_git20110203)
+  - port to libxfce4ui
+  - bugfixes
+  - translation updates
+- remove unsupported locales
+
+-------------------------------------------------------------------
+Mon Dec 27 14:58:00 UTC 2010 - gber@opensuse.org
+
+- suggest xfce4-panel-plugin-mixer
+
+-------------------------------------------------------------------
+Mon Dec 27 09:44:07 UTC 2010 - gber@opensuse.org
+
+- renamed rpmlintrc
+- split off xfce4-panel-plugin-mixer
+- corrected group
+
+-------------------------------------------------------------------
+Wed Dec 15 18:19:57 UTC 2010 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Wed Aug 19 13:57:07 CEST 2009 - prusnak@suse.cz
+
+- added xfce4-panel to Requires
+
+-------------------------------------------------------------------
+Tue Apr 21 14:09:24 CEST 2009 - prusnak@suse.cz
+
+- updated to 4.6.1
+  - Translation updates: es (Abel Martín), pl (Piotr Sokół),
+    gl (Leandro Regueiro), pt (Nuno Miguel), it (Cristian Marchi)
+  - Make <Control>q and <Control>s trigger the corresponding actions.
+  - Minor cosmetic fixes (row spacing of 6px in tables).
+  - Add missing AudioVideo category which is obligatory if you use the Audio
+    category (bug #4933).
+  - Display mute/record state properly on startup (bug #5002).
+  - Fix segfault when destroying the plugin
+  - Move capture track check into xfce_mixer_track_update_record().
+  - Don't increment the reference count on GObjects when passing them to GValue
+    using g_value_set_object().
+  - Fix crash with backends where the GstMixer implementation has no
+    "device-name" property (bug #5201).
+  - Include libxfcegui4.h to avoid implicit declaration of xfce_err().
+
+-------------------------------------------------------------------
+Fri Feb 27 13:55:35 CET 2009 - prusnak@suse.cz
+
+- updated to 4.6.0 (Xfce 4.6.0 release)
+
+-------------------------------------------------------------------
+Wed Nov  5 17:58:48 CET 2008 - prusnak@suse.cz
+
+- updated to 4.4.3
+  * translations polish
+
+-------------------------------------------------------------------
+Mon Dec  3 22:35:47 CET 2007 - bwalle@suse.de
+
+- update to 4.4.2
+  o Fix parallel build of xfce4-mixer (Bug #2892).
+  o Updated and new translations
+
+-------------------------------------------------------------------
+Sun Oct 21 13:08:28 CEST 2007 - bwalle@suse.de
+
+- replaced group 'System/GUI/Other' by 'System/GUI/XFCE'
+
+-------------------------------------------------------------------
+Wed Jun 20 14:23:07 CEST 2007 - prusnak@suse.cz
+
+- added alsa-devel to Requires of -devel subpackage
+- use %find_lang
+
+-------------------------------------------------------------------
+Wed May  2 10:29:16 CEST 2007 - prusnak@suse.cz
+
+- changed expat to libexpat-devel in Requires
+
+-------------------------------------------------------------------
+Wed Apr 25 14:58:50 CEST 2007 - prusnak@suse.cz
+
+- do not use parallel make, causes trouble
+
+-------------------------------------------------------------------
+Tue Apr 17 15:20:44 CEST 2007 - prusnak@suse.cz
+
+- disabled build of static libraries
+
+-------------------------------------------------------------------
+Wed Apr 11 00:02:55 CEST 2007 - bwalle@suse.de
+
+- update to 4.4.1
+  o Follow the HIG specifications on the buttons.
+  o Add test_vc to Makefile.am.
+  o Many translation updates.
+
+-------------------------------------------------------------------
+Mon Jan 29 09:58:39 CET 2007 - pnemec@suse.cz
+
+- package merged from BuildService
+
+-------------------------------------------------------------------
+Sun Jan 21 22:51:29 CET 2007 - bwalle@suse.de
+
+- upgraded to 4.4.0
+

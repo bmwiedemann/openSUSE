@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Wed May 23 14:56:29 UTC 2018 - kbabioch@suse.com
+
+- Use OpenPGP signature provided upstream
+- Added abook.keyring, which contains the key from the author 
+
+-------------------------------------------------------------------
+Mon Oct 26 23:14:46 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.6.1
+  * support for mouse
+  * scrolling now affects the viewport instead of the cursor
+  * support for a colored UI
+  * added "groups" as a default field
+  * the UI now supports merging selected entries [key M]
+    and removing duplicates [key U]
+  * a "custom" output filter allows the specification of an output
+    format using placeholders
+  * search-next is now bound to "/" too
+  * some output filters can now be used in the context
+    of --mutt-query. This is the case of "vcard" and "custom"
+    [ no --query option has been created and --mutt-query is fully
+      backward compatible ]
+  * ldif output filter has been fixed [output modified] in multiple
+    ways, does not force output to latin1 anymore and supports input
+    from stdin.
+  * vcard input/output support:
+    An original input filter implementation was provided soon
+       after 0.6.0pre2.
+    In 2012, an optional build-time option to link against libvformat
+    was added for the very same task: parsing vcard.
+    - It depends on the --enable-vformat ./configure switch
+    - It's only used as an input filter, especially useful to
+      deal with multi-valued fields and encoded characters.
+  * when the UI requests a confirmation from the user before a
+    destructive operation it does not treat unknown key as "yes" anymore.
+  * allcsv output changes:
+    - header line uses lowercase
+    - "MOBILEPHONE" column name changed to "mobile" (consistent w.r.t.
+      standard_fields)
+    - defined custom fields as well are part of the output now
+- Remove abook_vcard_import.patch; fixed on upstream release
+- Split out language files into their own package
+- Add autoconf and automake dependencies; automake is required by
+  the configure script itself and autoconf is needed to run
+  autoreconf
+
+-------------------------------------------------------------------
+Thu Jun 18 21:16:15 UTC 2015 - crrodriguez@opensuse.org
+
+- Force GnU inline semantics, fix build with GCC5
+- Do not use fstack-protector-all, but the builsystem default.
+
+-------------------------------------------------------------------
+Fri Dec  9 14:23:24 UTC 2011 - coolo@suse.com
+
+- COPYING says it's GPL-2.0+
+
+-------------------------------------------------------------------
+Sat Sep 17 10:42:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Aug  9 12:18:00 UTC 2011 - asn@cryptomilk.org
+
+- add support for vcards
+
+-------------------------------------------------------------------
+Tue Dec 22 23:04:41 CET 2009 - wr@rosenauer.org
+
+- use a hopefully better RPM group
+
+-------------------------------------------------------------------
+Thu Dec 18 15:17:09 PST 2008 - brandon@ifup.org
+
+- Use %{version} and make package version reflect upstream version
+ 
+-------------------------------------------------------------------
+Mon May  5 14:19:09 CEST 2008 - wr@rosenauer.org
+
+- revive abook with version 0.6.0pre2
+

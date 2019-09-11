@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Sep 18 18:02:12 UTC 2017 - fstrba@suse.com
+
+- Specify encoding ISO-8859-1 and java source and target 1.6 in
+  order to fix build with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 17:09:34 UTC 2017 - tchvatal@suse.com
+
+- Do not require javapackage-tools
+
+-------------------------------------------------------------------
+Fri Jul 11 14:38:02 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner. Fix update-alternatives.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:20 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Mar 10 11:32:28 CET 2008 - anosek@suse.cz
+
+- made separate package for Saxon 8.x, saxon package will hold
+  Saxon 6.x series
+- initial version 8.8, based on JPackage project
+

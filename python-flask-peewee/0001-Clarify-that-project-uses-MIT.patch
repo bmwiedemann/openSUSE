@@ -1,0 +1,23 @@
+From 8fac0f27e2e01e1ac64803b55c78323414b86667 Mon Sep 17 00:00:00 2001
+From: Charles Leifer <coleifer@gmail.com>
+Date: Fri, 21 Sep 2018 08:35:56 -0500
+Subject: [PATCH] Clarify that project uses MIT
+
+Fixes #172
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index b1479f2..83323d2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,7 +9,7 @@
+     name='flask-peewee',
+     version='3.0.3',
+     url='http://github.com/coleifer/flask-peewee/',
+-    license='BSD',
++    license='MIT',
+     author='Charles Leifer',
+     author_email='coleifer@gmail.com',
+     description='Peewee integration for flask',

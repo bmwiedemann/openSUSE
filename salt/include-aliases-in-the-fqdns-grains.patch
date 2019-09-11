@@ -1,0 +1,147 @@
+From 5dc6f2a59a8a774d13dcfd36b25ea735df18f10f Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Tue, 29 Jan 2019 11:11:38 +0100
+Subject: [PATCH] Include aliases in the fqdns grains
+
+Add UT for "is_fqdn"
+
+Add "is_fqdn" check to the network utils
+
+Bugfix: include FQDNs aliases
+
+Deprecate UnitTest assertion in favour of built-in assert keyword
+
+Add UT for fqdns aliases
+
+Leverage cached interfaces, if any.
+---
+ salt/grains/core.py              | 12 +++++-------
+ salt/utils/network.py            | 12 ++++++++++++
+ tests/unit/grains/test_core.py   | 28 +++++++++++++++++++++++++---
+ tests/unit/utils/test_network.py | 19 +++++++++++++++++++
+ 4 files changed, 61 insertions(+), 10 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index b0c1acceeb..05a9d5035d 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2200,14 +2200,13 @@ def fqdns():
+     grains = {}
+     fqdns = set()
+ 
+-    addresses = salt.utils.network.ip_addrs(include_loopback=False,
+-                                            interface_data=_INTERFACES)
+-    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False,
+-                                                  interface_data=_INTERFACES))
++    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=_get_interfaces())
++    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=_get_interfaces()))
+     err_message = 'Exception during resolving address: %s'
+     for ip in addresses:
+         try:
+-            fqdns.add(socket.getfqdn(socket.gethostbyaddr(ip)[0]))
++            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
++            fqdns.update([socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)])
+         except socket.herror as err:
+             if err.errno == 0:
+                 # No FQDN for this IP address, so we don't need to know this all the time.
+@@ -2217,8 +2216,7 @@ def fqdns():
+         except (socket.error, socket.gaierror, socket.timeout) as err:
+             log.error(err_message, err)
+ 
+-    grains['fqdns'] = sorted(list(fqdns))
+-    return grains
++    return {"fqdns": sorted(list(fqdns))}
+ 
+ 
+ def ip_fqdn():
+diff --git a/salt/utils/network.py b/salt/utils/network.py
+index 83269cdcf6..c72d2aec41 100644
+--- a/salt/utils/network.py
++++ b/salt/utils/network.py
+@@ -2016,3 +2016,15 @@ def parse_host_port(host_port):
+             raise ValueError('bad hostname: "{}"'.format(host))
+ 
+     return host, port
++
++
++def is_fqdn(hostname):
++    """
++    Verify if hostname conforms to be a FQDN.
++
++    :param hostname: text string with the name of the host
++    :return: bool, True if hostname is correct FQDN, False otherwise
++    """
++
++    compliant = re.compile(r"(?!-)[A-Z\d\-\_]{1,63}(?<!-)$", re.IGNORECASE)
++    return "." in hostname and len(hostname) < 0xff and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index d5a1b1a36b..117e02c39f 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -863,10 +863,32 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         ret = {'fqdns': ['bluesniff.foo.bar', 'foo.bar.baz', 'rinzler.evil-corp.com']}
+         with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
+             fqdns = core.fqdns()
+-            self.assertIn('fqdns', fqdns)
+-            self.assertEqual(len(fqdns['fqdns']), len(ret['fqdns']))
+-            self.assertEqual(set(fqdns['fqdns']), set(ret['fqdns']))
++            assert "fqdns" in fqdns
++            assert len(fqdns['fqdns']) == len(ret['fqdns'])
++            assert set(fqdns['fqdns']) == set(ret['fqdns'])
+ 
++    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
++    @patch.object(salt.utils.platform, 'is_windows', MagicMock(return_value=False))
++    @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4', '5.6.7.8']))
++    @patch('salt.utils.network.ip_addrs6',
++           MagicMock(return_value=['fe80::a8b2:93ff:fe00:0', 'fe80::a8b2:93ff:dead:beef']))
++    @patch('salt.utils.network.socket.getfqdn', MagicMock(side_effect=lambda v: v))  # Just pass-through
++    def test_fqdns_aliases(self):
++        '''
++        FQDNs aliases
++        '''
++        reverse_resolv_mock = [('foo.bar.baz', ["throwmeaway", "this.is.valid.alias"], ['1.2.3.4']),
++                               ('rinzler.evil-corp.com', ["false-hostname", "badaliass"], ['5.6.7.8']),
++                               ('foo.bar.baz', [], ['fe80::a8b2:93ff:fe00:0']),
++                               ('bluesniff.foo.bar', ["alias.bluesniff.foo.bar"], ['fe80::a8b2:93ff:dead:beef'])]
++        with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
++            fqdns = core.fqdns()
++            assert "fqdns" in fqdns
++            for alias in ["this.is.valid.alias", "alias.bluesniff.foo.bar"]:
++                assert alias in fqdns["fqdns"]
++
++            for alias in ["throwmeaway", "false-hostname", "badaliass"]:
++                assert alias not in fqdns["fqdns"]
+     def test_core_virtual(self):
+         '''
+         test virtual grain with cmd virt-what
+diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
+index 3d20c880bd..ca627777a7 100644
+--- a/tests/unit/utils/test_network.py
++++ b/tests/unit/utils/test_network.py
+@@ -637,3 +637,22 @@ class NetworkTestCase(TestCase):
+             # An exception is raised if unicode is passed to socket.getfqdn
+             minion_id = network.generate_minion_id()
+         assert minion_id != '', minion_id
++
++    def test_is_fqdn(self):
++        """
++        Test is_fqdn function passes possible FQDN names.
++
++        :return: None
++        """
++        for fqdn in ["host.domain.com", "something.with.the.dots.still.ok", "UPPERCASE.ALSO.SHOULD.WORK",
++                     "MiXeD.CaSe.AcCePtAbLe", "123.host.com", "host123.com", "some_underscore.com", "host-here.com"]:
++            assert network.is_fqdn(fqdn)
++
++    def test_is_not_fqdn(self):
++        """
++        Test is_fqdn function rejects FQDN names.
++
++        :return: None
++        """
++        for fqdn in ["hostname", "/some/path", "$variable.here", "verylonghostname.{}".format("domain" * 45)]:
++            assert not network.is_fqdn(fqdn)
+-- 
+2.20.1
+
+

@@ -1,0 +1,17 @@
+<services>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+	<param name="host">github.com</param>
+	<param name="path">openSUSE/catatonit/releases/download/v0.1.4/catatonit.tar.xz</param>
+	<param name="filename">catatonit-0.1.4.tar.xz</param>
+  </service>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+	<param name="host">github.com</param>
+	<param name="path">openSUSE/catatonit/releases/download/v0.1.4/catatonit.tar.xz.asc</param>
+	<param name="filename">catatonit-0.1.4.tar.xz.asc</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">catatonit</param>
+  </service>
+</services>

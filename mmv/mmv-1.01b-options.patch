@@ -1,0 +1,26 @@
+--- mmv.c	1993-10-25 11:29:39.000000000 +0100
++++ mmv.c@	2004-03-04 18:36:52.000000000 +0100
+@@ -572,8 +572,13 @@
+ 	verbose = noex = matchall = 0;
+ 	delstyle = ASKDEL;
+ 	badstyle = ASKBAD;
+-	for (argc--, argv++; argc > 0 && **argv == '-'; argc--, argv++)
+-		for (p = *argv + 1; *p != '\0'; p++) {
++	for (argc--, argv++; argc > 0 && **argv == '-'; argc--, argv++) {
++		p = *argv + 1;
++		if (*p == '-') {
++			--argc, ++argv;
++			break;
++		}
++		for (; *p != '\0'; p++) {
+ 			c = mylower(*p);
+ 			if (c == 'v' && !noex)
+ 				verbose = 1;
+@@ -617,6 +622,7 @@
+ 				exit(1);
+ 			}
+ 		}
++	}
+ 
+ 	if (op == DFLT)
+ 		if (strcmp(cmdname, MOVENAME) == 0)

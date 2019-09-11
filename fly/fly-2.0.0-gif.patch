@@ -1,0 +1,20 @@
+--- fly.c
++++ fly.c
+@@ -821,7 +821,7 @@
+ 		if(imgtype == JPEG) {
+ 			gdImageJpeg(img,outfile,jp_quality);
+ 		} else if(imgtype == GIF) {
+-			gdImageGif(img,outfile);
++			fprintf(stderr, "GIF is no longer supported\n");
+ 		} else {
+ 			gdImagePng(img,outfile);
+ 		}
+@@ -1266,7 +1266,7 @@
+ 	if(imgtype == JPEG) {
+ 		img_file = gdImageCreateFromJpeg(img_to_copy);
+ 	} else if(imgtype == GIF) {
+-		img_file = gdImageCreateFromGif(img_to_copy);
++		fprintf(stderr, "GIF is no longer supported\n");
+ 	} else {
+ 		img_file = gdImageCreateFromPng(img_to_copy);
+ 	}

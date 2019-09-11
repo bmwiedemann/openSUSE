@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Nov 25 09:32:32 UTC 2013 - coolo@suse.com
+
+- updated to 1.023, they forgot to update their changelog
+
+-------------------------------------------------------------------
+Wed Sep 12 05:26:38 UTC 2012 - coolo@suse.com
+
+- use perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:21 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue May 11 22:47:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.020)
+

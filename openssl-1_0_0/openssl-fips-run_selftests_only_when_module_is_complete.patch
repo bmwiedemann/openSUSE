@@ -1,0 +1,24 @@
+Index: openssl-1.0.2l/crypto/fips/fips.c
+===================================================================
+--- openssl-1.0.2l.orig/crypto/fips/fips.c	2017-09-06 17:26:55.058055575 +0200
++++ openssl-1.0.2l/crypto/fips/fips.c	2017-09-06 17:26:55.138056721 +0200
+@@ -421,15 +421,15 @@ int FIPS_module_mode_set(int onoff, cons
+         }
+ # endif
+ 
+-        if (!FIPS_selftest()) {
++        if (!verify_checksums()) {
++            FIPSerr(FIPS_F_FIPS_MODULE_MODE_SET,
++                    FIPS_R_FINGERPRINT_DOES_NOT_MATCH);
+             fips_selftest_fail = 1;
+             ret = 0;
+             goto end;
+         }
+ 
+-        if (!verify_checksums()) {
+-            FIPSerr(FIPS_F_FIPS_MODULE_MODE_SET,
+-                    FIPS_R_FINGERPRINT_DOES_NOT_MATCH);
++        if (!FIPS_selftest()) {
+             fips_selftest_fail = 1;
+             ret = 0;
+             goto end;

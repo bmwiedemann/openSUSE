@@ -1,0 +1,31 @@
+---
+:version_suffix: '-5_0'
+
+:preamble: |-
+  %if 0%{?suse_version} == 1110
+  %define rb_build_versions ruby21
+  %endif
+
+:main:
+  # TODO: we would actually love to recommend the package matching the ruby interpreter of the current subpackage.
+  # we could probably do that if we had a more structured tag for this.
+  :preamble: |-
+    Recommends:     rubygem(byebug)
+    Recommends:     rubygem(web-console) >= 3.3.0
+    Recommends:     rubygem(coffee-rails)
+    Recommends:     rubygem(coffee-script-source)
+    Recommends:     rubygem(jbuilder)
+    Recommends:     rubygem(jquery-rails)
+    Recommends:     rubygem(sass-rails)
+    Recommends:     rubygem(sdoc)
+    Recommends:     rubygem(sqlite3)
+    Recommends:     rubygem(uglifier)
+    Recommends:     rubygem(spring)
+    Recommends:     rubygem(turbolinks)
+    Recommends:     rubygem(bcrypt)
+    Recommends:     rubygem(puma)
+    Recommends:     rubygem(listen) < 3.1
+    Recommends:     rubygem(spring)
+    Recommends:     rubygem(spring-watcher-listen)
+    Recommends:     nodejs
+

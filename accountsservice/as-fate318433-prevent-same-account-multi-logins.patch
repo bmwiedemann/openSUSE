@@ -1,0 +1,98 @@
+Index: accountsservice-0.6.40/src/libaccountsservice/act-user-manager.c
+===================================================================
+--- accountsservice-0.6.40.orig/src/libaccountsservice/act-user-manager.c
++++ accountsservice-0.6.40/src/libaccountsservice/act-user-manager.c
+@@ -751,8 +751,17 @@ _get_systemd_seat_id (ActUserManager *ma
+         char *seat_id;
+ 
+         res = sd_session_get_seat (NULL, &seat_id);
+-
+-        if (res == -ENOENT) {
++        /**
++         * NOTE: There is no -ENOENT errnum for `sd_session_get_seat`. This
++         * possibly an upstream bug. There are also other dubious occurrences of
++         * -ENOENT within the source.
++         *
++         * Change to -ENODATA as this is the normal return for non-seated
++         * session like VNC ones and should not report errors. O/w no user
++         * sessions will be analyzed.
++         */
++        /* see https://www.freedesktop.org/software/systemd/man/sd_session_is_active.html */
++        if (res == -ENODATA) {
+                 seat_id = NULL;
+         } else if (res < 0) {
+                 g_warning ("Could not get current seat: %s",
+@@ -1700,12 +1709,22 @@ maybe_add_new_session (ActUserManagerNew
+         if (new_session->x11_display == NULL) {
+                 g_debug ("AcUserManager: (mostly) ignoring session '%s' since it's not graphical",
+                          new_session->id);
+-                is_ours = FALSE;
++                /* SLE: ignore non-graphical session completely */
++                /* see `act_user_is_logged_in_anywhere` */
++                unload_new_session (new_session);
++                return;
+         } else if (session_is_login_window (manager, new_session->id)) {
+                 new_session->state = ACT_USER_MANAGER_NEW_SESSION_STATE_LOADED;
+                 unload_new_session (new_session);
+                 return;
+         } else if (!session_is_on_our_seat (manager, new_session->id)) {
++                /**
++                 * NOTE: if `manager->priv->seat.id` or `new_session->id` is
++                 * either NULL, it's not on our seat: this is reasonable, as
++                 * non-seat session is not switchable and thus no need to be
++                 * ours. However, this nondiscrimination for all non-seated
++                 * sessions is possibly a source for bugs.
++                 */
+                 is_ours = FALSE;
+         }
+ 
+Index: accountsservice-0.6.40/src/libaccountsservice/act-user.c
+===================================================================
+--- accountsservice-0.6.40.orig/src/libaccountsservice/act-user.c
++++ accountsservice-0.6.40/src/libaccountsservice/act-user.c
+@@ -936,6 +936,8 @@ act_user_is_logged_in (ActUser *user)
+  * (Currently, this function is only implemented for systemd-logind.
+  * For ConsoleKit, it is equivalent to act_user_is_logged_in.)
+  *
++ * (SLE-12 SP2: 'other_sessions' have been modified to contain only X sessions)
++ *
+  * Returns: %TRUE or %FALSE
+  */
+ gboolean
+@@ -945,6 +947,24 @@ act_user_is_logged_in_anywhere (ActUser
+ }
+ 
+ /**
++ * act_user_is_x_logged_in_remotely:
++ * @user: a #ActUser
++ *
++ * Returns whether or not #ActUser is currently graphically logged in on a
++ * different seat or no seat.
++ *
++ * (For SLE12-SP2: fate#318433)
++ *
++ * Returns: %TRUE or %FALSE
++ */
++gboolean
++act_user_is_x_logged_in_remotely (ActUser *user)
++{
++        /* return user->remote_x_sessions; */
++        return (user->other_sessions != NULL);
++}
++
++/**
+  * act_user_get_locked:
+  * @user: a #ActUser
+  *
+Index: accountsservice-0.6.40/src/libaccountsservice/act-user.h
+===================================================================
+--- accountsservice-0.6.40.orig/src/libaccountsservice/act-user.h
++++ accountsservice-0.6.40/src/libaccountsservice/act-user.h
+@@ -67,6 +67,7 @@ guint          act_user_get_num_sessions
+ guint          act_user_get_num_sessions_anywhere (ActUser   *user);
+ gboolean       act_user_is_logged_in              (ActUser   *user);
+ gboolean       act_user_is_logged_in_anywhere     (ActUser   *user);
++gboolean       act_user_is_x_logged_in_remotely   (ActUser   *user);
+ int            act_user_get_login_frequency       (ActUser   *user);
+ gint64         act_user_get_login_time            (ActUser   *user);
+ const GVariant*act_user_get_login_history         (ActUser   *user);

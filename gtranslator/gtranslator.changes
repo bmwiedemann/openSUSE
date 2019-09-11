@@ -1,0 +1,440 @@
+-------------------------------------------------------------------
+Sun Jul  7 22:23:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Jun 18 20:28:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Run spec-cleaner, modernize spec.
+- Drop obsolete glib2_gsettings_schema_requires,
+  glib2_gsettings_schema_post(un), desktop_database_post(un) and
+  icon_theme_cache_post(un) macros, no longer needed as
+  file-triggers takes care of this now.
+- Drop ldconfig call.
+- Obsolete no longer present devel sub-package.
+
+-------------------------------------------------------------------
+Sat May 25 15:47:25 UTC 2019 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+- Changes from version 3.31.90:
+  + XML language syntax for the source view
+  + Fix msg status management
+  + Use theme_fg_color for translated texts
+  + Better prj id version default header
+  + Header with default values when doesn't exists
+  + codeview: Recover codeview plugin
+  + Show context in the original message bar
+  + List of languages in a config file instead iso-codes
+  + Find & replace and copy text to shortcuts window
+  + Ctrl+space to copy original text into translated
+  + Native File Chooser for the translation memory
+- Changes from version 3.30.1:
+  + Fix locale lookup dir
+  + Added itstool dependency to Meson
+  + Fix loading help
+  + New interface image in help
+  + Updated translations.
+- Changes from version 3.30.0:
+  + Full interface redesign to acomplish gnome 3 HIG
+  + Fix bug in find & replace that marks all fuzzy as translated
+  + Autofill profile based on language
+  + A lot of bug fixes
+  + Remove plugin system
+- Clean up spec file
+  + Update Summary & Url
+  + Switch to Meson build system
+
+-------------------------------------------------------------------
+Thu Sep 14 12:11:48 UTC 2017 - zaitor@opensuse.org
+
+- Conditionalize pkgconfig(gdict-1.0) BuildRequires, only available
+  on older versions of openSUSE, gnome-dictionary 3.26.0 made this
+  symbol private.
+
+-------------------------------------------------------------------
+Thu Jun  1 16:05:08 UTC 2017 - dimstar@opensuse.org
+
+- Inject -Wno-error=format-nonliteral into CFLAGS: fix build with
+  GCC 7 (boo#1041213).
+
+-------------------------------------------------------------------
+Wed Mar 18 12:05:35 UTC 2015 - zaitor@opensuse.org
+
+- Own appdata dir on older versions of openSUSE.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:34:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.91.7:
+  + Misc bugfixes.
+  + Updated translations.
+- Drop gtranslator-gtkspell3.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to autoreconf, as we no
+  longer carry any patches.
+
+-------------------------------------------------------------------
+Sat Jun  7 07:14:19 UTC 2014 - stathisagrapidis@gmail.com
+
+- Add missing libgda-5_0-sqlite runtime dependency. Fix bnc#780249.
+
+-------------------------------------------------------------------
+Thu Mar 21 19:00:46 UTC 2013 - dimstar@opensuse.org
+
+- Port to gtkspell3:
+  + Add gtranslator-gtkspell3.patch
+  + Replace pkgconfig(gtkspell-3.0) BuildRequires with
+    pkgconfig(gtkspell3-3.0).
+  + Add gnome-common BuildRequires and call to autoreconf, as above
+    patch touches the build system.
+
+-------------------------------------------------------------------
+Fri Jan  4 13:32:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.91.6:
+  + Misc bugfixes.
+  + Updated translations.
+- Drop gtranslator-gdl362.patch: fixed upstream.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port to the new documentation infrastructure.
+
+-------------------------------------------------------------------
+Mon Nov 26 20:23:38 UTC 2012 - dimstar@opensuse.org
+
+- Add gtranslator-gdl362.patch: Fix build with gdl 3.6.2.
+
+-------------------------------------------------------------------
+Sun Jun 17 17:04:36 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.91.5:
+  + Add/update X-Generator header in PO file
+  + Misc bug fixes
+  + Updated translations
+- No longer install anything in %{_datadir}/pixmaps/%{name}/.
+
+-------------------------------------------------------------------
+Mon May 14 11:52:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.91.4:
+  + Add app menu
+  + Move libgtranslator-private library to pkglibdir
+  + Better handling of the table message
+  + Update TM when a new po file is loaded
+  + Try using Content-Type charset if the file is not UTF-8
+  + Remove ok/cancel buttons to add new comments
+  + Fix a crash when dropping an item to the toolbar
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 25 08:33:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.91.3:
+  + Port to GResource
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 10 06:16:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.91.2:
+  + Use new libpeas API
+  + Complete list of plural forms
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:52:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.91.1:
+  + Make translation memory a standalone plugin
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 18:45:52 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.90.8:
+  + Make it build with latest GTK+.
+  + Add support for gda 5.
+  + Misc bugfixes.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gtranslator-libgda-5.0.patch
+  + gtranslator-gtkspell3.patch
+- Remove gnome-common BuildRequires and gnome-autogen.sh call: we
+  don't carry any patches touching the build system anymore.
+
+-------------------------------------------------------------------
+Wed Oct 19 16:43:06 UTC 2011 - zaitor@opensuse.org
+
+- Update to version 2.90.7:
+  + Relicense some files as GPLv3+.
+  + Don't normalize translations stored in the translation memory.
+  + Update translation.
+
+-------------------------------------------------------------------
+Wed Oct 12 12:23:12 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.90.6:
+  + Misc bugfixes.
+  + Updated translations.
+- Rebase gtranslator-libgda-5.0.patch and
+  gtranslator-gtkspell3.patch.
+- Change --with-gtkspell configure option to --with-gtkspell3,
+  following upstream change.
+
+-------------------------------------------------------------------
+Thu Oct  6 21:53:32 UTC 2011 - vuntz@opensuse.org
+
+- Add iso-codes Requires since the iso-codes data is used at
+  runtime.
+
+-------------------------------------------------------------------
+Mon Sep 26 17:23:33 UTC 2011 - gankov@opensuse.org
+
+- Add support spell check with gtkspell3.
+  + Add gtranslator-gtkspell3.patch: add support for gtkspell3.
+  + Change pkgconfig(gtkspell-2.0) BuildRequires to 
+    pkgconfig(gtkspell-3.0) so we can build with the new gtkspell.
+
+-------------------------------------------------------------------
+Wed Jun 15 11:15:18 UTC 2011 - dimstar@opensuse.org
+
+- Add optional port to libgda 5.0:
+  + Add gtranslator-libgda-5.0.patch: add support for libgda-5.0
+    with a new --with-gda parameter.
+  + Add gnome-common BuildRequires and call to gnome-autogen.sh,
+    needed for the patch to be taken into account.
+  + Replace pkgconfig(libgda-4.0) BuildRequires with libgda-devel:
+    this allows us to use libgda-4.0 and libgda-5.0 without
+    knowledge of what version is in the repository.
+  + Pass --with-gda=4.0|5.0 to configure: the version (4.0 or 5.0)
+    is extracted from the rpm database, based on the libgda-devel
+    package that has been installed.
+
+-------------------------------------------------------------------
+Wed Jun 15 09:56:24 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.90.5:
+  + Misc bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 24 19:36:30 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.90.4:
+  + Misc bugfixes
+- Changes from version 2.90.3:
+  + Put the gdl container inside the tab
+  + Add a tab activatable extension point
+- Changes from version 2.90.2:
+  + UI cleanup
+- Changes from version 2.90.1:
+  + Automatize profile generation
+  + Fix preferences dialog space
+  + Remove interface tab from preferences dialog
+  + Fix remaining issues in the gtk+ 3 port.
+- Changes from version 2.90.0:
+  + Port to gtk+ 3
+  + Port to libpeas
+  + Added support for python plugins
+  + Ported charmap to python
+  + Remove --window-new command line option
+  + Port to gsettings
+  + Merge insert-tags plugin into insert-params plugin
+  + Port to GtkApplication
+  + Misc Bugfixes
+  + Updated translations.
+- Note that gtkspell support is disabled for now because there's no
+  gtk3-powered gtkspell.
+- Change BuildRequires to pkgconfig()-style and move to GNOME 3:
+  + Old ones: gdl-devel, glib2-devel, gnome-utils-devel,
+    gtk2-devel, gtksourceview-devel, gtkspell-devel, libgda-devel,
+    libxml2-devel.
+  + New ones: gdict-1.0, gdl-3.0, glib-2.0, gtk+-3.0,
+    gtksourceview-3.0, gtkspell-2.0, libgda-4.0, libxml-2.0.
+- Drop no longer needed BuildRequires: gucharmap-devel,
+  libsoup-devel, libunique-devel.
+- Add new BuildRequires: pkgconfig(iso-codes),
+  pkgconfig(json-glib-1.0, pkgconfig(libpeas-1.0),
+  pkgconfig(libpeas-gtk-1.0).
+- Drop gtranslator-disable-update-db.patch: no longer required.
+- Drop gnome-common BuildRequires, gnome-autogen.sh call during
+  build and --disable-update-mimedb configure flag: obsoleted.
+- Move .gir file to devel subpackage.
+- Add call to ldconfig in %post/%postun scriptlet because of the
+  new library in the package.
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:14:12 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Add Recommends for lang subpackage.
+
+-------------------------------------------------------------------
+Wed Dec  8 08:49:42 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.13:
+  + Enable use of local mirrors of open-tran.eu
+  + Adapt the OpenTran plugin to the new open-tran.eu API
+  + Misc Bugfixes
+  + Updated translations.
+- Add gtranslator-disable-update-db.patch: add a
+  --disable-update-mimedb configure option to not run
+  update-desktop-database on install.
+- Pass --disable-update-mimedb to configure.
+
+-------------------------------------------------------------------
+Sat Oct  9 10:49:09 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.12:
+  + Port to GSettings
+  + Make it work with GSEAL enabled
+  + Misc Bugfixes
+  + Updated translations.
+- Remove gconf schemas handling:
+  + remove gconf2-devel BuildRequires.
+  + remove %gconf_schemas_prereq, %find_gconf_schemas and
+    schemas-related scriptlets.
+- Use %glib2_gsettings_schema_* macros for GSettings schemas.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires and
+  gsettings-desktop-schemas Requires, since the schemas are needed
+  at runtime too.
+
+-------------------------------------------------------------------
+Fri Aug 13 09:37:35 CEST 2010 - vuntz@opensuse.org
+
+- Fix license: gtranslator is GPLv3+, not GPLv2+. Fix bnc#595680.
+
+-------------------------------------------------------------------
+Thu Aug  5 16:20:26 CEST 2010 - vuntz@opensuse.org
+
+- Remove unneeded libdb-4_5-devel BuildRequires: it was needed for
+  the old memory backend.
+- Remove unneeded libneon-devel BuildRequires: this is replaced by
+  libsoup now.
+- Remove subversion-devel BuildRequires: the subversion plugin is
+  gone.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:52:33 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.9.11:
+  + Add the option to remove entries from the memory translation
+  + New memory translation backend using libgda
+- Changes from version 1.9.10:
+  + Factored out the tab label
+  + Make the translation memory always visible
+  + Updated translations.
+- Add libgda-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb 22 00:17:24 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.9:
+  + Add Profile quick selector
+  + Rewriting profile manager to use GtrProfileManager
+  + Converted GtrApplication into an UniqueAPP using libunique
+  + Misc bugfixes
+  + Updated translations.
+- Add libunique-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb 11 00:23:22 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.8:
+  + Refactor methods and file names from gtranslator to gtr
+  + Modernize autotools configuration
+  + Added new tango icons and logo
+  + Removed Subversion plugin
+  + Misc Bugfixes
+  + Updated translations.
+- Change group from Development/Tools to Development/Tools/Other to
+  fix rpmlint warning.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:48:22 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.7:
+  + Show percentage of translated messages
+  + Fixed several compiler warnings
+  + Update toolbar editor
+  + Make header inherit from GtranslatorMsg
+  + Ported gtranslator from MessageArea to GtkInfoBar
+  + Misc Bugfixes
+  + Updated translations.
+- Remove renaming of sr@Latn locale to sr@latin.
+
+-------------------------------------------------------------------
+Tue Aug 25 17:42:13 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.9.6:
+  + Adapted gtranslator in order to work on Windows
+  + bgo#579775 - Fixed format string attack
+  + bgo#582430 - Added some header files
+  + bgo#555672 - Fixed CRITICAL: editor_create_item_from_name
+  + bgo#557096 - Fixed GtkSpinButton problem changing to GtkBuilder
+  + bgo#569061 - Displaying an error message before saving a read
+    only file
+  + bgo#569062 - Use a "standard" tabs menu instead of
+    Go->Next/Prev File
+  + bgo#569068 - Made more clear the message in the status bar
+  + bgo#571497 - Fixed crash on first-time startup with po-file as
+    argument
+  + bgo#575128 - Removed deprecated GTK+ symbols
+  + bgo#579775 - Fixed Format string attack danger
+  + bgo#582430 - Some of the header files weren't included in the
+    source code
+  + bgo#583961 - Fixed to build with gdl 2.27.2
+  + bgo#584692 - Show the next message of the one you are editing
+  + bgo#591594 - Fixed problem that made Edit header only made
+    effect when you close gtranslator
+  + bgo#592210 - Removed duplicated define in configure.ac
+  + bgo#592214 - Fixed some gcc warnings
+  + bgo#592215 - Wrong arguments to
+    gtranslator_statusbar_flash_message()
+  + bgo#592226 - Fixed Error widget built wrongly
+  + bgo#592227 - Source code did not working due to a wrong widget
+    name
+  + bgo#569054 - Fixed empty line insertion before translator email
+    in header
+  + Updated translations.
+- Drop gtranslator-gdl-2.27.patch and gtranslator-profile.patch:
+  fixed upstream.
+
+
+-------------------------------------------------------------------
+Thu Jun 11 03:35:47 CEST 2009 - vuntz@novell.com
+
+- Add gtranslator-gdl-2.27.patch to fix build with latest gdl.
+
+-------------------------------------------------------------------
+Thu May 14 11:40:12 CEST 2009 - vuntz@novell.com
+
+- Update gtranslator-profile.patch to fix more build issues.
+- Add BuildRequires for features: gnome-utils-devel,
+  gtkspell-devel, gucharmap-devel, libneon-devel, libsoup-devel,
+  subversion-devel
+- Pass --disable-static, --with-gtkspell and --with-dictionary to
+  configure, and remove --enable-mime-bind and --with-gconf that
+  don't exist.
+- Clean up file list a bit; do not ship help files twice.
+
+-------------------------------------------------------------------
+Thu May 14 11:21:38 CEST 2009 - vuntz@novell.com
+
+- Initial package.

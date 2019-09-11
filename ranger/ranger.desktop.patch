@@ -1,0 +1,15 @@
+--- ranger-1.8.1.orig/doc/ranger.desktop	2017-12-11 13:46:27.000000000 +0100
++++ ranger-1.8.1/doc/ranger.desktop	2017-12-21 14:33:47.854478237 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Type=Application
+ Name=ranger
++GenericName=ranger
++X-SuSE-translate=false
+ Comment=Launches the ranger file manager
+ Icon=utilities-terminal
+ Terminal=true
+ Exec=ranger
+-Categories=ConsoleOnly;System;FileTools;FileManager
++Categories=ConsoleOnly;System;FileTools;FileManager;
+ MimeType=inode/directory;

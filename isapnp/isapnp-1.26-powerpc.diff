@@ -1,0 +1,133 @@
+--- include/isapnp/iopl.h
++++ include/isapnp/iopl.h	2001/12/05 12:54:41
+@@ -52,12 +52,15 @@
+ #include <dos.h>
+ #else
+ #ifndef _OS2_
+-#  if defined __GLIBC__ && __GLIBC__ >= 2
++#  if defined __GLIBC__ && __GLIBC__ >= 2 && !defined __powerpc__
+ #    include <sys/io.h>
+ #  else
+ #    ifdef _AXP_
+ #       include <sys/io.h>
+ #    else
++#define __KERNEL__
++#       include <asm/types.h>
++#undef __KERNEL__
+ #       include <asm/io.h>
+ #    endif
+ #  endif	      	   /* __GLIBC__ */
+--- src/iopl.c
++++ src/iopl.c	2001/12/05 12:54:41
+@@ -48,12 +48,85 @@
+ #include <isapnp/iopl.h>
+ #include <isapnp/pnp.h>
+ 
++#ifdef __powerpc__
++unsigned long isa_io_base;
++#include <stdio.h>
++#include <sys/mman.h>
++#include <fcntl.h>
++#include <string.h>
++#endif
++
+ /* Acquire I/O port privileges needed for ISA PnP configuration.
+ ** The return value is 0 on success, or the value of errno on failure.
+ */
+ int
+ acquire_pnp_io_privileges(void)
+ {
++#ifdef __powerpc__
++  {
++       FILE *fd1;
++       int fd2;
++       unsigned char buffer[1024];
++       unsigned long phys_io_base=0;
++
++       fd1=fopen("/proc/cpuinfo","r");
++       if(fd1 == NULL)
++       {
++               printf("Cannot open /proc/cpuinfo, unable to determine architecture.\n");
++               exit(42);
++       }
++
++       while(fgets(buffer,1024,fd1))
++       {
++#ifdef PPCIODEBUG
++               printf("buffer: %s\n",buffer);
++#endif
++               if(strncmp(buffer,"machine",7)==0)
++               {
++#ifdef PPCIODEBUG
++                       printf("found\n");
++#endif
++                               if(strstr(buffer,"CHRP"))
++                        phys_io_base=CHRP_ISA_IO_BASE;
++                else if(strstr(buffer,"PReP") || strstr(buffer,"PREP"))
++                        phys_io_base=PREP_ISA_IO_BASE;
++               }
++       }
++       fclose(fd1);
++       if (phys_io_base==0)
++       {
++               printf("Unknown architecture (currently supported: CHRP, PREP)\n");
++               exit(43);
++               }
++
++       fd2=open("/dev/mem",O_RDWR);
++       if(fd2 < 0)
++       {
++               printf("Cannot open /dev/mem, unable to mmap IO space.\n");
++               exit(44);
++       }
++
++       isa_io_base=(unsigned int) mmap((caddr_t)0,
++                                       64<<10,
++                                       PROT_READ|PROT_WRITE,
++                                       MAP_SHARED,
++                                       fd2,
++                                       phys_io_base);
++
++       if(isa_io_base==(unsigned int)MAP_FAILED)
++       {
++               printf("mmap'ing IO space failed.\n");
++               close(fd2);
++               exit(45);
++       }
++
++       close(fd2);
++
++  }
++  return 0;
++
++#else /* __powerpc__ */
++
+   int ret = 0;
+ #ifdef HAVE_IOPL
+   /*
+@@ -73,6 +146,7 @@
+   else {
+     return(0);
+   }
++#endif
+ }
+ 
+ /* Relinquish I/O port privileges needed for ISA PnP configuration.
+@@ -81,6 +155,9 @@
+ int
+ relinquish_pnp_io_privileges(void)
+ {
++#ifdef __powerpc__
++  return 0;
++#else
+   int ret = 0;
+ #ifdef HAVE_IOPL
+   ret = iopl(0);
+@@ -96,6 +173,7 @@
+   else {
+     return(0);
+   }
++#endif
+ }
+ 
+ /****************************************************************************/

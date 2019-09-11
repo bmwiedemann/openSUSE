@@ -1,0 +1,30 @@
+Index: gnome-packagekit-3.21.91/src/gpk-common.c
+===================================================================
+--- gnome-packagekit-3.21.91.orig/src/gpk-common.c
++++ gnome-packagekit-3.21.91/src/gpk-common.c
+@@ -75,7 +75,7 @@ pk_strv_to_ptr_array (gchar **array)
+ gboolean
+ gpk_window_set_size_request (GtkWindow *window, guint width, guint height)
+ {
+-#ifdef PK_BUILD_SMALL_FORM_FACTOR
++	/* Get screen dimensions */
+ 	GdkScreen *screen;
+ 	guint screen_w;
+ 	guint screen_h;
+@@ -86,6 +86,7 @@ gpk_window_set_size_request (GtkWindow *
+ 	screen = gdk_screen_get_default ();
+ 	screen_w = gdk_screen_get_width (screen);
+ 	screen_h = gdk_screen_get_height (screen);
++#ifdef PK_BUILD_SMALL_FORM_FACTOR
+ 
+ 	/* find percentage of screen area */
+ 	percent_w = (width * 100) / screen_w;
+@@ -106,6 +107,8 @@ gpk_window_set_size_request (GtkWindow *
+ 		goto out;
+ #endif
+ 	/* normal size laptop panel */
++	if (height > screen_h * 0.9) height = screen_h * 0.9;
++	if (width > screen_w * 0.9) width = screen_w * 0.9;
+ 	g_debug ("using native mode: %ux%u", width, height);
+ 	gtk_window_set_default_size (window, width, height);
+ 	small_form_factor_mode = FALSE;

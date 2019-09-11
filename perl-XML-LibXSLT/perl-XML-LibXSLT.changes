@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Wed Mar 28 09:11:29 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 1.96
+1.96    2018-02-21
+    - Apply patch from RT#83028
+        - $Config{libs} is not needed
+    - Move to git/GitHub:
+        - https://github.com/shlomif/perl-XML-LibXSLT .
+        - For Travis-CI/etc.
+
+-------------------------------------------------------------------
+Mon Dec  4 14:02:29 UTC 2017 - pmonrealgonzalez@suse.com
+
+- updated to 1.95
+    - Hopefully fix RT#116461
+        - https://rt.cpan.org/Public/Bug/Display.html?id=116461
+        - Makefile.PL shouldn't run "pkg-config libexslt" if LIBS
+	  or INC were provided
+        - Thanks to NWELLNHOF for the report and a suggested fix.
+
+-------------------------------------------------------------------
+Fri Feb  6 13:13:07 UTC 2015 - coolo@suse.com
+
+- updated to 1.94
+     - Fix builds on older versions of libxslt.
+         - Breakage caused by the MaxVars change.
+         - https://rt.cpan.org/Ticket/Display.html?id=101605
+         - Thanks to Deyan Ginev for the report.
+ 
+ 1.93    2015-01-17
+     - Add the ->max_vars function to set the MaxVars.
+         - https://rt.cpan.org/Ticket/Display.html?id=101413
+         - Thanks to Thomas Krichel for the report/request.
+
+-------------------------------------------------------------------
+Mon Jul 28 05:30:50 UTC 2014 - coolo@suse.com
+
+- updated to 1.92
+     - Add scripts/tag-release.pl .
+ 
+ 1.91    2014-04-12
+     - t/cpan-changes.t : minimum version of Test::CPAN::Changes.
+         - This is to avoid test failures such as:
+             - http://www.cpantesters.org/cpan/report/5af7d5eb-6bfa-1014-b84e-eb85912f2992
+ 
+ 1.90    2014-04-10
+     - Handle $Config{dlext} correctly on Windows.
+         - https://rt.cpan.org/Ticket/Display.html?id=94516
+         - Thanks to kmx for the report and fix.
+     - Add t/pod.t .
+         - Fix some POD problems.
+     - Add t/cpan-changes.t and convert Changes to CPAN::Changes format.
+     - Add t/style-trailing-space.t.
+         - Remove trailing whitespace.
+ 
+ 1.89    2014-03-05
+     - Fix memory management of node-sets returned from extension functions.
+       Without calling xsltExtensionInstructionResultRegister, node-sets
+       could be freed too early, leading to strange errors or segfaults.
+         - https://bugzilla.gnome.org/show_bug.cgi?id=562302
+         - https://rt.cpan.org/Ticket/Display.html?id=93349
+         - Thanks to Alexander Schepanovski for the report.
+     - Document input_callbacks methods
+     - Don't register libxml2 input callbacks twice
+         - https://rt.cpan.org/Public/Bug/Display.html?id=60313
+     - Fix memory leak with extension functions returning node lists
+         - https://rt.cpan.org/Public/Bug/Display.html?id=55623
+         - https://rt.cpan.org/Public/Bug/Display.html?id=76596
+         - Thanks to Jozef Kutej and Slaven Rezic for the reports.
+     - Thanks to Nick Wellnhofer for the pull requests and fixes.
+
+-------------------------------------------------------------------
+Mon Feb 24 06:18:02 UTC 2014 - coolo@suse.com
+
+- updated to 1.88
+    - Fix t/xml-grammar-failures.t based on the xml:space commentary here:
+        - https://mail.gnome.org/archives/xml/2014-February/msg00000.html
+        - Caused some failures which were ultimately our fault.
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:35 UTC 2014 - coolo@suse.com
+
+- updated to 1.87
+     - Decrease the minimum libxslt version again.
+         - Setting it as 1.1.28 did not fix the failures, and now we have
+         some more tests to test against it.
+         - https://rt.cpan.org/Ticket/Display.html?id=92659
+         - Thanks to Slaven Rezic for the report.
+ 
+ 1.86            Sun  2 Feb 17:06:07 IST 2014
+     - Add t/xml-grammar-failures.t to catch test failures in dependent modules.
+         - Add some data files for it under t/data/*.
+         - This fails on FreeBSD 9.2 currently.
+ 
+ 1.85            Sat  1 Feb 16:23:43 IST 2014
+     - Add "use strict;" and "use warnings;" globally (CPANTS).
+     - Add LICENSE to the MANIFEST.
+ 
+ 1.84            Thu 26 Dec 14:19:19 IST 2013
+     - Hopefully fix a segmentation fault on Win32 introduced in the last ver.
+         - https://rt.cpan.org/Ticket/Display.html?id=91652
+         - Thanks to Alexandr Ciornii for the report, and to Nikolay Sivov
+         for providing help.
+ 
+ 1.83            Sun 22 Dec 18:20:23 IST 2013
+     - Get rid of compiler warnings when compiling using CLANG.
+         - https://rt.cpan.org/Public/Bug/Display.html?id=91118
+         - Thanks to Daniel Macks for the report.
+
+-------------------------------------------------------------------
+Tue Nov 26 07:31:07 UTC 2013 - coolo@suse.com
+
+- updated to 1.82
+   - Makefile.PL: Report LibXSLT mismatch correctly.
+       - https://rt.cpan.org/Ticket/Display.html?id=90085
+       - Thanks to David Schmidt for the report, and to joel and brother
+       from the channel #perl-help for analysis.
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:53 UTC 2013 - coolo@suse.com
+
+- updated to 1.81
+    - Fix a typo reported by dsteinbrunner:
+        - https://rt.cpan.org/Ticket/Display.html?id=86689
+
+-------------------------------------------------------------------
+Tue Jun  4 17:05:54 UTC 2013 - coolo@suse.com
+
+- updated to 1.80
+     - Bump the minimum version of libxslt2 to 1.1.28.
+         - due to failures such as http://www.cpantesters.org/cpan/report/6f5029ee-639a-11e2-8465-2a97270fb964
+ 
+     - Die when libxslt is 1.1.27.
+         - Due to this bug - https://bugzilla.gnome.org/show_bug.cgi?id=684564
+ 
+     - Add output_method method, update documentation of media_type
+     (dorian@cpan).
+         - Thanks, Dorian!
+ 
+     - Apply a patch from Michael Ludwig clarifying the quoting of string
+     parameters to the XSLT transformation.
+         - Thanks, Michael!
+
+-------------------------------------------------------------------
+Fri Jan 13 02:39:50 UTC 2012 - vcizek@suse.com
+
+- update to 1.76
+    - Made LibXSLT.xs compile with C compilers that don't accept declarations
+    inside blocks:
+        - https://rt.cpan.org/Public/Bug/Display.html?id=73905
+        - These include Microsoft Visual C++ (in C-mode).
+
+-------------------------------------------------------------------
+Mon Oct 31 02:34:47 UTC 2011 - vcizek@suse.com
+
+- update to 1.75
+    - Convert the following test scripts from Test.pm to Test::More :
+        - t/03input.t
+    - Fix for https://rt.cpan.org/Public/Bug/Display.html?id=71345 by Tim
+    Brody:
+        - «segfault in free()»
+        - Thanks, Tim!
+
+-------------------------------------------------------------------
+Thu Oct 27 01:34:42 UTC 2011 - vcizek@suse.com
+
+- update to 1.74
+    - Convert some test scripts from Test.pm to Test::More
+    - In the process made "Encode" and perl-5.8.1. pre-requisites of this
+    distribution.
+    - Add the "make runtest" and "make distruntest" targets to test using
+    Test-Run.
+
+-------------------------------------------------------------------
+Mon Oct 10 01:35:16 UTC 2011 - vcizek@suse.com
+
+- update to 1.73
+    - Possible fix for https://rt.cpan.org/Ticket/Display.html?id=71456 :
+        - made the port reservation on t/14security.t for the non-existent
+        URL more robust.
+1.72            Thu Oct  6 13:37:13 IST 2011
+    - Moved the benchmarking code under benchmark/ so it won't be indexed
+    by CPAN (Tim Brody).
+    - Avoid leaking memory inside extension elements by cleaning up on 
+    stylesheet DESTROY (Tim Brody).
+    - xsltInit() and xsltCleanupGlobals() to avoid leaking memory on 
+    init/shutdown (Tim Brody).
+    - Added support for stylesheet context functions via a 
+    $stylesheet->register_function() method with the same arguments as 
+    XML::LibXSLT->register_function(). (Tim Brody)
+    - Added support for register_element() on stylesheet objects. The callback
+    may leak memory though - nothing frees the _private attributes of the
+    node + document owner for the passed arguments? (Tim Brody)
+
+-------------------------------------------------------------------
+Mon Sep 12 01:35:40 UTC 2011 - vcizek@suse.com
+
+- corrected licence to same as Perl
+- update to 1.71
+    - Fixed https://rt.cpan.org/Ticket/Display.html?id=50487 :
+        - add a blacklist for libxslt-1.1.25 which has a deadlock that
+        hangs a test.
+    - Fixed https://rt.cpan.org/Ticket/Display.html?id=52422 :
+        - Unexpected webserver dependency in test
+    - Updated the version control instructions in the README to bitbucket.org.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:14 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:27 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Jan 15 14:23:14 CET 2010 - anicka@suse.cz
+
+- update to 1.70
+ * fixed various bugs
+ * documentation updates
+ * #48247: Win32 patch kindly provided by KMX@cpan.org
+ * sync with latest XML::LibXML ABI and add a compatibility check
+ * do not force -lgcrypt and -lgpg-error linker flags
+ * fix for attribute nodes returned by user-defined XPath functions
+ * address #41542: restore internalDTD subset on the source
+   document of a transformation (libxslt unlinks it)
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jan 22 15:32:39 CET 2009 - anicka@suse.cz
+
+- update to 1.68 
+  * fix compilation problems
+  * skip exslt tests if not available
+  * added XML::LibXSLT::HAVE_EXSLT() (1/0)
+  * sync the binary internals to those of XML::LibXML 1.67
+  * update regression tests for compatibility with up-to-date
+    libxslt
+- remove last patch (not needed anymore)
+
+-------------------------------------------------------------------
+Tue Sep 30 15:18:53 CEST 2008 - anicka@suse.cz
+
+- fix build (disable two tests that are wrong (with regard to XML
+  specification) 
+
+-------------------------------------------------------------------
+Tue Feb  5 16:32:54 CET 2008 - anicka@suse.cz
+
+- update to 1.66 
+ * sync the binary internals to those of XML::LibXML 1.66
+ * use pkg-config to determine linker flags for libexslt
+ * added XML::LibXML-like API to retrieve libxslt version
+ * added output_as_bytes() and output_as_chars()
+ * added regression tests for output_as_* to 11utf8.t 
+ * output_as_string documentation fixed to match reality
+ * fixed error reporting: die on fatal errors, warn otherwise
+   (in particular, warn rather than die on 
+   <xsl:message terminate="no">)
+ * using call_* instead of perl_call_* (perl_ variants are obsolete)
+ * in callbacks, POPs on error before croaking, otherwise it has no
+   effect (and we probably leak)
+ * bugfixes, test fixes
+- enable tests in %check
+
+-------------------------------------------------------------------
+Tue Aug  8 11:17:40 CEST 2006 - ke@suse.de
+
+- Version 1.59; Changes:
+  - (revision bumped to match XML::LibXML)
+  - adapted for new XML::LibXML::InputCallback API
+  - support for static linking against libxml2
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 10:05:57 CET 2005 - ke@suse.de
+
+- New package: version 1.58.
+
+

@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Thu Feb  7 06:35:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+  2019-02-06  Dave Cross <dave@dave.org.uk>
+  
+    * lib/XML/Feed.pm, lib/XML/Feed/Content.pm, lib/XML/Feed/Enclosure.pm,
+    lib/XML/Feed/Entry.pm, lib/XML/Feed/Entry/Format/Atom.pm,
+    lib/XML/Feed/Entry/Format/RSS.pm, lib/XML/Feed/Format/Atom.pm,
+    lib/XML/Feed/Format/RSS.pm, lib/XML/Feed/Util.pm: Bump version for release
+  
+    * MANIFEST: Added missing files to MANIFEST
+
+-------------------------------------------------------------------
+Wed Feb  6 06:35:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.58
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+  2019-02-05  Dave Cross <dave@dave.org.uk>
+  
+  	* lib/XML/Feed.pm, lib/XML/Feed/Content.pm,
+  	  lib/XML/Feed/Enclosure.pm, lib/XML/Feed/Entry.pm,
+  	  lib/XML/Feed/Entry/Format/Atom.pm,
+  	  lib/XML/Feed/Entry/Format/RSS.pm, lib/XML/Feed/Format/Atom.pm,
+  	  lib/XML/Feed/Format/RSS.pm, lib/XML/Feed/Util.pm: Bump version
+  	* t/12-multi-categories-atom.t, t/12-multi-categories-rss.t, t/12
+  	  -multi-subjects-rss.t: Don't hard-code 'require' paths.
+
+-------------------------------------------------------------------
+Tue Feb  5 06:36:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.57
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+  2019-02-04  Dave Cross <dave@dave.org.uk>
+  
+  	* lib/XML/Feed.pm, lib/XML/Feed/Content.pm,
+  	  lib/XML/Feed/Enclosure.pm, lib/XML/Feed/Entry.pm,
+  	  lib/XML/Feed/Entry/Format/Atom.pm,
+  	  lib/XML/Feed/Entry/Format/RSS.pm, lib/XML/Feed/Format/Atom.pm,
+  	  lib/XML/Feed/Format/RSS.pm, lib/XML/Feed/Util.pm: Bump versions for
+  	  release.
+  
+  2019-02-04  Mohammad S Anwar <mohammad.anwar@yahoo.com>
+  
+  	* Build.PL: Fixed github repo meta not showing up.
+  
+  2019-02-04  Dave Cross <dave@dave.org.uk>
+  
+  	* Changes: Update Changes
+  
+  2019-02-03  Dave Cross <dave@dave.org.uk>
+  
+  	* eg/check_feed.pl: Improve one of the example programs
+  	* t/29-date-parsing.t: Improved tests
+  
+  2019-01-11  Nicolas R <atoomic@cpan.org>
+  
+  	* MANIFEST, t/relative-links.t: Add a unit test for relative links
+  	  RT 53661 - GH #45  This is adding a unit test from an upstream
+  	  ticket. Not really a bug, more a question about behavior and
+  	  relative links.  Make sure we are processing correctly.
+  
+  2019-01-11  Dave Cross <dave@dave.org.uk>
+  
+  	* lib/XML/Feed.pm, lib/XML/Feed/Content.pm,
+  	  lib/XML/Feed/Enclosure.pm, lib/XML/Feed/Entry.pm,
+  	  lib/XML/Feed/Entry/Format/Atom.pm,
+  	  lib/XML/Feed/Entry/Format/RSS.pm, lib/XML/Feed/Format/Atom.pm,
+  	  lib/XML/Feed/Format/RSS.pm, lib/XML/Feed/Util.pm: Bump version
+  	  numbers
+  
+  2019-01-11  Nicolas R <atoomic@cpan.org>
+  
+  	* Build.PL: Advertise GitHub as default bugtracker  Also set repo url
+  	  and web entries
+  
+  2019-01-10  Nicolas R <atoomic@cpan.org>
+  
+  	* .travis.yml: add Perl 5.22 to 5.26 to travis
+  
+  2018-10-28  Tim Gim Yee <tim.gim.yee@gmail.com>
+  
+  	* lib/XML/Feed/Util.pm: Rename undocumented private subroutine for
+  	  Pod::Coverage
+  
+  2018-10-26  Tim Gim Yee <tim.gim.yee@gmail.com>
+  
+  	* Build.PL, MANIFEST, MANIFEST.SKIP,
+  	  lib/XML/Feed/Entry/Format/Atom.pm,
+  	  lib/XML/Feed/Entry/Format/RSS.pm, lib/XML/Feed/Format/Atom.pm,
+  	  lib/XML/Feed/Format/RSS.pm, lib/XML/Feed/Util.pm, t/29-date-
+  	  parsing.t, t/samples/rss10-invalid-date.xml: Parse incorrectly
+  	  formatted dates
+
+-------------------------------------------------------------------
+Thu Nov  8 07:08:01 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+-------------------------------------------------------------------
+Tue Dec 15 10:37:07 UTC 2015 - coolo@suse.com
+
+- updated to 0.53
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+-------------------------------------------------------------------
+Thu Apr 16 21:40:45 UTC 2015 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+-------------------------------------------------------------------
+Thu Apr 16 21:40:43 UTC 2015 - coolo@suse.com
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-XML-Feed/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:11 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:27 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new package
+
+

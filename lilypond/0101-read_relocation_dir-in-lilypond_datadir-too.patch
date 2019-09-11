@@ -1,0 +1,25 @@
+Description: Read relocation dir under lilypond_datadir too
+ This allows loading /usr/share/lilypond/2.18.2/etc/relocate/guile.reloc
+ to set our own private GUILE_LOAD_PATH at startup.
+Author: Anthony Fok <foka@debian.org>
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/746005
+Forwarded: not-needed
+Last-Update: 2017-01-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: lily/relocate.cc
+===================================================================
+--- lily/relocate.cc.orig	2014-03-17 17:29:16.000000000 +0200
++++ lily/relocate.cc	2018-05-15 10:43:59.399752162 +0200
+@@ -146,8 +146,10 @@ framework_relocation (const string &pref
+   debug_output (_f ("Relocation: framework_prefix=%s", prefix));
+ 
+   sane_putenv ("INSTALLER_PREFIX", prefix, true);
++  sane_putenv ("LILYPOND_DATADIR", lilypond_datadir, true);
+ 
+   read_relocation_dir (prefix + "/etc/relocate/");
++  read_relocation_dir (lilypond_datadir + "/etc/relocate/");
+ 
+   string bindir = prefix + "/bin";
+ 

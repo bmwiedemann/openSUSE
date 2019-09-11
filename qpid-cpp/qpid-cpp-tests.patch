@@ -1,0 +1,26 @@
+--- qpid-cpp-1.36.0/BuildInstallSettings.cmake	2016-12-09 18:16:02.000000000 +0100
++++ qpid-cpp-1.36.0/BuildInstallSettings.cmake	2017-02-22 07:55:56.286991844 +0100
+@@ -132,12 +132,14 @@
+   #  CMAKE_INSTALL_PREFIX - this is a standard cmake variable
+   #  INCLUDE_INSTALL_DIR
+   #  LIB_INSTALL_DIR
++  #  LIBEXEC_INSTALL_DIR
+   #  SYSCONF_INSTALL_DIR
+   #  SHARE_INSTALL_DIR
+   # So make these cached variables and the specific variables non cached and
+   # derived from them.
+   set (INCLUDE_INSTALL_DIR include CACHE PATH "Include file directory")
+   set (LIB_INSTALL_DIR lib${LIB_SUFFIX} CACHE PATH "Library object file directory")
++  set (LIBEXEC_INSTALL_DIR lib CACHE PATH "Whatever")
+   set (SYSCONF_INSTALL_DIR etc CACHE PATH "System read only configuration directory")
+   set (SHARE_INSTALL_DIR share CACHE PATH "Shared read only data directory")
+   set (DOC_INSTALL_DIR ${SHARE_INSTALL_DIR}/doc/${CMAKE_PROJECT_NAME}-${QPID_VERSION_FULL} CACHE PATH "Shared read only data directory")
+@@ -157,7 +159,7 @@
+   # These are always relative to $CMAKE_INSTALL_PREFIX
+   set (QPID_INSTALL_BINDIR bin)
+   set (QPID_INSTALL_SBINDIR sbin)
+-  set (QPID_INSTALL_TESTDIR libexec/qpid/tests) # Directory for test executables
++  set (QPID_INSTALL_TESTDIR ${LIBEXEC_INSTALL_DIR}/qpid/tests) # Directory for test executables
+   set (QPID_INSTALL_CONFDIR ${SYSCONF_INSTALL_DIR}/qpid)
+   set (QPID_INSTALL_INITDDIR ${SYSCONF_INSTALL_DIR}/rc.d/init.d)
+   set (QPID_INSTALL_SASLDIR ${SYSCONF_INSTALL_DIR}/sasl2)

@@ -1,0 +1,11 @@
+--- ./lib/RPC/XML/Parser/XMLParser.pm.orig	2012-06-04 16:10:31.000000000 +0000
++++ ./lib/RPC/XML/Parser/XMLParser.pm	2012-06-04 16:11:04.000000000 +0000
+@@ -39,7 +39,7 @@ use strict;
+ use warnings;
+ use vars qw($VERSION);
+ use subs qw(error stack_error new message_init message_end tag_start tag_end
+-            final char_data parse);
++            final char_data parse extern_ent);
+ use base 'RPC::XML::Parser';
+ 
+ # I'm not ready to add Readonly to my list of dependencies...

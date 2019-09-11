@@ -1,0 +1,13 @@
+Index: howl-0.5.1/src/Makefile
+===================================================================
+--- howl-0.5.1.orig/src/Makefile
++++ howl-0.5.1/src/Makefile
+@@ -19,7 +19,7 @@ LPEG = deps/$(LPEG_VER)
+ LPEG_OBJECT = $(LPEG)/lpeg.o
+ LPEG_URL = http://nordman.org/mirror/lpeg/$(LPEG_VER).tar.gz
+ 
+-CFLAGS = -Wall -O2 -g $(LUAJIT_CFLAGS) $(GTK_CFLAGS) -DHOWL_PREFIX=$(PREFIX)
++CFLAGS += $(LUAJIT_CFLAGS) $(GTK_CFLAGS) -DHOWL_PREFIX=$(PREFIX)
+ ARCHIVES = $(LUAJIT_ARCHIVE)
+ LIBS = -lm -ldl ${GTK_LIBS}
+ ifeq ($(UNAME_S),FreeBSD)

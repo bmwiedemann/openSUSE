@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Mon May  6 07:19:13 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 9
+  + Remove temporary Cargo.toml.deps
+  + Fix packager identity detection to use fallbacks properly
+  + Always put upstream license data comment in generated specs
+- Drop unneeded epoch handling in spec, as Epochs are nearly never used in openSUSE
+- Ensure the version-release of rust2rpm used is mentioned in generated specs
+- Ensure license file is installed in rust-packaging
+
+-------------------------------------------------------------------
+Tue Apr 23 19:52:40 UTC 2019 - Igor Gnatenko <i.gnatenko.brain@gmail.com>
+
+- Add 0001-macros-Remove-Cargo.toml.orig.patch so crates pass
+  rpmlint
+
+-------------------------------------------------------------------
+Tue Apr 23 19:27:01 UTC 2019 - Igor Gnatenko <i.gnatenko.brain@gmail.com>
+
+- Update to version 8
+- Changes since version 6
+  * Generate %doc statements for readme from Cargo.toml
+  * Split features into subpackages (`rust-$crate+$feature-devel`)
+  * Add support for dependencies with same name
+  * Add support for user configuration (`.rust2rpm.conf`, `_rust2rpm.conf`)
+  * Option to not generate default changelog entry (`--no-auto-changelog-entry`)
+  * Set `CARGO_HOME` to the local `.cargo` (required by new Rust)
+  * Improvements for crates with pre-release versions
+  * Do not put unneeded optional dependencies in BuildRequires (`-Z avoid-dev-deps`)
+  * Option to use all crate features when generating spec file
+  * Use new-style changelog format (with TZ info) on Fedora
+  * Option to use dynamic BuildRequires (requires RPM 4.15+)
+  * Environment variables to control packager identity
+- Drop patches part of this release
+  * 0001-name-spec-patch_file-by-real-crate-name.patch
+  * 0002-generate-doc-statements.patch
+  * 0003-do-better-for-renamed-crates.patch
+  * 0004-remove-pre-3.6-leftovers.patch
+  * 0005-Remove-half-downloaded-crate-on-C.patch
+  * 0006-Throw-an-error-if-s-is-used-without-a-crate.patch
+  * 0007-split-features-into-subpackages.patch
+  * 0008-add-support-for-dependencies-with-same-name.patch
+  * 0009-add-support-for-feeding-user-configuration.patch
+  * 0010-trivial-use-f-strings-everywhere.patch
+  * 0011-Add-option-to-not-generate-a-default-changelog-entry.patch
+  * 0012-Set-CARGO_HOME-to-the-local-.config.patch
+  * 0013-Set-the-install-root-in-.cargo-config.patch
+  * 0014-Add-support-for-prerelease-versions.patch
+
+
+-------------------------------------------------------------------
+Tue Mar  5 22:40:21 UTC 2019 - Igor Gnatenko <i.gnatenko.brain@gmail.com>
+
+- Backport more upstream patches
+  + Added patches
+    - 0012-Set-CARGO_HOME-to-the-local-.config.patch
+    - 0013-Set-the-install-root-in-.cargo-config.patch
+    - 0014-Add-support-for-prerelease-versions.patch
+- Replaced patch with upstream version
+  + Removed patches
+    - 0101-Add-option-to-not-generate-a-default-changelog-entry.patch
+  + Added patches
+    - 0011-Add-option-to-not-generate-a-default-changelog-entry.patch
+
+-------------------------------------------------------------------
+Sun Nov 11 22:41:29 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 6
+  + Allow generating spec file from rust project checkout
+  + add option to copy crate to current working directory
+  + Filter dependencies using the cfg language
+- Backport patches for updated packaging generation
+  + Added patches
+    - 0001-name-spec-patch_file-by-real-crate-name.patch
+    - 0002-generate-doc-statements.patch
+    - 0003-do-better-for-renamed-crates.patch
+    - 0004-remove-pre-3.6-leftovers.patch
+    - 0005-Remove-half-downloaded-crate-on-C.patch
+    - 0006-Throw-an-error-if-s-is-used-without-a-crate.patch
+    - 0007-split-features-into-subpackages.patch
+    - 0008-add-support-for-dependencies-with-same-name.patch
+    - 0009-add-support-for-feeding-user-configuration.patch
+    - 0010-trivial-use-f-strings-everywhere.patch
+- Remove merged patches
+  + 0001-macros-remove-Cargo.lock.patch
+  + 0002-macros-remove-spurious-whitespace.patch
+- Add proposed patch to add option to not generate default changelog entry
+  + 0101-Add-option-to-not-generate-a-default-changelog-entry.patch
+
+-------------------------------------------------------------------
+Tue Nov  6 03:02:47 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Add missing runtime requirement for python3-setuptools
+
+-------------------------------------------------------------------
+Sun Jan 21 03:13:21 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Flesh out the descriptions of the produced binary packages
+
+-------------------------------------------------------------------
+Sat Jan 13 21:33:16 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging for (open)SUSE
+
+-------------------------------------------------------------------
+Tue Jan  9 00:00:00 UTC 2018 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Remove Cargo.lock
+
+-------------------------------------------------------------------
+Mon Jan  8 00:00:00 UTC 2018 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Update to 5
+
+-------------------------------------------------------------------
+Sat Nov  4 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Use cp instead of install
+
+-------------------------------------------------------------------
+Sat Oct 21 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Generate runtime dependency on cargo for devel subpackages
+
+-------------------------------------------------------------------
+Sat Jul  8 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Update to 4
+
+-------------------------------------------------------------------
+Fri Jun 23 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Explicitly set rustdoc path
+
+-------------------------------------------------------------------
+Wed Jun 21 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Switch cargo_registry to /usr/share/cargo/registry
+
+-------------------------------------------------------------------
+Wed Jun 14 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Set C.UTF-8 for cargo inspector where python doesn't do locale coercing
+
+-------------------------------------------------------------------
+Tue Jun 13 00:00:00 UTC 2017 - Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+
+- Initial package
+

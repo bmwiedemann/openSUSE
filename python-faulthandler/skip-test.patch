@@ -1,0 +1,12 @@
+Index: faulthandler-3.1/tests.py
+===================================================================
+--- faulthandler-3.1.orig/tests.py
++++ faulthandler-3.1/tests.py
+@@ -372,6 +372,7 @@ class FaultHandlerTests(unittest.TestCas
+             'Segmentation fault',
+             all_threads=False)
+ 
++    @unittest.skip("fails in buildroot")
+     def test_enable_env_var(self):
+         output, exitcode = self.get_output("""
+             import faulthandler

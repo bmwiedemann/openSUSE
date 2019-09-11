@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Tue Sep  2 12:28:55 UTC 2014 - coolo@suse.com
+
+- fix license for spdx 1.2
+
+-------------------------------------------------------------------
+Thu May 10 13:12:01 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-MakeIndex
+  This license was added to the spreadsheet linked at license.opensuse.org
+  to cater for this package
+
+-------------------------------------------------------------------
+Sun Sep 18 00:04:05 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug  2 11:41:28 CEST 2007 - pgajdos@suse.cz
+
+- added COPYING -- MakeIndex license
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 22:29:44 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Nov  2 22:26:48 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Tue Aug 14 11:03:30 CEST 2001 - dan@suse.cz
+
+- use bzip instead of gzip
+
+-------------------------------------------------------------------
+Mon Dec 18 13:37:32 CET 2000 - pblaha@suse.cz
+
+- create this package 
+

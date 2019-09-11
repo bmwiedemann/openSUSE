@@ -1,0 +1,20 @@
+References: bnc#907958
+Sanity check for those who forget '-X' on ssh and try to start virt-manager
+Index: virt-manager-2.2.0/virt-manager
+===================================================================
+--- virt-manager-2.2.0.orig/virt-manager
++++ virt-manager-2.2.0/virt-manager
+@@ -66,8 +66,11 @@ def _import_gtk(leftovers):
+             print("gtk3 3.22.0 or later is required.")
+             sys.exit(1)
+ 
+-        # This will error if Gtk wasn't correctly initialized
+-        Gtk.init()
++        if os.environ.has_key('DISPLAY') and os.environ['DISPLAY']:
++            # This will error if Gtk wasn't correctly initialized
++            Gtk.Window()
++        else:
++            raise Exception("Error starting virt-manager: No graphical display found")
+         globals()["Gtk"] = Gtk
+ 
+         # This ensures we can init gsettings correctly

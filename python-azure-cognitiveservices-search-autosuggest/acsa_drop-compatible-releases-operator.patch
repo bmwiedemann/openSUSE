@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-search-autosuggest-0.1.0.orig/setup.py azure-cognitiveservices-search-autosuggest-0.1.0/setup.py
+--- azure-cognitiveservices-search-autosuggest-0.1.0.orig/setup.py	2018-07-19 20:25:58.000000000 +0200
++++ azure-cognitiveservices-search-autosuggest-0.1.0/setup.py	2018-09-03 11:36:35.990366676 +0200
+@@ -79,7 +79,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrest>=0.4.28,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

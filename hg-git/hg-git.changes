@@ -1,0 +1,233 @@
+-------------------------------------------------------------------
+Sun Nov 12 09:45:07 UTC 2017 - astieger@suse.com
+
+- update to 0.8.10:
+  * mercurial 4.4 compatibility
+  * drop hg-git.patch and disable test, this is in flux upstream
+
+-------------------------------------------------------------------
+Sat Aug 26 16:33:54 UTC 2017 - olaf@aepfle.de
+
+- update to v0.8.9
+  no changelog provided by upstream
+- remove weird tests with hg-git.patch
+
+-------------------------------------------------------------------
+Tue May  2 11:47:37 UTC 2017 - mpluskal@suse.com
+
+- Fix download url
+
+-------------------------------------------------------------------
+Mon May  1 07:32:10 UTC 2017 - develop7@develop7.info
+
+- update to v0.8.6
+  * Support Mercurial 4.2-rc
+  * Bugfixes
+- enable tests back
+- source verification added
+
+-------------------------------------------------------------------
+Mon Aug 15 14:53:23 UTC 2016 - astieger@suse.com
+
+- disable failing tests
+
+-------------------------------------------------------------------
+Tue Feb  2 20:02:55 UTC 2016 - develop7@develop7.info
+
+- update to v0.8.5
+  * Support Mercurial 3.7
+  * No changelog provided, see 
+    https://bitbucket.org/durin42/hg-git/branches/compare/0.8.5%0D0.8.4
+
+-------------------------------------------------------------------
+Mon Feb  1 20:45:10 UTC 2016 - mpluskal@suse.com
+
+- Update project url
+- Cleanups spec file with spec-cleaner
+- Enable tests
+
+-------------------------------------------------------------------
+Mon Feb  1 10:26:06 UTC 2016 - develop7@develop7.info
+
+- update to v0.8.4
+  * No changelog provided, see 
+    https://bitbucket.org/durin42/hg-git/branches/compare/0.8.4%0D0.8.3
+
+-------------------------------------------------------------------
+Mon Dec  7 08:11:04 UTC 2015 - develop7@develop7.info
+
+- update to v0.8.3
+  * fixes Mercurial 3.6 compatibility issues
+  * Other changes: see https://bitbucket.org/durin42/hg-git/branches/compare/0.8.3%0D0.8.2
+- use %version macro
+- remove unused %rev define
+
+-------------------------------------------------------------------
+Sat Oct  3 20:23:48 UTC 2015 - Mathias.Homann@opensuse.org
+
+- update to 0.8.2
+  Changes: see upstream
+
+-------------------------------------------------------------------
+Sun Feb 22 21:18:56 UTC 2015 - develop7@develop7.info
+
+- require python-dulwich >= 0.9.7, as required by upstream setup.py
+
+-------------------------------------------------------------------
+Thu Feb  5 18:21:32 UTC 2015 - gber@opensuse.org
+
+- update to version 0.8.0
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.8.0 for a
+    detailed list of changes
+
+-------------------------------------------------------------------
+Sun Jan 18 18:00:22 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.7.0
+  * no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.7.0 for a
+    detailed list of changes
+- Remove unzip build requirement; not needed
+- Cleanup specfile
+- Remove depreciated -f INSTALLED_FILES and --record-rpm=INSTALLED_FILES
+  and use {python_sitelib} instead
+- Remove "env CFLAGS="$RPM_OPT_FLAGS""; useless for a noarch package
+
+-------------------------------------------------------------------
+Mon Aug 18 14:51:29 UTC 2014 - gber@opensuse.org
+
+- update to version 0.6.1
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.6.1 for a
+    detailed list of changes
+
+-------------------------------------------------------------------
+Mon May 26 14:40:46 UTC 2014 - gber@opensuse.org
+
+- update to version 0.6.0
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.6.0 for a
+    detailed list of changes
+
+-------------------------------------------------------------------
+Tue Dec 17 10:12:44 UTC 2013 - gber@opensuse.org
+
+- update to version 0.5.0
+  - test-subrepos.t: hide output from newer hg versions about
+    active bookmarks
+  - testedwith: drop 2.3.1, which has at least one test failure
+  - testedwith: add 2.8.1
+  - gitignore: gate feature on dirstate having rootcache and ignore
+    having readpats
+  - git_handler: iterate over new refs in sorted order to stabilize
+    test output
+  - overlay: add kludge to make sure we only ever give hexshas to
+    dulwich
+  - test-timezone.t: add missing (but needed) trailing whitespace
+  - tests: dulwich is now smarter about sending fewer objects,
+    update output
+  - setup: bump dep on dulwich to 0.9.4
+  - git-handler: turn refs from None to {} so that empty git repos
+    can convert
+
+-------------------------------------------------------------------
+Tue Dec  3 16:11:32 UTC 2013 - gber@opensuse.org
+
+- bump version to 0.4.0_hg20131127
+
+-------------------------------------------------------------------
+Mon Dec  2 16:00:29 CET 2013 - ohering@suse.de
+
+- Update to 503d403fc040 to fix interface to python-dulwich 0.9.1
+  - Export Git objects from incremental Mercurial changes
+  - overlaymanifest: add iteritems(), used by recent hg versions
+  - Only export modified Git trees
+  - Fixes #54 | option branch_bookmark_suffix doesn't move bookmarks
+  - Make the path part of URL contain a leading slash only if it's not
+  - git_handler: skip exporting hg tags whose names are not valid as git
+  - test-tree-decomposition: work around git command format changes
+  - Update test output to handle 65d8a43b adding some more objects.
+  - test-subrepos: cope with unsorted output in .hgsub
+  - Upgraded to use latest version of dulwich (0.9.1).
+  - Updated `setup.py` file to reflect requirement on newer version of
+  - git_handler: clean up trailing whitespace
+  - git_handler: fix bugs introduced by 47df57f2bb2b which could never
+  - overlays: fix incoming support for hg 2.8
+  - Fix for #68 | Use .gitignore files (with proper semantics)
+
+-------------------------------------------------------------------
+Tue Mar 26 15:00:00 UTC 2013 - gber@opensuse.org
+
+- update to version 0.4.0
+  - Add test to show dulwich fault on invalid timezone data
+  - scrub bad timezone values before dulwich sees them
+  - push: provide better output about changed references
+  - push: add more output about what was added
+  - git_handler: add bookmark compatibility with new bmstore
+  - git_handler: defend against unexported revisions in tag
+    exporting
+  - tests: use fn_git_commit in test-encoding.t
+  - tests: make test-encoding.t compatible with git 1.8.0
+  - tests: remove filterhash from test-incoming.t
+  - tests: remove mercurial version check from test-incoming.t
+  - tests: remove mercurial version check from
+    test-pull-after-strip.t
+  - tests: convert echos to comments
+  - tests: avoid changing the current directory
+  - tests: extract git command-line client and dulwich requirements
+    into testutil
+  - tests: let git init create directories when applicable
+  - tests: add check for dulwich in test-url-parsing.py
+  - tests: extract commonly used commit/tag functions into testutil
+    library
+  - tests: extract extension configuration into a testutil library
+
+-------------------------------------------------------------------
+Mon Jan  7 23:44:39 UTC 2013 - tzotsos@opensuse.org
+
+- update to version 0.3.4
+  - remove git-daemon check from test-subrepos.t
+  - test-pull.t: normalize git-merge output
+  - overlaychangectx: fix compatibility with mercurial 2.4-rc (no attribute _repo) 
+  - pull: don't pull tags as bookmarks 
+  - push: fix traceback when pushing empty hg repo to empty git repo
+  - push: change "no changes" default output to match normal mercurial 
+  - Verify tree and parent objects are in Git repo 
+  - outgoing: re-introduce support for outgoing
+  - dulwich: require 0.8.6 or greater
+  - makefile: add update support from hg 2.3 to hg 2.3.1
+  - add fromgit and gitnode selectors
+  - make test-encoding.t compatible with git 1.8.0
+
+-------------------------------------------------------------------
+Wed May 16 10:23:41 UTC 2012 - gber@opensuse.org
+
+- update to version 0.3.2
+  - add support for the HTTP smart protocol when using Dulwich tip
+  - updated documentation
+  - support for newer dulwich and hg versions
+  - allow generating a git repo that has the same "branch names" as
+    an older hg repo that has named branches, and has had bookmarks
+    added in to mirror the branch names
+
+-------------------------------------------------------------------
+Tue Oct 11 08:08:51 UTC 2011 - gber@opensuse.org
+
+- update to version 0.3.1
+  - detailed list of changes available from
+    https://bitbucket.org/durin42/hg-git/changesets/tip/tag%28%220.2.5%22%29..tag%28%220.3.1%22%29
+- specfile cleanup
+
+-------------------------------------------------------------------
+Sat Dec 11 14:31:13 UTC 2010 - nix@opensuse.org
+
+- Update to version 0.2.5
+- Change to noarch
+- Change group to Development/Tools/Version Control
+
+-------------------------------------------------------------------
+Wed Sep  8 09:36:03 UTC 2010 - nix@opensuse.org
+
+- Initial stable package
+

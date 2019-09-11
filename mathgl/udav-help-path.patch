@@ -1,0 +1,13 @@
+Index: mathgl-2.4.1/udav/udav_wnd.h
+===================================================================
+--- mathgl-2.4.1.orig/udav/udav_wnd.h
++++ mathgl-2.4.1/udav/udav_wnd.h
+@@ -26,7 +26,7 @@
+ #ifdef WIN32
+ #define MGL_DOC_DIR ""
+ #else
+-#define MGL_DOC_DIR "/usr/local/share/doc/mathgl/"
++#define MGL_DOC_DIR "/usr/share/doc/packages/mathgl/"
+ #endif
+ #endif
+ //-----------------------------------------------------------------------------

@@ -1,0 +1,31 @@
+# This file is part of package amavisd.
+#
+# Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
+# Author: Werner Fink
+# Please send feedback to http://www.suse.de/feedback
+#
+# Description:
+#
+#  Used to start the spampd the SpamAssassin Proxy Daemon
+#	spamassassin adds a header line that shows if the mail has been
+#	determined spam or not. This way, you can decide what to do with the
+#	mail within the scope of your own filtering rules in your MUA (Mail
+#	User Agent, your mail program) or your LDA (Local Delivery Agent).
+#
+
+[Unit]
+Description=SpamAssassin Proxy Daemon
+Wants=remote-fs.target
+After=remote-fs.target
+Before=mail-transfer-agent.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/spampd.pid
+ExecStartPre=/bin/bash -c "sa-update || true"
+EnvironmentFile=-/etc/sysconfig/spampd
+ExecStart=/usr/sbin/spampd $SPAMPD_OPTIONS
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Wed Aug  3 03:27:36 UTC 2016 - zren@suse.com
+
+- Update to version 3.1.9 
+- Fix RPM building error due to upstream putting all binaries
+  into /usr/sbin now
+
+-------------------------------------------------------------------
+Wed Jan 14 22:00:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.1.7
+  + No changelog available
+- Use download Url as source
+- Use official tarball
+- Specfile cleanup
+- Pass NOCONFIGURE to autogen.sh
+
+-------------------------------------------------------------------
+Tue Sep 17 15:37:28 UTC 2013 - lmb@suse.com
+
+- Update spec file copyright
+- Remove unnecessary clean section
+
+-------------------------------------------------------------------
+Fri Sep 13 09:15:03 UTC 2013 - lmb@suse.com
+
+- Update to 3.1.6+git.1378394292.fa32906
+- Remove source URL from spec file, since there are no downloadable tar
+  balls for the git version
+
+------------------------------------------------------------------
+Sat Aug  3 11:39:43 CDT 2013 - rgoldwyn@suse.com
+
+- Initial package gfs2-utils
+

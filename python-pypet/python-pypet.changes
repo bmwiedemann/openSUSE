@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Aug  3 03:47:08 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.4.3
+  * DEPR: Removed pandas Panel and Panel4D (see also https://github.com/pandas-dev/pandas/pull/13776)
+  * Removed support for Python 3.3 and 3.4
+
+-------------------------------------------------------------------
+Fri May 18 17:38:07 UTC 2018 - jengelh@inai.de
+
+- Don't assume any specific user in the description.
+
+-------------------------------------------------------------------
+Thu May 10 00:01:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to pypet 0.4.2
+  * BUG FIX: Brian2Parameters can now be merged [Issue #50]
+- Update to pypet 0.4.1
+  * BUG FIX: Fixed slow `f_get_from_all_runs` with run groups
+  * More intuitive behaviro for `f_to_dict` to only start at initiating group node.
+  * BUG FIX: brian 2 removed get unit fast, this has been replaced with a pypet implementation
+- Use license tag
+
+-------------------------------------------------------------------
+Sun Aug 27 18:43:59 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

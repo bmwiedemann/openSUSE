@@ -1,0 +1,25 @@
+From 694445da998ae3c5507df9651876488e91e6dafa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Elan=20Ruusam=C3=A4e?= <glen@pld-linux.org>
+Date: Mon, 3 Jul 2017 20:39:14 +0300
+Subject: [PATCH] use separate build tree for python versions
+
+added python patch to allow multiple python versions build without
+duplicating source tree
+---
+ python/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/Makefile.am b/python/Makefile.am
+index abc5cd3..fd3a5ea 100644
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -11,7 +11,7 @@ CLEANFILES = *~ constants.c *.so
+ EXTRA_DIST = pwquality.c setup.py
+ 
+ all-local:
+-	CFLAGS="${CFLAGS} -fno-strict-aliasing" @PYTHONBINARY@ setup.py build --build-lib=.
++	CFLAGS="${CFLAGS} -fno-strict-aliasing" @PYTHONBINARY@ setup.py build --build-base py$(PYTHONREV)
+ 
+ install-exec-local:
+-	CFLAGS="${CFLAGS} -fno-strict-aliasing" @PYTHONBINARY@ setup.py install --prefix=${DESTDIR}${prefix}
++	CFLAGS="${CFLAGS} -fno-strict-aliasing" @PYTHONBINARY@ setup.py build --build-base py$(PYTHONREV) install --prefix=${DESTDIR}${prefix}

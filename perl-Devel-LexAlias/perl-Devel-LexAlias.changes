@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Jun  4 08:22:27 UTC 2013 - coolo@suse.com
+
+- updated to 0.05
+     Apply fix for DEBUGGING perls from Reini Urban RT#74862
+     Apply rewrite for 5.17 pad reorganiztion from ? RT#79267
+
+-------------------------------------------------------------------
+Mon Jun 11 12:09:10 UTC 2012 - coolo@suse.com
+
+- require the right version of perl
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:46 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue May 11 22:39:09 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.04)
+

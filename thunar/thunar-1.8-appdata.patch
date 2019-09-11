@@ -1,0 +1,17 @@
+Index: b/org.xfce.thunar.appdata.xml.in
+===================================================================
+--- a/org.xfce.thunar.appdata.xml.in
++++ b/org.xfce.thunar.appdata.xml.in
+@@ -2,10 +2,10 @@
+ <!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
+ 
+ <component type="desktop-application">
+-  <id type="desktop">org.xfce.Thunar</id>
++  <id type="desktop">thunar.desktop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0</project_license>
+-  <name>Thunar</name>
++  <name>Thunar File Manager</name>
+   <summary>File Browser</summary>
+   <description>
+     <_p>

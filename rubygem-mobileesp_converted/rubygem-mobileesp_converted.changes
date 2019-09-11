@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Aug  3 19:27:15 UTC 2017 - coolo@suse.com
+
+- updated to version 0.3.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sun Oct 12 11:43:25 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Dec 16 06:28:06 UTC 2013 - coolo@suse.com
+
+- updated to version 0.2.3, updated java part
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:52 UTC 2013 - coolo@suse.com
+
+- updated to version 0.2.2, add license text
+
+-------------------------------------------------------------------
+Mon Nov 12 11:44:36 UTC 2012 - coolo@suse.com
+
+- updated to version 0.2.1, some more devices supported
+
+-------------------------------------------------------------------
+Tue Jul 24 14:53:49 UTC 2012 - cfarrell@suse.com
+
+- license update: Apache-2.0
+  README.md refers to http://blog.mobileesp.com/?page_id=13 which indicates
+  Apache-2.0
+
+-------------------------------------------------------------------
+Fri Jul 13 09:33:16 UTC 2012 - coolo@suse.com
+
+- initial package
+

@@ -1,0 +1,26 @@
+--- Makefile
++++ Makefile	2008/04/03 07:54:31
+@@ -6,17 +6,20 @@
+ # "=" variables.  you cannot have recursive definitions if you do that.
+ CFLAGS   := -fPIC -O2 -Wall -Werror -pedantic $(CFLAGS)
+ CPPFLAGS := -I.
+-LDFLAGS  := -x --shared $(LDFLAGS)
++LDFLAGS  := --shared -Wl,-soname -Wl,pam_chroot.so $(LDFLAGS)
+ 
+ OUT=pam_chroot.so
+ 
+ all:	$(OUT)
+ 
+ %.so: %.o
+-	$(LD) $(LDFLAGS) -o $@ $< -lpam
++	$(CC) $(LDFLAGS) -o $@ $< -lpam
+ 
+ clean:
+ 	rm -f *.o $(OUT)
+ 
+ install:
+-	install -s -o0 -g0 -m755 $(OUT) /lib/security
++	mkdir -p $(DESTDIR)/{etc,lib}/security
++	install -m755 $(OUT) $(DESTDIR)/lib/security
++	install -m644 chroot.conf $(DESTDIR)/etc/security
++

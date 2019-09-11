@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Fri Aug  9 16:10:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Restrict pytest version to fix tests.
+
+-------------------------------------------------------------------
+Fri Aug 17 09:02:13 UTC 2018 - tchvatal@suse.com
+
+- Sort out the header a bit
+- Remove test conditional, always run tests
+- Mark the package as noarch (as it is)
+  * one test is failing on i586, but it is bug in libsndfile, disabled for now
+    ret [ 32767, -32768, -32767, -1, -1, 0, 0, 0, 1, 1, 32766, 32767, 32767]
+    exp (-32768, -32768, -32767, -1, -1, 0, 0, 0, 1, 1, 32766, 32767, 32767)
+    https://github.com/bastibe/SoundFile/issues/185
+
+-------------------------------------------------------------------
+Fri May 18 20:51:12 UTC 2018 - jengelh@inai.de
+
+- Do not repeat other packages' metadata in description.
+
+-------------------------------------------------------------------
+Wed May  9 01:09:10 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.10.2
+  * Should now work with cx_freeze.
+  * Several documentation fixes in the README.
+  * Removes deprecated ctype argument in favor of dtype in buffer_*().
+  * Adds SoundFile.frames in favor of now-deprecated __len__().
+  * Improves performance of blocks and SoundFile.blocks().
+  * Improves import time by using CFFI's out of line mode.
+  * Adds a build script for building distributions.
+
+-------------------------------------------------------------------
+Wed Aug  9 14:05:47 UTC 2017 - toddrme2178@gmail.com
+
+- Not compatible with some architectures
+
+-------------------------------------------------------------------
+Tue Aug  8 19:39:24 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

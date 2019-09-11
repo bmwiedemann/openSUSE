@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Aug  8 23:11:09 UTC 2018 - rpm@fthiessen.de
+
+- Update to 2.1.3:
+  + Fix in rec_stop_recording(...) to avoid possible blockage.
+  + Fix to support longer filenames and filenames with bad
+    characters.
+
+-------------------------------------------------------------------
+Tue Nov 21 16:21:27 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Nov  4 20:52:01 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.0.2:
+  + See ChangeLog for full details
+- Rebase audio-recorder-correct-desktop-menu.patch
+- Drop audio-recorder-gtk-3.16.patch: merged upstream
+
+-------------------------------------------------------------------
+Tue May  5 14:48:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.6-2:
+  + See ChangeLog for full details.
+- Add pkgconfig(gstreamer-pbutils-1.0) and
+  pkgconfig(appindicator3-0.1) BuildRequires: new dependecies.
+- Add audio-recorder-gtk-3.16.patch: Add GTK 3.16 compatibility.
+- Drop audio-recorder-automake.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct  9 13:19:09 UTC 2014 - dimstar@opensuse.org
+
+- Add audio-recorder-automake.patch: fix the order of commands in
+  configure.ac.
+
+-------------------------------------------------------------------
+Wed Jan 22 19:58:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4-1:
+  + lp#1258822: Timer does not stop recording in some rare cases.
+- Changes from version 1.4:
+  + Replaced fixed size icons 16x16,...,64x64 with scalable svg
+    images.
+  + Replaced also some images with
+    pixmap/audio-recorder-off-dot.svg, audio-recorder-on-dot.svg,
+    audio-recorder-paused-dot.svg.
+- Changes from version 1.1:
+  + Migrated dbus-skype.c to GDBus intrerface.
+  + Removed dependency to dbus-glib-1 library.
+  + Removed skype-service.[ch] and skype-service-object-glue.h from
+    the project.
+- Add %desktop_database_post/%desktop_database_postun to scriptlets
+  in order to update the desktop database.
+- Add desktop-file-utils BuildRequires: needed for the above macros
+  to be defined.
+- Drop pkgconfig(libgnome-media-profiles-3.0) and
+  pkgconfig(dbus-glib-1) BuildRequires: no longer required.
+
+-------------------------------------------------------------------
+Wed Mar 13 21:23:23 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9.8:
+  + lp#1074928: Audio-recorder could not find configuration values
+    (in dconf) and exited.
+- Changes from version 0.9.7:
+  + Audio-recorder will now remember lastly used media-players.
+  + New/changed key in data/org.gnome.audio-recorder.gschema.xml.
+- Changes from version 0.9.5:
+  + Moving to Gstreamer 1.0.
+- Changes from verion 0.9.4:
+  + Complete the port to GTK3.
+- Changes from version 0.9.3:
+  + Improved timer and VAD-modules.
+  + Better gst-pipeline.
+- Replace Requires and BuildRequires for GStreamer 1.0 port:
+  + Old BuildRequires: pkgconfig(gstreamer-0.10),
+    pkgconfig(gstreamer-base-0.10) and
+    pkgconfig(gstreamer-interfaces-0.10),
+  + Old Requires: gstreamer-0_10-plugins-bad,
+    gstreamer-0_10-plugins-base, gstreamer-0_10-plugins-good and
+    gstreamer-0_10-plugins-ugly
+  + New BuildRequires: pkgconfig(gstreamer-1.0)
+  + New Requires: gstreamer-plugins-bad, gstreamer-plugins-base,
+    gstreamer-plugins-good and gstreamer-plugins-ugly.
+- Replace pkgconfig(gtk+-2.0) BuildRequires with
+  pkgconfig(gtk+-3.0), following upstream.
+- Replace pkgconfig(gconf-2.0) BuildRequires with pkgconfig(dconf),
+  following upstreams port to GSettings.
+- Drop audio-recorder-gio-gdesktopappinfo-header.patch: as it's
+  only applied on openSUSE <= 12.1, it became useless after the
+  port of audio-recorder to GStreamer 1.0, which only exists since
+  openSUSE 12.3.
+
+-------------------------------------------------------------------
+Sun Apr 29 07:45:37 UTC 2012 - badshah400@gmail.com
+
+- Initial package, version 0.9.1
+  Add audio-recorder-correct-desktop-menu.patch and
+  audio-recorder-gio-gdesktopappinfo-header.patch
+

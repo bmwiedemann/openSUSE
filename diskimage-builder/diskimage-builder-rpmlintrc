@@ -1,0 +1,6 @@
+# /usr/local/bin/dib-python interpreter is only used inside
+# the generated image so it's not something that affects the
+# host or the package itself.
+addFilter(".*wrong-script-interpreter.*/usr/lib/python3.*/site-packages/diskimage_builder/elements/.*")
+# lib/* scripts are not meant to be used directly but rather be sourced by others.
+addFilter(".*non-executable-script.*/usr/lib/python3.*/site-packages/diskimage_builder/lib/.*")

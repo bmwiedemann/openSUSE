@@ -1,0 +1,32 @@
+Index: bfd/elf32-s390.c
+===================================================================
+--- bfd/elf32-s390.c.orig	2016-01-25 09:51:06.000000000 +0100
++++ bfd/elf32-s390.c	2016-01-27 15:24:52.947115619 +0100
+@@ -2782,6 +2782,27 @@ elf_s390_relocate_section (bfd *output_b
+ 	case R_390_PC24DBL:
+ 	case R_390_PC32DBL:
+ 	case R_390_PC32:
++	  /* This is strictly required only for PC32DBL, which
++	     is not handled by ld.so, but let's be helpful to the user also
++	     in the other cases.  */
++	  if (bfd_link_pic (info)
++	      && !SYMBOL_REFERENCES_LOCAL (info, h)
++	      && (input_section->flags & SEC_ALLOC) != 0
++	      && (input_section->flags & SEC_READONLY) != 0
++	      && (!h->def_regular
++		  || r_type != R_390_PC32DBL
++		  || h->type != STT_FUNC
++		  || ELF_ST_VISIBILITY (h->other) != STV_PROTECTED))
++	    {
++	      (*_bfd_error_handler)
++		  (_("%B: relocation %s against `%s' can not be used when "
++		     "making a shared object; recompile with -fPIC"),
++		   input_bfd, elf_howto_table[r_type].name,
++		   h->root.root.string);
++	      bfd_set_error (bfd_error_bad_value);
++	      return FALSE;
++	    }
++
+ 	  if (h != NULL
+ 	      && s390_is_ifunc_symbol_p (h)
+ 	      && h->def_regular

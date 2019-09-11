@@ -1,0 +1,332 @@
+# HG changeset patch
+# Parent  e655fcb8e89d19ce9e954d6fc330e5e3e093a848
+# extended support for (re-)seeding the OpenSSL PRNG from /dev/random
+# bnc#703221, FATE#312172
+
+Index: openssh-7.8p1/entropy.c
+===================================================================
+--- openssh-7.8p1.orig/entropy.c
++++ openssh-7.8p1/entropy.c
+@@ -235,6 +235,9 @@ seed_rng(void)
+ 	memset(buf, '\0', sizeof(buf));
+ 
+ #endif /* OPENSSL_PRNG_ONLY */
++
++	linux_seed();
++
+ 	if (RAND_status() != 1)
+ 		fatal("PRNG is not seeded");
+ }
+Index: openssh-7.8p1/openbsd-compat/Makefile.in
+===================================================================
+--- openssh-7.8p1.orig/openbsd-compat/Makefile.in
++++ openssh-7.8p1/openbsd-compat/Makefile.in
+@@ -90,6 +90,7 @@ COMPAT=	arc4random.o \
+ PORTS=	port-aix.o \
+ 	port-irix.o \
+ 	port-linux.o \
++	port-linux-prng.o \
+ 	port-solaris.o \
+ 	port-net.o \
+ 	port-uw.o
+Index: openssh-7.8p1/openbsd-compat/port-linux-prng.c
+===================================================================
+--- /dev/null
++++ openssh-7.8p1/openbsd-compat/port-linux-prng.c
+@@ -0,0 +1,81 @@
++/*
++ * Copyright (c) 2011 Jan F. Chadima <jchadima@redhat.com>
++ *           (c) 2011 Petr Cerny <pcerny@suse.cz>
++ *
++ * Permission to use, copy, modify, and distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++/*
++ * Linux-specific portability code - prng support
++ */
++
++#include "includes.h"
++#include "defines.h"
++
++#include <errno.h>
++#include <stdarg.h>
++#include <string.h>
++#include <stdio.h>
++#include <openssl/rand.h>
++
++#include "log.h"
++#include "port-linux.h"
++#include "fips.h"
++
++#define RNG_BYTES_DEFAULT	6L
++#define RNG_ENV_VAR		"SSH_USE_STRONG_RNG"
++
++long rand_bytes = 0;
++char *rand_file = NULL;
++
++static void
++linux_seed_init(void)
++{
++	long elen = 0;
++	char *env = getenv(RNG_ENV_VAR);
++
++	if (env) {
++		errno = 0;
++		elen = strtol(env, NULL, 10);
++		if (errno) {
++			elen = RNG_BYTES_DEFAULT;
++			debug("bogus value in the %s environment variable, "
++				"using %li bytes from /dev/random\n",
++				RNG_ENV_VAR, RNG_BYTES_DEFAULT);
++		}
++	}
++
++	if (elen || fips_mode())
++		rand_file = "/dev/random";
++	else
++		rand_file = "/dev/urandom";
++
++	rand_bytes = MAX(elen, RNG_BYTES_DEFAULT);
++}
++
++void
++linux_seed(void)
++{
++	long len;
++	if (!rand_file)
++		linux_seed_init();
++
++	errno = 0;
++	len = RAND_load_file(rand_file, rand_bytes);
++	if (len != rand_bytes) {
++		if (errno)
++			fatal ("cannot read from %s, %s", rand_file, strerror(errno));
++		else
++			fatal ("EOF reading %s", rand_file);
++	}
++}
+Index: openssh-7.8p1/openbsd-compat/port-linux.h
+===================================================================
+--- openssh-7.8p1.orig/openbsd-compat/port-linux.h
++++ openssh-7.8p1/openbsd-compat/port-linux.h
+@@ -17,6 +17,10 @@
+ #ifndef _PORT_LINUX_H
+ #define _PORT_LINUX_H
+ 
++extern long rand_bytes;
++extern char *rand_file;
++void linux_seed(void);
++
+ #ifdef WITH_SELINUX
+ int ssh_selinux_enabled(void);
+ void ssh_selinux_setup_pty(char *, const char *);
+Index: openssh-7.8p1/ssh-add.1
+===================================================================
+--- openssh-7.8p1.orig/ssh-add.1
++++ openssh-7.8p1/ssh-add.1
+@@ -172,6 +172,20 @@ to make this work.)
+ Identifies the path of a
+ .Ux Ns -domain
+ socket used to communicate with the agent.
++.It Ev SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .El
+ .Sh FILES
+ .Bl -tag -width Ds
+Index: openssh-7.8p1/ssh-agent.1
+===================================================================
+--- openssh-7.8p1.orig/ssh-agent.1
++++ openssh-7.8p1/ssh-agent.1
+@@ -214,6 +214,23 @@ sockets used to contain the connection t
+ These sockets should only be readable by the owner.
+ The sockets should get automatically removed when the agent exits.
+ .El
++.Sh ENVIRONMENT
++.Bl -tag -width Ds -compact
++.Pp
++.It Pa SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .Sh SEE ALSO
+ .Xr ssh 1 ,
+ .Xr ssh-add 1 ,
+Index: openssh-7.8p1/ssh-keygen.1
+===================================================================
+--- openssh-7.8p1.orig/ssh-keygen.1
++++ openssh-7.8p1/ssh-keygen.1
+@@ -869,6 +869,23 @@ Contains Diffie-Hellman groups used for
+ The file format is described in
+ .Xr moduli 5 .
+ .El
++.Sh ENVIRONMENT
++.Bl -tag -width Ds -compact
++.Pp
++.It Pa SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .Sh SEE ALSO
+ .Xr ssh 1 ,
+ .Xr ssh-add 1 ,
+Index: openssh-7.8p1/ssh-keysign.8
+===================================================================
+--- openssh-7.8p1.orig/ssh-keysign.8
++++ openssh-7.8p1/ssh-keysign.8
+@@ -80,6 +80,23 @@ must be set-uid root if host-based authe
+ If these files exist they are assumed to contain public certificate
+ information corresponding with the private keys above.
+ .El
++.Sh ENVIRONMENT
++.Bl -tag -width Ds -compact
++.Pp
++.It Pa SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .Sh SEE ALSO
+ .Xr ssh 1 ,
+ .Xr ssh-keygen 1 ,
+Index: openssh-7.8p1/ssh.1
+===================================================================
+--- openssh-7.8p1.orig/ssh.1
++++ openssh-7.8p1/ssh.1
+@@ -1432,6 +1432,20 @@ For more information, see the
+ .Cm PermitUserEnvironment
+ option in
+ .Xr sshd_config 5 .
++.It Ev SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .Sh FILES
+ .Bl -tag -width Ds -compact
+ .It Pa ~/.rhosts
+Index: openssh-7.8p1/sshd.8
+===================================================================
+--- openssh-7.8p1.orig/sshd.8
++++ openssh-7.8p1/sshd.8
+@@ -966,6 +966,23 @@ concurrently for different ports, this c
+ started last).
+ The content of this file is not sensitive; it can be world-readable.
+ .El
++.Sh ENVIRONMENT
++.Bl -tag -width Ds -compact
++.Pp
++.It Pa SSH_USE_STRONG_RNG
++The reseeding of the OpenSSL random generator is usually done from
++.Cm /dev/urandom .
++If the 
++.Cm SSH_USE_STRONG_RNG
++environment variable is set to value other than
++.Cm 0
++the OpenSSL random generator is reseeded from
++.Cm /dev/random .
++The number of bytes read is defined by the SSH_USE_STRONG_RNG value. 
++Minimum is 6 bytes.
++This setting is not recommended on the computers without the hardware
++random generator because insufficient entropy causes the connection to 
++be blocked until enough entropy is available.
+ .Sh SEE ALSO
+ .Xr scp 1 ,
+ .Xr sftp 1 ,
+Index: openssh-7.8p1/sshd.c
+===================================================================
+--- openssh-7.8p1.orig/sshd.c
++++ openssh-7.8p1/sshd.c
+@@ -55,6 +55,8 @@
+ #endif
+ #include "openbsd-compat/sys-tree.h"
+ #include "openbsd-compat/sys-queue.h"
++#include "openbsd-compat/port-linux.h"
++
+ #include <sys/wait.h>
+ 
+ #include <errno.h>
+@@ -208,6 +210,13 @@ struct {
+ 	int		have_ssh2_key;
+ } sensitive_data;
+ 
++/*
++ * Every RESEED_AFTERth connection triggers call to linux_seed() to re-seed the
++ * random pool.
++ */
++#define RESEED_AFTER    100
++static int re_seeding_counter = RESEED_AFTER;
++
+ /* This is set to true when a signal is received. */
+ static volatile sig_atomic_t received_sighup = 0;
+ static volatile sig_atomic_t received_sigterm = 0;
+@@ -1252,6 +1261,10 @@ server_accept_loop(int *sock_in, int *so
+ 					startups++;
+ 					break;
+ 				}
++			if(!(--re_seeding_counter)) {
++				re_seeding_counter = RESEED_AFTER;
++				linux_seed();
++			}
+ 
+ 			/*
+ 			 * Got connection.  Fork a child to handle it, unless

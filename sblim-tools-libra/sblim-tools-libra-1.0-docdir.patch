@@ -1,0 +1,17 @@
+XXX - sufficiently new autoconf allows ./configure --docdir=/xxx, but we want
+to build a package also for SLES10
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- Makefile.am.orig
++++ Makefile.am
+@@ -19,7 +19,7 @@ sblimincdir = $(includedir)/sblim
+ EXTRA_DIST=
+ 
+ # docdir defines where the documentation goes
+-docdir=$(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir=$(datadir)/doc/packages/$(PACKAGE)
+ 
+ #
+ # Automake instructions for documentation

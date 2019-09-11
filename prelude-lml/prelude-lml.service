@@ -1,0 +1,9 @@
+[Unit]
+Description=Log analyzer sensor with IDMEF output
+After=remode_fs.target prelude-manager.service
+
+[Service]
+ExecStart=/usr/bin/prelude-lml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,679 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Offer metadata.json when requesting the package metadata 
+  * PackageLoader: Use the right scope for the KCompressionDevice 
+  * Use metadata.json when creating the metadata from KPackage::metadata() 
+  * Fix build due to missing QVector include
+
+-------------------------------------------------------------------
+Fri Jul 19 11:43:53 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * performance, Qt API
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Add missing properties in kpackage-generic.desktop
+  * kpackagetool: read kpackage-generic.desktop from qrc
+  * AppStream generation: make sure we look up for the package structure on packages that have metadata.desktop/json too
+  * autotests: don't fail appstream test because of anything on stderr
+  * autotests: display command being executed, to help debugging failures
+  * autotests: make output nicer
+  * Don't use qAsConst over a temporary variable
+- Dropped patches, now upstream:
+  * Dont-use-qAsConst-over-a-temporary-variable.patch
+
+-------------------------------------------------------------------
+Tue Apr 16 13:34:55 UTC 2019 - wbauer@tmo.at
+
+- Add Dont-use-qAsConst-over-a-temporary-variable.patch to fix a
+  possible crash
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Fix finding the host tools targets file in the Android docker environment
+  * [kpackages] compile without foreach
+  * Add cross-compilation support for kpackagetool5
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * It compiles fine with qt5.13
+  * extend documentation of kpackage_install_bundled_package
+  * remove kpackage_install_package deprecation warning
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Remove unused found member
+  * Make translations work
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix typo in i18n message (cmdline option description)
+
+-------------------------------------------------------------------
+Sat Dec 15 14:05:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summaries.
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty
+  * Don't generate appstream data for files that lack a description (kde#400431)
+  * Capture package metadata before install start
+  * It compiles without deprecated method
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Capture package metadata before install start
+  * Use new categories
+  * Call reserve() on Qt containers if fill size is known before
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:29 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Use reference in for loop for type with non-trivial copy constructor
+  * Move Qt5::DBus to the 'PRIVATE' link targets
+  * Fix compile with strict compiler flags
+  * Emit signals when a package is installed/uninstalled
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * autotests: plasmoidpackagetest fails when run in parallel to others
+  * autotests: handle /home being a symlink on the FreeBSD CI
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:18 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Remove QT definitions duplicated from KDEFrameworkCompilerSettings or dead
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * kpackage_install_*package: fix missing dep between .desktop and .json
+  * make sure paths in rcc are never derived from absolute paths
+
+-------------------------------------------------------------------
+Sun May 13 21:03:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * Add missing explicit
+  * use KDE_INSTALL_DATADIR instead of FULL_DATADIR
+  * Warning--
+  * Add donate urls to test data
+  * Add override
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:05 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Try to fix the FreeBSD build.
+  * Use Qt5::rcc instead of looking for the executable.
+  * Use NO_DEFAULT_PATH to ensure the right command is picked up
+  * Look also for prefixed rcc executables
+  * set component for correct qrc generation
+  * regenerate qrc on every build
+  * Don't create dependency loop
+  * Fix the rcc binary package generation
+  * set(component ${component})
+  * Fix rcc packages generation
+  * Generate the rcc file every time, at install time
+  * Use ecm_setup_qtplugin_macro_names
+  * remove the rcc before generating
+  * Make org.kde. components include a donate URL
+  * Remove not necessary QtCore and co
+  * Mark kpackage_install_package undeprecated for plasma_install_package
+  * autotest: improve error reporting on failure
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Help automoc to find metadata JSON files referenced in the code
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:09 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:19 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Fix typo
+  * Prevent cmake 3.10+ warning with moc & K_EXPORT_KPACKAGE_PACKAGE_WITH_JSON
+  * invalidate the runtime cache on install
+  * adjust relative directory
+  * use configure_file instead of install
+  * use QByteArrayLiteral
+  * create the needed directory
+  * experimental support for rcc files loading in kpackage
+  * Use qCDebug
+  * compile against Qt 5.7
+  * Fix up package indexing and add runtime caching
+  * new KPackage::fileUrl() method
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Fix trivial clazy warnings
+  * Properly do strings in the kpackage framework
+  * Don't try to generate metadata.json if there's no metadata.desktop
+  * fix kpluginindex caching
+  * Improve error output
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * use the non installed service files
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * kpackage: bundle a copy of servicetypes/kpackage-generic.desktop
+  * kpackagetool: bundle a copy of servicetypes/kpackage-generic.desktop
+  * autotest: adapt for ECM 5.38 setting CMAKE_RUNTIME_OUTPUT_DIRECTORY to bin
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * refactor kpackagetool away from stringy options
+  * autotests: fix running tests in parallel
+  * kpackagetool: fix memory leak detected by LeakSanitizer
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:34 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * kpackagetool can now write appstream data to a file
+  * assert the testpackage appstream data validates
+  * adopt new KAboutLicense::spdx
+  * do not stderr that NoDisplay is set
+  * API dox: use @param for normal parameter listing, not @arg
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Added kpackage-genericqml.desktop
+  * tests: forgot to use LINK_LIBRARIES for ecm_add_test
+  * cmake: use ecm_add_test more
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * API dox: NULL pointer -> null pointer
+  * API dox: Use doxygen notation to have comments used
+  * API dox: note CamelCase includes by @class tag with more classes
+
+-------------------------------------------------------------------
+Mon May 15 13:53:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix spelling in documentation.
+  * fix include path in KF5PackageMacros.cmake https://phabricator.kde.org/D5615
+  * Ignore warnings during appdata generation (kde#378529)
+- Remove patches, now upstream:
+  * 0001-Ignore-warnings-during-appdata-generation.patch
+- Use %find_lang --with-man --all-name
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:53 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * build autotests as regular executables
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Fri Apr  7 08:49:19 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to allow appdata installation even with warnings:
+  * 0001-Ignore-warnings-during-appdata-generation.patch
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:51 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * finish support for opening compressed packages
+  * Upgrade KF5 version to 5.32.0.
+  * Upgrade Qt5 version requirement to 5.6.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:31:56 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Thu Jan 19 12:01:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.30.0
+  * [PackageLoader] Don't access invalid KPluginMetadata (bug 374541)
+  * fix description for option -t in man page
+  * Improve error message
+  * Fix the help message for --type
+  * Improve installation process of KPackage bundles
+  * Install a kpackage-generic.desktop file
+  * Exclude qmlc files from installation
+  * Don't list separately plasmoids from metadata.desktop and .json
+
+-------------------------------------------------------------------
+Wed Dec 14 15:13:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.1
+  * Fix cmake failure when two packages with different type have same id
+  * Additional fix for packages with different types but same ids
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Keep installing metadata.desktop (kde#372594)
+  * Manually load metadata if absolute path is passed
+  * Fix potential failure if package is not appstream compatible
+  * Let KPackage know about X-Plasma-RootPath
+  * Fix generating the metadata.json file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sun Nov 20 17:06:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Hotfix 5.28.1
+  * Keep installing metadata.desktop (kde#372594)
+- Drop upstreamed 0001-keep-installing-metadata-desktop.patch
+
+-------------------------------------------------------------------
+Fri Nov 18 15:17:15 UTC 2016 - alarrosa@suse.com
+
+- Add 0001-keep-installing-metadata-desktop.patch to keep installing
+  metadata.desktop (kde#372594)
+
+-------------------------------------------------------------------
+Sat Nov  5 22:09:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Make sure we're looking both for json and desktop metadata
+  * Guard against Q_GLOBAL_STATIC being destroyed at app shutdown
+  * Fix dangling pointer in KPackageJob (kde#369935)
+  * Remove discovery associated to a key when removing a definition
+  * Generate the icon into the appstream file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+- Drop upstreamed fix-package-remove-definition.diff
+
+-------------------------------------------------------------------
+Sun Oct  9 12:58:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Don't generate appstream files for components that are not in rdn
+  * Make kpackage_install_package work with KDE_INSTALL_DIRS_NO_DEPRECATED
+  * Remove unused var KPACKAGE_DATA_INSTALL_DIR
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Fri Oct  7 15:28:54 UTC 2016 - alarrosa@suse.com
+
+- Add fix-package-remove-definition.diff:
+  Removes package discoveries too when removing a definition, so
+  old data is not kept forever around.
+
+-------------------------------------------------------------------
+Tue Sep  6 20:52:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Silence contentHash deprecation warnings
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:55:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Infer the ParentApp from the PackageStructure plugin
+  * Let kpackagetool5 generate appstream information for kpackage components
+  * Make it possible to load metadata.json file from kpackagetool5
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:05:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:26:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:33:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:21:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * After installing a package, load it
+  * If the package exists and up to date don't fail
+  * Add Package::cryptographicHash(QCryptographicHash::Algorithm)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:00:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Let KDocTools stay optional on KPackage
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:05:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Avoid finding the same package multiple times from different paths
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:44:46 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Make it possible to provide the metadata in json
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:08:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:03:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * kpackagetool can uninstall a package from a package file
+  * kpackagetool is now smarter about finding the right servicetype
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Make the subtitles, subtitles ;)
+  * kpackagetool: Fix output of non-latin text to stdout
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Guard the structure qpointer access (kde#347231)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:50:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Add a KPackage::findPackages function similar to
+    KPluginLoader::findPlugins
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:41:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:59:00 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Renamed kpackagetool man to kpackagetool5
+  * Fixed installation on case-insensitive filesystems
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 19:04:19 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Fri Sep 19 11:21:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate kpackage-framework package
+

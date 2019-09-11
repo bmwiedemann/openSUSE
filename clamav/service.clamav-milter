@@ -1,0 +1,15 @@
+[Unit]
+Description=Clamav antivirus milter daemon 
+After=network.target freshclam.service
+Requires=freshclam.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/clamav-milter
+; it will switch to vscan user
+;User=vscan
+;Group=vscan
+;PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

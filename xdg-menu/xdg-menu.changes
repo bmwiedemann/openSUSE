@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Wed Dec 17 20:38:49 UTC 2014 - dimstar@opensuse.org
+
+- On openSUSE > 13.2, xterm has been split into xterm-bin for the
+  program and xterm for the app launcher. We only need the program,
+  so conditionall Require xterm-bin.
+
+-------------------------------------------------------------------
+Wed Feb 27 19:30:25 UTC 2013 - asterios.dramis@gmail.com
+
+- Added a patch (xdg-menu-su.patch) to use "su" instead of "sux" to run
+  commands with root privileges in xdg_menu_su (sux is deprecated).
+- Made the package noarch.
+
+-------------------------------------------------------------------
+Mon Aug 31 16:38:49 CEST 2009 - nadvornik@suse.cz
+
+- accept DefaultLayout node [bnc#529057]
+
+-------------------------------------------------------------------
+Thu Jul  9 12:32:53 CEST 2009 - coolo@novell.com
+
+- fix requires for Locale::gettext
+
+-------------------------------------------------------------------
+Wed Jun 24 16:02:19 CEST 2009 - nadvornik@novell.com
+
+- handle desktop files translated with gettext [bnc#463972]
+
+-------------------------------------------------------------------
+Tue Dec 16 18:01:02  CET 2008 - mhrusecky@suse.cz
+
+- added support for pekwm
+
+-------------------------------------------------------------------
+Fri Jun  1 11:19:02 CEST 2007 - nadvornik@suse.cz
+
+- do not output top-level menu in icewm format [#273232]
+
+-------------------------------------------------------------------
+Tue Feb  6 11:51:40 CET 2007 - nadvornik@suse.cz
+
+- added Requires: xterm [#242136]
+
+-------------------------------------------------------------------
+Mon Jan 22 16:03:42 CET 2007 - nadvornik@suse.cz
+
+- adjusted gnome path [#237126]
+
+-------------------------------------------------------------------
+Fri Mar 24 11:42:15 CET 2006 - pnemec@suse.cz
+
+- added icon in xfce4 menu
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 11:53:34 CEST 2005 - nadvornik@suse.cz
+
+- added twm support
+
+-------------------------------------------------------------------
+Tue Nov 30 13:47:16 CET 2004 - hvogel@suse.de
+
+- merge *box patches to a single patch
+- readd openbox3-pipe output
+
+-------------------------------------------------------------------
+Thu Nov 18 10:34:07 CET 2004 - hvogel@suse.de
+
+- correct help output to include xfce4
+- merge *box options into one condition
+- make the default output for *box a submenu again and
+  add a --fullmenu option
+- fix xfce4 output to not include '&' in menu/app names
+
+-------------------------------------------------------------------
+Tue Nov  9 17:43:56 CET 2004 - hvogel@suse.de
+
+- added openbox3 support by Marcus Rueckert
+- alias fluxbox, openbox to blackbox output
+
+-------------------------------------------------------------------
+Mon Sep 13 16:22:00 CEST 2004 - nadvornik@suse.cz
+
+- added xfce4 support
+
+-------------------------------------------------------------------
+Tue Mar 16 17:15:47 CET 2004 - nadvornik@suse.cz
+
+- do not display KDE-specific entries [#36152]
+- requires desktop-data
+
+-------------------------------------------------------------------
+Fri Mar 12 18:30:48 CET 2004 - nadvornik@suse.cz
+
+- fixed paths for kde desktop entries
+- remove duplicate entries which came from different desktop files
+
+-------------------------------------------------------------------
+Mon Feb 02 15:07:46 CET 2004 - nadvornik@suse.cz
+
+- added caching of output
+- fixed dependencies [#33294]
+- increased version to 0.2
+
+-------------------------------------------------------------------
+Wed Sep 17 12:02:30 CEST 2003 - nadvornik@suse.cz
+
+- run su wrapper for entries with X-KDE-SubstituteUID [#30523]
+
+-------------------------------------------------------------------
+Mon Sep 15 13:53:44 CEST 2003 - nadvornik@suse.cz
+
+- handle desktop files with '&' in file name
+- better debugging output
+
+-------------------------------------------------------------------
+Fri Sep 12 14:13:21 CEST 2003 - nadvornik@suse.cz
+
+- fixed fvwm2 output [#30523]
+- fixed bug in parsing desktop files
+
+-------------------------------------------------------------------
+Mon Sep 08 12:18:39 CEST 2003 - nadvornik@suse.cz
+
+- added blackbox support from mfabian@suse.de
+- correctly interpret language in the form LANG_COUNTRY.ENCODING@MODIFIER
+
+-------------------------------------------------------------------
+Fri Sep 05 14:01:28 CEST 2003 - nadvornik@suse.cz
+
+- more bugs fixed
+
+-------------------------------------------------------------------
+Tue Sep 02 16:18:18 CEST 2003 - nadvornik@suse.cz
+
+- added fvwm2 support
+
+-------------------------------------------------------------------
+Fri Aug 29 18:59:05 CEST 2003 - nadvornik@suse.cz
+
+- some fixes
+
+-------------------------------------------------------------------
+Wed Aug 27 13:59:30 CEST 2003 - nadvornik@suse.cz
+
+- finished support for WindowMaker
+
+-------------------------------------------------------------------
+Mon Aug 25 16:06:59 CEST 2003 - nadvornik@suse.cz
+
+- new package, needs some more work
+

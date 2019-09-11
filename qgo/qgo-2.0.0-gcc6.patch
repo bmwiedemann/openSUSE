@@ -1,0 +1,220 @@
+Index: b/src/network/cyberoroconnection.cpp
+===================================================================
+--- a/src/network/cyberoroconnection.cpp
++++ b/src/network/cyberoroconnection.cpp
+@@ -542,7 +542,7 @@ int CyberOroConnection::reconnectToServe
+ 	}
+ 	
+ 	// this is the initial packet
+-	char packet[8] = { 0x0a, 0xfa, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00 };
++	unsigned char packet[8] = { 0x0a, 0xfa, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00 };
+ 	if(write((const char *)packet, 8) < 0)
+ 		qWarning("*** failed sending init packet to reconnected host");
+ 	return 0;
+@@ -876,10 +876,11 @@ void CyberOroConnection::sendCreateRoom(
+ 		//00 09 11
+ 		case RoomCreate::GOMOKU:
+ 		case RoomCreate::GAME:
+-			if(room->type == RoomCreate::GOMOKU)
++			if(room->type == RoomCreate::GOMOKU) {
+ 				packet[11] = 0x09;
+-			else
++			} else {
+ 				packet[11] = 0x00;
++			}
+ 				packet[12] = ((unsigned char)room->opponentStrength << 4) |
+ 				     	      (unsigned char)room->timeLimit;
+ 			
+Index: b/src/network/eweiqiconnection.cpp
+===================================================================
+--- a/src/network/eweiqiconnection.cpp
++++ b/src/network/eweiqiconnection.cpp
+@@ -221,8 +221,8 @@ QByteArray EWeiQiConnection::getTygemGam
+ 			(minute < 10 ? ":0" : ":") + QByteArray::number(minute) + "\\]\r\n";
+ 	/* Note that its very likely that one of the above strings contains a PM versus
+ 	 * AM */
+-	const char eWeiQi_game_place_array[] = {0xde,0xc4,0xb3,0xc7,0x54,0x59,0x47,0x45,0x4d,0xb6,0xd4,0xde,0xc4};
+-	QByteArray eWeiQi_game_place(eWeiQi_game_place_array, 13);
++	const unsigned char eWeiQi_game_place_array[] = {0xde,0xc4,0xb3,0xc7,0x54,0x59,0x47,0x45,0x4d,0xb6,0xd4,0xde,0xc4};
++	QByteArray eWeiQi_game_place((const char *)eWeiQi_game_place_array, 13);
+ 	string += "\\[GAMEPLACE=" + eWeiQi_game_place + "\\]\r\n";
+ 	string += "\\[GAMELECNAME=\\]\r\n";
+ 	/* FIXME, note that this is very likely going to be different on the korean
+Index: b/src/network/tomconnection.cpp
+===================================================================
+--- a/src/network/tomconnection.cpp
++++ b/src/network/tomconnection.cpp
+@@ -335,8 +335,8 @@ QByteArray TomConnection::getTygemGameRe
+ 			(minute < 10 ? ":0" : ":") + QByteArray::number(minute) + "\\]\r\n";
+ 	/* Note that its very likely that one of the above strings contains a PM versus
+ 	 * AM */
+-	const char tom_game_place_array[] = {0x54, 0x6f, 0x6d, 0xb6, 0xd4, 0xde, 0xc4};
+-	QByteArray tom_game_place(tom_game_place_array, 7);
++	const unsigned char tom_game_place_array[] = {0x54, 0x6f, 0x6d, 0xb6, 0xd4, 0xde, 0xc4};
++	QByteArray tom_game_place((const char *)tom_game_place_array, 7);
+ 	string += "\\[GAMEPLACE=" + tom_game_place + "\\]\r\n";
+ 	string += "\\[GAMELECNAME=\\]\r\n";
+ 	/* FIXME, note that this is very likely going to be different on the korean
+Index: b/src/network/tygemconnection.cpp
+===================================================================
+--- a/src/network/tygemconnection.cpp
++++ b/src/network/tygemconnection.cpp
+@@ -3950,8 +3950,8 @@ QByteArray TygemConnection::getTygemGame
+ 			(minute < 10 ? ":0" : ":") + QByteArray::number(minute) + "\\]\r\n";
+ 	/* Note that its very likely that one of the above strings contains a PM versus
+ 	 * AM */
+-	const char tygem_game_place_array[] = {0xc5,0xb8,0xc0,0xcc,0xc1,0xaa,0x4c,0x69,0x76,0x65,0xb9,0xd9,0xb5,0xcf};
+-	QByteArray tygem_game_place(tygem_game_place_array, 14);
++	const unsigned char tygem_game_place_array[] = {0xc5,0xb8,0xc0,0xcc,0xc1,0xaa,0x4c,0x69,0x76,0x65,0xb9,0xd9,0xb5,0xcf};
++	QByteArray tygem_game_place((const char *)tygem_game_place_array, 14);
+ 	string += "\\[GAMEPLACE=";
+ 	string += tygem_game_place;
+ 	string += "\\]\r\n";
+@@ -8628,7 +8628,7 @@ void TygemConnection::secondsToDate(unsi
+ 	minute = (seconds / 60);
+ 	seconds -= (minute * 60);
+ 	second = seconds;
+-	unsigned char days_in_each_month[12] = { 31, 28 + leap, 31, 30, 31, 30, 31, 31, 31, 31, 30, 31};
++	unsigned char days_in_each_month[12] = { 31, (unsigned char)(28 + ((int)leap)), 31, 30, 31, 30, 31, 31, 31, 31, 30, 31};
+ 	int i;
+ 	
+ 	for(i = 1; i < 13; i++)
+Index: b/src/sgf/sgfparser.cpp
+===================================================================
+--- a/src/sgf/sgfparser.cpp
++++ b/src/sgf/sgfparser.cpp
+@@ -1359,7 +1359,7 @@ GameData * SGFParser::initGame(const QSt
+ 		
+ 	// White player name
+ 	if (!parseProperty(toParse, "PW", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->white_name = tmp;
+ 	else
+@@ -1367,7 +1367,7 @@ GameData * SGFParser::initGame(const QSt
+ 
+ 	// White player rank
+ 	if (!parseProperty(toParse, "WR", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->white_rank = tmp;
+ 	else
+@@ -1375,7 +1375,7 @@ GameData * SGFParser::initGame(const QSt
+ 
+ 	// Black player name
+ 	if (!parseProperty(toParse, "PB", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->black_name = tmp;
+ 	else
+@@ -1383,7 +1383,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Black player rank
+ 	if (!parseProperty(toParse, "BR", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->black_rank = tmp;
+ 	else
+@@ -1391,7 +1391,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Board size
+ 	if (!parseProperty(toParse, "SZ", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->board_size = tmp.toInt();
+ 	else
+@@ -1399,7 +1399,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Komi
+ 	if (!parseProperty(toParse, "KM", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->komi = tmp.toFloat();
+ 	else
+@@ -1407,7 +1407,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Handicap
+ 	if (!parseProperty(toParse, "HA", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->handicap = tmp.toInt();
+ 	else
+@@ -1415,7 +1415,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Result
+ 	if (!parseProperty(toParse, "RE", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->result = tmp;
+ 	else
+@@ -1423,7 +1423,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Date
+ 	if (!parseProperty(toParse, "DT", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->date = tmp;
+ 	else
+@@ -1431,7 +1431,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Place
+ 	if (!parseProperty(toParse, "PC", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->place = tmp;
+ 	else
+@@ -1439,7 +1439,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Copyright
+ 	if (!parseProperty(toParse, "CP", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->copyright = tmp;
+ 	else
+@@ -1447,7 +1447,7 @@ GameData * SGFParser::initGame(const QSt
+ 	
+ 	// Game Name
+ 	if (!parseProperty(toParse, "GN", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->gameName = tmp;
+ 	else
+@@ -1455,7 +1455,7 @@ GameData * SGFParser::initGame(const QSt
+ 
+ 	// Comments style
+ 	if (!parseProperty(toParse, "ST", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 		gameData->style = tmp.toInt();
+ 	else
+@@ -1463,7 +1463,7 @@ GameData * SGFParser::initGame(const QSt
+ 
+ 	// Timelimit
+ 	if (!parseProperty(toParse, "TM", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 	{
+ 		gameData->timelimit = tmp.toInt();
+@@ -1477,7 +1477,7 @@ GameData * SGFParser::initGame(const QSt
+ 
+ 	// Overtime == time system
+ 	if (!parseProperty(toParse, "OT", tmp))
+-		return false;
++		return NULL;
+ 	if (!tmp.isEmpty())
+ 	{
+ 		gameData->overtime = tmp;

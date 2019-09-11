@@ -1,0 +1,225 @@
+-------------------------------------------------------------------
+Tue Feb  5 08:01:41 UTC 2019 - jsegitz@suse.com
+
+- Update to 4.2.1
+  * Set SIGPIPE handler for CLI tools.
+  * Fixed alias dereferencing in TypeQuery and type, category, and
+    sensitivity lookups.
+  * Fixed sediff bug for rendering modified nodecons.
+  * Fixed devicetreecon count output.
+  * Fixed policy target platform check.
+  * Fixed bug in creating permission set intersection in apol.
+- Provide python-setools
+
+-------------------------------------------------------------------
+Fri Dec  7 15:10:14 UTC 2018 - jsegitz@suse.com
+
+- Changed requires of console subpackage to python3-setools
+
+-------------------------------------------------------------------
+Wed Nov 21 14:17:32 UTC 2018 - jsegitz@suse.com
+
+- Upgrade to 4.2.0
+  * Support for Python 2.7 was dropped 
+  * Symbol names are now available as the name attribute (e.g. Boolean.name, Type.name, etc.)
+  * Move constraint expression to its own class.
+  * Made Conditional.evaluate() more useful and added BaseTERule.enabled() method to determine if a rule is enabled..
+  * Added support for SCTP portcons
+  * Updated permission maps
+- Dropped warning.patch
+- Single spec, limited to python3. Obsoletes python-setools, provides
+  python3-setools
+
+-------------------------------------------------------------------
+Mon Jun 11 08:14:26 UTC 2018 - jsegitz@suse.com
+
+- Added warning.patch in former change to prevent warnings from
+  stopping the build
+
+-------------------------------------------------------------------
+Wed May 16 07:28:39 UTC 2018 - mcepl@suse.com
+
+- Upgrade to 4.1.1
+
+-------------------------------------------------------------------
+Wed Dec 20 12:23:39 UTC 2017 - jsegitz@suse.com
+
+- Update to version 4.0.1. SETools was reimplemented in Python.
+- Doesn't build
+  * setools-libs
+  * setools-java
+  * setools-tcl
+  * setools-devel
+  anymore since the files are not povided anymore
+- Dropped
+  * add-to-header-define_cond_filename_trans.patch
+  * implicit-fortify-decl.patch
+  * setools-3.3.5-javacflags.patch
+  * setools-3.3.5-nonvoid.patch
+  * setools-3.3.5-strcmp.patch
+  * setools-am121.patch
+  * setools-libsepol.patch
+  * setools-setup_py-prefix.patch
+  * setools-swig-2.0.7.patch
+  * setools-swig-2x.patch
+  * setools-tclass.patch
+
+-------------------------------------------------------------------
+Sat Sep 30 07:54:34 UTC 2017 - coolo@suse.com
+
+- Move to minimum java target of 1.6, 1.5 is no longer supported
+
+-------------------------------------------------------------------
+Mon Jun 26 16:30:02 UTC 2017 - jsegitz@suse.com
+
+- Added implicit-fortify-decl.patch to prevent warnings about implicit
+  declarations
+
+-------------------------------------------------------------------
+Thu Aug 25 15:42:18 UTC 2016 - jsegitz@novell.com
+
+- Deleted setools-3.3.7-libselinux-2.3.patch, we have a 
+  current libselinux now
+
+-------------------------------------------------------------------
+Mon Jul 18 10:41:14 UTC 2016 - jsegitz@novell.com
+
+- Patch to work with current libsepol, libselinux
+  Added: setools-tclass.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 02:32:05 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.3.8
+  * Fix bug preventing seaudit from starting
+  * Add python bindings for seinfo and sesearch
+  * seinfo exits with an error status
+  * Support for named file transition rules
+  * Add support for default types in sesearch
+  * Man page updates for seinfo, seaudit, and sediff
+  * Fix file type drop down list for open/close Apol query
+  * Fix compile errors on new parameter in libsepol role_set_expand().
+- Update home project and download Urls
+- Remove merged patches
+  * setools-python.patch
+  * 0003-Since-we-do-not-ship-neverallow-rules-all-always-fai.patch
+  * 0006-Changes-to-support-named-file_trans-rules.patch
+  * 0007-Remove-unused-variables.patch
+- Update setools-3.3.6-libsepol.patch > setools-libsepol.patch
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Mon May 26 20:47:23 CEST 2014 - ro@suse.de
+
+- add patch: setools-3.3.7-libselinux-2.3.patch
+  fix build with libselinux-2.3 
+
+-------------------------------------------------------------------
+Fri Oct 11 15:36:20 UTC 2013 - vcizek@suse.com
+
+- don't fail if there are no never-allow rules in the policy
+- remove dangling symlink /usr/bin/seaudit (bnc#812285)
+  * added 0003-Since-we-do-not-ship-neverallow-rules-all-always-fai.patch
+
+-------------------------------------------------------------------
+Fri Sep 13 09:16:43 UTC 2013 - pgajdos@suse.com
+
+- javapackages-tools in buildrequires
+
+-------------------------------------------------------------------
+Tue Mar 12 14:02:59 UTC 2013 - vcizek@suse.com
+
+- added patches:
+  * 0006-Changes-to-support-named-file_trans-rules.patch
+  * 0007-Remove-unused-variables.patch
+    - these two add support for named file trans rules
+  * add-to-header-define_cond_filename_trans.patch
+    - add missing define_cond_filename_trans() declaration
+
+-------------------------------------------------------------------
+Thu Oct 25 11:20:26 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on libbz2-devel
+
+-------------------------------------------------------------------
+Tue Aug 28 15:35:33 UTC 2012 - idonmez@suse.com
+
+- Add setools-3.3.6-libsepol.patch to fix compilation with new
+  libsepol
+
+-------------------------------------------------------------------
+Sun Aug  5 15:44:47 UTC 2012 - meissner@suse.com
+
+- updated to version 3.3.7
+- removed 2 upstream patches
+
+-------------------------------------------------------------------
+Tue Jul  3 09:13:03 UTC 2012 - coolo@suse.com
+
+- add setools-am121.patch to fix build with automake 1.12.1
+
+-------------------------------------------------------------------
+Thu Jun 14 12:01:51 CEST 2012 - mls@suse.de
+
+- fix build with swig-2.0.7 (untested, though)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:56:00 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Nov 23 09:26:22 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu May 26 09:30:05 UTC 2011 - idonmez@novell.com
+
+- Add setools-swig-2x.patch: correctly detect swig 2.x 
+
+-------------------------------------------------------------------
+Thu Feb 25 15:46:44 UTC 2010 - prusnak@suse.cz
+
+- updated to 3.3.6
+
+-------------------------------------------------------------------
+Sat Sep  5 10:51:41 CEST 2009 - dmueller@suse.de
+
+- remove libselinux requires, it does not exist and
+  autorequires will do the right thing anyway
+
+-------------------------------------------------------------------
+Wed Jul 15 13:32:35 CEST 2009 - prusnak@suse.cz
+
+- disable Requires: usermode
+
+-------------------------------------------------------------------
+Tue Jun 23 12:30:53 CEST 2009 - prusnak@suse.cz
+
+- require libsepol-devel-static
+
+-------------------------------------------------------------------
+Mon Oct 20 16:19:09 CEST 2008 - prusnak@suse.cz
+
+- disable Python for now (weird glibc errors)
+
+-------------------------------------------------------------------
+Tue Sep  2 13:41:08 CEST 2008 - prusnak@suse.cz
+
+- updated to 3.3.5
+  * Fixed errors in libapol's AV and TE rule rendering functions
+    where errno was not being set properly.
+  * Fixed error in apol_syn_avrule_render() where braces were
+    not being added around the target set when there is exactly one
+    target type and the keyword 'self'.  Thanks to Ryan Kagin
+    for reporting this error.
+  * Added qpol_type_get_ispermissive(). SETools can now handle
+    version 23 policy.
+
+-------------------------------------------------------------------
+Thu Jul 17 11:46:28 CEST 2008 - prusnak@suse.cz
+
+- initial version 3.3.4
+  * based on Fedora package by Dan Walsh <dwalsh@redhat.com>
+

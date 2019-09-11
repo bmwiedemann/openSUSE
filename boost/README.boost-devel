@@ -1,0 +1,4 @@
+boost-devel has been split up into individual packages for simpler
+product management. Please stop depending explicitly on boost-devel
+and depend on individual boost -devel packages
+

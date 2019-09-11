@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Sat Mar 23 19:21:50 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- skip functional tests (take very long to execute)
+
+-------------------------------------------------------------------
+Thu Mar  7 13:33:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.3:
+  * No upstream changelog
+- Remove merged fix_arm.patch
+
+-------------------------------------------------------------------
+Wed Nov 28 10:36:20 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix random test failure on ARM:
+  * fix_arm.patch
+
+-------------------------------------------------------------------
+Fri Oct 12 13:03:42 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update dependencies based on upstream setup.py/requirements
+- Update to 1.7.1:
+  * No obvious changelog except of git log
+- Use py3 to generate documentation
+- Run tests on all python variants
+
+-------------------------------------------------------------------
+Sat Jul 14 11:21:08 UTC 2018 - jengelh@inai.de
+
+- rpmlint: avoid repeating name in summary
+
+-------------------------------------------------------------------
+Mon Jul  9 15:07:08 UTC 2018 - dmueller@suse.com
+
+- switch to single-spec
+
+-------------------------------------------------------------------
+Fri Aug 25 05:49:45 UTC 2017 - tbechtold@suse.com
+
+- update to 1.6.8:
+  * Fix terminate when workers fail to start
+  * We don't care about child status when we exit
+  * setup.cfg: Remove useless section
+  * Fix a typo in service_manager docstring
+  * Check user input
+  * Increase 'fork too fast' sleep time
+  * Fix sigchld for window
+  * Use sigchld instead of polling children
+  * Update sphinx
+  * reduce cpu usage
+  * Reword README
+  * Fix forking too fast code
+  * doc: Add note about futurist
+  * Switch doc to rtd theme
+  * doc enhancement
+  * doc: hooks and window note
+  * always run signal handling in main thread
+  * window: Don't fail is the app use oslo.config
+  * tests: fix py35
+  * tests: add a basic workflow for window
+  * tests/doc/window: oslo.config limitation
+  * tests: Don't use stdout
+  * window: clarify SIGTERM/SIGALRM/SIGBREAK state
+  * tests: window failfast
+  * tests: Don't use signal 0
+  * window: Fix signals for children
+  * tests: skip sighup tests
+  * tests: fixing logging on window
+  * fixing import order
+  * Make option mutable
+  * Add tea-ci.org supports
+  * doc: Add some non-posix note
+  * Close useless child pipe()
+  * simplify the dead worker detection/restarting
+  * doc: Add some non-posix note
+  * add some py3 note
+  * Bump the major version for the non-posix support
+  * workaround killpg on non-posix platform
+  * Simplify the running_services structure
+  * Fix signal handling for windows
+  * Make setproctitle optional for windows
+  * Ignore setsid AttributeError on windows
+  * Remove usage of os.waitpid
+  * Use multiprocessing.Process instead of fork
+
+-------------------------------------------------------------------
+Wed Oct 12 07:19:49 UTC 2016 - dmueller@suse.com
+
+- update to 1.5.0:
+  * Rework the oslo_config_glue
+  * Implement sigalarm for servicemanager
+  * Allow to register multiple hooks
+  * Add on_new_worker hooks
+  * Improve tests output and run doc8
+  * Tests: fix tests cleanup
+  * Remove unused file
+  * Improve docs
+  * Split code base
+  * Allow to register terminate/reload hooks
+  * Share signals implementation
+  * Allows to reconfigure a service
+  * Revert "limit select.select() EINTR exception"
+  * Don't wait for reload if terminate/reload already run
+  * limit select.select() EINTR exception
+  * Handle SIGALRM like other signals
+  * set proc title for master process
+  * doc: add some clarification
+  * Rework signal handlers
+  * Fixup code blocks
+  * fix sporadic test failure
+  * Set default python interpreter version to 3.5
+
+-------------------------------------------------------------------
+Fri Jul 15 11:59:50 UTC 2016 - aplanas@suse.com
+
+- Add initial version (1.2.6) of cotyledon package
+

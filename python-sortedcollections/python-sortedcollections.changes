@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue May 14 08:51:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.1.2
+  * Add ItemSortedDict.__deepcopy__ for deep copying
+  * Define _setitem = __setitem__ in overrides
+  * Some new tests and various code cleanup
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 17:46:06 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.0.1
+  * Update for sortedcontainers V2 and Python 3 semantics
+  * Update sortedcollections to remove load (changed in sortedcontainers)
+- Fix changes file name
+
+-------------------------------------------------------------------
+Mon Aug 14 00:16:49 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

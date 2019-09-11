@@ -1,0 +1,13 @@
+Index: dbus-1.12.2/bus/dbus.service.in
+===================================================================
+--- dbus-1.12.2.orig/bus/dbus.service.in
++++ dbus-1.12.2/bus/dbus.service.in
+@@ -2,6 +2,8 @@
+ Description=D-Bus System Message Bus
+ Documentation=man:dbus-daemon(1)
+ Requires=dbus.socket
++RefuseManualStart=true
++RefuseManualStop=true
+ 
+ [Service]
+ ExecStart=@EXPANDED_BINDIR@/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only

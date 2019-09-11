@@ -1,0 +1,1720 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:29:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Fix compatibility with QMYSQL driver after 74aed95
+- Dropped patches, superseded by upstream changes:
+  * 0001-Revert-Adapt-DBInitializer-to-behavior-change-of-QPS.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Jul 18 19:46:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use kf5_debugdir macro for specifying the logging categories location
+
+-------------------------------------------------------------------
+Tue Jul 16 15:39:06 UTC 2019 - wbauer@tmo.at
+
+- Add patch to revert upstream PostgreSQL fix that apparently
+  causes problems with MySQL (boo#1141604, kde#409753):
+  * 0001-Revert-Adapt-DBInitializer-to-behavior-change-of-QPS.patch
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:32 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Fix race-condition on akonadi_control start (kde#392092)
+  * Adapt DBInitializer to behavior change of QPSQL driver in Qt 5.13 (kde#409234)
+  * Check Postgres status by checking return code of pg_ctl (kde#386173)
+  * Shorten sockets file path
+  * Show error string from QLocalServer on failure
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Add some missing dependencies in KF5AkonadiConfig.cmake
+  * Fix QTimer being leaked in MonitorPrivate
+  * Port ExternalPartStorage::self to C++11 singleton syntax.
+  * autotests: fix leak of FakeServerData and FakeSession
+  * Fix FakeAkonadiServerCommands being leaked
+  * Fix leaking of requests in ItemRetriever::exec()
+  * Fix another null-sender warning in itemretrievertest
+  * monitornotificationtest: create FakeItemCache on stack
+  * Properly cleanup in notificationmanagertest
+  * Fix QObject::connect warning in itemretrievertest
+  * Remove dead code in NotificationManager
+  * itemsynctest: comment out the checks that make no sense.
+  * Fix memory leaks in attributefactorytest
+  * Fix memory leak of ItemRetrievalJobFactory in ItemRetrievalManager
+  * Fix previous commit, we can't use ecm_add_test because we do add_test ourselves
+  * Ensure that qsqlite3.so is found in the builddir while running tests.
+  * akonadi: port to ecm_add_test
+  * Fix memory leak due to getTestMonitor()
+  * Akonadi: fix compilation with clang
+  * Fix memory leaks (found by ASAN)
+
+-------------------------------------------------------------------
+Fri May 10 05:37:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Don't use qAsConst over a temporary variable
+  * Improve error message "multiple merge candidates" to indicate the collection name
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * ItemSync: skip handling remote items if local changes failed
+  * autotests: remove unused variables
+  * Fix compiler warning about invalid varargs usage in macro
+  * Remove unused member fetchAllAttributes in CollectionFetchScope
+  * Fix the Akonadi detection with older CMake versions
+  * Add unittest for clearPayload. Unfortunately it passes :-)
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+  * Don't install unexported class
+  * Fix handling of collectionChanged() in AgentBase (kde#403642)
+  * Fix unhandled exception from DataStream::operator<<
+  * Fix collection detaching at the wrong time in attribute()
+
+-------------------------------------------------------------------
+Wed Apr  4 06:40:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * fix-regression-when-updating-attributes.patch
+  * fix-collection-detaching.patch
+
+-------------------------------------------------------------------
+Wed Apr  3 12:01:56 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patches to fix regressions when checking mail:
+  * fix-regression-when-updating-attributes.patch
+  * fix-collection-detaching.patch
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Small code cleanup: use local var instead of pimItems.at(i) many times
+  * Fix intermittent race in collectionattributetest
+  * Use an emit syntax that QtCreator understands better.
+  * Remove unneeded warning for killed subjobs, error string was just "".
+  * Add missing Q_EMIT before signal emission.
+  * collectionattributetest: small cleanups
+  * Server: Improve debug, warning and error log messages
+  * Destroy the Connection Through the Session Thread (kde#381636)
+  * Akonadi: fix racy code in (MimeType|Resource)::retrieveByNameOrCreate
+  * Akonadi: fix timing-dependent failure of partstreamertest
+  * Akonadi: add missing dependencies on included XSL files
+  * Fix SQLite backend foreign key PRAGMAs
+  * Simplify AggregatedFetchScope code, removing all setters.
+  * Fix tag change notification shipping a bogus name.
+  * AggregatedFetchScope: fix fetchAllAttributes for tags.
+  * Properly clean up scopes when deregistering a subscriber.
+  * Fix "QIODevice::read" warnings.
+  * autotests: partstreamertest: show more info on failure
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * Fix aggregation logic for cacheOnly and ignoreErrors.
+  * autotests: rename notificationmanagertest to notificationsubscribertest
+  * Extend tagtest with more checks that the full tag information is sent.
+  * autotests: remove QEXPECT_FAIL, the mysql bug got fixed.
+  * Fix tag name/type/gid missing in notifications about tags.
+  * Minor: improve QDebug output for Akonadi::Tag
+  * actually look for mysql binaries in PATH
+  * Allow to exclude unified mailbox from local subscription
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:48 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Ensure StandardDirs::saveDir returns existing dir
+  * Fix SQL syntax error in findOrphanedItems()
+  * Handle query prepare errors in QueryBuilder::exec
+  * not necessary to check twice
+  * Remove not necessary lines
+  * Allow to sort list of folder.
+  * Fix mem leak
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Fix ModelSpy (and thus some model tests)
+  * Fix ItemStoreTest
+  * Fix creating new tags with null parent
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Akonadi: ignore remote ID if it's empty
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:46 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:25 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Fix StorageJanitor SQL error in duplicate detection
+  * Fix KOrg category color customization crash (kde#398459)
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Job tracker: fix expected reply signature, improve error handling
+  * Fix icon name
+  * Fix "QCoreApplication::postEvent: Unexpected null receiver" warnings
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Attempt to mitigate trx deadlocks with SELECT ... FOR UPDATE
+  * Fix crash when NotificationCollector does not have Connection (kde#397239)
+  * Akonadi: forget about jobtracker if akonadiconsole went away
+  * Akonadi protocol: an invalid response is still a response.
+  * Use nullptr to fix gcc7 warning
+  * JobTracker: publish all jobs in the session when first connecting
+  * Debug output: show which collection we're syncing.
+  * fsck output: print out collection ID as well, for items with no RID
+  * Disable remote logging for inside Akonadi Console process
+  * Split out search-related debug output into own category.
+- Removed patches, now upstream:
+  * Fix-crash-when-NotificationCollector-does-not-have-Connection.patch
+
+-------------------------------------------------------------------
+Tue Aug 28 08:35:13 UTC 2018 - wbauer@tmo.at
+
+- Add upstream patch to fix crashes under certain circumstances,
+  e.g. when searching: (kde#397239)
+  * Fix-crash-when-NotificationCollector-does-not-have-Connection.patch
+
+-------------------------------------------------------------------
+Thu Aug 16 21:59:56 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Don't fetch missing parts from the resource.
+  * Revert "ProtocolHelper: only unserialize payload we requested"
+  * Monitor: rebuild Item from ntf if it's mustRetrieve but IFS is empty (kde#397131)
+  * ProtocolHelper: only unserialize payload we requested
+  * Fix warning due to deleteLater on null object
+  * Server: create new Collection in a single step
+  * Monitor: fix broken subscription to only Item or Collection ntfs
+  * Server: fix Item notifications being rejected on mimetype filters (kde#396781)
+  * Monitor: invalidate pending notifications on change
+  * Notifications: retrieve Item when RID is missing
+  * DataStore: don't access mNotificationCollector directly
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:24 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+- Build with gcc7 on Leap 42.3
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Fix a crash due to access of temporary object
+  * Fix MariaDB initialization when mysql_install_db is missing (kde#392948)
+  * akInit: improve error message when renaming old logfiles fails
+  * StorageJanitor: handle external parts DB entries with missing filename (kde#395743)
+  * Server: handle race condition on connection shutdown (kde#394071)
+  * ActionStateManager: separate selected collections from favorites.
+  * Document the hidden mechanism by which these methods are called...
+  * Resourcebase docu: don't call changeCommitted from itemRemoved.
+  * Fix caption/text
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:32 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:40 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * TransactionSequence: fix rollback not finishing properly.
+  * Akonadi tests: make checkTestIsIsolated work in release mode too
+  * Fix session not reconnecting on Qt >= 5.10
+  * Warning--
+  * Fix handling of cut collections.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:32 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:39 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:50:55 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Properly workaround xsltproc not handling spaces in filepaths on Windows
+  * Add warning in case an invalid mimetype is requested here.
+  * Restart DataStore's keep-alive query when opening connection
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Fix ItemModifyJob for Item's with only clearPayload flag set
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:52 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Give more details in the LLCONFLICT error.
+  * Make conflict dialog much bigger, it's unusable otherwise.
+  * ErrorOverlay: don't show by mistake if called with Running twice. (kde#379997)
+
+-------------------------------------------------------------------
+Thu Dec 21 14:33:26 UTC 2017 - lbeltrame@kde.org
+
+- Move designer plugins to the devel package
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * Revert "Use proper way of adding Boost include dirs to install interface"
+  * Use proper way of adding Boost include dirs to install interface
+  * Make Akonadi installation properly relocatable
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:35 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Further extend the non-empty ItemFetchScope case
+  * Fix setting up test Monitor from test_utils
+  * Don't consider ItemFetchScope with only ancestor retrieval set to be empty
+  * AKAPPEND: Merge by RID if matching Item with empty GID exists during GID merge
+  * StorageJanitor: cleanup external parts in findRIDDuplicates()
+  * Resource/serializer templates: remove bogus translation strings
+  * Remove unused testdata file, testdata-res*.xml is used instead.
+
+-------------------------------------------------------------------
+Mon Nov 20 06:55:27 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:40 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * akonaditest: port "app.disableSessionManagement" to Qt5
+  * ItemSync: speed up by not using takeFirst().
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Fix cancelTask() for retrieveItems()
+  * akonadictl: fsck and vacuum require running Akonadi (kde#361542)
+  * Introduce MimeTypeChecker::hasWantedMimeTypes
+  * Only remove init connections to the database on server shutdown.
+  * LIST: correctly return mimetypes for all Collections (kde#350219)
+- Drop patches, now upstream:
+  * correctly-return-mimetypes.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 21:17:15 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch correctly-return-mimetypes.patch:
+  * Fixes creating top-level folders in KMail (kde#350219)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Workaround a weird misbehaviour of SQLite when checking tag RID
+  * TAGAPPEND: wrap the Tag creation into a db transaction
+  * Correctly report whether tag changed with SQLite
+  * Fix typos of "orphan"
+  * Fix replaying queries from aborted transactions
+  * Fix job tracker instance support
+  * Fix SQLite DB schema upgrade to version 35 (kde#384024)
+  * Add needed columns to QueryBuilder explicitly
+  * ETM: consider collections that don't match mimetype filter populated
+- Dropped patches, now usptream:
+  * consider-collections-that-not-match-mimetype.patch
+  * Fix-SQLite-DB-schema-upgrade.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 10:02:46 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream consider-collections-that-not-match-mimetype.patch:
+  * Fixes Korganizer reminders not showing up
+
+-------------------------------------------------------------------
+Sat Aug 26 10:25:05 UTC 2017 - wbauer@tmo.at
+
+- Add Fix-SQLite-DB-schema-upgrade.patch to fix Akonadi not
+  starting when the sqlite plugin is used because the database
+  schema upgrade fails due to unsupported syntax (kde#384024)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:47 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:19 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:58:50 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * ETM: only populate collections with matching mimetype
+  * Explicitely pass source collection to ensure moving mails work
+- Drop upstreamed patches:
+  * pass-source-collection-to-move-mails.diff
+
+-------------------------------------------------------------------
+Sun Jun 11 20:30:22 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch pass-source-collection-to-move-mails.diff
+  * Fix mails not being removed from list when deleted (kde#380182)
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:39 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Fix crash when Connection is terminated before init() (kde#379809)
+
+-------------------------------------------------------------------
+Wed May 17 20:35:29 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix mem leak
+  * avoid qCWarning in ETM for items never inserted
+  * Increase timeout in ResourceSynchronizationJob
+  * Fix possible crash in CollectionCopyJob when tracing Jobs
+  * Prevent sending multiple error messages from a single Handler
+  * Fix trx deadlock when updating Search collection
+  * On error, still send answer via DBUS, avoiding clients waiting forever (kde#378189)
+  * Fix clearing Item flags (kde#375146)
+  * Use toModelIndex
+  * This variable is unused
+  * use qAsConst
+  * Use qAsconst
+  * Minor optimization
+  * Fix emit or not keyword
+  * Remove unused variable
+  * Remove compile warning
+  * Minor optimization
+
+-------------------------------------------------------------------
+Tue May  9 08:58:37 UTC 2017 - wbauer@tmo.at
+
+- Unconditionally obsolete akonadi-runtime on all distributions, we
+  don't support kdepim4 any more
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Remove unused variable
+  * Remove compile warning
+  * Update search query from CollectionModifyJob
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:10 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Fix some -Wdocumentation warnings
+  * Fix redefinition of QAddConst
+  * Port some foreach code
+  * ResourceBase: cancelTask() when PrepareItemsRetrieval job returns 0 items
+  * Handle nested exceptions during error handling
+  * Improve some ETM warnings
+  * abi::__forced_unwind is only part of gnu's libstc++.
+  * Remove unused include
+
+-------------------------------------------------------------------
+Thu Mar 30 05:28:34 UTC 2017 - lbeltrame@kde.org
+
+- Drop upstreamed patch: handle-mysql-process-crashes-gracefully.patch
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:05 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 18:07:28 UTC 2017 - alarrosa@suse.com
+
+- Drop fix-itemretriever-in-case-of-concurrent-requests.patch, it's
+  already merged upstream
+
+-------------------------------------------------------------------
+Thu Mar  9 12:33:17 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Fix ServerManager going into Broken state when called before going to the event loop.
+  * Fix crash when Connection is closed while ItemRetriever is running (kde#374734)
+  * DataStream: throw exception if device is null (kde#376385)
+  * Don't export internal classes when not building autotests.
+  * Remove unused included cpp file from autotest.
+  * Fix ItemRetriever in case of concurrent requests for the same item(s)
+  * no need to generate the header twice, we can use the one from src/server here
+  * Revert unwanted changes in previous commit
+  * Implement "TODO: Qt 5: Use QDir::removeRecursively"
+  * Fix runtime warning at the end of itemretrievertest.
+  * Show collection id if collection is valid
+  * Add more debug
+
+
+-------------------------------------------------------------------
+Fri Feb 24 13:14:48 UTC 2017 - lbeltrame@kde.org
+
+- Add fix-itemretriever-in-case-of-concurrent-requests.patch
+  * Fix hangs accessing folders ("Retrieving folder contents"
+    going on infinitely)
+
+-------------------------------------------------------------------
+Thu Feb  9 06:38:57 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Wed Feb  1 09:54:19 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Jan 22 17:10:01 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Add handle-mysql-process-crashes-gracefully.patch from upstream
+
+-------------------------------------------------------------------
+Sat Jan 14 08:48:19 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+- Drop upstream patch fix-connect-api.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 19:44:22 UTC 2016 - tittiatcoke@gmail.com
+
+- Add upstream patch fix-connect-api.patch in order to fix the
+  subscribe/unsubscribe IMAP folders
+
+-------------------------------------------------------------------
+Tue Dec 13 19:27:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 15:54:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:16:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Sun Nov 20 18:24:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Split out sqlite plugin into separete package to avoid whole server
+  depending on Qt private API
+
+-------------------------------------------------------------------
+Wed Nov  9 06:08:10 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Mon Oct 31 10:43:08 UTC 2016 - alarrosa@suse.com
+
+- Changed Requires to Recommends so Akonadi libraries don't require
+  akonadi-server anymore and can be thus co-installable with
+  akonadi-4.x .
+- Extracted libraries libKF5AkonadiPrivate5 and libKF5AkonadiXml5
+  from the akonadi-server package into new sub packages, so installing
+  libraries don't require akonadi-server to be installed just
+  because of the libraries.
+
+-------------------------------------------------------------------
+Tue Oct 11 20:44:35 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:02:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:00:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:22:41 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Wed Jul 20 17:00:15 UTC 2016 - wbauer@tmo.at
+
+- cmake 2.8.12 is necessary now
+- Add necessary requirements to the devel package so that other
+  packages building against this don't have to specify them even
+  if they don't use them
+
+-------------------------------------------------------------------
+Thu Jul  7 23:15:23 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+- Drop upstream patch fix-read-after-free-collectionstatistics.diff
+
+-------------------------------------------------------------------
+Wed Jun 29 05:34:57 UTC 2016 - lbeltrame@kde.org
+
+- Add fix-read-after-free-collectionstatistics.diff: fix occasional
+  memory corruption (may fix kde#363881)
+
+-------------------------------------------------------------------
+Tue Jun 14 21:24:55 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Fri Jun 10 17:45:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Thu May 19 21:49:58 UTC 2016 - lbeltrame@kde.org
+
+- Explicitly require the newly-split libs in the devel package
+
+-------------------------------------------------------------------
+Thu May 19 21:09:58 UTC 2016 - lbeltrame@kde.org
+
+- Split AkonadiCore, AkonadiAgentBase and AkonadiWidgets libraries
+  to separate subpackages, as per the SLPP
+
+-------------------------------------------------------------------
+Sat May  7 10:10:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Thu Apr 28 05:36:04 UTC 2016 - lbeltrame@kde.org
+
+- Move akonadi2xml to devel package
+
+-------------------------------------------------------------------
+Wed Apr 27 21:40:31 UTC 2016 - lbeltrame@kde.org
+
+- Move dbus xml files to the akonadi-devel package
+- Make the devel package conflict with
+  libakonadiprotocolinternals-devel
+
+-------------------------------------------------------------------
+Sun Apr 17 05:48:49 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:29:53 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:32:26 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 07:59:56 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Tue Jan 25 16:00:35 UTC 2016 - tittiatcoke@gmail.com
+
+- Obsolete the old akonadi-runtime for Factory/TW due to the
+  switch to kdepim5 as default
+
+-------------------------------------------------------------------
+Sat Jan  9 18:08:35 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 12:45:30 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 19:51:55 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:14:41 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 18:54:20 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+- Drop upstream patch akonadi-fix-licenses.diff
+
+-------------------------------------------------------------------
+Sat Aug 29 07:10:31 UTC 2015 - cgiboudeaux@gmx.com
+
+- Add akonadi-fix-licenses.diff. All files shall be LGPL-2.1+
+  Fixes kde#351747 and boo#942998
+
+-------------------------------------------------------------------
+Mon Aug 24 11:04:45 UTC 2015 - cgiboudeaux@gmx.com
+
+- Make libKF5AkonadiPrivate-devel conflict with
+  libakonadiprotocolinternals-devel as expected.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:42:26 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 07:33:31 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+- Drop patch do-not-leak-old-external-payload-files.diff due to
+  upstream inclusion
+
+- Rename package to akonadi-server to enable fallback to KDE4 version
+
+-------------------------------------------------------------------
+Tue Jun 30 05:31:19 UTC 2015 - lbeltrame@kde.org
+
+- Add do-not-leak-old-external-payload-files.diff: do not leak
+  external payload files, fixes disk usage of akonadi file_db_data
+  (kde#341884)
+
+-------------------------------------------------------------------
+Sun Nov 09 21:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Wed Oct 29 17:00:04 UTC 2014 - olaf@aepfle.de
+
+- Package sqldrivers depending on its availibility instead of
+  a given suse_version number
+
+-------------------------------------------------------------------
+Thu Sep 11 14:40:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf, needed for kdebase4-workspace-libs-32bit
+
+-------------------------------------------------------------------
+Fri Aug 15 08:07:44 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.13.0
+  * Fixed virtual collections statistics
+  * Fixed tag RID fetch
+  * Fixed HRID-based fetches
+  * Fixed race condition in StorageDebugger
+  * Use FindBacktrace.cmake from CMake 3.0 instead of our own
+    detection
+
+-------------------------------------------------------------------
+Thu Jul 10 22:58:18 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 1.12.91
+  * MERGE command for faster synchronization
+  * Optimizations in various commands handlers
+  * SELECT command is obsolete now
+  * Performance and concurrency improvements in QSQLITE3 driver
+  * Introduced Collection sync preferences as an improvement over the IMAP-based subscription model
+  * Disable filesystem copy-on-write for DB files when running on Btrfs
+  * Introduced direct streaming of external parts
+  * Fixed SearchManager DBus interface not being registered to DBus
+  * Fixed handling of tags in AK-APPEND and MERGE commands
+  * Various fixes in virtual collections handling
+- Drop 0001-Remove-the-invalid-GID-part-from-PartTable-before-st.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Apr 22 10:09:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Remove-the-invalid-GID-part-from-PartTable-before-st.patch,
+  resolves migration problems from earlier akonadi versions, kde#331867
+
+-------------------------------------------------------------------
+Tue Apr  8 16:44:42 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.12.1
+  * Bugfix releases. Resolves performance issues with the baloo
+    indexer and prevents dataloss when copying large email collections
+
+-------------------------------------------------------------------
+Thu Mar 27 17:34:53 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.12.0
+  - KDE 4.13 RC release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+- Drop upstreamed patch do-not-emit-itemchanged.diff.
+
+-------------------------------------------------------------------
+Sun Mar 23 12:44:34 UTC 2014 - tittiatcoke@gmail.com
+
+- Add upstream patch do-not-emit-itemchanged.diff to prevent
+  baloo from constantly indexing the maildir
+
+-------------------------------------------------------------------
+Thu Mar 20 17:59:08 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.11.90
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+- Drop upstreamed patches:
+  * janitor-move-parts-as-required-during-check.diff
+  * fix-postgresql-query.diff
+  * fix-mailrefresh.diff
+  * fix-postgresql-2.diff
+
+-------------------------------------------------------------------
+Fri Mar 14 15:25:04 UTC 2014 - tittiatcoke@gmail.com
+
+- Add upstream patch janitor-move-parts-as-required-during-check.diff
+  to increase performance of akonadictl fsck
+
+-------------------------------------------------------------------
+Wed Mar 12 14:29:11 UTC 2014 - tittiatcoke@gmail.com
+
+- Add upstream patches fix-postgresql-query.diff,
+  fix-postgresql-2.diff to fix the issue when migrating an existing
+  PostgreSQL database
+- Add upstream patch fix-mailrefresh.diff to fix the issue around
+  automatically refreshing emails
+
+-------------------------------------------------------------------
+Fri Mar  7 09:26:41 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.11.80
+   * KDE 4.13 Beta 1  release
+   * See http://www.kde.org/announcements/announce-4.13-beta1.php
+
+-------------------------------------------------------------------
+Sat Feb 15 22:52:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Remove sles checks
+- Use kde4 macros
+
+-------------------------------------------------------------------
+Fri Nov 29 22:29:45 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.11.0
+  * Fixed joined UPDATE queries failing with SQLite
+
+-------------------------------------------------------------------
+Sat Nov  9 23:42:57 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.10.80
+  * Servser-side notification filtering
+  * GID support
+  * Export custom agent properties to clients
+  * Faster Akonadi shutdown
+  * Improved and faster database schema check on start
+  * Enabled C++11 support
+  * Optimize some SQL queries
+  * Store only relative paths to external payload files in database
+- Drop gcc41.diff, not required anymore
+
+-------------------------------------------------------------------
+Fri Oct  4 14:32:54 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.10.3
+  * Fix support for latest PostgreSQL
+  * Check MySQL version at runtime, require at least 5.1
+  * Fix crash when destroying DataStore with backends other than MySQL
+  * Fix problem with too long socket paths
+  * Send dummy queries to MySQL to keep the connection alive
+  * Fix crash when no flags are changed
+  * For more details see:
+    http://www.progdan.cz/2013/10/akonadi-1-10-3-with-postgresql-fix/
+
+-------------------------------------------------------------------
+Thu Aug  1 05:00:03 UTC 2013 - coolo@suse.com
+
+- openSUSE defaults to mariadb, so let's do the same
+
+-------------------------------------------------------------------
+Thu Jul 25 19:02:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.10.2
+  * Fix PostgreSQL support (once more)
+ * Changes from version 1.10.1:
+  * Fix PostgreSQL support
+  * Optimize appending flags to items
+  * Introduce CHANGEDSINCE parameter to FETCH command
+
+-------------------------------------------------------------------
+Tue Jul  9 21:52:48 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 1.10.0
+  * Memory optimizations
+  * Fix a runtime error on Windows
+
+-------------------------------------------------------------------
+Thu Jun 13 01:12:14 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.9.80
+  * Update item access time less often.
+  * Don't try to start akonadiserver if mysqld is not installed
+  * Allow to fetch available items even if there are errors in
+    some of the items.
+  * Properly restrict the external part removal to the deleted
+    collection.
+  * Support checking the cache for payloads in the FETCH command.
+  * Add infrastructure to track client capabilities.
+  * Allow to disable the cache verification on retrieval.
+  * fsck: move orphaned pim items to lost+found, delete orphaned
+    pim item flags.
+  * Introduce NotificationMessageV2 that supports batch operations
+    on set of entities.
+  * Fix build with Boost >= 1.53.
+  * Fix a runtime issue with MySQL >= 5.6 (MySQL >= 5.1.3 is now
+    the minimum version).
+- Drop mysql56.diff, patch is included in this release
+
+-------------------------------------------------------------------
+Fri Jun  7 14:40:06 UTC 2013 - cgiboudeaux@gmx.com
+
+- Add mysql56.diff
+Renames an option that was removed in MySQL >= 5.6 (kde#319016)
+
+
+-------------------------------------------------------------------
+Mon May  6 09:42:28 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.9.2
+  * Add option to FETCH to ignore external retrieval failures.
+  * Properly restrict external payload removal.
+  * Add buildsystem option to choose between Qt4 and Qt5.
+ * Changes from version 1.9.1:
+  * Disable query cache for Sqlite.
+  * Handle missing mysqld better.
+  * Ignore my.cnf settings when using the internal MySQL server.
+
+-------------------------------------------------------------------
+Thu Dec 27 12:08:21 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to 1.9.0
+  * Respect collection cache policy refresh interval for collection tree sync.
+  * Fix initialization of PostgreSQL database.
+  * Correctly count items flags in virtual collections.
+  * Notify parent virtual collections about item changes.
+  * Require CMake >= 2.8.8.
+  * Remove dependency to Automoc4.
+  * Support Qt 5.
+- Remove automoc4 BuildRequires
+
+-------------------------------------------------------------------
+Sun Nov 25 13:25:37 UTC 2012 - cgiboudeaux@gmx.com
+
+- Only require mysql on SLES.
+
+-------------------------------------------------------------------
+Sat Nov 24 13:20:43 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 1.9beta1
+  * Recover from lost external payload files.
+  * Improve the virtual collections handling.
+  * Many code and queries optimizations.
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Fri Nov  2 17:14:43 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to akonadi 1.8.1
+  * Fix payload loss on some move/copy scenarios.
+  * Improve error reporting for failed item retrievals.
+
+-------------------------------------------------------------------
+Tue Jul 31 11:02:37 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 1.8.0
+  * Fix deadlock in ad-hoc Nepomuk searches.
+
+-------------------------------------------------------------------
+Fri Jul 20 07:21:34 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 1.7.95
+  * Fix Nepomuk queries getting stuck if Nepomuk service crashes.
+  * Fix unecessary remote retrieval of already cached item parts.
+  * Reset RID/RREV during cross-resource collection moves.
+  * Increase timeout for remote item retrieval.
+- Update to 1.7.90
+  * Fix handling of large SPARQL queries.
+  * Support cleanup of orphaned resources in the consistency checker.
+  * Support compilation with Clang.
+- Rebased patch
+
+-------------------------------------------------------------------
+Fri Jul  6 15:07:13 UTC 2012 - dmueller@suse.com
+
+- fix build failure with gcc41
+
+-------------------------------------------------------------------
+Wed Apr 18 07:50:05 UTC 2012 - kruber@zib.de
+
+- Update to 1.7.2
+  * Fix and optimize searching via Nepomuk.
+
+-------------------------------------------------------------------
+Wed Mar  7 11:51:03 UTC 2012 - idonmez@suse.com
+
+- Update to 1.7.1
+  * Don't truncate SPARQL queries in virtual collections.
+  * Optimize change notifications for deleted collection attributes.
+  * Fix possible data loss during item copy/move operations.
+
+-------------------------------------------------------------------
+Mon Jan 23 23:39:12 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to 1.7.0
+ - Fix search result retrieval from Nepomuk.
+ - Support for PostgreSQL >= 9.
+ - Improve RFC 3501 compatibility in LOGIN and non-silent SELECT commands.
+ - Add support for running multiple instance concurrently in the same user session.
+ - Update agent interface to include collectionTreeSynchronized signal.
+ - Add consistency checker system.
+ - Add support for database vacuuming.
+ - Various optimizations to reduce the number of SQL queries.
+
+-------------------------------------------------------------------
+Mon Jan  2 21:19:14 CET 2012 - dmueller@suse.de
+
+- update to 1.6.90 (1.7 RC1):
+ - Support for PostgreSQL >= 9.
+ - Improve RFC 3501 compatibility in LOGIN and non-silent SELECT commands.
+ - Add support for running multiple instance concurrently in the same user session.
+ - Update agent interface to include collectionTreeSynchronized signal.
+ - Add consistency checker system.
+ - Add support for database vacuuming.
+ - Various optimizations to reduce the number of SQL queries.
+
+-------------------------------------------------------------------
+Wed Oct 19 12:15:41 UTC 2011 - coolo@suse.com
+
+- switch back to mysql default backend (bnc#718367)
+
+-------------------------------------------------------------------
+Fri Oct  7 22:07:50 UTC 2011 - wstephenson@suse.com
+
+- Update to 1.6.2
+  - Do not update item revision if only the RID or RREV changed.
+  - Fix usage of wrong ids for part filenames.
+  - Only set item dirty flag if the payload changed.
+  - Only drop content mimetype for unsubscribed collections in LIST/LSUB.
+- 1.6.1 changes:
+  - Fix crash on agent launcher exit.
+  - Fix valgrind-ing agents running in the agent launcher.
+  - Fix restarting of agents in broken state.
+  - Fix pipe naming on multi-user Windows systems.
+  - Raise MySQL timeout.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:52:05 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Sep 13 11:22:30 UTC 2011 - idonmez@suse.com
+
+- Fix tarball URL
+
+-------------------------------------------------------------------
+Wed Jul 27 12:59:03 UTC 2011 - idonmez@novell.com
+
+- Use SQLite backend
+
+-------------------------------------------------------------------
+Mon Jul 11 11:30:14 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 1.6.0
+  - Enable external payload storage unconditionally.
+  - Treat single UID/RID fetches as error if the result set is empty.
+  - WinCE database performance improvements.
+  - Include destination resource in move notifications.
+  - Fix crash in protocol parser.
+  - Fix possible race on accessing table caches.
+  - Use QStringBuilder if available.
+  - Improved notification message API.
+- Spec cleanup. Remove unneeded build requirements
+
+-------------------------------------------------------------------
+Sat May  7 09:38:23 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 1.5.3
+  - Don't crash when copying a folder into itself. (BKO#271808)
+
+
+-------------------------------------------------------------------
+Thu Apr  7 15:28:49 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 1.5.2:
+  - Fix XdgBaseDirs reporting duplicated paths.
+  - Use correct database name when using internal MySQL.
+  - Unbreak searching with Nepomuk 4.6.
+
+-------------------------------------------------------------------
+Mon Mar 14 14:59:17 UTC 2011 - freitag@novell.com
+
+- add fix for the nepomuk query api, backport from akonadi 1.5,
+  commit be3b9db9
+
+-------------------------------------------------------------------
+Thu Feb 17 14:09:07 UTC 2011 - wstephenson@novell.com
+
+- call update-mime-database in pre/post install scripts
+
+------------------------------------------------------------------
+Sun Jan 30 02:19:34 CET 2011 - cgiboudeaux@gmail.com
+
+- Update to 1.5.0
+  - Fix Boost related build issues on Windows.
+  - Hide akonadi_agent_launcher from Mac OS X dock.
+
+-------------------------------------------------------------------
+Fri Jan  7 19:04:48 UTC 2011 - adrian@suse.de
+
+- Update to 1.4.95
+  - Optimize notification compression.
+  - Consider ignore flag when calculating collection statistics.
+  - Fix item payload size calculation.
+  - Improved FETCH response order heuristic.
+  - Fix Strigi-based persistent search folders.
+  - Fix error propagation in FETCH command handler.
+
+-------------------------------------------------------------------
+Mon Dec 20 12:46:30 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 1.4.90
+  - Set agent status for crashed instances.
+  - Allow to restart crashed agent instances.
+  - Automatically recover from loss of the resource table.
+  - Allow to specify the query language in persistent search commands.
+  - Fix leak of notification sources.
+
+-------------------------------------------------------------------
+Fri Dec 17 08:31:40 UTC 2010 - wstephenson@novell.com
+
+- Move modified sqlite driver into main package
+
+-------------------------------------------------------------------
+Tue Dec 14 13:46:39 UTC 2010 - wstephenson@novell.com
+
+- rpmlint fixes:
+  * Remove redundant rpmlint override for fixed exit() call in lib
+  * Remove obsolete distro versions
+
+-------------------------------------------------------------------
+Sun Nov 21 18:39:07 CET 2010 - dmueller@suse.de
+
+- update to 1.4.80:
+ - Experimental support for MeeGo.
+ - Return changed revision numbers in STORE response.
+ - Fix Nepomuk searches mixing up items and email attachments.
+ - Experimental Strigi search backend.
+ - Compensate for Nepomuk D-Bus API breakage.
+ - Fix parsing of serialization format version.
+ - Optimize collection statistics queries.
+ - Optimize protocol output generation.
+ - Optimize protocol parsing.
+ - Build-time configurable default database backend.
+ - Fix ancestor chain quoting.
+ - Fix finding of components on Windows in install location.
+ - New subscription interface for change notifications.
+ - Support for in-process agents and agent server.
+ - Support for Sqlite.
+ - Experimental support for ODBC-based database backends.
+ - Support Windows CE.
+
+-------------------------------------------------------------------
+Fri Nov 19 21:05:31 UTC 2010 - wstephenson@novell.com
+
+- update to 1.4.53 snapshot
+
+-------------------------------------------------------------------
+Mon Oct 25 07:23:47 UTC 2010 - wstephenson@novell.com
+
+- update to 1.4.1:
+  * Server startup performance fix
+  * IMAP Parser fixes
+
+-------------------------------------------------------------------
+Sun Aug 15 07:31:12 UTC 2010 - wstephenson@novell.com
+
+- update branch diff to r1163872:
+  * Improve query performance
+  * Resolve spurious 'fatal error' in startup log
+  * Use mysqlcheck instead of mysql_upgrade to avoid permission
+    lockout
+
+-------------------------------------------------------------------
+Mon Aug  2 13:10:11 CEST 2010 - dmueller@suse.de
+
+- update to 1.4.0:
+  * Add change notification for collection subscription state changes.
+  * Enable filesystem payload store by default.
+  * Fix unicode folder name encoding regression.
+
+-------------------------------------------------------------------
+Fri Jul 16 18:19:35 CEST 2010 - dmueller@suse.de
+
+- update to 1.3.90 (1.4.0 RC1):
+  - Reset RIDs on inter-resource moves.
+  - Optimize disk space usage with internal MySQL.
+  - Improve error reporting of the Akonadi remote debugging server.
+  - Fix moving collections into the collection root.
+  - Report PostgreSQL database errors in english independent of locale settings.
+  - Fix unicode collection name encoding.
+  - Optimize cache pruning with filesystem payload store.
+  - Fix automatic migration between database and filesystem payload store.
+
+-------------------------------------------------------------------
+Tue Jun 15 12:01:17 UTC 2010 - wstephenson@novell.com
+
+- Add branch diff
+  - fix error message on every Akonadi start (bnc#582375)
+
+-------------------------------------------------------------------
+Mon Mar  8 10:13:32 UTC 2010 - wstephenson@suse.de
+
+- tweak mysql behaviour for robustness
+
+-------------------------------------------------------------------
+Tue Feb  9 12:38:28 UTC 2010 - llunak@novell.com
+
+- update to 1.3.1:
+  - fix D-Bus connection leak problem
+
+-------------------------------------------------------------------
+Wed Jan 20 21:44:27 CET 2010 - dmueller@suse.de
+
+- update to 1.3.0:
+  - Work around D-Bus bug that could cause SEARCH to hang.
+
+-------------------------------------------------------------------
+Wed Jan  6 20:13:49 CET 2010 - dmueller@suse.de
+
+- update to 1.2.90:
+  - Fix change notifications for search results.
+  - Fix database creation with PostgreSQL.
+  - Fix copying of item flags.
+  - Fix internal MySQL shutdown.
+  - Support PostgreSQL in internal mode.
+  - Fix table name case mismatch.
+
+-------------------------------------------------------------------
+Tue Dec  1 19:59:18 CET 2009 - dmueller@suse.de
+
+- update to 1.2.80:
+  - Support for collection content type filtering as part of LIST.
+  - Adapt to Nepomuk query service changes.
+  - Experimental support for PostgreSQL.
+  - Support for preprocessor agents.
+  - Support for distributed searching.
+  - Support for agents creating virtual collections.
+  - Protocol parser fixes for non-Linux/non-KDE clients.
+  - Support for single-shot searches using the Nepomuk query service.
+  - Support HRID-based LIST operations.
+  - Support RID-based MOVE, COLMOVE, LINK and UNLINK opertions.
+  - Respect cache-only retrieval also regarding on-demand syncing.
+  - Add configuration accepted/rejected signals to the agent interface.
+  - Fix change notification compression when using modified parts sets.
+  - Use one retrieval pipeline per resource.
+  - Reduce unecessary change notification on flag changes.
+  - Fix RID quoting.
+  - Fix resource creating race for autostarted agents.
+  - Create new database also when using external db servers.
+  - Return the created result collection when creating a persistent search.
+
+-------------------------------------------------------------------
+Fri Aug 28 17:41:03 CEST 2009 - dmueller@suse.de
+
+-update to 1.2.1:
+ - Fix item creation with RID's containing a ']'.
+ - Fix ASAP parser not reading the entire command.
+
+-------------------------------------------------------------------
+Wed Jul 29 11:17:08 CEST 2009 - dmueller@suse.de
+
+- update to 1.2.0:
+  * Fix attribute joining in collection list results.
+  - Buildsystem fixes for Mac OS.
+  - Do not show a console window for akonadi_control on Windows.
+
+-------------------------------------------------------------------
+Tue Jun 23 20:50:14 CEST 2009 - dmueller@suse.de
+
+- update to 1.1.95 (1.2 RC1):
+  * Correctly check if the new cache policy really differs
+  from the old one, and only then send a change notification.
+
+-------------------------------------------------------------------
+Tue Jun 23 10:22:02 CEST 2009 - beineri@opensuse.org
+
+- update to svn985593 to meet minimum Akonadi protocol version
+
+-------------------------------------------------------------------
+Mon Jun 15 22:47:33 CEST 2009 - dmueller@suse.de
+
+- update to 1.1.91 svn snapshot
+  * small protocol changes
+
+-------------------------------------------------------------------
+Wed Jun  3 20:05:09 CEST 2009 - dmueller@suse.de
+
+- update to 1.1.90:
+  * no upstream changelog available
+
+-------------------------------------------------------------------
+Mon May 18 22:05:08 CEST 2009 - dmueller@suse.de
+
+- update to current svn snapshot
+
+-------------------------------------------------------------------
+Mon May 18 17:17:07 CEST 2009 - beineri@opensuse.org
+
+- add 1_2_BRANCH.diff: bump protocol version to 12
+
+-------------------------------------------------------------------
+Wed May 14 08:21:21 CEST 2009 - beineri@opensuse.org
+
+- update to 1.1.85 release:
+  * Improved CMake scripts so it is possible to detect
+    the Akonadi version in projects that depend on it.
+  * Simplified the check for existance of tables.
+  * Add a dedicated item deletion command, to get rid of
+    the old STORE/EXPUNGE which was extremely inefficient.
+  * Some fixes to support sqlite in the future.
+  * Soprano is required now.
+  * Qt 4.5.0 is required now.
+  * Support for collection retrieval by remote identifier.
+  * Support for item retrieval based on the remote identifier.
+  * Less useless debug output.
+  * Fixed leak on socket error.
+  * Various smaller bug fixes, see ChangeLog for a list.
+  * Support for writing large payloads to a file.
+  * New Item retrieval code.
+  * Added a streaming IMAP parser, and ported code the use it.
+  * Add support for manually restarting an agent instance.
+
+-------------------------------------------------------------------
+Wed May 13 22:41:10 CEST 2009 - dmueller@suse.de
+
+- add versioned dependency
+
+-------------------------------------------------------------------
+Thu Apr 30 23:25:50 CEST 2009 - dmueller@suse.de
+
+- update to 1.1.2:
+  * fix dbus loop lockups
+
+-------------------------------------------------------------------
+Thu Jan 22 02:04:14 CET 2009 - dmueller@suse.de
+
+- update to 1.1.1:
+  - Fix code that was not executed in a release build.
+  - Require CMake 2.6.0 which fixes boost detection.
+  - Don't try to restart an agent that has been deleted.
+
+-------------------------------------------------------------------
+Mon Jan 12 16:59:19 CET 2009 - dmueller@suse.de
+
+- fix build on SLE10
+
+-------------------------------------------------------------------
+Mon Jan  5 10:19:00 CET 2009 - dmueller@suse.de
+
+- update to 1.1.0:
+  * Restart agents when their executable changed.
+  * Buildsystem fixes to find and link boost on all platforms.
+  * Improvements to the startup to prevent partial startup.
+  * Include revision number in the version string when building from SVN.
+  * Shut down when we lost the connection to the D-Bus session bus.
+  * add some basic handling of command line args.
+  * Add a D-Bus call to flush the notification queue.
+  * Automatically fix world-writeable mySQL config files.
+  * Fix for FreeBSD mysql path.
+
+-------------------------------------------------------------------
+Tue Dec 16 20:32:56 CET 2008 - dmueller@suse.de
+
+- update to 1.0.81
+
+-------------------------------------------------------------------
+Tue Dec  2 12:41:51 CET 2008 - wstephenson@suse.de
+
+- Update to official akonadi 1.80 tarball
+- Add external boost dependency
+
+-------------------------------------------------------------------
+Mon Sep 29 08:04:38 CEST 2008 - dmueller@suse.de
+
+- fix build for older distros
+
+-------------------------------------------------------------------
+Thu Aug 28 18:47:10 CEST 2008 - dmueller@suse.de
+
+- require mysql and mysql database adaptor
+
+-------------------------------------------------------------------
+Wed Jul 23 13:40:53 CEST 2008 - dmueller@suse.de
+
+- update to 1.0.0:
+  * Bugfix: Unquoted date time with a lenght of
+  * 26 characters was not parsed properly.
+  * Add serverside timestamp support for items.
+  * Build system fixes (windows & automoc)
+
+-------------------------------------------------------------------
+Wed Jun 18 21:55:00 CEST 2008 - dmueller@suse.de
+
+- update to 0.82.0:
+  * bugfixes
+
+-------------------------------------------------------------------
+Wed May 28 09:12:31 CEST 2008 - wstephenson@suse.de
+
+- update to 0.82.0pre
+  * Protocol change: introduce item part namespaces
+
+-------------------------------------------------------------------
+Mon May 20 19:44:27 CEST 2008 - wstephenson@suse.de
+
+- update to 0.81.0
+  * Parsing optimisations
+  * Procotol version checks added
+  * use external automoc4
+
+-------------------------------------------------------------------
+Wed May  6 15:33:01 CEST 2008 - wstephenson@suse.de
+
+- update to 807704, improve automoc4 location code and IMAP parsing
+
+-------------------------------------------------------------------
+Tue May  6 11:44:40 CEST 2008 - dmueller@suse.de
+
+- update to 804508, dbus interface is under org.freedesktop now
+
+-------------------------------------------------------------------
+Sat May  3 01:09:48 CEST 2008 - dmueller@suse.de
+
+- update to current SVN to adapt API addtions
+
+-------------------------------------------------------------------
+Mon Apr 28 14:59:25 CEST 2008 - dmueller@suse.de
+
+- rename akonadi -> akonadi-runtime
+- fix -devel package splitting
+- split off library package
+
+-------------------------------------------------------------------
+Thu Apr 24 23:16:43 CEST 2008 - dmueller@suse.de
+
+- Initial package (split out KDE independent parts)
+

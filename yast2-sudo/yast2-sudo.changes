@@ -1,0 +1,266 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:49:14 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:40:44 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Feb 26 13:55:34 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Nov 26 04:57:46 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.1
+
+-------------------------------------------------------------------
+Tue Oct 16 16:14:41 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Aug 20 13:53:13 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Thu Jun 28 09:51:25 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:39 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 17:27:07 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:42:46 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri May 24 15:45:28 CEST 2013 - jsuchome@suse.cz
+
+- suppress visudo output, so agent exits correctly (bnc#808292)
+- 2.24.0
+
+-------------------------------------------------------------------
+Thu Mar 29 16:06:50 CEST 2012 - jsuchome@suse.cz
+
+- merge proofread texts 
+- confirmed license
+- 2.22.0
+
+-------------------------------------------------------------------
+Thu Sep 22 11:39:21 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.1 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:35:26 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Tue Aug  2 13:19:09 CEST 2011 - jsrain@suse.cz
+
+- fixed typos
+- 2.21.0
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Mon Apr 20 11:32:27 CEST 2009 - kmachalkova@suse.cz
+
+- Fixed renaming of command aliases (bnc#494384) 
+- 2.18.2
+
+-------------------------------------------------------------------
+Fri Feb 27 15:03:57 CET 2009 - kmachalkova@suse.cz
+
+- Do not add extra space to command parameters (bnc#473683)
+- Move user selection into pop-up dialog in user/run-as alias config
+  (bnc#421053)
+- Some compatibility fixes (ButtonBoxes, InputFields usage)
+- 2.18.1
+
+-------------------------------------------------------------------
+Wed Jan 14 16:35:37 CET 2009 - kmachalkova@suse.cz
+
+- Show "Really abort?" message only if there is something to save
+  (bnc#458328)
+- Removed write progress dialog (bnc#447586)
+- Speeding up gathering users/groups data
+- 2.18.0
+
+-------------------------------------------------------------------
+Tue Dec 16 17:38:59 CET 2008 - kmachalkova@suse.cz
+
+- Missing strings marked for translation (bnc#448693, bnc#459376)
+- Consider all possible command tags (NOPASSWD, NOEXEC, SETENV) when
+  parsing a line from sudoers in order not to delete those tags that 
+  can't be set in UI
+
+-------------------------------------------------------------------
+Mon Dec  1 13:11:02 CET 2008 - kmachalkova@suse.cz
+
+- Focusing correct item when changing priority of rules (bnc#449754)
+- Fixed parsing of multi-line rules/aliases (patch by jreidinger)
+  (bnc#449768)
+- 2.17.2
+
+-------------------------------------------------------------------
+Thu Nov 27 17:15:30 CET 2008 - kmachalkova@suse.cz
+
+- Not so strict requirements on return value from SCR::Read
+  ( list <any> instead of list <string> )(bnc#448159)
+- Button re-labelling to comply to style-guide(bnc#448159)
+
+-------------------------------------------------------------------
+Tue Nov 18 17:11:40 CET 2008 - kmachalkova@suse.cz
+
+- Rewrite of Perl agent to store sudoers data in non-associative 
+  data structure + adapting business logic to use lists, not maps
+  (bnc#439164, bnc#365178)
+- Added up/down buttons to help setting sudo rules priorities
+- 2.17.1 
+
+-------------------------------------------------------------------
+Mon Oct 27 16:46:25 CET 2008 - kmachalkova@suse.cz
+
+- Comply to style guide: Add/Edit/Delete button trio aligned to the
+  left, 'Remove' renamed to 'Delete' (bnc#438227)
+- Hint for user to type alias name in capital letters (bnc#395779)
+- Disable Edit/Delete buttons if the table is empty and avoid evil
+  red error pop-up (bnc#395779)
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- 2.16.1
+
+-------------------------------------------------------------------
+Wed Jan 30 10:35:25 CET 2008 - kmachalkova@suse.cz
+
+- Extended set of valid characters for usernames (esp. \ for winbind 
+  users) 
+- Escape backslashes in usernames on write (both bnc#353499)  
+- Added some function key bindings
+- 2.16.0
+
+-------------------------------------------------------------------
+Mon Jan  7 12:16:36 CET 2008 - kmachalkova@suse.cz
+
+- Merged proofread texts 
+
+-------------------------------------------------------------------
+Mon Apr 23 13:33:28 CEST 2007 - kmachalkova@suse.cz
+
+- Accept 'ALL' as a valid command alias (#263414)
+- Make command selection an editable combobox and show available 
+  cmnd aliases (+ 'ALL') to the user
+- Append 'ALL' to the selection of available hosts
+- 2.15.3
+
+-------------------------------------------------------------------
+Fri Mar  9 19:21:23 CET 2007 - kmachalkova@suse.cz
+
+- Removed yast2-core and yast2_theme dependency (used Conflicts: tag
+  instead)(#253001)
+ 
+-------------------------------------------------------------------
+Thu Mar  1 10:42:26 CET 2007 - kmachalkova@suse.cz
+
+- Added checking for root permissions into the module startup
+- 2.15.2
+
+-------------------------------------------------------------------
+Mon Feb 26 15:07:28 CET 2007 - kmachalkova@suse.cz
+
+- Added syntax checking of created file (#227397)
+- Save /etc/sudoers as 0440 (FaTE #300934) 
+- Check if entered command is a valid path or alias (#227397)
+- Enable going back to revisit the configuration if the file
+  cannot be saved (due to syntax errors)
+- Correct handling of deleting command aliases
+- Correct handling of Cancel button in command and host popup
+- Adjusted some dialog layouts (#245284)
+- Changed some strings
+- 2.15.1
+
+-------------------------------------------------------------------
+Fri Jan  5 13:00:57 CET 2007 - kmachalkova@suse.cz
+
+- Do not remove 'targetpw' and 'ALL ALL=ALL' rule from /etc/sudoers
+  since it makes kdesu defunct (#223719)
+- Prompt for confirming delete/edit of 'ALL ALL=ALL' rule
+- 2.15.0 
+
+-------------------------------------------------------------------
+Wed Oct 18 17:06:55 CEST 2006 - kmachalkova@suse.cz
+
+- Fixed command table redrawing in user specification dialog
+- Using real /etc/sudoers instead of testfile in agent (#209388) 
+- Fixed permissions (0640) when creating /etc/sudoers
+- 2.14.2
+
+-------------------------------------------------------------------
+Thu Aug 24 23:52:06 CEST 2006 - ro@suse.de
+
+- fix requires yast2-theme -> yast2_theme
+
+-------------------------------------------------------------------
+Wed Aug 23 15:59:30 CEST 2006 - kmachalkova@suse.cz
+
+- added error condition handling to agent
+- added validation of host/netmask
+- extended command table to contain command parameters
+- enabled sudo by modifying default config on first write 
+- 2.14.1
+
+-------------------------------------------------------------------
+Thu Jul 13 09:40:10 2006 - kmachalkova@suse.cz
+
+- initial version
+- 2.14.0

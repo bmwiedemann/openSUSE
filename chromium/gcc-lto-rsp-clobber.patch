@@ -1,0 +1,13 @@
+diff --git a/third_party/lss/linux_syscall_support.h b/third_party/lss/linux_syscall_support.h
+index 5d9c2e858..e64703ba0 100644
+--- a/third_party/lss/linux_syscall_support.h
++++ b/third_party/lss/linux_syscall_support.h
+@@ -2405,7 +2405,7 @@ struct kernel_statfs {
+                                "d"(LSS_SYSCALL_ARG(parent_tidptr)),
+                                "r"(LSS_SYSCALL_ARG(newtls)),
+                                "r"(LSS_SYSCALL_ARG(child_tidptr))
+-                             : "rsp", "memory", "r8", "r10", "r11", "rcx");
++                             : "memory", "r8", "r10", "r11", "rcx");
+       }
+       LSS_RETURN(int, __res);
+     }

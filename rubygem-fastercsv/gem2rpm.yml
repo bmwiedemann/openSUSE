@@ -1,0 +1,7 @@
+:preamble: |-
+  BuildRequires:  fdupes
+
+:post_install: |-
+  %fdupes %{buildroot}%{_libdir}/ruby/gems/*/doc/%{mod_name}-%{version}
+
+  find %{buildroot}%{_libdir}/ruby/gems/ -name *.rb | xargs sed -i -e 's,/usr/local/bin/ruby,/usr/bin/ruby,'

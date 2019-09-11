@@ -1,0 +1,41 @@
+From 6f17cf775ca9be1aa2cf51a7efbcf4ea67e8175c Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Tue, 12 Feb 2019 10:09:58 -0800
+Subject: [PATCH 3/3] Add 'readable' param to Group list_*() methods
+Patch-mainline: In developer's queue
+
+Extend use of the new 'readable' optional param
+for the Node class into the Group class, so they
+also return writable *and* readable entries.
+
+Did NOT update the calls to list_attributes() and
+list_parameters() in NodeACLGroup class, since
+we don't need ACLs to be readable to write them
+out.
+---
+ rtslib/target.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/rtslib/target.py b/rtslib/target.py
+index 814a98339a2a..92d54786501c 100644
+--- a/rtslib/target.py
++++ b/rtslib/target.py
+@@ -1302,11 +1302,11 @@ class Group(object):
+         for mem in self._mem_func(self):
+             setattr(mem, prop, value)
+ 
+-    def list_attributes(self, writable=None):
+-        return self._get_first_member().list_attributes(writable)
++    def list_attributes(self, writable=None, readable=None):
++        return self._get_first_member().list_attributes(writable, readable)
+ 
+-    def list_parameters(self, writable=None):
+-        return self._get_first_member().list_parameters(writable)
++    def list_parameters(self, writable=None, readable=None):
++        return self._get_first_member().list_parameters(writable, readable)
+ 
+     def set_attribute(self, attribute, value):
+         for obj in self._mem_func(self):
+-- 
+2.16.4
+

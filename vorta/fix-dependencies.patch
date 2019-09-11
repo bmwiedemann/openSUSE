@@ -1,0 +1,18 @@
+Index: vorta-0.6.5/setup.cfg
+===================================================================
+--- vorta-0.6.5.orig/setup.cfg
++++ vorta-0.6.5/setup.cfg
+@@ -27,13 +27,11 @@ license_file = LICENSE.txt
+ [options]
+ python_requires = >= 3.6
+ setup_requires =
+-  pip >= 10
+   pytest-runner
+   setuptools_git
+ install_requires =
+   appdirs
+   paramiko
+-  pyqt5
+   peewee
+   python-dateutil
+   keyring

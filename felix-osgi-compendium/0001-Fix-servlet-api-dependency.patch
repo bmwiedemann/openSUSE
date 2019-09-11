@@ -1,0 +1,27 @@
+From 3a7cfc3cf5cadca0e25854ccb85c65f46fd15737 Mon Sep 17 00:00:00 2001
+From: Stanislav Ochotnicky <sochotnicky@redhat.com>
+Date: Wed, 2 Feb 2011 14:17:20 +0100
+Subject: [PATCH 1/2] Fix servlet api dependency
+
+---
+ pom.xml |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index d53eaa9..f45d162 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -38,8 +38,8 @@
+       <version>1.4.0</version>
+     </dependency>
+     <dependency>
+-      <groupId>${pom.groupId}</groupId>
+-      <artifactId>javax.servlet</artifactId>
++      <groupId>javax.servlet</groupId>
++      <artifactId>javax.servlet-api</artifactId>
+       <version>1.0.0</version>
+     </dependency>
+     <dependency>
+-- 
+1.7.3.5
+

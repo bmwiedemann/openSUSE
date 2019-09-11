@@ -1,0 +1,30 @@
+Index: src/backend/utils/misc/postgresql.conf.sample
+===================================================================
+--- src/backend/utils/misc/postgresql.conf.sample.orig
++++ src/backend/utils/misc/postgresql.conf.sample
+@@ -318,13 +318,13 @@
+ 
+ # - Where to Log -
+ 
+-#log_destination = 'stderr'		# Valid values are combinations of
++log_destination = 'stderr'		# Valid values are combinations of
+ 					# stderr, csvlog, syslog, and eventlog,
+ 					# depending on platform.  csvlog
+ 					# requires logging_collector to be on.
+ 
+ # This is used when logging to stderr:
+-#logging_collector = off		# Enable capturing of stderr and csvlog
++logging_collector = on			# Enable capturing of stderr and csvlog
+ 					# into log files. Required to be on for
+ 					# csvlogs.
+ 					# (change requires restart)
+@@ -416,7 +416,8 @@
+ #log_duration = off
+ #log_error_verbosity = default		# terse, default, or verbose messages
+ #log_hostname = off
+-#log_line_prefix = ''			# special values:
++log_line_prefix = '%t %d %u '
++					# special values:
+ 					#   %a = application name
+ 					#   %u = user name
+ 					#   %d = database name

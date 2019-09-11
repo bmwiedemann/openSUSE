@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sun Aug 11 03:35:59 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.3
+  * Fixup jlab layout
+  * Fix rubberband on Firefox
+- Update to 0.3.2
+  * Make use of CSS variables
+- Update to 0.3.0
+  * Use `display: block` for canvas elements and fix layout issues.
+  * Resize support
+  * Update to jupyterlab 1.0
+  * Add support for changing button style
+  * Center toolbar buttons
+  * Fix Python inheritance
+  * Make the figure a widget
+  * Pan/Zoom toggle buttons
+  * Move message in footer
+  * js_version -> js_version
+  * Interactive Toolbar widget
+  * Remove jupyter.setDirty call
+  * Send image data as binary buffer
+  * Remove websocket proxy
+  * Fix visual glitch when hiding the toolbar
+  * Improve label CSS
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Fri Jan  4 17:55:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Use correct version number for jupyterlab subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:41:49 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.2.1
+  * Use widget backend
+  * Updated to use prefered methods for traitlets >= 4.1
+
+-------------------------------------------------------------------
+Wed Apr 25 20:05:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.1.1
+  * Auto enable notebook extension
+  * Fixup post-link
+  * removing warnings from nbagg backend
+
+-------------------------------------------------------------------
+Thu Apr 19 19:32:04 UTC 2018 - toddrme2178@gmail.com
+
+- Switch to wheel for more reliable builds
+
+-------------------------------------------------------------------
+Mon Mar 12 17:58:21 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

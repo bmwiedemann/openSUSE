@@ -1,0 +1,28 @@
+From 70a4077962be2dc3ea7dc20a3687e9f1c7458ade Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Sat, 17 Jun 2017 22:26:14 +0200
+Subject: [PATCH 4/7] By default do not fopen anything in netrom_gr
+
+This is SUSE specific patch basically disabling this functionality.
+---
+ lib/netrom_gr.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/netrom_gr.c b/lib/netrom_gr.c
+index ec82fe8..eecf148 100644
+--- a/lib/netrom_gr.c
++++ b/lib/netrom_gr.c
+@@ -32,8 +32,8 @@
+ 
+ int NETROM_rprint(int options)
+ {
+-    FILE *f1 = fopen(_PATH_PROCNET_NR_NODES, "r");
+-    FILE *f2 = fopen(_PATH_PROCNET_NR_NEIGH, "r");
++    FILE *f1 = NULL;
++    FILE *f2 = NULL;
+     char buffer[256];
+     int qual, n, w;
+     /*int ext = options & FLAG_EXT;
+-- 
+2.13.1
+

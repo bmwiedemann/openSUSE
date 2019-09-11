@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Mon Aug  5 10:41:41 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update build process to match the latest repository architecture
+- Update to v1.10.0
+  * vendor github.com/containers/image@v3.0.0
+  * Remove GO111MODULE in favor of -mod=vendor
+  * Vendor in containers/storage v1.12.16
+  * Add '-' minus syntax for removal of config values
+  * tests: enable overlay tests for rootless
+  * rootless, overlay: use fuse-overlayfs
+  * vendor github.com/containers/image@v2.0.1
+  * Added '-' syntax to remove volume config option
+  * delete successfully pushed message
+  * Add golint linter and apply fixes
+  * vendor github.com/containers/storage@v1.12.15
+  * Change wait to sleep in buildahimage readme
+  * Handle ReadOnly images when deleting images
+  * Add support for listing read/only images
+  * from/import: record the base image's digest, if it has one
+  * Fix CNI version retrieval to not require network connection
+  * Add misspell linter and apply fixes
+  * Add goimports linter and apply fixes
+  * Add stylecheck linter and apply fixes
+  * Add unconvert linter and apply fixes
+  * image: make sure we don't try to use zstd compression
+  * run.bats: skip the "z" flag when testing --mount
+  * Update to runc v1.0.0-rc8
+  * Update to match updated runtime-tools API
+  * bump github.com/opencontainers/runtime-tools to v0.9.0
+  * Build e2e tests using the proper build tags
+  * Add unparam linter and apply fixes
+  * Run: correct a typo in the --cap-add help text
+  * unshare: add a --mount flag
+  * fix push check image name is not empty
+  * add: fix slow copy with no excludes
+  * Add errcheck linter and fix missing error check
+  * Improve tests/tools/Makefile parallelism and abstraction
+  * Fix response body not closed resource leak
+  * Switch to golangci-lint
+  * Add gomod instructions and mailing list links
+  * On Masked path, check if /dev/null already mounted before mounting
+  * Update to containers/storage v1.12.13
+  * Refactor code in package imagebuildah
+  * Add rootless podman with NFS issue in documentation
+  * Add --mount for buildah run
+  * import method ValidateVolumeOpts from libpod
+  * Fix typo
+  * Makefile: set GO111MODULE=off
+  * rootless: add the built-in slirp DNS server
+  * Update docker/libnetwork to get rid of outdated sctp package
+  * Update buildah-login.md
+  * migrate to go modules
+  * install.md: mention go modules
+  * tests/tools: go module for test binaries
+  * fix --volume splits comma delimited option
+  * Add bud test for RUN with a priv'd command
+  * vendor logrus v1.4.2
+  * pkg/cli: panic when flags can't be hidden
+  * pkg/unshare: check all errors
+  * pull: check error during report write
+  * run_linux.go: ignore unchecked errors
+  * conformance test: catch copy error
+  * chroot/run_test.go: export funcs to actually be executed
+  * tests/imgtype: ignore error when shutting down the store
+  * testreport: check json error
+  * bind/util.go: remove unused func
+  * rm chroot/util.go
+  * imagebuildah: remove unused dedupeStringSlice
+  * StageExecutor: EnsureContainerPath: catch error from SecureJoin()
+  * imagebuildah/build.go: return instead of branching
+  * rmi: avoid redundant branching
+  * conformance tests: nilness: allocate map
+  * imagebuildah/build.go: avoid redundant filepath.Join()
+  * imagebuildah/build.go: avoid redundant os.Stat()
+  * imagebuildah: omit comparison to bool
+  * fix "ineffectual assignment" lint errors
+  * docker: ignore "repeats json tag" lint error
+  * pkg/unshare: use ... instead of iterating a slice
+  * conformance: bud test: use raw strings for regexes
+  * conformance suite: remove unused func/var
+  * buildah test suite: remove unused vars/funcs
+  * testreport: fix golangci-lint errors
+  * util: remove redundant return statement
+  * chroot: only log clean-up errors
+  * images_test: ignore golangci-lint error
+  * blobcache: log error when draining the pipe
+  * imagebuildah: check errors in deferred calls
+  * chroot: fix error handling in deferred funcs
+  * cmd: check all errors
+  * chroot/run_test.go: check errors
+  * chroot/run.go: check errors in deferred calls
+  * imagebuildah.Executor: remove unused onbuild field
+  * docker/types.go: remove unused struct fields
+  * util: use strings.ContainsRune instead of index check
+  * Cirrus: Initial implementation
+  * buildah-run: fix-out-of-range panic (2)
+  * Update containers/image to v2.0.0
+  * run: fix hang with run and --isolation=chroot
+  * run: fix hang when using run
+  * chroot: drop unused function call
+  * remove --> before imgageID on build
+  * Always close stdin pipe
+  * Write deny to setgroups when doing single user mapping
+  * Avoid including linux/memfd.h
+  * Add a test for the symlink pointing to a directory
+  * Add missing continue
+  * Fix the handling of symlinks to absolute paths
+  * Only set default network sysctls if not rootless
+  * Support --dns=none like podman
+  * fix bug --cpu-shares parsing typo
+  * Fix validate complaint
+  * Update vendor on containers/storage to v1.12.10
+  * Create directory paths for COPY thereby ensuring correct perms
+  * imagebuildah: use a stable sort for comparing build args
+  * imagebuildah: tighten up cache checking
+  * bud.bats: add a test verying the order of --build-args
+  * add -t to podman run
+  * imagebuildah: simplify screening by top layers
+  * imagebuildah: handle ID mappings for COPY --from
+  * imagebuildah: apply additionalTags ourselves
+  * bud.bats: test additional tags with cached images
+  * bud.bats: add a test for WORKDIR and COPY with absolute destinations
+  * Cleanup Overlay Mounts content
+  * Add support for file secret mounts
+  * Add ability to skip secrets in mounts file
+  * allow 32bit builds
+  * fix tutorial instructions
+  * imagebuilder: pass the right contextDir to Add()
+  * add: use fileutils.PatternMatcher for .dockerignore
+  * bud.bats: add another .dockerignore test
+  * unshare: fallback to single usermapping
+  * addHelperSymlink: clear the destination on os.IsExist errors
+  * bud.bats: test replacing symbolic links
+  * imagebuildah: fix handling of destinations that end with '/'
+  * bud.bats: test COPY with a final "/" in the destination
+  * linux: add check for sysctl before using it
+  * unshare: set _CONTAINERS_ROOTLESS_GID
+  * Rework buildahimamges
+  * build context: support https git repos
+  * Add a test for ENV special chars behaviour
+  * Check in new Dockerfiles
+  * Apply custom SHELL during build time
+  * config: expand variables only at the command line
+  * SetEnv: we only need to expand v once
+  * Add default /root if empty on chroot iso
+  * Add support for Overlay volumes into the container.
+  * Export buildah validate volume functions so it can share code with libpod
+  * Bump baseline test to F30
+  * Fix rootless handling of /dev/shm size
+  * Avoid fmt.Printf() in the library
+  * imagebuildah: tighten cache checking back up
+  * Handle WORKDIR with dangling target
+  * Default Authfile to proper path
+  * Make buildah run --isolation follow BUILDAH_ISOLATION environment
+  * Vendor in latest containers/storage and containers/image
+  * getParent/getChildren: handle layerless images
+  * imagebuildah: recognize cache images for layerless images
+  * bud.bats: test scratch images with --layers caching
+  * Get CHANGELOG.md updates
+  * Add some symlinks to test our .dockerignore logic
+  * imagebuildah: addHelper: handle symbolic links
+  * commit/push: use an everything-allowed policy
+  * Correct manpage formatting in files section
+  * Remove must be root statement from buildah doc
+  * Change image names to stable, testing and upstream
+  * Don't create directory on container
+  * Replace kubernetes/pause in tests with k8s.gcr.io/pause
+  * imagebuildah: don't remove intermediate images if we need them
+  * Rework buildahimagegit to buildahimageupstream
+  * Fix Transient Mounts
+  * Handle WORKDIRs that are symlinks
+  * allow podman to build a client for windows
+  * Touch up 1.9-dev to 1.9.0-dev
+  * Resolve symlink when checking container path
+  * commit: commit on every instruction, but not always with layers
+  * CommitOptions: drop the unused OnBuild field
+  * makeImageRef: pass in the whole CommitOptions structure
+  * cmd: API cleanup: stores before images
+  * run: check if SELinux is enabled
+  * Fix buildahimages Dockerfiles to include support for additionalimages mounted from host.
+  * Detect changes in rootdir
+  * Fix typo in buildah-pull(1)
+  * Vendor in latest containers/storage
+  * Keep track of any build-args used during buildah bud --layers
+  * commit: always set a parent ID
+  * imagebuildah: rework unused-argument detection
+  * fix bug dest path when COPY .dockerignore
+  * Move Host IDMAppings code from util to unshare
+  * Add BUILDAH_ISOLATION rootless back
+  * Travis CI: fail fast, upon error in any step
+  * imagebuildah: only commit images for intermediate stages if we have to
+  * Use errors.Cause() when checking for IsNotExist errors
+  * auto pass http_proxy to container
+  * imagebuildah: don't leak image structs
+  * Add Dockerfiles for buildahimages
+  * Bump to Replace golang 1.10 with 1.12
+  * add --dns* flags to buildah bud
+  * Add hack/build_speed.sh test speeds on building container images
+  * Create buildahimage Dockerfile for Quay
+  * rename 'is' to 'expect_output'
+  * squash.bats: test squashing in multi-layered builds
+  * bud.bats: test COPY --from in a Dockerfile while using the cache
+  * commit: make target image names optional
+  * Fix bud-args to allow comma separation
+  * oops, missed some tests in commit.bats
+  * new helper: expect_line_count
+  * New tests for #1467 (string slices in cmdline opts)
+  * Workarounds for dealing with travis; review feedback
+  * BATS tests - extensive but minor cleanup
+  * imagebuildah: defer pulling images for COPY --from
+  * imagebuildah: centralize COMMIT and image ID output
+  * Travis: do not use traviswait
+  * imagebuildah: only initialize imagebuilder configuration once per stage
+  * Make cleaner error on Dockerfile build errors
+  * unshare: move to pkg/
+  * unshare: move some code from cmd/buildah/unshare
+  * Fix handling of Slices versus Arrays
+  * imagebuildah: reorganize stage and per-stage logic
+  * imagebuildah: add empty layers for instructions
+  * Add missing step in installing into Ubuntu
+  * fix bug in .dockerignore support
+  * imagebuildah: deduplicate prepended "FROM" instructions
+  * Touch up intro
+  * commit: set created-by to the shell if it isn't set
+  * commit: check that we always set a "created-by"
+  * docs/buildah.md: add "containers-" prefixes under "SEE ALSO"
+
+-------------------------------------------------------------------
+Mon Apr  1 14:47:27 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.7.2
+  * Updates vendored containers/storage to latest version
+  * rootless: by default use the host network namespace
+
+-------------------------------------------------------------------
+Fri Mar  1 10:12:50 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.7.1
+  * Minor fix to vendor in github.com/containers/image 1.5 version
+  * This fixes a crash on pulling of images
+- Stop building from specific commit
+
+-------------------------------------------------------------------
+Tue Feb 26 16:51:30 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.7
+  * vendor containers/image v1.4
+  * Make "images --all" faster
+  * Remove quiet option from pull options
+  * Support oci layout format
+
+-------------------------------------------------------------------
+Thu Jan 17 14:21:58 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.6
+  * unshare: do not set USER=root
+  * run: ignore EIO when flushing at the end, avoid double log
+  * build-using-dockerfile,commit: disable compression by default
+  * Make rootless work under no_pivot_root
+  * Properly format images JSON output
+  * Assume user 0 group 0, if /etc/passwd file in container.
+  * Add buildah info command
+- Full changelog: https://github.com/containers/buildah/releases/tag/v1.6
+
+-------------------------------------------------------------------
+Fri Nov 23 07:57:58 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v1.5-1 (2018-11-21)
+  * Print command in SystemExec as debug information
+  * Sort CLI flags
+  * Update imagebuild depdency to support heading ARGs in Dockerfile
+  * rootless: do not specify --rootless to the OCI runtime
+  * Exclude --force-rm from common bud cli flags
+  * run: bind mount /etc/hosts and /etc/resolv.conf if not in a volume
+  * rootless: use slirp4netns to setup the network namespace
+  * rootless: only discard network configuration names
+  * run: only set up /etc/hosts or /etc/resolv.conf with network
+  * Handle directories better in bud -f
+  * common: support a per-user registries conf file
+  * unshare: do not override the configuration
+  * common: honor the rootless configuration file
+  * unshare: create a new mount namespace
+  * unshare: support libpod rootless pkg
+  * Allow container storage to manage the SELinux labels
+  * imagebuilder.BuildDockerfiles: return the image ID
+  * Allow setting --no-pivot default with an env var
+  * Add man page and bash completion, for --no-pivot
+  * Add the --no-pivot flag to the run command
+  * Improve reporting about individual pull failures
+  * Fix From As in Dockerfile
+  * Sort CLI flags of buildah bud
+  * unshare: detect when unprivileged userns are disabled
+  * buildah: use the same logic for XDG_RUNTIME_DIR as podman
+  * Make sure we log or return every error
+  * Correctly set DockerInsecureSkipTLSVerify when pulling images
+  * chroot: set up seccomp and capabilities after supplemental groups
+  * chroot: fix capabilities list setup and application
+
+-------------------------------------------------------------------
+Sun Nov  4 08:49:19 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Require slirp4netns to enable networking for unprivileged network namespaces
+  aka networking for rootless buildah.
+
+-------------------------------------------------------------------
+Wed Oct  3 07:32:39 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v1.4 (2018-10-02)
+  * Touchup pull manpage
+  * Export buildah ReserveSELinuxLables so podman can use it
+  * Update rmi man for prune changes
+  * Copy ExposedPorts from base image into the config
+  * Change rmi --prune to not accept an imageID
+  * Builtin volumes should be owned by the UID/GID of the container
+  * Move buildah from projecatatomic/buildah to containers/buildah
+  * bash: Completion options
+  * Don't build btrfs if it is not installed
+  * Push: Allow an empty destination
+  * Fix arg usage in buildah-tag
+  * Evaluate symbolic links on Add/Copy Commands
+  * Retain bounding set when running containers as non root
+  * push: show image digest after push succeed
+  * Exclude --layers from the common bug cli flags
+  * Make buildah-from error message clear when flags are after arg
+  * Warn about using Commands in Dockerfile that are not supported by OCI.
+  * Document BUILDAH_* environment variables in buildah bud --help output
+  * Fix --layers ADD from url issue
+  * Display the correct ID after deleting image
+  * Handle COPY --chown in Dockerfile
+  * Document STORAGE_DRIVER and STORAGE_OPTS environment variable
+  * Expand variables names for --env
+
+-------------------------------------------------------------------
+Wed Sep  5 07:47:01 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Set the correct commit for `buildah version`.
+- Set the cnilib version for `buildah version`.
+
+-------------------------------------------------------------------
+Mon Aug  6 06:17:06 UTC 2018 - vrothberg@suse.com
+
+- Update buildah to v1.3:
+  * bud should not search context directory for Dockerfile
+  * Set BUILDAH_ISOLATION=rootless when running unprivileged
+  * Fix rmi to remove intermediate images associated with an image
+  * Set the default ulimits to match Docker
+  * buildah: no args is out of bounds
+  * preprocess ".in" suffixed Dockerfiles
+  * Add support for multiple Short options
+  * Update to latest urvave/cli
+  * Create buildah pull command
+  * Allow ping command without NET_RAW Capabilities
+  * Allow Dockerfile content to come from stdin
+  * add rename command
+  * Completion command
+  * Update vendor for runc to fix 32 bit builds
+
+-------------------------------------------------------------------
+Mon Jul 16 06:33:14 UTC 2018 - vrothberg@suse.com
+
+- Update buildah to v1.2:
+  * build-using-dockerfile: let -t include transports again
+  * Block use of /proc/acpi and /proc/keys from inside containers
+  * Fix handling of -registries-conf
+  * Add -cidfile option to from
+  * Add a -loglevel option to build-with-dockerfile
+  * docs: Follow man-pages(7) suggestions for SYNOPSIS
+  * umount: add all option to umount all mounted containers
+  * Fix buildah bud -layers
+  * Force ownership of /etc/hosts and /etc/resolv.conf to 0:0
+  * build without seccomp
+  * Add Capabilities lists to BuilderInfo
+  * Fix ARGS parsing for run commands
+  * Add info on registries.conf to from manpage
+  * mount: support multiple inputs
+  * Allow -userns-uid-map/-userns-gid-map to be global options
+  * Add -rm and -force-rm to buildah bud
+  * Add -all,-a flag to buildah images
+  * Add environment variable BUILDAH_RUNTIME
+  * Add -layers and -no-cache to buildah bud
+  * Change 'registries' to 'container registries' in man
+  * Add registries.conf link to a few man pages
+
+- install missing buildah (1) manpage
+
+- install bash completion at /usr/share/bash-completion/completions
+
+- buildmode=pie: build position independent code
+
+-------------------------------------------------------------------
+Mon Jun 11 05:52:37 UTC 2018 - vrothberg@suse.com
+
+- Update buildah to v1.1:
+  * Drop capabilities if running container processes as non root
+  * Print Warning message if cmd will not be used based on entrypoint
+  * Shouldn't add insecure registries to list of search registries
+  * Report errors on bad transports specification when pushing images
+  * Add disable-content-trust noop flag to bud
+  * runCopyStdio(): don't close stdin unless we saw POLLHUP
+  * Add registry errors for pull
+  * Give better messages to users when image can not be found
+  * Add environment variable to buildah --format
+  * Accept json array input for config entrypoint
+  * Add OnBuild support for Dockerfiles
+  * buildah bud should require a context directory or URL
+  * buildah bud picks up ENV from base image
+  * Add CLI options for specifying namespace and cgroup setup
+  * Read UID/GID mapping information from containers and images
+  * build-using-dockerfile: add --annotation
+  * Implement --squash for build-using-dockerfile and commit
+  * Vendor in latest container/storage for devicemapper support
+  * Test with Go 1.10, too
+  * Handle /etc/hosts and /etc/resolv.conf properly in container
+  * Add support for buildah bud --label
+  * buildah push/from can push and pull images with no reference
+  * builder-inspect: fix format option
+  * Add cpu-shares short flag (-c) and cpu-shares CI tests
+
+-------------------------------------------------------------------
+Sun Jun 10 23:44:35 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jun  7 06:46:21 UTC 2018 - vrothberg@suse.com
+
+- Update buildah to v1.0:
+  * Update option and documentation for --force-rm
+  * Update buildah run to make command required
+  * Do not print directly to stdout in Commit()
+  * Force "localhost" as a default registry
+  * Validate host and container paths passed to --volume
+  * Add --compress, --rm, --squash flags as a noop for bud
+  * Add FIPS mode secret to buildah run and bud
+  * Add config --comment/--domainname/--history-comment/--hostname
+  * 'buildah config': stop replacing Created-By whenever it's not specified
+  * Modify man pages so they compile correctly in mandb
+  * Add description on how to do --isolation to buildah-bud man page
+  * Add support for --iidfile to bud and commit
+  * Remove tarball as an option from buildah push --help
+  * Fix secrets patch
+  * Display imageId after commit
+  * config: add support for StopSignal
+  * Allow referencing stages as index and names
+  * Add multi-stage builds support
+  * Allow umount to have multi-containers
+  * buildah bud walks symlinks
+  * Allow --cmd parameter to have commands as values
+  * Make default-mounts-file a hidden option
+  * Add various transport support to buildah from
+  * shallowCopy: avoid a second read of the container's layer
+  * Add openSUSE in install section
+  * run: do not open /etc/hosts if not needed
+
+-------------------------------------------------------------------
+Tue Jun  5 08:18:08 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to a simpler form
+
+-------------------------------------------------------------------
+Mon Jun  4 08:54:58 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Wed Apr  4 09:52:25 UTC 2018 - vrothberg@suse.com
+
+- Change build date to SOURCE_DATE_EPOCH to make builds reproducible.
+
+-------------------------------------------------------------------
+Thu Mar 29 08:50:12 UTC 2018 - vrothberg@suse.com
+
+- Fix `buildah version` by compiling the build date into the binary.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:28:55 UTC 2018 - vrothberg@suse.com
+
+- Package buildah v0.12.  Buildah is a tool to build OCI images, and is used
+  by podman-build.

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Jul  2 09:27:30 UTC 2015 - coolo@suse.com
+
+- updated to 0.200013
+   see /usr/share/doc/packages/perl-Throwable/Changes
+
+  0.200013  2015-07-01 09:46:11-04:00 America/New_York
+          - document that Moo, rather than Moose, may be used if preferred
+            (Brian Manning)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:33:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.200012
+   see /usr/share/doc/packages/perl-Throwable/Changes
+
+  0.200012  2014-09-19 21:59:28-04:00 America/New_York
+          - avoid memory leaks and infinite recursion when stringifying
+            (thanks, Dagfinn Ilmari Mannsåker!)
+  
+  0.200011  2014-04-02 20:49:49-04:00 America/New_York
+          - eliminate prereq on Class::Load (thanks, Toby Inkster!)
+          - eliminate preqre on MooX::Types::MooseLike::Base (Toby Inkster)
+  
+  0.200010  2014-03-08 22:39:25-05:00 America/New_York
+          - eliminate a memory leak in StackTrace::Auto (thanks, Graham Knop!)
+  
+  0.200009  2013-10-21 22:05:53 America/New_York
+          - avoid boolifying objects that might be held in the out of band
+            storage
+          - update bugtracker and repo metadata
+          - more changes coming soon
+  
+  0.200008  2013-04-30 12:50:19 America/New_York
+            avoid a Moose-using test in the suite of tests run by users (thanks,
+            Dave Rolsky)
+  
+  0.200007  2013-04-09 19:20:02 America/New_York
+            allow previous_exception to be passed to the constructor
+  
+  0.200006  2013-04-09 14:58:07 America/New_York
+            lose old $@ in previous_exception less often under 5.17.10 (thanks,
+            David Wheeler)
+  
+  0.200005  2013-04-05 15:04:52 America/New_York
+            Plugged memory leak (thaljef)
+  
+  0.200004  2013-02-21 16:50:05 America/New_York
+            update Throwable::Error to use around modifier instead of calling
+            SUPER:: (thanks, Justin Hunter)
+  
+  0.200003  2012-10-18 08:52:20 America/New_York
+            no code changes; just no longer trial
+  
+  0.200002  2012-10-09 08:56:21 America/New_York
+            require Moo 1.000001
+  
+  0.200001  2012-09-22 18:10:29 America/New_York
+            update a prerequisite (thanks, FREW)
+  
+  0.200000  2012-09-20 14:12:34 America/New_York
+            port to Moo (FREW, MSTROUT, ILMARI)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:52 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Jan 19 13:46:55 UTC 2011 - coolo@novell.com
+
+- initial package 0.102080
+  * created by cpanspec 1.78.03
+

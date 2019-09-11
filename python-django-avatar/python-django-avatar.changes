@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Thu Jan  3 07:39:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Sadly the tests are working only under django 1.11 thus
+  skip them on py3
+
+-------------------------------------------------------------------
+Mon Dec 10 15:57:54 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.0:
+  * py3 support
+  * new django 1.11 and 2.0 support
+
+-------------------------------------------------------------------
+Fri Sep 27 13:31:55 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.0
+  + No changelog available
+- Cleanup specfile
+- Replace python-ditribute with python-setuptools BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar 13 08:15:21 UTC 2012 - saschpe@suse.de
+
+- Add %changelog line
+
+-------------------------------------------------------------------
+Mon Mar 12 21:48:49 UTC 2012 - saschpe@gmx.de
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jul  5 19:23:48 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.5.
+
+-------------------------------------------------------------------
+Tue Mar 16 00:56:43 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.4.
+
+-------------------------------------------------------------------
+Mon Nov  9 00:52:42 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0.3;
+- Building as noarch for openSUSE >= 11.2.
+
+-------------------------------------------------------------------
+Thu Aug 13 21:12:46 UTC 2009 - alexandre@exatati.com.br
+
+- Initial version (1.0.1) for openSUSE.

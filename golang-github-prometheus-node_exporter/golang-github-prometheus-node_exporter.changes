@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Aug  2 06:36:43 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Add network-online (Wants and After) dependency to systemd unit bsc#1143913
+
+-------------------------------------------------------------------
+Tue Dec 11 17:07:54 UTC 2018 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.17.0
+  + includes breaking changes
+  + supvervisord collector reports start_time_seconds rather than uptime
+  + The wifi collector is disabled by default due to suspected caching issues and goroutine leaks
+  See https://github.com/prometheus/node_exporter/releases/tag/v0.17.0
+  for full changelog
+
+-------------------------------------------------------------------
+Thu Nov 29 12:49:34 UTC 2018 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.16.0
+  + includes breaking changes
+  + several metrics renamed
+  + split out cpu guest metrics
+  See https://github.com/prometheus/node_exporter/releases/tag/v0.16.0
+  for full changelog
+
+-------------------------------------------------------------------
+Sun Feb 18 20:45:46 UTC 2018 - marix@marix.org
+
+- Run tests during packaging
+
+-------------------------------------------------------------------
+Thu Jan 25 07:07:24 UTC 2018 - kkaempf@suse.com
+
+- Update to 0.15.2
+  See https://github.com/prometheus/node_exporter/blob/master/CHANGELOG.md
+
+- Provides node_exporter, prometheus(node_exporter)
+
+-------------------------------------------------------------------
+Thu Jul 27 09:03:36 UTC 2017 - tserong@suse.com
+
+- Add BuildRequires: fdupes
+
+-------------------------------------------------------------------
+Tue May  9 07:27:32 UTC 2017 - tserong@suse.com
+
+- Add systemd unit file
+- Run as unprivileged "prometheus" user
+
+-------------------------------------------------------------------
+Wed Mar 29 09:51:45 UTC 2017 - moio@suse.com
+
+- Initial version

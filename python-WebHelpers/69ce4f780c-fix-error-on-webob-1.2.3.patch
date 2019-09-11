@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Atsushi Odagiri <aodagx@gmail.com>
+# Date 1352733956 -32400
+# Branch trunk
+# Node ID 69ce4f780c4332d137499bdc2f60676e50dbb27a
+# Parent  acfb17881c1c1b045bab1f9b145d336b64ab7d08
+fix error on webob 1.2.3
+
+diff --git a/webhelpers/mimehelper.py b/webhelpers/mimehelper.py
+--- a/webhelpers/mimehelper.py
++++ b/webhelpers/mimehelper.py
+@@ -110,8 +110,7 @@
+             if '.' in last_part:
+                 has_extension = True
+         if 'HTTP_ACCEPT' in self.env:
+-            possible_from_accept_header = webob.acceptparse.MIMEAccept('ACCEPT', 
+-                self.env['HTTP_ACCEPT'])
++            possible_from_accept_header = webob.acceptparse.MIMEAccept(self.env['HTTP_ACCEPT'])
+         if has_extension == False:
+             if possible_from_accept_header is None:
+                 return self._set_response_content_type(content_type)

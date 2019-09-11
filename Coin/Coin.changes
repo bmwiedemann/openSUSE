@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Sun Jul 23 19:29:55 UTC 2017 - olaf@aepfle.de
+
+- Fix invalid C++ with Coin.patch
+
+-------------------------------------------------------------------
+Fri Apr 14 09:09:59 UTC 2017 - lnussel@suse.de
+
+- Remove obsolete 13.2 patch fix-freetype2-includes.patch, fixes
+  build for 42.3
+
+-------------------------------------------------------------------
+Thu Mar  9 00:53:44 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Sun Oct 30 18:06:58 UTC 2016 - jengelh@inai.de
+
+- Redo description from in-tarball README
+- Run fdupes over entire package
+
+-------------------------------------------------------------------
+Mon Aug 15 06:56:45 UTC 2016 - adrian@suse.de
+
+- install data files into versioned directory
+
+-------------------------------------------------------------------
+Sat Jul 30 21:10:02 UTC 2016 - wk@ire.pw.edu.pl
+
+- Do not use freetype2 patch on Leap 42.2
+
+-------------------------------------------------------------------
+Sat Jul 30 06:13:03 UTC 2016 - adrian@suse.de
+
+- fix file conflict with qwt-devel-doc (deprecated man page)
+
+-------------------------------------------------------------------
+Sat Jul  9 19:25:00 UTC 2016 - dev@stellardeath.org
+
+- Import bugfix from Fedora that corrects a segfault that appears
+  with GCC-6 due to an error in Coin,
+
+  * 0012-memhandler-initialization.patch
+
+  More information about this available at
+
+    https://bugzilla.redhat.com/show_bug.cgi?id=1323159#c43
+
+-------------------------------------------------------------------
+Tue Jul  5 08:59:26 UTC 2016 - adrian@suse.de
+
+- fix download url of source tar ball
+
+-------------------------------------------------------------------
+Sat Mar 26 08:59:53 UTC 2016 - wk@ire.pw.edu.pl
+
+- Do not use freetype2 patch on Tumbleweed
+
+-------------------------------------------------------------------
+Sun Mar  9 13:05:11 UTC 2014 - tittiatcoke@gmail.com
+
+- Drop patch gcc-4.7.patch due to upstream inclusion
+- Added patch fix-freetype2-includes.patch to fix 
+  build issues with freetype2
+
+-------------------------------------------------------------------
+Sun Oct 28 23:07:58 UTC 2012 - asterios.dramis@gmail.com
+
+- Added bzip2 as build requirement (needed for Factory).
+
+-------------------------------------------------------------------
+Tue Sep 25 20:38:36 UTC 2012 - asterios.dramis@gmail.com
+
+- Use pkgconfig(...) for Mesa and xorg-x11 build requirements. This fixes also
+  compilation in Factory due to the Mesa package changes (with the addition of
+  pkgconfig(dri) as build requirement).
+
+-------------------------------------------------------------------
+Sat Apr 28 17:19:03 UTC 2012 - asterios.dramis@gmail.com
+
+- Added the following devel packages as requirements of Coin-devel:
+  Mesa-libGL-devel, Mesa-libGLU-devel, fontconfig-devel, freetype2-devel,
+  libICE-devel, libX11-devel, libXt-devel, openal-soft-devel and zlib-devel.
+
+-------------------------------------------------------------------
+Fri Apr 27 19:20:45 UTC 2012 - asterios.dramis@gmail.com
+
+- Added a patch to fix compilation with gcc-4.7 (based on a patch from Fedora).
+- Link to the needed libraries during compilation instead of using runtime
+  linking. This added the following build dependencies:
+  Mesa-libGL-devel, Mesa-libGLU-devel, fontconfig-devel, freetype2-devel,
+  libICE-devel, libX11-devel, libXt-devel, openal-soft-devel and zlib-devel.
+- Removed freeglut-devel dependency (not needed).
+- Build development documentation (with doxygen).
+- Changed License to GPL-2.0.
+- Remove build time references so build-compare can do its work.
+- Use the correct arch libdir in Coin.pc and coin-default.cfg files.
+
+-------------------------------------------------------------------
+Fri Dec 10 16:57:15 UTC 2010 - andrea@links2linux.de
+
+- new upstream version 3.1.3
+* Sat Sep 26 2009 - Andrea Florio <andrea@links2linux.de> 3.1.1
+- new upstream version
+* Sun Sep 28 2008 - Andrea Florio <andrea@links2linux.de>
+- complete spec rewrite
+* Sun Nov 18 2007 Michal Vyskocil <mvyskocil@suse.cz>
+- First release for OpenSuse Build Service

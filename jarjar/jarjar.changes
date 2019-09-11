@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Tue Dec 11 12:31:52 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against objectweb-asm >= 5 in order to avoid getting stuck
+  with a particular asmN package.
+
+-------------------------------------------------------------------
+Tue Nov 20 08:24:56 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Additional aliases for the jarjar:jarjar artifact
+- Added patch:
+  * jarjar-1.4-asm5.patch
+    + use asm5 api
+
+-------------------------------------------------------------------
+Thu Jul 26 10:50:50 UTC 2018 - jengelh@inai.de
+
+- Use noun phrasing in summaries; trim bias from descriptions.
+- Remove one idempotent %if..%endif pair.
+
+-------------------------------------------------------------------
+Wed Jun 13 11:58:28 UTC 2018 - fstrba@suse.com
+
+- Upgrade to upstream version 1.4
+- Added patch:
+  * do-not-embed-asm.patch
+    + modify upstream build so that it does not embed the asm
+      inside the jarjar jar files
+- Require asm5 for build since we want to be able to support java 8
+  bytecode
+- Build with java source and target 8
+
+-------------------------------------------------------------------
+Mon Sep 18 12:22:22 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+- Clean spec file and fix a warning with duplicate waste
+
+-------------------------------------------------------------------
+Fri May 19 09:52:24 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:11 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Sep 10 11:31:41 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:53 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Apr 23 13:37:37 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging for SUSE. Version 0.9 (jpp5) 
+

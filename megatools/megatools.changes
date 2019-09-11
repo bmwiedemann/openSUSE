@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Fri Jul 21 20:40:58 UTC 2017 - petr@cervinka.net
+
+* Updated to version 1.9.98
+  - spec file cleaned
+  - removed libmega and devel packages (upstream change)
+  - new build requirement asciidoc
+  - updated keyring file with correct public key 0x77CFEFF1 
+
+* New features:
+  - Support upload/download speed limit settings
+  - Support socks proxy
+  - Improved progress reporting
+  - Support for OpenSSL 1.1.x
+
+* Removals:
+  - Remove undocummented --abort-on-error option. Tools now always
+    report errors through exit status.
+  - Remove libmega.so public library support and a lot of unused code
+    that was planned to be used for 2.0
+  - Remove megamv (it was never implemented and confused users)
+  - Remove megafs (it was just an experiment and confused users)
+
+* Cleanups:
+  - Cleanup build system a bit
+  - Cleanup CLI option handling, improved --help output
+
+* Fixes:
+  - Enable automatic decompression (CURLOPT_ACCEPT_ENCODING) (by protomouse)
+    (This finally fixes the problem with HTTP compression.)
+  - Exit status from all the tools is now correctly reported
+  - Fix syncing of symlinked files
+  - Support very long passwords in the password prompt (up to 1024 chars)
+
+-------------------------------------------------------------------
+Wed Apr 20 16:52:58 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 1.9.97, bugfix release
+- move libmega0 to separate subpackage
+
+-------------------------------------------------------------------
+Fri Oct  9 09:31:56 UTC 2015 - sleep_walker@opensuse.org
+
+- add keyring
+
+-------------------------------------------------------------------
+Thu Aug  6 07:46:06 UTC 2015 - sleep_walker@opensuse.org
+
+- remove static libraries
+- clean-up the spec file manually and with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul 30 12:09:44 UTC 2015 - yoshi314+obs@gmail.com
+
+- bump to 1.9.95 
+
+-------------------------------------------------------------------
+Fri Oct 24 08:22:49 UTC 2014 - oleg@grodno.ru
+
+- Update to version 1.9.93
+
+-------------------------------------------------------------------
+Mon Aug 25 08:26:16 UTC 2014 - oleg@grodno.ru
+
+Updated to version 1.9.92 
+
+-------------------------------------------------------------------
+Sat Jul  6 21:11:00 UTC 2013 - oleg@grodno.ru
+
+Megatools 1.9.91 released with bugfixes and all new man pages.
+

@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Thu Nov  8 07:01:39 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.3.4
+   see /usr/share/doc/packages/perl-Test-Trap/Changes
+
+  0.3.4	Sun Oct 14 20:39:41 CEST 2018
+  	For this release, many thanks go to Todd Rinaldo, who found
+          that my fix for the $^E clobbering wound up clobbering $! in
+          every basic test.
+          - Declared some required and optional dependencies.
+          - RT #127112 is addressed, using the patch from TODDR@cpan.org
+            augmented wtih a comment.
+          - A regression test has been added for this.
+
+-------------------------------------------------------------------
+Thu Aug 24 06:28:24 UTC 2017 - coolo@suse.com
+
+- updated to 0.3.3
+   see /usr/share/doc/packages/perl-Test-Trap/Changes
+
+  0.3.3   Tue Aug 22 02:06:09 CEST 2017
+  	For this release, many thanks go to Slaven Rezic, who found
+          that Test::More::is() (or Test2::Formatter::TAP::write())
+          clobbers $^E on Windows.
+          - RT #105125 is addressed:  The tests now use a copy of $^E
+            taken before Test::More gets a chance to touch it.
+  	- Further, the Test::Trap test methods might also clobber $^E
+            (via Test::More or other modules), so they now localize $^E
+            before invoking the callback.
+          - Regression tests have been added for this.
+
+-------------------------------------------------------------------
+Tue Apr 14 19:17:48 UTC 2015 - coolo@suse.com
+
+- updated to 0.3.2
+   see /usr/share/doc/packages/perl-Test-Trap/Changes
+
+  0.3.2	Tue Feb 24 00:19:23 CET 2015
+          The tempfile-preserve strategy was (always) broken on
+          non-perlio perls.
+          Also, some of the tests were (recently) noisy on old perls.
+          Test::Trap::Builder::TempFile:
+          - add a GOTPERLIO guard to each IO_LAYERS block.
+          Tests:
+          - 03-files.pl now avoid "used only once" warnings.
+  
+  0.3.1	Mon Feb 23 21:43:30 CET 2015
+  	This release doesn't touch library code, but addresses some
+  	test issues:
+          - It fixes RT #102271 by checking for the presence of a
+  	  utf8-layer on the original STDOUT, instead of assuming its
+  	  absence.
+          - It makes some test code cleaner.
+          - It silences redefine warnings during testing on certain
+  	  platforms.
+          Library files: No change but version bump.
+          Tests:
+          - 03-files* now use another global to specify the class to
+            require, replacing a quick-and-dirty hack that turned out to
+            be noisy on some platforms, including Cygwin.
+          - {15-tempfile,16-systemsafe}-options.t now check for the
+            presence of utf8-layer on STDOUT, instead of assuming its
+            absence.  (Either of the environment variables PERL_UNICODE
+            and PERL5OPT could cause such a layer to be present, and
+            there might be other ways to do it.)
+  
+  0.3.0	Thu Dec 18 21:57:51 CET 2014
+  	This release, in brief:
+          - improves clarity through nomenclature:
+                * renames "(output layer) backend implementation" to
+                  "(capture) strategy", for more standard nomenclature
+                  (and less of a mouthful);
+                * renames "pseudo-layer" to "multi-layer" (if so
+                  declared) or "non-trapping layer" (neither is a direct
+                  analogue to PerlIO pseudo layers, so the nomenclature
+                  was misleading);
+          - adds (import) options to the TempFile and SystemSafe capture
+  	  strategy factories, allowing for different ways to handle
+  	  PerlIO layers;
+          - using these for two new standard capture strategies,
+            "tempfile-preserve" and "systemsafe-preserve"; and
+          - fixes a bug in SystemSafe.
+          And, in more detail ...
+          Test::Trap::Builder:
+          - Changes method names per the nomenclature changes, leaving
+            back-compat aliases behind.
+          - Changes error message per the nomenclature changes.  (No
+            back-compat possible, sorry.)
+          - Updates the documentation.
+          Test::Trap::Builder::{TempFile,SystemSafe}:
+          - Import now takes arguments:
+  		strategy name (default {"tempfile","systemsafe"}); and
+                  strategy options (default empty hash).
+          - The following options are supported:
+  		preserve_io_layers (boolean; default false); and
+          	io_layers (colon-separated string; default unset).
+          Test::Trap::Builder::SystemSafe:
+          - Fixes a bug where the original perlio layers were not
+  	  restored after the trap was sprung.
+          Test::Trap::Builder::{PerlIO,TempFile,SystemSafe}:
+          - Updates the code in accordance with Test::Trap::Builder
+            changes; see above.
+          - Updates the documentation.
+          Test::Trap:
+          - Imports new capture strategy, "tempfile-preserve", from
+            TempFile with option preserve_io_layers.
+          - Imports new capture strategy, "systemsafe-preserve", from
+            SystemSafe with option preserve_io_layers.
+          - Updates the code in accordance with Test::Trap::Builder
+            changes; see above.
+          - Updates the documentation.
+          Tests:
+          - changes variable names and comments in accordance with
+            nomenclature changes;
+          - adds tests for the no-restore bug in t/03-files.pl (hence
+            for each tested strategy);
+          - adds t/03-files-{tempfile,systemsafe}-preserve.t to run the
+            basic tests against the new capture strategies;
+          - accounts for the changed error message in t/06-layers.t;
+          - adds t/{15-tempfile,16-systemsafe}-options.t to check
+            capture strategies of varying options.
+  
+  0.2.5	Sun Nov 16 18:31:42 CET 2014
+  	This release localizes $! (ERRNO) for internal operations that
+  	change it, as suggested by Felipe Gasper.  For the same
+  	operations, it also localizes $^E (extended OS error).
+          Library files:
+          - Localize $! and $^E for internal operations that change them.
+          Tests:
+          - Check that bare test blocks leave $!, %!, and $^E unchanged,
+            but that blocks that modify $! and $^E still do so.
+          Also:
+          - Added Module::Build to the configure_requires.
+          - Fix emacs mode line on t/14-leaks.t.
+          - Better comments in lib/Test/Trap/Builder.pm.
+  
+  0.2.4	Sun Mar 30 10:02:16 CEST 2014
+  	This release fixes a memory leak with the default tempfile
+  	backend layer implementation for trapping output.  The
+  	systemsafe alternative backend had the same kind of leak, and
+  	has also been fixed.  (The perlio alternative backend was not
+  	affected.)
+          Thanks go again to Felipe Gasper for discovering this!
+          Test::Trap::Builder:
+          - Add a method ExceptionFunction to make it easier to avoid
+            circular references arising from registered closures.
+            Document and export this method.
+          Test::Trap::Builder::TempFile:
+          - Break a circular reference chain.
+          Test::Trap::Builder::SystemSafe:
+          - Break a similar but slightly more complicated circular
+            reference chain.
+          Tests:
+          - Added t/14-leaks.t to check that the reference count is as
+            expected, at least with trivial code and standard setup for
+            all three output layer backends.
+          Also:
+          - Use ebhanssen@cpan.org for my email address.
+          - Update copyright years.
+          - Update MANIFEST.SKIP &c for use of git (goodbye subversion).
+  
+  0.2.3   Mon Dec 30 14:46:15 CET 2013
+          Library files:
+          - RT #87263: typo fixes, courtesy dsteinbrunner@pobox.com.
+          - Localize the trap coderef, so that it does not hold on to
+            what it closes over, creating stale references, but lets
+            them go out of scope; thanks go to Felipe Gasper.
+          Documentation:
+          - Some clarification for RT #91687: Wrong exit code after die.
+          Tests:
+          - Regression test for the stale references.
+
+-------------------------------------------------------------------
+Wed May 30 11:35:28 UTC 2012 - coolo@suse.com
+
+- updated to 0.2.2
+      Test::Trap::Builder::TempFile & Test::Trap::Builder::SystemSafe:
+      - RT#61776: Remove temporary files at first opportunity;
+        thanks go to Ian Goodacre.
+      Documentation:
+      - RT#61773: return from trap function
+        Document what trap { ... } returns.
+      Tests:
+      - RT#75430: Failing tests in 06-layer.t
+        Convert a number of die_is to die_like, handling cases with
+        and without trailing comma from carp.
+      - Unset another taint-checked environment variable, CDPATH;
+        thanks go to CPAN testers.
+
+-------------------------------------------------------------------
+Wed Apr 20 10:40:31 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.2.1)
+

@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/yomi.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">Alberto Planas Dominguez &lt;aplanas@suse.com&gt;</param>
+    <param name="versionformat">0.0.1+git.%ct.%h</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,0 +1,983 @@
+-------------------------------------------------------------------
+Mon Jul 15 11:09:23 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1563188951.f6f7c6b3:
+  * spec: Provide a "devel" subpackage pulling in all build+test dependencies
+  * spec: Fix warning about missing explicit perl-base
+
+-------------------------------------------------------------------
+Sat Jul 06 11:50:50 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1562413838.c3d5e8ac:
+  * VNC: reverse key order when sending key up events (#1174)
+
+-------------------------------------------------------------------
+Tue Jul 02 07:23:28 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1562052196.bca214ee:
+  * Use default graphics on x86 to circumvent "cirrus" limitations (#1169)
+  * os-autoinst.spec: Fix vanished runtime requires
+  * Save RPM spec file in upstream repo same as for openQA
+
+-------------------------------------------------------------------
+Wed Jun 19 07:53:48 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560860907.6a126c01:
+  * t: Catch output of failing runcmd
+  * osutils: Let the "attempts" sound less harmful
+  * t: Do not waste time waiting in test 13-osutils.t
+  * t: Fix all uncaught output and warnings in 08-autotest.t
+  * t: Fix warning about undefined variable in 17-basetest.t
+  * sshVirtsh: Remove procedure add_serial_console()
+
+-------------------------------------------------------------------
+Sun Jun 16 23:53:45 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560548250.151bd110:
+  * Use QUIET variable for script_run/output
+
+-------------------------------------------------------------------
+Fri Jun 14 08:53:01 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1560502370.2654e4ef:
+  * Format using Perl::Tidy 20190601
+
+-------------------------------------------------------------------
+Wed Jun 05 12:48:21 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1559738889.52a75c17:
+  * sshVirtsh: Log libvirt xml files
+  * Fix missing or double output in autoinst-log.txt with partial revert
+  * Increment API version after  'Always log to autoinst-log.txt'
+  * Fix perl warning about undefined VIRTIO_CONSOLE
+  * Fix typo in HDDFORMAT die handler
+  * Always log to autoinst-log.txt
+  * Add recursive get data call
+
+-------------------------------------------------------------------
+Wed May 29 14:50:35 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1559044089.b8a76372:
+  * qemu: Multiple virtio-consoles
+  * Allow failing for matching regex in autoinst log
+
+-------------------------------------------------------------------
+Mon May 27 06:50:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558854356.09e08ded:
+  * Log best candidate needle also on timeout
+
+-------------------------------------------------------------------
+Fri May 24 22:50:36 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558691185.f7da5cd0:
+  * Avoid "unitialized value in string eq" warning
+  * Add quiet option to wait_serial()
+
+-------------------------------------------------------------------
+Tue May 21 09:56:52 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1558432600.6c62e09d:
+  * Don't modify backend vars when running test
+
+-------------------------------------------------------------------
+Wed May 15 14:33:28 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1557827957.ce72694e:
+  * Add debug output before 'flushing frames'
+
+-------------------------------------------------------------------
+Mon May 13 12:06:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1557391016.927f3d85:
+  * Add explanation to error regarding command server
+  * Extend type_password arguments
+  * Add an option of mousehide for assert_and_click
+  * Assign click_point when parsing needle
+  * Take click point from area over to match
+  * Enable assert_and_click to use an area's click point
+  * Remove out-commented code in assert_and_click
+  * script_output: log script for execution into log
+  * Make get_var_array return values consistent
+
+-------------------------------------------------------------------
+Wed Apr 17 14:33:08 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1555336742.ebf62298:
+  * Export hotkey to os-autoinst-distri
+
+-------------------------------------------------------------------
+Thu Apr 11 11:32:41 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1554982352.0cb8a1e0:
+  * Fix assert_screen_change method call
+  * Allow multiple tap interfaces in one network
+  * Fix error message in consoles::network_console
+  * consoles: Rename virtio_screen to serial_screen
+  * svirt: scp serial_terminal.txt log to worker
+  * svirt: Refactor serial console initialization and running code
+  * svirt: Rename $command variable back to $cmd
+  * sshVirtsh: Rename $channel variable to $chan
+  * svirt: Merge get_ssh_output() implementations into single one
+  * svirt: Remove unused variables from start_serial_grab()
+  * svirt: Pass credentials via %hash in run_ssh_cmd()
+  * svirt: Fix virsh console initialization
+  * svirt: Fix serial backend for s390x
+  * consoles/sshVirtshSUT: Fix domain detection
+
+-------------------------------------------------------------------
+Fri Mar 29 13:01:25 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1553864471.599444e3:
+  * Use always $bmwqemu::vars{NEEDLES_DIR} directly
+  * Make failing exec in sshIucvconn non-fatal
+  * Update to handle xz compressed images
+  * Improve error messages for VNC connection
+  * Improve error handling when using Net::SSH2 library
+  * Use blessed fake baseclass object appropriately
+  * Prevent rendering empty results if no image available
+  * Move virtio rng option _after_ Ethernet setup to keep it as eth0
+  * VMware: Retrieve console-only variable
+  * VMware: Delay boot by 10 seconds
+
+-------------------------------------------------------------------
+Tue Mar 12 11:30:28 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1552382335.1080c396:
+  * Use Mojo helper to write result files
+  * Add QEMU_HUGE_PAGES_PATH test
+  * Add support for TIMEOUT_SCALE in wait_screen_change
+  * Fix scale_timeout call in wait_idle
+  * Add QEMU_HUGE_PAGES_PATH option
+  * Prevent recording empty soft failure test detail
+
+-------------------------------------------------------------------
+Tue Mar 12 11:28:52 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Add dependency for IO::Scalar (needed for
+  https://github.com/os-autoinst/os-autoinst/pull/1109)
+- Add url to github to fix "W: no-url-tag" warning
+
+-------------------------------------------------------------------
+Tue Mar 05 21:21:55 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1551793347.0db294cd:
+  * Improve feedback on "half-open socket"
+  * tidy: Replace bashism and change shebang to /bin/sh
+  * tidy: Replace bashism with dirname + doc
+
+-------------------------------------------------------------------
+Fri Mar 01 15:01:57 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1551452505.a5d8b452:
+  * Add test for logging to t/Makefile.am
+  * doc: Add section Development on Debian/Ubuntu
+  * Extract common run_cmd to prevent duplication
+  * Rename svirt method run_cmd to prevent confusion
+  * Let assert and check_screen fails if no tags specified
+  * Remove MULTINET variable and update documentation
+  * Ensure SCHEDULE to load modules on existing vars.json
+
+-------------------------------------------------------------------
+Tue Feb 26 21:22:00 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1551191805.807aed16:
+  * Run tidy on the correct directory
+
+-------------------------------------------------------------------
+Sat Feb 23 12:38:05 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1550925474.8f5465e5:
+  * Extend arguments for type_string
+  * Configure bootindex for first path only
+  * Add all tests to t/Makefile.am
+
+-------------------------------------------------------------------
+Tue Feb 19 21:21:45 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1550607545.b7b33fb7:
+  * tests: Run also 22-svirt.t
+  * tidy: Fix path detection for os-autoinst-distri-opensuse
+  * Fix skipping needles with missing PNGs and add a test
+  * Fix memory leak when failing to read image
+
+-------------------------------------------------------------------
+Sun Feb 17 13:21:43 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1550400351.e380fdd7:
+  * Enhance documentation for testapi::waitserial()
+
+-------------------------------------------------------------------
+Fri Feb 15 05:21:40 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1550146791.307c430d:
+  * Provide default for get_var('VMWARE_REMOTE_VMM')
+  * Add workaround for snapshots on VMware
+  * Provide default for $vmware_datastore definition
+  * Enable snapshots on VMware
+
+-------------------------------------------------------------------
+Tue Feb 12 21:21:43 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1549897848.e764de36:
+  * Silence complain about undefined $libvirt_connector
+
+-------------------------------------------------------------------
+Sun Feb 10 13:21:34 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1549618330.a27d1d27:
+  * Allow relative paths in PRODUCTDIR as well
+  * Fix table documenting svirt backend variables
+  * Improve code for announcing test end to ws clients
+  * Remove comment referring to non-existent web page
+  * Prevent error about cmd srv connection when test ends
+  * VMware: disable snapshots
+
+-------------------------------------------------------------------
+Mon Feb 04 14:29:29 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1549290558.3e4a5c07:
+  * doc: Add PAUSE_AT et al.
+
+-------------------------------------------------------------------
+Thu Jan 31 12:15:25 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1548936913.ed3a07cd:
+  * Install sshVirtshSUT.pm
+  * Test processing of 'set_pause_at_test' command
+  * Prevent warning in command handler
+  * Check for correct tidy version on execution
+
+-------------------------------------------------------------------
+Mon Jan 21 10:27:09 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1548066416.34c49266:
+  * openvswitch: check dot1q-tunnel support
+
+-------------------------------------------------------------------
+Wed Jan 16 18:08:18 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1547655571.a1a10bd6:
+  * openvswitch: change vlan_mode to dot1q-tunnel
+  * qemu: use /dev/urandom as source for virtio RNG
+  * Add "error" value to matches
+
+-------------------------------------------------------------------
+Thu Jan 10 10:22:51 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1547114685.2ba023eb:
+  * Add missing network_console.pm to Makefile
+  * Add support to checkout git repos+refspecs
+  * Do not incomplete on connection error with ssh based consoles
+
+-------------------------------------------------------------------
+Fri Jan 04 11:56:01 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1546602946.a7be7efa:
+  * Fix missing linebreak in die_handler debug output
+
+-------------------------------------------------------------------
+Sat Dec 22 13:40:35 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1545369866.fc084a6a:
+  * IPMI: support mc reset for sol stability
+  * Fix "tidy" use within os-autoinst-distri-opensuse
+  * Makefile: Prevent docker "build" and "run" to run in parallel
+
+-------------------------------------------------------------------
+Thu Dec 20 05:40:43 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1545236486.6ef6a533:
+  * Introduce versioning for the developer mode API
+  * Use one variable for pausing on screen mismatch
+  * Extend command processing tests
+  * Allow to pause on next command
+  * Disable pause on check_screen timeout when disabling for assert_screen
+  * Reformat with latest version of perltidy
+
+-------------------------------------------------------------------
+Thu Dec 13 09:05:35 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1544691921.44e93d8d:
+  * Don't write _SECRET_* vars in vars.json
+
+-------------------------------------------------------------------
+Mon Dec 10 21:40:19 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1544434670.99778697:
+  * doc: Add missing ;
+
+-------------------------------------------------------------------
+Fri Dec  7 08:49:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- add Cpanel::JSON::XS as buildrequire
+
+-------------------------------------------------------------------
+Fri Dec 07 08:45:24 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1544111663.31867f0e:
+  * Replace all uses of JSON and JSON::XS with Mojo::JSON and Cpanel::JSON::XS
+  * Clean up generically named variables and use more fitting names
+  * Make get_cmd_output() use other connections than 'ssh'
+  * Describe VMWARE_NFS_DATASTORE & VMWARE_REMOTE_VMM
+  * VMware: Rewrite add_disk()
+  * VMware: Replace vCenter with ESXi host
+  * VMware: Support snapshots, suspend, resume etc
+  * Use Perl::Critic::Freenode to determine good coding style
+  * Add unit test for format_vtt_timestamp
+
+-------------------------------------------------------------------
+Fri Nov 30 15:50:25 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1543593014.1e83b015:
+  * Include folder hierachy in category name
+  * Remove actual use of bmwqemu from command processing tests
+  * Increase timeout in fullstack test for 'Skip timeout'
+  * Test command processing for assert/check screen and setting timeout
+  * Allow to adjust timeout via command server
+  * test: Add QEMU_APPEND option tests
+  * Make currently executed function available to developer mode
+  * Keep only the 30 most recently used needle images
+  * qemu: Enhance QEMU_APPEND option to handle multiple options with or without params
+
+-------------------------------------------------------------------
+Fri Nov 30 11:14:50 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable t/18-qemu-options.t in %check as done for t/99-full-stack.t
+  as it requires qemu
+
+-------------------------------------------------------------------
+Mon Nov 26 00:58:40 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1542781566.58d02775:
+  * Correct HDDMODEL / CDMODEL deprecation message (#1064)
+  * Prevent cmd srv being busy in loop consuming isotovideo messages
+  * Set script when using extra test results (#1031)
+  * qemu: Handle files compressed as *.xz (#1055)
+  * Move architecture.md to doc subdirectory (#1054)
+  * qemu: Add QEMU_APPEND option (#1051)
+  * Add option to override status of test modules with soft-fail (#1052)
+  * Add missing Test::Mojo dependency (#1056)
+  * Remove extra leading zero from log timestamps (#1053)
+  * svirt/Xen: Expect the image to be located on the svirt host (#1050)
+  * [sshXtermIPMI] refactor reset function for ipmi console (#1021)
+  * Needle editor - show all key bindings (#1049)
+  * Test initialization of svirt backend
+  * Add documentation about svirt backend
+  * svirt backend: Add serial console for SUT
+  * qemu: virtio terminal is enabled by default
+  * Allow adding additional serial port when using svirt backend
+  * Prevent adding empty passwd-attribute to domain XML
+  * svirt: Allow to use a different user than root
+  * Prevent record_testresult to override failed with softfailed
+  * Avoid misleading stacktrace when backend dies (#1033)
+  * Don't attach screenshot when recording softfailure (#1042)
+  * Check whether result with tags is added on timeout
+  * Record additional failing match only if configured to pause on timeout
+  * Upload full mismatch when paused on assert_screen timeout
+  * Allow freeze_vm to be called outside post_fail_hooks (#1043)
+  * Improve 'WARNING: check_asserted_screen took ...'
+  * Remove zkvm authentication code
+  * Ensure main.pm is still used for proper initialization on SCHEDULE (#1039)
+  * Add test flag to revert to last good when test module didn't fail (#1034)
+  * Remove MATCH(...) debug output
+  * Disable stopwatch debug output
+  * Record info for barriers and mutexes (#978)
+  * Avoid overriding SERIALDEV obtained from testsuite or machine settings (#1037)
+  * Fix undefined BACKEND warning in search_for_expected_serial_failures
+  * Use Test::Warnings where possible to prevent warnings in tests
+  * Improve error handling in needle download
+  * Handle OPENQA_URL set to eg. 'localhost:9526' correctly
+  * Download new needles on resume in autotest
+  * Add limit for downloading new needles
+  * Improve deducing openQA URL for needle downlaod from test variables
+  * Refactor needle download and add unit tests
+  * Download new needles from openQA on resume
+  * Delete redundant newlines in die's
+  * Prevent warnings in 02-test_ocr.t
+  * Fix perlcritic error in backend/driver.pm
+  * Add doc for OFW
+  * Block and ignore SIGTERM from opencv threads
+  * Reduce the opencv libraries we link to
+  * testapi: Relax regex in script_output filtering what to return
+
+-------------------------------------------------------------------
+Wed Sep 26 06:37:38 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1537682748.0d10ddb9:
+  * Treat $OpenQA::Isotovideo::Interface::version as test API (#1023)
+  * Fix led state change with tigervnc (#1028)
+  * script_output: increase logging in case of failure (#1025)
+  * Unit test for script_output
+  * Use wait_serial to wait for here tag end
+  * Use here tag in script_out
+  * Add option to always dump memory after a test failure
+  * qemu: Add knobs and dials for tuning snapshotting
+  * Prefer override test module files if found in the openQA "other" repo path
+  * isotovideo: Require explicit 'tests/' prefix within SCHEDULE again for openQA use
+  * Add variable SCHEDULE to define the full schedule by variable
+  * t: Fix failures in 99-full-stack.t depending on system performance
+  * testapi: Fix spellcheck with whitelisted 'kvm', 'VM'
+  * t: Fix perl warning "Possible attempt to separate words with commas"
+  * Fix "Use of uninitialized value $_[0] in join or string" in 'diag'
+  * Die when remote backend programs are missing (#1024)
+
+-------------------------------------------------------------------
+Thu Sep 13 15:11:54 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1536750184.92e52b69:
+  * command server: Don't mix myjsonrpc with Mojo::IOLoop::Stream
+  * Improve log messages and error handling in web socket server
+
+-------------------------------------------------------------------
+Fri Sep 07 13:27:43 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1536326847.7ce7ffba:
+  * qemu: log that state file is being saved (#1017)
+  * Add unit tests for commands related to pausing on timeout
+  * Refactor command processing in isotovideo
+  * Allow to pause on check_screen timeout
+
+-------------------------------------------------------------------
+Tue Aug 21 18:55:01 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1534865613.ff83b57d:
+  * Properly log messages from the backend
+  * Replace call to autotest::selected_console
+  * Add current_console method
+  * Prevent double timestamps on QEMU command line log entry
+  * Adjust tests to the changes of serial failures detection
+  * Add fatal serial failure type to stop execution if detected
+  * Override test results if hard serial failure detected
+  * docker: attempt to upgrade packages before run
+  * docker: allow to install modules with cpan with INSTALL_FROM_CPAN=1
+  * osutils: No need internal pipes here
+  * Add log output for sim level in wait_still_screen
+  * Add unit tests for check and assert shutdown
+  * Introduce check_shutdown for testapi
+
+-------------------------------------------------------------------
+Wed Aug 08 14:50:03 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1533739786.546c7c63:
+  * qemu: Allow user to set HDD serial number
+  * Add unit test for serial output parsing
+  * Add messages to serial failures
+  * Improve keys sent when expecting needle (#982)
+  * amt: initial commit (#983)
+  * Increase isotovideo interface version
+  * Use diag instead of print in isotovideo
+  * Adjust test for fullstack test to test pause on assert_screen timeout
+  * Test pause on assert_screen/check_screen timeout
+  * Fix typo occured -> occurred
+  * Pause only on assert_screen failure
+  * Don't pass unused paremeter to _check_backend_response
+  * Send full test name on 'set_current_test' command
+  * Propagate reason for pause
+  * Take a screenshot on assert_screen timeout
+  * Block autotest on timeout if flag is set in isotovideo
+  * Add flag to isotovideo whether to pause on assert screen failure
+  * osutils: Avoid racing to get output
+  * virtio_terminal: Avoid connecting to already connected socket
+  * Move informative message to use bwmqemu::diag
+  * Cleanup osutils runcmd functions and avoid code duplication
+  * Build process object lazily
+  * Add Mojo::IOLoop::ReadWriteProcess to cpanfile deps
+  * osutils: change runcmd logic
+  * Move driver pipes to channels
+  * Move qemu process to EventEmitter model
+  * Avoid enabling unused consoles after reverting to a snapshot
+  * Revert "Create dummy pflash vars file to avoid asset caching failure" (#1004)
+  * Avoid resetting all consoles while reverting to a snapshot
+  * Avoid performing multiple or unnecessary console resets after revert
+  * qemu: Prevent serial logs from being truncated on revert
+  * Remove default floppy drive
+  * Create dummy pflash vars file to avoid asset caching failure
+  * Use bootindex with non-uefi systems
+  * Avoid rolling back to undefined console
+  * Avoid conflicting block device options
+  * Revert "Add label message to serial failures"
+  * Reduce verbosity of command server
+  * Fixup broken indentation
+  * Bump isotovideo interface version
+  * Extend qemu tests
+  * Wait for post migrate state after migration
+  * The Great QEMU Rewrite of 2018
+  * Prevent perl tidy from completely ruining well formatted code
+  * s390x: Fix typo in diag message
+  * Test web socket route of command server
+  * Use Test::Mojo to test command server
+  * Add label message to serial failures
+  * testapi: Adapt check_screen timeout default to proposal in documentation
+
+-------------------------------------------------------------------
+Mon Aug  6 11:59:56 UTC 2018 - edigiacinto@suse.com
+
+- Add dependency perl(Mojo::IOLoop::ReadWriteProcess)
+
+-------------------------------------------------------------------
+Wed Aug  1 14:11:51 UTC 2018 - marius.kittler@suse.com
+
+- Add dependency perl(Test::Exception)
+  
+  Required for https://github.com/os-autoinst/os-autoinst/pull/993
+
+-------------------------------------------------------------------
+Tue Jul 10 10:33:39 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1530875209.f6cd7968:
+  * Add backend/spvm.pm to Makefile.am
+  * Introduce a slim pvm backend using ssh
+  * Add a note for script_output method when is not using dedicated serial
+  * Fix repository path from codecov reports
+  * Move to codecov
+  * Use the docker image we use in openQA for os-autoinst
+  * Run tests inside docker to normalise testing environment
+
+-------------------------------------------------------------------
+Tue Jul 10 10:33:21 UTC 2018 - okurz@suse.com
+
+- Replace deprecated tar_scm service by obs_scm
+
+-------------------------------------------------------------------
+Mon Jun 18 17:18:07 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1529342275.852c3ff6:
+  * Add state of the test_execution and name of the test name to pause at (#976)
+  * Document the multi-process architecture (#975)
+  * tidy: exclude .git/ from search path (#974)
+  * Make ssh failures to remote systems debuggable (#973)
+  * Wait for command typed in serial terminal before running it (#971)
+  * Add INCLUDE_MODULES to only schedule whitelisted modules on request (#962)
+  * Allow where parameter for mutex unlocking (#969)
+  * Install OpenQA/Commands.pm (#972)
+  * ppmclibs/tinycv_impl.cc code improvements (#968)
+  * Rename variables in isotovideo
+  * Improve debug info, fix tests
+  * Allow to pause test execution at specific test
+  * Get rid of the developer route again
+  * Disable timeout on the stream to the parent
+  * Broadcast debugging aids to web clients
+  * Avoid one more global variable
+  * Open a websocket server in isotovideo to reply commands
+  * Remove old interactive mode
+
+-------------------------------------------------------------------
+Sun May 27 08:30:46 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1527308405.8b586d5e:
+  * DRY on xterm call (#963)
+  * Correct return values for match_has_tag (#967)
+
+-------------------------------------------------------------------
+Sun May 27 08:29:45 UTC 2018 - coolo@suse.com
+
+- remove require on withlock
+- downgrade require on tesseract to recommend (not really
+  required for base functionality)
+
+-------------------------------------------------------------------
+Thu May 17 12:20:53 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1526456062.30f96887:
+  * Bump interface version to changes introduced by  1a0381b
+
+-------------------------------------------------------------------
+Wed May 09 14:08:46 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1525874912.1dc03895:
+  * localXvnc: Output the PIDs of the involved processes (#961)
+  * Add mutex_wait wrapper to lockapi
+
+-------------------------------------------------------------------
+Fri May 04 06:05:05 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1525413876.6c59528a:
+  * Allow environment variable to point to OPENQA_LIBPATH (#959)
+  * isotovideo: Add support to forward command line parameters as test settings (#950)
+  * testapi: Output all arguments in log_call (#957)
+
+-------------------------------------------------------------------
+Thu Apr 26 12:11:43 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1524736170.cc9d9ff2:
+  * Add proceed_on_failure option (#954)
+  * svirt KVM: Set <on_reboot> to 'destroy' (#956)
+  * Set distribution earlier in isotovideo (#955)
+  * mention TIMEOUT_SCALE in dock/backend_vars.asciidoc (#951)
+  * testapi: Correct comment references to exception 'FailedNeedle'
+  * Fix missing text thumbnail after needle related test failures
+  * Do not quote -append qemu parameter
+
+-------------------------------------------------------------------
+Mon Apr 23 00:11:41 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1524160420.7b402a0a:
+  * testapi: Improve documentation for "wait_screen_change" (#943)
+
+-------------------------------------------------------------------
+Thu Apr 19 12:11:40 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1523984252.2f46f2e2:
+  * Bump testapi version as per change to select_console (#946)
+  * Allow passing parameters to activate_console method (#945)
+
+-------------------------------------------------------------------
+Mon Apr 09 12:18:44 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1523276311.2588e578:
+  * Update current test module details when cancelling running job (#941)
+  * Add OFFLINE_SUT mode to QEMU backend (#940)
+  * Prints the isotovideo version and interface number
+  * Merge qemu output failure conditions (#936)
+  * Add test option _SKIP_POST_FAIL_HOOKS to save time on test development (#938)
+  * Remove specific qemu code (#934)
+  * Add username parameter for sshCommand
+  * Allow setting console tty and other args (#933)
+  * Move code from autotest to basetest
+  * Add message to the invocation of the die function
+  * Cleverness is not maintanable
+  * Search for patterns in the SERIAL file and raise failures
+
+-------------------------------------------------------------------
+Tue Mar 06 17:28:12 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1520265920.6728b435:
+  * Tries to guess which qemu executable should use via WORKER_CLASS (#931)
+  * Remove support for backend.crashed file (#930)
+  * qemu: enable discard support for disks
+  * Add support to override HDDMODEL per disk (#928)
+
+-------------------------------------------------------------------
+Sat Mar 03 05:28:15 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1519457089.09762e3e:
+  * testapi: Refactor script_output into distribution.pm and fix race (#926)
+  * Use a fixed version of perltidy (#927)
+  * Avoid broken perltidy in cpanfile
+
+-------------------------------------------------------------------
+Sat Feb 17 01:01:09 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1518780731.3ca7dc34:
+  * Do not fail on chattr failures (#924)
+  * qemu: disable CoW for the HDD image directory (#790)
+  * get_ssh_output and get_cmd_output return array in list context (#916)
+  * Avoid letting the kids get loose. (#919)
+  * Don't add floppy for arm/aarch (#923)
+  * wip -- test to prevent double typing echo on virtio-console
+  * Correct VNC stall threshold variable name (#922)
+  * Check runcmd return status (#898)
+  * testapi: Correct spelling mistake
+  * testapi: Ensure script_output only returns the actual ouput of the executed script
+  * tinycv: Add test for send_with_fd
+  * testapi: Allow memory dump any time
+  * qemu: Increase memory dump performance
+  * tinycv: Add send_with_fd utility function
+
+-------------------------------------------------------------------
+Mon Jan 29 15:18:43 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1516891126.e9d61c6d:
+  * qemu: Die unless mandatory variable WORKER_HOSTNAME is set in NBF (#914)
+  * Extract function which will retrun VM's host IP (#913)
+
+-------------------------------------------------------------------
+Tue Jan 23 16:07:53 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1516628925.5467a37f:
+  * Add single quote if parameter contains whitespace (#911)
+  * Remove commented code (#912)
+
+-------------------------------------------------------------------
+Sat Jan 20 04:07:53 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1516396050.1f10a0db:
+  * Try to load OpenQA::Parser if present and parse extra test files. Add also support for xUnit and LTP
+
+-------------------------------------------------------------------
+Tue Jan 16 16:07:48 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1516095934.1b1283ad:
+  * Move and increase sleep time between ipmi power actions
+  * Add variable to define stall treshold
+  * Add variable to don't power of the machine after test
+  * Increase the limits for checking the VNC console. (#906)
+  * Makefile.am: Fix install directory for RunArgs.pm (#907)
+
+-------------------------------------------------------------------
+Sat Jan 13 04:07:44 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1515766826.5f24243a:
+  * Limit the execution time for save_memory_dump
+  * Update documentation for save_storage_drives
+  * Memory dumps are only callable from post_fail-hook
+  * Add RunArgs to the Makefile
+  * Display interface version when using --version
+  * fix use of initialized value
+
+-------------------------------------------------------------------
+Tue Jan 09 16:07:46 UTC 2018 - okurz@suse.com
+
+- Update to version 4.5.1515414371.04e17fdf:
+  * Ignore WORKER_HOSTNAME for qemu explicitly (#903)
+  * Polling the read socket in the capture loop (#902)
+
+-------------------------------------------------------------------
+Fri Dec 22 11:27:27 UTC 2017 - okurz@suse.com
+
+- Update to version 4.5.1513942030.1c7bb3f5:
+  * Do not reset NUMDISKS if RAIDLEVEL is not present (#901)
+  * svirt: Add {start,stop}_serial_grab interface (#899)
+  * Retidy - perltidy 20171214 changed output (#896)
+  * Simply ignore '\r' in type string (#894)
+  * Change the logs timestamp to ISO8601. (#893)
+  * Add method to get files content and integration test
+  * Add possibility to share files on worker directly
+  * Add RunArgs to loadtest (#887)
+  * Remove empty miniatures. (#891)
+  * Fix error checking on load_snapshot and remove sleep (#890)
+  * Drop all hmp commands and use qmp exclusively
+  * [POC] Wrap HMP commands with QMP's human-monitor-command
+  * Distinguish modules name in a test run if it's a duplicate (#884)
+
+-------------------------------------------------------------------
+Fri Dec 15 14:11:14 UTC 2017 - coolo@suse.com
+
+- disable perltidy and perlcritic checks during build
+
+-------------------------------------------------------------------
+Tue Nov 28 08:52:50 UTC 2017 - okurz@suse.com
+
+- Update to version 4.5.1511858414.576c33f6:
+  * Fix quoting bug in type_command support (#886)
+  * Extend lockapi barrier_wait to accept also parameters, and add support to check_dead_job (#880)
+
+-------------------------------------------------------------------
+Mon Nov 27 08:00:53 UTC 2017 - okurz@suse.com
+
+- Update to version 4.5.1511530266.fe4b1c52:
+  * Fix snd2png check on TW: don't use PNM but PNG (#885)
+  * Fix test failures on Tumbleweed (#883)
+  * add debian ovmf to locations array
+  * Add offline mode for script_output
+  * Xen: Support multiple HDDs
+  * svirt: Set NUMDISKS=4 when RAIDLEVEL is defined
+  * Replacement of hot filehandlers for Mojo::Log (#876)
+
+-------------------------------------------------------------------
+Mon Nov 27 07:17:50 UTC 2017 - coolo@suse.com
+
+- bump to 4.5 to be in sync with openQA
+
+-------------------------------------------------------------------
+Thu Nov 02 13:46:14 UTC 2017 - okurz@suse.com
+
+- Update to version 4.4.1508936943.39adc5eb:
+  * Fix scale_timeout call in wait_serial function
+  * sshVirtsh: Hide confusing errors about undefined machines (#866)
+  * avoid accidentally cleaning (#865)
+  * Generalize x11_start_program with standard array argument (#863)
+  * Remove unused reload_needles property in backend
+  * Allow set_var to reevaluate needles
+  * Add option to exit early for test schedule evaluation (#853)
+  * Prevent diag message about _EXIT_AFTER_SCHEDULE if not requested
+  * Make sure select_console on broken vnc fails (#872)
+  * Introduce check_recorded_sound method (#873)
+
+-------------------------------------------------------------------
+Wed Sep 20 13:32:16 UTC 2017 - coolo@suse.com
+
+- add Test::Mock::Time require
+
+-------------------------------------------------------------------
+Wed Sep 20 12:12:18 UTC 2017 - okurz@suse.com
+
+- Update to version 4.4.1505909574.e0b4d014:
+  * Correct validate_script_output test to actually test something
+  * Add test for wait_still_screen
+  * testapi: Add 'no_wait' option to wait_still_screen
+  * Fix warning in test about 'prototype mismatch'
+  * Allow type_string to wait_still_screen
+  * Use hash ref in query_isotovideo
+  * Add test for wait_idle in full stack test.
+  * consoles: s3270: Make debug output of queue content less noisy
+  * Update API document referring function type_string
+  * Remove typing tests from integration tests (#857)
+
+-------------------------------------------------------------------
+Sat Jun 17 17:13:00 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add dependency on matching perl version, as the tinycv module is
+  installed in a version dependent path
+- Drop bogus conditionals, suse_version <= 132 will never match
+
+-------------------------------------------------------------------
+Thu Mar 23 13:34:22 UTC 2017 - santiago.zarate@suse.com
+
+- Inline replacement for version parameter on isotovideo 
+
+-------------------------------------------------------------------
+Sun Mar 12 13:16:41 UTC 2017 - oholecek@suse.com
+
+- new perl(Test::Warnings) dependency 
+
+-------------------------------------------------------------------
+Wed Sep  7 14:27:00 UTC 2016 - oholecek@suse.com
+
+- new perl(Devel::Cover) dependency
+- package os-autoinst/tools/check_coverage tool
+
+-------------------------------------------------------------------
+Sat Jul  9 05:30:45 UTC 2016 - coolo@suse.com
+
+- update base version to 4.4 to express the new isotovideo API
+  towards the worker
+
+-------------------------------------------------------------------
+Mon May 30 08:53:37 UTC 2016 - oholecek@suse.com
+
+- new perl(Test::MockModule) dependency
+
+-------------------------------------------------------------------
+Mon Feb 15 09:15:19 UTC 2016 - oholecek@suse.com
+
+- new perl(Test::Output) dependency
+
+-------------------------------------------------------------------
+Thu Jan 14 12:48:28 UTC 2016 - oholecek@suse.com
+
+- update base version to 4.3 
+
+-------------------------------------------------------------------
+Tue Dec  8 19:16:38 UTC 2015 - coolo@suse.com
+
+- add snd2png
+
+-------------------------------------------------------------------
+Fri Nov 27 07:49:46 UTC 2015 - coolo@suse.com
+
+- new dependencies
+
+-------------------------------------------------------------------
+Tue Nov 24 09:26:26 UTC 2015 - coolo@suse.com
+
+- disable perlcritic outside of Factory - too useless to test with
+  old perlcritic versions
+
+-------------------------------------------------------------------
+Tue Nov 24 08:53:36 UTC 2015 - coolo@suse.com
+
+- adapt file list
+
+-------------------------------------------------------------------
+Tue Nov 17 05:23:43 UTC 2015 - coolo@suse.com
+
+- remove gone files from file list
+
+-------------------------------------------------------------------
+Tue Aug 25 15:02:10 UTC 2015 - lnussel@suse.de
+
+- require tesseract-ocr on >= 13.2
+
+-------------------------------------------------------------------
+Thu Jul  9 14:31:50 UTC 2015 - nadvornik@suse.com
+
+- created os-autoinst-openvswitch subpackage
+
+-------------------------------------------------------------------
+Tue Mar 10 10:39:17 UTC 2015 - oholecek@suse.com
+
+- add mmapi.pm 
+
+-------------------------------------------------------------------
+Sun Mar  1 09:59:08 UTC 2015 - oholecek@suse.com
+
+- add lockapi.pm 
+
+-------------------------------------------------------------------
+Thu Feb 19 15:34:02 UTC 2015 - lnussel@suse.de
+
+- remove fetchneedles call. now in openQA
+
+-------------------------------------------------------------------
+Wed Jan 28 09:56:16 UTC 2015 - coolo@suse.com
+
+- make it version 4
+
+-------------------------------------------------------------------
+Thu Nov 27 18:50:31 UTC 2014 - coolo@suse.com
+
+- add videoencoder
+
+-------------------------------------------------------------------
+Thu Nov 27 13:18:44 UTC 2014 - coolo@suse.com
+
+- add distribution.pm
+
+-------------------------------------------------------------------
+Tue Nov 25 15:46:54 UTC 2014 - coolo@suse.com
+
+- recommend multimon too
+
+-------------------------------------------------------------------
+Tue Nov 25 14:33:52 UTC 2014 - coolo@suse.com
+
+- add testapi.pm to the file list
+
+-------------------------------------------------------------------
+Mon Nov 24 12:53:04 UTC 2014 - coolo@suse.com
+
+- recommend eatmydata for performance
+
+-------------------------------------------------------------------
+Mon Aug 18 14:40:13 UTC 2014 - lnussel@suse.de
+
+- adjust filelist for removed files
+
+-------------------------------------------------------------------
+Mon Jul 28 14:44:23 UTC 2014 - lnussel@suse.de
+
+- require qemu >= 2.0.0
+
+-------------------------------------------------------------------
+Tue Jul  8 12:36:48 UTC 2014 - lnussel@suse.de
+
+- include VNC.pm in file list
+- add Crypt::DES to deps
+
+-------------------------------------------------------------------
+Tue Apr  8 19:16:15 UTC 2014 - coolo@suse.com
+
+- remove tidy script
+
+-------------------------------------------------------------------
+Tue Mar 25 14:35:11 UTC 2014 - lnussel@suse.de
+
+- remove rpc.pl from file list
+
+-------------------------------------------------------------------
+Wed Mar 12 16:04:02 UTC 2014 - coolo@suse.com
+
+- require qemu-img, quite useful :)
+
+-------------------------------------------------------------------
+Wed Mar 12 09:23:38 UTC 2014 - coolo@suse.com
+
+- switch github url to os-autoinst orga
+
+-------------------------------------------------------------------
+Mon Mar 10 13:30:54 UTC 2014 - tchvatal@suse.com
+
+- Use devel dep over pkgconfig one to build with 11.4 opencv
+
+-------------------------------------------------------------------
+Mon Mar 10 13:21:22 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and use requires(pre)
+
+-------------------------------------------------------------------
+Tue May 14 15:09:56 UTC 2013 - lnussel@suse.de
+
+- initial package
+

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Sep 10 11:27:32 UTC 2018 - petr@yarpen.cz
+
+- version 1.6.2
+  * Uses readline when this library is available. It supports
+    persistent history of searching strings
+  * configuration via pull down menu
+  * possibility to hide status/menu/command bars
+  * possibility to show row numbers
+  * possibility to hide cursor
+
+-------------------------------------------------------------------
+Wed Mar 21 11:32:41 UTC 2018 - mpluskal@suse.com
+
+- Extend previous changelog entry
+- Modernise spec file
+
+-------------------------------------------------------------------
+Tue Mar 20 09:21:34 UTC 2018 - petr@yarpen.cz
+
+- version 1.0.0
+  * supports 8bit encodings like latin1, latin2.
+  * The border arts is correctly printed on terminals with these
+    encodings.
+  * Searching is more robust and more correct now
+  * With mentioned long option the ascii art (borders) can be
+    replaced by more pretty unicode art
+  * Add options --ignore-case and --IGNORE-CASE
+
+-------------------------------------------------------------------
+Mon Nov 27 12:43:20 UTC 2017 - mpluskal@suse.com
+
+- Use source url
+- Cleanup with spec-cleaner
+- Use macro for configure
+- Use pkgconfig style of dependencies
+
+-------------------------------------------------------------------
+Mon Nov 27 12:40:55 UTC 2017 - petr@yarpen.cz
+
+- initial import to OBS
+- version 0.7.3
+

@@ -1,0 +1,11 @@
+shairport-sync README for SuSE
+
+How to start using shairport-sync
+
+Start shairport-sync: sudo systemctl start shairport-sync
+Stop shairport-sync: sudo systemctl stop shairport-sync
+Start during booting: sudo systemctl enable shairport-sync
+
+Open ports in firewalld: sudo firewall-cmd --add-service=airplay-server --permanent
+                         sudo firewall-cmd --add-service=mdns --permanent
+                         sudo systemctl restart firewalld

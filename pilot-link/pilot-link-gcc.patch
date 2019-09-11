@@ -1,0 +1,21 @@
+--- src/pilot-read-screenshot.c
++++ src/pilot-read-screenshot.c
+@@ -103,7 +103,6 @@
+ 	if (setjmp (png_jmpbuf (png_ptr)))
+ 	{
+ 		png_destroy_write_struct (&png_ptr, &info_ptr);
+-		fclose (f);
+ 		return;
+ 	}
+ 
+--- tests/versamail-test.c
++++ tests/versamail-test.c
+@@ -186,7 +186,7 @@
+ {
+ 	struct pi_file *pi_fp;
+ 	char *DBname;
+-	int r;
++	int r = 0;
+ 	int idx;
+ 	size_t size;
+ 	int attr;

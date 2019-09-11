@@ -1,0 +1,380 @@
+diff --git a/plasma/desktop/applets/kickoff/applet/applet.cpp b/plasma/desktop/applets/kickoff/applet/applet.cpp
+index 8de1efe..c597741 100644
+--- a/plasma/desktop/applets/kickoff/applet/applet.cpp
++++ b/plasma/desktop/applets/kickoff/applet/applet.cpp
+@@ -166,10 +166,12 @@ void LauncherApplet::createConfigurationInterface(KConfigDialog *parent)
+     d->ui.switchOnHoverCheckBox->setChecked(d->launcher->switchTabsOnHover());
+     d->ui.appsByNameCheckBox->setChecked(d->launcher->showAppsByName());
+     d->ui.showRecentlyInstalledCheckBox->setChecked(d->launcher->showRecentlyInstalled());
++    d->ui.reduceMenuDepthCheckBox->setChecked(d->launcher->reduceMenuDepth());
+     connect(d->ui.iconButton, SIGNAL(iconChanged(QString)), parent, SLOT(settingsModified()));
+     connect(d->ui.switchOnHoverCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
+     connect(d->ui.appsByNameCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
+     connect(d->ui.showRecentlyInstalledCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
++    connect(d->ui.reduceMenuDepthCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
+ }
+ 
+ void LauncherApplet::popupEvent(bool show)
+@@ -206,6 +208,7 @@ void LauncherApplet::configAccepted()
+     bool switchTabsOnHover = d->ui.switchOnHoverCheckBox->isChecked();
+     bool showAppsByName = d->ui.appsByNameCheckBox->isChecked();
+     bool showRecentlyInstalled = d->ui.showRecentlyInstalledCheckBox->isChecked();
++    bool reduceMenuDepth = d->ui.reduceMenuDepthCheckBox->isChecked();
+ 
+     const QString iconname = d->ui.iconButton->icon();
+ 
+@@ -227,6 +230,7 @@ void LauncherApplet::configAccepted()
+     d->launcher->setSwitchTabsOnHover(switchTabsOnHover);
+     d->launcher->setShowAppsByName(showAppsByName);
+     d->launcher->setShowRecentlyInstalled(showRecentlyInstalled);
++    d->launcher->setReduceMenuDepth(reduceMenuDepth);
+ }
+ 
+ QList<QAction*> LauncherApplet::contextualActions()
+diff --git a/plasma/desktop/applets/kickoff/applet/kickoffConfig.ui b/plasma/desktop/applets/kickoff/applet/kickoffConfig.ui
+index d5117c8..3e49ea7 100644
+--- a/plasma/desktop/applets/kickoff/applet/kickoffConfig.ui
++++ b/plasma/desktop/applets/kickoff/applet/kickoffConfig.ui
+@@ -54,7 +54,7 @@
+      </property>
+     </spacer>
+    </item>
+-   <item row="4" column="1">
++   <item row="5" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+@@ -100,6 +100,26 @@
+      </property>
+     </widget>
+    </item>
++   <item row="4" column="2">
++    <widget class="QCheckBox" name="reduceMenuDepthCheckBox">
++     <property name="text">
++      <string/>
++     </property>
++    </widget>
++   </item>
++   <item row="4" column="1">
++    <widget class="QLabel" name="label_4">
++     <property name="text">
++      <string>Reduce menu depth:</string>
++     </property>
++     <property name="alignment">
++      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++     </property>
++     <property name="buddy">
++      <cstring>reduceMenuDepthCheckBox</cstring>
++     </property>
++    </widget>
++   </item>
+    <item row="3" column="1">
+     <widget class="QLabel" name="label">
+      <property name="text">
+diff --git a/plasma/desktop/applets/kickoff/core/applicationmodel.cpp b/plasma/desktop/applets/kickoff/core/applicationmodel.cpp
+index 82edade..6809dbb 100644
+--- a/plasma/desktop/applets/kickoff/core/applicationmodel.cpp
++++ b/plasma/desktop/applets/kickoff/core/applicationmodel.cpp
+@@ -111,7 +111,8 @@ public:
+               primaryNamePolicy(ApplicationModel::GenericNamePrimary),
+               displayOrder(NameAfterDescription),
+               allowSeparators(_allowSeparators),
+-              showRecentlyInstalled(true)
++              showRecentlyInstalled(true),
++              reduceMenuDepth(true)
+     {
+         systemApplications = Kickoff::systemApplicationList();
+         reloadTimer = new QTimer(qq);
+@@ -137,12 +138,42 @@ public:
+     DisplayOrder displayOrder;
+     bool allowSeparators;
+     bool showRecentlyInstalled;
++    bool reduceMenuDepth;
+     QTimer *reloadTimer;
+ 
+     QStringList newInstalledPrograms;
+     QHash<QString, QDate> seenPrograms;
+ };
+ 
++QByteArray nameToKey(const QString &name)
++{
++    // code taken from libkdecore
++    const QByteArray nameStr = name.toLocal8Bit();
++
++    QByteArray key;
++    // strxfrm() crashes on Solaris and strxfrm is not defined under wince
++#if !defined(USE_SOLARIS) && !defined(_WIN32_WCE)
++    // maybe it'd be better to use wcsxfrm() where available
++    key.resize( name.length() * 4 + 1 );
++    size_t ln = strxfrm(key.data(), nameStr.constData(), key.size());
++    if( ln != size_t( -1 ))
++    {
++        key.resize(ln);
++        if( (int)ln >= key.size())
++        { // didn't fit?
++            ln = strxfrm( key.data(), nameStr.constData(), key.size());
++            if( ln == size_t( -1 ))
++                key = nameStr;
++        }
++    }
++    else
++#endif
++    {
++        key = nameStr;
++    }
++    return key;
++}
++
+ void ApplicationModelPrivate::fillNode(const QString &_relPath, AppNode *node)
+ {
+      if (_relPath=="new/") {
+@@ -170,17 +201,59 @@ void ApplicationModelPrivate::fillNode(const QString &_relPath, AppNode *node)
+         return;
+     }
+ 
+-    const KServiceGroup::List list = root->entries(true /* sorted */,
++    KServiceGroup::List list = root->entries(true /* sorted */,
+                                                    true /* exclude no display entries */,
+-                                                   allowSeparators /* allow separators */,
++                                                   false /* allow separators */,
+                                                    primaryNamePolicy == ApplicationModel::GenericNamePrimary /* sort by generic name */);
+ 
+     // application name <-> service map for detecting duplicate entries
+     QHash<QString, KService::Ptr> existingServices;
++    KSortableList<KSharedPtr<KSycocaEntry>,QByteArray> slist;
++    KSortableList<KSharedPtr<KSycocaEntry>,QByteArray> glist;
+ 
+     // generic name <-> node mapping to determinate duplicate generic names
+     QHash<QString,QList<AppNode*> > genericNames;
+ 
++    for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
++        const KSycocaEntry::Ptr p = (*it);
++
++        if (p->isType(KST_KService)) {
++            const KService::Ptr service = KService::Ptr::staticCast(p);
++
++            if( primaryNamePolicy == ApplicationModel::GenericNamePrimary )
++                slist.insert( nameToKey( service->genericName() + QLatin1Char(' ') + service->name() ), p);
++            else slist.insert( nameToKey( service->name() + QLatin1Char(' ') + service->genericName() ), p);
++        }
++        else if (p->isType(KST_KServiceGroup))
++        {
++            KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
++            if ( reduceMenuDepth && serviceGroup->SuSEshortMenu() ){
++                KServiceGroup::List l = serviceGroup->entries(true, true /*excludeNoDisplay_*/, false );
++                if ( l.count() == 1 ) {
++
++                    // the special case, we want to short the menu.
++                    // TOFIX? : this works only for one level
++                    KServiceGroup::List::ConstIterator _it=l.begin();
++                    const KSycocaEntry::Ptr _e = (*_it);
++                    if (_e->isType(KST_KService)) {
++                        const KService::Ptr s = KService::Ptr::staticCast(_e);
++                        if( primaryNamePolicy == ApplicationModel::GenericNamePrimary )
++                            slist.insert( nameToKey( s->genericName() + QLatin1Char(' ') + s->name() ), _e );
++                        else slist.insert( nameToKey( s->name() + QLatin1Char(' ') + s->genericName() ), _e );
++                        // and escape from here
++                        continue;
++                    }
++                }
++            }
++            glist.insert( nameToKey( serviceGroup->caption() ), p );
++        }
++        else
++            slist.insert( nameToKey( p->name() ), p);
++    }
++
++    if (reduceMenuDepth) root->addSortOrderEntry(":F"); // add ":F" to the sortOrder list if it isn't included (bnc#356553)
++    list = root->SuSEsortEntries( slist, glist, true /*excludeNoDisplay_*/, allowSeparators );
++
+     for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
+         QString icon;
+         QString appName;
+@@ -238,7 +251,15 @@ void ApplicationModelPrivate::fillNode(const QString &_relPath, AppNode *node)
+ 
+             existingServices[appName] = service;
+         } else if (p->isType(KST_KServiceGroup)) {
+-            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
++            KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
++
++            if ( reduceMenuDepth && serviceGroup->SuSEshortMenu() ) {
++                KServiceGroup::List l = serviceGroup->entries(true, true /*excludeNoDisplay_*/ );
++            if ( l.count() == 1 )
++                continue;
++            }
++
++            // standard sub menu
+ 
+             if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
+                 continue;
+@@ -358,6 +391,19 @@ bool ApplicationModel::showRecentlyInstalled() const
+    return d->showRecentlyInstalled;
+ }
+ 
++void ApplicationModel::setReduceMenuDepth(bool reduceMenuDepth)
++{
++    if (d->reduceMenuDepth != reduceMenuDepth) {
++        d->reduceMenuDepth = reduceMenuDepth;
++        reloadMenu();
++    }
++}
++
++bool ApplicationModel::reduceMenuDepth() const
++{
++   return d->reduceMenuDepth;
++}
++
+ int ApplicationModel::columnCount(const QModelIndex &parent) const
+ {
+     Q_UNUSED(parent)
+diff --git a/plasma/desktop/applets/kickoff/core/applicationmodel.h b/plasma/desktop/applets/kickoff/core/applicationmodel.h
+index e3dfead..0b7df1e 100644
+--- a/plasma/desktop/applets/kickoff/core/applicationmodel.h
++++ b/plasma/desktop/applets/kickoff/core/applicationmodel.h
+@@ -122,6 +122,8 @@ public:
+     void setApplet(Plasma::Applet *applet);
+     void setShowRecentlyInstalled(bool showRecentlyInstalled);
+     bool showRecentlyInstalled() const;
++    void setReduceMenuDepth(bool reduceMenuDepth);
++    bool reduceMenuDepth() const;
+ 
+ public slots:
+     void reloadMenu();
+diff --git a/plasma/desktop/applets/kickoff/simpleapplet/simpleapplet.cpp b/plasma/desktop/applets/kickoff/simpleapplet/simpleapplet.cpp
+index c54fc49..0b43a9e 100644
+--- a/plasma/desktop/applets/kickoff/simpleapplet/simpleapplet.cpp
++++ b/plasma/desktop/applets/kickoff/simpleapplet/simpleapplet.cpp
+@@ -115,6 +115,7 @@ public:
+     int maxRecentApps;
+     bool showMenuTitles;
+     bool showRecentlyInstalled;
++    bool reduceMenuDepth;
+ 
+     QListWidget *view;
+     KIconButton *iconButton;
+@@ -122,6 +123,7 @@ public:
+     QSpinBox *recentApplicationsSpinBox;
+     QCheckBox *showMenuTitlesCheckBox;
+     QCheckBox *showRecentlyInstalledCheckBox;
++    QCheckBox *reduceMenuDepthCheckBox;
+ 
+     QList<QAction*> actions;
+     QAction* switcher;
+@@ -140,6 +143,7 @@ public:
+               formatComboBox(0),
+               showMenuTitlesCheckBox(0),
+               showRecentlyInstalledCheckBox(0),
++              reduceMenuDepthCheckBox(0),
+               switcher(0),
+               contextMenuFactory(0)
+     {}
+@@ -494,7 +498,13 @@ void MenuLauncherApplet::createConfigurationInterface(KConfigDialog *parent)
+     d->showRecentlyInstalledCheckBox->setChecked(d->showRecentlyInstalled);
+     grid->addWidget(d->showRecentlyInstalledCheckBox, 4, 1);
+ 
+-    grid->addItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding), 5, 0, 1, 3);
++    QLabel *reduceMenuDepthLabel = new QLabel(i18n("Reduce menu depth:"), p);
++    grid->addWidget(reduceMenuDepthLabel, 5, 0, Qt::AlignRight);
++    d->reduceMenuDepthCheckBox = new QCheckBox(p);
++    d->reduceMenuDepthCheckBox->setChecked(d->reduceMenuDepth);
++    grid->addWidget(d->reduceMenuDepthCheckBox, 5, 1);
++
++    grid->addItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding), 6, 0, 1, 3);
+     parent->addPage(p, i18n("Options"), "configure");
+ 
+     connect(parent, SIGNAL(applyClicked()), this, SLOT(configAccepted()));
+@@ -504,6 +514,7 @@ void MenuLauncherApplet::createConfigurationInterface(KConfigDialog *parent)
+     connect(d->recentApplicationsSpinBox, SIGNAL(valueChanged(int)), parent, SLOT(settingsModified()));
+     connect(d->showMenuTitlesCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
+     connect(d->showRecentlyInstalledCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
++    connect(d->reduceMenuDepthCheckBox, SIGNAL(toggled(bool)), parent, SLOT(settingsModified()));
+     connect(d->view, SIGNAL(currentTextChanged(QString)), parent, SLOT(settingsModified()));    
+ }
+ 
+@@ -568,6 +578,12 @@ void MenuLauncherApplet::configAccepted()
+         d->showRecentlyInstalled = showRecentlyInstalled;
+         cg.writeEntry("showRecentlyInstalled", showRecentlyInstalled);
+     }
++    const bool reduceMenuDepth = d->reduceMenuDepthCheckBox->isChecked();
++    if (reduceMenuDepth != d->reduceMenuDepth) {
++        needssaving = true;
++        d->reduceMenuDepth = reduceMenuDepth;
++        cg.writeEntry("reduceMenuDepth", reduceMenuDepth);
++    }
+ 
+     if (needssaving) {
+         d->updateTooltip();
+@@ -635,6 +651,7 @@ void MenuLauncherApplet::showMenu(bool pressed)
+                 }
+                 appModel->setSystemApplicationPolicy(Kickoff::ApplicationModel::ShowApplicationAndSystemPolicy);
+                 appModel->setShowRecentlyInstalled(d->showRecentlyInstalled);
++                appModel->setReduceMenuDepth(d->reduceMenuDepth);
+ 
+                 menuview->addModel(appModel, Kickoff::MenuView::None, d->relativePath);
+ 
+@@ -892,6 +909,7 @@ void MenuLauncherApplet::configChanged()
+     d->setMaxRecentApps(cg.readEntry("maxRecentApps", qMin(5, Kickoff::RecentApplications::self()->maximum())));
+     d->showMenuTitles = cg.readEntry("showMenuTitles", false);
+     d->showRecentlyInstalled = cg.readEntry("showRecentlyInstalled", true);
++    d->reduceMenuDepth = cg.readEntry("reduceMenuDepth", true);
+ 
+     d->icon->setIcon(KIcon(cg.readEntry("icon", d->iconname)));
+ 
+diff --git a/plasma/desktop/applets/kickoff/ui/launcher.cpp b/plasma/desktop/applets/kickoff/ui/launcher.cpp
+index 8280509..014e23c 100644
+--- a/plasma/desktop/applets/kickoff/ui/launcher.cpp
++++ b/plasma/desktop/applets/kickoff/ui/launcher.cpp
+@@ -699,6 +699,18 @@ void Launcher::setShowRecentlyInstalled(bool showRecentlyInstalled)
+     d->applicationModel->setShowRecentlyInstalled(showRecentlyInstalled);
+ }
+ 
++void Launcher::setReduceMenuDepth(bool showReduceMenuDepth)
++{
++    const bool wasReduceMenuDepth = d->applicationModel->reduceMenuDepth();
++    if (d->applet && showReduceMenuDepth != wasReduceMenuDepth) {
++        KConfigGroup cg = d->applet->config();
++        cg.writeEntry("ReduceMenuDepth", showReduceMenuDepth);
++        emit configNeedsSaving();
++    }
++
++    d->applicationModel->setReduceMenuDepth(showReduceMenuDepth);
++}
++
+ bool Launcher::switchTabsOnHover() const
+ {
+     return d->contentSwitcher->switchTabsOnHover();
+@@ -714,6 +726,11 @@ bool Launcher::showRecentlyInstalled() const
+   return d->applicationModel->showRecentlyInstalled();
+ }
+ 
++bool Launcher::reduceMenuDepth() const
++{
++  return d->applicationModel->reduceMenuDepth();
++}
++
+ void Launcher::setVisibleItemCount(int count)
+ {
+     d->visibleItemCount = count;
+@@ -743,6 +760,7 @@ void Launcher::setApplet(Plasma::Applet *applet)
+     setShowAppsByName(cg.readEntry("ShowAppsByName", showAppsByName()));
+     setVisibleItemCount(cg.readEntry("VisibleItemsCount", visibleItemCount()));
+     setShowRecentlyInstalled(cg.readEntry("ShowRecentlyInstalled", showRecentlyInstalled()));
++    setReduceMenuDepth(cg.readEntry("ReduceMenuDepth", reduceMenuDepth()));
+ 
+     d->applet = applet;
+     d->contextMenuFactory->setApplet(applet);
+diff --git a/plasma/desktop/applets/kickoff/ui/launcher.h b/plasma/desktop/applets/kickoff/ui/launcher.h
+index 7505c0a..e61327b 100644
+--- a/plasma/desktop/applets/kickoff/ui/launcher.h
++++ b/plasma/desktop/applets/kickoff/ui/launcher.h
+@@ -83,6 +83,10 @@ public:
+     void setShowRecentlyInstalled(bool showRecentlyInstalled);
+     bool showRecentlyInstalled() const;
+ 
++    /** Specifies whether single item sub-menus shall be collapsed to upper hierarchy */
++    void setReduceMenuDepth(bool reduceMenuDepth);
++    bool reduceMenuDepth() const;
++
+ signals:
+     void aboutToHide();
+     void configNeedsSaving();

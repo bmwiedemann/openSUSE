@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Wed Aug  3 20:14:22 UTC 2016 - antoine.belvire@laposte.net
+
+- Update to 0.4.7:
+  * Update translations
+  * Add option to compile with GTK3
+- Add xmms2-plugin-restricted as recommended package (boo#980920)
+- Add bcond to build with or without GTK3 (not used by default)
+
+-------------------------------------------------------------------
+Sat Sep  6 17:37:44 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.4.6
+  * Add manual page lxmusic.1 to install
+  * Replace g_format_size_for_display() with glib >= 2.30 as 
+    deprecated
+  * Fixed few invalid casts and deprecated gdk_pixbuf_unref() calls
+  * Properly return NULL from lxmusic_do_notify_prepare() if no 
+    libnotify available
+  * [SF#252]Destroy any dialog windows on exit
+  * Avoid duplicate gtk_widget_destroy() on main window - it 
+    crashes on exit
+  * [SF#316]update_track() should not use GtkTreeIter - it may 
+    become invalid ATM
+  * [SF#335]Safeguard against NULL passed to guess_title_from_url()
+  * Safeguards for xmmsv_get_*() -- we should use it only if 
+    xmmsv_dict_get() was success
+  * Use macro AM_MAINTAINER_MODE correct way - with ([enable]) 
+  * Fix $(desktop_in_files) missing in distro tarball
+  * Fix crash if "id" is not available
+  * [SF#506]Correct Name in the desktop entry file, it should 
+    differ from GenericName
+  * Add .gitignore file
+  * autogen.sh: update check for automake version and remove never 
+    used libtoolize call
+  * Add compatibility with libnotify >= 0.7.0 
+  * Generate po/LINGUAS file on the fly
+  * Use correct parameters for AC_INIT and AM_INIT_AUTOMAKE macros
+  * Rename configure.in into configure.ac
+  * New and updated translations
+- removed lxmusic-0.4.4-libnotify0.7.0.patch
+  * fixed upstream
+- spec file cleanup
+
+-------------------------------------------------------------------
+Fri Jun 22 12:51:32 UTC 2012 - mvyskocil@opensuse.org
+
+- update to 0.4.5
+- drop lxmusic-0.4.4-no-gcc-warnings.patch
+- drop lxmusic-0.4.4-wrong-encoding-it-po.patch
+
+-------------------------------------------------------------------
+Thu Dec  8 13:15:19 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep 22 07:12:06 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in lxmusic.spec
+
+-------------------------------------------------------------------
+Thu May  5 13:23:09 UTC 2011 - andrea@opensuse.org
+
+- added lxmusic-0.4.4-libnotify0.7.0.patch to allow build with
+  libnotify >= 0.7.0 because of API changes 
+
+-------------------------------------------------------------------
+Mon Mar 14 18:49:40 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Thu May 13 14:02:09 UTC 2010 - andrea@opensuse.org
+
+- added xmms2 and an explicit dependecy fix bnc#605537 
+
+-------------------------------------------------------------------
+Mon Apr 19 00:38:45 UTC 2010 - andrea@opensuse.org
+
+- added lxmusic-0.4.4-wrong-encoding-it-po.patch to fix a wrong
+  char encoding into it.po 
+
+-------------------------------------------------------------------
+Fri Apr 16 14:28:54 UTC 2010 - andrea@opensuse.org
+
+- split -lang package
+
+-------------------------------------------------------------------
+Tue Apr 13 20:49:02 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.4
+- added lxmusic-0.4.4-no-gcc-warnings.patch to fix gcc warnings
+
+-------------------------------------------------------------------
+Tue Apr  6 08:47:36 UTC 2010 - andrea@opensuse.org
+
+- removed unsopported locales
+
+-------------------------------------------------------------------
+Mon Mar  1 22:52:39 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.3
+- fix few bugs
+- port to new xmms2 0.7 API changes
+
+-------------------------------------------------------------------
+Tue Dec 29 21:54:50 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.4.2
+- fix all gcc compilation warnings: LXMusic can be
+  compiled using CFLAGS "-Wall -Werror"
+- on_playlist_content_received: request medialib info for whole
+  playlist at once instead of requesting and updating each track successive:
+  This improves speed for loading whole playlist a lot because we get
+  rid of a lot of context switches between lxmusic and xmms2d.
+- on_playlist_content_received: use gtk_list_store_insert_with_values:
+  This single call is is more efficient on large playlists than calling
+  gtk_list_store_append and gtk_list_store_set (which emits also
+  row_changed and rows_reordered signals).
+- fix memory leak: prev. playlist model/filter not freed when switching
+  playlist
+- get rid of xmmsv_propdict_to_dict and thus of a lot of
+  intermediate propdicts allocated on the heap:
+  According to Google perftools this reduces heap usage from 24MB to 2MB
+  when loading a 4000-track play-list.
+- Translation updates
+ 
+
+-------------------------------------------------------------------
+Sat Dec 19 16:50:10 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.4.1
+- fixed bug #2902106 (fedora bugzilla)
+  Crash of LXMusic when emptying large play lists
+
+-------------------------------------------------------------------
+Fri Aug 21 09:22:37 UTC 2009 - andrea@opensuse.org
+
+- new upstream version
+- removed no more useful gcc patch
+
+-------------------------------------------------------------------
+Thu Jul 14 09:22:37 UTC 2009 - andrea@opensuse.org
+
+- fixed gcc checks issues
+
+-------------------------------------------------------------------
+Wed Jul 08 09:22:37 UTC 2009 - andrea@opensuse.org
+
+- New upstream version 0.3.0
+
+-------------------------------------------------------------------
+Fri May 22 09:22:37 UTC 2009 - andrea@opensuse.org
+
+- New package

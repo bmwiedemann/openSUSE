@@ -1,0 +1,9 @@
+## Path:	Hardware/UPS
+## Description:	Defines UPS behavior
+## Type:	list(shutdown,hibernate)
+## Default:	shutdown
+#
+# What to do if UPS goes out of power? Shutdown or hibernate.
+# Read /usr/share/doc/packages/apcupsd/README.SUSE for more.
+#
+APCUPSD_POWERFAIL_BEHAVIOR="shutdown"

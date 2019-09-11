@@ -1,0 +1,195 @@
+--- shlib/Makefile.in
++++ shlib/Makefile.in	2014-04-17 10:51:05.898235056 +0000
+@@ -59,6 +59,7 @@ bindir = @bindir@
+ libdir = @libdir@
+ datadir = @datadir@
+ localedir = @localedir@
++linkagedir = $(libdir)
+ 
+ # Support an alternate destination root directory for package building
+ DESTDIR =
+@@ -192,8 +193,8 @@ installdirs: $(topdir)/support/mkdirs
+ 	-$(SHELL) $(topdir)/support/mkdirs $(DESTDIR)$(bindir)
+ 
+ install-supported: installdirs $(SHLIB_STATUS)
+-	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -d $(DESTDIR)$(libdir) -b $(DESTDIR)$(bindir) -i "$(INSTALL_DATA)" $(SHARED_HISTORY)
+-	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -d $(DESTDIR)$(libdir) -b $(DESTDIR)$(bindir) -i "$(INSTALL_DATA)" $(SHARED_READLINE)
++	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -dd $(DESTDIR) -d $(libdir) -l $(linkagedir) -b $(bindir) -i "$(INSTALL_DATA)" $(SHARED_HISTORY)
++	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -dd $(DESTDIR) -d $(libdir) -l $(linkagedir) -b $(bindir) -i "$(INSTALL_DATA)" $(SHARED_READLINE)
+ 	@echo install: you may need to run ldconfig
+ 
+ install-unsupported:
+@@ -202,8 +203,8 @@ install-unsupported:
+ install: install-$(SHLIB_STATUS)
+ 
+ uninstall-supported:
+-	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -d $(DESTDIR)$(libdir) -b $(DESTDIR)$(bindir) -U $(SHARED_HISTORY)
+-	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -d $(DESTDIR)$(libdir) -b $(DESTDIR)$(bindir) -U $(SHARED_READLINE)
++	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -dd $(DESTDIR) -d $(libdir) -l $(linkagedir) -b $(bindir) -U $(SHARED_HISTORY)
++	$(SHELL) $(topdir)/support/shlib-install -O $(host_os) -V $(host_vendor) -dd $(DESTDIR) -d $(libdir) -l $(linkagedir) -b $(bindir) -U $(SHARED_READLINE)
+ 	@echo uninstall: you may need to run ldconfig
+ 
+ uninstall-unsupported:
+--- support/shlib-install
++++ support/shlib-install	2014-04-17 10:54:11.938235782 +0000
+@@ -3,7 +3,7 @@
+ # shlib-install - install a shared library and do any necessary host-specific
+ #		  post-installation configuration (like ldconfig)
+ #
+-# usage: shlib-install [-D] -O host_os [-V host_vendor] -d installation-dir [-b bin-dir] -i install-prog [-U] library
++# usage: shlib-install [-D] -O host_os [-V host_vendor] -d installation-dir [-l linkage-dir] [-b bin-dir] -i install-prog [-U] library
+ #
+ # Chet Ramey
+ # chet@po.cwru.edu
+@@ -12,10 +12,12 @@
+ # defaults
+ #
+ INSTALLDIR=/usr/local/lib
++LINKAGEDIR=
+ LDCONFIG=ldconfig
++DESTDIR=
+ 
+ PROGNAME=`basename $0`
+-USAGE="$PROGNAME [-D] -O host_os [-V host_vendor] -d installation-dir [-b bin-dir] -i install-prog [-U] library"
++USAGE="$PROGNAME [-D] -O host_os [-V host_vendor] [-l linkage-dir] -d installation-dir [-b bin-dir] -i install-prog [-U] library"
+ 
+ # process options
+ 
+@@ -24,14 +26,19 @@ while [ $# -gt 0 ]; do
+ 	-O)	shift; host_os="$1"; shift ;;
+ 	-V)	shift; host_vendor="$1"; shift ;;
+ 	-d)	shift; INSTALLDIR="$1"; shift ;;
++	-dd)	shift; DESTDIR=$1; shift ;;
+ 	-b)	shift; BINDIR="$1" ; shift ;;
+ 	-i)	shift; INSTALLPROG="$1" ; shift ;;
++	-l)	shift; LINKAGEDIR="$1" ; shift ;;
+ 	-D)	echo=echo ; shift ;;
+ 	-U)	uninstall=true ; shift ;;
+ 	-*)	echo "$USAGE" >&2 ; exit 2;;
+ 	*)	break ;;
+ 	esac
+ done
++if [ -z "$LINKAGEDIR" ]; then
++	LINKAGEDIR="$INSTALLDIR"
++fi
+ 
+ # set install target name
+ LIBNAME="$1"
+@@ -49,18 +56,18 @@ LN="ln -s"
+ # pre-install
+ 
+ if [ -z "$uninstall" ]; then
+-	${echo} $RM ${INSTALLDIR}/${LIBNAME}.${OLDSUFF}
+-	if [ -f "$INSTALLDIR/$LIBNAME" ]; then
+-		${echo} $MV $INSTALLDIR/$LIBNAME ${INSTALLDIR}/${LIBNAME}.${OLDSUFF}
++	${echo} $RM ${DESTDIR}${INSTALLDIR}/${LIBNAME}.${OLDSUFF}
++	if [ -f "${DESTDIR}$INSTALLDIR/$LIBNAME" ]; then
++		${echo} $MV ${DESTDIR}$INSTALLDIR/$LIBNAME ${DESTDIR}${INSTALLDIR}/${LIBNAME}.${OLDSUFF}
+ 	fi
+ fi
+ 
+ # install/uninstall
+ 
+ if [ -z "$uninstall" ] ; then
+-	${echo} eval ${INSTALLPROG} $LIBNAME ${INSTALLDIR}/${LIBNAME}
++	${echo} eval ${INSTALLPROG} $LIBNAME ${DESTDIR}${INSTALLDIR}/${LIBNAME}
+ else
+-	${echo} ${RM} ${INSTALLDIR}/${LIBNAME}
++	${echo} ${RM} ${DESTDIR}${INSTALLDIR}/${LIBNAME}
+ fi
+ 
+ # post-install/uninstall
+@@ -73,7 +80,7 @@ fi
+ case "$host_os" in
+ hpux*|darwin*|macosx*|linux*|solaris2*)
+ 	if [ -z "$uninstall" ]; then
+-		chmod 555 ${INSTALLDIR}/${LIBNAME}
++		chmod 555 ${DESTDIR}${INSTALLDIR}/${LIBNAME}
+ 	fi ;;
+ cygwin*|mingw*)
+ 	IMPLIBNAME=`echo ${LIBNAME} \
+@@ -111,8 +118,8 @@ case "$LIBNAME" in
+ 	LINK1=`echo $LIBNAME | sed 's:\(.*\)\.[0-9]\.[0-9]:\1:'`	# libname.dylib
+ esac
+ 
+-INSTALL_LINK1='${echo} cd $INSTALLDIR && ${echo} ${LN} $LIBNAME $LINK1'
+-INSTALL_LINK2='${echo} cd $INSTALLDIR && ${echo} ${LN} $LIBNAME $LINK2'
++INSTALL_LINK1='${echo} cd ${DESTDIR}$INSTALLDIR && ${echo} ${LN} $LIBNAME $LINK1'
++INSTALL_LINK2='${echo} cd ${DESTDIR}$INSTALLDIR && ${echo} ${LN} $LIBNAME $LINK2'
+ 
+ #
+ # Create symlinks to the installed library.  This section is incomplete.
+@@ -120,27 +127,27 @@ INSTALL_LINK2='${echo} cd $INSTALLDIR &&
+ case "$host_os-$host_vendor" in
+ *linux*|freebsd*-gentoo)
+ 	# libname.so.M -> libname.so.M.N
+-	${echo} ${RM} ${INSTALLDIR}/$LINK2
++	${echo} ${RM} {DESTDIR}${INSTALLDIR}/$LINK2
+ 	if [ -z "$uninstall" ]; then
+ 		eval $INSTALL_LINK2
+ 	fi
+ 
+ 	# libname.so -> libname.so.M
+-	${echo} ${RM} ${INSTALLDIR}/$LINK1
++	${echo} ${RM} {DESTDIR}${INSTALLDIR}/$LINK1
+ 	if [ -z "$uninstall" ]; then
+-		${echo} cd $INSTALLDIR && ${echo} ${LN} $LINK2 $LINK1
++		${echo} cd {DESTDIR}$INSTALLDIR && ${echo} ${LN} $LINK2 $LINK1
+ 	fi
+ 	;;
+ 
+ bsdi4*|*gnu*|darwin*|macosx*|netbsd*|mirbsd*)
+ 	# libname.so.M -> libname.so.M.N
+-	${echo} ${RM} ${INSTALLDIR}/$LINK2
++	${echo} ${RM} {DESTDIR}${INSTALLDIR}/$LINK2
+ 	if [ -z "$uninstall" ]; then
+ 		eval $INSTALL_LINK2
+ 	fi
+ 
+ 	# libname.so -> libname.so.M.N
+-	${echo} ${RM} ${INSTALLDIR}/$LINK1
++	${echo} ${RM} {DESTDIR}${INSTALLDIR}/$LINK1
+ 	if [ -z "$uninstall" ]; then
+ 		eval $INSTALL_LINK1
+ 	fi
+@@ -148,7 +155,7 @@ bsdi4*|*gnu*|darwin*|macosx*|netbsd*|mir
+ 
+ solaris2*|aix4.[2-9]*|aix[5-9]*|osf*|irix[56]*|sysv[45]*|dgux*|interix*)
+ 	# libname.so -> libname.so.M
+-	${echo} ${RM} ${INSTALLDIR}/$LINK1
++	${echo} ${RM} ${DESTDIR}${INSTALLDIR}/$LINK1
+ 	if [ -z "$uninstall" ]; then
+ 		eval $INSTALL_LINK1
+ 	fi
+@@ -159,19 +166,19 @@ solaris2*|aix4.[2-9]*|aix[5-9]*|osf*|iri
+ freebsd3*|freebsdaout*)
+ 	if [ -x /usr/bin/objformat ] && [ "`/usr/bin/objformat`" = "elf" ]; then
+ 		# libname.so -> libname.so.M
+-		${echo} ${RM} ${INSTALLDIR}/$LINK1
++		${echo} ${RM} ${DESTDIR}${INSTALLDIR}/$LINK1
+ 		if [ -z "$uninstall" ]; then
+ 			eval $INSTALL_LINK1
+ 		fi
+ 	else
+ 		# libname.so.M -> libname.so.M.N
+-		${echo} ${RM} ${INSTALLDIR}/$LINK2
++		${echo} ${RM} ${DESTDIR}${INSTALLDIR}/$LINK2
+ 		if [ -z "$uninstall" ]; then
+ 			eval $INSTALL_LINK2
+ 		fi
+ 
+ 		# libname.so -> libname.so.M.N
+-		${echo} ${RM} ${INSTALLDIR}/$LINK1
++		${echo} ${RM} ${DESTDIR}${INSTALLDIR}/$LINK1
+ 		if [ -z "$uninstall" ]; then
+ 			eval $INSTALL_LINK1
+ 		fi
+@@ -188,7 +195,7 @@ freebsd[4-9]*|freebsd1[0-9]*|freebsdelf*
+ 	
+ hpux1*)
+ 	# libname.sl -> libname.M
+-	${echo} ${RM} ${INSTALLDIR}/$LINK1.sl
++	${echo} ${RM} ${DESTDIR}${INSTALLDIR}/$LINK1.sl
+ 	if [ -z "$uninstall" ]; then
+ 		eval $INSTALL_LINK1
+ 	fi

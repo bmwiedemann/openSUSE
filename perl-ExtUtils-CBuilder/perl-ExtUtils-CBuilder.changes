@@ -1,0 +1,323 @@
+-------------------------------------------------------------------
+Wed Apr  3 06:56:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.280231
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280231 - 2019-03-31
+  
+    Fixed:
+  
+    - Protected RE interpolation in Base.pm
+
+-------------------------------------------------------------------
+Thu Nov 23 06:21:24 UTC 2017 - coolo@suse.com
+
+- updated to 0.280230
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280230 - 2017-11-22
+  
+    Fixed:
+  
+    - Updated Changes
+    - Used OurPkgVersion instead of PkgVersion
+  
+  0.280229 - 2017-10-13
+  
+    Fixed:
+  
+    - Remove dependency to 'vars' package.
+  
+  0.280228 - 2017-07-20
+  
+    Fixed:
+  
+    - Fix link() on Windows, broken in version 0.280226.
+  
+  0.280227 - 2017-07-19
+  
+    Fixed:
+  
+    - Restore compatibility of test suite to Perl 5.6.
+
+-------------------------------------------------------------------
+Sat Jul 15 05:26:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.280226
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+-------------------------------------------------------------------
+Sat Oct 10 08:54:34 UTC 2015 - coolo@suse.com
+
+- updated to 0.280224
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.282224 - 2015-10-09
+  
+    Enhancements:
+  
+    - Use warnings/strict on all modules.
+
+-------------------------------------------------------------------
+Sun Jun  7 08:31:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.280223
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280223 - 2015-06-02
+  
+    Fixed:
+  
+    - Impose deterministic order on cpp-definition options.
+      Heretofore, ExtUtils::CBuilder put cpp-definition options
+      into the cc command line in non-deterministic order. This
+      produced noise when diffing build logs.
+      Make this order deterministic.  (RT #124106)
+      
+    Added:
+  
+    - Add tests for ascii-betical order in t/04-base.t.
+
+-------------------------------------------------------------------
+Tue Apr 14 20:12:00 UTC 2015 - coolo@suse.com
+
+- updated to 0.280220
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280220 - 2014-09-27
+  
+    Fixed:
+  
+    - Added missing 'use Config' from 'android.pm' (thanks Debian community)
+  
+  0.280219 - 2014-09-01
+  
+    Fixed:
+  
+    - Fixed regression on Android (thanks to Brian Fraser)
+  
+  0.280218 - 2014-09-01
+  
+    Fixed:
+  
+    - Mispelled 'starup' key in BCC support was fixed. #79574
+    - Fixed the version in the PM file (thanks to Jim Keenan)
+  
+  0.280217 - 2014-08-22
+  
+    Fixed:
+  
+    - Quoted perl path for Windows support #98245 [Alberto Simões] 
+  
+  0.280216 - 2014-03-07
+  
+    Added:
+  
+    - Android support [Brian Fraser and Piotr Roszatycki]
+  
+    Fixed:
+  
+    - Teach ExtUtils::CBuilder to handle mod2fname properly [Brian Fraser]
+  
+  0.280212 - 2013-09-08
+  
+    Fixed:
+  
+    - Reversion all modules.  
+  
+  0.280211 - 2013-09-08
+  
+    Fixed:
+  
+    - Missing dependency Perl::OSType [Leon Timmermans]
+    - Fixed repository location [Alberto Simões]
+  
+  0.280210 - 2013-09-06
+  
+    Fixed:
+  
+    - Update INSTALLDIRS to favor installation under 'site' (perl 116479)
+      [James E Keenan]
+  
+  0.280209 - 2012-10-20 (Perl v5.17.5)
+  
+    Fixed:
+  
+    - Allow options to be passed to prelink in Windows (perl #115100)
+      [Eric Brine]
+  
+  0.280208 - 2012-06-20 (Perl v5.17.1)
+  
+    Fixed:
+  
+    - Corrected location in which manifest file is looked for on
+      Windows (RT#35943, perl #111798) [snaury@gmail.com]
+  
+  0.280207 (Not released)
+  
+    Fixed:
+  
+    - Corrected test for existence of manifest file on Windows
+      (perl #111782) [Steve Hay]
+  
+  0.280206 - 2012-03-20 (Perl v5.15.9)
+  
+    Documented:
+  
+    - Added a SUPPORT section to indicate that upstream is Perl 5 core
+
+-------------------------------------------------------------------
+Tue Jun 11 18:28:18 UTC 2013 - coolo@suse.com
+
+- rebuild for perl 5.18
+
+-------------------------------------------------------------------
+Thu Feb 23 09:56:03 UTC 2012 - coolo@suse.com
+
+- updated to 0.280205
+
+  Fixed:
+  - Fixed bug picking up ccflags from Config
+  - Quotation style cleanup
+  - Appends CFLAGS and LDFLAGS environments instead of overriding
+  - Reset ccflags on compilation for VMS.
+
+  Changed:
+  - Refactored OS name mapping to use Perl::OSType
+
+-------------------------------------------------------------------
+Wed Feb 15 12:02:42 UTC 2012 - coolo@suse.com
+
+- updated to 0.280202
+  - Different file names used for test files; allows EU::CB tests
+    to be run in parallel. [Florian Ragwitz]
+
+  Fixed:
+  - t/04-base.t no longer attempt to compile or link as this provokes
+    failures on main platforms
+  - Various typo fixes in Pod or comments
+  - Incorporated another t/04-base.t fix from bleadperl
+    [Chris Williams]
+  - Fixed spurious t/04-base.t failure when run from Perl core
+    [David Golden]
+  - Fixed t/02-link.t on perl < 5.8
+  - Preserves exit status on VMS [Craig Berry]
+  - Fix Win32 split_like_shell escaping [Christian Walde]
+  - Tests no longer fail if user has set the CC environment variable
+
+-------------------------------------------------------------------
+Fri Dec  2 16:11:50 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Tue Nov 30 14:04:30 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 13:37:29 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- revert to 0.27
+  o as I know the Author (David Golden) releases will be
+    0.27 > 0.2701 > 0.2702 > 0.2703 ..... 0.28
+    For perl 0.28 > 0.2703, but for rpm 0.28 < 0.2703
+  o hence added updates for 0.2701,0.2702, 0.2703 as patches
+    o ExtUtils-CBuilder-0.2701.patch
+    o ExtUtils-CBuilder-0.2701_0.2702.patch
+    o ExtUtils-CBuilder-0.2702_0.2703.patch
+    - 0.2703 - Tue Mar 16 17:10:55 EDT 2010
+      - fixed tests for Windows and MSVC [Jan Dubois]
+    - 0.2702 - Mon Feb 22 15:10:52 EST 2010
+      - compile() changes in 0.2701 did not work on Windows.  Now fixed.
+    - 0.2701 - Tue Feb 16 09:12:45 EST 2010
+      - compile() now accepts both string & array for 'include_dirs'
+        argument, as documented.(RT#54606) [Alberto Simões]
+- noarch pkg
+
+-------------------------------------------------------------------
+Thu Aug 26 19:21:31 UTC 2010 - pascal.bleser@opensuse.org
+
+- rewrote auto-generated spec file from scratch
+- update to 0.2703
+- chanes from 0.27:
+ * compile() now accepts both string & array for 'include_dirs' argument, as documented.(RT#54606)
+
+-------------------------------------------------------------------
+Mon Mar  8 22:58:02 UTC 2010 - chris@computersalat.de
+
+- update to 0.27
+  - Removed Build.PL to avoid creating a circular dependency
+  - Added version numbers to Windows compiler driver modules
+- 0.26_05 - Sun Oct 25 17:29:02 EDT 2009
+  - Fixed t/02link.t failures on cygwin with Perl 5.8 [David Golden]
+  - Made have_compiler (and have_cplusplus) quiet without echoing
+    the test command to STDOUT [David Golden]
+- 0.26_04 - Mon Oct 19 21:57:46 EDT 2009
+  - Added 'have_cplusplus()' method to check for C++ support
+  - Added patches for building Perl with mingw64 [Sisyphus]
+  - Allow CC environment variable to override $Config{cc}
+  - Fixed link executable command for Win32 MSVC (RT#40819) [Cosimo
+    Streppone]
+  - Removed MSVC version check when embedding a manifest file
+    (RT #43002) [Steve Hay]
+  - Split Windows compiler driver packages into individual *.pm files
+- 0.260301 - Sat Aug 29 11:04:41 EDT 2009
+  - Fixed linking error on Win32 with gcc compiler (RT#49000)
+    [kmx]
+- 0.2603 - Sat Jul 18 06:56:06 EDT 2009
+  - Makefile.PL had wrong INSTALLDIRS setting for older Perls
+    (RT#47985) [David Golden]
+- 0.2602 - Sat Jul  4 10:57:12 EDT 2009
+  - Fixed 00-have-compiler.t if $^X is a relative path [David Wheeler]
+- 0.2601 - Wed Jul  1 09:37:39 EDT 2009
+  - On VMS, cleans up extra files generated during testing
+    [John E. Malmberg, Craig Berry]
+- 0.26 - Mon Jun 29 20:11:52 EDT 2009
+  - No changes from 0.25_01
+- 0.25_01 - Sat Jun 27 23:13:20 EDT 2009
+  - Changed test library to Test::More
+  - Added tests for have_compiler
+  - Skips tests that need a compiler if have_compiler is false
+  - have_compiler will try to compile in the current directory
+    if compiling in tmpdir fails for whatever reason
+- 0.25 - Fri Jun 26 16:18:13 EDT 2009
+  - Slight diagnostic improvements in link.t
+- 0.24_01 - Sun Mar  8 14:50:10 2009
+  - On Windows, don't generate "mt" command when CRT is statically
+    linked. [Jan Dubois]
+  - On Cygwin, examine $Config{useshrplib} to see whether we're
+    supposed to be linking with a shared perl library or not. [Reini
+    Urban]
+  - In link_executable() on Cygwin, trust $Config{ld} rather than using
+    $Config{cc} for linking. [Reini Urban]
+  - Add 'haiku' as a Unix-like platform. [Ingo Weinhold]
+- 0.24 - Fri Aug 15 22:01:48 2008
+  - Added 'gnu' and 'gnukfreebsd' as Unix variants. [Niko Tyni]
+  - Brought in some VMS fixes from bleadperl: "Correct and complete
+    CBuilder's handling of external libraries when linking on VMS."
+    [Craig Berry]
+- cleanup spec
+  - HEADER
+  - fixed deps gcc-c++
+  - added perl-macros
+  - more use of macros
+
+-------------------------------------------------------------------
+Thu May  8 19:37:39 CEST 2008 - lrupp@suse.de
+
+- update to 0.23
+  * Will now install in the core perl lib directory when the user's
+    perl is new enough to have us in core. [Yi Ma Mao]
+  * Clean up perl_src path using Cwd::realpath().  Only affects usage
+    as part of the perl core.
+  * Protect $., $@, $!, $^E, and $? from any clobbering that might
+    occur in our DESTROY method. [Zefram]
+  * From bleadperl, a patch to clean up debug symbol files (.pdb for
+    VC++, .tds for BCC) when running have_compiler(). [Steve Hay &
+    Steve Peters]
+- beautify specfile
+- own parent directories
+

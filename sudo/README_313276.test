@@ -1,0 +1,19 @@
+To verify that sudo works with SSSD,
+there's has to be a working LDAP server where the sudoers file
+will be saved, local running SSSD and sudo configured to use
+the SSSD plugin.
+
+The sudoers file has to be stored in LDAP.
+A [sudo] service has to be configured in /etc/sssd/sssd.conf
+Sudo needs to be instructed to use SSSD, this is done in /etc/nsswitch.conf,
+by adding a line "sudoers: files sss"
+
+Related material:
+
+/usr/share/doc/packages/sudo/README.LDAP provides a guide how to
+make sudo work with LDAP.
+
+man sudoers.ldap(5) describes the LDAP-based sudoers file
+
+man sssd-ldap(5) describes the LDAP sudo options.
+

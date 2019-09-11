@@ -1,0 +1,54 @@
+From 0348a8443e5f15636f86ef2533a7d6e8fa5d936d Mon Sep 17 00:00:00 2001
+From: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+Date: Thu, 7 Dec 2017 17:21:11 +0100
+Subject: [PATCH 4/4] zdev: Fix zdev dracut module aborting on unknown root
+ device
+
+Running dracut when the root device is not known to zdev (for example
+because it is located on a virtio block device) will cause the zdev
+dracut module to incorrectly return an error in the installkernel()
+function. As a result dracut aborts with an error.
+
+Fix this by ensuring that the non-zero exit code resulting from lszdev
+not being able to determine the root device is not passed on to the
+calling function. Also remove unnecessary error output in this case
+by leaving the install() function early when the root device is not
+known to zdev.
+
+Signed-off-by: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+---
+ zdev/dracut/95zdev/module-setup.sh | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/zdev/dracut/95zdev/module-setup.sh b/zdev/dracut/95zdev/module-setup.sh
+index 7c67cd7..4c13a65 100644
+--- a/zdev/dracut/95zdev/module-setup.sh
++++ b/zdev/dracut/95zdev/module-setup.sh
+@@ -29,13 +29,21 @@ depends() {
+ }
+ 
+ installkernel() {
+-    local _modules=$(lszdev --by-path / --columns MODULES --no-headings)
++    local _modules=$(lszdev --by-path / --columns MODULES --no-headings 2>/dev/null)
+ 
++    [ -z "$_modules" ] && return 0
+     [ ! -z "$_modules" ] && instmods $_modules
+ }
+ 
+ install() {
+-    local _tempfile=$(mktemp --tmpdir dracut-zdev.XXXXXX)
++    local _tempfile
++
++    # Exit early if root device type is unknown
++    if ! lszdev --by-path / >/dev/null 2>&1 ; then
++        return 0
++    fi
++
++    _tempfile=$(mktemp --tmpdir dracut-zdev.XXXXXX)
+ 
+     if chzdev --export - --persistent --by-path / >/dev/null 2>&1 ; then
+         # Use persistent configuration
+-- 
+2.13.6
+

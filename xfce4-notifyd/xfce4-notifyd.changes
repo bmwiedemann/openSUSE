@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Tue Apr 23 10:38:45 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- This is a bugfix release:
+    * Drop reference to dbus-binding-tool (bxo#14835)
+    * Make more strings translatable (bxo#14890)
+    * panel plugin: Fix menu position
+    * panel-plugin: Fix first log entry not being shown (bxo#14920)
+    * Fix Chrome notification icons (bxo#15215)
+    * Fix output of xfce4-notifyd-config --help (bxo#14922)
+    * Get rid of gdk_error_trap* deprecations
+    * Add fallback for label alignment and older Gtk+3
+    * Fix icon-size in the log toolbar
+- Updated translations
+- Spec file updated
+
+-------------------------------------------------------------------
+Wed Nov 21 19:38:37 UTC 2018 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 0.4.3 (27 October 2018):
+  This is (mostly) a translation update release.
+  Bugs fixed:
+  * Set the correct default value for fadeout (LP#1763674)
+
+-------------------------------------------------------------------
+Fri Mar  2 12:35:06 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.4.2 (01 March 2018):
+  This is a bugfix release.
+  Bugs fixed:
+  * Fix support for hyperlinks in notifications (bxo#14073)
+  * Fix crash because of double-free (bxo#14060)
+  * Improve wrapping and ellipsizing of notification bubble
+    (bxo#12674)
+  * Ensure xfce4-notifyd.desktop.in goes into the tarball
+    (bxo#13989)
+  * Suppress warnings about unused and uninitialized variables
+    (bxo#14095)
+  * Fix crash when there are no known apps
+  * panel-plugin: Fix showing placeholder when there are no logs
+    from today
+  * Updated translations
+
+-------------------------------------------------------------------
+Mon Dec 18 18:00:24 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.4.1 (09 December 2017):
+  This is a feature release.
+  Features:
+  * Panel plugin features
+    * Add hidden option log-icon-size
+    * Add button to clear the log (bxo#13955)
+    * Revamped layout (DND button on top for quick access)
+    * Show placeholder text in case of empty logs
+  * Improved notification window layout
+  * Add configure option to use autostart instead of dbus (bxo#13989)
+  Bugs fixed:
+  * Remove deprecated functions (Gtk+ 3.22)
+  * Fix warnings reported by Clang (Bug #13931)
+  * Treat icon_data only as pen-ultimate fallback option (bxo#13950)
+  * Fix warning about gdk_window_get_origin (bxo#13935)
+  * Ensure body and summary of notifications are correctly
+    ellipsized (bxo#12674)
+  * Ensure the panel plugin icon resizes with Xfce 4.12
+  * Updated translations
+- removed obsolete xfce4-notifyd-0.4.0-fix-build-with-old-gtk3.diff
+
+-------------------------------------------------------------------
+Fri Nov 10 20:41:52 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.4.0 (07 October 2017):
+  This is a feature release.
+  Features:
+  * Panel plugin that shows most recent notifications
+    and allows for quick access to DND mode
+  * Persistent daemon (bxo#12754)
+  * New (optional) animation: slide-out
+  * Support for all image types in the log
+  * Better application icon matching in the config dialog
+  * New logo (also in high resolution)
+  Bugs fixed:
+  * Bump notification spec version to 1.2 (bxo#13578)
+  * Fix empty body when markup is invalid (bxo#10027)
+  * Show warning in settings dialog if notifyd is not running (bxo#13417)
+  * log-viewer: Fix escaping of characters and add markup support
+  * Handle desktop-id as fallback in the log
+  * Updated translations
+- add xfce4-notifyd-0.4.0-fix-build-with-old-gtk3.diff (for Leap)
+
+-------------------------------------------------------------------
+Fri Apr 28 11:35:16 CEST 2017 - tiwai@suse.de
+
+- Fix the license to GPL-2.0 as xfce-notify-daemon.c is v2 only.
+
+-------------------------------------------------------------------
+Wed Apr 19 19:12:56 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.3.6:
+  - Bugs fixed:
+    * Fix memory leaks in log viewer (bxo#13400)
+    * Fix a couple of memory leaks in notifyd-config (bxo#13386)
+    * Update log toolbar buttons sensitivity (bxo#13365)
+  - Updated translations
+
+-------------------------------------------------------------------
+Mon Feb 27 21:34:19 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.3.5:
+  This is a feature release.
+  - Features:
+    * Notification log ("persistence" according to fd.o spec)
+    * Rework settings dialog and include more options
+  - Bugs fixed:
+    * Fix height of settings dialog when plugged
+    * Fix compilation on 3.14
+  - Updated translations
+
+-------------------------------------------------------------------
+Sat Nov 26 17:29:51 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 0.3.4
+  - port to GTK3 and gdbus
+  - new "do not disturb" feature
+  - various bugfixes and improvements; see NEWS file
+  - do not package ChangeLog -- NEWS file is enough
+
+-------------------------------------------------------------------
+Wed May  8 13:12:36 UTC 2013 - gber@opensuse.org
+
+- update to version 0.2.4
+  - fix border drawing when compositing is disabled
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 21 11:52:24 UTC 2013 - gber@opensuse.org
+
+- update to version 0.2.3
+  - add widget names to summary ("summary") and body ("body")
+    widgets to allow easier theming; remove the redundant/buggy
+    summary-bold style property
+  - handle timeout correctly when smaller than fading time
+  - parse body with g_markup_escape_text which allows us to handle
+    span attributes misused by some clients and to parse strings
+    with "unusual" characters such as &
+  - respect border-width when drawing the notification
+  - do not kill notification daemon to apply new theme, instead,
+    handle style updates of existing notifications
+  - show a button in the notification preview
+  - add an icon to the notification preview
+
+-------------------------------------------------------------------
+Wed May 16 13:22:30 UTC 2012 - gber@opensuse.org
+
+- update to current git snapshot
+  - show dialog in settings category
+  - emit closed signal on correct object
+  - avoid flickering of the window
+  - fixup type setting
+  - accept uri-image locations
+
+-------------------------------------------------------------------
+Sat Mar 31 10:14:21 UTC 2012 - gber@opensuse.org
+
+- split off -lang subpackage
+- specfile cleanup
+
+-------------------------------------------------------------------
+Sat Aug  6 11:36:55 UTC 2011 - gber@opensuse.org
+
+- update to version 0.2.2
+  - new cleaner settings dialog with preview on theme change
+  - only initialize the close timeout when all notifications are
+    closed
+  - allow installation of the helpers in a custom location
+  - bugfixes
+  - translation updates
+- dropped obsolete xfce4-notifyd-fix-dbus-service-filename.patch
+
+-------------------------------------------------------------------
+Sun May 29 16:16:20 UTC 2011 - gber@opensuse.org
+
+- added xfce4-notifyd-fix-dbus-service-filename.patch in order to
+  make the filename of the DBus service file unique and prevent a
+  conflict with notification-daemon
+
+-------------------------------------------------------------------
+Thu Feb 17 23:55:09 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+- call %icon_theme_cache_post/un
+
+-------------------------------------------------------------------
+Thu Feb  3 21:55:28 UTC 2011 - gber@opensuse.org
+
+- depend on libnotify rather than libnotify-tools for < 11.4
+
+-------------------------------------------------------------------
+Thu Feb  3 19:37:49 UTC 2011 - gber@opensuse.org
+
+- update to version 0.2.1
+  - fade to transparent when screen is composited, remove the
+    setting
+  - bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Jan  5 16:53:28 UTC 2011 - gber@opensuse.org
+
+- added -branding-upstream subpackage
+- show compiler output
+
+-------------------------------------------------------------------
+Mon Dec 27 10:31:18 UTC 2010 - gber@opensuse.org
+
+- minor cleanup
+- improved summary/group
+
+-------------------------------------------------------------------
+Sat Dec 25 10:40:36 UTC 2010 - gber@opensuse.org
+
+- use versioned obsoletion
+
+-------------------------------------------------------------------
+Tue Dec 21 14:16:28 UTC 2010 - gber@opensuse.org
+
+- xfce4-notifyd-config requires notify-send
+
+-------------------------------------------------------------------
+Wed Dec 15 15:51:41 UTC 2010 - prusnak@opensuse.org
+
+- fix filelist
+
+-------------------------------------------------------------------
+Tue Dec 2 14:11:00 CET 2010 - admin@djscore.org
+
+- updated to new version 0.2.0
+
+-------------------------------------------------------------------
+Thu Aug 13 12:26:07 UTC 2009 - puzel@novell.com
+
+- update upstream URL
+
+-------------------------------------------------------------------
+Tue Nov 25 13:52:51 CET 2008 - prusnak@suse.cz
+
+- created package (v 0.1.0)
+

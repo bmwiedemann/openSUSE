@@ -1,0 +1,2122 @@
+-------------------------------------------------------------------
+Sat Jul 13 22:10:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO, gnucash fails to build with it.
+
+-------------------------------------------------------------------
+Tue Apr  9 13:35:25 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v3.5 (github.com/Gnucash/gnucash/releases/tag/3.5):
+  + bugs fixed: bgo#639049, bgo#748431, bgo#787401, bgo#795729,
+    bgo#796498, bgo#796530, bgo#796687, bgo#796826, bgo#796827,
+    bgo#796829, bgo#796831, bgo#796877, bgo#796946, bgo#796952,
+    bgo#796956, bgo#796965, bgo#796989, bgo#797002, bgo#797011,
+    bgo#797013, bgo#797029, bgo#797030, bgo#797031, bgo#797041,
+    bgo#797046, bgo#797067, bgo#797074, bgo#797098, bgo#797105,
+    bgo#797136 
+  + various fixes for i18n, gui, importing and online banking, 
+    reports
+  + performance improvement
+  + deprecated some scheme
+
+-------------------------------------------------------------------
+Tue Apr 02 11:28:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 3.5:
+  + Asset barchart report includes first day of next month (#639049)
+  + Wrong average balance for transactions during DST (#748431)
+  + Test for report system - HTML tests (#787401)
+  + Advanced Portfolio Report (#795729)
+  + Incorrect starting balance in TXF Report Calculations (#796498)
+  + TxnCsvImport - fix loading of saved presets (#796530)
+  + Tax Entity Name and type for an account reporting fixed (#796687)
+  + Report HTML document header suppression (#796826)
+  + Report HTML suppress document title (#796827)
+  + Report HTML table rows are prepended not as list elements (#796829)
+  + Report HTML append table column incorrectly (#796831)
+  + test-stress-options fails (#796877)
+  + Mortgage and Loan Repayment Setup tool crashes (#796946)
+
+-------------------------------------------------------------------
+Thu Jan  3 11:19:41 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 3.4:
+  + Set up filepath utils to determine the GNC_CONFIG_HOME in the
+    same way as GNC_DATA_HOME.
+  + Redesign gnc-uri-utils.
+  + Show warnings for deprecated declarations.
+  + More report code-cleanup by Chris Lam.
+  + Invoice: Remove H1 title and superflous option.
+  + The preference, use formal accounting labels does not update
+    the header With a register open and you change preference 'use
+    formal accounting labels' it does not update the register
+    header so add a call back for the preference.
+  + Make the grid lines of totals Budget tree view track the
+    preferences.
+    Make the grid lines of the totals tree view track the
+    preferences to match the account tree view above it.
+  + Add routine to fix Account Color being set to "Not Set".
+  + Performance fix in dom_chars_handler: use g_strndup instead of
+    g_strdup.
+  + In the appdata/metadata file, rename the ID from
+    org.gnucash.Gnucash to org.gnucash.GnuCash to match flathub,
+    and add a launchable ID to link it to the desktop file.
+  + Added double-click-on-file for the CSV transaction, price, and
+    account importers and exporters.
+  + Cleaned up a variety of issues reported by the clang static
+    analyzer.
+  + Allow the text options widget to use all remaining space
+  + Add short_labels for a few toolbar buttons with long names.
+    That should fit a few more buttons on the toolbar.
+  + Update iso-4217-currencies.xml, adddding VES - Bolivar
+    Soberano, minor updates of other VE currencies.
+  + Python 3 bindings fixes and improvements.
+  + Bugs fixed: bgco#498072, bgco#760825, bgco#767772, bgco#775580,
+    bgco#779565, bgco#788332, bgco#789674, bgco#793156,
+    bgco#795080, bgco#795237, bgco#795425, bgco#796772,
+    bgco#796806, bgco#796842, bgco#796849, bgco#796875,
+    bgco#796878, bgco#796883, bgco#796886, bgco#796887,
+    bgco#796893, bgco#796896, bgco#796903, bgco#796914,
+    bgco#796915, bgco#796940, bgco#796944, bgco#796945,
+    bgco#796948, bgco#796949, bgco#796960, bgco#796961,
+    bgco#796967, bgco#796978, bgco#796981, bgco#796982,
+    bgco#796988, bgco#796989, bgco#796994.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 2 05:12:18 UTC 2018 - sean@suspend.net
+
+- Update to version 3.3:
+  + Set toolbar buttons to show both icon and text.
+  + Add preference for forcing prices to decimal display.
+  + Revert the "Average Cost" pricing changes made in 2.6.17.
+  + Allow saving to xml over an existing sqlite3 file and the other
+    way around.
+  + Add customer/vendor ID in client section of invoices.
+  + Change the default filter for General Ledger.
+  + Fix grk accelerator mixups by explicitly disabling actions
+    that are not relevant.
+  + [job-report] Prevent Crash if there is no AR account.
+  + Add the ability to cascade the account colors in account tree.
+  + Speed up loading the preference dialog by blocking register
+    updates until the dialog is fully loaded.
+  + Update change_tax_code.py add basic test for python query.
+  + Simplify GNCQueryView's data model.
+  + Open customer/vendor/employee report when double-clicking the
+    respective owner on the customer/vendor/employee overview page.
+  + Update Overview of README.
+  + Many new tests for reports.
+  + Some substantial speedups when loading large amounts of
+    business transactions from a SQL backend.
+  + Clean up a lot of memory leaks.
+  + Remove all use of Timespec in the program. Provide deprecated
+    wrapper functions supporting timespecs for custom reports;
+    users should update the reports as soon as possible.
+  + Bugs fixed: bgco#771667, bgco#784420, bgco#786708, bgco#787439,
+    bgco#789594, bgco#792446, bgco#794755, bgco#794870,
+    bgco#796756, bgco#795821, bgco#796054, bgco#796137,
+    bgco#796248, bgco#796759, bcgo#796474, bgco#796509,
+    bgco#796579, bgco#795248, bgco#796762, bgco#796474,
+    bgco#796509, bgco#796579, bgco#796665, bgco#796766,
+    bgco#796669, bgco#796724, bgco#796725, bgco#796734,
+    bgco#796777, bgco#796737, bgco#796739, bgco#796751,
+    bgco#796755, bgco#796788, bgco#796792, bgco#796812,
+    bgco#796813, bgco#796814, bgco#796816, bgco#796819,
+    bgco#796820, bgco#796833, bgco#796839, bgco#796858.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 27 23:02:33 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.2:
+  + Bugs fixed: bgo#787401, bgo#794617, bgo#795101, bgo#795247,
+    bgo#795253, bgo#795272, bgo#795276, bgo#795362, bgo#795471,
+    bgo#795519, bgo#795666, bgo#795831, bgo#795944, bgo#796079,
+    bgo#796081, bgo#796083, bgo#796117, bgo#796256, bgo#796369,
+    bgo#796398, bgo#796409, bgo#796423, bgo#796484, bgo#796527,
+    bgo#796537, bgo#796586, bgo#796595, bgo#796600, bgo#796614,
+    bgo#796638.
+  + Other fixes/enhancements:
+    - Transaction report improvements:
+      . Enable computing averages in subtotal grid;
+      . Generate the subtotal grid only if the primary sort key
+        enables subtotals;
+      . Fix subtotal grid to support multiple commodities;
+      . New filters.
+    - Add tooltip support for register cells.
+    - Replace old-style html style attributes with css.
+    - Add the full account name to the saved register settings.
+    - Fix misplaced try block that caused unhandled exception if
+      year out of range.
+    - Fix permanent storage of vendor details.
+    - Update invoice reports to give a consistent representation of
+      invoice data across the application.
+    - Ensure gncEntry rounding is consistent. Internally calculated
+      values in the entry are never rounded. Consumers of
+      gncEntry's calculated values can request them either rounded
+      or not. Next use a pragmatical approach for calculating
+      values on invoices based on the entry values: do the rounding
+      such that we never create an unbalanced transaction while
+      posting.
+      That means:
+      . Round each entry's net value before summing them in net
+        total;
+      . Accumulate all tax totals on invoice level per tax account
+        before rounding and round before before summing them in a
+        global tax total.
+      A complete solution can only be offered if users are allowed
+      to manually correct tax entries. This requires changes to
+      user interface and data format so that's not going to happen
+      in gnucash 3.x.
+  + Updated translations.
+- Drop explicit C(XX)FLAGS exportation: now cmake export them by
+  default.
+- Readd pkgconfig(libsecret-1) BuildRequires, following upstream
+  changes. Its support have got lost after porting the build system
+  to CMake.
+- Conditionalize pkgconfig(gwengui-gtk3) BuildRequires to be used
+  only by Tumbleweed (suse_version > 1500) as previous releases do
+  not ship it.
+
+-------------------------------------------------------------------
+Tue Jun 12 09:20:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Export C/CXXFLAGS="-Wno-error=parentheses, fix build with gcc8.
+  This is more or less the exact route taken by upstream to
+  workaround gcc8.
+
+-------------------------------------------------------------------
+Wed Jun  6 21:43:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(libgoffice-0.8) BuildRequires: No longer needed,
+  nor used.
+
+-------------------------------------------------------------------
+Thu May  3 01:19:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.1:
+  + Bugs fixed: bgo#118391, bgo#769686, bgo#772776, bgo#782144,
+    bgo#792105, go#793461 , bgo#794767, bgo#794916, bgo#794936,
+    bgo#794941, bgo#794953, bgo#794990, bgo#794994, bgo#795031,
+    bgo#795039, bgo#795040, bgo#795049, bgo#795064, bgo#795068,
+    bgo#795080, bgo#795082, bgo#795101, bgo#795142, bgo#795155,
+    bgo#795347, bgo#795377, bgo#795389, bgo#795405, bgo#795446,
+    bgo#795471.
+  + Other fixes:
+    - Fix crash when loading sql book with posted transactions;
+    - html-font: add default font family;
+    - Several improvements to the Transaction and GST reports;
+    - csv-impport: Allow empty amount fields;
+    - Remove the set transient parent setting for Reconcile window;
+    - Prevent throw in gnc-pricedb;
+    - If there are no prices in the db, critical errors are
+      flagged.
+  + Updated translations.
+- Fix redundancy in python3-gnucash subpackage description.
+
+-------------------------------------------------------------------
+Thu Apr 19 22:15:22 UTC 2018 - luc14n0@linuxmail.org
+
+- Add gwengui-gtk3 pkgconfig module BuildRequires: make use of our
+  package again instead of the one bundled with GnuCash now that we
+  supply it.
+
+-------------------------------------------------------------------
+Wed Apr  4 00:52:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.0:
+  + New Features:
+    - New editors to remove outdated or incorrect match data from
+      the import maps, a new user interfacs for managing files
+      associated with transactions, an improved facility for
+      removing old prices from the price database, and a way to
+      remove deleted files from the history list in the file menu.
+    - New Reports: A Reconciliation Report based on the Transaction
+      Report, an Income GST Report, and a Cashflow Barchart report.
+    - A new CSV importer largely rewritten in C++, adding new
+      features including the ability to re-import CSV files
+      exported from GnuCash, along with a separate CSV price
+      importer.
+    - A new preference panel for the Alphavantage API key so that
+      Finance::Quote users need not edit /etc/gnucash/environment.
+    - Data file directories are now located appropriately to the
+      operating system's conventions by default:
+      $XDG_CONFIG_HOME/gnucash (or the default $HOME/.config/\
+      gnucash).
+    - Accounts in the Bayes import map are now linked by GUID
+      instead of names so that the matcher won't have to be
+      retrained if you rename an account.
+    - MySQL and SQLite3 date storage has changed a bit. Once
+      converted, MySQL and SQLite3 database will be loadable only
+      by GnuCash 2.6.19 and later.
+    - Numerics are rewritten to allow for more significant digits.
+      The old 6-digit-maximum fraction is now 9-digits, and prices
+      may have up to 18 digit precision.
+    - Transaction Report improvements, including regular expression
+      filtering and many more options and features.
+    - The About dialog box layout is improved and now includes the
+      detected Finance::Quote version.
+
+-------------------------------------------------------------------
+Tue Mar 27 02:44:09 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.7.8:
+  + Bugs fixed:
+    - Segmentation Fault in Transfer dialog after clearing Date
+      field and pressing escape (bgo#787439).
+    - Remove keep above setting for assistant hierarchy
+      (bgo#794242).
+  + Other fixes:
+    - Test for Key_file not being NULL before trying to free it.
+    - Stop critical error due to testing null filename
+      g_filename_from_uri returns NULL if it is not a file uri so
+      test for the file:// prefix before doing g_file_test.
+    - More transient-parent fixes.
+    - Add missing response section to the account picker dialog.
+    - Glade 3.20 adds surplus padding option to action area.
+      When glade files are saved which have GtkAssistants defined
+      a packing section is added to the assistant action area which
+      then causes a warning so remove them.
+    - Add XML namespaces for all Account Hierarchy Templates.
+    - Increase default options dialog size: The old 400x400 was
+      woefully inadequate for most options especially options
+      involving account trees.
+- Changes from version 2.7.7:
+  + Bugs fixed:
+    - Segmentation Fault in Transfer dialog after clearing Date
+      field and pressing escape (bgo#787439).
+    - Add python3 support (bgo#791831).
+    - Remove keep above setting for assistant hierarchy
+      (bgo#794242).
+  + Other fixes:
+    - Fix date corruption in SQL load. Four date elements were
+      affected: GncEntry::date, GncEntry::date_entered,
+      GncInvoice::opened, and GncInvoice::posted. This does not
+      affect the stored values of the dates.
+    - Fix lost Bayesian matches in SQL backend. The
+      import-map-bayes uses a three-part key that uses the same
+      delimiter as a path and the SQL backend was throwing away
+      everything except the account guid.
+    - More transient-window fixes and other Gtk3 cleanups.
+    - Add xmlns namespace declarations to all of the accounts
+      templates that lacked it and remove the emacs mode-setting
+      comments at the end of them.
+  + Updated translations.
+- Pass COMPILE_GSCHEMAS=OFF to cmake to disable gschemas
+  compilation as this is delegated to Glib's RPM file triggers.
+- Add python3-devel BuildRequires, readd Python bindings now
+  that Python 3 support is provided and Recommend the subpackage.
+- Update package summaries and description to show more explicitly
+  their contents.
+
+-------------------------------------------------------------------
+Thu Mar 15 04:29:31 UTC 2018 - luc14n0@linuxmail.org
+
+- Pass CMAKE_BUILD_WITH_INSTALL_RPATH to cmake since GnuCash won't
+  be ran from the build tree, and to avoid occasionally relinking
+  failures.
+
+-------------------------------------------------------------------
+Mon Mar 12 23:17:23 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.7.6:
+  + New Features:
+    - Modernise chart colours from the dated CSS defaults to modern
+      colours as suggested by http://clrs.cc/.
+    - Add "Subtotal Summary Grid" to the Transaction Report.
+  + Bugs fixed: bgo#764245, bgo#793460, bgo#793467, bgo#793699,
+    bgo#793900, bgo#793941, bgo#793947, bgo#794031, bgo#794083 and
+    bgo#794137.
+  + Other fixes:
+    - Csv imp settings - internalize prefix handling.
+    - Csv import - improve memory handling in the assistant class.
+    - Add some background info on memory management in CSV
+      importers. As the assistant code combines multiple memory
+      management models care should be taken not to mix them up.
+      The notes should give some insights in how to do this.
+    - Lots of transient parent warnings fixed.
+    - Fix Segmentation fault when going to File->New.
+    - Speed up GUID equality comparison.
+    - With register obscured the sheet kept being redrawn.
+  + Updated translations.
+- Add libboost_system-devel BuildRequires: new dependency.
+- Drop intltool BuildRequires following upstream migration to
+  Gettext.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:30:27 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 28 12:58:44 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.7.5:
+  + Locate all user data and configuration files to
+    platform-dependent standard locations ($XDG_CONFIG_HOME/gnucash
+    (or the default $HOME/.config/gnucash))
+    - GnuCash currently uses the following files in this directory:
+      . log.conf (to set what gets logged to gnucash.trace).
+      . config-user.scm (to add custom scheme code like custom
+        reports; replaces config.user and config-.user).
+      . gtk-3.0.css (For theming)
+  + Further improvements to the Transaction and
+    Income-GST-statement reports.
+  + Transaction Report: omit display of $0 in subtotals in other
+    currencies. Previously in dual-subtotal columns, the
+    dual-subtotal would attempt to print all commodities in the
+    row. This meant if user chose common-currency thereby
+    triggering additional commodities, the dual-subtotal would
+    attempt to add amounts in other commodities which would be 0,
+    and display the 0 amount.
+
+-------------------------------------------------------------------
+Sun Dec 24 23:31:46 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.7.4:
+  + New Features For Users:
+    - A new preference panel for the Alphavantage API key so that
+      Finance::Quote users need not edit /etc/gnucash/environment.
+    - The detected Finance::Quote version is displayed in the About
+      box.
+    - Removed all references to the various Yahoo! quote sources
+      and made Alphavantage the default.
+  + Bugs fixed: bgo#787497, bgo#790526, bgo#790845, bgo#792106,
+    bgo#792809 and bgo#792947.
+  + Other fixes:
+    - Some Guile 2.2 issues are resolved.
+    - Some bugs in the new Transaction Report.
+    - Correct setting of WebKit version during configuration when
+      the version is cached.
+    - The change to the Average Cost calulation introduced in
+      2.6.12 is reverted (bgo#775368).
+    - Fix appstream id as per the appstream recommendation.
+    - Fix incorrect minimum dates in the net-linechart and
+      net-barchart reports.
+    - Fix a report crash if the Account Depth is too low.
+  + Updated translations.
+- Changes from version 2.7.3:
+  + New Features For Users:
+    - A greatly enhanced Transaction report with many new options
+      and features.
+    - Removed 6-figure rounding from price calculations, allowing
+      prices to have up to 18 digit precision.
+    - A flatter storage scheme for Bayes account-matching scores.
+    - A CSV Price importer.
+    - Enhanced python bindings exposing more GnuCash API.
+  + Bugs fixed: bgo#616709, bgo#771667, bgo#787497, bgo#790526,
+    bgo#791848, bgo#787497, bgo#789928 and bgo#790620.
+  + Other fixes:
+    - More dialogs are made "transient for" so that they pop up
+      centered on the main Gnucash window.
+    - Added a framework for migrating preferences.
+    - Make the splash/lock screen the transient parent for dialog
+      boxes if the main window is not yet mapped.
+    - Adapter for new flat KVP scheme for bayes import maps to be
+      introduced in 3.0.
+    - A better way to handle MySQL's 0000-00-00 invalid date
+      indicator.
+    - Improve type of bank accounts in SKR03.
+  + Updated translations.
+- Update to version 2.7.2:
+  + Bugs fixed: bgo#734865, bgo#778692, bgo#784623, bgo#789608,
+    bgo#789928 and bgo#790550.
+  + Other fixes:
+    - SQL parameter quoting is corrected in the backend so that
+      only string parameters are quoted.
+    - SQL table versions weren't set consistently and a bogus
+      version test could cause some tables to be not loaded.
+    - Better, more targeted handling of MySQL's penchant for
+      setting date-time fields.
+    - Major repairs to the "Dense Calendar" date selector.
+    - Fix colors on graph reports.
+    - Two large batches of styling fixes for Gtk3.
+    - Convert the graphical reports to use GnuCash's rational
+      numbers instead of doubles for better accuracy.
+- Changes from version 2.7.1:
+  + Bug fixed: Prompt for file history update leads to crash during
+    startup (bgo#789298).
+  + Other fixes:
+    - GnuCash no longer crashes when loading price data.
+    - The Options Dialogs will appear over the application window
+      instead of wherever Gdk decides is coordinates 0, 0 on the
+      display.
+    - Link correctly owners to invoices in the SQL backend.
+    - Fix Reconcile dialog always showing a 0 ending balance.
+    - Fix the book being always marked dirty at startup if it
+      contained any scheduled transactions.
+- Changes from version 2.7.0:
+  + New Features For Users:
+    - There's a new CSV importer largely rewritten in C++, adding
+      some new features.
+    - Data file directories are now located appropriately to the
+      operating system's conventions by default.
+    - Accounts in the Bayes import map are now linked by GUID
+      instead of names so that the matcher won't have to be
+      retrained if you rename an account. THIS WILL MAKE YOUR FILE
+      UNREADABLE BY PREVIOUS VERSIONS OF GNUCASH. There's a new
+      editor to remove outdated or incorrect match data from the
+      import maps, a new user interfacs for managing files
+      associated with transactions, an improved facility for
+      removing old prices from the price database, and a way to
+      remove deleted files from the history list in the file menu.
+    - Numerics are rewritten to allow for more significant
+      digits.
+    - New Income GST Report and some improvements to the
+      Transaction report.
+  + Bugs fixed: bgo# 87652, bgo#120250, bgo#122895, bgo#343227,
+    bgo#541541, bgo#608098, bgo#639401, bgo#647230, bgo#679791,
+    bgo#684719, bgo#689489, bgo#695610, bgo#706021, bgo#726535,
+    bgo#728136, bgo#729001, bgo#731589, bgo#733186, bgo#734168,
+    bgo#737171, bgo#738462, bgo#738477, bgo#741810, bgo#747377,
+    bgo#752686, bgo#754530, bgo#754533, bgo#756373, bgo#757532,
+    bgo#759674, bgo#760107, bgo#764268, bgo#769115, bgo#769576,
+    bgo#778042 and bgo#780845.
+  + Updated Guide translations.
+- Drop automake and libtool BuildRequires, and add cmake and ninja.
+  Replace configure, make and make_install macros by cmake,
+  make_jobs and cmake_install. And pass: DCMAKE_SKIP_RPATH=OFF,
+  CMAKE_INSTALL_DOCDIR=%{_docdir}/%{name},
+  GMOCK_ROOT=%{_includedir}/gmock and
+  GTEST_ROOT=%{_includedir}/gtest options to cmake. All of these
+  changes reflect the upstream port to CMake build system.
+- Drop python-devel BuildRequires and python-gnucash subpackage as
+  python 3 support is not available.
+- Drop gconf-2.0, gtkmm-2.4, gwengui-gtk2 and libgnomeui-2.0
+  pkgconfig modules and slib as build requirements: they are no
+  longer dependencies.
+- Drop guile, perl-Crypt-SSLeay, perl-HTML-Parser,
+  perl-HTML-TableExtract, perl-libwww-perl and slib Requires:
+  they are no longer run time requirements anymore.
+- Replace perl-Date-Manip and perl-Finance-Quote Requires tag with
+  perl(Date::Manip) perl(Finance::Quote) Recommends and add
+  iso-codes as recomendation too: the first two are used for online
+  price retrieval and are not necessary to run GnuCash, and the
+  third is for translation of currency names.
+- Add gmock, gtest, and date_time, filesystem, headers, locale
+  and regex libboost_*-devel packages, makeinfo and xsltproc; and
+  glib-2.0, gio-2.0, gobject-2.0, gmodule-2.0, gthread-2.0,
+  icu-i18n, icu-uc and ktoblzcheck pkgconfig modules as new build
+  time dependencies.
+- Replace libdbi-devel with pkgconfig(dbi) now that its pkgconfig
+  module is available, pkgconfig(gtk+-2.0) with *(gtk+-3.0) and
+  pkgconfig(webkit-1.0) with *(webkit2gtk-4.0), using their newer
+  versions and following upstream changes.
+- Move to guile-2.2 replacing pkgconfig(guile-2.0) BuildRequires
+  with guile-devel: this allows flexibility with the guile-version
+  that can be built against.
+- Drop %glib2_gsettings_schema_requires macro: it is no longer a
+  requirement since RPM File Triggers cover its functionality now.
+- Remove unneeded %clean section as RPM already does this work
+  itself.
+- Drop update-desktop-files BuildRequires and its macro: it is no
+  longer required.
+- Add shlib-policy-missing-suffix filter to rpmlintrc since
+  splitting the shared libraries does not make sense at the moment.
+- Update package descriptions shortening it.
+- Rebase gnucash-cpan-warning.patch.
+
+-------------------------------------------------------------------
+Thu Dec 21 01:02:30 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.6.19:
+  + Adapter for new flat KVP scheme for bayes import maps to be
+    introduced in 2.8.0.
+  + A better way to handle MySQL's 0000-00-00 invalid date
+    indicator.
+  + Add translator hint comments to C and glade files.
+  + Improve type of bank accounts in SKR03.
+  + Bugs fixed:
+    - Disabling OFX, AqBanking or python-bindings support cripples
+      the dist build target (bgo#787497).
+    - Failed to create file:
+      /usr/share/glib-2.0/schemas/gschemas.compiled.XY789Y
+      (bgo#790620).
+
+-------------------------------------------------------------------
+Sun Nov  5 13:30:24 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.6.18:
+  + Added Catalan Accounts for the New Account Assistant.
+  + Fixed errors from loading init.py.
+  + Run the python bindings tests in a CMake build.
+  + Implement dist, distcheck, and uninstall targets for CMake
+    build.
+  + Bugs fixed: bgo#644898, bgo#647805, bgo#771246, bgo#784284,
+    bgo#787479.
+  + Updated transactions.
+- Change Source url to one that works correctly with source
+  services: the previous url was downloading a tarball called
+  "download"; in addition, the new url is also less clumsy
+  looking.
+- Upstream tarball is tagged 2.6.18-1; however, the configure.ac
+  as well as the versioned directory in the tarball refer to the
+  version as 2.6.18, so use this as the Version in the spec file.
+
+-------------------------------------------------------------------
+Thu Jul 20 23:36:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.6.17:
+  + Properly define the template namespace rather than using a
+    local string everywhere.
+  + Correctly store time64 0 in the SQL backend: The SQL backend
+    ignored time64 0 when saving dates. time64 is a perfectly valid
+    timestamp (1970-01-01 00:00:00) and should be stored.
+  + Clamp time64 values passed to GDateTime functions to the valid
+    range. Fixes a bug reported on the mailing list wherein a date
+    of 0000-00-00 in a MySql database would crash GnuCash. Such
+    dates may come from a bad conversion of 1970-01-01 or from a
+    crash.
+  + Add XSU to iso-4217-currencies.
+  + Some banks include additional purpose information for a
+    transaction in non-swift-section 17 (aka transaction text). If
+    available, this transaction text is put in front of the other
+    purpose texts to provide full transaction information. Adds a
+    preference to control import behaivour of transaction text.
+  + Bugs fixed: bgo#603379, bgo#776396, bgo#780845, bgo#780889,
+    bgo#781634, bgo#782274, bgo#782897, bgo#783095, bgo#784317.
+- Fix Source Url yet again, hopefully for the last time.
+
+-------------------------------------------------------------------
+Wed Mar 29 19:44:27 UTC 2017 - sfalken@opensuse.org
+
+- Update to version 2.6.16:
+  + Use "Billing Information" as in other biz modules
+  + Update local symbol for MUR.
+  + Online banking: Add output of bank messages that might
+    occasionally be received.
+  + Allow only date entry for opening balances on new accounts.
+  + Enable taxinvoice to show net price: Add gncEntryGetNetPrice.
+    Create an option in taxinvoice to either use
+    gncEntryGetNetPrice or gncEntryGetPrice
+  + Make SQL full-DB sync safer and clean up automatically if
+    it's interrupted by a system or network failure.
+  + Extend account color to all columns in the account hierarchy
+    page
+  + Localize the word “CURRENCY” used in the commodity namespace
+    selectors.
+  + The following translations have been updated: Catalan, Dutch,
+    Finnish, German. Portuguese, Russian, Serbian.
+  + Bugs Fixed: bgo#516920, bgo#603379, bgo#670731, bgo#739571,
+    bgo#759934, bgo#766630, bgo#767032, bgo#773945, bgo#776247,
+    bgo#776380, bgo#776494, bgo#776517, bgo#776564, bgo#778208,
+    bgo#779217, bgo#779217, bgo#779411, bgo#777875, bgo#777949.
+
+-------------------------------------------------------------------
+Fri Mar 10 16:09:52 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror due to changes
+  from rpm 4.13 and doc macro handling.
+
+-------------------------------------------------------------------
+Thu Jan 19 10:43:59 UTC 2017 - chris@computersalat.de
+
+- Update to version 2.6.15:
+  + Fix report html header.
+  + Changed the default value for date format in Business Options.
+  + Change report resizing when not in view.
+  + Add an image for the report tab.
+  + Show empty business splits in lot viewer.
+  + Business check & repair - correct lot invoice state.
+  + When juggling business splits while scrubbing set both value
+    and amount.
+  + Update progress bar while running Check & Repair.
+  + Remove lot from account while deleting the lot.
+  + Ensure that the Namespace combo box is initialized to a valid
+    iter.
+  + Fix CSV importer to handle GMT + 13 Timezone
+    (New Zealand Daylight).
+  + Fix broken german account template 'Kontenrahmen für
+    Wohnungswirtschaft'.Time).
+  + Bugs fixed: bgo#340991, bgo#516920, bgo#685329, bgo#769124,
+    bgo#770364, bgo#771246, bgo#771617, bgo#772313, bgo#772369,
+    bgo#772382, bgo#772484, bgo#773808, bgo#774237, bgo#775368,
+    bgo#775385, bgo#775567, bgo#775912.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov  2 17:30:43 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.6.14:
+  + Build improvements with CMake, accomodation for Guile-2.0.12 on
+    Gentoo.
+  + Change the date_posted timestamp from midnight local to
+    11:00 AM GMT, which will be the same date in nearly all
+    timezones.
+  + SX - Recalculate all occurrences of all SX if the calendar is
+    updated to start on another month.
+  + SX Window: correctly show first sx on calendar when it is moved
+    to next weekday.
+  + Work around libofx bug which caused OFX imports to have the
+    wrong date_posted when in an eastern-hemisphere timezone and
+    not daylight time.
+  + Indicate in the register when a transaction has an associated
+    file or URI. The indicator will appear in the "reconciled"
+    column in the second transaction line (enable double-line view
+    to see it).
+  + Bugs fixed: bgo#643025, bgo#733153, bgo#742461, bgo#756416,
+    bgo#761667, bgo#762901, bgo#769730, bgo#769746, bgo#770113,
+    bgo#770136, bgo#770181, bgo#770196, bgo#770303, bgo#771246,
+    bgo#771379.
+- Changes from version 2.6.13:
+  + Check printing: make logic easier to follow.
+  + Fix adjust_sql_option_string test on Windows.
+  + Don't try to compile test_adjust_sql_options on windows, it
+    won't link.
+  + Fix the CMake build by linking gnc-backend-dbi for
+    test-backend-dbi.
+  + Improved adjust_sql_options_string, added tests.
+  + Improve quickfill performance on huge registers.
+  + Mac Localization: Prefer the country to the language for
+    fall-back locales.
+  + Update README to refer to wiki Submitting_Patches and regarding
+    pull request policy.
+  + Bugs fixed: bgo#637004, bgo#736352, bgo#748983, bgo#760021,
+    bgo#761672, bgo#764248, bgo#764871, bgo#765859, bgo#766028,
+    bgo#766200, bgo#766688, bgo#766960, bgo#767824.
+  + Updated translations.
+- Drop gnucash-libdbi-0.9.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 21 21:08:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.6.12:
+  + Various memory leaks.
+  + More multi-currency fixes related to bgo#763146.
+  + Be more liberal in accepting business counter custom formats:
+    li, lli, I64i, and whatever is defined to G_GINT_64 or PRIx64
+    on the system on which GnuCash is compiled.
+  + Correctly re-value splits when the transaction currency is
+    changed.
+  + Reset the transaction currency to match the currently open
+    account when auto-completing.
+  + Refine the MacOS X localization when the system-generated POSIX
+    locale isn't a supported locale: Prefer the country to language
+    when selecting an alternate locale, but still pass the original
+    language to gettext.
+  + Check printing: extract address from invoice/bill for payment
+    transactions.
+  + Bugs fixed: bgo#482186, bgo#620281, bgo#642292, bgo#687504,
+    bgo#693342, bgo#719904, bgo#720934, bgo#722996, bgo#723689,
+    bgo#728074, bgo#728722, bgo#733164, bgo#742352, bgo#744157,
+    bgo#754209, bgo#754856, bgo#756469, bgo#760015, bgo#760529,
+    bgo#760711, bgo#762971, bgo#763111, bgo#763146, bgo#763279.
+  + Updated translations.
+- Replace guile-devel for pkgconfig(guile-2.0) BuildRequires
+  following upstream changes, configure now looks for this
+  correctly.
+
+-------------------------------------------------------------------
+Wed Jan 27 19:03:55 UTC 2016 - dimstar@opensuse.org
+
+- Require python-gnucash from the main package: silence a warning
+  on startup.
+
+-------------------------------------------------------------------
+Tue Jan 12 13:54:03 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.6.11:
+  + Correct a QIF import regression.
+  + Add Account.AssignLots to python bindings.
+  + Allow panel that provides information about TXF categories to
+    be adjusted by the user in the Income Tax Information dialog
+    under Edit->Tax Report Options.
+  + Bugs fixed: bgo#680104, bgo#756335, bgo#759570, bgo#759674,
+    bgo#759859, bgo#760052, bgo#760079, bgo#760398.
+- Changes from version 2.6.10:
+  + Bugs fixed: bgo#627692, bgo#646129, bgo#662126, bgo#742321,
+    bgo#745101, bgo#746155, bgo#754192, bgo#754533, bgo#755781,
+    bgo#756335, bgo#756339, bgo#756720, bgo#757378, bgo#759224,
+    bgo#759294.
+- Changes from version 2.6.9:
+  + Bugs fixed: bgo#755920, bgo#755778, bgo#755781.
+- Changes from version 2.6.8:
+  + Bugs fixed: bgo#724738, bgo#746998, bgo#747795, bgo#749077,
+    bgo#752035, bgo#752204, bgo#752879, bgo#753146, bgo#754617,
+    bgo#754764.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 06:49:59 UTC 2015 - dimstar@opensuse.org
+
+- openSUSE Leap 42.1 (suse_version = 1315, is_opensuse = 1) also
+  contains an updated libdbi, thus we need to apply patch
+  gnucash-libdbi-0.9.patch in this case.
+
+-------------------------------------------------------------------
+Wed Jul  8 20:46:48 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.7:
+  + Fix hidden panes in lot viewer.
+  + Fix some abs() errors from new clang and gcc versions.
+  + Fix dbi driver detection on linux and similar.
+  + Improve "Auto pay on posting" message.
+  + Enable travis continuous integration tests on the gnucash
+    repository.
+  + Bugs fixed: bgo#681225, bgo#739271, bgo#744858, bgo#746792,
+    bgo#734183, bgo#746163, bgo#746873, bgo#747812, bgo#747377,
+    bgo#740955, bgo#747300, bgo#746977.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  7 16:21:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.6.6:
+  + Let CPAN and ActiveState package managers take care of
+    dependencies instead of explicitly installing a few of them
+    directly.
+  + Correct the number field displayed in the reconcile window to
+    correspond with the source specified in File->Options.
+  + Fix some bugs found by SWIG version 3.0.5. Prior to version
+    3.0.3 SWIG silently ignored invalid preprocessor directives.
+  + Scrubbing Improvements, including avoiding a potential infinite
+    loop.
+  + Remove build and run of no-longer-existant
+    intl-scm/guile-strings.
+  + Rewrite gnc-test-env in perl. This eliminates another guile
+    dependency in the build chain.
+  + Switch from guile to xml to manage our iso-currencies source
+    file.
+  + Numeric values with more than commodity smallest fraction get
+    silently dropped.
+  + Update US Income Tax data to reflect minor changes for 2014.
+  + Advanced portfolio should respect report date when looking for
+    other income/expense.
+  + Improve income and expense reporting in advanced portfolio
+    report.
+  + Accept prices of the form n.nnne[+-]nn, i.e. with an exponent.
+    An example requiring this is currency conversion from IDR to
+    USD.
+  + Added Lithuanian language business accounts.
+  + Fix crash when running check & repair on an open AP/AR
+    register.
+  + Bugs fixed: bgo#619899, bgo#649933, bgo#672760, bgo#721196,
+    bgo#723409, bgo#727466, bgo#727647, bgo#731889, bgo#733685,
+    bgo#738749, bgo#739228, bgo#739584, bgo#740471, bgo#741228,
+    bgo#742089, bgo#742332, bgo#742624, bgo#743609, bgo#743807,
+    bgo#745265, bgo#745354, bgo#746517, bgo#746977.
+  + Updated translations.
+- Rebase gnucash-cpan-warning.patch.
+
+-------------------------------------------------------------------
+Wed Mar  4 09:57:18 UTC 2015 - dimstar@opensuse.org
+
+- Switch to guile 2:
+  + Change libguile1-devel BuildRequires to guile-devel.
+  + Change guile1 Requires to guile.
+  + Drop obsolete conditions to work around guile1 packaging
+    issues in older openSUSE releases.
+
+-------------------------------------------------------------------
+Wed Jan 28 16:21:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.6.5:
+  + Pre-compile scm files when building with guile 2.
+  + Fix build-time hard-coded path introduced by the guile2
+    compile changes.
+  + Prevent crash when standards-report dir doesn't exist.
+  + QIF Import crashes when closing via the 'X' button on the last
+    page.
+  + Omit extension on calls to load-extension.
+  + Use one common base directory to store all scheme files and
+    modules.
+  + Guile module structure cleanup.
+  + Harmonize variable names used to refer to guile modules in all
+    makefiles.
+  + Add missing comma in call to gtk_tree_store_set().
+  + Revert to using numerical indexes for the x-axis on bar charts.
+  + Aqbanking: Add display of aqbanking subaccountid in initial
+    correspondence setup.
+  + Aqbanking online SEPA transfer: Allow transfers without BIC,
+    only IBAN. Also add IBAN checking.
+  + Aqbanking transfer: Make IBAN and BIC text entry fields filter
+    digits or alphas correctly as needed.
+  + Adapt german SKR03 account template to updated tax rate.
+  + Allow GUILE1_PROGS as m4 name.
+  + Add sv_AX, sv_FI, zh_HK, and zh_TW to Makefiles & configure.
+  + Updated translations.
+- Drop gnucash-guile1.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Oct  4 17:42:21 UTC 2014 - novell@whamra.com
+
+- Update gnucash-libdbi-0.9.patch: fix usage of internal function
+  _gnucash-libdbi-0.9.patch (boo#898974).
+
+-------------------------------------------------------------------
+Tue Sep 30 19:30:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.4:
+  + Add business lot scrubbing to Check & Repair->All/This
+    transaction(s).
+  + Add context to generic translatable string.
+  + Add scrub function to reduce the amount of lot links used.
+  + Add some date format checking and make sure generated dates are
+    the correct user selected format, not always locale format.
+  + Allow the ability to skip rows when importing transactions.
+  + Always use the price we display to calculate the current value
+    of an account.
+  + Better period totals formatting in Invoices.
+  + CSV Export: factor out function to generate regular expression.
+  + CSV Import transform macro into function.
+  + Convert ISO-8859-1 account chart templates to UTF-8.
+  + Correct txf output to use a minus sign, rather than
+    parenthesis.
+  + Fix document type dispay for credit notes on owner report.
+  + Fix test-backend-dbi segfault with libdbi-0.9.0.
+  + Handle the case of scrubbing a lot link between two
+    non-document lots.
+  + Lots of refactoring.
+  + Chart-of-Account Templates Updated.
+  + Bugs fixed: bgo#120199, bgo#434462, bgo#509263, bgo#610202,
+    bgo#630638, bgo#671615, bgo#688965, bgo#692249, bgo#695240,
+    bgo#707243, bgo#711440, bgo#711567, bgo#719457, bgo#719457,
+    bgo#720427, bgo#720934, bgo#722140, bgo#722200, bgo#723145,
+    bgo#723442, bgo#725054, bgo#725366, bgo#726449, bgo#726888,
+    bgo#727130, bgo#727338, bgo#728103, bgo#728717, bgo#728841,
+    bgo#729157, bgo#729497, bgo#730255, bgo#731519, bgo#732545,
+    bgo#733107, bgo#733283, bgo#733506, bgo#734183, bgo#736703.
+  + Updated translations.
+- Rebase gnucash-cpan-warning.patch and gnucash-libdbi-0.9.patch.
+- Add gnucash-guile1.patch: properly detect GUILE1 on openSUSE.
+  This patch replaces the sed hacks injecting GUILE1 into
+  configure, but has a chance to land upstream.
+- Unconditionally run autoreconf now, as above patch is applied
+  for all versions of openSUSE.
+- No longer export GUILE for configure: the patch above makes this
+  work without hacks.
+
+-------------------------------------------------------------------
+Thu Jul 10 15:04:46 UTC 2014 - dimstar@opensuse.org
+
+- Add gnucash-libdbi-0.9.patch: Fix build with libdbi-0.9.0+git23
+  and newer. Only applied on openSUSE > 13.1.5 (Factory, but not
+  SLE12).
+
+-------------------------------------------------------------------
+Mon Mar 31 21:03:12 UTC 2014 - mgorse@suse.com
+
+- Update to version 2.6.3:
+  + Fix resizing of columns in budget view.
+  + Fix guile 2 stack overflow errors for large reports.
+  + Fix basis calculation for FIFO or LIFO when less than one lot
+    is sold.
+  + Update Window and Menu item from "Preconfigured-" to "Saved-"
+    Report and add lables to the dialog with help texts.
+  + Aqbanking: SEPA transfer improvements - fix origin labels and
+    add possibility to edit sender's name.
+  + Bugs fixed: bgo#721196, bgo#721654, bgo#723975, bgo#724995,
+    bgo#711567, bgo#726430, bgo#726891.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  7 16:47:43 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.6.2:
+  + Advanced Portfolio Report have been reworked.
+  + Bugs Fixed: bgo#497831, bgo#721472, bgo#721677, bgo#722123,
+    bgo#722903, bgo#723051, bgo#723373, bgo#723644, bgo#724211,
+    bgo#724426, bgo#724427, bgo#724578, bgo#724753, bgo#725131.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 15:23:17 CET 2014 - ohering@suse.de
+
+- BuildRequire gtkmm-2.4 >= 2.24
+
+-------------------------------------------------------------------
+Sun Feb  2 17:56:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.1:
+  + Bugs fixed: bgo#454827, bgo#553020, bgo#555182, bgo#605991,
+    bgo#677489, bgo#721211, bgo#721251, bgo#721260, bgo#721290,
+    bgo#721306, bgo#721447, bgo#721464, bgo#721576, bgo#721600,
+    bgo#721607, bgo#721667, bgo#721770, bgo#721791, bgo#721825,
+    bgo#721913, bgo#721929, bgo#721954, bgo#721966, bgo#722035,
+    bgo#722123.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 23 21:07:35 UTC 2014 - dimstar@opensuse.org
+
+- Do not remove %{_datadir}/doc: the about Dialog explicitly
+  references LICENSE, AUTHORS and DOCUMENTS in this location.
+
+-------------------------------------------------------------------
+Sat Jan  4 16:54:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.6.0 (bnc#858502):
+  + New Major release, see
+    http://gnucash.org/2.6-release-tour.phtml for a tour through
+    the new features.
+  + Preferences have been migrated from GConf to GSettings.
+  + New date handling which allows GnuCash to use dates after March
+    2038.
+  + Guile-2 compatibility: GnuCash now requires either Guile-1.8 or
+    Guile-2.0.
+  + Documents outside of GnuCash, images of receipts for example,
+    can now be linked to transactions, with the facility of opening
+    them in the default application for the document type.
+  + Cutsom Reports can now be saved without renaming the report,
+    and modifications can overwrite an existing report.
+  + The import assistant now finishes much more quickly after
+    assigning contra-accounts.
+  + GnuCash now requires Gtk+-2.24.0 and GLib-2.26.0. Most of the
+    dependencies on obsolete libraries have been removed; only
+    libgnomecanvas remains. Unfortunately the effort to rewrite
+    the register code to use GtkTreeModel wasn't completed in time,
+    so GnuCash is not on the cusp of converting to Gtk3.
+  + The Business Module has been substantially revamped, including
+    support for Credit Notes and import of customers and vendors
+    from a CSV file.
+  + The Num field in the register display is now optionally
+    per-split, so for example a check number can be entered for the
+    checking account split and an invoice number for the expense
+    account split.
+  + GnuCash can now open locked books read-only so that more than
+    one user can view a file. GnuCash still does not support
+    multiple simultaneous writers.
+  + By agreement of all authors, GnuCash is now licensed under the
+    GNU General Public License Version 2 or later rather than
+    simply Version 2. This allows derivative works to be licensed
+    under the GPL Version 3 if the author of such a work so
+    desires.
+  + Many bugfixes.
+  + Updated translations.
+- Update License tag to GPL-2.0+, following upstreams relicensing.
+- Add %glib2_gsettings_schema_* macros for schema handling.
+
+-------------------------------------------------------------------
+Sat Apr 20 23:28:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.4.13:
+  + Bugs fixed: bgo#697133, bgo#697402.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  4 19:49:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.4.12:
+  + Bugs fixed: bgo#696469, bgo#695423, bgo#661832, bgo#667093,
+    bgo#680086, bgo#672364, bgo#638955, bgo#638971, bgo#680887,
+    bgo#677488, bgo#632931, bgo#610648, bgo#680402, bgo#680613,
+    bgo#680887, bgo#680576, bgo#680671.
+  + Updated translations.
+- Rebase gnucash-cpan-warning.patch.
+
+-------------------------------------------------------------------
+Sun Aug  5 16:13:50 UTC 2012 - dimstar@opensuse.org
+
+- For openSUSE 12.2, guile1 is sufficient (bnc#772490).
+
+-------------------------------------------------------------------
+Fri Aug  3 19:45:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.4.11:
+  + Rewrite the tip-of-the-day parsing logic
+  + Scheduled monthly transactions lose "except on weekends"
+    setting when using MySQL (bgo#671323)
+  + String fixes
+  + Bugs fixed: bgo#611853, bgo#631611, bgo#632931, bgo#668196,
+    bgo#669494, bgo#670727, bgo#674283, bgo#674494, bgo#674862,
+    bgo#677570, bgo#677570, bgo#678214, bgo#678848.
+- Drop gnucash-fix-python-install.patch: upstream fixed.
+- Drop gnucash-tip-of-the-day.patch: upstream fixed.
+
+-------------------------------------------------------------------
+Sat Jul 21 10:24:05 UTC 2012 - dimstar@opensuse.org
+
+- Add gnucash-tip-of-the-day.patch: Fix "Tip of the day" parsing
+  when building with gcc 4.7: When making the text file
+  tips-of-the-day, GnuCash expects 'gcc -E' to preserve at least
+  one of the whitespace lines between entries. However, this relies
+  on behavior of 'gcc -E' that isn't actually part of the spec,
+  and is a historical accident. And it changed in gcc-4.7, such
+  that all the whitespace is removed. Work around this by
+  explicitly adding a newline in the sed expression. Pre gcc-4.7
+  there will be two newlines between tips, but this has no impact
+  on the tip displaying code.
+
+-------------------------------------------------------------------
+Fri Feb 24 09:37:45 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.10:
+  + Update txf.scm to reflect changes to US Income Tax Forms and
+    Schedules for 2011.
+  + Turn on AQBAnking 5.
+  + Various code changes.
+  + Windows-specific fixes.
+  + Build fixes.
+  + Bugs fixed: bgo#666849, bgo#667417, bgo#667900.
+  + Updated translations.
+- Drop gnucash-glib-2.31.patch: fixed upstream.
+- On 12.1 and later, change back guile1 Requires to
+  libguile1-devel: this is apparently still needed for some weird
+  reason.
+- After discussion in bnc#743565, update license from GPL-2.0+ to
+  SUSE-GPL-2.0-with-openssl-exception or
+  SUSE-GPL-3.0-with-openssl-exception.
+
+-------------------------------------------------------------------
+Sun Feb 12 16:38:32 UTC 2012 - dimstar@opensuse.org
+
+- Support building on openSUSE < 12.1 by conditionally changing:
+  + libguile1-devel BuildRequires to guile-devel
+  + guile1 Requires to guile
+  + libguile1-devel Requires in the -devel package to guile-devel.
+  + Don't do the hackery in %build to switch to guile1.
+
+-------------------------------------------------------------------
+Wed Jan 25 12:21:21 UTC 2012 - vuntz@opensuse.org
+
+- Change libguile1-devel Requires to guile1: I don't think we need
+  the devel package.
+
+-------------------------------------------------------------------
+Mon Jan 23 11:59:02 UTC 2012 - pgajdos@suse.com
+
+- Fuild against guile1 [bnc#724917]:
+  + Drop gnucash-guile-2.0.patch: stop trying to port to guile 2.0.
+  + Change guile-devel BuildRequires to libguile1-devel.
+  + Change guile Requires to libguile1-devel.
+  + Change guile-devel Requires in devel subpackage to
+    libguile1-devel.
+  + In %build, use some sed hacks and export GUILE environment
+    variable to force the use of guile 1.x.
+
+-------------------------------------------------------------------
+Wed Jan 18 15:18:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.9:
+  + Various code changes.
+  + Don't install a script that is only used for building and
+    testing. This fixes Secunia Advisory SA42048.
+  + Bugs fixed:
+    - bgo#457401: Enable printing for unposted invoices.
+    - bgo#664764: Added Swedish chart of accounts for small
+      businesses.
+    - bgo#664862: Added new line chart report for assets.
+    - bgo#630804, bgo#639082, bgo#642276, bgo#649362, bgo#658247,
+      bgo#661383, bgo#662477, bgo#663368, bgo#663638, bgo#665202,
+      bgo#665998, bgo#666329, bgo#667105, bgo#667276.
+- Drop gnucash-desktop.patch: fixed upstream.
+- Build python bindings:
+  + Add python-devel BuildRequires.
+  + Pass --enable-python-bindings to configure.
+  + Create python-gnucash subpackage for the python bindings.
+  + Add gnucash-fix-python-install.patch: correctly install the
+    bindings so that they work.
+  + Add call to autoreconf for the patch.
+- Add gtkmm support for plugins:
+  + Add gcc-c++ and pkgconfig(gtkmm-2.4) BuildRequires.
+  + Pass --enable-gtkmm to configure.
+- Remove %install_info_prereq PreReq and use of
+  %install_info/%install_info_delete in scriptlets, following
+  removal of an info page.
+
+-------------------------------------------------------------------
+Fri Jan  6 14:50:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.8:
+  + Various code changes.
+  + Bugs fixed:
+    - bgo#644977: Add new Quicken Check 21 format.
+    - bgo#655901: Fix build with guile 2.0.
+    - bgo#365928, bgo#553432, bgo#612562, bgo#626970, bgo#645216,
+      bgo#651522, bgo#658244, bgo#661721
+- Rebase gnucash-guile-2.0.patch.
+- Add gnucash-glib-2.31.patch: fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Fri Dec  2 06:25:28 UTC 2011 - coolo@suse.com
+
+- Add automake and libtool BuildRequires to avoid implicit
+  dependencies from prjconf.
+
+-------------------------------------------------------------------
+Mon Sep 26 18:50:26 UTC 2011 - andrea.turrini@gmail.com
+
+- Fix typos in description.
+
+-------------------------------------------------------------------
+Wed Aug  3 14:45:20 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.4.7:
+  + Various code changes.
+  + Bugs fixed:
+    - bgo#653056: Fix menu accelerators not working, crash on
+      save-while-quitting.
+    - bgo#646541: new invoice line items default to invoice open
+      date instead of current date.
+    - bgo#652257, bgo#652435, bgo#652377, bgo#632931, bgo#651889,
+      bgo#651992, bgo#612562, bgo#652193.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 21 09:27:18 UTC 2011 - pgajdos@novell.com
+
+- Update to version 2.4.6:
+  + Many style fixes for HTML reports.
+  + Various other code changes.
+  + Bugs fixed:
+    - bgo#648554: SQL backend doesn't correctly save taxable flag
+      on bills.
+    - bgo#647242: Fix broken averaging for quarter or half-year
+      step size
+    - bgo#650241, bgo#650757, bgo#645221, bgo#620123, bgo#650163,
+      bgo#650139, bgo#650138, bgo#649992, bgo#649608, bgo#646729,
+      bgo#647945, bgo#644897, bgo#646268, bgo#644762, bgo#647360,
+      bgo#647316, bgo#628342, bgo#629156.
+  + Updated translations.
+- Add gnucash-guile-2.0.patch: fix build with guile 2.0.
+
+-------------------------------------------------------------------
+Fri Apr 29 09:25:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.4.5:
+  + User-visible changes:
+    - Improve message printed on screen
+    - Note last stable version number
+  + Build fixes.
+  + Bugs fixed: bgo#645518, bgo#645640, bgo#64217 bgo#645173,
+    bgo#641645, bgo#644688
+  + Updated translations.
+- Changes from version 2.4.4:
+  + User-visible changes:
+    - Implement automatic creation of stock account for newly
+      imported OFX stocks. Only active if "auto-create commodity"
+      is switched on in the preferences from r20376.
+    - When setting the report print name, check whether this exact
+      name has been used before. Append an increasing number if
+      that was the case.
+    - When setting a printer job name, remove slashes because they
+      are not allowes in filenames.
+    - Add the invoice number in the output printer job name, if an
+      invoice report is printed.
+    - Add option in OFX import to have newly encountered
+      commodities automatically created.
+    - Modify Tax Info on Account Page to display or not display
+      sub-account info based on whether row is expanded.
+    - Update page name if invoice/bill is renamed.
+    - Present already open budget page if the user tries to open a
+      budget more than once
+    - Update page name if budget is renamed.
+  + Bugs fixed: bgo#570042, bgo#644556, bgo#644557, bgo#642739,
+    bgo#644036, bgo#521817, bgo#347265.
+- Changes from version 2.4.3:
+  + User-visible changes:
+    - Only show the Save As dialog at the end of the Hierarchy
+      druid if it was called at the beginning of a new book, not
+      when a hierarchy is added to from the actions menu.
+    - Set a printer job name when printing reports and cheques
+    - Fix invoice line ordering mismatch between register window
+      and reports.
+    - Add extra toolbar buttons as shortcuts for some business
+      functions, "New Invoice" for now. The extra toolbar buttons
+      are disabled until the user enables them manually in
+      Preferences -> Business -> Extra buttons.
+    - Implement command for changing the ordering of invoice
+      entries by moving them up or down one row.
+    - Extend the addr2/addr3 auto-completion also to the shipping
+      addr2/addr3 lines.
+    - Implement auto-completion on the addr2/addr3 lines of the
+      "New Customer" dialog box.
+    - Fix missing copying of invoice currency on "Copy Invoice".
+  + Various other code changes.
+  + Bugs fixed: bgo#635552, bgo#640357, bgo#640347, bgo#640328,
+    bgo#639906, bgo#641832, bgo#642445, bgo#642284, bgo#641832,
+    bgo#641909.
+- Changes from version 2.4.2:
+  + User-visible changes:
+    - Do not modify the entry's DateEntered when duplicating
+      invoice to keep the entry ordering.
+    - Open the newly created invoices for editing after import.
+    - Make the splash screen stack as a regular window instead of
+      stacking in front of everything else.
+    - Finish SQL Backend Version Control.
+    - Provide more detail in commit error when it's caused by a
+      read-only book.
+    - Throw an error and return if if the book is marked readonly.
+    - Add a new option under Edit -> Preferences -> Date/Time for
+      date completion.
+    - Make it possible to include trading accounts in the Income
+      Statement and Profit and Loss reports.
+    - Implement "Duplicate Invoice" feature, where a new invoice is
+      created as a copy of an old one with new date and new ID.
+    - Make reconcile+update import action enabled by default
+      because it's so useful.
+    - Fix version number in welcome report.
+    - Set sort order for GncEntry quickfill to LIFO by-date.
+    - Activate balance averaging in account piechart report.
+    - Add budget name to budget tab.
+    - Add info about sub-accounts to Tax Info column on Accounts
+      page.
+    - A plugin to import CSV data as a new invoice or bill.
+    - Add "copy budget" command to menu.
+    - Fully implement auto-completion in the invoice entries on the
+      description field, separately for bills or invoices.
+    - Add a new report: Customer Summary. This report shows a table
+      of all customers and the sales, profit, and markup in that
+      table.
+    - Add a new report: Future Scheduled Transaction Summary.
+    - Improve GncEntry quickfill to create separate quickfills for
+      invoices and bills.
+  + Various other code changes.
+  + Bugs fixed: bgo#639172, bgo#638621, bgo#502066, bgo#603334,
+    bgo#638225, bgo#638962, bgo#638615, bgo#638543, bgo#636402,
+    bgo#454109, bgo#373415, bgo#635355, bgo#95635, bgo#637346,
+    bgo#636988, bgo#628444, bgo#565348, bgo#639365, bgo#638842,
+    bgo#636907, bgo#639259, bgo#638225, bgo#639498, bgo#638689,
+    bgo#639322, bgo#641628, bgo#641646, bgo#641557, bgo#640061,
+    bgo#631789, bgo#637770, bgo#611936, bgo#639906, bgo#640233,
+    bgo#638762, bgo#629501, bgo#467311, bgo#352057, bgo#535774,
+    bgo#639980, bgo#639906, bgo#637346, bgo#343449.
+- Add libdbi-devel BuildRequires now that we have the package, and
+  change --disable-dbi to --enable-dbi in configure call.
+- Replace obsolete --enable-hbci with --enable-aqbanking in
+  configure call.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:48:16 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:30:54 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.4.0:
+  + Use proper decimal separator for monetary amounts.
+  + When creating a new style sheet, make sure the name for it is
+    non-empty.
+  + Implement auto-completion in various places, although this is
+    still incomplete.
+  + Partly implement the correct "DTAUS import and send" feature
+    again.
+  + Various bug fixes, including: bgo#637346, bgo#637041,
+    bgo#629446, bgo#454109, bgo#635926, bgo#635967, bgo#635355,
+    bgo#636459, bgo#635859, bgo#609472, bgo#635911, bgo#635469,
+    bgo#635632, bgo#635632, bgo#635469, bgo#635355, bgo#635439,
+    bgo#635439.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 15 16:27:15 CET 2010 - vuntz@opensuse.org
+
+- Change libguile-devel Requires in devel package to guile-devel,
+  which actually exists.
+
+-------------------------------------------------------------------
+Fri Dec 10 11:15:40 CET 2010 - vuntz@opensuse.org
+
+- This update is largely based on work done by Dominique
+  Leuenberger <dimstar@opensuse.org>.
+- Update to version 2.3.17:
+  + Major new features in the 2.3.x branch:
+    - A SQLite3, MySQL or PostgreSQL database to store the data can
+      be used as backend, instead of the default XML backend. It
+      requires libdbi.
+    - WebKit can be used instead of GtkHTML to display reports and
+      graphs.
+      reports/charts with the WebKit engine used by Apple's Safari
+      and Google's Chrome web browsers.
+  + Enable the use of gnome-keyring during loading and saving of
+    data, to not save password data in history.
+  + Improved US Income Tax Report: updated tax codes, supports
+    Individuals, Corporations & Partnerships.
+  + Allow negative tax percentages. This allows to model some tax
+    rules for trade between European countries.
+  + Some new features in check printing.
+  + New account type: Trading Account.
+  + Many UI improvements.
+  + Many bug fixes.
+  + Updated translations.
+  + For a full list of changes, see NEWS.
+- Remove no longer needed BuildRequires: glib2-devel, graphviz,
+  ktoblzcheck-devel, libchipcard-devel, libgnomeprintui-devel,
+  popt-devel, postgresql-devel and swig.
+- Update BuildRequires to use the pkgconfig() way:
+  + Old ones: aqbanking-devel, gconf2-devel, goffice-devel,
+    gtk2-devel, libglade2-devel, libgnomeui-devel, libxml2-devel.
+  + New pkgconfig() ones: aqbanking, gconf-2.0, gdk-pixbuf-2.0,
+    gtk+-2.0, gwengui-gtk2, gwenhywfar, libglade-2.0,
+    libgnomeui-2.0, libgoffice-0.8, libxml-2.0.
+- Add pkgconfig(gnome-keyring-1) BuildRequires.
+- Use webkit HTML backend: change gtkhtml2-devel BuildRequires to
+  pkgconfig(webkit-1.0), and pass --with-html-engine=webkit to
+  configure. Also change gtkhtml2-devel Requires of devel package
+  to libwebkitgtk-devel.
+- Drop gnucash-latest-goffice.patch: fixed upstream.
+- Remove unneeded Requires from the devel package: aqbanking-devel,
+  goffice-devel, libgsf-devel, gtkhtml2-devel, gwenhywfar-devel,
+  ktoblzcheck-devel, libgnomeprint-devel, libgnomeprintui-devel,
+  libofx-devel, libtool, popt-devel.
+- Add libguile-devel Requires to devel package.
+- Add --disable-dbi to configure: until libdbi enters Factory, we
+  cannot build the sql backend. The default is still the xml
+  backend upstream, so it's not a big issue at the moment.
+- Remove --with-qt3-wizard-package configure option: we use a new
+  aqbanking that doesn't come with this anymore.
+- Remove no longer supported parameters --enable-aqbanking-test and
+  --enable-sql from configure.
+- Remove GUILE_WARN_DEPRECATED=no and aclocal call from the build
+  section.
+- Do not install update-gnucash-gconf: it's not needed in a
+  package, as it only installs gconf schemas.
+
+-------------------------------------------------------------------
+Wed Jul 21 16:15:26 UTC 2010 - coolo@novell.com
+
+- fix name of perl module, perl-DateManip is gone since 2008
+
+-------------------------------------------------------------------
+Thu Oct  1 22:55:00 CEST 2009 - vuntz@opensuse.org
+
+- Changes libchipcard3-devel BuildRequires to libchipcard4-devel,
+  and remove libchipcard3 BuildRequires.
+
+-------------------------------------------------------------------
+Thu Oct  1 15:19:45 CEST 2009 - vuntz@opensuse.org
+
+- Update gnucash-latest-goffice.patch to latest goffice API. Update
+  taken from Mandriva.
+
+-------------------------------------------------------------------
+Mon Apr 27 16:05:18 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.2.9:
+  + Bugs fixed: bgo#339027, bgo#435642, bgo#438132, bgo#462148,
+    bgo#514455, bgo#526775, bgo#542382, bgo#564209, bgo#564450,
+    bgo#564928, bgo#565421, bgo#565721, bgo#566198, bgo#566352,
+    bgo#566567, bgo#567174, bgo#568327, bgo#568653, bgo#568945,
+    bgo#569734, bgo#570166, bgo#570894, bgo#571220:
+  + Added German account template for a Wohnungswirtschaft business
+  + Fixed french business account templates
+  + Translation updates
+- Add gnucash-latest-goffice.patch to fix compilation with goffice
+  0.7.5.
+- Update gnucash-desktop.patch to apply without fuzz.
+- Remove check for old version of openSUSE.
+- Do not set CFLAGS to default value.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Mon Dec 29 12:54:13 EST 2008 - mboman@suse.de
+
+- Update to version 2.2.8:
+  + Bugs fixed: bgo#115066, bgo#128774, bgo#137017, bgo#339433, bgo#340041,
+    bgo#345980, bgo#347274, bgo#348860, bgo#405472, bgo#432457, bgo#435427,
+    bgo#436342, bgo#436920, bgo#492417, bgo#529494, bgo#532889, bgo#536299,
+    bgo#539947, bgo#543332, bgo#548218, bgo#554042, bgo#557604, bgo#557374,
+    bgo#563160, bgo#563273, bgo#564033:
+  + Fix account defaulting for posting vendor bill
+  + Fix tax-related inconsistency in UI
+  + Fix the average cost price source computation for a certain case
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Oct 20 10:43:13 EST 2008 - mboman@suse.de
+
+- Update to version 2.2.7:
+  + Too many fixes and changes to list. Please see NEWS for details 
+- Remove gnucash-goffice0.8.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Oct  3 21:00:08 CEST 2008 - vuntz@novell.com
+
+- Add gnucash-goffice0.8.patch to compile with current goffice in
+  Factory.
+
+-------------------------------------------------------------------
+Wed Apr  2 04:40:56 CEST 2008 - maw@suse.de
+
+- Update to version 2.2.4:
+  + Recognize 401k/403b in QIF import
+  + Remove superfluous trailing colons of de_DE SKR04 account names
+  + Bugs fixed: bgo#106242, bgo#106383, bgo#123312, bgo#336211,
+    bgo#360058, bgo#373584, bgo#454834, bgo#457591, bgo#481528,
+    bgo#503166, bgo#506798, bgo#506873, bgo#506810, bgo#510221,
+    bgo#510630, bgo#510725, bgo#510940, bgo#510962, bgo#511006,
+    bgo#512166, bgo#512173, bgo#512497, bgo#513088, bgo#513829,
+    and bgo#516178
+  + Updated translations
+- Drop gnucash-marksplit.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 17:21:20 CET 2008 - ro@suse.de
+
+- update to 2.3.3
+  - many bugfixes, but still no support for aqbanking3
+
+-------------------------------------------------------------------
+Wed Feb  6 18:56:32 CET 2008 - sbrabec@suse.cz
+
+- Warn users before upgrading packages from CPAN.
+
+-------------------------------------------------------------------
+Tue Nov 27 15:58:26 CET 2007 - sbrabec@suse.cz
+
+- Report correct name of package containing qt3-wizard (#310886).
+
+-------------------------------------------------------------------
+Thu Oct 11 14:28:25 CEST 2007 - sbrabec@suse.cz
+
+- Removed false dependency on g-wrap-devel (#331963).
+
+-------------------------------------------------------------------
+Thu Aug 23 16:45:36 CEST 2007 - sbrabec@suse.cz
+
+- Fixed dependencies for quotes retrieval (#242504).
+
+-------------------------------------------------------------------
+Thu Aug  9 20:00:00 CEST 2007 - maw@suse.de
+
+- I lied in the last changelog entry and didn't really change
+  the calls to ldconfig
+- But I am changing them this time
+- Also, rename rpmlintrc to gnucash-rpmlintrc.
+
+-------------------------------------------------------------------
+Wed Aug  8 00:45:45 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Jul 27 11:17:42 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.2.0:
+  * DATA FILE NOTICE If you are using Scheduled Transactions,
+    the data file saved by GnuCash 2.1.2 and higher is NOT
+    backward-compatible with GnuCash 2.0 anymore because of
+    extensions in the file format. Please make a safe backup of
+    your 2.0 data before upgrading to 2.1.3.
+  * The Scheduled Transaction code has been refactored.
+  * When adding custom reports to the menu, appropriate user
+    feedback will be given.
+  * Automatic saving of the data file was added.
+  * SWIG is now used instead of g-wrap for providing language
+    bindings.
+  * New printing formats for check printing.
+  * Bugfixes with the graphical reports
+  * Fixing the Online Banking wizard
+  * Fix crash on QIF import with german umlaut.
+  * Internal GObject integration is much more advanced by now.
+  * Crash on OFX import crashing has been fixed.
+  * Some memory leaks have been fixed.
+  * Start-up behaviour has been improved.
+  * OFX DirectConnect import uses correct ID fields for transaction
+    matching.
+  * Improved Scheduled Transaction editor and management dialogs.
+  * GtkPrint integrated.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun  5 23:55:51 CEST 2007 - ro@suse.de
+
+- added rpmlintrc (suppress devel-file for lib*.so) 
+
+-------------------------------------------------------------------
+Mon Mar 26 22:13:49 CEST 2007 - maw@suse.de
+
+- Add gtkhtml-req.patch, allowing gnucash to be built against
+  newer versions of gtkhtml2.
+
+-------------------------------------------------------------------
+Fri Mar  2 16:14:36 CET 2007 - sbrabec@suse.cz
+
+- Fixed autoreconf.
+- Fixed missing symbol in gtkhtml2.
+
+-------------------------------------------------------------------
+Wed Feb 21 12:36:50 CET 2007 - sbrabec@suse.cz
+
+- Updated to 2.0.5:
+  * Use guiles native sort and record.
+  * Adjust how payment dialog resizes.
+  * Don't abort when F::Q fails to return a quote.
+  * Fix security problem with tmp filesystem and symlink attack
+    (#246969, CVE-2007-0007).
+  * Do not crash on delete_event in new user dialog.
+  * Add sanity checks when accessing GncPluginPage.
+  * Make new windows the same size as the active one.
+  * Fixes for Turkish Lira and Russian Ruble.
+  * Translation and translatability updates.
+
+-------------------------------------------------------------------
+Fri Feb 16 16:02:54 CET 2007 - sbrabec@suse.cz
+
+- Updated to 2.0.4:
+  * Correct account compatibility check with top level account.
+  * Check for potentially failed utf8 conversion of locale strings.
+  * Fix crash when accessing the File Properties Menu.
+  * Avoid crash when renaming page in a page-less window.
+  * Save and restore the visibility of the toolbar, statusbar, and
+    summarybar.
+  * Fix for crash on quit during save.
+  * Fix a bug so that blank transactions are marked as pending.
+  * When progress bar is showing, do not make menus and toolbars
+    insensitive, but rather the underlying action groups.
+  * Save window size and position of the transfer dialog.
+  * Fix for UTF-8 bug in month name.
+  * Fix missing date when reconciling from HBCI.
+  * Fix some scheme inexact errors.
+  * Documentation and translation updates.
+- Recommend gnucash-docs.
+
+-------------------------------------------------------------------
+Tue Jan 16 17:57:01 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sun Nov 12 21:34:34 CET 2006 - stbinner@suse.de
+
+- Fix Name entry of .desktop file post openSUSE 10.2
+
+-------------------------------------------------------------------
+Fri Oct 13 14:22:56 CEST 2006 - aj@suse.de
+
+- Add guile-devel to build requires.
+
+-------------------------------------------------------------------
+Mon Oct  9 15:16:16 CEST 2006 - sbrabec@suse.cz
+
+- Updated to 2.0.2:
+  * String fixes.
+  * Add a tip for raising the accounts menu in a register page.
+    Maintain the account hierarchy when reparenting the descendants
+    of a deleted account.
+  * If the file type wasn't recognized, check why this failed.
+    Add the ability to override the default sort.
+  * Improve wording for XML data file import druid.
+  * Fixed crashers in editing a transaction in two registers.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Tue Oct  3 13:21:41 CEST 2006 - sbrabec@suse.cz
+
+- Fixed %post.
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Mon Oct  2 15:30:22 CEST 2006 - stbinner@suse.de
+
+- Updated to from development to release version 2.0.1 (#209331):
+   * OFX DirectConnect can directly retrieve and import account
+     statements over the Internet.
+   * A "Hide account" feature to keep a better overview of your 
+     current accounts tabbed window functionality.
+   * Create budgets within GnuCash using your accoun data.
+   * Support for Accounting Periods.
+   * The data file format has been improved with respect to
+     international characters. Data files with international 
+     characters can be transferred to other countries flawlessly.
+   * GnuCash Help and Guide are now fully integrated with the
+     GNOME Help system (Yelp)
+
+-------------------------------------------------------------------
+Thu Jun 15 01:32:55 CEST 2006 - schwab@suse.de
+
+- Add workaround for guile bug.
+
+-------------------------------------------------------------------
+Thu May 25 16:59:44 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 1.9.6.
+- Do not install shared mime info files, now integrated to
+  freedesktop.org.xml.
+
+-------------------------------------------------------------------
+Thu May 11 21:06:24 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 1.9.5 (GNOME2 branch).
+- Split g-wrap and devel into separate packages.
+
+-------------------------------------------------------------------
+Sun Feb  5 08:53:21 CET 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 18:22:02 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.8.12.
+- Updated gnucash-docs to version 1.8.5.
+  Based on spec file from Rajesh Singh <rajeshsingh.geo@yahoo.com>.
+
+-------------------------------------------------------------------
+Tue Aug  2 12:41:07 CEST 2005 - ro@suse.de
+
+- intltoolize with force 
+
+-------------------------------------------------------------------
+Tue Apr 26 00:07:38 CEST 2005 - gekker@suse.de
+
+- Add Guppi-gcc4.patch to fix GCC4 compile failures. 
+
+-------------------------------------------------------------------
+Tue Apr 19 12:16:34 CEST 2005 - ro@suse.de
+
+- use gt_LC_MESSAGES instead of AM_LC_MESSAGES 
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Mar 23 17:06:05 CET 2005 - sbrabec@suse.cz
+
+- Moved desktop file (#73653).
+
+-------------------------------------------------------------------
+Mon Feb 21 16:22:30 CET 2005 - sf@suse.de
+
+- fix build on biarch architectures 
+
+-------------------------------------------------------------------
+Mon Jan 31 11:13:23 CET 2005 - sndirsch@suse.de
+
+- use iso-8859-15 for recoding account files instead of iso-8859-1
+
+-------------------------------------------------------------------
+Sun Jan 30 15:10:53 CET 2005 - sndirsch@suse.de
+
+- recode acccount files to UTF-8 encoding in specfile (Bug #38292)
+
+-------------------------------------------------------------------
+Thu Nov 11 12:51:05 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Mon Nov  8 16:48:03 CET 2004 - ro@suse.de
+
+- update to 1.8.9
+- fix build with current intltool
+
+-------------------------------------------------------------------
+Thu Nov  4 12:53:38 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Oct 12 02:11:49 CEST 2004 - ro@suse.de
+
+- added libgcrypt libgpg-error to neededforbuild
+
+-------------------------------------------------------------------
+Mon Mar 29 11:00:36 CEST 2004 - hhetter@suse.de
+
+- don't call format, as newer versions of slib don't provide it
+  any more (Bug Id#34241) 
+
+-------------------------------------------------------------------
+Wed Mar 17 12:29:18 CET 2004 - sbrabec@suse.cz
+
+- Fixed underquoted definitions (#36195).
+
+-------------------------------------------------------------------
+Mon Mar 15 16:50:10 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Fri Feb 20 10:00:02 CET 2004 - sbrabec@suse.cz
+
+- Removed false requirement of glade.
+
+-------------------------------------------------------------------
+Thu Feb 19 17:08:33 CET 2004 - sbrabec@suse.cz
+
+- Removed false requirement of libunicode.
+
+-------------------------------------------------------------------
+Tue Feb 17 12:35:58 CET 2004 - sbrabec@suse.cz
+
+- Added gdk-pixbuf-gnome to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Feb 12 17:03:05 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.8.8.
+
+-------------------------------------------------------------------
+Thu Oct 23 12:28:04 CEST 2003 - lmb@suse.de
+
+- Update to gnucash 1.8.7 and gnucash-docs-1.8.3.
+- Re-added Guppi and folded it into gnucash package so graphs work 
+  again. (#32135)
+
+-------------------------------------------------------------------
+Tue Sep  2 15:45:25 CEST 2003 - ro@suse.de
+
+- remove Guppi from neededforbuild
+  (dropped, since gnumeric(1) was dropped) 
+
+-------------------------------------------------------------------
+Fri Aug 22 10:34:47 CEST 2003 - ke@suse.de
+
+- Add sgml-skel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Aug 21 11:18:52 CEST 2003 - hhetter@suse.de
+
+- integrate the documentation package (rel. 1.8.2) 
+
+-------------------------------------------------------------------
+Wed Aug 20 17:00:40 CEST 2003 - ro@suse.de
+
+- removed libgtop from neededforbuild 
+
+-------------------------------------------------------------------
+Wed Aug 20 09:02:28 CEST 2003 - hhetter@suse.de
+
+- updated to version 1.8.5 
+
+-------------------------------------------------------------------
+Sat Aug 16 16:02:14 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Sun Jul 27 23:43:18 CEST 2003 - hhetter@suse.de
+
+- don't run deprecated tests 
+
+-------------------------------------------------------------------
+Tue Jul 15 10:03:14 CEST 2003 - hhetter@suse.de
+
+- updated to version 1.8.4 
+
+-------------------------------------------------------------------
+Mon Jul 14 15:45:39 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jun 20 21:29:45 CEST 2003 - ro@suse.de
+
+- fix build with current gettext 
+
+-------------------------------------------------------------------
+Thu Jun  5 01:55:42 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+- add g-wrap includes to package 
+
+-------------------------------------------------------------------
+Wed May 14 13:27:37 CEST 2003 - mcihar@suse.cz
+
+- don't need umb-scheme
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Mar 28 13:24:05 CET 2003 - sbrabec@suse.cz
+
+- Typo fix (NBSP -> spaces).
+
+-------------------------------------------------------------------
+Fri Mar 28 10:17:36 CET 2003 - sbrabec@suse.cz
+
+- Added install_info.
+- Compress info pages.
+
+-------------------------------------------------------------------
+Fri Feb 21 14:14:16 CET 2003 - ro@suse.de
+
+- added openhbci-devel to neededforbuild
+
+-------------------------------------------------------------------
+Tue Feb 18 16:00:33 CET 2003 - ro@suse.de
+
+- added libchipcard and devel to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb  7 11:17:52 CET 2003 - hhetter@suse.de
+
+- build with libofx support 
+
+-------------------------------------------------------------------
+Thu Feb  6 12:17:21 CET 2003 - ro@suse.de
+
+- update to g-wrap-1.3.4 and gnucash-1.8.0 
+
+-------------------------------------------------------------------
+Thu Jan  9 00:24:33 CET 2003 - ro@suse.de
+
+- add AM_GNU_GETTEXT_VERSION and make it build
+- hack for gtkhtml-1.1 and recent guile
+- more makefile hackery to work around cyclic library dependencies  
+
+-------------------------------------------------------------------
+Fri Sep 27 14:35:35 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Mon Sep  9 17:33:58 CEST 2002 - hhetter@suse.de
+
+- fix guile version checking in srfi-8.scm for new guile 1.4.1
+  ( Bug Id #19258)  
+
+-------------------------------------------------------------------
+Thu Aug 29 12:07:59 CEST 2002 - hhetter@suse.de
+
+- removed gnome-applets / gnome-core stuff from #neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jul  4 09:04:12 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.6.6
+- use a stable g-wrap release (1.2.x) 
+
+-------------------------------------------------------------------
+Wed May 22 16:30:36 CEST 2002 - meissner@suse.de
+
+- %_lib fixes.
+
+-------------------------------------------------------------------
+Thu Apr  4 16:36:13 CEST 2002 - schwab@suse.de
+
+- Fix for new autotools.
+
+-------------------------------------------------------------------
+Sun Feb 17 23:33:33 CET 2002 - ro@suse.de
+
+- added missing g-wrap runtime lib to filelist (#13472) 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Jan 23 11:45:31 CET 2002 - hhetter@suse.de
+
+- added python, python-devel to #neededforbuild 
+
+-------------------------------------------------------------------
+Wed Dec 19 09:30:09 CET 2001 - hhetter@suse.de
+
+- gnucash version update to 1.6.5
+- g-wrap updated to version 1.3.1
+- added LIBRARY_PATH for broken libtool
+- removed no longer needed patch
+- functionality test on i386 arch 
+- g-wrap version customized in specfile
+- features for 1.6.5:
+	* amazing new Euro-conversion druid!
+	* massive translation update
+	* minor application bugfixes
+
+-------------------------------------------------------------------
+Sun Dec  9 22:31:06 CET 2001 - ro@suse.de
+
+- added <slib> to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Dec  7 13:50:08 CET 2001 - ro@suse.de
+
+- changed neededforbuild <scheme> to <umb-scheme>
+
+-------------------------------------------------------------------
+Wed Dec  5 11:58:12 CET 2001 - hhetter@suse.de
+
+- prefix g-wrap to the original guile interpreter location 
+
+-------------------------------------------------------------------
+Tue Nov 27 13:10:25 CET 2001 - ro@suse.de
+
+- back to g-wrap-1.1.10 
+
+-------------------------------------------------------------------
+Wed Nov 21 23:42:19 CET 2001 - ro@suse.de
+
+- update to g-wrap-1.1.11 
+- added guppi-include path to cflags
+  (gnome-config does not show this path)
+
+-------------------------------------------------------------------
+Wed Nov 21 12:58:14 CET 2001 - ro@suse.de
+
+- added freetype2 to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Oct 16 16:25:58 CEST 2001 - hhetter@suse.de
+
+- updated to version 1.6.4:
+	* fixes a bug which made it impossible to
+	  load 1.4.x-gnucash files 
+
+-------------------------------------------------------------------
+Wed Sep 26 14:23:13 CEST 2001 - hhetter@suse.de
+
+- updated to version 1.6.3:
+	* new Polish translation 
+	* Danish and Spanish translation of new account files 
+	* updated Swedish, German, and Portuguese translations 
+	* child accounts can be reconciled with the parent 
+	* support for TrustNet online quotes 
+	* support for precious metal currencies 
+- functionality test on i386
+
+-------------------------------------------------------------------
+Sat Sep 15 21:48:34 CEST 2001 - schwab@suse.de
+
+- Add Requires: python.
+
+-------------------------------------------------------------------
+Sat Sep 15 17:58:57 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Wed Sep 12 13:32:54 CEST 2001 - hhetter@suse.de
+
+- revert to g-wrap version 1.1.10, get gnucash
+  to work with guile 1.4 
+- filelist review
+- test on i386
+
+-------------------------------------------------------------------
+Fri Aug 17 13:27:33 MEST 2001 - egger@suse.de
+
+- Added fix for hardcoded CFLAGS in g-wrap. 
+
+-------------------------------------------------------------------
+Fri Aug 17 12:09:52 MEST 2001 - egger@suse.de
+
+- Added fix for libtool bustage in g-wrap update to 1.1.11. 
+
+-------------------------------------------------------------------
+Mon Aug 13 16:35:05 CEST 2001 - hhetter@suse.de
+
+- update to 1.6.2
+
+-------------------------------------------------------------------
+Sun Jul 29 18:37:02 MEST 2001 - egger@suse.de
+
+- Updated g-wrap to version 1.1.11. 
+
+-------------------------------------------------------------------
+Wed Jul 25 15:00:42 CEST 2001 - sf@suse.de
+
+- removed '-Werror' from Makefile.am in test/ to compile also 
+  with gcc > 2.95 
+
+-------------------------------------------------------------------
+Thu Jul 19 11:41:22 CEST 2001 - hhetter@suse.de
+
+- added #requires python phyton-gtk 
+
+-------------------------------------------------------------------
+Sun Jul  8 22:38:23 MEST 2001 - egger@suse.de
+
+- Updated to version 1.6.1.
+- Added mising stuff to the filelist. 
+
+-------------------------------------------------------------------
+Thu Jul  5 10:29:30 CEST 2001 - uli@suse.de
+
+- added gal-devel to neededforbuild
+
+-------------------------------------------------------------------
+Thu Jun 21 02:17:40 CEST 2001 - ro@suse.de
+
+- updated filelist
+- cleaned specfile a bit 
+
+-------------------------------------------------------------------
+Mon Jun 18 12:41:16 CEST 2001 - hhetter@suse.de
+
+- gnucash : update to 1.6.0
+- g-wrap : update to 1.1.10
+- added additional requirements
+- functionality test in current buildsystem
+- filelist review 
+
+-------------------------------------------------------------------
+Tue May  1 11:27:07 MEST 2001 - egger@suse.de
+
+- Updated to version 1.4.12. Again just bugfixes. 
+
+-------------------------------------------------------------------
+Mon Apr  2 20:45:15 MEST 2001 - egger@suse.de
+
+- Updated to version 1.4.11. Pure bugfix release. 
+
+-------------------------------------------------------------------
+Wed Mar 21 02:39:16 CET 2001 - ro@suse.de
+
+- added esound-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Mar  2 00:19:37 MET 2001 - egger@suse.de
+
+- Minor corrections to the specfile. 
+
+-------------------------------------------------------------------
+Tue Feb 20 19:08:35 MET 2001 - egger@suse.de
+
+- removed imlib-config from neededforbuild.
+- Updated gnucash to version 1.4.10.
+- Updated g-wrap to version 1.4.12. 
+
+-------------------------------------------------------------------
+Tue Jan 30 23:35:00 CET 2001 - ro@suse.de
+
+- changed neededforbuild <imlibcfe> to <imlib-config>
+
+-------------------------------------------------------------------
+Thu Dec 21 14:13:42 MET 2000 - egger@suse.de
+
+- Updated gnucash to 1.4.9.
+- Updated g-wrap to 0.9.8.
+- Bugfix releases.
+- Recompressed with bzip2.
+
+-------------------------------------------------------------------
+Sun Dec 10 21:57:42 CET 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Mon Nov  6 04:58:03 MET 2000 - randall@suse.de
+
+-  Removed these two commands.  The guile package will preform these
+actions: 
+ln -sf /usr/lib/scheme/slib /usr/share/guile/1.4/slib
+guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)"
+ 
+
+-------------------------------------------------------------------
+Thu Nov  2 21:22:40 MET 2000 - randall@suse.de
+
+- Changed to long file names, also for distro SuSE 7.1a
+
+-------------------------------------------------------------------
+Tue Oct 31 04:59:39 MET 2000 - randall@suse.de
+
+- Initial Release 
+

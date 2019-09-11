@@ -1,0 +1,104 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## fix-FHS.dpatch by Jörg Sommer <joerg@alea.gnuu.de>
+##
+## DP: All files below /usr/lib/xindy/modules/ are architecture independent
+## DP: and therefor need to be below /usr/share/ as forced by the FHS.
+
+@DPATCH@
+---
+ make-rules/alphabets/Makefile.am |    2 +-
+ make-rules/alphabets/Makefile.in |    2 +-
+ make-rules/inputenc/Makefile.am  |    2 +-
+ make-rules/inputenc/Makefile.in  |    2 +-
+ modules/Makefile.am              |    2 +-
+ modules/Makefile.in              |    2 +-
+ user-commands/xindy.in           |   12 +++++++-----
+ 7 files changed, 13 insertions(+), 11 deletions(-)
+
+--- xindy.git.orig/make-rules/alphabets/Makefile.in
++++ xindy.git/make-rules/alphabets/Makefile.in
+@@ -285,7 +285,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-langdir = $(pkglibdir)/modules/lang
++langdir = $(pkgdatadir)/lang
+ nobase_nodist_lang_DATA = albanian/latin1-lang.xdy \
+ 	albanian/latin1-test.xdy albanian/latin1.xdy \
+ 	albanian/utf8-lang.xdy albanian/utf8-test.xdy \
+--- xindy.git.orig/make-rules/inputenc/Makefile.in
++++ xindy.git/make-rules/inputenc/Makefile.in
+@@ -259,7 +259,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-modulesdir = $(pkglibdir)/modules
++modulesdir = $(pkgdatadir)
+ inputencdir = $(modulesdir)/tex/inputenc
+ INPUTENCS = \
+ 	cp1250.xdy \
+--- xindy.git.orig/user-commands/xindy.in
++++ xindy.git/user-commands/xindy.in
+@@ -456,11 +456,13 @@
+     }
+ 
+     # modules directory
+-    if ( -d "$cmd_dir/../modules" ) {	# /opt style
+-	$modules_dir = "$cmd_dir/../modules";
+-    } elsif ( -d "$lib_dir/modules" ) {	# /usr style
+-	$modules_dir = "$lib_dir/modules";
+-    } else {
++    $modules_dir = "/usr/share/xindy";
++    unless ( -d $modules_dir ) {
++    #if ( -d "$cmd_dir/../modules" ) {	# /opt style
++    #	$modules_dir = "$cmd_dir/../modules";
++    #} elsif ( -d "$lib_dir/modules" ) {	# /usr style
++    #	$modules_dir = "$lib_dir/modules";
++    #} else {
+ 	die "$cmd: Cannot locate xindy modules directory";
+     }
+ 
+--- xindy.git.orig/modules/Makefile.in
++++ xindy.git/modules/Makefile.in
+@@ -263,7 +263,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-modulesdir = $(pkglibdir)/modules
++modulesdir = $(pkgdatadir)
+ nobase_modules_DATA = base/book-order.xdy base/ff-ranges-only.xdy \
+ 	base/ff-ranges.xdy base/german-sty.xdy base/ignore-hyphen.xdy \
+ 	base/ignore-punctuation.xdy base/keep-blanks.xdy \
+--- xindy.git.orig/make-rules/alphabets/Makefile.am
++++ xindy.git/make-rules/alphabets/Makefile.am
+@@ -19,7 +19,7 @@
+ ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ ## Boston, MA 02110-1301 USA.
+ 
+-langdir	= $(pkglibdir)/modules/lang
++langdir	= $(pkgdatadir)/lang
+ 
+ nobase_nodist_lang_DATA =
+ EXTRA_DIST =
+--- xindy.git.orig/make-rules/inputenc/Makefile.am
++++ xindy.git/make-rules/inputenc/Makefile.am
+@@ -19,7 +19,7 @@
+ ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ ## Boston, MA 02110-1301 USA.
+ 
+-modulesdir = $(pkglibdir)/modules
++modulesdir = $(pkgdatadir)
+ 
+ inputencdir = $(modulesdir)/tex/inputenc
+ 
+--- xindy.git.orig/modules/Makefile.am
++++ xindy.git/modules/Makefile.am
+@@ -21,7 +21,7 @@
+ ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ ## Boston, MA 02110-1301 USA.
+ 
+-modulesdir = $(pkglibdir)/modules
++modulesdir = $(pkgdatadir)
+ 
+ nobase_modules_DATA =
+ 

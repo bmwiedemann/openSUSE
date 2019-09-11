@@ -1,0 +1,40 @@
+--- a/src/plugins/Input/modplug/decoder_modplug.cpp
++++ b/src/plugins/Input/modplug/decoder_modplug.cpp
+@@ -29,7 +29,6 @@
+ #include <QSettings>
+ #include <math.h>
+ #include <libmodplug/stdafx.h>
+-#include <libmodplug/it_defs.h>
+ #include <libmodplug/sndfile.h>
+ #include <qmmp/buffer.h>
+ #include <qmmp/output.h>
+--- a/src/plugins/Input/modplug/decodermodplugfactory.cpp
++++ b/src/plugins/Input/modplug/decodermodplugfactory.cpp
+@@ -25,7 +25,6 @@
+ #include <QStringList>
+ #include <QRegExp>
+ #include <libmodplug/stdafx.h>
+-#include <libmodplug/it_defs.h>
+ #include <libmodplug/sndfile.h>
+ #include "settingsdialog.h"
+ #include "modplugmetadatamodel.h"
+--- a/src/plugins/Input/modplug/modplugmetadatamodel.cpp
++++ b/src/plugins/Input/modplug/modplugmetadatamodel.cpp
+@@ -21,7 +21,6 @@
+ #include <QFile>
+ #include <stdint.h>
+ #include <libmodplug/stdafx.h>
+-#include <libmodplug/it_defs.h>
+ #include <libmodplug/sndfile.h>
+ #include <libmodplug/modplug.h>
+ #include "archivereader.h"
+--- a/src/plugins/Input/modplug/settingsdialog.cpp
++++ b/src/plugins/Input/modplug/settingsdialog.cpp
+@@ -22,7 +22,6 @@
+ #include <QDir>
+ 
+ #include <libmodplug/stdafx.h>
+-#include <libmodplug/it_defs.h>
+ #include <libmodplug/sndfile.h>
+ 
+ #include "decoder_modplug.h"

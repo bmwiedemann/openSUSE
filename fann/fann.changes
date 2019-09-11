@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sat Oct 22 17:16:21 UTC 2016 - jengelh@inai.de
+
+- Update descriptions, summaries and license field
+
+-------------------------------------------------------------------
+Tue Nov  3 01:59:05 UTC 2015 - rpm@fthiessen.de
+
+- Fixed spec file:
+  * Use cmake macro
+  * Some cleanup
+  * Updated URL (new website)
+- Added fix-cmake-link-libraries.patch to fix build.
+  * This will add libm to the linker flags and install pkgconfig
+    file in lib(64)/pkgconfig
+
+-------------------------------------------------------------------
+Wed May 27 09:44:56 UTC 2015 - coolo@suse.com
+
+- update to 2.2
+  Added Sarprop training
+  Added fann_create_train for creating an empty training data struct
+  Added fann_copy for copying an ANN
+  Added cascade_min_out_epochs and cascade_min_cand_epochs to improve cascade training
+  Added extra checks when training, to ensure that data and network input and output sizes matches
+  Added Visual Studio 2010 solution
+  Added support for 64bit architecture
+  Cleanup in sources
+
+-------------------------------------------------------------------
+Sun Feb  5 20:10:59 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+- Parallel build with %_smp_mflags
+- Add autotools BuildRequires for factory/12.2
+- Ensure pkgconfig symbols are provided
+
+-------------------------------------------------------------------
+Mon Jun  4 00:05:53 UTC 2007 - judas_iscariote@shorewall.net
+
+-adapt to the new library package policy as well. 
+
+-------------------------------------------------------------------
+Tue Apr 17 03:33:33 UTC 2007 - judas_iscariote@shorewall.net
+
+- update to version fann-2.1.0.snap20070416 solving several problems
+see the vendor site for more info. 
+

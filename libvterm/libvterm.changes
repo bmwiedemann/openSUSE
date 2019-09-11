@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Sun May 28 23:06:43 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Fix `libvterm.changes` indentation.
+
+-------------------------------------------------------------------
+Sat May 27 09:18:26 UTC 2017 - bwiedemann@suse.com
+
+- Version bump to 0~bzr696.
+  Changelog:
+    * Add S8C1T control support to vterm-ctrl
+    * Implement querying of cursor shape in vterm-ctrl
+    * Remember to document ST in doc/seqs.txt
+    * Adjust linebreaking of 'break' statements to avoid gcc
+      warnings of misleading indentation
+    * Implement DECRQSS on SGR when set to RGB8 palette colours
+    * Reset the pen between independent tests of DECRQSS on SGR
+    * Bugfix for disabling mouse mode
+    * Ensure stdin's ICANON mode is restored even if vterm-ctrl
+      exits on error
+    * Initialise mouse state at VTermState creation rather than as
+      a side-effect of DECSM 100{0,2,3} - fixes LP1640917
+    * Pull VTermScreenCell.attrs out to its own named type
+    * Merge lp:~jamessan/libvterm/reproducibility (#307773,
+      boo#1041090)
+
+-------------------------------------------------------------------
+Thu Aug 25 15:53:26 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0~bzr684.
+  Changelog:
+    * Avoid "\e" because some C compilers don't like it
+    * Don't use wchar_t in unicode.c as it might not be big enough
+    * Remember to pass unicode codepoints in uint32_t rather than
+      int
+
+-------------------------------------------------------------------
+Sat Apr  9 22:18:12 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 0~bzr681.
+  Changelog:
+    * Bugfix(?) for SunOS (thanks DominoTree -
+      https://github.com/neovim/libvterm/pull/1/files)
+    * (Alt-)Ctrl-Space should encode as (\e)\0
+
+-------------------------------------------------------------------
+Sat Dec  5 15:20:34 UTC 2015 - jengelh@inai.de
+
+- Move description from main part to shlib part, since this will be
+  the one that always gets installed.
+
+-------------------------------------------------------------------
+Sat Dec  5 14:49:15 UTC 2015 - ronisbr@gmail.com
+
+- Remove unnecessary dependency from libvterm-tool.
+
+-------------------------------------------------------------------
+Sat Dec  5 14:19:14 UTC 2015 - ronisbr@gmail.com
+
+- Remove libtool files.
+- Fix groups for libvterm, libvterm0, and libvterm-tools.
+- Change package compression from .tar.gz to .tar.xz.
+- Change %{soname} to %{sover}.
+
+-------------------------------------------------------------------
+Sat Dec  5 13:44:52 UTC 2015 - ronisbr@gmail.com
+
+- Change package name to libvterm.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:41:49 UTC 2015 - ronisbr@gmail.com
+
+- Initial version based on home:gmc137:neovim/libvterm.
+- Version bump to 0~bzr679.
+- Change package version scheme to match openSUSE's guidelines.
+- Clean spec file.
+- Drop obsolete patch libvterm.optflags.patch.
+

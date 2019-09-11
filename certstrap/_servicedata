@@ -1,0 +1,8 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/square/certstap.git</param>
+    <param name="changesrevision">fa1359e6e510efcf9cd67bc0edbe43d7300a7833</param>
+ </service>
+<service name="tar_scm">
+                <param name="url">git://github.com/square/certstrap.git</param>
+              <param name="changesrevision">1789fe6ad90f1100be07e2d221b0aba3a162ef47</param></service></servicedata>

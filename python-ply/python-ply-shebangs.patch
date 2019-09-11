@@ -1,0 +1,10 @@
+Index: ply-3.3/example/yply/yply.py
+===================================================================
+--- ply-3.3.orig/example/yply/yply.py	2006-11-21 16:09:46.000000000 +0100
++++ ply-3.3/example/yply/yply.py	2010-09-14 10:43:14.157808186 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/python
++#!/usr/bin/env python
+ # yply.py
+ #
+ # Author: David Beazley (dave@dabeaz.com)

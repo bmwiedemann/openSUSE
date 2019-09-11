@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:51:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct 25 12:43:03 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.3b1:
+  * no obvious changelog
+
+-------------------------------------------------------------------
+Mon Jun  5 11:26:10 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.1.1a1
+- Added python-opengl.changes as source
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Mon Jul 14 12:13:36 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 3.1.0
+  * no changelog
+
+-------------------------------------------------------------------
+Fri Apr 19 12:50:33 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 3.0.2
+  * no changelog
+- Add python 3 version
+
+-------------------------------------------------------------------
+Tue Sep 14 10:50:25 UTC 2010 - coolo@novell.com
+
+- update to 3.0.1
+  * tons of changes, but no upstream documentation beside
+    ChangeLog.txt
+
+-------------------------------------------------------------------
+Tue Aug 11 19:29:18 CEST 2009 - matejcik@suse.cz
+
+- removed non-applied patches
+- switched to noarch (accelerator is not present, so no
+  platform-dependent parts)
+
+-------------------------------------------------------------------
+Thu Aug  6 14:52:13 CEST 2009 - matejcik@suse.cz
+
+- update to 3.0.0
+  * big under-the-hood rewrite while using backwards-compatible API
+  * support for entire OGL3.0 api and most extensions
+  * plug-in API
+  * lower performance (accelerator module is not done yet)
+  * package-level configuration flags
+
+-------------------------------------------------------------------
+Wed Jun 10 17:04:15 CEST 2009 - ro@suse.de
+
+- buildreq: replace gle by libgle-devel for >= 11.2 
+
+-------------------------------------------------------------------
+Mon May  4 12:09:40 CEST 2009 - ro@suse.de
+
+- buildrequires: replace python-numeric by python-numpy
+  for >= 11.2
+
+-------------------------------------------------------------------
+Fri Jan 26 19:40:54 CET 2007 - jmatejek@suse.cz
+
+- removed strict-aliasing warnings
+- removed invalid operations
+
+-------------------------------------------------------------------
+Tue Nov 21 13:09:23 CET 2006 - prusnak@suse.cz
+
+- changes according to PEP353 (pep353.diff)
+
+-------------------------------------------------------------------
+Mon Sep 11 19:50:00 CEST 2006 - jmatejek@suse.cz
+
+- replaced a mistyped unicode nonbreakspace with a
+  regular space, thus fixing build with python2.5
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 16:47:21 CET 2006 - jmatejek@suse.cz
+
+- added build dependency on tk-devel
+- fixed build not to require X server
+
+-------------------------------------------------------------------
+Mon Jun 20 16:10:57 CEST 2005 - ltinkl@suse.cz
+
+- added freeglut* packages to fix dependencies (#80605), plus 
+  optional (but recommended) dependency on python-imaging (pil)
+
+-------------------------------------------------------------------
+Tue Nov 23 16:25:43 CET 2004 - mcihar@suse.cz
+
+- update to 2.0.1.09
+- simplified filelist generating
+
+-------------------------------------------------------------------
+Wed Aug 04 16:09:55 CEST 2004 - mcihar@suse.cz
+
+- update to 2.0.1.08
+
+-------------------------------------------------------------------
+Wed Apr 21 12:22:58 CEST 2004 - mcihar@suse.cz
+
+- fix gcc warning
+- fixed python requires
+- use sed instead of patch for lib64
+
+-------------------------------------------------------------------
+Sat Jan 10 22:36:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Jun 16 16:49:02 CEST 2003 - mcihar@suse.cz
+
+- added some magic to generate correct filelist
+
+-------------------------------------------------------------------
+Mon Jun 09 16:43:38 CEST 2003 - mcihar@suse.cz
+
+- documentation isn't executable
+
+-------------------------------------------------------------------
+Thu Jun 05 09:58:00 CEST 2003 - mcihar@suse.cz
+
+- rather move documentation than symlink, as otherwise upgrade
+  doesn't work correctly
+
+-------------------------------------------------------------------
+Tue May 27 19:55:53 CEST 2003 - mcihar@suse.cz
+
+- install documentation only once
+
+-------------------------------------------------------------------
+Fri Jan 10 11:29:54 CET 2003 - mcihar@suse.cz
+
+- fixed build for lib64 arches
+
+-------------------------------------------------------------------
+Mon Jan 06 12:02:31 CET 2003 - mcihar@suse.cz
+
+- initial package version
+

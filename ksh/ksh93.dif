@@ -1,0 +1,515 @@
+--- src/cmd/ksh93/bltins/print.c
++++ src/cmd/ksh93/bltins/print.c	2008-05-05 11:20:21.000000000 +0000
+@@ -105,7 +105,11 @@ static char* 	nullarg[] = { 0, 0 };
+    {
+ 	static char bsd_univ;
+ 	struct print prdata;
+-	prdata.options = sh_optecho+5;
++# if defined(__linux__)
++	prdata.options = sh_optecho;
++# else
++	prdata.options = sh_optecho + 5;
++# endif
+ 	prdata.raw = prdata.echon = 0;
+ 	prdata.sh = context->shp;
+ 	NOT_USED(argc);
+@@ -118,7 +122,52 @@ static char* 	nullarg[] = { 0, 0 };
+ 		prdata.sh->universe = 1;
+ 	}
+ 	if(!bsd_univ)
++	{
++# if defined(__linux__)
++		char *opt = argv[1];
++		while ((opt = argv[1]) && (*opt == '-'))
++		{
++			int c;
++
++			opt++;
++
++			for (c = 0; opt[c]; c++)
++#  if !SHOPT_ECHOE
++				if (strchr("neE", opt[c]) == 0)
++#  else
++				if (strchr("n", opt[c]) == 0)
++#  endif /* SHOPT_ECHOE */
++					break;
++
++			if (*opt == 0 || opt[c])
++				break;
++
++			while ((c = *opt++))
++			{
++				switch (c) {
++				case 'n':
++					prdata.echon = 1;
++					break;
++#  if !SHOPT_ECHOE
++				case 'e':
++					prdata.raw = 0;
++					break;
++				case 'E':
++					prdata.raw = 1;
++					break;
++#  endif /* SHOPT_ECHOE */
++				default:
++					goto out;
++					break;
++				}
++			}
++
++			argv++;
++		}
++	out:
++# endif
+ 		return(b_print(0,argv,(Shbltin_t*)&prdata));
++	}
+ 	prdata.options = sh_optecho;
+ 	prdata.raw = 1;
+ 	while(argv[1] && *argv[1]=='-')
+--- src/cmd/ksh93/data/msg.c
++++ src/cmd/ksh93/data/msg.c	2007-12-20 18:01:26.000000000 +0000
+@@ -202,7 +202,7 @@ const char e_bash_login[]	= "$HOME/.bash
+ const char e_bash_logout[]	= "$HOME/.bash_logout";
+ const char e_bash_profile[]	= "$HOME/.bash_profile";
+ #endif
+-const char e_crondir[]		= "/usr/spool/cron/atjobs";
++const char e_crondir[]		= "/var/spool/cron";
+ const char e_prohibited[]	= "login setuid/setgid shells prohibited";
+ #if SHOPT_SUID_EXEC
+    const char e_suidexec[]	= "/etc/suid_exec";
+--- src/cmd/ksh93/data/variables.c
++++ src/cmd/ksh93/data/variables.c	2008-09-18 17:22:24.000000000 +0000
+@@ -69,7 +69,7 @@ const struct shtable2 shtab_variables[]
+ 	"OPTARG",	0,				(char*)0,
+ 	"OPTIND",	NV_NOFREE|NV_INTEGER,		(char*)0,
+ 	"PS4",		0,				(char*)0,
+-	"FPATH",	0,				(char*)0,
++	"FPATH",	NV_NOFREE,			"/usr/share/ksh/fun",
+ 	"LANG",		0,				(char*)0,
+ 	"LC_ALL",	0,				(char*)0,
+ 	"LC_COLLATE",	0,				(char*)0,
+--- src/cmd/ksh93/features/options
++++ src/cmd/ksh93/features/options	2007-12-20 18:01:26.000000000 +0000
+@@ -36,7 +36,7 @@ tst	cross{
+ 	option TEST_L $?
+ 	test -f /etc/ksh.kshrc -o -f /etc/bash.bashrc &&
+ 	option SYSRC 0
+-	test -f /bin/universe && univ=`/bin/universe` > /dev/null 2>&1 -a ucb = "$univ"
++	test -x /bin/universe && univ=`/bin/universe` > /dev/null 2>&1 && test ucb = "$univ"
+ 	option UCB $?
+ }end
+ 
+--- src/cmd/ksh93/sh.1
++++ src/cmd/ksh93/sh.1	2008-09-22 12:11:56.000000000 +0000
+@@ -200,7 +200,7 @@ separated by
+ .BR \(bv .
+ The standard output of each command but the last
+ is connected by a
+-.IR pipe (2)
++.IR socketpair (2)
+ to the standard input of the next command.
+ Each command,
+ except possibly the last,
+--- src/cmd/ksh93/sh/main.c
++++ src/cmd/ksh93/sh/main.c	2007-12-20 18:01:26.000000000 +0000
+@@ -113,9 +113,9 @@ int sh_source(Shell_t *shp, Sfio_t *iop,
+ }
+ 
+ #ifdef S_ISSOCK
+-#define REMOTE(m)	(S_ISSOCK(m)||!(m))
++#define REMOTE(m)	((S_ISSOCK((m).st_mode)||!((m).st_mode))&&!((m).st_ino))
+ #else
+-#define REMOTE(m)	!(m)
++#define REMOTE(m)	(!((m).st_mode)&&!((m).st_ino))
+ #endif
+ 
+ int sh_main(int ac, char *av[], Shinit_f userinit)
+@@ -179,7 +179,7 @@ int sh_main(int ac, char *av[], Shinit_f
+ 		}
+ 		if(!sh_isoption(SH_RC) && (sh_isoption(SH_BASH) && !sh_isoption(SH_POSIX)
+ #if SHOPT_REMOTE
+-		   || !fstat(0, &statb) && REMOTE(statb.st_mode)
++		   || !fstat(0, &statb) && REMOTE(statb)
+ #endif
+ 		  ))
+ 			sh_onoption(SH_RC);
+--- src/cmd/ksh93/sh/xec.c
++++ src/cmd/ksh93/sh/xec.c	2012-01-26 12:07:46.000000000 +0000
+@@ -1015,7 +1015,7 @@ int sh_exec(register const Shnode_t *t,
+ 		{
+ 		    case TCOM:
+ 		    {
+-			register struct argnod	*argp;
++			volatile struct argnod	*argp;
+ 			char		*trap;
+ 			Namval_t	*np, *nq, *last_table;
+ 			struct ionod	*io;
+@@ -1131,7 +1131,7 @@ int sh_exec(register const Shnode_t *t,
+ 				comn = com[argn-1];
+ 			}
+ 			io = t->tre.treio;
+-			if(shp->envlist = argp = t->com.comset)
++			if((shp->envlist = argp = t->com.comset))
+ 			{
+ 				if(argn==0 || (np && nv_isattr(np,(BLT_DCL|BLT_SPC))))
+ 				{
+--- src/cmd/ksh93/tests/attributes.sh
++++ src/cmd/ksh93/tests/attributes.sh	2009-07-09 13:14:05.000000000 +0000
+@@ -199,7 +199,7 @@ hello worldhello worldhello world
+ [[ $v1 == "$b1" ]] || err_exit "v1=$v1 should be $b1"
+ [[ $v2 == "$x" ]] || err_exit "v1=$v2 should be $x"
+ if	env '!=1' >/dev/null 2>&1
+-then	[[ $(env '!=1' $SHELL -c 'echo ok' 2>/dev/null) == ok ]] || err_exit 'malformed environment terminates shell'
++then	[[ $(env "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" '!=1' $SHELL -c 'echo ok' 2>/dev/null) == ok ]] || err_exit 'malformed environment terminates shell'
+ fi
+ unset var
+ typeset -b var
+--- src/cmd/ksh93/tests/bracket.sh
++++ src/cmd/ksh93/tests/bracket.sh	2012-02-09 14:11:32.000000000 +0000
+@@ -221,6 +221,10 @@ done
+ 	[[ abcdcdabcde == {5}(ab|cd)e ]] || err_exit 'abcdcdabcd == {5}(ab|cd)e'
+ ) || err_exit 'errors with {..}(...) patterns'
+ [[ D290.2003.02.16.temp == D290.+(2003.02.16).temp* ]] || err_exit 'pattern match bug with +(...)'
++atime=$(stat -c '%X' $file)
++sleep 2
++cat $file > /dev/null
++if [[ $atime -lt $(stat -c '%X' $file) ]] then
+ rm -rf $file
+ {
+ [[ -N $file ]] && err_exit 'test -N $tmp/*: st_mtime>st_atime after creat'
+@@ -231,6 +235,7 @@ sleep 2
+ read
+ [[ -N $file ]] && err_exit 'test -N $tmp/*: st_mtime>st_atime after read'
+ } > $file < $file
++fi
+ if	rm -rf "$file" && ln -s / "$file"
+ then	[[ -L "$file" ]] || err_exit '-L not working'
+ 	[[ -L "$file"/ ]] && err_exit '-L with file/ not working'
+--- src/cmd/ksh93/tests/builtins.sh
++++ src/cmd/ksh93/tests/builtins.sh	2009-07-09 13:14:50.000000000 +0000
+@@ -344,7 +344,7 @@ wait $pid1
+ (( $? == 1 )) || err_exit "wait not saving exit value"
+ wait $pid2
+ (( $? == 127 )) || err_exit "subshell job known to parent"
+-env=
++env="LD_LIBRARY_PATH=\$LD_LIBRARY_PATH"
+ v=$(getconf LIBPATH)
+ for v in ${v//,/ }
+ do	v=${v#*:}
+--- src/cmd/ksh93/tests/coprocess.sh
++++ src/cmd/ksh93/tests/coprocess.sh	2013-02-01 15:22:31.000000000 +0000
+@@ -113,15 +113,15 @@ do
+ 	cop=$!
+ 	exp=Done
+ 	print -p $'print hello | '$cat$'\nprint '$exp
+-	read -t 5 -p
+-	read -t 5 -p
++	read -t 50 -p
++	read -t 50 -p
+ 	got=$REPLY
+ 	if	[[ $got != $exp ]]
+ 	then	err_exit "${SHELL-ksh} $cat coprocess io failed -- got '$got', expected '$exp'"
+ 	fi
+ 	exec 5<&p 6>&p
+ 	exec 5<&- 6>&-
+-	{ sleep 4; kill $cop; } 2>/dev/null &
++	{ sleep 10; kill $cop; } 2>/dev/null &
+ 	spy=$!
+ 	if	wait $cop 2>/dev/null
+ 	then	kill $spy 2>/dev/null
+@@ -134,10 +134,10 @@ do
+ 	echo line2 | grep 'line1'
+ 	} |&
+ 	SECONDS=0 count=0
+-	while	read -p -t 10 line
++	while	read -p -t 100 line
+ 	do	((count++))
+ 	done
+-	if	(( SECONDS > 8 ))
++	if	(( SECONDS > 80 ))
+ 	then	err_exit "$cat coprocess read -p hanging (SECONDS=$SECONDS count=$count)"
+ 	fi
+ 	wait $!
+@@ -160,7 +160,7 @@ do
+ 			wait $!
+ 		done
+ 		print
+-	) 2>/dev/null | read -t 10 r
++	) 2>/dev/null | read -t 100 r
+ 	[[ $r == $e ]] || err_exit "$cat coprocess timing bug -- expected $e, got '$r'"
+ 	
+ 	r=
+@@ -173,8 +173,9 @@ do
+ 			wait $!
+ 		done
+ 		print $r
+-	) 2>/dev/null | read -t 10 r
++	) 2>/dev/null | read -t 100 r
+ 	[[ $r == $e ]] || err_exit "$cat coprocess command substitution bug -- expected $e, got '$r'"
++	kill $(jobs -p) 2>/dev/null
+ 	
+ 	(
+ 		$cat |&
+@@ -212,7 +213,7 @@ do
+ 	done
+ 	
+ 	trap 'sleep_pid=; kill $pid; err_exit "$cat coprocess 1 hung"' TERM
+-	{ sleep 5; kill $$; } &
++	{ sleep 10; kill $$; } &
+ 	sleep_pid=$!
+ 	$cat |&
+ 	pid=$!
+@@ -226,7 +227,7 @@ do
+ 	[[ $sleep_pid ]] && kill $sleep_pid
+ 	
+ 	trap 'sleep_pid=; kill $pid; err_exit "$cat coprocess 2 hung"' TERM
+-	{ sleep 5; kill $$; } &
++	{ sleep 10; kill $$; } &
+ 	sleep_pid=$!
+ 	$cat |&
+ 	pid=$!
+@@ -238,7 +239,7 @@ do
+ 	[[ $sleep_pid ]] && kill $sleep_pid
+ 	
+ 	trap 'sleep_pid=; kill $pid; err_exit "$cat coprocess 3 hung"' TERM
+-	{ sleep 5; kill $$; } &
++	{ sleep 10; kill $$; } &
+ 	sleep_pid=$!
+ 	$cat |&
+ 	pid=$!
+--- src/cmd/ksh93/tests/locale.sh
++++ src/cmd/ksh93/tests/locale.sh	2011-05-24 14:46:02.000000000 +0000
+@@ -62,7 +62,7 @@ done
+ # this locale is supported by ast on all platforms
+ # EU for { decimal_point="," thousands_sep="." }
+ 
+-locale=C_EU.UTF-8
++locale=de_DE.UTF-8
+ 
+ export LC_ALL=C
+ 
+@@ -111,11 +111,11 @@ set -- $($SHELL -c "
+ 	unset LC_CTYPE
+ 	export LANG=$locale
+ 	export LC_ALL=C
+-	command wc -C < $tmp/two_euro_chars.txt
++	command wc -m < $tmp/two_euro_chars.txt
+ 	unset LC_ALL
+-	command wc -C < $tmp/two_euro_chars.txt
++	command wc -m < $tmp/two_euro_chars.txt
+ 	export LC_ALL=C
+-	command wc -C < $tmp/two_euro_chars.txt
++	command wc -m < $tmp/two_euro_chars.txt
+ ")
+ got=$*
+ [[ $got == $exp ]] || err_exit "command wc LC_ALL default failed -- expected '$exp', got '$got'"
+@@ -124,11 +124,11 @@ set -- $($SHELL -c "
+ 	then	unset LC_CTYPE
+ 		export LANG=$locale
+ 		export LC_ALL=C
+-		wc -C < $tmp/two_euro_chars.txt
++		wc -m < $tmp/two_euro_chars.txt
+ 		unset LC_ALL
+-		wc -C < $tmp/two_euro_chars.txt
++		wc -m < $tmp/two_euro_chars.txt
+ 		export LC_ALL=C
+-		wc -C < $tmp/two_euro_chars.txt
++		wc -m < $tmp/two_euro_chars.txt
+ 	fi
+ ")
+ got=$*
+@@ -336,7 +336,7 @@ then	LC_ALL=en_US.UTF-8
+ 	[[ $(print -r -- "$x") == $'hello\u[20ac]\xee world' ]] || err_exit '%q with unicode and non-unicode not working'
+ 	if	[[ $(whence od) ]]
+ 	then	got='68 65 6c 6c 6f e2 82 ac ee 20 77 6f 72 6c 64 0a'
+-		[[ $(print -r -- "$x" | od -An -tx1) == "$got" ]] || err_exit "incorrect string from printf %q"
++		[[ $(print -r -- "$x" | od -An -tx1) =~ "$got" ]] || err_exit "incorrect string from printf %q"
+ 	fi
+ 	
+ fi
+--- src/cmd/ksh93/tests/options.sh
++++ src/cmd/ksh93/tests/options.sh	2012-01-16 16:50:59.000000000 +0000
+@@ -510,7 +510,7 @@ z=$($SHELL 2>&1 -uc 'print ${X2345678901
+ [[ $z == *X23456789012345:* ]] || err_exit "error message garbled with set -u got $z"
+ 
+ # pipe hang bug fixed 2011-03-15
+-float start=SECONDS toolong=3
++float start=SECONDS toolong=8
+ ( $SHELL <<-EOF
+ 	set -o pipefail
+ 	(sleep $toolong;kill \$\$> /dev/null) &
+--- src/cmd/ksh93/tests/path.sh
++++ src/cmd/ksh93/tests/path.sh	2008-09-11 16:02:46.000000000 +0000
+@@ -269,7 +269,7 @@ builtin getconf
+ getconf UNIVERSE - att # override sticky default 'UNIVERSE = foo'
+ 
+ [[ $(PATH=/usr/ucb/bin:/usr/bin echo -n ucb) == 'ucb' ]] || err_exit "ucb universe echo ignores -n option"
+-[[ $(PATH=/usr/xpg/bin:/usr/bin echo -n att) == '-n att' ]] || err_exit "att universe echo does not ignore -n option"
++[[ $(PATH=/usr/xpg/bin:/usr/bin echo -n att) == 'att' ]] || err_exit "att universe echo ignores -n option"
+ 
+ PATH=$path
+ 
+--- src/cmd/ksh93/tests/pty.sh
++++ src/cmd/ksh93/tests/pty.sh	2012-03-15 11:51:40.000000000 +0000
+@@ -428,15 +428,16 @@ r echo repeat-3
+ 
+ # err_exit #
+ whence -q less &&
+-TERM=vt100 tst $LINENO <<"!"
++TERM=xterm tst $LINENO <<"!"
+ L process/terminal group exercise
+ 
+-w m=yes; while true; do echo $m-$m; done | less
++w m=yes; while true; do echo $m-$m; done | less -b1 -c
+ u :$|:\E|lines
+ c \cZ
+ r Stopped
+ w fg
+ u yes-yes
++w q
+ !
+ 
+ exit $((Errors<125?Errors:125))
+--- src/cmd/ksh93/tests/signal.sh
++++ src/cmd/ksh93/tests/signal.sh	2011-05-20 13:25:48.000000000 +0000
+@@ -285,10 +285,10 @@ then	for exp in TERM VTALRM PIPE
+ 				$SHELL <<- EOF
+ 				foo() { return 0; }
+ 				trap foo EXIT
+-				{ sleep 2; kill -$exp \$\$; sleep 3; kill -0 \$\$ && kill -KILL \$\$; } &
++				{ sleep 2; kill -$exp \$\$; sleep 8; kill -0 \$\$ && kill -KILL \$\$; } &
+ 				$yes |
+ 				while read yes
+-				do	(/bin/date; sleep .1)
++				do	(/bin/date; sleep .01)
+ 				done > /dev/null
+ 				EOF
+     			} 2>> /dev/null
+--- src/lib/libast/disc/memfatal.c
++++ src/lib/libast/disc/memfatal.c	2009-07-09 13:30:39.000000000 +0000
+@@ -74,7 +74,7 @@ memfatal(void)
+ {
+ 	Vmdisc_t*	disc;
+ 
+-	malloc(0);
++	void * ptr = malloc(0);
+ 	if (disc = vmdisc(Vmregion, NiL))
+ 		disc->exceptf = nomalloc;
+ }
+--- src/lib/libast/features/align.c
++++ src/lib/libast/features/align.c	2007-12-20 18:01:26.000000000 +0000
+@@ -32,6 +32,7 @@
+ #include "FEATURE/common"
+ 
+ #include <setjmp.h>
++#include <stdio.h>
+ 
+ union _u_
+ {
+--- src/lib/libast/features/botch.c
++++ src/lib/libast/features/botch.c	2007-12-20 18:01:26.000000000 +0000
+@@ -27,6 +27,7 @@
+  * generate ast traps for botched standard prototypes
+  */
+ 
++#include <stdio.h>
+ #include <sys/types.h>
+ 
+ #include "FEATURE/lib"
+--- src/lib/libast/features/lib
++++ src/lib/libast/features/lib	2007-12-20 18:01:26.000000000 +0000
+@@ -538,14 +538,19 @@ tst	lib_utime_now note{ utime works with
+ }end
+ 
+ tst	cross{
+-	u=att
+-	case `/bin/cat -s /dev/null/foo 2>&1` in
+-	'')	;;
+-	*)	case `/bin/echo '\\t'` in
+-		'\t')	u=ucb ;;
++	if test -n "$UNIVERSE"
++	then
++		u=$UNIVERSE
++	else
++		u=att
++		case `/bin/cat -s /dev/null/foo 2>&1` in
++		'')	;;
++		*)	case `/bin/echo '\\t'` in
++			'\t')	u=ucb ;;
++			esac
++			;;
+ 		esac
+-		;;
+-	esac
++	fi
+ 	echo "#define _UNIV_DEFAULT	\"$u\"	/* default universe name */"
+ }end
+ 
+--- src/lib/libast/misc/procopen.c
++++ src/lib/libast/misc/procopen.c	2007-12-20 18:01:26.000000000 +0000
+@@ -599,7 +599,7 @@ procopen(const char* cmd, char** argv, c
+ 			if (!fork())
+ 			{
+ 				sfsprintf(path, sizeof(path), "%d", getppid());
+-				execlp("trace", "trace", "-p", path, NiL);
++				execlp("trace", "trace", "-p", path, NULL);
+ 				_exit(EXIT_NOTFOUND);
+ 			}
+ 			sleep(2);
+--- src/lib/libast/port/astwinsize.c
++++ src/lib/libast/port/astwinsize.c	2012-02-03 08:58:43.000000000 +0000
+@@ -29,6 +29,10 @@
+ #include <ast.h>
+ #include <ast_tty.h>
+ 
++#if _sys_ioctl
++#include <sys/ioctl.h>
++#endif
++
+ #if defined(__STDPP__directive) && defined(__STDPP__hide)
+ __STDPP__directive pragma pp:hide ioctl sleep
+ #else
+@@ -36,10 +40,6 @@ __STDPP__directive pragma pp:hide ioctl
+ #define sleep		______sleep
+ #endif
+ 
+-#if _sys_ioctl
+-#include <sys/ioctl.h>
+-#endif
+-
+ #if defined(TIOCGWINSZ)
+ #if _sys_stream && _sys_ptem
+ #include <sys/stream.h>
+--- src/lib/libast/sfio/sfstrtof.h
++++ src/lib/libast/sfio/sfstrtof.h	2007-12-20 18:01:26.000000000 +0000
+@@ -54,7 +54,7 @@
+ 
+ #if !defined(S2F_function)
+ #define S2F_function	_sfdscan
+-#define S2F_static	1
++#define S2F_static	-1
+ #define S2F_type	2
+ #define S2F_scan	1
+ #ifndef elementsof
+--- src/lib/libcmd/Mamfile
++++ src/lib/libcmd/Mamfile	2013-02-05 10:41:01.310073683 +0000
+@@ -897,7 +897,7 @@ exec - -e '/^b_[a-z_][a-z_0-9]*(/!d' \
+ exec - -e 's/^b_//' \
+ exec - -e 's/(.*//' \
+ exec - -e 's/.*/CMDLIST(&)/' \
+-exec - |
++exec - cmdinit.c basename.c cat.c chgrp.c chmod.c chown.c cksum.c cmp.c comm.c cp.c cut.c dirname.c date.c expr.c fds.c fmt.c fold.c getconf.c head.c id.c join.c ln.c logname.c md5sum.c mkdir.c mkfifo.c mktemp.c mv.c paste.c pathchk.c pids.c rev.c rm.c rmdir.c stty.c sum.c sync.c tail.c tee.c tty.c uname.c uniq.c vmstate.c wc.c revlib.c wclib.c fts_fix.c lib.c |
+ exec - sort -u
+ exec - } > 1.${COTEMP}.h
+ exec - if cmp 2>/dev/null -s 1.${COTEMP}.h cmdlist.h
+--- src/lib/libcmd/chmod.c
++++ src/lib/libcmd/chmod.c	2011-05-20 13:28:58.000000000 +0000
+@@ -272,7 +272,7 @@ b_chmod(int argc, char** argv, Shbltin_t
+ 		case FTS_SLNONE:
+ 			if (chlink)
+ 			{
+-#if _lib_lchmod
++#if !defined(__linux__) && _lib_lchmod
+ 				chmodf = lchmod;
+ 				goto commit;
+ #else

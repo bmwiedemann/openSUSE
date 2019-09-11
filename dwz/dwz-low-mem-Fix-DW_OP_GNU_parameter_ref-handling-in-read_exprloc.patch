@@ -1,0 +1,57 @@
+[low-mem] Fix DW_OP_GNU_parameter_ref handling in read_exprloc
+
+Function read_exprloc contains a loop that marks all parents of a
+DW_OP_GNU_parameter_ref reference with CK_BAD.  The loop however has no
+private loop variable, so the ref variable, initially pointing to the
+referenced DIE, ends up after the loop pointing to the root parent of the
+reference instead.  Consequently, the code after the loop, intended to be
+executed for the referenced DIE, is instead executed for the root parent of
+the referenced DIE.
+
+Fix this by moving the loop alap.
+
+2019-02-14  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/24195
+	* dwz.c (read_exprloc): Move loop marking parents with CK_BAD alap.
+
+---
+ dwz.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/dwz.c b/dwz.c
+index d348418..6e6b6fb 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -1492,6 +1492,15 @@ read_exprloc (DSO *dso, dw_die_ref die, unsigned char *ptr, size_t len,
+ 	    }
+ 	  if (op == DW_OP_call2)
+ 	    ref->die_op_call2_referenced = 1;
++	  if (unlikely (low_mem))
++	    {
++	      ref->die_referenced = 1;
++	      /* As .debug_loc adjustment is done after
++		 write_info finishes, we need to keep the referenced
++		 DIEs around uncollapsed.  */
++	      if (need_adjust)
++		ref->die_intercu_referenced = 1;
++	    }
+ 	  if (ref->die_ck_state == CK_KNOWN)
+ 	    {
+ 	      ref->die_ck_state = CK_BAD;
+@@ -1504,15 +1513,6 @@ read_exprloc (DSO *dso, dw_die_ref die, unsigned char *ptr, size_t len,
+ 	    }
+ 	  else
+ 	    ref->die_ck_state = CK_BAD;
+-	  if (unlikely (low_mem))
+-	    {
+-	      ref->die_referenced = 1;
+-	      /* As .debug_loc adjustment is done after
+-		 write_info finishes, we need to keep the referenced
+-		 DIEs around uncollapsed.  */
+-	      if (need_adjust)
+-		ref->die_intercu_referenced = 1;
+-	    }
+ 	  die->die_ck_state = CK_BAD;
+ 	  if (need_adjust)
+ 	    *need_adjust = true;

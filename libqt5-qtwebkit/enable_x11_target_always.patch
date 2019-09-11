@@ -1,0 +1,21 @@
+From: Max Lin <mlin@suse.com>
+Subject: Enable X11 target build always
+
+openSUSE didn't ship Xcb Plugin's cmake file. It needs to make sure X11 target build is on always.
+---
+ Source/cmake/OptionsQt.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/cmake/OptionsQt.cmake b/Source/cmake/OptionsQt.cmake
+index ac1065d929c2..6791e093096d 100644
+--- a/Source/cmake/OptionsQt.cmake
++++ b/Source/cmake/OptionsQt.cmake
+@@ -223,7 +223,7 @@ else ()
+     set(ENABLE_WEBKIT2_DEFAULT ON)
+ endif ()
+ 
+-if (UNIX AND TARGET Qt5::QXcbIntegrationPlugin AND NOT APPLE)
++if (UNIX AND NOT APPLE)
+     set(ENABLE_X11_TARGET_DEFAULT ON)
+ else ()
+     set(ENABLE_X11_TARGET_DEFAULT OFF)

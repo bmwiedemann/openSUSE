@@ -1,0 +1,24 @@
+diff -Nurp net-snmp-5.8-orig/agent/mibgroup/hardware/fsys/fsys_mntent.c net-snmp-5.8/agent/mibgroup/hardware/fsys/fsys_mntent.c
+--- net-snmp-5.8-orig/agent/mibgroup/hardware/fsys/fsys_mntent.c	2018-07-16 16:33:40.000000000 +0200
++++ net-snmp-5.8/agent/mibgroup/hardware/fsys/fsys_mntent.c	2019-07-04 10:03:38.611004672 +0200
+@@ -144,6 +144,7 @@ _fsys_type( char *typename )
+               !strcmp(typename, MNTTYPE_CVFS) ||
+               !strcmp(typename, MNTTYPE_SIMFS) ||
+               !strcmp(typename, MNTTYPE_BTRFS) ||
++              !strcmp(typename, MNTTYPE_LUSTRE) ||
+               !strcmp(typename, MNTTYPE_ZFS) ||
+               !strcmp(typename, MNTTYPE_NVMFS) ||
+               !strcmp(typename, MNTTYPE_ACFS) ||
+diff -Nurp net-snmp-5.8-orig/agent/mibgroup/hardware/fsys/mnttypes.h net-snmp-5.8/agent/mibgroup/hardware/fsys/mnttypes.h
+--- net-snmp-5.8-orig/agent/mibgroup/hardware/fsys/mnttypes.h	2018-07-16 16:33:40.000000000 +0200
++++ net-snmp-5.8/agent/mibgroup/hardware/fsys/mnttypes.h	2019-07-04 10:04:25.607004626 +0200
+@@ -148,6 +148,9 @@
+ #ifndef MNTTYPE_BTRFS
+ #define MNTTYPE_BTRFS     "btrfs"
+ #endif
++#ifndef MNTTYPE_LUSTRE
++#define MNTTYPE_LUSTRE    "lustre"
++#endif
+ #ifndef MNTTYPE_ZFS
+ #define MNTTYPE_ZFS       "zfs"
+ #endif

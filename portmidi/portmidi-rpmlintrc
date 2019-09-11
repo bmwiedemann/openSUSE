@@ -1,0 +1,2 @@
+addFilter("shlib-policy-name-error .* libpmjni")
+addFilter("static-library-without-debuginfo")

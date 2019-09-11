@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:52:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May  3 15:38:23 UTC 2018 - alarrosa@suse.com
+
+- Run spec_cleaner
+
+-------------------------------------------------------------------
+Thu May  3 09:39:31 UTC 2018 - alarrosa@suse.com
+
+- Use %license for the LICENSE file 
+
+-------------------------------------------------------------------
+Tue Sep  5 16:45:29 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-PyRIC 0.1.6.3 

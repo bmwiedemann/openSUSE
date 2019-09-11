@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Feb 26 09:15:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Install maven artifacts as compatibility versions to avoid
+  provider conflict with objectweb-asm
+
+-------------------------------------------------------------------
+Tue Feb  5 12:45:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Install maven pom files and clean-up the spec
+
+-------------------------------------------------------------------
+Wed Jun 13 10:54:51 UTC 2018 - fstrba@suse.com
+
+- Initial package for asm5
+

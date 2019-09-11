@@ -1,0 +1,4 @@
+<service name="kiwi_metainfo_helper">
+	<summary>Substitute various variables in .kiwi files</summary>
+	<description>Substitutes %DISTURL%, %RELEASE% and %BUILDTIME% in .kiwi files.</description>
+</service>

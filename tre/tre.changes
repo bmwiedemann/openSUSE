@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Tue Jan 16 16:08:41 UTC 2018 - kbabioch@suse.com
+
+- CVE-2016-8859.patch: Fix multiple integer overflows which allowed
+  attackers to cause memory corruption via a large number of (1) states or
+  (2) tags, which triggered an out-of-bounds write (bnc#1005483)
+
+-------------------------------------------------------------------
+Thu Apr 24 09:06:44 UTC 2014 - pgajdos@suse.com
+
+- remove redundant setting of C(XX)FLAGS
+- package translations in tre-lang
+
+-------------------------------------------------------------------
+Tue Apr  8 10:01:26 CDT 2014 - bjones@ece.msstate.edu
+
+- Added make check tests
+- Added python-tre wrapper
+- Used updated source from https://github.com/laurikari/tre/
+- Added chicken.patch to correct Python build failures
+
+-------------------------------------------------------------------
+Tue May  8 12:47:43 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  Package is predominantly BSD-3-Clause licensed. This spec file license
+  update makes the openSUSE package license substantially similar to the
+  Fedora package license"
+
+-------------------------------------------------------------------
+Sun Jan 29 01:09:35 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Enable pkgconfig provides
+
+-------------------------------------------------------------------
+Thu Dec 10 12:47:07 CET 2009 - pgajdos@suse.cz
+
+- updated to 0.8.0:
+  - Added tre_ prefix to all functions exported from libtre.  This
+    changes the binary interface (ABI).  The old source interface
+    (API) is still available in <tre/regex.h>.  New programs should
+    use <tre/tre.h>.
+
+  - Visual C++ 6 project files replaced with Visual Studio 2008 files.
+
+  - Bug fixes.
+- package renamed to tre, splitted out subpackage libtre5
+
+-------------------------------------------------------------------
+Thu Jun 18 11:05:33 CEST 2009 - pgajdos@suse.cz
+
+- updated to 0.7.6 (see NEWS)
+
+-------------------------------------------------------------------
+Thu Jan 24 20:51:08 CET 2008 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Feb 25 12:28:33 CET 2007 - dmueller@suse.de
+
+- Initial package (0.7.5)
+

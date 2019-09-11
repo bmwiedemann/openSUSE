@@ -1,0 +1,12 @@
+diff -Nur OpenRCT2-0.2.3/src/openrct2/object/LargeSceneryObject.cpp new/src/openrct2/object/LargeSceneryObject.cpp
+--- OpenRCT2-0.2.3/src/openrct2/object/LargeSceneryObject.cpp	2019-07-10 22:52:26.000000000 +0200
++++ new/src/openrct2/object/LargeSceneryObject.cpp	2019-07-15 22:42:53.278638145 +0200
+@@ -263,7 +263,7 @@
+     const json_t* jGlyph;
+     json_array_foreach(jGlpyhs, index, jGlyph)
+     {
+-        rct_large_scenery_text_glyph glyph;
++        rct_large_scenery_text_glyph glyph = {};
+         glyph.image_offset = json_integer_value(json_object_get(jGlyph, "image"));
+         glyph.width = json_integer_value(json_object_get(jGlyph, "width"));
+         glyph.height = json_integer_value(json_object_get(jGlyph, "height"));

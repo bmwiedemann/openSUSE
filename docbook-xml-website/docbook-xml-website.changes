@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Dec 24 12:47:17 UTC 2009 - aj@suse.de
+
+- Remove not applied and obsolete patch website-catalog.diff.
+
+-------------------------------------------------------------------
+Thu Dec 24 12:40:03 UTC 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers, they're not needed anymore.
+
+-------------------------------------------------------------------
+Tue Dec 11 11:12:26 CET 2007 - ke@suse.de
+
+- 2.6.0 (from the announcement):
+* Significant schema changes.
+* Minor Website XSL stylesheets changes.
+* Bug fixes.
+- Start with spec file cleanup.
+
+-------------------------------------------------------------------
+Thu May 10 23:42:29 CEST 2007 - ro@suse.de
+
+- added unzip to buildrequires 
+
+-------------------------------------------------------------------
+Fri Jan 12 11:36:06 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Tue Aug 15 13:49:18 CEST 2006 - ke@suse.de
+
+- Remove SuSEconfig call.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar  9 15:42:15 CET 2005 - ke@suse.de
+
+- Add sgml-skel to the "Requires:" line to make sure edit-xml-catalog is
+  available at deinstallation time; reported by Thomas Schmidt [# 71811].
+
+-------------------------------------------------------------------
+Thu Mar 18 14:32:53 CET 2004 - ke@suse.de
+
+- Remove unwanted directory '.xvpics'.
+
+-------------------------------------------------------------------
+Fri Feb  6 15:51:57 CET 2004 - ke@suse.de
+
+- Update to version 2.5.0.
+- Adjust directories according to FHS 2.3:
+  * Move stylesheets to /usr/share/xml/docbook/custom/website.
+  * Provide compatibility links for SL =< 9.0 (log this info in
+    /var/adm/SuSEconfig/run-sgmldir-links for later processing).
+
+-------------------------------------------------------------------
+Wed Jun 18 11:44:21 CEST 2003 - ke@suse.de
+
+- Add missing directory to the %files list.
+- Use edit-xml-catalog for catalog registration.
+
+-------------------------------------------------------------------
+Mon Jan 27 16:02:42 CET 2003 - ke@suse.de
+
+- Update to version 2.0a2; cf. [# 22861].
+- Install and register catalog files,
+
+-------------------------------------------------------------------
+Mon Aug 27 14:28:37 CEST 2001 - ke@suse.de
+
+- Update to version 2.0a2.
+- Fix broken link.
+
+-------------------------------------------------------------------
+Fri Mar 23 14:23:13 CET 2001 - ke@suse.de
+
+- Update to version 1.10.
+- Requires 'docbook-xsl-stylesheets'; needeforbuild sgml-skel.
+
+-------------------------------------------------------------------
+Fri Mar  9 15:41:17 CET 2001 - ke@suse.de
+
+- Version 1.9 (an earlier version was part of docbk30).
+
+

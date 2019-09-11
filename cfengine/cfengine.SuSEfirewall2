@@ -1,0 +1,6 @@
+## Name: CFEngine server
+## Description: opens ports for CFEngine server in order to be used as a policy hub
+
+# space separated list of allowed ports
+TCP="5308"
+

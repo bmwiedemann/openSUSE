@@ -1,0 +1,7 @@
+# manpages for such executables aren't supplied
+addFilter("no-manual-page-for-binary")
+
+# our libraries really have those names and versions
+addFilter("shlib-fixed-dependency")
+addFilter("no-dependency-on libffmpeg.*")
+addFilter("no-dependency-on ffmpeg-4-lib*")

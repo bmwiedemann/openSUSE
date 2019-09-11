@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Mon Apr 15 20:24:11 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20190104
+	* improvments to handle corrupt file systems
+
+-------------------------------------------------------------------
+Wed Oct  4 22:51:47 UTC 2017 - Greg.Freemyer@gmail.com
+
+- rename python-libfsntfs to python2-libfsntfs as expected by singlespec
+- remove Provides pyfsntfs as it is not versioned
+
+-------------------------------------------------------------------
+Thu Feb 16 22:30:06 UTC 2017 - Greg.Freemyer@gmail.com
+
+- use internal version of libfdata and libfcache.  
+        * New releases broke libfsntfs compiles.
+- change RPM Group for python binding to development/languages/python
+
+-------------------------------------------------------------------
+Thu Jul 28 22:25:59 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160418
+	* Worked on security descriptor support
+	* worked on Python bindings
+	* worked on Python 3 support
+	* 2016 update
+- use libcstring, libfdata from factory again
+- add python3 binding subpackage
+
+-------------------------------------------------------------------
+Wed Feb  3 20:16:14 UTC 2016 - Greg.Freemyer@gmail.com
+
+- use internal libfdata.  Builds began failing with the recent update of numerous libyal packages 
+- run through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan 26 03:09:55 UTC 2016 - Greg.Freemyer@gmail.com
+
+- correct "Provides: pyfsntfs" line, erroneously said pylnk previously
+
+-------------------------------------------------------------------
+Wed Dec  2 19:59:26 UTC 2015 - Greg.Freemyer@gmail.com
+
+- initial version in OBS - v0~20151130
+

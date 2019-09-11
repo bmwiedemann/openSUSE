@@ -1,0 +1,18 @@
+Dear user,
+
+the 'less' application, thanks to its preprocessor, is able to show even binary
+formats using calls to external commands. Since not every user finds this
+feature plausible, you have the opportunity to customize behavior of 'less'
+using the environment variable LESS_ADVANCED_PREPROCESSOR. By default, it's set
+to "no" in /etc/profile -- thus if you require less to handle binary formats,
+set this in your startup scripts:
+
+export LESS_ADVANCED_PREPROCESSOR="yes"
+
+Remark for experienced users:
+If you had already set this switch and want to temporarily override it, you can
+force 'less' to read a file from its standard input instead, e.g.:
+
+less < dumb.ps
+
+will show the source PostScript, and not the "rendered" result.

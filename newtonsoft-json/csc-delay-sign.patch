@@ -1,0 +1,11 @@
+diff -uprN Newtonsoft.Json-7.0.1.old/Src/Newtonsoft.Json/Newtonsoft.Json.csproj Newtonsoft.Json-7.0.1/Src/Newtonsoft.Json/Newtonsoft.Json.csproj
+--- Newtonsoft.Json-7.0.1.old/Src/Newtonsoft.Json/Newtonsoft.Json.csproj	2015-06-22 13:48:49.000000000 +0300
++++ Newtonsoft.Json-7.0.1/Src/Newtonsoft.Json/Newtonsoft.Json.csproj	2017-05-02 20:44:13.741378419 +0300
+@@ -9,6 +9,7 @@
+     <AppDesignerFolder>Properties</AppDesignerFolder>
+     <RootNamespace>Newtonsoft.Json</RootNamespace>
+     <AssemblyName>Newtonsoft.Json</AssemblyName>
++    <DelaySign>true</DelaySign>
+     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+     <FileAlignment>512</FileAlignment>
+   </PropertyGroup>

@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Mar 22 19:05:05 UTC 2014 - coolo@suse.com
+
+- updated to 0.65
+     ! Merge support for accessing hyperlink data
+ 
+ 0.64 March 11 2014
+ 
+     ! RT #47072 (ExcelLocaltime rounding)
+       http://rt.cpan.org/Public/Bug/Display.html?id=47072
+ 
+     ! RT #93142 (date format w/commas)
+       http://rt.cpan.org/Public/Bug/Display.html?id=93142
+ 
+     ! RT #93651 (Update metadata)
+       http://rt.cpan.org/Public/Bug/Display.html?id=93651
+ 
+ 0.63 March 7 2014
+ 
+     ! RT #12946 (IO::Wrap)
+       http://rt.cpan.org/Public/Bug/Display.html?id=12946
+ 
+     ! RT #93065 (auto color)
+       http://rt.cpan.org/Public/Bug/Display.html?id=93065
+ 
+ 0.62
+ 
+     ! Fix test 46 skip_all plan logic.
+       From CPAN testers.
+ 
+     ! RT #52830 (0x00 general fmt) && fix test.
+       http://rt.cpan.org/Public/Bug/Display.html?id=52830
+ 
+     ! RT #93138 (undefined value as ARRAY)
+       http://rt.cpan.org/Public/Bug/Display.html?id=93138
+
+-------------------------------------------------------------------
+Mon Jun  6 20:47:10 UTC 2011 - coolo@novell.com
+
+- updated to 0.59
+   + Patch for decryption of default encrypted workbooks from
+     Alexey Mazurin.
+
+   ! Fix for invalid formatting of text cell that are numeric.
+     http://rt.cpan.org/Public/Bug/Display.html?id=62073
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:41 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Oct 17 18:29:18 UTC 2010 - chris@computersalat.de
+
+- update to 0.58
+  o Fix for text cells formatted with a leading apostrophe.
+    http://rt.cpan.org/Public/Bug/Display.html?id=61299
+  o Documentation fixes. Thanks to Dan Dascalescu
+    Fix RT #61320 (typos)
+    http://rt.cpan.org/Public/Bug/Display.html?id=61320
+  o Fix for currency locales in format strings.
+    Reported by wjaguar.
+    http://rt.cpan.org/Public/Bug/Display.html?id=60547
+  o Fix for incomplete SETUP records.
+    Reported by M.C. Deurloo.
+
+-------------------------------------------------------------------
+Mon Aug 16 10:47:17 UTC 2010 - chris@computersalat.de
+
+- added Author
+
+-------------------------------------------------------------------
+Thu Aug 12 09:05:16 UTC 2010 - kai.blin@gmail.com
+
+- initial package 0.57
+  * created by cpanspec 1.78
+

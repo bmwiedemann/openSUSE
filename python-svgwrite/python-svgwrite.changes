@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Jul 22 12:44:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3.1:
+  * NEW: easy stylesheet embedding: Drawing.embed_stylesheet(content), see example using_fonts.py
+  * NEW: embedded local fonts: Drawing.embed_font(fontname, filename), see example using_fonts.py
+  * NEW: embedded web fonts: Drawing.embed_google_web_font(fontname, uri), see example using_fonts.py
+  * NEW: shapes extension by Christof Hanke
+  * NEW: for write(), save() and saveas(), indentation for pretty print is configurable by Mitar
+  * BUGFIX: converted regex strings in tests to raw strings by tirkarthi
+
+-------------------------------------------------------------------
+Wed Jan  2 11:43:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.2.1:
+  * BUGFIX: Python 2 pretty print encoding issue
+  * NEW: Inkscape extension - support for Inkscape layers
+  * BUGFIX: compatibility with Python 3.7 by fixing re.split() usage
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:32:26 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu May 24 17:49:27 UTC 2018 - toddrme2178@gmail.com
+
+- Update 1.1.12
+  * BUGFIX: values attribute for element animate, accepts any semicolon separated values
+- spec file cleanups
+
+-------------------------------------------------------------------
+Fri Oct 20 16:19:04 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

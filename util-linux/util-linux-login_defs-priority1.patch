@@ -1,0 +1,39 @@
+From 15a191f6d30dfe202a080a3d90968b63d695a29f Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Thu, 10 Jan 2019 01:28:53 +0100
+Subject: [PATCH 1/2] su-common.c: prefer /etc/default/su over login.defs
+
+su(1) documentation says:
+       /etc/default/su  command specific logindef config file
+       /etc/login.defs  global logindef config file
+
+It indirectly indicates that /etc/default/su should take precedence
+over /etc/login.defs.
+
+But the reverse is true. It is not possible to define ENV_PATH in
+/etc/login.defs and then make su specific customization in
+/etc/default/su. We need to change read order to match the documented
+behavior.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ login-utils/su-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/login-utils/su-common.c b/login-utils/su-common.c
+index e0604e246..19074247c 100644
+--- a/login-utils/su-common.c
++++ b/login-utils/su-common.c
+@@ -1229,8 +1229,8 @@ static void load_config(void *data)
+ 	struct su_context *su = (struct su_context *) data;
+ 
+ 	DBG(MISC, ul_debug("loading logindefs"));
+-	logindefs_load_file(su->runuser ? _PATH_LOGINDEFS_RUNUSER : _PATH_LOGINDEFS_SU);
+ 	logindefs_load_file(_PATH_LOGINDEFS);
++	logindefs_load_file(su->runuser ? _PATH_LOGINDEFS_RUNUSER : _PATH_LOGINDEFS_SU);
+ }
+ 
+ /*
+-- 
+2.20.1
+

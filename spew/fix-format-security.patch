@@ -1,0 +1,26 @@
+Index: spew-1.0.8/src/spew.cpp
+===================================================================
+--- spew-1.0.8.orig/src/spew.cpp
++++ spew-1.0.8/src/spew.cpp
+@@ -285,7 +285,7 @@ void help(poptContext &context)
+             PATTERN_LOOKUP[Job::PATTERN_USER_DEFINED],
+             PATTERN_LOOKUP[Job::PATTERN_USER_DEFINED],
+             PATTERN_LOOKUP[DEFAULT_PATTERN]);
+-   fprintf(stdout, outStr);
++   fprintf(stdout, "%s", outStr);
+ 
+    fprintf(stdout, "\nReport bugs to Andrew Patterson <andrew.patterson@hp.com>.\n");
+ }
+Index: spew-1.0.8/src/SpewTuiStatisticsWindow.cpp
+===================================================================
+--- spew-1.0.8.orig/src/SpewTuiStatisticsWindow.cpp
++++ spew-1.0.8/src/SpewTuiStatisticsWindow.cpp
+@@ -278,7 +278,7 @@ void SpewTuiStatisticsWindow::updateTota
+              "");
+    if (mSpewTui->getCurrentIteration() > 0)
+    {
+-      int len = snprintf(NULL, 0, (char *)mTotalRunTime.getElapsedTimeStr().c_str());
++      int len = snprintf(NULL, 0, "%s", (char *)mTotalRunTime.getElapsedTimeStr().c_str());
+       mvwprintw(mWindow, 
+                 RUNTIME_FIELD_STARTY, 
+                 RUNTIME_FIELD_STARTX + RUNTIME_FIELD_WIDTH - len,

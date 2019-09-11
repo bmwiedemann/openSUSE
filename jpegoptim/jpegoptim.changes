@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Wed Apr 18 14:28:21 UTC 2018 - lazy.kent@opensuse.org
+
+- Update to 1.4.6.
+  * Fix double free introduced in previous release.
+
+-------------------------------------------------------------------
+Sun Apr  1 18:12:28 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.4.5 :
+  * Fix --overwrite option
+  * Better error reporting for -d option
+  * Fix memcmp() potentially reading past end of buffer
+  * Some minor fixes
+
+-------------------------------------------------------------------
+Fri Aug 19 06:39:26 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.4.4.
+  * More detailed error messages.
+  * CMake support.
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Tue May 19 14:54:50 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.4.3.
+  * Fix bug that could cause jpegoptim crash when processing
+    certain jpeg files.
+- Remove %gpg_verify macro.
+
+-------------------------------------------------------------------
+Thu Jan  1 06:52:03 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.4.2.
+  * Add option -P, --preserve-perms.
+  * Some minor fixes.
+
+-------------------------------------------------------------------
+Wed May 28 16:05:39 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.4.1.
+  * Fix --stdin option (assume -f when reading from stdin).
+  * Workaround to bug in libjpeg-turbo (v1.3.1) triggered when
+    option -V or --version was used.
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Tue May 13 17:56:49 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.4.0.
+  * Use memory (instead of temporary files) during optimization.
+  * Support for reading input from stdin (and sending output to
+    stdout).
+  * Report also libjpeg version when --version option used.
+  * New option --strip-none to preserve "all" markers.
+  * Other minor fixes & cleanup.
+
+-------------------------------------------------------------------
+Mon Apr 21 16:28:05 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.3.1.
+  * XMP marker support and new --csv option.
+  * Use DESTDIR instead of INSTALL_ROOT.
+  * Preserve permissions of files being optimized.
+  * Skip symlinks (and other special files).
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Tue Jun 18 12:05:06 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.3.0.
+  * Support for progressive jpegs added (fixes long standing "bug"
+    of progressive jpegs becoming non-progressive during
+    optimization).
+  * New options --all-normal & --all-progressive for converting
+    jpegs to non-progressive & progressive, new -S / --size option
+    to set target size for output file (enables lossy
+    optimization).
+  * Updated GPL/Copyrights language.
+
+-------------------------------------------------------------------
+Wed Mar  6 08:16:14 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.2.5.
+  * Safer temp file handling (if mkstemps() available).
+  * Patch to make "quiet mode" (-q) be quiet.
+- Verify GPG signature.
+- Clean up spec.
+
+-------------------------------------------------------------------
+Mon Apr 11 06:09:50 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (1.2.4)
+

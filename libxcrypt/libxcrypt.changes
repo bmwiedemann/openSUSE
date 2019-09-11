@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Thu Jun 20 11:49:28 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO due to symbol versioning (boo#1138833).
+
+-------------------------------------------------------------------
+Tue Feb 19 10:49:30 UTC 2019 - schwab@suse.de
+
+- format-overflow.patch: Fix -Werror=format-overflow
+
+-------------------------------------------------------------------
+Thu Feb 14 13:54:55 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 4.4.3:
+  * Add libxcrypt.so, libxcrypt.a and xcrypt.h.
+  * Add new man3 manual pages.
+
+-------------------------------------------------------------------
+Tue Oct  9 11:43:13 UTC 2018 - schwab@suse.de
+
+- Set compatibility level to suse
+
+-------------------------------------------------------------------
+Wed Aug  8 11:44:16 UTC 2018 - schwab@suse.de
+
+- Add conflicts with glibc-devel < 2.28
+
+-------------------------------------------------------------------
+Mon Aug  6 16:34:12 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups for Factory.
+
+-------------------------------------------------------------------
+Wed Aug  1 08:50:25 UTC 2018 - schwab@suse.de
+
+- Update to libxcrypt 4.1.0
+  * Fix spelling of SUSE.
+  * Lower the minimum required automake version to 1.14.
+  * Fix build with USE_SWAPCONTEXT turned off.
+  * Extend --enable-weak-hashes configure option to accept optional
+    "glibc" parameter.
+  * Fix the leak of obtained random bytes.
+  * Check expected output strings for deterministic methods.
+  * Fix memory leak in crypt_sha1_rn.
+  * Fix read of random bytes out of bounds in gensalt_sha1_rn.
+  * Make it possible to disable individual hashes at configure time.
+  * Make salt validation pickier.
+  * Replace crypt-sunmd5.c with BSD-licensed cleanroom reimplementation.
+  * Make crypt_gensalt for $sha1 deterministic.
+  * Fix incorrect output-size computation in crypt_sha1_rn.
+  * Add docs for SHA1, MD5/Sun, NTHASH.
+  * Introduce CRYPT_GENSALT_IMPLEMENTS_* feature test macros.
+  * Install libcrypt.pc symlink along with libxcrypt.pc.
+  * Extend --enable-obsolete-api configure option.
+  * Extend overall test coverage.
+
+-------------------------------------------------------------------
+Wed May 23 10:01:29 UTC 2018 - schwab@suse.de
+
+- Update to libxcrypt 4.0.1
+
+-------------------------------------------------------------------
+Wed May  9 13:51:35 UTC 2018 - schwab@suse.de
+
+- ABI compatible replacement for libcypt from glibc

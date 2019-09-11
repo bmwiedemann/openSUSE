@@ -1,0 +1,5 @@
+To update the package:
+
+- run update-tarball.sh to create a new tarball
+- update ceph-csi.changes
+- osc commit

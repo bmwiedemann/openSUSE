@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Thu Aug 30 05:50:25 UTC 2018 - coolo@suse.com
+
+- updated to 3.75
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.75
+  - Fix t/abs2rel.t on 5.8.8 by changing mkpath call to be
+    compatible with older File::Path
+
+-------------------------------------------------------------------
+Tue Feb 20 06:46:58 UTC 2018 - coolo@suse.com
+
+- updated to 3.74
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.74
+  - No changes.
+
+-------------------------------------------------------------------
+Mon Feb 19 06:53:38 UTC 2018 - coolo@suse.com
+
+- updated to 3.73
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.73
+  - Define NEED_croak_xs_usage, fixing usage of croak_xs_usage()
+  - [perl #132853] Add metadata (ABSTRACT, LICENSE, AUTHOR)
+  - [perl #132733] Skip cwd_enoent test on Cygwin
+  - [perl #132651] Avoid infinite recursion in _perl_abs_path()
+  
+  3.72
+  - [perl #132648] Correct error returns from fast_abs_path()
+  
+  3.71
+  - [perl #130818] Remove support for running PathTools on MacOS
+    and EPOC
+  
+  3.70
+  - Change strcmp into the easier to read strEQ
+  
+  3.69
+  - avoid loading modules repeatedly at runtime
+  - replace 'use vars' by 'our'
+  - Switch to XSLoader from Dynaloader
+  
+  3.68
+  - avoid warning from pre-5.8 code for detecting tainted values
+  - make taint.t detect that a pre-5.8 Perl supports tainting
+  - avoid a dynamic linking problem on Perl 5.6
+  
+  3.67 - Mon Feb 27 09:33:04 EST 2017
+  - Add security usage note to File::Spec::no_upwards
+  
+  3.66 - Sat Nov 19 10:30:19 MST 2016
+  - white space change so can compile under C++11
+  
+  3.65 - Mon, 25 Jul 2016 23:15:33 -0700
+  - (perl #127384)(CVE-2016-1238)
+  
+  3.64 - Tue May 24 10:00:19 MST 2016
+  - just minor pod changes to silence Pod::Checker
+
+-------------------------------------------------------------------
+Wed Jan 13 10:16:48 UTC 2016 - coolo@suse.com
+
+- updated to 3.62
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.62 - Mon Jan 11 08:39:19 EST 2016
+  - ensure File::Spec::canonpath() preserves taint (CVE-2015-8607)
+  
+  3.61 - Sun Dec 20 12:00:00 EST 2015 (bleadperl only release)
+  - improve performance of cwd on Win32 miniperl
+
+-------------------------------------------------------------------
+Fri Nov 20 09:53:14 UTC 2015 - coolo@suse.com
+
+- updated to 3.60
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.60 - Wed Nov 18 21:28:01 EST 2015
+  - add File::Spec::AmigaOS -- and actually ship it, this time
+
+-------------------------------------------------------------------
+Sat Nov 14 10:07:59 UTC 2015 - coolo@suse.com
+
+- updated to 3.59
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.59 - Fri Nov 13 18:38:01 EST 2015
+  - no changes since 5.56
+  
+  3.58_01 - Mon Nov  9 17:35:28 EST 2015 - TRIAL RELEASE
+  - add File::Spec::AmigaOS
+  - fix INSTALLDIRS on post-5.10 perls
+  
+  3.56_02 - Thu Jul 16 11:28:57 EDT 2015 - TRIAL RELEASE
+  - fix $VERSION in loaded modules
+  
+  3.56_01 - Sat Jul 11 18:07:28 EDT 2015 - TRIAL RELEASE
+  - CPAN release of the PathTools included in perl v5.22.0
+  - support for z/OS sysplexed systems
+  - long-deprecated "fixpath" and "eliminate_macros" VMS functions removed
+  - avoid turning leading // into / on cygwin
+  - Force barename base to be a directory in File::Spec::VMS:abs2rel
+  - Revise Unix syntax detection File::Spec::VMS::abs2rel
+  - compiles on Android now
+  - fewer compiler warnings
+  - eliminate some runtime perl warnings, too
+
+-------------------------------------------------------------------
+Sat May  2 09:40:04 UTC 2015 - coolo@suse.com
+
+- updated to 3.47
+   see /usr/share/doc/packages/perl-PathTools/Changes
+
+  3.47 - Fri May 23 18:52:00 2014
+  - Improved Android support.
+  - File::Spec::Unix->tmpdir: Always return an absolute path
+  - File::Spec now has an XS version for performance.
+  - QNX and VMS portability
+  - tmpdir is updated when the environment changes.
+
+-------------------------------------------------------------------
+Mon Jan 28 13:09:52 UTC 2013 - cfarrell@suse.com
+
+- license update: (Artistic-1.0 and GPL-2.0+) and BSD-3-Clause
+  See  e.g. Cwd.xs
+
+-------------------------------------------------------------------
+Fri Jan 25 00:56:01 UTC 2013 - chris@computersalat.de
+
+- update to 3.40
+  * Stop inadvertently skipping Spec.t on VMS. (Craig Berry)
+  * Rethink EFS in File::Spec::VMS. (Craig Berry)
+  * File::Spec::UNIX->abs2rel() gets it wrong with ".." components
+  * [perl #111510] (Volker Schatz)
+  * Add C define to remove taint support from perl (Steffen Mueller)
+  * Remove "register" declarations as they are no longer
+  * useful (Karl Williamson)
+  * Add test for fast_abs_path in LF dir
+    [perl #115962] (Father Chrysostomos)
+  * Cwd::fast_abs_path's untaint should allow for multiline
+    directories (Joel Berger)
+
+-------------------------------------------------------------------
+Fri Apr  8 19:08:17 UTC 2011 - coolo@novell.com
+
+- try to provide a fancy new version > 3.2700
+
+-------------------------------------------------------------------
+Thu Mar 24 19:18:22 UTC 2011 - coolo@novell.com
+
+- update to 3.33 (a step back for rpm unfortunately)
+  See Changes for details, mostly bug fixes and portability fixes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:24 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:51 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:56 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jun  8 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 3.2701
+
+

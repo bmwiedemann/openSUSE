@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Nov  5 17:12:24 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.2.1:
+  * Fix accels deprecation
+  * Fix margin deprecations
+  * Merge pull request #66 from drom98/master
+  * Update issue templates
+  * update readme
+  * remoção do arquivo com.github.robertsanseries.ciano.json
+  * Update com.github.robertsanseries.ciano.desktop.in
+  * Update .desktop comment to be consistent with HIG
+  * moving the settings class to the services package
+
+-------------------------------------------------------------------
+Sat Jan  6 01:56:39 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.9:
+  * Update README.md
+  * Creating Flatpak
+  * Update Manifest Flatpak
+  * Manifest Flatpak
+  * Fixes for version 0.1.7
+  * Correcting the tag in the appdata.xml file
+  * Update com.github.robertsanseries.ciano.appdata.xml.in
+  * Update LINGUAS
+  * Create zh_CN.po
+  * Update lt.po
+  * Made the icon follow the HIG colors and geometry
+
+-------------------------------------------------------------------
+Tue Dec 19 10:03:23 UTC 2017 - jengelh@inai.de
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Tue Nov  7 20:54:18 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

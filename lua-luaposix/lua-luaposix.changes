@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Apr 26 17:15:34 UTC 2018 - jberry@suse.com
+
+- Only produce docs during one flavor to avoid duplicate binary.
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Thu Aug 10 16:00:15 UTC 2017 - eich@suse.com
+
+- Updating to version 3.4:
+  * Incompatible Changes  Incompatible Changes
+    posix.syslog constants LOG_AUTHPRIV, LOG_FTP and LOG_SYSLOG are no longer 
+    documented, and only defined when supported by the host C library. They are
+    not part of the POSIX API, and prevented compilation of luaposix on AIX and
+    Solaris.
+    getopt.getopt was a binding to the GNU getopt_long extension, which is not 
+    a POSIX API, and prevents luaposix from compiling on hosts that do not 
+    provide the extended API. Instead we now correctly bind POSIX getopt(3) in 
+    posix.unistd.
+  * New Features
+    Replaced all Autotools and supporting Slingshot code with new Lua- based 
+    build-aux/luke and lukefile describing how to compile and install 
+    everything. Building with LuaRocks now leverages this too.
+    New posix.sys.socket.getsockopt and posix.sys.socket.getpeername bindings.
+    New posix.sys.msg.msgctl binding, and posix.sys.msg.IPC_RMID, 
+    posix.sys.msg.IPC_SET and posix.sys.msg.IPC_STAT constants to use with it.
+    New posix.unistd.ftruncate and posix.unistd.truncate bindings.
+    posix.fcntl.fcntl now accepts undocumented posix.fcntl.O_TMPFILE value 
+    where supported by the host C library.
+  * Bugs Fixed
+    posix.unistd.ttyname now returns an error message in addition to nil when 
+    it fails.
+  * maint-sync-luke-with-upstream.patch:
+    Backported from upstream to make this build and install with the 'luke'
+    version included.
+
+-------------------------------------------------------------------
+Thu Aug 10 15:20:46 UTC 2017 - eich@suse.com
+
+- Fix provides/obsoletes for the old package name.
+
+-------------------------------------------------------------------
+Thu Jul 13 18:40:56 UTC 2017 - tchvatal@suse.com
+
+- Put documentation on %_docdir/%name not just %_docdir
+
+-------------------------------------------------------------------
+Thu Jul 13 17:38:22 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild build
+- Update to 33.3.1:
+  * Various lua5.3 fixes
+- Drop patch install_path.patch
+
+-------------------------------------------------------------------
+Wed Jan  4 15:48:47 UTC 2017 - eich@suse.com
+
+- Replaced 'makeinstall' by 'make_install'.
+- Removed %clean section.
+- Replaced Documentation/http by Documentation/HTML.
+
+-------------------------------------------------------------------
+Mon Oct 17 13:31:09 UTC 2016 - eich@suse.com
+
+- Setting 'download_files' service to mode='localonly'
+  and adding source tarball. (Required for Factory).
+
+-------------------------------------------------------------------
+Tue Oct 11 21:10:05 UTC 2016 - eich@suse.com
+
+- Initial version of lua-luaposix: 33.2.1.
+  
+

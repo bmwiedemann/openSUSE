@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Feb 20 11:23:13 UTC 2018 - mardnh@gmx.de
+
+- Mention asn1c.rpmlintrc
+
+-------------------------------------------------------------------
+Sat Feb 17 13:51:56 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.9.28
+  * PER decoding: avoid memory leak on error.
+  * Constness patch #46 by Wim L wiml@omnigroup.com (41bbf1c..78d604f).
+  * Fix misc build issues
+
+- Update to version 0.9.27
+  * Build structure fixes for portability.
+  * Disable long debug of ASN.1 operations during make check stage.
+  * Introduce --enable-ASN_DEBUG configure flag to emit long debug output.
+
+- Update to version 0.9.26
+  * Updated asn1c-usage.pdf.
+  * Made -fskeletons-copy a default option; removed cmdline option.
+  * Made -fnative-types a default option; removed cmdline option.
+  * Added -fwide-types for backwards compatibility.
+  * Add -fline-refs to avoid being unfriendly to version control systems.
+  * Default constraint checking fix.
+  * Get rid of non-standard pointer arithmetics on void* pointer.
+  * PER-encoding of integers wider than 32 bits.
+
+-------------------------------------------------------------------
+Sun Dec  7 20:17:26 UTC 2014 - mardnh@gmx.de
+
+- downgrade to version 0.9.23
+  openbts-umts has problems with newer versions
+
+-------------------------------------------------------------------
+Sun Nov  9 21:42:25 UTC 2014 - mardnh@gmx.de
+
+- initial package, asn1c version 0.9.26
+

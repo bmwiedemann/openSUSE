@@ -1,0 +1,49 @@
+Fixes moc parsing of (#__VA_ARGS__) expressions
+
+glibc 2.25 introduced code like the following in
+/usr/include/sys/sysmacros.h:
+
+#define __SYSMACROS_DM(symbol) __SYSMACROS_DM1 \
+ (In the GNU C Library, symbol is defined\n\
+  by <sys/sysmacros.h>. For historical compatibility, it is\n\
+  currently defined by <sys/types.h> as well, but we plan to\n\
+  remove this soon.  To use #symbol, include <sys/sysmacros.h>\n\
+  directly.  If you did not intend to use a system-defined macro\n\
+  #symbol, you should undefine it after including <sys/types.h>.)
+
+(where __SYSMACROS_DM1 is defined as:
+#define __SYSMACROS_DM1(...) __glibc_macro_warning (#__VA_ARGS__)
+)
+
+when parsing that with moc, it gives the following parse error:
+/usr/include/glib-2.0/gobject/gtype.h:52: Parse error at "defined"
+
+This patch fixes this, so it ignores arguments passed to
+(#__VA_ARGS__) since they're supposed to be strings anyway.
+
+Index: qt-everywhere-opensource-src-4.8.7/src/tools/moc/preprocessor.cpp
+===================================================================
+--- qt-everywhere-opensource-src-4.8.7.orig/src/tools/moc/preprocessor.cpp
++++ qt-everywhere-opensource-src-4.8.7/src/tools/moc/preprocessor.cpp
+@@ -535,6 +535,21 @@ void Preprocessor::substituteUntilNewlin
+             MacroName macro = symbol();
+             if (macros.contains(macro) && !safeset.contains(macro)) {
+                 substituteMacro(macro, substituted, safeset);
++                if (substituted.count()>4)
++                {
++                    int i=substituted.count()-4;
++                    if (substituted.at(i).lexem()=="("
++                       && substituted.at(i+1).lexem()=="#"
++                       && substituted.at(i+2).lexem()=="__VA_ARGS__"
++                       && substituted.at(i+3).lexem()==")")
++                    {
++                       // Let's ignore the following expression, since it'll considered a string, and so, it's better not to parse it.
++                       if (test(PP_LPAREN)) {
++                           while (!test(PP_RPAREN)) next();
++                       }
++
++                    }
++                }
+                 continue;
+             }
+         } else if (token == PP_DEFINED) {

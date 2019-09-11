@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Tue Aug 20 07:28:07 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.2:
+  * Fixed crash on output unplug bb99e6c
+  * MediaPlayer script: Ignore selected player if not defined #421
+
+-------------------------------------------------------------------
+Fri Jul 12 06:47:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.1:
+  Added:
+  * Added css class for window name and position #397
+  Changed:
+  * Fixed workspaces scroll deadlock #403
+  * Fixed pulseaudio scroll #405
+
+-------------------------------------------------------------------
+Mon Jun 24 06:42:45 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.0:
+  Added:
+  * Scrolling threshold #381
+  * Total memory #385
+  Changed:
+  * Improved scroll behavior
+  * Fixed sway/window not showing window title sometimes 486b5a5
+  * Fixed sway/window not showing floating window title dabe2be
+
+-------------------------------------------------------------------
+Sat Jun 15 07:19:59 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.9:
+  Added:
+  * Added monitor name as bar class 46e5dd9
+  * Added class for persistant workspaces c2e9ed6
+  Changed:
+  * Fixed custom module exit status 564fdcb
+  * Avoid expand sway/window width 3c9b533
+
+-------------------------------------------------------------------
+Tue Jun 11 03:20:47 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.8:
+  * Fixed window app class 1962caf
+  * Fixed static custom module 9dbf057
+  * Only watch pulseaudio change events 0b01b35
+
+-------------------------------------------------------------------
+Mon Jun  3 08:15:11 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.7:
+  * Better network events handler ecec02c
+  * Hide custom module on empty text be2fa74
+  * Code cleaning and Some optimizations
+
+-------------------------------------------------------------------
+Wed May 22 15:02:37 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Update to 0.6.6:
+  Added
+  * Pulseaudio microphone state bb4af29
+  * Persistent workspaces #330
+  * Logger #332
+  * Estimated battery remaining time until empty/full #331
+  Changed
+  * Switch between network ifaces upon disconnection 48a58cd
+  * Brightness amd fix #336
+  * Fixed some clock issues #333
+  * Wlroots dependency removed 03e43f
+  * Escape sway mode 12a251c
+
+------------------------------------------------------------------
+Wed May 22 15:02:37 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Update to 0.6.5:
+    Added
+    * Network bandwidth support (traffic) #328
+    * Network frequency tag cb2d6e1
+    * Update custom modules on click/scroll ff28de0
+    Changed
+    * Execute Modules update on gtk idle aa385e2
+    * Fixed battery plugged state 17291df
+    * Fixed gtk error on output plug/unplug f8a4759
+    * Fixed tray button behaviour d2d9db2
+    * Network code optimizations d34c3a8 4865a9a aa385e2
+    * Workspace scroll changes 1e95f5d 0d59f7b 3e1c77d
+
+------------------------------------------------------------------
+Wed May 22 15:02:37 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Update to 0.6.4:
+    Added
+    * Temperature format-icons fcb23d3
+    * Battery plugged but not charging status 5b3402e
+    * Network linked state/format #319
+    * Able to scroll throught workspaces from bar blank spaces #322
+    * Battery format-icons by states 4b4b74d
+    Changed
+    * Network refactor #319, closes #292 #230 #239
+    * Fixed network module compilation on Alpine e12766a
+    * Fixed window classes 62f8af8
+    * Fixed state order for modules 92967c7 7e8eee0
+    * Fixed pulseaudio scroll override 4f1defe
+    * Fixed sigsev on output plug/unplug 362c393 0c3c548
+    * Fixed tray items duplication b54160e
+
+-------------------------------------------------------------------
+Wed May 22 15:02:37 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Update to 0.6.3:
+    Changed
+    * Fixed battery module compilation on older system 80e9ea7
+    * Fixed pulseaudio bluetooth format e343cf4
+    * Remove empty and solo classes when they do not apply 7cdde05
+
+-------------------------------------------------------------------
+Wed May 22 15:02:37 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Update to 0.6.2:
+    Added
+    * Gaps/Margins 4688002
+    * Idle inhibitor click arguments 5623bbe
+    * Battery states adapted to backlight, cpu, memory, network, volume percentage values #297
+    Changed
+    * Title flickers fixed 74137be
+
+-------------------------------------------------------------------
+Fri May  3 06:52:48 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.1:
+  Added:
+  * Labels rotation #287
+  Changed:
+  * s/hidded/hidden/ typo fixed 4d4562a
+  * JSON parser threads concurrence fixed d027243
+  * Custom modules with once interval fixed e8f31a0
+
+-------------------------------------------------------------------
+Fri Apr 26 09:43:59 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  Added:
+  * MPD Module
+  * Manage the style of the bar according to the window in the workspace bb8ff5a
+  * Custom modules: Allow to toggle multiple classes 6aee514
+  * Partially hide Waybar with the .hidded class on toggle (SIGUSR1) ecc5f48
+  * Multiple bars on the same screen with one file 79a5e9e
+  Changed:
+  * Handle widgets size changes for auto height/width management 311c34e
+  * Tray: Icons update fixed
+  * Tray: Icons size 3273ee8
+  * Workspace: Pango markup now supported bc9a497
+  * Custom: Kill scripts on bar destroy 90d89fe
+  * Some screens output/unplug fixed
+
+-------------------------------------------------------------------
+Thu Apr  4 10:31:19 UTC 2019 - mvetter@suse.com
+
+- Update to 0.5.1:
+  Added:
+  * Tray: Handle icons updates #252
+  * Allow waybar to be positioned on left/right 47142a6
+  * Custom: Allow icon selection based on json alt attribute #245
+  Changed:
+  * Network: Escape ESSID #241
+  * Workspace: Reversed scrolling direction to reflect swaybar
+    behavior 5144426
+  * Script: mediaplayer script is now generic and return json
+    data with player name for icon matching #249
+  * Network: Fixed multiple networking module regression 1f6f443
+
+-------------------------------------------------------------------
+Thu Mar 21 08:07:51 UTC 2019 - mvetter@suse.com
+
+- Update to 0.5.0:
+  Added:
+  * Add temperature module 7ae549d
+  * Add option to show only current workspace in sway/workspaces module #206
+  * Add custom tooltip format for network module a9f680b
+  * Add status class to idle_inhibitor 973cec1
+  * Add pkill signals to custom modules #228
+  Changed:
+  * Improving mouse button support d0f56b7
+  * Fixed idle_inhibitor, handles click events correctly 80ef637
+  * Fixed clock seconds ef88f0a
+  * Fixed sway ipc crash when compiled with -D_GLIBCXX_ASSERTIONS 00176c9
+  * Fixed network skipped changes
+  * Workspaces scroll is now output aware except when all-outputs is set
+
+-------------------------------------------------------------------
+Tue Mar 12 09:57:48 UTC 2019 - mvetter@suse.com
+
+- Update to 0.4.0:
+  Added:
+  * Output configuration
+  * Backlight module, thanks to @ianhattendorf
+  * Idle inhibitor, thanks to @jonfin
+  * Option to disable tooltip
+  * Option to escape custom module script output
+  Changed:
+  * Fixed workspace button order
+  * Fixed tray big icons
+  * Fixed scroll with touchpad
+- Changes from 0.3.0:
+  Added:
+  * Signal strength icons range, thx @Robinhuett
+  * Add format-icons to custom modules, again @Robinhuett smile
+  Changed:
+  * Return puleseaudio port string if unknown, thx @chep
+  * Check adapter online as fallback when battery status report unknown
+  * Typos fixed
+  * Better modules destructions
+
+-------------------------------------------------------------------
+Fri Jan 25 15:31:29 UTC 2019 - mvetter@suse.com
+
+- Package waybar 0.2.3 for openSUSE

@@ -1,0 +1,45 @@
+From 17b5b4949b8225ec76780838360f520f3f6abf72 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:22 +0100
+Subject: [PATCH 24/43] tools/kvm_stat: fix extra handling of 'help' with
+ fields filter
+
+Commit 67fbcd62f54d ("tools/kvm_stat: add '-f help' to get the available
+event list") added support for '-f help'. However, the extra handling of
+'help' will also take effect when 'help' is specified as a regex in
+interactive mode via 'f'. This results in display of all events while
+only those matching this regex should be shown.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit b74faa930deb2e37ed5caa0abfc687c8c532e946)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 1494113df827..639f9a40a9e4 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -478,7 +478,7 @@ class Provider(object):
+     @staticmethod
+     def is_field_wanted(fields_filter, field):
+         """Indicate whether field is valid according to fields_filter."""
+-        if not fields_filter or fields_filter == "help":
++        if not fields_filter:
+             return True
+         return re.match(fields_filter, field) is not None
+ 
+@@ -1570,6 +1570,7 @@ def main():
+     stats = Stats(options)
+ 
+     if options.fields == "help":
++        stats.fields_filter = None
+         event_list = "\n"
+         s = stats.get()
+         for key in s.keys():
+-- 
+2.12.3
+

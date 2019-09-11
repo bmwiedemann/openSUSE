@@ -1,0 +1,3 @@
+addFilter("shlib-policy-name-error.*libkleeRuntest1_0")
+addFilter("binaryinfo-readelf-failed.*bca")
+addFilter("devel-file-in-non-devel-package")

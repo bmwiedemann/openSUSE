@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Oct 19 13:13:25 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support ghc-8.6.1.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:17 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update cabal-doctest to version 1.0.6 revision 1.
+  * Hook `haddock` build too. Fixes issue when `haddock` fails, as
+    `Build_doctests` isn't generated.
+
+  * Add a hack so `Build_doctests` module is automatically added to
+    to `other-modules` and `autogen-modules` when compiled with Cabal-2.0.
+    Thanks to that, we don't get warnings because of `-Wmissing-home-modules`.
+
+  * Add support for doctests in executables and (with `Cabal-2.0` or later)
+    internal libraries. Refer to the `README` for more details.
+
+  * Add an explicit `Prelude` import to `Build_doctests`
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon May 22 08:08:53 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu May 18 09:52:24 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb  5 19:32:28 UTC 2017 - psimons@suse.com
+
+- Update to version 1 with cabal2obs.

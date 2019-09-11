@@ -1,0 +1,726 @@
+--- kdm/config.def	2013-09-02 21:03:58.571922383 +0200
++++ kdm/config.def	2013-09-03 21:25:59.043485577 +0200
+@@ -171,6 +171,9 @@
+  Core config for 1st local display
+ [X-:0-Core]
+ 
++ Core config for Xgl display
++[X-:93-Core]
++
+  Greeter config for 1st local display
+ [X-:0-Greeter]
+ </kdmrc>
+@@ -794,6 +797,21 @@
+  <emphasis>Do not</emphasis> change it, you may interfere with future
+  upgrades and this could result in &kdm; failing to run.
+ 
++Key: SUSEConfigVersion
++Type: string
++Default: ""
++CDefault: -
++User: dummy
++# will be overwritten
++Instance:
++Comment:
++ This option exists solely for the purpose of a clean automatic upgrade.
++ Do not even think about changing it!
++Description:
++ This option exists solely for the purpose of clean automatic upgrades.
++ <emphasis>Do not</emphasis> change it, you may interfere with future
++ upgrades and this could result in &kdm; failing to run.
++
+ Key: PAMService
+ If: defined(USE_PAM)
+ Type: string
+@@ -876,10 +894,10 @@
+ 
+ Key: PidFile
+ Type: string
+-Default: ""
++Default: "/var/run/kdm.pid"
+ User: core
+-Instance: "/var/run/kdm.pid"
+-Merge: xdm
++Instance: ""
++Update: reset_sec_0_1
+ Comment:
+  Where &kdm; should store its PID (do not store if empty).
+ Description:
+@@ -903,10 +921,10 @@
+ Key: AuthDir
+ Type: path
+ # differs from XDM
+-Default: "/var/run/xauth"
++Default: "/var/lib/kdm/AuthFiles/"
+ User: core
+-Instance: #"/tmp"
+-Merge: xdm(P_authDir)
++Instance: #""
++Update: reset_sec_0_1
+ Comment:
+  Where to store authorization files.
+ Description:
+@@ -932,7 +950,7 @@
+ 
+ Key: ExportList
+ Type: list
+-Default: ""
++Default: "LANG,XCURSOR_THEME"
+ User: core
+ Instance: #"LD_LIBRARY_PATH,ANOTHER_IMPORTANT_VAR"
+ Merge: xdm(P_list)
+@@ -1076,9 +1094,10 @@
+ 
+ Key: Enable
+ Type: bool
+-Default: true
++Default: false
+ User: dep(xdmcpEnable)
+ Instance: false
++Update: reset_sec_0_1
+ Comment: &
+ Description:
+  Whether &kdm; should listen to incoming &XDMCP; requests.
+@@ -1099,7 +1118,7 @@
+ 
+ Key: KeyFile
+ Type: string
+-Default: ""
++Default: "su nobody -c /etc/X11/xdm/Xwilling"
+ User: core
+ Instance: #KDMCONF "/kdmkeys"
+ Update: cp_keyfile
+@@ -1115,11 +1134,10 @@
+ Key: Xaccess
+ Type: string
+ # differs from xdm
+-Default: *KDMCONF "/Xaccess"
++Default: *"/etc/X11/xdm/Xaccess"
+ User: config(Xaccess)
+-Instance: #""
+-Update: mk_xaccess
+-Merge: xdm:accessFile
++Instance: #
++Update: reset_sec_0_1
+ Comment:
+  &XDMCP; access control file in the usual XDM-Xaccess format.
+ Description:
+@@ -1177,13 +1195,11 @@
+ 
+ Key: Willing
+ Type: string
+-Default: ""
++Default: "/etc/X11/xdm/Xwilling"
+ User: core
+ # will be overwritten
+ Instance: #
+-Update: mk_willing
+-Merge: xdm
+-Merge: kdm:Xwilling
++Update: reset_sec_0_1
+ Comment:
+  The program which is invoked to dynamically generate replies to &XDMCP;
+  DirectQuery or BroadcastQuery requests.
+@@ -1259,7 +1275,7 @@
+  Grub2/BO_GRUB2: Grub2 boot manager
+  Burg/BO_BURG: Burg boot manager
+  Lilo/BO_LILO: Lilo boot manager (Linux on i386 &amp; x86-64 only)
+-Default: None
++Default: Grub2
+ User: core
+ User: greeter
+ Instance: #Grub
+@@ -1361,7 +1377,7 @@
+ Default: DEF_SERVER_CMD
+ DDefault: -
+ User: core
+-Instance: :*/DEF_SERVER_CMD
++Instance: #:*/DEF_SERVER_CMD
+ Update: upd_servercmd
+ Comment:
+  The command line to start the &X-Server;, without display number and VT spec.
+@@ -1374,13 +1390,13 @@
+  This string is subject to word splitting.
+  </para><para>
+  The default is something reasonable for the system on which &kdm; was built,
+- like <command>/usr/X11R6/bin/X</command>.
++ like <command>/usr/bin/X</command>.
+ 
+ Key: ServerArgsLocal
+ Type: string
+ Default: ""
+ User: core
+-Instance: :*/"-nolisten tcp"
++Instance: #:*/"-nolisten tcp"
+ Comment: &
+ Description:
+  Additional arguments for the &X-Server;s for local sessions.
+@@ -1479,6 +1495,8 @@
+ Default: false
+ User: core
+ Instance: #:*/!
++Instance: :0/!
++Instance: :93/!
+ Merge: xdm
+ Comment:
+  Restart instead of resetting the local &X-Server; after session exit.
+@@ -1553,11 +1571,10 @@
+ Key: Resources
+ # XXX strictly speaking this is supposed to be a string list, i think.
+ Type: string
+-Default: ""
++Default: "/etx/X11/xdm/Xresources"
+ User: core
+ Instance: #*/""
+-Update: cp_resources
+-Merge: xdm
++Update: reset_sec_0_1
+ Comment:
+  Specify a file with X-resources for the greeter, chooser and background.
+  The KDE frontend does not use this file, so you do not need it unless you
+@@ -1585,12 +1602,11 @@
+ 
+ Key: Setup
+ Type: string
+-Default: ""
++Default: "/etc/X11/xdm/Xsetup"
+ User: core
+ # will be overwritten
+ Instance: #*/""
+-Update: mk_setup
+-Merge: xdm
++Update: reset_sec_0_1
+ Comment:
+  A program to run before the greeter is shown. Can be used to start an
+  xconsole or an alternative background generator. Subject to word splitting.
+@@ -1606,12 +1622,11 @@
+ 
+ Key: Startup
+ Type: string
+-Default: ""
++Default: "/etc/X11/xdm/Xstartup"
+ User: core
+ # will be overwritten
+ Instance: #*/""
+-Update: mk_startup
+-Merge: xdm
++Update: reset_sec_0_1
+ Comment:
+  A program to run before a user session starts. Subject to word splitting.
+ Description:
+@@ -1624,12 +1639,11 @@
+ 
+ Key: Reset
+ Type: string
+-Default: ""
++Default: "/etc/X11/xdm/Xreset"
+ User: core
+ # will be overwritten
+ Instance: #*/""
+-Update: mk_reset
+-Merge: xdm
++Update: reset_sec_0_1
+ Comment:
+  A program to run after a user session exits. Subject to word splitting.
+ Description:
+@@ -1642,12 +1656,12 @@
+ 
+ Key: Session
+ Type: string
+-Default: XBINDIR "/xterm -ls -T"
++Default: "/etc/X11/xdm/Xsession"
+ #Merge: xdm - incompatible!
+ User: core
+ # will be overwritten
+ Instance: #*/""
+-Update: mk_session
++Update: reset_sec_0_1
+ Comment:
+  The program which is run as the user which logs in. It is supposed to
+  interpret the session argument (see SessionsDirs) and start an appropriate
+@@ -1759,10 +1773,11 @@
+ 
+ Key: AllowRootLogin
+ Type: bool
+-Default: true
++Default: false
+ User: core
+ User: greeter(showRoot)
+-Instance: */false
++Instance: #*/false
++Update: reset_sec_1_2
+ Merge: xdm
+ Comment:
+  Allow root logins?
+@@ -1777,6 +1792,7 @@
+ # sensible?
+ Instance: */false
+ Instance: :*/true
++Update: reset_sec_0_1
+ Merge: xdm
+ Comment:
+  Allow to log in, when user has set an empty password?
+@@ -1870,6 +1887,7 @@
+ Default: false
+ User: dep
+ Instance: #:0/true
++Update: reset_sec_0_1
+ Comment: &
+ Description:
+  Enable automatic login. <emphasis>Use with extreme care!</emphasis>
+@@ -1903,7 +1921,7 @@
+ PostProc: PautoLoginX
+ User: core(autoUser)
+ User: greeter
+-Instance: #:0/"fred"
++Instance: #:0/""
+ Merge: xdm:autoUser(P_autoUser)
+ Comment: &
+ Description:
+@@ -1934,10 +1952,10 @@
+ 
+ Key: SessionsDirs
+ Type: list
+-Default: *KDMDATA "/sessions"
++Default: *"/etc/X11/session," KDMDATA "/sessions,/usr/share/xsessions"
+ User: core
+ User: greeter-c
+-Instance: */KDMCONF "/sessions," KDMDATA "/sessions"
++Instance: #*/KDMCONF "/sessions," KDMDATA "/sessions"
+ Update: upd_sessionsdirs
+ Comment:
+  The directories containing session type definitions in .desktop format,
+@@ -2006,7 +2024,7 @@
+ 
+ Key: UseSessReg
+ Type: bool
+-Default: true
++Default: false
+ User: core
+ Instance: #*/!
+ Comment:
+@@ -2052,7 +2070,8 @@
+  Clock/LOGO_CLOCK: a neat analog clock
+ Default: Clock
+ User: greeter
+-Instance: */Logo
++Instance: */Clock
++Update: reset_sec_0_1
+ Comment:
+  What should be shown in the greeter's logo are:
+ Description:
+@@ -2268,7 +2287,7 @@
+ 
+ Key: HiddenUsers
+ Type: list
+-Default: ""
++Default: "root"
+ User: greeter-c(noUsers)
+ Instance: #*/"root"
+ # depends on {Min,Max}ShowUID
+@@ -2414,7 +2433,7 @@
+ 
+ Key: UseBackground
+ Type: bool
+-Default: true
++Default: false
+ User: greeter
+ Instance: #*/!
+ Comment:
+@@ -2574,6 +2593,7 @@
+ Default: false
+ User: greeter
+ Instance: :0/true
++Update: reset_sec_0_1
+ Comment:
+  Enable &kdm;'s built-in xconsole. Note that this can be enabled for only
+  one display at a time.
+@@ -2662,9 +2682,9 @@
+ 
+ Key: Preloader
+ Type: string
+-Default: ""
++Default: KDE_BINDIR "/preloadkde"
+ User: greeter-c
+-Instance: */KDE_BINDIR "/preloadkde"
++Instance: #*/KDE_BINDIR "/preloadkde"
+ Update: upd_preloader
+ Comment: &
+ Description:
+@@ -2674,7 +2694,7 @@
+ 
+ Key: UseTheme
+ Type: bool
+-Default: false
++Default: true
+ User: greeter
+ Instance: */true
+ Comment:
+--- kdm/kcm/kdm-shut.cpp   2013-06-28 19:10:44.000000000 +0200
++++ kdm/kcm/kdm-shut.cpp   2013-10-14 17:30:47.000000000 +0200
+@@ -194,7 +194,7 @@ void KDMSessionsWidget::load()
+     restart_lined->setUrl(configGrp.readEntry("RebootCmd", REBOOT_CMD));
+     shutdown_lined->setUrl(configGrp.readEntry("HaltCmd", HALT_CMD));
+ 
+-    bm_combo->setCurrentId(configGrp.readEntry("BootManager", "None"));
++    bm_combo->setCurrentId(configGrp.readEntry("BootManager", "Grub2"));
+ }
+ 
+ void KDMSessionsWidget::defaults()
+@@ -205,7 +205,7 @@ void KDMSessionsWidget::defaults()
+     sdlcombo->setCurrentIndex(SdAll);
+     sdrcombo->setCurrentIndex(SdRoot);
+ 
+-    bm_combo->setCurrentId("None");
++    bm_combo->setCurrentId("Grub2");
+ }
+ 
+ #include "kdm-shut.moc"
+--- kdm/kfrontend/CMakeLists.txt	2013-09-02 21:03:58.633922387 +0200
++++ kdm/kfrontend/CMakeLists.txt	2013-09-03 21:25:59.043485577 +0200
+@@ -114,3 +114,5 @@
+ install(CODE "
+ exec_program(\"${CMAKE_CURRENT_BINARY_DIR}/genkdmconf\" ARGS --in \\\"\\\$DESTDIR${CONFIG_INSTALL_DIR}/kdm\\\" --no-in-notice --face-src \\\"${CMAKE_CURRENT_SOURCE_DIR}/pics\\\" \\\$GENKDMCONF_FLAGS)
+ ")
++
++install( PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/read_sysconfig.sh DESTINATION ${DATA_INSTALL_DIR}/kdm )
+--- kdm/kfrontend/genkdmconf.c	2013-09-02 21:03:58.660922389 +0200
++++ kdm/kfrontend/genkdmconf.c	2013-09-03 21:25:59.044485577 +0200
+@@ -62,6 +62,7 @@
+ #include <config.ci>
+ 
+ #define RCVERSTR stringify(RCVERMAJOR) "." stringify(RCVERMINOR)
++#define SUSERCVERSTR "2"
+ 
+ static int old_scripts, no_old_scripts, old_confs, no_old,
+     no_backup, no_in_notice, use_destdir, mixed_scripts;
+@@ -69,7 +70,7 @@
+     *oldxdm, *oldkde, *oldkdepfx;
+ 
+ static int oldver;
+-
++static int oldsusever;
+ 
+ typedef struct StrList {
+     struct StrList *next;
+@@ -551,6 +552,7 @@
+     const char *cmt;
+ 
+     putFqVal("General", "ConfigVersion", RCVERSTR);
++    putFqVal( "General", "SUSEConfigVersion", SUSERCVERSTR );
+     for (cs = config; cs; cs = cs->next) {
+         fprintf_(f, "%s[%s]\n",
+                  cs->comment ? cs->comment : "\n", cs->name);
+@@ -1646,6 +1648,26 @@
+     ce->written = True;
+ }
+ 
++static void
++reset_sec_0_1( Entry *ce, Section *cs ATTR_UNUSED )
++{
++    if (oldsusever < 1 || !ce->written )
++    {
++        ce->active = 0;
++    }
++    return;
++}
++
++static void
++reset_sec_1_2( Entry *ce, Section *cs ATTR_UNUSED )
++{
++    if (oldsusever < 2 || !ce->written )
++    {
++        ce->active = 0;
++    }
++    return;
++}
++
+ #ifdef XDMCP
+ static void
+ cp_keyfile(Entry *ce, Section *cs ATTR_UNUSED)
+@@ -2637,7 +2659,7 @@
+ mergeKdmRcNewer(const char *path, int obsRet)
+ {
+     char *p;
+-    const char *cp, *sec, *key;
++	const char *cp, *sec, *key, *susever;
+     RSection *rootsect, *cs;
+     REntry *ce;
+     int i, j, ma, mi;
+@@ -2663,6 +2685,9 @@
+            p, ma, mi);
+     free(p);
+ 
++	susever = getFqVal( "General", "SUSEConfigVersion", "" );
++ 	if (sscanf( susever, "%u", &oldsusever ) != 1)
++ 	    oldsusever = 0;
+     for (cs = rootsect; cs; cs = cs->next) {
+         cp = strrchr(cs->name, '-');
+         if (!cp)
+@@ -2708,7 +2733,7 @@
+         ;
+     }
+ 
+-    applyDefs(kdmdefs_all, as(kdmdefs_all), path);
++    /* applyDefs(kdmdefs_all, as(kdmdefs_all), path); */
+ 
+     return True;
+ }
+--- kdm/kfrontend/kdm_config.c	2013-09-02 21:03:58.662922389 +0200
++++ kdm/kfrontend/kdm_config.c	2013-09-03 21:46:50.011117247 +0200
+@@ -396,7 +396,7 @@
+ static Section *rootsec;
+ 
+ static void
+-readConfig()
++readConfFile(const char* rcfile)
+ {
+     const char *nstr, *dstr, *cstr, *dhost, *dnum, *dclass;
+     char *s, *e, *st, *en, *ek, *sl, *pt;
+@@ -406,14 +406,9 @@
+     int nlen, dlen, clen, dhostl, dnuml, dclassl;
+     int i, line, sectmoan, restl;
+     File file;
+-    static int confread;
+ 
+-    if (confread)
+-        return;
+-    confread = True;
+-
+-    debug("reading config %s ...\n", kdmrc);
+-    if (!readFile(&file, kdmrc, "master configuration"))
++    debug("reading config %s ...\n", rcfile);
++    if (!readFile(&file, rcfile, "master configuration"))
+         return;
+ 
+     for (s = file.buf, line = 0, cursec = 0, sectmoan = 1; s < file.eof; s++) {
+@@ -439,7 +434,7 @@
+                 e--;
+             if (*e != ']') {
+                 cursec = 0;
+-                logError("Invalid section header at %s:%d\n", kdmrc, line);
++                logError("Invalid section header at %s:%d\n", rcfile, line);
+                 continue;
+             }
+             nstr = sl + 1;
+@@ -449,7 +444,7 @@
+                     !memcmp(nstr, cursec->name, nlen))
+                 {
+                     logInfo("Multiple occurrences of section [%.*s] in %s. "
+-                            "Consider merging them.\n", nlen, nstr, kdmrc);
++                            "Consider merging them.\n", nlen, nstr, rcfile);
+                     goto secfnd;
+                 }
+             if (nstr[0] == 'X' && nstr[1] == '-') {
+@@ -505,7 +500,7 @@
+           illsec:
+             cursec = 0;
+             logError("Unrecognized section name [%.*s] at %s:%d\n",
+-                     nlen, nstr, kdmrc, line);
++                     nlen, nstr, rcfile, line);
+             continue;
+           newsec:
+             if (!(cursec = Malloc(sizeof(*cursec))))
+@@ -533,7 +528,7 @@
+         if (!cursec) {
+             if (sectmoan) {
+                 sectmoan = False;
+-                logError("Entry outside any section at %s:%d", kdmrc, line);
++                logError("Entry outside any section at %s:%d", rcfile, line);
+             }
+             goto sktoeol;
+         }
+@@ -541,13 +536,13 @@
+         for (; (s < file.eof) && (*s != '\n'); s++)
+             if (*s == '=')
+                 goto haveeq;
+-        logError("Invalid entry (missing '=') at %s:%d\n", kdmrc, line);
++        logError("Invalid entry (missing '=') at %s:%d\n", rcfile, line);
+         continue;
+ 
+       haveeq:
+         for (ek = s - 1; ; ek--) {
+             if (ek < sl) {
+-                logError("Invalid entry (empty key) at %s:%d\n", kdmrc, line);
++                logError("Invalid entry (empty key) at %s:%d\n", rcfile, line);
+                 goto sktoeol;
+             }
+             if (!isspace(*ek))
+@@ -561,7 +556,7 @@
+             if (*s == '\\') {
+                 s++;
+                 if (s >= file.eof || *s == '\n') {
+-                    logError("Trailing backslash at %s:%d\n", kdmrc, line);
++                    logError("Trailing backslash at %s:%d\n", rcfile, line);
+                     break;
+                 }
+                 switch (*s) {
+@@ -590,13 +585,13 @@
+                 goto keyok;
+         }
+         logError("Unrecognized key '%.*s' in section [%.*s] at %s:%d\n",
+-                 nlen, nstr, cursec->nlen, cursec->name, kdmrc, line);
++                 nlen, nstr, cursec->nlen, cursec->name, rcfile, line);
+         continue;
+       keyok:
+         for (curent = cursec->entries; curent; curent = curent->next)
+             if (ce == curent->ent) {
+                 logError("Multiple occurrences of key '%s' in section [%.*s] of %s\n",
+-                         ce->name, cursec->nlen, cursec->name, kdmrc);
++                         ce->name, cursec->nlen, cursec->name, rcfile);
+                 goto keyfnd;
+             }
+         if (!(curent = Malloc(sizeof(*curent))))
+@@ -612,6 +607,20 @@
+     }
+ }
+ 
++static void readConfig()
++{
++	static int confread = 0;
++
++	if (confread)
++		return;
++
++	confread++;
++
++	system("/usr/share/kde4/apps/kdm/read_sysconfig.sh");
++	readConfFile("/var/adm/kdm/kdmrc.sysconfig");
++	readConfFile(kdmrc);
++}
++
+ static Entry *
+ findGEnt(int id)
+ {
+--- kdm/kfrontend/read_sysconfig.sh	1970-01-01 01:00:00.000000000 +0100
++++ kdm/kfrontend/read_sysconfig.sh	2013-09-03 21:28:38.522493296 +0200
+@@ -0,0 +1,128 @@
++#!/bin/bash
++#
++# Copyright (c) 2006 SUSE Linux Products GmbH Nuernberg, Germany.
++#
++# Author: Stephan Kulow   <coolo@suse.de>
++#
++
++#
++# check if we are started as root
++# only one of UID and USER must be set correctly
++#
++if test "$UID" != 0 -a "$USER" != root; then
++    echo "You must be root to start $0."
++    exit 1
++fi
++
++#
++# check for sysconfig/displaymanager or rc.config
++#
++test -f /etc/sysconfig/displaymanager && source /etc/sysconfig/displaymanager
++test -f /etc/sysconfig/security       && source /etc/sysconfig/security
++test -f /etc/sysconfig/language       && source /etc/sysconfig/language
++
++#
++# source /etc/profile to get $kdedir
++#
++kdedir="/usr"
++kdmdir="/var/adm/kdm"
++
++# check for write permissions
++[ -w ${kdmdir} ] || mkdir -p ${kdmdir}
++[ -w ${kdmdir} ] || exit
++
++#
++# Set Style of Shutdown
++#
++ECHO_MODE="OneStar"
++if test "$DISPLAYMANAGER_ROOT_LOGIN_LOCAL" = "yes"; then
++    ALLOW_ROOT_LOGIN="true"
++else
++    ALLOW_ROOT_LOGIN="false"
++fi
++
++(
++echo "[X-*-Greeter]"
++if [ "$DISPLAYMANAGER_AD_INTEGRATION" = "yes" ]; then
++  echo "PluginsLogin=winbind"
++else
++  if [ "$(/usr/sbin/pam-config -q --fp)" = "auth:" ]; then
++    echo "PluginsLogin=generic"
++  fi
++fi
++# kdm has en_US as default instead of simply reading LC_LANG :(
++echo "Language="
++
++echo "[Xdmcp]"
++if [ "$DISPLAYMANAGER_REMOTE_ACCESS" = "yes" ]; then
++  echo "Enable=true"
++else
++  echo "Enable=false"
++fi
++
++echo "[X-:0-Core]"
++if [ "$DISPLAYMANAGER_AUTOLOGIN" ]; then
++  echo "AutoLoginEnable=true"
++  echo "AutoLoginUser=${DISPLAYMANAGER_AUTOLOGIN}"
++else
++  echo "AutoLoginEnable=false"
++fi
++# get xserver command
++  xserver=`type -p $DISPLAYMANAGER_XSERVER`
++  if [ "x$xserver" = "x" ]; then
++    # binary not found, fall back to /usr/bin/X
++    xserver=/usr/bin/X
++  fi
++if [ "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" = "yes" ]; then
++  eval $($xserver -version 2>&1| grep "^X.Org" | sed -e 's%.* \([0-9]\+\)\.\([0-9]\+\).*%{ max=\1; min=\2; }%')
++  if [ -n "$max" -a -n "$min" ] && [ $max -gt 1 -o $min -ge 17 ]
++  then
++    echo "ServerArgsLocal=-listen tcp ${DISPLAYMANAGER_KDM_LOCALARGS}"
++  else
++    echo "ServerArgsLocal=${DISPLAYMANAGER_KDM_LOCALARGS}"
++  fi
++else
++  echo "ServerArgsLocal=-nolisten tcp ${DISPLAYMANAGER_KDM_LOCALARGS}"
++fi
++if [ "$DISPLAYMANAGER_PASSWORD_LESS_LOGIN" = "yes" ]; then
++   echo "NoPassEnable=true"
++   echo "NoPassAllUsers=true"
++else
++   echo "NoPassEnable=false"
++   echo "NoPassAllUsers=false"
++fi
++
++echo "[X-:*-Core]"
++echo "AllowRootLogin=${ALLOW_ROOT_LOGIN}"
++
++echo "[X-*-Core]"
++
++if test "$DISPLAYMANAGER_ROOT_LOGIN_REMOTE" = "yes"; then
++    echo "AllowRootLogin=true"
++else
++    echo "AllowRootLogin=false"
++fi
++
++case "x$DISPLAYMANAGER_XSERVER" in
++   xXgl)
++	echo "ServerCmd=$xserver $DISPLAYMANAGER_XGL_OPTS -br"
++        echo "ServerTimeout=50"
++        ;;
++   xXorg)
++	echo "ServerCmd=$xserver -br"
++	;;
++   x)
++        # empty value - younger than 11.0
++        echo "ServerCmd=$xserver -br"
++        ;;
++   *)
++	echo "#Unknown X server - leaving X"
++	;;
++esac
++
++echo "[General]"
++if [ "$DISPLAYMANAGER_STARTS_XSERVER" != "yes" ]; then
++  echo "StaticServers="
++fi
++
++) > ${kdmdir}/kdmrc.sysconfig
++

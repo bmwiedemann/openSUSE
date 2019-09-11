@@ -1,0 +1,3178 @@
+-------------------------------------------------------------------
+Mon Jun  3 18:51:09 UTC 2019 - mgorse@suse.com
+
+- Add CVE-2019-11459.patch: fix display of uninitialized memory if
+  TiffReadRGBAImageOriented fails (boo#1133037 CVE-2019-11459
+  glgo#GNOME/evince#1129).
+
+-------------------------------------------------------------------
+Fri May 17 20:03:45 UTC 2019 - mgorse@suse.com
+
+- Remove Supplements from psdocument package, so that it isn't
+  pulled in by default (boo#1122794). 
+
+-------------------------------------------------------------------
+Thu Mar 14 18:54:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 12:36:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated translations.
+- Changes from version 3.31.90:
+  + Fix typo's spotted for max-scale and min-scale.
+  + Remove '.flat' style from PDF forms GtkEntry's.
+  + Set MIN_SCALE back to previous low value.
+  + Revert removal of browser-plugin support.
+  + Update app icon.
+  + help:
+    -  No more View menu.
+    -  Replace title bar with header bar.
+  + pdf backend: Ignore diacritics when searching text.
+  + unarr: Update LZMA SDK.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  9 22:15:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + General:
+    - Fix build when compiled without dbus.
+    - Fix reference to Bugzilla by Gitlab URL in DOAP file.
+  + Sidebar::
+    - Display a first blank thumbnail.
+    - Remove GtkTreeView implementation for thumbnails.
+  + Updated translations.
+- Changes from version 3.31.3:
+  + UI:
+    - Fix criticals in tree view mode.
+    - Fix ComboBoxText user selected item's logic.
+  + help:
+    - Search uses icon instead of text for zero matches.
+    - Update printer debugging to 3.30 Control Center UI.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + UI:
+    - Fix appearance of editable GtkComboBox in PDF form.
+    - Handle adjustment change during drag event.
+    - Set propergravity on popup menu in search box.
+    - Fix default icon name in evince-previewer.
+    - Use GtkHeaderBar in print preview.
+    - Beautify placeholder text for password locked documents.
+    - Remove App menu.
+    - Use monitor instead of screen to determine window size.
+    - Close auto-expanded rows and remember state.
+    - Provide a visual cue when find is unsupported.
+    - Add symbolic to show a layer when is visible.
+    - Use the info bar close button instead of a custom one.
+    - Add icons for squiggly and text annotations.
+  + misc: Remove EvPageAction widget.
+  + general: Code cleanup:
+    - Remove unused variables.
+    - Replace deprecated symbols.
+    - Sync cut-n-paste code.
+    - Fix dependencies.
+    - Sync overwrite dialog against GtkFileChooserWidget.
+- Changes from version 3.31.1:
+  + No changes.
+- Drop upstream fixed patches:
+  + evince-previewer-Fix-default-icon-name.patch
+  + evince-shell-Use-monitor-instead-of-screen.patch
+- Drop all references to browser-plugin sans obsoletes: It has now
+  been dropped upstream.
+- Add pkgconfig(appstream-glib) BuildRequires: New dependency.
+- Add explicit libtool BuildRequires: We pull it in anyway, and use
+  it during build.
+- Drop intltool BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Thu Dec 27 23:05:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches from stable branch:
+  + evince-previewer-Fix-default-icon-name.patch: previewer: Fix
+    default icon name.
+  + evince-shell-Use-monitor-instead-of-screen.patch: Use monitor
+    instead of screen to determine window size.
+
+-------------------------------------------------------------------
+Tue Oct 23 18:29:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + UI:
+    - Fix appearance of editable GtkComboBox in PDF form.
+    - Handle unexpected page jump while dragging the scroll.
+  + Build: Claim ownership of org.gnome.evince.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  3 14:37:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Printing: Fix messages to show printed file name when it
+    contains '&' in the name.
+  + libdocument:
+    - Fix handling of mime-type aliases.
+    - Fix regression, open gzipped documents.
+  + Backends:
+    - comics: Use official IANA type for .cbr.
+    - djvu: Ignore text regions that are missing text.
+  + UI:
+    - Fix Dual odd-left state.
+    - Fix regression, set to odd-left in dual mode when document
+      has only 2 pages.
+    - Fix cursor movement when logical and visual line differs.
+    - Fix zoom-action to respond touch events.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 15:17:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid "em dash summaries". Use more noun phrase in descriptions.
+- Drop --with-pic, it is only useful for static libs.
+- Mention the plugin architecture/packaging in description
+  for people not immediately recognizing them being optional
+  at the installation level.
+
+-------------------------------------------------------------------
+Mon Sep 24 11:06:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Enable postscript plugin again via passing enable-ps to
+  configure, fixed postscript is in place in Tumbleweed.
+
+-------------------------------------------------------------------
+Sun Sep  9 07:50:09 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + printing: escape html entities in pango markup
+    (glgo#GNOME/evince#776).
+  + build: Disable build of broswer-plugin by default
+    (glgo#GNOME/evince#968).
+  + shell: Restore shortcut to open a new document.
+  + Improved documentation.
+  + Updated translations.
+  + See also installed NEWS file for a summary of changes between
+    this release and previous stable release.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Aug 28 20:39:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.92:
+  + Bug fixes and improvements.
+  + PostScript backend disabled by default.
+- Disable the evince-plugin-psdocument sub-package for now due to
+  security issue not resolved yet in upstream Ghostscript
+  BuildRequires (Will be fixed in future version due out soon).
+
+-------------------------------------------------------------------
+Wed Aug 15 09:54:51 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Bug fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Aug  3 18:24:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Revamped the user interface.
+  + Bug fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Jul 27 04:10:50 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + Bug fixes and improvements.
+- Add gspell-1 and synctex pkgconfig modules BuildRequires: new
+  dependencies.
+- Drop glib2_gsettings_schema_requires macro: this is no longer
+  needed since RPM file triggers (RPM > 4.13).
+
+-------------------------------------------------------------------
+Tue Apr 10 01:51:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:37:10 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 19:41:31 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 20:18:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Install appstream metadata to non-deprecated locations
+    (bgo#790079).
+  + Fix Rotate shortcuts when horizontal bar is visible
+    (bgo#727529).
+  + Fix black page and white page shortcuts in presentation mode
+    (bgo#772390).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:09 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 20 08:45:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Prevent window from growing, (bgo#783242.
+  + Update LZMA SDA.
+  + Fix media-player keys (bgo#789738).
+  + Fix reading CBZ files created on MacOS (bgo#782754).
+  + Fix orientation of auto-rotate option (bgo#782394).
+  + Fix dialog extending past edge of screen (bgo#733618).
+  + Don't show tooltips for empty annotations (bgo#772621).
+  + Remove un-necessary cairo configure checks (bgo#788980).
+  + Fix Overflow checks in tiff backend (bgo#788980).
+  + Better handle of external links (bgo#791287).
+  + Fixing display of overlapping annotations (bgo#787070).
+  + Reduce minimal size of sidebar (bgo#778000).
+  + Bind mouse back/forward buttons to history navigation
+    (bgo#787464).
+  + Fix property name in about dialog (bgo#790595).
+  + Install appstream metadata to correct location (bgo#790079).
+  + Correct sliding mode for toolbar in fullscreen (bgo#788718).
+  + Correct GPL2+ license text (bgo#788719).
+  + Add some shortcuts  (bgo#790253).
+  + Fix resources generation when building (bgo#790283).
+  + Update about dialing (bgo#785527).
+  + Always use poppler_document_Save to avoid data loss
+    (bgo#770012).
+  + Add keybindings for special back/forward keys (bgo#553892).
+  + Allow zooming to the limits of the scale (bgo#788480).
+  + Fix asking to save when document has been modified
+    (bgo#767611).
+  + Fix navigation with annotation already selected in sidebar
+    (bgo#680880).
+  + Show tooltip for Outline entris (bgo#787437).
+  + Default to 96 DPI when unable to compute.
+  + Updated translations.
+- Switch back to released tarballs, and thus drop gnome-common
+  BuildRequires and autogen.sh call.
+- Drop libdocument-return-96-dpi-if-unable-to-determine.patch:
+  fixed upstream.
+- Add gtk-doc BuildRequires: was previously pulled in by
+  gnome-common.
+
+-------------------------------------------------------------------
+Sun Jan 28 23:07:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0+20180128.1bd86963:
+  + shell: Fix media-player keys not working.
+
+-------------------------------------------------------------------
+Mon Jan 08 10:24:53 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 3.26.0+20171120.3955d480:
+  + Updated translations.
+- Switch to git-checkout via source service.
+- Following the above, add gnome-common BuildRequires, pass
+  autogen.sh and pass enable-gtk doc to configure, as we need to
+  bootstrap the tarball.
+- Clean up spec, use modern macros.
+- Drop update-desktop-files BuildRequires and stop using
+  suse_update_desktop macro, no longer needed.
+- Drop obsolete conditionals for no longer supported versions of
+  openSUSE.
+- Avoid running fdupes across hardlink boundaries.
+
+-------------------------------------------------------------------
+Mon Dec 11 16:23:22 UTC 2017 - mgorse@suse.com
+
+- Remove Suggests for unzip, unrar, and 7zip; the comics back end
+  no longer uses them (bsc#1072120).
+
+-------------------------------------------------------------------
+Tue Nov 14 07:01:09 UTC 2017 - yfjiang@suse.com
+
+- Backport fix:
+  + libdocument-return-96-dpi-if-unable-to-determine.patch
+    Backport libdocument fallback dpi to get rid of broken zoom
+    view on wayland (bgo#719400 bsc#1066138).
+
+-------------------------------------------------------------------
+Tue Sep 12 07:22:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 21:10:12 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.92:
+  + Bug fixes:
+    - Do not change the current page when adding or removing
+      bookmarks (bgo#732834).
+    - Fix unarr build on s390x (bgo#787248).
+    - Update LZMA SDK to use lzma1701.7z for unarr (bgo#787035).
+  + Documentation: Add missing close parenthesis in text selection
+    page (bgo#786825).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 19 12:51:10 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + New features and improvements: Add support for Adobe
+    Illustrator documents (bgo#311990).
+  + Bugs fixed:
+    - Fix gnome-settings-daemon MediaKeys API use (bgo#786262).
+    - Fix infinite loop when removing annotation windows
+      (bgo#785975).
+    - Fix rendering of layer state in layers tree sidebar
+      (bgo#786464).
+    - Properly quote arguments when executing dvipdfm in DVI
+      backend (bgo#784947).
+    - Fix runtime warnings on exit (bgo#774833).
+    - Fix debug borders coordinate translation (bgo#785758).
+    - Properly handle errors in comics backend (bgo#784963).
+    - Don't strip filenames when extracting comic documents
+      (bgo#784963).
+  + Documentation:
+    - Remove custom-shortcuts section dropped in GTK 3.10
+      (bgo#758246).
+    - Cover F9 shortcut (bgo#783276).
+    - Update 'Adding Annotations' to reflect the UI.
+    - Update several screenshots.
+    - Update custom shortcut instructions.
+    - 'Index' dropdown is called 'Outline' now.
+    - Fix several typos in documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 22 08:51:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + The comics backend now uses libarchive and unarr instead of
+    spawning commands (bgo#720742).
+  + Add flag EV_DOCUMENT_LOAD_FLAG_NO_CACHE to not setup the
+    document cache during the load. It will be setup later only if
+    needed (bgo#780210).
+  + Speed up thumbnailing by using EV_DOCUMENT_LOAD_FLAG_NO_CACHE
+    flag (bgo#780210).
+- Add pkgconfig(libarchive) BuildRequires, new dependency.
+- Stop handling glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un) in
+  post(un), no longer needed as we have file-triggers taking care
+  of it for us.
+
+-------------------------------------------------------------------
+Sat Jul 22 08:34:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Remove support for tar and tar-like commands in commics backend
+    (CVE-2017-1000083, bgo#784630).
+  + Improve performance of the links sidebar (bgo#779614).
+  + Improve performance of scrolling in thumbnails sidebar
+    (bgo#691448).
+  + Don't copy remote files before thumbnailing (bgo#780351).
+  + Fix toggling layers that are not in the current visible range
+    of pages (bgo#780139).
+  + Fix ev_page_accessible_get_range_for_boundary() to ensure the
+    start and end offsets it returns are within the allowed range
+    (bgo#777992).
+  + Fix crash with Orca screen reader (bgo#777992).
+  + Updated translations.
+- Drop evince-comics-remove-tar-commands-support.patch: Fixed
+  upstream.
+- Following the above: Drop libtool BuildRequires and stop passing
+  autoreconf, no longer needed as we do not carry any patches.
+
+-------------------------------------------------------------------
+Thu Jul 13 07:55:12 UTC 2017 - adrien.plazas@suse.com
+
+- Add evince-comics-remove-tar-commands-support.patch to avoid code
+  execution in the comic book backend's .tar support. (bnc#1046856,
+  bgo#784630, CVE-2017-1000083).
+
+-------------------------------------------------------------------
+Mon Mar 20 13:22:23 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + New features and improvements:
+    - Ask the user before automatically reloading the document when
+      it has been modified (bgo#769123).
+    - Use IBEAM cursor for TEXT_MARKUP annotations (bgo#774018).
+  + Bugs fixed: bgo#770695, bgo#771612, bgo#772277, bgo#774005,
+    bgo#775536, bgo#780206.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec  1 13:10:20 UTC 2016 - dimstar@opensuse.org
+
+- Workaround bgo#738270: Disable the browser-plugin (pass
+  --disable-browser-plugin to configure) and evince-browser-plugin
+  package, make main package obsolete the browser-plugin package to
+  avoid update issues.
+
+-------------------------------------------------------------------
+Wed Oct 12 07:44:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Sort pages in natural order in comics backend (bgo#770695).
+  + Sort bookmarks by page number instead of title (bgo#772277).
+  + Fix possible read beyond allocated buffer (bgo#771612).
+  + Updated translatitons.
+
+-------------------------------------------------------------------
+Tue Sep 20 18:43:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 18:03:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Add application/vnd.comicbook+zip to the list of mime-types
+    supported by the comics backend (bgo#770903).
+  + Fix mime-type comparisons in commics backend (bgo#770903).
+  + The browser plugin no longer claims to support loading
+    documents in Wayland.
+  + Fix several memory leaks (bgo#770070, bgo#770069).
+  + Fix scaling calculation in PostScript backend (bgo#755776).
+  + Fix a crash when processing button events in EvView
+    (bgo#769700).
+  + Fix a crash when opening a copy of a document with annotation
+    popup windows (bgo#760299).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 20 18:38:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + Improve annotation properties dialog UI (bgo#767895).
+  + Center sidebar action menu (bgo#767895).
+  + Make Esc close annotation window (bgo#768448).
+  + Do not hide the fullscreen toolbar when view or action popover
+    is shown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  4 07:10:43 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + New features and improvements:
+    - Fix style rendering issues with GTK+ 3.20 (bgo#765557,
+      bgo#758793).
+    - Stop using first page thumbnail as window icon (bgo#767747).
+    - Scroll pages fitting in the window in non-continuous mode
+      (bgo#562257).
+    - Show the document URI on a tooltip for recent view items
+      (bgo#764405).
+    - Add Keyboard Shortcuts entry to App Menu (bgo#761803).
+    - Make the systemd user unit conditional (bgo#755897).
+    - Allow to pass URIs to the previewer (bgo#766531).
+    - Remove the MimeType association from the previewer desktop
+      file (bgo#744893).
+  + Bugs fixed: 
+    - Fix build with GCC 6.
+    - Fix calculation of the maximum width of page selector
+      (bgo#764771).
+    - Fix typo in zoom in/out gesture shortcuts (bgo#761803).
+    - Remove X11 depedency of nautilus extension (bgo#766710).
+  + Updated translations.
+- Stop passing V=1 to make, debugging is done locally.
+- Remove a conditional tweak for old and no longer supported
+  versions of openSUSE.
+
+-------------------------------------------------------------------
+Mon Jul  4 07:10:42 UTC 2016 - dimstar@opensuse.org
+
+- Only inject -lang-metainfo on Tumbleweed (older releases don't
+  have the logic available yet).
+
+-------------------------------------------------------------------
+Thu Jun 23 16:38:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix style rendering issues with GTK+ 3.20 (bgo#765557,
+    bgo#758793).
+  + Remove the MimeType association from the previewer desktop file
+    (bgo#744893).
+  + Fix build with GCC 6.
+  + Fix calculation of the maximum width of page selector
+    (bgo#764771).
+  + Remove X11 dependency of nautilus extension (bgo#766710).
+  + Preserve window chrome when opening a copy in new window
+    (bgo#767532).
+  + Fix typo in zoom in/out gesture shortcuts (bgo#761803).
+  + Updated translations.
+- Drop evince-fix-deprecated-warning.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jun 16 16:11:29 UTC 2016 - dimstar@opensuse.org
+
+- Add AppStream metainfo for the -lang package (pass --metainfo
+  to find_lang).
+
+-------------------------------------------------------------------
+Mon May 23 19:22:09 UTC 2016 - zaitor@opensuse.org
+
+- Change Group in devel sub-package to Development/Languages/C and
+  C++: Silence rpmlint.
+- Drop old Provides and Obsoletes that do not make any sense
+  keeping around anymore. Silence even more rpmlint warnings.
+  + Provides: ggv, gpdf, evince-doc.
+  + Obsoletes: ggv, gpdf, evince-doc.
+
+-------------------------------------------------------------------
+Wed May 18 15:09:53 UTC 2016 - zaitor@opensuse.org
+
+- Add evince-fix-deprecated-warning.patch: Fix deprecation warning
+  (boo#980576, bgo#765395).
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:47:39 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:45:07 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + New features and improvements:
+    - Use a popover for view and action menus (bgo#760527).
+    - Add shortcuts help window (bgo#757828).
+    - Add Shift+Space keybinding to go back in presentation mode
+      (bgo#758162).
+    - Rename links sidebar title from Index to Outline
+      (bgo#732547).
+    - Add missing tooltips to the headerbar (bgo#595467).
+    - Show the page label instead of page number in find sidebar
+      (#756683).
+    - Add a systemd user unit corresponding to the D-Bus session
+      service (bgo#755897).
+    - Recognize multipage DjVu MIME type (bgo#754467).
+    - Add support for utf8 filenames on Mac OS X to comics backend
+      (bgo#761161).
+  + Bug fixes:
+    - Fix text selection on Wayland (bgo#759506).
+    - Manually destroy the search popover on toolbar dispose in
+      browser plugin to try to fix a crashes on plugin destruction
+      (bgo#762838).
+    - Check boundaries of accessible pages to avoid crashes when
+      the document is reloaded due to changes in the document file
+      (bgo#735744).
+    - Fix translations in thumbnailer help message (bgo#760418).
+    - Fix text selections in annotation popups (bgo#749727).
+    - Fix special characters in path to cbz (bgo#643843).
+    - Fix css style of loading message (bgo#758356).
+    - Fix warning with no document loaded (bgo#758596).
+    - Fix unbalanced quote in configure script.
+    - Fix installation of symbolic app icon.
+    - Fix the position of the zoom action GtkPopover in Wayland
+      (bgo#756976).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 11 17:30:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Fix the position of the zoom action GtkPopover in Wayland
+    (bgo#756976).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 21 18:37:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix performance regression with recent versions of GTK+ when
+    getting colors from GtkStyleContext for a different state
+    (bgo#755442).
+  + Fix a crash in PDF backend when opening documents containing
+    screen annotations with no actions (bgo#756572).
+  + Ignore right clicks while adding new annotations (bgo#755619).
+  + Escape bookmark titles to be correctly rendered when they
+    contain characters like & (bgo#663019).
+  + Fix handling of multiple files provided as command line
+    arguments (bgo#755796).
+  + Show error messages also in recent view mode (bgo#755064).
+  + Do not crash when the rendering or thumbnail jobs fail
+    (bgo#744049).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 19:27:12 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 17:40:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + When copying a file, use the default permissions for the new
+    file instead of copying the ones from the original file
+    (bgo#753019).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:51:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + The sidebar tab to add new annotations has been removed, and a
+    new annotations toolbar has been added making it easier to
+    discover and more convenient to annotate documents
+    (bgo#649045).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:49:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Add initial support for adding highlight annotations
+    (bgo#583377).
+  + Add support for squiggly highlight annotations too
+    (bgo#750612).
+  + Add support for moving text annotations (bgo#649043).
+  + Force text annotations to have a fixed size 24x24 (bgo#685334).
+  + Handle GTK_SCROLL_START/GTK_SCROLL_END also in fit-to-page mode
+    (bgo#737996).
+  + Bugs fixed: bgo#750548, bgo#741979.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 28 08:08:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.2:
+  + Add initial support for PDF multimedia using GStreamer
+    (bgo#573748).
+  + Add accessible relations between the labels in properties
+    dialog (bgo#749127).
+  + Updated translations.
+- Add pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-base-1.0) and
+  pkgconfig(gstreamer-video-1.0) BuildRequires for the new
+  multimedia support.
+- Pass --enable-multimedia to configure, to ensure MM support is
+  built.
+- Drop --with-smclient=xsmp and --disable-scrollkeeper configure
+  parameters: they are no longer understood for a while already.
+
+-------------------------------------------------------------------
+Wed May 27 11:01:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + New features and improvements:
+    - Provide a symbolic variant of the app icon (bgo#746844).
+    - Add search support to browser plugin.
+    - Create popup windows for all markup annotation that can have
+      a popup associated (bgo#733603).
+    - Add shortcuts for Continuous and Dual modes (bgo#670964).
+    - Remove custom search bar implementation and use GtkSearchBar
+      instead.
+  + Bug fixes:
+    - Never save n-copies in the persistent print-settings file
+      (bgo#748549).
+    - Fix the background color of annotation popup windows
+      (bgo#732211).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 10:21:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Add accessible relations between the labels in properties
+    dialog (bgo#749127).
+  + Never save n-copies in the persistent print-settings file
+    (bgo#748549).
+  + Fix the background color of annotation popup windows
+    (bgo#732211).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr  8 14:55:16 UTC 2015 - dimstar@opensuse.org
+
+- Split the backends in their own respective packages. This allows
+  to extend evince with features as required.
+
+-------------------------------------------------------------------
+Mon Mar 23 18:16:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:38:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Enable/disable page navigation actions based on current page in
+    previewer (bgo#745840).
+  + Don't hide the titlebar when the window is maximized (without
+    CSD) (bgo#744601).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 09:32:12 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + New features and improvements:
+    - Make Ctrl+mouse wheel zoom pointer-centered instead of
+      window-centered (bgo#731669).
+    - Add = and <Ctrl>= keybindings for zooming in (bgo#738625).
+  + Bug fixes:
+    - Fix printing of landscape document and properly fix printing
+      documents with a manual scale and autocenter (bgo#734788).
+    - Disable send to action when nautilus-sendto is not found
+      (bgo#743956).
+    - Fix a crash in recent-view when loading password protected
+      documents (bgo#744049).
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 09:32:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + New features and improvements:
+    - Add document size to the properties dialog (bgo#741057).
+    - Add support for bsdtar command in comics backend
+      (bgo#742721).
+    - Improve the the sidebar UI (bgo#739836).
+    - Add support for TextMarkup annotation in read-only mode for
+      now (bgo#583377).
+    - Use headerbar and improve spacing and borders in properties
+      dialog (bgo#739836).
+  + Bug fixes:
+    - Fix properties dialog shortcut (bgo#739116).
+    - Bring back Open in new window action to the context menu
+      (bgo#739046).
+    - Do not save n-copies when saving printing settings
+      (bgo#696203).
+    - Use correct maximum size for thumbnail images in
+      evince-thumbnailer (bgo#740877).
+    - Fix a typo in configure.ac that made configure fail with
+      ligbnome-desktop (bgo#733721).
+    - Correctly scroll to the search result selected by user when
+      not in continuous mode (bgo#730252).
+    - Fix memory leak when adding new text annotations.
+    - Fix border-radius CSS property of thumbnails (bgo#739836).
+    - Fix quoting issues in configure.ac (bgo#739226).
+    - Fix runtime critical warning when starting in fullscreen mode
+      (bgo#737864).
+    - Handle TIFF files reporting a 0 resolution (bgo#646414).
+    - Disable toggle-find action for documents not supporting find
+      (bgo#738262).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 09:32:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.14.2:
+  + Fix memory leak when adding new text annotations.
+  + Add = and <Ctrl>= keybindings for zooming in (bgo#738625).
+  + Fix printing of landscape documents (bgo#734788).
+  + Fix a crash in recent-view when loading password protected
+    documents (bgo#744049).
+  + Fix properties dialog shortcut (bgo#739116).
+  + Bring back Open in new window action to the context menu
+    (bgo#739046).
+  + Do not save n-copies when saving printing settings.
+  + Use correct maximum size for thumbnail images in
+    evince-thumbnailer (bgo#740877).
+  + Fix a typo in configure.ac that made configure fail with
+    ligbnome-desktop (bgo#733721).
+  + Correctly scroll to the search result selected by user when not
+    in continuous mode (bgo#730252).
+  + Fix quoting issues in configure.ac (bgo#739226).
+  + Fix runtime critical warning when starting in fullscreen mode
+    (bgo#737864).
+  + Handle TIFF files reporting a 0 resolution (bgo#646414).
+  + Disable toggle-find action for documents not supporting find
+    (bgo#738262).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 14 13:06:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Use the new support for RTL icons in GtkIconTheme (bgo#737211).
+  + Fix a crash in accessibility when opening a document with no
+    pages (bgo#731046).
+  + Fix a crash when a new document is added to the window
+    (bgo#737365).
+  + Fix a crash when opening the context menu in a non PDF
+    document (bgo#737197).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 18:46:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 16:31:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Fix emission of EvPageCache::page-cached signal.
+  + Use embedded page setup in the print dialog of the browser
+    plugin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  3 19:15:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Added a allow-links-change-zoom GSetting to be able to not
+    allow links to change the zoom mode or level (bgo#729249).
+  + Set accessible name for File and View toolbar buttons
+    (bgo#734912).
+  + Add a separator after New Window entry in app menu.
+  + Remove multi-screen support, since it's currently unsupported
+    by GDK/GTK+ (bgo#701883).
+  + Bugs fixed: bgo#735758, bgo#733747, bgo#735110, bgo#735562,
+    bgo#735561, bgo#735466.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 15 18:59:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Add support for removing annotations (bgo#649044).
+  + Add pan gesture to switch pages in non-continuous mode.
+  + Add pinch/zoom gesture to handle document zooming.
+  + Add initial implementation of a browser plugin.
+  + Show the filename as a subtitle of the headerbar.
+  + Add recent view shown when evince is opened without a document
+    to replace the recent menu list (bgo#633501.
+  + Use a GtkPopover for the zoom selector menu.
+  + Move Next-Page and Previous-Page buttons from the heqader bar
+    to the view menu (bgo#732289).
+  + HiDPI support (bgo#723431).
+  + Use open-menu-symbolic for the gear menu.
+  + Improve efficiency of methods to get start and end indices of a
+    EvLinkAccessible (bgo#732340).
+  + Make <Ctrl>Home/End scroll to the start/end of the document
+    (bgo#724273).
+  + Expose an accessible name for form field push buttons
+    (bgo#733919).
+  + Bugs fixed: bgo#734788, bgo#733662, bgo#733748, bgo#649044.
+  + Updated translations.
+- Add pkgconfig(gnome-desktop-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Aug  9 09:51:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3.1:
+  + Fix the MIME type list of desktop files (bgo#732216).
+- Changes from version 3.13.3:
+  + New features and improvements:
+    - Cycle through form fields with tab button (bgo#503706).
+    - Port to GMenu.
+    - Use a GtkHeaderBar instead of a GtkToolbar (bgo#711078).
+    - Add appdata files for Evince backends (bgo#731708).
+    - Add an appdata file for Evince (bgo#708760).
+    - Make the about dialog non modal and move it to the app menu.
+    - Add keybindings to go back/forward in history (bgo#509029).
+    - Expose links, images and form fields as AtkObject children of
+      the page (bgo#728475).
+    - Update ATK_STATE_SHOWING when the visible page range changes
+      (bgo#728664).
+    - Implement AtkComponent interface for pages (bgo#728673).
+    - Expose every page individually to accessibility (bgo#724965).
+    - Show fullscreen toolbar only when moving the mouse to the top
+      of the screen (bgo#696643).
+    - Add API to libview to specify rendered output in pixels
+      instead of as a scale (bgo#723431).
+    - Use cairo surfaces instead of GdkPibufs to render thumbnails
+      (bgo#723431).
+  + Bugfixes:
+    - Set the main window was transient parent of the annotation
+      properties dialog (bgo#732114).
+    - Use annotation RGBA API instead of the deprecated color API
+      (bgo#732095).
+    - Fix rotation direction in DJVU backend (bgo#731786).
+    - Update the annotation poup window color and opacity when the
+      annotation is updated (bgo#725571).
+    - Prevent jumps to last page when autoscrolling (bgo#725389).
+    - Fix centering when shrinking to printable area but not
+      scaling.
+    - Fallback to thumbnails page in sidebar when the current page
+      is no longer supported by the document after a reload, and
+      enable the pages that become supported (bgo#628617).
+    - Ensure text is available in page cache when requested by
+      accessibility (bgo#724965).
+    - Update the caret cursor when jumping to a find result
+      (bgo#728996).
+    - Fix shiftclick text selection (bgo#728189).
+    - Fix a crash when saving a copy (bgo#727536).
+    - Fix enable caret navigation question message (bgo#727062).
+    - Fix a crash during the build with introspection enabled
+      (bgo#726812).
+    - Fix warning message shown when the requested format is not
+      supported by printer (bgo#724044).
+    - Allow printing to all formats supported by backend
+      (bgo#724044).
+  + Updated translations.
+- Replace pkgconfig(gnome-icon-theme) BuildRequires with
+  pkgconfig(adwaita-icon-theme), following upstreams merge of the
+  icon themes.
+
+-------------------------------------------------------------------
+Fri Aug  8 09:26:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.2:
+  + Prevent jumps to last page when autoscrolling (bgo#725389).
+  + Fix centering when shrinking to printable area but not scaling.
+  + Fallback to thumbnails page in sidebar when the current page is
+    no longer supported by the document after a reload, and enable
+    the pages that become supported (bgo#628617).
+  + Update the caret cursor when jumping to a find result
+    (bgo#728996).
+  + Update ATK_STATE_SHOWING when the visible page range changes
+    (bgo#728664).
+  + Fix a memory leak in sidebar thumbnails.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 17:09:37 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix shift+click text selection (bgo#728189).
+  + Ensure text is available in page cache when requested by
+    accessibility (bgo#724965).
+  + Fix a crash when saving a copy (bgo#727536).
+  + Fix a crash during the build with introspection enabled
+    (bgo#726812).
+  + Allow printing to all formats supported by backend
+    (bgo#724044).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:28:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Update help for UI changes in 3.12 (bgo#700442).
+  + Update reading documents help for 3.12.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:28:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Keep current page thumbnail in visible area when the sidebar is
+    resized (bgo#631050).
+  + Close the window when CTRL+w shortcut is used in presentation
+    mode, instead of turning the screen white (bgo#604834).
+  + Fix some broken aspects EvViewAccessible text support
+    (bgo#7250030).
+  + Take caret navigation into account when getting AtkHyperlink
+    indices (bgo#726310).
+  + Keep the scroll position when switching between continuous and
+    non-continuous mode (bgo#554843).
+  + Stop autoscrolling when view looses focus (bgo#541699).
+  + Fix implementation of atk_text_set_caret_offset in
+    EvViewAccessible (bgo#701746).
+  + Emit EvView::cursor-moved signal when caret cursor position is
+    set by accessibility (bgo#701746).
+  + bgo#725162: Remove support for deprecated
+    atk_text_get_text_{before,after}_offset.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 23 19:06:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + New features and improvements:
+    - Set the window title for empty windows to make sure it's
+      exposed to accessibility (bgo#653748).
+    - Make history buttons insensitive when searching (bgo#724549).
+    - Rename Open a Copy action as View in New Window (bgo#688762).
+    - Add close button to the search bar (bgo#723789).
+    - Move the find toolbar button to the left of the toolbar,
+      together with the navigation actions (bgo#723789).
+    - Add tooltips to toolbar menus (bgo#700697).
+    - Remove SMClient support (bgo#677981).
+  + Bug fixes:
+    - Scroll to the search result when it's clicked in the find
+      sidebar even if the selection hasn't changed (bgo#703570).
+    - Correctly restart the search operation when the document is
+      reloaded (bgo#703595).
+    - Make print shortcut work when the sidebar is focused
+      (bgo#705846).
+    - Fix potential read-after-free in gsettings use (bgo#723737).
+    - Fix the margin of toolbar elements in RTL locales
+      (bgo#723110).
+    - Use g_debug instead of g_printerr for debug warnings in
+      EvDaemon (bgo#723972).
+  + Documentation: Remove the SyncTeX video that uses the old UI
+    and the wrong theme (bgo#676496).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 18 22:10:23 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.11.3:
+  + New features and improvements:
+    - Hide window titlebar when maximized (bgo#696254).
+    - Add AtkDocument implementation to EvViewAccessible
+      (bgo#719507).
+    - Remove the margin of the toolbar buttons and center them
+      vertically (bgo#709005)
+  + Bug fixes:
+    - Disable "Send To" action when there is no mail client
+      available (bgo#701654).
+    - Always consider the cursor page as the current page for
+      accessibility when caret navigation is enabled.
+    - Fix the page size reported in the properties dialog for some
+      document backends (bgo#711093).
+  + Documentation:
+    - Update toolbar page (bgo#705211).
+    - Update information on working with bookmarks (bgo#710107).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 18 19:36:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + New features and improvements:
+    - Do not open single page pdfs in dual mode by default
+      (bgo#547098).
+    - Activate current focused element on space/return key press
+      (bgo#706244).
+    - Draw focus of links and form fields on mouse press
+      (bgo#706244).
+  + Bugs fixed: bgo#710977, bgo#668446, bgo#710778, bgo#709375.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 17 20:23:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.3 (bnc#849913):
+  + Fix a regression in accessibility code causing the wrong page
+    to be used when caret navigation is enabled (bgo#711862).
+- Changes from version 3.10.2:
+  + Fix the size of buttons in the toolbar (bgo#709005).
+  + Fix page size always reported as 0x0 in properties dialog
+    (bgo#711093).
+  + Fix a crash in djvu backend due to a double free (bgo#710977).
+  + Fix annotation window focus change after creation
+    (bgo#668446).
+  + Fix content exposed to assistive technologies when document
+    changes in EvView.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 12:05:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Fix a typo in EV_VIEW_PRESENTATION macro definition.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 21 15:50:38 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Unescape the output basename for print to file (bgo#705848).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 31 08:46:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Enable/disable the caret navigation with F7 (bgo#702079).
+  + Add 'Automatic' zoom mode to the zoom selector.
+  + Use toggle menu items for zoom modes in zoom selector drop-down
+    menu to make it possible to know the zoom mode currently in
+    use.
+  + Implement text selections in EvViewAccessible (bgo#704335).
+  + More performance improvements in text selections.
+  + Implement ATK interfaces to expose text attributes
+    (bgo#639932).
+  + Update API doc files.
+  + Fix several compile warnings.
+  + Fix selections starting/ending in page margins.
+  + Bugs fixed: bgo#705155, bgo#704621, bgo#704616, bgo#704685,
+    bgo#704396, bgo#704396, bgo#704138, bgo#704155, bgo#704184.
+  + Updated translations.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: new verified
+  dependency.
+
+-------------------------------------------------------------------
+Mon Jul  8 22:05:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Add a find sidebar to show search results with some more
+    context (bgo#566827).
+  + Zoom selector has been moved to the right of the toolbar, close
+    to the other view options (bgo#701696).
+  + Implement text selection in djvu backend (bgo#448739,
+    bgo#703108).
+  + Add 'cursor-moved' signal to notify when the caret cursor has
+    been moved (bgo#702078).
+  + Keep the offset inside a line when moving the caret between
+    lines (bgo#702075).
+  + Position the caret cursor at beginning/end of the line when
+    clicking outside the line.
+  + Implement text selection with the keyboard when caret
+    navigation is enabled (bgo#702073).
+  + Notify about caret navigation errors using the error bell
+    (bgo#702650).
+  + Set history button arrow icons according to locale's text
+    direction (bgo#702585).
+  + Several performance improvements when selecting text.
+  + Emit the AtkText 'text-caret-moved' and
+    'text-selection-changed' signals in EvViewAccessible
+    (bgo#701732).
+  + Fix selection of overlapping text (bgo#703024).
+  + Fix a crash when selecting more than one page (bgo#702874).
+  + Fix a crash due to an infinite loop resolving hyphenations in
+    find results sidebar.
+  + Don't draw the caret cursor when the view is not focused.
+  + Do not show the caret cursor when there are active selections
+    (bgo#702761).
+  + Clear the selection when cursor is moved.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 18:59:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Make the history behave more like a web browser
+  + Add a fallback implementation of text selection for backends
+    that implement get_selection_region but not render_selection
+    (bgo#669022).
+  + Initial implementation of caret navigation added to libview
+    (bgo#638905, bgo#702076, bgo#702068).
+  + Add a GSetting to set a custom page cache size (bgo#642683).
+  + Use horzontal/vertical GtkBoxes instead of deprecated
+    GtkHBox/GtkVBox.
+  + Fix runtime critical warning for links with NULL action.
+  + Fix -Wstrict-prototypes warnings.
+  + Remove obsolete g_type_init calls.
+  + Bugs fixed: bgo#697397, bgo#702406, bgo#683172, bgo#701900,
+    bgo#701302.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 29 09:47:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + New features and improvements:
+    - Forward key events received in the toplevel window to the
+      focused widget (bgo#676040).
+    - Use the document filename as output basename when printing to
+      a file (bgo#700466).
+    - Enable GDK_SMOOTH_SCROLL events for EvView (bgo#674098).
+    - Show the document URI in the error message when it fails to
+      open (bgo#697900).
+    - Allow to browse all files from Save Image dialog by adding
+      more filters to the file chooser (bgo#523071).
+    - Added Shift+Enter shortcut to search backwards (bgo#641797).
+    - Make shortcuts for find next/previous work even when the find
+      bar is closed (bgo#625225).
+    - Add support for file identifiers to DJVU backend
+      (bgo#619410).
+    - Add support for page labels to DJVU backend (bgo#619407).
+    - Use ellipsis character in translatable strings (bgo#695597).
+  + bugs fixed: bgo#668446, bgo#699108, bgo#695597, bgo#695524,
+    bgo#694143.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 15 08:18:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Fix zoom and position of FitR link destinations (bgo#695524).
+  + Update the search string when the document is reloaded
+    (bgo#694143).
+  + Fix --find command line option to actually show the find bar
+    (bgo#604327).
+  + Forward EvView key events to the focused form field, so that
+    it's possible to move between words with CTRL+Left/Right in
+    text form fields instead of rotating the view (bgo#699630).
+  + Do not update the history while searching to prevent the find
+    bar from begin closed unexpectedly (bgo#697194).
+  + Fix document to view coordinates transformation to take page
+    borders into account. This makes search results, form fields,
+    annotations and other items to be correctly placed on the view.
+  + Updated documentations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 14:52:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Remove the NoDisplay=true from Evince desktop file
+    (bgo#634245).
+  + Fix desktop file keyword translations (bgo#696310).
+  + Updated translations.
+- Do not mangle the display name: as "Document Viewer" is the name
+  used all over the place, we should stay with it.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:56:50 UTC 2013 - dimstar@opensuse.org
+
+- Stop using T1lib:
+  + Drop t1lib-devel BuildRequires.
+  + No longer pass --enable-t1lib to configire.
+
+-------------------------------------------------------------------
+Thu Mar 21 08:28:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Use the page frame from the theme instead of our own
+    (bgo#691333).
+  + Improved the performance of search (bgo#667569).
+  + Add desktop file for print preview (bgo#694482).
+  + Add API to allow changing the page of a presentation
+    (bgo#693749).
+  + Disable view presentation if there is no document (bgo#685591).
+  + Fixed and improved several API doc comments.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 19:11:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + New features and improvements:
+    - Add support for activation actions of form fields
+    - Add navigation history buttons to the toolbar (bgo#169903)
+    - Show accelerators in the view menu (bgo#692960)
+  + Bugs fixed: bgo#676593, bgo#693794, bgo#667266.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 21:37:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + New features and improvements:
+    - Use DPI of pages to compute scaling factor in DJVU documents
+      (bgo#580891)
+    - Show accelerators in gear menu (bgo#692960)
+    - Show the gear menu with F10 (bgo#692909)
+    - Improve the scrolling performance (bgo#692988)
+    - Add a lot of missing introspection annotations to libview and
+      libdocument (bgo#691354)
+    - Make document links accessible with Orca by implementing the
+      AtkHypertext interface (bgo#639403)
+  + Bug fixes:
+    - Fix a crash when failed to connect to D-BUS daemon
+      (bgo#691672)
+    - Fix the font color of annotation popup windows (bgo#677471)
+    - Move x11 dependency to xsmp support (bgo#692591)
+    - Add missing include to libdocument main public header
+      (bgo#692778)
+    - Make introspection build against the internal libevdocument
+      (bgo#692136)
+    - Several fixes in gtk-doc comments (bgo#691354)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 23 21:47:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + The UI has been re-designed to follow the GNOME 3 style:
+    - The main menu has been removed.
+    - A new toolbar has been added with a gear menu and view menu
+      containing the previous main menu items.
+    - The zoom control has now an entry that always shows the
+      current zoom factor and allows to enter custom zoom factors
+      in addition to the predefined ones.
+    - In the page selector, the entry and the total pages label are
+      linked to look like the same widget.
+    - The find bar has also been re-designed and moved to the top
+      of the main view.
+    - The toolbar in fullscreen mode is now automatically hidden.
+    - The view and thumbnail frames can now be styled with CSS
+  + New features and improvements:
+    - The font properties dialog now shows a message to inform
+      whether any of the non-embedded font is one of the 14
+      standard fonts (bgo#527222)
+    - Migrate from libgnome-keyring to libsecret (bgo#679855)
+    - Add a new layout mode that automatically determines if dual
+      page mode should be used when the window is large enough.
+      (bgo#689468)
+    - Make EvLink:link-action and EvLinkAction:dest object
+      properties instead of pointers to be properly refcounted
+      (bgo#691214)
+    - Best fit mode has been renamed to Fit Page (bgo#689468)
+    - Make can-zoom-in and can-zoom-out properties of EvView
+      (bgo#690510)
+    - Move the limits on zoom handling to libview (bgo#690510)
+    - Set a default value of 50MB for the pixbuf cache in EvView
+      (bgo#689674)
+    - Add keywords to the desktop file to make gnome-shell search
+      more pleasant and useful (bgo#687604)
+  + Bugs fixed: bgo#685828, bgo#669017, bgo#683528, bgo#665856.
+  + Updated translations.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstreams port to libsecret.
+
+-------------------------------------------------------------------
+Tue Jan 22 12:16:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + Add application menu (bgo#674937)
+  + Set maximum width for page numbers in index to improve the
+    isibility of the table of contents (bgo#660113)
+  + Use GtkOverlay to show the loading message
+  + Use custom cell renderers for the thumbnails icon view to fix
+    the huge selection rectangle around thumbnails (bgo#646055)
+  + Hold the application while printing is in progress
+  + Add 2DGraphics category to the desktop file (bgo#686062)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 22 11:29:00 UTC 2013 - dimstar@opensuse.org
+
+- Move nautilus-sendto recommends to the nautilus-evince
+  sub-package. Nautilus-evince is supplementing nautilus:evince,
+  and thus in plus recommends nautilus-sendto. This answers
+  requests that evince should not pull in nautilus on it's own.
+
+-------------------------------------------------------------------
+Mon Oct 15 13:17:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Show always the offline help using Yelp (bgo#682423).
+  + Remove xi:includes referencing obsolete files in documentation
+    (bgo#686060).
+  + Use custom CSS for EvView to make sure the background is not
+    white as Adwaita currently does, because it breaks the page
+    frames.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:56:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 19:32:17 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + New features and improvements:
+    - Add ev_view_find_started() to replace ev_view_find_changed()
+      that is not introspectable (bgo#682875).
+    - Add ev_job_links_get_model() to make the links model
+      available to introspection (bgo#682882).
+  + Bug fixes:
+    - Fix a crash due to zero division (bgo#681546).
+    - Fix compiler warnings due to GDK_SCROLL_SMOOTH not handled in
+      switch.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 11:00:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Disconnect all model signals for EvView before unreffing the
+    EvDocumentModel (bgo#680023)
+  + Use new documentation infrastructure (bgo#681606)
+  + Updated translations.
+- Reaplce pkgconfig(gnome-doc-utils) BuildRequires with yelp-tools,
+  following upstreams switch to the new documentation
+  infrastructure.
+
+-------------------------------------------------------------------
+Tue Aug  7 20:11:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + New features and improvements:
+    - Use GtkApplication to inhibit the screensaver
+    - Port EvApplication to GtkApplication and make EvWindow a
+      GtkApplicationWindow
+    - Port evince daemon to GApplication
+    - Use gdbus-codegen for D-Bus interfaces
+  + Bug fixes:
+    - Fix sent to when filename contains spaces (bgo#681144)
+    - Apply default settings also for documents opened from /tmp
+      (bgo#680145)
+    - Replace GDK_THREADS_ENTER/LEAVE with gdk_threads_enter/leave
+      (bgo#681215)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 14:25:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Store and restore current folder when opening or saving file
+  + Fix and modernize GObject introspection generation (bgo#678971)
+  + Fix saving attachments when the name contains a path
+    (bgo#679354)
+  + Add missing introspection annotations to ev_document_get_page
+    and ev_document_get_page_size (bgo#679264)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 26 10:49:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Add find options to the find bar. Find options available depend
+    on every backend.
+  + Use GResource for data files
+  + Add new API to EvAnnotation that uses GdkRGBA (bgo#677983)
+  + Use G_PARAM_STATIC_STRINGS flag for properties
+  + Bugs fixed: bgo#677867, bgo#678563
+  + Updated documentation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun  7 19:46:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + New features and improvements:
+    - Add API to load EvDocument from GInputStream and GFile. Only
+      implemented by the PDF backend for now (bgo#654832)
+    - Rework backends management and document factory to make it
+      easy to add a module cache
+    - Improve error handling in EvDocumentFactory
+    - Include substitute font name and file in font list
+    - Use primary-toolbar style class in evince-previewer
+      (bgo#675310)
+    - Copy document metadata to the new file when saving a copy
+      (bgo#674629)
+  + Bug fixes:
+    - Fix memory leak when document is encrypted
+    - Do not remove unexistent files from recent menu (bgo#674188)
+    - Fix underlinking with >=glib-2.32 detected by gold linker
+    - Removed deprecated use of GTK_POLICY_AUTOMATIC
+    - Fix a crash when running with Broadway GDK backend
+      (bgo#673664)
+    - Remove remnants of Hildon support from configure (bgo#673679)
+    - Remove old workaround inconfigure to build with deprecated
+      symbols (bgo#673680)
+  + Documentation:
+    - Add Get Involved section and legal information to the
+      documentation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr  1 11:46:40 UTC 2012 - dimstar@opensuse.org
+
+- Split package according to SLPP (bnc#737897):
+  + Create subpackages:
+    - libevdocument3-4
+    - libevview3-3
+    - typelib-1_0-EvinceDocument-3_0
+    - typelib-1_0-EvinceView-3_0
+  + Add Requires for all new subpackages to the -devel package.
+  + Move /sbin/ldconfig from %post/%postun of evince to
+    %post/%postun of libevdocument3-4 and libevview3-3.
+
+-------------------------------------------------------------------
+Mon Mar 26 11:52:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Fix smclient detection when GDK targets contain more than one
+    backend (bgo#672613)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 19:48:35 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Bug fixes:
+    - Fix typos in ev-form-field.h (bgo#635055).
+    - Fix the build with mingw.
+  + Documentation:
+    - Fix key sequences in documentation (bgo#672296).
+    - Fix several markups in documentation (bgo#672299, bgo#672296)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 18:51:27 UTC 2012 - dimstar@opensuse.org
+
+- Replace old-style BuildRequires with pkgconfig() style ones and
+  be more explicit. List all BuildRequires that are checked for by
+  configure:
+  + Old style: gnome-doc-utils-devel, gobject-introspection-devel,
+    gtk3-devel, libdjvulibre-devel, libgnome-keyring-devel,
+    libgxps-devel, libpoppler-glib-devel, libspectre-devel,
+    nautilus-devel, zlib-devel.
+  + New style: ddjvuapi, gio-2.0, gnome-doc-utils,
+    gnome-icon-theme, gnome-keyring-1, gobject-introspection-1.0,
+    gthread-2.0, gtk+-3.0, ice, libgxps, libnautilus-extension,
+    libspectre, libxml-2.0, poppler-glib, sm, x11, zlib.
+- Drop libtool BuildRequires: there is no need for it.
+- Pass --with-smclient=xsmp to configure: this used to be
+  autodetected, but having multiple backends in gdk makes this
+  detection fail.
+
+-------------------------------------------------------------------
+Tue Feb 21 20:33:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.90:
+  + New features and improvements:
+    - Restore horizontal policy to NEVER for the sidebar's
+      thumbnails (bgo#670375)
+    - Add a setting to disable auto-reload (bgo#669265)
+    - Split dual mode option into dual mode with odd and even pages
+      on the left (bgo#444587)
+  + Bugs fixed:
+    - Fixed several compile warnings
+    - Several build fixes for windows
+    - Fix typo in gsettings schema file (bgo#670399)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 12:33:57 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + New features and improvements:
+    - Add Send To action to file menu and toolbar (bgo#569913)
+    - Add --named-dest command line argument (bgo#668749)
+  + Bug fixes:
+    - Fix a crash when dropping an item to the toolbar
+    - Fix page index argument when command is spawned (bgo#668736)
+    - Use t1 font mapping files in dvi backend (bgo#612298)
+    - Fix several memory leaks in comics backend (bgo#667258)
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add nautilus-sendto Recommends for the new "Send To" action.
+
+-------------------------------------------------------------------
+Mon Jan 16 21:18:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + New features and improvements:
+    - Go to next/previous find match with control + Up/Down
+      (bgo#653910)
+  + Bug fixes:
+    - Do not show the find bar in presentation mode (bgo#645976)
+    - Save always settings that can be saved as default in metadata
+      (bgo#639003)
+    - Fix several compile warnings
+    - Respect prefix when installing nautilus extensions
+      (bgo#505359)
+  + Documentation:
+    - Fix description to print n page booklet using printer allows
+      double-side printing
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:37:17 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.3.1:
+  + Fix the build making libevdocument link against gmodule-2.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:18:02 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + New features and improvements:
+    - Add an option to show odd pages on the left in dual mode.
+      This option has been added to libevince but it's not exposed
+      by the evine UI yet. (bgo#444587)
+    - Add Office category to desktop file (bgo#666346)
+    - Add configure option --disable-viewer
+    - Allow compiling with glib < 2.31.0
+  + Bug fixes:
+    - Refresh thumbnail only when there's a document loaded
+    - Add x-ext-<type> fallback mime-types to fix mime-type
+      detection on windows
+    - Fix rotation of tiff documents with different X/Y resolution
+    - Close descriptor of temporary files before copying to them.
+      It seems that on Windows, g_file_copy() does not work on
+      files with a file desciptor open
+    - Remove use of several deprecated GTK+ API
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Stop changing categories in evince.desktop: they are perfect
+  upstream.
+
+-------------------------------------------------------------------
+Tue Nov 22 19:17:55 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + New features and improvements:
+    - Improve mime type detection on win32
+  + Bug fixes:
+    - Remove use of several deprecated API in GLib and GTK+
+    - Update smclient from libegg to fix the application name
+      (bgo#631612)
+    - Update synctex to version 1.17 to fix problems with file
+      paths
+  + Updated documentations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 18 20:15:55 UTC 2011 - vuntz@opensuse.org
+
+- Add libgxps-devel BuildRequires to build the XPS backend.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:06:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Make sure page labels are valid utf-8 strings in PostScript
+    backend (bgo#654263)
+  + Documentation improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:59 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 27 12:30:29 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Documentation improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Sep  1 08:25:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90.1:
+  + Bug fixes:
+    - Fix the build making libevdocument link against -lm and -lz
+      (bgo#657781)
+- Changes from version 3.1.90:
+  + New Features and UI Improvements:
+    - Don't set the current folder while saving a file (bgo#655514)
+    - Fallback mode for cbz files using 7za and 7z (bgo#583499)
+    - Add GoToPage item to Go menu
+    - Limit thumbnailing time to 15 seconds by default (bgo#651655)
+    - Add shortcut keys for best-fit and fit-width options
+      (bgo#595571)
+    - Add Help button to the toolbar editor (bgo#503638)
+    - Use GTK_STOCK_GO_BACK for the history button (bgo#554585)
+  + Bug fixes:
+    - Fix saving annotations added to different pages (bgo#628378)
+    - Add plural form for "cancel print jobs before closing" dialog
+    - Update toolbar-editor from libegg to fix drag and drop
+      toolbar items
+    - Disable shortcut 'n' while editing form fields (bgo#654927)
+    - Do not use the C++ template keyword in headers
+    - Update smclient check for gdk targets
+    - Save zoom factor in default settings when sizing mode is free
+      (bgo#653383)
+    - Fix build with --enable-introspection (bgo#643382)
+    - Update synctex parser to version 1.16 (bgo#651263)
+  + Documentation:
+    - Update man page (bgo#526539)
+    - Fixed spelling errors, clarified concepts and updated docs
+      (bgo#648254)
+  + Updated translations.
+- Drop evince-find-libedocument.patch: fixed upstream.
+- Add zlib-devel BuildRequires: new explicit dependency.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:18:17 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 23 23:04:02 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.2:
+  + Fix goto window in presentation mode
+  + bgo#648056: Don't allow to hide the toolbar when it's being
+    edited
+  + bgo#647138: Send page dest as integer to other evince instances
+    when '-i' command line switch is used
+  + bgo#647378: Don't jump to find result when the findbar is shown
+    with search text
+  + bgo#644806: Fix error processing some malformed TIFF files
+  + bgo#648365: Clear caches after destroying child widgets
+  + Fix ev_win32_get_locale_dir()
+  + Updated documentation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May  5 10:24:19 UTC 2011 - dimstar@opensuse.org
+
+- Add evince-find-libedocument.patch: gobject-introspection does
+  not find the newly built libedocument3.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:20:57 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 13:24:08 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + bgo#645594: evince icon updated
+  + Updated translations.
+- Changes from version 2.91.92:
+  + Bug fixes:
+    - Save contents of text form fields when they loss the focus
+      (bgo#624921)
+    - Disable "open containing folder" action when no document is
+      loaded (bgo#644613)
+    - Give the keyboard focus to the view when sidebar is closed
+      (bgo#645109)
+    - Fix document loading when filename contains some characters
+      like brackets (bgo#644604)
+    - Another fix for buffer overwrite in dvi-backend (bgo#643882)
+    - Use TIFFOpenW on windows (bgo#644928)
+    - Remove all widgets from the View when reloading the document
+      (bgo#632087)
+    - Use the primary-toolbar style class for the window toolbar
+      (bgo#644118)
+    - Add .png extension when saving images using DnD (bgo#643709)
+    - Update totem-screensaver code from totem sources (bgo#642946)
+  + Documentation:
+    - Relocate help images to fix documentation build (bgo#645410)
+    - Updated information about opening a document
+- Changes from version 2.91.90:
+  + Bug fixes:
+    - Fix focus stealing when scrolling with keyboard (bgo#633475,
+      bgo#623829)
+    - Fix another security issue in the dvi-backend (bgo#640923)
+    - Check for libICE, needed by eggsmclient (bgo#642509)
+    - Rotate with CTRL+Left/Right in presentation mode too
+      (bgo#641772)
+    - Make the toolbar editor fill its window (bgo#641579)
+- Changes from version 2.91.6:
+  + New Features and UI Improvements:
+    - Add support for external links in presentation mode
+      (bgo#628711)
+  + Documentation:
+    - Fix a few minor mistakes in the manual (bgo#640345)
+  + Bug fixes:
+    - Move to next/previous page with media keys in presentation
+      mode too (bgo#625560)
+    - Remember the current page when document is reloaded in
+      presentation mode (bgo#637594)
+    - Check all extensions when saving an image to avoid adding the
+      extension twice (bgo#637461)
+    - Prevent the sidebar to get the focus when selected thumbnail
+      changes (bgo#639408)
+    - Make sure a11y is initialized before checking whether it's
+      enabled (bgo#639850)
+    - Call gdk_notify_startup_complete() when acting as remote to
+      prevent a hung startup notification when opening a document
+      for the second time (bgo#640115)
+    - Fix rendering issue with some fonts in dvi backend.
+- Changes from version 2.91.5:
+  + New Features and UI Improvements:
+    - Install .thumbnailer file to register the thumbnailer instead
+      of using GConf (bgo#638343)
+    - A context menu has been added to bookmarks sidebar to open,
+      rename and remove bookmarks
+  + Bug fixes:
+    - Fix return value in g_return_val_if_fail() macro
+    - Fix several security issues in dvi backend: CVE-2010-2640,
+      CVE-2010-2641, CVE-2010-2642 and CVE-2010-2643
+    - Do not use deprecated API: GdkCursor, GtkStyle, size-request
+- Changes from version 2.91.4:
+  + New Features and UI Improvements:
+    - Port to GtkStyleContext.
+    - Use GAppInfo instead of deprecated gdk_spawn methods.
+    - Document filename is not shown in the window title
+      (bgo#386292)
+    - Support for interal bookmarks (bgo#590655)
+    - Add support for xz compressed documents (bgo#636481)
+    - Add support for .wwf files (they are just PDF documents with
+      another file extension (bgo#636415)
+    - The pixbuf backend has been removed. Evince is a document
+      viewer, not an image viewer. Eog does the latter job much better
+      than evince ever could.
+  + Documentation:
+    - Lots of documentation updates
+  + Bug fixes:
+    - Stop the GtkSpinner when the loading window is hidden
+      (bgo#637390)
+    - Fixes crash when printing operation is cancelled (bgo#635619)
+    - Don't draw a resize grip for Annotation Windows
+- Changes from version 2.91.3:
+  + New Features and UI Improvements:
+    - Add timestamp parameter to SyncSource DBus signal (bgo#632313)
+    - Use gtk_paned_new() instead gtk_[h|v]paned_new()
+  + Bug fixes:
+    - Add sanity-checks to fix several crashes (bgo#594408,
+      bgo#572061)
+    - Use the URI of the input file instead of the local filename in
+      SyncSource DBus signal (bgo#632317)
+    - Fix a crash when clicking the view before document has been
+      loaded (bgo#630999)
+- Changes from version 2.91.2:
+  + New Features and UI Improvements:
+    - Migrate to new size request API (bgo#633480)
+    - Implement GtkScrollable interface in EvView
+    - Migrate to new combo box APIs (bgo#632640, bgo#632600)
+  + Bug fixes:
+    - Fix drawing glyphs with transparency in dvi backend
+      (bgo#494736)
+    - Fix a typo in pkg-config file
+- Changes from version 2.91.1:
+  + New Features and UI Improvements:
+    - Migrate user config dir to XDG fdo directories spec
+      (bgo#522811)
+  + Documentation:
+    - Replace the existing Evince user guide with new topic-based
+      help from the Mallard project (bgo#631371)
+  + Bug fixes:
+    - Fix introspection build for library renames (bgo#631360)
+- Changes from version 2.91.0:
+  + New Features and UI Improvements:
+    - Add timestamp parameter to SyncView D-Bus method (bgo#630576)
+    - Port to gtk3
+    - Layer actions are now supported for PDF document
+    - Add 'Open Containing Folder' action to the File menu
+      (bgo#627443)
+    - Make "Shrink to Printable Area" default option for Page
+      Scaling.
+    - Change gsettings schema path from /apps/evince to
+      /org/gnome/evince
+    - A D-Bus signal is now emitted when document is loaded
+      (bgo#626561)
+    - XPS Documents are now supported (bgo#321868)
+    - Evince daemon can spawn an evince instance when finding a
+      document (bgo#625971)
+  + Bug fixes:
+    - Fix a crash when synctex backward search fails (bgo#630845)
+    - Don't show an empty tooltip for links that don't have tooltip
+      text
+    - Fix build with --disable-dbus (bgo#629498)
+    - Fix a crash during selection when evince is built with gtk2
+- Adapt BuildRequires to GNOME 3 (remove gconf2-devel, replace
+  gtk2-devel with gtk3-devel)
+- Drop evince-dvi-vulnerabilities.patch: fixed upstream
+- Drop evince-dvi-vulnerability-again.patch: fixed upstream
+- Replace GConf2 schemas handling with GSettings schemas handling.
+- Remove deprecated configure options (pixbuf, impress) and stop
+  passing --with-gtk=2.0 as we move to gtk3.
+
+-------------------------------------------------------------------
+Thu Feb 17 15:27:54 CET 2011 - vuntz@opensuse.org
+
+- Add evince-dvi-vulnerability-again.patch to fix another
+  vulnerability in the DVI backend. Fix bnc#671064.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:02:32 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Jan  5 09:23:41 CET 2011 - vuntz@opensuse.org
+
+- Add evince-dvi-vulnerabilities.patch to fix CVE-2010-2640,
+  CVE-2010-2641, CVE-2010-2642, CVE-2010-2643. (bnc#660555).
+
+-------------------------------------------------------------------
+Mon Sep 27 22:30:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Make "Shrink to Printable Area" default option for Page Scaling
+  + Fix build with --disable-dbus (bgo#629498)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 12:23:54 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.92:
+  + Change gsettings schema path from /apps/evince to
+    /org/gnome/evince
+  + bgo#626561: A D-Bus signal is now emitted when document is
+    loaded
+  + bgo#628945: Use GConf again for lockdown settings
+  + Fix a crash during selection when evince is built with gtk2
+  + bgo#625971: Evince daemon can spawn an evince instance when
+    finding a document
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 15:36:13 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + bgo#626407: Do not jump to link dest when clicking with
+    GDK_CONTROL_MASK
+  + Use GDK_BLANK_CURSOR instead of creating our own empty cursor
+  + bgo#626334: Improve findbar message when there are no matches
+  + bgo#626147: Remove #ifdefs for old cairo versions
+  + Updated translations.
+- Drop evince-fix-pc-gtk2.patch: fixed upstream.
+- Pass --with-gtk=2.0 to configure.
+
+-------------------------------------------------------------------
+Fri Aug  6 00:55:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6.1:
+  + Add --with-gtk=2.0|3.0 configure flag (bgo#626030)
+  + Fix a crash with DVI files and empty glyphs (bgo#600552)
+  + Fix a crash when a page is manually entered (bgo#624936)
+  + Updated translations.
+- Changes from version 2.31.6:
+  + New Features and UI Improvements:
+    - Preliminary support for adding new annotations (bgo#168304)
+    - Add confirmation dialog on closing window when document has
+      been modified (Form fields have been filled out or annots
+      have been added/modified) (bgo#168304)
+    - Add an action to edit menu to save current settings as
+      default. Default settings will be used only for new documents
+      that don't have metadata (bgo#620325)
+    - Migrate lockdown to gsettings
+  + Bug fixes:
+    - Update synctex parser from TexLive SVN repository
+      (bgo#624532)
+    - Fix a crash when loading document with inverted colors enabled
+    - Several build improvements
+    - Fix memory leaks when document is reloaded
+    - Fix position of window annotations when moved by the user
+    - Fix build with poppler 0.14 (bgo#624904)
+    - Use cairo instead of gdk_draw API
+    - Only set text and text_layout flags in page cache when a11y
+      might be enabled
+- Add evince-fix-pc-gtk2.patch to make the pkg-config file
+  reference gtk+ 2, not gtk+ 3.
+- Add explicit gtk2-devel BuildRequires.
+- Remove unneeded libglade2-devel BuildRequires.
+- Remove explicit Requires for devel packages in devel subpackage:
+  we'll have pkgconfig()-style Requires automatically.
+- Use %glib2_gsettings_schema_* macros for GSettings schemas
+  installation.
+- Move gir files to devel package.
+
+-------------------------------------------------------------------
+Sun Jul 18 16:26:44 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.5:
+  + New Features and UI Improvements:
+    - Add a new sidebar page to show the list of annotations
+    - bgo#543503: Finish DBus API for synctex support
+    - Switch to GTK+ 3
+  + Bug fixes:
+    - bgo#604125: Make sure annot popups never show up outside the
+      main window
+    - bgo#623456: Set word wrapping mode for text in popup
+      annotations
+- Use gtk3-devel BuildRequires instead of gtk2-devel.
+
+-------------------------------------------------------------------
+Thu Jul 15 21:15:13 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4.1:
+  + bgo#623080: Fix build when poppler_page_get_text_layout is not
+    available
+- Changes from version 2.31.4:
+  + New Features and UI Improvements:
+    - bgo#309015: Implement AtkText interface in EvView
+    - bgo#543503: Add preliminary SyncTex support
+  + Bug fixes:
+    - bgo#530018: Don't save print document settings into global
+      file
+    - bgo#621750: Reload presentation view when document changes
+    - bgo#621386: Remove hard-coded reason in totem-scrsaver
+    - bgo#619248: Fix opening cbz files with [] in archive
+- Changes from version 2.31.3:
+  + New Features and UI Improvements:
+    - bgo#303365: Use a dynamic pixbuf cache size based on document
+      page size. It allows us caching more pages for lower scale
+      factors and increase zoom level by caching fewer pages.
+  + Bug fixes:
+    - bgo#619825: Fix fade animations
+    - bgo#619948: Fix a crash when starting animation in
+      presentation mode
+    - bgo#620548: Remove set_focus_on_map and set NOTIFICATION type
+      hint for loading window. It prevents focus stealing and skips
+      taskbar and pager hints
+    - bgo#605776: Fix build with GSEAL enabled
+    - Remove circular dependencies in Makefiles and fix some
+      compiler warnings
+- Changes from version 2.31.2:
+  + New Features and UI Improvements:
+    - Port to GDBus
+    - bgo#619335: Do not use the gconf gsettings backend any more
+    - Use cairo to draw search results
+    - Use a loading window to show loading progress information
+      instead of the old 'Loading ...' text rendered on every page
+  + Bug fixes:
+    - bgo#610548: Fix localization on Windows
+    - Convert relative path to absolute path for evince-previewer
+    - bgo#616515: Fix opening files with '#' in its name
+    - Accept keyboard focus in window annotations
+    - bgo#617736: Add .c files to the introspection sources
+- Changes from version 2.31.1:
+  + New Features and UI Improvements:
+    - bgo#617580: Add saved documents with "save a copy" to recent
+      file list
+    - Port override_restrictions gconf key to GSettings
+    - bgo#614400: Add icons to the recent items, and always show
+      them in menu
+  + Bug fixes:
+    - Invert colors of pages and thumbanils when loading in
+      inverted color mode (bgo#616110, bgo#616111)
+    - Take default settings from last document opened. Fixes
+      regression caused by migration to gio metadata (bgo#606090)
+    - Ellipsise the recent action's label
+    - Make inverted colors mode work in presentation mode too
+      (bgo#614693)
+    - Respect GNOME22_USER_DIR env variable (bgo#613637)
+    - Fix loading of local documents when uri contains a page
+      destination (bgo#616515)
+    - Make gnome-doc-utils optional
+    - Update icons to match gnome-icon-theme appearance
+      (bgo#614747)
+    - Make sure there's a new valid page range before updating
+      caches (fdo#27599)
+    - Fix .desktop file according to CorrectDesktopFiles GNIOME
+      Goal (bgo#592733)
+    - Update FSF address everywhere (bgo#514607)
+    - Fix loading of compressed password-protected documents
+      (bgo#613959)
+    - Add command line option to open document at a given page
+      index (bgo#613449)
+    - Fix build with GSEAL_ENABLE for libview and libdocument
+      (bgo#605776)
+    - Close previewer window with control + w (bgo#612972)
+    - Fix keybindings in previewer window (bgo#612972)
+  + Updated translations.
+- Drop upstream fixed evince-bgo617154.patch.
+
+-------------------------------------------------------------------
+Tue May 25 15:57:55 UTC 2010 - dimstar@opensuse.org
+
+- Add evince-bgo617154.patch to avoid dead-lock if the dot-folder
+  does not exist.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:20:29 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + bgo#614693: Make inverted colors mode work in presentation mode
+  + bgo#613637: Respect GNOME22_USER_DIR env variable
+  + bgo#616515: Fix loading of local documents when uri contains a
+    page destination
+  + bgo#606090: Take default settings from last document opened.
+    Fixes regression caused by migration to gio metadata
+  + bgo#614747: Update icons to match gnome-icon-theme appearance
+  + fdo#27590: Make sure there's a new valid page range before
+    updating caches
+  + bgo#514607: Update FSF address everywhere
+  + bgo#613959: Fix loading of compressed password-protected
+    documents
+  + bgo#612972: Close previewer window with control + w
+  + bgo#612972: Fix keybindings in previewer window
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 23:03:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix scale calculation on rotated monitors in presentation mode
+  + Save current page when closing window in presentation mode
+    (bgo#612656)
+  + Fix rendering of documents with non uniform page size when in
+    presentation mode
+  + Use monitor height instead of screen height to calculate page
+    scale in presentation mode (bgo#608924)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 10 21:03:19 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + Fix build with gtk+ >= 2.19.7
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 23:55:54 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + New Features and UI Improvements:
+    - DVI backend support on windows (bgo#602910)
+  + Documentation fixes:
+    - Modernise API docs
+  + Bug fixes:
+    - Fix dpi calculation (bgo#608586)
+    - Allow adding actions for more than one item in view popup
+      menu (bgo#609497)
+    - Add gconf schemas for comic cbt files (bgo#609501)
+    - Update totem-scrsaver from totem sources (bgo#610173)
+    - Fix linking with pedantic linkers (bgo#609895)
+    - Do not link evince shell to poppler directly (bgo#608832)
+    - Several translatable messages fixed (bgo#608698)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 21 21:03:35 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags instead of %jobs.
+- Split nautilus extension in a separate package.
+
+-------------------------------------------------------------------
+Wed Jan 13 02:35:07 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + New Features and UI Improvements:
+    - Make Home/End keys go to first/last page in presentation mode
+      too (bgo#358462)
+    - Allow finish presentation by clicking on end page
+      (bgo#309364)
+    - Add custom print tab to printing dialog with several page
+      scale options (bgo#599468, bgo#599470, bgo#599547)
+    - Add support for remote files in evince thumbnailers
+      (bgo#605218)
+    - Add evince icon to the windows executable (bgo#596401)
+  + Bug fixes:
+    - Fix transition of pages with duration=0 in presentation mode
+    - Fix vertical white line shown in presentation mode with
+      documents with black background (bgo#438760)
+    - Fix fickering and blank screen issues when changing pages
+      fast in presentation mode (bgo#602738)
+    - Fix printing on Windows (bgo#604705)
+    - Disable text selection in presentation mode (bgo#605554)
+    - Make comics backend also compile on Windows (bgo#605146)
+    - Remove comics_regex_quote() in favor of always using
+      g_shell_quote() (bgo#605092)
+    - Properly redrawn properties view when document is reloaded
+      (bgo#605169)
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 23 00:07:58 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.4:
+  + New Features and UI Improvements:
+    - Always show rotate icons (bgo#599398)
+    - EvPrintOperation has been moved to libview so that it can be
+      used by EvView users (bgo#604750)
+    - Support for cbt comic files (bgo#588266)
+  + Bug fixes:
+    - Do not fail to open external uri links that are relative
+      paths (bgo#604716)
+    - Do not hardcode BINDIR on Windows (bgo#605001)
+    - Fix a crash in djvu backend on windows (bgo#604919)
+    - Replace mkdtemp with our own _ev_g_mkdtemp to make it
+      portable (bgo#604917)
+    - Include a copy of some icons from gnome-icon-theme to be used
+      as fallback on platforms like window where gnome-icon-theme
+      is not available (bgo#596400)
+    - Fix 0x0 page size always shown in properties view
+    - Do not hide page selector widget on invalid input
+      (bgo#603714)
+    - Split EvPixbufCache into dynamic and static data. Static page
+      data (links, annots, images, text and forms) that don't
+      depend on current scale/rotation, have been moved to
+      EvPageCache and are never removed. (bgo#602405)
+    - Fix a typo in EV_RENDER_CONTEXT macro definition (bgo#603857)
+    - Code cleanups and improvements in libview (bgo#603858)
+  + Updated translations.
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+- Remove gir-repository BuildRequires: it shouldn't be needed with
+  recent versions of gtk2.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:10:35 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + New Features and UI Improvements:
+    - Add inverted colors view mode (bgo#321823)
+    - Add options to open/save attachment annotations to context
+      menu
+  + Bug fixes:
+    - Fix infinite loop when scrollbar visibility changes in
+      fit-with mode
+    - Do not resize the window when zoom in/out with CTRL+Scroll
+      (bgo#602798)
+    - Keep scroll position when reloading (bgo##602445)
+    - Make "p" and "n" accels unsensitive while searching
+  + Updated translations.
+- Changes from version 2.29.2:
+  + New Features and UI Improvements:
+    - Add support for PDF File Attachment Annotations (bgo#601839)
+    - Use "n" and "p" keys for page jump (bgo#601217)
+    - Update actions sensitivity when gconf keys change
+      (bgo#568433)
+  + Documentation fixes:
+    - Make series ID unique (bgo#599726)
+  + Bug fixes:
+    - Fix saving attachments
+    - Make sure view is redrawn as soon as current page is rendered
+      (bgo#601433)
+    - Fix documentation of default flag values in configure
+    - Do not mark properties name and desc as translatable
+      (bgo#509824)
+    - Fix build with glib < 2.22.0 (bgo#600338)
+    - Disable print page setup options according to lockdown
+      (bgo#568433)
+    - Fix loading of remote files
+    - Correctly process --with-smclient arguments (bgo#590174)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:21:40 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.1:
+  + New Features and UI Improvements:
+    - Embed page setup settings in the print dialog (bgo#591551)
+    - A new tab has been added to properties dialog to show
+      information about the document license (bgo#349173)
+    - Use different processes for every document opened.
+      (bgo#583680, bgo#434966, bgo#497388, bgo#524633, bgo#586087)
+    - Use GVFS metadata instead of our own xml based
+      implementation. (bgo#586841)
+    - When scrolling a page, move one screen leaving one line
+      context to help to visually track the document as it moves.
+      (bgo#170871)
+    - Use GtkInfoBar instead of GeditMessageArea for the message
+      area (bgo#592785)
+    - EvPageCache has been splitted up into document part (moved to
+      EvDocument which has been converted into an abstract class
+      instead of an interface) and view part: EvDocumentModel. This
+      allows to have more than one EvView for the same document, so
+      that "Open a Copy" can be implemented without using the symlink
+      hack. (bgo#573641)
+  + Bug fixes:
+    - Several fixes and cleanups in comics backend
+    - Don't exit with non-writable $HOME
+    - Clean up temp file handling to make sure we can cope with not
+      being able to create our temp directory (bgo#595372)
+    - Set page orientation of each page when printing so that
+      documents with mixed portrait/landscape pages print correctly
+      (bgo#599470)
+    - Preserve aspect ratio when scaling page for printing
+      (bgo#599468)
+    - Fix a crash when we don't have a DBUS connection
+    - Make sure total_num_bytes > 0 before using it in progress
+      callbacks (bgo#597691)
+    - Escape document URI before showing it in progress area
+      (bgo#597691)
+    - Fix a crash due to an uninitialized variable (bgo#597154)
+    - Fix a crash when there are form field widgets active during
+      rotation (bgo#593316)
+    - Remarks the selected thumbnail after rotation (bgo#595548)
+    - Don't change current page when rotating documents with
+      different page sizes (bgo#595704)
+    - Fix thumbnails rotation when loading a rotated document
+      (bgo#595718)
+    - Save images as png or jpg when the filename has no extensions
+      (bgo#595079)
+    - Populate destination page when reloading the document
+      (bgo#570054)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:15:47 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + bgo#570054 - Populate destination page when reloading the
+    document
+  + bgo#595079 - Save images as png or jpg when the filename has no
+    extensions.
+
+-------------------------------------------------------------------
+Tue Aug 11 15:57:11 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.90:
+  + Let scroll wheel change page when in non-continuous best-fit
+    mode (bgo#562257)
+  + Show print progress information when using GtkPrintOperation
+  + Don't show crash recovery dialog when requested file is the
+    only one to be recovered (bgo#578894)
+  + Disable crash recovery when D-BUS is disabled (bgo#578894)
+  + Grab focus on view widget after setting metadata (bgo#589300)
+  + Fixes segmentation violation when print file format is empty
+    (bgo#589226)
+  + Use AM_V_GEN to make custom commands silent (bgo#585355)
+  + Don't install schema files when building without gconf
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:55:21 CEST 2009 - vuntz@novell.com
+
+- Enable gobject-introspection support: add
+  gobject-introspection-devel and gir-repository BuildRequires,
+  pass --enable-introspection to configure.
+
+-------------------------------------------------------------------
+Mon Jul 20 01:10:00 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + Compute selections on button press for word/line selections
+    (bgo#562059)
+  + Fix several even/odd multipage issues (bgo#583429)
+  + Register thumbnailing for gzip/gzip dvi files (bgo#588013)
+  + Get rid of shave with AM_SILENT_RULES automake option
+    (bgo#585355)
+  + Make evince output pdf on supported printers (bgo#585442)
+  + Fix build on windows
+  + Determine data directory on runtime on windows
+  + Fix build without GConf
+  + Fix several introspection build issues (bgo#585971)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 16 03:01:23 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + New Features and UI Improvements:
+    - Update the hildon port
+    - Complete the win32 port (bgo#339172)
+    - Allow activate the menubar in fullscreen mode (bgo#504243)
+    - Do not create popup window if the annot doesn't have a popup
+    - Add tests for printer settings (bgo#583976)
+    - Remember and reuse "Save a Copy..." path (bgo#485195)
+    - Support for cb7 using the p7zip commands in comics backend
+      (bgo#565174)
+    - Parse xml metadata to detect PDF/A documents (bgo#582206)
+   + Bug fixes:
+    - Several build fixes and improvements
+    - Fix page transitions in presentation mode (bgo#583652,
+      bgo#581881)
+    - Scale according to paper size before rendering for printing
+    - Fix multipage even/odd printing issues (bgo#583429, #583388)
+    - Gracefully work with FITB destinations and friends
+      (bgo#583276)
+    - Fix double to int conversion in thumbnails_get_dimensions
+      (bgo#581524)
+    - Ohter bugs fixed: bgo#584617, bgo#585497
+  + Updated translations.
+- Add suggest for p7zip and unzip for the comics backend.
+
+-------------------------------------------------------------------
+Tue May 19 04:59:25 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + New Features and UI Improvements:
+    - Use GtkPrintOperation when printing for the backends that
+      support rendering into a cairo context (bgo#557112)
+    - Recover previous session when running evince after a crash
+      (bgo#578894)
+    - Preliminary annotations support (bgo#315002)
+    - Rename Print Setup menu entry as Page Setup for consistency
+      with the GTK+ dialog title (bgo#581109)
+    - Added F3 as a find-next accelerator key (bgo#579072)
+    - Support the free Gna! unrar tool in comics backend
+      (bgo#552074)
+    - Add evince-previewer as a separate applicaton that implements
+      the printing preview
+  + Bug fixes:
+    - Fix handling of the tmp folder (bgo#582108)
+    - Abort dnd operations originated in the same Evince window
+      (bgo#582077)
+    - Disable bouncing during scrolling (bgo#533534)
+    - Fix build without gconftool-2 (bgo#581441)
+    - Fix documentation build (bgo#579671)
+    - Fix error handling of broken documents (bgo#580886)
+    - Fix several memory leaks in comics backend (bgo#552074)
+    - Escape URIs for display (bgo#581064)
+    - Resync with libegg to remove deprecated GTK+ symbols
+      (bgo#580556)
+    - Correct check for exit status of commands in comics backend
+      (bgo#579656)
+    - Add -no-undefined flag for Cygwin build (bgo#580058)
+    - Use g_file_make_symbolic_link to create symlinks (bgo#339172)
+    - Delete the temp symlink created when opening a copy
+    - Don't redraw again when zoom is set more than once to the
+      same scale factor
+    - Fix print preview of empty selection (bgo#517735)
+    - Don't prevent unmounting in case the initial cwd is on an
+      external device (bgo#575436)
+    - Create and load the document based on the mime-type provided
+      by nautilus instead of using our own documents factory.
+      (bgo#533917)
+    - Fix endianess issues in dvi and tiff backends (bgo#578433,
+      bgo#509920)
+    - Fix memory leak in tiff backend (bgo#578285)
+    - Fix path where accels file is saved (bgo#577500)
+    - Fix fading animations
+    - Translate the categories in the nautilus properties tab
+      (bgo#575085)
+    - Other bugs fixed: bgo#539972, bgo#578436, bgo#582543
+  + Updated translations.
+- Suggests unrar for the comics backend.
+
+-------------------------------------------------------------------
+Thu Apr 16 14:16:22 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Don't prevent unmounting in case the initial cwd is on an
+    external device (bgo#575436)
+  + Create and load the document based on the mime-type provided by
+    nautilus instead of using our own documents factory.
+    (bgo#533917)
+  + Fix endianess issues in dvi and tiff backends (bgo#578433,
+    bgo#509920)
+  + Fix memory leak in tiff backend (bgo#578285)
+  + Fix path where accels file is saved (bgo#577500)
+  + Fix fading animations
+  + Translate the categories in the nautilus properties tab
+    (bgo#575085)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 26 15:17:16 CET 2009 - crrodriguez@suse.de
+
+- use --disable-static instead of removing static libraries at %install 
+
+-------------------------------------------------------------------
+Mon Mar 16 23:16:39 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Fix compiler warning when building with -Wformat
+    (bgo#574168)
+  + Fix a crash with encrypted documents
+  + Translation updates
+- Remove libstdc++, scrollkeeper and texlive-bin-devel from
+  BuildRequires
+- Add gtk2-devel to Requires for -devel package
+- Use find %{buildroot} -type f -name "*.*a" -exec %{__rm} -fv {} +
+  to remove *.*a files
+- Don't package omf files twice (they are in the lang package too).
+
+-------------------------------------------------------------------
+Fri Mar  6 16:03:59 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + Show the 'jump to page' window in the right GdkScreen
+    (bgo#560541)
+  + Make our own thumbnail when the provided one doesn't have the
+    needed size (bgo#323198, bgo#307357)
+  + Reduce the restriction on the minimum size of thumbnails from
+    40 to 1 (bgo#323198)
+  + Use GOption in thumbnailer
+  + Fix saving a copy of encrypted PDF documents (bgo#566791)
+  + Don't use g_quark_from_static_string in a loadable module
+  + Use g_object_unref() instead of gdk_pixbuf_unref() in impress
+    backend (bgo#571707)
+  + Updated translations.
+- Remove -fno-strict-aliasing from CFLAGS.
+
+-------------------------------------------------------------------
+Sun Feb 22 17:05:41 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + Fix several memory leaks
+  + Fix errors handling and propagation
+  + Fix several translation strings in properties dialog
+    (bgo#571787)
+  + Do not resize the window on reloading (bgo#571051, bgo#304249)
+  + Experimental introspection support (bgo#569083)
+  + Use g_set_error_literal()
+  + Other firxes for win32 (bgo#339172)
+  + Make session manager code compile for win32 (bgo#339172)
+  + Update totem-screensaver from totem svn to make it build for
+    win32 (bgo#339172)
+  + Make use of GConf optional (bgo#339172)
+  + Fix i18n in libdocument
+  + Include gi18n-lib.h instead of gi18n.h in libs and backends
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Feb  5 11:37:29 CET 2009 - vuntz@novell.com
+
+- Remove BuildRequires: docbook_4.
+- Merge doc package in devel package: it's gtk-doc, not user
+  documentation.
+
+-------------------------------------------------------------------
+Thu Feb  5 06:08:26 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.90:
+  + Split API documentation into libdocument, libview and shell
+    (bgo#568465)
+  + Fix symbols conflict in impress backend (bgo#569998)
+  + Add mnemonics to buttons in search bar (bgo#569212)
+  + Fix a crash when printing (bgo#569328)
+  + Fix --version command line option (bgo#562869)
+  + Use versioned directory for backends (bgo#569082)
+  + Add EV_DEFINE_BOXED_TYPE and EV_DEFINE_INTERFACE macros
+    (bgo#568228)
+  + Sync EggToolbarEditor with libegg 
+  + Respect directory umask and setgid when saving files
+    (bgo#568593)
+  + Add libtool versioning, pkg-config files and single headers for
+    libdocument and libview (bgo#568224, bgo#568220, bgo#568229,
+    bgo#568227)
+  + Remove G_OBJECT casts from g_signal_connect calls (bgo#568386)
+  + Install several missing header files of libdocument and libview
+    (bgo#567787, bgo#567790)
+  + Other bugs fixed: bgo#569120, bgo#569231, bgo#569327,
+    bgo#570077
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Jan 31 09:19:01 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + Move EvView specific code to a libevview library so that it can
+    be embbeded in other applications (bgo#567751)
+  + Other improvements for embbeders (bgo#567785, bgo#567788,
+    bgo#567789)
+  + Fix a minor typo
+  + Fix the API docs build (bgo#568171)
+  + Simplify drag data handling (bgo#558084)
+  + Several portability issues (bgo#339172)
+  + Fix mnemonic conflict (bgo#567937)
+  + Other bugs fixed: bgo#567910
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Jan 23 09:29:21 CET 2009 - vuntz@novell.com
+
+- Drop evince-2.19.92-correct-help-uri.patch: with GTK+ 2.14 or
+  later, upstream now uses gtk_show_uri(), which renders the makes
+  useless.
+
+-------------------------------------------------------------------
+Fri Jan 23 05:15:36 CET 2009 - vuntz@novell.com
+
+- Remove useless BuildRequires.
+- Drop evince-thumbnailer-g_type_init.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jan  6 08:20:12 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.4:
+  + Show progress information when loading/saving remote files
+    (bgo#370958)
+  + Remember page setup options (bgo#525185, bgo#349102)
+  + Show a confirmation dialog when there are pending print jobs
+    while closing the main window (bgo#480964)
+  + Show progress information when printing (bgo#482770)
+  + Add document URI to properties page (bgo#555376)
+  + Bump glib requirement to fix build with older versions
+  + Fix mime type handling
+  + Fix saving images to remote locations
+  + Do not try to jump to the location of the find result for every
+    match, but only for the first one. It makes searching really
+    faster. (bgo#564774)
+  + Fix zip mime-type in comics backend
+  + Fix several memory leaks
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Dec 20 09:24:59 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.2:
+    * PDF Optional content (layers) support
+    * The password dialog has been reworked in order to make it more
+      hig compliant and consistent (bgo#562496)
+    * Improved keyring support. Password dialog is not shown anymore
+      when the password is already in the keyring
+    * Support for monitor and reload of remote documents
+      (bgo#555399)
+    * Fix opening comic documents with a wrong but valid extension
+      (bgo#562143)
+    * Fix a crash when searching (bgo#558377)
+    * Fix several crashes when selecting text (bgo#561393)
+    * Use the message area instead of popup dialogs for any error and
+      warning messages
+    * Adapt to the new single-include policy (bgo#558064)
+    * Fix page transition in presentation mode (bgo#516749)
+    * Other bugs fixed: (bgo#558066)
+
+-------------------------------------------------------------------
+Tue Oct 21 21:16:13 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Bugs fixed: bgo#556162, bgo#556264, bgo#534684, bgo#555801, bgo#554500,
+    bgo#552382, bgo#553369, bgo#555134
+  + Fix several memory leaks
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Sep 23 10:26:22 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.0:
+  + Use GdkAppLaunchContext when available to launch external uris
+  + Use the message area to show errors when lauching external uris
+    instead of a popup window
+  + Assume invalid uris are http uris (bgo#552071)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 10 14:02:28 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.92:
+  + Bugs fixed: bgo#529833, bgo#550136, and bgo#547164
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 02 15:59:58 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Use EggSMClient from libegg instead of gnome-client and remove
+    libgnome and libgnomeui dependencies
+  + Implement document_get_page_label in tiff backend
+  + Bugs fixed: bgo#549163, bgo#548653, bgo#548444, bgo#547440,
+    bgo#548462
+  + Start up in the right workspace when resuming a previous session
+  + Fix metacity warnings shown in ~/.xsession-errors
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 29 15:59:58 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.6:
+  + .desktop file fix (bgo#544237)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  8 11:28:28 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.5:
+  + A warning message is shown in the message area when the
+    document has no pages (bgo#171588)
+  + Automaticly reload the document when the file has changed on
+    disk (bgo#304249)
+  + Added Ctrl-Insert keybinding for copying text and Ctrl+N for
+    opening a copy (bgo#526523 and bgo#532239)
+  + Save as action has been added as a toolbar button too
+  + Primary selection is also updated when copying a link address
+    (bgo#520855)
+  + Added GtkMountOperation, copied from gtk+
+  + GS code has been removed; libspectre is now required to build
+    the PostScript backend
+  + Intercept window manager's fullscreen request in order to
+    run/stop fullscreen mode (bgo#493541)
+  + 7-zip compressed commics support (bgo#532312)
+  + Add Alt+Left and Alt+Right shortcuts to rotate (bgo#539972)
+  + Media player keys support (bgo#539971)
+  + Bugs fixed: bgo#537574, bgo#530852, bgo#530202, bgo#520290,
+    bgo#536883m bgo#533323, bgo#533897, bgo#533896, bgo#534493,
+    bgo#537535, bgo#531956, bgo#542548, bgo#542924, bgo#540950,
+    and bgo#542001
+  + Updated translations
+- Respin evince-2.19.92-correct-help-uri.patch.
+
+-------------------------------------------------------------------
+Fri Jun 20 20:32:22 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.2:
+  + Bugs fixed: bgo#533323, bgo#530852, and  bgo#520290
+  + Updated translations
+- Drop an obsolete patch:
+  evince-bnc379750-impress-parser-crashes.patch.
+
+-------------------------------------------------------------------
+Thu May  1 10:28:33 CEST 2008 - hpj@suse.de
+
+- Added evince-bnc379750-impress-parser-crashes.patch, which
+  fixes bnc#379750.
+
+-------------------------------------------------------------------
+Thu Apr 10 16:56:09 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1.1:
+  + Bugs fixed: bgo#526799, bgo#526517, bgo#307087, bgo#524288,
+    bgo#525015, bgo#525009, bgo#521797, bgo#523069, bgo#508845,
+    bgo#365332, bgo#521224, and bgo#524112
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 19:11:30 CET 2008 - rodrigo@suse.de
+
+- Tag patches 
+
+-------------------------------------------------------------------
+Fri Mar 14 04:25:04 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Do not print when Escape is pressed to close printing dialog
+    (bgo#495107)
+  + Fix a crash in nautilus properties page (bgo#519679)
+  + Fix a crash with transition effects (bgo#519106)
+  + Fix document mime type detection (bgo#518874)
+  + Fix a crash in forms (bgo#518831)
+  + Fix images extraction (bgo#516237)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 20:13:02 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Bugs fixed: bgo#512370, bgo#513934, bgo#482720, bgo#512719,
+    bgo#512720, bgo#512718, bgo#512771, and bgo#513203
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 02:31:23 CET 2008 - jpr@suse.de
+
+- Add evince-thumbnailer-g_type_init.patch (bnc #358405)
+
+-------------------------------------------------------------------
+Thu Jan 31 22:47:40 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+
+  + This release overrides document permissions by default. See
+    http://bugzilla.gnome.org/show_bug.cgi?id=382700 for more
+    information about this.
+  + Ghostscript interface for PostScript documents is now
+    deprecated and libspectre is suggested instead
+  + Port to gio and drop gnome-vfs dependency
+  + Scroll pages in page entry with mouse wheel (bgo#324122)
+  + Automatic scrolling in context menu (bgo#323670)
+  + Kinetic scrolling (bgo#4612713)
+  + New plugin system for backends (bgo#351348)
+  + Allow saving images in formats other than PNG (bgo#500209)
+  + Add support for page transitions (bgo#458460)
+  + Override document restrictions by default (bgo#382700)
+  + Use up/down arrows instead of left/right (bgo#170081)
+  + Reset cursor correctly (bgo#501603, bgo#509958)
+  + Use GSlice to allocate memory (bgo#475972)
+  + Do not limit minimum zoom factor in best fit/fit width mode
+    (bgo#503805)
+  + Use libspectre, if available, for the ps backend (bgo#317106,
+    bgo#499787, bgo#501235, bgo#421879, bgo#445797, bgo#443859,
+    bgo#486547, bgo#386005, bgo#507705)
+  + Put RTL marker in recent file list (bgo#509076)
+  + Put Nautilus extension in right place (bgo#505359)
+  + Avoid filename quoting issues (bgo#502500)
+  + Repair horizontal scrolling with shift (bgo#483412)
+  + Gnome Keyring is now an optional dependency (bgo#509676)
+  + Reduce memory consumption by rendering images on demand
+  + Fix printing in dvi backend when filename contains white spaces
+  + Other bugs fixed: bgo#502843, bgo#460658, bgo#504721, and
+    bgo#511635
+  + Updated translations
+- Split out a -devel subpackage.
+
+-------------------------------------------------------------------
+Fri Jan 25 11:07:33 CST 2008 - maw@suse.de
+
+- Update to version 2.21.1:
+  + New Features and UI Improvements:
+    * Use message area for notification about errors
+    * Some print settings for documents are stored in metadata
+    * Added command line option for search
+    * Expander with a recent documents is added to toolbar
+    * Egg-recent code dropped
+    * Djvu, dvi and comics are enabled by default
+    * Support for links with URI's like mailto (Pascal Terjan)
+    * Removed the shadow of the fullscreen toolbar
+  + Bug fixes:
+    * Tiff documents were rendered with wrong colors
+    * Fix endless loop when zero pages per sheet is selected
+    * Do not jump to the first page when reloading from command
+      line
+    * Memory leak fix
+    * Fix printing with poppler splash backend
+    * Fix a crash when printing with the gnome-print dialog
+    * Warning fix
+    * Printing multiple pages per sheet fixes
+    * Respect ranges order during print
+    * Silently ignore unknown form fields
+    * Do not show the toolbar in fullscreen mode if the main
+      toolbar is not visible
+    * Give priority to form fields over images
+  + Updated translations
+- Remove abuild.patch
+- Respin evince-2.19.92-correct-help-uri.patch and rename it to
+  evince-2.21.1-correct-help-uri.patch.
+
+-------------------------------------------------------------------
+Tue Oct 16 14:41:34 CEST 2007 - sbrabec@suse.cz
+
+- Package provides replacement for ggv and gpdf.
+
+-------------------------------------------------------------------
+Thu Oct 11 18:40:37 CEST 2007 - sbrabec@suse.cz
+
+- poppler devel package names prepended by "lib".
+
+-------------------------------------------------------------------
+Wed Oct 10 23:33:02 CEST 2007 - maw@suse.de
+
+- Remove evince-poppler-0.5.4.patch,
+  evince-poppler-0.5.4-ifdef-cleanup.patch, and
+  evince-poppler-0.5.4-ifdef-zoom-cleanup.patch, which were only
+  necessary to make evince build against an old version of poppler.
+
+-------------------------------------------------------------------
+Mon Oct  8 17:05:25 CEST 2007 - sbrabec@suse.cz
+
+-  Use binding specific poppler devel package.
+
+-------------------------------------------------------------------
+Mon Oct  1 20:37:26 CEST 2007 - jpr@suse.de
+
+- Don't use cairo rendering patch for zoom (#329047)
+
+-------------------------------------------------------------------
+Tue Sep 18 15:44:18 CEST 2007 - maw@suse.de
+
+- Update to version 2.20.0:
+  + Forms support broken by forgotten ifdef fix fixed
+  + Fixed an issue with making a copy and xfer to different file
+    system
+  + Desktop file fixes
+  + Updated translations
+- Respin evince-poppler-0.5.4-ifdef-cleanup.patch.
+
+-------------------------------------------------------------------
+Sun Sep 16 20:14:09 CEST 2007 - jpr@suse.de
+
+- Add evince-poppler-0.5.4-ifdef-cleanup.patch which augments 
+  evince-poppler-0.5.4.patch.  The original patch caused print
+  rendering code to be #ifdef'ed out and overloaded the meaning of an
+  #ifdef variable (#310058))
+
+-------------------------------------------------------------------
+Sat Sep 15 02:56:45 CEST 2007 - hpj@suse.de
+
+- Add evince-2.19.92-correct-help-uri.patch, which lets us find our
+  documentation in help-bundle/.
+
+-------------------------------------------------------------------
+Mon Sep 10 18:55:06 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.92:
+  + The poppler requirement upstream has been bumped to 0.6 (but
+    we continue to build against 0.5.4, so respin
+    evince-poppler-0.5.4.patch)
+  + Restart searches when reloading a document with the find bar
+    visible
+  + Don't jump to the first page when reloading a document from the
+    last page
+  + Don't update visibility when changing a chrome flag
+  + Use GTK_UNIT_POINTS instead of GTK_UNIT_PIXEL
+  + Make sure current-page <= end-page in continuous mode
+  + Ignore outline items without a title
+  + Use only drag mouse cursor during a drag op
+  + Actually fix printing regressions
+  + Add support for double and triple click selections
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 30 23:18:31 CEST 2007 - maw@suse.de
+
+- Remove perl-dont-interpolate-at-sign.patch, which was working
+  around a temporarily broken intltool.
+
+-------------------------------------------------------------------
+Wed Aug 29 17:37:30 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4
+  + The big bump in version number is due to evince now following
+    version numbers used by much of the rest of the GNOME project
+  + Find works when findbar is hidden (Justin Blanchard)
+  + Use directly cairo_surface_get_content (Jeff Muizelaar)
+  + Great speedup by using CAIRO_FORMAT_RGB24 instead of
+    CAIRO_FORMAT_ARGB32 (Jeff Muizelaar)
+  + Fix for embedded thumbnails dimension and rotation (Carlos
+    Garcia Campos)
+  + Avoid ifdefs inside macros (Jens Granseuer)
+  + Memory leak fixes (Justin Blanchard, Hiroyuki Ikezoe)
+  + New icon sizes (Andreas Nilsson)
+  + Invalid read fix (Justin Blanchard)
+  + Fix multihead problems in toolbar editor (Carlos Garcia Campos)
+  + Use the same cairo context for every page in the same expose
+    event (Carlos Garcia Campos)
+- Add perl-dont-interpolate-at-sign.patch.
+
+-------------------------------------------------------------------
+Tue Aug 14 14:28:16 CEST 2007 - jpr@suse.de
+
+- Build evince with PDF support and poppler 0.5.4 (#293561)
+- Build evince with dejavu support (#288641)
+
+-------------------------------------------------------------------
+Tue Aug  7 22:53:47 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:56:41 CEST 2007 - mauro@suse.de
+
+- Remove the ExcludeArch per Ro request. 
+
+-------------------------------------------------------------------
+Wed Aug  1 18:19:32 CEST 2007 - mauro@suse.de 
+
+- Update to version 0.9.3 
+- Added an ExcludedArch for ia64 and s390
+- Fix a header problem with ev-link, use new gtk tooltips when available
+ instead of ev-tooltip. 
+- Fix compile warnings, fix memory leak,  
+- Bugfix for bug #396535, #449462, #460862, #437681, #460909, #458111, 
+  #455667, #452872, #449734, #452850, #349433,  #450148, #415032.
+
+-------------------------------------------------------------------
+Fri Jul  6 16:40:30 CEST 2007 - maw@suse.de
+
+- Update to version 0.9.1
+- New features:
+    * Printing support in djvu documents (Alaska Subedi)
+    * Optional drop of libgnome dependency (Ross Burton)
+    * Print button for preview mode (Carlos Garcia Campos)
+    * Remember print settings (Carlos Garcia Campos)
+    * Use gtk+ builtin paper list to identify the document's paper size (Carlos Garcia Campos)
+    * Start rendering pages before any other jobs (Carlos Garcia Campos)
+    * Developer documentation updated. (Iñigo Martínez)
+    * History button improvements (Nickolay Shmyrev)
+    * Cairo-based renderer for pages and selections of PDF, DVJU and DVI documents (Carlos Garcia Campos)
+    * PDF exporter for printing DVI documents (Alaska Subedi)
+    * Zoom icon artwork (Michael Monreal)
+    * Patch to avoid frequent process wakeup for metadata handling (Bastien Nocera, Arjan van de Ven)
+    * Bumped poppler requirements to 0.5.9 (Carlos Garcia Campos)
+    * Changed sidebar ordering (Wouter Bolsterlee)
+    * Removed extra locking of a main loop to speed up rendering (Carlos Garcia Campos)
+- Bug fixes and updated translations
+- Add abuild.patch.
+
+-------------------------------------------------------------------
+Thu Jun  7 13:06:39 CEST 2007 - sbrabec@suse.cz
+
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Mon May 14 19:10:54 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme and hicolor-icon-theme from both
+  Requires and BuildRequires [#247450] 
+
+-------------------------------------------------------------------
+Fri Apr 20 14:53:31 CEST 2007 - aj@suse.de
+
+- Use texlive for building.
+
+-------------------------------------------------------------------
+Wed Apr 11 13:28:02 CDT 2007 - maw@suse.de
+
+- Update to version 0.8.1
+- Bugfixes:
+  * Default resolutions used  when it's not provided by TIFF
+    document (Carlos Garcia Campos)
+  * Added support for ps, eps and compressed documents 
+    thumbnails (Carlos Garcia Campos)
+  * Implemented font color specials in the DVI backend (Ricardo Markiewicz)
+  * DOCUMENTS folder from xdg-data-dirs is used as default folder when
+    opening a file chooser (Matthias Clasen)
+  * unlink-tempfile is used instead of unlink-temp-file (Carlos Garcia Campos)
+- Updated translations for the ca, gl, eu, es, cs, and dz locales.
+
+-------------------------------------------------------------------
+Fri Mar 23 11:57:17 CST 2007 - maw@suse.de
+
+- Update to version 0.8.0
+- b.g.o fixes: 416447, 334542, 409828, 392186, 318568, and 164755.
+
+-------------------------------------------------------------------
+Thu Mar  8 14:57:23 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Wed Mar  7 19:19:27 CET 2007 - sbrabec@suse.cz
+
+- Enabled all optional features and plugins.
+
+-------------------------------------------------------------------
+Tue Feb 27 08:58:48 CST 2007 - maw@suse.de
+
+- BuildRequire and Require hicolor-icon-theme (#247450)
+- Create a -doc subpackage (#248813).
+
+-------------------------------------------------------------------
+Mon Feb 19 12:23:23 CST 2007 - maw@suse.de
+
+- Update to version 0.7.2
+- Remove evince-CVE-2006-5864.patch which is now upstream
+- Package gtk-doc generated docs
+
+-------------------------------------------------------------------
+Wed Jan 10 18:03:17 CET 2007 - sbrabec@suse.cz
+
+- More spec file cleanups.
+
+-------------------------------------------------------------------
+Thu Dec 14 17:08:52 CST 2006 - maw@suse.de
+
+- Move to /usr
+- Cleanup specfile a bit.
+
+-------------------------------------------------------------------
+Thu Dec  7 13:00:35 CET 2006 - sbrabec@suse.cz
+
+- Fixed buffer overflow in DSC parsing (#225201, CVE-2006-5864).
+
+-------------------------------------------------------------------
+Mon Nov 13 19:15:13 CET 2006 - jhargadon@suse.de
+
+- re-enabling evince-desktop.patch to resolve bug #220232 
+
+-------------------------------------------------------------------
+Tue Oct 17 22:10:06 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.6.1
+- Bug Fixes:
+    * Current page follows find page
+    * Reopen reloads document
+    * Document size is guessed correctly
+    * Icons are installed in correct folders
+    * Memory leak fixed, etc
+- translation updates 
+
+-------------------------------------------------------------------
+Fri Oct 13 19:05:00 CEST 2006 - jhargadon@suse.de
+
+- Update for gnome-doc-utils-devel 
+
+-------------------------------------------------------------------
+Thu Sep 14 01:45:21 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.6.0
+- Links aren't lost while resizing
+- Tiff backend crash is fixed
+- Recent code and icons code are screen safe
+- Crash while handling password-protected documents is fixed
+- translation updates
+
+-------------------------------------------------------------------
+Fri Aug 18 19:32:54 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.5.5
+- Evince have preview mode for using with gtk+
+- New print dialog is used with gtk 2.10
+- Sidebar is unified with Epiphany
+- Escape unfocus page entry
+- Memory leak fixes
+- updated translations 
+
+-------------------------------------------------------------------
+Thu Aug  3 00:07:37 CEST 2006 - gekker@suse.de
+
+- Update to version 0.5.4
+New Features:
+    * Evince supports impress slides with --enable-impress
+    * URI's with anchors can be opened
+    * Evince supports attachments in PDF files
+    * Links system is reworked allowing named links
+    * Evince can search text in DJVU files
+    * Various types of PDF links are now supported
+    * New backend for comic books (CBR/CBZ archives)
+    * Storage of passwords for protected documents in gnome-keyring
+    * Layout settings for new documents are taken from the last used document
+Interface imporovements:
+    * Esc closes properties dialog
+    * Cursor is hidden in presentation mode
+    * Find previous item is added to the menu
+    * Odd pages are placed to the right in dual page mode
+    * Statusbar was removed to save space
+    * Notification about page processing is shown on the page
+    * Improved intelligent window title that shouldn't confuse users
+    * Show index by default if available
+    * Tooltips for links
+    * Now we have right click context menu
+Bug Fixes:
+    * Fixed multiple crashes
+    * Page-label command line option works again
+    * GOption port and po/LINGUAS work
+    * Fixed mime type detection by file contents
+    * Several memory leaks were found
+    * Current page is selected more intelligently
+    * View don't jump on scrolling
+    * In presentation mode we scroll by one page
+    * Produce thumbnails for comic books
+    * Ghostscript interpreter is checked in runtime
+    * PS mime types are listed in desktop file
+    * It's possible to add sidebar checkbutton on toolbar
+    * It's possible to print in inverse order
+    * Filechooser now will ask for overwrite confirmation
+    * Search now takes account for scrolling
+    * It's allowed to scroll view from find entry
+    * Evince don't jump to find result if window was scrolled during search
+    * It's now clear what page the toolbar page number applies to
+    * Printing of multiple copies start to work
+    * Improved session handling
+    * Vertical and horizontal scrolling on selection
+Updated Translations
+
+-------------------------------------------------------------------
+Mon Feb 20 23:12:44 CET 2006 - thoenig@suse.de
+
+- Backport fix from Evince CVS to honor API changes of D-BUS 0.60
+  (closes #151512)
+
+-------------------------------------------------------------------
+Fri Feb 17 21:58:49 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 14:02:57 CET 2006 - sbrabec@suse.cz
+
+- Removed libpixman from neededforbuild.
+
+-------------------------------------------------------------------
+Wed Nov  9 19:49:02 CET 2005 - sbrabec@suse.cz
+
+- Enabled D-BUS support.
+- Update desktop file.
+
+-------------------------------------------------------------------
+Wed Nov  9 13:03:56 CET 2005 - sbrabec@suse.cz
+
+- Show evince in menu (#132746).
+
+-------------------------------------------------------------------
+Fri Sep  2 19:01:40 CEST 2005 - gekker@suse.de
+
+- Update to version 0.4.0 
+
+-------------------------------------------------------------------
+Thu Aug 18 22:36:36 CEST 2005 - gekker@suse.de
+
+- Update to version 0.3.4
+- Put evince in correct desktop category 
+
+-------------------------------------------------------------------
+Thu Jul 21 23:48:34 CEST 2005 - gekker@suse.de
+
+- Update to version 0.3.2 
+
+-------------------------------------------------------------------
+Tue May 24 18:43:04 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.3.1.
+
+-------------------------------------------------------------------
+Mon May  9 19:27:53 CEST 2005 - sbrabec@suse.cz
+
+- New SuSE package, version 0.3.0.
+

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Aug  2 08:52:21 UTC 2018 - tchvatal@suse.com
+
+- Remove not required dependency on devel
+
+-------------------------------------------------------------------
+Wed Oct 25 07:58:30 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 1.0.1
+  + no changelog available
+- update to version 1.0.0
+  + no changelog available
+- spec file changes
+  + update url
+  + update source link
+  + convert to python single spec
+
+-------------------------------------------------------------------
+Sat Mar 26 00:53:50 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Bzip2 source file;
+- Add README.txt as documentation.
+
+-------------------------------------------------------------------
+Thu Apr 29 03:02:22 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (0.2.0) for openSUSE.

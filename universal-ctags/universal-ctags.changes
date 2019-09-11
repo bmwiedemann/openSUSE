@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Nov 20 16:05:41 UTC 2018 - sschricker@suse.de
+
+- Initial package, build from git commit befcb88 
+  * add patch 0001-Use-pandoc-instead-of-rst2pdf.patch
+    Since rst2pdf is not available in Factory, which is required to build the
+    man pages

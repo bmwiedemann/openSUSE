@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Sun Oct  1 15:42:18 UTC 2017 - malcolmlewis@opensuse.org
+
+- Updated to version 3.49.2:
+  * Fixed: Buffer overflow in output option commandline argument
+    (VL-ID 2068).
+  * Minor fixes.
+- Changes from version 3.48.23:
+  * Fixed: FTBFS with openssl 1.1.0.
+
+-------------------------------------------------------------------
+Sat Jul 30 02:03:18 UTC 2016 - rpm@fthiessen.de
+
+- Update to 3.48.22
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Aug 22 18:14:43 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 3.48.19:
+  + Fixed: assertion failure at htslib.c:3458 (strlen(copyBuff) == qLen) seen
+    on Linux
+  + Fixed: infamous crashes inside the DNS cache due to a corruption within the
+    option structure (E.Kalinowski/karbofos)
+  + New: added minimalistic crash reporting on Windows and Linux
+  + Fixed: URL list not working anymore (tom swift)
+  + Fixed: FTBFS on ARM
+  + Fixed: buggy FFFD (replacement character) in place of leading non-ascii
+    character such as Chinese ones (aballboy)
+  + Fixed: FTBFS when compiling with zlib versions < 1.2.70 (sammyx)
+  + Fixed: buggy SVG (Smiling Spectre)
+  + Fixed: do not uncompress .tgz advertised as "streamed" (Smiling Spectre)
+  + Fixed: NULL pointer dereferencing in back_unserialize (htsback.c:976)
+  + Fixed: library development files
+  + Fixed: --advanced-maxlinks broken (Localhost)
+  + Fixed: -devel package should now be standalone
+  + Fixed: assertion failure at htscore.c:244
+    (len + liensbuf->string_buffer_size < liensbuf->string_buffer_capa)
+  + Fixed: injection-proof templates
+  + Fixed: htshash.c:330 assertion failure ("error invalidating hash entry")
+    (Sergey)
+  + Fixed: Windows 2000 regression (fantozzi.usenet)
+  + Fixed: code cleanup (aliasing issues, const correctness, safe strings)
+  + New: handle --advanced-maxlinks=0 to disable maximum link limits
+  + New: updated ZIP routines (zlib 1.2.8)
+  + Fixed: broken 32-bit version
+  + Fixed: assertion "segOutputSize < segSize assertion fails at
+    htscharset.c:993"
+  + Fixed: new zlib version fixing CVE-2004-0797 and CVE-2005-2096
+  + Fixed: more reliable crash reporting
+  + Fixed: fixed infamous "hashtable internal error: cuckoo/stash collision"
+    errors
+  + Fixed: safety cleanup in many strings operations
+  + Fixed: buggy option pannels
+  + New: Enforce check against CVE-2014-0160
+  + New: improved hashtables to speedup large mirrors
+  + New: added unit tests
+  + New: Added %a option, allowing to define the "Accept:" header line.
+  + New: Added %X option, to define additional request header lines.
+  + New: Added option '-%t', preserving the original file type (which may
+    produce non-browseable file locally)
+  + Fixed: remove scope id (% character) in dotted address resolution
+    (especially for catchurl proxy)
+  + Fixed: build fixes, including for Android, non-SSL releases
+  + Fixed: buggy keep-alive handling, leading to waste connections
+  + Fixed: removed chroot and setuid features (this is definitely not our
+    business)
+  + Fixed: removed MMS (Microsoft Media Server) ripping code (mmsrip) (dead
+    protocol, unmaintained code, licensing issues)
+  + Fixed: type mishandling when processing a redirect (such as a .PDF
+    redirecting to another .PDF, with a text/html type tagged in the redirect
+    message)
+  + Fixed: infinite loop when attempting to download a file:/// directory on
+    Unix (gp)<br/>
+  + Fixed: removed background DNS resolution, prone to bugs
+  + Fixed: do not choke on Windows 2000 because of missing SetDllDirectory()
+    (Andy Hewitt)
+  + Fixed: %h custom build structure parameter not taken in account (William
+    Clark)
+- Removed the fix for build-compare regarding build time references (not needed
+  anymore).
+- Rebased httrack-fix-strict-aliasing-punning.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Thu Oct 17 11:10:43 UTC 2013 - Greg.Freemyer@gmail.com
+
+- move the html documentation back to /usr/share/httrack/html
+  + See BNC#845885
+
+-------------------------------------------------------------------
+Sat Aug 24 20:56:26 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 3.47.24:
+  + New: support for IDNA / RFC 3492 (punycode) handling
+  + New: openssl is no longer dynamically probed at stratup, but dynamically
+    linked
+  + Fixed: random closing of files/sockets, leading to
+    "zip_zipWriteInFileInZip_failed" assertion, "bogus state" messages, or
+    random garbage in downloaded files
+  + Fixed: libssl.dylib is now in the search list for libssl on OSX
+    (Nils Breunese)
+  + Fixed: bogus charset because the meta http-equiv tag is placed too far in
+    the html page
+  + Fixed: incorrect \\machine\dir structure build on Windows (TomZ)
+  + Fixed: do not force a file to have an extension unless it has a known type
+    (such as html), or a possibly known type (if delayed checks are disabled)
+  + Fixed: HTML 5 addition regarding "poster" attribute for the "video" tag
+    (Jason Ronallo)
+  + Fixed: memory leaks in proxytrack.c (Eric Searcy)
+  + Fixed: correctly set the Z flag in hts-cache/new.txt file (Peter)
+  + Fixed: parallel patch, typo regarding ICONV_LIBS (Sebastian Pipping)
+  + Fixed: memory leak in hashtable, that may lead to excessive memory
+    consumption
+  + Fixed: on Windows, fixed possible DLL local injection (CVE-2010-5252)
+  + Fixed: UTF-8 conversion bug on Linux that may lead to buggy filenames
+  + Fixed: zero-length files not being properly handled (not saved on disk, not
+    updated) (lugusto)
+  + Fixed: serious bug that may lead to download several times the same file,
+    and "Unexpected 412/416 error" errors
+  + Fixed: images in CSS were sometimes not correctly detected (Martin)
+  + Fixed: links within javascript events were sometimes not correctly detected
+    (wquatan)
+  + Fixed: webhttrack caused bus error on certain systems, such as Mac OSX, due
+    to the stack size (Patrick Gundlach)
+  + Fixed: bogus charset for requests when filenames have non-ascii characters
+    (Steven Hsiao)
+  + Fixed: bogus charset on disk when filenames have non-ascii characters
+    (Steven Hsiao)
+  + Fixed: fixed 260-characters path limit for Windows (lugusto)
+  + Fixed: non-ascii characters encoding issue inside query string (lugusto)
+  + Fixed: HTML entities not properly decoded inside URI and query string
+  + Fixed: URL-encoding issue within URI
+  + Fixed: --timeout alias did not work
+  + Fixed: more windows-specific fixes regarding 260-character path limit
+  + Fixed: escaping issue in top index
+  + Fixed: Linux build cleanup (gentoo patches merge, lintian fixes et al.)
+  + Fixed: Fixed div-by-zero when specifying more than 1000 connections per
+    seconds (probably not very common)
+  + Fixed: Mishandling of '+' in URLs introduced in 3.47-15 (sarclaudio)
+  + Fixed: "Wildcard domains in cookies do not match"
+    (alexei dot co at gmail dot com )
+  + Fixed: buggy referer while parsing: the referer of all links in the page is
+    the current page being parsed, NOT the parent page.
+    (alexei dot com at gmail dot com)
+  + Fixed: Russian translation fixes by Oleg Komarov (komoleg at mail dot ru)
+  + New: Added .torrent => application/x-bittorrent built-in MIME type
+    (alexei dot co at gmail dot com)
+  + Fixed: unable to download an URL whose filename embeds special characters
+    such as # (lugusto)
+  + New: Croatian translation by Dominko Aždajić (domazd at mail dot ru)
+  + Fixed: url-escaping regression introduced in the previous subrelease
+- Added new build requirement libopenssl-devel.
+- Require libhttrack2 instead of httrack (not needed) in devel package.
+- Require libopenssl-devel in devel package (some httrack headers require
+  openssl headers).
+- Use desktop-file-utils instead of update-desktop-files for openSUSE > 12.1.
+- Remove config.h from htsglobal.h since it is not installed.
+- Removed httrack-fix-desktop.patch and added a fix inside the spec file.
+- Rebased httrack-fix-strict-aliasing-punning.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Mon Sep 10 22:44:17 UTC 2012 - Greg.Freemyer@gmail.com
+
+- break the shared libraries out into their own sub-package
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug 27 15:16:25 UTC 2012 - Greg.Freemyer@gmail.com
+
+- minor specfile cleanups
+- update to v3.46-1
+	+ New: source license is now GPLv3
+	+ New: Unicode filenames handling
+	+ New: added a "K5" feature to handle transparent proxies (Brent Palmer)
+	+ New: option -y to control ^Z behavior (Julian H. Stacey)
+	+ New: added --do-not-generate-errors option
+	+ New: increased maximum cookie name
+	+ Fixed: fixed bug in handling of update/continue with erased files or renamed files, leading to "Unexpected 412/416 error (Requested Range Not Satisfiable)" and/or "Previous cache file not found" (-1)" errors
+	+ Fixed: escape characters >= 128 when sending GET/HEAD requests to avoid server errors
+	+ Fixed: do not use "delayed" extensions when the mirror is aborting
+	+ Fixed: generate error pages when needed (Brent Palmer)
+	+ Fixed: parsing issue with js files due to "script" tags (Vasiliy)
+	+ Fixed: anonymous FTP without password (Luiz)
+	+ Fixed: Makefile issues regarding parrallel build and examples (Sebastian Pipping)
+	+ Fixed: removed deprecated and annoying "Accept-Charset" header in requests (Piotr Engelking) (closes:#674053)
+	+ Fixed: replace // by / when saving rather than _/ (Brent Palmer)
+	+ Fixed: do not interpret ^C before mirror is finished, or after
+	+ Fixed: webhttrack: do not use md5sum to produce a temporary filename, but mktemp (Ryan Schmidt)
+	+ Fixed: document %k for custom structure (full query string)
+	+ Fixed: spurious "Previous file not found (erased by user ?)" messages leading to retransfer existing files in cache (Alain Desilets)
+	+ Fixed: --max-time now stops the mirror smoothly (Alain Desilets)
+	+ Fixed: number of simultaneous connections was often only one (Illyria, William Roeder)
+	+ Fixed: "Unexpected 412/416 error" leading to have broken files on disk
+	+ Fixed: interrupting an update/continue mirror session should not delete anymore previously downloaded content (William Roeder, Alain Desilets and many others)
+	+ Fixed: --continue/--update bug leading to download again already cached data in some cases (especially redirect/error pages)
+	+ Fixed: crash when using -d with non-fully-qualified hostname (Alain Desilets)
+	+ Fixed: typo in logs (Pascal Boulerie)
+	+ Fixed: random crash when interrupting the mirror (spotted by -fstack-protector) in htscoremain.c (closes:#657878)
+	+ Fixed: malformed format htslib.c (Moritz Muehlenhoff)
+	+ Fixed: default footer print format
+
+-------------------------------------------------------------------
+Sun Jul 17 01:46:41 UTC 2011 - malcolmlewis@opensuse.org
+
+- Initial build 
+

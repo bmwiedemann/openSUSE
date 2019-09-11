@@ -1,0 +1,42 @@
+Index: pbzip2.cpp
+===================================================================
+--- pbzip2.cpp.orig
++++ pbzip2.cpp
+@@ -2233,7 +2233,17 @@ int directdecompress(const char *InFilen
+ 							return ret;
+ 						}
+ 						if (nread > 0)
+-							(void) fwrite (obuf, sizeof(unsigned char), nread, stream);
++                        {
++							if (fwrite (obuf, sizeof(unsigned char), nread, stream) < nread)
++                            {
++                                fprintf(stderr, "pbzip2: *ERROR: Failed to write to output file %s. Aborting!\n", OutFilename);
++                                if (zStream != stdin)
++                                    fclose(zStream);
++                                if (stream != stdout)
++                                    fclose(stream);
++                                return -1;
++                            }
++                        }
+ 						if (ferror(stream))
+ 						{
+ 							ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+@@ -2251,7 +2261,17 @@ int directdecompress(const char *InFilen
+ 				}
+ 			}
+ 			if ((bzerr == BZ_OK || bzerr == BZ_STREAM_END) && nread > 0)
+-				(void) fwrite(obuf, sizeof(unsigned char), nread, stream );
++            {
++				if (fwrite(obuf, sizeof(unsigned char), nread, stream ) < nread)
++                {
++                    fprintf(stderr, "pbzip2: *ERROR: Failed to write to output file %s. Aborting!\n", OutFilename);
++                    if (zStream != stdin)
++                        fclose(zStream);
++                    if (stream != stdout)
++                        fclose(stream);
++                    return -1;
++                }
++            }
+ 			if (ferror(stream))
+ 			{
+ 				ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);

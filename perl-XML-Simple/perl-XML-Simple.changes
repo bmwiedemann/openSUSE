@@ -1,0 +1,228 @@
+-------------------------------------------------------------------
+Sun Mar 18 07:04:20 UTC 2018 - coolo@suse.com
+
+- updated to 2.25
+   see /usr/share/doc/packages/perl-XML-Simple/Changes
+
+  2.25      2018-03-18 16:18:24+13:00 Pacific/Auckland
+    - disable entity expansion when using XML::Parser, for more secure default
+      behaviour (patch from Ray Morris)
+    - call to XML::Parser constructor is now in its own method to ease overriding
+
+-------------------------------------------------------------------
+Mon Apr 17 06:59:58 UTC 2017 - coolo@suse.com
+
+- updated to 2.24
+   see /usr/share/doc/packages/perl-XML-Simple/Changes
+
+  2.24      2017-04-17 16:12:00+12:00 Pacific/Auckland
+    - fix typo in last commit with mistakenly removed some underscores
+    - don't initialise $XML::Simple::PREFERRED_PARSER to undef as a caller may
+      have already set it before loading XML::Simple and if not, it would have
+      defaulted to undef anyway (RT#118205 from Slaven Rezić)
+  
+  2.23      2017-04-17 15:49:14+12:00 Pacific/Auckland
+    - another fix to the logic for detecting circular references (RT#114120 from
+      Matthias Pitzl, also report from Erland Sommarskog)
+
+-------------------------------------------------------------------
+Sat Dec  5 10:48:07 UTC 2015 - coolo@suse.com
+
+- updated to 2.22
+   see /usr/share/doc/packages/perl-XML-Simple/Changes
+
+  2.22      2015-12-05 11:08:20+13:00 Pacific/Auckland
+    - POD fix in link to package XML::SAX::ParseFactory (from Mohammad S Anwar)
+    - allow subclass to override attribute escaping (from Christopher Masto)
+    - POD fix adding NAME section to FAQ (RT#110080 from Bart Martens & gregor
+      herrmann of the Debian project)
+    - POD typo fix (RT#110082 from gregor herrmann of the Debian project)
+    - fix reference comparison operator used in checking for circular data
+      structures (RT#89553 from Laurent Dami)
+    - add better diagnostics from file handling code in test suite
+  
+  2.21      2015-12-04 16:33:49+13:00 Pacific/Auckland
+    - Improved diagnostics - xml_in() will now catch parse exceptions and add
+      caller information via Carp::croak
+    - Switch to use lexical warnings (suppress with either 'no warnings;' or
+      'no warnings "XML::Simple";', rather than $^W = 0)
+    - POD fixes (from David Steinbrunner)
+    - Regex escaping fixes for Perl 5.22+ (from Kent Fredric)
+    - Add workaround for test failures on RHEL/CentOS 6.5 (RT#102115 from
+      Chris Drake, workaround from Tim Bunce)
+    - Remove some 'eval' calls from test suite which could mask root cause of
+      test failures
+    - Make each test script use unique filenames to allow tests to be run in
+      parallel (RT#101362 from Karen Etheridge & Kent Fredric)
+    - POD update: mention XML::Twig in 'STATUS' section (RT#79228 from Matt Trout)
+
+-------------------------------------------------------------------
+Thu Jun 26 07:02:07 UTC 2014 - lchiquitto@suse.com
+
+- remove XML-Simple-2.18-test.diff from package sources, it's not
+  being applied since the last update 
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:03 UTC 2013 - coolo@suse.com
+
+- updated to 2.20
+   - Suppress warning from empty CDATA section (RT#58359 from Juan Antonio
+     Navarro Pérez)
+   - Reinstate XML::SAX::Expat dependency
+   - Fix warnings tests (broken in 2.19_01) which rely on global $^W
+   - Use lexical filehandles instead of old-style fileglobs (RT#77787 from
+     Quanah)
+   - Restrict scope of :strict mode to calling package (RT#41562 from Hannu
+     Aronsson)
+   - Fix POD typo (RT#45414 from Anirvan Chatterjee)
+   - Update POD to reflect best practise regarding :strict and options
+   - Change minimum Perl requirement to 5.008
+   - Switch to using Dist::Zilla for release management
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:30 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:19 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:29 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Oct  8 09:30:54 CEST 2007 - anicka@suse.cz
+
+- update to 2.18
+  * Non-unique key attribute values now trigger a warning (or a fatal
+    error in strict mode) rather than silently discarding data
+  * Added parse_string(), parse_file() and parse_fh() methods
+  * Added default_config_file(), and build_simple_tree() hook methods
+  * Tweak to implementation of exporting
+  * Documented hook methods
+  * Fixed test suite race condition
+
+-------------------------------------------------------------------
+Mon Jul 16 17:14:14 CEST 2007 - anicka@suse.cz
+
+- remove expat from dependencies 
+
+-------------------------------------------------------------------
+Wed Dec 13 12:20:35 CET 2006 - anicka@suse.cz
+
+- update to 2.16
+ * Added test/fix for bad GroupTags option
+ * Added new_hashref() hook method
+ * refactored cache save/restore methods for easier overriding
+
+-------------------------------------------------------------------
+Thu Oct  5 11:41:16 CEST 2006 - anicka@suse.cz
+
+- update to 2.15
+  * Makefile.PL changes: reject known-bad PurePerl and RTF parser 
+    modules; default to XML::SAX::Expat if no parser installed
+  * allow '.' characters in variable names
+  * fix output of undefs in arrayrefs with SuppressEmpty
+  * tidy up code and docs around lexical filehandle 
+    passed to OutputFile
+  * reduce memory usage by passing XML strings by reference
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:34:04 CEST 2005 - mjancar@suse.cz
+
+- update to 2.14
+
+-------------------------------------------------------------------
+Thu Aug 19 14:01:14 CEST 2004 - mjancar@suse.cz
+
+- update to 2.12
+
+-------------------------------------------------------------------
+Thu Feb 26 17:37:12 CET 2004 - mjancar@suse.cz
+
+- update to 2.09
+
+-------------------------------------------------------------------
+Sun Jan 11 10:54:41 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 16:04:45 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Aug 07 16:44:05 CEST 2003 - mjancar@suse.cz
+
+- fix tests that depend on certain order of entries
+  in a hash (it is random in perl 5.8.1)
+
+-------------------------------------------------------------------
+Thu Jul 24 14:51:48 CEST 2003 - mjancar@suse.cz
+
+- update to 2.08
+
+-------------------------------------------------------------------
+Thu Jul 17 14:41:42 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Wed Jun 18 09:04:26 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon Jun 16 18:23:09 CEST 2003 - mjancar@suse.cz
+
+- don't package MANIFEST
+
+-------------------------------------------------------------------
+Mon May 19 11:32:53 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod
+
+-------------------------------------------------------------------
+Tue Apr 29 12:38:05 CEST 2003 - mjancar@suse.cz
+
+- update to version 2.03
+
+-------------------------------------------------------------------
+Fri Dec 27 20:08:02 CET 2002 - prehak@suse.cz
+
+- updated to version 2.02
+
+-------------------------------------------------------------------
+Mon Jul 29 12:42:41 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jul  2 17:09:12 MEST 2002 - garloff@suse.de
+
+- Update to 1.08: (rerelease of 1.06 with minor bugfixes)
+  * searchpath set to current dir if not set
+  * obsolete 'convert' script removed from dist
+
+-------------------------------------------------------------------
+Thu Jan 17 00:55:53 MET 2002 - garloff@suse.de
+
+- Creation of package perl-XML-Simple (1.06)
+  (needed by InterMezzo)
+

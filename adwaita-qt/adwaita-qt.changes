@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Aug  2 08:32:46 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.1.0:
+  * support for the new refreshed Adwaita theme
+- Update to 1.0.91:
+  * removed alternating rows in views
+  * removed frame in locked dock widget
+  * fixed build against qt4
+  * fixed view items not appearing in qt4 apps
+  * fixed scrollbar colors
+  * fixed menu item accelerator color
+  * fixed menu item separator color and height
+- Update to 1.0.90:
+  * support for the new refreshed Adwaita theme
+
+-------------------------------------------------------------------
+Wed Apr 17 12:28:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only build the -Qt4 variant up to suse_version 1500.
+
+-------------------------------------------------------------------
+Thu Feb 22 14:33:30 UTC 2018 - fcrozat@suse.com
+
+- Do not build with Qt4 on SLE15.
+- Use the new license tag for license files.
+
+-------------------------------------------------------------------
+Fri Aug 11 08:47:52 UTC 2017 - fcrozat@suse.com
+
+- Update to version 1.0 (no changelog but only theming
+  improvements).
+- common subpackage no longer exists.
+
+-------------------------------------------------------------------
+Tue Mar  8 12:03:23 UTC 2016 - tchvatal@suse.com
+
+- Fix license
+- Remove pointless requires
+
+-------------------------------------------------------------------
+Mon Mar  7 21:27:19 UTC 2016 - tchvatal@suse.com
+
+- Add supplements to libqt{4,5} and gnome-session
+
+-------------------------------------------------------------------
+Mon Mar  7 21:25:27 UTC 2016 - tchvatal@suse.com
+
+- Tweak a bit so it builds for me
+
+-------------------------------------------------------------------
+Thu Jul 30 12:25:10 UTC 2015 - zaitor@opensuse.org
+
+- Initial build.
+

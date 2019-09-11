@@ -1,0 +1,564 @@
+-------------------------------------------------------------------
+Wed Oct 24 14:37:58 UTC 2018 - mvetter@suse.com
+
+- Update to 2.3.7:
+  * Fix for pkg-config file update on no linux platforms
+  * Add W entry for GUI work
+  * Various fixes for SQLBrowseConnect/W, SQLGetConnectAttr/W,and SQLSetConnectAttr/W
+  * Fix buffer overflows in SQLConnect/W and refine behaviour of SQLGet/WritePrivateProfileString
+  * SQLBrowseConnect/W allow disconnecting a started browse session after error
+  * Add --with-stats-ftok-name configure option to allow the selection of a file name
+    used to generate the IPC id when collecting stats. Default is the system odbc.ini file
+  * Improve diag record handling with the behavior of Windows DM and export SQLCancelHandle
+  * bug fix when SQLGetPrivateProfileString() is called to get a list of sections or a list of keys
+  * Connection pooling: Fix liveness check for Unicode drivers
+- Add unixODBC-2.3.7-warning-cleanup.patch: 2.3.7 a 64bit protability error
+  See https://github.com/lurcher/unixODBC/issues/18
+
+-------------------------------------------------------------------
+Thu Mar 22 14:09:43 UTC 2018 - mvetter@suse.com
+
+- Add BuildRequires: pkgconfig since we install .pc files
+- Add unixODBC-rpmlintrc: devel files are in the right place
+
+-------------------------------------------------------------------
+Mon Mar 19 12:53:15 UTC 2018 - mvetter@suse.com
+
+- bsc#1062860: Recommend psqlODBC to stay feature complete
+
+-------------------------------------------------------------------
+Mon Mar 19 11:52:05 UTC 2018 - mvetter@suse.com
+
+- bsc#1082060: Update to 2.3.6:
+  * Fix order of arguments in SQLWriteFileDSN.c, fix unwanted
+    free() in iusql.c
+  * Add pkg-config files
+- bsc#1082290 (CVE-2018-7409): Buffer overflow in
+  unicode_to_ansi_copy() was fixed in 2.3.5
+- bsc#1082484 (CVE-2018-7485): Swapped arguments in 
+  SQLWriteFileDSN() in odbcinst/SQLWriteFileDSN.c
+- Remove unixODBC-2.3.1-bison.patch: upstreamed
+- Remove unixODBC-iaddr.patch: upstreamed
+- Adapt unixODBC-2.3.1-declarations.patch to 
+  unixODBC-2.3.6-declarations.patch
+- Update unixODBC-gccwarnings.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 13:34:18 UTC 2018 - mvetter@suse.com
+
+- bsc#1062860: Don't install postgres example driver
+  psqlODBC package should be used instead of the example driver
+  provided by unixODBC (libodbcpsql.*). It is unmaintained.
+
+-------------------------------------------------------------------
+Fri Jun 23 13:53:00 UTC 2017 - adam.majer@suse.de
+
+- Enabled --enable-fastvalidate option in configure (bnc#1044970)
+
+-------------------------------------------------------------------
+Wed May 11 14:03:02 UTC 2016 - mvetter@suse.com
+
+- Requested by fate#319390
+
+-------------------------------------------------------------------
+Wed May 11 12:47:22 UTC 2016 - mvetter@suse.com
+
+- Add comment in spec file so people know why the .so files are
+  not in the devel package
+
+-------------------------------------------------------------------
+Thu Jan 28 00:16:53 UTC 2016 - markus.beth@web.de
+
+- dropped obsolete unixODBC-2.3.1-uninitialized.patch and
+  unixODBC-nonvoid.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 11:42:38 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 2.3.4:
+  * Fix typo in the loading of the cursor lib
+
+-------------------------------------------------------------------
+Mon Aug 24 22:20:32 UTC 2015 - zeke@zekesdominion.com
+
+- update to version 2.3.3
+  * Various buffer overflow and unchecked memory references
+  * More ODBC 3.80 additions (streaming parameters)
+  * Allow setting custom non standard attributes via DMStmtAttr
+  * Add -L option to isql to increase max column data display
+  * More manual pages for the tools
+  * many other fixes, see http://www.unixodbc.org
+ 
+-------------------------------------------------------------------
+Mon Dec  1 12:25:00 UTC 2014 - tchvatal@suse.com
+
+- Move all .so files from devel as many ext apps dlopen those so
+  you need these on regular package.
+- Clean up with spec-cleaner
+- Remove readme.suse as it is obsolete like hell
+- Wipe all la files as we don't provide static libs anyway
+- Do not append no-strict-aliasing to cflags, pointless
+- --enable-driverc enabled too
+
+-------------------------------------------------------------------
+Thu Nov 27 10:40:29 UTC 2014 - jengelh@inai.de
+
+- Account for changes in libtool 2.4.3: remove ACLOCAL_AMFLAGS
+  and explicit libtoolize call.
+- Replace $RPM_BUILD_ROOT by macro (fits with the other macros used)
+
+-------------------------------------------------------------------
+Mon Sep  8 07:51:54 UTC 2014 - jengelh@inai.de
+
+- Turn Obsoletes: libiodbc-devel back into Conflicts.
+  The iODBC project has not shut down, and unixODBC-devel does
+  _not_ provide all files from iODBC, like libiodbc.pc.
+- Kill manual provides of libiodbc*.so, they are in the wrong spot
+  and thus never could have been effective.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Tue Jan 28 02:29:44 UTC 2014 - adler_187@yahoo.com
+
+- Don't hard code gz extension for man pages
+
+-------------------------------------------------------------------
+Fri Jan 24 01:08:59 UTC 2014 - adler_187@yahoo.com
+
+- update to version 2.3.2
+  * Some ODBC 3.80 support added
+  * Unicode/ANSI conversion fixes
+  * isql regained -e option since it was missing
+  * Add slencheck executable to try and find the sizeof(SQLLEN) from an installed driver 
+  * some man pages added
+  * many other fixes, see http://www.unixodbc.org 
+
+-------------------------------------------------------------------
+Fri Apr  5 10:09:59 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Jan  4 15:04:52 CET 2013 - mhrusecky@suse.cz
+
+- Adding missing includes
+
+-------------------------------------------------------------------
+Fri Jan  4 13:02:10 CET 2013 - mhrusecky@suse.cz
+
+- fixed compilation issues with bison
+
+-------------------------------------------------------------------
+Tue Nov 27 09:04:52 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and LGPL-2.1+
+  Semicolon is ambigous. Use ^and^ or ^or^ depending on the nature of the
+  interaction of the license code componentes
+
+-------------------------------------------------------------------
+Wed Nov  7 11:46:34 CET 2012 - mhrusecky@suse.cz
+
+- Including some basic drivers
+
+-------------------------------------------------------------------
+Tue Nov  6 10:35:00 CET 2012 - mhrusecky@suse.cz
+
+- updated to versio 2.3.1
+  * reduced unixODBC, after the GUI and additional driver parts have
+    been split off to their own project.
+  * change to the new default SQLLEN size for 64 bit platforms
+  * number of bug fixes and changes, see http://www.unixodbc.org/
+
+-------------------------------------------------------------------
+Sun Nov 27 06:48:53 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct  5 15:12:38 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %configure macro
+
+-------------------------------------------------------------------
+Mon Jun 20 17:03:39 CEST 2011 - mhrusecky@suse.cz
+
+- fixed mutex locking (bnc#637115)
+  - patch by Petr Vandrovec
+
+-------------------------------------------------------------------
+Mon Jun 13 11:17:49 CEST 2011 - mhrusecky@suse.cz
+
+- fixed CVE-2011-1145 (bnc#678796)
+
+-------------------------------------------------------------------
+Sat Dec 19 13:43:00 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Oct 13 15:33:25 CEST 2008 - nadvornik@suse.cz
+
+- dropped the dlopen patch, it no longer matches
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sat May 26 00:34:29 CEST 2007 - dmueller@suse.de
+
+- add missing ldconfig fall to %post/un
+
+-------------------------------------------------------------------
+Wed Oct 18 12:02:13 CEST 2006 - anosek@suse.cz
+
+- updated to version 2.2.12
+  * Add missing SQLSetStmtOptionA and SQLSetStmtOptionW
+  * The config string being passed into ConfigDsn was wrong,
+    removed semicolon, and added terminating double null
+  * Add help help to isql
+  * Alter odbctest FullConnect to use SQLDriverConnect
+  * Replace a missed flag for true 64 bit operation
+  * Add ODBC3<->ODBC2 type mapping in SQLSetParam
+  * Tidy up the search for GUI lib code in SQLManageDatasource
+  * Fix possible exit from SQLConnect without having closed
+    in the driver
+  * Alter args to SQLParamOptions
+  * Fix bug preventing attribute length from being returned from
+    SQLDrivers
+  * Fixed broken iusql
+- dropped obsolete unixODBC-2.2.12.patch unixODBC-qt-dirs.patch
+
+-------------------------------------------------------------------
+Thu Jun 15 15:31:15 CEST 2006 - mmarek@suse.cz
+
+- moved %{_libdir}/unixODBC/*.so to main package, so that libfoo.so
+  and libfooS.so can be used in driver configuration.
+
+-------------------------------------------------------------------
+Thu Jun 15 10:06:51 CEST 2006 - mmarek@suse.cz
+
+- updated distributed libltdl to make autoconf happy
+- dropped unixODBC-gui-gtk
+
+-------------------------------------------------------------------
+Mon Mar 27 17:21:34 CEST 2006 - mmarek@suse.cz
+
+- fixed some uninitialized variables reported by David Binderman
+  [#160570] (uninitialized.patch)
+
+-------------------------------------------------------------------
+Tue Jan 31 17:32:52 CET 2006 - mmarek@suse.cz
+
+- fixed txt driver
+  [#146507] (sqp.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 01:26:05 CET 2006 - ro@suse.de
+
+- split gui packages to own specfile 
+
+-------------------------------------------------------------------
+Tue Jan 17 15:57:16 CET 2006 - sbrabec@suse.cz
+
+- Remove unneeded libunicode from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Nov 29 16:06:47 CET 2005 - mmarek@suse.cz
+
+- fix build with flex-2.5.31
+  (flex.patch)
+
+-------------------------------------------------------------------
+Tue Nov  1 15:44:32 CET 2005 - mmarek@suse.cz
+
+- add libtool and libinilc symbols to odbcinst/odbcinst.exp
+  (#131175)
+- disable unixODBC-2.2.11-dm.patch since it's probably no more
+  needed
+
+-------------------------------------------------------------------
+Thu Oct 20 16:38:38 CEST 2005 - mmarek@suse.cz
+
+- remove LT_GLOBAL flag from libtool to enable dlopen()ing libodbc.so
+  (#96312)
+- remove headers for compatibility with qt3 (no longer needed)
+- added norootforbuild
+
+-------------------------------------------------------------------
+Tue Sep 27 11:21:59 CEST 2005 - mmarek@suse.cz
+
+- compile with --disable-stats to prevent DoS [#118547] 
+
+-------------------------------------------------------------------
+Mon Sep 19 16:14:53 CEST 2005 - mmarek@suse.cz
+
+- fix gcc warnings about implicit function declarations 
+
+-------------------------------------------------------------------
+Wed Apr 27 11:38:56 CEST 2005 - ltinkl@suse.cz
+
+- updated to 2.2.11
+- fix build with gcc4
+
+-------------------------------------------------------------------
+Tue Apr 12 22:56:40 CEST 2005 - ro@suse.de
+
+- added audiofile-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb 11 18:36:52 CET 2005 - ltinkl@suse.cz
+
+- update to 2.2.10, adapt patches
+
+-------------------------------------------------------------------
+Wed Nov 10 18:21:25 CET 2004 - ro@suse.de
+
+- reduced neededforbuild
+
+-------------------------------------------------------------------
+Tue Sep 14 11:32:50 CEST 2004 - ltinkl@suse.cz
+
+- put the .desktop file in the right package (#44790)
+
+-------------------------------------------------------------------
+Tue Jul 27 00:18:51 CEST 2004 - ro@suse.de
+
+- fix some compiler warnings
+
+-------------------------------------------------------------------
+Mon Jul 19 13:12:23 CEST 2004 - ltinkl@suse.cz
+
+- update to 2.2.9
+
+-------------------------------------------------------------------
+Mon May 24 14:34:54 CEST 2004 - ro@suse.de
+
+- fix some compiler warnings
+
+-------------------------------------------------------------------
+Tue Mar 23 12:32:00 CET 2004 - ltinkl@suse.cz
+
+- don't package generated files (#36304)
+
+-------------------------------------------------------------------
+Thu Feb 26 13:52:57 CET 2004 - kukuk@suse.de
+
+- Obsolete libiodbc-devel instead of conflicting with it.
+- provide 64bit libodbcinst.so/libobdc.so on all 64bit
+  architectures.
+
+-------------------------------------------------------------------
+Wed Feb 25 11:47:52 CET 2004 - schwab@suse.de
+
+- Provide libodbcinst.so()(64bit), libodbc.so()(64bit) on ia64 for
+  BEAJava2 [#29515].
+
+-------------------------------------------------------------------
+Fri Feb 20 12:00:06 CET 2004 - ltinkl@suse.cz
+
+- update to 2.2.8
+
+-------------------------------------------------------------------
+Wed Jan 14 18:07:04 CET 2004 - ltinkl@suse.cz
+
+- added patch to fix SQL results
+
+-------------------------------------------------------------------
+Wed Dec 03 12:08:02 CET 2003 - ltinkl@suse.cz
+
+- update to 2.2.7
+
+-------------------------------------------------------------------
+Fri Sep 05 09:23:42 CEST 2003 - ltinkl@suse.cz
+
+- fix #29515
+
+-------------------------------------------------------------------
+Mon Sep 01 15:23:49 CEST 2003 - ltinkl@suse.cz
+
+- created patch unixODBC-odbctest.patch to fix #29639
+
+-------------------------------------------------------------------
+Fri Aug 15 16:56:36 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Wed Jul 30 17:01:22 CEST 2003 - ro@suse.de
+
+- fix gODBCconfig configure.in for autoreconf
+
+-------------------------------------------------------------------
+Wed Jul 30 16:01:00 CEST 2003 - ltinkl@suse.de
+
+- update to version 2.2.6
+
+-------------------------------------------------------------------
+Tue Jul 29 22:54:52 CEST 2003 - ro@suse.de
+
+- remove traces of buildroot from installed files
+
+-------------------------------------------------------------------
+Fri Jul 18 15:04:23 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:55:08 CEST 2003 - sbrabec@suse.cz
+
+- Added gnome-filesystem to neededforbuild.
+
+-------------------------------------------------------------------
+Mon Jun 23 18:49:25 CEST 2003 - ro@suse.de
+
+- fix for current automake 
+
+-------------------------------------------------------------------
+Fri Dec 27 18:56:56 CET 2002 - prehak@suse.cz
+
+- temporarily added two header files from Qt which make it build with Qt-3.1.1
+  (remove them when they won't be needed to build)
+
+-------------------------------------------------------------------
+Tue Nov 19 15:51:30 CET 2002 - ro@suse.de
+
+- add AM_GNU_GETTEXT_VERSION 
+
+-------------------------------------------------------------------
+Sun Nov 17 22:04:04 CET 2002 - prehak@suse.cz
+
+- fixed to build with autoconf 2.56
+
+-------------------------------------------------------------------
+Tue Nov 12 15:43:44 CET 2002 - tcrhak@suse.cz
+
+- fixed for bison 1.75: end rules with semicolons
+
+-------------------------------------------------------------------
+Tue Oct 01 15:19:08 CEST 2002 - prehak@suse.cz
+
+- updated to version 2.2.3
+- libodbcinstQ.{so,la} moved from unixODBC-devel to unixODBC-gui-qt
+  [#19743]
+
+-------------------------------------------------------------------
+Fri Sep 27 14:35:56 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Mon Sep  9 16:27:41 CEST 2002 - meissner@suse.de
+
+- Use qt3 instead of qt2.
+
+-------------------------------------------------------------------
+Sun Aug 18 14:27:27 CEST 2002 - prehak@suse.cz
+
+- fixed segfaulting isql when using SAPDB driver
+  (created unixODBC-segfault.dif)
+
+-------------------------------------------------------------------
+Mon Aug 12 13:55:53 CEST 2002 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Sat Jul 27 13:07:48 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Tue Jul  9 15:33:13 CEST 2002 - prehak@suse.de
+
+- updated to version 2.2.2 (mainly bugfixes, some unicode changes)
+
+-------------------------------------------------------------------
+Mon Jun 10 17:44:47 CEST 2002 - prehak@suse.cz
+
+- updated to version 2.2.1  (mainly bugfixes)
+- changed group to Productivity/Databases/Tools
+- changed path for .ini files to /etc/unixODBC/
+  and path for drivers to /usr/lib/unixODBC/
+- removed sample odbcinst.ini (TXT driver is not used so freqvently)
+- created patch to apply %{_lib} macro
+- added new configure feature --with-odbc-libs in gODBCConfig
+- moved *.so files to devel package
+- created README.SuSE
+
+-------------------------------------------------------------------
+Thu May 16 12:26:10 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Fri Apr  5 01:16:42 CEST 2002 - ro@suse.de
+
+- build with current autoconf/automake/gettext
+
+-------------------------------------------------------------------
+Wed Feb 27 19:34:37 CET 2002 - poeml@suse.de
+
+- don't include the (empty anyway) .ini files to the package, to
+  avoid a file conflict with the libiodbc package. The .ini files
+  are now packed as %ghost and touched in %post in both packages.
+- rewrote %post to not use absolute paths.
+
+-------------------------------------------------------------------
+Tue Jan  8 17:52:57 CET 2002 - ro@suse.de
+
+- help libtool with RPM_BUILD_ROOT 
+
+-------------------------------------------------------------------
+Fri Jan  4 17:22:55 CET 2002 - poeml@suse.de
+
+- update to 2.1.1 (bugfixes, 64 bit fixes, support for FILEDSN's,
+  changes to ODBCConfig. See http://www.unixodbc.org/ for the
+  changelog.)
+- add new libodbcinstQ.so* to filelist
+- remove libodbccr.so* from filelist (not to be installed)
+
+-------------------------------------------------------------------
+Fri Nov  9 01:47:39 CET 2001 - ro@suse.de
+
+- use qt-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Oct  2 10:53:21 CEST 2001 - rbarn@suse.de
+
+- update to version 2.0.9 
+- Fix small bug in postgres driver 
+
+-------------------------------------------------------------------
+Sun May 13 18:20:03 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Wed May  9 14:16:55 CEST 2001 - poeml@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Apr 13 11:45:16 CEST 2001 - ro@suse.de
+
+- hack for new gettext 
+
+-------------------------------------------------------------------
+Sun Apr  1 18:04:04 CEST 2001 - mfrueh@suse.de
+
+- created initial package 
+

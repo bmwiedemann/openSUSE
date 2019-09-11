@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Sun Oct 19 04:00:50 UTC 2014 - crrodriguez@opensuse.org
+
+- remove xorg-x11-devel from buildrequires, unused. 
+
+-------------------------------------------------------------------
+Wed Dec 21 10:45:23 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Feb  1 12:34:03 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Fri Apr  4 15:30:28 CEST 2008 - max@suse.de
+
+- Update to version 3.1.0 from CVS, which works with Tcl/Tk 8.5.
+
+-------------------------------------------------------------------
+Wed Feb  8 20:54:24 CET 2006 - max@suse.de
+
+- Fix a crash due to new gcc optimisations (tclplug-stubs.patch).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 13 18:30:03 CET 2005 - max@suse.de
+
+- Updated the source tarball to the latest CVS snapshot (3.0.2).
+
+- Fixed a typo in tcl.m4 that broke configure with bash 3.1.
+
+-------------------------------------------------------------------
+Thu Jul 28 12:40:49 CEST 2005 - max@suse.de
+
+- Moved the script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Fri Apr  1 16:00:43 CEST 2005 - max@suse.de
+
+- Updated to the latest CVS snapshot.
+
+-------------------------------------------------------------------
+Fri Mar 18 14:19:21 CET 2005 - max@suse.de
+
+- Added dependency on tcl and tk.
+
+-------------------------------------------------------------------
+Thu Mar  4 19:33:08 CET 2004 - max@suse.de
+
+- Updated to the latest CVS snapshot.
+
+- Building as a non-root user.
+
+-------------------------------------------------------------------
+Wed Jul 23 16:29:51 CEST 2003 - max@suse.de
+
+- Added tk-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Jun 12 11:12:05 CEST 2003 - kukuk@suse.de
+
+- Fix filelist 
+
+-------------------------------------------------------------------
+Mon Feb 24 15:36:42 CET 2003 - ro@suse.de
+
+- use /usr/lib/browser-plugins 
+- require web_browser (not specific to mozilla)
+
+-------------------------------------------------------------------
+Fri Feb 21 15:23:46 CET 2003 - max@suse.de
+
+- Added tk to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Feb 21 12:27:07 CET 2003 - max@suse.de
+
+- New version 3.0 from CVS snapshot.
+
+- The old one didn't work with mozilla.
+
+- The package becomes much smaller, because it now uses the
+  Tcl/Tk installation on the system instead of having it's own.
+
+-------------------------------------------------------------------
+Wed Aug 14 14:39:22 CEST 2002 - max@suse.de
+
+- Using Mozilla instead of Netscape (Bug #17428).
+
+-------------------------------------------------------------------
+Tue May  8 11:02:44 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue Dec 19 16:46:26 MET 2000 - max@suse.de
+
+- fixed race condition in tcl8.0/unix/tclUnixPipe.c
+
+-------------------------------------------------------------------
+Fri Jul  7 17:41:22 CEST 2000 - kukuk@suse.de
+
+- fix build on SPARC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed May  5 02:48:35 MEST 1999 - ro@suse.de
+
+- added glibc-2.1 fix for tclPosixStr
+
+-------------------------------------------------------------------
+Sat Nov 21 15:26:15 MET 1998 - max@suse.de
+
+- new package, version 2.0

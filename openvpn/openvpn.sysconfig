@@ -1,0 +1,16 @@
+## Type:        list("",)
+## Default:     ""
+#
+# Allows to specify an optional white-list of config names to start
+# in /etc/init.d/openvpn.
+#
+# Unlisted config names can be still started using the explicit name,
+# e.g. "/etc/init.d/openvpn start tun0" will start openvpn for the
+# "/etc/openvpn/tun0.conf" config file.
+# 
+# Setting the variable to e.g. "foo bar" will cause the start of the
+# "/etc/openvpn/foo.conf" and "/etc/openvpn/bar.conf" config files.
+# When empty, the init script will start all existing config files.
+#
+OPENVPN_AUTOSTART=""
+

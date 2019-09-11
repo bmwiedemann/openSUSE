@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Fri Sep 14 08:42:11 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 0.2800
+    - No changes from 0.2700-TRIAL
+ 
+- 0.2700    2017-03-30 10:09:46-04:00 America/New_York (TRIAL RELEASE)
+   [Fixed]
+    - Tests now work if '.' is not in @INC
+ 
+- 0.2600    2016-08-05 10:46:37-04:00 America/New_York
+    - No changes from 0.2501-TRIAL
+ 
+- 0.2501    2016-07-29 16:18:45-04:00 America/New_York (TRIAL RELEASE)
+   [Internal]
+    - Optimized calls to caller()
+ 
+- 0.25      2015-01-26 20:32:52-05:00 America/New_York
+   [Fixed]
+    - fixed: 00-compile.t failures under Windows (bug #98230).
+      The 00-compile.t file has been moved to a release test and is
+      no longer shipped.  [Michael Gray]
+   [Meta]
+    - moved bug tracker to Github
+    - updated repo files explaining how to contribute
+    - enabled Travis CI
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 15 10:41:17 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Feb 22 02:35:49 UTC 2012 - vcizek@suse.com
+
+- update to 0.24
+    - fixed: additional test regex fixed
+    - fixed: Perl 5.15 series Carp changes output format of messages (adds
+      a period).  This fixes the test regular expressions. [Andreas Koenig]
+    - added: the $Sub::Uplevel::CHECK_FRAMES global constant to enable the
+      frame depth checking and compile it out if not needed.  [Adam
+      Kennedy]
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:55 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Aug 11 11:13:39 UTC 2010 - chris@computersalat.de
+
+- update to 0.22
+  - meta: added repository to metadata [Alexandr Ciornii]
+- 0.21_01 Sat Nov 29 15:24:49 EST 2008
+  - added: the ":aggressive" tag may be used to force reloading of 
+    Exporter, which often binds caller() prior to Sub::Uplevel's global
+    override
+- recreated by cpanspec 1.78
+  o change to Build.PL
+- fix version mismatch
+  o http://www.dagolden.com/index.php/369/version-numbers-should-be-boring/
+    perl modules normaly use "decimal versioning", but for rpm
+    we need "decimal dotted versioning", hence the decimal 0.22
+    has to be normalized to decimal dotted 0.220.0
+    perl -e "print version->new(0.22)->normal" | sed "s/v//"
+  o without doing this (latest) 0.22 < 0.2002 (previous)
+    normalized: 0.220.0 > 0.200.200
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Dec 20 16:43:49 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:42:19 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Wed Jul  1 13:41:09 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps
+
+-------------------------------------------------------------------
+Fri Sep 12 12:53:17 CEST 2008 - anicka@suse.cz
+
+- update to 0.2002
+ * changed: removed Exporter dependency
+ * test fix: fixed strange t/07_uplevel_too_high.t fail on Win32
+
+-------------------------------------------------------------------
+Wed Sep 10 16:59:31 CEST 2008 - anicka@suse.cz
+
+- update to 0.2001
+ * test fix: changed prior override test to be more robust (SCHWERN)
+ * changed: bumped perl requirement to 5.006 and stopped using vars
+   (fixes a test bug under Test::More > 0.80)
+ * fixed: load Carp only as needed (fixes problem on 5.005)
+ * added: uplevel will warn if uplevel request is more than the call
+   stack depth
+
+-------------------------------------------------------------------
+Mon Feb 25 13:45:37 CET 2008 - anicka@suse.cz
+
+- update to 0.1901
+ * hides the "DB" package from indexers 
+   (DB used to support @DB::args)
+ * bug fix: replacement caller() correctly sets @DB::args if calling
+   package is DB
+ * repackaging: custom Build.PL, moved all author tests to xt/, 
+   added LICENSE and INSTALL files
+
+-------------------------------------------------------------------
+Thu Nov  1 15:44:09 CET 2007 - anicka@suse.cz
+
+- update to 0.18
+ * removed 5.006-specific language and tested on prerelease 5.00505
+
+-------------------------------------------------------------------
+Mon Oct  8 09:25:50 CEST 2007 - anicka@suse.cz
+
+- update to 0.16
+ * Won't override any existing CORE::GLOBAL::caller when loaded 
+ * Localize global caller() override to the scope of the uplevel()
+   call so it can play nicer with things like Contextual::Return 
+   and Hook::LexWrap that also override caller()
+
+-------------------------------------------------------------------
+Thu Jun 14 18:10:23 CEST 2007 - anicka@suse.cz
+
+- package created (version 0.14) 
+

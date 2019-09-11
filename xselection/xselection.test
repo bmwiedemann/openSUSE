@@ -1,0 +1,27 @@
+                        Testform für xselection
+                        =======================
+
+17.12.1996: Version 1.6.1
+Maintainer: maddin
+
+Vorraussetzungen:
+=================
+
+X muss installiert sein.
+
+Starten:
+========
+
+1.	xselection -cutbuffer 0 "teststring"
+2.	xselection -cutbuffer 0
+
+Ergebnisse:
+===========
+	
+1. Wenn man mit der mittleren Maustaste in ein xterm klickt, muß 
+
+teststring
+
+ausgegeben werden
+
+2. Ein vorher selektierter Text muß am Prompt erscheinen.

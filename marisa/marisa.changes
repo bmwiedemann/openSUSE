@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Mar 13 09:37:28 UTC 2018 - bwiedemann@suse.com
+
+- Drop build time from perllocal.pod for reproducibility (boo#1047218)
+
+-------------------------------------------------------------------
+Sun Oct 18 10:51:45 UTC 2015 - i@marguerite.su
+
+- add baselibs.conf
+  * fix boo#949455: can't install libkkc2-32bit because lack of 
+    libmarisa0-32bit
+
+-------------------------------------------------------------------
+Thu Jun 27 13:54:03 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ or BSD-2-Clause
+  Choice of either license - not an aggregation of both
+
+-------------------------------------------------------------------
+Wed Apr 24 17:12:22 UTC 2013 - i@marguerite.su
+
+- initial package version 0.2.4
+  * Fixed a typo in COPYING.
+  * marisa-trie is now dual-licensed under the BSD *2-clause* 
+    license and the LGPL.
+

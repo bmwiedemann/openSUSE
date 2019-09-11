@@ -1,0 +1,12 @@
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-swig-3.0.9/Lib/typemaps/fragments.swg ./Lib/typemaps/fragments.swg
+--- ../orig-swig-3.0.9/Lib/typemaps/fragments.swg	2016-05-29 14:35:37.000000000 +0200
++++ ./Lib/typemaps/fragments.swg	2016-06-08 11:13:09.475671763 +0200
+@@ -178,6 +178,8 @@
+ # elif defined(__sun) && defined(__SVR4)
+ #  include <ieeefp.h>
+ #  define SWIG_isfinite(X) (finite(X))
++# elif defined(__GNUC__)
++#  define SWIG_isfinite(X) (__builtin_isfinite(X))
+ # endif
+ #endif
+ %}

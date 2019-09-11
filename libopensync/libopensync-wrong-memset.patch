@@ -1,0 +1,11 @@
+--- formats/vformats-xml/vformat.c.orig
++++ formats/vformats-xml/vformat.c
+@@ -1760,7 +1760,7 @@ static void base64_init(char *rank)
+ {
+ 	int i;
+ 
+-	memset(rank, 0xff, sizeof(rank));
++	memset(rank, 0xff, strlen(rank));
+ 	for (i=0;i<64;i++) {
+ 		rank[(unsigned int)base64_alphabet[i]] = i;
+ 	}

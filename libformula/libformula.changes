@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Sep  8 11:44:14 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * libformula-1.1.3-sourcetarget.patch
+    + Specify java source and target 1.6 in order to allow building
+      with jdk9
+
+-------------------------------------------------------------------
+Wed Jul  9 10:31:10 UTC 2014 - tchvatal@suse.com
+
+- Add rpmlintrc to Sources.
+
+-------------------------------------------------------------------
+Tue Jul  1 13:37:38 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with a spec-cleaner and specify buildroot
+
+-------------------------------------------------------------------
+Tue Jan  7 13:27:28 UTC 2014 - mvyskocil@suse.com
+
+- Initial packaging of libformula 1.1.3 for SUSE (based on Fedora spec)
+  * add libformula-1.1.2.build.patch
+

@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jlehtine/c-pluff.git</param>
+    <param name="revision">c163d196ec7a6c24d00a87d15b4781fc0dcae025</param>
+    <param name="filename">cpluff</param>
+    <param name='versionformat'>%ci.%h</param>
+    <param name="versionprefix">0.1.4</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

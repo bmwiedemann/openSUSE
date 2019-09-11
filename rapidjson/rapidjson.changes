@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed Jun 12 10:15:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove bundled gtest and do not test as the testing only
+  works with bundled gtest version
+
+-------------------------------------------------------------------
+Thu Jun 06 08:16:06 UTC 2019 - tchvatal@suse.com
+
+- Switch to _service as upstream didn't release since 2016 and we
+  would need to backport many more features to make ie python-rapidjson
+  working
+- Update to version 1.1.0+git20190517.4b3d7c2f:
+  * Add missing curly brackets in STDREGEX's CreatePattern().
+  * fix typo
+  * add missing header "ios"
+  * doc/tutorial.zh-cn: fixed some typos
+  * Update allocators.h
+- Remove pateches for the old version:
+  * fix_compilation_gcc7.patch
+  * fix_compilation_sle11sp4.patch
+  * fix_install_paths.patch
+  * ignore_gcc8_warnings.patch
+  * remove_arch_specific_flags.patch
+
+-------------------------------------------------------------------
+Wed Dec 12 09:43:25 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Tue Dec 11 20:05:08 UTC 2018 - mmnelemane@suse.com
+
+- Fix build for SLE_12_SP2:
+  * use %doc for license file to fix build for older distro
+
+-------------------------------------------------------------------
+Mon Jun 18 08:30:06 UTC 2018 - christophe@krop.fr
+
+- Add upstream's patch ignore_gcc8_warnings.patch.
+
+-------------------------------------------------------------------
+Fri Jun  2 08:03:34 UTC 2017 - christophe@krop.fr
+
+- Add fix_compilation_gcc7.patch. Fixes build with GCC >= 7.0
+
+-------------------------------------------------------------------
+Mon Oct 10 14:11:09 UTC 2016 - adam.majer@suse.de
+
+- Added BuildRoot so we can actually build for SLE11
+
+-------------------------------------------------------------------
+Fri Sep 30 12:49:18 UTC 2016 - adam.majer@suse.de
+
+- New upstream version 1.1.0
+  * Added JSON Pointer
+  * Added JSON Schema
+  * Added relaxed JSON syntax (comment, trailing comma,
+    NaN/Infinity)
+  * Iterating array/object with C++11 Range-based for loop
+  * Reduce memory overhead of each Value from 24 bytes to 16 bytes
+    in x86-64 architecture.
+  * full changeset at
+    https://github.com/miloyip/rapidjson/releases/tag/v1.1.0
+- remove_arch_specific_flags.patch: remove architecture specific
+  compiler flags.
+- merge doc into devel package, it only adds about 20kB
+
+-------------------------------------------------------------------
+Wed Apr 20 12:56:56 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.0.2)
+

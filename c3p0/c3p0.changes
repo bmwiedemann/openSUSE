@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Sun Jul  7 10:00:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+- Update RPM group for c3p0-javadoc.
+
+-------------------------------------------------------------------
+Fri Dec 21 09:11:41 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Do not bundle mchange-commons, but build against the new
+  mchange-commons package
+- Removed patch
+  * c3p0-embed-mchange-common.patch
+    + Do not embed mchange-commons
+- Add alias c3p0:c3p0 to the maven artifact
+
+-------------------------------------------------------------------
+Tue Dec  4 15:05:37 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom files
+
+-------------------------------------------------------------------
+Wed May 16 08:21:52 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri May  4 11:03:32 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Added fdupes to fix building error with file jquery-1.10.2.js
+
+-------------------------------------------------------------------
+Mon Sep 18 06:16:59 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * c3p0-javadoc.patch
+    + Use test-classpath for javadoc generation, since it tries
+      to document also junit test files
+- Add dependency on junit
+- Clean spec file
+
+-------------------------------------------------------------------
+Fri Apr 22 14:14:47 UTC 2016 - dmacvicar@suse.de
+
+- update to version 0.9.5.2
+- update mchange-commons-java component to version 0.2.11
+- clean spec file
+
+-------------------------------------------------------------------
+Fri Jun 27 17:56:06 UTC 2014 - smoioli@suse.com
+
+- bugfix: dependent library was not embedded correctly
+
+-------------------------------------------------------------------
+Fri Jun 27 16:14:57 UTC 2014 - smoioli@suse.com
+
+- updated to upstream 0.9.5, that is compatible with Java 7 / JDBC 4 
+
+-------------------------------------------------------------------
+Tue Sep 24 09:51:34 UTC 2013 - dmacvicar@suse.de
+
+- Explicitly BuildRequires java-devel
+
+-------------------------------------------------------------------
+Thu Dec  9 11:23:06 CET 2010 - mc@suse.de
+
+- initial release
+

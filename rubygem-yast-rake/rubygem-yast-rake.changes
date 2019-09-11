@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Thu Jun 27 12:10:33 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- support proper rubocop version in rake check:rubocop
+  (bsc#1139270) 
+- 0.2.34
+
+-------------------------------------------------------------------
+Thu Jun 20 11:39:40 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- :sle_latest is SLE15-SP2 now (bsc#1138835)
+- 0.2.33
+
+-------------------------------------------------------------------
+Wed Apr 10 10:36:06 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Submit SLE12-SP5 to GA, it is still in the development mode
+  (related to bsc#1130043)
+- 0.2.32
+
+-------------------------------------------------------------------
+Thu Mar 21 09:10:18 UTC 2019 - Ladislav Slezak <lslezak@suse.cz>
+
+- Added SLE15-SP1 target (bsc#1130043)
+- 0.2.31
+
+-------------------------------------------------------------------
+Thu Mar 21 09:22:27 CET 2019 - aschnell@suse.com
+
+- added SLE12-SP5 target
+
+-------------------------------------------------------------------
+Tue Nov 27 21:56:12 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Expose theme directory to allow for installation to theme
+  (boo#1108422)
+- 0.2.30
+
+-------------------------------------------------------------------
+Fri Nov 23 15:23:00 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Fix base dir for icons (boo#1109378)
+- 0.2.29
+
+-------------------------------------------------------------------
+Tue Oct 30 07:47:42 UTC 2018 - lslezak@suse.cz
+
+- Changed the SLE12-SP4 SR target to the :Update subproject
+  (bsc#1113887)
+- 0.2.28
+
+-------------------------------------------------------------------
+Mon Oct 15 15:18:54 UTC 2018 - lslezak@suse.cz
+
+- Added CASP-4.0 target (needed for fate#325834)
+- 0.2.27
+
+-------------------------------------------------------------------
+Wed Aug 22 13:10:17 CEST 2018 - schubi@suse.de
+
+- Removed installation of file COPYING into the doc directory.
+  This file will be packed by the %license tag in the spec files.
+
+-------------------------------------------------------------------
+Fri Jun 22 14:05:30 UTC 2018 - lslezak@suse.cz
+
+- Added "check:rubocop" and "check:rubocop:auto_correct" tasks
+  which run Rubocop in parallel (much faster that the traditional
+  sequential way) (bsc#1094875)
+- 0.2.26
+
+-------------------------------------------------------------------
+Fri Jun 15 13:07:57 UTC 2018 - jreidinger@suse.com
+
+- switch sle_latest to SLE15 SP1 and switch SLE15 GA to
+  maintenance mode (bsc#1044312)
+- 0.2.25
+
+-------------------------------------------------------------------
+Wed Jun 13 11:16:18 UTC 2018 - lslezak@suse.cz
+
+- Fallback to the standard "rspec" when "parallel_rspec" is not
+  available for running the tests in parallel (bsc#1094875)
+- 0.2.24
+
+-------------------------------------------------------------------
+Mon May 28 11:20:34 UTC 2018 - lslezak@suse.cz
+
+- Improved "test:unit" rake task - optionally allow running the
+  tests in parallel using the "parallel_tests" gem (bsc#1094875)
+- 0.2.23
+
+-------------------------------------------------------------------
+Thu Apr 19 08:56:23 UTC 2018 - jreidinger@suse.com
+
+- add SLE12 SP4 as target and switch sle_latest to nil for now
+  until IBS create project for SLE15 SP1. (bsc#1044312)
+- 0.2.22
+
+-------------------------------------------------------------------
+Tue Apr 10 10:16:27 UTC 2018 - lslezak@suse.cz
+
+- Install also the custom icons in "rake install" (by wstephenson)
+  (bsc#1088844)
+- 0.2.21
+
+-------------------------------------------------------------------
+Thu Jan 18 14:22:03 UTC 2018 - igonzalezsosa@suse.com
+
+- Use old fillup-templates for openSUSE/SLE prior to 15
+  (bsc#1076602)
+- 0.2.20
+
+-------------------------------------------------------------------
+Wed Nov 29 16:43:06 UTC 2017 - igonzalezsosa@suse.com
+
+- Fix fillup-templates path (bsc#1070408)
+- 0.2.19
+
+-------------------------------------------------------------------
+Thu Nov  2 08:36:18 UTC 2017 - lslezak@suse.cz
+
+- Keep the current $Y2DIR value in "rake run", just prepend
+  the source directories
+- 0.2.18
+
+-------------------------------------------------------------------
+Wed Aug  2 12:55:26 UTC 2017 - lslezak@suse.cz
+
+- SLE-12-SP3 and Leap 42.3 have been released, send the OBS submit
+  requests to the :Updates projects now (bsc#1044312)
+- 0.2.17
+
+-------------------------------------------------------------------
+Thu Jul 13 08:43:54 UTC 2017 - jreidinger@suse.com
+
+- set :Update as a target for Leap 42.1 and 42.2 because it is
+  in maintenance mode. (bsc#1044312)
+- 0.2.16
+
+-------------------------------------------------------------------
+Thu Jun 22 19:46:34 UTC 2017 - mfilka@suse.com
+
+- bsc#1044312
+  - set :GA as a target for SLE-12-SP3 submissions since
+    maintenance project is not existing yet.
+- 0.2.15
+
+-------------------------------------------------------------------
+Wed Jun 14 14:01:28 UTC 2017 - jreidinger@suse.com
+
+- add sle15 as target and switch sle_latest (bsc#1044312)
+- 0.2.14
+
+-------------------------------------------------------------------
+Thu Dec  1 15:16:58 UTC 2016 - igonzalezsosa@suse.com
+
+- Add casp10 target for CASP 1.0 (bnc#1013039)
+- 0.2.13
+
+-------------------------------------------------------------------
+Wed Nov  9 16:50:07 UTC 2016 - igonzalezsosa@suse.com
+
+- update sle12sp2 target and add a new one for public
+  Jenkins instance (sle12sp2_public) (bnc#1009324)
+- 0.2.12
+
+-------------------------------------------------------------------
+Tue Sep 13 08:08:09 UTC 2016 - jreidinger@suse.com
+
+- add target also for leap42.2 (bnc#996865)
+- 0.2.11
+
+-------------------------------------------------------------------
+Thu Sep  1 12:37:10 UTC 2016 - jreidinger@suse.com
+
+- prepare for branching for sle12sp3 (bnc#996865)
+- add to known words "vc" as part of osc vc command in
+  CONTRIBUTING.md
+- 0.2.10
+
+-------------------------------------------------------------------
+Wed Mar  9 14:48:46 CET 2016 - schubi@suse.de
+
+- Requiring packaging_rake_tasks ~> 1.1.4 in order to check
+  for bugzilla,fate entries in the changes file.
+  (bnc#0)
+- 0.2.9
+
+-------------------------------------------------------------------
+Thu Mar  3 11:57:12 UTC 2016 - lslezak@suse.cz
+
+- added "sle12sp1_public" build target to build against SLE12-SP1
+  in public OBS (bnc#969358)
+- 0.2.8
+
+-------------------------------------------------------------------
+Wed Jan 13 15:39:29 UTC 2016 - igonzalezsosa@suse.com
+
+- update build target for sles12sp1 (bnc#0)
+- 0.2.7
+
+-------------------------------------------------------------------
+Mon Nov 23 14:55:57 UTC 2015 - jreidinger@suse.com
+
+- fix build target for sle12sp2 (bnc#0)
+- 0.2.6
+
+-------------------------------------------------------------------
+Wed Oct 28 15:18:23 UTC 2015 - ancor@suse.com
+
+- added target sle12sp2 ( needed for SP1 maintenance bnc#1)
+- 0.2.5
+
+-------------------------------------------------------------------
+Fri Oct 16 14:59:38 UTC 2015 - igonzalezsosa@suse.com
+
+- add a submit_to method to simplify OBS configuration
+
+-------------------------------------------------------------------
+Tue Apr 28 15:38:56 UTC 2015 - lslezak@suse.cz
+
+- use rubocop for checking the code style
+
+-------------------------------------------------------------------
+Tue Apr 28 13:34:00 UTC 2015 - lslezak@suse.cz
+
+- optionally load the tasks from yast-rake-ci if it is installed
+- 0.2.3
+
+-------------------------------------------------------------------
+Thu Apr 23 18:27:49 UTC 2015 - lslezak@suse.cz
+
+- allow to run the "check:spelling" task outside a Git checkout
+  (to use it in the Jenkins jobs during package build)
+- colorize the misspelled words in the output (if the "rainbow"
+  gem is installed)
+- use YAML config files
+- 0.2.2
+
+-------------------------------------------------------------------
+Wed Apr  1 10:07:26 UTC 2015 - jreidinger@suse.com
+
+- regenerate spec file to fix build for ruby2.2 in OBS 
+
+-------------------------------------------------------------------
+Thu Mar 26 14:08:51 UTC 2015 - lslezak@suse.cz
+
+- fixed gem packaging (missing "lib/tasks/spell.dict" file)
+- 0.2.1
+
+-------------------------------------------------------------------
+Wed Mar 11 20:02:42 UTC 2015 - lslezak@suse.cz
+
+- added "check:spelling" task - spell check files (by default
+  *.md and *.html files), needs "raspell" gem (no explicit
+  dependency)
+- do not crash when there is no "package/*.spec" file (e.g.
+  in yast.github.io repository)
+- 0.2.0
+
+-------------------------------------------------------------------
+Thu Nov 13 09:26:46 UTC 2014 - lslezak@suse.cz
+
+- new tasks:
+  - "pot" - collect translatable strings and create *.pot files
+  - "check:pot" - check for common mistakes in translations
+- 0.1.10
+
+-------------------------------------------------------------------
+Wed Oct 29 10:02:46 UTC 2014 - jreidinger@suse.com
+
+- test:unit: run all tests in single run (gh#yast/yast-rake#11)
+- 0.1.9
+
+-------------------------------------------------------------------
+Mon Jun  9 07:38:51 UTC 2014 - jreidinger@suse.com
+
+- install: Fix matching for autoyast-rnc directory
+- 0.1.8
+
+-------------------------------------------------------------------
+Fri Jun  6 13:41:03 CEST 2014 - locilka@suse.com
+
+- Added support for Yast "data" directory
+- 0.1.7
+
+-------------------------------------------------------------------
+Wed Jan 15 14:03:18 UTC 2014 - jreidinger@suse.com
+
+- Add "install" task for installation to proper location
+- 0.1.6
+
+-------------------------------------------------------------------
+Mon Dec  9 09:25:59 UTC 2013 - lslezak@suse.cz
+
+- read the version number directly from *.spec file (ignore VERSION
+  files), adapted "version:bump" task, removed
+  "version:update_spec" task (not needed anymore)
+- 0.1.5
+
+-------------------------------------------------------------------
+Thu Nov  7 10:20:46 UTC 2013 - mvidner@suse.com
+
+- Fixed `rake run` to work and `rake run[foo]` to really use
+  the local files.
+- 0.1.4
+
+-------------------------------------------------------------------
+Fri Oct 25 10:32:12 UTC 2013 - jreidinger@suse.com
+
+- Run test:unit even for nested test directories
+  (gh#yast/yast-rake#2)
+- 0.1.3
+
+-------------------------------------------------------------------
+Mon Oct 14 08:10:49 UTC 2013 - jreidinger@suse.com
+
+- do not run test before packaging as it is runned in osc:build
+  during rpm build
+- 0.1.2
+
+-------------------------------------------------------------------
+Thu Sep 19 14:06:10 UTC 2013 - jreidinger@suse.com
+
+- initial version
+

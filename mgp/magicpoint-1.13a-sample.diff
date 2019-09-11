@@ -1,0 +1,119 @@
+diff -ru magicpoint-1.09a.orig/sample/README magicpoint-1.09a/sample/README
+--- magicpoint-1.09a.orig/sample/README	Fri Apr 13 05:28:50 2001
++++ magicpoint-1.09a/sample/README	Mon Apr 29 15:47:10 2002
+@@ -22,3 +22,10 @@
+ 	(2) Copy "standard.ttf", "thick.ttf", "typewriter.ttf", 
+ 	    "kochi-mincho.ttf" and "goth.ttf" to "tfdir".
+ 		ftp://ftp.mew.org/pub/mgp/ttf.tar.gz
++
++----------------------------------------------------------------------
++Note:
++
++Suitable TrueType fonts are already available on SuSE Linux >= 8.0.
++The files default.mpg, mgprc-sammple, sample.mgp and sample-ja.mpg
++have already been edited to use these existing fonts.
+diff -ru magicpoint-1.09a.orig/sample/README.jp magicpoint-1.09a/sample/README.jp
+--- magicpoint-1.09a.orig/sample/README.jp	Fri Apr 13 05:28:50 2001
++++ magicpoint-1.09a/sample/README.jp	Mon Apr 29 15:46:34 2002
+@@ -22,3 +22,13 @@
+ 	(2) "tfdir" に "standard.ttf"、"thick.ttf"、"typewriter.ttf"、
+ 	    "kochi-mincho.ttf"、"goth.ttf" をコピーして下さい。
+ 		ftp://ftp.mew.org/pub/mgp/ttf.tar.gz
++
++
++----------------------------------------------------------------------
++注意：
++
++適当な TrueType フォントが SuSE Linux >= 8.0 に含まれています。
++default.mpg、 mgprc-sammple、sample.mgp と sample-ja.mpgのファイルを
++既存フォントを使用するようにちょっと編集いたしました。
++
++
+diff -ru magicpoint-1.09a.orig/sample/default.mgp magicpoint-1.09a/sample/default.mgp
+--- magicpoint-1.09a.orig/sample/default.mgp	Fri Aug 10 18:40:54 2001
++++ magicpoint-1.09a/sample/default.mgp	Mon Apr 29 15:27:26 2002
+@@ -12,9 +12,14 @@
+ %% into the "tfdir" directory above:
+ %%	ftp://ftp.mew.org/pub/mgp/ttf-jp.tar.gz
+ %%
+-%deffont "standard"   tfont "standard.ttf",   tmfont "kochi-mincho.ttf"
+-%deffont "thick"      tfont "thick.ttf",      tmfont "goth.ttf"
+-%deffont "typewriter" tfont "typewriter.ttf", tmfont "goth.ttf"
++%%deffont "standard"   tfont "standard.ttf",   tmfont "sazanami-mincho.ttf"
++%%deffont "thick"      tfont "thick.ttf",      tmfont "goth.ttf"
++%%deffont "typewriter" tfont "typewriter.ttf", tmfont "goth.ttf"
++%%
++%% use fonts similar to the above already available on SuSE Linux >= 8.0:
++%deffont "standard"   tfont "luxirr.ttf",      tmfont "sazanami-mincho.ttf"
++%deffont "thick"      tfont "luxirb.ttf",      tmfont "sazanami-gothic.ttf"
++%deffont "typewriter" tfont "luxirm.ttf",      tmfont "sazanami-gothic.ttf"
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%
+ %% Default settings per each line numbers.
+diff -ru magicpoint-1.09a.orig/sample/mgprc-sample magicpoint-1.09a/sample/mgprc-sample
+--- magicpoint-1.09a.orig/sample/mgprc-sample	Sun Jul 19 06:54:01 1998
++++ magicpoint-1.09a/sample/mgprc-sample	Mon Apr 29 15:04:13 2002
+@@ -6,9 +6,9 @@
+ # "vfcap" is commented out because it will be guessed by "configure"
+ # in most cases.
+ #vfcap "/usr/local/libdata/vflib/vfontcap"
+-tfdir "/usr/local/share/fonts/ttf"
++tfdir "/usr/X11R6/lib/X11/fonts/truetype"
+ 
+ # last resort font for TrueType renderer (FreeType).
+ # this must be specified in full pathname so that it can be used even if
+ # "tfdir" is changed in presentation file.
+-tfont0 "/usr/local/share/fonts/ttf/arial.ttf"
++tfont0 "/usr/X11R6/lib/X11/fonts/truetype/luxirr.ttf"
+diff -ru magicpoint-1.09a.orig/sample/sample-jp.mgp magicpoint-1.09a/sample/sample-jp.mgp
+--- magicpoint-1.09a.orig/sample/sample-jp.mgp	Sat Aug 11 11:53:53 2001
++++ magicpoint-1.09a/sample/sample-jp.mgp	Mon Apr 29 15:34:28 2002
+@@ -12,9 +12,13 @@
+ %% "watanabenabe-mincho.ttf" into the "tfdir" directory above:
+ %%	http://www.mew.org/mgp/xtt-fonts_0.19981020-3.tar.gz
+ %%
+-%deffont "thick" xfont "helvetica-bold-r", tfont "thick.ttf", tmfont "goth.ttf"
+-%deffont "standard" xfont "helvetica-medium-r", tfont "standard.ttf", tmfont "kochi-mincho.ttf"
+-%deffont "typewriter" xfont "courier-medium-r", tfont "typewriter.ttf", tmfont "goth.ttf"
++%%deffont "thick" xfont "helvetica-bold-r", tfont "thick.ttf", tmfont "goth.ttf"
++%%deffont "standard" xfont "helvetica-medium-r", tfont "standard.ttf", tmfont "sazanami-mincho.ttf"
++%%deffont "typewriter" xfont "courier-medium-r", tfont "typewriter.ttf", tmfont "goth.ttf"
++%% use similar fonts already available on SuSE Linux >= 8.0:
++%deffont "thick"      xfont "helvetica-bold-r",   tfont "luxisb.ttf",   tmfont "sazanami-gothic.ttf"
++%deffont "standard"   xfont "helvetica-medium-r", tfont "luxisr.ttf",   tmfont "sazanami-mincho.ttf"
++%deffont "typewriter" xfont "courier-medium-r",   tfont "luximr.ttf",   tmfont "sazanami-gothic.ttf"
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%
+ %% Default settings per each line numbers.
+@@ -202,7 +206,8 @@
+ 
+ 
+ 	(多分)表示可能なイメージ・フォーマットは以下の通りです
+-%CENTER,SIZE 3,FORE "red", xfont "times-medium-r", tfont "times.ttf"
++%%CENTER,SIZE 3,FORE "red", xfont "times-medium-r", tfont "times.ttf"
++%CENTER,SIZE 3,FORE "red", xfont "times-medium-r", tfont "luxirr.ttf"
+ 
+   FBM Image
+   Sun Rasterfile
+diff -ru magicpoint-1.09a.orig/sample/sample.mgp magicpoint-1.09a/sample/sample.mgp
+--- magicpoint-1.09a.orig/sample/sample.mgp	Sat Aug 11 11:53:53 2001
++++ magicpoint-1.09a/sample/sample.mgp	Mon Apr 29 15:30:56 2002
+@@ -12,9 +12,15 @@
+ %% "watanabenabe-mincho.ttf" into the "tfdir" directory above:
+ %%	http://www.mew.org/mgp/xtt-fonts_0.19981020-3.tar.gz
+ %%
+-%deffont "standard" xfont "helvetica-medium-r", tfont "standard.ttf", tmfont "hoso6.ttf"
+-%deffont "thick" xfont "helvetica-bold-r", tfont "thick.ttf", tmfont "hoso6.ttf"
+-%deffont "typewriter" xfont "courier-medium-r", tfont "typewriter.ttf", tmfont "hoso6.ttf"
++%%deffont "standard" xfont "helvetica-medium-r", tfont "standard.ttf", tmfont "hoso6.ttf"
++%%deffont "thick" xfont "helvetica-bold-r", tfont "thick.ttf", tmfont "hoso6.ttf"
++%%deffont "typewriter" xfont "courier-medium-r", tfont "typewriter.ttf", tmfont "hoso6.ttf"
++%%
++%% use similar fonts already available on SuSE Linux >= 8.0:
++%%
++%deffont "standard"   xfont "helvetica-medium-r", tfont "luxisr.ttf", tmfont "sazanami-gothic.ttf"
++%deffont "thick"      xfont "helvetica-bold-r",   tfont "luxisb.ttf", tmfont "sazanami-gothic.ttf"
++%deffont "typewriter" xfont "courier-medium-r",   tfont "luximr.ttf", tmfont "sazanami-gothic.ttf"
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%
+ %% Default settings per each line numbers.

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Jun  7 09:05:01 UTC 2015 - coolo@suse.com
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-Term-UI/CHANGES
+
+  0.46 Mon May 25 18:47:04 BST 2015
+  * Fix test skip count for non-terminals
+    (Alexandr Ciornii)
+  
+  0.44 Mon May 25 12:09:17 BST 2015
+  * Fix multi-choice without defaults (Noel Maddy)
+
+-------------------------------------------------------------------
+Sat Jul 26 10:27:51 UTC 2014 - coolo@suse.com
+
+- initial package 0.42
+    * created by cpanspec 1.78.08
+

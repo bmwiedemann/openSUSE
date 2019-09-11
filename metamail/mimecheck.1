@@ -1,0 +1,88 @@
+.\"
+.TH mimecheck 1 "Juni 28, 2007" "Version 0.42" "Check MIME attachments"
+.UC 1
+.SH NAME
+mimecheck \- determine the type of the MIME encoded of an attachment
+.br
+mimezip \- detect the type of MIME encoded zip archive in an attachment
+.br
+mimebzip \- detect the type of MIME encoded bzip2 data in an attachment
+.br
+mimegzip \- detect the type of MIME encoded gzip data in an attachment
+.SH SYNOPSIS
+.B mimecheck
+.I boundary
+.RI [ file ]
+.br
+.B mimezip
+.I boundary
+.RI [ file ]
+.br
+.B mimebzip
+.I boundary
+.RI [ file ]
+.br
+.B mimegzip
+.I boundary
+.RI [ file ]
+.SH DESCRIPTION
+The scripts
+.BR mimecheck ,\  mimezip ,\  mimebzip ,\ and\  mimegzip
+can be used to determine the contents of MIME encoded attachments
+of the type
+.IR application/octet-stream .
+The scripts require the boundary as provided in the headers and/or
+bodys of mails with enclosed attachments.  The scripts read from
+standard input if no file was provided and write out the detected
+MIME type to standard out.
+.SH EXAMPLE
+A short filter rule used by
+.BR procmail (1)
+to check for DOS executables in MIME encoded zip archives
+found in many attachments:
+.sp 1
+.in +1c
+.nf
+BLANK="[ 	]+"
+TYPE="${BLANK}multipart/(alternative|mixed)"
+
+:0
+* $ ^Content-Type:${TYPE};(${BLANK}|$)*boundary=[\\"']?\/[^\ \\"';]+
+{
+	BOUNDARY="${MATCH}"
+	TYPE=""
+
+	:0 B
+        * $ ^Content-Transfer-Encoding:${BLANK}base64
+	{
+		TYPE=`mimecheck ${BOUNDARY}`
+
+		:0
+		* TYPE ?? application/x-zip
+		{
+			TYPE=`mimezip ${BOUNDARY}`
+		}
+	}
+
+	:0
+	* TYPE ?? executable.*DOS
+	* TYPE ?? DOS.*executable
+	/dev/null
+}
+.fi
+.in -1c
+.sp 1
+there is no guarantee that this piece of a
+.BR procmailrc (5)
+file will work.
+.SH SEE ALSO
+.BR procmailrc (5),
+.BR file (1),
+.BR sed (1),
+.BR mimencode (1).
+.SH COPYRIGHT
+2007 SuSE LINUX Products GmbH, Nuernberg, Germany,
+.br
+2007 Werner Fink.
+.SH AUTHORS
+Werner Fink <werner@suse.de>.

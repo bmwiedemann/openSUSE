@@ -1,0 +1,264 @@
+-------------------------------------------------------------------
+Wed Apr 17 07:52:42 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.2
+  * Fixed "-o idmap=user" to map both UID and GID on all OSs.
+  * Fixed improper handling of sequential spaces spaces in
+    "ssh_command" option
+
+-------------------------------------------------------------------
+Mon Mar 18 15:26:12 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.5.1
+  * Documentation updates
+  * Build system updates
+  * Added "BindInterface" as valid "-o" option.
+
+-------------------------------------------------------------------
+Fri Dec  7 11:05:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.5.0
+  * Fixed error code returned by rename(), allowing proper fallback.
+  * Make utimens(NULL) result in timestamp "now" -- no more
+    touched files dated 1970-01-01.
+  * SSHFS now supports (or rather: ignores) some options that it
+    may receive as result of being mounted from /etc/mtab.
+    This includes things like user, netdev, or auto.
+  * Dropped support for writeback caching (and, as a consequence,
+    "unreliable append" operation). As of kernel 4.14, the FUSE
+    module's writeback implementation is not compatible with
+    network filesystems and there are no imminent plans to change
+    that.
+  * Add support for mounting from /etc/fstab
+  * SSHFS now supports O_APPEND.
+  * Fixed a crash due to a race condition when listing directory
+    contents.
+  * For improved backwards compatibility, SSHFS now also silently
+    accepts the old -o cache_* options.
+
+-------------------------------------------------------------------
+Tue Oct  2 17:16:31 UTC 2018 - astieger@suse.com
+
+- sshfs 2.10:
+  * Fix a crash due to a race condition when listing directory contents
+  * Document limited hardlink support
+  * Add support for more SSH options.
+  * Drop support for the nodelay workaround
+  * Drop support for the nodelaysrv workaround
+    The same effect (enabling NODELAY on the server side and
+    enabling X11 forwarding) can be achieved by explicitly passing
+    -o ForwardX11
+  * Remove support for -o workaround=all
+
+-------------------------------------------------------------------
+Tue Oct  2 16:50:34 UTC 2018 - astieger@suse.com
+
+- Add source signature and verify source signature
+- clean up spec file
+
+-------------------------------------------------------------------
+Mon Jul 24 08:58:45 UTC 2017 - mimi.vx@gmail.com
+
+- update to 2.9
+* various bugfixes
+
+-------------------------------------------------------------------
+Sun May 28 08:59:38 UTC 2017 - toms@opensuse.org
+
+- Spec file:
+  Correct URL from Sourceforge to GitHub (the SF URL is redirected
+  to GH anyway)
+
+-------------------------------------------------------------------
+Tue Oct 18 11:18:29 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.8
+- Added support for the "fsync" extension
+
+-------------------------------------------------------------------
+Thu Mar 17 20:16:34 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.7
+- spec-cleaned spec file
+* Added -o cache_max_size=N option to let users tune the maximum size of the cache 
+	in number of entries.
+* Added -o cache_clean_interval=N and -o cache_min_clean_interval=N options to 
+	let users tune the cleaning behavior of the cache.
+
+-------------------------------------------------------------------
+Sat Oct  4 00:07:41 CEST 2014 - dsterba@suse.cz
+
+- update to 2.5
+  * Add -o disable_hardlink option (debian bug #670926).
+  * Optimize readdir by sending multiple requests in parallel.  Add -o
+    sync_readdir to restore old behavior.
+  * Map SSH2_FX_FAILURE to ENOTEMPTY for rmdir.
+  * When checking root directory use LSTAT not STAT.  This prevents I/O error
+    being returned after a successful mount if a symlink is mounted.
+
+-------------------------------------------------------------------
+Sat May 26 17:34:50 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Mar 16 01:35:31 UTC 2012 - tabraham@novell.com
+
+- update to 2.4
+  * Add "-oworkaround=fstat" for SFTP servers which don't support
+    the FSTAT message.  Patch by: Percy Jahn
+  * Remove "-oPreferredAuthentications" from ssh options if the
+    "password_stdin" option is used.  Reported by E. Kuemmerle
+  * Fix double free if reconnection races with request sending.
+    Patch by E. Kuemmerle
+  * Submit max 32k reads and writes to the sftp server.  Also don't
+    limit the kernel to 64k reads and writes, rather split into 32k
+    sized chunks and send them to the server all at once.  This is
+    more efficient and less demanding from the server.  Reported by
+    Ludovic Courtès.  Fix suggested by Niels Möller
+  * Make chown respect the UID mapping policy.  Reported and tested
+    by Vivenzio Pagliari
+  * Add -o idmap=file, -o uidmap=FILE, -o gidmap=FILE. These options
+    allow you to create a pair of local files, similar to /etc/passwd or
+    /etc/group files from the remote server, and use those to remap all
+    the given UIDs/GIDs.
+  * Add -o slave. This option routes the sftp communication over stdin
+    and stdout, bypassing SSH and network.
+  * Make sure idmap files aren't writable by others otherwise, other
+    local users could change the mapping, and gain access to things
+    they shouldn't.  Patch by Mike Kelly
+
+-------------------------------------------------------------------
+Thu Dec  1 16:59:54 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 11 16:01:13 UTC 2011 - tabraham@novell.com
+
+- updated to 2.3
+  * Add hard link operation
+  * Fix possible deadlock on reconnection
+  * Fix cleanup when ssh connection is terminated to prevent
+    sshfs hanging when the server is rebooted, for example
+  * Set FD_CLOEXEC on fuse device to prevent deadlocks
+  * Check mountpoint and fuse options before starting an ssh
+    session
+  * Allow mounting a single non-directory from the server
+  * Add option 'delay_connect'
+  * Print usage information and version to stdout, not stderr
+
+-------------------------------------------------------------------
+Tue Mar 22 05:14:13 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Wed Oct 29 12:19:20 CET 2008 - mszeredi@suse.de
+
+- updated to version 2.2
+ * Handle numerical IPv6 addresses enclosed in square brackets.
+ * Fix error if username contains a comma character
+
+-------------------------------------------------------------------
+Fri Jul 25 12:32:05 CEST 2008 - mszeredi@suse.de
+
+- updated to version 2.1
+ * Support password authentication with pam_mount
+ * Support atomic renames if server is OpenSSH 4.9 or later
+ * Support getting disk usage if server is OpenSSH 5.1 or later
+ * Add man page
+ * Improved ssh option support
+ * Improved support for specifying a special ssh command
+ * Fix bug that could cause corruption with append mode writes
+ * Allow specifying an ssh config file
+
+-------------------------------------------------------------------
+Mon Dec 17 16:45:20 CET 2007 - mszeredi@suse.de
+
+- updated to version 1.9
+ * Fix crash when writing large files on SMP
+ * Fill in st_ctime attribute
+ * Add mount subtype support
+ * Small optimizations
+
+-------------------------------------------------------------------
+Fri Aug 10 19:34:35 CEST 2007 - bk@suse.de
+
+- Add "Requires: fuse" to ensure that fuse is present (285101#c29)
+
+-------------------------------------------------------------------
+Thu May 17 11:54:49 CEST 2007 - mszeredi@suse.de
+
+- updated to version 1.8
+  * Fix rare crashes due to uninitialized threading in glib
+  * Fix memory leak in open
+  * Fix crash when sem_wait() is interrupted (e.g. by gdb)
+  * Fix caching when renaming a directory
+  * Work around crash of sftp-server when its input buffer is full
+  * Add option to work around performance problem with old ssh
+    servers
+  * Fix bug in follow_symlinks option
+- Don't build sshnodelay.so, which is not needed any more with
+  current ssh clients
+
+-------------------------------------------------------------------
+Thu Oct 12 18:03:29 CEST 2006 - tiwai@suse.de
+
+- update to version 1.7:
+  * Add option 'follow_symlinks' to resolve symlinks on the server
+  * Fix for sftp with login shell printing a banner
+  * Check remote directory for existence before mounting
+
+-------------------------------------------------------------------
+Wed May 17 18:48:28 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue May 16 16:34:49 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.6
+  * Fix segfault if remote host is down and reconnection is
+    enabled
+  * Fix bug in symlink transformation
+  * Add workaround for broken truncate on old sftp servers
+  * Memory copy optimizations
+
+-------------------------------------------------------------------
+Mon Feb 20 21:06:35 CET 2006 - cthiel@suse.de
+
+- update to version 1.5
+  * Add workaround (enabled by default) for ssh clients not setting
+    TCP_NODELAY on the network connection.  Currently this is all known
+    versions of openssh.  This may improve download speed in some
+    circumstances
+  * Use TCP_NODELAY socket option for direct connection.  This may improve
+    download speed in some circumstances
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 15 14:04:28 CET 2006 - cthiel@suse.de
+
+- update to version 1.4
+
+-------------------------------------------------------------------
+Tue Nov 22 19:18:01 CET 2005 - msvec@suse.cz
+
+- update to version 1.3
+
+-------------------------------------------------------------------
+Tue Sep 20 13:59:54 CEST 2005 - cthiel@suse.de
+
+- update to version 1.2
+
+-------------------------------------------------------------------
+Wed May 25 19:58:15 CEST 2005 - tiwai@suse.de
+
+- initial version: 1.1
+

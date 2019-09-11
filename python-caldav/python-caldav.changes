@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Apr 25 06:44:50 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- version update to 0.6.1
+  * bugfix: accept text/calendar (required for fetching calendar items from the xandikos server, ref https://github.com/python-caldav/caldav/issues/40
+
+-------------------------------------------------------------------
+Fri Mar 22 10:55:32 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.6.0
+  * caldav/elements/cdav.py - proper timezone support
+  * caldav/elements/dav.py - add GetEtag
+  * caldav/elements/cdav.py - allow Expand tag to be used with open-ended
+    start
+  * caldav/objects.py - enhancement: add the ability to add events to
+    calendar using directly a vobject object, and not necessarily an ical
+    string.
+  * caldav/objects.py - bugfix: uid handling while fetching
+    elements
+  etc. see https://github.com/python-caldav/caldav/blob/master/ChangeLog
+- almost all tests are online, do not run
+ 
+-------------------------------------------------------------------
+Tue Dec  4 12:46:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Jul 10 12:05:22 UTC 2017 - jengelh@inai.de
+
+- Drop history lesson and future goal wording from description.
+
+-------------------------------------------------------------------
+Tue Jun 13 05:55:00 UTC 2017 - okurz@suse.com
+
+- Update to 0.5.0
+- Convert spec file to singlespec
+
+-------------------------------------------------------------------
+Fri Jun  3 15:08:39 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 0.4.0
+  * No upstream changelog
+- Clean up spec file
+
+-------------------------------------------------------------------
+Wed Oct 23 12:10:27 UTC 2013 - axel.braun@gmx.de
+
+- Initial package ( version 0.1.12 )

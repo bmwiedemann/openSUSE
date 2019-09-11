@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Apr 14 17:34:26 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 2.15.0, please see
+
+  /usr/share/doc/packages/jondofox/jondofox-en/changelog.gz
+
+-------------------------------------------------------------------
+Tue Aug 25 14:54:39 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 2.12.0, no changelog entry
+- Add BuildRequires for xz
+
+-------------------------------------------------------------------
+Mon Jun 15 09:29:03 UTC 2015 - nemysis@gmx.ch
+
+- Change Description
+
+-------------------------------------------------------------------
+Sun Jun 14 22:23:54 UTC 2015 - nemysis@gmx.ch
+
+- Initial package creation
+

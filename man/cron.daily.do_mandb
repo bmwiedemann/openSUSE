@@ -1,0 +1,71 @@
+#!/bin/sh
+#
+#
+# do_mandb. This script was split off cron.daily.
+# Please add your local changes to cron.daily.local
+# since this file will be overwritten, when updating your system.
+#
+# Copyright (c) 1996-2002 SuSE GmbH Nuernberg, Germany.   
+# Copyright (c) 2008 SuSE LINUX Products GmbH Nuernberg, Germany.   
+#
+# please send bugfixes or comments to feedback@suse.de.
+#
+# Author: Werner Fink <feedback@suse.de>, 2008
+#         Burchard Steinbild <feedback@suse.de>, 1996
+#         Florian La Roche <feedback@suse.de>, 1996
+#
+
+#
+# paranoia settings
+#
+umask 022
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+#
+# get information from /etc/sysconfig/cron
+#
+if test -f /etc/sysconfig/cron ; then
+    . /etc/sysconfig/cron
+fi
+
+
+#
+# now we do the man page stuff
+#
+if test "$REINIT_MANDB" = yes ; then
+    if type -p mandb > /dev/null 2>&1 ; then
+	typeset -r manpaths=$(manpath -g)
+	typeset -i errors=0
+	renice   +5 -p $$ > /dev/null || true
+	ionice -c 3 -p $$ > /dev/null || true
+	unset MANPATH
+	IFS=:
+	for mp in $manpaths; do
+	    test -d "${mp}" || continue
+	    cp=$(MANPATH=$mp manpath -qc)
+	    test -n "${cp}" || continue
+	    test -d "${cp}" || continue
+	    db=${cp}/index.db
+	    if test -e ${db} ; then
+		find $mp -follow -newer $db | read -t 1 line
+		test $? -eq 0 || continue
+	    fi
+	    nice -n 5 ionice -c 3 mandb -qs ${mp} > /dev/null 2>&1 || let errors++
+	done
+	if test $errors -ne 0 ; then
+	    echo There seem to be trouble with mandb.
+	    echo
+	    echo please run mandb and check the output...
+	fi
+    fi
+    #
+    # some applications need whatis database. If makewhatis exists, call it
+    #
+    if type -p makewhatis > /dev/null 2>&1 ; then
+	makewhatis
+    fi
+fi
+
+exit 0

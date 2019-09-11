@@ -1,0 +1,264 @@
+-------------------------------------------------------------------
+Mon May  6 10:23:01 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.3.0
+  Deprecations
+  ~~~~~~~~~~~~
+  - The ``send_bytes`` adjustment now defaults to ``1`` and is deprecated
+    pending removal in a future release.
+    and https://github.com/Pylons/waitress/pull/246
+  Features
+  ~~~~~~~~
+  - Add a new ``outbuf_high_watermark`` adjustment which is used to apply
+    backpressure on the ``app_iter`` to avoid letting it spin faster than data
+    can be written to the socket. This stabilizes responses that iterate quickly
+    with a lot of data.
+    See https://github.com/Pylons/waitress/pull/242
+  - Stop early and close the ``app_iter`` when attempting to write to a closed
+    socket due to a client disconnect. This should notify a long-lived streaming
+    response when a client hangs up.
+    See https://github.com/Pylons/waitress/pull/238
+    and https://github.com/Pylons/waitress/pull/240
+    and https://github.com/Pylons/waitress/pull/241
+  - Adjust the flush to output ``SO_SNDBUF`` bytes instead of whatever was
+    set in the ``send_bytes`` adjustment. ``send_bytes`` now only controls how
+    much waitress will buffer internally before flushing to the kernel, whereas
+    previously it used to also throttle how much data was sent to the kernel.
+    This change enables a streaming ``app_iter`` containing small chunks to
+    still be flushed efficiently.
+    See https://github.com/Pylons/waitress/pull/246
+  Bugfixes
+  ~~~~~~~~
+  - Upon receiving a request that does not include HTTP/1.0 or HTTP/1.1 we will
+    no longer set the version to the string value "None". See
+    https://github.com/Pylons/waitress/pull/252 and
+    https://github.com/Pylons/waitress/issues/110
+  - When a client closes a socket unexpectedly there was potential for memory
+    leaks in which data was written to the buffers after they were closed,
+    causing them to reopen.
+    See https://github.com/Pylons/waitress/pull/239
+  - Fix the queue depth warnings to only show when all threads are busy.
+    See https://github.com/Pylons/waitress/pull/243
+    and https://github.com/Pylons/waitress/pull/247
+  - Trigger the ``app_iter`` to close as part of shutdown. This will only be
+    noticeable for users of the internal server api. In more typical operations
+    the server will die before benefiting from these changes.
+    See https://github.com/Pylons/waitress/pull/245
+  - Fix a bug in which a streaming ``app_iter`` may never cleanup data that has
+    already been sent. This would cause buffers in waitress to grow without
+    bounds. These buffers now properly rotate and release their data.
+    See https://github.com/Pylons/waitress/pull/242
+  - Fix a bug in which non-seekable subclasses of ``io.IOBase`` would trigger
+    an exception when passed to the ``wsgi.file_wrapper`` callback.
+    See https://github.com/Pylons/waitress/pull/249
+
+-------------------------------------------------------------------
+Wed Mar 20 18:49:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording and other platform mentions.
+
+-------------------------------------------------------------------
+Mon Feb 25 19:47:04 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add fetch-intersphinx-inventories.sh to sources
+- Add local-intersphinx-inventories.patch for generating the docs
+  correctly
+
+-------------------------------------------------------------------
+Thu Feb  7 14:56:02 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 1.2.1:
+  too many changes to list here, see:
+  https://github.com/Pylons/waitress/blob/master/CHANGES.txt
+  or even:
+  https://github.com/Pylons/waitress/commits/master
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Oct 13 00:49:45 UTC 2017 - arun@gmx.de
+
+- update to version 1.1.0:
+  * Features
+    + Waitress now has a __main__ and thus may be called with "python
+      -mwaitress"
+  * Bugfixes
+    + Waitress no longer allows lowercase HTTP verbs. This change was
+      made to fall in line with most HTTP servers. See
+      https://github.com/Pylons/waitress/pull/170
+    + When receiving non-ascii bytes in the request URL, waitress will
+      no longer abruptly close the connection, instead returning a 400
+      Bad Request. See https://github.com/Pylons/waitress/pull/162 and
+      https://github.com/Pylons/waitress/issues/64
+
+-------------------------------------------------------------------
+Mon May  1 16:38:04 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 1.0.2
+  * Python 3.6 is now officially supported in Waitress
+  * Add a work-around for libc issue on Linux not following the
+    documented standards. If getnameinfo() fails because of DNS not
+    being available it should return the IP address instead of the
+    reverse DNS entry, however instead getnameinfo() raises. We
+    catch this, and ask getnameinfo() for the same information
+    again, explicitly asking for IP address instead of reverse
+    DNS hostname.
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Tue Nov 15 14:49:27 UTC 2016 - tbechtold@suse.com
+
+- update to 1.0.1:
+  - IPv6 support on Windows was broken due to missing constants in the socket
+    module. This has been resolved by setting the constants on Windows if they
+    are missing. See https://github.com/Pylons/waitress/issues/138
+  - A ValueError was raised on Windows when passing a string for the port, on
+    Windows in Python 2 using service names instead of port numbers doesn't work
+    with `getaddrinfo`. This has been resolved by attempting to convert the port
+    number to an integer, if that fails a ValueError will be raised. See
+    https://github.com/Pylons/waitress/issues/139
+  - Removed `AI_ADDRCONFIG` from the call to `getaddrinfo`, this resolves an
+    issue whereby `getaddrinfo` wouldn't return any addresses to `bind` to on
+    hosts where there is no internet connection but localhost is requested to be
+    bound to. See https://github.com/Pylons/waitress/issues/131 for more
+    information.
+- disable tests. need network access.
+
+-------------------------------------------------------------------
+Fri May 20 11:27:26 UTC 2016 - dmueller@suse.com
+
+- update to 0.9.0:
+  * Security/Protections
+    - Building on the changes made in pull request 117, add in checking for line
+      feed/carriage return HTTP Response Splitting in the status line, as well as
+      the key of a header. See https://github.com/Pylons/waitress/pull/124 and
+      https://github.com/Pylons/waitress/issues/122.
+    - Waitress will no longer accept headers or status lines with
+      newline/carriage returns in them, thereby disallowing HTTP Response
+      Splitting.
+  * Bugfixes
+    - FileBasedBuffer and more important ReadOnlyFileBasedBuffer no longer report
+      False when tested with bool(), instead always returning True, and becoming
+      more iterator like.
+    - Call prune() on the output buffer at the end of a request so that it doesn't
+      continue to grow without bounds.
+
+-------------------------------------------------------------------
+Fri Dec 12 22:08:09 UTC 2014 - tbechtold@suse.com
+
+- update to 0.8.9:
+  - Fix tests under Windows.  NB: to run tests under Windows, you cannot run
+    "setup.py test" or "setup.py nosetests".  Instead you must run ``python.exe
+    -c "import nose; nose.main()"``.  If you try to run the tests using the
+    normal method under Windows, each subprocess created by the test suite will
+    attempt to run the test suite again.  See
+    https://github.com/nose-devs/nose/issues/407 for more information.
+  - Give the WSGI app_iter generated when ``wsgi.file_wrapper`` is used
+    (ReadOnlyFileBasedBuffer) a ``close`` method.  Do not call ``close`` on an
+    instance of such a class when it's used as a WSGI app_iter, however.  This is
+    part of a fix which prevents a leakage of file descriptors; the other part of
+    the fix was in WebOb
+    (https://github.com/Pylons/webob/commit/951a41ce57bd853947f842028bccb500bd5237da).
+  - Allow trusted proxies to override ``wsgi.url_scheme`` via a request header,
+    ``X_FORWARDED_PROTO``.  Allows proxies which serve mixed HTTP / HTTPS
+    requests to control signal which are served as HTTPS.  See
+    https://github.com/Pylons/waitress/pull/42.
+  - Fix some cases where the creation of extremely large output buffers (greater
+    than 2GB, suspected to be buffers added via ``wsgi.file_wrapper``) might
+    cause an OverflowError on Python 2.  See
+    https://github.com/Pylons/waitress/issues/47.
+  - When the ``url_prefix`` adjustment starts with more than one slash, all
+    slashes except one will be stripped from its beginning.  This differs from
+    older behavior where more than one leading slash would be preserved in
+    ``url_prefix``.
+  - If a client somehow manages to send an empty path, we no longer convert the
+    empty path to a single slash in ``PATH_INFO``.  Instead, the path remains
+    empty.  According to RFC 2616 section "5.1.2 Request-URI", the scenario of a
+    client sending an empty path is actually not possible because the request URI
+    portion cannot be empty.
+  - If the ``url_prefix`` adjustment matches the request path exactly, we now
+    compute ``SCRIPT_NAME`` and ``PATH_INFO`` properly.  Previously, if the
+    ``url_prefix`` was ``/foo`` and the path received from a client was ``/foo``,
+    we would set *both* ``SCRIPT_NAME`` and ``PATH_INFO`` to ``/foo``.  This was
+    incorrect.  Now in such a case we set ``PATH_INFO`` to the empty string and
+    we set ``SCRIPT_NAME`` to ``/foo``.  Note that the change we made has no
+    effect on paths that do not match the ``url_prefix`` exactly (such as
+    ``/foo/bar``); these continue to operate as they did.  See
+    https://github.com/Pylons/waitress/issues/46
+  - Preserve header ordering of headers with the same name as per RFC 2616.  See
+    https://github.com/Pylons/waitress/pull/44
+  - When waitress receives a ``Transfer-Encoding: chunked`` request, we no longer
+    send the ``TRANSFER_ENCODING`` nor the ``HTTP_TRANSFER_ENCODING`` value to
+    the application in the environment.  Instead, we pop this header.  Since we
+    cope with chunked requests by buffering the data in the server, we also know
+    when a chunked request has ended, and therefore we know the content length.
+    We set the content-length header in the environment, such that applications
+    effectively never know the original request was a T-E: chunked request; it
+    will appear to them as if the request is a non-chunked request with an
+    accurate content-length.
+  - Cope with the fact that the ``Transfer-Encoding`` value is case-insensitive.
+  - When the ``--unix-socket-perms`` option was used as an argument to
+    ``waitress-serve``, a ``TypeError`` would be raised.  See
+    https://github.com/Pylons/waitress/issues/50.
+- Enable testsuite during build
+
+-------------------------------------------------------------------
+Wed Sep 11 21:14:23 UTC 2013 - dmueller@suse.com
+
+- update to 0.8.7:
+  - The HTTP version of the response returned by waitress when it catches an
+  exception will now match the HTTP request version.
+  - Fix: CONNECTION header will be HTTP_CONNECTION and not CONNECTION_TYPE
+  (see https://github.com/Pylons/waitress/issues/13)
+
+-------------------------------------------------------------------
+Tue Aug 13 10:15:30 UTC 2013 - dmueller@suse.com
+
+- update to 0.8.6:
+ - Do alternate type of checking for UNIX socket support, instead of checking
+   for platform == windows.
+ 
+ - Functional tests now use multiprocessing module instead of subprocess module,
+   speeding up test suite and making concurrent execution more reliable.
+ 
+ - Runner now appends the current working directory to ``sys.path`` to support
+   running WSGI applications from a directory (i.e., not installed in a
+   virtualenv).
+
+-------------------------------------------------------------------
+Tue Jun 25 11:28:09 UTC 2013 - dmueller@suse.com
+
+- update to 0.8.5:
+ - Fix runner multisegment imports in some Python 2 revisions (see
+   https://github.com/Pylons/waitress/pull/34).
+ - For compatibility, WSGIServer is now an alias of TcpWSGIServer. The
+   signature of BaseWSGIServer is now compatible with WSGIServer pre-0.8.4.
+ - Add a command-line runner called ``waitress-serve`` to allow Waitress
+   to run WSGI applications without any addional machinery. This is
+   essentially a thin wrapper around the ``waitress.serve()`` function.
+ - Allow parallel testing (e.g., under ``detox`` or ``nosetests --processes``)
+   using PID-dependent port / socket for functest servers.
+ - Fix integer overflow errors on large buffers. Thanks to Marcin Kuzminski
+   for the patch.  See: https://github.com/Pylons/waitress/issues/22
+ - Add support for listening on Unix domain sockets.
+
+-------------------------------------------------------------------
+Thu May  2 12:47:10 UTC 2013 - speilicke@suse.com
+
+- Fix license string
+
+-------------------------------------------------------------------
+Mon Apr 29 14:14:25 UTC 2013 - speilicke@suse.com
+
+- Reduce buildrequires as long as the testsuite and doc build isn't fixed
+- Package COPYRIGHT.txt LICENSE.txt README.rst
+
+-------------------------------------------------------------------
+Mon Apr 29 13:06:10 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.8.3) 
+

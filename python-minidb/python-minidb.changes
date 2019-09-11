@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Sep  9 00:08:22 UTC 2017 - jengelh@inai.de
+
+- Fix grammar problems in %description for initial submit.
+
+-------------------------------------------------------------------
+Thu Sep  7 22:41:50 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

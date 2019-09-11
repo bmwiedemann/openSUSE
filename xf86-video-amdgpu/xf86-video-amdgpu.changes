@@ -1,0 +1,300 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:49:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- move xorg.conf.d snippet from /etc/X11/xorg.conf.d to
+  /usr/share/X11/xorg.conf.d (boo#1139692)
+
+-------------------------------------------------------------------
+Fri Mar 22 13:08:07 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.0.1
+  * Add support for RandR output tile properties, allowing
+    monitors using DisplayPort Multi Stream Transport tiling
+    to work better out of the box.
+
+-------------------------------------------------------------------
+Thu Mar  7 10:14:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.0.0
+  * Support for FreeSync variable refresh rate (this also requires the
+    amdgpu driver from kernel 5.0 or newer, and radeonsi from Mesa 19.0 or
+    newer).
+  * Various TearFree related fixes and robustness improvements.
+  * Support for scanout buffers using DCC colour compression.
+  * Up to six independent instances per GPU are now supported in "Zaphod"
+    style multi-head configurations.
+  * Other improvements and fixes
+
+-------------------------------------------------------------------
+Sat Sep 15 13:53:27 UTC 2018 - sndirsch@suse.com
+
+- Update to version 18.1.0
+  * This release supports xserver versions 1.13-1.20.
+  * When using DC as of Linux 4.17:
+    - Support advanced colour management functionality.
+    - Support gamma correction and X11 colormaps when Xorg runs at depth
+      30 as well.
+  * Support for leasing RandR outputs to clients.
+  * Various robustness fixes for TearFree. In particular, fixed several
+    cases in which disabling TearFree at runtime would result in the Xorg
+    process freezing or crashing.
+  * Fixed some m4 related build issues with older versions of autotools.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:50:48 UTC 2018 - sndirsch@suse.com
+
+- fixed damageproto BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr  4 12:40:11 UTC 2018 - sndirsch@suse.com
+
+- Update to version 18.0.1
+  * This release supports xserver versions 1.13-1.19. It also works
+    with xserver 1.20 RC1, so unless something unexpected happens,
+    it should work with xserver 1.20 as well.
+    This is a bug-fix release addressing issues in 18.0.0. While
+    those issues shouldn't affect most users, I recommend that all
+    users of 18.0.0 update to 18.0.1.
+    + The Xorg process could enter an infinite loop after a server
+      reset (in configurations where Xorg doesn't terminate when
+      the last client disconnects)
+    + The Xorg process could crash when multiple primary screens
+      are configured in xorg.conf.
+    + TearFree could trigger debugging messages in the pixman
+      library
+
+-------------------------------------------------------------------
+Mon Mar  5 14:41:29 UTC 2018 - sndirsch@suse.com
+
+- Update to version 18.0.0
+  "I'm pleased to announce the 18.0.0 release of xf86-video-amdgpu, the
+   Xorg driver for AMD Radeon GPUs supported by the amdgpu kernel driver.
+   This release supports xserver versions 1.13-1.19. It also works with
+   xserver 1.20 RC1, so unless something unexpected happens, it should work
+   with xserver 1.20 as well.
+   Highlights:
+   * New year-based versioning scheme
+   * Page flipping can now be used even when the HW cursor can't be used in
+     some cases
+   * Support for 30-bit RGB colour output. Note that gamma correction is
+     currently not available with 30-bit colour. Also, hardware
+     acceleration is not available with 30-bit colour with xserver versions
+     before 1.20.
+   Plus other improvements and fixes. Thanks to everybody who contributed
+   to this release in any way!
+
+-------------------------------------------------------------------
+Tue Dec 12 13:44:43 UTC 2017 - msrb@suse.com
+
+- Remove build dependency on Mesa-devel. The only part of it needed
+  is libgbm-devel and that is already BuildRequired by
+  'pkgconfig(gbm)'. Added explicit damageproto-devel dependency
+  which was before pulled in by Mesa-devel. Mesa-devel is too
+  general and is a bottleneck in distribution build. (bnc#1071297)
+
+-------------------------------------------------------------------
+Fri Sep  8 08:57:42 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.4.0
+  * Clients can now use DRI page flipping even while TearFree is enabled
+  for any CRTC. This should improve performance of such clients
+  (including compositing managers) while TearFree is enabled, and avoid
+  other issues such as tearing on other CRTCs where TearFree isn't
+  enabled.
+  * The driver now takes measures to prevent other DRM master processes
+  (potentially from other local users) from accessing buffers created by
+  this driver while switched away to a different VT. Other DRM master
+  processes should only be able to access a single buffer anymore, which
+  contains only all-black pixels.
+  * The gamma ramp is now applied to the HW cursor as well, so the HW
+  cursor doesn't look odd when e.g. using Redshift or similar tools.
+  * Plus other improvements and fixes. Thanks to everybody who contributed
+  to this release in any way!
+
+-------------------------------------------------------------------
+Tue Apr 18 09:19:27 UTC 2017 - sndirsch@suse.com
+
+- exclude build on s390/s390x (bsc#1034602)
+
+-------------------------------------------------------------------
+Thu Apr 13 10:11:02 UTC 2017 - sndirsch@suse.com
+
+- SLE merge (missing fate entries)
+  * fate #320388 (added driver itself)
+  * fate #315643-315645, 319159-319161, 319618 (updates driver 
+    to release 1.0.0, we're on 1.3.0 meanwhile)
+
+-------------------------------------------------------------------
+Thu Mar 16 11:57:28 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.3.0:
+  * Allow TearFree to be toggled at runtime via an RandR output
+    property "TearFree". The xorg.conf option "TearFree" now
+    controls the default value of the output properties.
+  * Use libdrm_amdgpu functionality to determine the GPU marketing
+    name, remove corresponding tables from this driver.
+  * Use DRM render nodes for DRI3 clients when available.
+  * Plus many other improvements and fixes.
+- Make building more verbose
+
+-------------------------------------------------------------------
+Wed Feb 22 01:54:59 UTC 2017 - sndirsch@suse.com
+
+- specfile: added pci_ids_dir to filelist
+
+-------------------------------------------------------------------
+Fri Feb  3 11:05:07 UTC 2017 - sndirsch@suse.com
+
+- make the driver default for Tumbleweed (upcoming Leap 42.3,
+  sle13, ...), if "amdgpu" is the kernel driver of the device;
+  still use device list specified in amdgpu.ids for older
+  distributions like Leap 42.2, sle12, ...
+
+-------------------------------------------------------------------
+Mon Jan 30 11:30:56 UTC 2017 - sndirsch@suse.com
+
+- amdgpu.ids: enabled 100267DF (bnc #972126, comment #11) 
+
+-------------------------------------------------------------------
+Mon Jan 16 13:04:21 UTC 2017 - sndirsch@suse.com
+
+- introduced hardware supplements (bnc#1020075)
+
+-------------------------------------------------------------------
+Sat Nov 19 11:03:20 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.2.0
+* Use pAMDGPUEnt to find both screens of a GPU in amdgpu_mode_hotplug
+* Refactor amdgpu_mode_hotplug
+* Check Xorg version at runtime instead of build time in two places
+* Require xserver 1.10 or newer
+* present: Check tiling info for flips
+* Consume all available udev events at once
+* PRIME: Fix swapping of provider sink / source capabilities
+* Always call PixmapStopDirtyTracking in drmmode_set_scanout_pixmap
+* Don't rely on randr_crtc->scanout_pixmap in drmmode_set_scanout_pixmap
+* Sayōnara, AM_MAINTAINER_MODE!
+* Order unique chipsets according to first appearance in ati_pciids.csv
+* Enable HW cursor support with PRIME slave output & Xorg > 1.18.99.901
+* Rotate and reflect cursor hotspot position for drmModeSetCursor2
+* Add support for ScreenPtr::SyncSharedPixmap
+* Untangle HAS_XORG_CONF_DIR / --with-xorg-conf-dir lines in configure.ac 
+
+-------------------------------------------------------------------
+Mon Sep 19 13:56:06 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.1.2:
+  The only change in this release is a fix for issues with the configure option
+  --with-xorg-conf-dir which slipped into the 1.1.1 release.
+- Packaging changes:
+  + Check the signature for the driver release, as other drivers already do.
+
+-------------------------------------------------------------------
+Thu Sep 15 21:46:51 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.1:
+  + Use --with-xorg-conf-dir=$prefix/share/X11/xorg.conf.d by
+    default.
+  + Fix cursor size for SI.
+  + Add SI PCI IDs.
+  + Add missing Kaveri PCI ID (1318).
+  + Add Mullins PCI IDs (fdo#97472).
+  + DRI2: Fix amdgpu_dri2_exchange_buffers width/height
+    copy'n'paste error.
+  + DRI2: Add interpolated_vblanks in amdgpu_dri2_get_crtc_msc.
+  + Only use RandR APIs if RandR is enabled (deb#827984).
+  + Destroy all dedicated scanout buffers during CloseScreen.
+  + glamor: Reallocate linear pixmap BO if necessary for DRI2
+    PRIME.
+  + Move DRI2's local fixup_glamor helper to
+    amdgpu_glamor_set_pixmap_bo v2 so it can be used outside of the
+    DRI2 code.
+  + Consolidate get_drawable_pixmap helper.
+  + Add amdgpu_pixmap_get_tiling_info.
+  + Remove amdgpu_share_pixmap_backing.
+  + glamor: Fix amdgpu_glamor_share_pixmap_backing for priv->bo ==
+    NULL.
+  + Add missing Bonaire PCI ID.
+  + Add more Polaris 10 and 11 PCI IDs.
+  + Fix amdgpu_mode_hotplug crash on multi GPU platform.
+  + Handle Zaphod mode correctly in amdgpu_mode_hotplug
+    (fdo#93415).
+  + Add Strato PCI ID.
+  + Remove RR_Capability_SinkOutput for GPU without CRTC.
+- Set amdgpu.ids as a config file to fix rpmlint warning.
+
+-------------------------------------------------------------------
+Fri Apr  8 13:12:22 UTC 2016 - sndirsch@suse.com
+
+- amdgpu.ids: added new PCI IDs supported by driver release 1.1.0
+
+-------------------------------------------------------------------
+Thu Apr  7 19:07:08 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.1.0
+* Support for the upcoming Polaris family of GPUs.
+* Option "TearFree" can now prevent tearing with rotation/reflection as
+  well (with Xorg >= 1.16).
+* RandR CRTC transforms now work correctly (but for now still exhibit
+  tearing even with TearFree).
+* The RandR 1.4 provider name is now no longer hardcoded to "amdgpu"
+  but constructed from the GPU chipset name and bus ID, allowing
+  several GPUs supported by this driver to be distinguished by name.
+* The RandR primary output is now always explicitly marked as such.
+* The driver can prevent clients trying to use the DRI3 extension over a
+  display connection forwarded via SSH from hanging.
+* VDPAU/OpenGL interoperation can now work with DRI3 enabled.
+* Many more fixes for issues using the DRI3/Present extensions.
+* Plus many other small improvements and fixes. Thanks to everybody who
+	contributed to this release in any way!* 
+
+-------------------------------------------------------------------
+Tue Mar 22 12:48:37 UTC 2016 - eich@suse.com
+
+- Add amdgpu.ids which lists all supported PCI Id for server
+  (boo#972126).
+
+-------------------------------------------------------------------
+Tue Feb 23 18:19:10 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.0.1
+* sync: Check if miSyncShmScreenInit symbol is resolved at runtime
+* Only map front buffer if glamor acceleration is disabled (v2)
+* Don't advertise any PRIME offloading capabilities without acceleration
+* Load fb module before glamoregl/shadow modules
+* HAS_DIRTYTRACKING_ROTATION also supports multiple CRTCs
+* Check for NULL koutput in drmmode_output_dpms
+
+-------------------------------------------------------------------
+Fri Nov 20 09:02:22 UTC 2015 - sndirsch@suse.com
+
+- update to release 1.0.0
+  This is the initial release of the xf86-video-amdgpu driver.
+  It was forked from the xf86-video-ati radeon driver and modified to
+  support the amdgpu kernel driver via libdrm_amdgpu, and by extension
+  the latest AMD GPU families Tonga, Carrizo, Iceland, Fiji and Stoney.
+  Some functionality was removed because it's not relevant for the GPUs
+  supported by the amdgpu kernel driver, but other than that the two
+  drivers are more or less on par with respect to functionality and bug
+  fixes.
+  Thanks to everybody who contributed to this release!
+- get rid of _service file (no longer needed with official release
+  now being available)
+
+-------------------------------------------------------------------
+Fri Nov 13 13:39:24 UTC 2015 - olaf@aepfle.de
+
+- Use human readable timestamp %cd instead of %ct in _service file
+
+-------------------------------------------------------------------
+Tue Nov 10 10:14:04 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.0.01~git.1446607417.92e7c93 
+* last upstream version - 
+    http://cgit.freedesktop.org/xorg/driver/xf86-video-amdgpu/log/
+
+-------------------------------------------------------------------
+Sat Oct 24 18:03:36 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit 
+

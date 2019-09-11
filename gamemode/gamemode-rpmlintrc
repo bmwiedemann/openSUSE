@@ -1,0 +1,5 @@
+# Libgamemodeauto loads the dependency via dlopen, so it cannot be picked up automatically.
+addFilter('libgamemodeauto.* explicit-lib-dependency libgamemode')
+
+# Libgamemodeauto actually has a % in its description.
+addFilter('libgamemodeauto.* unexpanded-macro %description -l C %command')

@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Feb  1 16:50:50 UTC 2018 - toddrme2178@gmail.com
+
+- Add use_pylons_theme.patch
+  update docs to use pylons-sphinx-themes package instead of git
+  submodule update.  Based on:
+  * https://github.com/Pylons/translationstring/commit/bb4c396b23dca5ee0ec27c00ed3c49881b5c2245
+
+-------------------------------------------------------------------
+Sun Jul  9 07:37:49 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Enabled tests
+
+-------------------------------------------------------------------
+Wed Mar  9 08:41:58 UTC 2016 - bwiedemann@suse.com
+
+- Drop build date from doc to fix build-compare
+
+-------------------------------------------------------------------
+Fri Feb  6 11:07:45 UTC 2015 - hpj@urpla.net
+
+- update to version 1.3:
+  - Fix Python 3-specific test failures.
+    Restore compatibility with Python 3.2.
+
+- 1.2 (2014-11-04)
+  - Add support for message contexts.
+  - If the object passed to a TranslationStringFactory __call__ method is
+    itself a translation string, use the passed object’s domain instead of the
+    domain passed to the factory’s contstructor. See
+    https://github.com/Pylons/translationstring/pull/12 .
+
+-------------------------------------------------------------------
+Mon Dec 16 11:29:32 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-Repoze
+  See spreadsheet linked from license.opensuse.org
+
+-------------------------------------------------------------------
+Mon Jul 29 07:50:51 UTC 2013 - speilicke@suse.com
+
+- Simplify macro usage
+- Remove reStructuredText from %description
+
+-------------------------------------------------------------------
+Sun Jul 28 20:59:22 UTC 2013 - hpj@urpla.net
+
+- version 1.1: initial build
+

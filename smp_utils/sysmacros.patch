@@ -1,0 +1,36 @@
+Index: smp_utils-0.98/lib/smp_aac_io.c
+===================================================================
+--- smp_utils-0.98.orig/lib/smp_aac_io.c
++++ smp_utils-0.98/lib/smp_aac_io.c
+@@ -7,6 +7,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <string.h>
+Index: smp_utils-0.98/lib/smp_lin_bsg.c
+===================================================================
+--- smp_utils-0.98.orig/lib/smp_lin_bsg.c
++++ smp_utils-0.98/lib/smp_lin_bsg.c
+@@ -41,6 +41,7 @@
+ //#include <curses.h>
+ #include <unistd.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+Index: smp_utils-0.98/lib/smp_mptctl_io.c
+===================================================================
+--- smp_utils-0.98.orig/lib/smp_mptctl_io.c
++++ smp_utils-0.98/lib/smp_mptctl_io.c
+@@ -16,6 +16,7 @@
+ //#include <curses.h>
+ #include <unistd.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <string.h>

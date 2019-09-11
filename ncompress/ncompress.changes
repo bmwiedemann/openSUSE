@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Thu Dec  6 13:08:14 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Really use optflags
+
+-------------------------------------------------------------------
+Sun Jul 23 20:27:48 UTC 2017 - bwiedemann@suse.com
+
+- Add ncompress-4.2.4.4-drop-datestamp.patch to drop compile date
+  to fix build-compare (boo#1047218)
+- Use make Makefile to avoid build time race
+
+-------------------------------------------------------------------
+Fri May 26 12:36:13 UTC 2017 - jengelh@inai.de
+
+- Reword description
+
+-------------------------------------------------------------------
+Sun May 21 18:05:40 UTC 2017 - meissner@suse.com
+
+- fixed endian define (bsc#1040046)
+
+-------------------------------------------------------------------
+Sun Oct 23 06:59:25 UTC 2016 - mpluskal@suse.com
+
+- Small spec file cleanups:
+  * Use pretty name for archive
+  * Drop alpha and itanium specific parts
+  * Run spec-cleaner on spec file
+
+-------------------------------------------------------------------
+Thu Nov 26 16:17:24 UTC 2015 - opensuse@dstoecker.de
+
+- stop to provide uncompress tool and require gzip instead
+
+-------------------------------------------------------------------
+Wed Nov 11 14:28:38 UTC 2015 - opensuse@dstoecker.de
+
+- fix for Leap 42.1
+
+-------------------------------------------------------------------
+Sat Sep 08 2007 Dirk Stöcker <opensuse@dstoecker.de> 4.2.4
+
+- adapted for openSUSE build service
+
+-------------------------------------------------------------------
+Sun Oct 01 2006 Jesse Keating 4.2.4
+
+- rebuilt for unwind info generation, broken in gcc-4.1.1-21
+
+-------------------------------------------------------------------
+Tue Sep 19 2006 Peter Vrabec 4.2.4
+
+- fix endian problem (#207001)
+
+-------------------------------------------------------------------
+Thu Aug 10 2006 Peter Vrabec 4.2.4
+
+- fix bss buffer underflow CVE-2006-1168 (#201919)
+
+-------------------------------------------------------------------
+Fri Apr 21 2006 Peter Vrabec 4.2.4
+
+- fix problems with compressing zero-sized files (#189215, #189216)
+
+-------------------------------------------------------------------
+Fri Feb 10 2006 Jesse Keating 4.2.4
+
+- bump again for double-long bug on ppc(64)
+
+-------------------------------------------------------------------
+Tue Feb 07 2006 Jesse Keating 4.2.4
+
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+-------------------------------------------------------------------
+Thu Sep 22 2005 Peter Vrabec 4.2.4
+
+- compress zero-sized files when -f is used(#167615)
+
+-------------------------------------------------------------------
+Tue Oct 05 2004 Than Ngo 4.2.4
+
+- permit files > 2GB to be compressed (#126775).
+
+-------------------------------------------------------------------
+Thu Dec 12 2002 Tim Powers 4.2.4
+
+- rebuild on all arches
+
+-------------------------------------------------------------------
+Wed Jun 19 2002 Trond Eivind Glomsrød 4.2.4
+
+- Don't strip when installing
+
+-------------------------------------------------------------------
+Mon Nov 26 2001 Trond Eivind Glomsrød 4.2.4
+
+- Rebuild, to fix problem with broken man page (#56654)
+
+-------------------------------------------------------------------
+Wed Nov 21 2001 Trond Eivind Glomsrød 4.2.4
+
+- Exit, don't segfault, when given too long filenames
+
+-------------------------------------------------------------------
+Sat Jun 09 2001 Florian La Roche 4.2.4
+
+- s390x change
+
+-------------------------------------------------------------------
+Tue May  8 2001 Trond Eivind Glomsrød
+
+- Make it support large files (structs, stats, opens and of course:
+  _don't use signed longs for file size before and after compression_.)
+  This should fix #39470
+
+-------------------------------------------------------------------
+Thu Apr 26 2001 Florian La Roche
+
+- add s390x, patch from Oliver Paukstadt
+
+-------------------------------------------------------------------
+Mon Nov 13 2000 Oliver Paukstadt
+
+- add s390 to the bigendian arch list
+
+-------------------------------------------------------------------
+Thu Aug 17 2000 Trond Eivind Glomsrød
+
+- change category to Applications/File, to match
+  gzip and bzip2 
+- rename the spec file to ncompress.spec
+- add ppc to the bigendian arch list
+
+-------------------------------------------------------------------
+Tue Jun 13 2000 Trond Eivind Glomsrød
+
+- update URL
+- use %%{_mandir}
+
+-------------------------------------------------------------------
+Wed May  5 2000 Bill Nottingham
+
+- fix build for ia64
+
+-------------------------------------------------------------------
+Mon Feb  7 2000 Bill Nottingham
+
+- handle compressed manpages
+
+-------------------------------------------------------------------
+Sun Mar 21 1999 Cristian Gafton
+
+- auto rebuild in the new build environment (release 14)
+
+-------------------------------------------------------------------
+Thu Aug 13 1998 Jeff Johnson
+
+- build root
+
+-------------------------------------------------------------------
+Mon Apr 27 1998 Prospector System
+
+- translations modified for de, fr, tr
+
+-------------------------------------------------------------------
+Wed Oct 21 1997 Cristian Gafton
+
+- fixed the spec file
+
+-------------------------------------------------------------------
+Mon Jun 02 1997 Erik Troan
+
+- built against glibc

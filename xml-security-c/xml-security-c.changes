@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Tue Nov 27 17:49:41 UTC 2018 - kstreitova@suse.com
+
+- update to 2.0.2
+  * [SANTUARIO-496] - DSA verification crashes OpenSSL on invalid
+    combinations of key content
+  * [SANTUARIO-491] - Default KeyInfo resolver doesn't check for
+    empty element content.
+  * [SANTUARIO-382] - Unconditionally enable large file support
+  * [SANTUARIO-418] - Invalid acceptance of unpadded RSA signatures
+  * [SANTUARIO-435] - Automake misses the subdir-objects option
+  * [SANTUARIO-437] - Cannot compile as C++11
+  * [SANTUARIO-447] - XSECCryptoX509::loadX509PEM() can read past
+    unterminated buffer
+  * [SANTUARIO-449] - TXFMOutputFile can try to close unopened stream
+  * [SANTUARIO-470] - dsig/DSIGReference.cpp:931: bad type ?
+  * [SANTUARIO-471] - Patch for C++11 compile failures
+  * [SANTUARIO-473] - Build failure using NSS
+  * [SANTUARIO-474] - Better overflow checking
+  * [SANTUARIO-479] - xml-security-cpp compilation errors
+  * [SANTUARIO-460] - Support for OpenSSL 1.1
+  * [SANTUARIO-461] - Internal key store should be deleted on any
+    CryptoAcquireContext() error
+  * [SANTUARIO-472] - Conditional inclusion of XMKS code in library
+  * [SANTUARIO-476] - Change default behavior for inferring
+    attribute IDness by name
+- drop the following patches that are no longer needed
+  * xml-security-c-1.7.3-gcc6.patch
+  * xml-security-c-1.7.3_openssl1.1.patch
+- update soname from 17 to 20
+- pack xml-security-c.pc
+- require libxerces-c-devel >= 3.2
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  9 12:12:15 UTC 2017 - vcizek@suse.com
+
+- support building with openssl 1.1 (bsc#1067411)
+  * add xml-security-c-1.7.3_openssl1.1.patch from Fedora
+
+-------------------------------------------------------------------
+Sun Jul  3 06:54:30 UTC 2016 - i@marguerite.su
+
+- add patch xml-security-c-1.7.3-gcc6.patch, fixed boo#985160
+  * bool can't be converted to pointer in c++11 which is
+    default in gcc6, change to NULL.
+
+-------------------------------------------------------------------
+Tue Aug 11 06:41:45 UTC 2015 - mpluskal@suse.com
+
+- Package license and provided changelog
+
+-------------------------------------------------------------------
+Wed Aug  5 17:50:57 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Disable building of static libraries
+- Enable xalan support
+
+-------------------------------------------------------------------
+Mon Jul 27 17:18:57 UTC 2015 - kstreitova@suse.com
+
+- use spec-cleaner
+- package cleaning 
+- remove unused conditionals
+
+-------------------------------------------------------------------
+Fri Jul 24 15:33:19 UTC 2015 - kstreitova@suse.com
+
+- initial revision 
+

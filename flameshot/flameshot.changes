@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun Apr  7 11:35:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-utils-confighandler.cpp-Enable-Pin-and-Text-tool-by-.patch
+    Enables Pin and Text tool by default.
+
+-------------------------------------------------------------------
+Tue Aug 28 18:20:05 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.6.0
+  Features:
+  * Allow systray customization with themes. Use
+    "flameshot-tray" as the name of the icon.
+  * Unification of the desktop file with actions.
+  * Notification when screenshots are saved in the clipboard.
+  * Use datetime as default name for pics.
+  * Undo/Redo with Ctrl+z and Ctrl+Shift+z.
+  * Add "Take Screenshot" option as menu item in the systray.
+  * Add Side-Panel (open it with Space).
+  * Add autostart to config flags.
+  * Add Pin tool.
+  * Filename: replace colons with dashes.
+  * Add Text tool.
+  * Delete Imgur image button after uploading it from the
+    preview window.
+  * Capture single screen:
+    + flameshot screen (capture the screen containing the mouse)
+    + flameshot screen -n 1 (capture the first screen).
+  * Store settings colors in hexadecimal format.
+  Fixes:
+  * flameshot full -c shouldn't block the desktop.
+  * Now you can overwrite exported configuration with the same
+    name as a previous exports.
+  * Fix flameshot --raw wait time with delay.
+  * Fix negative selection geometry bug.
+  * Improved hidpi support with some bugs fixed.
+
+- Refreshed desktop-files.patch
+
+-------------------------------------------------------------------
+Sat Feb 24 15:04:51 UTC 2018 - avindra@opensuse.org
+
+- Bump to 0.5.1
+  * Modal widgets doesn't prevent the start of a new capture
+  * Better hidpi support
+  * Tool buttons now don't go out of the screen
+  * Use of native file dialog
+  * Configurable opacity of the dark area outside the selection
+  * Autostart app as a configuration option
+  * Polish, french, georgian, chinese, turkish and rusian
+    translations
+  * Minor fixes
+- rebase desktop-files.patch
+
+-------------------------------------------------------------------
+Thu Dec 28 15:52:11 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Fri Dec 22 21:17:50 UTC 2017 - avindra@opensuse.org
+
+- Bump to 0.5.0
+  * Features
+    - Blur tool
+    - Bash completion
+    - Add --raw flag: prints the raw bytes of the png after the capture
+    - Catalan translation
+    - Preview draw size on mouse pointer after tool selection
+    - App Launcher tool: choose an app to open the capture
+    - Configuration import, export and reset
+    - Experimental Wayland support (Plasma & Gnome)
+    - Debian package configuration
+  * Accessibility
+    - Capture selection resizable from any edge
+  * Fixes
+    - App version shown properly
+    - cli wont break if you prepend gui, full and config arguments
+      with a dash
+    - Fix rare crash when creating a selection during a graphical
+      capture
+- Build cleanup:
+  * Remove unneeded service file
+  * Use Qt macros for building and installing
+  * Remove now unneeded .deskop file handling macros
+- Package bash completions
+
+-------------------------------------------------------------------
+Sun Sep 17 16:26:03 UTC 2017 - aavindraa@gmail.com
+
+- Bump to 0.4.2 (hotfix release)
+- hotfix: persistent configuration wasn't handled correctly for new
+  users, failing to set a "initiated" status flag in the
+  configuration. That is used to let the program know if a new
+  process of Flameshot is the first launch of the program.
+
+
+-------------------------------------------------------------------
+Thu Aug 17 15:57:33 UTC 2017 - aavindraa@gmail.com
+
+- 0.4.0 release (https://github.com/lupoDharkael/flameshot/releases/tag/v0.4.0)
+- lint .spec file
+
+-------------------------------------------------------------------
+Tue Aug 15 03:29:57 UTC 2017 - aavindraa@gmail.com
+
+- Package for the first time (with v0.3.0)

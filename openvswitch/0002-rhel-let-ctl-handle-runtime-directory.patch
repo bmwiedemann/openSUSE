@@ -1,0 +1,48 @@
+From eb48aba90b582df6dd7d2798a34ac31f7ed68282 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Mon, 10 Jun 2019 14:58:10 +0200
+Subject: [PATCH] rhel: let *-ctl handle runtime directory
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Recent versions of systemd restores RuntimeDirectory ownership to the
+unit's User in between execution of *Exec directives (see [1]). Using
+ExecStartPre to reset RuntimeDirectory ownership to OVS_USER no longer
+works as expected.
+
+The ctl scripts already handle creation of the runtime directory with
+correct ownership and permissions so we can basically remove
+RuntimeDirectory from systemd unit file. There is still need to handle
+ownsership to cover some upgrade scenarios, but success of that will be
+optional as the directory itself wont exist at first time run.
+
+[1] https://github.com/systemd/systemd/issues/12713
+
+Signed-off-by: Jaime Caamaño Ruiz <jcaamano@suse.com>
+---
+ rhel/usr_lib_systemd_system_ovsdb-server.service | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/rhel/usr_lib_systemd_system_ovsdb-server.service b/rhel/usr_lib_systemd_system_ovsdb-server.service
+index 0f9d936b3..22c704561 100644
+--- a/rhel/usr_lib_systemd_system_ovsdb-server.service
++++ b/rhel/usr_lib_systemd_system_ovsdb-server.service
+@@ -10,7 +10,7 @@ Type=forking
+ Restart=on-failure
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
+-ExecStartPre=/usr/bin/chown ${OVS_USER_ID} /var/run/openvswitch /var/log/openvswitch
++ExecStartPre=-/usr/bin/chown ${OVS_USER_ID} /var/run/openvswitch /var/log/openvswitch
+ ExecStartPre=/bin/sh -c 'rm -f /run/openvswitch.useropts; if [ "$${OVS_USER_ID/:*/}" != "root" ]; then /usr/bin/echo "OVSUSER=--ovs-user=${OVS_USER_ID}" > /run/openvswitch.useropts; fi'
+ EnvironmentFile=-/run/openvswitch.useropts
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
+@@ -21,5 +21,3 @@ ExecStop=/usr/share/openvswitch/scripts/ovs-ctl --no-ovs-vswitchd stop
+ ExecReload=/usr/share/openvswitch/scripts/ovs-ctl --no-ovs-vswitchd \
+            ${OVSUSER} \
+            --no-monitor restart $OPTIONS
+-RuntimeDirectory=openvswitch
+-RuntimeDirectoryMode=0755
+-- 
+2.16.4
+

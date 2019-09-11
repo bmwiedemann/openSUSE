@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<!-- This file normally lives at
+     "/usr/share/PolicyKit/policy/color-device-file.policy"
+  -->
+<policyconfig>
+  <action id="org.freedesktop.hal.device-access.color">
+    <description>Directly access color meter devices</description>
+    <message>System policy prevents access to the color meter devices</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

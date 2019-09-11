@@ -1,0 +1,33 @@
+--- src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java.sink	2010-11-16 16:59:34.000000000 +0000
++++ src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2015-06-17 10:54:56.729105945 +0100
+@@ -27,6 +27,7 @@
+ 
+ import org.apache.maven.doxia.siterenderer.Renderer;
+ import org.apache.maven.doxia.siterenderer.RendererException;
++import org.apache.maven.doxia.siterenderer.RenderingContext;
+ import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+@@ -217,20 +218,11 @@
+     {
+         try
+         {
+-            SiteRendererSink sink = siteRenderer.createSink( getReportOutputDirectory(), getOutputName() + ".html" );
++            RenderingContext context = new RenderingContext( getReportOutputDirectory(), getOutputName() + ".html" );
++            SiteRendererSink sink = new SiteRendererSink( context );
+ 
+             generate( sink, Locale.getDefault() );
+         }
+-        catch ( RendererException e )
+-        {
+-            throw new MojoExecutionException( "An error has occurred in " + getName( Locale.ENGLISH )
+-                + " report generation.", e );
+-        }
+-        catch ( IOException e )
+-        {
+-            throw new MojoExecutionException( "An error has occurred in " + getName( Locale.ENGLISH )
+-                + " report generation.", e );
+-        }
+         catch ( MavenReportException e )
+         {
+             throw new MojoExecutionException( "An error has occurred in " + getName( Locale.ENGLISH )

@@ -1,0 +1,299 @@
+-------------------------------------------------------------------
+Mon May 13 13:02:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Unbreak description grammar.
+
+-------------------------------------------------------------------
+Fri May 10 07:18:41 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to latest svn version (3.6+svn409)
+  Bug fixes
+  * Fix compilation warnings reported by gcc-7 (string
+    overflows).
+  * Hide compilation warnings about deprecated GTK-3 API
+    functions.
+  * Fix compilation warnings about Linux kernel 'major' and
+    'minor' macros.
+  Module bug fixes
+  * The df module should now handle very big disks on 32-bit
+    systems.
+  * The battery module should work better if
+    /sys/class/power_supply doesn't exist.
+  * The battery module should work if ACPI records energy rather
+    than charge.
+  * The battery module works correctly if discharge current is
+    negative.
+  * The battery module checks that remaining time using current
+    or energy will work.
+  * The meminfo module handles very long /proc/meminfo (fixes
+    Debian bug #747627).
+  * The netdev module uses 64-bits to record network traffic.
+  * The cpuinfo module doesn't add outputs if the CPUs don't
+    report their speed.
+  * The cpuinfo module now uses /sys/devices/system/cpu/cpufreq
+    not /proc/cpuinfo.
+  * The biff module now handles maildir mailboxes (must set
+    options variable).
+
+- Added _service file
+
+- Added procmeter3-loff_t.patch (courtesy of Debian)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Feb 21 21:17:54 UTC 2012 - dimstar@opensuse.org
+
+- Add libX11-devel, libXaw-devel and libXt-devel BuildRequires on
+  openSUSE > 12.1 to cater for the reorganization of xorg-x11
+  packages.
+
+-------------------------------------------------------------------
+Mon Jan 23 07:42:51 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.6:
+  + New features
+    - Added GTK3 version.
+    - Draw line in foreground colour between outputs in
+      procmeter3-gtk2.
+  + New modules
+    - Battery - new /sys/class/power_supply/ battery information.
+  + Bug Fixes
+    - Don't package up unused LSM and ANNOUNCE files.
+    - Add "-lX11" to LDFLAGS (deb#556073).
+    - Move installed modules into /usr/lib/ProcMeter3 (deb#651145).
+    - Don't always install the procmeterrc.install file
+      (deb#651149).
+    - Install procmeter.h to /usr/include/ProcMeter3 (deb#651150).
+    - Fix Makefiles to stop linking executables each time make is
+      run.
+    - Don't crash procmeter3-xaw if specified font doesn't exist.
+  + Module bug fixes
+    - Changed wireless module to remove kernel 2.4.x code.
+    - Fixed stat-intr module to not use data from freed memory.
+- Changes from version 3.5d:
+  + New features
+    - Added an option to limit the number of interrupts listed.
+    - Allow installation of stripped executables.
+  + Bug Fixes
+    - Remove gcc-4.4 compilation warnings.
+    - Make error messages consistent.
+    - Fix several errors in manual pages.
+    - Don't crash if /proc/interrupts has very long lines.
+- Drop procmeter-as-needed.patch: fixed upstream.
+- Drop procmeter3-3.4a.patch: part of the fixes are upstream, and
+  the remaining things are fixed by setting the INSTDIR and CFLAGS
+  environment variables when calling make.
+- Use favor_gtk2 to switch between gtk2 and gtk3 builds:
+  + Use gtk3-devel BuildRequires instead of gtk2-devel for gtk3
+    builds.
+- Create a devel subpackage for development files.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:39:35 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.5c:
+  + New features:
+    - Sort the module menu into alphabetical order.
+  + New modules:
+    - FanSpeed, Temperature & Voltage: Improved hardware sensors.
+  + Bug Fixes:
+    - Remove 64-bit compilation warnings and fix variable type
+      mismatch.
+    - Fixed df module to handle disks bigger than 2TB.
+    - Fixed sensors module to handle new directory format.
+    - Pass top-level Makefile variables down to sub directories.
+- Add procmeter-as-needed.patch: fix build with -Wl,--as-needed.
+  Taken from Debian.
+- Add libsensors4-devel BuildRequires to build the new sensors.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:47:01 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+
+-------------------------------------------------------------------
+Tue Dec 29 02:13:24 CET 2009 - vuntz@opensuse.org
+
+- Update to version 3.5b:
+  + New Features
+    - Extended Window Manager Hints can be specified with a -w
+      option.
+    - Increase the number of interrupts possible in stat-intr.
+  + Bug Fixes
+    - Be more careful looking for modules (check '.' and '..').
+    - Set the locale to "C" to avoid problems parsing numbers.
+    - Ensure that graph-min and graph-max options are used
+      properly.
+    - Extended the line buffer size for parsing /proc/interrupts.
+    - Remove fixed size line buffers in modules (realloc more space
+      as needed).
+    - Allow LCD version to specify priority as a string or numeric
+      value.
+- Changes from version 3.5a:
+  + Bug Fixes
+    - Stop the GTK2 version crashing when displayed items are
+      removed.
+    - Make sure that the right mouse button menu works with no
+      outputs displayed.
+    - Make the GTK1 and GTK2 version windows resize themselves like
+      Xaw version.
+    - Updates to manual pages to reflect new executable names.
+    - Bug fixes for ACPI module.
+- Changes from version 3.5:
+  + New features
+    - Added a gtk2 version of ProcMeter3.
+    - Renamed the executables but added backwards compatibility
+      links.
+    - Added DESTDIR option to Makefiles.
+- Changes from version 3.4g:
+  + Bug fixes:
+    - Quicker default update of the date displays (useful after
+      suspending).
+    - Uptime now accurately shows system running time even after
+      suspend.
+    - Fix ACPI battery discharge rates.
+    - Fix for crashes with stat-cpu outputs on multi-CPU machines.
+    - Change to use longer integer values for netdev outputs.
+    - Search other places for hardware sensors information.
+- Changes from version 3.4f:
+  + Bug fixes:
+    - The biff module re-reads the inbox if the size or timestamp
+      change.
+    - The df module uses longer strings for reading from
+      /proc/mounts.
+- Changes from version 3.4e:
+  + New or changed modules:
+    - Add in the new CPU statistics (iowait, irq, softirq and
+      steal).
+    - Add in a display of the CPU clock speed.
+  + Bug fixes:
+    - Fix some spelling mistakes in the manual pages.
+    - Change the default scaling for the DiskUsage outputs to 5
+      grid lines of 20%.
+    - Fix some gcc-4.x compilation warnings.
+    - Fix some ACPI module bugs.
+- Changes from version 3.4d:
+  + Bug fixes:
+    - Updated ACPI support to handle kernel version 2.6.
+    - Added support for /dev/mapper in disk statistics.
+    - Change to using 64-bit variables from /proc/stat.
+- Changes from version 3.4c:
+  + Bug fixes:
+    - Make grid-max option work for GTK version.
+    - Handle kernel 2.6.x better for hardware sensors.
+- Changes from version 3.4b:
+  + New or changed modules:
+    - Handle different header line for hostap wireless driver.
+  + Bug fixes:
+    - Modules that didn't work with kernel 2.6.x now do.
+    - Improved some module initialisation functions.
+- Replace gtk-devel BuildRequires with gtk2-devel.
+- Update procmeter3-3.4a.patch: some parts were upstreamed.
+- Drop procmeter3-3.4a-array.patch: fixed upstream.
+- Drop procmeter3-3.4a-ia64.patch: not needed anymore.
+- Remove AutoReqProv: it's default now.
+- Use makeinstall macro.
+
+-------------------------------------------------------------------
+Thu Aug 17 02:14:30 CEST 2006 - ro@suse.de
+
+- move from /usr/X11R6 to /usr 
+
+-------------------------------------------------------------------
+Thu Feb 23 12:09:26 CET 2006 - pnemec@suse.cz
+
+- fixed ArrayOutOfBound  #152045
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 22:22:21 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 15 21:27:32 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Wed Jul 09 13:30:51 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to version 3.4a
+
+-------------------------------------------------------------------
+Mon Feb 17 17:42:33 CET 2003 - vbobek@suse.cz
+
+-updated to version 3.4
+  * new output format
+  * added manpage for modules
+  * bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 10 16:33:55 CEST 2002 - prehak@suse.cz
+
+- updated to version 3.3b
+
+-------------------------------------------------------------------
+Mon Jan 21 14:43:21 CET 2002 - cihlar@suse.cz
+
+- use %{_lib}
+
+-------------------------------------------------------------------
+Thu Jul 26 13:32:29 CEST 2001 - cihlar@suse.cz
+
+- update to version 3.3a
+
+-------------------------------------------------------------------
+Mon May 21 08:26:11 CEST 2001 - cihlar@suse.cz
+
+- fixed cast warnings on ia64
+- fixed includes
+
+-------------------------------------------------------------------
+Wed Mar  7 16:41:31 CET 2001 - cihlar@suse.cz
+
+- updated to version 3.3
+
+-------------------------------------------------------------------
+Tue Nov 14 15:56:16 CET 2000 - cihlar@suse.cz
+
+- renamed procmtr -> procmeter
+- update to version 3.2a
+- bzipped sources
+- fixed copyright tag
+
+-------------------------------------------------------------------
+Wed May 17 16:02:26 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Fri Apr  7 14:19:14 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- upgrade to version 3.2
+
+-------------------------------------------------------------------
+Tue Jan 25 18:20:16 CET 2000 - ro@suse.de
+
+- update to 2.4, cleanup spec 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Thu Jan 16 09:42:29 MET 1997 - maddin@suse.de
+----------------------------------------------------------------------------
+
+- first S.u.S.E. version 2.2
+- changed paths
+- copied documentation to /usr/doc/packages/procmtr

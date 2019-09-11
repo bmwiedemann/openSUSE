@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Apr 30 14:37:35 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon Dec 25 19:21:19 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.2
+  * No user changelog available
+- Remove gf2x-memset.diff (fixed upstream)
+- Add 0001-build-fix-version-info-for-libgf2x-after-ABI-break.patch
+
+-------------------------------------------------------------------
+Fri Jun 26 08:55:11 UTC 2015 - jengelh@inai.de
+
+- Disable SSE2 on x86 because it is not necessarily present
+- Add gf2x-memset.diff
+
+-------------------------------------------------------------------
+Thu Nov 29 18:25:23 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.1
+* trap bad arguments to gf2x_tfft_init
+
+-------------------------------------------------------------------
+Thu Sep 15 14:00:05 UTC 2011 - jengelh@medozas.de
+
+- Initial package (version 1.0) for build.opensuse.org

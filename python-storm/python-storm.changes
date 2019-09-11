@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Wed May 30 21:08:14 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC file and converstion to the single spec (py3k switched
+  off, though)
+- Don't package tests/ directory
+- New patch, storm-0.20-remove-ez_setup.patch ... ez_setup breaks py3k
+  and it is unnecessary, so I just remove it from setup.py
+
+-------------------------------------------------------------------
+Sun Nov 17 18:42:10 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.20
+  + A new CaptureTracer has been added to storm.testing, for capturing all SQL
+    statements executed by Storm. It can be used like this:
+    with CaptureTracer() as tracer:
+      # Run queries
+      pass
+    print tracer.queries  # Print all queries run in the context manager block
+
+    You will need the python-fixtures package in order to use this feature.
+  + Setuptools <http://pypi.python.org/pypi/setuptools> is now required
+    to run setup.py. This makes it much easier to install the majority
+    of the dependencies required to run the test suite in its entirety.
+  + Disconnection errors arising from PostgreSQL are now more reliably
+    detected, especially with regard to recent libpq updates in Ubuntu.
+    There are also disconnection tests that simulate sudden termination
+    of pgbouncer <http://pgfoundry.org/projects/pgbouncer/>.
+  + Insert expressions now support multi-row and subquery INSERT
+    statements.
+  + Support in the postgres backend to use the RETURNING extension for UPDATE
+    statement, optionally specifying the columns to return.
+    (PostgreSQL >= 8.2 only)
+  + Add a new Distinct expression for pre-pending the 'DISTINCT' token to
+    SQL expressions that support it (like columns).
+  + Switch to REPEATABLE READ as isolation level for Postgres. If you use
+    psycopg2 < 2.4, it doesn't change anything. For psycopg2 2.4 and newer, it
+    will keep the same behavior on Postgres < 9 as it's equivalent to
+    SERIALIZABLE, but it will be less strict on Postgres >= 9.
+  + Add support for two-phase commits, using the DB API version 2.0, which
+    is only supported by PostgreSQL.
+  + ZStormResourceManager now has a schema_stamp_dir optional instance attribute
+    that, if set, will be used to to save timestamps of the schema's patch
+    packages, so schema upgrades will be performed only when needed.
+  + When a SQLObjectResultSet object was sliced with slice.start and
+    slice.end both zero (sqlobject[0:0]), the full, unsliced resultset
+    was returned (bug #872086).
+  + Fixes some test failures around Django disconnections from
+    PostgreSQL stores.
+  + Some of the proxy-less disconnection tests were causing segfaults,
+    so they're now run in a subprocess via subunit's IsolatedTestCase,
+    when it's available.
+  + Fix a few non-uses of super() in TestHelper.
+  + Abort the transaction and reset ZStorm at the end of
+    tests/zope/README.txt.
+  + Fix the ./test script to not import tests until after local eggs
+    have been added to sys.path. This ensures that all possible features
+    are available to the tests.
+  + If transaction.commit() fails, call transaction.abort() to rollback
+    everything and leave the transaction in a clean state when using Django's
+    ZopeTransactionMiddleware and DatabaseWrapper.
+  + It's now again possible to use the Desc() expression when passing an
+    order_by parameter to a ReferenceSet (bug #620369).
+- Use sources tarball from Pypi
+
+-------------------------------------------------------------------
+Thu Oct 24 11:15:27 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Mar 12 21:19:04 UTC 2012 - saschpe@gmx.de
+
+- Update to version 0.19:
+  - A new Cast expressions compiles an input and the type to cast it to
+    into a call the CAST function
+  - The storm.zope.testing.ZStormResourceManager now supports applying database
+    schemas using a custom URI, typically for connecting to the database using a
+    different user with greater privileges than the user running the tests. Note
+    that the format of the 'databases' parameter passed to the constructor of
+    the ZStormResourceManager class has changed.
+  - A new storm.twisted.transact module has been added with facilities to
+    integrate Storm with twisted, by running transactions in a separate
+    thread from the main one in order to not block the reactor.
+  - ResultSet.config's "distinct" argument now also accepts a tuple of
+    columns, which will be turned into a DISTINCT ON clause.
+  - Provide wrapped cursor objects in the Django integration
+    layer. Catch some disconnection errors that might otherwise be
+    missed, leading to broken connections.
+  - A new JSON property is available. It's similar to the existing
+    Pickle property, except that it serializes data as JSON, and must
+    back onto a text column rather than a byte column.
+  - Cache the compilation of columns and tables
+  - Add two new tracers extracted from the Launchpad codebase.
+    BaseStatementTracer provides statements with parameters substituted
+    to its subclasses. TimelineTracer records queries in a timeline
+    (useful for OOPS reports).
+  - New ROW constructor
+  - Add support for Postgres DISTINCT ON queries.
+  * See NEWS for more details
+- Split of Django and Twisted support packages
+
+-------------------------------------------------------------------
+Mon Sep 26 08:46:03 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.18:
+  * Include code to manage and migrate database schemas. See the
+    storm.schema sub-package (bug #250412).
+  * Added a storm.zope.testing.ZStormResourceManager class to manage a
+    set of stores registered with ZStorm (bug #618704).
+  * When a TimeoutError is raised it includes a description about why
+    the exception was raised, to help make it easier to reason about
+    timeout-related issues (bug #617973).
+  * Improved the IResultSet interface to document the rationale of why some
+    attributes are not included (bug #659883).
+  * Make storm compatible with psycopg2 2.2 (bug #585704).
+  * Fix bug #620615, which caused lazy expressions to cause subsequent
+    loading of objects to explode if unflushed.
+  * Fix bug #620508, which caused slicing a ResultSet to break subsequent
+    count() calls.
+  * Fix bug #659708, correcting the behavior of the sqlobject is_empty
+    and __nonzero__ methods.
+  * Fix bug #619017, which caused __storm_loaded__ to be called without
+    its object's variables defined if the object were in the alive cache but
+    disappeared.
+  * See https://launchpad.net/storm for more changes...
+- Set license to LGPL-2.0+ (SPDX style)
+- BuildRequire python-distribute instead of python-setuptools
+- Use newer %{python_sitearch} macro instead of %{py_sitedir}
+
+-------------------------------------------------------------------
+Mon Aug  3 18:16:50 CEST 2009 - dominique-obs@leuenberger.net
+
+- Package imported from PackMan, to be pushed to openSUSE:Factory
+

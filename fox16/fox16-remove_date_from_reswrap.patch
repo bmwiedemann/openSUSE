@@ -1,0 +1,13 @@
+Index: utils/reswrap.cpp
+===================================================================
+--- utils/reswrap.cpp.orig
++++ utils/reswrap.cpp
+@@ -86,7 +86,7 @@ void printusage(){
+ 
+ /* Print version information */
+ void printversion(){
+-  fprintf(stderr,"Reswrap %s %s.\n",version,__DATE__);
++  fprintf(stderr,"Reswrap %s.\n",version);
+   fprintf(stderr,"Copyright (C) 1997,2005 Jeroen van der Zijp. All Rights Reserved.\n");
+   fprintf(stderr,"Please visit: http://www.fox-toolkit.org for further information.\n");
+   fprintf(stderr,"\n");

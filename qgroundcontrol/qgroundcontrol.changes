@@ -1,0 +1,262 @@
+-------------------------------------------------------------------
+Fri Aug 16 13:40:52 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.5.4
+  * no release notes, bugfix release
+
+-------------------------------------------------------------------
+Sat Jun 29 16:18:58 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.5.3
+  * no release notes, bugfix release
+
+-------------------------------------------------------------------
+Tue Mar  5 14:40:12 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.5.0
+  * Overall
+    - Bumped settings version (now 8). This will cause all settings to be reset to defaults.
+    - Added Chinese and Turkish localization and partial German localization.
+    - Added support for the Taisync 2.4GHz ViUlinx digital HD wireless link.
+    - Fix loading of parameters from multiple components. This especially affected WiFi connections.
+    - ArduPilot Support for ChibiOS firmware connect and flash.
+  * Settings
+    - RTK Add support for specifying fixed RTK based station location in Settings/General.
+    - GCS Location
+    - Added UDP Port option for NMEA GPS Device.
+    - GCS heading shown if available
+  * Plan
+    - Polygons Support loading polygons from SHP files.
+    - Fixed Wing Landing Pattern Add stop photo/video support. Defaults to on such that doing an RTL will stop camera.
+    - Edit Position dialog Available on polygon vertices.
+  * Fly
+    - Camera Page Updated support for new MAVLInk camera messages. Camera select, camera mode, start/stop photo/video, storage mangement...
+    - Orbit Support for changing rotation direction.
+    - Instrument Panel
+    - Added ESTIMATOR_STATUS values to new estimatorStatus Vehicle FactGroup. These are now available to display in instrument panel.
+    - Make Distance to GCS available for display from instrument panel.
+    - Make Heading to Home available for display from instrument panel.
+
+-------------------------------------------------------------------
+Wed Nov 28 09:24:59 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.4.4
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Mon Sep 17 07:34:14 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.4.3
+  * Fix terrain NaN making it all the way to Planned Home altitude.
+  * Fix Resume Mission item count bug
+
+-------------------------------------------------------------------
+Tue Sep  4 13:47:08 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.4.2
+  * Settings
+    - Offline Maps
+    - Help Provides links to QGC user guide and forums.
+  * Setup
+    - Firmware Ability to flash either PX4 or ArduPilot Flow firmware.
+    - PX4 Pro Firmware
+      * Flight Modes Specify channels for all available transmitter switches.
+      * Tuning: Advanced Initial implementation of vehicle PID tuning support. Note that this is a work in progress that will improve in 3.5 daily builds.
+    - ArduPilot Firmware
+      * Power/Safety Support for new multi-battery setup.
+      * Trad Heli New setup page.
+   * Plan
+     - File Load/Save New model for Plan file loading which matches a standard File Load/Save/Save As user model.
+     - Load KML Ability to load a KML file directly from the Sync menu. You will be prompted for what type of Pattern you want to create from the KML if needed.
+     - Survey Better support for irregular shaped polygons.
+     - Corridor Scan - Create a flight pattern which follows a poly-line. For example can be used to survey a road.
+     - Fixed Wing Landing Pattern
+       * Landing area visually represented in Plan.
+       * Landing position/heading can be copied from Vehicle position/heading.
+     - Terrain
+       * Height of mission items can be specified as height above terrain.
+       * Survey and Corridor Scan can generate flight plans which follow terrain.
+     - Edit Position Set item position from vehicle position.
+   * Fly
+     - Pre-Flight Checklist You can turn this on from Settings. It provides a generic checklist to follow prior to flight. Expect more feature to appear for this in 3.5 daily builds.
+     - Instrument Panel
+       * Many new values available for display.
+       * New Camera page which provides full camera control. Requires a camera which support new MavLink camera specification.
+     - ArduPlane Much better support for guided commands including QuadPlane support.
+     - High Latency Links Support for high latency links such as satelitte connections. Limits the traffic from QGC up to Vehicle on these links to reduce cost. Supports HIGH_LATENCY mavlink message. Supports failover back/forth from high latency to normal link with dual link setup.
+
+-------------------------------------------------------------------
+Thu May  3 07:15:04 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.2
+  * crash fixes and debugging improvements
+
+-------------------------------------------------------------------
+Fri Apr 13 06:07:46 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.1
+  * minor enhancements and bugfixes
+
+-------------------------------------------------------------------
+Wed Mar  7 18:26:13 UTC 2018 - adrian@suse.de
+
+- get rid of espeak
+- use system qwt (submission by alois use_system_qwt.patch)
+- add gstreamer dependencies
+
+-------------------------------------------------------------------
+Wed Mar  7 08:23:22 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.0
+  * Settings
+    - Local NMEA GPS device support.
+    - Video Recording save settings.
+  * Setup
+    - Parameter Editor - Searching updates as you type characters for near immediate response to searches.
+    - Joystick - Android joystick support.
+  * Plan
+    - NEW - Structure Scan Pattern - Create a multi-layered flight pattern that captures images over vertical surfaces (polygonal or circular). Used for 3d model generation or vertical surface inspection.
+    - Fixed Wing Landing Pattern - You can now adjust the distance from the loiter to land point by either distance or glide slope fall rate.
+    - PX4 GeoFence and Rally Point support.
+    - Terrain height display in lower Mission Item altitude display
+  * Fly
+    - Start/Stop video recording.
+    - Better display of vehicle icons when connected to multiple vehicles.
+    - Multi-Vehicle View supports commands which apply to all vehicles.
+    - Displays vehicles reported from ADS-B sensor.
+  * Analyze
+    - Mavlink console - New support for communicating with Mavlink console.
+    - Log Download - Moved from Menu to Analyze view.
+- drop merged qt 5.10 fix (5923.patch)
+
+-------------------------------------------------------------------
+Mon Jan  1 09:55:15 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.7
+  * Bring fixes from master to Stable
+  * Remove debuggable to hopefully get back auto-stable build update
+- fixing build with Qt 5.10 with patch based on upstream pull request
+  (5923.patch)
+
+-------------------------------------------------------------------
+Mon Nov  6 13:52:53 UTC 2017 - adrian@suse.de
+
+- update to version 3.2.5
+
+-------------------------------------------------------------------
+Thu Oct 12 12:56:43 UTC 2017 - jengelh@inai.de
+
+- Trim project history from description.
+  Replace %__-type macro indirections.
+  Avoid running fdupes across partition boundaries.
+
+-------------------------------------------------------------------
+Wed Aug  9 07:09:06 UTC 2017 - adrian@suse.de
+
+- update to verion 3.2.4
+
+-------------------------------------------------------------------
+Mon Feb 27 12:39:05 UTC 2017 - adrian@suse.de
+
+- add desktop file again
+
+-------------------------------------------------------------------
+Fri Feb 17 10:13:15 UTC 2017 - adrian@suse.de
+
+- update to version 3.1.3
+
+-------------------------------------------------------------------
+Fri Oct 28 09:47:56 UTC 2016 - adrian@suse.de
+
+- update to version 3.0.2
+
+-------------------------------------------------------------------
+Wed Jul 27 07:18:32 UTC 2016 - adrian@suse.de
+
+- update to version 3.0.0
+
+-------------------------------------------------------------------
+Wed May 11 06:44:51 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.7b
+  * Fixed condition for arming button
+
+-------------------------------------------------------------------
+Tue May 10 17:50:38 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.7
+  * Fix takeoff logic
+  * flight display updates
+  * PX4: Fix guided mode interaction
+
+-------------------------------------------------------------------
+Mon May  9 07:28:04 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.6
+  * adds a configurable mag calibration for PX4
+  * Flight mode updates for APM
+  * Simpler mag calibration for PX4
+  * (Many changes for mobile version, no effect in this build)
+
+-------------------------------------------------------------------
+Fri Feb 26 09:35:48 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.4
+  * looks like feature release, but no changelog
+
+-------------------------------------------------------------------
+Mon Feb  1 08:02:20 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.2
+  * bugfix release
+
+-------------------------------------------------------------------
+Mon Jan 25 09:06:36 UTC 2016 - adrian@suse.de
+
+- update to version 2.9.0
+  * auto-connect 
+  * full PX4 and APM stack support including config
+  * general improvement
+- add conflict to ModemManager, tired of the caused breakage
+  (is anyone still using modems at all?)
+
+-------------------------------------------------------------------
+Tue Jan  5 07:05:41 UTC 2016 - adrian@suse.de
+
+- update to version 2.8.0
+  * MainWindow
+  * Major rewrite of Fly and Mission Editor views
+  * Desktop widgets now float instead of dock
+  * New Joystick Config
+  * PX4 Flow Config
+  * Search support
+  * Reset to default
+  * Flash of APM Stack firmware
+  * Flash of PX4 Flow support custom firmware
+  * Major visual overhaul
+  * Arm/Disarm and change Flight Mode from toolbar
+  * Major work on ui display with multiple screen sizes
+  * Android builds are now very usable
+  * New Travis/Appveyor CI build system
+
+-------------------------------------------------------------------
+Thu Aug 20 09:07:37 UTC 2015 - adrian@suse.de
+
+- update to version 2.7.1
+
+-------------------------------------------------------------------
+Mon Jul 27 15:30:26 UTC 2015 - adrian@suse.de
+
+- update to version 2.6
+
+-------------------------------------------------------------------
+Wed Mar 25 21:06:13 UTC 2015 - adrian@suse.de
+
+- update to version 2.3
+- fix build
+
+-------------------------------------------------------------------
+Thu Dec 25 22:19:42 UTC 2014 - christoph@stop.pe
+
+- Initial version
+

@@ -1,0 +1,39 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,9 +90,7 @@ qt5_wrap_cpp(MOC_SOURCES ${HEADERS})
+ qt5_wrap_ui(FORM_HEADERS ${FORMS})
+ 
+ add_executable(${APP_EXECUTABLE_NAME} ${APP_GUI_TYPE} ${RC_SOURCES} ${SOURCES} ${MOC_SOURCES} ${FORM_HEADERS} ${QM_FILES} )
+-qt5_use_modules(${APP_EXECUTABLE_NAME} Widgets Core Network)
+-
+-target_link_libraries(${APP_EXECUTABLE_NAME} qxtshortcut)
++target_link_libraries(${APP_EXECUTABLE_NAME} Qt5::Core Qt5::Widgets Qt5::Network qxtshortcut)
+ 
+ install(TARGETS ${APP_EXECUTABLE_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+ install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/litetran/i18n)
+--- a/src/3rdparty/qxtshortcut/CMakeLists.txt
++++ b/src/3rdparty/qxtshortcut/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ set(SOURCES qxtglobal.cpp qxtglobalshortcut.cpp)
+ set(HEADERS qxtglobalshortcut.h)
+ 
++find_package(Qt5 5.2 REQUIRED COMPONENTS Core Widgets)
+ if(WIN32)
+     set(SOURCES ${SOURCES} qxtglobalshortcut_win.cpp)
+ elseif(APPLE)
+@@ -13,12 +14,11 @@ endif()
+ 
+ qt5_wrap_cpp(SOURCES-MOC ${HEADERS})
+ add_library(qxtshortcut STATIC ${SOURCES} ${SOURCES-MOC})
+-qt5_use_modules(qxtshortcut Widgets Core)
++target_link_libraries(qxtshortcut Qt5::Core Qt5::Widgets)
+ 
+ if(UNIX AND NOT APPLE)
+-    find_package(Qt5X11Extras 5.2 REQUIRED)
+-    qt5_use_modules(qxtshortcut X11Extras)
+-    target_link_libraries(qxtshortcut ${XLIB})
++    find_package(Qt5 5.2 REQUIRED COMPONENTS X11Extras)
++    target_link_libraries(qxtshortcut Qt5::X11Extras ${XLIB})
+ endif()
+ 
+ if(APPLE)

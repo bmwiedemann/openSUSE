@@ -1,0 +1,26 @@
+From f047cd8219d9537bb33bba3883bedf6231a0ed5f Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 7 Mar 2018 22:28:52 +0100
+Subject: Fix build with gcc6
+
+__attribute__ ((fallthrough)) is only available since gcc7. Despite
+removing it I saw now warning because gcc recognizes the comment.
+---
+ src/playlist/proxymodels/SortAlgorithms.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/playlist/proxymodels/SortAlgorithms.cpp b/src/playlist/proxymodels/SortAlgorithms.cpp
+index d3e0a3d..aad7bf6 100644
+--- a/src/playlist/proxymodels/SortAlgorithms.cpp
++++ b/src/playlist/proxymodels/SortAlgorithms.cpp
+@@ -95,7 +95,6 @@ multilevelLessThan::operator()( const QAbstractItemModel* sourceModel,
+                         return ( compareResult < 0 ) != inverted;
+ 
+                     // Fall through to sorting by album artist if albums have same name
+-                    __attribute__ ((fallthrough));
+                 }
+                 case Playlist::AlbumArtist:
+                 {
+-- 
+cgit v0.11.2
+

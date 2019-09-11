@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Mon Dec 18 23:45:40 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+- Updated schema location
+
+-------------------------------------------------------------------
+Fri Jun  2 23:11:07 UTC 2017 - jason.record@suse.com
+
+- Fixed incorrect SLE12SP2 global library value (bsc#1042515)
+
+-------------------------------------------------------------------
+Fri Jun  2 22:10:40 UTC 2017 - jason.record@suse.com
+
+- Added new libraries to docs-python.html
+- Updated Python library documentation
+- Added MPIO, oes and suma library documentation
+
+-------------------------------------------------------------------
+Fri Nov  7 14:44:47 UTC 2014 - jrecord@suse.com
+
+- Added SUMA class for SUSE Manager patterns
+
+-------------------------------------------------------------------
+Wed Sep 24 01:08:12 UTC 2014 - jrecord@suse.com
+
+- Updated Python library documenation, includes PatchInfo class
+
+-------------------------------------------------------------------
+Fri Jul 25 16:28:16 UTC 2014 - jrecord@suse.com
+
+- Added DOS file format detect to pat
+
+-------------------------------------------------------------------
+Tue Jul 22 20:49:43 UTC 2014 - jrecord@suse.com
+
+- Correct online documentation
+- Fixed pat tester output error detection
+
+-------------------------------------------------------------------
+Fri Jul  4 18:43:34 UTC 2014 - jrecord@suse.com
+
+- Updated man pages
+
+-------------------------------------------------------------------
+Mon Jun 30 21:53:29 UTC 2014 - jrecord@suse.com
+
+- Company and email domain are configurable at install (bnc#885061)
+
+-------------------------------------------------------------------
+Tue Jun 17 23:05:44 UTC 2014 - jrecord@suse.com
+
+- Updated Python documentation
+- Removed unnecessary python libraries from template generator
+
+-------------------------------------------------------------------
+Fri Jun 13 15:58:55 UTC 2014 - jrecord@suse.com
+
+- Fixed no login requirement
+
+-------------------------------------------------------------------
+Wed Jun 11 17:48:25 UTC 2014 - jrecord@suse.com
+
+- Updated Python library documention files
+- No login required for pattern development
+- Fixed header lines
+- Separated module list for better debugging in template-python.php
+
+-------------------------------------------------------------------
+Mon May 19 18:29:11 UTC 2014 - jrecord@suse.com
+
+- Fixed empty query error template-generator.php
+- Fixed missing title in pattern-edit.php
+
+-------------------------------------------------------------------
+Fri May 16 19:17:59 UTC 2014 - jrecord@suse.com
+
+- Fixed SQL injection vulnerabilities (bnc#876240)
+- Fixed login and timeout (bnc#876919)
+
+-------------------------------------------------------------------
+Mon May 12 21:49:18 UTC 2014 - jrecord@suse.com
+
+- Fixed connection errors
+- Fixed build errors for common directory
+- Added login using web-config.php credentials
+- Converted mysql PHP calls to mysqli (bnc#876918)
+- Added string escapes
+
+-------------------------------------------------------------------
+Tue Apr 22 22:09:20 UTC 2014 - jrecord@suse.com
+
+- Removed clear screen and -c
+
+-------------------------------------------------------------------
+Wed Mar 19 00:32:27 UTC 2014 - jrecord@suse.com
+
+- Moved man pages 1 to 8
+- Moved /var/archives to /var/log/archives per suse-filelist-forbidden-fhs23
+
+-------------------------------------------------------------------
+Thu Mar 13 20:15:33 UTC 2014 - jrecord@suse.com
+
+- Removed package ownership of /var/tmp/sca
+- Updated copyright FSF reference
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Wed Mar  5 20:19:33 UTC 2014 - jrecord@suse.com
+
+- Updated python template
+- Updated python documentation
+
+-------------------------------------------------------------------
+Tue Mar  4 21:25:40 UTC 2014 - jrecord@suse.com
+
+- Added IGNORE status count to pat
+- pat displays library directories
+
+-------------------------------------------------------------------
+Sat Feb  8 22:12:20 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:31:15 UTC 2014 - jrecord@suse.com
+
+- updated help-sdp.html docs
+- fixed python template generator dumping array
+
+-------------------------------------------------------------------
+Wed Jan 22 07:10:41 MST 2014 jrecord@suse.com
+
+- commented out debug statements to avoid xss
+
+-------------------------------------------------------------------
+Thu Jan 17 07:10:41 MST 2014 jrecord@suse.com
+
+- updated paths
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Mon Jan 13 07:10:41 MST 2014 jrecord@suse.com
+
+- pat displays SPRSRC
+- pat vars SPRSRC and DEFAULT_ARCHDIR can be set in the environment
+
+-------------------------------------------------------------------
+Wed Jan 08 07:10:41 MST 2014 jrecord@suse.com
+
+- sdpdb man page has correct name
+- binaries installed in correct locations
+- fixed hash plings in template php pages
+
+-------------------------------------------------------------------
+Fri Jan 03 07:10:41 MST 2014 jrecord@suse.com
+
+- added pat documentation
+- added pat pattern tester
+- separated sca-appliance-common files
+
+-------------------------------------------------------------------
+Thu Dec 20 07:10:41 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+

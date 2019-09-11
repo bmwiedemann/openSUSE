@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Apr 14 10:05:05 UTC 2015 - coolo@suse.com
+
+- updated to 1.1903
+   see /usr/share/doc/packages/perl-Algorithm-Diff/Changes
+
+  1.19_03 2014-11-25
+  - Fix documentation typos (RT 84981)
+    contributed by dsteinbrunner
+  - add -w and -i switches to diffnew.pl (RT 69945)
+    contributed by Brian.Eschner
+  - Remove Algorithm::DiffOld from the index
+    The module is still distributed with Algorithm::Diff, but is not indexed on
+    CPAN because this is an ***UNAUTHORIZED*** release of Algorithm::DiffOld.
+
+- droped requirement to patch - it clearly doesn't use patch at all
+
+-------------------------------------------------------------------
+Thu Nov 17 08:51:02 UTC 2011 - coolo@suse.com
+
+- regenerate with cpanspec 1.78.05
+
+-------------------------------------------------------------------
+Tue Aug 30 19:00:15 UTC 2011 - andrea.turrini@gmail.com
+
+- Standardized "Authors:" format in description of 
+  perl-Algorithm-Diff.spec
+
+-------------------------------------------------------------------
+Fri Mar 18 12:14:46 UTC 2011 - cdenicolo@novell.com
+
+- license update: GPL+ or Artistic
+  fix license string
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Dec 13 12:28:15 UTC 2009 - chris@computersalat.de
+
+- cleanupo spec
+  * updated URL
+  * bzipped Source
+  * updated desc
+- fixed build-/deps
+  * added Data::Dumper 
+
+-------------------------------------------------------------------
+Sat Jul 25 19:28:48 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jul 24 13:55:20 CEST 2009 - coolo@novell.com
+
+- merge factory changes
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:36 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Fri Jun 19 00:02:45 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Tue Jun 16 12:48:56 CEST 2009 - chris@computersalat.de
+
+- comment on Provides
+- changed name for filelist 
+
+-------------------------------------------------------------------
+Tue Jun 16 00:59:42 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Jun 14 16:45:07 CEST 2009 - chris@computersalat.de
+
+- fixed deps
+
+-------------------------------------------------------------------
+Tue Aug  8 11:05:14 CEST 2006 - ke@suse.de
+
+- Version 1.1902; Changes:
+  - Fix typo in @EXPORT_OK (s/LCDidx/LCSidx/) (RT 8576)
+  - Use 'printf' in example code, not 'sprintf' nor 'sprint' (RT 16067)
+  - DiffOld wasn't passing extra arguments to compare routine (RT 20650)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jul 19 16:38:18 CEST 2005 - lmuelle@suse.de
+
+- Update to 1.1901.
+
+-------------------------------------------------------------------
+Wed Feb  4 14:38:25 CET 2004 - ke@suse.de
+
+- New package: version 1.15.

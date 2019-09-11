@@ -1,0 +1,34 @@
+Subject: zkey: Update README to add info about packaging requirements
+From: Philipp Rudo <prudo@linux.ibm.com>
+
+Summary:     zkey: Add support of protected key crypto for dm-crypt.
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             plain format by providing a tool to manage a key repository
+             allowing to associate secure keys with disk partitions or logical
+             volumes.
+Upstream-ID: 80b66da1d81793232646d2504c4d4c0ec94170f1
+Problem-ID:  SEC1800
+
+Upstream-Description:
+
+             zkey: Update README to add info about packaging requirements
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+---
+ README.md |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/README.md
++++ b/README.md
+@@ -371,3 +371,7 @@ the different tools are provided:
+   For building the zkey tools you need openssl version 0.9.7 or newer installed
+   (openssl-devel.rpm). Tip: you may skip the zkey build by adding
+   `HAVE_OPENSSL=0` to the make invocation.
++  A new group 'zkeyadm' needs to be created and all users intending to use the
++  tool must be added to this group. The owner of the default key repository
++  '/etc/zkey/repository' must be set to group 'zkeyadm' with write permission
++  for this group.

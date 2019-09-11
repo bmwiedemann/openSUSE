@@ -1,0 +1,101 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Date: Tue, 14 Jun 2016 10:41:18 +0200
+Subject: Add support for NVMe devices
+References: bsc#982169
+Patch-mainline: v3.3
+Git-commit: e4ae4330f3e33201aeeed3b7ca88e15d98d03e13
+
+Recognize NVMe Devices, so "parted -s /dev/nvme0n1" now prints
+"NVMe Device (nvme)" instead of "Model: Unknown (unknown)".
+
+In order for a device to be recognized as NVMe, it has to
+have a 'blkext' major number. But since this major can be
+used also by other device types, we also check the device
+path contains 'nvme' as a substring.
+
+* NEWS: Mention the change
+* include/parted/device.h.in(PedDeviceType): Add PED_DEVICE_NVME
+* libparted/arch/linux.c(BLKEXT_MAJOR): New define.
+* libparted/arch/linux.c(_is_blkext_major): New function.
+* libparted/arch/linux.c(_device_probe_type): Recognize NVMe devices.
+* libparted/arch/linux.c(linux_new): Handle NVMe devices.
+* parted/parted.c(do_print): Add "nvme" to list of transports.
+---
+ include/parted/device.in.h |    3 ++-
+ libparted/arch/linux.c     |   14 ++++++++++++++
+ parted/parted.c            |    2 +-
+ 3 files changed, 17 insertions(+), 2 deletions(-)
+
+Index: parted-3.2/include/parted/device.in.h
+===================================================================
+--- parted-3.2.orig/include/parted/device.in.h
++++ parted-3.2/include/parted/device.in.h
+@@ -49,7 +49,8 @@ typedef enum {
+         PED_DEVICE_VIRTBLK      = 15,
+         PED_DEVICE_AOE          = 16,
+         PED_DEVICE_MD           = 17,
+-        PED_DEVICE_LOOP         = 18
++        PED_DEVICE_LOOP         = 18,
++        PED_DEVICE_NVME         = 19
+ } PedDeviceType;
+ 
+ typedef struct _PedDevice PedDevice;
+Index: parted-3.2/libparted/arch/linux.c
+===================================================================
+--- parted-3.2.orig/libparted/arch/linux.c
++++ parted-3.2/libparted/arch/linux.c
+@@ -279,6 +279,7 @@ struct blkdev_ioctl_param {
+ #define SDMMC_MAJOR             179
+ #define LOOP_MAJOR              7
+ #define MD_MAJOR                9
++#define BLKEXT_MAJOR            259
+ 
+ #define SCSI_BLK_MAJOR(M) (                                             \
+                 (M) == SCSI_DISK0_MAJOR                                 \
+@@ -461,6 +462,12 @@ _ensure_read_write (PedDevice *dev)
+ 	      return;
+ }
+ 
++static int
++_is_blkext_major (int major)
++{
++        return _major_type_in_devices (major, "blkext");
++}
++
+ #ifdef ENABLE_DEVICE_MAPPER
+ static int
+ _dm_task_run_wait (struct dm_task *task, uint32_t cookie)
+@@ -712,6 +719,8 @@ _device_probe_type (PedDevice* dev)
+                 dev->type = PED_DEVICE_LOOP;
+         } else if (dev_major == MD_MAJOR) {
+                 dev->type = PED_DEVICE_MD;
++        } else if (_is_blkext_major(dev_major) && dev->path && strstr(dev->path, "nvme")) {
++                dev->type = PED_DEVICE_NVME;
+         } else {
+                 dev->type = PED_DEVICE_UNKNOWN;
+         }
+@@ -1471,6 +1480,11 @@ linux_new (const char* path)
+                         goto error_free_arch_specific;
+                 break;
+ 
++        case PED_DEVICE_NVME:
++                if (!init_generic (dev, _("NVMe Device")))
++                        goto error_free_arch_specific;
++                break;
++
+         case PED_DEVICE_ATARAID:
+                 if (!init_generic (dev, _("ATARAID Controller")))
+                         goto error_free_arch_specific;
+Index: parted-3.2/parted/parted.c
+===================================================================
+--- parted-3.2.orig/parted/parted.c
++++ parted-3.2/parted/parted.c
+@@ -1035,7 +1035,7 @@ _print_disk_info (const PedDevice *dev,
+                                          "cpqarray", "file", "ataraid", "i2o",
+                                          "ubd", "dasd", "viodasd", "sx8", "dm",
+                                          "xvd", "sd/mmc", "virtblk", "aoe",
+-                                         "md", "loopback"};
++                                         "md", "loopback", "nvme"};
+ 
+         char* start = ped_unit_format (dev, 0);
+         PedUnit default_unit = ped_unit_get_default ();

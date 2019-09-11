@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/redhat-performance/tuned</param>
+    <!--
+    <param name="versionformat">2.12.0+git%cd.%h</param>
+    -->
+    <param name="versionformat">2.12.0</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">tuned*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

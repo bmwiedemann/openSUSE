@@ -1,0 +1,12 @@
+#############################################################################
+#
+# OpenSLP registration file
+#
+# register domain name service (DNS) daemon
+#
+#############################################################################
+
+service:domain://$HOSTNAME:53,en,65535
+watch-port-udp=53
+description=Domain Name Service
+

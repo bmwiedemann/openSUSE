@@ -1,0 +1,38 @@
+Index: config_h.in
+===================================================================
+--- config_h.in.orig
++++ config_h.in
+@@ -5,4 +5,11 @@
+  * config.h -- Kevin Buettner.
+  */
+ 
+-@DEFS@
++#define HAVE_GETOPT_H 0
++#define HAVE_MALLOC_H 0
++#define HAVE_POPEN 0
++#define HAVE_STDLIB_H 0
++#define HAVE_STRING_H 0
++#define HAVE_UNISTD_H 0
++#define STDC_HEADERS 0
++#define HAVE_MKDTEMP 1
+Index: makefile.in
+===================================================================
+--- makefile.in.orig
++++ makefile.in
+@@ -15,6 +15,7 @@ exec_prefix	= @exec_prefix@
+ bindir		= @bindir@
+ mandir		= @mandir@
+ 
++DEFS		= @DEFS@
+ CC		= @CC@
+ LINK		= $(CC)
+ INSTALL		= @INSTALL@
+@@ -26,7 +27,7 @@ CTAGS		= @CTAGS@
+ ETAGS		= @ETAGS@
+ 
+ CFLAGS		= @CFLAGS@ @EXTRA_CFLAGS@
+-CPPFLAGS	= -I. -I$(srcdir) -DHAVE_CONFIG_H @CPPFLAGS@
++CPPFLAGS	= -I. -I$(srcdir) $(DEFS) @CPPFLAGS@
+ 
+ LIBS		= @LIBS@
+ LDFLAGS		= @LDFLAGS@

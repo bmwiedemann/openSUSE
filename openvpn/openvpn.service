@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenVPN tunneling daemon instance using /etc/openvpn/%I.conf
+After=network.target
+PartOf=openvpn.target
+
+[Service]
+Type=notify
+PrivateTmp=true
+PIDFile=/var/run/openvpn/%i.pid
+ExecStart=/usr/sbin/openvpn --daemon openvpn@%i --suppress-timestamps --writepid /var/run/openvpn/%i.pid --cd /etc/openvpn/ --config %i.conf
+# boo#1142830: "reload" does not work if openvpn drops root privileges after startup.
+ExecReload=/sbin/killproc -p /var/run/openvpn/%i.pid -HUP /usr/sbin/openvpn
+
+[Install]
+WantedBy=multi-user.target openvpn.target
+

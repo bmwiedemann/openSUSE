@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Wed Aug 23 15:34:29 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 3.1.4
+  * Minor changes and fixes, see `news nan` for details
+- Drop oblosete:
+  * nan-cpp11.patch
+  * nan_xpt2d_add_return_for_BE.patch
+
+-------------------------------------------------------------------
+Sat Sep 17 18:45:29 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.0.3
+  * Bug fixes
+- Fix build with GCC 4.8
+  * nan-cpp11.patch
+
+-------------------------------------------------------------------
+Fri Jun 10 17:51:45 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.0.1
+  * no changelog available
+- Drop obsolete
+  * nan-openmp.patch
+  * nan-gcc.patch
+
+-------------------------------------------------------------------
+Tue Apr 12 10:06:42 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new nan_xpt2d_add_return_for_BE.patch for ppc64 build
+
+-------------------------------------------------------------------
+Tue Jul  7 18:08:41 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Sat Jun 27 08:05:25 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.0
+  * check for sparse input matrices and convert to full if needed
+  * improve accuracy of normcdf (bug #38170) 
+  * fix compiler issue with __isnan
+  * do not display diagnostic messages
+
+-------------------------------------------------------------------
+Thu Apr 16 22:21:07 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.7.4
+  * use libsvm and liblinear of target system, instead of outdated copy
+  * fix multi-threaded build (make -j) 
+  * improve some tests
+  * bug fix in nanstd.m 
+  * minor issues (some compiler warnings are addressed)
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.7.1
+- Fix build with OpenMP support
+  * nan-openmp.patch
+- Fix GCC warnings
+  * nan-gcc.patch
+

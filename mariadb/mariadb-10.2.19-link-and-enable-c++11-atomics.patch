@@ -1,0 +1,276 @@
+Index: mariadb-10.2.24/configure.cmake
+===================================================================
+--- mariadb-10.2.24.orig/configure.cmake
++++ mariadb-10.2.24/configure.cmake
+@@ -946,6 +946,21 @@ ELSEIF(NOT WITH_ATOMIC_OPS)
+   }"
+   HAVE_GCC_ATOMIC_BUILTINS)
+   CHECK_CXX_SOURCE_COMPILES("
++  #include <cstdint>
++  int main() {
++      uint64_t x = 1;
++      __atomic_add_fetch(&x, 0, __ATOMIC_RELAXED);
++     return x;
++  }
++  " HAVE__ATOMIC_ADD_FETCH)
++  if (NOT HAVE__ATOMIC_ADD_FETCH)
++      check_library_exists(atomic __atomic_add_fetch_8 "" HAVE_LIBATOMIC)
++      if (HAVE_LIBATOMIC)
++          SET(CMAKE_REQUIRED_LIBRARIES atomic)
++          SET(LIBATOMIC atomic)
++      endif()
++  endif()
++  CHECK_CXX_SOURCE_COMPILES("
+   int main()
+   {
+     long long int var= 1;
+Index: mariadb-10.2.24/include/atomic/gcc_builtins.h
+===================================================================
+--- mariadb-10.2.24.orig/include/atomic/gcc_builtins.h
++++ mariadb-10.2.24/include/atomic/gcc_builtins.h
+@@ -16,6 +16,72 @@
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
+ 
++#if defined(HAVE_GCC_C11_ATOMICS)
++#define MY_ATOMIC_MODE "gcc-atomics-smp"
++
++#define MY_MEMORY_ORDER_RELAXED __ATOMIC_RELAXED
++#define MY_MEMORY_ORDER_CONSUME __ATOMIC_CONSUME
++#define MY_MEMORY_ORDER_ACQUIRE __ATOMIC_ACQUIRE
++#define MY_MEMORY_ORDER_RELEASE __ATOMIC_RELEASE
++#define MY_MEMORY_ORDER_ACQ_REL __ATOMIC_ACQ_REL
++#define MY_MEMORY_ORDER_SEQ_CST __ATOMIC_SEQ_CST
++
++#define my_atomic_store32_explicit(P, D, O) __atomic_store_n((P), (D), (O))
++#define my_atomic_store64_explicit(P, D, O) __atomic_store_n((P), (D), (O))
++#define my_atomic_storeptr_explicit(P, D, O) __atomic_store_n((P), (D), (O))
++
++#define my_atomic_load32_explicit(P, O) __atomic_load_n((P), (O))
++#define my_atomic_load64_explicit(P, O) __atomic_load_n((P), (O))
++#define my_atomic_loadptr_explicit(P, O) __atomic_load_n((P), (O))
++
++#define my_atomic_fas32_explicit(P, D, O) __atomic_exchange_n((P), (D), (O))
++#define my_atomic_fas64_explicit(P, D, O) __atomic_exchange_n((P), (D), (O))
++#define my_atomic_fasptr_explicit(P, D, O) __atomic_exchange_n((P), (D), (O))
++
++#define my_atomic_add32_explicit(P, A, O) __atomic_fetch_add((P), (A), (O))
++#define my_atomic_add64_explicit(P, A, O) __atomic_fetch_add((P), (A), (O))
++
++#define my_atomic_cas32_weak_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), true, (S), (F))
++#define my_atomic_cas64_weak_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), true, (S), (F))
++#define my_atomic_casptr_weak_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), true, (S), (F))
++
++#define my_atomic_cas32_strong_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), false, (S), (F))
++#define my_atomic_cas64_strong_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), false, (S), (F))
++#define my_atomic_casptr_strong_explicit(P, E, D, S, F) \
++  __atomic_compare_exchange_n((P), (E), (D), false, (S), (F))
++
++#define my_atomic_store32(P, D) __atomic_store_n((P), (D), __ATOMIC_SEQ_CST)
++#define my_atomic_store64(P, D) __atomic_store_n((P), (D), __ATOMIC_SEQ_CST)
++#define my_atomic_storeptr(P, D) __atomic_store_n((P), (D), __ATOMIC_SEQ_CST)
++
++#define my_atomic_load32(P) __atomic_load_n((P), __ATOMIC_SEQ_CST)
++#define my_atomic_load64(P) __atomic_load_n((P), __ATOMIC_SEQ_CST)
++#define my_atomic_loadptr(P) __atomic_load_n((P), __ATOMIC_SEQ_CST)
++
++#define my_atomic_fas32(P, D) __atomic_exchange_n((P), (D), __ATOMIC_SEQ_CST)
++#define my_atomic_fas64(P, D) __atomic_exchange_n((P), (D), __ATOMIC_SEQ_CST)
++#define my_atomic_fasptr(P, D) __atomic_exchange_n((P), (D), __ATOMIC_SEQ_CST)
++
++#define my_atomic_add32(P, A) __atomic_fetch_add((P), (A), __ATOMIC_SEQ_CST)
++#define my_atomic_add64(P, A) __atomic_fetch_add((P), (A), __ATOMIC_SEQ_CST)
++
++#define my_atomic_cas32(P, E, D) \
++  __atomic_compare_exchange_n((P), (E), (D), 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST)
++#define my_atomic_cas64(P, E, D) \
++  __atomic_compare_exchange_n((P), (E), (D), 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST)
++#define my_atomic_casptr(P, E, D) \
++  __atomic_compare_exchange_n((P), (E), (D), 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST)
++#else
++#define MY_ATOMIC_MODE "gcc-builtins-smp"
++#define make_atomic_load_body(S)                    \
++  ret= __sync_fetch_and_or(a, 0);
++#define make_atomic_store_body(S)                   \
++  (void) __sync_lock_test_and_set(a, v);
+ #define make_atomic_add_body(S)                     \
+   v= __sync_fetch_and_add(a, v);
+ #define make_atomic_fas_body(S)                     \
+@@ -25,24 +91,6 @@
+   int ## S cmp_val= *cmp;                           \
+   sav= __sync_val_compare_and_swap(a, cmp_val, set);\
+   if (!(ret= (sav == cmp_val))) *cmp= sav
+-
+-#ifdef MY_ATOMIC_MODE_DUMMY
+-#define make_atomic_load_body(S)   ret= *a
+-#define make_atomic_store_body(S)  *a= v
+-#define MY_ATOMIC_MODE "gcc-builtins-up"
+-
+-#elif defined(HAVE_GCC_C11_ATOMICS)
+-#define MY_ATOMIC_MODE "gcc-atomics-smp"
+-#define make_atomic_load_body(S)                    \
+-  ret= __atomic_load_n(a, __ATOMIC_SEQ_CST)
+-#define make_atomic_store_body(S)                   \
+-  __atomic_store_n(a, v, __ATOMIC_SEQ_CST)
+-#else
+-#define MY_ATOMIC_MODE "gcc-builtins-smp"
+-#define make_atomic_load_body(S)                    \
+-  ret= __sync_fetch_and_or(a, 0);
+-#define make_atomic_store_body(S)                   \
+-  (void) __sync_lock_test_and_set(a, v);
+ #endif
+ 
+ #endif /* ATOMIC_GCC_BUILTINS_INCLUDED */
+Index: mariadb-10.2.24/include/my_atomic.h
+===================================================================
+--- mariadb-10.2.24.orig/include/my_atomic.h
++++ mariadb-10.2.24/include/my_atomic.h
+@@ -104,7 +104,6 @@
+   but can be added, if necessary.
+ */
+ 
+-#define intptr         void *
+ /**
+   Currently we don't support 8-bit and 16-bit operations.
+   It can be added later if needed.
+@@ -126,18 +125,20 @@
+ #include "atomic/generic-msvc.h"
+ #elif defined(HAVE_SOLARIS_ATOMIC)
+ #include "atomic/solaris.h"
+-#elif defined(HAVE_GCC_ATOMIC_BUILTINS)
++#elif defined(HAVE_GCC_ATOMIC_BUILTINS) || defined(HAVE_GCC_C11_ATOMICS)
+ #include "atomic/gcc_builtins.h"
+ #elif defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ #include "atomic/x86-gcc.h"
+ #endif
+ 
+-
++#ifndef HAVE_GCC_C11_ATOMICS
+ #ifndef make_atomic_cas_body
+ /* nolock.h was not able to generate even a CAS function, fall back */
+ #error atomic ops for this platform are not implemented
+ #endif
+ 
++#define intptr         void *
++
+ /* define missing functions by using the already generated ones */
+ #ifndef make_atomic_add_body
+ #define make_atomic_add_body(S)                                 \
+@@ -297,20 +298,6 @@ make_atomic_store(32)
+ make_atomic_store(64)
+ make_atomic_store(ptr)
+ 
+-#if SIZEOF_LONG == 4
+-#define my_atomic_addlong(A,B) my_atomic_add32((int32*) (A), (B))
+-#define my_atomic_loadlong(A) my_atomic_load32((int32*) (A))
+-#define my_atomic_storelong(A,B) my_atomic_store32((int32*) (A), (B))
+-#define my_atomic_faslong(A,B) my_atomic_fas32((int32*) (A), (B))
+-#define my_atomic_caslong(A,B,C) my_atomic_cas32((int32*) (A), (int32*) (B), (C))
+-#else
+-#define my_atomic_addlong(A,B) my_atomic_add64((int64*) (A), (B))
+-#define my_atomic_loadlong(A) my_atomic_load64((int64*) (A))
+-#define my_atomic_storelong(A,B) my_atomic_store64((int64*) (A), (B))
+-#define my_atomic_faslong(A,B) my_atomic_fas64((int64*) (A), (B))
+-#define my_atomic_caslong(A,B,C) my_atomic_cas64((int64*) (A), (int64*) (B), (C))
+-#endif
+-
+ #ifdef _atomic_h_cleanup_
+ #include _atomic_h_cleanup_
+ #undef _atomic_h_cleanup_
+@@ -345,6 +332,7 @@ make_atomic_store(ptr)
+ #undef make_atomic_store_body
+ #undef make_atomic_fas_body
+ #undef intptr
++#endif
+ 
+ /*
+   the macro below defines (as an expression) the code that
+@@ -355,6 +343,20 @@ make_atomic_store(ptr)
+ #define LF_BACKOFF (1)
+ #endif
+ 
++#if SIZEOF_LONG == 4
++#define my_atomic_addlong(A,B) my_atomic_add32((int32*) (A), (B))
++#define my_atomic_loadlong(A) my_atomic_load32((int32*) (A))
++#define my_atomic_storelong(A,B) my_atomic_store32((int32*) (A), (B))
++#define my_atomic_faslong(A,B) my_atomic_fas32((int32*) (A), (B))
++#define my_atomic_caslong(A,B,C) my_atomic_cas32((int32*) (A), (int32*) (B), (C))
++#else
++#define my_atomic_addlong(A,B) my_atomic_add64((int64*) (A), (B))
++#define my_atomic_loadlong(A) my_atomic_load64((int64*) (A))
++#define my_atomic_storelong(A,B) my_atomic_store64((int64*) (A), (B))
++#define my_atomic_faslong(A,B) my_atomic_fas64((int64*) (A), (B))
++#define my_atomic_caslong(A,B,C) my_atomic_cas64((int64*) (A), (int64*) (B), (C))
++#endif
++
+ #define MY_ATOMIC_OK       0
+ #define MY_ATOMIC_NOT_1CPU 1
+ extern int my_atomic_initialize();
+Index: mariadb-10.2.24/libmysqld/CMakeLists.txt
+===================================================================
+--- mariadb-10.2.24.orig/libmysqld/CMakeLists.txt
++++ mariadb-10.2.24/libmysqld/CMakeLists.txt
+@@ -137,7 +137,7 @@ ENDIF()
+ 
+ 
+ SET(LIBS 
+-  dbug strings mysys mysys_ssl pcre vio 
++  dbug strings mysys mysys_ssl pcre vio ${LIBATOMIC}
+   ${ZLIB_LIBRARY} ${SSL_LIBRARIES} 
+   ${LIBWRAP} ${LIBCRYPT} ${LIBDL}
+   ${MYSQLD_STATIC_PLUGIN_LIBS}
+Index: mariadb-10.2.24/sql/CMakeLists.txt
+===================================================================
+--- mariadb-10.2.24.orig/sql/CMakeLists.txt
++++ mariadb-10.2.24/sql/CMakeLists.txt
+@@ -168,7 +168,8 @@ TARGET_LINK_LIBRARIES(sql ${MYSQLD_STATI
+   ${LIBWRAP} ${LIBCRYPT} ${LIBDL} ${CMAKE_THREAD_LIBS_INIT}
+   ${WSREP_LIB}
+   ${SSL_LIBRARIES}
+-  ${LIBSYSTEMD})
++  ${LIBSYSTEMD}
++  ${LIBATOMIC})
+ 
+ IF(WIN32)
+   SET(MYSQLD_SOURCE main.cc nt_servc.cc message.rc)
+Index: mariadb-10.2.24/storage/perfschema/unittest/CMakeLists.txt
+===================================================================
+--- mariadb-10.2.24.orig/storage/perfschema/unittest/CMakeLists.txt
++++ mariadb-10.2.24/storage/perfschema/unittest/CMakeLists.txt
+@@ -29,4 +29,4 @@ ADD_DEPENDENCIES(pfs_server_stubs GenErr
+ 
+ MY_ADD_TESTS(pfs_instr_class pfs_instr_class-oom pfs_instr pfs_instr-oom
+              pfs_account-oom pfs_host-oom pfs_timer pfs_user-oom pfs pfs_misc
+-  EXT "cc" LINK_LIBRARIES perfschema mysys pfs_server_stubs)
++  EXT "cc" LINK_LIBRARIES perfschema mysys pfs_server_stubs ${LIBATOMIC})
+Index: mariadb-10.2.24/unittest/mysys/CMakeLists.txt
+===================================================================
+--- mariadb-10.2.24.orig/unittest/mysys/CMakeLists.txt
++++ mariadb-10.2.24/unittest/mysys/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ 
+ MY_ADD_TESTS(bitmap base64 my_atomic my_rdtsc lf my_malloc my_getopt dynstring
+              aes byte_order
+-             LINK_LIBRARIES mysys)
++             LINK_LIBRARIES mysys ${LIBATOMIC})
+ MY_ADD_TESTS(my_vsnprintf LINK_LIBRARIES strings mysys)
+ 
+ ADD_DEFINITIONS(${SSL_DEFINES})
+Index: mariadb-10.2.24/unittest/sql/CMakeLists.txt
+===================================================================
+--- mariadb-10.2.24.orig/unittest/sql/CMakeLists.txt
++++ mariadb-10.2.24/unittest/sql/CMakeLists.txt
+@@ -27,7 +27,7 @@ ELSE()
+   ADD_EXECUTABLE(explain_filename-t explain_filename-t.cc)
+ ENDIF()
+ 
+-TARGET_LINK_LIBRARIES(explain_filename-t sql mytap)
++TARGET_LINK_LIBRARIES(explain_filename-t sql mytap ${LIBATOMIC})
+ MY_ADD_TEST(explain_filename)
+ 
+ ADD_EXECUTABLE(mf_iocache-t mf_iocache-t.cc ../../sql/mf_iocache_encr.cc)

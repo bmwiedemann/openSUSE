@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Mar 31 23:23:39 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.7
+  * fixed two important security holes
+    CVE-2019-10672
+    boo#1131106
+  * fixed bug mysofa_interpolate when interpolation is not needed
+  * fixed bug with simple hrtf lookup
+  * added advanced open function and various enhancements
+  * fixed memory leak in lookup.c
+- Drop libmysofa-0-gnu-install-dirs.patch
+- Add libmysofa-0-pkgconfig-paths.patch
+
+-------------------------------------------------------------------
+Mon Apr 30 14:24:46 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Adjust RPM groups.
+
+-------------------------------------------------------------------
+Wed Apr 25 07:10:42 UTC 2018 - 9+suse@cirno.systems
+
+- Init, 0.6

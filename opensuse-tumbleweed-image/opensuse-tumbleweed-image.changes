@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Thu Aug  8 08:45:26 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove wrong comment
+
+-------------------------------------------------------------------
+Thu Jul 25 12:47:27 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Don't install shadow, mention zypper and bash explicitly
+
+-------------------------------------------------------------------
+Mon Mar  4 08:37:53 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from kubic-locale-archive to glibc-locale-base
+
+-------------------------------------------------------------------
+Thu Feb 28 15:49:30 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add comment for obsrepositories back, as requested.
+  Let's see how long it stays this time.
+
+-------------------------------------------------------------------
+Mon Feb 25 07:54:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use correct org.opencontainers.image prefix
+
+-------------------------------------------------------------------
+Thu Jan 10 15:47:40 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add labels and a history entry as defined in the wiki by using
+  OBS services (fate#326856, bsc#1118103, boo#1119378)
+- Remove comments for obsrepositories in derived containers - now implemented differently
+
+-------------------------------------------------------------------
+Tue Dec  4 08:52:11 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- define repositories to use for installing packages within OBS
+
+-------------------------------------------------------------------
+Wed Oct 24 09:30:25 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Use "latest" as tag, "current" does not apply to the new release
+  workflow
+
+-------------------------------------------------------------------
+Mon Jul 23 08:02:34 UTC 2018 - fvogt@suse.com
+
+- Remove stray '#' (boo#1102145)
+
+-------------------------------------------------------------------
+Thu Jun 21 11:53:15 UTC 2018 - fvogt@suse.com
+
+- Remove zypp UUID (bsc#1098535)
+
+-------------------------------------------------------------------
+Wed Jun  6 15:12:42 UTC 2018 - fvogt@suse.com
+
+- Use _multibuild to build both docker-compatible and lxc-compatible
+  images
+
+-------------------------------------------------------------------
+Thu Mar 22 13:18:28 UTC 2018 - fvogt@suse.com
+
+- Use live-add-yast-repos
+
+-------------------------------------------------------------------
+Fri Mar 16 14:24:53 UTC 2018 - fvogt@suse.com
+
+- Decouple from git
+- Remove iputils (bsc#1085664)
+- Set myself as maintainer
+
+-------------------------------------------------------------------
+Thu Feb 22 08:51:42 UTC 2018 - containers@suse.com
+
+- Update to version 1519137101.bf29ee4:
+  * Rename the openSUSE Tumbleweed image
+  * Use opensuse/tumbleweed instead of opensuse:tumbleweed
+  * Use openSUSE-release-ftp instead of -mini, the latter is not in the repo
+  * TW: Clean up config.sh
+  * Follow the naming convention used in Kubic images (#96)
+  * Removing 'docker' references from sources (#95)
+  * Cleanup kiwi description file and config.sh (#93)
+  * Missing semi-colons
+  * Add missing semi-colons (#80)
+  * Update repositories management and remove Leap 42.1 (#79)
+
+-------------------------------------------------------------------
+Tue Feb 06 15:50:40 UTC 2018 - containers@suse.com
+
+- Update to version 1517932213.43160c7:
+  * Follow the naming convention used in Kubic images (#96)
+
+-------------------------------------------------------------------
+Tue Feb 06 15:34:07 UTC 2018 - containers@suse.com
+
+- Update to version 1517931143.2a0dc8a:
+  * Removing 'docker' references from sources (#95)
+
+-------------------------------------------------------------------
+Tue Feb 06 15:09:37 UTC 2018 - containers@suse.com
+
+- Update to version 1517505535.daff6ca:
+  * Cleanup kiwi description file and config.sh (#93)
+  * Missing semi-colons
+  * Add missing semi-colons (#80)
+  * Update repositories management and remove Leap 42.1 (#79)
+  * Uncompress all root.tar.gz files
+  * Update author and contact email in the KIWI file
+  * Update root overlay tarball compression format
+  * Update old KIWI files to the current KIWI-NG
+  * Include krb5 package
+  * Fixed case of Tumbleweed release name
+

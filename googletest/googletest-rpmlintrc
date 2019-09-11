@@ -1,0 +1,6 @@
+# Since the main package is a devel package:
+addFilter("devel-file-in-non-devel-package")
+# Symlinks are intentionally not generated for the SO:
+addFilter("shlib-policy-missing-suffix")
+# The package doesn't provide any libraries anymore:
+addFilter("obsolete-not-provided libgoogletest0")

@@ -1,0 +1,38 @@
+From 7bd0e5fee0ebde15c45fffcd631b74d188fd5551 Mon Sep 17 00:00:00 2001
+From: Derek Konigsberg <dkonigsberg@logicprobe.org>
+Date: Tue, 26 Feb 2019 21:25:23 -0800
+Subject: [PATCH] Test for endianness during CMake setup
+
+Add an endianness test to the CMake configuration, and use the result of
+that test to set a variable that tells the protobuf-c code about the
+endianness of the target system.
+
+Fixes #124
+---
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b31796d..d95fd3f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,6 +19,7 @@ SET(INSTALL_PKGCONFIG_DIR "${LIB_INSTALL_DIR}/pkgconfig" CACHE PATH "Installatio
+ 
+ INCLUDE(CheckSymbolExists)
+ INCLUDE(CheckCCompilerFlag)
++INCLUDE(TestBigEndian)
+ 
+ CHECK_SYMBOL_EXISTS(memset_s "string.h" HAVE_MEMSET_S)
+ 
+@@ -50,6 +51,11 @@ IF(HAVE_MEMSET_S)
+ 	SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_MEMSET_S=1")
+ ENDIF(HAVE_MEMSET_S)
+ 
++TEST_BIG_ENDIAN(WORDS_BIGENDIAN)
++IF(WORDS_BIGENDIAN)
++	ADD_DEFINITIONS(-DWORDS_BIGENDIAN)
++ENDIF(WORDS_BIGENDIAN)
++
+ IF(COVERAGE)
+ 	SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
+ 	SET(LINK_FLAGS "${LINK_FLAGS} -fprofile-arcs -ftest-coverage")

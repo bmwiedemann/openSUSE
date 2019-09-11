@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Mon Mar  4 16:21:28 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 20190304 for gcompris-qt 0.96 
+- Move all url to https
+
+-------------------------------------------------------------------
+Fri Jan  4 15:25:36 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 20190103 (gcompris-qt 0.95) 
+
+-------------------------------------------------------------------
+Thu May 17 18:59:46 UTC 2018 - bruno@ioda-net.ch
+
+- Update to version 20180517 (gcompris-qt 0.91) 
+
+-------------------------------------------------------------------
+Wed Mar 14 21:36:14 UTC 2018 - bruno@ioda-net.ch
+
+- Modernize spec with spec-cleaner minimal
+- Update version 20180311 (gcompris-qt 0-90)
+
+-------------------------------------------------------------------
+Sat Sep 30 18:54:49 UTC 2017 - bruno@ioda-net.ch
+
+- Update version 20170930 (gcompris-qt 0.81) 
+
+-------------------------------------------------------------------
+Wed Sep 13 11:40:20 UTC 2017 - bruno@ioda-net.ch
+
+- Update version to its real state 20170826
+- Fix provide version to be equal to main package
+
+-------------------------------------------------------------------
+Sat Aug 26 14:44:52 UTC 2017 - bruno@ioda-net.ch
+
+- Refrech content for gcompris-qt release 0.80
+  * Updated LICENSE file with the upstream changes.
+    Renamed, deleted, added files.
+- Packaging : change requires to gcomprit-qt
+
+-------------------------------------------------------------------
+Sat Dec 24 08:49:10 UTC 2016 - bruno@ioda-net.ch
+
+- Refresh content for gcompris-qt release 0.70
+  * czech.ogg got renamed and refreshed to czechia.ogg
+  * word list for Slovakia by Jose Riha
+  * word list for Belarusian by Antos Vaclauski
+  * various updates on Romanian wordlists and voices by Horia Pelle
+  * voices added for Portuguese Brazilian by Marcos D. 
+
+-------------------------------------------------------------------
+Wed Nov 23 18:12:44 UTC 2016 - bruno@ioda-net.ch
+
+- Fix path to install to allow gcompris-qt to find the voices 
+
+-------------------------------------------------------------------
+Mon Aug  8 19:51:59 UTC 2016 - bruno@ioda-net.ch
+
+- Updated contents to match gcompris-qt 0.61 release 
+
+-------------------------------------------------------------------
+Wed Jul 27 18:31:19 UTC 2016 - jengelh@inai.de
+
+- Split voice subpackage off gcompris-qt.spec

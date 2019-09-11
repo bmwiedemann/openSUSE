@@ -1,0 +1,4 @@
+# zlib-devel require libz1 - zlib produces libz, not libzlib
+addFilter("zlib-devel.*: W: no-dependency-on zlib*/zlib-libs/libzlib")
+# used only if build --with profiling
+addFilter("zlib.src.*: W: make-check-outside-check-section time make check")

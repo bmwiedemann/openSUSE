@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Tue Jan  9 07:42:56 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * 0001-Fix-linking-with-newer-tools-by-getting-the-library-.patch$
+    + Get the library order right
+    + Fixes linking with newer tools
+
+-------------------------------------------------------------------
+Fri Dec 29 00:30:53 UTC 2017 - jengelh@inai.de
+
+- Drop (tm) symbols
+
+-------------------------------------------------------------------
+Wed Dec 20 12:23:55 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.9.6:
+  * Add support for conversion of Zoner Draw documents using libzmf. The
+    new tools are called zmf2odg and zmf2epub.
+  * Handle StarOffice Writer documents (.sdw).
+  * Allow conversion of StarOffice documents to EPUB and Abiword too. The
+    new tools are called sd2epub and sd2abw.
+  * Fix configure check for libeot.
+  * Add universal conversion tools that handle any supported input
+    format.
+    The new tools are called wpft2abw, wpft2ebub and wpfg2odf.
+  * Fix some CppCheck warnings.
+  * Let mwaw2* properly handle files with a resource fork.
+  * Handle Lotus files with an associated format file.
+  * Switch to C++11.
+  * Add support for conversion of QuarkXPress documents using libqxp. The
+    new tools are called qxp2odg and qxp2epub.
+  * Default to libepubgen 0.1 (0.0 is used as a fallback).
+  * Add options for setting EPUB version, splitting method and layout
+    type (only for EPUB 3.0) to all EPUB-converting tools.
+- Add patch 0001-fix-build-with-libgsf.patch
+
+-------------------------------------------------------------------
+Thu Mar 24 14:18:12 UTC 2016 - tchvatal@suse.com
+
+- Enable libstaroffice as a dependency to provide sd2odf
+- Enable librvngabw to allow export to abiword documents
+- There is no test phase so delete it
+
+-------------------------------------------------------------------
+Wed Mar 23 13:58:50 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.9.5:
+  - Make numbers2ods actually work.
+  - Convert Pict images to SVG in mwaw2abw.
+  - Pass needed flags enabling C++11 mode to gcc automatically if
+    configured with --with-sharedptr=c++11 .
+  - Fix build in C++11 mode.
+  - Add support for conversion of StarOffice documents using
+    libstaroffice. The new tool is called sd2odf.
+  - Improve --help for all tools and make it compatible with help2man.
+- Do not use boost but c++11
+
+-------------------------------------------------------------------
+Wed Sep  2 06:09:07 UTC 2015 - fstrba@suse.com
+
+- Provide and Obsolete the individual binaries to make the upgrade
+  smooth
+
+-------------------------------------------------------------------
+Mon Jun 22 14:42:21 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.9.4:
+  * Various fixes to match the latest library updates
+- Merge all the crazy subpackages, too much effort
+
+-------------------------------------------------------------------
+Fri Nov 28 09:51:34 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 0.9.2
+  * Add tools converting Adobe PageMaker Publications to Open
+    Document Graphics file-format
+  * Add dependency on libepubgen and tools to convert different
+    file-formats to EPUB format
+
+-------------------------------------------------------------------
+Tue Jun  3 07:23:53 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 0.9.1
+  * Fix format check for ebook2odt, because of which every e-book
+    format was rejected as not supported.
+  * Various minor fixes and improvements.
+
+-------------------------------------------------------------------
+Mon May 26 13:09:45 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 0.9.0
+  * ABI change
+  * Support MS Works spreadsheets
+  * Support Pages documents
+  * Dependency on librevenge framework
+
+-------------------------------------------------------------------
+Tue Dec 17 10:22:12 UTC 2013 - fridrich.strba@suse.com
+
+- Upgrading to 0.8.3
+  - Add fh2odg for Macromedia Freehand documents.
+  - Add key2odp for Apple Keynote documents.
+  - Improve mwaw support.
+
+-------------------------------------------------------------------
+Wed Dec  4 09:10:00 UTC 2013 - tchvatal@suse.com
+
+- Create main package that pulls in all per-binaries.
+  + Now user can zypper in writerperfect and be done with it.
+
+-------------------------------------------------------------------
+Tue Dec  3 13:26:17 UTC 2013 - tchvatal@suse.com
+
+- Format with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov 15 07:44:49 UTC 2013 - tchvatal@suse.com
+
+- Fix group to be something sensible for openSUSE. Thx to
+  Dimstar for suggestion.
+
+-------------------------------------------------------------------
+Thu Nov 14 11:50:36 UTC 2013 - tchvatal@suse.com
+
+- Polish the spec to make it applicable for Factory if someone
+  wants to do so.
+
+-------------------------------------------------------------------
+Sat May 18 15:58:58 UTC 2013 - fridrich.strba@suse.com
+
+- Initial import of writerperfect
+  * supporting wpd2odt, wps2odt, mwaw2odt
+  * supporting wpg2odg, vsd2odg, vss2odg, cdr2odg, pub2odg
+

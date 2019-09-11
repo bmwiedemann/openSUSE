@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Thu May 26 04:28:21 UTC 2016 - coolo@suse.com
+
+- updated to version 4.3.2
+ see installed CHANGELOG
+
+  == 4.3.2 / May 23rd, 2016
+  
+  * Fix additional case for CVE-2012-6684 [Joshua Siler]
+  
+  == 4.3.1 / May 17th, 2016
+  
+  * Fix additional case for CVE-2012-6684 [Joshua Siler]
+  
+  == 4.3.0 / April 29th, 2016
+  
+  * Remove JRuby and Windows cross compilation and support
+  * Add Ruby 2.2.3 testing and support
+  
+  * include CVE-2012-6684 fix [Tomas Pospisek]
+    * fix by [Antonio Terceiro] 
+      * see http://sources.debian.net/src/ruby-redcloth/4.2.9-4/debian/patches/0001-Filter-out-javascript-links-when-using-filter_html-o.patch/
+    * vulnerability reported by [Kousuke Ebihara] 
+      * see http://co3k.org/blog/redcloth-unfixed-xss-en
+  
+  == 4.2.9.1 / February 24, 2015
+  
+  * Lazy-load latex_entities.yml [Charlie Somerville]
+
+- obsoletes 0001-Filter-out-javascript-links-when-using-filter_html-o.patch
+
+-------------------------------------------------------------------
+Wed Mar 23 12:07:48 UTC 2016 - olaf@aepfle.de
+
+- Force fixed timestamps for patched gems (bsc#916047)
+
+-------------------------------------------------------------------
+Mon Jun 15 17:23:23 UTC 2015 - mrueckert@suse.de
+
+- pulled patches from debian package for boo#912212 CVE-2012-6684
+  adds the following patch:
+  0001-Filter-out-javascript-links-when-using-filter_html-o.patch
+
+-------------------------------------------------------------------
+Mon Oct 13 05:27:46 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sat Jan 18 13:36:53 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Tue Jul 17 09:55:23 UTC 2012 - coolo@suse.com
+
+- update to 4.2.9
+ * Fix RbConfig / Config warning in Ruby 1.9.3. [Steve Purcell, Robert Gleeson, and unclaimedbaggage]
+ * Use RSTRING_NOT_MODIFIED header for Rubinius [Dirkjan Bussink]
+
+-------------------------------------------------------------------
+Mon Feb 13 10:55:09 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Sep 18 00:27:41 UTC 2011 - mrueckert@suse.de
+
+- update to version 4.2.8
+  * Do not treat warnings as errors so it compiles cleanly.
+    [Tomasz Wałkuski]
+
+-------------------------------------------------------------------
+Wed Jul 27 14:02:55 UTC 2011 - fcastelli@novell.com
+
+- Fix build on SLE
+
+-------------------------------------------------------------------
+Thu Jul 21 12:05:08 UTC 2011 - fcastelli@novell.com
+
+- update to version 4.2.7
+  * Fixed typo in gemspec to make case-sensitive require
+    work. [Gabe da Silveira]
+  * Tested installing the gem and requiring it with both cases on
+    Ubuntu 8.04, 10.10 and OS X Version 10.6.6.
+  * Have spaces around the en-dash in LaTeX [Benjamin Quorning]
+  * Turned double-quote close to smart quotes in LaTeX [Jonathan D. Blake]
+  * Add case-sensitive require back into the gemspec.
+  * Fix rdoc options in gemspec.
+  * Fix bundler and rubygems-test incompatibilities. Working around bug:
+      https://github.com/carlhuda/bundler/issues/issue/1021
+  * Add .gemtest to opt-in to rubygems-test program (gem install
+    rubygems-test to participate)
+  * Allow attributes to be set on hr and br tags [Jesse Stormier]
+  * Fix dangling <li> [Stephen Bannasch]
+  * Switch to bundler and rake-compiler for gem management/compilation
+  * Fix invalid YAML for Ruby 1.9.2 [Aaron Patterson]- 
+
+-------------------------------------------------------------------
+Mon Jun 14 15:59:59 UTC 2010 - mrueckert@suse.de
+
+- update to version 4.2.3
+  * Allow quotes in styles so you can do things like listing
+    font-families. [Jason Garber]
+  * Fix uninitialized constant
+    Gem::Specification::PLATFORM_CROSS_TARGETS in Rails
+    [Jason Garber]
+  * Allow uppercase letters in class and ID attributes even though
+    it's invalid [Jason Garber]
+  * Fix compatibility with newer Echoe, by using full-name for
+    Platform [Flameeyes]
+  * Fixes for PPC/PPC64 [Flameeyes]
+  * Added a modified copy of 'Textile Reference' to a doc folder
+    [codesponge]
+  * Add footnote return links [Jonathan Rudenberg]
+  * Add bug report link to the README
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 31 11:44:21 CEST 2009 - dmacvicar@novell.com
+
+- update to 4.2.2 
+
+-------------------------------------------------------------------
+Thu Nov  6 15:29:39 CET 2008 - mrueckert@suse.de
+
+- Fix build: we dont have ruby18
+
+-------------------------------------------------------------------
+Wed Jun 21 01:19:19 CEST 2006 - mrueckert@suse.de
+
+- use rubygems_with_buildroot_patch instead of the versioned
+  buildrequires
+
+-------------------------------------------------------------------
+Mon Jun 19 19:42:28 CEST 2006 - mrueckert@suse.de
+
+- Initial package version 3.0.4
+
+

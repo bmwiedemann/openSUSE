@@ -1,0 +1,43 @@
+From 08595f5cb96d1163cd6e7071a94a2a11e4eacbdf Mon Sep 17 00:00:00 2001
+From: Robin Kreis <r.kreis@uni-bremen.de>
+Date: Sat, 26 Mar 2016 13:24:59 +0100
+Subject: [PATCH 2/3] Add Brother-DCP1510
+
+---
+ README.md      | 1 +
+ brlaser.drv.in | 7 +++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/README.md b/README.md
+index 32bd2fc..dcc1ba7 100644
+--- a/README.md
++++ b/README.md
+@@ -8,6 +8,7 @@ don't work, this one might help.
+ 
+ It is known to support these printers:
+ 
++* Brother DCP-1510 series
+ * Brother DCP-7030
+ * Brother DCP-7055
+ * Brother DCP-7055W
+diff --git a/brlaser.drv.in b/brlaser.drv.in
+index c58afc1..74a77f8 100644
+--- a/brlaser.drv.in
++++ b/brlaser.drv.in
+@@ -76,6 +76,13 @@ Option "brlaserEconomode/Toner save mode" Boolean AnySetup 10
+ 
+ 
+ {
++  ModelName "DCP-1510"
++  Attribute "NickName" "" "Brother DCP-1510 series, using @PACKAGE@ v@VERSION@"
++  Attribute "1284DeviceID" "" "MFG:Brother;CMD:PJL,XL2HB;MDL:DCP-1510 series;CLS:PRINTER;CID:Brother Laser Type1;"
++  PCFileName "br1510.ppd"
++}
++
++{
+   ModelName "DCP-7030"
+   Attribute "NickName" "" "Brother DCP-7030, using @PACKAGE@ v@VERSION@"
+   Attribute "1284DeviceID" "" "MFG:Brother;CMD:PJL,HBP;MDL:DCP-7030;CLS:PRINTER;"
+-- 
+2.8.3
+

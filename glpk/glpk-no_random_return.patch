@@ -1,0 +1,20 @@
+Index: glpk-4.65/src/draft/glpios01.c
+===================================================================
+--- glpk-4.65.orig/src/draft/glpios01.c
++++ glpk-4.65/src/draft/glpios01.c
+@@ -1491,6 +1491,7 @@ int ios_add_row(glp_tree *tree, IOSPOOL
+ IOSCUT *ios_find_row(IOSPOOL *pool, int i)
+ {     /* find row (constraint) in the cut pool */
+       xassert(0);
++      return;
+ }
+ #else
+ IOSCUT *ios_find_row(IOSPOOL *pool, int i)
+@@ -1550,6 +1551,7 @@ IOSCUT *ios_find_row(IOSPOOL *pool, int
+ void ios_del_row(glp_tree *tree, IOSPOOL *pool, int i)
+ {     /* remove row (constraint) from the cut pool */
+       xassert(0);
++      return;
+ }
+ #else
+ void ios_del_row(glp_tree *tree, IOSPOOL *pool, int i)

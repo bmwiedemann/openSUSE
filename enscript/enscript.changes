@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Tue Jan 23 14:27:55 UTC 2018 - werner@suse.de
+
+- Add missing scan vor LC_PAPER in patch enscript-1.6.6-encoding+paper.patch 
+
+-------------------------------------------------------------------
+Tue Jan 23 10:57:32 UTC 2018 - werner@suse.de
+
+- Add enscript-1.6.6-ghostscript.patch to get correct support for
+  ghostscript back 
+
+-------------------------------------------------------------------
+Tue Jan 23 10:42:02 UTC 2018 - werner@suse.de
+
+- Add enscript-1.6.6-silent-warns.patch to silent gcc 
+- Move %install_info_delete from %postun to %preun
+
+-------------------------------------------------------------------
+Tue Jan 23 09:49:31 UTC 2018 - werner@suse.de
+
+- Add patch enscript-1.6.6-helper-apps.patch to mention
+  helper app support again
+
+-------------------------------------------------------------------
+Tue Jan 23 09:39:43 UTC 2018 - werner@suse.de
+
+- Add patch enscript-1.6.6-mailto.patch to get mailto support with
+  optional address back
+
+-------------------------------------------------------------------
+Tue Jan 23 09:24:52 UTC 2018 - werner@suse.de
+
+- Add patch enscript-1.6.6-encoding+paper.patch to get better
+  encoding and automatic paper size support back
+
+-------------------------------------------------------------------
+Tue Jan 23 08:59:49 UTC 2018 - werner@suse.de
+
+- Add patch enscript-1.6.6-euro+baltic.patch to get support for the
+  Euro symbol as well as the Baltic language support back 
+
+-------------------------------------------------------------------
+Tue Jan 23 01:38:16 UTC 2018 - avindra@opensuse.org
+
+- update to 1.6.6
+  * Add afm/MustRead.html, containing licensing information for
+    Adobe AFM files. 
+  * Sync all translations from the Translation Project. Visit
+    http://translationproject.org/ to help translate Enscript
+  * Add documented but missing '-w' option as an alias for
+    '--language'
+  * Apply sliceprint patch from Debian
+- includes 1.6.5.2:
+  * Fix CFG_FATAL macro in util.c-- prevents a segfault when the
+    config file contains unknown parameters
+  * Fix segfault with line lengths over 90 characters
+- includes 1.6.5.1:
+  * Typo corrections in the manual pages
+  * Actually ship f90.st in the tarball
+  * Better organization for ChangeLog, INSTALL and README
+- includes 1.6.5:
+  * Licensing change: GNU Enscript is now distributed under
+    version 3 or later of the GNU GPL
+  * Build system fixes - distcheck now passes
+  * At least four security bug fixes:
+    - CAN-2004-1184
+    - CAN-2004-1185
+    - CAN-2004-1186
+    - CVE-2008-3863, CVE-2008-4306
+  * Syntax highlighting fixes
+    - shell escaping rules from Shawn McMahon
+    - JavaScript regexps now recognised
+    - New highlighting rules for Fortran 90 from David Bowler
+- rebase enscript-automake.diff
+- remove enscript-1.6.4-CAN-2004-1184.patch
+  * upstreamed in 9510e4315705329e51b27fa2f3f688989b9fb37f
+- remove enscript-1.6.4-CAN-2004-1185.patch
+  * fixed in a3e6bf57e48bb7434cdd590732e221fd2e0b4c17
+- remove enscript-1.6.4-CAN-2004-1186.patch
+  * fixed in 0acc7b63a1be9f5d02f1a21d6df52cb5a9ce7e58
+- remove enscript-1.6.4-CVE-2008-3863.patch
+  * upstreamed in 94135714871a735e3fe624eaf37901bbb6314e05
+- remove enscript-1.6.4-fdleak.patch
+  * fixed in f2bfb5ead29048ce42000e4796383a4406b069f6
+- remove enscript-1.6.4.dif
+- renumber patches
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 24 09:48:11 UTC 2013 - werner@suse.de
+
+- Make spaces in file name work (bnc#824441) 
+
+-------------------------------------------------------------------
+Fri Apr 26 08:09:26 UTC 2013 - mmeister@suse.com
+
+- Added makeinfo BuildRequire to fix build with new automake
+
+-------------------------------------------------------------------
+Tue May 29 16:38:54 UTC 2012 - jengelh@inai.de
+
+- Resolve absence of AM_C_PROTOTYPES in new automake-1.12
+
+-------------------------------------------------------------------
+Thu Dec  1 16:45:52 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Mar 31 12:17:39 CEST 2010 - werner@suse.de
+
+- Fix the wrapepr script to fix bug bnc#590640, bnc#592467, and
+  bnc#592473, this also enhance the fix for bug bnc#478464 and
+  bnc#536348
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:14 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Sep  9 16:47:39 CEST 2009 - werner@suse.de
+
+- Fix problem with getopt behaviour (bnc#536348)
+
+-------------------------------------------------------------------
+Thu Jul 23 12:17:43 CEST 2009 - werner@suse.de
+
+- Close configuration file after parsing it (bnc#524532)
+
+-------------------------------------------------------------------
+Wed Jul 15 13:08:58 CEST 2009 - werner@suse.de
+
+- Add patches for syntax highlight from Josh Zenker (bnc#515706)
+
+-------------------------------------------------------------------
+Mon May  4 16:02:31 CEST 2009 - werner@suse.de
+
+- Fix the last fix
+
+-------------------------------------------------------------------
+Fri Feb 27 13:12:12 CET 2009 - werner@suse.de
+
+- Make sure that titles including white spaces will be printed
+
+-------------------------------------------------------------------
+Thu Feb 26 16:08:12 CET 2009 - werner@suse.de
+
+- Do not add empty strings to long options without argument e.g.
+  --color (bnc#478464)
+
+-------------------------------------------------------------------
+Mon Feb 16 01:11:51 CET 2009 - ro@suse.de
+
+- drop buildreq for lprng 
+
+-------------------------------------------------------------------
+Wed Oct 29 10:47:13 CET 2008 - werner@suse.de
+
+- Fix more overflows for bnc#433756, CVE-2008-3863, CVE-2008-4306
+
+-------------------------------------------------------------------
+Tue Oct 14 14:47:37 CEST 2008 - werner@suse.de
+
+- Avoid buffer overflow in setfilename (bnc#433756, CVE-2008-3863)
+
+-------------------------------------------------------------------
+Tue Jul 15 17:23:07 CEST 2008 - werner@suse.de
+
+- Better workaround for UTF-8 files
+
+-------------------------------------------------------------------
+Sun Feb 24 18:15:15 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+
+-------------------------------------------------------------------
+Tue Oct  9 18:42:33 CEST 2007 - werner@suse.de
+
+- Fix usage of -w within binary and manual page (bug #331840)
+ 
+-------------------------------------------------------------------
+Mon Nov 13 15:25:17 CET 2006 - werner@suse.de
+
+- Be aware that whitespace between the options -C, -e, -E, -H, and
+  -u and their arguments are not allowed with enscript (bug #215754)
+
+-------------------------------------------------------------------
+Sat Oct 21 15:47:24 CEST 2006 - schwab@suse.de
+
+- Fix use of autoreconf.
+
+-------------------------------------------------------------------
+Wed May 24 19:47:39 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 12:29:58 CET 2006 - werner@suse.de
+
+- Use the gcc stack protector
+
+-------------------------------------------------------------------
+Fri May 13 17:29:50 CEST 2005 - werner@suse.de
+
+- Add a wrapper script for converting UTF-8 text _partly_ into the
+  natural latin encoding of the given language enviroment (#43348)
+
+-------------------------------------------------------------------
+Thu Feb 10 10:34:48 CET 2005 - lnussel@suse.de
+
+- fix patch for CAN-2004-1186 (#49680)
+
+-------------------------------------------------------------------
+Tue Feb  1 13:38:17 CET 2005 - werner@suse.de
+
+- Add three security fixes CAN-2004-1184,1185,1186 (bug #49680)
+
+-------------------------------------------------------------------
+Fri Aug 20 19:27:33 CEST 2004 - werner@suse.de
+
+- Update to 1.6.4
+- Skip --install for autoreconf call
+
+-------------------------------------------------------------------
+Sat Jan 10 16:29:24 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Sep 23 13:36:50 CEST 2003 - werner@suse.de
+
+- Use AFM and Fonts of ghostscript if available (bug #31589)
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Feb 28 17:17:29 CET 2003 - werner@suse.de
+
+- Fix bug #23407: use intall-info for info file
+
+-------------------------------------------------------------------
+Mon Nov 18 16:27:40 CET 2002 - schwab@suse.de
+
+- Add AM_GNU_GETTEXT_VERSION.
+
+-------------------------------------------------------------------
+Thu Oct 10 16:40:03 CEST 2002 - meissner@suse.de
+
+- The datafiles also need to be installed to the buildroot.
+
+-------------------------------------------------------------------
+Thu Oct 10 16:11:25 CEST 2002 - werner@suse.de
+
+- For the full functionality a lpr (at compile time) is required.
+
+-------------------------------------------------------------------
+Thu Oct 10 00:16:44 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides (again) 
+
+-------------------------------------------------------------------
+Wed Oct  9 20:14:16 CEST 2002 - meissner@suse.de
+
+- does not need lprng at all (falls back to 'lpr' as default spool)
+- buildrooted, rpm_opt_flags.
+
+-------------------------------------------------------------------
+Tue Apr  9 01:44:23 CEST 2002 - ro@suse.de
+
+- fix build with autoconf/gettext 
+
+-------------------------------------------------------------------
+Fri Apr  5 01:52:30 CEST 2002 - ro@suse.de
+
+- autoconf: LIBOBJS vs AC_LIBOBJ 
+
+-------------------------------------------------------------------
+Sat Mar  9 14:20:35 CET 2002 - ro@suse.de
+
+- replaced lprold by lprng in neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jan 16 16:27:56 CET 2002 - werner@suse.de
+
+- tmpnam -> mkstemp (make secure temporary file)
+
+-------------------------------------------------------------------
+Fri Dec  7 19:24:31 CET 2001 - werner@suse.de
+
+- Make Euro work with ghostscript based printers
+- Use keywords LC_PAPER and LC_CTYPE for getting
+  paper size and encoding
+- The option -m of enscript now accepts a mailto argument.
+- Move from Makefile.Linux to spec
+
+-------------------------------------------------------------------
+Mon Oct  1 17:35:13 CEST 2001 - schwab@suse.de
+
+- Fix quoting in shell script.
+
+-------------------------------------------------------------------
+Fri Jun 15 20:15:38 CEST 2001 - schwab@suse.de
+
+- Run aclocal and automake before configuring.
+
+-------------------------------------------------------------------
+Wed May  9 23:32:23 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Feb 25 15:56:19 CET 2000 - kukuk@suse.de
+
+- Move /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun 29 18:43:14 MEST 1999 - uli@suse.de
+
+- update -> 1.6.2
+
+----------------------------------------------------------------------------
+Mon Mar  2 17:24:32 MET 1998 - florian@suse.de
+
+
+- update to new version 1.5.5
+
+
+-------------------------------------------------------------------
+Thu Nov 13 18:42:40 MET 1997 - ro@suse.de
+
+- added lprold as neededforbuild
+
+----------------------------------------------------------------------------
+Fri Oct 10 12:18:29 MEST 1997 - florian@suse.de
+
+
+- update to new version 1.5.1
+
+
+----------------------------------------------------------------------------
+Sat Nov  2 17:35:11 CET 1996 - florian@suse.de
+
+
+- update to new version 1.4.2
+
+
+----------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
+
+
+new version 1.4.0

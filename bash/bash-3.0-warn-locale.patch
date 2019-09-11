@@ -1,0 +1,33 @@
+---
+ locale.c |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+--- locale.c
++++ locale.c	2018-09-20 08:06:23.732593807 +0000
+@@ -33,6 +33,10 @@
+ #include "bashintl.h"
+ #include "bashansi.h"
+ #include <stdio.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <errno.h>
+ #include "chartypes.h"
+ #include <errno.h>
+ 
+@@ -77,6 +81,15 @@ void
+ set_default_locale ()
+ {
+ #if defined (HAVE_SETLOCALE)
++  struct stat st;
++
++  if (stat("/usr/lib/locale/locale-archive", &st) == 0 && st.st_size == 0) {
++    errno = EINVAL;
++    sys_error("set_default_locale: broken locale");
++    fprintf  (stderr, "%s: Please remove /usr/lib/locale/locale-archive\n",
++	      get_name_for_error());
++    sleep(1);
++  }
+   default_locale = setlocale (LC_ALL, "");
+   if (default_locale)
+     default_locale = savestring (default_locale);

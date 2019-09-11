@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Mon Dec 25 19:40:47 UTC 2017 - p.drouand@gmail.com
+
+- Update to version 5.0
+  + There is a simpler 'Find' dialog for everyday use.
+    Just as the QuickGrep dialog is good enough for most greps, a 
+    simple one-page QuickFind that sets just the path, pattern and 
+    search-type will be sufficient for most searches.
+  + When large files are being moved or pasted, their progress is now 
+    displayed in the statusbar.
+  + It is now possible to make a particular fileview order its files 
+    in a decimal-aware way. This is helpful in the case of files with 
+    names like foo1.txt, foo2.txt, foo11.txt, foo12.txt, which normally
+    sort as 1, 11, 12, 2.
+  + A fileview's contextmenu now has an entry that makes it sort such 
+    files more intelligently. Note that this only affects files with 
+    names that _end_ in digits, not those with digits elsewhere in the name.
+  + Building 4Pane now uses Automake.
+- Split out language files into their own sub-package
+
+-------------------------------------------------------------------
+Thu Jun 29 05:14:05 UTC 2017 - bwiedemann@suse.com
+
+- Use convert -strip to not embed timestamps in .png files
+
+-------------------------------------------------------------------
+Wed May 31 16:49:09 UTC 2017 - aloisio@gmx.com
+
+- Added LICENCE file
+
+-------------------------------------------------------------------
+Fri Apr 28 17:13:55 UTC 2017 - jengelh@inai.de
+
+- Corrected description
+
+-------------------------------------------------------------------
+Thu Apr 27 16:38:30 UTC 2017 - aloisio@gmx.com
+
+- Corrected summary
+
+-------------------------------------------------------------------
+Fri Feb 17 19:34:07 UTC 2017 - olaf@aepfle.de
+
+- Use wxWidgets-3_0
+
+-------------------------------------------------------------------
+Sun May  8 11:46:24 UTC 2016 - aloisio@gmx.com
+
+- Update to version 4.0:
+  * Moving or pasting files now uses threads
+  * This allows 4Pane to be responsive even during pastes of
+    very large files, and also makes it possible to cancel such
+    pastes.
+  * A better method of detecting a file's system mime-type is
+    now used
+  * 4Pane can now be built with clang as well as with g++
+  version 3.0:
+  * It's now possible to use gtk3 instead of gtk2, providing the
+    gtk3 version is sufficiently recent
+  * 4Pane now builds and runs on GNU Hurd, though some features
+    are missing: in particular FilesystemWatcher and samba support
+  * There is now an optional Preview feature: hovering over an
+    image or a text file will, after a delay, show the contents in
+    a 'tooltip'
+  * Double-clicking on a file now uses the system's mime-type
+    method to decide which application to use to open the file
+    Previous versions used just 4Pane's built-in method. Now by
+    default both are tried in turn, the system method first,
+    but this can be changed in Options > Configuring 4Pane >
+    Miscellaneous > Other
+  version 2.0:
+  * It's now possible to mount a remote partition over ssh, using
+    sshfs.
+  * 4Pane now uses 'inotify' to keep it informed of changes to
+    the filesystem. This means that the display updates
+    to show altered dirs and files, whether they were changed by
+    4Pane itself or from elsewhere. This is enabled by default.
+  * Any /etc/fstab entries for network mounts (nfs, sshfs and
+    samba) are now added to their 'mount' dialogs
+  * There's now a separate icon for broken symlinks.
+  version 1.0:
+  * For the musophobic, added the ability to use the keyboard to:
+    navigate to/from the panes, terminal emulator, command-line
+    and toolbar textctrl; return to the last-used control;
+    navigate between dir-view and file-view, and to the opposite
+    twinpane; cycle through multiple open tabs;
+  * User-defined command parameters can now have modifiers, better
+    to specify which panes to select from.
+  * When the user does Copy on a treeitem, its filepath is now
+    added to the (real) clipboard too.
+    If 4Pane is built against >=wxGTK-2.9 it's also added to the
+    primary selection.
+  * It's now possible to set a background colour to panes,
+    optionally different for dirviews and fileviews.
+  * Added the ability to paste only the dirs in the clipboard,
+    ignoring files. This makes it easy to replicate a directory
+    tree.
+  * A greater range of compressed files and archives can now be
+    handled.
+    Assuming the relevant system libs are installed:
+    Files compressed with xz, lzma, lzop and compress can now be
+    decompressed and (all but the last) compressed.
+    Standard 7z archives can be extracted, and tar.7z ones created
+    and extracted.
+    Cpio and ar archives can be extracted, as can rpm and deb
+    packages.
+    It's also possible to peek inside tar archives compressed with
+    xz (lzma1 or 2), in addition to gzip and bzip2.
+    There are now different tree icons to discriminate between
+    archives, compressed archives and compressed files.
+  * It's now possible to change which part of a filename is
+    displayed in the 'ext' column of a fileview.
+    By default an extension is still considered to start at the
+    first '.', but it's now possible to change this to the last or
+    the penultimate one.
+  * 4Pane now will (by default) use stock icons for such things as
+    Copy and Undo. Improved some non-stock icons.
+  * 4Pane now acquires more information about newly-found usb
+    devices, and may not have to bother the user about them.
+  * There is now a built-in su/sudo front-end for executing
+    commands with admin privileges. This is the default, but it's
+    still possible to configure to use kdesu/gksu/etc/ instead
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Aug 17 14:14:19 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build on 12.1+
+
+-------------------------------------------------------------------
+Sat May 28 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- initial build for PackMan <0.0.8>

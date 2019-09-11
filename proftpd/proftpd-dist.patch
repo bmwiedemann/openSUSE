@@ -1,0 +1,72 @@
+Index: contrib/dist/rpm/ftp.pamd
+===================================================================
+--- contrib/dist/rpm/ftp.pamd.orig
++++ contrib/dist/rpm/ftp.pamd
+@@ -1,6 +1,7 @@
+ #%PAM-1.0
++
+ auth       required	pam_listfile.so item=user sense=deny file=/etc/ftpusers onerr=succeed
+-auth       required	pam_unix.so shadow nullok
++#auth       required	pam_unix.so shadow nullok
+ 
+ # If this is enabled, anonymous logins will fail because the 'ftp' user does
+ # not have a "valid" shell, as listed in /etc/shells.
+@@ -11,5 +12,8 @@ auth       required	pam_unix.so shadow n
+ #
+ #auth       required	pam_shells.so
+ 
+-account    required	pam_unix.so
+-session    required	pam_unix.so
++auth     required       pam_unix2.so
++auth     required       pam_shells.so
++account  required       pam_unix2.so
++password required       pam_unix2.so
++session  required       pam_unix2.so
+Index: contrib/dist/rpm/proftpd.logrotate
+===================================================================
+--- contrib/dist/rpm/proftpd.logrotate.orig
++++ contrib/dist/rpm/proftpd.logrotate
+@@ -1,10 +1,16 @@
+-/var/log/proftpd/*.log /var/log/xferlog {
++/var/log/proftpd/xferlog /var/log/proftpd/*.log {
+     compress
+-    missingok
++    dateext
++    maxage 365
++    rotate 99
++    size=+4096k
+     notifempty
++    missingok
++    create 640 root root
+     sharedscripts
+     postrotate
+-        test -f /var/lock/subsys/proftpd && /usr/bin/killall -HUP proftpd || :
++     /usr/sbin/rcproftpd reload
++     #/etc/init.d/xinetd reload
+     endscript
+ }
+ 
+Index: contrib/dist/rpm/xinetd
+===================================================================
+--- contrib/dist/rpm/xinetd.orig
++++ contrib/dist/rpm/xinetd
+@@ -2,13 +2,15 @@
+ # description: The ProFTPD FTP server 
+ service ftp
+ {
+-	flags           = REUSE
+ 	socket_type     = stream
++	protocol        = tcp
+ 	wait            = no
++#	bind            = IP
++	instances       = 30
+ 	user            = root
+ 	server          = /usr/sbin/in.proftpd
+-	log_on_success  += DURATION
+-	log_on_failure  += USERID
+-	nice		= 10
++	log_on_success  += PID HOST USERID EXIT DURATION
++	log_on_failure  += HOST USERID ATTEMPT
++#	nice		= 10
+ 	disable         = yes
+ }

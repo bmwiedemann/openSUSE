@@ -1,0 +1,41 @@
+Index: configure.apxs
+===================================================================
+--- configure.apxs.orig
++++ configure.apxs
+@@ -39,6 +39,7 @@ rel_libexecdir=`$APXS -q exp_libexecdir
+ rel_sysconfdir=`$APXS -q exp_sysconfdir | sed -e "s#^$rel_fix_prefix/##;"`
+ rel_logfiledir=`$APXS -q exp_logfiledir | sed -e "s#^$rel_fix_prefix/##;"`
+ httpd_conffile=`$APXS -q exp_sysconfdir`/`$APXS -q progname`.conf
++mpm_includedir=`$APXS -q exp_includedir`
+ 
+ if test -z "$AWK"; then
+     AWK=`$APXS -q AWK`
+@@ -55,6 +56,7 @@ for i in Makefile build/Makefile modules
+         -e "s#^\(srcdir\)=.*#\1=$srcdir$l_r#;" \
+         -e "s#^\(builddir\)=.*#\1=$builddir$l_r#;" \
+         -e "s#^\(rel_libexecdir\)=.*#\1=$rel_libexecdir#;" \
++        -e "s#^\(mpm_includedir\)=.*#\1=$mpm_includedir#;" \
+         -e "s#^\(rel_sysconfdir\)=.*#\1=$rel_sysconfdir#;" \
+         -e "s#^\(rel_logfiledir\)=.*#\1=$rel_logfiledir#;" \
+         -e "s#^\(httpd_conffile\)=.*#\1=$httpd_conffile#;" \
+Index: modules/fcgid/Makefile.apxs
+===================================================================
+--- modules/fcgid/Makefile.apxs.orig
++++ modules/fcgid/Makefile.apxs
+@@ -15,7 +15,7 @@ fcgid_builddir=../..
+ fcgid_srcdir=../..
+ builddir=.
+ srcdir=.
+-
++mpm_includedir="$(shell $(APXS) -q exp_includedir)"
+ CLEAN_TARGETS = *.loT
+ include $(exp_installbuilddir)/special.mk
+ 
+@@ -23,6 +23,6 @@ all: local-shared-build all-recursive
+ 
+ #   additional defines, includes and libraries
+ DEFS=-DFCGID_APXS_BUILD
+-INCLUDES=-I$(builddir) -I$(srcdir) -I$(fcgid_srcdir)/include
++INCLUDES=-I$(builddir) -I$(srcdir) -I$(fcgid_srcdir)/include -I$(mpm_includedir)
+ #LIBS=-Lmy/lib/dir -lmylib
+ 

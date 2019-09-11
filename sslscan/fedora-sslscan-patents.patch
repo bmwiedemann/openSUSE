@@ -1,0 +1,26 @@
+diff -ur sslscan-1.11.0-rbsec-orig/sslscan.c sslscan-1.11.0-rbsec/sslscan.c
+--- sslscan-1.11.0-rbsec-orig/sslscan.c	2015-09-24 16:18:55.000000000 +0200
++++ sslscan-1.11.0-rbsec/sslscan.c	2016-10-27 11:10:40.634492563 +0200
+@@ -1613,18 +1613,21 @@
+                                                     printf("    DSA Public Key: NULL\n");
+                                                 }
+                                                 break;
++                                            /* Comment out patented technology not enabled in Fedora */
++                                            /*
+                                             case EVP_PKEY_EC:
+                                                 if (publicKey->pkey.ec)
+                                                 {
+                                                     // TODO - display key strength
+                                                     printf_xml("   <pk error=\"false\" type=\"EC\" />\n");
+-                                                    /* EC_KEY_print(stdoutBIO, publicKey->pkey.ec, 6); */
++                                                    // EC_KEY_print(stdoutBIO, publicKey->pkey.ec, 6);
+                                                 }
+                                                 else
+                                                 {
+                                                     printf("    EC Public Key: NULL\n");
+                                                 }
+                                                 break;
++                                            */
+                                             default:
+                                                 printf("    Public Key: Unknown\n");
+                                                 printf_xml("   <pk error=\"true\" type=\"unknown\" />\n");

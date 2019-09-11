@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Mon Dec 10 08:45:27 UTC 2018 - olaf@aepfle.de
+
+- Use pkgconfig(libav*) to refer to ffmpeg
+
+-------------------------------------------------------------------
+Mon Oct 22 12:53:50 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix a typo in spec file
+- Use %license
+
+-------------------------------------------------------------------
+Tue Dec 12 00:58:22 CET 2017 - ro@suse.de
+
+- update service file: add reload action 
+
+-------------------------------------------------------------------
+Mon Dec 11 12:20:30 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+
+-------------------------------------------------------------------
+Mon Dec 11 00:09:54 CET 2017 - ro@suse.de
+
+- reworked specfile based on fedora variant
+- switched to systemd
+- added patch minidlna-vdr.diff to serve vdr files
+
+- update to 1.2.1 release
+  - Added Movian client detection and subtitle support.
+  - Fixed an issue with discovery on non-Linux systems.
+  - Fixed Bonjour discovery compatibility with TiVo Bolt.
+  - Fixed NFO file parsing, and added change monitoring support for them.
+  - Added a workaround for video thumbnails on some Samsung clients.
+  - Added DoS protection for event subscriptions.
+  - Fixed content browsing issues with some Samsung TVs.
+  - Improved non-destructive update scan support.
+  
+- update to 1.2.0 release
+  - Add libavformat > 57 compatibility.
+  - Add TiVo Bonjour discovery support using Avahi for Bolt.
+  - Improve Samsung BD-J5500 support.
+  - Add quirk to fix video playback on Hyundai TVs.
+  - Add non-destructive update rescan support.
+  - Enhance bookmark support to work with Kodi.
+  
+- update to 1.1.6 release
+  - Add AllShare and Windows client detection.
+  - Update support for LG2012 TV.
+  - Fix Samsung bookmarking on magic containers.
+  - Fix SQL error when moving captions.
+  - Add wide_links config option.
+  - Fix external subtitles on Samsung Series J.
+  - Add string localization support for magic containers.
+  - Rework NLS init to work with non-en_US locales.
+  
+- update to 1.1.5 release
+  - Re-enable Samsung DCM10, which adds video bookmarks and "BasicView" support.
+  - Allow SSDP M-SEARCH from other subnets.
+  - Fix some nfo file character escaping.
+  - Fix crash with >3 network interfaces.
+  - Support rotation of monochrome JPEGs.
+  - Handle cover art streams that come after the video stream.
+  - Recognize new hard links with inotify.
+  - Work around LG TV ordering bug.
+  - Implement TiVo image PixelShape support.
+  - Support thumbnail rotation.
+  - Use "Album Artist" tag from AAC files.
+  - Add Korean translations.
+  - Fix handling of bad FLAC files.
+  
+- update to 1.1.4 release
+  - Add magic container infrastructure.
+  - Add magic containers for 50 recent items for each category.
+  - Fix bad null termination in AAC parsing.
+  - Fix requests for the last byte of a file, which affected MKV playback on Philips TV's.
+  - Support 64-bit time_t values.
+
+- update to 1.1.3 release
+  - Enhance log level settings.
+  - Fix Samsung browsing when root_container is set.
+  - Add Clang compiling support.
+  - Fix compiling on systems without iconv.
+  - Add merge_media_dirs option, to revert to the old behavior.
+  - Add Asus O!Play client support.
+  - Fix Broken SSDP multicast membership addition.
+  - Fix crash bug with an emtpy filter argument.
+  - Accept SMI subtitles in addition to SRT.
+  - Add BubbleUPnP detection and enable subtitle support.
+  - Allow the user to specify an arbitrary root container.
+  - Add libavcodec > 54 / libav 10 compatibility.
+  - Get embedded cover art from video files with recent libavformat versions.
+  - Disable Samsung DCM10 capability, as it breaks compatibility with new models.
+  - Add subtitle support for NetFront™ Living Connect middleware-based clients.
+  
+- update to 1.1.2 release
+  - Show client status on our basic presentation page.
+  - Add a new force_sort_criteria option, to globally override the SortCriteria value sent by the client.
+  - Fix a couple resource leaks.
+  - Add configuration include file support.
+  - Support DLNA/UPnP-AV searches issued by clients using the Grilo framework.
+  - Fix some clients playing artwork instead of movie.
+  - Fix bookmarks on Samsung Series E clients.
+  - Add an extra folder level if there are multiple media locations.
+  - Fix some multicast membership issues with changing network settings.
+  - Make max number of children (connections) configurable.
+  - Fix choppy playback with some file types on Panasonic clients by increasing the max connection limit.
+  
+- update to 1.1.1 release
+  - Add network interface monitoring support on Linux.
+  - Don't require a configured network interface to start up.
+  - Fix some minor spec compliance issues.
+  
+- update to 1.1.0 release
+  - Add support for other operating systems.
+  - Switch to autoconf from our handcrafted genconfig.sh.
+  - Add configuration option for UUID.
+  - Add configuration option to specify the user to run as.
+  - Add support for limiting a media dir to multiple media types.
+  - Force a rescan if we detect a new or missing media_dir entry.
+  - Fix crash caused by certain TiVo clients.
+  - Fix crash bug on video files with some ffmpeg library versions.
+  - Add support for TiVo MPEG-TS files.
+  - Add some logging and forking tweaks to work better with systemd.
+  - Validate or escape user input to prevent SQL injection.
+  - Add forced sorting support for Panasonic devices.
+
+
+-------------------------------------------------------------------
+Thu Apr 13 05:40:29 UTC 2012 - rabauke@opensuse.org
+
+- update to 1.0.24 release
+
+-------------------------------------------------------------------
+Thu Sep  8 05:40:29 UTC 2011 - vlewin@suse.com
+
+- updated to version 1.0.22 
+- added rescan action to rcminildna file
+
+  1.0.22 - Released 24-Aug-2011
+  --------------------------------
+  - Add bookmark support for some Samsung TV's.
+  - Fix a memory leak when certain model Samsung TV's or Roku devices are on the network.
+  - Fix detection of Samsung Series D models.
+  - Add WAV MIME workaround for Marantz Receivers and Roku SoundBridge.
+  - Fix bitrate displayed on Microsoft PFS devices.
+  - Fix a scanner crash when trying to scan image files with no read access.
+
+  1.0.21 - Released 18-July-2011
+  --------------------------------
+  - Fix a few issues with new libav/ffmpeg versions.
+  - Fix FF/REW of AVI files on Samsung Series B TV's.
+  - Fix a crash bug when playing music on TiVo.
+  - Add the ability to change the root media container.
+  - Add WAV/RIFF INFO tag parsing support for the most common tags.
+  - Fix a crash bug with clients that request a large number of results.
+
+-------------------------------------------------------------------
+Fri Jul 15 10:07:07 UTC 2011 - vlewin@novell.com
+
+- Initial version 
+

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jun 29 15:17:34 UTC 2017 - jmatejek@suse.com
+
+- drop undefine for python2, this works fine for all pythons
+
+-------------------------------------------------------------------
+Mon Apr 24 14:27:43 UTC 2017 - axel.braun@gmx.de
+
+- source link corrected
+
+-------------------------------------------------------------------
+Mon Apr 17 13:07:59 UTC 2017 - axel.braun@gmx.de
+
+- Version 1.0.9
+  adaption for singlespec
+
+-------------------------------------------------------------------
+Mon Jun 13 19:30:56 UTC 2016 - axel.braun@gmx.de
+
+- Initial OBS build for pydot3
+  Version 1.0.8 

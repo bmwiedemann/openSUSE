@@ -1,0 +1,51 @@
+diff -ru kinput2-v3.1-beta3.orig/cmd/Kinput2.ad kinput2-v3.1-beta3/cmd/Kinput2.ad
+--- kinput2-v3.1-beta3.orig/cmd/Kinput2.ad	Mon Mar 11 12:53:08 2002
++++ kinput2-v3.1-beta3/cmd/Kinput2.ad	Mon Mar 11 13:09:04 2002
+@@ -17,6 +17,27 @@
+ *SeparateConversion.title: Kana-Kanji Conversion
+ *selectionShell.title: Candidate Selection
+ *auxShell.title: Auxiliary Control
++
++!! Don't give input focus to the windows of kinput2, they don't need input focus
++!! it just causes problems if they get input focus.
++!!
++!! For example, if you use kinput2 with Canna and open the 'auxShell' window
++!! by pressing the 'insert' key a window pops up where special symbols
++!! can be selected. If this window gets focus, the selected symbol will not
++!! appear in the application until the application gets focus again. This is
++!! quite confusing.
++!! And there are even some applications where the selected symbol will never appear,
++!! not even when the application gets focus again. Gvim currently behaves
++!! like that and XIM in Gvim may even become completely unusable after one of
++!! the kinput2 windows got focus, making it necessary to restart Gvim to be able
++!! to use XIM again.
++!!
++!! I found no reason why one of kinput2's windows should need input focus.
++!! 
++*SeparateConversion.input: false
++*selectionShell.input: false
++*auxShell.input: false
++
+ ! if you're using mwm (Motif1.1), you can set kanji titles.
+ !*SeparateConversion.title: \033$(B$+$J4A;zJQ49
+ !*SeparateConversion.titleEncoding: COMPOUND_TEXT
+@@ -32,10 +53,10 @@
+ !!
+ !!	Wnn setup
+ !!
+-!*CcWnn.Jserver:	"primary-jserver-host"
++*CcWnn.Jserver:	localhost
+ !*CcWnn.jserver2nd:	"secondary-jserver-host-if-any"
+-*CcWnn.ccdef:		ccdef.kinput2
+-!*CcWnn.wnnEnvrc4:	"wnenvrc-file-for-Wnn4"
++*CcWnn.ccdef:		ccdef.kinput2.egg
++*CcWnn.wnnEnvrc4:	/etc/FreeWnn/ja/wnnenvrc
+ !*CcWnn.wnnEnvrc6:	"wnenvrc-file-for-Wnn6"
+ !!
+ !!	Canna setup for version 2.x, 3.x
+@@ -118,4 +139,4 @@
+ ! the following resource.  This phenomenon is caused by the incorrent
+ ! focus management of your window manager, and this resource avoids
+ ! it by making the window manager totally ignore the mode window.
+-!*OverTheSpotConversion.UseOverrideShellForMode: True
++*OverTheSpotConversion.UseOverrideShellForMode: True

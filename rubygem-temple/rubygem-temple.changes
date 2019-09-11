@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Thu Mar 14 11:07:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.8.1
+ see installed CHANGES
+
+  0.8.1
+  
+    * Stop relying on deprecated method in Rails (#121)
+    * Fix issue with --enable-frozen-string-literal
+    * Escape html in markdown
+
+-------------------------------------------------------------------
+Mon Feb 13 06:25:18 UTC 2017 - coolo@suse.com
+
+- updated to version 0.8.0
+ see installed CHANGES
+
+  0.8.0
+  
+    * Add Temple::StaticAnalyzer to analyze Ruby expressions
+    * Support newlines in Temple::Filters::StaticAnalyzer
+  
+  0.7.8
+  
+    * Fix an warning in StaticAnalyzer
+
+-------------------------------------------------------------------
+Sun May 22 04:38:18 UTC 2016 - coolo@suse.com
+
+- updated to version 0.7.7
+ see installed CHANGES
+
+  0.7.7
+  
+    * Add StaticAnalyzer, StringSplitter
+    * Freeze string literals
+
+-------------------------------------------------------------------
+Mon Jun  8 04:46:25 UTC 2015 - coolo@suse.com
+
+- updated to version 0.7.6
+ see installed CHANGES
+
+  0.7.6
+  
+    * EngineDSL - add support for use(:Filter) { FilterClassName }
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:14 UTC 2015 - coolo@suse.com
+
+- updated to version 0.7.5
+   * HTML::Pretty Fix indentation issue (https://github.com/slim-template/slim-rails/issues/78)
+ 
+ 0.7.4
+   * EngineDSL: allow to replace/remove with regexp
+   * Fix deprecation warning (#83)
+ 
+ 0.7.3
+   * Temple::ERB::Trimming - replace option trim_mode with trim and switch to erubis-like trimming
+ 
+ 0.7.2
+   * Remove Filters::StaticFreezer, the generator does the freezing
+ 
+ 0.7.1
+   * Rename *Hash to *Map
+   * Add Filters::StaticFreezer
+ 
+ 0.7.0
+   * Drop Ruby 1.8.7 support
+   * EngineDSL: Remove option filter
+   * HTML: Deprecate :html4, :html5 formats
+   * HTML: Add format :xml
+   * Rename DefaultOptions to ClassOptions
+   * Deprecate default_options in favor of options
+   * Add Utils.indent_dynamic
+ 
+ 0.6.10
+   * Tilt template: Support :outvar and save/restore buffer to make the behaviour compatible with ERB
+
+-------------------------------------------------------------------
+Mon Nov  3 10:09:33 UTC 2014 - tboerger@suse.com
+
+- Added last missing bits for new macros
+
+-------------------------------------------------------------------
+Mon Oct 13 07:15:48 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Oct  4 07:17:58 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.7
+  * HTML::Pretty - change some block level tags
+  * Reduce memory allocations in immutable hash
+
+-------------------------------------------------------------------
+Thu Aug  1 05:03:18 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.6
+  * Use default encoding utf-8
+  * Escape also '
+  * Try to load escape_utils by default
+
+-------------------------------------------------------------------
+Fri May 24 06:30:01 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.5
+  * Added Filters::CodeMerger
+  * Added Filters::Encoding
+  * Added Filters::RemoveBOM
+  * Added Generators::ERB
+
+-------------------------------------------------------------------
+Sat Apr 20 15:45:33 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.4
+  * Check for ActionView instead of Rails (#72)
+
+-------------------------------------------------------------------
+Fri Apr 12 11:49:46 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.3
+ * Fix HTML escaping for HTML::Pretty (Issue #69)
+
+-------------------------------------------------------------------
+Sun Mar  3 16:09:08 UTC 2013 - coolo@suse.com
+
+- initial package (version 0.6.2)
+

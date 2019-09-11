@@ -1,0 +1,160 @@
+diff --git a/src/plugins/auth-pam/auth-pam.c b/src/plugins/auth-pam/auth-pam.c
+index 54471a3..a2d509f 100644
+--- a/src/plugins/auth-pam/auth-pam.c
++++ b/src/plugins/auth-pam/auth-pam.c
+@@ -43,6 +43,7 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
++#include <linux/limits.h>
+ #include <sys/wait.h>
+ #include <fcntl.h>
+ #include <signal.h>
+@@ -56,6 +57,7 @@
+ /* Command codes for foreground -> background communication */
+ #define COMMAND_VERIFY 0
+ #define COMMAND_EXIT   1
++#define COMMAND_VERIFY_V2 2
+ 
+ /* Response codes for background -> foreground communication */
+ #define RESPONSE_INIT_SUCCEEDED   10
+@@ -112,6 +114,7 @@ struct user_pass {
+     char username[128];
+     char password[128];
+     char common_name[128];
++	char auth_control_file[PATH_MAX];
+ 
+     const struct name_value_list *name_value_list;
+ };
+@@ -708,6 +711,21 @@ pam_auth(const char *service, const struct user_pass *up)
+     return ret;
+ }
+ 
++static int handle_auth_control_file(char *auth_control_file, int status)
++{
++	FILE *fp = fopen(auth_control_file, "w");
++
++	if (fp) {
++		if (fprintf (fp, "%d\n", status) < 0) {
++			fclose(fp);
++			return -1;
++		}
++		fclose(fp);
++		return 0;
++	}
++	return -1;
++}
++
+ /*
+  * Background process -- runs with privilege.
+  */
+@@ -807,6 +825,42 @@ pam_server(int fd, const char *service, int verb, const struct name_value_list *
+                 plugin_secure_memzero(up.password, sizeof(up.password));
+                 break;
+ 
++			case COMMAND_VERIFY_V2:
++				if (recv_string (fd, up.username, sizeof (up.username)) == -1
++						|| recv_string (fd, up.password, sizeof (up.password)) == -1
++						|| recv_string (fd, up.common_name, sizeof (up.common_name)) == -1
++						|| recv_string (fd, up.auth_control_file, sizeof (up.auth_control_file)) == -1)
++				{
++					fprintf (stderr, "AUTH-PAM: BACKGROUND: read error on command channel: code=%d, exiting\n",
++							command);
++					goto done;
++				}
++
++				if (DEBUG (verb))
++				{
++#if 0
++						fprintf (stderr, "AUTH-PAM: BACKGROUND: USER/PASS: %s/%s\n",
++								up.username, up.password);
++#else
++						fprintf (stderr, "AUTH-PAM: BACKGROUND: USER: %s\n", up.username);
++#endif
++				}
++
++				if (pam_auth (service, &up)) /* Succeeded */
++				{
++					if (handle_auth_control_file(up.auth_control_file, 1) == -1) {
++						fprintf (stderr, "AUTH-PAM: BACKGROUND: write error on control file\n");
++					}
++				}
++				else /* Failed */
++				{
++					if (handle_auth_control_file(up.auth_control_file, 0) == -1) {
++						fprintf (stderr, "AUTH-PAM: BACKGROUND: write error on control file\n");
++					}
++				}
++				break;
++
++
+             case COMMAND_EXIT:
+                 goto done;
+ 
+@@ -833,3 +887,56 @@ done:
+ 
+     return;
+ }
++
++int
++handle_auth_pass_verify_v2(struct auth_pam_context *context, const char *argv[], const char *envp[])
++{
++
++	/* get username/password from envp string array */
++	const char *username = get_env ("username", envp);
++	const char *password = get_env ("password", envp);
++	const char *common_name = get_env ("common_name", envp) ? get_env ("common_name", envp) : "";
++	const char *auth_control_file = get_env ("auth_control_file", envp);
++
++	if (!username || !*username || !password)
++		return OPENVPN_PLUGIN_FUNC_ERROR;
++
++	if (!auth_control_file || !*auth_control_file || access( auth_control_file, F_OK ) == -1)
++		return OPENVPN_PLUGIN_FUNC_ERROR;
++
++	if (send_control (context->foreground_fd, COMMAND_VERIFY_V2) == -1
++			|| send_string (context->foreground_fd, username) == -1
++			|| send_string (context->foreground_fd, password) == -1
++			|| send_string (context->foreground_fd, common_name) == -1
++			|| send_string (context->foreground_fd, auth_control_file) == -1)
++	{
++		fprintf (stderr, "AUTH-PAM: Error sending auth info to background process\n");
++	}
++	else
++	{
++		return OPENVPN_PLUGIN_FUNC_DEFERRED;
++	}
++
++	return OPENVPN_PLUGIN_FUNC_ERROR;
++}
++
++OPENVPN_EXPORT int
++openvpn_plugin_func_v2 (openvpn_plugin_handle_t handle,
++		const int type,
++		const char *argv[],
++		const char *envp[],
++		void *per_client_context,
++		struct openvpn_plugin_string_list **return_list)
++{
++	struct auth_pam_context *context = (struct auth_pam_context *) handle;
++
++	switch (type)
++	{
++		case OPENVPN_PLUGIN_AUTH_USER_PASS_VERIFY:
++			printf ("OPENVPN_PLUGIN_AUTH_USER_PASS_VERIFY\n");
++			return handle_auth_pass_verify_v2 (context, argv, envp);
++		default:
++			printf ("OPENVPN_PLUGIN_?\n");
++			return OPENVPN_PLUGIN_FUNC_ERROR;
++	}
++}
+diff --git a/src/plugins/auth-pam/auth-pam.exports b/src/plugins/auth-pam/auth-pam.exports
+index 597e33f..b304ff4 100644
+--- a/src/plugins/auth-pam/auth-pam.exports
++++ b/src/plugins/auth-pam/auth-pam.exports
+@@ -1,4 +1,5 @@
+ openvpn_plugin_open_v3
+ openvpn_plugin_func_v1
++openvpn_plugin_func_v2
+ openvpn_plugin_close_v1
+ openvpn_plugin_abort_v1

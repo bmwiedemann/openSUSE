@@ -1,0 +1,135 @@
+Index: syslogd.c
+===================================================================
+--- syslogd.c.orig
++++ syslogd.c
+@@ -565,7 +565,7 @@ char	**parts;
+ int inetm = 0;
+ static int debugging_on = 0;
+ static int nlogs = -1;
+-static int restart = 0;
++static volatile sig_atomic_t restart;
+ 
+ #define MAXFUNIX	20
+ 
+@@ -1096,6 +1096,7 @@ int main(argc, argv)
+ 
+ 	dprintf("Starting.\n");
+ 	init();
++	(void) signal(SIGHUP, sighup_handler);
+ #ifndef TESTING
+ 	if ( Debug )
+ 	{
+@@ -1167,9 +1168,14 @@ int main(argc, argv)
+ 				  (fd_set *) NULL, (struct timeval *) NULL);
+ 		if ( restart )
+ 		{
++			sigset_t blockhup;
++			sigemptyset(&blockhup);
++			sigaddset  (&blockhup, SIGHUP);
++			(void) sigprocmask(SIG_BLOCK, &blockhup, NULL);
++			restart = 0;
+ 			dprintf("\nReceived SIGHUP, reloading syslogd.\n");
+ 			init();
+-			restart = 0;
++			(void) sigprocmask (SIG_UNBLOCK, &blockhup, NULL);
+ 			continue;
+ 		}
+ 		if (nfds == 0) {
+@@ -1676,18 +1682,16 @@ void logmsg(pri, msg, from, flags)
+ 	register struct filed *f;
+ 	int fac, prilev;
+ 	int msglen;
+-#ifndef SYSV
+-	int omask;
+-#else
+ 	int lognum;
+-#endif
++	sigset_t nset, oset;
+ 	char *timestamp;
+ 
+ 	dprintf("logmsg: %s, flags %x, from %s, msg %s\n", textpri(pri), flags, from, msg);
+ 
+-#ifndef SYSV
+-	omask = sigblock(sigmask(SIGHUP)|sigmask(SIGALRM));
+-#endif
++	sigemptyset(&nset);
++	sigaddset  (&nset, SIGHUP);
++	sigaddset  (&nset, SIGALRM);
++	(void)sigprocmask(SIG_BLOCK, &nset, &oset);
+ 
+ 	/*
+ 	 * Check to see if msg looks non-standard.
+@@ -1724,9 +1728,7 @@ void logmsg(pri, msg, from, flags)
+ 			(void) close(f->f_file);
+ 			f->f_file = -1;
+ 		}
+-#ifndef SYSV
+-		(void) sigsetmask(omask);
+-#endif
++		(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+ 		return;
+ 	}
+ #ifdef SYSV
+@@ -1789,9 +1791,7 @@ void logmsg(pri, msg, from, flags)
+ 			}
+ 		}
+ 	}
+-#ifndef SYSV
+-	(void) sigsetmask(omask);
+-#endif
++	(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+ }
+ #if FALSE
+ } /* balance parentheses for emacs */
+@@ -2108,10 +2108,6 @@ void wallmsg(f, iov)
+ 		(void) signal(SIGTERM, SIG_DFL);
+ 		(void) alarm(0);
+ 		(void) signal(SIGALRM, endtty);
+-#ifndef SYSV
+-		(void) signal(SIGTTOU, SIG_IGN);
+-		(void) sigsetmask(0);
+-#endif
+ 		(void) snprintf(greetings, sizeof(greetings),
+ 		    "\r\n\7Message from syslogd@%s at %.24s ...\r\n",
+ 			(char *) iov[2].iov_base, ctime(&now));
+@@ -2178,16 +2174,8 @@ void wallmsg(f, iov)
+ void reapchild()
+ {
+ 	int saved_errno = errno;
+-#if defined(SYSV) && !defined(linux)
+-	(void) signal(SIGCHLD, reapchild);	/* reset signal handler -ASP */
+-	wait ((int *)0);
+-#else
+ 	while (waitpid(-1, (int*)0, WNOHANG|WUNTRACED) > 0)
+ 		;
+-#endif
+-#ifdef linux
+-	(void) signal(SIGCHLD, reapchild);	/* reset signal handler -ASP */
+-#endif
+ 	errno = saved_errno;
+ }
+ 
+@@ -2318,7 +2306,6 @@ void debug_switch()
+ {
+ 	dprintf("Switching debugging_on to %s\n", (debugging_on == 0) ? "true" : "false");
+ 	debugging_on = (debugging_on == 0) ? 1 : 0;
+-	signal(SIGUSR1, debug_switch);
+ }
+ 
+ 
+@@ -2664,7 +2651,6 @@ void init()
+ 		logmsg(LOG_SYSLOG|LOG_INFO, "syslogd " VERSION "." PATCHLEVEL \
+ 		       ": restart." , LocalHostName, ADDDATE);
+ #endif
+-	(void) signal(SIGHUP, sighup_handler);
+ 	dprintf("syslogd: restarted.\n");
+ }
+ #if FALSE
+@@ -3061,7 +3047,6 @@ void sighup_handler()
+ 
+ {
+ 	restart = 1;
+-	signal(SIGHUP, sighup_handler);
+ 	return;
+ }
+ 

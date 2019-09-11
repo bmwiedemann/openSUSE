@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Wed May 31 16:26:20 CEST 2017 - ma@suse.com
+
+- Fix unrecognized solver flags (bsc#1041889)
+- version 5.0.3
+
+-------------------------------------------------------------------
+Thu Jul 30 18:17:13 CEST 2015 - ma@suse.com
+
+- Add requested locales and autoinstalled packages.
+- version 5.0.2
+
+-------------------------------------------------------------------
+Tue Sep  9 17:45:41 CEST 2014 - ma@suse.de
+
+- Cleanup include files. Prepare code to allow further
+  libzypp changes dues to (FATE#318099) without breaking.
+- version 5.0.1
+
+-------------------------------------------------------------------
+Tue Sep  9 17:45:41 CEST 2014 - ma@suse.de
+
+- Drop graphical PkgUI and YOU commands as required libraries were
+  dropped due to lack of QT5 support. The binary was renamed to 
+  deptestomatic. Legacy symlinks for deptestomatic.multi and 
+  deptestomatic.noui are provided.
+- version 5.0.0
+
+-------------------------------------------------------------------
+Fri Aug  1 11:26:32 CEST 2014 - ma@suse.de
+
+- Also install deptestomatic.noui (bnc#889426)
+- version 4.4.2
+
+-------------------------------------------------------------------
+Mon May 19 12:43:05 CEST 2014 - ma@suse.de
+
+- Add support for kind "application"
+- version 4.4.1
+
+-------------------------------------------------------------------
+Wed Sep 18 17:58:58 CEST 2013 - ma@suse.de
+
+- Add support for hardware dependencies, multiversion packages.
+- version 4.4.0
+
+-------------------------------------------------------------------
+Wed May  8 19:44:07 CEST 2013 - ma@suse.de
+
+- Remove deprecated installorder code
+- version 4.3.2
+
+-------------------------------------------------------------------
+Wed Jan  9 14:13:02 CET 2013 - ma@suse.de
+
+- Fix reporting of solver problems in distupgrade.
+- version 4.3.1
+
+-------------------------------------------------------------------
+Mon Sep  3 10:18:32 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  Contains files with GPL-2.0 (i.e. "only") licenses - see e.g.
+  src/XmlNode.cc
+
+-------------------------------------------------------------------
+Wed Aug 29 14:28:48 CEST 2012 - ma@suse.de
+
+- Adapt to libyui changes
+- As zypp is now using libsolv, drop the outdated and unmaintained
+  testcase data package for the old solver.
+- version 4.3.0
+
+-------------------------------------------------------------------
+Wed Nov 23 21:12:04 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Oct 20 10:40:05 CEST 2011 - ma@suse.de
+
+- Fix %changelog
+
+-------------------------------------------------------------------
+Mon Oct 17 15:27:52 CEST 2011 - ma@suse.de
+
+- use %_prefix
+
+-------------------------------------------------------------------
+Tue Oct 11 14:08:14 CEST 2011 - ma@suse.de
+
+- Use gcc-c++ >= 4.5
+
+-------------------------------------------------------------------
+Wed Sep 14 14:14:08 CEST 2011 - ma@suse.de
+
+- Fix license in specfile (bnc#717717)
+
+-------------------------------------------------------------------
+Tue Sep 13 14:17:18 CEST 2011 - ma@suse.de
+
+- fix to build
+
+-------------------------------------------------------------------
+Wed Sep  9 15:25:35 CEST 2009 - ma@suse.de
+
+- Always print solver problems if solving failed.
+- version 4.2.11
+
+-------------------------------------------------------------------
+Tue Aug  4 15:16:26 CEST 2009 - ma@suse.de
+
+- Parse and process <upgradeRepo name=REPOALIAS/>
+- version 4.2.10
+
+-------------------------------------------------------------------
+Wed Jul  8 14:16:33 CEST 2009 - ma@suse.de
+
+- Remove references to deprecated UpgradeStatistics.
+- version 4.2.9
+
+-------------------------------------------------------------------
+Mon Jun 22 15:29:19 CEST 2009 - ma@suse.de
+
+- Remove dependency to satsolver/repo_helix.h.
+- version 4.2.8
+
+-------------------------------------------------------------------
+Tue Jun  9 13:48:14 CEST 2009 - jkupec@suse.cz
+
+- fixed changed keyring callbacks
+- version 4.2.7
+
+-------------------------------------------------------------------
+Wed Jun  3 17:47:55 CEST 2009 - ma@suse.de
+
+- Add '--help' at least listing the tags and linking to the
+  wiki page.
+
+-------------------------------------------------------------------
+Thu Nov 20 14:41:28 CET 2008 - gs@suse.de
+
+- add test cases for UI testing (new directory UI-tests)
+- deptestomatic.cc/load_source(): use pathname (instead of filename)
+
+-------------------------------------------------------------------
+Tue Nov  4 15:46:33 CET 2008 - dmacvicar@suse.de
+
+- add showselectable tag to see selectables
+
+-------------------------------------------------------------------
+Wed Oct 15 09:45:35 CEST 2008 - dmacvicar@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Sep 10 17:45:26 CEST 2008 - ma@suse.de
+
+- adapted to new product handling
+
+-------------------------------------------------------------------
+Thu Sep  4 16:59:37 CEST 2008 - jkupec@suse.cz
+
+- adapted to zypp::RepoInfo setters change
+
+-------------------------------------------------------------------
+Tue Sep  2 16:47:55 CEST 2008 - schubi@suse.de
+
+- compiler fixes
+- replace ResTraits<>::kind by ResKind
+- version 4.2.6
+
+-------------------------------------------------------------------
+Fri Jul 18 09:36:05 CEST 2008 - schubi@suse.de
+
+- removed scripts,atoms,... from deptestomatic
+
+-------------------------------------------------------------------
+Tue Jun 17 12:25:20 CEST 2008 - schubi@suse.de
+
+- Added new commands: YOU", "PkgUI" for package UI
+
+-------------------------------------------------------------------
+Fri May 23 15:06:53 CEST 2008 - schubi@suse.de
+
+- Added grfical interface again
+
+-------------------------------------------------------------------
+Fri Apr 25 20:14:29 CEST 2008 - coolo@suse.de
+
+- new call resolveQueue added
+
+-------------------------------------------------------------------
+Fri Apr 11 22:42:30 CEST 2008 - coolo@suse.de
+
+- adapt to new libzypp
+
+-------------------------------------------------------------------
+Sat Apr  5 12:45:37 CEST 2008 - matz@suse.de
+
+- Fix testcases with URLs as sources
+
+-------------------------------------------------------------------
+Thu Apr  3 20:01:06 CEST 2008 - coolo@suse.de
+
+- adapt to new libzypp
+
+-------------------------------------------------------------------
+Mon Mar 24 21:20:08 CET 2008 - coolo@suse.de
+
+- adapt to new libzypp
+
+-------------------------------------------------------------------
+Tue Mar  4 09:19:11 CET 2008 - coolo@suse.de
+
+- reducing build requires
+
+-------------------------------------------------------------------
+Mon Mar  3 19:51:52 CET 2008 - schubi@suse.de
+
+- adapt to latest libzypp API
+
+-------------------------------------------------------------------
+Fri Feb 29 13:21:53 CET 2008 - coolo@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Tue Feb 26 12:14:37 CET 2008 - schubi@suse.de
+
+- using SAT helix parser
+- disables pokus (bindings does not work currently)
+
+-------------------------------------------------------------------
+Thu Dec 06 12:18:46 CET 2007 - aschnell@suse.de
+
+- adapted to changes in libzypp bindings
+
+-------------------------------------------------------------------
+Thu Oct  4 15:52:51 CEST 2007 - schubi@suse.de
+
+- other valid solutions.
+- added vendor to patterns, patches,....
+
+-------------------------------------------------------------------
+Thu Sep 27 13:35:01 CEST 2007 - schubi@suse.de
+
+- added graphical interface to deptestomatic
+
+-------------------------------------------------------------------
+Mon Sep 17 19:23:54 CEST 2007 - aschnell@suse.de
+
+- adapted to changes in libzypp-bindings
+- added new testcases
+
+-------------------------------------------------------------------
+Thu Sep 13 15:04:38 CEST 2007 - aschnell@suse.de
+
+- added tests for shared tag
+
+-------------------------------------------------------------------
+Thu Aug 30 21:20:11 CEST 2007 - aschnell@suse.de
+
+- adopted to new exception logging
+
+-------------------------------------------------------------------
+Wed Aug 29 11:22:23 CEST 2007 - aschnell@suse.de
+
+- added more tests
+- sign repositories
+
+-------------------------------------------------------------------
+Mon Aug 27 10:50:07 CEST 2007 - schubi@suse.de
+
+- Disabled make check for solver
+
+-------------------------------------------------------------------
+Tue Aug 21 10:06:28 CEST 2007 - schubi@suse.de
+
+- Bugfix for 64 bit architecture
+
+-------------------------------------------------------------------
+Mon Aug 20 21:07:59 CEST 2007 - aschnell@suse.de
+
+- added another testsuite
+
+-------------------------------------------------------------------
+Mon Aug 13 14:38:10 CEST 2007 - schubi@suse.de
+
+- changes due new regex class
+- rev 6624
+- ver 3.14.9
+
+-------------------------------------------------------------------
+Wed Aug  8 15:30:16 CEST 2007 - schubi@suse.de
+
+- Added vendor to helixparser
+- Added new testcases
+- reduced logging in solver
+- rev 6524
+- ver 3.14.8
+
+-------------------------------------------------------------------
+Mon Jul 30 14:14:38 CEST 2007 - schubi@suse.de
+
+- solvertree added (graphic interface)
+- Not using pool for retrieving additional dependencies which has to be
+  regarded by the solver.
+- r 6400
+- ver 3.14.7
+
+-------------------------------------------------------------------
+Wed Jul 25 12:34:30 CEST 2007 - schubi@suse.de
+
+- new repo handling of libzypp included
+- rev 6197
+- ver 3.14.6
+
+-------------------------------------------------------------------
+Fri Jul  6 16:47:28 CEST 2007 - schubi@suse.de
+
+- enable "make check" for ix68 and ia64 in autobuild
+- rev 5923
+- ver 3.14.5
+
+-------------------------------------------------------------------
+Wed Jun 20 14:33:54 CEST 2007 - schubi@suse.de
+
+- added includes for gcc42
+
+-------------------------------------------------------------------
+Tue Jun 12 12:10:29 CEST 2007 - schubi@suse.de
+
+- cleanup; moved bineries to /opt/zypp/testsuite/bin
+
+-------------------------------------------------------------------
+Thu Apr  5 12:36:12 CEST 2007 - schubi@suse.de
+
+- initial; testsuite package has been extracted from libzypp package
+

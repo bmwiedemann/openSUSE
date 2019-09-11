@@ -1,0 +1,10 @@
+--- lib/HTML/Clean.pm
++++ lib/HTML/Clean.pm
+@@ -1,7 +1,6 @@
+ package HTML::Clean;
+ 
+ use Carp;
+-use IO;
+ use Fcntl;
+ use strict;
+ require 5.004;

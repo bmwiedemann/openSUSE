@@ -1,0 +1,820 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Scrollview - Don't fill the parent with the view (kde#407643) 
+  * introduce FallbackTapHandler 
+  * Fix typo - GridView -> ScrollView 
+  * KRun QML proxy: port away from deprecated KRun API 
+  * Docs: fix bad example code 
+  * KRun QML proxy: fix path/URL confusion 
+  * Calendar events: allow plugins to show event details
+
+-------------------------------------------------------------------
+Fri Jul 19 11:39:46 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * [GridDelegate] Fix gaps in corners of thumbnailArea highlight
+  * get rid of blockSignals
+  * [KCM GridDelegate] Silence warning
+  * [KCM GridDelegate] Take into account implicitCellHeight for inner delegate height
+  * Fix GridDelegate icon
+  * Fix fragile comparison to i18n("None") and describe behavior in docs (kde#407999)
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Fix qmldir files
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * [KeySequenceItem] Make the clear button have the same height as shortcut button
+  * Plotter: Scope GL Program to lifespan of scenegraph node (kde#403453)
+  * use the base implementation hints
+  * KeySequenceHelperPrivate::updateShortcutDisplay: Don't show english text to the user
+  * [ConfigModule] Pass initial properties in push()
+  * Enable glGetGraphicsResetStatus support by default on Qt >= 5.13 (kde#364766)
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * [kdeclarative] compile without foreach
+  * [GridViewKCM] Fix implicit width calculation
+  * move the gridview in a separate file
+  * Avoid fractionals in GridDelegate sizes and alignments
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * use KPackage::fileUrl to support rcc KCMs packages
+  * Remove not necessary flags
+  * [GridDelegate] Fix long labels blending into each other (kde#404389)
+  * [GridViewKCM] improve contrast and legibility for delegates' inline hover buttons (kde#395510)
+  * Correct the accept flag of the event object on DragMove (kde#396011)
+  * Use different "None" item icon in grid view KCMs
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:04 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * [KCM Controls GridView] Add remove animation
+  * KDeclarative: Delete copy constructor and assignment operator
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * don't show separators on mobile
+  * root.contentItem instead of just contentItem
+  * Add the missing api for multilevel KCMs to control the columns
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Normalize signal/slot
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * API dox QCH creation: fix "linking" to kconfig docs
+  * make push/pop part of ConfigModule API
+  * Use reserve()
+  * Use QVariant::toFoo() where possible
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:00 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:48 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Revert "ensure we are always writing in the engine's root context"
+  * Attach property to "delegate" (kde#397367)
+  * add an implicit size
+  * [KCM GridDelegate] Use layer effect only on OpenGL backend
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:57 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * ensure we are always writing in the engine's root context
+  * better readability
+  * Improve API docs a bit
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Remove QT definitions duplicated from KDEFrameworkCompilerSettings or dead
+  * check the node actually has a valid texture (kde#395554)
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Revert "GHNS button"
+  * Set kcm context property on the correct context
+  * GHNS button
+  * [Plotter] Don't render if m_node is null (kde#394283)
+  * assign the contentItem
+
+-------------------------------------------------------------------
+Sun May 13 21:03:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Load NV graphics reset based on config
+  * ScrollViewKCM
+  * [KUserProxy] Adjust to accounts service (kde#384107)
+  * Plasma mobile optimizations
+  * Make room for footer and header.
+  * base on the proper tooltip
+  * don't use tooltips if empty
+  * new resize policy (kde#391910)
+  * Warning--
+  * support actions visibility
+  * Support nvidia reset notifications in QtQuickViews
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove useless QT_VERSION_CHECK
+  * Remove not necessary QtCore and co
+  * Setup QQmlEngine only once in QmlObject
+  * Minor: Fix -Wmismatched-tags warning
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Fix the build failure on armhf/aarch64
+  * Kill QmlObjectIncubationController
+  * disconnect render() on window change (kde#388508, kde#374280, kde#365052, kde#343576)
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * API dox: note @since & whattodo with deprecated KDeclarative::initialize()
+  * [ConfigModule] Re-use QML context and engine if any
+  * [ConfigPropertyMap] Add missing include
+  * [ConfigPropertyMap] Don't emit valueChanged on initial creation
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:15 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * crash--
+  * it was split
+  * fix build
+  * Qml controls for kcm creation
+
+-------------------------------------------------------------------
+Wed Dec 20 06:37:45 UTC 2017 - lbeltrame@kde.org
+
+- Dropped patches, now upstream:
+  - MouseEventListener-Allow-accepting-mouse-event.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 16:55:36 UTC 2017 - wbauer@tmo.at
+
+- Add MouseEventListener-Allow-accepting-mouse-event.patch to make
+  it possible to fix double context menu issue with Qt 5.10 in
+  plasma5-desktop (kde#387199)
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Make it compile on windows
+  * make it compile with QT_NO_CAST_FROM_ASCII/QT_NO_CAST_FROM_BYTEARRAY
+  * [MouseEventListener] Allow accepting mouse event
+  * use a single QML engine
+  * add some metadata
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Add explicit keyword
+  * Item can't be null here
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Remove copy of the GPL
+  * Relicense to LGPL2.1+ (part 2)
+  * Relicense some files to LGPL2.1+
+  * Added openService() method to KRunProxy
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:22 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * fix plasmashell unsetting QSG_RENDER_LOOP
+  * API dox: fix @param to use name of parameter, not type
+  * API dox: use @param for normal parameter listing, not @arg
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * KKeySequenceItem: make it possible to record Ctrl+Num+1 as a shortcut.
+  * Start drag with press and hold on touch events (kde#368698)
+  * Don't rely on QQuickWindow delivering QEvent::Ungrab as mouseUngrabEvent (as it no longer does in Qt 5.8+) (kde#380354)
+  * [FEATURE] Option to build & install QCH file with the public API dox
+- Drop upstreamed patches:
+  * 0001-Don-t-rely-on-QQuickWindow-delivering-QEvent-Ungrab-.patch
+
+-------------------------------------------------------------------
+Sat Jun 17 10:20:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to account for behavioural change in Qt 5.8+
+  regarding ungrab events:
+  * 0001-Don-t-rely-on-QQuickWindow-delivering-QEvent-Ungrab-.patch
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Consistently emit MouseEventListener::pressed signal
+  * Use explicit flag constructor instead of nullptr
+  * Don't leak MimeData object (kde#380270)
+  * API Dox: note forwarding CamelCase files as class headers
+  * API Dox: add some non-empty class/namespace docs where missing
+
+-------------------------------------------------------------------
+Mon May 15 13:53:13 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Don't set ItemHasContents in DropArea
+  * Don't accept hover events in the DragArea
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:46 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+  * With Qt >= 5.8 use the new API to set scene graph backend
+  * Don't set acceptHoverEvents in DragArea as we don't use them
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:19 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:25:41 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:39:29 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:57:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:27:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * [QtQuickRendererSettings] Fix default to be empty instead of "false"
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:52:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:48:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * [kpackagelauncherqml] Assume desktop file name is same as pluginId
+  * Load QtQuick rendering settings from a config file and set default
+  * icondialog.cpp - proper compile fix that doesn't shadow m_dialog
+  * Fix crash when no QApplication is available
+  * Expose translation domain
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:51:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Actually emit valueChanged
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Make epoxy optional
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:24:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Support selected state
+  * KCMShell import can now be used to query for whether opening
+    a KCM is actually allowed
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Don't crash if we have no openGL context
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Uniform use of std::numeric_limits
+  * [DeclarativeDragArea] Don't override "text" of mime data
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:55:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Don't call null object pointer (kde#347962)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Fri Feb 26 18:54:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Add %requires_eq libQt5Core5 to the libKF5Declarative5 subpackage
+   * QQmlPropertyMap leaks private but exported QObjectPrivate symbol:
+     https://bugreports.qt.io/browse/QTBUG-46433 and
+     https://bugs.launchpad.net/bugs/1426335
+
+-------------------------------------------------------------------
+Sat Feb  6 18:00:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Clean up dependencies for KDeclarative/QuickAddons
+  * [KWindowSystemProxy] Add setter for showingDesktop
+  * DropArea: Fix correctly ignoring dragEnter event with
+    preventStealing
+  * DragArea: Implement grabbing delegate item
+  * DragDropEvent: Add ignore() function
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Mon Feb  1 17:56:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Add missing libKF5CalendarEvents5 to baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * [DragArea] Add dragActive property
+  * [KQuickControlsAddons MimeDatabase] Expose QMimeType comment
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:04:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Port KDeclarative to use KI18n directly
+  * DragArea delegateImage can now be a string from which an icon
+    is automatically created
+  * Add new CalendarEvents library
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:58:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * ConfigPropertyMap can now be queried for immutable config
+    options using the isImmutable(key) method
+  * Unbox QJSValue in config property map
+  * EventGenerator: Add support for sending wheel events
+  * Fix lost QuickViewSharedEngine initialSize on initializing.
+  * Fix critical regression for QuickViewSharedEngine by commit
+    3792923639b1c480fd622f7d4d31f6f888c925b9
+  * Make pre-specified view size precede initial object size in
+    QuickViewSharedEngine
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Small improvements in ColumnProxyModel
+  * Make it possible for applications to know path to homeDir
+  * Move EventForge from the desktop containment
+  * Provide enabled property for QIconItem.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Fix deprecated KRun::run call
+  * Same behavior of MouseArea to map coords of filtered child
+    events
+  * Detect initial face icon being created
+  * Don't refresh the entire window when we render the plotter
+    (kde#348385)
+  * add the userPaths context property
+  * Don't choke on empty QIconItem
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+- Drop patches merged upstream:
+  0001-Only-resize-plot-texture-if-size-actually-changes.patch
+  0001-Don-t-refresh-the-entire-window-when-we-render-the-p.patch
+
+-------------------------------------------------------------------
+Mon Jul 27 16:07:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Don-t-refresh-the-entire-window-when-we-render-the-p.patch
+  (kde#348385)
+
+-------------------------------------------------------------------
+Wed Jul  8 18:58:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Only-resize-plot-texture-if-size-actually-changes.patch
+  (kde#346134, kde#348385)
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Add QQC clone of KColorButton
+  * Assign a QmlObject for each kdeclarative instance when possible
+  * Make Qt.quit() from QML code work
+  * Merge branch 'mart/singleQmlEngineExperiment'
+  * Implement sizeHint based on implicitWidth/height
+  * Subclass of QmlObject with static engine
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Support creation of ConfigModule from KPluginMetdata
+  * Fix pressAndhold events
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:48:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Fix crash in texture cache
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+- Added kcoreaddons-devel Requires to devel subpackage
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Prefer exposing lists to QML with QJsonArray
+  * Handle non default devicePixelRatios in images
+  * Expose hasUrls in DeclarativeMimeData
+  * Allow users to configure how many horizontal lines are drawn
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+- Added kpackage-devel BuildRequires
+- Added pkgconfig(Qt5Qml), kconfig-devel and kpackage-devel to
+  devel package requires
+- Drop kio-devel from devel package requires
+- New tools subpackage, containing kpackagelauncherqml tool
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Added a plotter component
+  * Added overload method for Formats::formatDuration taking int
+  * New properties paintedWidth and paintedHeight added to
+    QPixmapItem and QImageItem
+  * Fixed painting QImageItem and QPixmapItem
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+- Added libepoxy-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Use Qt's method of blocking for component completion rather
+    than our own
+  * Make it possible to delay initialization of object incubated
+    from QmlObject
+  * Add guard when trying to access root object before
+    component is complete
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Optimize IconItem in QIconItem in memory and speed
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+- Split out libKF5QuickAddons library, and QML components into
+  separate subpackages
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KDeclarative: added org.kde.kio component.
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+- Drop af7c0f8194.patch, merged upstream
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+- Add af7c0f8194.patch, to improve QML translation API
+
+-------------------------------------------------------------------
+Sun May  4 01:41:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+- Added kwidgetsaddons-devel, kwindowsystem-devel, kglobalaccel-devel,
+  kcoreaddons-devel and kguiaddons-devel BuildRequires, needed for
+  building components imported from plasma-framework
+
+-------------------------------------------------------------------
+Tue Mar  4 16:35:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kdeclarative package
+

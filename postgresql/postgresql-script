@@ -1,0 +1,70 @@
+#!/bin/sh
+
+PG_SYSCONFIG=/etc/sysconfig/postgresql
+test -f $PG_SYSCONFIG && . $PG_SYSCONFIG
+
+eval DATADIR=${POSTGRES_DATADIR:-~postgres/data}
+OPTIONS=${POSTGRES_OPTIONS}
+PIDFILE=$DATADIR/postmaster.pid
+
+# 
+if test -r $DATADIR/PG_VERSION ; then
+    DATA_VERSION=$(cat $DATADIR/PG_VERSION)
+    POSTGRES=/usr/lib/postgresql${DATA_VERSION/./}/bin/postgres
+fi
+if test -x /usr/bin/postgres; then
+    ACTIVE=$(readlink -q -f /usr/bin/postgres)
+    test -z "$POSTGRES" && POSTGRES="$ACTIVE"
+fi
+if test -n "$DATA_VERSION"; then
+    if test -z "$ACTIVE" -o "$ACTIVE" != "$POSTGRES"; then
+	echo " Your database files were created by PostgreSQL version $DATA_VERSION."
+	if test -x "$POSTGRES"; then
+	    echo " Using the executables in $(dirname $POSTGRES)."
+	else
+	    echo " Could not find executables for this version."
+	    echo " Please install the PostgreSQL server package for version $DATA_VERSION."
+	fi
+    fi
+elif test -z "$ACTIVE"; then
+    echo " Cannot find an active PostgreSQL server binary. Please install one of the PostgreSQL"
+    echo " server packages or activate an already installed version using update-alternatives."
+fi
+if test ! -x "$POSTGRES"; then
+    exit 1
+fi
+BINDIR=$(dirname $POSTGRES)
+VERSION=$($POSTGRES --version|awk '{print $NF}')
+pg_ctl () {
+	$BINDIR/pg_ctl -s -D $DATADIR ${POSTGRES_TIMEOUT:+-t $POSTGRES_TIMEOUT} "$@"
+}
+
+cd ~
+case "$1" in
+    start)
+	if [ ! -f $DATADIR/PG_VERSION ]; then
+	    test -n "$POSTGRES_LANG" && export LC_ALL="$POSTGRES_LANG"
+            V=$(printf "%02d%02d" $(echo $VERSION|awk -F. '{print $1, $2}'))
+	    install -d -m 700 ${DATADIR} &&
+	    echo "Initializing PostgreSQL $VERSION at location ${DATADIR}"
+	    /usr/bin/initdb --auth=ident $DATADIR &> initlog || {
+		echo "Initialisation failed. See $PWD/initlog ."
+		exit 1
+	    }
+	fi
+	pg_ctl start -w ${OPTIONS:+-o "$OPTIONS"}
+	;;
+
+    stop)
+	pg_ctl stop -m fast
+	;;
+    
+    reload)
+	pg_ctl reload
+	;;
+    
+    *)
+        echo "Usage: $0 {start|stop|reload}"
+	exit 1
+	;;
+esac

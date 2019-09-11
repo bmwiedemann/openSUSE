@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sun Apr 14 09:57:03 UTC 2019 - Sébastien 'sogal' Poher <sogal@opensuse.org>
+
+- Updated to release 0.8:
+  * Added cli options for mpd host and port, music dir
+  * Better detection of embedded covers
+  * Compatibility with python-mpd2 1.0.0
+  * Fixed volume reporting with newer mpd versions
+  * Fix notification system initialization
+  * Notify urgengy can be configured
+  * "Playing" and "Paused" notifications now show song information (gh-#71).
+  * Path to config file can be changed via command line
+  * Add a hidden option to change the D-Bus service name, for advanced
+    multi-instance configurations.
+
+-------------------------------------------------------------------
+Sun Dec 23 10:49:50 UTC 2018 - sogal@opensuse.org
+
+- Fix interpreter.patch
+
+-------------------------------------------------------------------
+Sun Dec 23 10:28:41 UTC 2018 - sogal@opensuse.org
+
+- Update to current Github version, including the following:
+  * Catch Mutagen exceptions for malformed files
+  * Allow a custom bus name to be specified (for multi-instance)
+  * Use SafeConfigParser#read() and Python3 interpreter
+
+-------------------------------------------------------------------
+Mon Aug 20 06:27:32 UTC 2018 - luc14n0@linuxmail.org
+
+- Add missing gobject-introspection-devel BuildRequires for
+  automatic typelib requirements generation.
+- Add python3-base BuildRequires and switch python2-python-mpd2
+  Requires to python3-python-mpd2 since configure script checks for
+  Python 3, the new openSUSE default version, rather than Python 2.
+- Switch python2 to python3 in interprter.patch to reflect the
+  previous changes.
+- Drop update-desktop-files BuildRequires: this is not required nor
+  used.
+
+-------------------------------------------------------------------
+Tue May  8 19:11:18 UTC 2018 - sogal@volted.net
+
+- Fix python-mpd module version
+- Add interpreter.patch to fix env related warning
+
+-------------------------------------------------------------------
+Mon Sep 11 13:55:33 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file and fix download url
+
+-------------------------------------------------------------------
+Mon Sep 11 07:17:50 UTC 2017 - sogal@volted.net
+
+- Initial build

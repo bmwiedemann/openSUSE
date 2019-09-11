@@ -1,0 +1,11 @@
+--- java-atk-wrapper-0.33.2/configure.ac	2015-07-07 13:52:28.000000000 +0200
++++ java-atk-wrapper-0.33.2/configure.ac	2017-10-26 17:46:08.411172252 +0200
+@@ -125,7 +125,7 @@
+ 
+ 
+ if test "x$GCC" = xyes; then
+-  JAW_CFLAGS=$JAW_CFLAGS $CFLAGS
++  JAW_CFLAGS="$JAW_CFLAGS $CFLAGS"
+ else
+   AC_MSG_ERROR("You should compile with GCC")
+ fi

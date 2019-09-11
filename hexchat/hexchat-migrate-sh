@@ -1,0 +1,83 @@
+#!/bin/sh
+# This script is for migrating the logs from xchat to 
+# hexchat automatically.
+
+_DEBUG="off"
+function DEBUG()
+{
+    [ "$_DEBUG" == "on" ] && $@
+}
+
+XCHAT_DIR=~/.xchat2/
+HEXCHAT_DIR=~/.config/hexchat/
+SERVLIST_=servlist_.conf
+SERVLIST=servlist.conf
+SCROLL_PATH=scrollback/
+XCHAT_LOGS=xchatlogs/
+HEXCHAT_LOGS=logs/
+CP_PATH=/usr/bin/cp
+MV_PATH=/usr/bin/mv
+MD_PATH=/usr/bin/mkdir
+
+doCopyServlist(){
+    if [ -e $XCHAT_DIR$SERVLIST_ ]; then
+        if [ -d $HEXCHAT_DIR ]; then
+            $CP_PATH $XCHAT_DIR$SERVLIST_ $HEXCHAT_DIR$SERVLIST
+        else
+            DEBUG echo $HEXCHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo "servlist does not exist"
+    fi
+}
+
+doCopyScroll(){
+    if [ -d $XCHAT_DIR$SCROLL_PATH ]; then
+        if [ -d $HEXCHAT_DIR ]; then
+            if [ ! -e $HEXCHAT_DIR$SCROLL_PATH ]; then
+                $CP_PATH -a $XCHAT_DIR$SCROLL_PATH $HEXCHAT_DIR$SCROLL_PATH
+            else
+                DEBUG echo $HEXCHAT_DIR$SCROLL_PATH" already exists"
+            fi
+        else
+            DEBUG echo $HEXCHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo $XCHAT_DIR$SCROLL_PATH" does not exist"
+    fi
+}
+
+doCopyLogs(){
+    if [ -d $XCHAT_DIR$XCHAT_LOGS ]; then
+        if [ -d $HEXCHAT_DIR ]; then
+            if [ ! -e $HEXCHAT_DIR$HEXCHAT_LOGS ]; then
+                $CP_PATH -a $XCHAT_DIR$XCHAT_LOGS $HEXCHAT_DIR$HEXCHAT_LOGS
+                if [ -d $HEXCHAT_DIR$HEXCHAT_LOGS ]; then
+                    for file in `ls $HEXCHAT_DIR$HEXCHAT_LOGS` 
+                    do
+                        path=$file
+                        paths=(${path//-/ })
+                        $MD_PATH $HEXCHAT_DIR$HEXCHAT_LOGS${paths[0]}
+                        $MV_PATH $HEXCHAT_DIR$HEXCHAT_LOGS$file $HEXCHAT_DIR$HEXCHAT_LOGS${paths[0]}/${paths[1]}
+                    done
+                else
+                    DEBUG echo "Copy fails"
+                fi
+            else
+                DEBUG echo $HEXCHAT_DIR$HEXCHAT_LOGS" already exists"
+            fi
+        else
+            DEBUG echo $HEXCHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo $XCHAT_DIR$XCHAT_LOGS" does not exist"
+    fi
+}
+
+if [ -d $XCHAT_DIR ]; then
+    doCopyServlist
+    doCopyScroll
+    doCopyLogs
+else
+    DEBUG echo $XCHAT_DIR" does not exsit. Stop migrating..."
+fi

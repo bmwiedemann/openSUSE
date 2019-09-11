@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jul 31 05:21:04 UTC 2017 - coolo@suse.com
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-Data-Float/Changes
+
+  version 0.013; 2017-07-29
+  
+    * no longer include a Makefile.PL in the distribution
+  
+    * in documentation, use four-column indentation for all verbatim
+      material
+  
+    * in META.{yml,json}, point to public bug tracker
+
+-------------------------------------------------------------------
+Thu Dec 11 11:28:06 UTC 2014 - ncutler@suse.com
+
+- initial package 0.012
+    * created by cpanspec 1.78.08
+- checked license
+- took maintainership
+

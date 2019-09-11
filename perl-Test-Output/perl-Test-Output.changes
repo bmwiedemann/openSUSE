@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Thu Mar 30 06:47:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.031
+   see /usr/share/doc/packages/perl-Test-Output/Changes
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:37 UTC 2014 - coolo@suse.com
+
+- updated to 1.03
+     * Get rid of MYMETA
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:48 UTC 2013 - coolo@suse.com
+
+- updated to 1.02
+       * Bump to stable release
+       * Remove the ::Tie stuff. It should be fully Capture::Tiny 
+       now.
+       * David Golden re-did everything with Capture::Tiny
+       to get around the odd output paths that we coudn't
+       handle with a tie.
+
+-------------------------------------------------------------------
+Tue May 17 12:48:04 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.01
+    * Bump to a full release. This fixes the tests that failed
+       in the new 5.14 regex stringification
+
+-------------------------------------------------------------------
+Wed Dec  1 10:28:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 24 12:40:51 UTC 2010 - chris@computersalat.de
+
+- fix obviously lost changes
+  o Sun Jun 14 21:17:23 CEST 2009
+  o Sun Jun 21 22:37:55 CEST 2009
+
+-------------------------------------------------------------------
+Tue Jul  6 12:46:46 UTC 2010 - chris@computersalat.de
+
+- update spec by cpanspec 1.78
+- noarch pkg
+- split pkg version
+  o perl-Test-Output_0_12 for suse_version < 1130
+
+-------------------------------------------------------------------
+Sun Apr 11 19:26:36 UTC 2010 - chris@computersalat.de
+
+- update to 0.16
+  Multiple fixes:
+  * RT #23494: squash warning when untie-ing STDOUT
+  * RT #45740: fix Test::Tester prereq version
+  * RT #45748: Add a null BINMODE to Test::Output::Tie
+- cleanup spec
+  o fixed Header
+  o updated Url
+  o fixed perl-macros deps
+  o fixed deps
+  o updated description
+  o macro usage
+
+-------------------------------------------------------------------
+Sat Jul 25 19:44:40 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 21 22:37:55 CEST 2009 - chris@computersalat.de
+
+- update to 0.13
+  * brian d foy (bdfoy@cpan.org) is the new maintainer
+  * Updated docs for source code location, license, etc
+
+-------------------------------------------------------------------
+Sun Jun 14 21:17:23 CEST 2009 - chris@computersalat.de
+
+- initial package 0.12
+

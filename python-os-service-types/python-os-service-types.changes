@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue May  7 07:01:15 UTC 2019 - cloud-devel@suse.de
+
+- removed 0001-Use-keystoneauth-only-in-applicable-test.patch
+- update to version 1.6.0
+  - Close descriptor after reading file.
+  - switch documentation job to new PTI
+  - Change openstack-dev to openstack-discuss
+  - Update hacking version
+  - Removed older version of python added 3.5
+  - Don't quote {posargs} in tox.ini
+  - Add unittest for os_service_types.data module.
+  - add python 3.6 unit test job
+  - Update the hacking to latst
+  - Updated from OpenStack Service Type Authority
+  - import zuul job settings from project-config
+  - Use keystoneauth only in applicable test
+
+-------------------------------------------------------------------
+Thu Jan 17 10:57:32 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- add 0001-Use-keystoneauth-only-in-applicable-test.patch (bsc#1121608)
+  - avoid build cycle
+
+-------------------------------------------------------------------
+Sat Sep  1 09:09:00 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.3.0
+  - Remove -U from pip install
+  - fix tox python3 overrides
+  - Remove reference to stable/pike from releasenotes
+  - Update api-refs
+  - Add release note link in README
+  - Updated from OpenStack Service Type Authority
+  - Switch to stestr
+  - Add factory helper function which returns a singleton
+  - Add flag for returning unofficial types
+  - Fix docs link in the README
+  - Allow passing in service types with _ in them
+  - Avoid tox_install.sh for constraints support
+  - Fix service_type normalization
+  - Add missing release notes
+  - Sort json data
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb 23 13:31:55 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Feb 13 14:43:39 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.1.0)

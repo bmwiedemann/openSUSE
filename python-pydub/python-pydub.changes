@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Feb 19 19:14:45 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable tests. Changed source to the github release, which also
+  removes the need to provide a copy of the LICENSE file.
+- Add 0001-Skip-tests-that-use-unavailable-codecs.patch to skip
+  tests that use codecs not supported by the official ffmpeg package
+
+-------------------------------------------------------------------
+Mon Feb 18 10:12:59 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.23.1
+  * Fix bug in passing ffmpeg/avconv parameters for
+    pydub.AudioSegment.from_mp3(), pydub.AudioSegment.from_flv(),
+    pydub.AudioSegment.from_ogg() and pydub.AudioSegment.from_wav()
+  * Fix logic bug in pydub.effects.strip_silence()
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Oct 31 11:26:43 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Wed Oct 31 04:48:36 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.23.0
+  * Add support for playback via simpleaudio
+  * Allow users to override the type in pydub.AudioSegment().get_array_of_samples() (PR #313)
+  * Fix a bug where the wrong codec was used for 8-bit audio (PR #309 - issue #308)
+
+-------------------------------------------------------------------
+Wed Jul 11 17:18:18 UTC 2018 - alarrosa@suse.com
+
+- Update to 0.22.1
+  * Fix pydub.utils.mediainfo_json() to work with newer,
+    backwards-incompatible versions of ffprobe/avprobe
+
+- Update to 0.22.0
+  * Adds support for audio with frame rates (sample rates) of 48k and higher
+    (requires scipy) (PR #262, fixes #134, #237, #209)
+  * Adds support for PEP 519 File Path protocol (PR #252)
+  * Fixes a few places where handles to temporary files are kept open (PR #280)
+  * Add the license file to the python package to aid other packaging projects
+    (PR #279, fixes #274)
+  * Big fix for pydub.silence.detect_silence() (PR #263)
+
+-------------------------------------------------------------------
+Thu May 10 00:03:10 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.21.0
+  * NOTE: Semi-counterintuitive change: using the a stride when
+    slicing AudioSegment instances (for example, `sound[::5000]`)
+    will return chunks of 5000ms (not 1ms chunks every 5000ms)
+    (#222)
+  * Debug output from ffmpeg/avlib is no longer printed to the
+    console unless you set up logging (see README for how to set
+    up logging for your converter) (#223)
+  * All pydub exceptions are now subclasses of
+    `pydub.exceptions.PydubException`
+  * The utilities in `pydub.silence` now accept a
+    `seek_step` argument which can optionally be passed to
+    improve the performance of silence detection (#211)
+  * Fix to `pydub.silence` utilities which allow you to detect
+    perfect silence (#233)
+  * Fix a bug where threaded code screws up your terminal session
+    due to ffmpeg inheriting the stdin from the parent process.
+    (#231)
+  * Fix a bug where a crashing programs using pydub would leave
+    behind their temporary files (#206)
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:45 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.20.0
+  * See changelog at https://github.com/jiaaro/pydub/blob/v0.20.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Oct  1 18:05:47 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.16.5
+  - upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Mon Jul 14 11:35:14 UTC 2014 - toddrme2178@gmail.com
+
+- - Initial version
+

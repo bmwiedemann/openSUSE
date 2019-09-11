@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sun Oct 12 11:32:29 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Jun 29 08:16:45 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  See LICENSE.txt
+
+-------------------------------------------------------------------
+Wed Apr  4 19:09:25 UTC 2012 - coolo@suse.com
+
+- update to 1.8.5
+ * Fix unfibered usage of memcache-client in EM
+ * Remove nag message (tenderlove)
+
+-------------------------------------------------------------------
+Mon Jun 14 12:13:42 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.8.3
+ * Don't allow blank keys. (Bill Horsman)
+- additional changes from version 1.8.2
+ * Fix concurrency issues with eventmachine support.
+- additional changes from version 1.8.1
+ * Only require SystemTimer if the Ruby VM looks like MRI.
+ * Remove VERSION.yml usage as we should avoid using files outside
+   of lib at runtime. (josh)
+- additional changes from version 1.8.0
+ * Add support for EventMachine-based connections.
+ * Add support for raw values in get_multi
+ * Add memcached_top binary for gathering server statistics
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Wed Feb 24 17:04:58 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.7.8
+
+-------------------------------------------------------------------
+Fri Jan 22 16:57:32 CET 2010 - prusnak@suse.cz
+
+- created package
+

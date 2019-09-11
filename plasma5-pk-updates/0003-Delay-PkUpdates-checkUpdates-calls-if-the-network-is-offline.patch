@@ -1,0 +1,85 @@
+From 2101d37b7b93b0cbb4414db6dd3424f52fcda95b Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Mon, 18 Mar 2019 18:00:26 +0100
+Subject: [PATCH 3/3] Delay PkUpdates::checkUpdates calls if the network state
+ is offline
+
+If PkUpdates::checkUpdates is called and the network state is offline,
+delay the check for updates until the network is online again.
+
+This fixes the problem that when the user logs in, the applet is run
+and just after the PkUpdates object is created, checkUpdates is called
+(from main itself). But at that point the user might have not entered
+the wifi password so the check would fail. Now, if we detect there's
+no network, we just delay the check until the network state is online.
+---
+ src/declarative/pkupdates.cpp | 17 +++++++++++++++++
+ src/declarative/pkupdates.h   |  3 +++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/src/declarative/pkupdates.cpp b/src/declarative/pkupdates.cpp
+index 08a51ae..94b712e 100644
+--- a/src/declarative/pkupdates.cpp
++++ b/src/declarative/pkupdates.cpp
+@@ -55,6 +55,7 @@ PkUpdates::PkUpdates(QObject *parent) :
+     connect(Solid::PowerManagement::notifier(), &Solid::PowerManagement::Notifier::appShouldConserveResourcesChanged,
+             this, &PkUpdates::isOnBatteryChanged);
+ 
++    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PkUpdates::doDelayedCheckUpdates);
+     connect(this, &PkUpdates::isActiveChanged, this, &PkUpdates::messageChanged);
+     connect(this, &PkUpdates::networkStateChanged, this, &PkUpdates::messageChanged);
+ }
+@@ -170,6 +171,16 @@ bool PkUpdates::isNetworkOnline() const
+     return (PackageKit::Daemon::networkState() > PackageKit::Daemon::Network::NetworkOffline);
+ }
+ 
++void PkUpdates::doDelayedCheckUpdates()
++{
++    if (m_checkUpdatesWhenNetworkOnline && isNetworkOnline())
++    {
++        qCDebug(PLASMA_PK_UPDATES) << "CheckUpdates was delayed. Doing it now";
++        m_checkUpdatesWhenNetworkOnline = false;
++        checkUpdates();
++    }
++}
++
+ bool PkUpdates::isNetworkMobile() const
+ {
+     qCDebug(PLASMA_PK_UPDATES) << "Is net mobile:" << (PackageKit::Daemon::networkState() == PackageKit::Daemon::Network::NetworkMobile);
+@@ -201,6 +212,12 @@ QString PkUpdates::timestamp() const
+ 
+ void PkUpdates::checkUpdates(bool force)
+ {
++    if (!isNetworkOnline())
++    {
++        qCDebug(PLASMA_PK_UPDATES) << "Checking updates delayed. Network is offline";
++        m_checkUpdatesWhenNetworkOnline = true;
++        return;
++    }
+     qCDebug(PLASMA_PK_UPDATES) << "Checking updates, forced";
+ 
+     // ask the Packagekit daemon to refresh the cache
+diff --git a/src/declarative/pkupdates.h b/src/declarative/pkupdates.h
+index c72162a..d9cb063 100644
+--- a/src/declarative/pkupdates.h
++++ b/src/declarative/pkupdates.h
+@@ -202,6 +202,8 @@ public slots:
+      */
+     Q_INVOKABLE void getUpdateDetails(const QString & pkgID);
+ 
++    Q_INVOKABLE void doDelayedCheckUpdates();
++
+ private slots:
+     void getUpdates();
+     void onChanged();
+@@ -234,6 +236,7 @@ private:
+     int m_percentage = 0;
+     Activity m_activity = Idle;
+     bool m_lastCheckSuccessful = false;
++    bool m_checkUpdatesWhenNetworkOnline = false;
+ };
+ 
+ #endif // PLASMA_PK_UPDATES_H
+-- 
+2.21.0
+

@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon to remotely execute Nagios plugins
+After=network.target
+Wants=network.target
+Requires=var-run.mount
+
+[Service]
+Type=forking
+User=nrpe
+Group=nrpe
+ExecStart=/usr/sbin/nrpe -c /etc/nrpe.cfg -d
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

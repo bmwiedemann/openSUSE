@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Mon Mar  4 03:12:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.3:
+  * Spelling: following URL in, + Copyright year updated (#43)
+  * Travis: Use Houston CI (#41)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:37:36 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.2:
+  * Meson: Use GLib preset for l10n
+  * Add a fake example captive portal and a screenshot (#37)
+  * Merge branch 'origin/master' into Weblate
+  * Add an appdata file (#36)
+  * CertButton.vala: Wrap primary label (#35)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:40:49 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.1:
+  * This release includes updated translations.
+
+-------------------------------------------------------------------
+Sat Jun  9 22:44:18 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.2:
+  * use new symbolic security icons (#30)
+  * Use native portal checking (#23)
+  * Merge remote-tracking branch 'origin/master'
+
+-------------------------------------------------------------------
+Fri Jun  8 22:23:40 UTC 2018 - avvissu@yandex.by
+
+- Switch to git from bzr
+- Switch to meson
+- Buils with dependences: gconfig(glib-2.0) pkgconfig(gobject-2.0)
+- Add NetworkManager as required dependency
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jan 19 20:38:51 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.1:
+  * Change the capnet dummy URL address
+  * Launchpad automatic translations update.
+  * Add 2017 to license copyright and app years.
+  * Add GSetting to enable the assistant
+  * move the TLS popover code to the cert_button class
+  * Pass Downloads to a web browser
+  * New Window & tab requests are put into their own tabs
+  * update translation template
+  * CaptiveLogin.vala: Use the construct method
+  * CaptiveLogin.vala:
+  * Eliminate the variable view_security
+  * Only check security once to assign style classes in the 
+    popover
+  * CertButton.vala:
+  * Make security a gettable property
+  * Move captivity check to the application class
+  * Update license header
+  * return privacy mode without creating a variable
+  * remove extra comment
+
+-------------------------------------------------------------------
+Tue Sep 20 16:36:19 UTC 2016 - avvissu@yandex.by
+
+- Add Recommends: capnet-assist-lang
+
+-------------------------------------------------------------------
+Sat Sep 10 16:09:42 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2.0.1
+
+-------------------------------------------------------------------
+Thu Mar 10 18:49:06 UTC 2016 - and.november@opensuse.org
+
+- update
+
+-------------------------------------------------------------------
+Sat Sep 26 08:34:51 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1.1) for build.opensuse.org

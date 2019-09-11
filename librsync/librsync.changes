@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Mon Mar 23 22:18:33 UTC 2015 - schwab@linux-m68k.org
+
+- blake2-config.patch: add missing <config.h>
+
+-------------------------------------------------------------------
+Mon Feb 16 15:06:41 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.0.0 fixes bnc#900914 CVE-2014-8242:
+  * Various build fixes, thanks Timothy Gu.
+  * Improved rdiff man page from Debian.
+  * Fixed bug #1110812 'internal error: job made no progress'; on large
+    files.
+  * Moved hosting to https://github.com/librsync/librsync/
+  * Travis-CI.org integration test at https://travis-ci.org/librsync/librsync/
+  * Remove bundled copy of popt; it must be installed separately.
+- Refreshed patches:
+  * librsync-man-example.diff
+- Removed patches:
+  * librsync-noexecstack-nestedfunc.patch
+  * librsync-serial-tests.patch
+  * librsync-logn-sumset.patch
+  * librsync-logn-search.patch
+- Removed patches due to promoting bugs:
+  * librsync-0.9.7-largefiles.patch - currently in progress on:
+    https://github.com/librsync/librsync/pull/14
+
+-------------------------------------------------------------------
+Sat Sep 13 03:42:42 UTC 2014 - crrodriguez@opensuse.org
+
+- Library ends compiled with executable stack, something we really
+  do not want around.. it turns out a nested function causes gcc
+  to emit trampolines. fix that (librsync-noexecstack-nestedfunc.patch)
+
+- Only export the public api, all symbols prefixed with "rs_"
+  (librsync-exports.patch)
+
+-------------------------------------------------------------------
+Wed May 14 13:55:34 UTC 2014 - tchvatal@suse.com
+
+- Remove accidentaly added file.
+
+-------------------------------------------------------------------
+Tue May 13 13:21:43 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Add patch librsync-0.9.7-getopt.patch fixing debian bug#435894
+  * makes rdiff avare of -i and -z getopt options
+
+-------------------------------------------------------------------
+Thu May  2 18:04:38 UTC 2013 - crrodriguez@opensuse.org
+
+- librsync-serial-tests.patch fix build with new automake 
+
+-------------------------------------------------------------------
+Fri Mar 15 14:36:14 UTC 2013 - hpj@urpla.net
+
+- apply librsync-logn-search.patch, librsync-logn-sumset.patch
+  librsync-man-example.diff
+- refresh all patches
+- enable tests
+
+-------------------------------------------------------------------
+Mon Feb 13 10:49:21 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 22 15:50:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+- Employ shlib packaging
+
+-------------------------------------------------------------------
+Tue Nov 22 10:19:03 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep  2 10:17:37 CEST 2007 - crrodriguez@suse.de
+
+- library was unable to handle files larger than 4GB properly (librsync-0.9.7-largefiles.patch) 
+- fix build dependencies
+-------------------------------------------------------------------
+Sun Aug 26 01:02:16 CEST 2007 - crrodriguez@suse.de
+
+- spec cleanup
+- stop using bundled popt library, use system one
+- enable shared library
+- disable static library
+- remove libtool archive
+
+-------------------------------------------------------------------
+Sat Mar 24 18:42:12 CET 2007 - rguenther@suse.de
+
+- add libbz2-devel and zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 14 19:53:19 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Thu Apr 14 11:24:51 CEST 2005 - cthiel@suse.de
+
+- update to 0.9.7 
+
+-------------------------------------------------------------------
+Fri Feb  6 19:38:46 CET 2004 - garloff@suse.de
+
+- Fix strict aliasing issues.
+
+-------------------------------------------------------------------
+Sat Jan 10 20:23:32 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sun Aug 17 21:11:42 CEST 2003 - garloff@suse.de
+
+- Reenable installation of rdiff tool.
+- Update to 0.9.6:
+  * Large file support fixes.
+  * [v]snprintf or _[v]snprintf autoconf replacement function fix.
+  * Changed installed include file from rsync.h to librsync.h.
+  * Rollsum bugfix that produces much smaller deltas.
+  * Memory leaks bugfix patches.
+  * mdfour bigendian and >512M bugfix, plus optimisations patch.
+  * autoconf/automake updates and cleanups for autoconf 2.53.
+
+-------------------------------------------------------------------
+Fri Aug 16 13:12:49 CEST 2002 - ro@suse.de
+
+- removed empty post/postun scripts (#17922) 
+
+-------------------------------------------------------------------
+Tue Jan 29 22:27:55 CET 2002 - schwab@suse.de
+
+- Build with -fPIC so that it can be included in a shared library.
+- Fix unaligned accesses.
+
+-------------------------------------------------------------------
+Tue Jan 29 00:48:25 CET 2002 - garloff@suse.de
+
+- Fix building for s390x by using %{_libdir} 
+
+-------------------------------------------------------------------
+Fri Jan 18 15:39:32 MET 2002 - garloff@suse.de
+
+- Update to 0.9.5 (moved from samba.org to sourceforge apparently)
+
+-------------------------------------------------------------------
+Thu Jan 17 05:48:22 MET 2002 - garloff@suse.de
+
+- Initial creation of package (0.9.3)
+

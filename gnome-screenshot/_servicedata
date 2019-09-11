@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://git.gnome.org/browse/gnome-screenshot</param>
+              <param name="changesrevision">60e77202718010ffd2595f9e627cb801b8e569ce</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.gnome.org/GNOME/gnome-screenshot.git</param>
+              <param name="changesrevision">55476373ea9926f50864f42385aebebc6efc5de9</param></service></servicedata>

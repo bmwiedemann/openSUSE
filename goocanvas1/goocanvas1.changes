@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:31:09 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep 21 14:53:34 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:43:34 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Wed Jun  1 17:50:02 CEST 2011 - vuntz@opensuse.org
+
+- Rename package to goocanvas1 as we will move to the gtk3 version
+  of goocanvas in the goocanvas package.
+- Rename lang subpackage to libgoocanvas3-lang to avoid any
+  confusion (since goocanvas1-lang would have been installed for
+  libgoocanvas3).
+- Rename devel subpackage to libgoocanvas3-devel for the same
+  reason.
+- Change Requires for lang subpackage to a Recommends, as the
+  translations are not mandatory.
+- Do not add explicit Requires for cairo-devel, gtk2-devel,
+  pkg-config in the devel subpackage: they will automatically be
+  added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Tue May  3 00:52:49 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.0.0:
+  + Added "alpha" property to GooCanvasImage to set opacity.
+  + Allow setting clip path to NULL to reset it.
+  + Allow setting line dash to NULL to reset it.
+  + Handle RTL direction better in GooCanvasTable.
+  + Fixed GooCanvasGroup bug: use the correct scale argument in
+    paint.
+  + Fixed GooCanvasPolyline bug: update arrows when line width
+    changes.
+  + Fixed static items bug: don't clip incorrectly.
+  + Improved performance a bit when creating lots of items.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:48:46 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15:
+  + Fixed a bug that caused a hang when using GooCanvasWidget with
+    accessibility support turned on.
+  + Added "scale-to-fit" property to GooCanvasImage, to scale the
+    image to the "width" and "height" settings, instead of just
+    clipping.
+
+-------------------------------------------------------------------
+Sun Mar 15 18:41:21 CET 2009 - vuntz@novell.com
+
+- Update to version 0.14:
+  + Added support for tooltips.
+  + Added "x", "y", "width" and "height" properties to items that
+    didn't have them.
+  + Fixed bug in goo_canvas_convert_from_item_space().
+  + Added "scroll-event" signal to GooCanvasItem.
+- Remove unneeded BuildRequires: gtk-doc.
+- Remove goocanvas package since it only contains data that should
+  be in libgoocanvas3 now. Have libgoocanvas3 Obsolete/Provide it.
+- Merge -doc into -devel as it only contained gtk-doc
+- Have the devel package requires libgoocanvas3.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Dec 31 07:05:51 EST 2008 - mboman@suse.de
+
+- Update to version 0.13:
+  + New GooCanvasGrid item for drawing grids on the canvas.
+  + Support for static items that don't move as the canvas is zoomed
+    and scrolled (this is a bit experimental).
+  + Font hinting is not turned off any more - this means smaller text should
+    be more readable. Hopefully it doesn't affect text layout.
+  + Fixed a few GooCanvasTable drawing bugs.
+  + Fixed GooCanvasText drawing, when align is set.
+  + Fixed GooCanvasPolyline is_item_at() code, so the fill isn't tested.
+  + Added "animation-finished" signals to GooCanvasItem & Model.
+
+-------------------------------------------------------------------
+Fri Oct  3 11:28:10 WST 2008 - mboman@suse.de
+
+- Update to version 0.12:
+  + Fixed redraws of tables after updates.
+  + Fixed problems compiling with libtool 2.2.
+
+-------------------------------------------------------------------
+Fri Sep 12 01:10:44 CDT 2008 - maw@suse.de
+
+- Update to version 0.11:
+  + Use the tables' fill and stroke colors to paint its grid and
+    background
+  + Emit "children_changed" ATK signal when child items
+     added/removed.
+  + Fixed bug when clipping the entire canvas
+  +o Got rid of the XXX_DISABLE_DEPRECATED compilation flags.
+
+-------------------------------------------------------------------
+Wed Aug 20 02:41:31 CEST 2008 - maw@suse.de
+
+- Add goocanvas-g_signal.patch, which updates some deprecated
+  code.
+
+-------------------------------------------------------------------
+Tue Jul  1 00:10:31 CEST 2008 - maw@suse.de
+
+- Update to version 0.10:
+  + Added support for a border and grid lines to GooCanvasTable,
+    with "horz-grid-line-width", "vert-grid-line-width",
+    "x-border-spacing", and "y-border-spacing" properties
+  + Added "clear-background" property to GooCanvas, to allow
+    subclasses to paint their own background if desired
+  + Fixed crash when rendering a GooCanvasTable that hasn't been
+    updated
+  + Fixed possible infinite loop in GooCanvasTable layout
+  + Added goo_canvas_text_get_natural_extents() to get the natural
+    extents of the text
+  + Made "stroke-color-rgba" and "fill-color-rgba" properties
+    read/write
+  + Added goo_canvas_item_get_simple_transform() and
+    goo_canvas_item_model_get_simple_transform(), which do the
+    opposite of the set_simple_transform() functions
+  + Improved documentation on general architecture and creating
+    new items.
+
+-------------------------------------------------------------------
+Wed Dec  5 19:18:35 CET 2007 - maw@suse.de
+
+- Import into autobuild
+- Improve packaging so as to pass internal rpmlist checks.
+
+-------------------------------------------------------------------
+Thu Nov  1 09:13:17 CST 2007 - maw@suse.de
+
+- Initial package.
+

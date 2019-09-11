@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Terminal=false
+Icon=lshw
+Exec=@@EXEC@@
+Type=Application
+StartupNotify=false
+Name=Hardware Lister
+GenericName=Hardware Diagnostics
+X-KDE-SubstituteUID=true
+X-KDE-Username=root

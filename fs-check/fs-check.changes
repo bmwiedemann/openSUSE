@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Apr 20 16:30:42 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Use %configure macro
+
+-------------------------------------------------------------------
+Wed Jul  9 14:37:48 CEST 2008 - hvogel@suse.de
+
+- fix installation of man pages
+
+-------------------------------------------------------------------
+Fri Jul  4 12:26:34 CEST 2008 - hvogel@suse.de
+
+- update to version 0.9
+  * fix parsing of DEFAULT OWNER
+- disable checks, wrong logfiles included  
+
+-------------------------------------------------------------------
+Wed Apr  2 15:18:31 CEST 2008 - hvogel@suse.de
+
+- update to version 0.8
+  * Correct pidfile option parsing
+- some rpmlint warnings fixed
+
+-------------------------------------------------------------------
+Mon Jan  8 13:00:24 CET 2007 - mskibbe@suse.de
+
+- fs-check expects fs-check.cfg in /var/adm rather then etc
+  ( #231222 ) 
+
+-------------------------------------------------------------------
+Wed Aug 30 11:01:10 CEST 2006 - mskibbe@suse.de
+
+- update to version 0.7 which
+  o contains bugfixes 
+  o fix make distcheck
+  o update copyright
+
+-------------------------------------------------------------------
+Sat Feb 25 17:23:07 CET 2006 - kukuk@suse.de
+
+- Workaround configure checks for autobuild
+- Don't start in "norun" mode per default
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep  7 15:41:37 CEST 2005 - kukuk@suse.de
+
+- Update to version 0.6
+
+-------------------------------------------------------------------
+Thu Jul 21 14:51:08 CEST 2005 - kukuk@suse.de
+
+- Update to version 0.5
+
+-------------------------------------------------------------------
+Tue Nov  2 12:10:27 CET 2004 - kukuk@suse.de
+
+- Update to version 0.4
+
+-------------------------------------------------------------------
+Mon Jun 28 18:52:00 CEST 2004 - kukuk@suse.de
+
+- Initial version
+

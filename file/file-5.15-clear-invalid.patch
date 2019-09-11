@@ -1,0 +1,23 @@
+From: Andreas Stieger <andreas.stieger@gmx.de>
+Date: Sun, 29 Sep 2013 01:47:57 +0100
+Subject: [PATCH] remove clear instruction
+Upstream: no
+References: http://mx.gw.com/pipermail/file/2013/001227.html http://mx.gw.com/pipermail/file/2013/001225.html
+
+fixed build warning:
+[  205s] /usr/share/misc/magic, 5352: Warning: type `clear		x' invalid
+
+---
+ file-5.28/magic/Magdir/elf |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- file-5.28/magic/Magdir/elf
++++ file-5.28/magic/Magdir/elf	2016-08-16 11:50:06.748513191 +0000
+@@ -63,7 +63,6 @@
+ #>>>(0x38+0xcc) string	>\0		of '%s'
+ #>>>(0x38+0x10) lelong	>0		(signal %d),
+ >16	leshort		&0xff00		processor-specific,
+->18	clear		x
+ >18	leshort		0		no machine,
+ >18	leshort		1		AT&T WE32100,
+ >18	leshort		2		SPARC,

@@ -1,0 +1,53 @@
+## Path:	Hardware/S.M.A.R.T.
+## Description:	Hard disc health monitoring
+## Command:     /usr/lib/smartmontools/generate_smartd_opts
+
+## Type:	integer(10:)
+## Default:	1800
+#
+# Interval between disk checks in seconds
+#
+SMARTD_CHECK_INTERVAL="1800"
+
+## Type:	list(local0,local1,local2,local3,local4,local5,local6,local7,daemon)
+## Default:	daemon
+#
+# Syslog facility used to log messages from smartd
+#
+SMARTD_LOG_FACILITY="daemon"
+
+## Type:	string
+## Default:	
+#
+# Read and replace drive database from specified file instead of
+# system files. Prepend "+" to read and add drive database from
+# specified file.
+#
+SMARTD_DRIVEDB=""
+
+## Type:        yesno
+## Default:     yes
+#
+# Preserve SMART attributes in files and read them when smartd starts.
+# This feature is now ATA only, so you may want to disable it to supress
+# warnings. See smartd(8) option -s for details.
+#
+SMARTD_SAVESTATES="yes"
+
+## Type:        yesno
+## Default:     yes
+#
+# Enable or disable SMART attribute logging.
+# If you don't consider this log useful for you, you can disable it.
+# This feature is now ATA only, so you may want to disable it to supress
+# warnings. See smartd(8) option -s for details.
+#
+SMARTD_ATTRLOG="yes"
+
+## Type:        string
+## Default:     
+#
+# Arbitrary options passed to the smart daemon in addition to above. See
+# smartd(8) for the full list of options.
+#
+SMARTD_EXTRA_OPTS=""

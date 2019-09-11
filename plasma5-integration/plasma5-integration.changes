@@ -1,0 +1,827 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:19 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- Changes since 5.16.2:
+  * Fix selectedNameFilter() multiple matches (kde#407819)
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:15 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- No code changes since 5.15.90
+
+-------------------------------------------------------------------
+Thu May 16 16:56:39 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * Handle apps which set the desktopFileName property with filename suffix
+  * Add missing file
+  * [KDEPlatformSystemTrayIcon] Use generated DBus XML
+  * Remove deprecated method
+  * Bump to Qt5.12 - Drop kwin's custom ServerSideDecorationManager interface
+  * autotests: remove KDE_FORK_SLAVES, to see if CI works better.
+
+-------------------------------------------------------------------
+Tue May  7 11:04:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- No code changes since 5.15.4
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:23 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:47 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:26:29 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- Changes since 5.15.0:
+  * autotests: remove KDE_FORK_SLAVES, to see if CI works better.
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:52 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- No code changes since 5.14.90
+
+-------------------------------------------------------------------
+Thu Jan 17 18:48:23 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * bump KF5 dependency to required 5.54 as agreed at start of Plasma 5.15 cycle
+  * fix logic of lnf loading
+  * Fix Qt version check in deco support
+  * Disable KDE ServerDecoration on Qt > 5.12
+  * Install Platform theme plugin into bin/platformthemes for unit tests
+  * Add support for settings portal
+  * Remove unused check
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- No code changes since 5.14.4
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:47 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- No code changes since 5.14.3
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:07 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:15 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Simplify cmake code: link to Qt5::GuiPrivate.
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:29 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Revert "Search in default path before calling find_package"
+  * Revert "Using Qt5Core rather than Qt5Widget for the version check"
+  * Revert "Search in default path before calling pkg-config"
+  * Search in default path before calling pkg-config
+  * Using Qt5Core rather than Qt5Widget for the version check
+  * Search in default path before calling find_package
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Don't depend on the exact version of Breeze
+  * Fix QFileDialog not remembering the last visited directory.
+  * KDE platform plugin: don't force default stylename on user-specified fonts
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:42 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Fix QFileDialog not remembering the last visited directory.
+  * File Dialog: fix testSelectUrl() again, i.e. selectUrl() should set the directory too
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:16 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * [QDBusMenuBar] Guard m_window with a QPointer (kde#376340,kde#379719)
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:08 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:45:17 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:52 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * Don't manipulate foreign windows
+  * KDEPlatformFileDialog: Fix initial directory selection for remote files (kde#374913)
+
+-------------------------------------------------------------------
+Sat May 19 14:16:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Save the dialog view settings when closing the dialog without hitting the cancel button
+  * KDEPlatformFileDialog: Fix initial directory selection for remote files (kde#374913)
+  * Remove not necessary QtCore and co
+  * Fix typo in comment
+  * Remove duplicated include
+  * Use explicit
+  * Use nullptr
+  * Use override
+  * Remove unneeded moc includes
+  * Remove unused cmake macro includes (and include oithers in usual order)
+  * Remove duplicated feature_summary() call
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Require KDE Frameworks 5.42 and Qt 5.9
+  * Use add_test signature where target command gets resolved to binary path
+  * Bump min cmake version to 3.0
+  * Use KFileWidget::setSupportedSchemes when available
+
+-------------------------------------------------------------------
+Wed May  2 09:24:20 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * KDEPlatformFileDialog: Fix initial directory selection for remote files (kde#374913)
+- Remove patches, now upstream:
+  * Fix-initial-directory-selection-for-remote-files.patch
+- Use %license
+
+-------------------------------------------------------------------
+Wed Apr 18 08:11:33 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-initial-directory-selection-for-remote-files.patch to
+  show the proper (remote) directory also for remote files when
+  opening KDE's file dialog (boo#1085364, kde#374913)
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:51 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:29 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * [KFileTreeView] Manually expand tree when model tells us to (kde#389305)
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:06 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Display exclusive actions correctly in systray menus
+  * Support submenus in context menu for systray icon
+  * Use explicit palette interface
+  * Remove obsolete reviewboardrc file
+  * Remove now unused set window property
+  * Update AppMenu for an app having multiple windows
+  * Add manual test for win deco palettes
+  * Require Qt 5.9
+  * Port plasma-integration to explicit wayland AppMenu protocol
+  * Check return value from QTest::qWaitForWindowExposed
+  * Extend the testing capabilities of the qfiledialogtest
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:46:09 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:43 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Show shortcuts in menus
+
+-------------------------------------------------------------------
+Tue Oct 24 18:13:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:19:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * link test against QuickControls2 to fix compile
+  * Use QQuickStyle to set the QQC2 style (kde#384481)
+  * Set QtQuickControls theme in QPT (kde#384466,kde#384481)
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:06 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Add ~/.local/share/icons to icons search paths
+  * Group find_package(KF5*) calls together
+  * Fix faulty merge
+  * Allow to change toolbar font separately again (kde#358254)
+  * [KHintsSettings] Update AA_DontShowIconsInMenus at runtime
+  * Also specify a default StyleName for fonts (kde#383191)
+  * Middle-click on QSystemTrayIcon сauses context menu (kde#382855)
+  * KDE QFileDialog helper: support name filters without parenthesis.
+  * Introduce KDE_NO_GLOBAL_MENU env variable to disable global menu
+  * Introduce KDE_NO_GLOBAL_MENU env variable to disable global menu
+  * check window visibility at expose event
+  * Allow to disable blinking cursor completely
+  * Fix deprecation warnings. setSelection -> setSelectedUrl ui -> uiDelegate
+  * Replace Q_DECL_OVERRIDE with override.
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul  4 21:57:28 UTC 2017 - wbauer@tmo.at
+
+- Move the Recommends: %{name}-plugin-lang to the
+  plasma5-integration-plugin sub package, otherwise the
+  translations won't get installed as there is no main package
+  (boo#1027925)
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:45 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * KDE QFileDialog helper: support name filters without parenthesis.
+  * Introduce KDE_NO_GLOBAL_MENU env variable to disable global menu
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:56 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Don't ignore initially selected mime type filter
+  * Make sure we always set a default mime filter in save mode
+
+-------------------------------------------------------------------
+Fri May 26 14:10:32 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * Don't create a shellSurface in every expose, only after hiding
+
+-------------------------------------------------------------------
+Thu May 11 20:26:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * Move code on wayland surface being created.
+  * Implement QPlatformTheme::fileIconPixmap() to make QFileIconProvider work.
+  * Implement support for selected mime type filters
+  * Fix cmake warning
+  * Test is fixed, remove all the qDebugs
+  * Use our own temporary dir instead of QDir::tempPath()
+  * Rework how we expect the checkbox in the test
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:47 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * [QDBusMenuBar] Connect to popupRequested signal
+
+-------------------------------------------------------------------
+Tue Feb 28 19:55:21 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * Do not treat filename in selection as URL
+  * [KHintsSettings] Emit QGuiApplication::paletteChanged when run as QApplication
+- Remove patches, now upstream:
+  * 0001-Do-not-treat-filename-in-selection-as-URL.patch
+
+-------------------------------------------------------------------
+Sun Feb 12 11:01:07 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix prefiling of filenames with colons (kde#376365):
+  * 0001-Do-not-treat-filename-in-selection-as-URL.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 18:54:39 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:58 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * Add workaround for QMenuBar::setVisible bug in 5.7.0
+  * Include qdbusmenubar when compiling with Qt >5.7.0 in autotests
+  * Fix warning when no initial directory is set.
+  * Enable QDBusMenuBar when compiling with Qt 5.7.0
+  * Backport test fix from master
+  * Also disable dbusmenubar with Qt 5.7 in the unit test section
+  * Remove my massive test debug from the stable branch
+  * add extra include
+  * Add explicit includes
+  * Fix QtVersion check
+  * Only use Qt's DBusMenuBar in Qt >= 5.7
+  * Remove leftover debug
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * Use DBusMenu if available.
+  * Enable blurBehind effect if the window hints for it.
+  * Is it taking too much in other tests and not in the testSaveOverwrite one?.
+  * Add datetime to debug to try to figure out what's getting stuck.
+  * Increase the timer from 500 to 5000 just in case CI got much slower.
+  * Add lots of debug to testSaveOverwrite.
+  * Fix regression in which the Save dialog appears as an Open dialog.
+  * Fix compilation with Qt 5.8.
+  * Install desktop file name on X11 windows.
+  * Pass color scheme hint to Wayland compositor using window property.
+  * Set color scheme X property in the X11Integration.
+- Update BuildRequires:
+  * Needs Qt5PlatformSupport's private headers now
+- Remove patches, now upstream:
+  * 0001-Fix-regression-in-which-the-Save-dialog-appears-as-a.patch
+
+-------------------------------------------------------------------
+Thu Jan  5 12:48:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix regression in 5.8.5 (Save dialog appears as Open dialog)
+  * 0001-Fix-regression-in-which-the-Save-dialog-appears-as-a.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Thu Nov  3 17:41:26 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:50 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Wed Sep 21 09:15:18 UTC 2016 - fabian@ritter-vogt.de
+
+- Use %{_plasma5_version} again, define it if needed
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:36:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:46:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Wed Mar 30 16:34:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:34:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Activate plasma5-integration package
+

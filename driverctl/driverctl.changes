@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Mar  9 10:39:29 CET 2018 - ndas@suse.de
+
+- use pkgconfig as it allows OBS to pick packages optimized for building.
+
+-------------------------------------------------------------------
+Wed Mar  7 16:26:24 CET 2018 - ndas@suse.de
+
+- Initial package (version:0.95)
+

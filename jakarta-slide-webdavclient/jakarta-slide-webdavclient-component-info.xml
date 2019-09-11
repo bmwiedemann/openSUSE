@@ -1,0 +1,18 @@
+<project name="apache-slide-component-info">
+   <!-- ============================================================ -->
+   <!-- Apache Slide                                                 -->
+   <!-- ============================================================ -->
+   <component id="apache-slide"
+              licenseType="apache-2.0"
+              version="@VERSION@"
+              projectHome="http://jakarta.apache.org/slide/index.html"
+              description="WebDAV Support Library"
+              scm=":ext:cvs.devel.redhat.com:/cvs/dist/jakarta-slide-webdavclient"
+              tag="@TAG@">
+      <!-- Built using JDK 1.4 -->
+      <artifact id="jakarta-slide-webdavlib.jar"/>
+      <export>
+         <include input="jakarta-slide-webdavlib.jar"/>
+      </export>
+   </component>
+</project>

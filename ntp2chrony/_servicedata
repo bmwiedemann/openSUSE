@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/mlichvar/ntp2chrony.git</param>
+    <param name="changesrevision">f6161510f4d2aa6a7ed376df3861aff58692f11b</param>
+ </service>
+</servicedata>

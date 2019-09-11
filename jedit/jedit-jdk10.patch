@@ -1,0 +1,39 @@
+diff -urEbwB jEdit/build.xml jEdit.new/build.xml
+--- jEdit/build.xml	2017-12-22 16:28:40.455841825 +0100
++++ jEdit.new/build.xml	2017-12-22 16:34:02.138815906 +0100
+@@ -744,7 +744,6 @@
+ 		<dependset>
+ 			<srcfileset dir="${basedir}">
+ 				<include name="build.xml"/>
+-				<include name="doclet/**/*.java"/>
+ 				<include name="org/**/*.java"/>
+ 				<include name="org/**/package.html"/>
+ 			</srcfileset>
+@@ -759,27 +758,11 @@
+ 			</contrib:then>
+ 			<contrib:else>
+ 				<mkdir dir="${classes.dir}/javadoc"/>
+-				<javac srcdir="${basedir}"
+-				       destdir="${classes.dir}/javadoc"
+-				       includes="doclet/**"
+-				       debug="true"
+-				       debuglevel="${config.build.debuglevel}"
+-				       nowarn="${config.build.nowarn}"
+-				       deprecation="${config.build.deprecation}"
+-				       source="${target.java.version}"
+-				       target="${target.java.version}"
+-				       compiler="modern"
+-				       encoding="UTF-8"
+-				       includeAntRuntime="true">
+-					<compilerarg line="${config.build.compilerarg}"/>
+-				</javac>
+ 				<javadoc
+ 					 locale="en"
+ 					 sourcepath="${basedir}"
+ 					 destdir="${classes.dir}/javadoc/api"
+ 					 packagenames="org.*"
+-					 doclet="doclet.GenerateTocXML"
+-					 docletpath="${classes.dir}/javadoc"
+ 					 version="true"
+ 					 use="true"
+ 					 author="true"

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Mar 16 11:36:19 UTC 2015 - dimstar@opensuse.org
+
+- Fix popd usage: since bash 4.3, it only takes a numeric argument.
+
+-------------------------------------------------------------------
+Mon Mar 10 14:44:34 UTC 2014 - jmcdonough@suse.com
+
+- Remove cmake backward compatibility flag and update FSF
+  address in license
+  + Added 0001-Remove-backward-compatibility-option-for-newer-cmake.patch
+  + Added 0002-Update-FSF-address.patch
+
+-------------------------------------------------------------------
+Mon Feb  1 12:15:41 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jun 25 12:23:49 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon Jun 15 11:14:32 CEST 2009 - anschneider@exsuse.de
+
+- update to version 0.42.0
+  + Added support to sync with the Windows Home Directory
+
+-------------------------------------------------------------------
+Tue Oct 28 12:07:10 CET 2008 - anschneider@suse.de
+
+- update to version 0.42.0 beta2
+  + Improved debugging output
+  + Fixed some PAM problems introduce by buggy gdm, su, openssh
+  + Fixed kerberos support
+  + Code cleanups
+
+-------------------------------------------------------------------
+Wed Sep 10 11:36:33 CEST 2008 - anschneider@suse.de
+
+- update to version 0.42.0 beta1
+  + Fixed return codes of the forked child process
+  + Code cleanups
+
+-------------------------------------------------------------------
+Mon Aug 18 14:54:59 CEST 2008 - anschneider@suse.de
+
+- update to version 0.42.0 alpha 2
+  + improved manpage
+  + fixed some build warnings
+  + fixed return values
+
+-------------------------------------------------------------------
+Mon Jul 14 11:33:18 CEST 2008 - anschneider@suse.de
+
+- Set the right license in the spec file
+
+-------------------------------------------------------------------
+Mon Jun 23 17:34:43 CEST 2008 - rlihm@suse.de
+
+- Initial package (version 0.42.0 alpha1)
+

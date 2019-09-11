@@ -1,0 +1,5 @@
+--- conf/pam.suse	2003/02/07 11:09:32	1.1
++++ conf/pam.suse	2003/02/07 11:10:03
+@@ -0,0 +1,2 @@
++auth	include	common-auth
++account	include	common-account

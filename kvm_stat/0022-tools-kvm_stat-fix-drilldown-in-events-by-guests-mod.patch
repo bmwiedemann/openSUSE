@@ -1,0 +1,37 @@
+From 51eebdf61a40469611b250143ba8a58a3cb86252 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:20 +0100
+Subject: [PATCH 22/43] tools/kvm_stat: fix drilldown in events-by-guests mode
+
+When displaying debugfs events listed by guests, an attempt to switch to
+reporting of stats for individual child trace events results in garbled
+output. Reason is that when toggling drilldown, the update of the stats
+doesn't honor when events are displayed by guests, as indicated by
+Tui._display_guests.
+To reproduce, run 'kvm_stat -d' and press 'b' followed by 'x'.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit faa06650418bf28d07426fcfdc5213782fb131f6)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 9241f949af63..f0beda705072 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1363,7 +1363,7 @@ class Tui(object):
+                 if char == 'x':
+                     self.update_drilldown()
+                     # prevents display of current values on next refresh
+-                    self.stats.get()
++                    self.stats.get(self._display_guests)
+             except KeyboardInterrupt:
+                 break
+             except curses.error:
+-- 
+2.12.3
+

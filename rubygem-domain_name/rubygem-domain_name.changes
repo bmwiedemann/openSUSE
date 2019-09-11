@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:04:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.5.20190701
+ see installed CHANGELOG.md
+
+  ## [v0.5.20190701](https://github.com/knu/ruby-domain_name/tree/v0.5.20190701) (2019-07-05)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20180417...v0.5.20190701)
+  
+  - Update the eTLD database to 2019-07-01 18:45:50 UTC
+  
+  ## [v0.5.20180417](https://github.com/knu/ruby-domain_name/tree/v0.5.20180417) (2018-04-17)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20170404...v0.5.20180417)
+  
+  - Update the eTLD database to 2018-04-17T23:50:25Z
+
+-------------------------------------------------------------------
+Wed Apr 18 07:04:18 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.5.20180417
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Apr  6 04:31:10 UTC 2017 - coolo@suse.com
+
+- updated to version 0.5.20170404
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb 23 05:34:14 UTC 2017 - coolo@suse.com
+
+- updated to version 0.5.20170223
+ see installed CHANGELOG.md
+
+  ## [v0.5.20161129](https://github.com/knu/ruby-domain_name/tree/v0.5.20170223) (2017-02-23)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20161129...v0.5.20170223)
+  
+  - Update the eTLD database to 2017-02-23T00:52:11Z
+
+-------------------------------------------------------------------
+Wed Nov 30 05:32:16 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20161129
+ see installed CHANGELOG.md
+
+  ## [v0.5.20161129](https://github.com/knu/ruby-domain_name/tree/v0.5.20161129) (2016-11-29)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20160826...v0.5.20161129)
+  
+  - Update the eTLD database to 2016-11-29T01:22:03Z
+  
+  ## [v0.5.20161021](https://github.com/knu/ruby-domain_name/tree/v0.5.20161021) (2016-10-27)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20160826...v0.5.20161021)
+  
+  - Update the eTLD database to 2016-10-21T20:52:10Z
+
+-------------------------------------------------------------------
+Fri Oct 28 04:32:37 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20161021
+ see installed CHANGELOG.md
+
+  ## [v0.5.20160826](https://github.com/knu/ruby-domain_name/tree/v0.5.20160826) (2016-09-01)
+  [Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.5.20160615...v0.5.20160826)
+  
+  - Update the license for the eTLD database
+  - Update the eTLD database to 2016-08-26T16:52:03Z
+
+-------------------------------------------------------------------
+Fri Sep  2 04:33:36 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160826
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jun 17 04:31:01 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160615
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Mar 18 05:30:24 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160310
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Mar 10 05:34:54 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160309
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Feb 24 05:32:21 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160216
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Jan 30 05:30:40 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.20160128
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Oct  7 04:29:26 UTC 2015 - coolo@suse.com
+
+- updated to version 0.5.25
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Sep 18 14:00:10 UTC 2015 - fcastelli@suse.com
+
+- Fix license, required to build on SLE12
+
+-------------------------------------------------------------------
+Thu Apr 16 04:29:03 UTC 2015 - coolo@suse.com
+
+- updated to version 0.5.24
+
+-------------------------------------------------------------------
+Tue Feb 10 17:38:56 UTC 2015 - coolo@suse.com
+
+- updated to version 0.5.23
+
+-------------------------------------------------------------------
+Mon Oct 13 12:03:36 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun Apr  6 05:38:50 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.18
+
+-------------------------------------------------------------------
+Sun Mar 23 06:56:31 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.17
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:44 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.16
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:23 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.15
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:33 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.14
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:53 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.13
+
+-------------------------------------------------------------------
+Wed Jul 31 05:45:55 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.12
+
+-------------------------------------------------------------------
+Tue Jun  4 16:44:49 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.11
+
+-------------------------------------------------------------------
+Tue Mar 19 09:59:18 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.9
+
+-------------------------------------------------------------------
+Thu Jan 24 06:46:11 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.7
+
+-------------------------------------------------------------------
+Fri Dec  7 19:25:59 UTC 2012 - coolo@suse.com
+
+- updated to version 0.5.6
+
+-------------------------------------------------------------------
+Sun Sep 23 15:18:55 UTC 2012 - coolo@suse.com
+
+- updated to version 0.5.4
+
+-------------------------------------------------------------------
+Fri Jul 27 13:19:14 UTC 2012 - coolo@suse.com
+
+- initial package
+

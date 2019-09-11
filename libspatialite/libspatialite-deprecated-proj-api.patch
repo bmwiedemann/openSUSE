@@ -1,0 +1,67 @@
+diff -uNr libspatialite-4.3.0a/configure libspatialite-4.3.0a-mod/configure
+--- libspatialite-4.3.0a/configure	2015-09-07 16:56:45.000000000 +0300
++++ libspatialite-4.3.0a-mod/configure	2019-03-17 15:38:31.253895307 +0200
+@@ -17455,6 +17455,8 @@
+ fi
+ 
+ if test x"$enable_proj" != "xno"; then
++  $as_echo "#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H 1" >>confdefs.h
++
+   for ac_header in proj_api.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "proj_api.h" "ac_cv_header_proj_api_h" "$ac_includes_default"
+diff -uNr libspatialite-4.3.0a/configure.ac libspatialite-4.3.0a-mod/configure.ac
+--- libspatialite-4.3.0a/configure.ac	2015-09-07 16:56:35.000000000 +0300
++++ libspatialite-4.3.0a-mod/configure.ac	2019-03-17 15:35:41.055149773 +0200
+@@ -181,6 +181,7 @@
+   [--enable-proj], [enables PROJ.4 inclusion [default=yes]])],
+   [], [enable_proj=yes])
+ if test x"$enable_proj" != "xno"; then
++  AC_DEFINE(ACCEPT_USE_OF_DEPRECATED_PROJ_API_H)
+   AC_CHECK_HEADERS(proj_api.h,, [AC_MSG_ERROR([cannot find proj_api.h, bailing out])])
+   AC_SEARCH_LIBS(pj_init_plus,proj,,AC_MSG_ERROR(['libproj' is required but it doesn't seem to be installed on this system.]),-lm)
+   AC_SEARCH_LIBS(pj_init_ctx,proj,,AC_MSG_ERROR(['libproj' is required but the version on this system does not support the required features (Version 4.8.0 or later is needed).]),-lm)
+diff -uNr libspatialite-4.3.0a/src/connection_cache/alloc_cache.c libspatialite-4.3.0a-mod/src/connection_cache/alloc_cache.c
+--- libspatialite-4.3.0a/src/connection_cache/alloc_cache.c	2015-07-01 09:59:16.000000000 +0300
++++ libspatialite-4.3.0a-mod/src/connection_cache/alloc_cache.c	2019-03-17 15:15:44.811966765 +0200
+@@ -76,6 +76,7 @@
+ #endif
+ 
+ #ifndef OMIT_PROJ		/* including PROJ.4 */
++#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+ #include <proj_api.h>
+ #endif
+ 
+diff -uNr libspatialite-4.3.0a/src/gaiageo/gg_transform.c libspatialite-4.3.0a-mod/src/gaiageo/gg_transform.c
+--- libspatialite-4.3.0a/src/gaiageo/gg_transform.c	2015-07-01 09:59:16.000000000 +0300
++++ libspatialite-4.3.0a-mod/src/gaiageo/gg_transform.c	2019-03-17 15:15:58.871863134 +0200
+@@ -55,6 +55,7 @@
+ #endif
+ 
+ #ifndef OMIT_PROJ		/* including PROJ.4 */
++#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+ #include <proj_api.h>
+ #endif
+ 
+diff -uNr libspatialite-4.3.0a/src/spatialite/spatialite.c libspatialite-4.3.0a-mod/src/spatialite/spatialite.c
+--- libspatialite-4.3.0a/src/spatialite/spatialite.c	2015-07-01 09:59:16.000000000 +0300
++++ libspatialite-4.3.0a-mod/src/spatialite/spatialite.c	2019-03-17 15:16:46.923508965 +0200
+@@ -113,6 +113,7 @@
+ #endif
+ 
+ #ifndef OMIT_PROJ		/* including PROJ.4 */
++#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+ #include <proj_api.h>
+ #endif
+ 
+diff -uNr libspatialite-4.3.0a/src/spatialite/statistics.c libspatialite-4.3.0a-mod/src/spatialite/statistics.c
+--- libspatialite-4.3.0a/src/spatialite/statistics.c	2015-07-01 09:59:16.000000000 +0300
++++ libspatialite-4.3.0a-mod/src/spatialite/statistics.c	2019-03-17 15:16:13.703753815 +0200
+@@ -79,6 +79,7 @@
+ #endif
+ 
+ #ifndef OMIT_PROJ		/* including PROJ.4 */
++#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+ #include <proj_api.h>
+ #endif
+ 

@@ -1,0 +1,10 @@
+diff -urEbwB scdoc-1.9.4/Makefile scdoc-1.9.4.new/Makefile
+--- scdoc-1.9.4/Makefile	2019-03-04 16:43:31.000000000 +0100
++++ scdoc-1.9.4.new/Makefile	2019-03-05 08:18:13.614838942 +0100
+@@ -1,6 +1,5 @@
+ VERSION=1.9.6
+ CFLAGS+=-g -DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
+-LDFLAGS+=-static
+ INCLUDE+=-Iinclude
+ PREFIX?=/usr/local
+ _INSTDIR=$(DESTDIR)$(PREFIX)

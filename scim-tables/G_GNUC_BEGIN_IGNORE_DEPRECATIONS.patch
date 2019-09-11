@@ -1,0 +1,24 @@
+Index: scim-tables-scim-tables-0.5.14.1/src/scim_table_imengine_setup.cpp
+===================================================================
+--- scim-tables-scim-tables-0.5.14.1.orig/src/scim_table_imengine_setup.cpp
++++ scim-tables-scim-tables-0.5.14.1/src/scim_table_imengine_setup.cpp
+@@ -76,6 +76,19 @@
+     #define SCIM_TABLES_USE_GTK_TREE_VIEW_SET_RULES_HINT
+ #endif
+ 
++#if ! GLIB_CHECK_VERSION(2, 32, 0)
++#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6)
++#define G_GNUC_BEGIN_IGNORE_DEPRECATIONS                \
++  _Pragma ("GCC diagnostic push")                       \
++  _Pragma ("GCC diagnostic ignored \"-Wdeprecated-declarations\"")
++#define G_GNUC_END_IGNORE_DEPRECATIONS                  \
++  _Pragma ("GCC diagnostic pop")
++#else
++#define G_GNUC_BEGIN_IGNORE_DEPRECATIONS
++#define G_GNUC_END_IGNORE_DEPRECATIONS
++#endif
++#endif
++
+ using namespace scim;
+ 
+ #define scim_module_init table_imengine_setup_LTX_scim_module_init

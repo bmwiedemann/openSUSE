@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sat Dec  2 06:14:10 UTC 2017 - i@marguerite.su
+
+- update version 0.3.8
+  * update translations
+
+-------------------------------------------------------------------
+Sat May 30 07:33:12 UTC 2015 - i@marguerite.su
+
+- update version 0.3.7
+  * just add an gpl3 license
+
+-------------------------------------------------------------------
+Mon Jun  9 05:18:29 UTC 2014 - i@marguerite.su
+
+- update version 0.3.6
+  * Adjust some default option
+
+-------------------------------------------------------------------
+Tue Feb 25 09:04:47 UTC 2014 - fcrozat@suse.com
+
+- Update license tag and add COPYING, based on legal team
+  feedback.
+
+-------------------------------------------------------------------
+Thu Sep 26 05:18:25 UTC 2013 - i@marguerite.su
+
+- update version 0.3.5
+  * fix some issues related to the tradition of specific im.
+
+-------------------------------------------------------------------
+Mon Jul  1 12:39:07 UTC 2013 - i@marguerite.su
+
+- update version 0.3.4
+  * Add new T9 Table
+  * Translation Update 
+
+-------------------------------------------------------------------
+Sat Sep 15 22:28:40 UTC 2012 - i@marguerite.su
+
+- update version 0.3.3
+  * Fix icon path and default behavior of certain tables.
+
+-------------------------------------------------------------------
+Sat Jul 21 22:06:55 UTC 2012 - i@marguerite.su
+
+- update version 0.3.2
+  * add a new zhengma table for large charest
+  * fix boshiamy and easy-big
+
+-------------------------------------------------------------------
+Mon Jun 18 15:00:19 UTC 2012 - i@marguerite.su
+
+- split packages by locales and engines.
+
+-------------------------------------------------------------------
+Mon Jun  4 14:53:11 UTC 2012 - i@marguerite.su
+
+- update version 0.3.1
+  * adjust some quick-classic hotkey
+  * fix some error in scj6
+  * add wubi-large for large charset
+- fix sles builds.
+
+-------------------------------------------------------------------
+Mon May 28 23:21:38 UTC 2012 - i@marguerite.su
+
+- bring it into DVD.
+
+-------------------------------------------------------------------
+Sun May  6 23:17:36 UTC 2012 - i@marguerite.su
+
+- update to 0.3.0
+  * add more table from ibus-table-chinese.
+
+-------------------------------------------------------------------
+Sat Mar 24 23:33:59 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 0.2.1
+
+-------------------------------------------------------------------
+Mon Mar 12 16:11:14 UTC 2012 - i@marguerite.su
+
+- emergency upstream fix for bug [bnc#751808].
+- add fix-for-upstream-no-detailed-license.patch.
+  * will be droped with next major release.
+
+-------------------------------------------------------------------
+Fri Mar 09 13:38:17 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 0.2.0
+  * update Traditional Chinese translation
+  * Add Quick 3,5 and classic
+    * Quick is a derivative of Cangjie.
+  
+-------------------------------------------------------------------
+Wed Feb 29 20:54:56 UTC 2012 - i@marguerite.su
+
+- set _service disabled. update source from git.
+
+-------------------------------------------------------------------
+Mon Jan 30 03:11:47 UTC 2012 - i@marguerite.su
+
+- initial package 0.1.0 from git.
+  * contains extra table data of Zhengma, Cangjie 3/5/big-endian, and Boshiamy for Fcitx 4.2+ series.
+

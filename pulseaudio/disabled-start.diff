@@ -1,0 +1,17 @@
+Index: src/daemon/start-pulseaudio-x11.in
+===================================================================
+--- src/daemon/start-pulseaudio-x11.in.orig
++++ src/daemon/start-pulseaudio-x11.in
+@@ -19,6 +19,12 @@
+ 
+ set -e
+ 
++. /etc/sysconfig/sound
++
++if [ x"$PULSEAUDIO_ENABLE" = x"no" ] || [ x"$PULSEAUDIO_SYSTEM" = x"yes" ] ; then
++    exit 1
++fi
++
+ if [ x"$DISPLAY" != x ] ; then
+
+     @PACTL_BINARY@ load-module module-x11-publish "display=$DISPLAY" > /dev/null

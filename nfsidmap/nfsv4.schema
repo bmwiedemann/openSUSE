@@ -1,0 +1,34 @@
+attributetype ( 1.3.6.1.4.1.250.1.61
+	NAME ( 'NFSv4Name')
+	DESC 'NFS version 4 Name'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+	SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.250.1.62
+	NAME ( 'GSSAuthName')
+	DESC 'RPCSEC GSS authenticated user name'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+#
+# minimal information for NFSv4 access. used when local filesystem
+# access is not permitted (nsswitch ldap calls fail), or when
+# inetorgPerson is too much info.
+#
+objectclass ( 1.3.6.1.4.1.250.1.60 NAME 'NFSv4RemotePerson'
+	DESC 'NFS version4 person from remote NFSv4 Domain'
+	SUP top STRUCTURAL
+	MUST ( uidNumber $ gidNumber $ NFSv4Name )
+	MAY ( cn $ GSSAuthName $ description) )
+
+#
+# minimal information for NFSv4 access. used when local filesystem
+# access is not permitted (nsswitch ldap calls fail), or when
+# inetorgPerson is too much info.
+#
+objectclass ( 1.3.6.1.4.1.250.1.63 NAME 'NFSv4RemoteGroup'
+	DESC 'NFS version4 group from remote NFSv4 Domain'
+	SUP top STRUCTURAL
+	MUST ( gidNumber $ NFSv4Name )
+	MAY ( cn $ memberUid $ description) )

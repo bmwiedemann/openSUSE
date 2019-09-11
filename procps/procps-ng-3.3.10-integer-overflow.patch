@@ -1,0 +1,61 @@
+---
+ free.c         |   19 ++++++++++++++++---
+ proc/sysinfo.c |    5 ++++-
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+--- free.c
++++ free.c	2018-04-04 11:29:36.599107898 +0000
+@@ -134,7 +134,7 @@ static const char *scale_size(unsigned l
+ 		if (args.exponent > 1) {
+ 			/* In desired scale. */
+ 			snprintf(buf, sizeof(buf), "%ld",
+-                 (long int)((size * 1024.0) / power(base, args.exponent-1))
++                 (long int)(((long long int)size * 1024) / power(base, args.exponent-1))
+ 			    );
+ 			return buf;
+ 		}
+@@ -379,15 +379,28 @@ int main(int argc, char **argv)
+ 		 * to print the high info, even if it is zero.
+ 		 */
+ 		if (flags & FREE_LOHI) {
++			unsigned long kb_low_used;
++			unsigned long kb_high_used;
++
++			if (kb_low_total > kb_low_free)
++				kb_low_used = kb_low_total - kb_low_free;
++			else
++				kb_low_used = 0;
++
++			if (kb_high_total > kb_high_free)
++				kb_high_used = kb_high_total - kb_high_free;
++			else
++				kb_high_used = 0;
++
+ 			printf("%-7s", _("Low:"));
+ 			printf(" %11s", scale_size(kb_low_total, flags, args));
+-			printf(" %11s", scale_size(kb_low_total - kb_low_free, flags, args));
++			printf(" %11s", scale_size(kb_low_used, flags, args));
+ 			printf(" %11s", scale_size(kb_low_free, flags, args));
+ 			printf("\n");
+ 
+ 			printf("%-7s", _("High:"));
+ 			printf(" %11s", scale_size(kb_high_total, flags, args));
+-			printf(" %11s", scale_size(kb_high_total - kb_high_free, flags, args));
++			printf(" %11s", scale_size(kb_high_used, flags, args));
+ 			printf(" %11s", scale_size(kb_high_free, flags, args));
+ 			printf("\n");
+ 		}
+--- proc/sysinfo.c
++++ proc/sysinfo.c	2018-04-04 11:17:32.480409601 +0000
+@@ -783,7 +783,10 @@ nextline:
+   kb_main_cached = kb_page_cache + kb_slab_reclaimable;
+   if ((ev=getenv("PS_FULL_CACHE")))
+     kb_main_cached += kb_swap_cached + kb_nfs_unstable;
+-  kb_swap_used = kb_swap_total - kb_swap_free;
++  if (kb_swap_total > kb_swap_free)
++    kb_swap_used = kb_swap_total - kb_swap_free;
++  else
++    kb_swap_used = 0;
+ 
+   /* if kb_main_available is greater than kb_main_total or our calculation of
+      mem_used overflows, that's symptomatic of running within a lxc container

@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri May 11 08:18:46 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-FHS
+  A new license was created in the spreadsheet linked from
+  license.opensuse.org specifically for this package and license
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb  6 13:48:48 CET 2004 - kukuk@suse.de
+
+- Update to FHS 2.3
+
+-------------------------------------------------------------------
+Thu Feb  5 14:59:00 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Apr  4 13:20:08 CEST 2003 - kukuk@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sun Sep  8 17:17:22 CEST 2002 - kukuk@suse.de
+
+- Fix neededforbuild for ghostscript
+
+-------------------------------------------------------------------
+Fri Feb  1 11:25:03 CET 2002 - ro@suse.de
+
+- added libgimpprint to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb  1 01:28:57 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Jul 25 18:07:14 CEST 2001 - kukuk@suse.de
+
+- Update to FHS 2.2
+
+-------------------------------------------------------------------
+Mon May 15 09:10:52 CEST 2000 - kukuk@suse.de
+
+- Update to FHS 2.1
+- Move to /usr/share/doc/FHS
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun  8 16:06:52 MEST 1999 - bs@suse.de
+
+- made package "noarch"
+
+
+-------------------------------------------------------------------
+Mon Mar 30 18:28:55 MEST 1998 - bs@suse.de
+
+- first creation of the package
+

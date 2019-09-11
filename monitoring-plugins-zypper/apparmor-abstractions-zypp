@@ -1,0 +1,32 @@
+    #include <abstractions/rpm>
+    #include <abstractions/ssl>
+    #include <abstractions/nameservice>
+
+    network inet,
+    network inet6,
+
+    /etc/sysconfig/proxy r,
+    /etc/sysconfig/storage r,
+    /proc/filesystems r,
+    /var/run/zypp.pid rwlk,
+    /etc/zypp/** r,
+    /etc/products.d/ r,
+    /etc/products.d/** r,
+    /proc/sys/kernel/random/uuid r,
+    /var/adm/mount/ rw,
+    /var/adm/mount/** rwlk,
+    # /var/cache/zypp/raw/ r,
+    /var/cache/zypp/** rwlk,
+    /var/tmp/TmpDir.*/ r,
+    /var/tmp/TmpDir.*/** r,
+    /var/tmp/zypp.*/ rw,
+    /var/tmp/zypp.*/** rwlk,
+    /var/tmp/TmpFile.* rwlk,
+    /var/tmp/TmpDir.*/ rw,
+    /var/tmp/TmpDir.*/** rwlk,
+    /var/tmp/ r,
+    /var/tmp/AP_*/ rwlk,
+    /var/tmp/AP_*/** rwlk,
+    /sys/** r,
+    /sys/ r,
+    /var/lib/zypp/** rwlk,

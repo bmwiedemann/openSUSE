@@ -1,0 +1,20 @@
+--- procinfo.c
++++ procinfo.c	2008-11-11 12:50:24.593090103 +0100
+@@ -124,7 +124,7 @@ first_page (long sl)
+     int i, havetwosix = 0, lastdisk;
+     static int have_m_c = -1;	/* Do we have cache info? */
+     static int have_m_l = -1;	/* Do we have new-style-one-datum-per-line? */
+-    char devicename[10];
++    char devicename[128];
+     char *last;
+     unsigned int q,w,a,s,d,f,g,h,j,k,l,y,x;
+     int disk_counter = 0, ret;
+@@ -315,7 +315,7 @@ first_page (long sl)
+ 	fseek (diskstatsfp, 0L, SEEK_SET);
+ 	while (fgets (line, sizeof (line), diskstatsfp)) {
+ 	   char *type = strtok (line, "\n");
+-		   ret = sscanf (type, "%d%d%s%d%d%d%d%d%d%d%d%d%d%d", &q, &w, devicename, &a, &s, &d, &f, &g, &h, &j, &k, &l, &y, &x);
++		   ret = sscanf (type, "%d%d%127s%d%d%d%d%d%d%d%d%d%d%d", &q, &w, devicename, &a, &s, &d, &f, &g, &h, &j, &k, &l, &y, &x);
+ 		   if (ret != 14) /* Everything with less than 14 elements is not a disk device */
+ 			   continue;
+          last = devicename+strlen(devicename)-1;

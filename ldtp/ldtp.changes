@@ -1,0 +1,376 @@
+-------------------------------------------------------------------
+Sun May 12 13:10:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.5.0:
+  + New API:
+    - inserttext, objtimeout, guitimeout, getcellsize,
+      getcellvalue, getobjectnameatcoords, getcombovalue,
+      getaccesskey in Python client, doubleClick, doubleClickRow,
+      onWindowCreate, getCellSize, getComboValue, appUnderTest,
+      getAccessKey in Java client, getcellsize, getcellvalue in
+      Ruby client, GetCellSize, GetComboValue, AppUnderTest,
+      GetAccessKey, MouseRightClick, DoubleClick, DoubleClickRow,
+      RightClick in C# client.
+  + New control type:
+    - POPUP MENU for Ubuntu environment.
+  + Bugs fixed:
+    - Ruby client:
+      . Fixed optional arguments to imagecapture.
+      . Check window_name parameter, if empty then use @window_name
+        passed in constructor.
+    - Python client:
+      . Fixed optional argument APIs to work on both Windows and
+        Linux.
+      . imagecapture x, y offset, height and width parameters are
+        disregarded if window parameter is provided (bgo#685548).
+      . Return unicode string all the time on gettextvalue.
+      . Fix partial match argument in selectrow, compatible with
+        Windows.
+      . Support Python 2.6.
+      . Added Errno 101 as we see in Ubuntu 10.04 environment.
+  + Core LDTP2
+    - Include label type on gettextvalue.
+    - Don't include separators in the list.
+  + Perl client added.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:36:30 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1
+  No GPL found during audit. Most Alagappan files are LGPL-2.1 only
+
+-------------------------------------------------------------------
+Fri Mar  1 16:28:15 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Aug 15 14:41:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.0.0:
+  + Fix QT related accessibility issue
+  + Add C# LDTP Client
+  + Updated documentations
+  + Bugs fixed: bgo#673931
+
+-------------------------------------------------------------------
+Sun Feb 26 15:53:16 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.1:
+  + Added twisted gtk3reactor
+  + Operate on window name using index, will be helpful with i18n,
+    l10n testing
+  + at-spi2 related fixes to improve test execution time
+- If GTK+ 3 is preferred (on 12.1 and later), move to the
+  introspection-based bindings:
+  + Add a gobject-introspection BuildRequires to have automatic
+    introspection-based Requires.
+  + Remove gnome-python-desktop/python-wnck and python-gtk
+    Requires.
+
+-------------------------------------------------------------------
+Fri Feb 17 19:06:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.3.0:
+  + Added Windows client version for LDTP
+  + Update keycodes based on latest Linux distribution
+  + Bugs fixed:
+    - Fixed twisted gtk2 import in gtk3 environment
+    - Adjust to changed twisted XMLRPC APIs.
+
+-------------------------------------------------------------------
+Sun Sep 25 23:23:53 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.2.0:
+  + Many fixes with respect to GTK3
+  + Added new function rightclick
+  + Bugs fixed:
+    - Check partial_match, compatible with LDTPv1
+    - Added two new methods to LDTPv2 as per LDTPv1 API set:
+      verifytoggled, verifypushbutton
+    - bgo#654683: getallstates does not work with pyatspi2
+    - Various other bug fixes (including bgo#654685, bgo#657290,
+      bgo#656801).
+
+-------------------------------------------------------------------
+Thu Jun  9 15:14:06 CEST 2011 - vuntz@opensuse.org
+
+- Drop unneeded python-gnome Requires: no python modules from there
+  is used.
+- Add python-wnck Requires on 11.4 and later, and
+  gnome-python-desktop Requires on 11.3 and earlier: only the wnck
+  module is used.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:21:15 CET 2011 - dimstar@opensuse.org
+
+- Update to version 2.1.1:
+  + lp#710545: Fix committed to resolve getobjectlist('Main Menu')
+    of alacarte app.
+
+-------------------------------------------------------------------
+Fri Jan  7 19:38:23 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.0:
+  + Added documentation files from LDTPv1 and updated accordingly
+  + Search object name as unicode character and mutliline
+  + Print Unicode exception, instead of string. Printing string
+    fails, if non-ascii strings are in exception string
+  + Performance improvement:
+    - When looking for object inside a window without any delay,
+      utilize all the CPU, just delay the lookup every 2 seconds
+    - Don't force remap on gechild, getobjectlist,
+      getobjectproperty, unless the window object is changed, as
+      this utilizes more CPU
+  + Various new API.
+  + Bugs fixed: bgo#619575, bgo#620343, bgo#624690, bgo#624678,
+    bgo#635047, bgo#638229, bgo#638226.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:53:08 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.0.6:
+  + Retry connecting to ldtpd multipletimes before bailing out
+  + Launch ldtpd just once
+  + Add debug info (with LDTP_DEBUG environment variable)
+  + Fix object lookup to be compatible with ldtpv1 and ldtpv2
+  + bgo#547572: Components should be exposed in a hierarchical way
+  + bgo#614249: Connection refused when importing ldtp module
+
+-------------------------------------------------------------------
+Thu Apr  8 02:10:32 CEST 2010 - vuntz@opensuse.org
+
+- Requires pyatspi instead of python-atspi: this is a virtual name
+  that is provided by the default at-spi stack, so we can easily
+  switch between the stacks without having to change this package
+  again.
+
+-------------------------------------------------------------------
+Tue Mar 30 20:22:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.5:
+  + bgo#614249 - Connection refused when importing ldtp module
+
+-------------------------------------------------------------------
+Sat Mar 27 12:10:41 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.4:
+  + Fix LDTPv2 hang
+  + Don't navigate table cell, as it causes more resource and time
+    in OpenOffice calc
+  + Added new API simulatemousemove for DnD test (VMware
+    Workstation / Player Unity-GHI feature)
+  + Fix bgo#612311
+  + Listen all Window events, else new application like Firefox is
+    not listed
+  + waittillguiexist now can wait for state as well
+  + hasstate can wait for given time till the state is True
+
+-------------------------------------------------------------------
+Thu Feb 11 14:51:21 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.0.3:
+  + Return always unicode string in gettextvalue, required to fix
+    automated test script in VMware Workstation
+  + Fix ooldtp compatibility with LDTPv1 as reported by Mago team
+  + bgo#608413 - imagecapture ignores window name parameter
+  + Patch for getallstates compatible with hasstate function
+  + Fix Firefox preference accessing bug
+
+-------------------------------------------------------------------
+Wed Jan 27 15:21:36 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.2:
+  + Fixed ldtp binary name and now it spits out the version info
+  + Updated README and AUTHORS file
+  + Fixed OpenSolaris bug
+
+-------------------------------------------------------------------
+Thu Jan 21 01:28:28 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.1:
+  + This is a complete rewrite compared to ldtp 1.x.
+  + Main differences:
+    - getlabel function is deprecated - you can use
+      getobjectproperty('window', 'objectname', 'label') # To
+      verify the display text
+    - Label in v2 doesn't return the accelerator key (eg: in v1
+      "_Find" will be returned on v2 just "Find" is returned)
+    - Strict data types are checked: in v1 most of the inputs are
+      considered as string, if not they will be converted to
+      string, but on v2 exception will be thrown, if incorrect type
+      is passed to any function.
+    - In v1 there is a ldtp binary; on v2 there is only ldtpd.sh
+      for now. This doesn't return the version yet as "ldtp
+      --version" did in v1.
+    - In v1, each action command was given 1 second sleep time
+      internally before execution, but on v2 there is no delay
+      unless its set in environment variable LDTP_COMMAND_DELAY.
+      So, the script has to use appropriate wait time.
+    - launchapp argument name changed from 'arg' to 'args'
+  + Missing API in v2:
+    - Calendar object
+    - logFailures in v1 is not implemented in v2
+    - LDTP logging methods
+    - appundertest
+    - launchapp2
+    - blackoutregion
+    - label object
+    - panel object
+    - ProcessStatistics
+- Upstream code changed completely, and the build system moved from
+  autotools to python-distutils, so the packaging can be considered
+  as new (everything changed).
+
+-------------------------------------------------------------------
+Fri Aug 21 14:08:20 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 1.7.1:
+  + fdo#590755 - Keycodes mismatch using generatekeyevent from
+                 python-ldtp
+  + fdo#591753 - On window callback exit ldtp crashes
+  + fdo#591764 - Var argument to onwindowcreate callback function
+
+-------------------------------------------------------------------
+Thu Aug 13 23:43:07 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 1.7.0:
+  + bgo#578609 - LDTP should use LOGNAME instead of (or in addition
+    to) USER
+  + bgo#553747 - cannot click window itself
+  + bgo#579027 - onwindowcreate expects a _NON_ stripped window
+    title
+  + bgo#575120 - component should have a getrole() method
+    (ooldtp.py)
+  + bgo#573103 - ldtpeditor could not find glade file
+    'ldtpeditor.glade'
+  + bgo#547572 - Components should be exposed in a hierarchical
+    way
+  + New API addition: 
+    * Progress bar APIs
+    * Layered pane APIs
+
+-------------------------------------------------------------------
+Wed May 13 08:34:40 CEST 2009 - pchen@gnome.org
+
+- Update to version 1.6.0:
+  + bgo#578609 - LDTP should use LOGNAME instead of (or in addition
+    to) USER
+  + bgo#553747 - cannot click window itself
+  + bgo#579027 - onwindowcreate expects a _NON_ stripped window
+    title
+  + bgo#575120 - component should have a getrole() method
+    (ooldtp.py)
+  + bgo#573103 - ldtpeditor could not find glade file
+    'ldtpeditor.glade'
+  + bgo#547572 - Components should be exposed in a hierarchical way
+  + New API addition:
+    - Progress bar APIs
+    - Layered pane APIs
+
+
+-------------------------------------------------------------------
+Wed Mar 11 09:32:27 CET 2009 - mboman@suse.de
+
+- Update to version 1.5.1:
+  + Fixes bgo#574787, bgo#574789, bgo#574791, bgo#574793
+  + Log all failures and take screenshot on each failure
+  + Create default log file in /tmp/ldtp-$USER
+  + Screenshot using pygtk, instead of ImageMagick import, when
+    possible
+  + Added new api - appundertest
+- Remove glib-devel and gail-devel from BuildRequires
+- Add gtk2-devel to BuildRequires
+- Remove AutoReqProv. It's default
+- Remove Requires for main package. It's automatic
+- Remove version from Requires in ldtp-python package
+- Remove CLAGS="$RPM_OPT_FLAGS". It's default
+- Replace %{__make} install DESTDIR=$RPM_BUILD_ROOT with
+  %makeinstall
+- Clean up files section
+- Replace BuildRequires python-devel and Requires python with
+  %py_requires
+
+-------------------------------------------------------------------
+Tue Feb 10 19:45:48 CET 2009 - vuntz@novell.com
+
+- Update to version 1.5.0:
+  + No NEWS file provided.
+
+-------------------------------------------------------------------
+Wed Dec 24 09:58:34 EST 2008 - mboman@suse.de
+
+- Update to version 1.4.0:
+  + Various buildsystem fixes
+- Remove fix-return_with_no_value.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Oct 31 18:31:06 CET 2008 - ehamera@suse.cz
+
+- repair bug bnc#439996 
+
+-------------------------------------------------------------------
+Fri Sep 12 11:55:38 CDT 2008 - maw@suse.de
+
+- Update to version 1.3.0:
+  + See http://ldtp.freedesktop.org/wiki/News.
+
+-------------------------------------------------------------------
+Tue Apr  1 18:34:28 CEST 2008 - rodrigo@suse.de
+
+- Update to version 1.0.0:
+  * Object Oriented LDTP
+  * LDTP Editor (Record / Playback) 
+
+-------------------------------------------------------------------
+Thu Mar 22 19:41:21 CET 2007 - dobey@suse.de
+
+- Update to version 0.8.0
+  - Better logging support
+  - Bug fixes (#385416, #402371, and #348479)
+  - Improved widget map handling
+
+-------------------------------------------------------------------
+Mon Oct 16 16:54:21 CEST 2006 - dobey@suse.de
+
+- Update to the 0.6.0 release of ldtp for bug fixes and features
+
+-------------------------------------------------------------------
+Fri Sep 22 00:23:46 CEST 2006 - dobey@suse.de
+
+- Update to newer CVS snapshot for many bug fixes and features
+  for better testing of accessibility in the desktop
+
+-------------------------------------------------------------------
+Thu Sep  7 21:16:56 CEST 2006 - dobey@suse.de
+
+- Update to a CVS snapshot for many bug fixes and features for
+  testing accessibility in the desktop
+
+-------------------------------------------------------------------
+Tue Aug  8 11:37:50 CEST 2006 - tuxbox@suse.de
+
+- reworked recent python patch
+
+-------------------------------------------------------------------
+Tue Aug  8 11:15:21 CEST 2006 - tuxbox@suse.de
+
+- update to upstream version 0.5.0
+	e.g. added mouse and key registry events
+		updated gcc flags
+
+-------------------------------------------------------------------
+Wed Apr  5 12:53:08 CEST 2006 - tuxbox@suse.de
+
+- upgrade to upstream version 0.4.0
+
+-------------------------------------------------------------------
+Sun Mar  5 16:46:22 CET 2006 - ro@suse.de
+
+- fix build with recent python install change 
+
+-------------------------------------------------------------------
+Tue Feb  7 11:33:14 CET 2006 - fseidel@suse.de
+
+- initial submited version
+

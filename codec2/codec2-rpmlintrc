@@ -1,0 +1,3 @@
+# these can't be helped
+addFilter("no-manual-page-for-binary .*")
+addFilter("codec2-examples.noarch: .*devel-dependency codec2-devel")

@@ -1,0 +1,26 @@
+From c267e271a3954e4f2359e4f5dde2c129a491eccd Mon Sep 17 00:00:00 2001
+From: Dinar Valeev <dvaleev@suse.com>
+Date: Tue, 5 Aug 2014 00:52:49 +0200
+Subject: [PATCH] set 64bit for other architectures
+
+---
+ configure    | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/configure b/configure
+index c9de734..30fed28 100755
+--- a/configure
++++ b/configure
+@@ -15642,6 +15642,9 @@ if test "$enable_64bit" = "auto"; then
+    if test "$host_cpu" = "ia64" -o "$host_cpu" = "x86_64" -o "$host_cpu" = "amd64"; then
+       enable_64bit=yes
+    else
++      case "$host_cpu" in
++          powerpc64*|aarch64|s390x) enable_64bit=yes;;
++      esac
+       case "${host_os}" in
+           darwin*)   mv=`uname -r|cut -f1 -d.`
+      	   	     if test $mv -ge 10 -a "${host_cpu}" = "i386"; then
+-- 
+1.8.5.2
+

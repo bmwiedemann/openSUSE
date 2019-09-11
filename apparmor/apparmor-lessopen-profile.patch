@@ -1,0 +1,54 @@
+Index: profiles/apparmor.d/usr.bin.lessopen.sh
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ profiles/apparmor.d/usr.bin.lessopen.sh	2017-10-28 14:15:12.624358664 +0200
+@@ -0,0 +1,49 @@
++# vim: ft=apparmor
++#include <tunables/global>
++
++/usr/bin/lessopen.sh {
++  #include <abstractions/base>
++  #include <abstractions/bash>
++  #include <abstractions/consoles>
++  #include <abstractions/perl>
++
++  capability dac_override,
++  capability dac_read_search,
++
++  /** rk,
++  /{usr/,}bin/bash mrix,
++  /{usr/,}bin/rpm mrix,
++  /{usr/,}bin/tar mrix,
++  /tmp/less.* rw,
++  /usr/bin/bzip2 mrix,
++  /usr/bin/cabextract mrix,
++  /usr/bin/cat mrix,
++  /usr/bin/colordiff mrix,
++  /usr/bin/dvi2tty mrix,
++  /usr/bin/eqn mrix,
++  /usr/bin/file mrix,
++  /usr/bin/grep mrix,
++  /usr/bin/groff mrix,
++  /usr/bin/grotty mrix,
++  /usr/bin/gzip mrix,
++  /usr/bin/head mrix,
++  /usr/bin/lynx mrix,
++  /usr/bin/mktemp mrix,
++  /usr/bin/nm mrix,
++  /usr/bin/pic mrix,
++  /usr/bin/pdftotext mrix,
++  /usr/bin/ps2ascii mrix,
++  /usr/bin/rm mrix,
++  /usr/bin/seq mrix,
++  /usr/bin/soelim mrix,
++  /usr/bin/tar mrix,
++  /usr/bin/tbl mrix,
++  /usr/bin/troff mrix,
++  /usr/bin/unzip mrix,
++  /usr/bin/unzip-plain mrix,
++  /usr/bin/w3m mrix,
++  /usr/bin/which mrix,
++  /usr/bin/xz mrix,
++
++  #include <local/usr.bin.lessopen.sh>
++}

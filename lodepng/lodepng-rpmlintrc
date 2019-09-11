@@ -1,0 +1,4 @@
+# these are false positives
+addFilter("liblodepng.* shlib-unversioned-lib liblodepng.*")
+addFilter("liblodepng.* shlib-policy-missing-lib")
+addFilter("lodepng-devel.* no-dependency-on .*liblodepng*")

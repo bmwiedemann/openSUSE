@@ -1,0 +1,6 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("libtool.* shlib-policy-nonversioned-dir")
+addFilter("libtool.* shlib-policy-missing-lib")
+addFilter("libtool.* script-without-shebang")

@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:47:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jan  6 17:30:23 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.0.3:
+  * Fix artifact uploads to pypi
+
+- changes from version 1.0.2:
+  * Drop support for Python 2.6 and Python 3.3.
+  * Fix deprecation warning in Python 3.6.
+  * Minor cleanups.
+
+-------------------------------------------------------------------
+Wed Mar 29 08:27:04 UTC 2017 - tbechtold@suse.com
+
+- update to 1.0.1:
+  * Add support for Python 3.6.
+  * Documentation hosted `on Read the Docs <https://cssselect.readthedocs.io/>`_
+  * Add code coverage reports.
+  * Fix ``:nth-*(an+b)`` pseudo-classes selectors.
+    (except ``*:nth-child()`` which looks untranslatable to XPath 1.0.)
+  * Distribute as universal wheel.
+  * Add support for Python 3.3, 3.4 and 3.5.
+  * Drop support for Python 2.5 as testing is getting difficult.
+  * Improve tests on pseudo-elements.
+- Switch to singlespec approach
+
+-------------------------------------------------------------------
+Sat Nov 23 18:09:44 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9.1
+  + **Backward incompatible change from 0.9**:
+    :meth:`~GenericTranslator.selector_to_xpath` defaults to ignoring
+    pseudo-elements, as it did in 0.8 and previous versions.
+    (:meth:`~GenericTranslator.css_to_xpath` doesn’t change.)
+  + Drop official support for Python 2.4 and 3.1,
+    as testing was becoming difficult. Nothing will break overnight,
+    but future releases may on may not work on these versions.
+    Older releases will remain available on PyPI.
+- Changes from 0.9
+  + Add parser support for :attr:`functional pseudo-elements
+    <Selector.pseudo_element>`.
+  + This version accidentally introduced a backward incompatible change:
+    :meth:`~GenericTranslator.selector_to_xpath` defaults to rejecting
+    pseudo-elements instead of ignoring them.
+- Remove useless CFLAGS definition
+- Add README.rst, CHANGES and AUTHORS in package documentation
+
+-------------------------------------------------------------------
+Tue Jul  9 17:09:42 UTC 2013 - arun@gmx.de
+
+- Packaged LICENSE file
+  fixes bnc#828513 
+  Bug 828513 - LICENSE not packaged in python3-cssselect 0.8
+
+-------------------------------------------------------------------
+Thu Mar 28 20:18:04 UTC 2013 - arun@gmx.de
+
+- updated to 0.8
+  Changelog (http://pythonhosted.org/cssselect/#changelog):
+    Released on 2013-03-15.
+      Improvements:
+        #22 Let extended translators override what XPathExpr class is used
+        #19 Use the built-in lang() XPath function for implementing the :lang() pseudo-class with XML documents. This is probably faster than ancestor-or-self::.
+
+    Bug fixes:
+        #14 Fix non-ASCII pseudo-classes. (Invalid selector instead of crash.)
+        #20 As per the spec, elements containing only whitespace are not considered empty for the :empty pseudo-class.
+ 
+
+-------------------------------------------------------------------
+Mon Jan 14 10:17:27 UTC 2013 - saschpe@suse.de
+
+- Minimal cleanup
+
+-------------------------------------------------------------------
+Tue Jan  8 20:42:17 UTC 2013 - iacobcatalin@gmail.com
+
+- Initial package 0.7.1
+

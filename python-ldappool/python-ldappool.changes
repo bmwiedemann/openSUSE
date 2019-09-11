@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Thu Mar 28 15:24:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.4.1:
+  * Various release notes and docu updates
+
+-------------------------------------------------------------------
+Mon Dec 10 11:41:39 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.4.0:
+  * Allow pool status to be printed as a table
+  * Add plumbing to support reno release notes
+  * Handle retry logic for timeouts with multiple LDAP servers
+  * Improve connection retry logging
+  * PY3: switch to using unicode text values
+  * Don't quote {posargs} in tox.ini
+  * Removed older version of python added 3.5
+  * add python 3.6 unit test job
+  * import zuul job settings from project-config
+  * fix tox python3 overrides
+  * fix ldappool bad password retry logic
+  * Add author email to setup.cfg
+  * Switch to python-ldap again
+  * Bump to hacking 1.1.x
+  * Switch to stestr
+  * add lower-constraints job
+  * Updated from global requirements
+  * Avoid tox\_install.sh for constraints support
+  * Turn on warning-is-error for sphinx build
+  * Switch from oslosphinx to openstackdocstheme
+  * Fix html\_last\_updated\_fmt for Python3
+- Update URL
+
+-------------------------------------------------------------------
+Thu Aug 24 13:36:01 UTC 2017 - tbechtold@suse.com
+
+- update to 2.1.0
+  * Updated from global requirements
+  * Don't call start\_tls\_s() twice
+  * [Fix gate]Update test requirement
+  * Add Constraints support
+  * update README to reflect actual ldap dependency
+  * Expose SERVER\_DOWN if connection fails
+- convert to singlespec
+
+-------------------------------------------------------------------
+Wed May 18 08:17:56 UTC 2016 - dmueller@suse.com
+
+- update to 2.0.0:
+  * Add py3 info to setup.cfg
+  * Updated from global requirements
+  * make ldappool py3 compatible
+  * use standard docstring convention for parameters
+  * Use standard-library logging to record errors
+  * Raise an explicit BackendError on TLS failures
+  * Fix pool_full race condition
+  * additional files to ignore in .gitignore
+  * Fix license in setup.py
+  * add .gitreview and fix ldappool gate
+  * Add test-requirements for py27 testing
+  * PEP8 fixes
+  * Add support for tox unit testing
+  * Initialize conn in _create_connector (fixes: #7)
+  * Use setuptools when available
+  * #4: UTF-8 encode passwd only when set
+
+-------------------------------------------------------------------
+Wed Feb  4 16:46:21 UTC 2015 - dmueller@suse.com
+
+- fix license 
+
+-------------------------------------------------------------------
+Mon Jan 19 09:08:42 UTC 2015 - rhafer@suse.com
+
+- Initial package. Version 1.0 
+

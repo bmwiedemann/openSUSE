@@ -1,0 +1,38 @@
+From 563b847b51bd225df3585b9740fa6f678fb2f26d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ralf=20Cors=C3=A9pius?= <corsepiu@fedoraproject.org>
+Date: Tue, 15 Apr 2014 05:20:16 +0200
+Subject: [PATCH 3/6] gpsbabel-1.4.3-gmapbase
+
+	Pickup gmapbase.html from /usr/share/gpsbabel.
+---
+ gui/map.cc | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gui/map.cc b/gui/map.cc
+index 3284376..dc8cec8 100644
+--- a/gui/map.cc
++++ b/gui/map.cc
+@@ -34,6 +34,10 @@
+ #include "appname.h"
+ #include "dpencode.h"
+ 
++#ifndef PKGDATADIR
++#define PKGDATADIR "/usr/share/gpsbabel"
++#endif
++
+ //------------------------------------------------------------------------
+ static QString stripDoubleQuotes(const QString s) {
+   QString out;
+@@ -60,7 +64,8 @@ Map::Map(QWidget *parent,
+   connect(this,SIGNAL(loadFinished(bool)),
+ 	  this,SLOT(loadFinishedX(bool)));
+   this->logTimeX("Start map constuctor");
+-  QString baseFile =  QApplication::applicationDirPath() + "/gmapbase.html";
++  QString baseFile =  PKGDATADIR;
++  baseFile += "/gmapbase.html";
+   if (!QFile(baseFile).exists()) {
+     QMessageBox::critical(0, appName,
+ 			  tr("Missing \"gmapbase.html\" file.  Check installation"));
+-- 
+2.1.0
+

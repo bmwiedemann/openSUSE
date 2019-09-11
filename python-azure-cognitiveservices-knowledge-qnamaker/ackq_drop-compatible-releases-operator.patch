@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-knowledge-qnamaker-0.1.0.orig/setup.py azure-cognitiveservices-knowledge-qnamaker-0.1.0/setup.py
+--- azure-cognitiveservices-knowledge-qnamaker-0.1.0.orig/setup.py	2018-12-21 23:27:02.000000000 +0100
++++ azure-cognitiveservices-knowledge-qnamaker-0.1.0/setup.py	2019-02-18 13:27:24.851462371 +0100
+@@ -79,7 +79,7 @@
+     ]),
+     install_requires=[
+         'msrest>=0.5.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-cognitiveservices-knowledge-nspkg'],

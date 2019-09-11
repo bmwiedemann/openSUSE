@@ -1,0 +1,18 @@
+--- Xtranssock.c.orig	2009-10-16 23:25:57.000000000 +0200
++++ Xtranssock.c	2010-04-04 16:10:29.000000000 +0200
+@@ -1790,12 +1790,15 @@
+ 
+ {
+     char hostnamebuf[256];
++    char* xauthlocalname = getenv("XAUTHLOCALHOSTNAME");
+ 
+     TRANS(GetHostname) (hostnamebuf, sizeof (hostnamebuf));
+ 
+     if (strcmp (hostnamebuf, host) == 0)
+     {
+ 	return (1);
++    } else if(xauthlocalname && strcmp (xauthlocalname, host) == 0) {
++	return (1);
+     } else {
+ #if defined(IPv6) && defined(AF_INET6)
+ 	struct addrinfo *localhostaddr;

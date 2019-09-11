@@ -1,0 +1,53 @@
+--- packages/xemacs-packages/cedet-common/mode-local.el
++++ packages/xemacs-packages/cedet-common/mode-local.el	2009-12-02 14:28:01.979929810 +0000
+@@ -49,7 +49,9 @@
+ ;;
+ 
+ ;;; Code:
+-(eval-when-compile (require 'cl))
++(eval-when-compile
++  (autoload 'ad-add-advice "advice")
++  (require 'cl))
+ 
+ ;;; Compatibility
+ ;;
+@@ -189,6 +191,7 @@ behaviors.  Use the function `mode-local
+   "Return a new empty mode bindings symbol table."
+   (make-vector 13 0))
+ 
++;;;###autoload
+ (defun mode-local-bind (bindings &optional plist mode)
+   "Define BINDINGS in the specified environment.
+ BINDINGS is a list of (VARIABLE . VALUE).
+@@ -455,6 +458,7 @@ in those bound in current `major-mode' a
+            (mode-local-symbol-value
+             (overload-obsoleted-by overload) nil 'override-flag))))
+ 
++;;;###autoload
+ (defun mode-local--override (name args body)
+   "Return the form that handles overloading of function NAME.
+ ARGS are the arguments to the function.
+@@ -471,6 +475,7 @@ See also the function `define-overload'.
+          ,@(or body `((,default ,@overargs)))))
+     ))
+ 
++;;;###autoload
+ (defun mode-local--expand-overrides (name args body)
+   "Expand override forms that overload function NAME.
+ ARGS are the arguments to the function NAME.
+@@ -494,6 +499,7 @@ See also the function `define-overload'.
+             forms (cdr forms)))
+     (if ditto body (nreverse xbody))))
+ 
++;;;###autoload
+ (defun mode-local--overload-body (name args body)
+   "Return the code that implements overloading of function NAME.
+ ARGS are the arguments to the function NAME.
+@@ -504,6 +510,7 @@ See also the function `define-overload'.
+         (list (mode-local--override name args body))
+       result)))
+ 
++;;;###autoload
+ (defmacro define-overload (name args docstring &rest body)
+   "Define a new function, as with `defun' which can be overloaded.
+ NAME is the name of the function to create.

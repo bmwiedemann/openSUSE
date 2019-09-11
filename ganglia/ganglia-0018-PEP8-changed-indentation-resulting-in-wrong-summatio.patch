@@ -1,0 +1,27 @@
+From: Vladimir <vlemp@vuksan.com>
+Date: Mon, 6 Mar 2017 10:31:10 -0500
+Git-commit: a5869c224ee9c3499f19238b688b02a48d3dc3f2
+References: bsc#1087487
+Subject: [PATCH] PEP8 changed indentation resulting in wrong summation
+
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ gmond/python_modules/network/multi_interface.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gmond/python_modules/network/multi_interface.py b/gmond/python_modules/network/multi_interface.py
+index 3f9b45d0..456704b8 100644
+--- a/gmond/python_modules/network/multi_interface.py
++++ b/gmond/python_modules/network/multi_interface.py
+@@ -247,7 +247,7 @@ def get_aggregates(name):
+         except KeyError:
+             delta = 0.0
+ 
+-    sum += delta
++        sum += delta
+ 
+     return sum
+ 
+-- 
+2.13.6
+

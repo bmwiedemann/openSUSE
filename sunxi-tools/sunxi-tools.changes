@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Fri Oct 13 13:01:29 UTC 2017 - guillaume@opensuse.org
+
+- Update to v1.4.2
+  * build fixes
+  * fel: improvements and more SoC support (A80, R40)
+
+-------------------------------------------------------------------
+Mon Oct 31 11:48:22 UTC 2016 - afaerber@suse.de
+
+- Don't build target-tools as static
+
+-------------------------------------------------------------------
+Mon Oct 31 03:03:03 UTC 2016 - afaerber@suse.de
+
+- Simplify aarch64 build fixes
+
+-------------------------------------------------------------------
+Tue Jul 19 21:40:59 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update to v1.4.1
+  * Adds support for Allwinner A80 and A64
+  * sunxi-fel: fixes
+  * sunxi-fel: new features:
+    + progress indicator
+    + some new commands
+    + ability to affect the U-Boot environment (variables)
+  * sunxi-fexc/bin2fex/fex2bin: bugfixes
+  * new sunxi-nand-image-builder utility for "raw" NAND images
+
+-------------------------------------------------------------------
+Sat Feb 13 13:18:59 UTC 2016 - afaerber@suse.de
+
+- Update to v1.3
+* Use official install targets (unbreaks fexc symlink)
+* Most binaries got prefixed with sunxi-
+- Clean up spec file with format_spec_file
+
+-------------------------------------------------------------------
+Sun Jul 26 15:19:44 UTC 2015 - afaerber@suse.de
+
+- Update to v1.2
+* Package bootinfo, fel, nand-part tools
+
+-------------------------------------------------------------------
+Fri May  3 15:55:12 UTC 2013 - dmueller@suse.com
+
+- Initial package (1.1) 
+

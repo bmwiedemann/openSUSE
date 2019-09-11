@@ -1,0 +1,397 @@
+-------------------------------------------------------------------
+Mon Apr 29 11:35:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add some missing optional dependencies: libgsm and codec2.
+
+-------------------------------------------------------------------
+Mon Apr 29 10:37:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches to build gnuradio using Qt5 on openSUSE > 1500:
+  - qt5-maint-0001-CMake-Update-required-minimum-version-to-2.8.12.patch
+  - qt5-maint-0002-CMake-FindQwt-Find-the-Qt5-version-of-QWT-instead-of.patch
+  - qt5-maint-0003-gr-qtgui-update-for-Qt5.patch
+  - qt5-maint-0004-grc-Generate-Python-scripts-that-use-PyQt5.patch
+  - qt5-maint-0005-gr-qtgui-Add-a-workaround-for-an-upstream-bug-of-uic.patch
+  - qt5-maint-0006-qtgui-fixed-examples-for-Qt5-compatibility.patch
+  - qt5-maint-0007-qtgui-Fixes-for-edit_box_msg-to-work-with-QT5.patch
+  - qt5-maint-0008-gr-qtgui-Allow-build-with-Qt4-or-Qt5-default.patch
+  - qt5-maint-0009-gr-qtgui-Fix-PyQt-4-5-include-in-XMLs-for-GRC.patch
+  - qt5-maint-0010-gr-qtgui-Fix-range.py-to-work-with-both-Qt4-and-Qt5.patch
+  - qt5-maint-0011-gr-qtgui-Re-introduce-some-Qt4-specific-code.patch
+  - qt5-maint-0012-grc-Fix-generation-of-Python-code-for-Qt4-and-Qt5.patch
+  - qt5-maint-0013-grc-replace-templated-xml-files-with-search-and-repl.patch
+  - qt5-maint-0014-qtgui-replace-templated-xml-files-with-search-and-re.patch
+  - qt5-maint-0017-qtgui-fix-stylesheet-for-qt5.patch
+  - qt5-maint-0019-qtgui-fixed-apps-for-Qt5-compatibility.patch
+  - qt5-maint-0021-gnuradio-runtime-ctrlport-qt5.patch
+  - qt5-maint-0022-gr-uhd-qt5.patch
+  - qt5-maint-0023-gr-qtgui-util.patch
+  - qt5-maint-0024-gr-qtgui-restoreGeometry.patch
+- Add 0001-Add-the-include-path-used-by-the-openSUSE-package.patch
+  for the Qt5 build.
+
+-------------------------------------------------------------------
+Mon Apr 22 15:27:32 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.7.13.5
+  * Project Scope - fixed PMT: in multiple places, we triggered undef. 
+    behaviour by accessing the first element of potentially empty
+    uvectors
+  * gr-audio - fixed Windows audio for higher output multiples broken
+  * gr-blocks - fixed QA: udp_source_sink flakiness
+  * gr-dtv - fixed sveral broken optimizations
+    - fixed 64-APSK parti	ally wrong ordering
+    - fixed OOB access in interleaver
+    - fixed uncovered worst case LDPC LUT generation
+  * gr-qtgui - fixed compiler Warnings
+  * gr-fec - fixed polar_encoder/_common: Memory leak
+  * gr-uhd - fixed GRC bindings: DC filter was could not be disabled
+    with IQ imbalance correction disabled
+  * gnuradio-runtime - ctrlport: added int64 for rpcbasic_inserter
+  * GRC - Removed generation time from generated python code
+  
+-------------------------------------------------------------------
+Sun Mar 24 07:35:00 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix building with Boost 1.69
+
+-------------------------------------------------------------------
+Tue Feb  5 17:26:14 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to include minimal disk size
+
+-------------------------------------------------------------------
+Thu Aug 30 18:35:50 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Disable explictly neon on armv6 to fix build
+
+-------------------------------------------------------------------
+Thu Aug 30 14:08:51 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints for ARM to speed-up build
+
+-------------------------------------------------------------------
+Wed Jul 18 16:41:20 UTC 2018 - wk@ire.pw.edu.pl
+
+- Fixed missing space in specfile
+
+-------------------------------------------------------------------
+Wed Jul 18 06:55:27 UTC 2018 - mpluskal@suse.com
+
+- Update source urls
+- Use gpg to verify sources
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul 17 07:41:57 UTC 2018 - wk@ire.pw.edu.pl
+
+- Update to version 3.7.13.4
+  * Fix Boost 1.67 linking issue
+  * Logging - fixed issues where messages weren't properly written
+    to stdout/stderr due to incorrect strings
+  * gr-analog - `fmdet_cf`'s derivative coefficients were wrong.
+  * gr-blocks - `skiphead` used to incorrectly handle tags, 
+    now properly shifts
+  * gr-digital - `qa_packet_format`: Unit test used to potentially
+    lock up due to incorrect conditionals
+    - `clock_recovery_cc`, `crc32_bb`: Accessing the `[0]` element
+      of an empty vector is UB, even if you don't use the result
+      afterwards.
+  * gr-fec - `polar_encoder`/`_common`: Fixed multiple out-of-bound
+    accesses due to insufficient vector length checks
+  * gr-filter - `fft_filter`, `filter_delay`: Accessing the `[0]` 
+    element of an empty vector is UB, even if you don't use the
+    result afterwards.
+- Patch missing_libraries.patch modified
+
+-------------------------------------------------------------------
+Fri Jun 15 08:50:15 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.7.13.3
+  * For non-C++11 compilers, the new cstdint include doesn't work
+    out; conditionalized it.
+- Remove patch:
+  * boost_161.patch (not longer needed)
+
+-------------------------------------------------------------------
+Fri Jun  1 22:10:16 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.7.13.2
+  Fixed:
+  * boost::posix_time::[milli]second takes integer numbers, and we
+    now at least cast the floats to integers, as Boost 1.67 forced
+    us to realize we're (incorrectly) using floating point her
+  GRC:
+  * Fixed GRC bug which broke WX and Qt (by altering the template
+    code), in multiple (less than awesome) steps
+  gr-blocks:
+  * float_array_to_int: int32 limits were wrongly hardcoded.
+  * Fixed the undefined behaviour happening in float_to_complex when
+    accessing the second input_items element in the single-input case
+
+-------------------------------------------------------------------
+Tue May 29 09:56:10 UTC 2018 - adam.majer@suse.de
+
+- boost_161.patch: fix compilation with Boost 1.67 (bsc#1089806)
+- missing_library.patch: hack to fix linking with required
+  libraries.
+- use memory-constraints package instead of _constraints
+
+-------------------------------------------------------------------
+Mon Apr  2 22:28:38 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.7.12.0
+  * see /usr/share/doc/packages/gnuradio/CHANGELOG.md
+- Remove Patches (not longer needed):
+  * CMake-set-C++-standard-to-c++11-and-C-standard-to-C99.diff
+  * 0001-gr-fec-switch-possible-C-11-code-from-constexpr-to-j.patch
+- Update URLs
+
+-------------------------------------------------------------------
+Tue Dec 12 15:52:26 UTC 2017 - mpluskal@suse.com
+
+- Ignore openssl-1_0_0 for build as temporary workaround for
+  Factory unresolvable state
+
+-------------------------------------------------------------------
+Mon May 22 20:27:27 UTC 2017 - mardnh@gmx.de
+
+- Add patches to fix builds on Factory
+  + 0001-gr-fec-switch-possible-C-11-code-from-constexpr-to-j.patch
+  + CMake-set-C++-standard-to-c++11-and-C-standard-to-C99.diff
+
+-------------------------------------------------------------------
+Wed Mar  8 00:49:30 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version 3.7.11
+
+-------------------------------------------------------------------
+Mon Mar  6 12:57:37 UTC 2017 - dmitry_r@opensuse.org
+
+- Fix README files installation
+
+-------------------------------------------------------------------
+Thu Oct 20 19:35:33 UTC 2016 - jengelh@inai.de
+
+- Rename soname macro to sover because it did not reflect the
+  SONAME.
+- RPM group reclassification
+
+-------------------------------------------------------------------
+Sat Sep  3 19:50:42 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version 3.7.10.1
+
+-------------------------------------------------------------------
+Sun Aug  7 19:47:23 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version 3.7.10
+- patch gnuradio-3.7.9.2-gcc6.patch removed
+  * breaks build on Leap 42.2 and Tumbleweed
+
+-------------------------------------------------------------------
+Mon Jul 25 13:39:02 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version 3.7.9.3
+
+-------------------------------------------------------------------
+Thu Jun 23 10:43:20 UTC 2016 - i@marguerite.su
+
+- add patch: gnuradio-3.7.9.2-gcc6.patch
+  * fix 'constexpr' needed for in-class initialization of static
+    data member of non-integral type 
+
+-------------------------------------------------------------------
+Mon Jun 20 07:30:54 UTC 2016 - dmitry_r@opensuse.org
+
+- Use wxPython 3.0 for Tumbleweed
+
+-------------------------------------------------------------------
+Fri Apr 29 09:24:43 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version 3.7.9.2
+- remove volk-cmake-3.5.patch not needed (applied upstream)
+
+-------------------------------------------------------------------
+Tue Mar 22 11:40:28 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build with cmake 3.5
+  * volk-cmake-3.5.patch
+
+-------------------------------------------------------------------
+Sat Feb 13 22:41:52 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version 3.7.9.1
+
+-------------------------------------------------------------------
+Thu Dec 31 09:40:42 UTC 2015 - wk@ire.pw.edu.pl
+
+- update to version 3.7.9
+
+-------------------------------------------------------------------
+Sat Oct 31 21:35:29 UTC 2015 - wk@ire.pw.edu.pl
+
+- update to version 3.7.8.1
+
+-------------------------------------------------------------------
+Sun Aug 16 09:47:05 UTC 2015 - wk@ire.pw.edu.pl
+
+- update to version 3.7.8
+
+-------------------------------------------------------------------
+Sat May 16 06:16:36 UTC 2015 - wk@ire.pw.edu.pl
+
+- update to version 3.7.7.1
+
+-------------------------------------------------------------------
+Mon Dec  8 08:03:53 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- Return options.xml to main package [bnc#908744]
+
+-------------------------------------------------------------------
+Thu Dec  4 12:31:11 UTC 2014 - dmitry_r@opensuse.org
+
+- Set libgnuradio0 as obsolete
+
+-------------------------------------------------------------------
+Fri Nov 28 13:00:16 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- split out libvolk library package
+
+-------------------------------------------------------------------
+Tue Nov 25 23:20:41 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- split out wxWidgets dependent parts
+  The wxWidgets graphics system will be deprecated with GR 3.8,
+  and pulls in a lot of dependencies
+- adjust soname to adhere to library packaging policy
+
+-------------------------------------------------------------------
+Wed Nov 12 10:56:37 UTC 2014 - dmitry_r@opensuse.org
+
+- Use -j2 for make
+- Delete source url for conversion script
+
+-------------------------------------------------------------------
+Wed Oct 22 23:25:32 UTC 2014 - wk@ire.pw.edu.pl
+
+- update to version 3.7.5
+- bugfix release
+
+-------------------------------------------------------------------
+Fri Sep 19 10:26:19 UTC 2014 - wk@ire.pw.edu.pl
+
+- update to version 3.7.5
+- patch gnuradio-implicit-fortify-decl.patch removed (applied upstream)
+
+-------------------------------------------------------------------
+Tue Sep  9 08:06:26 UTC 2014 - coolo@suse.com
+
+- disable parallal build - it's too unreliable (due to memory pressure
+  on OBS workers)
+
+-------------------------------------------------------------------
+Thu Aug 28 14:20:37 UTC 2014 - dmitry_r@opensuse.org
+
+- Update grc_to_37.sh script to version 0.2
+
+-------------------------------------------------------------------
+Thu Aug 28 08:04:36 UTC 2014 - opensuse@dstoecker.de
+
+- add grc_to_37.sh script to package
+
+-------------------------------------------------------------------
+Mon Aug 25 21:00:13 UTC 2014 - dmitry_r@opensuse.org
+
+- Add missed texlive dependencies
+- Fix linking
+- Re-enable UHD support
+
+-------------------------------------------------------------------
+Wed Aug 20 09:58:03 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.7.4
+- Remove OBS source service
+- Use %cmake macros
+- Enable parallel build
+- Remove buildtime from documentation
+- Fix implicit definitions of special functions
+  * gnuradio-implicit-fortify-decl.patch
+- Disable UHD support
+- Add _constraints to set required memory to 4Gb
+- Use FFTW3 with multithreading support
+
+-------------------------------------------------------------------
+Sun Apr  6 09:02:30 UTC 2014 - wk@ire.pw.edu.pl
+
+- update to version 3.7.3
+
+-------------------------------------------------------------------
+Thu Dec 12 11:12:29 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.7.2.1
+  bug-fix release with no new features 
+
+-------------------------------------------------------------------
+Sun Nov 10 21:43:26 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.7.2
+  use qwt6 for all openSUSE versions
+
+-------------------------------------------------------------------
+Sat Sep 21 15:04:28 UTC 2013 - dl8fcl@darc.de
+
+- use qwt5 for openSUSE_13.1 
+
+-------------------------------------------------------------------
+Sat Aug 31 22:37:26 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.7.1
+  shared libraries are in a seperated rpm
+  changelog is in a seperated file
+
+-------------------------------------------------------------------
+Sat Jul  6 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.5.1
+ 
+-------------------------------------------------------------------
+Thu May 30 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.5
+
+-------------------------------------------------------------------
+Sat Mar 29 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.4.1
+
+-------------------------------------------------------------------
+Sat Mar 16 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.4
+
+-------------------------------------------------------------------
+Sat Mar  2 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.3.1
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to release 3.6.3 (version number patched in source)
+
+-------------------------------------------------------------------
+Thu Nov  1 00:00:00 UTC 2012 - wk@ire.pw.edu.pl
+
+- use Qwt6 if possible
+
+-------------------------------------------------------------------
+Tue Oct 30 00:00:00 UTC 2012 - wk@ire.pw.edu.pl
+
+- heavily modified for actual release
+- some parts taken from gnuradio package by surligas and from Fedora package
+
+-------------------------------------------------------------------
+Sat Jun  7 00:00:00 UTC 2008 - dl9pf@gmx.de
+
+- Imported into Build Service

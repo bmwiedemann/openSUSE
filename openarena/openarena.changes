@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Thu Mar 29 21:33:03 UTC 2018 - kasimir_@outlook.de
+
+- Fixed armv6 build
+
+-------------------------------------------------------------------
+Fri May 19 23:22:31 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add q_platform_aarch64_support.diff to fix compilation on aarch64
+
+-------------------------------------------------------------------
+Tue May 24 09:49:10 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-compile-gcc5.patch to fix build on Tumbleweed (gcc5)
+- Fixed some warnings (like usage of __DATE__)
+
+-------------------------------------------------------------------
+Sun Sep 15 17:28:24 UTC 2013 - dap.darkness@gmail.com
+
+- Arm build was fixed.
+
+-------------------------------------------------------------------
+Wed Dec 26 11:48:34 UTC 2012 - joop.boonen@boonen.org
+
+- openal-devel is now called openal-soft-devel 
+
+-------------------------------------------------------------------
+Sun Aug 12 15:37:11 UTC 2012 - dap.darkness@gmail.com
+
+- updated to 0.8.8
+- licence tag was fixed
+- existed patch became useless and was removed
+- a stack patch was added
+- "Recommends" doc package instead of "Requires"
+
+-------------------------------------------------------------------
+Fri Mar 23 12:25:17 UTC 2012 - jengelh@medozas.de
+
+- Fix syntax error near %ifarch
+- Have files owned by root - there is no reason to use "games"
+
+-------------------------------------------------------------------
+Sat Jul  2 15:51:07 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Sat Nov 27 20:44:45 CET 2010 - jslaby@suse.de
+
+- fix bot laoding failure (wrong strcpy usage)
+
+-------------------------------------------------------------------
+Mon Jan 19 20:00:00 CEST 2009 - michal.smrz@opensuse.cz
+
+- updated to 0.8.1
+- changed build procedure, 'cause upstream changed it
+- no patch is now needed (to successful build)
+- documentation is no longer included in this package
+- added .desktop file and .svg icon
+
+-------------------------------------------------------------------
+Mon Aug 11 18:23:24 CEST 2008 - lmichnovic@suse.cz
+
+- hardcoded games data dir which is /usr/share/games/openarena/
+  (hardcode_data_path.patch)
+
+-------------------------------------------------------------------
+Mon Aug 11 16:27:30 CEST 2008 - lmichnovic@suse.cz
+
+- fixed libdir
+
+-------------------------------------------------------------------
+Mon Aug 11 15:41:30 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 0.8 
+ * 3 new maps, 3 new weapons, bug fixes
+
+-------------------------------------------------------------------
+Thu Jun  5 19:06:38 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 0.7.7
+- not yet fixed date files search PATH
+
+-------------------------------------------------------------------
+Fri Apr 25 12:29:44 CEST 2008 - lmichnovic@suse.cz
+
+- update to 0.7.6
+- New player model : Assassin. This guy kills for greed.
+- New player model : Space Marine. This guy serves his Corps. In SPACE.
+- New player skin : Angelyss/Neko. Mew!!!!!! :3
+- New player skin : Grism/Indigo. A homage of that other game.
+- Ayumi/Neko, Angelyss/Sly have been atticed due to quality reasons.
+- Text font (bigchars.tga) used by console and hud messages now 
+  doesn't bleed anymore.
+- Special characters added for text font (bigchars.tga) used by
+  some mods. If you've ever encountered a "?" where it shouldn't
+  be in a mod, this should really fix it
+- lots of maps and changed maps, at least 8 new significant maps 
+  to play! This includes the  reworked oa_dm3 and oa_dm5.
+- oa_ctf2 is more balanced, slightly retextured.
+- Elimination and CTF elimination game types. No one respawns
+  until the round is over.
+- Double domination game type. Two teams must control two points
+  on the map for 10 seconds to score.
+- Last Man Standing game type. The name of the game is self
+  explanatory.
+- Instant Gib option, gives everyone only a railgun that does
+  kills instantly.
+- All Rockets option, makes everyone only have a rocket launcher.
+- Alt-tab working.
+- Unlagged tracehits option, provides a more responsive feel for
+  railguns, machineguns and shotguns.
+- Classic Grism aren't teamskins anymore. This means the 'white'
+  skin will not show up during team games. In addition, the skins
+  can be used for FFA again.
+- Completely in SDL.
+- BFG BFG BFG BFG
+- A lot of other stuff we forgot like minor polishings. There's 
+  lots of it and too many to mention here.
+
+-------------------------------------------------------------------
+Tue Mar  4 11:40:16 CET 2008 - lmichnovic@suse.cz
+
+- update to version 0.7.1
+
+-------------------------------------------------------------------
+Thu Nov  8 15:48:42 CET 2007 - lmichnovic@suse.cz
+
+- compiling from sources now
+  which needed *docu.patch, *makefile.patch, *missing_menudef.patch
+

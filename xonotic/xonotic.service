@@ -1,0 +1,16 @@
+[Unit]
+Description=Xonotic Daemon
+After=network.target
+
+[Service]
+#Type=forking
+ExecStart=/usr/bin/xonotic-dedicated
+PIDFile=/var/run/xonotic-dedicated.pid
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=xonotic
+Group=xonotic
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,43 @@
+--- Makefile.orig	2019-06-15 21:23:18.000000000 +0200
++++ Makefile	2019-06-15 21:52:33.475014820 +0200
+@@ -136,7 +136,7 @@
+ #
+ # Flag ordering: arch, then -f, then -m, then -W
+ DEBUG_FLAGS := $(if ${DEBUG},-g -O0,-Os)
+-WERROR := -Werror
++WERROR :=
+ FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
+ COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
+ 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls \
+@@ -237,12 +237,6 @@
+ CXX ?= g++
+ PKG_CONFIG ?= pkg-config
+ 
+-# Static?
+-ifneq (${STATIC},)
+-LDFLAGS += -static
+-PKG_CONFIG += --static
+-endif
+-
+ # Optional Libraries
+ LIBZIP_VERSION := $(shell ${PKG_CONFIG} --modversion libzip 2>/dev/null)
+ HAVE_LIBZIP := $(if ${LIBZIP_VERSION},1)
+@@ -1002,7 +996,6 @@
+ # Link tests for external repos
+ ${BUILD}/host/linktest/extern: ${HOSTLIB}
+ ${BUILD}/host/linktest/extern: LIBS = ${HOSTLIB}
+-${BUILD}/host/linktest/extern: LDLIBS += -static
+ TEST_OBJS += ${BUILD}/host/linktest/extern.o
+ 
+ .PHONY: hostlib
+@@ -1081,9 +1074,6 @@
+ ${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB}
+ ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
+ 
+-# Utilities for auto-update toolkits must be statically linked.
+-${UTIL_BINS_STATIC}: LDFLAGS += -static
+-
+ 
+ .PHONY: utils
+ utils: ${UTIL_BINS} ${UTIL_SCRIPTS}
+ 

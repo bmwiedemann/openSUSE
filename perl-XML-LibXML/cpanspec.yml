@@ -1,0 +1,20 @@
+---
+description_paragraphs: 1
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
+ Provides:       perl-XML-LibXML-Common = %{version}
+ Obsoletes:      perl-XML-LibXML-Common < %{version}
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#license: SUSE-NonFree
+#skip_noarch: 1
+post_section: |-
+ perl -MXML::SAX -e "XML::SAX->add_parser(q(XML::LibXML::SAX))->save_parsers()"

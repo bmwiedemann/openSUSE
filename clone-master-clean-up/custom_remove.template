@@ -1,0 +1,74 @@
+# It is a difference, if the master system is a plain vanilla installation or
+# if additional software is installed, configured and heavily tested and should
+# be rolled out later in the whole system landscape.
+# So the parts, which need to be cleaned up, are different depending on these
+# use cases.
+# See some examples for additional needed clean ups below.
+# 
+# Please copy the template file '/var/adm/clone-master-clean-up/custom_remove.template'
+# to '/var/adm/clone-master-clean-up/custom_remove' and un-comment the parts
+# you need or add additional parts, which will fit your needs.
+# Please be careful, the template file will be changed during future package
+# updates. So do NOT change the content. It will get lost. Always make changes
+# to a copy of the file.
+#
+# Be in mind:
+# At the moment only the removal of files or directories are supported.
+# Removing special parts from file content or other special scripting is NOT
+# supported
+
+#
+# Examples:
+#
+# If you install a special system management software (like Fujitsus ServerView,
+# HPs Insight Management Agents or IMBs  Director Agent), you need to clean up
+# some log, configuration or database files.
+# In most cases these files reside in:
+# /etc/<mgmtSW>
+# /opt/<Vendor>/<mgmtSW>
+# /var/log/<Vendor>
+#
+# e.g. remove old ServerView Agent Database and other related data
+# /etc/srvmagt/{VersionView.sav,VersionView.act,CommonConfig.ccs}
+# /etc/srvmagt/VME/var/db/*
+# /opt/fujitsu/ServerViewSuite/RAIDManager/bin/*\.xml
+# /var/log/srvmagt/log\.
+#
+#
+# Another use case may be the integration of a backup solution into the image
+# In this case some files depending to this solution need to be cleaned up.
+#
+#
+# Hardware dependend scenarios
+#
+# Lika a vendor specific management software for special hardware.
+# e.g. OneCommand management software for Avago/Emulex controller hardware.
+# Depending on the used version of the software the pathnames may change
+# /var/opt/<vendor>/<mgmtSW>/logs/*
+# or
+# /usr/sbin/<mgmtSW>/*log
+#
+# e.g
+# /usr/sbin/ocmanager/*log
+# /var/opt/emulex/ocmanager/logs/*
+# /var/opt/emulex/ocmanager/Dump
+# /usr/sbin/hbanyware/*log
+# /usr/sbin/hbanyware/Dump
+# if working with saved adapter parameters
+# check /usr/sbin/ocmanager/RMRepository for superfluous entries
+#
+# or the tools for megaRaid (MegaCli).
+# /opt/MegaRAID/MegaCli/*log
+#
+#
+# If the used HBA model has changed, check /etc/hba.conf for superfluous entries.
+#
+#
+# Clean up additional network config files
+# e.g. bonding interfaces or vlan interfaces
+# /etc/sysconfig/network/ifcfg-{bond,vlan}*
+# /etc/sysconfig/network/routes
+#
+# Room for improvement
+#
+#

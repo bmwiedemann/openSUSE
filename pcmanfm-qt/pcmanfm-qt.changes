@@ -1,0 +1,273 @@
+-------------------------------------------------------------------
+Tue Apr 30 10:09:45 UTC 2019 - mvetter@suse.com
+
+- bsc#1128570: Add menu-cache to requires
+
+-------------------------------------------------------------------
+Tue Mar  5 13:25:58 UTC 2019 - mvetter@suse.com
+
+- bsc#1100208: Use default openSUSE wallpaper
+- Add pcmanfm-qt-default-wallpaper.patch
+
+-------------------------------------------------------------------
+Mon Feb 25 10:19:32 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Corrected the logic of sorting. When a tab page's sorting is changed in
+    whatever way, remember it.
+  * Use user name for home desktop shortcut
+  * Give window parents to some app-modal dialogs
+  * Save/restore custom columns of detailed view
+  * Allow double-clicking an item on the autorun dialog to do that action
+  * Fix crash on sorting by group
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Jan 31 10:43:02 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Desktop items can be moved more naturally and placed anywhere on Desktop.
+  * Added desktop shortcuts for Trash, Computer, etc. The desktop Trash also supports trashing by drag-and-drop.
+  * Split view is fully supported (and remembered) inside pcmanfm-qt window.
+  * Made the filter-bar transient by default (it shows up when something is typed inside the view and can be closed by Ctrl+K).
+  * An option is added for showing full names of files (in contrast to display names).
+  * Theme icons are used in tool bar buttons that change the view.
+  * A red bar is added to the root instance.
+  * A Tool menu item is added for copying full path of selected file (with Ctrl+Shift+C as its shortcut).
+  * The problem with the default terminal is fixed.
+  * Fixes for virtual screens (multiple monitors), especially regarding desktop updates.
+  * And several other fixes that improve usability.
+  * Also see the changes of libfm-qt since they apply to pcmanfm-qt
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 15:22:49 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * Tab DND
+  * Basic bulk renaming
+  * Optional selection of newly created files
+  * Added symlink target info to statusbar
+  * Other GUI improvements
+  * Several bug fixes
+  * Code cleanup
+  * Using new libfm-qt capabilities instead of old libfm ones
+
+-------------------------------------------------------------------
+Mon Oct 23 11:59:23 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set Version
+  * removed dangeling symlink to debian dir
+  * Text eliding, long texts and newline
+  * Update status message appropriately
+  * fixup...use static const
+  * Fix icon sizes
+  * Just fixed my typo in search settings (#574)
+  * Lithuanian translation
+  * Lithuanian translation
+  * Disable menubar actions that cannot be used
+  * Save and restore search settings
+  * Don't export github templates
+  * Wallpaper Slide Show
+  * Inline renaming with F2 for detailed list view (#554)
+  * Inline renaming with F2
+  * Fix showing/hiding hidden files (#535)
+  * Don't select or scroll to child folder on reloading (#536)
+  * Replace customized DesktopItemDelegate hacks with the standard Fm::FolderItemDelegate provided by libfm-qt. (#529)
+  * liblxqt version make no sense here
+  * Copied issue template
+  * Fix Ctrl+A on desktop (#526)
+  * Update statusbar size info when needed
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Fix jerky desktop items
+  * Place dropped item at drop position (#504)
+  * Make custom pos checkbox work for multiple items (#499)
+  * Fix crash on removing desktop items with custom position (#496)
+  * Fix cursor on hovering desktop items
+  * Fix pressing RETURN in location bar
+  * Remove the old tilde replacement
+  * Included LXQTConfigVars
+  * Fixed config/CMakeLists.txt - removed not needed things
+  * Added merged autostart and config to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * lxqt-rc.xml: Change default config install path
+  * PCManFM-Qt: Update default wallpaper (#49)
+  * Merge pull request #48 from lxde/pcmanfm-qt-sort-order
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * Use lxqt-sudo in pcmanfm-qt config file by default.
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Adds double quotes to everything that may break
+  * Updates the build system to use the Targets infrastructure
+  * adjust default wallpaper to default theme
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -> LXQt stringchanges LxQt -> LXQt
+  * Add session.conf and windowmanagers.conf.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel & lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+  * Use const iterators (Fix a FTBFS in debug mode) (#483)
+  * Fixed desktop items movement
+  * Fixes some pedantic bugs
+  * Correct alignment of small icons on desktop
+  * Rename namespace Fm2 to Fm.
+  * Remove unused header includes.
+  * Fix a bug in correct tab page dir path which causes problems of file searching.
+  * Fix incorrect URI of application menu.
+  * Fix the broken folder reload.
+  * Fix incorrect title update of tabs.
+  * Add basic error handling when folder loading is failed.
+  * Port status message handling to the new libfm C++ API.
+  * Use Fm2::Path::homePath() API.
+  * Use the new libfm C++ terminal emulator APIs.
+  * Adopt to changes of libfm C++ APIs.
+  * Deprecate the use of Fm::Thumbnailer.
+  * Replace all NULL with C++ 11 nullptr.
+  * Initial port to the new C++ libfm API.
+  * DesktopWindow: Render tilled wallpaper manually
+  * Use const iterators
+  * Checks bookmarks iterators validity (#444)
+
+-------------------------------------------------------------------
+Fri Feb 24 19:42:18 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.2:
+  * Use static_cast instead of the C style cast
+  * Fix sign-compare warnings
+  * Prevent wrong clearing of filter-bar with path buttons (#432)
+  * bump patch version (#429)
+  * Add *da.desktop files
+  * Re-layout on Changing Display Name. (#355)
+  * Add Pathbar Separator
+  * New tab on middle clicking a path button
+  * Make dialogue "About" point out it's the Qt version of PCManFM. (#421)
+  * CMake: Drop finding XCB
+  * Avoid code duplication.
+  * Added a wallpaper zooming option
+  * Implement a "Connect to server" dialog for easily mounting remote filesystems. Add new API PCManFM::MainWindow::lastActive() to get last active window.
+  * Use the new button-style path bar by default. Properly handle the editing of button-style path bar.
+  * Add missing ui file.
+  * Move the pcmanfm-qt_pt_BR.ts file to lxqt-l10n repo.
+  * Remove context menu from toolbar and menubar
+  * Support button-style path bar and adjust the layout of the view menu slightly.
+  * Create pcmanfm-qt_fr.desktop
+  * Create pcmanfm-qt-desktop-pref_fr.desktop
+  * Adds Build PROJECT_NAME with Qt version message
+  * Moved LIBFM_DATA_DIR compile definition from libfm-qt
+  * Use target_compile_definitions().
+  * Use the new lxqt-build-tools package
+  * Added very basic .gitattributes
+  * remove "building with cpack" from CMakeLists.txt - not used anymore
+  * Add Catalan translations
+  * Added Brazilian Portuguese Translation (pt_BR)
+
+-------------------------------------------------------------------
+Sat Sep 24 22:10:15 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.1:
+  * Bump version to 0.11.1 (#399)
+  * Extend README.md
+  * Ensure the existence of libfm dir.
+  * Fix the bug that breaks sort folder first option.
+  * Preserve per-folder view settings. * Code refactor and cleanup. * Use Fm::FolderConfig internally for storing the per-folder settings.
+  * Per-folder saving of sorting and view mode
+  * Use libfm-qt C++ wrappers instead of the original libfm C API whenever possible.
+  * Replace tilde with home path (#371)
+  * Fix -Wswitch warning
+  * Use LXQtCompilerSettings cmake module
+  * Replaces deprecated QStyleOptionViewItemV4
+  * Fixes two typos (#381)
+  * Add Arabic Translations for Desktop Files
+  * I18N: Fix plural string (#374)
+  * Fix some icons for RTL (#366)
+  * Use a wide spread icon theme as fallback for the time beeing (#359)
+  * build: Use external translations
+  * ts-files removal (#352)
+  * Fix memory leak in main window tool bar (#350)
+  * Change "compact icon view" in "icon view" (#349)
+  * Merge pull request #341 from lxde/desktop_sort_settings
+  * Add some tooltips to Pref dialog
+  * Add setting for Desktop con size
+  * Fix a few compiler warnings
+- Split libfm-qt in own package
+- Add keyring
+
+-------------------------------------------------------------------
+Thu Nov  5 13:10:10 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+
+-------------------------------------------------------------------
+Fri Feb 20 21:31:00 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 23:46:52 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+- Added -lang subpackage
+
+-------------------------------------------------------------------
+Mon Jan 26 00:50:16 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora builds 
+
+-------------------------------------------------------------------
+Tue Oct 28 15:20:26 UTC 2014 - andrea@opensuse.org
+
+- Fixed license tag to GPL-2.0+
+
+-------------------------------------------------------------------
+Sat Oct 25 12:21:42 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 14:06:46 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up 
+
+-------------------------------------------------------------------
+Sat May 10 21:34:55 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on openSUSE specfile 
+
+-------------------------------------------------------------------
+Fri May  9 22:41:49 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  pcmanfm-qt-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 18:25:22 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for stable release
+  Add:  pcmanfm-qt-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Wed Apr  2 20:27:52 UTC 2014 - sfalken@opensuse.org
+
+- Added patch to fix SONAME, so I don't have to use a name like libpcman-qt0_0_0
+  Add: 0001-fix_soname.patch 
+
+-------------------------------------------------------------------
+Wed Apr  2 19:58:33 UTC 2014 - sfalken@opensuse.org
+
+- Intial Source Upload
+  Add: _service
+  Add: pcman-qt.spec
+  Add: pcman-qt.changes 
+

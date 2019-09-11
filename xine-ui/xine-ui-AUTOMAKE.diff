@@ -1,0 +1,14 @@
+Index: config.h.in
+===================================================================
+--- config.h.in.orig	2017-12-28 18:34:33.000000000 +0200
++++ config.h.in	2018-01-23 15:25:15.780958371 +0200
+@@ -228,6 +228,9 @@
+ /* Location of documentation files */
+ #undef XINE_DOCDIR
+ 
++/* logo mrl for reduced functionality */
++#undef XINE_LOGO_CRIPPLED_MRL
++
+ /* official logo MRL */
+ #undef XINE_LOGO_MRL
+ 

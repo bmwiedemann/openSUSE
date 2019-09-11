@@ -1,0 +1,10 @@
+[Unit]
+Description=TiMidity++ Daemon
+After=sound.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/timidity
+ExecStart=/usr/bin/timidity $TIM_ALSASEQPARAMS $TIM_STARTUP
+
+[Install]
+WantedBy=multi-user.target

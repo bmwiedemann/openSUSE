@@ -1,0 +1,13 @@
+Index: Viewnior-viewnior-1.7/data/viewnior.appdata.xml
+===================================================================
+--- Viewnior-viewnior-1.7.orig/data/viewnior.appdata.xml
++++ Viewnior-viewnior-1.7/data/viewnior.appdata.xml
+@@ -22,5 +22,5 @@
+     <screenshot><image>https://siyanpanayotov.com/images/vnr_pref_window.png</image></screenshot>
+     <screenshot><image>https://siyanpanayotov.com/images/vnr_navigation_window.png</image></screenshot>
+   </screenshots>
+-  <update_contact>contact_AT_siyanpanayotov.com</updatecontact>
+-</application>
+\ No newline at end of file
++  <updatecontact>contact_AT_siyanpanayotov.com</updatecontact>
++</component>

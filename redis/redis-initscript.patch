@@ -1,0 +1,176 @@
+Index: utils/redis_init_script
+===================================================================
+--- utils/redis_init_script.orig
++++ utils/redis_init_script
+@@ -1,50 +1,133 @@
+ #!/bin/sh
+-#
+-# Simple Redis init.d script conceived to work on Linux systems
+-# as it does use of the /proc filesystem.
+ 
++# System startup script for Redis for OpenSUSE >= 11.4
++#
++# Author: Marcello Barnaba <m.barnaba@ifad.org>
++# Tue Jul 31 17:32:27 CEST 2012
++#
++# LSB-compatible service control script; see http://www.linuxbase.org/spec/
++# Install it in /etc/init.d/redis and run insserv /etc/init.d/redis
++# Define configurations in /etc/init.d/redis/NAME.conf
++#
++# Source: https://gist.github.com/804026
++#
+ ### BEGIN INIT INFO
+-# Provides:     redis_6379
+-# Default-Start:        2 3 4 5
+-# Default-Stop:         0 1 6
+-# Short-Description:    Redis data structure server
+-# Description:          Redis data structure server. See https://redis.io
++# Provides:          redis
++# Required-Start:    $syslog $remote_fs
++# Required-Stop:     $syslog $remote_fs
++# Default-Start:     3 5
++# Default-Stop:      0 1 2 6
++# Short-Description: Redis server
++# Description:       Starts and stops the configured Redis instances
+ ### END INIT INFO
+ 
+-REDISPORT=6379
+-EXEC=/usr/local/bin/redis-server
+-CLIEXEC=/usr/local/bin/redis-cli
++EXEC=/usr/sbin/redis-server
++USER=redis
++STATE=/var/run/redis
++CONF=/etc/redis
++
++. /etc/rc.status
++
++if [ ! -d $STATE ]; then
++  install -d $state -o $USER -g $USER -m 0755 $STATE
++fi
++
++_get_env() {
++    INSTANCE=$1
++    PIDFILE=${STATE}/${INSTANCE}.pid
++    CONFIG=${CONF}/${INSTANCE}.conf
++}
++
++_foreach_config() {
++    command=$1
++
++    if [ -n "$2" ]; then
++        $command $2
++    else
++        for file in /etc/redis/*.conf; do
++            $command `basename "$file" .conf`
++        done
++    fi
++}
++
++start() {
++    _get_env $1
++
++    echo -n "Starting Redis server '${INSTANCE}'... "
++
++    if [ ! -f ${CONFIG} ]; then
++        echo "$CONFIG not found"
++        rc_failed
++
++    elif [ -f ${PIDFILE} ] && [ -x /proc/`cat ${PIDFILE}` ]; then
++        echo -n "already running (PID `cat ${PIDFILE}`)"
++
++    else
++        rm -f ${PIDFILE}
++        sudo -u $USER $EXEC $CONFIG
++    fi
++    rc_status -v
++}
++
++stop() {
++    _get_env $1
++
++    echo -n "Stopping Redis server '${INSTANCE}' ... "
++
++    if [ ! -f $PIDFILE ]; then
++        echo -n "not running"
++    else
++        PID=`cat $PIDFILE`
++        CLI='/usr/bin/redis-cli'
++        PASS=`grep ^requirepass $CONFIG | awk '{print $2}'`
++        PORT=`grep ^port $CONFIG | awk '{print $2}'`
++        BIND=`grep ^bind $CONFIG | awk '{print $2}'`
++
++        CLI="$CLI -p $PORT"
++        [ -n "$PASS" ] && CLI="$CLI -a $PASS"
++        [ -n "$BIND" ] && CLI="$CLI -h $BIND"
++
++        $CLI shutdown
++        echo -n "Waiting... "
++
++        while [ -x /proc/${PID} ]; do
++            sleep 1
++            echo -n '.'
++        done
++        rm -f ${PIDFILE}
++    fi
++    rc_status -v
++}
++
++status() {
++    _get_env $1
++
++    echo -n "Checking for redis '${INSTANCE}'"
++    /sbin/checkproc -p $PIDFILE $EXEC
++    rc_status -v
++}
+ 
+-PIDFILE=/var/run/redis_${REDISPORT}.pid
+-CONF="/etc/redis/${REDISPORT}.conf"
+ 
+ case "$1" in
+     start)
+-        if [ -f $PIDFILE ]
+-        then
+-                echo "$PIDFILE exists, process is already running or crashed"
+-        else
+-                echo "Starting Redis server..."
+-                $EXEC $CONF
+-        fi
+-        ;;
++        _foreach_config start $2
++    ;;
++
+     stop)
+-        if [ ! -f $PIDFILE ]
+-        then
+-                echo "$PIDFILE does not exist, process is not running"
+-        else
+-                PID=$(cat $PIDFILE)
+-                echo "Stopping ..."
+-                $CLIEXEC -p $REDISPORT shutdown
+-                while [ -x /proc/${PID} ]
+-                do
+-                    echo "Waiting for Redis to shutdown ..."
+-                    sleep 1
+-                done
+-                echo "Redis stopped"
+-        fi
+-        ;;
++        _foreach_config stop $2
++    ;;
++
++    status)
++        _foreach_config status $2
++    ;;
++
++    restart)
++        $0 stop  $2
++        $0 start $2
++    ;;
++
+     *)
+-        echo "Please use start or stop as first argument"
+-        ;;
++        echo "Usage: $0 <start|stop|restart|status>"
++        exit 1
++    ;;
+ esac

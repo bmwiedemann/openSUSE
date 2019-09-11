@@ -1,0 +1,45 @@
+Index: ecryptfs-utils-108/src/utils/ecryptfs-setup-swap
+===================================================================
+--- ecryptfs-utils-108.orig/src/utils/ecryptfs-setup-swap
++++ ecryptfs-utils-108/src/utils/ecryptfs-setup-swap
+@@ -37,23 +37,20 @@ warn() {
+ usage() {
+ 	echo
+ 	echo `gettext "Usage:"`
+-	echo "  $0 [-f|--force] [-n|--no-reload]"
++	echo "  $0 [-f|--force]"
+ 	echo
+ 	exit 1
+ }
+ 
+ # Handle command line options
+ FORCE=0
++NO_RELOAD=1
+ while [ ! -z "$1" ]; do
+ 	case "$1" in
+ 		-f|--force)
+ 			FORCE=1
+ 			shift 1
+ 		;;
+-		-n|--no-reload)
+-			NO_RELOAD=1
+-			shift 1
+-		;;
+ 		*)
+ 			usage
+ 		;;
+@@ -151,7 +148,8 @@ for swap in $swaps; do
+ 	uuid=$(blkid -o value -s UUID $swap)
+ 	# /etc/fstab might use a symlink like /dev/mapper/ubuntu--vg-swap_1
+ 	links=$(for d in $(udevadm info --query=symlink -n $swap); do echo /dev/$d; done)
+-	for target in "UUID=$uuid" $swap $links; do
++  suse_swap=$(grep swap /etc/fstab |cut -d' ' -f1)
++  for target in "UUID=$uuid" $swap $links $suse_swap; do
+ 		if [ -n "$target" ] && grep -qs "^$target\s\+" /etc/fstab; then
+ 			sed -i "s:^$target\s\+:\#$target :" /etc/fstab
+ 			warn "Commented out your unencrypted swap from /etc/fstab"
+@@ -201,3 +199,4 @@ if [ "$NO_RELOAD" != 1 ]; then
+ fi
+ 
+ info `gettext "Successfully encrypted swap!"`
++info "This will take effect after reboot"

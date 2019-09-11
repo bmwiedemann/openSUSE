@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Mar  9 11:13:32 UTC 2015 - dimstar@opensuse.org
+
+- Move the .desktop file to Education;Languages
+
+-------------------------------------------------------------------
+Tue Dec 20 20:56:31 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Sat Sep 24 16:16:38 UTC 2011 - crrodriguez@opensuse.org
+
+- Link with libm as well. 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun  2 01:26:27 CEST 2004 - ro@suse.de
+
+- do not define GTK_DISABLE_DEPRECATED
+
+-------------------------------------------------------------------
+Tue Feb 17 09:09:50 CET 2004 - adrian@suse.de
+
+- fix Categories
+
+-------------------------------------------------------------------
+Sun Jan 11 12:41:28 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 16 13:34:16 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Tue Jun 24 15:06:00 CEST 2003 - ro@suse.de
+
+- use gtk2-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jun 24 14:30:02 CEST 2003 - mfabian@suse.de
+
+- update to 2.0.0 (GTK-2 version) and remove obsolete patch.
+
+-------------------------------------------------------------------
+Mon May  7 20:07:17 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Nov  6 01:33:28 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Thu Aug 31 12:33:39 CEST 2000 - mfabian@suse.de
+
+- fix to make it work on big-endian machines like PowerPC
+
+-------------------------------------------------------------------
+Fri Jul 14 11:01:18 CEST 2000 - mfabian@suse.de
+
+- new package: kanjipad, Version 1.2.3
+
+

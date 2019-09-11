@@ -1,0 +1,70 @@
+Setup of hylafax+ on openSUSE
+----------------------------
+
+After installation of hylafax you need to run 
+faxsetup
+answer the questions and modify to your needs.
+
+Run 
+faxaddmodem
+for each attached modem. It asks you for the device, leave out the /dev prefix; 
+only enter eg. modem, ttyS0 or such things. 
+Answer the other questions, important ones could be the ringtones, max pages, 
+permissions on files or your the name that should be shown. 
+
+Setting up hylafax for systemd
+------------------------------
+
+hylafax comes with three systemd service files. The first two are needed when 
+you want to send faxes from your server:
+
+hylafax-hfaxd.service - the hylafax server
+hylafax-faxq.service - the fax scheduler
+
+Enable systemd service for the daemons. They will start at boot time:
+
+systemctl enable hylafax-hfaxd.service
+systemctl enable hylafax-faxq.service
+
+
+systemd-timers
+--------------
+
+openSUSE has moved from cron to systemd-timers. By default we ship 2 timers, 
+for cleaning the faxqueue and for usage statistics. You need to enable them in 
+case you want to make use of these features:
+
+systemctl enable hylafax-faxqclean.timer
+systemctl enable hylafax-usage.timer
+
+
+Receiving faxes
+---------------
+
+In order to receive faxes as well, you need to run one faxgetty for each 
+interface, e.g.:
+
+systemctl start hylafax-faxgetty@ttyS0.service
+systemctl start hylafax-faxgetty@ttyIAX0.service
+
+Starting them at boot time with:
+
+systemctl enable hylafax-faxgetty@ttyS0.service
+systemctl enable hylafax-faxgetty@ttyIAX0.service
+
+
+Send-only environment
+---------------------
+
+Many installations run hylafax just for sending faxes. To get this up and running, the command 
+faxmodem
+needs to run after hylafax is started.
+In a systemd environment, it is easiest to add additional configuration for systemd.
+Create a directory
+/etc/systemd/system/hylafax-hfaxd.service.d
+and copy the file sendonly.conf into this directory.
+Check that the mentioned port (ttyS0 - Parameter is the device the modem is attached 
+to) in this file matches your configuration and restart the service.
+
+For general documentation on how to set up hylafax, please see
+http://hylafax.sourceforge.net/howto/install.php

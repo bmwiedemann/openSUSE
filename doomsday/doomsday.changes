@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Sun Jun  2 15:10:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.1.1
+  * Graphics optimizations: While games still use the classic
+    renderer like in 2.0, all graphics are now drawn using OpenGL
+    3.3. This enables optimizations for more efficient rendering
+    of the player view, menus, text, and the Doomsday UI.
+  * UI improvements: The Doomsday UI look and feel has been
+    refreshed. The game library is now more flexible and powerful
+    with further game customization settings and view options.
+  * Multiplayer convenience: Clients will automatically download
+    missing PWADs from the server before joining the game.
+
+-------------------------------------------------------------------
+Thu Feb  8 14:37:03 UTC 2018 - jengelh@inai.de
+
+- Get rid of BuildRequires: xorg-x11-devel.
+
+-------------------------------------------------------------------
+Sun Jan 14 16:23:15 UTC 2018 - jengelh@inai.de
+
+- Add bundled() markers
+
+-------------------------------------------------------------------
+Thu Dec 14 12:08:38 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix release 2.0.3
+  * Server had crashed during startup with error messages related
+    to threading
+  * Non-standard C++ code had led to crash when using gcc7
+  * Removed duplicate IWAD spec for Heretic 1.3 /
+    Shadow of the Serpent Riders
+  * Hexen: fix crash after returning to a different map in a hub
+- Add doomsday-libs.diff, doomsday-notime.diff
+
+-------------------------------------------------------------------
+Thu Apr 20 12:07:26 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.0
+  * The Home Screen replaces the front-end app. The Python-based
+    Snowberry launcher application was created in 2005 and has been
+    used for starting Doomsday ever since. In version 2.0, the
+    launcher is no longer needed because Doomsday's Home Screen
+    (previously called "ring zero") replaces its functionality.
+  * Built-in support for packages. One of the launcher's key features
+    was add-on management. This is now also part of Doomsday itself
+    in the form of packages. Anything that Doomsday can load — WADs,
+    resource packs, 3D models, etc. — is now handled via the same
+    package management system. This enables Doomsday to track which
+    files are in use in saved games and multiplayer games, and makes
+    it possible to automatically ensure that the correct files are
+    loaded at any given time.
+  * New 3D model renderer. Doomsday's graphics code is undergoing a
+    transition to a newer version of OpenGL, namely "OpenGL3/4 Core
+    Profile"). Certain parts like the engine UI have already
+    completed this transition, however the game renderer itself has
+    not. In version 2.0, the new version of the 3D model renderer has
+    reached a state where it is useful for actual gameplay. This new
+    renderer supports FBX and MD5 models (among other formats),
+    skeletal animation, GLSL shaders, and Doomsday Script.
+
+-------------------------------------------------------------------
+Sat Jun 18 07:53:52 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.15.8
+* Custom episodes. Episode (DED) definitions specify the structure of
+  game episodes (including hubs) enabling entirely new episodes and
+  modifying the originals.
+* MAPINFO support. MAPINFO (Hexen) definitions are now supported in
+  Doom and Heretic, as well as Hexen. Note that, presently, only the
+  Hexen dialect of MAPINFO is supported (ZDoom uses its own MAPINFO
+  dialect).
+* Adjustable pixel density. If your GPU is on the slower side, you
+  can improve performance by reducing game view resolution. The rest
+  of the UI remains sharp since the display mode is not changed. As a
+  bonus, you can also get a nice nostalgic aesthetic similar to the
+  original Doom on a CRT display.
+- If you get a blank screen instead of the game title screen
+  after selecting the IWAD to play, you may need to reset your
+  settings (~/.doomsday)!
+- Added doomsday-ncurses.diff (work around absence of ncurses.pc
+  in not-too-new ncurses)
+
+-------------------------------------------------------------------
+Thu Jun 16 22:13:12 UTC 2016 - jengelh@inai.de
+
+- Add -Wno-narrowing to let gcc6 build pass
+
+-------------------------------------------------------------------
+Mon Mar 30 08:42:53 UTC 2015 - dimstar@opensuse.org
+
+- Add doomsday-no-abs-icon.patch: Do not use absolute path to
+  icons. Applicatio containerisation requires the icons to be below
+  /usr/share/icons or /usr/share/pixmaps.
+- Copy the icons from the app directory to /usr/share/pixmaps.
+
+-------------------------------------------------------------------
+Sun Oct 12 17:06:34 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.14.5, which fixes:
+* Hexen: Loading autosaved progress on a previously visited map
+  loads an out of date save state
+* Hexen: Number of inventory items increases when going through
+  a portal
+* Hexen: Puzzle progress in main hub not showing up
+
+-------------------------------------------------------------------
+Tue May 20 12:21:57 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.14.3, which fixes:
+* Hexen: Hub maps reset after saving, causing invalid game world
+  state
+* Doom 2: Crash playing sci2.wad MAP13
+* Better compatibility with vanilla Doom renderer: dynamic
+  map hacks dependent on non-neighbor planes
+* Hexen: Saving error — "already exists"
+
+-------------------------------------------------------------------
+Thu May  1 13:03:03 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.14.1, which fixes:
+* particles were shut off shortly after level start
+* flickering light decoration on moving platform
+* letterboxed/pillarboxed drawing of the game was broken
+* Heretic ghost mummies' floating spirits were not disappearing
+  after death
+* Shift key state was not recognized by bindings when typing in
+  console
+* Multiplayer weapons were not remaining in play
+* Gracefully abort if OpenGL version is not sufficient
+
+-------------------------------------------------------------------
+Wed Apr 23 21:44:28 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.14
+* It adds bloom to Doomsday's visual features. The last of the
+  old UI has been replaced, and now MP games and save games, due
+  to a new save game format, from all games can be accessed from
+  the taskbar or home screen (formerly Ring Zero). New alert and
+  tutorial notifications have been added to inform users of any
+  important engine, map and resource errors and about the UI.
+
+-------------------------------------------------------------------
+Mon Jan  6 05:15:25 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.13.1
+* Multiplayer: Resolve crash when joining a multiplayer game using
+  the Vanilla appearance profile
+* Multiplayer: Resolve crash when more than one client joins a game
+* Multiplayer: Missing busy mode transition frame when joining
+  a game
+* UI: Using keyboard bindings when a popup is open in the UI
+  (e.g. pressing F11 to toggle screen when the DE menu is open in
+  the task bar)
+* Added the -nodiscovery option to prevent Doomsday from looking
+  for running servers on the LAN
+
+-------------------------------------------------------------------
+Fri Jan  3 03:06:53 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.13
+* Framebuffer effects. Doomsday can now use OpenGL shaders to
+  post-process the rendered frames. In this release, this has been
+  applied this for libdoom's Invulnerability power-up effect.
+* Stereoscopic 3D. Support has been added for various stereoscopic
+  rendering modes, including anaglyph, side-by-side, parallel and
+  cross-eyed viewing.
+
+-------------------------------------------------------------------
+Mon Nov 11 22:25:36 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.12.2
+* console: fix crash when autocompleting certain words (e.g. "upd")
+* task bar: Added toggle for sound-overlap-stop to Audio Settings:
+  when enabled, only one sound is allowed per emitter (like in the
+  original games) 
+- Remove deng-va-list.diff (merged upstream)
+- OpenGL 2.x is required for Doomsday 1.12
+
+-------------------------------------------------------------------
+Sun Oct  6 23:35:10 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.12
+* The old Control Panel and Updater have been retired and their
+  functionality merged into the taskbar. New taskbar features
+  include background downloading of updates, profiles for renderer
+  settings, and auto completion of console commands. There is also
+  vastly improved map rendering hack support, and 3D sound can now
+  separate isolated parts of joined sectors.
+
+-------------------------------------------------------------------
+Tue Jul 30 19:02:06 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.11.0
+* Doomsday has received a new mouse-driven UI; the taskbar
+  replaces the old console.
+
+-------------------------------------------------------------------
+Thu May 23 12:48:58 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.10.3
+* resolve stuck TEXTUREn lump loading with Hell Revealed II
+* fog should not be applied to weapon psprites
+- Remove deng-nodate.diff: kill __DATE__ with shell instead of patch
+
+-------------------------------------------------------------------
+Thu Apr 18 12:03:30 UTC 2013 - jengelh@inai.de
+
+- Supply path configuration file and kill the shell wrappers that
+  supplied the paths via command line before.
+
+-------------------------------------------------------------------
+Tue Apr  9 21:03:14 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.10
+* the multiplayer server is now its own separate executable that
+  users control using the new "Shell" application
+- Remove deng-libdir.diff (merged upstream)
+
+-------------------------------------------------------------------
+Tue Mar 19 17:07:47 UTC 2013 - schwab@suse.de
+
+- deng-va-list.diff: Remove non-portable use of va_list
+
+-------------------------------------------------------------------
+Sun Feb 17 10:56:08 UTC 2013 - jengelh@inai.de
+
+- Correctly place files into %_libdir (original sr#147463)
+
+-------------------------------------------------------------------
+Sun Jan  6 21:06:46 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.9.10.1
+* The longstanding gameplay bug that prevented a column from
+  lowering on Doom E1M7 has now been fixed.
+* Command-line tools for creating and editing data files (md2tool,
+  texc) are now included as part of the distribution packages.
+
+-------------------------------------------------------------------
+Thu Oct  4 21:59:29 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.9.9
+* Faster map loading thanks to optimizations in the BSP builder.
+* Improved music support for OS X 10.6+ and Linux: SF2 soundfonts
+  can be used with the original games' MIDI music.
+
+-------------------------------------------------------------------
+Mon Jul  9 18:28:47 UTC 2012 - jengelh@inai.de
+
+- Bump importance of timidity from Suggested to Recommended. (Few
+  users actually have FMOD (alternative output plugin) installed.)
+
+-------------------------------------------------------------------
+Sun Jun 24 19:33:23 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 1.9.8) for build.opensuse.org

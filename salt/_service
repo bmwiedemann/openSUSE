@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/salt-packaging.git</param>
+    <param name="subdir">salt</param>
+    <param name="filename">package</param>
+    <param name="revision">2019.2.0</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="extract_file" mode="disabled">
+    <param name="archive">*package*.tar</param>
+    <param name="files">*/*</param>
+  </service>
+  <service name="download_url" mode="disabled">
+    <param name="host">codeload.github.com</param>
+    <param name="path">openSUSE/salt/tar.gz/v2019.2.0-suse</param>
+    <param name="filename">v2019.2.0.tar.gz</param>
+  </service>
+  <service name="update_changelog" mode="disabled"></service>
+</services>

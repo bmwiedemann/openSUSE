@@ -1,0 +1,34 @@
+bindir ?= /usr/bin
+
+# Do not use make's built-in rules
+# (this improves performance and avoids hard-to-debug behaviour);
+MAKEFLAGS += -r
+
+override CFLAGS += -O2 -Wall -g -D_GNU_SOURCE -I include
+
+ALL_PROGRAMS := intel-speed-select
+
+all: $(ALL_PROGRAMS)
+
+OBJ = isst-config.o isst-core.o isst-display.o
+
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+intel-speed-select: isst-config.o isst-core.o isst-display.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+clean:
+	rm -f $(ALL_PROGRAMS)
+	rm -rf include/linux/isst_if.h
+	find . -name '*.o' -delete -o -name '\.*.d' -delete
+
+install: $(ALL_PROGRAMS)
+	install -d -m 755 $(DESTDIR)$(bindir);		\
+	for program in $(ALL_PROGRAMS); do		\
+		install $$program $(DESTDIR)$(bindir);	\
+	done
+
+FORCE:
+
+.PHONY: all install clean

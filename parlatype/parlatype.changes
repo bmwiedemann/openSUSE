@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Aug 30 13:30:54 UTC 2018 - mvetter@suse.com
+
+- Move gstreamer-plugins-* from BuildRequires to Requires
+
+-------------------------------------------------------------------
+Wed Aug 29 07:03:10 UTC 2018 - mvetter@suse.com
+
+- Install desktop file, as the 1.5.6 one is valid now
+
+-------------------------------------------------------------------
+Thu Aug 23 11:18:50 UTC 2018 - mvetter@suse.com
+
+- Update to 1.5.6:
+  * Animate scrolling when using keybindings
+  * Change desktop entry category to Audio/Video instead of Utilities
+  * Fix a build warning on most architectures other than amd64
+  * New or updated translations:
+    - fr: Georgelemental
+
+-------------------------------------------------------------------
+Thu Aug 23 11:16:24 UTC 2018 - mvetter@suse.com
+
+- Add libparlatype lang package
+
+-------------------------------------------------------------------
+Mon Jun 25 19:49:28 UTC 2018 - mvetter@suse.com
+
+- Split libparlatype into own subpackage
+- Have seperate lang package
+
+-------------------------------------------------------------------
+Sun Jun 24 10:54:57 UTC 2018 - mvetter@suse.com
+
+- Remove desktop file for now, to prevent non valid error
+
+-------------------------------------------------------------------
+Tue Jun 19 08:43:51 UTC 2018 - mvetter@suse.com
+
+- Inital package for openSUSE in version 1.5.5

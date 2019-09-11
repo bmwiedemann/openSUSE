@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Wed Aug  8 12:30:18 UTC 2018 - jengelh@inai.de
+
+- Trim repeated name in summary (rpmlint). Trim filler wording
+  from description.
+
+-------------------------------------------------------------------
+Tue Aug  7 20:08:10 UTC 2018 - dmueller@suse.com
+
+- update to 0.11.5:
+  * Fixed issue with opening README file in setup.py.
+  * Support Python 3.7.
+  * #343: Drop support for Python 3.3.
+  * #342: Add support for sets and frozensets.
+  * #332: Fix Python 3.x compatibility for setup.py when pypandoc is installed.
+  * #348: Include path in AnyInvalid errors.
+  *#351: Fix Date behaviour when a custom format is specified.
+
+-------------------------------------------------------------------
+Tue Aug  7 11:31:24 UTC 2018 - tchvatal@suse.com
+
+- Sort out a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 23 15:05:35 UTC 2018 - tbechtold@suse.com
+
+- update to 0.11.1:
+  - Support Python 3.6.
+  - Drop support for Python 2.6, 3.1 and 3.2.
+  - Allow to use nested schema and allow any validator to be compiled.
+  - Default values MUST now pass validation just as any regular value.
+    This is a backward incompatible change if a schema uses default values
+    that don't pass validation against the specified schema.
+  - Modify `__lt__` in Marker class to allow comparison with non Marker
+    objects, such as str and int.
+  - Add description field to `Marker` instances.
+  - Add `Schema.infer` method for basic schema inference.
+  - Add `SomeOf` validator.
+  - Treat Python 2 old-style classes like types when validating.
+  - Make `IsDir()`, `IsFile()` and `PathExists()` consistent between
+    different Python versions.
+  - Use absolute imports to avoid import conflicts.
+  - Fix `Coerce` validator to catch `decimal.InvalidOperation`.
+  - Make `Schema([])` usage consistent with `Schema({})`.
+  - Allow partial validation when using validate decorator.
+  - Make `Schema.__eq__` deterministic.
+  - Replace implementation of `Maybe(s)` with `Any(None, s)` to allow
+    it to be compiled.
+
+-------------------------------------------------------------------
+Thu Jul  6 14:39:52 UTC 2017 - tbechtold@suse.com
+
+- update to 0.10.5:
+  - [#278](https://github.com/alecthomas/voluptuous/pull/278): Unicode
+    translation to python 2 issue fixed.
+  - [#195](https://github.com/alecthomas/voluptuous/pull/195):
+    `Range` raises `RangeInvalid` when testing `math.nan`.
+  - [#215](https://github.com/alecthomas/voluptuous/pull/215):
+    `{}` and `[]` now always evaluate as is, instead of as any dict or any list.
+    To specify a free-form list, use `list` instead of `[]`. To specify a
+    free-form dict, use `dict` instead of `Schema({}, extra=ALLOW_EXTRA)`.
+  - [#224](https://github.com/alecthomas/voluptuous/pull/224):
+    Change the encoding of keys in error messages from Unicode to UTF-8.
+  - [#185](https://github.com/alecthomas/voluptuous/pull/185):
+    Add argument validation decorator.
+  - [#199](https://github.com/alecthomas/voluptuous/pull/199):
+    Add `Unordered`.
+  - [#200](https://github.com/alecthomas/voluptuous/pull/200):
+    Add `Equal`.
+  - [#207](https://github.com/alecthomas/voluptuous/pull/207):
+    Add `Number`.
+  - [#210](https://github.com/alecthomas/voluptuous/pull/210):
+    Add `Schema` equality check.
+  - [#212](https://github.com/alecthomas/voluptuous/pull/212):
+    Add `coveralls`.
+  - [#227](https://github.com/alecthomas/voluptuous/pull/227):
+    Improve `Marker` management in `Schema`.
+  - [#232](https://github.com/alecthomas/voluptuous/pull/232):
+    Add `Maybe`.
+  - [#234](https://github.com/alecthomas/voluptuous/pull/234):
+    Add `Date`.
+  - [#236](https://github.com/alecthomas/voluptuous/pull/236),
+    [#237](https://github.com/alecthomas/voluptuous/pull/237), and
+    [#238](https://github.com/alecthomas/voluptuous/pull/238):
+    Add script for updating `gh-pages`.
+  - [#256](https://github.com/alecthomas/voluptuous/pull/256):
+    Add support for `OrderedDict` validation.
+  - [#258](https://github.com/alecthomas/voluptuous/pull/258):
+    Add `Contains`.
+  - [#197](https://github.com/alecthomas/voluptuous/pull/197):
+    `ExactSequence` checks sequences are the same length.
+  - [#201](https://github.com/alecthomas/voluptuous/pull/201):
+    Empty lists are evaluated as is.
+  - [#205](https://github.com/alecthomas/voluptuous/pull/205):
+    Filepath validators correctly handle `None`.
+  - [#206](https://github.com/alecthomas/voluptuous/pull/206):
+    Handle non-subscriptable types in `humanize_error`.
+  - [#231](https://github.com/alecthomas/voluptuous/pull/231):
+    Validate `namedtuple` as a `tuple`.
+  - [#235](https://github.com/alecthomas/voluptuous/pull/235):
+    Update docstring.
+  - [#249](https://github.com/alecthomas/voluptuous/pull/249):
+    Update documentation.
+  - [#262](https://github.com/alecthomas/voluptuous/pull/262):
+    Fix a performance issue of exponential complexity where all of
+    the dict keys were matched against all keys in the schema.
+    This resulted in O(n*m) complexity where n is the number of keys
+    in the dict being validated and m is the number of keys in the schema.
+    The fix ensures that each key in the dict is matched against the
+    relevant schema keys only. It now works in O(n).
+  - [#266](https://github.com/alecthomas/voluptuous/pull/266):
+    Remove setuptools as a dependency.
+- convert to singlespec
+
+-------------------------------------------------------------------
+Thu Aug 11 13:32:54 UTC 2016 - tbechtold@suse.com
+
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Wed Aug 10 11:43:06 UTC 2016 - tbechtold@suse.com
+
+- update to 0.9.3:
+  * README: Document Schema.extend
+  * Also include README.rst in distribution.
+  * Add missing % formatting character
+  * Mention use of Any to allow None values
+  * Flake8 errors resolved; Tox now running successfully
+  * Bump to 0.9.2
+  * if/else conditions modified
+  * 0.9.1 to fix missing Error import.
+  * Don't assume a user's dict type can be instantiated.
+  * Eliminate unnecessary SequenceItemInvalid exception.
+  * Squashing commits into 1
+  * Fixes issue #118 by guarding against a TypeError: unhashable type: 'list' exception
+  * Bump version.
+  * Include tests in sdist.
+  * Removed docs from master to avoid confusion
+  * Added additional @wraps where appropriate
+  * Added Unique and Set
+  * Added recursive schema into README #128
+  * Remove setup_requires from setup.py
+  * Added validator for datetime strings
+  * 0.8.9 release.
+  * Documentation made with Sphinx
+  * Make many of the validators have useful __repr__
+  * Test cases for checking validation of domain less url's
+  * Added Literal wrapper for literal comparisons.
+  * Fixed docs for doctest
+  * Added Documentation Link
+  * Implement Schema.extend
+  * Release 0.8.7.
+  * Did validation for Fully qualified domain url's
+  * 0.8.11
+  * 0.8.10
+  * Sorting unittest
+  * Add SetTo(n) to force setting a value. Useful with Any().
+  * Fix some bugs.
+  * Improve `repr` representation of some classes
+  * ExactSequence fix for item assignment
+  * Support bool literals.
+  * Fixed spelling of word
+  * Add python 3.5 to tox.ini test suite
+  * setup.py changed to support packages
+  * 0.9.0
+  * Fixed Unique and Set tests in other python versions
+  * Email validator added
+  * Fixed Python 3.x version check by using sys.version_info
+  * Corrected typo
+  * Have iteritems work with any Mapping class that implements iteritems
+  * Updated url validation code for url's with no domain
+  * Use with statement to close file handle
+  * Updated README for extra keys setting
+  * Correctly report error location with inclusive/exclusive.
+  * Use https in setup
+  * Handle nested MultipleInvalid exceptions.
+  * error humanization wrappers for #140
+  * Run static analysis on the exact source set
+  * Added package classifiers to indicate support for Python 3.x
+  * Add NotIn validation
+  * remove unneeded conditional check.
+  * Fixes #157
+  * Update travis.yml with python 3.4, 3.5 support
+  * Schema.extend works only for dicts
+  * regex precompiled at import time
+  * Add validate_schema decorator
+  * Fix a TypeError when using a copy of dictionary fields.
+  * Implemented __lt__ on Marker objects
+  * Aliases: Or = Any, And = All
+  * Readme updated for incorporating url.
+  * Url scheme and host validation
+  * flake8 cleanup (removed unused import)
+  * Prevent individual errors from validating a list's items from being lost.
+  * Adds string transform for stripping whitespace
+  * Test cases added for email
+  * W503 resolution made clear
+  * Added correct handling of callable objects as default values
+  * More test cases added for FQDN url validation
+
+-------------------------------------------------------------------
+Wed Apr  1 21:13:38 BST 2015 - aspiers@suse.com
+
+- Initial version

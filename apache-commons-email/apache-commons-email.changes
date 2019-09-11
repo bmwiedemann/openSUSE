@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue May 15 09:41:06 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * commons-email-1.5-sourcetarget.patch
+    + build with java source and target 8 to anticipate removal of
+      the java 6 compatibility
+- Added patch:
+  * commons-email-1.5-javadoc.patch
+    + Do not load urls while building
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Thu Sep 14 11:34:08 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * commons-email-1.5-sourcetarget.patch
+    - Specify java source and target 1.6 and fix jdk9 build
+
+-------------------------------------------------------------------
+Thu Aug 17 13:27:51 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Update to version 1.5
+  * Security fix [CVE-2017-9801, bsc#1051785]
+    - SMTP header injection vulnerabilty 
+    - Added patch apache-commons-email-CVE-2017-9801.patch
+  * Requires Java >= 1.6
+  * Added Support for International Domain Names
+  * Upgrade to javax.mail-1.5.6
+
+- Full update report in:
+  http://commons.apache.org/proper/commons-email/changes-report.html
+
+-------------------------------------------------------------------
+Sun May 21 07:49:03 UTC 2017 - tchvatal@suse.com
+
+- Remove javapackages-tools requires
+
+-------------------------------------------------------------------
+Fri Jul 18 13:04:14 UTC 2014 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan  6 19:38:44 UTC 2012 - dmacvicar@suse.de
+
+- add BuildRoot so it builds on SLE
+
+-------------------------------------------------------------------
+Tue Dec 20 14:55:29 UTC 2011 - dmacvicar@suse.de
+
+- initial package based on Fedora. Removed maven stuff 
+

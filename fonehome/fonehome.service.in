@@ -1,0 +1,13 @@
+[Unit]
+Description=Fonehome client
+After=network-online.target
+Wants=network-online.target
+Documentation=man:fonehome(1)
+Documentation=https://github.com/archiecobbs/fonehome
+
+[Service]
+Restart=always
+ExecStart=@fonehomescript@
+
+[Install]
+WantedBy=multi-user.target

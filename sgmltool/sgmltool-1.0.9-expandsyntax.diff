@@ -1,0 +1,11 @@
+--- sgml-tools-1.0.9/lib/SGMLTools.pm
++++ sgml-tools-1.0.9/lib/SGMLTools.pm
+@@ -440,7 +440,7 @@
+ 
+   create_temp("$tmpbase.3");
+   system ("$main::progs->{SGMLSASP} $style $mapping <$tmpbase.2|
+-      expand -$global->{tabsize} >$tmpbase.3");
++      expand -t $global->{tabsize} >$tmpbase.3");
+ 
+   #
+   #  If a postASP stage is defined, let the format handle it.

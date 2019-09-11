@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Wed Feb  8 17:16:06 CET 2017 - kukuk@suse.de
+
+- Move from /usr/games to /usr/bin as done with the rest 4 years ago
+
+-------------------------------------------------------------------
+Wed Oct 10 11:06:27 UTC 2012 - dvaleev@suse.com
+
+- Use __swabX from linux/swab.h instead of __arch_swabX 
+
+-------------------------------------------------------------------
+Tue May 29 13:34:41 UTC 2012 - puzel@suse.com
+
+- fix build with automake-1.12
+  - add: automake-1.12.patch
+
+-------------------------------------------------------------------
+Mon Dec 26 16:52:56 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+- Parallel build with %_smp_mflags
+- Add missing make calls
+
+-------------------------------------------------------------------
+Fri Dec  2 15:47:46 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep  3 20:03:41 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with no-add-needed 
+
+-------------------------------------------------------------------
+Thu Sep 17 03:11:43 CEST 2009 - crrodriguez@suse.de
+
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 19:02:19 CEST 2005 - lmichnovic@suse.cz
+
+- fixed no return value from function
+
+-------------------------------------------------------------------
+Wed Sep 21 14:31:05 CEST 2005 - lmichnovic@suse.cz
+
+- fixed gcc warning
+
+-------------------------------------------------------------------
+Thu Apr 28 11:56:56 CEST 2005 - ltinkl@suse.cz
+
+- build with gcc4
+
+-------------------------------------------------------------------
+Sat Jan 10 15:45:10 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed May 28 11:35:43 CEST 2003 - ro@suse.de
+
+- add heroeslvl and man-page to filelist 
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Mar 17 20:08:08 CET 2003 - tcrhak@suse.cz
+
+- fixed a bug in a menu that caused segfaults
+  (patch menus)
+
+-------------------------------------------------------------------
+Fri Feb 14 13:58:28 CET 2003 - tcrhak@suse.cz
+
+- added install_info macros
+
+-------------------------------------------------------------------
+Sat Apr 20 19:01:42 CEST 2002 - ro@suse.de
+
+- fixed changelog 
+
+-------------------------------------------------------------------
+Fri Apr 19 14:27:16 CEST 2002 - tcrhak@suse.cz
+
+- fixed locales (bug #1576)
+
+-------------------------------------------------------------------
+Thu Mar 21 16:01:50 CET 2002 - tcrhak@suse.cz
+
+- fixed filelist:
+  moved locales to /usr/share/local
+  moved binary to /usr/games and renamed back to heroes
+  do own heroes' directories under /usr/share/games
+
+-------------------------------------------------------------------
+Tue Feb  5 15:23:31 CET 2002 - ro@suse.de
+
+- use SDL-devel-packages  and SDL_mixer-packages in neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb  1 18:58:10 CET 2002 - tcrhak@suse.cz
+
+- update to version 0.17 and heroes-data to version 1.4
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Fri Sep 21 11:29:59 CEST 2001 - adostal@suse.cz
+
+- fix info pages in %file section
+
+-------------------------------------------------------------------
+Wed Aug  8 17:58:28 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <kdelibs> to <kdelibs-artsd> 
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Mon Aug  6 11:26:53 CEST 2001 - adostal@suse.cz
+
+- update to version 0.12 
+
+-------------------------------------------------------------------
+Wed Jun 20 15:44:38 CEST 2001 - adostal@suse.cz
+
+- fix neededforbuild  
+
+-------------------------------------------------------------------
+Fri Jun  1 07:22:14 CEST 2001 - adostal@suse.cz
+
+- creation a new package 
+

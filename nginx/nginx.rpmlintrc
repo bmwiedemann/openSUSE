@@ -1,0 +1,5 @@
+# user nginx needs write permissions to /var/log/nginx so nginx is able to reopen the logs
+addFilter("nginx.*: W: suse-logrotate-user-writable-log-dir /var/log/nginx nginx:nginx 0750")
+# nginx sources need to be installed in /usr/src/nginx
+addFilter("nginx.* W: suse-filelist-forbidden-fhs23 /usr/src/nginx")
+

@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Fri Sep 28 10:39:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Add eiciel-sys-xattr.patch -- <attr/xattr.h> is deprecated, use
+  <sys/xattr.h> instead. Also use sed to replace the relevant parts
+  of configure.
+- Run spec-cleaner, modernize specfile.
+- Apply translation-update also for openSUSE, drop conditionals.
+
+-------------------------------------------------------------------
+Wed Jan 17 01:59:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.9.12.1:
+  + Fix desktop file.
+- Changes from version 0.9.12:
+  + Updates for better integration with AppStream.
+- Adopt the use of %make_install rather than raw make command,
+  following the best practices.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Conditionalize translation-update-upstream BuildRequires use as
+  it's a SLE-only requirement.
+- Drop intltool BuildRequires: since upstream migrated to Gettext
+  it's no longer needed anymore.
+
+-------------------------------------------------------------------
+Fri Aug 11 13:30:51 UTC 2017 - fcrozat@suse.com
+
+- Remove BuildRequires on libgnomeui-devel and conditional build
+  against gtk2.
+
+-------------------------------------------------------------------
+Thu May 12 14:09:28 UTC 2016 - dimstar@opensuse.org
+
+- Do not delete the .desktop file. It is needed for AppStream
+  processes to have a valid reference.
+- Add update-desktop-files BuildRequires.
+- Change Categories of eiciel.desktop to System;Filesystem.
+
+-------------------------------------------------------------------
+Fri Oct  9 09:43:06 UTC 2015 - gour@atmarama.net
+
+- Update to version 0.9.11:
+  + Updated translations.
+- Changes from version 0.9.10:
+  + Fixes a problem with GTK+3.14 where checkboxes in the Access 
+    Control List were not properly rendered.  
+
+-------------------------------------------------------------------
+Wed Aug 20 16:04:29 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.9:
+  + A new filter box
+  + Several changes in the UI to make it a bit more consistent with
+    the GNOME HIG.
+  + Help has been ported from DocBook to Mallard.
+
+-------------------------------------------------------------------
+Fri Aug  8 22:08:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.8.3:
+  + This version does not include any new feature but better
+    integration with PackageKit.
+
+-------------------------------------------------------------------
+Tue Nov 26 18:08:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.8.2:
+  + Fix for ineffective permissions not correctly rendered in
+    GNOME 3.
+- Remove hack to remove executable bit from Authors: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jun  1 10:29:05 CEST 2011 - vuntz@opensuse.org
+
+- Do not fail to build if %gtk2_favor is not defined: just use
+  0%{?gtk2_favor}.
+
+-------------------------------------------------------------------
+Sun May 22 17:37:30 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.8.1:
+  + Allow building against GNOME 3 libraries.
+- Pass --disable-static to configure
+- Remove --with-nautilus-extensions-dir from configure: it is
+  correctly detected based on the libnautilus-extension.pc file.
+- Build based on gtk2_favor either for gnome2 or for gnome3
+- Add BuildRequires for gnome 3 build:
+  + pkgconfig(gtkmm-3.0)
+  + pkgconfig(libnautilus-extension) => 3.0.0
+- Change BuildRequires for gnome2 build to pkgconfig()-style:
+  + Old ones: gtkmm24-devel, libnautilus-devel
+  + New ones: gtkmm-2.4, libnautilus.extension
+
+-------------------------------------------------------------------
+Mon Feb 14 17:38:44 CET 2011 - sbrabec@suse.cz
+
+- Translations migrated to translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 09:55:14 CET 2011 - vuntz@opensuse.org
+
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Aug  4 17:40:15 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.8:
+  + Various bugfixes
+  + Translation updates.
+- Drop unused patch: eiciel-library-packaging.patch
+- Supplement nautilus and eiciel with nautilus-eiciel.
+- AUTHORS is non-executable.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:42:50 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.7:
+  + This is a catch-up with all the Debian patches
+  + Source code has been translated to english to facilitate the
+    start for new contributors
+
+-------------------------------------------------------------------
+Mon Mar  9 10:52:26 CET 2009 - vuntz@novell.com
+
+- Drop eiciel-gcc4.3-fixes.patch: it's not used, and if it's not
+  needed anymore, we can drop it.
+- Remove AutoReqProv: it's default now.
+- Remove check for old version of openSUSE.
+- Remove unneeded BuildRequires: gnome-desktop-devel, gnutls-devel,
+  libglade2-devel, libgnomeprintui-devel, libwnck-devel,
+  perl-XML-Parser, update-desktop-files.
+- Add BuildRequires to fix build: libgnomeui-devel.
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de 
+
+- Translations update. 
+
+-------------------------------------------------------------------
+Sat Dec  6 07:57:12 CET 2008 - mauro@suse.de
+
+- Updated translations. 
+
+-------------------------------------------------------------------
+Fri Sep 12 12:21:23 CDT 2008 - maw@suse.de
+
+- Update to version 0.9.6.1:
+  + Minor bugfixes.
+
+-------------------------------------------------------------------
+Tue Mar  4 13:47:08 CET 2008 - jpr@suse.de
+
+- Update to 0.9.5.1
+* Make help launching more robust
+
+-------------------------------------------------------------------
+Wed Nov  7 18:22:57 CET 2007 - maw@suse.de
+
+- Add eiciel-gcc4.3-fixes.patch.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:37 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Thu Aug  9 19:24:08 CEST 2007 - maw@suse.de
+
+- Fix up the -lang subpackage.
+
+-------------------------------------------------------------------
+Tue Aug  7 22:48:42 CEST 2007 - mauro@suse.de
+
+- Split out a -lang subpackage
+- Add %fdupes stuff
+
+-------------------------------------------------------------------
+Wed Jan 31 22:16:36 CET 2007 - jhargadon@suse.de
+
+- added eiciel to Requires of nautilus-eiciel subpackage (#239732)
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Fri Jan 26 21:48:32 CET 2007 - jhargadon@suse.de
+
+- fixed a shared library packaging bug (#238541)
+
+-------------------------------------------------------------------
+Thu Jan 25 01:05:02 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Wed Dec 13 22:20:12 CET 2006 - jpr@suse.de
+
+- Update to 0.9.4, bugfix release to improve compatibility with
+filesystems implemented using FUSE 
+
+-------------------------------------------------------------------
+Wed Sep 20 21:05:34 CEST 2006 - jpr@suse.de
+
+- Fix 64 bit builds by ensure that the nautilus extensions are
+searched for in %{_lib} not lib
+
+-------------------------------------------------------------------
+Mon Aug 28 22:39:01 CEST 2006 - jpr@suse.de
+
+- Eiciel a plugin for nautilus to handle posix ACLs
+

@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Sat Jan 18 07:18:32 UTC 2014 - coolo@suse.com
+
+- use new perl template, fix license
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:40 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Sun Aug 28 18:14:16 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in perl-Unicode-Map8.spec
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:26 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Jan 25 13:41:51 CET 2010 - anicka@suse.cz
+
+- update to 0.13
+ * Header order tweak to make it compile with Strawberry Perl 
+  [RT#50443]
+ * Get rid of CVS artifacts
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 12:05:18 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:58:33 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 14:31:28 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon May 19 11:45:33 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Tue Apr 29 12:36:47 CEST 2003 - mjancar@suse.cz
+
+- update to version 0.12
+- used $RPM_OPT_FLAGS
+- fixed function prototype
+
+-------------------------------------------------------------------
+Thu Nov 28 23:10:30 CET 2002 - prehak@suse.cz
+
+- fixed data types
+- enabled make test for ppc64 and s390x
+
+-------------------------------------------------------------------
+Wed Aug 21 15:39:18 CEST 2002 - prehak@suse.cz
+
+- disabled make test on ppc64 and s390x
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jan 15 15:43:55 CET 2002 - rvasice@suse.cz
+
+- update to version 0.11
+
+-------------------------------------------------------------------
+Wed Aug 15 13:33:00 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 0.10)
+

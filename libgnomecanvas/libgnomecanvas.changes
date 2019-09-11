@@ -1,0 +1,450 @@
+-------------------------------------------------------------------
+Fri Aug  9 22:29:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Align with what configure checks for:
+  + Drop intltool and libart_lgpl-devel BuildRequires.
+  + Stop passing enable-glade to configure, drop libglade2-devel
+    BuildRequires, no longer build glade support.
+  + Add pkgconfig(gail), pkgconfig(glib-2.0), pkgconfig(gtk+-2.0),
+    pkgconfig(libart-2.0), pkgconfig(pango) and pkgconfig(pangoft2)
+    BuildRequires.
+- Use modern macros.
+- Drop conditional for no longer supported versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:43 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Oct  7 12:39:06 UTC 2014 - jengelh@inai.de
+
+- Do parallel build with %_smp_mflags.
+- Remove old specfile section (%clean).
+- Remove fdupes call and related fdupes BuildRequires: it is
+  currently not deduplicating anything.
+
+-------------------------------------------------------------------
+Sat Sep 21 14:47:30 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:45:08 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Wed May  4 13:07:25 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.30.3:
+  + Fix delivering of scroll events again
+  + Updated translations.
+- Change libgnomecanvas Obsoletes from <= to < now that we have a
+  new upstream version.
+
+-------------------------------------------------------------------
+Mon Oct 11 20:50:20 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libgnomecanvas-2-0 subpackage.
+  + Add Provides/Obsoletes for libgnomecanvas to
+    libgnomecanvas-2-0.
+  + Update baselibs.conf accordingly.
+
+-------------------------------------------------------------------
+Mon Sep 27 22:31:28 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:59:13 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Thu Apr  1 16:04:07 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.1:
+  + Fix background drawing
+
+-------------------------------------------------------------------
+Tue Mar 30 19:54:06 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Do not use deprecated API
+  + Reduce relocations
+  + Make glade support optional at configure time
+  + Forward scroll events to items holding a grap
+  + Make the paint method work on Quartz too
+  + Getting GnomeCanvasLine's points property leaks
+  + Fix linking with pedantic linkers
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+- Pass --enable-glade to configure to keep the glade support (for
+  now, at least).
+
+-------------------------------------------------------------------
+Thu Dec 17 22:45:19 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Mar 17 18:21:09 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updated translations.
+- Remove AutoReqProv: it's default now.
+- Do not call autoreconf.
+- Remove unneeded BuildRequires: gnome-common, gtk-doc,
+  update-desktop-files
+- Remove glibc-devel from Requires of devel package.
+- Merge doc package in devel package since it only contain gtk-doc
+  files.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 14:42:41 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.90:
+	+ Avoid tearing while repainting (Federico Mena Quintero)
+	+ Fix compilation with gcc 2.x (Jens Granseur)
+	+ Register gailcanvas into a11y type system (Sven Herzberg)
+	+ Do not use deprecated GTK_OBJECT macros (Stefan Kost)
+	+ Use single GTK+ includes (Cosimo Cecchi, Przemysław Grzegorczyk)
+  + Updated translations
+- Remove unneeded BuildRequires: gail-devel (provided by
+  gtk2-devel), indent, iso_ent, libtiff-devel, perl-XML-Parser and
+  sgml-skel
+- Remove Requires from devel package: gail-devel
+- Drop libgnomecanvas-no-tearing.diff: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 26 23:52:04 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465] 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Nov 23 11:54:46 CST 2007 - maw@suse.de
+
+- Update to version 2.20.1.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 14:51:57 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * stable version number
+
+-------------------------------------------------------------------
+Wed Aug 29 17:03:46 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.2:
+  + Don't store the focused item in the data section of the canvas
+    widget, but in a GObject property of it
+  + Updated Finnish translation.
+
+-------------------------------------------------------------------
+Sat Aug 25 07:43:17 CEST 2007 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Wed Aug 22 23:01:05 CEST 2007 - federico@novell.com
+
+- Added libgnomecanvas-no-tearing.diff.  This eliminates tearing when repainting, for a smoother ride.
+
+-------------------------------------------------------------------
+Tue Aug  7 20:53:20 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Tue Jul 31 20:42:11 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.1
+- Bug fixes: libgnomecanvas-2.0.pc no longer refers to nonexistent
+  gail-1.0.pc, and gailcanvas has been merged into gnomecanvas
+- Updated translations
+- Buildrequire intltool and gail-devel (note that gail 1.19.6 or
+  higher is required)
+- The -devel subpackage now requires gail-devel.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Wed Dec 13 19:04:04 CET 2006 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Dec 13 10:45:54 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Sat Jul 22 01:05:40 CEST 2006 - gekker@suse.de
+
+- Update to version 2.14.0
+  - Updated and new translations:
+- update to libgnomecanvas 2.13.0
+  - Bug fixes:
+    - Correctly reset item_list_end when moving the last
+      item in the list. Fixes bug #323850. (Federico, Denis Auroux)
+    - Remove a bunch of cruft and compiler warnings (Kjartan)
+    - Add g_object_notify() call to allow users to connect to
+      the notify::parent signal. Closes bug #320791. (Sven Herzberg)
+    - Use BILINEAR interpolation instead of HYPER which is
+      "a slow buggy piece of shit". (Federico)
+    - Cast GNOME_CANVAS_COLOR macros to use unsigned ints so that
+      shifting left 24 bits won't overflow into the sign bit.
+      Fixes bug #317718. (Danek Duvall)
+    - Correctly calculate width_in_pixels and height_in_pixels
+      in gnome-canvas-pixbuf.c. (Hans de Graaff)
+  - Docs:
+    - Add API docs for gnome-canvas-rich-text.c (Dinoop Thomas)
+  - Translation updates.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 16 19:42:54 CET 2005 - jpr@suse.de
+
+- Work around compiler bug for now (#132010)
+
+-------------------------------------------------------------------
+Fri Oct  7 02:49:28 CEST 2005 - federico@novell.com
+
+- Added libgnomecanvas-pixbuf-bilinear-interpolation.diff to replace
+  HYPER interpolation with the much faster and non-buggy BILINEAR.
+
+-------------------------------------------------------------------
+Tue Sep  6 12:06:19 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.12.0.
+
+-------------------------------------------------------------------
+Wed Aug 31 18:48:32 CEST 2005 - gekker@suse.de
+
+- Fix requires in devel subpackage (113465) 
+
+-------------------------------------------------------------------
+Tue Aug 23 21:15:48 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.2 
+
+-------------------------------------------------------------------
+Tue Aug  2 02:03:40 CEST 2005 - ro@suse.de
+
+- use gtk2-devel-packages in nfb 
+
+-------------------------------------------------------------------
+Mon Jun 27 17:17:49 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.11.1.
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Mon Apr 11 16:52:40 CEST 2005 - sbrabec@suse.cz
+
+- Fixed Requires of doc subpackage.
+
+-------------------------------------------------------------------
+Tue Mar  8 22:19:21 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Wed Mar  2 23:04:34 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.2 
+
+-------------------------------------------------------------------
+Sat Feb  5 00:26:37 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.1 
+
+-------------------------------------------------------------------
+Mon Nov 22 21:03:30 CET 2004 - gekker@suse.de
+
+- Update version to 2.8.0 
+
+-------------------------------------------------------------------
+Fri Nov 19 14:17:15 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Mon Oct 25 12:32:55 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Wed Oct 13 12:42:03 CEST 2004 - sbrabec@suse.cz
+
+- Added libgcrypt libgpg-error to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Sep 22 14:14:15 CEST 2004 - sbrabec@suse.cz
+
+- Fixed empty documentation.
+
+-------------------------------------------------------------------
+Thu Apr 15 18:06:04 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Sat Jan 10 17:34:28 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig and %defattr
+
+-------------------------------------------------------------------
+Tue Oct 07 11:40:16 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Mon Jul 14 15:50:21 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jun 20 13:02:44 CEST 2003 - sbrabec@suse.cz
+
+- Directory packaging and prefix clash fix.
+
+-------------------------------------------------------------------
+Mon Jun 02 17:01:15 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.1.
+
+-------------------------------------------------------------------
+Sun Jun  1 23:55:47 CEST 2003 - ro@suse.de
+
+- include static lib in devel subpackage
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu May 22 12:49:08 CEST 2003 - sbrabec@suse.cz
+
+- Sync -devel Requires with pkgconfig (bug #26877)
+
+-------------------------------------------------------------------
+Thu Feb  6 13:50:42 CET 2003 - hhetter@suse.de
+
+- updated to version 2.2.0.1 [GNOME 2.2.0] 
+
+-------------------------------------------------------------------
+Thu Jan 16 11:30:23 CET 2003 - hhetter@suse.de
+
+- updated to version 2.1.90 
+
+-------------------------------------------------------------------
+Wed Jan 15 00:12:55 CET 2003 - ro@suse.de
+
+- added expat to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Nov 28 12:56:05 CET 2002 - hhetter@suse.de
+
+- updated to version 2.0.5 [GNOME 2.0.3] 
+
+-------------------------------------------------------------------
+Thu Oct 24 10:43:32 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.4 
+- use "-c" with automake (Bug Id #21066)
+
+-------------------------------------------------------------------
+Thu Aug 15 16:24:19 CEST 2002 - hhetter@suse.de
+
+- branch doc package 
+
+-------------------------------------------------------------------
+Fri Aug  9 09:13:23 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.2 
+
+-------------------------------------------------------------------
+Tue Jun 25 13:56:03 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.1 
+
+-------------------------------------------------------------------
+Wed Jun 19 18:15:18 CEST 2002 - ro@suse.de
+
+- use "-a -f" for automake 
+
+-------------------------------------------------------------------
+Mon Jun 10 17:54:13 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0 
+
+-------------------------------------------------------------------
+Tue Jun  4 10:33:05 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.117.0, source frozen 
+
+-------------------------------------------------------------------
+Wed May 15 11:21:51 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Tue Apr  9 16:57:16 CEST 2002 - hhetter@suse.de
+
+- update to 1.114.0 [gnome2 desktop beta3]
+ 
+
+-------------------------------------------------------------------
+Fri Feb  1 09:34:21 CET 2002 - hhetter@suse.de
+
+- updated to version 1.110.0 [gnome desktop alpha2]
+- really build and install libcanvas.so 
+
+-------------------------------------------------------------------
+Thu Jan 17 16:42:38 CET 2002 - hhetter@suse.de
+
+- really prefix to /opt/gnome2 
+
+-------------------------------------------------------------------
+Thu Jan 17 09:49:25 CET 2002 - hhetter@suse.de
+
+- prefix to /opt/gnome2 
+
+-------------------------------------------------------------------
+Mon Jan 14 09:39:26 CET 2002 - hhetter@suse.de
+
+- updated to version 1.109.0
+	* translation updates 
+
+-------------------------------------------------------------------
+Thu Jan 10 08:57:20 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform 
+

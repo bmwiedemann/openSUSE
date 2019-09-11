@@ -1,0 +1,18 @@
+diff -Naur kcov-36.orig/src/CMakeLists.txt kcov-36/src/CMakeLists.txt
+--- kcov-36.orig/src/CMakeLists.txt	2018-08-23 05:53:41.000000000 -0500
++++ kcov-36/src/CMakeLists.txt	2019-05-10 14:46:20.281320950 -0500
+@@ -406,13 +406,13 @@
+ 		stdc++
+ 		${CMAKE_THREAD_LIBS_INIT}
+ 		${CURL_LIBRARIES}
+-		"${DL_LIBRARY}"
+ 		"${INTL_LIBRARY}"
+ 		${DISASSEMBLER_LIBRARIES}
+ 		${LIBDW_LIBRARIES}
+ 		${LIBELF_LIBRARIES}
+ 		${LLDB_LIBRARY}
+ 		"${M_LIBRARY}"
++		"${DL_LIBRARY}"
+ 		${ZLIB_LIBRARIES}
+ 	)
+ 	install (TARGETS ${KCOV} DESTINATION "${KCOV_INSTALL_BINDIR}")

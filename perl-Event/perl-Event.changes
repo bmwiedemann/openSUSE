@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Thu Dec  6 15:39:20 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Event/Changes
+
+  1.27 2018-11-17
+    - only Zero(Polld) if not NULL (reported by @andk, thanks!)
+
+-------------------------------------------------------------------
+Thu Jun 23 06:18:11 UTC 2016 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Event/Changes
+
+  1.26 2015-06-13
+    - fix doc typos (Lucas Kanashiro)
+
+-------------------------------------------------------------------
+Sun Jun 12 12:59:47 UTC 2016 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Event/Changes
+
+-------------------------------------------------------------------
+Sun Apr 19 07:42:07 UTC 2015 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Event/ChangeLog
+- remove broken Event-1.0-warning.patch
+
+-------------------------------------------------------------------
+Mon Jul 28 05:30:44 UTC 2014 - coolo@suse.com
+
+- updated to 1.23, no Changelog provided
+
+-------------------------------------------------------------------
+Tue Jul 15 21:49:12 UTC 2014 - chris@computersalat.de
+
+- fix build for SLE_11
+  * reactivate Event-1.0-warning.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 08:45:33 UTC 2013 - coolo@suse.com
+
+- updated to 1.21, no Changelog provided
+
+-------------------------------------------------------------------
+Mon Sep 19 15:52:50 UTC 2011 - coolo@suse.com
+
+- updated to 1.20, no Changelog provided
+
+-------------------------------------------------------------------
+Mon Jun 20 08:52:28 UTC 2011 - coolo@novell.com
+
+- updated to 1.17, no Changelog provided
+
+-------------------------------------------------------------------
+Wed May  4 07:36:15 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.15, no Changelog provided
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:15 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Apr  7 18:49:08 UTC 2010 - chris@computersalat.de
+
+- update to 1.13
+  o no ChangeLog :(
+- cleanup spec
+  o sort TAGS
+  o updated Url
+  o fixed deps
+- added perl-macros
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Sep 12 17:42:34 CEST 2008 - garloff@suse.de
+
+- Update to 1.11:
+  * bugfix in db_show_timeables 
+  * times are now using NV type
+  * Moved idle2 testcase to demos
+  * io testcase fixed for Darwin
+
+-------------------------------------------------------------------
+Tue Jul 17 02:08:52 CEST 2007 - garloff@suse.de
+
+- Update to 1.09 (no real code changes)
+
+-------------------------------------------------------------------
+Wed Apr 25 01:45:04 CEST 2007 - ro@suse.de
+
+- update to 1.08
+  * Add casts to quell warnings as suggested by JDHEDDEN@cpan.org.
+  * Marc Lehmann suggests using mg_ptr instead
+  of mg_obj. Sounds good to me.
+  * Fix 64 bit issue.  Encouraged by Eric Rybski
+  * Fix ancient memory leak in loop() noticed by Nikita Savin
+  * Preliminary /dev/poll support from Michael Pergament
+  As of yet, there is no config test to
+  turn on this code.  Patches welcome.
+  * Apply Win32 patch from Graciliano M. P. <gmpowers@terra.com.br>.
+  * Generic watchers: implementation, documentation, and tests.
+  * Documentation refinements.
+  * Event.xs: Due to popular demand, queue_pending() is now a public
+  API, for better or worse.  Beware of race conditions.
+  * A var watcher can currently be created with no variable to
+  watch, provided of course that it is parked.  However, once a
+  variable has been set, the watcher cannot be returned to the
+  no-variable state.  The variable to watch can be changed, but the
+  watcher rejects any attempt to set the reference to undef.
+  * Applied a patch to allow the variable reference of a var watcher
+  to be set to undef.
+  * Applied patch to clarify the documentation (with tweaks from
+  Joshua).
+
+-------------------------------------------------------------------
+Thu Apr 19 23:53:10 CEST 2007 - ro@suse.de
+
+- import from 9.2 (needed by iwatch) 
+
+-------------------------------------------------------------------
+Mon Aug 16 12:15:30 CEST 2004 - garloff@suse.de
+
+- Update to Event-1.00:
+  * c/watcher.c: Check for a missing callback.
+  * lib/Event.pm: Make NO_TIME_HIRES actually work.
+  * c/signal.c: iClear signal counter when a signal watcher stops.
+- Update to Event-0.88:
+  * lib/Event.pm: Simplify hooking into Time::HiRes.
+  * Event.xs: Remove U2time. Remove install_time_api().
+  * Various Event docu updates.
+  * c/watcher.c: Fix SEGV reported by Zefram; add test.
+
+-------------------------------------------------------------------
+Sun Jan 11 11:57:40 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:42:04 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 14 15:03:06 CEST 2003 - garloff@suse.de
+
+- Install into %perl_vendorlib, _vendorarch, use _process_packlist. 
+- Update to Event-0.87:
+  Fix tracevar_r, tracevar_w delcarations.
+  (Fix was in SuSE patch before.)
+
+-------------------------------------------------------------------
+Mon May 26 00:02:10 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Wed Aug 28 14:40:21 CEST 2002 - prehak@suse.cz
+
+- disabled make test on ppc64 and s390x
+
+-------------------------------------------------------------------
+Fri Aug  9 15:16:12 MEST 2002 - mls@suse.de
+
+- fixed tracevar_r/w callbacks to work with threaded perl
+
+-------------------------------------------------------------------
+Tue Jul  2 17:29:48 MEST 2002 - garloff@suse.de
+
+- Update to Event-0.86:
+  * IRIX/Solaris tweaks
+  * Avoid infinite polling loops on some select() implementations
+
+-------------------------------------------------------------------
+Thu Jan 17 03:05:01 MET 2002 - garloff@suse.de
+
+- Create package perl-Event (0.83)
+  It's needed by Perl Object Environment (perl-POE).
+

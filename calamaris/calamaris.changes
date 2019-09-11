@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Tue Jun 19 08:13:22 UTC 2018 - mpluskal@suse.com
+
+- More spec file modernisations 
+
+-------------------------------------------------------------------
+Mon Apr 27 10:55:51 UTC 2015 - mpluskal@suse.com
+
+- Update download url
+- Clenup spec file with spec-cleaner
+- Build as noarch
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug 06 15:53:19 CEST 2004 - tcrhak@suse.cz
+
+- update to 2.59
+
+-------------------------------------------------------------------
+Sun Jan 11 10:07:37 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Jul 29 19:59:22 CEST 2003 - tcrhak@suse.cz
+
+- update to version 2.58
+
+-------------------------------------------------------------------
+Mon Feb 17 15:40:27 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.57
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Jul 13 16:40:38 CEST 2002 - tcrhak@suse.cz
+
+- update to version 2.50
+
+-------------------------------------------------------------------
+Mon Dec 10 12:29:25 CEST 2001 - tcrhak@suse.cz
+
+- update to 2.42
+
+-------------------------------------------------------------------
+Mon Jul 30 18:01:29 CEST 2001 - adostal@suse.cz
+
+- change gz to bz2 
+
+-------------------------------------------------------------------
+Thu Nov  9 10:55:14 CET 2000 - nadvornik@suse.cz
+
+- renamed calamari -> calamaris
+- update to 2.40
+
+-------------------------------------------------------------------
+Fri Oct  6 13:42:42 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+
+-------------------------------------------------------------------
+Thu Mar 23 15:47:24 CET 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+
+-------------------------------------------------------------------
+Fri Jan 21 16:52:46 MET 2000 - grimmer@suse.de
+
+- spec file cleanups (added version- and manpath macros)
+
+-------------------------------------------------------------------
+Thu Dec 23 14:00:16 MET 1999 - grimmer@suse.de
+
+- new version (2.29)
+- specfile cleanups
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul  5 16:22:17 MEST 1999 - grimmer@suse.de
+
+- corrected permissions for /usr/bin/calamaris
+
+-------------------------------------------------------------------
+Fri Jul  2 13:12:19 MEST 1999 - grimmer@suse.de
+
+- initial package (Version 2.27)
+

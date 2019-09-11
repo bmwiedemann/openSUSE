@@ -1,0 +1,391 @@
+-------------------------------------------------------------------
+Mon Feb  5 20:27:17 UTC 2018 - jengelh@inai.de
+
+- --with-pic has no effect with --disable-static.
+- Reword description of wv-devel since there are no static libs.
+
+-------------------------------------------------------------------
+Sat Feb  3 19:18:02 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.2.9
+  * fixes BC break from 1.2.8
+- includes 1.2.8
+  * Fix segfault trying to parse certain word documents
+  * Fix Tables not imported from MS Word documents
+  * Fix wvWare hangs on this seemingly blank word doc
+  * Buildfix: Remove unused LINK_WIN32_DLL check
+  * Buildfix: link with -no-undefined
+- includes 1.2.7 
+  * Fix regression: newlines not imported anymore
+  * Cross building improvements
+  * Fix build issue: 'libtool: link: `-::-' is not valid version
+    information'
+- includes 1.2.6
+  * unportable test construct.
+  * Fix typos in wvWare's help message.
+  * Fix a few mis-matched wvMalloc/malloc/wvFree/free combinations.
+    Use glib to allocate and free all of our memory.
+  * a NULL pointer was causing a crash.
+  * Default font alignment in paragraph was incorrect.
+  * Crash in the PAP handling.
+  * Fix a memory leak in wvRTF.
+  * Fix huge performance issue while loading images
+  * Fix invalid writes in wvConfig.c
+- cleanup with spec-cleaner
+- use new upstream url
+- rebase wv-1.2.2-automake.patch
+- rebase wv-1.0.3-wvText.patch
+- drop wv-1.0.3-pc.patch (applied upstream)
+
+-------------------------------------------------------------------
+Tue Oct  8 09:45:30 UTC 2013 - mvyskocil@suse.com
+
+- Fix Source URL 
+
+-------------------------------------------------------------------
+Fri Oct  4 09:52:08 UTC 2013 - mvyskocil@suse.com
+
+- Update to 1.2.4 (no changelog available)
+  * bump soname to libwv-1.2.so.3
+- Dropped wv-1.2.2-overflow.patch, fixed upstream
+- Reformat spec file, added Source url and URL, use  more macros
+  and use pkgconfig() based BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 28 02:50:03 UTC 2013 - crrodriguez@opensuse.org
+
+- Also, cleanup buildrequires, libtiff is not used  and zlib-devel
+  is required.
+
+-------------------------------------------------------------------
+Wed Aug 28 01:47:05 UTC 2013 - crrodriguez@opensuse.org
+
+- wv-noansi.patch: Do not build with -ansi , but in gnu99 mode with 
+  system extensions enabled
+
+-------------------------------------------------------------------
+Sat Apr 13 20:30:43 UTC 2013 - dimstar@opensuse.org
+
+- Add wv-strcasecmp.patch: Fix build in Factory: strcasecmp is
+  declared in strings.h.
+- Add wv-gsf.patch: only include gsf.h: we don't want/need to know
+  in which header which symbold is declared.
+
+-------------------------------------------------------------------
+Tue Nov 22 15:34:06 UTC 2011 - jengelh@medozas.de
+
+- Correct License: field and use SPDX format (bnc#731983)
+
+-------------------------------------------------------------------
+Tue Nov 15 16:14:30 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+- Apply shared library packaging (-> libwv-1_2 subpackage)
+
+-------------------------------------------------------------------
+Tue Nov 15 13:14:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 27 16:32:32 CET 2009 - meissner@suse.de
+
+- fixed implicit strcasecmp caused by -ansi compile switch
+- removed obsoletes/provides mswordvw (unversioned obsoletes, and
+  also old package gone since 2000)
+
+-------------------------------------------------------------------
+Fri Jun 27 07:45:39 CEST 2008 - crrodriguez@suse.de
+
+- disable unusable static libraries 
+
+-------------------------------------------------------------------
+Wed Jan 17 20:15:54 CET 2007 - joeshaw@suse.de
+
+- Update to 1.2.2.  It requires libgsf and glib2 now, and I've
+  updated some patches and dropepd others.
+
+-------------------------------------------------------------------
+Wed Nov 15 12:05:04 CET 2006 - prusnak@suse.cz
+
+- fixed VUL-0: overflow (overflow.patch) [#215612] 
+
+-------------------------------------------------------------------
+Sat Oct 21 23:23:40 CEST 2006 - dmueller@suse.de
+
+- build against system expat to reduce code size
+
+-------------------------------------------------------------------
+Thu Jan 26 16:33:07 CET 2006 - nadvornik@suse.cz
+
+- fixed libdir in pkgconfig file [#115679]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:32:32 CET 2006 - nadvornik@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Thu Aug  4 00:00:33 CEST 2005 - gekker@suse.de
+
+- Fix to open files RO rather than RW 
+
+-------------------------------------------------------------------
+Mon Feb 07 12:58:14 CET 2005 - nadvornik@suse.cz
+
+- updated to 1.0.3
+
+-------------------------------------------------------------------
+Thu Nov 11 15:24:07 CET 2004 - sbrabec@suse.cz
+
+- Fixed buffer overflow in the wvHandleDateTimePicture function in wv
+  library: CAN-2004-0645 (#47767).
+
+-------------------------------------------------------------------
+Tue Mar 30 17:02:11 CEST 2004 - nadvornik@suse.cz
+
+- prefer w3m in wvText as it handles UTF-8 output better
+- better temp file handling in wvText
+
+-------------------------------------------------------------------
+Fri Feb 13 13:55:22 CET 2004 - meissner@suse.de
+
+- fixed pkgconfig path.
+
+-------------------------------------------------------------------
+Thu Feb 12 12:25:41 CET 2004 - ro@suse.de
+
+- added directory /usr/include/wv to devel filelist
+
+-------------------------------------------------------------------
+Wed Feb 11 11:45:10 CET 2004 - nadvornik@suse.cz
+
+- updated to 1.0.0
+- compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 15:24:02 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 28 17:18:44 CEST 2003 - nadvornik@suse.cz
+
+- updated to 0.7.6
+
+-------------------------------------------------------------------
+Wed Jun 18 14:42:06 CEST 2003 - nadvornik@suse.cz
+
+- fixed to compile with new libwmf
+
+-------------------------------------------------------------------
+Thu May 29 14:23:44 CEST 2003 - nadvornik@suse.cz
+
+- packaged wv.h
+
+-------------------------------------------------------------------
+Wed Sep 11 21:51:34 CEST 2002 - ro@suse.de
+
+- fixed patch (my fault) 
+
+-------------------------------------------------------------------
+Wed Sep 11 17:00:21 CEST 2002 - pthomas@suse.de
+
+- Make wvText output to stdout on request.
+- Add missing itmes to my last entry.
+
+-------------------------------------------------------------------
+Wed Sep 11 16:38:08 CEST 2002 - ro@suse.de
+
+- fixed requires of devel-package 
+
+-------------------------------------------------------------------
+Tue Sep 10 21:20:07 CEST 2002 - pthomas@suse.de
+
+- Change wvText to use either w3m or lynx.
+- wv-devel requires wv of same version.
+- Require w3m
+- Filter out /usr/include from CPPFLAGS.
+- Don't patch config.h.in but instead call autoheader to
+  regenerate it.
+
+-------------------------------------------------------------------
+Fri Jul 26 22:44:29 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Thu Jun 20 13:36:35 CEST 2002 - nadvornik@suse.cz
+
+- update to 0.7.2
+
+-------------------------------------------------------------------
+Fri Apr  5 14:04:00 CEST 2002 - nadvornik@suse.cz
+
+- fixed instalation of manpages
+
+-------------------------------------------------------------------
+Thu Apr  4 15:15:30 CEST 2002 - nadvornik@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Fri Mar  8 11:01:25 CET 2002 - nadvornik@suse.cz
+
+- fixed permissions and removed CVS dirs in doc directory
+
+-------------------------------------------------------------------
+Thu Feb  7 11:14:05 CET 2002 - nadvornik@suse.cz
+
+- update to 0.7.1:
+  - built with shared library
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Nov 28 18:50:02 CET 2001 - nadvornik@suse.cz
+
+- update to 0.7.0:
+  - compiles with libwmf 0.2.2
+
+-------------------------------------------------------------------
+Thu Jun 28 15:13:28 CEST 2001 - nadvornik@suse.cz
+
+- update to 0.6.5
+- libwmf is now a separate package
+
+-------------------------------------------------------------------
+Wed Jun 13 10:18:23 CEST 2001 - nadvornik@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Fri May 18 11:36:49 CEST 2001 - nadvornik@suse.cz
+
+- fixed cast warnings and include files for ia64
+
+-------------------------------------------------------------------
+Mon Apr 23 10:57:50 CEST 2001 - nadvornik@suse.cz
+
+- fixed to compile on s390
+
+-------------------------------------------------------------------
+Mon Mar 12 10:45:41 CET 2001 - nadvornik@suse.cz
+
+- libwmf compiled with -fPIC, now it can be linked to 
+  ImageMagick module
+
+-------------------------------------------------------------------
+Thu Feb  8 15:56:41 CET 2001 - nadvornik@suse.cz
+
+- update wv to 0.6.4, libwmf to 0.1.21
+- fixed bug #6165
+
+-------------------------------------------------------------------
+Wed Nov 22 10:49:25 CET 2000 - nadvornik@suse.cz
+
+- fixed docdir name
+
+-------------------------------------------------------------------
+Tue Nov 21 19:05:23 CET 2000 - schwab@suse.de
+
+- Fix permissions.
+- Remove all CVS directories.
+- Avoid double slashes.
+
+-------------------------------------------------------------------
+Fri Nov 10 11:10:39 CET 2000 - nadvornik@suse.cz
+
+- rename mswordvw -> wv
+-        mswordvd -> wv-devel
+- update wv to 0.6.2, libwmf to 0.1.20
+
+-------------------------------------------------------------------
+Wed Nov  8 15:39:13 CET 2000 - ro@suse.de
+
+- fixed neededforbuild for ImageMagick 
+
+-------------------------------------------------------------------
+Mon Oct  9 09:20:58 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+- used bzip2
+
+-------------------------------------------------------------------
+Mon Sep 18 16:37:41 CEST 2000 - nadvornik@suse.cz
+
+- added magickd to neededforbuild
+- fixed to compile
+
+-------------------------------------------------------------------
+Mon Jun 19 08:41:22 CEST 2000 - nadvornik@suse.cz
+
+- update to 0.5.44
+
+-------------------------------------------------------------------
+Mon Jun  5 10:48:10 CEST 2000 - nadvornik@suse.cz
+
+- fixed to compile with ImageMagick-5.2.0
+
+-------------------------------------------------------------------
+Fri May 26 16:07:32 CEST 2000 - schwab@suse.de
+
+- Update config files.
+
+-------------------------------------------------------------------
+Thu May 18 09:44:06 CEST 2000 - nadvornik@suse.cz
+
+- used %{_defaultdocdir} 
+
+-------------------------------------------------------------------
+Tue May  2 09:25:59 CEST 2000 - nadvornik@suse.cz
+
+- fixed to compile
+
+-------------------------------------------------------------------
+Thu Apr 20 08:27:12 CEST 2000 - nadvornik@suse.cz
+
+- fixed filelist
+- created development subpackage mswordvd
+
+-------------------------------------------------------------------
+Tue Apr 18 09:19:32 CEST 2000 - nadvornik@suse.cz
+
+- update to 0.5.43, libwmf 0.1.17
+- added Buildroot
+
+-------------------------------------------------------------------
+Mon Jan 31 19:42:22 CET 2000 - kukuk@suse.de
+
+- Update to 0.5.14-bw6
+- Fix spec file
+- Move /usr/man -> /usr/share/man 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug  4 16:52:13 MEST 1999 - uli@suse.de
+
+- added some missing files
+
+-------------------------------------------------------------------
+Fri May 21 09:53:16 MEST 1999 - kukuk@suse.de
+
+- Update mswordview to 0.5.14
+
+-------------------------------------------------------------------
+Thu Apr 29 11:35:57 MEST 1999 - kukuk@suse.de
+
+- first initial version of mswordview 0.5.10 with libwmf 0.1.9

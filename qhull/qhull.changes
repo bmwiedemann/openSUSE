@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Wed Jul 12 11:05:14 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+- Compact description a bit
+
+-------------------------------------------------------------------
+Mon Jul 10 16:40:00 UTC 2017 - toddrme2178@gmail.com
+
+- updated to 2015.2 (7.2.0):
+  * A large number of changes, please see:
+    https://github.com/qhull/qhull/blob/5a79a0009454c86e9848646b3c296009125231bf/src/Changes.txt
+- Update to more recent macros
+- General spec-file cleanups
+
+-------------------------------------------------------------------
+Mon Sep  1 17:15:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Change license to Qhull - it is now recognized by spdx.org
+
+-------------------------------------------------------------------
+Mon Aug  5 17:58:21 UTC 2013 - hrvoje.senjan@gmail.com
+
+- enable CMAKE_SKIP_INSTALL_RPATH option so RPATH is ommited from 
+  install tree
+
+-------------------------------------------------------------------
+Thu Mar  8 17:07:15 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Qhull
+  Use SUSE- proprietary prefix until Qhull (incidentially, also the Fedora
+  designation for the license) is accepted upstream at spdx.org
+
+-------------------------------------------------------------------
+Thu Feb 23 14:39:46 UTC 2012 - saschpe@suse.de
+
+- Add some detail about the version update to 2012.1
+
+-------------------------------------------------------------------
+Wed Feb 22 10:47:52 UTC 2012 - pgajdos@suse.com
+
+- updated to 2012.1.2 (6_3_1_1494)
+  - upstreamed liblibname.patch
+
+-------------------------------------------------------------------
+Tue Feb 21 10:26:08 UTC 2012 - pgajdos@suse.com
+
+- updated to 2012.1.1 (6_3_1_1490):
+  - Require option 'Qz' for Delaunay triangulation/Voronoi diagram 
+    of cocircular/cospherical points [D. Sheehy]
+  - qh_errexit: Do not call qh_printsummary or qh_printstats on qh_ERRinput
+  - Change error QH6227 (all degenerate) from qh_ERRinput to qh_ERRprec
+  - Change error QH6159 (ID overflow) from qh_ERRinput to qh_ERRqhull
+  - eg/q_eg, q_egtest, q_test: Run if qconvex is in $PATH [M. Atzeri]
+
+-------------------------------------------------------------------
+Mon Jan 30 08:16:55 UTC 2012 - pgajdos@suse.com
+
+- updated to 2012.1:
+  - Add config to distribution
+  - Add testqset to config build
+  - config/bootstrap.sh copies program files into src/libqhull
+
+-------------------------------------------------------------------
+Mon Nov 28 10:27:10 UTC 2011 - idoenmez@suse.de
+
+- Fix duplicate files
+
+-------------------------------------------------------------------
+Mon Sep 19 17:08:57 UTC 2011 - pgajdos@suse.com
+
+- updated to 2011.1:
+  * Remove deprecated libqhull/qhull.h. Use libqhull/libqhull.h instead.
+  * QhullFacet: Added isSimplicial, isTopOrient, isTriCoplanar, isUpperDelaunay
+  * Added Qhull::defineVertexFacetNeighbors() for facetNeighbors of vertices.
+    Automatically called for facet merging and Voronoi diagrams
+    Do not print QhullVertex::facetNeighbors is !facetNeighborsDefined()
+  * Add Fixup identifiers
+  * QhullError: Add copy constructor, assignment operator, and destructor
+  * Add throw() specifiers to RoadError and QhullError
+  * Renamed RoadError::defined() to RoadError::isDefined()
+  * Add #error to Qhull.h if qh_QHpointer is not defined
+  * etc. see Changes.txt
+
+-------------------------------------------------------------------
+Tue Jul 20 16:30:00 CEST 2010 - johannesobermayr@gmx.de
+
+- initial package
+  * next branch of git://gitorious.org/qhull/qhull.git
+- susepatches.diff
+  * fix build breakage caused by serious compiler warnings

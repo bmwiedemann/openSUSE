@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue Oct 23 12:39:32 UTC 2018 - cgoll@suse.com
+
+-  moved packages tools webgui and tests from Applications/System
+   to System/Monitoring
+
+-------------------------------------------------------------------
+Wed Sep 12 10:55:02 UTC 2018 - cgoll@suse.com
+
+- removed dependency on libattr-devel as xattr.h is now part
+  of glibc-devel
+- added patch xattr-location.patch which chnages the include from 
+  attr/xattr.h to sys/xattr.h 
+- added patch removed-check-ENOATTR.patch which removes check for
+  error ENOATTR which is a cpoy of allreay checked error
+  
+-------------------------------------------------------------------
+Thu Nov 23 13:53:58 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Oct 18 10:22:41 UTC 2017 - cgoll@suse.com
+
+- Changed robinhood-webgui path and fixed php version 
+
+-------------------------------------------------------------------
+Thu Oct 12 23:16:19 UTC 2017 - jengelh@inai.de
+
+- Update package descriptions.
+
+-------------------------------------------------------------------
+Wed Oct 11 12:50:33 UTC 2017 - cgoll@suse.com
+
+- updated to robinhood-3.1
+- fixed devel-file-in-non-devel-package via patch avoid-version.patch
+- moved binary used for tests to _libdir and pointed a softlink to it
+  at its original position
+
+-------------------------------------------------------------------
+Wed Aug 16 20:25:25 UTC 2017 - eich@suse.com
+
+- Replaced some hard coded directories.
+
+-------------------------------------------------------------------
+Wed Aug 16 09:07:51 UTC 2017 - cgoll@suse.com
+
+- rbh-config.patch: removed rbh_config call, as it is only needed for sql 
+  version
+- static-link.patch: made tests static linked as they wont complie otherwise
+- web-gui.patch: removed virtual apache server
+- initial commit for 323855 and made tests static linked 

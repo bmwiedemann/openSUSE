@@ -1,0 +1,164 @@
+Index: gnome-vfs-2.24.4/modules/network-method.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/modules/network-method.c
++++ gnome-vfs-2.24.4/modules/network-method.c
+@@ -1400,7 +1400,18 @@ vfs_module_init (const char *method_name
+ 			  "gnome-fs-network");
+ 	}
+ 
+-	
++	/* Novell Services */
++
++	uri = gnome_vfs_uri_new ("nnetscan://");
++	if (uri != NULL) {
++		gnome_vfs_uri_unref (uri);
++
++		add_link ("novell_services",
++			  "nnetscan://",
++			  _("Novell Services"),
++			  "ncl-bigNred");
++	}
++
+ 	return &method;
+ }
+ 
+Index: gnome-vfs-2.24.4/po/cs.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/cs.po
++++ gnome-vfs-2.24.4/po/cs.po
+@@ -24,6 +24,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+ 
++msgid "Novell Services"
++msgstr "Služby systému Novell"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "Svazek ISO 9660"
+Index: gnome-vfs-2.24.4/po/de.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/de.po
++++ gnome-vfs-2.24.4/po/de.po
+@@ -22,6 +22,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+ 
++msgid "Novell Services"
++msgstr "Novell-Services"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "ISO 9660-Datenträger"
+Index: gnome-vfs-2.24.4/po/hu.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/hu.po
++++ gnome-vfs-2.24.4/po/hu.po
+@@ -24,6 +24,9 @@ msgstr ""
+ "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+ "X-Generator: KBabel 1.11.4\n"
+ 
++msgid "Novell Services"
++msgstr "Novell szolgáltatások"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "ISO 9660 kötet"
+Index: gnome-vfs-2.24.4/po/ja.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/ja.po
++++ gnome-vfs-2.24.4/po/ja.po
+@@ -19,6 +19,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=1; plural=0;\n"
+ 
++msgid "Novell Services"
++msgstr "Novellサービス"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "ISO-9660 ボリューム"
+Index: gnome-vfs-2.24.4/po/pl.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/pl.po
++++ gnome-vfs-2.24.4/po/pl.po
+@@ -20,6 +20,9 @@ msgstr ""
+ "X-Poedit-Language: Polish\n"
+ "X-Poedit-Country: Poland\n"
+ 
++msgid "Novell Services"
++msgstr "Usługi Novell"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "Wolumin ISO 9660"
+Index: gnome-vfs-2.24.4/po/pt.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/pt.po
++++ gnome-vfs-2.24.4/po/pt.po
+@@ -16,6 +16,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+ 
++msgid "Novell Services"
++msgstr "Serviços da Novell"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "Unidade ISO 9660"
+Index: gnome-vfs-2.24.4/po/pt_BR.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/pt_BR.po
++++ gnome-vfs-2.24.4/po/pt_BR.po
+@@ -23,6 +23,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+ 
++msgid "Novell Services"
++msgstr "Serviços da Novell"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "Volume ISO 9660"
+Index: gnome-vfs-2.24.4/po/ru.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/ru.po
++++ gnome-vfs-2.24.4/po/ru.po
+@@ -21,6 +21,9 @@ msgstr ""
+ "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\n"
+ "X-Generator: KBabel 1.11.4\n"
+ 
++msgid "Novell Services"
++msgstr "Сервисы Novell"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "Том ISO9660"
+Index: gnome-vfs-2.24.4/po/zh_CN.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/zh_CN.po
++++ gnome-vfs-2.24.4/po/zh_CN.po
+@@ -18,6 +18,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=1; plural=0;\n"
+ 
++msgid "Novell Services"
++msgstr "Novell 服务"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "ISO 9660 卷"
+Index: gnome-vfs-2.24.4/po/zh_TW.po
+===================================================================
+--- gnome-vfs-2.24.4.orig/po/zh_TW.po
++++ gnome-vfs-2.24.4/po/zh_TW.po
+@@ -19,6 +19,9 @@ msgstr ""
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=1; plural=0;\n"
+ 
++msgid "Novell Services"
++msgstr "Novell 服務"
++
+ #: ../libgnomevfs/gnome-vfs-cdrom.c:237
+ msgid "ISO 9660 Volume"
+ msgstr "ISO 9660 檔案系統"

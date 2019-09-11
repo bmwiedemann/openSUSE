@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Tue Jun 12 11:12:00 UTC 2018 - sor.alexei@meowr.ru
+
+- Add nitroshare-fix-qt-5.11-build.patch: Fix Qt 5.11+
+  compatibility.
+- Some clean-up.
+
+-------------------------------------------------------------------
+Mon Feb 12 08:21:41 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon Jan 29 07:57:11 UTC 2018 - pascal.bleser@opensuse.org
+
+- Update to version 0.3.4:
+  * mDNS discovery for compatibility with the Android app
+  * quarantine mode when receiving transfers
+  * Arabic, German, Italian, and Polish translations added
+  * add button to open transfer directory to transfer window
+
+-------------------------------------------------------------------
+Sat Oct  8 19:13:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Remove the appindicator dependency: causes problems.
+
+-------------------------------------------------------------------
+Mon Jul 18 06:42:46 UTC 2016 - jengelh@inai.de
+
+- Trim filelist.
+
+-------------------------------------------------------------------
+Thu Jul 14 18:23:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.3.3:
+  * Extensions for Caja & Nemo.
+  * Fix a bug that broke progress and status display.
+  * Fix a number of DPI issues.
+  * Add French, Korean, & Spanish translations.
+- Add nitroshare-fix-caja.patch: use a correct Caja GI API version.
+
+-------------------------------------------------------------------
+Tue Jul 12 11:21:46 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.3.2:
+  * Local HTTP API.
+  * Nautilus extension.
+  * Support for TLS encryption.
+  * Option for starting at login.
+  * Runtime detection of Unity.
+
+-------------------------------------------------------------------
+Wed Feb  3 12:12:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.3.1:
+  * Switch the build system to CMake.
+  * Remove colour from the logo.
+  * Better platform integration.
+  * Options for:
+    + preventing NitroShare from receiving files;
+    + choosing whether files are overwritten when received;
+  * Add warning for GNOME users that an extension is required. 
+- Use the signed tarball.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:56:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

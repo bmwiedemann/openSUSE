@@ -1,0 +1,37 @@
+From 7c7d471aafaede78a90868683760daf1846c606b Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:27 +0100
+Subject: [PATCH 29/43] tools/kvm_stat: stop ignoring unhandled arguments
+
+Unhandled arguments, which could easily include typos, are simply
+ignored. We should be strict to avoid undetected typos.
+To reproduce start kvm_stat with an extra argument, e.g.
+'kvm_stat -d bnuh5ol' and note that this will actually work.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 73fab6ffbd83795e38974bb438e7afce0242c61a)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index dcfeb57d54fe..f613e2beef7b 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1520,7 +1520,9 @@ Press any other key to refresh statistics immediately.
+                          help='restrict statistics to guest by name',
+                          callback=cb_guest_to_pid,
+                          )
+-    (options, _) = optparser.parse_args(sys.argv)
++    options, unkn = optparser.parse_args(sys.argv)
++    if len(unkn) != 1:
++        sys.exit('Error: Extra argument(s): ' + ' '.join(unkn[1:]))
+     try:
+         # verify that we were passed a valid regex up front
+         re.compile(options.fields)
+-- 
+2.12.3
+

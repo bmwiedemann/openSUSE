@@ -1,0 +1,9 @@
+[Unit]
+Description=A simple load balancer for tcp based protocols
+After=time-sync.target nss-lookup.target syslog.socket remote-fs.target
+[Service]
+Type=forking
+ExecStart=/usr/share/pen/scripts/rcpen start
+ExecStop=/usr/share/pen/scripts/rcpen stop
+[Install]
+WantedBy=multi-user.system

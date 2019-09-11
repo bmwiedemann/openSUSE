@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon Feb 25 10:22:41 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Dont strip XAUTHLOCALHOSTNAME, it is required for lxqt-sudo
+  to function properly.
+  * Updated translations
+- Remove lxqt-bsc1122410-clear-env.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue Feb  5 10:46:45 UTC 2019 - mvetter@suse.com
+
+- bsc#1122410: Dont clear XAUTHLOCALHOSTNAME 
+- Add lxqt-bsc1122410-clear-env.patch:
+  See https://github.com/lxqt/lxqt-sudo/issues/101
+
+-------------------------------------------------------------------
+Thu Jan 31 10:29:34 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Force “C” locale for su/sudo
+  * Security: Prevent malicious attempts for command injection
+  * Strip environment - Leave only required environment variables (for X & locale) to get into the elevated child process.
+  * Make critical error messages less obscure
+  * Fixed the layout and line-break
+- Remove lxqt-sudo-0.13.0-locale-env.patch: upstreamed
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Thu Jul 26 13:05:35 UTC 2018 - mvetter@suse.com
+
+- bsc#1100871: Fix layout problem with CJK the usptream way
+  by setting the locale to C
+- Add lxqt-sudo-0.13.0-locale-env.patch
+- Remove lxqt-sudo-prompt-fix.patch: Using upstream approved fix
+
+-------------------------------------------------------------------
+Thu Jul 12 16:13:40 CEST 2018 - tiwai@suse.de
+
+- Fix the missing capture of the prompt line without the space
+  letter at the end of line (boo#1100871):
+  lxqt-sudo-prompt-fix.patch
+
+-------------------------------------------------------------------
+Tue May 22 15:20:01 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * passworddialog.cpp: include QIcon explicitely
+  * CMake: Prevent in-source builds
+  * fix http -> https
+  * Fixed mentions of LXDE
+
+-------------------------------------------------------------------
+Mon Oct 23 11:45:05 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set informal patch version
+  * Added basic .gitattributes
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Bump year
+
+-------------------------------------------------------------------
+Fri Feb 24 01:45:06 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Make CMakeLists.txt more uniform.
+
+-------------------------------------------------------------------
+Sat Sep 24 22:03:54 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * Add README.md
+  * build: Forward translations parameters
+  * ts-files removal (#21)
+  * Remove translations (will be pulled in build time)
+  * Bump year
+  * Italian translation update
+  * Updated Russian translation Fix language and typos
+  * Add Russian translation
+- Add keyring
+
+-------------------------------------------------------------------
+Wed Nov  4 10:18:35 UTC 2015 - mvetter@suse.com
+
+- Git build was done by aaz2011@mail.ru
+- Setting minimum Cmake version
+
+-------------------------------------------------------------------
+Sun Aug 23 09:12:07 UTC 2015 - and.november@opensuse.org
+
+- initial package for openSUSE
+

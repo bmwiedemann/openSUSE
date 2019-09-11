@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu May 17 08:21:50 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * gnu-getopt-java16compat.patch -> gnu-getopt-java8compat.patch
+    + Build with source and target 8 to prepare for a possible
+      removal of 1.6 compatibility
+
+-------------------------------------------------------------------
+Thu Sep 14 16:41:45 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * gnu-getopt-java14compat.patch
+- Added patch:
+  * gnu-getopt-java16compat.patch
+    + Build with java source and target 1.6 in order to allow
+      building with jdk9 
+
+-------------------------------------------------------------------
+Sat May 20 18:46:39 UTC 2017 - tchvatal@suse.com
+
+- Remove unneeded deps
+
+-------------------------------------------------------------------
+Tue Oct  7 08:59:37 UTC 2014 - tchvatal@suse.com
+
+- Clean up with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct  9 17:23:24 CEST 2008 - mvyskocil@suse.cz
+
+- update to 1.0.13:
+  * added an Spanish, Polish and Italian messages
+
+-------------------------------------------------------------------
+Mon Sep 25 15:55:38 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 15:29:08 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 15:56:29 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.0.10 from JPackage.org
+
+-------------------------------------------------------------------
+Fri Feb 18 18:56:28 CET 2005 - skh@suse.de
+
+- update to version 1.0.10
+- don't use icecream
+
+-------------------------------------------------------------------
+Thu Sep 16 16:12:39 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Mon Sep  6 13:47:47 CEST 2004 - skh@suse.de
+
+- Fix rename error.
+
+-------------------------------------------------------------------
+Sat Sep  4 23:00:42 CEST 2004 - skh@suse.de
+
+- Rename to gnu-getopt to not confuse autobuild
+
+-------------------------------------------------------------------
+Thu Sep  2 17:33:02 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.0.9 (JPackage 1.5)
+

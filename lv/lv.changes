@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Thu Jul  6 00:28:07 UTC 2017 - jengelh@inai.de
+
+- Stylistically diversify description; try not to start every
+  sentence with "Lv". Trim filler words.
+
+-------------------------------------------------------------------
+Wed Jun 21 15:37:28 UTC 2017 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner, use parallel make/etc...
+
+-------------------------------------------------------------------
+Thu Jan 26 11:59:32 UTC 2012 - pgajdos@suse.com
+
+- remove suse_update_config macro
+
+-------------------------------------------------------------------
+Thu Dec  1 16:51:25 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov 22 11:58:34 UTC 2011 - pgajdos@suse.com
+
+- build against libtinfo
+
+-------------------------------------------------------------------
+Thu Mar 29 14:34:09 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 17 16:46:34 CEST 2006 - mfabian@suse.de
+
+- update to 4.51.
+  + encoding detection improved, especially for UTF-8.
+  + various segfaults fixed.
+- remove lv-null.patch (fixed upstream).
+- add missing #include <string.h>.
+
+-------------------------------------------------------------------
+Tue Feb 28 18:48:24 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ja;ko;zh)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 00:25:29 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Oct 11 09:15:41 CEST 2005 - meissner@suse.de
+
+- use -fno-strict-aliasing, fixed some aliasing issues,
+  and one uninitialized.
+
+-------------------------------------------------------------------
+Mon Jan 24 10:54:36 CET 2005 - meissner@suse.de
+
+- Do not use #define NULL 0 , but NULL from stddef.h.
+
+-------------------------------------------------------------------
+Tue May 20 14:21:52 CEST 2003 - mfabian@suse.de
+
+- update to 4.49.5: Security fix:
+  Don't read .lv located at the current directory, except for
+  MSDOS. This fix prevent possible local root exploit using config
+  files (CAN-2003-0188).
+
+-------------------------------------------------------------------
+Thu May  8 21:04:41 CEST 2003 - mfabian@suse.de
+
+- add lgrep man page as a .so link to the lv man page
+
+-------------------------------------------------------------------
+Fri Feb  2 15:53:20 CET 2001 - mfabian@suse.de
+
+- new package: lv 4.49.4

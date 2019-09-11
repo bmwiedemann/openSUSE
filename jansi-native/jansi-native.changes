@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Apr  9 15:49:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to the parent pom since we are not building
+  using Maven.
+
+-------------------------------------------------------------------
+Thu Feb  7 10:40:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary, and use noun phrasing.
+- Avoid double-shipping documentation.
+
+-------------------------------------------------------------------
+Mon Feb  4 10:40:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of jansi-native 1.7
+- Add jansi-native-build.xml for ant build

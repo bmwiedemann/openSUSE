@@ -1,0 +1,30 @@
+From dc357b652edb7e8e2970fd6f4549c433710093b8 Mon Sep 17 00:00:00 2001
+From: Eric Ren <zren@suse.com>
+Date: Tue, 8 Sep 2015 10:27:51 +0800
+Subject: [PATCH 3/3] ocfs2-tools: add systemd support fix
+
+The ocfs2.service should be after remote-fs.target so that iscsi
+volume would be available at first.
+
+Signed-off-by: Eric Ren <zren at suse.com>
+Reviewed-by: Junxiao Bi <junxiao.bi at oracle.com>
+---
+ vendor/common/ocfs2.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vendor/common/ocfs2.service b/vendor/common/ocfs2.service
+index 768f806..c7ecbea 100644
+--- a/vendor/common/ocfs2.service
++++ b/vendor/common/ocfs2.service
+@@ -1,7 +1,7 @@
+ [Unit]
+ Description=Load ocfs2 Modules
+ Requires=o2cb.service
+-After=o2cb.service
++After=o2cb.service remote-fs.target
+ 
+ [Service]
+ Type=oneshot
+-- 
+2.1.4
+

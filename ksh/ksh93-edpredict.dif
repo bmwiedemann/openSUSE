@@ -1,0 +1,40 @@
+--- src/cmd/ksh93/edit/edit.c.orig	2016-02-18 10:33:20.604776826 +0000
++++ src/cmd/ksh93/edit/edit.c	2016-02-18 10:34:02.019627077 +0000
+@@ -628,8 +628,8 @@ void	ed_setup(register Edit_t *ep, int f
+ 	ep->hoff = 0;
+ #endif /* SHOPT_EDPREDICT */
+ #if KSHELL
+-	ep->e_stkptr = stakptr(0);
+ 	ep->e_stkoff = staktell();
++	ep->e_stkptr = stakfreeze(0);
+ 	if(!(last = shp->prompt))
+ 		last = "";
+ 	shp->prompt = 0;
+--- src/cmd/ksh93/edit/emacs.c.orig	2016-02-18 10:33:27.144753171 +0000
++++ src/cmd/ksh93/edit/emacs.c	2016-02-18 10:34:33.289514039 +0000
+@@ -721,10 +721,8 @@ process:
+ 	draw(ep,FINAL);
+ 	tty_cooked(ERRIO);
+ 	if(ed->e_nlist)
+-	{
+ 		ed->e_nlist = 0;
+-		stakset(ed->e_stkptr,ed->e_stkoff);
+-	}
++	stakset(ed->e_stkptr,ed->e_stkoff);
+ 	if(c == '\n')
+ 	{
+ 		out[eol++] = '\n';
+--- src/cmd/ksh93/edit/vi.c.orig	2016-02-18 10:33:35.772722001 +0000
++++ src/cmd/ksh93/edit/vi.c	2016-02-18 10:36:15.506143712 +0000
+@@ -608,10 +608,8 @@ int ed_viread(void *context, int fd, reg
+ 	/* to cause the shell to process the line */
+ 	tty_cooked(ERRIO);
+ 	if(ed->e_nlist)
+-	{
+ 		ed->e_nlist = 0;
+-		stakset(ed->e_stkptr,ed->e_stkoff);
+-	}
++	stakset(ed->e_stkptr,ed->e_stkoff);
+ 	if( vp->addnl )
+ 	{
+ 		virtual[++last_virt] = '\n';

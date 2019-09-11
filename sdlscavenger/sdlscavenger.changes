@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Mar 23 11:25:25 UTC 2015 - nemysis@gmx.ch
+
+- Update to 145_2015_01_05, no changelog entry
+
+- Change Source0 Web URL to get proper Version
+- Remove obsolete patch sdlscavenger-145_2014_01_01-Makefile.patch,
+  use instead sed
+- Add description for sed
+- Simplify installation handling
+
+-------------------------------------------------------------------
+Mon Nov 17 18:22:23 UTC 2014 - nemysis@gmx.ch
+
+- Use %{_datadir}/icons/hicolor/ to not get failed
+
+-------------------------------------------------------------------
+Mon Nov 17 18:14:56 UTC 2014 - nemysis@gmx.ch
+
+- Change Source0 Web URL
+- Use CC="cc %{optflags}" to fix
+  'File is compiled without RPM_OPT_FLAGS'
+- Install icon in %{_datadir}/icons/hicolor/32x32/apps/
+  instead of %{_datadir}/pixmaps/
+
+-------------------------------------------------------------------
+Sat Oct 18 06:42:06 UTC 2014 - nemysis@gmx.ch
+
+- Add changelog
+
+-------------------------------------------------------------------
+Sat Oct 18 06:27:34 UTC 2014 - nemysis@gmx.ch
+
+- Use for Group Amusements/Games/Logic instead of
+  Amusements/Games/LogicGame
+- Remove BuildRequires for desktop-file-utils and pkgconfig
+- Use check for openSUSE %if 0%{?suse_version}
+- Use BuildRequires pkgconfig(sdl), pkgconfig(SDL_image) and
+  pkgconfig(SDL_mixer) instead of SDL-devel, libSDL_image-devel and
+  libSDL_mixer-devel
+- Change %fdupes
+- Change Desktop entry file
+
+-------------------------------------------------------------------
+Tue Sep 30 20:31:04 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

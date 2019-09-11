@@ -1,0 +1,506 @@
+-------------------------------------------------------------------
+Thu Aug  8 16:20:20 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for ppc64/ppc64le  for  more than 3.5GB disk
+  avoid  "No space left on device"
+
+-------------------------------------------------------------------
+Wed Jun 19 11:24:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Tue Jun  4 07:24:51 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 29 09:16:43 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Apr 18 07:27:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 21 10:25:43 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Thu Mar 14 08:51:30 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Wed Mar  6 14:28:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable the gypsy plugin
+- Mention all location plugins explicitly
+- Move QtPositioning QML plugin to libQt5PositioningQuick5 package
+
+-------------------------------------------------------------------
+Fri Feb  1 08:40:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.12.1/?h=v5.12.1
+
+-------------------------------------------------------------------
+Thu Dec  6 13:36:43 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:16:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:39:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:25:07 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct 26 07:20:50 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:23:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 19:23:32 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct  2 07:34:04 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+
+-------------------------------------------------------------------
+Fri Sep 21 07:59:19 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Tue Jun 19 10:50:40 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Sat Jun  9 08:52:46 UTC 2018 - fabian@ritter-vogt.de
+
+- Mention libQt5PositioningQuick in baselibs.conf
+
+-------------------------------------------------------------------
+Tue May 22 16:05:59 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Tue May  8 11:01:23 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:57:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:14:43 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:36 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:42 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:55:34 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:29:03 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+
+-------------------------------------------------------------------
+Wed Feb 14 15:46:35 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.10.1/?h=v5.10.1
+- Use %license
+
+-------------------------------------------------------------------
+Fri Feb  2 10:43:48 UTC 2018 - dimstar@opensuse.org
+
+- Eliminate build dependency on procps: we only used it to run
+  'free', in order to find out how much RAM we have available. We
+  can get this information directly from the kernel, from
+  /proc/meminfo.
+
+-------------------------------------------------------------------
+Fri Dec  8 23:12:06 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:12:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+- Add some feature from the Chromium builds to determine the maximum
+  allowed parallel processes based on the available memory.
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtlocation.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Fri Nov 17 08:25:47 UTC 2017 - zaitor@opensuse.org
+ 
+- Drop pkgconfig(geoclue) BuildRequires: geoclue is obsoleted by
+  geoclue2, and it is not used during compilation of this package
+  so just drop it.
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:47 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 08:53:34 UTC 2017 - tittiatcoke@gmail.com
+
+- Add some feature from the Chromium builds to determine the maximum
+  allowed parallel processes based on the available memory.
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:28 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 14:18:42 UTC 2017 - fcrozat@suse.com
+
+- Add logic from chromium specfile to limit build parallelism based
+  on available memory. Add BuildRequires procps for this.
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Sun Oct  8 14:06:36 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+Mon Sep 11 17:34:02 UTC 2017 - jengelh@inai.de
+
+- Update package descriptions.
+- Use find -exec "+" strategy.
+
+-------------------------------------------------------------------
+Sat Jul  1 08:15:18 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Wed May 31 07:05:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+
+-------------------------------------------------------------------
+Wed Dec 14 16:05:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+- Restore support for gypsy on Leap
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+- New libQt5Location5 subpackage
+
+-------------------------------------------------------------------
+Mon Nov  3 20:39:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Don't BuildRequire pkgconfig(gypsy) for SLE
+- Downgrade external packages to suggests of the devel package, they
+  are private deps
+
+-------------------------------------------------------------------
+Tue Sep 16 11:27:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2 final
+  * No changes since previous snapshot
+  * Use official tars
+
+-------------------------------------------------------------------
+Thu Sep  4 20:37:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2~git20140904 (r6e39a79):
+  * Tip of the bugfix 5.3.2 branch
+    * OSX: Fix QGeoPositionInfo attribute values with
+      corelocation plug-in
+    * Don't hang weatherinfo if position source has an error.
+    * Enforce the use of test.source position plug-in
+      in auto tests
+    * Report error when failing to connect to Geoclue.
+    * Add changelog for QtPositioning 5.3.2 release.
+    * Fix fitViewportToMapItemsRefine
+    * Avoid potential double deletion when handling
+      OSM route replies
+    * Fix QGeoRouteReplyOsm::networkReplyFinished
+    * Fix issues with MapItemView.
+    * Fixed symbol clash between sensor and positioning
+      plug-in on iOS
+    * Fix the names of the plugin factory classes for
+      static plugin loading
+
+-------------------------------------------------------------------
+Wed Jun 25 10:38:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+
+-------------------------------------------------------------------
+Mon Jun  2 19:25:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added baselibs.conf
+- Make private headers noarch
+
+-------------------------------------------------------------------
+Mon May 19 23:42:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 final
+  * Minor bugfixes over previous RC
+
+-------------------------------------------------------------------
+Thu May  8 18:14:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 RC
+  * For more details, please see
+  http://blog.qt.digia.com/blog/2014/05/08/qt-5-3-release-candidate-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+
+-------------------------------------------------------------------
+Tue Mar 25 11:44:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/03/25/qt-5-3-beta-released/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+
+-------------------------------------------------------------------
+Fri Mar 21 02:31:22 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Build, and add examples subpackage
+
+-------------------------------------------------------------------
+Wed Feb  5 17:07:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/02/05/qt-5-2-1-released/
+- Remove libtool archives from packages
+
+-------------------------------------------------------------------
+Wed Dec 18 00:26:31 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Initialize libqt5-qtlocation package
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=PTP: Boundary/Ordinary Clock
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/ptp4l
+ExecStart=/usr/sbin/ptp4l $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

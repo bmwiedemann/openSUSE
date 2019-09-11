@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Tue Mar 26 17:11:56 CET 2019 - tiwai@suse.de
+
+- Update to version 0.5.2:
+  Added ALSA-native GUS patch loader (agusload)
+- Change URL to github
+
+-------------------------------------------------------------------
+Sun Nov 16 18:36:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in udev-soundfont script
+- add patches:
+  * awesfx-0.5.1e-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Thu Jul 24 12:23:51 CEST 2014 - tiwai@suse.de
+
+- Updated to version 0.5.1e:
+  fix wrong error condition checks in loadbank.c
+
+-------------------------------------------------------------------
+Thu Apr 11 20:12:39 UTC 2013 - crrodriguez@opensuse.org
+
+- Place udev rules in the correct directory. 
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:44 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 13:55:26 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Mar 29 08:40:08 CEST 2011 - tiwai@suse.de
+
+- version 0.5.1d:
+  * including previous fixes
+  * fix possible buffer overflow in awe_read_option_file()
+
+-------------------------------------------------------------------
+Fri May 29 12:50:51 CEST 2009 - tiwai@suse.de
+
+- fix build error with the recent glibc (getline() conflict)
+- build with -fno-strict-aliasing
+- clean up spec file
+
+-------------------------------------------------------------------
+Wed Aug 29 16:51:00 CEST 2007 - tiwai@suse.de
+
+- fix udev script to load properly with recent udev versions
+- fix for autoreconf
+
+-------------------------------------------------------------------
+Mon Aug  6 19:19:24 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.5.1a:
+  * really fix the build without linux/awe_voice.h
+
+-------------------------------------------------------------------
+Wed Jul 25 12:05:59 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.5.1:
+  * include awe_voice.h into the package
+  * include udev files into the package
+
+-------------------------------------------------------------------
+Tue Apr 17 15:03:55 CEST 2007 - tiwai@suse.de
+
+- move udev-related stuff from alsa package
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 31 11:58:10 CEST 2004 - tiwai@suse.de
+
+- updated to version 0.5.0d.  (misc fixes only)
+
+-------------------------------------------------------------------
+Fri Feb 27 16:44:37 CET 2004 - tiwai@suse.de
+
+- updated to version 0.5.0b.
+
+-------------------------------------------------------------------
+Wed Feb  4 16:29:27 CET 2004 - tiwai@suse.de
+
+- updated to version 0.5.0a.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:27:20 CET 2004 - tiwai@suse.de
+
+- updated to version 0.5.0.  using auto-tools now.
+  ALSA emux loader is added. 
+
+-------------------------------------------------------------------
+Sun Jan 11 10:12:44 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Mar  8 15:24:03 CET 2002 - kukuk@suse.de
+
+- Add /usr/share/sounds/sf2 to filelist
+
+-------------------------------------------------------------------
+Tue Jan  8 19:10:02 CET 2002 - tiwai@suse.de
+
+- fixed buffer overflow with a long HOME env. variable.
+
+-------------------------------------------------------------------
+Fri Sep 21 15:47:19 CEST 2001 - tiwai@suse.de
+
+- Fixed a bug in incremental loading: duplication of instrument
+  layers are avoided.
+
+-------------------------------------------------------------------
+Tue Feb 27 14:45:17 CET 2001 - tiwai@suse.de
+
+- Apply the forgotten patch.
+
+-------------------------------------------------------------------
+Fri Jan  5 13:45:17 CET 2001 - tiwai@suse.de
+
+- Removed CVS directories from source archive.
+- Strip installed binaries.
+
+-------------------------------------------------------------------
+Tue Dec  5 12:47:57 CET 2000 - tiwai@suse.de
+
+- Move default soundfont directory to /usr/share/sounds/sf2.
+
+-------------------------------------------------------------------
+Thu Sep 14 16:47:53 CEST 2000 - tiwai@suse.de
+
+- Fixed version number and documents.
+
+-------------------------------------------------------------------
+Tue Aug  1 18:31:03 CEST 2000 - tiwai@suse.de
+
+- Initial version: 0.4.4
+

@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Wed Oct 11 21:55:03 UTC 2017 - waterlan@xs4all.nl
+
+- Update to 7.3.5
+  * New option --allow-chown to allow file ownership change
+    in old file mode.
+
+-------------------------------------------------------------------
+Mon Jul 10 23:01:17 UTC 2017 - jengelh@inai.de
+
+- Replace suboptimal find \;
+
+-------------------------------------------------------------------
+Thu Jul  6 07:50:15 UTC 2017 - dimstar@opensuse.org
+
+- Use find -exec instead of find | xargs: helps handle cases for
+  files with spaces and quotes in their filenames.
+
+-------------------------------------------------------------------
+Wed Jul  5 19:33:38 UTC 2017 - waterlan@xs4all.nl
+
+- Update to 7.3.5
+
+-------------------------------------------------------------------
+Wed May 25 20:59:41 UTC 2016 - waterlan@xs4all.nl
+
+- Update to 7.3.4
+
+-------------------------------------------------------------------
+Sun Feb 14 13:20:51 UTC 2016 - waterlan@xs4all.nl
+
+- Update to 7.3.3
+
+-------------------------------------------------------------------
+Fri Nov 20 22:21:01 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.3.2
+  * New: Swedish translation of messages and manual.
+  * Updated: Danish and Brazilian Portuguese translations.
+  * Fix: The -iso option was misinterpreted as a corrupted -i option.
+  * Fix: Compilation for MSYS 1.
+
+-------------------------------------------------------------------
+Thu Oct  1 20:56:26 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.3.1
+  * New: Simplified Chinese translation of messages and manual.
+  * Fix: Compilation error "'wchar_t' undeclared" when Unicode support is disabled.
+  * Fix: Compilation errors when MinGW compiler was used (MinGW-w64 was OK). 
+
+-------------------------------------------------------------------
+Tue Aug 25 20:01:40 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.3
+  * New: Unicode file name support on Windows.
+  * Fix: Options -ul and -ub caused option -i to report wrong BOM for no_bom.
+
+-------------------------------------------------------------------
+Fri Jul  3 18:13:26 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.2.3
+  * Fix: Check for file I/O errors while reading input files, and added
+    a few missing checks while writing output files.
+  * Fix: Compilation for msys.
+
+-------------------------------------------------------------------
+Sat May 23 15:04:36 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.2.2
+  * Fix: Fixed symlink support on FreeBSD.
+  * Fix: Skip GB18030 test on FreeBSD.
+  * Fix: When conversion of an UTF-16 file with binary symbols was forced,
+    null characters were not written in the output.
+  * Fix: Check UTF-16 input for invalid surrogate pairs.
+
+-------------------------------------------------------------------
+Thu Apr  2 18:29:54 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.2.1
+  * Fix: Skip the GB18030 tests when the system does not support the
+    Chinese locale with GB18030 character encoding.
+  * Fix: Small corrections in the manual in section GB18030 and OPTIONS -m.
+
+-------------------------------------------------------------------
+Sun Feb 15 11:18:35 UTC 2015 - waterlan@xs4all.nl
+
+- Update to 7.2
+  * New: Japanese translation of the UI messages.
+  * New: Support Chinese GB18030 locale.
+  * Change: On Unix/Linux convert UTF-16 to the locale encoding. It is
+    no longer required that the locale encoding is UTF-8.
+
+-------------------------------------------------------------------
+Sun Oct 26 14:31:04 UTC 2014 - waterlan@xs4all.nl
+
+- Fixed license type: BSD-2-Clause
+- Added missing manual translations: da, fr, pt_BR.
+- Update to 7.1:
+  * New: Option -i, --info to print file information.
+    This new option prints number of DOS, Unix, and Mac line breaks, the byte
+    order mark, and if the file is text or binary. And it can print the names
+    of files that would be converted.
+  Version 7.0
+  * New: automated self-tests.
+  * New: option -u to keep UTF-16 encoding.
+  * New: option -v to print information about BOMs and converted line breaks.
+  * Change: stdio mode does not automatically set quiet mode.
+  * Change: stdio mode does not automatically force conversion of binaries.
+    An error is returned when the stdin stream contains a binary symbol.
+  * Bugfix: dos2unix -l created DOS line breaks from Mac line breaks.
+  * Bugfix: system error number was not always returned.
+  * Bugfix: an Unicode input file disabled 7bit and iso mode for next input files.
+  * Bugfix: mac2unix help text, options -b and -r.
+  * The code has been cleaned up.
+
+-------------------------------------------------------------------
+Mon Aug  4 15:31:58 CEST 2014 - pth@suse.de
+
+- Update to 6.0.6:
+  * Bugfix: mac2unix conversion produced corrupted output from
+            UTF-16 input file.
+  * New options -b (keep BOM) and -r (remove BOM).
+  * New translation of the UI messages: Norwegian Bokmaal.
+
+-------------------------------------------------------------------
+Tue Apr 22 22:09:20 UTC 2014 - tabraham@suse.com
+
+- Update to 6.0.5
+  * Dos2unix is part of the Translation Project (TP).
+    All translations go via the Translation Project.
+    See http://translationproject.org/
+  * New translations of UI messages: Brazilian Portuguese, Chinese (traditional),
+    Danish, French, Hungarian, Polish, Serbian, Ukrainian, Vietnamese.
+  * New translations of the manual: Brazilian Portuguese, French, German,
+    Polish, Ukrainian.
+  * Generated man pages are included in the source package to prevent
+    compilation problems with very old or very new perl/pod2man versions.
+  * Manuals are now generated from gettext PO files with po4a for easier
+    translation.
+  * All manuals are now in UTF-8 encoding.
+  * Skip symbolic links on Windows by default (same as on Unix).
+
+-------------------------------------------------------------------
+Sun Jan  5 23:26:06 UTC 2014 - tabraham@suse.com
+
+- Update to 6.0.4.
+  * New options -ul and -ub to conver UTF-16 files without BOM
+  * New Russian translation of the messages
+  * Build 32 bit Windows binaries with Large File Support (LFS) by
+    using mingw-w64 for 32 bit Windows
+  * When a binary symbol is encountered the value is printed
+
+-------------------------------------------------------------------
+Tue Apr 16 11:32:22 CEST 2013 - pth@suse.de
+
+- Update to 6.0.3. Changes since 6.0:
+  -Version 6.0.3
+  * Source code compiles with Microsoft Visual C.
+  * Print system error when writing output fails.
+
+  - Version 6.0.2
+  * The locale encoding detection when NLS was disabled has been fixed.
+  * Print line number when a binary symbol is found.
+  * Updated makefiles for Watcom C, and added a new one for OS/2.
+
+  - Version 6.0.1
+  * Update Spanish translations.
+  * Update manual.
+
+-------------------------------------------------------------------
+Mon Jul 16 23:13:43 UTC 2012 - andreas.stieger@gmx.de
+
+- fix build against openSUSE:Factory / standard: man page paths
+
+-------------------------------------------------------------------
+Sun May 06 19:30:19 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 6.0:
+  * Conversion of Windows UTF-16 files to Unix UTF-8 files
+  * Conversion of Unix UTF-8 files to Windows UTF-8 files with byte
+    order mark
+
+-------------------------------------------------------------------
+Mon Mar 12 18:25:19 UTC 2012 - tabraham@novell.com
+
+- Update to 5.3.3:
+  - enabled wildcard expansion
+  - small update in RETURN VALUE section of man page
+
+- removed dos2unix-correct_ending.patch (instead pass HTMLEXT="html"
+  to make)
+
+-------------------------------------------------------------------
+Mon Jan 30 13:05:59 CET 2012 - pth@suse.de
+
+- Update to 5.3.2:
+  - Change of hmoepage URL.
+  - All other changes are for non Unix platforms.
+  - Don't recompress the package anymore.
+
+-------------------------------------------------------------------
+Fri Sep 30 14:49:47 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Wed Aug 10 12:46:41 CEST 2011 - pth@suse.de
+
+- Update to 5.3.1:
+  * Spanish tranlation of messages and manual.
+  * File ownership is maintained in old file mode (Unix only).
+  * Dos2unix and Unix2dos share the same language files.
+  * Code cleanup.
+
+-------------------------------------------------------------------
+Wed May 25 07:01:35 UTC 2011 - aj@suse.de
+
+- Add buildrequire on xz.
+
+-------------------------------------------------------------------
+Mon May 23 13:32:41 CEST 2011 - pth@suse.de
+
+- Repackage with xz.
+
+-------------------------------------------------------------------
+Sat May 21 18:17:55 UTC 2011 - crrodriguez@opensuse.org
+
+- Open all fds with O_CLOEXEC. 
+
+-------------------------------------------------------------------
+Sat May 21 16:59:14 UTC 2011 - vlado.paskov@gmail.com
+
+- Version update to 5.3
+    - removed patch dos2unix-no_pdf.patch, this version doesn't
+      generate pdf/ps documents.
+    - updated dos2unix-correct_ending.patch
+    - fixed Url: in the spec file
+
+-------------------------------------------------------------------
+Tue Feb 15 17:50:05 CET 2011 - pth@suse.de
+
+- Don't generate ps/pdf documents, thus no need for ghostscript.
+
+-------------------------------------------------------------------
+Thu Feb  3 18:03:40 CET 2011 - pth@suse.de
+
+- Update to 5.2:
+    ISO conversion mode supports same DOS code pages as SunOS dos2unix does:
+      CP437 (US), CP850 (Western European), CP860 (Portuguese),
+      CP863 (French Canadian), and CP865 (Nordic). 
+    ISO conversion mode supports Windows code page CP1252 (Western).
+    SunOS compatible options -ascii, -iso, -7, -437, -850, -860, -863, and -865.
+    Active code page detection for ISO mode.
+    Fixed ISO conversion of non-breaking space (NBSP).
+    Treat ASCII Form Feed control characters as valid text.
+    Update manual pages.
+    Don't include generated documentation files in Unix source package.
+- Suffix for HTML pages is .html not .htm
+
+-------------------------------------------------------------------
+Fri Jan 14 20:08:59 UTC 2011 - coolo@novell.com
+
+- remove unsupported locales
+
+-------------------------------------------------------------------
+Wed Nov 10 13:07:17 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Aug 24 15:24:08 CEST 2010 - pth@suse.de
+
+- Update 5.1.1:
+  * Added Dutch translation of the manual
+  * Updated German translation
+
+-------------------------------------------------------------------
+Sat Apr 10 14:59:22 UTC 2010 - aj@suse.de
+
+- Add eo-x directories to fix build.
+
+-------------------------------------------------------------------
+Tue Apr  6 16:10:23 UTC 2010 - pth@novell.com
+
+- Update to 5.1:
+  * Esperanto translations have been added.
+  * Command-line options can be set in stdio mode.
+  * Localization information has been added to the manual.
+  * Man pages have been merged.
+  * Man page generation from Perl POD file.
+
+-------------------------------------------------------------------
+Wed Feb 17 16:59:09 CET 2010 - pth@suse.de
+
+- Update to 5.0:
+    * Dos2unix and Unix2dos have been bundled in a single package.
+    * German translations have been added.
+    * Dos2unix -l --newline also works in MAC mode.
+    * Unix2dos also got option -l, --newline.
+    * Added MAC mode to Unix2dos: Convert Unix line endings to Mac line endings.
+    * Cleanup of messages and manual.
+
+-------------------------------------------------------------------
+Wed Feb  3 10:33:53 CET 2010 - pth@suse.de
+
+- Update to 4.1.2:
+  * dos2unix.c: Preserve file mode in 'new file mode'.
+  * Makefile: Allow CFLAGS to be set externally.
+- Adapt Makefile patch and German message catalog.
+
+-------------------------------------------------------------------
+Tue Dec 22 12:26:07 UTC 2009 - coolo@novell.com
+
+- fix translation
+
+-------------------------------------------------------------------
+Wed Dec 16 14:23:06 CET 2009 - pth@suse.de
+
+- Update to 4.0:
+	* version 4.0
+	* Added internationalisation using gettext.
+	* Added Dutch translation.
+	* New option -L/--license that prints software license.
+	* Code cleanup
+	* Update manual
+
+	* version 3.2
+	* version.mk: New file.
+	* README: New file.
+	* INSTALL: Updated.
+	* Makefile: Makefile according GNU standards.
+	* ChangeLog : New file.
+	* Applied all patches from RedHat:
+
+- Use DESTDIR only in install makefile targets.
+- Add a German translation.
+
+-------------------------------------------------------------------
+Tue Dec 15 22:27:07 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon Apr 20 15:03:31 CEST 2009 - pth@suse.de
+
+- Don't destroy original file if the output is on a different file
+  system (bnc#488261).
+
+-------------------------------------------------------------------
+Tue Dec  9 17:10:36 CET 2008 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Mon Sep 15 14:04:46 CEST 2008 - ro@suse.de
+
+- let mac2unix be a hardlink (instead of duplicate binary) 
+
+-------------------------------------------------------------------
+Tue Apr 11 12:12:57 CEST 2006 - pth@suse.de
+
+- Make dos2unix preserve file modes (bugzilla #119350).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 13:21:19 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Aug 12 17:52:01 MEST 2002 - bk@suse.de
+
+- update to dos2unix-3.1(no longer uses hd2u, but real dos2unix)
+
+-------------------------------------------------------------------
+Wed Jun 19 17:58:10 CEST 2002 - postadal@suse.cz
+
+- new package dos2unix verison 0.8.0
+

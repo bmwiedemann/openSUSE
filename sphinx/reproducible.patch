@@ -1,0 +1,26 @@
+Index: sphinx-2.2.11-release/configure.ac
+===================================================================
+--- sphinx-2.2.11-release.orig/configure.ac
++++ sphinx-2.2.11-release/configure.ac
+@@ -79,7 +79,7 @@ syntax error
+ ])], [], [AC_MSG_ERROR([Gcc version error. Minspec is 3.4])])
+ 
+ AC_DEFINE_UNQUOTED([COMPILER],"$CC `$CC -dumpversion`",[Define to be the name of the compiler.])
+-AC_DEFINE_UNQUOTED([OS_UNAME],"`uname -a`",[Full name OS])
++AC_DEFINE_UNQUOTED([OS_UNAME],"`uname -smo`",[Full name OS])
+ AC_DEFINE_UNQUOTED([CONFIGURE_FLAGS],"$ac_configure_args",[Flags used to configure me])
+ 
+ dnl --------------------------------------------------------------------------
+Index: sphinx-2.2.11-release/configure
+===================================================================
+--- sphinx-2.2.11-release.orig/configure
++++ sphinx-2.2.11-release/configure
+@@ -4454,7 +4454,7 @@ _ACEOF
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define OS_UNAME "`uname -a`"
++#define OS_UNAME "`uname -smo`"
+ _ACEOF
+ 
+ 

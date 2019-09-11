@@ -1,0 +1,69 @@
+Reference: bnc#875111
+Steps to get a KVM VM in the crashed state:
+1) Install a sles12 KVM VM
+2) Manually edit the XML and add/modify <on_crash>preserve</on_crash>
+3) In virt-manager add the panic device (Details->Add Hardware)
+4) Edit the VM's /etc/default/grub file and remove the crashkernel information
+   and then run grub2-mkconfig /boot/grub2/grub.cfg.
+5) Start the VM and within the VM's terminal type "echo 'c' > /proc/sysrq-trigger"
+Index: virt-manager-2.2.0/virtManager/manager.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtManager/manager.py
++++ virt-manager-2.2.0/virtManager/manager.py
+@@ -784,7 +784,7 @@ class vmmManager(vmmGObjectUI):
+             show_pause = bool(vm and vm.is_unpauseable())
+         else:
+             show_pause = bool(vm and vm.is_pauseable())
+-        show_shutdown = bool(vm and vm.is_stoppable())
++        show_shutdown = bool(vm and vm.is_destroyable())
+ 
+         if vm and vm.managedsave_supported:
+             self.change_run_text(vm.has_managed_save())
+Index: virt-manager-2.2.0/virtManager/vmmenu.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtManager/vmmenu.py
++++ virt-manager-2.2.0/virtManager/vmmenu.py
+@@ -21,6 +21,7 @@ class _VMMenu(Gtk.Menu):
+         self._parent = src
+         self._current_vm_cb = current_vm_cb
+         self._show_open = show_open
++        self._shutdown = None
+ 
+         self._init_state()
+ 
+@@ -84,6 +85,7 @@ class VMShutdownMenu(_VMMenu):
+             name = getattr(child, "vmm_widget_name", None)
+             if name in statemap:
+                 child.set_sensitive(statemap[name])
++                child.set_visible(statemap[name])
+ 
+             if name == "reset":
+                 child.set_tooltip_text(None)
+@@ -105,7 +107,8 @@ class VMActionMenu(_VMMenu):
+         self._add_action(_("R_esume"), "resume", VMActionUI.resume,
+                 Gtk.STOCK_MEDIA_PAUSE)
+         s = self._add_action(_("_Shut Down"), "shutdown", None)
+-        s.set_submenu(VMShutdownMenu(self._parent, self._current_vm_cb))
++        self._shutdown = VMShutdownMenu(self._parent, self._current_vm_cb)
++        s.set_submenu(self._shutdown)
+ 
+         self.add(Gtk.SeparatorMenuItem())
+         self._add_action(_("Clone..."), "clone",
+@@ -125,7 +128,7 @@ class VMActionMenu(_VMMenu):
+     def update_widget_states(self, vm):
+         statemap = {
+             "run": bool(vm and vm.is_runable()),
+-            "shutdown": bool(vm and vm.is_stoppable()),
++            "shutdown": bool(vm and vm.is_destroyable()),
+             "suspend": bool(vm and vm.is_stoppable()),
+             "resume": bool(vm and vm.is_paused()),
+             "migrate": bool(vm and vm.is_stoppable()),
+@@ -142,6 +145,8 @@ class VMActionMenu(_VMMenu):
+                 child.get_submenu().update_widget_states(vm)
+             if name in statemap:
+                 child.set_sensitive(statemap[name])
++                if name == "shutdown" and self._shutdown:
++                    self._shutdown.update_widget_states(vm)
+             if name in vismap:
+                 child.set_visible(vismap[name])
+ 

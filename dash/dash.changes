@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Thu Oct 25 06:07:40 UTC 2018 - sean@suspend.net
+
+- update to version 0.5.10
+  * For complete list of changes, see:
+    https://git.kernel.org/pub/scm/utils/dash/dash.git/log/?qt=range&q=v0.5.9.1..v0.5.10
+- remove upstreamed patches:
+  * drop dash-0.5.7-do-not-close-stderr.patch
+  * drop dash-remove-backslash-before-in-double-quotes-in-variable.patch
+
+-------------------------------------------------------------------
+Sat Nov  4 23:15:40 UTC 2017 - aavindraa@gmail.com
+
+- update to version 0.5.9.1
+  * For complete list of changes, see:
+    https://git.kernel.org/pub/scm/utils/dash/dash.git/log/?qt=range&q=v0.5.8..v0.5.9.1
+- lint with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr  9 08:19:38 UTC 2015 - mpluskal@suse.com
+
+- Use fnmatch and glob from glibc
+- Use url for source
+
+-------------------------------------------------------------------
+Fri Oct 10 05:49:53 UTC 2014 - gber@opensuse.org
+
+- update to version 0.5.8
+  - Small optimisation of command -pv change
+  - Set command -p path to /usr/sbin:/usr/bin:/sbin:/bin
+  - Change "characters" for printf precision to "bytes"
+  - Clarify "trap '' signals" syntax in manual page
+  - Clarify that 0 and EXIT are both acceptable for exit traps
+  - command: allow combining -p with -v
+  - getjob: Fix off-by-one error for multiple of four job numbers
+  - Propagate EXP_QPAT in subevalvar
+  - Initialise OPTIND after importing environment
+  - Fixed argument parsing crash in test
+  - Add newline when tracing in poplocalvars
+  - Markup fixes in manual for mandoc 1.12.1
+  - Use PRIdMAX instead of %j in printf
+  - Fix typo for wait in manual
+  - Add support for ulimit -r
+  - Avoid overflow for very long variable name
+  - Sanitise environment variable names on entry
+  - Allow building without LINEO support
+  - Add top-level autogen.sh
+  - Avoid imaxdiv when only one of the results is wanted
+  - Fix klibc DEBUG compilation
+  - Merge SKIPFUNC/SKIPFILE and only clear SKIPFUNC when leaving
+    dotcmd
+
+-------------------------------------------------------------------
+Fri Sep 27 11:32:47 UTC 2013 - gber@opensuse.org
+
+- install into %{_bindir} and add a compatibility symlink to /bin
+- reenable commandline editor
+
+-------------------------------------------------------------------
+Thu Oct  6 22:04:40 UTC 2011 - gber@opensuse.org
+
+- remove libeditline dependency again as libeditline lives in /usr
+
+-------------------------------------------------------------------
+Thu Oct  6 17:50:16 UTC 2011 - gber@opensuse.org
+
+- update to version 0.5.7
+  - optimize dash -c "command" to avoid a fork
+  - improve LINENO support
+  - dotcmd should exit with zero when doing nothing
+  - replace GPL noclobberopen code with the FreeBSD version
+  - do not split the result of tilde expansion
+  - use exit status 127 when the script to run does not exist
+  - document optional open parenthesis for case patterns
+  - use faccessat if available
+- added dash-0.5.7-do-not-close-stderr.patch in order to prevent
+  stderr from being closed when /dev/tty fails to open (backported
+  from upstream git)
+- added
+  dash-remove-backslash-before-in-double-quotes-in-variable.patch
+  which removes a backslash before } in double-quotes in variable
+  as it prevents the closing brace from terminating the
+  substitution (from FreeBSD/Debian)
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Jul 19 10:57:38 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- update to version 0.5.6.1
+    - bugfixes
+
+-------------------------------------------------------------------
+Fri Feb 19 11:47:33 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- cleaned up specfile
+
+-------------------------------------------------------------------
+Sat Feb 13 12:00:22 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- do not provide ash
+
+-------------------------------------------------------------------
+Sat Feb 13 11:06:54 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- initial packaging of dash
+

@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Fri May 31 07:44:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix old leap build
+
+-------------------------------------------------------------------
+Wed Aug  8 21:25:00 UTC 2018 - tchvatal@suse.com
+
+- Add patches to work with django 2.0 and 2.1 properly:
+  * django-20.patch
+  * django-21.patch
+
+-------------------------------------------------------------------
+Wed Aug  8 15:50:59 UTC 2018 - jengelh@inai.de
+
+- Trim marketing from description.
+
+-------------------------------------------------------------------
+Wed Aug  1 12:17:12 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.7.2:
+  * Bootstrap4 fixes
+  * Small bugfixes around
+
+-------------------------------------------------------------------
+Wed Nov 15 15:26:22 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * require python-Django instead of python-django
+
+-------------------------------------------------------------------
+Wed Nov 15 15:20:33 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * convert to single spec file
+
+-------------------------------------------------------------------
+Tue Oct 24 09:38:11 UTC 2017 - buschmann23@opensuse.org
+
+- Update to version 1.7.0
+  * Fixes compatibility with Django 2.0
+  * Various other fixes.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:40:30 CET 2017 - sbrabec@suse.com
+
+- Update to version 1.6.1.
+  * Updates compatibility for Django 1.10
+  * A number of small Bootstrap 4 fixes.
+  * Dropped support for Django 1.7
+  * Added Bootstrap 4 template pack
+  * Other small fixes.
+
+-------------------------------------------------------------------
+Mon Nov  9 12:10:12 UTC 2015 - mcihar@suse.cz
+
+- Update to version 1.5.2
+ * Fix: KeyError: u'wrapper_class' when clearing template context. #511, #512
+ * Fix: Alignment of stacked checkboxes and radio buttons in Bootstrap 3 #358
+ * Switched to py.test. Modernised test suite. Enabled tox, code coverage and Travis for all
+   supported Python/Django versions. [See list of Merged "Testing/Process" PRs here](https://github.com/maraujop/django-crispy-forms/pulls?q=is%3Apr+is%3Amerged+milestone%3A1.5.1+label%3ATesting%2FProcess)
+ * Added compatibility with Python 3.2
+ * Fix: Allow LayoutObject & BaseInputs to accept custom template #493
+ * Fixed compatibility with: Python 3, Django 1.7, Django 1.8 and Django 1.4.16. Merged PR #417, but thanks to PRs #369, #368 and #310. Closes also #383.
+ * Updated test suite for compatibility with all supported Django versions 1.4, 1.7, 1.8 and run CI against these and Django `master`. See #451, #455.
+ * Bug fix for specifying `template_pack` in `{% crispy %}` tag, `bootstrap3` couldn't be set that way.
+ * New doc section for creating custom template packs.
+ * Fixed Bootstrap3 checkbox alignment issues with label texts, see #275.
+ * First `AccordionGroup` can now be set to `active=False`, see #246.
+ * Fixed Bootstrap3 checkbox alignment issues for all device sizes, see #225 and #267.
+ * All forms are now rendered with {{ form.media }}, this makes forms containing widgets with `Media` meta class work, see #263.
+ * Adjusted `{% specialspaceless %}` to avoid breaking intended spaces and be less aggressive, see #250.
+ * Fixed inputs rendering for bootstrap3 and redo `FormActions` layout object bootstrap3 template for correct alignment, see #279.
+ * `MultiField` now obeys `form_show_labels`, see #278.
+ * Added `wrapper_class` to `bootstrap.InlineRadios`, see #272.
+ * Render label for checkboxes within `table_inline_formset.html`, see #262.
+ * Removed deprecated layout object `AppendedPrependedText`, replaced by `PrependedAppendedText`.
+ * Fixed `PrependedAppendedText` when rendering a select widget, in bootstrap and bootstrap3 template packs, see #258.
+ * Added support to `{% crispy_addon %}` tag for `form_show_labels`, see #256.
+ * Major cleanup and refactor of the template pack system thanks to @tepez, see #217 and #237:
+    - Template packs are now self contained/independent, removing dangerous cross references. If you have a custom template pack this can cause backwards incompatibility, but it will pay in the future to adjust to this changes.
+    - `MultiField` cannot be used with `bootstrap` or `bootstrap3` template packs.
+    - Added `template_pack` `FormHelper` attribute, so that template packs can be specified at form helper level. This changes layout objects `render` behavior.
+ * Default template pack is now `bootstrap3`.
+ * Make `CRISPY_TEMPLATE_PACK` setting optional, see #237 and #244.
+- Run testsuite in %check
+- Remove no longer needed cleanups on source tarballs, added removal of .pyc files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Sep 27 16:47:15 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.4.0
+  + Bootstrap 3 inline forms support and docs for inline forms with
+    Bootstrap 3, see #233.
+  + update_attributes can now work with a field name, see docs.
+  + Adjusted unicode checkings for Python 3, see #231.
+    Adjusted how bootstrap Tab layout object attributes are applied to
+    make sense, see #228.
+  + Major refactor of testing suite architecture, breaking huge tests.py
+    file into several and also splitting tests for different template packs
+    into different tests cases, runners for template packs updated.
+  + Added support for horizontal forms in bootstrap3, see #209.
+  + Fixed spaces missing when rendering several submit inputs continued, see #211.
+  + Fixed checkboxes and radios for Bootstrap3, adjusted multiple inline
+    radios and checkboxes, see #225.
+  + Update accordion markup for bootstrap3 compatibilty, see #229.
+  + Moved UneditableField to bootstrap module, place where it should live,
+    no backwards compatible import left behind.
+  + Added bootstrap3 template pack thanks to James Friedman, see #213 and #209.
+  + RadioSelect and CheckboxSelectMultiple widget values and texts were being
+    localized, when they shouldn't bee, see #214.
+  + If Django widget attrs where set for RadioSelect or CheckboxSelectMultiple
+    they were not being rendered by crispy-forms, see #206.
+  + form_show_labels wasn't working correctly with some layout objects, see #193
+- Do not build documentation; there is not available anymore
+- Remove redundant files with fdupes
+
+-------------------------------------------------------------------
+Tue May  1 20:50:24 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.1.3
+  * |crispy and |as_crispy_field filters were not rendering errors. Thanks to
+    @ximi for reporting it and submitting a patch. See issue #GH-28
+  * Fixing a test that was breaking when language was not English. Thanks to
+    @gaftech, see #GH-30
+  * Fixing radioselect.html and checkboxselectmultiple.html templates. Thanks
+    to Christopher Petrilli for submitting a patch for radioselect. See issue
+    #GH-35
+  * HTML attributes can now be set in BaseInput subclasses like Button by
+    @jamesmfriedman. See #GH-32
+  * Fix for dynamic crispy-forms with Meta classes by Jeroen Vloothuis. See
+    #GH-37
+  * Labels now use id_for_label instead of auto_id to avoid ids breaking on
+    multiwidgets. by Daniel Izquierdo. See #GH-38
+  * Adding a flatatt custom function in utils.py for flatting extra HTML
+    attributes.
+  * HTML attributes can now be set in Div layout object.
+  * Adding tests for new functionality and bugs.
+- 1.1.2 (2012/2/29)
+  * input name attribute is no longer slugified if only one word is provided,
+    respecting caps.
+  * Changes in bootstrap global error templates by David Bennett.
+  * Added class control-label to labels, for horizontal layout thanks to
+    bitrut.
+  * Using {{ field.html_name }} instead of {{ field.name }} in field
+    templates, so that they work with form prefixes (formwizard) by Patrick
+    Toal.
+  * Fixing error rendering in bootstrap AppendedText and PrependedText.
+  * Applying field.css_classes in bootstrap field.html instead of widget
+    classes.
+  * Fixes for bootstrap simple checkbox input to be wrapped correctly.
+- 1.1.1 (2012/2/17)
+  * Fixing a critical bug in bootstrap templates, that was breaking
+    {% load crispy_forms_tags %}
+
+-------------------------------------------------------------------
+Fri Nov 25 01:36:13 UTC 2011 - jfunk@funktronics.ca
+
+- Initial release
+

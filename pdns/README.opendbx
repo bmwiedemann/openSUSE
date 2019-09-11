@@ -1,0 +1,330 @@
+grabbed from http://wiki.linuxnetworks.de/index.php/PowerDNS_OpenDBX_Backend
+and linked pages
+
+-------------------------------------------------------------------------------
+PowerDNS OpenDBX Backend - Installation
+
+From Wiki
+
+Contents
+
+  • 1 Installation
+       1.1 Compilation
+       1.2 Configuration options
+       1.3 Backend specific configuration
+          ☆ 1.3.1 MySQL
+          ☆ 1.3.2 PostgreSQL
+          ☆ 1.3.3 SQLite and SQLite3
+          ☆ 1.3.4 MS SQL Server
+          ☆ 1.3.5 Sybase ASE
+       1.4 Database setup
+       1.5 Migration
+
+
+
+Installation
+
+
+Compilation
+
+Before performing the steps to compile the PowerDNS server and the OpenDBX
+backend you have to install the OpenDBX library, the OpenDBX backend you want
+to use and its development package, which includes the necessary header. The
+OpenDBX package can be downloaded from Linuxnetworks.de.
+
+Apply these steps to the source pdns-x.xx.tar.gz file, if you don't want to use
+a precompiled package:
+
+* Extract the pdns tar file
+* Change into the newly created pdns directory
+* Extract the opendbxbackend tar file
+* Run "cat <patch> | patch -p1" (if available)
+* Type ./configure --help for the available options
+* For dynamic modules:
+  ./configure
+     --prefix=/usr
+     --with-modules=""
+     --with-dynmodules="opendbx"
+     --enable-recursor
+* For a static module:
+  ./configure
+     --prefix=/usr
+     --with-modules="opendbx"
+     --with-dynmodules=""
+     --enable-recursor
+* make && make install
+
+
+Configuration options
+
+There are a few options through the OpenDBX backend can be configured for your
+environment. Add them to the pdns.conf file located in /etc/powerdns or /usr/
+local/etc/ (depends on your configuration while compiling):
+
+opendbx-backend (default "mysql") 
+    Name of the backend used to connect to the database server. Currently
+    mysql, pgsql, sqlite, sqlite3 and sybase are available.
+
+opendbx-host-read (default "127.0.0.1") 
+    One or more host names or IP addresses of the database servers. These hosts
+    will be used for retrieving the records via SELECT queries.
+
+opendbx-host-write (default "127.0.0.1") 
+    Same as opendbx-host-read, except for INSERT/UPDATE statements (mostly used
+    by zonetransfers).
+
+opendbx-port (default "") 
+    TCP/IP port number where the database server is listening to. Most
+    databases will use their default port if you leave this empty.
+
+opendbx-database (default "powerdns") 
+    The database name where all domain and record entries are stored.
+
+opendbx-username (default "powerdns") 
+    Name of the user send to the DBMS for authentication.
+
+opendbx-password (default "") 
+    Clear text password for authentication in combination with the username.
+
+opendbx-host (deprecated, default "127.0.0.1") 
+    Host name or IP address of the database server. This parameter is
+    deprecated in favor of opendbx-host-read and opendbx-host-write.
+
+
+Backend specific configuration
+
+
+MySQL
+
+Supported without changes since OpenDBX 1.0.0
+
+
+PostgreSQL
+
+Supported without changes since OpenDBX 1.0.0
+
+
+SQLite and SQLite3
+
+Supported without changes since OpenDBX 1.0.0 but requires to set opendbx-host
+to the path of the SQLite file (including the trailing slash or backslash,
+depending on your operating system) and opendbx-database to the name of the
+file, e.g.
+
+opendbx-host-read = /path/to/file/
+opendbx-host-write = /path/to/file/
+opendbx-database = powerdns.sqlite
+
+
+MS SQL Server
+
+Supported by PowerDNS 2.9.20 (with latest patch) and OpenDBX 1.1.4 by using the
+FreeTDS library. It uses a different scheme for host configuration (requires
+the name of the host section in the configuration file of the dblib client
+library) and doesn't support the default statement for starting transactions.
+Please add the following lines to your pdns.conf:
+
+opendbx-host-read = MSSQL2k
+opendbx-host-write = MSSQL2k
+opendbx-sql-transactbegin = BEGIN TRANSACTION
+
+
+Sybase ASE
+
+Supported by PowerDNS 2.9.20 (with latest patch) and OpenDBX 1.1.5 by using the
+native Sybase ctlib or the FreeTDS library. It uses a different scheme for host
+configuration (requires the name of the host section in the configuration file
+of the ctlib client library) and doesn't support the default statement for
+starting transactions. Please add the following lines to your pdns.conf:
+
+opendbx-host-read = SYBASE
+opendbx-host-write = SYBASE
+opendbx-sql-transactbegin = BEGIN TRANSACTION
+
+
+Database setup
+
+You need one of the DBMS supported by the OpenDBX library for storing your
+records and domain infomation. Please have a look at the documentation of your
+DBMS for the task of creating a database and an user.
+
+After that you're almost done. Use the appropriate table definition below to
+create the tables in the new database after which you can populate your
+database with dns information with e.g. zone2sql.
+
+  • MySQL
+  • PostgreSQL
+  • SQLite
+  • Sybase
+
+
+Migration
+
+To convert an existing gMySQL Database to an OpenDBX MySQL database, an
+additional status column is required since patch 2.9.20-3:
+
+ALTER TABLE domains ADD ( status CHAR(1) NOT NULL DEFAULT 'A' )
+
+Adding a foreign key constraint from records.domain_id to domains.id is a good
+idea too:
+
+ALTER TABLE records ADD CONSTRAINT fk_records_domainid
+FOREIGN KEY (domain_id) REFERENCES domains (id)
+ON UPDATE CASCADE ON DELETE CASCADE
+
+You should also recreate your indices for optimal performance. Please have a
+look in the appropriate file listed in the section above.
+
+-------------------------------------------------------------------------------
+
+PowerDNS OpenDBX Backend - Optimization
+
+From Wiki
+
+Contents
+
+  • 1 Optimization
+       1.1 Use NULL for prio and ttl fields
+
+
+
+Optimization
+
+
+Use NULL for prio and ttl fields
+
+Each DNS entry in the record table has its own values for time-to-live (TTL)
+and priority. You can speed up processing of each query in the OpenDBX backend
+if you set both values in your records table to NULL by default and only set
+them to an appropriate value if you really need them.
+
+There are two record types where you can't use NULL in the prio fields: MX and
+SRV record types. Most of the time you need different values than 0 (which NULL
+is converted to in the OpenDBX backend) in those records but everywhere else
+NULL is suggested.
+
+The same applies to the TTL field in each record. There are only a few cases
+where you might wish to use different values than the default one you can set
+by the default-ttl=... config option in the pdns.conf file.
+
+-------------------------------------------------------------------------------
+
+PowerDNS OpenDBX Backend - Comparison
+
+From Wiki
+
+Contents
+
+  • 1 Comparison
+       1.1 Environment
+       1.2 Settings
+       1.3 Test description
+       1.4 Results
+       1.5 Conclusion
+       1.6 Optimizations
+
+
+
+Comparison
+
+
+Environment
+
+The test environment consisted of two different machines both running Debian
+3.1 (Sarge) with the latest official patches applied. The following packages
+were used:
+
+PowerDNS 
+    Version 2.9.18-svn (rev 474, 2005-09-03)
+PowerDNS OpenDBX Backend 
+    Version from 2005-10-15 (source)
+OpenDBX 
+    Version 0.9.5 (more)
+MySQL 
+    Version 4.1.11a, including libmysqlclient14
+PostgreSQL 
+    Version 7.4.7
+SQLite3 
+    Version 3.2.1
+
+One hosted the PowerDNS server while the other was responsible for running the
+test suite (queryperf is included in the BIND sources):
+
+PowerDNS + database server 
+    VIA C3 533MHz, 256MB RAM
+Benchmark client 
+    Pentium M 1.5GHz, 512MB RAM
+
+Both machines were connected by a 100MBit network and they were the only ones
+attached to the hub.
+
+
+Settings
+
+All test were done with default settings for each database - no further
+optimizations were applied except if stated otherwise.
+
+To get raw database and backend performance, caching in PowerDNS was switched
+of generally. Otherwise we would get much higher but false results due to
+packet caching done by PowerDNS. The "slave-cycle-interval" parameter was set
+to a value high enough so checking for unfresh slaves had no negative
+influence:
+
+  • cache-ttl=0
+  • negquery-cache-ttl=0
+  • query-cache-ttl=0
+  • recursive-cache-ttl=0
+  • master=yes
+  • slave-cycle-interval=300
+
+
+Test description
+
+The test was based on the records in the example.com zone available in the
+regression-tests directory of PowerDNS. The zone file was converted by zone2sql
+(part of the PowerDNS distribution) to a set of SQL queries inserted into the
+database tables created by specific "create table" statements for each DBMS
+(available along with the OpenDBX backend sources).
+
+Lookup speed 
+    This was tested by running queryperf with a query set of 10000 A records
+    (host-0.example.com to host-9999.example.com) three times in a row.
+    Afterwards these results were averaged to be a good rule of thumb for real
+    live environments (cache hit rate of 60 to 70 percent).
+
+AXFR speed 
+    Zone transfer measurement was done by running "host -l example.com
+    <serverip> 1>/dev/null" 100 times in a loop while timing the test. Possible
+    variation of the results due to the operating system should be minimal.
+
+
+Results
+
+Values for queryperf results are the averaged number of queries per second
+determined by queryperf.
+
+  Backend    gmysql OpenDBX OpenDBX OpenDBX
+                     mysql   pgsql  sqlite3
+1. queryperf 446    454     270     839
+2. queryperf 1033   1118    272     848
+3. queryperf 1033   1118    272     844
+Lookup (avg) 837    897     271     844
+ AXFR (sec)  198    160     271     224
+
+
+Conclusion
+
+  • The OpenDBX backend outperforms the native MySQL backend by ca. 7 percent
+    in lookups
+  • OpenDBX backend zone transfers are even 20 percent faster than gmysql
+    backend
+  • A PostgreSQL server needs optimized settings before it can perform well
+  • SQLite is a good alternative for systems without dedicated server
+
+
+Optimizations
+
+I would like to know which settings are needed to get comparable performance
+figures for PostgreSQL. If you have any suggestions please add them to the Talk
+page.
+

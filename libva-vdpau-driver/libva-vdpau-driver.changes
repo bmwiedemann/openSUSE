@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Jan  9 15:20:50 UTC 2018 - sndirsch@suse.com
+
+- added "%dir /usr/%_lib/dri" to filelist in order to fix build
+  (probably required since Mesa/Mesa-drivers split)
+- no longer require Mesa-devel
+
+-------------------------------------------------------------------
+Fri Nov 17 10:47:10 UTC 2017 - zaitor@opensuse.org
+
+- Add libva-vdpau-driver-0.7.4-sigfpe-crash.patch: Fix a crash if a
+  heap is destroyed before being initialized (fdo#58836).
+- Replace libva-devel with pkgconfig(libva), pkgconfig(libva-x11)
+  and pkgconfig(libva-glx) BuildRequires: Align with what configure
+  looks for. Added bonus, now building GLX support too.
+
+-------------------------------------------------------------------
+Tue Feb 21 06:40:45 UTC 2017 - olaf@aepfle.de
+
+- Replace vdpau-video from packman
+
+-------------------------------------------------------------------
+Tue Mar 17 10:41:13 UTC 2015 - sndirsch@suse.com
+
+- use this library by default when NVIDIA's proprietary driver is
+  running 
+
+-------------------------------------------------------------------
+Mon Feb  9 19:39:43 UTC 2015 - zaitor@opensuse.org
+
+- Initial packaging for openSUSE.
+

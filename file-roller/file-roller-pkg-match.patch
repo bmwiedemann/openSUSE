@@ -1,0 +1,23 @@
+Index: file-roller-3.32.0/data/packages.match
+===================================================================
+--- file-roller-3.32.0.orig/data/packages.match	2019-03-11 23:00:44.000000000 +0100
++++ file-roller-3.32.0/data/packages.match	2019-03-14 20:21:39.939870131 +0100
+@@ -7,15 +7,15 @@ cpio=
+ dpkg=
+ genisoimage=
+ gzip=
+-lha=
++lha=lhasa
+ lrzip=
+ lzip=
+ lzma=
+ lzop=
+ ncompress=
+ p7zip=
+-p7zip-full=
+-p7zip-rar=
++p7zip-full=p7zip
++p7zip-rar=p7zip
+ rar=
+ rpm=
+ rzip=

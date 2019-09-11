@@ -1,0 +1,128 @@
+--- src/lib/libcmd/date.c
++++ src/lib/libcmd/date.c	2007-03-30 10:51:14.000000000 +0000
+@@ -226,10 +226,19 @@ settime(Shbltin_t* context, const char*
+ 	if (!adjust && !network)
+ 		return tmxsettime(now);
+ 	argv = args;
++#ifdef __linux__
++	s = "/bin/date";
++#else
+ 	s = "/usr/bin/date";
++#endif
+ 	if (!streq(cmd, s) && (!eaccess(s, X_OK) || !eaccess(s+=4, X_OK)))
+ 	{
+ 		*argv++ = s;
++#ifdef __linux__
++		tmxfmt(buf, sizeof(buf), "%m%d%H" "%M%Y.%S", now);
++		if (tm_info.flags & TM_UTC)
++			*argv++ = "--utc";
++#else
+ 		if (streq(astconf("UNIVERSE", NiL, NiL), "att"))
+ 		{
+ 			tmxfmt(buf, sizeof(buf), "%m%d%H" "%M%Y.%S", now);
+@@ -244,6 +253,7 @@ settime(Shbltin_t* context, const char*
+ 			if (tm_info.flags & TM_UTC)
+ 				*argv++ = "-u";
+ 		}
++#endif
+ 		*argv++ = buf;
+ 		*argv = 0;
+ 		if (!sh_run(context, argv - args, args))
+--- src/lib/libcmd/uname.c
++++ src/lib/libcmd/uname.c	2007-03-28 16:38:01.000000000 +0000
+@@ -79,6 +79,7 @@ __STDPP__directive pragma pp:hide getdom
+ 
+ #include <cmd.h>
+ #include <ctype.h>
++#include <stdio.h>
+ #include <proc.h>
+ 
+ #include "FEATURE/utsname"
+@@ -86,9 +87,11 @@ __STDPP__directive pragma pp:hide getdom
+ #define MAXHOSTNAME	64
+ 
+ #if _lib_uname && _sys_utsname
++# include <sys/utsname.h>
++#endif
+ 
+-#include <sys/utsname.h>
+-
++#ifdef __linux__
++# include <sys/sysctl.h>
+ #endif
+ 
+ #if defined(__STDPP__directive) && defined(__STDPP__hide)
+@@ -269,6 +272,9 @@ b_uname(int argc, char** argv, Shbltin_t
+ 		{
+ 		case 'a':
+ 			flags |= OPT_all|((1L<<OPT_ALL)-1);
++#ifdef __linux__
++			flags |= OPT_implementation;
++#endif
+ 			continue;
+ 		case 'b':
+ 			flags |= OPT_base;
+@@ -325,7 +331,11 @@ b_uname(int argc, char** argv, Shbltin_t
+ 			sethost = opt_info.arg;
+ 			continue;
+ 		case ':':
++#ifdef __linux__
++			s = "/bin/uname";
++#else
+ 			s = "/usr/bin/uname";
++#endif
+ 			if (!streq(argv[0], s) && (!eaccess(s, X_OK) || !eaccess(s+=4, X_OK)))
+ 			{
+ 				argv[0] = s;
+@@ -394,13 +404,49 @@ b_uname(int argc, char** argv, Shbltin_t
+ 		output(OPT_machine, ut.machine, "machine");
+ 		if (flags & OPT_processor)
+ 		{
+-			if (!*(s = astconf("ARCHITECTURE", NiL, NiL)))
++			s = NULL;
++#ifdef __linux__
++# ifdef UNAME_PROCESSOR
++			if (!s) {
++				size_t len = sizeof(buf) - 1;
++				int ctl[] = {CTL_HW, UNAME_PROCESSOR};
++				if (sysctl(ctl, 2, buf, &len, 0, 0) == 0)
++					s = buf;
++			}
++# endif
++			if (!s) {
++				strcpy((s = buf), ut.machine);
++				if (strcmp(s, "i686") == 0) {
++					char line[1024];
++					Sfio_t *io = sfopen((Sfio_t*)0, "/proc/cpuinfo", "r");
++					if (io) {
++						while (fgets(line, sizeof(line), io) > 0) {
++							if (strncmp(line, "vendor_id", 9) == 0) {
++								if (strstr(line, "AuthenticAMD"))
++									s = "athlon";
++								break;
++							}
++						}
++						sfclose(io);
++					}
++				}
++			}
++#endif
++			if (!s && !*(s = astconf("ARCHITECTURE", NiL, NiL)))
+ 				s = ut.machine;
+ 			output(OPT_processor, s, "processor");
+ 		}
+ 		if (flags & OPT_implementation)
+ 		{
+-			if (!*(s = astconf("PLATFORM", NiL, NiL)) && !*(s = astconf("HW_NAME", NiL, NiL)))
++			s = NULL;
++#ifdef __linux__
++			if (!s) {
++				strcpy((s = buf), ut.machine);
++				if (s[0] == 'i' && s[2] == '8' && s[3] == '6' && s[4] == '\0')
++					s[1] = '3';
++			}
++#endif
++			if (!s && !*(s = astconf("PLATFORM", NiL, NiL)) && !*(s = astconf("HW_NAME", NiL, NiL)))
+ 			{
+ 				if (t = strchr(hosttype, '.'))
+ 					t++;

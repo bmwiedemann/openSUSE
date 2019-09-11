@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Fri Dec  2 06:33:29 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Feb 12 19:39:03 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+
+-------------------------------------------------------------------
+Fri Jan 11 20:01:31 CET 2008 - rodrigo@suse.de
+
+- Depend on libpulse-devel, not pulseaudio-devel 
+
+-------------------------------------------------------------------
+Wed Oct 31 16:05:10 CET 2007 - tiwai@suse.de
+
+- updated to version 0.9.3:
+  * lower refresh rate; show pretty channel names; other fixes
+
+-------------------------------------------------------------------
+Wed Jun 13 16:11:25 CEST 2007 - tiwai@suse.de
+
+- initial version: 0.9.2
+

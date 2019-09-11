@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Wed Dec 16 15:17:58 UTC 2015 - pgajdos@suse.com
+
+- update to version 0.5.20150702
+  * Important bug fix issue #11 (missing file not included in 0v4).
+  * 2 Minor bug fixes caught on Coverity scan, free() and if c=3.
+  * Re-edit lib and tests to be more accommodating of older compilers.
+  * Verify libspiro output data is correct for test curves {0,1,2,4}.
+
+-------------------------------------------------------------------
+Sat Feb 14 18:36:51 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.3.20150131
+  * fixes for LibSpiro package definitions (bfo#196780)
+  * allowing other programs to seek LibSpiro using PKG_CHECK_MODULES().
+    (bao#43373)
+- Update home page and download source Urls
+- Add autoconf, automake and libtool requirements; needed to generate
+  the configure script
+- Remove depreciated AUTHORS section
+- Package AUTHORS, ChangeLog and COPYING into the doc directory
+- gpl.txt is not provided anymore by upstream
+
+-------------------------------------------------------------------
+Mon Feb  6 13:46:11 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  See gpl.txt and e.g. spiro.c - there is no indication that this is
+  BSD-3-Clause licensed and every indication that it is GPL-2.0+ licensed
+
+-------------------------------------------------------------------
+Sat Feb  4 14:06:20 UTC 2012 - jengelh@medozas.de
+
+- Restore ldconfig call for shlib package
+
+-------------------------------------------------------------------
+Sat Feb  4 08:27:28 UTC 2012 - i@marguerite.su
+
+- rename spec file and changelog to meet Factory requirements.
+
+-------------------------------------------------------------------
+Sat Feb  4 01:24:47 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+- pkgconfig file: libm should not be in the shared link
+- Remove pointless Obsoletes, the supposedly old name has never
+  been in use before
+
+-------------------------------------------------------------------
+Sat Feb  4 01:23:40 UTC 2012 - jengelh@medozas.de
+
+- make license SPDX compatible.
+
+-------------------------------------------------------------------
+Sun Dec 25 19:03:37 UTC 2011 - i@marguerite.su
+
+- enable debuginfo package 
+
+-------------------------------------------------------------------
+Sat Nov 26 15:51:32 UTC 2011 - i@marguerite.su
+
+- formated specfile to merge into home:opensuse_zh 
+

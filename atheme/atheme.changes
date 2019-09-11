@@ -1,0 +1,262 @@
+-------------------------------------------------------------------
+Fri Nov  3 10:10:28 UTC 2017 - jengelh@inai.de
+
+- Rename the tools dbverify and ecdsakeygen with an "atheme-"
+  prefix. This is possible since they do not appear to get invoked
+  by the server, but only by the user.
+
+-------------------------------------------------------------------
+Thu Mar 30 07:15:51 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 7.2.8
+  * Close a memory leak that could be exploited by attackers to
+    potentially cause a denial of service.
+    [CVE-2017-6384, boo#1027614]
+- Update to new upstream release 7.2.9
+  * Fixing use after free that could potentially be used by an
+    attacker already having the privilege to use SASL impersonation
+    to cause a denial of service.
+
+-------------------------------------------------------------------
+Sun Nov 20 21:31:34 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 7.2.7
+  * NickServ:
+  * Make `VHOST` set cloak assigner and timestamp the same way
+    HostServ does
+  * Make `INFO` call the `user_info_noexist` hook for queries
+    that don't match an account
+  * Make `REGAIN` log you in if successful.
+  * ChanServ:
+  * Add a `$server:` exttarget accepting server masks
+  * Add `PUBACL` flag which allows the channel access to be public.
+  * Don't allow `DEOP` or `KICK` of a services bot.
+  * Don't try to expand extbans in various commands.
+  * Allow users with +O or +V flags to op/voice themselves, since
+    they can regain op/voice by cycling the channel anyway.
+- +e added to chanserv{} templates and founder_flags
+- Remove 0001-Do-not-copy-more-bytes-than-were-allocated.patch
+  and 0001-chanserv-flags-make-Anope-FLAGS-compatibility-an-opt.patch
+  (applied upstream)
+- Abort installation if user/group cannot be created
+
+-------------------------------------------------------------------
+Tue May  3 10:43:10 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 7.2.6
+* avoid potential NULL dereference in language code
+* Add NOPASSWORD criterion to nickserv/list helpfile
+* new nickserv/list criterion VACATION
+- Add 0001-Do-not-copy-more-bytes-than-were-allocated.patch
+  [CVE-2016-4478]
+- Add 0001-chanserv-flags-make-Anope-FLAGS-compatibility-an-opt.patch
+  [CVE-2014-9773, boo#978170]
+- Add atheme-serno.diff, a build fix
+
+-------------------------------------------------------------------
+Fri Apr  3 17:33:35 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 7.2.5
+* pbkdf2v2: Newer module implementing PBKDF2-HMAC digest scheme
+
+-------------------------------------------------------------------
+Thu Dec  4 08:34:52 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 7.2.1
+* NickServ:
+* Make `VHOST` set cloak assigner and timestamp the same way HostServ does
+* Make `INFO` call the `user_info_noexist` hook for queries that don't match an account
+* Make `REGAIN` log you in if successful.
+* Allow implementing custom filters for `LIST`
+* nickserv/multimark: new module which allows multiple MARK entries per nickname.
+* ChanServ:
+* Add a `$server:` exttarget accepting server masks
+* Add `PUBACL` flag which allows the channel access to be public.
+* Don't allow `DEOP` or `KICK` of a services bot.
+* Don't try to expand extbans in various commands.
+* Allow users with +O or +V flags to op/voice themselves, since they can regain op/voice
+  by cycling the channel anyway.
+* chanserv/clear_akicks: new module providing a `CLEAR AKICKS` command.
+
+-------------------------------------------------------------------
+Thu Oct  9 14:26:52 UTC 2014 - jengelh@inai.de
+
+- Remove atheme-config.diff and provide a fresh minimal config
+  instead. Update the config to match charybdis's.
+
+-------------------------------------------------------------------
+Sun Jul 20 10:30:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 7.1.0
+* ngircd: New protocol module.
+* nefarious: Add Nefarious 2 SASL support.
+* nefarious: Send account timestamp in svslogin.
+* elemental-ircd: New protocol module.
+* dreamforge: Remove protocol module.
+* inspircd: Add support for server-side MLOCK and TOPICLOCK enforcement
+* inspircd: Add support for matching extbans modifying matching logic
+* inspircd: Add +H to channel modes
+* inspircd: Add +X and +w to list-like mode list
+* ircd-seven: Support charybdis extension cmodes on ircd-seven as well.
+* ts6-generic: Add support for serverinfo::hidden
+* unreal: Add support for extbans.
+* unreal: Add cmode +P for permanent channel.
+- Remove 0001-build-resolve-compile-warning-in-servtree.c.patch
+  (merged upstream)
+- Delete sysvinit support (keeping the `rcatheme` shortcut, though)
+
+-------------------------------------------------------------------
+Mon Mar  3 21:24:59 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 7.0.7
+* saslserv/{dh-aes,dh-blowfish}: avoid possible buffer overflow
+  with untrusted input size
+* saslserv/dh-blowfish: generate a new keypair (but not a new
+  prime) for each authentication session
+* saslserv/dh-blowfish: avoid generating DH parameters on each
+  mech_start().
+* Use hostname for flood klines if IP isn't set, for example on
+  auth-spoofed users
+
+-------------------------------------------------------------------
+Mon Sep 30 23:51:08 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 7.0.6
+* chanfix: Restrict registering scored channels
+* memoserv/delete: Only accept numeric indexes
+- Add 0001-build-resolve-compile-warning-in-servtree.c.patch
+
+-------------------------------------------------------------------
+Wed Nov 21 00:00:07 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 7.0.5
+* ircd/unreal: fix memory corruption caused by strlcpy() against
+  a strshare-managed string
+* ircd/ircd-seven: support charybdis's extension channel modes
+* chanserv/sync: sync a channel on account registration. This
+  allows exttargets like $registered to react to new account
+  registrations.
+* chanserv/main: send MLOCK after a TS change, otherwise it
+  will be lost.
+* chanserv/flags: allow users with +f and +o (+v) to set +/-O and
+  +/-V on themselves.
+* chanserv/main: respect founder_flags config setting during
+  channel succession
+- Add atheme-nodate.diff which removes __DATE__ from source
+
+-------------------------------------------------------------------
+Mon Nov 19 17:12:57 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Thu May 31 12:55:59 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 7.0.2
+* new "dbverify" utility to perform extensive and complicated
+  consistency checks on the object store
+* channel locking updates for inspircd and charybdis
+* SASL support for unrealircd
+* many more changes, see "NEWS" file in the package
+
+-------------------------------------------------------------------
+Wed Apr 11 17:16:11 UTC 2012 - simone.tolotti@gmail.com
+
+- Update to new upstream release 6.0.10
+* ircd/charybdis: send messages to channels even if we're not on it from the bots themselves.
+* ircd/unrealircd: reset +x if a vhost is removed.
+* ircd/inspircd: reset +x if a vhost is removed and track whether or not m_cloaking is loaded.
+* nickserv: ensure certfp resources are released when an account object is destroyed
+* bugs fixed in this release - SRV-148, SRV-160, SRV-166
+
+-------------------------------------------------------------------
+Sat Feb 18 01:25:28 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 6.0.9
+* ircd/inspircd: Fix end-of-burst detection.
+* ircd/ts6: Mark +S services as UF_IMMUNE.
+* ircd/p10: Recognize umode +k as providing kick immunity.
+* ircd/plexus: Fix real hostname showing up as vhost.
+* backend/opensex: Cleanly handle no OpenSEX DB existing on startup
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:30 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sat Sep 17 13:29:19 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Jun 25 18:07:07 UTC 2011 - jengelh@medozas.de
+
+- enable LDAP backend
+- update to version 6.0.8
+* inspircd: Support for owner, halfops and admin are now dynamically
+  enabled by what modes exist instead of being enabled by what
+  modules you have loaded in inspircd.
+* support for InspIRCd 1.1, OfficeIRC and UltimateIRCd 3 has been
+  removed.
+* opensex is now the required database format. All flatfile will do
+  is convert your flatfile database to opensex and exit.
+* converted many modules that use external databases to using
+  opensex.
+- add Requires for pwdutils
+
+-------------------------------------------------------------------
+Tue Mar  9 23:21:00 UTC 2010 - mrueckert@suse.de
+
+- update to version 5.0.1+4628
+
+-------------------------------------------------------------------
+Thu Aug 23 06:32:22 CEST 2007 - mrueckert@suse.de
+
+- update to 2.2.0
+  many fixes see /usr/share/doc/packages/atheme/RELEASE
+
+-------------------------------------------------------------------
+Sat Apr  7 22:50:31 CEST 2007 - mrueckert@suse.de
+
+- added atheme-2.1.1_restart.patch:
+  replace hardcoded path in restart
+
+-------------------------------------------------------------------
+Mon Apr  2 04:34:00 CEST 2007 - mrueckert@suse.de
+
+- after a discussion with upstream:
+  remove postgresql support
+
+-------------------------------------------------------------------
+Mon Apr  2 03:29:08 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.1.1
+  ircd protocol
+  - Fix some potential crashes and desyncs with inspircd and
+    channel bans.
+  - Allow for SAQUIT in inspircd11.
+  - Allow for RSQUIT in inspircd11 to allow /squit on jupes.
+  - Increase maximum parameter count for protocol commands from 19
+    to 35.
+  chanserv
+  - Fix a crash in /cs set mlock.
+  documentation
+  - Update documentation a little.
+  misc
+  - Fix a potential division by zero.
+  - Improve random seeding.
+  - Use DATADIR in os_logonnews.
+
+-------------------------------------------------------------------
+Tue Feb 20 19:12:00 CET 2007 - mrueckert@suse.de
+
+- update to version 2.1.0
+
+-------------------------------------------------------------------
+Sat Nov 25 04:16:17 CET 2006 - mrueckert@suse.de
+
+- initial package of version 2.0.0
+

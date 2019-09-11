@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Thu Sep 28 08:17:01 UTC 2017 - davejplater@gmail.com
+
+- Fix Factory build by disable gtk-doc html build due to
+  gtkdoc-mktmpl having been removed.
+
+-------------------------------------------------------------------
+Mon Apr 13 09:01:34 UTC 2015 - dimstar@opensuse.org
+
+- Call libtoolize during build phase: after running autoreconf,
+  we get the new macros installed but do not take into account that
+  there was a minor change between intltool 0.50 and 0.51.
+
+-------------------------------------------------------------------
+Wed Oct  1 20:19:24 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove x11 libs buildrequires, never directly linked. 
+
+-------------------------------------------------------------------
+Thu May  2 22:19:29 UTC 2013 - crrodriguez@opensuse.org
+
+- While we are at this, place the udev rules in the 
+  correct localtion (extends libunicap-udev.patch)
+
+-------------------------------------------------------------------
+Thu May  2 17:48:53 UTC 2013 - crrodriguez@opensuse.org
+
+- Fix build with new automake 
+
+-------------------------------------------------------------------
+Thu Nov 22 20:04:30 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix implicit declarations rpmlint warning/errors.
+- Fix build Requires.
+
+-------------------------------------------------------------------
+Fri Mar 16 20:30:33 CET 2012 - sbrabec@suse.cz
+
+- Port rules to the new udev (bnc#726471).
+
+-------------------------------------------------------------------
+Fri Oct 14 21:21:43 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in libunicap.spec
+
+-------------------------------------------------------------------
+Tue Oct 11 10:48:45 UTC 2011 - toddrme2178@gmail.com
+
+- Add a patch to not used the reserved keyword "private".  This
+  prevents C++ programs from building against this library
+  See: https://bugs.launchpad.net/unicap/+bug/656229
+       https://bugs.launchpad.net/unicap/+bug/658739
+- Removed deprecated %clean macro
+- Did some trivial spec file cleanups
+
+-------------------------------------------------------------------
+Tue Aug 23 09:29:01 UTC 2011 - toddrme2178@gmail.com
+
+- Fixed typos in spec file that was causing a build error
+- Added -32bit compatibility package.  This will be needed
+  by some packages using this library.
+
+-------------------------------------------------------------------
+Thu Aug 18 10:31:43 UTC 2011 - toddrme2178@gmail.com
+
+- Renamed package to libunicap per request from Factory
+- Cleaned up spec file formatting with spec-cleaner
+- Added copyright at the beginning of the spec file
+
+-------------------------------------------------------------------
+Wed Aug  3 13:47:12 UTC 2011 - toddrme2178@gmail.com
+
+- Update to 0.9.12
+- Modify .spec file and dependencies for openSUSE
+- Switch to .changes file
+- Find duplicate files (fix for rpmlint warning)
+- Fix groups (fix for rpmlint warning)
+- Add patch to fix detection of videodev header in openSUSE 12.1+
+
+
+-------------------------------------------------------------------
+Sat Feb 21 00:00:00 UTC 2009 - Anas Nashif <anas.nashif@intel.com>
+
+- Initial import into Moblin
+
+
+-------------------------------------------------------------------
+Mon Oct 13 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Upgrade to 0.9.3 (#466825, thanks to Hans de Goede)
+- Enabled libv4l support for the new gspca kernel driver
+
+
+-------------------------------------------------------------------
+Sat Aug  9 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Rebuild to get missing dependencies back (#443015, #458527)
+
+
+-------------------------------------------------------------------
+Tue Aug  5 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Filter the unicap plugins which overlap with libv4l libraries
+
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Rebuild for libraw1394 2.0.0
+
+
+-------------------------------------------------------------------
+Mon May 19 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Upgrade to 0.2.23
+- Corrected packaging of cpi/*.so files (thanks to Arne Caspari)
+
+
+-------------------------------------------------------------------
+Sat May 17 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Upgrade to 0.2.22 (#446021)
+
+
+-------------------------------------------------------------------
+Sat Feb 16 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Added patch to correct libdir paths (thanks to Ralf Corsepius)
+
+
+-------------------------------------------------------------------
+Mon Feb  4 00:00:01 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Changes to match with Fedora Packaging Guidelines (#431381)
+
+
+-------------------------------------------------------------------
+Mon Feb  4 00:00:00 UTC 2008 - Robert Scheck <robert@fedoraproject.org>
+
+- Upgrade to 0.2.19
+- Initial spec file for Fedora and Red Hat Enterprise Linux

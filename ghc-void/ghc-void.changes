@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sat May 11 02:00:44 UTC 2019 - psimons@suse.com
+
+- Update void to version 0.7.3.
+  0.7.3 [2019.05.10]
+  ------------------
+  * Backport the `Lift Void` instance introduced in `template-haskell-2.15.0.0`.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:15 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:48 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 14:36:30 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Mar 27 12:40:50 UTC 2017 - psimons@suse.com
+
+- Update to version 0.7.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:04:03 UTC 2016 - psimons@suse.com
+
+- Update to version 0.7.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Sep 20 19:24:46 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.7.1
+* Support semigroups 0.17 on older GHCs
+* Backported NFData's semigroup instance to older GHCs.
+
+-------------------------------------------------------------------
+Wed Apr 22 07:00:41 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.7
+* adapt to `Data.Void` being moved into `base-4.8`
+* `vacuousM` removed
+
+-------------------------------------------------------------------
+Sun Oct  6 22:42:45 UTC 2013 - sbahling@suse.com
+
+- Initial package  - version 0.6.1

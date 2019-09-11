@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Tue Dec 13 13:57:10 UTC 2011 - coolo@suse.com
+
+- license is "as perl"
+
+-------------------------------------------------------------------
+Thu Mar 31 11:55:23 UTC 2011 - coolo@novell.com
+
+- update to 0.48
+     * t/forkm.t Patched perl Leon Timmermans
+       http://rt.perl.org/rt3/Public/Bug/Display.html?id=83646
+     * lib/Net/Daemon.pm Patched per bug 32887
+       "ithreads not detected due to a typo"
+     * lib/Net/Daemon.pm Fixed "Subroutine import redefined" problem
+       that perl 5.8.8 CPAN testers was getting.  It was due to
+       more than one "require threads" being run.
+     * lib/Net/Daemon.pm Used "make dist" to create the uploaded
+     * lib/Net/Daemon.pm Added ServClose patch by Gaspar Chilingarov
+     * t/thread.t Added patches by Daniel Macks and Joe McMahon,
+       and added Test::More and skip_all for Windows < 5.10
+     * Added necessary thread sharing to work with 5.10
+       threads model: regexp-threads,
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:43 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:50 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Jul 16 12:06:10 CEST 2007 - ug@suse.de
+
+- update to version 0.43
+- lib/Net/Daemon.pm  Needed to up the VERSION number
+- t/forkm.t: Added a wait so that the parent will not loop
+  around and make another child until the previous child has
+  been destroyed.
+- t/forkm.t: When all ten childs are exited,
+  sub CatchChild will now exit.
+- t/threadm.t: The tests are now skipped with a
+  passing indication when usethreads is defined, which
+  would mean that the ithreadm tests are the ones that
+  matter.
+  Test.pm: A patch from todd.e.rinaldo was used.  I do
+  not remember what the issues were.
+
+
+-------------------------------------------------------------------
+Wed Oct 25 09:31:45 CEST 2006 - ug@suse.de
+
+- Update to version 0.39
+- a testsuite fixed
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 18 06:24:41 CET 2004 - nashif@suse.de
+
+- Update to version 0.38
+
+-------------------------------------------------------------------
+Sun Jan 11 10:04:48 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:19:36 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 22:58:57 CEST 2003 - nashif@suse.de
+
+- use DESTDIR
+- fixed file list
+
+-------------------------------------------------------------------
+Tue Jul  1 12:55:33 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Fri Jun 13 06:31:47 CEST 2003 - nashif@suse.de
+
+- Fixed file list
+
+-------------------------------------------------------------------
+Mon May 12 23:52:07 CEST 2003 - nashif@suse.de
+
+- Update to version 0.37
+- Fix default file permissions
+
+-------------------------------------------------------------------
+Tue Dec 11 14:16:43 CET 2001 - nashif@suse.de
+
+- Update to version 0.36
+
+-------------------------------------------------------------------
+Thu Mar  8 18:42:06 CET 2001 - nashif@suse.de
+
+- Fixed %files in spec 
+
+-------------------------------------------------------------------
+Fri Feb 23 06:10:06 MET 2001 - nashif@suse.de
+
+- Update to version 0.34 
+
+-------------------------------------------------------------------
+Mon Nov 27 17:27:21 MET 2000 - nashif@suse.de
+
+- Initial Release (version 0.32) 
+

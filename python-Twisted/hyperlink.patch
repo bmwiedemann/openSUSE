@@ -1,0 +1,36 @@
+From 46fc370d6b49a241fb05815ccdc7406f0e430183 Mon Sep 17 00:00:00 2001
+From: Tom Most <twm@freecog.net>
+Date: Mon, 8 Apr 2019 22:38:23 -0700
+Subject: [PATCH] Remove test_parseEqualSignInParamValue
+
+Twisted should not test Hyperlink's behavior so extensively, as
+discussed at https://github.com/python-hyper/hyperlink/pull/39
+---
+ src/twisted/python/test/test_url.py | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/src/twisted/python/test/test_url.py b/src/twisted/python/test/test_url.py
+index e36c2ca01b..7d55f10fd1 100644
+--- a/src/twisted/python/test/test_url.py
++++ b/src/twisted/python/test/test_url.py
+@@ -476,20 +476,6 @@ def test_queryRemove(self):
+         )
+ 
+ 
+-    def test_parseEqualSignInParamValue(self):
+-        """
+-        Every C{=}-sign after the first in a query parameter is simply included
+-        in the value of the parameter.
+-        """
+-        u = URL.fromText('http://localhost/?=x=x=x')
+-        self.assertEqual(u.get(u''), ['x=x=x'])
+-        self.assertEqual(u.asText(), 'http://localhost/?=x%3Dx%3Dx')
+-        u = URL.fromText('http://localhost/?foo=x=x=x&bar=y')
+-        self.assertEqual(u.query, (('foo', 'x=x=x'),
+-                                             ('bar', 'y')))
+-        self.assertEqual(u.asText(), 'http://localhost/?foo=x%3Dx%3Dx&bar=y')
+-
+-
+     def test_empty(self):
+         """
+         An empty L{URL} should serialize as the empty string.

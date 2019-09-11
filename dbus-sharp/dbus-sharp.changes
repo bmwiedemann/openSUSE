@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Fri Sep 28 19:44:45 UTC 2012 - dimstar@opensuse.org
+
+- Add dbus-sharp-signal-dispatch.patch: Fix broken signal dispatch.
+  The signals for example do not reach applications like tomboy,
+  which avoids them from closing down on session termination, until
+  they are forcibly killed by the session manager (bnc#780933).
+
+-------------------------------------------------------------------
+Mon Jul 11 07:49:04 UTC 2011 - nmarques@opensuse.org
+
+- Removed %clean section (no longer required)
+
+-------------------------------------------------------------------
+Fri Jul  1 08:59:18 UTC 2011 - nmarques@opensuse.org
+
+- Spec cleanups:
+  + Removed entries related to Fedora packaging;
+  + Minor cleanups on syntax and improved comments;
+  + Use pkgconfig() calls for >= 1130
+  + For <= 1110 added %{_libexecdir} and replaced %make_install
+    method.
+  + Enabled parallel builds (tested ok).
+  + Removed nuking of buildroot on %clean.
+
+-------------------------------------------------------------------
+Mon Jan 10 23:04:43 UTC 2011 - michal@sawicz.net
+
+- Initial package, based on ndesk-dbus from the Mono OBS project
+

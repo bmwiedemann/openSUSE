@@ -1,0 +1,162 @@
+From 3b1ed1b767b664fdf7040ba9cf6c9d3f071250a0 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 21 Mar 2019 12:16:45 +0100
+Subject: [PATCH] build: adjust configure for postgresql 10/11
+
+The openSUSE PostgreSQL 11 no longer ships the pg_config program.
+Instead, there exists a .pc file (likewise in pg10), so make use of
+that, by default.
+
+The old --with-pgsql-inc and --with-pgsql-lib option are going away
+and replaced by the standardized mechanisms pkg-config.m4 has in
+store for when there is no .pc file or an unusual location:
+
+	./configure --with-pgsql pgsql_CFLAGS="-I/opt/pgsql/include" \
+	pgsql_LIBS="-L/opt/pgsql/lib -lpq"
+---
+ acinclude.m4             | 84 ++++------------------------------------
+ configure.ac             | 12 +-----
+ output/pgsql/Makefile.am |  4 +-
+ 3 files changed, 12 insertions(+), 88 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 8388c45..3b8b982 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -14,82 +14,14 @@ dnl @license AllPermissive
+ 
+ AC_DEFUN([CT_CHECK_POSTGRES_DB], [
+ 
+-AC_ARG_WITH(pgsql,
+-	[  --with-pgsql=PREFIX		Prefix of your PostgreSQL installation],
+-	[pg_prefix=$withval], [pg_prefix=])
+-AC_ARG_WITH(pgsql-inc,
+-	[  --with-pgsql-inc=PATH		Path to the include directory of PostgreSQL],
+-	[pg_inc=$withval], [pg_inc=])
+-AC_ARG_WITH(pgsql-lib,
+-	[  --with-pgsql-lib=PATH		Path to the libraries of PostgreSQL],
+-	[pg_lib=$withval], [pg_lib=])
+-
+-
+-AC_SUBST(PQINCPATH)
+-AC_SUBST(PQLIBPATH)
+-AC_SUBST(PQLIBS)
+-PQLIBS=-lpq
+-
+-if test "$pg_prefix" != "no"; then
+-
+-AC_MSG_CHECKING([for PostgreSQL pg_config program])
+-for d in $pg_prefix/bin /usr/bin /usr/local/bin /usr/local/pgsql/bin /opt/pgsql/bin /opt/packages/pgsql/bin
+-do
+-	if test -x $d/pg_config -a "$cross_compiling" = "no";
+-	then
+-		AC_MSG_RESULT(found pg_config in $d)
+-		PQINCPATH=`$d/pg_config --includedir`
+-		PQLIBPATH=`$d/pg_config --libdir`
+-		break
+-	fi
+-done
+-
+-if test "$PQINCPATH" = ""; then
+-   if test "$pg_prefix" != ""; then
+-      AC_MSG_CHECKING([for PostgreSQL includes in $pg_prefix/include])
+-      if test -f "$pg_prefix/include/libpq-fe.h" ; then
+-         PQINCPATH="-I$pg_prefix/include"
+-         AC_MSG_RESULT([yes])
+-      else
+-         AC_MSG_WARN(libpq-fe.h not found)
+-      fi
+-      AC_MSG_CHECKING([for PostgreSQL libraries in $pg_prefix/lib])
+-      if test -f "$pg_prefix/lib/libpq.so" ; then
+-         PQLIBPATH="-L$pg_prefix/lib"
+-         AC_MSG_RESULT([yes])
+-      else
+-         AC_MSG_WARN(libpq.so not found)
+-      fi
+-   else
+-     if test "$pg_inc" != ""; then
+-       AC_MSG_CHECKING([for PostgreSQL includes in $pg_inc])
+-       if test -f "$pg_inc/libpq-fe.h" ; then
+-         PQINCPATH="-I$pg_inc"
+-         AC_MSG_RESULT([yes])
+-       else
+-         AC_MSG_WARN(libpq-fe.h not found)
+-       fi
+-     fi
+-     if test "$pg_lib" != ""; then
+-       AC_MSG_CHECKING([for PostgreSQL libraries in $pg_lib])
+-       if test -f "$pg_lib/libpq.so" ; then
+-         PQLIBPATH="-L$pg_lib"
+-         AC_MSG_RESULT([yes])
+-       else
+-         AC_MSG_WARN(libpq.so not found)
+-       fi
+-     fi
+-   fi
+-fi
+-
+-if test "$PQINCPATH" = "" ; then
+-  AC_CHECK_HEADER([libpq-fe.h], [], AC_MSG_WARN(libpq-fe.h not found))
+-fi
+-if test "$PQLIBPATH" = "" ; then
+-  AC_CHECK_LIB(pq, PQconnectdb, [], AC_MSG_WARN(libpq.so not found))
+-fi
+-
+-fi
++AC_ARG_WITH([pgsql], [AS_HELP_STRING([--without-pgsql], [Build without pgsql output plugin [default=test]])],
++	[want_pgsql="$withval"], [want_pgsql=auto])
++enable_pgsql=no
++AS_IF([test "$want_pgsql" = "auto"], [
++        PKG_CHECK_MODULES([pgsql], [libpq], [enable_pgsql=yes], [:])
++], [test "$want_pgsql" != "no"], [
++	PKG_CHECK_MODULES([pgsql], [libpq], [enable_pgsql=yes])
++])
+ 
+ ])
+ 
+diff --git a/configure.ac b/configure.ac
+index 3aa0624..794cbbb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,16 +82,8 @@ if [! test "x$enable_nfacct" = "xyes"]; then
+ 	enable_nfacct="no"
+ fi
+ 
+-AC_ARG_WITH([pgsql], AS_HELP_STRING([--without-pgsql], [Build without postgresql output plugin [default=test]]))
+-AS_IF([test "x$with_pgsql" != "xno"], [
+-	CT_CHECK_POSTGRES_DB()
+-])
+-AM_CONDITIONAL(HAVE_PGSQL, test "x$PQLIBPATH" != "x")
+-if test "x$PQLIBPATH" != "x"; then
+-	enable_pgsql="yes"
+-else
+-	enable_pgsql="no"
+-fi
++CT_CHECK_POSTGRES_DB()
++AM_CONDITIONAL([HAVE_PGSQL], [test "$enable_pgsql" = yes])
+ 
+ AC_ARG_WITH([mysql], AS_HELP_STRING([--without-mysql], [Build without mysql output plugin [default=test]]))
+ AS_IF([test "x$with_mysql" != "xno"], [
+diff --git a/output/pgsql/Makefile.am b/output/pgsql/Makefile.am
+index bdaf1d2..6c1d35a 100644
+--- a/output/pgsql/Makefile.am
++++ b/output/pgsql/Makefile.am
+@@ -1,5 +1,5 @@
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/include -I$(PQINCPATH)
++AM_CPPFLAGS = -I$(top_srcdir)/include ${pgsql_CFLAGS}
+ AM_CFLAGS = ${regular_CFLAGS}
+ 
+ if HAVE_PGSQL
+@@ -7,7 +7,7 @@ if HAVE_PGSQL
+ pkglib_LTLIBRARIES = ulogd_output_PGSQL.la
+ 
+ ulogd_output_PGSQL_la_SOURCES = ulogd_output_PGSQL.c ../../util/db.c
+-ulogd_output_PGSQL_la_LIBADD  = ${PQLIBS}
++ulogd_output_PGSQL_la_LIBADD  = ${pgsql_LIBS}
+ ulogd_output_PGSQL_la_LDFLAGS = -avoid-version -module
+ 
+ endif
+-- 
+2.21.0
+

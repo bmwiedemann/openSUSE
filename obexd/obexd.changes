@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Sat Jan 19 17:13:43 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.48:
+  + Fix issue with phonebook contacts query.
+  + Add support for phonebook client filters.
+  + Add support for message status handling.
+  + Add support for OBEX application parameter API.
+  + Update client session API.
+  + Change D-Bus namespace to org.bluez.obex.
+  + Update client transfer API.
+  + Fix issue with using invalid PSM numbers.
+  + Add support for MAP message listing parameters.
+  + Add support for MAP folder listing retrieval.
+
+-------------------------------------------------------------------
+Wed Nov 14 08:13:00 UTC 2012 - aj@suse.de
+
+- Add missing include to fix build (add patch obexd-headers.patch)
+
+-------------------------------------------------------------------
+Mon Apr 30 20:33:18 UTC 2012 - i@marguerite.su
+
+- with_phonebook=dummy instead of ebook.
+  * to avoid evolution-data-server dependencies.
+  * more friendly to non-Gnome desktop environments.
+  * http://lists.opensuse.org/opensuse-packaging/2012-04/msg00023.html
+
+-------------------------------------------------------------------
+Sat Apr 14 14:14:13 UTC 2012 - fisiu@opensuse.org
+
+- BuildRequires in pkgconfig() format.
+
+- Drop explicit Requires: evolution-data-server from main package.
+
+- Update to 0.45:
+  + Fix issue with SRM and GET requests.
+  + Fix issue with SRM headers and CONNECT.
+  + Fix issue with ABORT request not being not processed.
+  + Fix issue with file deletion when push gets aborted.
+  + Fix issue with missing parsing of PUT application parameter.
+  + Fix issue with parsing of PBAP client application parameter.
+  + Fix issue with byte-order conversion and L2CAP.
+  + Add support for OBEX over L2CAP transport.
+  + Add support for MAP AP core functions.
+
+-------------------------------------------------------------------
+Mon Feb  6 15:34:16 UTC 2012 - fisiu@opensuse.org
+
+- Removed openobex-devel from BuildRequires (upstream dropped this
+  dependency with 0.43 release).
+
+- Rebased obexd-users-home-for-root.patch for 0.44 version.
+
+- Update to 0.44:
+  + Fix issue with incorrect path during authorization.
+  + Fix issue with missing reset after transfer completion.
+  + Fix issue with invalid memory access and PBAP.
+  + Add support for OBEX Single Response Mode.
+
+- Version 0.43:
+  + Remove OpenOBEX dependency.
+  + Fix multiple issues with PBAP and vCard encoding.
+  + Add initial support for handling Message Access Profile.
+  + Add support for internal and fully asynchronous OBEX library.
+
+- Version 0.42:
+  + Fix issue with freeing buffer before transfer is complete.
+  + Fix issue with invalid memory read when pulling phonebook.
+  + Fix issue with test cases for empty phonebooks.
+  + Add support for multiple phonebooks when using EDS.
+  +Add support for handling OBEX Action command.
+
+- Version 0.41:
+  + Fix issue with pulling phonebook entries without last name.
+  + Fix issue with handling owner data in phonebook pull.
+  + Add support for fetching call history in parts.
+  + Add support for selective plugin loading.
+  + Add support for Message Access Profile plugin.
+
+- Version 0.40:
+  + Fix issue with plugin close & disconnect functions call order.
+  + Fix issue with history queries for contacts outside phonebook.
+  + Fix issue with crash after fetching single owner vCard.
+  + Add support for multiple URLs in phonebooks.
+
+-------------------------------------------------------------------
+Thu Nov 24 10:20:18 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jan 14 21:29:26 UTC 2011 - wstephenson@novell.com
+
+- Update to 0.39
+  * Fix for handling fax and cell phone numbers.
+  * Fix for handling emails in pull call history queries.
+  * Fix for handling addresses in pull call history queries.
+  * Fix for handling default card and empty phonebook.
+  * Add support for handling NewMissedCalls.
+
+- Version 0.38:
+  * Fix regression causing crash in 3-way calling.
+  * Fix possible crash when processing session callback.
+  * Fix issue with fetching contact photo file name.
+  * Fix issue with fetching 0.vcf vCard entry.
+  * Add support for optimized PBAP tracker queries.
+  * Add support for files bigger than 2GB on 32-bit systems.
+
+- Version 0.37:
+  * Fix queries for contact with only one affiliation.
+  * Fix pull phonebook with non-zero offset parameter.
+  * Fix pull phonebook reply if filter not set.
+  * Fix proper type handling for various queries.
+
+- Version 0.36:
+  * Fix crash for empty listing and an invalid cache.
+  * Fix issue with process pending request if transfer canceled.
+  * Fix issue with error setting when canceling suspended requests.
+  * Fix issue with folder listing and name header for subfolders.
+  * Fix issue with status response after pulling empty call history.
+  * Fix issue with not handling nco affiliation fields correctly.
+  * Fix issue with history listing queries in phonebook-tracker.
+  * Fix regression when formatting timestamps from tracker.
+
+- Version 0.35:
+  * Fix regression on suspend on opening.
+  * Fix suspend stream on opening if no data.
+  * Fix memory leaks in phonebook-tracker module.
+  * Fix not responding Not Found for filtered vcard-listing.
+  * Fix not responding Not Found when no entry is found.
+  * Fix issue with X-IRMC-CALL-DATETIME format.
+
+- Version 0.34:
+  * Fix issue with error detection and last part of transfer buffer.
+  * Fix issue with not detecting errors on small files.
+  * Fix issue with emitting TransferCompleted twice.
+  * Fix issue with default call type from call log.
+  * Fix issue with websiteUrl query field not being generic.
+  * Add support for binding mch, ich, och and cch call logs.
+  * Add handling of TITLE contact's field in vCard.
+
+- Version 0.33:
+  * Fix issue with handling of phonebook size during pull request.
+  * Add support for handling of UID contact field in vCard.
+  * Add support for handling more than one address in vCard.
+  * Add support for merging address fields into single field.
+
+- Version 0.32:
+  * Fix issues caused by dependencies on phonebook source.
+  * Fix handling empty fields in vCards.
+  * Fix issues with emails category.
+
+- Version 0.31:
+  * Fix aborting capability scripts creating zombies.
+  * Fix problem with multiple emails in same vcard.
+  * Fix multiple phone number problem in pull vcard.
+  * Fix multiple phone numbers problem in vcard-listing.
+  * Fix return value checking of e_book_async_get_contacts.
+  * Fix a memory leak when adding contacts to the result.
+  * Add support of single contact's fields in vcard.
+  * Add support for FAX number with tracker phonebook.
+  * Add simple IrMC sync server support.
+
+- Version 0.30:
+  * Fix issue with empty error messages.
+  * Fix issue with query for vCarcd listing.
+  * Fix problem with incoming calls query.
+  * Fix handling of vCard filter settings.
+  * Fix potential buffer overflow with target sizes.
+  * Fix NULL checking within PBAP GET operation.
+  * Fix NULL checking for PBAP name parameter.
+  * Fix crash when processing OBEX_EV_PROGRESS event.
+  * Fix crash when resetting a session with no service.
+  * Fix not closing socket when connection attempt fails.
+  * Fix de-registering PBAP drivers on init failure scenarios.
+  * Add variable target size support to MIME type drivers.
+  * Add support for returning all eBook TEL attributes.
+  * Add PBAP client tests for ICH, OCH, MCH and CCH.
+
+- Version 0.29:
+  * Fix security requirements for legacy devices.
+  * Fix empty 'N:' parameter handling for vCards.
+  * Fix order of contacts in the combined calls folder.
+  * Fix not replying error when transfer could not be started.
+  * Fix not unregistering transfer when completed.
+  * Fix memory leak when freeing transfer parameters.
+  * Fix issues with handling of driver reset.
+  * Add support for responding to Auth Challenge.
+  * Add support for dynamic debug feature.
+
+-------------------------------------------------------------------
+Mon Jun 21 21:43:41 CEST 2010 - jslaby@suse.de
+
+- simplify rpm
+- disable server (as it conflicts with obex-data-server)
+
+-------------------------------------------------------------------
+Sat Jun 19 21:27:31 CEST 2010 - jslaby@suse.de
+
+- Update to 0.28
+  * fixes some issues with the Phonebook Access support and its
+    Tracker integration.
+
+-------------------------------------------------------------------
+Thu Jun 17 11:46:33 CEST 2010 - jslaby@suse.de
+
+- Update to 0.27
+
+-------------------------------------------------------------------
+Mon Feb  8 18:36:53 UTC 2010 - tambet@novell.com
+
+- Fix obexd and obex-client so that they work if the initial request
+  comes through dbus activation (bnc 567363).
+
+-------------------------------------------------------------------
+Wed Feb  3 14:35:52 UTC 2010 - tambet@novell.com
+
+- Include the received file name in the DBus notification.
+- Use ~/Public for the shared directory (bnc #567383).
+
+-------------------------------------------------------------------
+Thu Nov 12 04:29:21 UTC 2009 - glin@novell.com
+
+- initial import
+

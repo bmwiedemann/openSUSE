@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Fri Apr 12 09:06:13 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.5.1
+  * no changelog available
+
+-------------------------------------------------------------------
+Tue Mar  5 09:52:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.1:
+  * no changelog available
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:38 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 31 21:26:38 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 2.1.0:
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu Aug 24 13:56:41 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May 14 12:06:39 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.12.0:
+  * no changelog available
+- remove python-xml from requirement
+- add new dependency python-six
+- add new dependency python-unittest2 for SLE11
+- remove sed call on testsuite.py: not needed anymore
+- remove LICENSE and README.markdown: not provided anymore
+
+-------------------------------------------------------------------
+Fri Nov 15 22:09:36 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.7.0
+  + No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:35 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Jan 14 16:57:42 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 14 16:51:12 UTC 2013 - p.drouand@gmail.com
+
+- Update to 1.4.3 version:
+  * fix indentation problem
+- Update to 1.4 version:
+  * Refactor Django test runner to clean up imports
+  * Allow bool values in TEST_OUTPUT_VERBOSE for backwards-compatibility
+  * Fix Django test runner for renamed XMLTestRunner constructor parameter
+  * Fixed syntax error on classifiers section.
+  * Added support for Python 3.
+  * Renamed constructor parameter to make it compatible with the one used
+    in unittest.TextTestRunner.
+
+-------------------------------------------------------------------
+Thu Sep  8 09:36:53 UTC 2011 - saschpe@suse.de
+
+- Added requirement for python-xml
+
+-------------------------------------------------------------------
+Thu Sep  8 09:10:24 UTC 2011 - saschpe@suse.de
+
+- Initial version
+
+

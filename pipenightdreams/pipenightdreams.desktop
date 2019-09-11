@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PipeNightDreams
+GenericName=Pipe Mania
+Comment=Puzzle game similar to PipeMania
+Icon=pipenightdreams
+Exec=pipenightdreams
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=false

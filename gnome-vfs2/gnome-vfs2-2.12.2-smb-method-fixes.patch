@@ -1,0 +1,2230 @@
+This patch was prompted by https://bugzilla.novell.com/show_bug.cgi?id=222662 .
+
+It contains the upstream differences in smb-method.c from version 2.12 to 2.18.
+It also contains the old patches to smb-method.c, including:
+
+gnome-vfs2-net-usershare.diff                      (Only the smb-method.c part)
+gnome-vfs2-195269-smb-method-sniff-mime-type.diff  (Part of upstream)
+gnome-vfs2-smb-bufsize.patch
+
+An additional patch from Federico:
+
+gnome-vfs2-222662-smb-uri-explicit-username.diff
+
+An additional patch from Dan Winship:
+
+gnome-vfs2-203737-smb-lock.diff
+
+Plus changes to use the local user's login instead of "guest" or anonymous
+logins, and avoid reusing the first-known-good login to a share if a login
+isn't specified - again substituting the local user.
+
+Index: gnome-vfs-2.24.0/libgnomevfs/gnome-vfs-handle.h
+===================================================================
+--- gnome-vfs-2.24.0.orig/libgnomevfs/gnome-vfs-handle.h
++++ gnome-vfs-2.24.0/libgnomevfs/gnome-vfs-handle.h
+@@ -89,6 +89,7 @@ typedef struct GnomeVFSHandle GnomeVFSHa
+  * @GNOME_VFS_OPEN_WRITE: Write access.
+  * @GNOME_VFS_OPEN_RANDOM: Random access.
+  * @GNOME_VFS_OPEN_TRUNCATE: Truncate file before accessing it, i.e. delete its contents.
++ * @GNOME_VFS_OPEN_LOCKED: Lock file when opening it
+  *
+  * Mode in which files are opened. If GNOME_VFS_OPEN_RANDOM is not used, the
+  * file will be have to be accessed sequentially.
+@@ -98,7 +99,8 @@ typedef enum {
+         GNOME_VFS_OPEN_READ = 1 << 0,
+         GNOME_VFS_OPEN_WRITE = 1 << 1,
+         GNOME_VFS_OPEN_RANDOM = 1 << 2,
+-	GNOME_VFS_OPEN_TRUNCATE = 1 << 3
++	GNOME_VFS_OPEN_TRUNCATE = 1 << 3,
++	GNOME_VFS_OPEN_LOCKED = 1 << 4
+ } GnomeVFSOpenMode;
+ 
+ /**
+Index: gnome-vfs-2.24.0/modules/smb-method.c
+===================================================================
+--- gnome-vfs-2.24.0.orig/modules/smb-method.c
++++ gnome-vfs-2.24.0/modules/smb-method.c
+@@ -37,6 +37,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#include <stdio.h>
+ 
+ #include <gconf/gconf-client.h>
+ #include <libgnomevfs/gnome-vfs.h>
+@@ -90,6 +91,17 @@ static GHashTable *server_cache = NULL;
+ 
+ static GHashTable *user_cache = NULL;
+ 
++/* smbcctx->readdir() can give us a struct smbc_dirent that identifies a
++ * printer, but you cannot perform a smbcctx->stat() on a path to know if that
++ * path refers to a printer.  So, when doing readdir(), we must remember the
++ * URIs of the printers we have found.  Later in our own do_get_file_info(), we
++ * will match the passed URI to this hash table and return a magic "it is a
++ * printer" datum if appropriate.
++ */
++static GHashTable *printer_hash = NULL;
++
++static FILE *debug_file;
++
+ #define SMB_BLOCK_SIZE (32*1024)
+ 
+ /* Reap unused server connections and user cache after 30 minutes */
+@@ -105,6 +117,9 @@ static guint cache_reap_timeout = 0;
+ /* Guest logins use: */
+ #define GUEST_LOGIN "guest"
+ 
++/* Guest logins use: */
++#define GUEST_LOGIN "guest"
++
+ /* 5 minutes before we re-read the workgroup cache again */
+ #define WORKGROUP_CACHE_TIMEOUT (5*60)
+ 
+@@ -149,32 +164,106 @@ typedef struct _SmbAuthContext {
+ static void init_authentication (SmbAuthContext *actx, GnomeVFSURI *uri);
+ static int  perform_authentication (SmbAuthContext *actx);
+ 
++static gboolean is_printer (GnomeVFSURI *uri);
++
+ static SmbAuthContext *current_auth_context = NULL;
+ 
+ static void auth_callback (const char *server_name, const char *share_name,
+ 		     	   char *domain, int domainmaxlen,
+ 		     	   char *username, int unmaxlen,
+ 		     	   char *password, int pwmaxlen);
++
++static void debug_print (const char *format, ...);
++static void debug_indent (int amount);
++static int debug_indentation;
+ 		     	   
+-#if 0
++#if 1
+ #define DEBUG_SMB_ENABLE
+ #define DEBUG_SMB_LOCKS
+ #endif
+ 
+ #ifdef DEBUG_SMB_ENABLE
+-#define DEBUG_SMB(x) g_print x
++#define DEBUG_SMB(x) debug_print x
++#define DEBUG_IN() debug_print ("%s() {\n", G_STRFUNC); debug_indent(1)
++#define DEBUG_OUT() debug_indent(-1); debug_print ("} %s()\n", G_STRFUNC)
+ #else
+-#define DEBUG_SMB(x) 
++#define DEBUG_SMB(x)
++#define DEBUG_IN()
++#define DEBUG_OUT()
+ #endif
+ 
+ #ifdef DEBUG_SMB_LOCKS
+-#define LOCK_SMB() 	{g_mutex_lock (smb_lock); g_print ("LOCK %s\n", G_STRFUNC);}
+-#define UNLOCK_SMB() 	{g_print ("UNLOCK %s\n", G_STRFUNC); g_mutex_unlock (smb_lock);}
++#define LOCK_SMB() 	{g_mutex_lock (smb_lock); debug_print ("LOCK %s\n", G_STRFUNC);}
++#define UNLOCK_SMB() 	{debug_print ("UNLOCK %s\n", G_STRFUNC); g_mutex_unlock (smb_lock);}
+ #else
+ #define LOCK_SMB() 	g_mutex_lock (smb_lock)
+ #define UNLOCK_SMB() 	g_mutex_unlock (smb_lock)
+ #endif
+ 
++static void
++debug_print (const char *format, ...)
++{
++	va_list args;
++	char *str;
++	int i;
++
++	if (!debug_file)
++		return;
++
++	va_start (args, format);
++	str = g_strdup_vprintf (format, args);
++	va_end (args);
++
++	fprintf (debug_file, "%p: ", g_thread_self ());
++
++	for (i = 0; i < debug_indentation * 4; i++)
++		fputc (' ', debug_file);
++
++	fputs (str, debug_file);
++	g_free (str);
++	fflush (debug_file);
++}
++
++static void
++debug_indent (int amount)
++{
++	debug_indentation += amount;
++	if (debug_indentation < 0)
++		g_error ("You fucked up your indentation");
++}
++
++static void
++DEBUG_DUMP_AUTH_CONTEXT (SmbAuthContext *actx)
++{
++	char *str_uri;
++
++	if (actx->uri)
++		str_uri = gnome_vfs_uri_to_string (actx->uri, 0);
++	else
++		str_uri = g_strdup ("(null)");
++
++	debug_print ("AUTH CONTEXT %p {\n", actx);
++	debug_print ("             uri: %s\n", str_uri);
++	debug_print ("      vfs_result: %d\n", (int) actx->res);
++	debug_print ("          passes: %d\n", actx->passes);
++	debug_print ("           state: %x\n", actx->state);
++	debug_print ("       save_auth: %d\n", actx->save_auth);
++	debug_print ("         keyring: %s\n", actx->keyring);
++	debug_print ("     auth_called: %d\n", actx->auth_called);
++	debug_print ("      for_server: %s\n", actx->for_server);
++	debug_print ("       for_share: %s\n", actx->for_share);
++	debug_print ("        use_user: %s\n", actx->use_user);
++	debug_print ("      use_domain: %s\n", actx->use_domain);
++	debug_print ("    use_password: %s\n", actx->use_password);
++	debug_print ("     cache_added: %d\n", actx->cache_added);
++	debug_print ("      cache_used: %d\n", actx->cache_used);
++	debug_print ("    prompt_flags: %x\n", actx->prompt_flags);
++	debug_print ("}\n");
++
++	g_free (str_uri);
++}
++
++
+ static gchar*
+ string_dup_nzero (const gchar *s)
+ {
+@@ -279,6 +368,22 @@ user_free (SmbCachedUser *user)
+         g_free (user);
+ }
+ 
++const gchar *
++get_unix_username (void)
++{
++	const gchar *unix_username;
++	const gchar *backslash;
++
++	/* Strip the domainname if present in "domainname\username" form. */
++
++	unix_username = g_get_user_name ();
++	backslash = strchr (unix_username, '\\');
++	if (backslash)
++		unix_username = (char *) backslash + 1;
++
++	return unix_username;
++}
++
+ static void
+ add_old_servers (gpointer key,
+ 		gpointer value,
+@@ -319,6 +424,7 @@ cache_reap_cb (void)
+          * sure when we'll be called */
+         if (!g_mutex_trylock (smb_lock))
+                 return TRUE;
++	DEBUG_IN ();
+         DEBUG_SMB(("LOCK %s\n", G_STRFUNC));
+ 
+ 	size = g_hash_table_size (server_cache);
+@@ -342,6 +448,7 @@ cache_reap_cb (void)
+         if (!ret)
+                 cache_reap_timeout = 0;
+ 
++	DEBUG_OUT ();
+         UNLOCK_SMB();
+ 
+         return ret;        
+@@ -363,6 +470,7 @@ add_cached_server (SMBCCTX *context, SMB
+ {
+ 	SmbServerCacheEntry *entry = NULL;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("[auth] adding cached server: server: %s, share: %s, domain: %s, user: %s\n",
+ 		   server_name ? server_name : "", 
+ 		   share_name ? share_name : "",
+@@ -383,6 +491,8 @@ add_cached_server (SMBCCTX *context, SMB
+ 
+ 	g_hash_table_insert (server_cache, entry, entry);
+ 	current_auth_context->cache_added = TRUE;
++
++	DEBUG_OUT ();
+ 	return 0;
+ }
+ 
+@@ -393,6 +503,7 @@ find_cached_server (const char *server_n
+ 	SmbServerCacheEntry entry;
+ 	SmbServerCacheEntry *res;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("find_cached_server: server: %s, share: %s, domain: %s, user: %s\n", 
+ 		   server_name ? server_name : "", 
+ 		   share_name ? share_name : "",
+@@ -409,9 +520,13 @@ find_cached_server (const char *server_n
+ 
+ 	if (res != NULL) {
+ 		res->last_time = time (NULL);
++ 		DEBUG_OUT ();
++ 		DEBUG_SMB (("found server %p\n", res->server));
+ 		return res->server;
+ 	} 
+ 
++ 	DEBUG_SMB (("found nothing; returning NULL\n"));
++ 	DEBUG_OUT ();
+ 	return NULL;
+ }
+ 
+@@ -421,6 +536,8 @@ get_cached_server (SMBCCTX * context,
+ 		   const char *domain, const char *username)
+ {
+ 	SMBCSRV *srv;
++
++	DEBUG_IN ();
+ 	
+ 	srv = find_cached_server (server_name, share_name, domain, username);
+ 	if (srv != NULL) {
+@@ -430,8 +547,12 @@ get_cached_server (SMBCCTX * context,
+ 			   domain ? domain : "", 
+ 			   username ? username : ""));
+ 		current_auth_context->cache_used = TRUE;
++
++		DEBUG_OUT ();
+ 		return srv;
+ 	}
++
++	DEBUG_OUT ();
+ 	return NULL;
+ }
+ 
+@@ -454,9 +575,13 @@ remove_server  (gpointer key,
+ static int remove_cached_server(SMBCCTX * context, SMBCSRV * server)
+ {
+ 	int removed;
++
++	DEBUG_IN ();
+ 	
+ 	removed = g_hash_table_foreach_remove (server_cache, remove_server, server);
+ 
++	DEBUG_OUT ();
++
+ 	/* return 1 if failed */
+ 	return removed == 0;
+ }
+@@ -483,6 +608,8 @@ purge_cached(SMBCCTX * context)
+ 	gboolean could_not_purge_all;
+ 	int i;
+ 
++	DEBUG_IN ();
++
+ 	size = g_hash_table_size (server_cache);
+ 	servers = g_ptr_array_sized_new (size);
+ 
+@@ -499,6 +626,10 @@ purge_cached(SMBCCTX * context)
+ 	}
+ 
+ 	g_ptr_array_free (servers, TRUE);
++
++	DEBUG_SMB (("returning could_not_purge_all = %d\n", could_not_purge_all));
++
++	DEBUG_OUT ();
+ 	
+ 	return could_not_purge_all;
+ }
+@@ -519,6 +650,8 @@ update_workgroup_cache (void)
+ 	SMBCFILE *dir = NULL;
+ 	time_t t;
+ 	struct smbc_dirent *dirent;
++
++	DEBUG_IN ();
+ 	
+ 	t = time (NULL);
+ 
+@@ -526,6 +659,7 @@ update_workgroup_cache (void)
+ 	    workgroups_timestamp < t &&
+ 	    t < workgroups_timestamp + WORKGROUP_CACHE_TIMEOUT) {
+ 		/* Up to date */
++		DEBUG_OUT ();
+ 		return;
+ 	}
+ 	workgroups_timestamp = t;
+@@ -537,15 +671,20 @@ update_workgroup_cache (void)
+ 	LOCK_SMB();
+ 	
+ 	init_authentication (&actx, NULL);
++	DEBUG_DUMP_AUTH_CONTEXT (&actx);
+ 	
+ 	/* Important: perform_authentication leaves and re-enters the lock! */
+ 	while (perform_authentication (&actx) > 0) {
++		DEBUG_SMB (("calling ctx->opendir (\"smb://\")\n"));
+ 		dir = smb_context->opendir (smb_context, "smb://");
+ 		actx.res = (dir != NULL) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB (("it returned %d\n", (int) actx.res));
+ 	}
+ 
+ 	if (dir != NULL) {
++		DEBUG_SMB (("calling ctx->readdir() in a loop\n"));
+ 		while ((dirent = smb_context->readdir (smb_context, dir)) != NULL) {
++			DEBUG_SMB (("got dirent '%s' of type %d\n", dirent->name, dirent->smbc_type));
+ 			if (dirent->smbc_type == SMBC_WORKGROUP &&
+ 			    dirent->name != NULL &&
+ 			    strlen (dirent->name) > 0) {
+@@ -557,9 +696,13 @@ update_workgroup_cache (void)
+ 			}
+ 		}
+ 
++		DEBUG_SMB (("calling ctx->closedir()\n"));
+ 		smb_context->closedir (smb_context, dir);
+ 	}
++	DEBUG_DUMP_AUTH_CONTEXT (&actx);
+ 	UNLOCK_SMB();
++
++	DEBUG_OUT ();
+ }
+ 
+ static SmbUriType
+@@ -568,6 +711,9 @@ smb_uri_type (GnomeVFSURI *uri)
+ 	GnomeVFSToplevelURI *toplevel;
+ 	char *first_slash;
+ 	char *host_name;
++ 	SmbUriType type;
++ 
++ 	DEBUG_IN ();
+ 
+ 	toplevel = (GnomeVFSToplevelURI *)uri;
+ 
+@@ -576,12 +722,16 @@ smb_uri_type (GnomeVFSURI *uri)
+ 		if (uri->text == NULL ||
+ 		    uri->text[0] == 0 ||
+ 		    strcmp (uri->text, "/") == 0) {
+-			return SMB_URI_WHOLE_NETWORK;
++			type = SMB_URI_WHOLE_NETWORK;
++			goto out;
+ 		}
+ 		if (strchr (uri->text + 1, '/')) {
+-			return SMB_URI_ERROR;
++			type = SMB_URI_ERROR;
++			goto out;
+ 		}
+-		return SMB_URI_WORKGROUP_LINK;
++
++		type = SMB_URI_WORKGROUP_LINK;
++		goto out;
+ 	}
+ 	if (uri->text == NULL ||
+ 	    uri->text[0] == 0 ||
+@@ -596,10 +746,12 @@ smb_uri_type (GnomeVFSURI *uri)
+ 					DEFAULT_WORKGROUP_NAME) ||
+ 		    g_hash_table_lookup (workgroups, host_name)) {
+ 			g_free (host_name);
+-			return SMB_URI_WORKGROUP;
++ 			type = SMB_URI_WORKGROUP;
++ 			goto out;
+ 		} else {
+ 			g_free (host_name);
+-			return SMB_URI_SERVER;
++ 			type = SMB_URI_SERVER;
++ 			goto out;
+ 		}
+ 	}
+ 	first_slash = strchr (uri->text + 1, '/');
+@@ -620,8 +772,14 @@ smb_uri_type (GnomeVFSURI *uri)
+ 			return SMB_URI_SHARE;
+ 		}
+ 	}
+-	
+-	return SMB_URI_SHARE_FILE;
++
++ 	type = SMB_URI_SHARE_FILE;
++ 
++out:
++ 
++ 	DEBUG_OUT ();
++ 
++ 	return type;	
+ }
+ 
+ 
+@@ -678,42 +836,56 @@ try_init (void)
+ 	g_free (path);
+ 
+ 	smb_context = smbc_new_context ();
+-	if (smb_context != NULL) {
+-		smb_context->debug = 0;
+-		smb_context->callbacks.auth_fn 		    = auth_callback;
+-		smb_context->callbacks.add_cached_srv_fn    = add_cached_server;
+-		smb_context->callbacks.get_cached_srv_fn    = get_cached_server;
+-		smb_context->callbacks.remove_cached_srv_fn = remove_cached_server;
+-		smb_context->callbacks.purge_cached_fn      = purge_cached;
+-
+-		gclient = gconf_client_get_default ();
+-		if (gclient) {
+-			workgroup = gconf_client_get_string (gclient, 
+-					PATH_GCONF_GNOME_VFS_SMB_WORKGROUP, NULL);
+-
+-			/* libsmbclient frees this on it's own, so make sure 
+-			 * to use simple system malloc */
+-			if (workgroup && workgroup[0])
+-				smb_context->workgroup = strdup (workgroup);
+-			
+-			g_free (workgroup);
+-			g_object_unref (gclient);
+-		}
++	if (smb_context == NULL)
++		goto out;
+ 
+-		if (!smbc_init_context (smb_context)) {
+-			smbc_free_context (smb_context, FALSE);
+-			smb_context = NULL;
+-		}
++	smb_context->debug = 0;
++	smb_context->callbacks.auth_fn 		    = auth_callback;
++	smb_context->callbacks.add_cached_srv_fn    = add_cached_server;
++	smb_context->callbacks.get_cached_srv_fn    = get_cached_server;
++	smb_context->callbacks.remove_cached_srv_fn = remove_cached_server;
++	smb_context->callbacks.purge_cached_fn      = purge_cached;
++
++	DEBUG_SMB (("created the SMBCCTX; it has smbcctx->workgroup=\"%s\"\n",
++		    smb_context->workgroup ? smb_context->workgroup : "(null)"));
++	
++	gclient = gconf_client_get_default ();
++	if (gclient) {
++		workgroup = gconf_client_get_string (gclient, 
++						     PATH_GCONF_GNOME_VFS_SMB_WORKGROUP, NULL);
++		
++		/* libsmbclient frees this on it's own, so make sure 
++		 * to use simple system malloc */
++		if (workgroup && workgroup[0])
++			smb_context->workgroup = strdup (workgroup);
++		
++		g_free (workgroup);
++		g_object_unref (gclient);
++	}
++	
++	DEBUG_SMB (("after reading from gconf, we have smbcctx->workgroup=\"%s\"\n",
++		    smb_context->workgroup ? smb_context->workgroup : "(null)"));
+ 
++	if (!smbc_init_context (smb_context)) {
++		smbc_free_context (smb_context, FALSE);
++		smb_context = NULL;
++		DEBUG_SMB (("smbc_init_context() failed!\n"));
++		goto out;
++	}
++
++	DEBUG_SMB (("called smbc_init_context(); we have smbcctx->workgroup=\"%s\"\n",
++		    smb_context->workgroup ? smb_context->workgroup : "(null)"));
++	
+ #if defined(HAVE_SAMBA_FLAGS) 
+ #if defined(SMB_CTX_FLAG_USE_KERBEROS) && defined(SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS)
+-		smb_context->flags |= SMB_CTX_FLAG_USE_KERBEROS | SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS;
++	smb_context->flags |= SMB_CTX_FLAG_USE_KERBEROS | SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS;
+ #endif
+-#if defined(SMBCCTX_FLAG_NO_AUTO_ANONYMOUS_LOGON)
+-		smb_context->flags |= SMBCCTX_FLAG_NO_AUTO_ANONYMOUS_LOGON;
++#  if 0
++#    if defined(SMBCCTX_FLAG_NO_AUTO_ANONYMOUS_LOGON)
++   	smb_context->flags |= SMBCCTX_FLAG_NO_AUTO_ANONYMOUS_LOGON;
++#    endif
++#  endif
+ #endif
+-#endif		
+-	}
+ 
+ 	server_cache = g_hash_table_new_full (server_hash, server_equal,
+ 					      (GDestroyNotify)server_free, NULL);
+@@ -721,7 +893,10 @@ try_init (void)
+ 					    g_free, NULL);
+ 	user_cache = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                             g_free, (GDestroyNotify)user_free);
+-	
++	printer_hash = g_hash_table_new_full (gnome_vfs_uri_hash, gnome_vfs_uri_hequal,
++					      (GDestroyNotify) gnome_vfs_uri_unref, NULL);
++
++ out:
+ 	UNLOCK_SMB();
+ 
+ 	if (smb_context == NULL) {
+@@ -762,7 +937,9 @@ update_user_cache (SmbAuthContext *actx,
+ {
+         SmbCachedUser *user;
+         gchar *key;
+-        
++
++	DEBUG_IN ();
++
+         g_return_if_fail (actx->for_server != NULL);
+         
+         key = g_strdup_printf ("%s/%s", actx->for_server, with_share ? actx->for_share : "");
+@@ -785,6 +962,8 @@ update_user_cache (SmbAuthContext *actx,
+         user->username = string_realloc (user->username, actx->use_user);
+         user->password = string_realloc (user->password, actx->use_password);
+         user->stamp = time (NULL);
++
++	DEBUG_OUT ();
+ }
+ 
+ static gboolean
+@@ -792,9 +971,13 @@ lookup_user_cache (SmbAuthContext *actx,
+ {
+         SmbCachedUser *user;
+         gchar *key;
+-       
++	gboolean retval;
++
+         g_return_val_if_fail (actx->for_server != NULL, FALSE);
+        
++	DEBUG_IN ();
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++       
+         key = g_strdup_printf ("%s/%s", actx->for_server, with_share ? actx->for_share : "");
+         user = (SmbCachedUser*)g_hash_table_lookup (user_cache, key);
+         g_free (key);
+@@ -802,12 +985,17 @@ lookup_user_cache (SmbAuthContext *actx,
+         if (user) {
+                 /* If we already have a user name or domain double check that... */
+ 		if (!(actx->prompt_flags & GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_USERNAME) &&
+-		    !string_compare(user->username, actx->use_user))
+-			return FALSE;
++		    !string_compare(user->username, actx->use_user)) {
++			retval = FALSE;
++			goto out;
++		}
++		
+ 		if (!(actx->prompt_flags & GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_DOMAIN) &&
+-		    !string_compare(user->domain, actx->use_domain))
+-			return FALSE;
+-
++		    !string_compare(user->domain, actx->use_domain)) {
++			retval = FALSE;
++			goto out;
++		}
++		
+                 actx->use_user = string_realloc (actx->use_user, user->username);
+                 actx->use_domain = string_realloc (actx->use_domain, user->domain);
+                 actx->use_password = string_realloc (actx->use_password, user->password);
+@@ -815,12 +1003,40 @@ lookup_user_cache (SmbAuthContext *actx,
+ 			   actx->use_user ? actx->use_user : "",
+ 			   actx->use_domain ? actx->use_domain : "",
+ 			   actx->use_password ? actx->use_password : ""));
+-                return TRUE;
++		retval = TRUE;
++		goto out;
+         }
+-        
+-        return FALSE;
++
++	retval = FALSE;
++
++out:
++ 
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++ 	DEBUG_OUT ();
++ 	return retval;
+ }      
+ 
++static void
++update_kerberos_settings_for_auth (SmbAuthContext *actx)
++{
++	if (!actx)
++		return;
++
++#if defined(HAVE_SAMBA_FLAGS) 
++# if defined(SMB_CTX_FLAG_USE_KERBEROS) && defined(SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS)
++
++	/* Don't use local user's kerberos tickets if we are authenticating a non-local user. */
++
++	if (string_compare (actx->use_user, get_unix_username ()))
++		smb_context->flags |= SMB_CTX_FLAG_USE_KERBEROS | SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS;
++	else
++		smb_context->flags &= ~(SMB_CTX_FLAG_USE_KERBEROS | SMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS);
++
++# endif
++#endif
++}
++
++
+ static gboolean
+ initial_authentication (SmbAuthContext *actx)
+ {
+@@ -832,8 +1048,12 @@ initial_authentication (SmbAuthContext *
+         gboolean found_user = FALSE;
+ 	char *tmp;
+ 
++	DEBUG_IN ();
++	
+ 	DEBUG_SMB(("[auth] Initial authentication lookups\n"));
+ 
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++
+ 	toplevel_uri =	(GnomeVFSToplevelURI*)actx->uri;
+ 	actx->prompt_flags = GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_USERNAME |
+ 		    	     GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_DOMAIN;
+@@ -870,6 +1090,14 @@ initial_authentication (SmbAuthContext *
+ 		}
+ 	} 
+ 
++ 	if (actx->use_user == NULL) {
++ 		actx->use_user = g_strdup (get_unix_username ());
++#if 0
++ 		actx->preset_user = TRUE;
++#endif
++ 		actx->prompt_flags &= ~GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION_NEED_USERNAME;
++ 	}
++
+         if (lookup_user_cache (actx, TRUE) ||
+             lookup_user_cache (actx, FALSE))
+                 found_user = TRUE;
+@@ -882,6 +1110,7 @@ initial_authentication (SmbAuthContext *
+         	server_lookup.domain = (char*)actx->use_domain;
+         		
+         	server = g_hash_table_lookup (server_cache, &server_lookup);
++#if 0
+         	if (server == NULL) {
+                  
+                         /* If a blank user, try looking up 'guest' */
+@@ -891,6 +1120,7 @@ initial_authentication (SmbAuthContext *
+                                 server = g_hash_table_lookup (server_cache, &server_lookup);
+                         }
+                 }
++#endif
+                 
+                 /* Server is in cache already */
+                 if (server != NULL) {
+@@ -898,9 +1128,16 @@ initial_authentication (SmbAuthContext *
+ 				   actx->use_user ? actx->use_user : "", 
+ 				   actx->use_domain ? actx->use_domain : ""));
+                         found_user = TRUE;
+-        	}
++        	} else {
++ 			/* We have a connection to the server, but not as the user specified. */
++ 			found_user = FALSE;
++ 		}
+         }
+ 
++ 	update_kerberos_settings_for_auth (actx);
++ 
++ 	DEBUG_OUT ();
++
+ 	return found_user;
+ }
+ 
+@@ -917,6 +1154,9 @@ prefill_authentication (SmbAuthContext *
+ 	g_return_val_if_fail (actx != NULL, FALSE);
+ 	g_return_val_if_fail (actx->for_server != NULL, FALSE);	
+ 
++ 	DEBUG_IN ();
++ 	DEBUG_DUMP_AUTH_CONTEXT (actx);
++
+ 	memset (&in_args, 0, sizeof (in_args));
+ 	in_args.uri = get_auth_display_uri (actx, FALSE);
+ 	in_args.protocol = "smb";
+@@ -936,6 +1176,8 @@ prefill_authentication (SmbAuthContext *
+ 		              &in_args, sizeof (in_args),
+ 		              &out_args, sizeof (out_args));
+ 
++ 	DEBUG_SMB(("[auth] vfs module callback for FILL_AUTHENTICATION returned invoked=%d\n", invoked));
++
+         g_free (in_args.uri);
+                
+         /* If that didn't work then try without the share name */
+@@ -988,6 +1230,9 @@ prefill_authentication (SmbAuthContext *
+ 	g_free (out_args.domain);
+ 	g_free (out_args.password);
+ 
++ 	DEBUG_DUMP_AUTH_CONTEXT (actx);
++ 	DEBUG_OUT ();
++ 
+ 	return filled;
+ }
+ 
+@@ -1003,6 +1248,9 @@ prompt_authentication (SmbAuthContext *a
+ 	
+ 	g_return_val_if_fail (actx != NULL, FALSE);
+ 	g_return_val_if_fail (actx->for_server != NULL, FALSE);
++
++	DEBUG_IN ();
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
+ 	
+ 	memset (&in_args, 0, sizeof (in_args));
+ 	
+@@ -1020,17 +1268,32 @@ prompt_authentication (SmbAuthContext *a
+ 	in_args.port = actx->uri ? ((GnomeVFSToplevelURI*)actx->uri)->host_port : 0;
+ 
+ 	in_args.default_user = actx->use_user;
++#if 0
+ 	if (string_compare (in_args.default_user, GUEST_LOGIN))
+ 		in_args.default_user = NULL;
+-	if (!in_args.default_user)
+-		in_args.default_user = (char*)g_get_user_name ();
++#endif
++	if (!in_args.default_user) {
++		/* If we are logged into an Active Directory domain,
++		 * smb_context->workgroup will already have given us the name of the
++		 * domain.  However, g_get_user_name() will give us
++		 * "DOMAINNAME\username".  We need to remove the "DOMAINNAME\" prefix.
++		 */
++
++		in_args.default_user = (gchar *) get_unix_username ();
++	}
+ 	
+ 	in_args.default_domain = actx->use_domain ? actx->use_domain : smb_context->workgroup;
+ 	
+ 	memset (&out_args, 0, sizeof (out_args));
+ 
+-	DEBUG_SMB(("[auth] Prompting credentials for: %s\n", 
+-		   in_args.uri ? in_args.uri : ""));
++	DEBUG_SMB (("[auth] Prompting credentials for: uri=%s, server=%s, object=%s, username=%s, domain=%s, default_user=%s, default_domain=%s\n",
++		    in_args.uri,
++		    in_args.server,
++		    in_args.object,
++		    in_args.username,
++		    in_args.domain,
++		    in_args.default_user,
++		    in_args.default_domain));
+ 
+ 	invoked = gnome_vfs_module_callback_invoke
+ 		(GNOME_VFS_MODULE_CALLBACK_FULL_AUTHENTICATION,
+@@ -1051,10 +1314,11 @@ prompt_authentication (SmbAuthContext *a
+ 		g_free (actx->keyring);
+ 		actx->save_auth = out_args.save_password;
+ 		actx->keyring = actx->save_auth && out_args.keyring ? g_strdup (out_args.keyring) : NULL;
+-		DEBUG_SMB(("[auth] Prompted credentials: %s@%s:%s\n", 
++		DEBUG_SMB(("[auth] Prompted credentials: %s@%s:%s keyring=%s\n", 
+ 			    actx->use_user ? actx->use_user : "", 
+ 			    actx->use_domain ? actx->use_domain : "",
+-			    actx->use_password ? actx->use_password : ""));
++			    actx->use_password ? actx->use_password : "",
++			    actx->keyring ? actx->keyring : ""));
+ 	} 
+ 
+ 	*cancelled = out_args.abort_auth;
+@@ -1068,6 +1332,9 @@ prompt_authentication (SmbAuthContext *a
+ 
+ 	g_free (in_args.uri);
+ 
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++	DEBUG_OUT ();
++
+ 	return invoked && !*cancelled;
+ }
+ 
+@@ -1078,14 +1345,19 @@ save_authentication (SmbAuthContext *act
+ 	GnomeVFSModuleCallbackSaveAuthenticationOut out_args;
+ 	gboolean invoked;
+ 
++	DEBUG_IN ();
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++
+         /* Add to the user cache both with and without shares */
+         if (actx->for_server) {
+                 update_user_cache (actx, TRUE);
+                 update_user_cache (actx, FALSE);
+         }
+ 
+-        if (!actx->save_auth)
++        if (!actx->save_auth) {
++		DEBUG_OUT ();
+                 return;
++	}
+       
+         /* Save with the domain name */
+ 	memset (&in_args, 0, sizeof (in_args));
+@@ -1114,6 +1386,8 @@ save_authentication (SmbAuthContext *act
+ 		                &in_args, sizeof (in_args),
+ 		                &out_args, sizeof (out_args));
+         
++ 	DEBUG_SMB(("[auth] vfs module callback for SAVE_AUTHENTICATION returned invoked=%d\n", invoked));
++
+         g_free (in_args.uri);
+               
+         /* Save without the domain name */
+@@ -1142,15 +1416,19 @@ save_authentication (SmbAuthContext *act
+                                 (GNOME_VFS_MODULE_CALLBACK_SAVE_AUTHENTICATION,
+                                 &in_args, sizeof (in_args),
+                                 &out_args, sizeof (out_args));
++
++ 	DEBUG_SMB(("[auth] vfs module callback for SAVE_AUTHENTICATION returned invoked=%d\n", invoked));
+         
+ 	g_free (in_args.uri);
++
++	DEBUG_OUT ();
+ }
+ 	
+ static void
+ cleanup_authentication (SmbAuthContext *actx)
+ {
+ 	/* IMPORTANT: We are IN the lock at this point */
+-	
++	DEBUG_IN ();
+ 	DEBUG_SMB(("[auth] Cleaning up Authentication\n"));
+ 	g_return_if_fail (actx != NULL);
+ 	
+@@ -1174,6 +1452,9 @@ cleanup_authentication (SmbAuthContext *
+ 	
+ 	g_return_if_fail (current_auth_context == actx);
+ 	current_auth_context = NULL;
++
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
++	DEBUG_OUT ();
+ }
+ 
+ /* 
+@@ -1218,9 +1499,12 @@ perform_authentication (SmbAuthContext *
+ {
+ 	gboolean cont, auth_failed = FALSE, auth_cancelled = FALSE;
+ 	int ret = -1;
++
++	DEBUG_IN ();
+ 	
+ 	/* IMPORTANT: We are IN the lock at this point */
+ 	DEBUG_SMB(("[auth] perform_authentication called.\n"));
++	DEBUG_DUMP_AUTH_CONTEXT (actx);
+ 	
+ 	switch (actx->res) {
+ 	case GNOME_VFS_OK:
+@@ -1236,8 +1520,9 @@ perform_authentication (SmbAuthContext *
+ 	
+ 	/* Other errors mean we're done */
+ 	default:
+-		DEBUG_SMB(("[auth] Non-authentication error. Leaving auth loop.\n"));
++		DEBUG_SMB(("[auth] Non-authentication VFS error %d. Leaving auth loop.\n", (int) actx->res));
+ 		cleanup_authentication (actx);
++		DEBUG_OUT ();
+ 		return -1;
+ 	}
+ 	
+@@ -1278,7 +1563,7 @@ perform_authentication (SmbAuthContext *
+ 
+ 		/* A failed authentication */
+ 		} else if (actx->auth_called) {
+-			
++
+ 			/* We need a server to perform any authentication */
+ 			g_return_val_if_fail (actx->for_server != NULL, GNOME_VFS_ERROR_INTERNAL);
+ 			
+@@ -1290,10 +1575,14 @@ perform_authentication (SmbAuthContext *
+ 			
+ 				/* Do we have gnome-keyring credentials for this? */
+ 				if (!(actx->state & SMB_AUTH_STATE_PREFILLED)) {
++					DEBUG_SMB (("[auth] failed authentication; will prefill from the vfs callback\n"));
+ 					actx->state |= SMB_AUTH_STATE_PREFILLED;
+ 					cont = prefill_authentication (actx);
+-				}
++				} else {
++ 					DEBUG_SMB (("[auth] failed authentication; will prompt the user for authentication\n"));
++  				}
+ 
++#if 0
+ 				/* Then we try a guest credentials... */
+ 				if (!cont && !actx->preset_user && !(actx->state & SMB_AUTH_STATE_GUEST)) {
+ 					g_free (actx->use_user);
+@@ -1305,6 +1594,7 @@ perform_authentication (SmbAuthContext *
+ 					actx->state |= SMB_AUTH_STATE_GUEST;
+ 					cont = TRUE;
+ 				}
++#endif
+ 
+ 				/* And as a last step, prompt */
+ 				if (!cont)
+@@ -1315,10 +1605,13 @@ perform_authentication (SmbAuthContext *
+ 			/* Claim the global context back */
+ 			g_return_val_if_fail (current_auth_context == NULL, GNOME_VFS_ERROR_INTERNAL);
+ 			current_auth_context = actx;
+-			
+-			if (cont)
++
++			update_kerberos_settings_for_auth (actx);
++
++			if (cont) {
++				DEBUG_SMB(("[auth] prefill or prompt returned 1\n"));
+ 				ret = 1;
+-			else {
++			} else {
+ 				ret = -1;
+ 
+ 				if (auth_cancelled) {
+@@ -1333,12 +1626,15 @@ perform_authentication (SmbAuthContext *
+ 					
+ 		/* Weird, don't want authentication, but failed */
+ 		} else {
++			DEBUG_SMB(("[auth] don't want authentication, but failed\n"));
+ 			ret = -1;
+ 		}
+ 	}
+ 
+ 	if (ret <= 0)
+ 		cleanup_authentication (actx);
++
++	DEBUG_OUT ();
+ 	return ret;
+ 
+ 	/* IMPORTANT: We need to still be in the lock when returning from this func */
+@@ -1353,18 +1649,23 @@ auth_callback (const char *server_name,
+ 	/* IMPORTANT: We are IN the global lock */
+ 	SmbAuthContext *actx;
+ 	SMBCSRV *server;
+-	
+-	DEBUG_SMB (("[auth] auth_callback called: server: %s share: %s\n",
+-		    server_name ? server_name : "", 
+-		    share_name ? share_name : ""));
++
++	DEBUG_IN ();
++
++ 	DEBUG_SMB (("[auth] auth_callback called: server=%s, share=%s, domain_out=%s, username_out=%s, password_out=%s\n",
++ 		    server_name, share_name, domain_out, username_out, password_out));
+ 
+ 	g_return_if_fail (current_auth_context != NULL);
+ 	actx = current_auth_context;
++
++ 	DEBUG_DUMP_AUTH_CONTEXT (actx);
+ 	
+ 	/* We never authenticate for the toplevel (enumerating workgroups) */
+-	if (!server_name || !server_name[0])
++	if (!server_name || !server_name[0]) {
++		DEBUG_OUT ();
+ 		return;
+-
++	}
++	
+ 	actx->auth_called = TRUE;	
+ 		
+ 	/* The authentication location */
+@@ -1374,9 +1675,13 @@ auth_callback (const char *server_name,
+ 	actx->for_share = string_dup_nzero (share_name);
+ 
+ 	/* The first pass, try the cache, fill in anything we know */
+-	if (actx->passes == 1)
++	if (actx->passes == 1) {
++		DEBUG_SMB(("[auth] first pass; call initial_authentication()\n"));
+ 		initial_authentication (actx);
++	}
+ 	
++	update_kerberos_settings_for_auth (actx);
++
+ 	/* If we have a valid user then go for it */
+ 	if (actx->use_user) {
+ 		strncpy (username_out, actx->use_user, unmaxlen);
+@@ -1411,15 +1716,30 @@ auth_callback (const char *server_name,
+ 	 * this doesn't make much sense, but such is life with libsmbclient.
+ 	 */
+ 	if ((actx->state & SMB_AUTH_STATE_PROMPTED) && actx->res != GNOME_VFS_OK) {
++		DEBUG_SMB(("[auth] we had prompted already but auth failed.  Calling find_cached_server() again\n"));
+ 		server = find_cached_server (server_name, share_name, domain_out, username_out);
+ 		if (server) {
+ 			DEBUG_SMB (("[auth] auth_callback. Remove the wrong server entry from server_cache.\n"));
+ 			g_hash_table_foreach_remove (server_cache, remove_server, server);
+ 		}
+ 	}
++
++	DEBUG_OUT ();
+ }
+ 
+ static char *
++get_printer_data (const char *display_name, const char *path)
++{
++	return g_strdup_printf ("[Desktop Entry]\n"
++			"Encoding=UTF-8\n"
++			"Name=%s\n"
++			"Type=Application\n"
++			"Exec=gnome-cups-add --printer=%s\n"
++			"Icon=printer-remote\n", /* per the freedesktop.org icon naming spec */
++			display_name, path);
++}
++                                                                                
++static char *
+ get_workgroup_data (const char *display_name, const char *name)
+ {
+ 	return g_strdup_printf ("[Desktop Entry]\n"
+@@ -1466,6 +1786,21 @@ typedef struct {
+ 	GnomeVFSFileOffset file_size;
+ } FileHandle;
+ 
++/* Takes ownership of desktop_file_contents */
++static FileHandle *
++file_handle_new_from_desktop_file_contents (char *desktop_file_contents)
++{
++	FileHandle *handle;
++
++	handle = g_new (FileHandle, 1);
++	handle->is_data = TRUE;
++	handle->offset = 0;
++	handle->file_data = desktop_file_contents;
++	handle->file_size = strlen (handle->file_data);
++
++	return handle;
++}
++
+ static GnomeVFSResult
+ do_open (GnomeVFSMethod *method,
+ 	 GnomeVFSMethodHandle **method_handle,
+@@ -1479,59 +1814,84 @@ do_open (GnomeVFSMethod *method,
+ 	int type;
+ 	mode_t unix_mode;
+ 	SMBCFILE *file = NULL;
+-	
++	GnomeVFSResult result;
++
++	DEBUG_IN ();
+ 	DEBUG_SMB(("do_open() %s mode %d\n",
+ 				gnome_vfs_uri_to_string (uri, 0), mode));
+ 
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
++
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
++
++	if (is_printer (uri)) {
++		if (mode & GNOME_VFS_OPEN_WRITE) {
++			result = GNOME_VFS_ERROR_READ_ONLY;
++			goto out;
++		}
++
++		unescaped_name = get_base_from_uri (uri);
++		name = gnome_vfs_uri_extract_short_path_name (uri);
++
++		handle = file_handle_new_from_desktop_file_contents (get_printer_data (unescaped_name, path));
++		*method_handle = (GnomeVFSMethodHandle *)handle;
++
++		g_free (unescaped_name);
++		g_free (name);
++
++		result = GNOME_VFS_OK;
++		goto out;
++	}
+ 	
+ 	if (type == SMB_URI_WHOLE_NETWORK ||
+ 	    type == SMB_URI_WORKGROUP ||
+ 	    type == SMB_URI_SERVER ||
+ 	    type == SMB_URI_SHARE) {
+-		return GNOME_VFS_ERROR_IS_DIRECTORY;
++		result = GNOME_VFS_ERROR_IS_DIRECTORY;
++		goto out;
+ 	}
+ 
+ 	if (type == SMB_URI_WORKGROUP_LINK) {
+ 		if (mode & GNOME_VFS_OPEN_WRITE) {
+-			return GNOME_VFS_ERROR_READ_ONLY;
++			result = GNOME_VFS_ERROR_READ_ONLY;
++			goto out;
+ 		}
+-		handle = g_new (FileHandle, 1);
+-		handle->is_data = TRUE;
+-		handle->offset = 0;
++
+ 		unescaped_name = get_base_from_uri (uri);
+ 		name = gnome_vfs_uri_extract_short_path_name (uri);
+-		handle->file_data = get_workgroup_data (unescaped_name, name);
+-		handle->file_size = strlen (handle->file_data);
++
++		handle = file_handle_new_from_desktop_file_contents (get_workgroup_data (unescaped_name, name));
++		*method_handle = (GnomeVFSMethodHandle *)handle;
++
+ 		g_free (unescaped_name);
+ 		g_free (name);
+ 		
+-		*method_handle = (GnomeVFSMethodHandle *)handle;
+-		
+-		return GNOME_VFS_OK;
++		result = GNOME_VFS_OK;
++		goto out;
+ 	}
+ 
+ 	if (type == SMB_URI_SERVER_LINK) {
+ 		if (mode & GNOME_VFS_OPEN_WRITE) {
+-			return GNOME_VFS_ERROR_READ_ONLY;
++			result = GNOME_VFS_ERROR_READ_ONLY;
++			goto out;
+ 		}
+-		handle = g_new (FileHandle, 1);
+-		handle->is_data = TRUE;
+-		handle->offset = 0;
++
+ 		unescaped_name = get_base_from_uri (uri);
+ 		name = gnome_vfs_uri_extract_short_path_name (uri);
+-		handle->file_data = get_computer_data (unescaped_name, name);
+-		handle->file_size = strlen (handle->file_data);
++
++		handle = file_handle_new_from_desktop_file_contents (get_computer_data (unescaped_name, name));
++		*method_handle = (GnomeVFSMethodHandle *)handle;
++
+ 		g_free (unescaped_name);
+ 		g_free (name);
+ 		
+-		*method_handle = (GnomeVFSMethodHandle *)handle;
+-		
+-		return GNOME_VFS_OK;
++		result = GNOME_VFS_OK;
++		goto out;
+ 	}
+ 
+ 	g_assert (type == SMB_URI_SHARE_FILE);
+@@ -1544,31 +1904,48 @@ do_open (GnomeVFSMethod *method,
+ 	} else {
+ 		if (mode & GNOME_VFS_OPEN_WRITE)
+ 			unix_mode = O_WRONLY;
+-		else
+-			return GNOME_VFS_ERROR_INVALID_OPEN_MODE;
++ 		else {
++ 			result = GNOME_VFS_ERROR_INVALID_OPEN_MODE;
++ 			goto out;
++ 		}
+ 	}
+ 
+ 	if ((mode & GNOME_VFS_OPEN_TRUNCATE) ||
+ 	    (!(mode & GNOME_VFS_OPEN_RANDOM) && (mode & GNOME_VFS_OPEN_WRITE)))
+ 		unix_mode |= O_TRUNC;
+ 	
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
+-	
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+ 
++ 	if (mode & GNOME_VFS_OPEN_LOCKED) {
++ 		smbc_option_set (smb_context, "open_share_mode",
++ 				 SMBC_SHAREMODE_DENY_WRITE);
++ 	}
++
+ 	/* Important: perform_authentication leaves and re-enters the lock! */
+ 	while (perform_authentication (&actx) > 0) {
+ 		file = (smb_context->open) (smb_context, path, unix_mode, 0666);
+ 		actx.res = (file != NULL) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->open(\"%s\") returned file %p and error %d\n", path, file, (int) actx.res));
+ 	}
+ 
++ 	if (mode & GNOME_VFS_OPEN_LOCKED) {
++ 		smbc_option_set (smb_context, "open_share_mode",
++ 				 SMBC_SHAREMODE_DENY_NONE);
++ 	}
+ 	UNLOCK_SMB();
+ 
+-	g_free (path);
+-	
+-	if (file == NULL)
+-		return actx.res;
++	if (file == NULL) {
++		/* samba returns EBUSY if we failed because of a DENY
++		 * mode. gnome_vfs_result_from_errno() translates that
++		 * to the wrong value.
++		 */
++		if (actx.res == GNOME_VFS_ERROR_DIRECTORY_BUSY)
++			result = GNOME_VFS_ERROR_LOCKED;
++		else
++			result = actx.res;
++		goto out;
++	}
+ 	
+ 	handle = g_new (FileHandle, 1);
+ 	handle->is_data = FALSE;
+@@ -1576,7 +1953,14 @@ do_open (GnomeVFSMethod *method,
+ 
+ 	*method_handle = (GnomeVFSMethodHandle *)handle;
+ 
+-	return GNOME_VFS_OK;
++	result = GNOME_VFS_OK;
++
++ out:
++
++	g_free (path);
++
++	DEBUG_OUT ();
++	return result;
+ }
+ 
+ static GnomeVFSResult
+@@ -1590,6 +1974,7 @@ do_close (GnomeVFSMethod *method,
+ 	GnomeVFSResult res;
+ 	int r;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("do_close()\n"));
+ 
+ 	res = GNOME_VFS_OK;
+@@ -1608,6 +1993,7 @@ do_close (GnomeVFSMethod *method,
+ 			r = smb_context->close_fn (smb_context, handle->file);
+ #endif
+ 			actx.res = (r >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++			DEBUG_SMB(("ctx->close(%p) returned error %d\n", handle->file, (int) actx.res));
+ 		}
+ 
+ 		res = actx.res;		
+@@ -1615,6 +2001,7 @@ do_close (GnomeVFSMethod *method,
+ 	}
+ 
+ 	g_free (handle);
++	DEBUG_OUT ();
+ 	return res;
+ }
+ 
+@@ -1631,6 +2018,7 @@ do_read (GnomeVFSMethod *method,
+ 	SmbAuthContext actx;
+ 	ssize_t n = 0;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("do_read() %Lu bytes\n", num_bytes));
+ 
+ 	if (handle->is_data) {
+@@ -1656,11 +2044,14 @@ do_read (GnomeVFSMethod *method,
+ 
+ 	*bytes_read = (n < 0) ? 0 : n;
+ 
+-	if (n == 0) 
++	if (n == 0) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_EOF;
++	}
+ 
+ 	handle->offset += n;
+ 
++	DEBUG_OUT ();
+ 	return res;
+ }
+ 
+@@ -1678,10 +2069,13 @@ do_write (GnomeVFSMethod *method,
+ 	SmbAuthContext actx;
+ 	ssize_t written = 0;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_write() %p\n", method_handle));
+ 
+-	if (handle->is_data)
++	if (handle->is_data) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_READ_ONLY;
++	}
+ 
+ 	LOCK_SMB();
+ 	init_authentication (&actx, NULL);
+@@ -1695,6 +2089,7 @@ do_write (GnomeVFSMethod *method,
+ 	UNLOCK_SMB();
+ 
+ 	*bytes_written = (written < 0) ? 0 : written;
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -1713,30 +2108,39 @@ do_create (GnomeVFSMethod *method,
+ 	SMBCFILE *file = NULL;
+ 	FileHandle *handle;
+ 	SmbAuthContext actx;
+-	
++
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_create() %s mode %d\n",
+ 				gnome_vfs_uri_to_string (uri, 0), mode));
+ 
+ 	
+ 	type = smb_uri_type (uri);
+ 
+-	if (type == SMB_URI_ERROR)
++	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
++	}
+ 
+ 	if (type == SMB_URI_WHOLE_NETWORK ||
+ 	    type == SMB_URI_WORKGROUP ||
+ 	    type == SMB_URI_SERVER ||
+-	    type == SMB_URI_SHARE)
++	    type == SMB_URI_SHARE) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_IS_DIRECTORY;
++	}
+ 
+ 	if (type == SMB_URI_WORKGROUP_LINK ||
+-	    type == SMB_URI_SERVER_LINK) 
++	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
++	}
+ 	
+ 	unix_mode = O_CREAT | O_TRUNC;
+ 	
+-	if (!(mode & GNOME_VFS_OPEN_WRITE))
++	if (!(mode & GNOME_VFS_OPEN_WRITE)) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_OPEN_MODE;
++	}
+ 
+ 	if (mode & GNOME_VFS_OPEN_READ)
+ 		unix_mode |= O_RDWR;
+@@ -1746,7 +2150,7 @@ do_create (GnomeVFSMethod *method,
+ 	if (exclusive)
+ 		unix_mode |= O_EXCL;
+ 
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+@@ -1755,24 +2159,44 @@ do_create (GnomeVFSMethod *method,
+ 	while (perform_authentication (&actx) > 0) {
+ 		file = (smb_context->open) (smb_context, path, unix_mode, perm);
+ 		actx.res = (file != NULL) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->open(\"%s\") returned file %p and error %d\n", path, file, (int) actx.res));
+ 	}
+ 
+ 	UNLOCK_SMB();
+ 
+ 	g_free (path);
+ 
+-	if (file == NULL)
++	if (file == NULL) {
++		DEBUG_OUT ();
+ 		return actx.res;
++	}
+ 	
+ 	handle = g_new (FileHandle, 1);
+ 	handle->is_data = FALSE;
+ 	handle->file = file;
+ 
+ 	*method_handle = (GnomeVFSMethodHandle *)handle;
+-	
++
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
++static void
++set_file_info_to_readonly_desktop_file (GnomeVFSFileInfo *file_info, GnomeVFSURI *uri)
++{
++	file_info->name = get_base_from_uri (uri);
++	file_info->valid_fields = file_info->valid_fields
++		| GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE
++		| GNOME_VFS_FILE_INFO_FIELDS_TYPE
++		| GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS;
++	file_info->type = GNOME_VFS_FILE_TYPE_REGULAR;
++	file_info->mime_type = g_strdup ("application/x-desktop");
++	file_info->permissions =
++		GNOME_VFS_PERM_USER_READ |
++		GNOME_VFS_PERM_OTHER_READ |
++		GNOME_VFS_PERM_GROUP_READ;
++}
++
+ static GnomeVFSResult
+ do_get_file_info (GnomeVFSMethod *method,
+ 		  GnomeVFSURI *uri,
+@@ -1787,19 +2211,34 @@ do_get_file_info (GnomeVFSMethod *method
+ 	const char *mime_type;
+ 	SmbAuthContext actx;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_get_file_info() %s\n",
+ 				gnome_vfs_uri_to_string (uri, 0)));
+ 
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
++
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
++
++	if (is_printer (uri)) {
++		DEBUG_SMB (("is a printer we already saw; will fill in info\n"));
++
++		set_file_info_to_readonly_desktop_file (file_info, uri);
++		g_free (path);
++
++		DEBUG_OUT ();
++		return GNOME_VFS_OK;
++	}
+ 	
+ 	if (type == SMB_URI_WHOLE_NETWORK ||
+ 	    type == SMB_URI_WORKGROUP ||
+ 	    type == SMB_URI_SERVER ||
+ 	    type == SMB_URI_SHARE) {
++		DEBUG_SMB (("is whole network, workgroup, server, or share\n"));
+ 		file_info->name = get_base_from_uri (uri);
+ 		file_info->valid_fields = GNOME_VFS_FILE_INFO_FIELDS_TYPE |
+ 			GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
+@@ -1820,29 +2259,22 @@ do_get_file_info (GnomeVFSMethod *method
+  				GNOME_VFS_PERM_OTHER_READ |
+  				GNOME_VFS_PERM_GROUP_READ;
+ 		}
++		DEBUG_OUT();
+ 		return GNOME_VFS_OK;
+ 	}
+ 
+ 	if (type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
+-		file_info->name = get_base_from_uri (uri);
+-		file_info->valid_fields = file_info->valid_fields
+-			| GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE
+-			| GNOME_VFS_FILE_INFO_FIELDS_TYPE
+-			| GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS;
+-		file_info->type = GNOME_VFS_FILE_TYPE_REGULAR;
+-		file_info->mime_type = g_strdup ("application/x-desktop");
+-		file_info->permissions =
+-			GNOME_VFS_PERM_USER_READ |
+-			GNOME_VFS_PERM_OTHER_READ |
+-			GNOME_VFS_PERM_GROUP_READ;
++		DEBUG_SMB (("is workgroup link, or server link\n"));
++		set_file_info_to_readonly_desktop_file (file_info, uri);
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
+ 	}
+ 
+ 	g_assert (type == SMB_URI_SHARE_FILE);
+-	    
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
+ 
++	DEBUG_SMB (("is share file\n"));
++	    
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+ 
+@@ -1850,14 +2282,17 @@ do_get_file_info (GnomeVFSMethod *method
+ 	while (perform_authentication (&actx) > 0) {
+ 		err = smb_context->stat (smb_context, path, &st);
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->stat(\"%s\") returned error %d\n", path, (int) actx.res));
+ 	}
+ 
+ 	UNLOCK_SMB();
+ 
+ 	g_free (path);
+ 
+-	if (err < 0)
++	if (err < 0) {
++		DEBUG_OUT ();
+ 		return actx.res;
++	}
+ 	
+ 	gnome_vfs_stat_to_file_info (file_info, &st);
+ 	file_info->name = get_base_from_uri (uri);
+@@ -1885,6 +2320,7 @@ do_get_file_info (GnomeVFSMethod *method
+ 				file_info->name, type,
+ 				file_info->mime_type, file_info->type));
+ 
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -1900,6 +2336,7 @@ do_get_file_info_from_handle (GnomeVFSMe
+ 	struct stat st;
+ 	int err = -1;
+ 
++	DEBUG_IN ();
+ 	LOCK_SMB();
+ 	init_authentication (&actx, NULL);
+ 	
+@@ -1907,17 +2344,22 @@ do_get_file_info_from_handle (GnomeVFSMe
+ 	while (perform_authentication (&actx) > 0) {
+ 		err = smb_context->fstat (smb_context, handle->file, &st);
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->fstat(%p) returned error %d\n", handle->file, (int) actx.res));
+ 	}
+ 	
+ 	UNLOCK_SMB();
+ 	
+-	if (err < 0) 
++	if (err < 0) {
++		DEBUG_OUT ();
+ 		return actx.res;
++	}
+ 	
+ 	gnome_vfs_stat_to_file_info (file_info, &st);
+ 
+ 	file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_IO_BLOCK_SIZE;
+ 	file_info->io_block_size = SMB_BLOCK_SIZE;
++
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -1925,7 +2367,16 @@ static gboolean
+ do_is_local (GnomeVFSMethod *method,
+ 	     const GnomeVFSURI *uri)
+ {
+-	return FALSE;
++	gboolean is_local;
++
++	/* FIXME: This is a hack.  In get_printer_data(), we generate data for a desktop item.  This item
++	 * is a "Type=Application" launcher, which launches gnome-cups-add.  However, since we can't execute
++	 * .desktop files from remote sites, we only advertise that printers "are local files".
++	 */
++
++	is_local = is_printer ((GnomeVFSURI *) uri);
++	
++	return is_local;
+ }
+ 
+ typedef struct {
+@@ -1963,6 +2414,7 @@ do_open_directory (GnomeVFSMethod *metho
+ 	SMBCFILE *dir = NULL;
+ 	SmbAuthContext actx;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("do_open_directory() %s\n",
+ 		gnome_vfs_uri_to_string (uri, 0)));
+ 
+@@ -1974,12 +2426,14 @@ do_open_directory (GnomeVFSMethod *metho
+ 		directory_handle = g_new0 (DirectoryHandle, 1);
+ 		g_hash_table_foreach (workgroups, add_workgroup, directory_handle);
+ 		*method_handle = (GnomeVFSMethodHandle *) directory_handle;
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
+ 	}
+ 
+ 	if (type == SMB_URI_ERROR ||
+ 	    type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_A_DIRECTORY;
+ 	}
+ 
+@@ -1988,15 +2442,26 @@ do_open_directory (GnomeVFSMethod *metho
+ 	host_name = gnome_vfs_uri_get_host_name (uri);
+ 	if (type == SMB_URI_WORKGROUP && host_name != NULL &&
+ 	    !g_ascii_strcasecmp(host_name, DEFAULT_WORKGROUP_NAME)) {
++		char *new_workgroup;
++
+ 		new_uri = gnome_vfs_uri_dup (uri);
+-		gnome_vfs_uri_set_host_name (new_uri,
+-					     smb_context->workgroup
+-					     ? smb_context->workgroup
+-					     : "WORKGROUP");
++		if (smb_context->workgroup)
++			new_workgroup = smb_context->workgroup;
++		else
++			new_workgroup = "WORKGROUP";
++
++		DEBUG_SMB (("we are being asked for %s; substituting it for workgroup \"%s\"%s\n",
++			    DEFAULT_WORKGROUP_NAME,
++			    new_workgroup,
++			    (smb_context->workgroup
++			     ? " because that is what was in the smbcctx->workgroup"
++			     : " because smbcctx->workgroup=NULL, so we use this as a last resort")));
++
++		gnome_vfs_uri_set_host_name (new_uri, new_workgroup);
+ 		uri = new_uri;
+ 	}
+ 		
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	DEBUG_SMB(("do_open_directory() path %s\n", path));
+ 
+@@ -2007,6 +2472,7 @@ do_open_directory (GnomeVFSMethod *metho
+ 	while (perform_authentication (&actx) > 0) {
+ 		dir = smb_context->opendir (smb_context, path);
+ 		actx.res = (dir != NULL) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->opendir(\"%s\") returned dir %p and error %d\n", path, dir, (int) actx.res));
+ 	}
+ 
+ 	UNLOCK_SMB();
+@@ -2016,6 +2482,7 @@ do_open_directory (GnomeVFSMethod *metho
+ 	
+ 	if (dir == NULL) {
+ 		g_free (path);
++		DEBUG_OUT ();
+ 		return actx.res;
+ 	}
+ 	
+@@ -2025,6 +2492,7 @@ do_open_directory (GnomeVFSMethod *metho
+ 	directory_handle->path = path;
+ 	*method_handle = (GnomeVFSMethodHandle *) directory_handle;
+ 
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -2039,10 +2507,13 @@ do_close_directory (GnomeVFSMethod *meth
+ 	GList *l;
+ 	int err = -1;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB(("do_close_directory: %p\n", directory_handle));
+ 
+-	if (directory_handle == NULL)
++	if (directory_handle == NULL) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
++	}
+ 
+ 	if (directory_handle->workgroups != NULL) {
+ 		for (l = directory_handle->workgroups; l != NULL; l = l->next) {
+@@ -2061,6 +2532,7 @@ do_close_directory (GnomeVFSMethod *meth
+ 		while (perform_authentication (&actx) > 0) {
+ 			err = smb_context->closedir (smb_context, directory_handle->dir);
+ 			actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++			DEBUG_SMB(("ctx->closedir(%p) returned error %d\n", directory_handle->dir, (int) actx.res));
+ 		}
+ 		
+ 		res = actx.res;
+@@ -2069,9 +2541,68 @@ do_close_directory (GnomeVFSMethod *meth
+ 	g_free (directory_handle->path);
+ 	g_free (directory_handle);
+ 
++	DEBUG_OUT ();
+ 	return res;
+ }
+ 
++static char *
++make_path_from_uri_and_name (const char *path, const char *name)
++{
++	char *escaped_name;
++	char *new_path;
++
++	escaped_name = gnome_vfs_escape_string (name);
++
++	if (path[strlen(path) - 1] == '/') {
++		new_path = g_strconcat (path, escaped_name, NULL);
++	} else {
++		new_path = g_strconcat (path, "/", escaped_name, NULL);
++	}
++
++	g_free (escaped_name);
++
++	return new_path;
++}
++
++static void
++add_printer_to_hash (DirectoryHandle *dh,
++		     GnomeVFSFileInfo *file_info)
++{
++	char *path;
++	GnomeVFSURI *uri;
++
++	/* See is_printer() below.  This will generate a URI without username/password */
++	path = make_path_from_uri_and_name (dh->path, file_info->name);
++
++	uri = gnome_vfs_uri_new (path);
++	g_assert (uri != NULL);
++	g_free (path);
++
++	g_hash_table_replace (printer_hash, uri, uri);
++}
++
++static gboolean
++is_printer (GnomeVFSURI *uri)
++{
++	char *tmp_str;
++	GnomeVFSURI *tmp_uri;
++	gboolean result;
++
++	/* See add_printer_to_hash() above.  It doesn't store username/password
++	 * in the URIs, so we have to hide them here.
++	 */
++	tmp_str = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	tmp_uri = gnome_vfs_uri_new (tmp_str);
++	g_assert (tmp_uri != NULL);
++	g_free (tmp_str);
++
++	result = (g_hash_table_lookup (printer_hash, tmp_uri) != NULL);
++
++	gnome_vfs_uri_unref (tmp_uri);
++
++	return result;
++}
++
+ static GnomeVFSResult
+ do_read_directory (GnomeVFSMethod *method,
+ 		   GnomeVFSMethodHandle *method_handle,
+@@ -2083,15 +2614,16 @@ do_read_directory (GnomeVFSMethod *metho
+ 	SmbAuthContext actx;
+ 	struct stat st;
+ 	char *statpath;
+-	char *path;
+ 	char *escaped;
+ 	int r = -1;
+ 	GList *l;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_read_directory()\n"));
+ 
+ 	if (dh->dir == NULL) {
+ 		if (dh->workgroups == NULL) {
++			DEBUG_OUT ();
+ 			return GNOME_VFS_ERROR_EOF;
+ 		} else {
+ 			/* workgroup link */
+@@ -2105,6 +2637,7 @@ do_read_directory (GnomeVFSMethod *metho
+ 				| GNOME_VFS_FILE_INFO_FIELDS_TYPE;
+ 			file_info->type = GNOME_VFS_FILE_TYPE_REGULAR;
+ 			file_info->mime_type = g_strdup ("application/x-desktop");
++			DEBUG_OUT ();
+ 			return GNOME_VFS_OK;
+ 		}
+ 	}
+@@ -2128,16 +2661,20 @@ do_read_directory (GnomeVFSMethod *metho
+ 			} else {
+ 				actx.res = GNOME_VFS_OK;
+ 			}
++			DEBUG_SMB(("ctx->readdir(%p) returned entry %p and error %d\n", dh->dir, entry, (int) actx.res));
+ 		}
+ 		
+ 		if (entry == NULL) {
+ 			UNLOCK_SMB();
++			DEBUG_OUT ();
+ 			return actx.res;
+ 		}
+ 		
+ 	} while (entry->smbc_type == SMBC_COMMS_SHARE ||
+ 		 entry->smbc_type == SMBC_IPC_SHARE ||
++#if 0
+ 		 entry->smbc_type == SMBC_PRINTER_SHARE ||
++#endif
+ 		 entry->name == NULL ||
+ 		 strlen (entry->name) == 0 ||
+ 		 (entry->smbc_type == SMBC_FILE_SHARE &&
+@@ -2167,31 +2704,23 @@ do_read_directory (GnomeVFSMethod *metho
+ 		file_info->mime_type = g_strdup ("application/x-desktop");
+ 		break;
+ 	case SMBC_PRINTER_SHARE:
++#if 0
+ 		/* Ignored above for now */
++#endif
+ 		file_info->valid_fields = file_info->valid_fields
+ 			| GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE
+ 			| GNOME_VFS_FILE_INFO_FIELDS_TYPE;
+ 		file_info->type = GNOME_VFS_FILE_TYPE_REGULAR;
+-		file_info->mime_type = g_strdup ("application/x-smb-printer");
++ 		file_info->mime_type = g_strdup ("application/x-desktop"); /* we'll generate the fake .desktop in do_open() */
++ 		add_printer_to_hash (dh, file_info);
++ 		debug_print ("GOT PRINTER: \"%s\"", file_info->name);
++ 		break;
+ 	case SMBC_COMMS_SHARE:
+ 	case SMBC_IPC_SHARE:
+ 		break;
+ 	case SMBC_DIR:
+ 	case SMBC_FILE:
+-		path = dh->path;
+-		escaped = gnome_vfs_escape_string (file_info->name);
+-
+-		if (path[strlen(path)-1] == '/') {
+-			statpath = g_strconcat (path, 
+-						escaped,
+-						NULL);
+-		} else {
+-			statpath = g_strconcat (path,
+-						"/",
+-						escaped,
+-						NULL);
+-		}
+-		g_free (escaped);
++		statpath = make_path_from_uri_and_name (dh->path, file_info->name);
+ 
+ 		/* TODO: might give an auth error, but should be rare due
+ 		   to the succeeding opendir. If this happens and we can't
+@@ -2206,6 +2735,7 @@ do_read_directory (GnomeVFSMethod *metho
+ 		while (perform_authentication (&actx) > 0) {
+ 			r = smb_context->stat (smb_context, statpath, &st);
+ 			actx.res = (r == 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++			DEBUG_SMB(("ctx->stat(\"%s\") returned error %d\n", statpath, (int) actx.res));
+ 		}
+ 		UNLOCK_SMB();
+ 		
+@@ -2240,6 +2770,7 @@ do_read_directory (GnomeVFSMethod *metho
+ 		g_assert_not_reached ();
+ 	}
+ 
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -2255,6 +2786,8 @@ do_seek (GnomeVFSMethod *method,
+ 	int meth_whence;
+ 	off_t ret = (off_t) -1;
+ 
++	DEBUG_IN ();
++
+ 	if (handle->is_data) {
+ 		switch (whence) {
+ 		case GNOME_VFS_SEEK_START:
+@@ -2271,8 +2804,11 @@ do_seek (GnomeVFSMethod *method,
+ 			}
+ 			break;
+ 		default:
++			DEBUG_OUT ();
+ 			return GNOME_VFS_ERROR_NOT_SUPPORTED;
+ 		}
++
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
+ 	}
+ 	
+@@ -2287,6 +2823,7 @@ do_seek (GnomeVFSMethod *method,
+ 		meth_whence = SEEK_END;
+ 		break;
+ 	default:
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_SUPPORTED;
+ 	}
+ 
+@@ -2299,7 +2836,8 @@ do_seek (GnomeVFSMethod *method,
+ 		actx.res = (ret != (off_t) -1) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
+ 	}
+ 	UNLOCK_SMB();
+-	
++
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2312,8 +2850,11 @@ do_tell (GnomeVFSMethod *method,
+ 	SmbAuthContext actx;
+ 	off_t ret = (off_t) -1;
+ 
++	DEBUG_IN ();
++
+ 	if (handle->is_data) {
+ 		*offset_return = handle->offset;
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
+ 	}
+ 	
+@@ -2328,6 +2869,8 @@ do_tell (GnomeVFSMethod *method,
+ 	UNLOCK_SMB();
+ 	
+ 	*offset_return = (ret == (off_t) -1) ? 0 : (GnomeVFSFileOffset) ret;
++
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2340,12 +2883,14 @@ do_unlink (GnomeVFSMethod *method,
+ 	SmbAuthContext actx;
+ 	int type, err = -1;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_unlink() %s\n",
+ 				gnome_vfs_uri_to_string (uri, 0)));
+ 
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
+ 
+@@ -2355,10 +2900,11 @@ do_unlink (GnomeVFSMethod *method,
+ 	    type == SMB_URI_SHARE ||
+ 	    type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
+ 	}
+ 
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+@@ -2367,12 +2913,14 @@ do_unlink (GnomeVFSMethod *method,
+ 	while (perform_authentication (&actx) > 0) {
+ 		err = smb_context->unlink (smb_context, path);
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->unlink(\"%s\") returned error %d\n", path, (int) actx.res));
+ 	}
+ 	
+ 	UNLOCK_SMB();
+ 
+ 	g_free (path);
+-	
++
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2389,6 +2937,7 @@ do_check_same_fs (GnomeVFSMethod *method
+ 	char *path2;
+ 	char *p1, *p2;
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_check_same_fs()\n"));
+ 
+ 	server1 =
+@@ -2409,6 +2958,7 @@ do_check_same_fs (GnomeVFSMethod *method
+ 		g_free (path1);
+ 		g_free (path2);
+ 		*same_fs_return = FALSE;
++		DEBUG_OUT ();
+ 		return GNOME_VFS_OK;
+ 	}
+                              
+@@ -2437,6 +2987,7 @@ do_check_same_fs (GnomeVFSMethod *method
+ 	g_free (path1);
+ 	g_free (path2);
+ 
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -2453,7 +3004,7 @@ do_move (GnomeVFSMethod *method,
+ 	SmbAuthContext actx;
+ 	int old_type, new_type;
+ 	
+-	
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_move() %s %s\n",
+ 				gnome_vfs_uri_to_string (old_uri, 0),
+ 				gnome_vfs_uri_to_string (new_uri, 0)));
+@@ -2463,12 +3014,13 @@ do_move (GnomeVFSMethod *method,
+ 
+ 	if (old_type != SMB_URI_SHARE_FILE ||
+ 	    new_type != SMB_URI_SHARE_FILE) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
+ 	}
+ 
+ 	/* Transform the URI into a completely unescaped string */
+-	old_path = gnome_vfs_uri_to_string (old_uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
+-	new_path = gnome_vfs_uri_to_string (new_uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	old_path = gnome_vfs_uri_to_string (old_uri, GNOME_VFS_URI_HIDE_NONE);
++	new_path = gnome_vfs_uri_to_string (new_uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	tried_once = FALSE;
+  retry:
+@@ -2480,6 +3032,7 @@ do_move (GnomeVFSMethod *method,
+ 		err = smb_context->rename (smb_context, old_path, smb_context, new_path);
+ 		errnox = errno;
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->rename(\"%s\", \"%s\") returned error %d\n", old_path, new_path, (int) actx.res));
+ 	}
+ 	UNLOCK_SMB();
+ 	
+@@ -2496,6 +3049,7 @@ do_move (GnomeVFSMethod *method,
+ 			while (perform_authentication (&actx) > 0) {			
+ 				err = smb_context->unlink (smb_context, new_path);
+ 				actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++				DEBUG_SMB(("ctx->unlink(\"%s\") returned error %d\n", new_path, (int) actx.res));
+ 			}
+ 			UNLOCK_SMB();
+ 
+@@ -2512,6 +3066,7 @@ do_move (GnomeVFSMethod *method,
+ 	g_free (old_path);
+ 	g_free (new_path);
+ 
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2536,9 +3091,11 @@ do_make_directory (GnomeVFSMethod *metho
+ 	int type, err = -1;
+ 	SmbAuthContext actx;
+ 
++	DEBUG_IN ();
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
+ 
+@@ -2548,11 +3105,12 @@ do_make_directory (GnomeVFSMethod *metho
+ 	    type == SMB_URI_SHARE ||
+ 	    type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
+ 	}
+ 
+ 	/* Transform the URI into a completely unescaped string */
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+@@ -2561,12 +3119,14 @@ do_make_directory (GnomeVFSMethod *metho
+ 	while (perform_authentication (&actx) > 0) {
+ 		err = smb_context->mkdir (smb_context, path, perm);
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->mkdir(\"%s\") returned error %d\n", path, (int) actx.res));
+ 	}
+ 
+ 	UNLOCK_SMB();
+ 
+ 	g_free (path);
+ 
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2579,9 +3139,11 @@ do_remove_directory (GnomeVFSMethod *met
+ 	int err = -1, type;
+ 	SmbAuthContext actx;
+ 
++	DEBUG_IN ();
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
+ 
+@@ -2591,11 +3153,12 @@ do_remove_directory (GnomeVFSMethod *met
+ 	    type == SMB_URI_SHARE ||
+ 	    type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
+ 	}
+ 
+ 	/* Transform the URI into a completely unescaped string */
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 
+ 	LOCK_SMB();
+ 	init_authentication (&actx, uri);
+@@ -2603,11 +3166,13 @@ do_remove_directory (GnomeVFSMethod *met
+ 	while (perform_authentication (&actx) > 0) {
+ 		err = smb_context->rmdir (smb_context, path);
+ 		actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++		DEBUG_SMB(("ctx->rmdir(\"%s\") returned error %d\n", path, (int) actx.res));
+ 	}
+ 	UNLOCK_SMB();
+ 
+ 	g_free (path);
+ 
++	DEBUG_OUT ();
+ 	return actx.res;
+ }
+ 
+@@ -2622,11 +3187,13 @@ do_set_file_info (GnomeVFSMethod *method
+ 	int err = -1, errnox = 0, type;
+ 	SmbAuthContext actx;	
+ 
++	DEBUG_IN ();
+ 	DEBUG_SMB (("do_set_file_info: mask %x\n", mask));
+ 
+ 	type = smb_uri_type (uri);
+ 
+ 	if (type == SMB_URI_ERROR) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 	}
+ 
+@@ -2636,10 +3203,11 @@ do_set_file_info (GnomeVFSMethod *method
+ 	    type == SMB_URI_SHARE ||
+ 	    type == SMB_URI_WORKGROUP_LINK ||
+ 	    type == SMB_URI_SERVER_LINK) {
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_PERMITTED;
+ 	}
+ 
+-	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++	path = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+ 	
+ 	if (mask & GNOME_VFS_SET_FILE_INFO_NAME) {
+ 		GnomeVFSURI *parent, *new_uri;
+@@ -2648,7 +3216,7 @@ do_set_file_info (GnomeVFSMethod *method
+ 		parent = gnome_vfs_uri_get_parent (uri);
+ 		new_uri = gnome_vfs_uri_append_file_name (parent, info->name);
+ 		gnome_vfs_uri_unref (parent);
+-		new_path = gnome_vfs_uri_to_string (new_uri, GNOME_VFS_URI_HIDE_USER_NAME | GNOME_VFS_URI_HIDE_PASSWORD);
++		new_path = gnome_vfs_uri_to_string (new_uri, GNOME_VFS_URI_HIDE_NONE);
+ 		gnome_vfs_uri_unref (new_uri);
+ 
+ 
+@@ -2659,6 +3227,7 @@ do_set_file_info (GnomeVFSMethod *method
+ 			err = smb_context->rename (smb_context, path, smb_context, new_path);
+ 			errnox = errno;
+ 			actx.res = (err >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
++			DEBUG_SMB(("ctx->rename(\"%s\", \"%s\") returned error %d\n", path, new_path, (int) actx.res));
+ 		}
+ 		
+ 		UNLOCK_SMB();
+@@ -2671,31 +3240,37 @@ do_set_file_info (GnomeVFSMethod *method
+ 
+ 		if (actx.res != GNOME_VFS_OK) {
+ 			g_free (path);
++			DEBUG_OUT ();
+ 			return actx.res;
+ 		}
+ 	}
+ 
+ 	if (gnome_vfs_context_check_cancellation (context)) {
+ 		g_free (path);
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_CANCELLED;
+ 	}
+ 
+ 	if (mask & GNOME_VFS_SET_FILE_INFO_PERMISSIONS) {
+ 		g_free (path);
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_SUPPORTED;
+ 	}
+ 
+ 	if (mask & GNOME_VFS_SET_FILE_INFO_OWNER) {
+ 		g_free (path);
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_SUPPORTED;
+ 	}
+ 	
+ 	if (mask & GNOME_VFS_SET_FILE_INFO_TIME) {
+ 		g_free (path);
++		DEBUG_OUT ();
+ 		return GNOME_VFS_ERROR_NOT_SUPPORTED;
+ 	}
+ 
+ 	g_free (path);
++	DEBUG_OUT ();
+ 	return GNOME_VFS_OK;
+ }
+ 
+@@ -2727,11 +3302,50 @@ static GnomeVFSMethod method = {
+ 	NULL  /* do_create_symbolic_link */
+ };
+ 
++static void
++debug_init (void)
++{
++	char *debug_flag_path;
++	struct stat st;
++
++	LOCK_SMB ();
++
++	debug_flag_path = g_build_filename (g_get_home_dir (), ".debug-gnome-vfs-smb", NULL);
++
++	if (stat (debug_flag_path, &st) == 0) {
++		char *debug_filename;
++
++		debug_filename = g_build_filename (g_get_home_dir (), "debug-gnome-vfs-smb.log", NULL);
++		debug_file = fopen (debug_filename, "w");
++		g_free (debug_filename);
++	} else
++		debug_file = NULL;
++
++	g_free (debug_flag_path);
++
++	UNLOCK_SMB ();
++}
++
++static void
++debug_shutdown (void)
++{
++	LOCK_SMB ();
++
++	if (debug_file) {
++		fclose (debug_file);
++		debug_file = NULL;
++	}
++
++	UNLOCK_SMB ();
++}
++
+ GnomeVFSMethod *
+ vfs_module_init (const char *method_name, const char *args)
+ {
+ 	smb_lock = g_mutex_new ();
+ 
++	debug_init ();
++
+ 	DEBUG_SMB (("<-- smb module init called -->\n"));
+ 
+ 	if (try_init ()) {
+@@ -2754,9 +3368,12 @@ vfs_module_shutdown (GnomeVFSMethod *met
+ 	g_hash_table_destroy (server_cache);
+ 	g_hash_table_destroy (workgroups);
+         g_hash_table_destroy (user_cache);
++	g_hash_table_destroy (printer_hash);
+ 	
+ 	g_mutex_free (smb_lock);
+ 
+ 	DEBUG_SMB (("<-- smb module shutdown called -->\n"));
++
++	debug_shutdown ();
+ }
+ 

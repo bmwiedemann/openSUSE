@@ -1,0 +1,20 @@
+---
+ Makefile.in |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -23,10 +23,12 @@
+ # along with sawfish-pager; see the file COPYING.   If not, write to
+ # the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+-override CFLAGS += @GTK_CFLAGS@ @IMAGE_LOADER_CFLAGS@ @SAWFISH_CFLAGS@ -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED
++override CFLAGS += @GTK_CFLAGS@ @IMAGE_LOADER_CFLAGS@ @SAWFISH_CFLAGS@
+ LDFLAGS = -Wl,-rpath @SAWFISH_CLIENT_LIB_DIR@
+ LDLIBS = @SAWFISH_CLIENT_LIB_DIR@/client.so @GTK_LIBS@ @SAWFISH_LIBS@ @IMAGE_LOADER_LIBS@
+ 
++
++
+ all: sawfishpager pager.jlc
+ 
+ %.jlc: %.jl

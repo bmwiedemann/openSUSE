@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Sat Aug 19 06:21:46 UTC 2017 - coolo@suse.com
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Text-Diff/Changes
+
+  1.45 2017-08-16 NEILB
+      - Typo fixed in doc. Patch from Lucas Kanashiro++. RT#112564
+      - Documentation improvements PR from David Gutteridge++.
+
+-------------------------------------------------------------------
+Tue Mar  8 11:10:13 UTC 2016 - coolo@suse.com
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Text-Diff/Changes
+
+  1.44 2016-02-26 NEILB
+      - Fixed the handling of text without a trailing newline. This module now
+        adds the same text that the diff tool does, "
+\ No newline at end of
+        file
+". Previously this module simply produced broken diffs when one or
+        both files had no trailing newline. Fixed by Dave Rolsky. GitHub #1.
+
+-------------------------------------------------------------------
+Sun Aug 23 09:26:53 UTC 2015 - coolo@suse.com
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Text-Diff/Changes
+
+-------------------------------------------------------------------
+Tue Jan 10 07:49:42 UTC 2012 - coolo@suse.com
+
+- regenerate with cpanspec for correct license and source lines
+
+-------------------------------------------------------------------
+Sun Apr 17 08:38:57 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.41:
+  * added DIFF_OUTPUT_UNICODE env variable to allow outputting unicode
+    characters
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Dec 13 12:11:19 UTC 2009 - chris@computersalat.de
+
+- cleanup spec
+  * fixed header
+  * updated desc
+  * added LICENSE README to doc
+  * moved changelog to .changes
+- fixed build-/deps
+  * added Data::Dumper
+
+-------------------------------------------------------------------
+Mon Jul 27 23:13:41 CEST 2009 - chris@computersalat.de
+
+- update to 1.37
+  * Switching to a production release
+  * Switching to a 1.xx version to indicate this
+  * Added META.yml file
+- 1.36_01 Mon 13 Jul 2009
+  * Cleaning this up to pass tests
+  * Adding author tests
+
+-------------------------------------------------------------------
+Sat Jul 25 19:45:25 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:51 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Fri Jun 19 01:02:19 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Fri Jun 12 16:41:29 CEST 2009 - chris@computersalat.de
+
+- spec mods 
+  o updated header
+  o some defines
+  o auto filelist gen to make rpmlint happy
+
+-------------------------------------------------------------------
+Tue Sep 18 17:23:45 UTC 2007 - <jfunk@funktronics.ca>
+
+- Initial release 0.35
+

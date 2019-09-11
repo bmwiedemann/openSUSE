@@ -1,0 +1,21 @@
+---
+ tools/eliloalt.c |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- a/tools/eliloalt.c
++++ b/tools/eliloalt.c
+@@ -282,7 +282,13 @@ main(int argc, char **argv)
+ 		switch(c) {
+ 			case   0: continue; /* fast path for options */
+ 			case   1:
+-				printf("Version %s Date: %s\n", ELILOALT_VERSION, __DATE__);
++				printf("Version %s\n", ELILOALT_VERSION);
++				/* Don't use __DATE__ here, as it causes
++				 * excessive rebuilds, which seems very
++				 * wasteful for a tool that did not change
++				 * in a very long time, and probably won't
++				 * any more...
++				 */
+ 				exit(0);
+ 			case   2:
+ 			case 'h':

@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Mar 28 13:32:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5 release:
+  * Actual python3 support using typelib introspection dependencies
+
+-------------------------------------------------------------------
+Wed Jan 23 16:51:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable for python3.  This doesn't work without python-goocanvas,
+  which doesn't support python3.
+
+-------------------------------------------------------------------
+Wed Jun 27 10:06:50 UTC 2018 - mcepl@suse.com
+
+- Upgrade to 0.4, where the change is that it supports python3 now.
+
+-------------------------------------------------------------------
+Mon Jun 25 14:50:29 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:39:48 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Nov 29 16:01:43 UTC 2016 - axel.braun@gmx.de
+
+- Version 0.3 
+  * Add support for goocanvas >= 2.0
+  * Add colors and font-desc properties to Calendar 
+
+-------------------------------------------------------------------
+Fri Jul  1 09:21:25 UTC 2016 - axel.braun@gmx.de
+
+- version 0.2
+  changed download link to pypi.io
+  correct license string
+  added License and copyright info to package
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Sat Jan 11 05:08:28 UTC 2014 - axel.braun@gmx.de
+
+- Initial Build on OBS
+
+

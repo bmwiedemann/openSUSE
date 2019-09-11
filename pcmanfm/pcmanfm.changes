@@ -1,0 +1,521 @@
+-------------------------------------------------------------------
+Tue Dec 25 12:29:55 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Use macro in URL
+
+-------------------------------------------------------------------
+Sun Dec 23 07:53:44 UTC 2018 - sean@suspend.net
+
+- new upstream release of pcmanfm 1.3.1 
+
+  * fixed crash on reload while directory changes
+  * changed size of large thumbnails to 512
+  * added application/gzip to archivers.list
+  * added image/x-compressed-xcf to archivers.list
+  * allowed bigger sizes of icons and thumbnails
+
+-------------------------------------------------------------------
+Sat Sep 29 13:39:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and history lesson from description.
+
+-------------------------------------------------------------------
+Sun Sep 23 08:06:31 UTC 2018 - sean@suspend.net
+
+- new upstream release of pcmanfm 1.3.0
+
+  * Fixed potential access violation, use runtime user dir instead of tmp diri for single instance socket.
+  * Fixed an issue with losing icons on desktop, when file name has a ‘[‘ char.
+  * Added a missing tooltip for ‘New Window’ toolbar button.
+  * Fixed an issue when single instance socket directory did not exist (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=874753).
+-------------------------------------------------------------------
+Sun Dec 25 12:34:19 UTC 2016 - trcs@gmx.com
+
+- new upstream release 1.2.5
+  * Removed options to Cut, Remove and Rename from context menu on 
+    mounted drive on the desktop, user might accidentally recursively 
+    remove its contents.
+  * Removed 'Open in terminal' from context menu on folder on the 
+    desktop that cannot be opened in terminal.
+  * Fixed invalid unref on CSS provider (GTK+ 3.0).
+  * Fixed unwanted unselection of items when right-clicked the 
+    desktop.
+  * Fixed endless loop in desktop items placement in some corner 
+    cases.
+  * Fixed spelling error in the manual page.
+  
+  Changes on 1.2.4 since 1.2.3:
+  
+  * Workarounded a bug in gtk_file_chooser_set_file() function (patch 
+    from Simon Long).
+  * Fixed single instance options cleanup that might affect next call.
+  * Fixed wrong update of status text after folder update when there 
+    are selected files in the folder.
+  * Disabled using desktop background from the GTK+ style since there 
+    is own color setting and changing the style may repaint the 
+    desktop.
+  * Enforced desktop font update on the desktop resize with GTK+ 3.0.
+  * Fixed items layout order to never be tried before desktop is 
+    realized.
+  * Fixed item borders calculations when matching to pointer position.
+  * Fixed forwarding events to root window, it could get unpaired 
+    events.
+  * Fixed crash on too fast folder change with focus_previous=1.
+  * Fixed stuck tooltip after click on the item.
+  * Improved option to open folder in terminal, it should work with 
+    gvfs paths that have resolvable local path as well.
+  * Fixed incorrect file names rendering position on the desktop.
+  * Fixed not working Connect to Server... dialog when non-anonymous 
+    user is selected.
+  * Fixed possible memory corruption in the Connect to Server... 
+    dialog.
+  * Support explicit mention of scheme in the Server line of the 
+    Connect to Server... dialog, not duplicate it if it's present.
+    That includes the https:// to fix support for secure WebDAV 
+    access as well.
+- Removed all the previously added patches from Git: they are all
+  now included upstream.
+
+-------------------------------------------------------------------
+Sat Oct 31 14:41:34 UTC 2015 - trcs@gmx.com
+
+- Added pcmanfm-1.2.3-Fix-GTK-file-chooser-bug.patch
+  * Fix SF#916
+- Added pcmanfm-1.2.3-Add-single-instance-options-cleanup.patch
+  * Fix SF#943
+- Added pcmanfm-1.2.3-Fix-status-text-after-folder-update.patch
+  * Fix SF#948  
+- Added pcmanfm-1.2.3-Fix-desktop-background-repaint.patch
+  * Fix SF#951  
+- Added pcmanfm-1.2.3-Enforce-desktop-font-update.patch
+  * Fix SF#958
+- Added pcmanfm-1.2.3-Delay-items-layout.patch
+  * Fix SF#927
+- Added pcmanfm-1.2.3-Fix-item-borders-calculations.patch
+  * Fix SF#963
+- Added pcmanfm-1.2.3-Fix-forwarding-events-to-root-window.patch
+- Added pcmanfm-1.2.3-Fix-crash-on-too-fast-folder-change.patch
+- Added pcmanfm-1.2.3-Fix-stuck-tooltip-after-click-on-the-item.patch
+  * Fix SF#929
+- Added pcmanfm-1.2.3-Improve-option-to-open-folder-in-terminal.patch
+  * Fix SF#971
+- Added pcmanfm-1.2.3-Fix-incorrect-file-names-rendering.patch
+  * Fix SF#972
+
+-------------------------------------------------------------------
+Tue Oct 14 20:31:10 UTC 2014 - trcs@gmx.com
+
+- new upstream release 1.2.3
+  * Disabled unrequested config save on changing dir if 
+    show_hidden changes.
+  * Replaced deprecated atk_component_get_position() calls.
+  * Fixed invalid callback get_image_position() on ATK icon, it 
+    could loop and therefore hang the application.
+  * Increased delay on restoring scroller position from 20 to 50 
+    ms.
+
+-------------------------------------------------------------------
+Sun Aug 24 06:46:23 UTC 2014 - trcs@gmx.com
+
+- new upstream version 1.2.2
+  * Fixed Ctrl+- and Ctrl+= key combinations for zooming.
+  * Fixed compilation with libfm 1.1.x.
+  * Disabled showing items on desktop that are being dragged, 
+    they should be at the mouse cursor, visually dragged instead.
+  * Fixed setting of custom settings on wrong folders which were 
+    set on directory change where show hidden flag was different.
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul  3 19:50:16 UTC 2014 - trcs@gmx.com
+
+- new upstream version 1.2.1
+  * Fixed update desktop config from old settings.
+  * Fixed 'Edit'->'Rename' menu item, it should be inactive if 
+    rename isn't supported.
+  * Fixed install and uninstall for modules directory.
+  * Port number shouldn't be added in Connect to Server dialog 
+    if port is default one.
+  * Got rid of possible memory exhausting after changing 
+    wallpaper.
+  * Fixed icons positioning when upper reserved area is not 0.
+  * Fixed resetting cursor in location bar to beginning after
+    navigation.
+  * Corrected folder popup update on folder loading so context 
+    menu is now correct for the folder shown.
+  * Fixed dragging and dropping icons behavior on desktop.
+  * Correctly use screen number to display all the windows.
+  * Added "System;FileTools;" into Categories for 
+    pcmanfm.desktop,
+    those are recommended categories for the FileManager one.
+  * Reordered 'View' menu items a bit to conform with HIG.
+  * Implemented drawing icons of dragged items as cursor to see 
+    where they will end up dropped.
+
+-------------------------------------------------------------------
+Mon May 12 08:30:52 UTC 2014 - andrea@opensuse.org
+
+- fixed buildrequires to match the new libfm-gtk-devel subpackage
+
+-------------------------------------------------------------------
+Sun Feb 23 16:47:36 UTC 2014 - trcs@gmx.com
+
+- New upstream version 1.2.0
+  * detailed changelog at http://blog.lxde.org/?p=1082
+- Removed build compatibility with discontinued versions (<= 12.2)
+- Disabled debug on configure to improve performance
+- Built against GKT2 to override GTK3 issues
+- Splitted devel package
+
+-------------------------------------------------------------------
+Sat Sep  7 08:09:04 UTC 2013 - i@marguerite.su
+
+- update version 1.1.2
+  * fix “Daemon mode” not always works correctly.
+  * Add missing #include “gseal-gtk-compat.h” into src/tab-page.c
+  * Remove xml-purge to allow smooth cross-compilation, 
+    replace it with sed.
+  * Add data sources to dist tarball, the make check needs them.
+
+-------------------------------------------------------------------
+Wed Jan  9 14:26:03 UTC 2013 - swyear@gmail.com
+
+- Explicit menu-cache as runtime dependency
+
+-------------------------------------------------------------------
+Wed Dec 19 09:44:24 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 1.1.0
+  * detailed changelog at http://blog.lxde.org/?p=951 
+- migration to gtk3 for suse > 12.2
+- dropped support for suse < 11.4
+
+-------------------------------------------------------------------
+Sun Oct  7 16:47:30 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 1.0.1
+- removed pcmanfm-0.9.10-libm.patch
+
+-------------------------------------------------------------------
+Sun Aug 19 12:11:18 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 1.0
+  detailed changelog at: http://blog.lxde.org/?p=939
+- removed pcmanfm-0.9.10-automake-1.12.patch 
+
+-------------------------------------------------------------------
+Thu Jun  7 15:04:47 UTC 2012 - pgajdos@suse.com
+
+- fixed build with automake 1.12, inspired with fix for libfm
+
+-------------------------------------------------------------------
+Sat Dec  3 11:08:05 UTC 2011 - gber@opensuse.org
+
+- fix version number
+- do not recompress tarball
+- specify build dependencies correctly and remove unneeded ones
+
+-------------------------------------------------------------------
+Wed Nov 30 01:00:05 UTC 2011 - gber@opensuse.org
+
+- added pcmanfm-0.9.10-libm.patch in order to correctly link
+  against libm
+
+-------------------------------------------------------------------
+Thu Oct 27 15:13:33 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.9.10 rc4
+  detailed changelog at: http://blog.lxde.org/?p=911 
+- removed pcmanfm-0.9.9-fix-no_return_in_non_void.patch and
+  fix-link.patch
+
+-------------------------------------------------------------------
+Sat Sep 10 15:36:52 UTC 2011 - coolo@suse.com
+
+- fix build with newer ld
+
+-------------------------------------------------------------------
+Wed Aug 10 00:40:06 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.9.9 rc3
+  detailed changelog at: http://blog.lxde.org/?p=908
+- removed pcmanfm-0.9.8-fixbnc648882.patch now in upstream code 
+- added pcmanfm-0.9.9-fix-no_return_in_non_void.patch to
+  fix compiler warning
+
+-------------------------------------------------------------------
+Mon Mar 14 18:53:58 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Mon Nov  8 23:05:40 UTC 2010 - andrea@opensuse.org
+
+- added pcmanfm-0.9.8-fixbnc648882.patch from git code to fix
+  bnc#648882 
+
+-------------------------------------------------------------------
+Sat Oct 16 11:22:26 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.9.8 RC2
+  * Change path of config file from ~/.config/pcmanfm/<profile>.conf
+    to ~/.config/pcmanfm/<profile>/pcmanfm.conf
+  * make desktop icon moveable
+  - Little fix for counting problems
+  - fix after libfm API changes 
+  * Implement a more robust IPC mechanism to handle single instance 
+  * Create ~/Desktop for desktop manager if the folder
+    doesn't exist
+
+-------------------------------------------------------------------
+Sat May 29 15:13:08 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.9.7 RC1
+- removed pcmanfm-rename-to-pcmanfm.patch, pacmanfm2 has been
+  renamed pcmanfm even upstream finally
+
+-------------------------------------------------------------------
+Sun May 16 15:30:33 UTC 2010 - andrea@opensuse.org
+
+- new git version, translations updates and bugfixes 
+
+-------------------------------------------------------------------
+Tue Apr 27 19:19:02 UTC 2010 - andrea@opensuse.org
+
+- translations updates
+- minor code changes 
+
+-------------------------------------------------------------------
+Sun Apr 25 22:01:46 UTC 2010 - andrea@opensuse.org
+
+- bump to version 0.9.5
+- Command line improvments
+- fix rename for desktop items
+
+-------------------------------------------------------------------
+Sat Apr 24 09:22:57 UTC 2010 - andrea@opensuse.org
+
+- Fix sf#2985899: segfault when there are no bookmarks 
+
+-------------------------------------------------------------------
+Thu Apr 22 07:07:24 UTC 2010 - andrea@opensuse.org
+
+- Fix sf#2990189, Pressing Del when there is no selection
+  crashes pcmanfm. 
+
+-------------------------------------------------------------------
+Mon Apr 19 00:18:31 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.9.4
+  - Fix sf#2988985: Doesn't update location when using address
+    bar and terminal, little fix for invalid pointer reference.
+  - Fix sf#2979578 unable to open second pcmanfm instance sometimes
+  - Fix sf#2985627: crash when starting without a window manager
+
+-------------------------------------------------------------------
+Sat Apr 10 23:48:10 UTC 2010 - andrea@opensuse.org
+
+- new git version 20100411
+  - Improve single instance handling
+  - Sync with API change in libfm for fm_canonicalize_filename()
+  - fix for single instance handling
+  - Fix file rename crash by F2 key when no files are
+    selected bnc#593094
+
+-------------------------------------------------------------------
+Wed Mar 31 09:18:32 UTC 2010 - andrea@opensuse.org
+
+- Close tabs with middle click. 
+- Add supports for accelerator keys: XF86Back and XF86Forward
+- Remove unused variables. Patch from (Naveen Kumar Molleti)
+- Fix sf#2974159 "file sort not consistent" and also update the
+  view menu properly when switching among different tabs
+
+-------------------------------------------------------------------
+Wed Mar 24 08:32:17 UTC 2010 - andrea@opensuse.org
+
+- new git version:
+  - fixed SEGFAULTS
+  - translations upgrades
+  - build on new libfm API 
+
+-------------------------------------------------------------------
+Mon Mar 22 08:52:05 UTC 2010 - andrea@opensuse.org
+
+- added polkit-gnome as runtime dependencie to allow automount
+  to work properly 
+
+-------------------------------------------------------------------
+Thu Mar 18 21:53:37 UTC 2010 - andrea@opensuse.org
+
+- upgrade to 0.9.3 
+
+-------------------------------------------------------------------
+Tue Mar 16 13:34:05 UTC 2010 - andrea@opensuse.org
+
+- bug fixing and using new libfm APIs 
+
+-------------------------------------------------------------------
+Sun Mar 14 14:58:49 UTC 2010 - andrea@opensuse.org
+
+- new git revision, is now possible to disable automount and
+  autorun
+- translations upgrades 
+- added rpmlintrc to suppress false positives warning
+
+-------------------------------------------------------------------
+Tue Mar  9 17:58:30 UTC 2010 - andrea@opensuse.org
+
+- new version 0.9.2, several bugfix 
+
+-------------------------------------------------------------------
+Mon Mar  8 23:16:53 UTC 2010 - andrea@opensuse.org
+
+- New git snapshot 20100307
+  * rebuild on new apis 
+
+-------------------------------------------------------------------
+Fri Mar  5 10:25:29 UTC 2010 - andrea@opensuse.org
+
+- New git snapshot 20100305
+  * Support creating new folders and blank files on desktop.
+  * UI improvement for auto-run dialog.
+  * Close auto-run dialog if the device is unmounted.
+  * Implement auto-mount + auto-run for removable media.
+  * Use different color for location entry if the user is
+    root for warning. 
+
+-------------------------------------------------------------------
+Tue Mar  2 06:53:38 UTC 2010 - andrea@opensuse.org
+
+- Fix cwd related bugs. commandline arguments works again
+- Fixed provides/obsoletes pcmanfm2 on spec file
+
+-------------------------------------------------------------------
+Mon Mar  1 20:20:58 UTC 2010 - andrea@opensuse.org
+
+- added gvfs-backends as dependency
+
+-------------------------------------------------------------------
+Mon Mar  1 10:36:52 UTC 2010 - andrea@opensuse.org
+
+- added pcmanfm-rename-to-pcmanfm.patch
+  we finally switch to pcmanfm2 as default filemanger 
+
+-------------------------------------------------------------------
+Sat Feb 27 13:24:08 UTC 2010 - andrea@opensuse.org
+
+- Add "Open in Terminal" to popup menu of desktop items
+- Little fixes
+
+-------------------------------------------------------------------
+Sat Feb 27 06:40:37 UTC 2010 - andrea@opensuse.org
+
+- Support opening folder in new tab with middle click
+- Little UI adjustment
+- Enable debug with --enable-debug to help development
+
+-------------------------------------------------------------------
+Fri Feb 26 20:01:58 UTC 2010 - andrea@opensuse.org
+
+- split out -lang subpackage 
+- improved package description
+
+-------------------------------------------------------------------
+Fri Feb 26 16:26:20 UTC 2010 - andrea@opensuse.org
+
+- fixed segfault with hidden files
+
+-------------------------------------------------------------------
+Mon Feb 22 12:27:16 UTC 2010 - andrea@opensuse.org
+
+- fixed fatal compiler warnings 
+
+-------------------------------------------------------------------
+Sun Feb 21 22:15:28 UTC 2010 - andrea@opensuse.org
+
+- new released tarball 0.9 alpha 
+
+-------------------------------------------------------------------
+Sun Feb 21 03:48:48 UTC 2010 - andrea@opensuse.org
+
+- new features and fixed API changes in libfm 
+
+-------------------------------------------------------------------
+Sat Feb 20 13:24:44 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, fixed API changes in libfm 
+
+-------------------------------------------------------------------
+Thu Feb 18 16:42:25 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, now with thumbnail support 
+
+-------------------------------------------------------------------
+Wed Feb 17 20:07:17 UTC 2010 - andrea@opensuse.org
+
+- new git snaphot, several bug fixes and modification to use new
+  libfm api 
+
+-------------------------------------------------------------------
+Wed Feb 10 00:29:24 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot 
+
+-------------------------------------------------------------------
+Sun Jan 31 16:18:24 UTC 2010 - andrea@opensuse.org
+
+- new git version, add translations support and bug fix 
+
+-------------------------------------------------------------------
+Tue Jan 26 10:56:52 UTC 2010 - andrea@opensuse.org
+
+- several improvments and added desktop icon 
+
+-------------------------------------------------------------------
+Sun Jan 24 13:46:39 UTC 2010 - andrea@opensuse.org
+
+- Fix seg faults by calling pango_layout_context_changed()
+  caused by stupid typos. 
+
+-------------------------------------------------------------------
+Mon Jan 18 15:47:46 UTC 2010 - andrea@opensuse.org
+
+- new git version 
+
+-------------------------------------------------------------------
+Tue Jan 12 23:00:08 UTC 2010 - andrea@opensuse.org
+
+- switch to pcmanfm2 
+
+-------------------------------------------------------------------
+Tue Dec 22 08:47:59 UTC 2009 - andrea@opensuse.org
+
+- added "%bcond_with trash_desktop_icons" to disable
+  beta trash support
+
+-------------------------------------------------------------------
+Mon Dec 14 14:34:48 UTC 2009 - andrea@opensuse.org
+
+- fixed no-return-in-non-void error 
+
+-------------------------------------------------------------------
+Sat Dec 12 11:52:10 UTC 2009 - andrea@opensuse.org
+
+- added some patches from Fedora 
+
+-------------------------------------------------------------------
+Wed Oct 28 22:50:22 UTC 2009 - andrea@opensuse.org
+
+- New upstream version 0.5.2 
+
+-------------------------------------------------------------------
+* Tue Sep 29 2009 - Andrea Florio <andrea@opensuse.org> 0.5.1
+- added trash support
+- added "desktop movment" support.
+* Wed Jul 29 2009 - Andrea Florio <andrea@opensuse.org> 0.5.1
+- removed previous patch, because pcman is no more working
+* Sat Jul 18 2009 - Pavol Rusnak <prusnak@suse.cz> 0.5.1
+- fixed gcc errors (return.patch)
+* Thu May 21 2009 - Andrea Florio <andrea@opensuse.org> 0.5
+- new package

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jun  5 08:03:04 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- test package in %check
+
+-------------------------------------------------------------------
+Mon Dec 10 12:37:51 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Fix Source url
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jul  1 14:54:14 UTC 2017 - okurz@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Fri Dec 18 09:06:59 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.5.1
+- use %find_lang macro 
+
+-------------------------------------------------------------------
+Sun Dec  8 21:48:32 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.5
+  + No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:42 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Jul 23 11:20:55 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

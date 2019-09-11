@@ -1,0 +1,31 @@
+From 11a76b01e93cfbca31f1514c92078bf7f4110d60 Mon Sep 17 00:00:00 2001
+From: William Woodruff <william@tuffbizz.com>
+Date: Thu, 28 Dec 2017 16:40:51 -0500
+Subject: [PATCH] Remove declaration of xdo_get_active_keys_to_keycode_list
+
+This function was removed in 7cf1eaaf3178c46a12b73cf6454818b5d9feda75,
+but the header declaration was never removed.
+---
+ xdo.h | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/xdo.h b/xdo.h
+index 79c653c..9154507 100644
+--- a/xdo.h
++++ b/xdo.h
+@@ -411,15 +411,6 @@ int xdo_send_keysequence_window_list_do(const xdo_t *xdo, Window window,
+                             charcodemap_t *keys, int nkeys,
+                             int pressed, int *modifier, useconds_t delay);
+ 
+-/**
+- * Get a list of active keys. Uses XQueryKeymap.
+- *
+- * @param keys Pointer to the array of charcodemap_t that will be allocated
+- *    by this function.
+- * @param nkeys Pointer to integer where the number of keys will be stored.
+- */
+-int xdo_get_active_keys_to_keycode_list(const xdo_t *xdo, charcodemap_t **keys,
+-                                         int *nkeys);
+ 
+ /**
+  * Wait for a window to have a specific map state.

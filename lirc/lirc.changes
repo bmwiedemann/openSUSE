@@ -1,0 +1,1105 @@
+-------------------------------------------------------------------
+Sun Nov 18 04:44:21 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build date, kernel version,
+  sort python glob to make build reproducible (boo#1047218, boo#1101107)
+
+-------------------------------------------------------------------
+Tue Oct 30 07:53:39 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.1
+  * mode2: Fix inconsistent loglevel/debug option (#307).
+  * build: install media/lirc.h (Debian BTS #872074).
+  * build: Fix make "always build all" error - c6eb8ec.
+  * plugins: devinput: Fix glob "no match" error - 14685b2.
+  version 0.10.0
+  * lib/curl_poll.h: Fix header guard build error on müsl libc.
+  * Build: Mute libtool when V=0, typo.
+  * Update driver version info.
+  version 0.10.0-rc3
+  * lircmd: Fix bogus, excessive logging using --uinput (#295).
+  * Build: VPATH fixes (#294).
+  * Build: kfreebsd debian builds fixes.
+  * python tests: Portability fixes for in python-pkg/test.
+  * Unit tests in test/ dir: Portability fixes and some docs.
+  version 0.10.0-rc2
+  * Fixed lirc-setup fail-on-start (#290).
+  * Make python unit tests work on Debian (#289).
+  * Fix mode2 config file parsing [292].
+  * Documentation update.
+  * Build fixes.
+  version 0.10.0rc1
+  * ftdi driver: Fix off-by-2 timings (#275). This is a breaking
+    change, see ftdi driver docs or source at doc/plugins/ftdi.html.
+  * doc: The lirc.hwdb parsable driver list is deprecated - use
+    the python database or the configs/*.yaml files instead.
+  * lircd: the deprecated --uinput option is dropped. Use
+    the lircd-uinput(8) daemon instead.
+  * lircd: The --release option is deprecated.
+  * lircd: Adding a --immediate-init option which initiates
+    the hardware directly on start and exits on errors.
+  * lircd, lircd-uinput: Change default release suffix due to linux
+    kernel changes (#263).
+  * plugins: The slinke (a. k. a. slink-e) driver is dropped.
+  * plugins: Add support for irdroid in the irtoy driver.
+  * plugins: Enhanced device enumeration, mode2 --list-devices
+    works for most drivers.
+  * plugins: devinput driver: Fix bad codelength (#263).
+  * New, shiny (i. e., unstable) python API. See the API docs,
+    module "python bindings". The API is also available as a pypi
+    package, typically at /usr/share/lirc/python-pkg
+  * lircd-uinput: Multiple config file parsing errors (#284).
+  * lib: Added enumeration support and server version level check
+    to driver API.
+  * irrecord: Add --driver-options for lircd symmetry (#277).
+  * lircd: Fix devices not connected at first attempt (#279).
+  * lib: Fix failure when parsing absolute paths config files (#281).
+  * lircd/irsend: Fix bug when sending/receiving concurrently for
+    some remotes (#278, 5 pages!)
+  * lircd:Fix missing systemd support due to upstream changes (#274).
+  * The configs/*conf files no more supports  enumerating devices
+    using shell scripts.
+  * Build: Added new configure --enable-devinput option (#264).
+  * Build: Added new configure --enable-uinput option, ditched
+    the HAVE_UINPUT 0.9.4c kludge.
+  * Build: More quiet, enhanced V=0/V=1 support.
+  * Build: OSX patches(#273)
+  version 0.9.4d
+  * The debian packaging means that freebsd and hurd builds are
+    regularly tested, improving build stability.
+  * A multitude of build patches, mostly after building on Debian:
+    + Cross-compilation FTBS fixed (#233)
+    + Fix configuration of configure (#234)
+    + Fix library specification in lirc.pc (#236)
+    + use HAVE_UINPUT=1 to force building uinput code (#238).
+    + lib: Only use local headers in lirc_private.h (#237).
+    + Configure libudev (#242)
+    + Various kfreebsd fixes
+    + Include config.h in installed headers (#250).
+    + Fix _XOPEN_SOURCE related FTBS on some platforms (#248)
+  * lib: Fix some lircrcd-related bugs (#254)
+  * systemd: Fix wrong path to irexec (#239)
+  * systemd: Add missing lircd-setup.service to distribution (#243)
+  * lircd: Fix --listen option parsing [#249]
+  * lircd: Fix segfault in SET_INPUTLOG without arguments (#252)
+  * lircd: Fix DRV_OPTION error message handling (#256).
+  * ircat: Fix option parsing bug + empty conditions (#251)
+  * xmode2: Fix handling of --driver option.
+
+- Dropped
+  lirc-lib-curl_poll.h-Ensure-build-on-unconfiguredclients.patch
+  and lirc-configure-libudev.patch (merged upstream)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Apr 24 14:08:21 CEST 2018 - jdelvare@suse.de
+
+- i2c-tools is no longer needed to build, as i2c-dev.h is part of
+  the standard linux-glibc-devel package now.
+
+-------------------------------------------------------------------
+Sat Mar 10 12:54:00 UTC 2018 - dimstar@opensuse.org
+
+- Drop lircd-Remove-use-of-functions-killed-in-kernel-4.8.0.patch:
+  the guarding zypper call was wrong (-qf vs --qf) and resulted in
+  the patch never being applied. So it is obviously not used.
+- Remove dependency on zypper: libzypp just gets a new dependency
+  on libgpgme, which happens to result in a cycle: since the sole
+  usage of zypper was to 'detect if the patch was needed' is no
+  longer given, we have no feature loss.
+
+-------------------------------------------------------------------
+Tue Nov  8 16:05:41 UTC 2016 - p.drouand@gmail.com
+
+- Move workarounds to %prep section
+- Add lirc-configure-libudev.patch (boo#1008764)
+
+-------------------------------------------------------------------
+Thu Nov  3 10:30:47 UTC 2016 - p.drouand@gmail.com
+
+- Fix %pre script
+
+-------------------------------------------------------------------
+Wed Nov  2 13:46:41 UTC 2016 - p.drouand@gmail.com
+
+- Add lirc-lib-curl_poll.h-Ensure-build-on-unconfiguredclients.patch
+
+-------------------------------------------------------------------
+Fri Oct 21 18:14:41 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 0.9.4c
+  * New curl_poll files adds a new MIT license. Lirc now carries GPL,
+    BSD and MIT licenses.
+  * Several patches to make lirc work again on macos (#226, #227).
+  * New tool irtext2udp generates udp plugin data (#197).
+  * plugins: girs: Add udp/receive support (#201).
+  * mode2: Fix broken --raw option (#223).
+  * lirc-make-devinput: Fix that two remotes has the same name (#222).
+  * lircd: Warn for duplicate remote definitions (#222).
+  * lircd: Retry temporary unavailable write sockets (#221).
+  * contrib: Fix usb devices' acl permissions (rhbz #1364744).
+  * lirc-setup: Fix crasher bugfix (Fedora abort trace).
+  * contrib: disable udev /dev/uinput rule requiring lirc user.
+  * plugins: audio_alsa: Fix byte truncating in 16-bit data (#218):
+  * plugins: irtoy: improve error handling (#220).
+  * Minor documentation fixes.
+- Changes from version 0.9.4b
+  * lircd-uinput: A multitude of fixes (#213, #211, #177). Adds new options.
+  * lirc_client: Fix "Can't redirect irsend output" (#207).
+  * lirc_client: Fix un-terminated buffer causing irsend crash (#216).
+  * irrecord: Fix under-sized buffer causing crash (#208).
+  * systemd: Add hardening options comments to services (#204).
+  * lircmd: Options, udev examples and manpage update.
+  * lib: Add missing Makefile.am dep, fixes parallel build failure (#210).
+  * Remove a single python2 dependency [4e3c97c].
+  * build: Don't define docdir - autoconf defines docdir (#215).
+  * build: support runstatedir configure option (#212).
+  * doc: Manpages and configuration guide fixes.
+- Remove fix-remote-keys.pl, README.SUSE and 51-lirc.rules; not relevant
+  for a while already
+- Remove 0001-Fix-segfault-when-starting-lircd-AUR-41581.patch and
+  0002-lircd-Fix-bad-default-for-lircdfile.patch; fixed on upstream
+- Add missing dependency to systemd
+- Global sweeping
+- Add lirc nologgin user; now needed
+- Add lircd-Remove-use-of-functions-killed-in-kernel-4.8.0.patch;
+  fix build on openSUSE > 42.2
+
+-------------------------------------------------------------------
+Wed Jun 29 14:24:22 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.9.4a:
+  * Fix syntax errors in systemd unit files (rhbz: 1350750).
+  * irrecord: Enhance "Don't use devinput" message (#180).
+  * plugins/uirt2_raw: Reset device to UIR mode on deinit.
+  * plugins/girs.c: Enable reception after sending.
+  * lirc.org: Updates and bugfixes
+  * lircd, liblirc_client: Fix freeaddrinfo handling (#195).
+  * Don't build commandir unless we have usb.h (#191).
+  * lirc_options.conf: debug => loglevel (#199).
+  * lib: use proper linking method to avoid parallel build issue
+  * tools: make_rel_symlink.py can also use python2
+  * plugins/devinput: Make the list-devices support available.
+  * configure.ac: Bugfix (BSD setting reported wrong).
+
+-------------------------------------------------------------------
+Mon Jun 13 11:20:36 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 0.9.4
+  * The caraca driver has been retired (still available in attic/).
+  * The iguanair driver has been moved out of tree and is now
+    maintained by Iguanaworks, Inc. See drivers/iguanair/README.
+  * The irman driver has been moved out of tree. From 0.5.1 the
+    libirman package contains the driver. See drivers/irman/README
+  * The yard2 driver has been moved out of tree and is now maintained
+    by the yard2 project. See driver/yard2/README.
+  * The lirc.4 manpage (/dev/lirc* interface) is upstreamed to the
+    linux kernel manpages project (#164). Old page lirc.4l still
+    lingers in attic/ but is not installed.
+  * Upstream selinux updated to match current lircd requirements.
+    See: https://github.com/fedora-selinux/selinux-policy/pull/41
+  * New upstream debian packaging with which Debian users can create
+    .deb packages. Ubuntu packages are also available in PPAs. See
+    README.md in the debian branch (#137).
+  * New driver girs for the GIRS protocol, gives LIRC Arduino support.
+    See new info in driver documentation.
+  * New transmit-only FTDI driver with enhanced accuracy and hardware
+    support. See ftdix driver documentation.
+  * Support for non-modulated signals added (#132).
+  * As shipped, lircd now uses the devinput driver and the new 'auto'
+    device, should work for all remotes supported by kernel (#106).
+  * Enhanced lirc-setup tool (#123, partly):
+    - Add drvctl device enumeration support.
+    - Integrated mode2 and irw tests of current configuration.
+    - Documentation links.
+    - More consistent data based on new database.
+    - Multiple bugfixes.
+  * Several patches to make mode2 work with all drivers(#123, partly)
+  * Configuration database overhaul (#123, partly)
+    - Database lives as yaml files in configs/.
+    - Data is collected from drivers, remotes and static files.
+    - Better ways for drivers to enumerate devices.
+    - There is an unstable python database module used by
+      all tools.
+  * Several drivers including default and devinput has enhanced
+    enumeration support, usable with mode2 -l and lirc-setup.
+  * devinput.lircd.conf is generated at build time to match host kernel,
+    new script lirc-make-devinput shipped to re-generate it (#153)
+  * A new script lircd-setup runs as a one-shot service before lircd,
+    performing setup commands as root (#121).
+  * Several new examples in contrib/, notably lircrc templates for
+    many popular LIRC applications and improved udev rules.
+  * The default driver does not require root perms if the protocol
+    is correct (#133).
+  * Add an "auto" device to devinput driver for single-device
+    usecase (#134).
+  * irrecord has been taught to handle remotes without gap (#98).
+  * The --uinput lircd option is deprecated, obsoleted by the
+    lircd.uinput.service systemd service. See lircd-uinput(8).
+  * CLI options for mode2, xmode2 and irrecord has been streamlined.
+    All tools falls back to lircd defaults where it makes sense.
+  * The driver API has been expanded with functions to enumerate
+    devices. See configs/README and lib/driver.h.
+  * New logging API with hooks for enhanced messages and filtering
+    (also #129).
+  * The out-of-tree build interface is enhanced with hooks for external
+    drivers to rebuild documentation and add a config file.
+  * lircd: Fix too-short gap  when sending/blasting (#158).
+  * lircd: Fix typo causing lost deinit_func() calls (#179).
+  * irrecord fixes:
+    - Fix broken namespace checks on recent kernels (#187).
+    - Buggy handling of not decoded buttons in irrecord (#146).
+    - Repeated buttons problems (#149)
+    - Endless loop when key is not recognized (#146)
+    - Endless loop on idendifying toggle mark (#139)
+  * lirs-lsremotes: Don't use non-standard GLOB_BRACE (#174).
+  * lib: Fix  misleading logprintf comments (#179)
+  * lib: Clean up loglevel handling (#178).
+  * Fix --plugindir not being respected (#144).
+  * Fix gid and supplementary groups in CLI apps dropping root.
+  * Fix a crash in irrecord when invoked without options.
+  * Fix bad parsing of --options-file unless given first (#165).
+  * plugins/default: Don't require write access if not needed (#133).
+  * plugins/atilibusb: Fix crash for non-existing device (#145).
+  * plugins/audio_alsa : Fix blocking regression bug (#169).
+  * plugins/file: Fix bad test for LIRCCODE cases (#171).
+  * plugins/ftdi: Bugfixes: 4157fe1, 92e2d1d, #182.
+  * plugins/girs: Bugfixes.
+  * plugins/default: Remotes become too sensitive in 0.9.3 (#148)
+  * plugins/default: Walk around kernel bug generating multiple
+    spaces (#172).
+  * doc: lircd.conf: Document suppress_repeat parameter.
+  * Clean up docs, remove circular links (#136). Documentation is
+    now only in lirc.org/html.
+  * build: Add explicit default -L${libdir} linker flag.
+  * build: Fix Debian FTBS compilation error.
+- Add some missing dependencies
+  * doxygen
+  * kmod-compat
+  * pkgconfig(sm)
+- Replace pkgconfig(libusb-1.0) with pkgconfig(libusb); fow some
+  reasons, lirc now relies on compat libusb
+- Remove obsolete configure switches
+- Update 0001-Fix-segfault-when-starting-lircd-AUR-41581.patch
+
+-------------------------------------------------------------------
+Thu Mar 17 08:36:41 UTC 2016 - pgajdos@suse.com
+
+- remove lirc.4 as this is part of man-pages from 4.05 on
+
+-------------------------------------------------------------------
+Sun Dec  6 13:57:19 UTC 2015 - p.drouand@gmail.com
+
+- Ensure lirc build against libusb-1.0; replace libusb-devel with
+  pkgconfig(libusb-1.0)
+
+-------------------------------------------------------------------
+Sun Oct 25 08:39:22 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.9.3a
+  * Broken fix for kernel bug reverted (#148, #119). This makes 
+    lirc incompatible with at least the 4.04 kernels. kernels 
+    < 4.0 and > 4.1.6 seemingly works.
+  * Several irrecord fixes (#146, #139, d8826b, #141).
+  * Some fixes for poll() usage, one of which blocked irrecord
+    (02c2480, d9339b6).
+  * lib: Fix parsing of multiple files (#141).
+  * lib: Fix privilege dropping code and a compiler flag (e8be7ae,
+    8a08ab1)
+  * lirc-lsplugins: Fix --plugindir not being respected (#144).
+  * atilibusb: Fix crash for non-existing device (#145).
+  * plugins: file.c: Fix off-by-one sscanf error (#138).
+
+-------------------------------------------------------------------
+Mon Sep 28 09:35:13 UTC 2015 - mpluskal@suse.com
+
+- Add missing dependency on libirman (boo#941883)
+- Update way tmpfiles.d are created 
+- Use correct symlinks for services
+
+-------------------------------------------------------------------
+Mon Sep  7 09:00:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9.3
+  * New build dependency: xsltproc (sometimes coming with libxml).
+  * The irexec semantics have been changed so that the invoked programs
+    run disconnected from the main irexec process. See irexec(1) (#92).
+  * irrecord has got some love:
+  * irrecord handles multiple definitions of same symbol OK (#78)
+  * irrecord : Warns about single-key config files (#77)
+  * irrecord : Checks for ambient light disturbances (#76)
+  * irrecord : New option allows updating of existing template file.
+  * irrecord : Template handling bug fixed
+  * irrecord : -l --list-namespace option parsing bug fixed (#101).
+  * irrecord : Minor fixes to irrecord-ui including -k option parsing fixed.
+  * mode2 has been updated
+  * mode2 : Handle also LIRCCODE devices (#94),
+  * mode2 : Drop root privileges (#91)
+  * mode2 : Add new scope-like display
+  * mode2 : Handle the--driver-options switch
+  * xmode2 has been updated to handle udp driver, the new --driver-options
+    switch + some general overhaul.
+  * irrecord has been split into a library and a cli interface (#36).
+    The library interface is unstable.
+  * irtoy: New support for debug LEDs. New documentation file, support 
+    in lirc-setup and driver table doc added.
+  * The udp driver is patched to allow adjustable clockrates, see new
+    udp_driver.html driver doc.
+  * The mplay driver has been updated with patches which has been 
+    available "out there".
+  * The select() calls in lircd, lircrcd and library routines have 
+    been replaced with poll() to avoid crashes when file descriptors
+    becomes > 1024 (#109).
+  * Set supplementary groups using effective-user (RH bz 1253907).
+  * Work around kernel bug in /dev/lirc0 output (#119).
+  * lircmd: Several option parsing bugs fixed, one of which blocked the
+    systemd service (#104, RH bz 1234155).
+  * lirc-lsremotes now displays logs after parsing files, making more
+    parsing warnings visible.
+  * lirc-config-tool is fixed to comply with guidelines (#105).
+  * Bug in irexec when using modes fixed (#102).
+  * Create log directory if required (#124).
+  * lirc-setup: Fixed name clash on recent python versions.
+  * The library routines for parsing lircd.conf now warns for duplicate
+    keys and values (#107).
+  * Enhanced pkg-config support for drivers compiled out-of-tree 
+    (see driver-api in the manual).
+  * Unlinked and hard to find driver docs and manpages have been linked.
+  * The documentation is heavily revised. Old obsolete text is removed, 
+    the manual is reorganized, some info is moved to manpages and a lot
+    of minor updates and bugfixes.
+  * The compiler has been switched to c++, and filenames are updated 
+    to *.cpp (#79)
+  * The lircd.simsend and lircd.simreceive tools have been removed, superseeded
+    by irsimsend and irsimreceive.
+  * A new kernel driver irpipe has been added. This allows feeding data from
+    userspace to lircd, which can use the /dev/irpipeX device as a clean 
+    substitute for /dev/lircX. A companion CLI tool irpipe(1) is also added.
+  * Options parsing (notably -U) and just listing first remote bugs in 
+    irsimsend have been fixed.
+  * Overall code formatting is improved with more consistent layout and 
+    updated git hook. See CONTRIBUTE.md'
+  * Build: now uses parallel make by default.
+  * Hardcoded CFLAGS in Makefiles fixed (#124).
+- Update patches
+  * 0002-lircd-Fix-bad-default-for-lircdfile.patch
+  * 0004-lircd-fix-compiler-error-format-security-error.patch
+- Remove imon2_conf.patch; fixed on upstream release
+- Add a dependency to libxslt-tools and gcc-c++
+- Add libirrecord0 subpackage
+
+-------------------------------------------------------------------
+Fri Jul 31 17:59:10 UTC 2015 - jengelh@inai.de
+
+- Do not hard depend on systemd - all macro uses support soft
+
+-------------------------------------------------------------------
+Fri Jul 31 09:51:51 UTC 2015 - dimstar@opensuse.org
+
+- Ignore absence of systemd-tmpfiles, it won't be present in the
+  build env.
+
+-------------------------------------------------------------------
+Mon Mar 23 02:52:35 UTC 2015 - p.drouand@gmail.com
+
+- Fix a typo in obsolete tag
+
+-------------------------------------------------------------------
+Thu Mar 19 17:08:50 UTC 2015 - p.drouand@gmail.com
+
+- lirc-core provides and obsoletes lirc
+- Fix lirc-disable-kernel-rc requirement
+
+-------------------------------------------------------------------
+Tue Feb 17 23:44:16 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9.2a
+  * Maintenance release: bugfixes, no new features.
+  * Notably fixes #85, multiple --connect regression.
+  * Fixes bad bug for locating ~/.lircrc config file.
+  * Documentation and lirc.org updates.
+  * All in all 19 patches.
+- Split each lirc module in his own package
+  * core : contains needed binaries to run basically lirc; it obsoletes
+    previous lirc package
+  * config: contains tools and data to ease the LIRC configuration process.
+    it provides and obsoletes the previous "remotes" packages as
+    remotes config files are not provided anymore and the config
+    package provides a tool to config a remote
+  * liblirc_driver0 : provides the driver library
+  * liblirc0 : the main library
+  * drv-ftdi: provides ftdi support
+  * drv-portaudio : provides portaudio support
+  * tools-gui : tools for debugging lirc
+- Add pkgconfig(libftdi1) require for Factory; ftdi is only availables
+  on Factory
+- Add pkgconfig(portaudio-2.0) require; build with portaudio support
+- Add python3 build require instead of python; python3 is now the
+  default
+- Add python3-PyYAML build require and requirement for lirc-config;
+  needed for generating table.html and lirc.hwdb, and is a direct
+  dependency of lirc-setup
+- Remove help2man require; dropped by upstream
+- Remove lirc-0.9.1a-fix-bashisms.patch; fixed on upstream release
+- Remove 0003-0.9.1a-Bugfix-segfault-when-parsing-connect-in-confi.patch 
+  fixed on upstream release
+- Update patches
+  * 0001-Fix-segfault-when-starting-lircd-AUR-41581.patch
+  * 0002-lircd-Fix-bad-default-for-lircdfile.patch
+- Remove old and not needed lirc-64bit obsoletion
+- Add liblirc_driver0 and liblirc0 to baselibs.conf
+ 
+-------------------------------------------------------------------
+Fri Nov 28 23:08:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in lirc-codecs-regression-test.sh script
+- add patches:
+  * lirc-0.9.1a-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Sun Oct 19 00:08:12 UTC 2014 - crrodriguez@opensuse.org
+
+- Run spec-cleaner 
+- Replace xorg-x11-devel with pkgconfig(x11)
+- Do not run autoreconf, configure.ac is broken and patches
+  are not modifying autotools files.
+
+-------------------------------------------------------------------
+Sun Sep 21 15:44:05 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.9.1a
+  + configuration file setup hotfix.
+  + --output option hotfix.
+- Changes from version 0.9.1
+  + Added systemd support: unit files, socket activation.
+  + Default config files are installed in /etc, use --install-etc 
+    to disable.
+  + Building kernel modules is not supported.
+  + New config file lirc_options.conf with cli options default values.
+  + Automagically sets the lirc protocol for /dev/rc devices.
+  + Whitespace cleanup and git hook to enforce whitespace handling.
+  + Docs are built as part of normal build process.
+  + Bugfixes
+  + Autotools update and Darwin fixes.
+  + docs: Added new Configuration Guide
+- Specfile clean-up
+  + Remove obsolete macros
+  + Use %configure
+- Use systemd instead of sysvinit
+- Drop sysconfig support 
+- Add  disable-kernel-rc subpackage; allow user to easily replace
+  in-kernel solution with lirc
+- Add patches from Fedora
+  + 0001-Fix-segfault-when-starting-lircd-AUR-41581.patch
+  + 0002-lircd-Fix-bad-default-for-lircdfile.patch
+  + 0003-0.9.1a-Bugfix-segfault-when-parsing-connect-in-confi.patch
+  + 0004-lircd-fix-compiler-error-format-security-error.patch
+- Install remote configuration files in the correct location
+- Do not ghost lirc configuration files anymore; there are now
+  real and installed by lirc
+- Build with -fno-strict-aliasing; alsa module would break with 
+  new gcc
+
+-------------------------------------------------------------------
+Thu May  8 11:44:22 CEST 2014 - ro@suse.de
+
+- use _rundir macro 
+
+-------------------------------------------------------------------
+Sat Mar  2 13:03:37 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with automake-1.13.1
+
+-------------------------------------------------------------------
+Tue Nov 27 20:15:34 UTC 2012 - alinm.elena@gmail.com
+
+- install the udev rules in /usr/lib/udev for factory and above 
+
+-------------------------------------------------------------------
+Tue Feb 21 12:33:55 UTC 2012 - lnussel@suse.de
+
+- move udev rules files from /etc to /lib
+
+-------------------------------------------------------------------
+Mon Feb 20 23:06:04 UTC 2012 - fisiu@opensuse.org
+
+- update to version 0.9.0:
+  * Remove mceusb, streamzap, it8x, ene0100 drivers, as they're
+    now redundant with upstream kernel drivers
+  * fix oops unplugging igorplugusb receiver while in use
+  * more error-checking for NULL irctl in various lirc_dev paths
+  * add support for Monueal Moncaso IR to mplay driver
+  * add another PNP device ID to lirc_it87
+  * drop references to static chardev major number 61, we use dynamic
+  * resync lirc_dev with what was merged in the kernel
+  * reformat code using indent to look more like Linux kernel code
+  * drop explicit support for kernels older than 2.6.18
+  * adapt to using lirc.h as merged in the upstream linux kernel
+  * non-LONG_IR_CODE option dropped, its been the default for years
+  * use portable type definitions all over the place
+  * drop an old GLIBC work-around for printing 64-bit values
+  * fix timing-specific repeat-after-release issue
+- drop lirc-0.8.7-lirc_h.diff and lirc-0.8.7-lirc_h_2.diff: fixed
+  upstream
+- clean spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 20 22:49:23 UTC 2012 - fisiu@opensuse.org
+
+- build with Igor Cesko receiver and transmitter diode support
+
+-------------------------------------------------------------------
+Thu Nov 24 10:19:15 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Feb  9 08:25:53 UTC 2011 - lnussel@suse.de
+
+- fix lircd not working with in-kernel drivers (bnc#668427)
+
+-------------------------------------------------------------------
+Mon Jan 10 08:08:24 UTC 2011 - lnussel@suse.de
+
+- fix the LIRCD_LISTENPORT setting (bnc#661841)
+
+-------------------------------------------------------------------
+Tue Sep  7 08:07:12 UTC 2010 - lnussel@suse.de
+
+- update to version 0.8.7
+  * updated mceusb support to properly initialize 3rd-gen hardware
+  * updated imon driver that doesn't corrupt their displays
+  * hack to make not-in-lirc zilog driver function with larger values
+
+-------------------------------------------------------------------
+Mon Sep  6 08:15:44 UTC 2010 - lnussel@suse.de
+
+- update to 0.8.7pre3 release
+  * improved usb-uirt support for FreeBSD (John Wehle)
+  * spurious locking complaint fixes for FreeBSD (John Wehle)
+  * added support for new Command IR III hardware (Matthew Bodkin)
+  * updated mceusb support to properly initialize 3rd-gen hardware
+  * updated imon driver that doesn't corrupt their displays
+  * hack to make not-in-lirc zilog driver function with larger values
+  * added support for Aureal ATWF@83-W001 ESKY.CC remote (Romain Henriet)
+  * added transmit support to driver for ENE CIR port
+    (only few devices support that)
+  * made generation of automatic release events in lircd more robust
+  * added tira_raw driver for the Ira/Tira receivers that supports
+    receiving in timing mode, the tira driver now supports transmit
+    (Arnold Pakolitz)
+  * added support for DFC USB InfraRed Remote Control (Davio Franke)
+  * added support for simple transmitter circuit connected to
+    soundcard (Bob van Loosen)
+  * added support for Philips SRM 7500 RF remote (Henning Glawe)
+
+-------------------------------------------------------------------
+Mon May 17 14:06:23 UTC 2010 - lnussel@suse.de
+
+- update to 0.8.7pre1 release
+  * just minor bugfixes compared to previous cvs snapshot
+
+-------------------------------------------------------------------
+Wed May 12 09:22:57 UTC 2010 - lnussel@suse.de
+
+- update to current CVS to fix build with newer kernels
+
+-------------------------------------------------------------------
+Tue May  4 08:16:15 UTC 2010 - lnussel@suse.de
+
+- don't package files in /var/run
+- fix package descriptions
+
+-------------------------------------------------------------------
+Fri Mar 12 14:58:11 UTC 2010 - lnussel@suse.de
+
+- use correct location of devinput config (bnc#570665)
+- use /dev/lirc0 as fallback (bnc#552455)
+- rework init script
+
+-------------------------------------------------------------------
+Fri Dec 18 13:43:59 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Sep 16 08:03:55 UTC 2009 - lnussel@suse.de
+
+- new version 0.8.6
+  * added support for ENE KB3926 revision B/C/D (ENE0100) CIR port
+    (found on some notebooks, e.g: Acer Aspire 5720G, HP Pavilion dv5)
+    (Maxim Levitsky)
+  * merged 1st-gen mceusb device support into lirc_mceusb2,
+    renamed lirc_mceusb2 to lirc_mceusb
+  * added support for putting iMON receviers into MCE/RC6 mode
+  * added input subsystem mouse device support to iMON driver
+  * improved iMON driver to handle dual-interface iMON devices
+    via a single lirc device, reducing configuration complexity
+  * added support for more iMON devices, including proper support
+    for touchscreen iMON devices (Rene Harder)
+  * improved iMON driver including touchscreen support
+  * Linux input support added to lircmd
+  * added support for IT8720 CIR port
+  * moved default lircd, lircmd and lircrcd config file locations to
+    /etc/lirc/lircd.conf, /etc/lirc/lircmd.conf and /etc/lirc/lircrc
+  * moved lircd socket from /dev/lircd to /var/run/lirc/lircd
+  * moved default pid file location from /var/run/lircd.pid to
+    /var/run/lirc/lircd.pid
+  * added support for XMP protocol
+
+-------------------------------------------------------------------
+Wed Sep 16 07:27:55 UTC 2009 - lnussel@suse.de
+
+- remove Provides: lirc-devel from main package (bnc#539230)
+
+-------------------------------------------------------------------
+Mon May 25 16:17:54 CEST 2009 - lnussel@suse.de
+
+- split package to lirc, lirc-remotes, lirc-devel and liblirc_client0
+
+-------------------------------------------------------------------
+Mon May 25 11:29:16 CEST 2009 - lnussel@suse.de
+
+- new versio 0.8.5
+  * added support for Winbond 8769L CIR port (e.g. found on Acer
+    Aspire 6530G) (Juan J. Garcia de Soria)
+  * added support for FTDI FT232-based IR Receiver
+  * Linux input event generation using uinput
+  * standardised namespace following Linux input conventions
+  * added support for Awox RF/IR Remote (Arif)
+  * added support for new iMon LCD devices
+  * added support for Antec-branded iMon LCD and VFD devices
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Nov 13 11:44:09 CET 2008 - lnussel@suse.de
+
+- don't BuildRequire i2c-tools on s390 as it doesn't exist there
+
+-------------------------------------------------------------------
+Mon Oct 13 09:06:34 CEST 2008 - lnussel@suse.de
+
+- new version 0.8.4
+  * added support for ITE8709 CIR port (Gregory Lardiere)
+  * added pronto2lirc converter (Olavi Akerman)
+  * support for include directive in lircd.conf
+
+-------------------------------------------------------------------
+Tue Aug 19 14:13:37 CEST 2008 - lnussel@suse.de
+
+- set Required-Stop in init script
+
+-------------------------------------------------------------------
+Thu Jun 26 09:03:24 CEST 2008 - lnussel@suse.de
+
+- fix build of hw_i2cuser on 11.0+ (bnc#387587)
+
+-------------------------------------------------------------------
+Wed May  7 10:39:56 CEST 2008 - lnussel@suse.de
+
+- fix build
+- BuildRequire linux-kernel-headers and libusb-devel to enable
+  additional userspace drivers
+
+-------------------------------------------------------------------
+Mon May  5 16:30:37 CEST 2008 - lnussel@suse.de
+
+- new version 0.8.3
+  * added support for Samsung USB IR Receiver (Robert Schedel)
+  * added support for Soundgraph iMON IR/LCD (Dean Harding)
+  * added support for IRLink receiver (Maxim Muratov)
+  * added support for VLSystem MPlay Blast (Benoit Laurent)
+  * implemented SIMULATE command in irsend to simulate IR events
+  * added user-space I2C driver (Adam Sampson)
+  * added support for Hauppauge HVR-1300 (Jan Frey)
+  * dropped support for 2.4 kernels
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Feb 21 23:10:52 CET 2008 - crrodriguez@suse.de
+
+- add missing insserv_prereq
+- add missing calls to restart_on_update and stop_on_removal macros 
+
+-------------------------------------------------------------------
+Fri Aug 10 15:06:50 CEST 2007 - lnussel@suse.de
+
+- upgrade to 0.8.2 final, just minor changes
+
+-------------------------------------------------------------------
+Thu Jun 21 10:51:09 CEST 2007 - lnussel@suse.de
+
+- require $remote_fs in init script (#285548)
+
+-------------------------------------------------------------------
+Fri Jun  1 09:47:17 CEST 2007 - lnussel@suse.de
+
+- update to 0.8.2pre3:
+  * added support for TechnoTrend USB IR receiver (Stefan Macher)
+  * automatic release event generation in lircd
+  * added support for Apple Mac mini USB IR Receiver (Stephen Williams)
+  * added support for ADSTech USBX-707 USB IR Blaster (Jelle Foks)
+  * periodically try to reopen lirc device if reading fails (probably
+    because USB device has been removed)
+  * added support for Creative USB IR Receiver (SB0540) (Benjamin Drung)
+  * lirc_mceusb2 supports setting carrier frequency
+  * added support for Asus DH remote (Brice DUBOST, Bernhard
+    Frauendienst)
+  * fixed show-stopper bug in RC-6 transmit code
+  * added support for Kanam Accent (Niccolo Rigacci)
+  * added support for SoundGraph iMON 2.4G DT & LT (Morten Bogeskov)
+
+-------------------------------------------------------------------
+Thu May 31 13:32:48 CEST 2007 - lnussel@suse.de
+
+- don't install useless contrib stuff 
+- add proper ldconfig and insserv calls
+- make initscript to automatically install
+  linux-input-layer-lircd.conf if lircd.conf doesn't exist and
+  /dev/input/ir is used as device
+- add  /etc/lircd.conf as %ghost
+- don't package /var/run/lirc/lircd
+- don't package all remotes to save space
+
+-------------------------------------------------------------------
+Mon Apr 23 15:11:22 CEST 2007 - hvogel@suse.de
+
+- Add config for imon2 driver with missing keys and pad2key 
+  addidtion from M. Brakemeier
+
+-------------------------------------------------------------------
+Tue Jan 16 16:37:14 CET 2007 - lnussel@suse.de
+
+- use optflags
+
+-------------------------------------------------------------------
+Thu Jan 11 15:09:28 CET 2007 - lnussel@suse.de
+
+- new version 0.8.1
+  * added support for USB-UIRT
+  * added transmitter support for new version of Windows Media
+    Center transceiver
+  * added support for Iguanaworks USB IR Transceiver
+
+-------------------------------------------------------------------
+Tue Nov 14 17:33:37 CET 2006 - lnussel@suse.de
+
+- fix excessive logging in devinput driver, use syslog (#218286)
+
+-------------------------------------------------------------------
+Fri Nov 10 12:58:28 CET 2006 - ro@suse.de
+
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Thu Aug 24 11:58:31 CEST 2006 - lnussel@suse.de
+
+- SYSFS{../name} is deprecated, use ATTRS{name} instead
+
+-------------------------------------------------------------------
+Thu Aug 17 23:04:16 CEST 2006 - ro@suse.de
+
+- fix build with 2.6.18 (from cvs) 
+
+-------------------------------------------------------------------
+Tue Feb  7 16:58:56 CET 2006 - lnussel@suse.de
+
+- remove CFT2000 config file as it contains a strange proprietary
+  notice (#148744)
+
+-------------------------------------------------------------------
+Thu Feb  2 13:56:47 CET 2006 - lnussel@suse.de
+
+- update to version 0.8.0
+  * included kernel modules build with minor modifications (#147601)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 16:04:43 CET 2006 - ro@suse.de
+
+- added (empty) rest of LSB init script header 
+
+-------------------------------------------------------------------
+Wed Nov 30 10:01:16 CET 2005 - lnussel@suse.de
+
+- use different way for matching *IR* in 51-lirc.rules to get rid of
+  udev.get_input_lirc.sh
+
+-------------------------------------------------------------------
+Thu Sep  1 15:25:13 CEST 2005 - lnussel@suse.de
+
+- move lirc related udev stuff into lirc package (#114656)
+- improve checks for device presence in init script to avoid
+  starting an unconfigured lircd that just silently quits later.
+  (#106055)
+- remove dependencies from initscript to allow vdr to start earlier
+
+-------------------------------------------------------------------
+Mon Aug 29 15:31:33 CEST 2005 - lnussel@suse.de
+
+- update input layer config file (#113852)
+
+-------------------------------------------------------------------
+Tue Aug 16 17:53:39 CEST 2005 - lnussel@suse.de
+
+- don't fail if evdev is not available as module (#104558)
+
+-------------------------------------------------------------------
+Wed Aug 10 13:11:33 CEST 2005 - kraxel@suse.de
+
+- fix quoting bug in init script (#102540).
+
+-------------------------------------------------------------------
+Tue May 31 14:04:17 CEST 2005 - kraxel@suse.de
+
+- fix init script (#86271).
+- updfate to version 0.7.1
+
+-------------------------------------------------------------------
+Fri Mar 11 16:38:45 CET 2005 - lnussel@suse.de
+
+- check if /dev/lircd is already a symlink before creating it (#71063)
+- don't unload module when stopping lirc (#71063)
+
+-------------------------------------------------------------------
+Tue Mar  1 18:28:58 CET 2005 - kraxel@suse.de
+
+- add compatibility symlink (bug #67039).
+
+-------------------------------------------------------------------
+Mon Jan 24 15:40:19 CET 2005 - kraxel@suse.de
+
+- update to 0.7.0 final.
+- move lircd sockets from /dev to /var/run/lirc (bug #44254).
+
+-------------------------------------------------------------------
+Fri Aug 20 12:04:29 CEST 2004 - kraxel@suse.de
+
+- update to cvs [2004-08-20]
+
+-------------------------------------------------------------------
+Tue Mar 30 19:26:55 CEST 2004 - kraxel@suse.de
+
+- add README.SUSE file (by lnussel)
+- remove some files non-text files from documentation (bug #36349).
+
+-------------------------------------------------------------------
+Fri Mar 12 14:22:55 CET 2004 - kraxel@suse.de
+
+- fix lirc start script.
+
+-------------------------------------------------------------------
+Mon Mar  8 13:59:10 CET 2004 - kraxel@suse.de
+
+- update to cvs [2004-03-08]
+- dropped global config file patch (merged into cvs).
+
+-------------------------------------------------------------------
+Fri Mar  5 17:31:55 CET 2004 - kraxel@suse.de
+
+- update to cvs [2004-03-05]
+- init script fixes.
+
+-------------------------------------------------------------------
+Mon Mar  1 13:06:18 CET 2004 - kraxel@suse.de
+
+- update to cvs [2004-03-01]
+- added input-layer-lircd.conf
+- added global config file patch (by msvec@suse.cz).
+
+-------------------------------------------------------------------
+Thu Feb  5 12:43:14 CET 2004 - kraxel@suse.de
+
+- drop km_lirc.
+
+-------------------------------------------------------------------
+Mon Jan 19 14:13:37 CET 2004 - kraxel@suse.de
+
+- updated to cvs snapshot again [2004-01-16].
+
+-------------------------------------------------------------------
+Tue Oct 21 18:21:36 CEST 2003 - kraxel@suse.de
+
+- updated to 0.7.0 cvs snapshot.
+
+-------------------------------------------------------------------
+Thu Aug 14 17:26:16 CEST 2003 - kraxel@suse.de
+
+- Respect INSTALL_MOD_PATH.
+
+-------------------------------------------------------------------
+Thu Aug 14 15:41:51 CEST 2003 - kraxel@suse.de
+
+- added ServiceRestart to sysconfig.lirc (#28893).
+
+-------------------------------------------------------------------
+Thu Aug 14 10:02:09 CEST 2003 - kraxel@suse.de
+
+- fix i2c kernel module build failure.
+
+-------------------------------------------------------------------
+Fri Jun 13 08:56:50 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+
+-------------------------------------------------------------------
+Wed Mar 12 12:21:55 CET 2003 - kraxel@suse.de
+
+- added metadata to sysconfig template [bugzilla #25077]
+
+-------------------------------------------------------------------
+Mon Mar 10 17:28:24 CET 2003 - kraxel@suse.de
+
+- added init script for lircd [bugzilla #24787]
+
+-------------------------------------------------------------------
+Thu Mar  6 14:38:39 CET 2003 - schwab@suse.de
+
+- Fix invalid use of floating point in kernel.
+
+-------------------------------------------------------------------
+Mon Mar  3 16:10:46 CET 2003 - kraxel@suse.de
+
+- fixed module install failure (bug #24512).
+
+-------------------------------------------------------------------
+Wed Dec 11 17:52:32 CET 2002 - kraxel@suse.de
+
+- splitted up the patch.
+- minor specfile tweaks.
+
+-------------------------------------------------------------------
+Tue Oct 22 13:48:53 CEST 2002 - uli@suse.de
+
+- update -> 0.6.6 (rc tool for sending IR commands, bugfix for
+  Winfast TV2000 card, SIR support for Actisys Act200L dongle,
+  support for hardware connected to soundcard input, added support
+  for Tekram M230 Mach64)
+
+-------------------------------------------------------------------
+Mon Jun  3 10:31:39 CEST 2002 - uli@suse.de
+
+- added fix for drivers using std serial device by werner@suse.de
+- touch all files to same date to avoid automake rerun
+
+-------------------------------------------------------------------
+Sun Apr 28 02:41:52 CEST 2002 - schwab@suse.de
+
+- Fix to build with 2.4.19-pre7.
+
+-------------------------------------------------------------------
+Fri Feb 22 14:22:16 CET 2002 - uli@suse.de
+
+- removed many unnecessary files from km_lirc (fixes bug #13733)
+
+-------------------------------------------------------------------
+Mon Jan 28 11:59:17 CET 2002 - uli@suse.de
+
+- update -> 0.6.5 (support for additional IR reveivers, bugfixes)
+
+-------------------------------------------------------------------
+Tue Sep  4 11:28:44 CEST 2001 - uli@suse.de
+
+- added remotes tarball from lirc.org containing configs for a few
+  hundred remote controls
+
+-------------------------------------------------------------------
+Tue Aug 21 15:48:06 CEST 2001 - lnussel@suse.de
+
+- new version 0.6.4 (bugfix release)
+- cleaned up spec file, now uses buildroot
+- added example config files for remotes to %doc
+- re-enabled parallel port driver
+- changed --with-driver=none to =any to make lircd actually use
+  remote hardware instead of switching into network only mode
+  (fixes Bug #9655)
+
+-------------------------------------------------------------------
+Sat May 12 17:21:07 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Wed May  9 18:53:10 CEST 2001 - uli@suse.de
+
+- building lirc_dev module in Makefile.module (reqd. by lirc_i2c)
+
+-------------------------------------------------------------------
+Thu Apr 26 15:31:07 CEST 2001 - uli@suse.de
+
+- fixed Makefile.module, configure call for building with
+  "--with-driver=none"
+- disabled parport module (no go with 2.4.3)
+
+-------------------------------------------------------------------
+Thu Apr  5 18:17:06 CEST 2001 - uli@suse.de
+
+- kernel sources not needed any more
+
+-------------------------------------------------------------------
+Mon Mar 19 15:39:28 CET 2001 - uli@suse.de
+
+- building lirc_i2c module in Makefile.module
+
+-------------------------------------------------------------------
+Mon Mar 19 11:48:25 CET 2001 - uli@suse.de
+
+- update -> 0.6.3 final
+- added suse_update_config before configure (fixes IA64)
+- disabled useless building of drivers
+- fixed building of shared libs
+
+-------------------------------------------------------------------
+Thu Feb 22 12:19:06 CET 2001 - uli@suse.de
+
+- added -I/usr/src/linux/include to kernel module Makefiles
+
+-------------------------------------------------------------------
+Wed Feb  7 11:57:42 CET 2001 - uli@suse.de
+
+- added lx_suse to neededforbuild
+
+-------------------------------------------------------------------
+Fri Jan 12 14:23:44 CET 2001 - uli@suse.de
+
+- update -> 0.6.3pre3 (needed for kernels 2.2.18 and 2.4.0)
+
+-------------------------------------------------------------------
+Tue Oct 10 10:02:41 CEST 2000 - ro@suse.de
+
+- fixed oldconfig 
+
+-------------------------------------------------------------------
+Mon Oct  9 11:09:11 CEST 2000 - kukuk@suse.de
+
+- Use default values for make oldconfig 
+
+-------------------------------------------------------------------
+Fri Sep 15 16:41:27 CEST 2000 - uli@suse.de
+
+- fixed location of config file (/usr/etc -> /etc)
+
+-------------------------------------------------------------------
+Fri Sep 15 15:41:59 CEST 2000 - uli@suse.de
+
+- fixed Makefile.module
+
+-------------------------------------------------------------------
+Wed Sep 13 18:48:48 CEST 2000 - uli@suse.de
+
+- initial package
+

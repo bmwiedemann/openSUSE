@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Apr 24 11:04:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.10
+  * Python3.7 and PyPy decompiling fixes
+  * Fix reading NULL from Optional nullable array column
+  * Fix handling of empty arrays in queries
+  * #415: error message typo
+  * #432: PonyFlask - request object can trigger teardown_request
+    without real request
+  * Fix GROUP CONCAT separator for MySQL
+- deleted sources
+  - LICENSE (not needed)
+
+-------------------------------------------------------------------
+Fri Mar  1 13:33:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.9:
+  * Fix handling of empty arrays and empty lists in queries
+  * Fix reading optional nullable array columns from database
+  * Array type support for PostgreSQL and SQLite
+  * isinstance() support in queries
+  * Support of queries based on collections: select(x for x in y.items)
+- Drop merged patch 0001-Fix-tests-failing-with-python-3.6.patch
+
+-------------------------------------------------------------------
+Thu Oct 25 09:31:35 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu Oct 25 09:14:44 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires: python2 for SLE12/Leap 42.3 so tests are
+  passed successfully
+
+-------------------------------------------------------------------
+Wed Oct 24 11:48:53 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Added 0001-Fix-tests-failing-with-python-3.6.patch from upstream
+  to fix the tests to run as expected.
+
+-------------------------------------------------------------------
+Mon Sep 24 12:19:58 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.7.6
+
+- Initial release of python-pony 0.7.6

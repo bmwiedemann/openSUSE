@@ -1,0 +1,28 @@
+Subject: [PATCH] [BZ 161467] ziomon: Re-add missing line in ziomon_fcpconf
+From: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+
+Description:  ziomon: Re-add missing line in ziomon_fcpconf
+Symptom:      ziomon_fcpconf fails on startup with:
+              Global symbol "$map_dev" requires explicit package name ...
+Problem:      During the GPL to MIT conversion process from v1.39.0 to
+              v2.0.0 one line has been lost by accident.
+Solution:     Re-add that line again.
+Reproduction: Call the ziomon_fcpconf tool.
+Upstream-ID:  523d833eb31633673847b6da0edbd35903f14dc4
+Problem-ID:   161467
+
+Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+---
+ ziomon/ziomon_fcpconf |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/ziomon/ziomon_fcpconf
++++ b/ziomon/ziomon_fcpconf
+@@ -58,6 +58,7 @@ sub store_mapper_devices
+ 	my $src_dir = shift();
+ 	my @entries = grep { ! /^\./ } dir_content($src_dir);
+ 
++	foreach my $map_dev (@entries) {
+ 		my $tf = catfile($src_dir, "$map_dev");
+ 		my $mm = `stat -L -c%t:%T $tf`;
+ 		chomp($mm);

@@ -1,0 +1,146 @@
+# Last Modified: Wed Jun 23 14:48:41 2014
+#include <tunables/global>
+
+/usr/lib/nagios/plugins/check_zypper {
+  #include <abstractions/base>
+  #include <abstractions/perl>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+  #include <abstractions/wutmp>
+
+  /etc/SuSE-release r,
+  /etc/os-release r,
+
+  /{,usr/}bin/grep  rix,
+  /{,usr/}bin/awk   rix,
+  /{,usr/}bin/gawk  rix,
+  /{,usr/}bin/rpm px -> /usr/lib/nagios/plugins/check_zypper//rpm,
+  /{,usr/}bin/bash rix,
+  /{,usr/}bin/sudo Ux,
+
+  # as we do not know how people name the ignore file, we 
+  # allow read access to everything below /etc/nagios and /etc/monitoring-plugins/ here
+  /etc/nagios/** r,
+  /etc/monitoring-plugins/** r,
+
+  /usr/sbin/zypp-refresh-wrapper px -> /usr/lib/nagios/plugins/check_zypper//zypp-refresh-wrapper,
+  /usr/bin/zypper px -> /usr/lib/nagios/plugins/check_zypper//zypper,
+
+  profile zypp-refresh-wrapper {
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+    capability setuid,
+    capability setgid,
+    /usr/sbin/zypp-refresh-wrapper rmix,
+    /usr/sbin/zypp-refresh px -> /usr/lib/nagios/plugins/check_zypper//zypp-refresh,
+  }
+  profile zypp-refresh {
+    #include <abstractions/base>
+    #include <abstractions/bash>
+    #include <abstractions/consoles>
+    #include <abstractions/user-tmp>
+    #include <abstractions/zypp>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+
+    /var/log/zypp-refresh.log w,
+    /usr/sbin/zypp-refresh rmix,
+
+    /{usr/,}bin/cp rix,
+    /{usr/,}bin/bash rix,
+    /usr/bin/rpmdb2solv         rix,
+    /usr/bin/zypper px -> /usr/lib/nagios/plugins/check_zypper//zypper,
+    /usr/bin/gpg2 px -> /usr/lib/nagios/plugins/check_zypper//gpg,
+    /usr/bin/uuidgen px -> /usr/lib/nagios/plugins/check_zypper//uuidgen,
+    /usr/bin/repo2solv.sh px -> /usr/lib/nagios/plugins/check_zypper//repo2solv, 
+    /var/lib/YaST2/cookies r,
+  }
+  profile repo2solv {
+    #include <abstractions/base>
+    #include <abstractions/consoles>
+    #include <abstractions/user-tmp>
+    #include <abstractions/nameservice>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+
+    /usr/bin/repo2solv.sh      rmix,
+    /usr/bin/repomdxml2solv     rix,
+    /usr/bin/rpmmd2solv         rix,
+    /usr/bin/susetags2solv      rix,
+    /usr/bin/updateinfoxml2solv rix,
+    /usr/bin/deltainfoxml2solv  rix,
+    /usr/bin/mergesolv          rix,
+
+    /usr/bin/find               rix,
+    /{usr/,}bin/bash            rix,
+    /{usr/,}bin/rm                     rix,
+    /{usr/,}bin/cat                    rix,
+    /{usr/,}bin/sed                    rix,
+    /{usr/,}bin/gzip                   rix,
+    /{usr/,}bin/grep            rix,
+    /{usr/,}bin/gzip            rix,
+    /{usr/,}bin/bzip2           rix,
+    /{usr/,}bin/lzma            rix,
+    /{usr/,}bin/xz              rix,
+    /{usr/,}bin/mktemp                 rix,
+
+    /var/cache/zypp/** rw,
+  }
+  profile uuidgen {
+    #include <abstractions/base>
+    /usr/bin/uuidgen rmix,
+  }
+  profile gpg {
+    #include <abstractions/base>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+    capability ipc_lock,
+    /usr/bin/gpg2 rmix,
+    /proc/sys/crypto/fips_enabled r,
+    /var/tmp/TmpFile.*  rwk,
+    /var/tmp/TmpDir.*/* rwlk,
+    /var/tmp/zypp.*/*   rwlk,
+    /var/tmp/zypp.*/*/* rwlk,
+    /var/cache/zypp/** r,
+  }
+  profile zypper {
+    #include <abstractions/base>
+    #include <abstractions/bash>
+    #include <abstractions/zypp>
+    #include <abstractions/consoles>
+    #include <abstractions/nameservice>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+
+    /{,usr/}bin/bash rix,
+    /usr/bin/rpmdb2solv         rix,
+    /usr/bin/zypper rmix,
+    /usr/share/zypper/ r,
+    /usr/share/zypper/** r,
+    /usr/bin/gpg2 px -> /usr/lib/nagios/plugins/check_zypper//gpg,
+    /usr/bin/uuidgen px -> /usr/lib/nagios/plugins/check_zypper//uuidgen,
+    /usr/lib*/libproxy-*/modules/config_gnome3.so mr,
+    /var/log/zypper.log w,
+    /proc/sys/kernel/random/uuid r,
+  }
+  profile rpm {
+    #include <abstractions/base>
+    #include <abstractions/rpm>
+    #include <abstractions/nameservice>
+    # if you have additional changes, please add them in the file
+    # /etc/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
+    #include <local/usr.lib.nagios.plugins.check_zypper.zypp_refresh>
+    /{usr/,}bin/rpm rmix,
+  }
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.lib.nagios.plugins.check_zypper>
+
+}

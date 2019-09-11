@@ -1,0 +1,1126 @@
+-------------------------------------------------------------------
+Fri Aug 16 05:29:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302166
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302166  2019-08-15 10:37:01-07:00 America/Los_Angeles
+  
+      - Fix context test on older perls
+  
+  1.302165  2019-08-15 10:21:09-07:00 America/Los_Angeles
+  
+      - Better diagnostics when a context is destroyed unexpectedly
+      - Add an event to notify when END phase starts
+
+-------------------------------------------------------------------
+Sun Apr 28 05:38:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302164
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302164  2019-04-27 01:43:44-07:00 America/Los_Angeles
+  
+  1.302163  2019-04-25 05:45:47-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Do not use threads::Shared in Test::Tester::Capture (#826)
+      - Add missing version info to Info/Table
+      - Fix event in global destruction bug (#827)
+      - Proper fix for todo = '' (#812, #829)
+
+-------------------------------------------------------------------
+Wed Feb  6 06:30:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302162
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302162  2019-02-05 19:55:14-08:00 America/Los_Angeles
+  
+      - Typo fixes in documentation
+  
+  1.302161  2019-01-29 09:34:27-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Remove SHM Optimization
+
+-------------------------------------------------------------------
+Sat Jan 19 06:30:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302160
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302160  2019-01-18 11:44:33-08:00 America/Los_Angeles
+  
+      - No Changes since last trial release
+  
+  1.302159  2019-01-09 13:21:37-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add table support to ctx->fail and ctx->fail_and_return
+      - Fix Instance.t on haiku-os
+  
+  1.302158  2019-01-08 15:36:24-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix TAP test on windows
+      - Fix math errors in table indentation
+      - Devel requires Term::Table
+  
+  1.302157  2019-01-08 14:10:29-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix minor typos and missing doc sections
+      - Add table support in info facet and TAP formatter
+
+-------------------------------------------------------------------
+Tue Jan  8 06:53:31 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302156
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302156  2019-01-07 11:13:07-08:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  1.302155  2019-01-04 11:25:17-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix test not to fail in non-english locales
+  
+  1.302154  2019-01-04 10:20:54-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix SHM pid checking for some platforms in Instance.t
+      - Add SHM errno/msg to warning about SHM going away
+  
+  1.302153  2019-01-03 08:39:42-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Improve SHM verification and state awareness
+  
+  1.302152  2018-12-26 12:21:32-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - More Instance.t improvements
+      - Add trace to SHM error when possible
+  
+  1.302151  2018-12-20 11:05:47-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix another locale error in Instance.t
+  
+  1.302150  2018-12-20 10:57:09-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix locale error in Instance.t
+      - Windows test fixes
+      - perl 5.6 test fixes
+  
+  1.302149  2018-12-20 09:47:31-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Even more SHM error improvements
+  
+  1.302148  2018-12-17 13:08:23-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Further Improve SHM error message
+  
+  1.302147  2018-12-17 12:59:14-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Improve SHM error message
+  
+  1.302146  2018-12-17 09:06:44-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix SHM test to work on machines without SHM
+  
+  1.302145  2018-12-12 11:26:32-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix localization error in new test (#820)
+  
+  1.302144  2018-12-12 09:51:25-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add tests for shmwrite fix (#815)
+  
+  1.302143  2018-12-11 19:10:37-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix failure to check error code on shmwrite (#815)
+  
+  1.302142  2018-12-11 11:55:22-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix #814 Windows fork+test failure
+      - Fix #819 Documentation updates
+      - Fix #810 Verbose TAP newline regression
+      - Fix #817 local $TODO bug
+      - Fix #812 Another local $TODO bug
+      - Fix #815 shm read warning
+      - Merge doc fix PR's from magnolia-k (thanks!)
+
+-------------------------------------------------------------------
+Thu Dec  6 16:26:03 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.302141
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302141  2018-11-30 14:27:19-08:00 America/Los_Angeles
+  
+      - Fix bug where IPC init failed in preload+fork environments
+
+-------------------------------------------------------------------
+Tue Aug 14 06:13:42 UTC 2018 - coolo@suse.com
+
+- updated to 1.302140
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302140  2018-08-13 08:00:25-07:00 America/Los_Angeles
+  
+      - No Changes since last release
+  
+  1.302139  2018-07-17 12:38:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Mask warning from the recent IPC fix generated when threaded Test tools are loaded at run-time
+
+-------------------------------------------------------------------
+Thu Jul 12 06:08:39 UTC 2018 - coolo@suse.com
+
+- updated to 1.302138
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302138  2018-07-11 09:29:51-07:00 America/Los_Angeles
+  
+      - No changes since trial
+  
+  1.302137  2018-05-25 08:45:13-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make it safe to fork before events in IPC
+
+-------------------------------------------------------------------
+Fri Apr 20 06:04:39 UTC 2018 - coolo@suse.com
+
+- updated to 1.302136
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302136  2018-04-19 05:40:11-07:00 America/Los_Angeles
+  
+      - Add test2_add_callback_testing_done to Test2::API
+
+-------------------------------------------------------------------
+Sat Mar 31 06:03:12 UTC 2018 - coolo@suse.com
+
+- updated to 1.302135
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302135  2018-03-29 22:53:00-07:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  1.302134  2018-03-19 21:20:08-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure all hubs, events, and contexts get a unique (per run) id.
+      - Use a common generator for unique(enough) id's (not UUIDs)
+
+-------------------------------------------------------------------
+Mon Mar 12 06:53:16 UTC 2018 - coolo@suse.com
+
+- updated to 1.302133
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302133  2018-03-11 12:48:37-07:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  1.302132  2018-03-09 15:43:51-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add method to validate facet data
+      - Add Test2::Event::V2 event class, and context helpers
+      - Improve how events handle facets
+      - Break out meta_facet_data
+      - Document and fix Facets2Legacy
+      - Fix nested and in_subtest to look at hub facets
+      - Fix event->related and trace with uuid
+  
+  1.302131  2018-03-07 09:36:16-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure event puts the uuid into the about facet
+
+-------------------------------------------------------------------
+Thu Mar  8 06:57:58 UTC 2018 - coolo@suse.com
+
+- updated to 1.302130
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302130  2018-03-07 08:07:54-08:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  1.302129  2018-03-06 13:43:22-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make hubs tag events with a new facet
+
+-------------------------------------------------------------------
+Tue Mar  6 07:04:37 UTC 2018 - coolo@suse.com
+
+- updated to 1.302128
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302128  2018-03-05 09:26:53-08:00 America/Los_Angeles
+  
+      - No changes since the trial
+  
+  1.302127  2018-03-02 12:43:56-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix missing UUID in Test::Builder subtests
+  
+  1.302126  2018-03-01 23:15:52-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add optional UUID tagging
+
+-------------------------------------------------------------------
+Fri Feb 23 07:08:35 UTC 2018 - coolo@suse.com
+
+- updated to 1.302125
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302125  2018-02-21 23:10:39-08:00 America/Los_Angeles
+  
+      - No changes since trial
+  
+  1.302124  2018-02-13 22:02:48-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix a test to skip without threads
+  
+  1.302123  2018-02-13 21:39:31-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make it possible to disable IPC
+
+-------------------------------------------------------------------
+Wed Feb  7 17:24:45 UTC 2018 - coolo@suse.com
+
+- updated to 1.302122
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302122  2018-02-05 08:13:56-08:00 America/Los_Angeles
+  
+      - Add 'mode' ro render facet
+  
+  1.302121  2018-02-04 13:27:41-08:00 America/Los_Angeles
+  
+      - Update Copyright
+      - Add 'render' facet
+
+-------------------------------------------------------------------
+Fri Dec  8 06:59:16 UTC 2017 - coolo@suse.com
+
+- updated to 1.302120
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302120  2017-11-29 18:49:15-08:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  1.302119  2017-11-28 15:35:42-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix IPC reload bug
+  
+  1.302118  2017-11-28 10:14:12-08:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  1.302117  2017-11-27 14:10:53-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix event Out of Order bug
+      - Add driver_abort() hook for IPC Drivers
+  
+  1.302116  2017-11-23 15:14:26-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - add better interface for ipc_wait
+  
+  1.302115  2017-11-22 21:14:55-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - ipc_wait now reports exit and signal values
+  
+  1.302114  2017-11-21 15:28:39-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Added pre-subtest hook to Test2::API (#801 from dakkar)
+  
+  1.302113  2017-11-20 14:04:16-08:00 America/Los_Angeles
+  
+      - Fix SIGPIPE in IPC test
+      - Mark a test as usually AUTHOR_TESTING only
+  
+  1.302112  2017-11-20 06:43:16-08:00 America/Los_Angeles
+  
+      - Fix test on threaded 5.8
+  
+  1.302111  2017-11-18 09:54:33-08:00 America/Los_Angeles
+  
+      - Remove debugging from previous trial
+  
+  1.302110  2017-11-17 09:47:23-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix test breakage (from previous trial) on older perls
+  
+  1.302109  2017-11-17 09:35:48-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix some fragile tests
+      - Add debugging to API/Instance.t for a cpan-testers failure
+  
+  1.302108  2017-11-16 14:19:24-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Apply p5p test patch from Craig A. Berry <craigberry@mac.com>
+  
+  1.302107  2017-11-16 07:44:59-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Allow regexp in Test::Tester
+
+-------------------------------------------------------------------
+Thu Nov  9 06:55:54 UTC 2017 - coolo@suse.com
+
+- updated to 1.302106
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302106  2017-10-20 20:42:43-07:00 America/Los_Angeles
+  
+      - Make version number in HashBase sane.
+  
+  1.302105  2017-10-20 07:09:45-07:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  1.302104  2017-10-19 11:39:01-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Combine multiple diags into one event
+
+-------------------------------------------------------------------
+Thu Oct 19 05:58:42 UTC 2017 - coolo@suse.com
+
+- updated to 1.302103
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302103  2017-10-15 10:11:29-07:00 America/Los_Angeles
+  
+      - No changes since last TRIAL
+  
+  1.302102  2017-10-14 20:05:45-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix some TODO edge cases that were not previously accounted for
+  
+  1.302101  2017-10-12 07:43:16-07:00 America/Los_Angeles
+  
+      - Bump Test::Builder::IO::Scalar version for core
+
+-------------------------------------------------------------------
+Wed Oct 11 05:54:45 UTC 2017 - coolo@suse.com
+
+- updated to 1.302100
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302100  2017-10-10 14:30:18-07:00 America/Los_Angeles
+  
+      - No changes since last TRIAL
+  
+  1.302099  2017-10-10 09:29:40-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix run_subtest inherit_trace option
+
+-------------------------------------------------------------------
+Mon Oct  9 05:57:21 UTC 2017 - coolo@suse.com
+
+- updated to 1.302098
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302098  2017-10-03 06:13:49-07:00 America/Los_Angeles
+  
+      - Add docs for test2_stdout and test2_stderr
+      - Fix 5.6 support
+
+-------------------------------------------------------------------
+Tue Oct  3 06:14:54 UTC 2017 - coolo@suse.com
+
+- updated to 1.302097
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302097  2017-10-02 19:35:08-07:00 America/Los_Angeles
+  
+      - Fix hub->process bug that could let an error pass
+      - Fix #789 (Modification of read only value)
+      - Fix typo in Test::Builder when looking for IPC (#777)
+      - Fix #791, clone_io broke on scalar io layer
+      - Fix #790 and #756, Exception event stingify exception
+      - Localize $^E in context (#780)
+      - Fix test that failed in verbose mode (#770)
+
+-------------------------------------------------------------------
+Tue Sep 12 06:16:18 UTC 2017 - coolo@suse.com
+
+- updated to 1.302096
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302096  2017-09-10 21:16:18-07:00 America/Los_Angeles
+  
+      -Fix to work with subref-in-stash optimisation (Father C.)
+  
+  1.302095  2017-08-31 20:35:22-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make several tests work with preload
+  
+  1.302094  2017-08-30 21:27:23-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix Test::Builder in a preload scenario
+  
+  1.302093  2017-08-29 21:05:20-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure Test::Builder does not initialize Test2 too soon.
+  
+  1.302092  2017-08-28 21:30:06-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix bug in Facets for TodoDiag
+      - Add API command to reset after a fork
+      - Add 'important' flag to info event facet
+  
+  1.302091  2017-08-08 19:50:55-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add 'new_root' constructor for formatters
+      - Add intercept_deep() to the API
+      - Fix bug in Version event
+      - Add 'number' attribute to assertion facet
+  
+  1.302090  2017-07-09 21:10:08-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix test that unintentionally required Test2::Suite
+  
+  1.302089  2017-07-09 20:51:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix plan in buffered subtest so that the facts say it is buffered
+  
+  1.302088  2017-06-28 21:55:21-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix tests on perl 5.25+ with newer Data::Dumper
+  
+  1.302087  2017-06-26 20:32:21-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Introduce 'Facets' for events
+      - Performance enhancements
+      - Upgrade inline HashBase
+      - Move Test2::Util::Trace to Test2::EventFacet::Trace
+      - Track hub id in Trace
+      - Remove Info event
+      - Add Pass and Fail events
+      - Remove Event JSON interface
+
+-------------------------------------------------------------------
+Fri Jun 23 06:24:18 UTC 2017 - coolo@suse.com
+
+- updated to 1.302086
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302086  2017-06-20 10:43:13-07:00 America/Los_Angeles
+  
+      - Make it possible to turn off result logging in Test::Builder
+
+-------------------------------------------------------------------
+Wed May  3 06:36:54 UTC 2017 - coolo@suse.com
+
+- updated to 1.302085
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302085  2017-05-01 19:24:37-07:00 America/Los_Angeles
+  
+      - No Changes since last TRIAL
+  
+  1.302084  2017-04-29 20:42:48-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Better IO management
+      - Allow access to the STDERR/STDOUT Test2::API uses
+      - Formatters should use the Test2::API handles
+
+-------------------------------------------------------------------
+Sat Apr 15 06:42:55 UTC 2017 - coolo@suse.com
+
+- updated to 1.302083
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302083  2017-04-14 10:55:26-07:00 America/Los_Angeles
+  
+      - Update some breakage info for Test::More::Prefix and Test::DBIx::Class::Schema
+  
+  1.302082  2017-04-11 12:56:24-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix test that incorrectly called private function as method
+  
+  1.302081  2017-04-06 10:39:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix threads timeout for older perls (as best we can)
+  
+  1.302080  2017-04-04 20:24:55-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Timeout when waiting for child procs and threads (#765)
+      - Fix SIGSYS localization issue (#758)
+      - Fix outdated docs (#759, #754)
+      - Fix bail-out in buffered subtest (#747)
+  
+  1.302079  2017-04-03 12:12:02-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fixes for '. in @INC' changes (#768)
+
+-------------------------------------------------------------------
+Fri Mar  3 07:37:45 UTC 2017 - coolo@suse.com
+
+- updated to 1.302078
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302078  2017-03-01 15:24:12-08:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  1.302077  2017-02-19 14:34:30-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix #762, newlines for todo subtest
+      - Revisit #637, fix rare race condition it created
+  
+  1.302076  2017-02-01 19:38:42-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix crash when TB->reset used inside subtest
+
+-------------------------------------------------------------------
+Mon Feb 13 11:04:20 UTC 2017 - coolo@suse.com
+
+- use %license
+
+-------------------------------------------------------------------
+Wed Jan 11 07:15:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.302075
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302075  2017-01-10 19:39:28-08:00 America/Los_Angeles
+  
+      - No changes, just marking a stable release
+  
+  1.302074  2017-01-08 11:41:44-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add 'cid' to trace
+      - Add signatures to trace
+      - Add related() to events
+      - Now it is possible to check if events are related
+      - Add 'no_fork' option to run_subtest()
+
+-------------------------------------------------------------------
+Wed Dec 21 07:18:31 UTC 2016 - coolo@suse.com
+
+- updated to 1.302073
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302073  2016-12-18 23:02:54-08:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  1.302072  2016-12-18 01:08:12-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Expose tools.pl as Test2::Tools::Tiny
+
+-------------------------------------------------------------------
+Sun Dec 18 07:15:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.302071
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302071  2016-12-17 12:08:29-08:00 America/Los_Angeles
+  
+      - No changes since last trial release
+  
+  1.302070  2016-12-14 21:32:47-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Added two new event classes, Test2::Event::Encoding and
+        Test2::Event::TAP::Version. These are primarily being added for the
+        benefit of Test2::Harness now, but they could be useful for other Test2
+        event consumer tools in the future. Implemented by Dave Rolsky (#743).
+  
+  1.302069  2016-12-12 15:03:04-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Generate HashBase from Object::HashBase which has been split out
+      - When a subtest is marked as todo, all of its contained Ok and Subtest
+        events are now updated so that they return true for
+        $e->effective_pass. Implemented by Dave Rolsky. (#742)
+  
+  1.302068  2016-12-03 13:50:01-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add TO_JSON and from_json methods to Test2::Event and Test2::Trace::Util
+        to faciliate transferring event data between processes. Implemented by
+        Dave Rolsky. (#741).
+
+-------------------------------------------------------------------
+Thu Nov 24 07:16:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.302067
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302067  2016-11-23 07:37:56-08:00 America/Los_Angeles
+  
+      - Fix context test for recent blead.
+  
+  1.302066  2016-11-08 07:58:39-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Handle cases where SysV IPC can be available but not enabled
+      - Import 'context' into Test2::IPC, it is used by 'cull'
+      - Propogate warnings settings to use_ok (#736)
+  
+  1.302065  2016-10-30 11:54:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Set the TEST_ACTIVE env var to true
+      - Set the TEST2_ACTIVE env var to true
+      - Fix the oldest bug still in the bug list (#6)
+        This fixes cmp_ok output is some confusing cases
+      - Update travis config
+      - Add missing author deps
+      - Fix handling of negative pid's on windows
+      - Add can() to Test::Tester::Delegate (despite deprecation)
+      - Fix some minor test issues
+  
+  1.302064  2016-10-24 21:03:24-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Repo management improvements
+      - Better handling of info vs diag in ->send_event
+      - Fix test that used 'parent'
+      - Better handling of non-bumping failures (#728)
+  
+  1.302063  2016-10-23 21:31:20-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix double release when 'throw' is used in context_do()
+
+-------------------------------------------------------------------
+Fri Oct 21 06:23:55 UTC 2016 - coolo@suse.com
+
+- updated to 1.302062
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302062  2016-10-20 06:16:08-07:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  1.302061  2016-09-30 14:49:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Removed a warning when using a non-TAP formatter with Test::Builder
+        about the formatter not "no_header" and "no_diag". This happened even if
+        the alternative formatter class implemented these attributes.
+      - When finalize is called on a formatter, it now receives one more
+        argument, a boolean indicating whether or not the call is for a subtest
+        or not.
+  
+  1.302060  2016-09-25 12:46:46-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Formatters now have terminate() and finalize() methods. These are called
+        when there is a skip_all or bail event (terminate) or when a test suite
+        is exiting normally (finalize). This allows formatters to finalize their
+        output, which is important for any sort of document-oriented format (as
+        opposed to a stream format like TAP). (#723)
+
+-------------------------------------------------------------------
+Tue Sep 27 06:18:19 UTC 2016 - coolo@suse.com
+
+- updated to 1.302059
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+-------------------------------------------------------------------
+Mon Sep 26 05:59:26 UTC 2016 - coolo@suse.com
+
+- updated to 1.302059
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302059  2016-09-25 12:32:21-07:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  1.302058  2016-09-21 10:46:13-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Mask warning when comparing $@ in Test2::API::Context
+  
+  1.302057  2016-09-18 12:12:18-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Doc fixes
+      - Win32 color support in Test::Builder::Tester
+      - Support v-strings in is_deeply
+      - A streamed subtest run inside a buffered subtest will be automatically
+        converted to a buffered subtest. Otherwise the output from inside the
+        subtest is lost entirely. (#721)
+
+-------------------------------------------------------------------
+Tue Sep 13 06:07:20 UTC 2016 - coolo@suse.com
+
+- updated to 1.302056
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302056  2016-09-12 09:03:49-07:00 America/Los_Angeles
+  
+      - Minor typo fix
+      - No logic chnges since last trial
+  
+  1.302055  2016-08-30 12:13:32-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix special case of ok line ending in \
+      - Improve a test that captures STDERR/STDOUT (Thanks HAARG)
+  
+  1.302054  2016-08-20 16:21:44-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Allow '#' and '
+' in ok names
+  
+  1.302053  2016-08-17 21:22:55-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix skip_all in require in intercept (#696)
+      - Documentation of what is better in Test2 (#663)
+      - Document Test::Builder::Tester plan limitations
+      - Document limitations in is_deeply (#595)
+      - Better documentation of done_testing purpose (#151)
+      - Make ctx->send_event detect termination events (#707)
+
+-------------------------------------------------------------------
+Sun Aug 14 05:57:02 UTC 2016 - coolo@suse.com
+
+- updated to 1.302052
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302052  2016-08-13 14:34:07-07:00 America/Los_Angeles
+  
+      - No Changes from last trial
+  
+  1.302051  2016-08-11 20:26:22-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix setting hub when getting context
+  
+  1.302050  2016-08-10 22:12:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add contact info to main doc and readme
+
+-------------------------------------------------------------------
+Fri Jul 29 06:00:30 UTC 2016 - coolo@suse.com
+
+- updated to 1.302049
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302049  2016-07-28 07:03:31-07:00 America/Los_Angeles
+  
+      - No Changes from last trial
+  
+  1.302048  2016-07-27 07:42:14-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add 'active' attribute to hub
+
+-------------------------------------------------------------------
+Sun Jul 24 05:55:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.302047
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302047  2016-07-22 22:36:29-07:00 America/Los_Angeles
+  
+      - No Changes from last trial
+  
+  1.302046  2016-07-19 06:58:43-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Restore traditional note/diag return values (#694)
+
+-------------------------------------------------------------------
+Tue Jul 19 05:51:08 UTC 2016 - coolo@suse.com
+
+- updated to 1.302045
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302045  2016-07-18 09:05:15-07:00 America/Los_Angeles
+  
+      - No changes from last TRIAL release
+  
+  1.302044  2016-07-13 17:56:20-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix test that segv'd on older perls
+  
+  1.302043  2016-07-12 09:37:31-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix TODO in mixed T2/TB subtests
+  
+  1.302042  2016-07-11 20:30:35-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix IPC event ordering bug
+  
+  1.302041  2016-07-09 17:01:45-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Work around IPC bug on windows
+
+-------------------------------------------------------------------
+Mon Jul 11 05:56:36 UTC 2016 - coolo@suse.com
+
+- updated to 1.302040
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302040  2016-07-09 16:55:00-07:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  1.302039  2016-07-07 22:01:02-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Info event for better diagnostics
+  
+  1.302038  2016-07-05 07:00:18-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix broken MANIFEST.SKIP entries (#689)
+
+-------------------------------------------------------------------
+Wed Jul  6 08:49:04 UTC 2016 - coolo@suse.com
+
+- updated to 1.302037
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302037  2016-07-04 10:09:00-07:00 America/Los_Angeles
+  
+      - No changes from trial
+  
+  1.302036  2016-07-03 11:52:45-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Restore PerlIO layer cloning on STDERR and STDOUT
+
+-------------------------------------------------------------------
+Mon Jul  4 13:20:23 UTC 2016 - coolo@suse.com
+
+- updated to 1.302035
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302035  2016-06-27 08:55:55-07:00 America/Los_Angeles
+  
+      - No changes since TRIAL release
+  
+  1.302034  2016-06-25 13:51:00-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix some breakage info (Thanks Dolman!)
+      - POD Fixes (Thanks cpansprout!)
+
+-------------------------------------------------------------------
+Mon Jun 27 08:35:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.302033
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302033  2016-06-24 05:56:54-07:00 America/Los_Angeles
+  
+      - No changes from last trial release
+  
+  1.302032  2016-06-22 11:30:46-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix nested TODO handling of Diags (#684)
+
+-------------------------------------------------------------------
+Thu Jun 23 07:09:57 UTC 2016 - coolo@suse.com
+
+- updated to 1.302031
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302031  2016-06-21 09:51:27-07:00 America/Los_Angeles
+  
+      - Remove carp from dep list #682
+  
+  1.302030  2016-06-18 19:02:55-07:00 America/Los_Angeles
+  
+      - No changes from last DEV release
+  
+  1.302029  2016-06-17 06:56:54-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Properly skip thread test when threads are broken
+  
+  1.302028  2016-06-16 19:21:58-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add 'inherit_trace' param to run_subtest
+  
+  1.302027  2016-06-15 09:42:32-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - use pre_filter instead of filter for TODO in Test::Builder (Fix $683)
+      - Fix typos in transitions doc (#681)
+
+-------------------------------------------------------------------
+Sun Jun 12 13:52:56 UTC 2016 - coolo@suse.com
+
+- updated to 1.302026
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302026  2016-06-07 07:53:30-07:00 America/Los_Angeles
+  
+      - No Changes from 1.302025-TRIAL
+  
+  1.302025  2016-06-06 22:38:12-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure enabling culling/shm sets pid and tid (Fix #679)
+  
+  1.302024  2016-06-02 20:27:35-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Generic event type
+  
+  1.302023  2016-06-02 08:09:54-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Do not fail if Test2::API::Breakage cannot load (rare 5.10.0 issue)
+      - Potential fix for t/Legacy/Regression/637.t
+      - Make t/Legacy/Regression/637.t AUTHOR_TESTING for now
+
+-------------------------------------------------------------------
+Mon May 30 11:05:45 UTC 2016 - coolo@suse.com
+
+- updated to 1.302022
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302022  2016-05-28 17:53:11-07:00 America/Los_Angeles
+  
+      - Improve thread checks to better detect broken 5.10 builds
+      - Use thread checks to skip/run t/Legacy/Regression/637.t
+  
+  1.302021  2016-05-20 21:47:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Files.t should warn, not die, if it cannot remove its temp dir.
+      - VMS fixes for Files.t and IPC system
+  
+  1.302020  2016-05-18 11:54:15-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Many micro-opts from Graham Knop (haarg)
+      - Spelling fixes and tests from Karen Etheridge (ether)
+      - Fix leaky File.t file so that tmp doesn't fill up
+      - Move some modules out of the known broken list in xt tests
+      - Add Test2 based tools to downstream testing
+      - Change when PID/TID are stashed (for forkprove)
+
+-------------------------------------------------------------------
+Mon May 23 12:54:47 UTC 2016 - coolo@suse.com
+
+- updated to 1.302019
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+-------------------------------------------------------------------
+Wed Jul  8 07:50:02 UTC 2015 - coolo@suse.com
+
+- recompile with perl 5.22
+
+-------------------------------------------------------------------
+Tue Apr 14 19:24:23 UTC 2015 - coolo@suse.com
+
+- updated to 1.001014
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.001014     Tue Dec 28 08:31:00:00 PST 2015
+      * Write a test to ensure this changes file gets updated
+      * Update changes file for 1.001013
+  
+  1.001013     Sun Dec 28 08:00:00:00 PST 2015
+      * Fix a unit test that broke on some platforms with spaces in the $^X path
+
+-------------------------------------------------------------------
+Fri Jan 23 11:50:30 UTC 2015 - coolo@suse.com
+
+- add obsoletes to now integrated modules
+
+-------------------------------------------------------------------
+Sat Dec 27 22:22:10 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.001012:
+  + Remove POD Coverage test
+  + Integrate Test::Tester and Test::use::ok for easier 
+    downgrade from trial
+  + Fix bug in cmp_ok
+
+-------------------------------------------------------------------
+Fri Oct 17 06:28:04 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.001008:
+  + Fix subtest name when skip_all is used
+  + Changed install path for perl 5.12 or higher.
+  + Another Minor doc fix to solve test bug
+  + Fix #399, conflict with strawberry-portable
+
+-------------------------------------------------------------------
+Mon Mar 24 21:12:41 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.001003:
+  + Doc updates for maintainer change 
+
+-------------------------------------------------------------------
+Tue Dec 10 06:33:29 UTC 2013 - coolo@suse.com
+
+- updated to 1.001002
+    * restore ability to use regex with test_err and test_out
+      (Zefram) [rt.cpan.org #89655] [github #389] [github #387]
+
+    Bug Fixes
+    * Fix precedence error with (return ... and ...)
+      (nthykier) [github #385]
+
+    Doc Changes
+    * Add a shorter work around for the UTF-8 output problem.
+      (Michael G Schwern)
+
+    Bug Fixes
+    * Test::Builder::Tester now works with subtests.
+      (Michael G Schwern) [github 350]
+    * Fix test_fail() inside a do statement.
+      (nnutter) [github #369]
+
+    New Features
+    * A subtest will put its name at the front of its results to make
+      subtests easier to read. [github #290] [github #364]
+      (Brendan Byrd)
+
+    Feature Changes
+    * like() and unlike() no longer warn about undef. [github #335]
+      (Michael G Schwern)
+ 
+-------------------------------------------------------------------
+Fri Nov 18 11:10:18 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Feb 23 08:28:21 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.98:
+  + subtest() should not fail if $? is non-zero.
+  + The behavior of is() and undef has been documented.
+  + Adapted the tests for the new Perl 5.14 regex stringification.
+  + The filehandles used by default will now inherit any filehandle
+    disciplines from STDOUT and STDERR IF AND ONLY IF they were applied
+    before Test::Builder is loaded.
+- also package the examples in docdir
+
+-------------------------------------------------------------------
+Tue Nov 30 14:20:28 UTC 2010 - coolo@novell.com
+
+- buildrequire perl-devel on fedora
+
+-------------------------------------------------------------------
+Thu Sep  9 14:00:25 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- bzipped Source
+- added bcond_with pod
+- fixed deps
+  o Removed: Prov perl-Test-More, perl-Test-Builder
+  o fixed dep for *Pod*
+
+-------------------------------------------------------------------
+Fri Aug 27 00:55:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.96
+  * You can call done_testing() again after reset() [googlecode 59]
+
+-------------------------------------------------------------------
+Mon Jul  5 23:16:14 UTC 2010 - jw@novell.com
+
+- looong time no updated. 0.88 is needed for CPANPLUS packages.
+  Let's fast forward this one.
+- Update to 0.95_02
+  See http://cpansearch.perl.org/src/MSCHWERN/Test-Simple-0.95_02/Changes 
+
+-------------------------------------------------------------------
+Tue Feb 12 15:22:53 CET 2008 - lars@linux-schulserver.de
+
+- Update to 0.74
+  + Add abstract and author to the meta information.
+  + Put the use_ok() fix from 0.71 back.
+  + Fixed an obscure problem with is_deeply() and overloading ==
+    [rt.cpan.org 20768].  Thanks Sisyphus.
+  + Removed dependency on Text::Soundex [rt.cpan.org 25022]
+  + Fixed a 5.5.x failure in fail-more.t
+  + Got rid of the annoying sort_bug.t test that revealed problems with some
+    threaded perls.  It was testing the deprecated eq_* functions and not
+    worth the bother.  Now it tests is_deeply().  [rt.cpan.org 17791]
+  + Minor POD mistake in Test::Builder [rt.cpan.org 28869]
+  + Test::FAQ has been updated with some more answers.
+  + Fixed the "LICENSE is not a known MakeMaker parameter name" warning
+    on older MakeMakers for real this time.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:05:05 CEST 2007 - lars@linux-schulserver.de
+
+- initial version 0.70
+

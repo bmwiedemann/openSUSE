@@ -1,0 +1,62 @@
+--- kinput2-v3.1/cmd/kinput2.c.xx	2005-06-15 14:35:43.000000000 +0200
++++ kinput2-v3.1/cmd/kinput2.c	2005-06-15 14:35:52.000000000 +0200
+@@ -26,6 +26,8 @@
+ 
+ #include <stdio.h>
+ #include <signal.h>
++#include <unistd.h>
++#include <stdlib.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+--- kinput2-v3.1/lib/ConvCtrl.c.xx	2005-06-15 14:33:24.000000000 +0200
++++ kinput2-v3.1/lib/ConvCtrl.c	2005-06-15 14:33:45.000000000 +0200
+@@ -21,6 +21,7 @@
+ #include <X11/IntrinsicP.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Xmu/CharSet.h>
++#include <stdio.h>
+ #include "ConvCtrlP.h"
+ #include "InputConv.h"
+ #include "ConvDisp.h"
+--- kinput2-v3.1/lib/KIProto.c.xx	2005-06-15 14:34:19.000000000 +0200
++++ kinput2-v3.1/lib/KIProto.c	2005-06-15 14:34:11.000000000 +0200
+@@ -23,6 +23,7 @@
+ #include <X11/Xatom.h>
+ #include <X11/Xmu/Atoms.h>
+ #include <X11/Xmu/CharSet.h>
++#include <stdio.h>
+ #include "KIProtoP.h"
+ #include "ConvMgr.h"
+ #include "OverConv.h"
+--- kinput2-v3.1/lib/XimpProto.c.xx	2005-06-15 14:34:36.000000000 +0200
++++ kinput2-v3.1/lib/XimpProto.c	2005-06-15 14:34:44.000000000 +0200
+@@ -28,6 +28,7 @@
+ #include <X11/Xatom.h>
+ #include <X11/Xmu/Atoms.h>
+ #include <X11/Xmu/CharSet.h>
++#include <stdio.h>
+ #include "XIMProto.h"
+ #include "XimpProtoP.h"
+ #include "ConvMgr.h"
+--- kinput2-v3.1/lib/ctext.c.xx	2005-06-15 14:34:51.000000000 +0200
++++ kinput2-v3.1/lib/ctext.c	2005-06-15 14:35:03.000000000 +0200
+@@ -71,6 +71,8 @@
+ static char *rcsid = "$Id: ctext.c,v 2.6 1999/03/10 08:55:15 ishisone Exp $";
+ #endif
+ 
++#include <string.h>
++
+ typedef unsigned short	wchar;
+ 
+ #define NULL	0
+--- kinput2-v3.1/lib/Canna.c.xx	2005-06-15 14:35:13.000000000 +0200
++++ kinput2-v3.1/lib/Canna.c	2005-06-15 14:35:25.000000000 +0200
+@@ -58,6 +58,7 @@
+ #if XtSpecificationRelease > 4
+ #include <X11/Xfuncs.h>
+ #endif
++#include <stdlib.h>
+ #include "CannaP.h"
+ #include "DebugPrint.h"
+ 

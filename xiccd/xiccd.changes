@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed May 10 16:55:58 UTC 2017 - jengelh@inai.de
+
+- Update description, improve write style a bit.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.2.4 (changes since 0.2.2):
+  * Removed obsolete DMI support.
+  * xiccd now registers OutputEdidMd5 property for devices.
+  * edid: Don't automatically generate edid profiles by default.
+
+-------------------------------------------------------------------
+Mon Oct 20 12:17:15 UTC 2014 - sor.alexei@meowr.ru
+
+- Add download URL.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Sat Apr 5 11:43:27 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

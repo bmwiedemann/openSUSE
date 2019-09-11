@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Jun 17 15:29:31 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.02.08
+  * Makefile: bump version
+  * fixup some constifications
+  * Make delay_info const
+  * Make -r 0 to be no rate control (same as -n)
+  * Add -I option to help
+  * debian/copyright: use secure URI
+  * debian/control: update debhelper version to >=11
+  * debian/control: remove empty last line
+  * debian/compat: update to 11
+  * constify sizes
+  * voidify function returns
+
+-------------------------------------------------------------------
+Fri Jan  5 21:32:17 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.07
+  * Makefile: bump version
+  * Makefile: add snapcraft directory to make dist rule
+  * debian/control: update Standards-Version to 4.1.2
+  * update copyright year
+  * Add snapcraft
+  * Add extra parentheses for clarity
+  * voidify fclose()
+
+-------------------------------------------------------------------
+Wed May 10 15:40:38 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.06
+  * Makefile: bump minor version
+  * Fix incorrect position of \ escape in -s option man page
+
+- update to version 0.02.05
+  * Add build hardening flags
+  * Makefile: bump version
+  * Use build-in popcount to count bits
+  * Allow float comparisons a little bit of slop
+  * Make get_pagesize helper static
+  * Makefile: add PEDANTIC flags
+
+-------------------------------------------------------------------
+Sat Jul 30 13:55:36 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.02.04
+  * Makefile: bump version
+  * debian/control: update Standards-Version to 3.9.8
+
+- update to version 0.02.03
+  * Makefile bunp version
+  * reduce scope of variable ret
+  * Update date in manual
+  * Don't centre table in man page
+  * Add -x pipe transfer size option
+  * Update copyright year
+
+-------------------------------------------------------------------
+Wed Nov 11 21:31:13 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

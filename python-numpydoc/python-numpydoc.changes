@@ -1,0 +1,192 @@
+-------------------------------------------------------------------
+Wed Jul 24 07:27:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull both nose and pytest, just stick with pytest
+
+-------------------------------------------------------------------
+Tue Jul 23 17:56:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.9.1
+  * Updating minimum sphinx version in setup.py
+- Update to version 0.9.0
+  * CI: bump minimum Sphinx version tested from 1.2.3 to 1.6.5
+  * report object name upon mangle_docstrings exception
+  * ENH: Just use obj
+  * FIX: Opt-in, test, uniform styling, css
+  * Add cross-reference links to parameter types
+  * ENH: Allow a trailing COMMA or PERIOD in a See Also function list block. 
+  * FIX parsing of type-only return params
+  * ENH: Added support for multiple functions+description
+  * ENH: accept autoclass member options
+  * Support Receives section for generator.send(...) params
+  * Use DEDUPLICATION_TAG to determine whether a citation node is
+    in a docstring
+  * ENH Only print the index if it is necessary.
+  * Clarify location of certain invalid docstrings.
+  * BUG: turn member descriptors into links 
+  * FIX: Escape chars in re
+  * MNT Fix collections.abc imports
+  * FIX pedantic handling of whitespace in reference regex
+  * FIX remove duplicated citation back-references
+  * Move arg and kwargs escaping to docscrape_sphinx
+  * Escape the * in *args and **kwargs 
+
+-------------------------------------------------------------------
+Sun Apr 29 04:11:15 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * require Jinja (from setup.py)
+  * always run tests
+
+- update to version 0.8.0:
+  * DOC: update URL to documentation in setup.py
+  * Use isdatadescriptor instead of isgetsetdescriptor
+  * Ensure reference renaming is parallel-safe (#136)
+  * Simplify and restructure README
+  * Automatically load autosummary (#143)
+  * FIX Handle case where description is empty in returns (#148)
+  * FIX handling of parameter names ending '_'
+  * Handle case where description is empty (#140)
+  * Correct deduplication logic
+  * Make sure case when class + method docstrings are combined is not
+    reprocessed
+  * Avoid reprocessing already numpydocced docstrings
+  * DOC Use .. deprecated for deprecation instead of .. note (#120)
+  * Add required arg to setup so that nose does not call it
+  * Cosmetic and efficiency improvements to replace_referneces (#132)
+  * Remove comment autosummary from _str_param_list
+  * Flake8
+  * Make version available to Python without dependencies; and to
+    Sphinx metadata
+  * Test use_blockquotes config
+  * Leading and trailing blank lines in parameter description should
+    not affect output
+  * Stricter comparison of whitespace in testing
+  * Corret search syntax
+  * Use definition lists rather than blockquotes
+  * Support from matplotlib import as alias for import matplotlib
+  * only recommend inline form
+  * add documentation on hyperlinks
+  * DOC: fix syntax error in deprecated of numpydoc_edit_link (#122)
+  * DOC Note on section ordering, and add missing sections
+  * DOC Fix link
+  * DOC: Restore working conf.py
+  * DOC: cross-link to github from documentation
+  * Add doc build requirements file for readthedocs
+  * Corrected rtd url
+  * Older versions of sphinx do not have imgmath
+  * DOC: pipe README.rst contents into "long_description", for PyPI
+    frontpage
+  * MAINT: update ReST formatting in README.
+  * Basic docs based on Numpy's HOW_TO_DOCUMENT.rst.txt
+  * Allow see also object ref to incorporate ~ prefix
+
+-------------------------------------------------------------------
+Sat Sep 30 18:18:29 UTC 2017 - arun@gmx.de
+
+- update to version 0.7.0:
+  * make tests run under python2.7
+  * less hacky solution to duplicate section error message, added
+    tests
+  * make getting filename python2 compatible
+  * add context to signature mangling errors
+  * MAINT: set version number to 0.7.0.dev0
+  * Fix regression in #81
+  * BUG: Make docscrape ParseError Python 3 compatible.
+  * TST: update test for change in gh-81.
+  * MAINT: set minimum Sphinx version to 1.2.3, remove linkcode
+    extension.
+  * TST: run tests on TravisCI with Python 3.6 instead of 3.5
+  * TST: run test suite after installing via sdist.
+  * BUG: fix installing numydoc, broken with missing templates after
+    gh-77.
+  * Added ..currentmodule:: before ..autosummary::
+  * Add dependency on jinja2
+  * MAINT: add PyPI classifier for Python 3.6, remove Python 2.6 / 3.3
+  * Render numpydoc strings from a template
+  * Add __version__ attribute
+  * ENH: use __text_signature__ if pydoc.doc does not reveal a
+    signature.
+  * Remove non Python3 compatible files
+  * add (possibly slightly off) source lines to mangled docstrings.
+  * FIX Unknow sections should not raise an error
+  * MAINT Added *.swp and *.swo to gitignore
+  * FIX raises an error if a section appears twice
+  * adjust tests
+  * bold attributes so we don't have to deal with trailing
+    underscores. Also looks better.
+  * BLD: fix sphinx version req
+  * Use setuptools 'install_requires' instead of 'requires' in
+    setup.py.
+  * change to deep copy for doc sections.
+  * allow extending NumpyDocString sections
+  * Make default citation pattern more general
+  * Make citation pattern configurable
+  * Avoid sorting references by length while renaming
+  * Factor out function to rename references
+-------------------------------------------------------------------
+Wed May 17 21:42:03 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Fri Jan 20 21:04:08 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 0.6.0:
+  * REL: use the distutils sdist command instead of the setuptools
+    one.
+  * numpydoc.docscrape: Restore support for Python 3.4.
+  * CI: run Travis on Sphinx 1.2.x and latest
+  * better error messages from NumpyDocString
+  * MAINT inspect.getfullargspec is deprecated in Py3.5
+  * return extension metadata
+  * CI: fix travis pip install + add caching
+  * BUG: fix spacing in sphinx class doc attribute listing
+  * PEP8 fixes for docscrape_sphinx.py
+  * PEP8 fixes for docscrape.py
+  * PEP8 fixes for numpydoc.py
+  * MAINT: More explicit call while building docstrings.
+  * TST: More unit tests for the Yields section.
+  * ENH: Raise exception if docstring contains Returns and Yields.
+  * TST : removed print statement
+  * ENH : simplify handling of Yield section
+  * Add support for Yields for sphinx strings as well.
+  * Add unit test for Yields section.
+  * ENH : NumpyDocString subclass collections.Mapping
+  * Support Yields section in traitsdoc too.
+  * Support Yields section.
+  
+-------------------------------------------------------------------
+Thu May  7 18:52:25 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.5:
+  * no changelog available
+- update project URL
+- add python-matplotlib and python-nose as test requirements
+- remove all update-alternatives logic since autosummary_generate
+  is not provided anymore
+- pass -q to test to avoid spamming the build log
+- rename README.txt to README.rst: changed upstream
+
+-------------------------------------------------------------------
+Sat Nov 08 20:43:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Thu Oct 31 12:25:04 UTC 2013 - toddrme2178@gmail.com
+
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu Aug 15 07:56:39 UTC 2013 - speilicke@suse.com
+
+- Rename spec / changes file to project name
+
+-------------------------------------------------------------------
+Mon Aug 12 14:34:02 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

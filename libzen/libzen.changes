@@ -1,0 +1,232 @@
+-------------------------------------------------------------------
+Thu Dec 21 14:22:00 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.4.37
+  * Restore CMake 2.8 compatibility
+  * Fix CSV loading with old Mac-style carriage return
+  * Fix a mutex dead lock with some thread class calls
+  version 0.4.36
+  * pkg-config and CMake improvements
+  * Correct handle of load from CSV with quotes
+  * Mageia 6, Fedora 26, Debian 9 compatibility
+  version 0.4.35
+  * Enable large files support in CMake project
+  * Visual Studio 2017 project files
+  version 0.4.34
+  * Minor performance optimizations and cleanup (Thanks to Pavel Pimenov)
+  * Add PKGBUILD file for Arch Linux
+  * CMake improvements (Thanks to evpobr)
+  * Build scripts improvements
+  * Fix for Ubuntu 16.10
+  * Change lib name for Fedora and RHEL/CentOS to follow their guidelines
+  * Update Visual Studio project files (support of 32-bit CPU without SSE)
+  version 0.4.33
+  * File::Open(): using now FILE_APPEND_DATA on windows when append mode is requested
+  * File::Open(): accept file names with * and ? characters on non-Windows platforms
+  * Better MinGW and CygWin compatibility
+  * autogen.sh: Adding missing shebang
+  * Dir/Create: create the parents directory if not existing
+  version 0.4.32
+  * Ztring::From_UTF8() was not handling 4 bytes UTF8 codes correctly
+
+- Use new source URL
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sat Mar  4 14:16:14 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to reflects its actual use.
+- Drop export CFLAGS because %configure does that already.
+- Use --disable-static in place of building and later removing .a.
+- Limit scope of %fdupes to partition.
+- Clean up descriptions.
+
+-------------------------------------------------------------------
+Sun Feb 26 15:07:01 UTC 2017 - aloisio@gmx.com
+
+- Added baselibs.conf as source file
+
+-------------------------------------------------------------------
+Sun Feb 26 14:43:12 UTC 2017 - davejplater@gmail.com
+
+- Relicensed to Zlib following Fedora.
+
+-------------------------------------------------------------------
+Sun Feb 26 10:02:21 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.4.31
+  * BigEndian2float16() was buggy
+  * <new> is possible only with C++
+  version 0.4.30
+  * New MemoryUtils.h functions for SSE2 memcpy
+  * Ztring::From_Unicode(const wchar_t S)
+  * CMake: scripts improvements, thanks to Ivan Romanov
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Mar 27 20:11:48 UTC 2014 - i@margueirte.su
+
+- update version 0.4.29
+  * Ztring: Ztring_NoZero option was not correctly implemented
+  * File: Write only is not possible with ios_base::out (file is 
+    truncated) on Linux
+  * Dir: Include_Dirs only was not working
+  * File: accepts Windows "\\?\" magic value
+
+-------------------------------------------------------------------
+
+Thu Oct  4 00:17:53 UTC 2012 - i@marguerite.su  
+
+- Update to 0.4.28
+  * Removing _T() in order to be compatible with LLVM compiler
+  * Ztring: UTF-16 conversion routines crash if the provided string size is odd.
+  * GNU: forcing stdc++ at link
+
+-------------------------------------------------------------------
+Sat May 19 15:53:06 UTC 2012 - seife+obs@b1-systems.com
+
+- add autoconf/automake/libtool to buildrequires to fix 12.2 build
+
+-------------------------------------------------------------------
+Tue Oct 18 16:29:55 UTC 2011 - nomail@nomail.com
+
+- Update to 0.4.22
+  x #3412495, Ztring: To_UTF8() was working wrong, corrected 
+    thanks to Andrew Jang
+  x #3157308, Ztring::Assign_FromFile(): Memory leak
+  + TinyXml updated
+  + float16 (on disk) support
+  + Ztring: more compatibility with uCLibC
+  x BitStream_LE: wrong result if buffer underrun
+  + HTTP helpers in Unicode version
+  x BitStream Little Endian: count of remaining bits was wrong
+  x ZtringList and ZtringListList :: Read(): do not remove pending 
+    delimiters
+  x File Open status: error with Windows return value
+
+
+-------------------------------------------------------------------
+Tue Mar  8 10:17:32 UTC 2011 - pascal.bleser@opensuse.org
+
+- add baselibs.conf
+
+- update to 0.4.17:
+  * BitStream: skip methods improvements
+
+- changes from 0.4.16:
+  * BitStream: Peek3()
+  * decimal point issues with some specific compilers/OS
+  * ZtringList: issues with EOL
+  * #3025205, file is not opened if a "?" is in it
+
+-------------------------------------------------------------------
+Sat Jul 31 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.15
+
+-------------------------------------------------------------------
+Mon May  3 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.14
+
+-------------------------------------------------------------------
+Fri Apr 16 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.13
+
+-------------------------------------------------------------------
+Tue Mar  9 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.12
+
+-------------------------------------------------------------------
+Sun Feb 21 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.11
+
+-------------------------------------------------------------------
+Mon Jan 11 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.4.10
+
+-------------------------------------------------------------------
+Fri Nov 20 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.9
+
+-------------------------------------------------------------------
+Fri Oct 30 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.8
+
+-------------------------------------------------------------------
+Tue Oct 27 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.7
+
+-------------------------------------------------------------------
+Tue Oct 13 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.6
+
+-------------------------------------------------------------------
+Fri Apr 17 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.2
+
+-------------------------------------------------------------------
+Sun Apr  5 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.1
+
+-------------------------------------------------------------------
+Sat Apr  4 00:00:00 UTC 2009 - toni@links2linux.de
+
+- redowngrade to 0.4.0
+
+-------------------------------------------------------------------
+Thu Apr  2 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.1
+
+-------------------------------------------------------------------
+Fri Mar 20 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.4.0
+
+-------------------------------------------------------------------
+Fri Feb 13 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.3.8
+
+-------------------------------------------------------------------
+Fri Jan 30 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.3.7
+
+-------------------------------------------------------------------
+Fri Jan 23 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.3.6
+
+-------------------------------------------------------------------
+Tue Dec  9 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.3.5
+- docs are now generated with doxygen
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2008 - toni@links2linux.de
+
+- added api-doc to devel subpackage
+- instead of ZenLib-config now a pkgconfig file is provided
+
+-------------------------------------------------------------------
+Mon Dec 10 00:00:00 UTC 2007 - toni@links2linux.de
+
+- libZenLib and libMediaInfoLib are renamed to libzen and libmediainfo
+- install *-config files manually
+- added devel-subpackages
+- split off from MediaInfo package

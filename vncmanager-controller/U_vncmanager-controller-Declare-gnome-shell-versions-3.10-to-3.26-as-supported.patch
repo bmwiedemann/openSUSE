@@ -1,0 +1,44 @@
+From cf9313d2415961efceb503fda94705548d22849f Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@suse.com>
+Date: Tue, 17 Jul 2018 10:58:54 +0200
+Subject: [PATCH] Declare gnome shell versions 3.10 to 3.26 as supported.
+
+Newer versions may work as well, but were not tested.
+---
+ gnome-shell-extension/metadata.json | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/gnome-shell-extension/metadata.json b/gnome-shell-extension/metadata.json
+index eaabc57..d3ed61d 100644
+--- a/gnome-shell-extension/metadata.json
++++ b/gnome-shell-extension/metadata.json
+@@ -1 +1,25 @@
+-{"shell-version": ["3.10"], "uuid": "vncmanager-controller@vncmanager.michalsrb.github.com", "name": "VNC Session Configuration", "description": "Configure VNC session managed by vncmanager"}
++{
++    "shell-version":
++    [
++        "3.10",
++        "3.11",
++        "3.12",
++        "3.13",
++        "3.14",
++        "3.15",
++        "3.16",
++        "3.17",
++        "3.18",
++        "3.19",
++        "3.20",
++        "3.21",
++        "3.22",
++        "3.23",
++        "3.24",
++        "3.25",
++        "3.26"
++    ],
++    "uuid": "vncmanager-controller@vncmanager.michalsrb.github.com",
++    "name": "VNC Session Configuration",
++    "description": "Configure VNC session managed by vncmanager"
++}
+-- 
+2.16.4
+

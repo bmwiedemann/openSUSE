@@ -1,0 +1,47 @@
+From 64492acf8b1d72cea0c3e203887bfe26fb840f1d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 13 Dec 2018 17:19:36 +0800
+Subject: [PATCH] Add the license change statement for errlog.c and mok.c
+
+---
+ errlog.c | 6 ++++++
+ mok.c    | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/errlog.c b/errlog.c
+index 18be482..4a1fffb 100644
+--- a/errlog.c
++++ b/errlog.c
+@@ -3,6 +3,12 @@
+  * Copyright 2017 Peter Jones <pjones@redhat.com>
+  *
+  * Distributed under terms of the GPLv3 license.
++ *
++ * As Peter stated in issues#155:
++ * "I'll publicly state here that as the author of those files, you can
++ *  treat them as dual-licensed with the GPLv3 text that accidentally
++ *  made it in and the BSD license they should have borne."
++ * Ref: https://github.com/rhboot/shim/issues/155#issuecomment-443738252
+  */
+ 
+ #include "shim.h"
+diff --git a/mok.c b/mok.c
+index 3867521..903b3b4 100644
+--- a/mok.c
++++ b/mok.c
+@@ -3,6 +3,12 @@
+  * Copyright 2017 Peter Jones <pjones@redhat.com>
+  *
+  * Distributed under terms of the GPLv3 license.
++ *
++ * As Peter stated in issues#155:
++ * "I'll publicly state here that as the author of those files, you can
++ *  treat them as dual-licensed with the GPLv3 text that accidentally
++ *  made it in and the BSD license they should have borne."
++ * Ref: https://github.com/rhboot/shim/issues/155#issuecomment-443738252
+  */
+ 
+ #include "shim.h"
+-- 
+2.19.2
+

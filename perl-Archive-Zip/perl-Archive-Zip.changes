@@ -1,0 +1,435 @@
+-------------------------------------------------------------------
+Mon Sep 24 08:40:02 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 1.64
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+   1.64 Wed 12 Sep 2018
+       - Fix for year 2030
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 23 05:04:06 UTC 2018 - coolo@suse.com
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.63 Wed 21 Aug 2018
+      - Restore missing META.yml deps (needed updated MB)
+      - Symlink traversal test fix [github/haarg]
+      - Added missing prereq Encode as suggested by CPANTS [github/manwar]
+
+-------------------------------------------------------------------
+Tue Aug 21 05:04:33 UTC 2018 - coolo@suse.com
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+-------------------------------------------------------------------
+Wed Dec 20 06:04:25 UTC 2017 - coolo@suse.com
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.60 Tue 19 Dec 2017
+      - RT 123913 Wrong shell bang in examples/selfex.pl
+
+-------------------------------------------------------------------
+Fri Aug 12 05:02:55 UTC 2016 - coolo@suse.com
+
+- updated to 1.59
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+-------------------------------------------------------------------
+Wed Aug  3 05:02:36 UTC 2016 - coolo@suse.com
+
+- updated to 1.58
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.58 Tue 2 Aug 2016
+      - avoid relying on . being in @INC [github/karenetheridge]
+      - update MANIFEST.SKIP [github/haarg]
+
+-------------------------------------------------------------------
+Mon Apr  4 09:14:47 UTC 2016 - coolo@suse.com
+
+- updated to 1.57
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.57 Fri 1 Apr 2016
+      - RT# 106548,106089,105330,111541 [github/ozcoder]
+
+-------------------------------------------------------------------
+Sat Dec 26 09:29:20 UTC 2015 - coolo@suse.com
+
+- updated to 1.56
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.56 Thu 17 Dec 2015
+      - fix $Archive::Zip::UNICODE issues [github/xlat]
+          - on MSWin32 in methods addFile, addDirectory, addTree: the externalFileName was 
+            used in place of newName
+          - make sure that file names are utf8 in memberNames
+          - use Encode on all platform
+
+-------------------------------------------------------------------
+Sat Dec  5 09:49:37 UTC 2015 - coolo@suse.com
+
+- updated to 1.55
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.55 Fri 04 Dec 2015
+      - rt.cpan.org #110064 - fix empty archive issue with OS X gnu tar
+  
+  1.54 Wed 02 Dec 2015
+      - Ensure filehandles created by Archive::Zip::tempFile are closed [github/antoniomonty]
+
+-------------------------------------------------------------------
+Sat Sep 26 08:32:21 UTC 2015 - coolo@suse.com
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.53 Wed 22 Sep 2015
+      - rt.cpan.org #107268 - Archive-Zip-1.52.tar.gz is (nearly) empty
+        Thanks to SREZIC for the spot on my dad brain sleep schedule error
+        Creating the dist on OS X caused 'Numeric user ID too largeNumeric group ID too large'
+  
+  1.52 Tue 22 Sep 2015
+      - rt.cpan.org #105902, thanks HMBRAND
+
+-------------------------------------------------------------------
+Tue Sep 22 08:48:31 UTC 2015 - coolo@suse.com
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.51 Tue 22 Sep 2015
+      - Compare vs filename checksum in crc32 script [github/talisein]
+
+-------------------------------------------------------------------
+Sat Aug 29 08:32:36 UTC 2015 - coolo@suse.com
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.50 Tue 25 Aug 2015
+      - Fix t/08_readmember_record_sep.t for Win32 [github/pauloscustodio]
+
+-------------------------------------------------------------------
+Sat Aug  1 08:21:41 UTC 2015 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.49 Fri 31 Jul 2015
+      - Fails on unseekable file handle after desiredCompressionLevel(), RT #54827
+      - Upgrade build tools to avoid tar warnings, RT #105547
+
+-------------------------------------------------------------------
+Sun Jun 21 08:16:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.48 Thu 18 Jun 2015
+      - Wrap skip in a SKIP: block [github/plicease]
+  
+  1.47 Wed 17 Jun 2015
+      - zip file with a deflated directory cannot be written out again [github/ntyni]
+      - add missing test data to MANIFEST
+
+-------------------------------------------------------------------
+Mon Apr 13 18:15:12 UTC 2015 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.46 Tue 24 Mar 2015
+      - "CRC or size mismatch" when extracting member second time [github/AGWA github/pwr22]
+  
+  1.45 Mon 26 Jan 2015
+      - FreeBSD unzip sets $? to 0 for empty zip file [github.com/revhippie]
+  
+  1.44 Fri 23 Jan 2015
+      - Win32 with ZIP executable cannot create temp file [github.com/revhippie]
+  
+  1.43 Wed 14 Jan 2015
+      - Restore 101374 - failing tests were not regressions.
+  
+  1.42 Sun 11 Jan 2015
+      - Revert 101374, caused tester regression
+      - https://rt.cpan.org/Public/Bug/Display.html?id=101240 [cpan/PMQS]
+  
+  1.41 Fri 09 Jan 2015
+      - https://rt.cpan.org/Public/Bug/Display.html?id=101374 [zefram]
+  
+  1.40 Sun 04 Jan 2015
+      - https://rt.cpan.org/Public/Bug/Display.html?id=92205 [cpan/PMQS]
+      - https://rt.cpan.org/Public/Bug/Display.html?id=101092 [cpan/PMQS]
+  
+  1.39 Tue 21 Oct 2014
+      - store test data in temp dirs to fix parallelism and shuffling
+        [Graham Knop]
+  
+  1.38 Tue 02 Sep 2014
+      - Setting unicode flag for each member when using $Archive::Zip::UNICODE [github.com/lackas]
+        https://rt.cpan.org/Ticket/Display.html?id=83367
+
+-------------------------------------------------------------------
+Sun Feb  9 13:31:40 UTC 2014 - coolo@suse.com
+
+- updated to 1.37
+    - Need newer Test::More to support done_testing() [thaljef]
+    - Fix error in version update with 1.35 [RT #91744]
+    - fallback on copy if move gives permission denied [github.com/plicease]
+
+-------------------------------------------------------------------
+Mon Dec  9 11:15:40 UTC 2013 - coolo@suse.com
+
+- updated to 1.34
+   - Restore svn history from svn.ali.as (thanks H. Merijn Brand)
+   - #90854 Test 17 in t/03_ex.t is failing
+   - Allow reading ZIP from seekable streams (like PerlIO::Scalar)
+   - RT#75197   
+   - Fixes: #76780: Cannot create member called "0" with addString (HAGGAI)
+
+-------------------------------------------------------------------
+Tue Nov 26 07:31:20 UTC 2013 - coolo@suse.com
+
+- updated to 1.33
+     - #59102 (Spelling error in manapage) [github.com/dsteinbrunner]
+     - #86600 typo fixes [github.com/dsteinbrunner]
+     - #89777 Unlink temp files generated by tempFile. [PHRED]
+     - Updated Perl dependency to 5.006 to reflect implicit dependencies
+       in the code exposed by Perl::MinimumVersion xt test (ADAMK)
+     - Fixes: #68446: Set compressed size and uncompressed size of an entry to 0
+       if either of them is 0 (HAGGAI)
+     - Added $VERSION to crc32 (ADAMK)
+     - Add decryption support
+     - More fixes by HAGGAI, which he still doesn't detail in Changes
+     - Various fixes by HAGGAI, which he has not yet provided details on:
+     - Experimental Unicode in file/dir names
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:24 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:30 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 18:49:23 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 16:00:08 CEST 2009 - anicka@suse.cz
+
+- update to 1.30
+ * Fixed a bad use of Cwd::getcwd
+ * Changed _asLocalName back to rel2abs, but this time using
+   Cwd::getcwd as the base path instead of Cwd::cwd.
+   This hopefully resolved #47223 (ADAMK)
+ * Changing to production version for release
+ * Reverted to revision 4736 and converted `External File Attribute'
+   values for symbolic links to hexadecimal (HAGGAI)
+ * Fixed: #15026: AddTree does not include files with german
+   umlauts in the filename (HAGGAI)
+ * Switched from Compress::Zlib to Compress::Raw::Zlib (AGRUNDMA)
+ * Moved crc32 from bin to script (ADAMK)
+ * Makefile.PL will create a better META.yml
+ * This is a test release for various improvements provided by
+   Alan Haggai. The entire release is credited to his grant work.
+ * Fixed #25726: extractMembers failing across fork on Windows.
+ * Fixed #12493: Can't add new files to archives which contain
+   files named 0,1,2,3,4,5,6,7,8,9 with no extension.
+   (Files named "0" are not archived)
+ * Fixed #22933: Properly extract symbolic links.
+ * Fixed #20246: Ability to assign a compression level to addTree
+   calls.
+ * Corrected regular expression for stripping trailing /
+ * Corrected addFileOrDirectory() behaviour and cleaned up some code
+ * Added symbolic link support to addFileOrDirectory
+ * Fixed #34657: No option, undefined behavior zipping symbolic
+   links (symlinks)
+ * Added storeSymbolicLink()
+ * Fixed bitFlag() to set General Pupose Bit Flags
+
+-------------------------------------------------------------------
+Sat Jul 25 19:28:54 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Tue Jan 20 15:48:52 CET 2009 - anicka@suse.cz
+
+- update to 1.26
+  * Fixed the dreaded but #24036: WinXP Explorer Exposes Problems.
+    This caused directories to appear as files in Windows Explorer
+    and was caused by Windows always reading the msdos directory bit
+    even when the file attributes are types as unix.
+    Resolved by emulating the behaviour of Info-Zip and setting
+    the 5th bit in the externalFileAttributes field.
+  * Removing "use warnings" instances that somehow slipped in
+  * Skip test if Digest::MD5 is not available
+
+-------------------------------------------------------------------
+Wed Sep 10 16:57:12 CEST 2008 - anicka@suse.cz
+
+- update to 1.24
+ * Blatantly pander to CPANTS by adding use strict to a deprecated 
+   module
+ * Add an explicit load of FileHandle since in some circumstances,
+   calling GLOB->print() failed.
+ * bugfixes
+ 
+-------------------------------------------------------------------
+Fri Nov  9 17:12:30 CET 2007 - anicka@suse.cz
+
+- update to 1.23
+  * Temporarily skilling some failing tests on Win32 in the
+    interests of toolchain sanity. (until we work out the
+    real problem here)
+  * Fixing platform compatibility bugs in the new regression tests
+    from 1.21.
+
+-------------------------------------------------------------------
+Thu Nov  1 15:54:16 CET 2007 - anicka@suse.cz
+
+- update to 1.21 
+  * Tidying up copyright formatting a bit.
+  * Disable the GPBF_HAS_DATA_DESCRIPTOR_MASK bit when 
+    auto-switching directory storage to STORED 
+  * bugfixes, test fixes
+ 
+-------------------------------------------------------------------
+Mon Jun 11 13:27:33 CEST 2007 - anicka@suse.cz
+
+- update to 1.20
+  * Removing dependency on File::Which due to public outburst 
+    of flaming
+  * Embedding an entire copy of File::Which inside the tests 
+    instead as an alternative to compensating for the lack 
+    of build_requires.
+  * Removing the docs directory.
+- remove perl-File-Which from BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 20 14:32:01 CET 2006 - anicka@suse.cz
+
+- add perl-File-Which to BuildRequires and enable tests again 
+
+-------------------------------------------------------------------
+Thu Dec 14 11:43:05 CET 2006 - anicka@suse.cz
+
+- update to 1.18
+ * Seperated the classes from the main file into seperate packages.
+ * Merged the Zip.pod into the main Zip.pm file.
+ * Applied default Perl::Tidy to all of the source files, 
+   to improve the readability and maintainability of the files.
+ * Added license in Makefile.PL
+ * Added some additional entries to the realclean files
+ * Adding dependency on File::Which to deal with problems on systems
+   that lack zip and unzip programs. This really should 
+   be a build-time dependency only, but ExtUtils::MakeMaker lacks 
+   that capability.
+ * Upgraded all test scripts from Test.pm to Test::More 
+   (removing Test.pm dependency)
+ * Removed MANIFEST and pod.t from repository 
+   (will be auto-generated)
+ * Added SUPPORT section to docs
+ * Merged external TODO file into the POD as a more-common 
+   TO DO section
+ * Added a BUGS section to the docs
+ * Moved crc32 to bin/crc32 in line with package layout conventions
+- disable tests because they depend on File::Which
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 11 15:36:34 CEST 2005 - schubi@suse.de
+
+- update to version 1.16 
+
+-------------------------------------------------------------------
+Fri Apr 15 10:19:19 CEST 2005 - schubi@suse.de
+
+- update to most recent version 1.14 
+
+-------------------------------------------------------------------
+Thu Feb 26 15:46:00 CET 2004 - choeger@suse.de
+
+- update to most recent version 1.09
+
+-------------------------------------------------------------------
+Sun Jan 11 11:48:53 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:01:52 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 12:52:30 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 11:38:46 CEST 2003 - choeger@suse.de
+
+- updated filelist
+
+-------------------------------------------------------------------
+Sun May 25 23:47:11 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Sat Feb  8 18:57:49 CET 2003 - link@suse.de
+
+- updated to 1.05 
+
+-------------------------------------------------------------------
+Fri Jul 12 22:43:27 MEST 2002 - link@suse.de
+
+- some tweaks of the spec file 
+
+-------------------------------------------------------------------
+Fri Jul 12 21:55:27 MEST 2002 - link@suse.de
+
+- updated to 1.01 
+
+-------------------------------------------------------------------
+Tue May  7 22:18:24 MEST 2002 - link@suse.de
+
+- updated to 1.00 
+
+-------------------------------------------------------------------
+Thu Aug 16 15:53:03 CEST 2001 - ro@suse.de
+
+- removed bogus Obsoletes 
+
+-------------------------------------------------------------------
+Fri Apr  6 14:15:44 CEST 2001 - link@suse.de
+
+- first package, v0.11 
+

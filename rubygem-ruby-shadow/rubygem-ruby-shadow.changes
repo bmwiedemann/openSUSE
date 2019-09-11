@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Oct  7 04:31:54 UTC 2015 - coolo@suse.com
+
+- updated to version 2.5.0
+ see installed HISTORY
+
+  [2015/10/06]
+  * Version 2.5.0
+    - fixes for compiling for rubinius, at long last
+    - TESTS
+    - add a few method aliases
+
+-------------------------------------------------------------------
+Tue Feb 10 18:28:34 UTC 2015 - coolo@suse.com
+
+- updated to version 2.4.1
+
+-------------------------------------------------------------------
+Sat Nov  1 22:39:46 UTC 2014 - tboerger@suse.com
+
+- Replaced rb_ver with an asterisk to expand correctly with multiple ruby versions
+
+-------------------------------------------------------------------
+Fri Oct 24 15:01:05 UTC 2014 - tboerger@suse.com
+
+- Added new ruby macros
+
+-------------------------------------------------------------------
+Sun May 18 09:04:43 UTC 2014 - coolo@suse.com
+
+- updated to version 2.3.4
+  * Added support for more BSDs, thanks to https://github.com/bsiegert.
+  * Simplified compatibility check, removing check for function not actually used in pwd.h implementations.
+
+-------------------------------------------------------------------
+Mon Mar  3 15:29:58 UTC 2014 - boris@steki.net
+
+- bugfix regarding shadow implementation:
+  When the implementations were split into shadow and pwd, the code
+  initialzing the structure used in the shadow implementation was replaced
+  by older code not including the added field, always nil in that
+  implemenation, for pw_change.
+  The intent currently is that the passwdEntry structure should contain
+  all the fields available across implementations. 
+
+-------------------------------------------------------------------
+Thu Feb 13 09:41:13 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Fri Dec 20 12:02:53 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.2
+ Fix up compilation issues causing problems with a non-GNU make.
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:36 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.1
+  Remove sgetspent on implementations using pwd.h
+  Merge OS X work into main gem.  Fix bugs with OS X implementation and tweak support for FreeBSD.
+  See https://github.com/caleb/ruby-shadow/commit/20d98b7d9e3bbbef0b737affd3245590096a316c
+  - Add license file to Manifest.
+  - Adam Palmblad<apalmblad@gmail.com>
+  Fix compilation issues with ruby 2.
+
+-------------------------------------------------------------------
+Sat May 18 07:34:49 UTC 2013 - coolo@suse.com
+
+- updated to version 2.2.0
+  - integrating rubygem-ruby-shadow-2.1.4-rb20_fixes.patch 
+  - set license in gemspec
+
+-------------------------------------------------------------------
+Mon Apr 29 14:02:06 UTC 2013 - boris@steki.net
+
+- update gem extconf.rb to support ruby 2.0 
+
+-------------------------------------------------------------------
+Thu Nov 15 09:31:40 UTC 2012 - boris@steki.net
+
+- updated License from wrongly selected MIT to
+  author approved BSD-3-Clause (or Public Domain) 
+
+-------------------------------------------------------------------
+Tue Oct 23 23:08:25 UTC 2012 - boris@steki.net
+
+- initial packaging 2.1.4 
+

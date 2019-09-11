@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu May  9 15:33:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4.5
+  * Fix published taglib.cpp
+  * Remove cython dependency from setup.py
+- added patches
+  fix  'LocalPath'object has no attribute 'endswith' for python2
+  + python-pytaglib-python2-localpath.patch
+
+-------------------------------------------------------------------
+Wed Aug  8 23:17:52 UTC 2018 - jsikes@suse.de
+
+- Update to 1.4.3
+  * Fix accidental upload of the Windows version to PyPI. Hopefully fixes #42, #43.
+  * Fix #31: Don't use precompiled taglib.cpp on Windows
+
+-------------------------------------------------------------------
+Fri May 26 12:11:03 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sat May 20 18:11:09 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.4.1)
+

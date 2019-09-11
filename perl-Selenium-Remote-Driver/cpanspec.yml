@@ -1,0 +1,38 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ Requires: lsof
+post_prep: |-
+  sed -i -e 's,!/bin/env perl,/usr/bin/perl,' driver-example.pl
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+post_install: |-
+  %ifarch %ix86
+    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86/libibushandler.so
+  %else
+    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86
+  %endif
+  %ifarch x86_64
+    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64/libibushandler.so
+  %else
+    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64
+  %endif
+#license: SUSE-NonFree
+skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

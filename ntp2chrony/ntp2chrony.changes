@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jul 31 07:30:55 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.3+git20190605.f616151:
+  * improve code style
+  * add test for source options
+  * add test for refclocks
+  * add comments for asserts
+  * use os.path.join() instead of string concatenation
+  * don't modify NtpConfiguration in get_processed_time_sources()
+  * refactor time sources processing
+  * add initial ntp->chrony converter tests
+  * add initial unit tests
+  * add basic packaging
+  * change license to MIT
+  * don't use id and type as variables
+  * avoid exceptions in conversion of tos and fudge values
+  * add variable for file encoding
+  * use logging module for printing messages
+  * convert {0,1,2,3}.*pool.ntp.org servers to pool directive
+
+-------------------------------------------------------------------
+Mon Jul 30 10:02:21 UTC 2018 - jengelh@inai.de
+
+- Fix grammar in descriptions.
+
+-------------------------------------------------------------------
+Wed Jun 13 11:09:53 UTC 2018 - kukuk@suse.de
+
+- Initial version 0.0+git20180405.9824262:
+  * remove last empty line in chrony.conf
+  * add disabled hwtimestamp directive to chrony.conf
+  * include comment in chrony.keys even if it has no keys
+  * always enable keyfile
+  * use specified keyfile in chrony.conf
+  * check local stratum for sanity
+  * fix local stratum with orphan option
+  * remove logfile directive
+  * fix SELinux context of output files
+  * use same encoding for output as input
+  * add compatibility with python2
+  * fix scrubbing of crypto password
+  * don't allow command access for restrictions with ignore option
+  * handle noserve restrict option
+

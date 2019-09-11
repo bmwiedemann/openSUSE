@@ -1,0 +1,79 @@
+#!/bin/sh
+
+#################################################################################
+#
+# Author: Thomas Biege <thomas@suse.de>
+#
+# Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+# welcome to redistribute it under the terms of the GNU General Public License.
+# See LICENSE file for usage of this software.
+#
+#################################################################################
+#
+# Verifies dbus policy.
+#
+#################################################################################
+#
+# TODO:
+#
+################################################################################
+#
+    InsertSection "System Tools"
+    report "[Software]"
+#
+#################################################################################
+#
+    # Test        : SYSTEM-1000
+    # Description : Verifies dbus policy.
+    Register --test-no SYSTEM-1000 --weight L --network NO --description "Verifies if an unknown dbus service is installed."
+    if [ ${SKIPTEST} -eq 0 ]; then
+        Display --indent 2 --text "- Starting dbus policy check..."
+        logtext "Test: Checking dbus policy"
+
+	DB="${DBDIR}/dbus-whitelist.db"
+
+	if ! [ -f $DB ]
+	then
+		if [ -f ./dbus-whitelist.db ]
+		then
+			DB="./dbus-whitelist.db"
+		else
+			logtext "Warning: dbus autostart/system services whitelist file is missing."
+			return
+		fi
+	fi
+	WHITELIST=$(cat $DB)
+	HPMAX=$(wc -l $DB | cut -d' ' -f1)
+	HPBAD=0
+	E=$(ls -1  /usr/share/dbus-*/system-services/*.service /etc/dbus-*/system.d/*.conf 2>/dev/null)
+	if ! [ -z "$E" ]
+	then
+		for i in $E
+		do
+			DF=$(basename $i)
+
+			FOUND=0
+			for j in $WHITELIST
+			do
+				if [ "$DF" = "$j" ]; then FOUND=1; fi
+			done
+			if [ $FOUND -eq 0 ]
+			then
+				HPBAD=$((HPBAD + 1))
+				PKG=$(rpm -qf "$i")
+				Display --indent 4 --text "Warning: Package $PKG installs an unknown D-BUS autostart/system service: $DF" --result WARNING --color RED
+			fi
+		done
+	fi
+	HP=$(expr $HPMAX - $HPBAD)
+# 	echo "AddHP $HP $HPMAX"
+	AddHP $HP $HPMAX
+    fi
+#
+#################################################################################
+#
+
+wait_for_keypress
+
+#
+#================================================================================

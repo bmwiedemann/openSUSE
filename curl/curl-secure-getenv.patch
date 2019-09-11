@@ -1,0 +1,41 @@
+Index: lib/getenv.c
+===================================================================
+--- lib/getenv.c.orig	2013-04-12 13:31:59.056761437 +0200
++++ lib/getenv.c	2013-04-12 13:36:25.654762399 +0200
+@@ -27,6 +27,14 @@
+ 
+ #include "memdebug.h"
+ 
++#ifndef HAVE_SECURE_GETENV
++#  ifdef HAVE___SECURE_GETENV
++#    define secure_getenv __secure_getenv
++#  else
++#    error neither secure_getenv nor __secure_getenv is available
++#  endif
++#endif
++
+ static
+ char *GetEnv(const char *variable)
+ {
+@@ -41,7 +49,7 @@ char *GetEnv(const char *variable)
+     ExpandEnvironmentStringsA(temp, env, sizeof(env));
+   return (env[0] != '\0')?strdup(env):NULL;
+ #else
+-  char *env = getenv(variable);
++  char *env = secure_getenv(variable);
+   return (env && env[0])?strdup(env):NULL;
+ #endif
+ #endif
+Index: configure.ac
+===================================================================
+--- configure.ac.orig	2013-04-12 13:31:59.057761467 +0200
++++ configure.ac	2013-04-12 13:32:00.823814454 +0200
+@@ -3475,6 +3475,8 @@ if test "x$want_curldebug_assumed" = "xy
+   ac_configure_args="$ac_configure_args --enable-curldebug"
+ fi
+ 
++AC_CHECK_FUNCS([__secure_getenv secure_getenv])
++
+ AC_CONFIG_FILES([Makefile \
+            docs/Makefile \
+            docs/examples/Makefile \

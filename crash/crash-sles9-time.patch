@@ -1,0 +1,105 @@
+From: Alan Tyson <atyson@hp.com>
+Subject: [PATCH] Fix "uptime" and "ps -t" for SLES9
+References: 352836
+
+This patch adds a quirk for SLES9 jiffies initialisation and corrects the time
+data in "uptime" and "ps -t" command.
+
+
+Acked-by: Bernhard Walle <bwalle@suse.de>
+
+---
+ defs.h   |    8 ++++++++
+ kernel.c |    9 ++++++++-
+ task.c   |   11 +++++++++++
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+
+Index: b/defs.h
+===================================================================
+--- a/defs.h
++++ b/defs.h
+@@ -739,6 +739,7 @@ struct kernel_table {
+ 		ulong p2m_missing;
+ 	} pvops_xen;
+ 	int highest_irq;
++    int is_suse_kernel;
+ #define IKCONFIG_AVAIL	0x1	/* kernel contains ikconfig data */
+ #define IKCONFIG_LOADED	0x2	/* ikconfig data is currently loaded */
+ 	int ikconfig_flags;
+@@ -6878,6 +6879,13 @@ extern struct lkcd_environment *lkcd;
+ 
+ #endif  /* LKCD_COMMON */
+ 
++
++/*
++ * SUSE specific
++ */
++#define is_SLES9() \
++	((THIS_KERNEL_VERSION == LINUX(2,6,5)) && kt->is_suse_kernel)
++
+ /*
+  *  gdb_interface.c
+  */
+Index: b/kernel.c
+===================================================================
+--- a/kernel.c
++++ b/kernel.c
+@@ -297,6 +297,12 @@ kernel_init()
+ 
+ 	verify_version();
+ 
++	/*
++	 * check if we have a suse kernel (this is the module supported
++	 * patch of agruen@suse.de
++	 */
++	kt->is_suse_kernel = symbol_exists("unsupported");
++
+ 	if (symbol_exists("__per_cpu_offset")) {
+ 		if (LKCD_KERNTYPES())
+ 			i = get_cpus_possible();
+@@ -5549,7 +5555,7 @@ get_uptime(char *buf, ulonglong *j64p)
+ 
+ 	if (symbol_exists("jiffies_64")) {
+ 		get_symbol_data("jiffies_64", sizeof(ulonglong), &jiffies_64);
+-		if (THIS_KERNEL_VERSION >= LINUX(2,6,0)) {
++		if (THIS_KERNEL_VERSION >= LINUX(2,6,0) && !is_SLES9()) {
+ 			wrapped = (jiffies_64 & 0xffffffff00000000ULL);
+ 			if (wrapped) {
+ 				wrapped -= 0x100000000ULL;
+@@ -6145,6 +6151,7 @@ no_cpu_flags:
+ 			fprintf(fp, "            p2m_mid_missing: %lx\n", kt->pvops_xen.p2m_mid_missing);
+ 		fprintf(fp, "                p2m_missing: %lx\n", kt->pvops_xen.p2m_missing);
+ 	}
++	fprintf(fp, "         is_suse_kernel: %ld\n", kt->is_suse_kernel);
+ }
+ 
+ /*
+Index: b/task.c
+===================================================================
+--- a/task.c
++++ b/task.c
+@@ -4611,6 +4611,12 @@ start_time_timespec(void)
+ 	default:
+ 		break;
+ 	}
++	/* SLES9 stores start_time in nanoseconds, so set TIMESPEC in order */
++	/* to do the right calculations in convert_start_time               */
++	if (is_SLES9()) {
++		tt->flags |= TIMESPEC;
++		return TRUE;
++	}
+ 
+ 	tt->flags |= NO_TIMESPEC;
+ 
+@@ -4647,6 +4653,11 @@ convert_start_time(ulonglong start_time,
+ 	ulong tmp1, tmp2;
+ 	ulonglong wrapped;
+ 
++	/* SLES9's start_time is neither jiffies nor a timespec.  It's ns */
++	if (is_SLES9()) {
++		start_time = start_time / 1000000000;
++	}
++
+         switch(tt->flags & (TIMESPEC | NO_TIMESPEC | START_TIME_NSECS))
+         {
+ 	case START_TIME_NSECS:

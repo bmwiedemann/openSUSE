@@ -1,0 +1,1060 @@
+-------------------------------------------------------------------
+Wed Jun 26 06:52:54 UTC 2019 - Jason Sikes <jsikes@suse.de>
+
+- Fixed redundant fips tests in some situations causing sudo to stop
+  working when pam-kwallet is installed. bsc#1133808
+  * Added libgcrypt-1.8.4-fips_ctor_skip_integrity_check.patch
+  * Removed libgcrypt-fips_run_selftest_at_constructor.patch
+    because it was obsoleted by libgcrypt-1.8.3-fips-ctor.patch
+  * Removed libgcrypt-fips_ignore_FIPS_MODULE_PATH.patch
+    because it was obsoleted by libgcrypt-1.8.4-fips_ctor_skip_integrity_check.patch
+
+-------------------------------------------------------------------
+Fri Jun 21 16:53:07 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fixed env-script-interpreter in cavs_driver.pl
+
+-------------------------------------------------------------------
+Fri Jun 21 16:39:00 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1138939, CVE-2019-12904]
+  * The C implementation of AES is vulnerable to a flush-and-reload
+    side-channel attack because physical addresses are available to
+    other processes. (The C implementation is used on platforms where
+    an assembly-language implementation is unavailable.)
+  * Added patches:
+    - libgcrypt-CVE-2019-12904-GCM-Prefetch.patch
+    - libgcrypt-CVE-2019-12904-GCM.patch
+    - libgcrypt-CVE-2019-12904-AES.patch
+
+-------------------------------------------------------------------
+Fri Apr 26 06:47:45 UTC 2019 - Jason Sikes <jsikes@suse.de>
+
+- do not try to open /dev/urandom if getrandom() works
+  * Added libgcrypt-1.8.4-getrandom.patch
+- Drop libgcrypt-init-at-elf-load-fips.patch obsoleted
+  by libgcrypt-1.8.3-fips-ctor.patch
+
+-------------------------------------------------------------------
+Tue Apr 23 12:38:40 UTC 2019 - Jason Sikes <jsikes@suse.de>
+
+- Restored libgcrypt-binary_integrity_in_non-FIPS.patch sans section that
+  was partially causing bsc#1131183.
+- Fixed race condition in multi-threaded applications by allowing a FSM state
+  transition to the current state. This means some tests are run twice.
+  * Added libgcrypt-1.8.4-allow_FSM_same_state.patch
+- Fixed an issue in malloc/free wrappers so that memory created by the malloc()
+  wrappers will be destroyed using the free() wrappers.
+  * Added libgcrypt-1.8.4-use_xfree.patch
+
+-------------------------------------------------------------------
+Fri Apr  5 21:56:00 UTC 2019 - Jason Sikes <jsikes@suse.de>
+
+- removed libgcrypt-binary_integrity_in_non-FIPS.patch since it was breaking
+  libotr. bsc#1131183
+
+-------------------------------------------------------------------
+Tue Mar 26 16:30:23 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- libgcrypt-1.8.3-fips-ctor.patch changed the way the fips selftests
+  are invoked as well as the state transition, adjust the code so
+  a missing checksum file is not an issue in non-FIPS mode (bsc#1097073)
+  * update libgcrypt-binary_integrity_in_non-FIPS.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 16:25:18 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Enforce the minimal RSA keygen size in fips mode (bsc#1125740)
+  * add libgcrypt-fips_rsa_no_enforced_mode.patch
+
+-------------------------------------------------------------------
+Fri Mar 22 14:13:05 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Don't run full self-tests from constructor (bsc#1097073)
+  * Don't call global_init() from the constructor, _gcry_global_constructor()
+    from libgcrypt-1.8.3-fips-ctor.patch takes care of the binary
+    integrity check instead.
+  * Only the binary checksum will be verified, the remaining
+    self-tests will be run upon the library initialization
+- Add libgcrypt-fips_ignore_FIPS_MODULE_PATH.patch
+- Drop libgcrypt-init-at-elf-load-fips.patch and
+  libgcrypt-fips_run_selftest_at_constructor.patch obsoleted
+  by libgcrypt-1.8.3-fips-ctor.patch
+
+-------------------------------------------------------------------
+Thu Mar  7 10:53:40 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Skip all the self-tests except for binary integrity when called
+  from the constructor (bsc#1097073)
+  * Added libgcrypt-1.8.3-fips-ctor.patch from Fedora
+
+-------------------------------------------------------------------
+Mon Nov 26 17:09:47 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fail selftests when checksum file is missing in FIPS mode only
+  (bsc#1117355)
+  * add libgcrypt-binary_integrity_in_non-FIPS.patch
+
+-------------------------------------------------------------------
+Sun Oct 28 18:57:53 UTC 2018 - astieger@suse.com
+
+- libgcrypt 1.8.4:
+  * Fix infinite loop with specific application implementations
+  * Fix possible leak of a few bits of secret primes to pageable
+    memory
+  * Fix possible hang in the RNG (1.8.3)
+  * Always make use of getrandom if possible and then use
+    its /dev/urandom behaviour
+
+-------------------------------------------------------------------
+Mon Jul  2 10:38:42 UTC 2018 - schwab@suse.de
+
+- libgcrypt-1.6.3-aliasing.patch, libgcrypt-ppc64.patch,
+  libgcrypt-strict-aliasing.patch: Remove obsolete patches
+- libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch: Rediff
+- Reenable testsuite
+
+-------------------------------------------------------------------
+Wed Jun 13 10:46:33 UTC 2018 - kbabioch@suse.com
+
+- Update to version 1.8.3:
+  - Use blinding for ECDSA signing to mitigate a novel side-channel
+    attack. (CVE-2018-0495 bsc#1097410)
+  - Fix incorrect counter overflow handling for GCM when using an IV
+    size other than 96 bit.
+  - Fix incorrect output of AES-keywrap mode for in-place encryption
+    on some platforms.
+  - Fix the gcry_mpi_ec_curve_point point validation function.
+  - Fix rare assertion failure in gcry_prime_check. 
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Wed May  2 14:31:07 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Suggest libgcrypt20-hmac for package libgcrypt20 to ensure they
+  are installed in the right order. [bsc#1090766]
+
+-------------------------------------------------------------------
+Thu Mar 29 06:37:44 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Extended the fipsdrv dsa-sign and dsa-verify commands with the
+  --algo parameter for the FIPS testing of DSA SigVer and SigGen
+  (bsc#1064455).
+  * Added libgcrypt-fipsdrv-enable-algo-for-dsa-sign.patch
+  * Added libgcrypt-fipsdrv-enable-algo-for-dsa-verify.patch
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:36 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Wed Dec 13 20:09:28 UTC 2017 - astieger@suse.com
+
+- libgcrypt 1.8.2:
+  * Fix fatal out of secure memory status in the s-expression
+    parser on heavy loaded systems.
+  * Add auto expand secmem feature or use by GnuPG 2.2.4
+
+-------------------------------------------------------------------
+Mon Aug 28 17:54:24 UTC 2017 - astieger@suse.com
+
+- libgcrypt 1.8.1:
+  * Mitigate a local side-channel attack on Curve25519 dubbed "May
+    the Fourth be With You" CVE-2017-0379 bsc#1055837
+  * Add more extra bytes to the pool after reading a seed file
+  * Add the OID SHA384WithECDSA from RFC-7427 to SHA-384
+  * Fix build problems with the Jitter RNG
+  * Fix assembler code build problems on Rasbian (ARMv8/AArch32-CE)
+
+-------------------------------------------------------------------
+Mon Jul 24 23:43:40 UTC 2017 - jengelh@inai.de
+
+- RPM group fixes.
+
+-------------------------------------------------------------------
+Fri Jul 21 15:50:14 UTC 2017 - astieger@suse.com
+
+- libgcrypt 1.8.0:
+   * New cipher mode XTS
+   * New hash function Blake-2
+   * New function gcry_mpi_point_copy.
+   * New function gcry_get_config.
+   * GCRYCTL_REINIT_SYSCALL_CLAMP allows to init nPth after Libgcrypt.
+   * New gobal configuration file /etc/gcrypt/random.conf.
+   * GCRYCTL_PRINT_CONFIG does now also print build information for
+     libgpg-error and the used compiler version.
+   * GCRY_CIPHER_MODE_CFB8 is now supported.
+   * A jitter based entropy collector is now used in addition to the
+     other entropy collectors.
+   * Optimized gcry_md_hash_buffers for SHA-256 and SHA-512.
+     random pool lock).
+   * Interface changes relative to the 1.7.0 release:
+     gcry_get_config                 NEW function.
+     gcry_mpi_point_copy             NEW function.
+     GCRYCTL_REINIT_SYSCALL_CLAMP    NEW macro.
+     GCRY_MD_BLAKE2B_512             NEW constant.
+     GCRY_MD_BLAKE2B_384             NEW constant.
+     GCRY_MD_BLAKE2B_256             NEW constant.
+     GCRY_MD_BLAKE2B_160             NEW constant.
+     GCRY_MD_BLAKE2S_256             NEW constant.
+     GCRY_MD_BLAKE2S_224             NEW constant.
+     GCRY_MD_BLAKE2S_160             NEW constant.
+     GCRY_MD_BLAKE2S_128             NEW constant.
+     GCRY_CIPHER_MODE_XTS            NEW constant.
+     gcry_md_info                    DEPRECATED.
+- Refresh patch libgcrypt-1.6.3-aliasing.patch
+
+-------------------------------------------------------------------
+Thu Jun 29 09:49:44 UTC 2017 - astieger@suse.com
+
+- libgcrypt 1.7.8:
+  * CVE-2017-7526: Mitigate a flush+reload side-channel attack on
+    RSA secret keys (bsc#1046607)
+
+-------------------------------------------------------------------
+Sun Jun  4 19:26:12 UTC 2017 - astieger@suse.com
+
+- libgcrypt 1.7.7:
+  * Fix possible timing attack on EdDSA session key (previously
+    patched, drop libgcrypt-secure-EdDSA-session-key.patch)
+  * Fix long standing bug in secure memory implementation which
+    could lead to a segv on free
+
+-------------------------------------------------------------------
+Fri Jun  2 10:05:18 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Added libgcrypt-secure-EdDSA-session-key.patch [bsc#1042326]
+  * Store the session key in secure memory to ensure that constant
+    time point operations are used in the MPI library.
+
+-------------------------------------------------------------------
+Fri Jan 20 09:41:15 UTC 2017 - rmaliska@suse.com
+
+- libgcrypt 1.7.6:
+  * Fix counter operand from read-only to read/write 
+  * Fix too large jump alignment in mpih-rshift
+
+-------------------------------------------------------------------
+Thu Dec 15 10:32:18 UTC 2016 - astieger@suse.com
+
+- libgcrypt 1.7.5:
+  * Fix regression in mlock detection introduced with 1.7.4
+
+-------------------------------------------------------------------
+Tue Dec 13 12:20:47 UTC 2016 - astieger@suse.com
+
+- libgcrypt 1.7.4:
+  * ARMv8/AArch32 performance improvements for AES, GCM, SHA-256,
+    and SHA-1.
+  * Add ARMv8/AArch32 assembly implementation for Twofish and
+    Camellia.
+  * Add bulk processing implementation for ARMv8/AArch32.
+  * Add Stribog OIDs.
+  * Improve the DRBG performance and sync the code with the Linux
+    version.
+  * When secure memory is requested by the MPI functions or by
+    gcry_xmalloc_secure, they do not anymore lead to a fatal error
+    if the secure memory pool is used up.  Instead new pools are
+    allocated as needed.  These new pools are not protected against
+    being swapped out (mlock can't be used). Mitigation for
+    minor confidentiality issues is encryption swap space.
+  * Fix GOST 28147 CryptoPro-B S-box.
+  * Fix error code handling of mlock calls.
+
+-------------------------------------------------------------------
+Sat Aug 20 10:38:15 UTC 2016 - mpluskal,vcizek,astieger}@suse.com
+
+- libgcrypt 1.7.3:
+   * security issue already fixes with 1.6.6
+   * Fix building of some asm modules with older compilers and CPUs.
+   * ARMv8/AArch32 improvements for AES, GCM, SHA-256, and SHA-1.
+- includes changes from libgcrypt 1.7.2:
+ * Bug fixes:
+   - Fix setting of the ECC cofactor if parameters are specified.
+   - Fix memory leak in the ECC code.
+   - Remove debug message about unsupported getrandom syscall.
+   - Fix build problems related to AVX use.
+   - Fix bus errors on ARM for Poly1305, ChaCha20, AES, and SHA-512.
+ * Internal changes:
+   - Improved fatal error message for wrong use of gcry_md_read.
+   - Disallow symmetric encryption/decryption if key is not set.
+- includes changes from 1.7.1:
+ * Bug fixes:
+   - Fix ecc_verify for cofactor support.
+   - Fix portability bug when using gcc with Solaris 9 SPARC.
+   - Build fix for OpenBSD/amd64
+   - Add OIDs to the Serpent ciphers.
+ * Internal changes:
+   - Use getrandom system call on Linux if available.
+   - Blinding is now also used for RSA signature creation.
+   - Changed names of debug envvars
+- includes changes from 1.7.0:
+ * New algorithms and modes:
+   - SHA3-224, SHA3-256, SHA3-384, SHA3-512, and MD2 hash algorithms.
+   - SHAKE128 and SHAKE256 extendable-output hash algorithms.
+   - ChaCha20 stream cipher.
+   - Poly1305 message authentication algorithm
+   - ChaCha20-Poly1305 Authenticated Encryption with Associated Data
+     mode.
+   - OCB mode.
+   - HMAC-MD2 for use by legacy applications.
+ * New curves for ECC:
+   - Curve25519.
+   - sec256k1.
+   - GOST R 34.10-2001 and GOST R 34.10-2012.
+ * Performance:
+   - Improved performance of KDF functions.
+   - Assembler optimized implementations of Blowfish and Serpent on
+     ARM.
+   - Assembler optimized implementation of 3DES on x86.
+   - Improved AES using the SSSE3 based vector permutation method by
+     Mike Hamburg.
+   - AVX/BMI is used for SHA-1 and SHA-256 on x86.  This is for SHA-1
+     about 20% faster than SSSE3 and more than 100% faster than the
+     generic C implementation.
+   - 40% speedup for SHA-512 and 72% for SHA-1 on ARM Cortex-A8.
+   - 60-90% speedup for Whirlpool on x86.
+   - 300% speedup for RIPE MD-160.
+   - Up to 11 times speedup for CRC functions on x86.
+ * Other features:
+   - Improved ECDSA and FIPS 186-4 compliance.
+   - Support for Montgomery curves.
+   - gcry_cipher_set_sbox to tweak S-boxes of the gost28147 cipher
+     algorithm.
+   - gcry_mpi_ec_sub to subtract two points on a curve.
+   - gcry_mpi_ec_decode_point to decode an MPI into a point object.
+   - Emulation for broken Whirlpool code prior to 1.6.0.  [from 1.6.1]
+   - Flag "pkcs1-raw" to enable PCKS#1 padding with a user supplied
+     hash part.
+   - Parameter "saltlen" to set a non-default salt length for RSA PSS.
+   - A SP800-90A conforming DRNG replaces the former X9.31 alternative
+     random number generator.
+   - Map deprecated RSA algo number to the RSA algo number for better
+     backward compatibility. [from 1.6.2]
+   - Use ciphertext blinding for Elgamal decryption [CVE-2014-3591].
+     See http://www.cs.tau.ac.il/~tromer/radioexp/ for details.
+     [from 1.6.3]
+   - Fixed data-dependent timing variations in modular exponentiation
+     [related to CVE-2015-0837, Last-Level Cache Side-Channel Attacks
+      are Practical]. [from 1.6.3]
+   - Flag "no-keytest" for ECC key generation.  Due to a bug in
+     the parser that flag will also be accepted but ignored by older
+     version of Libgcrypt. [from 1.6.4]
+   - Speed up the random number generator by requiring less extra
+     seeding. [from 1.6.4]
+   - Always verify a created RSA signature to avoid private key leaks
+     due to hardware failures. [from 1.6.4]
+   - Mitigate side-channel attack on ECDH with Weierstrass curves
+     [CVE-2015-7511].  See http://www.cs.tau.ac.IL/~tromer/ecdh/ for
+     details. [from 1.6.5]
+ * Internal changes:
+   - Moved locking out to libgpg-error.
+   - Support of the SYSROOT envvar in the build system.
+   - Refactor some code.
+   - The availability of a 64 bit integer type is now mandatory.
+ * Bug fixes:
+   - Fixed message digest lookup by OID (regression in 1.6.0).
+   - Fixed a build problem on NetBSD
+   - Fixed some asm build problems and feature detection bugs.
+ * Interface changes relative to the 1.6.0 release:
+   gcry_cipher_final               NEW macro.
+   GCRY_CIPHER_MODE_CFB8           NEW constant.
+   GCRY_CIPHER_MODE_OCB            NEW.
+   GCRY_CIPHER_MODE_POLY1305       NEW.
+   gcry_cipher_set_sbox            NEW macro.
+   gcry_mac_get_algo               NEW.
+   GCRY_MAC_HMAC_MD2               NEW.
+   GCRY_MAC_HMAC_SHA3_224          NEW.
+   GCRY_MAC_HMAC_SHA3_256          NEW.
+   GCRY_MAC_HMAC_SHA3_384          NEW.
+   GCRY_MAC_HMAC_SHA3_512          NEW.
+   GCRY_MAC_POLY1305               NEW.
+   GCRY_MAC_POLY1305_AES           NEW.
+   GCRY_MAC_POLY1305_CAMELLIA      NEW.
+   GCRY_MAC_POLY1305_SEED          NEW.
+   GCRY_MAC_POLY1305_SERPENT       NEW.
+   GCRY_MAC_POLY1305_TWOFISH       NEW.
+   gcry_md_extract                 NEW.
+   GCRY_MD_FLAG_BUGEMU1            NEW [from 1.6.1].
+   GCRY_MD_GOSTR3411_CP            NEW.
+   GCRY_MD_SHA3_224                NEW.
+   GCRY_MD_SHA3_256                NEW.
+   GCRY_MD_SHA3_384                NEW.
+   GCRY_MD_SHA3_512                NEW.
+   GCRY_MD_SHAKE128                NEW.
+   GCRY_MD_SHAKE256                NEW.
+   gcry_mpi_ec_decode_point        NEW.
+   gcry_mpi_ec_sub                 NEW.
+   GCRY_PK_EDDSA                   NEW constant.
+   GCRYCTL_GET_TAGLEN              NEW.
+   GCRYCTL_SET_SBOX                NEW.
+   GCRYCTL_SET_TAGLEN              NEW.
+- Apply libgcrypt-1.6.3-aliasing.patch only on big-endian
+  architectures
+- update drbg_test.patch and install cavs testing directory again
+- As DRBG is upstream, drop pateches:
+  v9-0001-SP800-90A-Deterministic-Random-Bit-Generator.patch
+  0002-Compile-DRBG.patch
+  0003-Function-definitions-of-interfaces-for-random.c.patch
+  0004-Invoke-DRBG-from-common-libgcrypt-RNG-code.patch
+  0005-Function-definitions-for-gcry_control-callbacks.patch
+  0006-DRBG-specific-gcry_control-requests.patch
+  v9-0007-User-interface-to-DRBG.patch
+  libgcrypt-fix-rng.patch
+- drop obsolete:
+  libgcrypt-fips-dsa.patch
+  libgcrypt-fips_ecdsa.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 18:21:44 UTC 2016 - astieger@suse.com
+
+- libgcrypt 1.6.6:
+  * fix CVE-2016-6313: Issue in the mixing functions of the random
+    number generators allowed an attacker who obtained a number of
+    bytes from the standard RNG to predict some of the next ouput.
+    (bsc#994157)
+
+-------------------------------------------------------------------
+Mon May 16 14:37:45 UTC 2016 - pjanouch@suse.de
+
+- remove conditionals for unsupported distributions (before 13.2),
+  it would not build anyway because of new dependencies
+
+-------------------------------------------------------------------
+Mon May 16 12:36:14 UTC 2016 - pjanouch@suse.de
+
+- make the -hmac package depend on the same version of the library,
+  fixing bsc#979629 FIPS: system fails to reboot after installing
+  fips pattern
+
+-------------------------------------------------------------------
+Tue Feb  9 20:51:59 UTC 2016 - astieger@suse.com
+
+- update to 1.6.5:
+  * CVE-2015-7511: Mitigate side-channel attack on ECDH with
+    Weierstrass curves (boo#965902)
+
+-------------------------------------------------------------------
+Sat Oct 10 11:56:08 UTC 2015 - astieger@suse.com
+
+- follow-up to libgcrypt 1.6.4 update: sosuffix is 20.0.4
+
+-------------------------------------------------------------------
+Tue Sep  8 08:03:19 UTC 2015 - vcizek@suse.com
+
+- update to 1.6.4
+- fixes libgcrypt equivalent of CVE-2015-5738 (bsc#944456)
+ * Speed up the random number generator by requiring less extra
+   seeding.
+ * New flag "no-keytest" for ECC key generation.  Due to a bug in the
+   parser that flag will also be accepted but ignored by older version
+   of Libgcrypt.
+ * Always verify a created RSA signature to avoid private key leaks
+   due to hardware failures.
+ * Other minor bug fixes.
+
+-------------------------------------------------------------------
+Tue Jun 23 15:15:30 UTC 2015 - dvaleev@suse.com
+
+- Fix gpg2 tests on BigEndian architectures: s390x ppc64 
+  libgcrypt-1.6.3-aliasing.patch
+
+-------------------------------------------------------------------
+Sun Mar  1 21:16:26 UTC 2015 - astieger@suse.com
+
+- fix sosuffix for 1.6.3 (20.0.3)
+
+-------------------------------------------------------------------
+Sat Feb 28 19:31:10 UTC 2015 - astieger@suse.com
+
+- libgcrypt 1.6.3 [bnc#920057]:
+ * Use ciphertext blinding for Elgamal decryption [CVE-2014-3591].
+ * Fixed data-dependent timing variations in modular exponentiation
+   [related to CVE-2015-0837, Last-Level Cache Side-Channel Attacks
+   are Practical].
+- update upstream signing keyring
+
+-------------------------------------------------------------------
+Fri Feb  6 18:42:28 UTC 2015 - coolo@suse.com
+
+- making the build reproducible - see 
+  http://lists.gnupg.org/pipermail/gnupg-commits/2014-September/010683.html
+  for a very similiar problem
+
+-------------------------------------------------------------------
+Fri Feb  6 18:38:55 UTC 2015 - dimstar@opensuse.org
+
+- Move %install_info_delete calls from postun to preun: the files
+  must still be present to be parsed.
+- Fix the names passed to install_info for gcrypt.info-[12].gz
+  instead of gcrypt-[12].info.gz.
+
+-------------------------------------------------------------------
+Fri Feb  6 18:30:26 UTC 2015 - coolo@suse.com
+
+- fix filename for info pages in %post scripts
+
+-------------------------------------------------------------------
+Wed Nov  5 20:37:24 UTC 2014 - andreas.stieger@gmx.de
+
+- libgcrypt 1.6.2:
+ * Map deprecated RSA algo number to the RSA algo number for better
+   backward compatibility.
+ * Support a 0x40 compression prefix for EdDSA.
+ * Improve ARM hardware feature detection and building.
+ * Fix building for the x32 ABI platform.
+ * Fix some possible NULL deref bugs.
+- remove libgcrypt-1.6.0-use-intenal-functions.patch, upstream
+  via xtrymalloc macro
+- remove libgcrypt-fixed-sizet.patch, upstream
+- adjust libgcrypt-1.6.1-use-fipscheck.patch for xtrymalloc change
+
+-------------------------------------------------------------------
+Sun Sep 21 10:08:39 UTC 2014 - vcizek@suse.com
+
+- disabled curve P-192 in FIPS mode (bnc#896202)
+  * added libgcrypt-fips_ecdsa.patch
+- don't use SHA-1 for ECDSA in FIPS mode
+- also run the fips self tests only in FIPS mode
+
+-------------------------------------------------------------------
+Tue Sep 16 13:56:01 UTC 2014 - vcizek@suse.com
+
+- run the fips self tests at the constructor code
+  * added libgcrypt-fips_run_selftest_at_constructor.patch
+
+-------------------------------------------------------------------
+Tue Sep 16 12:17:17 UTC 2014 - vcizek@suse.com
+
+- rewrite the DSA-2 code to be FIPS 186-4 compliant (bnc#894216)
+  * added libgcrypt-fips-dsa.patch
+  * install fips186_dsa
+- use 2048 bit keys in selftests_dsa
+
+-------------------------------------------------------------------
+Mon Sep  1 10:57:06 UTC 2014 - vcizek@suse.com
+
+- fix an issue in DRBG patchset
+  * size_t type is 32-bit on 32-bit systems
+- fix a potential NULL pointer deference in DRBG patchset
+  * patches from https://bugs.g10code.com/gnupg/issue1701
+- added v9-0001-SP800-90A-Deterministic-Random-Bit-Generator.patch
+- added v9-0007-User-interface-to-DRBG.patch
+- removed v7-0001-SP800-90A-Deterministic-Random-Bit-Generator.patch
+- removed v7-0007-User-interface-to-DRBG.patch
+- add a subpackage for CAVS testing
+  * add cavs_driver.pl and cavs-test.sh from the kernel cavs package
+  * added drbg_test.patch
+
+-------------------------------------------------------------------
+Tue Aug 12 07:43:19 UTC 2014 - meissner@suse.com
+
+- split off the -hmac package that contains the checksums
+
+-------------------------------------------------------------------
+Mon May 26 12:05:17 UTC 2014 - meissner@suse.com
+
+- libgcrypt-fix-rng.patch: make drbg work again in FIPS mode.
+- libgcrypt-1.6.1-use-fipscheck.patch: library to test is libgcrypt.so.20
+  and not libgcrypt.so.11
+- libgcrypt-init-at-elf-load-fips.patch: initialize globally on ELF 
+  DSO loading to meet FIPS requirements.
+
+-------------------------------------------------------------------
+Tue May 13 10:47:51 UTC 2014 - vcizek@suse.com
+
+- add new 0007-User-interface-to-DRBG.patch from upstream
+  * fixes bnc#877233
+  * supersedes the patch from previous entry
+
+-------------------------------------------------------------------
+Sun May 12 13:25:33 UTC 2014 - tittiatcoke@gmail.com
+
+- Correct patch 0007-User-interface-to-DRBG.patch so that the 
+  struct used in the route matches the header of the function
+
+-------------------------------------------------------------------
+Tue May  6 13:28:33 UTC 2014 - vcizek@suse.com
+
+- add support for SP800-90A DRBG (fate#316929, bnc#856312)
+  * patches by Stephan Mueller (http://www.chronox.de/drbg.html):
+    0001-SP800-90A-Deterministic-Random-Bit-Generator.patch.bz2
+    0002-Compile-DRBG.patch
+    0003-Function-definitions-of-interfaces-for-random.c.patch
+    0004-Invoke-DRBG-from-common-libgcrypt-RNG-code.patch
+    0005-Function-definitions-for-gcry_control-callbacks.patch
+    0006-DRBG-specific-gcry_control-requests.patch
+    0007-User-interface-to-DRBG.patch
+  * only after 13.1 (the patches need libgpg-error 1.13)
+- drop libgcrypt-fips-allow-legacy.patch (not needed and wasn't
+  applied anyway)
+
+-------------------------------------------------------------------
+Thu Apr  3 12:04:46 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner to sort out.
+- Really apply ppc64 patch as it was ommited probably by mistake.
+
+-------------------------------------------------------------------
+Thu Mar 27 14:57:22 UTC 2014 - meissner@suse.com
+
+- FIPS changes (from Fedora):
+  - replaced libgcrypt-1.5.0-etc_gcrypt_rngseed-symlink.diff by
+    libgcrypt-1.6.1-fips-cfgrandom.patch
+  - libgcrypt-fixed-sizet.patch: fixed an int type for -flto
+  - libgcrypt-1.6.1-use-fipscheck.patch: use the fipscheck binary
+  - libgcrypt-1.6.1-fips-cavs.patch: add CAVS tests
+- use fipscheck only after 13.1
+- libgcrypt-fips-allow-legacy.patch: attempt to allow some
+  legacy algorithms for gpg2 usage even in FIPS mode.
+  (currently not applied)
+
+-------------------------------------------------------------------
+Thu Jan 30 13:29:49 UTC 2014 - idonmez@suse.com
+
+- Drop arm-missing-files.diff, fixed upstream 
+
+-------------------------------------------------------------------
+Wed Jan 29 18:40:49 UTC 2014 - andreas.stieger@gmx.de
+
+- libgcrypt 1.6.1, a bugfix release with the folloging fixes:
+  * Added emulation for broken Whirlpool code prior to 1.6.0.
+  * Improved performance of KDF functions.
+  * Improved ECDSA compliance.
+  * Fixed message digest lookup by OID (regression in 1.6.0).
+  * Fixed memory leaks in ECC code.
+  * Fixed some asm build problems and feature detection bugs.
+  * Interface changes relative to the 1.6.0 release:
+    GCRY_MD_FLAG_BUGEMU1            NEW (minor API change).
+
+-------------------------------------------------------------------
+Fri Jan  3 16:36:21 UTC 2014 - dmueller@suse.com
+
+- add arm-missing-files.diff: Add missing files to fix build 
+
+-------------------------------------------------------------------
+Fri Jan  3 09:43:39 UTC 2014 - mvyskocil@suse.com
+
+- fix bnc#856915: can't open /dev/urandom
+  * correct libgcrypt-1.5.0-etc_gcrypt_rngseed-symlink.diff
+- require libgpg-error 1.11 or higher
+
+-------------------------------------------------------------------
+Thu Dec 19 13:53:21 UTC 2013 - mvyskocil@suse.com
+
+- fix dependency for 32bit devel package
+- name hmac files according soname
+- fix hmac subpackage dependency
+
+-------------------------------------------------------------------
+Thu Dec 19 09:03:21 UTC 2013 - mvyskocil@suse.com
+
+- update to 1.6. 
+ * Removed the long deprecated gcry_ac interface.  Thus Libgcrypt is
+   not anymore ABI compatible to previous versions if they used the ac
+   interface. Check NEWS in libgcrypt-devel for removed interfaces.
+ * Removed the module register subsystem.
+ * The deprecated message digest debug macros have been removed.  Use
+   gcry_md_debug instead.
+ * Removed deprecated control codes.
+ * Improved performance of most cipher algorithms as well as for the
+   SHA family of hash functions.
+ * Added support for the IDEA cipher algorithm.
+ * Added support for the Salsa20 and reduced Salsa20/12 stream ciphers.
+ * Added limited support for the GOST 28147-89 cipher algorithm.
+ * Added support for the GOST R 34.11-94 and R 34.11-2012 (Stribog)
+   hash algorithms.
+ * Added a random number generator to directly use the system's RNG.
+   Also added an interface to prefer the use of a specified RNG.
+ * Added support for the SCRYPT algorithm.
+ * Mitigated the Yarom/Falkner flush+reload side-channel attack on RSA
+   secret keys.  See <http://eprint.iacr.org/2013/448> [CVE-2013-4242].
+ * Added support for Deterministic DSA as per RFC-6969.
+ * Added support for curve Ed25519.
+ * Added a scatter gather hash convenience function.
+ * Added several MPI amd SEXP helper functions.
+ * Added support for negative numbers to gcry_mpi_print,
+   gcry_mpi_aprint and gcry_mpi_scan.
+ * The algorithm ids GCRY_PK_ECDSA and GCRY_PK_ECDH are now
+   deprecated.  Use GCRY_PK_ECC if you need an algorithm id.
+ * Changed gcry_pk_genkey for "ecc" to only include the curve name and
+   not the parameters.  The flag "param" may be used to revert this.
+ * Added a feature to globally disable selected hardware features.
+ * Added debug helper functions.
+- rebased patches
+ * libgcrypt-1.5.0-etc_gcrypt_rngseed-symlink.diff
+ * libgcrypt-ppc64.patch
+- add libgcrypt-1.6.0-use-intenal-functions.patch to fix fips.c build
+- Move all documentation to -devel package
+
+-------------------------------------------------------------------
+Fri Jul 26 22:05:46 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.5.3 [bnc#831359] CVE-2013-4242
+ * Mitigate the Yarom/Falkner flush+reload side-channel attack on
+   RSA secret keys.  See <http://eprint.iacr.org/2013/448>.
+
+-------------------------------------------------------------------
+Thu Jul 25 09:15:43 UTC 2013 - mvyskocil@suse.com
+
+- port SLE enhancenments to Factory (bnc#831028)
+  * add libgcrypt-unresolved-dladdr.patch (bnc#701267)
+  * add libgcrypt-1.5.0-etc_gcrypt_rngseed-symlink.diff (bnc#724841)
+  * add libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
+- install .hmac256.hmac (bnc#704068)
+- enable varuous new options in configure (m-guard, hmac binary check and
+  random device linux)
+- build with all ciphers, pubkeys and digest by default as whitelist
+  simply allowed them all
+
+-------------------------------------------------------------------
+Mon Jun 17 13:22:33 UTC 2013 - coolo@suse.com
+
+- avoid gpg-offline in bootstrap packages
+
+-------------------------------------------------------------------
+Sun Jun 16 22:56:56 UTC 2013 - crrodriguez@opensuse.org
+
+- Library must be built with large file support in 
+ 32 bit archs.
+
+-------------------------------------------------------------------
+Thu Apr 18 18:23:36 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.5.2
+ * The upstream sources now contain the IDEA algorithm, dropping:
+   idea.c.gz
+   libgcrypt-1.5.0-idea.patch
+   libgcrypt-1.5.0-idea_codecleanup.patch
+ * Made the Padlock code work again (regression since 1.5.0).
+ * Fixed alignment problems for Serpent.
+ * Fixed two bugs in ECC computations.
+
+-------------------------------------------------------------------
+Fri Mar 22 09:31:11 UTC 2013 - mvyskocil@suse.com
+
+- add GPL3.0+ to License tag because of dumpsexp (bnc#810759) 
+
+-------------------------------------------------------------------
+Mon Mar 18 20:41:00 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.5.1
+ * Allow empty passphrase with PBKDF2.
+ * Do not abort on an invalid algorithm number in
+   gcry_cipher_get_algo_keylen and gcry_cipher_get_algo_blklen.
+ * Fixed some Valgrind warnings.
+ * Fixed a problem with select and high fd numbers.
+ * Improved the build system
+ * Various minor bug fixes.
+ * Interface changes relative to the 1.5.0 release:
+   GCRYCTL_SET_ENFORCED_FIPS_FLAG         NEW.
+   GCRYPT_VERSION_NUMBER                  NEW.
+- add verification of source code signatures
+- now requires automake 1.11 to build
+
+-------------------------------------------------------------------
+Sat Feb  2 18:51:33 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jun 12 21:19:18 UTC 2012 - chris@computersalat.de
+
+- fix deps
+  * libgpg-error-devel >= 1.8
+- add libsoname macro
+
+-------------------------------------------------------------------
+Sun Feb 12 15:23:56 UTC 2012 - crrodriguez@opensuse.org
+
+- Libraries back into %{_libdir}, /usr merge project 
+
+-------------------------------------------------------------------
+Sat Dec 24 23:51:26 UTC 2011 - opensuse@dstoecker.de
+
+- add the missing IDEA algorithm after the patent is no longer relevant
+
+------------------------------------------------------------------
+Sun Nov 13 14:37:29 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Nov 13 09:16:36 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Sun Oct  2 18:38:28 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.5.0, most important changes
+ * Uses the Intel AES-NI instructions if available
+ * Support ECDH.
+
+-------------------------------------------------------------------
+Fri Nov 19 09:59:41 UTC 2010 - mvyskocil@suse.cz
+
+- update to 1.4.6
+ * Fixed minor memory leak in DSA key generation.
+ * No more switching to FIPS mode if /proc/version is not readable.
+ * Fixed a sigill during Padlock detection on old CPUs.
+ * Boosted SHA-512 performance by 30% on ia32 boxes and gcc 4.3;
+   SHA-256 went up by 25%.
+ * New variants of the TIGER algorithm.        
+ * New cipher algorithm mode for AES-WRAP.
+ * Interface changes relative to the 1.4.2 release:
+    GCRY_MD_TIGER1             NEW
+    GCRY_MD_TIGER2             NEW
+    GCRY_CIPHER_MODE_AESWRAP   NEW
+
+-------------------------------------------------------------------
+Sun Jul  4 19:07:16 UTC 2010 - jengelh@medozas.de
+
+- add missing definition of udiv_qrnnd for sparcv9:32
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Dec 19 12:58:20 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- disable the use of hand-coded assembler functions on sparc -
+  this is giving me an infinite loop with ./tests/prime
+  (specifically ./sparc32v8/mpih-mul1.S:_gcry_mpih_mul_1.
+  Fedora disables this too.
+
+-------------------------------------------------------------------
+Tue Apr  7 15:45:06 CEST 2009 - crrodriguez@suse.de
+
+- update to version 1.4.4
+ * Publish GCRY_MODULE_ID_USER and GCRY_MODULE_ID_USER_LAST constants.
+   This functionality has been in Libgcrypt since 1.3.0.
+ * MD5 may now be used in non-enforced fips mode.
+ * Fixed HMAC for SHA-384 and SHA-512 with keys longer than 64 bytes.
+ * In fips mode, RSA keys are now generated using the X9.31 algorithm
+   and DSA keys using the FIPS 186-2 algorithm.
+ * The transient-key flag is now also supported for DSA key
+   generation.  DSA domain parameters may be given as well. 
+
+-------------------------------------------------------------------
+Thu Jan 29 10:57:01 CET 2009 - olh@suse.de
+
+- obsolete libgcrypt-error-XXbit in the library subpackage
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 17:23:54 CET 2008 - mkoenig@suse.de
+
+- build rijndael.c with -fno-strict-aliasing [bnc#443693] 
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Jun 30 11:47:59 CEST 2008 - mkoenig@suse.de
+
+- update to version 1.4.1
+  * Fixed a bug which led to the comsumption of far too much
+    entropy for the intial seeding 
+  * Improved AES performance for CFB and CBC modes
+
+-------------------------------------------------------------------
+Sun May 11 11:54:39 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Jan 17 12:20:25 CET 2008 - mkoenig@suse.de
+
+- update to version 1.4.0:
+  * The entire library is now under the LGPL. The helper programs and
+    the manual are under the GPL 
+  * New control code GCRYCTL_PRINT_CONFIG
+  * Experimental support for ECDSA
+  * Assembler support for the AMD64 architecture
+  * Non executable stack support is now used by default
+  * New configure option --enable-random-daemon
+  * The new function gcry_md_debug should be used instead of the
+    gcry_md_start_debug and gcry_md_stop_debug macros.
+  * Support for DSA2
+  * Reserved algorithm ranges for use by applications
+  * gcry_mpi_rshift does not anymore truncate the shift count
+  * Support for OFB encryption mode
+  * Support for the Camellia cipher
+  * Support for the SEED cipher
+  * Support for SHA-224 and HMAC using SHA-384 and SHA-512
+  * Reading and writing the random seed file is now protected by a
+    fcntl style file lock
+  * Made the RNG immune against fork without exec
+  * Changed the way the RNG gets initialized
+  * The ASN.1 DER template for SHA-224 has been fixed
+  * The ACE engine of VIA processors is now used for AES-128
+- changed package layout to conform shlib policy:
+  new subpackage libgcrypt11
+- disable static library
+- for reference: bugzilla entry of last change #304749
+
+-------------------------------------------------------------------
+Thu Sep 13 01:28:53 CEST 2007 - ltinkl@suse.cz
+
+- add sanity check for mpi of size 0 (#304479)
+
+-------------------------------------------------------------------
+Mon Feb  5 10:25:21 CET 2007 - mkoenig@suse.de
+
+- update to version 1.2.4:
+  * Fixed a bug in the memory allocator which could have been the
+    reason for some of non-duplicable bugs.
+  * Other minor bug fixes.
+
+-------------------------------------------------------------------
+Wed Dec 13 12:47:48 CET 2006 - mkoenig@suse.de
+
+- get rid of .la file and fix devel so link
+
+-------------------------------------------------------------------
+Tue Dec  5 18:30:30 CET 2006 - mkoenig@suse.de
+
+- move shared lib to /%_lib
+
+-------------------------------------------------------------------
+Thu Aug 31 14:29:56 CEST 2006 - mkoenig@suse.de
+
+- update to version 1.2.3:
+  * Rewrote gcry_mpi_rshift to allow arbitrary shift counts.
+  * Minor bug fixes.
+- added libgpg-error-devel and glibc-devel to Requires tag
+  of devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 16:44:48 CET 2005 - hvogel@suse.de
+
+- enable noexecstack
+- build ac.c with fno-strict-aliasing
+
+-------------------------------------------------------------------
+Tue Oct 25 13:40:15 CEST 2005 - hvogel@suse.de
+
+- update to version 1.2.2 
+
+-------------------------------------------------------------------
+Thu Jun 23 11:26:58 CEST 2005 - hvogel@suse.de
+
+- call install_info macro in post/postun of the devel package
+- depend on libgcrypt
+- add clean section
+
+-------------------------------------------------------------------
+Tue Jan 18 11:51:51 CET 2005 - hvogel@suse.de
+
+- update to version 1.2.1
+
+-------------------------------------------------------------------
+Tue Jan 11 16:48:10 CET 2005 - schwab@suse.de
+
+- Fix info dir entry.
+
+-------------------------------------------------------------------
+Wed Nov 17 11:22:44 CET 2004 - hvogel@suse.de
+
+- require libgpg-error-devel (Bug #48271) 
+- get rid of the NLD parts
+
+-------------------------------------------------------------------
+Wed Jul 14 11:12:54 CEST 2004 - adrian@suse.de
+
+- create -devel subpackage
+- prepare for nld
+
+-------------------------------------------------------------------
+Wed May 19 14:57:45 CEST 2004 - hvogel@suse.de
+
+- update to version 1.2.0  
+
+-------------------------------------------------------------------
+Mon Mar 22 16:48:53 CET 2004 - meissner@suse.de
+
+- disable make check, because it uses /dev/random whihc is 
+  not filled on some server machines.
+
+-------------------------------------------------------------------
+Wed Mar 17 15:01:51 CET 2004 - meissner@suse.de
+
+- fixed too over enthusiastic powerpc switches to make it work
+  on ppc64. (It compiled before, but did not work).
+- enabled make check.
+
+-------------------------------------------------------------------
+Wed Feb 18 12:14:36 CET 2004 - kukuk@suse.de
+
+- Build against system pthread library, not pth.
+
+-------------------------------------------------------------------
+Tue Feb 17 21:11:40 CET 2004 - hvogel@suse.de
+
+- update to version 1.1.91
+- fix autoconf quotations
+
+-------------------------------------------------------------------
+Sat Jan 10 19:20:41 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig to %postun
+
+-------------------------------------------------------------------
+Sun Jul 27 16:12:54 CEST 2003 - poeml@suse.de
+
+- add libgcrypt-1.1.12-sexp-valgrind-error.patch from SLEC
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Feb 10 22:51:26 CET 2003 - mmj@suse.de
+
+- Use %install_info macro [#23433]
+
+-------------------------------------------------------------------
+Mon Feb 10 16:11:55 CET 2003 - mc@suse.de
+
+- switch to version 1.1.12
+- gcry_pk_sign, gcry_pk_verify and gcry_pk_encrypt can now handle an
+  optional pkcs1 flags parameter in the S-expression.  A similar flag
+  may be passed to gcry_pk_decrypt but it is only syntactically
+  implemented. 
+- New convenience macro gcry_md_get_asnoid.
+- There is now some real stuff in the manual.
+- New algorithm: MD4
+- Implemented ciphertext stealing.
+- Support for plain old DES
+- Smaller bugs fixes and a few new OIDs.
+
+-------------------------------------------------------------------
+Tue Jan 14 14:03:27 CET 2003 - nadvornik@suse.cz
+
+- fixed multi-line string literals
+
+-------------------------------------------------------------------
+Thu Aug  1 23:51:10 CEST 2002 - poeml@suse.de
+
+- create package
+

@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Wed Jul 31 12:49:26 UTC 2019 - mvetter@suse.com
+
+- Build both mini and standard with OMEMO enabled
+
+-------------------------------------------------------------------
+Wed Jul 31 09:31:45 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.0:
+  * Fix plugin unload return code if just one plugin fails (#995)
+  * Fix several typos
+  * Fix some display indentation issues (#1073)
+  * Fail plugin unload if the plugin doesnt exist
+  * Improve encrypted message stub header by mentioning the encryption method
+  * Fix GPG encryption (#997)
+  * Redraw sceen after entry of PGP key (#906)
+  * Fix support for case-sensitive account names (#725)
+  * Fix /me display when highlighting user in MUCs (#950)
+  * Fix `make dist` (0f0659a)
+  * Fix use after free bug (#1044)
+  * Fix segfault on connect with default account (#1046)
+  * Implement OMEMO support (#1039, #658, #1070)
+  * Add random string at the end of the default resource (#1053)
+  * Fix handling of messages without ID in MUC (#1061)
+  * Add library versioning to libprofanity (#973)
+  * Add more customization: occupants indent (/occupants) (#690, #1072)
+  * Add more customization: occupants header char (/occupants) (#690, #1074)
+  * Add more customization: occupants wrap (/occupants) (#690, 125ca2f)
+  * Add more customization: occupants char (/occupants) (#690, #1084)
+  * Fix formatting for privileges on (a666f0d)
+  * Fix usage of statusbar number in theme (#1078)
+  * Fix Debian 32bit tests (#1091)
+  * Fix unit tests (#1092)
+  * Fix infinite loop on connection loss (#1103)
+  * Don't clear saved account data in session_disconnect (#1106)
+  * Cancel autoping timer on disconnect or connection loss (#1105)
+  * Fix SIGABRT on connection loss (#1083)
+  * Only print room history for new messages upon reconnect (#704, #1110)
+  * Check if valid account before setting autoconnect (#1112)
+  * Improve plugin load error message, in case built without support (cc697de)
+  * Iterate up to 100 logfiles (#519)
+  * Fix rejoining of MUCs upon reconnect (#1120)
+  * Add option to set all window related time formats (#632, #1120)
+  * Always check for directory changes with sendfile auto completion (#1154)
+  * Fix several memory leaks (#1130, + plenty commits)
+  * For details see https://github.com/profanity-im/profanity/milestone/17
+
+-------------------------------------------------------------------
+Mon Feb 18 13:25:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * No changes since RC1
+
+-------------------------------------------------------------------
+Wed Jan 23 12:45:31 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0 RC1:
+  * Allow moving vertical window positions (/titlebar, /mainwin, /statusbar, /inputwin)
+  * Allow loading/unloading all plugins (/plugins)
+  * Allow installing plugins from directory (/plugins)
+  * Allow uninstallation of plugins (/plugins uninstall)
+  * Allow update of plugins (/plugins update)
+  * Theme option for status bar time (statusbar.time)
+  * Case/accent insensitive autocompletion
+  * Shift tab to select previous autocomplete suggestion
+  * Allow searching help (/help search_all|search_any)
+  * Support for Legacy SSL
+  * Allow caching of rooms (/rooms cache)
+  * Add autocompletion for servername when listing rooms (/rooms service)
+  * Allow showing/disabling tab number in statusbar (/statusbar show)
+  * Adjust configure for OpenBSD
+  * Use UUIDs instead of counter for messages
+  * Support basic ad-hoc commands(xep-0050) (/command)
+  * Add option to trust server's certificate (/connect, /account)
+  * Add possibility to close windows via prof_win_close inputrc hook
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/16?closed=1
+
+-------------------------------------------------------------------
+Tue Mar 20 13:52:18 UTC 2018 - dheidler@suse.com
+
+- Enable C and Python plugin API
+
+-------------------------------------------------------------------
+Fri Mar 16 15:51:03 UTC 2018 - mvetter@suse.com
+
+- Compile profanity-mini with --disable-icons:
+  Since we first do the standard build we need to disable the
+  icons in the later build to really get rid of the GTK dependency
+
+-------------------------------------------------------------------
+Thu Jul 13 12:00:32 UTC 2017 - olaf@aepfle.de
+
+- Remove unused gnutls/openssl from buildrequires
+
+-------------------------------------------------------------------
+Thu Feb  9 13:10:41 UTC 2017 - mvetter@suse.com
+
+- Update to 0.5.1:
+  * Add prof.get_room_nick plugins api function
+  * Add main.help.header theme option
+  * Look for system TLS certificate path by default (/tls certpath)
+  * Use service discovery to set account muc property
+  * Allow clearing account muc and resource properties
+  * Allow plugins to complete file paths with prof.filepath_completer_add function
+  * Add encryption settings functions to plugins api
+  * Allow plugins to block message sending on pre message send hooks
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/15?closed=1
+
+-------------------------------------------------------------------
+Sun Nov  6 18:53:02 UTC 2016 - jengelh@inai.de
+
+- Orthographic fixes.
+- Remove useless BuildRequire on shlib package.
+
+-------------------------------------------------------------------
+Wed Nov 02 10:52:58 UTC 2016 - dheidler@suse.de
+
+- Switch to libmesode insted of libstrophe
+  * This allows better SSL cert validation
+
+-------------------------------------------------------------------
+Thu Sep 22 08:37:58 UTC 2016 - mvetter@suse.com
+
+- Fixing gh/boothj5/profanity/#860:
+  profanity uses parts of the new API of libstrophe. But since 
+  the so name wasn't bumped this doesn't get autodetected.
+  Adding the requires manually: Requires: libstrophe0 >= 0.9.0
+
+-------------------------------------------------------------------
+Wed Sep 21 22:10:33 UTC 2016 - mvetter@suse.com
+
+- Add better information to description
+- Enable tray icon in profanity-standard
+
+-------------------------------------------------------------------
+Fri Sep 16 10:22:22 UTC 2016 - mvetter@suse.com
+
+- Run spec-cleaner and use macros so it builds on all archs
+
+-------------------------------------------------------------------
+Fri Sep 16 10:10:39 UTC 2016 - mvetter@suse.com
+
+- Add profanity-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Sep 16 10:04:45 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.5.0:
+  * Plugins API supporting C and Python plugins
+  * SSL certificate verification (requires libmesode) (/tls)
+  * HTTP file upload (xep-0363) (/sendfile)
+  * Blocking command (xep-0191) (/blocked)
+  * Allow auto extended away (/autoaway)
+  * Include last acitvity in initial presence (xep-0256) (/lastactivity)
+  * Last Activity (xep-0012) (/lastactivity)
+  * Ability to run command scripts (/script)
+  * Account startscript property to execute a command script on connect (/account)
+  * Export roster to CSV file (/export)
+  * Support for GTK tray icons (/tray)
+  * User specified text triggers for chat room notifications (/notify)
+  * Per chat room notification options (/notify)
+  * Many new roster panel display options (/roster)
+  * Time format preferences per window type (/time)
+  * Edit, prepend and append to room subject (/subject)
+  * Autoping timeout preference (/autoping)
+  * Window navigation by window title (/win)
+  * Window closing by window title (/close)
+  * Account theme setting (/account)
+  * Allow sending XMPP stanzas in xmlconsole window (/xmlconsole)
+  * Configure level of room message notifications in console window (/console)
+  * Check ~/.config/profanity/inputrc for readline settings
+  * Custom readline functions for navigation key bindings
+  * Autocomplete command arguments when no characters entered
+- BuildRequire at least version 0.9.0 of libstrophe
+- Have libprofanity.so and profapi.h in main package for now
+- Add icon files
+
+-------------------------------------------------------------------
+Tue Jun 14 11:24:48 UTC 2016 - mvetter@suse.com
+
+- Split profanity in two packages:
+  standard - the default with all features enabled
+  mini - disabling notifications thus not needing X
+
+-------------------------------------------------------------------
+Thu Oct  1 09:40:35 UTC 2015 - mvetter@suse.com
+
+- Build with PGP enabled
+- Upgrade to version 0.4.7:
+    * Build against libmesode if available
+    * Handle invalid SSL certificates (requires libmesode)
+    * Allow auto extended away
+    * Include last acitvity in initial presence (xep-0256)
+    * Last Activity (xep-0012)
+  libmesode is not yet packaged. So this version uses libstrophe still.
+
+-------------------------------------------------------------------
+Tue Jul  7 09:42:35 UTC 2015 - cfarrell@suse.com
+
+- license update: SUSE-GPL-3.0+-with-openssl-exception
+  There is an exception to permit linking with openssl
+
+-------------------------------------------------------------------
+Tue Jun 16 14:30:06 UTC 2015 - mvetter@suse.com
+
+- Initial commit
+

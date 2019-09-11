@@ -1,0 +1,35 @@
+From: Joerg Frede (frede@b1-systems.de)
+Date: Tue Jun 18 09:46:13 UTC 2019
+Subject: Fix error when /proc/fb is empty
+Upstream: merged
+
+diff -Pdpru a/screenfetch-dev b/screenfetch-dev
+--- a/screenfetch-dev	2017-03-10 14:55:45.000000000 +0100
++++ b/screenfetch-dev	2019-06-18 11:39:45.404785234 +0200
+@@ -1332,13 +1332,23 @@ detectgpu () {
+ # Detect Intel GPU  #works in dash
+ # Run it only on Intel Processors if GPU is unknown
+ DetectIntelGPU() {
+-	gpu=$(awk '{print $2}' /proc/fb)
++	if [ -r /proc/fb ]; then
++		gpu=$(awk 'BEGIN {ORS = " &"} {$1="";print}' /proc/fb | sed  -r s/'^\s+|\s*&$'//g)
++	fi
+ 
+ 	case $gpu in
+-		*intel*) gpu=intel ;;
++		*mfb)
++			gpu=$(lspci | grep -i vga | awk -F ": " '{print $2}') 
++			;;
++		*intel*)
++			gpu="intel"
++			;;
++		*)
++			gpu="Not Found"
++			;;
+ 	esac
+ 
+-        if [ $gpu = intel ]; then
++        if [[ "$gpu" = "intel" ]]; then
+ 		#Detect CPU
+ 		local CPU=$(uname -p | awk '{print $3}')
+ 		CPU=${CPU#*'-'}; #Detect CPU number

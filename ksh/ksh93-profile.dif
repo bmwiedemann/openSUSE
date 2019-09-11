@@ -1,0 +1,64 @@
+--- src/cmd/ksh93/sh/main.c
++++ src/cmd/ksh93/sh/main.c	2010-08-17 15:35:18.000000000 +0000
+@@ -200,14 +200,38 @@ int sh_main(int ac, char *av[], Shinit_f
+ 		{
+ 			/*	system profile	*/
+ 			sh_source(shp, iop, e_sysprofile);
++		}
++		/* make sure PWD is set up correctly */
++		path_pwd(shp,1);
++#if SHOPT_SYSRC
++		if(!sh_isoption(SH_NOEXEC))
++		{
++			if(!sh_isoption(SH_NOUSRPROFILE) && !sh_isoption(SH_PRIVILEGED) && sh_isoption(SH_RC))
++			{
++#if SHOPT_BASH
++				if(sh_isoption(SH_BASH) && !sh_isoption(SH_POSIX))
++					sh_source(shp, iop, e_bash_sysrc);
++				else
++#endif
++				{
++					if(name = sh_mactry(shp,nv_getval(ENVNOD)))
++						name = *name ? strdup(name) : (char*)0;
++					if(!name || !strmatch(name, "?(.)/./*"))
++						sh_source(shp, iop, e_sysrc);
++					if(name)
++						free(name);
++				}
++			}
++		}
++#endif
++		if(sh_isoption(SH_LOGIN_SHELL) && !sh_isoption(SH_NOPROFILE))
++		{
+ 			if(!sh_isoption(SH_NOUSRPROFILE) && !sh_isoption(SH_PRIVILEGED))
+ 			{
+ 				char **files = shp->gd->login_files;
+ 				while ((name = *files++) && !sh_source(shp, iop, sh_mactry(shp,name)));
+ 			}
+ 		}
+-		/* make sure PWD is set up correctly */
+-		path_pwd(shp,1);
+ 		if(!sh_isoption(SH_NOEXEC))
+ 		{
+ 			if(!sh_isoption(SH_NOUSRPROFILE) && !sh_isoption(SH_PRIVILEGED) && sh_isoption(SH_RC))
+@@ -215,9 +239,6 @@ int sh_main(int ac, char *av[], Shinit_f
+ #if SHOPT_BASH
+ 				if(sh_isoption(SH_BASH) && !sh_isoption(SH_POSIX))
+ 				{
+-#if SHOPT_SYSRC
+-					sh_source(shp, iop, e_bash_sysrc);
+-#endif
+ 					sh_source(shp, iop, shp->gd->rcfile ? shp->gd->rcfile : sh_mactry(shp,(char*)e_bash_rc));
+ 				}
+ 				else
+@@ -225,10 +246,6 @@ int sh_main(int ac, char *av[], Shinit_f
+ 				{
+ 					if(name = sh_mactry(shp,nv_getval(ENVNOD)))
+ 						name = *name ? strdup(name) : (char*)0;
+-#if SHOPT_SYSRC
+-					if(!strmatch(name, "?(.)/./*"))
+-						sh_source(shp, iop, e_sysrc);
+-#endif
+ 					if(name)
+ 					{
+ 						sh_source(shp, iop, name);

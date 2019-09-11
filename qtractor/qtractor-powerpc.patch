@@ -1,0 +1,17 @@
+Index: src/qtractorAtomic.h
+===================================================================
+--- src/qtractorAtomic.h.orig
++++ src/qtractorAtomic.h
+@@ -56,10 +56,10 @@ static inline int ATOMIC_CAS ( qtractorA
+ 
+ #if defined(__GNUC__)
+ 
+-#if defined(powerpc) || defined(__ppc__)
++#if defined(__powerpc__) || defined(__powerpc64__)
+ 
+ static inline int ATOMIC_CAS1 (
+-	volatile int *pAddr, int iOldValue, int iNewValue )
++	volatile int *pValue, int iOldValue, int iNewValue )
+ {
+ 	register int result;
+ 	asm volatile (

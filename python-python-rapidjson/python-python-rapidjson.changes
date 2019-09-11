@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Jul 22 13:14:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.2:
+  * Hopefully fix the memory leak when loading from a stream (issue #117)
+
+-------------------------------------------------------------------
+Mon Jun 10 17:18:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Jun  5 10:36:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * Raise a more specific exception on loading errors, JSONDecodeError, instead of generic ValueError (issue #118)
+  * Fix optimization path when using OrderedDicts (issue #119)
+  * Fix serialization of IntEnums (issue #121)
+  * Raise correct exception in code samples (PR #109), thanks to Thomas Dähling
+  * Fix compilation with system-wide install of rapidjson (issue #110)
+  * Use current master version of rapidjson, that includes a fix for its issue #1368 and issue #1336, and cures several compilation warnings as well (issue #112 and issue #107)
+  * Fix memory leak when using object_hook (issue #115)
+- Add patch to enforce use of system rapidjson:
+  * rapidjson-system.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 13:40:34 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Initial packaging of version 0.6.3

@@ -1,0 +1,18 @@
+--- nedit-5.5_CVS20071122/makefiles/Makefile.linux.makefiles	2006-10-26 04:20:16.000000000 +0200
++++ nedit-5.5_CVS20071122/makefiles/Makefile.linux	2007-11-22 08:29:38.000000000 +0100
+@@ -1,5 +1,5 @@
+ # $Id: Makefile.linux,v 1.14 2006/10/26 02:20:16 tringali Exp $
+-CC=cc
++CC=gcc
+ AR=ar
+ 
+ # For editres, add -DEDITRES to CFLAGS and -lXmu to LIBS
+@@ -17,7 +17,7 @@
+ # To test if the Motif library exports the runtime version
+ # add -DHAVE__XMVERSIONSTRING to CFLAGS
+ #
+-CFLAGS=-O -I/usr/X11R6/include -DUSE_DIRENT -DUSE_LPR_PRINT_CMD
++CFLAGS=-I/usr/X11R6/include $(RPM_OPT_FLAGS) -DUSE_DIRENT -DUSE_LPR_PRINT_CMD
+ 
+ ARFLAGS=-urs
+ 

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon May 11 19:35:07 UTC 2015 - astieger@suse.com
+
+- fix SLE 11 build
+
+-------------------------------------------------------------------
+Sun Jan 18 17:26:53 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20140308
+  + Fix work with Mercurial 2.9 (Closes: bdo#741087)
+- Specfile cleanup
+- Use %{python_sitelib} instead of %{python_sitedir}
+- Remove python dependency; let RPM handles it
+- Follow debian versioning scheme
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Thu Sep 15 11:43:47 UTC 2011 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of hg-fast-export (snapshot 20110613)
+- Add manual pages and hg-git script from Debian package
+

@@ -1,0 +1,20 @@
+# glibc-profile is a devel package
+addFilter("glibc-profile.* devel-file-in-non-devel-package.*/usr/lib.*/lib.*_p.a")
+# glibc is not a devel package
+addFilter("glibc\\..* non-devel-file-in-devel-package")
+# getent deliberately uses gethostbyname
+addFilter("binary-or-shlib-calls-gethostbyname /usr/bin/getent")
+# We do need to keep the symtab (see comments in glibc.spec), so this is intented:
+addFilter("unstripped-binary-or-object")
+# ld.so is special:
+addFilter("shared-lib-without-dependency-information /lib.*/ld-2.*\\.so")
+# Handled via glibc_post_upgrade:
+addFilter("postin-without-ldconfig")
+# We will not rename glibc to follow the shlib policy
+addFilter("shlib-policy-missing-suffix")
+# libpthread and libnsl call exit - this is fine
+addFilter("shared-lib-calls-exit")
+# The man-pages package contains a number of man pages for programs that come
+# with glibc, therefore do not warn about them
+addFilter("glibc.*no-manual-page-for-binary (getent|iconv|ldd|ldconfig|locale)")
+addFilter("nscd.*no-manual-page-for-binary nscd")

@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Fri Jun 21 14:28:46 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 10.9:
+  * https://www.postgresql.org/docs/10/release-10-9.html
+  * https://www.postgresql.org/about/news/1949/
+  * CVE-2019-10164 bsc#1138034: Stack-based buffer overflow via
+    setting a password
+
+-------------------------------------------------------------------
+Fri May 10 12:14:00 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to 10.8:
+  * https://www.postgresql.org/docs/10/release-10-8.html
+  * https://www.postgresql.org/about/news/1939/
+  * CVE-2019-10130, bsc#1134689: Prevent row-level security
+    policies from being bypassed via selectivity estimators.
+
+-------------------------------------------------------------------
+Mon Feb 25 13:23:06 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to 10.7:
+  * https://www.postgresql.org/docs/10/release-10-7.html
+  * https://www.postgresql.org/about/news/1920/
+  * By default, panic instead of retrying after fsync() failure,
+    to avoid possible data corruption.
+  * Ensure that NOT NULL constraints of a partitioned table are
+    honored within its partitions.
+  * Numerous other bug fixes.
+- Overhaul README.SUSE
+- Make the server-devel package exclusive across versions.
+
+------------------------------------------------------------------
+Fri Nov  9 09:09:28 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Update to 10.6:
+  * CVE-2018-16850, bsc#1114837: Improper quoting of transition
+    table names when pg_dump emits CREATE TRIGGER can cause
+    privilege escalation
+  * Numerous bug fixes, see the release notes:
+    https://www.postgresql.org/docs/10/release-10-6.html
+  * Remove unneeded library dependencies from PGXS.
+
+-------------------------------------------------------------------
+Mon Oct 22 12:04:56 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Stop building the client libraries as they will henceforth be
+  provided by PostgreSQL 11.
+
+-------------------------------------------------------------------
+Wed Oct 17 16:23:19 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- add provides for the new server-devel package that will be
+  introduced in postgresql 11
+
+-------------------------------------------------------------------
+Fri Aug 10 16:05:29 UTC 2018 - max@suse.com
+
+- Update to 10.5:
+  https://www.postgresql.org/docs/current/static/release-10-5.html
+
+  * CVE-2018-10915, bsc#1104199: Fix failure to reset libpq's state
+    fully between connection attempts.
+
+  * CVE-2018-10925, bsc#1104202: Fix INSERT ... ON CONFLICT UPDATE
+    through a view that isn't just SELECT * FROM ...
+
+-------------------------------------------------------------------
+Tue May  8 12:50:23 UTC 2018 - max@suse.com
+
+- Update to 10.4:
+  https://www.postgresql.org/about/news/1851/
+  https://www.postgresql.org/docs/current/static/release-10-4.html
+
+  A dump/restore is not required for those running 10.X.
+
+  However, if you use the adminpack extension, you should update
+  it as per the first changelog entry below.
+
+  Also, if the function marking mistakes mentioned in the second
+  and third changelog entries below affect you, you will want to
+  take steps to correct your database catalogs.
+
+  * CVE-2018-1115, bsc#1091610: Remove public execute privilege
+    from contrib/adminpack's pg_logfile_rotate() function
+
+    pg_logfile_rotate() is a deprecated wrapper for the core
+    function pg_rotate_logfile(). When that function was changed
+    to rely on SQL privileges for access control rather than a
+    hard-coded superuser check, pg_logfile_rotate() should have
+    been updated as well, but the need for this was missed. Hence,
+    if adminpack is installed, any user could request a logfile
+    rotation, creating a minor security issue.
+
+    After installing this update, administrators should update
+    adminpack by performing ALTER EXTENSION adminpack UPDATE in
+    each database in which adminpack is installed.
+
+  * Fix incorrect volatility markings on a few built-in functions
+
+  * Fix incorrect parallel-safety markings on a few built-in
+    functions.
+
+-------------------------------------------------------------------
+Wed May  2 15:27:04 UTC 2018 - max@suse.com
+
+- bsc#1091412: server prerequires server-noarch to make sure that
+  the postgresql user and group exist.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:33:52 UTC 2018 - mrueckert@suse.de
+
+- Update to 10.3
+  * https://www.postgresql.org/docs/current/static/release-10-3.html
+    A dump/restore is not required for those running 10.X.
+
+    However, if you run an installation in which not all users are
+    mutually trusting, or if you maintain an application or
+    extension that is intended for use in arbitrary situations, it
+    is strongly recommended that you read the documentation changes
+    described in the first changelog entry in the link above, and
+    take suitable steps to ensure that your installation or code is
+    secure.
+
+    Also, the changes described in the second changelog entry in
+    the link above may cause functions used in index expressions or
+    materialized views to fail during auto-analyze, or when
+    reloading from a dump. After upgrading, monitor the server logs
+    for such problems, and fix affected functions.
+  * CVE-2018-1058 bsc#1081925 Uncontrolled search path element in
+    pg_dump and other client applications
+
+-------------------------------------------------------------------
+Fri Feb  9 09:16:05 UTC 2018 - max@suse.com
+
+- Update to PostgreSQL 10.2
+  * https://www.postgresql.org/docs/10/static/release-10-2.html
+  * CVE-2018-1052, bsc#1080253: Fix processing of partition keys
+    containing multiple expressions.
+  * CVE-2018-1053, bsc#1077983: Ensure that all temporary files
+    made by pg_upgrade are non-world-readable.
+  * bsc#1079757: Rename pg_rewind's copy_file_range function to
+    avoid conflict with new Linux system call of that name.
+
+-------------------------------------------------------------------
+Fri Jan 19 13:07:24 UTC 2018 - max@suse.com
+
+- Use Python 3 for building PL/Python (boo#1067699).
+- Don't %config the symlinks to /etc/alternatives to avoid rpmlint
+  warnings.
+
+-------------------------------------------------------------------
+Thu Dec 14 18:10:50 UTC 2017 - mrueckert@suse.de
+
+- also package %define pgcontribdir %pgdatadir/contrib
+
+-------------------------------------------------------------------
+Thu Dec 14 12:26:04 UTC 2017 - mrueckert@suse.de
+
+- enable support for ICU (new BR: libicu-devel)
+- enable support for selinux (new BR: libselinux-devel)
+- enable support for systemd (new BR: pkgconfig(libsystemd))
+
+-------------------------------------------------------------------
+Thu Dec 14 11:57:17 UTC 2017 - mrueckert@suse.de
+
+- make sure that also the server gets at least its own version of
+  libpq5
+- also change all libpq requires to >= %version instead of just
+  %pgmajor
+
+-------------------------------------------------------------------
+Thu Nov 23 18:39:08 UTC 2017 - mrueckert@suse.de
+
+- port /usr/share/postgresql/install-alternatives usage to the new
+  scheme
+
+-------------------------------------------------------------------
+Thu Nov 23 18:38:34 UTC 2017 - mrueckert@suse.de
+
+- update to 10.1
+  * Security Issues
+    - CVE-2017-15098: Memory disclosure in JSON functions
+    - CVE-2017-15099: INSERT ... ON CONFLICT DO UPDATE fails to
+      enforce SELECT privileges
+
+      Prior to this release, the "INSERT ... ON CONFLICT DO UPDATE"
+      would not check to see if the executing user had permission
+      to perform a "SELECT" on the index performing the conflicting
+      check. Additionally, in a table with row-level security
+      enabled, the "INSERT ... ON CONFLICT DO UPDATE" would not
+      check the SELECT policies for that table before performing
+      the update.
+
+      This fix ensures that "INSERT ... ON CONFLICT DO UPDATE"
+      checks against table permissions and RLS policies before
+      executing.
+  * Bug Fixes and Improvements
+    This update also fixes a number of bugs reported in the last
+    few months. Some of these issues affect only version 10, but
+    many affect all supported versions:
+    - Fix a race condition in BRIN indexing that could cause some
+      rows to not be included in the indexing.
+    - Fix crash when logical decoding is invoked from a PL language
+      function.
+    - Several fixes for logical replication.
+    - Restored behavior for CTEs attached to INSERT/UPDATE/DELETE
+      statements to pre-version 10.
+    - Prevent low-probability crash in processing of nested trigger
+      firings.
+    - Do not evaluate an aggregate function's argument expressions
+      when the conditions in the FILTER clause evaluate to FALSE.
+      This complies with SQL-standard behavior.
+    - Fix incorrect query results when multiple GROUPING SETS
+      columns contain the same simple variable.
+    - Fix memory leak over the lifespan of a query when evaluating
+      a set-returning function from the target list in a SELECT.
+    - Several fixes for parallel query execution, including fixing
+      a crash in the parallel execution of certain queries that
+      contain a certain type of bitmap scan.
+    - Fix json_build_array(), json_build_object(),
+      jsonb_build_array(), and jsonb_build_object() to handle
+      explicit VARIADIC arguments correctly.
+    - Prevent infinite float values from being casted to the
+      numeric type.
+    - Fix autovacuum's “work item” logic to prevent possible
+      crashes and silent loss of work items.
+    - Several fixes for VIEWs around adding columns to the end of a
+      view.
+    - Fix for hashability detection of range data types that are
+      created by a user.
+    - Improvements on using extended statistics on columns for the
+      purposes of query planning.
+    - Prevent idle_in_transaction_session_timeout from being
+      ignored when a statement_timeout occurred earlier.
+    - Fix low-probability loss of NOTIFY messages due more than 2
+      billion transactions processing before any queries are
+      executed in the session.
+    - Several file system interaction fixes.
+    - Correctly restore the umask setting when file creation fails
+      in COPY or lo_export().
+    - Fix pg_dump to ensure that it emits GRANT commands in a valid
+      order.
+    - Fix pg_basebackup's matching of tablespace paths to
+      canonicalize both paths before comparing to help improve
+      Windows compatibility.
+    - Fix libpq to not require user's home directory to exist when
+      trying to read the "~/.pgpass" file.
+    - Several fixes for ecpg.
+    - This update also contains tzdata release 2017c, with updates
+      for Fiji, Namibia, Northern Cyprus, Sudan, Tonga, and Turks &
+      Caicos Islands, plus historical corrections for Alaska,
+      Apia, Burma, Calcutta, Detroit, Ireland, Namibia, and Pago
+      Pago.
+  For more details see:
+  https://www.postgresql.org/docs/current/static/release-10-1.html
+
+-------------------------------------------------------------------
+Fri Nov  3 13:04:55 UTC 2017 - max@suse.com
+
+- Use /usr/share/postgresql/install-alternatives in the respective
+  scriptlets.
+- Fix the logic around restart on upgrade and stop on removal.
+  We bring the binaries, but we don't own the unit file.
+
+-------------------------------------------------------------------
+Thu Oct  5 14:38:17 UTC 2017 - max@suse.com
+
+- Update to the final 10.0 release. Major enhancements include:
+  * Logical replication using publish/subscribe
+  * Declarative table partitioning
+  * Improved query parallelism
+  * Significant general performance improvements
+  * Stronger password authentication based on SCRAM-SHA-256
+  * Improved monitoring and control
+
+  A dump/restore using pg_dumpall, or use of pg_upgrade, is
+  required for those wishing to migrate data from any previous
+  release.
+  Version 10 contains a number of changes that may affect
+  compatibility with previous releases.
+  See the release notes for details:
+  https://www.postgresql.org/docs/10/static/release-10.html
+
+- Reduce the number of version-related macros in the spec file.
+
+-------------------------------------------------------------------
+Mon Oct  2 10:59:50 UTC 2017 - max@suse.com
+
+- Break a build dependency loop in the server packages that led to
+  bootstrap problems.
+
+-------------------------------------------------------------------
+Fri Sep 22 11:46:13 UTC 2017 - max@suse.com
+
+- Update to 10rc1
+  PostgreSQL 10 RC 1 requires an upgrade from beta 4, or earlier
+  either using pg_dump / pg_restore or pg_upgrade.
+
+  Changes since beta4 include:
+  * Add psql variables showing server version and psql version.
+  * Several fixes for partitioning
+  * Several fixes for logical replication
+  * Several fixes for transition tables
+  * Fix for query that could end up in an uninterruptible state
+
+- Adjust dependencies to the new packaging schema.
+
+-------------------------------------------------------------------
+Fri Sep  8 20:59:33 UTC 2017 - mrueckert@suse.de
+
+- update to 10beta4
+  PostgreSQL 10 beta 4 requires an upgrade from beta 3, or earlier
+  either using pg_dump / pg_restore or pg_upgrade.
+
+  Any bugfixes applied to 9.6 or earlier that also affected 10 are
+  included in beta 4. Our users and contributors also reported bugs
+  against 10 beta 3, and many of them have been fixed in this
+  release. We urge our community to re-test to ensure that these
+  bugs are actually fixed, including:
+
+  - Show foreign tables in information_schema.table_privileges
+    view. This fix applies to new databases, see the release notes
+    for the procedure to apply the fix to an existing database.
+  - Clean up handling of a fatal exit (e.g., due to receipt of
+    SIGTERM) that occurs while trying to execute a ROLLBACK of a
+    failed transaction
+  - Remove assertion that could trigger during a fatal exit
+  - Correctly identify columns that are of a range type or domain
+    type over a composite type or domain type being searched for
+  - Prevent crash when passing fixed-length pass-by-reference data
+    types to parallel worker processes
+  - Fix crash in pg_restore when using parallel mode and using a
+    list file to select a subset of items to restore
+  - Change ecpg’s parser to allow RETURNING clauses without
+    attached C variables
+  - Change ecpg’s parser to recognize backslash continuation of C
+    preprocessor command lines
+  - Improve selection of compiler flags for PL/Perl on Windows
+  - Fix make check to behave correctly when invoked via a non-GNU
+    make program
+
+  Note that some known issues remain unfixed. Before reporting a
+  bug in the beta, please check the Open Items page.
+
+  https://wiki.postgresql.org/wiki/PostgreSQL_10_Open_Items
+
+-------------------------------------------------------------------
+Thu Aug 10 22:27:22 UTC 2017 - mrueckert@suse.de
+
+- update to 10beta3
+  - hash: Fix write-ahead logging bugs related to init forks
+  - Fix oddity in error handling of constraint violation in
+    ExecConstraints for partitioned tables
+  - Use a real RT index when setting up partition tuple routing
+  - Fix serious performance problems in json(b) to_tsvector()
+  - Fix problems defining multi-column range partition bounds
+  - Fix partitioning crashes during error reporting
+  - Fix race conditions in replication slot operations
+  - Fix very minor memory leaks in psql's command.c
+  - PL/Perl portability fix: avoid including XSUB.h in plperl.c
+  - Fix inadequate stack depth checking in the wake of expression
+    execution changes
+  - Allow creation of C/POSIX collations without depending on libc
+    behavior
+  - Fix OBJECT_TYPE/OBJECT_DOMAIN confusion
+  - Remove duplicate setting of SSL_OP_SINGLE_DH_USE option
+  - Fix crash with logical replication on a function index
+  - Teach map_partition_varattnos to handle whole-row expressions
+  - Fix lock upgrade hazard in ATExecAttachPartition
+  - Apply ALTER ... SET NOT NULL recursively in ALTER ... ADD
+    PRIMARY KEY
+  - hash: Increase the number of possible overflow bitmaps by 8x
+  - Only kill sync workers at commit time in subscription DDL
+  - Fix bug in deciding whether to scan newly-attached partition
+  - Make pg_stop_backup's wait_for_archive flag work on standbys
+  - Fix handling of dropped columns in logical replication
+  - Fix local/remote attribute mix-up in logical replication
+
+-------------------------------------------------------------------
+Fri Aug  4 10:40:57 UTC 2017 - mrueckert@suse.de
+
+- bump version in update-alternatives call
+
+-------------------------------------------------------------------
+Fri Aug  4 09:54:03 UTC 2017 - mrueckert@suse.de
+
+- use multibuild
+
+-------------------------------------------------------------------
+Thu Aug  3 18:02:35 UTC 2017 - mrueckert@suse.de
+
+- initial package
+

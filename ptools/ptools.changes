@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Sep 21 17:59:50 CEST 2009 - jblunck@suse.de
+
+- Fix crash in map_seach_ehdr().
+
+-------------------------------------------------------------------
+Tue Feb  3 10:37:08 CET 2009 - jblunck@suse.de
+
+- Print out the load address of shared objects as well.
+
+-------------------------------------------------------------------
+Mon Nov 10 22:36:48 CET 2008 - jblunck@suse.de
+
+- Relocate the AT_SYSINFO_EHDR to match the link_map->l_addr
+- Check the version of the linker protocol used by the dynamic linker
+- Parse section headers when processing executables
+- Add pbuildid manual page
+- Various cleanups
+
+-------------------------------------------------------------------
+Fri Nov  7 17:33:52 CET 2008 - jblunck@suse.de
+
+- Add --kernel and --vdso command line.
+
+-------------------------------------------------------------------
+Thu Nov  6 13:40:17 CET 2008 - jblunck@suse.de
+
+- The initial package of this tools. Only includes pbuildid for the moment.
+

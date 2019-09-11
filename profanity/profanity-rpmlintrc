@@ -1,0 +1,6 @@
+# We created the-mini and -standard packages.
+addFilter("W: no-manual-page-for-binary profanity-*")
+# Not worth splitting out in seperate packages so far
+addFilter("E: shlib-policy-name-error .* libprofanity")
+addFilter("E: devel-file-in-non-devel-package .* /usr/include/profapi.h")
+addFilter("E: devel-file-in-non-devel-package .* /usr/lib64/libprofanity.so")

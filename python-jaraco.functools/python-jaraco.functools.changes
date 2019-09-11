@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Apr 17 16:02:33 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Skip method_cache doctest test (gh#jaraco/jaraco.functools#12).
+
+-------------------------------------------------------------------
+Tue Feb 26 09:20:58 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Compile manually due to switch to pkgutil namespace technique
+- Add fdupes
+- Re-instate use of --doctest-modules to increase coverage
+- Remove undesirable build dependency pytest-sugar
+- Add missing runtime dependency on python-jaraco.base
+- Add missing runtime dependency on more-itertools
+- Add explicit build dependency on python-six
+- Update to v2.0
+  * Switch to pkgutil namespace technique for the ``jaraco`` namespace.
+
+-------------------------------------------------------------------
+Tue Aug 28 10:05:54 UTC 2018 - dmueller@suse.com
+
+- enable tests
+
+-------------------------------------------------------------------
+Thu Aug 23 10:57:21 UTC 2018 - dheidler@suse.de
+
+- Initial Package for v1.20

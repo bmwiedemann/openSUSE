@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Tue Jun 18 02:01:48 UTC 2019 - psimons@suse.com
+
+- Update HTTP to version 4000.3.14.
+  Upstream has not updated the file "CHANGES" since the last
+  release.
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:06 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Mon Mar 18 03:01:21 UTC 2019 - psimons@suse.com
+
+- Update HTTP to version 4000.3.13.
+  Upstream has not updated the file "CHANGES" since the last
+  release.
+
+-------------------------------------------------------------------
+Fri Oct 19 13:12:23 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support ghc-8.6.1.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:09 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:31 UTC 2018 - psimons@suse.com
+
+- Update HTTP to version 4000.3.12.
+  Upstream has not updated the file "CHANGES" since the last
+  release.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update HTTP to version 4000.3.11.
+  Upstream does not provide a changelog.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon May 22 08:08:50 UTC 2017 - psimons@suse.com
+
+- Update to version 4000.3.7 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Mar 27 12:40:34 UTC 2017 - psimons@suse.com
+
+- Update to version 4000.3.6 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jan 30 09:26:47 UTC 2017 - psimons@suse.com
+
+- Update to version 4000.3.5 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jan  8 21:13:50 UTC 2017 - psimons@suse.com
+
+- Update to version 4000.3.4 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:58:01 UTC 2016 - psimons@suse.com
+
+- Update to version 4000.3.3 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Feb 11 08:27:41 UTC 2016 - mimi.vx@gmail.com
+
+- update to 4000.3.3
+
+-------------------------------------------------------------------
+Sun Jan 24 10:04:26 UTC 2016 - mimi.vx@gmail.com
+
+- update to 4000.3.2
+* If the URI contains "user:pass@" part, use it for Basic Authorization
+* Add a test harness.
+* Don't leak a socket when getHostAddr throws an exception.
+* Send cookies in request format, not response format.
+* Moved BrowserAction to be a StateT IO, with instances for
+   Applicative, MonadIO, MonadState.
+* Add method to control size of connection pool.
+* Consider both host and port when reusing connections.
+* Handle response code 304 "not modified" properly.
+* Fix digest authentication by fixing md5 output string rep.
+* Make the default user agent string follow the package version.
+* Document lack of HTTPS support and fail when clients try
+   to use it instead of silently falling back to HTTP.
+* Add helper to set the request type and body.
+
+-------------------------------------------------------------------
+Fri Jan  1 09:32:27 UTC 2016 - mimi.vx@gmail.com
+
+- update to 4000.2.23
+
+-------------------------------------------------------------------
+Mon Dec  7 12:41:20 UTC 2015 - mimi.vx@gmail.com
+
+- update to 4000.2.22
+
+-------------------------------------------------------------------
+Sun Nov 29 17:14:52 UTC 2015 - mimi.vx@gmail.com
+
+- update to 4000.2.21
+
+-------------------------------------------------------------------
+Sun Jun 28 16:15:52 UTC 2015 - mimi.vx@gmail.com
+
+- update to 4000.2.20
+* If the URI contains "user:pass@" part, use it for Basic Authorization
+* Add a test harness.
+* Don't leak a socket when getHostAddr throws an exception.
+* Send cookies in request format, not response format.
+* Moved BrowserAction to be a StateT IO, with instances for
+   Applicative, MonadIO, MonadState.
+* Add method to control size of connection pool.
+* Consider both host and port when reusing connections.
+* Handle response code 304 "not modified" properly.
+* Fix digest authentication by fixing md5 output string rep.
+* Make the default user agent string follow the package version.
+* Document lack of HTTPS support and fail when clients try
+   to use it instead of silently falling back to HTTP.
+* Add helper to set the request type and body.
+
+-------------------------------------------------------------------
+Sat Apr 11 20:34:01 UTC 2015 - mimi.vx@gmail.com
+
+- update to 4000.2.19
+* no upstream changelog
+
+-------------------------------------------------------------------
+Tue Sep  9 20:09:24 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 4000.2.10
+* no changelog
+* for Haskell Platform 2014.2.0.0
+
+-------------------------------------------------------------------
+Mon Sep  1 17:20:24 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file with cabal-rpm 0.8.6
+* require exact version of ghc-compiler
+
+-------------------------------------------------------------------
+Fri Aug 22 23:55:17 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Tue May  7 12:02:19 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 4000.2.8 from upstream
+* fix resource leaks in getHostAddr
+* correct cookie format
+- part of Haskell Platform 2013.2
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Tue Jan  8 17:11:55 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- expand macro in name tag to help source validator
+
+-------------------------------------------------------------------
+Sat Nov 17 14:03:50 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Mon Oct  1 19:24:11 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 4000.2.5 from upstream
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun  3 17:00:22 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 4000.2.3 from upstream
+* support mtl 2.1
+- required by Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Wed Dec 28 20:10:08 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Adjust version number for platform 2011.4
+
+-------------------------------------------------------------------
+Thu Dec  8 18:33:24 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fixed arches.
+
+-------------------------------------------------------------------
+Thu Dec  8 18:22:31 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

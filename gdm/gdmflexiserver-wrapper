@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if test ! -x "${GDMFLEXISERVER:-/usr/lib/gdm/gdmflexiserver}"; then
+  echo "No gdmflexiserver implementation found. Maybe install gdm?" >&2
+  exit 1
+else
+  exec "${GDMFLEXISERVER:-/usr/lib/gdm/gdmflexiserver}"
+fi

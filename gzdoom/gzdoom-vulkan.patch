@@ -1,0 +1,67 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2019-04-13 15:02:22.799297208 +0200
+
+Use Vulkan system libraries instead of bundled code.
+
+---
+ CMakeLists.txt                              |    3 ---
+ src/CMakeLists.txt                          |    2 +-
+ src/rendering/vulkan/shaders/vk_shader.cpp  |    2 +-
+ src/rendering/vulkan/system/vk_builders.cpp |   22 +++++++++++-----------
+ 4 files changed, 13 insertions(+), 16 deletions(-)
+
+Index: gzdoom-4.0.0/CMakeLists.txt
+===================================================================
+--- gzdoom-4.0.0.orig/CMakeLists.txt
++++ gzdoom-4.0.0/CMakeLists.txt
+@@ -287,9 +287,6 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
+ mark_as_advanced( FORCE_INTERNAL_ASMJIT )
+ 
+ if (HAVE_VULKAN)
+-	add_subdirectory( glslang/glslang)
+-	add_subdirectory( glslang/spirv )
+-	add_subdirectory( glslang/OGLCompilersDLL )
+ endif()
+ 
+ # Fast math flags, required by some subprojects
+Index: gzdoom-4.0.0/src/CMakeLists.txt
+===================================================================
+--- gzdoom-4.0.0.orig/src/CMakeLists.txt
++++ gzdoom-4.0.0/src/CMakeLists.txt
+@@ -465,7 +465,7 @@ add_custom_target( revision_check ALL
+ message( STATUS "Fluid synth libs: ${FLUIDSYNTH_LIBRARIES}" )
+ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_LIBRARIES}" "${GME_LIBRARIES}" "${CMAKE_DL_LIBS}" )
+ if (HAVE_VULKAN)
+-	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
++	set( ZDOOM_LIBS ${ZDOOM_LIBS} -lglslang -lSPIRV -lOGLCompiler)
+ endif()
+ include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${GME_INCLUDE_DIR}" )
+ 
+Index: gzdoom-4.0.0/src/rendering/vulkan/shaders/vk_shader.cpp
+===================================================================
+--- gzdoom-4.0.0.orig/src/rendering/vulkan/shaders/vk_shader.cpp
++++ gzdoom-4.0.0/src/rendering/vulkan/shaders/vk_shader.cpp
+@@ -4,7 +4,7 @@
+ #include "hwrenderer/utility/hw_shaderpatcher.h"
+ #include "w_wad.h"
+ #include "doomerrors.h"
+-#include <ShaderLang.h>
++#include <glslang/Public/ShaderLang.h>
+ 
+ VkShaderManager::VkShaderManager(VulkanDevice *device) : device(device)
+ {
+Index: gzdoom-4.0.0/src/rendering/vulkan/system/vk_builders.cpp
+===================================================================
+--- gzdoom-4.0.0.orig/src/rendering/vulkan/system/vk_builders.cpp
++++ gzdoom-4.0.0/src/rendering/vulkan/system/vk_builders.cpp
+@@ -2,8 +2,8 @@
+ #include "vk_builders.h"
+ #include "doomerrors.h"
+ #include "r_data/renderstyle.h"
+-#include <ShaderLang.h>
+-#include <GlslangToSpv.h>
++#include <glslang/Public/ShaderLang.h>
++#include <SPIRV/GlslangToSpv.h>
+ 
+ static const TBuiltInResource DefaultTBuiltInResource = {
+ 	/* .MaxLights = */ 32,

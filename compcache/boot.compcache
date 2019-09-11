@@ -1,0 +1,163 @@
+#!/bin/sh
+#
+# System startup script loading compcache kernel module
+# Copyright (C) 2008 Takashi Iwai <tiwai@suse.de>
+# Added SMP support by Erdem U. Altinyurt <spamjunkeater@gmail.com>
+#
+# /etc/init.d/compcache
+#
+### BEGIN INIT INFO
+# Provides:         boot.compcache
+# Required-Start:   boot.swap
+# Required-Stop:    boot.swap
+# Should-Start:
+# Should-Stop:
+# Default-Start:    B
+# Default-Stop:     B
+# Description:      Loads compcache - compressed RAM based swap device
+### END INIT INFO
+
+. /etc/rc.status
+. /etc/sysconfig/compcache
+
+SWAPON_BIN=/sbin/swapon
+SWAPOFF_BIN=/sbin/swapoff
+UDEVADM_BIN=/sbin/udevadm
+MODPROBE_BIN=/sbin/modprobe
+RZSCTL_BIN=/usr/sbin/rzscontrol
+NUM_DEV="num_devices"
+test -z "$COMPCACHE_NUM_DEVICES" -o "$COMPCACHE_NUM_DEVICES" -le 0 && COMPCACHE_NUM_DEVICES=$(cat /proc/cpuinfo | grep processor | wc -l)
+test -z "$COMPCACHE_SIZE_KB" && COMPCACHE_SIZE_KB="0"
+
+kver=$(uname -r)
+kver=${kver%%-*}
+case "$kver" in
+    [3-9].*)
+	ZRAM=zram
+	SWAPDEVNM=/dev/zram
+	case "$kver" in
+	    3.[23].*)
+		NUM_DEV="zram_num_devices";;
+	esac
+	;;
+    2.6.*)
+	krel=${kver#2.6.}
+	krel=${krel%%.*}
+	if [ "$krel" -ge 36 ]; then
+	    ZRAM=zram
+	    SWAPDEVNM=/dev/zram
+	else
+	    ZRAM=ramzswap
+	    SWAPDEVNM=/dev/ramzswap
+	fi
+	;;
+    *)
+	exit 1;;
+esac
+
+is_comp_swap_on () {
+    grep -q $1 /proc/swaps
+    return $?
+}
+
+get_memsize_in_kb () {
+    grep MemTotal /proc/meminfo | sed 's/^.*  //;s/ .*$//g'
+}
+
+rc_reset
+
+case "$1" in
+    start)
+	#echo "Activating compressed RAM swap-devices..."
+	if [ "$COMPCACHE_SIZE_KB" -lt 0 ]; then
+	    echo -n "Loading $ZRAM driver with $COMPCACHE_NUM_DEVICES devices "
+	    rc_status -u
+	else
+	    if [ "$COMPCACHE_SIZE_KB" -eq 0 ]; then
+		# 25% of RAM
+		COMPCACHE_SIZE_KB=$(expr $(get_memsize_in_kb) / 4)
+	    fi
+	    if [ "$COMPCACHE_SIZE_KB" -lt 1024 ]; then
+		COMPCACHE_SIZE_STR="$COMPCACHE_SIZE_KB kB"
+	    else
+		COMPCACHE_SIZE_STR="$(expr $COMPCACHE_SIZE_KB / 1024) MB"
+	    fi
+	    echo -n "Loading $ZRAM driver with $COMPCACHE_NUM_DEVICES devices and $COMPCACHE_SIZE_STR memory "
+	    $MODPROBE_BIN -q $ZRAM $NUM_DEV=$COMPCACHE_NUM_DEVICES &> /dev/null
+	    rc_status -v
+	    # /dev/ramzswap0 is not available immediately after insmod returns
+	    # So, let udev complete its work before we do swapon
+	    if [ ! -f ${SWAPDEVNM}0 ]; then
+		if [ -x "$UDEVADM_BIN" ]; then
+		    $UDEVADM_BIN settle
+		else
+		    sleep 2
+		fi
+	    fi
+
+	    COMPCACHE_DEV_SIZE_KB=$(expr $COMPCACHE_SIZE_KB / $COMPCACHE_NUM_DEVICES)
+	    for i in $(seq 0 $(expr $COMPCACHE_NUM_DEVICES - 1) ); do
+		SWAPDEV=$SWAPDEVNM$i
+		SIZEBLK=/sys/block/$ZRAM$i/disksize
+		if [ -f $SIZEBLK ]; then
+		    echo $(( $COMPCACHE_DEV_SIZE_KB * 1024 )) > $SIZEBLK
+		else
+		    $RZSCTL_BIN $SWAPDEV -d $COMPCACHE_DEV_SIZE_KB -i
+		fi
+		if ! is_comp_swap_on $SWAPDEV; then
+		    echo -n "Setting up $ZRAM swap device $i "
+		    test "$ZRAM" = "zram" && /sbin/mkswap $SWAPDEV
+		    $SWAPON_BIN $SWAPDEV -p 10
+		    rc_status -v
+		fi
+	    done
+	fi
+	;;
+    stop)
+	#echo "Turning off compressed RAM swap-devices"
+	# We can't use COMPCACHE_NUM_DEVICES to enumerate, because the user can
+	# start compcache, lower COMPCACHE_NUM_DEVICES and restart compcache.
+	for SWAPDEV in ${SWAPDEVNM}* ; do
+	    if is_comp_swap_on $SWAPDEV; then
+		nm=${SWAPDEV#$SWAPDEVNM}
+		RESETBLK=/sys/block/$ZRAM$nm/reset
+		echo -n "Turning off $ZRAM swap device $nm "
+		$SWAPOFF_BIN $SWAPDEV
+		rc_check
+		if [ -f $RESETBLK ]; then
+		    echo 1 > $RESETBLK
+		else
+		    $RZSCTL_BIN $SWAPDEV --reset &> /dev/null
+		fi
+		rc_status -v
+	    fi
+	done
+	# Let udev complete its work before we unload the ramzswap module
+	if [ -f "$UDEVADM_BIN" ]; then
+	    $UDEVADM_BIN settle
+	else
+	    sleep 2
+	fi
+	echo -n "Unloading $ZRAM module "
+	$MODPROBE_BIN -qr $ZRAM &> /dev/null
+	rc_status -v
+	;;
+    restart)
+	$0 stop
+	$0 start
+	;;
+    status)
+	echo -n "Checking for compcache "
+	if is_comp_swap_on $SWAPDEVNM; then
+	    rc_failed 0
+	else
+	    rc_failed 3
+	fi
+	rc_status -v
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|restart}"
+	exit 1
+	;;
+esac
+rc_exit

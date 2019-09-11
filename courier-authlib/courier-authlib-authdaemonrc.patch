@@ -1,0 +1,13 @@
+Index: authdaemonrc.in
+===================================================================
+--- authdaemonrc.in.orig
++++ authdaemonrc.in
+@@ -90,7 +90,7 @@ DEFAULTOPTIONS=""
+ # courierlogger(1) options, e.g. to set syslog facility
+ #
+ 
+-LOGGEROPTS=""
++LOGGEROPTS="-name=authdaemond"
+ 
+ ##NAME: LDAP_TLS_OPTIONS:0
+ #

@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:43:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Mon Feb  4 06:11:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the spec file
+
+-------------------------------------------------------------------
+Tue Mar 20 12:18:26 UTC 2018 - marco.strigl@suse.com
+
+- fix flaky StopWatch tests on slow systems by increasing the max value (bsc#1085999)
+  * fix_StopWatchTest_for_slow_systems.patch
+
+-------------------------------------------------------------------
+Mon Oct  2 16:28:04 UTC 2017 - fstrba@suse.com
+
+- Require java-devel < 1.9 because all those versions can use
+  target level < 1.5
+
+-------------------------------------------------------------------
+Sun Sep 10 06:27:42 UTC 2017 - fstrba@suse.com
+
+- Require for build java-devel = 1.8.0, since it is the last
+  version being able to build with source and target levels < 1.5
+
+-------------------------------------------------------------------
+Fri May 19 09:58:16 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Wed Mar 18 09:45:59 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Jul  7 14:56:55 UTC 2014 - tchvatal@suse.com
+
+- Depend on junit not junit4
+
+-------------------------------------------------------------------
+Fri Sep  6 08:42:51 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.6 (bugfix release)
+  * see http://commons.apache.org/proper/commons-lang/release-notes/RELEASE-NOTES-2.6.txt
+  * see http://commons.apache.org/proper/commons-lang/release-notes/RELEASE-NOTES-2.5.txt
+- use new add_maven_depmap macro
+- drop jakarta-commons-lang-build.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 08:39:19 UTC 2010 - mvyskocil@suse.cz
+
+- merged with jakarta-commons-lang-2.1-7.jpp5.src.rpm
+
+-------------------------------------------------------------------
+Tue Jul 29 09:09:19 CEST 2008 - anosek@suse.cz
+
+- made the symlink jakarta-commons-lang -> jakarta-commons-lang-2.3
+  part of the javadoc package 
+
+-------------------------------------------------------------------
+Mon Jul 21 15:33:36 CEST 2008 - mvyskocil@suse.cz
+
+- update to 2.3
+  - merged with japackage 1.7 spec file
+  - add a maven build support and a maven pom files and post/un scripts for
+	depmap files
+- removed a source=1.1 - fixed build under openjdk6
+- removed a crosslink patch
+
+-------------------------------------------------------------------
+Fri Sep 15 14:53:46 CEST 2006 - ro@suse.de
+
+- use source=1.1 for java 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug 29 11:23:02 CEST 2005 - jsmeix@suse.de
+
+- Removed the "test" to be built so that it builds now on all
+  architectures (see bug 102629).
+  The "test" failed on ppc, s390x, and ppc64 (see bug 113779).
+
+-------------------------------------------------------------------
+Wed Jul 27 16:51:06 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:19:11 CEST 2005 - jsmeix@suse.de
+
+- Current version 2.0 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 16 14:49:51 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Thu Sep  2 18:28:43 CEST 2004 - skh@suse.de
+
+- Initial package created with version 2.0 (JPackage 1.5)
+

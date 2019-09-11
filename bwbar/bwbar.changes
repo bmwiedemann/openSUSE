@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:45:50 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sat Oct 26 12:24:59 UTC 2013 - p.drouand@gmail.com
+
+- Don't provide sysvinit and systemd support on the same system;
+  Provide either one or the other
+
+-------------------------------------------------------------------
+Sun Aug 11 13:13:29 UTC 2013 - andreas.stieger@gmx.de
+
+- add systemd support
+- move settings from /etc/bwbar to /etc/sysconfig/bwbar
+  and use sysconfig template fillup
+
+-------------------------------------------------------------------
+Sat Oct 13 13:06:50 UTC 2012 - andreas.stieger@gmx.de
+
+- add bwbar-1.2.3-libpng15.patch to fix build against libpng15
+- reformat spec file
+
+-------------------------------------------------------------------
+Wed Jun 29 20:40:55 UTC 2011 - andreas.stieger@gmx.de
+
+- fix SLES_9 build
+
+-------------------------------------------------------------------
+Wed Jun 29 19:18:35 UTC 2011 - andreas.stieger@gmx.de
+
+- fix for missing licenses package in Factory
+- fix rpmlint warning about LGPL address
+- fix rpmlint warning about GPL address
+- fix rpmlint warning about rpm macros in comments
+- fix osc commit warning of unreferenced signature files
+
+------------------------------------------------------------------- 
+Wed Mar 25 14:05:10 GMT 2009 andreas.stieger@gmx.de
+
+- initial package
+- runlevel script and config file
+- added GPLv2 text 

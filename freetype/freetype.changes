@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Mon Dec  4 18:28:08 UTC 2017 - crrodriguez@opensuse.org
+
+- Only BuildRequire pkgconfig(x11) not the full xorg-x11-devel 
+
+-------------------------------------------------------------------
+Mon Aug 18 12:58:44 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf for library package.
+
+-------------------------------------------------------------------
+Mon Jul 30 13:14:14 UTC 2012 - coolo@suse.com
+
+- do not package ttf2$TEX - the source in texlive is more uptodate
+
+-------------------------------------------------------------------
+Tue Feb 14 10:18:08 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Freetype or GPL-2.0+
+
+-------------------------------------------------------------------
+Sun Feb  5 18:06:24 UTC 2012 - jengelh@medozas.de
+
+- Split main package into libttf2 (shared library policy) and
+  a devel subpackage
+
+-------------------------------------------------------------------
+Thu Dec 22 02:06:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Dec 20 20:31:18 UTC 2011 - coolo@suse.com
+
+- replace suse_update_config with patch to update the files,
+  this package really needs to disappear soon
+
+-------------------------------------------------------------------
+Sun Dec 19 13:33:53 UTC 2010 - aj@suse.de
+
+- Fix declaration of kpathsea_version_string.
+
+-------------------------------------------------------------------
+Sun Jan 31 22:11:45 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Fri Jun  5 11:45:00 CEST 2009 - nadvornik@suse.cz
+
+- fixed to build with the new glibc
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  2 03:48:07 CEST 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang rpmlint errors 
+
+-------------------------------------------------------------------
+Wed May 16 11:56:46 CEST 2007 - mfabian@suse.de
+
+- adapt /etc/ttf2pk/ttfonts.map to the changes in the cjk-latex
+  font setup for the Arphic fonts needed for texlive.
+
+-------------------------------------------------------------------
+Sun Apr 22 22:42:27 CEST 2007 - ro@suse.de
+
+- use texlive-devel for building 
+
+-------------------------------------------------------------------
+Wed Aug 16 14:31:36 CEST 2006 - werner@suse.de
+
+- Create extend sub dir under freetype include dir to support this
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb 25 16:06:06 CET 2005 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the use of the
+  IPA fonts.
+
+-------------------------------------------------------------------
+Fri Oct 15 12:59:46 CEST 2004 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the use of the
+  Novell-ricoh-fonts.
+
+-------------------------------------------------------------------
+Fri Oct 01 22:53:40 CEST 2004 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the use of the
+  Sazanami fonts (which replaced the dropped Kochi fonts) with
+  CJK-LaTeX.
+
+-------------------------------------------------------------------
+Mon Apr 26 16:08:47 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #39459: add entries to /etc/ttf2pk/ttfonts.map to
+  support the use of the Chinese "Founder" fonts with CJK-LaTeX.
+
+-------------------------------------------------------------------
+Tue Feb 10 11:02:00 CET 2004 - nadvornik@suse.cz
+
+- compiled with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 16:59:35 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Sun Aug 24 22:47:55 CEST 2003 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the use of
+  the Mika-Chan fonts with CJK-LaTeX.
+
+-------------------------------------------------------------------
+Fri Jun 13 09:19:29 CEST 2003 - kukuk@suse.de
+
+- add missing directories to filelist
+
+-------------------------------------------------------------------
+Wed May 28 19:18:54 CEST 2003 - nadvornik@suse.cz
+
+- remove/install unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Sat Jan 25 21:50:45 CET 2003 - mfabian@suse.de
+
+- rename the utilities to avoid the name conflict with  the same
+  utilities from freetype2: ftdump -> ft1dump, ftview -> ft1view
+  etc ...
+
+-------------------------------------------------------------------
+Tue Nov 26 15:03:56 CET 2002 - nadvornik@suse.cz
+
+- fixed to compile with new gcc
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Aug 05 11:48:40 CEST 2002 - nadvornik@suse.cz
+
+- added PreReq: fileutils
+
+-------------------------------------------------------------------
+Sat Jul 27 18:33:08 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Jun 12 17:54:05 CEST 2002 - ro@suse.de
+
+- hack ltconfig for ppc64 
+
+-------------------------------------------------------------------
+Thu Apr 11 17:36:34 CEST 2002 - nadvornik@suse.cz
+
+- fixed to build with new gcc
+
+-------------------------------------------------------------------
+Wed Feb 13 11:53:25 CET 2002 - nadvornik@suse.cz
+
+- used macro %{_libdir}
+
+-------------------------------------------------------------------
+Mon Dec 10 16:33:20 CET 2001 - schwab@suse.de
+
+- Fix undefined operation in ttf2bdf.
+- Fix configuration of ttf2pk: don't add /usr/include to search path.
+
+-------------------------------------------------------------------
+Sat Oct  6 15:22:50 CEST 2001 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the use of
+  the Kochi, the Baekmuk, and the Arphic PL fonts in UTF-8
+  encoding with CJK-LaTeX.
+
+-------------------------------------------------------------------
+Tue Aug  7 23:48:04 CEST 2001 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the free
+  Japanese TrueType fonts kochi-mincho.ttf and
+  kochi-gothic.ttf from the ttf-kochi-mincho and ttf-kochi-gothic
+  packages (needed by the cjk-latex-package)
+
+-------------------------------------------------------------------
+Mon May  7 20:17:56 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Mar 16 14:06:10 CET 2001 - nadvornik@suse.cz
+
+- disabled compilation of bytecode interpreter
+
+-------------------------------------------------------------------
+Sun Mar  4 18:28:26 CET 2001 - schwab@suse.de
+
+- Don't use uninitialized data in ttf2tfm.
+- Default to RPM_OPT_FLAGS in all compilations.
+
+-------------------------------------------------------------------
+Thu Feb 15 17:43:56 CET 2001 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the free
+  Japanese TrueType fonts watanabe-mincho.ttf and
+  wadalab-gothic.ttf from the xtt-fonts package (needed by the
+  cjk-latex-package)
+
+-------------------------------------------------------------------
+Sun Jan 21 17:37:21 CET 2001 - mfabian@suse.de
+
+- add entries to /etc/ttf2pk/ttfonts.map to support the
+  Korean Baekmuk TrueType fonts (needed by the cjk-latex package). 
+- mark ttfonts.map with %config in spec file
+
+-------------------------------------------------------------------
+Fri Dec  8 11:37:48 CET 2000 - mfabian@suse.de
+
+- don't pack getafm, because it is in the package psutils,
+  packing it here would result in a conflict.
+
+-------------------------------------------------------------------
+Mon Dec  4 17:18:13 CET 2000 - mfabian@suse.de
+
+- don't pack /usr/bin/t1asm, because this file is in the
+  package t1utils, packing it here to would result in a conflict.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:55:33 CET 2000 - mfabian@suse.de
+
+- added entries for the Bitstream Cyberbit True Type fonts
+  and Microsofts Japanese True Type fonts msmincho.ttc and
+  msgothic.ttc to ttfonts.map
+
+-------------------------------------------------------------------
+Thu Nov 30 10:55:42 CET 2000 - mfabian@suse.de
+
+- make new sub-package "freetype-tools".
+  I choose this name because the equivalent Debian package has
+  this name. This sub package contains some tools for FreeType
+  which are needed by CJK-LaTeX.
+- included the Debian patches by Anthony Fok <foka@debian.org>
+  for ttfonts.map and UBig5.sfd which make changes necessary
+  to use the free Arphic PL fonts for Chinese.
+- also included the Debian patch to fix a va_arg problem
+  which prevents the build on powerpc. 
+  
+-------------------------------------------------------------------
+Thu Apr 27 15:13:19 MEST 2000 - nadvornik@suse.cz
+
+- changed Group tag
+
+-------------------------------------------------------------------
+Mon Apr 10 16:11:19 CEST 2000 - nadvornik@suse.cz
+
+- fixed URL
+
+-------------------------------------------------------------------
+Fri Apr  7 17:35:49 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Tue Apr  4 16:34:19 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+- added URL
+
+-------------------------------------------------------------------
+Wed Jan 19 01:58:16 CET 2000 - ro@suse.de
+
+- update to 1.3.1 
+- includes now in /usr/include/freetype
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jun 28 13:53:22 MEST 1999 - ro@suse.de
+
+- update to 1.2
+
+-------------------------------------------------------------------
+Mon Jun 29 09:11:44 MEST 1998 - ro@suse.de
+
+- update to version 1.1
+
+-------------------------------------------------------------------
+Tue Mar 10 09:32:59 MET 1998 - ro@suse.de
+
+- added include file
+
+-------------------------------------------------------------------
+Mon Mar  9 19:10:45 MET 1998 - ro@suse.de
+
+- created new package / uses gettext / version 1.0 
+

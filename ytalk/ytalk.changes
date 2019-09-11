@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Apr  4 20:54:24 UTC 2012 - jengelh@medozas.de
+
+- Remove unneeded autoregenerate calls
+- Strip redundant tags/sections from specfile
+- Build in parallel with %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Dec 21 13:44:24 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:56 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Thu Mar 29 15:45:08 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Mar 14 15:45:09 CET 2005 - postadal@suse.cz
+
+- updated to version 3.3.0 [#71806]
+- removed obsoleted patches
+
+-------------------------------------------------------------------
+Thu Aug 19 16:25:24 CEST 2004 - postadal@suse.cz
+
+- updated to version 3.1.2
+  * -x command line switch now enables X11 mode instead of disabling it
+  * scrolling is enabled by default
+
+-------------------------------------------------------------------
+Wed May 05 16:24:40 CEST 2004 - postadal@suse.cz
+
+- fixed gcc warnings
+
+-------------------------------------------------------------------
+Sun Jan 11 10:26:55 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Jan 15 11:33:09 CET 2002 - cihlar@suse.cz
+
+- use %{_lib}
+
+-------------------------------------------------------------------
+Tue Feb 27 09:11:48 CET 2001 - cihlar@suse.cz
+
+- added suse_update_config
+- improved installation to build root
+- fixed %files
+- fixed Copyright
+
+-------------------------------------------------------------------
+Wed Jun  7 14:22:52 CEST 2000 - nadvornik@suse.cz
+
+- sorted
+
+-------------------------------------------------------------------
+Tue Apr 25 10:17:33 CEST 2000 - smid@suse.de
+
+- added url and buildroot
+
+-------------------------------------------------------------------
+Sun Jan 30 14:08:53 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jun 17 18:11:50 MEST 1999 - kukuk@suse.de
+
+- Split from nkita, update to 3.1.1

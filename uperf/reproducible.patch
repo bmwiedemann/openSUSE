@@ -1,0 +1,32 @@
+https://github.com/uperf/uperf/pull/13
+
+From e3fb85288d4267cb14dc35eecfed2110d4e53d21 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 16 Mar 2018 20:43:41 +0100
+Subject: [PATCH] Allow to override build date
+
+and use UTC (to be inpendent of timezones)
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+This date call works with GNU and BSD date variants.
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+Index: uperf-1.0.6/configure
+===================================================================
+--- uperf-1.0.6.orig/configure
++++ uperf-1.0.6/configure
+@@ -5624,7 +5624,8 @@ fi
+ $as_echo "no" >&6; }
+ fi
+ 
+-timestamp=`date`
++SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-`date +%s`}"
++timestamp=`date -u -d "@$SOURCE_DATE_EPOCH" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" 2>/dev/null || date -u`
+ 
+ 
+ cat >>confdefs.h <<_ACEOF

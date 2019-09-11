@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Mon Nov  5 03:01:24 UTC 2018 - psimons@suse.com
+
+- Update x509-validation to version 1.6.11.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:16 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:48 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update x509-validation to version 1.6.10 revision 1.
+  Upstream does not provide a changelog.
+
+-------------------------------------------------------------------
+Thu Jul 27 14:04:39 UTC 2017 - psimons@suse.com
+
+- Update to version 1.6.8.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:49:23 UTC 2016 - psimons@suse.com
+
+- Update to version 1.6.5 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Sep 26 06:51:59 UTC 2016 - psimons@suse.com
+
+- Update to version 1.6.4 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:32:46 UTC 2016 - psimons@suse.com
+
+- Update to version 1.6.3 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Sep 27 10:28:54 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.6.3
+
+-------------------------------------------------------------------
+Sun Sep 13 13:19:06 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.6.2
+
+-------------------------------------------------------------------
+Thu Aug  6 20:37:55 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.6.0
+
+-------------------------------------------------------------------
+Sun May 10 18:25:04 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.5.2
+* no upstream changelog
+
+-------------------------------------------------------------------
+Thu Apr 23 18:23:10 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

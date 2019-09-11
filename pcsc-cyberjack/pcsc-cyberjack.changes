@@ -1,0 +1,679 @@
+-------------------------------------------------------------------
+Thu May  2 07:43:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant %clean section, replace old $RPM_* shell vars.
+
+-------------------------------------------------------------------
+Thu May  2 07:34:24 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- removed unused code which was still built
+  (no-checksuite.patch, no-libdialog.patch, and manual removal from
+  source archive)
+- removed obsolete patch
+  ctapi-cyberjack-check.patch
+
+-------------------------------------------------------------------
+Sat Jan 19 09:37:55 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 3.99.5 Service Pack 13
+  * Update to the Reiner-SCT repository rev cyberJack@1374
+- removed obsolete patches
+  * a58a29c08b1da647e5efe08641abcb0144740b8b.patch
+  * pcsc-cyberjack-fprintf.patch
+- add new devices to udev rules (2000, 0551, 2002)
+
+-------------------------------------------------------------------
+Sat Jul 14 09:17:36 UTC 2018 - thb@documentfoundation.org
+
+- Add patch to get cyberJack RFID komfort working
+  (a58a29c08b1da647e5efe08641abcb0144740b8b.patch)
+  https://forum.reiner-sct.com/index.php?/topic/3728-failed_to_transmit_control_command_to_the_terminal
+
+-------------------------------------------------------------------
+Sat Jul 14 09:01:32 UTC 2018 - wr@rosenauer.org
+
+- update to 3.99.5 Service Pack 12
+  * Add support for cyberJack one MF
+  * man-page removed upstream
+
+-------------------------------------------------------------------
+Sun Oct 15 09:09:17 UTC 2017 - wr@rosenauer.org
+
+- update to 3.99.5 Service Pack 11
+  * add support for cyberJack one
+  * validated that crash on exit is fixed (boo#908092)
+
+-------------------------------------------------------------------
+Sun Feb 26 14:24:33 UTC 2017 - wr@rosenauer.org
+
+- update to 3.99.5 Service Pack 10
+  * Add support for SHUReader and SISReader
+  * Update to the Reiner-SCT repository rev cyberJack@1305
+
+-------------------------------------------------------------------
+Wed Mar 16 09:47:39 UTC 2016 - wr@rosenauer.org
+
+- update to 3.99.5 Service Pack 09
+  * Fix USB unplug problems
+  * removed cyberjack diag tool
+
+-------------------------------------------------------------------
+Mon Sep 21 09:51:51 UTC 2015 - wr@rosenauer.org
+
+- update to 3.99.5 Service Pack 08
+  * update COPYRIGHT.GPL, COPYRIGHT.LGPL and FSF address
+  * Add support for cyberJack secoder TLS, CSYOReader and CBDRReader
+  * Update to the Reiner-SCT repository rev cyberJack@1292
+  * Add support for CyberJack cv and SoliSYSTEMS
+- removed obsolete data-structure.patch
+
+-------------------------------------------------------------------
+Sun May  4 22:20:57 UTC 2014 - wr@rosenauer.org
+
+- fix for changed data structure in PCSC's reader.h
+  (data-structure.patch)
+
+-------------------------------------------------------------------
+Tue Apr 29 18:14:56 UTC 2014 - wr@rosenauer.org
+
+- fixed typo in udev rule (bnc#881517)
+
+-------------------------------------------------------------------
+Tue Apr 22 13:46:50 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 3.99.5 Service Pack 05
+  * Add support for CyberJack Go
+  * Add support for CyberJack wav
+- removed obsolete pcsc-cyberjack-gcc47.patch
+
+-------------------------------------------------------------------
+Mon Oct 29 12:54:19 UTC 2012 - wr@rosenauer.org
+
+- fixed typo in logmessage (pcsc-cyberjack-fprintf.patch)
+
+-------------------------------------------------------------------
+Thu Oct 18 09:15:05 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules directory location.
+
+-------------------------------------------------------------------
+Wed Mar 21 23:20:34 UTC 2012 - dimstar@opensuse.org
+
+- Add pcsc-cyberjack-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Dec 25 08:11:13 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.99.5 Service Pack 03
+  * fix FEATURE_MCT_READERDIRECT reader disconnect on pinpad
+  * add support for cyberJack compact
+  * fix speed problem pinpad <--> seccos6 card
+
+-------------------------------------------------------------------
+Wed Nov 16 08:19:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Jun 25 07:55:35 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.99.5 Service Pack 02
+  * PinVerify/Modify-Problem Responsecode 0x6b80 fixed
+
+-------------------------------------------------------------------
+Wed Jun 22 12:56:46 UTC 2011 - wr@rosenauer.org
+
+- add patch for compatibility with pcsc-lite >= 1.7.3
+
+-------------------------------------------------------------------
+Thu Jun  9 18:07:16 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.99.5 Service Pack 01
+  * fixed some timing issues with certain cards
+  * fixed change/modify pin/tan for the pinpad
+
+-------------------------------------------------------------------
+Tue May 17 09:13:44 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.99.5final released by Reiner-SCT
+  (during 3.99.x phase there were two different code lines and
+  therefore the version numbers do not match; this version is the
+  official released version from the vendor)
+
+-------------------------------------------------------------------
+Sun May 15 11:46:49 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.99.10beta
+  * ctapi interface removed -> removed ctapi-cyberjack subpackage
+- dropped spec file support for 10.1 and older
+
+-------------------------------------------------------------------
+Tue Apr  5 11:05:41 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 3.3.6
+  * no upstream changelog available
+- added man pages
+
+-------------------------------------------------------------------
+Mon Mar 21 16:53:23 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Sat Mar 19 15:21:01 UTC 2011 - wr@rosenauer.org
+
+- add device id 500 (cyberjack rfid) to udev rules
+
+-------------------------------------------------------------------
+Tue Sep  7 20:41:13 UTC 2010 - aj@suse.de
+
+- Remove unneeded dependency on sysfsutils.
+
+-------------------------------------------------------------------
+Tue Apr  6 09:53:29 CEST 2010 - wr@rosenauer.org
+
+- Updated to version 3.3.5
+  * fixed issues with 0x300 and 0x401 devices
+
+-------------------------------------------------------------------
+Mon Feb  1 12:23:50 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jan  6 15:18:15 CET 2010 - sbrabec@suse.cz
+
+- Use libusb1 in >= 11.2.
+- Added back support for SLES10.
+
+-------------------------------------------------------------------
+Mon Dec 21 21:00:23 CET 2009 - wr@rosenauer.org
+
+- Updated to version 3.3.3
+  * compatible with recent libusb
+- Added udev rules for ACL access (bnc#555660)
+- Removed support for 10.3 and older
+
+-------------------------------------------------------------------
+Wed Aug  5 17:31:49 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 3.3.2:
+  * sanity checks
+  * inprovement of debugging features
+
+-------------------------------------------------------------------
+Wed Jun 17 14:15:39 CEST 2009 - sbrabec@suse.cz
+
+- Fixed compilation failure in Factory.
+
+-------------------------------------------------------------------
+Thu Apr  9 16:12:24 CEST 2009 - sbrabec@suse.cz
+
+- Added README.SUSE (bnc#438131#c33).
+
+-------------------------------------------------------------------
+Tue Apr  7 14:06:11 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 3.3.1:
+  * improves support for rdesktop
+  * fixes some PC/SC-related bugs
+  * implements FEATURE_MCT_READER_DIRECT
+  * support for latest versions of pcsc-lite which rely on libhal
+- pcsc-cyberjack requires pcsc-lite.
+
+-------------------------------------------------------------------
+Fri Apr  3 14:28:57 CEST 2009 - sbrabec@suse.cz
+
+- Use modalias supplements instead of eID issuer locales.
+- Fixed buffer underflow.
+
+-------------------------------------------------------------------
+Fri Mar 20 19:56:23 CET 2009 - crrodriguez@suse.de
+
+- fix build with GCC 4.4
+- fix Requires
+- fix buildrequires 
+
+-------------------------------------------------------------------
+Mon Feb  2 08:46:56 CET 2009 - wr@opensuse.org
+
+- Fixed library path again
+- Removed double doc (licenses)
+- Require "licenses" package explicitely where needed
+- Added %{_libdir}/cyberjack/getdist.sh to make the cyberjack
+  support script more useful
+- Install ctapi libs to %{_libdir} (for upstream compat) and for 
+  backwards compat link them to %{_libdir}/readers
+- Patched some support script's messages to fit openSUSE's package
+  (ctapi-cyberjack-check.patch)
+
+-------------------------------------------------------------------
+Wed Jan 21 16:31:25 CET 2009 - sbrabec@suse.cz
+
+- Renamed capabilities name, create category FDI key. (bnc#438131)
+
+-------------------------------------------------------------------
+Tue Jan 13 17:10:11 CET 2009 - wr@opensuse.org
+
+- Adopt new HAL acl handling. (bnc#438131)
+
+-------------------------------------------------------------------
+Tue Jan  6 19:42:05 CET 2009 - sbrabec@suse.cz
+
+- Signed-off.
+
+-------------------------------------------------------------------
+Sun Dec  7 13:40:11 CET 2008 - wr@opensuse.org
+
+- requiring dummy-release only works from 11.1 on
+
+-------------------------------------------------------------------
+Fri Sep 19 15:23:55 CEST 2008 - ro@suse.de
+
+- replacing openSUSE-release with dummy-release in buildreq
+- patch configure, parsing /etc/SuSE-release is a really bad idea 
+
+-------------------------------------------------------------------
+Mon Sep  8 15:59:16 CEST 2008 - sbrabec@suse.cz
+
+- Update to version 3.3.0:
+  * improves support for rdesktop
+  * fixes some PC/SC-related bugs
+  * implements FEATURE_MCT_READER_DIRECT
+  * support for latest versions of pcsclite which rely on libHAL
+
+-------------------------------------------------------------------
+Wed Jul 30 23:53:00 CEST 2008 - wr@opensuse.org
+
+- Update to version 3.3.0beta4:
+  * IFD handler works correctly again (#413282)
+- Fixed hal rules for openSUSE 11.0
+
+-------------------------------------------------------------------
+Thu May  8 15:13:55 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Apr  4 13:04:19 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 3.1.0:
+  * introduces a new method of selecting devices by serial number.
+  * adds support for Cyberjacks connected via serial cable.
+  * fixes a problem with the APDU 20,10 and Ecom(a).
+  * special handling for port values 0x9000 and above.
+  * with the latest firmware should fix the problems Cyberjack Ecom
+    (a).
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Tue Dec  4 19:08:50 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 3.0.5:
+  * fixes a bug which makes Moneyplex unable to read cards with new
+    ecoms
+  * enables reading of German medical cards with 0x400 devices
+  * introduces a workaround for hanging USB hardware
+  * fixes a bug in the USB logging code
+  * fixes bug which can cause the driver to crash
+- Fixed hal rules for OpenSUSE >= 10.3 (#336704).
+- Added symlinks to work-around incorrect dynamic linking
+  (#336707).
+
+-------------------------------------------------------------------
+Tue Jul 31 16:47:36 CEST 2007 - sbrabec@suse.cz
+
+- Detect SuSE distribution correctly.
+
+-------------------------------------------------------------------
+Thu Jul 26 16:37:25 CEST 2007 - sbrabec@suse.cz
+
+- Updated package from Build Service security:chipcard.
+
+-------------------------------------------------------------------
+Mon Jul 23 08:09:50 CEST 2007 - wr@rosenauer.org
+
+- update to version 3.0.3
+- added 10.2 to configure options
+- removed rpath patch since it doesn't work anymore
+
+-------------------------------------------------------------------
+Wed May 16 21:45:38 CEST 2007 - olh@suse.de
+
+- Remove unneded Requires libusb
+
+-------------------------------------------------------------------
+Tue Apr 17 13:49:20 CEST 2007 - sbrabec@suse.cz
+
+- Updated package from Build Service security:chipcard (#264252).
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Apr 11 00:00:00 CEST 2007 - wr@rosenauer.org
+
+- update to version 2.0.14
+  * ctapi.h is not packaged anymore (someone need it?)
+
+-------------------------------------------------------------------
+Tue Jan 09 00:00:00 CET 2007 - wr@rosenauer.org
+
+- update to version 2.0.13
+
+-------------------------------------------------------------------
+Thu Dec 28 00:00:00 CET 2006 - wr@rosenauer.org
+
+- update to version 2.0.13beta5
+
+-------------------------------------------------------------------
+Thu Dec 21 00:00:00 CET 2006 - wr@rosenauer.org
+
+- update to version 2.0.13beta3
+
+-------------------------------------------------------------------
+Mon Aug  7 10:45:50 CEST 2006 - stark@suse.de
+
+- added HAL config to map the reader to usb resmgr class (#191958)
+
+-------------------------------------------------------------------
+Sat May  6 08:50:16 CEST 2006 - kukuk@suse.de
+
+- Fix inclusion of kernel headers
+
+-------------------------------------------------------------------
+Sun Apr  2 00:12:04 CEST 2006 - sndirsch@suse.de
+
+- added missing locale provides (Bug #161867) 
+
+-------------------------------------------------------------------
+Mon Mar 27 13:26:35 CEST 2006 - schwab@suse.de
+
+- Fix building of shared libs.
+
+-------------------------------------------------------------------
+Wed Mar  8 00:42:19 CET 2006 - agruen@suse.de
+
+- Add modalias tags (155357).
+
+-------------------------------------------------------------------
+Thu Mar  2 06:00:28 CET 2006 - stark@suse.de
+
+- update to version 2.0.10
+  * version 2.0.9 almost crashed everytime accessing the reader
+  * added wrapper/Extension code to libusb-0.1 to support 
+    asynchronous requests
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan  6 21:02:47 CET 2006 - stark@suse.de
+
+- fixed file modes of executables
+
+-------------------------------------------------------------------
+Wed Jan  4 12:36:48 CET 2006 - stark@suse.de
+
+- readded rpath and make options patches
+
+-------------------------------------------------------------------
+Tue Jan  3 08:59:37 CET 2006 - mjancar@suse.cz
+
+- move to separate source package
+
+-------------------------------------------------------------------
+Mon Jan  2 07:29:48 CET 2006 - stark@suse.de
+
+- removed obsolete hotplug stuff for cyberjack
+- Updated pcsc-lite to version 1.2.9-beta9
+- Updated CCID driver to 0.9.4
+- Updated GemPC driver to 1.0.0
+- package pkgconfig files to be able to build drivers outside 
+  the package
+
+-------------------------------------------------------------------
+Tue Dec 20 16:08:24 CET 2005 - ro@suse.de
+
+- removed unpackaged man-page symlinks 
+
+-------------------------------------------------------------------
+Tue Nov 29 11:59:15 CET 2005 - ro@suse.de
+
+- remove keeper from nfb (unused) 
+
+-------------------------------------------------------------------
+Mon Oct 10 13:02:47 CEST 2005 - stark@suse.de
+
+- Updated towitoko driver to 2.0.7 and install USB bundle
+
+-------------------------------------------------------------------
+Wed Sep 21 22:17:12 CEST 2005 - stark@suse.de
+
+- Repackaged CCID as bundle for USB usage (#116497)
+
+-------------------------------------------------------------------
+Tue Sep 20 06:24:30 CEST 2005 - stark@suse.de
+
+- handle old reader.conf in upgrade case
+- compile with -fno-strict-aliasing
+- fixed missing return in ctapi-cyberjack
+
+-------------------------------------------------------------------
+Sat Sep 17 11:46:52 CEST 2005 - stark@suse.de
+
+- Updated pcsc-lite to version 1.2.9beta8 (#116497)
+  * use /etc/reader.conf.d/
+  * adapted init script to create /etc/reader.conf
+- Updated cyberjack driver to version 2.0.9
+  * use rpath for cyberjack tools
+- Updated ccid driver to version 0.9.3 (#116497)
+- Use RPM_OPT_FLAGS everywhere
+- Fixed serious compiler warnings
+
+-------------------------------------------------------------------
+Mon Sep  5 15:25:59 CEST 2005 - skh@suse.de
+
+- fix off-by-one error in hotplug_libusb.c [#112964]
+
+-------------------------------------------------------------------
+Mon Aug 29 15:35:33 CEST 2005 - skh@suse.de
+
+- Remove unnecessary files from pcsc-acr38 again [#112927]
+
+-------------------------------------------------------------------
+Mon Aug 29 14:33:44 CEST 2005 - skh@suse.de
+
+- package ACR38 driver in correct bundle format [#112927]
+- remove orphaned /var/run/pcscd.pub when necessary [#112928]
+- update ACR38u driver to version 100705 to fix crash when reader
+  is plugged in [#112964]
+
+-------------------------------------------------------------------
+Tue Aug 16 14:15:41 CEST 2005 - skh@suse.de
+
+- Updated ACR38u driver to version 100703
+
+-------------------------------------------------------------------
+Tue Jul 26 17:47:53 CEST 2005 - okir@suse.de
+
+- Added ACR38u driver
+
+-------------------------------------------------------------------
+Tue Jul 26 13:29:37 CEST 2005 - okir@suse.de
+
+- Updated description in init script (#79287)
+
+-------------------------------------------------------------------
+Thu Jun 16 17:12:15 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS in 1 more driver
+- added includes to avoid implict declaration of memcpy and similar.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:12:49 CEST 2005 - ro@suse.de
+
+- make it build with gcc-4 
+
+-------------------------------------------------------------------
+Thu Mar 17 12:45:39 CET 2005 - okir@suse.de
+
+- Disable support for extended-apdus, it eats 32MB of memory (#73629)
+
+-------------------------------------------------------------------
+Thu Mar 10 11:49:25 CET 2005 - okir@suse.de
+
+- Fix default search location for USB bundles
+
+-------------------------------------------------------------------
+Fri Jan 21 15:11:43 CET 2005 - okir@suse.de
+
+- Updated to latest upstream version
+- Updated several drivers
+- Added CCID driver
+- Provide a more informative readers.conf file (#42620)
+
+-------------------------------------------------------------------
+Thu Jan 20 12:46:44 CET 2005 - ro@suse.de
+
+- drop subpackage gpr400 
+
+-------------------------------------------------------------------
+Wed Apr 28 18:20:35 CEST 2004 - ro@suse.de
+
+- compile formaticc with no-strict-aliasing
+- fix unused return type in musclecard.c
+
+-------------------------------------------------------------------
+Wed Mar 31 09:18:42 CEST 2004 - okir@suse.de
+
+- Properly install testpcsc, formaticc (#37625)
+- Build towitoko driver with --enable-win32-com
+
+-------------------------------------------------------------------
+Thu Mar 18 13:41:02 CET 2004 - okir@suse.de
+
+- cyberjack apps installed in /bin should be executable (#36409)
+
+-------------------------------------------------------------------
+Sat Jan 10 18:16:21 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Aug  5 14:53:48 CEST 2003 - mge@suse.de
+
+- merge ctapi-cyberjack into pcsc-lite: two additional
+  packages are created: ctapi-cyberjack and pcsc-cyberjack
+
+-------------------------------------------------------------------
+Thu Jun 26 01:17:52 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+- added directories to filelist
+
+-------------------------------------------------------------------
+Fri Nov 29 15:49:25 CET 2002 - okir@suse.de
+
+- added -fPIC when building eToken driver
+
+-------------------------------------------------------------------
+Fri Nov 29 10:14:46 CET 2002 - okir@suse.de
+
+- Updated to latest upstream version
+- Included driver for Aladdin eToken PRO
+- More GNU auto#*@! headaches
+- Various minor fixes
+
+-------------------------------------------------------------------
+Wed Aug 28 12:37:15 CEST 2002 - okir@suse.de
+
+- Moved shared objects to /usr/lib64 on ppc64/s390x (#18421)
+
+-------------------------------------------------------------------
+Mon Aug  5 14:27:44 CEST 2002 - olh@suse.de
+
+- fix initscript, Should-start: setserial hotplug
+
+-------------------------------------------------------------------
+Fri Aug  2 09:38:11 CEST 2002 - okir@suse.de
+
+- added PreReq for insserv_and_fillup
+
+-------------------------------------------------------------------
+Wed Jul 31 17:46:00 CEST 2002 - okir@suse.de
+
+- fixed build problem on s390x (force aclocal.m4 regen)
+
+-------------------------------------------------------------------
+Wed Jun 26 01:56:16 CEST 2002 - ro@suse.de
+
+- use -fPIC when building a shared lib 
+
+-------------------------------------------------------------------
+Wed Jun 12 13:26:14 CEST 2002 - okir@suse.de
+
+- fix for bug #15051 (hey, it's a palindrome bug:):
+  missing %doc DRIVERS file; misc silly binaries moved
+  out of /usr/bin
+
+-------------------------------------------------------------------
+Tue Apr 30 14:45:30 CEST 2002 - okir@suse.de
+
+- Fixed build problem introduced by previous patch
+
+-------------------------------------------------------------------
+Tue Apr 30 09:41:09 CEST 2002 - okir@suse.de
+
+- updated to latest upstream version
+- added drivers for these readers: Towitoko, Schlumberger Reflex 6x,
+  Gemplus GPR 400, GemPlus GemPC 410/430
+
+-------------------------------------------------------------------
+Tue Apr  9 01:37:41 CEST 2002 - ro@suse.de
+
+- fixed for latest automake/autoconf 
+
+-------------------------------------------------------------------
+Wed Feb 13 08:13:59 CET 2002 - stark@suse.de
+
+- spec-file cleanup
+- LSB compliant init-script 
+
+-------------------------------------------------------------------
+Mon Jan 14 12:54:01 CET 2002 - ro@suse.de
+
+- removed START_PCSCD 
+
+-------------------------------------------------------------------
+Wed Nov 14 08:49:11 CET 2001 - ro@suse.de
+
+- call aclocal
+
+-------------------------------------------------------------------
+Sun Aug 26 02:28:00 MET 2001 - mge@suse.de
+
+- updated to 1.0.0Beta
+- fixed /etc/init.d/pcscd status-handling (bug #9069)
+
+-------------------------------------------------------------------
+Thu Jun  7 02:27:01 CEST 2001 - ro@suse.de
+
+- fix broken Makefile.am 
+
+-------------------------------------------------------------------
+Mon Apr 23 00:32:27 MEST 2001 - mge@suse.de
+
+- update to 0.9.1
+
+-------------------------------------------------------------------
+Thu Apr 19 00:18:46 CEST 2001 - mge@suse.de
+
+- created package 
+

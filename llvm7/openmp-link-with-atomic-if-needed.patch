@@ -1,0 +1,30 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Link libomp with atomic if needed
+References: bsc#1145085
+Patch-mainline: never, fix not needed with more recent gcc
+
+libatomic is needed for 64-bit atomics on i586. The check is already
+performed by LLVM7, but the result is not used by openmp.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ runtime/src/CMakeLists.txt |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- a/runtime/src/CMakeLists.txt
++++ b/runtime/src/CMakeLists.txt
+@@ -174,7 +174,13 @@ endif()
+ 
+ # Linking command will include libraries in LIBOMP_CONFIGURED_LIBFLAGS
+ libomp_get_libflags(LIBOMP_CONFIGURED_LIBFLAGS)
+-target_link_libraries(omp ${LIBOMP_CONFIGURED_LIBFLAGS} ${CMAKE_DL_LIBS})
++
++set(LIBOMP_SYSTEM_LIBS)
++if (NOT HAVE_CXX_ATOMICS64_WITHOUT_LIB )
++    list(APPEND LIBOMP_SYSTEM_LIBS atomic)
++endif()
++
++target_link_libraries(omp ${LIBOMP_CONFIGURED_LIBFLAGS} ${LIBOMP_SYSTEM_LIBS} ${CMAKE_DL_LIBS})
+ 
+ # Create *.inc before compiling any sources
+ # objects depend on : .inc files

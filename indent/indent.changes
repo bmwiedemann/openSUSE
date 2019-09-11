@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Dec 17 09:04:23 UTC 2018 - astieger@suse.com
+
+- indent 2.2.12:
+  * New options:
+    + -pal / --pointer-align-left and -par / --pointer-align-right
+    + -fnc / --fix-nested-comment
+    + -gts / --gettext-strings
+    + -slc / --single-line-conditionals
+    + -as / --align-with-spaces
+    + -ut / --use-tabs
+    + -nut / --no-tabs
+    + -sar / --spaces-around-initializers
+    + -ntac / --dont-tab-align-comments
+    + -linux preset now includes -nbs.
+    + -kr preset now includes -par.
+  * Indent now recognises C99 and C11 keywords, and also typeof.
+- drop patches:
+  * indent-2.2.10-lcall.diff
+  * indent-2.2.10-man.diff
+  * indent-2.2.10-warnings.diff
+  * indent-texi2html-5.0.patch
+- add upstream signing key and verify signature
+
+-------------------------------------------------------------------
+Fri Dec 15 12:19:22 UTC 2017 - kstreitova@suse.com
+
+- update to 2.2.11
+  * fixed Debian Bug report logs - #485764, Regression with
+    --blank-lines-after-declarations in 2.2.10
+  * fail instead of removing embedded NULLs in input files
+  * fixed handling of '...' range 'operator in C++ language
+  * fixed -nlps option.
+- remove indent-2.2.10-nothing_is_void.diff that is no longer
+  needed
+- remove indent-2.2.10-cdw.diff that is useless now
+- refresh indent-2.2.10-warnings.diff
+- re-enable parallel build
+- ship COPYING NEWS README and ChangeLog files
+
+-------------------------------------------------------------------
+Thu Mar 23 15:15:13 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+- get rid of %{name} and %{version} macros in the patch names
+
+-------------------------------------------------------------------
+Thu Feb 19 09:28:11 UTC 2015 - dimstar@opensuse.org
+
+- Replace texinfo BuildRequires with makeinfo and texi2html: only
+  those parts are needed.
+- Add indent-texi2html-5.0.patch: Fix build with texi2html 5.0
+  (note: patches Makeinfo.in in order to not depend on libtool)
+- Move install_info_delete from postun to preun.
+
+-------------------------------------------------------------------
+Wed Feb 18 20:44:18 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Add gpg signature
+- Cleanup spec file with spec cleaner
+- Remove useless configure option --with-pic
+
+-------------------------------------------------------------------
+Fri Jul 20 05:00:55 UTC 2012 - coolo@suse.com
+
+- texi2html is required
+
+-------------------------------------------------------------------
+Tue Aug  5 12:09:45 CEST 2008 - prusnak@suse.cz
+
+- updated to 2.2.10
+  * added --indent-label and --linux-style options to control
+    indentation of goto labels and supply a canned set of settings
+    that closely matches the preferred style for the linux kernel
+  * GPLv3 is used now
+- removed obsoleted patches:
+  * overflow.patch (included in update)
+
+-------------------------------------------------------------------
+Sun Feb 24 18:10:35 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 13 23:27:07 CET 2004 - sndirsch@suse.de
+
+- moved chinese mo file to correct directory (Bug #47262)
+
+-------------------------------------------------------------------
+Wed Sep 15 21:00:32 CEST 2004 - aj@suse.de
+
+- Fix compiler warnings.
+
+-------------------------------------------------------------------
+Wed Jun 30 10:35:12 CEST 2004 - tcrhak@suse.cz
+
+- removed texinfo2man from the file list (bug #42247)
+
+-------------------------------------------------------------------
+Fri Apr 16 11:19:25 CEST 2004 - mmj@suse.de
+
+- Functions that are void should be declared as such
+
+-------------------------------------------------------------------
+Thu Mar 04 20:11:08 CET 2004 - tcrhak@suse.cz
+
+- security fix for overflow (bug #33790)
+
+-------------------------------------------------------------------
+Sat Jan 10 18:27:13 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed May 14 11:53:22 CEST 2003 - mmj@suse.de
+
+- Remove unwanted files
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 02:18:21 CET 2003 - mmj@suse.de
+
+- Add %install_info macro [#23428]
+
+-------------------------------------------------------------------
+Mon Jan 06 19:15:06 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.2.9
+
+-------------------------------------------------------------------
+Sat Jul 13 15:14:44 CEST 2002 - tcrhak@suse.cz
+
+- update to version 2.2.8a
+
+-------------------------------------------------------------------
+Thu Oct  4 11:51:40 CEST 2001 - schwab@suse.de
+
+- Don't run automake/autoconf.
+
+-------------------------------------------------------------------
+Sun Dec  3 15:24:19 CET 2000 - smid@suse.cz
+
+- New version 2.2.6
+
+-------------------------------------------------------------------
+Thu Feb 10 18:18:15 CET 2000 - kukuk@suse.de
+
+- Update to 2.2.5
+- Move /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Sun Oct 10 09:39:49 MEST 1999 - kukuk@suse.de
+
+- Update to version 2.2.3
+- Use BuildRoot 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  7 11:11:28 MEST 1999 - kukuk@suse.de
+
+- Add make to build section
+
+-------------------------------------------------------------------
+Thu Aug 26 12:50:18 MEST 1999 - kukuk@suse.de
+
+- Update to version 2.2.0 
+
+-------------------------------------------------------------------
+Tue Feb 23 00:28:30 MET 1999 - ro@suse.de
+
+- dont redefine memcpy for glibc-2.1
+
+-------------------------------------------------------------------
+Thu Jan 21 01:04:39 MET 1999 - ro@suse.de
+
+- no m486 on alpha
+- include <string.h> in indent.c

@@ -1,0 +1,297 @@
+From http://lists.gnu.org/archive/html/bug-tar/2014-09/msg00009.html
+
+* src/common.h (name_add_file): Change signature.
+* src/names.c (name_elt_alloc_matflags): New function.
+(name_add_name): Use name_elt_alloc_matflags.
+(name_add_file): Take matching flags as third argument.
+(read_next_name): Remove trailing slashes.
+* src/tar.c (parse_opt): Pass matching_flags to name_add_file.
+
+* tests/T-dir00.at: New file.
+* tests/T-dir01.at: New file.
+* tests/Makefile.am: Add new testcases.
+* tests/testsuite.at: Likewise.
+---
+ src/common.h       |  2 +-
+ src/names.c        | 56 ++++++++++++++++++++++++++++++++++--------------------
+ src/tar.c          |  2 +-
+ tests/Makefile.am  |  2 ++
+ tests/T-dir00.at   | 45 +++++++++++++++++++++++++++++++++++++++++++
+ tests/T-dir01.at   | 45 +++++++++++++++++++++++++++++++++++++++++++
+ tests/testsuite.at |  2 ++
+ 7 files changed, 131 insertions(+), 23 deletions(-)
+ create mode 100644 tests/T-dir00.at
+ create mode 100644 tests/T-dir01.at
+
+Index: tar-1.28/src/common.h
+===================================================================
+--- tar-1.28.orig/src/common.h	2015-02-09 15:05:47.642772569 +0100
++++ tar-1.28/src/common.h	2015-02-09 15:05:50.076794925 +0100
+@@ -725,7 +725,7 @@ int uname_to_uid (char const *uname, uid
+ void name_init (void);
+ void name_add_name (const char *name, int matching_flags);
+ void name_add_dir (const char *name);
+-void name_add_file (const char *name, int term);
++void name_add_file (const char *name, int term, int matching_flags);
+ void name_term (void);
+ const char *name_next (int change_dirs);
+ void name_gather (void);
+Index: tar-1.28/src/names.c
+===================================================================
+--- tar-1.28.orig/src/names.c	2015-02-09 15:05:47.642772569 +0100
++++ tar-1.28/src/names.c	2015-02-09 15:05:50.076794925 +0100
+@@ -258,6 +258,21 @@ name_elt_alloc (void)
+   return elt;
+ }
+ 
++static struct name_elt *
++name_elt_alloc_matflags (int matflags)
++{
++  static int prev_flags = 0; /* FIXME: Or EXCLUDE_ANCHORED? */
++  struct name_elt *ep = name_elt_alloc ();
++  if (prev_flags != matflags)
++    {
++      ep->type = NELT_FMASK;
++      ep->v.matching_flags = matflags;
++      prev_flags = matflags;
++      ep = name_elt_alloc ();
++    }
++  return ep;
++}
++
+ static void
+ name_list_adjust (void)
+ {
+@@ -276,20 +291,13 @@ name_list_advance (void)
+   free (elt);
+ }
+ 
+-/* Add to name_array the file NAME with fnmatch options MATCHING_FLAGS */
++
++/* Add to name_array the file NAME with fnmatch options MATFLAGS */
+ void
+-name_add_name (const char *name, int matching_flags)
++name_add_name (const char *name, int matflags)
+ {
+-  static int prev_flags = 0; /* FIXME: Or EXCLUDE_ANCHORED? */
+-  struct name_elt *ep = name_elt_alloc ();
++  struct name_elt *ep = name_elt_alloc_matflags (matflags);
+ 
+-  if (prev_flags != matching_flags)
+-    {
+-      ep->type = NELT_FMASK;
+-      ep->v.matching_flags = matching_flags;
+-      prev_flags = matching_flags;
+-      ep = name_elt_alloc ();
+-    }
+   ep->type = NELT_NAME;
+   ep->v.name = name;
+   name_count++;
+@@ -305,9 +313,10 @@ name_add_dir (const char *name)
+ }
+ 
+ void
+-name_add_file (const char *name, int term)
++name_add_file (const char *name, int term, int matflags)
+ {
+-  struct name_elt *ep = name_elt_alloc ();
++  struct name_elt *ep = name_elt_alloc_matflags (matflags);
++
+   ep->type = NELT_FILE;
+   ep->v.file.name = name;
+   ep->v.file.term = term;
+@@ -389,6 +398,15 @@ add_file_id (const char *filename)
+   file_id_list = p;
+   return 0;
+ }
++
++/* Chop trailing slashes.  */
++static void
++chopslash (char *str)
++{
++  char *p = str + strlen (str) - 1;
++  while (p > str && ISSLASH (*p))
++    *p-- = '\0';
++}
+ 
+ enum read_file_list_state  /* Result of reading file name from the list file */
+   {
+@@ -428,7 +446,7 @@ read_name_from_file (struct name_elt *en
+   if (counter == name_buffer_length)
+     name_buffer = x2realloc (name_buffer, &name_buffer_length);
+   name_buffer[counter] = 0;
+-
++  chopslash (name_buffer);
+   return (counter == 0 && c == EOF) ? file_list_end : file_list_success;
+ }
+ 
+@@ -518,7 +536,6 @@ copy_name (struct name_elt *ep)
+ {
+   const char *source;
+   size_t source_len;
+-  char *cursor;
+ 
+   source = ep->v.name;
+   source_len = strlen (source);
+@@ -536,11 +553,7 @@ copy_name (struct name_elt *ep)
+       name_buffer = xmalloc(name_buffer_length + 2);
+     }
+   strcpy (name_buffer, source);
+-
+-  /* Zap trailing slashes.  */
+-  cursor = name_buffer + strlen (name_buffer) - 1;
+-  while (cursor > name_buffer && ISSLASH (*cursor))
+-    *cursor-- = '\0';
++  chopslash (name_buffer);
+ }
+ 
+ 
+@@ -553,7 +566,8 @@ static int matching_flags; /* exclude_fn
+    the request to change to the given directory.
+ 
+    Entries of type NELT_FMASK cause updates of the matching_flags
+-   value. */
++   value.
++*/
+ static struct name_elt *
+ name_next_elt (int change_dirs)
+ {
+Index: tar-1.28/src/tar.c
+===================================================================
+--- tar-1.28.orig/src/tar.c	2015-02-09 15:05:47.642772569 +0100
++++ tar-1.28/src/tar.c	2015-02-09 15:05:50.077794935 +0100
+@@ -1641,7 +1641,7 @@ parse_opt (int key, char *arg, struct ar
+       break;
+ 
+     case 'T':
+-      name_add_file (arg, filename_terminator);
++      name_add_file (arg, filename_terminator, MAKE_INCL_OPTIONS (args));
+       /* Indicate we've been given -T option. This is for backward
+ 	 compatibility only, so that `tar cfT archive /dev/null will
+ 	 succeed */
+Index: tar-1.28/tests/Makefile.am
+===================================================================
+--- tar-1.28.orig/tests/Makefile.am	2015-02-09 15:05:47.642772569 +0100
++++ tar-1.28/tests/Makefile.am	2015-02-09 15:05:50.077794935 +0100
+@@ -43,6 +43,8 @@ $(srcdir)/package.m4: $(top_srcdir)/conf
+ 
+ TESTSUITE_AT = \
+  T-cd.at\
++ T-dir00.at\
++ T-dir01.at\
+  T-empty.at\
+  T-null.at\
+  T-rec.at\
+Index: tar-1.28/tests/T-dir00.at
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tar-1.28/tests/T-dir00.at	2015-02-09 15:05:50.077794935 +0100
+@@ -0,0 +1,45 @@
++# Process this file with autom4te to create testsuite. -*- Autotest -*-
++#
++# Test suite for GNU tar.
++# Copyright 2014 Free Software Foundation, Inc.
++
++# This file is part of GNU tar.
++
++# GNU tar is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++
++# GNU tar is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Tar 1.27 and 1.28 did not extract files under directory memberes listed
++# in the file read by --file-from.
++#
++# Reported-by: Jean-Louis Martineau <address@hidden>
++# References: <address@hidden>,
++#             http://lists.gnu.org/archive/html/bug-tar/2014-09/msg00006.html
++
++AT_SETUP([recursive extraction from --files-from])
++AT_KEYWORDS([files-from extract T-dir T-dir00])
++AT_TAR_CHECK([
++mkdir dir
++genfile -f dir/file1
++genfile -f dir/file2
++tar cf archive dir
++rm -rf dir
++echo dir > list
++tar xfTv archive list | sort
++],
++[0],
++[dir/
++dir/file1
++dir/file2
++])
++AT_CLEANUP
++
+Index: tar-1.28/tests/T-dir01.at
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tar-1.28/tests/T-dir01.at	2015-02-09 15:45:52.309679130 +0100
+@@ -0,0 +1,45 @@
++# Process this file with autom4te to create testsuite. -*- Autotest -*-
++#
++# Test suite for GNU tar.
++# Copyright 2014 Free Software Foundation, Inc.
++
++# This file is part of GNU tar.
++
++# GNU tar is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++
++# GNU tar is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Tar 1.27 and 1.28 did not remove trailing slashes from file names
++# obtained with the --file-from option.
++#
++# Reported-by: Jean-Louis Martineau <address@hidden>
++# References: <address@hidden>,
++#             http://lists.gnu.org/archive/html/bug-tar/2014-09/msg00006.html
++
++AT_SETUP([trailing slash in --files-from])
++AT_KEYWORDS([files-from extract T-dir T-dir01])
++AT_TAR_CHECK([
++mkdir dir
++genfile -f dir/file1
++genfile -f dir/file2
++tar cf archive dir
++rm -rf dir
++echo dir/ > list
++tar xfTv archive list | sort
++],
++[0],
++[dir/
++dir/file1
++dir/file2
++])
++AT_CLEANUP
++
+Index: tar-1.28/tests/testsuite.at
+===================================================================
+--- tar-1.28.orig/tests/testsuite.at	2015-02-09 15:05:47.642772569 +0100
++++ tar-1.28/tests/testsuite.at	2015-02-09 15:05:50.116795293 +0100
+@@ -205,6 +205,8 @@ m4_include([T-empty.at])
+ m4_include([T-null.at])
+ m4_include([T-zfile.at])
+ m4_include([T-nonl.at])
++m4_include([T-dir00.at])
++m4_include([T-dir01.at])
+ 
+ AT_BANNER([Various options])
+ m4_include([indexfile.at])

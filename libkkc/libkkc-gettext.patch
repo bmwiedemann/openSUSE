@@ -1,0 +1,13 @@
+Index: libkkc/configure.ac
+===================================================================
+--- libkkc.orig/configure.ac
++++ libkkc/configure.ac
+@@ -45,7 +45,7 @@ AC_PROG_CC_STDC
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.19.8])
++AM_GNU_GETTEXT_VERSION([0.18.3])
+ 
+ dnl Check python for tests
+ AM_PATH_PYTHON

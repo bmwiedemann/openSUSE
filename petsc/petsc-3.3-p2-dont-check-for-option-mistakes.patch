@@ -1,0 +1,15 @@
+---
+ config/configure.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/config/configure.py
++++ b/config/configure.py
+@@ -356,7 +356,7 @@ def petsc_configure(configure_options):
+   try:
+     # Command line arguments take precedence (but don't destroy argv[0])
+     sys.argv = sys.argv[:1] + configure_options + sys.argv[1:]
+-    check_for_option_mistakes(sys.argv)
++    #check_for_option_mistakes(sys.argv)
+     check_for_option_changed(sys.argv)
+   except (TypeError, ValueError), e:
+     emsg = str(e)

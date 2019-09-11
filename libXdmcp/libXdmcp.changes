@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Thu Mar 21 15:09:26 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.3
+  * This release provides a fix for CVE-2017-2625 for platforms which don't have
+    arc4random_buf() in their default libraries but do have getentropy(), such
+    as Linux platforms with a kernel version of 3.17 or newer and a glibc version
+    of 2.25 or newer.   (libXdmcp 1.1.2 already ensured that arc4random_buf()
+    is used on platforms that have it to provide sufficient entropy in XDMCP
+    key generation, but left other platforms with the weaker methods.  Linux
+    platforms could also have linked against libbsd to use arc4random_buf()
+    with libXdmcp 1.1.2 for stronger keys.)
+- supersedes U_Fix-compilation-error-when-arc4random_buf-is-not-ava.patch,
+  U_Use-getentropy-if-arc4random_buf-is-not-available.patch
+
+-------------------------------------------------------------------
+Sun Jun 11 20:28:03 UTC 2017 - sndirsch@suse.com
+
+- U_Use-getentropy-if-arc4random_buf-is-not-available.patch
+  * Use getentropy() if arc4random_buf() is not available
+    (bsc#1025046, CVE-2017-2625)
+- U_Fix-compilation-error-when-arc4random_buf-is-not-ava.patch 
+  * Fix compilation error when arc4random_buf is not available
+
+-------------------------------------------------------------------
+Mon Mar 23 08:43:36 UTC 2015 - sndirsch@suse.com
+
+- added baselibs.conf as source to specfile 
+
+-------------------------------------------------------------------
+Sun Mar 22 00:10:52 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.1.2:
+  This release has hardened handling of invalid arguments & 
+  allocation failures, adds support for using arc4random in key
+  generation, and adds some unit tests to help developers prevent
+  regressions in the future.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Apr 11 15:21:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.1.1:
+  + Improvements to documentation
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sat Feb 11 21:52:22 UTC 2012 - jengelh@medozas.de
+
+- Provide package descriptions and update homepage URL
+
+-------------------------------------------------------------------
+Sat Feb 11 18:42:30 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXdmcp to libXdmcp and utilize shlib policy
+
+-------------------------------------------------------------------
+Sun Nov 20 06:48:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Dec 21 02:44:01 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:28:14 UTC 2010 - sndirsch@novell.com
+
+- revert 'export only public API symbols'
+  it breaks at least build of xdm (package xorg-x11)
+
+-------------------------------------------------------------------
+Tue Nov 30 17:21:58 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- export only public API symbols
+- disable silent rules, defeat the purpose of post build checks 
+
+-------------------------------------------------------------------
+Sat Oct 30 14:43:09 UTC 2010 - sndirsch@novell.com
+
+- libXdmcp 1.1.0
+  * This release features a major refactoring and cleanup of the
+    code base, and conversion of the XDMCP specification from
+    troff to DocBook/XML, along with the usual recent set of build
+    configuration improvements and janitorial cleanups.
+
+-------------------------------------------------------------------
+Sun Apr  4 15:38:37 CEST 2010 - sndirsch@suse.de
+
+- libXdmcp 1.0.3
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Tue Dec 15 04:52:15 CET 2009 - sndirsch@suse.de
+
+- add baselibs.conf as a source 
+
+-------------------------------------------------------------------
+Sat May  2 14:42:17 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 20:29:54 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:23 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Dec 26 08:50:29 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postun error
+- PreReq coreutils 
+- libXdmcp.la has dependency_libs empty, removed.
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:49 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Thu Oct 26 07:28:57 CEST 2006 - sndirsch@suse.de
+
+- set version to 7.2 in specfile 
+
+-------------------------------------------------------------------
+Sat Aug 12 09:56:36 CEST 2006 - sndirsch@suse.de
+
+- updated to minor cleanup release 1.0.2
+  * added hooks for checking code with lint & sparse, and cleaned
+    up a couple of warnings from them.
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:08 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:24 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:41:51 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre
+
+-------------------------------------------------------------------
+Thu Jun 22 12:35:43 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

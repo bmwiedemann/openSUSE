@@ -1,0 +1,71 @@
+#
+# spec file for package python-libvirt-python
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define srcname libvirt-python
+Name:           python-libvirt-python
+Url:            https://libvirt.org/
+Version:        5.6.0
+Release:        0
+Summary:        Library providing a virtualization API
+License:        LGPL-2.1-or-later
+Group:          Development/Languages/Python
+Source0:        %{srcname}-%{version}.tar.gz
+Source1:        %{srcname}-%{version}.tar.gz.asc
+Source2:        python-libvirt-python.keyring
+BuildRequires:  fdupes
+BuildRequires:  libvirt-devel = %{version}
+BuildRequires:  python-rpm-macros
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module xml}
+%ifpython2
+Provides:       libvirt-python = %{version}
+Obsoletes:      libvirt-python < %{version}
+%endif
+
+%python_subpackages
+
+%description
+The python-libvirt-python package contains a module that permits applications
+written in the Python programming language to use the interface
+supplied by the libvirt library to use the virtualization capabilities
+of recent versions of Linux (v2.6.20+).
+
+%prep
+%setup -q -n %{srcname}-%{version}
+
+# Unset execute bit for example scripts; it can introduce spurious
+# RPM dependencies, like /usr/bin/python which can pull in python2
+# for the -python3 package
+find examples -type f -exec chmod 0644 \{\} \;
+
+%build
+export CFLAGS="%{optflags}"
+%python_build
+
+%install
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%files %{python_files}
+%doc ChangeLog AUTHORS NEWS README COPYING COPYING.LESSER examples/
+%{python_sitearch}/*
+%pycache_only %{python3_sitearch}/__pycache__/*
+
+%changelog

@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Dec  7 08:56:53 UTC 2015 - jweberhofer@weberhofer.at
+
+- Requires dialog package
+
+-------------------------------------------------------------------
+Thu Nov 19 10:26:16 UTC 2015 - jweberhofer@weberhofer.at
+
+Major update to version 3.3.0.
+
+This version is a backport of pythondialog to Python 2. Unless you really have
+to use Python 2. For a full changelog see the packaged ChangeLog file or
+http://pythondialog.sourceforge.net/news.html
+
+-------------------------------------------------------------------
+Fri Sep 27 12:11:12 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.11
+  + README: I thought I was adding a valuable precision in version 2.09
+	when I changed "LGPL" to "LGPL version 2.1" in the README file (after
+	looking at COPYING), but actually, the terms at the beginning of
+	dialog.py are "either version 2.1 of the License, or (at your option)
+	any later version". Sorry about that, fixed.
+  + demo.py: use "if <test> <expr1> else <expr2>" expressions more
+	often, since they are allowed in Python >= 2.5
+- Refactor specfile and cleanup
+
+-------------------------------------------------------------------
+Tue Aug 11 15:44:18 CEST 2009 - matejcik@suse.cz
+
+- build as noarch on newer distros
+- do not remove buildroot in %install
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb  9 16:52:12 CET 2005 - mcihar@suse.cz
+
+- update to 2.7
+
+-------------------------------------------------------------------
+Wed Aug 04 15:27:03 CEST 2004 - mcihar@suse.cz
+
+- updated to 2.06
+- use %py_requires
+
+-------------------------------------------------------------------
+Thu Oct 16 16:27:23 CEST 2003 - mcihar@suse.cz
+
+- inital packaging
+

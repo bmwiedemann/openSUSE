@@ -1,0 +1,476 @@
+-------------------------------------------------------------------
+Tue Mar 12 22:30:34 UTC 2019 - Julio González Gil <julio@juliogonzalez.es>
+
+- Make COPYING file a license file
+- Update to version 1.85
+  + add Backblaze B2
+  + Fix typo s/mutliple/multiple/
+  + Made instructions for creating password file more obvious.
+  + Enable big writes if capable
+  + For RPM distributions fuse-libs is enough
+  + Add support for storage class ONEZONE_IA.
+  + Simplify hex conversion
+  + New installation instructions for Fedora >= 27 and CentOS7
+  + Improve template for issues
+  + Make the compilation instructions generic
+  + Replace all mentions to MacOS X to macOS
+  + Correct typo
+  + Correctly compare list_object_max_keys
+  + Allow credentials from ${HOME}/.aws/credentials
+  + Replace ~ with ${HOME} in examples
+  + Include StackOverflow in FAQs
+  + Add icon for s3fs
+  + Upload S3 parts without batching
+  + Add 'profile' option to command line help.
+  + fix multihead warning check
+  + Multi-arch support for ppc64le
+  + Correct typos in command-line parsing
+  + Address cppcheck 1.86 errors
+  + Check arguments and environment before .aws/creds
+  + [curl] Assume long encryption keys are base64 encoded
+  + Update s3fs_util.cpp for correspondence of Nextcloud contype
+  + Add Server Fault to FAQs
+  + Repair xattr tests
+  + Store and retrieve file change time
+  + Default uid/gid/mode when object lacks permissions
+  + Emit more friendly error for buckets with dots
+  + Flush file before renaming
+  + Tighten up HTTP response code check
+  + Plug memory leak
+  + Plug memory leaks
+  + Avoid pass-by-value when not necessary
+  + Prefer find(char) over find(const char *)
+  + Remove unnecessary calls to std::string::c_str
+  + Fix comparison in s3fs_strtoofft
+  + Prefer HTTPS links where possible
+  + Added an error message when HTTP 301 status
+  + Ignore after period character of floating point in x-amz-meta-mtime
+  + Added a missing extension to .gitignore, and formatted dot files
+  + Added detail error message when HTTP 301/307 status
+  + Automatic region change made possible other than us-east-1(default)
+  + Prefer abort over assert(false)
+  + Issue readdir HEAD requests without batching
+  + Reference better-known AWS CLI for compatibility
+  + Load tail range during overwrite
+  + Add test for mv non-empty directory
+  + Remove unnecessary string copies
+  + Remove redundant string initializations
+  + Reverted automatic region change and changed messages
+  + Prefer empty over size checks
+  + Remove redundant null checks before delete
+  + Accept paths with : in them
+  + Correct enable_content_md5 docs
+  + Correct sigv2 typo
+  + Prefer AutoLock for synchronization
+  + Remove mirror path when deleting cache
+  + Checked and corrected all typo
+  + Disable malloc_trim
+  + Remove unneeded void parameter
+  + Prefer specific [io]stringstream where possible
+  + Copy parts in parallel
+  + Ensure s3fs compiles with C++03
+  + Return not supported when hard linking
+  + Repair utility mode
+  + Simplify async request completion code
+  + Add logging for too many parts
+  + Implement exponential backoff for 503
+  + Added S3FS_MALLOC_TRIM build switch
+  + Added a non-interactive option to utility mode
+  + Automatically abort failed multipart requests
+  + Update s3ql link
+  + Clear containers instead of individual erases
+  + Address miscellaneous clang-tidy warnings
+  + Upgrade to S3Proxy 1.6.1
+  + Document lack of inotify support
+  + Fixed code for latest cppcheck error on OSX
+  + Wtf8
+  + Work around cppcheck warnings
+  + Improvement of curl session pool for multipart
+  + Increase FdEntity reference count when returning
+  + Fix lazy typo
+  + Remove from file from stat cache during rename
+  + Add instructions for Amazon Linux
+  + Changed the description order of man page options
+  + Fixed ref-count when error occurred.
+  + Make macOS instructions consistent with others
+
+-------------------------------------------------------------------
+Sun Oct 14 17:34:02 UTC 2018 - julio@juliogonzalez.es
+
+- Require fuse package on runtime to allow mounting with systemd,
+  mount command or /etc/fstab (bsc#1111267)
+
+-------------------------------------------------------------------
+Sun Jul  8 11:58:19 UTC 2018 - julio@juliogonzalez.es
+
+- Update to version 1.84
+  + Update README.md with details about .passwd-s3fs
+  + add disk space reservation
+  + Added Cygwin build options
+  + reduce lock contention on file open
+  + don't fail multirequest on single thread error
+  + add an instance_name option for logging
+  + FreeBSD build fixes
+  + More useful error message for dupe entries in passwd file
+  + cleanup curl handle state on retries
+  + don't fail mkdir when directory exists
+  + fix xpath selector in bucket listing
+  + Validate the URL format for http/https
+  + Added reset curl handle when returning to handle pool
+  + Optimize defaults
+  + Simplify installation for Ubuntu 16.04
+  + Upgrade to S3Proxy 1.6.0
+  + cleanup curl handles before curl share
+  + Remove false multihead warnings
+  + Add Debian installation instructions
+  + Remove s3fs-python
+  + Fixed memory leak
+  + Revert "enable FUSE read_sync by default"
+  + Option for IAM authentication endpoint
+  + gnutls_auth: initialize libgcrypt
+  + Fixed an error by cppcheck on OSX
+  + Log messages for 5xx and 4xx HTTP response code
+  + Instructions for SUSE and openSUSE prebuilt packages
+  + Added list_object_max_keys option based on #783 PR 
+
+-------------------------------------------------------------------
+Sat Feb  3 17:13:53 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.83
+  + Fix chown_nocopy losing existing uid/gid if unspecified
+  + Group permission checks can fail with large number of groups
+  + Upgrade to S3Proxy 1.5.3
+  + Merged macosx branch into master branch
+  + Fix intermittent upload failures on macOS
+  + Add blurb about non-Amazon S3 implementations
+  + Fixed potential atomic violation in S3fsCurl::AddUserAgent
+  + Fixed with unnecessary equal in POST uploads url argment
+  + Configure S3Proxy for SSL
+  + Simplify S3Proxy PID handling
+  + Fix s3fs_init message
+  + Don't fail updating directory when removing old-style object
+  + Refixed s3fs_init message
+  + Lock FdEntity when mutating orgmeta
+  + auth headers insertion refactoring
+  + add IBM IAM authentication support
+  + Fixed a bug in S3fsCurl::LocateBundle
+  + Add support for ECS metadata endpoint
+  + Reduce use of preprocessor
+  + Move str definition from header to implementation
+  + Changed functions about reading passwd file
+  + Correct signedness warning
+  + remove use of jsoncpp
+  + Improved use of temporary files
+  + Added option ecs description to man page
+  + Updated template md files for issue and pr
+  + fix condition for parallel download
+  + Fixing race condition in FdEntity::GetStats
+  + Fix dbglevel usage
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  9 14:16:38 UTC 2017 - rjschwei@suse.com
+
+- Update to version 1.82
+  + #597 - Not fallback to HTTP - #596
+- From 1.81
+  + #426 - Updated to correct ChangeLog
+  + #431 - fix typo s/controll/control/
+  + #432 - Include location constraint when creating bucket
+  + #433 - Correct search and replace typo
+  + #440 - Handled all curl error without exiting process - #437
+  + #443 - Fix for leaks during stat cache entry expiry / truncation (#340)
+  + #444 - Add mirror file logic for removing cache file
+  + #447 - added fuse package for mounting via /etc/fstab, fixes #417
+  + #449 - Accept mount options compatible with mtab
+  + #451 - Correct path in README
+  + #454 - Changed for accepting mount options compatible with mtab - #449
+  + #466 - Fixed a bug about could not copy file mode from org file
+  + #471 - Added use_xattr option for #467 and #460
+  + #477 - OS-specific correspondence of the extended attribute header
+  + #483 - Trim symbolic link original path in file
+  + #487 - Split header debugging onto multiple lines for easier reading
+  + #488 - Fixed searching Content-Length without case sensitive - #480
+  + #489 - Changed headers_t map using nocase compare function - #488
+  + #494 - Fix typo s/destroied/destroyed/
+  + #495 - Fix invalid V4 signature on multipart copy requests
+  + #498 - Upgrade to S3Proxy 1.5.1
+  + #502 - Fixed issue#435 branch codes for remaining bugs(2)
+  + #503 - Add missing call to mtime test
+  + #504 - Use describe helper function
+  + #505 - Correct typos
+  + #509 - Use server-provided ETag during complete upload
+  + #511 - Fixed a bug about uploading NULL to some part of the file contents
+  + #512 - Changed clock_gettime func to s3fs_clock_gettime for homebrew - #468
+  + #513 - Added issue and PR templates.
+  + #517 - Update s3fs.1 - removed duplicated word
+  + #520 - Added links for eventual consistency in README.md - #515
+  + #539 - Upgrade to S3Proxy 1.5.2
+  + #540 - Address cppcheck 1.77 warnings
+  + #545 - Changed base cached time of stat_cache_expire option - #523
+  + #546 - Fixed double initialization of SSL library at foreground
+  + #550 - Add umount instruction for unplivileged user
+  + #551 - Updated stat_cache_expire option description - #545
+  + #552 - switch S3fsMultiCurl to use foreground threads
+  + #553 - add TLS cipher suites customization
+  + #554 - cleanup cache directory when running out of disk space
+  + #555 - don't sign empty headers (as they are discarded
+  + #556 - fix multipart upload handling without cache
+  + #557 - Added check_cache_dir_exist option(refixed #347) - #538
+  + #558 - Fixed a bug in logic about truncating stat cache
+  + #560 - Fixed about multipart uploading at no free space related to #509
+  + #567 - Do not send ACL unless overridden
+  + #576 - Added option for complementing lack of stat mode
+  + #578 - Refactored the get_object_attribute function
+  + #579 - Added notsup_compat_dir option
+  + #580 - Enhanced bucket/path parameter check
+  + #582 - Check errors returned in 200 OK responses for put header request
+  + #583 - Updated limit object size in s3fs man page
+  + #585 - Fixed failure to upload/copy with SSE_C and SSE_KMS
+  + #587 - Changed copyright year format for debian pkg
+  + #588 - Default transport to HTTPS
+  + #590 - Updated man page for default_acl option - #567
+  + #593 - Backward compatible for changing default transport to HTTPS
+  + #594 - Check bucket at public bucket and add nocopyapi option automatically
+- From 1.80
+  + #213 - Parse ETag from copy multipart correctly
+  + #215 - Fix mem leak in openssl_auth.cpp:s3fs_sha256hexsum
+  + #217 - Override install, so that the make install does not install
+    rename_before_close under /test
+  + #219 - Address Coverity errors
+  + #220 - Test removing a non-empty directory
+  + #221 - Compare idiomatically
+  + #222 - Annotate constructors as explicit
+  + #224 - Configure cppcheck
+  + #229 - Convert rename_before_close to a shell script
+  + #231 - Rewrite AutoLock
+  + #232 - Always hold stat_cache_lock when using stat_cache
+  + #233 - Remove IntToStr
+  + #234 - Update README
+  + #235 - Plug leak during complete multipart upload
+  + #237 - Refactor tests into individual functions
+  + #238 - Enable all cppcheck rules
+  + #239 - Update stale Google Code reference in --help
+  + #240 - Enable Content-MD5 during multipart upload part
+  + #243 - Run cppcheck during Travis builds
+  + #245 - Elide duplicate lookups of std::map via iterators
+  + #246 - Unlock during early return in TruncateCache
+  + #247 - Base64 cleanup
+  + #248 - Enable integration tests for Travis
+  + #249 - Silence wget
+  + #250 - s3fs can print version with short commit hash - #228
+  + #251 - Skip xattr tests if utilities are missing
+  + #252 - This fixes an issue with caching when the creation of a
+    subdirectory …
+  + #253 - Added chacking cache dir perms at starting.
+  + #256 - Add no atomic rename to limitations
+  + #257 - Update README.md: Bugfix password file permissions errors
+  + #258 - Update README.md to better explain mount upon boot
+  + #260 - Wrap help text at 80 characters
+  + #261 - Correct help timeouts
+  + #263 - Allow integration testing against Amazon S3
+  + #265 - Fix integration tests
+  + #266 - Cleanup from PR #265
+  + #267 - Added the _netdev option to the fstab example.
+  + #268 - Use 127.0.0.1 not localhost in s3proxy wait loop
+  + #271 - Add support for standard_ia storage class
+  + #274 - Modified man page for storage_class option(#271)
+  + #275 - Changed and cleaned the logic for debug message.
+  + #278 - Supported for SSE KMS(#270)
+  + #280 - Supported a object which is larger than free disk space
+  + #285 - Add test for symlink
+  + #288 - Fixed a bug about head request(copy) for SSE - issue#286
+  + #289 - Print source file in log messages
+  + #291 - File opened with O_TRUNC is not flushed - Issue #290
+  + #293 - Fix a small spelling issue.
+  + #295 - File opened with O_TRUNC is not flushed - changed #291
+  + #300 - Update integration-test-main.sh
+  + #302 - Fix syslog level used by S3FS_PRN_EXIT()
+  + #304 - Fixed a bug about mtime - #299
+  + #306 - Fix read concurrency to work in parallel count
+  + #307 - Fix pthread portability problem
+  + #308 - Changed ensure free disk space as additional change for #306
+  + #309 - Check pthread prtability in configure as additional change for #307
+  + #310 - Update integration-test-main.sh as additional change for #300
+  + #311 - Change error log to debug log in s3fs_read()
+  + #313 - fix gitignore
+  + #319 - Clean up mount point on errors in s3fs_init()
+  + #321 - delete stat cache entry in s3fs_fsync so st_size is refreshed - #320
+  + #323 - Add goofys to references
+  + #328 - Fix v4 signature with use_path_request_style
+  + #329 - Correct multiple issues with GET and v4 signing
+  + #330 - Pass by const reference where possible
+  + #331 - Address various clang warnings
+  + #334 - Bucket host should include port and not path
+  + #336 - update REAME.md for fstab
+  + #338 - Fixed a bug about IAMCRED type could not be retried.
+  + #339 - Updated README.md for fstab example.
+  + #341 - Fix the memory leak issue in fdcache.
+  + #346 - Fix empty directory check against AWS S3
+  + #348 - Integration test summary, continue on error
+  + #350 - Changed cache out logic for stat - #340
+  + #351 - Check cache dirctory path and attributes - #347
+  + #352 - Remove stat file cache dir if specified del_cache - #337
+  + #354 - Supported regex type for additional header format - #343
+  + #355 - Fixed codes about clock_gettime for osx
+  + #356 - Fixed codes about clock_gettime for osx(2)
+  + #357 - Fixed codes about clock_gettime for osx(3)
+  + #359 - Remove optional parameter from Content-Type header - #358
+  + #360 - Fix clock_gettime autotools detection on Linux
+  + #364 - Checked content-type by no case-sensitivity - #363
+  + #371 - Always set stats cache for opened file
+  + #372 - Fixed a bug about etag comparison in stats cache, etc.
+  + #376 - Test for writing after an lseek past end of file
+  + #379 - Fixed a bug about writing sparsed file - #375
+  + #385 - fix typo in curl.cpp: s/returing/returning/
+  + #391 - Update s3fs.1
+  + #394 - Revert "Fixed a bug about writing sparsed file - #375"
+  + #395 - Fixed writing sparsed file - #375,#379,#394
+  + #397 - Supported User-Agent header - #383
+  + #403 - Fix a bug of truncating empty file
+  + #404 - Add curl handler pool to reuse connections
+  + #409 - Fixed 'load_sse_c' option not working - #388
+  + #410 - Allow duplicate key in ahbe_conf - #386
+  + #411 - loading IAM role name automatically(iam_role option) - #387
+  + #415 - Fixed a bug about stat_cache_expire - #382
+  + #420 - Skip early credential checks when iam_role=auto
+  + #422 - Fixes for iam_role=auto
+  + #424 - Added travis CI badge in README.md
+
+-------------------------------------------------------------------
+Mon Dec  7 13:27:52 UTC 2015 - rjschwei@suse.com
+
+- Update to version 1.79 (bsc#958186)
+  + Emit user-friendly log messages on failed CheckBucket requests
+  + Remove stray chars from source files
+  + Fix spelling errors
+  + FreeBSD issue
+  + Address clang always true warnings
+  + Small gitignore fixes
+  + url: handle scheme omission
+  + Changed option processing to use strtol() to get a umask
+  + Add simple unit tests for trim functions
+  + CURL handles not properly initialized to use DNS or SSL session caching
+  + Optimized function "bool directory_empty()"
+  + Remove prefix option in s3fs man page - issue#87
+  + fix rename before close
+  + Supported signature version 4
+  + Added new mp_umask option about issue#107, pr#110
+  + Fallback to v2 signatures correctly.
+  + refactor integration tests create/cleanup file
+  + Test ls
+  + Use S3Proxy to run integration tests
+  + Include Content-Type in complete MPU V2 signature
+  + Correct V4 signature for initiate multipart upload
+  + Small fixes to integration tests
+  + Add test for multi-part upload
+  + Fixed bugs, not turn use_cache off and ty to load to end - issue#97
+  + Fixed a bug no use_cache case about fixed #138 - issue#141
+  + Add Travis configuration
+  + add exit handler to cleanup on failures
+  + Use S3Proxy 1.4.0-SNAPSHOT
+  + Fixed a bug not handling fsync - #145
+  + Fixed url-encoding for ampersand etc on sigv4 - Improvement/#149
+  + Fixed a bug: unable to mount bucket subdirectory
+  + Fixed a bug about ssl session sharing with libcurl older 7.23.0 - issue#126
+  + Upgrade to S3Proxy 1.4.0
+  + send the correct Host header when using -o url
+  + Auth v4 refactor
+  + Increased default connecting/reading/writing timeout value
+  + switch to use region specific endpoints to compute correct v4 signature
+  + Reviewed and fixed response codes print in curl.cpp - #157
+  + Support buckets with mixed-case names
+  + Run integration tests via Travis
+  + configure.ac: detect target, if target is darwin (OSX), then #176
+  + Add .mailmap
+  + Update .gitignore
+  + Add usage information for multipart_size
+  + Correct obvious typos in usage and README
+  + Add a no_check_certificate option.
+  + Tilda in a file-name breaks things (EPERM)
+  + Disasble integration tests for Travis 
+  + Supported extended attributes(retry)
+  + fixed fallback to sigv2 for bucket create and GCS
+  + Specialize {set,get}xattr for OS X
+  + Add integration test for xattr
+  + Fixed a few small spelling issues.
+
+-------------------------------------------------------------------
+Wed Jan 14 13:36:03 UTC 2015 - rschweikert@suse.com
+
+- Update to version 1.78
+  + Password file with DOS format is not handled properly
+  + Failed making signature
+  + Moving a directory containing more than 1000 files truncates the directory
+  + use_sse is ignored when creating new files
+  + Support for SSE-C
+  + Cannot find pkg-config when configured with any SSL backend except openssl
+  + enable_content_md5 Input/output error
+  + s3fs -u should return 0 if there are no lost multiparts
+  + empty file is written to s3
+  + s3fs crashes with segfault
+  + Fix typos in docs for max_stat_cache_size
+  + curl ssl problems
+  + Address signedness warning in FdCache::Init
+  + du shows incorrect usage stats
+  + version in configure.ac is 1.74 for release 1.75
+  + Using %20 instead of the plus (+) sign for encoding spaces
+  + Fixed local timezone was incorrectly being applied to IAM and
+    Last-Modified dates.
+  + Fix compilation error on MacOSX with missing const
+- From 1.77
+  + enable_content_md5 Input/output error
+  + s3fs -u should return 0 if there are no lost multiparts
+  + empty file is written to s3
+  + s3fs crashes with segfault
+  + Fix typos in docs for max_stat_cache_size
+  + curl ssl problems
+  + Address signedness warning in FdCache::Init
+- From 1.76
+  + du shows incorrect usage stats
+  + version in configure.ac is 1.74 for release 1.75
+- From 1.75
+  + Using %20 instead of the plus (+) sign for encoding spaces
+  + Fixed local timezone was incorrectly being applied to IAM and
+    Last-Modified dates.
+  + Fix compilation error on MacOSX with missing const
+
+-------------------------------------------------------------------
+Thu Jan 23 14:06:17 UTC 2014 - rschweikert@suse.com
+
+- Add to SLE FATE #316010
+
+-------------------------------------------------------------------
+Sat Jan 18 11:47:23 UTC 2014 - rschweikert@suse.com
+
+- Update to version 1.74
+  + Fixed bugs
+   - Fixed wrong printf format.
+   - Fixed a bug at changing umask.
+   - Fixed a bug at changing utimens.
+   - When changing object size, could not update stat cache.
+   - Fixed some memory leak.
+   - Fixed a bug about ftruncate(Issue 371).
+   - Fixed a bug about multipart post request(Issue 371).
+   - Fixed a bug about multipart post/head retrying(Issue 389).
+   - Fixed public_bucket option bug
+   - Fixed file size over flow on 32bit OS
+
+  + Changed codes
+   - Calling curl_global_init function once.
+   - Adds dynamic lock callback for OpenSSL.
+   - Checking strict for s3fs command parameters.
+   - Caches SSL session.
+   - Changes parallel count 500 to 20 for multipart head req.
+   - Adds --enable-nss-init configure option.
+   - Changes updating timing for object cache(Issue 368).
+   - Changes level for some debugging codes.
+   - Adds casting for curl_ott_t variables.
+   - Adds IAM role option.
+   - Adds function on utility mode for removing failed multipart req.
+
+-------------------------------------------------------------------
+Tue Aug 27 22:02:40 UTC 2013 - rschweikert@suse.com
+
+- Initial build
+

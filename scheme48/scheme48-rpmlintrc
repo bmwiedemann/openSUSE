@@ -1,0 +1,4 @@
+addFilter(".*E:.*devel-file-in-non-devel-package.*")
+addFilter(".*W:.*macro-in-comment.*")
+addFilter(".*W:.*position-independent-executable-suggested.*")
+addFilter(".*W:.*missing-call-to-setgroups-before-setuid.*")

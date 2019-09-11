@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Wed Jan 30 22:43:03 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.2.0
+  * various logging improvements (more strings, less numbers)
+  * better SIP/MNCC cause mapping
+  * Full changelog:
+    http://git.osmocom.org/osmo-sip-connector/plain/debian/changelog?h=1.2.0
+- Remove patches:
+  * 0001-contrib-Add-systemd-service-file.patch
+
+-------------------------------------------------------------------
+Sat Mar 17 20:00:37 UTC 2018 - mardnh@gmx.de
+
+- Use use the systemd service file from contrib/
+- Show testsuite.log when tests are failing
+
+-------------------------------------------------------------------
+Fri Dec 29 12:18:40 UTC 2017 - jengelh@inai.de
+
+- %service_* already takes care of restart/removal
+
+-------------------------------------------------------------------
+Wed Dec 27 22:16:48 UTC 2017 - mardnh@gmx.de
+
+- Minor specfile cleanup
+
+-------------------------------------------------------------------
+Wed Dec 27 20:23:22 UTC 2017 - mardnh@gmx.de
+
+- Update to new upstream release 1.1.0
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Wed Feb 15 09:20:08 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1486793192.42b073a:
+  * sip: Treat SIP 183 as progress too
+  * evpoll: Use {} in the middle of the if/else if/else block
+  * evpoll: Always initialize revents for the output
+  * evpoll: Don't try to be more smart than g_poll
+
+-------------------------------------------------------------------
+Sun Dec 25 21:08:05 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1475798073.fffc742:
+  * build: be robust against install-sh files above the root dir
+  * configure: check for pkg-config presence
+  * jenkins.sh: use osmo-build-dep.sh, log test failures
+
+-------------------------------------------------------------------
+Sun Oct 02 09:27:30 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1474923387.c403ed6:
+  * app/mncc: Add "use-imsi" to allow calling by IMSI
+  * mncc: Only copy 15 chars to leave the last one as NULL
+  * mncc: Have all release go through a local method
+  * mncc: Reject hold requests for now
+  * mncc: Use snprintf correctly create format specifier
+  * vty: Add simple VTY output for current calls
+  * vty: Fix the number of documented arguments
+  * sip/call/mncc: Move source/dest into the call structure
+  * vty: Add extended show calls command with all information
+  * mncc: Use strcpy for these routines and not memcpy
+  * vty: Add VTY command about the state of the mncc connection
+  * jenkins: Add first CI script for the SIP connector
+  * distcheck/tests: Add the referenced osmoappdesc.py for testing
+  * distcheck: Package the logging.h file as well
+  * jenkins: Try to enable the vty tests as well
+  * jenkins: Use separate check invocation tor un the tests
+  * jenkins: Make it find the libosmocore library as well
+  * sip: Start the application even if sofia-sip is broken
+  * log VTY telnet bind only once
+
+-------------------------------------------------------------------
+Thu Mar 31 18:36:18 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

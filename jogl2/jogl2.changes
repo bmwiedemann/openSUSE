@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Wed Jan 10 08:50:43 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * jogl2-nojavah.patch
+    - Fix build with JDK versions without javah tool
+- Build native code with optflags
+- Require jdk8 or higher for build
+
+-------------------------------------------------------------------
+Tue Jan  2 17:53:22 UTC 2018 - fstrba@suse.com
+
+- Force building with jdk < 10
+
+-------------------------------------------------------------------
+Sat Nov 25 14:35:26 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Set TARGET_PLATFORM_ROOT to the root directory, as OBS does not
+  do cross compilation. Fixes build on ARMv7, Aarch64.
+
+-------------------------------------------------------------------
+Fri Oct  6 07:58:26 UTC 2017 - fstrba@suse.com
+
+- Fix building with jdk9
+- Added patch:
+  * jogl2-getPeer.patch
+    + remove use in debug message of getPeer method, inaccessible
+      in jdk9
+
+-------------------------------------------------------------------
+Wed Sep 20 10:53:44 UTC 2017 - fstrba@suse.com
+
+- Force building with jdk < 1.9
+
+-------------------------------------------------------------------
+Wed Mar  9 12:58:55 UTC 2016 - dvaleev@suse.com
+
+- Fix building on POWER 64bit platforms (jogl2-ppc64.patch)
+
+-------------------------------------------------------------------
+Sun Oct 11 19:35:16 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.2:
+  + See http://jogamp.org/deployment/v2.3.2/archive/ChangeLogs/jogl-ShortLog-v2.3.2.txt
+    for a list of changes.
+- Upstream switched to using tar.xz for source tarballs; adapt
+  %setup acordingly, drop p7zip BuildRequires.
+
+-------------------------------------------------------------------
+Sat Apr  4 03:34:21 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.1:
+  + See list of changes at
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.1.
+
+-------------------------------------------------------------------
+Sat Mar 14 23:17:12 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.0:
+  + See list of changes at
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.0.
+- Add jogl2-disable-tests.patch to disable junit tests for now,
+  needs additional packages not in obs.
+- Disable building of an unimportant experimental plugin as it
+  caused build failures when prebuilt jar files are not used.
+- Update BuildRequires and Requires to enforce version
+  compatibility with gluegen2.
+
+-------------------------------------------------------------------
+Mon Jul  7 15:05:52 UTC 2014 - tchvatal@suse.com
+
+- Use junit not junit4
+
+-------------------------------------------------------------------
+Thu Mar 20 23:50:57 UTC 2014 - badshah400@gmail.com
+
+- Packaging changes:
+  + Use tagged tarballs released by upstream
+    - Requires p7zip
+    - Requires manual setup of buildsource directory
+  + Use full URL for source
+- Minor rebasing of patches to ensure they apply cleanly.
+
+-------------------------------------------------------------------
+Thu Aug  1 04:02:55 UTC 2013 - ierturk@ieee.org
+
+- Update to version 2.0.2
+
+-------------------------------------------------------------------
+Thu Jul 18 20:30:45 UTC 2013 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 2.0-rc12
+- Use system jars
+  * jogl2-0000-update-antlr-ant-contrib-jars.patch
+- Fix tasks for compiler
+  * jogl2-0001-update-ant-contrib-tasks.patch

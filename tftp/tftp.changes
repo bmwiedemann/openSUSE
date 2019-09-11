@@ -1,0 +1,468 @@
+-------------------------------------------------------------------
+Thu Jul 11 05:55:20 UTC 2019 - antoine.belvire@opensuse.org
+
+- Remove SuSEfirewall2 service, since SuSEfirewall2 has been
+  replaced by firewalld (which already provides a tftp service).
+
+-------------------------------------------------------------------
+Fri Apr 26 10:39:23 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Tue Jul 10 11:51:31 CEST 2018 - kukuk@suse.de
+
+- Don't require systemd explicit, spec file can handle both cases
+  correct and in containers we don't have systemd.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:39:09 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Sep  8 13:26:47 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Changed permissions of /srv/tftpboot to be readable [bsc#940608]
+
+-------------------------------------------------------------------
+Fri Jun 16 08:54:54 UTC 2017 - jhura@suse.com
+
+- Removed xinetd service 
+
+-------------------------------------------------------------------
+Mon Nov  2 12:36:26 UTC 2015 - vcizek@suse.com
+
+- add a sysconfig file to allow passing parameters to the service
+  (requested in bsc#951591)
+  * added tftp.sysconfig
+
+-------------------------------------------------------------------
+Fri Sep 18 13:23:21 UTC 2015 - vcizek@suse.com
+
+- respond from the destination address taken from the first udp
+  message's ancillary data (bnc#928283)
+  * added tftp-multi-addresses.patch
+
+-------------------------------------------------------------------
+Fri Sep 18 13:22:12 UTC 2015 - vcizek@suse.com
+
+- tftp-hpa-0.48-macros-crash.patch:
+  prevent buffer overflow in handling of \x macro (bnc#793883)
+- tftp-hpa-0.48-macros-v6mapped.patch:
+  for \i and \x, expand v6-mapped addresses as native IPv4
+  (bnc#793883)
+- patches come from Michal Kubecek
+
+-------------------------------------------------------------------
+Tue Mar 25 23:35:16 UTC 2014 - crrodriguez@opensuse.org
+
+- drop tftp-hpa-0.43_old-autoconf.diff not needed for any
+  product still in active maintenance.
+- Use correct systemd macros in %pre, %post..
+- config.h must be included *everywhere* (tftp-config_h.patch)
+- tftp.service: 
+   * This service needs to be started after network.target
+   * Use PrivateDevices=yes
+
+-------------------------------------------------------------------
+Thu Apr 18 09:57:36 UTC 2013 - vcizek@suse.com
+
+- change ownership of /srv/tftpboot to tftp:tftp, otherwise tftp
+  daemon can't write there (bnc#813226)
+
+-------------------------------------------------------------------
+Thu Feb  7 13:07:03 UTC 2013 - vcizek@suse.com
+
+- create capabilites provided by both tftp and atftp
+  (bnc#801481 or bnc#725378)
+
+-------------------------------------------------------------------
+Wed Dec  5 19:54:20 UTC 2012 - dimstar@opensuse.org
+
+- Add systemd socket activation units.
+- Change inet-daemon to be recommended only, as we can now also
+  activate by means of systemd sockets.
+
+-------------------------------------------------------------------
+Tue Sep  4 13:09:09 UTC 2012 - vcizek@suse.com
+
+- update to 5.2
+  - fixes a breakage with recent Linux kernel versions when a
+    single interface has multiple IP addresses (bnc#774861)
+
+-------------------------------------------------------------------
+Tue Dec 20 20:30:25 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Nov 11 14:51:55 UTC 2011 - vcizek@suse.com
+
+- added rules for SuSEfirewall2 (bnc#729793)
+  thanks to Lukas Ocilka
+
+-------------------------------------------------------------------
+Tue Sep  6 13:01:31 UTC 2011 - vcizek@suse.com
+
+- added missing PreReq: pwdutils
+
+-------------------------------------------------------------------
+Fri Jun 24 07:09:50 UTC 2011 - puzel@novell.com
+
+- unbreak tftp by changing to user to run as in tftpd itself,
+  not via xinetd (bnc#682340)
+
+-------------------------------------------------------------------
+Thu Jun 23 12:17:37 UTC 2011 - puzel@novell.com
+
+- update to version-5.1
+  - Add -P option to write a PID file.  Patch by Ferenc Wagner.
+  - Bounce the syslog socket in standalone mode, in case the
+    syslog daemon has been restarted.  Patch by Ferenc Wagner.
+  - Build fixes.
+  - Fix handling of block number wraparound after a successful
+    options negotiation.
+  - Fix a buffer overflow in option parsing.
+- fixes bnc#699714, CVE-2011-2199
+
+-------------------------------------------------------------------
+Sat Dec 11 00:00:00 UTC 2010 - chris@computersalat.de
+
+- fix spec
+  o added missing path /srv/tftpboot in files section
+
+-------------------------------------------------------------------
+Fri Dec  3 13:51:50 UTC 2010 - puzel@novell.com
+
+- update to version 5.0
+  * Try to on platforms with getaddrinfo() without AI_ADDRCONFIG or
+    AI_CANONNAME.
+  * Implement the "rollover" option, for clients which want block
+    number to rollover to anything other than zero.
+  * Correctly disable PMTU in standalone mode.
+  * Add IPv6 support.  Patch by Karsten Keil.
+  * Support systems with editline instead of readline.
+  * Support long options in the server.
+- drop tftp-hpa-0.43_readline.diff (not needed)
+- drop tftp-hpa-0.46_libedit.patch (solved in upstream)
+- build with readline support
+- clean up specfile
+
+-------------------------------------------------------------------
+Fri Oct 29 23:33:18 UTC 2010 - chris@computersalat.de
+
+- fix pre
+  o no check before addding group/user (darix)
+- fix files
+  o provide /srv/tftpboot
+
+-------------------------------------------------------------------
+Wed Oct 13 21:05:23 UTC 2010 - chris@computersalat.de
+
+- add group/user tftp (bnc#472283)
+- set TFTP default DIR to /srv/tftpboot (bnc#248008,507011)
+- added Conflicts atftp, cause of overlapping binaries
+
+-------------------------------------------------------------------
+Fri Oct  1 12:07:50 UTC 2010 - puzel@novell.com
+
+- add tftp-hpa-0.48-tzfix.patch (bnc#630297) 
+
+-------------------------------------------------------------------
+Tue Jun 29 08:57:01 UTC 2010 - puzel@novell.com
+
+- add tftp-hpa-0.49-fortify-strcpy-crash.patch (bnc#617675)
+
+-------------------------------------------------------------------
+Mon Sep  1 14:45:15 CEST 2008 - mrueckert@suse.de
+
+- drop lineedit support again
+- fix build to include %{optflags} with using configure
+
+-------------------------------------------------------------------
+Wed Aug 27 16:20:32 CEST 2008 - olh@suse.de
+
+- do not require autoconf 2.61
+  binutils-devel is not available in 11.0 or earlier
+
+-------------------------------------------------------------------
+Wed Aug  6 16:04:07 CEST 2008 - kkeil@suse.de
+
+- Update to current git version with enhanced IPv6 support included
+
+-------------------------------------------------------------------
+Fri Jul 18 17:56:28 CEST 2008 - kkeil@suse.de
+
+- Update to git version 0.48 for mainline compatibility; code is
+  still the same but formatting was cleaned up
+- Implement IPv6 (fate #304343)
+
+-------------------------------------------------------------------
+Thu Feb  1 21:05:23 CET 2007 - mrueckert@suse.de
+
+- update to version 0.48:
+  - Unbreak -l -s in the server, which was broken in 0.47.
+- additional changes from 0.47:
+  - Add -L option to the server to run standalone without
+    detaching from the shell.
+  - Parallel make fix.
+
+-------------------------------------------------------------------
+Tue Jan  9 11:37:58 CET 2007 - mrueckert@suse.de
+
+- update to version 0.46:
+  - Minor portability improvements.
+- additional change from 0.45:
+  Add -l (literal) option to the client, to override the special
+  treatment of the colon (:) character as a hostname separator.
+- replaced tftp-hpa-0.43_syntax.diff with tftp-hpa-0.46_colon_check.patch:
+  restore a behavior which was broken with 0.35
+- merged tftp-hpa-0.43_signdness.patch with
+  tftp-hpa-0.43_bcopy_secfix.patch. new patch:
+  tftp-hpa-0.46_bcopy_secfix.patch.
+- added tftp-hpa-0.46_libedit.patch:
+  Build against libedit to enable lineediting support.
+
+-------------------------------------------------------------------
+Thu Dec  7 04:09:55 CET 2006 - mrueckert@suse.de
+
+- update to version 0.44:
+  - Allow the client to specify a range of local port numbers, just
+    like the server can.
+  - Fix sending SIGHUP to update the regular expression table.
+
+-------------------------------------------------------------------
+Fri Oct 20 19:04:32 CEST 2006 - mrueckert@suse.de
+
+- update to version 0.43:
+  - Fix double-free error on ^c in client.
+  - Try to deal with clients that send TFTP requests to broadcasts
+    (apparently some recent Sun boxes do this instead of using the
+    address told by DHCP.  Bad Sun!  Bad Sun!)
+  - Portability fixes.
+- removed first chunk from tftp-hpa-0.40.diff and renamed it to
+  tftp-hpa-0.43_include_sys_params.patch. the first chunk was
+  fixed upstream.
+- patches rediffed and renamed:
+  tftp-bcopy-secfix.diff -> tftp-hpa-0.43_bcopy_secfix.patch
+  tftp-hpa-0.40.readline.diff -> tftp-hpa-0.43_readline.diff
+  tftp-hpa-0.40-syntax.diff -> tftp-hpa-0.43_syntax.diff
+- added tftp-hpa-0.43_signdness.patch:
+  fixed signedness warnings which where mostlikely caused by the
+  bcopy fixes.
+
+-------------------------------------------------------------------
+Tue Mar 14 08:24:26 CET 2006 - mrueckert@suse.de
+
+- update to version 0.42:
+  o Try to disable path MTU discovery for TFTP connections (it's
+    useless anyway.) (0.42)
+  o Add a hack to allow the admin to specify a range of local port
+    numbers to use. (0.42)
+  o Fix local IP number handling on systems which present
+    IP_RECVDSTADDR in recvmsg(). (0.42)
+  o Fix bug by which patterns of the form \U\1 weren't converted
+    correctly. (0.41)
+
+-------------------------------------------------------------------
+Tue Mar 14 08:21:56 CET 2006 - mrueckert@suse.de
+
+- removed tftp-hpa-0.40.make.diff
+- removed autoreconf -fi. it caused the builderrors
+- minimized the build/install sections
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 23 13:40:18 CEST 2005 - mrueckert@suse.de
+
+- Do not install xinetd config with executable flag.
+- Added tcpd-devel so we can build with libwrap
+- Do not let the build process delete aconfig.h at the wrong time.
+
+-------------------------------------------------------------------
+Tue Feb  8 16:49:11 CET 2005 - mmj@suse.de
+
+- Update to tftp-hpa-0.40 including:
+  o Fix timeout bug
+  o Support perl style \U...\E and \L...\E, as well as allow
+    matching rules to be inverted (execute if rule *doesn't* match.)
+  o Fix bug which would cause "r" remapping rules to be incorrectly
+    rejected.
+
+-------------------------------------------------------------------
+Wed Oct 27 19:34:06 CEST 2004 - mmj@suse.de
+
+- Fix security hole with possibly overflowing bcopy [#47676]
+
+-------------------------------------------------------------------
+Fri Sep  3 17:13:25 CEST 2004 - mmj@suse.de
+
+- Update to tftp-hpa-0.38 including portability fixes
+
+-------------------------------------------------------------------
+Thu Aug 12 10:59:25 CEST 2004 - mmj@suse.de
+
+- Update to tftp-hpa-0.37 which fixes a pathology where a client
+  sending ACKs for the wrong packet can prevent proper retransmission.
+
+-------------------------------------------------------------------
+Mon Feb  9 11:53:41 CET 2004 - mmj@suse.de
+
+- Update to tftp-hpa-0.36 which is a portability release
+
+-------------------------------------------------------------------
+Fri Jan  9 23:20:25 CET 2004 - mmj@suse.de
+
+- Update to tftp-hpa-0.35:
+  o Add an option to control the maximum value of blksize 
+    negotiated.
+  o Removed workaround for obsolete Cygwin problem.
+  o Don't use getopt() -- the -c option doesn't work correctly 
+    since it depends on the ordering of arguments and options.
+    It is now possible to do:
+    tftp -m binary hostname -c get filename
+    This was previous possible by doing:
+    tftp -m binary -c get hostname:filename
+   ... but it seemed that was counterintuitive to people.
+  o Somewhat improved configure scripts.
+
+-------------------------------------------------------------------
+Fri Oct 17 13:04:26 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Wed Jul  2 13:40:38 CEST 2003 - mmj@suse.de
+
+- Add patch from mls to fix syntax
+
+-------------------------------------------------------------------
+Tue May 13 13:01:28 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Tue May  6 13:36:20 CEST 2003 - mmj@suse.de
+
+- Update to 0.34 which is just a small code cleanup to fix build on
+  Solaris.
+- Add tftpd/sample.rules (thanks to A. Schulze for noticing)
+
+-------------------------------------------------------------------
+Sat Mar 29 01:11:18 CET 2003 - mmj@suse.de
+
+- Update to 0.33 including:
+  * Further improvement of error messages
+  * Configuration fix: readline needs termcap
+  * Support running the tftp client from the command line
+
+-------------------------------------------------------------------
+Fri Jan 24 11:27:38 CET 2003 - mmj@suse.de
+
+- Add xinetd configuration file
+
+-------------------------------------------------------------------
+Thu Nov 14 12:20:56 CET 2002 - mmj@suse.de
+
+- Update to 0.32 including better error messages
+
+-------------------------------------------------------------------
+Mon Nov  4 08:21:43 CET 2002 - mmj@suse.de
+
+- Update to 0.31 including:
+  o A check to make sure xinetd (in particular) doesn't
+    pass an IPv6 socket.
+  o Fix some problems related to timeout negotiation.
+  o Allow the user to set the default timeout speed.
+
+-------------------------------------------------------------------
+Thu Oct  3 16:36:15 CEST 2002 - mmj@suse.de
+
+- Update to 0.30 including;
+  o Better timeout algorithm
+  o New "utimeout" option
+  o Change loglevel of clientside errors to LOG_WARNING
+  o autoconf portability improvements
+  o Minor bugfixes
+
+-------------------------------------------------------------------
+Mon May 13 15:44:20 CEST 2002 - mmj@suse.de
+
+- Update to 0.29 including:
+  o Posixly correctness.
+  o Fixed a bug which could cause a standalone server to exit with
+    a "recvfrom: Interrupted system call" log message if signals
+    arrive at a particularly inopportune moment.
+  o Fix a macro substitution bug
+
+-------------------------------------------------------------------
+Mon Feb 11 12:55:59 MET 2002 - mmj@suse.de
+
+- Update to 0.28
+
+-------------------------------------------------------------------
+Tue Nov 20 14:28:48 CET 2001 - mmj@suse.de
+
+- Update to 0.27
+
+-------------------------------------------------------------------
+Tue Oct 16 15:02:22 CEST 2001 - mmj@suse.de
+
+- Update to 0.21
+
+-------------------------------------------------------------------
+Sat Aug  4 18:11:03 CEST 2001 - kukuk@suse.de
+
+- Update to 0.20
+
+-------------------------------------------------------------------
+Fri Jul 27 10:56:29 CEST 2001 - kukuk@suse.de
+
+- Update to 0.19
+
+-------------------------------------------------------------------
+Tue Jul 10 17:12:42 CEST 2001 - kukuk@suse.de
+
+- Add tcp wrapper to neededforbuild
+
+-------------------------------------------------------------------
+Tue Jul 10 16:29:44 CEST 2001 - kukuk@suse.de
+
+- Update to 0.17
+
+-------------------------------------------------------------------
+Thu Jun 14 07:29:37 CEST 2001 - cihlar@suse.cz
+
+- requires inet-daemon, not inetd
+
+-------------------------------------------------------------------
+Fri Mar 30 06:22:27 CEST 2001 - kukuk@suse.de
+
+- Update to 0.16
+
+-------------------------------------------------------------------
+Thu Mar 29 15:03:07 CEST 2001 - kukuk@suse.de
+
+- Update to 0.15
+
+-------------------------------------------------------------------
+Tue Jan  2 15:00:22 CET 2001 - kukuk@suse.de
+
+- Add IP_PKTINFO patch from Cord Seele (Bug #4961)
+
+-------------------------------------------------------------------
+Tue Dec 12 04:16:18 MET 2000 - draht@suse.de
+
+- make tftpd(8) not only drop euid but all uids
+
+-------------------------------------------------------------------
+Sun Oct  8 18:39:58 CEST 2000 - kukuk@suse.de
+
+- Split from nkitb 
+

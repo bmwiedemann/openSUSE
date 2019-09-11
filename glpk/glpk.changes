@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Fri Dec 21 10:08:56 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging change for doc subpackage
+- Enable additional functionality
+
+-------------------------------------------------------------------
+Wed Jun 27 13:50:37 UTC 2018 - mpluskal@suse.com
+
+- Update to version 4.65:
+  * The following new API routines for LP/MIP preprocessing were added:
+    + glp_npp_alloc_wksp    allocate the preprocessor workspace
+    + glp_npp_load_prob     load original problem instance
+    + glp_npp_preprocess1   perform basic LP/MIP preprocessing
+    + glp_npp_build_prob    build resultant problem instance
+    + glp_npp_postprocess   postprocess solution to resultant problem
+    + glp_npp_obtain_sol    obtain solution to original problem
+    + glp_npp_free_wksp     free the preprocessor workspace
+  * A new, more robust implementation of locally valid simple cover
+    cuts was included in the MIP solver.
+  * The API routine glp_init_iocp was changed to enable long-step
+    option of the dual simplex by default.
+- Add glpk-no_random_return.patch
+
+-------------------------------------------------------------------
+Mon Dec 11 20:52:49 UTC 2017 - astieger@suse.com
+
+- update to 4.64:
+  * The dual simplex solver routine was changed to perform more
+    aggressive perturbation to prevent dual degeneracy and avoid
+    stalling even if the current dual basic solution is strongly
+    feasible (mainly if the objective is zero)
+  * The exact simplex solver routine was changed to perform
+    terminal output according to the verbosity level (specified by
+    the control parameter smcp.msg_lev)
+  * A minor bug (related to MS Windows version) was fixed
+  * An example model (Graceful Tree Labeling Problem) in MathProg
+    was added
+  * Three example models (Power plant LP scheduler, Neumann CA
+    grid emulator generator) in MathProg and one in Cplex LP format
+    were added
+
+-------------------------------------------------------------------
+Mon Jul 31 13:31:32 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.63:
+  * A "smart" LP perturbation was implemented in the primal and
+    dual simplex solvers.
+  * The long-step technique was implemented for phase I of the
+    primal simplex solver.
+  * An internal objective scaling was included in both primal and
+    ual simplex solvers.
+  * The Posix version of glp_time (glpk/src/env/time.c) was changed
+    to resolve time_t issue on msys2.
+  * Three new example models in MathProg were added.
+* Changes for version 4.62:
+  * The bound perturbation technique was included in the primal
+    simplex solver to improve numerical stability and avoid
+    cycling.
+  * A range bug was fixed in the MPS reading routine.
+  * Changes were made to provide 64-bit portability of the Minisat
+    solver.
+  * Calls to non-thread-safe functions gmtime, strerror, and strtok
+    were replaced by calls to corresponding thread-safe equivalents
+
+-------------------------------------------------------------------
+Mon Jan 23 16:00:00 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.61:
+  * An option was added to build a re-entrant version of the
+    package suitable for running in a multi-threaded environment.
+  * A re-entrant version of the package allows running multiple
+    independent instances of glpk in different threads of a
+    multi-threaded application.
+- Use savannah as source for gpg keyring
+
+-------------------------------------------------------------------
+Fri Apr  1 11:44:47 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.60
+  * src/glpk.h Declarations of all non-documented API routines were 
+    hidden by #ifdef GLP_UNDOC / #endif.
+  * src/simplex/spydual.c An experimental feature (objective 
+    coefficient perturbation) to improve numerical stabilty and 
+    avoid cycling was included in the dual simplex solver.  
+- Enable gmp support
+
+-------------------------------------------------------------------
+Sun Mar 13 15:07:54 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.59
+  * Some bugs were fixed and some improvements were made in the 
+    MIP solver.
+  * The data file format used by API routines glp_read_graph and 
+    glp_write_graph was changed. For more details please see the 
+    document "GLPK: Graph and Network Routines" included in the 
+    distribution.
+  * Translation of the document "Modeling Language GNU MathProg" 
+    to Brazilian Portuguese (pt-BR) was included (in LaTeX and pdf
+    formats).
+
+-------------------------------------------------------------------
+Fri Feb 19 07:15:46 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.58
+  * The solution file format used by API routines glp_read_sol, 
+    glp_write_sol, glp_read_ipt, glp_write_ipt, glp_read_mip, and 
+    glp_write_mip was changed. For more details please see the GLPK
+    reference manual included in the distribution.
+  * The tan function (trigonometric tangent) was added to GNU 
+    MathProg modeling language.
+  * A new version of the document "Modeling Language GNU MathProg" 
+    in Spanish was included (in LaTeX and pdf formats).
+  * A check to determine if libtool needs '-no-undefined' flag to
+    build shared libraries on some platforms was added.
+  * A script to regenerate the configure script and the Makefiles
+    was added.
+
+-------------------------------------------------------------------
+Sun Nov  8 09:34:38 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.57
+  * A new, more efficient implementation of the dual simplex method
+		was included in the package. This new implementation replaces
+		the old one, which was removed.
+	* Option sr_heur was added to struct glp_iocp to enable/disable
+		the simple rounding heuristic used by the MIP solver. Thanks to
+		Chris Matrakidis <cmatraki@gmail.com> for suggestion.
+	* New API routine glp_at_error was added and documented. Thanks
+		to Jeroen Demeyer <jdemeyer@cage.ugent.be> for suggestion.
+	* Some minor typos were corrected in the GLPK documentation.
+		Thanks to Anton Voropaev <anton.n.voropaev@gmail.com> for typo
+		report.
+	* An example application program TSPSOL was added. It uses the
+		GLPK MIP optimizer to solve the Symmetric Traveling Salesman
+		Problem and illustrates "lazy" constraints generation. For more
+		details please see glpk/examples/tsp/README.
+
+-------------------------------------------------------------------
+Fri Oct  2 12:19:02 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.56
+  * A new, more efficient and more robust implementation of the 
+    primal simplex method was included in the package. This new 
+    implementation replaces the old one, which was removed.
+  * A bug was fixed in a basis factorization routine. (The bug
+    appeared if the basis matrix was structurally singular having
+    duplicate row and/or column singletons.) Thanks to Martin Jacob
+  * Scripts to build GLPK with Microsoft Visual Studio 2015 were
+    added. Thanks to Xypron <xypron.glpk@gmx.de> for contribution
+    and testing.
+- Cleanup spec file with spec-clener
+
+-------------------------------------------------------------------
+Wed Nov 12 17:33:27 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 4.55
+  * Bugfixes, documentation update. See NEWS file for details.
+
+-------------------------------------------------------------------
+Mon Mar 31 06:34:30 UTC 2014 - pgajdos@suse.com
+
+- updated to 4.54
+  * Block-triangular LU-factorization was implemented to be used
+    on computing an initial factorization of the basis matrix.
+  * A new version of the Schur-complement-based factorization
+    module was included in the package. Now it can be used along
+    with plain as well as with block-triangular LU-factorization.
+  * The API routine glp_read_mps was changed to remove free rows.
+  * etc. see NEWS for details
+
+-------------------------------------------------------------------
+Tue Dec 10 15:24:32 UTC 2013 - sweet_f_a@gmx.de
+
+- enable tests
+
+-------------------------------------------------------------------
+Wed Aug  7 16:30:21 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.52.1
+* Version linkage information in the shared library was incorrect
+- Set RPM groups according to common practice
+- Do optional signature verification
+
+-------------------------------------------------------------------
+Thu Jul 25 19:46:35 UTC 2013 - matwey.kornilov@gmail.com
+
+- use -fno-strict-aliasing to avoid warnings in minisat.c
+- don't use dvipdf, docs are in pdf in 4.52
+
+-------------------------------------------------------------------
+Thu Jul 25 18:57:43 UTC 2013 - matwey.kornilov@gmail.com
+
+- updated to 4.52 (see NEWA for details):
+  * Some bugs were fixed. Thanks to
+    Giorgio Sartor <0gioker0@gmail.com>,
+    Xypron <xypron.glpk@gmx.de>,
+    David T. Price <dtprice@speakeasy.net>
+  * The clique cut generator was essentially reimplemented, and now
+    it is able to process very large and/or dense conflict graphs.
+  * Singleton and dense phases were implemented on computing
+    LU-factorization with Gaussian elimination.
+  * A new version of LU-factorization routines were added.
+  * The new API routine glp_mincost_relax4, which is a driver to
+    relaxation method of Bertsekas and Tseng (RELAX-IV), was added
+    to the package.
+  * All old API routines whose names begin with 'lpx_'
+    were removed from API level and NO MORE AVAILABLE.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:28:51 UTC 2013 - pgajdos@suse.com
+
+- updated to 4.48:
+  * This is a maintainer release.
+  * Some minor changes in API (glpk.h) were made. For details
+    please see ChangeLog.
+  * Some bugs/typos were fixed. Thanks to
+    Raniere Gaia Costa da Silva,
+    Heinrich Schuchardt <xypron.glpk@gmx.de>, and
+    Robbie Morrison <robbie@actrix.co.nz> for reports.
+
+-------------------------------------------------------------------
+Thu Dec  6 10:21:05 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Avoid manual library dependencies; make doc subpackage noarch
+
+-------------------------------------------------------------------
+Mon Oct 31 14:40:30 UTC 2011 - pgajdos@suse.com
+
+- updated to 4.47 (see NEWS)
+
+-------------------------------------------------------------------
+Tue May 24 13:37:04 UTC 2011 - pgajdos@novell.com
+
+- updated to 4.45 (see NEWS)
+
+-------------------------------------------------------------------
+Thu Aug 19 09:00:31 CEST 2010 - pgajdos@suse.cz
+
+- updated to 4.44 (see NEWS)
+
+-------------------------------------------------------------------
+Mon Mar 15 13:06:53 CET 2010 - pgajdos@suse.cz
+
+- updated to 4.43 (see NEWS)
+
+-------------------------------------------------------------------
+Thu Nov 19 12:48:43 CET 2009 - pgajdos@suse.cz
+
+- updated to 4.40 (see NEWS)
+
+-------------------------------------------------------------------
+Thu Jun 18 15:20:28 CEST 2009 - pgajdos@suse.cz
+
+- updated to 4.38 (see NEWS)
+
+-------------------------------------------------------------------
+Mon Sep 15 16:05:56 CEST 2008 - pgajdos@suse.cz
+
+- ghostscript instead of ghostscript-mini in the BuildRequires
+  section
+
+-------------------------------------------------------------------
+Thu Sep 11 14:06:30 CEST 2008 - pgajdos@suse.cz
+
+- updated to 4.31:
+        * glpspx.h, glpspx01.c, glpspx02.c, glpapi06.c
+        The dual simplex solver (spx_dual_opt) was replaced by a new
+        implementation of the two-phase dual simplex method (spx_dual).
+        Old simplex method routines (spx_prim_opt, spx_prim_feas, and
+        spx_dual_opt) were removed from the package.
+
+        * glpk.h, glpscl.h, glpscl.c, glpapi04.c
+        New API routine glp_scale_prob was added. It replaces routine
+        lpx_scale_prob which is deprecated.
+
+        * glpk.h, glpini.h, glpini01.c, glpini02.c, glpapi05.c
+        New API routines glp_std_basis, glp_adv_basis, glp_cpx_basis
+        were added. They replace routines lpx_std_basis, lpx_adv_basis,
+        lpx_cpx_basis which are deprecated.
+
+        * glpdmp.c
+        8-byte data alignment was added to the module (sufficient for
+        both ILP32 and LP64 environments).
+
+        * glplib07.c
+        16-byte data alignment was added to the module to provide
+        compatibility with LP64 environment (8-byte is not sufficient
+        due to jmp_buf; thanks to Xypron for investigation).
+
+        * glplpx16.c
+        New version of the routine lpx_write_pb was added. Thanks to
+        Oscar Gustafsson <oscarg@isy.liu.se> for the contribution.
+
+        * glpspx.h, glpspx03.c, glpapi06.c
+        The primal simplex solver (spx_prim_opt, spx_prim_feas) was
+        replaced by a new implementation (spx_primal), which currently
+        provides the same features as the old version.
+
+        * glpmpl01.c, glpmpl03.c
+        Some changes were made in the MathProg translator to allow <,
+        <=, >=, and > on comparing symbolic values. Thanks to Heinrich
+        Schuchardt <heinrich.schuchardt@gmx.de> for patches.
+
+        * glplpx10.c
+        Internal routine set_d_eps in the exact LP solver was changed
+        to prevent approximation errors in case of integral data.
+        Thanks to Markus Pilz <pilz@cs.uni-bonn.de> for bug report.
+
+        * configure.ac
+        The configure script was changed to disable optional features
+        by default. For details see file INSTALL.
+
+        * glpipp02.c
+        A bug was fixed in the internal routine reduce_bounds. Thanks
+        to Anne-Laurence Putz <anne-laurence.putz@eurodecision.com> for
+        the bug report.
+
+        * glpapi01.c
+        New API routine glp_erase_prob was added.
+
+        * glpapi13.c
+        New API routines glp_read_mps and glp_write_mps were added.
+        They replace API routines lpx_read_mps, lpx_read_freemps,
+        lpx_write_mps, and lpx_write_freemps, which are deprecated.
+
+        * glpapi14.c
+        New API routines glp_read_lp and glp_write_lp were added. They
+        replace API routines lpx_read_cpxlp and lpx_write_cpxlp, which
+        are deprecated.
+
+        * glpsql.c
+        Minor bug was fixed. Thanks to Xypron <xypron.glpk@gmx.de> for
+        the bug report.
+
+
+-------------------------------------------------------------------
+Mon Aug 18 16:30:15 CEST 2008 - pgajdos@suse.cz
+
+- fixed glpk.pdf and gmpl.pdf build [bnc#417864]
+
+-------------------------------------------------------------------
+Thu Jul  3 16:09:19 CEST 2008 - pgajdos@suse.cz
+
+- updated to 4.28:
+  * Three wrapper routines xdlopen, xdlsym, and xdlclose, which
+    provide the shared library support, were added.
+  * A static linking to iODBC and MySQL libraries used in the
+    MathProg table drivers was replaced by a dynamic linking to
+    corresponding shared libraries.
+  * Compressed data file support was added.
+  * Command-line interface routines were added.
+  * bug fixes
+
+-------------------------------------------------------------------
+Mon May 19 10:40:35 CEST 2008 - pgajdos@suse.cz
+
+- sort_pool() defined as void [bnc#319454]
+  (void-function.patch)
+
+-------------------------------------------------------------------
+Mon Apr  7 13:50:53 CEST 2008 - pgajdos@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 27 12:58:51 CET 2008 - pgajdos@suse.cz
+
+- initial version, moved from OBS (project home:akos_ladanyi) 
+

@@ -1,0 +1,5 @@
+%__hpc_elf_provides         %{_rpmconfigdir}/hpc_elf.pl --provides %{?__filter_GLIBC_PRIVATE:--filter-private} %{?hpc_dep_gen_attr}
+%__hpc_elf_requires         %{_rpmconfigdir}/hpc_elf.pl %{?_hpc_modules:--modules "%_hpc_modules"} --requires %{?__filter_GLIBC_PRIVATE:--filter-private} %{?hpc_dep_gen_attr}
+%__hpc_elf_magic            ^(setuid )?(setgid )?(sticky )?ELF (32|64)-bit.*executable
+%__hpc_elf_path             %hpc_prefix
+%__hpc_elf_flags            exeonly

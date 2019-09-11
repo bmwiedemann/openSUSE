@@ -1,0 +1,8 @@
+--- lib/package/ast-ksh.pkg
++++ lib/package/ast-ksh.pkg	2011-07-05 16:29:57.891926052 +0000
+@@ -1,4 +1,4 @@
+-ast-ksh :PACKAGE: ksh93 libast libcmd libcoshell libsum libdll
++ast-ksh :PACKAGE: msgcc ksh93 libpp libast libcmd libcoshell libsum libdll
+ 
+ :COVERS: ksh
+ 

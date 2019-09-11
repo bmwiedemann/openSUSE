@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:46:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.4
+  See http://kicad-pcb.org/blog/2019/08/KiCad-5.1.4-Release/ for details.
+
+-------------------------------------------------------------------
+Mon Apr 15 19:07:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.1
+  See http://kicad-pcb.org/blog/2019/04/KiCad-5.1.1-Release/ for details.
+
+-------------------------------------------------------------------
+Mon Mar 11 17:00:52 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0
+  See http://kicad-pcb.org/blog/2019/03/KiCad-5.1.0-Release/ for details.
+
+-------------------------------------------------------------------
+Thu Dec  6 21:04:33 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.2
+
+-------------------------------------------------------------------
+Wed Oct 24 13:54:42 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.1
+- Shorten description, strip verbose language duplicated from KiCad package
+
+-------------------------------------------------------------------
+Sun Sep 30 01:22:51 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Do not recommend FreeCAD, editing 3d package models is out of
+  scope for most PCB designers.
+
+-------------------------------------------------------------------
+Fri Aug 17 06:23:13 UTC 2018 - davejplater@gmail.com
+
+- Fix description's grammar.
+
+-------------------------------------------------------------------
+Thu Aug 16 12:23:35 UTC 2018 - jengelh@inai.de
+
+- Remove duplicated metadata from description.
+
+-------------------------------------------------------------------
+Sun Jul 22 13:45:54 UTC 2018 - davejplater@gmail.com
+
+- Created kicad-packages3D, initial version 5.0.0 for kicad-5.0.0
+- This package replaces the kicad-library-3d package.
+

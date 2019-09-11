@@ -1,0 +1,54 @@
+Index: src/funkload/BenchRunner.py
+===================================================================
+--- src/funkload/BenchRunner.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/BenchRunner.py	2015-06-05 12:57:53.050291750 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # (C) Copyright 2005-2010 Nuxeo SAS <http://nuxeo.com>
+ # Author: bdelbosc@nuxeo.com
+ # Contributors: Tom Lazar
+Index: src/funkload/TestRunner.py
+===================================================================
+--- src/funkload/TestRunner.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/TestRunner.py	2015-06-05 12:57:53.051291704 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # (C) Copyright 2005 Nuxeo SAS <http://nuxeo.com>
+ # Author: bdelbosc@nuxeo.com
+ #
+Index: src/funkload/FunkLoadHTTPServer.py
+===================================================================
+--- src/funkload/FunkLoadHTTPServer.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/FunkLoadHTTPServer.py	2015-06-05 12:57:53.051291704 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # (C) Copyright 2010 Nuxeo SAS <http://nuxeo.com>
+ # Author: Goutham Bhat
+ #
+Index: src/funkload/Distributed.py
+===================================================================
+--- src/funkload/Distributed.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/Distributed.py	2015-06-05 12:58:02.285862478 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # Author: Ali-Akber Saifee
+ # Contributors: Andrew McFague
+ #
+Index: src/funkload/apdex.py
+===================================================================
+--- src/funkload/apdex.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/apdex.py	2015-06-05 12:59:41.087209866 +0200
+@@ -1,4 +1,3 @@
+-#! /usr/bin/env python
+ 
+ class Apdex(object):
+     """Application Performance Index
+Index: src/funkload/tests/test_apdex.py
+===================================================================
+--- src/funkload/tests/test_apdex.py.orig	2015-05-06 11:03:08.000000000 +0200
++++ src/funkload/tests/test_apdex.py	2015-06-05 12:59:56.444477541 +0200
+@@ -1,4 +1,3 @@
+-#! /usr/bin/env python
+ 
+ import os
+ import sys

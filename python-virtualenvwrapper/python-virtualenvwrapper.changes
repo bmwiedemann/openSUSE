@@ -1,0 +1,582 @@
+-------------------------------------------------------------------
+Fri May 24 14:04:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.8.4:
+  * various typo / docu fixes
+  * Support for python 3.7
+- Remove virtualenvwrapper-4.2-fix-bashisms.patch as the script
+  looks posix and if it is still applicable it should be sent
+  upstream
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:51 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Jan  8 07:47:07 UTC 2018 - alarrosa@suse.com
+
+- Converted to singlespec to generate a python3 package
+- Update to 4.8.2
+  * Merged in jeffwidman/virtualenvwrapper-2/jeffwidman/update-rtd-url-they-now-use-io-rather-t-1505539237232 (pull request #63)
+  * Merged in jeffwidman/virtualenvwrapper-1/jeffwidman/add-python-36-to-pypi-trove-classifiers-1505539102243 (pull request #62)
+  * Merged in jeffwidman/virtualenvwrapper/jeffwidman/update-readme-with-current-test-status--1505538852189 (pull request #61)
+  * Update RTD url
+  * Add python 3.6 to Pypi trove classifiers
+  * Update readme with current test status
+- Update to 4.8.1
+  * New PBR doesn’t like provides_dist
+- Update to 4.8.0
+  * Merged in fix/263 (pull request #60)
+  * Merged in fix/296 (pull request #59)
+  * Fixing Documentation
+  * Update supported versions
+  * Adding python 3.6
+  * Fixing run_hook and tab_completion
+  * First shot at Fixing #263
+  * Adding a note about package managers
+  * Merged in zmwangx/virtualenvwrapper/always-export-virtualenvwrapper_hook_dir (pull request #55)
+  * Typo fix
+  * Merged in lendenmc/virtualenvwrapper (pull request #51)
+  * Merged in SpotlightKid/virtualenvwrapper/bugfix/distutils-sysconfig (pull request #56)
+  * Merged in dougharris/virtualenvwrapper (pull request #53)
+  * Merged in kk6/virtualenvwrapper/fix/wipeenv_ignore_setuptools_dependencies (pull request #57)
+  * Merged in erickmk/virtualenvwrapper/erickmk/command_refrst-edited-online-with-bitbuc-1491225971803 (pull request #58)
+  * Update sentence to make it more clear
+  * command_ref.rst edited online with Bitbucket
+  * Fixes Issue #291 wipeenv ignore setuptools’s dependencies
+  * Import distutils.sysconfig properly (fixes #167)
+  * virtualenvwrapper.sh: always export VIRTUALENVWRAPPER_HOOK_DIR
+  * Fixed case where alternate deactivate didn’t exist
+  * Makes workon more selective in its search for `deactivate` #285
+  * Merged in sambrightman/virtualenvwrapper (pull request #52)
+  * Fix spelling mistake in error message
+  * Fix .kshrc sourcing error “’&>file’ is nonstandard”
+  * Merged in lonetwin/virtualenvwrapper (pull request #48)
+- Update to 4.7.2
+  * Baseline testing to python27
+  * Fixing naming in tests
+  * Merged in phd/virtualenvwrapper (pull request #46)
+  * Ignore *.pyo byte-code files
+  * Fix docs: fix URLs whenever possible, change protocol to https
+  * Add wipeenv and allvirtualenv for lazy loading
+  * Remove one-time functions from the environment
+  * Fix the problem with lazy completion for bash
+  * Last set of docs
+  * Docs fixes
+  * Updating to virtualenvwrapper
+  * Last set of docs
+  * Docs fixes
+  * Merged in fix/issue-282-link-to-virtualenvwrapper (pull request #49)
+  * Updating to virtualenvwrapper
+  * Unset previously defined cd function rather than redefine it
+  * Merged in ismailsunni/virtualenvwrapper/ismailsunni/command_refrst-edited-online-with-bitbuc-1454377958615 (pull request #44)
+  * command_ref.rst edited online with Bitbucket Adding -d for remove extra path
+  * use a ref instead of hard-coded link in new tip
+  * Merged in kojiromike/virtualenvwrapper/deactivate-on-logout-tip (pull request #43)
+  * Add Deactivate-on-Logout Tip
+  * update REAMDE with new bug tracker URL
+  * more dir fixes for El Capitan
+  * add testing for python 3.5
+  * temporary dir fixes for OS X El Capitan (10.11)
+  * update to work with tox 2.1.1
+  * Merged in jveatch/virtualenvwrapper/fix-py26-logging (pull request #41)
+  * Pass stream as arg rather than kwarg to avoid py26 conflict. Fixes issue #274. StreamHandler arg was named strm in python 2.6
+- Rebase virtualenvwrapper-4.2-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Mon May  9 18:29:59 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 4.7.1
+  * enhance verbose output of hook loader
+  * Merged in erilem/virtualenvwrapper/user-scheme-installation (pull request #38)
+  * Change install docs to use --user
+- Update to 4.7.0
+  * Merged in gnawybol/virtualenvwrapper/support_MINGW64 (pull request #36
+  * Detect MSYS if MSYSTEM is MINGW64
+  * Merged in kdeldycke/virtualenvwrapper/kdeldycke/restore-overridden-cd-command-to-its-def-1435073839852 (pull request #34)
+  * Restore overridden cd command to its default builtin behaviour
+- Update to 4.6.0
+  * remove some explicit tox environments
+  * Merged in jessamynsmith/virtualenvwrapper/py34 (pull request #30)
+  * quiet some of the lsvirtualenv tests
+  * add test for previous patch
+  * Merged in robsonpeixoto/virtualenvwrapper/bug/265 (pull request #33)
+  * Removes empty when list all virtualenvs
+  * Merged in justinabrahms/virtualenvwrapper/justinabrahms/update-links-and-name-for-venv-post-1431982402822 (pull request #32)
+  * Update links and name for venv post
+  * Added testing and updated docs for python 3.4
+- Update to 4.5.1
+  * Merged in jessamynsmith/virtualenvwrapper/env_with_space (pull request #28
+  * Changes as per code review
+  * Added tests to verify that cpvirtualenv, lsvirtualenv, and mkproject work with spaces in env names
+  * Made rmvirtualenv work with spaces
+  * Added tests for leading spaces (trailing spaces don't work in Linux, so don't test them)
+  * Made lsvirtualenv and allvirtualenv work with spaces in env names
+  * Made cd command work with space in virtualenv name
+  * Fixed ordering in asserts for workon tests
+  * Made workon fully support virtualenvs with spaces in names
+  * fix default for VIRTUALENVWRAPPER_WORKON_CD
+- Update to 4.5.0
+  * Add -c/-n options to mktmpenv
+  * update mktmpenv test to assert changed directory
+  * Add test for creating venv with space in name
+- Update to 4.4.1
+  * Touch temporary file after a name is created
+  * document 'workon .' and give attribution
+  * Support "workon ."
+  * fix pep8 error
+  * make cd after workon optional
+  * fix sphinx build
+  * Merged in hjwp/virtualenvwrapper (pull request #25)
+  * Stop mangling the python argument to virtualenv
+  * ignore -f lines in pip freeze output
+  * Merged in bittner/virtualenvwrapper (pull request #22)
+  * hacked attempt to get round MSYS_HOME environ dependency on windows/git-bash/msys
+  * Change "distribute" to "setuptools" in docs
+  * Merged in jessamynsmith/virtualenvwrapper (pull request #23)
+  * Override tox's desire to install pre-releases
+  * Reworded the documentation around user scripts vs plugin creation, to make it more clear which one you need. Also added a simple example of user scripts
+  * do not install distribute in test environments
+  * Correct spelling of "Bitbucket"
+  * Update issue tracker URL
+
+-------------------------------------------------------------------
+Sat Apr  4 14:55:10 UTC 2015 - benoit.monin@gmx.fr
+
+- update to 4.3.2:
+  * build universal wheels
+  * Merged in das_g/virtualenvwrapper/das_g/
+    removed-gratuitous-preposition-1413208408920 (pull request #19)
+  * removed gratuitous preposition
+  * Fix test invocation for zsh
+  * add -q option to cd for zsh
+  * make run_tests use the SHELL var to run test script
+
+-------------------------------------------------------------------
+Mon Dec  1 13:24:18 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.3.1
+  * pep8 and test updates for previous commit
+  * Make postmkproject use VIRTUALENVWRAPPER_HOOK_DIR
+  * Tell tox it is ok to run shells not installed in the virtualenv
+  * Set VIRTUALENVWRAPPER_SCRIPT correctly for different shells
+  * Merged in nishikar/virtualenvwrapper (pull request #14)
+  * changed phrasing of environment not found message
+  * Add tests for wipenv with editable packages
+  * Remove obsolete information about pip environment vars
+  * Replace manually maintained history with ChangeLog
+  * Update doc build to fail if there are warnings
+- Update to 4.3
+  * remove announce.rst; move to blogging repository
+  * Merged in erikb85/virtualenvwrapper/erikb85/
+    run-user-postactivate-after-changing-dir-1401272364804 
+    (pull request #15)
+  * Run User Postactivate after changing dirs
+  * add link to sublimetext extension
+  * moved environment exists check below active environment check
+  * added no such environment prompt to rmvirtualenv if it 
+    does not exist
+  * updated pep8
+  * clean up script mode changes
+  * forgotten comment
+  * trailing whitespace removed
+  * tabs expanded; mode difference
+  * changed comments and mode for sourced scripts
+  * ignore bin, include, lib
+  * mode constant for sourced-only files
+  * do not specify a version for pbr
+  * Merged in mjbrooks/virtualenvwrapper (pull request #12)
+  * use VIRTUALENVWRAPPER_ENV_BIN_DIR throughout
+  * Extract basic help text from the script
+  * Add list of commands as basic help output
+  * update author email
+  * clean up comment about zsh behavior in lazy
+  * Fix syntax error (empty `if` block)
+
+-------------------------------------------------------------------
+Sun Nov 16 00:03:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix shebang in virtualenvwrapper_lazy.sh script that contains
+  bash-specific constructions
+- add patches:
+  * virtualenvwrapper-4.2-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Sat Nov 08 20:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Sun Mar 30 09:19:03 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.2
+  - Add ``tmp-`` prefix to temporary environment names created by
+    :ref:`command-mktmpenv`.
+  - Fix some uses of ``cd`` that did not account for possible
+    aliasing. Contributed by Ismail Badawi (:bbuser:`ibadawi`).
+  - Fix documentation for :ref:`command-allvirtualenv`, contributed by
+    Andy Dirnberger (:bbuser:`dirn`).
+  - Add ``--force`` option to :ref:`command-mkproject`, contributed by
+    Clay McClure (:bbuser:`claymcclure`).
+  - Fix handling for project directory argument ``-a`` to
+    :ref:`command-mkvirtualenv`, based on work by Xupeng Yun.
+  - Dropped python 3.2 testing.
+  - Updated test configuration so they work properly under Linux.
+  - Resolve relative paths before storing the project directory
+    reference in :ref:`command-setvirtualenvproject`. (:bbissue:`207`)
+  - Do not create hooks for rmproject, since there is no such
+    command. (:bbissue:`203`)
+  - Update the tests to use a valid template for creating temporary
+    directories under Linux.
+
+-------------------------------------------------------------------
+Sat Oct 12 16:42:19 UTC 2013 - p.drouand@gmail.com
+
+- Implement update-alternative
+
+-------------------------------------------------------------------
+Sat Oct 12 15:29:13 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 4.1.1
+  + Fix packaging issue with 4.1
+- Changes between version 4.1 and 4.0
+  + Ensure that all $() style commands that produce paths are quoted.
+    Addresses issue 164.
+  + Add wipeenv command for removing all packages installed in the virtualenv.
+  + Allow users of virtualenvwrapper_lazy.sh to extend the list of API
+    commands that trigger the lazy-loader by extending _VIRTUALENVWRAPPER_API.
+  + Fix detection of --python option to mkvirtualenv. Resolves issue 190.
+  + Add allvirtualenv command to run a command across all virtualenvs.
+  + Fix lsvirtualenv when there are spaces in WORKON_HOME.
+    Resolves issue 194.
+  + Switch to pbr for packaging
+- Add documentation from tarball and generated documentation
+- Add python-pbr BuildRequirement; new build requirement needed to build
+- Replace python-distribute with python-setuptools BuildRequires
+- Use download URL as source
+
+-------------------------------------------------------------------
+Tue Apr 30 19:17:07 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 4.0:
+  - All tests pass under Python 2.6, 2.7, 3.2 and 3.3.
+  - Fix the name of the script in an error message produced by
+    virtualenvwrapper_lazy.sh. (Contributed by scottstvnsn.)
+
+-------------------------------------------------------------------
+Mon Apr  8 02:33:16 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.7.1:
+  - Rename functions for generating help so they do not pollute the
+    global namespace, and especially so they do not interfere with
+    tab completion. Contributed by davidszotten.
+  - Fix an issue with listing project templates if none are
+    installed. (#179)
+  - Fix an issue with the --python option to mkvirtualenv becoming
+    *sticky* for future calls that do not explicitly specify the
+    option. (#178)
+
+-------------------------------------------------------------------
+Sat Mar 16 18:08:16 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.7:
+  - Improve tab-completion support for users of the lazy-loading
+    mode. (upsuper)
+  - Add --help option to mkproject.
+  - Add --help option to workon.
+  - Turn off logging from the hook loader by default, and replace
+    VIRTUALENVWRAPPER_LOG_DIR environment variable with
+    VIRTUALENVWRAPPER_LOG_FILE. The rotating log behavior remains
+    the same. The motivation for this change is the race condition
+    caused by that rotating behavior, especially when the wrappers are
+    being used by users with different permissions and
+    umasks. (152)
+  - Use flake8 for style checking.
+
+-------------------------------------------------------------------
+Fri Mar  8 12:48:51 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.6.1:
+  - Sorry, no changelog entry yet.
+
+-------------------------------------------------------------------
+Sat Nov  3 02:42:59 UTC 2012 - alexandre@exatati.com.br
+
+- Fix bnc#787875, added python-virtualenv-clone as Requires in spec
+  file.
+
+-------------------------------------------------------------------
+Sun Aug 19 05:51:56 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.6:
+  - Switch to stevedore for plugin management
+  - mkvirtualenv_help should use $VIRTUALENVWRAPPER_PYTHON instead
+    of calling virtualenv directly (issue 148).
+  - Fix issue with lazy-loader code under zsh (issue 144).
+  - Fix issue with noclobber option under zsh (issue 137). Fix based
+    on patch from rob_b.
+  - Fix documentation for add2virtualenv to show the correct name for
+    the file containing the new path entry. (contributed by rvoicilas)
+  - Fix problem with virtualenvwrapper_show_workon_options under zsh
+    with chpwd functions that produce output. (issue 153)
+
+-------------------------------------------------------------------
+Mon Jun 11 11:55:21 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.5:
+  - Rewrite cpvirtualenv to use virtualenv-clone instead of making
+    the new environment relocatable. Contributed by Justin Barber
+    (barberj). This also resolves a problem with cpvirtualenv not
+    honoring the --no-site-packages flag (issue 102).
+  - Update docs with link to virtualenvwrapper-win port by David
+    Marble.
+  - Use command to avoid functions named the same as common
+    utilities. (issue 119)
+
+-------------------------------------------------------------------
+Mon May 21 02:07:15 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.4:
+  - Add install-lazy-loader option.
+
+-------------------------------------------------------------------
+Sat May 12 23:24:48 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.3:
+  - Clean up file permissions and remove shebangs from scripts not
+    intended to be executed on the command line. (contributed by
+    ralphbean)
+  - Worked on some brittle tests.
+  - Received updates to Japanese translation of the documentation 
+    from t2y.
+  - Fix the test script and runner so the user’s $WORKON_HOME is not
+    erased if they do not have some test shells installed. (big thanks
+    to agriffis).
+  - If the hook loader is told to list plugins but is not given a
+    hook name, it prints the list of core hooks.
+  - Merge several fixes for path and variable handling for MSYS users
+    from bwanamarko. Includes a fix for issue 138.
+  - Change mkvirtualenv so it catches both -h and --help.
+  - Fix some issues with the way temporary files are used for hook
+    scripts. (contributed by agriffis)
+  - Allow relative path to requirements file with mkvirtualenv and
+    -r option. (barberj)
+  - Make whitespace consistent. (agriffis)
+
+-------------------------------------------------------------------
+Thu Apr 12 07:30:37 UTC 2012 - cfarrell@suse.com
+
+- license update: HPND
+  License most akin to SPDX HPND license
+
+-------------------------------------------------------------------
+Tue Apr 10 08:50:36 UTC 2012 - saschpe@suse.de
+
+- Use upstream URL
+- Macro simplification
+
+-------------------------------------------------------------------
+Mon Apr  9 03:58:59 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.2:
+  - Make project_dir a local variable so that
+    command-cdproject does not interfere with other variables
+    the user might have set. (contributed by slackorama)
+  - Fix typo in documentation reported by Nick Martin.
+  - Change trove classifier for license "MIT" to reflect the license
+    text presented in the documentation. *This does not indicate a
+    change in the license, just a correction to the expression of that
+    intent. See license (contributed by ralphbean as fix for 134)
+  - Extend command-rmvirtualenv to allow removing more than one
+    environment at a time. (contributed by ciberglo)
+  - Change the definition of
+    virtualenvwrapper_get_site_packages_dir to ask distutils
+    for the site-packages directory instead of trying to build the
+    path ourselves in the shell script. This should resolve
+    112 and improve support for Python interpreters other
+    than C Python. Thanks to Carl Meyer and Dario Bertini for their
+    contributions toward the fix.
+
+-------------------------------------------------------------------
+Mon Mar 12 00:07:05 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.1:
+  - Fix a problem with activation hooks when associating a new
+    virtualenv with an existing project directory. (issue 122)
+  - Fix a problem with command-add2virtualenv and paths containing
+    “special” characters such as &. (issue 132)
+
+-------------------------------------------------------------------
+Thu Feb 23 14:36:37 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0.1:
+  - Fix some packaging issues that made it more difficult to run the
+    tests directly from the sdist package. (issue 126)
+
+-------------------------------------------------------------------
+Mon Jan 30 16:25:43 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.0:
+  - Add Python 3 support, thanks in large part to the efforts of
+    Daniel Kraus. Tested under Python 2.6, 2.7, and
+    3.2.
+
+-------------------------------------------------------------------
+Sun Jan  8 17:55:02 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.22.1.:
+  - Remove the initialization shortcut because it breaks tab completion
+    in sub-shell environments like screen and tmux. (issue 121)
+
+-------------------------------------------------------------------
+Thu Dec 29 03:04:03 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.11:
+  - Add -a option to command-mkvirtualenv to associate a
+    new virtualenv with an existing project directory. Contributed by
+    Mike Fogel.
+  - Drops support for Python 2.4 and 2.5. The tools may still work,
+    but I no longer have a development environment set up for testing
+    them, so I do not officially support them.
+  - Shortcut initialization if it has run before.
+  - Set hook log file permissions to be group-writable. (issue 62
+    reported by hedgeddown)
+  - Add VIRTUALENVWRAPPER_PROJECT_FILENAME variable so the
+    .project file used to link a virtualenv to a project can be
+    renamed to avoid conflicts with other tools. (issue 120
+    reported by arthuralvim)
+
+-------------------------------------------------------------------
+Tue Oct  4 14:27:38 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.10.1:
+  - Changed arguments to command-mktmpenv so it always creates
+    an environment name for you.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:49:18 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.10:
+  - Incorporated patch to add -d option to command-add2virtualenv,
+    contributed by miracle2k.
+  - Add -i option to mkvirtualenv.
+  - Add mktmpenv command for creating temporary environments that
+    are automatically removed when they are deactivated.
+  - Fixed a problem with hook_loader that prevented it from working
+    under Python 2.5 and 2.4.
+  - Fix a problem with the way template names were processed under
+    zsh. (issue 111)2.9
+
+-------------------------------------------------------------------
+Mon Sep  5 22:50:00 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.9:
+  - Change the shell function shell definition syntax so that ksh
+    will treat typeset-declared variables as local. No kidding.
+  - Merge the “project directory” features of the
+    virtualenvwrapper.project plugin into the main project, adding
+    mkproject, cdproject, and command-setvirtualenvproject commands.
+  - Add -r option to mkvirtualenv to install dependencies using a
+    pip requirements file.
+
+-------------------------------------------------------------------
+Sun Aug 14 15:54:19 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.8:
+  - Use VIRTUALENVWRAPPER_VIRTUALENV in cpvirtualenv (issue 104).
+  - Add support for MSYS environment under Windows. Contributed by
+    Axel H. (noirbizarre).
+
+-------------------------------------------------------------------
+Mon Apr 18 23:44:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.7.1:
+  - When testing for WORKON_HOME during startup, dereference any
+    symlink to make sure it is a directory.
+  - Set VIRTUALENVWRAPPER_HOOK_DIR and VIRTUALENV_WRAPPER_LOG DIR
+    in virtualenvwrapper_initialize after WORKON_HOME is set
+    (issue 94).
+  - Update the Basic Installation instructions to be more explicit
+    about needing to install virtualenvwrapper globally (or at
+    least outside of a virtualenv).
+
+-------------------------------------------------------------------
+Wed Apr 13 17:43:53 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.7:
+  - Fix problem with space in WORKON_HOME path (issue 79).
+  - Fix problem with argument processing in lsvirtualenv under zsh
+    (issue 86). Thanks to Nat Williams (natw) for the bug report
+    and patch.
+  - If WORKON_HOME does not exist, create it. Patch from Carl
+    Karsten (CarlFK). Test updates based on patches from Matt
+    Austin (maafy6) and Hugo Lopes Tavares (hltbra).
+  - Merge in contributions from Paul McLanahan (pmclanahan) to fix
+    the test harness to ensure that the test scripts are actually
+    running under the expected shell.
+  - Merge in new shell command toggleglobalsitepackages from Paul
+    McLanahan (pmclanahan). The new command changes the
+    configuration of the active virtualenv to enable or disable
+    the global site-packages directory.
+  - Fixed some tests that were failing under ksh on Ubuntu 10.10.
+  - Document the VIRTUALENVWRAPPER_VIRTUALENV variable.
+  - Implement suggestion by Van Lindberg to have
+    VIRTUALENVWRAPPER_HOOK_DIR and VIRTUALENVWRAPPER_LOG_DIR
+    variables to control the locations of hooks and logs.
+  - Enabled tab completion for showvirtualenv (issue 78).
+  - Fixed a problem with running command-rmvirtualenv from within
+    the environment being removed (issue 83).
+  - Removed use of -e option in calls to grep for better portability
+    (issue 85).
+- Regenerate spec file with py2pack;
+- Add README.txt file as documentation.
+
+-------------------------------------------------------------------
+Sun Feb 27 15:47:19 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.6.3:
+  - Hard-code the version information in the setup.py and conf.py
+    scripts. This still doesn’t work for http://readthedocs.org,
+    since the doc build needs the sphinxcontrib.bitbucket
+    extension, but will make it easier to transition the docs to
+    another site later.
+- Aditional changes from 2.6.2:
+  - Attempted to make the doc build work with
+    http://readthedocs.org.
+  - Merged in Japanese translation of the documentation from
+    Tetsuya Morimoto.
+  - Incorporate a suggestion from Ales Zoulek to let the user
+    specify the virtualenv binary through an environment variable
+    (VIRTUALENVWRAPPER_VIRTUALENV).
+
+-------------------------------------------------------------------
+Mon Dec 27 18:26:13 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.6.1:
+  - Fixes issue with getting the python version for the current
+    environment.
+
+-------------------------------------------------------------------
+Mon Dec 27 10:28:29 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.6:
+  - Fixed a problem with hook script line endings under Cygwin
+    (#68).
+  - Updated documentation to include a list of the compatible
+    shells and Python versions (#70).
+  - Fixed installation dependency on virtualenv (#60).
+  - Fixed the method for determining the Python version so it
+    works under Python 2.4 (#61).
+  - Converted the test infrastructure to use tox instead of
+    home-grown scripts in the Makefile.
+
+-------------------------------------------------------------------
+Tue Nov  9 15:24:55 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (2.5.3) for openSUSE.

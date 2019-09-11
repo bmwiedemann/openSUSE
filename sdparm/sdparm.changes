@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Wed Aug 24 17:49:33 UTC 2016 - alexander_naumov@opensuse.org
+
+- Update to version 1.10
+ * add --inhex=FN option for decoding without device present,
+   FN is interpreted as response to mode sense(10) command
+ * add --raw option to interpret FN as binary (def: ASCII hex)
+ * add --pdt=PDT option for use with --inhex=FN
+ * --quiet used twice hides changeable, default + saved
+ * add IO advice hints grouping mode page (sbc4r06, 8)
+ * add Unit serial number VPD page specific sanity check
+ * add NO_PI_CHK to Supported block lengths and protection
+   types VPD page
+ * add Background operation control mpage (sbc4r07)
+ * Read-write error recovery mpage: add Misaligned writes
+   reporting field (MWR)
+ * sync tape mpages with ssc5r02
+ * add Block limits extension VPD page
+ * add Device constituents VPD page
+ * add LB protection VPD page (ssc5r02a)
+ * LB provisioning VPD page: expand LBPRZ, add Minimum and
+   Threshold percentage fields
+ * device identification VPD page: add decoding for locally
+   assigned UUIDs (spc5r08)
+ * the --inhex=FN option together with --inquiry decodes
+   FN as a single VPD page
+ * improve lto5 and lto6 vendor mpage support
+ * sync to spc5r08 and sbc4r10
+ * add SAS G5 (22.5 Gbps) settings (spl4r06)
+ * point svn:externals to rev 663 of sg3_utils
+ * upgrade automake to version 1.15 (U15.10)
+ * autogen.sh: upgrade to buildconf 20091223 version
+
+-------------------------------------------------------------------
+Sun Dec 28 15:04:12 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.09
+  + decode Third Party Copy VPD page
+  + Supported block lengths and protection types (sbc4r01) +
+    Block device characteristics extension VPD pages added
+  + zoned block device characterics VPD page added (zbc-r01c)
+  + fix manufacturer-assigned serial number VPD page length
+  + device id VPD: T10 vendor identification designator clean up
+  + block device characteristics VPD: add ZONED (sbc4r04)
+  + SAS/SPL disconnect-reconnect mpage: expand
+  + SAS protocol specific port mpage: add MAXR field (spl4r01)
+  + standard inquiry response (sinq): add LU_CONG
+  + change ibm vendor code to lto5 and lto6
+  + point svn:externals to rev 620 of sg3_utils
+  + upgrade automake to version 1.14.1
+  + configure: add --disable-libsgutils so build bypasses that
+    library if present
+  + win32: some --wscan and compile fixes
+
+-------------------------------------------------------------------
+Wed Oct 23 15:33:48 UTC 2013 - p.drouand@gmail.com
+
+- Remove %fillup_prereq and %insserv_prereq; package doesn't provide
+  any sysvinit script
+
+-------------------------------------------------------------------
+Thu Jun 13 13:56:56 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.08
+* New utilities: scsi_ch_swp, sas_disk_blink
+* Tracked changes at t10.org since January 2012:
+* device id VPD: add protocol specific port identifier
+* control extension mpage: add max sense data length
+* power condition mpage: FIDCPC->CCF_IDLE, FSBCPC->CCF_STAND,
+  FSTCPC->CCF_STOPP (spc4r34+)
+* caching mpage: add SYNC_PROG field (sbc3r33)
+* block device characteristics VPD page additions sbc3r34
+* extended inquiry vpd page: add max supported sense data length
+* protocol-specific port information VPD page for SAS SSP,
+  persistent connection (spl3r2), power disable (spl3r3)
+* allow --readonly with --set= and --clear=
+* add placeholder for third party copy VPD page
+* supply more information if a UA occurs
+- Normalized install procedure
+- Build with libsgutils support
+
+-------------------------------------------------------------------
+Sun Apr 22 11:46:53 UTC 2012 - puzel@suse.com
+
+- Update to version 1.07 
+  - LB provisioning + Block limits VPD pages to sbc3r27
+  - Enhanced phy control page: optical mode enabled (spl-r07)
+  - Phy control and discover page: sync to spl2r02
+  - sync with spc4r31+32 (handle status good with sense)
+  - extented inquiry VPD: add POA_SUP, HRA_SUP and VSA_SUP
+  - application tag mode page subcode 0xf0->0x2 (sbc3r28)
+  - add 'sinq' pseudo VPD page for standard inquiry response
+  - add power consumption mode and VPD pages (spc4r33)
+  - point out some mode page numbers are vendor specific
+
+-------------------------------------------------------------------
+Tue May 24 17:31:45 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.06:
+  + allow upper and lower case in field, (mode and vpd) page,
+    vendor, transport or command matching
+  + control mode page: add ATMPE and RWWP fields (spc4r27)
+  + extended inquiry vpd page: add extended self test completion
+    minutes field (spc4r27)
+  + power control mode page: PM_BG_PRECEDENCE field (spc4r24)
+    - FIDCPC, FSBCPC, FSTCPC fields (spc4r25)
+  + sbc3r25 renames 'thin' provisioning' to 'logical block
+    provisioning'; changes mode+vpd page and field names
+    - add Application tag mode page
+    - add SITPUA bit to logical block provisioning mode page
+  + fix '-eal' problem with vendor pages
+  + point svn:externals to rev 334 of sg3_utils
+
+-------------------------------------------------------------------
+Fri Aug 13 11:56:39 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.05:
+  + add '--readonly' option especially for '-C start' and
+    '-C stop' on ATA disks.
+  + Control mode page updates (spc4r23)
+  + add Control data protection mode page (ssc4r01)
+  + block device characteristics VPD page: decode form factor
+  + extended inquiry VPD page: activate_microcode+r_sup (spc4r23)
+  + Automation device serial number and Data transfer device
+    element address VPD pages (ssc4r01)
+  + add SBC Referrals VPD page (sbc3r22)
+  + expand SBC Thin provisioning VPD page (sbc3r22)
+  + expand SBC Block limits VPD page (sbc3r22)
+  + SAS-2.1 specification split, upper layers placed in SPL
+    - add enable_slumber and enable_partial fields to
+      Enhanced phy control mode page
+  + add AM_MAINTAINER_MODE to configure.ac to lessen build issues
+  + build infrastructure change to use libsgutils2 if available
+- Changes from version 1.04:
+  + add SAT ATA Power condition mode page (sat2r06)
+  + add SBC Thin provisioning mode page (sbc3r20)
+  + add SBC Thin provisioning VPD page (sbc3r20)
+  + sync with spc4r21
+  + add Power condition, update extended inquiry VPD pages
+  + smc3: add Device capabilities + Extended device
+    capabilities + Transport geometry parameters mode pages
+  + prepare for Thin provisioning VPD and mode pages
+  + expand block limits VPD page
+  + update Power condition mode page
+  + rename SAS-2 phy mode page to Enhanced phy control (SAS)
+  + add ADC mode (sub)page place holders
+  + print mode page descriptors in full in more contexts
+  + add linux bsg support
+  + scripts/sas_disk_blink: moved here from sg3_utils package
+  + rework the '-w' option (win32) per sg_scan in sg3_utils
+  + change SDPARM_* constants to SG_LIB_*
+  + remove sdparm.html, refer to its url in sdparm.8
+  + sdparm.spec: correction to configure call
+
+-------------------------------------------------------------------
+Tue Aug 12 18:40:54 CEST 2008 - garloff@suse.de
+
+- Update to sdparm-1.03:
+  * supports more than one device on command linx
+  * speed[=val] and profile commands for MMC
+  * Extended Inquiry VPD page updated (spc4r15)
+  * SAS protocol-specific port mpage (add CAWT, RTOL)
+  * minor cleanups
+
+-------------------------------------------------------------------
+Fri May 23 10:11:29 CEST 2008 - hare@suse.de
+
+- Using 'Provides' keyword to clean update dependency.
+
+-------------------------------------------------------------------
+Thu Apr 24 14:51:23 CEST 2008 - hare@suse.de
+
+- Split off from the original scsi package.
+

@@ -1,0 +1,33 @@
+--- gnome-shell-extensions-3.32.0.orig/extensions/apps-menu/extension.js	2019-03-20 16:13:13.614381612 +0800
++++ gnome-shell-extensions-3.32.0/extensions/apps-menu/extension.js	2019-03-20 16:07:47.238041280 +0800
+@@ -27,6 +27,10 @@
+ Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
+ Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
+ 
++function isSLEClassicMode() {
++    return Main.sessionMode.currentMode == "sle-classic" ? true : false;
++}
++
+ class ActivitiesMenuItem extends PopupMenu.PopupBaseMenuItem {
+     constructor(button) {
+         super();
+@@ -775,8 +779,6 @@
+         this.applicationsByCategory = {};
+         this._tree.load_sync();
+         let root = this._tree.get_root_directory();
+-        let categoryMenuItem = new CategoryMenuItem(this, null);
+-        this.categoriesBox.add_actor(categoryMenuItem.actor);
+         let iter = root.iter();
+         let nextType;
+         while ((nextType = iter.next()) != GMenu.TreeItemType.INVALID) {
+@@ -796,6 +798,10 @@
+             }
+         }
+ 
++        let categoryMenuItem = new CategoryMenuItem(this, null);
++        this.categoriesBox.insert_child_at_index(categoryMenuItem.actor,
++                                                 isSLEClassicMode() ? -1 : 0);
++
+         //Load applications
+         this._displayButtons(this._listApplications(null));
+ 

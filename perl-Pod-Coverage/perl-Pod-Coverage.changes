@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Thu May 16 12:59:16 CEST 2013 - pth@suse.de
+
+- Update to 0.23:
+  Distinguish 'package didn't compile' from 'package has no symbols'
+
+-------------------------------------------------------------------
+Tue Feb 21 09:12:16 UTC 2012 - coolo@suse.com
+
+- recreate with cpanspec to fix build
+
+-------------------------------------------------------------------
+Wed Feb 15 12:30:23 CET 2012 - pth@suse.de
+
+- Update to 0.22:
+  * POD spelling corrections. (rt #22113)
+  * Add "unimport" to the stoplist. (rt #33914)
+- Fix spec file as build now uses Makefile.PL.
+- remove created perllocal.pod.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:03 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 14:47:02 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug  9 12:39:26 UTC 2010 - chris@computersalat.de
+
+- update to 0.21
+  * Add SCALAR to the stoplist (implementaion method for tied
+    hashes).  Report by David Cantrell.
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Thu Apr 22 20:44:14 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o bzipped Source
+  o fix perl-macros deps
+  o updated description
+  o Makefile.PL > Build.PL
+  o removed .packlist, perllocal.pod file > noarch pkg
+  o examples to doc
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:27 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:49 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Wed Jun 17 00:38:54 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Jun 14 16:49:54 CEST 2009 - chris@computersalat.de
+
+- update to new version 0.20
+  o Fix t/lib/Fully/Qualified.pm to have a 1; (Zefram)
+  o Ship t/09whitespace.t - had missed it before
+- spec mods
+  o fixed deps
+  o updated header
+  o autogen filelist
+
+-------------------------------------------------------------------
+Tue Nov 20 12:56:09 CET 2007 - pth@suse.de
+
+- Update to 0.19:
+  Don't use _CvGV to determine if a sub was imported, there's a handy
+  flag - GVf_IMPORTED_CV.  Fixes 5.9.5 and future perls
+
+-------------------------------------------------------------------
+Fri Oct 20 13:38:06 CEST 2006 - pth@suse.de
+
+- Initial package
+

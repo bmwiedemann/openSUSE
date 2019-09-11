@@ -1,0 +1,2527 @@
+-------------------------------------------------------------------
+Thu Mar 28 21:21:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic since it has no effect in light of
+  --disable-static.
+
+-------------------------------------------------------------------
+Fri Jan  4 02:17:40 UTC 2019 - bjorn.lie@gmail.com
+
+- Add explicit pkgconfig(folks) BuildRequires: Configure checks for
+  it.
+- Stop passing --enable-goa and --enable-gst-1.0 to configure, no
+  longer recognized, nor needed.
+
+-------------------------------------------------------------------
+Wed May  2 12:13:21 UTC 2018 - dimstar@opensuse.org
+
+- Drop telepathy-salut requires: Salut is only good for Apple
+  Bonjour chat, but depends on avahi-python, which is being removed
+  in favor of the python3 port, which in turn is not supported by
+  telepathy-salut. The loss of functionality appears acceptable.
+
+-------------------------------------------------------------------
+Tue Apr 17 09:54:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace pkgconfig(libnm-glib) with pkgconfig(libnm)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:38:25 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 19 18:55:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Revert to version 3.12.14.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:54 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan 14 19:28:36 UTC 2018 - zaitor@opensuse.org
+
+- Add empathy-fix-gettext-domain.patch: gschema: Fix
+  gettext-domain, patch from upstream stable branch.
+
+-------------------------------------------------------------------
+Fri Dec  1 16:48:08 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.25.90:
+  + Switch to single-window UI.
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
+Thu Nov 30 09:22:10 UTC 2017 - dimstar@opensuse.org
+
+- Export LANG=C.UTF-8 before building: in case we use python3 to
+  build (we rely on what we get into the build system), an UTF-8
+  setting is required or pyhon won't be able to parse all files.
+- Only call the post/postun scriptlets conditional on suse_version
+  < 1330. Newer systems use file triggers.
+- Switch to using python3 to build:
+  + Add python3-base and python3-xml BuildRequires.
+  + Export PYTHON=/usr/bin/python3 before running configure: use
+    python3 for the build process.
+
+-------------------------------------------------------------------
+Sat Aug 26 01:57:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.12.14:
+  + Bugs fixed: bgo#742720, bgo#749001, bgo##751185, bgo#780160,
+    boo#1136781.
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Drop empathy-port-webkit2gkt3.patch and
+  empathy-clutter-gst-3_0.patch: Fixed upstream, following this;
+  drop libtool BuildRequires and autoconf call, no longer needed.
+- Drop pkgconfig(gnutls) BuildRequires: No longer needed, nor used.
+
+-------------------------------------------------------------------
+Mon Mar 13 18:18:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.12.13:
+  + Fixes the GActions in EmpathyRosterWindow (bsc#999832).
+  + Bugs fixed: bgo#685837, bgo#746735, bgo#756990, bgo#767516,
+    bgo#768889.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 21:30:08 UTC 2016 - zaitor@opensuse.org
+
+- Add empathy-port-webkit2gkt3.patch: Port to webkit2gtk3
+  (bgo#749001).
+- Replace pkgconfig(webkitgtk-3.0) for pkgconfig(webkit2gtk-4.0)
+  BuildRequries following above port.
+
+-------------------------------------------------------------------
+Tue May 17 12:51:14 UTC 2016 - fcrozat@suse.com
+
+- Recommends geoclue2 now, empathy no longer uses geoclue.
+
+-------------------------------------------------------------------
+Fri May 13 17:31:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.12.12:
+  + Fix pkg-config usage (bgo#761000).
+  + The minimum value of an uint64_t is 0, not G_MININT32
+    (bgo#762735).
+  + Hardcoding #!/usr/bin/python is not portable (bgo#762737).
+  + Fix -Werror build for clang (bgo#762738).
+  + Add the Rizon IRC network to the list of IRC networks
+    (bgo#764438).
+  + GCC 5 generates a type-limits warning in
+    tpaw-account-settings.c (bgo#765022).
+  + Empathy uses deprecated webkit functions (bgo#765024).
+  + Gnome-shell Wayland application tracking broken for Empathy
+    (bgo#766285).
+  + Empathy dumps core when running on Wayland compositor
+    (bgo#708170).
+  + Updated translations.
+- Drop empathy-fix-icons-in-search-bar.patch,
+  empathy-Don-t-crash-in-window_get_workspace-under-Wayland.patch,
+  empathy-Fix-a-critical-warning.patch,
+  empathy-Don-t-call-XInitThreads-in-Wayland.patch,
+  empathy-Avoid-warning-spam-from-GtkStyleContext-with-GTK-3.20.patch
+  and empathy-Add-a-missing-tag-to-the-AppData-file.patch, all
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr 15 17:08:27 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Fri Mar 25 12:09:56 UTC 2016 - zaitor@opensuse.org
+
+- Add empathy-clutter-gst-3_0.patch: Port to clutter-gst-3.0.
+- Replace pkgconfig(clutter-gst-2.0) for pkgconfig(clutter-gst-3.0)
+  BuildRequires due to above port.
+- Add libtool BuildRequires and pass autoreconf -fiv since above
+  patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Sat Feb 13 00:18:46 UTC 2016 - zaitor@opensuse.org
+
+- Add patches from upstream git to fix various issues:
+  + empathy-Don-t-crash-in-window_get_workspace-under-Wayland.patch
+  + empathy-Fix-a-critical-warning.patch
+  + empathy-Don-t-call-XInitThreads-in-Wayland.patch
+  + empathy-Avoid-warning-spam-from-GtkStyleContext-with-GTK-3.20.patch
+  + empathy-Add-a-missing-tag-to-the-AppData-file.patch.
+
+-------------------------------------------------------------------
+Mon Jan  4 20:23:08 UTC 2016 - zaitor@opensuse.org
+
+- Add empathy-fix-icons-in-search-bar.patch: Fix the previous/next
+  icons, patch from upstream git.
+
+-------------------------------------------------------------------
+Wed Oct 14 15:42:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.12.11:
+  + Fix opening contact list after launching empathy -h
+    (bgo#729282).
+  + Leak fixes for telepathy-accounts-widgets (bgo#752938).
+  + Don't hard code the name of the pkg-config binary
+    (bgo#755707).
+  + Call the finish method only once (bgo#756165).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 13 11:37:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.12.10:
+  + bgo#741771: Preferences dialog expands to absurd width.
+  + bgo#745504: Fix preferences with modern gtk+.
+  + bgo#746841: Provide a scalable -symbolic variant of the app
+    icon.
+  + bgo#747460: Initial empathy accounts window is too wide.
+  + Don't crash when running in Wayland.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 23:31:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.12.9:
+  + bgo#746612: Geoclue2 requires a DesktopId property.
+  + bgo#747375, Fix a wrong header guard in
+    libempathy-gtk/empathy-smiley-manager.h.
+  + bgo#747170, Typo (messenging) in documentation.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:30:12 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.12.8:
+  + bgo#705326: User help suggests "ignore SSL certificate errors"
+    option for Jabber accounts "if you trust the server you are
+    connecting to".
+  + bgo#746100: goa-mc-plugin: Remove Facebook chat using Jabber.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 14 09:22:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.7:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 12 08:08:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.6:
+  + Bugs fixed:
+    - gnome-contact's desktop file changed (bgo#735575).
+    - Smileys are not centered ("Insert Smiley" menu) (bgo#736369).
+    - Fix crash if empathy_chatroom_manager_find() failed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 20 13:07:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.5:
+  + Chain GtkCombobox subclass constructors to parent (bgo#732909).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 23 19:17:19 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.4:
+  + Picking a specific persona/account from context menu doesn't
+    work (bgo#732100).
+- Changes from version 3.12.3:
+  + This new stable release removes support for connecting to
+    Windows Live chat using XMPP as Microsoft shut down their XMPP
+    gateways. However, you can continue using the proprietary MSN
+    protocol through telepathy-haze.
+  + Bugs fixed: bgo#696977, bgo#731150.
+
+-------------------------------------------------------------------
+Sat May 17 07:23:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Bugs fixed: wrong count of unread messages and text missing
+    (bgo#662672).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 14:59:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 17:33:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 15:38:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 14:55:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.91:
+  + Bugs fixed: bgo#724711, bgo#725070.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:24:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Bugs fixed: bgo#692793, bgo#723713, bgo#723766.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 14:46:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Use the new license-type property in the about dialog
+    (bgo#637316).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:59:59 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Bugs fixed: bgo#710919, bgo#710252, bgo#712566, bgo#719889,
+    bgo#720114, bgo#721484.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:43:53 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Bugs fixed: bgo#685899, bgo#707747, bgo#709611, bgo#711226,
+    bgo#712839.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 22:43:53 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + GStreamer 1.0 is now mandatory as 0.10 support has been
+    removed.
+  + The nautilus-sendto plugin has been removed as latest
+    nautilus-sendo versions don't support plugins any more.
+  + Bugs fixed: bgo#630896, bgo#708897, bgo#710453.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 21:43:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.3:
+  + bgo#712566: Groups in contact list cannot be hidden.
+  + bgo#712839: Remove empathy_create_individual_from_tp_contact().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 21:22:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Bugs fixed: bgo#707747, bgo#708897, bgo#710453.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 17:17:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + bgo#709741: audio-sink: fix compilation with GStreamer 0.10.
+  + bgo#710017: empathy-debugger: no MC logs.
+  + bgo#709677: crash when connecting SIP client.
+  + bgo#708716: crash in empathy-chat.
+  + bgo#707885: need to escape spaces in action names.
+  + bgo#708684: Warning when opening preferences dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 15:29:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Empathy-debugger crashes on start (bgo#708403).
+  + New messages don't cause scroll (bgo#707781).
+  + Theme previews are not displayed (bgo#708616).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 16:45:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + bgo#696328: empathy-debugger crashed with SIGSEGV.
+  + bgo#706988: Port to GtkListBox.
+  + bgo#707781: new messages don't cause scroll.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 15:43:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Bugs fixed: bgo#643183, bgo#701392, bgo#706627, bgo#706829,
+    bgo#706830, bgo#707104, bgo#707208, bgo#707265, bgo#707291,
+    bgo#707338, bgo#706801, bgo#706881.
+  + Updated translations.
+- Replace pkgconfig(geoclue) with pkgconfig(geoclue-2.0),
+  following upstreams port to GeoClue 2.0 API.
+
+-------------------------------------------------------------------
+Tue Aug 20 12:36:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Bugs fixed: bgo#585440, bgo#643755, bgo#698530, bgo#701649,
+    bgo#703487, bgo#704452, bgo#704454, bgo#704469, bgo#705618,
+    bgo#705668, bgo#706020, bgo#706125, bgo#699492.
+  + Updated translations.
+- Replace  pkgconfig(geocode-glib) BuildRequires with
+  pkgconfig(geocode-glib-1.0) following upstreams changes.
+- Enable geocode building (change with_geocode defines to 1): the
+  dependencies for this are now available.
+
+-------------------------------------------------------------------
+Tue Jul  9 09:08:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Bugs fixed: bgo#702095, bgo#703453, bgo#703775.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 21:25:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Bugs fixed: bgo#680778, bgo#698742, bgo#701281, bgo#701891,
+    bgo#701914.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 29 19:27:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + bgo#692746: history uses wrong encoding to show utf8 logs.
+  + bgo#696151: empathy crashed with SIGSEGV in
+    listing_failed_cb().
+  + bgo#699333: online-accounts-preferences crashes when accounts
+    need access granted.
+  + bgo#700084: new *.page added not recognized by git due to
+    commit eb8eb761.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May  5 08:18:28 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.1:
+  + bgo#692160: Updated Icon Names.
+  + bgo#697214: call-window: Remember that the audio output has
+    been added.
+  + bgo#697302: Spelling mistake.
+  + bgo#699017, libempathy: Fix build by adding missing math.h
+    header.
+  + bgo#673775, The icon for audio call in the help is wrong.
+  + bgo#677549, "Link Contacts" user documentation is wrong
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:23:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + bgo#696544: goa-mc-plugin: Fix deprecation warnings.
+  - bgo#696718: Cleanup unused and redundant #include directives.
+  - bgo#697076: Cleanup #includes, second round.
+  - bgo#697254: Launching Empathy -p opens both the preferences and
+    the main window.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 16:55:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + bgo#604975: Lack of overview for those new to IM.
+  + Updated documentation.
+  + Updated translations.
+- Disable parallel build for now. There are random issues observed
+  with the gobject-introspection parts.
+
+-------------------------------------------------------------------
+Wed Mar 20 20:33:37 UTC 2013 - dimstar@opensuse.org
+
+- Drop pkgconfig(nautilus-sendto) BuildRequires: it is no longer
+  provided with nautilus-sendto 3.7.92.
+- Drop nautilus-sendto-plugin-empathy subpackage and obsolete it
+  from the main package: support for building nautilus-sendto
+  plugins was removed from nautilus-sendto.
+
+-------------------------------------------------------------------
+Wed Mar 20 13:15:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Bugs fixed: bgo#692105, bgo#695556.
+  + Updated translations.
+- Add pkgconfig(cogl-1.0) BuildRequries: newly verified dependency.
+
+-------------------------------------------------------------------
+Mon Mar  4 17:38:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 14:07:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Bugs fixed: bgo#680152, bgo#693190.
+  + Updated translations.
+- Replace pkgconfig(gee-1.0) BuildRequires with pkgconfig(gee-0.8),
+  following upstreams port to libgee 0.8.x.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:44:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Retrieve all the past history when scrolling back on a chat
+    window (bgo#639877).
+  + Favorite rooms are not saved (bgo#678983).
+  + Backslash escapes applied in the chat log (bgo#691085).
+  + Warning when building HTML using yelp-build (bgo#691457).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 16 09:34:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Port to python 3 (bgo#687616)
+  + Bugs fixed: bgo#670048, bgo#684357, bgo#687450, bgo#687629,
+    bgo#688132, bgo#688174, bgo#688860, bgo#690733, bgo#691006,
+    bgo#691043, bgo#691085, bgo#691137, bgo#691195, bgo#691418,
+    bgo#691469, bgo#668464.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  9 19:15:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + bgo#688988: Add more protocolname<->displayname.
+  + bgo#689056: Port EmpathyContact to geocode-glib >= 0.99.1.
+  + bgo#689122: org.gnome.empathy.notifications.notification-focus
+    should default to true.
+  + Updated translations.
+- Introduce with_geocode defines, currently set to 0, as
+  geocode-glib >= 0.99.1 does not yet exist. The
+  pkgconfig(geocode-glib) BuildRequires is depending on
+  with_geocode.
+
+-------------------------------------------------------------------
+Wed Jan  9 12:14:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Bugs fixed: bgo#592995, bgo#681445, bgo#684979, bgo#685793,
+    bgo#685888, bgo#686067, bgo#686969, bgo#687338, bgo#687361.
+  + Updated translations.
+- Re-enable parallel build.
+
+-------------------------------------------------------------------
+Wed Jan  9 11:38:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Bugs fixed: bgo#691085, bgo#691137, bgo#691195, bgo#691006,
+    bgo#688132.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:45:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Improves GNOME Online Account integration
+  + Fix a bunch of call related bugs
+  + Bugs fixed: bgo#652546, bgo#686311, bgo#686314, bgo#687449,
+    bgo#687762, bgo#687690.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 20:01:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  9 19:08:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0.3:
+  + Fix build errors in the Ubuntu Online Accounts plugin
+- Changes from version 3.6.0.2:
+  + Fixes a crash when approving a chat from the contact list
+  + Bugs fixed: bgo#681725, bgo#684898, bgo#685498, bgo#685652,
+    bgo#685663
+  + Updated translations.
+- Disable parallel build, as it randomly fails (bgo#685837).
+
+-------------------------------------------------------------------
+Thu Oct  4 09:21:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0.1:
+  + This new stable release fixes a bug preventing Empathy to
+    connect an IM account having an invalid certificate.
+  + It also improves the performance of roster live search and
+    should reduce the startup time of the chat window as well.
+  + Bugs fixed: bgo#684528, bgo#684675, bgo#684783, bgo#684971,
+    bgo#685203, bgo#685278
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:14:12 UTC 2012 - zaitor@opensuse.org
+
+- Drop hack in spec to rename im-xmpp icon files, fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 25 08:45:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Bugs fixed: bgo#674179, bgo#684281, bgo#684475, bgo#684531
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:30:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + GST 1.0 enabled build fails without gst 0.10 installed
+    (bgo#683827)
+  + Bugs fixed: bgo#675220, bgo#683699, bgo#683854, bgo#683864,
+    bgo#684194
+  + Updated translations.
+- Drop empathy-gst10-fix.patch: fixed upstream.
+- Remove gnome-commong BuildRequires and call to gnome-autogen.sh,
+  as there is no patch touching the buildsystem.
+- Add explicit pkgconfig(gstreamer-1.0),
+  pkgconfig(gstreamer-audio-1.0) and pkgconfig(gstreamer-video-1.0)
+  BuildRequires: those are implicit pulled in by clutter-gst, but
+  configure now also explicitly checks for them.
+
+-------------------------------------------------------------------
+Wed Sep 12 08:46:45 UTC 2012 - dimstar@opensuse.org
+
+- Add empathy-gst10-fix.patch: Fix build when purely building with
+  GStreamer 1.0 (without any traces of GStreamer 0.10 on the
+  system).
+- Add gnome-common BuildRequires and call to gnome-autogen.sh, as
+  above patch touches the build system.
+
+-------------------------------------------------------------------
+Mon Sep 10 13:30:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91.1:
+  + Bugs fixed: bgo#683326, bgo#683397, bgo#683409, bgo#683415,
+    bgo#683442, bgo#683453, bgo#683501
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 09:47:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Port to GStreamer 1.0
+  + Bugs fixed: bgo#679259, bgo#680776, bgo#682802, bgo#682926,
+    bgo#682938, bgo#683022, bgo#683025, bgo#683258, bgo#683275,
+    bgo#683314
+  + Updated translations.
+- Drop pkgconfig(gstreamer-0.10) BuildRequires: ported to
+  GStreamer 1.0
+- Replace pkgconfig(farstream-0.1) BuildRequires with
+  pkgconfig(farstream-0.2) and pkgconfig(clutter-gst-1.0)
+  BuildRequires with pkgconfig(clutter-gst-2.0), following
+  upstream.
+- Pass --enable-gst-1.0 to configure to switch to GStreamer 1.0.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:02:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Bugs fixed:
+    - bgo#656097: Empathy should show an informative text inside
+      the contact list when no contacts are online
+    - bgo#658858: Hide offline contacts by default
+    - bgo#662986: Messaging and VoIP Accounts in Applications list
+    - bgo#680302: Move model logic out of EmpathyRosterView
+    - bgo#680774: Migrate existing accounts into libaccounts
+    - bgo#680775: Be able to edit params of non SSO accounts
+    - bgo#680778: Stop using empathy-accounts
+    - bgo#681444: Wrong Service for GTalk accounts
+    - bgo#681598: FTBFS: account plugins linking
+  + Updated translations.
+- Add pkgconfig(gee-1.0) BuildRequires: newly verified dependency.
+
+-------------------------------------------------------------------
+Mon Aug  6 19:43:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Ubuntu Online Accounts support has been greatly improved as
+    Empathy can now provide plugins to create any kind of IM
+    account using UOA's panel
+  + libsecret migration (bgo#679884)
+  + Fix claim that Windows Live certificate isn't valid
+    (bgo#681079)
+  + Bugs fixed: bgo#680448, bgo#680449, bgo#680646, bgo#680952.
+  + Updated translations.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstreams port to libsecret.
+
+-------------------------------------------------------------------
+Tue Jul 24 21:27:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4.1:
+  + Empathy gains support for the Ubuntu Online Accounts framework.
+  + Bugs fixed: bgo#677180, bgo#679786, bgo#679868, bgo#680076,
+    bgo#680160.
+
+-------------------------------------------------------------------
+Tue Jul 17 14:52:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Bugs fixed: bgo#627948, bgo#645921, bgo#678331, bgo#678524,
+    bgo#678807, bgo#678845, bgo#678875, bgo#679136, bgo#679255,
+    bgo#679332, bgo#679396, bgo#679532.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 30 08:32:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + [design] New contact list view (bgo#669484)
+  + Bugs fixed: bgo#675214, bgo#676634, bgo#677465, bgo#677533
+    bgo#677545, bgo#677641, bgo#677940, bgo#677947, bgo#677948
+    bgo#677949, bgo#678083, bgo#678091, bgo#678156, bgo#678167
+    bgo#678205, bgo#678294, bgo#678307, bgo#678376.
+  + Updated translations.
+- Drop pkgconfig(libebook-1.2) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Thu Jun 29 18:25:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + bgo#667619: Port to GtkApplication and GtkApplicationWindow
+  + bgo#640417: EmpathyAccountWidget should be a proper GtkWidget
+  + bgo#670874: floating toolbar not working
+  + bgo#673263: goa-mc-plugin: support enabling or disabling
+    accounts
+  + bgo#674553: Take picture button in image change doesn't work.
+  + bgo#674774: tp-chat: use the GVariant version of TpCapabilities
+    classes
+  + bgo#674860: Modernize EmpathyNewChatroomDialog
+  + bgo#675296: Remove empathy-av
+  + bgo#675667: Crash when trying to add an account
+  + bgo#676027: Spelling error Authentification → Authentication
+  + bgo#676637: Crash when account is connecting
+  + Other bugs fixed: bgo#672043, bgo#669473, bgo#673846,
+    bgo#673989, bgo#674182, bgo#674318, bgo#674864, bgo#675229,
+    bgo#675246, bgo#675590, bgo#675597, bgo#675647, bgo#675803,
+    bgo#675807, bgo#675808, bgo#676569.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 28 17:51:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Bugs fixed: bgo#501065, bgo#640846, bgo#668186, bgo#668261,
+    bgo#669134, bgo#669177, bgo#672619, bgo#672976, bgo#673159,
+    bgo#673410, bgo#673821.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 27 16:53:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.2.3:
+  + Use a weak reference while loading the logs asynchronously to
+    detect when the object has been destroyed (bgo#677641).
+- Changes from version 3.4.2.2:
+  + irc connection parameters dialog: "apply" button stays
+    unsensitive (bgo#678307).
+  + empathy-chat crashed with SIGSEGV in
+    _tp_base_client_handle_channels() (bgo#678807).
+
+-------------------------------------------------------------------
+Mon May 21 16:21:22 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.2.1:
+  + Fix various issues in the call UI.
+  + Fix crash when taking a picture from the avatar chooser dialog.
+  + Bugs fixed: bgo#670874, bgo#674553.
+
+-------------------------------------------------------------------
+Mon May 14 12:29:40 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Bugs fixed: bgo#674432, bgo#675767.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:20:35 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Bugs fixed: bgo#673691.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  6 16:27:01 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0.2:
+  + Bring back the "Previous conversations" menu item which had
+    been accidentally removed.
+  + Fix build with --enable-empathy-av.
+
+-------------------------------------------------------------------
+Thu Apr  5 11:14:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0.1:
+  + Fix calls logging.
+  + Create notification when someone mention the user on IRC
+    (bgo#652800)
+  + Bugs fixed: bgo#670601, bgo#672560, bgo#672561, bgo#672796,
+    bgo#672839, bgo#673030, bgo#673046, bgo#673141, bgo#673162,
+    bgo#673444, bgo#673451, bgo#673480.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:23:35 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Bugs fixed: bgo#672504, bgo#672506, bgo#672508, bgo#672596,
+    bgo#672608, bgo#672633, bgo#672828.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 07:32:37 UTC 2012 - vuntz@opensuse.org
+
+- Remove hack to find localized help: this has been fixed in
+  find-lang.sh.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:50:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Bugs fixed: bgo#616159, bgo#671035, bgo#671547, bgo#671644,
+    bgo#671718, bgo#671720, bgo#671790, bgo#671875, bgo#671884,
+    bgo#671914, bgo#671931, bgo#671981, bgo#671983, bgo#671994,
+    bgo#672036, bgo#672037, bgo#672063, bgo#672120.
+  + Updated translations.
+- Remove sed hacks from %prep to use libchamplain 0.12 instead of
+  libchamplain 0.13/0.14: the dependency moved back to 0.12.
+
+-------------------------------------------------------------------
+Tue Mar  6 18:54:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + bgo#661515: Wrong date is shown in chat window
+  + bgo#671447: Make running empathy components without
+                installing them simpler
+  + bgo#671452: Avoid XMPP accounts to have a negative priority
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  2 19:24:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.90.2:
+  + Optionally brings back empathy-av
+  + Bugs fixed:
+    + bgo#656676: Use new documentation infrastructure
+    + bgo#671061, Debug: Clear doesn't work for the All option
+  + Upudated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:51:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90.1:
+  + Fixed a bunch of memory leaks in the new call window.
+  + Build fixes.
+  + Bugs fixed: bgo#670638.
+  + Updated translations.
+- Drop empathy-farstream.patch: fixed upstream.
+- Change itstool BuildRequires to yelp-tools: this is really what
+  is needed for build.
+- Add sed hacks in %prep to use libchamplain 0.12 instead of
+  libchamplain 0.13/0.14: there's no release for libchamplain
+  0.13/0.14 yet, so it makes no sense to try to use it.
+- Manually list the translated help documents as %find_lang needs
+  to support the new XDG help system first.
+
+-------------------------------------------------------------------
+Tue Feb 21 20:37:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.90:
+  + New call UI, based on Clutter and Farstream.
+  + Stop using telepathy-butterfly and now rely on telepathy-haze
+    to connect to MSN. Accounts should be automatically migrated
+    with the next telepathy-mission-control release (5.11.0).
+  + Rely on gnome-contacts to display contacts' details and link
+    contacts together.
+  + Remove accounts assistant and integrate its features into the
+    accounts dialog.
+  + Add ability in debug window to display the logs from all the
+    components together and to upload them easily to pastebin.
+  + Bugs fixed: bgo#629902, bgo#659683, bgo#652669, bgo#592994,
+    bgo#627658, bgo#632739, bgo#646654, bgo#655101, bgo#656097,
+    bgo#658724, bgo#663627, bgo#663829, bgo#664045, bgo#668985,
+    bgo#669482, bgo#669559, bgo#669578, bgo#669655, bgo#669676,
+    bgo#669695, bgo#669712, bgo#669823, bgo#670201, bgo#670203.
+- Replace gnome-doc-utils-devel BuildRequires with itstool,
+  following upstream changes regarding help implementation.
+- Changed BuildRequires following upstream changes related to new
+  call UI:
+  + Remove pkgconfig(telepathy-farsight).
+  + Add pkgconfig(clutter-gst-1.0), pkgconfig(farstream-0.1),
+    pkgconfig(telepathy-farstream).
+- Add gnome-contacts Requires, so contacts can be displayed.
+- Remove telepathy-butterfly Recommends, as telepathy-haze is now
+  used for MSN connections. Note that we already have a
+  telepathy-haze Recommends.
+- Remove --disable-scrollkeeper from configure call: it is not
+  known anymore.
+- Add empathy-farstream.patch: Replace final farsight includes with
+  respective farstream includes.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:55:33 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + Bugs fixed:
+    - bgo#668336: Remove Edit -> Personal information
+    - bgo#562462, bgo#575669, bgo#576912, bgo#591667, bgo#591756,
+      bgo#612216, bgo#643699, bgo#660856, bgo#662916, bgo#666522,
+      bgo#666714, bgo#667037, bgo#667467, bgo#668364, bgo#668372,
+      bgo#668498, bgo#668502, bgo#668663, bgo#668681, bgo#668796,
+      bgo#669300.
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Mon Jan 16 16:56:56 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Redesign of the empathy-accounts dialog (bgo##652670).
+  + Bugs fixed:
+    - bgo#661500: display map in tooltip
+    - bgo#631236, bgo#666864, bgo#667676, bgo#667743, bgo#667791,
+      bgo#666531.
+  + Updated translations.
+- Stop changing empathy.desktop with %suse_update_desktop_file:
+  it's already fine upstream.
+
+-------------------------------------------------------------------
+Tue Dec 20 13:48:42 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Note that IRC contacts are currently broken (bgo#666531).
+  + Bugs fixed: bgo#649208, bgo#654171, bgo#660547, bgo#661640,
+    bgo#662873, bgo#663124, bgo#663328, bgo#663387, bgo#663682,
+    bgo#664459, bgo#664564, bgo#664795, bgo#664935, bgo#665038,
+    bgo#665121, bgo#665171, bgo#665256, bgo#665403, bgo#665592,
+    bgo#665853, bgo#666163, bgo#653812, bgo#665244.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add explicit pkgconfig(gnutls) and pkgconfig(libsoup-2.4)
+  BuildRequires: those were missing before.
+
+-------------------------------------------------------------------
+Mon Nov 21 16:43:33 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Bugs fixed: bgo#662504, bgo#646682, bgo#652544, bgo#654430,
+    bgo#661805, bgo#662604, bgo#662609, bgo#662727, bgo#662843,
+    bgo#662903, bgo#662995, bgo#663327, bgo#663442, bgo#663563,
+    bgo#663567, bgo#663763, bgo#663842, bgo#664313
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 28 19:36:07 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.1:
+  + Integrate fixes from 3.2.1 and 3.2.1.1.
+  + The "New Call" and "New Conversation" dialogs have been
+    re-written and the experimental Call UI has been improved.
+  + New xmpp link-local icon.
+  + Bugs fixed:
+    - bgo#659207: Some preferences are obscure or obsolete with
+      gnome 3
+    - bgo#659807: auth request contacts not included in contact
+      list
+    - bgo#574879, bgo#612555, bgo#619186, bgo#629517, bgo#646630,
+      bgo#650861, bgo#656884, bgo#656907, bgo#658245, bgo#659144,
+      bgo#659474, bgo#659594, bgo#659816, bgo#659952, bgo#660124,
+      bgo#660429, bgo#660449, bgo#661464, bgo#661489, bgo#661734,
+      bgo#661756, bgo#661981, bgo#661993, bgo#662250.,
+
+-------------------------------------------------------------------
+Fri Oct 28 08:43:30 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1.1:
+  + HTML injection in nicknames [bgo#662035, bnc#727003,
+    CVE-2011-3635]
+  + contact_list_store_contact_active_cb may be called after the
+    destruction of the store [bgo#662211]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 27 21:27:17 UTC 2011 - badshah400@gmail.com
+
+- Pass -u to %suse_update_desktop_file call for
+  empathy-accounts.desktop: we don't want to show this item in
+  the menu as it's quite useless on a standard desktop
+
+-------------------------------------------------------------------
+Mon Oct 17 17:36:32 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + bgo#658542: Use new Subject and RoomConfig APIs rather than
+    Telepathy.Properties
+  + bgo#660586: setting to third party Adium theme leads to crash
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 14:41:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.0.1:
+  + Fix calling issues when Empathy is built without the
+    experimental call support.
+  + Bugs fixed: bgo#660449, bgo#660124, bgo#646630, bgo#659594,
+    bgo#659816.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 10:39:28 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Bugs fixed: bgo#659118, bgo#659298.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 17:54:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Bugs fixed: bgo#580794, bgo#632357, bgo#648315, bgo#652985,
+    bgo#655270, bgo#655356, bgo#655388, bgo#657335, bgo#657746,
+    bgo#657818, bgo#658336, bgo#658340, bgo#658341, bgo#658343,
+    bgo#658573, bgo#658584, bgo#658644, bgo#658785, bgo#658821,
+    bgo#658857, bgo#658866, bgo#658895, bgo#658909, bgo#659003,
+    bgo#659053, bgo#659141, bgo#659377, bgo#659439, bgo#659476.
+  + Updated translations.
+- Add explicit pkgconfig(clutter-1.0) BuildRequires: it used to be
+  implicit.
+- Add iso-codes Requires since the iso-codes data is used at
+  runtime.
+- Remove sed hack in %prep to enable champlain 0.12 support: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Sep  6 09:44:37 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Add a mission-control plugin providing integration with GNOME's
+    online accounts service. With this plugin installed,
+    mission-control will automatically create a Telepathy account
+    if there is a Google GOA account configured with the 'Chat'
+    feature enabled.
+  + Bugs fixed: bgo#652543, bgo#656871, bgo#657087, bgo#657266,
+    bgo#657842, bgo#657843, bgo#657914, bgo#657954, bgo#657956,
+    bgo#658254.
+  + Updated translations.
+- Move to libchamplain 0.12:
+  + Change pkgconfig(champlain-gtk-0.10) BuildRequires to
+    pkgconfig(champlain-gtk-0.12).
+  + Add a sed hack in %prep to make configure look for the right
+    pkg-config file.
+- Build the plugin for GNOME online accounts integration:
+  + Pass --enable-goa to configure.
+  + Add pkgconfig(goa-1.0) and pkgconfig(mission-control-plugins)
+    BuildRequires.
+  + Create a telepathy-mission-control-plugin-goa subpackage.
+
+-------------------------------------------------------------------
+Mon Sep  5 14:00:20 UTC 2011 - vuntz@opensuse.org
+
+- Remove X-GNOME-Settings-Panel from empathy-accounts.desktop,
+  since it should not appear in gnome-control-center (see
+  bgo#658254).
+
+-------------------------------------------------------------------
+Thu Sep  1 14:44:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90.1:
+  + Do not display a status icon and set your presence to offline
+    when exiting, if the Shell is running. (bgo#656631, bgo#656632,
+    bgo#631944)
+  + Bugs fixed: bgo#656886, bgo#656911, bgo#656889.
+  + Updated translations.
+- Changes from version 3.1.90:
+  + SIP accounts can now be marked as being able to make PSTN
+    calls. Such accounts can be used to call landline and mobile
+    phones of contacts. (bgo##650112, bgo##657220)
+  + Bugs fixed: bgo#650113, bgo#647124, bgo#657086, bgo#657562,
+    bgo#657362, bgo#656682, bgo#657166, bgo#657271, bgo#657173,
+    bgo#657105, bgo#657104, bgo#656829, bgo#642385.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 22 13:54:14 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5.1:
+  + bgo#656934: Allow to provide a request message when adding
+                contact
+  + Other bugs fixed: bgo#653599, bgo#654471, bgo#655799,
+    bgo#656566, bgo#656573, bgo#656576, bgo#656579, bgo#656673,
+    bgo#656831, bgo#656866, bgo#656885, bgo#656887, bgo#656888,
+    bgo#656908.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 17:27:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + Empathy now has echo cancellation support with PulseAudio.
+  + New features in experimental call UI (disabled for now).
+  + Bugs fixed: bgo#590048, bgo#599167, bgo#632874, bgo#654914,
+    bgo#654958, bgo#655212, bgo#655478, bgo#655788, bgo#655884,
+    bgo#655959, bgo#656020, bgo#656065, bgo#656150, bgo#656268,
+    bgo#656415, bgo#656572, bgo#656582
+  + Updated translations.
+- Add pkgconfig(libpulse) and pkgconfig(libpulse-mainloop-glib)
+  BuildRequires for the new echo cancellation support.
+
+-------------------------------------------------------------------
+Tue Jul 26 12:13:48 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + Add gudev dependency for camera monitoring.
+  + Add clutter dependencies in empathy-call.
+  + Bugs fixed:
+    - bgo#582442: Set video preview on top of remote video
+    - bgo#558942, bgo#593352, bgo#607557, bgo#611789, bgo#634809,
+      bgo#639353, bgo#652439, bgo#653116, bgo#653175, bgo#653341,
+      bgo#653760, bgo#653803, bgo#654015, bgo#654256, bgo#654419,
+      bgo#654541, bgo#654552, bgo#654611, bgo#654669.
+  + Updated translations.
+- Add new pkgconfig(gudev-1.0) BuildRequires for new dependency. We
+  do not add pkgconfig(clutter-1.0) and pkgconfig(clutter-gst-1.0)
+  BuildRequires as empathy-call is still considered experimental.
+- Remove pkgconfig(libgnome-control-center) BuildRequires as there
+  is no pkg-config file for libgnome-control-center anymore. This
+  means empathy won't install a gnome-control-center panel. See
+  bgo#655388.
+
+-------------------------------------------------------------------
+Mon Jul  4 18:25:04 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Many issues fixed in the new log viewer.
+  + Bugs fixed:
+    - bgo#651205: Support message editing (supersedes header)
+    - bgo#653057, bgo#653510: Google Talk broken account defaults
+    - bgo#653650: Blocking contacts dialog should autocomplete when
+      adding contacts by alias
+    - bgo#646555, bgo#573652, bgo#630943, bgo#644528, bgo#651055,
+      bgo#651473, bgo#652265, bgo#652278, bgo#652279, bgo#652345,
+      bgo#652443, bgo#652496, bgo#652522, bgo#652590, bgo#653090,
+      bgo#653175, bgo#653551, bgo#653575, bgo#653635, bgo#653730,
+      bgo#653739, bgo#653760, bgo#653767, bgo#653803.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 17 05:35:28 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.2.1:
+  + Update telepathy-yell code.
+  + Updated translations.
+- Drop libtelepathy-yell0 and libtelepathy-yell-devel subpackages
+  as the library is now built in statically.
+
+-------------------------------------------------------------------
+Mon Jun 13 14:05:43 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Add brand new log viewer displaying calls as well as chats.
+  + Support for CSS variants in Adium themes.
+  + If built with libcheese, Empathy can now use a webcam to create
+    an avatar.
+  + This release also brings empathy-call, a new experimental
+    handler for Call channels, our new audio/video API that is
+    going to replace StreamedMedia channels.
+  + Add geocode-glib support.
+  + Bugs fixed: bgo#521747, bgo#585474, bgo#596737, bgo#598904,
+    bgo#635259, bgo#646526, bgo#647011, bgo#648822, bgo#649881,
+    bgo#649892, bgo#650015, bgo#650386, bgo#650554, bgo#650590,
+    bgo#650844, bgo#650846, bgo#650854, bgo#650939, bgo#651058,
+    bgo#651242, bgo#651489, bgo#651913, bgo#652015, bgo#652264,
+    bgo#652270, bgo#619866.
+  + Updated translations.
+- Add pkgconfig(cheese-gtk) BuildRequires to be able to use the
+  webcam to create an avatar.
+- Add pkgconfig(geocode-glib) BuildRequires for geocode support.
+- Add new libtelepathy-yell0 and libtelepathy-yell-devel
+  subpackages.
+
+-------------------------------------------------------------------
+Tue May 17 14:49:19 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + Improved support for Adium themes:
+    - unread messages can be marked as such, nick of participants
+      can be colored.
+    - display a preview of themes in the preferences dialog.
+  + Make a difference between normal messages and SMS ones.
+  + Bugs fixed:
+    - bgo#636463: Display delivery reports
+    - bgo#647530: SMS support
+    - bgo#443884, bgo#541438, bgo#541632, bgo#614319, bgo#622118,
+      bgo#627726, bgo#642087, bgo#643293, bgo#644085, bgo#644086,
+      bgo#646061, bgo#646084, bgo#646131, bgo#646681, bgo#647904,
+      bgo#648188, bgo#648230, bgo#648737, bgo#648842, bgo#648914,
+      bgo#649161, bgo#649166, bgo#649273, bgo#649367, bgo#649379,
+      bgo#649436, bgo#649438, bgo#649492, bgo#649734, bgo#649735,
+      bgo#647126.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 27 11:00:40 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Bugs fixed: bgo#645586, bgo#645930, bgo#646227, bgo#647056,
+    bgo#647641, bgo#647793, bgo#648372.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  4 16:15:12 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Bugs fixed: bgo#646010, bgo#646097, bgo#646691, bgo#638951,
+    bgo#645932.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 30 12:19:55 UTC 2011 - fcrozat@novell.com
+
+- Add back X-GNOME-Settings-Panel to empathy-accounts.desktop to
+  show it in control-center.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:48:25 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + Log viewer has been polished a bit and you shouldn't get
+    notifications for outgoing messages sent using Shell's message
+    tray.
+  + Bugs fixed: bgo#645488, bgo#645558.
+  + Various bugfixes.
+  + Updated translations
+
+-------------------------------------------------------------------
+Thu Mar 24 15:24:56 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Bugs fixed: bgo#645112, bgo#641664, bgo#643860, bgo#644412,
+    bgo#645069, bgo#645108, bgo#645115, bgo#645119, bgo#645121,
+    bgo#645133, bgo#645487, bgo#645504.
+  + Updated translations.
+- Changes from version 2.91.91.1:
+  + Empathy has a new icon
+  + You can now block annoying contacts.
+  + Bugs fixed: bgo#644296, bgo#614640, bgo#618787, bgo#639417,
+    bgo#643690, bgo#643863, bgo#644295, bgo#644298, bgo#644359,
+    bgo#644360, bgo#644406, bgo#644475, bgo#644500, bgo#644726,
+    bgo#644830, bgo#644844, bgo#644914, bgo#644936, bgo#644944,
+    bgo#645008, bgo#645014.
+- Changes from version 2.91.91:
+  + Bugs fixed:
+    - bgo#643656: Autoreject incoming calls when there is one in
+      progress.
+    - bgo#583317, bgo#641121, bgo#643745, bgo#643872, bgo#643920,
+      bgo#644058, bgo#644062, bgo#644121, bgo#644127, bgo#644210.
+  + Updated translations
+- Changes from version 2.91.90:
+  + IRC commands improvements (/part, /query, /msg)
+  + Bugs fixed:
+    - bgo#592595: Allow pinning contacts (showing them even when
+      they are offline).
+    - bgo#604348, bgo#623682, bgo#641491, bgo#643078, bgo#643186,
+      bgo#611913, bgo#641861, bgo#642358, bgo#634679, bgo#637151,
+      bgo#640914, bgo#641119, bgo#641157, bgo#641161, bgo#641662,
+      bgo#641707, bgo#641867, bgo#641868, bgo#641985, bgo#642010,
+      bgo#642098, bgo#642264, bgo#642296, bgo#642385, bgo#642440,
+      bgo#642461, bgo#642700, bgo#642865.
+- Changes from version 2.91.6:
+  + Bugs fixed:
+    - bgo#601578: Add "Firefox style" info bar to save room
+      password
+    - bgo#606947: support Contact Search API.
+    - bgo#635105, bgo#601577, bgo#609419, bgo#609420, bgo#631101,
+      bgo#634853, bgo#637322, bgo#637839, bgo#637847, bgo#639302,
+      bgo#640295, bgo#640411, bgo#640532, bgo#640751.
+- Changes from version 2.91.5:
+  + Bugs fixed:
+    - bgo#586257: In Empathy, "F2" key should rename contacts
+    - bgo#638766, bgo#639214, bgo#639352, bgo#603027, bgo#636258,
+      bgo#637195, bgo#638040, bgo#638041.
+- Changes from version 2.91.4:
+  + Bugs fixed:
+    - bgo#637135: Add nice UI for password-less accounts
+    - bgo#609568, bgo#637799, bgo#637854, bgo#637855, bgo#602450,
+      bgo#637307.
+- Changes from version 2.91.3:
+  + Bugs fixed:
+    - bgo#630146: Add Ovi account profile
+    - bgo#630706: Add Accept/Decline button in subscription
+      notifications.
+    - bgo#630707: show the subscription request message in the
+      accept dialog.
+    - bgo#608806, bgo#626507, bgo#631096, bgo#635513, bgo#636067,
+      bgo#636123, bgo#636202, bgo#636203, bgo#636207, bgo#636360,
+      bgo#636613, bgo#636700, bgo#636802, bgo#637097, bgo#595305,
+      bgo#597043, bgo#607146, bgo#625745, bgo#626560, bgo#626810,
+      bgo#628043, bgo#633481, bgo#633835, bgo#634197, bgo#634688,
+      bgo#634754, bgo#634912, bgo#635022, bgo#635082, bgo#635105,
+      bgo#635262, bgo#635500, bgo#635592, bgo#635681, bgo#635691,
+      bgo#547658, bgo#636063.
+- Changes from version 2.91.2:
+  + Bugs fixed: bgo#632681, bgo#550775, bgo#573283, bgo#581029,
+    bgo#609942, bgo#612205, bgo#616339, bgo#619858, bgo#619961,
+    bgo#625780, bgo#628823, bgo#630421, bgo#631946, bgo#632024,
+    bgo#632550, bgo#632564, bgo#632846, bgo#632912, bgo#632926,
+    bgo#633329, bgo#633816, bgo#633870.
+- Changes from version 2.91.1:
+  + Bugs fixed:
+    - bgo#632422: notifications show up even if I'm busy.
+    - bgo#631095, bgo#532832, bgo#594145, bgo#619901, bgo#621339,
+      bgo#629261, bgo#630188, bgo#631098, bgo#631339, bgo#631455,
+      bgo#631657, bgo#632434, bgo#594576.
+- Changes from version 2.91.0:
+  + Bugs fixed:
+    - bgo#601191: Use the size of the latest chat window when
+      opening a new a one in "one window per chat" mode.
+    - bgo#629544, bgo#629707, bgo#629734, bgo#630025, bgo#630343,
+      bgo#630709, bgo#631080.
+- Move to pkgconfig()-style BuildRequires (and to gtk3 at the same
+  time):
+  + Old ones: NetworkManager-devel, enchant-devel,
+    evolution-data-server-devel, folks-devel, gstreamer-0_10-devel,
+    gtk2-devel, iso-codes-devel, libcanberra-devel,
+    libchamplain-devel, libgeoclue-devel, libgnome-keyring-devel,
+    libnotify-devel, libwebkitgtk-devel, nautilus-sendto-devel,
+    telepathy-farsight-devel, telepathy-glib-devel,
+    telepathy-logger-devel.
+  + New ones: champlain-gtk-0.10, clutter-gtk-1.0, enchant,
+    folks-telepathy, geoclue, gnome-keyring-1, gstreamer-0.10,
+    gtk+-3.0, iso-codes, libcanberra-gtk3, libebook-1.2,
+    libnm-glib, libnotify, nautilus-sendto, telepathy-farsight,
+    telepathy-glib, telepathy-logger-0.2, webkitgtk-3.0.
+- Change pkgconfig() BuildRequires: gcr-0 to gcr-3.
+- Drop libunique-devel BuildRequires.
+- Add pkgconfig() BuildRequires: gsettings-desktop-schemas,
+  libgnome-control-center.
+- Remove --disable-gtk3 from configure as we now build against
+  gtk3.
+- Remove --with-ca-file configure flags, it has moved to
+  telepathy-gabble.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:00:52 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:14:01 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Fri Nov 19 10:16:05 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.2:
+  + Make CA cert paths configurable (bgo#634197)
+  + Fix two memory leaks.
+- Pass --with-ca-file=/etc/ssl/ca-bundle.pem to configure.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:16:54 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + bgo#631657: Empathy doesn't build with gcr-3
+  + bgo#632806: Empathy 2.32.x needs to require libnotify < 0.7
+  + bgo#632807: Empathy 2.32.x shouldn't support GTK 3
+  + bgo#631455: window resizes irreversibly when perfoming a
+    contact search
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  5 00:47:10 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0.1:
+  + Bugs fixed: bgo#631095, bgo#558802, bgo#593437, bgo#629782,
+    bgo#629912, bgo#629922, bgo#630107, bgo#630276, bgo#630427,
+    bgo#631098, bgo#630544, bgo#631049.
+  + Updated translations.
+- Drop empathy-meta-contact-icon.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Oct  3 21:22:16 CEST 2010 - vuntz@opensuse.org
+
+- Add empathy-meta-contact-icon.patch to show the metacontact icon
+  in the context menu. This is important since we don't show icons
+  in menus by default.
+
+-------------------------------------------------------------------
+Mon Sep 27 16:45:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + bgo#629736: Blacklist Haze's sip protocol
+  + Bugs fixed: bgo#629380, bgo#629957, bgo#630168, bgo#630214,
+    bgo#630400, bgo#630476
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 13:49:53 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Many meta-contacts fixes.
+  + Improve audio/video client to reduce the bandwith used by the
+    video stream.
+  + Bugs fixed:
+    - bgo#609484: Impossible to add Yahoo Japan account.
+    - bgo#598394, bgo#628993, bgo#611107, bgo#622376, bgo#625575,
+      bgo#627819, bgo#628133, bgo#628156, bgo#628338, bgo#628376,
+      bgo#628377, bgo#628596, bgo#628601, bgo#628681, bgo#628786,
+      bgo#628789, bgo#629134, bgo#629565, bgo#629594, bgo#627238,
+      bgo#628153
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  6 14:05:50 CEST 2010 - vuntz@opensuse.org
+
+- Make empathy-accounts.desktop appear where it should in the menu,
+  by replacing the categories: DesktopSettings needs to be removed,
+  and we want X-GNOME-PersonalSettings instead.
+
+-------------------------------------------------------------------
+Thu Sep  2 14:48:30 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91.1:
+  + bgo#628481: Double contact tooltips
+  + Other bugs fixed: bgo#627916, bgo#628106, bgo#628315,
+    bgo#628421, bgo#628433, bgo#628464
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 30 20:37:57 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + Many meta-contacts fixes.
+  + Allow interactive TLS certificate verification.
+  + IRC account improvements.
+  + bgo#460647
+  + bgo#588243: Pre-defined IRC channel list is way too long
+  + bgo#596086: initial empathy account wizard (Welcome Screen)
+                does not offer IRC as an account
+  + bgo#608140: dragging and dropping a chat tab hides the original
+                window
+  + bgo#627242: Some contacts stay in the contact list once
+                disconnected
+  + Other bugs fixed: bgo#611701, bgo#623164, bgo#624353,
+    bgo#626031, bgo#626544, bgo#626715, bgo#626728, bgo#626848,
+    bgo#627219, bgo#627228, bgo#627246, bgo#627360, bgo#627500,
+    bgo#627587, bgo#627706, bgo#627715, bgo#627728, bgo#627786,
+    bgo#627802, bgo#627917, bgo#627930, bgo#628011, bgo#628062,
+    bgo#628063, bgo#628064, bgo#628078, bgo#628121, bgo#628123,
+    bgo#628124, bgo#628320, bgo#614884
+  + Updated translations.
+- Drop empathy-libchamplain-0.8.patch: fixed upstream.
+- Add pkgconfig(gcr-0) BuildRequires.
+- Add geoclue Recommends since the geolocation feature needs the
+  geoclue daemon, not just the library.
+
+-------------------------------------------------------------------
+Sun Aug 29 11:44:33 CEST 2010 - vuntz@opensuse.org
+
+- Add empathy-libchamplain-0.8.patch to fix build with latest
+  libchamplain.
+
+-------------------------------------------------------------------
+Wed Aug 18 13:52:12 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Add meta-contact support.
+  + More useful error messages when failing to connect.
+  + Add option to disable logging of chats.
+  + Add more information in the 'Details' pane of the call UI.
+  + Bugs fixed:
+    - bgo#621090: Live search does not show offline contacts
+    - bgo#621642: live search should display "no match found" if
+                  thats the case
+    - bgo#622714: 'previous conversations' on a contact brings up
+                  generic dialog
+    - bgo#623934: follow LC_TIME preferred time format when
+                  printing time and date
+    - bgo#624062: GPS data precision
+    - bgo#625675: freenode should be the default irc network when
+                  creating an irc account
+    - bgo#625828: No custom presence message in tooltip
+    - bgo#625950: Remove "Ubuntu servers" from irc channel list
+    - bgo#626130: Add linking UI for Individuals
+    - bgo#626162: No audio/video icon in the contact list
+    - bgo#626620: Log In button is not enabled after all details
+                  are entered while creating IRC account
+    - bgo#626992: Back and Forward buttons in Previous
+                  conservations window are reversed
+    - bgo#626994: Rename Back and Forward buttons,in Previous
+                  Conservations > Search Tab, to Previous and Next
+    - bgo#523895, bgo#567858, bgo#621643, bgo#623139, bgo#624344,
+      bgo#625641, bgo#626009, bgo#626041, bgo#626114, bgo#626552,
+      bgo#626600, bgo#626602, bgo#626630, bgo#626636, bgo#627165
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  7 11:58:41 CEST 2010 - vuntz@opensuse.org
+
+- Drop empathy-clutter-gtk-0.90.patch: we're going back to a
+  released version of clutter-gtk, so we don't need this anymore.
+- Change libwebkit-devel BuildRequires to libwebkitgtk-devel, since
+  this package got renamed.
+
+-------------------------------------------------------------------
+Sat Aug  7 02:36:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + The audio/video window now has a "details" pane containing some
+    information about the call.
+  + Bugs fixed: bgo#599166, bgo#621629, bgo#623714, bgo#624268,
+    bgo#624462, bgo#624599, bgo#624650, bgo#625826, bgo#624412
+  + Updated translations.
+- Add folks-devel BuildRequires.
+- Add gsettings schema handling, with %glib2_gsettings_schema_*
+  macros.
+- Do not call /sbin/ldconfig in post/postun: it's not needed since
+  there's no library.
+- Pass --disable-gtk3 to force build against GTK+ 2.
+- Re-enable parallel build.
+
+-------------------------------------------------------------------
+Sun Jul 18 16:36:15 UTC 2010 - dimstar@opensuse.org
+
+- Update to 2.31.5.1:
+  + bgo#624202: empathy requires libnm_glib instead of libnm-glib.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 16 14:33:56 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.5:
+  + Add option to automatically present incoming events rather than
+    making the status icon blink.
+  + Notifications bubbles now contain more buttons (if your notify
+    server supports actions) allowing you to quickly accept or
+    decline incoming events.
+  + The audio/video client now lives in its own process:
+    'empathy-av'.
+  + Bugs fixed: bgo#585914, bgo#597124, bgo#599161, bgo#617405,
+    bgo#621753, bgo#622729, bgo#623054, bgo#623112, bgo#623117,
+    bgo#623358, bgo#623396, bgo#623679, bgo#623756, bgo#623817,
+    bgo#623914, bgo#623937, bgo#623972, bgo#624054,
+
+-------------------------------------------------------------------
+Mon Jul  5 17:39:11 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + Empathy now has an awesome contact live search feature.
+  + Empathy doesn't log messages any more but relies on a new
+    component, the telepathy-logger, to do so. As a result the
+    feature allowing you to tag contacts as favourites is now
+    built-in.
+  + The contact list and status icon are now a proper Telepathy
+    Approver. That means external applications can now approve
+    channels as well and Empathy will handle them nicely.
+  + This release makes a few steps forward to the bright GNOME 3
+    future by removing deprecated GTK+ symbols and switching from
+    GConf to GSettings.
+  + Bugs fixed: bgo#586476, bgo#588922, bgo#589225, bgo#599158,
+    bgo#608166, bgo#610956, bgo#616362, bgo#619873, bgo#620903,
+    bgo#621023, bgo#621089, bgo#621409, bgo#621545, bgo#621703,
+    bgo#621789, bgo#621797, bgo#621894, bgo#621998, bgo#622201,
+    bgo#622266, bgo#622273, bgo#622368, bgo#622370, bgo#622381,
+    bgo#622491, bgo#622557, bgo#622578, bgo#622714
+  + Updated translations.
+- Changes from version 2.31.3:
+  + Significant improvements to the spell checker.
+  + Fix connection issues with Facebook accounts. If you
+    experienced issues with previous versions you should recreate
+    your account and give it another try.
+  + Bugs fixed: bgo#520207, bgo#579812, bgo#604159, bgo#611466,
+    bgo#611894, bgo#612523, bgo#616603, bgo#616616, bgo#617971,
+    bgo#618993, bgo#619378, bgo#619488, bgo#619489, bgo#619678,
+    bgo#619701, bgo#619702, bgo#619736, bgo#619862, bgo#619863,
+    bgo#619980, bgo#620439, bgo#620474, bgo#620476, bgo#620657,
+    bgo#620760
+  + Updated translations.
+- Changes from version 2.31.2:
+  + Use icons from gnome-icon-theme 2.30.
+  + Bugs fixed: bgo#606738, bgo#617909, bgo#618401, bgo#618753,
+    bgo#618883, bgo#618969
+  + Updated translations.
+- Changes from version 2.31.1:
+  + Use status icons from the icon theme.
+  + The conversation window is now able to "undo" the closing
+    of a tab.
+  + Bugs fixed: bgo#539765, bgo#579813, bgo#579936, bgo#588955,
+    bgo#598446, bgo#599162, bgo#602420, bgo#602937, bgo#603606,
+    bgo#604475, bgo#607446, bgo#608104, bgo#609823, bgo#609832,
+    bgo#610477, bgo#612020, bgo#612185, bgo#612390, bgo#612409,
+    bgo#612864, bgo#612949, bgo#613043, bgo#613044, bgo#613243,
+    bgo#613382, bgo#613558, bgo#613583, bgo#613603, bgo#613930,
+    bgo#614002, bgo#614012, bgo#614052, bgo#614162, bgo#614236,
+    bgo#614375, bgo#614524, bgo#614562, bgo#614862, bgo#614874,
+    bgo#614944, bgo#615052, bgo#615135, bgo#615976, bgo#616439,
+    bgo#616859, bgo#617262, bgo#533638, bgo#608103
+  + Updated translations.
+- Add telepathy-logger-devel BuildRequires and telepathy-logger
+  Requires.
+- Remove gconf schema handling.
+- Rebase empathy-clutter-gtk-0.90.patch.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:49:05 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1.1:
+  + bgo#616616: Possible to open multiple accounts dialog
+  + bgo#617971: Empathy silently fails importing contacts from
+                Pidgin
+  + bgo#618401: Empathy should use port 8001 to connect to freenode
+                irc
+  + bgo#618883: IRC account: don't allow to save changes when
+                editing network details
+  + bgo#619701: Avatar chooser can enter infinite loop
+  + bgo#619736: crash on 0-byte file in log search
+  + bgo#619862: "Network error" on connecting to Facebook Chat
+  + bgo#619863: "Previous Conversations" Search entry is not
+                activatable
+  + bgo#619980: empathy hangs with high cpu load when changing
+                avatar
+  + bgo#620903: some messages get dropped when using adium themes
+  + bgo#621023: empathy does not set geoclue requirements before
+                asking for address/position
+  + bgo#608103: Missing image icon shows up when contact has no
+                avatar
+  + bgo#618167: Crash when trying to start a camera preview without
+                a camera
+  + Other bugs fixed: bgo#606738, bgo#616859, bgo#617262,
+    bgo#617909, bgo#618969, bgo#619702, bgo#620439, bgo#620474,
+    bgo#620476, bgo#620657
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  4 16:14:44 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Apr 29 14:19:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + bgo#616629, crash in XRootWindow
+  + bgo#616301, [patch] crash when closing a call
+  + bgo#616660, empathy-accounts g-c-c module needs to setup l10n
+  + bgo#616711, "FreeNode" in IRC server list is incorrectly
+    capitalized
+- Changes from version 2.30.0.2:
+  + bgo#615027: empathy crashed with SIGSEGV in g_object_unref()
+  + bgo#615058: Wrong account name when using the assistant
+  + bgo#615164: Keyboard controls for rearranging tabs are reverse
+    from changing tabs
+  + bgo#615734: Account creation wizard fails to create the last
+    account
+  + bgo#615827: generic widget should put advanced section into a
+    scrolled window
+  + bgo#615829: Crash when trying to add an account
+  + bgo#615970: Crashes when haze crashes
+  + bgo#616012; Tabs menu doesn't update when tabs are moved with
+    hotkeys
+  + bgo#616267: Offline contacts not shown by default
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  9 19:03:24 CEST 2010 - vuntz@opensuse.org
+
+- Add empathy-clutter-gtk-0.90.patch to fix detection of
+  libchamplain and therefore build the map feature.
+- Rename im-xmpp icons to im-jabber (already done in git) to have
+  the jabber icon available.
+
+-------------------------------------------------------------------
+Fri Apr  9 17:52:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0.1:
+  + Fix various crashes (bgo#612363, bgo#614874, bgo#615027).
+  + bgo#612949: contact list is empty for a jabber account with a
+                lot of contacts
+  + bgo#613243: Join room should be greyed out for AIM
+  + bgo#613382: Previous/Next Tab menu items aren't disabled if at
+                the first/last tab and gtk-keynav-wrap-around is 0
+  + bgo#613930: empathy incorrectly updates our own IRC nick for
+                /me
+  + bgo#614002: Shouldn't request RoomList channel if not supported
+                by connection
+  + bgo#615058: Wrong account name when using the assistant
+  + bgo#612020: Empathy fails to initiate a audio/video call over
+                XMPP
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 16:53:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Make sure that the accounts dialog and debug windows are
+    properly translated.
+  + Fixed the accounts dialog to fit better on smaller screens.
+  + Bugs fixed:
+   - bgo#613892, Should start hidden when activated
+   - bgo#613596, bgo#601693, bgo#612557, bgo#613117, bgo#613272,
+     bgo#613437, bgo#613793, bgo#614155, bgo#613772
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 15 22:20:50 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.93:
+  + bgo#566832: Don't reset status to available unlocking the
+    screen
+  + bgo#609001: Clicking on the tray icon should close roster when
+    open
+  + bgo#611525: Separate the debug window into its own process.
+  + bgo#611972: Support marking contacts as favorites
+  + bgo#611998: Do not use constant in gettext expressions
+  + bgo#612381: accounts pane is still twiddleable underneath
+    assistant
+  + bgo#612433: Window title for the accounts dialog should match
+    the name in the launcher
+  + bgo#612448: Display offline contacts and sort by status by
+    default
+  + bgo#612450: Side bar should display the audio input page by
+    default
+  + bgo#612461: Deal with new butterfly using the conference
+    interface
+  + bgo#612519: Handle a butterfly network ID migration
+  + bgo#612672: Wrong folder used for saving received files
+  + bgo#612718: Invite participant dialog show contact on all
+    network
+  + bgo#612946: Receive note path via DnD from tomboy
+
+-------------------------------------------------------------------
+Tue Mar  9 20:38:43 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + bgo#330394: im-* icons broken
+  + bgo#607626: buddy info tooltip should be prevented from showing
+    if a popup menu is shown in the contact list
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  4 23:07:59 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91.2:
+  + Some issues regarding the account assistant have been fixed,
+  + Bugs fixed:
+    - bgo#525576: URL in contact's status are not clickable
+    - bgo#601089: "Network Error" on any new Google Talk account
+    - bgo#611753: "B)" and "B-)" both present the face-cool, not
+      following the Icon Naming Spec
+    - bgo#611792: Crash through empathy-accounts wizard
+    - bgo#611794: Empathy asserts if icon not available
+    - bgo#611817: Remove salut_created gconf key
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  3 22:03:12 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91.1:
+  + Bugs fixed:
+    - bgo#598905: Should request channels via the channel
+      dispatcher
+    - bgo#518414: Conversation logger should be a separated process
+    - bgo#599189: Should fetch logs asynchronously
+    - bgo#603463: the name in accounts-dialog does not change after
+      creation
+    - bgo#608111: If first-run wizard is cancelled, it is never
+      seen again.
+    - bgo#610751: [PATCH] Add missing libm linking
+    - bgo#610769: Add search support to the Debug window
+    - bgo#610847: Infobar message is unclear when presence is
+      offline
+    - bgo#610886: Remove inset framing from the main window
+    - bgo#610942: Crash when adding new account using
+      control-center module
+    - bgo#611062: Map is not displayed if contact only publishes
+      his lon/lat
+    - bgo#611071: Calls Close() three times on IM channels.
+    - bgo#611126: When the existing window is activated it is
+      marked as skip task bar
+    - bgo#611131: account assistant does not appear when accounts
+      list is Empathy until you run Edit->Accounts
+    - bgo#611179: TPL 0.1.1 update: review needed
+    - bgo#611309: Use emblem-favorite icon
+    - bgo#611565: Doesn't set status to online when adding initial
+      accounts
+    - bgo#611675: Assistant: set better display name
+    - bgo#611224: new account initially shows offline/disabled
+      status
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 21:12:02 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + Widget to configure Facebook accounts.
+  + Accounts dialog is now an application reachable from the GNOME
+    preferences.
+  + Fix various crashes.
+  + Bugs fixed:
+    - bgo#609737, "All" entry in room list dialog's account chooser
+                  mis-sorted
+    - bgo#608974, declining subscription doesn't remove the user
+                  from publish/local-pending
+    - bgo#608975, Empathy calls SetAlias on a contact pending
+                  subscription
+    - bgo#608979, Once chat window is open Empathy acks messages
+                  immediately
+    - bgo#609220, accounts are not created during initial setup
+    - bgo#609319, Disable Empathy's "Contact goes online" and
+                  "Contact goes offline" sound notifications by
+                  default
+    - bgo#609439, Importing accounts from the assistant seems
+                  broken
+    - bgo#609843, Crashed when I closed one tab and hence switched
+                  to another tab for a disconnected account
+    - bgo#610032, Do not show "respond" in "contact has gone
+                  offline" notification
+    - bgo#610380, In first run, Link-local accounts require some
+                  typing before 'apply' becomes available
+    - bgo#573194, bgo#585089, bgo#607330, bgo#608053, bgo#608113,
+      bgo#608690, bgo#608813, bgo#608863, bgo#609030, bgo#609343,
+      bgo#609352, bgo#609519, bgo#609537, bgo#609567, bgo#609574,
+      bgo#609575, bgo#609701, bgo#609822, bgo#609995, bgo#610461,
+      bgo#608882, bgo#609645, bgo#607908,
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 23:36:02 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + Bugs fixed:
+    - bgo#606329, Buttons in GtkInfoBar are too big.
+    - bgo#608813, EmpathyIdle singleton can be referenced by async
+                  functions after being finalized (crasher)
+    - bgo#608974, declining subscription doesn't remove the user
+                  from publish/local-pending
+    - bgo#608975, Empathy calls SetAlias on a contact pending
+                  subscription
+    - bgo#608979, Once chat window is open Empathy acks messages
+                  immediately
+    - bgo#607868, bgo#608053, bgo#608690, bgo#609030, bgo#608882
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 25 23:17:36 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.6:
+  + Improvements to the account dialog.
+  + Addition of a search bar in chat windows.
+  + Use of the new ContactCapabilities interface when available to
+    check if your contacts support file transfer and audio/video
+    calls
+  + Don't dispatch tube channels any more. All tubes applications
+    should now implement the Handler interface to interact properly
+    with mission-control 5
+  + Bugs fixed:
+    - bgo#603472, Rename "Hidden" to "Invisible"
+    - bgo#573407, Empathy and telepathy-idle don't pass on server
+                  commands to server
+    - bgo#603498, Escaped text displayed in notifications
+    - bgo#607306, /join fails to work on the latest version of
+                  empathy
+    - bgo#607925, edit account from infobar does not open the right
+                  account
+    - bgo#608043, Should ellipsize text in connection error
+                  infobars
+    - bgo#604706, infobar shows no icon if the presence is empty
+    - bgo#606329, bgo#585168, bgo#596575, bgo#599159, bgo#599163,
+      bgo#599164, bgo#600693, bgo#600949, bgo#606642, bgo#606753,
+      bgo#607207, bgo#607436, bgo#607455, bgo#607463, bgo#607868,
+      bgo#604700, bgo#605309, bgo#605532, bgo#606510, bgo#585364
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Jan 13 02:25:39 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5.1:
+  + Fix build :-)
+- Changes from version 2.29.5:
+  + Contact list improvements to make it harder to accidentally
+    call a contact when you just intended to select a row.
+  + The accounts dialog has been reworked to reduce the number of
+    steps when adding a new account.
+  + Nick auto-completion has been improved in rooms
+  + Fix a bunch of crashes and a regression when starting a video
+    call
+  + Bugs fixed:
+    - bgo#576434, ellipsize long status messages in the status
+                  combobox
+    - bgo#593268, Make Enable/Disable accounts easier again
+    - bgo#599182, Remove useless screen when adding a new account
+    - bgo#603976, Don't re-enable chat window once reconnected
+    - bgo#604347, /join command doesn't accept multi rooms
+    - bgo#604481, StatusIcon no longer gets status message, only
+                  says 'available'
+    - bgo#604702, support creation of PMUCs using the Conference
+                  interface
+    - bgo#605213, Move register radio buttons to the account widget
+    - bgo#605822, protocols icons should be hidden by default
+    - bgo#601379, error notification should disappear when account
+                  is disabled
+    - bgo#604154, when discarding changes on create account the
+                  "new bla account" should be removed
+    - bgo#554767, bgo#590051, bgo#593483, bgo#599779, bgo#600030,
+      bgo#603485, bgo#605529, bgo#605549, bgo#605689, bgo#605818,
+      bgo#605848, bgo#606220, bgo#606513, bgo#604628
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Dec 22 17:07:33 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.4:
+  + Ability to start SIP video calls using the new "New Call"
+    dialog.
+  + The contact list can now display the protocol used by contacts.
+  + The accounts dialog shows the accounts' status
+    (enabled/disabled, available/busy/away/offline, etc.).
+  + Add more icons for protocols.
+  + Bugs fixed:
+    - bgo#602821, accounts do not reconnect after toggling
+                  enable/disable
+    - bgo#603980, new messages mixed with old in new conversation
+                  windows
+    - bgo#603490, bgo#570399, bgo#576434, bgo#576542, bgo#582596,
+      bgo#582599, bgo#586290, bgo#588812, bgo#598964, bgo#602288,
+      bgo#603393, bgo#603485, bgo#603502, bgo#603508, bgo#603545,
+      bgo#603593, bgo#603634, bgo#603877, bgo#603976, bgo#604003,
+      bgo#604097, bgo#604166, bgo#604181, bgo#604254, bgo#604554,
+      bgo#604567, bgo#599153
+  + Updated translations.
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+
+-------------------------------------------------------------------
+Sun Dec  6 02:55:33 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + This release fixes a lot of regressions that have been
+    introduced in 2.29.2 by the port to TpAccount.
+  + A new widget to configure SIP accounts has been added.
+  + It is now possible to send files using Drag and Drop.
+  + Bugs fixed:
+    - bgo#548701, improve chat window title with multi tabs
+    - bgo#571642, when an irc user changes nick, empathy doesn't indicate that the name changed
+    - bgo#599640, Messages are not correctly escaped for adium themes
+    - bgo#603163, Render emails in format <email@example.com> to links
+    - bgo#601235, bgo#581626, bgo#585582, bgo#586678, bgo#590700,
+      bgo#598381, bgo#599315, bgo#600800, bgo#601697, bgo#601807,
+      bgo#602013, bgo#602066, bgo#602324, bgo#602572, bgo#602649,
+      bgo#602852, bgo#603361, bgo#603384, bgo#595226, bgo#600946,
+      bgo#601288
+  + Updated translations.
+- Changes from version 2.29.2:
+  + Empathy now uses the TpAccount API.
+  + A subset of IRC commands such as "/join" are now supported.
+  + It is now possible to join password protected chat rooms (a bug
+    in telepathy-idle makes this not work for IRC at the moment).
+  + Better error reporting to users.
+  + Bugs fixed:
+    - bgo#600705, accounts created in the assistant don't get a
+      nice display name
+    - bgo#600798, "Previous conversations" is always unsensitive
+    - bgo#601233, Room menu is insensitive
+    - bgo#601796, Newly created account appears twice in the
+      treeview
+    - bgo#591360, bgo#599612, bgo#523918, bgo#573407, bgo#575763,
+      bgo#579341, bgo#580254, bgo#581789, bgo#583208, bgo#583919,
+      bgo#585340, bgo#586098, bgo#586287, bgo#587216, bgo#589263,
+      bgo#595922, bgo#597678, bgo#597819, bgo#598550, bgo#599169,
+      bgo#599386, bgo#599431, bgo#600023, bgo#600427, bgo#600446,
+      bgo#600473, bgo#600537, bgo#600551, bgo#600671, bgo#600713,
+      bgo#600732, bgo#600958, bgo#600961, bgo#600962, bgo#601150,
+      bgo#601190, bgo#601336, bgo#601348, bgo#601691, bgo#601807,
+      bgo#602013, bgo#602066, bgo#599176, bgo#600946, bgo#593327
+  + Updated translations.
+- Changes from version 2.29.1:
+  + The megaphone and nothere applets were removed: they were not
+    really maintained and were about to die with GNOME 3 anyway.
+  + The libempathy and libempathy-gtk are not shipped as shared
+    libraries anymore.
+  + The Empathy plugin for nautilus-sendto has been moved in
+    Empathy itself.
+  + Bugs fixed:
+    - bgo#589408, Add respond button to notifications
+    - bgo#594776, cannot add yahoo account
+    - bgo#598355, Use pretty names for protocol in account display
+      names
+    - bgo#594893, icq accounts import from pidgin not working
+    - bgo#593318, bgo#591360, bgo#594619, bgo#595275, bgo#598423,
+      bgo#598452, bgo#599612, bgo#581488, bgo#520206, bgo#532737,
+      bgo#550127, bgo#571876, bgo#584034, bgo#585957, bgo#589409,
+      bgo#593334, bgo#593883, bgo#594160, bgo#594308, bgo#594569,
+      bgo#594653, bgo#594654, bgo#594890, bgo#594906, bgo#594908,
+      bgo#594997, bgo#595180, bgo#595417, bgo#595521, bgo#595666,
+      bgo#595737, bgo#595921, bgo#595945, bgo#595962, bgo#596044,
+      bgo#596075, bgo#596101, bgo#596303, bgo#596317, bgo#596956,
+      bgo#597125, bgo#597289, bgo#597293, bgo#597416, bgo#597680,
+      bgo#598332, bgo#598354, bgo#598408, bgo#598432, bgo#598453,
+      bgo#598628, bgo#598954, bgo#599039, bgo#599042, bgo#599086,
+      bgo#599087, bgo#599243, bgo#599386
+  + Updated translations.
+- Add nautilus-sendto-devel BuildRequires.
+- Create a new nautilus-sendto-plugin-empathy subpackage.
+- Remove gnome-applets-empathy, python-empathy and devel
+  subpackages as they were removed upstream; also remove
+  gnome-panel-devel, python-gtk-devel, python-xml BuildRequires,
+  and obsolete the subpackages too.
+- Add empathy-rpmlintrc for the obsoleted not provided packages.
+- Remove gnome-common BuildRequires.
+
+-------------------------------------------------------------------
+Fri Dec  4 10:28:27 CET 2009 - dimstar@opensuse.org
+
+- Disable parallel build for now, to fix the build.
+
+-------------------------------------------------------------------
+Sat Oct  3 02:07:57 CEST 2009 - lmedinas@opensuse.org
+
+- Update to version 2.28.0.1:
+  + Fixed bgo#589408, Add respond button to notifications
+  + Fixed bgo#595945, Crash when doing nothing
+  + Fixed bgo#595962, Criticals endlessly if you open and contract
+    a group too fast.
+  + Fixed bgo#596044, --hide-contact-list doesn't work
+  + Fixed bgo#596303, Missing file fallback for Adium themes not
+    implemented.
+  + Fixed #596317, Adium themes always attempt to combine
+    consecutive messages.
+  + Fixed #597125, libnotify chat bubbles aren't displayed once the
+    first bubble disappeared
+  + Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:13:55 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Bugs fixed: bgo#593318, bgo#594893, bgo#595275, bgo#520206,
+    bgo#532737, bgo#550127, bgo#593334, bgo#593883, bgo#594160,
+    bgo#594569, bgo#594619, bgo#594653, bgo#594776, bgo#594890,
+    bgo#594906, bgo#594908, bgo#594997, bgo#595180, bgo#595417,
+    bgo#595521, bgo#595666
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:40:32 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Bugs fixed: bgo#593318, bgo#583897, bgo#459014, bgo#459546,
+    bgo#539142, bgo#547323, bgo#585226, bgo#587117, bgo#587883,
+    bgo#590118, bgo#590165, bgo#592737, bgo#592997, bgo#592998,
+    bgo#593009, bgo#593018, bgo#593041, bgo#593054, bgo#593095,
+    bgo#593101, bgo#593158, bgo#593161, bgo#593207, bgo#593209,
+    bgo#593224, bgo#593237, bgo#593248, bgo#593257, bgo#593285,
+    bgo#593717, bgo#594139
+  + Updated translations.
+- Drop empathy-fix-pkg-config.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug 31 13:43:48 CEST 2009 - vuntz@novell.com
+
+- Add empathy-fix-pkg-config.patch to not have empathy-devel
+  require telepathy-mission-control-devel.
+
+-------------------------------------------------------------------
+Sun Aug 30 12:09:46 CEST 2009 - vuntz@novell.com
+
+- Remove telepathy-mission-control-devel Requires from devel
+  package, and add telepathy-glib-devel instread.
+
+-------------------------------------------------------------------
+Wed Aug 26 22:14:55 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.91.1:
+  + We require gnome-doc-utils 0.17.3 for Mallard
+  + Some fixes so distcheck passes
+- Changes from version 2.27.91:
+  + This version needs mission-control-5 instead of the now
+    deprecated mission-control-4. As result,
+    libmission-control-client and libtelepathy are not required
+    anymore.
+  + Empathy can now optionally use ConnMan instead of
+    NetworkManager.
+  + libgnome-keyring is now required
+  + Empathy now uses libunique to prevent running it twice.
+  + Bugs fixed: bgo#588878, bgo#494007, bgo#526360, bgo#571989,
+    bgo#576467, bgo#580134, bgo#582191, bgo#582810, bgo#585322,
+    bgo#585443, bgo#585843, bgo#585844, bgo#585867, bgo#585993,
+    bgo#586401, bgo#586977, bgo#587161, bgo#587514, bgo#587634,
+    bgo#587706, bgo#587803, bgo#588252, bgo#588840, bgo#589091,
+    bgo#589335, bgo#589846, bgo#590029, bgo#590118, bgo#590165,
+    bgo#590756, bgo#590924, bgo#590956, bgo#590962, bgo#590982,
+    bgo#591058, bgo#591199, bgo#591247, bgo#591335, bgo#591468,
+    bgo#591543, bgo#591582, bgo#591602, bgo#591612, bgo#592005,
+    bgo#592052
+  + Updated translations.
+- New BuildRequires libchamplain-devel, geoclue-devel,
+  gnome-keyring-devel, gstreamer-0_10-devel, libunique-devel and
+  NetworkManager-devel.
+- Remove libtelepathy-devel and telepathy-mission-control-devel
+  BuildRequires.
+- Add Requires on telepathy-mission-control.
+
+-------------------------------------------------------------------
+Wed Jun 17 05:55:05 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + Bugs fixed: bgo#459161, bgo#494007, bgo#545282, bgo#547327,
+    bgo#579724, bgo#579940, bgo#584120, bgo#584122, bgo#586967,
+    bgo#588498, bgo#588662, bgo#588810, bgo#588886, bgo#589091,
+    bgo#589830, bgo#589846,
+  + Updated translations.
+- Changes from version 2.27.4:
+  + Bugs fixed: bgo#584703, bgo#459161, bgo#494532, bgo#520972,
+    bgo#536383, bgo#556237, bgo#560159, bgo#562468, bgo#563678,
+    bgo#565494, bgo#571989, bgo#574771, bgo#575008, bgo#575667,
+    bgo#579151, bgo#579893, bgo#579940, bgo#580631, bgo#580777,
+    bgo#582598, bgo#582810, bgo#585031, bgo#585053, bgo#585380,
+    bgo#585475, bgo#585522, bgo#585601, bgo#585777, bgo#585788,
+    bgo#585882, bgo#585885, bgo#585887, bgo#586059, bgo#586102,
+    bgo#586133, bgo#586249, bgo#586329, bgo#586352, bgo#586368,
+    bgo#586382, bgo#586387, bgo#586481, bgo#586645, bgo#586734,
+    bgo#587365, bgo#587446, bgo#587508, bgo#587817, bgo#587953,
+    bgo#587958, bgo#588021, bgo#586284
+   + Updated translations.
+- Split empathy package in empathy, gnome-applets-empathy and
+  python-empathy.
+- Recommends telepathy-butterfly, to have a better msn experience.
+- Recommends telepathy-idle, to have irc working by default.
+- Use libexecdir for the applets.
+
+-------------------------------------------------------------------
+Wed Jun 17 04:31:53 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + New features:
+    - Support for Adium Message Style themes
+    - Geolocalisation support
+  + Make file transfer more solid.
+  + Make sametime support official
+  + UI fixes.
+  + Bugs fixed: bgo#522069, bgo#548707, bgo#548716, bgo#560787,
+    bgo#562981, bgo#563675, bgo#563896, bgo#564259, bgo#574478,
+    bgo#574878, bgo#574980, bgo#575415, bgo#576405, bgo#578497,
+    bgo#579725, bgo#579992, bgo#580921, bgo#582191, bgo#582736,
+    bgo#582773, bgo#582774, bgo#583548, bgo#583785, bgo#584061,
+    bgo#584102, bgo#584147, bgo#584206, bgo#584462, bgo#584463,
+    bgo#584518, bgo#584635, bgo#584639, bgo#584672, bgo#584755,
+    bgo#584807, bgo#584830, bgo#584924, bgo#584989, bgo#585055,
+    bgo#585078, bgo#585080, bgo#585092, bgo#585201, bgo#585231,
+    bgo#585279, bgo#585640, bgo#585669, bgo#585788, bgo#571666,
+    bgo#571667
+  + Updated translations.
+- Remove libglade2-devel Requires from devel package.
+- Add libwebkit-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed May 27 14:07:26 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Fixed bgo#580922, Conversation menu is dead to me
+  + Fixed bgo#582773, Empathy puts cheesy strings in my
+    subscription requests
+  + Fixed bgo#583391, Python binding for pyempathygtk are broken
+  + Fixed bgo#583430, new editable status doesn't behave properly
+  + Fixed bgo#583558, Rename OfferStreamTube and AcceptStreamTube
+    to Offer and Accept
+  + Fixed bgo#583566, Add View top level menu
+  + Fixed bgo#583785, Display a summary at the end of configure
+  + Fixed bgo#581871, "join chatroom" dialog doesn't report errors
+  + Updated translations.
+- Add enchant-devel and iso-codes-devel BuildRequires.
+- Remove libglade2-devel BuildRequires.
+- Remove non-existing --enable-voip argument from configure.
+- Add py_requires.
+
+-------------------------------------------------------------------
+Sun May 24 23:35:42 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1.1:
+  + Fix ABI version to not conflict with 2.26 branch
+  + Fix various coding style
+  + Fixed bgo#582589, Should allow users to initially have either
+    audio or audio/video calls
+  + Updated translations.
+- Drop lockdown.patch: the patch needed rebasing. I've
+  reimplemented the features for upstream and attach the patch to
+  bugs upstream. I don't think we want to have those patches in the
+  packages, since they don't make sense if upstream doesn't accept
+  them, so I didn't add the new patches here.
+
+-------------------------------------------------------------------
+Tue May 19 05:19:48 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Fixed bgo#582641, crash in Empathy Instant Messenger: Making a
+    call to a googl...
+  + Fixed bgo#501519, Empathy API need documentation
+  + Fixed bgo#504277, Empathy won't use 2nd and further protocols a
+    connection manager provides
+  + Fixed bgo#530119, display remote caller in the call window
+  + Fixed bgo#539506, First message in conversation has no
+    timestamp
+  + Fixed bgo#544678, Can't change account photo/avatar
+  + Fixed bgo#548704, "Add" button requires further action but
+    lacks an ellipsis
+  + Fixed bgo#549366, Should use SimplePresence
+  + Fixed bgo#549641, Should use Contacts
+  + Fixed bgo#561033, Work on the documentation
+  + Fixed bgo#566905, avatar button is too tiny
+  + Fixed bgo#568403, Add header file in documentation
+  + Fixed bgo#568562, ghelp link broken in documentation
+  + Fixed bgo#570346, EmpathyTpChat should use the Group SelfHandle
+    if present
+  + Fixed bgo#570545, Huge memory leak after opening some contacts
+    discussion windows
+  + Fixed bgo#574626, No obvious way to display FT manager
+  + Fixed bgo#575090, Notifications of new messages stop working
+    after closing the chat window
+  + Fixed bgo#575415, Should switch from libglade to GtkBuilder
+  + Fixed bgo#575442, "Call" string needs context for translation
+  + Fixed bgo#575817, empathy_tp_tube_new_stream_tube should allow
+    NULL as parameters
+  + Fixed bgo#576384, "accept incoming call" dialog brings roster
+    to current workspace
+  + Fixed bgo#576394, "Send Video" button and "Call -> Send video"
+    menu entry are not synced
+  + Fixed bgo#577026, Sending slash-prefixed messages on IRC is a
+    security risk.
+  + Fixed bgo#577427, Port to latest tp-glib API
+  + Fixed bgo#578356, Asserts when reconnecting to a chat room.
+  + Fixed bgo#578399, Change to supplying spelling suggestions in
+    submenu
+  + Fixed bgo#579139, memleak in
+    log_store_empathy_get_messages_for_file
+  + Fixed bgo#579148, Improves the Join New room UI by adding
+    columns, changing the UI
+  + Fixed bgo#579553, Serveral memory leaks in empathy.
+  + Fixed bgo#579735, add empathy_tp_tube_call_when_ready ()
+  + Fixed bgo#579780, Several functions should be _dup_foo instead
+    of _get_foo
+  + Fixed bgo#579800, adding or removing an IRC account causes a
+    dialog to pop up
+  + Fixed bgo#579971, Try to access to a NULL GtkEntry when adding
+    a new contact
+  + Fixed bgo#580097, Dispaly transfer speed, and make remaining
+    time more dynamic
+  + Fixed bgo#580203, Theoretical race connecting to Received.
+  + Fixed bgo#580771, Video playback should have a fullscreen mode
+  + Fixed bgo#582751, No menu icon = no smiley
+  + Fixed bgo#563222, Wrong "time remaining" estimation when
+    sending a file
+  + Fixed bgo#579484, New "join chatroom" dialog doesn't get list
+    of rooms when room list is expanded
+  + Fixed bgo#579485, "Join Room" dialog should allow sorting the
+    list of rooms
+  + Fixed bgo#571664, [1/3] Empathy should support Geolocation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May 10 09:27:58 CEST 2009 - mboman@suse.de
+
+- Use %suse_update_desktop_file -i -N "Empathy" -G "Instant
+  Messenger" empathy Internet
+
+-------------------------------------------------------------------
+Tue Apr 14 16:23:52 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Fixed bgo#566905, avatar button is too tiny
+  + Fixed bgo#568562, ghelp link broken in documentation
+  + Fixed bgo#575817, empathy_tp_tube_new_stream_tube should allow
+    NULL as parameters
+  + Fixed bgo#576375, empathy build fails due to missing file in
+    documentation
+  + Fixed bgo#577825, empathy-tp-contact-factory:
+    get_requestable_channel_classes_cb: fixed_prop is leaked
+  + Fixed bgo#577826, dispatcher_connection_ready_cb: capabilities
+    is leaked
+  + Fixed bgo#577829, empathy_smiley_manager_parse: string leaked
+  + Fixed bgo#578356, Asserts when reconnecting to a chat room.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  4 20:19:50 CEST 2009 - vuntz@novell.com
+
+- Add missing libcanberra-devel Requires to devel package.
+
+-------------------------------------------------------------------
+Sat Apr  4 11:47:16 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.0.1:
+  + Fixed bgo#556173, crash in Empathy Instant Messenger: Chatting
+    using the MSN a...
+  + Fixed bgo#571745, crash in Empathy Instant Messenger: Nothing,
+    empathy was in ...
+  + Fixed bgo#575681, UNIX socket address is supposed to be an 'ay'
+    and not a 's'
+  + Fixed bgo#576386, No video received
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:52:00 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Fix various VoIP bugs
+  + Hook up audio mute button
+  + Set the camera button sensitive while connected and there is a
+    video input
+  + Set empathy's media role to phone for so pulse can do policy on
+    it
+  + Refactor log backend, it now make possible to implement other
+    backends to read logs from other clients, and it logs messages
+    sooner to avoid losing messages if empathy crash at any time
+  + Translation updates
+- Update lockdown.patch (sent changes upstream)
+- Don't package omf files twice (they are in the lang package too).
+- Remove glib2-devel and gtk-doc from BuildRequires
+- Remove libxml2-devel from Requires in -devel package
+- Replace %setup -q -n %{name}-%{version} with %setup -q
+
+-------------------------------------------------------------------
+Fri Mar  6 14:20:12 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + Hardcode some a default codec preferences
+  + Hook up the video input sidebar item
+  + Hook up audio input panel
+  + Use undrafted file transfer spec.
+  + bgo#572875, Missing translator comments
+  + Updated translations.
+- Don't use AutoReqProv: it's default now.
+- Use makeinstall.
+- Remove wrong removal of desktop file.
+
+-------------------------------------------------------------------
+Tue Feb 17 04:05:34 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + Set the intial volume button level to a more correct one.
+  + Set the camera button insensitive after a call.
+  + Hook up the volume button.
+  + Hook up DTFM support.
+  + Notify when receiving an invitation to join a MUC.
+  + Save status message on NetworkManager disconnect and restore on
+    reconnect.
+  + bgo#525559: Ignore muc invitations.
+  + bgo#562109: Spacing in contact information dialog.
+  + bgo#570357: make install fails on master.
+  + bgo#570397: Menu icon for 'Hang Up' is too large in call UI
+    window.
+  + bgo#571184: Event toolip displayes (null) if no message was
+    provided.
+  + bgo#571635: Minor string fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb  5 13:00:37 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.90:
+  + Rewrite Voice/Video call UI, and use farsight2 instead of
+    stream-engine
+  + Add libnotify support
+  + Add EmpathyContactSelector
+  + Renamed G_STR_EMPTY to EMP_STR_EMPTY
+  + Update the user documentation
+  + Rename _new -> _dup_singleton
+  + Remove usage of EmpathyTpGroup from EmpathyTpCall
+  + Remove some usage of EmpathyTpGroup from EmpathyTpChat
+  + Rework internal dispatcher
+  + Updated translations.
+  + Bugs fixed: bgo#548768, bgo#562554, bgo#566549, bgo#566676,
+    bgo#569884, bgo#569901, bgo#570066, bgo#570080
+- Add telepathy-farsight-devel, libnotify-devel BuildRequires.
+- Remove telepathy-stream-engine Requires.
+- Move gtk-doc files to devel package.
+- Remove checks for old versions of openSUSE.
+
+-------------------------------------------------------------------
+Thu Jan  8 11:13:12 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.4:
+  + Add sound notifications using libcanberra-gtk
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Dec 29 08:35:38 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + Refactor EmpathyChatView to make possible to use other backends than
+    GtkTextView. Required to use Webkit and adium themes
+  + Use gi18n-lib.h instead of gi18n.h for libraries
+  + Add empathy_init(), empathy_gtk_init(). They have to be called by any
+    process using libempathy and libempathy-gtk
+  + Do not make allow to add a contact to accounts that do not have contact
+    list, like IRC or SIP
+  + Improve URI regex
+  + Drop libgnomeui dependency
+  + Use GTK+ 2.14.0 and gtk_show_uri
+  + Fixed bgo#552296, Autocompletion on contact names for "new message"
+    dialog box
+  + Fixed bgo#562873, doesn't build with werror on x86_64
+  + Fixed bgo#563713, linkifies "@name", and captures the next word
+  + Use GRegex instead of custom code and use a new regex to detect URIs
+  + Replace Q_() with C_() for translation context
+  + Add file transfer support
+  + Use markup for chat-window tooltips
+  + Convert avatar to fit the resolution and size requirements
+  + Fixed bgo#554938, Misspelled word in docs, help/C/empathy.xml:114
+  + Fixed bgo#496100, Invites to Chat Rooms unimplemented
+  + Fixed bgo#541060, import accounts from Pidgin when first run
+  + Fixed bgo#542176, EmpathyChatroomManager doesn't contain active chat
+    rooms
+  + Fixed bgo#558370, empathy do not link on os x 10.5
+  + Fixed bgo#560387, Crash when joining a chatroom
+  + Fixed bgo#560611, Cannot distinguish IRC chats: They all have the label
+    "Conversation"
+  + Fixed bgo#560622, Show account name in conversation label
+  + Fixed bgo#562071, Empathy logview crashes if no accout exitsts
+  + Fixed bgo#562588, Bugfix for the compile time
+    libempathy/empathy-dispatcher.c
+- Respin empathy-lockdown.patch
+
+-------------------------------------------------------------------
+Tue Oct 21 21:44:48 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Fixed bgo#544029, empathy's configure.ac doesn't detect python 2.6
+  + Fixed bgo#553066, Some strings are not translatable in megaphone-applet
+  + Fixed bgo#554284, Bad email link
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Oct  1 07:43:45 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Fix for GTK+ adjustment policy enforcement
+  + Bugs fixed: bgo#548668, bgo#550652
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Sep 22 18:31:15 CDT 2008 - gburt@suse.de
+
+- Add gconf preferences to allow disabling and locking down
+    logging, custom away messages, and adding new contacts, in
+    support of fate#3126
+
+-------------------------------------------------------------------
+Fri Sep 12 12:53:34 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.92:
+  + Add a menu item in chat window to set the room as favorite
+  + Make Chat the default in New Conversation… dialog
+  + Give Chat and Call accelerators in New Conversation dialog
+  + Bugs fixed: bgo#546568, bgo#548578, bgo#548632, bgo#548693,
+    bgo#548709, bgo#549002, bgo#549280, bgo#549545, bgo#550556,
+    bgo#551096, bgo#551113, and bgo#504154
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 19:55:42 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 2.23.90
+  * Do not display MSN Haze if butterfly is installed (Xavier Claessens).
+  * If display name of the selected account changes, update the label.
+    (Xavier Claessens).
+  * If there is no account configured, accounts dialog directly propose
+    to add an account (Xavier Claessens).
+  * Add QQ profile and icons (Xavier Claessens).
+  * Add gadugadu profile and icons (Xavier Claessens).
+  * Show the main window by default on first run. (Xavier Claessens).
+  * Use a GtkMessageDialog instead of GtkDialog for remove confirmation
+    dialog of contact/group. (Xavier Claessens).
+  * bgo#529084, going offline then coming back leaves chat text input
+    unsensitive (Xavier Claessens)
+  * bgo#540356, Problem with NetworkManager interaction (Xavier Claessens)
+  * bgo#547326, A sentence is too big without pauses (fpeters)
+
+-------------------------------------------------------------------
+Fri Aug  8 09:06:09 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 2.23.6
+  * new versioning for GNOME inclusion
+  * bgo #462880, Can't register a new account on Jabber servers (Xavier Claessens)
+  * bgo #486801, Unable to rename the account (change the account name) (Xavier Claessens)
+  * bgo #544964, Button "Add Gruop" not translatable (Milo Casagrande)
+  * bgo #546154, translation issues (Xavier Claessens)
+  * bgo #546218, Bad message when a call is refused (Xavier Claessens)
+  * Remove empathy-accounts binary, it is replaced by empathy --accounts (Xavier Claessens).
+  * Added empathy-properties desktop file to configure MC accounts from the
+    GNOME panel -> System -> Preferences. (Jonny Lamb)
+  * Replace the preview button by a cancel button when creating a new account (Xavier Claessens).
+  * Move event code from EmpathyStatusIcon to EmpathyEventManager (Xavier Claessens).
+  * Make the icon blink in the contact list when a contact has an event like new message,
+    incoming call, etc. (Xavier Claessens)
+
+-------------------------------------------------------------------
+Mon Aug  4 22:35:37 EDT 2008 - hfiguiere@suse.de
+
+- Requires several telepathy connectors at runtime.
+
+-------------------------------------------------------------------
+Thu Jul 17 16:45:32 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 0.23.4
+  * This is a new branch, with many improvements and bug fixes.
+    See NEWS and ChangeLog for all the details.
+- Remove groupwise.profile from package as it is in the tarball.
+
+-------------------------------------------------------------------
+Fri Jun 13 01:59:23 CEST 2008 - crrodriguez@suse.de
+
+- disable unusable static libraries
+
+-------------------------------------------------------------------
+Wed May  7 19:11:00 CEST 2008 - vuntz@suse.de
+
+- Build the python bindings. Add python-gtk-devel to buildrequires
+  for this.
+
+-------------------------------------------------------------------
+Fri Apr  4 13:10:48 EDT 2008 - hfiguiere@suse.de
+
+- Initial checkin
+

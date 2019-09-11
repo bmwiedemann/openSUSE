@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Sep 26 08:10:06 UTC 2013 - pgajdos@suse.com
+
+- fixed typo in website [bnc#840414]
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:58 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Nov  8 12:50:24 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Tue Feb  9 12:18:05 CET 2010 - jimmac@novell.com
+
+- Update to version 0.6:
+  + fixes to the hungarian umlauts (bnc#547881)
++ No need to rename the COPYING file anymore.
+
+-------------------------------------------------------------------
+Fri Oct 30 16:12:15 CET 2009 - jimmac@novell.com
+
+- replace old style numerals with capitals
+- add hungarian glyps. bnc#547881
+- new shape for g
+- class based kernings
+- basic latin ligatures
+
+-------------------------------------------------------------------
+Tue May 19 13:34:29 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

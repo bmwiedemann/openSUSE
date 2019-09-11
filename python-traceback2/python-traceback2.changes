@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Jan 17 15:57:22 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildIgnore python[23]-pyparsing: python-packaging requires it
+  for some actions it could perform, but we don't make use of these
+  here. Ignoring this dependency allows us to break open a
+  BuildCycle.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon May 22 07:18:26 UTC 2017 - tbechtold@suse.com
+
+- Add missing python-linecache2 Requires
+
+-------------------------------------------------------------------
+Wed Mar  1 20:44:21 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Replaced the source URL with pypi.io link
+
+-------------------------------------------------------------------
+Wed Oct 14 19:16:33 UTC 2015 - toddrme2178@gmail.com
+
+- Add license explanation.
+
+-------------------------------------------------------------------
+Tue Oct 13 08:50:17 UTC 2015 - toddrme2178@gmail.com
+
+- Fix license.  Should be Python-2.0
+
+-------------------------------------------------------------------
+Mon Oct 12 11:11:56 UTC 2015 - toddrme2178@gmail.com
+
+- Initial python 2 version
+
+-------------------------------------------------------------------
+Sat Mar 14 00:26:09 UTC 2015 - arun@gmx.de
+
+- initial version
+

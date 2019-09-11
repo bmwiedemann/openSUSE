@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Feb 20 12:31:24 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.10 (no changelog supplied)
+
+- Converted to single spec
+
+- Dropped pymad-use_python_sys_lib.patch (no longer necessary)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Jul  1 00:00:00 UTC 2008 - guru@unixtech.be
+
+- obsoletes and provides python-mad
+
+
+-------------------------------------------------------------------
+Fri Apr 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- refactored spec file using --record-rpm
+
+
+-------------------------------------------------------------------
+Fri Dec 28 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new package
+
+

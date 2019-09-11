@@ -1,0 +1,12 @@
+Index: pyOpenSSL-16.0.0/tests/test_ssl.py
+===================================================================
+--- pyOpenSSL-16.0.0.orig/tests/test_ssl.py
++++ pyOpenSSL-16.0.0/tests/test_ssl.py
+@@ -1113,6 +1113,7 @@
+         reason="set_default_verify_paths appears not to work on Windows.  "
+         "See LP#404343 and LP#404344."
+     )
++    @pytest.mark.network
+     def test_set_default_verify_paths(self):
+         """
+         `Context.set_default_verify_paths` causes the platform-specific CA

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Mon Feb 25 17:08:42 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add fix-qtoolbox-titles.patch to fix a problem with QToolBox tab
+  titles being cut at a fixed width independently of the title text
+  or tab width.
+
+-------------------------------------------------------------------
+Mon Feb 25 15:31:10 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.6.10
+  * Also set tray icon according to detected theme.
+    Fixes gh#borgbase/vorta#199
+  * Avoid deadlock when calling subprocess.Popen().
+    Fixes gh#borgbase/vorta#187
+  * Remove translation functions for Borg logging messages.
+    Fixes gh#borgbase/vorta#197
+  * Implement autostart for Linux
+  * Add French and Italian translations
+  * Update compressor selection: add zlib, add zstd,8, descriptions.
+    Fixes gh#borgbase/vorta#145
+  * Add tooltip to "add profile" button. Fixes gh#borgbase/vorta#183
+
+- Update to version 0.6.8
+  * Implement add profile button
+  * Translation Bugfixes
+
+-------------------------------------------------------------------
+Fri Feb  8 08:31:59 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Set LANG to use UTF-8 and fix builds in Leap 15.1
+
+-------------------------------------------------------------------
+Thu Feb  7 16:39:06 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.6.7
+  * Separate light/dark settings for icon and theme.
+    Fixes gh#borgbase/vorta#171
+  * Ask for confirmation on delete (and small fixes)
+    (gh#borgbase/vorta#176)
+  * Show/Hide the main window in KDE when clicking on the tray icon
+    (gh#borgbase/vorta#143)
+  * Add debug tools for i18n UI layout checking (gh#borgbase/vorta#160)
+  * Fix crash due to zombie processes (gh#borgbase/vorta#174)
+  * Use ellipsis the Qt way in the archive table (gh#borgbase/vorta#169)
+  * Fix Issue "Crash when cancelling "add new profile"
+    gh#borgbase/vorta#168" (gh#borgbase/vorta#170)
+
+- Update to version 0.6.6
+  * Add light icons and dark stylesheet. Fixes gh#borgbase/vorta#151
+    (gh#borgbase/vorta#155)
+  * Implement feature to delete specific archive (gh#borgbase/vorta#164)
+  * Programmatically detect theme color (for macOS) (gh#borgbase/vorta#150)
+  * Add app name to tray menu and window title (gh#borgbase/vorta#153)
+  * Improve archive mount feature. Fixes gh#borgbase/vorta#131. By @antlarr
+    (gh#borgbase/vorta#156)
+  * Translation-related improvements and German translation
+    (gh#borgbase/vorta#146)
+  * Skip sockets when reading private keys (gh#borgbase/vorta#147)
+  * Remove leftover Sentry references. Fixes gh#borgbase/vorta#127
+    (gh#borgbase/vorta#142)
+  * Make the main window resizeable (gh#borgbase/vorta#130)
+
+- Drop fix-umount.patch which was already merged upstream
+
+-------------------------------------------------------------------
+Wed Jan 23 11:00:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description.
+
+-------------------------------------------------------------------
+Thu Jan 17 10:40:21 UTC 2019 - alarrosa@suse.com
+
+- Use %python3* macros to build and install
+- Fix fdupes call
+- Add desktop file and install application icon
+
+-------------------------------------------------------------------
+Wed Jan 16 10:39:31 UTC 2019 - alarrosa@suse.com
+
+- Initial release of vorta 0.6.5

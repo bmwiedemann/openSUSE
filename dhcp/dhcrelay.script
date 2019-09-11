@@ -1,0 +1,251 @@
+#! /bin/sh
+# Copyright (c) 1996, 1997, 1998 S.u.S.E. GmbH
+# Copyright (c) 1998, 1999, 2000, 2001 SuSE GmbH
+# Copyright (c) 2002 SuSE Linux AG
+# Copyright (c) 2003-2014 SUSE LINUX Products GmbH
+#
+# Author: Peter Poeml <poeml@suse.de>, 2001
+#         Marius Tomaschewski <mt@suse.de>, 2010
+#
+# /usr/lib/dhcp/dhcrelay helper,
+# fromer /etc/init.d/dhcrelay init script
+#
+###
+
+DHCPv_OPT=$1 ; shift
+case $DHCPv_OPT in
+-4)
+	DAEMON="ISC DHCPv4 relay agent"
+	DAEMON_BIN=/usr/sbin/dhcrelay
+	DAEMON_CONF=/etc/sysconfig/dhcrelay
+	DAEMON_PIDFILE=/var/run/dhcrelay.pid
+	STARTPROC_LOGFILE=/var/log/rc.dhcrelay.log
+	SUPPORTS_HUP="no"
+;;
+-6)
+	DAEMON="ISC DHCPv6 relay agent"
+	DAEMON_BIN=/usr/sbin/dhcrelay6
+	DAEMON_CONF=/etc/sysconfig/dhcrelay
+	DAEMON_PIDFILE=/var/run/dhcrelay6.pid
+	STARTPROC_LOGFILE=/var/log/rc.dhcrelay6.log
+;;
+*)
+	echo >&2 "Usage: $0 <-4|-6> <action>"
+	exit 2
+;;
+esac
+
+test -s "$DAEMON_CONF" && . "$DAEMON_CONF"
+if ! [ -x "$DAEMON_BIN" ]; then
+	case $1 in
+	stop)   ;;
+	*)      echo -n >&2 "$0: \"$DAEMON_BIN\" is not an executable file. Exiting."
+		case $1 in
+		status) rc_failed 4 ;;
+		*)      rc_failed 5 ;;
+		esac
+		rc_status -v
+	;;
+	esac
+	rc_exit
+fi
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+case "$1" in
+    start)
+	echo -n "Starting $DAEMON"
+	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN && {
+		echo -n "... already running"; rc_status -v; exit 0;
+	}
+
+	case $DHCPv_OPT in
+	-4)
+	        ## If interfaces or servers are not set, skip starting of dhcrelay
+	        ## and return with "program not configured"
+		if [ -z "$DHCRELAY_INTERFACES" -o -z "$DHCRELAY_SERVERS" ]; then
+			# Tell the user this has skipped
+			rc_status -s
+			# service is not configured
+			exit 6;
+		fi
+	
+		DHCRELAY_INTERFACES_ARGS=''
+		for i in $DHCRELAY_INTERFACES ; do
+			DHCRELAY_INTERFACES_ARGS="$DHCRELAY_INTERFACES_ARGS -i $i"
+		done
+
+		DHCRELAY_ARGS="$DHCRELAY_INTERFACES_ARGS $DHCRELAY_SERVERS"
+	;;
+	-6)
+		DHCRELAY6_LOWER_INTERFACES_ARGS=''
+		for l in $DHCRELAY6_LOWER_INTERFACES ; do
+			test "x$l" = x -o "x$l" = "x-l" && continue
+			DHCRELAY6_LOWER_INTERFACES_ARGS="$DHCRELAY6_LOWER_INTERFACES_ARGS -l $l"
+		done
+		DHCRELAY6_UPPER_INTERFACES_ARGS=''
+		for u in $DHCRELAY6_UPPER_INTERFACES ; do
+			test "x$u" = x -o "x$u" = "x-u" && continue
+			DHCRELAY6_UPPER_INTERFACES_ARGS="$DHCRELAY6_UPPER_INTERFACES_ARGS -u $u"
+		done
+		if [ "x$DHCRELAY6_LOWER_INTERFACES_ARGS" = x -o \
+		     "x$DHCRELAY6_UPPER_INTERFACES_ARGS" = x ]; then
+			# Tell the user this has skipped
+			rc_status -s
+			# service is not configured
+			exit 6;
+		fi
+		DHCRELAY_ARGS="$DHCRELAY6_LOWER_INTERFACES_ARGS $DHCRELAY6_UPPER_INTERFACES_ARGS"
+	;;
+	esac
+	## Start daemon with startproc(8). If this fails
+	## the echo return value is set appropriate.
+
+	# startproc should return 0, even if service is 
+	# already running to match LSB spec.
+	if [ "$2" = "-v" ]; then
+		echo
+		echo -n "executing '$DAEMON_BIN $DHCPv_OPT $DHCRELAY_OPTIONS $DHCRELAY_ARGS'"
+	fi
+	startproc -q -l $STARTPROC_LOGFILE -p $DAEMON_PIDFILE $DAEMON_BIN $DHCPv_OPT $DHCRELAY_OPTIONS $DHCRELAY_ARGS >/dev/null 2>&1
+	rc=$?
+	if ! [ $rc -eq 0 ]; then
+		## be verbose
+		echo ""
+		echo -n "  please see $STARTPROC_LOGFILE for details "
+		## set status to failed
+		rc_failed
+	fi
+
+	# Remember status and be verbose
+	rc_status -v
+	;;
+    stop)
+	echo -n "Shutting down $DAEMON"
+	## Stop daemon with killproc(8) and if this fails
+	## set echo the echo return value.
+
+	killproc -p $DAEMON_PIDFILE $DAEMON_BIN 
+
+	# Remember status and be verbose
+	rc_status -v
+	;;
+    try-restart)
+	## Do a restart only if the service was active before.
+	## Note: try-restart is now part of LSB (as of 1.9).
+	## RH has a similar command named condrestart.
+	$0 status
+	if test $? = 0; then
+		$0 restart
+	else
+		rc_reset        # Not running is not a failure.
+	fi
+	# Remember status and be quiet
+	rc_status
+	;;
+    restart)
+	## Stop the service and regardless of whether it was
+	## running or not, start it again.
+	$0 stop
+	sleep 1
+	$0 start
+
+	# Remember status and be quiet
+	rc_status
+	;;
+    force-reload)
+	## Signal the daemon to reload its config. Most daemons
+	## do this on signal 1 (SIGHUP).
+	## If it does not support it, restart.
+
+	$0 stop  &&  sleep 1  &&  $0 start
+	rc_status
+
+	echo -n "Reload service $DAEMON"
+
+	if [ "$SUPPORTS_HUP" = "yes" ] ; then 
+		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
+		#touch $DAEMON_PIDFILE
+		rc_status -v
+	else
+		$0 stop  &&  $0 start
+		rc_status 
+	fi
+	;;
+    reload)
+	## Like force-reload, but if daemon does not support
+	## signalling, do nothing (!)
+
+	if [ "$SUPPORTS_HUP" = "yes" ] ; then
+		# If it supports signalling:
+		echo -n "Reload service $DAEMON"
+		killproc -p $DAEMON_PIDFILE -HUP $DAEMON_BIN
+		#touch $DAEMON_PIDFILE
+		rc_status -v
+	else
+		## Otherwise if it does not support reload:
+		rc_failed 3
+		rc_status -v
+	fi
+	;;
+    status)
+        echo -n "Checking for dhcp relay agent: "
+	## Check status with checkproc(8), if process is running
+	## checkproc will return with exit status 0.
+
+	# Status has a slightly different for the status command:
+	# 0 - service running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 2 - service dead, but /var/lock/ lock file exists
+	# 3 - service not running
+
+	# NOTE: checkproc returns LSB compliant status values.
+	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN
+	rc_status -v
+	;;
+    probe)
+	## Optional: Probe for the necessity of a reload,
+	## give out the argument which is required for a reload.
+
+	if [ "$DAEMON_CONF" -nt "$DAEMON_PIDFILE" ]; then 
+		if [ "$SUPPORTS_HUP" = "yes" ]; then 
+			echo reload
+		else 
+			echo restart
+		fi
+	fi
+	;;
+    *)
+	SCRIPT="${SCRIPT:-${0##*/} $DHCPv_OPT}"
+	echo "Usage: $SCRIPT {start|stop|status|try-restart|restart|force-reload|reload|probe} [-v]"
+	exit 1
+	;;
+esac
+rc_exit

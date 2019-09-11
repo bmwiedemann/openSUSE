@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/cjb/mmc-utils.git</param>
+              <param name="changesrevision">d40ec535b9d4e4c974e8c2fbfb422cd0348cc5e8</param></service></servicedata>

@@ -1,0 +1,35 @@
+--- eval.c.orig
++++ eval.c
+@@ -111,7 +111,7 @@ struct request_info *request;
+ 	return (hostinfo);
+ #endif
+     if (STR_NE(eval_user(request), unknown)) {
+-	sprintf(both, "%s@%s", request->user, hostinfo);
++	snprintf(both, sizeof(both), "%s@%s", request->user, hostinfo);
+ 	return (both);
+     } else {
+ 	return (hostinfo);
+@@ -128,7 +128,7 @@ struct request_info *request;
+     char   *daemon = eval_daemon(request);
+ 
+     if (STR_NE(host, unknown)) {
+-	sprintf(both, "%s@%s", daemon, host);
++	snprintf(both, sizeof(both), "%s@%s", daemon, host);
+ 	return (both);
+     } else {
+ 	return (daemon);
+--- tcpd.c.orig
++++ tcpd.c
+@@ -61,10 +61,10 @@ char  **argv;
+      */
+ 
+     if (argv[0][0] == '/') {
+-	strcpy(path, argv[0]);
++	strncpy(path, argv[0], sizeof(path));
+ 	argv[0] = strrchr(argv[0], '/') + 1;
+     } else {
+-	sprintf(path, "%s/%s", REAL_DAEMON_DIR, argv[0]);
++	snprintf(path, sizeof(path), "%s/%s", REAL_DAEMON_DIR, argv[0]);
+     }
+ 
+     /*

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon May 23 12:01:58 UTC 2016 - sndirsch@suse.com
+
+- removed u_luit-Set-up-terminal-before-fork.diff; upstream author
+  and maintainer Thomas Dickey can't reproduce the issue and
+  downstream, i.e. me, doesn't know how to reproduce it either ...
+
+-------------------------------------------------------------------
+Wed Apr 20 15:48:48 UTC 2016 - sndirsch@suse.com
+
+- Update to version 20150706 
+  * add configure option --with-man2html
+  * updated configure macros, mostly formatting changes from xterm, etc.
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Sun Mar  1 17:27:55 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20141204
+  * Maintainance update
+- Use upstream versioning scheme
+
+-------------------------------------------------------------------
+Tue Apr 16 11:49:51 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Mar  4 12:03:48 UTC 2013 - sndirsch@suse.com
+
+- update to version 2.0-20130217
+
+-------------------------------------------------------------------
+Mon Oct 15 14:05:58 UTC 2012 - sndirsch@suse.com
+
+- switched to fontenc instead of iconv (includes support for CJK)
+
+-------------------------------------------------------------------
+Mon Oct 15 08:29:03 UTC 2012 - sndirsch@suse.com
+
+- Update to version 1.2-20121014: 
+  * review/improve no-leaks checking with valgrind.
+  * add  null-pointer checks in copyOut in case a non-8bit encoding was
+    used with the iconv configuration.
+  * document environment variables used by luit in its manpage.
+  * amend  the  check using nl_langinfo(CODESET) in 2011/10/30 changes,
+    ignoring  that section if the -encoding option was given (report by
+    Alexios Zavras). (bnc#781836)
+  * support --datarootdir option in configure script.
+  * updated configure macros:
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Thu May 10 15:44:06 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2-20120129:
+  + Add some error checking for the poll and select logic to avoid
+    looping when a file descriptor is no longer valid.
+  + Various portability fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split luit from xorg-x11. Initial version: 1.2-20111030.
+

@@ -1,0 +1,88 @@
+--- sysklogd.8
++++ sysklogd.8	2001-05-23 18:59:26.000000000 +0000
+@@ -29,6 +29,7 @@ sysklogd \- Linux system logging utiliti
+ .RB [ " \-s "
+ .I domainlist
+ ]
++.RB [ " \-t " ]
+ .RB [ " \-v " ]
+ .LP
+ .SH DESCRIPTION
+@@ -150,6 +151,11 @@ is specified and the host logging resolv
+ no domain would be cut, you will have to specify two domains like:
+ .BR "\-s north.de:infodrom.north.de" .
+ .TP
++.B "\-t"
++Tag forwarded messages with the sending hosts name as seen by the forwarder.
++Useful for relaying syslog from DMZs through the firwall to an internal
++loghost.
++.TP
+ .B "\-v"
+ Print version and exit.
+ .LP
+--- syslogd.c
++++ syslogd.c	2001-05-23 19:01:21.000000000 +0000
+@@ -417,6 +417,13 @@ static char sccsid[] = "@(#)syslogd.c	5.
+  *	file is defined in the used libc and should not be hardcoded
+  *	into the syslogd binary referring the system it was compiled on.
+  *
++ * Mon Oct 18 19:23:00 CEST 1999: Andreas Siegert <afx@suse.de>
++ *	Added -t flag that triggers tagging of forwarded messages with 
++ *	the sending hosts name as seen by the forwarder.
++ *	Useful for relaying syslog from DMZs through the firwall to an 
++ *	internal loghost.
++ *	Format is "<""hostname"
++ *
+  * Sun Sep 17 20:45:33 CEST 2000: Martin Schulze <joey@infodrom.ffis.de>
+  *	Fixed some bugs in printline() code that did not escape
+  *	control characters '\177' through '\237' and contained a
+@@ -731,6 +738,7 @@ int	MarkInterval = 20 * 60;	/* interval
+ int	MarkSeq = 0;		/* mark sequence number */
+ int	NoFork = 0; 		/* don't fork - don't run in daemon mode */
+ int	AcceptRemote = 0;	/* receive messages that come via UDP */
++int	TagForward = 0;	        /* afx: tag remote messages with the hostname they came from */
+ char	**StripDomains = NULL;	/* these domains may be stripped before writing logs */
+ char	**LocalHosts = NULL;	/* these hosts are logged with their hostname */
+ int	NoHops = 1;		/* Can we bounce syslog messages through an
+@@ -829,7 +837,7 @@ int main(argc, argv)
+ 		funix[i]  = -1;
+ 	}
+ 
+-	while ((ch = getopt(argc, argv, "a:dhf:l:m:np:rs:v")) != EOF)
++	while ((ch = getopt(argc, argv, "a:dhf:l:m:np:rs:tv")) != EOF)
+ 		switch((char)ch) {
+ 		case 'a':
+ 			if (nfunix < MAXFUNIX)
+@@ -874,6 +882,10 @@ int main(argc, argv)
+ 			}
+ 			StripDomains = crunch_list(optarg);
+ 			break;
++/* afx  add -t for hostname tagging */
++		case 't':
++			TagForward = 1;
++			break;
+ 		case 'v':
+ 			printf("syslogd %s.%s\n", VERSION, PATCHLEVEL);
+ 			exit (0);
+@@ -1771,8 +1783,19 @@ void fprintlog(f, from, flags, msg)
+ 			dprintf("Not sending message to remote.\n");
+ 		else {
+ 			f->f_time = now;
+-			(void) snprintf(line, sizeof(line), "<%d>%s\n", f->f_prevpri, \
+-				(char *) iov[4].iov_base);
++/* afx: add <sourcehost 
++ */
++			if ((TagForward == 1) && 
++			    strncmp(f->f_prevhost,LocalHostName,MAXHOSTNAMELEN+1)) {
++				(void) snprintf(line, sizeof(line), "<%d><%s: %s\n", 
++						f->f_prevpri, f->f_prevhost, 
++						(char *) iov[4].iov_base);
++			} else {
++				(void) snprintf(line, sizeof(line), "<%d>%s\n",
++						f->f_prevpri, 
++						(char *) iov[4].iov_base);
++			}
++/* end afx */			
+ 			l = strlen(line);
+ 			if (l > MAXLINE)
+ 				l = MAXLINE;

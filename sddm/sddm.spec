@@ -1,0 +1,282 @@
+#
+# spec file for package sddm
+#
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+Name:           sddm
+Version:        0.18.0
+Release:        0
+Summary:        QML-based display manager
+License:        GPL-2.0+
+Group:          System/GUI/KDE
+Url:            https://github.com/sddm/sddm
+Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        X11-displaymanagers-%{name}
+Source2:        00-general.conf
+Source3:        10-theme.conf
+Source4:        sddm-tmpfiles.conf
+# Patch0-100: PATCH-FIX-UPSTREAM
+# Merged: https://github.com/sddm/sddm/pull/1062
+Patch0:         0001-Session-reuse-Only-consider-online-sessions.patch
+# No PR, committed directly
+Patch1:         0001-Use-C-scoping-for-handling-buffer-deletion.patch
+# Not merged yet: https://github.com/sddm/sddm/pull/997
+Patch50:        0001-Remove-suffix-for-Wayland-session.patch
+# Not merged yet: https://github.com/sddm/sddm/pull/1017
+Patch51:        0006-Don-t-fill-UserModel-if-theme-does-not-require-it.patch
+# Open issue: https://github.com/sddm/sddm/issues/1059
+Patch52:        0001-Revert-Adds-sourcing-of-etc-profile-to-fish.patch
+# Not merged yet: https://github.com/sddm/sddm/pull/1117
+Patch53:        0001-Destroy-the-QLocalServer-in-Auth-on-shutdown.patch
+# Patch100-?: PATCH-FIX-OPENSUSE
+# Use openSUSE pam config
+Patch100:       proper_pam.diff
+Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
+# Insert XAUTHLOCALHOSTNAME into users enviroment, so the session handles hostname changes with a single X instance/run
+# related patches: libxcb/bug-262309_xcb-xauthlocalhostname.diff, xauth/xauth-tolerant-hostname-changes.diff, kdebase4-workspace/kdm-relaxed-auth.diff
+Patch102:       sddm-relaxed-auth.patch
+Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+# sddm has some rudimentary support for plymouth handling, which only works with plymouth-quit.service
+# (the servce is not enabled on openSUSE). For users of sddm.service, we need to issue plymouth quit command by hand in this case
+Patch104:       sddm-service-handle-plymouth.patch
+# Use tty7 by default in the systemd service unit
+Patch105:       0001-Systemd-service-unit-Use-tty7-by-default.patch
+Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+Patch108:       0001-Support-both-X11-XDisplay-Wayland-and-WaylandDisplay.patch
+BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules >= 1.4.0
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  libqt5-linguist-devel
+BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
+# Autodetect UID_MIN and UID_MAX from /etc/login.defs
+BuildRequires:  shadow
+BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(xcb-xkb)
+Requires(post): diffutils
+Requires:       sddm-branding = %{version}
+Requires:       xdm
+# Merged the -lang package back into the main package
+Provides:       %{name}-lang = %{version}
+Obsoletes:      %{name}-lang < %{version}
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+BuildRequires:  python-docutils
+%else
+BuildRequires:  python3-docutils
+%endif
+
+%description
+SDDM is a display manager for X11. It uses technologies like QtQuick,
+which in turn gives the designer the ability to create animated user
+interfaces.
+
+%package branding-openSUSE
+Summary:        openSUSE branding for SDDM, a QML-based display manager
+Group:          System/GUI/KDE
+Requires:       sddm-theme-openSUSE
+Requires:       %{name} = %{version}
+Requires(post): %{name}
+Requires(post): diffutils
+Supplements:    packageand(plasma5-workspace:branding-openSUSE)
+Conflicts:      otherproviders(sddm-branding)
+Provides:       sddm-branding = %{version}
+
+%description branding-openSUSE
+SDDM is a display manager for X11. It uses technologies like QtQuick,
+which in turn gives the designer the ability to create animated user
+interfaces.
+This package provides the openSUSE branding for SDDM.
+
+%package branding-upstream
+Summary:        Upstream branding for SDDM, a QML-based display manager
+Group:          System/GUI/KDE
+Requires:       %{name} = %{version}
+Requires(post): %{name}
+Requires(post): diffutils
+Supplements:    packageand(%{name}:branding-upstream)
+Conflicts:      otherproviders(sddm-branding)
+Provides:       sddm-branding = %{version}
+
+%description branding-upstream
+SDDM is a display manager for X11. It uses technologies like QtQuick,
+which in turn gives the designer the ability to create animated user
+interfaces.
+This package provides upstream branding for SDDM.
+
+%prep
+%autosetup -p1
+
+%build
+%cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DMINIMUM_VT=7 \
+      -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}/%{name}" \
+      -DIMPORTS_INSTALL_DIR="%{_libdir}/qt5/qml" \
+      -DSESSION_COMMAND="%{_sysconfdir}/X11/xdm/Xsession" \
+      -DBUILD_MAN_PAGES=ON \
+      -DSTATE_DIR="%{_localstatedir}/lib/sddm" \
+      -DRUNTIME_DIR="/run/sddm" \
+      -DPID_FILE="/run/sddm.pid"
+  %make_jobs
+
+%install
+  %kf5_makeinstall -C build
+
+  # We don't want the example config.
+  # However, we need to package the file so it does not end up being removed.
+  echo > %{buildroot}%{_sysconfdir}/sddm.conf
+
+  pushd %{buildroot}%{_sysconfdir}/dbus-1/system.d
+  mv org.freedesktop.DisplayManager.conf sddm_org.freedesktop.DisplayManager.conf
+  popd
+
+  install -Dm 0644 %{SOURCE1} %{buildroot}%{_libexecdir}/X11/displaymanagers/%{name}
+  install -Dm 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
+  install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
+  install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
+
+  mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+  touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
+  ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_libexecdir}/X11/displaymanagers/default-displaymanager
+
+  install -d %{buildroot}%{_rundir}/sddm
+  install -d %{buildroot}%{_localstatedir}/lib/sddm
+  install -d %{buildroot}%{_sysconfdir}/sddm.conf.d
+
+  install -d %{buildroot}%{_sbindir}
+  ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcsddm
+
+  %fdupes %{buildroot}%{_datadir}/sddm
+
+%pre
+%service_add_pre sddm.service
+getent group sddm >/dev/null || %{_sbindir}/groupadd -r sddm
+getent passwd sddm >/dev/null || %{_sbindir}/useradd -r -g sddm -s /bin/false \
+	-c "SDDM daemon" -d %{_localstatedir}/lib/sddm sddm
+
+%post
+%service_add_post sddm.service
+%{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/sddm.conf
+if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
+    # Avoid changing sddm.conf's timestamp if no modifications done
+    tempconf="$(mktemp)"
+
+    # SDDM 0.14.0 moved maui into the built-in resources
+    # SDDM <= 0.15.0 had no system config dir, so we need to remove the
+    # moved configuration options from the old single config file
+    sed -e 's/^Current=maui$/Current=/g' \
+        -e '\#^DisplayCommand=%{_sysconfdir}/X11/xdm/Xsetup#d' \
+        -e '\#^MinimumVT=7$#d' \
+        -e '\#^ServerPath=%{_bindir}/X$#d' \
+        -e '\#^SessionCommand=%{_sysconfdir}/X11/xdm/Xsession$#d' \
+        %{_sysconfdir}/sddm.conf > "${tempconf}"
+
+    cmp -s "${tempconf}" "%{_sysconfdir}/sddm.conf" || cp "${tempconf}" "%{_sysconfdir}/sddm.conf"
+    rm "${tempconf}"
+fi
+%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_libexecdir}/X11/displaymanagers/sddm 25
+
+%preun
+%service_del_preun sddm.service
+
+%postun
+%service_del_postun sddm.service
+[ -f %{_libexecdir}/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/sddm
+
+%post branding-upstream
+if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
+    # Avoid changing sddm.conf's timestamp if no modifications done
+    tempconf="$(mktemp)"
+
+    # SDDM <= 0.15.0 had no system config dir, so we need to remove the
+    # theme configuration from the old single config file
+    sed -e '/^Current=$/d' %{_sysconfdir}/sddm.conf > "${tempconf}"
+
+    cmp -s "${tempconf}" "%{_sysconfdir}/sddm.conf" || cp "${tempconf}" "%{_sysconfdir}/sddm.conf"
+    rm "${tempconf}"
+fi
+:
+
+%post branding-openSUSE
+if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
+    # Avoid changing sddm.conf's timestamp if no modifications done
+    tempconf="$(mktemp)"
+
+    # Upgrade from previous theme name
+    # SDDM <= 0.15.0 had no system config dir, so we need to remove the
+    # theme configuration from the old single config file
+    sed -e 's/^Current=breeze$/Current=breeze-openSUSE/g' \
+        -e 's/^Current=maui$/Current=breeze-openSUSE/g' \
+        -e '/^Current=breeze-openSUSE$/d' \
+        -e '/^CursorTheme=breeze_cursors$/d' %{_sysconfdir}/sddm.conf > "${tempconf}"
+
+    cmp -s "${tempconf}" "%{_sysconfdir}/sddm.conf" || cp "${tempconf}" "%{_sysconfdir}/sddm.conf"
+    rm "${tempconf}"
+fi
+:
+
+%files
+%license LICENSE*
+%doc README*
+%config(noreplace) %{_sysconfdir}/sddm.conf
+%dir %{_sysconfdir}/sddm.conf.d/
+%config %{_sysconfdir}/pam.d/sddm
+%config %{_sysconfdir}/pam.d/sddm-autologin
+%config %{_sysconfdir}/pam.d/sddm-greeter
+%config(noreplace) %{_sysconfdir}/dbus-1/system.d/sddm_org.freedesktop.DisplayManager.conf
+%dir %{_libexecdir}/X11/displaymanagers/
+%{_libexecdir}/X11/displaymanagers/%{name}
+%{_libexecdir}/X11/displaymanagers/default-displaymanager
+%ghost %{_sysconfdir}/alternatives/default-displaymanager
+%{_bindir}/sddm
+%{_bindir}/sddm-greeter
+%{_sbindir}/rcsddm
+%{_libdir}/qt5/qml/
+%dir %{_datadir}/sddm/
+%dir %{_prefix}/lib/sddm/
+%dir %{_prefix}/lib/sddm/sddm.conf.d/
+%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
+%{_libexecdir}/sddm/sddm-helper
+%{_datadir}/sddm/faces/
+%{_datadir}/sddm/flags/
+%{_datadir}/sddm/scripts/
+%{_datadir}/sddm/themes/
+%{_datadir}/sddm/translations/
+%ghost %attr(711,sddm,sddm) %dir %{_rundir}/sddm
+%ghost %attr(750,sddm,sddm) %dir %{_localstatedir}/lib/sddm
+%{_mandir}/man*/sddm*%{ext_man}
+%{_unitdir}/sddm.service
+%{_tmpfilesdir}/sddm.conf
+
+%files branding-openSUSE
+%license LICENSE*
+%doc README*
+%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
+
+%files branding-upstream
+%license LICENSE*
+%doc README*
+
+%changelog

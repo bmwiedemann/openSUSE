@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Nov  2 12:35:25 UTC 2018 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- Update to version 1.6
+  * Destructuring Alternation
+  * many new builtins (see docs)
+  * Add support for ASAN and UBSAN
+  * Make it easier to use jq with shebangs
+  * Add $ENV builtin variable to access environment
+  * Add JQ_COLORS env var for configuring the output colors
+  * change: Calling jq without a program argument now always assumes
+    "." for the program, regardless of stdin/stdout
+  * fix: Make sorting stable regardless of qsort.
+- cleanup with spec-cleaner
+- drop CVE-2015-8863.patch (upstreamed in 8eb1367ca44e772963e704a700ef72ae2e12babd)
+- drop CVE-2016-4074.patch (upstreamed in fd4ae8304e23007672af9a37855c7a76de7c78cf)
+
+-------------------------------------------------------------------
+Fri Feb  3 09:26:17 UTC 2017 - idonmez@suse.com
+
+- Add CVE-2016-4074.patch to prevent a stack exhaustion
+  CVE-2016-4074 bsc#1014176
+
+-------------------------------------------------------------------
+Mon Jan  2 08:47:00 UTC 2017 - mpluskal@suse.com
+
+- Update tests dependencies to increase test coverage (bsc#1017157)
+  * valgrind based tests were skipped
+- Do not run tests in qemu builds, valgrind does not work reliably
+  in such conditions
+
+-------------------------------------------------------------------
+Sat Jul 16 10:14:33 UTC 2016 - mpluskal@suse.com
+
+- Make building more verbose
+- Run tests
+
+-------------------------------------------------------------------
+Mon Apr 25 11:48:27 UTC 2016 - idonmez@suse.com
+
+- Add CVE-2015-8863.patch to fix a heap overflow bsc#976992 
+
+-------------------------------------------------------------------
+Tue Aug 18 09:12:21 UTC 2015 - idonmez@suse.com
+
+- Update to version 1.5
+  * Regexp support
+  * A proper module system
+  * Destructuring syntax
+  * Math functions
+  * An online streaming parser
+  * Minimal I/O builtins (inputs, debug)
+  * try/catch for catching and handling errors
+  * Tail call optimization
+  * Datetime functions
+  * Performance enhancements
+- Add oniguruma-devel BuildRequires for regexp support
+
+-------------------------------------------------------------------
+Fri Jun 27 09:55:52 UTC 2014 - idonmez@suse.com
+
+- Don't package static libs
+- Fix rpath on the main binary
+
+-------------------------------------------------------------------
+Sun Jun 15 20:52:42 UTC 2014 - prusnak@opensuse.org
+
+- Updated to 1.4
+   + New command line arguments
+     * jq --arg-file variable file
+     * jq --unbuffered
+     * jq -e / --exit-status (set exit status based on outputs)
+     * jq -S / --sort-keys (now jq no longer sorts object keys by
+      default
+   + Syntax changes
+     * .. -> like // in XPath (recursive traversal)
+     * question mark (e.g., .a?) to suppress errors
+     * ."foo" syntax (equivalent to .["foo"])
+     * better error handling for .foo
+     * added % operator (modulo)
+     * allow negation without requiring extra parenthesis
+     * more function arguments (up to six)
+   + New filters
+     * any, all
+     * iterables, arrays, objects, scalars, nulls, booleans,
+       numbers, strings, values
+   + New string built-ins
+     * split
+     * join (join an array of strings with a given separator string)
+     * ltrimstr, rtrimstr
+     * startswith, endswith
+     * explode, implode
+     * fromjson, tojson
+     * index, rindex, indices
+   + New math functions
+     * floor, sqrt, cbrt, etc.
+   + Addition of libjq, a C API interface to jq's JSON representation
+     and for running jq programs from C applications.
+
+
+-------------------------------------------------------------------
+Thu Oct 17 15:55:03 UTC 2013 - cdenicolo@suse.com
+
+- license update: MIT and CC-BY-3.0
+  documentation is licensed under CC-BY-3.0
+
+-------------------------------------------------------------------
+Tue Oct  1 15:09:01 UTC 2013 - robert.munteanu@gmail.com
+
+- Initial packaging of version 1.3
+

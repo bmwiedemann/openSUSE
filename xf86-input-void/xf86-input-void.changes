@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon May 29 14:28:01 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041352)
+
+-------------------------------------------------------------------
+Fri Jul 31 07:48:13 UTC 2015 - jengelh@inai.de
+
+- Ignore absence of udevadm, it won't be present in the build env.
+
+-------------------------------------------------------------------
+Fri Apr 24 15:13:47 UTC 2015 - sndirsch@suse.com
+
+- Release 1.4.1:
+  * A few cleanup patches that have been sitting on the branch for
+    almost a year. 
+
+-------------------------------------------------------------------
+Fri Apr 20 07:36:09 UTC 2012 - vuntz@opensuse.org
+
+- Use %x11_abi_xinput_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 11:22:34 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-input-void from xorg-x11-driver-input.
+  Initial version: 1.4.0.
+

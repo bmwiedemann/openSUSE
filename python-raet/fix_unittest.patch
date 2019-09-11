@@ -1,0 +1,13 @@
+Index: raet-0.6.8/raet/road/test/test_stacking.py
+===================================================================
+--- raet-0.6.8.orig/raet/road/test/test_stacking.py
++++ raet-0.6.8/raet/road/test/test_stacking.py
+@@ -433,7 +433,7 @@ class BasicTestCase(unittest.TestCase):
+         self.assertEqual(len(self.other.rxMsgs), 0)
+ 
+         self.assertIn('parsing_outer_error', self.other.stats)
+-        self.assertEqual(self.other.stats['parsing_outer_error'], 1)
++        self.assertEqual(self.other.stats['parsing_outer_error'], 2)
+ 
+         remote = self.main.remotes.values()[0]
+         remote.transactions = odict()  # clear transactions

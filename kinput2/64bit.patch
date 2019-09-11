@@ -1,0 +1,234 @@
+diff -uprN kinput2-v3.1.orig/lib/dispatch.c kinput2-v3.1/lib/dispatch.c
+--- kinput2-v3.1.orig/lib/dispatch.c	2004-07-21 14:02:30.000000000 +0900
++++ kinput2-v3.1/lib/dispatch.c	2004-07-22 11:42:20.000000000 +0900
+@@ -27,6 +27,7 @@ static char *rcsid = "$Id: dispatch.c,v 
+  */
+ 
+ #include <X11/Intrinsic.h>
++#include <stdio.h>
+ #include "MyDispatch.h"
+ #include "AsyncErr.h"
+ 
+diff -uprN kinput2-v3.1.orig/lib/imlib/imattr.c kinput2-v3.1/lib/imlib/imattr.c
+--- kinput2-v3.1.orig/lib/imlib/imattr.c	2004-07-21 14:02:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imattr.c	2004-07-21 20:43:27.000000000 +0900
+@@ -41,6 +41,14 @@ static char *rcsid = "$Id: imattr.c,v 1.
+ #define PAD4(n)	((((n) + 3) / 4) * 4)
+ 
+ /*
++ * Cast some macros to CARD32 type for 64bit environments.
++ */
++#define PreeditEnable		((CARD32)XIMPreeditEnable)
++#define PreeditDisable		((CARD32)XIMPreeditDisable)
++#define InitialState		((CARD32)XIMInitialState)
++#define PreserveState		((CARD32)XIMPreserveState)
++
++/*
+  * List of supported input styles.
+  */
+ 
+@@ -196,7 +204,7 @@
+ 
+ static unsigned int getC16 _Pt_((char *data, int order));
+ static int getI16 _Pt_((char *data, int order));
+-static unsigned long getC32 _Pt_((char *data, int order));
++static CARD32 getC32 _Pt_((char *data, int order));
+ static int validateClientWindow _Pt_((IMIC *icp));
+ static int validateFocusWindow _Pt_((IMIC *icp));
+ static void badSizeError _Pt_((IMIC *icp, int code));
+@@ -248,13 +256,13 @@ int order;
+     return (l < 32768) ? (int)l : (int)(l - 65536L);
+ }
+ 
+-static unsigned long
++static CARD32
+ getC32(data, order)
+ char *data;
+ int order;
+ {
+     unsigned char *p = (unsigned char *)data;
+-    unsigned long x;
++    CARD32 x;
+ 
+     if (order == ORDER_BIG) {
+ 	x = (p[0]<<24) | (p[1]<<16) | (p[2]<<8) | p[3];
+@@ -1059,7 +1067,7 @@ int nest;
+ int op;
+ {
+     IMCommonAttributes *ap = &icp->common_attr;
+-    unsigned long preedit_state;
++    CARD32 preedit_state;
+ 
+     TRACE(("imlib:setPreeditState()\n"));
+ 
+@@ -1092,7 +1100,7 @@ int nest;
+ int op;
+ {
+     IMCommonAttributes *ap = &icp->common_attr;
+-    unsigned long reset_state;
++    CARD32 reset_state;
+ 
+     TRACE(("imlib:setResetState()\n"));
+ 
+@@ -1757,7 +1765,7 @@ int len;
+     IMPutC16(conn, 4);		/* value length */
+     IMPutC32(conn,
+ 	     (icp->state & IC_CONVERTING) ?
+-	     XIMPreeditEnable : XIMPreeditDisable);
++	     PreeditEnable : PreeditDisable);
+     return 0;
+ }
+ 
+@@ -1851,12 +1859,12 @@ unsigned long mask;
+     if (mask & ATTR_MASK_PREEDIT_STATE) {
+ 	/* unless the client specified, we should start with disabled state. */
+ 	ap->set_mask |= ATTR_MASK_PREEDIT_STATE;
+-	ap->preedit_state = XIMPreeditDisable;
++	ap->preedit_state = PreeditDisable;
+     }
+     if (mask & ATTR_MASK_RESET_STATE) {
+ 	/* the default reset state must be the initial state. */
+ 	ap->set_mask |= ATTR_MASK_RESET_STATE;
+-	ap->reset_state = XIMInitialState;
++	ap->reset_state = InitialState;
+     }
+ }
+ 
+@@ -2037,26 +2045,26 @@ int checkonly;
+ 	}
+     }
+     if (mask & ATTR_MASK_PREEDIT_STATE) {
+-	unsigned long preedit_state = ap->preedit_state;
++	CARD32 preedit_state = ap->preedit_state;
+ 
+-	if (preedit_state != XIMPreeditEnable &&
+-	    preedit_state != XIMPreeditDisable) {
++	if (preedit_state != PreeditEnable &&
++	    preedit_state != PreeditDisable) {
+ 	    DPRINT(("invalid preedit state\n"));
+ 	    ap->set_mask &= ~ATTR_MASK_PREEDIT_STATE;
+ 	    SENDERROR(IMBadSomething, "invalid preedit state");
+ 	}
+     }
+     if (mask & ATTR_MASK_RESET_STATE) {
+-	unsigned long reset_state = ap->reset_state;
++	CARD32 reset_state = ap->reset_state;
+ 
+-	if (reset_state != XIMInitialState &&
+-	    reset_state != XIMPreserveState) {
++	if (reset_state != InitialState &&
++	    reset_state != PreserveState) {
+ 	    /*
+ 	     * Xlib document says invalid values should be interpreted as
+-	     * XIMInitialState.
++	     * InitialState.
+ 	     */
+ 	    DPRINT(("invalid reset state -- forcing initial state\n"));
+-	    ap->reset_state = XIMInitialState;
++	    ap->reset_state = InitialState;
+ 	}
+     }
+ 
+@@ -2434,9 +2442,9 @@ int major;
+ 	/* if preedit state is specified... */
+ 	if (icp->common_attr.change_mask & ATTR_MASK_PREEDIT_STATE) {
+ 	    TRACE(("changing preedit state to %s\n",
+-		   (icp->common_attr.preedit_state == XIMPreeditEnable) ?
++		   (icp->common_attr.preedit_state == PreeditEnable) ?
+ 		   "enabled" : "disabled"));
+-	    if (icp->common_attr.preedit_state == XIMPreeditEnable) {
++	    if (icp->common_attr.preedit_state == PreeditEnable) {
+ 		IMStartConversion(icp);
+ 	    } else {
+ 		IMStopConversion(icp);
+diff -uprN kinput2-v3.1.orig/lib/imlib/imdata.c kinput2-v3.1/lib/imlib/imdata.c
+--- kinput2-v3.1.orig/lib/imlib/imdata.c	2004-07-21 14:02:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imdata.c	2004-07-22 22:36:46.000000000 +0900
+@@ -73,14 +73,14 @@ int offset;
+     return (x < 32768) ? (int)x : (int)(x - 65536L);
+ }
+ 
+-unsigned long
++CARD32
+ IMGetC32(conn, offset)
+ IMConnection *conn;
+ int offset;
+ {
+     IMBuffer *ibp = IM_INBUF(conn);
+     unsigned char *p = (unsigned char *)IMBUFDATA(ibp) + offset;
+-    unsigned long x;
++    CARD32 x;
+ 
+     if (conn->byte_order == ORDER_BIG) {
+ 	x = B_GET32(p);
+@@ -134,7 +134,7 @@ unsigned int x;
+ void
+ IMPutC32(conn, x)
+ IMConnection *conn;
+-unsigned long x;
++CARD32 x;
+ {
+     IMBuffer *ibp = IM_OUTBUF(conn);
+     unsigned char *p = (unsigned char *)IMBufAlloc(ibp, 4);
+diff -uprN kinput2-v3.1.orig/lib/imlib/im.h kinput2-v3.1/lib/imlib/im.h
+--- kinput2-v3.1.orig/lib/imlib/im.h	2004-07-21 14:02:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/im.h	2004-07-21 20:03:04.000000000 +0900
+@@ -24,6 +24,7 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Xos.h>
+ #include <X11/Xfuncs.h>
++#include <X11/Xproto.h>
+ 
+ /* macros defined in the system header file cause problem... */
+ #undef major
+@@ -161,8 +162,8 @@ typedef struct {
+     XIMStyle input_style;
+     Window client;			/* client window */
+     Window focus;			/* focus window */
+-    unsigned long preedit_state;
+-    unsigned long reset_state;
++    CARD32 preedit_state;
++    CARD32 reset_state;
+ } IMCommonAttributes;
+ 
+ typedef struct {
+diff -ru kinput2-v3.1.orig/lib/imlib/imfuncs.h kinput2-v3.1/lib/imlib/imfuncs.h
+--- kinput2-v3.1.orig/lib/imlib/imfuncs.h	2002-10-03 11:35:30.000000000 +0200
++++ kinput2-v3.1/lib/imlib/imfuncs.h	2004-07-28 17:28:52.866819788 +0200
+@@ -19,6 +19,8 @@
+ #ifndef _imfuncs_h
+ #define _imfuncs_h
+ 
++#include <X11/Xproto.h>
++
+ #include "imprtype.h"
+ 
+ /*
+@@ -27,13 +29,13 @@
+ extern int IMGetC8 _Pt_((IMConnection *conn, int offset));
+ extern unsigned int IMGetC16 _Pt_((IMConnection *conn, int offset));
+ extern int IMGetI16 _Pt_((IMConnection *conn, int offset));
+-extern unsigned long IMGetC32 _Pt_((IMConnection *conn, int offset));
++extern CARD32 IMGetC32 _Pt_((IMConnection *conn, int offset));
+ extern void IMGetString _Pt_((IMConnection *conn,
+ 			       int offset, char *buf, int len));
+ 
+ extern void IMPutC8 _Pt_((IMConnection *conn, int x));
+ extern void IMPutC16 _Pt_((IMConnection *conn, unsigned int x));
+-extern void IMPutC32 _Pt_((IMConnection *conn, unsigned long x));
++extern void IMPutC32 _Pt_((IMConnection *conn, CARD32 x));
+ extern void IMPutI16 _Pt_((IMConnection *conn, int x));
+ extern void IMPutString _Pt_((IMConnection *conn, char *s, int len));
+ extern void IMPutPad _Pt_((IMConnection *conn));
+kinput2-v3.1/lib/imlibだけに発見: imfuncs.h.~1~
+diff -uprN kinput2-v3.1.orig/lib/imlib/imxport.c kinput2-v3.1/lib/imlib/imxport.c
+--- kinput2-v3.1.orig/lib/imlib/imxport.c	2004-07-21 14:02:30.000000000 +0900
++++ kinput2-v3.1/lib/imlib/imxport.c	2004-07-21 17:08:37.000000000 +0900
+@@ -37,6 +37,7 @@ static char *rcsid = "$Id: imxport.c,v 1
+ #include <netinet/in.h> 
+ #endif
+ 
++#include <errno.h>
+ extern int errno;
+ 
+ /*

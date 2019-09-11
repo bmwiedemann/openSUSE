@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Mar 13 15:56:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-DateTime-Format-Builder/Changes
+
+  0.82     2019-03-03
+  
+  - Removed use of Class::Factory::Util. That distro is poorly maintained (by
+    me) and it has some issues with its use of Module::Build. This distro
+    (DateTime-Format-Builder) really doesn't need to use Class::Factory::Util.
+
+-------------------------------------------------------------------
+Tue Jun  4 08:14:57 UTC 2013 - coolo@suse.com
+
+- updated to 0.81, no changelog
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:33 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:31 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun May  9 13:18:03 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 0.80
+

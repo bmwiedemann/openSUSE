@@ -1,0 +1,8 @@
+--- src/scripts/95-mmgui-timestamp-notifier.orig	2018-04-06 17:43:09.000000000 +0300
++++ src/scripts/95-mmgui-timestamp-notifier	2018-07-26 22:42:21.866150011 +0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import sys
+ import os

@@ -1,0 +1,233 @@
+From 44a643812ce3c07cd38972abfa9dbd163529c192 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <mgerstner@suse.de>
+Date: Thu, 13 Jul 2017 14:58:04 +0200
+Subject: [PATCH] Use better fallbacks to generate cookies if arc4random_buf(3)
+ is unavailable
+References: bsc#1025084
+
+If arc4random_buf() is not available for generating cookies:
+
+- use getentropy(), if available (which was only recently added to
+  glibc)
+- use getrandom() via syscall(), if available (there was no glibc
+  wrapper for this syscall for a long time)
+- if all else fails, directly read from /dev/urandom as before, but
+  employ O_CLOEXEC, do an OsAbort() in case the random data couldn't be
+  read to avoid unsecure situations. Don't know if that's too hard a
+  measure but it shouldn't actually occur except on maximum number of
+  FDs reached
+
+Reviewed-by: Stefan Dirsch <sndirsch@suse.de>
+---
+ configure.ac            |   4 +-
+ include/dix-config.h.in |   6 +++
+ os/auth.c               | 138 ++++++++++++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 141 insertions(+), 7 deletions(-)
+
+Index: xorg-server-1.19.3/configure.ac
+===================================================================
+--- xorg-server-1.19.3.orig/configure.ac
++++ xorg-server-1.19.3/configure.ac
+@@ -134,7 +134,7 @@ AM_CONDITIONAL(SPECIAL_DTRACE_OBJECTS, [
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS([fcntl.h stdlib.h string.h unistd.h dlfcn.h stropts.h \
+- fnmatch.h sys/mkdev.h sys/sysmacros.h sys/utsname.h])
++ fnmatch.h sys/mkdev.h sys/sysmacros.h sys/utsname.h sys/syscall.h])
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -226,7 +226,7 @@ AC_REPLACE_FUNCS([reallocarray strcasecm
+ AM_CONDITIONAL(POLL, [test "x$ac_cv_func_poll" = "xyes"])
+ 
+ AC_CHECK_LIB([bsd], [arc4random_buf])
+-AC_CHECK_FUNCS([arc4random_buf])
++AC_CHECK_FUNCS([arc4random_buf getentropy])
+ 
+ AC_CHECK_DECLS([program_invocation_short_name], [], [], [[#include <errno.h>]])
+ 
+Index: xorg-server-1.19.3/include/dix-config.h.in
+===================================================================
+--- xorg-server-1.19.3.orig/include/dix-config.h.in
++++ xorg-server-1.19.3/include/dix-config.h.in
+@@ -167,6 +167,9 @@
+ /* Define to 1 if you have the `arc4random_buf' function. */
+ #undef HAVE_ARC4RANDOM_BUF
+ 
++/* Define to 1 if you have the `getentropy' function. */
++#undef HAVE_GETENTROPY
++
+ /* Define to use libc SHA1 functions */
+ #undef HAVE_SHA1_IN_LIBC
+ 
+@@ -244,6 +247,9 @@
+ /* Define to 1 if you have the <sys/utsname.h> header file. */
+ #undef HAVE_SYS_UTSNAME_H
+ 
++/* Define to 1 if you have the <sys/syscall.h> header file. */
++#undef HAVE_SYS_SYSCALL_H
++
+ /* Define to 1 if you have the `timingsafe_memcmp' function. */
+ #undef HAVE_TIMINGSAFE_MEMCMP
+ 
+Index: xorg-server-1.19.3/os/auth.c
+===================================================================
+--- xorg-server-1.19.3.orig/os/auth.c
++++ xorg-server-1.19.3/os/auth.c
+@@ -48,6 +48,10 @@ from The Open Group.
+ #ifdef HAVE_LIBBSD
+ #include   <bsd/stdlib.h>       /* for arc4random_buf() */
+ #endif
++#include   <errno.h>
++#ifdef HAVE_SYS_SYSCALL_H
++#include   <syscall.h>
++#endif
+ 
+ struct protocol {
+     unsigned short name_length;
+@@ -304,16 +308,140 @@ GenerateAuthorization(unsigned name_length,
+ 
+ #endif                          /* XCSECURITY */
+ 
++#if ! defined(HAVE_ARC4RANDOM_BUF)
++
++// fallback function to get random data directly from /dev/urandom
++
++static int
++GetUrandom ( char *buffer, size_t length )
++{
++    int random_fd = -1;
++    int res = -1;
++    size_t filled = 0;
++
++    // larger requests are typically rejected by getentropy() / getrandom()
++    // because they could block or return partially filled buffers
++    if( length > 256 ) {
++        errno = EIO;
++        return -1;
++    }
++
++    random_fd = open("/dev/urandom", O_RDONLY | O_CLOEXEC);
++
++    if( random_fd == -1 ) {
++        return -1;
++    }
++
++    while( filled < length ) {
++        res = read(random_fd, (char*)buffer + filled, length - filled);
++
++        if( res == -1 ) {
++            // shouldn't actually happen acc. to man(4) random,
++            // but you never know
++            if( errno == EINTR ) {
++                continue;
++            }
++
++            res = errno;
++            close(random_fd);
++            errno = res;
++            return -1;
++        }
++        else if( res == 0 ) {
++            close(random_fd);
++            // no more bytes available? should not happen
++            errno = EIO;
++            return -1;
++        }
++
++        filled += res;
++    }
++
++    close(random_fd);
++
++    return 0;
++}
++
++#endif // ! defined(HAVE_ARC4RANDOM_BUF)
++
++#if !defined(HAVE_GETENTROPY) && defined(HAVE_SYS_SYSCALL_H) && defined(SYS_getrandom)
++#    define TRY_GETRANDOM
++#endif
++
++#ifdef TRY_GETRANDOM
++
++/*
++ * wrapper for the getrandom() syscall which was for a long time implemented
++ * in the Linux kernel, but not wrapped in glibc
++ */
++static int
++GetRandom ( char *buffer, size_t length )
++{
++    int res;
++    size_t filled = 0;
++
++    // larger requests are typically rejected by getentropy() / getrandom()
++    // because they could block or return partially filled buffers
++    if( length > 256 )
++    {
++        errno = EIO;
++        return -1;
++    }
++
++    while( filled < length )
++    {
++        /*
++         * glibc does not contain a syscall wrapper for this in older
++         * versions
++         */
++        res = syscall(SYS_getrandom, (char*)buffer + filled, length - filled, 0);
++
++        if( res == -1 )
++        {
++            if( errno == EINTR ) {
++                continue;
++            }
++
++            return -1;
++        }
++        else if( res == 0 )
++        {
++            // no more bytes available? should not happen
++            errno = EIO;
++            return -1;
++        }
++
++        filled += res;
++    }
++
++    return 0;
++}
++
++#endif /* TRY_GETRANDOM */
++
+ void
+ GenerateRandomData(int len, char *buf)
+ {
+ #ifdef HAVE_ARC4RANDOM_BUF
+     arc4random_buf(buf, len);
+ #else
+-    int fd;
++    int ret = -1;
++#   ifdef HAVE_GETENTROPY
++    /* use getentropy instead */
++    ret = getentropy (buf, len);
++#   elif defined(TRY_GETRANDOM)
++    /* try getrandom() wrapper */
++    ret = GetRandom(buf, len);
++#   endif
++
++    if( ret == -1 ) {
++        // fallback to manual reading of /dev/urandom
++        ret = GetUrandom(buf, len);
++    }
+ 
+-    fd = open("/dev/urandom", O_RDONLY);
+-    read(fd, buf, len);
+-    close(fd);
+-#endif
++    if( ret == -1 ) {
++        // no error return possible, rather abort than have security problems
++        OsAbort();
++    }
++#endif // HAVE_ARC4RANDOM_BUF
+ }

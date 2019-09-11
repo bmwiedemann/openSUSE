@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Sat Apr 22 19:31:26 UTC 2017 - mimi.vx@gmail.com
+
+- change homepage and download url to github 
+
+-------------------------------------------------------------------
+Thu Apr 13 15:26:46 UTC 2017 - hpj@urpla.net
+
+- Update to 0.13:
+  * Add the remove-last-newline option
+  * Fix the compile warning & build steps, and add .gitignore
+  * An new option "-rmlastnl" is added to remove the last newline
+    character if present.
+  * Before running ./configure, autoreconf is required to generate
+    configuration files.
+  * Add .gitignore
+  * Changing Sourceforge URLs to GitHub.
+  * don't treat TARGETS request as contents request
+  * Document the -noutf8 option.
+  * Minor lang corrections.
+  * Avoid warnings about unused variable; only define html if
+    HAVE_ICONV.
+  * Applied 2924602 - 0005-Added-a-target-command-line-option.patch
+  * Applied 2924602 - 0004-Improved-xclip-s-error-handling.patch
+  * Applied 2924602 - 0003-Added-support-for-printing-more-data-types.patch
+  * Applied 2924602 - 0002-Added-support-in-xcout-for-receiving-16-and-32-bit-d.patch
+  * Applied 2924602 - 0001-Added-a-parameter-to-xcout-which-receives-the-type-o.patch
+
+-------------------------------------------------------------------
+Thu Sep 10 19:34:44 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.12
+  * Build fixes: Check for Xmu and Xt
+  * The version number has been corrected.
+  * Man pages are now available. Contributed by Maximilian Gass.
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 12 15:41:00 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Aug 27 15:16:48 CEST 2009 - coolo@novell.com
+
+- update to 0.11 from build service
+    xclip-copyfile is now compatible with recent tar versions.
+    The performance has been greatly enhanced, especially over
+    slow networks. Two helper scripts, xclip-copyfile and
+    xclip-pastefile, has been added. Taken together, xclip can now
+    be used as an alternative to sftp/scp, thus avoiding password
+    prompt when X11 forwarding has already been setup.
+
+    Autoconf is now used instead of Imake.
+
+-------------------------------------------------------------------
+Thu Aug  7 02:51:41 CEST 2008 - bphilips@suse.de
+
+- Initial commit 0.08
+

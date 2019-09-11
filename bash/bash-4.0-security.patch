@@ -1,0 +1,55 @@
+---
+ variables.c |   35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+--- variables.c
++++ variables.c	2018-12-21 13:24:48.757352405 +0000
+@@ -1324,6 +1324,7 @@ static int seeded_subshell = 0;
+ #  define BASH_RAND_MAX	0x7fffffff	/* 32 bits */
+ #endif
+ 
++#if !defined(linux)
+ /* Returns a pseudo-random number between 0 and 32767. */
+ static int
+ brand ()
+@@ -1380,6 +1381,40 @@ seedrand ()
+ #endif
+ }
+ 
++#else
++/* Use ISO C Random Number Functions of the glibc */
++static int
++brand (void)
++{
++  if (rseed == 0)
++    seedrand ();
++  return ((unsigned int)(rand() & BASH_RAND_MAX));	/* was % BASH_RAND_MAX+1 */
++}
++
++static void
++sbrand (unsigned long seed)
++{
++  rseed = seed;
++  srand(seed);
++}
++
++static void
++seedrand (void)
++{
++  struct timeval tv;
++#ifdef _EXTENDTHIS
++  SHELL_VAR *v;
++#endif
++  gettimeofday (&tv, NULL);
++#ifdef _EXTENDTHIS
++  v = find_variable ("BASH_VERSION");
++  sbrand (tv.tv_sec ^ tv.tv_usec ^ getpid () ^ ((u_bits32_t)&v & 0x7fffffff));
++#else
++  srand (tv.tv_sec ^ tv.tv_usec ^ getpid ());
++#endif
++}
++#endif
++
+ static SHELL_VAR *
+ assign_random (self, value, unused, key)
+      SHELL_VAR *self;

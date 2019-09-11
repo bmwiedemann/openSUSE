@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Sep 11 19:31:07 UTC 2017 - jengelh@inai.de
+
+- Drop old RPM constructs like %clean or %__-type indirections.
+  Remove unnecessary ldconfig call.
+
+-------------------------------------------------------------------
+Tue Jul 25 11:17:57 UTC 2017 - rguenther@suse.com
+
+- Add latrace-0.5.11-fixes.diff to fix build after recent flex upgrade.
+
+-------------------------------------------------------------------
+Wed Apr 13 13:40:03 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Thu Jul 31 15:04:48 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Wed Dec 19 12:45:42 UTC 2012 - dvaleev@suse.com
+
+- set Exclusive arch to x86 and ARM
+
+-------------------------------------------------------------------
+Thu Jun 28 12:31:04 UTC 2012 - rguenther@suse.com
+
+- Update to version 0.5.11
+- Move private library to /usr/lib/latrace
+- Change to SPDX licensing format.
+- Remove not needed BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jul 23 07:19:39 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.5.9)
+

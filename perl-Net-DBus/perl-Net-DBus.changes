@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Apr 14 15:44:48 UTC 2015 - coolo@suse.com
+
+- updated to 1.1.0
+   see /usr/share/doc/packages/perl-Net-DBus/Changes
+
+-------------------------------------------------------------------
+Tue Nov 29 20:40:39 UTC 2011 - coolo@suse.com
+
+New in 1.0.0:
+
+ - Updated to require minimum dbus >= 1.0.0
+ - Automatically track change in ownership of bus names
+   for signal handlers
+ - Strict validation of method invocation against introspection
+   data on exported objects
+ - Improved error messages for invalid interfaces
+ - Add API for disconnecting an object from a signal
+ - Implement GetAll methods on properties interface
+ - Allow leading _ in interface names
+ - Other minor fixes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:03 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Mar  2 13:22:52 UTC 2010 - chris@computersalat.de
+
+- bzipped Source
+- cleanup spec
+  o added HEADER
+  o sort TAGS
+  o added cpan_name macro
+  o fixed deps 
+
+-------------------------------------------------------------------
+Sun Feb 28 07:59:58 UTC 2010 - lnussel@suse.de
+
+- inital package version 0.33.6
+

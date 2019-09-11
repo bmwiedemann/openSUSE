@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">git://github.com/openSUSE/python-rpm-macros.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">python-rpm-macros</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">python-rpm-macros-*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">python-rpm-macros</param>
+  </service>
+</services>

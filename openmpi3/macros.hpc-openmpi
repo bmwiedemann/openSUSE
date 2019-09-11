@@ -1,0 +1,21 @@
+#
+# openmpi
+#
+
+%hpc_openmpi_init(V:) \
+ %{-V: %define _mf_ver %{-V*}} \
+ %{expand: %%global hpc_openmpi_dep_version %%{?_mf_ver}%%{?!_mf_ver:3}} \
+ %{expand: %%global hpc_openmpi_dir openmpi%{hpc_openmpi_dep_version}} \
+ %{expand: %%global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}} \
+ %{expand: %%global _hpc_openmpi_modules openmpi}
+
+# We may have to add a version here.
+%hpc_setup_openmpi \
+ module load openmpi
+
+%hpc_openmpi_requires \
+Requires:  libopenmpi%{hpc_openmpi_dep_version}-%{hpc_compiler_family}%{hpc_cf_pack_version}-hpc
+
+%hpc_openmpi_requires_devel \
+Requires:  openmpi%{hpc_openmpi_dep_version}-%{hpc_compiler_family}%{hpc_cf_pack_version}-hpc-devel
+

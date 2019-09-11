@@ -1,0 +1,2 @@
+%__gemfile_requires	%{_rpmconfigdir}/gemfile.rb --requires
+%__gemfile_path        ^/.*\/Gemfile.lock$

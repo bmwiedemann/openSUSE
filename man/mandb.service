@@ -1,0 +1,10 @@
+[Unit]
+Description=Do daily mandb update
+Documentation=man:mandb(8) man:catman(8)
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+Nice=5
+IOSchedulingClass=idle
+ExecStart=/usr/lib/man-db/do_mandb

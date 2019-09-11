@@ -1,0 +1,20 @@
+Index: sunpinyin-2.0.4+git20150706.cf18102/src/SConscript
+===================================================================
+--- sunpinyin-2.0.4+git20150706.cf18102.orig/src/SConscript
++++ sunpinyin-2.0.4+git20150706.cf18102/src/SConscript
+@@ -56,4 +56,15 @@ env.Command('sunpinyin-dictgen', 'sunpin
+     Chmod("$TARGET", 0755),
+ ])
+ 
++env.Substfile('sunpinyin-dictgen-local.mk.in', SUBST_DICT={
++    '@MAKE@': env['MAKE'],
++    '@TAR@': env['TAR'],
++    '@DATADIR@': env['DATADIR'],
++    '@ENDIANNESS@': env['ENDIANNESS'],
++})
++env.Command('sunpinyin-dictgen-local', 'sunpinyin-dictgen-local.mk', [
++    Copy("$TARGET", "$SOURCE"),
++    Chmod("$TARGET", 0755),
++])
++
+ # -*- indent-tabs-mode: nil -*- vim:et:ts=4

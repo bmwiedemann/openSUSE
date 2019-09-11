@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Dec  6 21:12:22 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Follow through with more $RPM_* shell var replacement.
+
+-------------------------------------------------------------------
+Thu Nov 29 12:40:56 UTC 2018 - meissner@suse.com
+
+- replace tarball with upstream supplied one
+- replace sysv init script by kbdsniffd.service systemd service (bsc#1116019)
+
+-------------------------------------------------------------------
+Mon Nov 25 15:36:25 UTC 2013 - meissner@suse.com
+
+- fixed file permissions away from 744 to 755 or 644. bnc#851620
+
+-------------------------------------------------------------------
+Fri Sep 30 15:30:43 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+--------------------------------------------------------------------
+Thu Sep  3 10:10:09 CEST 2009 - marco@suse.de
+
+- fixed typo in init-script
+
+--------------------------------------------------------------------
+Tue Aug 18 23:23:47 CEST 2009 - marco@suse.de
+
+- updated to version 0.6
+
+--------------------------------------------------------------------
+Fri Jul 18 21:00:18 CEST 2008 - marco@suse.de
+
+- added scanoption for highest kbd-dev
+- added error handling if keyboard is disconnected
+
+--------------------------------------------------------------------
+Sat Jun 21 17:34:57 CEST 2008 - marco@suse.de
+
+- added X feature
+- disable sniffing mode if current console is in X mode
+
+--------------------------------------------------------------------
+Sat May 10 01:05:55 CEST 2008 - marco@suse.de
+
+- removed run_ldconfig from spec-file
+
+--------------------------------------------------------------------
+Fri May  9 15:14:36 CEST 2008 - marco@suse.de
+
+- modified Makefile (install:) to avoid build errors
+
+--------------------------------------------------------------------
+Wed Apr 30 11:24:53 CEST 2008 - marco@suse.de
+
+- added NBIt macro patch from Klaus Knopper
+- added X handling (not finished)
+
+--------------------------------------------------------------------
+Mon Mar 17 12:43:57 CET 2008 - marco@suse.de
+
+- first version of kbdsniffd
+

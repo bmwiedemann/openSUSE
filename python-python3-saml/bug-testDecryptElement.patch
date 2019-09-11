@@ -1,0 +1,13 @@
+Index: python3-saml-1.6.0/tests/src/OneLogin/saml2_tests/utils_test.py
+===================================================================
+--- python3-saml-1.6.0.orig/tests/src/OneLogin/saml2_tests/utils_test.py
++++ python3-saml-1.6.0/tests/src/OneLogin/saml2_tests/utils_test.py
+@@ -625,7 +625,7 @@ class OneLogin_Saml2_Utils_Test(unittest
+         encrypted_nameid_nodes = dom_nameid_enc.find('.//saml:EncryptedID', namespaces=OneLogin_Saml2_Constants.NSMAP)
+         encrypted_data = encrypted_nameid_nodes[0]
+         decrypted_nameid = OneLogin_Saml2_Utils.decrypt_element(encrypted_data, key)
+-        self.assertEqual('saml:NameID', decrypted_nameid.tag)
++        self.assertEqual('NameID', decrypted_nameid.tag)
+         self.assertEqual('2de11defd199f8d5bb63f9b7deb265ba5c675c10', decrypted_nameid.text)
+ 
+         xml_assertion_enc = b64decode(self.file_contents(join(self.data_path, 'responses', 'valid_encrypted_assertion_encrypted_nameid.xml.base64')))

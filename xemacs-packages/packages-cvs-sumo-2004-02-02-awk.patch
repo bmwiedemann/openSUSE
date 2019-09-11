@@ -1,0 +1,25 @@
+--- packages/xemacs-packages/prog-modes/awk-mode.el
++++ packages/xemacs-packages/prog-modes/awk-mode.el	Mon Oct  4 19:52:23 2004
+@@ -138,9 +138,9 @@
+   (interactive)
+   (kill-all-local-variables)
+   (require 'cc-mode)
+-  (c-initialize-cc-mode)
++  (c-initialize-cc-mode t)
+   (use-local-map c-mode-map)
+-  (c-common-init)
++  (c-common-init 'awk-mode)
+   (setq major-mode 'awk-mode)
+   (setq mode-name "AWK")
+   (setq local-abbrev-table awk-mode-abbrev-table)
+--- packages/xemacs-packages/prog-modes/uil-mode.el
++++ packages/xemacs-packages/prog-modes/uil-mode.el	Mon Oct  4 19:56:59 2004
+@@ -76,7 +76,7 @@
+   (interactive)
+   (kill-all-local-variables)
+   (require 'cc-mode)
+-  (c-initialize-cc-mode)
++  (c-initialize-cc-mode t)
+   (use-local-map c-mode-map)
+   (c-common-init)
+   (setq major-mode 'uil-mode)

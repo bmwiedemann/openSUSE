@@ -1,0 +1,39 @@
+From 8574a9511deb1bf73fe37faae87652fe675654e7 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Tue, 10 Apr 2018 18:36:15 +0200
+Subject: [PATCH] Fix build with gcc 4.8
+
+See https://bugreports.qt.io/browse/QTBUG-48988
+---
+ plugins/privacy/privacypreferences.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/privacy/privacypreferences.cpp b/plugins/privacy/privacypreferences.cpp
+index ca0321c6f..bcadc7839 100644
+--- a/plugins/privacy/privacypreferences.cpp
++++ b/plugins/privacy/privacypreferences.cpp
+@@ -175,8 +175,8 @@ void PrivacyPreferences::slotBtnAddToWhiteListClicked()
+     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+     okButton->setDefault(true);
+     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+-    connect(buttonBox, &QDialogButtonBox::accepted, addDialog, &QDialog::accept);
+-    connect(buttonBox, &QDialogButtonBox::rejected, addDialog, &QDialog::reject);
++    connect(buttonBox, &QDialogButtonBox::accepted, addDialog.data(), &QDialog::accept);
++    connect(buttonBox, &QDialogButtonBox::rejected, addDialog.data(), &QDialog::reject);
+ 
+     buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
+ 
+@@ -208,8 +208,8 @@ void PrivacyPreferences::slotBtnAddToBlackListClicked()
+     QVBoxLayout *mainLayout = new QVBoxLayout;
+     okButton->setDefault(true);
+     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+-    connect(buttonBox, &QDialogButtonBox::accepted, addDialog, &QDialog::accept);
+-    connect(buttonBox, &QDialogButtonBox::rejected, addDialog, &QDialog::reject);
++    connect(buttonBox, &QDialogButtonBox::accepted, addDialog.data(), &QDialog::accept);
++    connect(buttonBox, &QDialogButtonBox::rejected, addDialog.data(), &QDialog::reject);
+     buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
+ 
+     QPointer <QWidget> box = new QWidget(addDialog);
+-- 
+2.13.6
+

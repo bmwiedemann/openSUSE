@@ -1,0 +1,74 @@
+https://sourceforge.net/p/blobwars/patches/8/ (boo#1041090)
+
+When building blobwars packages for openSUSE, we do so in disposable VMs, which means every build has a new filesystem and thus ordering of files differs for the readdir call in src/pak.cpp
+
+See https://reproducible-builds.org for why this matters.
+Index: blobwars-2.00/src/pak.cpp
+===================================================================
+--- blobwars-2.00.orig/src/pak.cpp
++++ blobwars-2.00/src/pak.cpp
+@@ -76,7 +76,9 @@ void countFiles(const char *dirName)
+ 
+ void recurseDirectory(const char *dirName)
+ {
+-	DIR *dirp, *dirp2;
++	DIR *dirp2;
++	int n;
++	struct dirent **namelist;
+ 	dirent *dfile;
+ 	gzFile fp;
+ 	FILE *infile;
+@@ -85,9 +87,9 @@ void recurseDirectory(const char *dirNam
+ 	uLongf cSize = 0;
+ 	uLongf fSize = 0;
+ 
+-	dirp = opendir(dirName);
++	n = scandir(dirName, &namelist, NULL, alphasort);
+ 
+-	if (dirp == NULL)
++	if (n == -1)
+ 	{
+ 		printf("%s: Directory does not exist or is not accessable\n", dirName);
+ 		return;
+@@ -96,10 +98,12 @@ void recurseDirectory(const char *dirNam
+ 	float percentage;
+ 	long filesize;
+ 
+-	while ((dfile = readdir(dirp)))
++	while (n--)
+ 	{
++		dfile = namelist[n];
+ 		if (dfile->d_name[0] == '.')
+ 		{
++			free(dfile);
+ 			continue;
+ 		}
+ 
+@@ -118,7 +122,6 @@ void recurseDirectory(const char *dirNam
+ 			if (!infile)
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+-				closedir(dirp);
+ 				fclose(pak);
+ 				exit(1);
+ 			}
+@@ -140,7 +143,6 @@ void recurseDirectory(const char *dirNam
+ 			if (!fp)
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+-				closedir(dirp);
+ 				fclose(pak);
+ 				exit(1);
+ 			}
+@@ -171,9 +173,10 @@ void recurseDirectory(const char *dirNam
+ 				fflush(stdout);
+ 			}
+ 		}
++		free(dfile);
+ 	}
+ 
+-	closedir(dirp);
++	free(namelist);
+ 
+ 	dirs++;
+ }

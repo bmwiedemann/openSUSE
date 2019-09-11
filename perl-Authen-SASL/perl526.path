@@ -1,0 +1,12 @@
+Index: Authen-SASL-2.16/Makefile.PL
+===================================================================
+--- Authen-SASL-2.16.orig/Makefile.PL
++++ Authen-SASL-2.16/Makefile.PL
+@@ -3,6 +3,7 @@
+ use strict;
+ use warnings;
+ use 5.005;
++use lib '.';
+ use inc::Module::Install;
+ 
+ name		'Authen-SASL';

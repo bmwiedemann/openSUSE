@@ -1,0 +1,60 @@
+Index: createrepo-0.10.3/createrepo/__init__.py
+===================================================================
+--- createrepo-0.10.3.orig/createrepo/__init__.py
++++ createrepo-0.10.3/createrepo/__init__.py
+@@ -24,6 +24,7 @@ from  bz2 import BZ2File
+ from urlgrabber import grabber
+ import tempfile
+ import stat
++import re
+ import fcntl
+ import subprocess
+ from select import select
+@@ -540,6 +541,38 @@ class MetaDataGenerator:
+                            " add it" % po
+ 
+         return po
++ 
++    def sortPackages(self, pkglist):
++        class PackageKey:
++            def __init__(self, package):
++                self.n, self.vr, self.a = self._nvra(package)
++
++            def _nvra(self, package):
++                # package might be a filename or a
++                # yum.sqlitesack.YumAvailablePackageSqlite object
++                try:
++                    return (package.name,
++                            package.version + '-' + package.release,
++                            package.arch)
++                except AttributeError:
++                    return self._parse_filename(package)
++
++            def _parse_filename(self, filename):
++                m = re.search(r"([^/]+)-([^/-]+-[^/-]+)\.([^/.]+)\.rpm$",
++                        filename)
++                if m:
++                    return m.groups()
++                # give up on sorting
++                return filename, 0, 0
++            def __lt__(self, other):
++                if self.n != other.n:
++                    return self.n < other.n
++                if self.a != other.a:
++                    return self.a < other.a
++                return self.vr < other.vr
++
++        return sorted(pkglist, key=PackageKey)
++
+ 
+     def writeMetadataDocs(self, pkglist=[], pkgpath=None):
+ 
+@@ -551,6 +584,8 @@ class MetaDataGenerator:
+         else:
+             directory = pkgpath
+ 
++        pkglist = self.sortPackages(pkglist)
++
+         # for worker/forked model
+         # iterate the pkglist - see which ones are handled by --update and let them
+         # go on their merry way

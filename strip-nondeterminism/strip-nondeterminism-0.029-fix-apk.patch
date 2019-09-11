@@ -1,0 +1,13 @@
+Index: strip-nondeterminism-1.0.0/lib/File/StripNondeterminism.pm
+===================================================================
+--- strip-nondeterminism-1.0.0.orig/lib/File/StripNondeterminism.pm
++++ strip-nondeterminism-1.0.0/lib/File/StripNondeterminism.pm
+@@ -61,7 +61,7 @@ sub get_normalizer_for_file($) {
+ 	}
+ 	# jar
+ 	if (m/\.(jar|war|hpi|apk)$/
+-		&& _get_file_type($_) =~ m/(Java|Zip) archive data/) {
++		&& _get_file_type($_) =~ m/((Java|Zip) archive data)|(Microsoft OOXML)/) {
+ 		return _handler('jar');
+ 	}
+ 	# javadoc

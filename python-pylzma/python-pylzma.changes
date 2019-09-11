@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Jan  2 14:09:12 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.0:
+  * Update to LZMA SDK 18.05.
+  * Support LZMA2 decompression.
+  * Fix decompressing empty members from 7z files.
+  * Fix parsing attributes from 7z members.
+  * Include test data in tarball.
+  * Fix AES decryption for solid 7z archives with LZMA2 compression.
+
+-------------------------------------------------------------------
+Thu Jul 26 15:32:10 UTC 2018 - tchvatal@suse.com
+
+- Move urls to github, pypi tarball does not contain tests, upstream
+  fixed it for future releases
+
+-------------------------------------------------------------------
+Thu Jul 26 15:29:17 UTC 2018 - tchvatal@suse.com
+
+- Switch to singlespec
+- Update to 0.4.9:
+  * support python3
+
+-------------------------------------------------------------------
+Wed Aug 19 21:59:43 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 0.4.8, no changelog entry
+
+-------------------------------------------------------------------
+Sun Jun  7 21:21:39 UTC 2015 - nemysis@gmx.ch
+
+- Update to 0.4.6, no changelog entry
+
+- Use %{oname} instead of pylzma
+- Use %{module} instead of py7zlib
+- Change URL
+- Add BuildRequires for fdupes and use %fdupes macro to reduce size of the package
+- Change Description
+- Add sed, fix Shebang
+- Use right files name instead of %{python_sitearch}
+
+-------------------------------------------------------------------
+Wed Nov 27 14:54:28 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.4.4
+  + No changelog available
+- Add Python prefix to spec file and .changes file
+- Add a head to spec file
+- Others improvements
+
+-------------------------------------------------------------------
+Mon Jun  9 02:10:43 CEST 2008 - poeml@suse.de
+
+- package created (scrounged from Mandriva) (0.3.0)
+

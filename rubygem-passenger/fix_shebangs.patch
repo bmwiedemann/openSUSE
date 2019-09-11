@@ -1,0 +1,140 @@
+From 06910e90a5bfc182acf4827da6b7f33561986b13 Mon Sep 17 00:00:00 2001
+From: Manuel Schnitzer <webmaster@mschnitzer.de>
+Date: Sat, 7 Apr 2018 03:46:44 +0200
+Subject: [PATCH] Fix shebangs for SUSE packaging
+
+---
+ bin/passenger                                                           | 2 +-
+ bin/passenger-config                                                    | 2 +-
+ bin/passenger-install-apache2-module                                    | 2 +-
+ bin/passenger-install-nginx-module                                      | 2 +-
+ bin/passenger-memory-stats                                              | 2 +-
+ bin/passenger-status                                                    | 2 +-
+ src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py                          | 2 +-
+ src/helper-scripts/backtrace-sanitizer.rb                               | 2 +-
+ src/helper-scripts/crash-watch.rb                                       | 2 +-
+ src/helper-scripts/meteor-loader.rb                                     | 2 +-
+ src/helper-scripts/prespawn                                             | 2 +-
+ .../winston/node_modules/async/support/sync-package-managers.js         | 2 +-
+ 24 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/bin/passenger b/bin/passenger
+index 3760e5342..d8a62a6ee 100755
+--- passenger-5.2.2.orig/bin/passenger
++++ passenger-5.2.2/bin/passenger
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/bin/passenger-config b/bin/passenger-config
+index a38e4e914..1209cb5ed 100755
+--- passenger-5.2.2.orig/bin/passenger-config
++++ passenger-5.2.2/bin/passenger-config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/bin/passenger-install-apache2-module b/bin/passenger-install-apache2-module
+index f0b5a5f72..fe804b49f 100755
+--- passenger-5.2.2.orig/bin/passenger-install-apache2-module
++++ passenger-5.2.2/bin/passenger-install-apache2-module
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: binary
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+diff --git a/bin/passenger-install-nginx-module b/bin/passenger-install-nginx-module
+index b5a50b6b9..db31cc38f 100755
+--- passenger-5.2.2.orig/bin/passenger-install-nginx-module
++++ passenger-5.2.2/bin/passenger-install-nginx-module
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/bin/passenger-memory-stats b/bin/passenger-memory-stats
+index c958cd938..b729b30be 100755
+--- passenger-5.2.2.orig/bin/passenger-memory-stats
++++ passenger-5.2.2/bin/passenger-memory-stats
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/bin/passenger-status b/bin/passenger-status
+index eec9b9977..f7ad838cf 100755
+--- passenger-5.2.2.orig/bin/passenger-status
++++ passenger-5.2.2/bin/passenger-status
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py b/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
+index 39933f624..e237123d0 100755
+--- passenger-5.2.2.orig/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
++++ passenger-5.2.2/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ import os
+ import platform
+diff --git a/src/helper-scripts/backtrace-sanitizer.rb b/src/helper-scripts/backtrace-sanitizer.rb
+index bfde23ef8..cdc3eb473 100755
+--- passenger-5.2.2.orig/src/helper-scripts/backtrace-sanitizer.rb
++++ passenger-5.2.2/src/helper-scripts/backtrace-sanitizer.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2013-2017 Phusion Holding B.V.
+ #
+diff --git a/src/helper-scripts/crash-watch.rb b/src/helper-scripts/crash-watch.rb
+index d2de4bee0..0d48310bf 100755
+--- passenger-5.2.2.orig/src/helper-scripts/crash-watch.rb
++++ passenger-5.2.2/src/helper-scripts/crash-watch.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # Copyright (c) 2015-2017 Phusion Holding B.V.
+ #
+ # Permission is hereby granted, free of charge, to any person obtaining
+diff --git a/src/helper-scripts/meteor-loader.rb b/src/helper-scripts/meteor-loader.rb
+index 7aa92b366..7eafa5e10 100755
+--- passenger-5.2.2.orig/src/helper-scripts/meteor-loader.rb
++++ passenger-5.2.2/src/helper-scripts/meteor-loader.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: binary
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+diff --git a/src/helper-scripts/prespawn b/src/helper-scripts/prespawn
+index 51ac81a3c..c5c5e454c 100755
+--- passenger-5.2.2.orig/src/helper-scripts/prespawn
++++ passenger-5.2.2/src/helper-scripts/prespawn
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #  Phusion Passenger - https://www.phusionpassenger.com/
+ #  Copyright (c) 2010-2017 Phusion Holding B.V.
+ #
+diff --git a/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js b/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
+index 5b261197a..eb72e509c 100755
+--- passenger-5.2.2.orig/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
++++ passenger-5.2.2/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ // This should probably be its own module but complaints about bower/etc.
+ // support keep coming up and I'd rather just enable the workflow here for now

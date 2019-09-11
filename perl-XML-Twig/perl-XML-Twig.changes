@@ -1,0 +1,222 @@
+-------------------------------------------------------------------
+Thu Nov 24 07:28:15 UTC 2016 - coolo@suse.com
+
+- updated to 3.52
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+
+  3.52 - 2016-11-23  - minor maintenance release
+  
+  - fixed: the previous fix was buggy...
+  
+  3.51 - 2016-11-23  - minor maintenance release
+  
+  - fixed: failing tests when XML::XPathEngine and XML::XPath not available
+
+-------------------------------------------------------------------
+Wed Nov 23 07:26:06 UTC 2016 - coolo@suse.com
+
+- updated to 3.50
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:18:33 UTC 2015 - coolo@suse.com
+
+- updated to 3.49
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+
+  3.49 - 2015-03-24
+  
+  - added: the DTD_base option to XML::Twig new, that forces XML::Twig to look
+    for the DTD in a given directory
+    thanks to Arun lakhana for the idea
+  
+  - fixed: XML::Parser 2.43 caused a failure in the tests due to a change in
+    its behaviour when die-ing.
+  
+  - fixed: prevent PAUSE from trying to index packages that are only used
+    for monkey patching (to re-use XML::XPath as the XPath engine for 
+    XML::Twig::XPath).  Will also prevent UNAUTHORIZED flag on metacpan.
+    patch sent by Graham Knop
+  
+  - fixed: RT #96009
+    keep_atts_order => 0 behaviour. Spotted by Dolmen
+    https://rt.cpan.org/Public/Bug/Display.html?id=96009
+  
+  - fixed bug RT #97461
+    wrong error message was returned calling parse on an invalid filehandle
+    Thanks to Slaven Rezic for the bug report and test case  
+     https://rt.cpan.org/Public/Bug/Display.html?id=97461
+  
+  - fixed: RT #98801
+    COMPATIBILITY WARNING
+    inconsistency between simplify and XML::Simple for empty elements (including
+    elements with start and end tags but no contents)
+    the XML::Simple behaviour is to map them to an empty hash, not an 
+    empty/undef scalar (depending of whether the element is a PCDATA or not)
+    as was the case in previous versions of the module. 
+    This has the potential to break some existing code, but simplify should be
+    strictly the same as XML::Simple's XMLin
+    Thanks to Vangelis Katsikaros for the bug report and test case
+      https://rt.cpan.org/Public/Bug/Display.html?id=98801
+
+-------------------------------------------------------------------
+Mon Sep 15 15:15:20 UTC 2014 - coolo@suse.com
+
+- updated to 3.48
+ - fixed: missing entities when parsing HTML
+   RT #93604 https://rt.cpan.org/Public/Bug/Display.html?id=93604
+ 
+ - fixed: tests failed when using a version of HTML::TreeBuilder with a non-numeric version
+ 
+ - fixed in twig_handlers, '=' in regexps on attributes are turned into 'eq'
+   RT #94295 https://rt.cpan.org/Public/Bug/Display.html?id=94295
+ 
+ - fixed: test failed on Windows
+
+-------------------------------------------------------------------
+Sat Mar 15 13:03:31 UTC 2014 - coolo@suse.com
+
+- updated to 3.46
+ - fixed: link to idented_a format description
+   RT #85400 https://rt.cpan.org/Public/Bug/Display.html?id=85400
+   fixed by Martin McGrath
+
+ - fixed: code that gave a warning in 5.19.9
+ 
+ - fixed: RT #86651 https://rt.cpan.org/Ticket/Display.html?id=86773
+   xml_pp, quote not escaped in attribute values
+ 
+ - fixed various typos in docs RT#87660
+   thanks to David Steinbrunner
+ 
+ - fixed: RT #86773 https://rt.cpan.org/Ticket/Display.html?id=86773 
+   CDATA sections in HTML were not properly escaped when using the
+   (default) HTML::TreeBuilder conversion
+   spotted by Marco Pessotto
+ 
+ - fixed: RT #85933 https://rt.cpan.org/Ticket/Display.html?id=85933
+   quotes in attributes were not properly escaped
+   dpotted by Arun Lakhana
+ 
+ - added: docs for tools and safe_print_to_file
+ 
+ - added: support for XPath variables
+   thanks to Nathan Glenn for the initial implementation
+ 
+ - updated: Changes to conform to CPAN::Changes + test
+
+-------------------------------------------------------------------
+Tue Jun  4 17:10:56 UTC 2013 - coolo@suse.com
+
+- updated to 3.44
+  # minor maintenance release
+  added: XML::Twig::Elt new method now acccepts literal content, eg
+         my $e= XML::Twig::Elt->new( '<div><p>foo</p><p>bar</p></div>');
+  fixed: merge had some problems dealing with embedded comments
+  improved: more tests
+  
+  improved: docs for parse, see RT #78877
+         https://rt.cpan.org/Ticket/Display.html?id=78877
+  fixed: xml_pp -i now preserves the permissions of the
+         original file, see RT #81165
+         https://rt.cpan.org/Ticket/Display.html?id=81165 
+         reported by Alberto Simoes
+  fixed: RT #80503 Newlines in attribute values
+         https://rt.cpan.org/Ticket/Display.html?id=80503
+         reported (and explained) by Ambrus Zsban: \r, \n
+         and \n explicitely set in attribute values should
+         be escaped (with &#x<nb>;) when output 
+
+-------------------------------------------------------------------
+Mon Apr 15 10:29:16 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Tue Nov 27 08:29:14 UTC 2012 - dap.darkness@gmail.com
+
+- update to 3.42
+  * fixed: bug, elements created with XML::Twig::Elt
+  * added: some tests
+- passed the spec file through spec cleaner
+- strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Fri Sep 23 16:33:24 UTC 2011 - vcizek@suse.com
+
+- update to 3.39
+  - no upstream changelog,
+    see https://github.com/mirod/xmltwig/commits/master
+    for individual commits
+- licence correction
+
+-------------------------------------------------------------------
+Sun Feb 27 23:43:46 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.38:
+  * fixed: RT#65865: _ should be allowed at the start on an XML name
+  * removed: making att and class lvalues created problems: in certain context
+    they made regular calls to the method create empty        attributes. I
+    could find no satisfactory fix,they were either incompletes, or to complex
+    for often used methods. So att and class are back to being regular, non
+    l-value methods.  latt and lclass are the l-value versions.
+  * added: documented the -html option for xml_grep, that allows processing
+    HTML input
+  * added: the -Tidy option to xml_grep, that uses HTML::Tidy to convert HTML
+    to XML
+
+-------------------------------------------------------------------
+Thu Dec 16 13:39:34 CET 2010 - anicka@suse.cz
+
+- update to 3.37
+ *fixed: more tests fixed for HTML::TreeBuilder, hopefully 
+  will pass now
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:22 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:30 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Oct  7 18:13:15 CEST 2010 - anicka@suse.cz
+
+- update to 3.36
+ * bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 16 15:13:02 CEST 2010 - anicka@suse.cz
+
+- update to 3.35
+ * bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 25 13:41:30 CET 2010 - anicka@suse.cz
+
+- update to 3.34
+ * bugfixes, test suite fixes
+
+-------------------------------------------------------------------
+Wed Nov 21 10:57:58 CET 2007 - anicka@suse.cz
+
+- update to 3.32
+ * bugfixes, test fixes
+ * fixed a couple of bugs in namespace handling
+ * added the XML::Twig::Elt fields method which returns a list of
+   fields 
+ * added the normalize method in XML::Twig and XML::Twig::Elt
+ * added the indented_a / cvs format for pretty_print,
+ * Added the XML::Twig method finish_now that terminates parsing
+   immediately, without checking the rest of the XML. 
+ * HTML parsing improved: XML::Twig now tries to find the proper
+   encoding for the document 
+
+-------------------------------------------------------------------
+Thu Oct 18 16:55:24 CEST 2007 - anicka@suse.cz
+
+- package created (version 3.29) [#297511] 
+

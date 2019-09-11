@@ -1,0 +1,346 @@
+-------------------------------------------------------------------
+Tue Mar 12 08:17:25 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- $1 can never be empty or it's an rpm bug
+
+-------------------------------------------------------------------
+Tue Mar 12 08:03:45 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Get rid of $FIRST_ARG
+
+  $FIRST_ARG was probably introduced because the %service_* macros
+  were playing tricks on the shell positional parameters. This is bad
+  practice and error prone so let's assume that no macros should do
+  that anymore and hence it's safe to assume that positional
+  parameters remains unchanged after any rpm macro call.
+
+  All users of $FIRST_ARG should have been fixed by now and in most
+  cases the use of the variable was unneeded (since the macros don't
+  change the shell parameters) and thus confusing.
+
+  'net-snmp' has a different use of FIRST_ARG though as it tried to
+  fake an update during a package installation. Fortunately this could
+  have been fixed too.
+
+-------------------------------------------------------------------
+Fri Mar  1 08:18:07 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Fix %_restart_on_update_force: drop one extra trailing '}'
+
+  Thanks Werner for spotting.
+
+-------------------------------------------------------------------
+Wed Feb 27 17:43:13 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Simplify %_restart_on_update and %_stop_on_removal
+
+  There's no need to spawn sub shells when these macros are used.
+
+-------------------------------------------------------------------
+Wed Feb 27 16:57:04 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Macros arguments are mandatory
+
+  Especially in %_restart_on_update_never and %_stop_on_removal_never,
+  let's assume that they always receive unit names as arguments. This
+  allows to make them slightly simpler (less rpm macro black magic).
+
+  Callers will fail earlier if no arguments are passed anyway.
+
+-------------------------------------------------------------------
+Wed Feb 27 14:13:28 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Make sure %_restart_on_update_never and %_stop_on_removal_never
+  don't expand to the empty string
+
+  Otherwise sequences like the following would result in incorrect
+  shell syntax:
+
+  if [ ]; then
+     %_restart_on_update_never
+  fi
+
+-------------------------------------------------------------------
+Wed Feb 27 12:17:18 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Restore one daemon-reload command
+
+  It was erroneously removed during the drop of $YAST_IS_RUNNING.
+
+-------------------------------------------------------------------
+Mon Feb 25 09:55:28 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Bump version to 4
+
+-------------------------------------------------------------------
+Thu Feb 22 13:00:18 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Introduce %service_del_postun_without_restart
+
+  This is another step to make the SUSE rpm macros closer to their
+  upstream counterparts.
+
+  Introduce %service_del_postun_without_restart which should help in
+  getting rid of '-f' and '-n' switches of %service_del_postun.
+
+-------------------------------------------------------------------
+Thu Feb 21 17:53:18 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop $YAST_IS_RUNNING in favor of $SYSTEMD_OFFLINE (bsc#1117489)
+
+  libzypp now kindly defines SYSTEMD_OFFLINE when appropriate (see
+  bsc#1118758). Therefore we don't need to rely on YAST_IS_RUNNING
+  anymore. It's a tiny step to make the SUSE macros closer to their
+  upstream counterparts.
+
+-------------------------------------------------------------------
+Fri Nov 23 12:08:30 UTC 2018 - Franck Bui <fbui@suse.com>
+
+- systemd-sysv-convert has been moved from /usr/sbin to /usr/lib/systemd
+
+-------------------------------------------------------------------
+Tue May 22 12:54:45 UTC 2018 - fbui@suse.com
+
+- remove confusing --user before --global
+
+  Backport from
+  https://github.com/systemd/systemd/commit/28d36da64a7a23a55e8d0a139f2620384fd058b3.
+
+  This was spotted in bsc#1090785.
+
+-------------------------------------------------------------------
+Wed Feb 14 14:04:19 UTC 2018 - fbui@suse.com
+
+- Fix %systemd_post(): it's never called during package removal
+
+  Also make it useful by restoring its original implementation.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:56:37 UTC 2018 - fbui@suse.com
+
+- Import more definitions from upstream (v237)
+
+-------------------------------------------------------------------
+Mon Jan 22 11:33:28 UTC 2018 - dimstar@opensuse.org
+
+- Fix system_user_post macro for usage with RPM 4.14, backport from
+  https://github.com/systemd/systemd/commit/e67ba783.
+
+-------------------------------------------------------------------
+Thu Dec 14 08:39:15 UTC 2017 - fbui@suse.com
+
+- Move macros.systemd in /usr/lib/rpm
+
+  The file is not supposed to be customized by the user.
+
+-------------------------------------------------------------------
+Wed Dec 13 17:14:25 UTC 2017 - fbui@suse.com
+
+- Make %systemd_add_pre() more similar to %systemd_add_post()
+
+  The main advantage is that we pass only one argument to
+  systemd-sysv-convert script. The later can now be improved/rewritten
+  to handle only one argument and return a useful exit status.
+
+-------------------------------------------------------------------
+Wed Dec 13 16:42:56 UTC 2017 - fbui@suse.com
+
+- Make sure to apply presets if packages start shipping units during upgrades (bsc#1071543)
+
+  If a package started shipping units during upgrade only sysv
+  migration was done. However if the package didn't ship any sysv
+  scripts before no presets were applied.
+
+  Now during upgrades, preset are always applied (still only during
+  the first time the units are installed) then followed by the sysv
+  migration machinery.
+
+  The downside of this is that migrated services can have symlinks in
+  both runlevel.target.wants/ (created by the sysv migration) and in
+  the directory specified by the [Install] sections (created by
+  "systemctl preset")...
+
+  The whole thing should be rewritten.
+
+-------------------------------------------------------------------
+Fri Dec  1 10:47:29 UTC 2017 - fbui@suse.com
+
+- Make sure to clean up "new-in-upgrade" tag file (bsc#1059627)
+
+  The tag file might have been incorrectly left by a preceding update.
+
+-------------------------------------------------------------------
+Wed Nov 22 14:41:00 UTC 2017 - fbui@suse.com
+
+- Restore previous changes
+
+-------------------------------------------------------------------
+Fri Nov 17 09:23:14 UTC 2017 - fbui@suse.com
+
+- Revert previous changes
+
+  Also added reasons why the previous changes would be needed.
+
+-------------------------------------------------------------------
+Fri Nov 17 07:44:55 CET 2017 - kukuk@suse.de
+
+- Don't execute systemd-tmpfiles if we run in transactional update
+  mode
+
+  If you do transactional updates, it doesn't make any sense to
+  execute the tmpfiles. They will only create a lot of directories,
+  files or symlinks in empty directories without any use and later
+  hidden under the real mount points. With transactional updates, you
+  should do such things always during the boot phase, as designed by
+  systemd (and like Fedora and RHEL doing, but in their use case it's
+  in my opinion a bug).
+
+-------------------------------------------------------------------
+Thu Nov  2 16:09:29 UTC 2017 - fbui@suse.com
+
+- Remove a useless test in %service_add_pre()
+
+  The test was placed where the condition '[ "$FIRST_ARG" -gt 1 ]' was
+  always true.
+
+-------------------------------------------------------------------
+Fri Jun  2 09:59:37 UTC 2017 - dimstar@opensuse.org
+
+- BuildIgnore systemd-rpm-macros: a small cycle that can be
+  avoided. system-rpm-macros is being pulled in by rpm-build as
+  conveniance to the packagers.
+
+-------------------------------------------------------------------
+Fri Jun  2 09:31:50 UTC 2017 - fbui@suse.com
+
+- Reference bsc#956849 to please the new OBS 'sanity' check (bsc#1041386)
+
+  %tmpfiles_create is already part of the version shipped by Factory
+  so there's nothing to do here execpt mentioning (bsc#956849).
+
+-------------------------------------------------------------------
+Fri Mar 10 11:54:11 UTC 2017 - fbui@suse.com
+
+- Kill preset macros
+
+  The last users have been fixed so these macros are no more used by
+  any package.
+
+  The introduction of them was a bad idea and only the branding preset
+  package is still using a similar mechanism but at least it's now
+  self contained in this package. Also the package calls now a shell
+  script instead of rpm macros.
+
+  Upstream is working on making this completely obsolete so the preset
+  branding package could be cleaned up for good.
+
+-------------------------------------------------------------------
+Wed Jan 11 11:16:11 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Fri Jun  3 14:47:01 UTC 2016 - Thomas.Blume@suse.com
+
+- %service_add_post() suppress daemon-reload when in installation 
+  system (bsc#982343)
+
+-------------------------------------------------------------------
+Thu Mar  3 10:01:52 UTC 2016 - werner@suse.de
+
+- Allow the packagers to specify the options -f and -n on the
+  macros %service_del_preun(), %service_del_postun(), %systemd_post(),
+  and %systemd_preun() (boo#968405) 
+
+-------------------------------------------------------------------
+Sat Feb 27 10:18:55 UTC 2016 - dimstar@opensuse.org
+
+- Also honor DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE
+  when specified by a package directly in the .spec file. Some
+  package know that a restart of their service is fatal
+  (boo#968405).
+
+-------------------------------------------------------------------
+Fri Nov 20 16:53:23 UTC 2015 - werner@suse.de
+
+- Support of DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE 
+  from /etc/sysconfig/service (bsc#955996)
+
+-------------------------------------------------------------------
+Fri Sep 18 15:27:04 CEST 2015 - sbrabec@suse.com
+
+- Skip %systemd_preset_* during the clean installation to prevent
+  presetting of all services (boo#946216).
+
+-------------------------------------------------------------------
+Tue Aug  4 17:59:54 CEST 2015 - sbrabec@suse.com
+
+- Add %systemd_preset_pre and %systemd_preset_posttrans that will
+  do one shot presetting of all services with changed system
+  preset. It makes possible to to fix bad default service state
+  (bnc#900935#c46, FATE#318949, FATE#317727, bnc#921075).
+- Increment version to 3.
+
+-------------------------------------------------------------------
+Mon Jun 15 11:33:28 UTC 2015 - jengelh@inai.de
+
+- Check for presence/executability of systemd programs before
+  executing them, and do not suppress warnings/errors resulting
+  from them.
+
+-------------------------------------------------------------------
+Fri Jan  9 13:38:16 UTC 2015 - jengelh@inai.de
+
+- Update with new macros from systemd 218
+- Remove empty sections from specfile
+
+-------------------------------------------------------------------
+Tue Nov 18 15:16:13 UTC 2014 - werner@suse.de
+
+- Mark /etc/rpm/macros.systemd as configuration file 
+
+-------------------------------------------------------------------
+Tue Nov 18 13:30:37 UTC 2014 - werner@suse.de
+
+- Apply then delete patch systemd-daemon-reload-before-service-restart.patch
+- Add orignal systemd macros as well (boo#807164)
+
+-------------------------------------------------------------------
+Wed Oct 15 09:28:36 UTC 2014 - thomas.blume@suse.com
+
+- make systemd aware of changed unit file content after update
+  add systemd-daemon-reload-before-service-restart.patch 
+ 
+-------------------------------------------------------------------
+Thu Mar 27 14:44:53 UTC 2014 - werner@suse.de
+
+- Add a %_ntpunitsdir macro 
+
+-------------------------------------------------------------------
+Thu Mar 27 12:22:11 UTC 2014 - fcrozat@suse.com
+
+- Add support to not restart services if running in YaST2 or
+  if DISABLE_RESTART_ON_UPDATE is set to yes [bnc#858429]
+
+-------------------------------------------------------------------
+Fri Feb 28 10:10:24 UTC 2014 - werner@suse.de
+
+- Require coreutils as rm and touch are used
+
+-------------------------------------------------------------------
+Fri Feb  7 12:43:13 UTC 2014 - werner@suse.de
+
+- Make systemd rpm macros package a separate to avoid rebuild of
+  the full package tree if systemd package change 
+
+-------------------------------------------------------------------
+Thu Jul  4 13:59:43 CEST 2013 - fcrozat@suse.com
+
+- Resync with systemd v205 macros
+
+-------------------------------------------------------------------
+Mon Jun 17 10:49:50 UTC 2013 - mhrusecky@suse.com
+
+- New package with systemd rpm macros to avoid unnecessary build time
+  dependencies
+

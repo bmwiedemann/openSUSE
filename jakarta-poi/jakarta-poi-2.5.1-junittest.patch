@@ -1,0 +1,12 @@
+--- src/testcases/org/apache/poi/hssf/record/aggregates/TestValueRecordsAggregate.java
++++ src/testcases/org/apache/poi/hssf/record/aggregates/TestValueRecordsAggregate.java
+@@ -103,9 +103,6 @@
+         // removing an already empty cell just falls through
+         valueRecord.removeCell( blankRecord2 );
+ 
+-        // even trying to remove null just falls through silently.
+-        valueRecord.removeCell( null );
+-
+     }
+ 
+     public void testGetPhysicalNumberOfCells() throws Exception

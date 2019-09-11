@@ -1,0 +1,58 @@
+have constant link order
+to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good.
+
+Without this patch g++ would order functions in .so files
+depending on random order of files in the build system's filesystem.
+
+Note that we also need to sort .h files because those are used
+to create .cpp files with moc.
+
+diff -ru PyQt4_gpl_x11-4.12.orig/configure-ng.py PyQt4_gpl_x11-4.12/configure-ng.py
+--- PyQt4_gpl_x11-4.12.orig/configure-ng.py	2016-12-26 13:47:10.000000000 +0000
++++ PyQt4_gpl_x11-4.12/configure-ng.py	2017-05-22 17:37:42.867428681 +0000
+@@ -1337,11 +1337,11 @@
+             sp_qpy_dir = source_path('qpy', mname)
+ 
+             qpy_c_sources = [os.path.relpath(f, mname)
+-                    for f in glob.glob(os.path.join(sp_qpy_dir, '*.c'))]
++                    for f in sorted(glob.glob(os.path.join(sp_qpy_dir, '*.c')))]
+             qpy_cpp_sources = [os.path.relpath(f, mname)
+-                    for f in glob.glob(os.path.join(sp_qpy_dir, '*.cpp'))]
++                    for f in sorted(glob.glob(os.path.join(sp_qpy_dir, '*.cpp')))]
+             qpy_headers = [os.path.relpath(f, mname)
+-                    for f in glob.glob(os.path.join(sp_qpy_dir, '*.h'))]
++                    for f in sorted(glob.glob(os.path.join(sp_qpy_dir, '*.h')))]
+ 
+             qpy_sources = qpy_c_sources + qpy_cpp_sources
+         else:
+@@ -1597,7 +1597,7 @@
+ 
+     pro_lines = []
+ 
+-    headers = [os.path.basename(f) for f in glob.glob('%s/*.h' % src_dir)]
++    headers = [os.path.basename(f) for f in sorted(glob.glob('%s/*.h' % src_dir))]
+ 
+     if other_headers is not None:
+         headers += other_headers
+@@ -1605,9 +1605,9 @@
+     if len(headers) != 0:
+         pro_lines.append('HEADERS = %s' % ' '.join(headers))
+ 
+-    sources = [os.path.basename(f) for f in glob.glob('%s/*.c' % src_dir)]
++    sources = [os.path.basename(f) for f in sorted(glob.glob('%s/*.c' % src_dir))]
+ 
+-    for f in glob.glob('%s/*.cpp' % src_dir):
++    for f in sorted(glob.glob('%s/*.cpp' % src_dir)):
+         f = os.path.basename(f)
+ 
+         # Exclude any moc generated C++ files that might be around from a
+@@ -2378,7 +2378,7 @@
+ 
+     if target_config.pyqt_sip_dir:
+         sip_files = [os.path.relpath(f, mname)
+-                for f in glob.glob(source_path('sip', mname, '*.sip'))]
++                for f in sorted(glob.glob(source_path('sip', mname, '*.sip')))]
+         if len(sip_files) != 0:
+             pro_lines.append('sip.path = %s/%s' % (target_config.pyqt_sip_dir, mname))
+             pro_lines.append('sip.files = %s' % ' '.join(sip_files))

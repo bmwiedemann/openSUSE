@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue May 14 23:38:33 UTC 2019 - svasudevan@suse.com
+
+- Create new python package for pypiserver
+  * pypiserver now consistently and correctly handles the X-Forwarded-Host
+    header to allow for alternative base URLs
+  * significantly more information added to the docker-compose.yml
+    example, including recipes for various configuration options
+  * removed outdated suggestion to serve the packages data directly via
+    a webserver and replaced with information about setting up nginx
+    caching

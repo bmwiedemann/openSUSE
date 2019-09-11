@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Jun 19 13:27:34 UTC 2013 - vcizek@suse.com
+
+- don't set $Parse::RecDescent::skip to 'undef' (bnc#799660)
+  * X500-DN-dont_set_skip_to_undef.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 09:07:28 UTC 2013 - coolo@suse.com
+
+- add a url for the source
+
+-------------------------------------------------------------------
+Wed Feb 27 06:19:39 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:07 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:26 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Jan 20 11:45:28 CET 2009 - ug@suse.de
+
+- Testsuite activated (bnc#465993)
+
+-------------------------------------------------------------------
+Wed Oct  8 13:24:37 CEST 2008 - ug@suse.de
+
+- version check for parse-recdescend removed (bnc#433425)
+
+-------------------------------------------------------------------
+Mon Feb 25 13:17:36 CET 2008 - ug@suse.de
+
+- suppress a version string warning (#360044)
+
+-------------------------------------------------------------------
+Mon Jul 16 12:23:31 CEST 2007 - ug@suse.de
+
+- version 0.29
+- added missing PREREQ_PM in Makefile.PL
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:17:02 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Aug 22 15:59:33 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 10:45:02 CEST 2003 - ug@suse.de
+
+- version update from 0.27 to 0.28
+- spec file fix for install_vendor
+
+-------------------------------------------------------------------
+Tue Jun 17 13:30:53 CEST 2003 - ug@suse.de
+
+- added missing directory to files-section
+
+-------------------------------------------------------------------
+Mon May 19 11:39:16 CEST 2003 - ro@suse.de
+
+- fix filelist
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Fri Oct 18 14:14:46 CEST 2002 - ro@suse.de
+
+- remove race in specfile 
+
+-------------------------------------------------------------------
+Fri Oct 18 12:58:46 CEST 2002 - ug@suse.de
+
+- initial release. This package is needed by perl-OpenCA-OpenSSL 
+

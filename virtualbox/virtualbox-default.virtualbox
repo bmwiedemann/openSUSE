@@ -1,0 +1,17 @@
+# /etc/default/virtualbox
+#
+# -------------------------------------------------------------------------------------------------
+# Autostart
+# -------------------------------------------------------------------------------------------------
+VBOXAUTOSTART_DB=/etc/vbox
+VBOXAUTOSTART_CONFIG=/etc/vbox/autostart.cfg
+
+# -------------------------------------------------------------------------------------------------
+# By default, vboxdrv creates a file /etc/udev/rules.d/60-vboxdrv.rules every time, it is started, 
+# that allows full control of this hosts usb devices in virtual machines (given, you allow accessing
+# them with the GUI).
+# In order to control this ability yourself, copy the generated /etc/udev/rules.d/60-vboxdrv.rules
+# file to another name and modify to your needs, e.g. comment out all lines beginning with SUBSYSTEM,
+# which will make this hosts usb devices inaccessible AND enable the next line.
+#INSTALL_NO_UDEV=1
+

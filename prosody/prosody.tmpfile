@@ -1,0 +1,2 @@
+# prosody needs some files in /run:
+d /run/prosody 0755 prosody prosody -

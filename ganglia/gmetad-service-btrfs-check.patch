@@ -1,0 +1,10 @@
+--- gmetad/gmetad.service.in.orig	2017-10-24 10:19:09.768304910 +0200
++++ gmetad/gmetad.service.in	2017-10-24 10:19:50.152315382 +0200
+@@ -5,6 +5,7 @@
+ [Service]
+ Type=forking
+ PIDFile=@runstatedir@/gmetad.pid
++ExecStartPre=@libdir@/ganglia/btrfs-subvol-test.sh @varstatedir@/ganglia
+ ExecStart=@sbindir@/gmetad --pid-file=@runstatedir@/gmetad.pid
+ EnvironmentFile=-@envdir@/gmetad
+ 

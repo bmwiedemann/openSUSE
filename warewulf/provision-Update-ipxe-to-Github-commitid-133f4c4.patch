@@ -1,0 +1,156 @@
+From: John L. Jolly <jjolly@suse.com>
+Date: Wed Sep 26 08:26:09 2018 -0600
+Subject: provision: Update ipxe to Github commitid-133f4c4
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 853736f89cbd366469d875408963d7e4f3c035b8
+References: 
+
+This ipxe update fixes several issues:
+133f4c47 [build] Handle R_X86_64_PLT32 from binutils 2.31
+af186071 [sfc] Add support for X25xx adapters
+d2063b76 [intelxl] Add driver for Intel 40 Gigabit Ethernet NICs
+b9d68b9d [ethernet] Use standard 1500 byte MTU unless explicitly overridden
+05b97914 [rndis] Clean up error handling path in register_rndis()
+1c47eb18 [build] Use positive-form tests when checking for supported warnings
+40956545 [vmbus] Do not expect version in version_response
+16d74953 [rndis] Register netdev with MAC filled
+88ac1d3f [efi] Exclude link-layer header length from MaxPacketSize
+97a3d372 [intelx] Add support for Intel X552 NIC
+8ed4e304 [build] Disable gcc stringop-truncation warnings
+e7f67d5a [http] Work around stateful authentication schemes
+960d1e36 [icplus] Add driver for IC+ network card
+c239f0bf [mii] Add bit-bashing interface
+7ed1dc98 [mii] Add mii_find()
+6047b7ca [mii] Fix typo in parameter name
+e901e6b7 [tcp] Add missing packed attribute on struct tcp_header
+6804a8c8 [mii] Separate concepts of MII interface and MII device
+285e3e52 [velocity] Fix usage of mii_read() and mii_write()
+f71ba143 [rhine] Fix usage of mii_read()
+d6f02c72 [undi] Include subsystem IDs in broken interrupt device check
+2eef77ec [intelx] Add PCI_ROM entry for Intel X553 NIC
+8c17ee11 [efi] Add support for R_ARM_REL32 relocations
+4f362a03 [efi] Do not raise TPL within EFI_DRIVER_BINDING_PROTOCOL.Supported()
+331ac451 [efi] Release SNP devices before starting SAN boot image
+baaf5001 [tls] Ensure that window change is propagated to plainstream interface
+4152aff1 [tls] Rename tls_session to tls_connection
+6be010d9 [list] Add list_is_first_entry() and list_is_last_entry()
+ac4fbd47 [tls] Ensure received data list is initialised before calling tls_free()
+eda9f4db [util] Support reversed sort ordering when generating NIC list
+bc85368c [librm] Ensure that inline code symbols are unique
+6149e0af [librm] Provide symbols for inline code placed into other sections
+0600ffeb [undi] Treat invalid IRQ numbers as non-fatal errors
+1df3b530 [build] Prevent use of MMX and SSE registers
+0d35411f [rng] Use fixed-point calculations for min-entropy quantities
+d5d4bf88 [golan] Set log_max_qp to 1
+3ec2079c [time] Add support for the ACPI power management timer
+e8e9ca36 [efi] Provide Map_Mem() and associated UNDI callbacks
+342ff967 [lacp] Check the partner's own state when checking for blocked links
+9759860e [ocsp] Allow OCSP checks to be disabled
+a0021a30 [ocsp] Centralise test for whether or not an OCSP check is required
+ae930644 [profile] Prevent potential division by zero
+b11ae1d9 [tftp] Prevent potential division by zero
+c160c9df [lacp] Fix debug message to match documentation
+33d79d5d [lacp] Mark link as blocked if partner is not yet up and running
+0778418e [golan] Do not assume all devices are identical
+89e31f84 [librm] Add facility to provide register and stack dump for CPU exceptions
+0c43bb93 [intel] Add PCI_ROM entry for Intel i354 NIC
+10d083ff [efi] Raise TPL within EFI_DRIVER_BINDING_PROTOCOL entry points
+d8c500b7 [efi] Drop to TPL_APPLICATION when gathering entropy
+c84f9d67 [iscsi] Parse IPv6 address in root path
+47849be3 [process] Include process name in debug messages
+f672a27b [efi] Raise TPL within EFI_USB_IO_PROTOCOL entry points
+a272b7ce [efi] Raise TPL within EFI_SIMPLE_NETWORK_PROTOCOL entry points
+c89a446c [efi] Run at TPL_CALLBACK to protect against UEFI timers
+8dbb73a7 [xhci] Consume event TRB before reporting completion to USB core
+6737a879 [http] Allow for domain names within NTLM user names
+546dd51d [intel] Work around broken reset mechanism in i219 devices
+c900751f [xhci] Assume an invalid PSI table if any invalid PSI value is observed
+fbe8c52d [ena] Fix spurious uninitialised variable warning on older versions of gcc
+70189a8e [netdevice] Make netdev_irq_enabled() independent of netdev_irq_supported()
+08db2fd5 [tg3] Add support for SerDes PHY initialization
+32920269 [skel] Remove MII interface
+2fb70e8b [ena] Add driver for Amazon ENA virtual function NIC
+2bb4ec1f [build] Avoid use of "ld --oformat binary"
+00c5b958 [legal] Add missing FILE_LICENCE declarations
+ff648c33 [legal] Add missing FILE_LICENCE declarations
+be9ed284 [image] Omit URI query string and fragment from download progress messages
+659c484e [http] Report unsuccessful response status lines at DBGVL_LOG
+ea29122a [http] Include error messages for 4xx and 5xx response codes
+e4461f65 [xen] Skip probing of any unsupported device types
+aeffcce4 [intel] Add PCI device ID for X550-T2
+b5e0b507 [http] Add support for NTLM authentication
+96bd872c [http] Handle parsing of WWW-Authenticate header within authentication scheme
+c49acbb4 [http] Gracefully handle offers of multiple authentication schemes
+fc2f0dd9 [ntlm] Add support for NTLM authentication mechanism
+0077b093 [crypto] Add MD4 message digest algorithm
+32d54691 [crypto] Eliminate repetitions in MD5 round constant table
+fb6b66ce [crypto] Fix endianness typo in comment
+1b67a056 [efi] Allow for building with older versions of elf.h system header
+c4ce9259 [efi] Accept (and ignore) R_ARM_V4BX relocations
+0631a46a [crypto] Fail fast if cross-certificate source is empty
+74d90b33 [efi] Inhibit our driver Start() method during disconnection attempts
+7428ab72 [build] Exclude selected directories from Secure Boot builds
+d46c53cf [efi] Continue to connect remaining handles after connection errors
+9720f839 [exanic] Add PCI device ID for another X40 variant
+f756fd78 [exanic] Power up optical PHYs (if present)
+af02a8d0 [dns] Ensure DNS names are NUL-terminated when used as diagnostic strings
+e8f30571 [efi] Match behaviour of SnpDxe for truncated received packets
+3f429bdc [efi] Check buffer length for packets retrieved via our SNP protocol
+9faf0691 [dns] Report current DNS query as job progress status message
+53f273af [resolv] Use pass-through interfaces for name resolution multiplexer
+8047baf7 [netdevice] Add "hwaddr" setting
+7e673a6b [peerdist] Gather and report peer statistics during download
+4674df25 [monojob] Display job status message, if present
+a258b089 [downloader] Allow underlying downloads to provide detailed job progress
+e30cc5e9 [job] Allow jobs to report an arbitrary status message
+7e6b367b [monojob] Check for job progress only once per timer tick
+97f0f56a [netdevice] Cancel all pending transmissions on any transmit error
+3ae70be5 [efi] Raise TPL when calling UNDI entry point
+306465be [linux] Impose receive quota on tap driver
+42eedb04 [malloc] Avoid false positive warnings from valgrind
+75acb3c7 [romprefix] Avoid unaligned accesses within ROM headers
+8b104d88 [intel] Add various PCI device IDs
+7054468d [shell] Enable "shell" command even when BANNER_TIMEOUT is zero
+93665783 [hyperv] Do not steal ownership from the Gen 2 UEFI firmware
+51a79731 [acpi] Fix spurious uninitialised-variable warning on some gcc versions
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/3rd_party/GPL/Makefile.am         |   2 +-
+ provision/3rd_party/GPL/ipxe-041d362.tar.xz | Bin 2585888 -> 0 bytes
+ provision/3rd_party/GPL/ipxe-133f4c4.tar.xz | Bin 0 -> 2653596 bytes
+ provision/3rd_party/Makefile.am             |   2 +-
+ 4 files changed, 2 insertions(+), 2 deletions(-)
+diff --git a/provision/3rd_party/GPL/Makefile.am b/provision/3rd_party/GPL/Makefile.am
+index b7bf571..a008651 100644
+--- a/provision/3rd_party/GPL/Makefile.am
++++ b/provision/3rd_party/GPL/Makefile.am
+@@ -1,4 +1,4 @@
+-dist_gplsrc_DATA = README busybox-1.26.2.tar.bz2 e2fsprogs-1.42.12.tar.gz ipxe-041d362.tar.xz parted-3.2.tar.xz
++dist_gplsrc_DATA = README busybox-1.26.2.tar.bz2 e2fsprogs-1.42.12.tar.gz ipxe-133f4c4.tar.xz parted-3.2.tar.xz
+ 
+ gplsrcdir = $(prefix)/src/warewulf/3rd_party/GPL/
+ 
+diff --git a/provision/3rd_party/GPL/ipxe-041d362.tar.xz b/provision/3rd_party/GPL/ipxe-041d362.tar.xz
+deleted file mode 100644
+index ef2d164..0000000
+Binary files a/provision/3rd_party/GPL/ipxe-041d362.tar.xz and /dev/null differ
+diff --git a/provision/3rd_party/GPL/ipxe-133f4c4.tar.xz b/provision/3rd_party/GPL/ipxe-133f4c4.tar.xz
+new file mode 100644
+index 0000000..76ddcee
+Binary files /dev/null and b/provision/3rd_party/GPL/ipxe-133f4c4.tar.xz differ
+diff --git a/provision/3rd_party/Makefile.am b/provision/3rd_party/Makefile.am
+index 7504159..05af8e8 100644
+--- a/provision/3rd_party/Makefile.am
++++ b/provision/3rd_party/Makefile.am
+@@ -6,7 +6,7 @@ MAINTAINERCLEANFILES = Makefile.in
+ 
+ all: $(IPXETARGETS)
+ 
+-IPXE_VERSION = 041d362
++IPXE_VERSION = 133f4c4
+ IPXE_SOURCE = $(top_srcdir)/3rd_party/GPL/ipxe-$(IPXE_VERSION).tar.xz
+ IPXE_DIR = ipxe-$(IPXE_VERSION)
+ 

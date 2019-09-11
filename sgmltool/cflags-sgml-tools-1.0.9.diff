@@ -1,0 +1,17 @@
+--- sgml-tools-1.0.9/Makefile.in.~1~	2005-10-10 11:46:17.000000000 +0200
++++ sgml-tools-1.0.9/Makefile.in	2005-10-10 14:05:24.000000000 +0200
+@@ -49,10 +49,10 @@
+ endif
+ 	@echo "Compiling preprocessor (in sgmlpre/)..."
+ 	( cd sgmlpre ; \
+-	  $(MAKE) CFLAGS="$(OPTIMIZE)" LEX=flex sgmlpre || exit -1 )
++	  $(MAKE) OPTIMIZE="$(OPTIMIZE)" LEX=flex sgmlpre || exit -1 )
+ 	@echo "Compiling RTF conversion tools (in rtf-fix/)..."
+ 	( cd rtf-fix ; \
+-	  $(MAKE) CFLAGS="$(OPTIMIZE)" || exit -1 )
++	  $(MAKE) OPTIMIZE="$(OPTIMIZE)" || exit -1 )
+ 
+ install::
+ 	@echo "Installing binaries in $(bindir) ..."
+
+Diff finished.  Mon Oct 10 14:05:44 2005

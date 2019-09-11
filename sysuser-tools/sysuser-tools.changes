@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Jul 26 13:28:27 CEST 2019 - kukuk@suse.de
+
+- Use suggests shadow to prefer that over busybox in normal systems
+
+-------------------------------------------------------------------
+Thu Jul 25 16:00:35 CEST 2019 - kukuk@suse.de
+
+- Add support for busybox adduser/addgroup
+- Change requirements from shadow to useradd_or_adduser_dep
+
+-------------------------------------------------------------------
+Thu May  9 13:23:56 CEST 2019 - kukuk@suse.de
+
+- Fix default home directory [bsc#1105934]
+- Use _rpmmacrodir for macro file
+
+-------------------------------------------------------------------
+Mon Oct  9 13:51:42 UTC 2017 - dimstar@opensuse.org
+
+- Further enhance sysusers-generate-pre: inside the build
+  environment, it can be acceptable to be failing to create the
+  users (e.g when building sysuser-tools or system-user-root, since
+  those two packages have to be speificallty excluded). Always
+  return with error code 0 if /.buildenv exists.
+
+-------------------------------------------------------------------
+Wed Sep 27 11:06:52 UTC 2017 - dimstar@opensuse.org
+
+- sysusers2shadow.sh: Exit if one of the useradd/groupadd/usermod
+  call fails: the resulting system is quite undefined if this
+  should happen.
+- sysusers-generate-pre: exit the pre script with the exit code
+  of sysusers2shadow.sh.
+
+-------------------------------------------------------------------
+Mon Jun 19 14:07:51 CEST 2017 - kukuk@suse.de
+
+- sysuser-tools needs to require sysuser-shadow
+
+-------------------------------------------------------------------
+Mon Jun 19 13:48:34 CEST 2017 - kukuk@suse.de
+
+- Add requires for shadow to sysuser-shadow
+
+-------------------------------------------------------------------
+Sun Jun 18 18:07:24 CEST 2017 - kukuk@suse.de
+
+- Put helper script into own subpackage
+
+-------------------------------------------------------------------
+Sat Jun 17 09:20:09 CEST 2017 - kukuk@suse.de
+
+- Convert sysusers config file to shadow arguments and use
+  shadow suite to create user and groups. Fixes [bsc#1041497] and
+  serveral dependency loops.
+
+-------------------------------------------------------------------
+Tue May 30 10:07:45 CEST 2017 - kukuk@suse.de
+
+- Don't ignore errors of systemd-sysusers [bsc#1039708]
+
+-------------------------------------------------------------------
+Wed Mar 15 14:46:43 CET 2017 - kukuk@suse.de
+
+- Don't remove 'm' and 'r' entries from sysusers configuration
+
+-------------------------------------------------------------------
+Fri Jan 20 13:04:51 CET 2017 - kukuk@suse.de
+
+- Add macros.sysusers
+
+-------------------------------------------------------------------
+Wed Dec 21 16:09:05 UTC 2016 - lnussel@suse.de
+
+- initial package
+

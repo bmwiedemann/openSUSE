@@ -1,0 +1,13 @@
+Index: gtk+-2.22.1/gtk/gtkmodules.c
+===================================================================
+--- gtk+-2.22.1.orig/gtk/gtkmodules.c
++++ gtk+-2.22.1/gtk/gtkmodules.c
+@@ -68,7 +68,7 @@ get_module_path (void)
+   if (home_dir)
+     home_gtk_dir = g_build_filename (home_dir, ".gtk-2.0", NULL);
+ 
+-  module_path_env = g_getenv ("GTK_PATH");
++  module_path_env = g_getenv ("GTK_PATH64");
+   exe_prefix = g_getenv ("GTK_EXE_PREFIX");
+ 
+   if (exe_prefix)

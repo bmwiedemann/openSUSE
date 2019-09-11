@@ -1,0 +1,26 @@
+From: ravas <ravas@outlook.com>
+Date: Mon, 27 Jun 2016 11:04:49 -0700
+Subject: ensured all objects are shown when a layer is toggled; #784
+Patch-mainline: yes
+Git-commit: b4a6c15236f7b3b1e0f9b9f54f29e8b2ea873f0b
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ librecad/src/actions/rs_actionlayerstoggleview.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/librecad/src/actions/rs_actionlayerstoggleview.cpp b/librecad/src/actions/rs_actionlayerstoggleview.cpp
+index 2d0effa23d4b..4c09672a075b 100644
+--- a/librecad/src/actions/rs_actionlayerstoggleview.cpp
++++ b/librecad/src/actions/rs_actionlayerstoggleview.cpp
+@@ -43,6 +43,7 @@ void RS_ActionLayersToggleView::trigger() {
+     RS_DEBUG->print("toggle layer");
+     if (graphic) {
+         graphic->toggleLayer(a_layer);
++        graphic->updateInserts();
+     }
+     finish(false);
+ }
+-- 
+2.10.1
+

@@ -1,0 +1,23 @@
+From: mvyskocil@suse.cz
+Subject: unresolved dladdr symbol
+
+When linking with --as-needed, some symbols are ommited. Add a DL_LIBS for
+dladdr symbol to fix the issue.
+
+References: bnc#701267
+https://bugzilla.novell.com/show_bug.cgi?id=701267
+Original-name: libgcrypt-1.5.0-as-needed.patch
+
+Index: libgcrypt-1.5.2/src/Makefile.am
+===================================================================
+--- libgcrypt-1.5.2.orig/src/Makefile.am
++++ libgcrypt-1.5.2/src/Makefile.am
+@@ -110,7 +110,7 @@ libgcrypt_la_LIBADD = $(gcrypt_res) \
+ 	../cipher/libcipher.la \
+ 	../random/librandom.la \
+ 	../mpi/libmpi.la \
+-	../compat/libcompat.la  $(GPG_ERROR_LIBS)
++	../compat/libcompat.la  $(GPG_ERROR_LIBS) $(DL_LIBS)
+ 
+ 
+ dumpsexp_SOURCES = dumpsexp.c

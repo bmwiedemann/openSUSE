@@ -1,0 +1,18 @@
+diff --git a/src/perl.c b/src/perl.c
+index 8df8fd4..94e21d2 100644
+--- a/src/perl.c
++++ b/src/perl.c
+@@ -2516,7 +2516,12 @@ static int perl_config_loadplugin(pTHX_ oconfig_item_t *ci) {
+ 
+   log_debug("perl_config: Loading Perl plugin \"%s\"", value);
+   load_module(PERL_LOADMOD_NOIMPORT, newSVpv(module_name, strlen(module_name)),
+-              Nullsv);
++#if PERL_VERSION >= 10
++              newSViv(0)
++#else
++              Nullsv
++#endif
++              );
+   return 0;
+ } /* static int perl_config_loadplugin (oconfig_item_it *) */
+ 

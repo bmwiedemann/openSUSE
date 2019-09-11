@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Aug 13 08:18:00 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2 (SUSE only)
+  Add remove_unittest2.patch to faciliate that.
+
+-------------------------------------------------------------------
+Thu Sep  7 16:01:56 UTC 2017 - toddrme2178@gmail.com
+
+- Revert single-spec conversion. 
+  This is a backport package, it shouldn't be used with python3.
+- Use provides python2-funcsigs for compatibility with single-spec
+  packages.
+- Use some newer macros.
+
+-------------------------------------------------------------------
+Mon May 22 09:18:14 UTC 2017 - tbechtold@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Jun 16 09:44:43 UTC 2016 - aloisio@gmx.com
+
+- Fixed SLE11 build
+
+-------------------------------------------------------------------
+Thu Jun  2 07:39:23 UTC 2016 - tbechtold@suse.com
+
+- update to 1.0.2:
+  No changelog provided.
+- use pypi.io as Source url
+
+-------------------------------------------------------------------
+Tue Mar  3 16:58:55 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,36 @@
+Index: src/vpinit.c
+===================================================================
+--- src/vpinit.c.orig
++++ src/vpinit.c
+@@ -111,7 +111,13 @@ vpinit(char *current_dir)
+ 	vpath = my_strdup(vpath);
+ 	
+ 	/* split the view path into nodes */
+-	for (i = 0, s = vpath; *s != '\0'; ++i) {
++	/* handle VPATH=":foo" */
++	i = 0;
++	s = vpath;
++	while (*s++ == ':') {
++		vpdirs[i++] = ".";
++	}
++	for (; *s != '\0'; ++i) {
+ 		vpdirs[i] = s;
+ 		while (*s != '\0' && *++s != ':') {
+ 			if (*s == '\n') {
+@@ -119,6 +125,16 @@ vpinit(char *current_dir)
+ 			}
+ 		}
+ 		if (*s != '\0') {
++			/* handle VPATH="foo:" and VPATH="foo::bar" */
++			if (s[1] == '\0' || s[1] == ':') {
++				while (s[1] != '\0' && s[1] == ':') {
++					vpdirs[++i] = ".";
++					*s++ = '\0';
++				}
++				if (s[1] == '\0') {
++					vpdirs[++i] = ".";
++				}
++			}
+ 			*s++ = '\0';
+ 		}
+ 	}

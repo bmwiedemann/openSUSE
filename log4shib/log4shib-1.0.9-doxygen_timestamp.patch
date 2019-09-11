@@ -1,0 +1,12 @@
+Index: log4shib-1.0.9/doc/Doxyfile.in
+===================================================================
+--- log4shib-1.0.9.orig/doc/Doxyfile.in
++++ log4shib-1.0.9/doc/Doxyfile.in
+@@ -15,6 +15,7 @@ OUTPUT_DIRECTORY     = .
+ HTML_OUTPUT          = html/api
+ HTML_HEADER          =
+ HTML_FOOTER          = 
++HTML_TIMESTAMP       = NO
+ LATEX_OUTPUT         = latex
+ MAN_OUTPUT           = man
+ 

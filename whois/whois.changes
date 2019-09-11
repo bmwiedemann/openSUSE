@@ -1,0 +1,858 @@
+-------------------------------------------------------------------
+Tue Aug  6 18:08:29 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- whois 5.5.0:
+  * Implemented the -I option to query whois.iana.org and use its
+    referrals
+  * Automatically generate the version string sent to servers
+  * Updated the .zm TLD server
+  * Added new recovered IPv4 allocations
+- includes changes from 5.4.3:
+  * Added the new 2a10:0000::/12 IPv6 assignment to RIPE
+- includes changes from 5.4.2:
+  * Added the .ss and .xn--mgbah1a3hjkrd (موريتانيا, Mauritania)
+    TLD servers
+  * Updated the .in TLD and related IDN TLDs servers
+  * Updated the .fm TLD server
+
+-------------------------------------------------------------------
+Wed Feb 20 18:47:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- whois 5.4.1:
+  * Add the .mw TLD server
+
+-------------------------------------------------------------------
+Mon Oct 29 14:53:31 UTC 2018 - astieger@suse.com
+
+- whois 5.4.0:
+  * Add support for the new libxcrypt 4.x.
+    This allows mkpasswd to support many modern password hash methods
+  * Renam the hash types (i.e. the arguments to -H) to use the
+    naming convention established by John the Ripper
+  * Make mkpasswd use entropy gathered by crypt_gensalt(3), when
+    available
+  * Add the .gp TLD server
+  * Update the list of new gTLDs
+
+-------------------------------------------------------------------
+Tue Jul 24 14:52:20 UTC 2018 - astieger@suse.com
+
+- whois 5.3.2:
+  * Added the .ge TLD server
+  * Updated the charset for whois.nic.cl
+  * Updated the list of new gTLDs
+
+-------------------------------------------------------------------
+Wed May 23 20:01:01 UTC 2018 - astieger@suse.com
+
+- whois 5.3.1:
+  * mkpasswd: support passwords of arbitrary length
+  * Added the .ls TLD server
+  * Added support for -bzh and -uanic NIC handles
+  * Updated the list of new gTLDs
+
+-------------------------------------------------------------------
+Mon Jan 29 13:08:43 UTC 2018 - astieger@suse.com
+
+- whois 5.3.0:
+  * Implement querying for ip6.arpa domains
+  * Updat the .pr TLD servers
+  * Update the list of new gTLDs
+
+-------------------------------------------------------------------
+Wed Jan 10 13:47:20 UTC 2018 - astieger@suse.com
+
+- whois 5.2.20:
+  * Added the .mr TLD server
+  * Removed the .bs TLD server
+  * Updated the .ai, .gh, .gr, .kw, .ls, .ph, .sb, .com.uy and .vn
+    TLD servers
+
+-------------------------------------------------------------------
+Wed Dec 13 15:35:12 UTC 2017 - kstreitova@suse.com
+
+- whois 5.2.19:
+  * Switched do libidn2
+  * Adopted getentropy(2) for mkpasswd on recent Linux
+  * Updated the .id and .museum TLD servers
+  * Removed the .dj TLD server
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 20 11:34:30 UTC 2017 - astieger@suse.com
+
+- whois 5.2.18:
+  * Fix querying Verisign registry with parameters
+  * Fix return code for queries like "nameserver name.example.com"
+- includes changes from 5.2.17:
+  * Fix whois referrals for .com, .net, .jobs, .bz, .cc and .tv,
+    broken by an ICANN-mandated output change:
+    https://www.icann.org/resources/pages/rdds-labeling-policy-2017-02-01-en
+  * Add various India NIXI delegated domains TLD servers
+  * Updated the list of new gTLDs
+
+-------------------------------------------------------------------
+Fri Aug 18 09:32:25 UTC 2017 - astieger@suse.com
+
+- drop whois-5.2.15-fix-CIDR-with-libidn2.patch, no longer required
+  with libidn2 >= 2.0.3
+
+-------------------------------------------------------------------
+Fri Jun 16 12:24:36 UTC 2017 - astieger@suse.com
+
+- whois 5.2.16:
+  * Fixed parsing of 6to4 addresses broken in 5.2.15.
+  * Updated the .do TLD server.
+  * Updated the list of new gTLDs.
+
+-------------------------------------------------------------------
+Tue May 23 21:45:35 UTC 2017 - astieger@suse.com
+
+- build with libidn2 for IDNA 2008 support FATE#321897
+- fix CIDR notation and also convert using IDNA 2008 transitional
+  bsc#1026831, add whois-5.2.15-fix-CIDR-with-libidn2.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 10:00:11 UTC 2017 - astieger@suse.com
+
+- whois 5.2.15:
+  * Update the .gf and .mq TLD servers
+  * Update the list of new gTLDs
+  * Update the charset for whois.nic.kz
+  * Fix minor compiler warnings with no practical effects
+  * Support for libidn2 is upstream FATE#321897
+    remove whois-5.2.14-IDNA2008.patch
+    But disable to fix bsc#1026831
+
+-------------------------------------------------------------------
+Mon Feb  6 21:49:09 UTC 2017 - astieger@suse.com
+
+- add support for IDNA2008 and build with libidn2 FATE#321897
+  add whois-5.2.14-IDNA2008.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 20:48:53 UTC 2017 - astieger@suse.com
+
+- whois 5.2.14:
+  * Updated the .ar, .bm and .fm TLD servers.
+  * Updated the Afilias hiding string to fix hiding for the new .bm
+    server.
+
+-------------------------------------------------------------------
+Tue Nov 15 16:20:07 UTC 2016 - astieger@suse.com
+
+- whois 5.2.13:
+  * Use "domain" instead of "=" for default verisign-grs queries,
+    to ignore the name server names spam.
+  * Fixed make_ip_del_recovered.pl, which generated non-functioningi
+    data.
+  * Added the .xn--90ae (бг, Bulgaria) TLD server.
+  * Updated the .bd, .jobs and .mobi TLD servers.
+  * Added new ASN allocations.
+  * Added new recovered IPv4 allocations.
+  * Updated the crsnic.net hiding string to fix hiding for .bi.
+  * Updated the list of new gTLDs.
+
+-------------------------------------------------------------------
+Mon Apr  4 10:53:35 UTC 2016 - astieger@suse.com
+
+- whois 5.2.12:
+  * Added the .xn--e1a4c (ею, European Union) and .xn--mix891f (澳門,
+    Macao) TLD servers.
+  * Updated the .jobs, .kn and .pro TLD servers.
+  * Updated the .gi, .lc, .sc and .vc TLD servers, because the precedent
+    data caused the program to return an error status.
+  * Updated the list of new gTLDs.
+  * Fixed the code which queries whois.iana.org for TLDs to
+    recognize IDN TLDs too.
+
+-------------------------------------------------------------------
+Tue Dec  8 10:41:13 UTC 2015 - astieger@suse.com
+
+- whois 5.2.11:
+  * Fixed the --select-types and --sources long options.
+  * Updated the list of new gTLDs.
+  * Removed the .an TLD.
+  * Removed the .xn--l1acc (.МОН, Mongolia) TLD server.
+  * Added the .xn--mgbtx2b (عراق, Iraq) and .xn--qxam (.ΕΛ, Greece)
+    TLD servers.
+
+-------------------------------------------------------------------
+Tue Aug 11 10:01:00 UTC 2015 - astieger@suse.com
+
+- whois 5.2.10:
+  * Updated the list of new gTLDs.
+  * Updated the .ki and .vg TLD servers.
+
+-------------------------------------------------------------------
+Mon Jun  8 09:45:52 UTC 2015 - astieger@suse.com
+
+- whois 5.2.9:
+  * Updated the list of new gTLDs.
+  * Updated the .bn and .cr TLD servers.
+  * Updated IDSTRING to 5.2.
+
+-------------------------------------------------------------------
+Tue May 19 08:53:21 UTC 2015 - astieger@suse.com
+
+- whois 5.2.8:
+  * Updated the list of new gTLDs.
+  * Added new ASN allocations.
+  * Added the .xn--y9a3aq (.հայ, Armenia) TLD server.
+
+-------------------------------------------------------------------
+Thu Mar 26 19:37:49 UTC 2015 - astieger@suse.com
+
+- whois 5.2.7:
+  * Removed a bogus disclaimer detection string.
+  * Updated the list of new gTLDs
+
+-------------------------------------------------------------------
+Mon Mar 23 13:57:05 UTC 2015 - astieger@suse.com
+
+- whois 5.2.6:
+   * Added the .edu.ph TLD server.
+   * Removed the .gov.py TLD server.
+   * Updated the list of new gTLDs.
+   * Implemented hiding multiple disclaimers blocks to improve
+     detection.
+   * Updated the disclaimer detection strings.
+
+-------------------------------------------------------------------
+Tue Mar  3 14:23:43 UTC 2015 - astieger@suse.com
+
+- whois 5.2.5:
+  * Added the .xn--90ais (.бел, Belarus) TLD server.
+  * Updated the .ky TLD server.
+  * Updated the list of new gTLDs.
+  * Added new recovered IPv4 allocations.
+
+-------------------------------------------------------------------
+Sun Jan 25 15:10:54 UTC 2015 - andreas.stieger@gmx.de
+
+- whois 5.2.4:
+  * Fixed referrals handling for the .cc, .tv a .jobs TLDs.
+  * Updated the list of new gTLDs.
+
+-------------------------------------------------------------------
+Thu Jan 22 15:24:05 UTC 2015 - andreas.stieger@gmx.de
+
+- whois 5.2.3:
+  * Added the .gw TLD server.
+  * Updated the .bm, .gr, .gt, .md, .np, .py, .tc, .tg, .vi,
+    .net.za, .org.za and .web.za TLD servers.
+  * Removed the .cg TLD server.
+  * Updated the list of new gTLDs.
+  * mkpasswd: use arc4random_buf(3) where available.
+  * mkpasswd: support OpenBSD's new hash 2b.
+  * Updated some IPv4 allocations.
+
+-------------------------------------------------------------------
+Sat Dec  6 18:25:49 UTC 2014 - crrodriguez@opensuse.org
+
+- whois-nobsdsource.patch: get rid of warnings about 
+  BSD_SOURCE deprecatation , just define GNU_SOURCE 
+  globally instead of any other C library feature macro.
+
+-------------------------------------------------------------------
+Thu Nov 13 21:20:56 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.2.2:
+  * Fixed the code that removes trailing dots.
+  * Added the .xn--d1alf (.мкд, Macedonia) and .xn--node (.გე,
+    Georgia) TLD servers.
+  * Updated the list of new gTLDs.
+- make perl requirements explict. 
+- In 13.1, perl(autodie) is provided by the main perl package, do
+  not look at the alternative in perl-autodie.
+
+-------------------------------------------------------------------
+Thu Oct 16 22:28:05 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.2.1:
+  * Added the .aw and .zm TLD servers.
+  * Added the charset for whois.domain.kg.
+  * Updated the list of new gTLDs.
+  * Queries for bare TLDs will be directed to whois.iana.org.
+
+-------------------------------------------------------------------
+Sat Sep 13 11:52:06 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.2.0:
+  * Implemented support for the long RIPE flags.
+  * "Fixed" some harmless bugs discovered with a Coverity scan.
+  * Default to whois.ripe.net when using long flags.
+  * Updated the list of new gTLDs.
+  * Added a new ASN allocation.
+  * Added new recovered IPv4 allocations.
+
+-------------------------------------------------------------------
+Sun Aug  3 00:27:33 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.1.5:
+  * Updated the list of new gTLDs.
+  * Added some disclaimer suppression strings for the new gTLDs'
+     servers.
+
+-------------------------------------------------------------------
+Wed Jul  2 22:34:06 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.1.4:
+   * Added the charset for whois.lacnic.net.
+   * Updated the list of new gTLDs.
+   * Updated one or more translations.
+- remove source URL from upstream keyring as it changes with
+  signatures added
+
+-------------------------------------------------------------------
+Mon May 26 23:22:58 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.1.3:
+   * Use the IANA recovered address space list.
+   * Updated the list of new gTLDs.
+   * Support hiding disclaimers until the end of the output.
+   * Fix a disclaimer hiding string.
+
+-------------------------------------------------------------------
+Sat May  3 10:05:59 UTC 2014 - andreas.stieger@gmx.de
+
+- whois 5.1.2:
+   * Always query whois.nic.$TLD for the "new" gTLDs, because the
+     ICANN  contract requires that it works.
+   * Added the .aw and .zm TLD servers.
+   * Updated the .mk, .tc and .vu TLD servers.
+   * Added more ASN entries for Japan and Korea.
+   * Fixed some invalid ASN and networks entries which would never
+     be matched
+- drop whois-5.0.25-nb.patch, committed upstream
+- update upstream developer signing key
+- use parallel build
+
+-------------------------------------------------------------------
+Sun Jan 12 14:04:57 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 5.1.1
+  * Added the servers for 29 "new" gTLDs.
+
+-------------------------------------------------------------------
+Fri Dec 27 21:14:48 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 5.1.0
+ * Added the .ga, .ml, .pf, .xn--l1acc (.МОН, Mongolia) and
+   .xn--mgba3a4f16a (.ﺍیﺭﺎﻧ, Iran) TLD servers.
+ * Added the servers for 54 "new" gTLDs.
+ * Updated the .bw, .gd, .hn, .sb, .xn--j1amh and .xn--mgberp4a5d4ar
+   TLD servers.
+ * Added new RIPE and APNIC ASN allocations.
+ * Removed the .ck TLD server.
+ * Updated one or more translations.
+ * Applied multiple small fixes contributed by Petr Písař of Red Hat.
+ * Correctly hide the disclaimers for .be and .sx.
+ * Direct queries for private ASN blocks to RIPE.
+
+-------------------------------------------------------------------
+Sat Jul 20 12:25:10 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 5.0.26
+  * Added the .cf TLD server.
+  * Updated the .bi TLD server.
+  * Added a new ASN allocation.
+
+-------------------------------------------------------------------
+Tue Jul  9 19:41:26 UTC 2013 - andreas.stieger@gmx.de
+
+- verify source signatures
+
+-------------------------------------------------------------------
+Tue Jul  9 00:30:08 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 5.0.25
+  * Added the .ax, .bn, .iq, .pw and .rw TLD servers.
+  * Updated one or more translations.
+- includes updates changes 5.0.24:
+  * Merged documentation fixes and the whois.conf(5) man page
+  * Added a new ASN allocation.
+  * Updated one or more translations.
+- includes changes from 5.0.23
+  * whois.nic.or.kr switched from EUC-KR to UTF-8.
+- includes changes from 5.0.22
+  * Fixed cross-compiling
+- includes changes from 5.0.21
+  * Fixed parsing of 6to4 addresses
+  * Added the .xn--j1amh (.укр, Ukraine) TLD server.
+  * Updated the .bi, .se and .vn TLD servers.
+  * Removed whois.pandi.or.id from the list of servers which support the
+    RIPE extensions, since it does not anymore and queries are broken.
+  * Updated some disclaimer suppression strings.
+  * Respect DEB_HOST_GNU_TYPE when selecting CC for cross-compiling.
+- includes changes form 5.0.20
+  * Updated the .by, .ng, .om, .sm, .tn, .ug and .vn TLD servers.
+  * Added the .bw, .td, .xn--mgb9awbf (عمان., Oman), .xn--mgberp4a5d4ar
+    (.السعودية, Saudi Arabia) and .xn--mgbx4cd0ab (ﻢﻠﻴﺴﻳﺍ., Malaysia)
+    TLD servers.
+  * Removed the .kp, .mc, .rw and .xn--mgba3a4f16a (ایران., Iran) TLD servers.
+- includes changes from 5.0.19
+  * Added the .post TLD server.
+  * Updated the .co.za SLD servers.
+  * Added the .alt.za, .net.za and .web.za SLD servers.
+  * whois.ua changed (?) the encoding to utf-8.
+  * Fixed the parsing of 6to4 addresses like whois 2002:xxxx::.
+- includes changes from 5.0.18
+  * Updated the .ae and .xn--mgbaam7a8h (.امارات, United Arabs Emirates)
+    TLDs.
+  * Updated the server charset table for .fr and .it.
+- includes changes from whois 5.0.17
+  * Updated the .bi, .fo, .gr and .gt TLD servers.
+  * Removed support for recursion of .org queries, it has been a thick
+    registry since 2005.
+- includes changes from 5.0.16
+  * Added the .xn--80ao21a (.ҚАЗ, Kazakhstan) TLD server.
+  * Updated the .ec and .ee TLD servers.
+  * Removed the .xn--mgbc0a9azcg (.المغرب, Morocco) and .xn--mgberp4a5d4ar
+    (.السعودية, Saudi Arabia) TLD servers.
+  * Added a new ASN allocation.
+  * Updated one or more translations.
+- includes changes from 5.0.15
+  * Added the .xn--mgba3a4f16a (ایران., Iran) TLD server.
+  * Updated the .pe TLD server, this time for real.
+  * Updated one or more translations.
+- includes changes from 5.0.14
+  * Added the .sx TLD server.
+  * Updated the .pe TLD server.
+- includes changes from 5.0.13
+  * Updated the .hr TLD server.
+  * Improved the package description
+  * Updated the FSF address in licenses.
+- includes changes from 5.0.12
+  * Recursion disabled when the query string contains spaces, because
+    probably the query format will not be compatible with the referral
+    server (e.g. whois to rwhois or ARIN to RIPE).
+  * Add the "+" flag by default to queries to whois.arin.net if the
+    argument looks like an IP address. Also add the "a" and "n" flags.
+    No thanks to ARIN for breaking every whois client.
+  * Added the .cv, .lk, .mq, .sy, .so, .biz.ua, .co.ua, .pp.ua, .qa,
+    .xn--3e0b707e (.한국, Korea), .xn--45brj9c (.ভারত, India, Bengali),
+    .xn--90a3ac (.СРБ, Serbia), .xn--clchc0ea0b2g2a9gcd (.சிங்கப்பூர்,
+    Singapore, Tamil), .xn--fpcrj9c3d (.భారత్, India, Telugu), .xn--fzc2c9e2c
+    (.ලංකා, Sri Lanka, Sinhala), .xn--gecrj9c (.ભારત, India, Gujarati),
+    .xn--h2brj9c (.भारत, India, Hindi), .xn--lgbbat1ad8j (.الجزائر, Algeria),
+    .xn--mgbayh7gpa (.الاردن, Jordan), .xn--mgbbh1a71e (.بھارت, India, Urdu),
+    .xn--mgbc0a9azcg (.المغرب, Morocco), .xn--ogbpf8fl (.سورية, Syria),
+    .xn--s9brj9c (.ਭਾਰਤ, India, Punjabi), .xn--xkc2al3hye2a (.இலங்கை, Sri
+    Lanka, Tamil), .xn--wgbl6a (.قطر, Qatar), .xn--xkc2dl3a5ee0h
+    (.இந்தியா, India, Tamil), .xn--yfro4i67o (.新加坡, Singapore, Chinese) and
+    .xxx TLD servers. (Closes: #642424),
+  * Added the .priv.at pseudo-SLD server.
+  * Updated the .co, .gf, .gp, .kr, .li, .rs, .ru, .su, .sv, .ua and
+    .xn--p1ai TLD servers. (Closes: #590425, #634830, #627478)
+  * Added a new ASN allocation.
+  * Fixed a typo and -t syntax in whois(1). (Closes: #614973, #632588)
+  * Made whois return an error in some cases, code contributed by
+    David Souther.
+  * Split HAVE_LINUX_CRYPT_GENSALT from HAVE_XCRYPT to support SuSE,
+    which has it builtin in the libc. Added untested support for Solaris'
+    crypt_gensalt(3). This and the following changes have been contributed
+    by Ludwig Nussel of SuSE.
+  * mkpasswd: stop rejecting non-ASCII characters.
+  * mkpasswd: added support for the 2y algorithm, which fixes CVE-2011-2483.
+  * mkpasswd: raised the number of rounds for 2a/2y from 4 to 5, which is
+    the current default.
+  * mkpasswd: removed support for 2 and {SHA}, which actually are not
+    supported by FreeBSD and libxcrypt.
+- packaging changes
+  * removed patches accepted upstream:
+     whois-5.0.11-mkpasswd-support-Owl-patched-libcrypt.diff
+     whois-5.0.11-mkpasswd-crypt_gensalt-might-change-the-prefix.diff
+     whois-5.0.11-mkpasswd-support-8bit-characters.diff
+     whois-5.0.11-mkpasswd-add-support-for-the-new-2y-blowfish-tag-CVE-2011-2483.diff
+     whois-5.0.11-mkpasswd-set-default-blowfish-rounds-to-5.diff
+     whois-5.0.11-mkpasswd-remove-obsolete-settings.diff
+  * removed patches no longer required:
+     whois-5.0.11-mkpasswd-fix-compiler-warnings.diff
+  * updated patches:
+     whois-4.7.33-nb.patch to whois-5.0.25-nb.patch
+
+-------------------------------------------------------------------
+Thu Jul  4 13:06:30 UTC 2013 - schwab@suse.de
+
+- crypt_gensalt moved to separate library libowcrypt (fate#314945)
+
+-------------------------------------------------------------------
+Fri Aug 26 07:50:06 UTC 2011 - lnussel@suse.de
+
+- fix build on older distros
+
+-------------------------------------------------------------------
+Tue Jul 19 08:48:20 UTC 2011 - lnussel@suse.de
+
+- enable use of crypt_gensalt to support all glibc supported
+  algorithms
+- allow 8bit passwords read from file
+- support new blowfish $2y algorithm
+
+-------------------------------------------------------------------
+Tue Mar 22 10:15:42 UTC 2011 - puzel@novell.com
+
+- update to whois-5.0.11
+  * Added the remaining IPv4 allocations.
+  * Added new ASN allocations.
+  * Updated the .co and .gm TLD servers.
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  1 12:01:09 UTC 2010 - puzel@novell.com
+
+- update to whois-5.0.10 
+  * updated IPv4 allocations and TLD servers
+
+-------------------------------------------------------------------
+Fri Oct  1 09:31:39 UTC 2010 - puzel@novell.com
+
+- build with iconv support (bnc#642681) 
+
+-------------------------------------------------------------------
+Mon Aug  9 07:29:02 UTC 2010 - puzel@novell.com
+
+- update to whois-5.0.7 
+  * Added new IPv4 allocations.
+  * Added the new TLD servers.
+  * Updated the .bd, .bo, .cm, .co, .cu, .dz, .gr, .hk, .lb,
+    .ni, .rw, .tw and .tz TLD servers.
+
+-------------------------------------------------------------------
+Mon Jul 19 12:59:52 UTC 2010 - puzel@novell.com
+
+- update to whois-5.0.6
+
+  * Added new IPv4 allocations.
+  * Stop using inet_pton to parse IP addresses because it does 
+    not work when a netmask length is specified.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:17:27 UTC 2010 - puzel@novell.com
+
+- update to whois-5.0.0 
+  * Added optional support for automatically transcoding the 
+    output of servers.
+  * Automatically add --show-handles to queries for .dk domains.
+  * Normalize the querystring and convert it to punycode even if a 
+    server is specified on the command line.
+  * Updated the .id, .is, .my, .sb and .tj TLD servers.
+  * Removed the .mm, .pw, .sr and .tp TLD servers.
+  * Cleaned up the horrible strings manipulation code.
+
+-------------------------------------------------------------------
+Thu Aug 13 09:17:43 UTC 2009 - puzel@novell.com
+
+- update to whois-4.7.36
+  * Fixed the whois server for 182.0.0.0/7 added in 4.7.35.
+  * Fixed the whois servers for some ERX legacy allocations.
+  * Added new IPv4 allocations.
+  * Updated the .ae, .jobs, .ms, .ph and .tv TLD servers.
+  * Added the .ls, .mg, .mk, .tz and .uy TLD servers.
+  * Removed the .td TLD server.
+  * mkpasswd: generate random-length hashes when supported.
+  * mkpasswd: use ngettext to support translation of plural forms.
+    (Patch courtesy of Petr Pisar.)
+  * Updated some translations.
+
+-------------------------------------------------------------------
+Tue Jun 23 15:34:28 CEST 2009 - puzel@novell.com
+
+- update to whois-4.7.34
+  * Added new IPv4 allocations.
+  * Fixed the disclaimer suppression data for .mobi.
+  * Updated the French translation.
+  * Updated the .bd TLD server.
+
+-------------------------------------------------------------------
+Mon May  4 11:51:30 CEST 2009 - puzel@suse.cz
+
+- updated to version 4.7.33
+  * mkpasswd: use /dev/urandom to generate the salt. If it is not present,
+    initialize srand(3) with gettimeofday(2) instead of time(2) to have a
+    larger randomness space.
+  * mkpasswd: added preliminary support for variable length salts, patch
+    courtesy of Nicolas François.
+  * Updated the .co.za SLD server.
+  * Added new ASN allocations.
+  * Updated the .tel, .gg and .je TLD servers.
+  * Implemented a 10 seconds timeout on connect(2) to allow querying
+    servers with broken IPv6 connectivity.
+  * Added support for automatically determining the server for in-addr.arpa
+    domains.
+  * Added new IPv4 allocations.
+  * Fixed a typo in de.po.
+  * Updated the .gi, .lc and .mn TLD servers.
+  * Fixed the short option -S which I broke in 4.7.25.
+  * Added support for ASN32 in the ASPLAIN notation.
+  * Do not disable the timeout after the connection to the server, because
+    it can still hang forever.
+  * Added the .gy, .hn, .ng and .sl TLD servers.
+  * Updated the .tel, .cr, .dz, .ht, .im, .jo, .ly, .mt, .mu, .pr, .rs, .sn,
+    .com.uy, .vc and .vn TLD servers.
+  * Added support for -kenic NIC handles.
+  * Added new IPv4 allocations.
+  * Little portability fixes.
+  * Added Finnish translation contributed by Sami Kerola.
+- removed whois-4.7.28-Makefile.patch (obsolete)
+- fixed rpmlint warning
+- properly pass RPM_OPT_FLAGS to make
+
+-------------------------------------------------------------------
+Fri Sep 12 10:48:46 CEST 2008 - anosek@suse.cz
+
+- updated to version 4.7.28
+  * Updated the .aero TLD server.
+  * Added a new ASN allocation.
+  * Search PGPKEY-* objects in the RIPE database.
+  * Added support for passing command line options in the environment
+    variables WHOIS_OPTIONS and MKPASSWD_OPTIONS.
+  * mkpasswd: added support for the SHA-256 and SHA-512 methods from
+    glibc 2.7.
+  * mkpasswd: added support for FreeBSD-style Blowfish and NT-Hash methods.
+  * mkpasswd: added support for variable-rounds methods (OpenBSD-style
+    Blowfish and SHA-256/SHA-512).
+  * mkpasswd: renamed -H/--hash to -m/--method.
+  * mkpasswd: finished support for libxcrypt (not enabled by default).
+- fixed build (Makefile.patch)
+
+-------------------------------------------------------------------
+Sun Mar 16 01:29:51 CET 2008 - crrodriguez@suse.de
+
+- fix file-in-lang errors 
+
+-------------------------------------------------------------------
+Wed Mar  5 17:16:49 CET 2008 - anosek@suse.cz
+
+- updated to version 4.7.24
+  * Added new ASN allocations.
+  * Added new IPv4 allocations.
+  * Added the .asia, .kp and .mq TLD servers. (Closes: #445747)
+  * Fixed myinet_aton to not reject CIDR networks.
+  * Added support for ASN32.
+  * Added the za.net and za.org pseudo-TLD servers.
+  * Added new IPv4 allocations.
+  * Added new ASN allocations.
+  * Updated the .jobs, .ai and .tn TLD and za.net servers.
+  * Added the za.net server. (Closes: #423549)
+  * Stop misparsing <as-set>:<hierarchical-name> as an IPv6 address.
+  * Stop mangling IDN queries with in-query flags. (Closes: #422895)
+
+-------------------------------------------------------------------
+Tue Jul 31 10:22:01 CEST 2007 - anosek@suse.cz
+
+- updated to version 4.7.21
+  * Improved myinet_aton to not parse addresses with trailing junk
+  * Added APNIC and RIPE allocations.
+  * Updated the name of the Verio whois server. (Closes: #410449)
+  * Removed references to whois.nic.mil, which apparently is gone.
+  * Removed whois.nic.it from ripe_servers, because it does not even
+    pretend to be one anymore.
+
+-------------------------------------------------------------------
+Mon Feb  5 13:47:35 CET 2007 - anosek@suse.cz
+
+- updated to version 4.7.20
+  * Added more krnic allocations.
+  * Added support for -sixxs NIC handles.
+  * Added again 26[12]0:0000::/23 which had been mistakenly removed
+  * Added new IPv4 and IPv6 allocations.
+  * whois.radb.net does not understand the RIPE protocol anymore.
+  * Added support for IPv6 Teredo addresses, contributed by Rémi
+    Denis-Courmont. (Closes: #384373)
+  * Updated the .mobi and .gs TLD servers.(Closes: #389880, 391447)
+  * Added the .gd TLD server.
+
+-------------------------------------------------------------------
+Wed Sep 20 11:05:57 CEST 2006 - anosek@suse.cz
+
+- updated to version 4.7.17
+  * Added new IPv4 and IPv6 allocations.
+  * Strip the CIDR prefix length from queries to whois.arin.net.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:22:19 CEST 2006 - mmarek@suse.cz
+
+- updated to version 4.7.15
+  * TLD server list updates
+  * new translations
+- no need to patch top level Makefile
+
+-------------------------------------------------------------------
+Fri Apr 14 13:27:29 CEST 2006 - mmarek@suse.cz
+
+- updated the tld_serv_list file to include .eu and other new TLDs
+  [#165904] (tld_serv_list-4.7.13.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep  9 22:42:49 CEST 2005 - schwab@suse.de
+
+- Add libidn, libidn-devel to nfb.
+- Compile with -DHAVE_LIBIDN, needed for DENIC workaround.
+
+-------------------------------------------------------------------
+Fri Jul 29 20:00:28 CEST 2005 - anicka@suse.cz
+
+- update to 4.7.5 
+
+-------------------------------------------------------------------
+Thu Jan 13 17:40:36 CET 2005 - postadal@suse.cz
+
+- updated to version 4.6.26
+
+-------------------------------------------------------------------
+Wed Oct 20 02:03:08 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Aug 19 11:50:57 CEST 2004 - postadal@suse.cz
+
+- updated to version 4.6.20u
+
+-------------------------------------------------------------------
+Fri Aug 06 19:39:13 CEST 2004 - postadal@suse.cz
+
+- updated to version 4.6.19
+
+-------------------------------------------------------------------
+Wed Feb 11 20:23:00 CET 2004 - postadal@suse.cz
+
+- updated to version 4.6.9
+- added changelog and copyright files
+- removed obsoleted patch buffoverflow-fix
+
+-------------------------------------------------------------------
+Thu Oct 30 16:49:37 CET 2003 - schwab@suse.de
+
+- Fix for 64 bit platforms.
+
+-------------------------------------------------------------------
+Thu Aug 28 15:55:57 CEST 2003 - postadal@suse.cz
+
+- fixed buffer overflow [#29511]
+
+-------------------------------------------------------------------
+Thu Jul 24 21:23:24 CEST 2003 - postadal@suse.cz
+
+- updated to version 4.6.6
+  * added .dj TLD
+  * fixed netsol disclaimer strings
+  * updated PIR server parser
+
+-------------------------------------------------------------------
+Mon Feb 03 13:59:07 CET 2003 - postadal@suse.cz
+
+- updated to version 4.6.2
+
+-------------------------------------------------------------------
+Mon Aug 12 15:28:06 CEST 2002 - postadal@suse.cz
+
+- update to 4.5.29:
+  * updated LANIC and telstra IP allocations
+  * updated mkpasswd  
+  * fixes
+
+-------------------------------------------------------------------
+Fri Jan 18 10:54:06 CET 2002 - nadvornik@suse.cz
+
+- update to 4.5.19:
+  - updated .aero, .coop, .name, .pro, .dk and .edu TLD servers
+
+-------------------------------------------------------------------
+Mon Dec 10 13:24:01 CET 2001 - nadvornik@suse.cz
+
+- update to 4.5.15:
+  - updated translations
+  - bugfixes
+
+-------------------------------------------------------------------
+Thu Jul 26 15:18:54 CEST 2001 - nadvornik@suse.cz
+
+- update to 4.5.6
+
+-------------------------------------------------------------------
+Tue Mar 27 17:02:42 CEST 2001 - nadvornik@suse.cz
+
+- update to 4.5.4
+
+-------------------------------------------------------------------
+Thu Dec  7 17:22:35 CET 2000 - uli@suse.de
+
+- update -> 4.5.1 (doesn't segfault)
+
+-------------------------------------------------------------------
+Mon Oct  9 10:03:45 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+
+-------------------------------------------------------------------
+Fri May 19 08:53:16 CEST 2000 - nadvornik@suse.cz
+
+- update to 4.4.13
+- changed group
+
+-------------------------------------------------------------------
+Thu Mar 30 09:42:51 CEST 2000 - nadvornik@suse.cz
+
+- update to 4.4.12 
+- added BuildRoot
+- added %{_mandir} macro
+
+-------------------------------------------------------------------
+Fri Mar  3 16:58:40 MET 2000 - uli@suse.de
+
+- moved man pages to /usr/share
+
+-------------------------------------------------------------------
+Mon Feb 21 12:55:31 MET 2000 - mha@suse.de
+
+- completely new, different version from
+  http://www.linux.it/~md/software/
+  Quote README of the new version:
+  "Why another whois client? Because the RIPE client is a mess of
+   hacks and #ifdefs and more complex programs lack features or
+   are bloated."
+
+-------------------------------------------------------------------
+Mon Nov 29 09:04:07 MET 1999 - kukuk@suse.de
+
+- fixed for SPARC
+
+-------------------------------------------------------------------
+Tue Sep 21 20:37:25 CEST 1999 - uli@suse.de
+
+- fixed for PPC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Feb  3 00:11:37 MET 1999 - ro@suse.de
+
+- use libcrypt on alpha
+- no m486 on alpha
+
+-------------------------------------------------------------------
+Fri Oct  2 01:40:33 MEST 1998 - ro@suse.de
+
+- defined _BSD_SOURCE
+- dont redeclare gethostname
+- link with -crypt where needed
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- first version of ripe-whois 2.2
+
+

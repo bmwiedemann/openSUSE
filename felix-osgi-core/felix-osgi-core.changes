@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Tue Apr  9 15:26:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to the parent pom since we are not building
+  using Maven.
+
+-------------------------------------------------------------------
+Wed Feb 13 08:41:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Package also the javadocs
+
+-------------------------------------------------------------------
+Tue Dec 18 08:57:42 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Require felix-parent, so that the artifact can be usable by
+  maven
+
+-------------------------------------------------------------------
+Fri Oct 19 20:36:57 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Install properly the maven pom file and generate maven provides
+
+-------------------------------------------------------------------
+Thu May 17 05:48:26 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * jdk9.patch
+    + build with Java source/target levels 8
+
+-------------------------------------------------------------------
+Mon Sep 18 07:34:12 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * jdk9.patch
+    + Fix build with jdk9
+	+ Specify java source and target 1.6
+	+ Specify correct encoding of files UTF-8
+- Clean spec file
+
+-------------------------------------------------------------------
+Sat Jul  9 13:51:29 UTC 2016 - mailaender@opensuse.org
+
+- Adapted for openSUSE
+
+-------------------------------------------------------------------
+Wed Dec 15 00:00:00 UTC 2010 - sochotnicky@redhat.com
+
+- Remove felix-parent from Requires to prevent pulling maven in
+
+
+-------------------------------------------------------------------
+Tue Dec 14 00:00:00 UTC 2010 - sochotnicky@redhat.com
+
+- Add felix-parent to Requires (maven builds require this)
+- Add license and jpackage-utils Requires to javadoc subpackage
+- Use mavenpomdir macro
+
+
+-------------------------------------------------------------------
+Mon Dec 13 00:00:00 UTC 2010 - akurtako@redhat.com
+
+- Fix pom name.
+- Adapt to current guidelines.
+
+
+-------------------------------------------------------------------
+Tue Jun 29 00:00:00 UTC 2010 - victor.vasilyev@sun.com
+
+- Modify maven-build.xml to include MANIFEST.MF into JAR
+
+
+-------------------------------------------------------------------
+Tue Jun 22 00:00:00 UTC 2010 - victor.vasilyev@sun.com
+
+- Update felix-osgi-core-1.4.0-build.xml.tar.gz
+- Use the macros style
+- Release 1.4.0
+
+
+-------------------------------------------------------------------
+Thu Sep  3 00:00:00 UTC 2009 - akurtako@redhat.com
+
+- Initial package.
+

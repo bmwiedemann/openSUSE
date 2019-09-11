@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Thu Aug  8 12:06:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add "Requires: yder-devel" to ulfius-devel
+
+-------------------------------------------------------------------
+Mon Aug  5 06:24:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.3
+  * Fix warning appeared with gcc 9.1, fixes #128
+  * Make instance->mhd_response_copy_data useless if MHD>=0.9.61
+  * Fix MHD_start_daemon flag to reuse MHD_USE_THREAD_PER_CONNECTION
+    by default
+- Remove patch (fixed upstream):
+  * 0001-Cast-option-value-for-curl_easy_setopt-on-CURLOPT_PO.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 20:02:46 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add "Requires: orcania-devel" to ulfius-devel
+
+-------------------------------------------------------------------
+Fri Jul 19 06:59:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.2
+  * Fix memory leak in `ulfius_set_string_body_request` and
+    `ulfius_set_string_body_response`
+  * Call callback function websocket_onclose_callback on all times,
+    even if the websocket hasn't properly worked, so the calling
+    program can avoid memory leak and broken resources, fix #126
+- Add patch (fixes a compilation error on Tumbleweed):
+  * 0001-Cast-option-value-for-curl_easy_setopt-on-CURLOPT_PO.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 20:52:27 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.1
+  * Fix package dependencies in cmake script
+  * Fix core test to skip websocket tests if webscket is disabled
+  * Disable ipv6 capabilities if libmicrohttpd is older than 0.9.52
+  * Small bugfixes
+- Update to version 2.6.0
+  * Add struct _u_request->callback_position to know the position
+    of the current callback in the callback list
+  * Use MHD_USE_AUTO instead of MHD_USE_THREAD_PER_CONNECTION if
+    libmicrohttpd is newer then 0.9.52
+  * Add network_type in struct _u_instance and struct _u_request to
+    specify IPV4, IPV6 or both networks
+  * Add check_server_certificate_flag, check_proxy_certificate,
+    check_proxy_certificate_flag and ca_path in struct _u_request to
+    add more precision and control on SSL verification in u_send_request
+  * Add functions ulfius_set_string_body_request,
+    ulfius_set_binary_body_request, ulfius_set_empty_body_request
+  * Add url_path in struct _u_request to store the url path only,
+    without query parameters
+  * Add ulfius_url_decode and ulfius_url_encode
+  * Clean code, add more tests
+    errors
+  * Use gnutls_rnd() instead of rand()
+- Update to version 2.5.5
+  * Fix #121 where websockets messages of 126 or 127 bytes long made
+  * Fix sneaky bug where endpoint injection inside a endpoint callback
+    can lead to wrong callback calls, or even worse, crashes
+
+-------------------------------------------------------------------
+Sun Apr  7 07:37:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.4
+  * Align PKGCONF_REQ_PRIVATE required versions
+  * Backport ulfius_copy_request, ulfius_duplicate_request,
+    ulfius_copy_response and ulfius_duplicate_response from Ulfius 2.6
+
+-------------------------------------------------------------------
+Sat Jan 12 14:31:56 UTC 2019 - mardnh@gmx.de
+
+- Update to version 2.5.3
+  - Add flag to build Ulfius with GnuTLS support but without
+    Websockets.
+  - Fix CMake build process that didn't obviously linked Ulfius
+    with pthreads.
+
+-------------------------------------------------------------------
+Fri Dec 28 15:49:07 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.5.2
+  * Fix utf8 check on NULL value
+- Update to version 2.5.1
+  * Fix uwsc crash on some systems
+- Update to version 2.5.0
+  * Add struct _u_endpoint.check_utf8 to check all request parameters
+    and values to be valid utf8 strings.
+  * Add client certificate authentication for webservice and send
+    request library.
+  * Add support for SameSite attribute in response cookies
+- Update to version 2.4.4
+  * CMake scripts improvements
+- Update to version 2.4.3
+  * Add config file ulfius-cfg.h dynamically built with the options
+  * Adapt examples with new ulfius-cfg.h file
+- Update to version 2.4.2
+  * Fix #79 where yuarel should be hidden from the outside world
+- Update to version 2.4.1
+  * Fix #78 where gnutls is not required if websocket is disabled
+- Update to version 2.4.0
+  * Fix Websocket fragmented messages
+  * Fix CMake script that installed Orcania twice
+  * Fix cppcheck warnings
+  * Add timeout for http connections
+  * Allow to use MHD_RESPMEM_MUST_COPY for different memory manager
+  * Add websocket client framework
+  * Add uwsc - Ulfius WebSocket Client
+    A simple command-line websocket client program
+- Remove patches (included/fixed upstream):
+  * 0001-Fix-pkg-config-information-add-requires-fields-as-me.patch
+  * ulfius-fix-cmake-path.patch
+- Create subpackage "uwsc" for the Ulfius WebSocket Client program
+
+-------------------------------------------------------------------
+Sat Aug 11 08:17:09 UTC 2018 - jengelh@inai.de
+
+- Description update.
+
+-------------------------------------------------------------------
+Sun Jul 29 19:02:49 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.3.8

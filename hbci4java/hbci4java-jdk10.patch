@@ -1,0 +1,21 @@
+diff -urEbwB hbci4java-2.5.12.hibiscus.2.6.18/build.xml hbci4java-2.5.12.hibiscus.2.6.18/build.xml
+--- hbci4java-2.5.12.hibiscus.2.6.18/build.xml	2017-12-22 16:41:55.169634430 +0100
++++ hbci4java-2.5.12.hibiscus.2.6.18/build.xml	2017-12-22 16:44:14.205634955 +0100
+@@ -78,7 +78,7 @@
+ 
+ 	<target name="compile" depends="thirdparty">
+ 		<mkdir dir="${classes}" />
+-		<javac srcdir="${src}" source="1.6" target="1.6" destdir="${classes}" debug="on" encoding="ISO-8859-1" deprecation="on" includeAntRuntime="no" />
++		<javac srcdir="${src}" source="1.6" target="1.6" destdir="${classes}" nativeheaderdir="${chipcard}/src/include/" debug="on" encoding="ISO-8859-1" deprecation="on" includeAntRuntime="no" />
+ 
+ 		<copy todir="${classes}">
+ 			<fileset dir="${src}">
+@@ -94,8 +94,6 @@
+ 			</fileset>
+ 		</copy>
+ 
+-		<javah class="org.kapott.hbci.passport.HBCIPassportDDV" outputFile="${chipcard}/src/include/frontend.h" classpath="${classes}" />
+-
+ 		<exec executable="${make}" os="Linux">
+ 			<arg line="-C ${chipcard}" />
+ 		</exec>

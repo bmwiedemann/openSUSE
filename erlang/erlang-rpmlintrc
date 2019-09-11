@@ -1,0 +1,8 @@
+import rpm
+
+addFilter("erlang.* devel-file-in-non-devel-package")
+
+suse_version = int(rpm.expandMacro("%suse_version"))
+
+if suse_version > 1310:
+	addCheck("ErlangCheck")

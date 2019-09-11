@@ -1,0 +1,123 @@
+From 4d1efb14d2e99b7525f222a561bb1eb9f4576026 Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Sat, 14 Apr 2018 16:22:47 +0100
+Subject: [PATCH] Gst::BaseTransform: fix copy_metadata_vfunc memory leak
+
+default_copy_metadata() requires writable output buffer. However,
+gstreamermm increases refcount (Glib::wrap(outbuf, true)), so the
+buffer was not writable anymore. This commit fixes this issue.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=794249
+---
+ gstreamer/src/basetransform.ccg | 59 +++++++++++++++++++++++++++++++++
+ gstreamer/src/basetransform.hg  |  4 ++-
+ 2 files changed, 62 insertions(+), 1 deletion(-)
+
+diff --git a/gstreamer/src/basetransform.ccg b/gstreamer/src/basetransform.ccg
+index 14fc387..9ae7b68 100644
+--- a/gstreamer/src/basetransform.ccg
++++ b/gstreamer/src/basetransform.ccg
+@@ -208,6 +208,49 @@ GstFlowReturn BaseTransform_Class::generate_output_vfunc_callback(GstBaseTransfo
+   return RType();
+ }
+ 
++gboolean BaseTransform_Class::copy_metadata_vfunc_callback(GstBaseTransform* self, GstBuffer* input, GstBuffer* outbuf)
++{
++  const auto obj_base = static_cast<Glib::ObjectBase*>(
++      Glib::ObjectBase::_get_current_wrapper((GObject*)self));
++
++  // Non-gtkmmproc-generated custom classes implicitly call the default
++  // Glib::ObjectBase constructor, which sets is_derived_. But gtkmmproc-
++  // generated classes can use this optimisation, which avoids the unnecessary
++  // parameter conversions if there is no possibility of the virtual function
++  // being overridden:
++  if(obj_base && obj_base->is_derived_())
++  {
++    const auto obj = dynamic_cast<CppObjectType* const>(obj_base);
++    if(obj) // This can be NULL during destruction.
++    {
++      try // Trap C++ exceptions which would normally be lost because this is a C callback.
++      {
++        // Call the virtual member method, which derived classes might override.
++        // outbuf must be writable, so we can't increase a refcount:
++        Glib::RefPtr<Gst::Buffer> cpp_output = Glib::wrap(outbuf, false);
++        auto res = static_cast<int>(obj->copy_metadata_vfunc(Glib::wrap(input, true), cpp_output));
++        IGNORE_RESULT(cpp_output.release());
++        return res;
++      }
++      catch(...)
++      {
++        Glib::exception_handlers_invoke();
++      }
++    }
++  }
++
++  BaseClassType *const base = static_cast<BaseClassType*>(
++      g_type_class_peek_parent(G_OBJECT_GET_CLASS(self)) // Get the parent class of the object class (The original underlying C class).
++  );
++
++  // Call the original underlying C function:
++  if(base && base->copy_metadata)
++    return (*base->copy_metadata)(self, input, outbuf);
++
++  using RType = gboolean;
++  return RType();
++}
++
+ FlowReturn Gst::BaseTransform::generate_output_vfunc(Glib::RefPtr<Gst::Buffer>& outbuf)
+ {
+   BaseClassType *const base = static_cast<BaseClassType*>(
+@@ -227,6 +270,22 @@ FlowReturn Gst::BaseTransform::generate_output_vfunc(Glib::RefPtr<Gst::Buffer>&
+   return RType();
+ }
+ 
++bool Gst::BaseTransform::copy_metadata_vfunc(const Glib::RefPtr<Gst::Buffer>& input, const Glib::RefPtr<Gst::Buffer>& outbuf) 
++{
++  const auto base = static_cast<BaseClassType*>(
++      g_type_class_peek_parent(G_OBJECT_GET_CLASS(gobject_)) // Get the parent class of the object class (The original underlying C class).
++  );
++
++  if(base && base->copy_metadata)
++  {
++    bool retval((*base->copy_metadata)(gobj(),Glib::unwrap(input),Glib::unwrap(outbuf)));
++    return retval;
++  }
++
++  using RType = bool;
++  return RType();
++}
++
+ gboolean BaseTransform_Class::query_vfunc_callback(GstBaseTransform* self, GstPadDirection direction, GstQuery* query)
+ {
+   const auto obj_base = static_cast<Glib::ObjectBase*>(
+diff --git a/gstreamer/src/basetransform.hg b/gstreamer/src/basetransform.hg
+index f845414..46a9b52 100644
+--- a/gstreamer/src/basetransform.hg
++++ b/gstreamer/src/basetransform.hg
+@@ -309,7 +309,7 @@ public:
+   /** Optional. Copy the metadata from the input buffer to the output buffer.
+    * The default implementation will copy the flags, timestamps and offsets of the buffer.
+    */
+-  _WRAP_VFUNC(bool copy_metadata(const Glib::RefPtr<Gst::Buffer>& input, const Glib::RefPtr<Gst::Buffer>& outbuf), "copy_metadata")
++  virtual bool copy_metadata_vfunc(const Glib::RefPtr<Gst::Buffer>& input, const Glib::RefPtr<Gst::Buffer>& outbuf);
+ 
+   /** Optional. Handle a requested query. Subclasses that implement this should must chain up to
+    * the parent if they didn't handle the query
+@@ -321,6 +321,7 @@ protected:
+   _PUSH(SECTION_PCC_CLASS_INIT_VFUNCS)
+   klass->prepare_output_buffer = &prepare_output_buffer_vfunc_callback;
+   klass->transform = &transform_vfunc_callback;
++  klass->copy_metadata = &copy_metadata_vfunc_callback;
+   klass->generate_output = &generate_output_vfunc_callback;
+   klass->query = &query_vfunc_callback;
+   klass->propose_allocation = &propose_allocation_vfunc_callback;
+@@ -328,6 +329,7 @@ protected:
+   _SECTION(SECTION_PH_VFUNCS)
+   static GstFlowReturn prepare_output_buffer_vfunc_callback(GstBaseTransform* self, GstBuffer* input, GstBuffer** buf);
+   static GstFlowReturn transform_vfunc_callback(GstBaseTransform* self, GstBuffer* inbuf, GstBuffer* outbuf);
++  static gboolean copy_metadata_vfunc_callback(GstBaseTransform* self, GstBuffer* input, GstBuffer* outbuf);
+   static GstFlowReturn generate_output_vfunc_callback(GstBaseTransform* self, GstBuffer** outbuf);
+   static gboolean query_vfunc_callback(GstBaseTransform* self, GstPadDirection direction, GstQuery* query);
+   static gboolean propose_allocation_vfunc_callback(GstBaseTransform* self, GstQuery* decide_query, GstQuery* query);
+-- 
+2.17.1

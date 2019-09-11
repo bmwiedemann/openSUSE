@@ -1,0 +1,437 @@
+From 4e296a4d56595a10e4532b0e9bbe5a0d6eb75d01 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Fri, 26 Apr 2019 07:41:04 -0400
+Subject: [PATCH] Revert support for Module advisories
+
+SUSE Linux Enterprise 15 SP1 (and thus openSUSE Leap 15.1) do not
+have libsolv 0.7.4, so handling advisories for modules is not supported.
+
+This reverts the following commits (in order):
+
+* 33a73d7b54cabd20347aac9d59bf9cb1e308f975
+* defb481a340cc3e50fde69e114373e66ada74835
+---
+ libdnf.spec                    |   4 +-
+ libdnf/hy-package.cpp          |   7 +-
+ libdnf/sack/CMakeLists.txt     |   1 -
+ libdnf/sack/advisory.cpp       |  21 ------
+ libdnf/sack/advisory.hpp       |   2 -
+ libdnf/sack/advisorymodule.cpp | 113 ---------------------------------
+ libdnf/sack/advisorymodule.hpp |  58 -----------------
+ libdnf/sack/query.cpp          |  16 ++---
+ libdnf/utils/utils.cpp         |  28 --------
+ libdnf/utils/utils.hpp         |   4 --
+ 10 files changed, 8 insertions(+), 246 deletions(-)
+ delete mode 100644 libdnf/sack/advisorymodule.cpp
+ delete mode 100644 libdnf/sack/advisorymodule.hpp
+
+diff --git a/libdnf.spec b/libdnf.spec
+index aa09f497..e14d7dd6 100644
+--- a/libdnf.spec
++++ b/libdnf.spec
+@@ -1,7 +1,7 @@
+-%global libsolv_version 0.7.4-1
++%global libsolv_version 0.6.35-1
+ %global libmodulemd_version 1.6.1
+ %global librepo_version 1.9.5
+-%global dnf_conflict 4.2.5
++%global dnf_conflict 4.2.3
+ %global swig_version 3.0.12
+ 
+ %bcond_with valgrind
+diff --git a/libdnf/hy-package.cpp b/libdnf/hy-package.cpp
+index 564bc464..833e082c 100644
+--- a/libdnf/hy-package.cpp
++++ b/libdnf/hy-package.cpp
+@@ -29,7 +29,6 @@
+  * See also: #DnfContext
+  */
+ 
+-#include "libdnf/utils/utils.hpp"
+ 
+ #include <algorithm>
+ #include <ctime>
+@@ -1016,11 +1015,7 @@ dnf_package_get_advisories(DnfPackage *pkg, int cmp_type)
+             (cmp < 0 && (cmp_type & HY_LT)) ||
+             (cmp == 0 && (cmp_type & HY_EQ))) {
+             advisory = dnf_advisory_new(sack, di.solvid);
+-            if (libdnf::isAdvisoryApplicable(*advisory, sack)) {
+-                g_ptr_array_add(advisorylist, advisory);
+-            } else {
+-                dnf_advisory_free(advisory);
+-            }
++            g_ptr_array_add(advisorylist, advisory);
+             dataiterator_skip_solvable(&di);
+         }
+     }
+diff --git a/libdnf/sack/CMakeLists.txt b/libdnf/sack/CMakeLists.txt
+index 40d3373c..5e8d5e25 100644
+--- a/libdnf/sack/CMakeLists.txt
++++ b/libdnf/sack/CMakeLists.txt
+@@ -1,7 +1,6 @@
+ set(SACK_SOURCES
+     ${SACK_SOURCES}
+     ${CMAKE_CURRENT_SOURCE_DIR}/advisory.cpp
+-    ${CMAKE_CURRENT_SOURCE_DIR}/advisorymodule.cpp
+     ${CMAKE_CURRENT_SOURCE_DIR}/advisorypkg.cpp
+     ${CMAKE_CURRENT_SOURCE_DIR}/advisoryref.cpp
+     ${CMAKE_CURRENT_SOURCE_DIR}/packageset.cpp
+diff --git a/libdnf/sack/advisory.cpp b/libdnf/sack/advisory.cpp
+index bb9e7f40..d006bcc5 100644
+--- a/libdnf/sack/advisory.cpp
++++ b/libdnf/sack/advisory.cpp
+@@ -24,7 +24,6 @@
+ 
+ #include "advisory.hpp"
+ #include "advisorypkg.hpp"
+-#include "advisorymodule.hpp"
+ #include "advisoryref.hpp"
+ #include "../dnf-advisory-private.hpp"
+ #include "../dnf-advisoryref.h"
+@@ -134,26 +133,6 @@ Advisory::getPackages(std::vector<AdvisoryPkg> & pkglist, bool withFilemanes) co
+     dataiterator_free(&di);
+ }
+ 
+-std::vector<AdvisoryModule> Advisory::getModules() const
+-{
+-    std::vector<AdvisoryModule> moduleList;
+-    Dataiterator di;
+-    Pool *pool = dnf_sack_get_pool(sack);
+-
+-    dataiterator_init(&di, pool, 0, advisory, UPDATE_MODULE, 0, 0);
+-    while (dataiterator_step(&di)) {
+-        dataiterator_setpos(&di);
+-        Id name = pool_lookup_id(pool, SOLVID_POS, UPDATE_MODULE_NAME);
+-        Id stream = pool_lookup_id(pool, SOLVID_POS, UPDATE_MODULE_STREAM);
+-        Id version = pool_lookup_id(pool, SOLVID_POS, UPDATE_MODULE_VERSION);
+-        Id context = pool_lookup_id(pool, SOLVID_POS, UPDATE_MODULE_CONTEXT);
+-        Id arch = pool_lookup_id(pool, SOLVID_POS, UPDATE_MODULE_ARCH);
+-        moduleList.emplace_back(sack, advisory, name, stream, version, context, arch);
+-    }
+-    dataiterator_free(&di);
+-    return moduleList;
+-}
+-
+ void
+ Advisory::getReferences(std::vector<AdvisoryRef> & reflist) const
+ {
+diff --git a/libdnf/sack/advisory.hpp b/libdnf/sack/advisory.hpp
+index 5aa8dc60..37712573 100644
+--- a/libdnf/sack/advisory.hpp
++++ b/libdnf/sack/advisory.hpp
+@@ -33,7 +33,6 @@
+ namespace libdnf {
+ 
+ struct AdvisoryPkg;
+-struct AdvisoryModule;
+ 
+ struct Advisory {
+ public:
+@@ -43,7 +42,6 @@ public:
+     DnfAdvisoryKind getKind() const;
+     const char *getName() const;
+     void getPackages(std::vector<AdvisoryPkg> & pkglist, bool withFilemanes = true) const;
+-    std::vector<AdvisoryModule> getModules() const;
+     void getReferences(std::vector<AdvisoryRef> & reflist) const;
+     const char *getRights() const;
+     const char *getSeverity() const;
+diff --git a/libdnf/sack/advisorymodule.cpp b/libdnf/sack/advisorymodule.cpp
+deleted file mode 100644
+index a209b5f1..00000000
+--- a/libdnf/sack/advisorymodule.cpp
++++ /dev/null
+@@ -1,113 +0,0 @@
+-/*
+- * Copyright (C) 2019 Red Hat, Inc.
+- *
+- * Licensed under the GNU Lesser General Public License Version 2.1
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+- * Lesser General Public License for more details.
+- *
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+- */
+-
+-#include <string>
+-
+-#include <solv/poolid.h>
+-
+-#include "advisory.hpp"
+-#include "advisorymodule.hpp"
+-#include "../dnf-sack-private.hpp"
+-
+-namespace libdnf {
+-
+-class AdvisoryModule::Impl {
+-private:
+-    friend AdvisoryModule;
+-    DnfSack *sack;
+-    Id advisory;
+-    Id name;
+-    Id stream;
+-    Id version;
+-    Id context;
+-    Id arch;
+-};
+-
+-AdvisoryModule::AdvisoryModule(DnfSack *sack, Id advisory, Id name, Id stream, Id version, Id context, Id arch) : pImpl(new Impl)
+-{
+-    pImpl->sack = sack;
+-    pImpl->advisory = advisory;
+-    pImpl->name = name;
+-    pImpl->stream = stream;
+-    pImpl->version = version;
+-    pImpl->context = context;
+-    pImpl->arch = arch;
+-}
+-AdvisoryModule::AdvisoryModule(const AdvisoryModule & src) : pImpl(new Impl) { *pImpl = *src.pImpl; }
+-AdvisoryModule::AdvisoryModule(AdvisoryModule && src) : pImpl(new Impl) { pImpl.swap(src.pImpl); }
+-AdvisoryModule::~AdvisoryModule() = default;
+-
+-AdvisoryModule & AdvisoryModule::operator=(const AdvisoryModule & src) { *pImpl = *src.pImpl; return *this; }
+-
+-AdvisoryModule &
+-AdvisoryModule::operator=(AdvisoryModule && src) noexcept
+-{
+-    pImpl.swap(src.pImpl);
+-    return *this;
+-}
+-
+-bool
+-AdvisoryModule::nsvcaEQ(AdvisoryModule & other)
+-{
+-    return other.pImpl->name == pImpl->name &&
+-        other.pImpl->stream == pImpl->stream &&
+-        other.pImpl->version == pImpl->version &&
+-        other.pImpl->context == pImpl->context &&
+-        other.pImpl->arch == pImpl->arch;
+-}
+-
+-Advisory * AdvisoryModule::getAdvisory() const
+-{
+-    return new Advisory(pImpl->sack, pImpl->advisory);
+-}
+-
+-const char *
+-AdvisoryModule::getName() const
+-{
+-    return pool_id2str(dnf_sack_get_pool(pImpl->sack), pImpl->name);
+-}
+-
+-const char *
+-AdvisoryModule::getStream() const
+-{
+-    return pool_id2str(dnf_sack_get_pool(pImpl->sack), pImpl->stream);
+-}
+-
+-const char *
+-AdvisoryModule::getVersion() const
+-{
+-    return pool_id2str(dnf_sack_get_pool(pImpl->sack), pImpl->version);
+-}
+-
+-const char *
+-AdvisoryModule::getContext() const
+-{
+-    return pool_id2str(dnf_sack_get_pool(pImpl->sack), pImpl->context);
+-}
+-
+-const char *
+-AdvisoryModule::getArch() const
+-{
+-    return pool_id2str(dnf_sack_get_pool(pImpl->sack), pImpl->arch);
+-}
+-
+-DnfSack * AdvisoryModule::getSack() { return pImpl->sack; }
+-
+-}
+diff --git a/libdnf/sack/advisorymodule.hpp b/libdnf/sack/advisorymodule.hpp
+deleted file mode 100644
+index a36bee03..00000000
+--- a/libdnf/sack/advisorymodule.hpp
++++ /dev/null
+@@ -1,58 +0,0 @@
+-/*
+- * Copyright (C) 2019 Red Hat, Inc.
+- *
+- * Licensed under the GNU Lesser General Public License Version 2.1
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+- * Lesser General Public License for more details.
+- *
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+- */
+-
+-
+-#ifndef __ADVISORY_MODULE_HPP
+-#define __ADVISORY_MODULE_HPP
+-
+-#include "../dnf-types.h"
+-#include "advisory.hpp"
+-
+-#include <memory>
+-
+-#include <solv/pooltypes.h>
+-
+-
+-namespace libdnf {
+-
+-struct AdvisoryModule {
+-public:
+-    AdvisoryModule(DnfSack *sack, Id advisory, Id name, Id stream, Id version, Id context, Id arch);
+-    AdvisoryModule(const AdvisoryModule & src);
+-    AdvisoryModule(AdvisoryModule && src);
+-    ~AdvisoryModule();
+-    AdvisoryModule & operator=(const AdvisoryModule & src);
+-    AdvisoryModule & operator=(AdvisoryModule && src) noexcept;
+-    bool nsvcaEQ(AdvisoryModule & other);
+-    Advisory * getAdvisory() const;
+-    const char * getName() const;
+-    const char * getStream() const;
+-    const char * getVersion() const;
+-    const char * getContext() const;
+-    const char * getArch() const;
+-    DnfSack * getSack();
+-private:
+-    class Impl;
+-    std::unique_ptr<Impl> pImpl;
+-};
+-
+-}
+-
+-#endif /* __ADVISORY_MODULE_HPP */
+diff --git a/libdnf/sack/query.cpp b/libdnf/sack/query.cpp
+index 99406480..256b114f 100644
+--- a/libdnf/sack/query.cpp
++++ b/libdnf/sack/query.cpp
+@@ -18,8 +18,6 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+-#include "libdnf/utils/utils.hpp"
+-
+ #include <algorithm>
+ #include <assert.h>
+ #include <fnmatch.h>
+@@ -1532,9 +1530,7 @@ Query::Impl::filterAdvisory(const Filter & f, Map *m, int keyname)
+                     eq = false;
+             }
+             if (eq) {
+-                if (isAdvisoryApplicable(advisory, sack)) {
+-                    advisory.getPackages(pkgs, false);
+-                }
++                advisory.getPackages(pkgs, false);
+                 break;
+             }
+         }
+@@ -2079,8 +2075,7 @@ void
+ Query::getAdvisoryPkgs(int cmpType, std::vector<AdvisoryPkg> & advisoryPkgs)
+ {
+     apply();
+-    auto sack = pImpl->sack;
+-    Pool *pool = dnf_sack_get_pool(sack);
++    Pool *pool = dnf_sack_get_pool(pImpl->sack);
+     std::vector<AdvisoryPkg> pkgs;
+     Dataiterator di;
+     auto resultPset = pImpl->result.get();
+@@ -2089,10 +2084,9 @@ Query::getAdvisoryPkgs(int cmpType, std::vector<AdvisoryPkg> & advisoryPkgs)
+     dataiterator_init(&di, pool, 0, 0, 0, 0, 0);
+     dataiterator_prepend_keyname(&di, UPDATE_COLLECTION);
+     while (dataiterator_step(&di)) {
+-        Advisory advisory(sack, di.solvid);
+-        if (isAdvisoryApplicable(advisory, sack)) {
+-            advisory.getPackages(pkgs);
+-        }
++        Advisory advisory(pImpl->sack, di.solvid);
++
++        advisory.getPackages(pkgs);
+         dataiterator_skip_solvable(&di);
+     }
+     dataiterator_free(&di);
+diff --git a/libdnf/utils/utils.cpp b/libdnf/utils/utils.cpp
+index 458929e3..a12daa41 100644
+--- a/libdnf/utils/utils.cpp
++++ b/libdnf/utils/utils.cpp
+@@ -1,6 +1,4 @@
+ #include "utils.hpp"
+-#include "libdnf/dnf-sack-private.hpp"
+-#include "libdnf/sack/advisorymodule.hpp"
+ 
+ #include <tinyformat/tinyformat.hpp>
+ 
+@@ -21,32 +19,6 @@ extern "C" {
+ 
+ namespace libdnf {
+ 
+-bool isAdvisoryApplicable(libdnf::Advisory & advisory, DnfSack * sack)
+-{
+-    auto moduleContainer = dnf_sack_get_module_container(sack);
+-    if (!moduleContainer) {
+-        return true;
+-    }
+-    auto moduleAdvisories = advisory.getModules();
+-    if (moduleAdvisories.empty()) {
+-        return true;
+-    }
+-    for (auto & moduleAdvisory: moduleAdvisories) {
+-        if (const char * name = moduleAdvisory.getName()) {
+-            if (const char * stream = moduleAdvisory.getStream()) {
+-                try {
+-                    if (moduleContainer->isEnabled(name, stream)) {
+-                        return true;
+-                    }
+-                } catch (std::out_of_range &) {
+-                    continue;
+-                }
+-            }
+-        }
+-    }
+-    return false;
+-}
+-
+ namespace string {
+ 
+ std::vector<std::string> split(const std::string &source, const char *delimiter, int maxSplit)
+diff --git a/libdnf/utils/utils.hpp b/libdnf/utils/utils.hpp
+index a653047f..326e4a97 100644
+--- a/libdnf/utils/utils.hpp
++++ b/libdnf/utils/utils.hpp
+@@ -7,8 +7,6 @@
+ #define DIGITS "0123456789"
+ #define REPOID_CHARS ASCII_LETTERS DIGITS "-_.:"
+ 
+-#include "libdnf/sack/advisory.hpp"
+-
+ #include <functional>
+ #include <string>
+ #include <vector>
+@@ -36,8 +34,6 @@ private:
+     std::function<void()> func;
+ };
+ 
+-bool isAdvisoryApplicable(Advisory & advisory, DnfSack * sack);
+-
+ namespace string {
+ inline std::string fromCstring(const char * cstring) { return cstring ? cstring : ""; }
+ std::vector<std::string> split(const std::string &source, const char *delimiter, int maxSplit = -1);
+-- 
+2.20.1
+

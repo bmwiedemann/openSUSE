@@ -1,0 +1,45 @@
+https://github.com/cmusphinx/pocketsphinx-python/pull/42
+https://github.com/bambocher/pocketsphinx-python/pull/45
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Jun 1 06:41:17 2018 +0200
+
+    Sort input file list
+    
+    so that pocketsphinx-python's _pocketsphinx.so builds in a reproducible way
+    in spite of indeterministic filesystem readdir order
+    and http://bugs.python.org/issue30461
+    
+    See https://reproducible-builds.org/ for why this is good.
+
+Index: pocketsphinx-0.1.3/setup.py
+===================================================================
+--- pocketsphinx-0.1.3.orig/setup.py
++++ pocketsphinx-0.1.3/setup.py
+@@ -203,7 +203,7 @@ setup(
+     ext_modules=[
+         Extension(
+             name='sphinxbase._ad',
+-            sources=ad_sources,
++            sources=sorted(ad_sources),
+             swig_opts=sb_swig_opts,
+             include_dirs=sb_include_dirs,
+             extra_objects=extra_objects,
+@@ -214,7 +214,7 @@ setup(
+         ),
+         Extension(
+             name='sphinxbase._sphinxbase',
+-            sources=sb_sources,
++            sources=sorted(sb_sources),
+             swig_opts=sb_swig_opts,
+             include_dirs=sb_include_dirs,
+             extra_objects=extra_objects,
+@@ -224,7 +224,7 @@ setup(
+         ),
+         Extension(
+             name='pocketsphinx._pocketsphinx',
+-            sources=ps_sources,
++            sources=sorted(ps_sources),
+             swig_opts=ps_swig_opts,
+             include_dirs=sb_include_dirs + ps_include_dirs,
+             extra_objects=extra_objects,

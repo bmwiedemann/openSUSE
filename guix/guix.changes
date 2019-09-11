@@ -1,0 +1,1270 @@
+-------------------------------------------------------------------
+Wed Jul 31 11:08:14 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Build only with 3 threads, because more threads leading to a core
+  dump of guile during the build. Upstream bug:
+  https://issues.guix.gnu.org/issue/36811
+- Fix issue where guix fails during download of packages, which
+  makes guix unusable. Apply patches from upstream. 
+  Add patches:
+  * fix-time-duration-issue-part1.patch
+  * fix-time-duration-issue-part2.patch
+
+-------------------------------------------------------------------
+Fri May 17 07:18:23 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- update to version 1.0.1:
+  * ‘guix system docker-image’ now produces images with an entry point
+  * New ‘--network’ option for ‘guix system container’
+  * ‘gcc’ package is now hidden; ‘gcc-toolchain’ is what users want
+  * ‘mcron’ service now logs to /var/log/mcron.log
+  * Dovecot: ‘auth-verbose-passwords?’ renamed from ‘auth-verbose-passwords’
+  * ‘slim’ service now allows for multiple instances on different VTs
+  * ‘guix-daemon.service’ file for systemd selects a valid UTF-8 locale
+  * ‘guix search’ now searches output names
+  * ‘guix environment’ in non ad-hoc mode honors package transformations
+  * The ‘https_proxy’ environment variable is now honored
+  * The manual is now partly translated to Russian
+  * Updated translations: da, de, es, fr
+  * 70 new packages
+  * 483 package updates
+  For more details see: /usr/share/doc/packages/guix/NEWS
+
+-------------------------------------------------------------------
+Tue May  7 16:16:50 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- don't change badness of RPM warning in guix-rpmlintrc as it's not
+  allowed in Factory. The .c file is needed in source form by Guix
+  as it's get only compiled when invoking "guix pack -R"
+
+-------------------------------------------------------------------
+Thu May  2 12:24:08 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- update to version 1.0.0:
+  * New ‘-v’/‘--verbosity’ option for all commands
+  * Most commands now default to verbosity level 1 (“quiet”)
+  * New ‘guix package’ aliases: ‘install’, ‘remove’, ‘upgrade’, and ‘search’
+  * ‘guix pack -RR’ produces PRoot-enabled relocatable binaries
+  * New ‘--save-provenance’ option for ‘guix pack’
+  * CLI diagnostics use colors; more operations show progress bars
+  * New ‘--news’ option for ‘guix pull’
+  * New ‘--preserve’ option for ‘guix environment’
+  * ‘guix environment -C’ creates containers with a non-zero UID
+  * Channels can now specify dependencies in a ‘.guix-channel’ file
+  * New ‘reverse-bag’ graph type for ‘guix graph’
+  * New ‘--with-git-url’ package transformation option
+  * The ‘--with-branch’ package transformation option fetches Git sub-modules
+  * New ‘guix system delete-generations’ command
+  * New ‘--list-roots’ and ‘--delete-generations’ options for ‘guix gc’
+  * New ‘--coverage’ option for ‘guix weather’
+  * ‘guix pull’ computes a package cache to speed up package lookups by name
+  * ‘guix pull’ now embeds ‘glibc-utf8-locales’
+  * ‘guix refresh -l’ better estimates dependents
+  * ‘guix build’ can take multiple ‘--system’ flags
+  * ‘guix offload’ avoids build machines with too little free disk space
+  * ‘guix offload’ now uses (guix inferior) to communicate with remote hosts
+  * Guix can no longer be built with Guile 2.0
+  * New services: cups-pk-helper, imap4d, inputattach, localed, nslcd,
+                  zabbix-agent, zabbix-server
+  * The manual is now fully translated in French and Spanish
+  * The manual is also partly translated in German and in Simplified Chinese
+  * Updated translations: da, de, es, fr
+  * New translations: sv
+  * various new programming interfaces
+  * various important bugfixes
+  * 1102 new packages
+  * 2104 package updates 
+  For more details see: /usr/share/doc/packages/guix/NEWS
+
+- update source link from alpha.gnu.org to ftp.gnu.org
+- require guile-devel >= 2.2 as Guile 2.0 support gots dropped
+- require gzip on runtime (fixes runtime errors)
+- improve description
+- install run-in-namespace.c for 'guix pack -R' and catch false
+  positive in rpmlintrc
+- change official key to ci.guix.gnu.org.pub
+- add more filters to the guix-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Dec  6 18:08:39 UTC 2018 - jbrielmaier@suse.de
+
+- update to version 0.16
+  * Default substitute URL changed to https://ci.guix.info
+  * ‘guix pull -l’ lists new and upgraded packages
+  * ‘guix pull’ now supports channels via ~/.config/guix/channels.scm
+  * New ‘--profile’ or ‘-p’ option for ‘guix pull’
+  * ~/.config/guix/current is now a symlink to /var/guix/profiles
+  * New ‘guix describe’ command
+  * ‘guix package’ no longer shows build logs by default
+  * ‘guix’ commands now produce colored output by default
+  * User interface now reports grafts separately
+  * Manifests can now refer to arbitrary Guix commits using “inferiors”
+  * New ‘--with-branch’ and ‘--with-commit’ package transformation options
+  * ‘guix build -f’ now accepts any kind of “file-like object”
+  * Git checkouts may now be fetched from Software Heritage
+  * New ‘guix repl’ command for use by inferiors
+  * New ‘guix processes’ command
+  * ‘guix pack’ now honors ‘--localstatedir’ for all its backends
+  * New ‘opam’ importer for ‘guix import’
+  * ‘guix import pypi’ has a new ‘--recursive’ option
+  * ‘guix import hackage’ has a new ‘--recursive’ option
+  * ‘guix import stackage’ has a new ‘--recursive’ option
+  * The short option for ‘--lts-version’ is now ‘-l’ (used to be ‘-r’).
+  * ‘guix refresh’ now stores upstream keys in ~/.config/guix/upstream
+  * Guix now depends on Guile-Gcrypt
+  * Guix now requires Guile-JSON 
+   985 new packages
+  1945 packages updated
+  For more details see: /usr/share/doc/packages/guix/NEWS
+
+- remove patches no longer needed:
+  * perl-text-markdown-discount-unbundle.patch
+  * racket-fix-xform-issue.patch
+  * 0001-gnu-local.mk-Add-missing-patches.patch
+- remove dependencies and handling needed for running bootstrap
+  script
+- add new build and runtime dependency guile-gcrypt, as well as 
+  guile-git on runtime
+- authorize key for now offical build farm ci.guix.info
+- "guix-authorize" renamed to "authorize" and moved to
+  /usr/lib/guix
+
+-------------------------------------------------------------------
+Mon Nov 26 11:09:49 UTC 2018 - jbrielmaier@suse.de
+
+- make rm independent of guile minor version
+- update rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jul 12 13:10:08 UTC 2018 - jbrielmaier@suse.de
+
+- bump version to 0.15
+  Package management:
+  * ‘guix pull’ has been overhauled; it now populates ~/.config/guix/current
+  * ‘guix pull’ has a new ‘--list-generations’ option
+  * ‘guix pack’ now supports building SquashFS images
+  * ‘guix pack’ can now build tarballs with relocatable executables
+  * ‘guix environment’ and ‘guix pack’ have a new ‘--manifest’ option
+  * New ‘guix environment’ options: ‘--user’, ‘--link-profile’
+  * ‘guix package’ has a new ‘--allow-collisions’ option
+  * ‘guix package’ no longer warns about harmless file collisions
+  * The ‘--with-source’ option now accepts “PACKAGE=URI” specs
+  * Profiles now include a separate ‘dir.LANGUAGE’ Info file
+  * New profile hook generates a ‘gschemas.compiled’ file as needed
+  * ‘guix build’ provides hints for unbound variables
+  * ‘guix weather’ now reports continuous integration statistics
+  * ‘guix gc’ has a new ‘--derivers’ option
+  * ‘guix publish’ now publishes build logs at /log URLs
+  * ‘guix import elpa’ has a new ‘--recursive’ option
+  * ‘guix graph’ has a new “module” node type
+  * New ‘guix offload status’ command
+  * ‘guix-daemon’ now comes with an SELinux policy
+  * ‘guix-daemon’ now rejects garbage collection requests from remote clients
+  * ‘guix-daemon’ supports ARMv7 builds on AArch64
+  * ‘guix-daemon’ has relaxed tests to allow for binfmt_misc execution
+  * ‘guix-daemon’ has a new ‘--log-compression’ option, with gzip support 
+  Noteworthy bug fixes:
+  * ‘guix pull’ doesn’t keep rebuilding all of Guix
+    (<https://bugs.gnu.org/27284>)
+  * ‘guix pack’ now honors package transformation options
+  * ‘guix package --search’ no longer shows superseded packages
+    (<https://bugs.gnu.org/30566>)
+  * ‘guix offload test’ reports errors more nicely 
+    (<https://bugs.gnu.org/28057>)
+  * postgresql service is started through ‘pg_ctl’
+    (<https://bugs.gnu.org/29992>)
+  * ‘urandom-seed’ service is now a dependency of ‘user-processes’
+    (<https://bugs.gnu.org/29773>)
+  * ‘fuse’ kernel module is now automatically loaded on demand
+    (<https://bugs.gnu.org/22050>)
+  * ‘guix pack --localstatedir’ now produces a bit-reproducible database
+    (<https://bugs.gnu.org/21073>)
+  * Package lookups by name and version correctly honor version prefixes
+    (<https://bugs.gnu.org/28446>)
+  * ‘guix pull --commit’ now accepts show commit IDs
+      (<https://bugs.gnu.org/30716>)
+  1200 new packages
+  2231 packages updated
+  For more details see: /usr/share/doc/packages/guix/NEWS
+
+- add patches missing in release tarball leading to errors in guix
+  weather/challenge
+  * perl-text-markdown-discount-unbundle.patch
+  * racket-fix-xform-issue.patch
+  * 0001-gnu-local.mk-Add-missing-patches.patch
+- enable them by running bootstrap script and add dependencies 
+  therefor
+- add new build dependencies as well as missing runtime requirements
+- add run_guix_publish.sh script and make guix publish service
+  working
+- enable shell completions for bash, fish and zsh
+- enable "binary substitutes" by default in %post
+- disable run-in-namspace.c (guix pack -R) for now
+- remove support for SysV init, because guix doesn't build on such
+  old systems anymore (due to old guile versions...)
+- remove obsolte patch
+  * gnutls-fix.patch
+- order files section alphabetical
+- guix-rpmlintrc: filter PIE warnings
+
+-------------------------------------------------------------------
+Tue Jun  5 08:58:20 UTC 2018 - jbrielmaier@suse.de
+
+- gnutls-fix.patch fixes boo#1095970 
+
+-------------------------------------------------------------------
+Mon May 28 13:29:04 UTC 2018 - sleep_walker@opensuse.org
+
+- add gnutls-fix.patch
+  GnuTLS built against guile 2.0 is breaking any HTTPS connection,
+  this upstream patch solves it
+- put COPYING as %license in specfile
+
+-------------------------------------------------------------------
+Sat Mar 31 07:28:50 UTC 2018 - kasimir_@outlook.de
+
+- disable armv6 build (architecture is not supported)
+
+-------------------------------------------------------------------
+Fri Mar  9 19:11:45 UTC 2018 - sleep_walker@opensuse.org
+
+- fix build against guile 2.0+
+
+-------------------------------------------------------------------
+Tue Feb 20 22:23:32 UTC 2018 - sleep_walker@opensuse.org
+
+- use wrapper for running daemon and alter service file to use it
+  - if there is new daemon available - use it
+  - if there is not, use the one from this package
+
+-------------------------------------------------------------------
+Thu Feb 15 17:38:59 UTC 2018 - sleep_walker@opensuse.org
+
+- require guile-git and libgit2-devel for build
+- bump to 0.14.0
+  Changes in 0.14.0
+
+ * Package management
+
+  * ‘guix package’ displays how much will be downloaded
+  * ‘guix package’ warns about insufficient disk space
+  * ‘guix package’ now reports package collisions early on
+  * ‘guix package --search’ sorts results by relevance
+  * ‘guix pull’ now fetches code directly over Git using Guile-Git
+  * Substitutes can be downloaded from servers equivalent to the authorized ones
+  * New ‘guix-daemon’ options: ‘--listen’, ‘--timeout’, ‘--max-silent-time’
+  * New ‘guix weather’ command
+  * ‘guix publish --cache’ now also caches uncompressed items
+  * ‘guix publish’ no longer removes live items from its cache
+  * ‘guix challenge’ now displays an overall summary
+  * ‘guix refresh’ no longer uses FTP for GNU and GNOME packages
+  * ‘guix refresh’ has a new ‘-m’ or ‘--manifest’ option
+  * New ‘refresh’ checker for ‘guix lint’
+  * New ‘json’ importer for ‘guix import’ to simplify first packages
+  * New ‘texlive’ importer for ‘guix import’
+
+ * Distribution
+
+  * GuixSD installation image is now available as ISO-9660
+  * GuixSD installation image now includes an ‘sshd’ service
+  * New (gnu bootloaders) API, with support for U-Boot and extlinux
+  * ‘grub-configuration’ is deprecated in favor of ‘bootloader-configuration’
+  * ‘%desktop-services’ now includes NetworkManager instead of Wicd
+  * The (uuid …) form can now specify FAT32 and ISO-9660 UUIDs
+  * ‘guix system’ now reports missing file system UUIDs and labels
+  * ‘guix system’ can provide hints when reporting unbound variables
+  * New ‘--file-system-type’ option for ‘guix system disk-image’
+  * ‘guix system disk-image’ can now creates ISO-9660 images
+  * ‘guix system vm-image’ & co. automatically estimate the image size
+  * ‘guix system vm’ now uses overlayfs instead of unionfs
+  * ‘guix system init’ displays a progress bar while copying files
+  * TeX Live is now also available as a set of small ‘texlive-’ packages
+  * New ‘guix system search’ command to search for services
+  * New services
+     certbot, fcgiwrap, gdm, git-http, knot, libvirt, memcached,
+     mongodb, mpd, murmur, rsync, tailon, sysctl
+  * 1211 new packages
+  * 1403 package updates
+ * Programming interfaces
+  * New build systems: ‘font’, ‘meson’, ‘minify’, ‘scons’, ‘texlive’
+  * ‘cmake-build-system’ now supports cross-compilation
+  * Various improvements to ‘asdf-build-system’, ‘emacs-build-system’,
+    ‘ant-build-system’, and ‘go-build-system’
+  * ‘patches’ field of <origin> can now contain any lowerable object
+  * (gnu system vm) has a new ‘make-iso9660-image’ procedure
+  * ‘openssh-service-type’ can now be extended with new authorized keys
+  * ‘rottlog-service-type’ can now be extended with new ‘log-rotation’s
+  * ‘network-manager-service-type’ now supports VPN plugins
+  * <service-type> now has a ‘description’ field, used by ‘guix system search’
+  * New ‘virtual-machine’ form in (gnu system vm)
+  * New (gnu system uuid) module, which defines a disjoint <uuid> type
+  * New (guix progress) module
+
+ * Noteworthy bug fixes
+
+  * GuixSD no longer creates setuid binaries in /gnu/store
+    (<https://bugs.gnu.org/28751>)
+  * /root is no longer world-readable (<http://bugs.gnu.org/27135>)
+  * ‘guix publish’ no longer leaks memory (<https://bugs.gnu.org/28784>)
+  * Missing cursor icons in GNOME could cause crashes
+    (<https://bugs.gnu.org/25958>)
+  * Setuid programs now honor the system timezone
+    (<https://bugs.gnu.org/29212>)
+  * Clients honor the daemon’s ‘max-silent-time’
+    (<https://bugs.gnu.org/27157>)
+  * ‘guix substitute’ honors substitute expiry time again
+    (<https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00179.html>)
+  * Several portability fixes for aarch64
+
+ * Native language support
+
+   Updated translations: da (Danish), fr (French)
+
+
+
+-------------------------------------------------------------------
+Sun May 28 10:14:43 UTC 2017 - sleep_walker@opensuse.org
+
+- replace pkgconfig(guile-2.0) >= 2.0.7 dependency with guile-devel
+  (guile 2.2 provides pkgconfig(guile-2.2) and OBS can't handle
+  boolean operators in dependencies yet
+
+-------------------------------------------------------------------
+Tue May 23 19:35:44 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 0.13.0
+   overview of changes is in NEWS
+- add signatures for the bootstrap tarballs
+- drop emacs dependency (emacs-guix is split out)
+- update keyring
+
+-------------------------------------------------------------------
+Mon Dec 26 18:37:17 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.12.0
+   overview of changes is in NEWS
+
+-------------------------------------------------------------------
+Wed Aug  3 14:47:03 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.11.0
+   overview of changes is in NEWS
+
+-------------------------------------------------------------------
+Sat Jul  9 06:25:01 UTC 2016 - sleep_walker@opensuse.org
+
+- require gnutls-guile also as run time dependency
+
+-------------------------------------------------------------------
+Wed Jul  6 16:13:49 UTC 2016 - sleep_walker@opensuse.org
+
+- explicitly require libgcrypt-devel until the dynamic-link is able to
+  load symlink target of /usr/lib*/libgcrypt.so
+  http://debbugs.gnu.org/cgi/bugreport.cgi?bug=21076
+
+-------------------------------------------------------------------
+Sat Apr 16 08:35:22 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.10.0
+- add gnutls-guile as build time dependency
+- don't mark bash completion as %config (warning fixed)
+
+-------------------------------------------------------------------
+Fri Feb 12 11:51:04 UTC 2016 - sleep_walker@opensuse.org
+
+- add ExclusiveArch to restrict available architectures
+- remove filter for non-standard group guixbuild (it is standard now)
+- remove %config for bash completion script (rpmlint was fixed)
+
+-------------------------------------------------------------------
+Fri Feb 12 09:18:04 UTC 2016 - sleep_walker@opensuse.org
+
+- replace setBadness with addFilter in guix-rpmlint, add explanations
+- add guix-rpmlint into spec file as Source
+- create rcguix-daemon symlink
+- make guix bash completion script as %config to silence warning
+
+-------------------------------------------------------------------
+Tue Jan  5 18:58:35 UTC 2016 - sleep_walker@opensuse.org
+
+- fix typo preventing creation of new users
+
+-------------------------------------------------------------------
+Thu Nov 12 18:02:11 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 0.9.0
+  - see changelog for complete list of changes
+- add guile-json as dependency
+
+-------------------------------------------------------------------
+Wed Nov  4 17:40:58 UTC 2015 - sleep_walker@opensuse.org
+
+- change ownership of /gnu/store
+- remove sysconfig.guix file as it is not used anymore
+- define macro %guix_builder_group to make such changes in future
+  easier
+
+-------------------------------------------------------------------
+Sun Nov  1 08:17:51 UTC 2015 - sleep_walker@opensuse.org
+
+- rename default group from guix-builders to guixbuild to match
+  upstream
+- install /gnu/store directory
+- depend on emacs, package emacs scripts
+
+-------------------------------------------------------------------
+Thu Oct  1 21:18:37 UTC 2015 - sleep_walker@opensuse.org
+
+- use pkgconfig dependencies
+- clean-up with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct  1 20:15:35 UTC 2015 - sleep_walker@opensuse.org
+
+- force installation of service file to %{_unitdir}
+- use systemd related code only when systemd is available in distro
+
+-------------------------------------------------------------------
+Thu Oct  1 10:22:34 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 0.8.3
+  - a lot of changes on package management level, package set level,
+    distribution level and numerous bug fixed
+- remove our service file and use upstream one instead
+
+-------------------------------------------------------------------
+Thu May 14 11:57:47 UTC 2015 - sleep_walker@suse.cz
+
+- bump to 0.8.2
+  changes since 0.8.1
+** Package management
+
+*** New “binary tarball” installation method is available
+*** New ‘guix publish’ command, to publish one’s store
+*** ‘guix package’ runs “profile creation hooks” as needed
+*** ‘guix package’ creates an ‘etc/profile’ file in the profile
+*** Commands understand version prefixes, such as ‘gcc-5’ for ‘gcc-5.1.0’
+*** ‘guix package --search’ now sorts packages by name and version
+*** Substitute information is now fetched using HTTP pipelining
+*** ‘guix package’ warns when a $GUIX_PACKAGE_PATH module cannot be loaded
+*** New ‘--sources’ option to ‘guix build’
+*** New Bash completion file, installed in $sysconfdir/bash_completion.d
+*** New ‘guix import hackage’ command
+*** ‘guix lint’ supports FTP for the ‘source’ and ‘home-page’ checkers
+*** ‘guix lint’ has a new ‘derivation’ checker
+*** ‘guix import cpan’ better handles dependencies and licenses
+*** Packages are now build in an environment with a UTF-8 locale
+** Distribution
+*** C library's name service switch (NSS) is now fully configurable
+*** New services: wicd, lirc, colord, upower, console-keymap, postgresql
+*** Xorg service supports new drivers, such as Nouveau
+*** lsh service has new options, initializes its seed by default
+*** /etc/ssl symlink is created, for X.509 certificates
+*** ‘guix system’ reports duplicate service identifiers
+*** New /etc/bashrc file that loads Bash completion when available
+*** SLiM service uses sessions from /run/current-system/profile/share/xsessions
+*** The Linux “YAMA” restricting policy on PTRACE_ATTACH is now disabled
+*** /etc/shells now lists all the user accounts’ shells
+*** /gnu/store is now remounted read-only, to avoid accidental modification
+*** /etc/profile is sources each profile’s ‘etc/profile’ file
+*** 718 new packages
+*** 189 package updates
+** Programming interfaces
+*** New (guix build gremlin) to parse and validate ELF dynamic link info
+*** (guix build-system gnu) has a new ‘validate-runpath’ phase
+*** New (gnu services desktop) module and ‘%desktop-services’ variable
+*** New (guix cvs-download) module, for CVS checkouts
+*** New (guix build-system waf) module, for the Waf build system
+*** New (guix build-system haskell) module, to build Haskell packages
+*** (guix build-system gnu) now supports zip archives
+*** New convenience syntax ‘modify-phases’ added in (guix build utils)
+*** The ‘ld’ wrapper more finely determines whether to use ‘-rpath’
+*** (guix gexp) exports ‘gexp-input’ to describe input unambiguously
+*** The ‘define-gexp-compiler’ form allows (guix gexp) to be extended
+*** New ‘local-file’ constructor exported by (guix gexp)
+** Noteworthy bug fixes
+*** Profiles created with ‘guix package -p’ as indirect GC roots
+*** ‘guix package’ distinguishes downgrades from upgrades
+*** Handle HTTP redirects to relative URI references
+*** Downloads now honor the ‘http_proxy’ environment variable
+*** ‘--no-*’ options are now always correctly handled
+*** SLiM no longer leaks open file descriptors
+*** Don't compare <pam-service> objects with 'equal?'
+*** x86_64 and i686 bootstrap binaries updated (<http://bugs.gnu.org/19780>)
+*** ‘find-files’ no longer follows symlinks (<http://bugs.gnu.org/20081>)
+*** libc message catalog (‘libc.mo’) is now installed
+*** libstdc++ has appropriate RUNPATH (<http://bugs.gnu.org/20358>)
+*** ‘dhcp-client-service’ now correctly tracks dhclient’s PID
+** Native language support
+*** New translations: da (Danish)
+*** Updated translations: eo
+
+-------------------------------------------------------------------
+Wed Feb 25 18:39:31 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Correct info prerequires
+- Add missing systemd dependencies
+
+-------------------------------------------------------------------
+Wed Feb  4 15:14:45 UTC 2015 - sleep_walker@suse.cz
+
+- let the spec-cleaner create something beautiful from original
+  spec file
+
+-------------------------------------------------------------------
+Thu Jan 29 16:04:24 UTC 2015 - sleep_walker@suse.cz
+
+- add armhf-linux-guile-2.0.11.tar.xz (armhf port added)
+
+-------------------------------------------------------------------
+Thu Jan 29 13:13:49 UTC 2015 - sleep_walker@suse.cz
+
+- bump to 0.8.1
+* Changes in 0.8.1 (since 0.8)
+
+** Package management
+
+*** New ‘--share’ and ‘--expose’ options for ‘guix system vm’
+
+See “Invoking guix system” in the manual.
+
+*** Emacs mode now automatically loads newly installed Emacs packages
+
+See “Emacs Initial Setup” in the manual.
+
+*** ‘guix-daemon’ now defaults to ‘--cores=0 --jobs=1’
+
+In other words, at any given time, only one derivation is being built or
+substituted, and it can use as many cores as available.  Before, there could
+be N derivations using N cores, which was obviously not desirable.
+
+*** Command-line tools support the ‘GUIX_BUILD_OPTIONS’ environment variable
+
+See “Invoking guix build” in the manual.
+
+*** ‘guix environment’ is faster
+
+*** New ‘--recursive’ option for ‘guix archive’
+
+See “Invoking guix archive” in the manual.
+
+*** Missing patches required by a package definition are gracefully reported
+
+*** ‘guix lint’ supports additional checkers
+
+The new checkers are ‘gnu-description’, ‘home-page’, and ‘source’.
+See “Invoking guix lint” in the manual.
+
+*** New CPAN importer for ‘guix import’
+
+See “Invoking guix import” in the manual.
+
+** Distribution
+
+*** USB installation image has more tools
+
+Tools added since 0.8: wpa_supplicant, cryptsetup, and iw.
+
+*** Linux kernel module dependencies are automatically handled
+
+Before that, all the modules needed in the initrd would need to be explicitly
+listed, including their dependencies, and in topological order.
+
+*** Font packages now all have a name starting with ‘font-’
+
+See “Fonts” in the manual.
+
+*** Shell startup files have been cleaned up
+
+/etc/profile contains only environment variable definitions, which may also be
+used when running a different shell.  The skeletons for user’s ‘.bash_profile’
+and ‘.bashrc’ files behave as documented in the Bash manual.  Zsh is supported.
+
+*** The ‘root’ account gets a copy of the account skeleton files
+
+Before that, the skeleton files would only be copied to non-root accounts.
+
+*** The name service cache daemon (nscd) is configurable
+
+By default it aggressively caches host and service lookups.  See “Base
+Services” in the manual.
+
+*** Available locale definitions are now declared in ‘operating-system’
+
+Before, the ‘glibc’ package would contain all the existing locales, as well as
+the ‘locale-archive’ file, amounting to 110 MiB.  See “Locales” in the manual.
+
+*** SLiM sessions are configurable
+
+Pressing F1 in the SLiM graphical log-in screen allows users to choose among
+the pre-configured session types.  See “X Window” in the manual.
+
+*** Man pages and Info files are systematically gzip-compressed
+
+*** ‘gnu-build-system’ ensures that documentation is in share/{man,info}
+
+If a package installs to $prefix/{man,info}, this is automatically fixed to be
+$prefix/share/{man,info}.
+
+*** ‘strip’ is invoked only on ELF files and ‘ar’ archives
+
+*** ‘libtool’ and ‘libltdl’ are now separate packages
+
+*** Emacs mode is readily usable on the Guix System Distribution
+
+*** Substitutes are now enabled by default on freshly installed systems
+*** 164 new packages
+
+abcde, astyle, avr-libc, bbdb, bedtools, bowtie, bullet, c-reduce, cd-discid,
+cgal, clang, claws-mail, cups, cups-filters, cups-minimal, dconf, delta,
+dmenu, eigen, emms, exo, fastjar, font-bitstream-vera, font-dejavu,
+font-gnu-freefont-ttf, font-liberation, font-terminus, fvwm, garcon,
+gcc-cross-arm-linux-gnueabihf, gcc-cross-sans-libc-avr, gcj, getmail,
+git-flow, git-manpages, git-test-sequence, glew, glulxe, gourmet,
+gst-plugins-good, gtk-xfce-engine, hexchat, ijs, iw, jack, json-glib,
+libdvdnav, libdvdread, libetpan, libevdev, libltdl, libtorrent, libupnp,
+libwnck, libwnck, libxfce4ui, libxfce4util, libxshmfence, libyubikey, llvm,
+lrdf, mg, mp3info, msmtp, ncftp, nginx, ninja, nss, openbox,
+perl-benchmark-timer, perl-clone, perl-digest-sha1, perl-exporter-lite,
+perl-file-which, perl-getopt-tabular, perl-ipc-run3, perl-probe-perl,
+perl-regexp-common, perl-sys-cpu, perl-test-deep, perl-test-nowarnings,
+perl-test-script, perl-test-simple, perl-test-tester, pflask,
+python-cairocffi, python-cffi, python-distutils-extra, python-html5lib,
+python-ipython, python-isodate, python-matplotlib, python-numpy,
+python-numpydoc, python-pillow, python-pycairo, python-pycparser,
+python-pygobject, python-pyparsing, python-pyqt, python-pysam, python-rdflib,
+python-scipy, python-sip, python-sqlalchemy, python-xcffib, python2-cairocffi,
+python2-cffi, python2-distutils-extra, python2-elib.intl, python2-html5lib,
+python2-ipython, python2-isodate, python2-matplotlib, python2-numpy,
+python2-numpydoc, python2-pillow, python2-py2cairo, python2-pycparser,
+python2-pygobject, python2-pygtk, python2-pyparsing, python2-pyqt,
+python2-pysam, python2-scipy, python2-sip, python2-sqlalchemy, python2-xcffib,
+qpdf, retroarch, rtorrent, samtools, shflags, slang, slock, socat,
+startup-notification, sxiv, taglib, telepathy-glib, thunar, thunar-volman,
+tre, tumbler, vala, vte, vte, wine, wmctrl, xclip, xdotool, xf86-video-geode,
+xfce4-appfinder, xfce4-battery-plugin, xfce4-panel, xfce4-session,
+xfce4-settings, xfce4-terminal, xfconf, xfdesktop, xfwm4, xinit, ykclient,
+zerofree
+
+*** 222 package updates
+
+apr-util-1.5.4, atk-2.15.3, automake-1.15, bash-4.3.33, bash-light-4.3.33,
+bdftopcf-1.0.4, binutils-2.25, binutils-static-stripped-tarball-2.25,
+cairo-1.12.18, cairomm-1.11.2, ccrtp-2.1.1, curl-7.40.0, dbus-1.8.12,
+dbus-glib-0.102, ddrescue-1.19, dri2proto-2.8, e2fsck-static-1.42.11,
+e2fsprogs-1.42.11, eudev-2.1.1, ffmpeg-2.5.3, file-5.22, fish-2.1.1,
+fontconfig-2.11.92, fontsproto-2.1.3, freeipmi-1.4.8,
+gcc-cross-mips64el-linux-gnuabi64-4.8.4, gcc-cross-sans-libc-xtensa-elf-4.8.4,
+gcc-objc++-4.8.4, gcc-objc-4.8.4, gcc-stripped-tarball-4.8.4, gccgo-4.8.4,
+gcl-2.6.12, gd-2.1.1, gdb-7.8.2, gdk-pixbuf-2.31.1, gettext-0.19.4,
+gfortran-4.8.4, ghostscript-9.14.0, ghostscript-with-x-9.14.0, gimp-2.8.14,
+git-2.2.1, glib-2.42.1, glibmm-2.42.0, global-6.3.3, glproto-1.4.17,
+gnutls-3.2.21, gobject-introspection-1.42.0, gp2c-0.0.9pl2, grep-2.21,
+groff-1.22.3, gss-1.0.3, gst-plugins-base-1.0.10, gtk+-3.14.7, gtkmm-3.14.0,
+guix-0.8, guix-0.8.4ad8789, help2man-1.46.4, iceauth-1.0.6, icu4c-54.1,
+inkscape-0.48.5, inputproto-2.3.1, lcms-2.6, lftp-4.6.1, libassuan-2.2.0,
+libcdio-0.93, libdmx-1.1.3, libdrm-2.4.58, libfontenc-1.1.2, libfs-1.0.6,
+libgcrypt-1.6.2, libgpg-error-1.17, libice-1.0.9, libjpeg-9a, libksba-1.3.2,
+libmicrohttpd-0.9.39, libnl-3.2.25, libpciaccess-0.13.2, libpeas-1.12.1,
+libpng-1.5.21, librsvg-2.40.6, libsm-1.2.2, libtasn1-4.2, libtool-2.4.5,
+libx11-1.6.2, libxau-1.0.8, libxaw-1.0.12, libxcb-1.11, libxcomposite-0.4.4,
+libxcursor-1.1.14, libxdamage-1.1.4, libxext-1.3.3, libxfixes-5.0.1,
+libxfont-1.5.0, libxft-2.3.2, libxi-1.7.4, libxinerama-1.1.3,
+libxkbcommon-0.5.0, libxmu-1.1.2, libxp-1.0.2, libxpm-3.5.11, libxrandr-1.4.2,
+libxrender-0.9.8, libxres-1.0.7, libxt-1.1.4, libxtst-1.2.2, libxv-1.0.10,
+libxvmc-1.0.8, libxxf86dga-1.1.4, libxxf86vm-1.1.3, linux-libre-3.18.4,
+lua-5.2.3, makedepend-1.0.5, mercurial-3.2.4, mesa-10.4.0, minetest-0.4.11,
+mkfontscale-1.1.1, neon-0.30.0, nix-1.8, ntp-4.2.8, ocrad-0.24,
+openjpeg-2.0.1, openssl-1.0.1k, pango-1.36.8, parallel-20150122,
+pari-gp-2.7.2, patchelf-0.8, pcre-8.36, perf-3.18.4, phonon-4.8.3,
+pixman-0.32.6, pkg-config-0.28, poppler-0.28.1, python-3.3.5,
+python-dateutil-2.2, python2-dateutil-2.2, qemu-2.2.0, qemu-headless-2.2.0,
+qt-5.4.0, racket-6.1.1, randrproto-1.4.0, raptor2-2.0.15, rasqal-0.9.33,
+rcs-5.9.4, ruby-2.1.5, sessreg-1.0.8, sipwitch-1.9.3, sqlite-3.8.7.4,
+tiled-0.11.0, tmux-1.9a, tzdata-2014j, ucommon-6.2.3, util-linux-2.25.2,
+util-macros-1.19.0, vera-1.22, videoproto-2.3.2, wget-1.16.1, xauth-1.0.9,
+xbacklight-1.2.1, xcb-proto-1.11, xcb-util-0.4.0, xcb-util-image-0.4.0,
+xcb-util-keysyms-0.4.0, xcb-util-renderutil-0.3.9, xcb-util-wm-0.4.1,
+xcursor-themes-1.0.4, xcursorgen-1.0.6, xdpyinfo-1.3.1, xev-1.2.1,
+xextproto-7.3.0, xf86-input-evdev-2.8.4, xf86-input-joystick-1.6.2,
+xf86-input-keyboard-1.8.0, xf86-input-mouse-1.9.1, xf86-input-synaptics-1.8.1,
+xf86-video-ark-0.7.5, xf86-video-ati-7.5.0, xf86-video-cirrus-1.5.2,
+xf86-video-fbdev-0.4.4, xf86-video-glint-1.2.8, xf86-video-i128-1.3.6,
+xf86-video-intel-2.21.15, xf86-video-mach64-6.9.4, xf86-video-mga-1.6.3,
+xf86-video-neomagic-1.2.8, xf86-video-nv-2.1.20, xf86-video-openchrome-0.3.3,
+xf86-video-r128-6.9.2, xf86-video-savage-2.3.7,
+xf86-video-siliconmotion-1.7.7, xf86-video-sis-0.10.7,
+xf86-video-suncg6-1.1.2, xf86-video-sunffb-1.2.2, xf86-video-tdfx-1.4.5,
+xf86-video-tga-1.2.2, xf86-video-trident-1.3.6, xf86-video-vesa-2.3.3,
+xf86-video-vmware-13.0.2, xf86-video-voodoo-1.2.5, xhost-1.0.6, xinput-1.6.1,
+xkbcomp-1.3.0, xkbutils-1.0.4, xkeyboard-config-2.13, xkill-1.0.4,
+xlockmore-5.45, xlsclients-1.1.3, xmodmap-1.0.8, xnee-3.19,
+xorg-server-1.16.3, xprop-1.2.2, xproto-7.0.26, xrandr-1.4.3, xrdb-1.1.0,
+xrefresh-1.0.5, xset-1.2.3, xsetroot-1.1.1, xtrans-1.3.5, xvinfo-1.1.2,
+xwd-1.0.6, xwininfo-1.1.3, youtube-dl-2015.01.23.4, zsh-5.0.7
+
+** Programming interfaces
+
+*** New (guix elf) and (gnu build linux-modules) modules
+
+These provide resolution of Linux kernel module dependencies.  See
+<https://lists.gnu.org/archive/html/guix-devel/2014-11/msg00670.html>.
+
+*** ‘glib-or-gtk-build-system’ has been extended
+
+It now handles GIO and XDG themes, takes care of generating the icon cache,
+and has a new #:glib-or-gtk-wrap-excluded-outputs parameter.
+
+*** ‘search-path-specification’ can now specify non-directory items
+
+For example, the ‘search-path-specification’ attached to libxml2 specifies a
+file pattern, which allows all the ‘catalog.xml’ files to be added to the
+‘XML_CATALOG_FILES’ environment variable.
+
+*** (guix build syscalls) has more network-related procedures
+
+‘set-network-interface-flags’, ‘set-network-interface-address’,
+‘network-interface-address’, and ‘configure-network-interface’ are ioctl
+bindings used by network-handling dmd services.
+
+*** (guix monads) refactoring
+
+‘%store-monad’ is now in (guix store) and is an alias for the new
+‘%state-monad’ provided by (guix monads).  Monadic procedures dealing with the
+store, with derivations, and with packages have been moved from (guix monads)
+to (guix store), (guix derivations), and (guix packages).  See “The Store
+Monad” in the manual.
+
+*** (guix build utils) provides ‘parallel-job-count’
+
+*** ‘wrap-program’ preserves the original argv[0]
+
+*** New (guix sets) module
+
+*** ‘define-record-type*’ now support “delayed” fields
+
+** Noteworthy bug fixes
+
+*** X session is executed from a login shell (<http://bugs.gnu.org/19119>)
+*** grub.cfg is now a garbage-collector root (<http://bugs.gnu.org/19160>)
+*** Substituter progress report properly formatted 
+    (<http://bugs.gnu.org/19313>)
+*** Document permissions for /gnu/store (<http://bugs.gnu.org/19316>)
+*** Make sure config.go is newer than config.scm
+    (<http://bugs.gnu.org/19317>)
+*** Emacs knows where to find its GLib schemas (<http://bugs.gnu.org/19138>)
+*** Adjust 'grub.cfg' to work on systems with a separate /boot
+    (<http://bugs.gnu.org/19220>)
+*** Fix removal of next-to-last item in a profile
+    (<http://lists.gnu.org/archive/html/guix-devel/2014-12/msg00292.html>)
+*** Apply patches with "patch --force" (<http://bugs.gnu.org/19402>)
+*** Extend ‘search-path-specification’ for libxml2-style use cases
+    (<http://bugs.gnu.org/18033>)
+*** Search for patches under $GUIX_PACKAGE_PATH (<http://bugs.gnu.org/19364>)
+*** Use executables from the target inputs in 'patch-shebangs'
+    (<http://bugs.gnu.org/18895>)
+*** guix-daemon now automatically creates '…/profiles/per-user'
+    (<http://bugs.gnu.org/19315>)
+*** Make /etc/mtab a symlink to /proc/self/mounts
+    (<http://bugs.gnu.org/19491>)
+*** Don't build the mips64el-linux-gnuabi64 cross-compiler on i686
+    (<http://bugs.gnu.org/19598>)
+*** Read archive signatures as Latin-1 strings (<http://bugs.gnu.org/19610>)
+*** Raise an error for references to non-existent outputs
+    (<http://bugs.gnu.org/19630>)
+*** Initialize libgcrypt before use (<http://bugs.gnu.org/19677>)
+
+** Native language support
+
+*** New translations: fr (French), hu (Hungarian)
+*** Updated translation: eo, vi
+
+
+
+-------------------------------------------------------------------
+Wed Jan 14 11:57:25 UTC 2015 - sleep_walker@suse.cz
+
+- change systemd service file
+
+-------------------------------------------------------------------
+Mon Nov 24 12:06:30 UTC 2014 - sleep_walker@suse.cz
+
+- remove old sysv-init file
+- add super cool systemd unit file
+- add configuration file
+- add comments about origin of bootstrap tarballs
+
+-------------------------------------------------------------------
+Fri Nov 21 21:43:24 UTC 2014 - sleep_walker@suse.cz
+
+- apply spec-cleaner to unify the style
+- set RPM group to System/Package
+
+-------------------------------------------------------------------
+Tue Nov 18 11:58:54 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 0.8
+* Changes in 0.8 (since 0.7)
+
+** Package management
+
+*** New visual user interface in Emacs
+
+See “Emacs Interface” in the manual.
+
+*** New ‘guix environment’ command to produce development environment
+
+See “Invoking guix environment” in the manual.
+
+*** The ‘guix import’ command has been extended and documented
+
+It can now import packages from pypi.python.org and from GNU.
+See “Invoking guix import” in the manual.
+
+*** New ‘guix lint’ command, for use by Guix developers
+
+See “Invoking guix lint” in the manual.
+
+*** Packages can now be “grafted” with replacements of their dependencies
+
+See “Security Updates” in the manual.
+
+*** The distribution can be extended with ‘--load-path’ or $GUIX_PACKAGE_PATH
+
+This allows users to maintain their own package definitions, and make them
+visible to the various user interfaces.  See “Package Modules” in the manual.
+
+*** ‘guix package’ better reports package upgrades
+
+*** ‘guix package’ has a new ‘--switch-generation’ option
+
+See “Invoking guix package” in the manual.
+
+*** ‘guix-daemon’ has a new ‘--substitute-urls’ option
+
+See “Invoking guix-daemon” in the manual.
+
+** Distribution
+
+*** The stand-alone operating system now supports Linux mapped devices
+
+See “Mapped Devices” in the manual.
+
+*** New fields in ‘operating-system’ declarations, better documentation
+
+New fields include ‘hosts-file’, ‘mapped-devices’, and ‘swap-devices’.
+See “operating-system Reference” in the manual.
+
+*** New services: ‘dhcp-client-service’, ‘bitlbee-service’, ‘ntp-service’
+
+See “Services” in the manual.
+
+*** Free firmware can be loaded
+
+This notably enables support for some Atheros-based WiFi devices (ath9k-htc.)
+See “operating-system Reference” in the manual.
+
+*** ‘grub-configuration’ declarations can now specify a theme
+
+See “GRUB Configuration” in the manual.
+
+*** The ‘base-initrd’ now has a different signature
+
+Existing uses in ‘operating-system’ declarations need to be updated.  See
+“Initial RAM Disk” in the manual for details.
+
+*** eudev is now used by default, instead of an old udev release
+
+*** ‘guix system vm’ has a new ‘--full-boot’ option
+
+See “Invoking guix system” in the manual.
+
+*** The ‘file’ command is now part of the package build environment
+
+Autoconf-generated ‘configure’ scripts for packages using Libtool use ‘file’
+to determine the target ABI, notably on MIPS, hence this change.
+
+*** 162 new packages
+
+abiword, acpica, adns, arb, ath9k-htc-firmware, atlas, avrdude, cppunit,
+dblatex, detox, dfu-programmer, dionysus, direvent, dmidecode, dri3proto,
+emacs-no-x-toolkit, emacs-w3m, emacs-wget, enchant, eudev, feh, flashrom,
+flint, fontforge, freedink, freeimage, fribidi,
+gcc-cross-sans-libc-xtensa-elf, giblib, gnome-themes-standard, gpsbabel,
+gpscorrelate, graphite2, gtypist, guile-charting, guile-sdl, imake, imlib2,
+irrlicht, jbig2dec, libpsl, libspiro, libuninameslist, libwmf, lm-sensors,
+magit, minetest, miscfiles, mozjs, mupdf, nix, nspr, nss-mdns, ntp, nvi, opam,
+openal, openjpeg, opus-tools, orpheus, ots, oxygen-icons, paredit, perf,
+perl-archive-zip, perl-dbd-sqlite, perl-dbi, perl-image-exiftool,
+perl-io-socket-ssl, perl-net-ssleay, perl-www-curl, perl-zip, polkit,
+polkit-qt, postgresql, potrace, presentproto, python-certifi, python-coverage,
+python-cython, python-discover, python-docutils, python-exif-read,
+python-extras, python-fixtures, python-itsdangerous, python-jinja2,
+python-jsonschema, python-markupsafe, python-mimeparse, python-nose,
+python-oauthlib, python-py, python-pygments, python-pyjwt, python-pyld,
+python-pytest, python-scripttest, python-sphinx, python-subunit,
+python-testrepository, python-testresources, python-testscenarios,
+python-testtools, python-unidecode, python-unittest2, python-virtualenv,
+python2-certifi, python2-coverage, python2-cython, python2-discover,
+python2-docutils, python2-exif-read, python2-extras, python2-fixtures,
+python2-itsdangerous, python2-jinja2, python2-jsonschema, python2-markupsafe,
+python2-mimeparse, python2-nose, python2-oauthlib, python2-py,
+python2-pygments, python2-pyjwt, python2-pyld, python2-pytest,
+python2-requests, python2-scripttest, python2-sphinx, python2-subunit,
+python2-testrepository, python2-testresources, python2-testscenarios,
+python2-testtools, python2-unidecode, python2-unittest2, python2-virtualenv,
+rrdtool, ruby, ruby, ruby-i18n, sane-backends, scrot, sound-theme-freedesktop,
+stress, synergy, tdb, terminus-font, testdisk, texi2html, tiled, transfig,
+unclutter, unixodbc, weechat, wv, xboing, xf86-video-modesetting, xfig,
+xsensors, zsh
+
+*** 117 package updates
+
+acct-6.6.2, acl-2.2.52, apl-1.4, apr-1.5.1, apr-util-1.5.3, autoconf-2.68,
+autoconf-2.69, autogen-5.18.4, bash-4.3.30, bash-light-4.3.30, bazaar-2.6.0,
+bison-2.7, calcurse-3.2.1, ccache-3.1.10, chicken-4.9.0.1, coreutils-8.23,
+curl-7.37.1, datamash-1.0.6, dbus-1.8.8, docbook-xml-4.2, docbook-xml-4.4,
+docbook-xml-4.5, emacs-24.4, ffmpeg-2.2.10, ffmpeg-2.4.3, file-5.19,
+file-5.20, freeipmi-1.4.5, gcc-4.7.4, gcc-4.9.2, gcc-toolchain-4.9.2,
+gcl-2.6.11, gdb-7.8.1, geiser-0.6, gettext-0.19.3, git-2.1.2, glibc-2.20,
+glibc-2.20, glibc-stripped-tarball-2.20, global-6.3.2, glpk-4.55,
+gnupg-1.4.18, gnupg-2.0.26, gnurl-7.37.0, gnutls-3.2.20, gpgme-1.5.1,
+gst-plugins-base-1.0.10, gstreamer-1.0.10, gtk+-3.10.1, gtkmm-3.9.16,
+guile-1.8.8, guile-json-0.4.0, guile-ncurses-1.6, guile-ssh-0.7.1, guix-0.7,
+guix-0.7.48bd76e, hello-2.10, help2man-1.46.3, icecat-31.2.0,
+libart-lgpl-2.3.21, libassuan-2.1.3, libatomic-ops-7.4.2, libdrm-2.4.33,
+libffi-3.1, libgc-7.2f, libgc-7.4.2, libgcrypt-1.5.4, libgcrypt-1.6.2,
+libidn-1.29, libjpeg-9a, libotr-4.0.0, libsodium-1.0.0, libtasn1-4.1,
+libunistring-0.9.4, libwebsockets-1.3, lightning-2.0.5, linux-libre-3.17.3,
+lsof-4.88, lua-5.2.3, lvm2-2.02.109, lzip-1.16, make-4.1, maxima-5.34.1,
+mit-scheme-9.2, mysql-5.1.73, neon-0.30.0, net-base-5.3, nettle-2.7.1,
+notmuch-0.18.1, openssh-6.7p1, openssl-1.0.1j, parallel-20141022,
+phonon-4.8.2, pspp-0.8.4, python-3.3.5, python-dateutil-1.5,
+python2-dateutil-1.5, python2-pyicu-1.8, qt-4.8.6, qt-5.3.2, rcs-5.9.3,
+readline-6.3, subversion-1.7.18, swig-3.0.2, tar-1.28, texinfo-5.2,
+tor-0.2.5.10, transmission-2.84, ucommon-6.1.11, valgrind-3.10.0, vlc-2.1.5,
+wget-1.16, windowmaker-0.95.6, xapian-1.2.18, xf86-video-ati-6.14.6,
+xpdf-3.04, youtube-dl-2014.09.06
+
+** Programming interfaces
+
+*** New ‘ruby-build-system’, for Ruby packages
+
+See “Build Systems” in the manual.
+
+*** New ‘glib-or-gtk-build-system’, for packages using GLib schemas
+
+See “Build Systems” in the manual.
+
+*** ‘gnu-build-system’ has a new #:substitutable? parameter
+
+This allows packagers to mark a package as requiring a local build, thus
+preventing it from being substituted by a pre-built binary.
+
+*** ‘cmake-build-system’ has a new #:build-type parameter
+
+See “Build Systems” in the manual.
+
+*** The ‘supported-systems’ field of packages is used more consistently
+
+This allows packagers to prevent attempts to build a package on a given
+architecture when that architecture is known not to be supported.  The
+‘package-transitive-supported-systems’ procedure returns the intersection of
+the systems supported by the given package and by its dependencies.
+
+*** The ‘wrap-program’ procedure can now be called multiple times
+
+*** New ‘graft-derivations’ and ‘package-grafts’ procedures
+
+They implement “grafts”, as described under “Security Updates” in the manual.
+
+*** New “bag” intermediate representation for use by build systems
+
+“Bags” are used internally as an intermediate representation between packages
+and derivations.  See “Build Systems” in the manual.
+
+*** New (guix monad-repl) module, for monadic interaction at the REPL
+
+See “The Store Monad” in the manual.
+
+*** New (guix build emacs-utils) module, to facilitate building Emacs packages
+
+*** New (guix tests) module, with tools used by the test suite
+
+*** The internal ‘guix-register’ command now deduplicates files in store items
+
+*** Several system modules moved from (guix build …) to (gnu build …)
+
+Also, the (gnu build linux-boot) module has been introduced, with code
+typically used by initial RAM disks when booting on GNU/Linux-libre.
+
+*** (guix profiles) provides a representation of package transactions
+
+This factorizes code between ‘guix package’ and the Emacs user interface.
+
+*** Bootstrapping packages moved to (gnu packages commencement) modules
+
+** Bugs fixed
+
+*** ‘guix-daemon’ now really deduplicates store items by default
+
+Deduplication means that identical files found in /gnu/store are stored only
+once, using hard links.  This feature was wrongfully disabled, and is now
+enabled by default.  The former ‘--disable-store-optimization’ option has been
+renamed to ‘--disable-deduplication’.
+
+*** ‘guix-daemon’ no longer uses ‘vfork’
+
+This could cause problems with ancient Linux kernel.
+
+*** Fixed compilation of ‘gccgo’ (<http://bugs.gnu.org/18101>)
+*** 'make clean' doesn't delete os-config.tmpl (<http://bugs.gnu.org/18243>)
+*** Fix handling of periods by fill-paragraph (<http://bugs.gnu.org/17468>)
+*** Produce a top-level Info 'dir' file (<http://bugs.gnu.org/18305>)
+*** guix offload ignores unreachable machines (<http://bugs.gnu.org/18070>)
+*** guix offload: Ignore EEXIST when registering a .drv as a GC root
+    (<http://bugs.gnu.org/18115>)
+*** perl-tk: Build sequentially (<http://bugs.gnu.org/18262>)
+*** download: Use the 'SERVER NAME' TLS extension when possible
+    (<http://bugs.gnu.org/18526>)
+*** libdaemon: Add alternate source URLs (<http://bugs.gnu.org/18639>)
+*** icu4c: Reinstate RUNPATH on shared libraries 
+    (<http://bugs.gnu.org/18695>)
+*** nss-mdns: Add alternate source URLs (<http://bugs.gnu.org/18704>)
+*** download: Add "Accept: */*" to the HTTP headers
+    (<http://bugs.gnu.org/18768>)
+*** guix-register: Do not attempt to create NIX_STORE_DIR 
+    (<http://bugs.gnu.org/18689>)
+*** Allow Linux-libre to find our 'modprobe' command
+    (<http://bugs.gnu.org/18525>)
+*** man-pages: Build sequentially (<http://bugs.gnu.org/18701>)
+*** Fix intermittent test failures involving GC (<http://bugs.gnu.org/18935>)
+*** guix import: pypi: Gracefully handle non-existent packages 
+    (<http://bugs.gnu.org/18831>)
+*** Make sure the shared library has the '.so' extension
+    (<http://bugs.gnu.org/18521>)
+*** pull: Use the build procedure provided by the newly-downloaded Guix.
+    (<http://bugs.gnu.org/18534>)
+*** WindowMaker no longer pollutes $PATH (<http://bugs.gnu.org/18698>)
+
+** Native language support
+*** New translation: cs (Czech)
+*** Updated translations: de, sr, vi
+
+
+
+-------------------------------------------------------------------
+Fri Aug 15 19:05:11 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 0.7
+  * Changes in 0.7 (since 0.6)
+  ** Package management
+  *** Binaries for mips64el-linux now available from hydra.gnu.org
+  *** ‘guix package’ has a new ‘--show’ option
+  *** ‘guix refresh’ has a new ‘--list-dependent’ option
+
+  ** Programming interfaces
+  *** New (guix gexp) module, which implements “G-expressions”
+  *** (gnu system) and related modules now use G-expressions
+  *** ‘build-expression->derivation’ is deprecated in favor of G-expressions
+  *** The (gnu system) module has been largely augmented and factorized
+  *** New (guix build vm) module, support for virtual machine images
+  *** New (guix build activation) module, for “system activation”
+  *** New (guix build syscalls) module
+  *** New (guix build install) and module for whole system installation
+  *** New (gnu system install) module, for the installation system
+  *** New (gnu system file-systems) module, for ‘file-system’ declarations
+  *** New (gnu) module, which aggregates common (gnu …) modules
+  *** ‘service’ records now have an optional ‘activate’ field
+  ** GNU distribution
+  *** An image to install the GNU system from a USB stick is provided
+  *** Support for more parameters in ‘operating-system’ declarations
+  *** ‘guix system’ supports more actions
+  *** User accounts and groups are created at system activation time
+  *** Virtual machine support uses para-virtualized devices
+  *** GCC package now has an additional ‘lib’ output, for run-time support libs
+  *** GLib package now has a separate “bin” output (<http://bugs.gnu.org/17853>)
+  *** 134 new packages
+  
+  abbaye, aegis, attica, babl, barcode, behave, btar, busybox, ccache, ccrtp,
+  chess, clucene, cmatrix, commoncpp, conkeror, cook, cssc, datamash, diffstat,
+  doxygen, dropbear, dtach, duplicity, e2fsck-static, exosip, fftw-openmpi,
+  fish, gconf, gegl, gimp, gmsh, gnome-mime-data, gnome-vfs, gnumeric, goffice,
+  gsegrafix, guile-opengl, guile-static-stripped, hdup, hwloc, inotify-tools,
+  jrnl, kbd, kmod, lftp, libarchive, libart-lgpl, libbonobo, libbonoboui,
+  libcroco, libdbusmenu-qt, libftdi, libglade, libgnome, libgnomecanvas,
+  libgnomeprint, libgnomeprintui, libgnomeui, libgsf, libidl, libmcrypt,
+  libmhash, librsvg, librsync, libsodium, libuv, libvpx, links, lzop, man-pages,
+  maxima, mcrypt, mosh, mpg123, mplayer, mu, ncmpcpp, node, notmuch, numactl,
+  offlineimap, openmpi, orbit2, osip, pangox-compat, perl-io-tty, petsc,
+  petsc-complex, petsc-complex-openmpi, petsc-openmpi, pingus, podofo, protobuf,
+  pt-scotch, python-enum34, python-keyring, python-lockfile, python-mock,
+  python-parse, python-parse-type, python-parsedatetime, python-pycrypto,
+  python-six, python-tzlocal, python2-lockfile, python2-mock, qjson, qrencode,
+  rasqal, rdiff-backup, rdup, redland, rottlog, scotch, sipwitch, sshfs-fuse,
+  strigi, sudo, superlu, superlu-dist, talkfilters, talloc, tcpdump, tinyproxy,
+  transmission, ucommon, udev, vlc, vtk, wakelan, wireless-tools,
+  wpa-supplicant, xboard, youtube-dl
+  
+  *** 87 package updates
+  
+  bitlbee-3.2.2, cursynth-1.5, ddrescue-1.18.1, dfc-3.0.4, dmd-0.2,
+  docbook-xml-4.3, docbook-xml-4.4, docbook-xsl-1.78.1, dvdisaster-0.72.6,
+  ffmpeg-2.3, fftw-3.3.4, fftwf-3.3.4, flac-1.3.0, gawk-4.1.1, gcc-4.7.4,
+  gcc-4.8.3, gcc-4.8.3, gcc-4.9.1, gcc-cross-mips64el-linux-gnuabi64-4.8.3,
+  gcc-objc++-4.8.3, gcc-objc-4.8.3, gcc-stripped-tarball-4.8.3,
+  gcc-toolchain-4.8.3, gcc-toolchain-4.9.1, gccgo-4.8.3, gdb-7.7.1,
+  gettext-0.19.2, gfortran-4.8.3, glib-2.40.0, global-6.3, gmp-6.0.0a,
+  gnupg-1.4.18, gnupg-2.0.25, gnutls-3.2.15, gp2c-0.0.9pl1, grep-2.20,
+  gst-plugins-base-1.0.10, gstreamer-0.10.36, gtk+-3.10.1, gtkmm-2.24.2,
+  guile-2.0.11, guile-2.0.11, guix-0.6, guix-0.6.0ae8c15, htop-1.0.3,
+  icu4c-53.1, imagemagick-6.8.9-0, json-c-0.12, libdrm-2.4.33, libgc-7.2e,
+  libgcrypt-1.5.3, libgpg-error-1.13, libjpeg-8d, libmicrohttpd-0.9.37,
+  libogg-1.3.2, libotr-4.0.0, libtasn1-3.6, libvorbis-1.3.4, lightning-2.0.4,
+  linux-libre-3.15.6, lua-5.1.5, lua-5.2.3, mcron-1.0.8, moe-1.6, nano-2.3.6,
+  neon-0.29.6, nettle-3.0, openssl-1.0.1h, parallel-20140722, pari-gp-2.7.1,
+  pspp-0.8.3, python-2.7.6, python-dateutil-2.2, python2-dateutil-2.2,
+  qemu-2.0.0, qemu-headless-2.0.0, qt-4.8.6, qt-5.2.1, readline-6.2,
+  screen-4.2.1, soprano-2.9.4, texinfo-5.2, texlive-2014, tor-0.2.4.22,
+  wdiff-1.2.2, xorriso-1.3.8, xterm-304
+  
+  ** Native language support
+  *** New translations: de (German), and hu (Hungarian)
+  *** Updated translations: eo, pt_BR, sr, vi
+  *** Package descriptions moved from the ‘guix’ text domain to ‘guix-packages’
+  ** Bugs fixed
+  *** Downloads are now faster (<http://bugs.gnu.org/15368>)
+  *** ‘guix authenticate’ properly writes signatures to stdout
+      (<http://bugs.gnu.org/17312>)
+  *** Progress report of downloads is now properly displayed
+  *** Error reporting of pk-crypto errors has been improved
+  *** The 'patches' field now works for origins with no extension
+  *** Synchronization and GC issues fixed in the offload hook
+  *** (guix ftp-client) emits USER commands suitable for all servers
+
+-------------------------------------------------------------------
+Sun Jun 15 13:53:19 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 0.6
+** Package management
+*** Default store directory changed to /gnu/store
+
+Although it is still possible to configure Guix to use the old store
+directory, we recommend that you start with a fresh install to /gnu/store.
+
+*** Substitutes from hydra.gnu.org must now be signed and authorized
+*** Support for offloading builds to other Guix machines over SSH
+*** New ‘guix archive’ command
+*** New ‘guix system’ command; it can currently build VM images
+*** ‘guix package’ accepts several arguments after -i, -r, and -u
+*** Updating a profile with ‘guix package’ is now noticeably faster
+*** ‘guix build’ can override a package’s source with the new ‘--with-source’
+*** ‘guix build’ has a new ‘--no-build-hook’ option
+*** ‘guix’ commands that build packages have a common set of options
+*** ‘guix hash’ has a new ‘--recursive’ option
+*** Daemon no longer bind-mounts the host’s /dev (improves reproducibility)
+** Programming interfaces
+*** New (guix pk-crypto) and (guix pki) modules for public key cryptography
+*** New #:local-build? parameter for derivations that shouldn’t be offloaded
+*** (gnu system vm) has procedures to build VMs that share the host’s store
+*** New ‘text-file*’ procedure in (guix monads)
+*** System service definitions are now provided by the (guix services) modules
+*** New X and SLiM services in (gnu services xorg)
+*** New (guix git-download) and (guix svn-download) for git/svn checkouts
+** GNU distribution
+*** 91 new packages
+
+a2ps, asciidoc, aspell-dict-en, aspell-dict-eo, aspell-dict-es,
+aspell-dict-fr, aumix, bitlbee, bogofilter, boost, calcurse, clusterssh,
+corkscrew, cursynth, docbook-xml, docbook-xsl, elfutils, enscript, fftwf,
+fltk, fuse, gcc-toolchain, giflib, glade, gmime, gnome-desktop, gnubg, gnubik,
+gnumach-headers, gnunet, gnuplot, gnurl, gphoto2, gtkglext, guile-json,
+guile-reader-for-guile_2.0.11, gxmessage, hdf5, hurd-headers, inkscape, iotop,
+isc-dhcp, iso-codes, jnettop, libatomic-ops, libexif, libgphoto2, libmpcdec,
+libmpdclient, libotr, libpcap, libpeas, libpipeline, libtirpc, libwebsockets,
+ltrace, luajit, lynx, man-db, mc, mig, miniupnpc, moe, mpc123, mpd, ncdc,
+ncdu, ncmpc, neon, neon, octave, opus, paperkey, patchutils, perl-tk,
+perl-x11-protocol, pinentry, python2-element-tree, python2-pybugz, quilt,
+source-highlight, stalonetray, trueprint, ttf-dejavu, unionfs-fuse,
+unionfs-fuse-static, uucp, vera, windowmaker, xapian, xterm
+
+*** 90 package updates
+
+apl-1.3, autoconf-2.68, automake-1.14.1, bash-4.3, bash-light-4.3,
+bigloo-4.1a, binutils-2.24, binutils-static-stripped-tarball-2.24,
+coreutils-8.22, curl-7.35.0, ed-1.10, ffmpeg-2.1.4, file-5.18, freeipmi-1.4.1,
+gcc-4.8.2, gcc-4.8.2, gdb-7.7, gdbm-1.11, gettext-0.18.3.2, glib-2.39.1,
+glibc-2.19, glibc-stripped-tarball-2.19, global-6.2.12, glpk-4.54,
+gnu-pw-mgr-1.2, gnupg-1.4.16, gnutls-3.2.12, gp2c-0.0.8pl1, grep-2.18,
+gst-plugins-base-0.10.36, gstreamer-1.0.10, gtk+-3.10.1, gtkmm-2.24.2,
+guile-2.0.11, guile-ssh-0.6.0, guile-static-stripped-tarball-2.0.11,
+guile-wm-1.0, guile-xcb-1.3, guix-0.5, help2man-1.45.1, icu4c-52.1,
+imagemagick-6.8.8-10, inetutils-1.9.2, lapack-3.5.0, libcdio-0.92,
+libdrm-2.4.46, libextractor-1.3, libgc-7.2e, libgc-7.4.0, libgcrypt-1.6.1,
+libjpeg-9, libmicrohttpd-0.9.34, libssh-0.6.3, libtasn1-3.4, lightning-2.0.3,
+linux-libre-3.13.7, mpc-1.0.2, mutt-1.5.23, net-base-5.2, ocrad-0.23,
+openssh-6.6p1, openssl-1.0.1g, parallel-20140322, pari-gp-2.7.0, pspp-0.8.2,
+pulseaudio-5.0, python-2.7.6, python-3.3.5, python-wrapper-3.3.5,
+python2-pysqlite-2.6.3a, qemu-1.7.1, qemu-headless-1.7.1,
+qemu-with-multiple-smb-shares-1.7.1, qt-4.8.5, qt-5.2.0, readline-6.3,
+recutils-1.7, slim-1.3.6, sqlite-3.8.4.3, subversion-1.7.14, texinfo-4.13a,
+tor-0.2.4.21, tzdata-2014a, units-2.11, valgrind-3.9.0, vim-7.4, wget-1.15,
+xnee-3.18, xorriso-1.3.6.pl01, zile-2.4.11
+
+*** New ‘gcc-toolchain’ meta-package, makes it easy to install a GCC tool chain
+*** libc’s Info manual is now installed
+*** Binutils is built with --enable-deterministic-archives
+*** Packages that populated man/man* now populate share/man/man*
+*** Many other packaging improvements
+** Bugs fixed
+*** ‘guix pull’ consumes less memory, compiles in parallel
+*** ‘guix package --list-*’ gracefully handles EPIPE when used in a pipeline
+*** ‘guix package’ handles collisions between a symlink and a directory
+    (http://bugs.gnu.org/17083)
+*** HTTP downloads provide a ‘User-Agent’ field (http://bugs.gnu.org/16703)
+*** ‘guix package’ no longer shows misleading installed package number
+    (http://bugs.gnu.org/16484)
+*** Manual suggests ‘useradd --system’ (http://bugs.gnu.org/16289)
+*** Python is built with ctypes support (http://bugs.gnu.org/16569)
+*** HTTP/TLS connection not terminated properly (http://bugs.gnu.org/14884)
+*** Gracefully handle poorly behaved HTTP servers (http://bugs.gnu.org/15733)
+
+
+
+-------------------------------------------------------------------
+Wed Feb 12 21:32:43 UTC 2014 - sleep_walker@suse.cz
+
+- remove file %{_infodir}/dir causing just mess
+
+-------------------------------------------------------------------
+Tue Feb 11 07:04:40 UTC 2014 - sleep_walker@suse.cz
+
+- explicitly require guile as dependency
+
+-------------------------------------------------------------------
+Tue Feb 11 06:49:44 UTC 2014 - sleep_walker@suse.cz
+
+- don't add %{_infodir}/dir into package for Fedora 20
+
+-------------------------------------------------------------------
+Thu Jan 23 14:14:58 UTC 2014 - sleep_walker@suse.cz
+
+- add init script and it's rc symlink to sbin
+- automatically create group and users used for building
+
+-------------------------------------------------------------------
+Thu Jan 23 10:14:58 UTC 2014 - sleep_walker@suse.cz
+
+- add /usr/share/info/dir to package for non-SUSE distros
+
+-------------------------------------------------------------------
+Thu Jan 23 08:36:10 UTC 2014 - sleep_walker@suse.cz
+
+- remove pkgconfig based dependencies to reach more audience
+
+-------------------------------------------------------------------
+Wed Jan 22 20:54:31 UTC 2014 - sleep_walker@suse.cz
+
+- let there be guix!
+

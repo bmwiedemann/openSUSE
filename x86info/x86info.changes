@@ -1,0 +1,202 @@
+-------------------------------------------------------------------
+Wed Nov  7 09:52:22 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Oct 11 10:13:54 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.30+git.20180323:
+  * rename release target to tarball
+  * bump minimum for -Werror to gcc 6.3
+  * add tag target
+  * Make cpuid-freebsd.c:cpuid() handle top word of idx as count (%ecx), same as cpuid-linux.c:cpuid() does.
+  * Make native_cpuid() handle top word of idx as count (%ecx), same as cpuid-linux.c:cpuid() does.
+  *  Fix vendor/inte/identify-family6-extended.c::get_namestring() to print cpu mode name correcty. When I tested on Kaby Lake machine, it shows:
+  * amd: Identify Family 17h model CPUs
+  * Makefile: Use pkg-config libpci location
+- Use more accurate versioning
+- Update build requirements
+- Make building more verbose
+
+-------------------------------------------------------------------
+Tue Jul 18 09:17:08 UTC 2017 - fschnizlein@suse.com
+
+- Update to HEAD (9501749231164135db25c72cbeb42bf32af1519b)
+  * Make it possible to statically link with libpci.
+  * Add another Nehalem variant
+  * Add exact steppings and complete list of all bloomfield cores.
+  * add Knights Mill Xeon Phi.
+  * - Add PREFETCHW instruction flag.
+    - Add Hardware Duty Cycling flag.
+    - Add HW-controlled performance states (HWP) flags.
+  * Add 0x64, 0xa0, 0xc3 and 0xc4 into DTLB_cache_table[].
+  * - Add Atom E3500.
+    - Add Atom X3-C3000 [Silvermont].
+  *  Add NetBSD support. Note that NetBSD has not API to access MSR register from userland.
+  * handle null EBDA pointer.
+  * handle failure from enumerate_cpus
+
+-------------------------------------------------------------------
+Wed Sep  9 16:04:46 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.30
+  * no upstream changelog available
+- Cleanup spec file with spec-clener
+
+-------------------------------------------------------------------
+Tue Oct 14 12:34:09 UTC 2014 - jengelh@inai.de
+
+- Use parallel build and remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Fri Aug 26 12:49:27 UTC 2011 - trenn@suse.de
+
+- Update to latest git version
+   -> 1.29 plus some more patches until
+      git commit aa57556f60c89eb84f65cb55e0215ff9be97dbec
+  Includes:
+     - Show boost state info on AMD
+     - Identify some more cpus
+     - ...
+
+-------------------------------------------------------------------
+Wed Mar 16 10:53:18 UTC 2011 - trenn@novell.com
+
+- Update to version 1.28
+  Changelog (extracted git commit subjects, shortened):
+    Some more IDA decoding
+    Start decoding IDA
+    gather topology info per-cpu
+    Split intel info into basic/extended.
+    only display extended family/model if set
+       print out the BIOS programmed string by default too.
+       Also clarify which is x86info's guess.
+    put back some of the mptable verbose/silent code.
+    rename bluesmoke to machine_check
+    Split MSR-PM into thermal and performance
+    IA32_PERF_STATUS is model specific.
+    Dump APIC registers
+    Add and show info about virtual and physical address sizes
+    Decode MTRRphysBase and MTRRphysMask
+    use MB macro, like in the kernel
+    update cache descriptors
+    Decode MTRRcap and MTRRdefType registers
+    Make makenodes script more robust
+    Add an Atom variant
+    Add an Intel codename.
+    Add an atom ident.
+    Add some Nehalem core codenames.
+    Add Core i7 informational URL.
+    Report whether longnops are supported
+
+-------------------------------------------------------------------
+Sun Feb 13 23:26:43 CET 2011 - trenn@suse.de
+
+- Update to version 1.27
+  Changelog (extracted git commit subjects from 1.25-1.27):
+    only support topology parsing on intel for now
+    Factor out the topology printing code into its own routine
+    add more Intel CPUID flags
+    Add informational URL for Pentium III Dothan.
+    fix invalid usage of printf
+    cpuid.c: Use native cpuid call silently instead of failing
+    Remove the message about cpuid_up being inaccurate.
+    Makefile: Override dependency output file with -MF
+    Add additional Intel CPUID flags
+    x86info: show microcode patch level for AMD CPUs
+    x86info: identify newer AMD CPUs (e.g. Istanbul, Phenom II)
+    Don't specify any ld flags until the linking occurred.
+    Display register info when flag is unknown.
+    Additional flags and a little cleanup
+    Enhance descriptions for Intel feature flags.
+    ecx flags update patch
+    move get_cpu_info_basics() prior to get_feature_flags()
+    Full RELRO support. Because there's no reason not to.
+    improve the ht siblings text
+    Handle non-sequential socket numbers correctly.
+    Only calculate MHz on the first cpu, unless --all-cpus is passed.
+    remove extraneous space
+    discrimination between HT and dual-core.
+    Store the number of siblings.
+    delete core dumps with make clean
+    clean up the output for single cpu case.
+    Fix segfault by sizing the sockets array correctly.
+    correctly clear the sockets struct.
+    Make the output even more fancy.
+    print the MHz in the summary. Also change the summary text a little.
+    Clean up exit codes
+    Print out a summary footer.
+    Introduce a --debug switch, and hide some stuff behind it.
+    Print a summary of the information from topology discovery.
+    Make the new cpuid4 & cpuid_count functions take a cpu number
+      integer instead of a cpudata struct so they match the other cpuid
+      functions.
+    Intel CPU topology reworking.
+    PATCH: add support for new cpuid descriptors
+    fix up release to use new git syntax
+
+-------------------------------------------------------------------
+Tue Feb 16 17:25:25 UTC 2010 - trenn@novell.com
+
+- Update to version 1.25
+ * Add submitted results from core2-duo-E2180
+ * Several compile fixes
+
+-------------------------------------------------------------------
+Sat Feb  7 11:06:40 CET 2009 - bwalle@suse.de
+
+- Update to version 1.24
+  o Add Core i7 cache descriptors.
+  o Check for a minimum version of glibc, as the affinity calls
+  o Bump copyright
+  o Atom series 200
+  o Atom series 300
+  o Atom N270 series
+  o Add Atom.
+  o Add Nehalem.
+  o Ugh, decoding this lot is going to be a nightmare.
+  o Add some more quad-core2's
+  o Add Intel® Core™2 Extreme Processor QX9775
+  o Add all core2 quad definitions from 318727.pdf
+  o Warn on redundant declarations.  Remove some duplicates.
+  o Add some extra warnings (missing declarations) and fix up a
+    bunch
+  o Fix up warnings. Add -Werror to catch new ones.
+
+-------------------------------------------------------------------
+Wed Jan  7 15:11:51 CET 2009 - bbrunner@suse.de
+
+- update to version 1.23
+
+-------------------------------------------------------------------
+Thu May  8 19:30:14 CEST 2008 - crrodriguez@suse.de
+
+- use RPM_OPT_FLAGS
+- update to version 1.21 (see ChangeLog for full list of changes) 
+
+-------------------------------------------------------------------
+Tue Sep 11 22:27:12 CEST 2007 - bwalle@suse.de
+
+- update to version 1.20
+
+-------------------------------------------------------------------
+Fri Jul 26 17:37:08 CEST 2002 - rommel@suse.de
+
+- Update to version 1.10 (see ChangeLog for full list of changes)
+
+-------------------------------------------------------------------
+Thu Dec 20 14:01:28 CET 2001 - grimmer@suse.de
+
+- Update to version 1.7 (see ChangeLog for full list of changes)
+
+-------------------------------------------------------------------
+Thu Nov 22 12:38:04 CET 2001 - grimmer@suse.de
+
+- Update to version 1.6 (see ChangeLog for full list of changes)
+
+-------------------------------------------------------------------
+Tue Aug 28 09:29:39 CEST 2001 - grimmer@suse.de
+
+- Initial package for SuSE Linux (Version 1.5)
+

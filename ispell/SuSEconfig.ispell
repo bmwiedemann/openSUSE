@@ -1,0 +1,77 @@
+#! /bin/sh
+# Copyright (c) 2002 SuSE Linux AG, Nuernberg, Germany.  All rights reserved.
+#
+# Author: Egmont Koblinger <egmont@suselinux.hu>
+#
+# This module maintains a symlink `english' pointing to either `american'
+# or `british'.
+
+: ${ROOT:=""}
+: ${UID:="$(id -ru)"}
+
+# check if we are started as root
+# only one of UID and USER must be set correctly
+if test "$UID" != 0 -a "$USER" != root; then
+    echo "You must be root to start $0."
+    exit 1
+fi
+
+test -f $ROOT/etc/sysconfig/language || { echo "No /etc/sysconfig/language found." && exit 1 ; }
+. $ROOT/etc/sysconfig/language
+
+test -f $ROOT/etc/sysconfig/ispell || { echo "No /etc/sysconfig/ispell found." && exit 1 ; }
+. $ROOT/etc/sysconfig/ispell
+
+# which dictionaries are installed?
+if [ -f $ROOT/usr/lib/ispell/american.hash -a -f $ROOT/usr/lib/ispell/american.aff ]; then
+	INSTALLED_AMERICAN="yes"
+else
+	INSTALLED_AMERICAN="no"
+fi
+if [ -f $ROOT/usr/lib/ispell/british.hash -a -f $ROOT/usr/lib/ispell/british.aff ]; then
+	INSTALLED_BRITISH="yes"
+else
+	INSTALLED_BRITISH="no"
+fi
+
+# where should the link point to?
+LINK_TO="none"
+if [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "no" ]; then
+	LINK_TO="american"
+elif [ "$INSTALLED_AMERICAN" = "no" -a "$INSTALLED_BRITISH" = "yes" ]; then
+	LINK_TO="british"
+elif [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "yes" ]; then
+	for dict in $ENGLISH_DICTIONARY; do
+		if [ "$dict" = "system" ]; then
+			case "$RC_LANG" in
+			  en_GB*)	dict="british" ;;
+			  en*)		dict="american" ;;
+			  *)		continue ;;
+			esac
+		fi
+		if [ -f $ROOT/usr/lib/ispell/$dict.hash -a -f $ROOT/usr/lib/ispell/$dict.aff ]; then
+			LINK_TO="$dict"
+			break
+		fi
+	done
+fi
+
+if [ "$LINK_TO" = "none" ]; then
+# remove the links if necessary and if possible (modern `test' uses access(2))
+	test -L $ROOT/usr/lib/ispell/english.hash   -a -w $ROOT/usr/lib/ispell/		&& \
+		rm -f $ROOT/usr/lib/ispell/english.hash
+	test -L $ROOT/usr/lib/ispell/english.aff    -a -w $ROOT/usr/lib/ispell/		&& \
+		rm -f $ROOT/usr/lib/ispell/english.aff
+else
+# create the symbolic links otherwise
+	test ! -e $ROOT/var/lib/dict/english.hash -o -L $ROOT/var/lib/dict/english.hash && \
+		ln -sf $ROOT/usr/lib/ispell/$LINK_TO.hash $ROOT/var/lib/dict/english.hash
+	test ! -e $ROOT/var/lib/dict/english.aff  -o -L $ROOT/var/lib/dict/english.aff  && \
+		ln -sf $ROOT/usr/lib/ispell/$LINK_TO.aff  $ROOT/var/lib/dict/english.aff
+	test ! -e $ROOT/usr/lib/ispell/english.hash -a -w $ROOT/usr/lib/ispell/		&& \
+		ln -sf $ROOT/var/lib/dict/english.hash $ROOT/usr/lib/ispell/english.hash
+	test ! -e $ROOT/usr/lib/ispell/english.aff  -a -w $ROOT/usr/lib/ispell/		&& \
+		ln -sf $ROOT/var/lib/dict/english.aff  $ROOT/usr/lib/ispell/english.aff
+fi
+
+exit 0

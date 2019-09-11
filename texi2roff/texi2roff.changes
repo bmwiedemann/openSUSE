@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Feb  6 16:10:42 UTC 2015 - werner@suse.de
+
+- Change license to SUSE-Permissive-Modify-By-Patch 
+
+-------------------------------------------------------------------
+Thu Feb  5 20:11:07 UTC 2015 - dimstar@opensuse.org
+
+- Completely split off from texinfo: there is no reason to maintain
+  them in a single linked package set.
+- Add proper split provides to indicate the split off texinfo.
+
+-------------------------------------------------------------------
+Fri Nov 14 07:40:05 UTC 2014 - werner@suse.de
+
+- Use the original but less compressed source tar ball and source
+  patch 
+
+-------------------------------------------------------------------
+Fri Sep 12 12:53:23 UTC 2014 - werner@suse.de
+
+- Recreate texi2roff as this is missed 
+

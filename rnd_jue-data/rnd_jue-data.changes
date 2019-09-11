@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jul  2 17:33:12 UTC 2018 - kstreitova@suse.com
+
+- BuildRequires p7zip-full for TW as 7z binary needed for
+  extracting the source is packaged there now
+
+-------------------------------------------------------------------
+Wed Jun 24 13:15:36 UTC 2015 - nemysis@gmx.ch
+
+- Use check for openSUSE %if 0%{?suse_version}
+- Add BuildRoot
+- Remove conflict with R'n'D jue rnd_jue/levelinfo.conf
+
+-------------------------------------------------------------------
+Sun Oct  5 12:19:21 UTC 2014 - nemysis@gmx.ch
+
+- Change %fdupes
+
+-------------------------------------------------------------------
+Sat Oct  4 21:43:38 UTC 2014 - nemysis@gmx.ch
+
+- Removed not working Earth_Shaker_Collection.zip
+
+-------------------------------------------------------------------
+Sat Oct  4 20:17:54 UTC 2014 - nemysis@gmx.ch
+
+- Use original Walpurgis_Collection.zip
+
+-------------------------------------------------------------------
+Sat Oct  4 17:20:02 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

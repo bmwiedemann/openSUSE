@@ -1,0 +1,62 @@
+From 0794b1b712a90b40e2b019c9edc6f96874493c52 Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Wed, 18 May 2016 12:41:41 -0400
+Subject: [PATCH] unifdef LBXPROXY_t and TEST_t
+
+LBX is dead, and TEST_t is unused.
+
+Reviewed-by: Keith Packard <keithp@keithp.com>
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+ Xtrans.h     | 15 ---------------
+ Xtranssock.c |  8 --------
+ 2 files changed, 23 deletions(-)
+
+diff --git a/Xtrans.h b/Xtrans.h
+index 3fd73b8..7ed033b 100644
+--- a/Xtrans.h
++++ b/Xtrans.h
+@@ -111,21 +111,6 @@ static const char *__xtransname = "_IceTrans";
+ #endif
+ #endif /* ICE_t */
+ 
+-#ifdef TEST_t
+-#define TRANS(func) _TESTTrans##func
+-#ifdef XTRANSDEBUG
+-static const char *__xtransname = "_TESTTrans";
+-#endif
+-#endif /* TEST_t */
+-
+-#ifdef LBXPROXY_t
+-#define TRANS(func) _LBXPROXYTrans##func
+-#define X11_t		/* The server defines this - so should the LBX proxy */
+-#ifdef XTRANSDEBUG
+-static const char *__xtransname = "_LBXPROXYTrans";
+-#endif
+-#endif /* LBXPROXY_t */
+-
+ #if !defined(TRANS)
+ #define TRANS(func) _XTrans##func
+ #ifdef XTRANSDEBUG
+diff --git a/Xtranssock.c b/Xtranssock.c
+index 2cda9bb..866f4ab 100644
+--- a/Xtranssock.c
++++ b/Xtranssock.c
+@@ -215,14 +215,6 @@ static int TRANS(SocketINETClose) (XtransConnInfo ciptr);
+ #define UNIX_PATH "/tmp/.ICE-unix/"
+ #define UNIX_DIR "/tmp/.ICE-unix"
+ #endif /* ICE_t */
+-#if defined(TEST_t)
+-#define UNIX_PATH "/tmp/.Test-unix/test"
+-#define UNIX_DIR "/tmp/.Test-unix"
+-#endif
+-#if defined(LBXPROXY_t)
+-#define UNIX_PATH "/tmp/.X11-unix/X"
+-#define UNIX_DIR  "/tmp/.X11-unix"
+-#endif
+ 
+ 
+ #endif /* UNIXCONN */
+-- 
+2.16.4
+

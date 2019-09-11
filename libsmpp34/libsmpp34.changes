@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Jan 28 22:11:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename libsmpp34-0-devel to libsmpp34-devel.
+
+-------------------------------------------------------------------
+Mon Jan 28 21:28:18 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.13.0
+  * No user-visible changes
+- Drop patch build-fixes.diff (not longer needed)
+
+-------------------------------------------------------------------
+Mon Oct  2 23:25:01 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 1.12.8
+  * Fix Out of bounds compilation warning in OCTET8
+  * smpp34_structs.h: Fix truncated output in str_tlv_id
+
+-------------------------------------------------------------------
+Sat Apr 29 18:15:07 UTC 2017 - jengelh@inai.de
+
+- Ship version 1.10.37 for build.opensuse.org
+- Add build-fixes.diff

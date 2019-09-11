@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Fri Feb 27 14:49:24 UTC 2015 - dimstar@opensuse.org
+
+- No longer apply libsmi-flex.patch on openSUSE Tumbleweed (> 13.2).
+
+-------------------------------------------------------------------
+Tue Jan 27 22:09:31 UTC 2015 - crrodriguez@opensuse.org
+
+- fix missing pkgconfig buildRequires 
+- Run make check but ignore failures.
+
+-------------------------------------------------------------------
+Tue Jan 27 22:05:41 UTC 2015 - crrodriguez@opensuse.org
+
+- libsmi-exports.patch: Export only the symbols of the public 
+  API, specially hide and avoid using internal
+  vasprintf and asnprintf implementations that will 
+  name-clash with the C library.
+
+-------------------------------------------------------------------
+Wed Jan 21 09:48:31 UTC 2015 - dimstar@opensuse.org
+
+- Disable parallel build to reduce random build failures.
+
+-------------------------------------------------------------------
+Tue Jan 20 14:17:06 UTC 2015 - dimstar@opensuse.org
+
+- Add libsmi-bison-3.0.patch: Fix build with bison 3.0.
+
+-------------------------------------------------------------------
+Mon Apr 15 13:54:52 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Nov 13 10:46:32 UTC 2012 - idonmez@suse.com
+
+- Add libsmi-flex.patch: yyleng should be type of size_t 
+
+-------------------------------------------------------------------
+Wed Nov 23 09:21:39 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov 11 10:38:11 UTC 2010 - nadvornik@novell.com
+
+- fixed buffer overflow CVE-2010-2891 (bnc#649867)
+
+-------------------------------------------------------------------
+Mon Mar 29 14:26:21 CEST 2010 - boris@steki.net
+
+- Created subpackage libsmi2 to make rpmlint happy
+
+-------------------------------------------------------------------
+Sat Mar 27 13:51:22 CET 2010 - boris@steki.net
+
+- update to 0.4.8
+   * test/*: updated a couple of checks.
+   * tools/*: fixed a couple of minor compiler warnings.
+   * new MIBs
+   * tools/Makefile.am: added missing files to the distribution.
+- patch for cast correction in parser-sming.y
+- require of bison and flex in spec so build will rebuild parsers
+
+-------------------------------------------------------------------
+Fri Jan  9 03:02:57 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- remove deprecated run_ldconfig usage
+- define _GNU_SOURCE where needed 
+
+-------------------------------------------------------------------
+Wed Oct 18 13:44:05 CEST 2006 - mjancar@suse.cz
+
+- update to 0.4.5
+  * bugfixes
+  * new MIBs
+- drop libsmi-0.4.5-sysconf.diff, included upstream
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 13 15:38:06 CEST 2005 - ro@suse.de
+
+- do not redefine vsnprintf 
+
+-------------------------------------------------------------------
+Thu Feb 24 20:27:15 CET 2005 - mjancar@suse.cz
+
+- update to 0.4.3
+
+-------------------------------------------------------------------
+Fri Feb 27 09:17:45 CET 2004 - mjancar@suse.cz
+
+- update to 0.4.2
+
+-------------------------------------------------------------------
+Sat Jan 10 14:10:49 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Jul 31 17:53:52 CEST 2003 - mjancar@suse.cz
+
+- use %run_ldconfig
+
+-------------------------------------------------------------------
+Thu May 29 14:48:07 CEST 2003 - mjancar@suse.cz
+
+- update to 0.4.1
+
+-------------------------------------------------------------------
+Wed May 28 11:16:32 CEST 2003 - coolo@suse.de
+
+- add the aclocal macro file to the devel package 
+
+-------------------------------------------------------------------
+Fri May  9 14:01:33 CEST 2003 - ro@suse.de
+
+- do a full autoreconf 
+
+-------------------------------------------------------------------
+Tue Jan 29 08:56:18 CET 2002 - cihlar@suse.cz
+
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Mon Nov 26 11:07:35 CET 2001 - cihlar@suse.cz
+
+- update to version 0.3.0:
+  * many fixes
+  * added several files to mibs/... by new RFCs
+- devel subpackage created
+
+-------------------------------------------------------------------
+Mon Nov 12 11:09:42 CET 2001 - cihlar@suse.cz
+
+- fixed installation with new automake
+
+-------------------------------------------------------------------
+Wed Jun  6 09:55:18 CEST 2001 - cihlar@suse.cz
+
+- fixed to compile with new libtool
+
+-------------------------------------------------------------------
+Tue Apr 17 08:15:51 CEST 2001 - cihlar@suse.cz
+
+- update to version 0.2.16
+
+-------------------------------------------------------------------
+Wed Mar  7 14:07:12 CET 2001 - cihlar@suse.cz
+
+- update to version 0.2.14
+
+-------------------------------------------------------------------
+Tue Feb 27 08:36:11 CET 2001 - cihlar@suse.cz
+
+- update to version 0.2.13
+- compile with --enable-smi and --enable-sming
+
+-------------------------------------------------------------------
+Sun Dec  3 15:07:12 CET 2000 - smid@suse.cz
+
+- new version 0.2.11
+
+-------------------------------------------------------------------
+Wed Oct 11 11:21:29 CEST 2000 - smid@suse.cz
+
+- new version 0.2.6
+
+-------------------------------------------------------------------
+Thu Jun  8 08:56:33 MEST 2000 - cihlar@suse.cz
+
+- fixed License tag
+- added %clean
+
+-------------------------------------------------------------------
+Fri Apr 21 12:59:01 CEST 2000 - smid@suse.cz
+
+- upgrade to 0.2.0
+- buildroot added
+
+-------------------------------------------------------------------
+Sat Apr  8 22:52:58 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Thu Mar  2 15:35:38 CET 2000 - uli@suse.de
+
+- moved man pages to %{_mandir}
+
+-------------------------------------------------------------------
+Mon Oct 25 18:41:03 MEST 1999 - uli@suse.de
+
+- update -> 0.1.7
+
+-------------------------------------------------------------------
+Mon Sep 27 16:03:23 MEST 1999 - uli@suse.de
+
+- new package, version 0.1.6
+

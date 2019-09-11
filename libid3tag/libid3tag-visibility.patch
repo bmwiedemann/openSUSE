@@ -1,0 +1,272 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -36,7 +36,9 @@ AC_CANONICAL_HOST
+ 
+ dnl Checks for programs.
+ 
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ 
+ if test "$GCC" = yes
+ then
+@@ -61,7 +63,7 @@ dnl Support for libtool.
+ 
+ dnl AC_DISABLE_SHARED
+ dnl AC_LIBTOOL_WIN32_DLL
+-AC_PROG_LIBTOOL
++LT_INIT([disable-static pic-only])
+ 
+ AC_SUBST(LIBTOOL_DEPS)
+ 
+--- compat.h.orig
++++ compat.h
+@@ -24,6 +24,8 @@
+ 
+ # include "id3tag.h"
+ 
++#pragma GCC visibility push(hidden)
++
+ typedef int id3_compat_func_t(struct id3_frame *, char const *,
+ 			      id3_byte_t const *, id3_length_t);
+ 
+@@ -38,4 +40,5 @@ struct id3_compat const *id3_compat_look
+ 
+ int id3_compat_fixup(struct id3_tag *);
+ 
++#pragma GCC visibility pop
+ # endif
+--- crc.h.orig
++++ crc.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_CRC_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ unsigned long id3_crc_compute(id3_byte_t const *, id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- debug.h.orig
++++ debug.h
+@@ -23,12 +23,12 @@
+ # define LIBID3TAG_DEBUG_H
+ 
+ # include <stdlib.h>
+-
++#pragma GCC visibility push(hidden)
+ void *id3_debug_malloc(size_t, char const *, unsigned int);
+ void *id3_debug_calloc(size_t, size_t, char const *, unsigned int);
+ void *id3_debug_realloc(void *, size_t, char const *, unsigned int);
+ void id3_debug_free(void *, char const *, unsigned int);
+ 
+ void *id3_debug_release(void *, char const *, unsigned int);
+-
++#pragma GCC visibility pop
+ # endif
+--- field.h.orig
++++ field.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_FIELD_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ void id3_field_init(union id3_field *, enum id3_field_type);
+ void id3_field_finish(union id3_field *);
+ 
+@@ -32,5 +32,5 @@ int id3_field_parse(union id3_field *, i
+ 
+ id3_length_t id3_field_render(union id3_field const *, id3_byte_t **,
+ 			      enum id3_field_textencoding *, int);
+-
++#pragma GCC visibility pop
+ # endif
+--- frame.h.orig
++++ frame.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_FRAME_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ int id3_frame_validid(char const *);
+ 
+ void id3_frame_addref(struct id3_frame *);
+@@ -32,5 +32,5 @@ void id3_frame_delref(struct id3_frame *
+ struct id3_frame *id3_frame_parse(id3_byte_t const **, id3_length_t,
+ 				  unsigned int);
+ id3_length_t id3_frame_render(struct id3_frame const *, id3_byte_t **, int);
+-
++#pragma GCC visibility pop
+ # endif
+--- frametype.h.orig
++++ frametype.h
+@@ -21,7 +21,7 @@
+ 
+ # ifndef LIBID3TAG_FRAMETYPE_H
+ # define LIBID3TAG_FRAMETYPE_H
+-
++#pragma GCC visibility push(hidden)
+ struct id3_frametype {
+   char const *id;
+   unsigned int nfields;
+@@ -38,5 +38,5 @@ extern struct id3_frametype const id3_fr
+ 
+ struct id3_frametype const *id3_frametype_lookup(register char const *,
+ 						 register unsigned int);
+-
++#pragma GCC visibility pop
+ # endif
+--- latin1.h.orig
++++ latin1.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_LATIN1_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ id3_length_t id3_latin1_length(id3_latin1_t const *);
+ id3_length_t id3_latin1_size(id3_latin1_t const *);
+ 
+@@ -41,5 +41,5 @@ id3_latin1_t id3_latin1_get(id3_byte_t c
+ 
+ id3_length_t id3_latin1_serialize(id3_byte_t **, id3_ucs4_t const *, int);
+ id3_ucs4_t *id3_latin1_deserialize(id3_byte_t const **, id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- parse.h.orig
++++ parse.h
+@@ -21,7 +21,7 @@
+ 
+ # ifndef LIBID3TAG_PARSE_H
+ # define LIBID3TAG_PARSE_H
+-
++#pragma GCC visibility push(hidden)
+ signed long id3_parse_int(id3_byte_t const **, unsigned int);
+ unsigned long id3_parse_uint(id3_byte_t const **, unsigned int);
+ unsigned long id3_parse_syncsafe(id3_byte_t const **, unsigned int);
+@@ -30,5 +30,5 @@ id3_latin1_t *id3_parse_latin1(id3_byte_
+ id3_ucs4_t *id3_parse_string(id3_byte_t const **, id3_length_t,
+ 			     enum id3_field_textencoding, int);
+ id3_byte_t *id3_parse_binary(id3_byte_t const **, id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- render.h.orig
++++ render.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_RENDER_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ id3_length_t id3_render_immediate(id3_byte_t **, char const *, unsigned int);
+ id3_length_t id3_render_syncsafe(id3_byte_t **, unsigned long, unsigned int);
+ id3_length_t id3_render_int(id3_byte_t **, signed long, unsigned int);
+@@ -36,5 +36,5 @@ id3_length_t id3_render_padding(id3_byte
+ 
+ id3_length_t id3_render_paddedstring(id3_byte_t **, id3_ucs4_t const *,
+ 				     id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- tag.h.orig
++++ tag.h
+@@ -23,8 +23,8 @@
+ # define LIBID3TAG_TAG_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ void id3_tag_addref(struct id3_tag *);
+ void id3_tag_delref(struct id3_tag *);
+-
++#pragma GCC visibility pop
+ # endif
+--- ucs4.h.orig
++++ ucs4.h
+@@ -25,7 +25,7 @@
+ # include "id3tag.h"
+ 
+ # define ID3_UCS4_REPLACEMENTCHAR  0x000000b7L  /* middle dot */
+-
++#pragma GCC visibility push(hidden)
+ extern id3_ucs4_t const id3_ucs4_empty[];
+ 
+ id3_length_t id3_ucs4_length(id3_ucs4_t const *);
+@@ -37,5 +37,5 @@ id3_length_t id3_ucs4_utf8size(id3_ucs4_
+ 
+ void id3_ucs4_copy(id3_ucs4_t *, id3_ucs4_t const *);
+ id3_ucs4_t *id3_ucs4_duplicate(id3_ucs4_t const *);
+-
++#pragma GCC visibility pop
+ # endif
+--- utf16.h.orig
++++ utf16.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_UTF16_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ enum id3_utf16_byteorder {
+   ID3_UTF16_BYTEORDER_ANY,
+   ID3_UTF16_BYTEORDER_BE,
+@@ -47,5 +47,5 @@ id3_length_t id3_utf16_serialize(id3_byt
+ 				 enum id3_utf16_byteorder, int);
+ id3_ucs4_t *id3_utf16_deserialize(id3_byte_t const **, id3_length_t,
+ 				  enum id3_utf16_byteorder);
+-
++#pragma GCC visibility pop
+ # endif
+--- utf8.h.orig
++++ utf8.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_UTF8_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ id3_length_t id3_utf8_length(id3_utf8_t const *);
+ id3_length_t id3_utf8_size(id3_utf8_t const *);
+ 
+@@ -38,5 +38,5 @@ id3_utf8_t id3_utf8_get(id3_byte_t const
+ 
+ id3_length_t id3_utf8_serialize(id3_byte_t **, id3_ucs4_t const *, int);
+ id3_ucs4_t *id3_utf8_deserialize(id3_byte_t const **, id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- util.h.orig
++++ util.h
+@@ -23,7 +23,7 @@
+ # define LIBID3TAG_UTIL_H
+ 
+ # include "id3tag.h"
+-
++#pragma GCC visibility push(hidden)
+ id3_length_t id3_util_unsynchronise(id3_byte_t *, id3_length_t);
+ id3_length_t id3_util_deunsynchronise(id3_byte_t *, id3_length_t);
+ 
+@@ -31,5 +31,5 @@ id3_byte_t *id3_util_compress(id3_byte_t
+ 			      id3_length_t *);
+ id3_byte_t *id3_util_decompress(id3_byte_t const *, id3_length_t,
+ 				id3_length_t);
+-
++#pragma GCC visibility pop
+ # endif
+--- Makefile.am.orig
++++ Makefile.am
+@@ -93,7 +93,7 @@ EXTRA_libid3tag_la_SOURCES =  \
+ 			debug.c debug.h
+ 
+ libid3tag_la_LIBADD  =  -lz
+-libid3tag_la_LDFLAGS =	-version-info $(version_info)
++libid3tag_la_LDFLAGS =	-no-undefined -version-info $(version_info)
+ 
+ BUILT_SOURCES =		frametype.c compat.c genre.dat
+ 

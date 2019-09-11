@@ -1,0 +1,1059 @@
+-------------------------------------------------------------------
+Sun Jun 16 20:08:51 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add 0001-Add-postgresql-include-location-provided-by-openSUSE.patch in
+  order to fix missing postgresql include path.
+
+-------------------------------------------------------------------
+Mon Feb 11 13:02:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups.
+
+-------------------------------------------------------------------
+Wed Jan 30 20:47:37 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.40.0
+  * Added SMSD configuration option RetryTimeout.
+  * Removed non configurable sleep after failed message send.
+  * SMSD now tries to store whole decoded text for concatenated
+    messages in the first entry in database.
+  * Improved compatibility with Sierra SL8084TR.
+  * Added support for delivery reports stored in SR memory.
+  * Configure CNMI parameters for AT driver.
+
+- Create dedicated subpackage for bash-completion
+
+- Specfile cleanup
+  * Removed all stuff that is not necessary for building on modern
+    SUSE systems
+  * Use cmake macros
+  * Use pkg-config style dependencies
+  * Use https for URLs
+  * Run spec-cleaner
+- Add patch:
+  * 0001-Enable-fPIE-pie.patch
+
+-------------------------------------------------------------------
+Sun Jan  7 10:33:11 UTC 2018 - ecsos@opensuse.org
+
+- Update to 1.39.0
+  * Fixed answering call in AT module.
+  * Improved support for Huawei E392 and E3131.
+  * Fixed compatibility of binaries with Windows XP and 2003.
+  * Improved support for ZTE MF667.
+  * Updated list of GSM networks and countries.
+- Update to 1.38.5
+  * Added SMS_1_REFERENCE to SMSD run on receive environment
+  * Improved logging of run scripts in SMSD
+  * Improved support for Huawei E1780 and E1552.
+  * Allow 0 for setuid/setgid in SMSD.
+  * Added RunOnIncomingCall to SMSD.
+  * Fixed SQL error when retry of multipart message
+  * Added status code column
+  * Fixed some SQL queries for Access and Oracle databases.
+  * Add option to prefer GSM charset for USSD.
+  * Sanitize international numbers stored in the database to always start with +.
+  * Improved support for Telit devices.
+  * Added USSD support to SMSD.
+  * Fixed call hangup in SMSD with some modems.
+  * Fixed decoding USSD response with some modems.
+
+-------------------------------------------------------------------
+Thu Oct 26 12:05:38 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package systemd service on suse_version >= 1330:
+  depending on the dep chain, systemd is already detected (and
+  causes build failures for unpackaged files).
+
+-------------------------------------------------------------------
+Mon Sep 25 06:21:12 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.38.4
+  * Improved support for Huawei E3531 and E1756.
+
+-------------------------------------------------------------------
+Sun Jul 30 10:40:44 UTC 2017 - meissner@suse.com
+
+- forcefully enable PIE as automatism does not trigger.
+
+-------------------------------------------------------------------
+Sat Jun 17 12:27:53 UTC 2017 - ecsos@opensuse.org
+
+- Update to 1.38.3
+  * Improved support for ZTE MF626.
+  * Fixed USSD handling with longer codes.
+  * Increased default value for StatusFrequency.
+  * Improved SMSD response on signals.
+  * Improved SMSD throughput on big queue.
+  * Improved SMSD compatibility with Microsoft SQL Server.
+- Update to 1.38.2
+  * Improved support for Huawei K3765, E150 and E372.
+  * Fixed decoding of unicode surrogates at message boundary.
+  * Environment variable PHONE_ID for external program.
+  * SMS compatibility with devices following old version of GSM 03.38.
+  * Unicode is now preferred when handling USSD.
+  * Improved decoding of MMS indication SMS.
+- Update to 1.38.1
+  * Fixed sending SMS to numbers starting with 000.
+  * Fixed parsing of vcalendar files with VALUE=DATE-TIME.
+  * Fixed compatibility with D-Link dwm-157.
+  * Updated list of GSM countries and networks.
+- rebase patch gramps-remove-gplv3-files.patch because of build
+  error.
+
+-------------------------------------------------------------------
+Fri Dec 16 18:00:41 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.38.0
+  * MySQL script for SMSD is compatible with strict mode.
+  * Fixed USSD responses for some AT modems.
+  * Fixed parsing network status for some modems (eg. Quectel UC15).
+  * Fixed handling of emojis and other Unicode chars from supplementary plan.
+  * Fixed compilation with C90 compiler.
+
+-------------------------------------------------------------------
+Fri Nov 25 21:58:46 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.37.91
+  * Changed version of the shared library.
+  * Improved support for ZTE MF100.
+  * Ignore unsolicited +CLCC: reply.
+  * Correctly report when some SMSD SQL backend is not compiled in.
+  * Fix build of MySQL backend on Linux.
+- Update to 1.37.90
+  * Improved support Huawei K3770.
+  * API changes in some parameter types.
+  * Fixed various Windows compilation issues.
+  * Fixed several resource leaks.
+  * Create outbox SMS atomically in FILES backend.
+  * Removed getlocation command as we no longer fit into their usage policy.
+  * Fixed call diverts on TP-LINK MA260.
+  * Initial support for Oracle database.
+  * Removed unused daemons, pbk and pbk_groups tables from the SMSD schema.
+  * SMSD outbox entries now can have priority set in the database.
+  * Added SIM IMSI to the SMSD status table.
+  * Added CheckNetwork directive.
+  * SMSD attempts to power on radio if disabled.
+  * Fixed processing of AT unsolicited responses in some cases.
+  * Fixed parsing USSD responses from some devices.
+
+-------------------------------------------------------------------
+Sat May 28 10:12:45 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.37.3
+  * Improved support for Huawei E398.
+  * Improved support for Huawei/Vodafone K4505.
+  * Fixed possible crash if SMSD used in library.
+  * Improved support for Huawei E180.
+- Update to 1.37.2
+  * Fixed compilation of SMSD.
+- Update to 1.37.1
+  * Properly report errors in HEX encoded strings from SMSD SQL backends.
+  * Configurable SMSD table names.
+  * Improved support for Huawei E303.
+  * Improved support for Vodafone K4511.
+  * Improved support for Telit M2M modules.
+  
+-------------------------------------------------------------------
+Thu Feb 18 00:28:11 UTC 2016 - stian@viskjer.net
+
+- Update to 1.37.0:
+  * Improved compatibility with ZTE MF190.
+  * Improved compatibility with Huawei E1750.
+  * Improved compatibility with Huawei E1752.
+  * Increased detail of reported errors from SMSD.
+
+-------------------------------------------------------------------
+Fri Aug 28 08:04:21 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.36.5:
+  * Properly use timezones with SQLite in SMSD.
+  * Improve support for Huawei E1752.
+  * Fixed compilation on distros with old Glib.
+  * Use advisory locking to prevent two Gammu instances share one device.
+  * Include child process stdout and stderr in SMSD logs to ease debugging.
+  * Fix string quoting with ODBC driver.
+  * Added RunOnSent option to SMSD.
+  * Store message reference in outbox in files SMSD.
+  * Improved C API documentation in manual.
+  * Updated list of GSM country codes and networks.
+  * Fixed bash completition install path (Ville Skyttä).
+  * Better logging of delivery report failures in SMSD.
+  * Improved support for Huawei E3372.
+  * Fixed compilation using MSVC.
+  * Fix siemenssatnetmon (Daniel Glöckner).
+  * Documentation improvements.
+  * Fixed smsd startup with non existing folders.
+  * Fixed possible stack overflows on Windows.
+  * Compatibility with libdbi from git.
+  * Fix siemenssatnetmon (Daniel Glöckner).
+  * Fixed reconnecting to SQL server.
+  * Don't split a surrogate pair between message segments (David Brown).
+- Remove patches merged upstream:
+  - Compatibility-with-libdbi-from-git.patch
+  - gammu-smsd.lsb.patch
+- Enable testsuite
+- Clarify dependency on newer CMake
+
+-------------------------------------------------------------------
+Wed Apr 15 08:06:34 UTC 2015 - mcihar@suse.cz
+
+- Fix compatibility with libdbi snapshot from Git we are using
+  (Compatibility-with-libdbi-from-git.patch)
+
+-------------------------------------------------------------------
+Tue Apr 14 08:58:20 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.36.0:
+  * The python-gammu module is now shipped separately.
+  * Removed usage of __TIME__ and __DATE__ macros in codebase.
+  * Fixed encoding of special chars to iCalendar format.
+  * Fixed decoding of priority from vTODO.
+  * Avoid infinite loops with ignored messages.
+  * Improved stability of checking phone SMS memory.
+  * Fixed parsing of some backup files.
+- Adjusted Source URL
+- Python module is now shipped separately
+- No more need for fake build date
+
+-------------------------------------------------------------------
+Mon Mar  2 15:01:40 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.35.0:
+  * Fixed encoding of UTF-8 for higher code points.
+  * Improved provided udev rules.
+  * Fixed possible lock while getting network status in SMSD.
+  * Various localization updates.
+
+-------------------------------------------------------------------
+Tue Dec 30 09:56:31 UTC 2014 - ecsos@opensuse.org
+
+- Update to 1.34.0:
+  * Add phone power ON/OFF function.
+  * Removed deprecated Python modules gammu.Data and gammu.Worker.
+  * Store network name and code in SMSD tables.
+  * Fixed build with recent clang compiler.
+  * Fixed several possible issues found by Coverity scan.
+  * Fixed possible crash on SMSD startup.
+  * Fixed decoding unicode SMS messages.
+  * Added identification for several Nokia phones.
+  * Fixed compilation issues on various platforms.
+  * SMSD now honors loglevel for all logging targets.
+  * SMSD can automatically hangup incoming calls.
+  * Correctly detect Network errors.
+
+-------------------------------------------------------------------
+Sun Jul  7 20:03:45 UTC 2013 - asterios.dramis@gmail.com
+
+- Updated to 1.33.0:
+  * Various translation improvements.
+  * Improved support for Huawei E173, thanks to Gautier Minster.
+  * Fixed buffer overflow in MMS decoder.
+  * Fixed several memory leaks.
+  * Improved compatibility with Qualcomm devices (bug #1654).
+  * Various documentation improvements.
+  * Updated version of sms-gammu2android, thanks to Shadow Walker.
+  * Fixed compilation on Mac OS X, thanks to Soren Jorvang.
+  * Fixed SMSD with CheckSecurity = 0 (bug #1672).
+- Require libGammu and libgsmsd in gammu-devel package instead of gammu.
+
+-------------------------------------------------------------------
+Fri Aug 10 09:27:19 UTC 2012 - idonmez@suse.com
+
+- Remove GPL-3.0 licensed files ( bnc#775397 ) 
+
+-------------------------------------------------------------------
+Tue Jul 31 12:25:03 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated to 1.32.0:
+  * Fixed auto installation of EventLog registry.
+  * Improved support for Arduino GPRS shield (bug #1592).
+  * Fixed communication with Cross PD1101wi (bug #1617).
+  * Ignore another unknown block in Nokia phonebook (bug #1614).
+  * Do not encode number when setting up diverts.
+  From 1.31.90:
+  * Improved compatibility with ES75 (bug #1586).
+  * Changed API for call diverts.
+  * Added support for call diverts in Python API.
+  * AT backend supports manipulating with call diverts.
+  * Added support for suspending/resuming SMSD using SIGUSR1/2.
+  * Changed protocol for S60 applet.
+  * S60 applet now handles SMS with new lines.
+  * Improved support for Windows Event Log.
+- Added xz as build requirement for openSUSE <= 12.1 (needed to unpack the
+  package sources).
+- Don't install the init script "gammu-smsd" (doesn't work correctly out of the
+  box). Instead install it in the documentation.
+- Build the package manual (html) for openSUSE > 11.4 (fails for <= 11.4 due to
+  python-sphinx). Added gnu-free-fonts, graphviz, graphviz-gd and python-Sphinx
+  build requirements for this. Added it in a separate subpackage (gammu-doc) to
+  fix rpmlint warning "package-with-huge-docs".
+
+-------------------------------------------------------------------
+Fri Dec 23 18:45:46 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 1.31.0:
+  * Fixed compilation with latest libusb.
+  * Improved error handling in SQL backend of SMSD.
+  * SMSD documentation improvements.
+  * Indonesian translation updates.
+  From 1.30.92:
+  * Improved vCard parser to better handle location for various fields, thanks
+    to Vladimir Serbinenko for initial patch.
+  * Fixed reading calls from some Nokia phones (bug #1553).
+  * Improved text mode SMS parsing in AT driver, thanks to Vladimir Serbinenko.
+  * Use glib's MD5 implementation if available.
+  From 1.30.91:
+  * Improved documentation for configuring Gammu.
+  * Fixed parsing birthday from vCard in some cases.
+  * Added option not to use configured logging in SMSD inject and monitor (bug
+    #1539).
+  * Added SMSD configuration LogFacility (bug #1539).
+  * Fixed reading of data from OBEX phones (LP#891803).
+  * Fixed double reply detection (bug #1544).
+  * Increase maximal number of caller groups (bug #1541).
+  * Cancel all calls on maketerminated call if we don't get call ID.
+  * Fixed SMSC handling in some cases in SMSD (bug #1547).
+  From 1.30.90:
+  * Various documentation improvements.
+  * Detect Alcatel style reply on CPIN response (bug #1502).
+  * Fix build on some Win32 systems (bug #1496).
+  * Make jadmaker handle names with spaces (Raphaël Droz).
+  * Display 8-bit messages in hex (Nicolas Pitre).
+  * Do not use AT+CUSD=2 on some phones (bug #1508).
+  * Fixed gammu-monitor with Windows service (bug #1515).
+  * Cleanup of contrib directory.
+  * Better support for Samsung AT phones (bug #1513).
+  * Fixed handling of MMS notification SMSes (bug #1530).
+  * Fixed CPIN reply handling (bug #1532).
+  * SMSD checks for PIN status just after connect (bug #1532).
+  * Fixed various MSVC compilation issues.
+
+-------------------------------------------------------------------
+Sat Jul 23 19:06:35 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 1.30.0:
+  * Improved SMSD logging of configuration settings.
+  * Fix possible crash in fbus2 driver.
+  * Fix possible crash of ODBC driver on Windows (bug #1482).
+  * Fixed usage of dbi plugins from Python module.
+  From 1.29.93:
+  * Properly initialize atobex driver with Sony-Ericsson phones.
+  * Updated list of country and network codes.
+  * Escape fields in SQL queries (bug#1415).
+  * Escape fields in PostgreSQL SQL script (bug#1415).
+  * Default to GSM encoding for text messages in SQL backend for SMSD.
+  * Add option to override which SQL dialect to use in SMSD (bug #1427).
+  * Improved m-obex protocol support, thanks to Vladimir Serbinenko.
+  * Various fixes for Samsung B2100, thanks to Vladimir Serbinenko.
+  * Fix check for AT+CPROT support (bug #1438).
+  * Fix memory leak in s60 protocol driver (bug #1441).
+  * Reverted change to SignalStrength because of SQL escaping we have now
+   (bug #1380).
+  * Improved vCard parser to handle vCards from Gmail.
+  * Fixed LDIF parser to cope with multiple LDIF in single file.
+  From 1.29.92:
+  * Documentation improvements and fixes.
+  * Saner error handling in Windows serial driver.
+  * Cleanup in SMSD internals.
+  * Added ODBC driver to SMSD.
+  From 1.29.91:
+  * Added screenshot function for Sony-Ericssonn phones (Márton Németh).
+  * Fixed parsing of some Nokia SMSes (bug #1402).
+  * Properly report error on deleting non deletable entries (bug #1396).
+  * Slower switch from m-obex to AT (bug #1382).
+  * Faster initialization for AT phones without enabled echo.
+  From 1.29.90:
+  * Fix detection of MySQL libraries (bug #1370).
+  * Changed default connection settings to at and ttyACM0 (bug #1078).
+  * Add new API call to abort existing operation (bug #1155).
+  * Change database structure to avoid using reserved word Signal (bug #1380).
+  * Possibility to limit time of day for SMS in SMSD (bug #1203).
+  * Enforce limits on SMS payload length.
+  * Made GSM_SMSCounter public (bug #1356).
+  * Support for S60 phones using Series60 applet (bug #423).
+  * Do not fail on 0x7b field in Nokia 3600s phonebook (bug #1385).
+  * Disabled two stage probing for most protocols.
+  * Fixed saving of SMS backups (bug #1392).
+  * Screenshot functionality for DCT4 phones (bug #1390).
+- Spec file updates:
+  * Remove some not needed conditionals for openSUSE BuildRequires:.
+  * Added unixODBC-devel in BuildRequires:.
+  * Better fix for rpmlint warning "file-contains-date-and-time".
+  * Fixed rpmlint warning "doc-file-dependency".
+  * Compile package with RPM_OPT_FLAGS.
+  * Fixed locales removal if suse version is not set.
+  * Minor other updates.
+- Modified gammu-smsd.lsb.patch to fix also the "init-script-runlevel-4"
+  rpmlint warning.
+
+-------------------------------------------------------------------
+Fri Mar 18 20:03:02 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Use UTC time/date for "Remove build time references" fix.
+  * Don't clean buildroot in %install section.
+  * Change permissions of gammu-smsd in %install section.
+  * Add rc-symlink for gammu-smsd.
+  * Fix for empty %postun check on non-SUSE distros.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Fri Mar 11 20:13:17 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 1.29.0:
+  * Lots of changes (see ChangeLog).
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Lots of updates based on spec file from the package. Most important are:
+    + Added gammu-smsd package.
+    + Added libGammu7 package.
+    + Added libgsmsd7 package.
+  * Updates in Url: and Group:.
+  * Updates in Buildrequires:, Requires:, %build and %install sections.
+  * Removed support for openSUSE < 1110.
+  * Fixed rpmlint warning "file-contains-date-and-time".
+- Added a patch to fix an rpmlint warning "unknown-lsb-keyword" for the init
+  script "gammu-smsd".
+
+-------------------------------------------------------------------
+Mon Apr 12 06:24:03 UTC 2010 - prusnak@suse.cz
+
+- add python-pybluez to requires of python subpackage
+
+-------------------------------------------------------------------
+Wed Aug 19 17:56:04 CEST 2009 - prusnak@suse.cz
+
+- disable testsuite for now (bug in memory allocation)
+
+-------------------------------------------------------------------
+Fri Jul 10 16:47:37 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.25.0
+  * Retry on timeout of usb transfer (bug #940).
+  * Disable AT OBEX for Motorola PEBL U6 (bug #939).
+  * Disable AT OBEX for Samsung J700 (bug #948).
+  * Empty memory entry has length 0 (bug #947).
+  * Handle some more fields from Nokia phonebook (bug #946), thanks to Will Sowerbutts.
+  * Fix distutils build (bug #916).
+  * Detect when phone does not support ATE1 (bug #918).
+  * Do not use OBEX on Motorola L7 (bug #912).
+  * Reinclude full SMS text in comments in backup (bug #905).
+  * Disable AT OBEX for Samsung J750 and J700 (bug #856).
+  * Avoid shadowing C++ bool definition (bug #920).
+  * Do not disable CLIP for all SE phones.
+  * Add ID for Nokia 1209.
+  * Catch busy error from Nokia phones (bug #932, thanks to Walter Doekes).
+  * Fix code problems caught by GCC 4.5.
+  * Compile static libraries with -fPIC (they might be later linked
+      into shared ones) (bug #909).
+  * Handle own number error code in 6510 driver (bug #910).
+  * Add ID for Nokia 5220 (bug #910).
+  * Handle SMSC error code in 6510 driver (bug #910).
+  * Disable gcc warnings about non literal format strings (bug #901).
+  * Add more fuzzy logic to detect bad encoding from phone (bug #874).
+  * Add ID for Nokia 7500 and Nokia 7210s.
+  * Improve searching for Bluetooth stack on OS X.
+  * Fix ctype compile time warnings on NetBSD (bug #908).
+  * Nokia 3110c has SMS on filesystem (bug #904).
+  * Add ID for Nokia 5130 (bug #911).
+  * Faster reading of Nokia filesystem.
+  * New PDU decoder which properly parses PDU data.
+  * AT driver uses new PDU decoder.
+  * 6510 driver uses new PDU decoder and understands most formats of
+      filesystem Nokia SMS messages (bug #911).
+  * Fix checking for MPBR (bug #873).
+  * Fix reading of calls with wrong timestamp (bug #872).
+  * Increase timeout for IrDA phonet (bug #867).
+  * Better detect some weird phone states (bug #866).
+  * Fix handling of caller group in Python bindings (bug #870).
+  * Correctly detect empty entries from Motorola.
+  * Better error reporting from at-charset test.
+  * smsd-inject now shows ID of injected message.
+  * Fix decoding of date in Nokia phonebooks (bug #876).
+  * Fix detection of SMS message memories in AT (bug #875).
+  * Improve documentation for savefile (bug #893).
+  * Add stricter check for DBI version (bug #894).
+
+-------------------------------------------------------------------
+Tue May  5 12:20:17 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.24.0
+  * Better detect Bluetooth ports on Samsung (bug #862).
+  * Ignore security errors on AT init (needed for Huawei).
+  * LUID reading requires IrMC profile.
+  * Locations for GlobeTrotter 3G+ start at 0 (bug #847).
+  * More verbose logging of delivery reports (bug #824).
+  * Increase default DeliveryReportDelay (bug #824).
+  * Fixed handling of SMS locations (bug #853).
+  * PostgreSQL backend now supports IDs for RunOnReceive.
+  * RunOnReceive is started through shell not directly.
+  * Fixed reading of empty phonebook entries from Samsung (bug #809).
+  * Reread messages if CMGL shows them corrupted (bug #691).
+  * Added support for vNote files.
+  * Properly detect Nokia 6220 Classic (bug #840).
+  * Fix writing of phonebook on Motorola V8 (bug #827).
+  * Detect daemon on FreeBSD.
+  * Ignore charset errors on AT init as some phones might need PIN.
+  * Optionally use MT for phone phonebook for AT phones.
+  * Added support for quick dial numbers on AT phones.
+  * Fixed decoding of Samsung memory entries.
+  * Properly handle corrupted messages from Nokia phones (bug #811).
+  * Fix parsing of calls from Alcatel C701 (bug #831).
+  * Fixed handling of error states with -len and -autolen parameters.
+  * Fixed possible crash in DBI engine.
+  * PostgreSQL engine properly uses sequences instead of reinventing.
+  * MySQL engine properly uses auto increments instead of reinventing.
+  * Fix escaping of field name in PostgreSQL engine.
+  * Better SMSD files logging.
+  * Added testing of SMSD files engine.
+  * Increase timeout for AT settings SIM card SMS storage.
+  * Fixed date formatting in PostgreSQL SMSD service.
+  * Add option to install without documentation.
+  * Add -textutf8 option for TEXT sms.
+  * Fix crash when some lines in config are too long.
+  * Make smsdrc example better looking by removing obsolete docs.
+  * Make dku2 connection types work on Linux (alias to fbususb).
+  * Better calculation of signal percent.
+  * Fixed getting of memory status for some Nokias (bug #836).
+
+-------------------------------------------------------------------
+Wed Mar 18 15:49:34 CET 2009 - prusnak@suse.cz
+
+- updated to 1.23.1
+  * Documentation clarification.
+  * Translations update.
+  * Actually install gammu-smsd-monitor.
+  * Fix recording received messages count for MySQL.
+  * Fix SMS location handling for Huawei E160 (bug #825).
+  * Do not probe for MPBR support all the time.
+- new spec taken from home:Nijel (upstream) project
+
+-------------------------------------------------------------------
+Mon Sep 15 17:10:36 CEST 2008 - dmueller@suse.de
+
+- adjust buildrequires
+
+-------------------------------------------------------------------
+Tue Sep  9 18:27:51 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.20.0
+  * Do not crash on EMS messages with no text (bug #612).
+  * Fixed reading of OBEX files (bug #614).
+  * Fixed decoding of Nokia messages (bug #527).
+
+-------------------------------------------------------------------
+Tue Mar 11 14:40:17 CET 2008 - prusnak@suse.cz
+
+- updated to 1.19.0
+  * Add option to disable compiled in protection
+  * Fixed detection of PostgreSQL
+  * Improve debug messages when connecting to phone
+  * Fixed handling of some charsets in AT engine
+  * Identify more Nokia phones
+  * Fixed regression with DKU2 cables on Windows
+  * Better compatibility with iCalendar files
+  * Do not link with irprops.lib on Windows
+  * Various MSVC compilation fixes
+  * Improved AT model parsing and added tests
+  * Fixed possible crash in reading SMS from AT phones
+  * Proper fall back to automatic model when user enters wrong one
+  * Added identification of several phones
+  * Fixed reading of messages from AT phones without ME memory
+  * Improve charset detection on Motorola phones
+
+-------------------------------------------------------------------
+Thu Jan 31 14:44:50 CET 2008 - prusnak@suse.cz
+
+- updated to 1.18.0
+  * Fixed decoding of an empty SMS.
+  * Fixed some mistakes in API documentation.
+  * Fixed compilation under MS Visual C++ Express.
+  * Various small fixes if AT driver.
+  * Add simple shell script to generate JAD file from JAR.
+  * Added support for adding memory entries to 6510.
+  * Phone features now can be defined in configuration, so there is no
+    need to modify common/gsmphones.c for testing different settings.
+  * Config file loading behaves more consistent in lookup. In some
+    cases it can now find different configuration file.
+  * Fixed crash when there are too many messages (bug #466).
+  * Fixed crash when printing messages on Windows (bug #476).
+  * Do not ask phone for IMEI so often (bug #480).
+  * No need to set LD_LIBRARY_PATH for tests.
+  * Properly wait for SMSD child processes (bug #486).
+
+-------------------------------------------------------------------
+Tue Jan  8 18:07:06 CET 2008 - prusnak@suse.cz
+
+- updated to 1.17.0
+  * Fixed reading of messages from AT phones using CMGL
+
+-------------------------------------------------------------------
+Tue Dec 18 12:06:48 CET 2007 - prusnak@suse.cz
+
+- updated to 1.16.0
+  * Added identification of some Sony-Ericsson and Sharp phones.
+  * Increased maximal number of entries per contact.
+  * Fixed various compile time warnings.
+  * Improved MinGW crosscompilation.
+  * Localizations update.
+  * Fixed detection of first free memory location if memory is empty 
+    (bug #434).
+  * Fixed mysql.h include path (bug #441).
+  * Fixed decoding of one char SMS (bug #442).
+  * Detect Nokia 3109c (thanks to David Meier).
+  * Automatically find MinGW compiler and allow overrides (bug #438).
+  * Fixed parsing of some memory entries (bug #450).
+  * Fixed decoding of some corner case SMS (bug #447).
+  * Phones capable of switching to OBEX mode from AT have it now
+    automatically enabled. Please report problems with this.
+
+-------------------------------------------------------------------
+Tue Nov 20 15:22:08 CET 2007 - prusnak@suse.cz
+
+- updated to 1.15.0
+  * Better parse vCard version 3 (bug #434).
+  * Configurable MySQL socket path.
+  * More extensive SMS PDU parser tests.
+  * Experimental support for OBEX in Siemens.
+  * Support for listing messages using CMGL (bug #408).
+  * Parse T630 reply on CPBR (bug #420).
+  * Fix buffer overflows in PDU decoder.
+  * Properly catch invalid PDU data received from phone.
+  * Handle more OBEX error codes.
+  * Handle vCards from Yahoo and Evolution (bug #424).
+
+-------------------------------------------------------------------
+Thu Nov  8 10:55:59 CET 2007 - prusnak@suse.cz
+
+- update to 1.14.0
+  * Fallback to empty model if user specifies wrong.
+  * Fixed wrong PDU encoding (bug #412).
+  * Provide API for cleaning SMS backup structure.
+  * Added testing of SMS PDU encoding.
+  * Fixes OBEX crash (Debian bug #446923).
+  * Correctly check various return values (bug #409).
+  * Fixed several bugs in vCard decoder.
+  * Removed UCS decoding heuristics, it can not work in all cases.
+  * Provide at least some basic information from dumb AT phones.
+  * SMSD now logs also error descriptions.
+  * SMSD can be configured not to check for security status.
+  * Correctly handle hard deletes on IrMC (bug #414).
+  * GSM_ReadConfig now returns GSM_Error instead of just bool.
+  * Many functions now use size_t for passing size values.
+  * Backups API now rather accepts format than guessing by filename.
+  * Increased soname due to API/ABI changes.
+  * Fixed crash in wrong config handling (Debian bug #446781).
+  * Initial support for Motorola SMS implementation (bug #408).
+  * Automatically fall back to AT commands when OBEX does not work.
+  * Initial support for IrMC index access.
+  * RunOnReceive is now also supported on Windows.
+  * Handle correctly case when memory is full (OBEX) (bug #404).
+  * Fixed handling of errors when saving SMS (bug #396).
+  * Fixed number type detection.
+  * Added support for Nokia 6070, thanks to Lúcio Corrêa.
+  * Added flag -nopower to connection to handle cables with different
+    handling of DTR/RTS signals.
+  * Fixed reading of empty calendar/todo/contacts/notes over OBEX
+    (thanks to Gianni Ceccarelli).
+  * Fixed overwriting of Java applications in Nokia phones (thanks to
+    Martin Thierer, bug 382).
+  * Fixed compilation with older PostgreSQL libraries.
+  * Handle correcly internal phone errors in OBEX module.
+  * Fixed crash on invalid config file (Debian bug #444046).
+  * Better report errors when using default configuration.
+  * Fix several buffer overflows in 6510 (thanks to Tobias Sunderdiek
+    for debugging this).
+  * Fixed crash on decoding messages with special numbering plans with
+    long numbers (bug 281).
+  * Command nokiaaddfile can now either keep or delete user data on
+    uploading new application (thanks to Martin Thierer, bug 385).
+  * Fixed parsing of date/time reply from some broken AT phones.
+  * Added support for Option GlobeTrotter.
+  * Handle correctly when phone automatically saves message to
+    different memory than we ask.
+  * Fixed buffer overflows, thanks to Gentoo folks for noticing.
+  * Detect when phone is waiting for phone code.
+  * Added experimental support for Bluetooth on FreeBSD.
+  * SMSD can execute programs on message receiving (thanks to zaf).
+  * Allow to define Bluetooth channel in configuration.
+
+-------------------------------------------------------------------
+Tue Sep 25 12:20:16 CEST 2007 - prusnak@suse.cz
+
+- update to 1.13.0
+  * Fixed several crashes of 6510 driver.
+  * Sony-Ericsson module renamed to AT + OBEX as it better describes
+    what it does.
+  * Initial support for Sharp GX Series phones.
+  * Added deliveryreportdelay parameter to SMSD to allow later
+    received delivery reports to be correctly detected.
+  * Fixed calculation of OBEX file names, could lead to crash on OBEX
+    upload (Debian bug #435875).
+  * Fixed time stamp receiving in SMSD.
+  * Huge gammu/gammu.c split to smaller files.
+  * Lot of fixes to allow compilation using MSVC + CMake.
+  * Support for push to talk ids (thanks to Pavel Kostromitinov).
+  * Fixed PPM parsing (thanks to Pavel Kostromitinov).
+  * Added simple bash completion script.
+  * Added some compile time testing.
+  * Improved vCard parsing.
+  * Fix wint_t and wchar_t detection.
+  * Introduced more generic parsing of AT replies, please report any
+    regressions with it!
+  * Improved support for Samsung phones.
+  * Support for reading network name from AT phones.
+  * Add deletememory command line.
+  * Experimental support for notes over OBEX.
+  * Man page is now partially autogenerated from online help.
+  * Elson compatibility, thanks to Bernd Feige.
+  * Fix UCS detection, thanks to Bernd Feige.
+  * Initial support for Motorola phones (bug #15 and #310).
+  * Avoid work on uninitialized buffer when checking firmware.
+  * Use HTTP/1.1 requests for getting firmware and version info.
+  * Improve charset handling for AT phones.
+  * Fix crash on broken CPMS response.
+  * Fix reading of memory not starting from 1 (thanks to drgerafe).
+  * Fix pressing of keys on phones who do not support IRA charset.
+
+-------------------------------------------------------------------
+Mon Sep  3 17:26:20 CEST 2007 - schwab@suse.de
+
+- Work around broken cmake.
+
+-------------------------------------------------------------------
+Tue Jun 19 10:26:58 CEST 2007 - prusnak@suse.cz
+
+- update to 1.12.0
+  * Support for some new Nokia fields
+  * Made SMSD mode case insensitive
+  * Fix iCalendar export typo
+  * Better compatibility with Sharp phones
+  * Added --features to show compiled in features
+  * Added support for work address
+  * Properly report uploaded file size when using OBEX
+  * Fix HEX charset encoding
+  * Improve vCard address handling
+  * Support for iso charsets in AT phone when iconv is available
+  * Fix restoring of phonebook over OBEX
+  * addnew accepts -yes parameter
+  * There is no error on most fields when storing to vCard
+  * Fix detecting length of input
+  * Added dku5fbus-nodtr and fbus-nodtr variants, which do not care
+    about DTR/RTS signals
+  * Do not delete phonebook entries when there are none
+
+-------------------------------------------------------------------
+Tue May 15 11:06:23 CEST 2007 - prusnak@suse.cz
+
+- update to 1.11.0
+  * Correctly encode text in iCalendar
+  * Correctly encode recurrance in iCalendar
+  * Read last modified field from vCalendar
+  * Support for last modified field from vCard
+  * Properly handle vCard style continuation
+  * Improved gnapplet and support for it
+  * Add flag to SMS folders whether it is outbox
+  * Support for last modified field in vCalendar
+  * Use gettext for translation
+  * --clearall also attempts to delete calls
+  * Support for call notifications on AT phones
+  * Support for batch mode - you can script gammu
+  * Gammu commands are now accepted also without leading --
+  * Detect more Nokia phones (5300, 6300, 8800)
+  * New connection ark3116fbus for use with ark3116 module
+  * Native OBEX connections (blueobex and irdaobex) should work also with unknown models
+  * RF searching now better detects OBEX channels
+  * Simplified searching of channels using Bluez stack
+  * Make USSD work with AT phones
+  * Fix setting date on Siemens MC75
+  * Avoid corrupting vCard when some fields are empty
+  * Properly handle OBEX error codes
+  * Updated shell script gammu-config to generate configuration
+  * Install gammu-config script to ease generating configuration
+  * Use unsigned char to avoid trimming at 60 chars
+  * Detect Motorola specific error while reading SMSes
+  * Fix OBEX listing to behave according to specs
+  * Fix crash on invalid SMS reply from phone
+  * Fix USB serial devices with Linux kernel 2.6.21
+  * Tell user that he should enter text for SMS
+  * Cleaned up transatable strings
+  * Improve networks listing
+  * Allow networks to be listed by country code
+  * Fix decoding of new style address records in Nokia phones
+  * Reorganised documentation a bit
+  * Use correct format strings for IrDA debug messages
+  * Identify Alcatel One Touch 55x
+  * Improve detection of OBEX support
+  * Work with AT phones which can not write SMS to ME
+  * Increse limits for SMS backups (this requires dynamic allocation)
+  * Detect Motorola Bluetooth port
+  * Fixup AT driver to work with Samsung SGH X160
+  * Adjust vCalendar entries from SE phones on DST
+  * Fix updating of delivery report date in SMSD
+  * Fix crash when no config exists
+  * MakeTerminatedCall can be now called more times in batch mode
+  * Fixed crash on LMB export/import
+  * Correct version in iCalendar export/import
+  * Fixed devel files installation using CMake
+  * Fixed decoding of call date
+  * Fixed decoding of date from backup
+  * Backup saves and restores numbers as same type
+  * Use standard libc functions for string comparsion if available
+  * Allow compilation with MySQL and without PGSQL
+  * Fixed format strings for size_t
+  * Fixed encoding of name for Nokia phones
+  * Fixed connecting to PostgreSQL with empty password
+  * Fixed infinite loop in --monitor
+  * Fixed behaviour on Bluetooth disconnect
+  * Fixed handling of files with special chars on OBEX
+  * OBEX driver correctly detects models
+  * Fix format strnings for 64-bit architectures
+  * Cleanup documentation structure
+  * Moved locales out of documentation
+  * Fixes locales and documentaion install in CMake
+  * Fixed retrieving messages with some phones who index them from zero like CG79
+  * Ignore error when there is too much members in group in phone
+  * Handle another error while reading 6510 phonebook
+  * Fix international number handling in vCard
+
+-------------------------------------------------------------------
+Tue Feb 27 11:18:54 CET 2007 - prusnak@suse.cz
+
+- update to 1.10.0
+  * added vCard and vCalendar support
+  * added basic Motorola support
+  * added support for location of alarm
+  * added support for sending file to phone
+  * improved battery reporting
+  * various bugfixes
+- dropped obsoleted patches:
+  * gammu-uninitialized.diff (included in update)
+
+-------------------------------------------------------------------
+Tue Nov 28 12:57:36 CET 2006 - prusnak@suse.cz
+
+- update to 1.09.00
+
+-------------------------------------------------------------------
+Tue Oct 17 01:56:26 CEST 2006 - ro@suse.de
+
+- update to 1.08.00
+  * many bugfixes 
+
+-------------------------------------------------------------------
+Thu Jul 27 15:37:38 CEST 2006 - mjancar@suse.cz
+
+- update to 1.07.00
+  * lots of fixes and enhancements
+  * reports work OK now (they were wrong after updating all 00000000000000
+    to 0000-00-00 00:00:00 in DB)
+  * you can use " in outgoing sms too
+  * fix for multipart sms
+  * added new CreatorID entry in DB for outbox/sentsms
+    Series 40 3.0 (N6111 now)
+  * added: filesystem support, getting call lengths from call logs,
+    getting sent SMS log ("Message recipients" from "Log" in phone menu,
+    new memory SL in Gammu)
+  * checked: calendar, notes, todo (generally OK)
+  * SMS memory (decoding SMS files from filesystem) not supported yet
+
+  * see also /usr/share/doc/packages/gammu/changelog for details
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:05 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:34:10 CET 2006 - mjancar@suse.cz
+
+- really fix use of uninitialized variable (#144165)
+
+-------------------------------------------------------------------
+Fri Jan 20 17:08:06 CET 2006 - mjancar@suse.cz
+
+- fix use of uninitialized variable (#144165)
+
+-------------------------------------------------------------------
+Thu Jan 12 19:28:04 CET 2006 - mjancar@suse.cz
+
+- update to 1.04.0
+
+-------------------------------------------------------------------
+Thu Jul 28 18:43:02 CEST 2005 - anicka@suse.cz
+
+- update to 1.02.0 
+
+-------------------------------------------------------------------
+Wed May 25 13:52:31 CEST 2005 - mcihar@suse.cz
+
+- update to 1.01.11
+
+-------------------------------------------------------------------
+Wed Apr 13 19:04:56 CEST 2005 - mcihar@suse.cz
+
+- update to 1.01.0, patch merged upstream
+
+-------------------------------------------------------------------
+Mon Apr  4 16:47:39 CEST 2005 - mcihar@suse.cz
+
+- fix compilation with GCC 4
+- fix documenation installation
+
+-------------------------------------------------------------------
+Fri Apr  1 15:40:32 CEST 2005 - mcihar@suse.cz
+
+- update to 1.00.23
+
+-------------------------------------------------------------------
+Mon Feb 14 17:53:20 CET 2005 - mcihar@suse.cz
+
+- update 1.00.04
+- 64-bit fixes merged upstream
+
+-------------------------------------------------------------------
+Wed Feb  9 14:40:15 CET 2005 - mcihar@suse.cz
+
+- update to 1.00.0
+- fix crashes on 64-bit platforms
+
+-------------------------------------------------------------------
+Mon Jan 24 11:47:34 CET 2005 - mcihar@suse.cz
+
+- update to 0.99.22
+
+-------------------------------------------------------------------
+Fri Sep 03 17:34:18 CEST 2004 - mcihar@suse.cz
+
+- update to 0.97.7
+
+-------------------------------------------------------------------
+Wed May 19 15:36:17 CEST 2004 - mcihar@suse.cz
+
+- update to 0.95.0
+
+-------------------------------------------------------------------
+Fri Mar 05 11:03:07 CET 2004 - mcihar@suse.cz
+
+- update to 0.94.0
+
+-------------------------------------------------------------------
+Fri Feb 20 09:14:21 CET 2004 - mcihar@suse.cz
+
+- update to 0.93.0
+
+-------------------------------------------------------------------
+Fri Jan 23 12:49:59 CET 2004 - mcihar@suse.cz
+
+- update to 0.92.9
+- fixed file conflict
+
+-------------------------------------------------------------------
+Mon Jan 05 11:47:43 CET 2004 - mcihar@suse.cz
+
+- update to 0.92.0
+- run ldconfig
+
+-------------------------------------------------------------------
+Tue Dec 16 14:12:00 CET 2003 - mcihar@suse.cz
+
+- update to 0.90.0
+
+-------------------------------------------------------------------
+Mon Nov 03 12:21:23 CET 2003 - mcihar@suse.cz
+
+- updated to 0.88
+- installing script for queuing smses
+
+-------------------------------------------------------------------
+Fri Oct 24 16:09:58 CEST 2003 - mcihar@suse.cz
+
+- pkgconfig files are in %_libdir
+
+-------------------------------------------------------------------
+Tue Oct 21 19:25:17 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.87
+- no root for build
+- branched devel package
+
+-------------------------------------------------------------------
+Wed Aug 06 12:31:44 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.81
+
+-------------------------------------------------------------------
+Mon Jun 23 16:38:02 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.78
+
+-------------------------------------------------------------------
+Wed May 28 16:16:07 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.76:
+    Adding files to DCT4 phones has been implemented. This feature
+    includes uploading files to Gallery, uploading Java application
+    and Java games and other. Setting the color operator and color
+    startup logos in DCT4 has been added. More options in Alcatel
+    source have been added. Some other compatibility fixes have been
+    made. Full support for MMS settings in DCT4 has been added, full
+    support for MMS indicator SMS has been added, and many small
+    corrections have been made.
+
+-------------------------------------------------------------------
+Tue May 13 12:08:44 CEST 2003 - mcihar@suse.cz
+
+- fixed file list
+
+-------------------------------------------------------------------
+Mon May 12 12:09:11 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.74:
+    * getting files from filesystem in DCT4 phones (--getfiles)
+    * added 3650, 7250 ID
+    * FULL support for Bluetooth
+    * can make backup and restore using new Unicode format of backup files.
+      No more duplicated (once in ASCII and once in coded Unicode) strings in
+      backup files with this format and no problems with national chars.
+
+-------------------------------------------------------------------
+Tue Apr 29 13:35:52 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.73 (all my patches accepted):
+    * more support for EMS
+- included configuration script
+- included wxBasic GUI (however we don't distribute wxBasic)
+
+-------------------------------------------------------------------
+Thu Apr 24 12:55:03 CEST 2003 - mcihar@suse.cz
+
+- fix Makefile to not include whole source in docs
+- better fix for bluetooth
+- fix configure to accept CFLAGS
+
+-------------------------------------------------------------------
+Wed Apr 23 13:31:01 CEST 2003 - mcihar@suse.cz
+
+- updated to 0.72
+    * better information for AT phones
+    * improved localisation support
+    * better statistics about phonebook for AT
+    * improved FM stations support
+    * polyphonic ringtones support
+    * added Alcatel BF5 (One Touch 715) support
+    * support for internal filesystem in Nokia phones
+    * supported work with bitmaps on Siemens
+    ... and many more :)
+- built with bluetooth support
+
+-------------------------------------------------------------------
+Mon Feb 10 12:40:08 CET 2003 - mcihar@suse.cz
+
+- added -fPIC to CFLAGS
+
+-------------------------------------------------------------------
+Fri Feb 07 18:26:16 CET 2003 - mcihar@suse.cz
+
+- initial version
+

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Aug 23 09:05:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-MooseX-Types-Set-Object/Changes
+
+  0.05      2015-08-16 02:08:15Z
+            - update some distribution tooling
+
+-------------------------------------------------------------------
+Mon Feb 24 08:37:48 UTC 2014 - coolo@suse.com
+
+- updated to 0.04
+       - fixed tests that now break in Moose 2.1200
+       - document the global nature of this type
+       - repository moved to https://github.com/moose/MooseX-Types-Set-Object
+
+-------------------------------------------------------------------
+Fri Apr  1 11:57:37 UTC 2011 - coolo@novell.com
+
+- initial package 0.03
+    * created by cpanspec 1.78.03
+

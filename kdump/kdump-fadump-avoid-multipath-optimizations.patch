@@ -1,0 +1,76 @@
+From: Hari Bathini <hbathini@linux.ibm.com>
+Date: Mon, 20 Aug 2018 16:11:38 +0200
+Subject: fadump: avoid multipath optimizations that break regular boot
+References: bsc#1101730
+Upstream: merged
+Git-commit: dc29a820687a3a267c56ad1b125cb670dbd194ad
+
+Since commit 9a3764178a91 ("Blacklist unneeded multipath devices")
+multipath devices that are not needed while capturing dump were
+blacklisted. This reduces the memory requirements on kdump kernel.
+But when this optimization is added to default initrd by including
+dump capturing support for FADump, it is observed to mess with the
+initialization of such blacklisted multipath devices while booting
+the production kernel. To avoid such issues, use this optimization
+only while booting a capture kernel.
+
+Signed-off-by: Hari Bathini <hbathini@linux.ibm.com>
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+---
+ init/CMakeLists.txt        |    1 +
+ init/kdump-boot.sh         |   16 ++++++++++++++++
+ init/module-setup.sh       |    1 +
+ init/setup-kdump.functions |    2 +-
+ 4 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100755 init/kdump-boot.sh
+
+--- a/init/CMakeLists.txt
++++ b/init/CMakeLists.txt
+@@ -98,6 +98,7 @@ INSTALL(
+ INSTALL(
+     FILES
+         ${CMAKE_CURRENT_SOURCE_DIR}/kdump-root.sh
++        ${CMAKE_CURRENT_SOURCE_DIR}/kdump-boot.sh
+         ${CMAKE_CURRENT_SOURCE_DIR}/module-setup.sh
+         ${CMAKE_CURRENT_SOURCE_DIR}/mount-kdump.sh
+     DESTINATION
+--- /dev/null
++++ b/init/kdump-boot.sh
+@@ -0,0 +1,16 @@
++#! /bin/sh
++# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
++# ex: ts=8 sw=4 sts=4 et filetype=sh
++
++# An Initrd with dump capturing support can boot a production kernel
++# as well (FADump). In such scenario, apply optimizations only while
++# booting the capture kernel - this is a kernel that
++#   a) has a /proc/vmcore file waiting to be saved.
++#   b) reboots after saving the dump.
++
++# apply multipath optimizations
++if [ -s /proc/vmcore ]; then
++    # Replace the multipath.conf file with the one optimized for kdump.
++    rm -f /etc/multipath.conf
++    mv /etc/multipath.conf.kdump /etc/multipath.conf
++fi
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -264,6 +264,7 @@ install() {
+     kdump_setup_files "$initdir" "$kdump_mpath_wwids"
+ 
+     inst_hook cmdline 50 "$moddir/kdump-root.sh"
++    inst_hook cmdline 50 "$moddir/kdump-boot.sh"
+     if dracut_module_included "systemd" ; then
+ 	inst_binary "$moddir/device-timeout-generator" \
+ 	    "$systemdutildir"/system-generators/kdump-device-timeout-generator
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -1179,7 +1179,7 @@ function kdump_setup_files()						   # {
+     #
+     # create modified multipath.conf
+     #
+-    kdump_modify_multipath "$mpathdevs" > "${outdir}/etc/multipath.conf"
++    kdump_modify_multipath "$mpathdevs" > "${outdir}/etc/multipath.conf.kdump"
+ 
+     #
+     # filter out problematic sysctl settings

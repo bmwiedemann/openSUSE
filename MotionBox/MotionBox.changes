@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Sat Mar 23 08:47:26 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.0
+  Overview
+  * Add light themes.
+  * Support the 64 bit architecture by default.
+  * Add feeds and tracks history.
+  C++
+  * DataOnline: Update the 'ONLINE_PATH' variable.
+  QML
+  * Create PanelDiscover.
+  * Create ComponentDiscover.
+  * Remove ButtonLogoBorders.
+  Other
+  * Gui: Update track selection when player stops.
+  * Gui: Update tab behavior.
+  * Gui: Update the 'pRestoreMiniA' function.
+  * Gui: Fix 'play(s)' functions.
+  * Gui: Fix the 'openSource' function.
+  * Gui: Remove the 'openFolder' function.
+  * Splash: Update implementation.
+  * BarWindowApplication: Add 'onBefore(s)' functions.
+  * BarWindowApplication: Add 'pRestoreMaximize' function.
+  * BarTop: Add the 'discover' button.
+  * BarTop: Add the 'playlist' property.
+  * PanelApplication: Update page buttons.
+  * PanelSearch: Start the search when you click a backend.
+  * PanelAdd: Fix the 'maximum height' property.
+  * LineEditSearch: Update the 'default text' behavior.
+  * ListFolder: Fix the 'folder' events.
+  Style
+  * Enable 'light' design by default.
+  Changes for Sky kit 1.5.0:
+  Qt
+  * Change QUrl(s) to QString(s) to improve comparisons.
+  SkCore
+  * WControllerFile: Add the 'folderUrl' function.
+  * WControllerFile: Update the 'toLocal, toString' functions.
+  * WControllerFile: Fix the 'file url' functions.
+  * WControllerFile: Fix the 'toLocalFile' function.
+  * WControllerScript: Add 'QJSEngine' implementation.
+  * WRemoteTimeout: Fix the 'timeout' function.
+  SkGui
+  * WControllerPlaylist: Update the 'query' implementation.
+  * WControllerPlaylist: Fix the 'loaded' function.
+  * WControllerPlaylistData: Update the 'applyHtml' function.
+  * WAbstractView: Add the 'on close' function.
+  * WAbstractView: Update the 'task bar' workaround.
+  * WView: Add the 'on close' function.
+  * WView: Fix the 'update flags' function.
+  * WDeclarativeImageBase: Fix the 'set filter' function.
+  * WDeclarativeImageBase: Fix the 'onFilterUpdated' function.
+  * WDeclarativeImage(s): Fix the 'scale' implementation.
+  * WDeclarativeTextSvg: Fix the 'get width' implementation.
+  * WPlaylist: Add the 'move(s)' functions.
+  SkMedia
+  * WBackendVlc: Update the shaders implementation.
+  * WVlcEngine: Add the 'avcodec-fast' option.
+  SkTorrent
+  * Update implementation to the 1.2.0 API.
+  * WHookTorrent: Update the 'skip' behavior for 'avi' files.
+  * WHookTorrent: Fix the 'read' function.
+  * WBackendTorrent: Update the 'sort' implementation.
+  * WTorrentEngine: Update torrent settings.
+  * WTorrentEngine: Add the 'get index' function.
+  * WTorrentEngine: Fix the 'remove' function.
+  * WTorrentEngine: Fix the 'select file ' function.
+  * WTorrentEngine: Fix the 'handle id' variables.
+  SkyComponents
+  * Create ItemWipe(s).
+  * Rename ScrollAreaVertical to ScrollArea.
+  * Rename ScrollBarVertical to ScrollBar.
+  * Rename ContextualComponent to ComponentContextual.
+  * Remove SizeHint.
+  * PanelImage: Add the 'image background' alias.
+  * ScrollBar: Remove buttons.
+  * SliderStream: Update the 'left' button.
+  * TabsBrowser: Add 'onBefore(s)' functions.
+  * WallVideo: Update the 'player back' item.
+  * WallVideo: Update the 'cover' behavior.
+  * ComponentTabBrowser, ComponentWallBookmarkTrack: Update the
+    'icon' source and caching.
+  SkyPresentation
+  * BaseLogo: Update to 'flat' design.
+  Style
+  * Add 'night' design.
+  * Add 'light' design.
+  * Enable 'light' design by default.
+
+- Refreshed Sky-1.4.0-private_headers.patch as
+  Sky-1.5.0-private_headers.patch, MotionBox-1.4.0-paths.patch
+  as MotionBox-1.5.0-paths.patch, Sky-1.4.0-soname.patch as
+  Sky-1.5.0-soname.patch and Sky-1.4.0-use_system_glext.patch
+  as Sky-1.5.0-use_system_glext.patch
+
+- Dropped Sky-1.4.0-fix_youtube_extract_source.patch and
+  Sky-1.4.0-fix_youtube_extract_source_2.patch (no longer
+  necessary)
+
+-------------------------------------------------------------------
+Tue Oct  9 19:17:48 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fixed runtime requirements
+
+-------------------------------------------------------------------
+Fri Oct  5 20:26:28 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v 1.4.0)

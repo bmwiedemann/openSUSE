@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Fri Jun  7 11:54:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update dependencies
+- Run also pytest tests
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue May  7 13:19:56 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.6.0
+  * Respect user provided content encoding type
+  * Update minimum requests version to 2.3
+  * Add testing for Python 3.7 & PyPy3
+  * Drop \_matcher from request pickled state
+  * Clarify the pytest configuration documentation
+
+-------------------------------------------------------------------
+Thu Mar  7 15:00:19 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.5.2:
+  * Fix discovery of pytest version and default
+  * Add a docstring to the pytest fixture
+  * Include release note for py.test
+  * Collapse CircleCI configuration
+  * Support older pytest versions
+  * Record value of stream parameter in request history
+  * Some additional gitignores
+  * Include reno in circleci publish job
+  * Prefer readthedocs.io instead of readthedocs.org for doc links
+  * Add release note describe repository migration
+  * Add pytest plugin
+  * Include release-notes in documentation
+  * Another attempt at circleci tags
+  * Only try and push to pypi on a tag
+  * Update all pypi.python.org URLs to pypi.org
+  * Add pypi upload configuration to circleci
+  * Move tests outside of package to top level directory
+  * Remove zuul.yaml as we're not using zuul anymore
+  * Add CircleCI badge to README
+  * Remove links to launchpad bug reporting
+  * Remove .gitreview
+  * Unpin sphinx dependency
+  * Add circleci testing configuration
+  * Use set literals throughout project
+  * Prefer https:// links over http:// in docs and comments
+  * Fix last\_request examples
+  * Fix spelling mistakes
+  * Move Zuul jobs in-tree
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Feb 23 13:52:35 UTC 2018 - tbechtold@suse.com
+
+- update to 1.4.0:
+  * allow an adapter to be passed to a Mocker object
+  * Rename [wheel] section to [bdist\_wheel] as the former is legacy
+  * Include license file in the generated wheel package
+  * Add testing for newer Python versions 3.5 and 3.6
+  * Return a separate copy for each call to decorator
+  * Add string representation to \_RequestObjectProxy
+
+-------------------------------------------------------------------
+Wed Jun 14 16:37:14 UTC 2017 - dmueller@suse.com
+
+- fix build for SLE12
+
+-------------------------------------------------------------------
+Sat Jun 10 07:47:41 UTC 2017 - dmueller@suse.com
+
+- update to 1.3.0:
+  * Add a releasenote for additional_matcher
+  * Add documentation for the exception response
+  * Fix occurences of `adatper`
+  * Type check the empty string when creating repsonse
+  * Allow arbirtrary matcher to be add to match
+
+-------------------------------------------------------------------
+Thu May 25 15:22:58 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Jan 30 11:04:29 UTC 2017 - tbechtold@suse.com
+
+- update to 1.2.0:
+  * Allow for nested mocking
+  * Use create_response for fake http response in tests
+  * Add hostname and port properties to request
+  * Move request code and tests into their own files
+  * Add called_once to Mocker
+  * Fix docs building
+  * Fix exception message when creating a response
+
+-------------------------------------------------------------------
+Wed Sep 28 09:00:13 UTC 2016 - tbechtold@suse.com
+
+- update to 1.1.0:
+  * Add a called_once property to adapter
+  * Enable case sensitive matching
+  * Provide fixture extras for pip
+  * Allow doing real_http per mock via the mocker
+  * Return b'' when reading closed response
+  * Fixture documentation error
+
+-------------------------------------------------------------------
+Fri Jul  8 08:55:29 UTC 2016 - dmueller@suse.com
+
+- fix source url
+
+-------------------------------------------------------------------
+Wed Jul  6 16:13:45 UTC 2016 - tbechtold@suse.com
+
+- update to 1.0.0:
+  * Add tox environment to run against master requests
+  * Change dev status classifier to stable
+  * Doc fixups
+  * Expose cert and proxies as attributes of the last request
+  * Add timeout and allow_retries to RequestProxy
+  * Fix py34 DB issue and remove py33/py26
+  * Remove pypip.in badge from readme
+
+-------------------------------------------------------------------
+Fri Dec  4 07:59:17 UTC 2015 - dmueller@suse.com
+
+- update to 0.7.0:
+  * Support Cookies
+  * Expose Fake objects in compat
+  * Update .gitreview for new namespace
+  * Change ignore-errors to ignore_errors
+
+-------------------------------------------------------------------
+Mon Apr 20 13:48:07 UTC 2015 - tbechtold@suse.com
+
+- Fix license string
+
+-------------------------------------------------------------------
+Mon Feb  2 15:25:27 UTC 2015 - dmueller@suse.com
+
+- update 0.6.0:
+  * Update docs
+  * Allow to decorate class with mock
+  * Use weakref to hold matcher
+  * Include matcher in request history
+  * Add called and call_count to mocker
+  * Update README to use newer syntax
+  * Allow specifying an exception to raise
+  * Update novaclient and keystoneclient git repo
+  * Add pbr to all tox environments
+  * Add docs environment to tox.ini
+  * Work toward Python 3.4 support and testing
+  * Run tip tests against requests master as well
+  * Add link to find bug tracker
+
+-------------------------------------------------------------------
+Fri Sep 26 07:45:55 UTC 2014 - tbechtold@suse.com
+
+- Initial package
+

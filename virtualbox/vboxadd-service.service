@@ -1,0 +1,21 @@
+[Unit]
+SourcePath=/etc/init.d/vboxadd-service
+Description=Start/Stop VirtualBox Guest Linux module
+After=remote-fs.target
+Wants=remote-fs.target
+
+[Service]
+Type=simple
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+SuccessExitStatus=5 6
+ExecStart=/usr/lib/virtualbox/vboxadd-service start
+ExecStop=/usr/lib/virtualbox/vboxadd-service stop
+
+[Install]
+WantedBy=multi-user.target.wants
+

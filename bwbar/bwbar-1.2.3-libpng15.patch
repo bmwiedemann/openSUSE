@@ -1,0 +1,21 @@
+Index: bwbar.c
+===================================================================
+--- bwbar.c.orig	2006-08-26 17:31:26.000000000 +0100
++++ bwbar.c	2012-10-13 14:01:23.000000000 +0100
+@@ -30,6 +30,7 @@
+ #include <alloca.h>
+ #include <getopt.h>
+ #include <png.h>
++#include <zlib.h>
+ 
+ void skipline(FILE *f)
+ {
+@@ -79,7 +80,7 @@ int write_bar_graph(FILE *f, double perc
+   if ( !info_ptr )
+     goto barf;
+ 
+-  if ( setjmp(png_ptr->jmpbuf) ) {
++  if ( setjmp(png_jmpbuf(png_ptr)) ) {
+     status = 1;
+     goto barf;			/* libpng abort */
+   }

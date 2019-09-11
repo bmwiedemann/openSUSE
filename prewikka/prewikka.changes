@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sat Feb 10 07:00:00 UTC 2018 - thomas.andrejak@gmail.com
+
+- Fix building prewikka with new find-lang.sh
+
+-------------------------------------------------------------------
+Wed Oct 04 07:00:00 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 4.0.0
+- Create python2-prewikka and python3-prewikka
+  packages since prewikka is python 3 compatible
+- Move to Python Singlespec
+- Remove patch prewikka-ez_setup.patch because we can only be
+  compatible with Factory/Tumbleweed because of Python Singlespec
+- Add patch prewikka-fix_python3.patch to make prewikka fully
+  compatible with Python 3
+
+-------------------------------------------------------------------
+Fri Feb 10 00:33:55 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 3.1.0 (Prelude 3.1.0 released on 14 Sept 2016)
+- Remove unnecessary patches
+  - prewikka-cheetah-shbang.patch
+  - prewikka-wsgi-shbang.patch
+- Spec-Cleaner
+
+-------------------------------------------------------------------
+Thu Jan 26 21:28:03 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+- Replace -exec rm by simpler -delete.
+
+-------------------------------------------------------------------
+Sun Sep  4 21:57:53 UTC 2016 - thomas.andrejak@gmail.com
+
+Fix Group to be a valid OpenSuse Group
+Fix Requires
+Fix source URL
+Fix dependencies
+Clean usage of "-n %{name}-"
+
+-------------------------------------------------------------------
+Tue May  3 22:03:50 UTC 2016 - thomas.andrejak@gmail.com
+
+Initial import
+
+Add patchs :
+  * prewikka-cheetah-shbang.patch
+    * Fix shebang in cheetah generated files
+  * prewikka-ez_setup.patch
+    * Support old setuptools
+  * prewikka-wsgi-shbang.patch
+    * Fix shebang in wsgi file

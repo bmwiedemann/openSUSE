@@ -1,0 +1,13 @@
+Index: b/docs/conf.py
+===================================================================
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -32,7 +32,7 @@ extensions = [
+ ]
+ 
+ intersphinx_mapping = {
+-    'python': ('https://docs.python.org/3/', None),
++    'python': ('https://docs.python.org/3/', 'python3.inv'),
+ }
+ 
+ # Add any paths that contain templates here, relative to this directory.

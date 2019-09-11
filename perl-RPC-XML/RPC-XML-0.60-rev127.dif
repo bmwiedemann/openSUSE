@@ -1,0 +1,30 @@
+Index: t/40_server.t
+===================================================================
+--- t/40_server.t.orig
++++ t/40_server.t
+@@ -164,8 +164,9 @@ isa_ok($srv, 'RPC::XML::Server', '$srv<2
+ # 22/09/2008 - Just allow for anything the user has attached to this address.
+ #              Aliases keep causing this test to falsely fail.
+ my @localhostinfo = gethostbyname('localhost');
++my $loc_reverse = gethostbyaddr(inet_aton("127.0.0.1"),AF_INET);
+ my $localIP = join('.', unpack('C4', $localhostinfo[4]));
+-my @allhosts = ($localIP, $localhostinfo[0], split(' ', $localhostinfo[1]));
++my @allhosts = ($localIP, $localhostinfo[0], split(' ', $localhostinfo[1]), $loc_reverse);
+ for (@allhosts) { s/\./\\./g }
+ # Per RT 27778: For some reason gethostbyname('localhost') does not return
+ # "localhost" on win32
+Index: t/40_server_xmllibxml.t
+===================================================================
+--- t/40_server_xmllibxml.t.orig
++++ t/40_server_xmllibxml.t
+@@ -80,8 +80,9 @@ isa_ok($srv, 'RPC::XML::Server', '$srv<2
+ # 22/09/2008 - Just allow for anything the user has attached to this address.
+ #              Aliases keep causing this test to falsely fail.
+ my @localhostinfo = gethostbyname('localhost');
++my $loc_reverse = gethostbyaddr(inet_aton("127.0.0.1"),AF_INET);
+ my $localIP = join('.', unpack('C4', $localhostinfo[4]));
+-my @allhosts = ($localIP, $localhostinfo[0], split(' ', $localhostinfo[1]));
++my @allhosts = ($localIP, $localhostinfo[0], split(' ', $localhostinfo[1]), $loc_reverse);
+ for (@allhosts) { s/\./\\./g }
+ # Per RT 27778: For some reason gethostbyname('localhost') does not return
+ # "localhost" on win32

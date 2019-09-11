@@ -1,0 +1,342 @@
+-------------------------------------------------------------------
+Thu May 18 09:51:23 UTC 2017 - lars@linux-schulserver.de
+
+- Update to 1.6.54:
+  + Fix core dump using old GNU C Library or CYGWIN inside 
+    FXString::vformat.cpp.
+  + Fixed typo in FXString::vformat.cpp.
+
+-------------------------------------------------------------------
+Sat Oct 22 09:44:43 UTC 2016 - behrisch@users.sourceforge.net
+
+- update to 1.6.52:
+  + Small fixes for 64-bit casts in dctest.cpp (compiler warning issues).
+  + JPEG image I/O color spaces handled better.
+  + FXApp input callback message ID for SEL_IO_EXCEPT was wrong.
+  + Change in how FXStat determines if a file is an executable (Windows).
+
+-------------------------------------------------------------------
+Mon Dec 15 13:36:33 UTC 2014 - lars@linux-schulserver.de
+
+- the -devel-static package must require the -devel-package, 
+  see https://en.opensuse.org/openSUSE:Packaging_guidelines#Exception
+
+-------------------------------------------------------------------
+Fri Aug 29 08:46:42 UTC 2014 - jengelh@inai.de
+
+- Use verifiable https://en.opensuse.org/SourceUrls and
+  original tarball
+- Follow shared library package naming guidelines a bit closer
+
+-------------------------------------------------------------------
+Fri Aug 15 13:26:25 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.6.50:
+  + no upstream changes available
+
+-------------------------------------------------------------------
+Mon Sep 16 07:05:07 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.6.49:
+  + Check index out of bounds in FXTabBook::setCurrent().
+
+-------------------------------------------------------------------
+Wed Jan 23 12:33:04 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.6.47:
+  + Prototype of wndproc() was not correct for 64-bit Windows.
+
+-------------------------------------------------------------------
+Fri Sep 28 06:46:25 UTC 2012 - behrisch@users.sourceforge.net
+
+- fixed glu dependency for devel package for openSUSE > 12.2 
+
+-------------------------------------------------------------------
+Wed Sep 19 10:53:15 UTC 2012 - behrisch@users.sourceforge.net
+
+- fixed devel dependencies for scientific linux
+
+-------------------------------------------------------------------
+Tue Sep 18 13:25:05 UTC 2012 - idonmez@suse.com
+
+- Add explicity glu dependency for openSUSE > 12.2 
+
+-------------------------------------------------------------------
+Sun Sep  9 14:41:22 UTC 2012 - lars@linux-schulserver.de
+
+- create symlinks in devel package where the binaries live
+  (TODO: use update-alternatives)
+
+-------------------------------------------------------------------
+Thu Jul 12 18:52:28 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.6.46:
+  + Small tweak to FXIcon's guessthresh(), thanks to Fanglin.
+  + Fixed quaternion arc() routine. In case of vectors that are 
+    (almost) 180 degrees apart, the wrong quaternion was returned.
+  + Invalid handle issue fixed in FXWindow.
+  + Backported FXPath shell escaping routine.
+- added fox16-remove_date_from_reswrap.patch
+  to remove date from reswrap help to support build compare
+
+-------------------------------------------------------------------
+Fri Dec  9 09:03:24 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.6.44:
+  + removed -Wextra from CXXFLAGS
+  + Force quoting in FXString FXPath::dequote and FXPath::enquote
+    if the string contains at least one whitespace
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Feb  7 20:34:14 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.6.43:
+  + Added missing AC_FUNC_MMAP to configure.ac. Presence of mmap() 
+    and munmap() API's we not being discovered properly.
+  + Fix libpng version 1.5. Members of png_struct are now hidden, 
+    so fxpngio.cpp must use newly introduced API to use 
+    embedded jmp_buf.
+  + Fix configure.ac type which caused linkage to libGL and libGLU 
+    even if compiled without GL support.
+
+-------------------------------------------------------------------
+Wed Sep  1 12:31:36 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.6.40:
+  * FXSystem::getTempDirectory() now uses TMPDIR environment 
+    variable if set.
+  * Auto-guess icon etch mask threshold added.
+  * Removed XGetDefault from code in ControlPanel.cpp.
+- removed upstreamed fox-1.6.34-am111.patch
+
+-------------------------------------------------------------------
+Sun Dec 13 13:17:33 UTC 2009 - lars@linux-schulserver.de
+
+- update to 1.6.37:
+  * Fixed remainingTimeout() returning ns, not ms remaining time.
+  * Fixed bug in parsing of accelerators.
+  * Fixed wrong enum value in FXComboBox.
+  * Backported FXTable fix from 1.7 (delete of selected lines).
+- refreshed patches, fix Obsoletes
+- removed configure option --htmldir - has no effect
+
+-------------------------------------------------------------------
+Tue Jul  7 21:01:53 CEST 2009 - coolo@novell.com
+
+- fix build with automake 1.11
+
+-------------------------------------------------------------------
+Tue Jun 16 11:02:42 CEST 2009 - lrupp@suse.de
+
+- fix requires for fox16-devel on other distributions
+- rename fox16-static to fox16-devel-static to follow the new
+  naming policy for static libs
+
+-------------------------------------------------------------------
+Mon Apr 27 11:43:01 CEST 2009 - behrisch@informatik.hu-berlin.de
+
+- added libbz2-devel and cups-devel dependencies for fox-devel
+
+-------------------------------------------------------------------
+Sat Apr 11 23:13:01 CEST 2009 - behrisch@informatik.hu-berlin.de
+
+- update to 1.6.36:
+  + Fixed FXTable startInput() issue.
+  + Backported FXFont Freetype pitch size.
+  + Fixed compose context create issue.
+  + Bug fix in fxloadPPM() when ascii black and white bitmap is loaded.
+  + Call tr() when populating color names.
+  + Small bug in FXTextField when I-beam cursor surrounded by non-ascii
+    UTF8 characters and it near the beginning or end of the string.
+
+-------------------------------------------------------------------
+Tue Jul 29 10:47:17 CEST 2008 - lrupp@suse.de
+
+- update to 1.6.34:
+  + Fixed bug in FXSettings; symptoms: every once in a while,
+    a key-value pair was skipped.
+  + Minor tweak to order in which size constraints are being passed
+    to Window Managers on X11.
+    Some Window Managers had a problem with the old order.
+  + Backported FXTopWindow resize() and position() fixes from 1.7.
+  + Fixed GCC 4.3 warning in FXArray header file.
+  + Made internal data arrays static to prevent global name
+    clashes on some compilers.
+  + Fixed uninitialized variable in FXFileDict.
+- remove upstreamed fox-1.6.26_initialise_local_variable.patch
+
+-------------------------------------------------------------------
+Thu Apr  3 12:19:48 CEST 2008 - lrupp@suse.de
+
+- update to 1.6.32:
+  + Fixed FXPath::simplify(). Backport from FOX 1.7.
+  + Fixed Adie CPU load issue caused by clock updating.
+  + Fixed FXURL::fileFromURL().
+- create docs using doxygen
+
+-------------------------------------------------------------------
+Mon Dec 17 18:50:03 CET 2007 - lrupp@suse.de
+
+- update to 1.6.31:
+  + Bug fix to strtoull() for systems which have 
+    no native strtoull().
+  + Missing tr() added in FXMDIClient.
+  + Fix for FXRuby in FXMDIClient (don't test for message==0 
+    in notify message).
+- split libfox%soname to follow shared library packaging policy
+- fix desktop files and add them as normal files
+- enable warnings again
+
+-------------------------------------------------------------------
+Wed Oct 10 11:47:49 CEST 2007 - lrupp@suse.de
+
+- update to 1.6.30:
+  + Fixed some issues with flush() in FXBZFileStream and 
+    FXGZFileStream.
+  + FXDial didn't issue SEL_COMMAND when driven from keyboard.
+  + Small typo found in fxfilematch() was found which affected 
+    character-range matching.
+  + Problem in FX7Segment fixed.
+  + Added ".jpeg" as additional extension for JPEG images in 
+    FXIconSource.
+  + Fix in FXSplashWindow not killing timer if it gets destroyed 
+    before timer goes off.
+  + FX7Segment had bug in onCmdGetStringValue() implementation
+  + Cruft removed from FXMat3f.
+  + Bold style fixed in FXText.
+  + Read outside buffer problem fixed in FXText.
+  + Bugs in FXListBox and FXTreeListBox fixed.
+- added fox16-rpmlintrc
+- added LICENSE_ADDENDUM, removed INSTALL from %doc
+- create desktop entries for adie, calculator and pathfinder
+
+-------------------------------------------------------------------
+Tue Jun  5 10:13:45 CEST 2007 - lrupp@suse.de
+
+- update to 1.6.27
+  + Fixed regression in glUseFXFont() when using Xft instead of XLFD.
+  + Fixed bug in FXVisual which caused drawing to FXBitmap to fail.
+  + Fixed issue with bold-face text not drawing correctly in FXText 
+    if gap happens to be in the text-fragment being drawn.
+  + FXMDIChild resize animation speed changed a little bit.
+  + Decoration options interpreted under Windows-XP and UNIX as 
+    follows: 
+    DECOR_SHRINKABLE means window may be smaller, but not larger, than 
+    default size; 
+    DECOR_STRETCHABLE means window may be larger, but not smaller, than 
+    default size; and finally, 
+    DECOR_RESIZE means window may be both smaller or larger than 
+    default size.
+- Remove libbz2 from BuildRequires (in buildsystem now)
+- Remove "--with-xim": breaks keyboard support 
+
+-------------------------------------------------------------------
+Thu May 10 23:44:37 CEST 2007 - ro@suse.de
+
+- fix typo in specfile 
+
+-------------------------------------------------------------------
+Thu May  3 22:35:13 CEST 2007 - lars@suse.de
+
+- update to 1.6.26
+- remove upstremed patches:
+  + fox-1.6.20_configure_x11_extensions_header.patch
+  + fox-1.6.20_AM_CFLAGS.patch
+- adapt fox-1.6.26_initialise_local_variable.patch
+- added Mandriva and Fedora dependencies
+- require libexpat-devel for openSUSE > 10.2
+
+-------------------------------------------------------------------
+Wed Mar  7 12:10:38 CET 2007 - lrupp@suse.de
+
+- fixed requires for devel package on older distributions
+
+-------------------------------------------------------------------
+Tue Mar  6 14:15:08 CET 2007 - lrupp@suse.de
+
+- update to 1.6.23:
+  + Fixed problem with X11 XLFD fonts. If XLFD font name specified 
+    directly, no font was matched.
+  + Fixed spurious call to removeItem() in extractItem() inside 
+    FXTreeListBox.
+  + Always define vfscanf(), vscanf(), and vsscanf() when on Windows.
+  + Remove FXAPI in FXObjectListOf template.
+
+-------------------------------------------------------------------
+Sun Jan 28 18:26:05 CET 2007 - lrupp@suse.de
+
+- add static package 
+- compile for release
+- reorder documentation
+
+-------------------------------------------------------------------
+Fri Jan 26 15:25:27 CET 2007 - lrupp@suse.de
+
+- added version numbers in provides
+- build on older distributions
+
+-------------------------------------------------------------------
+Fri Dec 01 02:13:52 CET 2006 - lrupp@suse.de
+
+- update to 1.6.20
+  + Rolled back explicit template instantiation stuff: 
+    not supported everywhere. 
+  + Fix bug in FXMutex::locked() implementation.
+  + Suppress 4244 warning (possible loss of data) on VC++ compiler.
+  + Bug fix in FXApp drag and drop.
+  + Wrong error message in argument check in FXTable API.
+  + Fixed minor issues in FXPicker: now issues message on mouse 
+    button release.
+  + Fixed problems in FXFile, FXSocket, FXPipe occurring on 
+    64-bit Windows.
+
+-------------------------------------------------------------------
+Fri Oct 13 04:12:35 CEST 2006 - lrupp@suse.de
+
+- update to 1.6.16
+  + Fixed issue with FXMDIChild and FXTopWindow close() routine; 
+    this mostly affects FXRuby
+  + Fixed FXTextField drawCursor() array overrun and text 
+    measurement bugs
+  + Surround fxascii & fxunicode.cpp with namespace
+  + End of stream bugs in FXGZFileStream and FXBZFileStream
+  + FXToolTip & FXExpression bugs fixed
+  + Updated Adie.stx
+- removed fox-1.6.4_optflags.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 11:31:08 CEST 2006 - lrupp@suse.de
+
+- fix #183748 : fox development files in run-time package
+- fix #183746 : package fox is compiled without RPM_OPT_FLAGS
+- fix #183739 : fox-1.6.4-3: local variable used before set
+- reduce BuildRequires
+- enable configure options: cups,xft,xim,xcursor,xrandr,opengl,shape,xshm
+
+-------------------------------------------------------------------
+Wed Apr 26 15:55:36 CEST 2006 - lrupp@suse.de
+
+- new source 1.6.4 from upstream - package is alive again ;-)
+
+-------------------------------------------------------------------
+Mon Jun 23 10:33:52 CEST 2003 - pthomas@suse.de
+
+- Include accidently left out libFOX.so.
+
+-------------------------------------------------------------------
+Fri Jun 20 14:38:51 CEST 2003 - pthomas@suse.de
+
+- Initial package creation.
+- Use AM_CXXFLAGS instead of overriding CXXFLAGS.
+- Clean up code, including int->pointer casts.

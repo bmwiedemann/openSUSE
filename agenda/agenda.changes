@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon Apr  8 19:52:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fix-build.patch. With recent vala versions, --thread is 
+  ignored but that also causes a build issue on openSUSE Factory.
+
+-------------------------------------------------------------------
+Mon Sep 17 17:53:40 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.12:
+  * Update com.github.dahenson.agenda.appdata.xml
+  * Merge pull request #79 from ryonakano/fix-icon-url
+
+-------------------------------------------------------------------
+Sat Aug 18 13:38:56 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.11:
+  * Bump version
+  * Get rid of those pesky whole screen screenshots.
+
+-------------------------------------------------------------------
+Tue Aug 14 18:21:24 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.10:
+  * Bump version number
+  * Change some wording to be more clear and concise.
+  * Change some wording and add release info
+  * Add additional screenshots
+  * Add the right prefix flag to cmake
+  * Add more screenshots
+  * Fix table in README again?
+  * Fix table in README
+  * Fix screenshot and add a new one.
+  * Rearrange some stuff
+  * Add special thanks
+  * Fix some wording and fix the icon
+  * Improve README
+  * Fix id field
+  * Add OARS data to AppData
+  * Remove cache section of Travis config
+  * Remove packaging, moved to orphan branch
+  * Add suggested price
+  * Add the GResource.cmake dependency
+  * Add travis CI integration
+  * Update the stylesheet for Juno
+  * Add GResource to cmake to fix build
+  * Remove backend file. Not needed yet.
+  * Fix licensing and some whitespace
+- Remove obsolete macros
+- Change the home page
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Tue Dec 19 09:54:49 UTC 2017 - jengelh@inai.de
+
+- Trim biased wording from description.
+
+-------------------------------------------------------------------
+Tue Nov 28 16:04:20 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.0.9:
+  * Fix appdata and add LICENSE
+  * Bump version, update changelog
+- Drop agenda-1.0.8-vala-0.36.patch (fixed)
+
+-------------------------------------------------------------------
+Tue Nov  7 20:11:03 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.0.8:
+  * Changed styling for "dark theme variant"
+  * Changed styles for editing a task in the list
+  * Added hype to the AppData.xml Description to try to stand out in 
+    AppCenter better
+  * Removed the About dialog completely
+  * Fixes issue where the correct GLib Settings schema is installed, 
+    but the app expects the old schema
+  * RDNN fixes for debian packaging
+  * Style changes and metadata
+  * Fixes TaskEntry selection bug
+  * Better styling for the TreeView
+- Switch from bzr to git
+- Rename the package: agenda-tasks -> agenda
+- agenda-tasks-0.3.1-vala-0.36.patch > agenda-1.0.8-vala-0.36.patch
+
+-------------------------------------------------------------------
+Tue May  2 21:44:24 UTC 2017 - avvissu@yandex.by
+
+- Fix build with vala >= 0.36 (agenda-tasks-0.3.1-vala-0.36.patch) 
+
+-------------------------------------------------------------------
+Thu Apr 21 14:05:26 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging (version 0.3.1+r108)

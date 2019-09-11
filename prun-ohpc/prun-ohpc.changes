@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Aug 14 14:44:14 UTC 2017 - eich@suse.com
+
+- Fix group.
+
+-------------------------------------------------------------------
+Thu Mar 23 15:38:14 UTC 2017 - jengelh@inai.de
+
+- Replace weird RPM group
+- Replace %__-type macro indirections
+
+-------------------------------------------------------------------
+Wed Oct 19 15:40:01 UTC 2016 - eich@suse.com
+
+- Fix script to use user config in ~/.prunrc and global config 
+  in /etc/prunrc.
+
+-------------------------------------------------------------------
+Fri Oct 14 09:02:27 UTC 2016 - eich@suse.com
+
+- Initial import of 'prun' from OpenHPC
+  FATE#321713.

@@ -1,0 +1,26 @@
+Index: src/fe-none/irssi.c
+===================================================================
+--- src/fe-none/irssi.c.orig
++++ src/fe-none/irssi.c
+@@ -24,6 +24,8 @@
+ #include "args.h"
+ #include "signals.h"
+ #include "core.h"
++/* needed for SOCKSinit prototype */
++#include "core/network.h"
+ 
+ #ifdef HAVE_STATIC_PERL
+ void perl_core_init(void);
+Index: src/fe-text/irssi.c
+===================================================================
+--- src/fe-text/irssi.c.orig
++++ src/fe-text/irssi.c
+@@ -25,6 +25,8 @@
+ #include "signals.h"
+ #include "levels.h"
+ #include "core.h"
++/* needed for SOCKSinit prototype */
++#include "core/network.h"
+ #include "settings.h"
+ #include "session.h"
+ #include "servers.h"

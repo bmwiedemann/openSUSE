@@ -1,0 +1,53 @@
+Index: system-config-printer-1.5.5/cupshelpers/openprinting.py
+===================================================================
+--- system-config-printer-1.5.5.orig/cupshelpers/openprinting.py
++++ system-config-printer-1.5.5/cupshelpers/openprinting.py
+@@ -52,6 +52,10 @@ class _QueryThread (threading.Thread):
+         _debugprint ("-%s" % self)
+ 
+     def run (self):
++        ## Disabled on openSUSE, see discussion in https://bugzilla.novell.com/show_bug.cgi?id=733542
++        if self.callback != None:
++            self.callback (403, self.user_data, None)
++        return
+ 
+         # CGI script to be executed
+         query_command = "/query.cgi"
+@@ -76,6 +80,7 @@ class _QueryThread (threading.Thread):
+             if status == None: status = 0
+ 
+         _debugprint ("%s: query complete" % self)
++        ## openSUSE: just a guard to know if first part in patch should be updated
+         if self.callback != None:
+             self.callback (status, self.user_data, self.result)
+ 
+Index: system-config-printer-1.5.5/newprinter.py
+===================================================================
+--- system-config-printer-1.5.5.orig/newprinter.py
++++ system-config-printer-1.5.5/newprinter.py
+@@ -412,6 +412,8 @@ class NewPrinterGUI(GtkGUI):
+         # Set up OpenPrinting widgets.
+         self.opreq = None
+         self.opreq_handlers = None
++        ## Disabled on openSUSE, see discussion in https://bugzilla.novell.com/show_bug.cgi?id=733542
++        self.rbtnNPDownloadableDriverSearch.hide()
+         combobox = self.cmbNPDownloadableDriverFoundPrinters
+         cell = Gtk.CellRendererText()
+         combobox.pack_start (cell, True)
+@@ -1616,6 +1618,7 @@ class NewPrinterGUI(GtkGUI):
+                 self.btnNPBack.hide()
+                 self.btnNPForward.show()
+                 downloadable_selected = False
++                ## openSUSE: just a guard to know when the name of the widget to hide changes
+                 if self.rbtnNPDownloadableDriverSearch.get_active ():
+                     combobox = self.cmbNPDownloadableDriverFoundPrinters
+                     iter = combobox.get_active_iter ()
+@@ -3828,6 +3831,8 @@ class NewPrinterGUI(GtkGUI):
+             elif self.rbtnNPPPD.get_active():
+                 ppd = cups.PPD(self.filechooserPPD.get_filename())
+             else:
++                ## Disabled on openSUSE, see discussion in https://bugzilla.novell.com/show_bug.cgi?id=733542
++                return
+                 # PPD of the driver downloaded from OpenPrinting XXX
+                 treeview = self.tvNPDownloadableDrivers
+                 model, iter = treeview.get_selection ().get_selected ()

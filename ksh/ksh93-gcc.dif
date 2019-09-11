@@ -1,0 +1,65 @@
+--- src/lib/libast/misc/optget.c
++++ src/lib/libast/misc/optget.c	2013-01-28 14:52:53.000000000 +0000
+@@ -4367,9 +4367,9 @@ optget(register char** argv, const char*
+ 	 */
+ 
+ 	opt_info.assignment = 0;
+-	num = 1;
+-	w = v = 0;
+-	x = 0;
++	nov = no = num = 1;
++	e = w = v = 0;
++	n = x = 0;
+ 	for (;;)
+ 	{
+ 		if (!opt_info.offset)
+@@ -5214,7 +5214,7 @@ optget(register char** argv, const char*
+ 
+ 	if (opt_info.num != LONG_MIN)
+ 		opt_info.num = (long)(opt_info.number = num);
+-	if ((n = *++s == '#') || *s == ':' || w && !nov && v && (optnumber(v, &e, NiL), n = !*e))
++	if ((n = (*++s == '#')) || *s == ':' || w && !nov && v && (optnumber(v, &e, NiL), n = !*e))
+ 	{
+ 		if (w)
+ 		{
+--- src/lib/libpp/ppsearch.c
++++ src/lib/libpp/ppsearch.c	2012-03-14 11:40:11.000000000 +0000
+@@ -107,6 +107,14 @@ ppmultiple(register struct ppfile* fp, r
+  * search for file using directories in dp
+  */
+ 
++#define stupidgcc(flag) 		\
++({ 					\
++	char *name = NiL; 		\
++	if (!(fp->flags & INC_MEMBER(flag)) && (xp = fp->bound[flag])) \
++		 name = xp->name; \
++	name; \
++})
++
+ static int
+ search(register struct ppfile* fp, register struct ppdirs* dp, int type, int flags)
+ {
+@@ -146,10 +154,10 @@ search(register struct ppfile* fp, regis
+ 		(fp->flags & INC_BOUND(INC_STANDARD)) ? "STANDARD|" : "",
+ 		dp ? (dp->index == INC_PREFIX ? "pre" : dp->index == INC_LOCAL ? "lcl" : dp->index == INC_VENDOR ? "vnd" : "std") : NiL,
+ 		dp ? dp->name : NiL,
+-		!(fp->flags & INC_MEMBER(INC_PREFIX)) && fp->bound[INC_PREFIX] ? fp->bound[INC_PREFIX]->name : NiL,
+-		!(fp->flags & INC_MEMBER(INC_LOCAL)) && fp->bound[INC_LOCAL] ? fp->bound[INC_LOCAL]->name : NiL,
+-		!(fp->flags & INC_MEMBER(INC_VENDOR)) && fp->bound[INC_VENDOR] ? fp->bound[INC_VENDOR]->name : NiL,
+-		!(fp->flags & INC_MEMBER(INC_STANDARD)) && (xp = fp->bound[INC_STANDARD]) ? xp->name : NiL,
++		stupidgcc(INC_PREFIX),
++		stupidgcc(INC_LOCAL),
++		stupidgcc(INC_VENDOR),
++		stupidgcc(INC_STANDARD),
+ 		error_info.file
+ 		));
+ 	if (flags & SEARCH_HOSTED)
+@@ -578,6 +586,8 @@ if (pp.test & 0x0010) error(1, "SEARCH#%
+ 	return -1;
+ }
+ 
++#undef stupidgcc
++
+ /*
+  * search for an include file
+  * if (flags&SEARCH_INCLUDE) then

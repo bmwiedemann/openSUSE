@@ -1,0 +1,1916 @@
+-------------------------------------------------------------------
+Tue Mar  5 16:41:34 UTC 2019 - josef.moellers@suse.com
+
+- Added systemd support. Integrated SUSE-specific patches into
+  i4l_suse.tar.bz2.
+  [bsc#1116018, i4l-base.spec, i4l_suse.tar.bz2,
+  i4l_suse-sleep.diff, i4l_suse.diff]
+
+-------------------------------------------------------------------
+Sat Feb 23 10:23:34 UTC 2019 - seife+obs@b1-systems.com
+
+- add divactrl_2.1-sysmacros.diff to fix build
+- buildrequires groff to fix documentation build
+
+-------------------------------------------------------------------
+Mon Mar 26 12:37:11 UTC 2018 - dimstar@opensuse.org
+
+- Own %{_sysconfdir}/xinetd.d: filesystem won't own this directory
+  much longer (boo#1084457).
+
+-------------------------------------------------------------------
+Thu Dec  7 11:08:43 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:50:43 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Nov  7 06:25:36 UTC 2017 - bwiedemann@suse.com
+
+- Add isdn4k-utils-initialize-memory.patch to make build
+  reproducible (boo#1066797)
+
+-------------------------------------------------------------------
+Tue Sep 26 16:35:32 UTC 2017 - coolo@suse.com
+
+- add isdn4k-utils-perl526.diff to compile with perl 5.26
+
+-------------------------------------------------------------------
+Sat Mar 11 07:18:11 UTC 2017 - kukuk@suse.com
+
+- Require group uucp
+
+-------------------------------------------------------------------
+Sat Feb 18 10:30:30 UTC 2017 - kukuk@suse.com
+
+- Remove insserv_cleanup macro since we require and use systemd
+
+-------------------------------------------------------------------
+Wed Sep  9 09:27:15 UTC 2015 - dimstar@opensuse.org
+
+- Add isdn4k-ncurses-6.0-accessors.patch: Fix build against
+  NCurses 6.0 with OPAQUE_WINDOW set to 1.
+
+-------------------------------------------------------------------
+Tue Jun 23 06:56:25 UTC 2015 - werner@suse.de
+
+- Use bash as shell (boo#875730) 
+
+-------------------------------------------------------------------
+Tue Jun  9 08:41:48 UTC 2015 - schwab@suse.de
+
+- Force gnu89 inline semantics
+
+-------------------------------------------------------------------
+Mon May 11 10:42:04 UTC 2015 - dmueller@suse.com
+
+- add isdn4k-utils-gcc5-fixes.patch: Fix build against GCC 5.x
+- remove arm-fix-va_arg-usage.diff: not needed anymore
+
+-------------------------------------------------------------------
+Tue Apr 22 07:41:01 UTC 2014 - meissner@suse.com
+
+- buildignore systemd, buildrequire systemd-mini to make it build,
+  as the prereq pulls in systemd and others pull in -mini apparently.
+
+-------------------------------------------------------------------
+Sun Nov 10 2013 - joerg.lorenzen@ki.tng.de
+
+- update libcapi20 to version 3.0.7 (reqiured to build ffgtk / roger),
+  archive taken from package libcapi20-3 in project home:tabos-team:release
+- patch capi20_fixes.diff replaced by capi20_3.0.7.patch
+- new files in packages capi4linux-devel (pkgconfig)
+
+-------------------------------------------------------------------
+Thu Aug  8 14:51:03 UTC 2013 - max@suse.com
+
+- Fix build with Tcl 8.6.
+- Remove unneeded requirement on tk-devel.
+
+-------------------------------------------------------------------
+Mon Apr 22 14:11:44 CEST 2013 - fcrozat@suse.com
+
+- Move udev rules to /usr/lib/udev/rules.d, they shouldn't live in
+  /etc/udev/rules.d
+- Move isdn.sh script to /usr/lib/udev and fix udev rules
+  accordingly.
+
+-------------------------------------------------------------------
+Fri Apr 19 17:15:40 UTC 2013 - fcrozat@suse.com
+
+- Do not own udev directories
+
+-------------------------------------------------------------------
+Sat Mar  2 11:10:31 UTC 2013 - seife+obs@b1-systems.com
+
+- add isdn4k-utils-automake-1_13.diff, fix build with new automake
+
+-------------------------------------------------------------------
+Wed Nov 21 11:12:55 UTC 2012 - max@suse.com
+
+- Remove "set -x" from %post (bnc#790326).
+
+-------------------------------------------------------------------
+Thu Oct 18 16:28:46 UTC 2012 - max@suse.com
+
+- Make SuSEconfig.isdn a standalone script and rename/move it to
+  /etc/sysconfig/isdn/scripts/postprocess.isdn .
+- Move the MODIFY_SECRETS variable from /etc/sysconfig/suseconfig
+  to the new /etc/sysconfig/isdn file.
+- Add divactrl_2.1-dialog.patch to keep the precompiled dialog
+  binary from getting installed under /usr/share.
+- Add i4l-base-rpmlintrc to silence false positive
+  devel-file-in-non-devel-package errors.
+
+-------------------------------------------------------------------
+Mon Oct  8 14:06:36 UTC 2012 - aj@suse.de
+
+- Use tmpfiles.d instead of obsolete /lib/udev/devices for static
+  device nodes
+
+-------------------------------------------------------------------
+Mon Sep 17 11:54:40 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and SUSE-Firmware
+  SPDX format for firmware package
+
+-------------------------------------------------------------------
+Sat Sep 15 05:28:35 UTC 2012 - coolo@suse.com
+
+- replace ; with 'and' in license string
+
+-------------------------------------------------------------------
+Tue Jun 19 10:42:55 UTC 2012 - aj@suse.de
+
+- Use set_permissions instead of run_permissions.
+- Add proper verify_permission usage.
+- Compile with -fno-strict-aliasing due to aliasing issues.
+- Use versioned provides/obsoletes.
+- Use Group Hardware/ISDN everywhere.
+
+-------------------------------------------------------------------
+Sat Mar 10 08:05:07 UTC 2012 - jengelh@medozas.de
+
+- Employ shlib policy for libcapi20.so
+- Remove .la files in standard directories
+
+-------------------------------------------------------------------
+Wed Feb  8 15:54:49 UTC 2012 - dlovasko@suse.com
+
+- fixed bnc#743146 - added -fPIE/-pie/-fPIC flags to compilation and linking of isdnctrl and vboxbeep
+
+-------------------------------------------------------------------
+Tue Jan  3 20:31:14 UTC 2012 - jengelh@medozas.de
+
+- Use desired interpreter properly in %post
+- Remove redundant sections
+
+-------------------------------------------------------------------
+Thu Dec 22 12:19:33 CET 2011 - dmueller@suse.de
+
+- fix build on arm (fix va_list usage)
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:00 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Mon Aug 29 18:52:47 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in i4l-base.spec
+
+-------------------------------------------------------------------
+Mon Nov  8 13:23:39 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Tue Jul 27 12:18:35 CEST 2010 - ro@suse.de
+
+- drop glitz-devel from buildrequires (glitz backend was dropped
+  from cairo two years ago)
+
+-------------------------------------------------------------------
+Sun Jan 31 23:45:09 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sun Dec  6 11:14:03 CET 2009 - meissner@suse.de
+
+- fixed ppp version after version change in ppp.
+
+-------------------------------------------------------------------
+Wed Dec  2 12:17:59 CET 2009 - max@suse.de
+
+- Update and cleanup udev rules to fix a bug with capiinit.
+  (bnc#557617)
+
+-------------------------------------------------------------------
+Thu Sep 17 00:08:54 CEST 2009 - crrodriguez@suse.de
+
+-  use find_lang
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Tue Jun  9 01:21:28 CEST 2009 - ro@suse.de
+
+- divactrl: rename dprintf to my_dprintf to avoid collision with
+  function from glibc 
+
+-------------------------------------------------------------------
+Thu Apr 30 15:17:29 CEST 2009 - werner@suse.de
+
+- Use usleep for more often
+
+-------------------------------------------------------------------
+Mon Mar  2 13:06:52 CET 2009 - kkeil@suse.de
+
+- fix some issue with the CAPI 2.0 libraries (bnc#475808)
+- fix load script for Fritz!Card PnP/PCI v2.0  (bnc#465219)
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Dec  2 11:53:04 CET 2008 - behlert@suse.de
+
+- fixed preun macro [bnc#450829]
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov  7 15:03:51 CET 2008 - kkeil@suse.de
+
+- Use dynamic loadable capi modules to support extensions e.g.
+  for remote capi (client side) (bnc#345833)
+
+-------------------------------------------------------------------
+Tue Sep 16 13:06:02 CEST 2008 - ro@suse.de
+
+- fix build with ppp version not matching directory 
+
+-------------------------------------------------------------------
+Sun Aug 31 13:49:54 CEST 2008 - kkeil@suse.de
+
+- update to isdn4k-utils v3.13
+  * includes all our patches
+- fix loading for HFC USB
+
+-------------------------------------------------------------------
+Tue Aug 26 16:21:20 CEST 2008 - kkeil@suse.de
+
+- fix vbox to get correct CFLAGS 
+
+-------------------------------------------------------------------
+Fri Aug 22 16:15:38 CEST 2008 - kkeil@suse.de
+
+- Fix EAZMAP map commands (bnc#419114)
+
+-------------------------------------------------------------------
+Tue Jul 22 18:10:19 CEST 2008 - werner@suse.de
+
+- Fix isdn boot script by removing a loop at stop mode
+
+-------------------------------------------------------------------
+Sun May 25 18:08:50 CEST 2008 - kkeil@suse.de
+
+- fix typo in AUTODNS handling (bnc#217845)
+
+-------------------------------------------------------------------
+Tue Apr 22 13:38:21 CEST 2008 - max@suse.de
+
+- Moved the userpass pppd plugin into a separate subpackage,
+  because its use cases are not limited to ISDN or CAPI.
+- Fixed installation location of the pppd plugins to follow the
+  ppp package's move to libdir.
+- Make ppp-userpass and capi4linux depend on the version of ppp
+  that was used for building.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Apr  4 23:16:55 CEST 2008 - kkeil@suse.de
+
+- build vbox with tcl version 8.5
+
+-------------------------------------------------------------------
+Fri Feb  1 16:25:11 CET 2008 - kkeil@suse.de
+
+- fix too small array in divactrl (bnc#357338)
+
+-------------------------------------------------------------------
+Tue Nov 27 13:03:19 CET 2007 - kkeil@suse.de
+
+- update to isdn4k-utils v3.12
+- disable eurofile transfer (#278216)
+
+-------------------------------------------------------------------
+Sat Oct 20 17:29:37 CEST 2007 - kkeil@suse.de
+
+- fix wrong AUTODNS test (#335427)
+
+-------------------------------------------------------------------
+Tue Oct  9 11:48:56 CEST 2007 - kkeil@suse.de
+
+- only if{up|down}-isdn is used now (#332092)
+
+-------------------------------------------------------------------
+Mon Sep 17 13:28:46 CEST 2007 - kkeil@suse.de
+
+- fix reference to file /etc/sysconfig/hardware/scripts/functions
+  which do not longer exist (#310900)
+
+-------------------------------------------------------------------
+Thu Aug 16 12:23:09 CEST 2007 - kkeil@suse.de
+
+- fix auto DNS to allow overwrite DNS adresses (#200499)
+
+-------------------------------------------------------------------
+Mon Jul 30 09:26:03 CEST 2007 - aj@suse.de
+
+- Add libpcap-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jun 21 15:56:52 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Wed May 23 21:37:35 CEST 2007 - kkeil@suse.de
+
+- update to isdn4k-utils v3.11
+  * fix vbox on 64 bit systems
+  * includes all former patches
+  * add capi4linux-devel package
+
+-------------------------------------------------------------------
+Thu Mar 29 13:39:07 CEST 2007 - aj@suse.de
+
+- Add ncurses-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar 17 08:11:00 CET 2007 - aj@suse.de
+
+- /lib/firmware is now in filesystem package.
+
+-------------------------------------------------------------------
+Tue Nov 14 01:45:50 CET 2006 - schwab@suse.de
+
+- Fix syntax error in udev rule.
+- Fix undefined operations.
+
+-------------------------------------------------------------------
+Tue Aug  8 20:31:18 CEST 2006 - kkeil@suse.de
+
+- update to isdn4k-utils v3.
+     * support for pppd 2.4.4 and above
+     * includes all former patches
+
+-------------------------------------------------------------------
+Tue Aug  1 18:38:05 CEST 2006 - kkeil@suse.de
+
+- cleanup X11 directories for xorg 7
+- some fixes for BIG ENDIAN
+
+-------------------------------------------------------------------
+Mon Jul  3 17:46:23 CEST 2006 - kkeil@suse.de
+
+- HZ is not used anymore, this value is defined as duration in 
+  1/100 seconds independ from system HZ value
+
+-------------------------------------------------------------------
+Thu May 18 15:02:28 CEST 2006 - schwab@suse.de
+
+- Don't build as root.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Apr 25 16:59:01 CEST 2006 - kkeil@suse.de
+
+- remove acess to not longer existing /etc/hotplug (#169186)
+
+-------------------------------------------------------------------
+Tue Feb 28 11:36:29 CET 2006 - kkeil@suse.de
+
+- copy devices only if they are not already created (#154056)
+
+-------------------------------------------------------------------
+Tue Feb 14 18:01:03 CET 2006 - kkeil@suse.de
+
+- removed km_ipppcomp
+- add capi-adsl ppp template
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:28:47 CET 2006 - kkeil@suse.de
+
+- make isdnlog database and config UTF8 coded (#64152)
+
+-------------------------------------------------------------------
+Sun Jan 15 16:56:48 CET 2006 - kkeil@suse.de
+
+- update to isdn4k-utils v3.9
+  * includes all former patches
+  * fix use of CFLAGS to not overwrite feature defines (#140755)
+- ip address is not longer working (now ip addr) (#140755)
+
+-------------------------------------------------------------------
+Mon Dec 19 15:54:08 CET 2005 - kkeil@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Tue Dec 13 20:06:11 CET 2005 - kkeil@suse.de
+
+- integration of udev fles i4l-base
+
+-------------------------------------------------------------------
+Thu Oct 13 17:43:18 CEST 2005 - kkeil@suse.de
+
+- fix example script to use LD_LIBRARY_PATH in a safe way (#118188)
+
+-------------------------------------------------------------------
+Tue Oct  4 23:28:49 CEST 2005 - kkeil@suse.de
+
+- take care on RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Fri Sep 30 15:40:22 CEST 2005 - kkeil@suse.de
+
+- fix xisdnload segfault (#118211)
+- minor cleanups for gcc warnings
+
+-------------------------------------------------------------------
+Mon Sep 19 16:58:45 CEST 2005 - kkeil@suse.de
+
+- fixes for new autobuild checks
+- explicit loading of hisax_isac in load-hisax_fcpcipnp (#117646)
+
+-------------------------------------------------------------------
+Mon Aug 15 12:59:27 CEST 2005 - kkeil@suse.de
+
+- fix hotplug scripts for PCMCIA/USB (#102342)
+- do not always run ISDN start script (#104590) 
+
+-------------------------------------------------------------------
+Sun Aug  7 12:24:32 CEST 2005 - kkeil@suse.de
+
+- fix filter stuff for libpcap version 0.9.3 (see #102460)
+
+-------------------------------------------------------------------
+Fri Aug  5 12:58:34 CEST 2005 - kkeil@suse.de
+
+- fix init-scripts
+
+-------------------------------------------------------------------
+Mon Aug  1 19:28:55 CEST 2005 - kkeil@suse.de
+
+- update to version v3.8
+
+-------------------------------------------------------------------
+Sat Apr  9 18:52:51 CEST 2005 - kkeil@suse.de
+
+- fix GCC4 errors
+
+-------------------------------------------------------------------
+Tue Mar 29 17:22:41 CEST 2005 - kkeil@suse.de
+
+- STARTMODE "onboot" is called "auto" now (#74520)
+
+-------------------------------------------------------------------
+Mon Mar 21 11:24:21 CET 2005 - kkeil@suse.de
+
+- fix USB load scripts (#71995)
+
+-------------------------------------------------------------------
+Fri Mar 18 12:36:18 CET 2005 - kkeil@suse.de
+
+- make Eicon active cards working with 2.6 drivers (#73806)
+- fix wrong load-fcdslsl script (#73048)
+
+-------------------------------------------------------------------
+Mon Mar 14 17:42:22 CET 2005 - kkeil@suse.de
+
+- do not start if device has STARTMODE hotplug on boot (#71230)
+- change some german text to UTF-8 (#71249)
+
+-------------------------------------------------------------------
+Tue Mar  8 08:28:34 CET 2005 - kkeil@suse.de
+
+- fix CAPI20 SENDING_COMPLETE handling
+- fix some module load races
+- use hotplug to load fcdslsl (#66050)
+- remove empty variables from ifcfg- files (#66782)
+
+-------------------------------------------------------------------
+Tue Mar  1 09:59:26 CET 2005 - kkeil@suse.de
+
+- cleanup CAPI20 changes
+- fix vboxbeep suid root handling (#66111)
+- create ISDN devicenodes under /dev if not already there
+- change "isdn stop" to only shutdown isdnlog
+  "isdn unload" now try to unload drivers (#65297)
+
+-------------------------------------------------------------------
+Mon Feb 21 18:57:20 CET 2005 - kkeil@suse.de
+
+- update to isdn4kutils 3.7
+  * libcapi20 major 3
+     - fix missing SENDING COMPLETE in ALERT_REQ
+     - fix missing Globalconfiguration in BProtocol struct
+  * firmware now in /lib/firmware/isdn
+  * card config tools are under /sbin now
+
+-------------------------------------------------------------------
+Mon Dec 13 23:08:36 CET 2004 - kkeil@suse.de
+
+- update to isdn4kutils 3.6 with pppd 2.4.3 support
+
+-------------------------------------------------------------------
+Mon Sep 27 16:46:43 CEST 2004 - kkeil@suse.de
+
+- add missing new drivers to hotplug files
+
+-------------------------------------------------------------------
+Mon Sep 13 17:41:37 CEST 2004 - kkeil@suse.de
+
+- add support for new Fritz!Card USB versions
+
+-------------------------------------------------------------------
+Tue Sep  7 23:12:55 CEST 2004 - kkeil@suse.de
+
+- add option to ignore managment frames of some PBX (#44792)
+
+-------------------------------------------------------------------
+Mon Aug 30 18:06:02 CEST 2004 - kkeil@suse.de
+
+- update to isdn4kutils v3.5
+- handle USERCONTROL in SuSEconfig.isdn (#44388)
+
+-------------------------------------------------------------------
+Thu May 27 19:16:46 CEST 2004 - kkeil@suse.de
+
+- use DES routines from open-ssl to reenable MSCHAP support(#41349)
+- fix typo in suseconfig template (see #29088)
+- fix and cleanup docu
+- back to previous B1 firmware version - new hangs on some HW
+
+-------------------------------------------------------------------
+Mon May  3 18:27:41 CEST 2004 - kkeil@suse.de
+
+- fix wrong USB IDS for Fritz!Card DSL SL USB (#39820) 
+- fix scripts with rmmod; it don't longer accept -r switch
+- bluez module is called bluetooth in kernel 2.6
+- update AVM firmware for B1,C2 and C4 to current versions
+
+-------------------------------------------------------------------
+Mon Apr  5 13:45:36 CEST 2004 - kkeil@suse.de
+
+- add ISDN PCMCIA specific files to i4l-base (#38192)
+
+-------------------------------------------------------------------
+Fri Apr  2 11:47:36 CEST 2004 - kkeil@suse.de
+
+- secfix in post install: remove update code for prior 8.0 (#37436)
+- add CAPI20 compilant DATA B3 IND message handling
+- add Fritz!Card DSL SL USB in hotplug scripts
+
+-------------------------------------------------------------------
+Mon Mar 29 12:23:02 CEST 2004 - kkeil@suse.de
+
+- secfix for vbox3 (#33886)
+- fix load-c4 script to work with c2 and kernel 2.6
+
+-------------------------------------------------------------------
+Mon Mar 22 07:28:03 CET 2004 - kkeil@suse.de
+
+- fix filter DLT value for new libpcap (same as in pppd bug #34569)
+- fix unreadable doc README.SuSE (#36327)
+
+-------------------------------------------------------------------
+Mon Feb 16 20:04:25 CET 2004 - olh@suse.de
+
+- remove dependency to /etc/modules.conf, this file is gone
+
+-------------------------------------------------------------------
+Sat Feb 14 16:16:18 CET 2004 - kkeil@suse.de
+
+- update utils to support ppp 2.4.2
+
+-------------------------------------------------------------------
+Thu Feb 12 11:25:24 CET 2004 - kkeil@suse.de
+
+- update to utils version v3.4 
+
+-------------------------------------------------------------------
+Thu Feb 12 01:27:02 CET 2004 - ro@suse.de
+
+- adapt to change in libpcap: include moved to pcap_bpf.h
+
+-------------------------------------------------------------------
+Tue Jan 13 09:38:04 CET 2004 - aj@suse.de
+
+- Fix mismatch of declarations.
+
+-------------------------------------------------------------------
+Wed Nov  5 00:06:57 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add run_permissions 
+
+-------------------------------------------------------------------
+Wed Sep 17 10:44:49 CEST 2003 - kkeil@suse.de
+
+- replace README.SuSE for isdnlog with proofread Version (#30252)
+- remove debug code
+
+-------------------------------------------------------------------
+Tue Sep 16 14:08:19 CEST 2003 - kkeil@suse.de
+
+- message on ifup, if no ISDN hardware is activ (#29946)  
+
+-------------------------------------------------------------------
+Tue Sep 16 00:11:12 CEST 2003 - kkeil@suse.de
+
+- fix isdnmonp wishx ---> wish (#30963)
+- add some english docu for isdnlog (#30252)
+- fix aplay call in vboxplay (#28144)
+- do not modify secrets if MODIFY_SECRETS=no is set (#29088)
+
+-------------------------------------------------------------------
+Mon Sep  1 16:55:19 CEST 2003 - kkeil@suse.de
+
+- miss active-filter in .config file so ipppd don't start (#29762)
+- add scripts und USB IDs for Auerswald USB setup (#26399)
+
+-------------------------------------------------------------------
+Mon Aug 18 21:07:59 CEST 2003 - kkeil@suse.de
+
+- fix permissions for /etc/ppp/peers (#29001)
+
+-------------------------------------------------------------------
+Mon Aug 18 17:38:05 CEST 2003 - kkeil@suse.de
+
+- Fix chown in SuSEconfig.isdn (#28769)
+- typo fixes in capiinfo
+- add new AVM DSL cards start scripts
+
+-------------------------------------------------------------------
+Mon Aug 11 17:38:39 CEST 2003 - kkeil@suse.de
+
+- update to current 3.3 remove obsolete patches 
+
+-------------------------------------------------------------------
+Tue Jul 29 15:14:46 CEST 2003 - aj@suse.de
+
+- Fix chown invocation.
+
+-------------------------------------------------------------------
+Thu Jun 12 20:20:22 CEST 2003 - kkeil@suse.de
+
+- fix filelist
+
+-------------------------------------------------------------------
+Mon May 26 15:42:46 CEST 2003 - kkeil@suse.de
+
+- cleanup build tree 
+
+-------------------------------------------------------------------
+Wed Apr  9 12:51:17 CEST 2003 - kkeil@suse.de
+
+- fix problem with capiinit and B1 V4 (#26028)
+
+-------------------------------------------------------------------
+Mon Mar 10 15:38:10 CET 2003 - kkeil@suse.de
+
+- add ipppd filter to make the timeout working again (#24998)
+
+-------------------------------------------------------------------
+Fri Mar  7 14:31:47 CET 2003 - ro@suse.de
+
+- added xinetd config file for i4l-vbox (#24672)
+
+-------------------------------------------------------------------
+Mon Feb 24 23:06:49 CET 2003 - kkeil@suse.de
+
+- update to current 3.2b3 main version remove obsolete patches
+- 3.2b3 also fix some vbox problem on PPC (#23907)
+- fix problems with multiple activ AVM cards (#23966)
+
+-------------------------------------------------------------------
+Mon Feb 17 18:14:00 MET 2003 - kkeil@suse.de
+
+- remove extra output of postinstall (#23182)
+- fix isdnlog problems with FritzX USB (#23640)
+- fix problems with backslash in usernames (e.g. win NT) (#23157)
+- fix false "done" retcode if driver was not properly loaded (#23642)
+- include latest isdn.conf and rate.conf files from base packages
+
+-------------------------------------------------------------------
+Mon Jan 20 11:07:26 CET 2003 - kkeil@suse.de
+
+- merge patches and update to new basic isdn4k-utils version v3.2p2
+
+-------------------------------------------------------------------
+Fri Jan 17 12:39:45 CET 2003 - kkeil@suse.de
+
+- add local logrotate scripts for isdnlog and vbox
+
+-------------------------------------------------------------------
+Thu Nov 28 16:18:25 CET 2002 - kkeil@suse.de
+
+- fix a typo in the SuSEconfig.isdn script which deletes
+  /etc/pcmcia/avm.conf (#22176)
+
+-------------------------------------------------------------------
+Sun Nov 24 19:41:08 CET 2002 - kkeil@suse.de
+
+- fix a multiline string problem with new GCC 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <sp> to <opensp>
+- changed neededforbuild <sp-devel> to <>
+
+-------------------------------------------------------------------
+Mon Nov 11 09:14:08 CET 2002 - kukuk@suse.de
+
+- Don't send email about changes on new products (#21414)
+
+-------------------------------------------------------------------
+Fri Nov  1 17:54:00 MET 2002 - kkeil@suse.de
+
+- fix problems with USB hotplug (#21485)
+- scripts are bash not sh
+- add T1/T1B support (#21486)
+- fix documentation for dialin (#21433)
+- add some missing variables in SuSEconfig.isdn (#20561)
+- add support for remote hostnames in secret files (#19883)
+- fix race (endless loop) in isdnctrl (#21491)
+- add handling of fcpcmcia_cs to SuSEconfig.isdn (#21492)
+- fix load-c4 startscript again (#19912)
+
+-------------------------------------------------------------------
+Mon Oct 28 15:52:36 MET 2002 - kkeil@suse.de
+
+- capiinit work now for protocol != DSS1 too (#21352) 
+
+-------------------------------------------------------------------
+Tue Oct  1 08:35:14 MEST 2002 - kkeil@suse.de
+
+- fix CHARGEMAX stop script (#20160)
+
+-------------------------------------------------------------------
+Sat Sep 28 19:22:42 MEST 2002 - kkeil@suse.de
+
+- fix wrong path in oldi4l2new.sh (#20119)
+
+-------------------------------------------------------------------
+Fri Sep 20 09:55:35 MEST 2002 - kkeil@suse.de
+
+- fix endless loop in load-c4 startscript (#19912)
+
+-------------------------------------------------------------------
+Thu Sep 19 12:04:21 MEST 2002 - kkeil@suse.de
+
+- fix the remove of backslash characters in ppp secret files (#19857)
+
+-------------------------------------------------------------------
+Wed Sep 18 12:36:13 MEST 2002 - kkeil@suse.de
+
+- fix firmware problem of AVM C2 (#19780)
+- support DRIVER_OPTIONS config variable for CAPI
+- update firmware files to current AVM versions
+
+-------------------------------------------------------------------
+Tue Sep 17 19:06:04 MEST 2002 - kkeil@suse.de
+
+- fix isdn interface setup sequence, needed for controllers which
+  don't support X.75 (#19784)
+- preserve file creation times in install (use install -p)
+
+-------------------------------------------------------------------
+Sun Sep  8 19:35:42 MEST 2002 - kkeil@suse.de
+
+- fix Provides for update (#19096)
+- fix the need of reconnect a hotplug driver after config with YaST
+  (#18832)
+-------------------------------------------------------------------
+Thu Sep  5 13:15:55 MEST 2002 - kkeil@suse.de
+
+- add smpppd reload in isdn start script to fix (#18778)
+
+-------------------------------------------------------------------
+Wed Sep  4 08:20:42 MEST 2002 - kkeil@suse.de
+
+- create pap/chap secret entries for all providers (#18839)
+- use USB hotplug scripts (#18832)
+- start rcsmpppd after start of ipppd (#18778)
+
+-------------------------------------------------------------------
+Sun Sep  1 21:51:52 MEST 2002 - kkeil@suse.de
+
+- Add support for AVM Fritz!X OEM versions sold in CZ (#16388)
+
+-------------------------------------------------------------------
+Fri Aug 23 08:15:53 MEST 2002 - kkeil@suse.de
+
+- add security patch for isdnctrl (Olaf Kirch)
+- remove SUID for vboxbeep, if needed it will be set
+  via /etc/permission... security profiles
+
+-------------------------------------------------------------------
+Mon Aug 19 18:51:50 MEST 2002 - kkeil@suse.de
+
+- fix PreReq (#17877))
+- use MODIFYDNS not USEPEERDNS (#17574)
+- update oldvariables in SuSEconfig.isdn
+- write a initial resolv.conf if DEMAND
+  and DEFAULTROUTE and DNS1 is set
+
+-------------------------------------------------------------------
+Tue Aug  6 21:20:19 MEST 2002 - kkeil@suse.de
+
+- fix SuSEconfig.isdn run without any ISDN cfg* files (#17441) 
+
+-------------------------------------------------------------------
+Tue Jul 30 15:47:01 CEST 2002 - kukuk@suse.de
+
+- use changes, not spec file for date calculation
+
+-------------------------------------------------------------------
+Mon Jul 29 16:35:31 CEST 2002 - kkeil@suse.de
+
+- scripts for next release
+
+-------------------------------------------------------------------
+Sat Jul 20 19:53:53 MEST 2002 - kkeil@suse.de
+
+- split packages
+
+-------------------------------------------------------------------
+Fri Jul 19 16:43:58 MEST 2002 - kkeil@suse.de
+
+-  update to isdn4k-utils 3.2p1
+  * Kernel source /usr/src/linux is not longer needed for build
+- remove rc.config references (#17020)
+- add CBDELAY parameter
+
+-------------------------------------------------------------------
+Thu Jul 18 10:59:58 MEST 2002 - kkeil@suse.de
+
+- fix bug in the ipppd buffer overflow fixes
+
+-------------------------------------------------------------------
+Tue Jul  9 15:06:00 MEST 2002 - kkeil@suse.de
+
+- add Fritz!Card DSL start/stop script
+- minor docu fixes
+
+-------------------------------------------------------------------
+Fri Jul  5 17:45:33 MEST 2002 - kkeil@suse.de
+
+- use isdn4k-utils v3.1
+
+-------------------------------------------------------------------
+Wed Jul  3 16:30:59 CEST 2002 - max@suse.de
+
+- Changed vbox to accept Tcl 8.4 as well.
+
+-------------------------------------------------------------------
+Wed Jul  3 13:45:55 MEST 2002 - kkeil@suse.de
+
+- remove killipppd and SUID root for ipppd
+- buffer overflow fixes for ipppd
+
+-------------------------------------------------------------------
+Fri Jun 28 12:21:42 CEST 2002 - ro@suse.de
+
+- use -fPIC when creating shared objects 
+
+-------------------------------------------------------------------
+Fri Jun 14 00:06:49 CEST 2002 - ro@suse.de
+
+- always use macros when calling insserv 
+
+-------------------------------------------------------------------
+Tue Jun 11 16:54:48 MEST 2002 - mls@suse.de
+
+- delete bogus config.* files from i4ldoc/act2000
+
+-------------------------------------------------------------------
+Tue May 14 00:55:13 CEST 2002 - ro@suse.de
+
+- move libcapi20 libs to libdir where needed 
+
+-------------------------------------------------------------------
+Mon Apr 22 12:08:28 CEST 2002 - kkeil@suse.de
+
+- fix typo in add-hisax PARA_MEM -> PARA_MEMBASE (#15919)
+
+-------------------------------------------------------------------
+Mon Apr 22 10:16:11 CEST 2002 - kkeil@suse.de
+
+- read real ID for hisaxctrl from /dev/isdninfo (#15916)
+
+-------------------------------------------------------------------
+Sat Apr 20 00:30:17 CEST 2002 - kkeil@suse.de
+
+- fix wrong user/name for multiple connections (#15773)
+- fix wrong relativ path in update.hwscan (#15865)
+- fix missing SECURE setting for interface (#15838)
+- add USB scripts to modules.conf
+
+-------------------------------------------------------------------
+Tue Apr  2 14:04:44 MEST 2002 - kkeil@suse.de
+
+- fix wrong autoconf syntax; newer autoconf is more strict 
+
+-------------------------------------------------------------------
+Tue Mar 26 19:57:24 CET 2002 - kkeil@suse.de
+
+- tag updated ISDN cards as configured for hwscan (#15532)
+- add name for updated ISDN cards
+- fix wrong absolut pathes to etc/ppp/...
+- add some docu for new setup
+
+-------------------------------------------------------------------
+Mon Mar 25 18:00:55 MET 2002 - kkeil@suse.de
+
+- make update working (#15360, #15420)
+
+-------------------------------------------------------------------
+Thu Mar 21 17:56:03 CET 2002 - kkeil@suse.de
+
+- add /var/run/ipppd.ipppX.provider file (part of #15236)
+- fix bug in etc/sysconfig/isdn/scripts/load-hisax_fcpcipnp if
+  loading more cards
+- add firmware for Fritz usb
+- add REMOTE_IN processing in SuSEconfig.isdn
+
+-------------------------------------------------------------------
+Sat Mar 16 22:26:32 CET 2002 - kukuk@suse.de
+
+- Fix typo in etc/sysconfig/isdn/scripts/load-hisax_fcpcipnp
+
+-------------------------------------------------------------------
+Thu Mar 14 23:59:01 CET 2002 - kkeil@suse.de
+
+- some fixes to make hotplug working (#13853)
+
+-------------------------------------------------------------------
+Mon Mar 11 23:34:34 CET 2002 - kkeil@suse.de
+
+- don't setup interface from rc script if password will asked (#14777)
+- manual load all controller (#14821)
+
+-------------------------------------------------------------------
+Sat Mar  9 15:36:10 CET 2002 - kukuk@suse.de
+
+- Add /etc/isdn to filelist
+
+-------------------------------------------------------------------
+Fri Mar  8 15:26:23 CET 2002 - kkeil@suse.de
+
+- user must not quoted on commandline (yes tested also with
+  tonline account including #)
+
+-------------------------------------------------------------------
+Fri Mar  8 00:47:59 CET 2002 - kkeil@suse.de
+
+- SuSEconfig.isdn: delete files for deleted setups (#14633)
+- SuSEconfig.isdn: is a bash script (#14628)
+- to many rc_reset in rc scripts so failures are not reported
+
+-------------------------------------------------------------------
+Mon Mar  4 11:35:10 MET 2002 - kkeil@suse.de
+
+- ask interactiv for password (#12413)
+- implement simple provider switching (#6169)
+- fix various bugs in scripts
+
+-------------------------------------------------------------------
+Mon Feb 25 23:59:34 MET 2002 - kkeil@suse.de
+
+- fix rcisdn to handle selected controller
+- support for Fritz CAPI driver
+- fix AXP compiler problem
+
+-------------------------------------------------------------------
+Mon Feb 25 12:07:47 MET 2002 - kkeil@suse.de
+
+- start script is now called rcisdn
+- use interface specific ifroute-<config> and not global routes file 
+
+-------------------------------------------------------------------
+Mon Feb 25 04:04:57 MET 2002 - kkeil@suse.de
+
+- move to sysconfig completed
+- go to isdn4k-utils 3.1pre4 (isdnlog with EURO support)
+- new isdnlog default setup without xisdn (#13095)
+- IPPPD_OPTIONS for extra user parameter (#13211)
+- DIALPREFIX (often needed for S0 on local PBX) (#9531)
+- AREACODE to better isdnlog setup
+- fix isdnmon for multiple cards (#10299)
+- fix km_ipppcomp MODULE_LICENSE
+
+-------------------------------------------------------------------
+Tue Feb 19 04:30:05 MET 2002 - kkeil@suse.de
+
+- more changes for new sysconfig setup
+    - now only one isdn rc script for hardware setup
+    - networksetup is done via ifup/down 
+
+-------------------------------------------------------------------
+Mon Feb  4 13:11:45 CET 2002 - schwab@suse.de
+
+- Fix use of set in rc script.
+
+-------------------------------------------------------------------
+Wed Jan 30 02:36:48 MET 2002 - kkeil@suse.de
+
+- minor fixes in the utils
+
+-------------------------------------------------------------------
+Wed Jan 30 00:44:15 CET 2002 - ro@suse.de
+
+- don't complain if no interfaces are configured
+- remove I4L_START from rc.config on update 
+
+-------------------------------------------------------------------
+Tue Jan 29 22:05:35 MET 2002 - kkeil@suse.de
+
+- v3.1pre3
+- new sysconfig setup
+
+-------------------------------------------------------------------
+Mon Nov 12 17:55:24 CET 2001 - ro@suse.de
+
+- run automake et al in capiinfo and capifax
+
+-------------------------------------------------------------------
+Fri Sep 14 14:19:29 CEST 2001 - ro@suse.de
+
+- tweak Makefile.module again (now it works, tested)
+
+-------------------------------------------------------------------
+Fri Sep 14 10:21:14 CEST 2001 - ro@suse.de
+
+- make sure help-targets are done first in ipppcomp Makefile.module 
+- unified changelog
+
+-------------------------------------------------------------------
+Mon Aug 13 15:51:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sp_libs> to <sp-devel>
+
+-------------------------------------------------------------------
+Fri Jul 20 13:28:55 MEST 2001 - kkeil@suse.de
+
+- make startscript status LSB compliant
+- fix startscript bug to load HiSax firmware at multiple cards
+
+-------------------------------------------------------------------
+Fri Jul 20 01:51:53 MEST 2001 - kkeil@suse.de
+
+- fix missing /var/spool/vbox /var/log/vbox dir (Bug 9452)
+- Fix MPPP related bug (slave hangup take ipcp down)
+- pppcapiplugin examples with right plugin path
+
+-------------------------------------------------------------------
+Sun Jul  1 23:58:33 MEST 2001 - kkeil@suse.de
+
+- make alpha working again 
+
+-------------------------------------------------------------------
+Sat Jun 23 23:40:44 MEST 2001 - kkeil@suse.de
+
+- update old /etc/isdn/isdn.conf (.gdbm -> .cdb) 
+
+-------------------------------------------------------------------
+Fri Jun 22 12:19:13 MEST 2001 - kkeil@suse.de
+
+- fix typo in i4l script (BUG 8992)
+- workaround for wrong headers in 2.4.5
+- isdn4k-utils.v3.1pre2
+
+-------------------------------------------------------------------
+Wed Jun 13 21:09:51 MEST 2001 - kkeil@suse.de
+
+- fix for new libtool 
+
+-------------------------------------------------------------------
+Fri May  4 01:48:18 MEST 2001 - kkeil@suse.de
+
+- workaround <linux/version.h> including 
+
+-------------------------------------------------------------------
+Tue Apr 17 15:52:56 MEST 2001 - kkeil@suse.de
+
+- add killipppd program
+- add hook for ip_resend in start script 
+- leased line improvement (BUG 6454)
+
+-------------------------------------------------------------------
+Fri Apr  6 15:49:45 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild lx_suse to kernel-source
+- fix spec file
+
+-------------------------------------------------------------------
+Fri Mar 30 15:37:14 CEST 2001 - kkeil@suse.de
+
+- ipppcomp isdn_lzh now as km_i4lccp 
+
+-------------------------------------------------------------------
+Thu Mar 29 21:04:31 CEST 2001 - kkeil@suse.de
+
+- new firmware from AVM: works with B1 V4
+
+-------------------------------------------------------------------
+Mon Mar  5 14:53:23 CET 2001 - kkeil@suse.de
+
+- clean up some old docu (BUG 6592)
+
+-------------------------------------------------------------------
+Fri Mar  2 03:17:53 CET 2001 - kkeil@suse.de
+
+- fix missing exec mode on start scripts (BUG 6527)
+- check for existing programs in start scripts (BUG 6480)
+- include version info in notify mail (BUG 6405)
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Wed Feb 14 14:18:53 CET 2001 - kkeil@suse.de
+
+- fix eicon to test linux/isdn.h and not /usr/src/linux/include/...
+
+-------------------------------------------------------------------
+Tue Feb  6 13:55:53 CET 2001 - kkeil@suse.de
+
+- isdn4k-util-glibc.dif for missing time.h includes
+- add lx_suse to need_for_build (some isdn programms need
+  /usr/src/linux/drivers/isdn/... during autoconf to select features)
+
+-------------------------------------------------------------------
+Wed Jan 17 05:43:19 CET 2001 - kkeil@suse.de
+
+- fix isdnlog to close stdio's if going daemon (#BUG 5807
+
+-------------------------------------------------------------------
+Wed Jan 17 04:37:06 CET 2001 - kkeil@suse.de
+
+- update eiconctrl to v2.2 and Eicon firmware (BUG #5808) 
+
+-------------------------------------------------------------------
+Wed Jan 17 01:15:38 CET 2001 - kkeil@suse.de
+
+- usr/doc ---> usr/share/doc in documents/templates (BUG #5806) 
+
+-------------------------------------------------------------------
+Mon Jan 15 15:27:26 CET 2001 - kkeil@suse.de
+
+- remove README.dynip - outdated info (BUG #1562)  
+
+-------------------------------------------------------------------
+Mon Jan 15 01:25:34 CET 2001 - kkeil@suse.de
+
+- adding update etc/ppp/options.ippp? for "defaultroute"
+  (bug #5658)
+- send only mail to root if it was an pre 6.4 or files are changed
+
+-------------------------------------------------------------------
+Sun Jan  7 01:59:16 CET 2001 - kkeil@suse.de
+
+- etc/ppp/ioptions.YaST: enable defaultroute option (bug #3949)
+- i4l_hardware.templ: set I4L_TYPE_1 to "" instead of "6"
+  YaST2 need this
+
+-------------------------------------------------------------------
+Wed Nov 29 18:12:42 CET 2000 - kkeil@suse.de
+
+- changes for new init
+- i4l_hardware: EAZ mapping for all cards, not only hisax
+- archives now bzip2
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:53 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Tue Nov 28 17:47:01 CET 2000 - ro@suse.de
+
+- fixed startscripts (not requiring remote_fs despite using /usr) 
+
+-------------------------------------------------------------------
+Mon Sep 25 16:53:02 MEST 2000 - kkeil@suse.de
+
+- add a man.in -> man rule in xmonisdn Imakefile for new xmkmf .html pages
+
+-------------------------------------------------------------------
+Thu Jul 20 22:01:32 MEST 2000 - kkeil@suse.de
+
+- workaround for a PPC compiler bug triggered by capi20.c 
+
+-------------------------------------------------------------------
+Tue Jul 11 13:04:54 MEST 2000 - kkeil@suse.de
+
+- insert netmask 255.255.255.255 as default for ipppd
+- Update MPPP docu
+- change comments in i4l.rc.config template (Bug 3256)
+
+-------------------------------------------------------------------
+Wed Jul  5 16:42:13 MEST 2000 - kkeil@suse.de
+
+- capi20 shared lib was not build because old libtool files
+
+-------------------------------------------------------------------
+Thu Jun 22 23:20:01 MEST 2000 - kkeil@suse.de
+
+- compiles now under all arch
+- utils v3.1pre1a
+- NI1 support
+
+-------------------------------------------------------------------
+Thu Jun  8 17:48:20 MEST 2000 - kkeil@suse.de
+
+- added %config(noreplace) to some config files
+
+-------------------------------------------------------------------
+Thu Jun  8 12:35:49 MEST 2000 - kkeil@suse.de
+
+- utils are now v3.1pre1
+
+-------------------------------------------------------------------
+Wed May 31 14:07:14 MEST 2000 - kkeil@suse.de
+
+- change SBIN dir to /usr/sbin
+- new utils version
+- BUILDROOT support
+- cleanups
+
+-------------------------------------------------------------------
+Tue May 23 02:01:32 MEST 2000 - kkeil@suse.de
+
+- vbox now use TCL8.3
+- change docdir to FHS 
+
+-------------------------------------------------------------------
+Wed May 17 19:30:33 CEST 2000 - kasal@suse.cz
+
+- fix English spelling in mail to root; add blank lines to the mail
+
+-------------------------------------------------------------------
+Tue Apr  4 10:06:12 MEST 2000 - kkeil@suse.de
+
+- fix i4l_hardware sript to load ISAR firmware
+
+-------------------------------------------------------------------
+Wed Mar 29 12:48:55 MEST 2000 - kkeil@suse.de
+
+- fix i4l_hardware script (BUGs 2639,2640)
+- fix iprofd for newer kernel versions
+- fix i4l script ipppd pidfile remove race (BUG 1663)
+
+-------------------------------------------------------------------
+Tue Mar  7 20:39:55 CET 2000 - kkeil@suse.de
+
+- fix i4l_hardware script
+- ioptions.YaST template with new options
+- remove outdated docu
+
+-------------------------------------------------------------------
+Sat Mar  4 20:51:40 CET 2000 - werner@suse.de
+
+- Pack .isdnctrl_conf.8.gz or .isdnctrl_timru.8.gz depending
+  on the configuration (close bug #2170)
+
+-------------------------------------------------------------------
+Mon Feb 21 23:22:29 MET 2000 - kkeil@suse.de
+
+- fix version numbers
+- fix i4l_hardware for Eicon 
+
+-------------------------------------------------------------------
+Sun Feb 20 22:41:20 CET 2000 - kkeil@suse.de
+
+- new utils version
+- update isdn.conf for new isdnlog
+
+-------------------------------------------------------------------
+Sat Feb 19 20:31:30 CET 2000 - kkeil@suse.de
+
+- fix AXP compile
+- new isdnlog syslog default loglevel to reduce warnings
+- start scripts for EICON activ cards
+
+-------------------------------------------------------------------
+Thu Feb 17 00:48:39 CET 2000 - ro@suse.de
+
+- only source i4l_unknown if it exists 
+
+-------------------------------------------------------------------
+Wed Feb 16 21:38:04 CET 2000 - kkeil@suse.de
+
+- fix i4l_hardware for icn
+
+-------------------------------------------------------------------
+Wed Feb 16 19:34:33 CET 2000 - kkeil@suse.de
+
+- exit 0 in postinstall 
+
+-------------------------------------------------------------------
+Wed Feb 16 17:43:32 CET 2000 - kkeil@suse.de
+
+- changes for new yast
+
+-------------------------------------------------------------------
+Sun Feb 13 01:15:24 MET 2000 - kkeil@suse.de
+
+- new utils version
+- change /usr/man --> /usr/share/man
+
+-------------------------------------------------------------------
+Sat Jan 29 09:32:45 CET 2000 - kkeil@suse.de
+
+- capi stuff temporary disabled for ppc
+
+-------------------------------------------------------------------
+Fri Jan 21 17:17:39 MET 2000 - kkeil@suse.de
+
+- changes in script and templates for PCMCIA and standalone calls
+- AVM C4 integration
+- new utils version
+
+-------------------------------------------------------------------
+Wed Jan  5 11:09:55 CET 2000 - kukuk@suse.de
+
+- Remove lx_suse from need for build
+
+-------------------------------------------------------------------
+Mon Jan  3 18:06:37 MET 2000 - kkeil@suse.de
+
+- fix SLAVE dialmode for MPPP
+
+-------------------------------------------------------------------
+Sun Jan  2 18:29:34 MET 2000 - kkeil@suse.de
+
+- fix template for B1 PCMCIA card
+
+-------------------------------------------------------------------
+Sun Jan  2 01:35:32 MET 2000 - kkeil@suse.de
+
+- Y2K fix for isdnlog -t option
+
+-------------------------------------------------------------------
+Mon Nov  8 18:39:07 MET 1999 - kkeil@suse.de
+
+- Fix isapnp doc
+
+-------------------------------------------------------------------
+Mon Nov  8 14:49:30 MET 1999 - max@suse.de
+
+- changed isdnmon to use wish instead of wish4.2 
+
+-------------------------------------------------------------------
+Sat Nov  6 18:24:24 MET 1999 - kkeil@suse.de
+
+- i4l_hardware start iprofd for other cards as hisax too
+
+-------------------------------------------------------------------
+Sat Nov  6 17:47:44 MET 1999 - kkeil@suse.de
+
+- removed isdn_lzscomp.c (US patent issues)
+  for none US here 'll be a packet i4l_ccp available
+
+-------------------------------------------------------------------
+Tue Nov  2 22:24:06 MET 1999 - kkeil@suse.de
+
+- remove ip-up/down from package (was never used, ippp use the
+  script from /etc/ppp)
+- README.pcmcia added
+- fixes for isdnctrl, rate-de
+- spelling corrections
+- working scripts for PCMCIA and AVM B1
+
+-------------------------------------------------------------------
+Tue Oct 26 17:34:23 MEST 1999 - kkeil@suse.de
+
+- isdnrate was not in filelist 
+
+-------------------------------------------------------------------
+Mon Oct 25 23:44:02 MEST 1999 - kkeil@suse.de
+
+- shared libcapi20 was not in filelist for rpm
+
+-------------------------------------------------------------------
+Mon Oct 25 15:31:01 MEST 1999 - kkeil@suse.de
+
+- new utils snapshoot with fixed ipppd for -ac versions of kernel
+  libtool now need for capi20
+  isdnlog databased fixed (not so much errors during load)
+  install also at,nl,ch database files
+  rcapid now in /usr/sbin
+
+-------------------------------------------------------------------
+Sat Oct 16 15:22:45 MEST 1999 - kkeil@suse.de
+
+- new cards, vbox working, ISAR.BIN moved from firmware
+  update scripts
+
+-------------------------------------------------------------------
+Wed Oct 13 00:13:20 MEST 1999 - kkeil@suse.de
+
+- new utils snapshoot
+
+
+-------------------------------------------------------------------
+Mon Oct 11 17:05:55 MEST 1999 - max@suse.de
+
+- ready for the new Tcl/Tk packages
+
+-------------------------------------------------------------------
+Fri Oct  1 23:58:21 MEST 1999 - kkeil@suse.de
+
+- kernel README for /usr/doc/packages are now copied direct from kernel
+
+-------------------------------------------------------------------
+Fri Oct  1 15:46:51 MEST 1999 - kkeil@suse.de
+
+- new FAQ need sgmltool sp sp_libs for build
+- cleanup isdn4k-utils.dif
+
+-------------------------------------------------------------------
+Fri Sep 17 11:55:21 CEST 1999 - ro@suse.de
+
+- fixed typo in isdn.conf: zone-file has suffic gdbm
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 11:36:14 CEST 1999 - ro@suse.de
+
+- ipppd: ccp.c use isdn_lzscomp.h from ../ipppcomp if not in kernel
+
+-------------------------------------------------------------------
+Mon Aug 23 09:27:15 CEST 1999 - ro@suse.de
+
+- added yet another entry to isdn.conf:
+    ZONEFILE=/usr/lib/isdn/zone-de-%s.dat 
+
+-------------------------------------------------------------------
+Tue Aug 17 15:56:30 MEST 1999 - ro@suse.de
+
+- added security fix for xmonisdn: don�t install suid-root
+  if suid-root, don�t allow execution of scripts
+
+-------------------------------------------------------------------
+Tue Aug 17 10:48:36 MEST 1999 - ro@suse.de
+
+- i4l_suse: isdn.conf: added entries for AREADIFF, RATEFILE, HOLIDAYS
+                       COUNTRYFILE and (commented) RATECONF, SPECIALNUMBERS
+- i4l_suse: i4l_hardware: added code for AVM-B1-ISA
+
+-------------------------------------------------------------------
+Sat Jul 17 18:47:33 MEST 1999 - ro@suse.de
+
+- update to v3.1beta1
+- reworked specfile and dif 
+
+-------------------------------------------------------------------
+Sun Jul 11 15:17:12 MEST 1999 - ray@suse.de
+
+- add card�s 29-35 in i4l_hardware
+
+-------------------------------------------------------------------
+Thu Jun 24 18:10:26 MEST 1999 - ro@suse.de
+
+- removed /etc/ppp/ip-{up,down} (moved to aaa_base for conflict with ppp)
+
+-------------------------------------------------------------------
+Mon May 31 18:43:52 MEST 1999 - ray@suse.de
+
+- fix in ip-up
+
+-------------------------------------------------------------------
+Mon May  3 12:59:04 MEST 1999 - ray@suse.de
+
+- include country.dat, tarif.dat and sondernummern.dat in /usr/lib/isdn
+
+-------------------------------------------------------------------
+Mon Apr 26 17:10:16 MEST 1999 - ro@suse.de
+
+- BETA ONLY: added a second % in shell substution
+
+-------------------------------------------------------------------
+Mon Apr 12 01:27:10 MEST 1999 - ro@suse.de
+
+- VERSION FOR BETA
+- enable configure (simply needed for multi-platform)
+- isdnlog renamed _Exit to _I4Exit
+- add link /usr/include/tcl8.0.h -> tcl.h (removed after build)
+- vbox: to /usr/sbin and /etc/vbox as in other dif
+
+-------------------------------------------------------------------
+Fri Apr  9 10:30:43 MEST 1999 - ray@suse.de
+
+- fix startup iprofd for all cards
+
+-------------------------------------------------------------------
+Tue Apr  6 12:23:27 MEST 1999 - ray@suse.de
+
+- fix in spec file
+
+-------------------------------------------------------------------
+Tue Apr  6 09:51:13 MEST 1999 - ray@suse.de
+
+- fix in i4l_hardware - thanks Bernd ;)
+
+-------------------------------------------------------------------
+Fri Mar 19 11:34:50 MET 1999 - ray@suse.de
+
+- added dummy-type(99) in i4l_hardware
+
+-------------------------------------------------------------------
+Fri Mar 12 07:21:33 MET 1999 - ro@suse.de
+
+- do not use absolute paths in %post
+- etc/SuSE-release might not even exist..
+
+-------------------------------------------------------------------
+Thu Mar 11 15:45:17 MET 1999 - ray@suse.de
+
+- include I4L_SUBTYPE in /etc/rc.config.d/i4l_hisax.rc.config for YaST
+
+-------------------------------------------------------------------
+Tue Mar  9 12:09:06 MET 1999 - ray@suse.de
+
+- update for kernel 2.2.x
+- include timerules (no initscript)
+
+-------------------------------------------------------------------
+Sat Jan 16 17:45:02 MET 1999 - ray@suse.de
+
+- fix in /sbin/init.d/i4l
+- fix error messages
+
+-------------------------------------------------------------------
+Tue Jan 12 10:48:09 MET 1999 - ray@suse.de
+
+- include I4L_VERBOSE in i4l_sp_option.rc.config - default yes
+
+-------------------------------------------------------------------
+Mon Dec 14 23:16:51 MET 1998 - ray@suse.de
+
+- fix i4l_hardware
+
+-------------------------------------------------------------------
+Mon Dec 14 16:11:51 MET 1998 - ray@suse.de
+
+- fix post install
+
+-------------------------------------------------------------------
+Mon Dec 14 10:43:44 MET 1998 - ray@suse.de
+
+- insert dialmode for all interfaces
+- move all unknown i4l variables from /etc/rc.config
+  to /etc/rc.config.d/i4l_unknown
+
+-------------------------------------------------------------------
+Sun Dec 13 21:09:17 MET 1998 - ray@suse.de
+
+- include patch from karsten keil in i4l_hardware
+
+-------------------------------------------------------------------
+Sun Dec 13 16:01:54 MET 1998 - ray@suse.de
+
+- split /etc/rc.config to /etc/rc.config.d/*
+- update docu
+
+-------------------------------------------------------------------
+Fri Dec  4 09:52:19 MET 1998 - ray@suse.de
+
+- include Sedelbauer Speed Fax+ (incl. Firmeware)
+
+-------------------------------------------------------------------
+Thu Dec  3 16:46:30 MET 1998 - ray@suse.de
+
+- move vbox binarys to /usr/bin/*
+
+-------------------------------------------------------------------
+Thu Dec  3 10:58:08 MET 1998 - ray@suse.de
+
+- mv /usr/bin/vbox/sbin/* ---> /usr/sbin/*
+- include new fimeware
+	/usr/lib/isdn/*
+  old move to:
+	/usr/lib/isdn_old/*
+
+-------------------------------------------------------------------
+Thu Nov 26 17:07:09 MET 1998 - ray@suse.de
+
+- include new cards
+	Sedlbauer PC/104 -> type 15
+	Fritz PNP	 -> type 27
+
+-------------------------------------------------------------------
+Thu Nov 26 10:42:57 MET 1998 - ray@suse.de
+
+- include I4L_DIALMODE in rc.config
+
+-------------------------------------------------------------------
+Wed Nov 18 16:46:01 MET 1998 - ray@suse.de
+
+- move vbox-configs to /etc/vbox
+
+-------------------------------------------------------------------
+Tue Nov 17 16:38:52 MET 1998 - ray@suse.de
+
+- update to isdn4k-utils3.0.b1
+- include card Type 27 for Fritz PCI
+- insert isdnctrl dialmode <IFACE> auto
+
+-------------------------------------------------------------------
+Mon Oct 26 12:24:59 MET 1998 - ray@suse.de
+
+- fix /sbin/init.d/i4l_hardware for avm b1
+
+-------------------------------------------------------------------
+Tue Aug 25 17:46:03 MEST 1998 - ro@suse.de
+
+- don't pack etc/ppp/pap-secrets (conflicts with ppp)
+
+-------------------------------------------------------------------
+Mon Aug 24 14:10:16 MEST 1998 - ro@suse.de
+
+- run configure scripts
+
+-------------------------------------------------------------------
+Fri Aug 21 16:48:33 MEST 1998 - ray@suse.de
+
+- update docu
+- update isdn4k-utils to 2.2b1
+- HiSax3 is default (no timerule)
+
+-------------------------------------------------------------------
+Mon Aug  3 13:29:21 MEST 1998 - ray@suse.de
+
+- include HiSax3 (alpha)
+- update i4l (include new Cards)
+- fix i4l (I4L_HISAX_3)
+- add docu (/usr/doc/packages/i4ldoc/HiSax3/*)
+
+-------------------------------------------------------------------
+Sat Jul 18 17:05:58 MEST 1998 - ray@suse.de
+
+- update docu
+- update i4l_hardware (add Teles 16.3c)
+- update ip-up (add ipfwadm)
+
+-------------------------------------------------------------------
+Tue Apr 28 14:48:46 MEST 1998 - ray@suse.de
+
+- fix docu
+
+-------------------------------------------------------------------
+Fri Apr 24 18:24:50 MEST 1998 - ray@suse.de
+
+- %config /etc/ppp/ip-down 
+
+-------------------------------------------------------------------
+Wed Apr 22 14:53:41 MEST 1998 - ray@suse.de
+
+- fix in i4l kill to kill -15
+
+-------------------------------------------------------------------
+Tue Apr 21 13:29:29 MEST 1998 - kfr@suse.de
+
+- ipppd bugfix: create pidfile
+
+-------------------------------------------------------------------
+Thu Apr 16 11:55:08 MEST 1998 - kfr@suse.de
+
+- support for mppp added
+- minor bug fixes
+
+-------------------------------------------------------------------
+Tue Mar 10 16:18:57 MET 1998 - kfr@suse.de
+
+- added sleep in ip-up
+
+-------------------------------------------------------------------
+Mon Mar  9 10:46:37 MET 1998 - bs@suse.de
+
+- fixed problem with rcs ID string.
+
+-------------------------------------------------------------------
+Sun Mar  8 15:20:34 MET 1998 - bs@suse.de
+
+- fixed ip-up
+- fixed isdn4k-utils-2.1b1/ipppd/main.c
+
+
+-------------------------------------------------------------------
+Fri Mar  6 13:35:29 MET 1998 - kfr@suse.de
+
+- new: %config /etc/ppp/ip-up
+- new: /usr/doc/packages/i4l/README.IPPP
+- fixed /usr/doc/packages/auth-up
+- i4l_hardware: avmcapictrl reset 1
+- xmonisdn: /etc/isdn/i4l-up, i4l-down
+
+-------------------------------------------------------------------
+Wed Nov 12 19:19:37 MET 1997 - kfr@suse.de
+
+- /sbin/imon: new permissions 755
+- include README.HiSax Version 2.5 as kernel/README.HiSax.2.5
+
+-------------------------------------------------------------------
+Wed Nov 12 15:02:24 MET 1997 - kfr@suse.de
+
+- bug in i4l: kill old ipppd
+
+-------------------------------------------------------------------
+Tue Nov 11 01:55:54 MET 1997 - kfr@suse.de
+
+- Docu updated
+- new: isdnbar 0.5
+
+-------------------------------------------------------------------
+Sun Nov  9 19:34:54 MET 1997 - kfr@suse.de
+
+- bug in init.d/i4l
+
+-------------------------------------------------------------------
+Sun Oct 26 20:50:01 MET 1997 - kfr@suse.de
+
+- /etc/isdn/isdnlog.isdnctrl0.options: 'hangup' added
+- i4l_hardware: added new cards for HiSax 2.5
+
+-------------------------------------------------------------------
+Thu Aug 28 19:44:38 MEST 1997 - kfr@suse.de
+
+- I4L_REMOTE_OUT instead I4L_REMOTE_OUT1,2 (and for _IN)
+
+-------------------------------------------------------------------
+Wed Aug 27 18:48:43 MEST 1997 - kfr@suse.de
+
+- /etc/ppp/options.YaST: some better defaults 
+  (no "0.0.0.0:", no noccp, no useifip)
+- i4l: try to kill an old ipppd
+
+-------------------------------------------------------------------
+Thu Jul 24 13:31:31 MEST 1997 - kfr@suse.de
+
+- /sbin/init.d/i4l: ipppd with "&"
+- /sbin/init.d/i4l_hardware: I4L_I4L_TELES_ID -> I4L_TELES_ID
+
+-------------------------------------------------------------------
+Fri Jun 27 19:25:24 MEST 1997 - kfr@suse.de
+
+- new: README.info
+- doku updated
+
+-------------------------------------------------------------------
+Wed Jun 25 22:36:15 MEST 1997 - kfr@suse.de
+
+- ICN-4B bugfixes
+- ownerships fixed
+- minor bugfixes
+
+-------------------------------------------------------------------
+Wed Jun 25 00:21:26 MEST 1997 - kfr@suse.de
+
+- AVM-B1 now works
+- finished documentations
+
+-------------------------------------------------------------------
+Tue Jun 17 21:21:36 MEST 1997 - kfr@suse.de
+
+- rc.config: I4L_PPPBIND_* should be set to "yes" now.
+  the devicename is generated automatically 
+  thanks to Stefan Luethje <luethje@sl-gw.lake.de>
+- /etc/ppp/ioptions: forgotten in previous versions
+
+-------------------------------------------------------------------
+Tue Jun 10 20:23:10 MEST 1997 - kfr@suse.de
+
+- firmware location (ICN / B1): /usr/lib/isdn
+- load firmware for ICN cards
+
+-------------------------------------------------------------------
+Mon Jun  9 23:02:50 MEST 1997 - kfr@suse.de
+
+- added manpages: ttyI.4 isdninfo.4 isdn_audio.4 isdn_cause.7
+- no absolute links
+- i4l_hardware: support for AVM-B1 PCI
+
+-------------------------------------------------------------------
+Mon Jun  2 22:55:20 MEST 1997 - kfr@suse.de
+
+- minor bugfixes
+- start isdnlog(s) with option file (/etc/isdn/isdnlog.*.options)
+  if exists 
+- remove K*i4l_route in runlevel 2, 3
+
+-------------------------------------------------------------------
+Mon Jun  2 11:08:25 MEST 1997 - kfr@suse.de
+
+- new version isdn4kutil-2.1b1
+- configuration changed from /etc/isdnlog -> /etc/isdn
+- new configuration format for isdnlog
+- YaST Configuration for HiSax and Internet-Conenction
+- AVM-B1
+- vbox is "old" :-(
+- README.SuSE and README.Quick is old :-(
+- updated ipppd-manpage
+
+-------------------------------------------------------------------
+Wed Feb 12 18:01:32 MET 1997 - kfr@suse.de
+
+- i4l_hardware: bug fixed (HISAX_PAR1)
+
+-------------------------------------------------------------------
+Mon Feb 10 22:41:22 MET 1997 - kfr@suse.de
+
+- Documentation updated for HiSax 1.5
+- new Doc: /usr/doc/packages/i4l/README.Quick
+- i4l_hardware: start/stop of 'isdnlog', 'iprofd' here (not i4l)
+- isdnlog: start without "-v 7"
+- ipppd: start with "ipppd $NETDEV"
+- /usr/doc/packages/i4l/pppsample/options|pap-secrets:
+	examples for SuSE-ISDN-Server
+- new version: imontty-0.5
+- i4l new option: "i4l start/stop $NETDEV": configure only $NETDEV
+- new link: rc2.d/K38i4l_route and rc3.d/K38i4l_route
+
+- 4.3 -> 4.4
+
+- HiSax 1.2 driver for isdn-devices (edit /etc/rc.config for using HiSax)
+- isdnlog 2.51 (patch 2.50 version from Karsten Keil)
+- new: xisdnload
+
+
+- 4.2 -> 4.3
+
+- neue Version: isdn4k-utils.2.0.0
+- /sbin/init.d/i4l: 
+	- weitere Optionen bzgl. isdnctrl 
+	- es kann auch ohne Module gearbeitet werden
+	- ICN-Karte integriert, ungetestet
+	- ipppd integriert
+- ipppd: shadow-passwd
+- neu: isdnmonp, gepatchete isdnmon-Version
+- neue location:
+	isdnrep: /usr/sbin -> /usr/bin
+	isdnmon: /sbin -> /usr/bin
+- Netzwerkkonfiguration fuer ISDN-Devices (ifconfig Aufrufe) nur noch in
+	i4l statt in network
+- isdnlog.conf: jetzt unter /etc/isdnlog/isdnlog.conf,
+	neue Syntax! Siehe /usr/doc/packages/i4l/README.isdnlog
+- isdn.log nicht mehr unter /var/adm sondern /var/log!
+	Um weiter Auswertungen mit 'isdnrep' zu machen, kopiere die Datei
+	nach /var/log
+	Wenn das Kind bereits in den Brunnen gefallen ist, d.h. schon unter
+	/var/log und noch unter /var/adm geloggt wurde, 'cat'e die Files
+	zusammen:
+	cd /var/log
+	mv isdn.log isdn.log.new
+	cat /var/adm/isdn.log isdn.log.new > isdn.log
+- in rc_config: einige I4L-Paramter werden jetzt mit der Extension
+	"_1", "_2" u.s.w. definiert. Daher ist eine Zurordnung zum Netzdevice
+	moeglich.

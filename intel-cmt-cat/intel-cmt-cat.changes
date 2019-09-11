@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Thu Mar 28 15:51:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Mar 28 10:37:26 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+- Updated git url to new location
+
+- Updated to version 3.0.1:
+  From mainline Changelog:
+  3.0.1:
+1. General
+        - Bug fixes
+  
+  3.0.0:
+1. Library
+        - Added support for Resctrl MBA software controller
+        - Improved detection of OS (Resctrl) capabilities
+2. PQoS Utility
+        - Added support for Resctrl MBA software controller
+        - Updated feature enumeration to show capabilities for selected
+        interface only
+3. rdtset Utility
+        - Added support for Resctrl MBA software controller
+4. membw
+         - Added support for extra memory operations
+        - Improved accuracy
+5.General
+         - Bug fixes
+  
+  2.1.0:
+1.Library
+        - Reversed RMID allocation
+2.rdtset Utility
+        - Added support for MSR based MBA software controller
+3.Examples
+        - Added MBA example application
+        - Added L2CAT example application
+4.membw
+        - Added tool for generation of memory bandwidth
+5.General
+        - Bug fixes
+
+
+   
+
+-------------------------------------------------------------------
+Fri Sep 14 13:27:03 UTC 2018 - trenn@suse.de
+
+- libpqos-devel must obsolete libpqos1-devel since last change
+
+-------------------------------------------------------------------
+Tue Sep 11 09:48:55 UTC 2018 - trenn@suse.de
+
+- Rename libpqos2-devel to libpqos-devel.
+  Library devel package must not include library version in name
+
+-------------------------------------------------------------------
+Tue Sep  4 15:15:44 UTC 2018 - trenn@suse.de
+
+- Update to version 2.0.0
+  Bump up libpqos1 package version to libpqos2
+
+- Remove ldconfig patch and use NOLDCONFIG Makefile variable
+D    fix-ldconfig-call.patch
+- Do not use env in shebang to avoid osc errors:
+A    fix-bad-env-shebang.patch
+
+  From mainline Changelog:
+1. Library
+        - Added support for resctrl monitoring via OS interface
+        - Added support for PID group monitoring
+        - Added support for L2 CDP
+        - New API added for adding/removing pids to mon groups
+2. PQoS Utility
+        - Added support for PID group monitoring
+        - Added support for L2 CDP
+        - Print core values in PID monitoring output
+3. rdtset Utility
+        - Added support for L2 CDP
+
+-------------------------------------------------------------------
+Thu Mar  1 15:48:42 UTC 2018 - trenn@suse.de
+
+- Update to version 1.1.0 (fate#322856):
+1. Library
+ - Added support for MBA configuration via OS interface
+2. PQoS Utility
+ - Added better feature enumeration functionality
+ - Added top-pids monitoring functionality
+
+- Change group declaration in spec file from
+  Development/Tools
+  to
+  Development/Tools/Other
+  to avoid invalid group build service warning.
+
+- Adding _service file for easier version upgrades
+  Replacing the libversion variable in spec file with the real
+  version, so that automated version upgrades via service feature
+  works.
+
+-------------------------------------------------------------------
+Fri Aug 04 16:24:56 UTC 2017 - trenn@suse.de
+
+- Update to version 1.1.0 (fate#322856):
+1. Library
+        - Added PID support for L2CAT, L3CAT and CDP
+        - Added global RDT interface enforcement.
+2. PQoS Utility
+        - Added PID support for L2CAT, L3CAT and CDP
+3. rdtset Utility
+        - Added PID support for L2CAT, L3CAT and CDP
+        - Updated to work with multiple PID's
+
+D    fix-dynlib-generation.patch
+D    fixsymlink.patch
+
+-------------------------------------------------------------------
+Thu Jul 13 13:05:52 UTC 2017 - bwiedemann@suse.com
+- Update to version 1.0.1:
+    snmp
+    - Added OS interface support to Net-SNMP sub-agent
+    General
+    - Build improvements (boo#1041090)
+    - Bug fixes
+    Library
+    - Removed NO_PID_API compile time option
+    - Added OS interface to support L3/L2 CAT & CDP
+    - Updated support for CMT per PID
+    PQoS Utility
+    - Added pqos-os & pqos-msr wrapper scripts
+    - Added option to select OS or MSR interface
+    rdtset Utility
+    - Added option to select OS or MSR interface
+    Examples
+    - Support for new OS/MSR interface added to CMT/MBM examples
+- Add fixsymlink.patch to create proper man page symlinks
+- Rebase fix-dynlib-generation.patch
+
+-------------------------------------------------------------------
+Tue Mar 07 12:46:40 UTC 2017 - fschnizlein@suse.de
+
+- Fixes bsc#990230 (if submitted and accepted in factory)
+- Renamed intel-cmt-cat-devel to libqpos0-devel
+- Removed obsolete patches due Makefile restructuring
+D intel-cmt-cat-DESTDIR.patch
+D intel-cmt-cat-Makefile.patch
+D intel-cmt-cat-dynlib.patch
+- Added patches to build library correctly
+A fix-dynlib-generation.patch
+A fix-ldconfig-call.patch
+- Added _service file
+- Update to version 0.1.5-1:
+  * Added MBA get to library.
+  * MBA added to pqos tool show configuration option
+  * Added mba -e option to pqos
+  * MBA added to allocation reset function
+  * Updated changelog, pqos help menu and man page with L2 CAT per cluster and MBA changes.
+  * Added 11 LLC ways configuration files for pqos
+  * Added profile with 11 cache ways
+  * Corrected detection of MBM capabilities
+  * Updated pqos utility error message for when no allocation resource ID is specified.
+  * Modified pqos_pid_start API to only set single bit in event mask when starting remote memory B/W monitoring using perf. Moved remote memory monitor dependences to RMEM section.
+
+-------------------------------------------------------------------
+Thu Dec  1 18:06:39 UTC 2016 - trenn@suse.de
+
+- Initial package
+- split off -devel and lib package.
+- Patches added:
+  * Makefile_include.patch
+  * Makefile_ldconfig.patch
+

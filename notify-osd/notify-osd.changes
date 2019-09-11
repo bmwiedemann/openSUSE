@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Tue Feb 28 10:11:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Provide dbus(org.freedesktop.Notifications) instead of
+  notificationdaemon.
+- Improve notify-osd-fix-workarea.patch: use the primary monitor by
+  default.
+
+-------------------------------------------------------------------
+Fri Dec 30 10:36:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Provide notificationdaemon, a virtual package by analogy with
+  windowmanager.
+
+-------------------------------------------------------------------
+Thu Nov 10 09:32:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Add notify-osd-fix-workarea.patch: Fix workarea on Gtk 3.22+.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.35~bzr20160415:
+  * Stack: Allow to replace a notification when the replace_id has
+    been provided (lp#1569682).
+- Update notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Sat Dec 26 21:14:56 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20151201:
+  * bubble_set_icon: allow absolute paths in the icon name field
+    (lp#1520667).
+- Add notify-osd-fix-voidreturn.patch.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20151118 (changes since 0.9.35~bzr20151014):
+  * Listen to xsettings dpi changes (lp#1303796).
+  * Refactor bubble_set_icon().
+  * Ignore body for synchronous notifications.
+- Update and rebase notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Sat Oct 31 10:21:56 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20151014 (changes since 0.9.35~bzr20151005):
+  * Only request rgba visuals on composited screens (lp#1473269).
+- Rebase notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Thu Oct  8 18:13:41 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20151005:
+  * Remove leftover debug statement and fix identation issue.
+
+-------------------------------------------------------------------
+Thu Sep 17 10:54:28 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20150915:
+  * Render in native resolution on hidpi displays (lp#1374301).
+- Update and rebase notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Fri Feb 13 04:21:55 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20150126:
+  * Fix some deprecation warnings.
+  * Some improvements:
+    + Fix incorrect parameter in widget draw event function.
+    + Use G_DEFINE_TYPE_WITH_PRIVATE.
+- Rebase notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Wed Dec  3 13:30:50 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.9.35~bzr20140819 (changes since 0.3.34):
+  * Don't crash when an application is fullscreen when a
+    notification arrives. (lp#1189281)
+  * Have the tests depend on at-spi2-core.
+  * Return correct notification ID to clients. (lp#1191565)
+  * Allow being replaced by a different notification service.
+  * Update contents of a synchronous notification when replacing
+    it. (lp#404658)
+  * Avoid invalid call to g_source_remove(). (lp#1257717)
+  * Clear the reference when we g_source_remove the timers so we
+    don't attempt to remove them again in the dispose function.
+  * Make 'focus-follow' the default for Multihead environments.
+  * Don't place bubbles over panels on secondary monitors Using
+    heuristics to find panels didn't prove to be very stable.
+    Instead, use _NET_WORKAREA to find out about the panel size on
+    the primary monitor and assume it's the same on every other
+    monitor as well.
+  * Add missing "make" and "libnotify-bin" autopkgtest
+    dependencies, and show test log on failure.
+- Update notify-osd-leolik.patch.
+
+-------------------------------------------------------------------
+Thu Sep  6 16:51:28 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 0.3.34
+  + Migrate do GSettings
+  + Bug fixes
+- Remove notify-osd-link-libm.patch; merged upstream.
+
+-------------------------------------------------------------------
+Mon Sep 19 13:27:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.32:
+  + Migrate to GSettings.
+- Changes from version 0.9.31:
+  + Port to GNOME 3 technologies.
+- Change pkgconfig() BuildRequires to move to GNOME 3 technologies:
+  + Old ones: gtk+-2.0, libwnck-1.0.
+  + New ones: gtk+-3.0, libwnck-3.0.
+- Drop pkgconfig(gconf-2.0) BuildRequires: moved to GSettings.
+- Drop notify-osd-libnotify-0.7.patch: fixed upstream.
+- Rebase notify-osd-leolik.patch.
+- Add notify-osd-link-libm.patch: fix build with new stricter
+  linker from Factory.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for above patch.
+- Use %glib2_gsettings_schema_* macros for new GSettings schemas.
+
+-------------------------------------------------------------------
+Thu May 19 22:11:28 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.30:
+  + Avoid having default focus on fallback-dialog buttons.
+  + Make notify-OSD ready for GTK3.
+  + Build fixes for newer gcc versions.
+  + Dual monitor fixes
+  + Fix shadow corruptions
+  + Pause the timeout when the mouse is over notifcation-bubble
+  + Bugs fixed: lp#559109, lp#353843, lp#655232, lp#654921,
+    lp#500663.
+- Rebase notify-osd-leolik.patch.
+- Drop notify-osd-fix-shadow-corruption.patch: fixed upstream.
+- Add notify-osd-libnotify-0.7.patch: Fix build with libnotify 0.7.
+
+-------------------------------------------------------------------
+Fri Feb  4 21:01:11 UTC 2011 - nmarques@opensuse.org
+
+- Add notify-osd-fix-shadow-corruption.patch: this patch fixes
+  shadow corruption around the notification bubble. This happens
+  when not using composite/openGL or in both situations, at least
+  for ATI users. Patch already approved upstream.
+
+-------------------------------------------------------------------
+Wed Dec  8 14:37:35 CET 2010 - vuntz@opensuse.org
+
+- Improve summary and description.
+- Use pkgconfig()-style BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep  8 20:48:13 UTC 2010 - dimstar@opensuse.org
+
+- Minor spec cleanups (using spec-cleaner)
+- Add fdupes BuildRequires and link duplicate files.
+
+-------------------------------------------------------------------
+Mon Sep  6 23:36:41 UTC 2010 - nmo.marques@gmail.com
+
+- Initial package (version 0.9.29).

@@ -1,0 +1,42 @@
+--- dao/main.cc.orig	2009-05-04 18:49:52.000000000 +0300
++++ dao/main.cc	2011-09-03 14:29:05.808000068 +0300
+@@ -1935,7 +1935,9 @@
+               sdata[i].product, sdata[i].revision);
+     }
+     delete[] sdata;
+-  } else {
++  }
++#if 0
++   else {
+     sdata = ScsiIf::scan(&len, "ATAPI");
+     if (sdata) {
+       for (i = 0; i < len; i++) {
+@@ -1946,6 +1948,7 @@
+     }
+   }
+ #endif
++#endif
+ }
+ 
+ static int checkToc(const Toc *toc, bool force)
+--- xdao/CdDevice.cc.orig	2009-02-21 15:49:17.000000000 +0200
++++ xdao/CdDevice.cc	2011-09-03 14:29:50.643000070 +0300
+@@ -1243,7 +1243,9 @@
+     for (i = 0; i < len; i++)
+       CdDevice::add(sdata[i].dev.c_str(), sdata[i].vendor, sdata[i].product);
+     delete[] sdata;
+-  } else {
++  }
++#if 0
++   else {
+     // Only scan for ATAPI devices if we got nothing on the ATA
+     // interface, otherwise every device would show up twice on the
+     // list.
+@@ -1255,6 +1257,7 @@
+     }
+   }
+ #endif
++#endif
+ }
+ 
+ void CdDevice::remove(const char* dev)

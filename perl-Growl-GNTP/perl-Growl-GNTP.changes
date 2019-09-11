@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Apr 11 12:37:42 UTC 2016 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Growl-GNTP/Changes
+
+  0.21 2016-04-08T16:13:37Z
+          - removed dependency of IO::Socket::PortState.
+
+-------------------------------------------------------------------
+Sun Jun  8 10:40:43 UTC 2014 - coolo@suse.com
+
+- initial package 0.20
+    * created by cpanspec 1.78.08
+

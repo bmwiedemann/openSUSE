@@ -1,0 +1,39 @@
+From: Antonio Larrosa <larrosa@kde.org>
+Subject: Use systemd in package scripts
+
+Also, use package configuration files by default
+and add a skillsPath method that can be invoked from qml
+
+Index: plasma-mycroft-0.1git~20180227T231707~2e8a1ec/plasmoid/contents/ui/main.qml
+===================================================================
+--- plasma-mycroft-0.1git~20180227T231707~2e8a1ec.orig/plasmoid/contents/ui/main.qml
++++ plasma-mycroft-0.1git~20180227T231707~2e8a1ec/plasmoid/contents/ui/main.qml
+@@ -60,8 +60,8 @@ Item {
+     property string customlocstartpath: startsrvcustom.text
+     property string customlocstoppath: stopsrvcustom.text
+     property string customloc: " "
+-    property string coreinstallstartpath: defaultmcorestartpath
+-    property string coreinstallstoppath: defaultmcorestoppath
++    property string coreinstallstartpath: packagemcorestartcmd
++    property string coreinstallstoppath: packagemcorestopcmd
+     property variant searchIndex: []
+     property variant results: []
+     property var smintent
+@@ -1101,7 +1101,7 @@ Item {
+                         id: settingsTabUnitsOpZero
+                         exclusiveGroup: installPathGroup
+                         text: i18n("Default Path")
+-                        checked: true
++                        checked: false
+                         
+                         onCheckedChanged: {
+                             locationUserSelected = true
+@@ -1126,7 +1126,7 @@ Item {
+                         id: settingsTabUnitsOpOne
+                         exclusiveGroup: installPathGroup
+                         text: i18n("Installed Using Mycroft Package")
+-                        checked: false
++                        checked: true
+                         
+                         onCheckedChanged: {
+                             

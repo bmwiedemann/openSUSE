@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Tue May 15 05:45:46 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Run fdupes on the documentation
+
+-------------------------------------------------------------------
+Wed Sep  6 18:17:00 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * ant-contrib-sourcetarget.patch
+    - build with java source and target 1.6
+    - fixes the build with java 9
+
+-------------------------------------------------------------------
+Fri May 19 09:08:21 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Mar 18 09:42:22 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Thu Mar 12 22:39:50 UTC 2015 - archie@dellroad.org
+
+- Add back patch enabling the <antcontrib:for> task (boo#922324)
+  * ant-contrib-1.0b3-enable-for-task.patch
+
+-------------------------------------------------------------------
+Mon Jul  7 09:25:13 UTC 2014 - tchvatal@suse.com
+
+- Clean up a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov 15 08:25:16 UTC 2013 - mvyskocil@suse.com
+
+- don't require ant-junit for build, junit is sufficient
+  * reducing of cycles
+
+-------------------------------------------------------------------
+Wed Nov  6 14:17:45 UTC 2013 - mvyskocil@suse.com
+
+- upgrade to 1.0b3
+  * no upstream changelog available
+- removed patches:
+  * ant-contrib-1.0b2-enable-for-task.patch
+    there is no for task in beta3
+  * ant-contrib-ant-1.7.0.patch
+    no longer needed
+  * ant-contrib-build_xml.patch
+    fixed upstream
+  * ant-contrib-BuildFileTest_java.patch
+    no longer needed
+- added patches:
+  * ant-contrib-antservertest.patch
+  * ant-contrib-pom.patch
+  * local-ivy.patch
+- add pom file
+- add ant.d configuration
+
+-------------------------------------------------------------------
+Mon Sep  9 11:04:08 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Aug 22 12:02:04 UTC 2013 - mvyskocil@suse.com
+
+- disable javadoc build 
+
+-------------------------------------------------------------------
+Sat Sep 17 11:08:43 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Oct  8 09:40:42 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#644661 - ant-contrib does not export the antcontrib:for task 
+
+-------------------------------------------------------------------
+Thu Apr 30 15:49:13 CEST 2009 - mrueckert@suse.de
+
+- rename ant_version to ant_minimal_version
+- use requires_eq for the ant package
+
+-------------------------------------------------------------------
+Thu Apr 30 14:25:51 CEST 2009 - ro@suse.de
+
+- bump ant-version to 1.7.1 
+
+-------------------------------------------------------------------
+Thu Sep 11 15:52:09 CEST 2008 - mvyskocil@suse.cz
+
+- Use a gcc-java to build 
+
+-------------------------------------------------------------------
+Fri Aug  8 13:18:59 CEST 2008 - mvyskocil@suse.cz
+
+- Make junit testing optional and disable it by default  to break a build cycle
+  ant-antlr - bsf - jython - mysql-connector-java - ant-contrib ant-contrib
+
+-------------------------------------------------------------------
+Thu Jul 10 08:50:56 CEST 2008 - mvyskocil@suse.cz
+
+- Removed summary tags from description of subpackages.
+- Remove the ant-1.7.0 archive to reduce a size of source package and 
+  use only one necessary file BuildFileTest.java
+
+-------------------------------------------------------------------
+Wed Jul  2 17:03:45 CEST 2008 - mvyskocil@suse.cz
+
+- First release based on jpackage.org 1.7 (1.0.b2)
+  - adjusted for ant 1.7.0

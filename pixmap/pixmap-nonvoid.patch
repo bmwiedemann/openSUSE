@@ -1,0 +1,160 @@
+--- SelFile/Draw.c
++++ SelFile/Draw.c
+@@ -80,6 +80,7 @@
+ 	SFcharWidth = (SFfont->max_bounds.width + SFfont->min_bounds.width) / 2;
+ 	SFcharAscent = SFfont->max_bounds.ascent;
+ 	SFcharHeight = SFcharAscent + SFfont->max_bounds.descent;
++	return 0;
+ }
+ 
+ SFcreateGC()
+@@ -145,6 +146,7 @@
+ 		1,
+ 		Unsorted
+ 	);
++	return 0;
+ }
+ 
+ SFclearList(n, doScroll)
+@@ -187,9 +189,10 @@
+ 				(float) 1.0);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+-static
++static void
+ SFdeleteEntry(dir, entry)
+ 	SFDir	*dir;
+ 	SFEntry	*entry;
+@@ -247,6 +250,7 @@
+ 	struct stat	*statBuf;
+ {
+ 	name[last] = SFstatChar(statBuf);
++	return 0;
+ }
+ 
+ static int
+@@ -391,6 +395,7 @@
+ 			);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ SFdrawList(n, doScroll)
+@@ -416,6 +421,7 @@
+ 		);
+ 		SFdrawStrings(w, dir, 0, SFlistSize - 1);
+ 	}
++	return 0;
+ }
+ 
+ SFdrawLists(doScroll)
+@@ -426,6 +432,7 @@
+ 	for (i = 0; i < 3; i++) {
+ 		SFdrawList(i, doScroll);
+ 	}
++	return 0;
+ }
+ 
+ static
+@@ -441,6 +448,7 @@
+ 		SFentryWidth,
+ 		SFentryHeight
+ 	);
++	return 0;
+ }
+ 
+ static unsigned long
+--- SelFile/Path.c
++++ SelFile/Path.c
+@@ -103,6 +103,7 @@
+ 	XtFree(dir->dir);
+ 
+ 	dir->dir = NULL;
++	return 0;
+ }
+ 
+ static
+@@ -118,6 +119,7 @@
+ 	dir->entries[0].shown = dir->entries[0].real;
+ 	dir->nEntries = 1;
+ 	dir->nChars = strlen(cannotOpen);
++	return 0;
+ }
+ 
+ #ifdef SEL_FILE_IGNORE_CASE
+@@ -186,6 +188,7 @@
+ 	}
+ 
+ 	SFtextChanged();
++	return 0;
+ }
+ 
+ static void
+@@ -361,6 +364,7 @@
+ 	}
+ 	dir->beginSelection = -1;
+ 	dir->endSelection = -1;
++	return 0;
+ }
+ 
+ static int
+@@ -370,7 +374,7 @@
+ 	return strcmp(p->name, q->name);
+ }
+ 
+-static
++static void
+ SFgetHomeDirs()
+ {
+ 	struct passwd	*pw;
+@@ -529,7 +533,7 @@
+ 	return 0;
+ }
+ 
+-SFupdatePath()
++void SFupdatePath()
+ {
+ 	static int	alloc;
+ 	static int	wasTwiddle = 0;
+@@ -717,9 +721,10 @@
+ 			}
+ 		}
+ 	}
++	return;
+ }
+ 
+-SFsetText(path)
++int SFsetText(path)
+ 	char	*path;
+ {
+ 	XawTextBlock	text;
+@@ -731,6 +736,7 @@
+ 
+ 	XawTextReplace(selFileField, 0, strlen(SFtextBuffer), &text);
+ 	XawTextSetInsertionPoint(selFileField, strlen(SFtextBuffer));
++	return 0;
+ }
+ 
+ /* ARGSUSED */
+--- SelFile/SelFile.c
++++ SelFile/SelFile.c
+@@ -605,6 +605,7 @@
+ 	}
+ 
+ 	SFupdatePath();
++	return 0;
+ }
+ 
+ static char *
+@@ -627,6 +628,7 @@
+ 			"XsraSelFile: can't return to current directory"
+ 		);
+ 	}
++	return 0;
+ }
+ 
+ FILE *

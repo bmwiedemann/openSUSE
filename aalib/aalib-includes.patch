@@ -1,0 +1,48 @@
+--- aalib-1.4.0/aavga-1.0/aavga.c
++++ aalib-1.4.0/aavga-1.0/aavga.c
+@@ -1,6 +1,7 @@
+ #include <aalib.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <time.h>
+ #include <sys/times.h>
+ 
+--- aalib-1.4.0/src/aakbdreg.c
++++ aalib-1.4.0/src/aakbdreg.c
+@@ -2,6 +2,7 @@
+ #include "config.h"
+ #include "aalib.h"
+ #include "aaint.h"
++#include <string.h>
+ __AA_CONST struct aa_kbddriver * __AA_CONST aa_kbddrivers[] =
+ {
+ #ifdef LINUX_KBDDRIVER
+--- aalib-1.4.0/src/aamoureg.c
++++ aalib-1.4.0/src/aamoureg.c
+@@ -2,6 +2,7 @@
+ #include "config.h"
+ #include "aalib.h"
+ #include "aaint.h"
++#include <string.h>
+ __AA_CONST struct aa_mousedriver * __AA_CONST aa_mousedrivers[] =
+ {
+ #ifdef DJGPP
+--- aalib-1.4.0/src/aaregist.c
++++ aalib-1.4.0/src/aaregist.c
+@@ -2,6 +2,7 @@
+ #include "config.h"
+ #include "aalib.h"
+ #include "aaint.h"
++#include <string.h>
+ __AA_CONST struct aa_driver * __AA_CONST aa_drivers[] =
+ {
+ #ifdef DJGPP
+--- aalib-1.4.0/src/aatest.c
++++ aalib-1.4.0/src/aatest.c
+@@ -1,4 +1,5 @@
+ #include "aalib.h"
++#include <string.h>
+ int main(int argc, char **argv)
+ {
+     aa_context *c;

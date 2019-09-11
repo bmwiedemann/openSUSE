@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Tue Apr 23 14:54:52 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 0.9.5.
+  https://github.com/restic/restic/releases/tag/v0.9.5
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md. Short-log:
+  Fixes:
+  * Return error when no bytes could be read from stdin
+  * Don't cancel timeout after 30 seconds for self-update
+  * Fix reading passwords from stdin
+  * Don't abort the find command when a tree can't be loaded
+  Enhancements:
+  + Add case insensitive include & exclude options
+  + Support streaming JSON output for backup
+  + Add Openstack application credential auth for Swift
+  + Add --json support to forget command
+  + Add group-by option to snapshots command
+  + Ability to dump folders to tar via stdout
+  + Return error if no bytes could be read for backup --stdin
+  + Add --ignore-inode option to backup cmd
+  + Add config option to set S3 storage class
+
+-------------------------------------------------------------------
+Mon Jan  7 14:01:58 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 0.9.4.
+  https://github.com/restic/restic/releases/tag/v0.9.4
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov  5 08:44:53 UTC 2018 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 0.9.3. boo#1115498
+  https://github.com/restic/restic/releases/tag/v0.9.3
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+- Update to Go 1.9, and disable Go 1.11 modules since they require internet
+  access (restic still provides vendor/).
+
+-------------------------------------------------------------------
+Wed Aug  8 03:59:46 UTC 2018 - asarai@suse.com
+
+- Update to 0.9.2.
+  https://github.com/restic/restic/releases/tag/v0.9.2
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+- Remove Go 1.8 compatibility patch, now that we have newer Go versions in
+  older Leap releases.
+  - restic-switch-to-pre-1.8-sort.Stable-API.patch
+
+-------------------------------------------------------------------
+Sat Jul 28 18:27:51 UTC 2018 - jengelh@inai.de
+
+- Substantiate program attribute claims in descriptions.
+
+-------------------------------------------------------------------
+Fri Jun 22 13:33:00 UTC 2018 - asarai@suse.com
+
+- Update to 0.9.1.
+  https://github.com/restic/restic/releases/tag/v0.9.1
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+- Switch to building with the new "go" metapkg.
+- Switch to new %license macro.
+
+-------------------------------------------------------------------
+Fri Jun 22 13:29:22 UTC 2018 - asarai@suse.com
+
+- Fix up restic-*-completion subpackages to use Supplements (to avoid
+  installing shells on people's machines when they don't expect it).
+
+-------------------------------------------------------------------
+Thu Jun 21 21:00:07 UTC 2018 - mardnh@gmx.de
+
+- Add subpackages for command line completions for bash and
+  zsh shells
+
+-------------------------------------------------------------------
+Thu Mar  1 01:11:07 UTC 2018 - asarai@suse.com
+
+- Update to 0.8.3.
+  https://github.com/restic/restic/releases/tag/v0.8.3
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Jan 13 16:20:36 UTC 2018 - asarai@suse.com
+
+- Switch away from using build.go, and instead manually build with "go". This
+  allows us to build with the older Go compilers present in Leap, as well as to
+  build the binary as PIC and dynamic.
+- Add generated man pages.
+- In order to build with older Go compilers, add a patch.
+  + restic-switch-to-pre-1.8-sort.Stable-API.patch
+
+-------------------------------------------------------------------
+Wed Jan 10 12:05:43 UTC 2018 - asarai@suse.com
+
+- Update to 0.8.1.
+  https://github.com/restic/restic/releases/tag/v0.8.1
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jan 10 12:01:29 UTC 2018 - asarai@suse.com
+
+- Add GPG verification of source as well as links to the source.
+
+-------------------------------------------------------------------
+Sun Dec 24 23:51:26 UTC 2017 - mrueckert@suse.de
+
+- Update to 0.8.0. This is a security release.
+  https://github.com/restic/restic/releases/tag/v0.8.0
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Oct  5 09:46:23 UTC 2017 - mrueckert@suse.de
+
+- Update to 0.7.3.
+  https://github.com/restic/restic/releases/tag/v0.7.3
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Aug 23 16:40:17 UTC 2017 - mrueckert@suse.de
+
+- should really be in _bindir of course
+
+-------------------------------------------------------------------
+Wed Aug 23 14:35:53 UTC 2017 - mrueckert@suse.de
+
+- update to package

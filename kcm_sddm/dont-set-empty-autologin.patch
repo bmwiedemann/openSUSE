@@ -1,0 +1,16 @@
+Index: sddm-kcm-5.13.80git.20180704T081749~7a9b287/src/advanceconfig.cpp
+===================================================================
+--- sddm-kcm-5.13.80git.20180704T081749~7a9b287.orig/src/advanceconfig.cpp
++++ sddm-kcm-5.13.80git.20180704T081749~7a9b287/src/advanceconfig.cpp
+@@ -122,7 +122,10 @@ QVariantMap AdvanceConfig::save()
+     }
+ 
+     args[QStringLiteral("sddm.conf/Autologin/User")] = ( configUi->autoLogin->isChecked() ) ? configUi->userList->currentText() : QString();
+-    args[QStringLiteral("sddm.conf/Autologin/Session")] = ( configUi->autoLogin->isChecked() ) ? configUi->sessionList->currentData() : QString();
++    if (configUi->autoLogin->isChecked()) { // only save the Autologin session if Autologin is actually enabled otherwise we would override the default session with "" if disabled
++        args[QStringLiteral("sddm.conf/Autologin/Session")] = configUi->sessionList->currentData();
++    }
++
+ 
+     args[QStringLiteral("sddm.conf/Autologin/Relogin")] = configUi->reloginAfterQuit->isChecked();
+     //TODO session

@@ -1,0 +1,415 @@
+-------------------------------------------------------------------
+Mon Oct  1 13:52:36 UTC 2018 - egotthold@suse.com
+
+- Removed make target "install-perlmod" and filecheck from packaging process.
+
+-------------------------------------------------------------------
+Fri Sep 28 11:30:08 UTC 2018 - egotthold@suse.com
+
+- Update to 2.21
+- Bug Fixes
+  * The noexec stack markers are set directly
+  * We no longer lie to glibc about shrinking the heap by less than HPAGE_SIZE
+- Test Suite
+  * No existent tests are no longer marked Killed By Signal
+  * Disable malloc per-thread cache for heap shrinking tests
+- Remove patch "ignore-perl-modules.diff"
+
+-------------------------------------------------------------------
+Mon Sep 11 07:47:31 UTC 2017 - jengelh@inai.de
+
+- Run `make install-perlmod` to install/satisfy Perl modules
+  required by /usr/bin/cpupcstat, itself installed by just
+  `make install` [boo#1057963]
+
+-------------------------------------------------------------------
+Thu Apr 20 10:40:04 UTC 2017 - jengelh@inai.de
+
+- Update summary and descriptions a bit
+- Move development manpages (*.3) to development subpackage
+- Avoid ||/&& in %install because it can leave $? at non-zero
+  (unlike if..fi), and %install is run with sh -x.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:10:07 UTC 2017 - fschnizlein@suse.com
+
+- Update to 2.20
+- Bug Fixes:
+  * Fix keyword collisions and warnings from GCC 5
+  * hugeadm output is parsed for default size in huge_page_setup_helper
+  * Testsuite: fallocate tests
+
+-------------------------------------------------------------------
+Fri Nov  6 13:10:03 UTC 2015 - fvogt@suse.com
+
+- Add zero_filesize_segment.patch to fix testcase on s390x
+- Fixes bnc#919680
+- Patches already included mainline and now deleted:
+D libhugetlbfs-2.18-restrict-is-a-reserved-word.patch
+D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 12:01:55 UTC 2015 - fvogt@suse.com
+
+- Latest version from git next branch
+
+-------------------------------------------------------------------
+Tue Jun 23 22:35:32 UTC 2015 - antoine.belvire@laposte.net
+
+- Add libhugelbfs-2.18-restrict-is-a-reserved-word.patch which
+  fixes compilation with GCC 5 (and C99/C11 in general).
+* Add libhugetlbfs-2.18-restrict-is-a-reserved-word.patch
+
+-------------------------------------------------------------------
+Fri Feb 20 12:11:44 UTC 2015 - normand@linux.vnet.ibm.com
+
+- update to 2.18
+  to solve build failures for ppc/ppc64.
+  remove following patches now included in 2.18:
+    libhugetlbfs-ppc64le.patch
+    libhugetlbfs.ppc64le.step2.patch
+    libhugetlbfs.ppc64le.step3.patch
+    libhugetlbfs.ppc64le.step4.patch
+- Add fix_plt_extrasz_always_returning_0_on_ppc64le.patch
+  already upstream.
+
+-------------------------------------------------------------------
+Wed Mar 26 12:37:06 UTC 2014 - dmueller@suse.com
+
+- update to 2.17:
+ * PPC segement alignment restrictions can be disabled
+ * Added Aarch64 support
+ * Allow compiler overrides for 64 and 32 bit builds
+ * hugeadm now handles /etc/mtab being a simlink properly
+
+  * ppc64 fixes
+- remove libhugetlbfs.ia64-libdir.patch:
+  ia64 is no longer supported by openSUSE
+- add ignore-perl-modules.diff: do not install perl modules, unused
+  and are installed in the wrong place to be found anyway
+- add ARM support
+- add disable-rw-on-non-ldscripts.diff: Skip rw tests
+- Do not install tests anymore
+
+-------------------------------------------------------------------
+Tue Feb 11 08:09:11 UTC 2014 - trenn@suse.de
+
+- Tests compile fine for s390(x), also include them in the package, the same
+  way it is done for other archs as well.
+
+-------------------------------------------------------------------
+Mon Feb 10 15:56:31 UTC 2014 - trenn@suse.de
+
+- There are no tests installed in s390(x) case, therefore there are no
+  files in %{_libdir}/libhugetlbfs
+  Remove the directory from the file list to fix package build for s390(x)
+
+-------------------------------------------------------------------
+Sat Jan 11 05:56:47 UTC 2014 - normand@linux.vnet.ibm.com
+
+- Add support of ppc64le with 4 patches
+	libhugetlbfs-ppc64le.patch
+	libhugetlbfs.ppc64le.step2.patch
+	libhugetlbfs.ppc64le.step3.patch
+	libhugetlbfs.ppc64le.step4.patch
+
+-------------------------------------------------------------------
+Mon Mar 11 09:02:48 UTC 2013 - trenn@suse.de
+
+- Update to version 2.16:
+  Features:
+  * ARM Support
+  * s390x Dynamic TASK_SIZE support
+
+  Bug Fixes:
+  * find_mounts() now properly NULL terminates mount point names
+
+-------------------------------------------------------------------
+Wed Jan 23 10:34:58 UTC 2013 - trenn@suse.de
+
+- Update to version 2.15
+  Features:
+  * Some System z functionality went into 2.15
+  * Updated man pages
+  * Added basic events for core_i7 to oprofile_map_events
+
+  Fixes:
+  * Disable Unable to verify address range warning when offset < page_size
+  * Remove sscanf in library setup to avoid heap allocation before _morecore
+  override
+  * Revert heap exhaustion patch
+  * hugectl no longer clips LD_LIBRARY_PATH variable
+  * Fix clean on failure code to avoid closing stdout
+
+-------------------------------------------------------------------
+Wed Jul 11 06:24:07 UTC 2012 - adrian@suse.de
+
+- Add excludearch for arm due to lacking support
+
+-------------------------------------------------------------------
+Tue Apr 10 19:51:51 UTC 2012 - tabraham@novell.com
+
+- Update to version 2.13
+  * hugeadm can now be used to control Transparent Huge Page tunables
+  * New morecore mode to better support THP
+  * Check permissions on hugetlbfs mount point before marking it as 
+    available
+  * Fix shm tests to use random address instead of fixed, old address 
+    failed on ARM
+
+-------------------------------------------------------------------
+Wed Oct 12 20:04:52 UTC 2011 - tabraham@novell.com
+
+- Update to version 2.12
+  * libhugetlbfs usages can now be restricted to certain binary names
+  * libhugetlbfs now supports static linking
+  * hugeadm uses more human readable directory names for mount points
+  * Fix segfault if specified user was not in passwd, failuer in
+    getpwuid() is now checked
+  * Added tests for static linking to testcase
+  * Added missing tests to driver script
+
+-------------------------------------------------------------------
+Sun May 29 21:42:52 UTC 2011 - meissner@novell.com
+
+- Do not include the 268MB testcase /usr/lib/libhugetlbfs/tests/obj32/linkhuge_rw.
+
+-------------------------------------------------------------------
+Fri Dec 17 11:45:36 UTC 2010 - trenn@novell.com
+
+- Update to version 2.11
+  Bugfixes and new features are listed in the NEWS file in
+  /usr/share/doc/packages/libhugetlbfs/NEWS
+
+-------------------------------------------------------------------
+Wed Oct  6 16:52:30 UTC 2010 - aj@suse.de
+
+- Update to version 2.9:
+  * Add --no-reseve to hugectl to request mmap'd pages are not reserved
+    for kernels newer than 2.6.34
+  * Add --obey-numa-mempol to hugeadm to request static pool pages are
+    allocated following the process NUMA memory policy
+  * Add switch to let administrator limit new mount points by size or inodes
+  * cpupcstat now caches the value returned by tlmiss_cost.sh to avoid
+    rerunning the script
+  * When specifying huge page pool sizes with hugeadm, memory sizes can
+    be used as well as the number of huge pages
+  * DEFAULT is now a valid huge page pool for resizing, it will adjust
+    the pool for the default huge page size
+  * tlbmiss_cost.sh in the contrib/ sub directory will estimate the cost
+    in CPU cycles of a TLB miss on the arch where it is run
+  * Add python script which automates huge page pool setup with minimal
+    input required from user
+  * cpupcstat now supports data collection using the perf tool as well as
+    oprofile
+  * --explain reports if min_free_kbytes is too small
+  * add --set-min_free_kbytes to hugeadm
+
+-------------------------------------------------------------------
+Fri Jun 18 14:41:41 UTC 2010 - coolo@novell.com
+
+- strip test binaries to fix build
+
+-------------------------------------------------------------------
+Tue Feb  9 09:29:27 UTC 2010 - trenn@novell.com
+
+- Removed unused files
+
+-------------------------------------------------------------------
+Mon Feb  8 22:48:44 UTC 2010 - jengelh@medozas.de
+
+- add workarounds for broken Makefile logic to detect arch
+
+-------------------------------------------------------------------
+Mon Feb  1 11:35:48 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Mon Oct 12 19:12:48 UTC 2009 - aj@suse.de
+
+- Fix typo in requires.
+
+-------------------------------------------------------------------
+Wed Jul 29 15:46:42 CEST 2009 - trenn@suse.de
+
+- Update from version 2.0 to 2.5
+
+-------------------------------------------------------------------
+Mon Feb  2 10:51:07 CET 2009 - olh@suse.de
+
+- document workaround for NX configurations on x86 (bnc#470234 - LTC50261)
+
+-------------------------------------------------------------------
+Wed Jan  7 15:11:22 CET 2009 - olh@suse.de
+
+- Update SECTIONS from linker scripts for binutils 2.19 compatibility
+  (bnc#445372 - LTC50129)
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Nov  6 14:59:22 CET 2008 - olh@suse.de
+
+- fix libhugetlbfs 32bit test case xB.linkhuge failure (bnc#442209 - LTC49702)
+
+-------------------------------------------------------------------
+Tue Oct 21 14:24:22 CEST 2008 - olh@suse.de
+
+- handle older binutils versions in elf32ppclinux.xBDT (bnc#436451 - LTC49076)
+
+-------------------------------------------------------------------
+Wed Aug 27 18:33:12 CEST 2008 - olh@suse.de
+
+- update to version 2.0 (fate#304340)
+  New Features
+  * New scriptless relinking for binutils >= 2.17
+  * Added direct allocator API for huge pages
+
+  Bug Fixes
+  * /proc/mounts is parsed line at a time to handle file larger than 4kb
+  * Read-only mappings use MAP_NORESERVE
+
+-------------------------------------------------------------------
+Wed Jun 25 11:31:01 CEST 2008 - olh@suse.de
+
+- update to version 1.3
+  New features
+  * Add HUGETLB_NO_PREFAULT to control prefaulting of huge pages via mlock
+  * Add "[hostname:pid]" to output messages
+  * Setup for handling larger huge page sizes e.g. 16G huge pages
+  * Update for new upstream sysctl
+  * Add support for hugetlbfs_morecore to shrink the heap
+  
+  Bug fixes
+  * Disable heap shrinking by default to avoid bug in glibc malloc
+  * Skip elflink calls in setup_libhugetlbfs for IA64 and sparc64
+  * Replace gethugepagesize with check_hugepagesize for error checking
+  * Make morecore argument a long to handle larger page sizes
+  
+  Tets suite fixes
+  * Check uid/gid in tests where it matters
+  * tests: verify there are enough huge pages
+  * Change tests to read /proc/meminfo
+  * tests: verify that huge page size isn't too big for the test
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Jan 14 17:19:02 CET 2008 - olh@suse.de
+
+- update to version 1.2
+  New features
+  * Partial segment remapping. This allows non-relinked binaries to try
+    to take advantage of libhugetlbfs' segment remapping code. Large
+    segments are required, especially on Power. This feature is useful
+    for estimating huge page performance, however full relinking will
+    still perform better.
+  * Add extra debugging for binaries that may run out of address space.
+  * Log library version when HUGETLB_VERBOSE is enabled.
+  * New test to check handling of misaligned mmap() parameters.
+  Bug fixes
+  * Fix EH_FRAME segment. Fixes some C++ applications.
+  * Rework PLT detection to work better on Power.
+  * Add per-target-arch syscall stubs to the library. These provide
+    reliable error messages from elflink.c if they occur while the
+    program segments are unmapped.
+  * Add proper SONAME to shared libs.
+  * Makefile respects CFLAGS/LDFLAGS/CPPFLAGS environment variables.
+  * Make mlock() failure non-fatal.
+
+-------------------------------------------------------------------
+Sun Jul  8 09:34:13 CEST 2007 - olh@suse.de
+
+- disable zero_filesize_segment test
+
+-------------------------------------------------------------------
+Sun Apr 15 18:31:53 CEST 2007 - olh@suse.de
+
+- update to version 1.1 (262564 - LTC33711)
+
+-------------------------------------------------------------------
+Mon Feb  5 11:49:14 CET 2007 - olh@suse.de
+
+- update to 20070129 devel snapshot
+  drop hugetlbd
+
+-------------------------------------------------------------------
+Mon Feb  5 11:21:45 CET 2007 - olh@suse.de
+
+- build -m64/-m32 if required
+
+-------------------------------------------------------------------
+Sat Dec  9 09:08:53 CET 2006 - olh@suse.de
+
+- build with -g
+  make install should not depend on all
+
+-------------------------------------------------------------------
+Fri Dec  8 16:20:25 CET 2006 - olh@suse.de
+
+- package testsuite, fix make check
+
+-------------------------------------------------------------------
+Tue Dec  5 14:48:13 CET 2006 - olh@suse.de
+
+- add the hugetlbd (214426)
+
+-------------------------------------------------------------------
+Sun Oct 29 10:02:15 CET 2006 - olh@suse.de
+
+- update to bugfix release 1.0.1 (214426)
+  * Always install linker scripts for all targets
+  * Error message updates
+  * Add documentation on HUGETLB_DEBUG
+  * Testcase updates
+
+-------------------------------------------------------------------
+Thu Oct  5 13:40:17 CEST 2006 - olh@suse.de
+
+- update to final 1.0
+
+-------------------------------------------------------------------
+Tue Sep 19 12:57:06 CEST 2006 - olh@suse.de
+
+- update to 20060913 git state
+  docu updates
+  use library versioning
+
+-------------------------------------------------------------------
+Wed Jul 19 18:01:55 CEST 2006 - olh@suse.de
+
+- update to 1.0-pre3
+
+-------------------------------------------------------------------
+Tue Apr 18 13:45:56 CEST 2006 - olh@suse.de
+
+- drop unneeded -packages from Buildrequires
+
+-------------------------------------------------------------------
+Sat Apr  8 11:44:06 CEST 2006 - olh@suse.de
+
+- update to 1.0-pre2 (#142046 - LTC20562)
+
+-------------------------------------------------------------------
+Tue Feb 21 21:09:06 CET 2006 - olh@suse.de
+
+- remove backup files
+
+-------------------------------------------------------------------
+Tue Feb 21 18:34:41 CET 2006 - olh@suse.de
+
+- add linker scripts on ppc, ppc64, i386 and x86_64
+
+-------------------------------------------------------------------
+Thu Feb  9 13:33:32 CET 2006 - olh@suse.de
+
+- create package, version 1.0-pre1 (#142046 - LTC20562)
+

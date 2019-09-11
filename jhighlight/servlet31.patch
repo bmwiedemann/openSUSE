@@ -1,0 +1,16 @@
+--- src/main/java/com/uwyn/jhighlight/servlet/HighlightFilter.java.sav	2014-10-11 07:51:58.000000000 +0300
++++ src/main/java/com/uwyn/jhighlight/servlet/HighlightFilter.java	2015-03-05 20:11:11.701332059 +0200
+@@ -232,5 +232,13 @@ public final class HighlightFilter imple
+ 		{
+ 			return mOutput.toByteArray();
+ 		}
++		
++		public void setWriteListener(javax.servlet.WriteListener listener) {
++			throw new UnsupportedOperationException("Not implemented yet.");
++		}
++		
++		public boolean isReady() {
++			return false;
++		}
+ 	}
+ }

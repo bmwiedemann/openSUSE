@@ -1,0 +1,28 @@
+diff --git build.xml build.xml
+index a7f6209..84f4c59 100644
+--- build.xml
++++ build.xml
+@@ -1,4 +1,4 @@
+-<project name ="FMGUI" default="build" basedir=".">
++<project name ="FMGUI" default="buildOPA" basedir=".">
+ 	<property name="src" value="src"/>
+ 	<property name="target" value="target"/>
+     <property name="resources" value="resources"/>
+@@ -18,7 +18,7 @@
+         </condition>
+ 	</target>
+ 	<target name="compile" description="Compiles the Fabric Manager GUI application">
+-	    <javac  srcdir="${src}" destdir="${target}/classes"
++	    <javac target="1.7" srcdir="${src}" destdir="${target}/classes"
+ 			        encoding="windows-1252"
+ 				    debug="true"
+ 		    		fork="yes"
+@@ -53,7 +53,7 @@
+ 	<target name="clear" description="Clears build files">
+ 	    <delete dir="${target}"/>
+ 	</target>
+-	<target name="build" description="Builds the Fabric Manager GUI application" depends="init,compile,createJar">
++	<target name="buildOPA" description="Builds the Fabric Manager GUI application" depends="init,compile,createJar">
+ 		<echo message="Fabric Manager GUI application has been built: ${target}/${opa-fmgui.app.jar}"/>
+ 	</target>
+ </project>

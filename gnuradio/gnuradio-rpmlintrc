@@ -1,0 +1,10 @@
+# Those files are examples - taking for learning...
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/gnuradio/examples/audio/.*")
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/gnuradio/examples/fcd/.*")
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/gnuradio/examples/uhd/.*")
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/gnuradio/examples/qt-gui/.*")
+addFilter("unstripped-binary-or-object.*/usr/share/gnuradio/examples/audio/.*")
+addFilter("unstripped-binary-or-object.*/usr/share/gnuradio/examples/fcd/.*")
+addFilter("unstripped-binary-or-object.*/usr/share/gnuradio/examples/uhd/.*")
+addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/gr-newmod/include/howto/api.h")
+addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/gr-newmod/lib/qa_howto.h")

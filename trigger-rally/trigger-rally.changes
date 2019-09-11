@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Sat Mar 16 18:42:00 UTC 2019 - fschaefer.oss@googlemail.com
+
+- Update to v0.6.6.1:
+  * Optimized data for release
+  * Removed internal TinyXML-2 source from Trigger code tree
+  * Documented and reorganized physic engine code
+  * Different tuning: Fox offroad, Evo circuit, Cordo in between
+  * Wheel sinking on the different types of terrain
+  * New freely licensed font
+  * Wheel-ground contact is now computed along wheel plane, not just straight down
+  * Vehicle selection screen shows real values of the car
+  * Vehicles can have different friction of wheels defined in the .vehicle file
+  * Optimized .obj mesh loader
+  * Updated libPhysfs code
+  * Other fixes
+  * Added 2 new events and 20 new single races (36 new maps)
+  * Added many new vegetation sprites
+- Drop patch reproducible.patch (merged upstream)
+- Add dependency for tinyXML2
+- Refactor data package creation
+- Add dependency for data package
+- Use pkgconfig(physfs)
+
+-------------------------------------------------------------------
+Tue Jul 10 19:13:23 UTC 2018 - bwiedemann@suse.com
+
+- make compilation independent of build system CPU (boo#1100677)
+
+-------------------------------------------------------------------
+Mon May 22 09:27:59 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build fully reproducible
+
+-------------------------------------------------------------------
+Fri Feb 17 10:47:11 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 0.6.5
+  * Fixed compilation error of "hiscore1.h" by C++11 compilers
+  * Added 2 new events and 13 new single races (total 25 new races)
+  * Added "road sign" option for map creators
+  * Updated code to use TinyXML-2, SDL2 and SDL2_image
+  * Improved code friendliness to Linux when searching for the
+    default configuration file "trigger-rally.config.defs"
+- Dropped upstream merged hiscore1.h.patch
+- Upstream switched from SDL to SDL2, corrected BuildRequires.
+- Fixed file-contains-date-and-time warning
+
+-------------------------------------------------------------------
+Sun Aug 28 07:27:57 UTC 2016 - mailaender@opensuse.org
+
+- Update to v0.6.4
+  - Added recording of best times
+  - Added unlocking of vehicles and events
+  - Optimized game data for smaller size and faster loading
+  - Added "Pause" key (default `P`)
+  - Added "Recover At Checkpoint" key (default `Q`)
+  - Added multiple laps option for map creators
+  - Added time penalty for offroad driving
+  - Improved the "AB" codriver voice
+  - Fixed sound bug in the Windows version
+  - Changed default resolution to native fullscreen
+- Add an AppData file
+- Fix line endings on text files
+
+-------------------------------------------------------------------
+Fri Mar 25 10:34:07 UTC 2016 - mailaender@opensuse.org
+
+- Update to v0.6.3
+  - Improve menu and in-race OSD
+  - Add codriver for 75% of maps
+  - Tweak terrain physics
+  - Add many new maps
+  - Change vehicle skins and presets
+  - Made various minor code improvements
+  - Fix compilation warnings
+  - Add support for .obj textures
+  - Include new .obj textures (disabled by default)
+  - Add 6 new events and 23 new single races courtesy of Onsemeliot
+  - Add several new textures
+  - Replace most media content (textures, audio, fonts, etc.) with
+    FOSS equivalents
+  - New FOSS Trigger Rally icon
+  - Many other changes (check SVN logs from about r48)
+
+-------------------------------------------------------------------
+Sat Jan  5 14:18:26 UTC 2013 - joop.boonen@opensuse.org
+
+- openal*-devel isn't a build requirement as it's a requirement
+  of freealut-devel
+
+-------------------------------------------------------------------
+Mon May  7 09:31:39 UTC 2012 - prusnak@opensuse.org
+
+- use datadir for game data
+
+-------------------------------------------------------------------
+Sun May  6 00:00:00 UTC 2012 - schaeferf.obs@googlemail.com
+
+- Update to v0.6.0:
+  * New (and old) contributed tracks and events
+  * New Practice Mode
+  * Paging on the Single Races screen to show all the available tracks
+  * Option to show speedometer in KPH or MPH
+  * Option to show digital speed on the speed dial ('hybrid' style)
+  * Fading track comment and GO at race start
+  * Freezing course time when passing through a checkpoint
+  * Tweak menu colours for more contrast 4/07/2010
+  * Removed splash screen delay
+  * Updated contact email address
+
+-------------------------------------------------------------------
+Fri Mar  6 00:00:00 UTC 2009 - schaeferf.obs@googlemail.com
+
+- update to SVN-version (revision 5)
+
+-------------------------------------------------------------------
+Tue Mar  3 00:00:00 UTC 2009 - prusnak@opensuse.org
+
+- use system glew library (glew.patch)
+
+-------------------------------------------------------------------
+Sun Mar  1 00:00:00 UTC 2009 - schaeferf.obs@googlemail.com
+
+- Initial openSUSE package release (0.5.2.1)
+

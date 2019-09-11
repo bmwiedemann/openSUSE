@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Thu Aug  8 17:16:41 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Only use cron if systemd timers are not installed
+
+-------------------------------------------------------------------
+Thu Jul 25 20:23:36 UTC 2019 - Andrew Daugherity <adaugherity@tamu.edu>
+
+- Combine changelog files. 
+- Update to 7.5.2.
+  See /usr/share/doc/packages/logwatch/ChangeLog for details.
+
+-------------------------------------------------------------------
+Wed Feb 13 19:25:38 UTC 2019 - adaugherity@tamu.edu
+
+- Update to 7.5.1.
+  Many changes, see the various changelog files under
+  /usr/share/doc/packages/logwatch.  No upstream changelog is provided,
+  so these were created from the git log.
+  * Notable changes include support for xz archive files and for
+    running as a systemd timer.
+- Drop logwatch-conf-5.patch -- a similar fix was made upstream.
+- dos2unix is not needed for build -- courier script was fixed in 2008.
+- Configure apache log paths not included by default conf (e.g. xz log
+  archives).
+- Move dmeventd conf to dist.conf (default.conf is for upstream) and
+  make its cron.d file config(noreplace).
+
+-------------------------------------------------------------------
+Mon Oct 22 21:54:25 UTC 2018 - adaugherity@tamu.edu
+
+- fix documentation path in logwatch(8) man page
+- install missing logwatch.conf(5) man page
+  => logwatch-conf-5.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 18:03:24 UTC 2018 - dimstar@opensuse.org
+
+- Remove duplicate BuildArch: noarch.
+
+-------------------------------------------------------------------
+Fri Jan 20 08:03:41 UTC 2017 - bwiedemann@suse.com
+
+- Drop USEDFORBUILD as it breaks build-compare
+  when any of the 113 build dependencies changed
+
+-------------------------------------------------------------------
+Mon May  2 11:15:07 CEST 2016 - pth@suse.de
+
+- Update to 7.4,3 (fate#320641)
+  List of changes in 7.4.2 is long so please so please see
+  logwatch-7.4.2.changelog in /usr/src/packages/logwatch.
+
+  Changes for 7.4.3:
+  [kernel] Fix default Ignore_messages value to not match anything
+  
+- Removed logwatch-http.patch as the fix is in upstream code.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:14:00 UTC 2015 - manfred.h@gmx.net
+
+- Add new patch to deal with Perl's pickyness regarding curly
+  brackets in patterns (logwatch-http.patch).
+
+-------------------------------------------------------------------
+Fri Feb 20 10:50:41 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 7.4.1
+  * No changelog available
+- Remove logwatch-parse_rsyslog_timestamps.patch; merged on upstream
+  release
+- Spec file clean up
+  * Remove obsolete macros
+  * Remove redundant %clean section
+
+-------------------------------------------------------------------
+Mon Dec 2 18:00:00 CET 2013 - tbehrens@suse.com
+
+- Update logwatch-firewall.patch to prevent 'Removing duplicate
+  Archive file' warning.
+
+-------------------------------------------------------------------
+Mon Jun 17 15:45:13 CEST 2013 - pth@suse.de
+
+- Add logwatch-parse_rsyslog_timestamps.patch that makes logwatch
+  understand the default timestamp format of newer rsyslog versions
+  (bnc#818842).
+
+-------------------------------------------------------------------
+Tue Dec 18 12:04:36 UTC 2012 - robert.munteanu@gmail.com
+
+- Added logwatch-dmeventd-reduce_frequency.patch to reduce false
+  positives from dmeventd when a long logwatch run is in progress 
+
+-------------------------------------------------------------------
+Mon Oct 17 13:08:25 CEST 2011 - pth@suse.de
+
+- Update to 7.4.0 which is the official release with the fix for
+  CVE-2011-1018.
+- Fix cron.d file to state the user to run dmeventd as (bnc#724164).
+- Fix file list for 7.4.0.
+
+-------------------------------------------------------------------
+Sun Feb 27 22:39:50 CET 2011 - jslaby@suse.de
+
+- Fix CVE-2011-1018 patch (missing parenthesis)
+
+-------------------------------------------------------------------
+Fri Feb 25 12:36:14 CET 2011 - pth@suse.de
+
+- Add patch to fix the handling of special characters in log files
+  (CVE-2011-1018, bnc#674984).
+- Make files in Logwatch_Dmeventd_Setup_Files tarball 644 and
+  repack with bzip2.
+
+-------------------------------------------------------------------
+Tue Feb  1 12:24:42 CET 2011 - pth@suse.de
+
+- Fix Requires for SLE10.
+
+-------------------------------------------------------------------
+Mon May 10 10:22:41 UTC 2010 - pth@novell.com
+
+- Require perl-Date-Manip (bnc#603959).
+
+-------------------------------------------------------------------
+Tue Dec  1 16:20:57 CET 2009 - pth@suse.de
+
+- --print was set by default and in that case redirection to file
+  never happened (bnc#450413).
+
+-------------------------------------------------------------------
+Sun Aug 30 20:06:21 CEST 2009 - coolo@novell.com
+
+- use %patch0 for Patch0
+
+-------------------------------------------------------------------
+Mon Jan 19 14:44:28 CET 2009 - pth@suse.de
+
+- Log timestamp of dmeventd in /var/lib/logwatch not
+  /etc/logwatch/scripts/services.
+- Add /var/lib/logwatch to file list (bnc#467272)
+
+-------------------------------------------------------------------
+Fri Jan 16 13:18:48 CET 2009 - pth@suse.de
+
+- Fix a few typos in logwatch.conf
+
+-------------------------------------------------------------------
+Tue Jan 13 12:15:35 CET 2009 - pth@suse.de
+
+- Call sendmail with full path (bnc#465127).
+
+-------------------------------------------------------------------
+Mon Oct 13 16:47:05 CEST 2008 - pth@suse.de
+
+- Add files to let logwatch capture DM events (fate#304214, bnc#434254)
+
+-------------------------------------------------------------------
+Tue Apr  8 09:33:47 CEST 2008 - crrodriguez@suse.de
+
+- logwatch does not watch anything without cron 
+
+-------------------------------------------------------------------
+Mon Nov 12 14:47:17 CET 2007 - pth@suse.de
+
+- Patch iptables.conf to also monitor the SUSE firewall logs (#334167)
+- Update to 7.3.6:
+   - Fixed bug with --mailto not working with printing now enabled by default
+   - Fixed problem with the Samba filter
+   - New services bfd, zz-runtime, evtsystem, evtsecurity, and evtapplication.
+   - Default behavior is now to print output which means you will see the
+     report if you run it from the command-line and when run from cron it will
+     be emailed to you by the cron daemon.  You can change this through config
+     or command-line options.
+   - Substantial Postfix improvements and other minor changes and fixes
+   - Numerous other filter improvements
+   - Added dpkg, pix, denyhosts, and php services
+
+-------------------------------------------------------------------
+Thu Nov 23 15:02:31 CET 2006 - mge@suse.de
+
+- check into autobuild
+- update to 7.3.1
+- FATE #300526
+

@@ -1,0 +1,708 @@
+-------------------------------------------------------------------
+Sun Jul 14 14:51:11 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20190714:
+  * chat users list: add broadcaster and vips sections to predefined groups order; show any unrecognized groups added in the future after moderators. (#280)
+
+-------------------------------------------------------------------
+Mon Apr 15 11:50:13 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20190328:
+  * Fix HTTP request socket output (#272)
+
+-------------------------------------------------------------------
+Mon Feb 04 19:31:37 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20190202:
+  * Fix HiDPI using QT_AUTO_SCREEN_SCALE_FACTOR (#269)
+
+-------------------------------------------------------------------
+Tue Nov 20 13:54:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20181119:
+  * adjusted font sizes
+  * fix travis linux build
+  * make views swipeable
+  * minor ux fixes, allow chat on top edge
+  * topbar hiding at screen edge
+  * responsive grid tooltips, remove 'open chat'
+  * store window position
+  * imageprovider: fix a mem leak
+  * vod: properly save position on shutdown
+  * allow debug option on windows
+  * chat ux, readable colors, focus, multiline comments etc.
+  * responsive scrolling and scrollbar
+  * better url detection
+  * remove apptray, add follow confirmation
+  * refactor settings, choose player settings at runtime
+
+-------------------------------------------------------------------
+Sun Nov 04 20:17:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20181103:
+  * [travis] add linux appimage and android apk (#258)
+
+-------------------------------------------------------------------
+Wed Oct 17 19:52:18 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20181016:
+  * Custom install prefix (#256)
+
+-------------------------------------------------------------------
+Mon Oct 15 20:18:20 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.6+git~20181015:
+  * Seek preview (#252)
+  * appveyor compile openssl, mpv (#250)
+
+-------------------------------------------------------------------
+Sun Oct 07 19:43:27 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.5+git~20181007:
+  * version 1.6.6
+  * fix header visibility while mouseover player
+  * add player hotkeys
+  * improve player ui
+  * fix some player ui glitches
+  * add channel name to header when playing vod
+  * fix vod reload seeking to correct position
+  * fix QtAV buffering status and seeking at start
+  * fix mpv player position update
+  * replace spacer with vod time label
+  * add option for hardware acceleration
+  * add option for opengl backend
+  * add option for multiple instances
+  * fix wrong usage of beginRemoveRows
+
+-------------------------------------------------------------------
+Sat Oct 06 23:18:48 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.5+git~20181005:
+  * enable android topbar hiding feature on desktop
+  * fix appveyor (#245)
+  * add example image of color mod
+
+-------------------------------------------------------------------
+Tue May 29 10:31:16 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.6.5+git~20180524:
+  * Desktop file improvements (#237)
+
+-------------------------------------------------------------------
+Sun Mar 11 13:58:00 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.5+git~20180311:
+  * bump appveyor qt ver (#229)
+
+-------------------------------------------------------------------
+Sun Mar 04 15:16:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.5+git~20180304:
+  * set widths on startup to fix tiny window bug
+  * add timeout
+  * drop runguard, use simple lockfile for single instancing
+  * fix window launching size
+
+-------------------------------------------------------------------
+Sun Mar 04 10:15:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.5+git~20180304:
+  * ver 1.6.5
+  * CI automations for building installer packages (#228)
+
+-------------------------------------------------------------------
+Sat Mar 03 12:21:42 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20180302:
+  * qt -> qt5
+  * travis badge
+  * appveyor badge
+
+-------------------------------------------------------------------
+Sun Feb 25 15:46:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20180225:
+  * fix user ban messages, do not display timeouts and bans twice if it was the user who banned the person
+  * fix some warnings, and clean up code
+  * display when user gets timed out or banned
+
+-------------------------------------------------------------------
+Sun Feb 18 18:53:56 UTC 2018 - pousaduarte@gmail.com
+
+- Add libqt5-qtgraphicaleffects libqt5-qtquickcontrols to required packages
+
+-------------------------------------------------------------------
+Thu Dec 21 20:53:46 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20171212:
+  * add keep on top option for desktop
+
+-------------------------------------------------------------------
+Sun Oct 29 19:23:50 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20171029:
+  * Don't show tray menu on startup.
+
+-------------------------------------------------------------------
+Mon Oct 09 13:30:14 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20171007:
+  * first cut of new chat replay
+  * avoid a loop requesting chat for the same timestamp if there's a problem
+
+-------------------------------------------------------------------
+Fri Sep 22 12:24:28 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170920:
+  * Fix desktop entry: don't hardcode icon path and correct category
+
+-------------------------------------------------------------------
+Sun Aug 27 09:48:08 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170827:
+  * Added webpage link
+  * updated readme
+
+-------------------------------------------------------------------
+Fri Aug 25 09:48:48 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170822:
+  * Added click animation
+
+-------------------------------------------------------------------
+Thu Aug 10 12:56:39 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170803:
+  * Removed initial centering/resizing of window, to respect wm better
+  * enable double click to open stream directly
+
+-------------------------------------------------------------------
+Mon Jul 31 20:16:19 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170724:
+  * Update README.md
+  * leave chat input focused after sending a message
+
+-------------------------------------------------------------------
+Mon Jul 17 14:59:19 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170717:
+  * emote picker keyboard fixes: hook up onShortcutOverride to re-enable Escape; use forceActiveFocus() instead of setting .focus
+  * emote picker pageup/pagedown support
+
+-------------------------------------------------------------------
+Thu Jul 13 15:22:14 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170713:
+  * Fixed player triggering source loading multiple times
+
+-------------------------------------------------------------------
+Tue Jul 11 15:05:28 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170711:
+  * Added limit of 100 msg in android
+  * Android build tweaks
+  * Android ssl tweaking
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Jul 10 15:43:33 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170709:
+  * Added simple version checking on startup
+  * Added config flag to enable version checks (disabled by default)
+  * Added generic button which can be set to rotating animation
+  * Added swipe down update triggers to dynamic grids
+  * Added header timer refresh on closing stream selector
+  * Added clear button to search bar, max limit of 48 chars
+  * Added simple indicator whether chat has new unseen messages to chat opening button
+  * Slight adjustment
+  * Adjust update swipe len
+
+-------------------------------------------------------------------
+Fri Jul 07 12:10:04 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.1+git~20170706:
+  * replaced marea with buttons to control chat (because this caused issues with chat interactions)
+  * Now highlights when picked is visible
+  * fixed bug in imports
+  * Upped version after fixes
+
+-------------------------------------------------------------------
+Thu Jul 06 16:11:52 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.6.0+git~20170705:
+  * Added scroll indicator
+  * Views don't go to beginning everytime now when shown. Enabled hightlight following, because the not-following didnt work as expected
+  * added qt minimum version
+  * tweaked login button font size
+  * Removed default foreground colors to make room for enviroment variable-set colors via user
+  * updated
+  * updated
+
+-------------------------------------------------------------------
+Wed Jul 05 10:10:49 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version v1.6.0+git~20170704:
+  * Squashed commit of the following:
+  * Noto sans as default font
+  * updated readme
+  * resizing images
+  * updated readme
+  * updated readme
+  * updated readme
+
+-------------------------------------------------------------------
+Mon Jun 26 07:55:47 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version v1.6.0beta:
+  * Build Windows installer on AppVeyor (#181)
+  * Provide "Watch live" menu item even when channel is offline (#176)
+  * What I needed to do to build on MacOS (#182)
+  * Travis Mac build config (#184)
+  * win installer improvements
+
+-------------------------------------------------------------------
+Sat Jun 24 13:07:31 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170624:
+  * Moved ribbon to topbar, topbar now uses material/controls2
+  * optionview rdy
+  * merged channels, featured view into one view
+  * up ver to 1.6.0; numeral changes to ui
+  * started working on playerview
+  * player view, chatview
+  * chatview almost ready
+  * deleted unused qml files, tweaks to playerview
+  * moved viewerselector to component
+  * tweaking channelsview
+  * created drawer component
+  * minor fix
+  * ok
+  * refactors, fixed chat/viewers
+  * Massive refactoring attempt to split between functionality
+  * More refactoring
+  * updated gitignore; ui tweaks
+  * Added label to tell that video will continue from prev pos
+  * Refactored channelmanager to use qmlSingleton pattern
+  * tweaked channel title label line count
+  * more tweaking around
+  * global chatview
+  * Moved application settings-related functionality to settingsmanager class
+  * Added paragraph about closing
+  * Fixed options loading
+  * more tweaking to optionsview
+  * fixed emote size being 0
+  * Added way to clear search via dblclick
+  * fixed minor bug
+  * refactored main so tray, runguard dont get exposed to qml side
+  * Took out the trash, streamlined chat font size to use ctrl-wheel combination in chatview
+  * re-enabled customflow for chatmessage
+  * tweaks to optionsview
+  * Disabled testing flags
+  * Fixed bug in seekbar
+  * fixed seekbar not reaching both ends
+  * Tweaked player quality handling
+  * fullscreen button now shows different icon when fs
+  * removed screenshot folder
+  * Removed unused import
+  * updated readme
+  * removed unused stuff
+  * Tweaks and updates; Default font to Overpass; Added (temporary) font-selection control to Options
+  * rehidden emote label which was shown on error
+  * use SettingsManager::hiDpi() for bits image selection
+  * Fixes to gridview layouts
+  * re-enabled some includes
+  * player view refactoring, powermanager to singleton
+  * refactoring
+  * added error msg printing; fixed bug in playerview
+  * Added button labels
+  * Added pin-button for pinning chatview
+  * Fixed attempt to sometimes call null object
+  * Adjusted chatview pos
+  * close emote picker on send
+  * Added check that updatepositions-fn exists
+  * Fixed followedview unable to unfollow channel
+
+-------------------------------------------------------------------
+Fri Jun 23 07:38:06 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170622:
+  * What I needed to do to build on MacOS (#182)
+  * Travis Mac build config (#184)
+
+-------------------------------------------------------------------
+Wed Jun 21 09:01:50 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170620:
+  * Build Windows installer on AppVeyor (#181)
+  * Provide "Watch live" menu item even when channel is offline (#176)
+
+-------------------------------------------------------------------
+Tue Jun 13 13:19:06 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170612:
+  * explicitly percent-encode HLS token (#175)
+  * VOD resume at last playback position (#177)
+
+-------------------------------------------------------------------
+Fri Jun 09 08:50:47 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170607:
+  * Debug command line option (#172)
+
+-------------------------------------------------------------------
+Fri Jun 02 09:05:56 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170602:
+  * collect _total from responses to be shown in search view; stop cascading requests from responses once the total from the previous response is reached (#171)
+  * BTTV Emote Support (#168)
+  * when watching a VOD with chat replay, show a more consistent number of previous messages after seeking (#169)
+
+-------------------------------------------------------------------
+Thu Jun 01 16:03:31 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170601:
+  * switch followed and blocked paged results handling to use JSON _total and not stop immediately after a non-full page (#166)
+- Include fontawesome-fonts as dependency to fix GUI issues
+
+-------------------------------------------------------------------
+Sat May 20 12:07:13 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170519:
+  * ChannelListModel improvements (#162)
+
+-------------------------------------------------------------------
+Thu May 18 08:56:25 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170518:
+  * Convert connect calls to the Qt5 function-pointer style connect() (#159)
+  * hide chat controls in small mode (#161)
+
+-------------------------------------------------------------------
+Wed May 17 18:39:07 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170517:
+  * switch to encrypted chat (#158)
+
+-------------------------------------------------------------------
+Wed May 17 07:34:20 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170517:
+  * fix seeking on load of VOD with Qt Multimedia backend (#155)
+  * save quality setting between runs (#156)
+  * Chat user blocks support (#157)
+
+-------------------------------------------------------------------
+Mon May 15 15:41:29 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170515:
+  * Local favourites fixes (#152)
+  * set audio client name and title in libmpv (#154)
+  * Fix blank offline notifications (#153)
+
+-------------------------------------------------------------------
+Fri May 12 11:08:55 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170512:
+  * Chat text scale factor setting (#147)
+  * Double join chat quick fix (#146)
+  * Reworked obsolete response handling that depended on pre-v5  "_links" collections; refactored things that depend on request URL up to NetworkManager; removed unused Channel constructors (#149)
+
+-------------------------------------------------------------------
+Wed May 10 18:07:56 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170510:
+  * fix 'undefined' in generated colour values
+
+-------------------------------------------------------------------
+Tue May 09 07:55:44 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170509:
+  * switch to v5 api: nm::getStreams, nm::getStreamsForGame
+  * switch to v5 api: nm::getStream
+  * switch to v5 api: nm::getGames
+  * switch to v5 api: nm::searchChannels, searchGames, getFeaturedStreams (also fix GET parameters)
+  * switch to v5 api: game streams search, getBroadcasts & VOD parsing
+  * switch to v5 api: nm::getUser, nm::getUserFavourites, nm::getEmoteSets
+  * switch to v5 api: more renaming to reflect that getUser also gets the id
+  * switch to v5 api: nm::getChannelBadgeURls
+  * switch to v5 api: nm::editUserFavourite; handle inconsistent json type for channel _id
+  * switch to v5 api: nm::testConnection
+  * focus the emote search box first immediately after emote picker is opened
+  * increase the minimum brighness of the random color channel values for better contrast
+  * missing init
+
+-------------------------------------------------------------------
+Sun May 07 18:12:13 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170507:
+  * use 2x beta badges scaled for high DPI screen, using explicit width/height setting in QML as QML Image does not respect the devicePixelRatio of the QImage provided through the QQuickImageProvider
+  * emotes high DPI experiment
+  * display bits images
+  * unused constant
+  * reversed test code hunk
+  * fix missing bits provider init for chat replay
+  * refactoring
+  * animated bits
+  * use high DPI bits images in high dpi
+  * fix global bits actions query
+  * Use global bits image key if there is an entry for a channel-specific image but has the same URL as the global entry, to avoid a bunch of duplicate cache entries.
+  * Collect bits color from response in addition to image urls; show colored bold bits value suffix
+  * fix warnings
+  * automatically select normal dpi or high dpi emote/badge/bits images based on highest screen devicePixelRatio
+
+-------------------------------------------------------------------
+Thu May 04 07:30:56 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170503:
+  * reduce download rate to make video impact less severe
+  * disable some badge debug output
+  * avoid downloadComplete signal in the middle of a download batch; don't count already-loaded images toward the throttling
+  * simplify timing
+  * switch to QTimer-based download start rate so we're not spinning on processEvents
+  * move ImageProvider bulk download completion to a separate signal rather having a bunch of special logic to overload downloadComplete
+  * remove unused bulk download returned value logic
+
+-------------------------------------------------------------------
+Mon May 01 10:22:03 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170501:
+  * add /w for whispers; accept any case for slash commands
+  * fix ChatView anchor changes unintentional width setting
+  * hide chat controls in small mode
+  * hide chat List when chat hidden
+  * fix chat controls position with swapped chat
+  * fixed transparent bg on chat toolbar
+  * tweaks to viewerlist
+
+-------------------------------------------------------------------
+Sun Apr 30 10:30:15 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1+git~20170429:
+  * if a chat replay is in progress don't rejoin live chat when the network recovers
+  * receive and send whispers from the chat view
+  * add viewer list to chat
+  * move viewer list button to top navbar
+  * viewer list tooltip
+  * disable viewer list button when there is no current channel in playerview
+  * Moved list button inside chatview
+
+-------------------------------------------------------------------
+Fri Apr 28 13:32:35 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.1rc+git~20170428:
+  * updated dependencies
+
+-------------------------------------------------------------------
+Fri Apr 28 12:39:22 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170428:
+  * comment out unused parameters
+  * explicit parent QObject call
+  * more unused parameters
+  * Revert "explicit parent QObject call"
+  * favouritesModel 0 -> nullptr
+  * missing Q_OBJECTs
+  * bring IrcChat static consts into class as there are some non-PODs
+  * move more static QString consts into classes; foreach tweaks
+  * more foreach tweaks, constness fixes in channel getters
+  * fix technically ambiguous comment block
+  * fix emit used with non-signal member functions
+  * fix emit used with non-signal member functions, cont'd
+  * fix ambiguous backslash ending in comment
+  * Move QTcpSocket creation out of IrcChat constructor as emits don't work in constructor
+  * dead code
+  * minimally handle the case where sock is null
+  * more foreach tweaks
+  * populate all ChatMessage fields for sent message
+  * add virtual destructor to work around compiler vtable issues
+  * missing return
+  * vtable plz
+  * Revert "vtable plz"
+  * Revert "add virtual destructor to work around compiler vtable issues"
+  * appveyor: switch to lachs0r's libmpv build
+  * bump TLS version for download
+  * handle relative download link url
+  * update cache setting for new mpv path
+  * troubleshooting move
+  * include contents move is not necessary with this libmpv build
+  * prepend EXPORTS line to def
+  * libmpv artifact changes
+  * update path in conditional download test
+
+-------------------------------------------------------------------
+Thu Apr 27 10:49:50 UTC 2017 - jengelh@inai.de
+
+- Trim reference to external repositories from description.
+- Replace %__macro-type indirections.
+
+-------------------------------------------------------------------
+Mon Apr 24 08:21:38 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170423:
+  * Switch QDateTime static members for compatibility with older Qt
+
+-------------------------------------------------------------------
+Sun Apr 23 10:56:01 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170422:
+  * clear replay chat deduplication state when switching/seeking VODs or leaving replay mode
+  * fix reload stream button, resume when channel goes online, resume when network comes back online
+
+-------------------------------------------------------------------
+Sat Apr 22 08:50:34 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170422:
+  * add vod chat replay
+  * fix: "Open chat" command should turn off vod mode
+  * cleanup unused forward declarations
+  * fix iterator invalid state after erase
+  * side margins for chat
+  * workaround offset in the mpv backend positions
+  * get rid of chat timestamp offset in the chat-replay layer as there is a workaround in the mpv backend
+  * don't do replay seeks and renames when not in replay mode
+  * when we leave replay mode or switch vods, cancel the chat replay network request in progress if any
+
+-------------------------------------------------------------------
+Fri Apr 21 16:19:59 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170421:
+  * [mpv] Enable hardware decoding if available
+
+-------------------------------------------------------------------
+Wed Apr 19 18:25:59 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170419:
+  * fix for chat reconnect when we switch content for the channel we're already in
+  * add VOD created date/time to tooltip
+
+-------------------------------------------------------------------
+Tue Apr 18 08:28:36 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170418:
+  * fix network error message not showing if there is a failure before the UI loads
+
+-------------------------------------------------------------------
+Mon Apr 17 20:10:50 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170417:
+  * Dropped qt webengine module => Replaced with (super) lightweight http server; Version up to 1.5.0
+  * replaced emoticon icon with twitch icon, and made it look more like rest of the application
+  * updated readme
+  * up readme
+
+-------------------------------------------------------------------
+Mon Apr 17 10:08:48 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170417:
+  * fix channelmanager noreturns
+
+-------------------------------------------------------------------
+Sun Apr 16 14:31:14 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170416:
+  * refactor image provider used for emotes out of ircchat
+  * use image provider for badges
+  * give global beta API badges precedence over channel official API badges. I don't know that this is correct, but it's consistent with the existing QML badge code and gives the better turbo icons
+  * clear unshown message queue on leave
+  * filter wrong-channel chat
+  * imageprovider: download with temp file & rename
+  * grid touchscreen fix attempt
+  * also needed to fix existing click signal handlers using selectedItem
+  * Add some grid context menu capability for touch screen / single button
+  * refactor specific tooltip out of CommonGrid into ChannelGrid and GameView; refactor VodsView to just use ChannelGrid with its own tooltip
+  * use correct platform versions of ssl libs
+  * apply GridView content offsets to account for its scroll position
+
+-------------------------------------------------------------------
+Sat Apr 15 17:03:43 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170415:
+  * added true unicode character counter and hooked it up in the emoji splitting
+  * fix for emote picker button visible in PlayerView smallMode
+
+-------------------------------------------------------------------
+Fri Apr 14 08:56:21 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170414:
+  * appveyor initial x86 release config
+  * add matrix builds
+  * a note about libmpv version
+  * for simplicity re licensing issues just include the whole workspace including source
+  * typo
+  * dynamically find current libmpv build snapshot version
+  * typo
+  * add missing VCINSTALLDIR setting
+  * missing include
+  * add libmpv dev archive used for build to artifacts so we have it around for troubleshooting
+
+-------------------------------------------------------------------
+Thu Apr 13 14:33:41 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170413:
+  * screenshot added
+  * updated readme
+
+-------------------------------------------------------------------
+Thu Apr 13 14:15:36 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170413:
+  * refactored common channel-related view components into a new ChannelGrid; added "Open Chat" context menu command; made "Open Chat" the default click when channel is offline
+  * emote display support
+  * remove unused var
+  * getting emote set ids loading (work in progress)
+  * skeleton of emotes loading for picker
+  * GridView for emotes (work in progress)
+  * emote picker for chat
+  * emote picker button dark and narrower
+  * switch back to flow
+  * remove loader height and width
+  * remove chat emote loader's set image sizes
+  * Use non-html-escaped text fragments for Flow Text
+  * Added a replacement for Flow called CustomFlow that allows vertical center or bottom aligning lines
+  * CustomFlow relayout on resize
+  * don't need to reflow contents on container height change
+  * add a bit of line spacing
+  * minimal keyboard usability for emote picking
+  * integrate emote picker keyboard control with grid keyboard navigation
+  * clean up emotes table in destructor
+  * hook up link detection again
+  * hook up the previous link detection again
+  * remove debug output
+  * pass emote text to frontend; add emote tooltip
+  * factoring some emote display functionality out of incoming message processing
+  * move emote set loading to irc connect time; identify emotes in sent chat message and pass relevant emote info to the back end for emote loading and substitution; cleanup
+  * badges support part 1: stable API
+  * add open/close animation for emote picker
+  * grid picker is getting into the animation for a couple of frames; get rid of it since it's not displaying normally anyway
+  * add support for new beta global and channel badges
+  * fix for beta channel badges neeting to be matched using channelId
+  * fix for using channel badges on outgoing chat
+  * use hand cursor for clickables in chat (username, clickable badges, and inline links)
+  * fix spurious emote matches in sent messages
+  * preserve badge order in the IRC tags value
+  * use only channel USERSTATE badges for a channel; fall back to GLOBALUSERSTATE badges only if there were no badges in the channel USERSTATE
+  * If there are badges appear multiple times in the list for some reason, don't show dupes
+  * Hook up user's display-name, color, and statuses from tags in USERSTATE and GLOBALUSERSTATE to message fields for sent messages so the info can be used for their appearance
+  * Added USERNOTICE handling (e.g. for sub messages)
+  * also show NOTIFY messages as a channel notification
+  * apply chat opacity setting to channel notice highlight
+  * change Channel joined message to a channel notice
+  * rework height setting for robustness
+  * fix visible badge hiding
+  * unhook the chat listview width from its parent container width, to get a smooth slide during the chat opening animation instead of a slow reflow
+  * fix for username line being hidden when chat is offscreen and causing layout issues
+  * lighter channel notice color & rename
+  * Fix detection of emotes with characters that are escaped in html regexes
+  * actually enable the spinner in the emote picker while downloading emote sets, tweak
+  * cleanup unused code
+  * don't check all batches of followed channels for streams every time a batch of followed channels arrives
+
+-------------------------------------------------------------------
+Wed Apr 12 15:09:14 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.4.0+git~20170412:
+  * don't show "playing" in description when there is no current game set
+  * provide a value for accept-language for auth webview based on locale, so Twitch will provide a login page in the user's language if possible
+

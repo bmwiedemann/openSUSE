@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Sun Aug 11 02:03:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Fri May 17 18:46:30 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Tue Oct 16 01:56:19 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 6.0.0
+  * Drop support for python 2
+  * Upgrade to prompt_toolkit 2.x
+- Don't build for python2 anymore since it isn't supported.
+
+-------------------------------------------------------------------
+Sun Oct  7 23:55:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use upstream builds of doc files.
+- Merge doc subpackage and tests into main spec file.
+- Use %license tag
+- Fix prompt_toolkit dependency.
+
+-------------------------------------------------------------------
+Sun Jul 22 08:44:57 UTC 2018 - toddrme2178@gmail.com
+
+- Not compatible with prompt_toolkit 2.x
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Tue Sep 19 19:51:19 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 5.2.0
+  * When using a kernel that the console did not start, exiting with Ctrl-D now
+    leaves it running. 
+  * Added Ctrl-\\ shortcut to quit the console.
+  * Input prompt numbers are now updated when another frontend has executed
+    code in the same kernel.
+  * Fix setting next input with newer versions of prompt_toolkit.
+  * Ensure history entries are unicode, not bytes, on Python 2.
+  
+-------------------------------------------------------------------
+Wed Apr 26 19:08:23 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Mar 31 19:17:01 UTC 2017 - toddrme2178@gmail.com
+
+- Updaste to 5.1
+  * New ``ZMQTerminalInteractiveShell.true_color`` config option to use 24-bit
+  colour.
+  * New ``ZMQTerminalInteractiveShell.confirm_exit`` config option to turn off
+  asking 'are you sure' on exit.
+  * New ``--simple-prompt`` flag to explicitly use the fallback mode without
+  prompt_toolkit.
+  * Fixed executing an empty input.
+  * Fixed formatting for code and outputs from other frontends executing code.
+  * Avoid using functions which will be removed in IPython 6.
+- Updaste to 5.0.0
+  + Interactive Shell architecture
+    * disinherit shell class from IPython Interactive Shell `#68 <https://github.com/jupyter/jupyter_console/pull/68>`_
+      This separates jupyter_console's ZMQTerminalInteractiveShell from IPython's TerminalInteractiveShell and InteractiveShell classes.
+    * update SIGINT handler to not use the old interactive API shell `#80 <https://github.com/jupyter/jupyter_console/pull/80>`_
+  + Image Handling improvement
+    * use PIL as default image handler `#79 <https://github.com/jupyter/jupyter_console/pull/79>`_
+    * better indication of whether image data was handled `#77 <https://github.com/jupyter/jupyter_console/pull/77>`_
+  + Prompts improvement
+    * use prompt_toolkit 1.0 `#74 <https://github.com/jupyter/jupyter_console/pull/74>`_
+    * don't use prompt_manager `#75 <https://github.com/jupyter/jupyter_console/pull/75>`_
+    * remove ``colors_force`` flag that have no effects: `#88 <https://github.com/jupyter/jupyter_console/pull/88>`_
+- Updaste to 4.1.1
+  * fix for readline history
+  * don't confuse sys.path with virtualenvs
+
+-------------------------------------------------------------------
+Thu Feb 18 21:14:18 UTC 2016 - toddrme2178@gmail.com
+
+- specfile:
+  * update copyright year
+  * Split documentation into subpackage
+- update to version 4.1.0:
+  * readline/completion fixes
+  * use is_complete messages to determine if input is complete
+    (important for non-Python kernels)
+  * fix: 4.0 was looking for jupyter_console_config in IPython config
+    directories, not Jupyter
+
+-------------------------------------------------------------------
+Mon Oct 12 13:46:17 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.0.3
+  * fix jupyter console --generate-config
+
+-------------------------------------------------------------------
+Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Wed Sep 16 15:26:27 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.0.2
+  * fix `jupyter console --generate-config`
+  * add long_description
+  * fix setuptools entrypoint
+- Update to 4.0.1
+  * entrypoints only when setuptools invoked
+  * bug fix
+  * suggestion for windows users
+  * Fix printing errors when execute_reply and error messages come
+  * Try installing IPython from Github on RTD
+  * Try installing on RTD with --pre to get IPython 4
+  * Add requirements file for RTD
+
+-------------------------------------------------------------------
+Tue Jul 21 15:06:50 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

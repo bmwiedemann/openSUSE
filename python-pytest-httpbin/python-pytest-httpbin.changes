@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Fri Feb 15 14:24:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Feb 14 13:41:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.0:
+  * Update included self-signed cert to include IP address in SAN (See #52).
+  * Only use @pytest.fixture decorator once (thanks @hroncok)
+  * Fix a few README typos (thanks @hemberger)
+- Use github tarball to get tests
+
+-------------------------------------------------------------------
+Wed May  2 17:43:14 UTC 2018 - tchvatal@suse.com
+
+- Revert last commit
+
+-------------------------------------------------------------------
+Thu Apr 19 17:12:15 UTC 2018 - toddrme2178@gmail.com
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Mon Nov 13 18:23:24 UTC 2017 - arun@gmx.de
+
+- removed 0001-Remove-Flask-and-decorator-from-install_requires.patch
+  (included upstream)
+
+- update to version 0.3.0:
+  * Allow to run httpbin on fixed port using environment variables
+    (thanks @hroncok)
+  * Allow server to be thread.join()ed (thanks @graingert)
+  * Add support for Python 3.6 (thanks @graingert)
+
+-------------------------------------------------------------------
+Tue Aug  8 19:57:56 UTC 2017 - tbechtold@suse.com
+
+- add 0001-Remove-Flask-and-decorator-from-install_requires.patch
+- cleanup Requires
+
+-------------------------------------------------------------------
+Sun May  7 23:48:54 UTC 2017 - jengelh@inai.de
+
+- Remove sensationalist language from description.
+
+-------------------------------------------------------------------
+Tue Apr  4 18:00:56 UTC 2017 - jmatejek@suse.com
+
+- initial commit - test requirement of python-requests

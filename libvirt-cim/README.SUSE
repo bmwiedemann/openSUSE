@@ -1,0 +1,17 @@
+tl;dr
+libvirt-cim providers don't unload. Increase provProcs to 64 in /etc/sfcb/sfcb.cfg
+
+
+
+The libvirt-cim providers will not unload after use and might prevent
+the loading of other providers in sfcb.
+
+Please edit /etc/sfcb/sfcb.cfg to increase the provProcs to 64.
+
+To quote upstream:
+"the crux lies in the usage of the libcmpiutil DEFAULT_INST_CLEANUP macro
+ which prevents the provider from being unloaded. sfcb doesn't unload
+ providers forcibly by design, so it is not bug.
+ In the long run, it would probably be desirable to allow the unloading
+ of the libvirt-cim providers. For now, the number of processes would
+ need to be increased."

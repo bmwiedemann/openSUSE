@@ -1,0 +1,280 @@
+From ff279a5697992730bc885ddd171456c06c09fb10 Mon Sep 17 00:00:00 2001
+From: Samuel Martin <s.martin49@gmail.com>
+Date: Wed, 8 Jun 2016 21:36:29 +0200
+Subject: [PATCH] fetchmailconf.py: make fetchmailconf.py python{2, 3}-compliant
+
+This change does:
+- use repr(...) instead of `...` (see [1]);
+- fix print call;
+- fix octal numbers.
+
+[1] https://docs.python.org/release/3.0.1/whatsnew/3.0.html#removed-syntax
+
+Signed-off-by: Samuel Martin <s.martin49@gmail.com>
+Signed-off-by: Matthias Andree <matthias.andree@gmx.de>
+---
+ fetchmailconf.py | 94 ++++++++++++++++++++++++++++++++++++++++++++++++----------------------------------------------
+ 1 file changed, 48 insertions(+), 46 deletions(-)
+
+diff --git a/fetchmailconf.py b/fetchmailconf.py
+index d64556e..697e4f7 100755
+--- a/fetchmailconf.py
++++ b/fetchmailconf.py
+@@ -5,6 +5,8 @@
+ # Matthias Andree <matthias.andree@gmx.de>
+ # Requires Python with Tkinter, and the following OS-dependent services:
+ #	posix, posixpath, socket
++from __future__ import print_function
++
+ version = "1.57"
+ 
+ from Tkinter import *
+@@ -64,7 +66,7 @@ class Configuration:
+         if self.properties != ConfigurationDefaults.properties:
+             str = str + ("set properties \"%s\"\n" % (self.properties,));
+         if self.poll_interval > 0:
+-            str = str + "set daemon " + `self.poll_interval` + "\n"
++            str = str + "set daemon " + repr(self.poll_interval) + "\n"
+         if self.invisible:
+            str = str + ("set invisible\n")
+         for site in self.servers:
+@@ -145,12 +147,12 @@ class Server:
+         if self.service and self.protocol and self.service != defaultports[self.protocol] and defaultports[self.protocol] and self.service != ianaservices[defaultports[self.protocol]]:
+             res = res + " service " + self.service
+         if self.timeout != ServerDefaults.timeout:
+-            res = res + " timeout " + `self.timeout`
++            res = res + " timeout " + repr(self.timeout)
+         if self.interval != ServerDefaults.interval:
+-            res = res + " interval " + `self.interval`
++            res = res + " interval " + repr(self.interval)
+         if self.envelope != ServerDefaults.envelope or self.envskip != ServerDefaults.envskip:
+             if self.envskip:
+-                res = res + " envelope " + `self.envskip` + " " + self.envelope
++                res = res + " envelope " + repr(self.envskip) + " " + self.envelope
+             else:
+                 res = res + " envelope " + self.envelope
+         if self.qvirtual:
+@@ -189,15 +191,15 @@ class Server:
+         if self.monitor:
+             res = res + " monitor " + str(self.monitor)
+         if self.plugin:
+-            res = res + " plugin " + `self.plugin`
++            res = res + " plugin " + repr(self.plugin)
+         if self.plugout:
+-            res = res + " plugout " + `self.plugout`
++            res = res + " plugout " + repr(self.plugout)
+         if self.principal:
+-            res = res + " principal " + `self.principal`
++            res = res + " principal " + repr(self.principal)
+         if self.esmtpname:
+-            res = res + " esmtpname " + `self.esmtpname`
++            res = res + " esmtpname " + repr(self.esmtpname)
+         if self.esmtppassword:
+-            res = res + " esmtppassword " + `self.esmtppassword`
++            res = res + " esmtppassword " + repr(self.esmtppassword)
+         if self.interface or self.monitor or self.principal or self.plugin or self.plugout:
+             if folded:
+                 res = res + "\n"
+@@ -230,7 +232,7 @@ class User:
+         elif os.environ.has_key("LOGNAME"):
+             self.remote = os.environ["LOGNAME"]
+         else:
+-            print "Can't get your username!"
++            print("Can't get your username!")
+             sys.exit(1)
+         self.localnames = [self.remote,]# Local names
+         self.password = None	# Password for mail account access
+@@ -316,13 +318,13 @@ class User:
+ 
+     def __repr__(self):
+         res = "    "
+-        res = res + "user " + `self.remote` + " there ";
++        res = res + "user " + repr(self.remote) + " there ";
+         if self.password:
+-            res = res + "with password " + `self.password` + " "
++            res = res + "with password " + repr(self.password) + " "
+         if self.localnames:
+             res = res + "is"
+             for x in self.localnames:
+-                res = res + " " + `x`
++                res = res + " " + repr(x)
+             res = res + " here"
+         if (self.keep != UserDefaults.keep
+                 or self.flush != UserDefaults.flush
+@@ -362,35 +364,35 @@ class User:
+         if self.idle != UserDefaults.idle:
+             res = res + flag2str(self.idle, 'idle')
+         if self.limit != UserDefaults.limit:
+-            res = res + " limit " + `self.limit`
++            res = res + " limit " + repr(self.limit)
+         if self.warnings != UserDefaults.warnings:
+-            res = res + " warnings " + `self.warnings`
++            res = res + " warnings " + repr(self.warnings)
+         if self.fetchlimit != UserDefaults.fetchlimit:
+-            res = res + " fetchlimit " + `self.fetchlimit`
++            res = res + " fetchlimit " + repr(self.fetchlimit)
+         if self.fetchsizelimit != UserDefaults.fetchsizelimit:
+-            res = res + " fetchsizelimit " + `self.fetchsizelimit`
++            res = res + " fetchsizelimit " + repr(self.fetchsizelimit)
+         if self.fastuidl != UserDefaults.fastuidl:
+-            res = res + " fastuidl " + `self.fastuidl`
++            res = res + " fastuidl " + repr(self.fastuidl)
+         if self.batchlimit != UserDefaults.batchlimit:
+-            res = res + " batchlimit " + `self.batchlimit`
++            res = res + " batchlimit " + repr(self.batchlimit)
+         if self.ssl and self.ssl != UserDefaults.ssl:
+             res = res + flag2str(self.ssl, 'ssl')
+         if self.sslkey and self.sslkey != UserDefaults.sslkey:
+-            res = res + " sslkey " + `self.sslkey`
++            res = res + " sslkey " + repr(self.sslkey)
+         if self.sslcert and self.sslcert != UserDefaults.sslcert:
+-            res = res + " sslcert " + `self.sslcert`
++            res = res + " sslcert " + repr(self.sslcert)
+         if self.sslproto and self.sslproto != UserDefaults.sslproto:
+-            res = res + " sslproto " + `self.sslproto`
++            res = res + " sslproto " + repr(self.sslproto)
+         if self.sslcertck and self.sslcertck != UserDefaults.sslcertck:
+             res = res +  flag2str(self.sslcertck, 'sslcertck')
+         if self.sslcertpath and self.sslcertpath != UserDefaults.sslcertpath:
+-            res = res + " sslcertpath " + `self.sslcertpath`
++            res = res + " sslcertpath " + repr(self.sslcertpath)
+         if self.sslcommonname and self.sslcommonname != UserDefaults.sslcommonname:
+-            res = res + " sslcommonname " + `self.sslcommonname`
++            res = res + " sslcommonname " + repr(self.sslcommonname)
+         if self.sslfingerprint and self.sslfingerprint != UserDefaults.sslfingerprint:
+-            res = res + " sslfingerprint " + `self.sslfingerprint`
++            res = res + " sslfingerprint " + repr(self.sslfingerprint)
+         if self.expunge != UserDefaults.expunge:
+-            res = res + " expunge " + `self.expunge`
++            res = res + " expunge " + repr(self.expunge)
+         res = res + "\n"
+         trimmed = self.smtphunt;
+         if trimmed != [] and trimmed[len(trimmed) - 1] == "localhost":
+@@ -417,7 +419,7 @@ class User:
+              res = res + "\n"
+         for fld in ('smtpaddress', 'preconnect', 'postconnect', 'mda', 'bsmtp', 'properties'):
+             if getattr(self, fld):
+-                res = res + " %s %s\n" % (fld, `getattr(self, fld)`)
++                res = res + " %s %s\n" % (fld, repr(getattr(self, fld)))
+         if self.lmtp != UserDefaults.lmtp:
+             res = res + flag2str(self.lmtp, 'lmtp')
+         if self.antispam != UserDefaults.antispam:
+@@ -904,15 +906,15 @@ class ConfigurationEdit(Frame, MyWidget):
+             # Pre-1.5.2 compatibility...
+             except os.error:
+                 pass
+-            oldumask = os.umask(077)
++            oldumask = os.umask(0o77)
+             fm = open(self.outfile, 'w')
+             os.umask(oldumask)
+         if fm:
+             # be paranoid
+             if fm != sys.stdout:
+-                os.chmod(self.outfile, 0600)
++                os.chmod(self.outfile, 0o600)
+             fm.write("# Configuration created %s by fetchmailconf %s\n" % (time.ctime(time.time()), version))
+-            fm.write(`self.configuration`)
++            fm.write(repr(self.configuration))
+             if self.outfile:
+                 fm.close()
+             self.destruct()
+@@ -1988,15 +1990,15 @@ def copy_instance(toclass, fromdict):
+     if 'typemap' in class_sig:
+         class_sig.remove('typemap')
+     if tuple(class_sig) != tuple(dict_keys):
+-        print "Fields don't match what fetchmailconf expected:"
+-#	print "Class signature: " + `class_sig`
+-#	print "Dictionary keys: " + `dict_keys`
++        print("Fields don't match what fetchmailconf expected:")
++#	print("Class signature: " + repr(class_sig))
++#	print("Dictionary keys: " + repr(dict_keys))
+         diff = setdiff(class_sig, common)
+         if diff:
+-            print "Not matched in class `" + toclass.__class__.__name__ + "' signature: " + `diff`
++            print("Not matched in class `" + toclass.__class__.__name__ + "' signature: " + repr(diff))
+         diff = setdiff(dict_keys, common)
+         if diff:
+-            print "Not matched in dictionary keys: " + `diff`
++            print("Not matched in dictionary keys: " + repr(diff))
+         sys.exit(1)
+     else:
+         for x in fromdict.keys():
+@@ -2028,7 +2030,7 @@ def copy_instance(toclass, fromdict):
+ if __name__ == '__main__':
+ 
+     if not os.environ.has_key("DISPLAY"):
+-        print "fetchmailconf must be run under X"
++        print("fetchmailconf must be run under X")
+         sys.exit(1)
+ 
+     fetchmail_icon = """
+@@ -2068,7 +2070,7 @@ gUSiYASJpMEHhilJTEnhAlGoQqYAZQ1AiqEMZ0jDGtqQImhwwA13yMMevoQAGvGhEAWHGMOAAAA7
+ # The base64 data in the string above was generated by the following procedure:
+ #
+ # import base64
+-# print base64.encodestring(open("fetchmail.gif", "rb").read())
++# print(base64.encodestring(open("fetchmail.gif", "rb").read()))
+ #
+ 
+     # Process options
+@@ -2081,22 +2083,22 @@ gUSiYASJpMEHhilJTEnhAlGoQqYAZQ1AiqEMZ0jDGtqQImhwwA13yMMevoQAGvGhEAWHGMOAAAA7
+         elif (switch == '-f'):
+             rcfile = val
+         elif (switch == '-h' or switch == '--help'):
+-            print """
++            print("""
+ Usage: fetchmailconf {[-d] [-f fetchmailrc]|-h|--help|-V|--version}
+            -d      - dump configuration (for debugging)
+            -f fmrc - read alternate fetchmailrc file
+ --help,    -h      - print this help text and quit
+ --version, -V      - print fetchmailconf version and quit
+-"""
++""")
+             sys.exit(0)
+         elif (switch == '-V' or switch == '--version'):
+-            print "fetchmailconf %s" % version
+-            print """
++            print("fetchmailconf %s" % version)
++            print("""
+ Copyright (C) 1997 - 2003 Eric S. Raymond
+ Copyright (C) 2005, 2006, 2008, 2009 Matthias Andree
+ fetchmailconf comes with ABSOLUTELY NO WARRANTY.  This is free software, you are
+ welcome to redistribute it under certain conditions.  Please see the file
+-COPYING in the source or documentation directory for details."""
++COPYING in the source or documentation directory for details.""")
+             sys.exit(0)
+ 
+     # Get client host's FQDN
+@@ -2119,17 +2121,17 @@ COPYING in the source or documentation directory for details."""
+     try:
+         s = os.system(cmd)
+         if s != 0:
+-            print "`" + cmd + "' run failure, status " + `s`
++            print("`" + cmd + "' run failure, status " + repr(s))
+             raise SystemExit
+     except:
+-        print "Unknown error while running fetchmail --configdump"
++        print("Unknown error while running fetchmail --configdump")
+         os.remove(tmpfile)
+         sys.exit(1)
+ 
+     try:
+         execfile(tmpfile)
+     except:
+-        print "Can't read configuration output of fetchmail --configdump."
++        print("Can't read configuration output of fetchmail --configdump.")
+         os.remove(tmpfile)
+         sys.exit(1)
+ 
+@@ -2156,7 +2158,7 @@ COPYING in the source or documentation directory for details."""
+ 
+     # We may want to display the configuration and quit
+     if dump:
+-        print "This is a dump of the configuration we read:\n"+`Fetchmailrc`
++        print("This is a dump of the configuration we read:\n" + repr(Fetchmailrc))
+ 
+     # The theory here is that -f alone sets the rcfile location,
+     # but -d and -f together mean the new configuration should go to stdout.
+--
+libgit2 0.26.0
+

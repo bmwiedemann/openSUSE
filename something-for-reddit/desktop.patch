@@ -1,0 +1,25 @@
+From b2e862452255318115906d2c142891b233b14c38 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Sat, 30 Jul 2016 08:20:05 +0200
+Subject: [PATCH] Add a sub category.
+
+---
+ data/reddit-is-gtk.desktop.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/reddit-is-gtk.desktop.in b/data/reddit-is-gtk.desktop.in
+index d39693c..bab2801 100644
+--- a/data/reddit-is-gtk.desktop.in
++++ b/data/reddit-is-gtk.desktop.in
+@@ -6,7 +6,7 @@ Exec=reddit-is-gtk
+ Icon=reddit-is-a-dead-bird
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Network;
++Categories=GNOME;GTK;Network;News;
+ _Keywords=Reddit;GTK;
+ StartupNotify=true
+-StartupWMClass=reddit-is-gtk
+\ No newline at end of file
++StartupWMClass=reddit-is-gtk

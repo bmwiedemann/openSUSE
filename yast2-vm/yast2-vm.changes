@@ -1,0 +1,1331 @@
+-------------------------------------------------------------------
+Fri Jun 14 15:05:21 MDT 2019 - carnold@suse.com
+
+- bsc#1091967 - relocation-server configuration - error : cannot
+  read the current libvirt/sshd state. Just fix the error message
+  so the user knows what to do.
+- 4.2.3
+
+-------------------------------------------------------------------
+Wed Jun 12 10:27:01 UTC 2019 - Ladislav Slezak <lslezak@suse.cz>
+
+- Fixed build on i586 arch (related to fate#319035)
+- 4.2.2
+
+-------------------------------------------------------------------
+Tue Jun  4 10:59:39 MDT 2019 - carnold@suse.com
+
+- bsc#1105891 - virtualization test not supported for ppc64le.
+  Allow yast-vm to run on ppc64le
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:42:27 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Wed Nov 28 17:20:04 UTC 2018 - lslezak@suse.cz
+
+- Fixed build on i586 (related to the previous boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Nov 26 05:51:44 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.4
+
+-------------------------------------------------------------------
+Wed Oct 31 10:58:27 MDT 2018 - carnold@suse.com
+
+- bsc#1109832 - libvirt-daemon-config-network not installed by yast
+  vm. Tumbleweed is now getting the '_tools' patterns for xen and
+  kvm that are already found on SLE.
+- 4.0.3
+
+-------------------------------------------------------------------
+Mon Aug 20 13:29:15 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Thu Jun 28 09:37:54 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.2
+
+-------------------------------------------------------------------
+Fri Apr 13 08:34:25 UTC 2018 - knut.anderssen@suse.com
+
+- Use the new firewalld API (bsc#1083455)
+- 4.0.1
+
+-------------------------------------------------------------------
+Thu Apr 12 15:22:44 MDT 2018 - carnold@suse.com
+
+- bsc#1086487 - YaST2 segfault when virt-manager is installed but
+  not yast2-vm
+- bsc#1083455 - Internal error in yast configuration part
+  "Relocation Server Configuration" - "Service with name
+  'libvirtd-relocation-server' does not exist"
+- bsc#1089255 - yast install hypervisor and tools not working
+  correctly
+- bsc#1088338 - yast2 vm tries to install
+  patterns-openSUSE-kvm_server
+- Remove all xend code from Relocation Server. It is no longer
+  supported.
+
+-------------------------------------------------------------------
+Fri Apr  6 18:54:53 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Feb  9 12:19:42 MST 2018 - carnold@suse.com
+
+- The check for TextMode was in the wrong place and
+  useless. Move it and update package list if user
+  doesn't want GUI components installed. (bsc#1077694)
+- 3.2.5
+
+-------------------------------------------------------------------
+Thu Nov  2 10:43:22 MDT 2017 - carnold@suse.com
+
+- bsc#1007599 - yast virtualization module does not work well with
+  NM
+- bsc#1066160 - yast2-vm lacks dependencies
+- bsc#1008719 - Installing hypervisor (KVM) should also install
+  network config
+- Cleanup some whitespace issues in VirtConfig.rb and changelog
+- 3.2.4
+
+-------------------------------------------------------------------
+Wed Oct 11 14:59:40 UTC 2017 - aginies@suse.com
+
+- use new pattern name for SLES (same as TW)
+- Remove SLED as this is no more needed
+- BSC#1055459 
+- 3.2.3
+
+-------------------------------------------------------------------
+Wed Jul 19 14:02:32 UTC 2017 - zgock999@gmail.com
+
+- Fix package Install problem on Tumbleweed (bsc#1040042)
+
+-------------------------------------------------------------------
+Wed Jul 19 12:36:51 UTC 2017 - jreidinger@suse.com
+
+- add proper dependency on yast2-bootloader (bsc#1048759)
+- 3.2.2
+
+-------------------------------------------------------------------
+Wed Mar 29 10:24:09 UTC 2017 - mfilka@suse.com
+
+- bnc#1026027
+  - dropped calls to insserv
+- 3.2.1
+
+-------------------------------------------------------------------
+Tue Jan 31 13:52:36 MST 2017 - carnold@suse.com
+
+- bsc#978225 - yast virtualization menu not updated after install
+  KVM and KVM tools
+- 3.2.0
+
+-------------------------------------------------------------------
+Mon Jul 25 08:07:08 UTC 2016 - dmueller@suse.com
+
+- Enable for AArch64 (bsc#989900)
+- 3.1.30
+
+-------------------------------------------------------------------
+Mon Jun  6 07:46:10 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.29
+
+-------------------------------------------------------------------
+Thu May 12 09:16:01 MDT 2016 - carnold@suse.com
+
+- fate#319328 rejected. Revert the last commit
+- 3.1.28
+
+-------------------------------------------------------------------
+Wed May 11 14:50:55 MDT 2016 - carnold@suse.com
+
+- fate#319328 - Add virsh console conf to KVM Guests
+- 3.1.27
+
+-------------------------------------------------------------------
+Wed Apr 13 12:17:24 UTC 2016 - jreidinger@suse.com
+
+- Remove workarounds not needed for new bootloader
+  (related to FATE#317701)
+- 3.1.26
+
+-------------------------------------------------------------------
+Mon Mar 14 13:34:00 MDT 2016 - carnold@suse.com
+
+- bsc#971054 - virtlogd is now required by libvirt and must be
+  started automatically
+- 3.1.25
+
+-------------------------------------------------------------------
+Tue Aug 11 13:24:12 MDT 2015 - carnold@suse.com
+
+- bsc#941125 - yast2-vm: uses /etc/inittab
+- 3.1.24
+
+-------------------------------------------------------------------
+Tue Jul 21 15:13:29 UTC 2015 - jreidinger@suse.com
+
+- fix crash when installing kvm virtualization pattern (bnc#938530)
+- 3.1.23
+
+-------------------------------------------------------------------
+Tue Jul  7 14:31:13 MDT 2015 - carnold@suse.com
+
+- bnc#936091 - installation of kvm and kvm-tools on s390 finishes
+  with "Missing parameters to modify [:common, "switch_amode"]" 
+- 3.1.22
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:48 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Mon Dec  1 13:30:04 MST 2014 - carnold@suse.com
+
+- bnc#907747 - yast-vm fails to find the pattern on sled
+- 3.1.20 
+
+-------------------------------------------------------------------
+Wed Nov 19 10:33:42 MST 2014 - carnold@suse.com
+
+- bnc#905580 - SIGSEGV in yast2 relocation-server 
+- 3.1.19
+
+-------------------------------------------------------------------
+Wed Aug 20 08:26:07 MDT 2014 - carnold@suse.com
+
+- bnc#892759 - "Install Hypervisor and Tools" fails with error:
+  Details: undefined method `+' for nil:NilClass 
+- 3.1.18
+
+-------------------------------------------------------------------
+Fri Jul 30 08:32:45 MDT 2014 - carnold@suse.com
+
+- bnc#889579 - yast2-vm fails to start
+- 3.1.17
+
+-------------------------------------------------------------------
+Fri Jul 18 10:24:32 MDT 2014 - carnold@suse.com
+
+- bcn#887933 - Yast2 module Xen should be renamed to something more
+  generic
+  Renamed the following files and updated the methods to reflect the
+  new generic naming syntax:
+    xen.rb -> virtualization.rb
+    xen.desktop -> virtualization-config.desktop
+    VM_XEN.rb -> VirtConfig.rb
+- 3.1.16
+
+-------------------------------------------------------------------
+Wed Jul  9 15:02:28 MDT 2014 - carnold@suse.com
+
+- bnc#884831 - uefi Xen bootloader is not automatically inserted
+  as an efi boot option 
+- 3.1.15
+
+-------------------------------------------------------------------
+Wed Jul  2 17:02:00 MDT 2014 - carnold@suse.com
+
+- Don't create a bridge on SLED as it is not a Virtualization Host.
+- 3.1.14
+
+-------------------------------------------------------------------
+Wed Jun 18 08:29:15 MDT 2014 - carnold@suse.com
+
+- Include enable and start of libvirtd service for s390x
+- Remove installing the pm-utils package. It is no longer needed
+- Restart apparmor before starting libvirtd. Otherwise libvirtd
+  runs unenforced at the first start.
+- 3.1.13
+
+-------------------------------------------------------------------
+Wed May 28 10:30:33 MDT 2014 - carnold@suse.com
+
+- bnc#877715 - SLES12_LOC : ALL_LANGS:the dialog Untranslated text
+  in 'Install Hypervisor and Tools' screen 
+- 3.1.12
+
+-------------------------------------------------------------------
+Fri May 23 10:01:44 MDT 2014 - carnold@suse.com
+
+- bnc#879463 - Yast2 VM: network bridge is not created 
+- 3.1.11
+
+-------------------------------------------------------------------
+Thu May 22 11:36:51 UTC 2014 - jreidinger@suse.com
+
+- Fix passed kernel flavor (bnc#878909)
+- 3.1.10
+
+-------------------------------------------------------------------
+Wed May 14 15:57:31 UTC 2014 - jreidinger@suse.com
+
+- adapt to new yast2-bootloader API(bnc#869608)
+- 3.1.9
+
+-------------------------------------------------------------------
+Wed May 14 08:35:01 MDT 2014 - carnold@suse.com
+
+- Install libvirt-daemon-config-network with the LXC pattern 
+- Fix package lists for openSUSE installation
+- 3.1.8
+
+-------------------------------------------------------------------
+Wed Apr 23 15:29:15 MDT 2014 - carnold@suse.com
+
+- bnc#874633 - yast2 virtualization fails to configure bridge
+- bnc#874426 - One of the notice window is empty after launching
+  "Install Hypervisor and Tools" in Yast2 
+- 3.1.7
+
+-------------------------------------------------------------------
+Wed Apr  2 16:13:41 MDT 2014 - carnold@suse.com
+
+- bnc#871633 - yast2 virtualization fails to install xen pattern
+- Print correct message at end of install depending on what was
+  selected
+- Adjust alignment and spacing of main dialog
+- Cleanup whitespace in code
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed Mar 12 15:49:26 CET 2014 - aginies@suse.com
+
+- use patterns instead of packages list (SLES and openSUSE)
+- add LXC
+- improve GUI
+- add some information about what will be installed
+- 3.1.5
+
+-------------------------------------------------------------------
+Fri Mar  7 17:01:44 MST 2014 - carnold@suse.com
+
+- The xend portion of the relocation server code is not applicable
+  to the libxl toolstack. Rework for libxl compatibility.
+- 3.1.4
+
+-------------------------------------------------------------------
+Tue Mar  4 11:44:24 MST 2014 - carnold@suse.com
+
+- Enable and start libvirtd. This is required for both KVM and Xen.
+- 3.1.3
+
+-------------------------------------------------------------------
+Fri Feb 21 10:58:53 MST 2014 - carnold@suse.com
+
+- kvm is deprecated.  Use qemu-kvm.
+- After installing KVM, you no longer need to reboot the host.
+  Change the message dialog appropriately to reflect this. 
+- 3.1.2
+
+-------------------------------------------------------------------
+Thu Oct 31 11:31:25 MDT 2013 - carnold@suse.com
+
+- The spec file needs to handle the COPYING file. 
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 17:47:10 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Thu Aug 22 08:43:29 CEST 2013 - jsuchome@suse.cz
+
+- use OSRelease instead of reading obsolete /etc/SuSE-release
+  (bnc#833955) 
+- 3.0.2
+
+-------------------------------------------------------------------
+Wed Aug 19 16:50:53 UTC 2013 - yast-devel@opensuse.org
+
+- Various build cleanups not related to actual code execution
+- version 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:45:03 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Jun  6 13:18:55 MDT 2013 - carnold@suse.com
+
+- Update packages to be installed based on libvirt package changes.
+- 2.23.0
+
+-------------------------------------------------------------------
+Thu May  2 12:55:18 MDT 2013 - carnold@suse.com
+
+- bnc#817943 - Selecting some virtualization packages during
+  install is causing bridged networking to be set up (s390x)
+
+-------------------------------------------------------------------
+Tue Apr 30 16:56:50 MDT 2013 - carnold@suse.com
+
+- bnc#817790 - SLES11 SP3 - unable to install KVM Hypervisor and
+  tools via YaST2 on s390x
+- 2.22.6
+
+-------------------------------------------------------------------
+Fri Mar 22 15:55:57 MDT 2013 - carnold@suse.com
+
+- bnc#810535 - YaST2 is lacking hypervisor installation support on
+  s390x 
+- 2.22.5
+
+-------------------------------------------------------------------
+Fri Feb  8 10:02:53 MST 2013 - carnold@suse.com
+
+- bnc#802612 - Libvirtd does not start automatically after kvm is
+  installed via "yast install Hypervisor and tools" 
+- 2.22.4
+
+-------------------------------------------------------------------
+Wed Jan  2 14:12:13 MST 2013 - carnold@novell.com
+
+- Enable vm-install to be built for s390x
+
+-------------------------------------------------------------------
+Thu Sep 20 06:35:12 MDT 2012 - carnold@novell.com
+
+- bnc#780660 - Yast does not offer "Virtualization" section by 
+  default, and no "Install Hypervisor" option, after loading
+  yast-vm. 
+- 2.22.3
+
+-------------------------------------------------------------------
+Wed Mar 14 17:00:46 MDT 2012 - carnold@novell.com
+
+- bnc#720929 - OES11LH: Upgrade from OES 2 SP2 to OES 11 RC3
+  re-adds "x0..respawn..xterm" to inittab 
+
+-------------------------------------------------------------------
+Mon Jan 16 14:54:33 UTC 2012 - coolo@suse.com
+
+- confirm license
+
+-------------------------------------------------------------------
+Tue Jan  3 10:53:10 MST 2012 - carnold@novell.com
+
+- bnc#733715 - SLES11_SP2_LOC : EN: Typo in relocation-server.pot -
+  'unencryptyed'
+- 2.22.1
+
+-------------------------------------------------------------------
+Wed Nov 16 12:49:08 CET 2011 - jsuchome@suse.cz
+
+- merged texts from proofreading
+- 2.22.0
+
+-------------------------------------------------------------------
+Tue Nov  1 12:04:05 MDT 2011 - carnold@novell.com
+
+- bnc#727523 - yast2 xen should be modified for 32bit
+- 2.21.5
+
+-------------------------------------------------------------------
+Tue Oct 25 10:02:24 UTC 2011 - lslezak@suse.cz
+
+- fixed translation of button labels (bnc#723657)
+- 2.21.4
+
+-------------------------------------------------------------------
+Thu Sep 29 14:11:36 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.3 
+
+-------------------------------------------------------------------
+Mon Sep 19 14:40:14 CEST 2011 - visnov@suse.cz
+
+- remove dependency on Wizard_hw
+- 2.21.2 
+
+-------------------------------------------------------------------
+Mon Aug  8 12:20:55 UTC 2011 - lslezak@suse.cz
+
+- use ButtonBox for push button widgets (bnc#701273)
+
+-------------------------------------------------------------------
+Fri Aug  5 13:15:17 MDT 2011 - carnold@novell.com
+
+- Update desktop files with more descriptive information in the
+  GenericName field.
+- Restore xen.desktop and xen.ycp
+- 2.21.1
+
+-------------------------------------------------------------------
+Fri Aug  5 12:35:48 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Fri Jul 22 15:21:54 CEST 2011 - locilka@suse.cz
+
+- Removed obsoleted X-KDE-SubstituteUID from desktop file
+  (bnc#540627) and replaced with xdg-su call in the Exec entry.
+- 2.21.0
+
+-------------------------------------------------------------------
+Wed Jun 29 13:55:52 CST 2011 - lidongyang@novell.com
+
+- bnc#702106 - Remove 32-bit "Install Hypervisor and Tools" from
+  YaST Control Center - FATE#308532
+  remove %ix86 from exclusive arch so that yast2-vm is available
+  only for the 64-bit x86 architecture.
+
+-------------------------------------------------------------------
+Mon Jun 13 14:14:40 CST 2011 - lidongyang@novell.com
+
+- fate#311371 - Enhance yast to configure live migration for Xen
+  and KVM
+  replace xen.ycp with relocation-server.ycp
+
+------------------------------------------------------------------
+Tue Mar  8 16:17:23 MST 2011 - carnold@novell.com
+
+- bnc#508347 - Yast2 virtualization installation error but success
+  message
+
+-------------------------------------------------------------------
+Wed Nov 10 15:20:12 MST 2010 - carnold@novell.com
+
+- bnc#628256 - sysvinit: Id "x0" respawning too fast 
+
+-------------------------------------------------------------------
+Thu Oct 21 11:20:32 MDT 2010 - carnold@novell.com
+
+- bnc#647261 - Get lot's of error in .xsession-errors when lauching
+  yast 
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Wed Dec  2 16:23:55 MST 2009 - carnold@novell.com
+
+- Add support for installing KVM.
+  fate#306665 - KVM reaches supported status
+  bnc#557233 - YaST needs to include kvm in virtualization support
+  functionality 
+
+-------------------------------------------------------------------
+Tue Jun 16 14:29:32 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Wed Apr  1 09:18:46 MDT 2009 - carnold@novell.com
+
+- bnc#488598 - chkconfig and insserv fail on init scripts that 
+  depend on /etc/init.d/boot.clock in Xen domU 
+
+-------------------------------------------------------------------
+Thu Feb 12 13:04:27 CET 2009 - coolo@suse.de
+
+- add dummy Exec line to the group desktop file to make it validate
+
+-------------------------------------------------------------------
+Fri Jan  9 08:41:58 CET 2009 - olh@suse.de
+
+- use ExclusiveArch as in /SRC/arch/
+
+-------------------------------------------------------------------
+Wed Nov 12 13:37:57 MST 2008 - carnold@novell.com
+
+- bnc#431907 - inst_finish.ycp:233 Client vm_finish returned 
+  invalid data 
+
+-------------------------------------------------------------------
+Wed Oct 22 16:34:20 MDT 2008 - carnold@novell.com
+
+- bnc#436987 - yast2-vm: Cannot create VMs if XEN installation 
+  happens via the yast2-vm module 
+
+-------------------------------------------------------------------
+Thu Oct  9 13:04:01 MDT 2008 - carnold@novell.com
+
+- Install virt-viewer as one of the GUI packages needed by xen.
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Tue May 13 14:49:10 MDT 2008 - carnold@novell.com
+
+- yast2-vm needs to install vm-install.
+
+-------------------------------------------------------------------
+Wed Apr  9 16:38:03 MDT 2008 - carnold@novell.com
+
+- Disable code that modifies SuSEfirewall2.
+
+-------------------------------------------------------------------
+Wed Mar 26 13:39:06 MDT 2008 - carnold@novell.com
+
+- In 11.0, kernel-xenpae is just kernel-xen.  There is no nonpae
+  32bit kernel.
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Fri Feb 29 13:33:20 MST 2008 - carnold@novell.com
+
+- Remove tools-ioemu dependency.  This package no longer exists.
+
+-------------------------------------------------------------------
+Mon Dec 10 15:58:16 CET 2007 - lslezak@suse.cz
+
+- merged proofread texts (2007-18-23)
+
+-------------------------------------------------------------------
+Fri Aug 31 10:31:05 CEST 2007 - stbinner@suse.de
+
+- don't repeat Name content in GenericName field within xen.desktop
+
+-------------------------------------------------------------------
+Tue Jun  5 09:57:06 MDT 2007 - carnold@novell.com
+
+- Respond when "help" is requested at the command line. (#269913)
+- Prompt for installing graphical tools when running in text mode.
+  (#268510)
+
+-------------------------------------------------------------------
+Mon May 21 08:29:37 MDT 2007 - carnold@novell.com
+
+- The 'Virtualization' category is missing and the virtualization
+  icons are in the other category. (#258600)
+- Update icon name in yast2-vm (#258519)
+
+-------------------------------------------------------------------
+Mon Mar 12 10:16:40 MDT 2007 - carnold@novell.com
+
+- Change the check for xenbr0 to xenbr+. (#233934)
+- Remove requires rule on yast2-installation. (#252932)
+
+-------------------------------------------------------------------
+Fri Feb 23 14:59:17 MST 2007 - carnold@novell.com
+
+- A fix to allow the xm console command to work again with
+  PV guests. (#244097)
+
+-------------------------------------------------------------------
+Wed Feb 21 15:49:43 MST 2007 - carnold@novell.com
+
+- Yast2-vm now only installs the hypervisor and tools on the host
+  server.  All other tasks have been moved to vm-install and
+  virt-manager.
+
+-------------------------------------------------------------------
+Wed Dec  6 15:16:51 MST 2006 - carnold@novell.com
+
+- Yast2-vm does not remove the directory that contains the vm disk
+  image when deleting a vm. (#221258)
+- Yast2-vm doesn't recognize an installation source set up as an
+  ISO file over NFS. (#224798) 
+
+-------------------------------------------------------------------
+Thu Nov 16 14:29:51 MST 2006 - carnold@novell.com
+
+- yast2-vm acquires package from the wrong install source when a
+  second source is specified for additional vm installs. (#217403)
+
+-------------------------------------------------------------------
+Fri Nov  3 16:47:57 MST 2006 - carnold@novell.com
+
+- yast2-vm inserts empty cdrom line when booting from an already
+  installed disk causing the guest to fail because it can't attach 
+  to the non-existent CDROM. (#210099)
+- yast2-vm does not remove link in /etc/xen/auto when deleting a
+  VM causing error messages from xendomains when it tries to auto
+  start it. (#207082)
+- Eliminate a "no GUI" warning message that is displayed in the pv 
+  guest during install because textmode=1 was removed for the
+  framebuffer feature that did not make it in. (#215990)
+
+-------------------------------------------------------------------
+Fri Sep  1 12:43:23 MDT 2006 - mgfritch@novell.com
+
+- Replace the 'cdrom=' entry in fully virtualized config files with
+  a corresponding disk line entry.
+- If para virtualized, kernel is extracted from a SUSE installation
+  source, and domU kernel version >= 2.6.18, add "sdl=1" to config
+  file.
+- Remove the 'extra' option with 'vnc=0 textmode=1'.
+- 2.14.0 
+
+-------------------------------------------------------------------
+Mon Aug  7 17:46:28 MDT 2006 - mgfritch@novell.com
+
+- Always write out "/usr/lib/xen/bin/qemu-dm" for the device_model
+  field in a fully virtualized VM configuration file. (#193854)
+- Add Logical Volumes (LVM) to the list of available block devices. 
+  (#186930, #189765)
+- Check whether X window system is accessible by testing for the 
+  existance of the DISPLAY enviroment value. (#194389)
+- When fully virtualized, if a bridge has not been specifed for a 
+  given vif, do not default to the value 'bridge=xenbr0' in the 
+  VM config file (#197777)
+- Use the 'xm info' values 'max_para_memory' or 'max_hvm_memory'
+  instead of 'max_free_memory' when calculating the amount of
+  memory available for a given VM. (#184727)
+- Display a popup feedback message when creating a non-sparse disk.
+  (#167145)
+- Display a popup yes/no dialog asking if xend should be started 
+  when it is not running. (#176369)
+- 2.13.62
+
+-------------------------------------------------------------------
+Thu Jul 13 11:44:48 MDT 2006 - mgfritch@novell.com
+
+- Do not create the disk images (i.e. dd) when proposal_type is
+  'boot' (#192135)
+- 2.13.61 
+
+-------------------------------------------------------------------
+Wed Jul 12 11:13:35 MDT 2006 - mgfritch@novell.com
+
+- Removed fix for async mode disk read/write during paravirtualized
+  installs (#190869)
+- 2.13.60
+
+-------------------------------------------------------------------
+Mon Jul 10 12:54:11 MDT 2006 - mgfritch@novell.com
+
+- If paravirtualization, allow async mode disk read/write only 
+  during the VM install. (#190869)
+- 2.13.59
+
+-------------------------------------------------------------------
+Tue Jun 27 09:06:17 CEST 2006 - lslezak@suse.cz
+
+- Initialize new installation sources, use the new source ID when
+  the installation source is modified (#179410)
+- 2.13.58
+
+-------------------------------------------------------------------
+Fri Jun 16 15:41:34 MDT 2006 - mgfritch@novell.com
+
+- Replace the 'extra' option 'vnc=1' with 'vnc=0 textmode=1'
+  (#185944)
+- 2.13.57
+
+-------------------------------------------------------------------
+Tue Jun 13 16:08:23 MDT 2006 - mgfritch@novell.com
+
+- Use 'sed -i' instead of 'sed -e' to avoid changing the file
+  permissions of /etc/sysconfig/console and /etc/inittab. (#184690)
+- 2.13.56 
+
+-------------------------------------------------------------------
+Tue Jun  6 12:03:55 MDT 2006 - mgfritch@novell.com
+
+- Preserve the AutoYaST settings for both the install proposal and 
+  the final proposal. Generate an autoinstallation summary proposal 
+  that contains the settings for both the install and final
+  proposals. (#182149) 
+- 2.13.55 
+
+-------------------------------------------------------------------
+Thu Jun  1 16:16:42 MDT 2006 - mgfritch@novell.com
+
+- Do not display the 'Manage Virtual Machines' dialog when 
+  creating an AutoYaST profile using the Autoinstallation wizard.
+  (#181072)
+- Only enable `view button on the 'Manage Virtual Machines' dialog
+  if YaST is running in a graphical display (XServer) and the 
+  selected vm is not configured to use SDL. (#181011)
+- Only enable `start button on the 'Manage Virtual Machines' dialog
+  if YaST is running in a graphical display (XServer) or the 
+  selected vm is configured as a paravirtualized guest. (#181009)
+- Disable service 'earlykbd' when running an install inside of a
+  domU. (#180919)
+- If paravirtualized domU install, use the 'extra' option 'vnc=1',
+  rather than 'textmode=1' (#181074)
+- 2.13.54 
+
+-------------------------------------------------------------------
+Mon May 29 01:10:44 MDT 2006 - mgfritch@novell.com
+
+- VM_XEN::ValidateConfigName() should return false if a vm name
+  setting inside of a config file conflicts with the proposed
+  vm name (#181001)
+- Search physical disk partitions specified in the VM disk settings
+  for a valid Xen kernel. (#180130)
+- Remove any single or double quotes surrounding values read from a
+  VM config file. (#179324)
+- If dom0 is 64 bit OS, domU is full virtualization, and domU
+  memory is >= 3.5 GB, set 'pae=1' in the VM config file. (#180361)
+- 2.13.53
+
+-------------------------------------------------------------------
+Mon May 22 15:30:40 MDT 2006 - mgfritch@novell.com
+
+- Allow the cdrom_image setting to persist when moving from 
+  proposal_type 'install' to proposal_type 'boot'. (#174616)
+- 2.13.52
+
+-------------------------------------------------------------------
+Fri May 19 11:12:34 CEST 2006 - lslezak@suse.cz
+
+- allow the VM management in ncurses UI (#149045)
+- 2.13.51
+
+-------------------------------------------------------------------
+Thu May 18 15:57:32 MDT 2006 - mgfritch@novell.com
+
+- Do not install kernel-xen when installing kernel-xenpae. 
+  (#175117)
+- 2.13.50
+
+-------------------------------------------------------------------
+Wed May 17 09:59:07 CEST 2006 - lslezak@suse.cz
+
+- check whether the package management is available at start
+  of the yast module (#175148)
+- 2.13.49
+
+-------------------------------------------------------------------
+Tue May 16 11:23:17 MDT 2006 - mgfritch@novell.com
+
+- Re-generate the proposed MAC address for the default network
+  settings when VM_XEN::resetNetworkConfig() is called. (#175955)
+- Don't display mounted disk partitions in dom0 as physical disk 
+  partitions available for use in domU. (#173433)
+- Select the correct disk partition containing the xenpae kernel
+  or the NetWare viX kernel. (#175426, #175729) 
+- 2.13.48
+
+-------------------------------------------------------------------
+Thu May 11 16:18:15 MDT 2006 - mgfritch@novell.com
+
+- Always write out the 'cdrom=' entry to the vm config file if 
+  full virtualization and proposal_mode != 'existing'.
+  (#174616) 
+- Ask for the initrd package first and the kernel package last 
+  when extracting a kernel/initrd from a SUSE installation source.
+  This should ensure CD1 is in the CD-ROM drive when the VM 
+  installation starts. (#175111)
+- Install kernel-xenpae by default for dom0 when running on 
+  kernel-bigsmp. (#175117)
+- 2.13.47
+
+-------------------------------------------------------------------
+Tue May  9 16:14:30 MDT 2006 - mgfritch@novell.com
+
+- Default the root device if a disk partition contains the
+  Xen Linux kernel and ramdisk. (#162593) 
+- When a NetWare kernel is detected, set the 'DISPLAY=' value to 
+  the IP address of the network interface assigned to the default 
+  route in the IP routing table. (#173594)
+- Do not display the message 'Installation will be aborted' when
+  we are not installing a virtual machine. (#173991)
+- Remove any inst sources that were added to the disk configuration
+  when switching virtualization mode. (#171696)
+- 2.13.46
+
+-------------------------------------------------------------------
+Mon May  8 09:37:14 MDT 2006 - mgfritch@novell.com
+
+- Enable the Write portion of vm_finish.ycp if Arch::is_xenU()
+  and when `installation, `update, or `autoinst. 
+  (#167204, #171476, #161721)
+- 2.13.45
+
+-------------------------------------------------------------------
+Thu May  4 11:43:35 MDT 2006 - mgfritch@novell.com
+
+- resetSourceConfig() must always be called after resetDiskConfig()
+  to ensure the disk config settings are not overrun by the source
+  config settings. (#172714)
+- Final settings proposal should default to the PAE kernel 
+  (vmlinuz-xenpae) when the PAE kernel was used to install the 
+  VM. (#172977)
+- Remove workaround for AMD Pacifica (svm) processor on arch x86_64 
+  with full virtualization. (#169855)
+- Display an error message if a new disk image (loopback-create) 
+  already exists. (#173267)
+- Updated text strings and comments to comply with the Style Guide 
+  for SUSE Program Texts located on forge.
+- 2.13.44
+
+-------------------------------------------------------------------
+Tue May  2 12:58:42 MDT 2006 - mgfritch@novell.com
+
+- Added patch for "srcid" not set in results from 
+  Pkg::PkgPropertiesAll (#163609)
+- Added a popup error message to VM_Common::CreateDiskImage() for 
+  when the 'dd' command fails to create a disk image (#172083) 
+- Added an additional popup error message when installing/finalizing 
+  a VM's settings. This new popup contains a details button with the
+  output (stdout/stderr) of a failed xm create command (#172084)
+- Final text review in preparation for text freeze.
+- 2.13.43
+
+-------------------------------------------------------------------
+Tue May  2 10:21:36 MDT 2006 - mgfritch@novell.com
+
+- Add a second yes/no pop-up warning the user about deleting a VM.
+- 2.13.42
+
+-------------------------------------------------------------------
+Thu Apr 27 16:15:37 MDT 2006 - mgfritch@novell.com
+
+- If AMD Pacifica (svm) processor, architecture is x86_64 and full 
+  virtualization, always write out 'cpus=0' (#169855)
+- Don't reset all of the proposal settings when the virtualization 
+  mode changes (#170028)
+- 2.13.41
+
+-------------------------------------------------------------------
+Wed Apr 26 12:02:46 MDT 2006 - mgfritch@novell.com
+
+- Specify the CD-ROM device name in the URL to be used for 
+  extracting the kernel/initrd from a SUSE CD/DVD media.
+- Always display the size of each disk in the disk overview table 
+  regardless of it's type (loop-create, loop-use, or phys).
+- Values on_reboot, on_crash, and on_poweroff must always be 
+  rewritten to the config file when virtualization type is 
+  full. (#168203)
+- Strip off any query string before writing the "install=" 
+  setting. (#169829)
+- 2.13.40 
+
+-------------------------------------------------------------------
+Tue Apr 25 12:18:21 MDT 2006 - mgfritch@novell.com
+
+- Must always create new disk images when they are added as a new 
+  disk to the table of disk images (#168206)
+- Always Unmount the YaST ini agent before writing settings to a 
+  config file (#168165)
+- 2.13.39 
+
+-------------------------------------------------------------------
+Fri Apr 21 14:25:58 MDT 2006 - mgfritch@novell.com
+
+- Although console appears to be a tty, don't do character 
+  translations (#149175)
+- 2.13.38
+
+-------------------------------------------------------------------
+Thu Apr 20 12:58:34 MDT 2006 - mgfritch@novell.com
+
+- domU has only one console (#167204)
+- 2.13.37
+
+-------------------------------------------------------------------
+Wed Apr 19 15:41:23 MDT 2006 - mgfritch@novell.com
+
+- SCR::Read(.target.dir, "/etc/xen/vm") instead of 
+  SCR::Dir("/etc/xen/vm") to read list of used vm names (#165855)
+- Can now extract the kernel and initrd using a SUSE ISO or 
+  CD/DVD media. (#158529).
+- 2.13.36
+
+-------------------------------------------------------------------
+Fri Apr 14 12:21:05 CEST 2006 - lslezak@suse.cz
+
+- updated vm_finish client (#161720, #161721, #161756)
+- pass static network configuration to linuxrc (#162713)
+- 2.13.35
+
+-------------------------------------------------------------------
+Wed Apr 12 14:04:43 MDT 2006 - mgfritch@novell.com
+
+- Launch the vncviewer using 'vncviewer localhost:<vm id>',
+  instead of using 'xm console <vmname>' (#165619)
+- 2.13.34
+
+-------------------------------------------------------------------
+Fri Apr  7 08:37:26 CEST 2006 - lslezak@suse.cz
+
+- don't modify bootloader configuration when confguring domain0,
+  it's modified by kernel-xen package (#163138)
+- 2.13.33
+
+-------------------------------------------------------------------
+Thu Apr  6 22:57:50 MDT 2006 - mgfritch@novell.com
+
+- Add dialog for managing virtual machines, similar to the 
+  xm commands (xm list, xm create, xm destory, etc.)
+- Add help text for MAC address and Bridge Name (#145663)
+- Change Control Center icon name to 'Virtual Machine Management (Xen)'.
+- Move Control Center icon from 'Software' catagory to 'System'.
+- Various text string changes (help and UI).
+- 2.13.32
+
+-------------------------------------------------------------------
+Tue Apr  4 14:52:02 CEST 2006 - lslezak@suse.cz
+
+- dom0 configuration: modify firewall configuration - add the Xen
+  bridge into FW_FORWARD_ALWAYS_INOUT_DEV option (#154133),
+  fixed detection of a Xen section in bootloader
+- 2.13.31
+
+-------------------------------------------------------------------
+Wed Mar 29 15:27:15 CEST 2006 - lslezak@suse.cz
+
+- use "Xen" term only in the texts (#161737)
+- 2.13.30
+
+-------------------------------------------------------------------
+Tue Mar 28 15:43:10 CEST 2006 - lslezak@suse.cz
+
+- x86_64 arch: use x86_64 packages, not i386 (#161267)
+- 2.13.29
+
+-------------------------------------------------------------------
+Sat Mar 25 22:46:13 MST 2006 - ccoffing@novell.com
+
+- Overhaul from Provo, to make module more feature complete.
+- 2.13.28
+
+-------------------------------------------------------------------
+Sun Mar 19 01:10:24 CET 2006 - jsrain@suse.de
+
+- fixed size of image for AutoYaST profile (#159369)
+- create mountpoint for autoinst.img (#159370)
+- fixed writing AutoYaST image to domU config file
+- add -F to mkfs.ext2
+
+-------------------------------------------------------------------
+Fri Mar 10 15:17:41 CET 2006 - lslezak@suse.cz
+
+- image directory is configurable now (#156591)
+- check for existing config file, don't overwrite it (#156322)
+- 2.13.27
+
+-------------------------------------------------------------------
+Thu Mar  9 13:33:50 CET 2006 - lslezak@suse.cz
+
+- merged proofread texts
+- 2.13.26
+
+-------------------------------------------------------------------
+Wed Mar  8 15:48:40 CET 2006 - lslezak@suse.cz
+
+- fixed network configuration in full virtualization mode (#145064)
+- 2.13.25
+
+-------------------------------------------------------------------
+Wed Mar  8 14:04:43 CET 2006 - lslezak@suse.cz
+
+- initialize package manager, source proposal fix (#152638)
+- removed unused code (product detection)
+- fixed network config reset
+- 2.13.24
+
+-------------------------------------------------------------------
+Wed Mar  8 11:33:03 CET 2006 - lslezak@suse.cz
+
+- fixed capitalization in DHCP label and proposal text
+- 2.13.23
+
+-------------------------------------------------------------------
+Fri Mar  3 16:11:26 CET 2006 - lslezak@suse.cz
+
+- display full file path and device prefix (#154016)
+- 2.13.22
+
+-------------------------------------------------------------------
+Mon Feb 27 10:49:28 CET 2006 - lslezak@suse.cz
+
+- 2.13.21
+
+-------------------------------------------------------------------
+Fri Feb 24 18:51:18 CET 2006 - lslezak@suse.cz
+
+- new DHCP option in the network configuratino dialog (#153385)
+- allow to boot from CD-ROM in full virtualization mode
+
+-------------------------------------------------------------------
+Thu Feb 23 18:26:48 CET 2006 - lslezak@suse.cz
+
+- don't remove CD-ROM after reboot in full virtualization mode
+  (#145064)
+
+-------------------------------------------------------------------
+Tue Feb 21 11:29:27 CET 2006 - lslezak@suse.cz
+
+- display warning in full virtualization mode if AutoYast
+  profile is configured
+- check URL of an installation source
+- fixed package download from an inst. source
+- fixed crash due to uninitialized source (#150241)
+- 2.13.20
+
+-------------------------------------------------------------------
+Tue Feb 21 08:52:58 CET 2006 - lslezak@suse.cz
+
+- check valid disk devices in full virtualization mode (#145064)
+- .spec: removed yast2-devel-packages and yast2-users
+
+-------------------------------------------------------------------
+Fri Feb 17 15:42:04 CET 2006 - lslezak@suse.cz
+
+- boot device configuration in full virtualization mode,
+  start VM in background (#145064)
+- xen config file fixes
+- 2.13.19
+
+-------------------------------------------------------------------
+Mon Feb 13 17:29:54 CET 2006 - lslezak@suse.cz
+
+- 2.13.18
+
+-------------------------------------------------------------------
+Mon Feb 13 17:13:42 CET 2006 - lslezak@suse.cz
+
+- validate domain name (only alphanumeric and _-.:+ characterrs
+  are allowed) (#150054)
+
+-------------------------------------------------------------------
+Mon Feb 13 16:55:24 CET 2006 - lslezak@suse.cz
+
+- resize dom0 memory size if needed (#147612)
+
+-------------------------------------------------------------------
+Mon Feb 13 15:04:06 CET 2006 - lslezak@suse.cz
+
+- start 2nd stage at background, finish yast module (#149665)
+- show the network device config popup when adding new interface
+
+-------------------------------------------------------------------
+Mon Feb 13 12:55:11 CET 2006 - lslezak@suse.cz
+
+- don't start VM when file downloading from source fails (#147428)
+- initialize target (#150241)
+
+-------------------------------------------------------------------
+Mon Feb 13 11:24:32 CET 2006 - lslezak@suse.cz
+
+- increased default disk image size to 4GB (#149604)
+- generate default MAC address for network interface (#149177) 
+
+-------------------------------------------------------------------
+Mon Feb  6 14:32:16 CET 2006 - lslezak@suse.cz
+
+- full virtualization fix (use hvm loader and builder)
+- write vif option correctly (#145390)
+- allow non-network source
+- suppose VM crash if runtime is lower than 3 sec
+- 2.13.17
+
+-------------------------------------------------------------------
+Wed Feb  1 13:12:57 CET 2006 - lslezak@suse.cz
+
+- extract translatable strings from vm_install.xml control file
+  (#146651)
+- 2.13.16
+
+-------------------------------------------------------------------
+Mon Jan 30 14:44:55 CET 2006 - lslezak@suse.cz
+
+- don't write obsoleted 'nics' options to domain configuration
+  file (#145390)
+- 2.13.15
+
+-------------------------------------------------------------------
+Wed Jan 25 11:02:12 CET 2006 - lslezak@suse.cz
+
+- Use "RAM Disk" instead of "initrd" (#143673)
+- 2.13.14
+
+-------------------------------------------------------------------
+Mon Jan 23 16:53:39 CET 2006 - lslezak@suse.cz
+
+- merged proofed texts
+- 2.13.13
+
+-------------------------------------------------------------------
+Fri Jan 20 12:53:58 CET 2006 - lslezak@suse.cz
+
+- Improved help texts (#143669, #143672, #143674)
+- Use "RAM Disk" instead of "initrd" (#143673)
+- Fixes in the Full Virtualization mode
+- Propose sparse images
+- Create extra disk image for AutoYast profile
+- 2.13.12
+
+-------------------------------------------------------------------
+Tue Jan 17 11:07:32 CET 2006 - lslezak@suse.cz
+
+- fixed .spec file (missing inst_xen_mode.ycp in the file list)
+- 2.13.11
+
+-------------------------------------------------------------------
+Fri Jan 13 15:55:27 CET 2006 - lslezak@suse.cz
+
+- no network interfaces possible in virtual machine
+- AutoYast profile selection is part of the proposal
+- export selected installation source as URL in AutoYast
+- configure Xen virtualization mode (paravirtualization or
+  full virtualization) (GUI only)
+- 2.13.10
+
+-------------------------------------------------------------------
+Wed Jan 11 12:53:53 CET 2006 - lslezak@suse.cz
+
+- AutoYast client
+- 2.13.9
+
+-------------------------------------------------------------------
+Wed Jan  4 13:03:28 CET 2006 - lslezak@suse.cz
+
+- install xen-tools package
+- check whether kernel-xen and install-initrd packages
+  are available (#116395)
+- fixed $URL_INSTALL macro expansion
+- 2.13.8
+
+-------------------------------------------------------------------
+Mon Dec 19 14:18:36 CET 2005 - jsuchome@suse.cz
+
+- merged proofed texts
+- 2.13.7 
+
+-------------------------------------------------------------------
+Fri Dec 16 15:11:11 CET 2005 - lslezak@suse.cz
+
+- new client for Xen domain0 configuration (#117215)
+- spelling fixes
+- 2.13.6
+
+-------------------------------------------------------------------
+Mon Dec 12 17:07:25 CET 2005 - lslezak@suse.cz
+
+- removed UML support
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Dec 12 09:49:05 CET 2005 - lslezak@suse.cz
+
+- custom kernel and RAM disk configuration
+- workflow update for custom kernel
+- renamed search variable
+- new help texts + updates
+- xen - configure more virtual network interfaces, allow to use
+  physical partition as storage, use existing disk image
+- 2.13.4
+
+-------------------------------------------------------------------
+Tue Nov 22 11:08:39 CET 2005 - lslezak@suse.cz
+
+- installation boot parameter - boot option has been splitted into
+  two parts: boot option and additional installation boot option
+  (used only at the first stage, e.g. autoyast option)
+- xen - configure restart option
+- fixed error message (part of #117215)
+- version 2.13.3
+
+-------------------------------------------------------------------
+Fri Nov 11 10:30:05 CET 2005 - lslezak@suse.cz
+
+- added command line mode support
+- merged UML functionality (yast2-uml package can be dropped)
+- uml - configure UMID option, um-host-install-initrd package
+  is not used any more (#96323)
+- version 2.13.2
+
+-------------------------------------------------------------------
+Fri Oct 14 09:30:02 CEST 2005 - lslezak@suse.cz
+
+- moved generic code to VM_Common::
+- proposal definition is part of the package
+- version 2.13.1
+
+-------------------------------------------------------------------
+Tue Sep 27 11:21:31 CEST 2005 - lslezak@suse.cz
+
+- install required X packages (xorg-x11, xterm) (#117660)
+- write option ioemu for emulated disk (#117711)
+- version 2.13.0
+
+-------------------------------------------------------------------
+Mon Sep 19 09:34:47 CEST 2005 - lslezak@suse.cz
+
+- fixed 'Xen' spelling (#117226)
+
+-------------------------------------------------------------------
+Fri Sep  9 11:32:13 CEST 2005 - lslezak@suse.cz
+
+- write vif option properly into VM configuration file (#115791)
+- don't start an installatinon without network source (#114740) 
+- 2.12.4
+
+-------------------------------------------------------------------
+Fri Aug 26 13:30:30 CEST 2005 - lslezak@suse.cz
+
+- fixed layout of the tables (#112971)
+- use arch dependend kernel-xen and install-initrd package
+- reinitialize installtion sources
+- fixed logging
+- 2.12.3
+
+-------------------------------------------------------------------
+Fri Aug 19 12:46:23 CEST 2005 - lslezak@suse.cz
+
+- use properly custom installation source
+- mount partitions in virtual disk image
+- search for kernel files, copy them to domain0
+- search for root device name
+- update VM configuration file before starting the 2nd stage
+- create link in /etc/xen/auto when 'on boot' start
+  mode is selected
+- add TERM=xterm kernel option (to have colours in 2nd stage)
+- 2.12.2
+
+-------------------------------------------------------------------
+Fri Aug 12 12:24:14 CEST 2005 - lslezak@suse.cz
+
+- fixed creating of an installation initrd (#104339)
+- fixed configuration update after reboot (after first
+  installation stage)
+- 2.12.1
+
+-------------------------------------------------------------------
+Fri Aug 12 09:08:10 CEST 2005 - visnov@suse.cz
+
+- fix textdomain 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:43 CEST 2005 - lslezak@suse.cz
+
+- initial release
+- 2.12.0
+

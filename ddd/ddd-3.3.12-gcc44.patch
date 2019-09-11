@@ -1,0 +1,12 @@
+Index: ddd/strclass.C
+===================================================================
+--- ddd/strclass.C.orig	2009-02-11 18:25:06.000000000 +0100
++++ ddd/strclass.C	2009-02-26 17:04:12.000000000 +0100
+@@ -35,6 +35,7 @@ extern "C" int malloc_verify();
+ 
+ #include "strclass.h"
+ #include "config.h"
++#include <stdio.h>
+ #include <ctype.h>
+ #include <limits.h>
+ #include <new>

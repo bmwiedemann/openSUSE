@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:39:36 UTC 2013 - coolo@suse.com
+
+- updated to 1.25
+        * BUILD: No longer ship unrequired file Debian_CPANTS.txt.
+          (GH #7, thanks to real-dam)
+        * BUILD: No longer mark BSD::Resource as required (GH #6).
+
+        * TEST: Skip core-dump tests on OS X. They're not as
+          straightforward as the test script would like. (GH #5).
+
+        * BUGFIX: Silence "Statement unlikely to be reached" warning
+          (Karen Etheridge)
+
+        * BUGFIX: Repository information fix, and typo fixes (@dsteinbrunner)
+
+        * BUILD: Converted to using dzil.
+
+        * Same as 1.23 release, but with booched changelog. Oops! :)
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:19 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sat Nov 20 13:10:32 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.21)
+

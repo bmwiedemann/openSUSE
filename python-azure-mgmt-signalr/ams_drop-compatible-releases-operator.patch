@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-signalr-0.1.1.orig/setup.py azure-mgmt-signalr-0.1.1/setup.py
+--- azure-mgmt-signalr-0.1.1.orig/setup.py	2018-09-04 19:13:28.000000000 +0200
++++ azure-mgmt-signalr-0.1.1/setup.py	2019-04-01 11:30:14.255733296 +0200
+@@ -80,7 +80,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

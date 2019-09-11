@@ -1,0 +1,22 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/skyjake/Doomsday-Engine</param>
+		<param name="revision">build2967</param>
+		<param name="parent-tag">build2967</param>
+		<param name="versionformat">2.1.1</param>
+		<!-- extras not in the normal tarball release -->
+		<param name="exclude">attic</param>
+		<param name="exclude">packs</param>
+		<param name="exclude">web</param>
+		<param name="exclude">web2</param>
+		<param name="exclude">webapi</param>
+		<!-- questionable license: -->
+		<param name="exclude">doomsday/apps/client/net.dengine.client.pack/audio</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

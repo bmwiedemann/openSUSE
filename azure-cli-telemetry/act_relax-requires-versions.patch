@@ -1,0 +1,12 @@
+diff -Nru azure-cli-telemetry-1.0.0.orig/setup.py azure-cli-telemetry-1.0.0/setup.py
+--- azure-cli-telemetry-1.0.0.orig/setup.py	2018-08-09 08:34:43.000000000 +0200
++++ azure-cli-telemetry-1.0.0/setup.py	2018-10-01 13:01:24.018731189 +0200
+@@ -50,7 +50,7 @@
+     classifiers=CLASSIFIERS,
+     install_requires=[
+         'applicationinsights>=0.11.1',
+-        'portalocker==1.2.1',
++        'portalocker>=1.2.1',
+     ],
+     packages=[
+         'azure',

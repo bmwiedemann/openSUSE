@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Jul 19 10:36:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict the pytest5 for now, issue reported upstream
+
+-------------------------------------------------------------------
+Wed Jun 12 05:09:35 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update imp-to-importlib.patch to deal with irregular imports as well.
+
+-------------------------------------------------------------------
+Tue Jun 11 20:52:07 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- It's better to fix a bug, than to switch off test. Add
+  imp-to-importlib.patch replacing use of imp library in Python
+  3 with importlib. gh#textX/Arpeggio#54
+
+-------------------------------------------------------------------
+Tue Jun 11 13:14:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one randomly failing test
+
+-------------------------------------------------------------------
+Tue Mar  5 11:55:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * Added `extra_info` param to `Terminal` for additional information.
+    Used by textX.
+- Switch to github tarball for tests and license content
+- Drop merged patch fix-setup-encoding.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jul  7 08:11:38 UTC 2018 - sebix+novell.com@sebix.at
+
+- add fix-setup-encoding.patch to fix setup.py encoding issue
+- update to version 1.8.0:
+ - Fixed issue #43.
+   *Backward incompatible change* for cleanpeg comment syntax.
+   Please see: https://github.com/igordejanovic/Arpeggio/issues/43
+ - Added `file` parser param used for `DebugPrinter` to allow the
+   output stream to be changed from stdout. This allows doctests to
+   continue to work. Thanks ianmmoir@GitHub.
+- update to version 1.7.1:
+ - Fixed bug in comment parsing optimization.
+- update to version 1.7:
+ - Added re_flag parameter to RegExMatch constructor. Thanks Aluriak@GitHub.
+ - Fix in grammar language docs. Thanks schmittlauch@GitHub.
+ - Small fixes in examples.
+
+-------------------------------------------------------------------
+Mon Aug 28 11:48:43 UTC 2017 - sebix+novell.com@sebix.at
+
+- intial package

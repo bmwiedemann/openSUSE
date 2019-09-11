@@ -1,0 +1,18 @@
+diff -ur Twisted-18.7.0.orig/src/twisted/internet/gireactor.py Twisted-18.7.0/src/twisted/internet/gireactor.py
+--- Twisted-18.7.0.orig/src/twisted/internet/gireactor.py	2018-03-26 10:19:31.000000000 +0200
++++ Twisted-18.7.0/src/twisted/internet/gireactor.py	2018-10-04 01:41:32.547220235 +0200
+@@ -75,8 +75,12 @@
+     # Newer version of gi, so we can try to initialize compatibility layer; if
+     # real pygtk was already imported we'll get ImportError at this point
+     # rather than segfault, so unconditional import is fine.
+-    import gi.pygtkcompat
+-    gi.pygtkcompat.enable()
++    try:
++        import gi.pygtkcompat
++    except ImportError:
++        pass # This is probably Python 3, with pygtkcompat removed
++    else:
++        gi.pygtkcompat.enable()
+     # At this point importing gobject will get you gi version, and importing
+     # e.g. gtk will either fail in non-segfaulty way or use gi version if user
+     # does gi.pygtkcompat.enable_gtk(). So, no need to prevent imports of

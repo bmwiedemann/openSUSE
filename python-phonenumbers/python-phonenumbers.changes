@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue Jul 23 11:30:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.10.15:
+  * updates to metadata informations
+
+-------------------------------------------------------------------
+Mon Jun  3 10:51:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.10.13:
+  * Updates from upstream project metadata
+
+-------------------------------------------------------------------
+Mon Mar 25 12:52:32 UTC 2019 - pgajdos@suse.com
+
+- version update to 8.10.8
+  * Merge metadata changes from upstream
+  * Only compare national number patterns
+  * Use class name for repr() instead of hard-coded string
+- deleted sources
+  - LICENSE (already provided upstream)
+
+-------------------------------------------------------------------
+Mon Dec 10 12:03:02 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Install license file
+- Update to 8.10.2:
+  * no upstream changelog available
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jan 11 09:21:48 UTC 2018 - parlt@suse.com
+
+- update to 8.8.9
+- no upstream changelog available
+
+-------------------------------------------------------------------
+Mon Oct  2 22:14:25 UTC 2017 - ecsos@opensuse.org
+
+- update to 8.8.2
+- convert to  singelspec
+
+-------------------------------------------------------------------
+Mon May  1 16:43:20 UTC 2017 - mrueckert@suse.de
+
+- initial package

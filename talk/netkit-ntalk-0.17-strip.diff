@@ -1,0 +1,22 @@
+--- talk/Makefile
++++ talk/Makefile
+@@ -16,7 +16,7 @@
+ $(OBJS): talk.h ../include/prot_talkd.h ../version.h
+ 
+ install: talk
+-	install -s -m$(BINMODE) talk $(INSTALLROOT)$(BINDIR)
++	install -m$(BINMODE) talk $(INSTALLROOT)$(BINDIR)
+ 	install -m$(MANMODE) talk.1 $(INSTALLROOT)$(MANDIR)/man1/
+ 
+ clean:
+--- talkd/Makefile
++++ talkd/Makefile
+@@ -13,7 +13,7 @@
+ $(OBJS): proto.h ../include/prot_talkd.h ../version.h
+ 
+ install: talkd
+-	install -s -m$(DAEMONMODE) talkd $(INSTALLROOT)$(SBINDIR)/in.ntalkd
++	install -m$(DAEMONMODE) talkd $(INSTALLROOT)$(SBINDIR)/in.ntalkd
+ 	ln -sf in.ntalkd $(INSTALLROOT)$(SBINDIR)/in.talkd
+ 	install -m$(MANMODE) talkd.8 $(INSTALLROOT)$(MANDIR)/man8/in.ntalkd.8
+ 	ln -sf in.ntalkd.8 $(INSTALLROOT)$(MANDIR)/man8/in.talkd.8

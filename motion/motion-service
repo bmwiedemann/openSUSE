@@ -1,0 +1,16 @@
+[Unit]
+Description=Motion capture
+After=syslog.target local-fs.target network.target
+
+[Service]
+Type=simple
+StandardError=null
+WorkingDirectory=~
+EnvironmentFile=-/etc/sysconfig/motion
+ExecStart=/usr/bin/motion ${MOTION_OPTIONS}
+User=motion
+Group=motion
+SyslogIdentifier=motion
+
+[Install]
+WantedBy=multi-user.target

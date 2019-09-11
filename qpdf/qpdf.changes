@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Mon Apr 29 13:27:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 8.4.1
+  * See included ChangeLog file for the complete changelog
+
+-------------------------------------------------------------------
+Mon Feb  4 11:09:42 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 8.4.0
+  See included ChangeLog file for the complete changelog
+- Drop qpdf-data-loss-fix.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 21 12:43:47 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 8.3.0
+  See included ChangeLog file for the complete changelog
+- Add qpdf-data-loss-fix.patch to fix
+  https://github.com/qpdf/qpdf/issues/276
+
+-------------------------------------------------------------------
+Mon Aug 20 08:26:03 UTC 2018 - idonmez@suse.com
+
+- Update to version 8.2.1
+  Command-line Enchancements
+
+  * Add --keep-files-open=[yn] to override default determination
+    of whether to keep files open when merging.
+- Update to version 8.2.0
+  Command-line Enhancements
+
+  * Add --no-warn option to suppress issuing warning messages.
+    If there are any conditions that would have caused warnings
+    to be issued, the exit status is still 3.
+
+  Bug fixesd and Optimizations
+
+  * Performance fix: optimize page merging operation to avoid
+    unnecessary open/close calls on files being merged. This
+    solves a dramatic slow-down that was observed when merging
+    certain types of files.
+  * Optimize how memory was used for the TIFF predictor,
+    drastically improving performance and memory usage for files
+    containing high-resolution images compressed with Flate
+    using the TIFF predictor.
+  * Bug fix: end of line characters were not properly handled
+    inside strings in some cases.
+  * Bug fix: using --progress on very small files could cause
+    an infinite loop.
+
+  API enhancements
+
+  * Add new class QPDFSystemError, derived from std::runtime_error,
+    which is now thrown by QUtil::throw_system_error. This enables
+    the triggering errno value to be retrieved.
+  * Add ClosedFileInputSource::stayOpen method, enabling a
+    ClosedFileInputSource to stay open during manually indicated
+    periods of high activity, thus reducing the overhead of
+    frequent open/close operations.
+
+-------------------------------------------------------------------
+Tue Jun 26 10:21:32 UTC 2018 - idonmez@suse.com
+
+- Update to version 8.1.0
+  Usability improvements:
+
+  * When splitting files, qpdf detects fonts and images that the
+    document metadata claims are referenced from a page but are
+    not actually referenced and omits them from the output file.
+  * When merging multiple PDF files, qpdf no longer leaves all
+    the files open.
+  * The --rotate option's syntax has been extended to make the
+    page range optional. If you specify --rotate=angle without
+    specifying a page range, the rotation will be applied to
+    all pages.
+  * When merging multiple files, the --verbose option now prints
+    information about each file as it operates on that file.
+  * When the --progress option is specified, qpdf will print a
+    running indicator of its best guess at how far through the
+    writing process it is. 
+
+  Bug fixes:
+  
+  * Properly decrypt files that use revision 3 of the standard
+    security handler but use 40 bit keys 
+    (even though revision 3 supports 128-bit keys).
+  * Limit depth of nested data structures to prevent crashes
+    from certain types of malformed (malicious) PDFs.
+  * In “newline before endstream” mode, insert the required
+    extra newline before the endstream at the end of object streams.
+
+  Please see included ChangeLog for complete changelog including
+  API changes.
+
+-------------------------------------------------------------------
+Wed Mar  7 09:11:04 UTC 2018 - idonmez@suse.com
+
+- Update to version 8.0.2
+  * Proper handling of pages with no content
+  * Better handling of files with loops following cross reference
+    tables
+
+-------------------------------------------------------------------
+Mon Mar  5 10:46:36 UTC 2018 - idonmez@suse.com
+
+- Update to version 8.0.1
+  * Handle zlib streams with data checksum errors
+  * In the command line tool, allow specification of page numbers
+    counting from the end in page ranges.
+
+-------------------------------------------------------------------
+Tue Feb 27 08:36:48 UTC 2018 - idonmez@suse.com
+
+- Update to version 8.0.0
+  * QPDFObjectHandle::getUTF8Val now properly treats non-Unicode
+    strings as encoded with PDF Doc Encoding.
+  * Add the option --coalesce-contents can be used to combine
+    content streams of a page whose contents are an array of
+    streams into a single stream.
+  * Add function qpdf_check_pdf to the C API. This function does
+    basic checking that is a subset of what qpdf --check performs.
+  * Major enhancements to the lexical layer of qpdf. For a complete
+    list of enhancements, please refer to the ChangeLog file.
+  * New API for working with PDF content streams at a lexical level.
+    The new class QPDFObjectHandle::TokenFilter allows the developer
+    to provide token handlers.
+
+-------------------------------------------------------------------
+Mon Feb  5 09:41:13 UTC 2018 - idonmez@suse.com
+
+- Update to version 7.1.1
+  * Fix one linearization bug affecting files whose first /ID
+    component is not 16 bytes long
+  * Fix some build issues
+- Add signature and keyring
+
+-------------------------------------------------------------------
+Wed Jan 24 03:47:54 UTC 2018 - avindra@opensuse.org
+
+- Update to version 7.1.0
+  * Allow raw encryption key to be specified in libary and command
+    line with the QPDF::setPasswordIsHexKey method and
+    --password-is-hex-key option. Allow encryption key to be displayed
+    with --show-encryption-key option. See 
+    https://blog.didierstevens.com/2017/12/28/cracking-encrypted-pdfs-part-3/
+    for a discussion of using this for cracking encrypted PDFs. I hope
+    that a future release of qpdf will include some additional
+    recovery options that may also make use of this capability.
+  * Fix lexical error: the PDF specification allows floating point
+    numbers to end with "."
+  * Fix link order in the build to avoid conflicts when building
+    from source while an older version of qpdf is installed
+  * Add support for TIFF predictor for LZW and Flate streams. Now
+  * Clarify documentation around options that control parsing but
+    not output creation. Two options: --suppress-recovery and
+    --ignore-xref-streams, were documented in the "Advanced
+    Transformation Options" section of the manual and --help output
+    even though they are not related to output. These are now
+    described in a separate section called "Advanced Parsing Options."
+  * Implement remaining PNG filters for decode. Prior versions could
+    decode only the "up" filter. Now all PNG filters (sub, up,
+    average, Paeth, optimal) are supported for decoding.
+    The implementation of the remaining PNG filters changed the
+    interface to the private Pl_PNGFilter class, but this class's
+    header file is not in the installation, and there is no public
+    interface to the class. Within the library, the class is never
+    allocated on the stack; it is only ever dynamically allocated. As
+    such, this does not actually break binary compatibility of the
+    library.  all predictor functions are supported
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 20 11:47:37 UTC 2017 - idonmez@suse.com
+
+- Update to version 7.0.0
+  * License is now Apache-2.0
+  * Add new libjpeg8-devel dependency
+  * Improve the error message that is issued when QPDFWriter
+	encounters a stream that can't be decoded. In particular, mention
+	that the stream will be copied without filtering to avoid data
+	loss.
+  * Add new methods to the C API to correspond to new additions to
+	QPDFWriter:
+	- qpdf_set_compress_streams
+	- qpdf_set_decode_level
+	- qpdf_set_preserve_unreferenced_objects
+	- qpdf_set_newline_before_endstream
+  * Add support for writing PCLm files
+  * QPDF now supports reading and writing streams encoded with
+    JPEG or RunLength encoding. Library API enhancements and
+    command-line options have been added to control this
+    behavior. See command-line options --compress-streams
+    and --decode-level and methods QPDFWriter::setCompressStreams
+    and QPDFWriter::setDecodeLevel.
+  * Page rotation is now supported and accessible from both the
+    library and the command line.
+  * Fixes CVE-2017-12595 bsc#1055960, CVE-2017-9208 bsc#1040311
+    CVE-2017-9209 bsc#1040312, CVE-2017-9210 bsc#1040313,
+    CVE-2017-11627 bsc#1050577, CVE-2017-11626 bsc#1050578,
+    CVE-2017-11625 bsc#1050579, CVE-2017-11624 bsc#1050581
+
+-------------------------------------------------------------------
+Tue Nov 10 19:18:31 UTC 2015 - idonmez@suse.com
+
+- Update to version 6.0.0
+  * Bump shared library version since 5.2.0 broke ABI.
+
+-------------------------------------------------------------------
+Sun Nov  8 11:08:58 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.2.0
+  * Support for deterministic /IDs for non-encrypted files. This is
+    off by default.
+  * Handle more invalid xref tables
+
+-------------------------------------------------------------------
+Mon May 25 09:03:17 UTC 2015 - idonmez@suse.com
+
+- Update to version 5.1.3
+  * Handle object streams with more than 255 objects
+  * Security fixes courtesy of Google Security Team
+  * Properly handle pages that have no content
+  * Robustness fixes for invalid PDF files
+
+-------------------------------------------------------------------
+Thu Jun 12 07:51:16 UTC 2014 - idonmez@suse.com
+
+- Update to version 5.1.2
+  * Please see the included ChangeLog file
+
+-------------------------------------------------------------------
+Wed Jan 29 11:04:21 CET 2014 - jsmeix@suse.de
+
+- Provide the license source file Artistic-2.0 in the binary RPM
+  (fix declined IBS submitrequest 30947).
+  
+-------------------------------------------------------------------
+Fri Jan 17 12:17:53 UTC 2014 - idonmez@suse.com
+
+- Update to version 5.1.1
+  * Fixes https://github.com/qpdf/qpdf/issues/28
+
+-------------------------------------------------------------------
+Wed Dec 18 18:07:25 UTC 2013 - idonmez@suse.com
+
+- Update to version 5.1.0
+  * Add ability to provide your own source of random numbers
+    at runtime
+  * More handling of damaged PDF files
+
+-------------------------------------------------------------------
+Tue Oct 22 09:32:33 UTC 2013 - idonmez@suse.com
+
+- Update to version 5.0.1
+  * Some security fixes, courtesy of Redhat
+
+-------------------------------------------------------------------
+Wed Jul 10 18:07:12 UTC 2013 - idonmez@suse.com
+
+- Update to 5.0.0
+  * Same as 4.2.0 but shared lib version bumped due to ABI changes
+- Apply shared library packaging policy
+
+-------------------------------------------------------------------
+Mon Jul  8 10:12:16 UTC 2013 - idonmez@suse.com
+
+- Update to version 4.2.0
+  * Fixes bug that would result in the loss of compressible objects
+    whose generation numbers were greater than 0 when generating
+    object streams.
+  * Added better API calls for handling object ID and generation
+    together as a QPDFObjGen.
+  * Added --show-npages option to the qpdf command-line tool.
+  * Several small enhancements to make qpdf able to handle a wider
+    range of broken input files.
+
+-------------------------------------------------------------------
+Sun Apr 14 21:14:44 UTC 2013 - idonmez@suse.com
+
+- Update to version 4.1.0
+  * New API calls for parsing PDF content streams
+  * qpdf --check now parses all pages' content streams in addition
+    to doing other checks.
+  * Overridden compressed objects are properly handled.
+- Drop qpdf-ppc64.patch: merged upstream
+
+-------------------------------------------------------------------
+Thu Jan  3 21:47:29 UTC 2013 - dvaleev@suse.com
+
+- Detect binary attachments better (qpdf-ppc64.patch)
+  This fix eliminates a false test failure on some platforms and makes
+  the binary test work properly whether characters with the high bit
+  set, when treated as integers, are negative or not.
+- pass --enable-show-failed-test-output to configure, to see 
+  detailed failure reason in build log.
+
+-------------------------------------------------------------------
+Mon Dec 31 20:06:10 UTC 2012 - idonmez@suse.com
+
+- Update to version 4.0.0
+  * Support for Acrobat X & XI encryption
+  * Support for extension levels in PDF version information.
+  * New methods for supporting read and write from/to arbitrary sources.
+  * Support for unencrypted files with encrypted attachments.
+  * Support for files with junk preceding the PDF header.
+
+-------------------------------------------------------------------
+Fri Sep  7 12:00:40 UTC 2012 - idonmez@suse.com
+
+- Update to version 3.0.2
+  * Calling QPDFWriter::setOutputMemory would result in a
+  segmentation fault from write() if setStaticID() was not used.
+  * New method call QPDFWriter::setExtraHeaderText to add text
+  * Make it so that you can write the same QPDF object through two
+  different QPDFWriter objects that both have linearization enabled.
+
+-------------------------------------------------------------------
+Sat Aug 11 19:25:13 UTC 2012 - idonmez@suse.com
+
+- Update to version 3.0.1
+  *  qpdf may falsely report premature EOF when reading files that 
+     have object streams that end with scalars not followed by 
+     whitespace.
+
+-------------------------------------------------------------------
+Thu Aug  2 11:48:15 UTC 2012 - idonmez@suse.com
+
+- Update to version 3.0.0
+  * Page-based splitting and merging
+  * Support for large files
+  * The ability to set the encryption parameters of one file by copying
+    them from another file. 
+  * Support for creating PDF files from scratch
+- Drop applied patches
+
+-------------------------------------------------------------------
+Sun Apr 22 10:32:13 UTC 2012 - dimstar@opensuse.org
+
+- Add qpdf-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Feb 27 09:50:59 CET 2012 - dmueller@suse.de
+
+- fix build with pcre 8.30 
+
+-------------------------------------------------------------------
+Tue Jan 24 12:07:27 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant sections (see specfile guidelines)
+
+-------------------------------------------------------------------
+Mon Jan 23 19:33:01 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix devel package requires
+- Build with -fvisibility-inlines-hidden, test suite
+  confirms it works and saves a few dozens of entries in the 
+  exported symbol table.
+
+-------------------------------------------------------------------
+Mon Jan  2 21:25:36 UTC 2012 - idonmez@suse.com
+
+- Update to v2.3.1
+  * Fix threading problem with PCRE usage
+
+-------------------------------------------------------------------
+Thu Aug  4 11:34:36 UTC 2011 - idonmez@novell.com
+
+- Update to v2.2.4
+  * Build system fixes
+- Drop qpdf-gcc46.patch and qpdf-nostrip.patch: applied upstream
+
+-------------------------------------------------------------------
+Wed Aug  3 07:09:06 UTC 2011 - idonmez@novell.com
+
+- Remove unicode data to make sure its not redistributed 
+
+-------------------------------------------------------------------
+Thu Jun 23 13:02:39 UTC 2011 - idonmez@novell.com
+
+- Add qpdf-nostrip.patch: don't strip libraries 
+
+-------------------------------------------------------------------
+Wed Jun 22 21:04:11 UTC 2011 - idonmez@novell.com
+
+- Update to v2.3.3
+    * API improvements
+    * Compatibility fixes with some PDF files 
+
+-------------------------------------------------------------------
+* Mon Apr 28 2008 Jay Berkenbilt <ejb@ql.org> - 2.0-1
+- Initial packaging
+
+

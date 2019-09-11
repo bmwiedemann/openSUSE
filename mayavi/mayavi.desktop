@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mayavi
+Comment=Scientific data 3-dimensional visualizer
+GenericName=Scientific data 3-dimensional visualizer
+Exec=mayavi2 %U
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=mayavi2
+Categories=GNOME;Education;3DGraphics;X-Science,X-DataVisualization;

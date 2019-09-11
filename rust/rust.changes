@@ -1,0 +1,2216 @@
+-------------------------------------------------------------------
+Tue Jul  9 09:57:46 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Remove fix-llvm8-build.patch, fixed upstream
+
+-------------------------------------------------------------------
+Mon Jul  8 20:29:46 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.36.0
+  + Language
+    - Non-Lexical Lifetimes are now enabled on the 2015 edition
+    - The order of traits in trait objects no longer affects the semantics of that
+      object. e.g. `dyn Send + fmt::Debug` is now equivalent to
+      `dyn fmt::Debug + Send`, where this was previously not the case.
+  + Libraries
+    - `HashMap`'s implementation has been replaced with `hashbrown::HashMap` implementation
+    - `TryFromSliceError` now implements `From<Infallible>`
+    - `mem::needs_drop` is now available as a const fn
+    - `alloc::Layout::from_size_align_unchecked` is now available as a const fn
+    - `String` now implements `BorrowMut<str>`
+    - `io::Cursor` now implements `Default`
+    - Both `NonNull::{dangling, cast}` are now const fns
+    - The `alloc` crate is now stable. `alloc` allows you to use a subset
+      of `std` (e.g. `Vec`, `Box`, `Arc`) in `#![no_std]` environments if the
+      environment has access to heap memory allocation.
+    - String` now implements `From<&String>`
+    - You can now pass multiple arguments to the `dbg!` macro. `dbg!` will
+      return a tuple of each argument when there is multiple arguments.
+    - `Result::{is_err, is_ok}` are now `#[must_use]` and will produce a warning if
+      not used.
+  + Stabilized APIs
+    - VecDeque::rotate_left
+    - VecDeque::rotate_right
+    - Iterator::copied
+    - io::IoSlice
+    - io::IoSliceMut
+    - Read::read_vectored
+    - Write::write_vectored
+    - str::as_mut_ptr
+    - mem::MaybeUninit
+    - pointer::align_offset
+    - future::Future
+    - task::Context
+    - task::RawWaker
+    - task::RawWakerVTable
+    - task::Waker
+    - task::Poll
+  + Cargo
+    - Cargo will now produce an error if you attempt to use the name of a required dependency as a feature
+    - You can now pass the `--offline` flag to run cargo without accessing the network
+  + Clippy
+    - New lints: `find_map`, `filter_map_next`
+    - New lint: `path_buf_push_overwrite`
+    - Move `path_buf_push_overwrite` to the nursery
+    - Split `redundant_closure` into `redundant_closure` and `redundant_closure_for_method_calls`
+    - Allow allowing of `toplevel_ref_arg` lint
+    - Fix false negative in `or_fun_call` pertaining to nested constructors
+    - Fixed false positive in `or_fn_call` pertaining to enum variant constructors
+    - Fix false positive in `useless_let_if_seq` pertaining to interior mutability
+    - Fix false positive in `redundant_closure` pertaining to non-function types
+    - Fix false positive in `let_and_return` pertaining to attributes on `let`s
+    - Fix false positive in `module_name_repetitions` lint pertaining to attributes
+    - Fix false positive on `assertions_on_constants` pertaining to `debug_assert!`
+    - Improve suggestion in `map_clone` to suggest `.copied()` where applicable
+    - Improve suggestion for `search_is_some`
+    - Improve suggestion applicability for `naive_bytecount`
+    - Improve suggestion applicability for `while_let_loop`
+    - Improve diagnostics for `too_many_arguments`
+    - Improve diagnostics for `cast_lossless`
+    - Deal with macro checks in desugarings better
+    - Add macro check for `unnecessary_cast`
+    - Remove `approx_constant`'s documentation's "Known problems" section
+    - Fix ICE in `suspicious_else_formatting`
+    - Fix ICE in `decimal_literal_representation`
+  + Compatibility Notes
+    - With the stabilisation of `mem::MaybeUninit`, `mem::uninitialized` use is no
+      longer recommended, and will be deprecated in 1.38.0.
+
+-------------------------------------------------------------------
+Tue Jul  2 07:21:24 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Add support for ppc
+
+-------------------------------------------------------------------
+Wed May 29 21:38:13 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.35.0
+  + Language
+    - `FnOnce`, `FnMut`, and the `Fn` traits are now implemented for `Box<FnOnce>`,
+      `Box<FnMut>`, and `Box<Fn>` respectively.
+    - You can now coerce closures into unsafe function pointers. e.g.
+      unsafe fn call_unsafe(func: unsafe fn()) {
+          func()
+      }
+
+      pub fn main() {
+          unsafe { call_unsafe(|| {}); }
+      }
+  + Compiler
+    - Added the `armv6-unknown-freebsd-gnueabihf` and
+      `armv7-unknown-freebsd-gnueabihf` targets.
+    - Added the `wasm32-unknown-wasi` target.
+  + Libraries
+    - `Thread` will now show its ID in `Debug` output.
+    - `StdinLock`, `StdoutLock`, and `StderrLock` now implement `AsRawFd`.
+    - `alloc::System` now implements `Default`.
+    - Expanded `Debug` output (`{:#?}`) for structs now has a trailing comma on the
+      last field.
+    - `char::{ToLowercase, ToUppercase}` now
+      implement `ExactSizeIterator`.
+    - All `NonZero` numeric types now implement `FromStr`.
+    - Removed the `Read` trait bounds
+      on the `BufReader::{get_ref, get_mut, into_inner}` methods.
+    - You can now call the `dbg!` macro without any parameters to print the file
+      and line where it is called.
+    - In place ASCII case conversions are now up to 4× faster.
+      e.g. `str::make_ascii_lowercase`
+    - `hash_map::{OccupiedEntry, VacantEntry}` now implement `Sync`
+      and `Send`.
+  + Stabilized APIs
+    - `f32::copysign`
+    - `f64::copysign`
+    - `RefCell::replace_with`
+    - `RefCell::map_split`
+    - `ptr::hash`
+    - `Range::contains`
+    - `RangeFrom::contains`
+    - `RangeTo::contains`
+    - `RangeInclusive::contains`
+    - `RangeToInclusive::contains`
+    - `Option::copied`
+  + Cargo
+    - You can now set `cargo:rustc-cdylib-link-arg` at build time to pass custom
+      linker arguments when building a `cdylib`. Its usage is highly
+      platform specific.
+
+- version 1.34.2
+  + Destabilize the `Error::type_id` function due to a security
+   vulnerability (CVE-2019-12083)
+
+- version 1.34.1
+  + Fix false positives for the `redundant_closure` Clippy lint
+  + Fix false positives for the `missing_const_for_fn` Clippy lint
+  + Fix Clippy panic when checking some macros
+
+-------------------------------------------------------------------
+Sat May 25 12:23:30 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-llvm8-build.patch: Fix linker errors with llvm8 by
+  limiting internalization in ThinLTO.
+
+-------------------------------------------------------------------
+Fri May 17 23:06:25 UTC 2019 - federico@suse.com
+
+- Fix regexp for .rlib files in rust-rpmlintrc.
+
+-------------------------------------------------------------------
+Wed Apr 24 17:39:11 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133283).
+
+-------------------------------------------------------------------
+Thu Apr 11 23:32:24 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.34.0
+  + Language
+    - You can now use `#[deprecated = "reason"]` as a shorthand for
+      `#[deprecated(note = "reason")]`. This was previously allowed
+      by mistake but had no effect.
+    - You can now accept token streams in `#[attr()]`,`#[attr[]]`, and
+      `#[attr{}]` procedural macros.
+    - You can now write `extern crate self as foo;` to import your
+      crate's root into the extern prelude.
+  + Compiler
+    - You can now target `riscv64imac-unknown-none-elf` and
+      `riscv64gc-unknown-none-elf`.
+    - You can now enable linker plugin LTO optimisations with
+      `-C linker-plugin-lto`. This allows rustc to compile your Rust
+      code into LLVM bitcode allowing LLVM to perform LTO optimisations
+      across C/C++ FFI boundaries.
+    - You can now target `powerpc64-unknown-freebsd`.
+  + Libraries
+    - The trait bounds have been removed on some of `HashMap<K, V, S>`'s
+      and `HashSet<T, S>`'s basic methods. Most notably you no longer
+      require the `Hash` trait to create an iterator.
+    - The `Ord` trait bounds have been removed on some of
+      `BinaryHeap<T>`'s basic methods. Most notably you no longer require
+      the `Ord` trait to create an iterator.
+    - The methods `overflowing_neg` and `wrapping_neg` are now `const`
+      functions for all numeric types.
+    - Indexing a `str` is now generic over all types that
+      implement `SliceIndex<str>`.
+    - `str::trim`, `str::trim_matches`, `str::trim_{start, end}`, and
+      `str::trim_{start, end}_matches` are now `#[must_use]` and will
+      produce a warning if their returning type is unused.
+    - The methods `checked_pow`, `saturating_pow`, `wrapping_pow`, and
+      `overflowing_pow` are now available for all numeric types. These are
+      equivalvent to methods such as `wrapping_add` for the `pow` operation.
+  + Stabilized APIs
+    - std & core
+      + Any::type_id
+      + Error::type_id
+      + atomic::AtomicI16
+      + atomic::AtomicI32
+      + atomic::AtomicI64
+      + atomic::AtomicI8
+      + atomic::AtomicU16
+      + atomic::AtomicU32
+      + atomic::AtomicU64
+      + atomic::AtomicU8
+      + convert::Infallible
+      + convert::TryFrom
+      + convert::TryInto
+      + iter::from_fn
+      + iter::successors
+      + num::NonZeroI128
+      + num::NonZeroI16
+      + num::NonZeroI32
+      + num::NonZeroI64
+      + num::NonZeroI8
+      + num::NonZeroIsize
+      + slice::sort_by_cached_key
+      + str::escape_debug
+      + str::escape_default
+      + str::escape_unicode
+      + str::split_ascii_whitespace
+    - std
+      + Instant::checked_add
+      + Instant::checked_sub
+      + SystemTime::checked_add
+      + SystemTime::checked_sub
+  + Cargo
+    - You can now use alternative registries to crates.io.
+  + Misc
+    - You can now use the `?` operator in your documentation
+      tests without manually adding `fn main() -> Result<(), _> {}`.
+  + Compatibility Notes
+    - `Command::before_exec` is now deprecated in favor of the
+      unsafe method `Command::pre_exec`.
+    - Use of `ATOMIC_{BOOL, ISIZE, USIZE}_INIT` is now deprecated.
+      As you can now use `const` functions in `static` variables.
+- Remove depreciated-trim_left_matches.patch.
+- Rustfmt version bumped to 1.0.3
+  + Change description not provided.
+- rls version now in sync with rustc.
+- Misc fixes to rust.spec
+
+-------------------------------------------------------------------
+Mon Mar 25 16:09:44 UTC 2019 - Federico Mena Quintero <federico@suse.com>
+
+- Use the system's LLVM in SLE15-SP1.  That distribution has LLVM7,
+  and we need to use it there, instead of any other version.
+- Prevent auto-provides from being created for things under
+  rustlibdir, so the RPM does not inadvertently have a Provides for a
+  bundled LLVM and the Rust library files.
+- Sync changes files between SLE and openSUSE, for ease of maintenance.
+
+-------------------------------------------------------------------
+Fri Mar 22 00:02:26 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Explicitly build only a subset of tools
+
+-------------------------------------------------------------------
+Sat Mar 16 01:19:22 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Remove miri complete instead of excluding. This is experimental
+  and so should not be included.
+- BuildRequires ccache in attempt to reduce compile times.
+- Remove more extraneous directories from src that will never be
+  used.
+- Extra patterns in rpmlintrc to catch more false positives:
+  + Rust has no stable API, ignore SONAME warnings
+  + Tool versions don't update in step with rust, ignore warnings
+
+-------------------------------------------------------------------
+Wed Mar  6 09:07:43 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Separate the bootstrap version from the minimum required system
+  version for package builds.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:17:43 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- add depreciated-trim_left_matches.patch: replaces depreciated
+  function call in src/tools/tidy with trim_start_matches to fix
+  error when bootstrapping with system 1.33.0
+
+-------------------------------------------------------------------
+Sat Mar  2 05:17:36 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.33.0
+  + Language
+    - You can now use the `cfg(target_vendor)` attribute. E.g.
+      `#[cfg(target_vendor="linux")] fn main() { println!("Hello Linux!"); }`
+    - Integer patterns such as in a match expression can now be exhaustive.
+      E.g. You can have match statement on a `u8` that covers `0..=255` and
+      you would no longer be required to have a `_ => unreachable!()` case.
+    - You can now have multiple patterns in `if let` and `while let`
+      expressions. You can do this with the same syntax as a `match`
+      expression. E.g.
+      ```
+      enum Creature {
+		  Crab(String),
+		  Lobster(String),
+		  Person(String),
+      }
+
+      fn main() {
+		  let state = Creature::Crab("Ferris");
+
+		  if let Creature::Crab(name) | Creature::Person(name) = state {
+			      println!("This creature's name is: {}", name);
+		  }
+      }
+      ```
+    - You can now have irrefutable `if let` and `while let` patterns. Using
+      this feature will by default produce a warning as this behaviour can be
+      unintuitive. E.g. `if let _ = 5 {}`
+    - You can now use `let` bindings, assignments, expression statements,
+      and irrefutable pattern destructuring in const functions.
+    - You can now call unsafe const functions. E.g.
+      ```
+      const unsafe fn foo() -> i32 { 5 }
+      const fn bar() -> i32 {
+		  unsafe { foo() }
+      }
+      ```
+    - You can now specify multiple attributes in a `cfg_attr` attribute.
+      E.g. `#[cfg_attr(all(), must_use, optimize)]`
+    - You can now specify a specific alignment with the `#[repr(packed)]`
+      attribute. E.g. `#[repr(packed(2))] struct Foo(i16, i32);` is a struct
+      with an alignment of 2 bytes and a size of 6 bytes.
+    - You can now import an item from a module as an `_`. This allows you to
+      import a trait's impls, and not have the name in the namespace. E.g.
+      ```
+      use std::io::Read as _;
+
+      // Allowed as there is only one `Read` in the module.
+      pub trait Read {}
+      ```
+    - extern` functions will now abort by default when panicking.
+      This was previously undefined behaviour.
+  + Compiler
+    - You can now set a linker flavor for `rustc` with the `-Clinker-flavor`
+      command line argument.
+    - The mininum required LLVM version has been bumped to 6.0.
+    - Added support for the PowerPC64 architecture on FreeBSD.
+    - The `x86_64-fortanix-unknown-sgx` target support has been upgraded to
+      tier 2 support. Visit the [platform support][platform-support] page for
+      information on Rust's platform support.
+    - Added support for the `thumbv7neon-linux-androideabi` and
+      `thumbv7neon-unknown-linux-gnueabihf` targets.
+    - Added support for the `x86_64-unknown-uefi` target.
+
+  + Libraries
+    - The methods `overflowing_{add, sub, mul, shl, shr}` are now `const`
+      functions for all numeric types.
+    - The methods `rotate_left`, `rotate_right`, and `wrapping_{add, sub, mul, shl, shr}`
+      are now `const` functions for all numeric types.
+    - The methods `is_positive` and `is_negative` are now `const` functions for
+      all signed numeric types.
+    - The `get` method for all `NonZero` types is now `const`.
+    - The methods `count_ones`, `count_zeros`, `leading_zeros`, `trailing_zeros`,
+      `swap_bytes`, `from_be`, `from_le`, `to_be`, `to_le` are now `const` for all
+      numeric types.
+    - Ipv4Addr::new` is now a `const` function
+  + Stabilized APIs
+    - unix::FileExt::read_exact_at
+    - unix::FileExt::write_all_at
+    - Option::transpose
+    - Result::transpose
+    - convert::identity
+    - pin::Pin
+    - marker::Unpin
+    - marker::PhantomPinned
+    - Vec::resize_with
+    - VecDeque::resize_with
+    - Duration::as_millis
+    - Duration::as_micros
+    - Duration::as_nanos
+  + Cargo
+    - Cargo should now rebuild a crate if a file was modified during the initial
+      build.][cargo/6484]
+
+  + Compatibility Notes
+    - The methods `str::{trim_left, trim_right, trim_left_matches, trim_right_matches}`
+      are now deprecated in the standard library, and their usage will now produce a warning.
+      Please use the `str::{trim_start, trim_end, trim_start_matches, trim_end_matches}`
+      methods instead.
+
+-------------------------------------------------------------------
+Fri Mar  1 06:57:58 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Bump minimum LLVM to 7.0
+- Add conditions to build SLE versions with bundled libgit2 and
+  libssh2
+
+-------------------------------------------------------------------
+Thu Feb 28 17:08:08 UTC 2019 - Federico Mena Quintero <federico@suse.com>
+
+- Use cmake3, not cmake, in SLE-12 SP2 and earlier.  The stock cmake
+  package there was 2.x, and building llvm requires cmake 3.5.
+
+-------------------------------------------------------------------
+Wed Feb 27 21:39:35 UTC 2019 - jones_ld@protonmail.com
+
+- Use same version bootstrap as package source
+- Fixes to build with correct LLVM for SLE and Leap releases
+
+-------------------------------------------------------------------
+Wed Feb 27 02:38:54 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Move export vars directly to where used.
+- Change codegen units to 2 for Arm and x86 builds in attempt to
+  reduce memory use by LLVM.
+
+-------------------------------------------------------------------
+Wed Feb 27 02:12:17 UTC 2019 - Federico Mena Quintero <federico@suse.com>
+
+- Put each exported environment variable in a separate line so the
+  specfile will work on SLE SP0/SP1/SP2.
+
+-------------------------------------------------------------------
+Sun Feb 24 09:40:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bash-specific syntax in "test" call.
+
+-------------------------------------------------------------------
+Sun Feb 24 01:52:06 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Fix bootstrap conditionals
+- Fix bundled_llvm conditionals
+- Don't build stage0 if compiler used to build package is the
+  same version as package
+
+-------------------------------------------------------------------
+Sat Feb 23 01:58:47 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Ensure install environment is the same as build environment to
+  prevent building everything twice (second time without correct
+  flags).
+
+-------------------------------------------------------------------
+Tue Jan 22 18:19:47 UTC 2019 - federico@suse.com
+
+- Remove
+  CVE-2018-1000622-prevent-rustdoc-loads-uncontrolled-plugins-path.patch,
+  since rustdoc plugins are fixed since version 1.27.1 (bsc#1100691,
+  CVE-2018-1000622).
+
+-------------------------------------------------------------------
+Thu Jan 17 21:22:11 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.32.0
+- Language
+  + 2018 edition
+    - You can now use the `?` operator in macro definitions. The `?`
+      operator allows you to specify zero or one repetitions similar to the `*` and
+      `+` operators.
+    - Module paths with no leading keyword like `super`, `self`, or `crate`, will
+      now always resolve to the item (`enum`, `struct`, etc.) available in the
+      module if present, before resolving to a external crate or an item the prelude.
+      E.g.
+      enum Color { Red, Green, Blue }
+      use Color::*;
+  + All editions
+    - You can now match against `PhantomData<T>` types.
+    - You can now match against literals in macros with the `literal`
+      specifier. This will match against a literal of any type.
+      E.g. `1`, `'A'`, `"Hello World"`
+    - Self can now be used as a constructor and pattern for unit and tuple structs. E.g.
+      struct Point(i32, i32);
+
+      impl Point {
+	  pub fn new(x: i32, y: i32) -> Self {
+	      Self(x, y)
+	  }
+
+	  pub fn is_origin(&self) -> bool {
+	      match self {
+		  Self(0, 0) => true,
+		  _ => false,
+	      }
+	  }
+      }
+    - Self can also now be used in type definitions. E.g.
+      enum List<T>
+      where
+	  Self: PartialOrd<Self> // can write `Self` instead of `List<T>`
+      {
+	  Nil,
+	  Cons(T, Box<Self>) // likewise here
+      }
+    - You can now mark traits with `#[must_use]`. This provides a warning if
+      a `impl Trait` or `dyn Trait` is returned and unused in the program.
+- Compiler
+  + The default allocator has changed from jemalloc to the default allocator on
+    your system. The compiler itself on Linux & macOS will still use
+    jemalloc, but programs compiled with it will use the system allocator.
+  + Added the `aarch64-pc-windows-msvc` target.
+- Libraries
+  + `PathBuf` now implements `FromStr`.
+  - `Box<[T]>` now implements `FromIterator<T>`.
+  - The `dbg!` macro has been stabilized. This macro enables you to
+    easily debug expressions in your rust program. E.g.
+    let a = 2;
+    let b = dbg!(a * 2) + 1;
+    //      ^-- prints: [src/main.rs:4] a * 2 = 4
+    assert_eq!(b, 5);
+  + The following APIs are now `const` functions and can be used in a
+    `const` context.
+    - `Cell::as_ptr`
+    - `UnsafeCell::get`
+    - `char::is_ascii`
+    - `iter::empty`
+    - `ManuallyDrop::new`
+    - `ManuallyDrop::into_inner`
+    - `RangeInclusive::start`
+    - `RangeInclusive::end`
+    - `NonNull::as_ptr`
+    - `slice::as_ptr`
+    - `str::as_ptr`
+    - `Duration::as_secs`
+    - `Duration::subsec_millis`
+    - `Duration::subsec_micros`
+    - `Duration::subsec_nanos`
+    - `CStr::as_ptr`
+    - `Ipv4Addr::is_unspecified`
+    - `Ipv6Addr::new`
+    - `Ipv6Addr::octets`
+- Stabilized APIs
+  + `i8::to_be_bytes`
+  + `i8::to_le_bytes`
+  + `i8::to_ne_bytes`
+  + `i8::from_be_bytes`
+  + `i8::from_le_bytes`
+  + `i8::from_ne_bytes`
+  + `i16::to_be_bytes`
+  + `i16::to_le_bytes`
+  + `i16::to_ne_bytes`
+  + `i16::from_be_bytes`
+  + `i16::from_le_bytes`
+  + `i16::from_ne_bytes`
+  + `i32::to_be_bytes`
+  + `i32::to_le_bytes`
+  + `i32::to_ne_bytes`
+  + `i32::from_be_bytes`
+  + `i32::from_le_bytes`
+  + `i32::from_ne_bytes`
+  + `i64::to_be_bytes`
+  + `i64::to_le_bytes`
+  + `i64::to_ne_bytes`
+  + `i64::from_be_bytes`
+  + `i64::from_le_bytes`
+  + `i64::from_ne_bytes`
+  + `i128::to_be_bytes`
+  + `i128::to_le_bytes`
+  + `i128::to_ne_bytes`
+  + `i128::from_be_bytes`
+  + `i128::from_le_bytes`
+  + `i128::from_ne_bytes`
+  + `isize::to_be_bytes`
+  + `isize::to_le_bytes`
+  + `isize::to_ne_bytes`
+  + `isize::from_be_bytes`
+  + `isize::from_le_bytes`
+  + `isize::from_ne_bytes`
+  + `u8::to_be_bytes`
+  + `u8::to_le_bytes`
+  + `u8::to_ne_bytes`
+  + `u8::from_be_bytes`
+  + `u8::from_le_bytes`
+  + `u8::from_ne_bytes`
+  + `u16::to_be_bytes`
+  + `u16::to_le_bytes`
+  + `u16::to_ne_bytes`
+  + `u16::from_be_bytes`
+  + `u16::from_le_bytes`
+  + `u16::from_ne_bytes`
+  + `u32::to_be_bytes`
+  + `u32::to_le_bytes`
+  + `u32::to_ne_bytes`
+  + `u32::from_be_bytes`
+  + `u32::from_le_bytes`
+  + `u32::from_ne_bytes`
+  + `u64::to_be_bytes`
+  + `u64::to_le_bytes`
+  + `u64::to_ne_bytes`
+  + `u64::from_be_bytes`
+  + `u64::from_le_bytes`
+  + `u64::from_ne_bytes`
+  + `u128::to_be_bytes`
+  + `u128::to_le_bytes`
+  + `u128::to_ne_bytes`
+  + `u128::from_be_bytes`
+  + `u128::from_le_bytes`
+  + `u128::from_ne_bytes`
+  + `usize::to_be_bytes`
+  + `usize::to_le_bytes`
+  + `usize::to_ne_bytes`
+  + `usize::from_be_bytes`
+  + `usize::from_le_bytes`
+  + `usize::from_ne_bytes`
+- Cargo
+  + You can now run `cargo c` as an alias for `cargo check`.][cargo/6218]
+  + Usernames are now allowed in alt registry URLs.][cargo/6242]
+- Misc
+  + `libproc_macro` has been added to the `rust-src` distribution.
+- Compatibility Notes
+  + The argument types for AVX's
+  `_mm256_stream_si256`, `_mm256_stream_pd`, `_mm256_stream_ps` have
+  been changed from `*const` to `*mut` as the previous implementation
+  was unsound.
+
+-------------------------------------------------------------------
+Sat Jan  5 10:51:54 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.31.1
+  + Fix Rust failing to build on `powerpc-unknown-netbsd`
+  + Fix broken go-to-definition in RLS
+  + Fix infinite loop on hover in RLS
+
+-------------------------------------------------------------------
+Thu Dec  6 22:31:16 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Update to version 1.31.0
+  + Language
+    - This version marks the release of the 2018 edition of Rust.
+    - New lifetime elision rules now allow for eliding lifetimes in functions and
+  impl headers. E.g. `impl<'a> Reader for BufReader<'a> {}` can now be
+  `impl Reader for BufReader<'_> {}`. Lifetimes are still required to be defined
+  in structs.
+    - You can now define and use `const` functions. These are currently
+  a strict minimal subset of the const fn RFC. Refer to the
+  [language reference][const-reference] for what exactly is available.
+    - You can now use tool lints, which allow you to scope lints from external
+  tools using attributes. E.g. `#[allow(clippy::filter_map)]`.
+    - `#[no_mangle]` and `#[export_name]` attributes can now be located anywhere in
+  a crate, not just in exported functions.
+    - You can now use parentheses in pattern matches.
+  + Compiler
+    - Updated musl to 1.1.20
+  + Libraries
+    - You can now convert `num::NonZero*` types to their raw equivalvents using the
+  `From` trait. E.g. `u8` now implements `From<NonZeroU8>`.
+    - You can now convert a `&Option<T>` into `Option<&T>` and `&mut Option<T>`
+  into `Option<&mut T>` using the `From` trait.
+    - You can now multiply (`*`) a `time::Duration` by a `u32`.
+  + Stabilized APIs
+    - `slice::align_to`
+    - `slice::align_to_mut`
+    - `slice::chunks_exact`
+    - `slice::chunks_exact_mut`
+    - `slice::rchunks`
+    - `slice::rchunks_mut`
+    - `slice::rchunks_exact`
+    - `slice::rchunks_exact_mut`
+    - `Option::replace`
+  + Cargo
+    - Cargo will now download crates in parallel using HTTP/2.
+    - You can now rename packages in your Cargo.toml We have a guide
+  on how to use the `package` key in your dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 13 22:56:17 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Add additional Requires to rls:
+  + Requires rust-src
+  + Requires rust-analysis
+- Add additional Requires to rustfmt:
+  + Requires cargo
+- Fix rust-src requiring /usr/bin/bash; a script was incorrectly
+  edited at build time.
+
+-------------------------------------------------------------------
+Sun Nov 11 19:43:09 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Set the bootstrap flag in the spec file temporarily so that rings
+  will build rust without intervention. Must be reverted once all
+  releases are successful.
+
+-------------------------------------------------------------------
+Fri Nov  9 06:42:47 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Add Provides/Obsoletes/Conflicts to rust-std-static and cargo
+
+-------------------------------------------------------------------
+Thu Nov  8 01:17:22 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Strengthen the dependency on rust-std-static to Requires
+  to fix crate package builds in OBS
+- Use standard form rich dependencies for SUSE Linux 15 and newer
+
+-------------------------------------------------------------------
+Tue Nov  6 12:32:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix second-person language and spellos.
+
+-------------------------------------------------------------------
+Sun Nov  4 22:12:42 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Add ignore-Wstring-conversion.patch: we require patching of
+  src/librustc_llvm/build.rs to ignore a flag that
+  llvm-config --cxxflags outputs which GCC doesn't recognise.
+- Default to building using the distro LLVM where the version is
+  >= 5.0, instead of the Rust bundled LLVM which requires
+  compilation. This should decrease build times. SLE LLVM is too old.
+
+-------------------------------------------------------------------
+Sat Nov  3 23:03:53 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Fixing various rpmlint warnings and errors:
+  + ExclusiveArch instead of BuildArch for i686
+  + Remove conflicts with same package name
+  + Remove a few hidden files during prep, does not touch '.clang-format'
+  + Remove old patch macro in comment
+  + Fix lint warning about bash and zsh completition files
+  + Fix various script shebang warnings (incorrect or missing)
+  + Adjust rpmlintrc to mask some 'invalid' warnings
+- Move Rust and its tools in to their own category under:
+  + Development/Languages/Rust
+
+-------------------------------------------------------------------
+Sat Nov  3 07:12:01 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Jump from version 1.26.2 to 1.30.0 due to a build issue with using 1.26.x to
+  compile 1.27.x. This package release requires %{rust_bootstrap} to be set.
+- Enable extra rust tools to be built (cargo, rls, rustfmt, analysis)
+    + cargo is now packaged with the same version number as the rust release, this
+      may break any packages that relied on a cargo version number.
+- Remove ccache and ninja from BuildRequires.
+- Switch build configuration to use configure script, remove config.toml.
+- Include all bootstraps in source rpm to make bootstrapping easier to manage
+  within OBS.
+- Remove unused patch: update-config-guess.patch
+Update to version 1.30.0 (2018-10-25)
+  + Language
+    - Procedural macros are now available.-  These kinds of macros allow for
+      more powerful code generation. There is a new chapter available
+      in the Rust Programming Language book that goes further in depth.
+    - You can now use keywords as identifiers using the raw identifiers
+      syntax (`r#`),-  e.g. `let r#for = true;`
+    - Using anonymous parameters in traits is now deprecated with a warning and
+      will be a hard error in the 2018 edition.-
+    - You can now use `crate` in paths.-  This allows you to refer to the
+      crate root in the path, e.g. `use crate::foo;` refers to `foo` in `src/lib.rs`.
+    - Using a external crate no longer requires being prefixed with `::`.-
+      Previously, using a external crate in a module without a use statement
+      required `let json = ::serde_json::from_str(foo);` but can now be written
+      as `let json = serde_json::from_str(foo);`.
+    - You can now apply the `#[used]` attribute to static items to prevent the
+      compiler from optimising them away, even if they appear to be unused,-
+      e.g. `#[used] static FOO: u32 = 1;`
+    - You can now import and reexport macros from other crates with the `use`
+      syntax.-  Macros exported with `#[macro_export]` are now placed into
+      the root module of the crate. If your macro relies on calling other local
+      macros, it is recommended to export with the
+      `#[macro_export(local_inner_macros)]` attribute so users won't have to import
+      those macros.
+    - You can now catch visibility keywords (e.g. `pub`, `pub(crate)`) in macros
+      using the `vis` specifier.-
+    - Non-macro attributes now allow all forms of literals, not just
+      strings.-  Previously, you would write `#[attr("true")]`, and you can now
+      write `#[attr(true)]`.
+    - You can now specify a function to handle a panic in the Rust runtime with the
+      `#[panic_handler]` attribute.-
+  + Compiler
+    - Added the `riscv32imc-unknown-none-elf` target.-
+    - Added the `aarch64-unknown-netbsd` target-
+  + Libraries
+    - `ManuallyDrop` now allows the inner type to be unsized.-
+  + Stabilized APIs
+    - `Ipv4Addr::BROADCAST`
+    - `Ipv4Addr::LOCALHOST`
+    - `Ipv4Addr::UNSPECIFIED`
+    - `Ipv6Addr::LOCALHOST`
+    - `Ipv6Addr::UNSPECIFIED`
+    - `Iterator::find_map`
+    - The following methods are replacement methods for `trim_left`, `trim_right`,
+      `trim_left_matches`, and `trim_right_matches`, which will be deprecated
+      in 1.33.0:
+      + `str::trim_end_matches`
+      + `str::trim_end`
+      + `str::trim_start_matches`
+      + `str::trim_start`
+  + Cargo
+    - `cargo run` doesn't require specifying a package in workspaces.][cargo/5877]
+    - `cargo doc` now supports `--message-format=json`.][cargo/5878] This is
+      equivalent to calling `rustdoc --error-format=json`.
+    - Cargo will now provide a progress bar for builds.][cargo/5995]
+  + Misc
+    - `rustdoc` allows you to specify what edition to treat your code as with the
+      `--edition` option.-
+    - `rustdoc` now has the `--color` (specify whether to output color) and
+      `--error-format` (specify error format, e.g. `json`) options.-
+    - We now distribute a `rust-gdbgui` script that invokes `gdbgui` with Rust
+      debug symbols.-
+    - Attributes from Rust tools such as `rustfmt` or `clippy` are now
+      available,-  e.g. `#[rustfmt::skip]` will skip formatting the next item.
+- Update to version 1.29.2 (2018-10-11)
+  + Workaround for an aliasing-related LLVM bug, which caused miscompilation.
+  + The `rls-preview` component on the windows-gnu targets has been restored.
+- Update to version 1.29.1 (2018-09-25)
+  + Security Notes
+    - The standard library's `str::repeat` function contained an out of bounds write
+      caused by an integer overflow. This has been fixed by deterministically
+      panicking when an overflow happens.
+- Update to version 1.29.0 (2018-09-13)
+  + Compiler
+    - Bumped minimum LLVM version to 5.0.
+    - Added `powerpc64le-unknown-linux-musl` target.
+    - Added `aarch64-unknown-hermit` and `x86_64-unknown-hermit` targets.
+  + Libraries
+    - `Once::call_once` no longer requires `Once` to be `'static`.
+    - `BuildHasherDefault` now implements `PartialEq` and `Eq`.
+    - `Box<CStr>`, `Box<OsStr>`, and `Box<Path>` now implement `Clone`.
+    - Implemented `PartialEq<&str>` for `OsString` and `PartialEq<OsString>`
+      for `&str`.
+    - `Cell<T>` now allows `T` to be unsized.
+    - `SocketAddr` is now stable on Redox.
+  + Stabilized APIs
+    - `Arc::downcast`
+    - `Iterator::flatten`
+    - `Rc::downcast`
+  + Cargo
+    - Cargo can silently fix some bad lockfiles.][cargo/5831] You can use
+      `--locked` to disable this behavior.
+    - `cargo-install` will now allow you to cross compile an install
+      using `--target`.][cargo/5614]
+    - Added the `cargo-fix` subcommand to automatically move project code from
+      2015 edition to 2018.][cargo/5723]
+    - `cargo doc` can now optionally document private types using the
+      `--document-private-items` flag.][cargo/5543]
+  + Misc
+    - `rustdoc` now has the `--cap-lints` option which demotes all lints above
+      the specified level to that level. For example `--cap-lints warn`
+      will demote `deny` and `forbid` lints to `warn`.
+    - `rustc` and `rustdoc` will now have the exit code of `1` if compilation
+      fails and `101` if there is a panic.
+    - A preview of clippy has been made available through rustup.
+      You can install the preview with `rustup component add clippy-preview`.
+  + Compatibility Notes
+    - `str::{slice_unchecked, slice_unchecked_mut}` are now deprecated.
+      Use `str::get_unchecked(begin..end)` instead.
+    - `std::env::home_dir` is now deprecated for its unintuitive behavior.
+      Consider using the `home_dir` function from
+      https://crates.io/crates/dirs instead.
+    - `rustc` will no longer silently ignore invalid data in target spec.
+    - `cfg` attributes and `--cfg` command line flags are now more
+      strictly validated.
+- Update to version 1.28.0
+  + Language
+    - The `#[repr(transparent)]` attribute is now stable.-  This attribute
+      allows a Rust newtype wrapper (`struct NewType<T>(T);`) to be represented as
+      the inner type across Foreign Function Interface (FFI) boundaries.
+    - The keywords `pure`, `sizeof`, `alignof`, and `offsetof` have been unreserved
+      and can now be used as identifiers.-
+    - The `GlobalAlloc` trait and `#[global_allocator]` attribute are now
+      stable.-  This will allow users to specify a global allocator for
+      their program.
+    - Unit test functions marked with the `#[test]` attribute can now return
+      `Result<(), E: Debug>` in addition to `()`.-
+    - The `lifetime` specifier for `macro_rules!` is now stable.-  This
+      allows macros to easily target lifetimes.
+  + Compiler
+    - The `s` and `z` optimisation levels are now stable.-  These optimisations
+      prioritise making smaller binary sizes. `z` is the same as `s` with the
+      exception that it does not vectorise loops, which typically results in an even
+      smaller binary.
+    - The short error format is now stable.-  Specified with
+      `--error-format=short` this option will provide a more compressed output of
+      rust error messages.
+    - Added a lint warning when you have duplicated `macro_export`s.-
+    - Reduced the number of allocations in the macro parser.-  This can
+      improve compile times of macro heavy crates on average by 5%.
+  + Libraries
+    - Implemented `Default` for `&mut str`.-
+    - Implemented `From<bool>` for all integer and unsigned number types.-
+    - Implemented `Extend` for `()`.-
+    - The `Debug` implementation of `time::Duration` should now be more easily
+      human readable.-  Previously a `Duration` of one second would printed as
+      `Duration { secs: 1, nanos: 0 }` and will now be printed as `1s`.
+    - Implemented `From<&String>` for `Cow<str>`, `From<&Vec<T>>` for `Cow<[T]>`,
+      `From<Cow<CStr>>` for `CString`, `From<CString>, From<CStr>, From<&CString>`
+      for `Cow<CStr>`, `From<OsString>, From<OsStr>, From<&OsString>` for
+      `Cow<OsStr>`, `From<&PathBuf>` for `Cow<Path>`, and `From<Cow<Path>>`
+      for `PathBuf`.-
+    - Implemented `Shl` and `Shr` for `Wrapping<u128>`
+      and `Wrapping<i128>`.-
+    - `DirEntry::metadata` now uses `fstatat` instead of `lstat` when
+      possible.-  This can provide up to a 40% speed increase.
+    - Improved error messages when using `format!`.-
+  + Stabilized APIs
+    - `Iterator::step_by`
+    - `Path::ancestors`
+    - `SystemTime::UNIX_EPOCH`
+    - `alloc::GlobalAlloc`
+    - `alloc::Layout`
+    - `alloc::LayoutErr`
+    - `alloc::System`
+    - `alloc::alloc`
+    - `alloc::alloc_zeroed`
+    - `alloc::dealloc`
+    - `alloc::realloc`
+    - `alloc::handle_alloc_error`
+    - `btree_map::Entry::or_default`
+    - `fmt::Alignment`
+    - `hash_map::Entry::or_default`
+    - `iter::repeat_with`
+    - `num::NonZeroUsize`
+    - `num::NonZeroU128`
+    - `num::NonZeroU16`
+    - `num::NonZeroU32`
+    - `num::NonZeroU64`
+    - `num::NonZeroU8`
+    - `ops::RangeBounds`
+    - `slice::SliceIndex`
+    - `slice::from_mut`
+    - `slice::from_ref`
+    - `{Any + Send + Sync}::downcast_mut`
+    - `{Any + Send + Sync}::downcast_ref`
+    - `{Any + Send + Sync}::is`
+  + Cargo
+    - Cargo will now no longer allow you to publish crates with build scripts that
+      modify the `src` directory.][cargo/5584] The `src` directory in a crate should be
+      considered to be immutable.
+  + Misc
+    - The `suggestion_applicability` field in `rustc`'s json output is now
+      stable.-  This will allow dev tools to check whether a code suggestion
+      would apply to them.
+  + Compatibility Notes
+    - Rust will consider trait objects with duplicated constraints to be the same
+      type as without the duplicated constraint.-  For example the below code will
+      now fail to compile.
+      ```rust
+      trait Trait {}
+
+      impl Trait + Send {
+	  fn test(&self) { println!("one"); } //~ ERROR duplicate definitions with name `test`
+      }
+
+      impl Trait + Send + Send {
+	  fn test(&self) { println!("two"); }
+      }
+- Update to version 1.27.2:
+  + Compatibility Notes
+    - The borrow checker was fixed to avoid an additional potential unsoundness when using
+      match ergonomics
+- Update to version 1.27.1:
+  + Security Notes
+    - rustdoc would execute plugins in the /tmp/rustdoc/plugins directory
+      when running, which enabled executing code as some other user on a
+      given machine. This release fixes that vulnerability; you can read
+      more about this on the blog. The associated CVE is [CVE-2018-1000622].
+      Thank you to Red Hat for responsibily disclosing this vulnerability to us.
+  + Compatibility Notes
+    - The borrow checker was fixed to avoid an additional potential unsoundness when using
+      match ergonomics
+- Update to version 1.27.0:
+  + Language
+    - Removed 'proc' from the reserved keywords list. This allows `proc` to
+      be used as an identifier.
+    - The dyn syntax is now available. This syntax is equivalent to the
+      bare `Trait` syntax, and should make it clearer when being used in tandem with
+      `impl Trait` because it is equivalent to the following syntax:
+      `&Trait == &dyn Trait`, `&mut Trait == &mut dyn Trait`, and
+      `Box<Trait> == Box<dyn Trait>`.
+    - Attributes on generic parameters such as types and lifetimes are
+      now stable. e.g.
+      `fn foo<#[lifetime_attr] 'a, #[type_attr] T: 'a>() {}`
+    - The `#[must_use]` attribute can now also be used on functions as well as
+      types. It provides a lint that by default warns users when the
+      value returned by a function has not been used.
+  + Compiler
+    - Added the `armvte-unknown-linux-musleabi` target.
+  + Libraries
+    - SIMD (Single Instruction Multiple Data) on x/x_ is now stable.
+      This includes arch::x & arch::x_ modules which contain
+      SIMD intrinsics, a new macro called `is_x_feature_detected!`, the
+      `#[target_feature(enable="")]` attribute, and adding `target_feature = ""` to
+      the `cfg` attribute.
+    - A lot of methods for `[u]`, `f`, and `f` previously only available in
+      std are now available in core.
+    - The generic `Rhs` type parameter on `ops::{Shl, ShlAssign, Shr}` now defaults
+      to `Self`.
+    - std::str::replace` now has the `#[must_use]` attribute to clarify
+      that the operation isn't done in place.
+    - Clone::clone`, `Iterator::collect`, and `ToOwned::to_owned` now have
+      the `#[must_use]` attribute] to warn about unused potentially
+      expensive allocations.
+  + Stabilized APIs
+    - DoubleEndedIterator::rfind
+    - DoubleEndedIterator::rfold
+    - DoubleEndedIterator::try_rfold
+    - Duration::from_micros
+    - Duration::from_nanos
+    - Duration::subsec_micros
+    - Duration::subsec_millis
+    - HashMap::remove_entry
+    - Iterator::try_fold
+    - Iterator::try_for_each
+    - NonNull::cast
+    - Option::filter
+    - String::replace_range
+    - Take::set_limit
+    - hint::unreachable_unchecked
+    - os::unix::process::parent_id
+    - ptr::swap_nonoverlapping
+    - slice::rsplit_mut
+    - slice::rsplit
+    - slice::swap_with_slice
+  + Cargo
+    - `cargo-metadata` now includes `authors`, `categories`, `keywords`,
+      `readme`, and `repository` fields.
+    - `cargo-metadata` now includes a package's `metadata` table.
+    - Added the `--target-dir` optional argument. This allows you to specify
+      a different directory than `target` for placing compilation artifacts.
+    - Cargo will be adding automatic target inference for binaries, benchmarks,
+      examples, and tests in the Rust 2018 edition. If your project specifies
+      specific targets, e.g. using `[[bin]]`, and have other binaries in locations
+      where cargo would infer a binary, Cargo will produce a warning. You can
+      disable this feature ahead of time by setting any of the following to false:
+      `autobins`, `autobenches`, `autoexamples`, `autotests`.
+    - Cargo will now cache compiler information. This can be disabled by
+      setting `CARGO_CACHE_RUSTC_INFO=0` in your environment.
+  + Compatibility Notes
+    - Calling a `CharExt` or `StrExt` method directly on core will no longer
+      work. e.g. `::core::prelude::v1::StrExt::is_empty("")` will not
+      compile, `"".is_empty()` will still compile.
+    - `Debug` output on `atomic::{AtomicBool, AtomicIsize, AtomicPtr, AtomicUsize}`
+      will only print the inner type. E.g.
+      `print!("{:?}", AtomicBool::new(true))` will print `true`,
+      not `AtomicBool(true)`.
+    - The maximum number for `repr(align(N))` is now 2²⁹. Previously you
+      could enter higher numbers but they were not supported by LLVM. Up to 512MB
+      alignment should cover all use cases.
+    - The `.description()` method on the `std::error::Error` trait
+      has been soft-deprecated. It is no longer required to implement it.
+  + Misc
+    - Added “The Rustc book” into the official documentation.
+
+-------------------------------------------------------------------
+Thu Oct 11 10:00:22 UTC 2018 - qkzhu@suse.com
+
+- Add CVE-2018-1000622-prevent-rustdoc-loads-uncontrolled-plugins-path.patch:
+  + This patch consists of requiring `--plugin-path` to be passed
+    whenever `--plugin` is passed
+  + rustdoc plugins will be removed entirely on 1.28.0, we should
+    drop this patch after 1.28.0(bsc#1100691, CVE-2018-1000622).
+
+-------------------------------------------------------------------
+Thu Aug  9 10:18:06 UTC 2018 - mschnitzer@suse.com
+
+- Ship rust-std on SLE-15 (bsc#1096945)
+
+  No new changes came with this update of rust.
+
+-------------------------------------------------------------------
+Wed Jun  6 10:37:27 UTC 2018 - mmanu84@outlook.de
+
+- Update to version 1.26.2:
+  + Compatibility Notes
+    - The borrow checker was fixed to avoid unsoundness when using match ergonomics
+- Update to version 1.26.1:
+  + Tools
+    - RLS now works on Windows
+    - Rustfmt stopped badly formatting text in some cases
+  + Compatibility Notes
+    - `fn main() -> impl Trait` no longer works for non-Termination trait
+      This reverts an accidental stabilization
+    - `NaN > NaN` no longer returns true in const-fn contexts
+    - Prohibit using turbofish for `impl Trait` in method arguments
+
+-------------------------------------------------------------------
+Sat May 12 00:31:05 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.26.0:
+  + Language:
+    - Closures now implement `Copy` and/or `Clone` if all captured
+      variables implement either or both traits.
+    - The inclusive range syntax is now stable.
+    - Stablise `'_`. The underscore lifetime can be used anywhere
+      where a lifetime can be elided.
+    - `impl Trait` is now stable allowing you to have abstract
+      types in returns or in function parameters.
+    - Pattern matching will now automatically apply dereferences.
+    - 128-bit integers in the form of `u128` and `i128` are now
+      stable.
+    - `main` can now return `Result<(), E: Debug>` in addition to
+      `()`.
+    - A lot of operations are now available in a const context.
+    - Fixed entry slice patterns are now stable. e.g.
+  + Compiler:
+    - LLD is now used as the default linker for `wasm32-unknown-\
+      unknown`.
+    - Fixed exponential projection complexity on nested types.
+      This can provide up to a ~12% reduction in compile times for
+      certain crates.
+    - Added the `--remap-path-prefix` option to rustc. Allowing you
+      to remap path prefixes outputted by the compiler.
+  + Libraries:
+    - Implemented `From<u16> for usize & From<{u8, i16}> for
+      isize`.
+    - Added hexadecimal formatting for integers with fmt::Debug.
+    - Implemented `Default, Hash` for `cmp::Reverse`.
+    - Optimized `str::repeat` being 8x faster in large cases.
+    - `ascii::escape_default` is now available in libcore.
+    - Trailing commas are now supported in std and core macros.
+    - Implemented `Copy, Clone` for `cmp::Reverse`.
+    - Implemented `Clone` for `char::{ToLowercase, ToUppercase}`.
+  + Stabilized APIs: *const T::add,
+    *const T::copy_to_nonoverlapping, *const T::copy_to,
+    *const T::read_unaligned, *const T::read_volatile,
+    *const T::read, *const T::sub, *const T::wrapping_add,
+    *const T::wrapping_sub, *mut T::add, *mut T::copy_to,
+    *mut T::copy_to_nonoverlapping, *mut T::read_unaligned,
+    *mut T::read_volatile, *mut T::read, mut T::replace,
+    *mut T::sub, *mut T::swap, *mut T::wrapping_add,
+    *mut T::wrapping_sub, *mut T::write_bytes,
+    *mut T::write_unaligned, *mut T::write_volatile,
+    *mut T::write, Box::leak, FromUtf8Error::as_bytes,
+    LocalKey::try_with, Option::cloned, iter::FusedIterator,
+    btree_map::Entry::and_modify, s::read_to_string, fs::read,
+    fs::write, hash_map::Entry::and_modify, String::retain,
+    ops::RangeInclusive, ops::RangeToInclusive, process::id,
+    slice::rotate_left, slice::rotate_right.
+  + Compatibility Notes:
+    - Aliasing a `Fn` trait as `dyn` no longer works.
+    - The result of dereferences are no longer promoted to
+      `'static`.
+    - Deprecate `AsciiExt` trait in favor of inherent methods.
+    - `".e0"` will now no longer parse as `0.0` and will instead
+      cause an error.
+    - Removed hoedown from rustdoc.
+    - Bounds on higher-kinded lifetimes a hard error.
+- Update cargo_version to 0.26.0.
+
+-------------------------------------------------------------------
+Thu May  3 08:05:33 UTC 2018 - mmanu84@outlook.de
+
+- Patch disabled
+  * update-config-guess.patch
+- Update to 1.25.0
+- Language changes:
+  + Stabilised `#[repr(align(x))]`.[47006] [RFC 1358]
+  + You can now use nested groups of imports.[47948]
+    e.g. `use std::{fs::File, io::Read, path::{Path, PathBuf}};`
+  + You can now have `|` at the start of a match arm.[47947] e.g.
+- Compiler changes:
+  + Upgraded to LLVM 6.[47828]
+  + Added `-C lto=val` option.[47521]
+  + Added `i586-unknown-linux-musl` target[47282]
+- Library changes:
+  + Impl Send for `process::Command` on Unix.[47760]
+  + Impl PartialEq and Eq for `ParseCharError`.[47790]
+  + `UnsafeCell::into_inner` is now safe.[47204]
+  + Implement libstd for CloudABI.[47268]
+  + `Float::{from_bits, to_bits}` is now available in libcore.[46931]
+  + Implement `AsRef<Path>` for Component[46985]
+  + Implemented `Write` for `Cursor<&mut Vec<u8>>`[46830]
+  + Moved `Duration` to libcore.[46666]
+- Stabilized APIs
+  + `Location::column`
+  + `ptr::NonNull`
+- Misc
+  + Rust by example is now shipped with new releases[46196]
+- Compatibility Notes:
+  + Deprecated `net::lookup_host`.[47510]
+  + `rustdoc` has switched to pulldown as the default markdown renderer.[47398]
+  + The borrow checker was sometimes incorrectly permitting overlapping borrows
+    around indexing operations (see [#47349][47349]). This has been fixed (which also
+    enabled some correct code that used to cause errors (e.g. [#33903][33903] and [#46095][46095]).
+  + Removed deprecated unstable attribute `#[simd]`.[47251]
+
+-------------------------------------------------------------------
+Thu Mar 22 13:54:53 UTC 2018 - mmanu84@outlook.de
+
+- Update to 1.24.1
+  + Do not abort when unwinding through FFI
+  + Make the error index generator work again
+- Update Cargo to v0.25.0
+
+-------------------------------------------------------------------
+Sat Feb 24 19:26:15 UTC 2018 - mmanu84@outlook.de
+
+- Update to 1.24.0
+- Language changes:
+  + External `sysv64` ffi is now available.
+    eg. `extern "sysv64" fn foo () {}`
+- Compiler changes:
+  + rustc now uses 16 codegen units by default for release builds.
+    For the fastest builds, utilize `codegen-units=1`.
+- Libraries:
+  + `str::find::<char>` now uses memchr. This should lead to a 10x
+    improvement in performance in the majority of cases.
+  + `time::{SystemTime, Instant}` now implement `Hash`.
+  + impl `From<bool>` for `AtomicBool`
+  + impl `From<{CString, &CStr}>` for `{Arc<CStr>, Rc<CStr>}`
+  + impl `From<{OsString, &OsStr}>` for `{Arc<OsStr>, Rc<OsStr>}`
+  + impl `From<{PathBuf, &Path}>` for `{Arc<Path>, Rc<Path>}`
+  + float::from_bits now just uses transmute. This provides some
+    optimisations from LLVM.
+  + Copied `AsciiExt` methods onto `char`
+  + Remove `T: Sized` requirement on `ptr::is_null()`
+  + impl `From<RecvError>` for `{TryRecvError, RecvTimeoutError}`
+  + Optimised `f32::{min, max}` to generate more efficient x86
+    assembly
+  + `[u8]::contains` now uses memchr which provides a 3x speed
+    improvement
+- Compatibility Notes:
+  + Floating point types `Debug` impl now always prints a decimal
+    point.
+  + `Ipv6Addr` now rejects superfluous `::`'s in IPv6 addresses
+    This is in accordance with IETF RFC 4291 §2.2.
+  + Unwinding will no longer go past FFI boundaries, and will
+    instead abort.
+  + `Formatter::flags` method is now deprecated. The `sign_plus`,
+    `sign_minus`, `alternate`, and `sign_aware_zero_pad` should be
+     used instead.
+  + Leading zeros in tuple struct members is now an error
+  + `column!()` macro is one-based instead of zero-based
+  + `fmt::Arguments` can no longer be shared across threads
+  + Access to `#[repr(packed)]` struct fields is now unsafe
+  + Cargo sets a different working directory for the compiler
+
+-------------------------------------------------------------------
+Mon Feb 19 06:26:41 UTC 2018 - coolo@suse.com
+
+- add update-config-guess.patch to update config.* from GNU to
+  support riscv64 without rpm patching it - as the patch also
+  updates the checksums while rpm does not
+
+-------------------------------------------------------------------
+Tue Jan 23 09:18:27 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Use python3 to run the install/build script as python2 is being
+  phased out
+- State exclusivearch for all of ix86 and then specify we build as
+  i686 which is bit more obvious
+
+-------------------------------------------------------------------
+Mon Jan 22 11:21:42 UTC 2018 - mmanu84@outlook.de
+
+- Update Cargo to v0.24.0
+
+-------------------------------------------------------------------
+Mon Jan 22 07:01:51 UTC 2018 - jones_ld@protonmail.com
+
+- Add "Requires: %{name} to derived packages to fix derived
+  packages not being updated with rust (boo#1075883)
+
+-------------------------------------------------------------------
+Thu Jan  4 21:20:36 UTC 2018 - jones_ld@protonmail.com
+
+- Update to 1.23.0
+- Language changes:
+  + Arbitrary `auto` traits are now permitted in trait objects.[45772]
+  + rustc now uses subtyping on the left hand side of binary operations.[45435]
+    Which should fix some confusing errors in some operations.
+- Compiler changes:
+  + Enabled `TrapUnreachable` in LLVM which should mitigate the impact of
+    undefined behaviour.[45920]
+  + rustc now suggests renaming import if names clash.[45660]
+  + Display errors/warnings correctly when there are zero-width or
+    wide characters.[45711]
+  + rustc now avoids unnecessary copies of arguments that are
+    simple bindings[45380] This should improve memory usage on average by 5-10%.
+  + Updated musl used to build musl rustc to 1.1.17[45393]
+- Library changes:
+  + Allow a trailing comma in `assert_eq/ne` macro[45887]
+  + Implement Hash for raw pointers to unsized types[45483]
+  + impl `From<*mut T>` for `AtomicPtr<T>`[45610]
+  + impl `From<usize/isize>` for `AtomicUsize/AtomicIsize`.[45610]
+  + Removed the `T: Sync` requirement for `RwLock<T>: Send`[45267]
+  + Removed `T: Sized` requirement for `{<*const T>, <*mut T>}::as_ref`
+    an `<*mut T>::as_mut`[44932]
+  + Optimized `Thread::{park, unpark}` implementation[45524]
+  + Improved `SliceExt::binary_search` performance.[45333]
+  + impl `FromIterator<()>` for `()`[45379]
+  + Copied `AsciiExt` trait methods to primitive types.[44042] Use of `AsciiExt`
+    is now deprecated.
+- Misc changes:
+  + Releases now ship with the Cargo book documentation.[45692]
+  + rustdoc now prints rendering warnings on every run.[45324]
+  + Release tarballs now come with rustfmt[45903]
+- Compatibility Notes:
+  + Changes have been made to type equality to make it more correct,
+    in rare cases this could break some code.[45853] [Tracking issue for
+    further information[45852]
+  + `char::escape_debug` now uses Unicode 10 over 9.[45571]
+  + Upgraded Android SDK to 27, and NDK to r15c.[45580] This drops support for
+    Android 9, the minimum supported version is Android 14.
+  + Bumped the minimum LLVM to 3.9[45326]
+
+-------------------------------------------------------------------
+Sat Nov 25 09:54:46 UTC 2017 - mmanu84@outlook.de
+
+- Update to v1.22.1
+- Update Cargo to fix an issue with macOS 10.13 "High Sierra"
+
+-------------------------------------------------------------------
+Thu Nov 23 00:27:24 UTC 2017 - jones_ld@protonmail.com
+
+- Update to v1.22.0
+- Language changes:
+  + `non_snake_case` lint now allows extern no-mangle functions
+  + Now accepts underscores in unicode escapes
+  + `T op= &T` now works for numeric types. eg. `let mut x = 2; x += &8;`
+  + types that impl `Drop` are now allowed in `const` and `static` types
+- Compiler changes:
+  + rustc now defaults to having 16 codegen units at debug on supported platforms
+  + rustc will no longer inline in codegen units when compiling for debug
+    This should decrease compile times for debug builds.
+  + strict memory alignment now enabled on ARMv6
+  + Remove support for the PNaCl target `le32-unknown-nacl`
+- Librarie changes
+  + Allow atomic operations up to 32 bits
+    on `armv5te_unknown_linux_gnueabi`
+  + `Box<Error>` now impls `From<Cow<str>>`
+  + `std::mem::Discriminant` is now guaranteed to be `Send + Sync`
+  + `fs::copy` now returns the length of the main stream on NTFS.
+  + Properly detect overflow in `Instant += Duration`.
+  + impl `Hasher` for `{&mut Hasher, Box<Hasher>}`
+  + impl `fmt::Debug` for `SplitWhitespace`.][44303]
+  + `Option<T>` now impls `Try`. This allows for using `?` with `Option` types.
+- Misc
+  + `libbacktrace` is now available on Apple platforms.
+  + Stabilised the `compile_fail` attribute for code fences in doc-comments.
+    This now lets you specify that a given code example will fail to compile.
+- Compatibility Notes
+  + The minimum Android version that rustc can build for has been bumped
+    to `4.0` from `2.3`
+  + Allowing `T op= &T` for numeric types has broken some type inference cases
+
+- Remove rust-1.21.0-44203-exclude-compiler-rt-test.patch
+- Remove rust-1.21.0-44066-ppc64-struct-abi.patch
+- Remove rust-1.21.0-44440-s390x-global-align.patch
+
+-------------------------------------------------------------------
+Thu Oct 19 05:46:50 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Large cleanup of both the spec and config.toml to correct many
+  build issues for the new version
+
+-------------------------------------------------------------------
+Wed Oct 18 03:43:11 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add rust-1.21.0-44203-exclude-compiler-rt-test.patch
+- Add rust-1.21.0-44066-ppc64-struct-abi.patch
+- Add rust-1.21.0-44440-s390x-global-align.patch
+- Remove add-soname.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 22:53:28 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.21.0
+- Language changes:
+  + You can now use static references for literals.
+  + Relaxed path syntax. Optional `::` before `<` is now allowed in all contexts.
+- Compiler changes:
+  + Upgraded jemalloc to 4.5.0[43911]
+  + Enabled unwinding panics on Redox[43917]
+  + Now runs LLVM in parallel during translation phase.[43506]
+- Librarie changes:
+  + Generate builtin impls for `Clone` for all arrays and tuples that
+  are `T: Clone`[43690]
+  +`Stdin`, `Stdout`, and `Stderr` now implement `AsRawFd`.[43459]
+  + `Rc` and `Arc` now implement `From<&[T]> where T: Clone`, `From<str>`,
+  `From<String>`, `From<Box<T>> where T: ?Sized`, and `From<Vec<T>>`.[42565]
+- Stabilized APIs
+  +`std::mem::discriminant`
+- Update add-soname.patch to apply cleanly
+
+-------------------------------------------------------------------
+Sat Sep 23 00:29:39 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Force enable rust bootstrap so that missing architectures build
+
+-------------------------------------------------------------------
+Wed Sep 20 08:06:35 UTC 2017 - opensuse@dstoecker.de
+
+- set minimum cmake version
+
+-------------------------------------------------------------------
+Mon Sep  4 22:44:20 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 1.20.0
+- Remove x86 from build targets
+- Language
+  + [Associated constants are now stabilised.][42809]
+  + [A lot of macro bugs are now fixed.][42913]
+- Compiler
+  + [Struct fields are now properly coerced to the expected field type.][42807]
+  + [Enabled wasm LLVM backend][42571] WASM can now be built with the
+  `wasm32-experimental-emscripten` target.
+  + [Changed some of the error messages to be more helpful.][42033]
+  + [Add support for RELRO(RELocation Read-Only) for platforms that support
+  it.][43170]
+  + [rustc now reports the total number of errors on compilation failure][43015]
+  previously this was only the number of errors in the pass that failed.
+  + [Expansion in rustc has been sped up 29x.][42533]
+  + [added `msp430-none-elf` target.][43099]
+  + [rustc will now suggest one-argument enum variant to fix type mismatch when
+  applicable][43178]
+  + [Fixes backtraces on Redox][43228]
+  + [rustc now identifies different versions of same crate when absolute paths of
+  different types match in an error message.][42826]
+- Libraries
+  + [Relaxed Debug constraints on `{HashMap,BTreeMap}::{Keys,Values}`.][42854]
+  + [Impl `PartialEq`, `Eq`, `PartialOrd`, `Ord`, `Debug`, `Hash` for unsized
+  tuples.][43011]
+  + [Impl `fmt::{Display, Debug}` for `Ref`, `RefMut`, `MutexGuard`,
+  `RwLockReadGuard`, `RwLockWriteGuard`][42822]
+  + [Impl `Clone` for `DefaultHasher`.][42799]
+  + [Impl `Sync` for `SyncSender`.][42397]
+  + [Impl `FromStr` for `char`][42271]
+  + [Fixed how `{f32, f64}::{is_sign_negative, is_sign_positive}` handles
+  NaN.][42431]
+  + [allow messages in the `unimplemented!()` macro.][42155]
+  ie. `unimplemented!("Waiting for 1.21 to be stable")`
+  + [`pub(restricted)` is now supported in the `thread_local!` macro.][43185]
+  + [Upgrade to Unicode 10.0.0][42999]
+  + [Reimplemented `{f32, f64}::{min, max}` in Rust instead of using CMath.][42430]
+  + [Skip the main thread's manual stack guard on Linux][43072]
+  + [Iterator::nth for `ops::{Range, RangeFrom}` is now done in O(1) time][43077]
+  + [`#[repr(align(N))]` attribute max number is now 2^31   + 1.][43097] This was
+  previously 2^15.
+  + [`{OsStr, Path}::Display` now avoids allocations where possible][42613]
+- Compatibility Notes
+  + [Functions with `'static` in their return types will now not be as usable as
+  if they were using lifetime parameters instead.][42417]
+  + [The reimplementation of `{f32, f64}::is_sign_{negative, positive}` now
+  takes the sign of NaN into account where previously didn't.][42430]
+
+-------------------------------------------------------------------
+Fri Sep  1 10:14:10 UTC 2017 - luke.nukem.jones@gmail.com
+
+- adjust build process and add package for Rust source
+- clean-up of useless provides
+- add rpmlintrc
+
+-------------------------------------------------------------------
+Tue Aug  8 23:06:44 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 1.19
+
+- Language updates:
+  + [Numeric fields can now be used for creating tuple structs.][41145] [RFC 1506]
+    For example `struct Point(u32, u32); let x = Point { 0: 7, 1: 0 };`.
+  + [Macro recursion limit increased to 1024 from 64.][41676]
+  + [Added lint for detecting unused macros.][41907]
+  + [`loop` can now return a value with `break`.][42016] [RFC 1624]
+    For example: `let x = loop { break 7; };`
+  + [C compatible `union`s are now available.][42068] [RFC 1444] They can only
+    contain `Copy` types and cannot have a `Drop` implementation.
+    Example: `union Foo { bar: u8, baz: usize }`
+  + [Non capturing closures can now be coerced into `fn`s,][42162] [RFC 1558]
+    Example: `let foo: fn(u8) -> u8 = |v: u8| { v };`
+
+- Compiler updates:
+  + [Add support for bootstrapping the Rust compiler toolchain on Android.][41370]
+  + [Change `arm-linux-androideabi` to correspond to the `armeabi`
+    official ABI.][41656] If you wish to continue targeting the `armeabi-v7a` ABI
+    you should use `--target armv7-linux-androideabi`.
+  + [Fixed ICE when removing a source file between compilation sessions.][41873]
+  + [Minor optimisation of string operations.][42037]
+  + [Compiler error message is now `aborting due to previous error(s)` instead of
+    `aborting due to N previous errors`][42150] This was previously inaccurate and
+    would only count certain kinds of errors.
+  + [The compiler now supports Visual Studio 2017][42225]
+  + [The compiler is now built against LLVM 4.0.1 by default][42948]
+  + [Added a lot][42264] of [new error codes][42302]
+  + [Added `target-feature=+crt-static` option][37406] [RFC 1721] Which allows
+    libraries with C Run-time Libraries(CRT) to be statically linked.
+  + [Fixed various ARM codegen bugs][42740]
+
+- Librarie updates:
+  + [`String` now implements `FromIterator<Cow<'a, str>>` and
+    `Extend<Cow<'a, str>>`][41449]
+  + [`Vec` now implements `From<&mut [T]>`][41530]
+  + [`Box<[u8]>` now implements `From<Box<str>>`][41258]
+  + [`SplitWhitespace` now implements `Clone`][41659]
+  + [`[u8]::reverse` is now 5x faster and `[u16]::reverse` is now
+    1.5x faster][41764]
+  + [`eprint!` and `eprintln!` macros added to prelude.][41192] Same as the `print!`
+    macros, but for printing to stderr.
+
+- Stabilized APIs
+  + [`OsString::shrink_to_fit`]
+  + [`cmp::Reverse`]
+  + [`Command::envs`]
+  + [`thread::ThreadId`]
+
+- Misc
+  + [Added `rust-windbg.cmd`][39983] for loading rust `.natvis` files in the
+    Windows Debugger.
+  + [Rust will now release XZ compressed packages][rust-installer/57]
+  + [rustup will now prefer to download rust packages with
+    XZ compression][rustup/1100] over GZip packages.
+  + [Added the ability to escape `#` in rust documentation][41785] By adding
+    additional `#`'s ie. `##` is now `#`
+
+- Temporarily disable generation of compiler docs due to build issue
+
+-------------------------------------------------------------------
+Wed Jun 14 06:23:20 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Change i586 build to produce i686 target instead of i586 so that
+  x86 Firefox can be built with Rust.
+
+-------------------------------------------------------------------
+Thu Jun  8 21:48:54 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.18.0
+-Language updates:
+    + [Stabilize pub(restricted)][40556] `pub` can now accept amodule path to
+      make the item visible to just that module tree. Also accepts the keyword
+      `crate` to make something public to the whole crate but not users of the
+      library. Example: `pub(crate) mod utils;`. [RFC 1422].
+    + [Stabilize `#![windows_subsystem]` attribute][40870] conservative exposure of the
+      `/SUBSYSTEM` linker flag on Windows platforms. [RFC 1665].
+    + [Refactor of trait object type parsing][40043] Now `ty` in macros can accept
+      types like `Write + Send`, trailing `+` are now supported in trait objects,
+      and better error reporting for trait objects starting with `?Sized`.
+    + [0e+10 is now a valid floating point literal][40589]
+    + [Now warns if you bind a lifetime parameter to 'static][40734]
+    + [Tuples, Enum variant fields, and structs with no `repr` attribute or with
+      `#[repr(Rust)]` are reordered to minimize padding and produce a smaller
+      representation in some cases.][40377]
+-Compiler updates
+    + [rustc can now emit mir with `--emit mir`][39891]
+    + [Improved LLVM IR for trivial functions][40367]
+    + [Added explanation for E0090(Wrong number of lifetimes are supplied)][40723]
+    + [rustc compilation is now 15%-20% faster][41469] Thanks to optimisation
+      opportunities found through profiling
+    + [Improved backtrace formatting when panicking][38165]
+- Library updates:
+    + [Specialized `Vec::from_iter` being passed `vec::IntoIter`][40731] if the
+      iterator hasn't been advanced the original `Vec` is reassembled with no actual
+      iteration or reallocation.
+    + [Simplified HashMap Bucket interface][40561] provides performance
+      improvements for iterating and cloning.
+    + [Specialize Vec::from_elem to use calloc][40409]
+    + [Fixed Race condition in fs::create_dir_all][39799]
+    + [No longer caching stdio on Windows][40516]
+    + [Optimized insertion sort in slice][40807] insertion sort in some cases
+      2.50%~ faster and in one case now 12.50% faster.
+    + [Optimized `AtomicBool::fetch_nand`][41143]
+- Stabilized APIs:
+    + [`Child::try_wait`]
+    + [`HashMap::retain`]
+    + [`HashSet::retain`]
+    + [`PeekMut::pop`]
+    + [`TcpStream::peek`]
+    + [`UdpSocket::peek`]
+- Misc:
+    + [rustdoc can now use pulldown-cmark with the `--enable-commonmark` flag][40338]
+    + [Added rust-winbg script for better debugging on Windows][39983]
+    + [Rust now uses the official cross compiler for NetBSD][40612]
+    + [rustdoc now accepts `#` at the start of files][40828]
+    + [Fixed jemalloc support for musl][41168]
+- Compatibility Notes:
+    + [Changes to how the `0` flag works in format!][40241] Padding zeroes are now
+      always placed after the sign if it exists and before the digits. With the `#`
+      flag the zeroes are placed after the prefix and before the digits.
+    + [Due to the struct field optimisation][40377], using `transmute` on structs
+      that have no `repr` attribute or `#[repr(Rust)]` will no longer work. This has
+      always been undefined behavior, but is now more likely to break in practice.
+    + [The refactor of trait object type parsing][40043] fixed a bug where `+` was
+      receiving the wrong priority parsing things like `&for<'a> Tr<'a> + Send` as
+      `&(for<'a> Tr<'a> + Send)` instead of `(&for<'a> Tr<'a>) + Send`
+    + [Overlapping inherent `impl`s are now a hard error][40728]
+    + [`PartialOrd` and `Ord` must agree on the ordering.][41270]
+    + [`rustc main.rs -o out --emit=asm,llvm-ir`][41085] Now will output
+      `out.asm` and `out.ll` instead of only one of the filetypes.
+    + [ calling a function that returns `Self` will no longer work][41805] when
+      the size of `Self` cannot be statically determined.
+    + [rustc now builds with a "pthreads" flavour of MinGW for Windows GNU][40805]
+      this has caused a few regressions namely:
+    + Changed the link order of local static/dynamic libraries (respecting the
+      order on given rather than having the compiler reorder).
+    + Changed how MinGW is linked, native code linked to dynamic libraries
+      may require manually linking to the gcc support library (for the native
+      code itself)
+-------------------------------------------------------------------
+Wed May 10 07:09:13 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Adjustment of rust version dependency to prevent inability to
+  build in the adi rings.
+
+-------------------------------------------------------------------
+Sun Apr 30 04:48:19 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add the cargo binaries for each arch, used for building rust only
+  these are not shipped, and don't factor in to the final product.
+
+-------------------------------------------------------------------
+Fri Apr 28 01:24:18 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Revert restriction of x86 arch to i586 for the interim.
+
+-------------------------------------------------------------------
+Fri Apr 28 01:04:09 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.17.0
+- Language updates
+    * [The compiler's `dead_code` lint now accounts for type aliases][38051].
+    * [Uninhabitable enums (those without any variants) no longer permit wildcard
+      match patterns][38069]
+    * [Clean up semantics of `self` in an import list][38313]
+    * [`Self` may appear in `impl` headers][38920]
+    * [`Self` may appear in struct expressions][39282]
+
+- Compiler updates
+    * [`rustc` now supports `--emit=metadata`, which causes rustc to emit
+      a `.rmeta` file containing only crate metadata][38571]. This can be
+      used by tools like the Rust Language Service to perform
+      metadata-only builds.
+    * [Levenshtein based typo suggestions now work in most places, while
+      previously they worked only for fields and sometimes for local
+      variables][38927]. Together with the overhaul of "no
+      resolution"/"unexpected resolution" errors (#[38154]) they result in
+      large and systematic improvement in resolution diagnostics.
+    * [Fix `transmute::<T, U>` where `T` requires a bigger alignment than
+      `U`][38670]
+    * [rustc: use -Xlinker when specifying an rpath with ',' in it][38798]
+    * [`rustc` no longer attempts to provide "consider using an explicit
+      lifetime" suggestions][37057]. They were inaccurate.
+
+- Stabilized APIs
+    * [`VecDeque::truncate`]
+    * [`VecDeque::resize`]
+    * [`String::insert_str`]
+    * [`Duration::checked_add`]
+    * [`Duration::checked_sub`]
+    * [`Duration::checked_div`]
+    * [`Duration::checked_mul`]
+    * [`str::replacen`]
+    * [`str::repeat`]
+    * [`SocketAddr::is_ipv4`]
+    * [`SocketAddr::is_ipv6`]
+    * [`IpAddr::is_ipv4`]
+    * [`IpAddr::is_ipv6`]
+    * [`Vec::dedup_by`]
+    * [`Vec::dedup_by_key`]
+    * [`Result::unwrap_or_default`]
+    * [`<*const T>::wrapping_offset`]
+    * [`<*mut T>::wrapping_offset`]
+    * `CommandExt::creation_flags`
+    * [`File::set_permissions`]
+    * [`String::split_off`]
+
+- Updates to libraries
+    * [`[T]::binary_search` and `[T]::binary_search_by_key` now take
+      their argument by `Borrow` parameter][37761]
+    * [All public types in std implement `Debug`][38006]
+    * [`IpAddr` implements `From<Ipv4Addr>` and `From<Ipv6Addr>`][38327]
+    * [`Ipv6Addr` implements `From<[u16; 8]>`][38131]
+    * [Ctrl-Z returns from `Stdin.read()` when reading from the console on
+      Windows][38274]
+    * [std: Fix partial writes in `LineWriter`][38062]
+    * [std: Clamp max read/write sizes on Unix][38062]
+    * [Use more specific panic message for `&str` slicing errors][38066]
+    * [`TcpListener::set_only_v6` is deprecated][38304]. This
+      functionality cannot be achieved in std currently.
+    * [`writeln!`, like `println!`, now accepts a form with no string
+      or formatting arguments, to just print a newline][38469]
+    * [Implement `iter::Sum` and `iter::Product` for `Result`][38580]
+    * [Reduce the size of static data in `std_unicode::tables`][38781]
+    * [`char::EscapeDebug`, `EscapeDefault`, `EscapeUnicode`,
+      `CaseMappingIter`, `ToLowercase`, `ToUppercase`, implement
+      `Display`][38909]
+    * [`Duration` implements `Sum`][38712]
+    * [`String` implements `ToSocketAddrs`][39048]
+
+- Misc
+    * [`rustdoc` has a `--sysroot` argument that, like `rustc`, specifies
+      the path to the Rust implementation][38589]
+    * [The `armv7-linux-androideabi` target no longer enables NEON
+      extensions, per Google's ABI guide][38413]
+    * [The stock standard library can be compiled for Redox OS][38401]
+    * [Rust has initial SPARC support][38726]. Tier 3. No builds
+      available.
+    * [Rust has experimental support for Nvidia PTX][38559]. Tier 3. No
+      builds available.
+    * [Fix backtraces on i686-pc-windows-gnu by disabling FPO][39379]
+
+- Compatibility Notes
+    * [Uninhabitable enums (those without any variants) no longer permit wildcard
+      match patterns][38069]
+    * In this release, references to uninhabited types can not be
+      pattern-matched. This was accidentally allowed in 1.15.
+    * [The compiler's `dead_code` lint now accounts for type aliases][38051].
+    * [Ctrl-Z returns from `Stdin.read()` when reading from the console on
+      Windows][38274]
+    * [Clean up semantics of `self` in an import list][38313]
+
+- Restrict x86 builds to i686 only.
+- Revert restriction on previous rust versions used for building
+
+-------------------------------------------------------------------
+Sat Apr 22 02:06:47 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Change x86 build target from i586 to i686
+
+-------------------------------------------------------------------
+Wed Mar 22 01:43:22 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Switch .spec to use rust-build compilation system
+- Update config.toml to reflect rust-build changes
+- Strict versioning for compilation so rustc always use previous
+  stable compiler
+
+-------------------------------------------------------------------
+Fri Mar 17 05:59:18 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.16.0
+
+- Language updates
+    * Lifetimes in statics and consts default to `'static`. [RFC 1623]
+    * [The compiler's `dead_code` lint now accounts for type aliases][38051].
+    * [Uninhabitable enums (those without any variants) no longer permit wildcard
+      match patterns][38069]
+    * [Clean up semantics of `self` in an import list][38313]
+    * [`Self` may appear in `impl` headers][38920]
+    * [`Self` may appear in struct expressions][39282]
+
+- Compiler updates
+    * [`rustc` now supports `--emit=metadata`, which causes rustc to emit
+      a `.rmeta` file containing only crate metadata][38571]. This can be
+      used by tools like the Rust Language Service to perform
+      metadata-only builds.
+    * [Levenshtein based typo suggestions now work in most places, while
+      previously they worked only for fields and sometimes for local
+      variables][38927]. Together with the overhaul of "no
+      resolution"/"unexpected resolution" errors (#[38154]) they result in
+      large and systematic improvement in resolution diagnostics.
+    * [Fix `transmute::<T, U>` where `T` requires a bigger alignment than
+      `U`][38670]
+    * [rustc: use -Xlinker when specifying an rpath with ',' in it][38798]
+    * [`rustc` no longer attempts to provide "consider using an explicit
+      lifetime" suggestions][37057]. They were inaccurate.
+
+- Stabilized APIs
+    * [`VecDeque::truncate`]
+    * [`VecDeque::resize`]
+    * [`String::insert_str`]
+    * [`Duration::checked_add`]
+    * [`Duration::checked_sub`]
+    * [`Duration::checked_div`]
+    * [`Duration::checked_mul`]
+    * [`str::replacen`]
+    * [`str::repeat`]
+    * [`SocketAddr::is_ipv4`]
+    * [`SocketAddr::is_ipv6`]
+    * [`IpAddr::is_ipv4`]
+    * [`IpAddr::is_ipv6`]
+    * [`Vec::dedup_by`]
+    * [`Vec::dedup_by_key`]
+    * [`Result::unwrap_or_default`]
+    * [`<*const T>::wrapping_offset`]
+    * [`<*mut T>::wrapping_offset`]
+    * `CommandExt::creation_flags`
+    * [`File::set_permissions`]
+    * [`String::split_off`]
+
+- Library updates
+    * [`[T]::binary_search` and `[T]::binary_search_by_key` now take
+      their argument by `Borrow` parameter][37761]
+    * [All public types in std implement `Debug`][38006]
+    * [`IpAddr` implements `From<Ipv4Addr>` and `From<Ipv6Addr>`][38327]
+    * [`Ipv6Addr` implements `From<[u16; 8]>`][38131]
+    * [Ctrl-Z returns from `Stdin.read()` when reading from the console on
+      Windows][38274]
+    * [std: Fix partial writes in `LineWriter`][38062]
+    * [std: Clamp max read/write sizes on Unix][38062]
+    * [Use more specific panic message for `&str` slicing errors][38066]
+    * [`TcpListener::set_only_v6` is deprecated][38304]. This
+      functionality cannot be achieved in std currently.
+    * [`writeln!`, like `println!`, now accepts a form with no string
+      or formatting arguments, to just print a newline][38469]
+    * [Implement `iter::Sum` and `iter::Product` for `Result`][38580]
+    * [Reduce the size of static data in `std_unicode::tables`][38781]
+    * [`char::EscapeDebug`, `EscapeDefault`, `EscapeUnicode`,
+      `CaseMappingIter`, `ToLowercase`, `ToUppercase`, implement
+      `Display`][38909]
+    * [`Duration` implements `Sum`][38712]
+    * [`String` implements `ToSocketAddrs`][39048]
+
+- Misc fixes
+    * [`rustdoc` has a `--sysroot` argument that, like `rustc`, specifies
+      the path to the Rust implementation][38589]
+    * [The `armv7-linux-androideabi` target no longer enables NEON
+      extensions, per Google's ABI guide][38413]
+    * [The stock standard library can be compiled for Redox OS][38401]
+    * [Rust has initial SPARC support][38726]. Tier 3. No builds
+      available.
+    * [Rust has experimental support for Nvidia PTX][38559]. Tier 3. No
+      builds available.
+    * [Fix backtraces on i686-pc-windows-gnu by disabling FPO][39379]
+
+- Compatibility notes
+    * [Uninhabitable enums (those without any variants) no longer permit wildcard
+      match patterns][38069]
+    * In this release, references to uninhabited types can not be
+      pattern-matched. This was accidentally allowed in 1.15.
+    * [The compiler's `dead_code` lint now accounts for type aliases][38051].
+    * [Ctrl-Z returns from `Stdin.read()` when reading from the console on
+      Windows][38274]
+    * [Clean up semantics of `self` in an import list][38313]
+
+-------------------------------------------------------------------
+Mon Mar 13 10:14:21 UTC 2017 - dimstar@opensuse.org
+
+- Remove duplicate license files from _docdir: rpm 4.13 no longer
+  implicitly packages those files and we catch them using %license,
+
+-------------------------------------------------------------------
+Thu Feb 23 07:36:17 UTC 2017 - bg@suse.com
+
+- remove bootstrap for s390x as binaries are available in
+  openSUSE:Factory:zSystems
+
+-------------------------------------------------------------------
+Wed Feb 15 05:58:35 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Fixes to build for archs armv7, aarch64, ppc64, s390x
+
+-------------------------------------------------------------------
+Sat Feb 11 05:31:34 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.15.1
+- Fix IntoIter::as_mut_slice's signature
+
+-------------------------------------------------------------------
+Mon Feb  6 09:05:39 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Correct rust-triples use in spec.
+
+-------------------------------------------------------------------
+Mon Feb  6 08:25:17 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 1.15.0
+
+- Language updates
+	* Basic procedural macros allowing custom `#[derive]`, aka "macros 1.1", are
+	stable. This allows popular code-generating crates like Serde and Diesel to
+	work ergonomically. [RFC 1681].
+	* [Tuple structs may be empty. Unary and empty tuple structs may be instantiated
+	with curly braces][36868]. Part of [RFC 1506].
+	* [A number of minor changes to name resolution have been activated][37127].
+	They add up to more consistent semantics, allowing for future evolution of
+	Rust macros. Specified in [RFC 1560], see its section on ["changes"] for
+	details of what is different. The breaking changes here have been transitioned
+	through the [`legacy_imports`] lint since 1.14, with no known regressions.
+	* [In `macro_rules`, `path` fragments can now be parsed as type parameter
+	bounds][38279]
+	* [`?Sized` can be used in `where` clauses][37791]
+	* [There is now a limit on the size of monomorphized types and it can be
+	modified with the `#![type_size_limit]` crate attribute, similarly to
+	the `#![recursion_limit]` attribute][37789]
+
+- Compiler changes
+	* [On Windows, the compiler will apply dllimport attributes when linking to
+	extern functions][37973]. Additional attributes and flags can control which
+	library kind is linked and its name. [RFC 1717].
+	* [Rust-ABI symbols are no longer exported from cdylibs][38117]
+	* [The `--test` flag works with procedural macro crates][38107]
+	* [Fix `extern "aapcs" fn` ABI][37814]
+	* [The `-C no-stack-check` flag is deprecated][37636]. It does nothing.
+	* [The `format!` expander recognizes incorrect `printf` and shell-style
+	formatting directives and suggests the correct format][37613].
+	* [Only report one error for all unused imports in an import list][37456]
+
+- Compiler performance
+	* [Avoid unnecessary `mk_ty` calls in `Ty::super_fold_with`][37705]
+	* [Avoid more unnecessary `mk_ty` calls in `Ty::super_fold_with`][37979]
+	* [Don't clone in `UnificationTable::probe`][37848]
+	* [Remove `scope_auxiliary` to cut RSS by 10%][37764]
+	* [Use small vectors in type walker][37760]
+	* [Macro expansion performance was improved][37701]
+	* [Change `HirVec<P<T>>` to `HirVec<T>` in `hir::Expr`][37642]
+	* [Replace FNV with a faster hash function][37229]
+
+- For full change list, please see
+	https://raw.githubusercontent.com/rust-lang/rust/master/RELEASES.md
+
+-------------------------------------------------------------------
+Tue Jan 31 09:41:33 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Adjust build so that aarch and ARM architectures use bootstrap for
+  initial build
+
+-------------------------------------------------------------------
+Tue Jan 31 04:25:06 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Fix provides/conflicts/obsoletes
+
+-------------------------------------------------------------------
+Fri Dec 23 08:22:26 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Remove patch 0001-Fix-armv7-autodetection.patch
+    + appears to have been fixed upstream.
+- Building armv7hl arch with bootstrap binary since previously
+  packaged versions haven't successfully built in the past
+
+-------------------------------------------------------------------
+Fri Dec 23 07:57:24 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 1.14.0
+    + Announcement: https://blog.rust-lang.org/2016/12/22/Rust-1.14.html
+    + Details: https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1140-2016-12-22
+- Release highlights:
+    + support for RFC 1492. This small addition lets you use `..`
+    in more places, for example when destructuring a struct or tuple
+    + println!(), with no arguments, prints newline
+    + Wrapping impls standard binary and unary operators on
+    references, as well as the Sum and Product iterators, making
+    references to these types easier to use
+    + Implement From<Cow<str>> for String and From<Cow<[T]>> for
+    Vec<T>. These implementations make sense, but were not yet added.
+    + Expand .zip() specialization to .map() and .cloned() for
+    improved performance.
+    + Implement RefUnwindSafe for atomic types, as these types are
+    “unwind safe,” though that wasn’t obvious at first.
+    + Specialize Vec::extend to Vec::extend_from_slice for
+    performance gains.
+    + Don’t reuse HashMap random seeds. This helps to mitigate one
+    type of DDoS attack.
+    + The internal memory layout of HashMap is more cache-friendly,
+    for significant improvements in some operations
+    + Impl Add<{str, Cow<str>}> for Cow<str>. We already support Add
+    for other string types, so not having it on Cow is inconsistent.
+
+-------------------------------------------------------------------
+Sun Dec 18 09:27:44 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to 1.13.0
+
+-------------------------------------------------------------------
+Sun Dec 18 09:03:52 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Add conflicts to help avoid situations where previous versions
+  or rustc-bootstrap may be installed
+
+-------------------------------------------------------------------
+Sun Dec 18 02:41:25 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to 1.12.1
+- Remove patches:
+    + 0003-Disable-embedding-timestamp-information.patch - fixed
+      by upstream
+    + 0002-Add-armv6l-autodetection.patch - no-longer viable
+
+-------------------------------------------------------------------
+Fri Dec 16 23:27:42 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Revert from v1.13 to v1.11 in preparation for alternative
+  packaging.
+
+-------------------------------------------------------------------
+Wed Nov  2 08:42:44 UTC 2016 - matwey.kornilov@gmail.com
+
+- Add 0001-Fix-armv7-autodetection.patch
+- Add 0002-Add-armv6l-autodetection.patch
+  * fix armv6 and armv7 builds
+
+-------------------------------------------------------------------
+Tue Sep 20 11:46:53 UTC 2016 - kgronlund@suse.com
+
+- Update to 1.11
+  + Add support for cdylib crate types
+
+- Remove merged patches:
+  * 0001-Fix-misleading-intentation-errors-on-gcc-6.0.patch
+  * 0002-Fix-GCC-6-misleading-indentation-error-in-hoedown.patch
+
+- Set DT_SONAME when building dylibs
+  * Add add-soname.patch
+
+-------------------------------------------------------------------
+Tue Sep  6 06:35:03 UTC 2016 - kgronlund@suse.com
+
+- Move to package named rust
+
+-------------------------------------------------------------------
+Thu Aug  4 19:41:56 UTC 2016 - mvyskocil@opensuse.org
+
+- Update to 1.10
+    + -C panic=abort flag for rustc or equivalent in Cargo.toml
+    + new crate type cdylib, embeded library for other languages
+    + In addition, a number of performance improvements landed in
+      the compiler, and so did a number of usability improvements
+      across the documentation, rustdoc itself, and various error
+      messages.
+    + This is the first release, which is guaranteed to be built
+    by previous stable release of rustc
+- Packaging:
+    + drop bootstrap mode and use rustc 1.9
+    + move documentation to versioned directory
+
+-------------------------------------------------------------------
+Sun Jul 31 15:03:38 UTC 2016 - jengelh@inai.de
+
+- Use smp_mflags for parallel building. Avoid sh invocation for
+  simple ldconfig calls. Drop archaic %clean section.
+  Drop filler words from summary.
+
+-------------------------------------------------------------------
+Tue Jul 26 13:34:17 UTC 2016 - kgronlund@suse.com
+
+- Rename source package to rustc-1_9 to conform to naming standards.
+
+-------------------------------------------------------------------
+Tue Jul 12 05:57:11 UTC 2016 - mvyskocil@opensuse.org
+
+- Rename source package to rustc-190 to avoid unecessary rebuilds
+  of rustc packages on upgrade
+
+-------------------------------------------------------------------
+Wed Jul  6 11:11:50 UTC 2016 - kgronlund@suse.com
+
+- Move stage0 binaries into separate package
+- Disable embedding timestamp information
+- Add 0003-Disable-embedding-timestamp-information.patch
+
+-------------------------------------------------------------------
+Tue Jun 28 12:43:26 UTC 2016 - kgronlund@suse.com
+
+- Rename package to rustc-stable
+- Add rpmlintrc
+- Make bootstrapping conditional
+
+-------------------------------------------------------------------
+Mon Jun 27 15:40:53 UTC 2016 - kgronlund@suse.com
+
+- Fix misleading indentation errors on GCC 6.0
+- Remove snap2.sh
+- Add 0001-Fix-misleading-intentation-errors-on-gcc-6.0.patch
+- Add 0002-Fix-GCC-6-misleading-indentation-error-in-hoedown.patch
+
+-------------------------------------------------------------------
+Mon May 30 09:15:21 UTC 2016 - mvyskocil@opensuse.org
+
+- Update to version 1.9.0
+    + Stabilization of std::panic
+    + Deprecation warnings, #[deprecated] attribute
+    + Compile time improvements
+    + Rolling out use of specialization
+    + Library stabilizations
+      About 80 library functions and methods are now stable in 1.
+    + http://blog.rust-lang.org/2016/05/26/Rust-1.9.html
+
+-------------------------------------------------------------------
+Fri Apr 15 19:39:18 UTC 2016 - mvyskocil@opensuse.org
+
+- Update to version 1.8.0:
+    + Various “operator equals” operators, such as += and -=, are now
+      overloadable via various traits.
+    + Empty struct declaration can contain cutly braces
+    + New (non default) cargo based build system for rustc
+    + About 20 library functions and methods are now stable in 1.8
+
+-------------------------------------------------------------------
+Fri Mar  4 16:10:07 UTC 2016 - kgronlund@suse.com
+
+- Update to version 1.7.0:
+    + Many stabilized APIs
+    + Improved library performance
+    + BTreeSet and its iterators, Iter, IntoIter, and Range are covariant over their contained type.
+    + LinkedList and its iterators, Iter and IntoIter are covariant over their contained type.
+    + str::replace now accepts a Pattern, like other string searching methods.
+    + Any is implemented for unsized types.
+    + Hash is implemented for Duration.
+    + Soundness fixes, may break code. See RFC 1214 for more information.
+    + Several bugs in the compiler's visibility calculations were fixed.
+    + Parsing "." as a float results in an error instead of 0.
+    + Borrows of closure parameters may not outlive the closure.
+
+-------------------------------------------------------------------
+Thu Jan 20 19:28:34 UTC 2016 - i@xuzhao.net
+
+- Update to version 1.6.0:
+    + Stabilization of libcore and other library functions
+    + Crates.io disallows wildcards
+
+-------------------------------------------------------------------
+Fri Oct 30 12:18:05 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to version 1.4.0:
+    + Several changes have been made to fix type soundness and improve the
+    behavior of associated types. See RFC 1214. Although we have mostly
+    introduced these changes as warnings this release, to become errors next
+    release, there are still some scenarios that will see immediate breakage.
+    + The str::lines and BufRead::lines iterators treat \r\n as line breaks in
+    addition to \n.
+    + Loans of 'static lifetime extend to the end of a function.
+    + str::parse no longer introduces avoidable rounding error when parsing
+    floating point numbers. Together with earlier changes to float
+    formatting/output, "round trips" like f.to_string().parse() now preserve
+    the value of f exactly.  Additionally, leading plus signs are now accepted.
+
+-------------------------------------------------------------------
+Sat Oct 17 19:12:53 UTC 2015 - mvyskocil@opensuse.org
+
+- Split the gdb support to rust-gdb subpackage
+
+-------------------------------------------------------------------
+Fri Sep 18 07:00:06 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to version 1.3.0:
+    + API stabilization, including the new Duration API and
+    enhancements to Error and Hash/Hasher.
+    + The substring matcher now uses a more efficient algorithm.
+    + There were improvements to zero filling that speed up
+    Vec::resize and Read::read_to_end.
+    + The implementation of Read::read_to_end has been specialized
+    for stdin and File, resulting in additional speedups.
+    + The PartialEq implementation on slices is now much faster.
+- Packaging: renamed source package to rustc to match upstream
+
+-------------------------------------------------------------------
+Wed Aug 12 13:30:10 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to version 1.2.0:
+    + An across-the-board improvement to real-world compiler performance.
+    Representative crates include hyper (compiles 1.16x faster), html5ever
+    (1.62x faster), regex (1.32x faster) and rust-encoding (1.35x faster). You
+    can explore some of this performance data at Nick Cameron’s preliminary
+    tracking site, using dates 2015-05-15 to 2015-06-25.
+    + Parallel codegen is now working, and produces a 33% speedup when
+    bootstrapping on a 4 core machine. Parallel codegen is particularly useful
+    for debug builds, since it prevents some optimizations; but it can also be
+    used with optimizations as an effective -O1 flag. It can be activated
+    by passing -C codegen-units=N to rustc, where N is the desired number
+    of threads.
+
+-------------------------------------------------------------------
+Mon Jul 27 18:57:08 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to version 1.1.0:
+  + The std::fs module has been expanded to expand the set of
+    functionality exposed:
+    * DirEntry now supports optimizations like file_type and
+      metadata which don't incur a syscall on some platforms.
+    * A symlink_metadata function has been added.
+    * The fs::Metadata structure now lowers to its OS counterpart,
+      providing access to all underlying information.
+  + The compiler now contains extended explanations of many errors.
+    When an error with an explanation occurs the compiler suggests
+    using the --explain flag to read the explanation. Error
+    explanations are also available online.
+  + Thanks to multiple improvements to type checking, as well as other
+    work, the time to bootstrap the compiler decreased by 32%.
+- drop tar_scm service and use source urls
+
+-------------------------------------------------------------------
+Fri May 15 21:42:38 UTC 2015 - kgronlund@suse.com
+
+- Update to version 1.0.0:
+  + lint: deny transmuting from immutable to mutable, since it's undefined behavior
+  + std: update select internals to not use mutable transmuting
+  + std: Remove index notation on slice iterators
+  + std: Destabilize io::BufStream
+  + Make RwLock::try_write try to obtain a write lock
+  + std: Remove addition on vectors for now
+  + thread: right now you can't actually set those printers
+  + Fix #24872, XSS in docs not found page.
+  + Update AUTHORS.txt and RELEASES.md for 1.0
+  + std: Mark `mem::forget` as a safe function
+  + core: impl AsRef<[u8]> for str
+  + collections: impl AsRef<[u8]> for String
+  + collections: change bounds of SliceConcatExt implementations to use Borrow instead of AsRef
+  + Fix invalid references due to the automated string substitution
+  + dropck: must assume `Box<Trait + 'a>` has a destructor of interest.
+
+-------------------------------------------------------------------
+Thu May 07 11:05:47 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Rename binary package to rust
+- Add build for i586
+- Only run fdupes on SUSE builds
+- Changed version format
+- Update to version 1.0.0~beta4+git.1430848988.f873dc5:
+  + Introduce a `FreeRegionMap` data structure. (#22779)
+  + Fix #20616
+  + std: Fix inheriting standard handles on windows
+  + Fix #24895.
+  + Fix zero-normalization of the pos of a `MultiByteChar`.
+  + lint for mixing `#[repr(C)]` with an impl of `Drop`.
+  + Bump prerelease version to .4
+  + Add downcasting to std::error::Error
+
+-------------------------------------------------------------------
+Wed May  6 17:08:50 UTC 2015 - matwey.kornilov@gmail.com
+
+- Format spec file
+
+-------------------------------------------------------------------
+Wed Apr 29 13:07:54 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version 1.0.0beta3+git.1429985089.5241bf9:
+  + Update Windows caveats
+  + Utilize if..let for get_mut doc-comment examples
+  + Indicate keywords are code-like in Fuse::reset_fuse doc comment
+  + doc: improve/fix 'let' FAQ
+  + Fix broken links in the docs
+  + Indicate None is code-like in doc comments
+  + Fixed typo in hash_map::Entry documentation
+  + Remove an unused import on windows
+
+-------------------------------------------------------------------
+Wed Apr 29 12:56:15 UTC 2015 - kgronlund@suse.com
+
+- Version 1.0.0-beta3.

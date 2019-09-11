@@ -1,0 +1,33 @@
+commit a42a0991797ab10c04bbcdf7cc2846c5da5bbd25
+Author: Jan Blunck <jblunck@suse.de>
+Date:   Mon Sep 21 17:57:02 2009 +0200
+
+    Fix crash in map_seach_ehdr()
+    
+    When searching for the ELF header check if libelf returned a valid pointer
+    before referencing it.
+    
+    https://crashdb.opensuse.org/log/show/b75d1730f4c944b092afd8f302fe76b7
+    
+    Signed-off-by: Jan Blunck <jblunck@suse.de>
+
+---
+ src/pbuildid.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: b/src/pbuildid.c
+===================================================================
+--- a/src/pbuildid.c
++++ b/src/pbuildid.c
+@@ -467,6 +467,11 @@ static Elf *map_search_ehdr(struct core_
+ 	/* Look for ELF header in this LOAD segment */
+ 	data = elf_getdata_rawchunk (map->elf, map->p_offset,
+ 				     map->p_filesz, ELF_T_EHDR);
++	if (!data) {
++		fprintf(stderr, "Couldn't read LOAD segment: %s\n",
++			elf_errmsg(-1));
++		return NULL;
++	}
+ 	e_ident = (unsigned char *)data->d_buf;
+ 	if (memcmp (e_ident, ELFMAG, SELFMAG) != 0
+ 	    || e_ident[EI_CLASS] <= ELFCLASSNONE

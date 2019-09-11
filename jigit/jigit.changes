@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Feb  4 01:54:08 UTC 2017 - jengelh@inai.de
+
+- Use text from upstream readme as description.
+
+-------------------------------------------------------------------
+Thu Feb  2 20:28:49 UTC 2017 - asterios.dramis@gmail.com
+
+- Change %{_bindir}/* to an explicit binary list.
+
+-------------------------------------------------------------------
+Mon Jan 30 20:19:56 UTC 2017 - asterios.dramis@gmail.com
+
+- Initial rpm release.

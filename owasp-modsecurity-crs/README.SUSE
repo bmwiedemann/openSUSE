@@ -1,0 +1,13 @@
+OWASP ModSecurity Core Rule Set for SuSE
+========================================
+
+The OWASP rules will be installed into /usr/share/owasp-modsecurity-crs and
+updated on package updates.
+
+Additionally a configuration directory /etc/owasp-modsecurity-crs is created.
+There is an include file for each rule, so you can individualize the rules
+without your changes being overwritten on package update.
+
+Rules can be (de)activated by adding or removing the symlink in activation
+directory /etc/owasp-modsecurity-crs/rules.d.
+

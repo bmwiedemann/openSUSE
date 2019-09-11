@@ -1,0 +1,369 @@
+-------------------------------------------------------------------
+Fri May  3 19:37:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Run spec-cleaner
+- Trim the packages description
+
+-------------------------------------------------------------------
+Fri May  3 18:55:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add oxygen-gtk2-1.4.6-xul.patch to fix crashes in newmoon/palemoon
+
+-------------------------------------------------------------------
+Thu Apr  6 16:07:20 UTC 2017 - wbauer@tmo.at
+
+- Add fix-crash-about-invalid-columns.patch to fix crashes in
+  eclipse (kde#338012)
+
+-------------------------------------------------------------------
+Tue Aug  4 11:43:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Use %cmake marco.
+- Add qt-config-path.patch: search Qt (oxygen-qt5) config paths.
+- Switch to TS_PLAIN tabstyles as oxygen-qt5 did.
+- Prettify description.
+
+-------------------------------------------------------------------
+Wed Oct 29 23:20:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.6
+  * Changed AnimationType::None into AnimationType::NoAnimation
+    due to possible conflict with X11 None.
+  * Disconnect old button if already set (kde#339174) 
+  * Fixed decoColor consistently with Qt
+
+-------------------------------------------------------------------
+Mon Sep  8 00:40:07 UTC 2014 - fisiu@opensuse.org
+
+- Add fix-menu-items-look.patch: Center text in menuitem.
+
+-------------------------------------------------------------------
+Sun Apr 13 20:30:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.5
+  * background and shadows in libreoffice
+  * improved detection of empty areas for window dragging
+  * fix bluring behind tooltips in KDE on 64 bits machines
+  * fix calculation of the tabs area
+- Droped 0001-make-sure-parent-is-registered-to-innerShadowEngine-.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Tue Mar 18 17:44:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added crashfix from upstream:
+  0001-make-sure-parent-is-registered-to-innerShadowEngine-.patch,
+  fixes crashes when invoking GTK2 dialogs, bnc#869791, kde#331879
+
+-------------------------------------------------------------------
+Sat Mar  8 16:10:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.4
+  * Bugfix release, no changelog provided from upstream
+
+-------------------------------------------------------------------
+Fri Jan 24 19:20:09 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.3
+  * Bugfix release, no changelog provided from upstream
+- Droped 0001-properly-reset-_previous-and-_current-widget-if-matc.patch,
+  included in this release
+
+-------------------------------------------------------------------
+Sat Jan  4 16:35:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added:
+  * 0001-properly-reset-_previous-and-_current-widget-if-matc.patch
+    from upstream, for trying to resolve kde#329112, kde#324438,
+    kde#328495 and kde#325196
+
+-------------------------------------------------------------------
+Mon Dec 16 01:59:35 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.1
+  * Bugfix release, no changelog provided from upstream
+- Adjust Source URL (ftp will soon no longer be used on KDE's mirrors)
+
+-------------------------------------------------------------------
+Thu Aug 29 22:15:37 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.4.0
+  * Bugfix release, no changelog provided from upstream
+
+-------------------------------------------------------------------
+Fri May 31 17:13:01 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.3.4
+  * Use popen instead of g_spawn_command_line_sync() (kde#318891)
+  * Make sure that 'runCommand' reads the full output of the command
+    (kde#318891)
+  * Fix command output reading for multi-read case
+  * Re-added x2 size increment in case of overflow
+  * Check event mask for all GtkWindow and GtkViewport before
+    enabling window drag
+
+-------------------------------------------------------------------
+Tue Apr 23 15:23:20 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.3.3
+  * Detect aurora as a XUL app (kde#315163)
+  * Bump needed cairo version for cairo_surface_create_for_rectangle()
+    (kde#316066)
+  * Only check pixmap list size in ::isValid (kde#304381)
+  * Check cursor shape before accepting event for window dragging
+    (kde#317292)
+  * Fix crash in pidgin when enabling debug (kde#318002)
+  * Fixed memory leaks (kde#318002)
+
+-------------------------------------------------------------------
+Fri Feb 15 14:59:07 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.3.2.1
+  * Bugfix release
+  * exceptional release fixes startup crashes for many applications
+
+-------------------------------------------------------------------
+Wed Jan 30 16:22:30 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.3.2
+  * Bugfix release
+  * Fixes for running oxygen-gtk with gnome shell
+
+-------------------------------------------------------------------
+Fri Oct  5 08:22:12 UTC 2012 - mlin@suse.com
+
+- Update to version 1.3.1
+  * Thread-proof timers used for transitions and animations (kde#306671)
+  * Safer code for Groupbox appearance
+  * Proper rendering of flat GtkEntries
+  * Honor custom color for menu background (kde#304063)
+  * More testing options for the demo application
+
+-------------------------------------------------------------------
+Sat Jul 21 12:53:40 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.3.0:
+  * Many improvement for libreoffice, tied to its next release
+    (libreoffice v3.6).
+  * Fix of most rendering issues introduced with the release of gtk+-3.4.
+- Removed the patch for #bko 302197 and JRE crashes (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Jul 2 09:15:00 UTC 2012 - renda.krell@gmail.com
+- Crash fix, fixes #bko 302197 and JRE crashes
+
+-------------------------------------------------------------------
+Mon Jun 18 16:35:50 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.2.5:
+  Bugfix release. Fixes include:
+  * Several rendering issues with libre-office.
+  * Icon positionning in text entries.
+
+-------------------------------------------------------------------
+Tue May 15 03:02:41 UTC 2012 - mlin@suse.com
+
+- Update to version 1.2.4
+  * Bugfix release
+  * Disable build oxygen-gtk-deco by default
+
+-------------------------------------------------------------------
+Mon Apr 16 04:10:52 UTC 2012 - mlin@suse.com
+
+- Update to version 1.2.3
+  * Bugfix release.
+
+-------------------------------------------------------------------
+Sun Mar 25 12:12:06 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 1.2.2.1:
+  * Bugfix release.
+- Removed dbus-glib-1 build requirement (not needed anymore because of use of
+  glib's built-in dbus interface).
+
+-------------------------------------------------------------------
+Mon Mar 12 20:29:42 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 1.2.2:
+  Fixes include:
+  * Cleanup of signals and hooks when unloading theme.
+  * Use of glib's built-in dbus interface.
+  * Fixed crash in gtk-chtheme (and possibly other theme-switching
+    applications).
+  * Fixed margins and spacing for several widgets to make them look more
+    similar to Qt's version.
+
+-------------------------------------------------------------------
+Fri Feb 17 20:44:42 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 1.2.1:
+  Fixes include:
+  * Crash in metacity.
+  * Display issue for widgets with custom background.
+  * High memory allocation for cached pixmaps.
+  * Navigation between tabs in some application.
+- Split the package into gtk2-engine-oxygen and gtk2-theme-oxygen subpackages
+  for consistency with other gtk engines and themes (bnc#747107).
+
+-------------------------------------------------------------------
+Wed Jan 18 17:45:02 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 1.2.0:
+  * Bugfixes.
+  * Package name is changed to oxygen-gtk2, to avoid confusion with the GTK 3.x
+    version of the theme.
+- Spec file updates:
+  * Changed License: to LGPL-2.1+ (according to the COPYING file included in
+    the package).
+
+-------------------------------------------------------------------
+Thu Dec 15 19:18:47 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.6:
+  Bugfixes and improvements include:
+  * Color role used to render the text for some widgets (mostly buttons).
+  * Conflicts between oxygen's window grabbing feature and ecclipse.
+  * Rendering issues with the Komodo text editor.
+- Removed oxygen-gtk-compat.patch that fixed compilation with older GTK+
+  versions (fixed upstream).
+
+-------------------------------------------------------------------
+Tue Nov 29 14:18:22 CET 2011 - ro@suse.de
+
+- use _lib macro to properly determine lib suffix
+
+-------------------------------------------------------------------
+Fri Nov 25 13:31:58 UTC 2011 - idoenmez@suse.de
+
+- gdk_window_get_display is a new symbol introduced in GTK+ 2.24,
+  use gdk_drawable_get_display for older versions.
+
+-------------------------------------------------------------------
+Mon Nov 21 19:36:49 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.5:
+  Bugfixes and improvements include:
+  * Fixed crash whith gdm and Banshee.
+  * Improved rendering in libreoffice, firefox, and google-chrome.
+
+-------------------------------------------------------------------
+Tue Oct 18 18:16:39 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.4:
+  Bugfixes and improvements include:
+  * proper loading of icon themes that contain space characters.
+  * increased scrollbar's hit area, for usability.
+  * addition of uninstall directive to CMakeLists.txt.
+  * proper handling of button focus in XUL applications and on HTML pages.
+  * etc.
+
+-------------------------------------------------------------------
+Fri Sep 16 18:54:05 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.3
+  Several bug fixes and minor improvements, notably:
+  * Proper loading of locally installed icon themes (within KDE).
+  * Simpler compilation (via CMake) for non i386 architectures.
+  * Fix some crash due to the installation of inner shadows in some widgets.
+  * etc.
+
+-------------------------------------------------------------------
+Mon Aug 29 20:33:59 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.2
+  * This is mostly a bug fix release.
+- Spec file updates
+  * Changed License: to LGPL-2.0+.
+  * Changes based on spec-cleaner run.
+- Removed firefox-menu-corruption.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Aug  8 15:40:49 UTC 2011 - idonmez@novell.com
+
+- Add firefox-menu-corruption.patch, fix menu corruption seen in
+  Firefox, bko #277613
+
+-------------------------------------------------------------------
+Mon Aug  1 18:09:48 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.1
+  * Fixing some inconsistencies on background gradient rendering for special
+    (flat) applications, such as google-chrome.
+  * Properly handle compositing changes for menus, drop-down lists and
+    tooltips.
+  * Force resize handle size to zero to prevent annoying bug in recent Ubuntu
+    versions.
+  * Added flag to disable special rendering of GtkFrame objects (needs
+    recompilation).
+  From 1.1.0
+  * Animations (for focus and mouse-over effects of virtually all widgets).
+  * Interfacing to dbus, in order to support on fly updates on configuration
+    changes.
+  * Re-design of several widgets, to better match the Qt version of Oxygen.
+  * Improved inner shadows (and glow) rendering.
+  * Better integration with oxygen's window decoration.
+- Spec file updates
+  * Added cairo-devel and dbus-1-glib-devel in BuildRequires:.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Fri May 13 08:35:28 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 1.0.5
+  - Final bugfix release for the 1.0 releases
+  - Minor bugfixes
+  - Removed oxygen-gtk-bug-263182.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Apr 18 14:23:00 UTC 2011 - idoenmez@novell.com
+
+- Add oxygen-gtk-bug-263182.patch, fixes problem with Emacs
+
+-------------------------------------------------------------------
+Sun Mar 13 15:52:34 UTC 2011 - tittiatcoke@gmail.com
+
+- update to 1.0.3
+  * changed fallback icon theme to gnome, to prevent gtk application
+    crash when some icons are not found
+  * fixed dialog buttons ordering (to match KDE better), and
+    occasional crash triggered by it
+  * proper identification of java and swing applications (code based
+    on the QtCurve implementation)
+- oxygen-gtk now supports right-to-left languages
+
+-------------------------------------------------------------------
+Thu Feb 17 13:37:58 UTC 2011 - wstephenson@novell.com
+
+- update to 1.0.2
+  * Fix ARGB popups, remove blacklist
+  * Fix rendering of read-only combo box widgets
+  * Improved performance
+- Remove ARGB blacklist patch as a result of the above
+
+-------------------------------------------------------------------
+Thu Jan 13 22:55:18 UTC 2011 - mrdocs@opensuse.org
+
+- updated to 1.0.1
+  * numerous bug fixes and crashes resolved
+    see https://projects.kde.org/projects/playground/artwork/oxygen-gtk/news
+    for details (no changelog in the source)
+
+- run spec cleaner on spec file
+- rebase conservative-argb.diff
+- drop commit-e26c65a its upstream in the new version
+
+
+-------------------------------------------------------------------
+Wed Dec 15 10:23:41 UTC 2010 - wstephenson@novell.com
+
+- Disable ARGB colormap for almost everything on author's advice
+
+-------------------------------------------------------------------
+Tue Dec 14 16:51:15 UTC 2010 - tittiatcoke@gmail.com
+
+- Added upstream patch to build also for lower gtk version.
+
+-------------------------------------------------------------------
+Mon Dec 13 14:24:43 UTC 2010 - bitshuffler@opensuse.org
+
+- Initial package.

@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Thu May 23 02:31:05 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Update to release 2.88
+- Add patch: use-system-libs.patch
+- Cleaned up specfile
+
+-------------------------------------------------------------------
+Thu Sep  7 19:58:28 UTC 2017 - mimi.vx@gmail.com
+
+- reintroduce fix-pkgconfig-cflags.patch 
+
+-------------------------------------------------------------------
+Tue Jun 13 13:38:35 UTC 2017 - jengelh@inai.de
+
+- Trim redundant wording from description.
+
+-------------------------------------------------------------------
+Thu Jun  1 19:32:02 UTC 2017 - mimi.vx@gmail.com
+
+- update to 2.86.1
+- drop patches: fix-gtest.patch fix-pkgconfig-cflags.patch 
+
+-------------------------------------------------------------------
+Tue Jul  5 03:57:52 UTC 2016 - dap.darkness@gmail.com
+
+- Added -fPIC to CXXFLAGS to prevent linking error.
+
+-------------------------------------------------------------------
+Sat Jun 25 23:07:01 UTC 2016 - dap.darkness@gmail.com
+
+- Set cmake options to get build that will be sufficient
+  for stuntrally package (file loader & world importer).
+- Introduced new subpackages so.
+- Introduced packages description macro.
+- Introduced shared objects version macro.
+- Added -fno-strict-aliasing compiler flag because of warning.
+- Prevented openSUSE 13.2 i586 & SLE11 build failures.
+
+-------------------------------------------------------------------
+Fri May 13 02:56:25 UTC 2016 - sflees@suse.de
+
+- Fix CFlags in bullet.pc to not be /usr/usr upstream ticket #626
+  This patch has been submitted upstream by myself.
+  * Adds fix-pkgconfig-cflags.patch
+
+-------------------------------------------------------------------
+Tue May  3 14:52:47 UTC 2016 - rpm@fthiessen.de
+
+- Update to new release 2.83.7:
+  * Import of URDF files, universal robot description files.
+     A URDF file can be imported as rigid bodies (btRigidBody) or
+     as multi body (btMultiBody). See the example browser under
+     importers.
+  * Improved support for btMultiBody with multi-degree of freedom
+    mobilizers, thanks to Jakub Stepien.
+  * New btGeneric6DofSpring2Constraint, replacing the old one.
+    Thanks to Gabor PUHR and Tamas Umenhoffer.
+  * OpenCL demo integrated in the ExampleBrowser. The demo is
+    disabled by default.
+  * Implicit integration of gyroscopic forces.
+- Add fix-gtest.patch to fix unit tests
+
+-------------------------------------------------------------------
+Fri Aug  1 15:37:44 UTC 2014 - dap.darkness@gmail.com
+
+- Resolved bnc#889897:
+  * deleted Extras and Glut dirs.
+
+-------------------------------------------------------------------
+Sat Jul 19 06:45:07 UTC 2014 - dap.darkness@gmail.com
+
+- switched back to source archive to submit to Factory: http://
+  lists.opensuse.org/archive/opensuse-factory/2014-07/msg00173.html
+
+-------------------------------------------------------------------
+Mon Feb 10 19:56:31 UTC 2014 - dap.darkness@gmail.com
+
+- updated to 2.82:
+  * Featherstone Articulated btMultiBody, with two-way interaction
+    with regular btRigidBody. See Bullet/Demos/
+    /FeatherstoneMultiBodyDemo. Thanks to Stephen Thompson for the
+    initial Featherstone implementation, and Martin Felis and Jakub
+    Stepien for the discussion and information.
+  * New MLCP constraint solver interface for higher quality direct
+    solvers. Dantzig (by Russel Smith OpenDE), PATH and Projected
+    Gauss Seidel Mixed Linear Complementarity solvers, with
+    fallback to the original Bullet sequential impulse solver. In a
+    nutshell, direct MLCP solvers are useful when higher quality
+    simulation is needed, for example in robotics. The performance
+    is less than the PGS/SI solver, but it usually convergence
+    faster to a good solution. See src/BulletDynamics/MLCPSolvers
+    and Bullet/Demos/ForkLiftDemo for an example.
+  * New btFixedConstraint as alternative to a
+    btGeneric6DofConstraint with all DOFs locked.
+    See Demos/VoronoiFractureDemo
+  * Various bug fixes, related to force feedback and friction.
+    Improved performance between btCompoundShape using the new
+    btCompoundCompoundCollisionAlgorithm. See the commit log at
+    https://code.google.com/p/bullet/source/list
+- switched to download_files service.
+- "E: no-pkg-config-provides" was fixed via pkgconfig required.
+- "W: files-duplicate" was fixed via fdupes macro.
+
+-------------------------------------------------------------------
+Sat Aug 24 23:37:28 UTC 2013 - prusnak@opensuse.org
+
+- updated to 2.81
+
+-------------------------------------------------------------------
+Fri Jun 29 14:45:14 UTC 2012 - jengelh@inai.de
+
+- Stick to shared library naming guidelines
+- Replace undefined macro on SLE11 to make install work again
+
+-------------------------------------------------------------------
+Thu Jun 28 09:18:09 UTC 2012 - sleep_walker@suse.cz
+
+- update spec file to 2.80
+
+-------------------------------------------------------------------
+Thu Jun 28 08:14:04 UTC 2012 - tcech@suse.com
+
+- update tarball check to 2.80
+
+-------------------------------------------------------------------
+Thu Jun 28 08:09:15 UTC 2012 - tcech@suse.com
+
+- update tarball to 2.80
+
+-------------------------------------------------------------------
+Wed Nov 23 16:44:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+- Employ shlib policy
+
+-------------------------------------------------------------------
+Tue Nov 22 07:33:44 UTC 2011 - jreidinger@suse.com
+
+- initial revision 2.79 
+

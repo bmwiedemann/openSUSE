@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Mar 25 01:59:39 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180817
+	* Floating support updates
+	* minor fixes
+
+-------------------------------------------------------------------
+Wed Feb 15 21:26:35 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170113
+- tweak dependency list
+- verified plaso run_tests.py didn't segfault
+
+-------------------------------------------------------------------
+Wed Jul 13 03:03:08 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160325
+	* fixed leaks in value and data handle
+	* fix in clear function
+	* 2016 update
+
+-------------------------------------------------------------------
+Wed Jan 27 17:53:26 UTC 2016 - Greg.Freemyer@gmail.com
+
+- Use internal libcdata package.  Getting segfaults otherwise.
+- spec-cleaner removed redundant License: fields
+
+-------------------------------------------------------------------
+Wed Jan 20 22:39:17 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20151226
+	* applied updates
+	* added value clear function
+	* code clean up
+	* added NULL type
+	* upgraded release status from experimental to alpha
+- verified libcerror and libcstring in OBS were the latest release 
+
+-------------------------------------------------------------------
+Thu Jan  8 23:19:52 UTC 2015 - Greg.Freemyer@gmail.com
+
+- initial package (v0~20150104)
+

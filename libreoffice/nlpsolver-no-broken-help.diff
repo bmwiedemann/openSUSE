@@ -1,0 +1,12 @@
+--- nlpsolver/src/com/sun/star/comp/Calc/NLPSolver/META-INF/manifest.xml.old	2012-03-27 18:22:01.000000000 +0200
++++ nlpsolver/src/com/sun/star/comp/Calc/NLPSolver/META-INF/manifest.xml	2012-03-30 16:44:37.000000000 +0200
+@@ -2,8 +2,6 @@
+ <manifest:manifest xmlns:manifest="http://openoffice.org/2001/manifest">
+   <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-components"
+                        manifest:full-path="components.rdb"/>
+-  <manifest:file-entry manifest:media-type="application/vnd.sun.star.help"
+-                       manifest:full-path="help"/>
+   <manifest:file-entry manifest:media-type="application/vnd.sun.star.package-bundle-description"
+                        manifest:full-path="description/extensiondescription.txt"/>
+ </manifest:manifest>
+\ No newline at end of file

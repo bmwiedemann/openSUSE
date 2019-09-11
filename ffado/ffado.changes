@@ -1,0 +1,285 @@
+-------------------------------------------------------------------
+Thu Jan  3 16:54:02 UTC 2019 - davejplater@gmail.com
+
+- Update to release 2.4.1
+- Removed uneeded and incorporated patches:
+  libffado-SConstruct-py3.patch, ffado-gcc6.patch and byteswap.patch
+- Upstream changes:
+  *Fix some python syntax which was not compatible with python3.
+   These were missed during the preparation of FFADO 2.4.0.
+  *Modify the SCons build system to allow for scons running under
+   python3.
+  *Merge distribution patches provided by package maintainers.
+  *Address some difficulties experienced by package maintainers
+   when compiling FFADO.
+  *Improve the output of ffado-diag.
+
+-------------------------------------------------------------------
+Sun Oct 21 09:06:50 UTC 2018 - schwab@suse.de
+
+- byteswap.patch: ensure byte swap macros are available for all components
+
+-------------------------------------------------------------------
+Fri Aug 17 20:24:42 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to always build with SSE2,
+  independent of build system CPU (boo#1100677)
+
+-------------------------------------------------------------------
+Thu Feb  8 08:00:44 UTC 2018 - davejplater@gmail.com
+
+- Update to release 2.4.0 and fix build against glibc-2.27
+  see boo#1079938.
+- Removed patches fixed upstream:
+  ffado_SConstruct_powerpc_update.patch and sigev.patch.
+- Rebased libffado-SConstruct-py3.patch partially fixed upstream.
+- Added ffado-nosys.patch for missing import sys in SConstruct.
+- Rebased ffado-gcc6.patch, partially fixed upstream.
+- Upstream changes:
+  *Numerous build system and code improvements to support
+   architectures such as MIPS, x32 and various PowerPC flavours.
+  *A large number of fixes for newer versions of gcc
+  (particularly versions 6 and 7).
+  *Initial support for the optional TCO module of the
+   RME Fireface-800.
+  *Expanded ffado-mixer support for the Phase88 device.
+  *Initial work to make ffado-mixer compatible with
+   python3/pyqt5.
+  *Start work towards compatibility with scons3.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:56:01 UTC 2017 - dimstar@opensuse.org
+
+- Extend libffado-SConstruct-py3.patch: convert more of the build
+  tools to python3. This allows us not to pull a different version
+  of python into buildroot than is not already used by SCons.
+
+-------------------------------------------------------------------
+Fri Nov 24 05:54:08 UTC 2017 - davejplater@gmail.com
+
+- Added conditional for libffado-SConstruct-py3.patch to only apply
+  if scons built with python 3.
+
+-------------------------------------------------------------------
+Thu Nov 23 12:02:50 UTC 2017 - astieger@suse.com
+
+- Fix building with python3 scons, add libffado-SConstruct-py3.patch
+
+-------------------------------------------------------------------
+Mon Jul 31 12:08:17 UTC 2017 - schwab@suse.de
+
+- sigev.patch: add missing header to define SIGEV_THREAD
+
+-------------------------------------------------------------------
+Wed Apr 12 10:44:23 UTC 2017 - davejplater@gmail.com
+
+- Modify libffado-date_time.patch to allow reproducible builds.
+
+-------------------------------------------------------------------
+Fri Mar 31 13:41:22 UTC 2017 - davejplater@gmail.com
+
+- Update to 2.3.0
+- Fix gcc7 errors with -fpermissive see boo#1030245
+- Removed obsolete udev macro definition
+- Rebased ffado_SConstruct_powerpc_update.patch and
+  ffado-gcc6.patch
+- Duplicated %build scons statement in %install to prevent a
+  complete rebuild of the package.
+- Upstream changes:
+  *Configuration entries added for additional devices which work
+   with the generic support layer (PreSonus Studiolive 32.4.2,
+   Presonus StudioLive 16.0.2, ICON FireXon, Onyx Blackbird and
+   the new Onyx 1640i, among others).
+  *Support added for the newer Focusrite Saffire Pro 26.
+  *Improved build support for various downstream consumers.
+  *Better routing for selected Saffire devices and the Firestudio
+   Mobile.
+  *Significant cleanup and refinement of the M-Audio and Yamaha
+   driver.
+  *Compilation fixes for recent versions of gcc.
+  *Recover from dead streams without causing jackd to shut down.
+
+-------------------------------------------------------------------
+Sun Mar 20 10:58:31 UTC 2016 - davejplater@gmail.com
+
+- Use pkgconfig buildrequires where available and cleanup spec file.
+
+-------------------------------------------------------------------
+Wed Mar  2 18:56:55 UTC 2016 - dimstar@opensuse.org
+
+- Add --std=gnu++11 to EXTRA_FLAGS.
+
+-------------------------------------------------------------------
+Wed Mar  2 17:07:08 UTC 2016 - dimstar@opensuse.org
+
+- Replace libxmll++-devel BuildRequires with
+  pkgconfig(libxml++-2.6) in order to be ready for the
+  compatibility package introduction (libxml++ goes 3.0).
+
+-------------------------------------------------------------------
+Mon Feb  8 11:51:37 UTC 2016 - rguenther@suse.com
+
+- Add ffado-gcc6.patch to move #include <math.h> outside of a namespace
+  and to not declare errno as local variable.
+
+-------------------------------------------------------------------
+Wed Mar 11 13:57:03 UTC 2015 - normand@linux.vnet.ibm.com
+
+- SConstruct is_powerpc and is_64bit to support ppc64le
+  with new ffado_SConstruct_powerpc_update.patch
+
+-------------------------------------------------------------------
+Wed Mar  4 13:41:05 UTC 2015 - wbauer@tmo.at
+
+- Install udev rule to the correct directory by removing the incorrect
+  redefinition of %_udevrulesdir. It is defined already in
+  systemd-rpm-macros which is preinstalled in OBS. (boo#911303)
+
+-------------------------------------------------------------------
+Sun Sep 21 14:00:23 UTC 2014 - davejplater@gmail.com
+
+- Update to bugfix version 2.2.1
+- Fixes compilation failures when DEBUG=no is specified
+- Upstream changes for 2.2.0:
+  *Many bugs fixed
+    Mixer, router and monitor support for Saffire Pro 14
+    Mixer and router support for Presonus Firestudio Tube,
+     Presonus Firestudio Project, and M-Audio Profire 2626
+    Support Echo Audio AudioFire12 with firmware versions 5.0 and
+     later (addresses ticket 360)
+    Echo Audio device mixer additions:
+    hide SPDIF mode switch on AudioFire12
+    digital interface switch on AudioFire8 and Pre8
+    phantom power switch for AudioFire4 (addresses ticket 364)
+    playback routing for AudioFire2/4 (addresses ticket 335)
+  *Presonus device mixer additions:
+    better support the FP10 (formerly known as the Firepod)
+    implement support for the Firebox and Inspire1394
+  *M-Audio mixer additions:
+    improve support for the Ozonic
+    add support for Firewire Solo (ticket 336), Audiophile, 410, 1814
+     and ProjectMix I/O
+  *Device-specific mixer for Yamaha GO44 and GO46 interfaces added
+  *RME Fireface 400/800 improvements:
+    mixer and device settings can now be saved to and restored from
+     device flash clock source selection made more consistent
+  *DICE EAP / RME Matrix mixer enhancements:
+    "per output" view with mono/stereo control saving of mixer
+     settings to file
+    more consistent cooperation with jackd when sample rate is changed
+  *Audio streaming support added or refined for additional MOTU
+   interfaces:
+    Traveller mk 3
+    Ultralite mk 3
+    Ultralite hybrid (using firewire interface only)
+    4pre
+- Known issues:
+  *Saffire Pro 40 at 96 kHz fails to start most of the time
+   (ticket 326)
+  *Saffire Pro 24 and Pro 40 MIDI problems (tickets 372 and 375)
+  *Saffire Pro 24 and Pro 40 lack an ADAT/SPDIF switch
+  *Only mixer control is supported on M-Audio 1814 and M-Audio,
+   ProjectMix
+  *M-Audio Audiophile, 410 and 1814 require startup workaround.
+   See http://sourceforge.net/p/ffado/mailman/message/30807938
+  *M-Audio Audiophile, 410 and 1814 will only work with FFADO when
+   loaded with the latest firmware
+
+-------------------------------------------------------------------
+Tue Mar  4 06:09:00 UTC 2014 - coolo@suse.com
+
+- own /usr/lib/udev directory to avoid buildrequiring udev
+
+-------------------------------------------------------------------
+Fri Apr 26 08:46:14 UTC 2013 - fcrozat@suse.com
+
+- Move udev rules to /usr/lib/udev for openSUSE 12.3 or later.
+
+-------------------------------------------------------------------
+Mon Dec 24 19:15:58 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2.1.0 version:
+  * Significantly improved support for the new "juju" firewire stack 
+    found in newer kernels
+  * Support for JACK freewheeling mode and set-buffer-size operation
+  * Lower CPU usage
+  * udev rules included in FFADO to give user access to audio device files
+  * More stable streaming
+  * Fix crash when realtime system clock was set
+  * Fix race conditions and invalid memory accesses on shutdown
+  * Fixes for clean compilation on recent gcc versions (up to 4.7)
+  * ffado-diag enhanced to aid debugging efforts
+  * Many bugs fixed 
+- Remove patchs merged on upstream release:
+  * ffado-gcc47.patch
+  * libffado-bswap.patch
+- Do not use and include ChangeLog in the package because the svn repo is down
+  and this file could not be update
+- Remove useless conditional macros
+
+-------------------------------------------------------------------
+Wed Jun 27 14:26:34 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build
+
+-------------------------------------------------------------------
+Sat Mar 24 14:35:27 UTC 2012 - dimstar@opensuse.org
+
+- Add ffado-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Mar 12 15:58:45 UTC 2012 - davejplater@gmail.com
+
+- Added "Recommends: ffado-mixer" to the ffado rpm.
+
+-------------------------------------------------------------------
+Sat Mar  3 06:16:14 UTC 2012 - davejplater@gmail.com
+
+- Update to ffado-svn revision 2040 to fix bnc#747391 & bnc#736115
+- Upstream changes, see /usr/share/doc/packages/ffado/ChangeLog
+
+-------------------------------------------------------------------
+Sun Oct 16 17:31:51 UTC 2011 - mhrusecky@suse.cz
+
+- adding -fPIC on arm (fixes build)
+
+-------------------------------------------------------------------
+Tue Nov  2 20:36:45 UTC 2010 - coolo@novell.com
+
+- move doc generation into 2nd spec file
+
+-------------------------------------------------------------------
+Tue Nov  2 15:31:51 UTC 2010 - davejplater@gmail.com
+
+- Fix some rpmlint errors
+
+-------------------------------------------------------------------
+Mon Nov  1 10:07:50 UTC 2010 - coolo@novell.com
+
+- remove qt dependency, splitted into ffado-mixer spec file
+
+-------------------------------------------------------------------
+Thu Sep 30 10:38:42 UTC 2010 - davejplater@gmail.com
+
+- Update to version 2.0.1
+- Upstream changes :-
+  Make it work on the new firewire-stack.
+  Of course some more fixes went into the package. But its mostly
+  intended for distributors so they can finally deprecate/disable the
+  old firewire stack in kernels.
+  For more changelog and instructions please look back at the 2.0.0
+  release announcement http://www.ffado.org/?q=release/2.0.0
+
+-------------------------------------------------------------------
+Wed Jun 16 06:03:13 UTC 2010 - davejplater@gmail.com
+
+- Update to svn 1856. 
+- Upstream changes : Make it easier for distributions to define
+  their own additional built-flags.
+  Numerous bug fixes, see ChangeLog for details.
+
+-------------------------------------------------------------------
+Fri Apr 30 08:18:48 UTC 2010 - davejplater@gmail.com
+
+- Created package ffado version 2.0.0
+

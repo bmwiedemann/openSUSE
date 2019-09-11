@@ -1,0 +1,36 @@
+From e5df282e32ca7636734d1954cdd33728ffbba6dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 19 Sep 2011 09:43:53 +0200
+Subject: [PATCH] Recognize OBS (Open Build Service)
+
+---
+ build/xplatproviders/config.guess |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/build/xplatproviders/config.guess b/build/xplatproviders/config.guess
+index d5c5314..4d1d395 100755
+--- a/build/xplatproviders/config.guess
++++ b/build/xplatproviders/config.guess
+@@ -152,6 +152,10 @@ IsLinux="false"         # Used by the discovery wizard for workflow
+        then
+          OSAlias="openSUSE"
+        fi
++     elif [ "$1" == "OBS" ]
++     then
++       OSAlias="openSUSE"
++       OSName="openSUSE"
+      fi
+    }
+ 
+@@ -182,6 +186,8 @@ then
+   elif [ -r /etc/SUSE-release ]; then GetLinuxInfo "/etc/SUSE-release"
+   elif [ -r /etc/redhat-release ]; then GetLinuxInfo "/etc/redhat-release"
+   elif [ -r /etc/fedora-release ]; then GetLinuxInfo "/etc/fedora-release"
++  # Open Build Service ?!
++  elif [ -d /etc/SuSEconfig ]; then GetLinuxInfo "OBS"
+   fi
+   if [ "${OSAlias}" == "Unknown" ]
+   then
+-- 
+1.7.6.1
+

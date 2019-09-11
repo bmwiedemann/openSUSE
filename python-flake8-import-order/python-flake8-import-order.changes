@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Mar 12 15:18:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.18.1:
+  * Fix case-sensitive related I100 errors for the pycharm style
+  * Fix noqa regexp
+- Run fdupes
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 12 16:00:21 UTC 2018 - arun@gmx.de
+
+- update to version 0.18:
+  * Add new Python 3.7 modules to the stdlib list, and support 3.7.
+
+-------------------------------------------------------------------
+Sun May  6 19:39:31 UTC 2018 - arun@gmx.de
+
+- update to version 0.17.1:
+  * Rebuild of 0.17 with the latest setuptools to fix an enum34
+    dependency bug.
+
+-------------------------------------------------------------------
+Sun Apr 15 14:12:06 UTC 2018 - afaerber@suse.de
+
+- Run spec-cleaner to fix URL (for factory-auto)
+
+-------------------------------------------------------------------
+Sat Mar 10 17:48:15 UTC 2018 - afaerber@suse.de
+
+- Add runtime Requires for enum34 and pycodestyle
+
+-------------------------------------------------------------------
+Sun Mar  4 20:04:19 UTC 2018 - afaerber@suse.de
+
+- Drop SLE11 support (scarabeus_iv)
+- Update to 0.17
+* Package README and license
+* Require enum34 for Python 2.x and pycodestyle
+
+-------------------------------------------------------------------
+Sun Mar  4 15:04:55 UTC 2018 - afaerber@suse.de
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Jul 10 12:24:48 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.4.1
+  - No upstream changelog
+
+-------------------------------------------------------------------
+Mon Mar 24 13:08:43 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

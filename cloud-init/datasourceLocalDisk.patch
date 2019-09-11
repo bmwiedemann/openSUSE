@@ -1,0 +1,104 @@
+--- cloudinit/sources/DataSourceLocalDisk.py	2016/11/25 19:01:00	1.1
++++ cloudinit/sources/DataSourceLocalDisk.py	2016/11/26 20:42:02
+@@ -0,0 +1,101 @@
++# vi: ts=4 expandtab
++#
++#    Copyright (C) 2016 SUSE Linux GmbH
++#
++#    Author: Thorsten Kukuk <kukuk@suse.com>
++#
++#    This program is free software: you can redistribute it and/or modify
++#    it under the terms of the GNU General Public License version 3, as
++#    published by the Free Software Foundation.
++#
++#    This program is distributed in the hope that it will be useful,
++#    but WITHOUT ANY WARRANTY; without even the implied warranty of
++#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#    GNU General Public License for more details.
++#
++#    You should have received a copy of the GNU General Public License
++#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++import os
++
++from cloudinit import log as logging
++from cloudinit import sources
++from cloudinit import util
++
++LOG = logging.getLogger(__name__)
++
++DEFAULT_IID = "iid-localdisk"
++
++
++class DataSourceLocalDisk(sources.DataSource):
++    def __init__(self, sys_cfg, distro, paths):
++        sources.DataSource.__init__(self, sys_cfg, distro, paths)
++        self.seed = None
++        self.seed_dir = os.path.join(paths.seed_dir, 'localdisk')
++
++    def __str__(self):
++        root = sources.DataSource.__str__(self)
++        return "%s [seed=%s][dsmode=%s]" % (root, self.seed, self.dsmode)
++
++    def get_data(self):
++        if not os.path.isdir('/cloud-init-config'):
++            return False
++
++        defaults = {"instance-id": DEFAULT_IID}
++
++        found = []
++        mydata = {'meta-data': {}, 'user-data': "", 'vendor-data': ""}
++
++        # Check to see if the seed dir has data.
++        try:
++            seeded = util.pathprefix2dict(self.seed_dir, ['user-data','meta-data'],['vendor-data'])
++            found.append(self.seed_dir)
++            mydata = _merge_new_seed(mydata, seeded)
++        except ValueError as e:
++            pass
++
++        try:
++            seeded = util.pathprefix2dict('/cloud-init-config', ['user-data','meta-data'],['vendor-data'])
++            found.append('/cloud-init-config')
++            mydata = _merge_new_seed(mydata, seeded)
++        except ValueError as e:
++            return False
++
++        # Merge in the defaults
++        mydata['meta-data'] = util.mergemanydict([mydata['meta-data'],
++                                                  defaults])
++
++        self.seed = ",".join(found)
++        self.metadata = mydata['meta-data']
++        self.userdata_raw = mydata['user-data']
++        self.vendordata_raw = mydata['vendor-data']
++        return True
++
++    def check_instance_id(self, sys_cfg):
++        # quickly (local check only) if self.instance_id is still valid
++        return sources.instance_id_matches_system_uuid(self.get_instance_id())
++
++def _merge_new_seed(cur, seeded):
++    ret = cur.copy()
++
++    newmd = seeded.get('meta-data', {})
++    if not isinstance(seeded['meta-data'], dict):
++        newmd = util.load_yaml(seeded['meta-data'])
++    ret['meta-data'] = util.mergemanydict([cur['meta-data'], newmd])
++
++    if 'user-data' in seeded:
++        ret['user-data'] = seeded['user-data']
++    if 'vendor-data' in seeded:
++        ret['vendor-data'] = seeded['vendor-data']
++    return ret
++
++
++# Used to match classes to dependencies
++datasources = [
++    (DataSourceLocalDisk, (sources.DEP_FILESYSTEM, )),
++]
++
++
++# Return a list of data sources that match this set of dependencies
++def get_datasource_list(depends):
++    return sources.list_from_depends(depends, datasources)

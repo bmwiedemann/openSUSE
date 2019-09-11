@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/grafana/grafana</param>
+    <param name="changesrevision">84d0a71b25a949fde79a7054241a28d2f2e25999</param>
+  </service>
+</servicedata>

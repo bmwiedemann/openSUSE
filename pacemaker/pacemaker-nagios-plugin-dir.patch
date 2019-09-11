@@ -1,0 +1,19 @@
+commit f813880dd1b6d1614393128a7f5f745437bea121
+Author: Gao,Yan <ygao@suse.com>
+Date:   Wed Mar 27 22:03:56 2013 +0800
+
+    Build: lrmd: Change the default directory for nagios plugins
+
+diff --git a/configure.ac b/configure.ac
+index 9ad7413..135a365 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1218,7 +1218,7 @@ AC_DEFINE_UNQUOTED(SUPPORT_NAGIOS, $SUPPORT_NAGIOS, Support nagios plugins)
+ AM_CONDITIONAL(BUILD_NAGIOS, test $SUPPORT_NAGIOS = 1)
+ 
+ if test x"$NAGIOS_PLUGIN_DIR" = x""; then
+-    NAGIOS_PLUGIN_DIR="${libexecdir}/nagios/plugins"
++    NAGIOS_PLUGIN_DIR="${prefix}/lib/nagios/plugins"
+ fi
+ 
+ AC_DEFINE_UNQUOTED(NAGIOS_PLUGIN_DIR, "$NAGIOS_PLUGIN_DIR", Directory for nagios plugins)

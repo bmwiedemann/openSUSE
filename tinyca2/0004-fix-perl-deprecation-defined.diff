@@ -1,0 +1,21 @@
+diff -uNr tinyca2-0.7.5/lib/GUI.pm new_tinyca2-0.7.5/lib/GUI.pm
+--- tinyca2-0.7.5/lib/GUI.pm	2018-09-27 16:30:17.177356172 +0200
++++ new_tinyca2-0.7.5/lib/GUI.pm	2018-09-27 16:27:03.351066267 +0200
+@@ -1249,7 +1249,7 @@
+    # table for request data
+    my $cc=0;
+    my $ous = 1;
+-   if(defined($opts->{'OU'}) and defined @{$opts->{'OU'}}) {
++   if(defined($opts->{'OU'}) and (@{$opts->{'OU'}})) {
+       $ous = @{$opts->{'OU'}} - 1;
+    }
+    $reqtable = Gtk2::Table->new(1, 13 + $ous, 0);
+@@ -1297,7 +1297,7 @@
+          _("Organization Name (eg. company):"),
+          \$opts->{'O'}, $reqtable, 10, 1);
+ 
+-   if(defined($opts->{'OU'}) and defined @{$opts->{'OU'}}) {
++   if(defined($opts->{'OU'}) and (@{$opts->{'OU'}})) {
+       foreach my $ou (@{$opts->{'OU'}}) {
+          $entry = GUI::HELPERS::entry_to_table(
+                _("Organizational Unit Name (eg. section):"),

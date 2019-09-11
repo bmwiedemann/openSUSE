@@ -1,0 +1,97 @@
+From 96436417da5d1f8912042124bd2a8b98f091f280 Mon Sep 17 00:00:00 2001
+From: Chingkai <chuchingkai@gmail.com>
+Date: Fri, 19 Oct 2018 13:37:15 +0800
+Subject: [PATCH] schemas: Add settings for
+ org.gnome.desktop.background.lockdialog
+
+This key is for the background of lockDialogGroup which makes login
+and lock background configurable. The default behavior will be
+retained to what it is currently.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/issues/680
+---
+ schemas/meson.build                                |  1 +
+ ...me.desktop.background.lockdialog.gschema.xml.in | 59 ++++++++++++++++++++++
+ 2 files changed, 60 insertions(+)
+ create mode 100644 schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
+
+diff --git a/schemas/meson.build b/schemas/meson.build
+index 69a3f98..4e8c8f9 100644
+--- a/schemas/meson.build
++++ b/schemas/meson.build
+@@ -15,6 +15,7 @@ schemas = [
+   'org.gnome.desktop.thumbnailers.gschema.xml',
+   'org.gnome.desktop.session.gschema.xml',
+   'org.gnome.desktop.background.gschema.xml',
++  'org.gnome.desktop.background.lockdialog.gschema.xml',
+   'org.gnome.desktop.calendar.gschema.xml',
+   'org.gnome.desktop.datetime.gschema.xml',
+   'org.gnome.desktop.media-handling.gschema.xml',
+diff --git a/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in b/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
+new file mode 100644
+index 0000000..b38e699
+--- /dev/null
++++ b/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
+@@ -0,0 +1,59 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<schemalist gettext-domain="gsettings-desktop-schemas">
++  <schema id="org.gnome.desktop.background.lockdialog" path="/org/gnome/desktop/background/lockdialog/">
++    <key name="picture-options" enum="org.gnome.desktop.GDesktopBackgroundStyle">
++      <default>'wallpaper'</default>
++      <summary>Picture Options</summary>
++      <description>
++        Determines how the image set by wallpaper_filename is rendered.
++        Possible values are “none”, “wallpaper”, “centered”, “scaled”,
++        “stretched”, “zoom”, “spanned”.
++      </description>
++    </key>
++    <key name="picture-uri" type="s">
++      <default>'resource:///org/gnome/shell/theme/noise-texture.png'</default>
++      <summary>Picture URI</summary>
++      <description>
++        URI to use for the background image. Note that the backend only supports
++        local (file://) URIs.
++      </description>
++    </key>
++    <key name="picture-opacity" type="i">
++      <range min="0" max="100"/>
++      <default>100</default>
++      <summary>Picture Opacity</summary>
++      <description>
++        Opacity with which to draw the background picture.
++      </description>
++    </key>
++    <key name="primary-color" type="s">
++      <default>'#2e3436'</default>
++      <summary>Primary Color</summary>
++      <description>
++        Left or Top color when drawing gradients, or the solid color.
++      </description>
++    </key>
++    <key name="secondary-color" type="s">
++      <default>'#2e3436'</default>
++      <summary>Secondary Color</summary>
++      <description>
++        Right or Bottom color when drawing gradients, not used for solid color.
++      </description>
++    </key>
++    <key name="color-shading-type" enum="org.gnome.desktop.GDesktopBackgroundShading">
++      <default>'solid'</default>
++      <summary>Color Shading Type</summary>
++      <description>
++        How to shade the background color. Possible values are “horizontal”,
++        “vertical”, and “solid”.
++      </description>
++    </key>
++    <key name="show-desktop-icons" type="b">
++      <default>false</default>
++      <summary>Have file manager handle the desktop</summary>
++      <description>
++        If set to true, then file manager will draw the icons on the desktop.
++      </description>
++    </key>
++  </schema>
++</schemalist>
+-- 
+2.16.4
+

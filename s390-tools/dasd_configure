@@ -1,0 +1,173 @@
+#! /bin/sh
+#
+# dasd_configure
+#
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# Configures a DASD device by calling the IBM-provided chzdev command.
+# Whereas this script used to validate the parameters provided to it,
+# we now rely on chzdev to do that instead. The script is intended only
+# as a "translation layer" to provide backward compatability for older
+# scripts and tools that invoke it.
+#
+# Usage:
+#   dasd_configure [-f -t <dasd_type> ] <ccwid> <online> [use_diag]
+#
+#	-f Override safety checks
+#	-t DASD type. Must be provided if -f is used. Only dasd-eckd and
+#                     dasd-fba are supported - Deprecated
+#	ccwid = x.y.ssss where
+#		x is always 0 until IBM creates something that uses that number
+#		y is the logical channel subsystem (lcss) number. Most often
+#                 this is 0, but it could be non-zero
+#		ssss is the four digit subchannel address of the device, in
+#                    hexidecimal, with leading zeros.
+#	online = 0 to take the device offline
+#		 1 to bring the device online
+#	use_diag = 0 to _not_ use z/VM DIAG250 I/O, which is the default
+#		   1 to use z/VM DIAG250 I/O
+#
+# Return values:
+#   Return codes are determined by the chzdev command, with one exception: If a
+#   DASD volume is not formatted, we will issue a return code of 8.
+#
+
+mesg () {
+    echo "$@"
+}
+
+debug_mesg () {
+    case "${DEBUG}" in
+	yes) mesg "$@" ;;
+	*) ;;
+    esac
+}
+
+add_cio_channel() {
+	echo "$* # ${DATE}" >> /boot/zipl/active_devices.txt
+}
+
+remove_cio_channel() {
+	[ -w /boot/zipl/active_devices.txt ] && sed -i -e "/^${1}/d" /boot/zipl/active_devices.txt
+}
+
+usage(){
+  echo "Usage: ${0} [-f -t <dasd_type> ] <ccwid> <online> [use_diag]"
+  echo
+  echo "	-f Override safety checks"
+  echo "	-t DASD type. Must be provided if -f is used. Only dasd-eckd and"
+  echo "                      dasd-fba are supported - Deprecated"
+  echo "	ccwid = x.y.ssss where"
+  echo "		x is always 0 until IBM creates something that uses that number"
+  echo "		y is the logical channel subsystem (lcss) number. Most often"
+  echo "                  this is 0, but it could be non-zero"
+  echo "		ssss is the four digit subchannel address of the device, in"
+  echo "                     hexidecimal, with leading zeros."
+  echo "	online = 0 to take the device offline"
+  echo "		 1 to bring the device online"
+  echo "	use_diag = 0 to _not_ use z/VM DIAG250 I/O, which is the default"
+  echo "		   1 to use z/VM DIAG250 I/O"
+}
+
+if [ "${DEBUG}" != "yes" ]; then
+  DEBUG="no"
+fi
+
+DATE=$(date)
+
+DASD_FORCE=0
+
+############################################################
+# Parse the parameters from the command line
+#
+ARGS=$(getopt --options ft: -n "dasd_configure" -- "$@")
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+
+eval set -- "${ARGS}"
+debug_mesg "All the parms passed were ${ARGS}"
+
+while true; do
+	case "${1}" in
+		-f) debug_mesg "This used to mean udev rules will always be generated."
+                    debug_mesg "For chzdev, it means safety checks will be overridden."
+                    debug_mesg "Kinda sorta the same thing, really."
+                    PARM_LIST="${PARM_LIST} -f"
+		    DASD_FORCE=1
+                    shift 1
+                    ;;
+		-t) debug_mesg "This used to set the card type to ${2}"
+                    debug_mesg "Now it gets ignored."
+                    shift 2
+                    ;;
+		--) debug_mesg "Found the end of parms indicator: --"
+                    shift 1
+                    break
+                    ;;
+                *)  debug_mesg "At the catch-all select entry"
+                    debug_mesg "What was selected was ${1}"
+                    shift 1
+                    ;;
+        esac
+done
+
+CCW_CHAN_ID=${1}
+ON_OFF=${2}
+USE_DIAG=${3}
+
+if [ -z "${CCW_CHAN_ID}" ] || [ -z "${ON_OFF}" ]; then
+  mesg "You didn't specify all the needed parameters."
+  usage
+  exit 1
+fi
+
+if [ -n "${USE_DIAG}" ]; then
+  PARM_LIST="${PARM_LIST} use_diag=${USE_DIAG}"
+else PARM_LIST="${PARM_LIST} use_diag=0"
+fi
+
+if [ "${ON_OFF}" == 0 ]; then
+  debug_mesg "chzdev -d dasd --no-root-update ${CCW_CHAN_ID}"
+  chzdev -d dasd --no-root-update ${CCW_CHAN_ID}
+elif [ "${ON_OFF}" == 1 ]; then
+  debug_mesg "chzdev -e dasd --no-root-update ${CCW_CHAN_ID} ${PARM_LIST}"
+  chzdev -e dasd --no-root-update ${CCW_CHAN_ID} ${PARM_LIST}
+else mesg "You must specify a 0 or a 1 for the online/offline attribute."
+     usage
+     exit 1
+fi
+
+RC=${?}
+if [ ${RC} -ne 0 ]; then
+  exit ${RC}
+elif [ ${ON_OFF} == 1 ]; then
+    exitcode=0
+    # Extract the full busid so that we can reference the proper entries in /sys
+    BUSID=$(/sbin/lszdev dasd ${CCW_CHAN_ID} | /usr/bin/sed -e 1d | /usr/bin/tr -s " " | /usr/bin/cut -f2 -d" " )
+    # Make sure the DASD volume came online
+    for ((counter=0; counter<30; counter++)); do
+      sleep 0.1
+      read online < /sys/bus/ccw/devices/${BUSID}/online
+      if [ ${online} -eq 1 ] ; then
+        break
+      fi
+    done
+
+    if [ ${online} -ne 1 ]; then
+      debug_mesg "DASD ${CCW_CHAN_ID} did not come online."
+      exit 17
+    fi
+
+    # Check to see if the DASD volume is unformatted. If so, let YaST know.
+    read status < /sys/bus/ccw/devices/${BUSID}/status
+    if [ "${status}" == "unformatted" ]; then
+      mesg "DASD ${CCW_CHAN_ID} is unformatted."
+      exitcode=8
+    fi
+fi
+
+if [ ${ON_OFF} == 1 ]; then
+  add_cio_channel "${CCW_CHAN_ID}"
+else remove_cio_channel "${CCW_CHAN_ID}"
+fi
+
+exit ${exitcode}

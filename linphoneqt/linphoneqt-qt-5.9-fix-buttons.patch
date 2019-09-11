@@ -1,0 +1,11 @@
+--- a/ui/modules/Common/Form/Buttons/AbstractTextButton.qml
++++ b/ui/modules/Common/Form/Buttons/AbstractTextButton.qml
+@@ -58,6 +58,8 @@ Item {
+ 
+     background: Rectangle {
+       color: _getBackgroundColor()
++      height: parent.height
++      width: parent.width
+       radius: AbstractTextButtonStyle.background.radius
+     }
+ 

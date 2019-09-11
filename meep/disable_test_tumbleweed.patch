@@ -1,0 +1,20 @@
+--- meep-1.9.0/tests/Makefile.in.orig	2019-05-27 11:52:03.774482872 +0200
++++ meep-1.9.0/tests/Makefile.in	2019-05-27 11:52:33.579048528 +0200
+@@ -94,7 +94,7 @@
+ 	integrate$(EXEEXT) known_results$(EXEEXT) near2far$(EXEEXT) \
+ 	one_dimensional$(EXEEXT) physical$(EXEEXT) \
+ 	stress_tensor$(EXEEXT) symmetry$(EXEEXT) three_d$(EXEEXT) \
+-	two_dimensional$(EXEEXT) 2D_convergence$(EXEEXT) \
++	two_dimensional$(EXEEXT) \
+ 	h5test$(EXEEXT) pml$(EXEEXT) pw-source-ll$(EXEEXT) \
+ 	ring-ll$(EXEEXT) cyl-ellipsoid-ll$(EXEEXT) \
+ 	absorber-1d-ll$(EXEEXT) array-slice-ll$(EXEEXT) \
+@@ -107,7 +107,7 @@
+ 	known_results$(EXEEXT) near2far$(EXEEXT) \
+ 	one_dimensional$(EXEEXT) physical$(EXEEXT) \
+ 	stress_tensor$(EXEEXT) symmetry$(EXEEXT) three_d$(EXEEXT) \
+-	two_dimensional$(EXEEXT) 2D_convergence$(EXEEXT) \
++	two_dimensional$(EXEEXT) \
+ 	h5test$(EXEEXT) pml$(EXEEXT) $(am__EXEEXT_1)
+ @WITH_MPI_FALSE@am__append_1 = cyl-ellipsoid-ll array-slice-ll
+ subdir = tests

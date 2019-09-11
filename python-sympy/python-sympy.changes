@@ -1,0 +1,262 @@
+-------------------------------------------------------------------
+Wed Apr 17 12:28:18 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4
+  + Logic expressions with relations can now be simplifed in a
+    better way which has impact on e.g. simplification of
+    piecewise expressions
+  + The MathML Presentation printer has seen a major improvement
+    with support configuration and about a hundred new functions.
+  + Union and Intersection have been improved to, among other
+    improvements, support Python sets.
+  + The test procedure has been changed to include code coverage
+    and code quality checks leading to a number of issues being
+    identified and removed.
+  + Unicode support, especially for Python 2.7, has been improved.
+  + subs and Subs have been improved in a number of ways.
+  + SymPy objects now renders as LaTeX automatically in Jupyter
+    notebooks. init_printing is still required to LaTeX render
+    non-SymPy objects such as lists of expressions or Python ints
+
+-------------------------------------------------------------------
+Mon Oct 29 16:07:24 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix building on Leap
+
+-------------------------------------------------------------------
+Thu Sep 27 08:48:09 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Update python-sympy-rpmlintrc to reflect current reality.
+
+-------------------------------------------------------------------
+Sun Sep 16 16:00:54 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * package isympy file and __pycache__
+
+- update to version 1.3:
+ * see https://github.com/sympy/sympy/wiki/Release-Notes-for-1.3
+
+-------------------------------------------------------------------
+Wed Sep  5 03:52:12 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * removed devel from noarch
+
+- update to version 1.2:
+  * Highlights
+    + Python 3.3 is no longer supported. If you require Python 3.3
+      support, use SymPy 1.1.1. See our policy on dropping support for
+      major Python versions.
+    + Experimental LaTeX parsing with
+      sympy.parsing.latex.parse_latex() has been added, based on the
+      latex2sympy project. This requires antlr-python-runtime to be
+      installed. #13706
+    + The vector module has been improved to support orthogonal
+      curvilinear coordinate systems (Szymon Mieszczak's GSoC project)
+    + New module sympy.integrals.intpoly for integrating uni/bivariate
+      polynomials over 2-polytopes. (Arif Ahmed's GSoC project)
+    + Improvements to the code generation module. (Björn Dahlgren's
+      GSoC project)
+    + Improvements to the group theory module. See below for more
+      information. (Valeriia Gladkova's GSoC project)
+    + New module sympy.discrete for operating on discrete
+      sequences. (Sidhant Nagpal's GSoC project)
+  * for full changelog see
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.2
+
+-------------------------------------------------------------------
+Mon Nov 20 20:02:07 UTC 2017 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+- Fix recompilation for earlier python3 releases.
+
+-------------------------------------------------------------------
+Tue Nov 14 08:07:19 UTC 2017 - mlin@suse.com
+
+- Do not build require python-qt4, it does not be required at build time.
+
+-------------------------------------------------------------------
+Sun Aug 13 15:27:25 UTC 2017 - toddrme2178@gmail.com
+
+
+- Implement single-spec version
+- update to version 1.1.1:
+  * see the release notes for complete details:
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.1.1
+- update to version 1.1:
+  * see the release notes for complete details:
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.1
+- update to version 1.0:
+  * see the release notes for complete details:
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.0
+
+-------------------------------------------------------------------
+Tue May 19 20:46:59 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.7.6:
+  * see the release notes for complete details:
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-0.7.6
+- remove unwanted shebang from more python library files
+- add AUTHORS, LICENSE and README.rst to the package documentation
+- add update-alternatives as post and postun requires
+- fix update-alternatives
+
+-------------------------------------------------------------------
+Sat Nov 08 20:17:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Fri Mar  7 04:13:14 UTC 2014 - arun@gmx.de
+
+-  update to version 0.7.5
+
+  Major changes:
+  * The version of mpmath included in SymPy has been updated to 0.18.
+  * New routines for efficiently compute the dispersion of a polynomial or a pair thereof.
+  * Fancy indexing of matrices is now provided, e.g. A[:, [1, 2, 5]] selects all rows and only 3 columns.
+
+  * Enumeration of multiset partitions is now based on an
+    implementation of Algorithm 7.1.2.5M from Knuth's The Art of
+    Computer Programming. The new version is much faster, and includes
+    fast methods for enumerating only those partitions with a
+    restricted range of sizes, and counting multiset partitions. (See
+    the new file sympy.utilities.enumerative.py.)
+  * distance methods were added to Line and Ray to compute the shortest distance to them from a point.
+  * The normal_lines method was added to Ellipse to compute the lines from a point that strike the Ellipse at a normal angle.
+  * inv_quick and det_quick were added as functions in solvers.py to
+    facilitate fast solution of small symbolic matrices; their use in
+    solve has reduced greatly the time needed to solve such systems.
+  * solve_univariate_inequality has been added to sympy.solvers.inequalities.py.
+  * as_set attribute for Relationals and Booleans has been added.
+  * Several classes and functions strictly associated with vector
+    calculus were moved from sympy.physics.mechanics to a new package
+    sympy.physics.vector. (PRs #2732 #2862 #2894)
+  * New implementation of the Airy functions Ai and Bi and their
+    derivatives Ai' and Bi' (called airyai, airybi, airyaiprime and
+    airybiprime, respectively). Most of the usual features of SymPy
+    special function are present. Notable exceptions are Gruntz limit
+    computation helpers and meijerg special functions integration
+    code.
+  * Euler-Lagrange equations (function euler_equations) in a new package sympy.calculus (PR #2431).
+
+  Minor changes:
+  * Some improvements to the gamma function.
+  * generate_bell now generates correct permutations for any number of elements.
+  * It is no longer necessary to provide nargs to objects subclassed
+    from Function unless an eval class method is not defined. (If eval
+    is defined, the number of arguments will be inferred from its
+    signature.)
+  * geometric Point creation will be faster since simplification is done only on Floats
+  * Some improvements to the intersection method of the Ellipse.
+  * solutions from solve of equations involving multiple log terms are more robust
+  * idiff can now return higher order derivatives
+  * Added to_matrix() method to sympy.physics.vector.Vector and
+    sympy.physics.dyadic.Dyadic. (PR #2686).
+  * Printing improvements for sympy.physics.vector objects and
+    mechanics printing. (PRs #2687, #2728, #2772, #2862, #2894)
+  * Functions with LaTeX symbols now print correct LaTeX. (PR #2772)
+  * init_printing has several new options, including a flag
+    print_builtin to prevent SymPy printing of basic Python types (PR
+    #2683), and flags to let you supply custom printers (PR #2894).
+  * improvements in evaluation of imageset for Intervals (PR #2723).
+  * Set properties to determine boundary and interior (PR #2744).
+  * input to a function created by lambdify no longer needs to be flattened.
+
+  Backwards compatibility breaks and deprecations:
+  * the submatrix method of matrices was removed; access the
+    functionality by providing slices or list of rows/columns to
+    matrix directly, e.g. A[:, [1, 2]].
+  * Matrix([]) and Matrix([[]]) now both return a 0x0 matrix
+  * terms_gcd no longer removes a -1.0 from expressions
+  * extract_multiplicatively will not remove a negative Number from a
+    positive one, so (4*x*y).extract_multiplicatively(-2*x) will
+    return None.
+  * the shape of the result from M.cross(B) now has the same shape as matrix M.
+  * The factorial of negative numbers is now zoo instead of 0. This is
+    consistent with the definition factorial(n) = gamma(n + 1).
+  * 1/0 returns zoo, not oo (PR #2813).
+  * zoo.is_number is True (PR #2823).
+  * oo < I raises TypeError, just as for finite numbers (PR #2734).
+  * 1**oo == nan instead of 1, better documentation for Pow class (PR #2606).
+
+-------------------------------------------------------------------
+Sat Jan 11 01:34:28 UTC 2014 - arun@gmx.de
+
+- update to 0.7.4.1
+  * This was a small bugfix release to fix an import issue on Windows (https://github.com/sympy/sympy/issues/2681).
+
+- update to 0.7.4 (see https://github.com/sympy/sympy/wiki/Release-Notes-for-0.7.4)
+
+-------------------------------------------------------------------
+Thu Sep 26 06:56:12 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.7.3:
+  + See https://github.com/sympy/sympy/wiki/Release-Notes-for-0.7.3
+- Use update-alternatives for binaries / man-pages
+
+-------------------------------------------------------------------
+Tue Jan 15 17:39:02 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Jan 15 17:30:55 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.7.2 version:
+  * pep8 correction: don't include space around * and **
+  * radsimp watches for pure radical in denominator
+  * pep8 E702: one statement per line 
+  * add class name to hash value
+  * give more explicit error messages
+  * fix quality and ode constant numbering bug
+  * mprovements to euler equation solver 
+  * Sparse hash now includes shape 
+  * add hash to SparseMatrix
+  * raise notimplemented on MatrixExpr.conjugate
+  * removed cruft print statement
+- Fix the shebang RPMLint without make python libraries executables,
+  it is not the good way
+
+-------------------------------------------------------------------
+Thu Jan  3 17:07:45 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Thu May  3 14:58:12 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  Always state the exact version of the license and use SPDX syntax
+  (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Sat Feb 25 21:50:14 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11 
+
+-------------------------------------------------------------------
+Sun Nov 20 17:59:44 UTC 2011 - werner.ho@gmx.de
+
+- new version 0.7.1
+-------------------------------------------------------------------
+* Mon Mar 29 2010 Werner Hoch <werner.ho@gmx.de> - 0.6.7
+- new version 0.6.7
+-------------------------------------------------------------------
+* Sun Dec 20 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.5
+- fixed site-packages location for openSUSE 11.2
+-------------------------------------------------------------------
+* Sun Oct 04 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.5
+- new version 0.6.5
+-------------------------------------------------------------------
+* Sun Apr 19 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.4
+- new version 0.6.4
+-------------------------------------------------------------------
+* Mon Nov 24 2008 Werner Hoch <werner.ho@gmx.de> - 0.6.3
+- new version 0.6.3
+-------------------------------------------------------------------
+* Sat Sep 20 2008 Werner Hoch <werner.ho@gmx.de> - 0.6.2
+- fixed wrong man-page in INSTALLED_FILES list
+

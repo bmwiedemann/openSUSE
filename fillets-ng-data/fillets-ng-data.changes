@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Thu Apr  2 11:14:23 UTC 2015 - dimstar@opensuse.org
+
+- Update data set to match version 1.0.1.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:34 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Feb  7 20:08:50 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.0.0:
+  + Dutch spoken dialogs for all levels
+  + Provided music looping without fading
+
+-------------------------------------------------------------------
+Fri Mar 12 14:12:49 UTC 2010 - dimstar@opensuse.org
+
+- Clean spec file. Prepare for Factory submission.
+
+-------------------------------------------------------------------
+Thu Dec 10 14:52:52 CET 2009 - anicka@suse.cz
+
+- updated to 0.9.2 
+
+-------------------------------------------------------------------
+Tue Jun 16 18:08:35 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.9.0
+
+-------------------------------------------------------------------
+Fri Jan 23 17:24:27 CET 2009 - anicka@suse.cz
+
+- update to 0.8.1
+ *  Two extra levels (by Stephan Barth and Mirek Olsak).
+ * Added support for translated images (by Leonid Myravjev).
+ * Prevented music restart on undo.
+ * Fixed checking for solvable room before undo saving.
+ * Fixed checking for second dead fish. 
+
+-------------------------------------------------------------------
+Wed Jan 30 16:49:07 CET 2008 - lrupp@suse.de
+
+- update to 0.8.0:
+  + Slovenian translation (by Marko Burjek)
+  + Brazilian Portuguese translation (by Ricardo Faria)
+  + Russian translation (by Leonid Myravjev, Maria Antropova, 
+    Gregory Bonik)
+- use fdupes to reduce diskspace
+
+-------------------------------------------------------------------
+Mon Feb 19 13:55:38 CET 2007 - anicka@suse.cz
+
+- update to 0.7.4
+ * fixes for new version of lua
+ * added new translations 
+
+-------------------------------------------------------------------
+Thu Mar 16 13:05:23 CET 2006 - anicka@suse.cz
+
+- fix dependencies (#158267) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 20 14:07:49 CEST 2005 - anicka@suse.cz
+
+- update tp 0.7.1 
+
+-------------------------------------------------------------------
+Mon Jun 20 14:23:48 CEST 2005 - anicka@suse.cz
+
+- update to 0.7.0
+
+-------------------------------------------------------------------
+Wed Oct 13 13:01:50 CEST 2004 - mcihar@suse.cz
+
+- update to 0.6.1
+- versioned dependancy on fillets-ng
+
+-------------------------------------------------------------------
+Wed Aug 18 14:19:26 CEST 2004 - mcihar@suse.cz
+
+- update to fixed data 0.5.1
+
+-------------------------------------------------------------------
+Thu Aug 12 11:20:38 CEST 2004 - mcihar@suse.cz
+
+- split data from fillets-ng
+

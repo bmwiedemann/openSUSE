@@ -1,0 +1,17 @@
+Index: ltrace-0.7.91/dwarf_prototypes.c
+===================================================================
+--- ltrace-0.7.91.orig/dwarf_prototypes.c
++++ ltrace-0.7.91/dwarf_prototypes.c
+@@ -300,11 +300,8 @@ static struct arg_type_info *get_enum(Dw
+ 			value_destroy(value);				\
+ 			free(value);					\
+ 		}							\
+-		if (lens != NULL) {					\
+-			lens_destroy(&lens->super);			\
+-			free(lens);					\
+-		}							\
+ 		if (result != NULL) {					\
++			/* This also frees lens.  */			\
+ 			type_destroy(result);				\
+ 			free(result);					\
+ 		}							\

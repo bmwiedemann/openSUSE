@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Oct  4 09:04:27 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reveal back the breakage of the tests on 42.3, the fail is within
+  django itself, that needs to be fixed, it is not a bogus behaviour
+  of the tests
+
+-------------------------------------------------------------------
+Fri Sep 21 10:21:37 UTC 2018 - ecsos@opensuse.org
+
+- initial version 0.4.6
+

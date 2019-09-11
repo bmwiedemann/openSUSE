@@ -1,0 +1,27 @@
+--- a/tests/test_ticking.py
++++ b/tests/test_ticking.py
+@@ -1,7 +1,10 @@
+ import datetime
+ import time
+-import mock
+ import pytest
++try:
++    import mock
++except ImportError:
++    import unittest.mock as mock
+ 
+ from freezegun import freeze_time
+ from tests import utils
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -1,6 +1,9 @@
+ from unittest import SkipTest
+ 
+-import mock
++try:
++    import mock
++except ImportError:
++    import unittest.mock as mock
+ 
+ from freezegun import api
+ from tests import utils

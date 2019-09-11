@@ -1,0 +1,491 @@
+-------------------------------------------------------------------
+Mon Oct  1 15:05:11 UTC 2018 - Nicolas Bock <nicolas.bock@suse.com>
+
+- Add missing dependency for pkg-config files
+
+-------------------------------------------------------------------
+Wed Jul  4 13:48:04 UTC 2018 - tchvatal@suse.com
+
+- Version update to version 1.2.8:
+  * Python 2.7 required or 3.4 respectively
+  * Tests use tap.py functionality
+  * Upstream dropped epydoc completely
+  * See NEWS for more
+
+-------------------------------------------------------------------
+Wed Jul  4 13:44:57 UTC 2018 - tchvatal@suse.com
+
+- Use requires_ge instead of the rpm calls
+
+-------------------------------------------------------------------
+Mon Dec 18 13:03:22 UTC 2017 - jmatejek@suse.com
+
+- drop unneeded epydoc requirement properly
+
+-------------------------------------------------------------------
+Thu Dec  7 11:17:04 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Tue Nov 14 16:26:45 UTC 2017 - jmatejek@suse.com
+
+- drop unneeded epydoc requirement (API docs were not built anyway)
+
+-------------------------------------------------------------------
+Wed Mar  8 17:21:51 UTC 2017 - toddrme2178@gmail.com
+
+- Rename package from dbus-1-python to python-dbus-python to
+  conform to openSUSE package naming guidelines.
+- Switch to single-spec version
+- Update to version 1.2.4
+  + Enhancements:
+    * Continous integration metadata for travis-ci.org is now available.
+      Similar to dbus, this is split into .travis.yml (Travis-specifics)
+      and tools/ci-build.sh (intended to be useful for any CI framework,
+      although it does include various workarounds for travis-ci oddities).
+      (Simon McVittie)
+  + Fixes:
+    * Make dbus.version a tuple again, not a list, for consistent sorting.
+      This was a regression in 1.2.2. (Debian #816729, Simon McVittie)
+    * Use inspect.signature() instead of inspect.getargspec() on Python
+      versions that have it. inspect.getargspec() is deprecated in recent
+      Python 3 and seems to have disappeared from 3.6 nightly builds.
+      (Simon McVittie)
+    * Make the tests pass in "narrow" Python builds where unicode objects
+      are UTF-16, rather than the UCS-4 used in Linux distributions.
+      (fd.o #57140, Simon McVittie)
+    * Always include headers in a consistent order (Debian #749133, Simon McVittie)
+    * Include config.h in all C code that we compile. This is necessary
+      on platforms where it might contain something like "#define _GNU_SOURCE"
+      or "#define inline __inline".
+     (Simon McVittie)
+- Update to version 1.2.2
+  + Versioning changes:
+    * dbus-python releases now have an even micro version (1.2.0, 1.2.2),
+      and snapshots from git have an odd micro version (1.2.1).
+  + Dependencies:
+    * Building from git (but not from tarballs) now requires
+      macros from the GNU Autoconf Archive, for example the autoconf-archive
+      package in Debian or Fedora derivatives.
+    * Building from git (but not from tarballs) now requires Automake 1.13
+      or later.
+    * The automated tests and some examples now require PyGI (the gi module),
+      not PyGObject 2 (the deprecated glib and gobject modules).
+  + Enhancements:
+    * There is now a setuptools setup.py, allowing dbus-python to be installed
+      into a virtualenv using pip from a standard Automake source release. This
+      requires pre-existing system-wide installations of the normal build
+      dependencies (pkg-config, libdbus, dbus-glib, a C compiler) and has
+      some limitations. For system-wide installations and development,
+      please use the Autoconf/Automake build system directly.
+      (fd.o #55439; Simon McVittie)
+    * dbus-python now uses the common compiler warnings from AX_COMPILER_FLAGS
+      (Simon McVittie)
+    * The automated tests can now be installed as GNOME-style "installed tests",
+      and should be somewhat more reliable (Simon McVittie)
+  + Fixes:
+    * ``from dbus.service import *`` now imports FallbackObject
+     (fd.o #85720; Ben Longbons)
+    * The GConf-related examples work again (fd.o #85720; Ben Longbons)
+    * Consistently make examples executable, and install them all
+      (fd.o #85720; Ben Longbons)
+    * Search PATH for an appropriately-versioned pythonX.Y-config, or as a last
+      resort python-config, if there isn't a ${PYTHON}-config in the
+      same directory as ${PYTHON} (fd.o #92085; Yamashita, Yuu)
+    * Add support for the Automake 1.13 parallel test driver (Simon McVittie)
+    * Skip building API documentation if "import epydoc" fails (Simon McVittie)
+- Add python version-dependent and python version-indepent devel
+  packages.
+
+-------------------------------------------------------------------
+Sat Nov 16 07:02:42 UTC 2013 - jengelh@inai.de
+
+- Add missing dependency on python-gobject (bnc#850792)
+
+-------------------------------------------------------------------
+Mon Jun  3 18:03:27 UTC 2013 - asterios.dramis@gmail.com
+
+- Removed the %{RELEASE} from the dbus-1 Requires: entries (fixes also Factory
+  auto check).
+
+-------------------------------------------------------------------
+Sun Jun  2 20:55:23 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.2.0:
+  Dependencies:
+  - libdbus 1.6 or later is now required.
+  Enhancements:
+  - Unicode Corrigendum 9: when used with a suitable version of libdbus
+    (1.6.10 or later, or 1.7.2 or later), noncharacters in strings are
+    now accepted
+  Fixes:
+  - Support DBusException('something with non—ASCII') under Python 2
+    (Michael Vogt, smcv; fd.o #55899)
+  - Correct some misleading wording in COPYING which was written under the
+    assumption that libdbus could actually be relicensed to MIT/X11
+    (Thiago Macieira)
+  - Avoid variable-length arrays, because MSVC++ is still stuck in 1998
+    (based on patches from Christoph Höger, fd.o #51725)
+  - Remove unnecessary uses of stdint.h (fd.o #51725)
+  - Add support for Unix compilers not supporting 'inline', for completeness
+  - Use GObject.__class__ instead of GObjectMeta, which can no longer be
+    imported from gi.repository.GObject in pygobject 3.8
+  - Fix autoreconfiscation on Automake 1.13 (Marko Lindqvist, fd.o #59006)
+- Removed libxml2-python runtime requirement (not needed).
+
+-------------------------------------------------------------------
+Mon Nov 19 18:33:18 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.1.1:
+  Dependencies:
+  - libdbus 1.6 or later is now recommended. It is not strictly required yet.
+  Fixes:
+  - Validate UTF-8 according to the rules libdbus uses, falling back to our
+    own (inefficient) implementation if not compiled against dbus >= 1.6
+    (fdo#40817)
+  - Under Python 3, in the absence of introspection or signature='...',
+    pass dbus.ObjectPath or dbus.Signature arguments with the obvious
+    signature 'o' or 'g', not 's'. This previously only worked in Python 2.
+    (fdo#50740)
+  From version 1.1.0:
+  Deprecations:
+  - dbus.gobject_service is deprecated. Use dbus.gi_service and PyGI in new
+    code.
+  API changes:
+  - dbus.gobject_service works in legacy PyGObject 2 applications again,
+    like it did before 1.0. The down side is that it doesn't work in all PyGI
+    applications any more, unlike 1.0. In PyGI applications, depend on
+    dbus-python >= 1.1 and use dbus.gi_service instead - its API is the same.
+    (fdo#48904, deb#670516)
+  - dbus.gobject_service has been removed from Python 3 builds altogether.
+  Enhancements:
+  - Use DBusBasicValue from libdbus 1.5, if available, rather than reinventing
+    it
+  Fixes:
+  - Put sockets for the regression tests in /tmp, not the builddir, fixing
+    test failures in a really long builddir (fdo#46747)
+  - Fix a reference leak in dbus_py_variant_level_set (fdo#47108)
+  - Modify AM_CHECK_PYTHON_HEADERS so the "another way" works with Python 3
+
+-------------------------------------------------------------------
+Sun May 27 11:04:49 UTC 2012 - highwaystar.ru@gmail.com
+
+- dbus-1-python3 package added 
+
+-------------------------------------------------------------------
+Thu Mar  8 20:33:58 UTC 2012 - asterios.dramis@gmail.com
+
+- New upstream version 1.0.0:
+  Dependencies:
+  - libdbus 1.4 or later is now required.
+  - Python 2.6 or later is now required. If Python 3 is used, it must be
+    version 3.2 or later.
+  - GNU make (or, at your own risk, another make with the GNU $(patsubst)
+    extension) is now required.
+  API changes:
+  - dbus_bindings, which was never meant to be public API and has been
+    deprecated for nearly 5 years, has finally been removed.
+  - The repr() of every dbus-python object is now unicode.
+  - The Python 3 API is not the same as the Python 2 API; see PY3PORT.rst for
+    details.
+  Enhancements:
+  - Python 3 compatibility (fd.o #26420)
+  - MethodCallMessage and SignalMessage now have a more useful repr()
+  Fixes:
+  - OOM while appending a unicode object to a message no longer leaks a string
+  - If libdbus somehow gives us invalid UTF-8, don't crash
+  - Fix rst2html failure in non-UTF-8 locales
+ From version 0.84.0:
+  Enhancements:
+  - fd.o #30812: add the UnixFd type, and support Unix fd passing if compiled
+    against a new enough libdbus
+  - fd.o #34342: add Connection.set_allow_anonymous(bool)
+  - fd.o #21017: add configure arguments PYTHON_INCLUDES and PYTHON_LIBS which
+    can be used to override $PYTHON-config
+  Fixes:
+  - fd.o #35626: clear ProxyObject's pending introspection queue after
+    execution
+  - fd.o #22560: remove duplicate code from example-async-client
+  - fd.o #36206: allow signature='x' among ProxyObject method arguments
+- Spec file updates:
+  - Removed pyrex from BuildRequires: (not needed anymore).
+  - Removed "autoreconf -fi" from %build section and also libtool requirement
+    (not needed).
+  - Added epydoc and python-docutils in BuildRequires: to enable generation of
+    HTML docs and API documentation.
+
+-------------------------------------------------------------------
+Wed Jan 25 10:23:39 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  SPDX format for MIT license
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:54 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Jan  4 17:58:24 UTC 2011 - fcrozat@novell.com
+
+- new upstream version 0.83.2 :
+ - libdbus 1.2 is still supported, but libdbus >= 1.4 is 
+   recommended.
+ - Make BusConnection.list_activatable_names actually call 
+   ListActivatableNames, not ListNames
+ - Don't override CFLAGS when adding compiler warnings
+ - Fix compilation on platforms where Py_ssize_t is larger than 
+   int, like x86-64
+ - fd.o #21831: deserialize empty byte arrays with byte_arrays=True 
+   as ByteArray(''), not ByteArray('None')
+ - fd.o #23278, #25105: fix crashes when trying to append more 
+   struct entries than the signature allows with libdbus 1.4 
+ - fd.o #23831: fix crashes when an embedded Python interpreter 
+   imports dbus, is finalized, is re-initialized, and re-imports 
+   dbus
+ - fd.o #21172: avoid some deprecation warnings in Python 2.6
+ - fd.o #15013: add dbus.lowlevel.MESSAGE_TYPE_SIGNAL etc., for 
+   those who care about message types at a low level
+ - When removing signal matches, clean up internal state, avoiding 
+   a memory leak in long-lived Python processes that connect to 
+   signals from arbitrarily many object paths (fd.o #17551)
+ - When setting the sender of a message, allow it to be 
+   org.freedesktop.DBus so you can implement a D-Bus daemon in 
+   pure Python
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Aug  9 08:45:50 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue Sep  9 00:36:16 CEST 2008 - ro@suse.de
+
+- use py_sitedir macro in filelist 
+
+-------------------------------------------------------------------
+Tue Jul 29 16:36:27 CEST 2008 - thoenig@suse.de
+
+- new upstream version 0.83.0
+ - Add bindings for DBusServer (thanks to Mathias Hasselmann,
+   Huang Peng; fd.o #14322, #15514).
+ - Omit the service's traceback from certain D-Bus errors:
+   specifically, those that were probably deliberately raised as
+   part of an API. Subclasses of DBusException that indicate
+   programmer error can turn the traceback back on if it seems
+   likely to be useful.
+ - Don't emit spurious Error messages if libdbus gives object-path
+   handlers a message that isn't a method call (most likely because
+   of binding to a locally emitted signal, as in fd.o #14199).
+ - Make multiple filters added by Connection.add_message_filter
+   work (fd.o #15547, thanks to Huang Peng).
+ - Make the API docs build correctly when out-of-tree
+ - Require dbus 1.0 so we can get rid of DBUS_API_SUBJECT_TO_CHANGE
+
+-------------------------------------------------------------------
+Tue Dec 11 10:25:40 CET 2007 - thoenig@suse.de
+
+- supplying reply_handler but not error_handler raises
+  MissingReplyHandlerException instead of
+  MissingErrorHandlerException, and vice versa (fd.o #12304, patch
+  from René Neumann)
+- Using non-recursive make for dbus/ directory should fix builds in
+  some environments (fd.o #12741) 
+- Everything is now under the same MIT/X11 license used for
+  Collabora code in the previous release
+- Added copyright headers to some files that were still missing
+  them
+
+-------------------------------------------------------------------
+Wed Dec  5 11:49:42 CET 2007 - thoenig@suse.de
+
+- new upstream version 0.82.3 (skipped 0.82.1 and 0.82.2)
+ -  Don't try to distribute COPYING.LGPL-2.1 - no longer exists
+ -  Fix NEWS indentation
+ -  Mention relicensing in NEWS
+ -  Update NEWS, and add regression tests for fd.o #12096 and
+    #12403
+ -  fd.o #12432: fix documentation for remove_from_connection
+ -  dbus.exceptions.DBusException: allow setting _dbus_error_name
+    in subclasses
+ -  Don't raise KeyError when closing private dbus.Bus.
+    (fd.o #12096)
+ -  Also deprecate private dbus.Bus in favour of
+    dbus.bus.BusConnection - the only things you gain from using
+    dbus.Bus are the shared-instance behaviour and some strange
+    more-than-one-way-to-do-it APIs.
+  - Relicense Collabora code under the MIT/X11 license proposed for
+    dbus core, removing all references to the LGPL as a result
+  - dbus.service: Don't assume that exceptions passed to
+    asynchronous callbacks are the same as the pending exception
+    (fd.o #12403, https://dev.laptop.org/ticket/3370)
+  - Makefile.am, test/Makefile.am: Use @abs_top_builddir@,
+    @abs_top_srcdir@
+  - This fixes incorrect Python path for docs and tests if doing
+    an out-of-tree
+  - build using an absolute path for $(srcdir), and is also
+    less ugly.
+  - Unset dbus_python_released
+  - Release 0.82.2
+  - Mention in NEWS that API docs are generated by default
+  - Reorganise README to reflect that API docs are generated
+    by default
+  - Mention incompatibility with 0.82.1 more prominently
+  - Check for epydoc version >= 3, and default to building API docs
+    if available
+  - Update NEWS to mention #11623 fix
+  - Add rel_path_keyword to @method (fd.o #11623)
+  - Avoid deprecated API in cross-test
+  - Fix introspection on objects with more than one connection or
+    more than one object path (bugs.fd.o #11794)
+  - NEWS: mention the solved build problems related to
+    python-config
+  - Re-fix checking for Python include paths. Use $PYTHON-config
+    like in 0.82.1 if we can, use the hard-coded logic from
+    versions prior to 0.82.0 if we can't.
+  - Complete the .m4 renaming
+  - Move dbus-py-add-rst2htmlflag.m4 to jh-add-cflag.m4 - the
+    contents of two of the .m4 files were the opposite of what
+    they should be
+  - Move jh-add-cflag.m4 to dbuspy-add-rst2htmlflag.m4 - the
+    contents of two of the .m4 files were the opposite of what
+    they should be
+  - Revert "Use python-config to get Python cppflags (patch from
+    Ubuntu, fd.o #11282)."
+  - Python < 2.5 didn't have python-config (although some
+    distributions, e.g. Debian and Ubuntu, shipped it as an
+    add-on). Even for 2.5, some distributions install it under
+    gratuitously different names (hi, Gentoo). As a result, this
+    patch needs replacing with one that doesn't rely on having
+    python-config.
+  - _dbus_bindings/mainloop.c: Remove Watch and Timeout.
+    They were never used, and didn't make a great deal of sense.
+    I now believe the right direction for pure-Python mainloop
+    support is to define a Pythonic main loop abstraction and
+    coerce libdbus to fit into it, rather than pretending the
+    objects in libdbus' abstraction are Python objects.
+  - NEWS: update with timeout fix
+  - Measure async call timeout in seconds as intended, not in
+    ms (blocking calls already used seconds). Add regression tests
+  - test-client: Avoid deprecated usage - explicitly pass
+    SessionBus() to BusName ctor
+  - Try to avoid importing things from _dbus_bindings when they
+    could be imported from public API
+  - Bump version to 0.82.1.YYYYMMDD
+  - Avoid cpp directives inside macro calls, to be nice to old
+    gcc versions
+  - NEWS, configure.ac: 0.82.1, the "double precision" release
+  - Use PyArg_ParseTuple correctly, fixing the timeout in
+    send_message_with_reply and send_message_with_reply_and_block.
+    (bugs.fd.o #11489; thanks to Marco Pesenti Gritti for report
+    and initial patch)
+  - Unset dbus_python_released
+  - .gitignore: ignore patch(1) cruft, and detached signatures
+    for the release tarballs
+  - dbus.proxies: If making a call with ignore_reply=True, don't
+    block for introspection
+  - dbus.service: use DBUS_INTROSPECT_1_0_XML_DOCTYPE_DECL_NODE
+  - Expose HANDLER_RESULT_HANDLED, HANDLER_RESULT_NOT_YET_HANDLED
+    as public API in dbus.lowlevel
+  - Get stacklevel right on deprecation of not specifying bus in
+    BusName.__init__
+  - _dbus_bindings: add DBUS_INTROSPECT_1_0_XML_DOCTYPE_DECL_NODE
+    etc.
+  - Avoid using deprecated dbus_watch_get_fd()
+  - dbus.service: Deprecate the omission of the `bus` argument in
+    the BusName constructor.
+  - Explicit is better than implicit.
+  - Stop using interactive-Python syntax in tutorial to reduce
+    user confusion. Closes bugs.fd.o #11209.
+
+-------------------------------------------------------------------
+Tue Jun 19 19:08:38 CEST 2007 - thoenig@suse.de
+
+- new upstream version 0.82.0 (skipped 0.80.2 and 0.81.0)
+  - dbus.service.Object can start off with no Connection or object path, and
+    become exported later. If suitable class attributes are set, objects can
+    even be exported on multiple connections, or with multiple object-paths,
+    or both.
+  - dbus.service.FallbackObject implements a whole subtree of object-path space
+    (fd.o #9295).
+  - ``@method`` accepts a parameter ``connection_keyword`` so methods can find
+    out which connection to use for any follow-up actions.
+  - ``@signal`` has a new parameter ``rel_path_keyword`` which gets the path at
+    which to emit the signal, relative to the path of the FallbackObject.
+    ``path_keyword`` is now deprecated, and will raise an exception if used
+    on an object with ``SUPPORTS_MULTIPLE_OBJECT_PATHS``, including any
+    ``FallbackObject``.
+- update to 0.81.0
+  - When an Error message on the bus is represented as a DBusException, the
+    error name is copied into the exception and can be retrieved by
+    get_dbus_name(). Exception handlers should use this instead of looking at
+    the stringified form of the exception, unless backwards compatibility
+    is needed.
+  - DBusException objects now get all arguments from the Error message, not
+    just the first (although there will usually only be one). Use the 'args'
+    attribute if you need to retrieve them.
+  - The Connection, BusConnection and Bus classes have a method
+    list_exported_child_objects(path: str) -> list of str, which wraps
+    dbus_connection_list_registered()
+  - You can remove objects from D-Bus before they become unreferenced, by
+    using dbus.service.Object.remove_from_connection()
+    (https://bugs.freedesktop.org/show_bug.cgi?id=10457)
+- update to 0.80.2
+  - Fix numerous memory and reference leaks
+  - Only use -Werror if the user specifically asks for it
+  - Audit tp_dealloc callbacks to make sure they correctly preserve the
+    exception state
+  - Relicense files solely owned by Collabora Ltd. more permissively (LGPL/AFL
+    rather than GPL/AFL) - this includes the tutorial and all the C code
+
+-------------------------------------------------------------------
+Fri Mar  9 12:06:50 CET 2007 - thoenig@suse.de
+
+- add python-xml to 'Requires' 
+
+-------------------------------------------------------------------
+Sun Mar  4 20:46:40 CET 2007 - thoenig@suse.de
+
+- fix completely broken build
+- new package: dbus-1-python-devel 
+
+-------------------------------------------------------------------
+Thu Mar  1 12:18:55 CET 2007 - thoenig@suse.de
+
+- new upstream version 0.80.1
+- drop patch dbus-python_bindings_fix.diff 
+
+-------------------------------------------------------------------
+Mon Nov  6 15:54:33 CET 2006 - thoenig@suse.de
+
+- loosen dependency to D-Bus  
+
+-------------------------------------------------------------------
+Mon Sep 25 12:51:53 CEST 2006 - thoenig@suse.de
+
+- add %{py_requires} (b.n.c #207919) 
+
+-------------------------------------------------------------------
+Tue Aug  1 23:03:57 CEST 2006 - thoenig@suse.de
+
+- new upstream version 0.71
+
+-------------------------------------------------------------------
+Tue Aug  1 23:03:23 CEST 2006 - thoenig@suse.de
+
+- split out binings to sparate spec files
+

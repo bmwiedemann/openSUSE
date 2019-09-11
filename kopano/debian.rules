@@ -1,0 +1,59 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export PATH := /opt/dts4debian:${PATH}
+export DH_VERBOSE=1
+export DH_OPTIONS
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+CONFFLAGS = \
+	--prefix=/usr --localstatedir=/var --sysconfdir=/etc --enable-release \
+	TCMALLOC_CFLAGS=" " TCMALLOC_LIBS="-ltcmalloc_minimal"
+INSTDIR = debian/tmp
+
+override_dh_auto_configure:
+	autoreconf -fi
+	dh_auto_configure -Bpy2 -- ${CONFFLAGS} PYTHON="$$(which python2)" PYTHON_CFLAGS="$$(pkg-config python2 --cflags)" PYTHON_LIBS="$$(pkg-config python2 --libs)"
+	dh_auto_configure -Bpy3 -- ${CONFFLAGS} PYTHON="$$(which python3)" PYTHON_CFLAGS="$$(pkg-config python3 --cflags)" PYTHON_LIBS="$$(pkg-config python3 --libs)"
+
+override_dh_auto_build:
+	dh_auto_build -Bpy2 -- V=1
+	dh_auto_build -Bpy3 -- V=1
+
+override_dh_systemd_enable:
+	# Move systemd service files into debian folder so they can be correctly
+	# installed by dh_systemd.
+	mv -v debian/tmp/lib/systemd/system/kopano-*.service debian/
+	dh_systemd_enable
+
+override_dh_auto_install:
+	dh_auto_install -Bpy2 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
+	dh_auto_install -Bpy3 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
+	mkdir -p ${INSTDIR}/var/lib/kopano/autorespond
+	mkdir -p ${INSTDIR}/var/lib/kopano/rrd
+	mkdir -p ${INSTDIR}/var/run/kopano
+
+	if [ -x /usr/bin/php-config ]; then \
+		PHP_VER=$(shell php-config --version | cut -c 1); \
+		PHP_MAPI="php$$PHP_VER-mapi"; \
+		sed -i s/php-mapi/$$PHP_MAPI/g debian/control; \
+		if [ $$PHP_VER -eq 7 ] ; then \
+			sed -i s/php-other-mapi/php5-mapi/g debian/control; \
+		elif [ $$PHP_VER -eq 5 ] ; then \
+			sed -i s/php-other-mapi/php7-mapi/g debian/control; \
+		fi; \
+		echo php:Depends=phpapi-$(shell php-config --phpapi) > debian/$$PHP_MAPI.substvars; \
+	elif [ -x /usr/bin/php-config5 ]; then \
+		sed -i s/php-mapi/php5-mapi/g debian/control; \
+		sed -i s/php-other-mapi/php7-mapi/g debian/control; \
+		echo php:Depends=phpapi-$(shell php-config5 --phpapi) > debian/php5-mapi.substvars; \
+	fi
+	mkdir -p ${INSTDIR}/usr/share/doc/kopano-common
+	gzip -c <RELNOTES.txt >${INSTDIR}/usr/share/doc/kopano-common/changelog.gz
+
+	# Update paths in grapi bin script.
+	sed -i "s|EXE=.*|EXE=/usr/lib/${DEB_BUILD_GNU_TYPE}/kopano/kopano-mfr.py|" ${INSTDIR}/usr/sbin/kopano-grapi
+	sed -i "s|EXTRA_PYTHONPATH=.*|EXTRA_PYTHONPATH=$(shell PYTHONUSERBASE=/usr/lib/kopano/python3-extras python3 -m site --user-site)|" ${INSTDIR}/usr/sbin/kopano-grapi
+
+%:
+	dh $@ --parallel --with python3,systemd

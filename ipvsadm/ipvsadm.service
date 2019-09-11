@@ -1,0 +1,13 @@
+[Unit]
+Description=Initialise the Linux Virtual Server
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/sysconfig/ipvsadm
+ExecStart=/bin/bash -c "exec /sbin/ipvsadm-restore < $IPVSADM_CONFIG"
+ExecStop=/sbin/ipvsadm -C
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

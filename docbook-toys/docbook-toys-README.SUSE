@@ -1,0 +1,17 @@
+README.SUSE
+===========
+
+Starting with SuSE Linux 8.2 openjade is the only DSSSL engine
+available; thus the -o resp. --use-openjade option is obsolete by now.
+
+For PostScript and PDF support you must install package "jadetex" and
+the teTeX packages "jadetex" depends on.
+
+By default, "sloppy" validation will be done if jade will start to work
+on SGML files; this means, minimizations are allowed.  You --strict if
+you're interesting in SGML file conforming with the "official" DocBook
+catalog.
+
+For more info, please read README.
+
+                                        2002-11-08 14:00:17 CET -ke-

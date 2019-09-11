@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Mon Mar 18 17:36:14 UTC 2019 - Rodrigo Lourenço <guigo.lourenco@gmail.com>
+
+- Update to 3.3.8:
+  * Fixed AVX, AVX2 for gcc-8.
+
+- Release notes for 3.3.7:
+  * Experimental support for CMake.
+  * Fixes for armv7a cycle counter.
+  * Official support for aarch64, now that we have hardware to test it.
+  * Tweak usage of FMA instructions in a way that favors newer processors
+    (Skylake and Ryzen) over older processors (Haswell).
+  * tests/bench: use 64-bit precision to compute mflops.
+
+-------------------------------------------------------------------
+Mon Feb 18 17:22:34 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add FFTW_BIN to environment variable with module file (bsc#1125824).
+
+-------------------------------------------------------------------
+Tue Sep 18 08:09:32 UTC 2018 - schwab@suse.de
+
+- Stay with openmpi also on ppc
+
+-------------------------------------------------------------------
+Thu May 31 20:44:50 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix %install_info_delete usage.
+
+-------------------------------------------------------------------
+Mon Feb 26 14:48:04 UTC 2018 - eich@suse.com
+
+- Add support for openmpi2 for the HPC build (FATE#325089).
+
+-------------------------------------------------------------------
+Thu Feb 22 15:02:28 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Switch to openmpi2 instead of openmpi (bsc#1082302),
+  apart from ppc64 as openmpi2 does not support it.
+
+-------------------------------------------------------------------
+Mon Jan 22 16:14:42 UTC 2018 - eich@suse.com
+
+- Fix typo in flavor gnu7-hpc settings.
+
+-------------------------------------------------------------------
+Fri Jan 19 06:47:04 UTC 2018 - eich@suse.com
+
+- Change the name of the MPI version of the module file directory
+  to pfftw3 to distinguish it from the 'serial' one (boo#1075933).
+
+-------------------------------------------------------------------
+Fri Jan 12 15:33:40 UTC 2018 - eich@suse.com
+
+- Disable the openmpi3 flavor in some products.
+
+-------------------------------------------------------------------
+Fri Jan  5 18:32:30 UTC 2018 - eich@suse.com
+
+- Add gcc7 as additional compiler flavor for HPC on SLES.
+- Fix library package requires - use HPC macro (boo#1074890).
+- Add support for mpich and openmpi3 for HPC.
+
+-------------------------------------------------------------------
+Tue Nov 14 16:23:54 UTC 2017 - eich@suse.com
+
+- Fix library package dependencies - limit certain
+  dependencies to HPC packages.
+
+-------------------------------------------------------------------
+Sun Nov 12 16:25:33 UTC 2017 - eich@suse.com
+
+- Fix HPC library requires package and modules file.
+
+-------------------------------------------------------------------
+Tue Nov  7 11:33:09 UTC 2017 - eich@suse.com
+
+- update to 3.3.6-pl2
+  * Bugfix: MPI Fortran-03 headers were missing in FFTW 3.3.6-pl1.
+  * Bugfix: FFTW 3.3.6 had the wrong libtool version number, and generated
+    shared libraries of the form libfftw3.so.2.6.6 instead of
+    libfftw3.so.3.*.  
+  * The fftw_make_planner_thread_safe() API introduced in 3.3.5 didn't
+    work, and this 3.3.6 fixes it.  Sorry about that.
+  * compilation fixes for IBM XLC
+  * compilation fixes for threads on Windows
+  * fix SIMD autodetection on amd64 when (_MSC_VER > 1500)
+
+-------------------------------------------------------------------
+Mon Oct 23 11:51:13 UTC 2017 - eich@suse.com
+
+- Don't use openmpi-devel for HPC builds.
+
+-------------------------------------------------------------------
+Thu Oct 19 11:39:08 UTC 2017 - eich@suse.com
+
+- Fix dependencies for the HPC devel package.
+
+-------------------------------------------------------------------
+Tue Oct 17 13:23:12 UTC 2017 - eich@suse.com
+
+- Add magic to limit the number of flavors built in the
+  in the OBS ring.
+
+-------------------------------------------------------------------
+Sat Oct 14 17:13:06 UTC 2017 - eich@suse.com
+
+- For HPC build package static libraries as well.
+
+-------------------------------------------------------------------
+Thu Oct 12 05:46:35 UTC 2017 - eich@suse.com
+
+- Generate baselib.conf dynamically and only for the non-HPC
+  build: this avoids issues with the source validator.
+
+-------------------------------------------------------------------
+Mon Sep 25 09:36:55 UTC 2017 - cgoll@suse.com
+
+- removed unnedded dependency packages 
+
+-------------------------------------------------------------------
+Thu Sep  7 07:46:53 UTC 2017 - cgoll@suse.com
+
+- rewrote for hpc library support
+  * added environment modules
+  * reduced number of hpc realted packages to two
+  (FATE#321716).
+
+-------------------------------------------------------------------
+Mon Aug  1 22:03:49 UTC 2016 - mardnh@gmx.de
+
+- update to version 3.3.5
+  * New SIMD support:
+    - Power8 VSX instructions in single and double precision.
+      To use, add --enable-vsx to configure.
+    - Support for AVX2 (256-bit FMA instructions).
+      To use, add --enable-avx2 to configure.
+    - Experimental support for AVX512 and KCVI. (--enable-avx512, --enable-kcvi)
+      This code is expected to work but the FFTW maintainers do not have
+      hardware to test it.
+    - Support for AVX128/FMA (for some AMD machines) (--enable-avx128-fma)
+    - Double precision Neon SIMD for aarch64.
+      This code is expected to work but the FFTW maintainers do not have
+      hardware to test it.
+    - generic SIMD support using gcc vector intrinsics
+  * Add fftw_make_planner_thread_safe() API    
+  * fix #18 (disable float128 for CUDACC)
+  * fix #19: missing Fortran interface for fftwq_alloc_real
+  * fix #21 (don't use float128 on Portland compilers, which pretend to be gcc)
+  * fix: Avoid segfaults due to double free in MPI transpose
+
+-------------------------------------------------------------------
+Sat Apr 19 19:16:23 UTC 2014 - mardnh@gmx.de
+
+- add support for long-double precision
+
+-------------------------------------------------------------------
+Sat Apr 19 17:37:38 UTC 2014 - mardnh@gmx.de
+
+- update to version 3.3.4
+  
+  * New functions fftw_alignment_of (to check whether two arrays are equally
+    aligned for the purposes of applying a plan) and fftw_sprint_plan
+    (to output a description of plan to a string).
+
+  * Bugfix in fftw-wisdom-to-conf; thanks to Florian Oppermann for the bug report.
+
+  * Fixed manual to work with texinfo-5.
+
+  * Increased timing interval on x86_64 to reduce timing errors.
+
+  * Default to Win32 threads, not pthreads, if both are present.
+
+  * Various build-script fixes. 
+
+- Drop obsoleted 1_man_macro.patch
+
+-------------------------------------------------------------------
+Sun Dec 16 19:26:48 UTC 2012 - dhall@wustl.edu
+
+- update to version 3.3.3
+  * Fix deadlock bug in MPI transforms (thanks to Michael Pippig for the bug
+    report and patch, and to Graham Dennis for the bug report).
+
+  * Use 128-bit ARM NEON instructions instead of 64-bit instructions. This
+    change appears to speed up even ARM processors with a 64-bit NEON pipe.
+
+  * Speed improvements for single-precision AVX.
+
+  * Speed up planner on machines without "official" cycle counters, such as ARM.
+
+-------------------------------------------------------------------
+Tue Jul  3 18:31:53 UTC 2012 - coolo@suse.com
+
+- update to 3.3.2 to fix crashes with gcc 4.7
+
+  * Removed an archaic stack-alignment hack that was failing with
+    gcc-4.7/i386.
+  
+  * Added stack-alignment hack necessary for gcc on Windows/i386.  We
+    will regret this in ten years (see previous change).
+    
+  * Fix incompatibility with Intel icc which pretends to be gcc
+    but does not support quad precision.
+  
+  * make libfftw{threads,mpi} depend upon libfftw when using libtool;
+    this is consistent with most other libraries and simplifies the life
+    of various distributors of GNU/Linux.
+
+-------------------------------------------------------------------
+Tue May 29 14:43:58 CEST 2012 - tiwai@suse.de
+
+- Enable AVX support (bnc#763657)
+
+-------------------------------------------------------------------
+Thu Apr 26 04:26:02 UTC 2012 - adrian@suse.de
+
+- fix build on %arm
+  * disable neon it would require --enable-single (precision)
+- enable openmpi for %arm
+
+-------------------------------------------------------------------
+Fri Mar 16 01:17:58 UTC 2012 - alinm.elena@gmail.com
+
+- source the mpi environment  
+
+-------------------------------------------------------------------
+Tue Mar  6 14:16:22 UTC 2012 - dhall@wustl.edu
+
+- delete INSTALL file
+
+-------------------------------------------------------------------
+Tue Mar  6 10:35:15 UTC 2012 - dhall@wustl.edu
+
+- patch macros in man files
+
+-------------------------------------------------------------------
+Tue Mar  6 00:32:24 UTC 2012 - dhall@wustl.edu
+
+- add use of neon extensions on ARM
+
+-------------------------------------------------------------------
+Tue Mar  6 00:12:32 UTC 2012 - dhall@wustl.edu
+
+- updated to version 3.3.1
+  * Reduced planning time in estimate mode for sizes with large prime factors.
+  * Added AVX autodetection under Visual Studio. Thanks Carsten Steger for submitting
+    the necessary code.
+  * Modern Fortran interface now uses a separate fftw3l.f03 interface file for the
+    long double interface, which is not supported by some Fortran compilers. Provided
+    new fftw3q.f03 interface file to access the quadruple-precision FFTW routines
+    with recent versions of gcc/gfortran.
+  * Added support for the NEON extensions to the ARM ISA.
+  * MPI code now compiles even if mpicc is a C++ compiler; thanks to Kyle Spyksma for
+    the bug report.
+
+-------------------------------------------------------------------
+Mon Nov 28 13:33:44 UTC 2011 - idoenmez@suse.de
+
+- Ignore rpmlint fixed dependency errors
+
+-------------------------------------------------------------------
+Mon Nov 28 01:48:17 CET 2011 - ro@suse.de
+
+- fix build on s390/s390x without openmpi 
+
+-------------------------------------------------------------------
+Mon Nov 21 17:45:00 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Employ shlib naming (fftw3 -> libfftw3)
+
+-------------------------------------------------------------------
+Sun Oct  9 17:48:50 UTC 2011 - adrian@suse.de
+
+- enable sse only on supported architectures
+
+-------------------------------------------------------------------
+Wed Sep 28 02:22:14 UTC 2011 - dhall@wustl.edu
+
+- enable sse2 and sse code generation
+
+-------------------------------------------------------------------
+Fri Aug  5 22:44:51 UTC 2011 - dhall@wustl.edu
+
+- specfile cleanup
+  * Remove authors from description
+  * use %makeinstall
+- fix devel and mpi-devel to include proper header files
+
+-------------------------------------------------------------------
+Wed Aug  3 13:58:49 UTC 2011 - dhall@wustl.edu
+
+- updated to version 3.3:
+  * Compiling OpenMP support (--enable-openmp) now installs a fftw3_omp
+    library, instead of fftw3_threads, so that OpenMP and POSIX threads
+    (--enable-threads) libraries can be built and installed at the same time.
+  * Add support for the AVX extensions to x86 and x86-64
+  * Added Fortran 2003 interface
+  * Added MPI distributed-memory transforms
+  * Add support for quad-precision __float128 in gcc 4.6 or later (on x86. 
+    x86-64, and Itanium). The new routines use the fftwq_ prefix.
+  * New convenience functions fftw_alloc_real and fftw_alloc_complex to use
+    fftw_malloc for real and complex arrays without typecasts or sizeof.
+  * New convenience functions fftw_export_wisdom_to_filename and
+    fftw_import_wisdom_from_filename that export/import wisdom to a file, which
+    don't require you to open/close the file yourself.
+  * New function fftw_cost to return FFTW's internal cost metric for a given plan
+  * Remove --enable-portable-binary flag: we new produce portable binaries by default.
+  * Fixed build problem failure when srand48 declaration is missing
+  * Fixed bug in fftw_set_timelimit: ensure that a negative timelimit is equivalent
+    to no timelimit in all cases
+  * Fixed stack-overflow problem on OpenBSD caused by using alloca with too
+    large a buffer.
+- added openmp library support
+- added mpi library support
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+  
+- Add 32bit compatibility libraries
+- Changed -devel package groups to Development/Libraries/C and C++ (fix for RPMLINT warning)
+  
+-------------------------------------------------------------------
+Thu Apr 22 18:59:44 UTC 2010 - davejplater@gmail.com
+
+- Added provides fftw-devel
+
+-------------------------------------------------------------------
+Thu Jul 16 15:27:24 CEST 2009 - tiwai@suse.de
+
+- updated to version 3.2.2:
+ * Improve performance of some copy operations of complex arrays
+ * Add configure flag to disable alloca()
+ * Planning in FFTW_ESTIMATE mode for r2r transforms became slower
+   between fftw-3.1.3 and 3.2. This regression has now been fixed. 
+
+-------------------------------------------------------------------
+Thu Apr 23 17:36:12 CEST 2009 - tiwai@suse.de
+
+- remove obsolste fdupes check in spec file
+- avoid unnecessary autoreconf
+
+-------------------------------------------------------------------
+Mon Feb 16 12:24:16 CET 2009 - tiwai@suse.de
+
+- updated to version 3.2:
+  * major version up, performance improvements and SIMD support
+  * Worked around apparent glibc bug that leads to rare hangs
+  * Fixed segfault due to unaligned access
+  * MPI transforms not included, as they are still in alpha
+- updated to version 3.2.1:
+  * Performance improvements for some multidimensional r2c/c2r
+    transforms
+  * Compile with icc on MacOS X, use better icc compiler flags.
+  * Compilation fixes for systems where snprintf is defined as a
+    macro
+  * Fortran documentation now recommends not using dfftw_execute,
+    because of reports of problems with various Fortran compilers
+  * Some documentation clarifications
+  * FAQ was accidentally omitted from 3.2 tarball.
+  * Remove some extraneous (harmless) files accidentally included
+    in a subdirectory of the 3.2 tarball. 
+
+-------------------------------------------------------------------
+Sat Aug  2 10:46:31 CEST 2008 - tiwai@suse.de
+
+- Reduce dependency without release number. 
+  This allows to install packages on different media with
+  different release numbers.
+
+-------------------------------------------------------------------
+Mon Apr 16 17:07:05 CEST 2007 - tiwai@suse.de
+
+- follow library packaging policy
+  * move docs to devel package
+  * remove static libraries
+
+-------------------------------------------------------------------
+Sat Oct 21 15:50:52 CEST 2006 - schwab@suse.de
+
+- Fix broken macro.
+
+-------------------------------------------------------------------
+Tue Aug 22 13:09:41 CEST 2006 - tiwai@suse.de
+
+- updated to version 3.1.2:
+  * correct bug in configure script
+  * updated FAQ
+  * use -maltivec when checking for altivec.h.
+- clean up spec file, using %configure macro.
+
+-------------------------------------------------------------------
+Thu May 18 16:33:14 CEST 2006 - tiwai@suse.de
+
+- major update to version 3.1.1:
+  * fixed texi files
+  * lots of configure fixes
+  * clean up and optimizations
+  see ChangeLog for details
+- added missing glibc-devel to Requires of devel subpackages
+- removed -fno-strict-aliasing option
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr 13 14:19:35 CEST 2005 - tiwai@suse.de
+
+- fixed neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr 27 01:27:36 CEST 2004 - ro@suse.de
+
+- add -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 14:45:42 CET 2004 - adrian@suse.de
+
+- add missing %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Aug 29 05:38:19 CEST 2003 - nashif@suse.de
+
+- #29586: info file installation in wrong post segment
+
+-------------------------------------------------------------------
+Wed Jul 30 18:00:20 CEST 2003 - nashif@suse.de
+
+- Initial release
+

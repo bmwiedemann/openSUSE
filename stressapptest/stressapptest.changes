@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Aug 30 11:35:01 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Use proper upstream tarball from github
+- Add working URL pointing to github
+
+-------------------------------------------------------------------
+Thu Aug 30 09:58:23 UTC 2018 - frede@b1-systems.de
+
+- update to version 1.0.9 release
+
+-------------------------------------------------------------------
+Thu Feb  5 10:21:38 UTC 2015 - seiler@b1-systems.de
+
+- update to version 1.0.7 (checkout from git)
+changes: https://code.google.com/p/stressapptest/source/list
+- spec file cleanup
+
+-------------------------------------------------------------------
+Mon Oct 19 21:29:42 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Initial RPM
+

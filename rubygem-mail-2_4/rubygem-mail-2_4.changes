@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Nov 26 18:54:11 UTC 2012 - coolo@suse.com
+
+- updated to version 2.4.4
+
+-------------------------------------------------------------------
+Mon Nov 26 18:53:43 UTC 2012 - coolo@suse.com
+
+- updated to version 
+
+-------------------------------------------------------------------
+Tue Jul 31 14:31:00 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to have new provisions 
+
+-------------------------------------------------------------------
+Mon Apr 23 08:57:30 UTC 2012 - saschpe@suse.de
+
+- Also require rubygem-i18n-0_6 instead of rubygem-i18n
+
+-------------------------------------------------------------------
+Tue Apr  3 07:59:12 UTC 2012 - coolo@suse.com
+
+- update to 2.4.4
+ * Fix security vulnerability allowing command line exploit when using file delivery method
+ * Fix security vulnerability allowing command line exploit when using exim or sendmail from the command line
+ * Change Mail#deliver! to also inform the interceptors
+ * Encodings.value_decode(str): Treat lines with mixed encoding correctly when the line ends with a plain text part.
+
+-------------------------------------------------------------------
+Fri Mar 23 11:06:14 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Thu Jan 26 16:04:36 UTC 2012 - mrueckert@suse.de
+
+- initial package 2.4 branch
+

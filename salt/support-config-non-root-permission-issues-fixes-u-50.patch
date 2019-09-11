@@ -1,0 +1,106 @@
+From 1113909fe9ab0509ebe439051238d6a4f95d3c54 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Wed, 17 Oct 2018 14:10:47 +0200
+Subject: [PATCH] Support-config non-root permission issues fixes
+ (U#50095)
+
+Do not crash if there is no configuration available at all
+
+Handle CLI and log errors
+
+Catch overwriting exiting archive error by other users
+
+Suppress excessive tracebacks on error log level
+---
+ salt/cli/support/collector.py | 39 ++++++++++++++++++++++++++++++++---
+ salt/utils/parsers.py         |  2 +-
+ 2 files changed, 37 insertions(+), 4 deletions(-)
+
+diff --git a/salt/cli/support/collector.py b/salt/cli/support/collector.py
+index 478d07e13b..a4343297b6 100644
+--- a/salt/cli/support/collector.py
++++ b/salt/cli/support/collector.py
+@@ -125,6 +125,31 @@ class SupportDataCollector(object):
+         self.__current_section = []
+         self.__current_section_name = name
+ 
++    def _printout(self, data, output):
++        '''
++        Use salt outputter to printout content.
++
++        :return:
++        '''
++        opts = {'extension_modules': '', 'color': False}
++        try:
++            printout = salt.output.get_printout(output, opts)(data)
++            if printout is not None:
++                return printout.rstrip()
++        except (KeyError, AttributeError, TypeError) as err:
++            log.debug(err, exc_info=True)
++            try:
++                printout = salt.output.get_printout('nested', opts)(data)
++                if printout is not None:
++                    return printout.rstrip()
++            except (KeyError, AttributeError, TypeError) as err:
++                log.debug(err, exc_info=True)
++                printout = salt.output.get_printout('raw', opts)(data)
++                if printout is not None:
++                    return printout.rstrip()
++
++        return salt.output.try_printout(data, output, opts)
++
+     def write(self, title, data, output=None):
+         '''
+         Add a data to the current opened section.
+@@ -138,7 +163,7 @@ class SupportDataCollector(object):
+             try:
+                 if isinstance(data, dict) and 'return' in data:
+                     data = data['return']
+-                content = salt.output.try_printout(data, output, {'extension_modules': '', 'color': False})
++                content = self._printout(data, output)
+             except Exception:  # Fall-back to just raw YAML
+                 content = None
+         else:
+@@ -406,7 +431,11 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+            and self.config.get('support_archive')
+            and os.path.exists(self.config['support_archive'])):
+             self.out.warning('Terminated earlier, cleaning up')
+-            os.unlink(self.config['support_archive'])
++            try:
++                os.unlink(self.config['support_archive'])
++            except Exception as err:
++                log.debug(err)
++                self.out.error('{} while cleaning up.'.format(err))
+ 
+     def _check_existing_archive(self):
+         '''
+@@ -418,7 +447,11 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+         if os.path.exists(self.config['support_archive']):
+             if self.config['support_archive_force_overwrite']:
+                 self.out.warning('Overwriting existing archive: {}'.format(self.config['support_archive']))
+-                os.unlink(self.config['support_archive'])
++                try:
++                    os.unlink(self.config['support_archive'])
++                except Exception as err:
++                    log.debug(err)
++                    self.out.error('{} while trying to overwrite existing archive.'.format(err))
+                 ret = True
+             else:
+                 self.out.warning('File {} already exists.'.format(self.config['support_archive']))
+diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
+index 56a8961c3a..058346a9f4 100644
+--- a/salt/utils/parsers.py
++++ b/salt/utils/parsers.py
+@@ -1922,7 +1922,7 @@ class SaltSupportOptionParser(six.with_metaclass(OptionParserMeta, OptionParser,
+         '''
+         _opts, _args = optparse.OptionParser.parse_args(self)
+         configs = self.find_existing_configs(_opts.support_unit)
+-        if cfg not in configs:
++        if configs and cfg not in configs:
+             cfg = configs[0]
+ 
+         return config.master_config(self.get_config_file_path(cfg))
+-- 
+2.19.0
+
+

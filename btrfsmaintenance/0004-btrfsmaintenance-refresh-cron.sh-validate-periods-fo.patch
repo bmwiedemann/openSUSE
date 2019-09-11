@@ -1,0 +1,39 @@
+From 7851de9a30610885f7fc2f8238128f1c4f2d3593 Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Fri, 25 Jan 2019 14:08:13 -0500
+Subject: btrfsmaintenance-refresh-cron.sh: validate periods for cron-based systems
+References: fate#325529 jsc#SLE-3188
+
+Now that we accept systemd.time(7) calendar events, ensure that we don't
+try to use them on cron-based systems.  Instead of removing all existing
+jobs silently, refuse to change the period and print an error.
+---
+ btrfsmaintenance-refresh-cron.sh | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/btrfsmaintenance-refresh-cron.sh b/btrfsmaintenance-refresh-cron.sh
+index 2bf5f8e..10db054 100755
+--- a/btrfsmaintenance-refresh-cron.sh
++++ b/btrfsmaintenance-refresh-cron.sh
+@@ -35,6 +35,18 @@ refresh_cron() {
+ 	SCRIPT="$2"
+ 	echo "Refresh script $SCRIPT for $EXPECTED"
+ 
++	valid=false
++	for PERIOD in daily weekly monthly none uninstall; do
++		if [ "$PERIOD" = "$EXPECTED" ]; then
++			valid=true
++		fi
++	done
++
++	if ! $valid; then
++		echo "$EXPECTED is not a valid period for cron.  Not changing."
++		return
++	fi
++
+ 	for PERIOD in daily weekly monthly; do
+ 	        # NOTE: debian does not allow filenames with dots in /etc/cron.*
+ 	        LINK="${SCRIPT%.*}"
+-- 
+2.16.4
+

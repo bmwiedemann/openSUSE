@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Fri Apr  5 11:56:11 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.1
+  * FEM module fixes
+  * crash fixes
+  * Qt5 bugs with external display
+
+-------------------------------------------------------------------
+Mon Mar 25 08:01:35 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- add missing requires to six and vtk python modules (found via test suite)
+
+-------------------------------------------------------------------
+Mon Mar 18 12:34:53 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to release 0.18
+  * NetGen FEM enabled
+  * 0001-find-openmpi2-include-files.patch added for openmpi2 support
+- Obsolete patches:
+  * 0001-Convert-deprecated-boost-signal-to-signals2.patch
+  * 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch
+  * 0002-move-from-deprecated-boost.signals-to-boost.signals2.patch
+  * 0003-fix-blocking-of-SelectionObserver.patch
+  * fix-build-with-Qt5_11.diff
+  * fix-build.diff
+  * fix-draft-module-with-python3.patch
+  * fix-gcc8-build-failure.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+
+
+-------------------------------------------------------------------
+Thu Mar 14 03:36:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add support for Boost::Signals2, Boost::Signals has been deprecated
+  since Boost 1.54 and removed in 1.69:
+  * 0001-Convert-deprecated-boost-signal-to-signals2.patch
+  * 0002-move-from-deprecated-boost.signals-to-boost.signals2.patch
+  * 0003-fix-blocking-of-SelectionObserver.patch
+- Add explicit double-conversion-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar  9 15:10:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update URL: to use https://
+- Reorder BuildRequires alphabetically, remove duplicates
+
+-------------------------------------------------------------------
+Fri Feb 15 09:48:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description, and strip info that is already in
+  the metadata.
+
+-------------------------------------------------------------------
+Thu Feb 14 23:21:01 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC 8, add fix-gcc8-build-failure.patch
+- Add 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch, fix building
+  on AArch64.
+- Remove openmpi build dependencies, erroneously required for VTK
+  previously.
+  Drop 0001-find-openmpi2-include-files.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 21:10:12 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- enable FEM module
+- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...
+
+-------------------------------------------------------------------
+Mon Feb  4 08:28:22 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to current branch:
+  - Spreadsheet: Fixed issue #3361.
+
+-------------------------------------------------------------------
+Fri Feb  1 09:42:55 UTC 2019 - wbauer@tmo.at
+
+- Add upstream patches to fix build with python 3.7:
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch
+
+-------------------------------------------------------------------
+Wed Sep  5 14:50:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Aug 28 11:56:17 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- fix missing dependency to numpy, found via the..
+- added testsuite run via extra spec file
+
+-------------------------------------------------------------------
+Sat Aug 11 12:29:12 UTC 2018 - adrian@suse.de
+
+- update branch again
+- fix dependencies of Qt4 build (Leap 42.3)
+
+-------------------------------------------------------------------
+Thu Jul 26 07:42:15 UTC 2018 - adrian@suse.de
+
+- update to current branch, obsoletes branch_update.patch
+
+-------------------------------------------------------------------
+Mon Jun 18 19:36:22 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix BuildRequires, TW no longer has libboost_python-devel but
+  libboost_python3-devel, and for Leap 15.0 this linked libpython3.6m
+  and libboost_python-py2_7 into the same binary.
+
+-------------------------------------------------------------------
+Sun May 20 08:12:30 UTC 2018 - christophe@krop.fr
+
+- Add fix-build-with-Qt5_11.diff. Fixes build with the upcoming
+  Qt 5.11.
+- Switch to %autosetup
+
+-------------------------------------------------------------------
+Tue May  8 06:33:56 UTC 2018 - adrian@suse.de
+
+- temporary disable FEM module
+  * it works fine, but requires hdf5 version 1.8 via med-tools,
+    which currently conflicts in openSUSE distro.
+- Fix draft module crash
+  (got merged upstream for 0.18 fix-draft-module-with-python3.patch)
+
+-------------------------------------------------------------------
+Fri Apr 27 12:55:30 UTC 2018 - adrian@suse.de
+
+- apply current 0.17 branch (branch_update.patch)
+  In first place for occt 7.2 fixes
+
+-------------------------------------------------------------------
+Tue Apr 17 06:46:23 UTC 2018 - adrian@suse.de
+
+- fix crash in Draft module with python 3
+
+-------------------------------------------------------------------
+Mon Apr 16 06:51:06 UTC 2018 - adrian@suse.de
+
+- cleanup python qt deps (pyside2 only now)
+
+-------------------------------------------------------------------
+Tue Apr 10 11:33:35 UTC 2018 - adrian@suse.de
+
+- update to version 0.17
+  2 years of work: https://www.freecadweb.org/wiki/Release_notes_0.17
+- switching to Qt5
+  (fix-build.diff 0001-find-openmpi2-include-files.patch)
+  (the old 0.16 fork had obsolete temporary patches remove-qtwebkit.patch and
+   remove-webgui.patch)
+
+-------------------------------------------------------------------
+Thu Jan  4 15:36:57 UTC 2018 - wbauer@tmo.at
+
+- Add remove-qtwebkit.patch and remove-webgui.patch (taken from
+  Arch Linux) to fix build without QtWebKit
+- Build without QtWebKit on Tumbleweed and SLE/Leap 15 as
+  libQtWebKit4 is about to be dropped (boo#1070901)
+
+-------------------------------------------------------------------
+Fri Dec 15 07:13:05 UTC 2017 - adrian@suse.de
+
+- fix build for factory (boost dependencies)
+
+-------------------------------------------------------------------
+Wed Nov  8 08:09:39 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.16.6712 (contains backports from trunk)
+- Some cleanup
+
+-------------------------------------------------------------------
+Sun Sep 10 08:23:34 UTC 2017 - rbrown@suse.com
+
+- Correct python-CXX requires
+- add python-pyside requires, needed for welcome splash 
+
+-------------------------------------------------------------------
+Mon Jun 13 06:46:23 UTC 2016 - adrian@suse.de
+
+- FreeCAD 0.16
+- create on the base of the work from various home projects
+  (esp by wkazubski and torhans)
+- use rpath instead of modifying ldconfig for our own libs
+

@@ -1,0 +1,469 @@
+-------------------------------------------------------------------
+Tue Jul  5 20:16:09 UTC 2016 - mardnh@gmx.de
+
+- Kismet 2016-07-R1:
+ * nl8011 support is fixed so finding the vif device works again
+ * full 5GHz channel discovery works now
+ * memory leaks in the drone are fixed 
+ * some ncurses compile bugs are resolved
+
+-------------------------------------------------------------------
+Wed Apr 13 12:53:01 UTC 2016 - astieger@suse.com
+
+- Kismet 2016-01-R1:
+  * force validation of fcs by default for all sources
+  * support for recent autotools
+  * fixes for crashes when alert backlog was set to zero
+  *  fixes for failures in some VIF situations
+  * fixes to resizing windows
+  * fixes to GPS averaging
+  * fixes to Radiotap changes in recent kernels
+  * add WPS state parsing
+  * handle BSSTimestamp parsing
+- upstream sources no longer signed, use source URLs
+
+-------------------------------------------------------------------
+Wed Sep 17 23:49:36 UTC 2014 - andreas.stieger@gmx.de
+
+- Require xz
+
+-------------------------------------------------------------------
+Tue May 27 19:45:26 UTC 2014 - crrodriguez@opensuse.org
+
+- version 2013-03-R1b 
+* While this does not have major new features 
+(phy-neutral is still in development) 
+it includes a long list of bugfixes, 
+including better ncurses color support, radiotap fixes, 
+better interface control when setting channels, memory leak fixes, 
+better packaging for distros, and various other quirks.
+- Switch build to libnl3.
+
+-------------------------------------------------------------------
+Fri May 31 07:56:25 UTC 2013 - coolo@suse.com
+
+- do not hardcode automake 1.12
+
+-------------------------------------------------------------------
+Sat Feb 23 12:06:31 UTC 2013 - andreas.stieger@gmx.de
+
+- Verify GPG signature only for 12.3 and up, fixing 12.2 build
+- verify in prep section, and only if macro is available
+
+-------------------------------------------------------------------
+Wed Nov 28 18:23:02 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Thu Jul 19 20:05:26 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build
+
+-------------------------------------------------------------------
+Wed Sep 28 15:09:43 CEST 2011 - meissner@suse.de
+
+- Kismet-2011-03-R2 released, includes:
+- 2011-03-R2
+  New release to address a crash bug in Kismet when operating as a drone
+  (either kismet_server or kismet_drone).
+
+- 2011-03-R1
+  fixes problems with changes in ncurses 5.8 (for the few
+  distributions which picked it up already) and is REQUIRED for Kismet
+  to work with ncurses-5.8.  Also introduced is marginally more accurate
+  GPS averaging (still all the problems of weighting and averaging,
+  but eliminates the float drift), some compile time updates, other
+  minor tweaks.
+
+  Under the covers 2011-03 also contains the start of the new phy-neutral
+  common tracker layer, which will be replacing the current model of an
+  802.11-centric tracking layer.  Anyone working on capture plugins for
+  non-dot11 protocols should start taking a look at the new tracking
+  layer.  The dot11 tracking is being ported to the new layer and
+  eventually they old tracking code will be disabled.
+
+- 2011-01-R1
+  Lots of bugfixes (netxml reference, 802.11d, mac80211 on legacy cards,
+  client preferences, client display options)
+  Ruby network API and example clients
+  Wifi NIC performance shoot-out tool
+  WPA Migration Mode detection
+  GPS logging in PPI pcap files
+  Per-capture source per-network and per-client signal tracking
+  Packaging scripts
+
+- 2010-07-R1 changes:
+  Enhancements:
+   Ruby interface and examples
+   Proper TCP Async (for large numbers of drones and other situations)
+   Add hidedata= option for "safer" sniffing in public environments
+   Kluged escape handler for broken ncurses arrow handling on some systems
+   Add --no-root option for zero-priv drone-only deploys
+ 
+  Bugfixes:
+   Fix installation on Ubuntu dash
+   IPC updates and fixes for drone
+   IPC architectural fixes
+
+-------------------------------------------------------------------
+Tue Sep 27 14:18:18 UTC 2011 - idonmez@suse.com
+
+- Cleanup spec file and fix build for < openSUSE 12.1 
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Thu Apr 15 17:09:00 CEST 2010 - meissner@suse.de
+
+- Kismet-2010-01-R1 released, includes
+  - fixes to segfaults
+  - compiling problems on Snow Leopard
+  - GPS, and sundry other quirks
+  - and enhancements to the UI
+  - support for the new GPSD JSON-only protocol
+  - and a BT scanning plugin for BT device discovery.
+- Kismet-2009-11-R1 released, Release includes:
+  - fixes to crashes on resizing terminals
+  - tweaks to plugins
+  - addition of the autowep plugin
+  - improved plugin handling
+  - plugin support on OSX
+  - initial support for Snow Leopard
+  - fixes to PPI corruption
+  - XML fixes
+  - and quite a lot of other bugfixes.
+
+-------------------------------------------------------------------
+Wed Aug 26 22:24:58 CEST 2009 - meissner@suse.de
+
+- buildrequire pcre-devel and libnl-devel added to enable
+  more features.
+
+-------------------------------------------------------------------
+Wed Aug  5 14:14:38 CEST 2009 - prusnak@suse.cz
+
+- updated to 2009-06-R1
+  * Restore battery/power reporting functionality
+  * Default to VAP creation on mac80211 sources
+  * Revamp IP range guessing
+  * Added mouse support for network and client lists
+  * Properly handle PHY packets
+  * Fix filter string parsing for double-negate
+  * Add low-level mac80211 control options for FCS and PLCP failure filtering
+  * Added arbitrary tagging strings to clients
+  * Add preserved tagging (~/.kismet file)
+  * Restored linux-cap dropping on capture
+  * Handle sources being disconnected under some libpcap versions
+  * Restored daemonize
+  * Revamped network details text
+  * Restored decloaked SSID caching
+  * Add plugin API for adding menus
+  * Improved Nokia ITT support
+  * Restore missing alerts
+  * Added "user notes" to networks and clients
+  * Various and sundry UI usability changes
+  * Multiple crashes, internal inconsistencies, and rare but unpleasant bugs fixed
+
+-------------------------------------------------------------------
+Tue Jun  9 11:20:53 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Mon Jan  5 15:05:14 CET 2009 - mseben@suse.cz
+
+- added libexpat-devel to BuildRequires (needed to build gpsmap)
+  [bnc#462695]
+
+-------------------------------------------------------------------
+Mon Jan  5 15:05:14 CET 2009 - mseben@suse.cz
+
+- added libexpat-devel to BuildRequires (needed to build gpsmap)
+  [bnc#462695]
+
+-------------------------------------------------------------------
+Mon Sep  1 14:46:00 CEST 2008 - ro@suse.de
+
+- add ncurses include path to cflags 
+
+-------------------------------------------------------------------
+Wed Jul  9 14:43:24 CEST 2008 - prusnak@suse.cz
+
+- updated to 2008-05-R1
+  * wrt54 fixes
+  * Multiple Darwin fixes
+  * GPS rewrite and fixes
+  * Nokia tweaks
+  * Imagemagick fixes
+  * More wrt54 prism0 hacks
+  * Tweaked the wrt54 stuff more (where does prism0 come from?)
+  * Tweaked wrt54 source
+  * Added configure patch for OSX and debian control files from
+    Evan Broder
+  * Fixed imagemagick detect on modern IM installs
+  * Added gpsmap patches from Kripton to support open street maps
+  * Added DLT80211 and DLT80211_AVS to the linktype setting code
+    on Darwin, BSD
+  * Added 'kismet' wrapper binary, conf files to clean/distclean
+  * Fixed assorted messages being printed in quiet mode
+  * Added additional warnings/info for madwifi-ng about autocreate=none
+    when other vaps are found.
+  * Removed wlancond/power setting on Maemo/Nokia since it doesn't seem
+    to reliably help
+  * Merged patches from Alexandre Balavas to clean up warnings on CentOS
+  * Re-ordered headers in panelfront_display to prevent weird compiler issue
+    on Darwin
+  * Fixed gpsd speed issue on water mode, thanks again to Antonio
+  * Fixed segv on gps=false introduced in recent gps rewrite
+    (thanks Antonio Eugenio Burriel for patch)
+  * Added rt61 and rt8187 source names
+  * Fixed segv on OSX in client on closedir
+  * Revamped GPS to use 'watch' mode in GPSD
+  * Revamped GPS again to work with watch better and to dynamically use poll
+    mode on older GPSD implementations
+  * Revamped GPS a third time in the same day to take the seemingly broken Maemo
+    GPSD into account and use R=1 debug mode on Maemo devices
+  * Added Hildon GPS support
+  * Fixed huge bug in IE tag parsing that ignored large beacon frames,
+    thanks to Duane Compton
+  * Disabled probenojoin by default in config, it's sort of a useless alert
+    which makes a lot of noise.
+  * More capture source control changes to try to solve problems capturing reliably
+    on Nokia 8x0 devices
+  * Nokia-specific changes
+  * Added kernel version detection for Darwin to accept enX on >= Leopard,
+    VERY NEW LIBPCAP required.
+  * Fixed admtek fatal error on ssid zero (errors now ignored)
+  * Fixed a problem where the first connection to the server would be ignored.
+  * Merged a patchset from Pavol Rusnak and SUSE including some ncurses cleanups,
+    format string quirks with size_t, and header massaging
+  * Fixed 'make install' and 'make suidinstall' not dep'ing 'kismet' binary
+  * Added --disable-dbus to configure for environments which don't detect properly
+- fixed return of random data from nonvoid function (nonvoid.diff)
+- removed obsoleted patches:
+  * bool.diff (included in update)
+  * includes.diff (included in update)
+  * intptr.diff (included in update)
+  * wtap.diff (included in update)
+
+-------------------------------------------------------------------
+Thu Feb 21 15:20:49 CET 2008 - crrodriguez@suse.de
+
+- correct buildrequires after wireshark-devel changes
+- only link with the needed libraries 
+
+-------------------------------------------------------------------
+Mon Feb 11 22:32:40 CET 2008 - schwab@suse.de
+
+- Fix crash on exit.
+
+-------------------------------------------------------------------
+Tue Dec  4 10:37:05 CET 2007 - prusnak@suse.cz
+
+- fixed missing includes (includes.patch)
+
+-------------------------------------------------------------------
+Wed Oct 31 14:43:22 CET 2007 - prusnak@suse.cz
+
+- update to 2007-10-R1
+  * basic 802.11N support
+  * Airpcap 11n header support
+  * DBUS support for controlling NetworkManager
+  * significant memory reduction in server/client
+  * significantly faster client code
+  * D80211 device support (iwl, others)
+  * revamped madwifi-ng support
+  * GPSD anti-jitter handling
+  * innumerable bug fixes
+  * see CHANGELOG for more details
+
+-------------------------------------------------------------------
+Fri Sep 21 10:56:41 CEST 2007 - schwab@suse.de
+
+- Update BuildRequires.
+
+-------------------------------------------------------------------
+Fri Mar 30 11:40:56 CEST 2007 - dmueller@suse.de
+
+- update buildrequires 
+
+-------------------------------------------------------------------
+Tue Feb 27 22:55:17 CET 2007 - dmueller@suse.de
+
+- reduce buildRequires 
+
+-------------------------------------------------------------------
+Thu Feb  8 16:09:03 CET 2007 - prusnak@suse.cz
+
+- upgraded to 2007-01-R1b
+  * added Nokia 770/800 support
+  * added multiple IDS alerts
+  * fixed memory mismanagement crashes
+- fixed spec file and makefile.diff for #norootforbuild
+
+-------------------------------------------------------------------
+Mon Jul 17 11:55:18 CEST 2006 - mskibbe@suse.de
+
+- update to version 2006_04 which
+  o contains patch:
+    kismet-2005-08-R1-madwifi-ng.diff 
+    kismet-2005-08-R1-bcm43xx.diff
+    kismet-2005-08-R1-prism2.diff
+    kismet-2005-08-R1-svn.diff
+  o Added --retain-monitor cmdline option on request
+  o Added setting madwifi-ng to radiotap mode
+  o Added the initial ipw3945 madwifi-ng support
+  o Added zd1211 capture source (with warnings)
+  o Added memset 0 to gpsd code to explicity zero the gps data
+  o Added a fix to ringbuf from Shane Schisler
+  o Added extremely experimental support for broadcom 43xx
+  o Fixed several crashes due to not checking noise/junk
+  o Fixed madwifi-ng fcs bytes
+  o Fixed madwifi-ng not shutting down rfmon vap
+  o Fixed madwifi_ag with madwifi-ng drivers
+  o Moved ipw3945parasite to ipwlivetap
+  o Moved madwifing support into madwifi standard as an auto-detect
+  o Switched ACX100 capture to not expect the FCS bytes
+    buffer on startup
+  o Changed prism2 header conversion to ignore a broken length
+    field in the header
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 15:10:55 CET 2006 - mjancar@suse.cz
+
+- backports from svn
+  * support for madwifi-ng (#136896)
+  * support for bcm43xx
+  * various bugfixes
+
+-------------------------------------------------------------------
+Sun Jan 22 22:56:50 CET 2006 - coolo@suse.de
+
+- fixed crash (and avoid stripping)
+
+-------------------------------------------------------------------
+Sat Jan 14 13:19:39 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Thu Jan 12 20:13:08 CET 2006 - mjancar@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Fri Oct  7 14:53:49 CEST 2005 - schwab@suse.de
+
+- Fix last change.
+- Fix more format string bugs.
+- Fix infinite loop.
+
+-------------------------------------------------------------------
+Fri Oct  7 11:47:18 CEST 2005 - yxu@suse.de
+
+- complete missing parameter for function fprintf 
+
+-------------------------------------------------------------------
+Tue Aug 30 01:20:02 CEST 2005 - ro@suse.de
+
+- added ethereal-devel to nfb 
+
+-------------------------------------------------------------------
+Mon Aug 29 14:00:38 CEST 2005 - mjancar@suse.cz
+
+- update to 2005-08-R1
+  * fix heap overflow (#106134)
+
+-------------------------------------------------------------------
+Thu Jul 28 20:29:35 CEST 2005 - mjancar@suse.cz
+
+- update to 2005-07-R1a
+
+-------------------------------------------------------------------
+Tue Apr 12 17:28:14 CEST 2005 - mjancar@suse.cz
+
+- upgrade to 2005-04-R1
+- fix for gcc 4.0
+
+-------------------------------------------------------------------
+Wed Oct 27 15:24:26 CEST 2004 - meissner@suse.de
+
+- Upgraded to 2004-10-R1:
+	Some fixup to gpsd handling (More to come)
+	GCC-3.4 cleanups
+	BSS Timestamp alerts
+	Centrino support, support for GPL ADMTek drivers,
+	Support for alternate cisco drivers
+	Imagemagick support for new imagemagick api changes
+	Expanded alert protocol to carry additional info about the environment
+	that generated the alert
+	Fixed packet number and delta calculations, and sound output for
+	traffic seen
+	Fixed crankiness with hostap if interface is down
+	Added default "no-type" card to force new users to configure
+	Lots of other bug fixes
+	WSP100 is known to be broken in this release
+
+-------------------------------------------------------------------
+Tue Aug 31 21:09:26 CEST 2004 - meissner@suse.de
+
+- fixed problem with new ImageMagick.
+
+-------------------------------------------------------------------
+Wed Aug 18 15:15:09 CEST 2004 - meissner@suse.de
+
+- Add README and CHANGELOG to documentation.
+
+-------------------------------------------------------------------
+Mon Jul 26 14:14:59 CEST 2004 - meissner@suse.de
+
+- Upgraded to 2004-04-R1 release. (new features, lots of bugfixes, etc ...)
+- Fixed C++ problem which caused endless loops on 64bit. #43108
+- Made gpsmap build.
+
+-------------------------------------------------------------------
+Fri Feb 13 12:16:54 CET 2004 - meissner@suse.de
+
+- Upgraded to feb.04.01 release. (new american naming scheme
+  which will break RPM ordering).
+
+-------------------------------------------------------------------
+Tue Jan 27 00:18:25 CET 2004 - ro@suse.de
+
+- undef bool after including ncurses
+
+-------------------------------------------------------------------
+Fri Aug  8 13:54:48 CEST 2003 - meissner@suse.de
+
+- updated to 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 28 13:16:28 CEST 2003 - meissner@suse.de
+
+- /usr/bin/convert now needs libexif, added to nfb
+
+-------------------------------------------------------------------
+Fri Jul 25 14:27:12 CEST 2003 - meissner@suse.de
+
+- make build on ppc64, fixed configure.in problems.
+
+-------------------------------------------------------------------
+Mon Jul 21 12:23:11 CEST 2003 - meissner@suse.de
+
+- apply cast to fix 64bit problem.
+- fixed default config files to use /usr/ instead of /usr/local/
+
+-------------------------------------------------------------------
+Fri Jul 18 15:59:14 CEST 2003 - meissner@suse.de
+
+- package created with version 2.8.1.
+

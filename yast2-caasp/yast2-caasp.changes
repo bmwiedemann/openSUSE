@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Wed Jun 12 11:28:35 CEST 2019 - schubi@suse.de
+
+- Enabling chrony-wait service too (bsc#1137196).
+- 4.2.0
+
+-------------------------------------------------------------------
+Fri Nov  9 16:09:30 UTC 2018 - lslezak@suse.cz
+
+- Kubic updates (bsc#1114818)
+  - Propose using the openSUSE pool.ntp.org servers when the DHCP
+    response does not include any
+  - Updated kubeadm dialog title
+- 4.1.2
+
+-------------------------------------------------------------------
+Thu Oct 25 14:06:41 UTC 2018 - lslezak@suse.cz
+
+- Added Kubeadm role dialog for openSUSE Kubic (FATE#325834)
+- 4.1.1
+
+-------------------------------------------------------------------
+Tue Oct 16 16:55:40 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Oct 15 08:35:57 UTC 2018 - mfilka@suse.com
+
+- fate#323454
+  - NTP servers proposal is based on DHCP response too.
+- 4.1.0 
+
+-------------------------------------------------------------------
+Mon Aug 20 16:49:53 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Apr 10 13:42:01 UTC 2018 - jreidinger@suse.com
+
+- Do not build on 32-bit architecture as some dependencies are not
+  available there (bsc#1088852) 
+- 4.0.5
+
+-------------------------------------------------------------------
+Tue Jan 30 10:36:58 UTC 2018 - igonzalezsosa@suse.com
+
+- Handle product features overlay in a proper way (bsc#1077038).
+- 4.0.4
+
+-------------------------------------------------------------------
+Tue Dec 12 13:16:49 UTC 2017 - jreidinger@suse.com
+
+- Use chrony instead of ntp (FATE#323432)
+- 4.0.3
+
+-------------------------------------------------------------------
+Wed Sep 27 10:03:25 UTC 2017 - jreidinger@suse.com
+
+- fix building with roles with order (related to fix for
+  bsc#1049297)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Sep 12 09:03:53 UTC 2017 - knut.anderssen@suse.com
+
+- Replace /info.txt by /README.BETA as beta file to be shown
+  (bsc#1047060).
+- 4.0.1
+
+-------------------------------------------------------------------
+Thu Sep  7 12:06:32 UTC 2017 - jreidinger@suse.com
+
+- Add language selection (FATE#323837)
+- Mark all user visible strings for translation (FATE#323837)
+- 4.0.0
+
+-------------------------------------------------------------------
+Mon Sep  4 12:25:38 UTC 2017 - knut.anderssen@suse.com
+
+- Fix keyboard selection widget requirement (fate#322276)
+- 1.1.2
+
+-------------------------------------------------------------------
+Mon Jun  5 18:37:34 UTC 2017 - knut.anderssen@suse.com
+
+- Rearrange of keyboard and registration code widgets (bsc#1022768)
+- 1.1.1
+
+-------------------------------------------------------------------
+Fri May 12 14:29:47 UTC 2017 - igonzalezsosa@suse.com
+
+- Adapt the system roles widget to yast2-installation 3.2.x
+  (bsc#1038854)
+- 1.1.0
+
+-------------------------------------------------------------------
+Fri Apr 28 09:26:30 UTC 2017 - igonzalezsosa@suse.com
+
+- Move specific CaaSP code from yast2-installation 
+  (bsc#1036838)
+- 1.0.4
+
+-------------------------------------------------------------------
+Thu Apr 27 11:56:47 UTC 2017 - igonzalezsosa@suse.com
+
+- Add the iburst option to the NTP server configuration
+  (FATE#323249)
+- 1.0.3
+
+-------------------------------------------------------------------
+Fri Apr 21 15:51:51 UTC 2017 - igonzalezsosa@suse.com
+
+- Configure the administration node as a NTP server/client
+  (FATE#323249)
+- 1.0.2
+
+-------------------------------------------------------------------
+Thu Apr 20 09:20:29 WEST 2017 - knut.anderssen@suse.com
+
+- fate#323250
+  - Added systemd timesyncd configuration in worker role handler.
+- 1.0.1
+
+-------------------------------------------------------------------
+Thu Mar 23 21:46:43 UTC 2017 - igonzalezsosa@suse.com
+
+- Initial version
+- 1.0.0
+

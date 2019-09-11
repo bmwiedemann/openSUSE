@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Jul  4 17:02:41 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to upstream version 1332
+  * fixes build of ibmtpm v1470
+  * add ibmswtpm2-fix-uninitialized.patch
+  * run through spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 18 08:31:26 UTC 2018 - msuchanek@suse.com
+
+- Enable bigendian build
+
+-------------------------------------------------------------------
+Tue Jan 16 11:33:14 UTC 2018 - vcizek@suse.com
+
+- Update to upstream version 1119
+  * adds openssl 1.1 support (bsc#1066916)
+- drop patches (upstream):
+  * bits.patch
+  * fix_unreferenced_macro-gcc7.patch
+
+-------------------------------------------------------------------
+Wed Nov  8 15:04:35 UTC 2017 - msuchanek@suse.com
+
+- Update to upstream version 974
+  - deal with openssl 1.0 vs 1.1 split (bsc#1066916)
+
+-------------------------------------------------------------------
+Mon Jun  5 11:49:18 UTC 2017 - msuchanek@suse.com
+
+- fix build with gcc7: fix_unreferenced_macro-gcc7.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 12:16:37 UTC 2017 - msuchanek@suse.com
+
+- Drop a pointer cast hack in bits.patch. It builds without the hack.
+
+-------------------------------------------------------------------
+Wed Feb  8 09:38:18 UTC 2017 - jengelh@inai.de
+
+- Wrap description, drop empty scriptlets.
+
+-------------------------------------------------------------------
+Fri Jan 27 11:49:20 UTC 2017 - msuchanek@suse.com
+
+- Import version 832 (FATE#321601)
+- bits.patch: handle some 32/64bit issues
+- makefile.patch: some compiler flag adjustments

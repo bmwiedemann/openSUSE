@@ -1,0 +1,264 @@
+-------------------------------------------------------------------
+Fri Jun 14 05:08:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.41
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.41    2019-06-13
+          [CHANGES]
+           * Added Future::Exception->throw
+
+-------------------------------------------------------------------
+Sat May  4 05:24:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.40    2019-05-03
+          [CHANGES]
+           * Added Future::Exception (RT129373)
+           * Make ->get throw a Future::Exception and ->fail recognise one
+           * Better documentation of the failure category parameter
+           * Added a properly-documented ->block_until_ready
+
+-------------------------------------------------------------------
+Sat Sep 22 05:23:21 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-Future/Changes
+
+-------------------------------------------------------------------
+Wed Feb  7 16:32:52 UTC 2018 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.38    2017-12-18 01:41:52
+          [CHANGES]
+           * Added counting ability to Future::Mutex (RT123876)
+  
+          [BUGFIXES]
+           * Support perl 5.8.1 again (thanks ilmari)
+
+-------------------------------------------------------------------
+Thu Dec  7 06:23:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.37    2017/11/28 15:39:22
+          [CHANGES]
+           * Finally got around to removing the old Makefile.PL
+  
+          [BUGFIXES]
+           * Fix for convergent futures that lose strong references during
+             cancellation (RT120468)
+           * ->without_cancel shouldn't retain the originating future after
+             completion (RT122920)
+
+-------------------------------------------------------------------
+Tue Nov 28 06:22:55 UTC 2017 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.36    2017/11/27 22:04:52
+          [CHANGES]
+           * Added ->retain method (RT123711)
+           * Fixed some typoes in docs (RT118309)
+           * Added ->state method (RT120759)
+          
+          [BUGFIXES]
+           * Ensure that ->without_cancel still strongly holds a reference to
+             its parent future (RT122920)
+
+-------------------------------------------------------------------
+Sat Jun 24 05:37:50 UTC 2017 - coolo@suse.com
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.35    2017/06/23 20:37:57
+          [CHANGES]
+           * Link to YAPC::EU talk video in SEE ALSO
+  
+          [BUGFIXES]
+           * Handle cancelled/completed slots when fmap is cancelled (RT120469)
+             (thanks tm604)
+
+-------------------------------------------------------------------
+Mon Oct  3 05:27:35 UTC 2016 - coolo@suse.com
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.34    2016/10/02 18:40:06
+          [CHANGES]
+           * Added Future::Mutex
+           * Minor documentation wording fixes (thanks ilmari)
+  
+          [BUGFIXES]
+           * Fallback to 'configure_requires' for older versions of
+             Module::Build that don't support 'test_requires' (RT110721)
+
+-------------------------------------------------------------------
+Sat Aug  1 08:35:13 UTC 2015 - coolo@suse.com
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.33    2015/07/29 16:15:55
+          [CHANGES]
+           * Added ->catch and ->catch_with_f
+           * Add catch-handler semantics to ->then / ->then_with_f
+           * Also pass fmap* items via $_ (RT105558)
+           * Undocument ->done_cb / ->fail_cb / ->cancel_cb
+           * Entirely delete ->and_then / ->or_else
+           * New barename documentation style including "since" versions
+           * Further document the idea of failure categories as used by catch*
+
+-------------------------------------------------------------------
+Tue Apr 14 19:05:36 UTC 2015 - coolo@suse.com
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.32    2015/03/10 19:54:22
+          [CHANGES]
+           * Documentation updates for new ->wrap_cb method
+  
+          [BUGFIXES]
+           * Empty convergents should respect subclassing (RT97537)
+           * Adjust loss-report regexp for bleadperl (RT99002 again)
+           * Make trailing periods in warning tests optional, to account for
+             Carp version changes (RT100685)
+  
+  0.31    2015/03/08 17:50:06
+          [CHANGES]
+           * Added debugging warning when destroying a failed Future that has
+             not reported its failure (RT102198)
+           * Have ->and_then / ->or_else die immediately to further their
+             deprecation
+           * Announce done_cb/fail_cb/cancel_cb as deprecated in favour of curry
+           * Provide ->wrap_cb method (experimental)
+          
+          [BUGFIXES]
+           * Ensure that Test::Future does not retain Futures once they are
+             complete (RT101128)
+           * 'use Future' in Future::Utils (RT102167)
+  
+  0.30    2014/11/26 14:29:28
+          [CHANGES]
+           * Rename 'dependent' futures to 'convergent'
+           * Removed examples/ scripts that now exist as independent modules
+           * Added ->without_cancel
+           * Sanity-check the $code argument to ->on_{ready,done,fail,cancel} to
+             ensure it is callable or a Future
+          
+          [BUGFIXES]
+           * Ensure that 'ready_at' is always set in DEBUG mode
+           * Fix DEBUG 'lost_at' line number reporting tests for latest
+             bleadperl (RT99002)
+           * Ensure that if Future::Utils::repeat condition code dies, that is
+             passed to the result Future and not propagated to the caller
+             (RT100067)
+           * Failure by returning a non-Future from a sequencing code block
+             should report as a failed Future, not throw exception to caller
+  
+  0.29    2014/07/17 12:18:12
+          [CHANGES]
+           * Added Test::Future
+           * Stronger deprecations - repeat {} on failures warns every time,
+             ->and_then / ->or_else warn once
+  
+          [BUGFIXES]
+           * Define the behaviour of dependent futures when components are
+             cancelled. (Partially fixes RT96685)
+           * Use Module::Build->prompt (RT96409)
+           * Ensure that repeat on an empty foreach list or empty generator
+             without 'otherwise' behaves correctly, just yield an immediate
+  
+  0.28    2014/06/08 22:43:40
+          [CHANGES]
+           * Added ->label
+           * Added ->btime, rtime, elapsed tracing timers
+           * Better handling of 'breaks' version detection
+  
+  0.27    2014/06/06 17:42:27
+          [BUGFIXES]
+           * Depend on Carp 1.25 for the new message format with trailing
+             period, so tests work
+  
+  0.26    2014/06/01 12:52:53
+          [CHANGES]
+           * Added ->is_failed accessor
+           * Implement ->export_to_level in Future::Utils
+           * Print a warning about lost sequence Futures
+           * Allow Future->done and Future->fail as simple class constructors
+             to return immediates
+           * Added Future->unwrap
+  
+          [BUGFIXES]
+           * Ensure that sequence futures are weaken()ed in the forward
+             direction.
+             **NOTE** This will potentially break existing code that depended on
+               strong references. This old code was, however, broken.
+  
+  0.25    2014/02/22 03:47:08
+          [BUGFIXES]
+           * Fix warning-matching test in unit test for both older and newer
+             versions of Carp
+  
+  0.24    2014/02/21 17:57:49
+          [CHANGES]
+           * Have repeat print a warning if it is asked to retry over a failure
+           * Change documentation to suggest try_repeat instead of repeat for
+             retries over failure
+           * Check at call time that sequencing callbacks really are callable,
+             leading to neater error messages (RT93164)
+  
+  0.23    2014/01/19 15:26:55
+          [CHANGES]
+           * Link to Futures advent calendar 2013
+           * Fixes/additions to Phrasebook documentation, including section
+             about tree recursion
+  
+          [BUGFIXES]
+           * Ensure that late addition of additional items to a fmap foreach
+             array works correctly even with concurrency
+  
+  0.22    2014/01/12 03:12:18
+          [CHANGES]
+           * Ignore ->done or ->fail on cancelled Futures
+           * Added ->then_done, ->then_fail, ->else_done, ->else_fail
+           * Neaten up naming of fmap* family - provide both long and short
+             names for each function
+           * Added Future::Utils::call and call_with_escape
+           * Ensure that dependent futures on subclasses tries to use derived
+             futures as prototype if possible
+  
+  0.21    2013/12/29 18:14:41
+          [CHANGES]
+           * Major performance improvement by folding out some layers of sub {}
+             wrapping in sequencing operations
+           * Added ->then_with_f and ->else_with_f
+          
+          [BUGFIXES]
+           * Don't start another trial after cancelling a repeat() (RT91147)
+  
+  0.20    2013/11/18 19:14:27
+          [CHANGES]
+           * Include an indication of done/failed/cancelled status of a Future
+             when ->done or ->failing an already-ready one
+  
+          [BUGFIXES]
+           * Declare requires perl 5.8 because it fails on 5.6 smokers - no idea
+             why
+           * Fix a couple of typoes in docs (RT89185)
+
+-------------------------------------------------------------------
+Wed Oct  2 05:34:33 UTC 2013 - coolo@suse.com
+
+- initial package 0.19
+    * created by cpanspec 1.78.07
+

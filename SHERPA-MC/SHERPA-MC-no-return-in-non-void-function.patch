@@ -1,0 +1,24 @@
+Index: SHERPA-MC-2.2.6/SHERPA/Tools/Variations.C
+===================================================================
+--- SHERPA-MC-2.2.6.orig/SHERPA/Tools/Variations.C
++++ SHERPA-MC-2.2.6/SHERPA/Tools/Variations.C
+@@ -632,6 +632,7 @@ namespace SHERPA {
+       case Variations_Type::sudakov:
+         return s << "Sudakov";
+     }
++    return s << "";
+   }
+ 
+   std::ostream& operator<<(std::ostream& s, const Variation_Weights& weights)
+Index: SHERPA-MC-2.2.6/MODEL/Main/Color_Function.C
+===================================================================
+--- SHERPA-MC-2.2.6.orig/MODEL/Main/Color_Function.C
++++ SHERPA-MC-2.2.6/MODEL/Main/Color_Function.C
+@@ -63,6 +63,7 @@ std::string Color_Function::String() con
+   case cf::None:
+   case cf::Unknown: return "1";
+   }
++  return "0";
+ }
+ 
+ Color_Function::~Color_Function() {

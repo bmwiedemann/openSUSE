@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Thu Jan 31 10:21:21 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Dynamically load libfm-qt on demand to create
+    the file dialog helper.
+  * Don't use automatic string conversions
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+    - Removed the superfluous libfm-qt dependency
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 15:14:06 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * lxqtplatformtheme: Initialize “folowColorScheme” once
+  * Fix icon colorizing at startup
+  * Remember the view mode
+
+-------------------------------------------------------------------
+Mon Oct 23 11:27:07 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set an informal patch version
+  * Don't export github templates
+  * Flag unused vars in onServiceOwnerChanged
+  * Fix missing variable declaration
+  * Handle QML (as @PCMan suggested)
+  * Use mime functions added by @PCMan
+  * Loading and saving window/splitter size
+  * Central positioning with respect to parent
+  * Set window title correctly
+  * Qt version conditions
+  * Just made it compilable
+  * Handle mime-type filters for file dialog. Set custom file dialog labels.
+  * Update options properly.
+  * Implement a basic file dialog helper using libfm-qt's Fm::FileDialog.
+  * Avoid using Qt-specific keywords such as signal/slot and foreach. Instead, use macros.
+  * LXQtPlatformTheme: Make Qt use default palette (#22)
+  * LXQtPlatformTheme: Add icon FollowColorScheme config (#21)
+  * Prevent a possible C++11 range for detach (#20)
+  * Use the CMake MODULE library type.
+  * LXQtPlatformTheme: Propagate wheelScrollLines
+  * LXQtPlatformTheme: Do not provide own palette
+  * Fix multiple StatusNotifierItems.
+  * Bump year
+  * Updates lxqt-build-tools required version
+
+-------------------------------------------------------------------
+Sat Mar  4 18:59:19 UTC 2017 - sfalken@opensuse.org
+
+- Update Source URLs
+
+-------------------------------------------------------------------
+Fri Feb 24 19:17:13 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#14)
+
+-------------------------------------------------------------------
+Sat Sep 24 21:43:18 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * Add Qt5XdgIconLoader as dependency (#13)
+  * Update README.md
+  * statusnotifieritem: Correctly handle menu
+  * Cleaned up licenses
+  * Use XdgIconLoader library (#10)
+  * xdgIconThemePaths: Use QString::SkipEmptyParts
+  * xdgIconThemePaths: Remove duplicated paths
+  * Adds $XDG_DATA_HOME to the XdgIconThemePaths
+  * Bump year in AUTHORS
+- Add keyring
+- Require pkgconfig(Qt5XdgIconLoader) instead of pkgconfig(Qt5Xdg)
+  because IconLoader has its own package now and got split out
+  of libqt5xdg.
+
+-------------------------------------------------------------------
+Fri Nov  6 16:33:28 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+
+-------------------------------------------------------------------
+Fri Feb 20 20:48:04 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 21:32:01 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+
+-------------------------------------------------------------------
+Mon Jan 26 00:29:57 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora Builds 
+
+-------------------------------------------------------------------
+Thu Dec 25 16:32:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- lxqt-qtplugin is using private QPA API, which can, and does break BC
+  even in point releases, so we need to hardcode libQt5Gui5 version
+
+-------------------------------------------------------------------
+Tue Nov 11 09:21:04 UTC 2014 - andrea@opensuse.org
+
+- Fixed license tag 
+
+-------------------------------------------------------------------
+Sat Oct 25 11:55:34 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 18:01:14 UTC 2014 - andrea@opensuse.org
+
+- removed unused build requires 
+
+-------------------------------------------------------------------
+Tue May 13 15:29:43 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up 
+
+-------------------------------------------------------------------
+Mon May 12 16:23:28 UTC 2014 - sfalken@opensuse.org
+
+- removed fedora spec, split into subproject
+  Del: lxqt-qtplugin-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sat May 10 21:25:08 UTC 2014 - sfalken@opensuse.org
+
+- ran spec-cleaner on openSUSE specfile 
+
+-------------------------------------------------------------------
+Fri May  9 23:08:21 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  lxqt-qtplugin-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 16:54:18 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  lxqt-qtplugin-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Thu Apr  3 18:53:28 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-qtplugin.spec  
+  Add: lxqt-qtplugin.changes

@@ -1,0 +1,28 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 4 Jul 2018 13:36:57 +0200
+Subject: unicode: handle new SUSE ICU version hack
+Patch-mainline: Never, SUSE specific
+References: bsc#1095425
+
+Right after upstream adopted changes allowing compatibility with the way
+openSUSE names ICU libraries, openSUSE came with another hack: to
+distinguish ICU libraries built with U_CHARSET_IS_UTF8=0 from those built
+with upstream default (1), openSUSE packages added "suse" to soname as
+the change affects library ABI.
+
+Add "suse%d.%d" to soname patterns tested when searching for ICU libraries.
+---
+ src/common/unicode_util.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/common/unicode_util.cpp
++++ b/src/common/unicode_util.cpp
+@@ -343,7 +343,7 @@ static ModuleLoader::Module* formatAndLoad(const char* templateName,
+ 	// ICU has several schemas for placing version into file name
+ 	const char* patterns[] =
+ 	{
+-		"%d", "%d_%d", "%d%d", NULL
++		"suse%d.%d", "%d", "%d_%d", "%d%d", NULL
+ 	};
+ 
+ 	PathName s, filename;

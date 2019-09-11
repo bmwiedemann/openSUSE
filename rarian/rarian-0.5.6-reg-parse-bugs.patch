@@ -1,0 +1,78 @@
+commit 1a0d8473548e06309e17d6fe1143e384045dd6ad
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Tue Jan 11 17:49:58 2011 +0100
+
+    Patch 1: rarian-0.5.6-reg-parse-bugs.patch
+
+diff --git a/librarian/rarian-reg-utils.c b/librarian/rarian-reg-utils.c
+index aec298f..ac2713f 100644
+--- a/librarian/rarian-reg-utils.c
++++ b/librarian/rarian-reg-utils.c
+@@ -93,6 +93,10 @@ rrn_reg_parse_file (char *filename)
+     }
+ 
+     file = fopen (filename, "r");
++    if (!file) {
++	    rrn_reg_free (reg);
++	    return NULL;
++    }
+ 
+     buf = malloc (sizeof (char) * 1024);
+     while (fgets (buf, 1023, file)) {
+@@ -100,9 +104,15 @@ rrn_reg_parse_file (char *filename)
+     	while (buf[strlen(buf)-1] != '\n') {
+     		char *tmp;
+     		char *result = NULL;
+-    		tmp = strdup (buf);
++                int len;
++
++                len = strlen (buf);
++                tmp = malloc (len >= 1024 ? len + 1 : 1024);
++                memcpy (tmp, buf, len + 1);
++
+     		if (fgets (buf, 1023, file)) {
+-			result = malloc (sizeof (char) * (strlen(tmp)+strlen(buf)+2));
++			len += strlen (buf);
++			result = malloc (sizeof (char) * (len >= 1023 ? len + 2 : 1024));
+ 			strcpy (result, tmp);
+ 			strcat (result, buf);
+ 			free (tmp);
+@@ -611,6 +621,8 @@ rrn_sect_parse_file (char *filename)
+     }
+ 
+     file = fopen (filename, "r");
++    if (!file)
++	    return NULL;
+ 
+     buf = malloc (sizeof (char) * 1024);
+     while (fgets (buf, 1023, file)) {
+@@ -618,14 +630,25 @@ rrn_sect_parse_file (char *filename)
+     	while (buf[strlen(buf)-1] != '\n') {
+     		char *tmp;
+     		char *result = NULL;
+-    		tmp = strdup (buf);
+-    		buf = fgets (buf, 1023, file);
+-			result = malloc (sizeof (char) * (strlen(tmp)+strlen(buf)+2));
++                int len;
++
++                len = strlen (buf);
++                tmp = malloc (len >= 1024 ? len + 1 : 1024);
++                memcpy (tmp, buf, len + 1);
++
++    		if (fgets (buf, 1023, file)) {
++			len += strlen (buf);
++			result = malloc (sizeof (char) * (len >= 1023 ? len + 2 : 1024));
+ 			strcpy (result, tmp);
+ 			strcat (result, buf);
+ 			free (tmp);
+ 			free (buf);
+-    		buf = result;
++			buf = result;
++		} else {
++			free (buf);
++			buf = tmp;
++			break;
++		}
+     	}
+ 		real = buf;
+     	while (*real && isspace(*real) && *real != '\n') {

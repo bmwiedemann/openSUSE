@@ -1,0 +1,43 @@
+From 0731f3872508a8c4a7df9f77eeebd5046bffcbf8 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 5 Feb 2018 13:59:57 +0100
+Subject: [PATCH 36/43] tools/kvm_stat: fix crash when filtering out all
+ non-child trace events
+
+When we apply a filter that will only leave child trace events, we
+receive a ZeroDivisionError when calculating the percentages.
+In that case, provide percentages based on child events only.
+To reproduce, run 'kvm_stat -f .*[\(].*'.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 3df33a0f34a3883b6696bff8cc8fcda3c7444a62)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 6d956824dcb6..7038766c99f1 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1087,9 +1087,15 @@ class Tui(object):
+         self.screen.clrtobot()
+         stats = self.stats.get(self._display_guests)
+         total = 0.
++        ctotal = 0.
+         for key, values in stats.items():
+             if key.find('(') == -1:
+                 total += values.value
++            else:
++                ctotal += values.value
++        if total == 0.:
++            # we don't have any fields, or all non-child events are filtered
++            total = ctotal
+ 
+         if self._sorting == SORT_DEFAULT:
+             def sortkey((_k, v)):
+-- 
+2.12.3
+

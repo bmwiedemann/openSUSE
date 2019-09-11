@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Fri Jun 21 13:27:15 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.4:
+  * https://www.postgresql.org/docs/11/release-11-4.html
+  * https://www.postgresql.org/about/news/1949/
+  * CVE-2019-10164 bsc#1138034: Stack-based buffer overflow via
+    setting a password
+
+-------------------------------------------------------------------
+Fri May 10 09:52:48 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to 11.3:
+  * https://www.postgresql.org/docs/11/release-11-3.html
+  * https://www.postgresql.org/about/news/1939/
+  * CVE-2019-10130, bsc#1134689: Prevent row-level security
+    policies from being bypassed via selectivity estimators.
+  * CVE-2019-10129, bsc#1134684: Avoid access to already-freed
+    memory during partition routing error reports.
+
+-------------------------------------------------------------------
+Tue Feb 19 15:42:31 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to 11.2:
+  * https://www.postgresql.org/docs/11/release-11-2.html
+  * https://www.postgresql.org/about/news/1920/
+  * By default, panic instead of retrying after fsync() failure,
+    to avoid possible data corruption.
+  * Fix handling of unique indexes with INCLUDE columns on
+    partitioned tables.
+  * Ensure that NOT NULL constraints of a partitioned table are
+    honored within its partitions.
+  * Numerous other bug fixes.
+- Overhaul README.SUSE
+
+-------------------------------------------------------------------
+Fri Jan 11 13:23:20 UTC 2019 - Reinhard Max <max@suse.com>
+
+- The release tags between the main package build and libs might
+  be different, but that's not a problem, so we can relax the tight
+  dependency of server-devel on devel.
+- Adjust the line between headers going to devel and server-devel.
+  Now everything under /usr/include/pgsql/server is in server-devel
+  and the rest of /usr/include/pgsql is in devel (bsc#1120035).
+
+-------------------------------------------------------------------
+Mon Dec  3 12:29:23 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- move the server-devel package definition into the buildmain
+  section
+
+-------------------------------------------------------------------
+Tue Nov 20 09:29:51 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add sha256 file to list of sources
+- Update v11.1 files from upstream
+
+-------------------------------------------------------------------
+Thu Nov  8 15:08:59 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Update to 11.1:
+  * CVE-2018-16850, bsc#1114837: Improper quoting of transition
+    table names when pg_dump emits CREATE TRIGGER can cause
+    privilege escalation
+  * Numerous bug fixes, see the release notes:
+    https://www.postgresql.org/docs/current/release-11-1.html
+  * Remove unneeded library dependencies from PGXS.
+
+-------------------------------------------------------------------
+Mon Oct 22 11:51:50 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Update to 11.0.
+  * https://www.postgresql.org/about/news/1894/
+  * https://www.postgresql.org/docs/11/static/release-11.html
+- Improvements to partitioning functionality, including:
+  * Add support for partitioning by a hash key
+  * Add support for PRIMARY KEY, FOREIGN KEY, indexes, and triggers
+    on partitioned tables.
+  * Allow creation of a “default” partition for storing data that
+    does not match any of the remaining partitions.
+  * UPDATE statements that change a partition key column now cause
+    affected rows to be moved to the appropriate partitions.
+  * Improve SELECT performance through enhanced partition
+    elimination strategies during query planning and execution.
+- Improvements to parallelism, including:
+  * CREATE INDEX can now use parallel processing while building a
+    B-tree index.
+  * Parallelization is now possible in CREATE TABLE ... AS, CREATE
+    MATERIALIZED VIEW, and certain queries using UNION.
+  * Parallelized hash joins and parallelized sequential scans now
+    perform better.
+- SQL stored procedures that support embedded transactions.
+- Optional Just-in-Time (JIT) compilation for some SQL code,
+  speeding evaluation of expressions (new subpackage: -llvmjit).
+- Window functions now support all framing options shown in the
+  SQL:2011 standard, including RANGE distance PRECEDING/FOLLOWING,
+  GROUPS mode, and frame exclusion options.
+- Covering indexes can now be created, using the INCLUDE clause of
+  CREATE INDEX.
+- Many other useful performance improvements, including the ability
+  to avoid a table rewrite for ALTER TABLE ... ADD COLUMN with a
+  non-null column default.
+- Split a new -server-devel subpackage from -devel.
+
+-------------------------------------------------------------------
+Fri Aug 10 16:00:58 UTC 2018 - mrueckert@suse.de
+
+- update to 11 beta3
+  https://www.postgresql.org/docs/11/static/release-11.html
+  https://www.postgresql.org/about/news/1878/
+  CVE-2018-10925 CVE-2018-10915
+
+-------------------------------------------------------------------
+Mon Jul  2 17:04:43 UTC 2018 - mrueckert@suse.de
+
+- initial package

@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Mon Apr  1 13:34:41 UTC 2019 - mvetter@suse.com
+
+- Add swift-im-boost-tribool.patch: Fix for boost >= 1.69.0
+- Remove deprecated libboost_signals-devel
+  swift-im uses signal2 which is in libboost_headers-devel
+
+-------------------------------------------------------------------
+Tue Jun 12 11:39:43 UTC 2018 - mvetter@suse.com
+
+- Add swift-4.0-qt5.11-includes.patch:
+  Add includes explicitly, so it builds with Qt 5.11
+
+-------------------------------------------------------------------
+Thu Mar 22 18:46:52 UTC 2018 - jengelh@inai.de
+
+- Remove filler wording and bias from descriptions.
+
+-------------------------------------------------------------------
+Wed Mar 21 12:07:34 UTC 2018 - mvetter@suse.com
+
+- Add GPG checking
+  * Add swift-4.0.tar.gz.asc
+  * Add swift.keyring
+
+-------------------------------------------------------------------
+Tue Mar 20 18:27:57 UTC 2018 - mvetter@suse.com
+
+- Update to version 4.0: 
+  * New chat theme including a new font
+  * Support for message carbons (XEP-0280)
+  * Enabled trellis mode as a default feature, allowing several tiled chats windows to be shown at once
+  * Redesigned keyword highlighting
+  * Improve date formatting
+  * Fix Last Message Correction in multi client scenarios
+  * Fix UI layout issue for translations that require right-to-left (RTL) layout
+  * Fix UX issues in trellis mode
+  * Improvements to font size handling in the chat theme
+  * Improved spell checker support on Linux
+  * And assorted smaller features and usability enhancements
+
+-------------------------------------------------------------------
+Wed Feb 28 20:37:31 UTC 2018 - fisiu@opensuse.org
+
+- Altering Swift/QtUI/SConscript is no longer required.
+
+-------------------------------------------------------------------
+Tue Dec 12 15:58:46 UTC 2017 - mvetter@suse.com
+
+- Update to version 4RC3:
+  * Fix crash in emoticon dialog
+  * Update translations ( Dutch, German )
+  * And smaller bug fixes
+
+-------------------------------------------------------------------
+Mon Dec 11 14:58:32 UTC 2017 - mpluskal@suse.com
+
+- Use bundled scons for now
+- Drop swift-im-scons-python3.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 09:35:52 UTC 2017 - mvetter@suse.com
+
+- Convert scons files to use python3
+
+-------------------------------------------------------------------
+Wed Nov 22 09:43:03 UTC 2017 - mvetter@suse.com
+
+- bsc#1062799:
+  * Replace big boost-devel with only required boost devel libs
+  * Use boost_bundled_enable=false switch
+
+-------------------------------------------------------------------
+Thu Oct 19 18:34:04 UTC 2017 - fisiu@opensuse.org
+
+- Use gcc6 for Leap to fix compilation issue.
+
+-------------------------------------------------------------------
+Tue Oct 17 21:39:59 UTC 2017 - fisiu@opensuse.org
+
+- Spec cleanup.
+- Ship translations within the package.
+
+-------------------------------------------------------------------
+Fri Jun  9 14:41:36 UTC 2017 - mvetter@suse.com
+
+- Update to version	4.0 beta 2:
+  * Support for message carbons (XEP-0280)
+  * Trellis mode enabled as a default feature, allowing several tiled chats windows to be shown at once
+  * New chat theme including a new font
+  * Redesigned keyword highlighting
+  * Improved spell checker support on Linux
+  * Support for automatic software updates on macOS
+  * Support for unicode emojis on macOS
+  * And assorted smaller features and usability enhancements
+- Remove chmod for Swiften/Network/UnboundDomainNameResolver.
+  got upstreamed: https://github.com/swift/swift/pull/28
+- Remove patches:
+  * swift-libminiupnpc.patch: Upstreamed
+  * swift-missing-assert.patch: Upstreamed https://github.com/swift/swift/pull/32
+  * swift-system-font.patch: Rendering works now. Can use their
+  font for the roster
+- Add BuildRequires: libqt5-qtsvg-devel needs this to display properly
+
+-------------------------------------------------------------------
+Wed Jul 27 11:53:12 UTC 2016 - mvetter@suse.com
+
+- Add swift-missing-assert.patch: Fix missing include cassert.
+  Needed to build successfully on Leap.
+
+-------------------------------------------------------------------
+Tue Jul 26 11:12:25 UTC 2016 - mvetter@suse.com
+
+- Update to version 4 Beta 2:
+    * Support for message carbons (XEP-0280)
+    * Improved spell checker support on Linux
+	* Enabled trellis mode as a default feature, allowing several tiled chats windows to be shown at once
+	* New chat theme including a new font
+	* And assorted smaller features and usability enhancements
+    * Fix Swift bug introduced in 4.0-beta1 that results in the UI sometimes getting stuck during login
+- Add:
+  * swift-libminiupnpc.patch: Tumbleweed uses libminiupnpc 2.0 this adds support for version 1 and 2
+  * swift-system-font.patch: swift brings its own Fonts, which don't look very good
+    we stay with the system fonts (for roster, menu. Chatwindow uses Webview with different font)
+
+-------------------------------------------------------------------
+Tue May 17 23:51:31 UTC 2016 - jengelh@inai.de
+
+- Adjust RPM groups
+
+-------------------------------------------------------------------
+Wed May 11 07:45:29 UTC 2016 - mvetter@suse.com
+
+- Use correct Group
+
+-------------------------------------------------------------------
+Tue May 10 15:51:27 UTC 2016 - mvetter@suse.com
+
+- Dont install xpm file twice
+
+-------------------------------------------------------------------
+Wed Mar  9 15:04:35 UTC 2016 - mvetter@suse.com
+
+- Fix for 13.2 by declaring dirs
+
+-------------------------------------------------------------------
+Mon Mar  7 15:41:41 UTC 2016 - mvetter@suse.com
+
+- Remove more 3rdParty libraries and use distribution ones instead.
+  Describing what we need and why.
+
+-------------------------------------------------------------------
+Fri Mar  4 15:27:51 UTC 2016 - mvetter@suse.com
+
+- Make spec file cleaner
+
+-------------------------------------------------------------------
+Fri Mar  4 13:37:22 UTC 2016 - mvetter@suse.com
+
+- Create initial package for version 3.0
+

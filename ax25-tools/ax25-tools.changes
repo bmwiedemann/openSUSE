@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Fri May  5 07:16:52 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  6 21:27:04 UTC 2017 - dl8fcl@darc.de
+
+- update to version 0.0.10rc4_87
+
+-------------------------------------------------------------------
+Mon Oct 12 21:01:25 UTC 2015 - dl8fcl@darc.de
+
+- update to version 0.0.10rc4_59
+  Remove all references to axassociate and axsetcall
+
+-------------------------------------------------------------------
+Mon Jul 13 11:26:48 UTC 2015 - dl8fcl@darc.de
+
+- update to version 0.0.10rc4_57
+  clean up of spec file
+  changelog in separated file
+
+-------------------------------------------------------------------
+
+* Thu Jun 07 2012 - dl8fcl@darc.de
+- BuildRequires fixed for 12.2
+* Mon Mar 22 2010 - dg7gt@gmx.de
+- Patch for rc2 to avoid login problems using axspawn
+* Fri Oct 30 2009 - dg7gt@gmx.de
+- Update to 0.0.10rc2 (only 11.2. 11.0 and 11.1 stay unchanged due to build errors)
+* Fri Apr 10 2009 - dg7gt@online.de
+- Update to current CVS with some bug fixes
+* Sun Feb 08 2009 - dg7gt@online.de
+- Updated to newest CVS version including Unix98-PTY-Support for mkiss
+* Wed Oct 22 2008 - dl9pf@gmx.de
+- fix for factory
+- ax25-tools_ax25_axspawn.c__fix-bufferoverflow.diff
+- ax25-tools_rose_rsdwnlink.c__fix-destbufferoverflow.diff
+- ax25-tools_rose_rsuplnk.c__fix-destbufferoverflow.diff
+- ax25-tools_kiss_mkiss.c__fix-include.diff
+* Wed Oct 22 2008 - dg7gt@online.de
+- added patches from Bernard Pidoux, F6BVP for Unix98-PTYs
+- hack specifically for OpenSUSE ... nothing official released
+* Sun Dec 10 2006 - dg7gt@online.de
+- update to CVS version which is compatible with Kernel 2.6
+- added an ugly HZ patch in dmascc/dmascc_cfg.c to make it compile under 2.6.18
+- added m6pack and m6pack.8.gz to the file list
+* Thu Sep 30 2004 - jreuter@suse.de
+- setting signal handler for SIGCHLD to avoid /bin/login
+  looping. (#46558)
+- adding perform tx packet fragmentation as kernel AX.25
+  of kernel 2.6.x dropped auto-fragmentation. (#46558)
+* Sat Apr 10 2004 - aj@suse.de
+- Remove kernel-source dependency.
+* Sat Jan 10 2004 - adrian@suse.de
+- add %%defattr
+* Tue Jun 17 2003 - ro@suse.de
+- use buildroot
+- fix filelist / remove unpackaged files
+* Tue Feb 04 2003 - ro@suse.de
+- /var/ax25 -> /var/lib/ax25
+* Thu Dec 05 2002 - jreuter@suse.de
+- renamed package to ax25-tools
+- bzip2-compressed source
+* Mon Feb 11 2002 - jreuter@suse.de
+- upgrade to version 0.0.8: numerous bug fixes
+* Tue Jan 15 2002 - ro@suse.de
+- use kernel-source in neededforbuild (lx_sus22 is dropped)
+* Fri Mar 02 2001 - ro@suse.de
+- use doc macro
+- dmascc is not built (not in 2.4 sources)
+- fix to compile (sockaddr/osockaddr)
+* Thu Nov 30 2000 - jreuter@suse.de
+- changed group to Applications/Hamradio
+* Tue Nov 21 2000 - ro@suse.de
+- use 2.2 kernel to compile
+* Wed Nov 08 2000 - sim@suse.de
+- changed group to Applications/Communications
+* Fri Jun 23 2000 - sim@suse.de
+- in ax25/bpqparms.c changed #include <linux/timer.h> to <sys/time.h>
+* Sun Jun 18 2000 - ro@suse.de
+- added suse_update_config
+* Tue Jun 06 2000 - ka@suse.de
+- update to version 0.0.6
+- fixed entries in file list %%{_defaultdocdir}
+- added/fixed several spec file entries (Copyright, Group, URL)
+- used more macros in spec file
+- removed setcrystal from file list and added sethdlc and smmixer
+- added several READMEs to doc file list
+- do not overwrite config file during update (%%config(noreplace))
+* Fri Jun 02 2000 - bubnikv@suse.cz
+- added README.yamdrv to filelist
+* Thu May 25 2000 - ro@suse.de
+- move docs to /usr/share/doc
+* Wed Feb 09 2000 - sim@suse.de
+- fix for ppc (don't compile setcrystal)
+* Wed Feb 02 2000 - kukuk@suse.de
+- fix for SPARC (don't compile setcrystal)
+* Fri Jan 21 2000 - ro@suse.de
+- fixed to compile, man to /usr/man using macro
+* Fri Oct 22 1999 - ka@suse.de
+- added "make installconf" to specfile
+- created directory /var/ax25/mheard during install
+- added missing values to configure call
+- added nrparms patch from Tomi, OH2BNS
+* Thu Sep 16 1999 - ka@suse.de
+- update to version 0.0.5
+* Mon Sep 13 1999 - bs@suse.de
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+* Thu Aug 12 1999 - ka@suse.de
+- more detailed configure call
+* Tue Jul 13 1999 - ka@suse.de
+- update to version 0.0.3
+* Tue Jul 06 1999 - ka@suse.de
+- changed spec file to build on alpha
+* Wed Jun 23 1999 - ro@suse.de
+- added libax25 to neededforbuild
+* Fri Jun 11 1999 - ka@suse.de
+- initial release of new sources for kernel 2.2.x
+- original package ax25util was divided into ax25apps and ax25tool
+* Wed May 19 1999 - ro@suse.de
+- re-added patch to apps/call.c
+* Tue May 18 1999 - ka@suse.de
+- added patch for procutils.c
+* Tue May 04 1999 - ro@suse.de
+- rebuilt diff
+- patched to build with glibc-2.1 and on alpha
+- rspfd can't work on alpha yet due to inline asm
+* Mon Mar 15 1999 - ro@suse.de
+- renamed subpackage to ax25dev
+* Fri Mar 12 1999 - ka@suse.de
+- added sample configuration files to /etc/ax25/
+* Thu Mar 11 1999 - ka@suse.de
+- initial release

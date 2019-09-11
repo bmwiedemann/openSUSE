@@ -1,0 +1,11 @@
+# We have an unversioned suse-branding-unversioned-requires
+# NetworkManager-branding on purpose, hence filter it out.
+addFilter("suse-branding-unversioned-requires*");
+
+# Filter out warning about missing systemd-service-without-service
+# post/pre/postun/preun, we do not want to enable this service by
+# default.
+addFilter("systemd-service-without-service_add_post NetworkManager-wait-online.service");
+addFilter("systemd-service-without-service_add_pre NetworkManager-wait-online.service");
+addFilter("systemd-service-without-service_del_postun NetworkManager-wait-online.service");
+addFilter("systemd-service-without-service_del_preun NetworkManager-wait-online.service");

@@ -1,0 +1,44 @@
+From 0e30aa568f29e1626177458cfe1d33b25c6da7a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Sun, 18 Jun 2017 09:12:33 +0200
+Subject: [PATCH 7/7] Introduce T notrim option in netstat
+
+This is the same as wide option but unfortunately SUSE carried
+for last 10 years patch using the -T option so we need not to regress
+in script usage.
+---
+ netstat.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/netstat.c b/netstat.c
+index fe25e92..401ac3b 100644
+--- a/netstat.c
++++ b/netstat.c
+@@ -2043,6 +2043,7 @@ int main
+ 	{"fib", 0, 0, 'F'},
+ 	{"groups", 0, 0, 'g'},
+ 	{"context", 0, 0, 'Z'},
++	{"notrim", 0, 0, 'T'},
+ 	{NULL, 0, 0, 0}
+     };
+ 
+@@ -2054,7 +2055,7 @@ int main
+     getroute_init();		/* Set up AF routing support */
+ 
+     afname[0] = '\0';
+-    while ((i = getopt_long(argc, argv, "A:CFMacdeghilnNoprsStuUvVWw2fx64?Z", longopts, &lop)) != EOF)
++    while ((i = getopt_long(argc, argv, "A:CFMacdeghilnNoprsStuUvVWw2fx64?ZT", longopts, &lop)) != EOF)
+ 	switch (i) {
+ 	case -1:
+ 	    break;
+@@ -2098,6 +2099,7 @@ int main
+ 	case 'i':
+ 	    flag_int++;
+ 	    break;
++	case 'T':
+ 	case 'W':
+ 	    flag_wide++;
+ 	    break;
+-- 
+2.13.1
+

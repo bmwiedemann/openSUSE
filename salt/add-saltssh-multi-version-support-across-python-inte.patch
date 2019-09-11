@@ -1,0 +1,483 @@
+From 18c46c301b98841d941e2d07901e7468de30b83a Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Mon, 12 Mar 2018 12:01:39 +0100
+Subject: [PATCH] Add SaltSSH multi-version support across Python
+ interpeters.
+
+Bugfix: crashes when OPTIONS.saltdir is a file
+
+salt-ssh: allow server and client to run different python major version
+
+Handle non-directory on the /tmp
+
+Bugfix: prevent partial fileset removal in /tmp
+
+salt-ssh: compare checksums to detect newly generated thin on the server
+
+Reset time at thin unpack
+
+Bugfix: get a proper option for CLI and opts of wiping the tmp
+
+Add docstring to get_tops
+
+Remove unnecessary noise in imports
+
+Refactor get_tops collector
+
+Add logging to the get_tops
+
+Update call script
+
+Remove pre-caution
+
+Update log debug message for tops collector
+
+Reset default compression, if unknown is passed
+
+Refactor archive creation flow
+
+Add external shell-callable function to collect tops
+
+Simplify tops gathering, bugfix alternative to Py2
+
+find working executable
+
+Add basic shareable module classifier
+
+Add proper error handler, unmuting exceptions during top collection
+
+Use common shared directory for compatible libraries
+
+fix searching for python versions
+
+Flatten error message string
+
+Bail-out immediately if <2.6 version detected
+
+Simplify shell cmd to get the version on Python 2.x
+
+Remove stub that was previously moved upfront
+
+Lintfix: PEP8 ident
+
+Add logging on the error, when Python-2 version cannot be detected properly
+
+Generate salt-call source, based on conditions
+
+Add logging on remove failure on thin.tgz archive
+
+Add config-based external tops gatherer
+
+Change signature to pass the extended configuration to the thin generator
+
+Update docstring to the salt-call generator
+
+Implement get namespaces inclusion to the salt-call script on the client machine
+
+Use new signature of the get call
+
+Implement namespace selector, based on the current Python interpreter version
+
+Add deps as a list, instead of a map
+
+Add debug logging
+
+Implement packaging an alternative version
+
+Update salt-call script so it swaps the namespace according to the configuration
+
+Compress thin.zip if zlib is available
+
+Fix a system exit error message
+
+Move compression fall-back operation
+
+Add debug logging prior to the thin archive removal
+
+Flatten the archive extension choice
+
+Lintfix: PEP8 an empty line required
+
+Bugfix: ZFS modules (zfs, zpool) crashes on non-ZFS systems
+
+Add unit test case for the Salt SSH parts
+
+Add unit test for missing dependencies on get_ext_tops
+
+Postpone inheritance implementation
+
+Refactor unit test for get_ext_tops
+
+Add unit test for get_ext_tops checks interpreter configuration
+
+Check python interpreter lock version
+
+Add unit test for get_ext_tops checks the python locked interepreter value
+
+Bugfix: report into warning log module name, not its config
+
+Add unit test for dependencies check python version lock (inherently)
+
+Mock os.path.isfile function
+
+Update warning logging information
+
+Add unit test for get_ext_tops module configuration validation
+
+Do not use list of dicts for namespaces, just dict for namespaces.
+
+Add unit test for get_ext_tops config verification
+
+Fix unit tests for the new config structure
+
+Add unit test for thin.gte call
+
+Add unit test for dependency path adding function
+
+Add unit test for thin_path function
+
+Add unit test for salt-call source generator
+
+Add unit test for get_ext_namespaces on empty configuration
+
+Add get_ext_namespaces for namespace extractions into a tuple for python version
+
+Remove unused variable
+
+Add unit test for getting namespace failure when python maj/min versions are not defined
+
+Add unit test to add tops based on the current interpreter
+
+Add unit test for get_tops with extra modules
+
+Add unit test for shared object modules top addition
+
+Add unit test for thin_sum hashing
+
+Add unit test for min_sum hashing
+
+Add unit test for gen_thin verify for 2.6 Python version is a minimum requirement
+
+Fix gen_thin exception on Python 3
+
+Use object attribute instead of indeces. Remove an empty line.
+
+Add unit test for gen_thin compression type fallback
+
+Move helper functions up by the class code
+
+Update unit test doc
+
+Add check for correct archiving mode is opened
+
+Add unit test for gen_thin if control files are written correctly
+
+Update docstring for fake version info constructor method
+
+Add fake tarfile mock handler
+
+Mock-out missing methods inside gen_thin
+
+Move tarfile.open check to the end of the test
+
+Add unit test for tree addition to the archive
+
+Add shareable module to the gen_thin unit test
+
+Fix docstring
+
+Add unit test for an alternative version pack
+
+Lintfix
+
+Add documentation about updated Salt SSH features
+
+Fix typo
+
+Lintfix: PEP8 extra-line needed
+
+Make the command more readable
+
+Write all supported minimal python versions into a config file on the target machine
+
+Get supported Python executable based on the config py-map
+
+Add unit test for get_supported_py_config function typecheck
+
+Add unit test for get_supported_py_config function base tops
+
+Add unit test for get_supported_py_config function ext tops
+
+Fix unit test for catching "supported-versions" was written down
+
+Rephrase Salt SSH doc description
+
+Re-phrase docstring for alternative Salt installation
+
+require same major version while minor is allowed to be higher
+
+Bugfix: remove minor version from the namespaced, version-specific directory
+
+Fix unit tests for minor version removal of namespaced version-specific directory
+
+Initialise the options directly to be structure-ready object.
+
+Disable wiping if state is executed
+
+Properly mock a tempfile object
+
+Support Python 2.6 versions
+
+Add digest collector for file trees etc
+
+Bufix: recurse calls damages the configuration (reference problem)
+
+Collect digest of the code
+
+Get code checksum into the shim options
+
+Get all the code content, not just Python sources
+
+Bugfix: Python3 compat - string required instead of bytes
+
+Lintfix: too many empty lines
+
+Lintfix: blocked function used
+
+Bugfix: key error master_tops_first
+
+Fix unit tests for the checksum generator
+
+Use code checksum to update thin archive on client's cache
+
+Lintfix
+
+Set master_top_first to False by default
+---
+ doc/topics/releases/fluorine.rst | 178 +++++++++++++++++++++++++++++++
+ salt/client/ssh/ssh_py_shim.py   |   4 +
+ salt/utils/thin.py               |   1 +
+ 3 files changed, 183 insertions(+)
+ create mode 100644 doc/topics/releases/fluorine.rst
+
+diff --git a/doc/topics/releases/fluorine.rst b/doc/topics/releases/fluorine.rst
+new file mode 100644
+index 0000000000..40c69e25cc
+--- /dev/null
++++ b/doc/topics/releases/fluorine.rst
+@@ -0,0 +1,178 @@
++:orphan:
++
++======================================
++Salt Release Notes - Codename Fluorine
++======================================
++
++
++Minion Startup Events
++---------------------
++
++When a minion starts up it sends a notification on the event bus with a tag
++that looks like this: `salt/minion/<minion_id>/start`. For historical reasons
++the minion also sends a similar event with an event tag like this:
++`minion_start`. This duplication can cause a lot of clutter on the event bus
++when there are many minions. Set `enable_legacy_startup_events: False` in the
++minion config to ensure only the `salt/minion/<minion_id>/start` events are
++sent.
++
++The new :conf_minion:`enable_legacy_startup_events` minion config option
++defaults to ``True``, but will be set to default to ``False`` beginning with
++the Neon release of Salt.
++
++The Salt Syndic currently sends an old style  `syndic_start` event as well. The
++syndic respects :conf_minion:`enable_legacy_startup_events` as well.
++
++
++Deprecations
++------------
++
++Module Deprecations
++===================
++
++The ``napalm_network`` module had the following changes:
++
++- Support for the ``template_path`` has been removed in the ``load_template``
++  function. This is because support for NAPALM native templates has been
++  dropped.
++
++The ``trafficserver`` module had the following changes:
++
++- Support for the ``match_var`` function was removed. Please use the
++  ``match_metric`` function instead.
++- Support for the ``read_var`` function was removed. Please use the
++  ``read_config`` function instead.
++- Support for the ``set_var`` function was removed. Please use the
++  ``set_config`` function instead.
++
++The ``win_update`` module has been removed. It has been replaced by ``win_wua``
++module.
++
++The ``win_wua`` module had the following changes:
++
++- Support for the ``download_update`` function has been removed. Please use the
++  ``download`` function instead.
++- Support for the ``download_updates`` function has been removed. Please use the
++  ``download`` function instead.
++- Support for the ``install_update`` function has been removed. Please use the
++  ``install`` function instead.
++- Support for the ``install_updates`` function has been removed. Please use the
++  ``install`` function instead.
++- Support for the ``list_update`` function has been removed. Please use the
++  ``get`` function instead.
++- Support for the ``list_updates`` function has been removed. Please use the
++  ``list`` function instead.
++
++Pillar Deprecations
++===================
++
++The ``vault`` pillar had the following changes:
++
++- Support for the ``profile`` argument was removed. Any options passed up until
++  and following the first ``path=`` are discarded.
++
++Roster Deprecations
++===================
++
++The ``cache`` roster had the following changes:
++
++- Support for ``roster_order`` as a list or tuple has been removed. As of the
++  ``Fluorine`` release, ``roster_order`` must be a dictionary.
++- The ``roster_order`` option now includes IPv6 in addition to IPv4 for the
++  ``private``, ``public``, ``global`` or ``local`` settings. The syntax for these
++  settings has changed to ``ipv4-*`` or ``ipv6-*``, respectively.
++
++State Deprecations
++==================
++
++The ``docker`` state has been removed. The following functions should be used
++instead.
++
++- The ``docker.running`` function was removed. Please update applicable SLS files
++  to use the ``docker_container.running`` function instead.
++- The ``docker.stopped`` function was removed. Please update applicable SLS files
++  to use the ``docker_container.stopped`` function instead.
++- The ``docker.absent`` function was removed. Please update applicable SLS files
++  to use the ``docker_container.absent`` function instead.
++- The ``docker.absent`` function was removed. Please update applicable SLS files
++  to use the ``docker_container.absent`` function instead.
++- The ``docker.network_present`` function was removed. Please update applicable
++  SLS files to use the ``docker_network.present`` function instead.
++- The ``docker.network_absent`` function was removed. Please update applicable
++  SLS files to use the ``docker_network.absent`` function instead.
++- The ``docker.image_present`` function was removed. Please update applicable SLS
++  files to use the ``docker_image.present`` function instead.
++- The ``docker.image_absent`` function was removed. Please update applicable SLS
++  files to use the ``docker_image.absent`` function instead.
++- The ``docker.volume_present`` function was removed. Please update applicable SLS
++  files to use the ``docker_volume.present`` function instead.
++- The ``docker.volume_absent`` function was removed. Please update applicable SLS
++  files to use the ``docker_volume.absent`` function instead.
++
++The ``docker_network`` state had the following changes:
++
++- Support for the ``driver`` option has been removed from the ``absent`` function.
++  This option had no functionality in ``docker_network.absent``.
++
++The ``git`` state had the following changes:
++
++- Support for the ``ref`` option in the ``detached`` state has been removed.
++  Please use the ``rev`` option instead.
++
++The ``k8s`` state has been removed. The following functions should be used
++instead:
++
++- The ``k8s.label_absent`` function was removed. Please update applicable SLS
++  files to use the ``kubernetes.node_label_absent`` function instead.
++- The ``k8s.label_present`` function was removed. Please updated applicable SLS
++  files to use the ``kubernetes.node_label_present`` function instead.
++- The ``k8s.label_folder_absent`` function was removed. Please update applicable
++  SLS files to use the ``kubernetes.node_label_folder_absent`` function instead.
++
++The ``netconfig`` state had the following changes:
++
++- Support for the ``template_path`` option in the ``managed`` state has been
++  removed. This is because support for NAPALM native templates has been dropped.
++
++The ``trafficserver`` state had the following changes:
++
++- Support for the ``set_var`` function was removed. Please use the ``config``
++  function instead.
++
++The ``win_update`` state has been removed. Please use the ``win_wua`` state instead.
++
++SaltSSH major updates
++=====================
++
++SaltSSH now works across different major Python versions. Python 2.7 ~ Python 3.x
++are now supported transparently. Requirement is, however, that the SaltMaster should
++have installed Salt, including all related dependencies for Python 2 and Python 3.
++Everything needs to be importable from the respective Python environment.
++
++SaltSSH can bundle up an arbitrary version of Salt. If there would be an old box for
++example, running an outdated and unsupported Python 2.6, it is still possible from
++a SaltMaster with Python 3.5 or newer to access it. This feature requires an additional
++configuration in /etc/salt/master as follows:
++
++
++.. code-block:: yaml
++
++       ssh_ext_alternatives:
++           2016.3:                     # Namespace, can be actually anything.
++               py-version: [2, 6]      # Constraint to specific interpreter version
++               path: /opt/2016.3/salt  # Main Salt installation
++               dependencies:           # List of dependencies and their installation paths
++                 jinja2: /opt/jinja2
++                 yaml: /opt/yaml
++                 tornado: /opt/tornado
++                 msgpack: /opt/msgpack
++                 certifi: /opt/certifi
++                 singledispatch: /opt/singledispatch.py
++                 singledispatch_helpers: /opt/singledispatch_helpers.py
++                 markupsafe: /opt/markupsafe
++                 backports_abc: /opt/backports_abc.py
++
++It is also possible to use several alternative versions of Salt. You can for instance generate
++a minimal tarball using runners and include that. But this is only possible, when such specific
++Salt version is also available on the Master machine, although does not need to be directly
++installed together with the older Python interpreter.
+diff --git a/salt/client/ssh/ssh_py_shim.py b/salt/client/ssh/ssh_py_shim.py
+index be17a1a38c..595d1c40c7 100644
+--- a/salt/client/ssh/ssh_py_shim.py
++++ b/salt/client/ssh/ssh_py_shim.py
+@@ -164,6 +164,9 @@ def unpack_thin(thin_path):
+     old_umask = os.umask(0o077)  # pylint: disable=blacklisted-function
+     tfile.extractall(path=OPTIONS.saltdir)
+     tfile.close()
++    checksum_path = os.path.normpath(os.path.join(OPTIONS.saltdir, "thin_checksum"))
++    with open(checksum_path, 'w') as chk:
++        chk.write(OPTIONS.checksum + '\n')
+     os.umask(old_umask)  # pylint: disable=blacklisted-function
+     try:
+         os.unlink(thin_path)
+@@ -357,5 +360,6 @@ def main(argv):  # pylint: disable=W0613
+     return retcode
+ 
+ 
++
+ if __name__ == '__main__':
+     sys.exit(main(sys.argv))
+diff --git a/salt/utils/thin.py b/salt/utils/thin.py
+index b60815225e..172b0938f5 100644
+--- a/salt/utils/thin.py
++++ b/salt/utils/thin.py
+@@ -9,6 +9,7 @@ from __future__ import absolute_import, print_function, unicode_literals
+ import copy
+ import logging
+ import os
++import copy
+ import shutil
+ import subprocess
+ import sys
+-- 
+2.17.1
+
+

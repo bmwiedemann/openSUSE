@@ -1,0 +1,62 @@
+This file lists changes between pwdutils used in the past and
+the shadow utils used now.
+
+General changes:
+================
+- No support to modify LDAP accounts anymore (-D and --service option)
+- No -P/--path option
+- /etc/default/passwd was removed. The configure options are
+  partly available in /etc/login.defs.
+
+/etc/login.defs:
+----------------
+SYSTEM_UID_MIN/SYSTEM_UID_MAX were renamed to SYS_UID_MIN/SYS_UID_MAX
+SYSTEM_GID_MIN/SYSTEM_GID_MAX were renamed to SYS_GID_MIN/SYS_GID_MAX
+
+chfn
+----
+-m/--other has changed to -o/--other
+-o/--office has changed to -r/--room.
+-p/--phone has changed to -w/--work-phone
+
+chpasswd
+--------
+-c blowfish is now longer supported, instead SHA256 and SHA512 were added.
+
+chsh
+----
+-l/--list-shells was removed.
+
+gpasswd
+-------
+-l/-u option are missing
+
+groupadd
+--------
+/usr/sbin/groupadd.local is missing
+--preferred-gid was removed
+
+groupmod
+--------
+-A/--add-user was removed
+-R/--remove-user was removed
+
+passwd
+------
+-f was dropped (use chfn instead)
+-g was dropped (use gpasswd instead)
+-s was dropped (use chsh instead)
+
+useradd
+-------
+-e/--expire has changed to -e/--expiredate (incompatible arguments!)
+-U/--umask was removed, -U has now another meaning
+--preferred-uid was removed
+
+userdel
+-------
+-r/--remove-home was renamed to -r/--remove
+
+usermod
+-------
+-e/--expire has changed to -e/--expiredate (incompatible arguments!)

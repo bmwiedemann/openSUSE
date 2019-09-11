@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Sun Jun 16 05:06:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.64
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Mon Jun  3 05:05:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Wed May 15 05:06:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Sun Apr 28 05:08:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.58
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Wed Mar 13 15:58:31 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.56
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Tue Feb 19 06:08:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Sun Jun 24 05:18:15 UTC 2018 - coolo@suse.com
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Mon Feb 13 11:42:12 UTC 2017 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Wed Nov 23 06:19:27 UTC 2016 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Fri Aug 19 05:16:06 UTC 2016 - coolo@suse.com
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Thu May  5 09:07:15 UTC 2016 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Thu Dec 17 09:51:12 UTC 2015 - coolo@suse.com
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Sat Jul  4 08:24:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Sun Apr 26 07:19:26 UTC 2015 - coolo@suse.com
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Thu Apr 16 21:06:46 UTC 2015 - coolo@suse.com
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Devel-PatchPerl/Changes
+
+-------------------------------------------------------------------
+Wed Sep 17 19:30:35 UTC 2014 - coolo@suse.com
+
+- updated to 1.24
+    Add COW speedup fix for v5.20.0
+      http://perl5.git.perl.org/perl.git/commit/ce861ea79 
+    Look for gpatch if patch is not found 
+
+-------------------------------------------------------------------
+Mon Feb 24 06:45:27 UTC 2014 - coolo@suse.com
+
+- updated to 1.18
+ Update included hints to v5.19.9 level
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:14 UTC 2014 - coolo@suse.com
+
+- updated to 1.16
+    add extra phony targets to help case insensitive file systems 
+    Configure should check same Berkeley DB header DB_File uses 
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:35 UTC 2013 - coolo@suse.com
+
+- updated to 1.14
+   RT#89635 Configure on 5.6 uses sort +N, which isn't supported by
+   modern sort(1)
+
+   The two instances of 'sort -n +1' in Configure on perl 5.6 need to be
+   replaced with the portable equivalent used since perl 5.7.3:
+
+   ($sort -n -k 2 2>/dev/null || $sort -n +1)
+
+   This works on both old and new sorts. 
+
+   better gconvert detection 
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:48 UTC 2013 - coolo@suse.com
+
+- updated to 1.12
+    Add GNU/Hurd hints file 
+    Only try to change perms if the hints file already exists 
+    Support Bitrig all the way back to at least v5.8.9 
+    Fix issues with Bitrig patch and version normalisation 
+    Remove Test::Compile from dzil configuration 
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:26 UTC 2013 - coolo@suse.com
+
+- updated to 1.00
+    Set PATCH_GET env var to 0 to stop patch doing VCS madness 
+    Fix issues with patching Configure under Solaris
+    https://github.com/gugod/App-perlbrew/issues/355 
+
+-------------------------------------------------------------------
+Tue Jul 16 12:10:50 UTC 2013 - coolo@suse.com
+
+- updated to 0.96
+    Fix patch applying for v5.18.0                                                                                                                                                                                                          
+    Fixes a regmatch pointer 32-bit wraparound regression in v5.18.0 
+    Update Midnight BSD hints for 0.4-RELEASE 
+
+-------------------------------------------------------------------
+Tue Jun  4 08:25:17 UTC 2013 - coolo@suse.com
+
+- updated to 0.90, see Changes
+
+-------------------------------------------------------------------
+Mon Feb 13 19:41:12 UTC 2012 - coolo@suse.com
+
+- updated to 0.66
+ - Added cygwin hints file 
+ - Added a plugin system 
+
+-------------------------------------------------------------------
+Sun Dec 25 16:50:05 UTC 2011 - coolo@suse.de
+
+- updated to 0.62, see Changes
+
+-------------------------------------------------------------------
+Wed Apr 27 19:00:25 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.30
+    * created by cpanspec 1.78.04
+

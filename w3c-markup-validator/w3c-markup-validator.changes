@@ -1,0 +1,572 @@
+-------------------------------------------------------------------
+Sat Nov 08 17:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- post script: remove '-e' option in 'echo' command than may be
+  unsupported in some shells
+
+-------------------------------------------------------------------
+Wed Dec 19 14:20:23 UTC 2012 - cdenicolo@suse.com
+
+- license update: W3C
+  add spdx license name.
+
+-------------------------------------------------------------------
+Wed Nov 28 10:53:44 UTC 2012 - pgajdos@suse.com
+
+- install %{apache_serverroot}/%{name}/httpd/mod_perl/startup.pl
+  [bnc#790995]
+
+-------------------------------------------------------------------
+Tue Aug  7 14:01:56 UTC 2012 - pgajdos@suse.com
+
+- updated to version 1.3:
+  * Enhancement: several updates to validator's internal DTD library 
+    and catalog, including SVG 1.1 second edition, WAI-ARIA 
+    1.0 20110118 candidate recommendation, HTML+RDFa 1.1 20110525 
+    working draft, XHTML+RDFa 1.1 20120131 working draft, 
+    and VoiceXML 2.0 and 2.1.
+  * Enhancement: update EARL/RDF output to 1.0 20110510 working draft.
+  * Enhancement: removed internal support for the deprecated 
+    /check/referer path, implement it and some uri=referer cases in 
+    httpd.conf instead for better efficiency.
+  * Enhancement: work around HTML::Template 2.10 versioning issue.
+  * Enhancement: documentation improvements, code and server error 
+    log warning cleanups.
+  * Enhancement: the sample "badge" code for applicable document 
+    types now includes a JavaScript onclick handler that avoids 
+    the need for uri=referer redirects in many usual scenarios.
+  * Enhancement: make XML-LibXML XML catalog setup work with mod_perl.
+  * Bug fix: fix transcode error parsing for single-line documents.
+  * Bug fix: better treatment of HTML5 documents that contain xmlns.
+  * Bug fix: better treatment of direct input HTML5 documents that 
+    contain a non-UTF-8 charset indication.
+  * Dependency changes: new minimum required versions: XML-LibXML 1.73.
+
+-------------------------------------------------------------------
+Mon May 23 15:00:18 UTC 2011 - pgajdos@novell.com
+
+- updated to version 1.2:
+  * limited support for IRI's. 
+  * several updates to validator's internal DTD library and catalog
+  * etc. see http://validator.w3.org/whatsnew.html#v12
+
+-------------------------------------------------------------------
+Thu Aug 19 13:40:06 CEST 2010 - pgajdos@suse.cz
+
+- updated to version 1.1:
+    * Enhancement: XML wellformedness check is now run only if 
+      other stages of the validation process report no errors. 
+      This is to further mitigate a performance issue related 
+      to the XML wellformedness check.
+    * Enhancement: improved error output performance.
+    * Enhancement: error/warning location information now 
+      makes it clearer whether the error occurred in the validated 
+       document or an external resource related to it.
+    * Enhancement: improved heuristics for incomplete input URLs.
+    * … and as usual, assorted minor spelling, code cleanup, link 
+      and the like fixes.
+- changes in version 1.0:
+    * Enhancement: when passing its internal transcoded document 
+      to external validators, validator now reflects the 
+      transcoding by modifying character encoding information 
+      included in the passed document.
+    * Enhancement: updates to validator's internal DTD library.
+    * Enhancement: XML wellformedness check now supports external 
+      entities instead of just suppressing error messages about 
+      them internally. As a side effect, this should work around 
+      a specific case of a certain performance problem with 
+      XML::LibXML 1.70.
+    * Bug fix: doctype override could place a malformed comment 
+      in the modified document.
+    * Bug fix: error messages were not properly HTML escaped when 
+      "show source" was selected.
+    * Dependency changes: new minimum required versions: 
+      HTML-Parser 3.60, XML-LibXML 1.70.
+    * … and a whole slew of minor spelling, code cleanup, link 
+     and the like fixes here and there.
+
+-------------------------------------------------------------------
+Mon Mar 15 19:21:40 CET 2010 - pgajdos@suse.cz
+
+- updated to 0.8.6
+
+-------------------------------------------------------------------
+Mon Feb 22 13:56:51 UTC 2010 - chris@computersalat.de
+
+- added httpd patch
+  o Allow Access to {apache_serverroot}/w3c-markup-validator
+- spec mods
+  o restart apache on update
+  o enable mod_proxy
+    needed by {apache_sysconfdir}/conf.d/w3c-markup-validator.conf
+
+-------------------------------------------------------------------
+Wed Feb 17 16:01:14 UTC 2010 - chris@computersalat.de
+
+- added validator-opensuse-addons-ap_sroot.patch
+  o now it can be build for other dists, not just openSUSE
+  o moved installdir for w3c-markup-validator
+    from apache_docroot to apache_serverroot
+    while used alias(w3c-validator) is different from
+    installdir(w3c-markup-validator), directly browsing
+    to apache_docroot and entering validator dir, the check does
+    not work and will confuse user ;)
+- some rpmlint stuff
+  o fdupes
+
+-------------------------------------------------------------------
+Tue Feb 16 12:25:50 UTC 2010 - chris@computersalat.de
+
+- bzipped SOURCES
+- fixed deps
+  * taken from Bundle::W3C::Validator
+- removed changelog form spec
+- cleanup, changes file (too long lines)
+
+-------------------------------------------------------------------
+* Thu Mar 26 00:00:00 CET 2009 sierkb@gmx.de
+
+- 0.8.5 release:
+  The 0.8.5 release of the markup validator is a feature and bugfix
+  release. Changes include:
+  - UI fix: many of our users were confused by the behaviour of the
+    "More options" arrow. A small UI change should make the user
+    experience less confusing.
+  - New Feature: fuzzy matching used to suggest corrected markup.
+    Analysis of many invalid pages shows that the most common error
+    comes from invalid (typo or non standard) elements and attributes
+    used. The new feature
+    (http://www.w3.org/blog/systeam/2009/02/16/validator_fuzzy_match)
+    will help by suggesting possible (valid) alternatives.
+  - Bug Fix: issues with SVG
+    (http://www.w3.org/Bugs/Public/show_bug.cgi?id=6524)
+    were creating very large log output when validating SVG documents.
+    The validator code has been amended to limit this log flood.
+  - Bug Fix: the HTML5 validator integration broke some of the
+    validator's “document type override” functionalities in version
+    0.8.4. This is fixed in 0.8.5.
+  - New: the validator icon code, which one can add to web pages,
+    now includes XHTML+RDFa
+    (http://www.w3.org/Bugs/Public/show_bug.cgi?id=65252)
+    when applicable.
+  - Bug Fix / New: implementing XML::LibXML Structured Errors
+    (http://www.w3.org/Bugs/Public/show_bug.cgi?id=6329).
+    The validator uses libxml2 and the XML::LibXML for well-formedness
+    check. Recent versions of the perl library had bugs that made in
+    backard-incompatible, causing the validator to not output all
+    well-formedness errors reliably. Some code was added to the
+    validator to work with all future versions of that library,
+    but we recommend not using XML::LibXML between versions
+    1.67 and 1.69 inclusive
+    (see how (http://www.w3.org/Bugs/Public/show_bug.cgi?id=6329#c15)).
+  - Experimental: validation of SVG documents is now passed to the
+    validator.nu engine. At the time of this release, neither
+    validator.nu nor the DTD engine previously used are perfect for
+    the validation of SVG, but the technologies used in the
+    validator.nu engine (nvdl and relaxNG) makes it more promising.
+  - UI Fix: accessibility improvements for screen readers.
+  - Documentation: updated the Why Validate? (docs/why.html) document.
+  - Usability: the way in which the validator has to handle direct
+    input and character encodings
+    (http://www.w3.org/Bugs/Public/show_bug.cgi?id=6259)
+    has long been confusing to many. Improvements have been made
+    that explain in clearer ways what
+    the validator does.
+  - New: the validator now recommends to declare character encoding
+    in the document itself, especially if there is a chance that the
+    document will be read from or saved to disk, CD, etc -
+    in accordance with internationalization recommendations
+    (http://www.w3.org/International/tutorials/tutorial-char-enc/#Slide0250).
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 CET 2008 sierkb@gmx.de
+
+- 0.8.4 release:
+  0.8.4 may sound like a very minor step from the version 0.8.3
+  released in August, but this new release of the W3C Markup Validator
+  brings some very important change:
+  in addition to checking documents against etablished standards such
+  as HTML 4.01 and XHTML 1.0, the validator can now check documents
+  for conformance to HTML5 (http://www.w3.org/html/), thanks to the
+  integration with the Validator.nu (http://about.validator.nu/)
+  html5 engine.
+  HTML5 is still work in progress and support for this next generation
+  of the publishing language of the World Wide Web will remain
+  experimental, but this integration should provide experimentation
+  grounds for those interested in trying on authoring in this new
+  version of html, as well as a feedback channel for the group
+  working on building a stable, open standard.
+  Other bug fixes and improvement in this version include:
+  - Bug Fix: version 0.8.3 came with a programming mistake that would
+    not affect validation, but would flood the validator servers'
+    logs with warnings.
+  - Bug Fix - Document type support. A Typo in the machine-readable
+    grammar published with the latest specification for XHTML1.1
+    caused spurrious validation errors when checking documents
+    against XHTML1.1. Fixing the typo
+    (http://lists.w3.org/Archives/Public/www-validator-cvs/2008Nov/0029.html)
+    solves the issue. Another fixed typo
+    (http://lists.w3.org/Archives/Public/www-validator-cvs/2008Aug/0018.html)
+    now makes the validation against the historical
+    HTML i18n document type functional.
+  - Documentation updates and fixes: the installation documentation
+    used a misspelled option for the installation of the OpenSP
+    parser. The correction should make installation of the validator
+    a little easier. Also relevant to installing the validator, the
+    sample validator configuration now includes a documentation of
+    environment variables
+    (http://lists.w3.org/Archives/Public/www-validator-cvs/2008Nov/0008.html)
+    affecting connectivity.
+
+-------------------------------------------------------------------
+Wed Aug 13 15:55:00 CEST 2008 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.8.3:
+  The 0.8.3 release of the W3C Markup Validator is a bug fix release,
+  with a few small additional features.
+  Changes include:
+  - Bug Fix: in version 0.8.2, revalidation of an uploaded file was
+    broken (missing markup in the HTML form)
+  - Updates: Added support for XHTML Basic 1.1, XHTML Mobile Profiles
+    (1.0, 1.1 and 1.2) and the historical HTML i18n
+  - Bug Fix: the validator won't override a given document type with
+    itself
+  - Conformance: The validator now warns about inconsistent
+    public/system identifiers combinations
+  - API: The custom HTTP headers in validator responses now also
+    include the number of warnings
+  - Experimental Feature: added the new option to send specific
+    'Accept-Charset' and 'User-Agent' headers, in addition to
+    'Accept' and 'Accept-Language' in version 0.8.2.
+  - Experimental Feature: the validator can output its results
+    as JSON.
+  - Documentation: Some documentation updates
+  - Development: New automated support and regression test suite
+
+-------------------------------------------------------------------
+Thu Oct 11 05:38:58 CEST 2007 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.8.2:
+  The 0.8.2 release of the W3C Markup Validator is a bug fix,
+  performance and usability release, addressing the following issues:
+  - Bug Fix: processing of documents through HTML Tidy would be
+    triggered even when not requested.
+    The fix should provide a noticeable performance boost.
+  - Bug Fix: forcing or overriding the Doctype declaration would
+    not work with documents using an XML Declaration Bug 857 -
+    DOCTYPE Override should take XML Decl into account,
+    http://www.w3.org/Bugs/Public/show_bug.cgi?id=857).
+    The fix should make it much easier to validate e.g. SVG documents.
+  - Bug Fix: Making sure that the validator requests a fresh version
+    of the online resources, when an older cached version could be
+    returned. (Bug 4998 - Validator sometimes uses cached content
+    (cache-control header on requests would be useful),
+    http://www.w3.org/Bugs/Public/show_bug.cgi?id=4998).
+  - Usability: when using file upload or direct input modes, the
+    result page will now include a text area filled with the
+    validated source, for easy fixing and revalidation
+    (Bug 4342 - Revalidation form for Upload and Direct Input,
+    http://www.w3.org/Bugs/Public/show_bug.cgi?id=4342).
+  - Accessibility: the main interface was made friendlier to
+    screen readers (Bug 4959 - screen reader reads contents of
+    entire form, http://www.w3.org/Bugs/Public/show_bug.cgi?id=4959).
+  - Experimental Feature: new options were added to trigger Format
+    (http://validator.w3.org/docs/users.html#option-accept)
+    and Language negotiation
+    (http://validator.w3.org/docs/users.html#option-accept-language).
+  - New Feature: automatic detection of the document type for SVG
+    documents, even without a DOCTYPE declaration.
+    Validation of SVG only supported for standalone SVG documents,
+    up to SVG 1.1.
+  - Documentation updates.
+
+-------------------------------------------------------------------
+Wed Aug 8 00:00:00 CEST 2007 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.8.1:
+  The 0.8.1 release of the W3C Markup Validator is a bug fix
+  release, addressing the following issues:
+  - Bug Fix: changed set up of parser responsible for checking XML 
+    well-formedness, which would retrieve schemas for entities 
+    each time the validator would run.
+  - Bug Fix: the validator would incorrectly complain about HTML/XML 
+    named entities (such as ©).
+  - Bug Fix: fixing referer checking 
+    when running with Apache and mod_perl2.
+  - Bug Fix: the validator would crash when called from browsers
+    with rare language preference settings
+  - ... and small performance and code cleanup fixes.
+
+-------------------------------------------------------------------
+Wed Jul 25 12:00:00 CEST 2007 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.8.0:
+  Releasing version 0.8.0 of the W3C Markup Validator, a major
+  milestone in the development of the validator, including changes
+  in its architecture, UI, new features and fewer bugs, for a better,
+  more accurate and helpful quality process.
+  This release includes all the changes and bug reports of the
+  0.8.0 Beta 1 and 0.8.0 Beta 2.
+
+-------------------------------------------------------------------
+Fri Jun 1 00:00:00 CEST 2007 sierkb@gmx.de
+
+- Update validator and sgml-libs to version 0.8.0 Beta 2:
+  Testing the second beta revision of the validator version 0.8.0.
+  This new version builds upon the 0.8.0 Beta 1, and adds bug fixes,
+  documentation updates and a polished UI with improved style and
+  interaction. Changes include:
+  - Revised main UI. Cleaner design. Improved tabbing between
+    validation methods. Adding toggled option visibility
+  - Bug Fix: Fixing transcoding issues, encoding of source display
+  - Bug Fix: For XML document types, not reporting xmlns:*
+    attributes as an error
+  - New Feature: Adding error message id to the SOAP API,
+    error context (source snippet), added error message explanation
+  - Bug Fix: Fixed fatal error display in SOAP API
+  - Bug Fix: Fixed line number display in case of broken encoding
+  - Usability: more usable fatal error displays, removed "reset form"
+    button, rewordings, error message explanations...
+  - Bug Fix: Fixed outline for non-xml document types
+  - New FEature: Added support for XHTML + RDFa
+  - New Feature: For non-xhtml XML documents without document type, 
+    the validator will not try to perform validation and will only
+    check well-formedness
+  - code cleanup, other bug fixes
+
+------------------------------------------------------------------- 
+Tue Apr 19 00:00:00 CEST 2007 sierkb@gmx.de
+
+- Update validator and sgml-libs to version 0.8.0 Beta 1:
+  Testing version 0.8.0 Beta #1 of the Markup Validator;
+  a new version including important changes in architecture,
+  performance, reliability of validation for XML-based languages,
+  improvements to the User Interface, and a number of new features.
+  Changes include:
+  - New architecture, faster and more reliable, scaling better to
+    the growing usage of the validator
+  - Improved interface for better usability, accessibility
+  - New feature: automatic cleanup of markup (with Tidy)
+  - New feature: additional XML-Well-Formedness check, for more
+    reliable validation of XML-based languages
+  - Back by popular demand: document outline feature
+  - New feature: checking that the documents are sent with proper
+    Internet Media Type (MIME type)
+  - New feature: for XML documents, checking that the xmlns is
+    present, and properly set.
+  - New feature: grouped messages, an alternate view to the
+    sequential display of errors
+  - New feature: Direct Input validation can check full documents
+    AND HTML fragments
+  - Added support for SMIL 2.1, XHTML Basic 1.1
+  - Bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 13 00:00:00 CET 2007 sierkb@gmx.de
+
+- Rebuild for openSUSE 10.2.
+- Spec file cleanups.
+
+-------------------------------------------------------------------
+Tue Nov 14 00:00:00 CET 2006 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.7.4:
+  Releasing version 0.7.4 of the W3C Markup Validator,
+  maintenance release including bug fixes and documentation updates.
+  Changes include:
+  - Bug fixes to the validator's API
+  - The proprietary XML output format is (still) deprecated, and
+    will be removed in version 0.8.0
+  - The outline feature, broken in version 0.7.3, is back.
+  - Local installations of the validator can be configured to enable
+    or disable  the API
+  - Validation icons are now available in two colors and 4 file
+    formats, including PNG and SVG
+  - Documentation updates
+
+-------------------------------------------------------------------
+Mon Oct 23 00:00:00 CET 2006 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.7.3:
+  Releasing version 0.7.3 of the W3C Markup Validator,
+  a maintenance release including fixes, updates, and includes an 
+  experimental API to interface the validator with other programs
+  and services.
+  Changes include:
+  - A new (experimental) Web Services API (docs/api.html)
+  - The proprietary (and experimental) XML output format is deprecated
+  - New Document type supported: XHTML-Print
+  - New Character Encoding supported ISO-8859-11 (Thai)
+  - Usability fix: better error messages for documents with no
+    character encoding declared, and for which the
+    encoding fallback fails
+  - HTTP Fix: Be more lenient about whitespace and linefeeds
+    in Content-Type
+  - Usability Fix: Adding the possibility of Doctype Override
+    for SVG Document Types
+  - Compatibility Fix for OpenSP 1.5.2
+  - documentation updates and improvements
+  - Improved Feedback mechanisms
+- 'valid SVG' badges added to openSUSE addons for local use.
+- htdocs/config/types.conf:
+  Relative URIs of 'valid SVG' badge and 'valid SVG Tiny' badge
+  for local use.
+
+-------------------------------------------------------------------
+Thu Jun 15 00:00:00 CEST 2006 sierkb@gmx.de
+
+- Rebuild for SUSE Linux 10.1
+
+-------------------------------------------------------------------
+Tue Apr 23 00:00:00 CET 2006 sierkb@gmx.de
+
+- Update validator and sgml-libs to latest stable CVS 0.7.2-release
+
+-------------------------------------------------------------------
+Mon Apr 3 00:00:00 CET 2006 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable CVS 0.7.2-release
+  Note: some hot fixes, which are part of this release,
+  didn't make it into the release published in february.
+
+-------------------------------------------------------------------
+Wed Mar 15 00:00:00 CET 2006 sierkb@gmx.de
+- Spec file cleanup: removed #neededforbuild
+
+-------------------------------------------------------------------
+Mon Feb 20 00:00:00 CET 2006 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.7.2:
+  Releasing version 0.7.2 of the Markup Validator, a maintenance
+  release including minor fixes as described below:
+  - update for compatibility with new version of
+    Config::General module
+  - fixed the recognized root element for XHTML 1.1 plus
+    MathML 2.0 (plus SVG)
+  - avoid Text::Wrap error with deeply nested documents
+  - documentation fixes (typos, broken link)
+  - avoid trailing comma in failed validation results if number
+    of errors is unknown
+  - consistency fixes for character encoding selection
+  - fixed support for iso-8859-3 and iso-8859-4 encodings,
+    added support for iso-ir-111
+
+-------------------------------------------------------------------
+Wed Nov 23 00:00:00 CET 2005 sierkb@gmx.de
+  
+- SUSE addons are now comprised in a Tarball instead of spread files.
+
+-------------------------------------------------------------------
+Thu Nov 17 00:00:00 CET 2005 sierkb@gmx.de
+  
+- types.conf: using the proper root elements for the doctype
+  override to XHTML 1.1 plus MathML 2.0 or XHTML 1.1 plus
+  MathML 2.0 plus SVG 1.1.
+- Spec file: removed depency from apxs (apache2-devel package).
+- Rebuild for SuSE Linux 10.0 OSS (GCC 4.0.2).
+
+-------------------------------------------------------------------
+Wed Nov 9 00:00:00 CET 2005 sierkb@gmx.de
+
+- validator.conf: With respect to default security, I changed
+  'Allow Private IPs = yes' back to 'Allow Private IPs = no'.
+- Wrote and added README file.
+- Spec file: Improved Requires Directive.
+
+-------------------------------------------------------------------
+Tue Nov 1 00:00:00 CET 2005 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.7.1:
+  Releasing version 0.7.1 of the Markup Validator,
+  a maintenance release introducing performance enhancements
+  and including minor fixes in the user interface
+  and in the "Direct Input" validation results.
+- Spec file: Updated and optimized patches for local use.
+
+-------------------------------------------------------------------
+Thu Aug 11 00:00:00 CEST 2005 sierkb@gmx.de
+
+- Update validator and sgml-libs to stable release version 0.7.0:
+  Stable release including all fixes and improvements made in
+  consecutive beta versions 0.7.0 Beta #2 and 0.7.0 Beta #1.
+
+-------------------------------------------------------------------
+Mon Aug 1 00:00:00 CEST 2005 sierkb@gmx.de
+
+- Update validator and sgml-libs to 0.7.0b2 (beta version 2):
+  Testing version 0.7.0 Beta #2 of the Markup Validator, the second
+  phase of beta test of a new version, including the results of
+  feedback during the first phase of beta testing.
+  Most bugs and issues resolved were recorded in our bugzilla database.
+  Changes from version 0.7.0 Beta#1 include:
+  - Improvements in the way the results and errors number is displayed,
+    with a bug fix in error count.
+  - Bug fixes:
+    * The error number count in resuts now only counts errors,
+      not warnings or other messages
+    * A missing entry in the SGML catalog was added
+    * The direct input interface now handles cases where n-
+      content is set properly
+  - Running the validator under mod_perl is n- longer supported
+  - Simplified configuration sample for an installation on the
+    Apache Server
+  - Documentation updates
+
+-------------------------------------------------------------------
+Tue Jul 19 00:00:00 CEST 2005 sierkb@gmx.de
+  
+- Update validator and sgml-libs to 0.7.0b1 (beta version 1):
+  Testing version 0.7.0 Beta #1 of the Markup Validator; a new
+  version including small architectural changes, improvements t-
+  the User Interface, documentation and user-friendliness, as well
+  as a number of bug fixes. Most bugs and issues resolved were
+  recorded in our bugzilla database.
+  Changes include:
+  - Templates for the XHTML output of validation results:
+    * less inline markup
+    * easier for multi-format output
+    * getting close t- the possibility of localization
+  - Better feedback mechanisms
+    * Integration of the feedback page with validation results for
+      better error message feedback
+    * The feedback page now allows direct search of the mailing-list
+      and bug database
+  - Additional and improved error messages explanations and
+    documentation
+  - Variants of HTML2, MathML and SVG added t- the bundled SGML and
+    XML catalogs
+  - Better support for validation of non-W3C document types,
+    including custom DTDs
+  - User Interface and style changes for a user-friendlier experience,
+    including
+    * New print stylesheet, handheld stylesheets
+    * Style differentiating errors, warnings and information in
+      validation results
+  - (re-)Added the possibility of validating markup by direct input
+  - Simplified configuration syntax (for local installations)
+  - Made easier t- run on Windows platform (still needs testing and
+    documentation)
+  - Global updates t- the documentation
+  - Simplified, documented and checked the consistency of our usage
+    of Access Keys
+  - Spec file: Brought -libs post(un)install scriptlets up to date
+    with sgml-lib/*.soc.
+  
+-------------------------------------------------------------------
+Fri Jun 17 00:00:00 CEST 2005 sierkb@gmx.de
+  
+- Updated sgml-libs to 0.6.7.
+
+-------------------------------------------------------------------
+Tue Jun 14 00:00:00 CEST 2005 sierkb@gmx.de
+
+- Added patches for local use.
+- Added configuration for VirtualHost use.
+  
+-------------------------------------------------------------------
+Thu Jun 9 00:00:00 CEST 2005 sierkb@gmx.de
+  
+- Initial build for SuSE Linux.
+- validator 0.6.7, sgml-libs 0.6.5.
+
+-------------------------------------------------------------------

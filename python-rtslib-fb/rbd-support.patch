@@ -1,0 +1,157 @@
+From 9496352d515b9f440b68c8534e41899cf1a9570e Mon Sep 17 00:00:00 2001
+From: Mike Christie <mchristi@redhat.com>
+Date: Wed, 29 Jul 2015 04:28:02 -0500
+Subject: [PATCH] rbd support
+
+rtslib-fb-rbd-support.patch obtained from:
+https://marc.info/?l=ceph-devel&m=143816209010058
+
+Reviewed-by: David Disseldorp <ddiss@suse.de>
+---
+ rtslib/__init__.py |   1 +
+ rtslib/tcm.py      | 103 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 104 insertions(+)
+
+diff --git a/rtslib/__init__.py b/rtslib/__init__.py
+index 568619e..1a5bee5 100644
+--- a/rtslib/__init__.py
++++ b/rtslib/__init__.py
+@@ -32,6 +32,7 @@ from .fabric import FabricModule
+ 
+ from .tcm import FileIOStorageObject, BlockStorageObject
+ from .tcm import PSCSIStorageObject, RDMCPStorageObject, UserBackedStorageObject
++from .tcm import RBDStorageObject
+ from .tcm import StorageObjectFactory
+ 
+ from .alua import ALUATargetPortGroup
+diff --git a/rtslib/tcm.py b/rtslib/tcm.py
+index 1aeea23..17df8e9 100644
+--- a/rtslib/tcm.py
++++ b/rtslib/tcm.py
+@@ -780,6 +780,107 @@ class BlockStorageObject(StorageObject):
+         d['dev'] = self.udev_path
+         return d
+ 
++class RBDStorageObject(StorageObject):
++    '''
++    An interface to configFS storage objects for RBD backstore.
++    '''
++
++    # RBDStorageObject private stuff
++
++    def __init__(self, name, dev=None, wwn=None, readonly=False,
++                 write_back=False):
++        '''
++        A RBDIOStorageObject can be instantiated in two ways:
++            - B{Creation mode}: If I{dev} is specified, the underlying configFS
++              object will be created with that parameter.
++              No RBDIOStorageObject with the same I{name} can pre-exist in
++              the parent Backstore in that mode.
++            - B{Lookup mode}: If I{dev} is not set, then the
++              RBDIOStorageObject will be bound to the existing configFS
++              object in the parent Backstore having the specified
++              I{name}. The underlying configFS object must already exist in
++              that mode, or instantiation will fail.
++
++        @param name: The name of the RBDIOStorageObject.
++        @type name: string
++        @param dev: The path to the backend rbd device to be used.
++            - Example: I{dev="/dev/sda"}.
++            - The only device type that is accepted I{TYPE_DISK}.
++              For other device types, use pscsi.
++        @type dev: string
++        @param wwn: T10 WWN Unit Serial, will generate if None
++        @type wwn: string
++        @return: A RBDIOStorageObject object.
++        '''
++
++        if dev is not None:
++            super(RBDStorageObject, self).__init__(name, 'create')
++            try:
++                self._configure(dev, wwn, readonly)
++            except:
++                self.delete()
++                raise
++        else:
++            super(RBDStorageObject, self).__init__(name, 'lookup')
++
++    def _configure(self, dev, wwn, readonly):
++        self._check_self()
++        if get_blockdev_type(dev) != 0:
++            raise RTSLibError("Device %s is not a TYPE_DISK rbd device" % dev)
++        if is_dev_in_use(dev):
++            raise RTSLibError("Cannot configure StorageObject because "
++                              + "device %s is already in use" % dev)
++        self._set_udev_path(dev)
++        self._control("udev_path=%s" % dev)
++        self._control("readonly=%d" % readonly)
++        self._enable()
++
++        super(RBDStorageObject, self)._configure(wwn)
++
++    def _get_major(self):
++        self._check_self()
++        return int(self._parse_info('Major'))
++
++    def _get_minor(self):
++        self._check_self()
++        return int(self._parse_info('Minor'))
++
++    def _get_size(self):
++        # udev_path doesn't work here, what if LV gets renamed?
++        return get_size_for_disk_name(self._parse_info('device')) * int(self._parse_info('SectorSize'))
++
++    def _get_wb_enabled(self):
++        self._check_self()
++        return bool(int(self.get_attribute("emulate_write_cache")))
++
++    def _get_readonly(self):
++        self._check_self()
++        # 'readonly' not present before kernel 3.6
++        try:
++            return bool(int(self._parse_info('readonly')))
++        except AttributeError:
++            return False
++
++    # RBDStorageObject public stuff
++
++    major = property(_get_major,
++            doc="Get the block device major number")
++    minor = property(_get_minor,
++            doc="Get the block device minor number")
++    size = property(_get_size,
++            doc="Get the block device size")
++    write_back = property(_get_wb_enabled,
++            doc="True if write-back, False if write-through (write cache disabled)")
++    readonly = property(_get_readonly,
++            doc="True if the device is read-only, False if read/write")
++
++    def dump(self):
++        d = super(RBDStorageObject, self).dump()
++        d['write_back'] = self.write_back
++        d['readonly'] = self.readonly
++        d['wwn'] = self.wwn
++        d['dev'] = self.udev_path
++        return d
+ 
+ class UserBackedStorageObject(StorageObject):
+     '''
+@@ -897,6 +998,7 @@ so_mapping = {
+     "fileio": FileIOStorageObject,
+     "iblock": BlockStorageObject,
+     "block": BlockStorageObject,
++    "rbd": RBDStorageObject,
+     "user": UserBackedStorageObject,
+ }
+ 
+@@ -907,6 +1009,7 @@ bs_params = {
+     FileIOStorageObject: dict(name='fileio'),
+     BlockStorageObject: dict(name='block', alt_dirprefix='iblock'),
+     UserBackedStorageObject: dict(name='user'),
++    RBDStorageObject: dict(name='rbd'),
+     }
+ 
+ bs_cache = {}
+-- 
+2.13.6
+

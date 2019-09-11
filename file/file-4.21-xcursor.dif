@@ -1,0 +1,9 @@
+--- magic/Localstuff
++++ magic/Localstuff	2013-09-30 00:00:00.000000000 +0000
+@@ -33,3 +33,6 @@
+ # File magic for Scribus, an Open Source Desktop Publishing system
+ 0	string		\<SCRIBUSUTF8\ Version		Scribus Document
+ 0	string		\<SCRIBUSUTF8NEW\ Version	Scribus Document
++
++# File magic for X11 cursor data files
++0	string		Xcur\020\000	X11 cursor data

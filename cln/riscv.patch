@@ -1,0 +1,66 @@
+From 26aaf349a1fb3879274090d9e1c8f86da4a0a585 Mon Sep 17 00:00:00 2001
+From: "Manuel A. Fernandez Montecelo" <mafm@debian.org>
+Date: Thu, 3 May 2018 23:28:36 +0200
+Subject: [PATCH] Add support for riscv64 platform.
+
+---
+ include/cln/object.h | 2 +-
+ include/cln/types.h  | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/include/cln/object.h b/include/cln/object.h
+index 56f6f07..f6979b1 100644
+--- a/include/cln/object.h
++++ b/include/cln/object.h
+@@ -25,7 +25,7 @@ namespace cln {
+ #if defined(__i386__) || (defined(__mips__) && !defined(__LP64__)) || (defined(__sparc__) && !defined(__arch64__)) || defined(__hppa__) || defined(__arm__) || defined(__rs6000__) || defined(__m88k__) || defined(__convex__) || (defined(__s390__) && !defined(__s390x__)) || defined(__sh__) || (defined(__x86_64__) && defined(__ILP32__))
+   #define cl_word_alignment  4
+ #endif
+-#if defined(__alpha__) || defined(__ia64__) || defined(__mips64__) || defined(__powerpc64__) || (defined(__sparc__) && defined(__arch64__)) || (defined(__x86_64__) && !defined(__ILP32__)) || defined(__s390x__) || defined(__aarch64__)
++#if defined(__alpha__) || defined(__ia64__) || defined(__mips64__) || defined(__powerpc64__) || (defined(__sparc__) && defined(__arch64__)) || (defined(__x86_64__) && !defined(__ILP32__)) || defined(__s390x__) || defined(__aarch64__) || (defined(__riscv) && __riscv_xlen == 64)
+   #define cl_word_alignment  8
+ #endif
+ #if !defined(cl_word_alignment)
+diff --git a/include/cln/types.h b/include/cln/types.h
+index 159e8bc..f245501 100644
+--- a/include/cln/types.h
++++ b/include/cln/types.h
+@@ -48,7 +48,7 @@
+     #undef HAVE_LONGLONG
+    #endif
+   #endif
+-  #if defined(HAVE_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__mips64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__aarch64__))
++  #if defined(HAVE_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__mips64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__aarch64__) || (defined(__riscv) && __riscv_xlen == 64))
+     // 64 bit registers in hardware
+     #define HAVE_FAST_LONGLONG
+   #endif
+@@ -76,7 +76,7 @@
+ 
+ // Integer type used for counters.
+ // Constraint: sizeof(uintC) >= sizeof(uintL)
+-  #if (defined(HAVE_FAST_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__aarch64__) || defined(__mips64__)))
++  #if (defined(HAVE_FAST_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__aarch64__) || defined(__mips64__) || (defined(__riscv) && __riscv_xlen == 64)))
+     #define intCsize long_bitsize
+     typedef long           sintC;
+     typedef unsigned long  uintC;
+@@ -88,7 +88,7 @@
+ 
+ // Integer type used for lfloat exponents.
+ // Constraint: sizeof(uintE) >= sizeof(uintC)
+-  #if (defined(HAVE_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__i386__) || defined(__mips__) || defined(__rs6000__) || defined(__aarch64__)))
++  #if (defined(HAVE_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || defined(__s390x__) || (defined(__sparc__) && defined(__arch64__)) || defined(__x86_64__) || defined(__i386__) || defined(__mips__) || defined(__rs6000__) || defined(__aarch64__) || (defined(__riscv) && __riscv_xlen == 64)))
+     #define intEsize 64
+     typedef sint64  sintE;
+     typedef uint64  uintE;
+@@ -127,7 +127,7 @@
+     typedef int sintD;
+     typedef unsigned int uintD;
+   #else  // we are not using GMP, so just guess something reasonable
+-    #if (defined(HAVE_FAST_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || (defined(__sparc__) && defined(__arch64__)) || defined(__s390x__) || defined(__x86_64__) || defined(__aarch64__) || defined(__mips64__)))
++    #if (defined(HAVE_FAST_LONGLONG) && (defined(__alpha__) || defined(__ia64__) || defined(__powerpc64__) || (defined(__sparc__) && defined(__arch64__)) || defined(__s390x__) || defined(__x86_64__) || defined(__aarch64__) || defined(__mips64__) || (defined(__riscv) && __riscv_xlen == 64)))
+       #define intDsize 64
+       typedef sint64  sintD;
+       typedef uint64  uintD;
+-- 
+2.21.0
+

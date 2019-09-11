@@ -1,0 +1,1145 @@
+-------------------------------------------------------------------
+Mon Jul  3 13:03:20 UTC 2017 - bwiedemann@suse.com
+
+- Use gzip -n to not add timestamps to .gz headers
+- Use fdupes -o name to always create symlinks in the same direction
+
+-------------------------------------------------------------------
+Fri Nov 27 13:21:20 UTC 2015 - werner@suse.de
+
+- Change encoding order in application defaults of xemacs and
+  xemacs-packages to avoid breakdown of FontSet scheme of libX11
+  at startup (bsc#952361)
+
+-------------------------------------------------------------------
+Thu Feb 26 13:26:46 UTC 2015 - werner@suse.de
+
+- Make makeinfo less pettifogging
+
+-------------------------------------------------------------------
+Wed Feb 11 14:04:29 UTC 2015 - werner@suse.de
+
+- Add patch xemacs-packages-20130822-tramp.patch
+  to fix problem of not loaded subr-more (boo#857207)
+
+-------------------------------------------------------------------
+Fri Aug 23 15:17:17 UTC 2013 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * leim/quail warns about duplicate rules
+  * cc-mode 1.64 -> 1.69 (5.32.5): see individual ChangeLog
+  * edit-utils 2.50 -> 2.51: import find-lisp
+  * efs 1.34 -> 1.35: texinfo fix in docs...
+  * erc: fixes in log-file handling
+  * hyperbole 1.18 -> 1.19 (no source change)
+  * misc-games: fix name clash in doctor
+  * prog-modes 2.28 -> 2.29: go mode updated to 16503
+  * xemacs-base 2.35 -> 2.36: rcfiles added, subr-more learns
+    number-sequence, string-or-null-p, booleanp
+
+-------------------------------------------------------------------
+Tue Apr  2 13:41:50 UTC 2013 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * xemacs-base 2.32 -> 2.35: new core subr-more, new file-util
+    from GNU Emacs
+  * tramp 1.41 -> 1.45 (2.2.7): latest bugfixes, new gvfs backend
+  * scheme 1.18 -> 1.19: fix imenu-syntax-alist
+  * os-utils 1.41 -> 1.42: archive-mode also provide arc-mode for
+    GNU compat
+  * edit-utils 2.49 -> 2.50: added ido mode, which-func from GNU
+  * cc-mode 1.60 -> 1.64: small fixes, check
+    http://cc-mode.sourceforge.net for detailed changelog
+
+-------------------------------------------------------------------
+Wed Jan 30 09:00:40 UTC 2013 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * cc-mode 1.57 -> 1.60: small fixes, check
+    http://cc-mode.sourceforge.net for detailed changelog
+  * edit-utils 2.47 -> 2.49: add list-register
+  * prog-modes 2.27 -> 2.28: update go-mode to 14989
+  * tramp 1.40 (2.0.56) -> 1.41 (2.2.7-pre): major update,
+    details see ChangeLog.upstream
+  * ediff 1.81 -> 1.82, pcl-cvs 1.70 -> 1.71:
+  	fix tramp compilation
+
+-------------------------------------------------------------------
+Mon Nov 19 13:02:26 UTC 2012 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * edit-utils 2.46 -> 2.47: support behavior in user-colors
+
+-------------------------------------------------------------------
+Tue Oct  2 13:34:29 UTC 2012 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * prog-modes 2.26 -> 2.27: go-mode update to 13677 (handle unit
+    test failure)
+  * cc-mode 1.55 -> 1.57: bug fixes
+
+-------------------------------------------------------------------
+Tue Sep 18 11:32:03 UTC 2012 - werner@suse.de
+
+- Again, make it build with latest TeXLive 2012 
+
+-------------------------------------------------------------------
+Wed Aug  8 14:16:07 UTC 2012 - ailin.nemui@gmail.com
+
+- update packages to latest xemacs versions:
+  * auctex 1.49 -> 1.51 (11.84), details see doc/changes.texi
+  * cc-mode 1.51 -> 1.55 (5.32.2),
+    see http://cc-mode.sourceforge.net/changes-532.php
+  * gnus 1.94 -> 1.95 (5.10.10),
+    see http://gnus.org/manual/gnus_363.html#SEC366
+  * leim 1.32 -> 1.33, prog-modes 2.25 -> 2.26,
+    ruby-modes 1.04 -> 1.05 (1.8.7), w3 1.36 -> 1.38 (4.0pre47),
+    xemacs-base 2.31 -> 2.32,
+    for changes see the various ChangeLog files in the package
+- fix packaging bug that stop cperl-mode 6.2 from opening
+- upstream license change to GPLv3+
+- add patch for missing CVS keywords in hg checkout
+- add patch to update hg checkout of gnus to match release version
+
+-------------------------------------------------------------------
+Mon Jul 23 15:58:02 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 
+
+-------------------------------------------------------------------
+Sat Jun 30 18:09:30 UTC 2012 - i@marguerite.su
+
+- fix 12.2 builds.
+  * bdftopcf is now a separated package from xorg-x11.
+  * mkfontdir is now a separated package from xorg-x11-utils-devel.
+- fix sle builds.
+
+-------------------------------------------------------------------
+Thu Mar 22 08:14:36 UTC 2012 - werner@suse.de
+
+- Make rpmlint happy
+
+-------------------------------------------------------------------
+Fri Mar  2 12:25:51 UTC 2012 - werner@suse.de
+
+- Update to sumo-2012-02-14
+  * as there are a lot of changes you may read
+    https://bitbucket.org/xemacs/xemacs-packages/changesets
+
+-------------------------------------------------------------------
+Sat May 15 16:06:58 UTC 2010 - coolo@novell.com
+
+- ignore subpackages required by xemacs to avoid build cycle
+
+-------------------------------------------------------------------
+Wed Mar 31 14:56:07 CEST 2010 - werner@suse.de
+
+- Force build with newer test version instead of 25.5.29 (bnc#590429)
+
+-------------------------------------------------------------------
+Mon Feb 22 16:39:28 CET 2010 - werner@suse.de
+
+- Update the sub package vc to 1.48 to fix a bug (bnc#568556)
+
+-------------------------------------------------------------------
+Wed Dec  9 16:27:46 CET 2009 - werner@suse.de
+
+- Fix the fix in the spec file to make semantic/auto-autoloads.el
+  work again (bnc#557739)
+
+-------------------------------------------------------------------
+Mon Dec  7 17:05:24 CET 2009 - werner@suse.de
+
+- Make it work with latest xemacs beta version
+
+-------------------------------------------------------------------
+Wed Dec  2 15:50:56 CET 2009 - werner@suse.de
+
+- Add missing autoloads to fix nasty error message (bnc#557739)
+
+-------------------------------------------------------------------
+Wed Aug 26 13:00:30 CEST 2009 - tiwai@suse.de
+
+- Add provides and obsoletes for apel-xemacs
+
+-------------------------------------------------------------------
+Tue Aug 25 16:41:10 CEST 2009 - aj@suse.de
+
+- Apply patch for apel to make it build.
+- Fix filelist.
+- Fix some rpmlint warnings.
+
+-------------------------------------------------------------------
+Mon Jun 22 12:14:08 CEST 2009 - coolo@novell.com
+
+- update to sumo-2009-02-17.
+  * way too many changes to list them all, see
+    http://xemacs.org/Releases/2009-02-17.html
+
+-------------------------------------------------------------------
+Tue May 13 16:21:52 CEST 2008 - mfabian@suse.de
+
+- bnc#389154: add fix for fast-lock to avoid the possible
+  execution of arbitrary lisp code.
+
+-------------------------------------------------------------------
+Fri Dec 21 19:39:24 CET 2007 - mfabian@suse.de
+
+- fix wrong property list entries for faces.
+
+-------------------------------------------------------------------
+Wed Dec 05 16:12:09 CET 2007 - mfabian@suse.de
+
+- remove openldap2 from BuildRequires.
+
+-------------------------------------------------------------------
+Fri Aug 10 23:42:12 CEST 2007 - mfabian@suse.de
+
+- update German app-defaults.
+
+-------------------------------------------------------------------
+Wed Aug 08 15:21:39 CEST 2007 - mfabian@suse.de
+
+- add mule-lisp-directory to load-path in package-compile.el
+- add fix-build-failure-in-mule-ucs.patch by Aidan Kehoe to fix
+  build failure im mule-ucs with xemacs-21.5.28.20070807.
+  (see http://mid.gmane.org/18106.11226.538195.43364@parhasard.net).
+
+-------------------------------------------------------------------
+Mon Jul 16 12:19:24 CEST 2007 - mfabian@suse.de
+
+- update to sumo-2007-04-27.
+  • remove bugzilla-129874-do-not-output-useless-error-messages-when-using-cvs-status.patch
+   (included upstream).
+  • remove bugzilla-219217-w3-does-not-display-anything.patch
+    (not needed anymore because newer font.el is now in
+    xemacs core).
+- make it build again in the build service for openSUSE < 10.2.
+
+-------------------------------------------------------------------
+Mon Apr 30 23:05:47 CEST 2007 - ro@suse.de
+
+- added unzip to buildrequires 
+
+-------------------------------------------------------------------
+Fri Apr 20 11:10:45 CEST 2007 - aj@suse.de
+
+- Use texlive for building.
+
+-------------------------------------------------------------------
+Mon Nov 20 11:22:14 CET 2006 - mfabian@suse.de
+
+- Bugzilla #219217: "XEmacs W3 Doesn't display anything"
+
+-------------------------------------------------------------------
+Thu Aug 31 11:42:47 CEST 2006 - mfabian@suse.de
+
+- add "chmod 755 $RPM_SOURCE_DIR/texi2utf8" to make
+  it build in the openSUSE build service.
+  Permissions for any file in $RPM_SOURCE_DIR are nowhere guaranteed
+  to be preserved.
+
+-------------------------------------------------------------------
+Mon Jul  3 20:14:37 CEST 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 30 19:26:02 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #183805: add missing autoloads to make the menu
+  "Options -> Advanced (Customize) -> Emacs" work without having
+  xemacs-el and xemacs-packages-el installed.
+
+-------------------------------------------------------------------
+Wed Jun 28 18:07:21 CEST 2006 - mfabian@suse.de
+
+- update to sumo-2006-05-10
+  + remove bugzilla-142822-riece.patch (included upstream).
+  + remove bugzilla-130379-do-not-autoload-edmacro.patch (included
+    upstream).
+- Bugzilla #129874: don't output useless error messages when
+  using 'M-x cvs-status'.
+
+-------------------------------------------------------------------
+Thu Mar 30 18:58:33 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #130379: do not autoload edmacro from xwem autoloads.
+
+-------------------------------------------------------------------
+Tue Mar 21 15:28:10 CET 2006 - mfabian@suse.de
+
+- Bugzilla #130200: "ediff won't work": The auto-autoloads.el files
+  have to be generated differently when XEmacs 21.5.x is used to
+  build the packages.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:01:41 CET 2006 - mfabian@suse.de
+
+- Bugzilla #142822: make riece work again.
+
+-------------------------------------------------------------------
+Fri Dec 30 12:59:02 CET 2005 - mfabian@suse.de
+
+- fix file list to make it build.
+
+-------------------------------------------------------------------
+Fri Dec 16 18:31:13 CET 2005 - mfabian@suse.de
+
+- bugzilla #139625: add vm-charset-unknown-problem.patch.
+
+-------------------------------------------------------------------
+Mon Dec 12 16:34:07 CET 2005 - mfabian@suse.de
+
+- update to sumo-2005-12-08.
+- adapt apel patch
+- adapt diff mode patch (see Bugzilla #32035 (#suse17035)).
+- remove  packages-cvs-xemacs-sumo-2005-07-15-bugzilla-106703-flyspell-slow.patch(included upstream)
+- liece and ess have been remove upstream, remove from file list.
+
+-------------------------------------------------------------------
+Tue Aug 23 16:18:03 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #106703: flyspell-mode in XEmacs became increadibly slow
+
+-------------------------------------------------------------------
+Wed Jul 20 22:25:21 CEST 2005 - mfabian@suse.de
+
+- update to sumo-2005-07-15.
+
+-------------------------------------------------------------------
+Fri May 13 19:33:03 CEST 2005 - mfabian@suse.de
+
+- update to sumo-2005-05-05.
+
+-------------------------------------------------------------------
+Mon Feb 14 14:03:32 CET 2005 - mfabian@suse.de
+
+- format info files with makeinfo instead of with XEmacs to
+  get correct UTF-8 output.
+- fix wrong references in tm-ja.texi.
+
+-------------------------------------------------------------------
+Tue Feb 08 12:23:19 CET 2005 - mfabian@suse.de
+
+- improve last patch according to trigger autoload of
+  "whitespace.el" by 'whitespace-global-mode'.
+  (suggestion by Ville Skyttä <scop@xemacs.org> to autoload).
+
+-------------------------------------------------------------------
+Mon Feb 07 17:35:45 CET 2005 - mfabian@suse.de
+
+- the call to 'define-minor-mode' in whitespace.el had an
+  ###autoload cookie, which was wrong.
+
+-------------------------------------------------------------------
+Thu Jan 27 18:40:03 CET 2005 - mfabian@suse.de
+
+- update to sumo-2005-01-18.
+- disable build of skk, we have a newer version of skk in
+  an extra package "ddskk-xemacs" now.
+- disable build of lookup, I'll add a new package "lookup-xemacs"
+  which will contain a newer version of lookup.
+- convert all texinfo files to UTF-8 to get the .info files
+  created in UTF-8 encoding.
+
+-------------------------------------------------------------------
+Tue Jan 04 12:41:56 CET 2005 - mfabian@suse.de
+
+- use "BuildArch:    noarch" to save space on the DVD.
+
+-------------------------------------------------------------------
+Thu Dec 23 12:58:03 CET 2004 - mfabian@suse.de
+
+- update to to sumo-2004-08-18.
+
+-------------------------------------------------------------------
+Mon Dec 13 19:18:02 CET 2004 - mfabian@suse.de
+
+- the XLC_LOCALE files were changed upstream in X11 (iso8859-1
+  now always comes first, even in en_US.UTF-8). Fix the Japanese
+  app-defaults for XEmacs so that the menus display correctly
+  with both the old and the new XLC_LOCALE file.
+
+-------------------------------------------------------------------
+Mon Oct  4 19:59:49 CEST 2004 - werner@suse.de
+
+- Avoid uninitalized cc-mode clones which cause crash on x86_64
+  (bug #46742)
+
+-------------------------------------------------------------------
+Mon Mar 22 19:42:23 CET 2004 - mfabian@suse.de
+
+- Bugzilla #36720: use -adobe-helvetica-bold-* as the default
+  font for the menus for de,ro,fr instead of -gnu-unifont- 
+  because most users like it better. For Japanese, add
+  efont-biwidth as the default menu font for Unicode and leave
+  second in the list gnu-unicode as a fallback.
+
+-------------------------------------------------------------------
+Sat Mar 13 14:00:12 CET 2004 - mfabian@suse.de
+
+- Bugzilla #35871: remove nonsense dependency on zsh.
+
+-------------------------------------------------------------------
+Fri Feb 20 12:13:20 CET 2004 - mfabian@suse.de
+
+- revert last change because the build failed. These removed files
+  are some sort of documentation and might be useful.
+
+-------------------------------------------------------------------
+Mon Feb 16 09:18:11 CET 2004 - kukuk@suse.de
+
+- Remove helper scripts from install list
+
+-------------------------------------------------------------------
+Fri Feb 13 11:01:33 CET 2004 - mfabian@suse.de
+
+- update to sumo-2004-02-02.
+- disable build of hyperbole and oo-browser because XEmacs
+  crashes when building these. 
+
+-------------------------------------------------------------------
+Tue Nov  4 00:26:10 CET 2003 - ro@suse.de
+
+- updated neededforbuild
+- don't build as root
+
+-------------------------------------------------------------------
+Sun Aug 24 00:03:07 CEST 2003 - mfabian@suse.de
+
+- use utf-8 as the default encoding for EDICT dictionaries.
+
+-------------------------------------------------------------------
+Fri Aug 22 18:01:50 CEST 2003 - mfabian@suse.de
+
+- update to sumo-2003-06-29.
+- add tetex te_kpath to needeforbuild.
+- remove obsolete patches and adapt some others.
+- add hack to install latin-unity-tables.el.
+
+-------------------------------------------------------------------
+Fri Aug 22 12:53:49 CEST 2003 - mfabian@suse.de
+
+- fix "Provides:"
+
+-------------------------------------------------------------------
+Wed Aug 20 15:17:54 CEST 2003 - mfabian@suse.de
+
+- split new packages out of xemacs{,-el,-info}:
+  xemacs-packages{,-el,-info}
+- use buildroot for building the XEmacs packages
+
+-------------------------------------------------------------------
+Sat Aug 16 16:14:13 CEST 2003 - adrian@suse.de
+
+- install desktop file from kappfinder
+
+-------------------------------------------------------------------
+Fri Jul 25 17:06:57 CEST 2003 - mfabian@suse.de
+
+- fix race condition when generating the file list.
+
+-------------------------------------------------------------------
+Tue Jun 24 14:21:20 CEST 2003 - ro@suse.de
+
+- added directories to filelist
+
+-------------------------------------------------------------------
+Tue Jun 24 00:33:26 CEST 2003 - ro@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Thu Mar 13 14:31:22 CET 2003 - mfabian@suse.de
+
+- Bug #25300: call 'latin-unity-install' for non-UTF-8 locales in
+  site-packages/lisp/term/func-keys.el to write files in
+  iso-8859-15 encoding correctly without inserting
+  ISO-2022 escape sequences. Don't call it in UTF-8 locales!
+  If 'latin-unity-install' is called in a UTF-8 locale,
+  the behaviour of the coding systems "binary" and "no-conversion"
+  becomes strange, they convert to UTF-8 when writing files
+  with German umlauts, which is surprising for "binary".
+
+-------------------------------------------------------------------
+Thu Mar  6 17:07:52 CET 2003 - kukuk@suse.de
+
+- Remove cyrus-sasl from neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb 28 18:44:47 CET 2003 - mfabian@suse.de
+
+- fix Bugzilla #23472:
+  generate /usr/share/xemacs/xemacs-packages/info/dir and
+  /usr/share/xemacs/mule-packages/info/dir and include them
+  in the xemacs-info package.
+
+-------------------------------------------------------------------
+Fri Feb 28 00:09:48 CET 2003 - mfabian@suse.de
+
+- include latest changes by Ben <ben@xemacs.org> to edebug
+  to make it work again. The edebug as included in
+  sumo-2003-02-05 doesn't work at all.
+- improve Werner's func-keys.el
+  (make XIM work right ja_JP.UTF-8 locale, load latin-unity
+  and latin-euro-input, append the coding-system setup stuff to
+  'before-init-hook instead of adding it at the beginning because
+  'mule-init is already in 'before-init-hook)
+
+-------------------------------------------------------------------
+Wed Feb 26 18:56:35 CET 2003 - werner@suse.de
+
+- Fix coding system settings: use the correct value
+
+-------------------------------------------------------------------
+Fri Feb 14 20:43:23 CET 2003 - schwab@suse.de
+
+- Fix data limit check.
+
+-------------------------------------------------------------------
+Thu Feb  6 18:40:54 CET 2003 - mfabian@suse.de
+
+- update packages to sumo-2003-02-05
+  (fixes the problem that XEmacs didn't automatically switch
+  to c++-mode, perl-mode, etc. anymore. The initial values of
+  interpreter-mode-alist and auto-mode-alist are rather short
+  now and are dynamically changed when a package is loaded. To
+  make this work a sufficiently uptodate Sumo was necessary).
+- disable packages-cvs-sumo-2002-09-19-comint.patch again, XEmacs
+  shell-mode works better with TERM=emacs and Werner added the
+  emacs entry to terminfo again.
+- remove hunks which are included upstream from
+  packages-cvs-xemacs-sumo-2002-05-22-locale-start.patch
+  packages-cvs-sumo-2002-09-19-xslt-process.patch
+
+-------------------------------------------------------------------
+Thu Jan 30 14:39:14 CET 2003 - mfabian@suse.de
+
+- update to 21.4.12
+- add packages-cvs-sumo-2002-09-19-comint.patch:
+  (defvar system-suse-terminfo t) to use TERM=dumb by default
+  like GNU Emacs does. The previous default was TERM=emacs, which
+  doesn't exist in the latest terminfo. 
+
+-------------------------------------------------------------------
+Mon Dec 16 17:01:31 CET 2002 - mfabian@suse.de
+
+- workaround for fontSet problem in app-defaults:
+  use "XEmacs*fontSet:" instead of just "*fontSet:" in the
+  app-defaults files. 
+- workaround to avoid dumping the paths to lisp files 
+  as /usr/src/packages/BUILD/... into the xemacs executable adapted
+  for the portable dumper
+
+-------------------------------------------------------------------
+Fri Dec 13 18:36:00 CET 2002 - mfabian@suse.de
+
+- add /usr/X11R6/bin/xemacs-%{version}-*.dmp to file list.
+
+-------------------------------------------------------------------
+Fri Dec 13 17:45:26 CET 2002 - mfabian@suse.de
+
+- update to 21.4.11rc1
+- update Sumo to 2002-09-19
+- remove parts of packages-cvs-xemacs-sumo-2002-03-29-ps-print.patch
+  which are included upstream
+- use portable dumper by default
+- fix Makefiles of xslt-process
+
+-------------------------------------------------------------------
+Thu Dec 12 14:15:02 CET 2002 - coolo@suse.de
+
+- use libndbm instead of libgdbm for non-GNU dbm
+
+-------------------------------------------------------------------
+Wed Nov 20 19:55:15 CET 2002 - schwab@suse.de
+
+- More autoconf fixes.
+
+-------------------------------------------------------------------
+Tue Sep 17 18:47:59 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Aug 19 21:35:05 CEST 2002 - mfabian@suse.de
+
+- quick and dirty fix to make it build again. 
+  The Makefile in the 'locale' package lists 3 .elc files with
+  the same name in different subdirectories. 'make install'
+  tries to copy them all into the same destination directory:
+  cp -af {ja,ro,fr}/locale-start.elc \
+      /usr/share/xemacs/mule-packages/lisp/locale/
+  The 'cp' from latest fileutils cowardly refuses to overwrite
+  the Japanese and Romanian versions of locale-start.elc with
+  the French version, as it did until now.
+  But the files in /usr/share/xemacs/mule-packages/lisp/locale/
+  are apparently never read anyway, only the files from
+  /usr/share/xemacs/mule-packages/etc/start-files/{ja,ro,fr}/
+  are read. Therefore I fixed this temporarily by not building
+  any locale-start.elc files which prevents installing anything
+  into /usr/share/xemacs/mule-packages/lisp/locale/.
+- use the correct encoding for the output of
+   'LC_ALL=ja_JP.eucJP xemacs --help',
+   'LC_ALL=ja_JP.UTF-8 xemacs --help', and
+   'LC_ALL=ja_JP.SJIS xemacs --help'.
+- similar problem with 'cp' fixed in mule-ucs package
+
+-------------------------------------------------------------------
+Fri Aug 16 21:55:16 CEST 2002 - mfabian@suse.de
+
+- add packages-cvs-xemacs-sumo-2002-05-22-gnus-5.8.8-utf-8.patch
+  to make it possible to send Mails in UTF-8 with Gnus 5.8.8.
+
+-------------------------------------------------------------------
+Sun Aug 11 21:02:05 CEST 2002 - mfabian@suse.de
+
+- change # neededforbuild:
+  cannadev -> canna canna-devel canna-libs
+
+-------------------------------------------------------------------
+Mon Jul 22 21:07:36 CEST 2002 - werner@suse.de
+
+- diff-mode: check on hunk even if file diff starts (bug #17035)
+
+-------------------------------------------------------------------
+Mon Jul 22 16:15:30 CEST 2002 - werner@suse.de
+
+- Fix path expansion in apel/install.el of sumo tar ball
+- Enable RPM_OPT_FLAGS for SuSE Linux version > 8.0
+
+-------------------------------------------------------------------
+Fri Jul  5 10:56:36 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Mon Jun 10 14:11:37 CEST 2002 - mfabian@suse.de
+
+- small improvement in ps-mule.el patch:
+  keep hanglm24.bdf as a fallback if gulim24.bdf doesn't exist.
+
+-------------------------------------------------------------------
+Wed May 29 16:00:32 CEST 2002 - mfabian@suse.de
+
+- update to 21.4.8 + sumo-2002-05-22
+- remove lib64.patch, xemacs-21.4.4-printer.el.patch,
+  xemacs-21.4.4-moduledir.patch,
+  packages-cvs-xemacs-sumo-2002-03-29-xslide.patch, and
+  packages-cvs-xemacs-sumo-2002-03-29-liece.patch
+  (included upstream)
+- add UTF-8 versions of translated app-defaults
+- add *fontSet definitions including iso10646-1 fonts to all
+  app-defaults.
+- add default app-defaults file
+  /usr/X11R6/lib/X11/app-defaults/XEmacs to get the same *fontSet
+  settings when starting XEmacs in an UTF-8 locale which has no
+  translated app-defaults file (e.g. en_US.UTF-8).
+- generate the file lists for the .el and .elc files automatically
+  in the .spec file
+
+-------------------------------------------------------------------
+Mon May  6 23:21:20 CEST 2002 - schwab@suse.de
+
+- Readd ia64 patch, suitably adapted.
+- Fix lib64 configuration.
+
+-------------------------------------------------------------------
+Thu May  2 17:29:48 CEST 2002 - mfabian@suse.de
+
+- fix printing with when (setq ps-multibyte-buffer 'bdf-font)
+  is used
+
+-------------------------------------------------------------------
+Thu Apr 25 11:52:58 CEST 2002 - mfabian@suse.de
+
+- update to 21.4.6 + sumo-2002-03-29
+- the update broke the build on ppc and axp, fix it. 
+- Provides += mule-ucs-xemacs Mule-UCS-xemacs,
+  Obsoletes += mule-ucs-xemacs Mule-UCS-xemacs
+  (Mule-UCS 0.84 is already part of the sumos now).
+- remove packages-cvs-xemacs-sumo-2001-07-09-ia64.patch, patched
+  file doesn't exist anymore.
+- add packages-cvs-xemacs-sumo-2002-03-29-liece.patch and
+  packages-cvs-xemacs-sumo-2002-03-29-xslide.patch to fix build
+  problems in packages.
+- add packages-cvs-xemacs-sumo-2002-03-29-ps-print.patch (some
+  fixes for CJK printing and printing with bdf fonts)
+- fix file list: some new lisp packages have been added, some
+  old ones were removed and there were some mistakes in the file
+  list as well.
+
+-------------------------------------------------------------------
+Tue Apr 23 09:44:23 CEST 2002 - aj@suse.de
+
+- Enable building on architectures with lib64.
+- Fix compiler flags for x86.
+
+-------------------------------------------------------------------
+Thu Apr  4 15:54:34 CEST 2002 - schwab@suse.de
+
+- Fix missing quotes in configure script.
+
+-------------------------------------------------------------------
+Fri Mar  8 13:16:23 CET 2002 - kukuk@suse.de
+
+- Fix file list
+
+-------------------------------------------------------------------
+Fri Feb 22 16:12:35 CET 2002 - werner@suse.de
+
+- Fix bug #13340: use correct lisp macro name of mouse wheel
+  screen scrolling.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Oct 25 18:54:40 CEST 2001 - mfabian@suse.de
+
+- remove "/site-packages/lisp/term/" directory from load-path
+- add --moduledir configure option
+- add workaround to avoid dumping the paths to lisp files 
+  as /usr/src/packages/BUILD/... into the xemacs executable
+- add pattch for big-menubar.el (thanks to <schwab@suse.de>)
+
+-------------------------------------------------------------------
+Thu Oct 18 21:35:51 CEST 2001 - mfabian@suse.de
+
+- fix printer.el to make 'generic-print-region' work again
+  under Linux like operating systems 
+
+-------------------------------------------------------------------
+Fri Sep 21 12:25:33 CEST 2001 - mfabian@suse.de
+
+- fix font-menu.el to make changing fonts with the menu
+  possible again.
+
+-------------------------------------------------------------------
+Mon Sep 10 13:09:32 CEST 2001 - aj@suse.de
+
+- Remove extra space in LDFLAGS to allow building on PowerPC and
+  alpha.
+
+-------------------------------------------------------------------
+Wed Sep  5 15:04:05 CEST 2001 - werner@suse.de
+
+- FHS: /var/state/xemacs -> /var/lib/xemacs (bug #8678)
+
+-------------------------------------------------------------------
+Mon Sep  3 09:19:41 CEST 2001 - aj@suse.de
+
+- Don't sort relocation entries, otherwise dumping breaks.
+
+-------------------------------------------------------------------
+Mon Jul  2 18:30:27 CEST 2001 - mfabian@suse.de
+
+- update to 21.4.4
+- remove redisplay patch (included upstream)
+- remove xemacs-sumo-2000-09-04-jde.patch (jde doesn't exist
+  anymore in the current sumos)
+- remove xemacs-sumo-2000-09-04-mc.patch (included upstream)
+- remove xemacs-db3.patch (included upstream)
+- rebuild XEmacs packages from the CVS tree instead of using
+  the sumo tarballs. This enables us to easily apply patches
+  and rebuild all .elc files, which is difficult with the sumos
+- remove xemacs-sumo-2000-01-24-vm.patch,
+         xemacs-sumo-2000-09-04-ilisp.patch
+  (was only needed to fix problems in rebuilding the .elc files,
+  not necessary anymore when rebuilding the .elc from CVS).
+- move xemacs-sumo-2000-09-04-ispell.patch into
+  packages-cvs-xemacs-sumo-2001-07-09.patch
+- removed xemacs-ia64.dif (not needed anymore)
+- add gpp libgpp to "# neededforbuild" (the packages contain C++
+  sources)
+- remove "xemacs-21.4.4-info.tar.bz2" to save some space in the
+  source rpm (All these info files can be rebuild from the texinfo
+  sources in the main source tar ball "xemacs-21.4.4.tar.bz2")
+
+-------------------------------------------------------------------
+Thu Jun  7 22:21:00 CEST 2001 - werner@suse.de
+
+- A long way: Fix trouble with new autoconf
+
+-------------------------------------------------------------------
+Thu Jun  7 16:20:07 CEST 2001 - werner@suse.de
+
+- Make autoconf work again
+
+-------------------------------------------------------------------
+Mon May 14 17:06:19 CEST 2001 - werner@suse.de
+
+- Add mail crypt patch (bug#8300)
+
+-------------------------------------------------------------------
+Tue May  8 19:45:00 CEST 2001 - werner@suse.de
+
+- Move [(shift home)] and [(shift end)] to [(control home)] and
+  [(control end)] to be more common with WIN XY.
+- Move func-keys load from window-setup-hook to init function of
+  xfree of xemacs.
+
+-------------------------------------------------------------------
+Thu May  3 15:19:58 CEST 2001 - werner@suse.de
+
+- Fix typo in crypt.el (bug#7525)
+
+-------------------------------------------------------------------
+Fri Apr  6 16:51:56 CEST 2001 - mfabian@suse.de
+
+- commented out 'ascii-character property changes for 'delete
+  and 'backspace in func-keys.el, because this causes problems
+  when using the XEmacs <-> Canna interface (Backspace didn't
+  cancel the henkan anymore)
+
+-------------------------------------------------------------------
+Sun Apr  1 16:35:21 CEST 2001 - schwab@suse.de
+
+- Fix ia64 support.
+- Add support for Berkeley DB3 from CVS.
+
+-------------------------------------------------------------------
+Fri Mar 30 17:46:19 CEST 2001 - werner@suse.de
+
+- Keybinding
+  Change [(home)] from beginning-of-buffer to beginning-of-line
+  Change [(end)] from end-of-buffer to end-of-line
+  Add [(shift home)] for beginning-of-buffer
+  Add [(shift end)]  for end-of-buffer
+- Basic wheel mouse support
+
+-------------------------------------------------------------------
+Thu Mar 15 14:48:34 CET 2001 - ro@suse.de
+
+- changed neededforbuild for openldap2 
+
+-------------------------------------------------------------------
+Thu Mar 15 01:08:35 CET 2001 - ro@suse.de
+
+- fixed neededforbuild for openldap
+
+-------------------------------------------------------------------
+Mon Feb  5 17:23:59 CET 2001 - werner@suse.de
+
+- Add LDAP on configuration
+
+-------------------------------------------------------------------
+Mon Feb  5 17:15:55 CET 2001 - werner@suse.de
+
+- Security update to 21.1.14
+
+-------------------------------------------------------------------
+Mon Jan 22 02:20:38 CET 2001 - mfabian@suse.de
+
+- installed pcl-cvs package as well (it was disabled due to
+  problems with this packages, but it seems to work fine now,
+  so it can be enabled again).
+
+-------------------------------------------------------------------
+Tue Nov 21 18:50:47 CET 2000 - werner@suse.de
+
+- Remove swapping of kp-separator/kp-decimal because it's
+  done in xkbd map for german keyboards
+
+-------------------------------------------------------------------
+Tue Nov 21 15:14:27 CET 2000 - werner@suse.de
+
+- Move package names
+  * from xe_exec to xemacs
+  * from xe_lisp to xemacs-el
+  * from xe_info to xemacs-info
+- Add kvt.el and gnome.el for the terminal kvt and gnome-terminal
+- Make ispell.el compatible ispell-emacs-menu.el
+
+-------------------------------------------------------------------
+Fri Nov 17 20:06:08 CET 2000 - mfabian@suse.de
+
+- Build with support for FreeWnn.
+- added redisplay patch important for Japanese 
+  (see http://www.xemacs.org/list-archives/xemacs-beta/199912/msg00376.html)
+
+-------------------------------------------------------------------
+Tue Oct 24 12:16:54 CEST 2000 - werner@suse.de
+
+- Replace `@AUCDIR' kludge from lisp/auctex/tex-site.el by the
+  location of the auctex data directory (etc/auctex/).
+- Use a more generally printer setup for auctex.
+
+-------------------------------------------------------------------
+Mon Oct 23 14:20:27 CEST 2000 - aj@suse.de
+
+- Build with X-Face support.
+
+-------------------------------------------------------------------
+Sun Sep 17 19:12:52 CEST 2000 - schwab@suse.de
+
+- Add support for ia64.
+- Fix typo in configure.in.
+
+-------------------------------------------------------------------
+Fri Sep 15 16:08:21 CEST 2000 - werner@suse.de
+
+- Dump cl-macs into xemacs to avoid nasty loading messages
+- Fix byte compiling of jde, mew, and ilisp packages
+
+-------------------------------------------------------------------
+Fri Sep  8 20:15:28 CEST 2000 - werner@suse.de
+
+- Correct file list
+- make tar's bzip2ed
+- add xterm Ctrl+cursor keys
+- move dif from 2.1.10 to 2.1.12
+
+-------------------------------------------------------------------
+Thu Sep  7 13:03:08 CEST 2000 - aj@suse.de
+
+- Update to XEmacs 21.1.12 and Sumo packages from 2000-09-04.
+
+-------------------------------------------------------------------
+Thu Jul 13 11:57:39 CEST 2000 - mfabian@suse.de
+
+- cannadev is needed for build to get Canna support compiled in.
+- added support for international menubars.
+  
+-------------------------------------------------------------------
+Thu Jun 29 13:19:11 CEST 2000 - werner@suse.de
+
+- remove circular dependency between xe_exec and xe_info
+
+-------------------------------------------------------------------
+Mon May 29 19:09:37 CEST 2000 - aj@suse.de
+
+- Update to XEmacs 21.1.10 and  current packages (except pcl-cvs 
+  which has some problems)
+
+-------------------------------------------------------------------
+Wed Apr  5 19:36:21 MEST 2000 - bk@suse.de
+
+- needs automake for update config.{sub,guess} macro
+
+-------------------------------------------------------------------
+Tue Apr  4 12:27:08 CEST 2000 - bk@suse.de
+
+- s390 team added support for s390
+
+-------------------------------------------------------------------
+Thu Feb 17 16:03:35 CET 2000 - aj@suse.de
+
+- Added Y2k patch for vc, fixed scaled font handling.
+
+-------------------------------------------------------------------
+Mon Feb  7 17:40:49 CET 2000 - kasal@suse.de
+
+- app-defaults files should be %config
+
+-------------------------------------------------------------------
+Thu Jan 27 16:31:07 CET 2000 - ro@suse.de
+
+- specfile: re-done %setup section for new tar
+
+-------------------------------------------------------------------
+Tue Jan 25 18:33:39 CET 2000 - werner@suse.de
+
+	- New version 21.1.8
+	- New tarballs 2000-01-24
+	- New fix for vm package
+	- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Fri Jan 14 17:05:22 CET 2000 - werner@suse.de
+
+	- Fix vm package: macros arn't autoloadable by xemacs 21.x
+
+-------------------------------------------------------------------
+Wed Dec 22 18:39:06 CET 1999 - werner@suse.de
+
+	- Uh: install and pack some missed scripts
+
+-------------------------------------------------------------------
+Wed Dec  1 17:02:14 CET 1999 - werner@suse.de
+
+	- Fix pty handling: use glibc extension
+
+-------------------------------------------------------------------
+Thu Nov 11 18:35:59 CET 1999 - werner@suse.de
+
+	- Fix the site-package extension
+	  * ispell menus
+	  * xterm/console key mappings
+	- Fix font menu: set `ignore scaled fonts' to nil
+
+-------------------------------------------------------------------
+Fri Nov  5 23:43:43 CET 1999 - werner@suse.de
+
+	- Change file list of xe_info and xe_lisp
+
+-------------------------------------------------------------------
+Thu Nov  4 18:01:32 CET 1999 - werner@suse.de
+
+	- Remove libgif from required packages
+
+-------------------------------------------------------------------
+Sat Oct 30 12:06:55 CEST 1999 - ro@suse.de
+
+- modified filelist for nonx86 
+- removed libz from neededforbuild: it's default
+
+-------------------------------------------------------------------
+Fri Oct 29 17:22:56 CEST 1999 - werner@suse.de
+
+	- Remove `with system malloc' because the last patch seems
+	  to help. Without system malloc we see more speed
+
+-------------------------------------------------------------------
+Thu Oct 28 19:00:09 CEST 1999 - werner@suse.de
+
+	- Add patch for glibc and __malloc_hook
+
+-------------------------------------------------------------------
+Tue Oct 26 17:32:59 CEST 1999 - werner@suse.de
+
+	- New glibc requires `with system malloc'
+
+-------------------------------------------------------------------
+Wed Oct 20 23:56:32 CEST 1999 - werner@suse.de
+
+	- Last checks
+
+-------------------------------------------------------------------
+Wed Oct 20 22:01:53 CEST 1999 - werner@suse.de
+
+	- New version 21.1.7
+	  * avoid locale problems due to lisp formats of time e.g.
+	- Use xemacs-mule-sumo-1999-05-27.tar.gz to avoid trouble
+	  with not synched mule versions of xemacs and mule-sumo
+	- Use xemacs-sumo-1999-07-29.tar.gz
+	  * Many bug fixes due to missed load statements and
+	    minor version comparision: (19.)13 > (21.)1
+	- Add the already used bug fixes and changes
+	  * security
+	  * ispell menu
+	  * dinbrief.el for auctex
+	  * ...
+	- Store xemacs in /usr/share/xemacs/<version>/
+	  and /usr/<lib>/xemacs/<version>/
+	- Move info to /usr/share/xemacs/info/
+	- Enable site-lisp and move it to /usr/share/xemacs/site-lisp/
+	- Make configured in paths work
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 13 20:41:44 CEST 1999 - werner@suse.de 
+
+	- fix locale handling of xemacs
+	  * overwrite LC_NUMERIC, LC_TIME, and LC_MESSAGES to
+	    "C" to get something what can xemacs can handle
+	- fix dinbrief.el
+
+-------------------------------------------------------------------
+Mon Apr  5 14:26:29 MEST 1999 - bs@suse.de
+
+	- fixed date strings in .changes.
+
+-------------------------------------------------------------------
+Mon Mar  8 21:37:20 MET 1999 - werner@suse.de 
+
+	- Remove site-lisp/ispell.el* to use the dynamic
+	  rebuild of the Spell menu of the ispell package
+	- Create a site-start.el to do that
+
+-------------------------------------------------------------------
+Thu Nov 12 15:15:48 MET 1998 - bs@suse.de
+
+- fixed spec file for new rpm.
+
+----------------------------------------------------------------------------
+Tue Nov  3 21:40:59 MET 1998 - werner@suse.de
+	- Change names of languages and encoding style in ispell
+	  from `language    (encod)' to `language-encod'
+----------------------------------------------------------------------------
+Tue Jul 28 23:10:38 MEST 1998 - werner@suse.de
+	- Do not use system malloc ... some parts of xemacs arn't
+	  smart enough for that.
+	- Disable const
+----------------------------------------------------------------------------
+Mon Jul 27 14:42:02 MET DST 1998 - werner@suse.de
+	- Use redhat patch for alpha ... means make it work for all
+	  arch's. This because I do not want use ordinary linkage which
+	  may causes the troubles seen with xemacs and shared libs.
+----------------------------------------------------------------------------
+Mon Jul 20 17:01:06 MET DST 1998 - werner@suse.de
+	- use mktemp if avaliable
+----------------------------------------------------------------------------
+Fri Jul 10 12:15:02 MEST 1998 - werner@suse.de
+	- Check all script in lib-src against tmp exploits
+	- Fix pstogif (exploit and uninitialized variables)
+	- Add disp-table to site-load
+----------------------------------------------------------------------------
+Thu Jul  9 12:57:56 MET DST 1998 - werner@suse.de
+	- Add american to the (i)spell menu
+	- Use -fno-force-mem (egcs-bug)
+	- Use -rpath-link /usr/X11R6/lib
+	- Avoid multiple common
+	- Remove and set some CONST
+----------------------------------------------------------------------------
+Wed May 27 23:20:41 MET DST 1998 - werner@suse.de
+	- Use Xaw3d instead of Xaw to avoid trouble with xaw3dd
+	- Change pop service "pop" to "pop3"
+----------------------------------------------------------------------------
+Tue Mar  3 19:30:34 MET 1998 - werner@suse.de
+	- New version 20.4
+	- Same changes done for 20.3 (hacked ispell.el for our new ditcs)
+	- Fix the change doe for viper-ex.el
+	- Remove ctags (own package), send-pr and install-sid (gnats)
+	  out of /usr/X11R6/bin/
+----------------------------------------------------------------------------
+Wed Feb 11 17:04:07 MET 1998 - werner@suse.de
+	- New version 20.3
+	  * Dead keys seems to work
+	  * Now BS and DEL are distinct
+	- Some changes, e.g. hacked ispell.el for our new ditcs
+----------------------------------------------------------------------------
+Thu Nov  6 20:16:15 MET 1997 - werner@suse.de
+	- New version 20.2
+	- Add XFree86 deadlock keys to x-compose.el and x-iso8859-1.el
+	- Some changes
+----------------------------------------------------------------------------
+Fri Jul 18 13:12:55 MET DST 1997 - werner@suse.de
+	- New patchlevel 19.15pl7
+	- Remove one change of a patch to save choosen fonts in
+	  `save options'
+	- Add deadlock keys to x-compose.el and x-iso8859-1.el
+----------------------------------------------------------------------------
+Sun May 25 22:47:16 MET DST 1997 - werner@suse.de
+	- New version: 19.15
+	- some changes in keycode under TERM=xterm (term/xterm.el)
+	- info goes to /usr/X11R6/lib/xemacs/info/
+----------------------------------------------------------------------------
+Tue Feb  4 20:32:54 MET 1997 - werner@suse.de
+	- Aufraeumen von term/linux.el und term/xterm.el:
+	  Statt setzten von delete/backspace wird nun
+	  delbackspace.el verwendet.
+	- Fix in einer Info-Seite
+----------------------------------------------------------------------------
+Wed Aug 28 00:00:00 MET 1996 - werner@suse.de
+        - Neue Version von Xemacs: 19.14
+        - Anpassungen  an TERM=linux, TERM=xterm
+        - Delete loescht Zeichen unter dem Cursor
+

@@ -1,0 +1,390 @@
+Index: axis-1_4/src/org/apache/axis/SOAPPart.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/SOAPPart.java
++++ axis-1_4/src/org/apache/axis/SOAPPart.java
+@@ -46,6 +46,8 @@ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ import org.w3c.dom.ProcessingInstruction;
+ import org.w3c.dom.Text;
++import org.w3c.dom.DOMConfiguration;
++import org.w3c.dom.UserDataHandler;
+ import org.xml.sax.InputSource;
+ import org.xml.sax.SAXException;
+ 
+@@ -101,6 +103,108 @@ public class SOAPPart extends javax.xml.
+     public static final int FORM_OPTIMIZED    = 7;
+     private int currentForm;
+ 
++
++    // start dom3 implementations
++    // Document functions:
++
++    public String getDocumentURI() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public DOMConfiguration getDomConfig() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getInputEncoding() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getXmlEncoding() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean getXmlStandalone() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getXmlVersion() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void normalizeDocument() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Node renameNode(Node foo1, String foo2, String foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setDocumentURI(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setXmlStandalone(boolean foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setXmlVersion(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    // Node functions
++    public short compareDocumentPosition(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getBaseURI() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getFeature(String foo1, String foo2) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getTextContent() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getUserData(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isDefaultNamespace(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isEqualNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isSameNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupNamespaceURI(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupPrefix(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setTextContent(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object setUserData(String foo1, Object foo2, UserDataHandler foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    // end dom3 implementations
++
++
++
++
+     /**
+      * property used to set SOAPEnvelope as default form
+      */
+Index: axis-1_4/src/org/apache/axis/message/SOAPDocumentImpl.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/message/SOAPDocumentImpl.java
++++ axis-1_4/src/org/apache/axis/message/SOAPDocumentImpl.java
+@@ -36,6 +36,8 @@ import org.w3c.dom.NamedNodeMap;
+ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ import org.w3c.dom.ProcessingInstruction;
++import org.w3c.dom.UserDataHandler;
++import org.w3c.dom.DOMConfiguration;
+ 
+ import javax.xml.parsers.ParserConfigurationException;
+ import javax.xml.soap.SOAPException;
+@@ -56,6 +58,118 @@ import javax.xml.soap.SOAPException;
+ public class SOAPDocumentImpl
+ implements org.w3c.dom.Document, java.io.Serializable {
+ 
++
++// missing dom3 implementations:
++// Document
++    public Node adoptNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getDocumentURI() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public DOMConfiguration getDomConfig() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getInputEncoding() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean getStrictErrorChecking() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getXmlEncoding() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean getXmlStandalone() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getXmlVersion() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  normalizeDocument() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Node renameNode(Node foo1, String foo2, String foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  setDocumentURI(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  setStrictErrorChecking(boolean foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  setXmlStandalone(boolean foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  setXmlVersion(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++
++// Node
++    public short compareDocumentPosition(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getBaseURI() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getFeature(String foo1, String foo2) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getTextContent() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getUserData(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isDefaultNamespace(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isEqualNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isSameNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupNamespaceURI(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupPrefix(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void  setTextContent(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object setUserData(String foo1, Object foo2, UserDataHandler foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++// missing dom3 implementations:
++
++
+     // Depending on the user's parser preference
+     protected Document delegate = null;
+     protected SOAPPart soapPart = null;
+Index: axis-1_4/src/org/apache/axis/message/MessageElement.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/message/MessageElement.java
++++ axis-1_4/src/org/apache/axis/message/MessageElement.java
+@@ -41,6 +41,7 @@ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ import org.w3c.dom.Text;
+ import org.w3c.dom.NamedNodeMap;
++import org.w3c.dom.TypeInfo;
+ import org.xml.sax.Attributes;
+ import org.xml.sax.ContentHandler;
+ import org.xml.sax.InputSource;
+@@ -75,6 +76,23 @@ public class MessageElement extends Node
+         org.w3c.dom.NodeList,  // ADD Nodelist Interfaces for SAAJ 1.2
+         Cloneable
+ {
++    public void setIdAttribute(String foo1, boolean foo2) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setIdAttributeNS(String foo1, String foo2, boolean foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setIdAttributeNode(Attr foo1, boolean foo2) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public TypeInfo getSchemaTypeInfo() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++
+     protected static Log log =
+         LogFactory.getLog(MessageElement.class.getName());
+ 
+Index: axis-1_4/src/org/apache/axis/message/NodeImpl.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/message/NodeImpl.java
++++ axis-1_4/src/org/apache/axis/message/NodeImpl.java
+@@ -30,6 +30,7 @@ import org.w3c.dom.NamedNodeMap;
+ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ import org.w3c.dom.Text;
++import org.w3c.dom.UserDataHandler;
+ import org.xml.sax.Attributes;
+ import org.xml.sax.helpers.AttributesImpl;
+ 
+@@ -63,6 +64,56 @@ public class NodeImpl implements org.w3c
+     protected boolean   _isDirty = false;
+     private static final String NULL_URI_NAME = "intentionalNullURI";
+ 
++    public short compareDocumentPosition(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getBaseURI() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getFeature(String foo, String foo2) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String getTextContent() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object getUserData(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isDefaultNamespace(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isEqualNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public boolean isSameNode(Node foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupNamespaceURI(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public String lookupPrefix(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public void setTextContent(String foo) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    public Object setUserData(String foo, Object foo2, UserDataHandler foo3) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++
++
+     /**
+      * empty constructor
+      */
+Index: axis-1_4/src/org/apache/axis/message/Text.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/message/Text.java
++++ axis-1_4/src/org/apache/axis/message/Text.java
+@@ -29,6 +29,26 @@ import org.w3c.dom.DOMException;
+  */
+ public class Text extends NodeImpl implements javax.xml.soap.Text {
+ 
++    public boolean isElementContentWhitespace() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++    
++   
++  
++
++    public String getWholeText() {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++
++    public org.w3c.dom.Text replaceWholeText(String content) {
++      throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "dom3 not yet implemented ... function not supported");
++    }
++
++
++
++
+     public Text(org.w3c.dom.CharacterData data) {
+         if ( data == null )
+         {

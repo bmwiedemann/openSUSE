@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Fri Apr  3 07:18:23 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+
+-------------------------------------------------------------------
+Sat Mar  2 08:12:07 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec 14 14:38:05 UTC 2011 - coolo@suse.com
+
+- as spdx.org has no concept of firmware, we decided to mark it as
+  SUSE-Firmware
+
+-------------------------------------------------------------------
+Sat Sep 17 13:31:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Aug 27 18:28:16 CEST 2009 - lrupp@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Mar 16 15:18:41 CET 2007 - jg@suse.de
+
+- removed /lib/firmware from filelist
+
+-------------------------------------------------------------------
+Wed Mar  8 00:00:20 CET 2006 - agruen@suse.de
+
+- Add modalias tags (155357).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:08:17 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Fri Aug 19 16:58:47 CEST 2005 - ro@suse.de
+
+- removed hotplug from nfb 
+
+-------------------------------------------------------------------
+Thu Aug 11 15:23:30 CEST 2005 - jg@suse.de
+
+- update to version 1.3
+- removed obsolete cardmgr reload
+- made package noarch as atmel_fw tool is a perl script now
+
+-------------------------------------------------------------------
+Mon Feb 28 11:29:07 CET 2005 - jg@suse.de
+
+- exiting postinstall script cleanly even when cardmgr died
+  (bug 66787)
+
+-------------------------------------------------------------------
+Thu Jan 13 13:06:50 CET 2005 - jg@suse.de
+
+- update to version 1.1
+- moved firmware binaries from /usr/lib/hotplug/firmware to
+  /lib/firmware
+
+-------------------------------------------------------------------
+Mon May 24 19:41:37 CEST 2004 - jg@suse.de
+
+- Initial SuSE package
+

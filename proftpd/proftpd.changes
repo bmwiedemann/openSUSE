@@ -1,0 +1,615 @@
+-------------------------------------------------------------------
+Mon Jul  1 13:50:01 UTC 2019 - chris@computersalat.de
+
+- update changes file
+  * add missing info about bugzilla 1113041
+
+-------------------------------------------------------------------
+Tue Mar 26 11:35:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix the Factory build: select the appropriate OpenSSL version
+  to build with. (fix for boo#1113041)
+
+-------------------------------------------------------------------
+Wed Mar 20 18:46:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce hard dependency on systemd to only that which is
+  necessary for building and installation.
+- Modernize RPM macro use (%make_install, %tmpfiles_create).
+- Strip emphasis from description and trim other platform mentions.
+
+-------------------------------------------------------------------
+Wed Jul 11 08:05:29 UTC 2018 - chris@computersalat.de
+
+- update to 1.3.6
+  * Support for using Redis for caching, logging; see the doc/howto/Redis.html
+    documentation.
+  * Fixed mod_sql_postgres SSL support (Issue #415).
+  * Support building against LibreSSL instead of OpenSSL (Issue #361).
+  * Better support on AIX for login restraictions (Bug #4285).
+  * TimeoutLogin (and other timeouts) were not working properly for SFTP
+    connections (Bug#4299).
+  * Handling of the SIGILL and SIGINT signals, by the daemon process, now causes
+    the child processes to be terminated as well (Issue #461).
+  * RPM .spec file naming changed to conform to Fedora guidelines.
+  * Fix for "AllowChrootSymlinks off" checking each component for symlinks
+    (CVE-2017-7418).
+ -New Modules:
+  * mod_redis, mod_tls_redis, mod_wrap2_redis
+      With Redis now supported as a caching mechanism, similar to Memcache,
+      there are now Redis-using modules: mod_redis (for configuring the Redis
+      connection information), mod_tls_redis (for caching SSL sessions and
+      OCSP information using Redis), and mod_wrap2_redis (for using ACLs stored
+      in Redis).
+ -Changed Modules:
+  * mod_ban
+      The mod_ban module's BanCache directive can now use Redis-based caching;
+      see doc/contrib/mod_ban.html#BanCache.
+ -New Configuration Directives
+  * SQLPasswordArgon2, SQLPasswordScrypt
+      The key lengths for Argon2 and Scrypt-based passwords are now configurable
+      via these new directives; previously, the key length had been hardcoded
+      to be 32 bytes, which is not interoperable with all other implementations
+      (Issue #454).
+ -Changed Configuration Directives
+  * AllowChrootSymlinks
+      When "AllowChrootSymlinks off" was used, only the last portion of the
+      DefaultRoot path would be checked to see if it was a symlink.  Now,
+      each component of the DefaultRoot path will be checked to see if it is
+      a symlink when "AllowChrootSymlinks off" is used.
+  * Include
+      The Include directive can now be used within a <Limit> section, e.g.:
+        <Limit LOGIN>
+          Include /path/to/allowed.txt
+          DenyAll
+        </Limit>
+ -API Changes
+  * A new JSON API has been added, for use by third-party modules. 
+- remove obsolete proftpd_include-in-limit-section.patch
+- rebase patches
+  * proftpd-ftpasswd.patch
+  * proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
+Tue Jul 10 11:57:58 UTC 2018 - chris@computersalat.de
+
+- update to 1.3.5e
+  * Fixed SFTP issue with umac-64@openssh.com digest/MAC.
+  * Fixed regression with mod_sftp rekeying.
+  * Backported fix for "AllowChrootSymlinks off" checking each component
+    for symlinks (CVE-2017-7418).
+- remove obsolete patch
+  * proftpd-AllowChrootSymlinks.patch (now included)
+- rebase patches
+  * proftpd-dist.patch
+  * proftpd-no_BuildDate.patch
+  * proftpd_include-in-limit-section.patch
+
+-------------------------------------------------------------------
+Fri Jul 21 04:43:44 UTC 2017 - bwiedemann@suse.com
+
+- Sort SHARED_MODS list to fix build compare (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Jun 16 08:28:42 UTC 2017 - nmoudra@suse.com
+
+- Removed xinetd service
+
+-------------------------------------------------------------------
+Fri Apr  7 20:49:37 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1032443 (CVE-2017-7418)
+  * AllowChrootSymlinks not enforced by replacing a path component
+    with a symbolic link
+  * add upstream commit (ecff21e0d0e84f35c299ef91d7fda088e516d4ed)
+    as proftpd-AllowChrootSymlinks.patch
+- fix proftpd-tls.template
+  * reduce TLS protocols to TLSv1.1 and TLSv1.2
+  * disable TLSCACertificateFile
+  * add TLSCertificateChainFile
+
+-------------------------------------------------------------------
+Thu Mar 23 15:05:22 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic, there are no static libs.
+- Replace %__-type macro indirections.
+- Replace old $RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Mon Mar  6 22:32:07 UTC 2017 - chris@computersalat.de
+
+- fix and update proftpd-basic.conf.patch
+- add some sample config and templates for tls
+  * proftpd-tls.template
+  * proftpd-limit.conf
+  * proftpd-ssl.README
+
+-------------------------------------------------------------------
+Sun Feb  5 20:03:18 UTC 2017 - chris@computersalat.de
+
+- backport upstream feature
+  * include-in-limit-section (gh#410)
+  * add proftpd_include-in-limit-section.patch
+
+-------------------------------------------------------------------
+Tue Jan 17 19:53:55 UTC 2017 - chris@computersalat.de
+
+- update to 1.3.5d
+  * gh#4283 - All FTP logins treated as anonymous logins again.  This is a
+  regression of gh#3307.
+
+-------------------------------------------------------------------
+Sun Jan 15 21:01:43 UTC 2017 - chris@computersalat.de
+
+- update to 1.3.5c
+  * SSH rekey during authentication can cause issues with clients.
+  * Recursive SCP uploads of multiple directories not handled properly.
+  * LIST returns different results for file, depending on path syntax.
+  * "AuthAliasOnly on" in server config breaks anonymous logins.
+  * CapabilitiesEngine directive not honored for <IfUser>/<IfGroup>
+    sections.
+  * Support OpenSSL 1.1.x API.
+  * Memory leak when mod_facl is used.
+-rebase proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 22:42:48 UTC 2016 - chris@computersalat.de
+
+- fix systemd vs SysVinit
+
+-------------------------------------------------------------------
+Sun May  8 22:05:07 UTC 2016 - jengelh@inai.de
+
+- Remove redundant spec sections
+- Ensure systemd-tmpfiles is called for the provied config file
+
+-------------------------------------------------------------------
+Sun May  8 19:25:45 UTC 2016 - chris@computersalat.de
+
+- fix for boo#970890 (CVE-2016-3125)
+- update to 1.3.5b:
+  http://www.proftpd.org/docs/RELEASE_NOTES-1.3.5b
+  * SSH RSA hostkeys smaller than 2048 bits now work properly.
+  * MLSD response lines are now properly CRLF terminated.
+  * Fixed selection of DH groups from TLSDHParamFile.
+- rebase proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
+Sun May 31 18:54:45 UTC 2015 - chris@computersalat.de
+
+- fix for boo#927290 (CVE-2015-3306)
+- update to 1.3.5a:
+  See http://www.proftpd.org/docs/NEWS-1.3.5a
+- rebase patches
+  * proftpd-ftpasswd.patch
+  * proftpd-no_BuildDate.patch
+- remove gpg-offline dependency
+- fix permissions on passwd file
+  * unable to use world-readable AuthUserFile '.../passwd' (perms 0644):
+  * 0644 -> 0440
+
+-------------------------------------------------------------------
+Mon Sep  1 22:04:02 UTC 2014 - andreas.stieger@gmx.de
+
+- ProFTPD 1.3.5
+  * Added support for SHA-256, SHA-512 password hashes to the ftpasswd tool
+  * New Modules
+    mod_geoip, mod_log_forensic, mod_rlimit, mod_snmp, mod_dnsbl
+  * mod_sftp now supports ECC, ECDSA, ECDH
+  * Improved FIPS support in mod_sftp.
+  * mod_sftp module now honors the MaxStoreFileSize directive.
+  * Many new and changed configuration directives
+- update proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
+Mon Sep  1 19:00:57 UTC 2014 - andreas.stieger@gmx.de
+
+- proftpd 1.3.4e:
+  Multiple other backported fix from the 1.3.5 branch.
+  See http://www.proftpd.org/docs/NEWS-1.3.4e
+- The fix for the mod_sftp/mod_sftp_pam memory allocation 
+  (CVE-2013-4359) contained in this release was previously patched
+  into the package.
+- adjust proftpd-no_BuildDate.patch for context changes
+- remove proftpd-sftp-kbdint-max-responses-bug3973.patch, upstream
+
+-------------------------------------------------------------------
+Tue Mar 25 19:56:04 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove tcpd-devel from buildRequires and mod_wrap.
+  support for tcp_wrappers style /etc/hosts.* is provided
+  by mod_wrap2_file instead, the latter does not require tcpd.
+
+-------------------------------------------------------------------
+Mon Mar 17 18:38:53 UTC 2014 - chris@computersalat.de
+
+- fix for bnc#844183
+  * proftpd fails to start due to missing /run/proftpd
+- add own tmpfiles.d file 
+  * proftpd.tmpfile
+
+-------------------------------------------------------------------
+Thu Oct  3 20:48:44 UTC 2013 - chris@computersalat.de
+
+- update to 1.3.4d
+  * Fixed broken build when using --disable-ipv6 configure option
+  * Fixed mod_sql "SQLAuthType Backend" MySQL issues
+- fix for bnc#843444 (CVE-2013-4359)
+  * http://bugs.proftpd.org/show_bug.cgi?id=3973
+  * add proftpd-sftp-kbdint-max-responses-bug3973.patch
+
+-------------------------------------------------------------------
+Mon Jul 29 01:12:53 UTC 2013 - crrodriguez@opensuse.org
+
+- Improve systemd service file 
+- use upstream tmpfiles.d file. related to [bnc#811793]
+- Use /run instead of /var/run 
+
+-------------------------------------------------------------------
+Wed May  1 20:35:19 UTC 2013 - chris@computersalat.de
+
+- update to 1.3.4c
+  * Added Spanish translation.
+  * Fixed several mod_sftp issues, including SFTPPassPhraseProvider,
+    handling of symlinks for REALPATH requests, and response code logging.
+  * Fixed symlink race for creating directories when UserOwner is in effect.
+  * Increased performance of FTP directory listings.
+- rebase and rename patches (remove version string)
+  * proftpd-1.3.4a-dist.patch -> proftpd-dist.patch
+  * proftpd-1.3.4a-ftpasswd.patch -> proftpd-ftpasswd.patch
+  * proftpd-1.3.4a-strip.patch -> proftpd-strip.patch
+
+-------------------------------------------------------------------
+Fri Feb  8 00:19:19 UTC 2013 - chris@computersalat.de
+
+- fix proftpd.conf (rebase basic.conf patch)
+  * IdentLookups is now a seperate module
+    <IfModule mod_ident.c> IdentLookups on/off </IfModule>
+    is needed and module is not built cause crrodriguez disabled it.
+
+-------------------------------------------------------------------
+Thu Nov 29 19:03:00 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Fri Nov  2 15:15:25 UTC 2012 - chris@computersalat.de
+
+- fix for bnc#787884
+   (https://bugzilla.novell.com/show_bug.cgi?id=787884)
+  * added extra Source proftpd.conf.tmpfile
+
+-------------------------------------------------------------------
+Thu Aug 30 17:33:30 UTC 2012 - crrodriguez@opensuse.org
+
+- Disable ident lookups, this protocol is totally obsolete
+ and dangerous. (add --disable-ident)
+- Fix debug info generation ( add --disable-strip) 
+
+-------------------------------------------------------------------
+Wed Aug 29 21:51:49 UTC 2012 - crrodriguez@opensuse.org
+
+- Add systemd unit 
+
+-------------------------------------------------------------------
+Tue Aug 14 11:11:28 UTC 2012 - chris@computersalat.de
+
+- update to 1.3.4b
+  + Fixed mod_ldap segfault on login when LDAPUsers with no filters used.
+  + Fixed sporadic SFTP upload issues for large files.
+  + Fixed SSH2 handling for some clients (e.g. OpenVMS).
+  + New FactsOptions directive; see doc/modules/mod_facts.html#FactsOptions
+  + Fixed build errors on Tru64, AIX, Cygwin.
+- add Source Signatuire (.asc) file
+- add noBuildDate patch
+- add lang pkg
+  * --enable-nls
+- add configure option
+  * --enable-openssl, --with-lastlog
+
+-------------------------------------------------------------------
+Mon Dec 12 15:00:18 UTC 2011 - chris@computersalat.de
+
+- update to 1.3.4a
+  + Fixed mod_load/mod_wrap2 build issues.
+- 1.3.4
+  + New "NoEmptyFragments" TLSOption added; see the TLSOptions documentation
+    for details.
+  + Improved configure script for cross-compiling.
+  + Reworked the proftpd.spec RPM file
+  + Fixed mod_sql_mysql "Alarm clock" bug on FreeBSD.
+  + New "IgnoreSFTPSetTimes" SFTPOption added; see the SFTPOptions
+    documentation for details.
+  + Fixed response pool use-after-free issue.
+- for more info please see the RELEASE_NOTES file
+- reworked patches
+  * now p0 patches
+
+-------------------------------------------------------------------
+Fri Nov 18 14:56:41 UTC 2011 - chris@computersalat.de
+
+- fix for bnc#731347
+  * no (hostname -s) in post section
+  * reworked basic conf patch
+
+-------------------------------------------------------------------
+Fri Nov 11 13:13:57 UTC 2011 - chris@computersalat.de
+
+- fix changelog
+  * RELEASE_NOTES-1.3.3g is lacking of important info
+- fix for CVE-2011-4130 (bnc#729830)
+  * https://bugzilla.novell.com/show_bug.cgi?id=729830
+    (upstream) http://bugs.proftpd.org/show_bug.cgi?id=3711
+  => fixed with version 1.3.3g
+
+-------------------------------------------------------------------
+Thu Nov 10 09:39:36 UTC 2011 - chris@computersalat.de
+
+- update to 1.3.3g
+  (http://www.proftpd.org/docs/RELEASE_NOTES-1.3.3g)
+  + New "NoEmptyFragments" TLSOption added; see the TLSOptions documentation
+    for details.
+  + Fixed mod_sql_mysql "Alarm clock" bug on FreeBSD.
+  (http://www.proftpd.org/docs/NEWS-1.3.3g)
+  - Bug 3702 - ProFTPD with mod_sql_mysql dies of "Alarm clock" on FreeBSD.
+  - Bug 3704 - Enable OpenSSL countermeasure against SSLv3/TLSv1 BEAST attacks.
+    To disable this countermeasure, which may cause interoperability issues
+    with some clients, use the NoEmptyFragments TLSOption.
+  - Bug 3711 - Response pool use-after-free memory corruption error.
+
+-------------------------------------------------------------------
+Tue Oct  4 22:03:10 UTC 2011 - chris@computersalat.de
+
+- update to 1.3.3f
+  + Fixes segfault if mod_sql_mysql and "SQLAuthenticate groupsetfast"
+    configuration used.
+  + Fixes mod_wrap syslog level (regression from Bug#3317).
+  + Fixes mod_ifsession segfault if regular expression patterns used in
+    a <VirtualHost> section.
+
+-------------------------------------------------------------------
+Fri Apr 29 11:18:55 UTC 2011 - chris@computersalat.de
+
+- push to Factory
+  o fix changelog (not in sequence)
+  o fix license (GPL -> GPLv2+)
+  o remove Author from description
+  o remove obsolete extra source proftpd.conf
+
+-------------------------------------------------------------------
+Fri Apr  8 22:08:55 UTC 2011 - chris@computersalat.de
+
+- update to 1.3.3e
+  + Display messages work properly again.
+  + Fixes plaintext command injection vulnerability in FTPS implementation
+    (i.e. mod_tls).  See http://bugs.proftpd.org/show_bug.cgi?id=3624 for
+    details.
+  + Fixes CVE-2011-1137 (badly formed SSH messages cause DoS).  See
+    http://bugs.proftpd.org/show_bug.cgi?id=3586 for details.
+  + Performance improvements, especially during server startup/restarts.
+
+-------------------------------------------------------------------
+Sun Jan 30 20:40:10 UTC 2011 - chris@computersalat.de
+
+- update to 1.3.3d
+  + Fixed sql_prepare_where() buffer overflow (Bug#3536)
+  + Fixed CPU spike when handling .ftpaccess files.
+  + Fixed handling of SFTP uploads when compression is used.
+
+-------------------------------------------------------------------
+Fri Oct 22 23:26:10 UTC 2010 - mseben@gmail.com
+
+- update to 1.3.3c
+  + Fixed Telnet IAC stack overflow vulnerability (ZDI-CAN-925)
+  + Fixed directory traversal bug in mod_site_misc
+  + Fixed SQLite authentications using "SQLAuthType Backend"
+
+-------------------------------------------------------------------
+Fri Oct 22 17:49:06 UTC 2010 - chris@computersalat.de
+
+- clenaup spec
+- fix doc pkg
+  o should not provide pkgconfig
+
+-------------------------------------------------------------------
+Fri Oct 15 14:13:43 UTC 2010 - chris@computersalat.de
+
+- update to 1.3.3b
+  + Fixed SFTP directory listing bug
+  + Avoid corrupting utmpx databases on FreeBSD
+  + Avoid null pointer dereferences during data transfers
+  + Fixed "AuthAliasOnly on" anonymous logins
+- rpmlint: no-pkg-config-provides
+  o add BuildReq pkg-config
+- removed changes from spec
+
+-------------------------------------------------------------------
+Wed Jul  7 14:17:45 UTC 2010 - chris@computersalat.de
+
+- update to 1.3.3a
+  + Added Japanese translation
+  + Many mod_sftp bugfixes
+  + Fixed SSL_shutdown() errors caused by OpenSSL 0.9.8m and later
+  + Fixed handling of utmp/utmpx format changes on FreeBSD
+- rpmlint: self-obsoletion
+
+-------------------------------------------------------------------
+Wed May  5 14:01:02 UTC 2010 - mseben@novell.com
+
+- fix build : dir-or-file-in-var-run badness : /var/run/proftpd dir 
+  is marked as ghost and it is created in init script now
+
+-------------------------------------------------------------------
+Fri Apr  9 15:44:32 UTC 2010 - mseben@novell.com
+
+- added ncurses-devel to buildrequires to fix ftptop message : "no 
+  curses or ncurses library on this system"
+
+-------------------------------------------------------------------
+Fri Feb 26 16:01:47 UTC 2010 - chris@computersalat.de
+
+- added info for "STABLE" versions only
+
+-------------------------------------------------------------------
+Thu Feb 25 00:14:20 UTC 2010 - chris@computersalat.de
+
+- update to 1.3.3
+    o Fixed mod_ban whitelisting using mod_ifsession.
+    o Fixed per-user/group/class "HideFiles none" configurations.
+  - 1.3.3rc4
+    o Fixed mod_tls compilation using OpenSSL installations older
+      than 0.9.7.
+    o Fixed mod_sftp compilation on AIX.
+    o Fixed RADIUS authentication on 64-bit platforms
+    o Fixed memory leak in SCP downloads.
+    o New configuration directives
+      SQLPasswordUserSalt
+        The SQLPasswordUserSalt directive can be used to configure
+        per-user salt data to be added to the encrypted password
+        for a user.  The salt can be the user name, or it can be
+        the result of a SQL query. More information can be found in
+        doc/contrib/mod_sql_passwd.html#SQLPasswordUserSalt.
+
+-------------------------------------------------------------------
+Wed Feb 10 16:10:32 CET 2010 - diego.ercolani@gmail.com
+
+- update to 1.3.3rc3
+- try to be compatible with osc :-) 
+
+-------------------------------------------------------------------
+Sun Dec 20 19:39:10 UTC 2009 - chris@computersalat.de
+
+- update to 1.3.2c
+  o Bug and regression fixes.
+- removed obsolete CVE patch
+
+-------------------------------------------------------------------
+Mon Oct 26 12:35:29 UTC 2009 - mseben@novell.com
+
+- fixed CVE-2009-3639 : mod_tls security issue (bnc#549740)
+
+-------------------------------------------------------------------
+Wed Sep 16 18:17:04 UTC 2009 - alexandre@exatati.com.br
+
+- Update tarball to its upstream version without
+  bzipped patch;
+- Removed blank spaces at enf of lines on spec file;
+- Replaced tab characters on spec file.
+
+-------------------------------------------------------------------
+Wed Sep 16 11:20:20 UTC 2009 - chris@computersalat.de
+
+- update to 1.3.2 (1.3.2a)
+  o many bugfixes, read ChangeLog or NEWS
+  o include 1.3.2a upstream patch
+  o removed old patches
+    * proftpd-1.3.1-umode_t.patch
+    * proftpd-1.3.1-O_CREAT.patch
+    * proftpd-1.3.1-libcap.patch
+    * proftpd-1.3.1-CVE-2009-0542.patch
+    * proftpd-1.3.1-CVE-2009-0543.patch
+  o reworked basic.conf.patch
+- spec mods
+  o removed ^#-----
+  o removed {rel}
+  o clean
+    * rm -rf RPM_BUILD_ROOT
+  o added sub sqlite
+- fixed deps
+  o BuildRequires:  sqlite3-devel unixODBC-devel
+- rpmlint
+  o description-shorter-than-summary
+  o source-or-patch-not-bzipped proftpd-1.3.2a.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 22:21:50 CEST 2009 - chris@computersalat.de
+
+- added proftpd.passwd
+  o it is an initial passwd for virtuser and
+    anonymous login works well with it :)
+
+-------------------------------------------------------------------
+Mon Jul  6 22:16:46 CEST 2009 - chris@computersalat.de
+
+- added ftpasswd.patch
+- rework of basic.conf patch
+- removed README.AIX
+
+-------------------------------------------------------------------
+Thu Apr 16 01:54:23 CEST 2009 - chris@computersalat.de
+
+- added basic.conf patch
+- added dist.patch
+  o fix for xinetd, logrotate, pam
+- some more subpackages
+  o ldap, mysql, pgsql, radius
+- added ftpasswd for simple virtuser support
+- added auth DIR /etc/proftpd/auth
+  o passwd for virtuser
+- added conf.d DIR /etc/proftpd/conf.d
+  o configs for inclusion 
+- added log DIR /var/log/proftpd
+- beautify init file
+- beautify spec file
+
+-------------------------------------------------------------------
+Wed Feb 18 10:40:55 CET 2009 - mseben@suse.cz
+
+- added proftpd.conf with uploads section
+
+-------------------------------------------------------------------
+Fri Feb 13 16:55:01 CET 2009 - mseben@suse.cz
+
+- fixed sql injection vulnerability which allows remote attackers 
+  to execute arbitrary SQL commands via a "%" character 
+  CVE-2009-0542.patch (bnc#475316)
+- fixed vulnerability which allows remote attackers to bypass SQL 
+  injection protection  mechanisms via invalid, encoded multibyte 
+  characters CVE-2009-0543.patch (bnc#475316)
+
+-------------------------------------------------------------------
+Mon Jan 26 14:19:45 CET 2009 - mseben@suse.cz
+
+- splitted HTML doc to proftpd-doc
+- added %post and %postun macro to spec
+
+-------------------------------------------------------------------
+Thu Jan 22 13:58:33 CET 2009 - mseben@suse.cz
+
+- fixed missing third argument in open function (*-O_CREAT.patch)
+- disabled striping libraries (*-no_strip.patch)
+- fixed configure script (*-umode_t.patch)
+- added -DLDAP_DEPRECATED to CFLAGS because of deprecated ldap_init
+  function
+- disabled contrib scripts for now
+- fixed handling _LINUX_CAPABILITY_VERSION on newer linux kernel.
+  (proftpd-*-libcap.patch)
+
+-------------------------------------------------------------------
+Wed Aug 20 12:43:56 CEST 2008 - mrueckert@suse.de
+
+- disabled debugging stuff for now
+
+-------------------------------------------------------------------
+Fri Oct 19 11:58:42 CEST 2007 - mrueckert@suse.de
+
+- enabled missing modules (mod_ban,mod_wrap2*,mod_quota_radius)
+  and replaced the hardcoded value for --with-shared with a
+  dynamically generated list
+
+-------------------------------------------------------------------
+Sat Oct  6 03:42:39 CEST 2007 - mrueckert@suse.de
+
+- update to 1.3.1:
+  Many bugfixes and new features like dynamic blacklisting of
+  clients, improved SQL handling, and quotas.
+- added --enable-devel=coredump,nodaemon,nofork
+- added devel subpackage for the headers
+
+-------------------------------------------------------------------
+Wed Nov 29 04:11:44 CET 2006 - mrueckert@suse.de
+
+- update to 1.3.0a:
+  fixes a remote code execution.  CVE-2006-5815
+  (http://bugs.proftpd.org/show_bug.cgi?id=2858)
+

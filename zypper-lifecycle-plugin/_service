@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/zypper-lifecycle</param>
+    <param name="scm">git</param>
+    <param name="extract">zypper-lifecycle-plugin.changes</param>
+    <param name="versionprefix">0.6</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+  </service>
+</services>

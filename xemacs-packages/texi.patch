@@ -1,0 +1,30 @@
+diff -ru packages.orig/xemacs-packages/tm/texi/tm-ja.texi packages/xemacs-packages/tm/texi/tm-ja.texi
+--- packages/xemacs-packages/tm/texi/tm-ja.texi	1998-06-15 07:54:30.000000000 +0200
++++ packages/xemacs-packages/tm/texi/tm-ja.texi	2005-02-15 11:21:45.000000000 +0100
+@@ -340,7 +340,7 @@
+ 
+ 台湾や香港で用いられている主に繁体字で表記される中国語を表現するための 
+ 図形文字集合(@ref{Graphic character set})。台湾の標準。現在、94×94
+-(@ref{94x94 character set}) の面が第１面から第７面まである。@refill
++(@ref{94x94-character set}) の面が第１面から第７面まである。@refill
+ 
+ ISO 2022 (@ref{ISO 2022}) での終端文字は
+ 
+@@ -1492,7 +1492,7 @@
+ めの方法をここでは @strong{PGP-kazu} と呼ぶことにする。@refill
+ 
+ PGP-kazu は @strong{application/pgp} という content-type
+-(@ref{content-type}) を定義する。@refill
++(@ref{Content-Type field}) を定義する。@refill
+ 
+ application/pgp の part では PGP の encapsulation (@ref{encapsulation}) 
+ が用いられる。PGP の encapsulation (cf. @ref{RFC 934})
+@@ -1546,7 +1546,7 @@
+ @subsection Quoted-Printable
+ 
+ RFC 2045 (@ref{RFC 2045}) で定義されている MIME (@ref{MIME}) における 
+-binary data (@ref{binary data}) の network での変換法の１つ。@refill
++binary data (@ref{binary}) の network での変換法の１つ。@refill
+ 
+ `=' や制御文字や 128 以上の文字などは `=AF' のように `=' の後に続く 16 
+ 進数で表現する。このため、ASCII (@ref{ASCII}) 文字中心の data では 

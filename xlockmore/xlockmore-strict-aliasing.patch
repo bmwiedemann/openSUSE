@@ -1,0 +1,13 @@
+Index: xlock/vroot.h
+===================================================================
+--- xlock/vroot.h.orig	2007-10-28 02:49:36.000000000 +0100
++++ xlock/vroot.h	2010-12-14 12:19:00.878842537 +0100
+@@ -108,7 +108,7 @@ VirtualRootWindowOfScreen(Screen * s)
+ 					 __SWM_VROOT, 0, 1, False, XA_WINDOW,
+ 						&actual_type, &actual_format,
+ 							&nitems, &bytesafter,
+-							(unsigned char **) &newRoot) == Success && newRoot) {
++							&newRoot) == Success && newRoot) {
+ 						root = *newRoot;
+ 						break;
+ 					}

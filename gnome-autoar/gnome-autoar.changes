@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Feb 26 10:36:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.2.3:
+  + Use proper extracted name for xz archives.
+  + Fix decompressing files with legacy encoding file names.
+- Run spec-cleaner, modernize spec, use autosetup and make_build
+  macros.
+
+-------------------------------------------------------------------
+Tue Mar 21 14:27:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Fix docx files and other format subtypes of zip to be
+    uncompressed.
+
+-------------------------------------------------------------------
+Fri Mar  3 11:06:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.2.1:
+  + Drop rar support since rar5 is not yet supported by libarchive.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:42:44 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.2.0:
+  + Generate vala bindings.
+  + Check encrypted entry after header is read.
+  + Fix extraction name case, e.j.'sample.odt' in 'sample.odt.zip'.
+  + Remove GSettings schema files.
+- Add pkgconfig(vapigen) BuildRequires: New dependency for vala
+  bindings.
+- Pass --enable-gtk to configure, ensure we build gtk3 widgets.
+- Drop gnome-autoar-schema subpackage and add gnome-autoar-schema
+  Obsoletes replacing previous Requires, following upstream
+  changes.
+
+-------------------------------------------------------------------
+Fri Sep  2 20:11:48 UTC 2016 - zaitor@opensuse.org
+
+- Updated to version 0.1.1:
+  + Fix library link issues for Evolution.
+  + Make decide destination signal synchronous for Evolution.
+  + Fix licence to LGPLv2.1+.
+
+-------------------------------------------------------------------
+Thu Sep  1 21:25:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.0:
+  + Bump required libarchive version.
+  + AutoarExtractor: signal error on encrypted archives.
+  + Add COPYING file.
+  + tests: Add missing linker flags.
+- Stop using sourceservice, tarball release now available.
+- Following the above: gnome-common BuildRequires and autogen.sh
+  call: We no longer need to bootstrap.
+
+-------------------------------------------------------------------
+Wed Aug 31 13:23:34 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, version 0+20160825.0fec26d (no tagged release
+  yet available in git).
+

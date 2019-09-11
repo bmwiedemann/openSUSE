@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Aug  2 10:59:50 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.0
+  * no upstream change log
+  * relicensed to BSD-3-Clause, se README.rst
+- added sources
+  https://github.com/snowballstem/snowball/issues/102
+  + COPYING
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:25 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun  1 21:02:52 UTC 2017 - dmueller@suse.com
+
+- update to 1.2.1:
+  * fix syntax error
+
+-------------------------------------------------------------------
+Wed Apr  5 05:35:38 UTC 2017 - tbechtold@suse.com
+
+- Fix python_module macro definition
+
+-------------------------------------------------------------------
+Mon Dec 19 18:40:51 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+
+-------------------------------------------------------------------
+Thu Apr 23 11:13:43 UTC 2015 - mcihar@suse.cz
+
+- Compatibility with SLE11
+
+-------------------------------------------------------------------
+Thu Apr  9 02:13:13 UTC 2015 - termim@gmail.com
+
+- copied from python3-snowballstemmer
+
+-------------------------------------------------------------------
+Sun Mar 15 23:08:42 UTC 2015 - arun@gmx.de
+
+- initial version
+

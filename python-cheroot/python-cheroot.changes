@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Jun  2 21:15:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue May 14 11:57:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.5.5 bsc#1142582:
+  - Sockets now collect statistics (bytes read and written) on
+    Python 3 same as Python 2.
+  - Ignore OpenSSL's 1.1+ Error 0 under any Python while wrapping
+    a socket.
+- Switch off failing tests to avoid gh#cherrypy/cheroot#200
+
+-------------------------------------------------------------------
+Tue Mar  5 12:26:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.5.4:
+  * too many changes to enumerate see CHANGES.rst
+- Make sure to execute testsuite
+
+-------------------------------------------------------------------
+Fri Mar 31 13:39:53 UTC 2017 - jmatejek@suse.com
+
+- initial commit

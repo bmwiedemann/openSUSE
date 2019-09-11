@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=I Have No Tomatoes
+GenericName=Bomberman
+Comment=How many tomatoes can you smash in ten short minutes?
+Type=Application
+Exec=tomatoes
+Icon=tomatoes
+Categories=Game;ArcadeGame;
+StartupNotify=false

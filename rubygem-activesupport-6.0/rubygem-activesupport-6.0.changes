@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sat Aug 17 20:53:57 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.0
+
+  *   Let `require_dependency` in `zeitwerk` mode look the autoload paths up for
+      better backwards compatibility.
+
+      *Xavier Noria*
+
+  *   Let `require_dependency` in `zeitwerk` mode support arguments that respond
+      to `to_path` for better backwards compatibility.
+
+      *Xavier Noria*
+
+  *   Make ActiveSupport::Logger Fiber-safe. Fixes #36752.
+
+      Use `Fiber.current.__id__` in `ActiveSupport::Logger#local_level=` in order
+      to make log level local to Ruby Fibers in addition to Threads.
+
+      Example:
+
+          logger = ActiveSupport::Logger.new(STDOUT)
+          logger.level = 1
+          p "Main is debug? #{logger.debug?}"
+
+          Fiber.new {
+            logger.local_level = 0
+            p "Thread is debug? #{logger.debug?}"
+          }.resume
+
+          p "Main is debug? #{logger.debug?}"
+
+      Before:
+
+          Main is debug? false
+          Thread is debug? true
+          Main is debug? true
+
+      After:
+
+          Main is debug? false
+          Thread is debug? true
+          Main is debug? false
+
+      *Alexander Varnin*
+
+  *   Do not delegate missing `marshal_dump` and `_dump` methods via the
+      `delegate_missing_to` extension. This avoids unintentionally adding instance
+      variables when calling `Marshal.dump(object)`, should the delegation target of
+      `object` be a method which would otherwise add them. Fixes #36522.
+
+      *Aaron Lipman*
+
+-------------------------------------------------------------------
+Mon Jul 22 21:35:13 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.0.rc2
+
+  *   `truncate` would return the original string if it was too short to be truncated
+      and a frozen string if it were long enough to be truncated. Now truncate will
+      consistently return an unfrozen string regardless. This behavior is consistent
+      with `gsub` and `strip`.
+
+      Before:
+
+          'foobar'.truncate(5).frozen?
+          # => true
+          'foobar'.truncate(6).frozen?
+          # => false
+
+      After:
+
+          'foobar'.truncate(5).frozen?
+          # => false
+          'foobar'.truncate(6).frozen?
+          # => false
+
+      *Jordan Thomas*
+
+-------------------------------------------------------------------
+Sun Jun 30 09:35:11 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- disable 'disable_docs' option temporarily until we get an updated
+  gem2rpm and ruby-common package in our devel project.
+
+-------------------------------------------------------------------
+Sat May  4 23:51:19 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 6.0.0.rc1:
+  https://weblog.rubyonrails.org/2019/4/27/this-week-in-rails-rails-6-0-0-rc1-is-here-say-hi-at-railsconf/
+
+-------------------------------------------------------------------
+Thu Mar 14 03:50:01 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 6.0.0.beta3:
+  https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/
+  CVE-2019-5418 CVE-2019-5419 CVE-2019-5420
+
+-------------------------------------------------------------------
+Sat Jan 19 19:51:03 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- rb_build_ruby_abi needs to be rb_build_ruby_abis
+
+-------------------------------------------------------------------
+Sat Jan 19 00:13:08 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

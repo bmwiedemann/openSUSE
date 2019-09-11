@@ -1,0 +1,13 @@
+diff --git a/lib/icewm.desktop b/lib/icewm.desktop
+index d6e5a04..02618b5 100644
+--- a/lib/icewm.desktop
++++ b/lib/icewm.desktop
+@@ -11,7 +11,7 @@ Comment[da]=Simpel og hurtig vindueshåndtering
+ Icon=icewm
+ TryExec=/usr/bin/icewm
+ Exec=icewm
+-NoDisplay=false
++NoDisplay=true
+ Hidden=false
+ Categories=WindowManager;Application;System;
+ StartupNotify=false

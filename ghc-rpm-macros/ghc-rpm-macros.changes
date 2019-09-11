@@ -1,0 +1,627 @@
+-------------------------------------------------------------------
+Wed Jul 18 14:26:39 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Sun May 27 17:22:21 UTC 2018 - ptrommler@icloud.com
+
+- own license directory on older openSUSE
+
+-------------------------------------------------------------------
+Fri May  4 06:59:22 UTC 2018 - ptrommler@icloud.com
+
+- add no-selfbootstrap-check.patch
+* GHC's ABI is stable now so a selfbootstrapped compiler is
+  no longer needed
+
+-------------------------------------------------------------------
+Wed Apr 18 07:43:30 UTC 2018 - mimi.vx@gmail.com
+
+- use %license macro
+- simplify dependecy generator
+
+-------------------------------------------------------------------
+Tue Mar 20 14:03:36 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.7.4
+- sync with ustream
+- support sublibraries
+
+-------------------------------------------------------------------
+Fri Jul 14 14:23:54 UTC 2017 - mimi.vx@gmail.com
+
+- update to 1.7.2
+- disabled smp build -- it brokes reproduciblity of haskell packages
+   * reported by bwiedemann@suse.com
+
+-------------------------------------------------------------------
+Mon May 29 06:43:58 UTC 2017 - mimi.vx@gmail.com
+
+- update to 1.7.1
+- sync with upstream
+
+-------------------------------------------------------------------
+Fri Jan 20 08:39:08 UTC 2017 - mimi.vx@gmail.com
+
+- update to 1.6.95
+- sync with upstream
+* fix compatibility with cabal 1.24.1.0 and 1.24.2.0
+
+-------------------------------------------------------------------
+Fri Oct 14 12:32:13 UTC 2016 - mimi.vx@gmail.com
+
+- sync with upstream
+- ghc-pkg-wrapper is now quiet with simple output
+- new ghc_fix_rpath macro deprecates ghc_fix_dynamic_rpath
+- ghc_lib_subpackage now takes name-version
+- new ghc_libs_build and ghc_libs_install extra macros
+
+-------------------------------------------------------------------
+Sat Jul 16 16:39:32 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.6.91
+* support multiple jobs during build and configure phase
+
+-------------------------------------------------------------------
+Tue Jun 28 11:22:46 UTC 2016 - mimi.vx@gmail.com
+
+- new macros.ghc-suse
+- binary packages build statically linked
+
+-------------------------------------------------------------------
+Wed Jun 22 14:38:28 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.6.90
+* %ghc_gen_filelists: uniq keyname to prevent build failure for installed version
+
+-------------------------------------------------------------------
+Sat May 28 15:48:31 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- doc dir contains ghc version, now incompactible with ghc 7.10
+
+-------------------------------------------------------------------
+Sun May 22 17:55:50 UTC 2016 - mimi.vx@gmail.com
+
+- Increase verbosity of configure and build macros
+
+-------------------------------------------------------------------
+Thu Mar 17 09:35:35 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.5.3
+* ghc_gen_filelists: determine keyname with pkgnamever not just pkgname
+* ghc-deps.sh no longer filter out ghc-prim and integer-gmp
+
+-------------------------------------------------------------------
+Thu Feb 18 14:55:41 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.5.0
+- update for ghc-8.0
+- ghc-deps uses --provides and --requires again
+
+-------------------------------------------------------------------
+Mon Oct 26 14:26:32 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.4.98
+- dropped: fix-library-dir.patch
+           suse-disable-debug-packages.patch
+           suse-docdir.patch
+           remove-flags.patch
+           fix-gen-filelists.patch
+* fix some missing quoting for deps generation
+* add and use ghc-pkg-wrapper script
+* use ghc-pkg key field
+
+-------------------------------------------------------------------
+Wed Sep 16 09:26:31 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.4.94
+- refreshed remove-flags.patch
+- dropped add-group.patch and files-defattr.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 08:45:19 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.4.93
+- refreshed:
+    add-group.patch
+    files-defattr.patch
+    fix-gen-filelists.patch
+    fix-library-dir.patch
+    suse-disable-debug-packages.patch
+    suse-docdir.patch
+- dropped:
+    version-docdirs.patch
+    fix-runpath.patch
+    ldflags.patch
+- added:
+    remove-flags.patch
+- fix ghc-pkg path in ghc-deps.sh for ghc-7.10
+- local pkgdir macro is redundant
+- use utf8 locale for cabal
+- add explicit --enable-shared again for arm64
+- introduce ghc_pkgdocdir since no _pkgdocdir in RHEL 7 and earlier
+- allow overriding ghc- prefix with ghc_name (for ghc784 etc)
+- version ghc-pkg in ghc_pkg_recache
+- have to turn off hardening in cabal_configure: set _hardened_ldflags to nil
+- add cabal_test macro
+- only run cabal haddock for real libraries with modules
+- make sure basepkg.files is also created for meta packages
+- fix the R*PATH regexp
+- version ghcpkgdocdir
+- add new names ghc_html_dir, ghc_html_libraries_dir, and ghc_html_pkg_dir
+- correct cabal-tweak-flag error message for missing flag
+- update ghc_gen_filelists to use new keyed library filepaths
+  and specify libHS*.so more loosely
+- ghc-dep.sh now just makes versioned devel reqs
+- rename ghc_lib.attr to ghc.attr and drop ghc_bin.attr
+
+-------------------------------------------------------------------
+Wed Aug 19 08:08:54 UTC 2015 - mimi.vx@gmail.com
+
+- update to fake version 1.4.8 based on 1.3.91
+- dropped: sle-sp1-rpmdeps.patch
+           fix-gen-filelists.patch
+           remove-flags.patch
+- added patches: ldflags.patch
+                 version-docdirs.patch
+                 fix-runpath.patch
+                 fix-library-dir.patch
+
+-------------------------------------------------------------------
+Tue Apr 14 07:10:18 UTC 2015 - mimi.vx@gmail.com
+
+- regenerated sle-sp1-rpmdeps.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 08:17:55 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- add rpm library directory to files on older openSUSE
+* fix build on openSUSE 11.4
+
+-------------------------------------------------------------------
+Mon Feb 23 16:38:21 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- update to 1.4.7
+- drop fix-runpath.patch
+  * fixed upstream
+- refresh fix-gen-filelists.patch
+- refresh suse-disable-debug-packages.patch
+- refresh suse-docdir.patch
+- add remove-flags.patch
+  * remove passing of CFLAGS and LDFLAGS to ghc
+  * no macro %__global_ldflags in openSUSE
+- remove provides ghc() workaround
+  * fixed upstream
+
+-------------------------------------------------------------------
+Sun Dec 14 09:26:31 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- make package noarch and remove rpmlintrc
+
+-------------------------------------------------------------------
+Sat Dec 13 09:33:54 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- do not disable dynamic libraries on ppc anymore
+* fixed by patch 18 in ghc.spec
+
+-------------------------------------------------------------------
+Tue Oct 21 15:05:27 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 1.3.6
+* remove execstack workaround and prelink requirement
+* improve ghc_fix_dynamic_rpath macro
+* do not use -O2 optimization (out of memory failures on OBS)
+- refresh patches:
+* add-group.patch
+* files-defattr.patch
+* fix-gen-filelists.patch
+* suse-disable-debug-packages.patch
+* suse-docdir.patch
+-drop patch disable-execstack.patch
+* fixed in ghc 7.8
+- add fix-runpath.patch
+* starting with ghc 7.8 shared objects with RUNPATH work
+* support RUNPATH as well as RPATH
+- enable shared libraries and dynamic linking on ppc64 and ppc64le
+* shared libraries for ppc still disabled (see haskell trac #8024)
+
+-------------------------------------------------------------------
+Fri Sep 12 13:11:17 UTC 2014 - dmueller@suse.com
+
+- disable dependency on prelink for arm and aarch64 architectures
+
+-------------------------------------------------------------------
+Thu Jul 31 16:10:06 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Thu Jun 26 11:17:24 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- add rpmlintrc to spec file
+
+-------------------------------------------------------------------
+Thu Jun 26 06:52:11 UTC 2014 - martin.koegler@chello.at
+
+- SLES11 does not support a different BuildArch for subpackages
+
+-------------------------------------------------------------------
+Thu May 29 19:39:26 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- BR xz for SLE 11 builds
+
+-------------------------------------------------------------------
+Sat May 10 20:56:02 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 1.2.7
+  * set datasubdir in cabal_configure for ghc-7.8
+  * abort ghc_fix_dynamic_rpath if no chrpath
+  * update license tag to GPLv3+
+  * set Url field when generating subpackages
+- refresh patches add-group.patch, files-defattr.patch,
+  fix-genfilelists.patch, suse-disable-debug-patches.patch
+- remove macros.ghc-suse
+  * they never worked on OBS
+- add patch disable-execstack.patch
+  * disable execstack workaround on ppc64le
+  * prelink is not available on ppc64le yet
+  * ghc does not handle executable stack note properly
+    you will probably get rpmlint warnings about it
+
+-------------------------------------------------------------------
+Sat Feb  1 08:46:53 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 1.2.2
+  * fix error message
+- use stable URL (no git hash)
+
+-------------------------------------------------------------------
+Mon Dec 16 15:26:01 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add requires prelink
+  * need execstack to fix ghc generated binaries
+
+-------------------------------------------------------------------
+Fri Dec 13 21:56:16 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- fix suse-docdir.patch
+* define _pkgdocdir macro
+
+-------------------------------------------------------------------
+Wed Dec 11 19:40:34 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- refresh sle-sp1-rpmdeps.patch
+
+-------------------------------------------------------------------
+Tue Oct 29 21:01:53 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- disable colorized documentation for ppc bootstrap
+
+-------------------------------------------------------------------
+Sat Oct 26 18:34:10 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- fix typo in email address for patch 2
+
+-------------------------------------------------------------------
+Sat Oct 26 18:32:22 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- refresh suse-disable-debug-packages.patch
+- refresh add-group.patch
+- refresh files-defattr.patch
+
+-------------------------------------------------------------------
+Sat Oct 26 18:26:21 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 1.2 from upstream
+* update for ghc 7.7 and later
+* fixes for bootstrapping new ghc
+- drop buildService.patch
+* docdirs are unversioned now
+
+-------------------------------------------------------------------
+Fri Oct 11 19:00:13 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add add-group.patch as patch 2
+* add Group tag to subpackages (required for SLE)
+* put libraries into System/Libraries (packaged guidelines)
+* fix bnc#845572
+- add files-defattr.patch as patch 3
+* set file permissions according to specfile guidelines
+- thanks to Scott Bahling for preparing those patches
+- enable colorized documentation
+
+-------------------------------------------------------------------
+Thu Sep 26 06:59:33 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- clean up spec file
+* fix comment for patch 1 (wrong file name)
+* remove unused patch2 in setup section
+
+-------------------------------------------------------------------
+Thu Sep 26 06:56:57 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- enable colorized documentation for all Haskell packages
+
+-------------------------------------------------------------------
+Thu Aug  1 15:18:38 UTC 2013 - dvaleev@suse.com
+
+- fix %{macros_dir}/macros.ghc for non x86 arches
+
+-------------------------------------------------------------------
+Wed May  1 19:51:20 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- put version back into html doc directory (needed by haddock)
+
+-------------------------------------------------------------------
+Wed May  1 18:42:46 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- fix library directory for ghc packages
+
+-------------------------------------------------------------------
+Wed May  1 17:59:27 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- drop library version in html documentation directory
+
+-------------------------------------------------------------------
+Mon Apr 29 17:16:30 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add patch to fix ghc_gen_filelists macro
+
+-------------------------------------------------------------------
+Mon Apr 29 08:59:04 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.99 from upstream
+- support for ghc 7.6
+- more transparent file lists
+- macros dealing with subpackages moved to extra subbpackage
+
+-------------------------------------------------------------------
+Sat Mar  9 16:17:16 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.98.1 from upstream
+- new ghc_fix_dynamic_rpath macro to make executables work that
+  are linked to their own library
+
+-------------------------------------------------------------------
+Sat Nov 17 12:41:05 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- openSUSE specific macros to disable debug packages
+- refresh and remove .orig files from sle-sp1-rpmdeps.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 06:57:15 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.95.5.1 from upstream
+- cabal-tweak-dep-ver: be careful only to match complete dep name and
+  do not match beyond ","
+
+- some cabal-tweak-dep-ver improvements:
+- show file name when no match
+- backslash quote . and * in the match string
+- create a backup file if none exists
+
+- new cabal-tweak-dep-ver script to tweak depends version bounds in .cabal
+
+- ghc-dep.sh: only use buildroot package.conf.d if it exists
+
+- ghc-deps.sh: look in buildroot package.conf.d for program deps
+
+- add a meta-package option to ghc_devel_package and use in ghc_devel_requires
+
+- let ghc_bin_install take an arg to disable implicit stripping for subpackages
+
+- allow ghc_description, ghc_devel_description, ghc_devel_post_postun
+  to take args
+
+- fix doc handling of subpackages for ghc_without_shared
+
+- move --disable-library-for-ghci to ghc_lib_build
+- revert back to fallback behaviour for common_summary and common_description
+  since it is needed for ghc and haskell-platform subpackaging
+- without ghc_exclude_docdir include doc dir also for subpackages
+
+- no longer build redundant ghci .o library files
+- support meta packages like haskell-platform without base lib files
+- make it possible not to have to use common_summary and common_description
+- rename ghc_binlib_package to ghc_lib_subpackage
+- add ghc_lib_build_without_haddock
+- no longer drop into package dirs when subpackaging with ghc_lib_build and
+  ghc_lib_install
+- add shell variable cabal_configure_extra_options to cabal_configure for
+  local configuration
+
+-------------------------------------------------------------------
+Sun Jun 24 08:53:28 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cleaned up file list
+- remove Obsoletes clauses from macros (buildService.patch)
+- rebased sle-sp1-rpmdeps.patch
+
+-------------------------------------------------------------------
+Sat May  5 10:02:41 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- bumped version number to match upstream
+- dropped fix for magic, not needed anymore
+- added copyright notice
+
+-------------------------------------------------------------------
+Thu Apr 26 15:36:41 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgrade to 0.90 from upstream
+- use new rpm metadata hash format for ghc-7.4
+- drop prof meta hash data
+- no longer include doc files automatically by default
+- no longer provide doc subpackage
+- do not provide prof when without_prof set
+- remove SUSE_ASNEEDED in buildService.patch
+- rebase sle patch
+
+-------------------------------------------------------------------
+Mon Mar 19 18:58:47 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fix ghc-deps.sh (ignore builtin_ffi)
+
+-------------------------------------------------------------------
+Mon Mar 19 16:27:03 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgrade to 0.15.5 from upstream
+- undo patch for dependency generation (redundant provides)
+
+-------------------------------------------------------------------
+Thu Feb 23 07:38:02 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fix patch for sle11
+
+-------------------------------------------------------------------
+Tue Feb 21 10:10:00 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- define _rpmconfigdir on SLE-11-SP1
+
+-------------------------------------------------------------------
+Sun Feb 19 15:11:35 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.15.4 from upstream
+- patches rebased
+- fix rpmdeps on SLE-11-SP1
+
+-------------------------------------------------------------------
+Mon Feb  6 19:41:51 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- do not pass .conf file to rpmdeps (fails on SLE-11-SP1)
+
+-------------------------------------------------------------------
+Thu Feb  2 21:38:35 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove version on docs dir
+
+-------------------------------------------------------------------
+Thu Feb  2 20:45:36 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- put documentation into /usr/share/doc/ghc-<version>
+
+-------------------------------------------------------------------
+Thu Feb  2 14:15:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add build root tag (for SLE11)
+
+-------------------------------------------------------------------
+Sun Jan 22 15:28:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Fix license tag
+
+-------------------------------------------------------------------
+Sun Jan 22 15:12:34 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove version numbers again
+- move documentation to ghc-docs
+
+-------------------------------------------------------------------
+Sat Jan 21 11:06:27 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to version 0.15.2 from upstream
+- put version numbers in packages back in
+
+-------------------------------------------------------------------
+Mon Dec 26 10:57:44 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- fix document directories
+
+-------------------------------------------------------------------
+Thu Dec 22 16:54:29 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- ghc-deps.sh: add dependencies for requires
+
+-------------------------------------------------------------------
+Sat Dec 10 07:54:54 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- ghc-deps.sh again
+
+-------------------------------------------------------------------
+Fri Dec  9 16:49:46 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- fixed ghc-deps.sh
+
+-------------------------------------------------------------------
+Fri Dec  9 14:37:28 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- generate dependencies that keep OBS happy
+
+-------------------------------------------------------------------
+Fri Dec  9 08:35:14 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- fixed sed unterminated s command
+
+-------------------------------------------------------------------
+Thu Dec  8 18:40:26 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- do not require builtin_ffi for executables
+
+-------------------------------------------------------------------
+Tue Dec  6 16:19:05 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- required packages format changed for executables
+
+-------------------------------------------------------------------
+Sat Dec  3 11:02:36 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Upgraded to 0.14.3-1 from upstream
+- added ghc dependency generator back in and started OBS fix for it
+
+-------------------------------------------------------------------
+Fri Nov 25 07:41:36 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fixed patch
+
+-------------------------------------------------------------------
+Thu Nov 24 18:53:43 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Add SUSE_ASNEEDED=0
+
+-------------------------------------------------------------------
+Wed Nov 23 18:53:11 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Upgraded to version 0.14.2 from upstream
+- Disabled ghc dependency generator. It breaks all builds on OBS
+
+-------------------------------------------------------------------
+Mon Oct 31 13:37:09 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fix: Wrong files uploaded.
+
+-------------------------------------------------------------------
+Mon Oct 31 12:12:08 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Upgraded to 0.13.13 from upstream.
+
+-------------------------------------------------------------------
+Mon Oct 17 12:20:53 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Patch for openSUSE build service and package group names.
+
+-------------------------------------------------------------------
+Thu Oct 13 16:17:35 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Undo patch.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:35:26 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- use runghc in cabal macro to fing ghc libraries.
+
+-------------------------------------------------------------------
+Fri Oct  7 16:36:03 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Removed redhat-rpm-config requres tag.
+
+-------------------------------------------------------------------
+Fri Oct  7 16:12:31 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fixed Group tag.
+
+-------------------------------------------------------------------
+Fri Oct  7 16:09:35 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging

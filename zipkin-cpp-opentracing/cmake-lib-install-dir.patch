@@ -1,0 +1,84 @@
+From e8ef35d99310e29a4e987ee82f3a11767b42c4ad Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@suse.com>
+Date: Wed, 9 May 2018 12:14:07 +0200
+Subject: [PATCH] cmake: Use LIB_INSTALL_DIR instead of hardcoding lib
+ destination
+
+The comon practice in cmake to allow to specify the libdir is
+using the LIB_INSTALL_DIR variable. The main use case of that
+variable is setting /usr/lib64 as the destination dir for
+libraries which is a common pattern in many Linux distributions.
+---
+ CMakeLists.txt                    | 4 ++++
+ zipkin/CMakeLists.txt             | 4 ++--
+ zipkin_opentracing/CMakeLists.txt | 6 +++---
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d709f23..dc9995a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,10 @@ if (NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS AND NOT BUILD_PLUGIN)
+   message(FATAL_ERROR "One or all of BUILD_SHARED_LIBS, BUILD_STATIC_LIBS, or BUILD_PLUGIN must be set to ON to build")
+ endif()
+ 
++if (NOT DEFINED LIB_INSTALL_DIR)
++  set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
++endif()
++
+ set(CMAKE_CXX_STANDARD 11)
+ include(CTest)
+ 
+diff --git a/zipkin/CMakeLists.txt b/zipkin/CMakeLists.txt
+index 6b7a9fa..2939fa8 100644
+--- a/zipkin/CMakeLists.txt
++++ b/zipkin/CMakeLists.txt
+@@ -20,7 +20,7 @@ if (BUILD_SHARED_LIBS)
+   set_target_properties(zipkin PROPERTIES VERSION ${ZIPKIN_VERSION_STRING}
+                                           SOVERSION ${ZIPKIN_VERSION_MAJOR})
+   install(TARGETS zipkin 
+-          LIBRARY DESTINATION lib)
++          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+ endif()
+ 
+ if (BUILD_STATIC_LIBS)
+@@ -28,7 +28,7 @@ if (BUILD_STATIC_LIBS)
+   set_target_properties(zipkin-static PROPERTIES OUTPUT_NAME zipkin)
+   target_link_libraries(zipkin-static Threads::Threads ${CURL_LIBRARIES} ${WIN32_LIBRARIES})
+   install(TARGETS zipkin-static
+-          ARCHIVE DESTINATION lib)
++          ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+ endif()
+ 
+ if (BUILD_PLUGIN)
+diff --git a/zipkin_opentracing/CMakeLists.txt b/zipkin_opentracing/CMakeLists.txt
+index 93b582c..ec21243 100644
+--- a/zipkin_opentracing/CMakeLists.txt
++++ b/zipkin_opentracing/CMakeLists.txt
+@@ -16,7 +16,7 @@ if (BUILD_SHARED_LIBS)
+   set_target_properties(zipkin_opentracing PROPERTIES VERSION ${ZIPKIN_VERSION_STRING}
+                                                       SOVERSION ${ZIPKIN_VERSION_MAJOR})
+   install(TARGETS zipkin_opentracing 
+-          LIBRARY DESTINATION lib)
++          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+ endif()
+ 
+ if (BUILD_STATIC_LIBS)
+@@ -24,7 +24,7 @@ if (BUILD_STATIC_LIBS)
+   set_target_properties(zipkin_opentracing-static PROPERTIES OUTPUT_NAME zipkin_opentracing)
+   target_link_libraries(zipkin_opentracing-static ${OPENTRACING_LIB} zipkin)
+   install(TARGETS zipkin_opentracing-static
+-          ARCHIVE DESTINATION lib)
++          ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+ endif()
+ 
+ if (BUILD_PLUGIN)
+@@ -37,7 +37,7 @@ if (BUILD_PLUGIN)
+     -static-libstdc++
+     -Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/export.map)
+   install(TARGETS zipkin_opentracing_plugin
+-          LIBRARY DESTINATION lib)
++          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+ endif()
+ 
+ 

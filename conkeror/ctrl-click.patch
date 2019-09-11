@@ -1,0 +1,23 @@
+--- a/modules/clicks-in-new-buffer.js	2016-06-07 23:11:29.000000000 +0200
++++ b/modules/clicks-in-new-buffer.js	2016-09-29 11:35:58.195467344 +0200
+@@ -9,6 +9,10 @@
+                 "Which mouse button should open links in a new buffer. " +
+                 "0 = left, 1 = middle, 2 = right. Default is 1.");
+ 
++define_variable('clicks_in_new_buffer_require_control', false,
++                'Whether control must be held to open in new buffer.  ' +
++                'Default is false.');
++
+ define_variable("clicks_in_new_buffer_target", OPEN_NEW_BUFFER,
+                 "How to open links in a new buffer, in the foreground or " +
+                 "the background. Set to one the constants OPEN_NEW_BUFFER " +
+@@ -32,7 +36,8 @@
+ }
+ 
+ function open_link_in_new_buffer (event) {
+-    if (event.button != clicks_in_new_buffer_button)
++    if (event.button != clicks_in_new_buffer_button ||
++        event.ctrlKey != clicks_in_new_buffer_require_control)
+         return;
+     let element = event.target;
+     let anchor = null;

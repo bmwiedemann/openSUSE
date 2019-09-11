@@ -1,0 +1,22 @@
+From cafdaf6c8735c9e2c66abfaff8dab4a276b773a0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 May 2019 23:15:07 +0200
+Subject: [PATCH 08/18] make test-style: set esversion to 6 for GNOME 3.32
+
+---
+ .jshint.cfg | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/.jshint.cfg b/.jshint.cfg
+index 122e90c..f67e5b3 100644
+--- a/.jshint.cfg
++++ b/.jshint.cfg
+@@ -1,3 +1,4 @@
+ {
+-  "moz": true
++  "moz": true,
++  "esversion": 6
+ }
+-- 
+2.21.0
+

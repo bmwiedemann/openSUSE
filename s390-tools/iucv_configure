@@ -1,0 +1,133 @@
+#! /bin/sh
+#
+# iucv_configure
+#
+# Configures a z/VM IUCV network adapter
+#
+# Usage:
+#   iucv_configure <peer_userid> <online>
+#
+#	peer_userid = z/VM userid of the IUCV peer
+#	online = 0 to take the device offline
+#		 1 to bring the device online
+#
+# Return values:
+#   1  sysfs not mounted
+#   2  Invalid status for <online>
+#   3  Could not create iucv device
+#   4  Could not remove iucv device
+#
+
+if [ "${DEBUG}" != "yes" ]; then
+  DEBUG="no"
+fi
+
+mesg () {
+    echo "$@"
+}
+
+debug_mesg () {
+    case "$DEBUG" in
+        yes) mesg "$@" ;;
+        *) ;;
+    esac
+}
+
+if [ $# -ne 2 ] ; then
+    echo "Usage: $0  <peer_userid> <online>"
+    echo "	peer_userid = z/VM userid of the IUCV peer"
+    echo "	online = 0 to take the device offline"
+    echo "		 1 to bring the device online"
+    exit 1
+fi
+
+# Get the mount point for sysfs
+while read MNTPT MNTDIR MNTSYS MNTTYPE; do
+    if test "$MNTSYS" = "sysfs"; then
+	SYSFS="$MNTDIR"
+	break;
+    fi 
+done </proc/mounts
+
+if [ -z "$SYSFS" ]; then
+    mesg "/sysfs not present"
+    exit 1
+fi
+
+PEER_USERID_LOWER=$1
+PEER_USERID=$(echo $1 | tr "a-z" "A-Z")
+ONLINE=$2
+
+if [ -z "$PEER_USERID" ] ; then
+    mesg "No IUCV user name given"
+    exit 2
+fi
+
+if [ -z "$ONLINE" ] ; then
+    ONLINE=1
+fi
+
+_iucv_dir=${SYSFS}/bus/iucv/devices
+
+_iucv_drv=${SYSFS}/bus/iucv/drivers/netiucv
+if [ ! -d "$_iucv_drv" ] ; then
+    modprobe -q netiucv
+fi
+
+debug_mesg "Configuring IUCV device ${PEER_USERID}"
+
+for _iucv_dev in $_iucv_dir/netiucv?* ; do
+    [ -d $_iucv_dev ] || continue
+    read user < $_iucv_dev/user
+    if [ "$user" = "$PEER_USERID" ] ; then
+	# Already configured, ok
+	iucvdev=${_iucv_dev##*/}
+	break;
+    fi
+done
+
+if [ -z "$iucvdev" -a $ONLINE -eq 1  ] ; then
+    echo $PEER_USERID > $_iucv_drv/connection
+    if [ $? -ne 0 ] ; then
+	mesg "Unable to connect to $PEER_USERID"
+	exit 3
+    fi
+    for _iucv_dev in $_iucv_dir/netiucv?* ; do
+	[ -d $_iucv_dev ] || continue
+	read user < $_iucv_dev/user
+	if [ "$user" = "$PEER_USERID" ] ; then
+	    iucvdev=${_iucv_dev##*/}
+	    break;
+	fi
+    done
+    if [ "$iucvdev" ] ; then
+	debug_mesg "Configured device $iucvdev"
+    fi
+elif [ "$iucvdev" -a $ONLINE -eq 0 ] ; then
+    for _net_dev in $_iucv_dir/$iucvdev/net/* ; do
+	[ -d $_net_dev ] || continue
+	netdev=${_net_dev##*/}
+	break;
+    done
+    if [ "$netdev" ] ; then
+	echo $netdev > $_iucv_drv/remove
+	if [ $? -ne 0 ] ; then
+	    mesg "Unable to remove device $netdev"
+	    exit 4
+	else
+	    debug_mesg "Removed device $iucvdev"
+	    rm -f /etc/udev/rules.d/51-iucv-$PEER_USERID.rules /etc/udev/rules.d/51-iucv-$PEER_USERID_LOWER.rules
+	    iucvdev=
+	fi
+    fi
+    
+fi
+
+if [ "$iucvdev" ] ; then
+    cat > /etc/udev/rules.d/51-iucv-$PEER_USERID.rules <<EOF
+ACTION=="add", SUBSYSTEM=="subsystem", KERNEL=="iucv", RUN+="/sbin/modprobe netiucv"
+ACTION=="add", SUBSYSTEM=="drivers", KERNEL=="netiucv", ATTR{connection}="$PEER_USERID"
+EOF
+fi
+
+exit

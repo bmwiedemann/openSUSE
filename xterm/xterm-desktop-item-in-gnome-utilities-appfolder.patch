@@ -1,0 +1,20 @@
+# HG changeset patch
+# Parent  eb22ea61e475efde1f9576b471f4a4597523b1f4
+Group the desktop file into the Utilities folder in the GNOME
+shell application overview.
+
+diff --git a/xterm.desktop b/xterm.desktop
+--- a/xterm.desktop
++++ b/xterm.desktop
+@@ -34,10 +34,10 @@
+ Name=XTerm
+ #GenericName=Terminal
+ Comment=standard terminal emulator for the X window system
+ Exec=xterm
+ Terminal=false
+ Type=Application
+ Encoding=UTF-8
+ Icon=terminal
+-Categories=System;TerminalEmulator;
++Categories=System;TerminalEmulator;X-GNOME-Utilities;
+ Keywords=shell;prompt;command;commandline;cmd;

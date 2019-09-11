@@ -1,0 +1,63 @@
+--- bing-1.0.4/bing.c.xx	2005-01-26 13:16:53.039927038 +0100
++++ bing-1.0.4/bing.c	2005-01-26 13:17:25.090900141 +0100
+@@ -1241,6 +1241,31 @@
+ 	char rspace[3 + 4 * NROUTES + 1];	/* record route space */
+ #endif
+ 
++	if (!(proto = getprotobyname("icmp"))) {
++		(void)fprintf(stderr, "bing: unknown protocol icmp.\n");
++		exit(1);
++	}
++	if ((s = socket(AF_INET, SOCK_RAW, proto->p_proto)) < 0) {
++		perror("bing: socket");
++		exit(1);
++	}
++
++  // drop root privs
++  if((pwd = getpwuid(getuid())) == NULL)
++  {
++    perror("bing: getpwuid()");
++    exit(1);
++  }
++  if(initgroups(pwd->pw_name, pwd->pw_gid) < 0)
++  {
++    perror("bing: initgroups()");
++    exit(1);
++  }
++  setgid(getgid());
++  setuid(getuid());
++
++
++
+ 	hs1 = &hoststats1;
+ 	hs2 = &hoststats2;
+ 
+@@ -1401,28 +1426,6 @@
+ 
+ 	ident = getpid() & 0xFFFF;
+ 
+-	if (!(proto = getprotobyname("icmp"))) {
+-		(void)fprintf(stderr, "bing: unknown protocol icmp.\n");
+-		exit(1);
+-	}
+-	if ((s = socket(AF_INET, SOCK_RAW, proto->p_proto)) < 0) {
+-		perror("bing: socket");
+-		exit(1);
+-	}
+-
+-  // drop root privs
+-  if((pwd = getpwuid(getuid())) == NULL)
+-  {
+-    perror("bing: getpwuid()");
+-    exit(1);
+-  }
+-  if(initgroups(pwd->pw_name, pwd->pw_gid) < 0)
+-  {
+-    perror("bing: initgroups()");
+-    exit(1);
+-  }
+-  setgid(getgid());
+-  setuid(getuid());
+ 
+ 	hold = 1;
+ 	if (options & F_SO_DEBUG)

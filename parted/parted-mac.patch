@@ -1,0 +1,180 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Subject: parted: mac: Print the system name
+Patch-mainline: no, custom SUSE patch
+---
+ include/parted/disk.in.h |    9 +++++++--
+ libparted/disk.c         |   33 +++++++++++++++++++++++++++++++++
+ libparted/labels/mac.c   |   34 +++++++++++++++++++++++++++++++++-
+ parted/parted.c          |   12 ++++++++++++
+ 4 files changed, 85 insertions(+), 3 deletions(-)
+
+Index: parted-3.2/include/parted/disk.in.h
+===================================================================
+--- parted-3.2.orig/include/parted/disk.in.h
++++ parted-3.2/include/parted/disk.in.h
+@@ -83,10 +83,11 @@ enum _PedPartitionFlag {
+ 
+ enum _PedDiskTypeFeature {
+         PED_DISK_TYPE_EXTENDED=1,       /**< supports extended partitions */
+-        PED_DISK_TYPE_PARTITION_NAME=2  /**< supports partition names */
++        PED_DISK_TYPE_PARTITION_NAME=2, /**< supports partition names */
++        PED_DISK_TYPE_SYSTEM_NAME=4     /**< supports system names */
+ };
+ #define PED_DISK_TYPE_FIRST_FEATURE    PED_DISK_TYPE_EXTENDED
+-#define PED_DISK_TYPE_LAST_FEATURE     PED_DISK_TYPE_PARTITION_NAME
++#define PED_DISK_TYPE_LAST_FEATURE     PED_DISK_TYPE_SYSTEM_NAME
+ 
+ struct _PedDisk;
+ struct _PedPartition;
+@@ -246,6 +247,8 @@ struct _PedDiskOps {
+         /* other */
+         int (*alloc_metadata) (PedDisk* disk);
+         int (*get_max_primary_partition_count) (const PedDisk* disk);
++        void (*partition_set_system_name) (PedPartition* part, const char* name);
++        const char* (*partition_get_system_name) (const PedPartition* part);
+         bool (*get_max_supported_partition_count) (const PedDisk* disk,
+                                                    int* supported);
+         PedAlignment *(*get_partition_alignment)(const PedDisk *disk);
+@@ -337,7 +340,9 @@ extern int ped_partition_is_flag_availab
+ extern int ped_partition_set_system (PedPartition* part,
+                                      const PedFileSystemType* fs_type);
+ extern int ped_partition_set_name (PedPartition* part, const char* name);
++extern int ped_partition_set_system_name (PedPartition* part, const char* name);
+ extern const char* ped_partition_get_name (const PedPartition* part);
++extern const char* ped_partition_get_system_name (const PedPartition* part);
+ extern int ped_partition_is_busy (const PedPartition* part);
+ extern char* ped_partition_get_path (const PedPartition* part);
+ 
+Index: parted-3.2/libparted/disk.c
+===================================================================
+--- parted-3.2.orig/libparted/disk.c
++++ parted-3.2/libparted/disk.c
+@@ -1184,6 +1184,39 @@ _disk_pop_update_mode (PedDisk* disk)
+  * @{
+  */
+ 
++const char*
++ped_partition_get_system_name (const PedPartition* part)
++{
++	PED_ASSERT (part != NULL);
++	PED_ASSERT (part->disk != NULL);
++	PED_ASSERT (ped_partition_is_active (part));
++
++	if (!ped_disk_type_check_feature (
++			part->disk->type, PED_DISK_TYPE_SYSTEM_NAME))
++		return NULL;	/* silent skip */
++
++	PED_ASSERT (part->disk->type->ops->partition_get_system_name != NULL);
++	return part->disk->type->ops->partition_get_system_name (part);
++}
++
++int
++ped_partition_set_system_name (PedPartition* part, const char* name)
++{
++	PED_ASSERT (part != NULL);
++	PED_ASSERT (part->disk != NULL);
++	PED_ASSERT (ped_partition_is_active (part));
++	PED_ASSERT (name != NULL);
++
++	if (!ped_disk_type_check_feature (
++			part->disk->type, PED_DISK_TYPE_SYSTEM_NAME))
++		return 0;	/* silent skip */
++
++	PED_ASSERT (part->disk->type->ops->partition_set_system_name != NULL);
++	part->disk->type->ops->partition_set_system_name (part, name);
++	return 1;
++}
++
++
+ PedPartition*
+ _ped_partition_alloc (const PedDisk* disk, PedPartitionType type,
+ 		      const PedFileSystemType* fs_type,
+Index: parted-3.2/libparted/labels/mac.c
+===================================================================
+--- parted-3.2.orig/libparted/labels/mac.c
++++ parted-3.2/libparted/labels/mac.c
+@@ -1393,6 +1393,36 @@ mac_get_partition_alignment(const PedDis
+         return ped_alignment_new(0, 1);
+ }
+ 
++/* we do not really want to call this ... yet */
++static void
++mac_partition_set_system_name (PedPartition* part, const char* name)
++{
++	MacPartitionData*	mac_data;
++	int			i;
++
++	PED_ASSERT (part != NULL);
++	PED_ASSERT (part->disk_specific != NULL);
++	mac_data = part->disk_specific;
++
++	strncpy (mac_data->system_name, name, 32);
++	mac_data->system_name [32] = 0;
++	for (i = strlen (mac_data->system_name) - 1;
++			mac_data->system_name[i] == ' '; i--)
++		mac_data->system_name [i] = 0;
++}
++
++static const char*
++mac_partition_get_system_name (const PedPartition* part)
++{
++	MacPartitionData*	mac_data;
++
++	PED_ASSERT (part != NULL);
++	PED_ASSERT (part->disk_specific != NULL);
++	mac_data = part->disk_specific;
++
++	return mac_data->system_name;
++}
++
+ static PedConstraint*
+ _primary_constraint (PedDisk* disk)
+ {
+@@ -1593,6 +1623,8 @@ static PedDiskOps mac_disk_ops = {
+ 
+ 	partition_set_name:	mac_partition_set_name,
+ 	partition_get_name:	mac_partition_get_name,
++	partition_set_system_name: mac_partition_set_system_name,
++	partition_get_system_name: mac_partition_get_system_name,
+ 
+ 	get_partition_alignment: mac_get_partition_alignment,
+ 
+@@ -1603,7 +1635,7 @@ static PedDiskType mac_disk_type = {
+ 	next:		NULL,
+ 	name:		"mac",
+ 	ops:		&mac_disk_ops,
+-	features:	PED_DISK_TYPE_PARTITION_NAME
++	features:	PED_DISK_TYPE_PARTITION_NAME | PED_DISK_TYPE_SYSTEM_NAME
+ };
+ 
+ void
+Index: parted-3.2/parted/parted.c
+===================================================================
+--- parted-3.2.orig/parted/parted.c
++++ parted-3.2/parted/parted.c
+@@ -888,6 +888,7 @@ static char*
+ partition_print_flags (PedPartition const *part)
+ {
+         int  xtype;
++	const char* sysname;
+         char *res = xstrdup ("");
+         if (!part)
+                 return res;
+@@ -920,6 +921,17 @@ partition_print_flags (PedPartition cons
+                 }
+         }
+ 
++	sysname = ped_partition_get_system_name( part );
++	if (sysname) {
++                char tmpstr[21];
++                snprintf(tmpstr, sizeof(tmpstr) - 1, "type=%s", sysname);
++                size_t new_len = res_buf_len + strlen(sep) + strlen(tmpstr);
++                res = xrealloc(res, new_len);
++                stpcpy (stpcpy (res + res_buf_len - 1, sep), tmpstr);
++                res_buf_len = new_len;
++                sep = ", ";
++	}
++
+         return res;
+ }
+ 

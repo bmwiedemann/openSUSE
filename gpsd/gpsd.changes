@@ -1,0 +1,573 @@
+-------------------------------------------------------------------
+Mon Dec 10 19:12:14 UTC 2018 - Arjen de Korte <suse+build@de-korte.org>
+
+- Correct flag to disable stripping (nostrip=True)
+- Add gpsd-declaration-in-for-loop.patch to remove c99 construction
+  (backport from upstream), fixes building for Leap-42.3
+- Upstream changed location of gpsd in systemd gpsd.service file
+  (change it back to {_sbindir})
+
+-------------------------------------------------------------------
+Sun Nov 25 16:07:56 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.18.1
+  * Fix some installation issues.
+  * A few minor updates to ubxtool and driver_ubx.
+  * Add contrib/skyview2svg
+
+- Update to version 3.18.0
+  * Add ECEF support to ievermore, italk,Skytraq, SiRF, U-blox drivers.
+  * Add ECEF support to JSON, cgps and xgps.
+  * Add GREIS (Javad) driver from Virgin Orbit.
+  * Add CLI tools zerk and ubxtool to manage JAVAD and u-blox GPS.
+  * Add gnssid:svid to satellite_t, cgps and xgps.  PRN will die.
+  * Add gnssid:svid to JSON, cgps and xgps.
+  * Add stricter version checking (more to todo).
+  * More and better regression tests.
+  * Better Python dependency checking, at build time and runtime.
+  * Fix several buffer issues.
+  * New polar plots, and improved statistice, in gpsprof.
+  * gpsd master/slave mode works, first time ever.
+  * All isnan() changed to !isfinite(), fixing many bugs.
+  * Client-side Python libraries may automatically reconnect
+  * Too many other bug fixes and improvements to mention.
+  * Over 1,000 commits from 46 different commiters.
+
+- Update to version 3.17.0
+  * Repair support for non-NMEA devices requring active probing
+    (e.g. Garmin USB GPSes).
+  * Fix a SiRF driver bug that occasionally confused NTP.
+  * Support for Spectratime iSync GRClok and LNRClok oscillators.
+  * gpxlogger can reconnect when the GPS loses the fix.
+  * xgps and xgpsspeed moved to python-gi, getting shut of the
+    deprecated pygtk2 bindings.
+  * Default mode for xgpsspeed is now the more interesting nautical
+    display.
+  * gpsmon includes the hostname with the device display.
+    gpsprof now has centimeter precision.
+
+- Remove patch:
+  * gpsd-python3.patch (not longer needed)
+- Update gpsd.keyring (old key 8C6C738D got superseeded by 0C898D47 )
+
+-------------------------------------------------------------------
+Thu Jun 28 07:57:08 UTC 2018 - mpluskal@suse.com
+
+- Fix requires for gpsd-clients
+- Cleanup spec file a bit
+
+-------------------------------------------------------------------
+Fri Jun 15 16:03:49 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Require python3 versions for packages importing python modules, all
+  scripts use python3 as interpreter.
+
+-------------------------------------------------------------------
+Fri Dec  1 15:05:22 UTC 2017 - mimi.vx@gmail.com
+
+- build with Qt5
+- refreshed gpsd-python3.patch
+
+-------------------------------------------------------------------
+Tue Nov 28 10:40:51 UTC 2017 - mimi.vx@gmail.com
+
+- removed  gpsd-fix-shebang.patch
+- reworked gpsd-python3.patch
+- build python3 subpackage
+
+-------------------------------------------------------------------
+Thu Nov 23 13:50:05 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Nov 20 13:48:01 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.17:
+  * Repair support for non-NMEA devices requring active probing
+    (e.g. Garmin USB GPSes).
+  * Fix a SiRF driver bug that occasionally confused NTP.
+  * Support for Spectratime iSync GRClok and LNRClok oscillators.
+  * gpxlogger can reconnect when the GPS loses the fix.
+  * xgps and xgpsspeed moved to python-gi,
+    getting shut of the deprecated pygtk2 bindings.
+  * Default mode for xgpsspeed is now the more interesting nautical
+    display.
+  * gpsmon includes the hostname with the device display.
+  * gpsprof now has centimeter precision.
+- Add gpsd-python3.patch to fix building with python3
+- Fix shebangs of python script (currently still python2)
+- Refresh gpsd-fix-shebang.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 13:12:40 UTC 2017 - mpluskal@suse.com
+
+- Rename python subpackage to python2
+
+-------------------------------------------------------------------
+Thu Apr  6 20:56:37 UTC 2017 - tchvatal@suse.com
+
+- Remove conditionals for 1210 and older (oldest codebase built is SLE12)
+- run scons in multiple threads
+- convert to pkgconfig dependencies
+
+-------------------------------------------------------------------
+Tue Feb 28 19:21:14 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Cleanup build/spec file:
+  * Use .desktop files and PNG icon from tarball
+  * correct flag to disable stripping (nostrip=True)
+
+-------------------------------------------------------------------
+Fri Aug 26 12:17:03 UTC 2016 - mardnh@gmx.de
+
+- Update gpsd.keyring (old key 8421F11C got superseeded by 8C6C738D)
+- Added "-std=gnu++98" to the compile-flags otherwise compilation will break
+  on systems with >= gcc6
+- ifdef "Requires: pps-tools-devel" since it's only available on recent
+  os-versions
+- Update to version 3.16
+  * Test rebuilds for mid-2015 leapsecond bump.
+  * Regression tests will run even if "python" in Python 3.
+  * Build correctly on systems where -ltinfo is split from -lncurses.
+  * Avoid some rare overflow conditions in PPS code.
+  * Fix bugs in JSON sat-view parsing due to the JSON parser stuffing
+    ints into shorts.
+  * Various small fixes to AIS interpretation.
+  * Prevent a memory leak in long-running gpsmon instances.
+  * Fix Savannah bug #45270: serial driver does not work properly on pipes.
+  * Fix Savannah bug #44648: GPSD won't build if CCFLAGS contains options
+    that are only compatible with the cros1s-compiler.
+  * Fix Savannah bug #45342: SConstruct generates wrong *.pc files.
+  * Fix Savannah bug #46495: gpsd_poll may crash due to unitialized pointer
+    (probably due to buggy FD_ISSET on host system).
+  * Fix Savannah bug #46648: gpsd crashes and buffer overflow is reported
+    when terminated.
+  * Fix Savannah bug #46802: AIVDM to CSV is broken in some weird cases.
+  * Fix Savannah bug #46804: JSON satellite view parsing is somewhat broken.
+
+-------------------------------------------------------------------
+Tue Aug  9 09:19:54 UTC 2016 - lnussel@suse.de
+
+- use pkgconfig(udev) to always allow using udev-mini
+
+-------------------------------------------------------------------
+Mon Aug  8 18:04:20 UTC 2016 - benoit.monin@gmx.fr
+
+- add pps-tools-devel as BuildRequires to enable kernel PPS
+
+-------------------------------------------------------------------
+Mon Aug  1 09:42:57 UTC 2016 - lnussel@suse.de
+
+- use pkg-config to figure out udevdir. Fixes bootstrapping with
+  udev-mini
+
+-------------------------------------------------------------------
+Tue Nov 24 09:58:15 UTC 2015 - joop.boonen@opensuse.org
+
+- Added missing requirements %{libgps} and %{libQgps} for devel package 
+
+-------------------------------------------------------------------
+Sun Nov  8 14:43:27 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.15
+  * Fix a rare crash bug related to devices becomin inaccessible
+    while timed out.
+  * Accept NMEA 4.1 GSV sententences with the trailing signal-ID field.
+  * Fixed incorrect decode of south latitudes in AIS Type 17 messages.
+  * splint has been retired; this removes almost 2KLOC of annotations.
+  * chrpath is no longer a build dependency. Corrected Beidou/QZNSS display
+    in the Python clients so the graphics don't look like SBAS.
+- Changes from version 3.14
+  * Skyview support for the Beidou and QZSS constellations in the 
+    NMEA0183 driver.
+  * ntpmon rename to ntpshmmon - it doesn't actually monitor NTP itself.
+  * New HOWTO on the website: "Introduction to Time Service".
+- Remove gpsd-3.13-ntpshm.patch; fixed on upstream release
+
+-------------------------------------------------------------------
+Sat Mar  7 12:13:48 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Add gpsd-3.13-ntpshm.patch
+- Install unit files
+- Update to 3.13
+  * compiler.h inclusion removed for gps.h so it's standalone 
+    for /usr/include.
+  * TOFF JSON report gives the offset between GPS top of second and 
+    clock time.
+  * A new ntpmon tool supports capturing clock samples from NTP 
+    SHM segments.
+- Changes for 3.12
+  * The daemon's power utilization has been reduced by changing 
+    from non-blocking to blocking I/O; this may be significant 
+    on mobile devices.
+  * Better protection against false matches of Inland AIS messages; 
+    thisrequired a libgps version bump to 22 (as a side effect, 
+    per-devicefootprint has decreased). 
+  * PPS feature is no longer markedexperimental/unstable.  
+  * Sentence tag fields have been dropped from the JSON reports. 
+  * GNSS and GLONASS SKY reports are now merged. 
+  * Addressed versions of AIS Type 25 and 26 are now handled. 
+  * The 'nmea' build option is now 'nmea0183'.
+  * New 'minimal' option sets all boolean options not explicitly 
+    set on the build command line to false.  
+  * The 'limited_max_devices' option is now 'max_devices'; the 
+    'limited_max_clients' option is now 'max_clients'
+  * The previously deprecated 'libQgpsmm' option has been 
+    removed; use 'qt'.
+  * A bug fix for error modeling when NMEA 0183 reports empty DOP fields.  
+  * On OS X, the "osx-pl203" driver has been explicitly listed 
+    as unsupported. 
+  * The last remnants of the old pre-JSON query protocol have 
+    been removed from the client library.
+
+-------------------------------------------------------------------
+Thu Jan 15 20:03:35 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.11
+  * A bug that prevented track interpolation has been fixed. 
+  * We now get vertical error position and speed estimates from the 
+    u-blox driver rather than having to interpolate them.
+  * Some unusual AIS talker IDs (NMEA 4.0 station classes) are supported.
+  * chrpath is no longer a dependency for building and testing, and
+    now defaults to 'no'. 
+  * Full systemd support.  
+  * Fixes for handling large PPS offsets.
+  * Improved recovery from device flakeouts, gpsmon argument parsing.
+- Disable chrpath
+
+-------------------------------------------------------------------
+Tue Nov 25 11:48:06 UTC 2014 - dl8fcl@darc.de
+
+- Added python-gpsd requires for gpsd-clients
+
+-------------------------------------------------------------------
+Mon Oct  6 18:13:09 UTC 2014 - crrodriguez@opensuse.org
+
+- Respect CFLAGS and CXXFLAGS. 
+- Use fvisibility-inlines-hidden to build C++ code, note
+  that the build system is buggy and uses CFLAGS and CXXFLAGS
+  for the same purpose.
+- Remove xorg libs buildrequires, they are never directly used.
+
+-------------------------------------------------------------------
+Mon Dec  9 12:11:26 UTC 2013 - opensuse@dstoecker.de
+
+- update to version 3.10
+  AIS: Adds gps2udp, an AIS data relay, split24 option supports
+  passing through Type 24 halves; support for Inland AIS; "scaled" no
+  longer controls dumping of controlled-vocabulary fields; instead,
+  the're always dumped numerically and as text, with text in an
+  attribute name generated by appending "_text" to the name of the
+  base attribute. The packetizer's handling of write boundaries not
+  coinciding with packet boundaries is improved.  Better support for
+  mode and speed switching in the UBX driver.  PPS message now ships
+  nsec. PPS events are visible in gpsmon. Time-reporting fix to TSIP.
+
+-------------------------------------------------------------------
+Wed Nov 20 13:19:27 UTC 2013 - suse@bugs.jan.ritzerfeld.org
+
+- Fixed typo in udev rule (bnc#848936) 
+
+-------------------------------------------------------------------
+Mon Oct 28 13:56:07 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.9
+  + Note to packagers: this is an urgent release that fixes a possible
+    DoS or security hole!  Armor the AIS driver against an implausible
+    overrun attack.  A (different) fix for our first malformed-packet
+    crash since about 2007. Minor improvements to the NMEA2000
+    driver. New FAQ entry on how to know WAAS/EGNOS is working.
+  + New -u and -uu options enable usec timestamps on gpspipe output.
+For more please read usr/share/doc/packages/gpsd/NEWS
+- Clean specfile and remove AUTHORS section
+
+-------------------------------------------------------------------
+Wed Oct 17 11:48:10 UTC 2012 - fcrozat@suse.com
+1
+- Fix build and adapt udev rule to new udev location.
+
+-------------------------------------------------------------------
+Mon Apr 23 11:16:40 UTC 2012 - opensuse@dstoecker.de
+
+- update to gpsd version 3.5
+
+-------------------------------------------------------------------
+Fri Dec  2 16:27:13 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Oct 15 12:21:55 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in gpsd.spec
+
+-------------------------------------------------------------------
+Sat May 14 14:00:06 CEST 2011 - dmueller@suse.de
+
+- move libgpsd.so.0 from the shlib subpackage to the main package,
+  as it fileconflicts with other versions of it. the library is
+  internal only anyway.
+
+-------------------------------------------------------------------
+Sat Apr 30 18:11:34 UTC 2011 - jw@novell.com
+
+- gpsd-devel depends on python-gpsd too.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:10:41 UTC 2011 - devel@navlost.eu
+
+- Update to version 2.96:
+  + Bumped maximum channel count to 32 to accommodate GPS+GLONASS devices.
+  + API version bumped to 5, redesign finished (changes are documented
+    in the Client HOWTO).
+  + cgps now handles resize signals.
+  + Code can now link with uClibc for embedded use.
+  + Various bugs in the C++ binding have been fixed.
+  + gpxlogger can now daemonize and write to a specified log file.
+  + A gpsd client can now set any locale it likes, and JSON
+    will still be parsed using the C locale matching the daemon's.
+  + Clients are no longer required to define a gpsd_report() hook.
+  + gpsd no longer emits probe strings to unidentified USB devices at startup.
+  + JSON timestamps in TPV and SKY are now ISO8601 rather than seconds since
+    the Unix epoch; the library handles the older style backward-compatibly. 
+  + GPGST sentences are now parsed for noise statistics when a device emits
+    them.
+  + AIS and RTCM2 JSON dumps have device fields.
+  + JSON reports now include 50bps subframe data if the device allows access to
+    it.
+  + gpsdecode can now dump NMEA GPS binary, and subframe data to JSON.
+  + The RTCM2 code now understands and  analyzes RTCM2.3 messages 13,
+    14, and 31, and has been checked against another analyzer.
+  + The ancient Sager dump format for RTCM2 is abolished in favor of a JSON
+    profile.
+
+-------------------------------------------------------------------
+Tue Oct 26 13:20:00 UTC 2010 - jreuter@novell.com
+
+- Move udev rules from /etc/udev/rules.d to /lib/udev/rules.d
+- Update to version 2.95:
+  + Rationalize clearing and generation of DOPs
+  + cgps now displays epx/epy rather than eph 
+  + Speed is now always reported if our last two fixes were good
+  + Reading packets from UDP datagrams by specifying a listening
+    address and port is now supported
+  + AIS code now interprets message type 6 and 8 application IDs 
+    correctly as a Designated Area Code and Functional ID pair
+  + gpspipe has a new -T option for setting the timestamp format
+  + xgpsspeed is completely rewritten in Python
+  + Qt bindings for the client library
+  + gpsdcode now uses | as a field separator in -c mode, as string
+    fields can contain commas
+  + Corrected error for reporting of AIS rate-of-turn fields
+- Changes of version 2.94:
+  + Error-checking in the 50bps subframe code has been greatly
+    improved
+  + The Garmin GPS driver can now use libusb for device discovery
+  + The libgps library has been split apart; the service functions
+    used by the daemon now live in libgpsd
+  + Stronger checking for valid ephemeris before extracting the
+    leap-second offset
+- Changes of version 2.93:
+  + Support for JSON dumping and parsing of AIS message types 25 and 26
+  + Removing non-streaming mode from the Python exerciser
+  + Unsetting the appropriate in-use flag in the device array
+  + Change the libgps default from old protocol to JSON
+  + Add a close() method to the C++ binding
+  + Try to recover better from sporadic cases of false matches to
+    Trimble packet format from a SiRF binary datastream
+  + gps_poll() now returns -1 with errno not set when the gpsd
+    socket closes
+  + TPV now refrains from reporting fields the fix quality won't support
+  + gpsmon option for listing device types is now -L to -l can be used
+    to enable logging
+  + Documentation updates
+  + New POLL command brings back polling-mode operation
+  + gpsd no longer eats CPU when a device is unexpectedly uplugged
+  + Support for the TNT revolution is back (run mode only)
+  + There is now a gpsdfake diagnostic tool that fakes being gpsd shipping
+    arbitrary specified data to clients.
+
+-------------------------------------------------------------------
+Sat Mar 27 02:43:46 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.92:
+  + Fix a packaging error: the python library module was omitted
+    from the 2.91 tarball.
+  + Improve the json import test.
+- Changes from version 2.91:
+  + We have support for NMEA GLONASS sentences, and a regression
+    test.
+  + Clients now get a DEVICE notification on every driver switch.
+  + It is possible to specify a TCP/IP AIS feed such as AISHub as a
+    data source.
+  + Serious bitrot in the NTRIP support has been fixed - it was
+    probably nonfunctional for several releases before this.
+  + Fixed buggy display of satellite-used flags in cgps.
+  + xgps is replaced by a rewrite in Python that uses pygtk,
+    eliminating a dependency on Motif; also, it now displays AIS
+    information.
+  + Uniform treatment of display-unit defaulting and -u in xgps,
+    cgps, and lcdgps.
+  + Support for AIS message types 25 and 26.
+  + Support for IPv6.
+  + A numeric instability in the earth_distance() function
+    affecting track error modeling has been fixed.
+  + Old protocol has been removed from the daemon; the library
+    still speaks it.
+- Drop openmotif, openmotif-devel BuildRequires.
+- Add xorg-x11-devel, xorg-x11-libXpm-devel BuildRequires.
+- Add gpsd-fix-python-install.patch to fix installation of the
+  python bindings.
+- Add python-gtk Requires to gpsd-clients subpackage as xgps now
+  depends on it.
+- Use a valid group for the devel subpackage.
+- Do not manually strip executables: this will be done by the build
+  service.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:03:58 UTC 2010 - jreuter@novell.com
+
+- Add missing dependency to python-curses for devel package (bnc#574584)
+- Add another Cyprus GPS USB id (bnc#574584)
+
+-------------------------------------------------------------------
+Fri Dec 18 16:22:14 UTC 2009 - seife@opensuse.org
+
+- fix udev warnings "SYSFS is deprecated"
+
+-------------------------------------------------------------------
+Tue Dec  8 16:51:54 UTC 2009 - jreuter@novell.com
+
+- Fix libgps subpackage requirements 
+
+-------------------------------------------------------------------
+Tue Dec  8 14:13:09 UTC 2009 - jreuter@novell.com
+
+- Upgrade to gpsd-2.90, from the upstream change log:
+  - GPSD-NG, the new JSON-based command protocol, is now deployed
+  - Detection of end of a fix-reporting cycle is now reliable
+  - Abandone gpsflash subproject 
+  - Increase major version of shared library due to significant API change
+  - Add new driver for Motorola Oncore receivers
+  - gpsfake can now accept multiple logfiles, interleaving test sentences
+    from each.
+  - gpsd now accepts error estimates from the NMEA $GPGBS sentence.
+  - Fix potential core dump in C client handling of "K" responses
+  - Introduce major and minor API version symbols into the public interfaces
+  - The sirfmon utility is gone, replaced by gpsmon
+  - Fix an old error in NMEA parsing
+  - cgpxlogger has been merged into gpxlogger.
+  - Speed-setting commands now allow parity and stop-bit setting
+  - tcmdecode becomes gpsdecode and can now de-armor and dump AIDVM packets
+  - The clientlibrary now works correctly in locales where the decimal
+    separator is not a period.
+- Typo in sirfmon / gpsmon has been fixed silently by upstream (#bnc513037)
+- Make libgps and python modules subpackages
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Mon Nov 24 12:05:49 CET 2008 - jreuter@suse.de
+
+- Disable TrueNorth Technologies device support, it breaks
+  autodection (bnc#448002)
+- Fix udev script again: must not kill running gpsd if disabled,
+  missing quotes in test, indention, add parameter to set additional
+  command line options for gpsd.
+
+-------------------------------------------------------------------
+Wed Nov 19 12:14:42 CET 2008 - jreuter@suse.de
+
+- Sleep a second before setting the default device in udev
+  script to give gpsd some time to set up the TCP socket
+
+-------------------------------------------------------------------
+Thu Oct 23 15:06:28 CEST 2008 - jreuter@suse.de
+
+- Disable start of gpsd by udev rule by default and add sysconfig
+  variable to enable it if desired (bnc#432420)
+
+-------------------------------------------------------------------
+Thu Apr 24 13:24:50 CEST 2008 - jreuter@suse.de
+
+- Fix RPM group tag for devel package
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Sat Mar 22 20:02:15 CET 2008 - lrupp@suse.de
+
+- update to 2.37
+  Fixes:
+  + C++ bindings
+  + Garmin USB support
+  + multiple instances of ntp pps thread starting
+  + better handling of odd PPS signals
+  + eye candy in the php visualizers
+- enable Garmin Simple Text support
+- enable True North Technologies support
+- disable static
+- mark man files as %doc
+- added desktop entries
+- fix ldconfig calls
+- clean buildroot 
+- PreReq coreutils and fillup_prereq for postinstall
+
+-------------------------------------------------------------------
+Fri Jan 18 16:41:27 CET 2008 - jreuter@suse.de
+
+- updated to 2.36
+  * Integrated Garmin Simple Text Protocol driver from Peter Slansky.
+  * Stabilize the Trimble regression tests.
+  * Remove the wired-in NTP time offset from the NMEA driver
+  * Integrate Ashtech driver from Chris Kuethe.
+- Submit to STABLE for 11.0
+
+-------------------------------------------------------------------
+Thu Dec 13 15:05:00 CET 2007 - opensuse@dstoecker.de
+
+- updated to 2.35
+
+-------------------------------------------------------------------
+Tue Nov 20 14:38:48 CET 2007 - anschneider@suse.de
+
+- update udev rules and script
+
+-------------------------------------------------------------------
+Fri Jun 29 16:31:27 CEST 2007 - anschneider@suse.de
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Dec 17 13:21:22 CEST 2006 - anschneider@suse.de
+
+- update to version 2.34:
+  * Fix for byte-swapping of Zodiac control messages on big-endian hardware.
+  * Disable iTalk by default and note that it needs to be tested.
+  * Command line arguments can now be DGPSIP or NTRIP URLs; -d is
+    deprecated.
+  * Added udev rules.
+  * Address excessive processor and memory utilization on SBCs; it's now
+    possible to configure compile-time limits on the number of devices and
+    client sessions.
+  * Eliminate use of fuser(1) in gpsfake.
+  * Get gpsd working with EarthMates again, this had been broken since 2.15.
+    Massive string safety audit and OpenBSD port by Chris Kuethe.
+  * J command added.
+  * The gpsctl and gpscat tools and the gpsd.phps script were added.
+  * Switched to lesstif from openmotif.
+  * Better autodetection of DLE-led packet protocols (notably TSIP and Garmin
+    binary) and of SiRFStar I and III devices.
+  * Fixed buggy parsing and generation of PGRME.
+
+-------------------------------------------------------------------
+Mon Jun 05 10:44:57 CEST 2006 - anschneider@suse.de
+
+- Initial package
+

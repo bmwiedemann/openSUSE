@@ -1,0 +1,113 @@
+Index: libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-help.c
+===================================================================
+--- libgnome-2.32.2+20170910.8487c2b4.orig/libgnome/gnome-help.c
++++ libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-help.c
+@@ -123,9 +123,11 @@ gnome_help_display_with_doc_id_and_env (
+ {
+ 	gchar *local_help_path;
+ 	gchar *global_help_path;
++	gchar *bundle_help_path;
+ 	gchar *file;
+ 	struct stat local_help_st;
+ 	struct stat global_help_st;
++	struct stat bundle_help_st;
+ 	gchar *uri;
+ 	gchar *free_doc_id = NULL;
+ 	gboolean retval;
+@@ -181,6 +183,14 @@ gnome_help_display_with_doc_id_and_env (
+ 		goto out;
+ 	}
+ 
++	/* Compute the bundle help path */
++
++	bundle_help_path = gnome_program_locate_file (program,
++						      GNOME_FILE_DOMAIN_HELP_BUNDLE,
++						      doc_id,
++						      FALSE /* only_if_exists */,
++						      NULL /* ret_locations */);
++
+ 	/* Try to access the help paths, first the app-specific help path
+ 	 * and then falling back to the global help path if the first one fails.
+ 	 */
+@@ -210,6 +220,16 @@ gnome_help_display_with_doc_id_and_env (
+ 					     global_help_path);
+ 				goto out;
+ 			}
++		} else if (bundle_help_path && g_stat (bundle_help_path, &bundle_help_st) == 0) {
++			if (!S_ISDIR (bundle_help_st.st_mode)) {
++				g_set_error (error,
++					     GNOME_HELP_ERROR,
++					     GNOME_HELP_ERROR_NOT_FOUND,
++					     _("Unable to show help as %s is not a directory.  "
++					       "Please check your installation."),
++					     bundle_help_path);
++				goto out;
++			}
+ 		} else {
+ 			g_set_error (error,
+ 				     GNOME_HELP_ERROR,
+@@ -224,6 +244,9 @@ gnome_help_display_with_doc_id_and_env (
+ 		if (!(local_help_st.st_dev == global_help_st.st_dev
+ 		      && local_help_st.st_ino == global_help_st.st_ino))
+ 			file = locate_help_file (global_help_path, file_name);
++
++		if (!file && bundle_help_path)
++			file = locate_help_file (bundle_help_path, file_name);
+ 	}
+ 
+ 	if (file == NULL) {
+@@ -326,6 +349,7 @@ gnome_help_display_desktop_with_env (Gno
+ 				     GError       **error)
+ {
+ 	GSList *ret_locations, *li;
++	GSList *ret_locations_2;
+ 	char *file;
+ 	gboolean retval;
+ 	char *url;
+@@ -343,6 +367,15 @@ gnome_help_display_desktop_with_env (Gno
+ 				   FALSE /* only_if_exists */,
+ 				   &ret_locations);
+ 
++	ret_locations_2 = NULL;
++	gnome_program_locate_file (program,
++				   GNOME_FILE_DOMAIN_HELP_BUNDLE,
++				   doc_id,
++				   FALSE /* only_if_exists */,
++				   &ret_locations_2);
++
++	ret_locations = g_slist_concat (ret_locations, ret_locations_2);
++
+ 	if (ret_locations == NULL) {
+ 		g_set_error (error,
+ 			     GNOME_HELP_ERROR,
+Index: libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-program.c
+===================================================================
+--- libgnome-2.32.2+20170910.8487c2b4.orig/libgnome/gnome-program.c
++++ libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-program.c
+@@ -996,6 +996,11 @@ gnome_program_locate_file (GnomeProgram
+ 	attr_rel = "/gnome/help";
+ 	search_path = FALSE;
+ 	break;
++    case GNOME_FILE_DOMAIN_HELP_BUNDLE:
++	prefix_rel = "/share/gnome/help-bundle";
++	attr_name = GNOME_PARAM_GNOME_DATADIR;
++	attr_rel = "/gnome/help-bundle";
++	break;
+     default:
+ 	g_warning (G_STRLOC ": unknown file domain %u", domain);
+ 	return NULL;
+Index: libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-program.h
+===================================================================
+--- libgnome-2.32.2+20170910.8487c2b4.orig/libgnome/gnome-program.h
++++ libgnome-2.32.2+20170910.8487c2b4/libgnome/gnome-program.h
+@@ -70,7 +70,9 @@ typedef enum {
+     GNOME_FILE_DOMAIN_APP_SOUND,
+     GNOME_FILE_DOMAIN_APP_PIXMAP,
+     GNOME_FILE_DOMAIN_APP_CONFIG,
+-    GNOME_FILE_DOMAIN_APP_HELP
++    GNOME_FILE_DOMAIN_APP_HELP,
++
++    GNOME_FILE_DOMAIN_HELP_BUNDLE
+ } GnomeFileDomain;
+ 
+ struct _GnomeProgram

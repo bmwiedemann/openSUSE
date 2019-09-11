@@ -1,0 +1,33 @@
+--- tftp-hpa-5.2.orig/MCONFIG.in
++++ tftp-hpa-5.2/MCONFIG.in
+@@ -51,7 +51,7 @@ INSTALL_DATA    = @INSTALL_DATA@
+ 
+ # Compiler and compiler flags
+ CC      = @CC@
+-CFLAGS  = @CFLAGS@ -I$(SRCROOT)
++CFLAGS  = @CFLAGS@ -I$(SRCROOT) -include config.h
+ 
+ # Link flags
+ LDFLAGS = @LDFLAGS@
+--- tftp-hpa-5.2.orig/tftp/Makefile
++++ tftp-hpa-5.2/tftp/Makefile
+@@ -9,7 +9,7 @@ OBJS = tftp.$(O) main.$(O)
+ all: tftp$(X) tftp.1
+ 
+ tftp$(X): $(OBJS)
+-	$(CC) $(LDFLAGS) $^ $(TFTP_LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(TFTP_LIBS) -o $@
+ 
+ $(OBJS): ../common/tftpsubs.h
+ 
+--- tftp-hpa-5.2.orig/tftpd/Makefile
++++ tftp-hpa-5.2/tftpd/Makefile
+@@ -9,7 +9,7 @@ OBJS = tftpd.$(O) recvfrom.$(O) misc.$(O
+ all: tftpd$(X) tftpd.8
+ 
+ tftpd$(X): $(OBJS)
+-	$(CC) $(LDFLAGS) $^ $(TFTPD_LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(TFTPD_LIBS) -o $@
+ 
+ $(OBJS): ../common/tftpsubs.h
+ 

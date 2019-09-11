@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Dec  7 13:12:28 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Adjust icons to state of yast2-theme package
+
+-------------------------------------------------------------------
+Sun Sep 30 00:37:16 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change icons for RPM and Web devel patterns. (boo#1039994)
+
+-------------------------------------------------------------------
+Thu Jul 19 12:07:25 UTC 2018 - sflees@suse.de
+
+- Merge with the version from SLE/Leap 15 full changes now below
+  in the changelog.
+
+-------------------------------------------------------------------
+Mon Dec 11 11:25:36 UTC 2017 - sflees@suse.de
+
+- correctly source the files for 32bit patterns
+
+-------------------------------------------------------------------
+Mon Dec  4 09:38:25 UTC 2017 - sflees@suse.de
+
+- obsolete old SLES/SLED development patterns (bsc#1070151)
+
+-------------------------------------------------------------------
+Thu Sep 21 10:52:11 UTC 2017 - sflees@suse.de
+
+- Swap web pattern from php5 to php7
+- Add 32bit patterns
+- Only build certain patterns for openSUSE
+
+-------------------------------------------------------------------
+Mon Jul 17 06:32:17 UTC 2017 - sflees@suse.de
+
+- Don't require cvs anymore (not common anymore).
+- Recommend git.
+
+-------------------------------------------------------------------
+Fri Apr 28 16:08:50 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

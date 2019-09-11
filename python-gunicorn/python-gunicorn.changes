@@ -1,0 +1,392 @@
+-------------------------------------------------------------------
+Mon Jul 22 08:10:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work well with pytest5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Thu Oct 18 09:59:59 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 19.9.0:
+  * Support python 3.7
+  * Tornado 5 support
+  * Eventlet 0.21 support
+
+-------------------------------------------------------------------
+Mon Jul 10 23:22:51 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu Jun 29 17:02:37 UTC 2017 - tbechtold@suse.com
+
+- update to 19.7.1:
+  - fix: continue if SO_REUSEPORT seems to be available but fails (:issue:`1480`)
+  - fix: support non-decimal values for the umask command line option (:issue:`1325`)
+  - The previously deprecated ``gunicorn_django`` command has been removed.
+    Use the :ref:`gunicorn-cmd` command-line interface instead.
+  - The previously deprecated ``django_settings`` setting has been removed.
+    Use the :ref:`raw-env` setting instead.
+  - The default value of :ref:`ssl-version` has been changed from
+    ``ssl.PROTOCOL_TLSv1`` to ``ssl.PROTOCOL_SSLv23``.
+  - fix: initialize the group access list when initgroups is set (:issue:`1297`)
+  - add environment variables to gunicorn access log format (:issue:`1291`)
+  - add --paste-global-conf option (:issue:`1304`)
+  - fix: print access logs to STDOUT (:issue:`1184`)
+  - remove upper limit on max header size config (:issue:`1313`)
+  - fix: print original exception on AppImportError (:issue:`1334`)
+  - use SO_REUSEPORT if available (:issue:`1344`)
+  - `fix leak <https://github.com/benoitc/gunicorn/commit/\
+    b4c41481e2d5ef127199a4601417a6819053c3fd>`_ of duplicate file descriptor
+    for bound sockets.
+  - add --reload-engine option, support inotify and other backends (:issue:`1368`, :issue:`1459`)
+  - fix: reject request with invalid HTTP versions
+  - add ``child_exit`` callback (:issue:`1394`)
+  - add support for eventlets _AlreadyHandled object (:issue:`1406`)
+  - format boot tracebacks properly with reloader (:issue:`1408`)
+  - refactor socket activation and fd inheritance for better support of SystemD (:issue:`1310`)
+  - fix: o fds are given by default in gunicorn (:issue:`1423`)
+  - add ability to pass settings to GUNICORN_CMD_ARGS environnement variable which helps in container world (:issue:`1385`)
+  - fix:  catch access denied to pid file (:issue:`1091`)
+  -  many additions and improvements to the documentation
+  - improvement of the binary upgrade behaviour using USR2: remove file locking (:issue:`1270`)
+  - add the ``--capture-output`` setting to capture stdout/stderr tot the log
+    file (:issue:`1271`)
+  - Allow disabling ``sendfile()`` via the ``SENDFILE`` environment variable
+    (:issue:`1252`)
+  - fix reload under pycharm (:issue:`1129`)
+  - fix: make sure to remove the signal from the worker pipe (:issue:`1269`)
+  - fix: **gthread** worker, handle removed socket in the select loop
+  - fix: Ensure response to HEAD request won't have message body
+  - fix: lock domain socket and remove on last arbiter exit (:issue:`1220`)
+  - improvement: use EnvironmentError instead of socket.error (:issue:`939`)
+  - add: new ``FORWARDDED_ALLOW_IPS`` environment variable (:issue:`1205`)
+  - fix: infinite recursion when destroying sockets (:issue:`1219`)
+  - fix: close sockets on shutdown (:issue:`922`)
+  - fix: clean up sys.exc_info calls to drop circular refs (:issue:`1228`)
+  - fix: do post_worker_init after load_wsgi (:issue:`1248`)
+  - fix access logging in gaiohttp worker (:issue:`1193`)
+  - eventlet: handle QUIT in a new coroutine (:issue:`1217`)
+  - gevent: remove obsolete exception clauses in run (:issue:`1218`)
+  - tornado: fix extra "Server" response header (:issue:`1246`)
+  - fix: unblock the wait loop under python 3.5 in sync worker (:issue:`1256`)
+  - fix: log message for listener reloading (:issue:`1181`)
+  - Let logging module handle traceback printing (:issue:`1201`)
+  - improvement: Allow configuring logger_class with statsd_host (:issue:`1188`)
+  - fix: traceback formatting (:issue:`1235`)
+  - fix: print error logs on stderr and access logs on stdout (:issue:`1184`)
+  - Simplify installation instructions in gunicorn.org (:issue:`1072`)
+  - Fix URL and default worker type in example_config (:issue:`1209`)
+  - update django doc url to 1.8 lts (:issue:`1213`)
+  - fix: miscellaneous wording corrections (:issue:`1216`)
+  - Add PSF License Agreement of selectors.py to NOTICE (:issue: `1226`)
+  - document LOGGING overriding (:issue:`1051`)
+  - put a note that error logs are only errors from Gunicorn (:issue:`1124`)
+  - add a note about the requirements of the threads workers under python 2.x (:issue:`1200`)
+  - add access_log_format to config example (:issue:`1251`)
+  - Use more pytest.raises() in test_http.py
+  - fix: NameError fileno in gunicorn.http.wsgi (:issue:`1178`)
+  - fix: check if a fileobject can be used with sendfile(2) (:issue:`1174`)
+  - doc: be more descriptive in errorlog option (:issue:`1173`)
+  - fix: don't check if a file is writable using os.stat with SELINUX (:issue:`1171`)
+  - improvement: handle HaltServer in manage_workers (:issue:`1095`)
+  - fix: Do not rely on sendfile sending requested count (:issue:`1155`)
+  - fix: claridy --no-sendfile default (:issue:`1156`)
+  - fix: LoggingCatch sendfile failure from no file descriptor (:issue:`1160`)
+  - fix: Always send access log to syslog if syslog is on
+  - fix: check auth before trying to own a file (:issue:`1157`)
+  - fix: Fix Slowloris broken link. (:issue:`1142`)
+  - Tweak markup in faq.rst
+  - fix: gaiohttp test (:issue:`1164`)
+  - fix tornado worker (:issue:`1154`)
+  - fix: make sure that a user is able to access to the logs after dropping a
+    privilege (:issue:`1116`)
+  - improvement: inherit the `Exception` class where it needs to be (:issue:`997`)
+  - fix: make sure headers are always encoded as latin1 RFC 2616 (:issue:`1102`)
+  - improvement: reduce arbiter noise (:issue:`1078`)
+  - fix: don't close the unix socket when the worker exit (:issue:`1088`)
+  - improvement: Make last logged worker count an explicit instance var (:issue:`1078`)
+  - improvement: prefix config file with its type (:issue:`836`)
+  - improvement: pidfile handing (:issue:`1042`)
+  - fix: catch OSError as well as ValueError on race condition (:issue:`1052`)
+  - improve support of ipv6 by backporting urlparse.urlsplit from Python 2.7 to
+    Python 2.6.
+  - fix: raise InvalidRequestLine when the line contains malicious data
+    (:issue:`1023`)
+  - fix: fix argument to disable sendfile
+  - fix: add gthread to the list of supported workers (:issue:`1011`)
+  - improvement: retry socket binding up to five times upon EADDRNOTAVAIL
+    (:issue:`1004`)
+  - **breaking change**: only honor headers that can be encoded in ascii to comply to
+    the RFC 7230 (See :issue:`1151`).
+  - add new parameters to access log (:issue:`1132`)
+  - fix: make sure that files handles are correctly reopened on HUP
+    (:issue:`627`)
+  - include request URL in error message (:issue:`1071`)
+  - get username in access logs (:issue:`1069`)
+  - fix statsd logging support on Python 3 (:issue:`1010`)
+  - use last version of mock.
+  - many fixes in Travis CI support
+  - miscellaneous improvements in tests
+  - fix: Fix self.nr usage in ThreadedWorker so that auto restart works as
+    expected (:issue:`1031`)
+  - fix quit signal handling (:issue:`1128`)
+  - add support for Python 3 (:issue:`1066`)
+  - fix: make graceful shutdown thread-safe (:issue:`1032`)
+  - fix ssl options (:issue:`1146`, :issue:`1135`)
+  - don't check timeout when stopping gracefully (:issue:`1106`)
+  - add SSL support (:issue:`1105`)
+  - fix link to proc name setting (:issue:`1144`)
+  - fix worker class documentation (:issue:`1141`, :issue:`1104`)
+  - clarify graceful timeout documentation (:issue:`1137`)
+  - don't duplicate NGINX config files examples (:issue:`1050`, :issue:`1048`)
+  - add `web.py` framework example (:issue:`1117`)
+  - update Debian/Ubuntu installations instructions (:issue:`1112`)
+  - clarify `pythonpath` setting description (:issue:`1080`)
+  - tweak some example for python3
+  - clarify `sendfile` documentation
+  - miscellaneous typos in source code comments (thanks!)
+  - clarify why REMOTE_ADD may not be the user's IP address (:issue:`1037`)
+  - fix: reloader should survive SyntaxError (:issue:`994`)
+  - fix: expose the reloader class to the worker.
+- convert to singlespec
+- fix Sourc url
+
+-------------------------------------------------------------------
+Wed May  6 13:31:17 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 19.3.0:
+  * fix: issue 978 make sure a listener is inheritable
+  * add check_config class method to workers
+  * fix: issue 983 fix select timeout in sync worker with multiple
+    connections
+  * allows workers to access to the reloader. close issue 984
+  * raise TypeError instead of AssertionError
+  * make Logger.loglevel a classs attribute
+  * fix: issue 988 fix syntax errors in examples/gunicorn_rc
+- additional changes from version 19.2.1:
+  * expose loglevel in the Logger class
+  * fix issue 977 fix initial crash
+  * document security mailing-list in the contributing page
+- additional changes from version 19.2:
+  * optimize the sync workers when listening on a single interface
+  * add –sendfile settings to enable/disable sendfile. fix issue 856
+  * add the selectors module to the code base. issue 886
+  * add –max-requests-jitter setting to set the maximum jitter to
+    add to the max-requests setting
+  * fix issue 899 propagate proxy_protocol_info to keep-alive
+    requests
+  * fix issue 863 worker timeout: dynamic timeout has been removed
+  * fix: Avoid world writable file
+  * fix issue 941 set logconfig default to paster more trivially
+  * add statsd-prefix config setting: set the prefix to use when
+    emitting statsd metrics
+  * issue 832 log to console by default
+  * fix issue 908 make sure the worker can continue to accept
+    requests
+  * fix issue 867 Fix eventlet shutdown to actively shut down the
+    workers
+- remove python-nose from BuildRequires: unneeded
+- add python-mock and python-pytest-cov as test dependencies
+- add python-unittest2 as test dependencies for SLE11
+- remove version pinning for test requirements with sed
+- reenable the tests
+- move documentation files under the main package docdir
+
+-------------------------------------------------------------------
+Thu Dec 11 15:00:41 UTC 2014 - axel.braun@gmx.de
+
+- update to version 19.1.1
+    fix #835: display correct pid of already running instance
+    fix : fix PyTest class in setup.py.
+    fix #838: statsd logegr, send statsd timing metrics in milliseconds
+    fix #839: statsd logger, allows for empty log message while pushing metrics and restore worker number in DEBUG logs
+    fix #850: add timezonw to logging
+    fix #853: Respect logger_class setting unless statsd is on
+    fix #830 make sure gaiohttp worker is shipped with gunicorn.
+    fix #785: handle binary type address given to a client socket address
+    fix graceful shutdown. make sure QUIT and TERMS signals are switched everywhere.
+    support loading config from module (#799)
+    fix check for file-like objects (#805)
+    fix #815 args validation in WSGIApplication.init
+    fix #787 check if we load a pyc file or not.
+    fix #771: support tornado 4.0
+    fix #783: x_headers error. The x-forwarded-headers option has been removed in c4873681299212d6082cd9902740eef18c2f14f1. The discussion is available on #633.
+    fix: fetch all body in input. fix #803
+    fix: don’t install the worker if python < 3.3
+    fix #822: Support UNIX sockets in gaiohttp worker
+    fix #790 StopIteration shouldn’t be catched at this level.
+    add statsd logging handler fix #748
+    fix #809 Set global logging configuration from a Paste config.
+    fix RuntimeError in gunicorn.reloader (#807)
+    update faq: put a note on how watch logs in the console since many people asked for it.
+    details see http://docs.gunicorn.org/en/19.1.1/news.html#id1
+- remove test 
+
+-------------------------------------------------------------------
+Tue Dec 10 14:17:37 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 18.0
+  + new: add -e/--env command line argument to pass an environment
+    variables to gunicorn
+  + new: add --chdir command line argument to specified directory
+    before apps loading. - new: add wsgi.file_wrapper support in
+    async workers
+  + new: add --paste command line argument to set the paster config file
+  + deprecated: the command gunicorn_django is now deprecated. You
+    should now run your application with the WSGI interface installed 
+    with your project 
+    (see https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/gunicorn/)
+    for more infos.
+  + deprecated: the command gunicorn_paste is deprecated. You now should
+    use the new --paste argument to set the configuration file of your
+    paster application.
+  + fix: Removes unmatched leading quote from the beginning of the
+    default access log format string
+  + fix: null timeout
+  + fix: gevent worker
+  + fix: don’t reload the paster app when using pserve
+  + fix: after closing for error do not keep alive the connection
+  + fix: responses 1xx, 204 and 304 should not force the connection
+    to be closed
+- Changes from 17.5
+  + new: add signals documentation
+  + new: add post_worker_init hook for workers
+  + new: try to use gunicorn.conf.py in current folder as the default
+    config file.
+  + fix graceful timeout with the Eventlet worker
+  + fix: don’t raise an error when closing the socket if already closed
+  + fix: fix –settings parameter for django application and try to find
+    the django settings when using the gunicorn command.
+  + fix: give the initial global_conf to paster application
+  + New versionning: With this release, the versionning of Gunicorn is
+    changing. Gunicorn is stable since a long time and there is no point
+    to release a “1.0” now. It should have been done since a long time.
+    0.17 really meant it was the 17th stable version. From the beginning
+    we have only 2 kind of releases:
+    - major release: releases with major changes or huge features added
+      services releases: fixes and minor features added So from now we
+      will apply the following versionning <major>.<service>.
+      For example 17.5 is a service release.
+- Changes from 0.17.4
+  + fix unix socket address parsing
+- Changes from 0.17.3
+  + add systemd sockets support
+  + add python -m gunicorn.app.wsgiapp support
+  + improve logger class inheritance
+  + exit when the config file isn’t found
+  + add the -R option to enable stdio inheritance in daemon mode
+  + don’t close file descriptors > 3 in daemon mode
+  + improve STDOUT/STDERR logging
+  + fix pythonpath option
+  + fix pidfile creation on Python 3
+  + fix gevent worker exit
+  + fix ipv6 detection when the platform isn’t supporting it
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:26 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Jan 14 18:28:52 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 14 17:06:58 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.17.2:
+  * optimize readline()
+  * make import errors more visible
+  * don't pass ssl_options if there are any
+  * don't accept str or unicode in the body
+- Build documentation from source with python-Sphinx
+- Remove duplicate files with fdupes
+
+-------------------------------------------------------------------
+Tue May 15 10:52:16 UTC 2012 - suse@ammler.ch
+
+- update to version 0.14.3
+  - improvement: performance of http.body.Body.readline()
+  - improvement: log HTTP errors in access log like Apache
+  - improvment: display traceback when the worker fails to boot
+  - improvement: makes gunicorn work with gevent 1.0
+  - examples: websocket example now supports hybi13
+  - fix: reopen log files after initialization
+  - fix: websockets support
+  - fix: django1.4 support
+  - fix: only load the paster application 1 time 
+
+-------------------------------------------------------------------
+Thu Mar 22 10:05:23 UTC 2012 - suse@ammler.ch
+
+- Update to version 0.14.2
+  - add validate_class validator: allows to use a class or a method 
+    to initialize the app during in-code configuration
+  - add support for max_requests in tornado worker
+  - add support for disabling x_forwarded_for_header in tornado worker
+  - gevent_wsgi is now an alias of gevent_pywsgi
+  - Fix gevent_pywsgi worker
+
+-------------------------------------------------------------------
+Sat Mar 10 19:39:23 UTC 2012 - saschpe@gmx.de
+
+- Fix doc package summary
+
+-------------------------------------------------------------------
+Sat Mar 10 16:07:53 UTC 2012 - saschpe@gmx.de
+
+- Update to version 0.14.1
+
+-------------------------------------------------------------------
+Fri Sep 23 12:58:37 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.13.4:
+- Run testsuite
+- BuildRequire python-distribute instead of python-setuptools
+- Package examples, LICENSE, NOTICE, README.rst, THANKS
+
+-------------------------------------------------------------------
+Fri Sep 23 11:49:59 UTC 2011 - suse@ammler.ch
+
+- upstream update 0.13.3
+  * fix util.closerange function used to prevent leaking fds on 
+    python 2.5 (typo)
+- update to 0.13.2
+  * refactor gevent worker
+  * prevent leaking fds on reexec
+  * fix inverted request_time computation
+
+-------------------------------------------------------------------
+Thu Aug 25 15:12:59 UTC 2011 - suse@ammler.ch
+
+- upstream update 0.13.1
+  * Fix unix socket. log argument was missing.
+
+- update to 0.13.0
+  * Improve logging: allows file-reopening and add access log file 
+    compatible with the apache combined log format
+  * Add the possibility to set custom SSL headers. 
+    X-Forwarded-Protocol and X-Forwarded-SSL are still the default
+  * New on_reload hook to customize how gunicorn spawn new workers on SIGHUP
+  * Handle projects with relative path in django_gunicorn command
+  * Preserve path parameters in PATH_INFO
+  * post_request hook now accepts the environ as argument.
+  * When stopping the arbiter, close the listener asap.
+  * Fix Django command run_gunicorn in settings reloading
+  * Fix Tornado worker exiting
+  * Fix the use of sendfile in wsgi.file_wrapper
+
+-------------------------------------------------------------------
+Fri Jul  8 12:25:33 UTC 2011 - ammler@openttdcoop.org
+
+- spec header
+- dropped _service
+- support for SLE_11
+
+-------------------------------------------------------------------
+Sat Jul  2 20:36:39 UTC 2011 - ammler@openttdcoop.org
+
+- initial package of version 0.12.2
+

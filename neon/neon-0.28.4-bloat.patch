@@ -1,0 +1,13 @@
+Index: neon-config.in
+===================================================================
+--- neon-config.in.orig
++++ neon-config.in
+@@ -73,7 +73,7 @@ while test $# -gt 0; do
+        	;;
+ 
+     --libs)
+-        LIBS="-lneon @NEON_LIBS@"
++        LIBS="-lneon"
+ 	# Don't add standard library paths
+         if test "$prefix" != "/usr"; then
+            LIBS="-L${libdir} ${LIBS}"

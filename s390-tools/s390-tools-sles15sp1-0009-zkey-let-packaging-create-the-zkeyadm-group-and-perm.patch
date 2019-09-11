@@ -1,0 +1,38 @@
+Subject: zkey: let packaging create the zkeyadm group and permission setup
+From: Philipp Rudo <prudo@linux.ibm.com>
+
+Summary:     zkey: Add support of protected key crypto for dm-crypt.
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             plain format by providing a tool to manage a key repository
+             allowing to associate secure keys with disk partitions or logical
+             volumes.
+Upstream-ID: 3eb9af9c97c98e9f9665af1c5e671266400aaafc
+Problem-ID:  SEC1800
+
+Upstream-Description:
+
+             zkey: let packaging create the zkeyadm group and permission setup
+
+             Signed-off-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+---
+ zkey/Makefile |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+--- a/zkey/Makefile
++++ b/zkey/Makefile
+@@ -36,9 +36,8 @@ install: all
+ 	$(INSTALL) -g $(GROUP) -o $(OWNER) -m 755 zkey $(DESTDIR)$(USRBINDIR)
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
+ 	$(INSTALL) -m 644 -c zkey.1 $(DESTDIR)$(MANDIR)/man1
+-	getent group zkeyadm >/dev/null || groupadd -r zkeyadm
+-	$(INSTALL) -d -g zkeyadm -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey
+-	$(INSTALL) -d -g zkeyadm -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey/repository
++	$(INSTALL) -d -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey
++	$(INSTALL) -d -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey/repository
+ 
+ endif
+ 

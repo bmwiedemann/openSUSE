@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Wed Aug 14 17:35:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Fixed keys in menu controlling game.
+  + Fixed keyboard shortcuts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 13:20:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Stable release version bump.
+
+-------------------------------------------------------------------
+Tue Mar  5 10:18:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 07:05:55 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Moved app menu to in-game menu.
+  + Removed quit menu item.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  9 08:38:10 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0.1:
+  + Fixed game menu not appearing (glgo#GNOME/atomix#13).
+- Changes from version 3.30.0:
+  + Do not show scores after entering scores.
+  + Fixed libgnome-games-support git repo typo.
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Jun 19 00:29:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.3:
+  + Implemented appmenu (glgo#GNOME/atomix#7).
+  + Handle highscores using libgnome-games-support
+    (glgo#GNOME/atomix#6).
+  + Add flatpak manifest (glgo#GNOME/atomix#11).
+  + Port to Meson.
+  + Level names made translatable.
+  + Migrated to gettext.
+  + Updated bugzilla references to gitlab.
+- Add meson BuildRequires and corresponding macros following
+  upstreams port to meson buildsystem.
+- Add pkgconfig(libgnome-games-support-1) BuildRequires: New
+  dependency.
+- Drop intltool BuildRequires: No longer needed, nor used.
+- Use autosetup macro.
+- Drop post(un) handling of icon_theme_cache_post(un), no longer
+  needed on current versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:06 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 19 18:38:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Added content ratings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 08:09:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:38:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Port from gnome-common.
+  + Fix compilation warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 09:55:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Use label word wrap instead of newlines.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 10:48:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:46:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + New icon and logo for GNOME3.
+  + Symbolic and low-res icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 09:50:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 15:53:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Updated Appdata to spec version 0.7.
+  + Added tag to Appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 08:15:29 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Added scalable icon (bgo#746471).
+  + Use new icon and GtkApplication (bgo#742871).
+  + Single-instance application.
+  + Remove window border.
+  + Register window actions.
+  + Fixed autogen deprecation warnings.
+  + Updated translations.
+- Add %icon_theme_cache_post/%icon_theme_cache_postun macros to
+  post/postun scripts in order to rebuild the icon cache.
+
+-------------------------------------------------------------------
+Tue Dec 22 13:57:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 19:39:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Show gameplay tips (bgo#587868).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:35:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + No changes, stable version.
+
+-------------------------------------------------------------------
+Mon Sep 14 19:40:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  1 11:23:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Fixed about dialog not showing close button.
+  + Website on about dialog should not be translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 08:47:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated translations.
+- Drop pkgconfig(libxml2) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Wed Jun 24 08:46:39 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:20:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Fixed licensing mistake in appdata (bgo#746473).
+
+-------------------------------------------------------------------
+Tue Mar 17 08:10:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 14:07:25 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 3.15.91.
+

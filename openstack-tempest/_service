@@ -1,0 +1,11 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/Tempest/Tempest.spec.j2</param>
+    <param name="output-name">openstack-tempest.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/tempest/18.0.0/requirements.txt</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

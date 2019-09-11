@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Oct 11 22:27:43 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.5.1
+  * Support for MikTeX.
+  * New language translations for Persian and Korean.
+  * Corrected sorting in Polytonik Greek, Vietnamese.
+  * By default, make-rules documentation is not created.
+  * texindy utf8 codepage for Latin scripts supported.
+- Drop fix-alphabets-doc-geometry.dpatch.diff,
+  fix-configure.dpatch.diff, fix-echo-expansion.dpatch.diff,
+  fix-entry-with-command.dpatch.diff (merged upstream)
+- Add 1000_Unescaped-left-brace-deprecated-in-regexps.diff
+- Re-copy fix-FHS.dpatch.diff, help-option.dpatch.diff from Debian.
+
+-------------------------------------------------------------------
+Mon Mar 28 22:53:50 UTC 2016 - dvaleev@suse.com
+
+- Exclude POWER64 architecture, no clisp available 
+
+-------------------------------------------------------------------
+Mon Sep 30 10:12:46 UTC 2013 - tchvatal@suse.com
+
+- Fix build for Factory and 13.1
+
+-------------------------------------------------------------------
+Tue Jul 10 10:20:18 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+
+-------------------------------------------------------------------
+Fri Jun 22 22:20:53 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.4
+* No changelog provided (only moved from 2.4~pre1 to 2.4 anyway)
+
+-------------------------------------------------------------------
+Thu Jan 27 15:56:56 UTC 2011 - jengelh@medozas.de
+
+- Change RPM group to one of the known ones
+
+-------------------------------------------------------------------
+Mon Jun  7 14:46:31 UTC 2010 - jengelh@medozas.de
+
+- Initial package
+

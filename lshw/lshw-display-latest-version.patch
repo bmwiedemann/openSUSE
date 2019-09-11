@@ -1,0 +1,29 @@
+From 5e58d66598908249f44d349d22efdc4524f0cfcb Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Mon, 29 Apr 2019 22:39:08 +0530
+Subject: [PATCH] Fix version output
+
+Display latest version only when its greater than current version.
+
+"lshw -version" tries to get current version from upstream repository.
+If it contains old version then output becomes confusing (as running
+version > latest version).
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/lshw.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lshw.cc b/src/lshw.cc
+index 219a008..be233eb 100644
+--- a/src/lshw.cc
++++ b/src/lshw.cc
+@@ -121,7 +121,7 @@ char **argv)
+       printf("%s\n", getpackageversion());
+       if(latest)
+       {
+-        if(strcmp(latest, getpackageversion()) != 0)
++        if(strcmp(latest, getpackageversion()) >= 0)
+           fprintf(stderr, _("the latest version is %s\n"), latest);
+       }
+       exit(0);

@@ -1,0 +1,31 @@
+From 5e397db506aa75e50387bdcb6bfd3d4fa7ac92e7 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Mon, 27 May 2019 14:50:36 +0200
+Subject: [PATCH] rc-local-generator: deprecate halt.local support
+
+Its support will be dropped after systemd v242, see [1]. So let's give users of
+this script a chance to replace it nicely.
+
+[1] https://github.com/systemd/systemd/pull/12571
+---
+ src/rc-local-generator/rc-local-generator.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/rc-local-generator/rc-local-generator.c b/src/rc-local-generator/rc-local-generator.c
+index 7a3948e92d..5699c4f876 100644
+--- a/src/rc-local-generator/rc-local-generator.c
++++ b/src/rc-local-generator/rc-local-generator.c
+@@ -68,6 +68,10 @@ static int run(const char *dest, const char *dest_early, const char *dest_late)
+         if (check_executable(RC_LOCAL_SCRIPT_PATH_STOP) >= 0) {
+                 log_debug("Automatically adding halt-local.service.");
+ 
++                log_warning("Support for %s will be removed soon. "
++                            "Please see systemd-shutdown(8) man page for a similar but better alternative.",
++                            RC_LOCAL_SCRIPT_PATH_STOP);
++
+                 k = add_symlink("halt-local.service", "final.target");
+         }
+ 
+-- 
+2.21.0
+

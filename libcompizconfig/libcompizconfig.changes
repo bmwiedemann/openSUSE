@@ -1,0 +1,238 @@
+-------------------------------------------------------------------
+Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * No changelog available.
+- Remove libcompizconfig-0.8.14-fix-protobuf.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue May 15 10:49:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Add libcompizconfig-0.8.14-fix-protobuf.patch: Fix protobuf
+  support.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sun Apr 10 22:40:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.1:
+  * Include autogen.sh into the tarball.
+  * Drop locales support which is without actual locales.
+
+-------------------------------------------------------------------
+Sat Feb 13 09:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Avoid using templates in C code.
+
+-------------------------------------------------------------------
+Sat Dec 19 21:13:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Only suggest libcompizconfig-backend.
+- Use a better upstream tarball.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:48:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.9.
+- Update dependencies.
+- Recommend libcompizconfig-backend.
+- Remove libcompizconfig-rpmlintrc.
+
+-------------------------------------------------------------------
+Wed May 14 18:00:00 UTC 2014 - ku.b@gmx.de
+
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 14 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- Spec clean up:
+  + skip unused patch section
+  + fix License
+  + skip old ccs-lib obsoletes / provides
+  + skip ExclusiveArch: section in spec file
+
+-------------------------------------------------------------------
+Tue Apr 28 12:00:00 UTC 2011 - robertherb@arcor.de - 0.8.8
+
+- Update to version 0.8.8
+
+-------------------------------------------------------------------
+Fri Nov 13 10:03:52 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.8.4:
+  + Ignore extensions and string restrictions at startup
+  + Fix circular dependencies
+  + Use XDG_CACHE_HOME for protobuf cache
+- Drop libcompizconfig-linkX11.patch - upstream included.
+- Disable libcompizconfig-NOMAD.diff.
+
+-------------------------------------------------------------------
+Tue Aug 18 12:25:27 CEST 2009 - dominique-obs@leuenberger.net
+
+- Add libcompizconfig-linkX11.patch to fix startup error due to
+  missing symbols (bnc#525691)
+- Add missing startup-notify-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 15 16:47:49 CEST 2009 - crrodriguez@suse.de
+
+- use --disable-static instead of removing "*.a"  
+
+-------------------------------------------------------------------
+Wed Feb 18 14:21:33 EST 2009 - jpr@novell.com
+
+- Update libcompizconfig-config-dir.patch to cover the ini backend as
+  well bnc#476288
+
+-------------------------------------------------------------------
+Fri Jan 30 17:09:08 CET 2009 - rodrigo@novell.com
+
+- Add libcompizconfig-config-dir.patch for bnc#438081
+
+-------------------------------------------------------------------
+Mon Sep 29 16:54:42 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Wed Sep 24 13:36:20 IST 2008 - cyberorg@opensuse.org
+
+- Fix .changes order 
+
+-------------------------------------------------------------------
+Wed Sep 17 20:23:19 IST 2008 - cyberorg@opensuse.org
+
+- Release 0.7.8 
+- l10n updates
+- Fix many mem leaks
+- Added kde4 session support
+
+-------------------------------------------------------------------
+Thu Sep 10 00:00:00 CEST 2008 - davidr@novell.com
+
+- Track changes to compiz package by adding wm and glx to the
+  default set of plugins.
+- Add dmx to the default set of plugins.
+
+-------------------------------------------------------------------
+Tue Jul  1 17:34:06 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- update to version 0.7.6
+  - New "internal" tag in action metadata. The tag can be used to
+    indicate that a binding is not a global binding.
+  - Added workaround to ensure that Benchmark is the last plugin
+  - App Switcher: Panel switching bindings moved to Bindings
+    section
+
+-------------------------------------------------------------------
+Mon Apr 14 20:20:08 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Thu Apr 03 22:03:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.4 release
+- Add overlapping output handling option to display settings
+- Fix setting context from option changes (e.g. via dbus)
+- Put focus stealing prevention level to Focus behaviour 
+- Make sure that symbols are only loaded locally
+
+-------------------------------------------------------------------
+Fri Mar 14 09:28:04 CET 2008 - aj@suse.de
+
+- Fix specfile to not use %version without version set.
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.2 development release
+
+-------------------------------------------------------------------
+Fri Feb 08 23:47:00 IST 2008 - cyberorg@cyberorg.info
+
+- sync to latest git
+- major review and fixes
+
+-------------------------------------------------------------------
+Mon Jan 14 09:47:40 CET 2008 - aj@suse.de
+
+- Fix potential bufferoverflows.
+
+-------------------------------------------------------------------
+Tue Dec 04 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- sync to latest git
+
+-------------------------------------------------------------------
+Tue Oct 16 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- Update to release 0.6.0
+
+-------------------------------------------------------------------
+Sat Aug 25 16:00:00 CEST 2007 - mrueckert@suse.de
+
+- fixed filelist
+- minimized buildrequires
+- fixed rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Aug 24 19:11:00 IST 2007 - cyberorg@cyberorg.info
+
+- Add %post and %postun to run ldconfig- shut rpmlint up
+- Sync to the latest git.
+- new action settings rework
+
+-------------------------------------------------------------------
+Tue Aug 21 01:56:33 CEST 2007 - ro@suse.de
+
+- update to git-HEAD to fix build 
+
+-------------------------------------------------------------------
+Mon Aug 13 18:03:15 IST 2007 - cyberorg@cyberorg.info
+
+- Update to 0.5.2 release.
+- Tons of bug fixes.
+- Handle plugin requirement as after rule.
+- Split out backend definitions in separate header file.
+- Correctly reset privData pointer.
+- Fixed getExistingProfiles for new config path
+- Added proper debug message handling.
+- Ensure ccp being loaded in plugin instead of sorted plugin list generation.
+- Use default value for active_plugins setting rather than <autoenable> tag.
+- Added setter / getter for plugin list autosorting setting.
+- Added setter / getter for plugin list autosorting setting.
+
+-------------------------------------------------------------------
+Wed Aug  8 16:07:58 CEST 2007 - schwab@suse.de
+
+- Fix specfile.
+
+-------------------------------------------------------------------
+Tue Aug  7 07:29:11 CEST 2007 - coolo@suse.de
+
+- fix the biggest packaging problems
+
+-------------------------------------------------------------------
+Mon Aug  6 20:42:16 CEST 2007 - dreveman@suse.de
+
+- Make it possible to use ccp at the same time as the gconf
+  plugin.
+
+-------------------------------------------------------------------
+Mon Aug  6 17:05:55 CEST 2007 - dreveman@suse.de
+
+- Initial version of package
+

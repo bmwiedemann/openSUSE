@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Fri Mar 29 11:37:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Downgrade to 0.1.11:
+  * Reverts back to avoid API change that caused iso8601.Utc not
+    working on py3 (Fedora and Deb both ship this version)
+
+-------------------------------------------------------------------
+Fri Mar 29 11:34:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Download the sources from pypi and run fdupes
+
+-------------------------------------------------------------------
+Tue Jan  8 17:39:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 10 04:32:29 UTC 2017 - arun@gmx.de
+
+- update to version 0.1.12:
+  * Fix class reference for iso8601.Utc in module docstring (thanks to
+    felixschwarz in
+    https://bitbucket.org/micktwomey/pyiso8601/pull-requests/7/fix-class-reference-for-iso8601utc-in/diff)
+
+-------------------------------------------------------------------
+Thu Mar 16 14:45:48 UTC 2017 - tbechtold@suse.com
+
+- Switch to singlespec approach
+
+-------------------------------------------------------------------
+Mon Mar 14 13:49:16 UTC 2016 - tbechtold@suse.com
+
+- update to 0.1.11:
+  * Remove logging
+  * Add support for , as separator for fractional part
+  * Add Python 3.4 and 3.5 to tox test config.
+  * Add PyPy 3 to tox test config.
+  * Link to documentation at http://pyiso8601.readthedocs.org/
+
+-------------------------------------------------------------------
+Wed Mar 12 15:16:08 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.1.10
+  + Fixes https://bitbucket.org/micktwomey/pyiso8601/issue/14/regression-yyyy-mm-no-longer-parses
+  + Adds YYYY as a valid date (uses 1 for both month and day)
+  + Woo, semantic versioning, .10 at last.
+- Changes from version 0.1.9:
+  + Lots of fixes tightening up parsing from jdanjou.
+  + Release addresses https://bitbucket.org/micktwomey/pyiso8601/issue/13/new-release-based-on-critical-bug-fix
+- Run tests again
+
+-------------------------------------------------------------------
+Thu Feb 13 08:15:24 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #316168)
+
+-------------------------------------------------------------------
+Fri Oct 25 12:43:53 UTC 2013 - dmueller@suse.com
+
+- update to 0.1.8:
+  * Remove +/- chars from README.rst and ensure tox tests run using LC_ALL=C.
+  * Fix parsing of microseconds 
+  * Correct negative timezone offsets
+  * Wow, it's alive! First update since 2007
+  * Moved over to https://bitbucket.org/micktwomey/pyiso8601
+  * Add support for python 3
+  * Switched to py.test and tox for testing
+  * Make seconds optional in date format
+  * Correctly raise ParseError for more invalid inputs
+  * Support more variations of ISO 8601 dates, times and time zone specs.
+  * Fix microsecond rounding issues
+  * Fix pickling and deepcopy of returned datetime objects
+  * Fix timezone offsets without a separator
+  * "Z" produces default timezone if one is specified
+  * Handle compact date format
+
+-------------------------------------------------------------------
+Thu Oct 24 11:07:08 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Jan  7 17:26:05 UTC 2012 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Now build as noarch;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Mon May 31 07:24:48 UTC 2010 - toms@suse.de
+
+- Fixed Group: Development/Libraries/Python to make it consistent
+  with other Python packages
+- Added copyright notice
+- Added .changes file 
+

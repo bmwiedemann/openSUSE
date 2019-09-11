@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Nov 11 19:20:32 UTC 2014 - coolo@suse.com
+
+- updated to 0.603
+ - mark Net::FTP 2.79 as a valid base too, based on patch from
+   kimmo[AT]suominen[DOT]com, https://github.com/noxxi/p5-net-inet6glue/pull/3
+ 0.602 2014/01/17
+ - fix t/01_inet_is_inet6.t
+ 0.601 2014/01/14
+ - add support for IO::Socket::IP instead of IO::Socket::INET6 and prefer it
+ 0.600_1 2013/05/31
+ - set AUTHOR in Makefile.PL back from array to string, because array is
+   only supported in newer ExtUtils::MakeMaker versions
+
+-------------------------------------------------------------------
+Mon Sep 23 10:58:29 UTC 2013 - coolo@suse.com
+
+- initial package 0.6
+    * created by cpanspec 1.78.07
+

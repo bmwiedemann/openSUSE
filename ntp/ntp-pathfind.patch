@@ -1,0 +1,26 @@
+--- sntp/libopts/init.c.orig
++++ sntp/libopts/init.c
+@@ -33,6 +33,8 @@ static tSuccess
+ do_presets(tOptions * opts);
+ /* = = = END-STATIC-FORWARD = = = */
+ 
++#define PROC_BINARY "/proc/self/exe"
++
+ /**
+  *  Make sure the option descriptor is there and that we understand it.
+  *  This should be called from any user entry point where one needs to
+@@ -104,7 +106,13 @@ validate_struct(tOptions * opts, char co
+         else
+             *pp = pname;
+ 
+-        pz = pathfind(getenv("PATH"), pname, "rx");
++#if defined(HAVE_CANONICALIZE_FILE_NAME)
++        pz = canonicalize_file_name(PROC_BINARY);
++#elif defined(HAVE_REALPATH)
++        pz = realpath(PROC_BINARY, NULL);
++#else
++        pz = pathfind(getenv("PATH"), pp, "rx");
++#endif
+         if (pz != NULL)
+             pname = VOIDP(pz);
+ 

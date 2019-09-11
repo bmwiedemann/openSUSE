@@ -1,0 +1,48 @@
+From d2779855de45d1ac8b5152cad6f2d47fc9292317 Mon Sep 17 00:00:00 2001
+From: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Date: Tue, 9 Jan 2018 13:27:04 +0100
+Subject: [PATCH 35/43] tools/kvm_stat: avoid 'is' for equality checks
+
+Use '==' for equality checks and 'is' when comparing identities.
+
+An example where '==' and 'is' behave differently:
+>>> a = 4242
+>>> a == 4242
+True
+>>> a is 4242
+False
+
+Signed-off-by: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 369d5a85bb782ecf63c5bae9686c7e6104eea991)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index a82015f08d75..6d956824dcb6 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1088,7 +1088,7 @@ class Tui(object):
+         stats = self.stats.get(self._display_guests)
+         total = 0.
+         for key, values in stats.items():
+-            if key.find('(') is -1:
++            if key.find('(') == -1:
+                 total += values.value
+ 
+         if self._sorting == SORT_DEFAULT:
+@@ -1113,7 +1113,7 @@ class Tui(object):
+                 self.screen.addstr(row, 1, '%-40s %10d%7.1f %8s' %
+                                    (key, values.value, values.value * 100 / total,
+                                     cur))
+-                if cur is not '' and key.find('(') is -1:
++                if cur != '' and key.find('(') == -1:
+                     tavg += cur
+             row += 1
+         if row == 3:
+-- 
+2.12.3
+

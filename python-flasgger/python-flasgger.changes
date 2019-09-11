@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Aug  6 14:25:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.9.3
+  * Fix compatibility with Flask GraphQL
+  * apispec_to_template definition bugfix
+  * Bugfix: can't dict.update([dict])
+  * Add support for docExpansion in UI 2
+  * Switch `yaml.load` to `yaml.safe_load`.
+  * Add safe getter with empty return if attrib does not exist
+  * swagger-ui 3 version updated to 3.20.5 
+  * use JWT_AUTH_HEADER_NAME (default value: Authorization)
+
+-------------------------------------------------------------------
+Fri Mar 15 10:35:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Comment the builddeps as they create cycle, when the tests are
+  actually working we need to mulitbuild this pkg
+
+-------------------------------------------------------------------
+Thu Mar 14 17:03:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description and use noun phrase.
+
+-------------------------------------------------------------------
+Thu Mar 14 11:59:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by httpbin

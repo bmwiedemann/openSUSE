@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue Aug 13 13:41:47 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19:
+  * Mostly internal changes
+- Drop no longer needed patches:
+  * libiscsi-1.18.0-Fix-32bit-build.patch
+  * libiscsi-rdma.patch
+
+-------------------------------------------------------------------
+Fri Jun 22 07:57:31 UTC 2018 - mpluskal@suse.com
+
+- Fix building of recent rdma (boo#1098749):
+  * libiscsi-rdma.patch
+
+-------------------------------------------------------------------
+Wed Mar 14 08:58:53 UTC 2018 - mpluskal@suse.com
+
+- Morernise spec file with spec-clener
+
+-------------------------------------------------------------------
+Sat Apr  1 10:29:07 UTC 2017 - mpluskal@suse.com
+
+- Do not build with -Werror
+
+-------------------------------------------------------------------
+Mon Nov 14 16:39:09 UTC 2016 - msuchanek@suse.com
+
+- Fix 32bit build (gh#sahlberg/libiscsi#221, boo#1009456)
+  * libiscsi-1.18.0-Fix-32bit-build.patch
+
+-------------------------------------------------------------------
+Sun Nov  6 16:31:38 UTC 2016 - mpluskal@suse.com
+
+- Exclued from building on 32 bit architectures
+
+-------------------------------------------------------------------
+Sun Nov  6 12:12:45 UTC 2016 - jengelh@inai.de
+
+- Resolve orthographic problems in description
+
+-------------------------------------------------------------------
+Sun Nov  6 09:03:20 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.18.0:
+  * Various test updates
+  * Add support for iSER
+  * Add support for zero-copy reads
+
+-------------------------------------------------------------------
+Tue May 10 07:45:44 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.17.0 (fate#320080)
+  * Bugfix for a rare condition where if a  DATA-OUT PDU has a 
+    callback registered, it can cause a crash on reconnect/timeout.
+
+-------------------------------------------------------------------
+Thu May  5 16:28:17 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.16.0
+  * Various test updates.
+  * Add tests for ExtendedCopy and ReceiveCopyResults
+  * Add support for WRITE_ATOMIC_16 and tests
+  * Multipath tests added
+  * Persistent Reservation test updates.
+  * Make sure to process target NOPs in the tests
+  * Fix broken CHAP has handling.
+
+-------------------------------------------------------------------
+Thu Nov 26 08:04:36 UTC 2015 - mpluskal@suse.com
+
+- Initial package for libscsi 1.15.0
+

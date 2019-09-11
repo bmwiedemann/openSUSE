@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Tue Jun 11 14:29:21 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Sat Jan 19 03:02:08 UTC 2019 - psimons@suse.com
+
+- Update unordered-containers to version 0.2.10.0.
+  ## 0.2.10.0
+
+   * Add `HashMap.alterF`.
+
+   * Add `HashMap.keysSet`.
+
+   * Make `HashMap.Strict.traverseWithKey` force the results before
+     installing them in the map.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:12 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:46 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update unordered-containers to version 0.2.9.0.
+
+  * Add `Ord/Ord1/Ord2` instances. (Thanks, Oleg Grenrus)
+
+  * Use `SmallArray#` instead of `Array#` for GHC versions 7.10 and above.
+    (Thanks, Dmitry Ivanov)
+
+  * Adjust for `Semigroup => Monoid` proposal implementation.
+    (Thanks, Ryan Scott)
+
+  * Fix a strictness bug in `fromListWith`.
+
+  * Enable eager blackholing for pre-8.2 GHC versions to work around
+    a runtime system bug. (Thanks, Ben Gamari)
+
+  * Avoid sketchy reimplementation of `ST` when compiling with recent
+    GHC.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Mar 27 12:41:23 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.8.0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jan  8 21:12:39 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.7.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:12:59 UTC 2016 - psimons@suse.com
+
+- Update to version 0.2.7.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Jun 10 07:00:11 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.2.7.1
+- remove useless _service
+* Fix linker error related to popcnt.
+
+-------------------------------------------------------------------
+Sat Feb 20 08:32:45 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.2.7.0
+* support criterion-1.1
+* Add unionWithKey for hash maps.
+
+-------------------------------------------------------------------
+Tue Feb 16 20:05:18 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.2.6.0
+* Mark several modules as Trustworthy.
+* Add Hashable instances for HashMap and HashSet.
+* Add mapMaybe, mapMaybeWithKey, update, alter, and intersectionWithKey.
+* Add roles.
+* Add Hashable and Semigroup instances.
+
+-------------------------------------------------------------------
+Tue Apr 14 08:20:00 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.2.5.1
+* no changelog
+
+-------------------------------------------------------------------
+Fri Sep 12 06:48:21 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 0.2.4.0
+* no changelog
+* Haskell Platform 2014.2.0.0
+
+-------------------------------------------------------------------
+Tue Sep  2 10:25:16 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:26:22 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+- reorganize spec file
+
+-------------------------------------------------------------------
+Mon May  6 17:53:25 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Sat Mar 23 11:20:58 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.2.3.0 from upstream
+- prepare for Factory submission
+* copyright notice
+* service localonly
+* expand macro in name tag
+
+-------------------------------------------------------------------
+Wed Apr 18 16:43:52 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Wed Feb  7 16:06:15 UTC 2018 - coolo@suse.com
+
+- updated to 3.27
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.27  2017-07-28
+     - Fix POD spelling error [#118545].
+  
+  3.26  2016-09-30
+     - remove unused module Apache::AuthCookie::Autobox from dist
+     - remove CGI.pm dependency.  CGI.pm has been removed from perl core, which
+       was the primary reason we used it in the first place.  Replaced with
+       dependency on lighter weight set of three modules:
+  
+          * HTTP::Body
+          * WWW::Form::UrlEncoded
+          * Hash::MultiValue
+  
+       Also recommended (but not required) is WWW::Form::UrlEncoded::XS
+     - Add optional support for charset encoding.  If you have something like
+  
+          PerlSetVar MyAuthNameEncoding UTF-8
+  
+       Then AuthCookie with now automatically decode parameters using the given
+       encoding now. AuthCookie params() data will be decoded automatically if
+       this is on.  See details in AuthCookie module documentation.  In addition
+       r->user will be encoded (using byte semantics) using this encoding. 
+  
+       ***** IMPORTANT *****
+       If you turn this on, this could break your code.  r->user() will now be
+       byte encoded using the given encoding.  If you use usernames that contain
+       non-ascii characters you either need to use decoded_user(), or decode
+       r->user() yourself in your subclasses.
+  
+       See the AuthCookie docs for more details.
+     - add optional support for decoding httpd.conf requires directives. This is
+       enabled with a RequiresEncoding setting:
+  
+          PerlSetVar MyAuthNameRequiresEncoding UTF-8
+  
+       Then decoded_requires($r) will return the decoded value of $r->requires
+       You only need this if you have non-ascii characters in your requires
+       directives such as:
+  
+          Requires user programmør
+  
+     - add decoded_user($r) method to get the value of r->user decoded using
+       character semantics instead of bytes.  Due to the fact that r->user is a C
+       API method we cannot get character semantics on r->user directly.  If no
+       Encoding directive is in effect, then this is the same as r->user.
+     - add encoding($r): string which returns the value of the Encoding directive
+       that is in effect for the current request.
+
+-------------------------------------------------------------------
+Wed Aug 31 05:01:21 UTC 2016 - coolo@suse.com
+
+- updated to 3.25
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.25  2016-08-30
+     - 2.4: fix POD typo and add missing ABSTRACT
+     - reorganize real.t tests into subtests
+     - make sure signature test ignores generated files
+     - remove autobox dependency
+     - fix authenticate so that r->user is copied from r->main on subrequests.
+       Previously this was only done for internal redirects (r->prev is defined).
+       This fixes DirectoryIndexes on AuthCookie enabled directories under apache
+       2.4.
+
+-------------------------------------------------------------------
+Tue Jan 19 09:34:24 UTC 2016 - coolo@suse.com
+
+- updated to 3.24
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.24  2016-01-13
+     - Update Apache 2.4 README, flesh out guts of Authz Provider notes.
+     - Improve Apache 2.4 README's AuthzProvider documentation
+     - Add POD to Apache2_4::AuthCookie
+     - Add FAQ to Apache2_4::AuthCookie documenation
+     - 2.4: document that PerlAddAuthzProvider is only needed for *custom* Requires directives.
+     - 2.4: make authz_handler recognize multiple usernames in the directive like
+       mod_authz_user does.
+     - add test case for internal authz_handler
+     - explicitly require Apache::Test 1.39 so that APACHE2_4 defines are set
+
+-------------------------------------------------------------------
+Sat Dec 26 09:27:49 UTC 2015 - coolo@suse.com
+
+- updated to 3.23
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.23  2015-09-10
+     - Improve CGI mode param() handling to avoi CGI.pm's "param() called in list context" warning.
+     - add support for Apache 2.4 via mod_perl 1.09.
+       ***** IMPORTANT *****
+       Apache 2.4 has a *VERY* different API for authentication.  You will need
+       to port your subclass and configuration over to the Apache 2.4 API in
+       order to use Apache 2.4!  Please be sure to read README.apache-2.4.pod for
+       porting instructions!
+
+-------------------------------------------------------------------
+Tue Apr 14 09:15:25 UTC 2015 - coolo@suse.com
+
+- updated to 3.22
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.22  2014-05-07
+  
+  3.21  2014-05-07
+     - Bad release - deleted
+
+-------------------------------------------------------------------
+Wed Dec 18 10:36:02 UTC 2013 - coolo@suse.com
+
+- updated to 3.20
+    - login_form: return OK for mobile IE 10, which also ignores content for
+      FORBIDDEN response.
+    - test .pl registry scripts: do not try to load mod_perl.pm
+    - escape html tags in destination.
+    - split out CGI data handling into ::AuthCookie::Params modules
+    - use Apache::Request/Apache2::Request from libapreq if available. Otherwise,
+      fall back to CGI.pm for handling CGI data.
+    - improve "removed cookie" debug log message
+    - add dependencies: autobox, Class::Load
+    - allow username to be '0'
+    - login_form: return OK for SymbianOS, which ignores content for FORBIDDEN responses.
+    - add login_form_status() to override HTTP status returned by login form
+    - recognize_user: return DECLINED if user is not recognized
+
+-------------------------------------------------------------------
+Thu Oct 11 17:40:21 UTC 2012 - coolo@suse.com
+
+- buildrequire explicitly netcfg
+
+-------------------------------------------------------------------
+Thu Oct 20 13:03:30 UTC 2011 - tabraham@novell.com
+
+- update to 3.18 2011-01-24
+  * remove 3.17's test skip hacks and bump Apache::Test prereq to
+    v1.53 which fixes this issue
+  * fix MANIFEST.SKIP to ignore genereated t/conf/mime.types
+  * remove dist.inim weaver.ini from dists
+  * fixed t/real.t to use correct -withtestmore import syntax
+  * rename sample authcookie handlers to Sample::Apache and
+    Sample::Apache2 namespaces
+
+- update to 3.17 2011-01-19
+  * skip the test suite if running as root. Apache::Test 1.34 fails
+    the test suite if running as root instead of skipping it. By
+    skipping, AuthCookie can be installed via CPAN.pm as root
+
+- update to 3.16 2011-01-19
+  * require Apache::Test 1.32 - fixes Ubuntu build issue
+  * remove mod_perl/mod_perl2 related rereq's from META.yml. The
+    correct mod perl version is not known until Makefile.PL is run.
+    CPAN.pm should not try to install either one until it is known
+    which one is appropriate. (RT 64926)
+
+- update to 3.15 2010-08-27
+  * enable Dist::Zilla Manifest plugin
+  * add FAQ
+  * add FAQ entry on how to protect an entire site/document root
+  * recognize_user: return DECLINED if user is already set
+  * refactor P3P header generation into send_p3p($r) so subclasses
+    can overload it
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:30 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Jun  2 10:57:28 UTC 2010 - chris@computersalat.de
+
+- update to 3.14
+   - MP2: doc updates: remove beta warnings, change Apache::AuthCookie to
+     Apache2::Authcookie where appopriate.
+   - docs: change my email to my cpan address
+   - docs: remove POST limitations reference (handled by POST to GET conversion)
+   - sign dist with Module::Signature
+   - add signature test
+   - MP1: perltidy Apache::AuthCookie sources.
+   - update mod_perl2 prereq version (still 2.0.0 RC5, but version number was
+     incorrect in Makefile.PL)
+   - use Dist::Zilla for building the dist
+- 3.13  2010-04-12
+   - removed: bad dist
+- recreated spec by cpanspec 1.78
+- noarch package
+
+-------------------------------------------------------------------
+Mon Oct 27 13:05:26 CET 2008 - cwh@suse.de
+
+Version: 3.12
+   - Makefile.PL If no mod_perl version is found, just require mod_perl2.
+     This makes sure that CPAN testers will get the right dependencies.
+     way. Also set up PREREQ_PM properly for mod_perl version 1.
+
+Version: 3.11
+   - Fix tiny pod doc error.
+   - Escape CR and LF in 'destination' field to prevent possible XSS attack
+     [Steffen Schwigon]
+
+-------------------------------------------------------------------
+Thu Jul 13 17:08:09 CEST 2006 - cwh@suse.de
+
+Version: 3.10
+   - Bug Fix: when copying user from prev request, check that $r->prev
+     is defined, not just that $r->is_initial_request is true.
+
+Version: 3.09
+   - POD doc fixes.
+   - MP2: remove _check_request_req() - this was only necessary when
+     running under both MP1 and MP2.  Package name change eliminates the
+     need for this.
+   - test suite converted to Test::More style test suites.
+   - descriptive test descriptions added
+   - make login() stash credentials in $r->pnotes("${AuthName}Creds") so
+     that the login form can access the user-supplied credentials if the
+     login fails.
+   - bug fix: use of Apache2::URI::unescape_url() does not handle
+     '+' to ' ' conversion.  This caused problems for credentials
+     that contain spaces.
+   - MP2: remove mod_perl features from "use mod_perl2" line. This is 
+     no longer supported by mod_perl2.
+   - MP2: _get_form_data() - switch to CGI.pm to handle form data (fixes
+     several form data handling bugs)
+   - In a subrequest, copy $r->prev->user to $r->user (or r->connection->user 
+     for MP1).
+   - remove Apache2::AuthCookie::Util - no longer necessary
+   - multi-valued form fields are now handled properly in POST -> GET conversion
+   - MP2: require CGI.pm 3.12 or later
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 09:08:12 CEST 2005 - dmueller@suse.de
+
+- add %defattr 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:07:03 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jul 29 17:25:51 CEST 2005 - cthiel@suse.de
+
+- update to 3.08
+- fixed %files
+
+-------------------------------------------------------------------
+Mon Feb 21 17:57:01 CET 2005 - cwh@suse.de
+
+- updated to v3.05
+
+-------------------------------------------------------------------
+Tue May 25 18:08:00 CEST 2004 - cwh@suse.de
+
+- fixed %files
+- fixed Requires
+
+-------------------------------------------------------------------
+Tue May 25 14:35:41 CEST 2004 - cwh@suse.de
+
+- initial release 
+

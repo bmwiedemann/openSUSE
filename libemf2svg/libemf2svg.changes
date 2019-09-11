@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Apr  2 18:51:26 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix grammatical error in description
+
+-------------------------------------------------------------------
+Wed Mar 28 10:20:16 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group.
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Mar 27 21:19:15 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- update to 1.1.0:
+  * add handling of font index encoding
+  * add fontconfig dependency
+  * add freetype dependency
+  * add common variables LIB_INSTALL_DIR, BIN_INSTALL_DIR,
+    INCLUDE_INSTALL_DIR to set install directories
+
+-------------------------------------------------------------------
+Tue Mar 27 21:14:49 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use %license for LICENSE
+
+-------------------------------------------------------------------
+Fri Mar 31 18:52:05 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to release 1.0.1, bump soversion (API break in 1.0.0)
+
+-------------------------------------------------------------------
+Mon Oct 31 22:26:39 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- initial package version
+

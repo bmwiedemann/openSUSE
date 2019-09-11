@@ -1,0 +1,43 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2019-07-22 22:33:15 +0200
+Subject: Deprecated functions in Qt 5.13
+References: https://github.com/lbellonda/qxmledit/issues/62
+
+Do no fail on warnings for deprecated Qt functions
+
+Index: qxmledit-0.9.13/src/QXmlEditWidget.pro
+===================================================================
+--- qxmledit-0.9.13.orig/src/QXmlEditWidget.pro
++++ qxmledit-0.9.13/src/QXmlEditWidget.pro
+@@ -76,6 +76,7 @@ win32-msvc2010 {
+ } else {
+     QMAKE_CXXFLAGS += -Wall
+     QMAKE_CXXFLAGS +=-Werror
++    QMAKE_CXXFLAGS +=-Wno-error=deprecated-declarations
+     #QMAKE_CXXFLAGS += -Winvalid-pch
+ }
+ 
+Index: qxmledit-0.9.13/src/sessions/QXmlEditSessions.pro
+===================================================================
+--- qxmledit-0.9.13.orig/src/sessions/QXmlEditSessions.pro
++++ qxmledit-0.9.13/src/sessions/QXmlEditSessions.pro
+@@ -76,6 +76,7 @@ win32-msvc2010 {
+ } else {
+     QMAKE_CXXFLAGS += -Wall
+     QMAKE_CXXFLAGS +=-Werror
++    QMAKE_CXXFLAGS +=-Wno-error=deprecated-declarations
+ }
+ 
+ equals(INST_USE_C11, "y") {
+Index: qxmledit-0.9.13/src/QXmlEdit.pro
+===================================================================
+--- qxmledit-0.9.13.orig/src/QXmlEdit.pro
++++ qxmledit-0.9.13/src/QXmlEdit.pro
+@@ -98,6 +98,7 @@ win32-msvc2010 {
+ } else {
+     QMAKE_CXXFLAGS += -Wall
+     QMAKE_CXXFLAGS +=-Werror
++    QMAKE_CXXFLAGS +=-Wno-error=deprecated-declarations
+ }
+ 
+ lessThan(QT_MAJOR_VERSION, 5) {

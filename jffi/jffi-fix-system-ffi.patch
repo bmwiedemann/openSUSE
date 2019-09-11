@@ -1,0 +1,21 @@
+--- jffi-jffi-1.2.12/jni/GNUmakefile	2016-04-29 23:23:51.000000000 +0200
++++ jffi-jffi-1.2.12/jni/GNUmakefile	2019-04-03 19:52:03.140582936 +0200
+@@ -279,7 +279,7 @@
+ 	@echo "JFFI_BUILD_DIR=$(JFFI_BUILD_DIR)"
+ 	@echo "OBJS=$(OBJS)"
+ 
+-$(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
++$(LIBJFFI):  $(OBJS)
+ 	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI_LIBS) $(LIBS)
+ 	$(STRIP) $@
+ 
+@@ -291,7 +291,9 @@
+ 	@mkdir -p $(@D)
+ 	@$(CC) $(CFLAGS) -o $@ -c $<
+ 
++ifneq ($(USE_SYSTEM_LIBFFI),1)
+ $(OBJS) : $(LIBFFI_LIBS)
++endif
+ 
+ ifeq ($(OS), darwin)
+ build_ffi = \

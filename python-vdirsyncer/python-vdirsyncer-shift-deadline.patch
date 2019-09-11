@@ -1,0 +1,25 @@
+Index: vdirsyncer-0.16.7/tests/system/cli/test_sync.py
+===================================================================
+--- vdirsyncer-0.16.7.orig/tests/system/cli/test_sync.py	2018-07-19 21:07:31.000000000 +0200
++++ vdirsyncer-0.16.7/tests/system/cli/test_sync.py	2019-05-07 08:59:40.114934546 +0200
+@@ -5,11 +5,10 @@ import sys
+ from textwrap import dedent
+ 
+ import hypothesis.strategies as st
+-from hypothesis import example, given
++from hypothesis import example, given, settings
+ 
+ import pytest
+ 
+-
+ def test_simple_run(tmpdir, runner):
+     runner.write_with_general(dedent('''
+     [pair my_pair]
+@@ -273,6 +272,7 @@ def test_multiple_pairs(tmpdir, runner):
+ # XXX: https://github.com/pimutils/vdirsyncer/issues/617
+ @pytest.mark.skipif(sys.platform == 'darwin',
+                     reason='This test inexplicably fails')
++@settings(deadline=2000.0)
+ @given(collections=st.sets(
+     st.text(
+         st.characters(

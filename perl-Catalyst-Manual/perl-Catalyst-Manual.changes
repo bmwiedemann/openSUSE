@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Sat Apr 27 05:04:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 5.9010
+   see /usr/share/doc/packages/perl-Catalyst-Manual/Changes
+
+  5.9010 - 2019-04-25
+      - updated stale urls
+      - numerous typo fixes
+      - many pod syntax fixes
+      - other pod syntax cleanup
+      - added references to the RT issues queue, mailing list, and irc channel
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:44 UTC 2015 - coolo@suse.com
+
+- updated to 5.9009
+     - fixed a new error in the manual regarding "component" -> "components"
+       (RT#99131, RT#100597, RT#100767)
+ 
+ 5.9008 - 2014-07-26
+     - misc small documentation tweaks (thanks Karen Etheridge, Matthew
+       Horsfall, Andreas Marienborg, Dagfinn Ilmari Mannsåker, David
+       Steinbrunner, Gerda Shank, Jesse)
+
+-------------------------------------------------------------------
+Mon Jun  3 11:55:15 UTC 2013 - coolo@suse.com
+
+- updated to 5.9007
+   - Fix pod warnings (RT#83398 - thanks, Paul Waring!)
+   - Fix repository metadata (thanks, Lars Lars Dɪᴇᴄᴋᴏᴡ)
+
+   - fix bad =head1 (Kennedy Clark)
+
+   - Fix minor typos RT 78545, thanks Joe Axford
+   - Update auth class name RT 77322 Thanks Joe Axford
+   - Fix typo RT #77247 Thanks John Deighan
+
+   - PSGI Compat changes
+   - Small code changes (thanks sockmonk)
+   - Small changes to Manual::Components
+
+-------------------------------------------------------------------
+Fri Feb 17 15:25:22 UTC 2012 - coolo@suse.com
+
+- updated to 5.9003
+    - Mention PSGI in Manual::Ingro RT#74872 (thanks William Blunn).
+    - Better docs of :Global inspired by RT#74869 (thanks William Blunn)
+    - Highlight the importance of uncommenting the template line in the
+      list action
+    - Clarify docs for nginx in non-root - a trailing slash on the
+      location block is very much needed.
+    - Clarified Data::Dumper usage.  RT#71410 Thanks to Bill Corr
+    - Mention Chef deployment in Manual::Deployment (thanks to Alexey
+      Melezhik)
+
+-------------------------------------------------------------------
+Tue Oct 25 20:38:20 UTC 2011 - tabraham@novell.com
+
+- updated to 5.9002
+  - Tutorial
+    - Switch to 'catalyst' vs. 'root' user in VM
+    - Add notes about X Windows installation
+    - Misc small adjustments
+
+- updated to 5.9001
+  - Tutorial
+    - Migrate Tutorial to use of a downloadable Virtual Machine
+    - Switch tutorial to Catalyst::Plugin::StatusMessage (vs. flash
+      and query parameters)
+    - Switch to use of local::lib
+    - Add "next chapter links" (RT #31164)
+    - Test all the tutorial code and make sure it's all working
+    - Lots of other Tutorial cleanup
+    - Update to Catalyst 5.9 and latest versions of all modules
+    - Clean up RT ticket queue (#68379, 68377, 68376, etc.)
+  - Other misc fixes/changes
+
+- updated to 5.9000
+  - Copy editing to make more sense in deployment documentation.
+
+- updated to 5.8901
+  - Added Catalyst::Manual::Deployment containing the documentation
+    which used to bin in Catalyst::Engine::*, updated for the new
+    PSGI engine
+
+- updated to 5.8008
+  - Tutorial chapter 3
+    - Remove note about hacking tests to require MyApp so that MyApp->path_to
+      works. Application components should compile independently, and
+      therefore explain this and show configuring components from the
+      app class
+  - Tutorial appendix
+    - Fix confusing mix of singular and plural table names in the MySQL
+      section to be plural, as per the rest of the tutorial
+  - Cookbook
+    - Remove suggestion to generate RSS feeds using Template Toolkit.
+      This is a horrible idea, and it's very very easy to generate an
+      invalid feed
+
+-------------------------------------------------------------------
+Sun May  1 10:37:02 UTC 2011 - coolo@opensuse.org
+
+- updated to 5.8007
+      - Tutorial
+        - Switch to use of DBIx::Class::PassphraseColumn for hashed & salted
+          passwords. It's much more flexible than the previously used
+          DBIx::Class::EncodedColumn.
+  
+      - Fix metadata to refer to the new git repository
+      - Cookbook
+        - Small fixes and typos
+      - Tutorial
+        - Various typo fixes.
+        - RT #57989: typo
+        - RT #61486: correct instructions for MySQL
+        - RT #62095: prevent XSS
+        - RT #62095: persistent message on /login
+        - RT #63057: typo
+        - RT #64087: typos
+        - RT #64126: Use precise name of licence
+        - RT #64126: typos
+        - RT #67820: fix relationship decleration
+        - Do not recommend FastMmap
+      - DevelopmentProcess
+        - RT #62610: typo
+
+-------------------------------------------------------------------
+Wed Jan 19 12:09:52 UTC 2011 - coolo@novell.com
+
+- initial package 5.8005
+  * created by cpanspec 1.78.03
+

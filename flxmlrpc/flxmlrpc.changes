@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Jun 20 09:12:29 UTC 2017 - mpluskal@suse.com
+
+- Update licensing
+
+-------------------------------------------------------------------
+Tue May 16 19:36:03 UTC 2017 - jengelh@inai.de
+
+- Correct some orthographic errors in the descriptions.
+  Trim to neutrality.
+
+-------------------------------------------------------------------
+Tue May 16 19:24:48 UTC 2017 - mpluskal@suse.com
+
+- Do not build and ship static library
+
+-------------------------------------------------------------------
+Sun Apr 16 16:27:45 UTC 2017 - mardnh@gmx.de
+
+- Rename %soname to %sover to better reflect its use
+- Run spec-cleaner
+- Fix Source
+- Fix Url
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Thu May  7 16:14:23 UTC 2015 - dl8fcl@darc.de
+
+- update to version 0.1.4
+
+-------------------------------------------------------------------
+Thu Apr 23 00:06:21 UTC 2015 - dl8fcl@darc.de
+
+- import into build service
+

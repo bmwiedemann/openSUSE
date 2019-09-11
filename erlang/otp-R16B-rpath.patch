@@ -1,0 +1,26 @@
+Index: otp-OTP-22.0/lib/crypto/c_src/Makefile.in
+===================================================================
+--- otp-OTP-22.0.orig/lib/crypto/c_src/Makefile.in
++++ otp-OTP-22.0/lib/crypto/c_src/Makefile.in
+@@ -114,7 +114,7 @@ TEST_ENGINE_LIB = $(LIBDIR)/otp_test_eng
+ DYNAMIC_CRYPTO_LIB=@SSL_DYNAMIC_ONLY@
+ 
+ ifeq ($(DYNAMIC_CRYPTO_LIB),yes)
+-SSL_DED_LD_RUNTIME_LIBRARY_PATH = @SSL_DED_LD_RUNTIME_LIBRARY_PATH@
++SSL_DED_LD_RUNTIME_LIBRARY_PATH =
+ CRYPTO_LINK_LIB=$(SSL_DED_LD_RUNTIME_LIBRARY_PATH) -L$(SSL_LIBDIR) -l$(SSL_CRYPTO_LIBNAME)
+ EXTRA_FLAGS = -DHAVE_DYNAMIC_CRYPTO_LIB
+ else
+Index: otp-OTP-22.0/lib/crypto/priv/Makefile
+===================================================================
+--- otp-OTP-22.0.orig/lib/crypto/priv/Makefile
++++ otp-OTP-22.0/lib/crypto/priv/Makefile
+@@ -61,7 +61,7 @@ OBJS = $(OBJDIR)/crypto.o
+ # ----------------------------------------------------
+ 
+ $(SO_NIFLIB): $(OBJS)
+-	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) -Wl,-R$(SO_SSL_LIBDIR) \
++	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) \
+ 	-o $@ $^ -lcrypto
+ 
+ $(DLL_NIFLIB): $(OBJS)

@@ -1,0 +1,11 @@
+--- ./src/lib/libast/misc/stk.c.orig	2014-11-22 10:46:29.708285640 +0000
++++ ./src/lib/libast/misc/stk.c	2014-11-22 10:48:32.533777385 +0000
+@@ -378,6 +378,8 @@ char *stkset(register Sfio_t * stream, r
+ 		frames++;
+ 	}
+ 	/* set stack back to the beginning */
++	if (loc)
++		abort();
+ 	cp = (char*)(fp+1);
+ 	if(frames)
+ 		sfsetbuf(stream,cp,sp->stkend-cp);

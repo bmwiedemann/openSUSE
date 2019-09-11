@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Apr  3 22:57:08 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Tue Mar 27 21:20:39 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to release 0.5.5
+  * add LIB_INSTALL_DIR variable in cmake
+- Update to release 0.5.4
+  * fix freetype discovery in cmake
+- Update to release 0.5.3
+  * fix segfault if shape doesn't contain title
+
+-------------------------------------------------------------------
+Tue Mar 27 21:19:56 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use gcc7 on Leap 42.3, gcc6 does not handle -fstack-clash-protection
+
+-------------------------------------------------------------------
+Tue Mar 27 21:14:49 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use %license for LICENSE
+
+-------------------------------------------------------------------
+Thu Jul 13 18:26:54 UTC 2017 - olaf@aepfle.de
+
+- Build with gcc6, fix build failure for Leap
+
+-------------------------------------------------------------------
+Fri Mar 31 19:10:17 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to release 0.5.2
+ * fix error in setting title field with titles containing "&"
+ * add XML_PARSE_HUGE in xml parsing to allow big image blobs.
+ * better precision for image dimensions (keep 10 decimals)
+- Update to release 0.5.0
+ * adding support to convert wmf blob (using libwmf)
+ * requires new libraries as dependencies: libwmf and freetype)
+ * requires libemf2svg version >= 1.0.0
+ * cleaner and more explicit dependencies resolving in cmake
+- Drop libvisio2svg_link_xml2.patch
+
+-------------------------------------------------------------------
+Fri Mar 31 18:47:14 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- require gcc-c++ >= 5 to avoid broken std::regex_replace
+
+-------------------------------------------------------------------
+Mon Oct 31 22:26:39 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- initial package version
+

@@ -1,0 +1,10 @@
+--- librepository-1.1.3/common_build.xml	2009-11-16 11:24:36.000000000 +0100
++++ librepository-1.1.3/common_build.xml	2017-09-11 18:25:14.528557214 +0200
+@@ -1352,6 +1352,7 @@
+              nodeprecatedlist="false"
+              nodeprecated="false"
+              packagenames="${javadoc.packagenames}"
++			 excludepackagenames="org.pentaho.reporting.libraries.repository.email"
+              sourcepath="${src.dir}"
+              doctitle="${impl.title} documentation">
+       <link href="http://java.sun.com/j2se/${javac.source}.0/docs/api/" />

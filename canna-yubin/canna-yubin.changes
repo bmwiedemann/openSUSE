@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Sun Mar 17 09:17:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce PreReq to Requires(pre).
+
+-------------------------------------------------------------------
+Sun Mar 17 06:08:52 UTC 2019 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.4.0.20190228.0:
+  * Updated data to 2019-02-28 ver.
+
+-------------------------------------------------------------------
+Sat Feb  3 05:59:24 UTC 2018 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.3.1.20180131.0:
+  + Updated data to 2018-01-31 ver.
+
+-------------------------------------------------------------------
+Fri May 19 22:27:03 UTC 2017 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.3.1.20170428.0:
+  + Updated data to 2017-04-28 ver.
+
+-------------------------------------------------------------------
+Sat Sep  3 19:51:58 UTC 2016 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.3.1.20160831.0:
+  + Updated data to 2016-08-31 ver.
+
+-------------------------------------------------------------------
+Sat Sep 19 08:50:10 UTC 2015 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.3.1.20150831.1:
+  + Updated data to 2015-08-31 ver.
+  + Updated URL: osdn.jp was renamed from sourceforge.jp.
+- removed "Conflicts: update-canna-yubin".
+  + "update-canna-yubin" has not been maintained.
+
+-------------------------------------------------------------------
+Fri Mar 20 04:28:57 UTC 2015 - bkbin005@rinku.zaq.ne.jp
+
+- Updated upstream version to 0.3.1.20150227.0:
+  + debian/* files removed from upstream.
+  + used Automake.
+  + do not need nkf, now, yu2.PL can convert charset by oneself.
+- Updated data to 2015-02-27 ver.
+- Refectoring spec file:
+  + removed BuildRequires: canna-devel, nkf.
+  + used ./configure.
+  + add mkdir buildroot in install section.
+  + added AUTHORS NEWS COPYING COPYING.GPL2
+
+-------------------------------------------------------------------
+Fri Aug  8 08:47:50 UTC 2014 - bkbin005@rinku.zaq.ne.jp
+
+- New upstream https://sourceforge.jp/projects/canna-yubin/simple/ .
+- Updated upstream version to 0.1.1.20140731.3.
+- Updated data to 2014-07-31 ver.
+- Refectoring spec file:
+  + The cide ti replace the data is unnecessary
+    because upstream's data is up to date.
+  + I deleted the unnecessary macros.
+  + The conversion process is doing in Makefile.
+  + Deleted unnecessary directories from files section.
+
+-------------------------------------------------------------------
+Tue Oct  1 11:47:49 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- update ken_all.zip and jigyosyo.zip: 2013-09-30 ver.
+- update canna-yubin.spec:
+  * update description longer .
+    Because rpmlint tells a warning message .
+  * add -q option to setup macro .
+    Reason:
+    http://en.opensuse.org/openSUSE:Specfile_guidelines#Quiet_.25setup
+  * rename from setup0 to setup
+  * delete Authors information from description .
+    See also:
+    http://en.opensuse.org/openSUSE:Specfile_guidelines#Description
+  * add "Conflicts: update-canna-yubin" .
+    The update-canna-yubin is not released yet .
+    But it conflicts with canna-yubin .
+    See also:
+    https://build.opensuse.org/package/show/home:Mitsutoshi:M17N/update-canna-yubin
+  * add a comment about Source0's URL .
+  * replace a macro in comments to "_" .
+    Because rpmlint tells a warning message .
+  * add "BuildArch: noarch" .
+
+-------------------------------------------------------------------
+Sat Aug 31 05:02:17 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- Add ken_all.zip and jigyosyo.zip: 2013-08-30 ver.
+  Source0 tarball's csv data are too old (2001-11-01) . 
+  So I added  2013-08-30 version .
+  Please see also:
+  http://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html
+  http://www.post.japanpost.jp/zipcode/dl/jigyosyo/index-zip.html
+  And I added code for replacing csv data in spec file .
+- Update canna-yubin.spec:
+  * fixed Source0's URL to tarball's filename .
+    Because The URL was dead already .
+  * added a code for replacing csv data .
+  * added BuildRequires: unzip .
+  * added BuildRequires: nkf .
+    The iconv ended in a convert error .
+    So I replaced from iconv to nkf .
+
+-------------------------------------------------------------------
+Sat Mar  2 08:12:41 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 18:52:56 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Sep 19 14:31:45 CEST 2003 - mfabian@suse.de
+
+- add user "wnn" in %pre and add "Prereq: /usr/sbin/useradd"
+
+-------------------------------------------------------------------
+Thu Sep 18 00:38:51 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #31220: fix permissions and ownerships to agree
+  with the main canna package.
+
+-------------------------------------------------------------------
+Fri Jun 13 23:58:54 CEST 2003 - mfabian@suse.de
+
+- fix "directory is not owned by any package".
+
+-------------------------------------------------------------------
+Sun Aug 11 20:24:08 CEST 2002 - mfabian@suse.de
+
+- update to version 0.0.20011101
+- change # neededforbuild:
+  canna -> canna canna-devel canna-libs
+
+-------------------------------------------------------------------
+Sat Sep  8 20:11:54 CEST 2001 - mfabian@suse.de
+
+- new package: canna-yubin, version 0.0.20010601

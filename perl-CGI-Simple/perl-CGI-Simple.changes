@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Sun Oct 21 12:39:46 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+-------------------------------------------------------------------
+Wed Oct 17 18:33:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid overly "super duper" summary.
+
+-------------------------------------------------------------------
+Sun Oct  7 13:49:41 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update URL, provide zero padded version number to satisfy version checks
+
+-------------------------------------------------------------------
+Thu Jul 26 05:04:41 UTC 2018 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+  1.16  2018-07-25 MANWAR
+        - Made t/manifest.t AUTHOR only (RT #125383).
+        - Removed +x bits from test scripts.
+
+-------------------------------------------------------------------
+Mon Mar  5 06:04:53 UTC 2018 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+-------------------------------------------------------------------
+Mon Apr 13 19:16:34 UTC 2015 - coolo@suse.com
+
+- updated to 1.115
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+  
+  1.114
+        - Drop support for Perls older than 5.6.1.
+  
+  1.115 2014.10.19
+        - Replace indirect calling of constructor both in code an documentation
+          with direct calling.
+          Write  CGI::Simle->new   instead of    new CGI::Simple
+        -    add tests to make sure the order of value is kept as they were passed in the QUERY_STRING
+        - new co-maintainer (SZABGAB(
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:46 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Sat Jun  4 21:16:24 UTC 2011 - lars@linux-schulserver.de
+
+- require apache2-mod_perl instead of perl(HTTP::Request::Common)
+  as perl-HTTP-Message provides the same on SLE_11
+
+-------------------------------------------------------------------
+Fri Feb  4 22:04:54 UTC 2011 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.03
+  o fix deps
+- remove Author
+
+-------------------------------------------------------------------
+Thu Jan 27 15:01:33 UTC 2011 - lars@linux-schulserver.de
+
+- disable perl_requires macro for older Distributions
+
+-------------------------------------------------------------------
+Mon Jan 17 21:36:42 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.113:
+  + fixes the following security bugs reported via CVE:
+    CVE-2010-2761 - mime boundary issue
+    CVE-2010-4410 - crlf injection 
+    CVE-2010-4411 - incomplete fix for crlf injection - 
+    and also via bnc #657343 and bnc #663396
+ + Port max-age support from CGI.pm, to improve compatibility and
+   RFC-compliance
+ + some fixes in the testsuite
+ + Sync cookie references with CGI.pm: add reference to the
+   newer RFC 2695
+ + documentation fixes
+ + Optimize Vars(): Don't build %hash if we aren't going to use it, 
+   and don't call "tie" unless we need to
+ + Added "+" and "\." to the mime character class.
+ + Fixed wrong match for mimetypes. 
+- remove perl-CGI-Simple-CVE-2010-2761.patch (included upstream)
+
+-------------------------------------------------------------------
+Wed Dec  8 15:03:40 CET 2010 - lrupp@suse.de
+
+- fix CVE-2010-2761 (bnc#657731) - multipart mime boundary
+  (perl-CGI-Simple-CVE-2010-2761.patch)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:55 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Sep  2 15:33:56 UTC 2009 - chris@computersalat.de
+
+- update to 1.112
+  * 1.112   2009-05-31
+      - (thanks bingos) added missing IO::Scalar dependency.
+  * 1.111   2009-05-28
+      - Implemented Michael Nachbaur fixes for multipart form data
+        handling.
+  * 1.110   2009-05-24
+      - Added missing test to manifest / distro.
+      - Added a test to ensure the manifest is consistent.
+      - Migrated to git.
+  * 1.109   2009-04-16
+      - Added support for HttpOnly to CGI::Simple::Cookie. Thanks to
+        Scott Thomson for the patch.
+  * 1.108   2009-03-13
+      - Remove bogus references to Selfloader in documenation. No
+        functional changes.
+  * 1.107   2009-03-07
+      - CGI::Simple::Cookie, fixed bug when cookie had both leading and
+        trailing white space (RT#34314, Ron Savage and Mark Stosberg)
+      - Accept a comma as well as semi-colon as a cookie separator. This
+        is consistent with CGI.pm as well as RFC 2965, which states: "A
+        server SHOULD also accept comma (,) as the separator between cookie-
+        values for future compatibility." (Mark Stosberg)
+      - Support cookies which have an equals sign in the value. Ported
+        from CGI.pm (Mark Stosberg)
+      - Support cookies in which one of multiple values is empty. Ported
+        from CGI.pm (Mark Stosberg)
+      - Fixed bug when calling unescapeHTML on HTML that wasn't
+        properly escaped in the first place. Thanks to M-Uchino and
+        Mark Stosberg.
+      - Removed bogus dependency on version.pm.
+      - Add heuristic to upload to handle the case where no boundary is
+        specified in CONTENT_TYPE. See #14838.
+- added perl-macros
+- specmods
+  o added header
+  o fixed deps
+  o added Url
+  o removed Provides perl-CGI-Carp
+
+-------------------------------------------------------------------
+Sun Nov 30 03:29:54 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.106
+

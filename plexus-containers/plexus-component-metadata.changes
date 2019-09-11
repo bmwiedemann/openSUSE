@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Apr 11 19:58:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Require for build the mvn(org.codehaus.plexus:plexus:pom:)
+  instead of mvn(org.codehaus.plexus:plexus-containers:pom:)
+  provided in the sources
+
+-------------------------------------------------------------------
+Wed Apr  3 09:35:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of the plexus-component-metadata 1.7.1 maven
+  plugin
+  * Generates META-INF/plexus/components.xml during maven build

@@ -1,0 +1,79 @@
+Index: src/util.c
+===================================================================
+--- src/util.c.orig
++++ src/util.c
+@@ -203,8 +203,15 @@ tape_fill_input_buffer (int in_des, int
+   input_size = rmtread (in_des, input_buffer, num_bytes);
+   if (input_size == 0 && input_is_special)
+     {
+-      get_next_reel (in_des);
++      if (!tape_eof (in_des))
++	get_next_reel (in_des);
+       input_size = rmtread (in_des, input_buffer, num_bytes);
++      if (input_size == 0)
++	{
++	  if (tape_eod (in_des))
++	    get_next_reel (in_des);
++	  input_size = rmtread (in_des, input_buffer, num_bytes);
++	}
+     }
+   if (input_size == SAFE_READ_ERROR)
+     error (PAXEXIT_FAILURE, errno, _("read error"));
+@@ -366,8 +373,15 @@ tape_buffered_peek (char *peek_buf, int
+ 	{
+ 	  if (input_is_special)
+ 	    {
+-	      get_next_reel (in_des);
++	      if (!tape_eof (in_des))
++		get_next_reel (in_des);
+ 	      tmp_input_size = rmtread (in_des, append_buf, io_block_size);
++	      if (tmp_input_size == 0)
++		{
++		  if (tape_eod (in_des))
++		    get_next_reel (in_des);
++		  tmp_input_size = rmtread (in_des, append_buf, io_block_size);
++		}
+ 	    }
+ 	  else
+ 	    break;
+@@ -842,6 +856,40 @@ tape_offline (int tape_des)
+ #endif
+ }
+ 
++int
++tape_eof( int tape_des)
++{
++  struct mtget status;
++
++  if (rmtioctl (tape_des, MTIOCGET, (char*)&status) == -1) {
++    error (1, errno, "Cannot get tape status");
++    return 0;
++  }
++
++  if (GMT_EOF(status.mt_gstat)) {
++      return 1;
++  }
++
++  return 0;
++}
++
++int
++tape_eod( int tape_des)
++{
++  struct mtget status;
++
++  if (rmtioctl (tape_des, MTIOCGET, (char*)&status) == -1) {
++    error (1, errno, "Cannot get tape status");
++    return 1;
++  }
++
++  if (GMT_EOD(status.mt_gstat)) {
++      return 1;
++  }
++
++  return 0;
++}
++
+ /* The file on file descriptor TAPE_DES is assumed to be magnetic tape
+    (or floppy disk or other device) and the end of the medium
+    has been reached.  Ask the user for to mount a new "tape" to continue

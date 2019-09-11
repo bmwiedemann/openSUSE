@@ -1,0 +1,54 @@
+From: Andrey Borzenkov <arvidjaar@gmail.com>
+Subject: use linuxefi/initrdefi for Linux in 30_os-prober if secure boot is enabled
+Reference: bnc#810912
+
+Emit linuxefi/initrdefi for os-prober detected Linux installations if
+secure boot is enabled.
+Index: grub-2.02~beta2/util/grub.d/30_os-prober.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/30_os-prober.in
++++ grub-2.02~beta2/util/grub.d/30_os-prober.in
+@@ -41,6 +41,15 @@ if [ -z "${OSPROBED}" ] ; then
+   exit 0
+ fi
+ 
++# If secure boot is enabled, use linuxefi/initrdefi for Linux (bnc#810912)
++if [ -d /sys/firmware/efi ] && [ "x${GRUB_USE_LINUXEFI}" = "xtrue" ]; then
++  LINUX_LOADER_CMD=linuxefi
++  LINUX_INITRD_CMD=initrdefi
++else
++  LINUX_LOADER_CMD=linux
++  LINUX_INITRD_CMD=initrd
++fi
++
+ osx_entry() {
+     if [ x$2 = x32 ]; then
+         # TRANSLATORS: it refers to kernel architecture (32-bit)
+@@ -234,11 +243,11 @@ EOF
+ 	    save_default_entry | grub_add_tab
+ 	    printf '%s\n' "${prepare_boot_cache}"
+ 	    cat <<  EOF
+-	linux ${LKERNEL} ${LPARAMS}
++	${LINUX_LOADER_CMD} ${LKERNEL} ${LPARAMS}
+ EOF
+             if [ -n "${LINITRD}" ] ; then
+           cat << EOF
+-	initrd ${LINITRD}
++	${LINUX_INITRD_CMD} ${LINITRD}
+ EOF
+             fi
+         cat << EOF
+@@ -254,11 +263,11 @@ EOF
+ 	save_default_entry | sed -e "s/^/$grub_tab$grub_tab/"
+ 	printf '%s\n' "${prepare_boot_cache}" | grub_add_tab
+ 	cat <<  EOF
+-		linux ${LKERNEL} ${LPARAMS}
++		${LINUX_LOADER_CMD} ${LKERNEL} ${LPARAMS}
+ EOF
+         if [ -n "${LINITRD}" ] ; then
+             cat << EOF
+-		initrd ${LINITRD}
++		${LINUX_INITRD_CMD} ${LINITRD}
+ EOF
+         fi
+         cat << EOF

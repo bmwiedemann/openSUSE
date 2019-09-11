@@ -1,0 +1,12 @@
+Index: powerpc-utils-1.3.4/systemd/smt_off.service.in
+===================================================================
+--- powerpc-utils-1.3.4.orig/systemd/smt_off.service.in
++++ powerpc-utils-1.3.4/systemd/smt_off.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=ppc64 set SMT off
+-Before=libvirt-bin.service
++Before=libvirtd.service
+ 
+ [Service]
+ Type=oneshot

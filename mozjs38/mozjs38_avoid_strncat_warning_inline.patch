@@ -1,0 +1,27 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: mozjs38 avoid strncat warning inline
+Date: Fri, 06 Nov 2015 18:15:24 +0100
+
+mozjs38 avoid strncat warning inline
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ intl/icu/source/tools/pkgdata/pkgdata.cpp |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: mozjs-38.0.0/intl/icu/source/tools/pkgdata/pkgdata.cpp
+===================================================================
+--- mozjs-38.0.0.orig/intl/icu/source/tools/pkgdata/pkgdata.cpp
++++ mozjs-38.0.0/intl/icu/source/tools/pkgdata/pkgdata.cpp
+@@ -1983,9 +1983,9 @@ static void loadLists(UPKGOptions *o, UE
+     findDirname(progname, cmdBuf, 1024, &status);
+     if(U_SUCCESS(status)) {
+       if (cmdBuf[0] != 0) {
+-          uprv_strncat(cmdBuf, U_FILE_SEP_STRING, 1024);
++          uprv_strncat(cmdBuf, U_FILE_SEP_STRING, 1023);
+       }
+-      uprv_strncat(cmdBuf, cmd, 1024);
++      uprv_strncat(cmdBuf, cmd, 1023);
+       
+       if(verbose) {
+         fprintf(stdout, "# Calling icu-config: %s\n", cmdBuf);

@@ -1,0 +1,385 @@
+-------------------------------------------------------------------
+Wed Aug 24 14:25:26 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 0.15:
+  * New features:
+    + #425: Added curtsies 0.2.x support.
+    + #528: Hide private attribute from initial autocompletion
+      suggestions.  Thanks to Jeppe Toustrup.
+    + #538: Multi-line banners are allowed.
+    + #229: inspect.getsource works on interactively defined
+      functions. Thanks to Michael Mulley.
+    + Attribute completion works on literals and some expressions
+      containing builtin objects.
+    + Ctrl-e can be used to autocomplete current fish-style
+      suggestion. Thanks to Amjith Ramanujam.
+  * Fixes:
+    + #484: Switch `bpython.embed` to the curtsies frontend.
+    + #548 Fix transpose character bug.  Thanks to Wes E. Vial.
+    + #527 -q disables version banner.
+    + #544 Fix Jedi completion error.
+    + #536 Fix completion on old-style classes with custom
+      __getattr__.
+    + #480 Fix old-style class autocompletion. Thanks to Joe Jevnik.
+    + #506 In python -i mod.py sys.modules[__name__] refers to module
+      dict.
+    + #590 Fix "None" not being displayed.
+    + #546 Paste detection uses events instead of bytes returned in a
+      single os.read call.
+    + Exceptions in autocompletion are now logged instead of crashing
+      bpython.
+    + Fix reload in Python 3. Thanks to sharow.
+    + Fix keyword argument parameter name completion.
+  * Changes to dependencies:
+    + requests[security] has been changed to pyOpenSSL, pyasn1, and
+      ndg-httpsclient. These dependencies are required before Python
+      2.7.7.
+- use bpython-%{py3_ver} in .desktop file
+- Fix unicode issue
+- update copyright year
+- Correct the reference to .desktop file in appdata.xml: should
+  be bpython3.desktop instead of bpython.desktop.
+- Fix update-alternatives implementation.
+- Split documentation into own subpackage.
+
+-------------------------------------------------------------------
+Fri Jul 15 18:17:58 UTC 2016 - badshah400@gmail.com
+
+- Icon is installed in /usr/share/pixmaps, do not remove the
+  "Icon=" reference from .desktop file.
+
+-------------------------------------------------------------------
+Wed Mar  9 20:35:59 UTC 2016 - bwiedemann@suse.com
+
+- Drop build date from doc to fix build-compare
+
+-------------------------------------------------------------------
+Sat Oct 17 01:50:19 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * use bpython-%{py_ver} in .desktop file
+
+-------------------------------------------------------------------
+Mon Oct 12 05:01:23 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * updated update alternatives
+  * added dependcies greentlet, six, jedi, curtsies
+  * no more binary bpython-curtsies, bpython-gtk
+  * new binary bpython-curses, bpbd
+  * updated %doc: removed ROADMAP, TODO
+  * added new files bpython.png, bpython.appdata.xml
+  * add ifdef for 13.1 in %files section for %{_datadir}/appdata
+
+- update to version 0.14.2:
+  * #498: Fixed is_callable
+  * #509: Fixed fcntl usage.
+  * #523, #524: Fix conditional dependencies for SNI support again.
+  * Fix binary name of bpdb.
+
+- update to version 0.14.1:
+ * #483: Fixed jedi exceptions handling.
+ * #486: Fixed Python 3.3 compatibility.
+ * #489: Create history file with mode 0600.
+ * #491: Fix issues with file name completion.
+ * #494: Fix six version requirement.
+ * Fix conditional dependencies for SNI support in Python versions before 2.7.7.
+
+- update to version 0.14:
+  * This release contains major changes to the frontends:
+    - curtsies is the new default frontend.
+    - The old curses frontend is available as bpython-curses.
+    - The GTK+ frontend has been removed.
+  * New features:
+    - #194: Syntax-highlighted tracebacks. Thanks to Miriam Lauter.
+    - #234: Copy to system clipboard.
+    - #285: Re-evaluate session and reimport modules.
+    - #313: Warn when undo may take cause extended delay, and prompt to undo
+      multiple lines.
+    - #322: Watch imported modules for changes and re-evaluate on changes.
+    - #328: bpython history not re-evaluated to edit a previous line of a multiline
+      statement.
+    - #334: readline command Meta-. for yank last argument. Thanks to Susan
+      Steinman and Steph Samson.
+    - #338: bpython help with F1.
+    - #354: Edit config file from within bpython.
+    - #382: Partial support for pasting in text with blank lines.
+    - #410: Startup banner that shows Python and bpython version
+    - #426: Experimental mutliline autocompletion.
+    - fish style last history completion with Arrow Right. Thanks to Nicholas
+      Sweeting.
+    - fish style automatic reverse history search with Arrow Up.
+      Thanks to Nicholas Sweeting.
+    - Incremental forward and reverse search.
+    - All readline keys which kill/cut text correctly copy text for paste
+      with Ctrl-y or Meta-y.
+    - French translation.
+    - Removal links for bpaste pastebins are now displayed.
+    - More informative error messages when source cannot be found for an object.
+      Thanks to Liudmila Nikolaeva and Miriam Lauter.
+    - Message displayed if history in scrollback buffer is inconsistent with
+      output from last re-evaluation of bpython session. Thanks to Susan Steinman.
+    - Adjust logging level with -L or -LL.
+    - String literal attribute completion.
+  * Fixes:
+    - #254: Use ASCII characters if Unicode box characters are not supported by the
+      terminal.
+    - #284: __file__ is in scope after module run with bpython -i. Thanks to
+      Lindsey Raymond.
+    - #347: Fixed crash on unsafe autocompletion.
+    - #349: Fixed writing newlines to stderr.
+    - #363: Fixed banner crashing bpython-urwid. Thanks to Luca Barbato.
+    - #366, #367: Fixed help() support in curtsies.
+    - #369: Interactive sessions inherit compiler directives from files run with -i
+      interactive flag.
+    - #370, #401, #440, #448, #468, #472: Fixed various display issues in curtsies.
+    - #391: Fixed crash when using Meta-backspace. Thanks to Tony Wang.
+    - #438, #450: bpython-curtsies startup behavior fixed. Errors
+      during startup are reported instead of crashing.
+    - #447: Fixed behavior of duplicate keybindings. Thanks to Keyan Pishdadian.
+    - #458: Fixed dictionary key completion crash in Python 2.6. Thanks to Mary
+      Mokuolu.
+    - Documentation fixes from Lindsey Raymond.
+    - Fixed filename completion.
+    - Fixed various Unicode issues in curtsies.
+    - Fixed and re-enabled dictionary key completion in curtsies.
+
+    The commandline option --type / -t has been renamed to --paste / -p.
+    Python 2.6, 2.7, 3.3 and newer are supported. Support for 2.5 has been dropped.
+    Furthermore, it is no longer necessary to run 2to3 on the source code.
+    This release brings a lot more code coverage, a new contributing guide,
+    and most of the code now conforms to PEP-8.
+  * Changes to dependencies:
+    - greenlet and curtsies are no longer optional.
+    - six is a new dependency.
+    - jedi is a new optional dependency required for multiline completion.
+    - watchdog is a new optional dependency required for watching changes in
+      imported modules.
+
+- update to version 0.13.2:
+  * #424: Use new JSON API at bpaste.net.
+  * #430: Fixed SNI issues with new pastebin service on Mac OS X.
+  * #432: Fixed crash in bpython-curtsies in special circumstances if
+    history file is empty. Thanks to Lisa van Gelder.
+
+- update to version 0.13.1:
+  * #287: Turned off dictionary completion in bpython-curtsies
+  * #281: Fixed a crash on error-raising properties
+  * #286: Fixed input in Python 3
+  * #293: Added encoding attribute to stdin bpython curtsies
+  * #296: Fixed warnings in import completion for Python 3
+  * #290: Stop using root logger
+  * #301: Specify curtsies version in requirements
+  * There's also a necessary regression: #232 (adding fileno() on stdin)
+    is reintroduced because its previous fix was found to be the cause of #286
+
+- Update to version 0.13:
+  * Dictionary key completion, thanks to Maja Frydrychowicz (#226).
+    To use normal completion and ignore these key completions, type a space.
+  * Edit current line in external editor: ctrl-x (#161)
+  * Python 2.5 compatibility, thanks to Michael Schuller (#279). Python 2.5
+    is not officially supported, but after few changes Michael introduced, he
+    says it's working fine.
+  * FakeStream has flush(), so works correctly with
+    django.core.email.backends.console thanks to Marc Sibson (#259)
+  * FakeStdin has fileno() (#232)
+  * Changes to sys.ps1 and sys.ps2 are respected thanks to Michael Schulle (#267)
+  * atexit registered functions run on exit (#258)
+  * fixed an error on exit code when running a script with bpython script.py (#260)
+  * setup.py extras are used to define dependencies for urwid and
+    curtsies frontends
+- New tool bpython-curtsies
+
+-------------------------------------------------------------------
+Sat Nov 08 04:15:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Thu Jul 31 12:38:39 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Fri Oct 11 11:54:14 UTC 2013 - p.drouand@gmail.com
+
+- Slave -urwid and -gtk to bpython binary instead of install it with
+  update-alternatives 
+
+-------------------------------------------------------------------
+Mon Oct  7 15:00:07 UTC 2013 - p.drouand@gmail.com
+
+- Apply update-alternatives for binaries and man-pages 
+
+-------------------------------------------------------------------
+Thu Mar 21 11:11:44 UTC 2013 - speilicke@suse.com
+
+- Drop bpython.desktop, instead only use suse_update_desktop_file
+  to fix up the upstream one
+- Build and install HTML documentation
+
+-------------------------------------------------------------------
+Mon Jan  7 00:03:03 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.12 version:
+  * Added a new pastebin_helper config option to name an executable that should
+  perform pastebin upload on bpython's behalf. If set, this overrides
+  pastebin_url. Data is supplied to the helper via STDIN, and it is expected
+  to return a pastebin URL as the first word of its output.
+  * Fixed a bug causing pastebin upload to fail after a previous attempt was
+  unsuccessful. A duplicate pastebin error would be displayed in this case,
+  despite the original upload having failed.
+  * Added more key shortcuts to bpython.urwid
+  * Smarter dedenting after certain expressions
+  * #74 fixed broken completion when auto_display_list was disabled
+- Add python-Sphinx as a build dependencie since man doc building from source
+
+-------------------------------------------------------------------
+Tue Jun 26 09:53:27 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.11:
+  + #204: "import math" not autocompleting on python 3.2
+
+-------------------------------------------------------------------
+Fri Sep  2 12:17:26 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.10.1:
+  + #197: find_modules crashes on non-readable directories
+  + #198: Source tarball lacks .po files
+- Changes from version 0.10:
+  + Config files are now located according to the XDG Base Directory
+    Specification. The support for the old bpythonrc files has been
+    dropped and ~/.bpython.ini as config file location is no longer supported.
+    See issue #91.
+  + Fixed some issues with tuple unpacking in argspec. See issues #133 and #138.
+  + Fixed a crash with non-ascii filenames in import completion. See issue #139.
+  + Fixed a crash caused by inspect.findsource() raising an IndexError
+    which happens in some situations. See issue #94.
+  + Non-ascii input should work now under Python 3.
+  + Issue #165: C-a and C-e do the right thing now in urwid.
+  + The short command-line option "-c config" was dropped as it conflicts with
+    vanilla Python's "-c command" option. See issue #186.
+
+-------------------------------------------------------------------
+Sun Jul  3 09:52:45 UTC 2011 - saschpe@gmx.de
+
+- Cleaned up spec file:
+  * Removed 'python' dependency, have python-devel
+  * Require python-pyparsing instead of python-parsing
+  * Removed scripting madness and use proper SUSE version checks
+  * Addded AUTHORS, ROADMAP and TODO doc files
+
+-------------------------------------------------------------------
+Fri May 13 12:06:18 CEST 2011 - pth@suse.de
+
+- Add missing requires for python-curses (bnc#693545).
+
+-------------------------------------------------------------------
+Tue Aug  3 18:02:55 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.9.7.1:
+  * new features:
+    + pastebin confirmation
+    + ability to ignore PYTHONSTARTUP when launched with -i
+    + addition of bpdb (bpython python debugger)
+    + correct operation of C-w
+    + a more comprehensive unit testing suite
+    + pastebin deduplication
+    + import completion improvements
+    + GTK improvements
+  * bug fixes
+
+-------------------------------------------------------------------
+Thu Dec 31 17:52:06 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.6.2:
+  * fixes Python 3 compatibility
+
+-------------------------------------------------------------------
+Thu Dec 31 09:53:43 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.6.1:
+  * a crash in the "Save" functionality was fixed
+
+-------------------------------------------------------------------
+Wed Dec 30 18:00:18 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.6:
+  * numerous minor bugs were fixed
+  * features were implemented to make general usage a lot smoother
+  * a showcase of beta GTK support was added
+
+-------------------------------------------------------------------
+Thu Oct  1 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.5.2:
+  * filename expansion was fixed
+  * future imports now work
+  * docstring fixes were made for types with their own __init__ method
+
+-------------------------------------------------------------------
+Wed Sep 23 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.5.1:
+  * various bugfixes
+  * introspect on Python functions' source code
+  * initial Python 3.x support
+  * miscellaneous configuration improvements
+
+-------------------------------------------------------------------
+Fri Jul 24 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.4:
+  * bugfix release
+  * a few extra enhancements to parenthesis highlighting and extended key configurability
+  * tab completion for filenames when inside a string
+
+-------------------------------------------------------------------
+Thu Jun 18 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.3
+
+-------------------------------------------------------------------
+Tue Jun  2 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.0:
+  * import completion was added
+  * paste.pocoo.org is now used for pastebin
+  * a color scheme that works well with a white background was added
+  * general bugfixes and improvements were made
+
+-------------------------------------------------------------------
+Tue Aug 26 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 0.7.0:
+  * bugfixes
+  * fixed handling of home/end/del etc. properly
+  * raw_input() and friends now work correctly
+  * fixed parsing PYTHONSTARTUP
+  * adds manpages
+
+-------------------------------------------------------------------
+Sun Jun 29 00:00:00 CEST 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Jun 15 00:00:00 CEST 2008 - guru@unixtech.be
+
+- new upstream version:
+  * code cleanups
+  * fixed several bugs that could cause bpython to crash due to autocompletion drama
+  * properly returns control to the terminal on the event of a traceback
+
+-------------------------------------------------------------------
+Mon Apr 28 00:00:00 CEST 2008 - guru@unixtech.be
+
+- removed patch, was merged upstream
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Apr 27 00:00:00 CEST 2008 - guru@unixtech.be
+
+- new package
+

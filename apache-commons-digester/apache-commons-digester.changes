@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed Mar 27 10:04:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Use global defines for name
+
+-------------------------------------------------------------------
+Mon Feb 25 10:38:45 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.1
+  * Breaking changes:
+    + The minimum JDK requirement is now JDK 1.5. The provided
+      binaries will not work on lower JDKs. The source has been
+      updated to leverage Generics and other JDK 1.5 features where
+      possible, and requires JDK 1.5 to compile.
+    + This release eliminates all dependencies on Commons
+      Collections classes. Previously, ArrayStack was used in the
+      Digester implementation and was exposed via protected fields
+      or inner classes of the following classes:
+      - org.apache.commons.digester.Digester,
+      - org.apache.commons.digester.CallParamRule, and
+      - org.apache.commons.digester.xmlrules.DigesterRuleParser
+      These classes now use java.util.Stack instead. Any subclasses
+      of the above using protected ArrayStack members will require
+      appropriate migration to use java.util.Stack instead before
+      they can be used with version 2.0 or later.
+  * Important changes:
+    + The legacy schema support has been deprecated in favor of
+      javax.xml.validation.Schema support.
+  * New features:
+    + Support for XML Schema validation using
+      javax.xml.validation.Schema  has been added to Digester.
+      See Digester class Javadoc, and
+      Digester#setSchema(javax.xml.validation.Schema) method.
+      This allows usage of W3C XML Schema, Relax NG and Schematron
+      for validation of XML documents.
+      The legacy schema support has been deprecated (details below).
+    + The underlying SAXParser factory can now be easily configured
+      to be XInclude aware. This allows for general purpose
+      inclusion of XML or text documents, for example, and
+      facilitates document modularity.
+    + Added a new package 'annotations' that provides for Java5
+      Annotations  meta-data based definition of rules for Digester.
+      This improves maintainability of both Java code and XML
+      documents, as  rules are now defined in POJOs and generating
+      Digester parsers at  runtime, avoiding manual updates.
+  * Bugs from previous release:
+    + SetPropertyRule throws java.lang.IllegalArgumentException:
+      No name specified when matched element has no attributes.
+      [DIGESTER-114]
+    + Missing unit tests using Ant and Maven. [DIGESTER-117]
+    + Digesting XML content with NodeCreateRule swallows spaces.
+      [DIGESTER-120]
+    + Potential NullPointerException if debug is enabled in
+      Digester#resolveEntity() [DIGESTER-122]
+    + Clear inputSources list in method Digester.clear()
+      [DIGESTER-125]
+    + Potential NullPointerException if debug is enabled in
+      FactoryCreateRule#begin() [DIGESTER-126]
+  * Improvements from previous release:
+    + Null arguments to all Digester#parse() methods now throw an
+      IllegalArgumentException. [DIGESTER-111]
+    + 'serialVersionUID' fields have been added to Serializable
+      classes.
+- Generate ant build files that were removed in 2.1 by upstream
+- Removed patch:
+  * apache-commons-digester-build.patch
+    + the generated build is handling the build classpath
+      differently
+
+-------------------------------------------------------------------
+Fri Dec 21 20:40:38 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Renamed package to apache-commons-digester
+- Removed patch:
+  * jakarta-commons-digester-java16compat.patch
+    + no need to patch build.xml to build with source/target 1.6
+- Added patch:
+  * apache-commons-digester-build.patch
+    + add commons-collections to the build classpath
+
+-------------------------------------------------------------------
+Mon Sep 18 11:07:35 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * jakarta-commons-digester-java14compat.patch
+- Added patch:
+  * jakarta-commons-digester-java16compat.patch
+    - Build with java source and target 1.6
+    - Fixes build with jdk9
+- Align the spec file to the way the ant build gets its
+  dependencies and fix the javadoc build
+
+-------------------------------------------------------------------
+Tue Jul  8 10:25:21 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec cleaner and fix build again.
+
+-------------------------------------------------------------------
+Mon Sep 25 12:08:46 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 16:33:37 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.7 from JPackage.org
+
+-------------------------------------------------------------------
+Mon Jul 18 16:11:45 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.6 from JPackage.org
+
+-------------------------------------------------------------------
+Tue Feb 22 13:16:09 CET 2005 - skh@suse.de
+
+- enable build of rss package (needed by struts)
+
+-------------------------------------------------------------------
+Mon Feb 21 17:24:34 CET 2005 - skh@suse.de
+
+- update to version 1.6
+- don't use icecream
+
+-------------------------------------------------------------------
+Thu Sep 16 16:16:40 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Sun Sep  5 23:30:19 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.5 (JPackage version 1.5)
+

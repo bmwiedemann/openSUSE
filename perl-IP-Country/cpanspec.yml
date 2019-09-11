@@ -1,0 +1,6 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+sources:
+  - perl-IP-Country-rpmlintrc
+license: (GPL-1.0+ or Artistic-1.0) and SUSE-Redistributable-Content

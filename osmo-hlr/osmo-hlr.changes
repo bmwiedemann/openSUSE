@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Wed Jan 30 21:49:08 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.0.0
+  * Add GSUP message router
+  * Add concept of Internal (IUSE) and external (EUSE) USSD handlers
+  * Implement handling of USSD received from OsmoMSC via GSUP
+  * Introduce shared libosmo-gsup-client library for client programs
+    connecting to OsmoHLR (like OsmoMSC, OsmoSGSN).
+  * Full changelogs since 0.1.0:
+    http://git.osmocom.org/osmo-hlr/plain/debian/changelog?h=1.0.0
+    http://git.osmocom.org/osmo-hlr/plain/debian/changelog?h=0.2.1
+    http://git.osmocom.org/osmo-hlr/plain/debian/changelog?h=0.2.0
+- Remove patches:
+  * 0001-doc-install-example-.cfg-files-to-docdir-examples.patch
+  * 0001-fix-build-db_test-missing-LIBOSMOABIS_CFLAGS-and-_LI.patch
+  * osmo-hlr-fix-docpath.patch
+
+-------------------------------------------------------------------
+Sat Mar 17 19:08:09 UTC 2018 - mardnh@gmx.de
+
+- Run test during build
+- Package examples
+- Package systemd service file
+- Add patch:
+  * 0001-fix-build-db_test-missing-LIBOSMOABIS_CFLAGS-and-_LI.patch
+  * 0001-doc-install-example-.cfg-files-to-docdir-examples.patch
+- Minor specfile cleanup
+
+-------------------------------------------------------------------
+Mon Jan  1 21:24:09 UTC 2018 - jengelh@inai.de
+
+- Update description and versionify BuildRequires.
+- Install service file.
+
+-------------------------------------------------------------------
+Wed Dec 27 12:41:33 UTC 2017 - mardnh@gmx.de
+
+- Update to new upstream release 0.1.0
+  * No changelog was provided
+- Add patch:
+  * osmo-hlr-fix-docpath.patch
+
+-------------------------------------------------------------------
+Sat Mar 04 19:18:55 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1487730330.4436dec:
+  * Move GSUP msg init into separate function
+  * Use strings for GSUP message type
+  * Move lu_operation into separate file
+  * db: move duplicated code into helper functions
+  * Fix compiler's warning about printf security
+  * Add routines to update nam_ps
+  * auc_3g_test: add AUTS resync test
+  * auc_gen_vectors(): ensure sane arguments, test
+  * auc_3g_test: allow to inc fake rand bytes upon rand request
+  * auc_3g_test: add AUTS test with N vectors, to show bug
+  * cosmetic: refactor auc_compute_vectors(), add debug log
+  * auc_compute_vectors(): fix AUTS resync for multiple vectors
+  * cosmetic: auc_3g_test: improve test debugging tools
+  * cosmetic: rename auc_3g_test.c to auc_test.c
+
+-------------------------------------------------------------------
+Wed Feb 15 09:16:57 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1486997618.f8c7b6f:
+  * debug log: log computed vector kinds
+  * log: move a log from info to debug level
+  * hlr.sql: typo in comment
+  * auc.c: typo in comment
+  * main: add and use root talloc ctx
+  * main: add option parsing with db file and default options
+  * main: add VTY and '-c config-file' option
+  * sql: fix 3g_auc's column K data type
+  * cosmetic: sql: indicate VARCHAR size of key columns as 32
+  * sql: auc_3g: set sqn NOT NULL DEFAULT 0
+  * comment: sql: describe auc_2g and auc_3g columns
+  * Add test suite skeleton with empty test (auc_3g_test)
+  * tests: auc_3g_test: implement vector generation test
+  * auth: verify test sets from 3GPP TS 55.205
+  * sql: add unique constraints to IMSI and MSISDN
+  * UMTS AKA resync: fix argument ordering
+  * Log error cause as a string
+
+-------------------------------------------------------------------
+Sun Dec 25 20:48:47 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1482328813.627de84:
+  * fix DLGSUP logging cat after change in libosmocore
+  * build: recoin db_test as non-installable program
+  * build: actually make sqlite mandatory
+  * bump required libosmocore version to 0.9.5
+  * Add gerrit settings
+  * Add hardcoded APN
+  * gsup: send subscriber MSISDN
+
+-------------------------------------------------------------------
+Sun Dec 11 09:31:30 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1481415765.ec1b959:
+  * build with autoconf/automake, add jenkins.sh script
+  * fix build on FreeBSD: eliminate implicitly declared functions
+  * fix various compiler warnings
+
+-------------------------------------------------------------------
+Fri Nov 11 10:56:18 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1478855826.7f8c301:
+  * State number of auth vectors in SAI response
+  * AUC: use osmo_hexparse() when reading key material from db
+  * some more comment / todo updates
+  * implement PURGE-MS from VLR/SGSN to HLR
+  * LU: correctly determine and use is_ps
+  * LU: remote oudated FIXME comments
+  * fix PURGE_MS sqlite3 access
+  * fix authentication re-sync (pass RAND+AUTS along)
+  * Fix build on Ubuntu
+  * add COPYING file with AGPLv3 license text
+
+-------------------------------------------------------------------
+Fri Nov 11 10:55:51 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

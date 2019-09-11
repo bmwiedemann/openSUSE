@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Copyright (c) 2007 Werner Fink
+# Copyright (c) 2007 SuSE Linux Products GmbH, Nuernberg, Germany.
+#
+#     This library is free software; you can redistribute it and/or modify it
+#     under the terms of the GNU Lesser General Public License as published by
+#     the Free Software Foundation; either version 2.1 of the License, or (at
+#     your option) any later version.
+#                             
+#     This library is distributed in the hope that it will be useful, but
+#     WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#     Lesser General Public License for more details.
+#
+#     For a copy see <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>
+#
+# Author: Werner Fink <werner@suse.de>
+
+docode=yes
+if test "$1" = "-e" ; then
+    shift
+    encode=$1
+    docode=no
+    shift
+fi
+
+for man; do
+    pp="$(head -n 1 $man)"
+    case "$pp" in
+    \'\\\"*\ -\*-\ coding:\ *\ -\*-)
+	continue
+    esac
+    if test "$docode" = "yes" ; then
+	encode=$(sed -r "s/^(\.[[:alpha:]]{1,2}|\.\\\\\".*|'\\\\\".*)//;s/\\f[[:alpha:]]//;s/\\\\\".*//" $man | file -b -)
+	encode=${encode%% *}
+    fi
+    case "$encode" in
+    ISO-8859)
+	echo "${0##*/}: The encoding $encode does not include the Latin Alphabet Number" 1>&2
+	echo "${0##*/}: use option -e to specify" 1>&2
+	echo "     ${0##*/} -e ISO-8859-<number> $man" 1>&2
+	exit 1
+    esac
+    case "$pp" in
+    \'\\\"*)
+	sed -ri "1{s/('\\\\\".*)/\\1 -\*- coding: UTF-8 -\*-/}" $man
+	;;
+    *)
+	sed -ri "1 i\
+		'\\\\\" -\*- coding: UTF-8 -\*-\
+		"  $man
+    esac
+done

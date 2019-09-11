@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Tue Apr 30 18:06:33 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 4.0.2
+  *Corrections for bugs that may harm simulation results:
+   * A sign error in tabulated interactions was corrected such that
+     the force equals the negative gradient of the potential.
+     (#2519,2520)
+   * The flow field of the CPU lattice-Boltzmann implementation was
+     deleted when aspects of the molecular dynamics cell grid were
+     changed; E.g., when interactions, the skin or the parallelization
+     setup were changed. ESPResSo now terminates with an error, when this
+     happens. To avoid this, please setup the CPU lattice-Boltzmann after
+     all other aspects of the system. The GPU LB is not affected in the
+     4.0 release, but was affected in the current development branch.
+     (#2728, #2736)
+   * Corrected the force acting on LB Boundaries for the case of
+     agrid and density not equal to 1 (#2624).
+   * Corrected the cutoff calculation for the soft sphere interaction. In
+     the previous implementation, the offset parameter was ignored.
+     (#2505)
+   * The "three point coupling" of particles to the lattice-Boltzmann
+     method has been removed. While it works in most environments, for
+     some compilers the calculation gives wrong values. This is likely
+     caused by undefined behavior. A corrected implementation is
+     available in ESPResSo's development branch. It cannot be safely
+     backported to 4.0.2, because the code has diverged too far. (#2516,
+     #2517) Users who did not explicitly activate this coupling via
+     couple="3pt" are not affected.
+   * The velocity of existing particles was changed when setting or
+     changing the simulation time step (#2480)
+ * Further changes:
+   * Fixed the electrokinetic Python interface (#2486)
+   * Correction to the installation instructions for mac (#2510)
+   * Corrected file permissions (#2470)
+   * Minor corrections and extensions to the test suite (#2477, #2552)
+   * Fixed a dead-lock in the dipolar Barnes Hutt method on the GPU for
+     recent NVIDIA cards such as RTX 2080 (#2719).
+   * Restored Mayavi visualizer's API-compatibility with OpenGL
+     visualizer (#2751)
+
+-------------------------------------------------------------------
+Fri Jan 25 16:28:37 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 4.0.1 
+  * Many small bugfixes
+- Drop 2255.patch, 2259.patch and 2265.patch - merged upstream
+
+-------------------------------------------------------------------
+Fri Sep 28 23:13:13 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- added change from request #639007
+  - rename package to python3-espressomd
+  - install COPYING for all packages
+  - change license to GPL-3.0-or-later
+  - added sonum define
+
+-------------------------------------------------------------------
+Fri Sep  7 15:36:54 UTC 2018 - junghans@votca.org
+
+- Version bump to 4.0.0
+- Rename pacakge to python-espressomd
+- Dropped 1830.patch - merged upstream
+- Dropped doc package - under rework in 4.0.0
+- New features:
+  - Reaction ensemble methods for the modelling of chemical reactions, including constant pH and Wang-Landau schemes.
+  - Polarisable particles via the Drude-oscillator scheme.
+  - Steepest-descent energy minimization scheme.
+  - Methods for active particles (swimmer_reaction, dipolar swimmers).
+  - GPU-accelerated P3M method for electrostatic interactions.
+  - GPU-accelerated direct summation and Barnes-Hutt schemes for dipolar interactions under open boundary conditions.
+  - Support for the electrostatic and magnetostatics method provided by the ScaFaCoS library.
+  - Immersed boundary method for soft immersed objects in an LB fluid.
+  - Virtual sites acting as inertialess tracers in an LB fluid usable as part of the immersed boundary method or independently.
+  - New bonded quartic and Coulomb interactions.
+  - Possibility to tune the skin parameter.
+  - Support for saving to the h5md file format for molecular dynamics data.
+  - Connection to the MD Analysis Python package.
+  - A rotate_system command was added, which rotates the particle positions around the system’s center of mass.
+- Added 2255.patch to fix numpy issue on i586
+- Added 2259.patch to fix numpy issue on big-endian platforms
+- Added 2265.patch to fix test on i586
+
+-------------------------------------------------------------------
+Mon Feb 12 19:25:01 UTC 2018 - junghans@votca.org
+
+- add 1830.patch to fix install
+- update version 3.3.1+git20180203.f74064d
+  * many many small fixes
+  * support for newer cython
+
+-------------------------------------------------------------------
+Wed Oct 25 12:43:08 UTC 2017 - junghans@votca.org
+
+- adapt to new openlmi package - source mpivars.h during build
+
+-------------------------------------------------------------------
+Wed Feb  1 10:36:28 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Sep 29 13:46:20 UTC 2016 - jengelh@inai.de
+
+- RPM group fixup
+
+-------------------------------------------------------------------
+Wed Aug  3 17:54:16 UTC 2016 - junghans@votca.org
+
+- switched to cmake build-system
+- build python module
+- dropped header as they are for internal use only
+- dropped pkg-config files as nothing depends on libs yet
+- update version 3.3.1+git20160803.6ed0518.tar.gz
+  * overhaul of buildsystem
+  * many many small fixes
+
+-------------------------------------------------------------------
+Sun Jun 26 07:35:00 UTC 2016 - i@marguerite.su
+
+- fix boo#985147
+  * there's a commit that removed redefinition of malloc and realloc
+    which fixed build for gcc 6. but it's too hard to cherry pick, so 
+    update to the latest git version is a good idea
+- there's no --without-mpi option left in configure.ac, so "-openmpi"
+  sub-package is meaningless now (everything has openmpi support)
+  and since there's no two main packages any more, "-common" sub-package
+  is also meaningless now (and it doesn't contains data), merged.
+- add sub-package: "-devel", "libEspresso0", "libEspressoTcl0"
+- add generate_headers.rb to gather those .hpp that're really used
+  into "-devel" sub-package
+- create pkgconfig files
+- add some texlive BuildRequires to build pdf documentation.
+- update version 3.3.1+git20160622.6aa229c:
+  * added edge statistics for meshes used by object-in-fluid
+  * added pos_folded property
+  * Adapted simple LB tests to current interface.
+  * system.part.writevtk()
+  * redesigned exclusions and added slice input
+  * Scafacos: Add long range energy to correct place in energy data structure
+  * Correction to scafacos energy calculation: Check cutoff in near field contrib
+  * Scafacos: Sort out conditional compilation and cython includes
+  * Scafacos: methods shared between electrostatics and dipolar calculations
+
+-------------------------------------------------------------------
+Sun Nov  8 21:57:37 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.3.1
+  * A lot of changes; please read the NEWS file
+
+-------------------------------------------------------------------
+Tue Aug 12 03:44:16 UTC 2014 - junghans@votca.org
+
+- version bumped to 3.3.0
+- Highlights of this release include:
+  - Calculation of the electrokinetic equations via the ELECTROKINETICS feature,
+   - the Shan/Chen method for multi component lattice Boltzmann fluids,
+   - the P3M and MMM1D methods can now be computed on a GPU,
+   -  ESPResSo now has a rudimentary Python interface.
+   For a complete list of the changes in the release, please refer to:
+   http://download.savannah.gnu.org/releases/espressomd/NEWS
+
+-------------------------------------------------------------------
+Fri Feb  7 17:41:18 UTC 2014 - junghans@votca.org
+
+- build openmpi and non-mpi version
+
+-------------------------------------------------------------------
+Tue Feb  4 18:59:10 UTC 2014 - junghans@votca.org
+
+- initial commit
+

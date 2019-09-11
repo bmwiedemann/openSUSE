@@ -1,0 +1,29 @@
+Do not setup SIGHUP signal handler if we are in the batch mode
+
+Top enables a signal handler for the SIGHUP signal (loss of terminal).  While
+this makes sense for top's default interactive mode, it doesn't make any sense
+for batch mode. If you run top in nohup just to collect data over time and
+disconnect top finishes which is not what one would expect.
+Index: procps-3.2.8/top.c
+
+---
+ top/top.c |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- top/top.c
++++ top/top.c	2018-04-04 11:33:59.278280201 +0000
+@@ -3600,7 +3600,13 @@ static void before (char *me) {
+    sa.sa_flags = 0;
+    for (i = SIGRTMAX; i; i--) {
+       switch (i) {
+-         case SIGALRM: case SIGHUP:  case SIGINT:
++         case SIGHUP:
++            if (Batch)
++              sa.sa_handler = SIG_IGN;
++            else
++              sa.sa_handler = sig_endpgm;
++            break;
++         case SIGALRM: case SIGINT:
+          case SIGPIPE: case SIGQUIT: case SIGTERM:
+          case SIGUSR1: case SIGUSR2:
+             sa.sa_handler = sig_endpgm;

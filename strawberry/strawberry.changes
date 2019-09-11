@@ -1,0 +1,319 @@
+-------------------------------------------------------------------
+Mon Aug  5 21:37:28 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.6.3
+  + Fixed crash when using internet services.
+  + Fixed musicbrainz tagfetcher only showing 1 result per song.
+  + Fixed collection watcher to unwatch deleted directories.
+  + Added "album - disc" grouping. 
+
+-------------------------------------------------------------------
+Sat Aug  3 12:05:36 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.6.2
+  + Disabled fatal error for FTS5 cmake test.
+
+-------------------------------------------------------------------
+Sat Aug  3 11:42:16 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.6.1
+  + Compare artist and album case-insensitive when generating score for album covers.
+  + Fixed broken return value of sendMessage() in SingleApplication causing application to be started twice.
+  + Improved error handling in local redirectserver.
+  + Added new tabs view with search and favorites to Tidal.
+  + Fixed gst_pad_send_event lock in gstreamer pipeline.
+  + Made Xine analyzer optional to fix compilation with newer Xine.
+  + Implemented offset and queue to all Tidal requests.
+  + Added new artist, album and song ids to songs schemas to add/remove favorites.
+  + Improved lyrics searcher.
+  + Fixed disabling fading option in backend settings when volume control is disabled.
+  + Added x-scheme-handler/tidal to desktop file to handle tidal songs and allow OAuth redirect url.
+  + Added love button for scrobblers.
+  + Fixed gapless playback when using url handler.
+  + Fixed enabling/disabling fading options in backend settings.
+  + Added support for Subsonic streaming.
+  + Added support for Qobuz streaming.
+  + Added confirmation box for opening songs in file browser to avoid users accidentally opening too many songs.
+  + Added OSD notification on playback resume option.
+  + Fixed MusicBrainz tag fetcher to respect rate limiting when fetching tags.
+  + Fixed hardcoded systemtray icon.
+  + Added live scanning and option to rescan songs.
+  + Added playlist background image stretch option to zoom image with cutting the height.
+  + Replaced use of QDesktopWidget with QDesktop
+  + Replaced all uses of QSignalMapper with lambda expressions
+  + Fixed collection album covers stuck to old ones when new album covers are fetched
+  + Fixed all Json services to check HttpStatusCodeAttribute in addition to checking network errors
+  + Fixed track change hang
+  + Fixed playlist sorting to ignore articles
+  + Fixed MessageReply crash in tagreader
+  + Fixed MTP support
+  + Fixed possible crashes with libimobiledevice devices
+  + Removed older devicekit udisks backend
+  + Using iconv to replace non-ascii characters when organising files
+  + Fixed IPod support when listed from UDisks2
+  + Fixed memory leaks when establishing database connections and in database backup.
+  + Fixed dangling database connections when loading collection, playlists and devices.
+  + Fixed closing and deleting backends to free memory and database connections on exit.
+  + Fixed dangling pointers causing crashes when loading new album covers in collection.
+  + Fixed playlist shortcuts being broken because they were hidden in playlist right click menu.
+  + Replaced FTS3 and custom tokenizer with FTS5 with unicode61.
+  + Fixed certain cases where track slider popup was stuck.
+  + Fixed certain cases where the playing widget gets stuck when switching fast between context and other widgets.
+  + Removed ChartLyrics provider (service have been down for a long time). 
+
+-------------------------------------------------------------------
+Sun May  5 19:32:26 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.5.5
+  + Fixed Tidal API url
+
+-------------------------------------------------------------------
+Sun May  5 18:08:25 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.5.4
+  + Changed description for offline mode scrobbling for less confusion
+  + Fixed scrobbler to not send "playing now" when in offline mode
+  + Added common RPM spec file for openSUSE, Fedora, RedHat, CentOS and Mageia
+  + Improved cover manager score system
+  + Added Deezer and Tidal cover providers
+  + Added ChartLyrics lyrics provider
+  + Added HTTPS workaround for Last.Fm OAuth to solve redirect https to http (localhost) problems
+  + Added Moodbar
+  + Fixed incorrect desktop file returned by mpris2
+  + Fixed mpris2 CanPlay
+  + Fixed updating play and skip count properly
+  + Fixed track seeking with mouse wheel
+  + Fixed CDDA tracks being invalidated (greyed) in the playlist
+  + Fixed problems using transcoder when other engines were selected
+  + Improved song loader error handling
+  + Fixed enabling equalizer having no affect
+  + Disable notification art setting when tray icon notification is selected
+  + Applying settings immediately when pressing Apply in settings dialog instead of just saving
+  + Disable scroll over icon to change track setting on non-X11 systems and KDE
+  + Removed nvidia workaround on exit which is no longer needed
+  + Fixed chromaprinter unref buffer crash when using complete tags automatically
+  + Fixed crash on exit using VLC engine when using static taglib caused by tagblib linking collision
+  + Fixed context background to follow base colors instead of always white
+  + Fixed fancy tabbar small sidebar mode width
+  + Added some missing taglib configure checks
+  + Saving geometry, tabbar, playlist column settings on exit only to reduce wear on SSD's and fix sluggish resizing with non-SSD
+  + Fixed and improved snap including upgrading to core18 and adding proper alsa support
+  + Fixed resume playback on startup not working for other than the first playlist
+
+-------------------------------------------------------------------
+Mon Apr  1 23:08:25 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.5.3
+  + Changed default tagging to albumartist in organise dialog
+  + Removed support for older taglib in tagreader
+  + Made lyrics selectable in context
+  + Added boom and rainbow analyzers
+  + Made it possible to use enter in shortcuts
+  + Replaced "no album cover" image
+  + Capitalized Strawberry in OSD and tooltip
+  + Added artist search to Tidal
+  + Created systray tooltip workaround for KDE
+  + Changed defaults for backend fade setting
+  + Changed backend settings to allow setting device back to automatic when a custom device is active
+  + Hide ALSA options on non-ALSA systems
+  + Showing errors in dialog when editing tags fails
+  + Update database immediately when saving tags were successful
+  + Show Strawberry icon in OSD when stopping track
+  + Added support for translations
+  + Renamed desktop and appdata files to follow freedesktop specifications
+  + No longer allowing X11 shortcuts on Wayland
+  + Fixed handling of UNC paths in gstreamer engine
+  + Added option to disable volume control
+  + Removed Deezer support (SDK discontinued and streams are encrypted)
+  + Added Norwegian and Spanish translations
+  + Added setting to allow automatically saving album covers directly to album directory
+  + Updated mimetypes
+  + Added basic support for system and custom icons
+  + Moved loading of device icons to device model
+  + Added better support for APE tags
+  + Fixed problems identifying song as collection songs when loading playlist files
+  + Fixed problems loading Tidal URLs from playlist files
+  + Added support for saving and restoring geometry in settings, organise and transcoder dialogs
+  + Improved Tidal error handling and automatic login
+  + Improved Tidal search to handle duplicate albums
+  + Notify collection backend about renamed files when organising files
+  + Added more background image options
+  + Removed API Seeds lyrics provider (require payment)
+  + Added group by format
+  + Fixed gstreamer leaks
+
+-------------------------------------------------------------------
+Sat Jan 26 17:19:46 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.5.2
+  + Added error handling and message for URL handler
+  + Added SingleCoreApplication secondary check
+  + Fixed memory leaks in devices
+  + Fixed more stability issues in devices
+  + Remove remastered from album title when searching for lyrics, covers and scrobbling
+  + Fixed CMake check for X11 headers
+  + Enabled iLister and AFC device
+  + Added saving of album cover to gpod devices
+  + Fixed AAC/MP4 transcoder
+  + Added log to organise error dialog
+  + Added warning when enabling X11 shortcuts on Gnome, Cinnamon or KDE
+  + Fixed transcoder to use filename suffixes to solve issues when copying files to iPods
+  + Added option to copy album cover in organise dialog (filesystem and libgpod devices)
+  + Added raise() to make sure window is on top when strawberry is started twice
+
+-------------------------------------------------------------------
+Sat Jan 12 15:26:45 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.5.1
+  + Added scrobbler with support for Last.fm, Libre.fm and ListenBrainz
+  + Fixed key up causing playback to reset
+  + New improved last.fm and musicbrainz album cover providers
+  + Removed Qt5Xml and liblastfm dependency
+  + Replaced sha2 with QCryptographicHash
+  + Fixed songs not showing up under devices
+  + Removed qxt dependency
+  + Replaced globalshortcuts backend for X11 and Windows
+  + Made global shortcuts on X11 optional and off by default
+  + Added support for Monkey's Audio
+  + Fixed crashes in devices
+  + Enabled transcoder and organiser in menus
+  + Added transcoder for WavPack
+  + Changed default group by for collection to album artist
+  + Enabled organise without gstreamer
+  + Added cmake USE_BUNDLE option for macOS/Windows
+  + Fixed broken GSD D-Bus shortcuts backend
+  + Fixed broken background image setting
+  + Disabling fading when a ALSA device is selected
+  + Replaced QtSingleApplication with SingleApplication
+  + Fixed scroll over icon to change track feature
+  + Fixed freeze when changing appearance settings
+  + Made text in about dialog selectable
+  + Improved manual pages
+  + Fixed typos
+  + Updated contributors in about
+  + Added debian copyright file
+  + Fixed some compile errors
+- Remove unneeded libQt5Gui-private-headers-devel, Qt5Xml and liblastfm dependency
+- Update description
+
+-------------------------------------------------------------------
+Wed Nov 28 23:09:57 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.4.2
+  + Updated AppStream data file to newer specifications
+  + Fixed Deezer engine to use quality setting
+  + Removed unneeded dependency Qt5OpenGL
+  + Removed obsolete xine warning and engine reinitialization
+  + Added ALSA as optional component in cmake
+  + Fixed bug in playlist columns setting all visible
+  + Added option to reset playlist columns
+  + Fixed/Improved console logging
+  + Added queue to play next option
+- Removed unneeded Qt5OpenGL dependency
+- Use system taglib
+- Only install Appdata file on Leap 15.0 or higher
+- Update description
+
+-------------------------------------------------------------------
+Sat Nov 10 23:11:21 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Add require for libQt5Sql5-sqlite
+
+-------------------------------------------------------------------
+Fri Nov  2 19:17:38 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.4.1
+  + Fixed crash in analyzer
+  + Fixed trying to use systray even if the desktop had no systray
+  + Fixed Tidal login loop bug
+  + Added Deezer support
+  + New improved fancy tabwidget
+  + Fixed bug not loading engine settings
+  + Moved queue manager into tabbar for easier access
+  + Fixed crash when changing appearance colors
+  + Improved error handling between player and engine
+  + Added setting to allow continue to the next song in the playlist based on error
+  + Improved Xine engine code
+  + Moved some settings
+  + Updated builtin taglib
+  + Added AppStream data file
+  + Fixed compiling with Qt 5 versions of system QtSingleApplication and Qxt library
+- Add desktop-file-validate and appstream-util validate
+- Install strawberry.appdata.xml
+
+-------------------------------------------------------------------
+Sun Oct  7 12:30:48 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Build without vlc on Leap 42.3
+
+-------------------------------------------------------------------
+Sun Oct  7 12:06:40 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Fix 'Extended header atime is out of range'
+
+-------------------------------------------------------------------
+Tue Sep 25 19:41:36 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.3.3
+  + Fixed search error not shown in Tidal search
+  + Added URL handler for Tidal, now retrieving URL's when playing instead of when searching
+  + Fixed bug in pipeline not setting url
+  + Fixed bug setting wrong temporary metadata
+  + Added support for both ALSA hw and plughw
+  + Added option to change url stream scheme for Tidal
+  + Added encoding of Tidal token in the source code
+  + Added encoding of Tidal password in the configuration
+  + Fixed Tidal login
+
+-------------------------------------------------------------------
+Sat Sep 15 18:22:27 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to 0.3.1
+- Update features
+
+-------------------------------------------------------------------
+Fri Jul  6 22:13:41 UTC 2018 - jonas@jkvinge.net
+
+- Fix Qt 5 dependencies
+
+-------------------------------------------------------------------
+Fri Jul  6 17:58:56 UTC 2018 - jonas@jkvinge.net
+
+- Add back update-desktop-files
+
+-------------------------------------------------------------------
+Fri Jul  6 17:32:28 UTC 2018 - jonas@jkvinge.net
+
+- Remove unneeded dependency Qt5Test
+- Require update-desktop-files only for version less than 1500
+- Add COPYING file to %license
+
+-------------------------------------------------------------------
+Thu Jul  5 01:14:27 UTC 2018 - jonas@jkvinge.net
+
+- Update to 0.2.1 
+
+-------------------------------------------------------------------
+Tue Jul  3 18:55:28 UTC 2018 - jonas@jkvinge.net
+
+- Update spec file
+
+-------------------------------------------------------------------
+Thu Jun  7 21:49:18 UTC 2018 - jonas@jkvinge.net
+
+- Update to 0.1.6 
+
+-------------------------------------------------------------------
+Wed May 16 20:49:02 UTC 2018 - jonas@jkvinge.net
+
+- Update to 0.1.5
+
+-------------------------------------------------------------------
+Fri May 11 21:45:30 UTC 2018 - jonas@jkvinge.net
+
+- Update to 0.1.3
+
+-------------------------------------------------------------------
+Mon May  7 19:20:30 UTC 2018 - jonas@jkvinge.net
+
+- Initial package.

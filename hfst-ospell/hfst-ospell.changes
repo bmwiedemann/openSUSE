@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Apr 20 12:27:04 UTC 2018 - tchvatal@suse.com
+
+- Add hack for icu 61 and newer -DU_USING_ICU_NAMESPACE=1
+  * This needs to be removed when properly fixed upstream
+
+-------------------------------------------------------------------
+Fri Apr 20 12:19:28 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.5.0:
+  * rename hfst_ol namespace to hfst_ospell to avoid conflicts
+  * improve distinguishing between lemmas and tags in analysis
+  * fix issue #37
+  * avoid shadowing multicharacter ascii-beginning symbols
+  * use minimal XML parsing to get locale, title, and description for Voikko and other frontends
+
+-------------------------------------------------------------------
+Thu Jan 18 17:57:05 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libhfstospell10-32bit, which is required
+  by libvoikko1-32bit.
+
+-------------------------------------------------------------------
+Tue Apr 25 15:24:37 UTC 2017 - tchvatal@suse.com
+
+- Initial commit, required by libvoikko

@@ -1,0 +1,217 @@
+Index: libgnome-desktop/gnome-desktop-item.c
+===================================================================
+--- libgnome-desktop/gnome-desktop-item.c.orig
++++ libgnome-desktop/gnome-desktop-item.c
+@@ -85,6 +85,7 @@ struct _GnomeDesktopItem {
+ 	GHashTable *main_hash;
+ 
+ 	char *location;
++	const char *gettext_domain;
+ 
+ 	time_t mtime;
+ 
+@@ -140,6 +141,8 @@ static GnomeDesktopItem *gnome_desktop_i
+ 
+ static void update_recently_used_apps (const GnomeDesktopItem *item);
+ 
++static const char *lookup (const GnomeDesktopItem *item, const char *key);
++
+ static int
+ readbuf_getc (ReadBuf *rb)
+ {
+@@ -387,6 +390,7 @@ gnome_desktop_item_new (void)
+ 				       "1.0");
+ 
+ 	retval->launch_time = 0;
++	retval->gettext_domain = NULL;
+ 
+ 	return retval;
+ }
+@@ -465,6 +469,10 @@ gnome_desktop_item_copy (const GnomeDesk
+ 			      copy_string_hash,
+ 			      retval->main_hash);
+ 
++	retval->gettext_domain = lookup (retval, GNOME_DESKTOP_ITEM_GETTEXT_DOMAIN);
++	if (!retval->gettext_domain)
++		retval->gettext_domain = "desktop_translations";
++
+ 	return retval;
+ }
+ 
+@@ -916,6 +924,9 @@ gnome_desktop_item_unref (GnomeDesktopIt
+ 	g_free (item->location);
+ 	item->location = NULL;
+ 
++	/* no need to free it, it's a const key */
++	item->gettext_domain = NULL;
++
+ 	g_free (item);
+ }
+ 
+@@ -1004,6 +1015,71 @@ lookup_locale (const GnomeDesktopItem *i
+ }
+ 
+ static const char *
++lookup_gettext (const GnomeDesktopItem *item, const char *key)
++{
++	const char *ret;
++	const char *msg_locale;
++	const char *value;
++
++	ret = NULL;
++
++	/* we're only interested in gettext translation if we don't have a
++	 * translation in the .desktop file itself and if the key is one of the
++	 * keys we know we want to translate: Name, GenericName, Comment.
++	 * Blindly doing this for all keys can give strange result for the
++	 * icons, since the Icon is a locale string in the spec, eg. */
++	if (!(item->gettext_domain &&
++	      (strcmp (key, GNOME_DESKTOP_ITEM_NAME) == 0 ||
++	       strcmp (key, GNOME_DESKTOP_ITEM_GENERIC_NAME) == 0 ||
++	       strcmp (key, GNOME_DESKTOP_ITEM_COMMENT) == 0)))
++		return NULL;
++
++	msg_locale = setlocale (LC_MESSAGES, NULL);
++	if (!msg_locale)
++		return NULL;
++
++	value = lookup (item, key);
++	if (value == NULL || value[0] == '\0')
++		return NULL;
++
++	if (item->location) {
++		GFile *file;
++		char  *basename;
++
++		file = g_file_new_for_uri (item->location);
++		basename = g_file_get_basename (file);
++		g_object_unref (file);
++
++		if (basename) {
++			char *context;
++			char *context_value;
++
++			context = g_strdup_printf ("%s(%s)", key,
++						   basename);
++			context_value = g_strdup_printf ("%s%s%s",
++							 context, ": ", value);
++			ret = g_dgettext (item->gettext_domain,
++					  context_value);
++			if (ret == context_value)
++				ret = NULL;
++
++			g_free (context_value);
++			g_free (context);
++			g_free (basename);
++		}
++	}
++
++	if (!ret) {
++		ret = g_dgettext (item->gettext_domain, value);
++		/* don't accept no translation */
++		if (ret == value)
++			ret = NULL;
++	}
++
++	return ret;
++}
++
++static const char *
+ lookup_best_locale (const GnomeDesktopItem *item, const char *key)
+ {
+ 	const char * const *langs_pointer;
+@@ -1013,6 +1089,14 @@ lookup_best_locale (const GnomeDesktopIt
+ 	for (i = 0; langs_pointer[i] != NULL; i++) {
+ 		const char *ret = NULL;
+ 
++		/* if we reach C, it means there were no inline translations so
++		 * far, so let's try gettext first */
++		if (strcmp (langs_pointer[i], "C") == 0) {
++			ret = lookup_gettext (item, key);
++			if (ret != NULL)
++				return ret;
++		}
++
+ 		ret = lookup_locale (item, key, langs_pointer[i]);
+ 		if (ret != NULL)
+ 			return ret;
+@@ -2720,11 +2804,21 @@ gnome_desktop_item_get_localestring_lang
+ 					  const char *attr,
+ 					  const char *language)
+ {
++	const char *msg_locale;
++	const char *ret;
++
+ 	g_return_val_if_fail (item != NULL, NULL);
+ 	g_return_val_if_fail (item->refcount > 0, NULL);
+ 	g_return_val_if_fail (attr != NULL, NULL);
+ 
+-	return lookup_locale (item, attr, language);
++	msg_locale = setlocale (LC_MESSAGES, NULL);
++
++	ret = lookup_locale (item, attr, language);
++	/* let's try gettext if the requested language is the current one */
++	if (!ret && language && strcmp (msg_locale, language))
++		ret = lookup_gettext (item, attr);
++
++	return ret;
+ }
+ 
+ /**
+@@ -2752,6 +2846,14 @@ gnome_desktop_item_get_attr_locale (cons
+ 	for (i = 0; langs_pointer[i] != NULL; i++) {
+ 		const char *value = NULL;
+ 
++		/* if we reach C, it means there were no inline translations so
++		 * far, so let's try gettext first */
++		if (strcmp (langs_pointer[i], "C") == 0) {
++			value = lookup_gettext (item, attr);
++			if (value)
++				return setlocale (LC_MESSAGES, NULL);
++		}
++
+ 		value = lookup_locale (item, attr, langs_pointer[i]);
+ 		if (value)
+ 			return langs_pointer[i];
+@@ -2772,6 +2874,9 @@ gnome_desktop_item_get_languages (const
+ 
+ 	for (li = item->languages; li != NULL; li = li->next) {
+ 		char *language = li->data;
++		/* no gettext support here: this wouldn't give us a lot. Worst
++		 * case, an desktop item editor won't see that there's a
++		 * translation for the current locale. */
+ 		if (attr == NULL ||
+ 		    lookup_locale (item, attr, language) != NULL) {
+ 			list = g_list_prepend (list, language);
+@@ -3489,6 +3594,8 @@ try_english_key (GnomeDesktopItem *item,
+ 
+ 	str = NULL;
+ 	for (i = 0; locales[i] != NULL && str == NULL; i++) {
++		/* no gettext support here: this function is for broken
++		 * .desktop files anyway */
+ 		str = g_strdup (lookup_locale (item, key, locales[i]));
+ 	}
+ 	if (str != NULL) {
+@@ -3757,6 +3864,10 @@ ditem_load (ReadBuf *rb,
+ 
+ 	readbuf_close (rb);
+ 
++	item->gettext_domain = lookup (item, GNOME_DESKTOP_ITEM_GETTEXT_DOMAIN);
++	if (!item->gettext_domain)
++		item->gettext_domain = "desktop_translations";
++
+ 	return item;
+ }
+ 
+Index: libgnome-desktop/libgnome/gnome-desktop-item.h
+===================================================================
+--- libgnome-desktop/libgnome/gnome-desktop-item.h.orig
++++ libgnome-desktop/libgnome/gnome-desktop-item.h
+@@ -95,6 +95,7 @@ typedef struct _GnomeDesktopItem GnomeDe
+ #define GNOME_DESKTOP_ITEM_SORT_ORDER	"SortOrder" /* strings */
+ #define GNOME_DESKTOP_ITEM_URL		"URL" /* string */
+ #define GNOME_DESKTOP_ITEM_DOC_PATH	"X-GNOME-DocPath" /* string */
++#define GNOME_DESKTOP_ITEM_GETTEXT_DOMAIN "X-SUSE-Gettext-Domain" /* string */
+
+ /* The vfolder proposal */
+ #define GNOME_DESKTOP_ITEM_CATEGORIES	"Categories" /* string */

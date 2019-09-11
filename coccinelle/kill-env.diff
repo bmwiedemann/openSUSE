@@ -1,0 +1,19 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-11-28 11:24:59.025640109 +0100
+
+Don't choose arbitrary python interpreters from $PATH.
+(It also misleads the rpm autodep scanner.)
+---
+ tools/pycocci |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: coccinelle-1.0.6/tools/pycocci
+===================================================================
+--- coccinelle-1.0.6.orig/tools/pycocci
++++ coccinelle-1.0.6/tools/pycocci
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ #
+ # Copyright (c) 2014 Luis R. Rodriguez  <mcgrof@suse.com>
+ # Copyright (c) 2013 Johannes Berg <johannes@sipsolutions.net>

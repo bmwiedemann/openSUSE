@@ -1,0 +1,1446 @@
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/_compat.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/_compat.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/_compat.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/_compat.py	2019-04-04 09:46:26.363693744 +0700
+@@ -13,11 +13,11 @@
+ import sys
+ import warnings
+ import vistir
+-from .vendor.vistir.compat import NamedTemporaryFile, Path, ResourceWarning, TemporaryDirectory
++from vistir.compat import NamedTemporaryFile, Path, ResourceWarning, TemporaryDirectory
+ 
+ # Backport required for earlier versions of Python.
+ if sys.version_info < (3, 3):
+-    from .vendor.backports.shutil_get_terminal_size import get_terminal_size
++    from backports.shutil_get_terminal_size import get_terminal_size
+ else:
+     from shutil import get_terminal_size
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/core.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/core.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/core.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/core.py	2019-04-04 13:29:54.561178502 +0700
+@@ -197,8 +197,8 @@
+ 
+ 
+ def import_requirements(r=None, dev=False):
+-    from .patched.notpip._vendor import requests as pip_requests
+-    from .vendor.pip_shims.shims import parse_requirements
++    import requests as pip_requests
++    from pip_shims.shims import parse_requirements
+ 
+     # Parse requirements.txt file with Pip's parser.
+     # Pip requires a `PipSession` which is a subclass of requests.Session.
+@@ -347,7 +347,7 @@
+         return None
+     if os.path.isabs(line):
+         return line
+-    from .vendor.pythonfinder import Finder
++    from pythonfinder import Finder
+ 
+     finder = Finder(system=False, global_search=True)
+     if (line.startswith("py ") or line.startswith("py.exe ")) and os.name == "nt":
+@@ -406,7 +406,7 @@
+             err=True,
+         )
+         # Pyenv is installed
+-        from .vendor.pythonfinder.environment import PYENV_INSTALLED
++        from pythonfinder.environment import PYENV_INSTALLED
+ 
+         if not PYENV_INSTALLED:
+             abort()
+@@ -456,7 +456,7 @@
+                             # Print the results, in a beautiful blue…
+                             click.echo(crayons.blue(c.out), err=True)
+                             # Clear the pythonfinder caches
+-                            from .vendor.pythonfinder import Finder
++                            from pythonfinder import Finder
+                             finder = Finder(system=False, global_search=True)
+                             finder.find_python_version.cache_clear()
+                             finder.find_all_python_versions.cache_clear()
+@@ -971,7 +971,7 @@
+ 
+ 
+ def get_downloads_info(names_map, section):
+-    from .vendor.requirementslib.models.requirements import Requirement
++    from requirementslib.models.requirements import Requirement
+ 
+     info = []
+     p = project.parsed_pipfile
+@@ -1070,7 +1070,7 @@
+ 
+     # Support for --keep-outdated…
+     if keep_outdated:
+-        from pipenv.vendor.packaging.utils import canonicalize_name
++        from packaging.utils import canonicalize_name
+         for section_name, section in (
+             ("default", project.packages),
+             ("develop", project.dev_packages),
+@@ -1281,7 +1281,7 @@
+ ):
+     from pipenv.patched.notpip._internal import logger as piplogger
+     from .utils import Mapping
+-    from .vendor.urllib3.util import parse_url
++    from urllib3.util import parse_url
+ 
+     src = []
+     write_to_tmpfile = False
+@@ -1482,7 +1482,7 @@
+         except AssertionError:
+             return None if not mult else []
+     except TypeError:
+-        from .vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+         finder = Finder()
+         result = finder.which(command)
+         if result:
+@@ -1639,8 +1639,8 @@
+ 
+ def do_outdated(pypi_mirror=None):
+     # TODO: Allow --skip-lock here?
+-    from .vendor.requirementslib.models.requirements import Requirement
+-    from .vendor.packaging.utils import canonicalize_name
++    from requirementslib.models.requirements import Requirement
++    from packaging.utils import canonicalize_name
+     from collections import namedtuple
+ 
+     packages = {}
+@@ -1714,7 +1714,7 @@
+     selective_upgrade=False,
+ ):
+     from .environments import PIPENV_VIRTUALENV, PIPENV_USE_SYSTEM
+-    from .vendor.pip_shims.shims import PipError
++    from pip_shims.shims import PipError
+ 
+     requirements_directory = vistir.path.create_tracked_tempdir(
+         suffix="-requirements", prefix="pipenv-"
+@@ -1839,7 +1839,7 @@
+     # We should do this part first to make sure that we actually do selectively upgrade
+     # the items specified
+     if selective_upgrade:
+-        from .vendor.requirementslib.models.requirements import Requirement
++        from requirementslib.models.requirements import Requirement
+ 
+         for i, package in enumerate(package_args[:]):
+             section = project.packages if not dev else project.dev_packages
+@@ -1876,7 +1876,7 @@
+ 
+     # This is for if the user passed in dependencies, then we want to maek sure we
+     else:
+-        from .vendor.requirementslib import Requirement
++        from requirementslib import Requirement
+ 
+         # make a tuple of (display_name, entry)
+         pkg_list = packages + ["-e {0}".format(pkg) for pkg in editable_packages]
+@@ -2008,8 +2008,8 @@
+     ctx=None
+ ):
+     from .environments import PIPENV_USE_SYSTEM
+-    from .vendor.requirementslib.models.requirements import Requirement
+-    from .vendor.packaging.utils import canonicalize_name
++    from requirementslib.models.requirements import Requirement
++    from packaging.utils import canonicalize_name
+ 
+     # Automatically use an activated virtualenv.
+     if PIPENV_USE_SYSTEM:
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/environment.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/environment.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/environment.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/environment.py	2019-04-04 13:58:45.584901792 +0700
+@@ -283,7 +283,7 @@
+ 
+     @contextlib.contextmanager
+     def get_finder(self, pre=False):
+-        from .vendor.pip_shims import Command, cmdoptions, index_group, PackageFinder
++        from pip_shims import Command, cmdoptions, index_group, PackageFinder
+         from .environments import PIPENV_CACHE_DIR
+         index_urls = [source.get("url") for source in self.sources]
+ 
+@@ -352,7 +352,7 @@
+         ]
+ 
+     def get_package_requirements(self):
+-        from .vendor.pipdeptree import flatten, sorted_tree, build_dist_index, construct_tree
++        from pipdeptree import flatten, sorted_tree, build_dist_index, construct_tree
+         dist_index = build_dist_index(self.get_installed_packages())
+         tree = sorted_tree(construct_tree(dist_index))
+         branch_keys = set(r.key for r in flatten(tree.values()))
+@@ -504,7 +504,7 @@
+ 
+     @cached_property
+     def finders(self):
+-        from pipenv.vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+         finders = [
+             Finder(path=self.base_paths["scripts"], global_search=gs, system=False)
+             for gs in (False, True)
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/environments.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/environments.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/environments.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/environments.py	2019-04-04 09:46:23.319672435 +0700
+@@ -3,7 +3,7 @@
+ import os
+ import sys
+ from appdirs import user_cache_dir
+-from .vendor.vistir.misc import fs_str
++from vistir.misc import fs_str
+ from ._compat import fix_utf8
+ 
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/exceptions.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/exceptions.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/exceptions.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/exceptions.py	2019-04-04 09:46:23.323672462 +0700
+@@ -11,9 +11,9 @@
+ from ._compat import fix_utf8
+ from .patched import crayons
+ from . import environments
+-from .vendor.click.utils import echo as click_echo
+-from .vendor.click._compat import get_text_stderr
+-from .vendor.click.exceptions import (
++from click.utils import echo as click_echo
++from click._compat import get_text_stderr
++from click.exceptions import (
+     Abort,
+     BadOptionUsage,
+     BadParameter,
+@@ -23,7 +23,7 @@
+     MissingParameter,
+     UsageError,
+ )
+-from .vendor.click.types import Path
++from click.types import Path
+ 
+ 
+ def handle_exception(exc_type, exception, traceback, hook=sys.excepthook):
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/help.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/help.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/help.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/help.py	2019-04-04 09:46:23.323672462 +0700
+@@ -7,7 +7,7 @@
+ 
+ from .core import project
+ from .pep508checker import lookup
+-from .vendor import pythonfinder
++import pythonfinder
+ 
+ 
+ def print_utf(line):
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/__init__.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/__init__.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/__init__.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/__init__.py	2019-04-04 09:46:26.223692764 +0700
+@@ -18,8 +18,8 @@
+ # Inject patched directory into system path.
+ sys.path.insert(0, PIPENV_PATCHED)
+ 
+-from pipenv.vendor.urllib3.exceptions import DependencyWarning
+-from pipenv.vendor.vistir.compat import ResourceWarning, fs_str
++from urllib3.exceptions import DependencyWarning
++from vistir.compat import ResourceWarning, fs_str
+ warnings.filterwarnings("ignore", category=DependencyWarning)
+ warnings.filterwarnings("ignore", category=ResourceWarning)
+ warnings.filterwarnings("ignore", category=UserWarning)
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/build_env.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/build_env.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/build_env.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/build_env.py	2019-04-04 09:46:24.843683105 +0700
+@@ -7,7 +7,7 @@
+ from distutils.sysconfig import get_python_lib
+ from sysconfig import get_paths
+ 
+-from pipenv.patched.notpip._vendor.pkg_resources import Requirement, VersionConflict, WorkingSet
++from pkg_resources import Requirement, VersionConflict, WorkingSet
+ 
+ from pipenv.patched.notpip._internal.utils.misc import call_subprocess
+ from pipenv.patched.notpip._internal.utils.temp_dir import TempDirectory
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/cache.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/cache.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/cache.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/cache.py	2019-04-04 09:46:25.747689431 +0700
+@@ -6,7 +6,7 @@
+ import logging
+ import os
+ 
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ 
+ from pipenv.patched.notpip._internal.download import path_to_url
+ from pipenv.patched.notpip._internal.models.link import Link
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/cli/parser.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/cli/parser.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/cli/parser.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/cli/parser.py	2019-04-04 09:46:20.051649549 +0700
+@@ -7,7 +7,7 @@
+ import textwrap
+ from distutils.util import strtobool
+ 
+-from pipenv.patched.notpip._vendor.six import string_types
++from six import string_types
+ 
+ from pipenv.patched.notpip._internal.cli.status_codes import UNKNOWN_ERROR
+ from pipenv.patched.notpip._internal.configuration import Configuration, ConfigurationError
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/install.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/install.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/install.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/install.py	2019-04-04 09:46:20.055649577 +0700
+@@ -7,7 +7,7 @@
+ import shutil
+ from optparse import SUPPRESS_HELP
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
++import pkg_resources
+ 
+ from pipenv.patched.notpip._internal.cache import WheelCache
+ from pipenv.patched.notpip._internal.cli import cmdoptions
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/list.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/list.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/list.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/list.py	2019-04-04 09:46:20.055649577 +0700
+@@ -3,8 +3,8 @@
+ import json
+ import logging
+ 
+-from pipenv.patched.notpip._vendor import six
+-from pipenv.patched.notpip._vendor.six.moves import zip_longest
++import six
++from six.moves import zip_longest
+ 
+ from pipenv.patched.notpip._internal.cli import cmdoptions
+ from pipenv.patched.notpip._internal.cli.base_command import Command
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/search.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/search.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/search.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/search.py	2019-04-04 09:46:20.059649605 +0700
+@@ -5,11 +5,11 @@
+ import textwrap
+ from collections import OrderedDict
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
+-from pipenv.patched.notpip._vendor.packaging.version import parse as parse_version
++import pkg_resources
++from packaging.version import parse as parse_version
+ # NOTE: XMLRPC Client is not annotated in typeshed as on 2017-07-17, which is
+ #       why we ignore the type on this import
+-from pipenv.patched.notpip._vendor.six.moves import xmlrpc_client  # type: ignore
++from six.moves import xmlrpc_client  # type: ignore
+ 
+ from pipenv.patched.notpip._internal.cli.base_command import Command
+ from pipenv.patched.notpip._internal.cli.status_codes import NO_MATCHES_FOUND, SUCCESS
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/show.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/show.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/show.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/show.py	2019-04-04 09:46:20.059649605 +0700
+@@ -4,8 +4,8 @@
+ import os
+ from email.parser import FeedParser  # type: ignore
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
++import pkg_resources
++from packaging.utils import canonicalize_name
+ 
+ from pipenv.patched.notpip._internal.cli.base_command import Command
+ from pipenv.patched.notpip._internal.cli.status_codes import ERROR, SUCCESS
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/uninstall.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/uninstall.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/commands/uninstall.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/commands/uninstall.py	2019-04-04 09:46:20.059649605 +0700
+@@ -1,6 +1,6 @@
+ from __future__ import absolute_import
+ 
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ 
+ from pipenv.patched.notpip._internal.cli.base_command import Command
+ from pipenv.patched.notpip._internal.exceptions import InstallationError
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/configuration.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/configuration.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/configuration.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/configuration.py	2019-04-04 09:46:25.787689712 +0700
+@@ -15,8 +15,8 @@
+ import logging
+ import os
+ 
+-from pipenv.patched.notpip._vendor import six
+-from pipenv.patched.notpip._vendor.six.moves import configparser
++import six
++from six.moves import configparser
+ 
+ from pipenv.patched.notpip._internal.exceptions import (
+     ConfigurationError, ConfigurationFileCouldNotBeLoaded,
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/download.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/download.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/download.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/download.py	2019-04-04 09:46:26.359693716 +0700
+@@ -12,23 +12,23 @@
+ import shutil
+ import sys
+ 
+-from pipenv.patched.notpip._vendor import requests, six, urllib3
+-from pipenv.patched.notpip._vendor.cachecontrol import CacheControlAdapter
+-from pipenv.patched.notpip._vendor.cachecontrol.caches import FileCache
+-from pipenv.patched.notpip._vendor.lockfile import LockError
+-from pipenv.patched.notpip._vendor.requests.adapters import BaseAdapter, HTTPAdapter
+-from pipenv.patched.notpip._vendor.requests.auth import AuthBase, HTTPBasicAuth
+-from pipenv.patched.notpip._vendor.requests.models import CONTENT_CHUNK_SIZE, Response
+-from pipenv.patched.notpip._vendor.requests.sessions import Session
+-from pipenv.patched.notpip._vendor.requests.structures import CaseInsensitiveDict
+-from pipenv.patched.notpip._vendor.requests.utils import get_netrc_auth
++import requests, six, urllib3
++from cachecontrol import CacheControlAdapter
++from cachecontrol.caches import FileCache
++from lockfile import LockError
++from requests.adapters import BaseAdapter, HTTPAdapter
++from requests.auth import AuthBase, HTTPBasicAuth
++from requests.models import CONTENT_CHUNK_SIZE, Response
++from requests.sessions import Session
++from requests.structures import CaseInsensitiveDict
++from requests.utils import get_netrc_auth
+ # NOTE: XMLRPC Client is not annotated in typeshed as on 2017-07-17, which is
+ #       why we ignore the type on this import
+-from pipenv.patched.notpip._vendor.six.moves import xmlrpc_client  # type: ignore
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
+-from pipenv.patched.notpip._vendor.six.moves.urllib import request as urllib_request
+-from pipenv.patched.notpip._vendor.six.moves.urllib.parse import unquote as urllib_unquote
+-from pipenv.patched.notpip._vendor.urllib3.util import IS_PYOPENSSL
++from six.moves import xmlrpc_client  # type: ignore
++from six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import request as urllib_request
++from six.moves.urllib.parse import unquote as urllib_unquote
++from urllib3.util import IS_PYOPENSSL
+ 
+ import pipenv.patched.notpip
+ from pipenv.patched.notpip._internal.exceptions import HashMismatch, InstallationError
+@@ -95,7 +95,7 @@
+         data["implementation"]["version"] = platform.python_version()
+ 
+     if sys.platform.startswith("linux"):
+-        from pipenv.patched.notpip._vendor import distro
++        import distro
+         distro_infos = dict(filter(
+             lambda x: x[1],
+             zip(["name", "version", "id"], distro.linux_distribution()),
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/exceptions.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/exceptions.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/exceptions.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/exceptions.py	2019-04-04 09:46:25.875690329 +0700
+@@ -3,7 +3,7 @@
+ 
+ from itertools import chain, groupby, repeat
+ 
+-from pipenv.patched.notpip._vendor.six import iteritems
++from six import iteritems
+ 
+ 
+ class PipError(Exception):
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/index.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/index.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/index.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/index.py	2019-04-04 09:46:25.931690721 +0700
+@@ -11,14 +11,14 @@
+ import sys
+ from collections import namedtuple
+ 
+-from pipenv.patched.notpip._vendor import html5lib, requests, six
+-from pipenv.patched.notpip._vendor.distlib.compat import unescape
+-from pipenv.patched.notpip._vendor.packaging import specifiers
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
+-from pipenv.patched.notpip._vendor.packaging.version import parse as parse_version
+-from pipenv.patched.notpip._vendor.requests.exceptions import SSLError
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
+-from pipenv.patched.notpip._vendor.six.moves.urllib import request as urllib_request
++import html5lib, requests, six
++from distlib.compat import unescape
++from packaging import specifiers
++from packaging.utils import canonicalize_name
++from packaging.version import parse as parse_version
++from requests.exceptions import SSLError
++from six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import request as urllib_request
+ 
+ from pipenv.patched.notpip._internal.download import HAS_TLS, is_url, path_to_url, url_to_path
+ from pipenv.patched.notpip._internal.exceptions import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/__init__.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/__init__.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/__init__.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/__init__.py	2019-04-04 09:46:26.267693073 +0700
+@@ -16,7 +16,7 @@
+ # to add socks as yet another dependency for pip, nor do I want to allow-stder
+ # in the DEP-8 tests, so just suppress the warning.  pdb tells me this has to
+ # be done before the import of pip.vcs.
+-from pipenv.patched.notpip._vendor.urllib3.exceptions import DependencyWarning
++from urllib3.exceptions import DependencyWarning
+ warnings.filterwarnings("ignore", category=DependencyWarning)  # noqa
+ 
+ # We want to inject the use of SecureTransport as early as possible so that any
+@@ -31,7 +31,7 @@
+     # Checks for OpenSSL 1.0.1 on MacOS
+     if sys.platform == "darwin" and ssl.OPENSSL_VERSION_NUMBER < 0x1000100f:
+         try:
+-            from pipenv.patched.notpip._vendor.urllib3.contrib import securetransport
++            from urllib3.contrib import securetransport
+         except (ImportError, OSError):
+             pass
+         else:
+@@ -43,7 +43,7 @@
+ from pipenv.patched.notpip._internal.exceptions import PipError
+ from pipenv.patched.notpip._internal.utils import deprecation
+ from pipenv.patched.notpip._internal.vcs import git, mercurial, subversion, bazaar  # noqa
+-from pipenv.patched.notpip._vendor.urllib3.exceptions import InsecureRequestWarning
++from urllib3.exceptions import InsecureRequestWarning
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/candidate.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/candidate.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/candidate.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/candidate.py	2019-04-04 09:46:20.059649605 +0700
+@@ -1,4 +1,4 @@
+-from pipenv.patched.notpip._vendor.packaging.version import parse as parse_version
++from packaging.version import parse as parse_version
+ 
+ from pipenv.patched.notpip._internal.utils.models import KeyBasedCompareMixin
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/format_control.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/format_control.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/format_control.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/format_control.py	2019-04-04 09:46:20.059649605 +0700
+@@ -1,4 +1,4 @@
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ 
+ 
+ class FormatControl(object):
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/index.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/index.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/index.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/index.py	2019-04-04 09:46:20.059649605 +0700
+@@ -1,4 +1,4 @@
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import parse as urllib_parse
+ 
+ 
+ class PackageIndex(object):
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/link.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/link.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/models/link.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/models/link.py	2019-04-04 09:46:20.059649605 +0700
+@@ -1,7 +1,7 @@
+ import posixpath
+ import re
+ 
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import parse as urllib_parse
+ 
+ from pipenv.patched.notpip._internal.download import path_to_url
+ from pipenv.patched.notpip._internal.utils.misc import splitext
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/check.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/check.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/check.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/check.py	2019-04-04 09:46:20.059649605 +0700
+@@ -3,7 +3,7 @@
+ 
+ from collections import namedtuple
+ 
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ 
+ from pipenv.patched.notpip._internal.operations.prepare import make_abstract_dist
+ from pipenv.patched.notpip._internal.utils.misc import get_installed_distributions
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/freeze.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/freeze.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/freeze.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/freeze.py	2019-04-04 09:46:20.059649605 +0700
+@@ -5,9 +5,9 @@
+ import os
+ import re
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources, six
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
+-from pipenv.patched.notpip._vendor.pkg_resources import RequirementParseError
++import pkg_resources, six
++from packaging.utils import canonicalize_name
++from pkg_resources import RequirementParseError
+ 
+ from pipenv.patched.notpip._internal.exceptions import InstallationError
+ from pipenv.patched.notpip._internal.req.constructors import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/prepare.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/prepare.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/operations/prepare.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/operations/prepare.py	2019-04-04 09:46:20.059649605 +0700
+@@ -4,7 +4,7 @@
+ import logging
+ import os
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources, requests
++import pkg_resources, requests
+ 
+ from pipenv.patched.notpip._internal.build_env import BuildEnvironment
+ from pipenv.patched.notpip._internal.download import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/pyproject.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/pyproject.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/pyproject.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/pyproject.py	2019-04-04 09:46:26.103691925 +0700
+@@ -3,7 +3,7 @@
+ import io
+ import os
+ 
+-from pipenv.patched.notpip._vendor import pytoml, six
++import pytoml, six
+ 
+ from pipenv.patched.notpip._internal.exceptions import InstallationError
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/constructors.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/constructors.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/constructors.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/constructors.py	2019-04-04 09:46:20.059649605 +0700
+@@ -13,10 +13,10 @@
+ import re
+ import traceback
+ 
+-from pipenv.patched.notpip._vendor.packaging.markers import Marker
+-from pipenv.patched.notpip._vendor.packaging.requirements import InvalidRequirement, Requirement
+-from pipenv.patched.notpip._vendor.packaging.specifiers import Specifier
+-from pipenv.patched.notpip._vendor.pkg_resources import RequirementParseError, parse_requirements
++from packaging.markers import Marker
++from packaging.requirements import InvalidRequirement, Requirement
++from packaging.specifiers import Specifier
++from pkg_resources import RequirementParseError, parse_requirements
+ 
+ from pipenv.patched.notpip._internal.download import (
+     is_archive_file, is_url, path_to_url, url_to_path,
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_file.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_file.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_file.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_file.py	2019-04-04 09:46:20.059649605 +0700
+@@ -10,8 +10,8 @@
+ import shlex
+ import sys
+ 
+-from pipenv.patched.notpip._vendor.six.moves import filterfalse
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from six.moves import filterfalse
++from six.moves.urllib import parse as urllib_parse
+ 
+ from pipenv.patched.notpip._internal.cli import cmdoptions
+ from pipenv.patched.notpip._internal.download import get_file_content
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_install.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_install.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_install.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_install.py	2019-04-04 09:46:20.059649605 +0700
+@@ -8,12 +8,12 @@
+ import zipfile
+ from distutils.util import change_root
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources, six
+-from pipenv.patched.notpip._vendor.packaging.requirements import Requirement
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
+-from pipenv.patched.notpip._vendor.packaging.version import Version
+-from pipenv.patched.notpip._vendor.packaging.version import parse as parse_version
+-from pipenv.patched.notpip._vendor.pep517.wrappers import Pep517HookCaller
++import pkg_resources, six
++from packaging.requirements import Requirement
++from packaging.utils import canonicalize_name
++from packaging.version import Version
++from packaging.version import parse as parse_version
++from pep517.wrappers import Pep517HookCaller
+ 
+ from pipenv.patched.notpip._internal import wheel
+ from pipenv.patched.notpip._internal.build_env import NoOpBuildEnvironment
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_uninstall.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_uninstall.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/req/req_uninstall.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/req/req_uninstall.py	2019-04-04 09:46:20.059649605 +0700
+@@ -7,7 +7,7 @@
+ import sys
+ import sysconfig
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
++import pkg_resources
+ 
+ from pipenv.patched.notpip._internal.exceptions import UninstallationError
+ from pipenv.patched.notpip._internal.locations import bin_py, bin_user
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/appdirs.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/appdirs.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/appdirs.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/appdirs.py	2019-04-04 09:46:21.947662827 +0700
+@@ -7,7 +7,7 @@
+ import os
+ import sys
+ 
+-from pipenv.patched.notpip._vendor.six import PY2, text_type
++from six import PY2, text_type
+ 
+ from pipenv.patched.notpip._internal.utils.compat import WINDOWS, expanduser
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/compat.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/compat.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/compat.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/compat.py	2019-04-04 09:46:22.019663331 +0700
+@@ -9,7 +9,7 @@
+ import shutil
+ import sys
+ 
+-from pipenv.patched.notpip._vendor.six import text_type
++from six import text_type
+ 
+ try:
+     import ipaddress
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/deprecation.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/deprecation.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/deprecation.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/deprecation.py	2019-04-04 09:46:22.095663864 +0700
+@@ -6,7 +6,7 @@
+ import logging
+ import warnings
+ 
+-from pipenv.patched.notpip._vendor.packaging.version import parse
++from packaging.version import parse
+ 
+ from pipenv.patched.notpip import __version__ as current_version
+ from pipenv.patched.notpip._internal.utils.typing import MYPY_CHECK_RUNNING
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/hashes.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/hashes.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/hashes.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/hashes.py	2019-04-04 09:46:22.399665992 +0700
+@@ -2,7 +2,7 @@
+ 
+ import hashlib
+ 
+-from pipenv.patched.notpip._vendor.six import iteritems, iterkeys, itervalues
++from six import iteritems, iterkeys, itervalues
+ 
+ from pipenv.patched.notpip._internal.exceptions import (
+     HashMismatch, HashMissing, InstallationError,
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/logging.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/logging.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/logging.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/logging.py	2019-04-04 09:46:22.575667226 +0700
+@@ -15,7 +15,7 @@
+ 
+ 
+ try:
+-    from pipenv.patched.notpip._vendor import colorama
++    import colorama
+ # Lots of different errors can come from this, including SystemError and
+ # ImportError.
+ except Exception:
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/misc.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/misc.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/misc.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/misc.py	2019-04-04 09:46:22.675667925 +0700
+@@ -18,13 +18,13 @@
+ import zipfile
+ from collections import deque
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
++import pkg_resources
+ # NOTE: retrying is not annotated in typeshed as on 2017-07-17, which is
+ #       why we ignore the type on this import.
+-from pipenv.patched.notpip._vendor.retrying import retry  # type: ignore
+-from pipenv.patched.notpip._vendor.six import PY2
+-from pipenv.patched.notpip._vendor.six.moves import input
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from retrying import retry  # type: ignore
++from six import PY2
++from six.moves import input
++from six.moves.urllib import parse as urllib_parse
+ 
+ from pipenv.patched.notpip._internal.exceptions import CommandError, InstallationError
+ from pipenv.patched.notpip._internal.locations import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/outdated.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/outdated.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/outdated.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/outdated.py	2019-04-04 09:46:22.843669101 +0700
+@@ -6,8 +6,8 @@
+ import os.path
+ import sys
+ 
+-from pipenv.patched.notpip._vendor import lockfile, pkg_resources
+-from pipenv.patched.notpip._vendor.packaging import version as packaging_version
++import lockfile, pkg_resources
++from packaging import version as packaging_version
+ 
+ from pipenv.patched.notpip._internal.index import PackageFinder
+ from pipenv.patched.notpip._internal.utils.compat import WINDOWS
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/packaging.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/packaging.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/packaging.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/packaging.py	2019-04-04 09:46:22.875669325 +0700
+@@ -4,8 +4,8 @@
+ import sys
+ from email.parser import FeedParser  # type: ignore
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
+-from pipenv.patched.notpip._vendor.packaging import specifiers, version
++import pkg_resources
++from packaging import specifiers, version
+ 
+ from pipenv.patched.notpip._internal import exceptions
+ from pipenv.patched.notpip._internal.utils.misc import display_path
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/temp_dir.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/temp_dir.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/utils/temp_dir.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/utils/temp_dir.py	2019-04-04 09:46:23.055670586 +0700
+@@ -6,7 +6,7 @@
+ import warnings
+ 
+ from pipenv.patched.notpip._internal.utils.misc import rmtree
+-from pipenv.vendor.vistir.compat import finalize, ResourceWarning
++from vistir.compat import finalize, ResourceWarning
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/bazaar.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/bazaar.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/bazaar.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/bazaar.py	2019-04-04 09:46:21.483659578 +0700
+@@ -3,7 +3,7 @@
+ import logging
+ import os
+ 
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import parse as urllib_parse
+ 
+ from pipenv.patched.notpip._internal.download import path_to_url
+ from pipenv.patched.notpip._internal.utils.misc import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/git.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/git.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/git.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/git.py	2019-04-04 09:46:21.483659578 +0700
+@@ -4,9 +4,9 @@
+ import os.path
+ import re
+ 
+-from pipenv.patched.notpip._vendor.packaging.version import parse as parse_version
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
+-from pipenv.patched.notpip._vendor.six.moves.urllib import request as urllib_request
++from packaging.version import parse as parse_version
++from six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import request as urllib_request
+ 
+ from pipenv.patched.notpip._internal.exceptions import BadCommand
+ from pipenv.patched.notpip._internal.utils.compat import samefile
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/__init__.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/__init__.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/__init__.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/__init__.py	2019-04-04 09:46:21.483659578 +0700
+@@ -7,7 +7,7 @@
+ import shutil
+ import sys
+ 
+-from pipenv.patched.notpip._vendor.six.moves.urllib import parse as urllib_parse
++from six.moves.urllib import parse as urllib_parse
+ 
+ from pipenv.patched.notpip._internal.exceptions import BadCommand
+ from pipenv.patched.notpip._internal.utils.misc import (
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/mercurial.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/mercurial.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/vcs/mercurial.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/vcs/mercurial.py	2019-04-04 09:46:21.483659578 +0700
+@@ -3,7 +3,7 @@
+ import logging
+ import os
+ 
+-from pipenv.patched.notpip._vendor.six.moves import configparser
++from six.moves import configparser
+ 
+ from pipenv.patched.notpip._internal.download import path_to_url
+ from pipenv.patched.notpip._internal.utils.misc import display_path, make_vcs_requirement_url
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/wheel.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/wheel.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_internal/wheel.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_internal/wheel.py	2019-04-04 09:46:26.179692457 +0700
+@@ -17,10 +17,10 @@
+ from base64 import urlsafe_b64encode
+ from email.parser import Parser
+ 
+-from pipenv.patched.notpip._vendor import pkg_resources
+-from pipenv.patched.notpip._vendor.distlib.scripts import ScriptMaker
+-from pipenv.patched.notpip._vendor.packaging.utils import canonicalize_name
+-from pipenv.patched.notpip._vendor.six import StringIO
++import pkg_resources
++from distlib.scripts import ScriptMaker
++from packaging.utils import canonicalize_name
++from six import StringIO
+ 
+ from pipenv.patched.notpip._internal import pep425tags
+ from pipenv.patched.notpip._internal.download import path_to_url, unpack_url
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: appdirs.LICENSE.txt
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: appdirs.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: cachecontrol
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: certifi
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: chardet
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: colorama
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: distlib
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: distro.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: distro.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: html5lib
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: idna
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor/__init__.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_vendor/__init__.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor/__init__.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/notpip/_vendor/__init__.py	2019-04-04 09:46:12.195594500 +0700
+@@ -13,7 +13,6 @@
+ 
+ # Downstream redistributors which have debundled our dependencies should also
+ # patch this value to be true. This will trigger the additional patching
+-# to cause things like "six" to be available as pip.
+ DEBUNDLED = False
+ 
+ # By default, look in this directory for a bunch of .whl files which we will
+@@ -25,7 +24,6 @@
+ 
+ # Define a small helper function to alias our vendored modules to the real ones
+ # if the vendored ones do not exist. This idea of this was taken from
+-# https://github.com/kennethreitz/requests/pull/2567.
+ def vendored(modulename):
+     vendored_name = "{0}.{1}".format(__name__, modulename)
+ 
+@@ -61,50 +59,3 @@
+     sys.path[:] = glob.glob(os.path.join(WHEEL_DIR, "*.whl")) + sys.path
+ 
+     # Actually alias all of our vendored dependencies.
+-    vendored("cachecontrol")
+-    vendored("colorama")
+-    vendored("distlib")
+-    vendored("distro")
+-    vendored("html5lib")
+-    vendored("lockfile")
+-    vendored("six")
+-    vendored("six.moves")
+-    vendored("six.moves.urllib")
+-    vendored("six.moves.urllib.parse")
+-    vendored("packaging")
+-    vendored("packaging.version")
+-    vendored("packaging.specifiers")
+-    vendored("pkg_resources")
+-    vendored("progress")
+-    vendored("pytoml")
+-    vendored("retrying")
+-    vendored("requests")
+-    vendored("requests.packages")
+-    vendored("requests.packages.urllib3")
+-    vendored("requests.packages.urllib3._collections")
+-    vendored("requests.packages.urllib3.connection")
+-    vendored("requests.packages.urllib3.connectionpool")
+-    vendored("requests.packages.urllib3.contrib")
+-    vendored("requests.packages.urllib3.contrib.ntlmpool")
+-    vendored("requests.packages.urllib3.contrib.pyopenssl")
+-    vendored("requests.packages.urllib3.exceptions")
+-    vendored("requests.packages.urllib3.fields")
+-    vendored("requests.packages.urllib3.filepost")
+-    vendored("requests.packages.urllib3.packages")
+-    vendored("requests.packages.urllib3.packages.ordered_dict")
+-    vendored("requests.packages.urllib3.packages.six")
+-    vendored("requests.packages.urllib3.packages.ssl_match_hostname")
+-    vendored("requests.packages.urllib3.packages.ssl_match_hostname."
+-             "_implementation")
+-    vendored("requests.packages.urllib3.poolmanager")
+-    vendored("requests.packages.urllib3.request")
+-    vendored("requests.packages.urllib3.response")
+-    vendored("requests.packages.urllib3.util")
+-    vendored("requests.packages.urllib3.util.connection")
+-    vendored("requests.packages.urllib3.util.request")
+-    vendored("requests.packages.urllib3.util.response")
+-    vendored("requests.packages.urllib3.util.retry")
+-    vendored("requests.packages.urllib3.util.ssl_")
+-    vendored("requests.packages.urllib3.util.timeout")
+-    vendored("requests.packages.urllib3.util.url")
+-    vendored("urllib3")
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: ipaddress.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: ipaddress.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: lockfile
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: msgpack
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: packaging
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: pep517
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: pkg_resources
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: progress
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: pyparsing.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: pyparsing.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: pytoml
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: requests
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: retrying.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: retrying.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: six.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: six.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: urllib3
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/notpip/_vendor: webencodings
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/cache.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/cache.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/cache.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/cache.py	2019-04-04 09:46:21.627660586 +0700
+@@ -6,7 +6,7 @@
+ import os
+ import sys
+ 
+-from pipenv.patched.notpip._vendor.packaging.requirements import Requirement
++from packaging.requirements import Requirement
+ 
+ from .exceptions import PipToolsError
+ from .locations import CACHE_DIR
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/_compat/pip_compat.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/_compat/pip_compat.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/_compat/pip_compat.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/_compat/pip_compat.py	2019-04-04 09:46:11.911592508 +0700
+@@ -24,7 +24,7 @@
+     "user_cache_dir"
+ ]
+ 
+-from pipenv.vendor.appdirs import user_cache_dir
++from appdirs import user_cache_dir
+ from pip_shims.shims import (
+     InstallRequirement,
+     parse_requirements,
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/utils.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/utils.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/patched/piptools/utils.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/patched/piptools/utils.py	2019-04-04 09:46:21.639660671 +0700
+@@ -12,9 +12,9 @@
+ from ._compat import install_req_from_line
+ 
+ from .click import style
+-from pipenv.patched.notpip._vendor.packaging.specifiers import SpecifierSet, InvalidSpecifier
+-from pipenv.patched.notpip._vendor.packaging.version import Version, InvalidVersion, parse as parse_version
+-from pipenv.patched.notpip._vendor.packaging.markers import Marker, Op, Value, Variable
++from packaging.specifiers import SpecifierSet, InvalidSpecifier
++from packaging.version import Version, InvalidVersion, parse as parse_version
++from packaging.markers import Marker, Op, Value, Variable
+ 
+ 
+ UNSAFE_PACKAGES = {'setuptools', 'distribute', 'pip'}
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/project.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/project.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/project.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/project.py	2019-04-04 09:46:23.327672490 +0700
+@@ -174,7 +174,7 @@
+ 
+     def _build_package_list(self, package_section):
+         """Returns a list of packages for pip-tools to consume."""
+-        from pipenv.vendor.requirementslib.utils import is_vcs
++        from requirementslib.utils import is_vcs
+         ps = {}
+         # TODO: Separate the logic for showing packages from the filters for supplying pip-tools
+         for k, v in self.parsed_pipfile.get(package_section, {}).items():
+@@ -598,7 +598,7 @@
+ 
+     @property
+     def _pipfile(self):
+-        from .vendor.requirementslib.models.pipfile import Pipfile as ReqLibPipfile
++        from requirementslib.models.pipfile import Pipfile as ReqLibPipfile
+         pf = ReqLibPipfile.load(self.pipfile_location)
+         return pf
+ 
+@@ -626,7 +626,7 @@
+         return packages
+ 
+     def _get_vcs_packages(self, dev=False):
+-        from pipenv.vendor.requirementslib.utils import is_vcs
++        from requirementslib.utils import is_vcs
+         section = "dev-packages" if dev else "packages"
+         # section = "{0}-vcs".format(section)
+         packages = {
+@@ -689,7 +689,7 @@
+ 
+     def create_pipfile(self, python=None):
+         """Creates the Pipfile, filled with juicy defaults."""
+-        from .vendor.pip_shims.shims import (
++        from pip_shims.shims import (
+             ConfigOptionParser, make_option_group, index_group
+         )
+ 
+@@ -744,7 +744,7 @@
+         return source
+ 
+     def get_or_create_lockfile(self, from_pipfile=False):
+-        from pipenv.vendor.requirementslib.models.lockfile import Lockfile as Req_Lockfile
++        from requirementslib.models.lockfile import Lockfile as Req_Lockfile
+         lockfile = None
+         if from_pipfile and self.pipfile_exists:
+             lockfile_dict = {
+@@ -783,7 +783,7 @@
+             return self.get_or_create_lockfile(from_pipfile=True)
+ 
+     def get_lockfile_meta(self):
+-        from .vendor.plette.lockfiles import PIPFILE_SPEC_CURRENT
++        from plette.lockfiles import PIPFILE_SPEC_CURRENT
+         if self.lockfile_exists:
+             sources = self.lockfile_content.get("_meta", {}).get("sources", [])
+         else:
+@@ -936,7 +936,7 @@
+         self.write_toml(parsed)
+ 
+     def add_package_to_pipfile(self, package, dev=False):
+-        from .vendor.requirementslib import Requirement
++        from requirementslib import Requirement
+ 
+         # Read and append Pipfile.
+         p = self.parsed_pipfile
+@@ -1065,7 +1065,7 @@
+ 
+     @cached_property
+     def finders(self):
+-        from .vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+         scripts_dirname = "Scripts" if os.name == "nt" else "bin"
+         scripts_dir = os.path.join(self.virtualenv_location, scripts_dirname)
+         finders = [
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/pyenv.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/pyenv.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/pyenv.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/pyenv.py	2019-04-04 09:46:23.327672490 +0700
+@@ -1,7 +1,7 @@
+ import operator
+ import re
+ 
+-from .vendor import attr, delegator
++import attr, delegator
+ 
+ from .environments import PIPENV_INSTALL_TIMEOUT
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/resolver.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/resolver.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/resolver.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/resolver.py	2019-04-04 09:46:23.327672490 +0700
+@@ -94,7 +94,7 @@
+ def main():
+     _patch_path()
+     import warnings
+-    from pipenv.vendor.vistir.compat import ResourceWarning
++    from vistir.compat import ResourceWarning
+     warnings.simplefilter("ignore", category=ResourceWarning)
+     import io
+     import six
+@@ -121,6 +121,6 @@
+ 
+ if __name__ == "__main__":
+     _patch_path()
+-    from pipenv.vendor import colorama
++    import colorama
+     colorama.init()
+     main()
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/shells.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/shells.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/shells.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/shells.py	2019-04-04 13:29:38.457066574 +0700
+@@ -6,9 +6,9 @@
+ import sys
+ 
+ from .environments import PIPENV_SHELL_EXPLICIT, PIPENV_SHELL, PIPENV_EMULATOR
+-from .vendor.vistir.compat import get_terminal_size, Path
+-from .vendor.vistir.contextmanagers import temp_environ
+-from .vendor import shellingham
++from vistir.compat import get_terminal_size, Path
++from vistir.contextmanagers import temp_environ
++import shellingham
+ 
+ 
+ ShellDetectionFailure = shellingham.ShellDetectionFailure
+@@ -97,7 +97,7 @@
+             _handover(self.cmd, self.args + list(args))
+ 
+     def fork_compat(self, venv, cwd, args):
+-        from .vendor import pexpect
++        import pexpect
+ 
+         # Grab current terminal dimensions to replace the hardcoded default
+         # dimensions of pexpect.
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/utils.py pipenv-2018.11.26.1543215385.742ae1b9/pipenv/utils.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/utils.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/pipenv/utils.py	2019-04-04 13:43:38.998957476 +0700
+@@ -135,7 +135,7 @@
+ 
+ 
+ def python_version(path_to_python):
+-    from .vendor.pythonfinder.utils import get_python_version
++    from pythonfinder.utils import get_python_version
+ 
+     if not path_to_python:
+         return None
+@@ -211,7 +211,7 @@
+ 
+ 
+ def get_resolver_metadata(deps, index_lookup, markers_lookup, project, sources):
+-    from .vendor.requirementslib.models.requirements import Requirement
++    from requirementslib.models.requirements import Requirement
+     constraints = []
+     for dep in deps:
+         if not dep:
+@@ -296,7 +296,7 @@
+         return self._pip_args
+ 
+     def prepare_constraint_file(self):
+-        from pipenv.vendor.vistir.path import create_tracked_tempfile
++        from vistir.path import create_tracked_tempfile
+         constraints_file = create_tracked_tempfile(
+             mode="w",
+             prefix="pipenv-",
+@@ -376,8 +376,8 @@
+         return self._resolver
+ 
+     def resolve(self):
+-        from pipenv.vendor.pip_shims.shims import DistributionNotFound
+-        from pipenv.vendor.requests.exceptions import HTTPError
++        from pip_shims.shims import DistributionNotFound
++        from requests.exceptions import HTTPError
+         from pipenv.patched.piptools.exceptions import NoCandidateFound
+         from pipenv.patched.piptools.cache import CorruptCacheError
+         from .exceptions import CacheError, ResolutionFailure
+@@ -400,8 +400,8 @@
+ 
+     @staticmethod
+     def _should_include_hash(ireq):
+-        from pipenv.vendor.vistir.compat import Path, to_native_string
+-        from pipenv.vendor.vistir.path import url_to_path
++        from vistir.compat import Path, to_native_string
++        from vistir.path import url_to_path
+ 
+         # We can only hash artifacts.
+         try:
+@@ -466,7 +466,7 @@
+     pre,
+     req_dir=None,
+ ):
+-    from pipenv.vendor.vistir.path import create_tracked_tempdir
++    from vistir.path import create_tracked_tempdir
+ 
+     if not req_dir:
+         req_dir = create_tracked_tempdir(suffix="-requirements", prefix="pipenv-")
+@@ -502,10 +502,10 @@
+ 
+ 
+ def resolve(cmd, sp):
+-    from .vendor import delegator
++    import delegator
+     from .cmdparse import Script
+-    from .vendor.pexpect.exceptions import EOF, TIMEOUT
+-    from .vendor.vistir.compat import to_native_string
++    from pexpect.exceptions import EOF, TIMEOUT
++    from vistir.compat import to_native_string
+     EOF.__module__ = "pexpect.exceptions"
+     from ._compat import decode_output
+     c = delegator.run(Script.parse(cmd).cmdify(), block=False, env=os.environ.copy())
+@@ -569,7 +569,7 @@
+ 
+ 
+ def prepare_lockfile(results, pipfile, lockfile):
+-    from .vendor.requirementslib.utils import is_vcs
++    from requirementslib.utils import is_vcs
+     for dep in results:
+         # Merge in any relevant information from the pipfile entry, including
+         # markers, normalized names, URL info, etc that we may have dropped during lock
+@@ -594,9 +594,9 @@
+     pipfile=None,
+     lockfile=None
+ ):
+-    from .vendor.vistir.misc import fs_str
+-    from .vendor.vistir.compat import Path, to_native_string, JSONDecodeError
+-    from .vendor.vistir.path import create_tracked_tempdir
++    from vistir.misc import fs_str
++    from vistir.compat import Path, to_native_string, JSONDecodeError
++    from vistir.path import create_tracked_tempdir
+     from . import resolver
+     import json
+ 
+@@ -696,8 +696,8 @@
+     """Given a list of dependencies, return a resolved list of dependencies,
+     using pip-tools -- and their hashes, using the warehouse API / pip.
+     """
+-    from .vendor.requests.exceptions import ConnectionError
+-    from .vendor.requirementslib.models.requirements import Requirement
++    from requests.exceptions import ConnectionError
++    from requirementslib.models.requirements import Requirement
+ 
+     index_lookup = {}
+     markers_lookup = {}
+@@ -711,7 +711,7 @@
+     # First (proper) attempt:
+     req_dir = req_dir if req_dir else os.environ.get("req_dir", None)
+     if not req_dir:
+-        from .vendor.vistir.path import create_tracked_tempdir
++        from vistir.path import create_tracked_tempdir
+         req_dir = create_tracked_tempdir(prefix="pipenv-", suffix="-requirements")
+     with HackedPythonVersion(python_version=python, python_path=python_path):
+         try:
+@@ -821,7 +821,7 @@
+ 
+ def convert_deps_to_pip(deps, project=None, r=True, include_index=True):
+     """"Converts a Pipfile-formatted dependency to a pip-formatted one."""
+-    from .vendor.requirementslib.models.requirements import Requirement
++    from requirementslib.models.requirements import Requirement
+ 
+     dependencies = []
+     for dep_name, dep in deps.items():
+@@ -835,7 +835,7 @@
+         return dependencies
+ 
+     # Write requirements.txt to tmp directory.
+-    from .vendor.vistir.path import create_tracked_tempfile
++    from vistir.path import create_tracked_tempfile
+     f = create_tracked_tempfile(suffix="-requirements.txt", delete=False)
+     f.write("\n".join(dependencies).encode("utf-8"))
+     f.close()
+@@ -898,8 +898,8 @@
+ 
+ def is_installable_file(path):
+     """Determine if a path can potentially be installed"""
+-    from .vendor.pip_shims.shims import is_installable_dir, is_archive_file
+-    from .patched.notpip._internal.utils.packaging import specifiers
++    from pip_shims.shims import is_installable_dir, is_archive_file
++    from packaging import specifiers
+     from ._compat import Path
+ 
+     if hasattr(path, "keys") and any(
+@@ -951,7 +951,7 @@
+ 
+ def pep440_version(version):
+     """Normalize version to PEP 440 standards"""
+-    from .vendor.pip_shims.shims import parse_version
++    from pip_shims.shims import parse_version
+ 
+     # Use pip built-in version parser.
+     return str(parse_version(version))
+@@ -1076,7 +1076,7 @@
+ 
+ def get_canonical_names(packages):
+     """Canonicalize a list of packages and return a set of canonical names"""
+-    from .vendor.packaging.utils import canonicalize_name
++    from packaging.utils import canonicalize_name
+ 
+     if not isinstance(packages, Sequence):
+         if not isinstance(packages, six.string_types):
+@@ -1293,7 +1293,7 @@
+     dev=False,
+     pypi_mirror=None,
+ ):
+-    from .vendor.requirementslib.models.requirements import Requirement
++    from requirementslib.models.requirements import Requirement
+ 
+     section = "vcs_dev_packages" if dev else "vcs_packages"
+     reqs = []
+@@ -1331,9 +1331,9 @@
+     """
+     if not isinstance(pipfile_entry, Mapping):
+         raise TypeError("Entry is not a pipfile formatted mapping.")
+-    from .vendor.distlib.markers import DEFAULT_CONTEXT as marker_context
+-    from .vendor.packaging.markers import Marker
+-    from .vendor.vistir.misc import dedup
++    from distlib.markers import DEFAULT_CONTEXT as marker_context
++    from packaging.markers import Marker
++    from vistir.misc import dedup
+ 
+     allowed_marker_keys = ["markers"] + [k for k in marker_context.keys()]
+     provided_keys = list(pipfile_entry.keys()) if hasattr(pipfile_entry, "keys") else []
+@@ -1437,7 +1437,7 @@
+ 
+ @contextmanager
+ def locked_repository(requirement):
+-    from .vendor.vistir.path import create_tracked_tempdir
++    from vistir.path import create_tracked_tempdir
+     if not requirement.is_vcs:
+         return
+     original_base = os.environ.pop("PIP_SHIMS_BASE_MODULE", None)
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: appdirs.LICENSE.txt
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: appdirs.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: attr
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: backports
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: blindspin
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: cached-property.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: cached_property.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: cerberus
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: certifi
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: chardet
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: click
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: click_completion
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: click_didyoumean
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: colorama
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: cursor
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: delegator.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: delegator.py.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: distlib
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: docopt.LICENSE-MIT
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: docopt.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: dotenv
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: first.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: first.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: idna
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: iso8601
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: jinja2
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: markupsafe
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: packaging
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: parse.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: parse.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: passa
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pathlib2
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pexpect
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pipdeptree.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pipdeptree.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pipreqs
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pip_shims
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: plette
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: ptyprocess
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pyparsing.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pyparsing.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: pythonfinder
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: requests
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: requirementslib
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: resolvelib
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: scandir.LICENSE.txt
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: scandir.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: semver.LICENSE.txt
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: semver.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: shellingham
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: shutilwhich
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: six.LICENSE
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: six.py
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: toml
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: tomlkit
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: urllib3
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: vistir
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: yarg
+Only in pipenv-2018.11.26.1543215385.742ae1b9-orig/pipenv/vendor: yaspin
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/conftest.py pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/conftest.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/conftest.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/conftest.py	2019-04-04 12:48:35.371117752 +0700
+@@ -8,10 +8,10 @@
+ from pipenv._compat import TemporaryDirectory, Path
+ from pipenv.exceptions import VirtualenvActivationException
+ from pipenv.utils import temp_environ
+-from pipenv.vendor import delegator
+-from pipenv.vendor import requests
+-from pipenv.vendor import toml
+-from pipenv.vendor import tomlkit
++import delegator
++import requests
++import toml
++import tomlkit
+ from pytest_pypi.app import prepare_packages as prepare_pypi_packages, prepare_fixtures
+ from vistir.compat import ResourceWarning, fs_str
+ from vistir.path import mkdir_p
+Only in pipenv-2018.11.26.1543215385.742ae1b9/tests/integration: conftest.py.orig
+Only in pipenv-2018.11.26.1543215385.742ae1b9/tests/integration: conftest.py.rej
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_dot_venv.py pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_dot_venv.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_dot_venv.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_dot_venv.py	2019-04-04 12:47:58.738826727 +0700
+@@ -3,7 +3,7 @@
+ from pipenv._compat import TemporaryDirectory, Path
+ from pipenv.project import Project
+ from pipenv.utils import temp_environ, normalize_drive, get_windows_path
+-from pipenv.vendor import delegator
++import delegator
+ 
+ import pytest
+ 
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_install_basic.py pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_install_basic.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_install_basic.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_install_basic.py	2019-04-04 12:47:58.742826759 +0700
+@@ -2,7 +2,7 @@
+ 
+ from pipenv.utils import temp_environ
+ from pipenv._compat import TemporaryDirectory, Path
+-from pipenv.vendor import delegator
++import delegator
+ from pipenv.project import Project
+ 
+ import pytest
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_install_twists.py pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_install_twists.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_install_twists.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_install_twists.py	2019-04-04 12:47:58.742826759 +0700
+@@ -2,7 +2,7 @@
+ import shutil
+ from pipenv.project import Project
+ from pipenv._compat import Path
+-from pipenv.vendor import delegator
++import delegator
+ from pipenv.utils import mkdir_p, temp_environ
+ 
+ import pytest
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_pipenv.py pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_pipenv.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/integration/test_pipenv.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/integration/test_pipenv.py	2019-04-04 12:47:58.746826792 +0700
+@@ -11,7 +11,7 @@
+ 
+ from pipenv.utils import temp_environ
+ from pipenv.project import Project
+-from pipenv.vendor import delegator
++import delegator
+ from pipenv._compat import Path
+ 
+ 
+@@ -98,7 +98,7 @@
+             prefix = '-dir-with-leading-dash'
+         return mkdtemp(suffix, prefix, dir)
+ 
+-    with mock.patch('pipenv.vendor.vistir.compat.mkdtemp', side_effect=mocked_mkdtemp):
++    with mock.patch('vistir.compat.mkdtemp', side_effect=mocked_mkdtemp):
+         with temp_environ(), PipenvInstance(chdir=True) as p:
+             del os.environ['PIPENV_VENV_IN_PROJECT']
+             p.pipenv('--python python')
+diff -ur pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/unit/test_utils.py pipenv-2018.11.26.1543215385.742ae1b9/tests/unit/test_utils.py
+--- pipenv-2018.11.26.1543215385.742ae1b9-orig/tests/unit/test_utils.py	2018-11-26 13:56:25.000000000 +0700
++++ pipenv-2018.11.26.1543215385.742ae1b9/tests/unit/test_utils.py	2019-04-04 09:46:23.327672490 +0700
+@@ -166,7 +166,7 @@
+     )
+     @pytest.mark.vcs
+     def test_is_vcs(self, entry, expected):
+-        from pipenv.vendor.requirementslib.utils import is_vcs
++        from requirementslib.utils import is_vcs
+         assert is_vcs(entry) is expected
+ 
+     @pytest.mark.utils
+@@ -196,7 +196,7 @@
+     ):
+         def mock_version(path):
+             return version_output.split()[1]
+-        monkeypatch.setattr("pipenv.vendor.pythonfinder.utils.get_python_version", mock_version)
++        monkeypatch.setattr("pythonfinder.utils.get_python_version", mock_version)
+         assert pipenv.utils.python_version("some/path") == version
+ 
+     @pytest.mark.utils

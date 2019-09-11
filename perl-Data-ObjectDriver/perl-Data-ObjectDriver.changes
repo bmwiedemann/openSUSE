@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Jul 16 09:20:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+-------------------------------------------------------------------
+Wed Mar 13 15:55:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+-------------------------------------------------------------------
+Thu Apr 20 05:28:22 UTC 2017 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+  0.15 2017-04-19T01:21:41Z
+  
+      - Fix failed tests with Perl 5.25.11 (miniuchi) #24
+
+-------------------------------------------------------------------
+Wed Jan 20 10:00:20 UTC 2016 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+  0.14 2016-01-14T03:03:02Z
+  
+      - Fix test for SQLite 3.10 compatibility (ziguzagu) #21
+
+-------------------------------------------------------------------
+Wed May 20 08:16:30 UTC 2015 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+  0.13 2015-05-20T02:26:46Z
+  
+      - Fix 0.12 changes with braking inserting new records (masiuchi) #20
+
+-------------------------------------------------------------------
+Mon May 18 08:16:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+-------------------------------------------------------------------
+Mon Apr 13 19:24:07 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+-------------------------------------------------------------------
+Mon Apr 13 19:24:04 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+  0.09 2011.03.17
+      - Fix reuse_dbh behaviour when ping fails on driver->dbh (RT 65448)
+  
+  0.08 2010.12.06
+      - Fixed issue where a profiler cannot be returned if $@ is set
+        https://github.com/sixapart/data-objectdriver/pull/1 (Akira Sawada)
+      - Adds a new restricted IO operation mode controlled by the
+        $Data::ObjectDriver::RESTRICT_IO flag (Brad Whitaker)
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:34 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Nov  7 00:39:04 CET 2009 - dmueller@suse.de
+
+- Initial package (0.06)
+

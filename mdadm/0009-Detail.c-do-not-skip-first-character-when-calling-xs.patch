@@ -1,0 +1,47 @@
+From 02acb5718a68b16def418699c6afcc84223f52c7 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Tue, 12 Feb 2019 12:43:40 +0800
+Subject: [PATCH] Detail.c: do not skip first character when calling xstrdup in
+ Detail()
+Git-commit: Posted but not upstreamed yet
+References: bsc#1123814
+
+'Commit b9c9bd9bacaa ("Detail: ensure --export names are acceptable as
+shell variables")' duplicates mdi->sys_name to sysdev string by,
+	char *sysdev = xstrdup(mdi->sys_name + 1);
+which skips the first character of mdi->sys_name. Then when running
+mdadm --detail <md device> --export, the output looks like,
+	MD_DEVICE_ev_sda2_ROLE=1
+	MD_DEVICE_ev_sda2_DEV=/dev/sda2
+The first character of md device (between MD_DEVICE and _ROLE/_DEV)
+is dropped. The expected output should be,
+	MD_DEVICE_dev_sda2_ROLE=1
+	MD_DEVICE_dev_sda2_DEV=/dev/sda2
+
+This patch removes the '+ 1' from calling xstrdup() in Detail(), which
+gets the dropped first character back.
+
+Reported-by: Arvin Schnell <aschnell@suse.com>
+Fixes: b9c9bd9bacaa ("Detail: ensure --export names are acceptable as 4 shell variables")
+Signed-off-by: Coly Li <colyli@suse.de>
+Cc: NeilBrown <neilb@suse.com>
+---
+ Detail.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Detail.c b/Detail.c
+index b3e857a..20ea03a 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -284,7 +284,7 @@ int Detail(char *dev, struct context *c)
+ 			struct mdinfo *mdi;
+ 			for (mdi  = sra->devs; mdi; mdi = mdi->next) {
+ 				char *path;
+-				char *sysdev = xstrdup(mdi->sys_name + 1);
++				char *sysdev = xstrdup(mdi->sys_name);
+ 				char *cp;
+ 
+ 				path = map_dev(mdi->disk.major,
+-- 
+2.16.4
+

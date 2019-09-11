@@ -1,0 +1,26 @@
+From c9c50ab75b4a8a73f57e8c2eeaa24401409e8c3c Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Thu, 24 Jan 2019 18:12:35 +0100
+Subject: [PATCH] temporary fix: extend the whitelist of allowed commands
+
+---
+ salt/auth/__init__.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
+index ca7168d00e..aa4c5c3670 100644
+--- a/salt/auth/__init__.py
++++ b/salt/auth/__init__.py
+@@ -46,6 +46,8 @@ AUTH_INTERNAL_KEYWORDS = frozenset([
+     'gather_job_timeout',
+     'kwarg',
+     'match',
++    "id_",
++    "force",
+     'metadata',
+     'print_event',
+     'raw',
+-- 
+2.20.1
+
+

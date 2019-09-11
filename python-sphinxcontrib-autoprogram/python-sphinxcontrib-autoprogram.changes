@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Dec 18 10:25:10 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Run tests in %check
+
+-------------------------------------------------------------------
+Thu Dec 13 10:59:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Dec 13 09:23:46 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Fix package name in spec file header
+
+-------------------------------------------------------------------
+Thu Dec 13 07:43:53 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Sort out with spec-cleaner, fix all FIXME mentions
+
+-------------------------------------------------------------------
+Wed Dec 12 15:44:15 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Initial release

@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Mon Sep 17 11:55:40 UTC 2018 - bwiedemann@suse.com
+
+- Update to version 0.3.9+git.1537184752.d624424:
+  * Avoid parsing shell output (boo#1108189, CVE-2018-12477)
+
+-------------------------------------------------------------------
+Thu Mar  6 16:06:54 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.9+git.1394121974.21d4106:
+  + Fix dropped_patches
+
+-------------------------------------------------------------------
+Mon Feb 17 16:15:55 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.8+git.1392653668.565b745:
+  + Remove patches only after processing all specs
+
+-------------------------------------------------------------------
+Wed Feb 12 14:04:33 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.7+git.1392213832.12f52e6:
+  + Disable positive notifications (be more quiet)
+  + Don't create entry for no changes
+
+-------------------------------------------------------------------
+Mon Feb 10 14:09:13 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.6+git.1392041308.272e6ab:
+  + Adjust changes message for refreshed patches
+
+-------------------------------------------------------------------
+Fri Jan 17 13:08:48 UTC 2014 -  speilicke@suse.com
+
+- Update to version 0.3.6+git.1389964042.5343549:
+  + Introduce "--ignorefuzz" argument
+
+-------------------------------------------------------------------
+Tue Dec 10 09:34:28 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.5+git.1386667973.d5e8213:
+  + Rework fuzz detection
+  + Pass --fuzz=0 to "quilt setup"
+  + Do not list twice patches in .changes entry
+  + Switch to C locale to avoid parsing localized output
+
+-------------------------------------------------------------------
+Mon Dec  9 14:08:43 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.4.1+git.1386598065.93569e2:
+  + Support quilt on SLE_11
+
+-------------------------------------------------------------------
+Mon Dec  9 13:20:43 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.4+git.1386595051.c3f87d4:
+  + Fix %pre section patch regex
+
+-------------------------------------------------------------------
+Tue Nov 26 13:50:59 UTC 2013 -  speilicke@suse.com
+
+- Update to version 0.3.3+git.1385473723.13c63f4:
+  + Whitespaces handling in OSCRC_EMAIL regexp
+
+-------------------------------------------------------------------
+Tue Nov 26 11:00:37 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.2+git.1385463523.dfec30c:
+  + Exit early in case of errorsFix default changesauthor
+
+-------------------------------------------------------------------
+Mon Nov 18 10:45:18 UTC 2013 - speilicke@suse.com
+
+- Require python
+
+-------------------------------------------------------------------
+Thu Nov 14 15:16:58 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.1+git.1384442162.3a0e42a:
+  + Kill semicolonMore robust untarred directory finding
+  + Also refresh patches applying with fuzz
+  + Quilt unpacked tarball name can have arbitatry name
+  + Better abort criteria
+  + Always remove untarred dir
+  + Implement dropping patches
+  + Use compiled regular expressions
+  + Remove dropped patches from specfile
+
+-------------------------------------------------------------------
+Mon Nov 11 10:41:24 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.2+git.1383925560.c99dd8e:
+  + Done implementing base logicGenerate *.changes file entries
+  + Avoid writing the same changes twice
+  + Kill semicolon
+
+-------------------------------------------------------------------
+Fri Nov  8 14:42:19 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.2+git.1383921307.c464e65:
+  + Done implementing base logicGenerate *.changes file entries
+  + Avoid writing the same changes twice
+
+-------------------------------------------------------------------
+Fri Nov  8 11:46:04 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

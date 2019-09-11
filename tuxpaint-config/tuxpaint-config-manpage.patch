@@ -1,0 +1,19 @@
+Index: tuxpaint-config-0.0.13/src/tuxpaint-config.1
+===================================================================
+--- tuxpaint-config-0.0.13.orig/src/tuxpaint-config.1
++++ tuxpaint-config-0.0.13/src/tuxpaint-config.1
+@@ -29,14 +29,12 @@ Display a list of all commandline option
+ Show the license (GNU GPL) under which Tux Paint is released.
+ 
+ .SH OPTIONS - LANGUAGE
+-.l
+ Much like Tux Paint itself, \fITux Paint Configuration Tool\fP has been
+ translated into numerous languages.  \fItuxpaint-config\fP will try its
+ best to honor your \fIlocale\fP setting (i.e., the \fILANG\fP environment
+ variable), if possible.
+ 
+ .SH ENVIRONMENT
+-.l
+ .PP
+ .TP 8
+ .B HOME

@@ -1,0 +1,152 @@
+--- jing-trang-20151127/build.xsl	2017-11-30 15:06:42.700567381 +0100
++++ jing-trang-20151127/build.xsl	2017-11-30 15:07:43.208567609 +0100
+@@ -13,11 +13,6 @@
+     <property name="javacc.dir" value="${{lib.dir}}"/>
+     <property name="ant.build.javac.source" value="1.5"/>
+     <property name="ant.build.javac.target" value="1.5"/>
+-    <taskdef name="testng" classname="org.testng.TestNGAntTask">
+-      <classpath>
+-	<pathelement location="${{lib.dir}}/testng.jar"/>
+-      </classpath>
+-    </taskdef>
+     <target name="dummy"/>
+     <target name="init">
+       <mkdir dir="{$build}"/>
+@@ -153,9 +148,6 @@
+ 	  <xsl:for-each select="depends[@lib]">
+ 	    <pathelement location="${{lib.dir}}/{@lib}.jar"/>
+ 	  </xsl:for-each>
+-	  <xsl:if test="test[@type='testng']">
+-	    <pathelement location="${{lib.dir}}/testng.jar"/>
+-	  </xsl:if>
+ 	</classpath>
+       </javac>
+     </xsl:if>
+@@ -385,38 +377,6 @@
+   </target>
+ </xsl:template>
+ 
+-<xsl:template match="test[@type='testng']">
+-  <xsl:param name="name"/>
+-  <target name="mod.{$name}.test-{@name}" depends="mod.{$name}.compile-test">
+-    <mkdir dir="{$build}/mod/{$name}/test-{@name}"/>
+-    <testng workingDir="{$build}/mod/{$name}/test-{@name}"
+-	    outputdir="{$build}/mod/{$name}/test-{@name}/report"
+-	    haltonfailure="true"
+-	    suiteName="mod.{$name}.test-{@name}"
+-	    listeners="org.testng.reporters.DotTestListener">
+-      <classfileset dir="{$build}/mod/{$name}/classes/test" includes="**/*.class"/>
+-      <classpath>
+-	<pathelement location="{$build}/mod/{$name}/classes/test"/>
+-	<pathelement location="{$build}/mod/{$name}/classes/main"/>
+-	<pathelement location="mod/{$name}/src/test"/>
+-	<pathelement location="mod/{$name}/src/main"/>
+-	<xsl:for-each select="../depends[@module]">
+-	  <pathelement location="{$build}/mod/{@module}/classes/test"/>
+-	  <pathelement location="{$build}/mod/{@module}/classes/main"/>
+-	  <pathelement location="mod/{@module}/src/test"/>
+-	  <pathelement location="mod/{@module}/src/main"/>
+-	</xsl:for-each>
+-	<xsl:for-each select="../depends[@lib]">
+-	  <pathelement location="${{lib.dir}}/{@lib}.jar"/>
+-	</xsl:for-each>
+-	<!-- Upstream testng.jar includes bsh and qdox -->
+-	<pathelement location="${{lib.dir}}/bsh.jar"/>
+-	<pathelement location="${{lib.dir}}/qdox.jar"/>
+-      </classpath>
+-    </testng>
+-  </target>
+-</xsl:template>
+-
+ <xsl:template match="service" mode="jar">
+   <xsl:param name="root"/>
+   <xsl:copy>
+--- jing-trang-20151127/iml.xsl	2017-11-30 15:06:42.704567381 +0100
++++ jing-trang-20151127/iml.xsl	2017-11-30 15:07:52.776567646 +0100
+@@ -27,9 +27,6 @@
+       </content>
+       <orderEntry type="inheritedJdk" />
+       <orderEntry type="sourceFolder" forTests="false" />
+-      <xsl:if test="test[@type='testng']">
+-	<orderEntry type="library" name="testng" level="project"/>
+-      </xsl:if>
+       <xsl:apply-templates select="depends"/>
+       <orderEntryProperties />
+     </component>
+--- jing-trang-20151127/jing-trang.ipr	2017-11-30 15:06:42.704567381 +0100
++++ jing-trang-20151127/jing-trang.ipr	2017-11-30 15:08:20.208567749 +0100
+@@ -499,13 +499,6 @@
+       <JAVADOC />
+       <SOURCES />
+     </library>
+-    <library name="testng">
+-      <CLASSES>
+-        <root url="jar://$PROJECT_DIR$/lib/testng.jar!/" />
+-      </CLASSES>
+-      <JAVADOC />
+-      <SOURCES />
+-    </library>
+     <library name="resolver">
+       <CLASSES>
+         <root url="jar://$PROJECT_DIR$/lib/resolver.jar!/" />
+--- jing-trang-20151127/mod/catalog/mod.xml	2017-11-30 15:06:42.748567381 +0100
++++ jing-trang-20151127/mod/catalog/mod.xml	2017-11-30 15:59:15.311548956 +0100
+@@ -1,6 +1,5 @@
+ <module>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile/>
+   <depends module="util"/>
+   <depends module="resolver"/>
+   <depends lib="xml-commons-resolver"/>
+--- jing-trang-20151127/mod/infer/mod.xml	2017-11-30 15:06:42.716567381 +0100
++++ jing-trang-20151127/mod/infer/mod.xml	2017-11-30 16:01:51.157015411 +0100
+@@ -4,6 +4,5 @@
+   <depends module="datatype"/>
+   <depends module="xsd-datatype"/>
+   <depends module="regex"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile/>
+ </module>
+--- jing-trang-20151127/mod/pattern/mod.xml	2017-11-30 15:06:42.736567381 +0100
++++ jing-trang-20151127/mod/pattern/mod.xml	2017-11-30 16:00:31.269015109 +0100
+@@ -4,6 +4,5 @@
+   <depends module="datatype"/>
+   <depends module="rng-parse"/>
+   <depends lib="relaxngDatatype"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile/>
+ </module>
+--- jing-trang-20151127/mod/rng-jaxp/mod.xml	2017-11-30 15:06:42.740567381 +0100
++++ jing-trang-20151127/mod/rng-jaxp/mod.xml	2017-11-30 16:02:00.329015446 +0100
+@@ -8,6 +8,5 @@
+   <depends module="pattern"/>
+   <depends module="jaxp"/>
+   <depends lib="relaxngDatatype"/>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile/>
+ </module>
+--- jing-trang-20151127/mod/util/mod.xml	2017-11-30 15:06:42.748567381 +0100
++++ jing-trang-20151127/mod/util/mod.xml	2017-11-30 15:57:22.367548530 +0100
+@@ -1,5 +1,4 @@
+ <module>
+-  <compile test="yes"/>
+-  <test name="unit" type="testng"/>
++  <compile/>
+ </module>
+ 
+--- jing-trang-20151127/mod/xsd-datatype/mod.xml	2017-11-30 15:06:42.748567381 +0100
++++ jing-trang-20151127/mod/xsd-datatype/mod.xml	2017-11-30 16:01:40.053015369 +0100
+@@ -4,8 +4,7 @@
+   <depends module="regex"/>
+   <depends lib="relaxngDatatype"/>
+   <test name="xsd" type="validate" transform="xsdtest.xsl" schema="test/xsdtest.rnc"/>
+-  <test name="unit" type="testng"/>
+-  <compile test="yes"/>
++  <compile/>
+   <service type="org.relaxng.datatype.DatatypeLibraryFactory">
+     <provider classname="com.thaiopensource.datatype.xsd.DatatypeLibraryFactoryImpl"/>
+   </service>

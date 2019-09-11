@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Mon Jul 22 13:15:34 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- update to 0.3.3
+  Added:
+  * Added ToggleFullscreen action
+  * A new window option window.startup_mode which controls how the window is created
+  * _NET_WM_ICON property is set on X11 now, allowing for WMs to show icons in titlebars
+  * Current Git commit hash to alacritty --version
+  * Config options window.title and window.class
+  * Config option working_directory
+  * Config group debug with the options debug.log_level, debug.print_events and debug.ref_test
+  * Select until next matching bracket when double-clicking a bracket
+  * Added foreground/background escape code request sequences
+  Changed:
+  * The start_maximized window option is now startup_mode: Maximized
+  * Cells with identical foreground and background will now show their text upon selection/inversion
+  * Default Window padding to 0x0
+  * Moved config option render_timer and persistent_logging to the debug group
+  * When the cursor is in the selection, it will be inverted again, making it visible
+  Fixed: 
+  * Double-width characters in URLs only being highlit on the left half
+  * PTY size not getting updated when message bar is shown
+  * Text Cursor disappearing
+  * Incorrect positioning of zero-width characters over double-width characters
+  * Mouse mode generating events when the cell has not changed
+  * Selections not automatically expanding across double-width characters
+  * Text getting recognized as URLs without slashes separating the scheme
+  * URL parser dropping trailing slashes from valid URLs
+  * UTF-8 BOM skipped when reading config file
+  * Terminfo backspace escape sequence (kbs)
+  Removed:  
+  * Deprecated mouse.faux_scrollback_lines config field
+  * Deprecated custom_cursor_colors config field
+  * Deprecated hide_cursor_when_typing config field
+  * Deprecated cursor_style config field
+  * Deprecated unfocused_hollow_cursor config field
+  * Deprecated dimensions config field
+- refresh vendor.tar.xz
+- fixed blurred icon on X11
+
+-------------------------------------------------------------------
+Mon May 13 14:25:40 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- update to 0.3.2
+  Fixed:
+  * Panic on startup when using Conpty on Windows
+
+-------------------------------------------------------------------
+Tue Apr 23 09:37:15 UTC 2019 - Dag Jönsson <dag@jnsson.eu>
+
+- update to 0.3.1
+  Added:
+  * Added ScrollLineUp and ScrollLineDown actions for scrolling line by line
+  Changed:
+  * Alacritty now has a fixed minimum supported Rust version of 1.31.0
+  Fixed:
+  * Reset scrolling region when the RIS escape sequence is received
+  * Subprocess spawning on macros
+  * Unnecessary resize at startup
+  * Text getting blurry after live-reloading shaders with padding active
+  * Resize events are not send to the shell anymore if dimensions haven't 
+    changed
+  * Minor performance issues with underline and strikeout checks
+  * Rare bug which would extend underline and strikeout beyond the end of line
+  * Cursors not spanning two lines when over double-width characters
+  * Incorrect cursor dimensions if the font offset isn't 0
+- refresh vendor.tar.xz
+- changed buildrequires to reflect project changes
+
+-------------------------------------------------------------------
+Tue Apr  9 16:05:59 UTC 2019 - Dag Jönsson <dagjo270@student.liu.se>
+
+- upate to 0.3.0
+  Added:
+  * Ability to specify starting position with the --position flag
+  * New configuration field window.position allows specifying the starting 
+    position
+  * Added the ability to change the selection color
+  * Text will reflow instead of truncating when resizing Alacritty
+  * Underline text and change cursor when hovering over URLs with required 
+    modifiers pressed 
+  Changed:
+  * Clicking on non-alphabetical characters in front of URLs will no longer 
+    open them
+  Fixed
+  * Slow startup time on some X11 systems
+  * On Wayland, the --title flag will set the Window title now
+  * Fix start_maximized option on X11
+  * Terminfo support for extended capabilities
+  * Crash when decreasing scrollback history in config while scrolled in 
+    history
+  * Scrollback history live reload only working when shrinking lines
+- refresh vendor.tar.xz
+- man page and completions had been moved
+
+-------------------------------------------------------------------
+Fri Mar 22 22:11:30 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 0.2.9
+  Changed:
+  * Accept fonts which are smaller in width or height than a single pixel
+  Fixed:
+  * Incorrect font spacing after moving Alacritty between displays
+- refresh vendor.tar.xz
+- add --path flag to cargo install which is now required
+- minor cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 27 15:37:35 UTC 2018 - avindra@opensuse.org
+
+- update to 0.2.1
+  * first non-development release for opensuse. see
+    https://github.com/jwilm/alacritty/releases/tag/v0.2.1 for notes
+- simplify cargo vendoring
+- minor cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jul 28 15:49:09 UTC 2018 - avindra@opensuse.org
+
+- update to rev 57a455e5f209dd965fd6b495d7f2b033fd5288c0
+  * Don't paste selection when in mouse mode
+  * Paste path into terminal when drag & dropping file
+  * Set $LANG env var using languageCode, countryCode
+  * Update to glutin 0.16.0
+  * Allow disabling DPI scaling
+  * Add --class and --title CLI parameters
+  * Reduce Increase-/DecreaseFontSize step to 0.5
+  * Add Copy/Cut/Paste keys
+  * Override dynamic_title when --title is specified
+  * Change green implementation to use the macro
+  * Ignore mouse input if window is unfocused
+  * Clippy: move to cargo clippy, remove unnecessary lint
+    annotations, enable clippy in font/copypasta crates,
+    fix lints
+  * Add config for unfocused window cursor change
+  * Add support for cursor shape escape sequence
+  * Add bright foreground color option
+  * Switch from deprecated `std::env::home_dir` to `dirs::home_dir`
+  * Allow specifying modifiers for mouse bindings
+  * Send newline with NumpadEnter
+  * Add support for LCD-V pixel mode
+  * Add binding action for hiding the window
+  * Add optional dim foreground color
+  * Log: Ignore errors when logger can't write to output
+  * Log: Replace debug asserts with static_assertions
+  * Log: Reduce debug level for release
+  * Log: Fix typo in error message
+
+-------------------------------------------------------------------
+Wed Apr 25 11:33:09 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Remove checksums for config.guess and config.sub for aarch64 
+  and ppc64le since they are updated
+
+-------------------------------------------------------------------
+Fri Mar 30 00:26:37 UTC 2018 - avindra@opensuse.org
+
+- Drop unneeded Requires for fish and zsh completions
+
+-------------------------------------------------------------------
+Wed Mar 28 08:13:08 UTC 2018 - jengelh@inai.de
+
+- Use a single %setup call.
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Fri Mar 23 23:18:56 UTC 2018 - avindra@opensuse.org
+
+- update to rev dcc4b750381cd2096b6001cbf94e95a6e6b52ed0
+  * fix verbose logging (-v, -vv and -vvv)
+
+-------------------------------------------------------------------
+Sun Mar 18 20:23:12 UTC 2018 - avindra@opensuse.org
+
+- update to rev 6debc4f3351446417d0c4e38173cd9ef0faa71d5
+  * fish shell completions
+  * enable SRGB support
+  * extend SGR and VT200 mouse support
+  * switch meta key to alt instead of super
+
+-------------------------------------------------------------------
+Tue Mar 13 03:56:43 UTC 2018 - avindra@opensuse.org
+
+- initial package @ cb05e72be2fcf7e78bff99e4316f19510bf4f502

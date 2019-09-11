@@ -1,0 +1,4 @@
+## Name: PostgreSQL Server
+## Description: Opens TCP port 5432 to allow remote connections to the PostgreSQL server.
+
+TCP="5432"

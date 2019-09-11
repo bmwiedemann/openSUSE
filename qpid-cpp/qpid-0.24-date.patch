@@ -1,0 +1,11 @@
+--- qpid-0.24/cpp/docs/api/footer.html	2011-04-28 21:59:44.000000000 +0200
++++ qpid-0.24/cpp/docs/api/footer.html	2013-09-20 16:07:18.991547492 +0200
+@@ -25,7 +25,7 @@
+ 
+ <address style="text-align: right;">
+ <small>
+-Generated on $date for $projectname by&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> $doxygenversion</small>
++Generated on for $projectname by&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> $doxygenversion</small>
+ </address>
+ </body>
+ </html>

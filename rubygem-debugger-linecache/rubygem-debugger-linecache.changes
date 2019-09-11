@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Jul 31 05:45:55 UTC 2013 - coolo@suse.com
+
+- updated to version 1.2.0
+ * Replace C extension with ruby 
+ * No more debugger-ruby_core_source dependency
+
+-------------------------------------------------------------------
+Wed Feb  6 16:27:28 UTC 2013 - dmacvicar@suse.de
+
+- initial package for 1.1.2 
+

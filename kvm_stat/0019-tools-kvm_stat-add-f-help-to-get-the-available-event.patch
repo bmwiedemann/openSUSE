@@ -1,0 +1,59 @@
+From 93fca877853b89ccf7243c09b9e1bc271e5a3c8d Mon Sep 17 00:00:00 2001
+From: Lin Ma <lma@suse.com>
+Date: Tue, 25 Jul 2017 19:05:54 +0800
+Subject: [PATCH 19/43] tools/kvm_stat: add '-f help' to get the available
+ event list
+
+Signed-off-by: Lin Ma <lma@suse.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 67fbcd62f54d4503e3dc63b68af1c6757b74e050)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index b8f0634baf28..218b7396f0fe 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -474,7 +474,7 @@ class Provider(object):
+     @staticmethod
+     def is_field_wanted(fields_filter, field):
+         """Indicate whether field is valid according to fields_filter."""
+-        if not fields_filter:
++        if not fields_filter or fields_filter == "help":
+             return True
+         return re.match(fields_filter, field) is not None
+ 
+@@ -1499,7 +1499,8 @@ Press any other key to refresh statistics immediately.
+                          action='store',
+                          default=DEFAULT_REGEX,
+                          dest='fields',
+-                         help='fields to display (regex)',
++                         help='''fields to display (regex)
++                                 "-f help" for a list of available events''',
+                          )
+     optparser.add_option('-p', '--pid',
+                          action='store',
+@@ -1562,6 +1563,17 @@ def main():
+ 
+     stats = Stats(options)
+ 
++    if options.fields == "help":
++        event_list = "\n"
++        s = stats.get()
++        for key in s.keys():
++            if key.find('(') != -1:
++                key = key[0:key.find('(')]
++            if event_list.find('\n' + key + '\n') == -1:
++                event_list += key + '\n'
++        sys.stdout.write(event_list)
++        return ""
++
+     if options.log:
+         log(stats)
+     elif not options.once:
+-- 
+2.12.3
+

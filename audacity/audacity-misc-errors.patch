@@ -1,0 +1,51 @@
+From: Dave Plater <plater@opensuse.org>
+Date: Thu 22 Feb 12:11:43 SAST 2018
+Subject: Fix various build errors found by rpmlint
+References:
+Upstream: reported to audacity devel list.
+
+I: Program is using implicit definitions of functions getting
+    pointers or implemented by macros. These functions need to use their
+    correct prototypes to allow correct argument passing on e.g. x86_64 .
+      - Implicit memory/string functions need #include <string.h>.
+      - Implicit *printf functions need #include <stdio.h>.
+      - Implicit *printf functions need #include <stdio.h>.
+      - Implicit *read* functions need #include <unistd.h>.
+      - Implicit *recv* functions need #include <sys/socket.h>.
+W: audacity implicit-pointer-decl pm_linux/finddefault.c:16
+ 
+I: Program is using uninitialized variables.
+    Note the difference between "is used" and "may be used"
+W: audacity uninitialized-variable ../include/audacity/EffectAutomationParameters.h:122
+W: audacity uninitialized-variable sse.h:19
+ 
+I: Program uses operation a <= b <= c, which is not well defined.
+E: audacity mathmeaning SplashDialog.cpp:148
+
+
+Index: lib-src/portmidi/pm_linux/finddefault.c
+===================================================================
+--- lib-src/portmidi/pm_linux/finddefault.c.orig	2018-10-01 08:28:57.297126154 +0200
++++ lib-src/portmidi/pm_linux/finddefault.c	2018-10-01 08:35:55.991702808 +0200
+@@ -5,6 +5,8 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
++#include <sys/socket.h>
+ #include "portmidi.h"
+ 
+ #define STRING_MAX 256
+Index: include/audacity/EffectAutomationParameters.h
+===================================================================
+--- include/audacity/EffectAutomationParameters.h.orig	2018-10-01 08:28:57.297126154 +0200
++++ include/audacity/EffectAutomationParameters.h	2018-10-01 08:35:55.995702976 +0200
+@@ -135,7 +135,7 @@ public:
+ 
+    bool ReadFloat(const wxString & key, float *pf) const
+    {
+-      double d = *pf;
++      double d = (float) *pf;
+       bool success = Read(key, &d);
+       if (success)
+       {

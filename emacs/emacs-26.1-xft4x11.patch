@@ -1,0 +1,33 @@
+---
+ lwlib/xlwmenu.c |   13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+--- lwlib/xlwmenu.c
++++ lwlib/xlwmenu.c	2018-06-15 05:50:45.749287186 +0000
+@@ -1887,21 +1887,18 @@ XlwMenuInitialize (Widget request, Widge
+ 				   gray_width, gray_height,
+ 				   (unsigned long)1, (unsigned long)0, 1);
+ 
++  mw->menu.font = XLoadQueryFont (display, mw->menu.fontName);
+ #ifdef HAVE_XFT
+-  if (openXftFont (mw))
++  if (mw->menu.font || openXftFont (mw))
+     ;
+   else
+ #endif
+     {
+-      mw->menu.font = XLoadQueryFont (display, mw->menu.fontName);
++      mw->menu.font = XLoadQueryFont (display, "fixed");
+       if (!mw->menu.font)
+         {
+-          mw->menu.font = XLoadQueryFont (display, "fixed");
+-          if (!mw->menu.font)
+-            {
+-              fprintf (stderr, "Menu font fixed not found, can't continue.\n");
+-              emacs_abort ();
+-            }
++          fprintf (stderr, "Menu font fixed not found, can't continue.\n");
++          emacs_abort ();
+         }
+     }
+ 

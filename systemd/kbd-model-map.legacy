@@ -1,0 +1,10 @@
+# Additional layouts offered by YaST
+Pl02                   pl      pc105           -               terminate:ctrl_alt_bksp
+arabic                 ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
+cn-latin1              ca      pc105           multix          terminate:ctrl_alt_bksp
+cz-lat2-us             cz,us   pc105           qwerty,basic    terminate:ctrl_alt_bksp,grp:shift_toggle
+es-cp850               es      pc105           -               terminate:ctrl_alt_bksp
+korean                 kr      pc105           -               terminate:ctrl_alt_bksp
+lt.std                 lt      pc105           std             terminate:ctrl_alt_bksp
+no-latin1              no      pc105           -               terminate:ctrl_alt_bksp
+ruwin_alt-UTF-8        us,ru   pc105           ,winkeys        terminate:ctrl_alt_bksp,grp:ctrl_shift_toggle,grp_led:scroll

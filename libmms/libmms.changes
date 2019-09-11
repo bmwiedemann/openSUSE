@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Thu Feb  9 18:25:43 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package %{_docdir}/%{name} to fix build with RPM 4.13.
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
+
+- Restore BuildRoot: for SLE_11
+
+-------------------------------------------------------------------
+Wed Apr 23 19:20:23 CEST 2014 - sbrabec@suse.cz
+
+- Update to version 0.6.4:
+  * Fix a possible heap memory overrun (bnc#874723, CVE-2014-2892).
+  * Some changes for more recent automake versions.
+  * Remove glib dependency.
+  * Fix several issues that prevented seeking from working.
+  * Remove dependency on iconv.
+  * Fix connecting to certain mms streams.
+
+-------------------------------------------------------------------
+Sun Mar 24 04:43:36 UTC 2013 - crrodriguez@opensuse.org
+
+- libmms-nognetexport.patch: libmms 
+  exports functions that belong to gnome's gnet
+  library, that will of course cause symbol clashes.
+  We cannot just link to the system's gnet because it uses
+  and slightly older API, just hide the symbols instead.
+
+-------------------------------------------------------------------
+Thu Nov 22 18:40:37 UTC 2012 - crrodriguez@opensuse.org
+
+- libmms-pkgconfig.patch: DO not inject bogus build
+  dependencies via pkgconfig files, in this case glib2 which
+  will pull pcre and so on... 
+
+-------------------------------------------------------------------
+Mon Mar  5 14:00:05 UTC 2012 - toddrme2178@gmail.com
+
+- Added 32bit-compatibility package, needed by 
+  gstreamer-0_10-plugins-bad-32bit
+
+-------------------------------------------------------------------
+Tue Sep 20 10:02:16 UTC 2011 - toddrme2178@gmail.com
+
+- Changed one remaining case of %{name}0 to %{name}%{soname} 
+- Removed some extraneous spaces
+
+-------------------------------------------------------------------
+Fri Sep 16 10:01:18 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added xine mailing list discussions about LGPL relicensing of 
+  xine code
+- Added note in spec file about LGPL relicensing of xine code
+
+-------------------------------------------------------------------
+Thu Aug  4 15:21:22 UTC 2011 - toddrme2178@gmail.com
+ 
+- Switch to stored tarball rather that using the download service
+
+-------------------------------------------------------------------
+Sun Jan 23 13:43:16 UTC 2011 - reddwarf@opensuse.org
+ 
+- Update to 0.6.2

@@ -1,0 +1,62 @@
+Index: htaccess
+===================================================================
+--- htaccess.orig
++++ htaccess
+@@ -1,4 +1,4 @@
+-AuthUserFile /usr/local/sarg/passwd
++AuthUserFile /usr/share/sarg/passwd
+ AuthName "SARG, Squid Analysis Report Generator"
+ AuthType Basic
+ <Limit GET POST>
+Index: sarg-php/sarg-block-it.php
+===================================================================
+--- sarg-php/sarg-block-it.php.orig
++++ sarg-php/sarg-block-it.php
+@@ -25,7 +25,7 @@
+  *
+  */
+ 
+-$filename = "/usr/local/squid/etc/block.txt";
++$filename = "/etc/squid/block.txt";
+ 
+ $url = $_GET['url'];
+ $url = $url."\n";
+Index: sarg-php/sarg-squidguard-block.php
+===================================================================
+--- sarg-php/sarg-squidguard-block.php.orig
++++ sarg-php/sarg-squidguard-block.php
+@@ -26,8 +26,8 @@
+  */
+ 
+ // Change to squidGuard and sarg config file paths
+-$SargConf = "/usr/local/sarg/sarg.conf";
+-$squidGuardConf = "/usr/local/squidGuard/squidGuard.conf";
++$SargConf = "/etc/sarg.conf";
++$squidGuardConf = "/etc/squidGuard.conf";
+ 
+ global $SargConf;
+ global $dbhome;
+@@ -37,7 +37,7 @@ include_once("language.php");
+ include_once("style.php");
+ 
+ $url = $_GET['url'];
+-$squidGuard_conf = '/usr/local/squidGuard/squidGuard.conf';
++$squidGuard_conf = '/etc/squidGuard.conf';
+ 
+ function parse_config($line,$clave) {
+    if (preg_match("/dbhome/i", $line)) {
+Index: user_limit_block
+===================================================================
+--- user_limit_block.orig
++++ user_limit_block
+@@ -24,8 +24,8 @@
+ #
+ #
+ 
+-conf="/usr/local/sarg/sarg.conf"
+-squid_password_file="/usr/local/squid/etc/passwd"
++conf="/etc/sarg.conf"
++squid_password_file="/etc/squid/passwd"
+ tmp="/tmp/sarg_limit.$$"
+ 
+ limit_file=`grep "per_user_limit" $conf|grep -v "#"|awk '{print $2}'`

@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu May 18 06:48:29 UTC 2017 - coolo@suse.com
+
+- updated to 0.033
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.033     2017-05-18 00:46:41Z
+            - fix network tests that failed from 0.032, due to inadequate author
+              testing before release
+
+-------------------------------------------------------------------
+Thu May  4 06:48:41 UTC 2017 - coolo@suse.com
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.032     2017-05-03 22:57:18Z
+            - convert network tests to using httpbin.org, to not rely on
+              iana.org not changing their content
+
+-------------------------------------------------------------------
+Wed Nov  2 07:17:00 UTC 2016 - coolo@suse.com
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.031     2016-11-02 04:15:38Z
+            - warnings are only checked for in tests under AUTHOR_TESTING, so as
+              to not prevent installation when warnings occur in prerequisites.
+
+-------------------------------------------------------------------
+Sun Aug 23 09:25:14 UTC 2015 - coolo@suse.com
+
+- updated to 0.030
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.030     2015-08-17 00:07:37Z
+            - change network tests from hitting example.com to cpan.org, in the
+              hopes of getting past more testers' firewalls
+            - factor a few bits of HTTP::Response-specific code out into private
+              methods, to ease future refactoring
+            - some clarification and expansion to documentation
+
+-------------------------------------------------------------------
+Sun Jun  7 09:06:31 UTC 2015 - coolo@suse.com
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.029     2015-05-23 03:43:46Z
+            - add use of Test::RequiresInternet to avoid failing tests on
+              smokers that are failing to set NO_NETWORK_TESTING when running
+              behind a firewall
+
+-------------------------------------------------------------------
+Tue Apr 14 21:06:09 UTC 2015 - coolo@suse.com
+
+- updated to 0.028
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.028     2015-04-10 22:38:29Z
+            - report on the versions of more networking modules, to try to track
+              down mysterious failed network connections during testing
+  
+  0.027     2015-02-26 04:57:32Z
+            - register_psgi, unregister_psgi, map_response, map_network_response
+              and unmap_all all return their invocant, to allow for method
+              chaining (Tom Hukins, github #2)
+
+-------------------------------------------------------------------
+Fri Feb 13 19:59:47 UTC 2015 - coolo@suse.com
+
+- initial package 0.026
+    * created by cpanspec 1.78.08
+

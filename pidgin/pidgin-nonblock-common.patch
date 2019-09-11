@@ -1,0 +1,1000 @@
+--- a/libpurple/Makefile.am
++++ b/libpurple/Makefile.am
+@@ -47,6 +47,8 @@ purple_coresources = \
+ 	desktopitem.c \
+ 	eventloop.c \
+ 	ft.c \
++	purple-fifo.c \
++	purple-io.c \
+ 	idle.c \
+ 	imgstore.c \
+ 	log.c \
+@@ -114,6 +116,8 @@ purple_coreheaders = \
+ 	desktopitem.h \
+ 	eventloop.h \
+ 	ft.h \
++	purple-fifo.h \
++	purple-io.h \
+ 	gaim-compat.h \
+ 	idle.h \
+ 	imgstore.h \
+--- a/libpurple/plugins/ssl/ssl-gnutls.c
++++ b/libpurple/plugins/ssl/ssl-gnutls.c
+@@ -435,8 +435,6 @@ ssl_gnutls_close(PurpleSslConnection *gs
+ 	if (gnutls_data->handshake_timer)
+ 		purple_timeout_remove(gnutls_data->handshake_timer);
+ 
+-	gnutls_bye(gnutls_data->session, GNUTLS_SHUT_RDWR);
+-
+ 	gnutls_deinit(gnutls_data->session);
+ 
+ 	g_free(gnutls_data);
+@@ -524,6 +522,22 @@ ssl_gnutls_read(PurpleSslConnection *gsc
+ }
+ 
+ static size_t
++ssl_gnutls_read_nonblock(PurpleSslConnection *gsc, void *data, size_t len)
++{
++	PurpleSslGnutlsData *gnutls_data = PURPLE_SSL_GNUTLS_DATA(gsc);
++	int s;
++
++	s = gnutls_record_recv(gnutls_data->session, data, len);
++
++	if (s == GNUTLS_E_AGAIN)
++		s = PURPLE_SSL_IO_AGAIN;
++	else if (s == GNUTLS_E_INTERRUPTED)
++		s = PURPLE_SSL_IO_INTERRUPTED;
++
++	return s;
++}
++
++static size_t
+ ssl_gnutls_write(PurpleSslConnection *gsc, const void *data, size_t len)
+ {
+ 	PurpleSslGnutlsData *gnutls_data = PURPLE_SSL_GNUTLS_DATA(gsc);
+@@ -1296,6 +1310,23 @@ static PurpleCertificateScheme x509_gnut
+ 	x509_compare_pubkeys,            /* Compare public keys */
+ };
+ 
++static size_t
++ssl_gnutls_write_nonblock(PurpleSslConnection *gsc, const void *data, size_t len)
++{
++	PurpleSslGnutlsData *gnutls_data = PURPLE_SSL_GNUTLS_DATA(gsc);
++	size_t s = 0;
++
++	if(gnutls_data)
++		s = gnutls_record_send(gnutls_data->session, data, len);
++
++	if (s == GNUTLS_E_AGAIN)
++		s = PURPLE_SSL_IO_AGAIN;
++	else if (s == GNUTLS_E_INTERRUPTED)
++		s = PURPLE_SSL_IO_INTERRUPTED;
++
++	return s;
++}
++
+ static PurpleSslOps ssl_ops =
+ {
+ 	ssl_gnutls_init,
+@@ -1303,7 +1334,9 @@ static PurpleSslOps ssl_ops =
+ 	ssl_gnutls_connect,
+ 	ssl_gnutls_close,
+ 	ssl_gnutls_read,
++    ssl_gnutls_read_nonblock,
+ 	ssl_gnutls_write,
++    ssl_gnutls_write_nonblock,
+ 	ssl_gnutls_get_peer_certificates,
+ 
+ 	/* padding */
+--- a/libpurple/plugins/ssl/ssl-nss.c
++++ b/libpurple/plugins/ssl/ssl-nss.c
+@@ -1235,6 +1235,8 @@ static PurpleSslOps ssl_ops =
+ 	ssl_nss_connect,
+ 	ssl_nss_close,
+ 	ssl_nss_read,
++	ssl_nss_read,
++	ssl_nss_write,
+ 	ssl_nss_write,
+ 	ssl_nss_peer_certs,
+ 
+--- /dev/null
++++ b/libpurple/purple-fifo.c
+@@ -0,0 +1,232 @@
++/*
++ * @file purple-fifo.c  A FIFO byte queue.
++ * @ingroup core
++ *
++ * Pidgin is the legal property of its developers, whose names are too numerous
++ * to list here.  Please refer to the COPYRIGHT file distributed with this
++ * source distribution.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++#include "internal.h"
++
++#define BUFFER_SIZE 256
++
++typedef struct
++{
++	GList *buffer_list;
++	GList *enqueue_buffer;
++	gint   enqueue_pos;
++	GList *dequeue_buffer;
++	gint   dequeue_pos;
++
++	gint   total_used;
++}
++PurpleFifo;
++
++PurpleFifo *
++purple_fifo_new (void)
++{
++	return g_new0 (PurpleFifo, 1);
++}
++
++void
++purple_fifo_destroy (PurpleFifo *fifo)
++{
++	GList *l;
++
++	for (l = fifo->buffer_list; l; l = g_list_next (l))
++		g_free (l->data);
++
++	g_list_free (fifo->buffer_list);
++}
++
++gint
++purple_fifo_get_used (PurpleFifo *fifo)
++{
++	return fifo->total_used;
++}
++
++static void
++ensure_buffers (PurpleFifo *fifo)
++{
++	if (!fifo->buffer_list)
++	{
++		fifo->buffer_list = g_list_append (NULL, g_malloc (BUFFER_SIZE));
++		fifo->enqueue_buffer = fifo->buffer_list;
++		fifo->dequeue_buffer = fifo->buffer_list;
++
++		fifo->buffer_list->data = g_malloc (BUFFER_SIZE);
++	}
++}
++
++static void
++enqueue_next_buffer (PurpleFifo *fifo)
++{
++	g_list_append (fifo->enqueue_buffer, g_malloc (BUFFER_SIZE));
++	fifo->enqueue_buffer = g_list_next (fifo->enqueue_buffer);
++	fifo->enqueue_pos = 0;
++}
++
++static void
++dequeue_next_buffer (PurpleFifo *fifo)
++{
++	g_free (fifo->dequeue_buffer->data);
++	fifo->dequeue_buffer = g_list_delete_link (fifo->dequeue_buffer, fifo->dequeue_buffer);
++
++	fifo->buffer_list = fifo->dequeue_buffer;
++	if (!fifo->buffer_list)
++		fifo->enqueue_buffer = NULL;
++
++	fifo->dequeue_pos = 0;
++}
++
++void
++purple_fifo_enqueue (PurpleFifo *fifo, gconstpointer libpurple, gint n)
++{
++	gint in_pos;
++
++	ensure_buffers (fifo);
++
++	for (in_pos = 0; in_pos < n; )
++	{
++		gint n_copied = MIN (BUFFER_SIZE - fifo->enqueue_pos, n - in_pos);
++
++		memcpy (((guint8 *) fifo->enqueue_buffer->data) + fifo->enqueue_pos, ((const guint8 *) libpurple) + in_pos, n_copied);
++
++		fifo->enqueue_pos += n_copied;
++		in_pos            += n_copied;
++
++		if (fifo->enqueue_pos == BUFFER_SIZE)
++			enqueue_next_buffer (fifo);
++	}
++
++	fifo->total_used += n;
++}
++
++gboolean
++purple_fifo_dequeue (PurpleFifo *fifo, gpointer dest, gint n)
++{
++	gint out_pos;
++
++	if (n > fifo->total_used)
++		return FALSE;
++
++	for (out_pos = 0; out_pos < n; )
++	{
++		gint n_copied = MIN (BUFFER_SIZE - fifo->dequeue_pos, n - out_pos);
++
++		if (dest)
++			memcpy (((guint8 *) dest) + out_pos,
++				((guint8 *) fifo->dequeue_buffer->data) + fifo->dequeue_pos,
++				n_copied);
++
++		fifo->dequeue_pos += n_copied;
++		out_pos           += n_copied;
++
++		if (fifo->dequeue_pos == BUFFER_SIZE)
++			dequeue_next_buffer (fifo);
++	}
++
++	fifo->total_used -= n;
++	return TRUE;
++}
++
++gboolean
++purple_fifo_dequeue_line (PurpleFifo *fifo, gchar **dest)
++{
++	gchar    *line;
++	gboolean  have_cr   = FALSE;
++	gboolean  have_crlf = FALSE;
++	GList    *buffer_l;
++	gint      pos;
++	gint      n;
++
++	buffer_l = fifo->dequeue_buffer;
++	n = 0;
++
++	for (pos = fifo->dequeue_pos; n < fifo->total_used && !have_crlf; pos++, n++)
++	{
++		guint8 *p = ((guint8 *) buffer_l->data) + fifo->dequeue_pos;
++		guint8  c = *p;
++
++		if (c == '\r')
++		{
++			have_cr   = TRUE;
++			have_crlf = FALSE;
++		}
++		else if (c == '\n' && have_cr)
++		{
++			have_crlf = TRUE;
++		}
++
++		if (pos == BUFFER_SIZE)
++		{
++			buffer_l = g_list_next (buffer_l);
++			pos = 0;
++		}
++	}
++
++	if (!have_crlf)
++		return FALSE;
++
++	line = g_malloc (n + 1);
++	if (!purple_fifo_dequeue (fifo, line, n))
++	{
++		/* Paranoid check; can't happen in practice */
++		g_free (line);
++		return FALSE;
++	}
++
++	*(line + n) = '\0';
++	*dest = line;
++
++	return TRUE;
++}
++
++gboolean
++purple_fifo_peek (PurpleFifo *fifo, gpointer dest, gint n)
++{
++	GList *dequeue_buffer;
++	gint   dequeue_pos;
++	gint   out_pos;
++
++	if (n > fifo->total_used)
++		return FALSE;
++
++	dequeue_buffer = fifo->dequeue_buffer;
++	dequeue_pos    = fifo->dequeue_pos;
++
++	for (out_pos = 0; out_pos < n; )
++	{
++		gint n_copied = MIN (BUFFER_SIZE - dequeue_pos, n - out_pos);
++
++		if (dest)
++			memcpy (((guint8 *) dest) + out_pos,
++				((guint8 *) dequeue_buffer->data) + dequeue_pos,
++				n_copied);
++
++		dequeue_pos += n_copied;
++		out_pos     += n_copied;
++
++		if (dequeue_pos == BUFFER_SIZE)
++		{
++			dequeue_buffer = g_list_next (dequeue_buffer);
++			dequeue_pos    = 0;
++		}
++	}
++
++	return TRUE;
++}
+--- /dev/null
++++ b/libpurple/purple-fifo.h
+@@ -0,0 +1,54 @@
++/**
++ * @file purple-fifo.h  A FIFO byte queue.
++ * @ingroup core
++ *
++ * Pidgin is the legal property of its developers, whose names are too numerous
++ * to list here.  Please refer to the COPYRIGHT file distributed with this
++ * source distribution.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#ifndef _purple_fifo_H_
++#define _purple_fifo_H_
++
++#include <glib.h>
++
++G_BEGIN_DECLS
++
++typedef struct
++{
++	GList *buffer_list;
++	GList *enqueue_buffer;
++	gint   enqueue_pos;
++	GList *dequeue_buffer;
++	gint   dequeue_pos;
++}
++PurpleFifo;
++
++PurpleFifo *purple_fifo_new          (void);
++void      purple_fifo_destroy      (PurpleFifo *fifo);
++
++gint      purple_fifo_get_used     (PurpleFifo *fifo);
++
++void      purple_fifo_enqueue      (PurpleFifo *fifo, gconstpointer libpurple, gint n);
++gboolean  purple_fifo_dequeue      (PurpleFifo *fifo, gpointer dest, gint n);
++gboolean  purple_fifo_dequeue_line (PurpleFifo *fifo, gchar **dest);
++
++gboolean  purple_fifo_peek         (PurpleFifo *fifo, gpointer dest, gint n);
++
++G_END_DECLS
++
++#endif /* _purple_fifo_H_ */
+--- /dev/null
++++ b/libpurple/purple-io.c
+@@ -0,0 +1,391 @@
++/*
++ * @file purple-io.c  Buffering I/O layer.
++ * @ingroup core
++ *
++ * Pidgin is the legal property of its developers, whose names are too numerous
++ * to list here.  Please refer to the COPYRIGHT file distributed with this
++ * source distribution.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#include "internal.h"
++#include "eventloop.h"
++#include "purple-io.h"
++
++#define OPERATION_MAX_BYTES 4096
++#define WRITE_LOW_WATER     512
++
++static void update_watches (PurpleIO *io);
++
++static gboolean
++can_read (PurpleIO *io)
++{
++	fd_set rfds;
++	struct timeval tv;
++	int retval;
++
++	FD_ZERO(&rfds);
++	FD_SET(io->fd, &rfds);
++
++	tv.tv_sec = 0;
++	tv.tv_usec = 1;
++
++	retval = select (io->fd + 1, &rfds, NULL, NULL, &tv);
++
++	return retval ? TRUE : FALSE;
++}
++
++static gint
++try_read (PurpleIO *io, gint max_read, gint *read_errno)
++{
++	guint8 buf [OPERATION_MAX_BYTES];
++	glong  flags;
++	gint   n_read;
++
++	/* Do a non-blocking read */
++	flags = fcntl (io->fd, F_GETFL);
++	fcntl (io->fd, F_SETFL, flags | O_NONBLOCK);
++
++	if (io->gsc) {
++		n_read = purple_ssl_read_nonblock (io->gsc, buf, MIN (max_read, OPERATION_MAX_BYTES));
++
++		if (read_errno) {
++			if (n_read == PURPLE_SSL_IO_AGAIN)
++				*read_errno = EAGAIN;
++			else if (n_read == PURPLE_SSL_IO_INTERRUPTED)
++				*read_errno = EINTR;
++			else
++				*read_errno = 0;
++		}
++
++		if (n_read < 0)
++			n_read = 0;
++ 	} else {
++		n_read = read (io->fd, buf, MIN (max_read, OPERATION_MAX_BYTES));
++		if (read_errno)
++			*read_errno = errno;
++	}
++
++	fcntl (io->fd, F_SETFL, flags);
++
++	if (n_read > 0) {
++		/* Got some data */
++		purple_fifo_enqueue (io->read_fifo, buf, n_read);
++	}
++
++	return n_read;
++}
++
++static void
++read_nonblock (PurpleIO *io, gint max_read)
++{
++	gint read_errno;
++
++	if (io->got_eof)
++		return;
++
++	if (max_read <= purple_fifo_get_used (io->read_fifo))
++		return;
++
++	max_read -= purple_fifo_get_used (io->read_fifo);
++
++	if (can_read (io) && try_read (io, max_read, &read_errno) < 1 && read_errno != EINTR)
++	{
++		/* Disconnected */
++		io->got_eof = TRUE;
++		update_watches (io);
++
++		if (io->eof_func)
++			io->eof_func (io, io->eof_func_data);
++	}
++}
++
++static void
++read_cb (gpointer data, gint source, PurpleInputCondition condition)
++{
++	PurpleIO *io = data;
++	gint    n_read;
++	gint    read_errno;
++
++	n_read = try_read (io, OPERATION_MAX_BYTES, &read_errno);
++
++	/* If interrupted by signal, just retry later */
++	if (n_read < 0 && read_errno == EINTR)
++		return;
++
++	/* If we got 0 bytes or an error that's not EINTR, the connection was closed */
++	if (n_read < 1) {
++		io->got_eof = TRUE;
++		update_watches (io);
++
++		if (io->eof_func)
++			io->eof_func (io, io->eof_func_data);
++
++		return;
++	}
++
++	if (io->read_func)
++		io->read_func (io, io->read_func_data);
++
++	update_watches (io);
++}
++
++static void
++write_cb (gpointer data, gint source, PurpleInputCondition condition)
++{
++	PurpleIO *io = data;
++	guint8  buf [OPERATION_MAX_BYTES];
++	gint    n_written;
++	glong   flags;
++
++	n_written = purple_fifo_get_used (io->write_fifo);
++	n_written = MIN (OPERATION_MAX_BYTES, n_written);
++
++	/* Paranoid: Shouldn't happen */
++	if (n_written < 1)
++		return;
++
++	purple_fifo_peek (io->write_fifo, buf, n_written);
++
++	flags = fcntl (io->fd, F_GETFL);
++	fcntl (io->fd, F_SETFL, flags | O_NONBLOCK);
++
++	if (io->gsc) {
++		n_written = purple_ssl_write_nonblock (io->gsc, buf, n_written);
++ 	} else {
++		n_written = write (io->fd, buf, n_written);
++	}
++
++	fcntl (io->fd, F_SETFL, flags);
++
++	if (n_written < 0)
++		io->got_eof = TRUE;
++
++	if (n_written < 1)
++		return;
++
++	/* Drop written data from buffer */
++	purple_fifo_dequeue (io->write_fifo, NULL, n_written);
++
++	if (io->flushed_func &&
++	    purple_fifo_get_used (io->write_fifo) == 0)
++		io->flushed_func (io, io->flushed_func_data);
++
++	if (io->write_func &&
++	    purple_fifo_get_used (io->write_fifo) < WRITE_LOW_WATER)
++		io->write_func (io, io->write_func_data);
++
++	update_watches (io);
++}
++
++static void
++update_watches (PurpleIO *io)
++{
++	gboolean want_read_watch  = FALSE;
++	gboolean want_write_watch = FALSE;
++
++	if (!io->got_eof) {
++		if (io->read_func)
++			want_read_watch = TRUE;
++
++		if (purple_fifo_get_used (io->write_fifo))
++			want_write_watch = TRUE;
++	}
++
++	if (want_read_watch && !io->read_watch_id) {
++		io->read_watch_id = purple_input_add (io->fd, PURPLE_INPUT_READ, read_cb, io);
++	} else if (!want_read_watch && io->read_watch_id) {
++		purple_input_remove (io->read_watch_id);
++		io->read_watch_id = 0;
++	}
++
++	if (want_write_watch && !io->write_watch_id) {
++		io->write_watch_id = purple_input_add (io->fd, PURPLE_INPUT_WRITE, write_cb, io);
++	} else if (!want_write_watch && io->write_watch_id) {
++		purple_input_remove (io->write_watch_id);
++		io->write_watch_id = 0;
++	}
++}
++
++PurpleIO *
++purple_io_new (gint fd)
++{
++	PurpleIO *io;
++
++	io = g_new0 (PurpleIO, 1);
++
++	io->fd         = fd;
++	io->read_fifo  = purple_fifo_new ();
++	io->write_fifo = purple_fifo_new ();
++
++	return io;
++}
++
++PurpleIO *
++purple_io_new_ssl (PurpleSslConnection *gsc)
++{
++	PurpleIO *io;
++
++	io = g_new0 (PurpleIO, 1);
++
++	io->gsc        = gsc;
++	io->fd         = gsc->fd;
++	io->read_fifo  = purple_fifo_new ();
++	io->write_fifo = purple_fifo_new ();
++
++	return io;
++}
++
++void
++purple_io_destroy (PurpleIO *io)
++{
++#if 0
++	if (purple_fifo_get_used (io->write_fifo) > 0)
++		g_print ("Throwing away outbound data!\n");
++#endif
++
++	if (io->read_watch_id)
++		purple_input_remove (io->read_watch_id);
++	if (io->write_watch_id)
++		purple_input_remove (io->write_watch_id);
++
++	purple_fifo_destroy (io->read_fifo);
++	purple_fifo_destroy (io->write_fifo);
++
++	if (io->gsc)
++		purple_ssl_close (io->gsc);
++	else
++		close (io->fd);
++
++	g_free (io);
++}
++
++gint
++purple_io_get_fd (PurpleIO *io)
++{
++	return io->fd;
++}
++
++PurpleSslConnection *
++purple_io_get_ssl_connection (PurpleIO *io)
++{
++	return io->gsc;
++}
++
++gboolean
++purple_io_is_connected (PurpleIO *io)
++{
++	return !io->got_eof;
++}
++
++void
++purple_io_set_read_func (PurpleIO *io, PurpleIOFunc func, gpointer data)
++{
++	io->read_func      = func;
++	io->read_func_data = data;
++
++	update_watches (io);
++}
++
++void
++purple_io_set_write_func (PurpleIO *io, PurpleIOFunc func, gpointer data)
++{
++	io->write_func      = func;
++	io->write_func_data = data;
++
++	update_watches (io);
++}
++
++void
++purple_io_set_eof_func (PurpleIO *io, PurpleIOFunc func, gpointer data)
++{
++	io->eof_func      = func;
++	io->eof_func_data = data;
++
++	update_watches (io);
++}
++
++void
++purple_io_set_flushed_func (PurpleIO *io, PurpleIOFunc func, gpointer data)
++{
++	io->flushed_func      = func;
++	io->flushed_func_data = data;
++
++	update_watches (io);
++}
++
++gboolean
++purple_io_write_bytes (PurpleIO *io, gconstpointer libpurple, gint n_bytes)
++{
++	if (io->got_eof)
++		return FALSE;
++
++	purple_fifo_enqueue (io->write_fifo, libpurple, n_bytes);
++
++	update_watches (io);
++	return TRUE;
++}
++
++gboolean
++purple_io_write_line (PurpleIO *io, const gchar *line)
++{
++	if (io->got_eof)
++		return FALSE;
++
++	purple_fifo_enqueue (io->write_fifo, line, strlen (line));
++	purple_fifo_enqueue (io->write_fifo, "\r\n", 2);
++
++	update_watches (io);
++	return TRUE;
++}
++
++gboolean
++purple_io_read_bytes (PurpleIO *io, gpointer dest, gint n_bytes)
++{
++	gboolean result;
++
++	read_nonblock (io, n_bytes);
++
++	result = purple_fifo_dequeue (io->read_fifo, dest, n_bytes);
++
++	update_watches (io);
++	return result;
++}
++
++gboolean
++purple_io_read_line (PurpleIO *io, gchar **line)
++{
++	gboolean result;
++
++	read_nonblock (io, 65536);
++
++	result = purple_fifo_dequeue_line (io->read_fifo, line);
++
++	update_watches (io);
++	return result;
++}
++
++gint
++purple_io_get_pending_read (PurpleIO *io)
++{
++	return purple_fifo_get_used (io->read_fifo);
++}
++
++gint
++purple_io_get_pending_write (PurpleIO *io)
++{
++	return purple_fifo_get_used (io->write_fifo);
++}
+--- /dev/null
++++ b/libpurple/purple-io.h
+@@ -0,0 +1,87 @@
++/**
++ * @file purple-io.h  Buffering I/O layer.
++ * @ingroup core
++ *
++ * Pidgin is the legal property of its developers, whose names are too numerous
++ * to list here.  Please refer to the COPYRIGHT file distributed with this
++ * source distribution.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#ifndef _PURPLE_IO_H_
++#define _PURPLE_IO_H_
++
++#include "purple-fifo.h"
++#include "sslconn.h"
++
++G_BEGIN_DECLS
++
++typedef struct PurpleIO PurpleIO;
++
++typedef void (*PurpleIOFunc) (PurpleIO *io, gpointer data);
++
++struct PurpleIO
++{
++	gint               fd;
++	PurpleSslConnection *gsc;
++
++	guint              got_eof : 1;
++
++	PurpleFifo          *read_fifo;
++	PurpleFifo          *write_fifo;
++
++	guint              read_watch_id;
++	guint              write_watch_id;
++
++	/* Callback invoked when input buffer grows */
++	PurpleIOFunc         read_func;
++	gpointer           read_func_data;
++
++	/* Callback invoked when output buffer shrinks (sufficiently) */
++	PurpleIOFunc         write_func;
++	gpointer           write_func_data;
++
++	/* Callback invoked when connection drops */
++	PurpleIOFunc         eof_func;
++	gpointer           eof_func_data;
++
++	/* Callback invoked when output buffer empty */
++	PurpleIOFunc         flushed_func;
++	gpointer           flushed_func_data;
++};
++
++PurpleIO            *purple_io_new                (gint fd);
++PurpleIO            *purple_io_new_ssl            (PurpleSslConnection *gsc);
++void               purple_io_destroy            (PurpleIO *io);
++
++gint               purple_io_get_fd             (PurpleIO *io);
++PurpleSslConnection *purple_io_get_ssl_connection (PurpleIO *io);
++gboolean           purple_io_is_connected       (PurpleIO *io);
++
++void               purple_io_set_read_func      (PurpleIO *io, PurpleIOFunc func, gpointer data);
++void               purple_io_set_write_func     (PurpleIO *io, PurpleIOFunc func, gpointer data);
++void               purple_io_set_eof_func       (PurpleIO *io, PurpleIOFunc func, gpointer data);
++void               purple_io_set_flushed_func   (PurpleIO *io, PurpleIOFunc func, gpointer data);
++
++gboolean           purple_io_write_bytes        (PurpleIO *io, gconstpointer libpurple, gint n_bytes);
++gboolean           purple_io_write_line         (PurpleIO *io, const gchar *line);
++
++gboolean           purple_io_read_bytes         (PurpleIO *io, gpointer dest, gint n_bytes);
++gboolean           purple_io_read_line          (PurpleIO *io, gchar **line);
++
++G_END_DECLS
++
++#endif /* _PURPLE_IO_H_ */
+--- a/libpurple/sslconn.c
++++ b/libpurple/sslconn.c
+@@ -273,6 +273,27 @@ purple_ssl_read(PurpleSslConnection *gsc
+ }
+ 
+ size_t
++purple_ssl_read_nonblock(PurpleSslConnection *gsc, void *data, size_t len)
++{
++	PurpleSslOps *ops;
++
++	g_return_val_if_fail(gsc  != NULL, 0);
++	g_return_val_if_fail(data != NULL, 0);
++	g_return_val_if_fail(len  >  0,    0);
++
++	ops = purple_ssl_get_ops();
++
++	if (ops != NULL) {
++		if (ops->read_nonblock != NULL)
++			return (ops->read_nonblock)(gsc, data, len);
++		else if (ops->read != NULL)
++			return (ops->read)(gsc, data, len);
++	}
++
++	return 0;
++}
++
++size_t
+ purple_ssl_write(PurpleSslConnection *gsc, const void *data, size_t len)
+ {
+ 	PurpleSslOps *ops;
+@@ -296,6 +317,27 @@ purple_ssl_get_peer_certificates(PurpleS
+ 	return (ops->get_peer_certificates)(gsc);
+ }
+ 
++size_t
++purple_ssl_write_nonblock(PurpleSslConnection *gsc, const void *data, size_t len)
++{
++	PurpleSslOps *ops;
++
++	g_return_val_if_fail(gsc  != NULL, 0);
++	g_return_val_if_fail(data != NULL, 0);
++	g_return_val_if_fail(len  >  0,    0);
++
++	ops = purple_ssl_get_ops();
++
++	if (ops != NULL) {
++		if (ops->write_nonblock != NULL)
++			return (ops->write_nonblock)(gsc, data, len);
++		else if (ops->write != NULL)
++			return (ops->write)(gsc, data, len);
++	}
++
++	return 0;
++}
++
+ void
+ purple_ssl_set_ops(PurpleSslOps *ops)
+ {
+--- a/libpurple/sslconn.h
++++ b/libpurple/sslconn.h
+@@ -34,6 +34,12 @@ typedef enum
+ 	PURPLE_SSL_CERTIFICATE_INVALID = 3
+ } PurpleSslErrorType;
+ 
++typedef enum
++{
++	PURPLE_SSL_IO_INTERRUPTED = -1,
++	PURPLE_SSL_IO_AGAIN = -2
++} PurpleSslIOErrorType;
++
+ #include "certificate.h"
+ #include "proxy.h"
+ 
+@@ -115,6 +121,7 @@ typedef struct
+ 	 * @see purple_ssl_read
+ 	*/
+ 	size_t (*read)(PurpleSslConnection *gsc, void *data, size_t len);
++	size_t (*read_nonblock)(PurpleSslConnection *gsc, void *data, size_t len);
+ 	/** Writes data to a connection (like POSIX send())
+ 	* @param gsc    Connection context
+ 	* @param data   Data buffer to send data from
+@@ -124,6 +131,7 @@ typedef struct
+ 	* @see purple_ssl_write
+ 	*/
+ 	size_t (*write)(PurpleSslConnection *gsc, const void *data, size_t len);
++    size_t (*write_nonblock)(PurpleSslConnection *gsc, const void *data, size_t len);
+ 	/** Obtains the certificate chain provided by the peer
+ 	 *
+ 	 * @param gsc   Connection context
+@@ -281,6 +289,17 @@ void purple_ssl_close(PurpleSslConnectio
+ size_t purple_ssl_read(PurpleSslConnection *gsc, void *buffer, size_t len);
+ 
+ /**
++ * Reads data from an SSL connection without blocking.
++ *
++ * @param gsc    The SSL connection handle.
++ * @param buffer The destination buffer.
++ * @param len    The maximum number of bytes to read.
++ *
++ * @return The number of bytes read.
++ */
++size_t purple_ssl_read_nonblock(PurpleSslConnection *gsc, void *buffer, size_t len);
++
++/**
+  * Writes data to an SSL connection.
+  *
+  * @param gsc    The SSL connection handle.
+@@ -303,6 +322,17 @@ size_t purple_ssl_write(PurpleSslConnect
+  */
+ GList * purple_ssl_get_peer_certificates(PurpleSslConnection *gsc);
+ 
++/**
++ * Writes data to an SSL connection without blocking.
++ *
++ * @param gsc    The SSL connection handle.
++ * @param buffer The buffer to write.
++ * @param len    The length of the data to write.
++ *
++ * @return The number of bytes written.
++ */
++size_t purple_ssl_write_nonblock(PurpleSslConnection *gsc, const void *buffer, size_t len);
++
+ /*@}*/
+ 
+ /**************************************************************************/

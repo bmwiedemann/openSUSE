@@ -1,0 +1,4 @@
+:license: 'MIT'
+:post_patch: |-
+  find . -type f -name "*.rb" -print -exec sed -i 's/\r//g' {} \;
+  

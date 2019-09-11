@@ -1,0 +1,207 @@
+---
+ src/man.c |  180 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 178 insertions(+), 2 deletions(-)
+
+--- src/man.c
++++ src/man.c	2018-11-23 13:56:09.131098574 +0000
+@@ -3573,12 +3573,141 @@ static int locate_page (const char *manp
+ 	return found;
+ }
+ 
++#ifndef PROMPT_IF_MULTIPLE_SECTIONS
++#define PROMPT_IF_MULTIPLE_SECTIONS 2	/* 0: No prompt; 1: Show possible sections; 2: Do prompt for */
++#endif
++
++#if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS > 1)
++static sig_atomic_t expired;
++static void handler(int sig)
++{
++	(void)sig;
++	expired++;
++}
++#endif
++
+ static int display_pages (struct candidate *candidates)
+ {
+ 	struct candidate *candp;
+ 	int found = 0;
++	int plain = 0;
++
++#if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS > 1)
++	char reqsect[64] = { 0 };
++	ssize_t len = 0;
++	int index = -1;
++	const char *lext;
++	do {
++		struct sigaction sa;
++		int used = 0x2A;
++
++		if (findall)
++			break;
++		if (external)
++			break;
++		if ((troff + catman + (print_where || print_where_cat)))
++			break;
++		if (getenv("MAN_POSIXLY_CORRECT"))
++			break;
++		if (!isatty(STDOUT_FILENO))
++			break;
++		if (!isatty(STDERR_FILENO))
++			break;
++		if (!isatty(STDIN_FILENO))
++			break;
++		if (candidates->next == (struct candidate*)0)
++			break;
++
++		fputs("Man: ", stderr);
++		fputs(_("find all matching manual pages"), stderr);
++		fputs(" (set MAN_POSIXLY_CORRECT to avoid this)", stderr);
++		fputc('\n', stderr);
++
++		lext = NULL;
++		for (candp = candidates; candp; candp = candp->next) {
++			const struct mandata *info = candp->source;
++
++			if (lext && STREQ(lext, info->ext))
++				fprintf(stderr, " %c %s (%s+%d)", used, info->name, info->ext, candp->add_index);
++			else
++				fprintf(stderr, " %c %s (%s)", used, info->name, info->ext);
++
++			if (info->whatis)
++				fprintf(stderr, "\t%s", info->whatis);
++			fputc('\n', stderr);
++			lext = info->ext;
++			used = ' ';
++		}
++		fputs("Man: ", stderr);
++		fputs(_("What manual page do you want?\n"), stderr);
++		fputs("Man: ", stderr);
++		fflush(stderr);
++
++		sigemptyset(&sa.sa_mask);
++		sa.sa_flags = SA_RESETHAND;
++		sa.sa_handler = handler;
++
++		sigaction(SIGALRM, &sa, (struct sigaction*)0);
++
++		alarm(7);
++		len = read(STDIN_FILENO, reqsect, sizeof(reqsect)-1);
++		alarm(0);
++
++		if (expired) {
++			tcflush(STDIN_FILENO, TCIFLUSH);
++			fputc('\n', stderr);
++			fflush(stderr);
++			len = 0;
++			break;
++		}
++		if (len > 0) {
++			char * end;
++			if ((end = strchr(reqsect, '\n')))
++				*end = '\0';
++			if ((end = strchr(reqsect, '+'))) {
++				plain = 1;
++				*end = '\0';
++				if (*++end)
++					index = atoi(end);
++			}
++			reqsect[len] = '\0';
++			len = (ssize_t)strlen(reqsect);
++
++			for (candp = candidates; candp; candp = candp->next) {
++				if (len == 0)
++					break;
++				if (plain) {
++					const char *base = strrchr(candp->path, '/');
++					if (base && !STREQ(base, "/man"))
++						continue;
++				}
++				if (index >= 0 && index != candp->add_index)
++					continue;
++				if ((found = STREQ(reqsect, candp->source->ext)))
++					break;
++			}
++			if (!found)
++				len = 0;
++			found = 0;
++		}
++	} while (0);
++#endif
+ 
+ 	for (candp = candidates; candp; candp = candp->next) {
++
++#if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS > 1)
++		if (plain) {
++			const char *base = strrchr(candp->path, '/');
++			if (base && !STREQ(base, "/man"))
++				continue;
++		}
++		if (len) {
++			if (!STREQ(reqsect, candp->source->ext))
++				continue;
++			if (index >= 0 && index != candp->add_index)
++				continue;
++		}
++#endif
+ 		global_manpath = is_global_mandir (candp->path);
+ 		if (!global_manpath)
+ 			drop_effective_privs ();
+@@ -3600,9 +3729,56 @@ static int display_pages (struct candida
+ 			regain_effective_privs ();
+ 
+ 		if (found && !findall)
+-			return found;
++		{
++#if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS > 0)
++			if (external)
++				goto out;
++			if ((troff + catman + (print_where || print_where_cat)))
++				goto out;
++# if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS == 1)
++			if (getenv("MAN_POSIXLY_CORRECT"))
++				goto out;
++# endif
++			if (!isatty(STDOUT_FILENO))
++				goto out;
++			if (!isatty(STDERR_FILENO))
++				goto out;
++			/*
++			 * Should be able to use the output as done by whatis(1)
++			 */
++# if defined(PROMPT_IF_MULTIPLE_SECTIONS) && (PROMPT_IF_MULTIPLE_SECTIONS == 1)
++			if (candp->next)
++# else
++			if (candp->next && getenv("MAN_POSIXLY_CORRECT"))
++# endif
++			{
++				int used = 0x2A;
++
++				fputs("Man: ", stderr);
++				fputs(_("find all matching manual pages"), stderr);
++				fputc('\n', stderr);
++
++				lext = NULL;
++				do {
++					struct mandata *info = candp->source;
++					if (lext && STREQ(lext, info->ext))
++						fprintf(stderr, " %c %s (%s+%d)", used, info->name, info->ext, candp->add_index);
++					else
++						fprintf(stderr, " %c %s (%s)", used, info->name, info->ext);
++					if (info->whatis) {
++						fprintf(stderr, "\t%s", info->whatis);
++					}
++					fputc('\n', stderr);
++					lext = info->ext;
++					used = ' ';
++				} while ((candp = candp->next));
++				fflush(stderr);
++			}
++#endif
++			goto out;
++		}
+ 	}
+-
++out:
+ 	return found;
+ }
+ 

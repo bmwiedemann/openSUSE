@@ -1,0 +1,26 @@
+From ed24e3b0ca72adb521747a07f4c7d5b42113c826 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Thu, 18 Oct 2018 13:53:06 +0200
+Subject: [PATCH] Enable the expert plugin by default
+
+Many users rely on this functionality.
+---
+ kmail/plugins/expertplugin/kmail_expertplugin.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kmail/plugins/expertplugin/kmail_expertplugin.json b/kmail/plugins/expertplugin/kmail_expertplugin.json
+index 00c30484..17ed0772 100644
+--- a/kmail/plugins/expertplugin/kmail_expertplugin.json
++++ b/kmail/plugins/expertplugin/kmail_expertplugin.json
+@@ -24,7 +24,7 @@
+         "Description[uk]": "За допомогою цього додатка можна увімкнути деякі дії для досвідчених користувачів.",
+         "Description[x-test]": "xxThis plugin activates some expert actions.xx",
+         "Description[zh_CN]": "此插件激活一些专家操作。",
+-        "EnabledByDefault": "false",
++        "EnabledByDefault": "true",
+         "Id": "kmailexpert",
+         "Name": "Expert Plugin",
+         "Name[ar]": "ملحقة الخبراء",
+-- 
+2.19.1
+

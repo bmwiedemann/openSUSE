@@ -1,0 +1,35 @@
+From 8ced9cdeb53e7dc20a1665ba2e373fbdc5d30c5d Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Tue, 9 Apr 2019 16:32:46 +0200
+Subject: [PATCH] Checking for jid before returning data
+
+Seems raw can have returns for the same minion, but an other job. In
+order to not return resutls from the wrong job, we need to check for the
+jid.
+---
+ salt/client/__init__.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/salt/client/__init__.py b/salt/client/__init__.py
+index 8b37422cbf..aff354a021 100644
+--- a/salt/client/__init__.py
++++ b/salt/client/__init__.py
+@@ -1560,8 +1560,12 @@ class LocalClient(object):
+             if 'minions' in raw.get('data', {}):
+                 continue
+             try:
+-                found.add(raw['id'])
+-                ret = {raw['id']: {'ret': raw['return']}}
++                # There might be two jobs for the same minion, so we have to check for the jid
++                if jid == raw['jid']:
++                    found.add(raw['id'])
++                    ret = {raw['id']: {'ret': raw['return']}}
++                else:
++                    continue
+             except KeyError:
+                 # Ignore other erroneous messages
+                 continue
+-- 
+2.22.0
+
+

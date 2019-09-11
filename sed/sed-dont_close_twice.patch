@@ -1,0 +1,16 @@
+http://lists.gnu.org/archive/html/bug-gnu-utils/2014-06/msg00000.html
+
+Index: sed-4.6/sed/utils.c
+===================================================================
+--- sed-4.6.orig/sed/utils.c
++++ sed-4.6/sed/utils.c
+@@ -267,8 +267,8 @@ ck_fclose (FILE *stream)
+     {
+       if (!stream || stream == cur->fp)
+         {
+-          do_ck_fclose (cur->fp);
+           prev->link = cur->link;
++          do_ck_fclose (cur->fp);
+           free (cur->name);
+           free (cur);
+         }

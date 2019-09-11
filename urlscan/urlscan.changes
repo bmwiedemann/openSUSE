@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Thu Feb  7 07:46:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 0.9.2
+  * Add shortcut to copy URL to clipboard (primary).
+  * Add option to pipe URL into external command.
+
+-------------------------------------------------------------------
+Wed Dec 12 10:15:06 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 0.9.1
+  * Add incremental search feature. (#13)
+  * Other misc bug fixes/enhancements (PR #74)
+  * Fix crash when URL list not visible. Closes #68
+  * Fix unescape bug. Closes #67
+  * Bugfix in browser handling. Fixes #70
+  * Fix crash caused by webbrowser module bug.
+  * PEP8 fixes/modifications
+  * Update tld list
+  * Fix up arrow bug. Closes #66
+  * Add optional config file for editing/adding palettes.
+  * Simplify palette variable to only used values. Cycle through available palettes
+  * Merge branch 'runtime_palette_switch' of
+    https://github.com/machinedgod/urlscan into machinedgod-runtime_palette_switch
+  * Fix crash when BROWSER not set. Closes #60, Fixes #63
+  * Don't handle mouse events. Fixes #65.
+  * Hitting 'b' key now switches palettes
+  * Allow https URLs for images
+  * Add #51. Execute arbitrary expression for URL in place of opening browser.
+  * More fixes for #48. Refresh screen after text browser use
+  * Fix #49. Deduplication display issue.
+  * Fix #50. Detect and add ability to remove escape char \ from URLs.
+  * Fix #48. Prevent loading thread from affecting screen when using
+  * terminal browsers.
+  * Add g/G as top/bottom keyboard shortcuts. Fix #47
+  * Update minimum urwid version
+  * Type number to jump to URL
+  * Bugfix 
+
+-------------------------------------------------------------------
+Wed Dec 12 10:02:50 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Move to python3 (boo#1119223) 
+
+-------------------------------------------------------------------
+Tue Jul  4 06:19:46 UTC 2017 - werner@suse.de
+
+- Update to version 0.8.6
+  * Fix tag mismatch in setup.py
+  * Fix #27 (URLs in markdown links)
+  * Tweak email address recognition
+  * Add ability to toggle context view
+  * Cleanup, commenting, add keyboard hints in the header
+  * Add shortening and toggling shortening of URLs
+  * Restructure URLChooser for current urwid best practices
+  * Update tlds list
+  * Replace AttrWrap (deprecated) with AttrMap
+  * Highlight selected URL. Fix #17
+  * Implement #21 (Option to remove duplicate URLs)
+
+-------------------------------------------------------------------
+Mon Mar 13 07:23:10 UTC 2017 - werner@suse.de
+
+- Reflect change in build system and/or rpmbuild now adding the package
+  default documentation tree only as directory now
+
+-------------------------------------------------------------------
+Mon Feb 13 08:12:10 UTC 2017 - werner@suse.de
+
+- Inital package urlscan 0.8.3 which is an replacement for urlview 
+

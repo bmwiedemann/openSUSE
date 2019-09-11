@@ -1,0 +1,27 @@
+###############################################################################
+# MUNGE system configuration
+###############################################################################
+
+##
+# Pass additional command-line options to the daemon.
+##
+# DAEMON_ARGS="--key-file /etc/munge/munge.key --num-threads 1"
+DAEMON_ARGS=""
+
+##
+# Adjust the scheduling priority of the daemon.
+##
+# NICE=
+NICE=""
+
+##
+# Execute the daemon under another username.
+##
+# USER="munge"
+USER="daemon"
+
+##
+# Execute the daemon under another groupname.
+##
+# GROUP="munge"
+GROUP="munge"

@@ -1,0 +1,13 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="url">https://github.com/openSUSE/obs-service-replace_using_package_version.git</param> 
+        <param name="scm">git</param>
+        <param name="filename">replace_using_package_version</param>
+        <param name="extension">tar</param>
+        <param name="extract">obs-service-replace_using_package_version.spec</param>
+        <param name="version">_none_</param>
+        <param name="changesgenerate">enable</param>
+        <param name="changesauthor">containers@suse.com</param>
+        <param name="revision">master</param>
+    </service>
+</services>

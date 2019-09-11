@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sat Feb 28 09:55:25 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.1.5
+  * Make it possible to build the source out-of-tree. The 
+    gnome-continuous build system does this by default.
+  * Some tests do #include  relative to the top-level, so add 
+    top_srcdir to the include path as otherwise out-of-tree 
+    builds can't find the files.
+
+-------------------------------------------------------------------
+Tue Feb 11 13:02:33 UTC 2014 - coolo@suse.com
+
+- add baselibs.conf to satisfy libqt5-base-32bit
+
+-------------------------------------------------------------------
+Thu Sep  5 13:53:53 UTC 2013 - sndirsch@suse.com
+
+- update to release 1.1.4; changes since 1.1.0:
+  * mtdev_close should ignore NULL devices.
+  * Return EINVAL for invalid parameters on mtdev_init.
+  * Add the missing distance event to the internal slot
+    representation
+  * Add support for kernel MT slot state retrieval
+  * Fix pc file to allow compiling with mtdev installed in non-std
+    path.
+  * Drop maintainer mode - enable by default
+  * Rename INCLUDES to AM_CPPFLAGS
+  * Merge build fixes from Peter Hutterer.
+  * Replace hardcoded 11 with a define
+  * Fix compiler warning - implicit declaration of function 'abs'
+  * test: silence compiler warning - implicit declaration of function
+    ‘atoi’
+  * Enable silent rules by default
+  * Merge more build fixes from Peter Hutterer, along with a more
+    explicit declaration of the backwards compatibility constraints
+    on the API.
+- removed obsolete patches:
+  * U_Return-EINVAL-for-invalid-parameters-on-mtdev_init.patch
+  * U_mtdev_close-should-ignore-NULL-devices.patch
+  * mtdev-implicit.diff
+
+-------------------------------------------------------------------
+Sun Feb 12 18:48:05 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add patch to fix use of implicitly-defined functions
+
+-------------------------------------------------------------------
+Fri Jan 13 15:17:11 UTC 2012 - sndirsch@suse.com
+
+- let devel package require the lib package instead of the package
+  for the binaries
+
+-------------------------------------------------------------------
+Thu Jan 12 14:48:08 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  SPDX format
+
+-------------------------------------------------------------------
+Tue Jan 10 11:57:53 UTC 2012 - sndirsch@suse.com
+
+- renamed patches according to our patch naming theme
+
+-------------------------------------------------------------------
+Thu Aug 11 15:52:10 CEST 2011 - tiwai@suse.de
+
+- initial version: 1.1.0
+

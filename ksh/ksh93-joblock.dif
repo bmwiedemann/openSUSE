@@ -1,0 +1,31 @@
+--- ./src/cmd/ksh93/include/jobs.h.orig	2014-11-19 14:14:36.055335722 +0000
++++ ./src/cmd/ksh93/include/jobs.h	2014-11-19 14:16:12.275918218 +0000
+@@ -33,6 +33,7 @@
+ #   include	<signal.h>
+ #endif /* !SIGINT */
+ #include	"FEATURE/options"
++#include	<aso.h>
+ 
+ #if SHOPT_COSHELL
+ #   include	<coshell.h>
+@@ -150,16 +151,13 @@ extern struct jobs job;
+ #define vmbusy()	0
+ #endif
+ 
+-#define job_lock()	(job.in_critical++)
++#define job_lock()	asoincint(&job.in_critical)
+ #define job_unlock()	\
+ 	do { \
+ 		int	_sig; \
+-		if (!--job.in_critical && (_sig = job.savesig)) \
+-		{ \
+-			if (!job.in_critical++ && !vmbusy()) \
+-				job_reap(_sig); \
+-			job.in_critical--; \
+-		} \
++		if (asogetint(&job.in_critical) == 1 && (_sig = job.savesig) && !vmbusy()) \
++		    job_reap(_sig); \
++		asodecint(&job.in_critical); \
+ 	} while(0)
+ 
+ extern const char	e_jobusage[];

@@ -1,0 +1,37 @@
+From ec6885545fb6889ed9a5522647b9780a53c6fd93 Mon Sep 17 00:00:00 2001
+From: Marek Goldmann <goldmann@fedoraproject.org>
+Date: Fri, 15 Jun 2012 11:25:12 +0200
+Subject: [PATCH 3/3] Add CM_LOCATION_CHANGED property to ConfigurationEvent.
+
+---
+ .../java/org/osgi/service/cm/ConfigurationEvent.java     |   14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/src/main/java/org/osgi/service/cm/ConfigurationEvent.java b/src/main/java/org/osgi/service/cm/ConfigurationEvent.java
+index f17007f..e98f3ac 100644
+--- a/src/main/java/org/osgi/service/cm/ConfigurationEvent.java
++++ b/src/main/java/org/osgi/service/cm/ConfigurationEvent.java
+@@ -79,6 +79,20 @@ public class ConfigurationEvent {
+ 	 */
+ 	public static final int			CM_DELETED	= 2;
+ 	/**
++	 * The location of a {@code Configuration} has been changed.
++	 * 
++	 * <p>
++	 * This {@code ConfigurationEvent} type that indicates that the location of
++	 * a {@code Configuration} object has been changed.
++	 * 
++	 * An event is fired when a call to
++	 * {@link Configuration#setBundleLocation(String)} successfully changes the
++	 * location.
++	 * 
++	 * @since 1.4
++	 */
++	public static final int			CM_LOCATION_CHANGED	= 3;
++	/**
+ 	 * Type of this event.
+ 	 * 
+ 	 * @see #getType
+-- 
+1.7.10.2
+

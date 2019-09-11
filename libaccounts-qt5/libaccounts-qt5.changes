@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Nov  3 09:47:33 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * fix source url
+
+-------------------------------------------------------------------
+Fri Nov  3 00:07:27 UTC 2017 - buschmann23@opensuse.org
+
+- update to 1.15
+  * Lib: add Manager::listServices() by application
+  * Drop support for Qt4
+- update to 1.14
+  * Fix clazy warnings
+  * Use gboolean instead of bool
+  * Fix memory leaks found by valgrind
+- remove unneeded package libaccounts-qt5-tools, there is no need
+  for packaging not working tests
+
+-------------------------------------------------------------------
+Wed Oct 14 10:35:48 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: provide libaccounts-qt5-1-32bit, as required
+  by purpose-32bit (boo#949411).
+
+-------------------------------------------------------------------
+Mon Apr 27 17:26:07 UTC 2015 - cdenicolo@suse.com
+
+- license update: LGPL-2.1
+  correct license is LGPL-2.1
+
+-------------------------------------------------------------------
+Thu Oct 30 22:54:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add libaccounts-qt5 library
+

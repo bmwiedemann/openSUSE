@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Fri Jul 19 12:13:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with pytest5, from upstream:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 12:06:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 18.1.2:
+  * Fixed :issue:`1377` via :pr:`1785`: Restore a native WSGI-less HTTP server support.
+  * :pr:`1769`: Reduce log level for non-error events in win32.py
+
+-------------------------------------------------------------------
+Fri May 31 15:32:40 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- boo#1136862: ignore StaticTest.test_null_bytes test case, which
+  fails due to Python 3 fixes for CVE-2019-9740. (gh#cherrypy/cherrypy#1781)
+
+-------------------------------------------------------------------
+Thu May 16 18:12:19 UTC 2019 - Guang Yee <gyee@suse.com>
+
+- Disable test_wait_publishes_periodically test as it is unstable and
+  highly time sensitive. 
+
+-------------------------------------------------------------------
+Thu Mar 28 14:03:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 18.1.1:
+  * Revert bus behavior change from 18.1.0 as the former behavior
+    was intentional
+
+-------------------------------------------------------------------
+Tue Mar  5 12:19:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 18.1.0:
+  * too many changes to iterate, see CHANGES.rst
+  * Dropped support for python2
+- Make sure tests are run
+
+-------------------------------------------------------------------
+Fri Feb  9 14:23:16 UTC 2018 - normand@linux.vnet.ibm.com
+
+- disable pytest as transient failures
+
+-------------------------------------------------------------------
+Wed Nov  8 18:06:13 UTC 2017 - jmatejek@suse.com
+
+- conditionally disable python2
+
+-------------------------------------------------------------------
+Fri Mar 31 15:30:01 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- update to version 10.2.1
+  * too many changes to list
+- add many new requirements and recommends
+
+-------------------------------------------------------------------
+Sun Feb 22 17:22:27 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.6.0:
+  * Fixed HTTP range headers for negative length larger than
+    content size
+  * Disabled universal wheel generation as wsgiserver has Python
+    duality
+  * Pull Request #42: Correct TypeError in ``check_auth`` when
+    encrypt is used
+  * Pull Request #59: Correct signature of HandlerWrapperTool
+  * Pull Request #60: Fix error in SessionAuth where login_screen
+    was incorrectly used
+  * Issue #1077: Support keyword-only arguments in dispatchers
+    (Python 3)
+  * Issue #1019: Allow logging host name in the access log
+  * Pull Request #50: Fixed race condition in session cleanup
+- changes from version 3.5.0:
+  * Issue #1301: When the incoming queue is full, now reject
+    additional connections. This functionality was added to
+    CherryPy 3.0, but unintentionally lost in 3.1
+- changes from version 3.4.0:
+  * Miscellaneous quality improvements
+- remove CFLAGS export
+- use update-alternatives for cherryd binary
+
+-------------------------------------------------------------------
+Tue May 20 12:25:05 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 3.3.0
+  + No changelog available
+- Update to version 3.2.6
+  + No changelog available
+- Update to version 3.2.5
+  + No changelog available
+
+-------------------------------------------------------------------
+Thu Sep 26 22:47:54 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.2.4
+  + No changelog available
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Wed May 23 04:54:27 UTC 2012 - highwaystar.ru@gmail.com
+
+- update to 3.2.2
+- python3 package added
+- minor spec improvement 
+
+-------------------------------------------------------------------
+Tue May 31 07:21:03 UTC 2011 - saschpe@suse.de
+
+- Renamed package to python-CherryPy to match upstream PyPi name
+  * Added Provides/Obsoletes for python-cherrypy
+
+-------------------------------------------------------------------
+Thu Mar  3 09:59:01 UTC 2011 - saschpe@suse.de
+
+- Update to 3.2:
+  * WSGI-1.0.1 compliance, support for Python's builtin SSL module
+  * Much improved FastCGI support
+  * Python 3 support
+- Spec file cleanup:
+  * Added proper license header
+  * Added changelog section
+- Repacked tarball as tar.bz2
+
+-------------------------------------------------------------------
+Tue May 12 13:12:38 CEST 2009 - poeml@suse.de
+
+- the INSTALLED_FILES file name had a little typo
+- fix changelog to be in chronological order (an error that I
+  probably introduced during the conversion)
+
+-------------------------------------------------------------------
+Tue May 12 13:04:52 CEST 2009 - poeml@novell.com
+
+- add dos2unix to BuildRequires
+- convert the package changelog from the in-specfile text to a .changes file,
+  to be edited with "osc vc"
+
+-------------------------------------------------------------------
+Tue Mar 10 12:00:00 CET 2009 - James Oakley <jfunk@funktronics.ca>
+
+- Update to 3.1.1
+
+-------------------------------------------------------------------
+Mon Jan 21 12:00:00 CET 2008 - James Oakley <jfunk@funktronics.ca>
+
+- Update to 3.0.3
+
+-------------------------------------------------------------------
+Mon Aug 13 12:00:00 CEST 2007 - James Oakley <jfunk@funktronics.ca>
+
+- Update to 3.0.2:
+  * Some bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 20 12:00:00 CET 2007 - James Oakley <jfunk@funktronics.ca>
+
+- Update to 3.0.1:
+  * More docstrings.  help() is more helpful than ever
+  * The WSGI server has been moved into its own package to allow for
+    easier use outside of CherryPy
+  * Session locking can now be "implicit" (before_handler), "early"
+    (before_request_body), or "explicit" (none)
+  * Moved checker back to cherrypy.checker from engine, and also added
+    a new check_config_types method. There's also a new checker config
+    namespace, so you can turn off the checker with "checker.on = False",
+    or turn off specific methods with "checker.check_method_foo = None"
+
+-------------------------------------------------------------------
+Thu Jan 17 12:00:00 CET 2007 - Cristian Rodriguez <judas_iscariote@shorewall.net>
+
+- Update to 3.0.0
+
+-------------------------------------------------------------------
+Thu Jun 22 12:00:00 CEST 2006 - James Oakley <jfunk@funktronics.ca>
+
+- Update
+
+-------------------------------------------------------------------
+Mon Oct 24 12:00:00 CET 2005 - James Oakley <jfunk@funktronics.ca>
+
+- Update to final release
+
+-------------------------------------------------------------------
+Thu Oct 13 12:00:00 CET 2005 - James Oakley <jfunk@funktronics.ca>
+
+- Update
+- Build for SL10
+
+-------------------------------------------------------------------
+Fri Aug 12 12:00:00 CEST 2005 - James Oakley <jfunk@funktronics.ca>
+
+- Initial release

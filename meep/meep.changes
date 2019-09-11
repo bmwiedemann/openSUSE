@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Mon May 27 07:51:38 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.9.0:
+  * Adjoint solver to compute sensitivity of solution to material
+    perturbations (#795).
+  * Experimental do_averaging feature for user-defined material
+    functions (#771, #791).
+  * Periodic boundaries support in near2far via nperiods option
+    (#769, #789).
+  * Capture more output in Python notebooks (#785, #807).
+  * dft-energy feature (#744, #747).
+  * Eigenmode sources are normalized to unit power (#728).
+  * Fix interpolation of DFT slice output (#787).
+  * Bug fix in run-k-points (#779).
+  * Eigenmode sources for negative angles (#752).
+  * Various other minor bugfixes, build fixes, documentation
+    improvements, tutorials, etcetera.
+- increase somajor to 14
+- add patch disable_test_tumbleweed.patch to disable failing test
+  on Tumbleweed (boo#1130438)
+
+-------------------------------------------------------------------
+Tue Feb 19 10:21:28 UTC 2019 - jbrielmaier@suse.de
+
+- Update to version 1.8.0:
+  * Add `--without-scheme` flag to `./configure` (#705)
+  * Improve error messages in Python interface (#699)
+  * Allow `kguess` to specify MPB lattice vector for launching
+    oblique waveguide modes (#675)
+  * Allow user materials when checking for conductivity (#689)
+  * Add `split_chunks_evenly` flag to `Simulation` constructor.
+    Setting to `False` will improve parallel simulation performance
+    by dividing chunks based on work instead of size (#681)
+  * Added `Simulation.visualize_chunks()` to visualize the chunk 
+    layout (#671)
+  * Improved stability of lorentzian susceptibility (#666)
+  * Get array metadata for `get_array` and `get_dft_array` (#655)
+  * Add ability to get a source slice as a numpy array (#652)
+  * Fixed performance issues in ModeSolver.find_k (#644)
+  * Add `force_all_components` flag to `Simulation` constructor
+  * Expose `run_k_point` to access more Harminv data (#626)
+  * Various other bug fixes, documentation improvements, etc.
+- drop patch:
+  namespace-for-complex-literals.patch: included in release
+- require libctl >= 4.2
+- remove libmeepgeom package as it was merged into libmeep
+- increase somajor to 13
+- don't build with C++14 support anymore, as meep now works fine
+  with C++11 again
+
+-------------------------------------------------------------------
+Thu Nov 22 11:53:54 UTC 2018 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.7.0:
+  * See /usr/share/meep/NEWS.md
+- update so version to 12
+- add patch:
+  * namespace-for-complex-literals.patch: fixes build failure
+- drop patch:
+  * meep_change_protos_with_harminv_complex.patch
+- add libmeepgeom library
+- correct doc file names
+- use c++14 for complex_literals
+
+-------------------------------------------------------------------
+Fri Jan 20 12:36:35 UTC 2017 - wagner-thomas@gmx.at
+
+- added two requirements to make meep start 
+
+-------------------------------------------------------------------
+Mon Aug 31 13:38:34 UTC 2015 - toddrme2178@gmail.com
+
+- Avoid unresolvable errors from multiple providers of libhdf5
+
+-------------------------------------------------------------------
+Wed Feb 25 15:59:12 UTC 2015 - normand@linux.vnet.ibm.com
+
+- new patch meep_change_protos_with_harminv_complex.patch
+  required for ppc64 architecture to avoid make check error
+  while building meep package.
+
+-------------------------------------------------------------------
+Sun Jan 25 16:03:00 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 1.2.1
+  * See included NEWS file for details
+- Move library to separate package according to SLPP
+- Enable post-build testing
+
+-------------------------------------------------------------------
+Tue Aug 21 17:03:38 UTC 2012 - scorot@free.fr
+
+- Buildrequires libguile1 on recent product 
+
+-------------------------------------------------------------------
+Fri May 11 05:12:05 UTC 2012 - scorot@free.fr
+
+- remove conditional BuildRequires for blas and lapack since
+  recent lapack now build correctly for all suse version 
+
+-------------------------------------------------------------------
+Sat Apr 14 04:30:36 UTC 2012 - badshah400@gmail.com
+
+- Update BuildRequires in keeping with lapack package naming
+  changes
+- Spec file cleanups
+- Modify License tag in confomity with spdx.org specifications.

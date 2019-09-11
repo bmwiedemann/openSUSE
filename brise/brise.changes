@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Sat Jul 20 09:56:51 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- update 0.39+git20190120.8d5ec2e
+  * brise was deprecated since plum came out. openSUSE still
+    provides brise but it is just a collection of ":all"
+    schema set fetched by plum. the version will just
+    indicate the time when maintainer updates the package
+    from now on, because every schema has a separate git
+    repository and no way to get a version. but we'd better
+    collect some major changes from these repositories and
+    list here.
+
+-------------------------------------------------------------------
+Wed Mar 14 19:55:18 2016 - qzhao@suse.com
+
+- Make sure source code's LICENSE file install by default.
+
+-------------------------------------------------------------------
+Wed Mar 02 15:13:55 UTC 2016 - i@marguerite.su
+
+- Update to version 0.36+git20160221.7dbd56b
+
+-------------------------------------------------------------------
+Wed Aug 12 02:26:30 UTC 2015 - i@marguerite.su
+
+- update version 0.36+git20150729.5c8435e
+
+-------------------------------------------------------------------
+Sun Aug 10 09:14:36 UTC 2014 - i@marguerite.su
+
+- update version 0.35+git20140810
+  * default.yaml: add switch 'ascii_punct' to switch on and off Chinese
+    punctuations; add hotkey Control+. to toggle ascii_punct;
+    add hotkey Control+h for BackSpace, Control+[ for Escape;
+    clear unfinished input when switching off Chinese mode with Caps Lock;
+    enable folded options in schema list, press space key to unfold.
+  * essay.txt: replaces essay.kct in installed files; fix bugs.
+  * symbols.yaml: /bdz for Chinese punctuations in vertical writing.
+  * stroke.dict.yaml: adopt BSD license as approved by its original author.
+  * combo_pinyin: silently ignore invalid chords.
+  * luna_pinyin_fluency: input various numeric characters with /0 ~ /10.
+  * luna_pinyin, terra_pinyin, emoji, stroke, zyenpheng: update tables.
+
+-------------------------------------------------------------------
+Sat Mar 15 21:01:00 UTC 2014 - i@marguerite.su
+
+- update version 0.33git20140315
+  * symbols.yaml: rearranged symbol table by Patricivs.
+  * emoji: more Emoji symbols; support tips and alternative spellings.
+  * jyutping: include more Cantonese phrases.
+  * essay.txt, luna_pinyin, terra_pinyin: lots of improvements.
+  * many other bugfixes since then.
+
+-------------------------------------------------------------------
+Mon Nov 11 00:41:10 UTC 2013 - i@marguerite.su
+
+- update version 0.30
+  * default.yaml, symbols.yaml: prefer middle dot U+00B7 to U+30FB.
+  * bopomofo_tw: bopomofo, output in Taiwan standard.
+  * jyutping: include more characters.
+  * luna_pinyin_simp: enable hotkey Control+Shift+4 to toggle
+    simplified/traditional Chinese mode.
+  * essay.txt, luna_pinyin, terra_pinyin: lots of improvements.
+
+-------------------------------------------------------------------
+Sat Jun 29 09:46:24 UTC 2013 - i@marguerite.su
+
+- update version 0.22
+  * essay.txt, luna_pinyin, terra_pinyin: lots of bug-fixes.
+  * wubi86: auto-commit complete words. (max_code_length: 4)
+  * luna_pinyin*: enable user created custom_phrase.txt (rime>=0.9.9) 
+
+-------------------------------------------------------------------
+Fri Feb  1 17:01:31 UTC 2013 - i@marguerite.su
+
+- although this package only have a /usr/share/rime-data,
+  but it need building, 32-bit and 64-bit results are different.
+  So remove BuildArch: noarch tag to fix ibus/fcitx-rime crash.
+
+-------------------------------------------------------------------
+Thu Oct 11 14:36:24 UTC 2012 - i@marguerite.su
+
+- update version 0.13
+  * install data files from a separate package.
+  * update: luna_pinyin, terra_pinyin, jyutping tables.
+  * update: essay database.
+  * new schema: emoji.
+
+-------------------------------------------------------------------
+Sat Jul 21 22:37:03 UTC 2012 - i@marguerite.su
+
+- initial version 0.9.2
+  * chord-typing support: combine multiple keys to compose a syllable at once.
+  * configuration: global page_size setting.
+  * inline mode: extend the API to support inline mode.
+  * table translator: add option to filter candidates by character set.
+  * user dictionary: automatic recovery for corrupted databases.
+  * user dictionary: fixed a bug that was responsible for missing user phrases.
+
+  * rime_deployer: a utility program to prepare Rime's workspace.
+  * rime_dict_manager: a utility program to import/export user dictionaries.
+
+  * librime package: include 'brise', a collection of preset schemata in the package.
+  * new schema: Middle Chinese Phonetic Transcription.
+  * new schema: IPA input method in X-SAMPA.
+

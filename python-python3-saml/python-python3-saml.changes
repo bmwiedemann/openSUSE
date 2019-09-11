@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Jul 22 13:05:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Adjusted acs endpoint to extract NameQualifier and SPNameQualifier from
+    SAMLResponse.
+  * Adjusted single logout service to provide NameQualifier and SPNameQualifier
+    to logout method.
+  * Add getNameIdNameQualifier to Auth and SamlResponse.
+  * Extend logout method from Auth and LogoutRequest constructor to support.
+  * Added get_in_response_to method to Response and LogoutResponse classes
+  * Update defusexml dependency
+
+-------------------------------------------------------------------
+Wed Apr 10 16:35:14 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add explicit dependency on libxmlsec1-openssl1, recommended
+  by dependency python-xmlsec so this package may be used without
+  needing to select a libxmlsec backend
+- Activate test suite, adding bug-testDecryptElement.patch to
+  workaround a test failure, and remove bcond test
+- Build for Python 2, as support has been added upstream
+- Remove unnecessary build dependency on python-devel
+- Use %license
+- Remove live dependency_links and remove == pins from setup.py,
+  so installed egg-info isnt broken
+- Update to v1.6.0
+  * Add support for Subjects on AuthNRequests by the new 
+    name_id_value_req parameter
+  * Fix for SLO when XML specifies encoding
+  * Fixed setting NameFormat attribute for AttributeValue tags
+- from v1.5.0
+  * Security improvements. Use of tagid to prevent XPath injection
+    Disable DTD on fromstring defusedxml method
+  * Check that the response has all of the AuthnContexts provided
+  * Adapt renders from Django demo for Django 1.11 version
+  * If debug enable, print reason for the SAMLResponse invalidation
+  * Fix DSA constant
+  * Support NameID children inside of AttributeValue elements
+- from v1.4.1
+  * Add ID to EntityDescriptor before sign it on add_sign method
+  * Update defusedxml dependencies
+  * Update copyright and license reference
+- from 1.4.0
+  * Fix CVE-2017-11427. Process text of nodes properly, ignoring comments
+  * Improve how fingerprint is calcultated
+  * Fix issue with LogoutRequest rejected by ADFS due NameID with
+    unspecified format instead no format attribute
+  * Fix signature position in the SP metadata
+  * Preserve xmlns:xs namespace when signing and serializing responses
+  * Redefine NSMAP constant
+  * Updated Django demo (Django 1.11)
+
+-------------------------------------------------------------------
+Wed Oct 25 16:22:46 UTC 2017 - sean.marlow@suse.com
+
+- Intial package. v1.3.0
+

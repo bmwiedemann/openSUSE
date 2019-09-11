@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:26 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jan 19 13:15:03 UTC 2018 - tchvatal@suse.com
+
+- Fix source url
+
+-------------------------------------------------------------------
+Thu Jan 18 08:44:24 UTC 2018 - fbergmann@suse.com
+
+- Update to 0.3.0:
+  - Don’t delete attribute when moving an entry to new subtree with unchanged rdn.
+    Thanks to Pär Wieslander.
+  - Support '*' in attrlist.
+  - Use pyldap under Python 3.
+
+-------------------------------------------------------------------
+Mon Jul 13 09:54:18 UTC 2015 - mcihar@suse.cz
+
+- Update to 0.2.5:
+  - A simple implementation of passwd_s.
+  - Fixes for DN case-insensitive matching.
+
+-------------------------------------------------------------------
+Wed Apr 22 09:34:10 UTC 2015 - mcihar@suse.cz
+
+- Update to 0.2.4:
+  - Support SSHA passwords with salt of arbitrary length.
+  - Don't support {CRYPT} passwords if crypt can't be imported.
+
+-------------------------------------------------------------------
+Wed Jul 23 12:26:37 UTC 2014 - mcihar@suse.cz
+
+- Update to 0.2.2:
+  + Many changes including Python 3 support
+
+-------------------------------------------------------------------
+Wed May 28 09:05:42 UTC 2014 - mcihar@suse.cz
+
+- Fixed license string.
+
+-------------------------------------------------------------------
+Thu Oct 31 12:38:27 UTC 2013 - mcihar@suse.cz
+
+- Initial packaging.
+

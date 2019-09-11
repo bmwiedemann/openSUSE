@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Thu Jul 13 11:54:39 UTC 2017 - olaf@aepfle.de
+
+- Remove gnutls requirement from devel pkg, openssl is used
+- Remove double glib2 requirement, pkgconfig handles this already
+
+-------------------------------------------------------------------
+Sun Feb 28 00:44:19 UTC 2016 - mrueckert@suse.de
+
+- update to 1.5.3
+  - Switch to SHA256 fingerprints.
+  - Do not load system certificates if trusted certs are explicitly
+    provided.
+  - Improve automake/autoconf support.
+
+-------------------------------------------------------------------
+Thu Feb 18 17:37:31 UTC 2016 - mrueckert@suse.de
+
+- update to 1.5.2
+  - openssl: always fill the fingerprint field of LmSSL
+  - try generic cc before testing for gcc
+  - remove libresolv relict
+  - include the right gssapi.h
+  - Add libasyncns to Libs.private
+  - Add the new API to the reference documentation
+- update Url field to point to the github project instead of the
+  unrelated website
+
+-------------------------------------------------------------------
+Tue Nov 10 10:57:11 UTC 2015 - mrueckert@suse.de
+
+- update to 1.5.1 and switch to the mcabber branch:
+  - This Loudmouth release is compatible with current Glib/GTK
+    libraries
+  - The internal asyncns copy has been removed
+  - The security has been improved in several ways:
+    - Certificates: added checking of SAN(s) when CN does not match
+      and fixed CN wildcard handling
+    - SSL 2 and 3 have been deactivated; TLS 1.1 and 1.2 have been
+      activated
+    - Use the default cipher suite of GnuTLS
+    - New API: Implementation of lm_ssl_set_ca and
+      lm_ssl_set_cipher_list This enables the application to choose
+      additional CA certificates to trust as well as the cipher
+      suites which are used by OpenSSL or GnuTLS
+  - Many resolver and parser issues have been fixed
+
+  For details on the branch switch see:
+  https://github.com/mcabber/loudmouth/issues/13
+
+- enable gssapi support. new BR: krb5-devel
+- enable IDN support: new BR: pkgconfig(libidn)
+- drop patches:
+  loudmouth-drop-stanzas-on-fail.patch
+  loudmouth-fix-async-resolving.patch
+  loudmouth-fix-sasl-md5-digest-uri.patch
+  loudmouth-glib.patch
+  loudmouth-use-pkg-config-for-gnutls.patch
+
+-------------------------------------------------------------------
+Tue Apr 14 13:27:12 UTC 2015 - meissner@suse.com
+
+- build against openssl-devel, to avoid fixing the gnutls 3.4.0
+  breakage.
+
+-------------------------------------------------------------------
+Mon May 21 11:42:56 UTC 2012 - badshah400@gmail.com
+
+- Use libgnutls-devel BuildRequires instead of gnutls-devel for
+  openSUSE > 12.1: gnutls-devel has been removed from Factory.
+
+-------------------------------------------------------------------
+Sun Dec  4 14:45:13 UTC 2011 - dimstar@opensuse.org
+
+- Change Source to point to our local file: The upstream server is
+  currently unavailable and this stops us from checkins to Factory.
+
+-------------------------------------------------------------------
+Sun Nov 27 14:14:54 UTC 2011 - dimstar@opensuse.org
+
+- Add loudmouth-glib.patch: Fix build with glib 2.31.
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Nov 23 12:46:01 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Feb 12 02:51:47 CET 2010 - vuntz@opensuse.org
+
+- Add patches from Debian:
+  + loudmouth-fix-sasl-md5-digest-uri.patch: use the right URI for
+    SASL md5 digest.
+  + loudmouth-fix-async-resolving.patch: do not check for sync DNS
+    failures when using async DNS.
+  + loudmouth-drop-stanzas-on-fail.patch: ignore stanza that we
+    can't parse.
+  + loudmouth-use-pkg-config-for-gnutls.patch: use pkg-config to
+    detect gnutls. Fix build on Factory.
+- Remove AutoReqProv: it's default now.
+- Use makeinstall macro.
+- Remove .la files.
+
+-------------------------------------------------------------------
+Wed Dec 24 09:33:23 EST 2008 - mboman@suse.de
+
+- Update to version 1.4.3:
+  + Various fixes
+
+-------------------------------------------------------------------
+Thu Nov  6 01:55:16 CET 2008 - ro@suse.de
+
+- fix requires for doc subpackage 
+
+-------------------------------------------------------------------
+Tue Sep 16 15:43:32 EDT 2008 - hfiguiere@suse.de
+
+- Fix debug package dependencies.
+
+-------------------------------------------------------------------
+Fri Sep 12 16:30:15 CDT 2008 - maw@suse.de
+
+- Update to version 1.4.2:
+  + Various fixes.
+
+-------------------------------------------------------------------
+Wed Sep  3 21:57:54 EDT 2008 - hfiguiere@suse.de
+
+- Fix -devel package Requires.
+
+-------------------------------------------------------------------
+Mon Sep 1  17:03:26 EDT 2008 - hfiguiere@suse.de
+
+- Update spec to match library policies
+- Upgrade to 1.4.0
+  * [LM-95] - File descriptor leak in lm-connection.c
+  * [LM-116] - lm_connection_set_jid() required when not using SRV
+  * [LM-117] - Reentrancy error on failed connect
+  * [LM-121] - Getting time outs when going through NAT on Linux
+  * [LM-085] - Asynchronous DNS requests
+  * [LM-106] - Don't call ID handler if the message is not error or result
+  * [LM-110] - On server hangup, the last few messages from the server sometimes
+    aren't processed 
+  * [LM-107] - SSL cert checking never works with GNUTls
+  * [LM-111] - Add a pointer to check in the README file
+  * [LM-55] - Check disconnect error reasons like conflicting resource and invalid
+    xml (fix forward ported from 1.2)
+  * [LM-88] - Segfault in _lm_ssl_begin for openssl (fix forward ported from 1.2)
+  * [LM-10] - Loudmouth API docs error
+  * [LM-49] - loudmouth does not determine server_from_jid correctly
+  * [LM-62] - Crashes when connecting to server that requires STARTTLS
+  * [LM-74] - Compiling loudmouth fails on lm-ssl-gnutls.c (Upgrade GnuTLS requirement)
+  * New Features
+   * [LM-63] - Implement the support for the SRV DNS records, please
+   * [LM-76] - Support for SASL (XMPP 1.0)
+
+-------------------------------------------------------------------
+Thu Apr  3 06:31:46 CEST 2008 - hpj@suse.de
+
+- Upgraded to version 1.2.3:
+
+  * [LM-104] - Problems with <stream:error/> in
+  * [LM-105] - Patch to suppor getting local host address and full JID
+
+-------------------------------------------------------------------
+Tue May 22 15:10:28 CEST 2007 - mauro@suse.de
+
+- update to 1.2.0
+  * This is the same as 1.1.5 but marked as stable and released as 1.2.0.
+  * For a complete list of changes since 1.0.5 look at the changes in 1.1.1-1.1.5
+  * Fixed leak when closing a connection, LM-59
+  * Escape the resource string (fixes problems with iChat contacts), LM-48
+  * Stale incoming source destroyed/unreffed, LM-60
+  * Fixed a leak in the synchronous layer, LM-66
+  * Fixed a couple of warning when building on 64 bit alpha, LM-41.
+  * Generate better message IDs, LM-56
+  * Fixed a leaking proxy object, LM-51
+  * Fixed random bugs on connection errors, LM-58
+  * Removed a warning when using proxy, LM-50.
+  * Infinite reading of 0 bytes when disconnected using gnutls, LM-45
+  * Loudmouth exports some internal SHA* functions, LM-47
+  * Fix auto* warning, LM-46
+  * Support for internationalised domain names, LM-42
+  * Fixed issue where no disconnect signal was emitted when connection closed
+    during opening, LM-43
+  * Plugged a memory leak in LmConnection, LM-39
+  * Fixed warnings due to uninitialized value, LM-35
+  * Fixed a reentrancy-related issue with LmConnection, LM-37
+
+-------------------------------------------------------------------
+Tue Mar 27 12:47:56 CEST 2007 - sbrabec@suse.cz
+
+- Require check-devel.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Tue Jan 16 19:21:33 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Jan  8 00:11:12 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Fri Sep 22 19:09:05 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.0.5
+- Infinite reading of 0 bytes when disconnected using gnutls, LM-45
+- Loudmouth exports some internal SHA* functions, LM-47
+- Fix auto* warning, LM-46
+- Fixed issue where no disconnect signal was emitted when connection closed
+  during opening
+- Plugged a memory leak in LmConnection, LM-39
+- Fixed warnings due to uninitialized value, LM-35
+- Fixed a reentrancy-related issue with LmConnection, LM-37
+- Quick build fix release when building without SSL, LM-25
+- Fixed issue when opening in blocking mode failed, LM-15
+- Unregister sources when connection fails to avoid later segfault, LM-16
+- Fixed an issue where large messages would get trunkated, LM-17 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 23 15:38:09 CET 2005 - sbrabec@suse.cz
+
+- New SuSE package, version 1.0.1.
+

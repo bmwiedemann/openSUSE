@@ -1,0 +1,13 @@
+Index: configure.ac
+===================================================================
+--- configure.ac
++++ configure.ac
+@@ -2,7 +2,7 @@ AC_INIT(GNU Aspell, 0.60.6.1)
+ AC_CONFIG_SRCDIR(prog/aspell.cpp)
+ AC_CANONICAL_SYSTEM
+ AM_INIT_AUTOMAKE
+-AM_CONFIG_HEADER(gen/settings.h)
++AC_CONFIG_HEADERS(gen/settings.h)
+ 
+ AM_MAINTAINER_MODE
+ 

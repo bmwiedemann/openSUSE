@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Dec 11 00:41:59 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Dec  3 10:23:41 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Really update to 2.7.1:
+  * Drop no longer needed z-fix-incorrect-fsf-address.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 03:32:21 UTC 2014 - malcolmlewis@opensuse.org
+
+- Update to version 2.7.1:
+  + No changelog available.
+- Spec file clean up.
+- Add z-fix-incorrect-fsf-address.patch: Fix FSF address in
+  COPYING.
+
+-------------------------------------------------------------------
+Fri Dec  4 21:11:18 UTC 2009 - pascal.bleser@opensuse.org
+
+- initial package (2.6.1)
+

@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Mon Jul 29 13:51:16 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added additonal dependencies
+
+-------------------------------------------------------------------
+Wed Jul 17 08:18:34 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- fixed installation location of shared library 
+
+-------------------------------------------------------------------
+Mon Jul  8 14:04:17 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- removed bazel mirror from as much source links as possible 
+- added support-new-bazel.patch support newer upcoming bazel
+  versions
+
+-------------------------------------------------------------------
+Tue Jun  4 14:16:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build for lite flavor:
+  * tensorflow-fix_lite.patch
+
+-------------------------------------------------------------------
+Wed May 29 16:11:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Call ldconfig for devel package in post/postun
+
+-------------------------------------------------------------------
+Mon May 27 15:00:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build with upstream patch:
+  * tensorflow-make_aws_sdk_work_on_aarch64.patch
+
+-------------------------------------------------------------------
+Mon May 27 04:08:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Lite flavor
+
+-------------------------------------------------------------------
+Fri Apr 26 08:27:55 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.13.1 fixes boo#1133490 
+
+-------------------------------------------------------------------
+Fri Mar 29 13:06:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Mar 29 08:18:09 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow_cc and libtensorflow_framework
+
+-------------------------------------------------------------------
+Tue Mar 19 15:40:25 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added fix_mvapich_mpi_bzl.patch which fixes detection of 
+  mvapich2 mpi library
+- fixed python3 build
+
+-------------------------------------------------------------------
+Tue Mar 12 20:33:56 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 1.13.1
+  * Major Features and Improvements
+  * TensorFlow Lite has moved from contrib to core. This means that Python modules are under tf.lite and source code is now under tensorflow/lite rather than tensorflow/contrib/lite.
+  * TensorFlow GPU binaries are now built against CUDA 10 and TensorRT 5.0.
+  * Support for Python3.7 on all operating systems.
+  * Moved NCCL to core.
+- drop merged patch mpilibpath_configure_py.patch
+- drop obsolete pyton3.7 patches
+- disabled jemalloc for now
+
+-------------------------------------------------------------------
+Tue Feb 12 08:39:57 UTC 2019 - cgoll@suse.com
+
+- enabled aws and googlecloud support
+  * removed no_aws_and_googlecloud.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 16:27:20 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Fixed build issues with python 3.7 what introduced the patches
+  * python3_7_compatibility.patch backported from upstream
+  * python3.7_unicode.patch fixes a minor function call
+  * python3.7_async_keyword.patch avoids the new keyword async
+
+-------------------------------------------------------------------
+Thu Jan 31 11:44:21 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with python 3.7
+
+-------------------------------------------------------------------
+Fri Jan 18 16:45:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow.so as some packages may link to it
+
+-------------------------------------------------------------------
+Fri Jan 11 13:52:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add constraints on HDD size to avoid no space-left error
+
+-------------------------------------------------------------------
+Mon Nov 26 19:38:35 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix python3 provides
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Sat Nov 24 09:03:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Provide python3-tensorflow
+
+-------------------------------------------------------------------
+Thu Nov  8 15:54:04 UTC 2018 - cgoll@suse.com
+
+- updated build command to fit bazel-0.19 
+
+-------------------------------------------------------------------
+Thu Oct 18 22:11:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim pad wording from descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 16 10:26:54 UTC 2018 - cgoll@suse.com
+
+- Updated to Tensorflow 1.10 as with this release it supports 
+  the partial use of systemlibs. Still a lot additional sources are
+  included which are
+  * closure
+  * weakref
+  * double-conversion
+  * gast
+  * farmhash
+  * nsync
+  * gemmlowp
+  * abseil-cpp
+  * boring-ssl
+  * google-apis
+  * cub
+  * highwayhash
+  * abseil-pypi
+  * eigen
+  * arm_neon_x86_sse
+  * fft
+  * grpc
+  * re2
+  Although some of these libraries are available in factory they could 
+  not be used as explicit versions are needed or bazel or the build
+  system links them in the wrong way.
+- mpilibpath_configure_py.patch changes the search path for the mpi 
+  to also include lib64/
+- no_aws_and_googlecloud.patch removes the dependence of aws, 
+  googlecloud and kafaka apis, as this version is not compiled with
+  the support of this apis.
+
+-------------------------------------------------------------------
+Thu Jan  4 11:00:55 UTC 2018 - cgoll@suse.com
+
+- Initial commit of Tensorflow 1.4 not all requirement could be met
+  by the distribution packages and the sources have to be included. 
+  This is true for
+  - Eigen
+  - protobuf
+  - grpc
+  - lmdb
+  - json-cpp
+  The build itself is now based on bazel and creates the pip package which 
+  is then extracted from the build environment

@@ -1,0 +1,46 @@
+Disable TLS by default
+
+On SUSE distros, the default is for libvirtd to listen only on the
+Unix Domain Socket. The libvirt client still provides remote access
+via a SSH tunnel.
+Index: libvirt-5.6.0/src/remote/libvirtd.conf
+===================================================================
+--- libvirt-5.6.0.orig/src/remote/libvirtd.conf
++++ libvirt-5.6.0/src/remote/libvirtd.conf
+@@ -16,8 +16,8 @@
+ # It is necessary to setup a CA and issue server certificates before
+ # using this capability.
+ #
+-# This is enabled by default, uncomment this to disable it
+-#listen_tls = 0
++# This is disabled by default, uncomment this to enable it
++#listen_tls = 1
+ 
+ # Listen for unencrypted TCP connections on the public TCP/IP port.
+ # NB, must pass the --listen flag to the libvirtd process for this to
+Index: libvirt-5.6.0/src/remote/remote_daemon_config.c
+===================================================================
+--- libvirt-5.6.0.orig/src/remote/remote_daemon_config.c
++++ libvirt-5.6.0/src/remote/remote_daemon_config.c
+@@ -106,7 +106,7 @@ daemonConfigNew(bool privileged ATTRIBUT
+     if (VIR_ALLOC(data) < 0)
+         return NULL;
+ 
+-    data->listen_tls = 1;
++    data->listen_tls = 0;
+     data->listen_tcp = 0;
+ 
+     if (VIR_STRDUP(data->tls_port, LIBVIRTD_TLS_PORT) < 0 ||
+Index: libvirt-5.6.0/src/remote/test_libvirtd.aug.in
+===================================================================
+--- libvirt-5.6.0.orig/src/remote/test_libvirtd.aug.in
++++ libvirt-5.6.0/src/remote/test_libvirtd.aug.in
+@@ -2,7 +2,7 @@ module Test_libvirtd =
+    ::CONFIG::
+ 
+    test Libvirtd.lns get conf =
+-        { "listen_tls" = "0" }
++        { "listen_tls" = "1" }
+         { "listen_tcp" = "1" }
+         { "tls_port" = "16514" }
+         { "tcp_port" = "16509" }

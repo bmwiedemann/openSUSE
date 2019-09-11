@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Mon Aug 12 16:21:42 UTC 2019 - Matei Albu <malbu@suse.com>
+
+- Version update to version 1.2.23:
+  * See changelog.html for in-depth upstream changes
+
+-------------------------------------------------------------------
+Thu Jun  6 14:59:23 UTC 2019 - Matei <malbu@suse.com>
+
+- Version update to version 1.2.21:
+  * See changelog.html for in-depth upstream changes
+  * Fix incompatibility with Tomcat (bsc#1130843)
+
+-------------------------------------------------------------------
+Mon Nov 27 07:36:36 UTC 2017 - fstrba@suse.com
+
+- Version update to version 1.2.16:
+  * See changelog.html for in-depth upstream changes
+  * Fixes build breakage with newer version of openssl
+
+-------------------------------------------------------------------
+Wed Feb  3 10:51:58 UTC 2016 - tchvatal@suse.com
+
+- Version update to version 1.2.4:
+  * See changelog.html for in-depth upstream changes
+  * This connector to properly work requires openssl 1.0.2 or newer
+    so do not backport to other codestreams.
+
+-------------------------------------------------------------------
+Wed Feb 25 20:18:55 UTC 2015 - tchvatal@suse.com
+
+- Remove keyring file as there is new keyring and I didn't find it
+  on the web
+
+-------------------------------------------------------------------
+Thu Feb 19 18:20:29 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.1.32
+  * Fix: 53952: Add support for TLSv1.2 and TLSv1.1.
+  * Fix: 56844: Use OpenSSL 1.0.1j with Windows binaries.
+  * Update: Use APR 1.5.1 with Windows binaries
+- Remove tomcat-native-nosslv2.patch; merged on upstream release
+- Remove %gpg_verify tag and gpg-offline require; let OBS handles
+  gpg verification
+
+-------------------------------------------------------------------
+Sun Apr 27 15:45:46 UTC 2014 - crrodriguez@opensuse.org
+
+- version 1.1.30 
+* Fixed double-free in ssl_ocsp_request. Patch provided by
+  Aristotelis.
+* Other minor bugfixes.
+- openSUSE: Fix build when openssl does not have SSLv2 support.
+  (tomcat-native-nosslv2.patch)
+
+-------------------------------------------------------------------
+Fri Sep 13 09:29:50 UTC 2013 - mvyskocil@suse.com
+
+- Update to 1.1.27 (bugfix release)
+  * fix high CUP usage on client's IP address change
+  * add CPU information to OS info for Linux
+  * fix FIPS mode for listeners; resolves 'Low level API
+    call to digest MD5 forbidden in FIPS mode!' errors.
+  * update add clearOptions function to allow access to
+    OpenSSL's SSL_CTX_clear_options function.
+  * fix regression in pollset return value.
+- add gpg verification
+- add javapackages-tools
+- drop config-guess-sub-update.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 13:48:49 UTC 2013 - schwab@suse.de
+
+- config-guess-sub-update.patch: update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Thu Dec  6 13:48:00 UTC 2012 - kruber@zib.de
+
+- update to 1.1.24
+  * add support for per-socket timeouts inside poller
+
+-------------------------------------------------------------------
+Thu Mar 15 10:43:21 UTC 2012 - mvyskocil@suse.cz
+
+- update to 1.1.23 - latest upstream version
+  * autodetect java7
+  * better support for ipv6
+  * OCSP verification support
+  * explicit use in FIPS mode allowed
+  * and fixes many bugs, leaks and crashes
+- split the spec from tomcat6 sources as it was never needed
+
+-------------------------------------------------------------------
+Thu Aug  5 15:30:21 UTC 2010 - mvyskocil@suse.cz
+
+- fixes bnc#622430 - move .so file to main package 
+
+-------------------------------------------------------------------
+Tue Mar 16 12:35:08 CET 2010 - ro@suse.de
+
+- build from tomcat-native-1.1.20-src.tar.gz
+- package needs work, does not have to live in tomcat src any more
+
+-------------------------------------------------------------------
+Wed Jun  3 11:10:45 CEST 2009 - mvyskocil@suse.cz
+
+- Tomcat update to 6.0.20
+- APR update to 1.3.3 - the bugfix release
+
+-------------------------------------------------------------------
+Fri Sep 12 09:33:38 CEST 2008 - mvyskocil@suse.cz
+
+- Tomcat update to 6.0.18 
+
+-------------------------------------------------------------------
+Thu Aug  7 15:59:03 CEST 2008 - mvyskocil@suse.cz
+
+- move the .so file to -devel subpackage to prevent of an rpmlint error 
+
+-------------------------------------------------------------------
+Wed Jul  9 15:52:08 CEST 2008 - mvyskocil@suse.cz
+
+- The first release in SUSE (1.2.12)
+  - fix of enhancenment request [bnc#202339]
+

@@ -1,0 +1,11 @@
+#%PAM-1.0
+# GDM PAM configuration for autologin
+auth     requisite      pam_nologin.so
+auth     required       pam_permit.so
+auth     optional       pam_gdm.so
+auth     optional       pam_gnome_keyring.so
+account  include        common-account
+password include        common-password
+session  required       pam_loginuid.so
+session  optional       pam_keyinit.so force revoke
+session  include        common-session

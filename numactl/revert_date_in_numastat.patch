@@ -1,0 +1,24 @@
+numactl: Revert __DATE__ in numastat
+
+or this will trigger unnecessary, constant rebuilds in build
+service environments.
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+
+---
+ numastat.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: numactl-2.0.12/numastat.c
+===================================================================
+--- numactl-2.0.12.orig/numastat.c
++++ numactl-2.0.12/numastat.c
+@@ -675,7 +675,7 @@ double huge_page_size_in_bytes = 0;
+ 
+ void display_version_and_exit() {
+ 	char *version_string = "20130723";
+-	printf("%s version: %s: %s\n", prog_name, version_string, __DATE__);
++	printf("%s version: %s\n", prog_name, version_string);
+ 	exit(EXIT_SUCCESS);
+ }
+ 

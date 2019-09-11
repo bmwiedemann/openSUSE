@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Sat May 11 05:33:13 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  2.00  2019-05-11
+      - Imported tests/fixes from Text::CSV_XS 1.39
+        - Fix strict on streaming EOF
+      - Fixed to update (cached) eol_len correctly
+
+-------------------------------------------------------------------
+Thu Jan  3 06:32:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.99
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.99  2019-01-02
+      - Fixed a number of tests to skip for older perls
+
+-------------------------------------------------------------------
+Wed Jan  2 06:35:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.98
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.98  2019-01-02
+      - Imported tests/fixes from Text::CSV_XS 1.38
+        - Added munge as alias for munge_column_names
+        - Added support for key-value pair and combined keys
+
+-------------------------------------------------------------------
+Sat Aug 25 06:05:21 UTC 2018 - coolo@suse.com
+
+- updated to 1.97
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.97  2018-08-17
+      - Fix/add minimum perl version (GH-38, Kivanc Yazan++)
+      - Updated MANIFEST
+
+-------------------------------------------------------------------
+Wed Aug 15 06:11:36 UTC 2018 - coolo@suse.com
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.96  2018-08-14
+      - Imported tests/fixes from Text::CSV_XS 1.36
+        - Added undef_str and keep_headers attributes
+        - Added csv(out => \"skip")
+        - Added formula actions
+        - Fixed BOM issues
+      - Fixed internal cache handling
+      - Added license and preferred issue tracker to META files (GH#26, garu++)
+
+-------------------------------------------------------------------
+Thu Apr 27 06:53:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.95
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.95  2017-04-27
+      - import "strict" attribute introduced in Text::CSV_XS 1.29
+
+-------------------------------------------------------------------
+Wed Apr 12 06:47:46 UTC 2017 - coolo@suse.com
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.94  2017-04-11
+      - Fix 5.6.2 issues
+
+-------------------------------------------------------------------
+Fri Apr  7 07:01:06 UTC 2017 - coolo@suse.com
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.93  2017-04-04
+      - Fix a test for perl without doc in @INC (kentnl++)
+
+-------------------------------------------------------------------
+Sat Apr  1 06:56:39 UTC 2017 - coolo@suse.com
+
+- updated to 1.92
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.92  2017-04-01
+      - Imported tests/fixes from Text::CSV_XS 1.28
+        - Fix crlf issue for csv () on Windows (RT#120466)
+        - New error code for illegal argument(s)/parameter(s)
+        - Fix tests for perl without dot in @INC
+
+-------------------------------------------------------------------
+Tue Feb 14 07:47:26 UTC 2017 - coolo@suse.com
+
+- updated to 1.91
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.91  2017-01-28
+      - production release
+  
+  1.90_01  2017-01-20
+  	- Text::CSV_PP is totally refactored using the code/doc of
+  	  Text::CSV_XS 1.27. Almost all the code/docs in CSV_XS.pm are
+  	  copied and a large portion of CSV_XS.xs is ported verbatim,
+  	  and now CSV_PP passes all the tests for CSV_XS (with slight
+  	  modification like s/XS/PP/g).
+
+-------------------------------------------------------------------
+Tue Apr 14 21:12:13 UTC 2015 - coolo@suse.com
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  1.33  Tue Mar  3 14:13:41 2015
+  	- Fix some reported bugs with handling fields with zeros.
+  	   https://rt.cpan.org/Public/Bug/Display.html?id=93518
+  	   https://rt.cpan.org/Public/Bug/Display.html?id=92509
+  	                                      patched by shlomif
+  	- catch up Text::CSV_XS 1.02
+  	    * add decode_utf8 attribute by ktat
+  	- fix warnings: $. is undefined by ktat
+  	- typo fixes in doc by anirvan, dsteinbrunner and pdl.
+  	- parse() supports bind_columns()
+  
+  	* TODO: Updating documents and adding diag_verbose in the next version.
+  	        Catching up CSV_XS 1.04.
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:55 UTC 2013 - coolo@suse.com
+
+- updated to 1.32
+       - fix t/rt71_pp.t
+       - fix handling UTF8 in parse method.
+       - fix getline with allow_loose_quotes (rt#83705)
+       - add allow_unquoted_escape
+       - fix parsing escapted sep char (found in Text::CSV_XS rt#81295)
+       * TODO: Updating documents and adding diag_verbose in the next version
+       - catch up Text::CSV_XS 0.99
+           (except for diag_verbose and allow_unquoted_escape)
+
+-------------------------------------------------------------------
+Fri Feb 10 12:09:01 UTC 2012 - pascal.bleser@opensuse.org
+
+- fix Summary capitalization for rpmlint
+
+-------------------------------------------------------------------
+Thu Mar 24 11:30:38 UTC 2011 - coolo@novell.com
+
+- update to 1.21 
+  * updated the compatibility for Text::CSV_XS version 0.80
+  * added getline_all() and getaline_hr_all()
+  * added missing test file
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:43 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov  3 13:16:04 CET 2010 - dmueller@suse.de
+
+- update to 1.20:
+   - couldn't parse the csv containing the column starting with '0'. (hiratara)
+     * patched by hiratara
+     * enhanced getline regexp (makamaka)
+     * resolved a bug in bleadperl-fb85c04
+   - added tests into t/71_pp.t (hiratara)
+
+-------------------------------------------------------------------
+Sun Oct 17 17:40:00 UTC 2010 - chris@computersalat.de
+
+- update to 1.19
+  - getline didn't work correctly with 0 or null containing lines
+    (pointed by Bernhard Prott)
+  - updated the compatibility for Text::CSV_XS version 0.74
+    * real eol support for parsing streams (beyond \n, \r and \r\n)
+    * clarify doc for always_quote to not quote undef fields
+      and XS and PP incompatibility of UTF8 process for print and combine
+- 1.18  Sat Jun 19 10:34:07 2010
+  - fixed a combine bug with quote_space reported and patched by rt#58356
+  - updated test files compatible to CSV_XS 0.73
+- noarch pkg
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Wed Mar 17 08:16:11 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.17:
+  + fixed parse working when setting quote_char undef 
+  + made Text::CSV_XS compat 0.71
+    * Text::CSV->error_diag() in void context warns instead 
+      of doing nothing
+    * auto_diag also used for new () itself
+    * Added quote_space attribute
+    * Forbad \r and \n in sep_char, quote_char, and escape_char
+    * Auto detection of eol => "\r" in streams
+    * fail if first arg to new () is not a hash ref
+    * added empty_is_undef
+    * error_diag () uses warn () in void context instead of STDERR
+    * added auto_diag attribute
+    * updated documents same as Text::CSV_XS
+  + added quote_null (introduced in Text::CSV_XS 0.72)
+  + getline() didn't handle '0' starting multi line data
+- use perl standard macros in specfile
+
+-------------------------------------------------------------------
+Tue Jun  2 09:20:47 CEST 2009 - lars@linux-schulserver.de
+
+- update to 1.12
+
+-------------------------------------------------------------------
+Sun Nov 30 07:50:17 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.10 
+

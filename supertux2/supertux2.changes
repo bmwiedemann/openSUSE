@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Wed Apr  3 11:50:28 UTC 2019 - mvetter@suse.com
+
+- Add BuildRequire libboost_system-devel to fix build
+
+-------------------------------------------------------------------
+Wed Feb 13 10:10:30 UTC 2019 - joop.boonen@opensuse.org
+
+- Build SuperTux2 with libraqm support 
+- Added requirement graphviz-devel and libphysfs-devel
+
+-------------------------------------------------------------------
+Tue Dec 25 20:24:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.6.0:
+  * Complete redesign of the icy world and forest world.
+  * Complete revamp of our rendering engine, the game should be
+    much faster than it was previously.
+  * We now support OpenGL 3.3 Core as well as OpenGL ES 2.0, thus
+    allowing SuperTux to be run on the Raspberry Pi, and
+    potentially WebGL.
+  * A few graphics have been updated, and effects have been added.
+  * The save bell was reworked.
+  * Improved big Tux graphics and animations.
+  * Various effects and shaders.
+  * Support for right-to-left languages through vector fonts. This
+    will also fix a few non-ASCII characters, which often caused
+    problems before in translations.
+  * A lot of other under-the-hood changes and bugfixes.
+- Add conditional libboost_locale-devel BuildRequires: New
+  dependency.
+- Add hicolor-icon-theme, pkgconfig(freetype2), pkgconfig(libpng)
+  and pkgconfig(zlib) BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Sun May  7 09:39:27 UTC 2017 - meissner@suse.com
+
+- disable global PIE support, untangling the static libs of the
+  squirrel compiler is too tricky.
+
+-------------------------------------------------------------------
+Tue Mar 14 08:23:53 UTC 2017 - joop.boonen@opensuse.org
+
+- Corrected docs handling 
+- Corrected the rights of /usr/share/supertux2/sounds/normalize.sh
+
+-------------------------------------------------------------------
+Thu Feb  2 14:53:42 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Dec  2 20:41:32 UTC 2016 - joop.boonen@opensuse.org
+
+- Removed patch system-tinygettext.patch
+- Removed patch fix-cmake.patch
+
+-------------------------------------------------------------------
+Thu Dec  1 21:26:04 UTC 2016 - joop.boonen@opensuse.org
+
+- Build version 0.5.1
+  * Editor: Tilemap: Add an option to change the draw target
+  * Editor: Add an option to snap objects to the grid (this will make it easier to add objects to a nice location in levels)
+  * Editor: Camera: Remove autoscroll option, as it is deprecated and should not be used anymore
+  * Editor: Fix an issue where some areas in the editor would be excessively large relative to the window/screen size
+  * In-game level editor
+  * Improved levels in Antarctica and Forest Island
+  * Language packs are fixed
+  * Engine performance improvements
+  * Extended the scripting API: gradients are now scriptable
+  * Added a few more tiles and music
+  * New console commands and command line options (related to the editor)
+  * Various other bugfixes of issues reported since the v0.4.0 release
+  * And more (minor) improvements and changes
+  * Fixed build system in order to correctly support SemVer pre-release tags
+  * Fixed miniswig compilation
+  * Editor: correctly join paths (using FileSystem::join())
+  * Editor: LevelDot: add a NULL check to prevent a crash when editing worldmaps
+  * Editor: correctly save BadGuy and Dispenser direction
+  * Editor: reorder layer objects when their object menu is closed
+  * Editor: allow setting z-pos of decals
+  * Editor: display a notile when the tile ID is invalid
+  * Editor: make it possible to switch tilesets
+  * Editor: Torch: make it possible to change the sprite (#541)
+  * Don't turn Tux into stone above ground when using earth bonus (#537)
+  * WillOWisp: get name property in order to fix a scripting issue (#529)
+  * Editor: don't play WillOWisp sound
+  * Editor: move moving objects to the center of the mouse pointer when adding
+  * Editor: Switch: make sprite option visible again
+  * Make use of auto pointers and modern iterators where appropriate
+  * README: various updates related to download count
+  * Save and load visibility of SpriteChange tiles in squirrel table (#342)
+  * Editor: Fix an issue where the name of a scripted object wouldn't be saved (#557)
+  * Editor: add an alignment option for background (#547)
+  * Editor: Better approach for layer removal (#510)
+  * Add a launcher script for Windows builds (#443)
+  * Fixes for the build system and updates with regard to the automatic deployment of releases
+  * More code style fixes
+  * Editor: verify some level properties have been set
+  * Add the possibility to add sawblade/hurting platforms using the editor
+  * Jump with Up: mark as deprecated in KeyboardMenu and JoystickMenu (addresses #499)
+  * Fix an issue with odd behavior of music playback (#583)
+  * Update some parts of the (user) documentation
+  * Editor: multiple fixes to levelset and worldmap creation, including UX improvements
+  * Editor: Angle option for spotlight
+  * Unify string spelling for consistency
+  * String freeze for translators is now in effect
+  * Editor: sort layer in ascending order
+  * Scripting: deduplicate code using the ExposedObject template class
+  * Update the translations to reflect the translation progress as of 2016-09-12
+  * Use PhysFS file system abstraction for is\_directory checks
+  * Prevent statistics text from overlapping
+  * Fix a bug with Level.edit() in squirrel (#207)
+  * Stop looping sounds when dead
+  * Final translation update
+
+-------------------------------------------------------------------
+Mon Aug  1 23:16:09 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-cmake.patch to build supertux with system libsquirrel
+  and with system libtinygettext.
+- Added system-tinygettext.patch to fix usage of tinygettext
+  (bundled version is slightly modded).
+- Some cleanup
+
+-------------------------------------------------------------------
+Tue Dec 22 23:48:33 UTC 2015 - antoine.belvire@laposte.net
+
+- Update to 0.4.0:
+  * Update translations
+  * Rework add-on manager to support downloadable and updatable
+    localization packs
+  * Many bugfixes
+  * Add iced-graphics to some more badguys
+  * Melting animation for some badguys
+  * Update more levels (fix playability, ...)
+  * Update build system, featuring unit tests, libraries as git
+    submodules and improved Travis-CI builds to support nightly
+    builds
+  * More levels in Incubator Island
+  * Support for horizontal and vertical gradients that span the
+    length/height of a sector. Add (direction "horizontal_sector/
+    vertical_sector") to your gradient.
+- Deleted fixed supertux2-0.3.5a-fix-no-return-in-func.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 05:22:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.3.5a:
+  * CMakeLists: fix error with cmake lower than 3.x.
+  * Improve building of version.h.
+  * Minor bugfixes.
+  * Update translations.
+- Add supertux2-0.3.5a-fix-no-return-in-func.patch from commit
+  0e444e9: fix assignment operators with no return statement.
+
+-------------------------------------------------------------------
+Wed Apr 22 11:43:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.3.5:
+  * Move to SDL2 for graphics rendering.
+  * Glow effects.
+  * New badguys: iceflame, ghostflame, livefire, goldbomb,
+    smartblock.
+  * New bonuses: coinrain, coinexplode.
+  * Statistics improved.
+  * Icy island levels tweaked.
+  * New sounds.
+  * Massive improvements to localization.
+  * Efficiency tweaks.
+  * Menus reworked.
+  * Addon manager improved.
+  * New tilemap: halloween.
+  * New powerups: air- and earth-flower.
+  * Support for horizontal gradients in levels
+    (add (direction "vertical|horizontal") to your level).
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Aug 31 19:24:28 UTC 2014 - bwiedemann@suse.com
+
+- use supertux2.png to not conflict with supertux (bnc#894296)
+
+-------------------------------------------------------------------
+Sat Jan  4 22:30:41 UTC 2014 - tom.mbrt@googlemail.com
+
+- update to 0.3.4
+- removed all patches because they have been fixed upstream
+
+-------------------------------------------------------------------
+Wed Dec 26 11:28:19 UTC 2012 - joop.boonen@opensuse.org
+
+- openal-devel is now called openal-soft-devel 
+
+-------------------------------------------------------------------
+Fri Nov 23 15:33:27 UTC 2012 - joop.boonen@opensuse.org
+
+- Replaced make_install macro by make DESTDIR=$RPM_BUILD_ROOT install
+  so it also build for SLE 
+
+-------------------------------------------------------------------
+Tue May  1 10:09:49 UTC 2012 - joop.boonen@opensuse.org
+
+- Fixed gcc 4.7 build
+  Using Dimstar's devel:libraries:c_c++ squirrel, squirrel-gcc47.patch
+
+-------------------------------------------------------------------
+Wed Dec 21 15:59:00 UTC 2011 - joop.boonen@opensuse.org
+
+- Added missing clean 
+
+-------------------------------------------------------------------
+Wed Dec 21 14:59:02 UTC 2011 - reddwarf@opensuse.org
+
+- Run spec-cleaner
+- Add CURL BuildRequire
+- Move away from /games directories
+- Compile with debug informarion
+
+-------------------------------------------------------------------
+Wed Nov  2 14:30:14 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/sections (cf. specfile guidelines)
+- Enable parallel build
+
+-------------------------------------------------------------------
+Tue Nov  1 00:00:00 UTC 2011 - joop.boonen@opensuse.org
+
+- cleaned the spec file
+
+-------------------------------------------------------------------
+Wed Sep  8 00:00:00 UTC 2010 - joop.boonen@opensuse.org
+
+- updated to 0.3.3
+
+-------------------------------------------------------------------
+Thu Oct 23 00:00:00 UTC 2008 - tristanhoffmann@boxbe.com
+
+- updated to 0.3.2 SVN
+
+-------------------------------------------------------------------
+Sun Jul  6 00:00:00 UTC 2008 - tristanhoffmann@boxbe.com
+
+- imported supertux 0.1.3 from openSUSE:factory and updated to 0.3.1 SVN
+

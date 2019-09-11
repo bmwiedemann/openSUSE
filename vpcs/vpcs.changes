@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Mon Jan 15 13:06:02 UTC 2018 - crrodriguez@opensuse.org
+
+- vpcs-0.8-no-static.patch: extend so binaries are not stripped.
+  fixes debuginfo generation
+- remove bundled getopt implementation, fixes conflict with 
+  glibc headers and build in TW.
+
+-------------------------------------------------------------------
+Fri Nov 20 10:40:55 UTC 2015 - andrea@opensuse.org
+
+- new upstream version 0.8
+	* Support IPv6 fragmentation
+    * Support DNS AAAA record
+	* Add an option to disable the relay function from the command line
+- removed vpcs-0.5b0-no-static.patch and replaced by vpcs-0.8-no-static.patch
+
+-------------------------------------------------------------------
+Thu Jun  4 16:52:34 UTC 2015 - andrea@opensuse.org
+
+- new upstream version 0.6.1
+  * Turn off the relay feature because it is conflicting with GNS3
+
+-------------------------------------------------------------------
+Wed Dec 10 09:47:56 UTC 2014 - andrea@opensuse.org
+
+- vpcs shouldn't require dynamips
+
+-------------------------------------------------------------------
+Thu Nov 20 09:08:16 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.6
+  * fix: commands with more than 20 arguments will cause core dump
+  * display the file name while running 'save' to save the configuration
+  * command string begins with '#' or ';' is considered as comment in CLI
+  * renew the dhcp4 lease automatically 
+  * support ip fragmentation
+  * fix: use MAC of gateway while replying in the background
+  * fix: history list overflow
+
+-------------------------------------------------------------------
+Fri Jul  4 08:18:19 UTC 2014 - andrea@opensuse.org
+
+- changed project homepage
+
+-------------------------------------------------------------------
+Tue Jul  1 07:21:21 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 0.5b2
+  * fix: using getenv+access to the real path of VPCS.
+  * patch for Debian GNU/kFreeBSD from Daniel Lintott
+    flush out the output buffer while running 'echo ...'
+  * increase the maxinum number of tcp sessions and decrease tcp keep alive time
+  * fix: arp table, the source ether address is not saved
+
+-------------------------------------------------------------------
+Mon May 19 14:17:28 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 0.5b1
+  * Support for a specified number of vpc instances (between 1 and 9)
+  * Support for TAP device name (only with 1 VPC instance)
+- Changed project home page
+
+-------------------------------------------------------------------
+Tue Mar 25 11:55:00 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up
+
+-------------------------------------------------------------------
+Sun Mar 23 15:24:52 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.5b0
+  * support to hypervisor mode
+- added vpcs-0.5b0-no-static.patch to avoid static library linking
+
+-------------------------------------------------------------------
+Mon Jan  7 15:24:52 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 0.4b2
+  * support DNS
+  * support 'dump' packets
+  * add 'rlogin' command to connect the remote host      
+  * support daemon mode
+  * more at http://blog.chinaunix.net/space.php?uid=20020608&do=blog&id=3274792
+- removed man page now in upstream code 
+
+-------------------------------------------------------------------
+Thu Jan 12 08:34:31 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 0.3
+  * vpcs is now opensource (BSD) 
+
+-------------------------------------------------------------------
+Tue Apr 19 09:46:50 UTC 2011 - andrea@opensuse.org
+
+- New package 
+

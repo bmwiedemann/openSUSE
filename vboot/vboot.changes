@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Sat Jun 15 20:33:53 UTC 2019 - Kasimir _ <kasimir_@outlook.de>
+
+- Update to R76-12239:
+  * Upstream log available here:
+    https://chromium.googlesource.com/chromiumos/platform/vboot_reference.git/+log/release-R76-12239.B
+- Update patch:
+  * fix_Makefile.patch
+
+-------------------------------------------------------------------
+Wed Jun 12 12:47:09 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Jan  8 08:46:01 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to R72-11316:
+  * Upstream log available here: 
+  https://chromium.googlesource.com/chromiumos/platform/vboot_reference.git/+log/release-R72-11316.B
+- Update patch:
+  * fix_Makefile.patch
+
+-------------------------------------------------------------------
+Tue Sep 11 11:43:43 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to R70-11021:
+  * cgpt: add edit command
+  * cgpt: show verbose details when primary ignored
+  * vboot_reference: sync flags with eve-campfire branch
+  * vboot: remove line length check from lsb_syntaxcheck()
+  * vboot_reference: Change OOBE autoconfig TPM space to storing 
+    32-byte hash
+  * Add AltOS NVRAM flags
+  * vboot: bulk fix tabs and spacing inconsistency
+  * vboot_reference: Add recoverysw_is_virtual flag to crossystem
+  * vboot: Add .clang-format file
+  * vbutil_what_keys: support 16 MB firmware images
+  * image_signing: strip_boot: support device node inputs
+  * vboot_reference: Claim space for OOBE autoconfig public key
+
+-------------------------------------------------------------------
+Thu Aug 16 13:38:49 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to R69-10895:
+  * signer: fix accessory_rwsig signing
+  * image_singing: Add '--nodefault_rw_root' for make_dev_ssd.sh
+  * inherit-review-settings-ok/WATCHLISTS: punt old unused files
+  * vboot_aux_fw: Add new return code to handle busy case
+  * nocturne-fp: copypasta script to generate keypair for signing FW
+  * vboot_reference: fix the build for arm64
+  * keygeneration: make the certificates valid for 10 years
+  * futility: Add --arch=arm64 option to vbutil_kernel
+  * stop statically linking crossystem
+  * keygeneration: add --no-pk option for UEFI key generation
+- Refresh patch after partial upstream merge:
+  * fix_Makefile.patch
+- Refresh patch:
+  * Fix-arch-detection-for-armv6.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 16:04:03 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to R68-10718:
+  * tpm_lite: stub: retry in case of TPM comm error
+  * crossystem: Add BINF3_LEGACY for systems boot in legacy mode
+  * vboot_reference: Build host tools conditionally
+  * tpm_lite: Set O_CLOEXEC when opening TPM device
+  * image_signing: Add sha1sum of the recovery key to VERSION.signer
+  * make_dev_firmware.sh: correct typo
+  * image_signing: Add sha1sum of a key without loem keyset to VERSION.signer
+  * sign_official_build: switch kernel/firmware signing to loopdevs
+  * sign_official_build.sh: dump more md5sum on bios.bin
+  * cgpt: Remove unnecessary 512-byte sector check and minimum lba count checks
+  * gbb_flags_common.sh: Add GBB_FLAG_ENABLE_UDC to help text
+  * image_signing: clean up UEFI signing/verifying code
+  * keygeneration: clean up for UEFI key generation code
+  * keygeneration: drop board name from UEFI key generation scripts
+  * Update Android signing to support signature scheme v2
+  * whiskers: Add script to generate keypair for signing FW
+  * image_signing: sign UEFI binaries
+  * devkeys: add test keys for UEFI
+  * keygeneration: add support for UEFI key generation 
+
+-------------------------------------------------------------------
+Mon Apr 30 11:33:53 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to R67-10575:
+  * Add new NV and GBB flag to control UDC
+  * tpm_lite: tpmc command to check owner auth
+  * tpm_lite: Add TlclGetSpaceInfo
+  * tpm_lite: Add missing NVRAM attribute constant
+  * tpm_lite: Support delegation family functional
+  * tpm_lite: Add more general DefineSpaceEx funct
+  * tpm_lite: Implement TakeOwnership support
+  * tpm_lite: Implement ReadPubek command
+  * cgpt: Remove hard coded 512 block size
+  * tpm_lite: Introduce cursor read helpers
+  * tpm_lite: Drop FOR_TEST for tlcl.c by
+  * Add a script to generate a keypair for signing
+  * crossystem: Clarify help string for dev_defaul
+  * ec_sync: Go to recovery on aux fw update failu
+  * ec_sync: Add recovery reason for aux update fa
+  * firmware: tpm2_lite: fix command/response code
+  * firmware: tpm2_lite: propagate actual errors
+  * firmware: move TPM_E constants to tss_constant
+  * Add GBB_FLAG_DISABLE_FWMP documentation to set
+  * Add new GBB_FLAG_FORCE_MANUAL_RECOVERY
+  * arc: Enable packages cache generation during s
+  * crossystem: Fix mosys data length check by Ran
+  * crossystem: Fix null pointer dereference on VM
+  * firmware: remove unused vboot1 APIs
+  * crossystem: add support for CNL gpiochip
+  * 2lib: Add support for 64-byte nvstorage record
+  * firmware: Remove deprecated SW_WP_ENABLED flag
+
+-------------------------------------------------------------------
+Wed Mar 14 21:37:13 UTC 2018 - kasimir_@outlook.de
+
+- Update to R66-10452
+  * firmware: Remove VbLockDevice()
+
+-------------------------------------------------------------------
+Wed Mar  7 17:58:59 UTC 2018 - kasimir_@outlook.de
+
+- Update to R65-10323
+  * EC-EFS: Copy dev keys from platform/ec
+- removed obsolete Fix-arch-detection-for-aarch64.patch
+- Add patch to enable armv6 build
+  * Fix-arch-detection-for-armv6.patch
+- Update fix_Makefile.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 14:13:59 UTC 2018 - guillaume@opensuse.org
+
+- Remove full URL from Source since it breaks check script since a
+  rename may happen (depending on web browser)
+
+-------------------------------------------------------------------
+Thu Jan 18 13:54:13 UTC 2018 - guillaume@opensuse.org
+
+- Exclude ppc and ppc64*
+
+-------------------------------------------------------------------
+Thu Jan 18 13:42:41 UTC 2018 - guillaume@opensuse.org
+
+- Update to R64-10176
+
+-------------------------------------------------------------------
+Tue Dec  5 10:06:27 UTC 2017 - idonmez@suse.com
+
+- Cleanup with spec-cleaner 
+
+-------------------------------------------------------------------
+Mon Dec  4 22:51:15 UTC 2017 - zombah@gmail.com
+
+- add patch to enable aarch64 build 
+
+-------------------------------------------------------------------
+Tue Nov 28 14:16:20 UTC 2017 - guillaume@opensuse.org
+
+- Switch from master to stable branches
+- Remove _service and add tar.gz source
+- Update to R63-10032 (fix build on Tumbleweed)
+- Update fix_Makefile.patch
+
+-------------------------------------------------------------------
+Wed Jun 21 15:39:24 UTC 2017 - zombah@gmail.com
+
+- update specfile group and version 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:29:57 UTC 2017 - zombah@gmail.com
+
+- add c++ back 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:25:12 UTC 2017 - zombah@gmail.com
+
+- remove questinable dependencies 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:16:08 UTC 2017 - zombah@gmail.com
+
+- remove patch2- 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:12:31 UTC 2017 - zombah@gmail.com
+
+- remove sdl build requirement 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:09:33 UTC 2017 - zombah@gmail.com
+
+- add files lost with last commit 
+
+-------------------------------------------------------------------
+Wed Jun 21 15:03:58 UTC 2017 - zombah@gmail.com
+
+- use obs service git hook
+- update to version 20170302
+- remove old parches and new
+- update specfile 

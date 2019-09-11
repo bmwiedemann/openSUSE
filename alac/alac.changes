@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Jun 29 08:39:33 UTC 2017 - tchvatal@suse.com
+
+- Fix obvious typo where we had missing % in provides/obsoletes
+
+-------------------------------------------------------------------
+Wed Oct 19 11:21:42 UTC 2016 - mpluskal@suse.com
+
+- Update project url
+- Use _service to fetch sources from git
+- Update to version 0.0+git.20160511
+- Refresh patches:
+  * alac-endian.patch
+  * libalac-makefile.patch
+
+-------------------------------------------------------------------
+Tue Jan 19 14:00:36 UTC 2016 - jengelh@inai.de
+
+- Change the SRPM name to alac (follow apparent upstream project
+  name).
+
+-------------------------------------------------------------------
+Fri Jan 15 08:43:53 UTC 2016 - mpluskal@suse.com
+
+- Install both license files
+
+-------------------------------------------------------------------
+Mon Apr 13 16:08:18 UTC 2015 - mpluskal@suse.com
+
+- Remove devel-static package as it has no users
+
+-------------------------------------------------------------------
+Sun Apr 12 19:31:09 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update dependencies
+
+-------------------------------------------------------------------
+Fri Jan  3 20:26:31 UTC 2014 - crrodriguez@opensuse.org
+
+- libalac-makefile.patch update, OPTFLAGS must be used 
+  at linking time as well.
+- alac-endian.patch, fix endian conversion routines
+* They were inneficient, use optimized versions provided by the OS.
+* They were wrong, assumes for example that ARM is not little endian
+  and that powerpc is always big endian.
+- fix cflags so large file support is enabled, GNU_SOURCE is defined,
+  strict aliasing is disabled and C++ inlines get hidden visibility.
+
+-------------------------------------------------------------------
+Sat Jul 20 21:10:16 UTC 2013 - zaitor@opensuse.org
+
+- Update license to new format, Apache-2.0.
+
+-------------------------------------------------------------------
+Fri Oct 28 11:02:35 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out libalac.a into libalac-devel-static
+
+-------------------------------------------------------------------
+Fri Oct 28 10:45:22 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0+r3)
+

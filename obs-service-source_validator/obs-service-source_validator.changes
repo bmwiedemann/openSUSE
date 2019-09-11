@@ -1,0 +1,510 @@
+-------------------------------------------------------------------
+Mon Jun 25 14:52:27 UTC 2018 - ro@suse.de
+
+- Update to version 0.18:
+  * /usr/include/X11 is still a valid path.
+
+-------------------------------------------------------------------
+Thu Jun 14 15:22:48 UTC 2018 - fschreiner@suse.de
+
+- Update to version 0.17:
+  * make path for helpers variable
+  * fix for #bsc985980
+
+-------------------------------------------------------------------
+Tue May 15 13:33:14 UTC 2018 - ro@suse.de
+
+- Update to version 0.16:
+  * 60-spec-filelist: check for LICENSE or COPYING files
+    marked as %doc
+
+-------------------------------------------------------------------
+Wed Mar 14 16:32:20 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.15:
+  * 70-baselibs: call spec_query with and without the
+    --no-conditionals switch
+
+-------------------------------------------------------------------
+Fri Mar 09 13:26:44 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.14:
+  * 70-baselibs: call spec_query with --no-conditionals so that
+    checking package tevent sees the python3-tevent package for
+    the baselibs checker
+  * Build-depend on obs-build to fix Debian build
+
+-------------------------------------------------------------------
+Tue Feb 06 10:33:40 UTC 2018 - adrian@suse.de
+
+- Update to version 0.13:
+  * move multibuild or multi spec in front
+  * add glibc testcase using multibuild
+  * support _multibuild files when validating sources
+
+-------------------------------------------------------------------
+Tue Feb  6 10:33:07 UTC 2018 - adrian@suse.de
+
+- Update to version 0.13
+  * do not use "--no-conditionals" for baselibs check
+
+-------------------------------------------------------------------
+Thu Jan 18 21:13:55 UTC 2018 - fschreiner@suse.de
+
+- Update to version 0.12:
+  * fix for continous lines in macros
+
+-------------------------------------------------------------------
+Thu Jan 16 20:55:21 UTC 2018 - fschreiner@suse.de
+
+- Update to version 0.11:
+  * fix for macro continuation
+  * activating initial test cases
+  * .gitignore for vim swap files
+
+-------------------------------------------------------------------
+Thu Jan 11 10:01:16 UTC 2018 - fschreiner@suse.de
+
+- Update to version 0.10:
+  * Do not call helpers/spec_query with --unique-sources in 70-baselibs
+  * Keep if statements in line continuation contexts
+  * Fix --keep-name-conditionals code in helpers/spec_query
+
+-------------------------------------------------------------------
+Mon Dec 11 16:14:46 UTC 2017 - fschreiner@suse.de
+
+- Update to version 0.9:
+  * fixes boo#1072375
+  * check *_source.changes if they are valid debian source change files
+
+-------------------------------------------------------------------
+Wed Nov 29 12:56:33 UTC 2017 - adrian@suse.de
+
+- Update to version 0.7:
+  * Do not ignore conditionals of the form "%if ... %{name} ..."
+  * Add --keep-name-conditionals option to helpers/spec_query
+  * Do not fail in case of ambiguous source tags
+  * Use priviate --homedir when calling gpg
+
+-------------------------------------------------------------------
+Mon Oct  9 06:24:30 UTC 2017 - jayvdb@gmail.com
+
+- Update obs-service-source_validator.spec
+  * Add explicit dependency on obs-build so that osc
+    does not fail on distributions other than openSUSE.
+
+-------------------------------------------------------------------
+Fri Sep 22 11:21:54 UTC 2017 - ro@suse.de
+
+- Update to version 0.6+git20170922.230bbc4:
+  * deal with nil, flavor defines in output_versions
+  * defining flavor in last change was not needed, remove
+  * 45-stale-changes: use spec_query instead of output_versions
+    using the specfile parser from the build package
+    (boo#1059858)
+
+-------------------------------------------------------------------
+Wed Aug 30 08:00:54 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.6+git20170830.0775ae8:
+  * Fix typo in egrep _service
+  * Refactor helpers/spec_sources into helpers/spec_query
+  * Use helpers/spec_query in 20-files-present-and-referenced
+  * Do not use rpm --specfile to query the subpackage names
+  * Remove unused RPMBUILD variable
+  * Do not use a grouping
+  * Silence another build warning wrt issue #54
+
+-------------------------------------------------------------------
+Fri Aug 11 12:09:25 UTC 2017 - adrian@suse.de
+
+- Update to version 0.6+git20170811.369eb25:
+  * ignore expand errors with macro scripts
+
+-------------------------------------------------------------------
+Thu Aug 10 07:44:02 UTC 2017 - mstrigl@suse.com 
+
+- Update to version 0.6+git20170809.6818366:
+  * Ignore not referenced appimage.yml file
+  * Don't use rpmbuild to extract sources, patches etc. from a spec (bnc#938556 CVE-2017-9274)
+
+-------------------------------------------------------------------
+Wed Jul 19 09:08:06 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.6+git20170719.d4384e5:
+  * Don't complain about Debian manpages files missing in *.spec
+  * Add README.md file
+  * Fix service run mode check for localonly
+  * Add 80-multibuild_xor_multispec: only multibuild OR multispec is supported
+  * extract GPG_OPTIONS variable for multiple runs
+  * For signature verification, use trust model "always"
+
+-------------------------------------------------------------------
+Sat Jul 15 12:43:06 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.6+git20170715.607b861:
+  * - support obspcio also in osc case
+  * Remove provides and obsoletes from the spec
+
+-------------------------------------------------------------------
+Wed Jan 11 13:26:20 UTC 2017 - adrian@suse.de
+
+- Update to version 0.6+git20170111.82ea590:
+  * accept reproducable CI source builds
+  * accept .obsinfo and .obscpio archives
+  * accept further modes of services
+
+-------------------------------------------------------------------
+Wed Dec 07 11:47:58 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.6+git20161207.70e9d99:
+  * 20-files-present-and-referenced fix case where rpmbuild emits a warning but the specfile does not list sources or patches (bnc#1013981)
+
+-------------------------------------------------------------------
+Thu Jul 07 13:08:48 UTC 2016 - adrian@suse.de
+
+- Update to version 0.6+git20160707.a6ff89d:
+  + fix debian.series using patches with patch levels
+
+-------------------------------------------------------------------
+Fri Jun 17 13:54:23 UTC 2016 - fschreiner@suse.de
+
+- Update to version 0.6+git20160617.cfadcb0:
+  * 20-files-present: Add patches from debian.series file to sources list.
+  * 20-files-present: Add more debian standard files to ignore.
+  * 20-files-present: do not use cat where/while not needed
+
+-------------------------------------------------------------------
+Tue May 31 11:31:57 UTC 2016 - fschreiner@suse.de
+
+- Update to version 0.6+git20160531.fbfe336:
+  * baselibs.conf: targetname is a valid keyword
+  * added checker for filenames
+    * additional fixes for  boo#967610 and bsc#967265
+  * enhanced regex to check
+  * better quoting and checks for dot files
+  * filter out single/double quotes and grave accent from filenames
+
+-------------------------------------------------------------------
+Mon Feb 22 17:29:48 UTC 2016 - fschreiner@suse.de
+
+- Update to version 0.6+git20160222.62c56d3:
+  + turned off warnings to avoid misleading messages
+  + fixes boo#967610
+  + related to bsc#967265
+
+-------------------------------------------------------------------
+Thu Feb 18 16:44:41 UTC 2016 - fschreiner@suse.de
+
+- Update to version 0.6+git20160218.73d6618:
+  + Attempt to fix <CI_CNT> and <B_CNT> handling in Release in a minimal invasive way.
+  + 20-files-present-and-referenced: also look for *.sign files
+  + various security and bug fixes (boo#967265)
+  + removed bash 4 test syntax
+
+-------------------------------------------------------------------
+Wed Jun 24 15:36:20 UTC 2015 - hib@hiberis.nl
+
+- Add debian.dsc
+- Use install target from Makefile
+- Update to version 0.5+git20150622.3c3fa65:
+  + Add install target to Makefile
+  + Debianization
+
+-------------------------------------------------------------------
+Thu Jun 11 08:58:17 UTC 2015 - adrian@suse.de
+
+- Update to version 0.5+git20150611.b85a5d4:
+  + unbreak source validator with packages using source services again
+    * Not all _* files are xml
+    * Don't complain about service generated files
+
+-------------------------------------------------------------------
+Wed May 27 13:54:35 UTC 2015 - lnussel@suse.de
+
+- Update to version 0.5+git20150527.6e08ec8:
+  + baselibs.conf: ignore lines starting with #; comments might be welcome
+  + baselibs.conf: 'arch' is also a valid keyword
+  + Avoid trashing _service file
+
+-------------------------------------------------------------------
+Wed May 13 08:54:32 UTC 2015 - lnussel@suse.de
+
+- Update to version 0.5+git20150513.7c2f7ae:
+  + fix checking _service file
+  + baselibs verification: targettype is a nown keyword - treat it as a 'built package'
+  + baselibs validation: pass if we have trouble parsing the .spec file (missing devel packages on the host)
+
+-------------------------------------------------------------------
+Mon Apr 20 12:17:45 UTC 2015 - lnussel@suse.de
+
+- Update to version 0.5+git20150420.23830c1:
+  + Verify if the packages referenced by baselibs.conf are actually being built.
+  + Check for disallowed services before missing files (#16)
+  + add support for %autosetup and %autopatch
+- use proper versioning in _service file and generate changes entry
+
+-------------------------------------------------------------------
+Tue Feb 17 12:51:00 CET 2015 - ro@suse.de
+
+- fix 20-files-present-and-referenced for ocaml macro
+
+-------------------------------------------------------------------
+Thu Nov 13 16:01:19 UTC 2014 - coolo@suse.com
+
+- remove PKGBUILD file again as it breaks source validator
+
+-------------------------------------------------------------------
+Thu Nov 13 13:30:56 UTC 2014 - coolo@suse.com
+
+- update from git:
+  - Don't use gpg's --pgp2 option which was removed in gnupg 2.1.0
+
+-------------------------------------------------------------------
+Mon Sep 29 10:23:20 UTC 2014 - coolo@suse.com
+
+- update from git:
+  - allow all files mentioned in .dsc too
+  - import old md5 based keys like for postfix and putty
+
+-------------------------------------------------------------------
+Thu Aug 14 02:09:11 CEST 2014 - ro@suse.de
+
+- update from git:
+  - more work on dealing with util-linux 
+
+-------------------------------------------------------------------
+Thu Aug 14 01:31:31 CEST 2014 - ro@suse.de
+
+- update from git:
+  - hack for util-linux specfiles (bnc#891829) 
+
+-------------------------------------------------------------------
+Wed Jun 25 12:56:41 UTC 2014 - coolo@suse.com
+
+- update to git (0.4):
+   - warn about unmentioned baselibs.conf and rpmlintrc
+   - Handle Jan Engelhardt tarball signatures that are done before
+     compression
+   - handle %global like %define in output_versions
+   - Support ARM build hosts
+   - do not complain about temporary directories when running source services (on server esp.)
+   - also check for orphan files when _services are used
+     When _service mode is disabled or loc
+
+-------------------------------------------------------------------
+Tue May 27 15:16:33 UTC 2014 - t1locs@gmail.com
+
+- Add rpm-build dependancy for centos 6 
+
+-------------------------------------------------------------------
+Thu Jan  9 09:32:13 UTC 2014 - adrian@suse.de
+
+- add requires to xmllint which is used
+
+-------------------------------------------------------------------
+Tue Aug  6 12:34:53 UTC 2013 - dmueller@suse.com
+
+- update to latest git:
+  2b2c89d  also check for orphan files when _services are used
+  197b519  Check the Buildservice magic files (_link/_service)
+           with xmllint
+  a6d922c  Cleanup keyring check
+  f936138  removed the incorrect basename checking, also do not look
+           for .gpg files as we currently use either .sig or .asc
+
+-------------------------------------------------------------------
+Sun Jun 30 07:28:57 UTC 2013 - adrian@suse.de
+
+- fix dependency to gnupg2 for Fedora (bnc#827480)
+
+-------------------------------------------------------------------
+Tue Jun 18 12:56:39 UTC 2013 - coolo@suse.com
+
+- add patch from mmeissner to verify .sig files
+- add _service to ease update
+
+-------------------------------------------------------------------
+Tue Feb 26 17:55:43 CET 2013 - ro@suse.de
+
+- allow PKGBUILD build description file for archlinux 
+
+-------------------------------------------------------------------
+Mon Feb  4 01:49:22 CET 2013 - ro@suse.de
+
+- check_patches_applied: allow #patches as comment 
+
+-------------------------------------------------------------------
+Fri Jan 18 16:17:52 CET 2013 - ro@suse.de
+
+- also allow %undefine
+
+-------------------------------------------------------------------
+Mon Jan  7 13:28:44 CET 2013 - ro@suse.de
+
+- exit if tmpdir creation fails (bnc#796918) 
+
+-------------------------------------------------------------------
+Wed Jun 13 17:13:49 CEST 2012 - ro@suse.de
+
+- also ignore Requires(.*) lines (bnc#724609) 
+
+-------------------------------------------------------------------
+Wed Jun 13 15:01:39 CEST 2012 - ro@suse.de
+
+- allow %{nil} just as %nil
+
+-------------------------------------------------------------------
+Fri Apr 27 14:07:07 CEST 2012 - ro@suse.de
+
+- use --nodeps with rpmbuild in 20-files-present-and-referenced 
+
+-------------------------------------------------------------------
+Mon Feb 27 10:54:20 CET 2012 - dmueller@suse.de
+
+- fix requires for factory 
+
+-------------------------------------------------------------------
+Tue Feb 14 10:14:25 UTC 2012 - adrian@suse.de
+
+- add requires to perl-TimeDate
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:16 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:16 UTC 2012 - ro@suse.com
+
+- do not complain for commented out rpmlintrc lines
+- Update 20-files-present-and-referenced to ignore .git and
+  .emacs.backup
+- Change bright yellow into good old brown
+
+-------------------------------------------------------------------
+Fri Sep 23 08:30:45 UTC 2011 - adrian@suse.de
+
+- rename osc-source_validator package into osc-service-source_validator
+- obsolete osc-source_validator
+- roll tar ball from new git at github.com
+
+-------------------------------------------------------------------
+Fri Jul  1 17:12:32 CEST 2011 - ro@suse.de
+
+- prevent dupes for Release and Version along with Name
+
+-------------------------------------------------------------------
+Mon May 30 11:53:53 CEST 2011 - ro@suse.de
+
+- fix bug with "Patch" in comments 
+
+-------------------------------------------------------------------
+Mon May  9 13:47:29 UTC 2011 - ro@novell.com
+
+- try to fix bnc#679980 
+
+-------------------------------------------------------------------
+Wed Apr 20 17:30:19 CEST 2011 - ro@suse.de
+
+- find another form of commenting out patches
+  in check_patches_applied 
+
+-------------------------------------------------------------------
+Mon Apr 18 01:06:59 CEST 2011 - ro@suse.de
+
+- Also check if files are tracked by osc
+- catch some more syntax variants in check_patches_applied
+- do tracked-check only in osc mode
+
+-------------------------------------------------------------------
+Tue Apr 12 16:40:58 CEST 2011 - ro@suse.de
+
+- activate the patches_applied check for real,
+  errors out if errors found 
+
+-------------------------------------------------------------------
+Mon Apr  4 13:15:11 CEST 2011 - ro@suse.de
+
+- add debian special files
+
+-------------------------------------------------------------------
+Wed Mar 30 12:38:16 CEST 2011 - ro@suse.de
+
+- add colors to output of check_patches_applied
+  but no colors for batchmode
+
+-------------------------------------------------------------------
+Fri Feb 18 11:39:29 UTC 2011 - jw@novell.com
+
+- retry broken sr#59008
+- added another set of runtime-fixes.diff
+  * accept .orig and ~ files in working directories.
+  * UI consistency improved.
+
+-------------------------------------------------------------------
+Sat Feb 12 11:10:42 UTC 2011 - ro@novell.com
+
+- 50-spec-version: show warning only once per specfile 
+
+-------------------------------------------------------------------
+Thu Jan 13 14:29:54 CET 2011 - ro@suse.de
+
+- move COPYING file to docdir (prevent permission denied trying
+  to execute it as a checkscript) 
+
+-------------------------------------------------------------------
+Thu Jan 13 12:52:36 CET 2011 - ro@suse.de
+
+- switch source to git (gitorious/opensuse)
+- convert_changes_to_rpm_changelog make regex a little stricter
+  looking for date line
+- 20-files-present-and-referenced add %rubygems_requires to
+  prunelist
+- add some helper files to create tar and changes
+- stale-changes: do not fail if there is no specfile present at all
+- stale-changes: allow extra changes files if listed as source in a
+  spec
+
+-------------------------------------------------------------------
+Tue Jan  4 16:09:56 CET 2011 - mcihar@suse.cz
+
+- add Url pointing to wiki to spec file
+
+-------------------------------------------------------------------
+Tue Jan  4 16:07:42 CET 2011 - mcihar@suse.cz
+
+- cleanup spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan  4 16:05:39 CET 2011 - mcihar@suse.cz
+
+- create 0.1 tarball with incorporated patch and added license file
+- adjust spec file for above changes
+
+-------------------------------------------------------------------
+Mon Oct  4 07:32:21 UTC 2010 - adrian@suse.de
+
+- do not complain about files starting with underscore, they are
+  OBS special files in any case
+
+-------------------------------------------------------------------
+Sat May 22 06:38:35 UTC 2010 - adrian@suse.de
+
+- add some modification to survive some more examples
+
+-------------------------------------------------------------------
+Thu May 20 18:11:38 CEST 2010 - ro@suse.de
+
+- make the files executable 
+
+-------------------------------------------------------------------
+Thu May 20 17:40:29 CEST 2010 - ro@suse.de
+
+- fill with some content 
+
+-------------------------------------------------------------------
+Thu May 20 05:56:47 UTC 2010 - adrian@suse.de
+
+- initial package, no code yet, always succeeding
+

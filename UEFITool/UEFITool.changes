@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Fri Dec 14 14:12:30 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20180624:
+  * Unify version scheme
+  * Support replacing raw sections and ffs via -asis
+  * Allow subguid matching for UEFIReplace
+  * Fix recursion in UEFIReplace
+  * Add -o / --output flag to UEFIPatch
+  * Implement replace all and add -o (--output) path to UEFIReplace
+  * Backport decompression updates from new_engine
+  * Add misc patches unrelated to Intel PowerManagement
+  * Implement external patches.txt path for UEFIPatch
+  * Fix Intel descriptor version parsing at reading
+  * Properly read Intel descriptor version, thx @platomav
+  * Recognise B360MHD3.F3 descriptor version
+  * Remove legacy UEFIFind and UEFIExtract in favour of new_engine branch
+  * Fix EC region parse
+
+-------------------------------------------------------------------
+Thu Mar  8 14:01:24 UTC 2018 - mpluskal@suse.com
+
+- Update to version 20180225:
+  * fixed rebase PEI files with nonstandard alignment
+  * Fixed patches for Skylake-X
+  * multiple fixes
+  * fix for #99
+  * 0.22.1 multiple FFSv3 support fixes, thanks to @osresearch
+  * add FFSv3 support with large files and large sections
+
+-------------------------------------------------------------------
+Mon Jul 24 13:12:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20170506:
+  * Add UEFIReplace.
+
+-------------------------------------------------------------------
+Sat Mar  4 13:35:02 UTC 2017 - jengelh@inai.de
+
+- Trim description to relevant parts
+
+-------------------------------------------------------------------
+Sun Feb 26 10:32:29 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20170212:
+  * Corrected EC region placement
+  * Corrected #34
+  * UT 0.21.2
+  * UT 0.21.3 / UP 0.3.7
+  * Fix a compiler warning
+  * UT 0.21.4 / UP 0.3.8
+  * UT 0.21.5 /UP 0.3.9 untested
+  * Forgot to bump UP version
+  * Update patches.txt
+  * Add Kaby Lake support.
+- Add _service
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Sat Jan 10 23:04:03 UTC 2015 - johannesobermayr@gmx.de
+
+- Initial package
+

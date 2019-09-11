@@ -1,0 +1,321 @@
+-------------------------------------------------------------------
+Fri Mar  8 20:13:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- librelp 1.4.0:
+  * Both openssl and GnuTLS are now enabled
+  * support concurent use of both GnuTLS and openssl TLS drivers
+  * bugfix: in openssl mode, cert name validation did not work properly
+  * bugfix: invalid handling of connection fail could lead to abort
+
+-------------------------------------------------------------------
+Mon Dec 31 13:52:11 UTC 2018 - astieger@suse.com
+
+- librelp 1.3.0:
+  * improved error reporting
+  * bugfix openssl: anon mode did not work with openssl 1.1.0+
+  * bugfix: do not send multiple open commands
+
+-------------------------------------------------------------------
+Tue Oct  2 20:30:21 UTC 2018 - astieger@suse.com
+
+- librelp 1.2.18:
+  * added non-standard "certvalid" auth mode to TLS authentication
+
+-------------------------------------------------------------------
+Mon Sep  3 14:42:28 UTC 2018 - astieger@suse.com
+
+- librelp 1.2.17:
+  * add support for openssl, GnuTLS remains the default
+  * improve error message on connection failure
+  * fix 100% CPU utilization due to busy loop
+  * fix do not expose symbols that are not part of public API
+  * fix potential segfault when listener could not be bound
+
+-------------------------------------------------------------------
+Tue May 15 13:37:15 UTC 2018 - astieger@suse.com
+
+- librelp 1.2.16:
+  * add new API: relpSrvSetOversizeMode()
+  * add new API: relpSrvSetLstnAddr()
+  * support additional hashes for fingerprint mode
+  * fix various memory leaks
+
+-------------------------------------------------------------------
+Sat Mar 24 08:48:48 UTC 2018 - astieger@suse.com
+
+- librelp 1.2.15:
+  * CVE-2018-1000140: A remote attackher could have used specially
+    crafted x509 certificates when connecting to rsyslog to trigger
+    a stack buffer overflow and run arbitrary code (bsc#1086730)
+  * bugfix: invalid handling of snprintf() return code
+  * bugfix: invalid assert predicate
+  * some code cleanup
+  * bugfix: error message on open error was truncated
+
+-------------------------------------------------------------------
+Mon May 29 15:46:36 UTC 2017 - astieger@suse.com
+
+- librelp 1.2.14:
+  * API extension: add relpSrvSetMaxDataSize()
+
+-------------------------------------------------------------------
+Thu Feb 23 13:28:52 UTC 2017 - astieger@suse.com
+
+- librelp 1.2.13:
+  * bugfix: duplicated lines after server reconnect
+
+-------------------------------------------------------------------
+Mon Jan 30 17:31:03 CET 2017 - ndas@suse.com
+
+- This updated library is needed for latest rsyslog(fate#320546)
+
+-------------------------------------------------------------------
+Sun Jul 10 18:43:57 UTC 2016 - astieger@suse.com
+
+- librelp 1.2.12:
+  * API enhancement: permit to set connection timeout
+  * cleanup: replace deprecated GnuTLS data types by current ones
+
+-------------------------------------------------------------------
+Tue Jun 28 15:29:05 UTC 2016 - astieger@suse.com
+
+- librelp 1.2.11:
+  * do not accept more than one "open" verb on a connection
+  * fix potential segfault when high-numbered fd is used in sender
+  * make librelp not run in thight loop when out of sockets
+  * flush the current recv frame if it exists if the client session
+    is restarting
+  * API enhancement: add configurable connection timeout
+
+-------------------------------------------------------------------
+Mon Apr  4 11:55:31 UTC 2016 - astieger@suse.com
+
+- librelp 1.2.10:
+  * fix a problem with sending large buffers
+  * improve sender/receiver code 
+  * enable compatibility with older versions of GnuTLS
+
+-------------------------------------------------------------------
+Mon Feb  8 21:00:15 UTC 2016 - mpluskal@suse.com
+
+- Make building more verbose
+
+-------------------------------------------------------------------
+Thu Jan 28 14:00:17 UTC 2016 - mrueckert@suse.de
+
+- fix build on sle11. the sles_version conditional is just broken
+
+-------------------------------------------------------------------
+Sat Jan  2 15:17:45 UTC 2016 - astieger@suse.com
+
+- librelp 1.2.9:
+  * Ignoring return status when handling syslog frames now.
+    Otherwise valid messages in the frame buffer will get lost when
+    the remote connection is closed during meantime.
+
+-------------------------------------------------------------------
+Tue Sep  8 19:51:14 UTC 2015 - astieger@suse.com
+
+- librelp 1.2.8:
+  * fix segfault if KEEPALIVE is used
+
+-------------------------------------------------------------------
+Tue Apr 29 17:07:46 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.2.7
+  - bugfix: librelp was incompatible with C++ without a real reason
+  - bugfix: potential misadressing in wildcard match
+  - bugfix: always last wildcard match was reported, not first
+- contains changes from 1.2.6
+  - report error when preparing for non-anon TLS and this is
+    unsupported
+
+-------------------------------------------------------------------
+Thu Mar 20 16:18:03 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.2.5:
+  - permit to use anonymous TLS on platforms where GnuTLS lacks
+    certificate verification function
+
+-------------------------------------------------------------------
+Mon Mar 17 12:15:50 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.2.4:
+  - correct API/ABI change in 1.2.3
+  - revert back to previous state (return void)
+    * relpSrvEnableTLS();
+    * relpSrvEnableTLSZip();
+    These functions are now deprecated.
+  - introduce new functions that return a state
+    * relpSrvEnableTLS2();
+    * relpSrvEnableTLSZip2();
+
+-------------------------------------------------------------------
+Fri Mar 14 14:50:27 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.2.3:
+  - add ability to build librelp without TLS
+  - API change: two functions that used to return void now return
+    state:
+    * relpSrvEnableTLS();
+    * relpSrvEnableTLSZip();
+
+-------------------------------------------------------------------
+Tue Jan 14 20:53:10 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.2.2:
+  - add capability to enable tcp KEEPALIVE
+  - introduced new API relpSrvSetKeepAlive() to support KEEPALIVE
+  - errors binding listener port are now reported via error message
+    callback
+
+-------------------------------------------------------------------
+Tue Jul 16 10:52:06 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.2.0:
+  - support for epoll() added
+  - API extension: relpEngineSetOnGenericErr
+
+-------------------------------------------------------------------
+Thu Jul 11 21:41:09 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.1.5:
+  This is a bug-fixing release that takes care of a memory leak on 
+  connection close as well as potential misadressing on session 
+  close.
+  - bugfix: memory leak on connection close
+  - bugfix: potential misadressing on session close
+
+-------------------------------------------------------------------
+Thu Jul 11 21:35:53 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.1.4:
+  This version of the library provides certificate wildcard name 
+  checks. It also supports enhanced performance options (burst 
+  support, requires support from the caller). It also contains 
+  some bug fixes, especially for BSD.
+  - fix build problems on BSD
+  - add ability to specify a non-standard RELP Window size
+  - add burst support to the client API
+  - wildcards are now supported in TLS name peer authentication
+  - new APIs: relpCltHintBurstBegin, relpCltHintBurstEnd,
+    relpCltSetWindowSize
+
+-------------------------------------------------------------------
+Sun Jun 30 10:44:04 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.1.3:
+  - increased performance of RELP connection
+  - bugfix: potential segfault if no GnuTLS priority string was set
+- includes changes from 1.1.2:
+  - add capability to specify the GnuTLS priority string
+    This gives callers complete control over crypto parameters, like
+    ciphers to use.
+  - add certificate-based authentication
+  - add capability to specify number of Diffie-Hellman bits to use
+  - API extension: relpSrvSetDHBits, relpSrvSetGnuTLSPriString,
+    relpSrvSetGnuTLSPriString, relpCltSetGnuTLSPriString
+    relpEngineSetOnAuthErr, relpCltSetUsrPtr,
+    relpSrvSetAuthMode, relpCltSetAuthMode
+- includes changes from 1.1.1:
+  - added compression support for TLS
+  - API extension: relpCltEnableTLSZip, relpSrvEnableTLSZip
+- includes changes from 1.1.0
+  - add TLS support
+-   new api for creating listners:
+    ... which permits us to set various properties before the listener
+    is actually started. New callers should use it. Sequence is:
+    * relpEngineListnerConstruct()
+    * ... set properties ... (via relpSrv...() family)
+    * relgEngineListnerConstructFinalize()
+    This new style permits us to add/set additional listner options
+    without the need to introduce ever-new listner create functions.
+    Actually, their number would grow exponentionally, so this were
+    a dead end.
+    The old-style APIs relpEngineAddListner() and
+    relpEngineAddListner2() are still fully supported (and supposed
+    to be for a long time), but flagged as deprecated.
+- includes changes from 1.0.7:
+  - ABI change: removed relpCltConnect2() API which was against
+    librelp API philosophy
+    This was only introduced in 1.0.6 and been in the code for a very
+    short time. So we decided that the best thing to do is actually
+    remove it (there is NO known released user, this changes was for
+    yet unreleased rsyslog 7.5.0).
+- includes changes from 1.0.6:
+  - enhanced API to permit binding a client to a specific IP address
+- includes changes from 1.0.5:
+  - bugfix: compile problem on Solaris
+- includes changes from 1.0.4:
+  - bugfix: busy loop on syslog sending as a client when server did not
+    accept data; this was broken out only when the remote peer
+    indicated that the connection as whole was broken. Now we properly
+    timeout.
+- make -devel package require gnutls-devel to be useful
+
+-------------------------------------------------------------------
+Tue Apr 23 20:06:57 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.0.3:
+  - added relpCltSetTimeout() interface function
+  - improved timeout handling
+  - provide support for user-settable shutdown indicator
+- includes changes from 1.0.2:
+  - added capability to support only IPv4/v6 instead of both
+
+-------------------------------------------------------------------
+Mon Sep 24 20:20:59 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.0.1:
+  - added capability to stop server without canceling its thread
+  - bugfix: interrupt of select() was not properly handled
+- add pkgconfig support
+
+-------------------------------------------------------------------
+Mon May 14 14:01:23 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No indication of GPL-3.0 ^only^ files in package. Fedora also using
+  GPL-3.0+
+
+-------------------------------------------------------------------
+Fri May 11 15:43:56 UTC 2012 - jengelh@inai.de
+
+- Remove redundant sections and tags from specfile
+- Enable parallel build
+
+-------------------------------------------------------------------
+Mon Feb 13 10:49:11 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Apr 14 09:42:37 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.0.0
+  This version of librelp matured in practice and it is now time
+  for a 1.0 release. Besides that, it includes a small number of
+  changes:
+  - bugfix: user callback never received remote IP address
+  - bugfix: offers builder did use a fixed size string without
+    bounds checking. I don't think this was a real issue as it was
+    not exposed to the outside world, but now the buffer
+    dynamically grows (which is the right thing to do). Thank to
+    mterry for alerting me.
+- additional changes from version 0.1.3
+  - the callback on message reception did not contain a way to pass
+    on a caller cookie (e.g. for an instance pointer). An
+    additional interface has been added to support that.
+  - cleaned up FDL license specifics
+  - added libtool versioning
+  - made librelp compile out of the box on FreeBSD - thanks to
+    Michael Biebl for the patch
+- additional changes from version 0.1.2
+  - forward compatibility changes in support of our plans to use
+    the rsyslog runtime in the future
+
+-------------------------------------------------------------------
+Wed Apr  9 17:55:18 CEST 2008 - mrueckert@suse.de
+
+- initial package
+

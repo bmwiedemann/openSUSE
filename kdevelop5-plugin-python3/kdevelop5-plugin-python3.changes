@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Tue Aug 13 08:14:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.4.1
+  * no code changes  
+
+-------------------------------------------------------------------
+Tue Aug  6 11:46:22 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.4.0
+  * no code changes, just minor cleanups and adaptions to changes
+    in the kdevplatform API
+
+-------------------------------------------------------------------
+Thu Jul 18 08:08:27 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.3.3
+  * Use KDE_INSTALL_LOGGINGCATEGORIESDIR for kdebugsettings
+    .categories file
+
+-------------------------------------------------------------------
+Thu Mar  7 11:41:58 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.3.2
+  * Fix crash when finding context inside annotated assignments
+    (kde#403045)
+
+-------------------------------------------------------------------
+Sat Dec 22 19:18:50 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.3.1
+  * Remove two outdated methods from shipped built-in documentation
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 14 10:28:19 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.3.0
+  * Inject environment profile variables into debug process
+    environment (kde#322477)
+  * Improve support for 'with' statements (kde#399533, kde#399534)
+- Remove unnecessary build requirements
+
+-------------------------------------------------------------------
+Tue Aug 21 10:57:17 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.2.4
+  * no code changes
+
+-------------------------------------------------------------------
+Fri May 25 13:25:59 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.2.3 (5.2.2 has been skipped)
+  * Ensure that codestyle.py always returns something on stdout to
+    unlock m_mutex (kde#392031)
+  * Fix crash with contexts opened in the baseclass list of a class
+    definition (kde#389326)
+  * Fix appstream metadata filename and some content, and install
+    it
+- New upstream release 5.2.1
+  * no code changes
+- New upstream release 5.2.0
+  * For a list of changes, see:
+    https://www.kdevelop.org/news/kdevelop-520-released
+  * Fixed a false-positive warning when a name used in a closure
+    was defined later in the file
+  * Fixed highlighting of local variables in comprehensions and of
+    parameters in lambda definitions
+  * Infer the correct type when slicing a tuple with constant
+    integers
+  * Infer the correct type from 'and' or 'or' expressions
+  * Internal code cleanups
+- Remove superfluous python-qt5 requirement
+- Install license file
+
+-------------------------------------------------------------------
+Tue Aug 29 07:23:46 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.2
+  * no code changes
+
+-------------------------------------------------------------------
+Sat May 27 14:07:48 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.1
+  * Fix crash (kde#378827)
+  * Pep8: Make pep8 warnings less annoying
+
+-------------------------------------------------------------------
+Thu Mar 23 14:46:43 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.0
+  * For a list of changes, see:
+    https://www.kdevelop.org/news/kdevelop-510-released
+- Drop build-with-py36.diff, included upstream
+- Adjust minimum python3 version, 3.4.3 and higher is supported now
+
+-------------------------------------------------------------------
+Sun Mar  5 13:49:52 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.0.4
+  * Update version number to 5.0.4
+  * Fix crash when requesting raise items without the docfile being
+    parsed (kde#373349)
+- Rebase build-with-py36.diff
+
+-------------------------------------------------------------------
+Wed Feb 22 15:13:52 UTC 2017 - lbeltrame@kde.org
+
+- Add build-with-py36.diff: diff from upstream 50-python36 branch
+  to enable building with Python 3.6
+
+-------------------------------------------------------------------
+Fri Dec  2 14:55:35 UTC 2016 - wbauer@tmo.at
+
+- New upstream release 5.0.3
+  * Fix some small issues in the standard library info
+
+-------------------------------------------------------------------
+Wed Nov 16 10:42:16 UTC 2016 - wbauer@tmo.at
+
+- New upstream release 5.0.2
+  * no code changes
+
+-------------------------------------------------------------------
+Tue Oct  4 12:55:32 UTC 2016 - lbeltrame@kde.org
+
+- Add QtConcurrent to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct  3 22:25:48 UTC 2016 - lbeltrame@kde.org
+
+- New upstream release 5.0.1
+  * Fix imports sometimes not being found in kdev-python without
+    pressing F5 by hand  
+
+-------------------------------------------------------------------
+Fri Sep 23 14:49:03 UTC 2016 - lbeltrame@kde.org
+
+- Add conflicts with lang packages, to workaround a
+  submission bot bug
+
+-------------------------------------------------------------------
+Wed Aug 24 19:50:06 UTC 2016 - lbeltrame@kde.org
+
+- Add Obsoletes/Provides for old kdevelop packages
+
+-------------------------------------------------------------------
+Wed Aug 24 15:20:26 UTC 2016 - cgiboudeaux@gmx.com
+
+- Update to 5.0.0
+
+-------------------------------------------------------------------
+Sat Mar 19 15:19:28 UTC 2016 - fvogt@suse.com
+
+- Fix build by removing wrong %file entry
+
+-------------------------------------------------------------------
+Thu Jan 28 10:45:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial package for Python3 plugin for KDevelop based on Frameworks
+  * KDevelop 5 Beta 3
+

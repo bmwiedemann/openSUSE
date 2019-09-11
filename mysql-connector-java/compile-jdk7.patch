@@ -1,0 +1,26 @@
+Index: mysql-connector-java-5.1.42/build.xml
+===================================================================
+--- mysql-connector-java-5.1.42.orig/build.xml
++++ mysql-connector-java-5.1.42/build.xml
+@@ -911,8 +911,8 @@ Java 8 (for JDBC 4+ implementation) is a
+                executable="${com.mysql.jdbc.jdk8.javac}"
+                compiler="modern"
+                includeantruntime="false"
+-               source="1.8"
+-               target="1.8">
++               source="1.6"
++               target="1.6">
+             <include name="**/JDBC42*.java" />
+             <classpath refid="project.build.classpath" />
+             <compilerarg line="${javac.compilerarg}" />
+@@ -970,8 +970,8 @@ Java 8 (for JDBC 4+ implementation) is a
+                executable="${com.mysql.jdbc.jdk8.javac}"
+                compiler="modern"
+                includeantruntime="false"
+-               source="1.8"
+-               target="1.8">
++               source="1.6"
++               target="1.6">
+             <include name="testsuite/**/jdbc42/**" />
+             <classpath refid="project.build.classpath" />
+             <compilerarg line="${javac.compilerarg}" />

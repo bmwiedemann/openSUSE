@@ -1,0 +1,21 @@
+Date: 2019-05-18
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+
+Do not instrument code with profiling
+to make build reproducible
+and also more sane in general
+Index: rjsmin-53a0848b2372c1b49c03326bc8209ea39e889c47/debug.unix.cflags
+===================================================================
+--- rjsmin-53a0848b2372c1b49c03326bc8209ea39e889c47.orig/debug.unix.cflags
++++ rjsmin-53a0848b2372c1b49c03326bc8209ea39e889c47/debug.unix.cflags
+@@ -1,10 +1,6 @@
+ # allow crash debugging
+ -ggdb
+ 
+-# produce coverage reports
+--ftest-coverage
+--fprofile-arcs
+-
+ # don't compile on weird code
+ -std=c89 -pedantic -fno-strict-aliasing -Werror
+ -Wall

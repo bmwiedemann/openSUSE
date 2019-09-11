@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Wed Feb 14 15:57:26 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on Xfreee86-devel  
+
+-------------------------------------------------------------------
+Thu Feb 28 06:01:30 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Feb 28 12:52:33 CET 2012 - tiwai@suse.de
+
+- fix filelist to build properly on FACTORY
+
+-------------------------------------------------------------------
+Mon Nov  8 13:43:42 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Wed Jan 23 18:22:34 CET 2008 - mfabian@suse.de
+
+- add “Requires: gnu-unifont”.
+- clean up specfile and fix rpmlint warnings.
+
+-------------------------------------------------------------------
+Fri Aug 04 19:06:03 CEST 2006 - mfabian@suse.de
+
+- adapt for Xorg X11R7 (paths changed).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 22:11:02 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sun Aug 18 13:57:45 CEST 2002 - mfabian@suse.de
+
+- update to 0.3
+- make the Gnu Unifont the default font
+- add License to file list
+- remove obsolete XA_UTF8_STRING patch
+
+-------------------------------------------------------------------
+Mon Mar 12 07:34:03 CET 2001 - ke@suse.de
+
+- Spec file: Add xf86 to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Dec 19 13:18:33 CET 2000 - ke@suse.de
+
+- XA_UTF8_STRING is already defined; thanks to Stefan Dirsch for
+  providing a patch [#4699].
+
+-------------------------------------------------------------------
+Mon Nov 20 10:44:38 CET 2000 - ke@suse.de
+
+- Initial package: version 0.1.
+
+

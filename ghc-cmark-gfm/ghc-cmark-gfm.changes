@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Thu Apr 11 06:35:14 UTC 2019 - psimons@suse.com
+
+- Update cmark-gfm to version 0.2.0.
+  cmark-gfm 0.2.0 (8 Apr 2019)
+
+    * Pull in upstream changes.
+
+  cmark 0.6 (08 Apr 2019)
+
+    * Update to cmark 0.29.0.
+    * Export optUnsafe.  Note that the default is now to suppress
+      potentially unsafe HTML; set optUnsafe to return to the old behavior.
+
+-------------------------------------------------------------------
+Thu Mar 14 03:01:54 UTC 2019 - psimons@suse.com
+
+- Update cmark-gfm to version 0.1.8.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cmark-gfm-0.1.8/src/changelog
+
+-------------------------------------------------------------------
+Wed Mar 13 11:03:24 UTC 2019 - psimons@suse.com
+
+- Update cmark-gfm to version 0.1.7.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cmark-gfm-0.1.7/src/changelog
+
+-------------------------------------------------------------------
+Thu Oct 18 02:01:50 UTC 2018 - psimons@suse.com
+
+- Update cmark-gfm to version 0.1.6.
+  cmark-gfm 0.1.6 (17 Oct 2018)
+
+    * Update to cmark-gfm 0.28.3.gfm.18.
+    * `optUnsafe` is now exposed, instead of `optSafe`.
+
+-------------------------------------------------------------------
+Wed Aug 22 09:18:10 UTC 2018 - psimons@suse.com
+
+- Update cmark-gfm to version 0.1.5.
+  cmark-gfm 0.1.5 (21 Aug 2018)
+
+    * Update to cmark-gfm 0.28.3.gfm.15.
+    * Fix build with system cmark-gfm (Felix Yan, #9).
+
+-------------------------------------------------------------------
+Fri Jul 13 14:32:16 UTC 2018 - psimons@suse.com
+
+- Update cmark-gfm to version 0.1.4.
+  cmark-gfm 0.1.4 (2 Jul 2018)
+
+    * Extensions work correctly on big-endian systems (Ilias Tsitsimpis).
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Add cmark-gfm at version 0.1.3.

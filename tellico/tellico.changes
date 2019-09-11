@@ -1,0 +1,1135 @@
+-------------------------------------------------------------------
+Mon Aug 12 09:07:26 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Fix-build-with-Qt-5_13.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 11:21:14 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.1:
+  Features:
+  * Added a data source for Kino-Teatr.ua.
+  * Updated Kino.de data source.
+  * Removed optional dependency on QImageBlitz library.
+  Bug Fixes:
+  * Fixed selection bug when modifying an unselected entry
+    (kde#391614).
+  * Fixed bug for the status bar to respond when canceling an entry
+    update (kde#325591).
+  * Fixed file preview generation for file collections.
+  * Improved normalization of video game platform names.
+  * Remove state of the locked layout setting between sessions.
+- specfile cleanup:
+  * Remove conditionals for old openSUSE versions
+  * Remove no longer necessary %post/%postun sections that are
+    no-ops in Leap 15.0 and later, to get rid of rpmlint warnings
+- Use %kf5_find_htmldocs to generate filelist for translated docs
+
+-------------------------------------------------------------------
+Wed May 29 06:38:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2
+  * Updated documentation.
+  * Added capability to dock collection views side-by-side.
+  * Improved speed when merging collections (kde#349410).
+  * Added Moby Games data source.
+  * Added ComicVine data source.
+  * Updated Amazon data source to include localized data from Brazil, Australia,
+    India, Mexico, and Turkey.
+  * Updated IGDB.com data source.
+  * Updated TheGamesDB.net data source (kde#407811).
+  * Updated Visual Novel Database data source.
+  * Updated KinoPoisk.ru data source (kde#403185).
+  * Fixed bug with setting IMDB rating in various locales (kde#401894).
+  * Corrected server for National Library of Lithuania (kde#404743).
+  * Don't open a blank entry for editing when collection has not been saved (kde#405191).
+  * Fix build against ICU 64.1 and later (Gentoo Bug 685460).
+
+-------------------------------------------------------------------
+Fri Dec 21 08:45:22 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.4:
+  Features:
+  * Updated Kino.de data source.
+  * Updated KinoPoisk.ru data source.
+  * Updated Bedetheque.com data source.
+  Bug Fixes:
+  * Fixed group filtering for special characters (kde#399928).
+  * Fixed bug when using a regular expression filter for number
+    fields (kde#399323).
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep  3 21:14:32 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.3:
+  Improvements:
+  * Updated Internet Movie Database (IMDB.com) data source
+    (kde#393239).
+  * Updated TheGamesDB.net data source.
+  * Updated Amazon.com data source (kde#396211).
+  * Updated SRU data source to allow multiple MARC records in
+    response.
+  Bug fixes:
+  * Fixed compilation for Qt 5.6 (kde#392457).
+  * Fixed bug with clearing the selection when modifying an entry
+    (kde#394343).
+  * Fixed LTR direction for year within Video template
+    (deb#904259).
+- Drop fix-build-with-Qt5.6.patch, merged upstream
+
+-------------------------------------------------------------------
+Wed Mar 28 11:48:43 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.2:
+  Improvements:
+  * Updated KINO.de data source.
+  * Updated Internet Movie Database (IMDB.com) data source.
+  * Updated ISBNdb.com data source.
+  * Updated MusicBrainz data source.
+  Bug fixes:
+  * Added workaround for crash when reading EXIV data (kde#390744).
+  * Fixed bug with inconsistent selection (kde#391614).
+  * Fixed bug with "Filter by Group" (kde#389931).
+- Add fix-build-with-Qt5.6.patch to make it compile on Leap 42.3
+  (kde#392457)
+- Use cmake() syntax for KF5 and Qt5 BuildRequires
+- Mark license files as %license
+
+-------------------------------------------------------------------
+Tue Jan 16 09:15:32 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.1:
+  Improvements:
+  * Updated KINO.de data source.
+  * Updated Internet Game Database (IGDB.com) data source.
+  * Updated Internet Movie Database (IMDB.com) data source.
+  * Improved "Filter by Group" to use a regular expression
+    (kde#386011).
+  * Updated Goodreads importer.
+  Bug fixes:
+  * Removed deprecated Wine.com data source.
+  * Fixed bug with OMDB settings not being saved (kde#388703).
+  * Fixed bug with filter selection (kde#387130).
+  * Fixed bug with multi-selection and entry editing (kde#387053).
+  * Fixed bug with incorrect entry titles in icon view and multiple
+    entry icons (kde#386548).
+  * Fixed bug for "losing" icons after modifying a collection
+    (kde#386549).
+  * Fixed bug with duplicated colons in CSV importer (kde#386483).
+
+-------------------------------------------------------------------
+Sun Oct 15 07:13:25 UTC 2017 - thod_@gmx.de
+
+- Update to 3.1:
+  * Added data source for KINO.de.
+  * Added data source for Internet Game Database (IGDB.com).
+  * Added data source for OpenSource.dbc.dk.
+  * Added message dialog for Amazon Associate warnings (kde#364784).
+  * Added DBUS option for filtering exported entries (kde#382035).
+  * Improved performance for filtering large collections.
+  * Switched from using libdiscid to libcdio for improved performance for reading Audio CDs and CD-Text.
+  Bug Fixes:
+  * Fixed crashing bugs with remote image loading (kde#382572, kde#379607, kde#384104).
+  * Fixed bug with showing stars in column view for float values (kde#384547).
+  * Fixed building with CMake 3.9+ (kde#382680)
+  * Fixed bug of running out of memory when writing very large XML files (kde#380832).
+  * Fixed bug with some icons not being shown (kde#378477).
+  * Removed deprecated Freebase data source.
+  * Fixed track length for CD audio (kde#379426).
+  * Fixed bug showing icons for custom collection (kde#378852).
+  * Added PEGI rating to GiantBomb results (kde#375996).
+- Remove 0001-Fix-build-with-cmake-3.9.patch (see kde#382680 above)
+
+-------------------------------------------------------------------
+Tue Sep  5 16:59:07 UTC 2017 - wbauer@tmo.at
+
+- Add 0001-Fix-build-with-cmake-3.9.patch to fix build with latest
+  cmake in Factory (kde#382680)
+
+-------------------------------------------------------------------
+Tue Mar 28 10:03:20 UTC 2017 - wbauer@tmo.at
+
+- Add libkcddb-devel build requirement for Leap >= 42.3 and
+  Tumbleweed to enable CDDB searches.
+
+-------------------------------------------------------------------
+Tue Mar 28 08:01:00 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.2:
+  Features:
+  * Added data source for OMDBAPI.com.
+  * Added data source for KinoPoisk.ru.
+  * Added data source for VideoGameGeek.com.
+  * Updated the InternetBookStore (ibs.it) data source (kde#373774).
+  * Updated the Douban.com data source.
+  Bug Fixes:
+  * Fixed bug with relative image location for reports (kde#377790).
+  * Fix some potential crashes, identified from Coverity scan.
+
+-------------------------------------------------------------------
+Sat Feb 25 19:38:18 UTC 2017 - asterios.dramis@gmail.com
+
+- Enable libcsv-devel build requirement also for Leap >= 42.3.
+
+-------------------------------------------------------------------
+Wed Feb 22 15:14:41 UTC 2017 - thod_@gmx.de
+
+- Update to 3.0.1:
+  Changes:
+  * Updated MARCXML2MODS stylesheet to version 3.6.
+  * Added ESRB rating for "Everyone 10+" (kde#375995).
+  * Updated DBLP data source.
+  Bug Fixes:
+  * Fixed bug with truncated first two characters of root folder when importing a file listing (kde#373918).
+  * Fixed bug with Rating drawing size in list view (kde#372560).
+  * Fixed Google Scholar data source.
+  * Fixed Bibsys z39.50 settings (kde#375758).
+  * Fixed "Report Bug" menu item to link to bugs.kde.org (kde#375760).
+  * Fixed image open dialog to remember last location (kde#376002).
+  * Fixed relative file locations in HTML export (kde#376002).
+  * Removed defunct Microsoft Academic Search data source.
+
+-------------------------------------------------------------------
+Fri Jan 27 22:00:10 UTC 2017 - asterios.dramis@gmail.com
+
+- Added new build requirement libcsv-devel for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Nov 11 21:51:26 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 3.0:
+  Changes:
+  * Update dependencies to KDE Frameworks 5 and Qt5.
+  * Improved performance for merging large collections.
+  * Improved performance for deleting many entries at once.
+  * Changed UI to include switchable view between icons and
+    detailed list.
+  * Added support for user-defined SRU queries.
+  * Improved support for reading Audio CD information.
+  * Improved the bedetheque data source.
+  * Removed the defunct Yahoo! data source.
+  * Removed the defunct Citebase fetcher.
+  * Removed the PilotDB exporter (!).
+  Bug fixes:
+  * Added menu items for each Url field in icon view (kde#250913).
+  * Fix bug for overly wide dialog box (kde#362028).
+  * Fix crashing bug with some empty table values (kde#361622).
+  * Fix bug with zero-padding in filter dates (kde#361625).
+- Updated build/runtime requirements to KF5/Qt5.
+- Added new build requirement libdiscid-devel.
+
+-------------------------------------------------------------------
+Wed Jun 15 21:54:26 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-database macros (boo#979301)
+
+-------------------------------------------------------------------
+Sat Jan  9 09:51:02 UTC 2016 - tittiatcoke@gmail.com
+
+- Drop the dependency on kdepimlibs4 and kdepim4-runtime for 
+  Factory/Tumbleweed to free the way to move fully to the KF5 based 
+  PIM suite
+
+-------------------------------------------------------------------
+Sat Jan  2 17:51:02 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 2.3.11:
+  Features:
+  * Improved support for importing PDF files from Science Direct.
+  * Enabled optional build support for QImageBlitz library.
+  Bug Fixes:
+  * Fixed scrolling problem with large tables (kde#348189).
+  * Fixed HTML exported titles with quotation marks (kde#348381).
+  * Fixed crashing bug with file listing importer (kde#345458).
+  * Fixed crashing bug with importing MODS files with external
+    fetcher.
+  * Fixed accelerator key conflict (kde#351226).
+  * Fixed bug with image importing for Discogs data source.
+
+-------------------------------------------------------------------
+Thu Feb 19 19:39:22 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 2.3.10:
+  Features:
+  * Updated Discogs fetcher to new API (kde#342827).
+  * Updated Moviemeter fetcher to new API.
+  * Added filter rules for Greater than and Less than numbers.
+  * Updated BoardGameGeek fetcher to new API.
+  * Added capability to import a BoardGameGeek collection.
+  * Added a data source for Mathematical Reviews.
+  Bug Fixes:
+  * Fixed crashing bug with some ISBNdb results (kde#339063).
+  * Updated Producer results for IMDb and TheMovieDB fetchers
+    (kde#336765).
+  * Fixed bug with Allocine API search using punctuation
+    (kde#337432).
+  * Fixed bug with importing Goodreads collection.
+
+-------------------------------------------------------------------
+Mon Nov 10 00:34:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Mon Jun 23 18:53:30 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 2.3.9:
+  Features:
+  * Improved GCstar import and export to handle custom GCstar fields.
+  * Updated TheMovieDB fetcher to API version 3.
+  Bug Fixes:
+  * Fixed bug with writing link-only images in HTML exporter (kde#330649).
+  * Fixed character encoding in Allocine fetcher (kde#334527).
+  * Removed IMDb country choice since it's now unavailable (kde#330641).
+  * Fixed CSV importer bug, causing a hang (kde#329677, deb#729503).
+  * Fixed crashing bug in IMDB fetcher (kde#330591).
+  * Fixed crashing bug in command-line importing (deb#729499).
+  * Corrected user dialog text with Google Book Search results (kde#323475).
+  * Fixed error in setting modified date for entry in certain cases
+    (kde#326911).
+  * Updated IMDb fetcher for website changes (kde#325673).
+
+-------------------------------------------------------------------
+Mon Jul  8 10:08:19 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 2.3.8
+  * Updated ISBNdb.com fetcher to use v2 of API.
+  * Updated GiantBomb fetcher for XML changes in responses.
+  * Added coverartarchive.org to MusicBrainz data source.
+  * Updated Allocine fetcher for website changes.
+  * Added fetcher for VNDB.org.
+  * Added Dewey Decimal and LCC to ISBNdb.org results.
+  * Added Bibtex importing for drag/drop text (kde#319182).
+  * Fixed Entrex/Pubmed fetcher for summary requests (kde#319501).
+  * Fixed bug with retaining allowed values when adding entries from data sources (kde#317905).
+  * Fixed bug with not properly escaping text in CSV exporter (kde#317473).
+  * Fixed regexp in Google Scholar fetcher to set cookie (kde#316550).
+  * Fixed character encoding in IMDB results list (kde#314113).
+  * Fixed crashing bug with OpenLibrary and DVDfr fetcher (kde#319681).
+  * Fixed memory leak when updating entries (kde#316449).
+
+-------------------------------------------------------------------
+Thu Jan 24 13:45:14 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 2.3.7
+  * Added data sources for DBLP.org and TheGamesDB.net.
+  * Added import capability for VinoXML files.
+  * Added capability to enter Google API key for book search.
+  * Fixed a bug with adding new fields when importing bibtex (KDE#304767).
+  * Updated the IMDB fetcher.
+  * Corrected character encoding and title data for DVDfr search.
+  * Corrected actor and role results from Allocine search.
+  * Improved the Delicious Library importer.
+  * Fixed a bug with editing the toolbar configuration in KDE 4.9.2+.
+  * Fixed a bug with a number field not detecting a modified value (KDE#313304).
+  * Fixed a bug that caused loans to fail to get checked-in (KDE#307958).
+ 
+-------------------------------------------------------------------
+Mon Jul 16 17:55:55 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to tellico 2.3.6:
+  Features:
+  * Added simple importer for CIW files from ISI.
+  * Added data sources for IMDb in French, Spanish, German, Italian, and
+    Portuguese.
+  * Added API data source for Hathitrust.
+  * Added API data sources for Allocine, ScreenRush, FilmStarts, SensaCine and
+    Beyazperde.
+  * Added API data source for Springer Link.
+  * Added API data source for Microsoft Academic Search.
+  * Updated KDE library dependency so Tellico works with KDE 4.4 and KDE 4.5
+    again.
+  Bug Fixes:
+  * Fixed an intermittent crash when entering multiple ISBN values in search.
+  * Improved Amazon search for US UPC values from non-UPC sites.
+  * Fixed formatting bugs in IBS.it search.
+  * Fixed a bug for saving images when using a local image directory
+    (kde#299130).
+  * Fixed a bug with loading images from Google Book Search (kde#299789).
+
+-------------------------------------------------------------------
+Mon May  7 10:16:42 UTC 2012 - idonmez@suse.com
+
+- Fix taglib requires for older distros 
+
+-------------------------------------------------------------------
+Thu Apr 19 11:22:45 UTC 2012 - dmueller@suse.com
+
+- fix build for older distros
+
+-------------------------------------------------------------------
+Mon Jan 16 20:05:31 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to tellico 2.3.5:
+  Features:
+  * Added Amazon.com data sources for China, Spain, and Italy.
+  * Added filter rules for dates before and after.
+  * Updated GCstar exporter to include images.
+  * Updated Discogs fetcher to use API v2.
+  * Updated Wine.com fetcher to use API v2.
+  * Updated fetcher for Allocine.fr.
+  Bug Fixes:
+  * Fixed bug that always showed checkmark for boolean field values
+    (kde#283444).
+  * Fixed importing of multi-line notes from Alexandria (kde#289022).
+  * Fixed bug with merging entries (kde#289346).
+  * Fixed bug with Cancel not working in the Entry Merge dialog.
+  * Fixed broken script for searching Dark Horse Comics.
+  * Fixed a crashing bug when using the scanner dialog.
+  * Improved support for importing movies and music from Delicious Library.
+- Removed "boolean_fields_fix.patch" (included in the new version).
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+
+-------------------------------------------------------------------
+Sun Oct 16 11:06:34 UTC 2011 - asterios.dramis@gmail.com
+
+- Added a patch "boolean_fields_fix.patch" (taken from upstream) to fix
+  "Boolean fields are always shown with checkmark in list view, no matter the
+  value" (bko#283444).
+
+-------------------------------------------------------------------
+Mon Sep 26 19:02:39 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to tellico 2.3.4:
+  Features:
+  * Added data sources for Google Book Search and MovieMeter.nl.
+  * Added capability for searching French, Spanish, and German data from
+    TheMovieDB.org.
+  * Added importer for Goodreads collection.
+  * Added icon cache for improved performance with large images (bko#272583).
+  * Added UI controls for changing icon size (bko#250907).
+  * Added shortcut keys for showing full-screen and hiding menubar
+    (bko#251157).
+  Bug Fixes:
+  * Fixed bug with image link in Tri-Column report template (bko#272744).
+  * Fixed crashing bug with CSV importer and changing delimiters.
+  * Fixed bug in year from Douban.com data source.
+  * Fixed TMDB search for multiple person results.
+  * Updated filter rules to match against values without diacritics for
+    "Contains" criteria (bko#222400).
+  * Fixed showing a doubled filter count (bko#281082).
+  * Fixed bug when editing month in the date widget in KDE 4.7 (bko#281365).
+- Spec file updates:
+  * Changed License: to GPL-2.0+.
+  * Added libxml2-devel and libxslt-devel in BuildRequires:.
+  * Removed support for openSUSE < 1120 from spec file.
+
+-------------------------------------------------------------------
+Mon May  9 18:53:58 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Added libv4l-devel in BuildRequires: and enabled compilation with it
+   (support for using a webcam to scan barcodes).
+  * Removed bookcase Provides:/Obsoletes: (name change was done at 2004-09-20).
+  * Added suitable %post/%postun scripts for the mime file installed by the
+    package.
+  * Fixed locales removal if suse_version is not set.
+
+-------------------------------------------------------------------
+Mon Apr 11 10:02:06 UTC 2011 - wstephenson@novell.com
+
+- Update to tellico 2.3.3:
+  * Added data sources for Filmaster and Douban.
+  * Added capability for importing ADS format from z39.50 sources.
+  * Added check for duplicate Bibtex keys (bko#245225)
+  * Added manga search for AnimeNfo.com.
+  * Improved performance for loading and sorting large collections.
+  * Fixed parsing bug for some IMDb results (bko#262036)
+  * Fixed parsing bug for empty table values (bko#261108)
+  * Fixed parsing bug with AnimeNfo.com results.
+  * Fixed bug when editing existing filters (bko#268829)
+  * Fixed crashing bug for editing some values (bko#269044)
+  * Fixed bug with loans not being updated for removed entries
+    (bko#270129)
+  * Fixed build for Linux kernel 2.6.38+ when using newer libv4l
+    library.
+  * Fixed build with GCC 4.6.
+
+
+-------------------------------------------------------------------
+Sat Feb 26 10:23:57 UTC 2011 - coolo@novell.com
+
+- switch back to recommends for tellico-lang
+
+-------------------------------------------------------------------
+Sat Feb 12 20:39:42 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates
+   * Updated Group:, Summary: and %description.
+   * Minor updates in BuildRequires: and %install sections.
+   * Fixed tellico.desktop Categories entry.
+   * Fixed fdupes macro usage (which fixed rpmlint warning for
+     files-duplicate).
+   * Moved the english help files in the main package.
+
+-------------------------------------------------------------------
+Mon Jan 10 20:29:26 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.3.2
+   * Fixed bug with list view settings not being saved between sessions (Bug
+     256373)
+   * Fixed bug with updating groups for derived values (Bug 256374)
+   * Made Nepomuk support optional
+   * Added cover art support for MusicBrainz source
+   * Fixed Google Scholar data source to properly fetch Bibtex
+   * Fixed bug with FreeDB results not using track artists (Bug 258541)
+   * Fixed bug with importing Bibtex file with keyword and keywords fields (Bug
+     258269)
+   * Fixed sorting multiple numeric values in column view
+   * Fixed sorting for numeric values in group view
+   * Updated Allocine script to version 0.7.3 (Bug 258281)
+   * Updated Bibtex importer to translate non-breaking spaces
+- Spec file updates
+   * Changes based on rpmdevtools templates and spec-cleaner run.
+   * Updates in BuildRequires: and %install sections.
+   * Use Suggests: instead of Requires: for the tellico-lang package.
+- Removed the patch for Bug 256373 (fixed upstream).
+
+-------------------------------------------------------------------
+Fri Dec 10 21:40:43 UTC 2010 - alinm.elena@gmail.com
+
+- added patch for Bug 256373 
+
+-------------------------------------------------------------------
+Mon Nov  8 15:53:57 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to version 2.3.1
+   * Fixed the Edit Dialog to have consistent behavior when 
+     discarding edits (bko#255938).
+   * Fixed issue in Italian translation that caused an error for 
+     HTML export (bko#254863).
+   * Updated the IMDb search for new layout (bko#253549).
+   * Updated Freebase search for new music schema.
+   * Changed HTML output for URL fields to truncate link text 
+     (bko#250880).
+   * Improved the matching algorithm for updating entries when 
+     multiple good matches exist (bko#250886).
+   * Fixed crash with searching z39.50 servers (bko#250795).
+   * Updated GCstar plugin reader to use a separate thread for 
+     speed and robustness.
+   * Improved GCstar import and export for wine and comic book 
+     collections.
+   * Fixed bug with adding new fields during CSV import.
+   * Updated the DTD to match recent changes in collection fields.
+   * Fixed filter view to apply filter when item is selected 
+     (bko#248657).
+   * Updated the export dialog to allow limiting the number of 
+     exported fields (bko#246390).
+   * Added data source for searching DVDFr.com.
+   * Added options in the CSV importer and exporter to read and 
+     control table delimiters.
+   * Increased the maximum visible cover icon size to 256 pixels.
+
+-------------------------------------------------------------------
+Sun Aug  8 19:39:07 UTC 2010 - beineri@opensuse.org
+
+- Update to version 2.3
+   * Added data sources for OpenLibrary and Freebase.
+   * Added new fetcher for combining results from multiple sources
+   * Added filter for collection type to data source list
+   * Added clear button for rating widget
+   * Changed Amazon Japan video search to include DVDs
+   * Added Dewey Decimal and LoC Classification to z3950 MODS import.
+   * Changed entry ID values to start with 1 instead of 0
+   * Several bug fixes
+
+-------------------------------------------------------------------
+Sat Apr  3 11:11:45 CEST 2010 - llunak@suse.cz
+
+- another dir for bnc#457908 workaround
+
+-------------------------------------------------------------------
+Wed Mar 31 15:29:03 UTC 2010 - wstephenson@novell.com
+
+- Update to version 2.2
+  * Enabled KOrganizer integration for adding loans to calendar
+  * Enabled KAddressBook integration for adding borrowers from the
+    address book.
+  * Improved performance for modifying many entries at once.
+  * Added data source for Giant Bomb.
+  * Added data source for The Movie DB.
+  * Updated CrossRef data source to allow authentication via email
+    only (bko#224619).
+  * Added option for disabling webcam support.
+
+  Bug fixes:
+  * Fixed some hyphenation issues for 978 ISBN values.
+  * Fixed bug in en_GB translation that affected file selection.
+  * Fixed adding "link-only" files (bko#220645).
+  * Fixed Discogs track download and title search.
+  * Fixed setting correct permissions of backup file (bko#219259).
+  * Fixed formatting of multiple people with auto-formatting
+    (bko#219268).
+  * Fixed updating from Amazon to include book title or album title
+    in search.
+  * Fixed crashing bug for sorting during HTML export.
+  * Fixed multiple selection in entry view (bko#216122).
+
+-------------------------------------------------------------------
+Mon Mar  8 10:31:49 UTC 2010 - wstephenson@suse.de
+
+- Prune build dependencies, add kde4_runtime_requires
+
+-------------------------------------------------------------------
+Wed Nov 25 08:40:44 UTC 2009 - beineri@opensuse.org
+
+- update to version 2.1.1: several crash and bug fixes and
+  * Updated allocine search script
+  * Updated IMDB search to include director and writer.
+  * Added data source for searching Wine.com.
+  * Added PAM/PRISM translator for SRU fetcher.
+  * Changed Amazon and Crossref data sources to store passwords
+    locally instead of in the KWallet.
+  * Updated GCstar importing for video games and board games.
+  * Added feature for exporting to GCstar format.
+  * Updated ISBNdb & Discogs data sources to allow user access keys
+
+-------------------------------------------------------------------
+Tue Sep 22 08:30:21 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 2.0
+  * First release for KDE4
+  * Relicensed under GPL2/GPL3
+  * Document loading and image handling was improved for
+    large collections
+  * Amazon search was updated for new API (requires users to
+    register at Amazon for secret key)
+  * Webcam support was updated for newer kernels.
+  * New fields were added for tracking entry id, creation
+    date and last-modification date.
+  * Dependent fields were improved to allow them to be any
+    field type.
+  * HTML export was fixed to use correct image location, as
+    well as full locale sorting.
+  * Adding multiple ISBN values using an unmodified CueCat
+    barcode reader now works.
+  * A crash when loading some large images was fixed.
+  * Support for sending citations to OpenOffice.org was removed.
+
+-------------------------------------------------------------------
+Mon Aug 12 09:43:36 UTC 2009 - tittiatcoke@gmail.com
+
+- updated to newer SVN Snapshot
+  * don't crash when saving config
+  * clean-ups to get ready for first 2.0 release
+  * add an ID field to all collections
+  * rearrange some widgets in the fields dialog
+  * use full language code for xsl sorting
+  * amazon can't be included by default since it requires an account now
+  * add bedetheque script from Raphaël Fischer
+- added translations
+
+-------------------------------------------------------------------
+Sat Jul 25 18:49:08 CEST 2009 - tittiatcoke@gmail.com
+
+- updated to newer SVN snapshot 
+  * add alexandria importer test
+  * add referencer import test
+  * cleanup some of the freedb code
+  * Remove all support for insertin citations in OpenOffice.org.
+  * Use Qt4 headers
+  * add action to hide all columns in tree view
+  * many bugfixes.
+- Change of license to GPL2 or GPL3
+
+-------------------------------------------------------------------
+Thu Mar 12 14:27:36 CET 2009 - pgajdos@suse.cz
+
+- fixed build: qt4/poppler-qt4.h --> poppler/qt4/poppler-qt4.h
+
+-------------------------------------------------------------------
+Mon Feb 23 12:17:04 CET 2009 - pgajdos@suse.cz
+
+- updated to SVN version ported to KDE4 (upcomming 2.0.0)
+
+-------------------------------------------------------------------
+Mon Feb 16 11:46:00 CET 2009 - pgajdos@suse.cz
+
+- update to 1.3.5:
+  * Updated entry updating to not combine multiple values.
+  * Fixed CueCat decoder to work for UPC and ISBN values.
+  * Updated Delicious Library 1 importer to handle movies 
+    and games.
+  * Fixed query bug with z39.50 ISBN searches.
+  * Fixed Ubuntu bug 317822, don’t mark collection modified 
+    when image is found in local data directory.
+  * Added date, time, and username as available params to XSLT export.
+  * Added patch from Jake Maciejewski to fix JavaScript sorting.
+  * Fixed crash when exporting to small Alexandria collections.
+  * Updated search dialog to open edit box for multiple ISBN search automatically.
+
+
+-------------------------------------------------------------------
+Mon Sep 15 14:36:58 CEST 2008 - stbinner@suse.de
+
+- update to 1.3.4:
+  * Updated IMDb import.
+  * Improved drag/drop to match on file extension.
+  * Added (minimal) searching for board games from Amazon.
+  * Fixed bug with linked images in HTML reports.
+  * Fixed CSV import error for consecutive white-space.
+
+-------------------------------------------------------------------
+Mon Jul 14 10:21:43 CEST 2008 - stbinner@suse.de
+
+- update to 1.3.3:
+  * Fixed bug with file catalogs to properly match on file location
+  * Changed Arxiv fetcher to remove ID version number from results
+  * Updated drag-and-drop to allow HTTP urls, i.e. dragging bibtex
+    file from browser
+  * Updated Porbase in z39.50 server list
+  * Fixed copy() for text selection in main entry view
+
+-------------------------------------------------------------------
+Mon Jun 16 11:23:07 CEST 2008 - stbinner@suse.de
+
+- update to 1.3.2.1:
+  * Added languages and editors to Amazon.com search.
+  * Fixed PubMed search to use UTF-8, and to include all keywords.
+  * Updated MODS import to improve importing from RefBase and WIKINDX.
+  * Updated XML file loading to remove duplicates and ignore white-space.
+  * Added LCCN validation and multiple LCCN searching from z39.50 sources.
+  * Improved IMDb search results.
+  * Updated entry creation to always add default values.
+  * Updated MODS conversion to add Canadian LCC values.
+
+-------------------------------------------------------------------
+Tue Mar 25 17:13:16 CET 2008 - pgajdos@suse.cz
+
+- updated to 1.3.1:
+    * Added data source for discogs.com, a database for musical 
+      albums, including vinyl
+    * Added data source for Google Scholar
+    * Added LCCN search to z39.50 and SRU sources
+    * Added DOI search to Pubmed source
+    * Updated CrossRef source to use new unixref format for 
+      more data
+    * Improved loading performance to delay loading linked images 
+      as long as possible
+    * Updated Delicious Library importer to look for cover images
+    * Updated BoardGameGeek source to grab cover image
+    * Fixed bug that prevented bibtex from working for external 
+      application sources
+    * Changed “ISBN not found” dialog to only appear when 
+      searching for multiple values
+    * Fixed bug with SRU format not getting remembered in 
+      config dialog
+    * Fixed bug with entries with multiple titles not getting 
+      linked correctly in HTML export
+    * Fixed bug with some free-form date fields getting formatted 
+      incorectly into empty strings
+    * Fixed bibtex import for keywords field
+
+-------------------------------------------------------------------
+Wed Feb  6 10:09:06 CET 2008 - pgajdos@suse.cz
+
+- updated to version 1.3:
+    * Added board game collection, and data source for BoardGameGeek, 
+      using patch from Steve Beattie (requires ruby).
+    * Added data source for using any GCstar plugin
+    * Added importers for Griffith, Referencer and Delicious Library
+    * Added importer for PDF files, using the exempi and poppler 
+      libraries (optional)
+    * Added drag & drop for importing PDF, bibtex, and RIS files
+    * Added DOI field and searching crossref.org, citebase.org, Bibsonomy, 
+      and arxiv.org
+    * Added command for merging multiple entries, based on a patch 
+      from Cyril Dangerville
+    * Updated CSV importer, IMDb fetcher, and Spanish Ministry of 
+      Culture script
+    * Added option to save image files in a local directory relative 
+      to data file
+    * Added option to save a link to an image file instead of copying it
+    * Extended the DCOP interface to allow more scripting, including adding 
+      and modifying entries
+    * Added Ukrainian translation, from Serhij Dubyk
+- created -lang package
+
+-------------------------------------------------------------------
+Wed Sep 26 17:14:27 CEST 2007 - stbinner@suse.de
+
+- update to version 1.2.14:
+   * Improved entry updating to work with all collection types.
+   * Added MARCXML to allowed SRU search formats.
+   * Fixed bug with MARC stylesheets to work better with embedded
+     XML records.
+   * Fixed bug with z39.50 search that hid some results.
+   * Updated JavaScript and CSS in HTML export.
+   * Updated isbndb.com search, also allows comic book searches.
+   * Updated Amazon.com search to allow comic books.
+   * Updated GCstar importer for new GCstar document format.
+   * Updated allocine.fr script to version 0.4
+   * Updated Spanish Ministry of Culture search script
+   * Fixed problem with settings not being saved on Fedora.
+
+-------------------------------------------------------------------
+Sun Jul 29 10:43:54 CEST 2007 - stbinner@suse.de
+
+- update to version 1.2.13: bugfixes and
+  * Added spell-checking for text fields.
+  * Added importer for GCstar data files.
+  * Added compatibility with yaz3.
+  * Added Copac and National Library of Lithuania to z39.50 server list
+
+-------------------------------------------------------------------
+Thu Jul  5 12:13:32 CEST 2007 - stbinner@suse.de
+
+- update to version 1.2.12:
+   * Fixed potential recursion bug for dependent fields.
+   * Fixed bug that didn't write image size options when printing.
+   * Added Turkish translation, thanks to Ali Isingor and Kunter Kutlu.
+   * Added '\%' to bibtex translation table for comment escaping.
+   * Bumped automake requirement to version 1.8 or later for macro to work.
+   * Fixed HTML export to not rewrite file location for files 
+     referenced in the XSL file which don't exist.
+   * Fixed Column View report to sort numerically when needed.
+   * Fixed Date fields to suppress empty date values.
+   * Fixed Date comparisons to work for single digits, patch
+     from Jake Maciejewski.
+   * Fixed Fields Dialog to show warnings when clicking Ok.
+   * Changed Quick Filter to split words on whitespace.
+   * Fixed bug with z39.50 search freezing intermittently.
+
+-------------------------------------------------------------------
+Fri Jun  8 22:42:00 CEST 2007 - stbinner@suse.de
+
+- move kde_post_install
+
+-------------------------------------------------------------------
+Fri Jun  1 16:53:43 CEST 2007 - dmueller@suse.de
+
+- fix build for older distributions
+
+-------------------------------------------------------------------
+Sat May 12 16:45:29 CEST 2007 - dmueller@suse.de
+
+- build against yaz 3.0.2
+
+-------------------------------------------------------------------
+Wed May  9 10:46:11 CEST 2007 - stbinner@suse.de
+
+- update to version 1.2.11:
+   * Improved save time by caching image info on load.
+   * Fixed crashing bug for OpenOffice.org connection.
+   * Fixed bug that could lose images when loading from XML.
+   * Fixed sorting for Dependent fields to match on subfields.
+   * Updated IMDb search.
+   * Fixed CDDB lookup for OpenBSD, patch from Marc Espie.
+ 
+-------------------------------------------------------------------
+Tue Apr 10 08:27:47 CEST 2007 - stbinner@suse.de
+
+- update to version 1.2.10:
+   * Fixed crashing bug when undoing collection import.
+   * Fixed hanging bug when stopping a z39.50 search.
+   * Fixed bug that hid some Amazon search results.
+   * Fixed ONIX export to validate.
+   * Fixed Alexandria export and cover image import.
+   * Updated Amazon search for newer API.
+   * Fixed error handling for ISBN-13 searches.
+   * Updated ibs.it searching.
+   * Fixed searching to properly replace all HTML entities.
+   * Added Blu-ray and HD DVD to video media.
+   * Improved collection merging.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:18:30 CET 2007 - stbinner@suse.de
+
+- update to version 1.2.9:
+   * Updated IMDb search.
+   * Fixed sorting for entries with rating = 10.
+   * Fixed bug with formatting dependent fields.
+   * Fixed bug with adding spaces following a comma in the editor.
+   * Changed MODS import to allow any result with typeOfResult = text.
+   * Fixed several bugs with i18n issues.
+-------------------------------------------------------------------
+Tue Feb  6 10:30:23 CET 2007 - stbinner@suse.de
+
+- fix build on < 10.1
+
+-------------------------------------------------------------------
+Mon Feb  5 16:24:04 CET 2007 - stbinner@suse.de
+
+- update to version 1.2.8:
+  * Fixed bug with secondary and tertiary sorting.
+  * Fixed bug with some z39.50 search results not showing up.
+  * Fixed bug with comparing relative URLs when importing a file catalog.
+  * Fixed “ISBN Not Found” dialog to have selectable text.
+  * Fixed “busy cursor doesn’t go away” in the download stuff dialog.
+  * Fixed the newstuff download to uninstall cleanly.
+  * Fixed compilation error in yaz include, patch from Markus Brueffer.
+  * Updated CDDB import to grab extd data as comments, and category
+    as keyword.
+  * Updated audio file importer to take disc number into account for
+    mp3, ogg, and flac files.
+  * Changed IMDB rating to allow float values.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:32:58 CET 2006 - stbinner@suse.de
+
+- update to version 1.2.7:
+   * Fixed bug that could cause images to be lost when loading from
+     data file.
+   * Fixed bug with saving URL values without the protocol.
+   * Fixed bug with editing ISBN-13 values.
+   * Updated sorting to take title articles into account.
+   * Updated Amazon.com search to allow ISBN-13 values.
+   * Changed file listing import to match on URL only.
+   * Improved performance when copying or deleting multiple entries
+     at once.
+
+-------------------------------------------------------------------
+Mon Dec  4 16:05:54 CET 2006 - stbinner@suse.de
+
+- update to version 1.2.6:
+   * Fixed intermittent crashing bug when doing updates.
+   * Improved update matching for some types of entries.
+   * Improved IMDB cast search for TV shows.
+ 
+- update to version 1.2.5
+   * Improved performance for loading large (> 10Mb) images.
+   * Fixed another bug with over-writing images on entry update.
+   * Fixed crashing bug for some Amazon and Yahoo searches.
+   * Updated yahoo audio search webservice url.
+   * Updated allocine script.
+
+-------------------------------------------------------------------
+Sun Oct 15 09:07:53 CEST 2006 - stbinner@suse.de
+
+- update to version 1.2.4:
+   * improved performance on loading and unloading collection files
+   * fixed bug with Internet search dialog showing data sources for
+     all types
+   * fixed bug with overwriting images when updating entries
+   * Updated allocine.fr script
+
+-------------------------------------------------------------------
+Thu Oct  5 17:13:54 CEST 2006 - wstephenson@suse.de
+
+- Fix off by one bug in file listing importer (#207685)
+
+-------------------------------------------------------------------
+Tue Sep 26 12:45:17 CEST 2006 - stbinner@suse.de
+
+- update to version 1.2.3:
+   * Fixed the HTML export to properly copy included files and use 
+     relative links.
+   * Added a button to the Internet search to fetch additional 
+     results for some data sources (Amazon, IMDb, z39.50).
+
+-------------------------------------------------------------------
+Fri Sep  8 09:44:49 CEST 2006 - stbinner@suse.de
+
+- update to version 1.2.2:
+   * Fixed a bug that caused the wrong temporary directory to be
+     used for images, which could hide or lose them
+
+-------------------------------------------------------------------
+Thu Sep  7 15:09:32 CEST 2006 - stbinner@suse.de
+
+- update to version 1.2.1:
+   * Fixed CDDB bug that read everything as Pink Floyd :).
+   * Improved image cache performance a bit more, and fixed another
+     memory leak.
+   * Fixed a crashing bug in the file listing importer.
+   * Fixed a rendering bug with the image gradients used in the 
+     entry templates.
+   * Fixed a bug with some fields not showing auto-completion in 
+     the filter dialog.
+   * Fixed CDDB cache importer to use UTF-8, as done in libkcddb.
+   * Changed bibtex exporter to add braces or quotations around
+     \url{...} values.
+
+-------------------------------------------------------------------
+Fri Sep  1 09:22:27 CEST 2006 - stbinner@suse.de
+
+- update to version 1.2:
+   * Added dialog for downloading new entry templates from 
+     kde-files.org
+   * Added dialog for downloading new scripts (requires gpg)
+   * Added config options for fonts and colors for entry templates
+   * Added preset z39.50 server list
+   * Added auto-completion to filter dialog
+   * Added scripts for allocine.fr, Spanish Ministry of Culture and 
+     Dark Horse Comics, from Mathias Monnerville
+   * Added ‘next’ and ‘prev’ buttons to entry editor.
+   * Added isbndb.com as a data source
+   * Added Ant Movie Catalog file importer
+   * Added dialog to choose from multiple CDDB search responses
+   * Fields can have default values
+   * Data sources can be set to overwrite existing data when 
+     updating entries.
+   * Added parser for unmodified CueCat bar code scanner
+
+-------------------------------------------------------------------
+Thu Jun 15 11:30:03 CEST 2006 - dmueller@suse.de
+
+- build parallel 
+
+-------------------------------------------------------------------
+Thu Jun  1 20:54:46 CEST 2006 - stbinner@suse.de
+
+- fix build for < 10.0
+
+-------------------------------------------------------------------
+Tue May 30 07:17:46 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Fri May 12 14:12:36 CEST 2006 - stbinner@suse.de
+
+- Update to version 1.1.6
+   * Fixed bug that prevented images from being saved in certain
+     situations.
+   * Fixed bug that caused a crash when importing some RIS files.
+   * Added french documentation, from Regis Boudin.
+
+-------------------------------------------------------------------
+Thu Apr 20 09:34:55 CEST 2006 - stbinner@suse.de
+
+- Update to version 1.1.5
+   * Fixed bug with writing too many temporary image files.
+   * Fixed bug in multiple ISBN search for z39.50.
+   * Fixed "disappearing paragraph" bug in Fancy template.
+   * Fixed name ordering for IBS searching.
+   * Added "Xbox 360" to Amazon.com game searching.
+   * Fixed crashing bug when deleting and re-adding fields by same 
+     name.
+   * Fixed HTML decoding bug in IMDb plot summary.
+   * Fixed bug that re-created default fields when adding search
+     results.
+   * Updated Spanish translation.
+   * Changed CD-Text support to Linux-only, since it doesn't
+     actually work on other platforms.
+ 
+-------------------------------------------------------------------
+Tue Apr  4 15:16:23 CEST 2006 - stbinner@suse.de
+
+- Update to version 1.1.4
+   * Fixed bug that prevented XSLT files with spaces or other
+     non-encoded characters from being opened.
+   * Fixed bug with incorrectly setting document as modified when
+     loading images.
+   * Fixed bug with loading loans for entries with non-consecutive
+     ids.
+   * Fixed bug that caused crashes when changing grouping options
+     for some fields.
+   * Fixed bug that prevented files saved with versions < 0.8 from
+     being opened.
+   * Fixed image fetching for IBS.
+   * Fixed compilation for OpenOffice.org SDK 2.0.2.
+   * Updated French translation.
+ 
+-------------------------------------------------------------------
+Tue Mar 28 15:54:44 CEST 2006 - stbinner@suse.de
+
+- Update to version 1.1.3
+   * Fixed bug that prevented the comic book template from showing
+     up in config options or importers.
+   * Fixed z39.50 search to use same character encoding for query
+     as for search results.
+   * Changed ISO 5426 converter to treat umlaut and diaeresis
+     identically.
+   * Fixed intermittent crash when exporting HTML and overwriting
+     files.
+   * Fixed bug with empty groups showing up after deleting entries.
+   * Updated ru translation.
+
+-------------------------------------------------------------------
+Sun Feb 19 13:19:43 CET 2006 - stbinner@suse.de
+
+- Update to version 1.1.1
+
+-------------------------------------------------------------------
+Thu Feb  9 10:35:59 CET 2006 - stbinner@suse.de
+
+- Update to version 1.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  1 11:49:54 CET 2005 - stbinner@suse.de
+
+- Update to version 1.0.3
+
+-------------------------------------------------------------------
+Wed Oct 19 16:10:55 CEST 2005 - kukuk@suse.de
+
+- Remove unsermake
+- Update to version 1.0.2
+
+-------------------------------------------------------------------
+Tue Oct 18 12:44:51 CEST 2005 - stbinner@suse.de
+
+- remove extra qualification for gcc 4.1 compilation
+
+-------------------------------------------------------------------
+Wed Jul 20 16:35:33 CEST 2005 - kukuk@suse.de
+
+- Update to version 0.13.8
+
+-------------------------------------------------------------------
+Wed May 25 11:18:25 CEST 2005 - adrian@suse.de
+
+- update to version 0.13.6
+
+-------------------------------------------------------------------
+Tue Apr 19 11:58:09 CEST 2005 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Feb 28 08:16:51 CET 2005 - adrian@suse.de
+
+- update to version 0.13.4
+  * bugfixes and translation updates
+
+-------------------------------------------------------------------
+Thu Feb 17 09:32:06 CET 2005 - adrian@suse.de
+
+- desktop file got moved to xdg dir
+
+-------------------------------------------------------------------
+Mon Jan  3 17:26:06 CET 2005 - coolo@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Tue Dec 21 17:13:08 CET 2004 - kukuk@suse.de
+
+- Update to 0.13.1
+
+-------------------------------------------------------------------
+Wed Dec  8 02:10:59 CET 2004 - ro@suse.de
+
+- hack to build on x86_64 
+
+-------------------------------------------------------------------
+Mon Dec  6 10:46:57 CET 2004 - kukuk@suse.de
+
+- Update to version 0.13
+- Add yaz support
+
+-------------------------------------------------------------------
+Tue Nov 16 14:42:03 CET 2004 - adrian@suse.de
+
+- rename package from bookcase to tellico
+- update to version 0.12
+- add packages to nfb to support audio CDs
+
+-------------------------------------------------------------------
+Mon Sep  6 14:22:07 CEST 2004 - kukuk@suse.de
+
+- Update to version 0.11
+
+-------------------------------------------------------------------
+Sun Jun 13 21:11:22 CEST 2004 - kukuk@suse.de
+
+- Initial version
+

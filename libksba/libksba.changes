@@ -1,0 +1,277 @@
+-------------------------------------------------------------------
+Thu Feb 22 15:10:36 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Mon Aug 22 19:58:46 UTC 2016 - astieger@suse.com
+
+- libksba 1.3.5:
+ * Limit the allowed size of complex ASN.1 objects (e.g.
+   certificates) to 16MiB.
+ * Avoid read access to unitialized memory.
+ * Improve detection of invalid RDNs.
+ * Encode the OCSP nonce value as an octet string as described by
+   RFC-6960.
+
+-------------------------------------------------------------------
+Tue May 10 11:25:34 UTC 2016 - astieger@suse.com
+
+- libksba 1.3.4:
+ * Fixed two OOB read access bugs which could be used to force a DoS.
+   boo#979261 CVE-2016-4574, CVE-2016-4579
+ * Fixed a crash due to faulty curve OID lookup code.
+ * Synced the list of supported curves with those of Libgcrypt.
+ * New configure option --enable-build-timestamp; a build timestamp is
+   not anymore used by default.
+
+-------------------------------------------------------------------
+Fri Apr 10 20:28:31 UTC 2015 - astieger@suse.com
+
+- libksba 1.3.3:
+ * Fixed an integer overflow in the DN decoder.
+ * Now returns an error instead of terminating the process for
+   certain bad BER encodings.
+ * Improved the parsing of utf-8 strings in DNs.
+ * Allow building with newer versions of Bison.
+
+-------------------------------------------------------------------
+Thu Mar 19 16:38:50 UTC 2015 - astieger@suse.com
+
+- remove libtool requirement
+
+-------------------------------------------------------------------
+Wed Nov 26 08:20:23 UTC 2014 - andreas.stieger@gmx.de
+
+- libksba 1.3.2 [boo#907074] [CVE-2014-9087]
+  This version contains a security update which fixes a buffer
+  overflow in OID to string conversion code that can be triggered
+  by a specially crafted S/MIME message or ECC based OpenPGP data.
+  Users of GnuPG 2.x should install this version and restart the
+  dirmgr process.
+  * Fixed a buffer overflow in ksba_oid_to_str.
+- verify source signature
+
+-------------------------------------------------------------------
+Sun Sep 21 21:07:02 UTC 2014 - andreas.stieger@gmx.de
+
+- libksba 1.3.1:
+ * Fixed memory leak in CRL parsing
+ * Build fixes for ppc64el
+
+-------------------------------------------------------------------
+Tue Nov 27 14:57:15 UTC 2012 - meissner@suse.com
+
+- Use URL for source
+
+-------------------------------------------------------------------
+Mon Oct  1 18:59:20 UTC 2012 - andreas.stieger@gmx.de
+
+- update to libksba 1.3.0
+  - change license from GPLv2 to LGPLv3/GPLv2
+  - minor bug fixes
+- implement shared library packaging policy
+- remove nld-build.diff which was added 2004 before package was in
+  the openSUSE OBS, was never used or applied cleanly since r1
+
+-------------------------------------------------------------------
+Sat Nov 19 20:38:30 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jul 29 15:58:31 UTC 2011 - puzel@novell.com
+
+- update to libksba-1.2.0 
+  - New functions to allow the creation of X.509 certificates.
+  - Interface changes relative to the 1.1.0 release:
+    ksba_certreq_set_serial          NEW
+    ksba_certreq_set_issuer          NEW
+    ksba_certreq_set_validity        NEW
+    ksba_certreq_set_siginfo         NEW
+
+-------------------------------------------------------------------
+Fri Dec  3 12:00:34 UTC 2010 - puzel@novell.com
+
+- update to libksba-1.1.0
+ * New functions to fix a leak in dirmngr.
+ * Interface changes relative to the 1.0.0 release:
+   ksba_reader_set_release_notify   NEW
+   ksba_writer_set_release_notify   NEW
+- clean up specfile
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Aug 17 11:44:51 UTC 2010 - puzel@novell.com
+
+- update to libksba-1.0.8 
+ * Fixed a CMS parsing bug exhibited by Lotus Notes.
+
+-------------------------------------------------------------------
+Thu Jul  9 17:02:39 CEST 2009 - puzel@novell.com
+
+- update to libksba-1.0.7
+ * Detect overflow while parsing OIDs.  Map BER encoded OIDs to well
+   known names.
+ * Allow mixed case names in DNs.
+
+-------------------------------------------------------------------
+Wed Jun 24 18:07:00 CEST 2009 - puzel@suse.cz
+
+- update to libksba-1.0.6 
+ * Support SHA-{384,512} based signature generation.
+ * The RSA algorithmIdentifier ASN.1 sequence is now emitted with an
+   explicit NULL parameter.  Despite the interop testing we did in the
+   past, some software still requires this and thus we better follow
+   the best current practise.
+
+-------------------------------------------------------------------
+Tue Apr  7 14:32:06 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- fix buildrequires and -devel package dependencies 
+
+-------------------------------------------------------------------
+Mon Jan 12 12:21:34 CET 2009 - puzel@suse.cz
+
+- update to 1.0.5 (bugfix release)
+  - minor bugfixes
+
+-------------------------------------------------------------------
+Thu Sep 25 11:13:15 CEST 2008 - puzel@suse.cz
+
+- update to 1.0.4
+  * autoconf fixes
+- correctly install/uninstall info files
+- use %makeinstall and %configure macros
+
+-------------------------------------------------------------------
+Thu Jun 26 15:55:01 CEST 2008 - puzel@suse.cz
+
+- update to 1.0.3
+  * bugfix release (autoconf fixes)
+  * removed libksba-texi.patch
+
+-------------------------------------------------------------------
+Thu Jan 10 18:21:20 CET 2008 - bk@suse.de
+
+- Add missing initialsation, fixes gpgsm crash in GPG's make check
+
+-------------------------------------------------------------------
+Mon Jul 30 15:19:09 CEST 2007 - ltinkl@suse.cz
+
+- update to 1.0.2
+  * Support for SHA-2.
+  * Fixed a couple of memory leaks.
+  * Experimental support for ECDSA.    
+  * Minor portability fixes.     
+  * Switched to GPLv3.
+
+-------------------------------------------------------------------
+Tue Sep 12 13:54:08 CEST 2006 - pnemec@suse.cz
+
+- updated to 1.0.0 by diff from author
+  - change in api
+
+-------------------------------------------------------------------
+Mon Sep 11 15:30:15 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.9.16
+	Fixed a character set conversion bug in BMPStrings
+	Added new api functions, see readme.
+
+-------------------------------------------------------------------
+Fri Jun 23 17:48:21 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.9.15 from CVS!
+  fixed security bug #177462
+ 
+-------------------------------------------------------------------
+Thu May 25 11:41:24 CEST 2006 - pnemec@suse.cz
+
+- updated to version 0.9.14
+  * Fixed broken OCSP requests.
+  * Ignore invalid bytes appended to a certificate.
+  * New functions to associate user data with a certificate object.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 22:38:05 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Fri Aug  5 12:52:01 CEST 2005 - postadal@suse.cz
+
+- updated to version 0.9.12 
+
+-------------------------------------------------------------------
+Mon Jul 11 18:45:05 CEST 2005 - postadal@suse.cz
+
+- updated to version 0.9.11
+- removed obsoleted patch autoconf-fix.diff
+
+-------------------------------------------------------------------
+Wed Jan 12 14:39:35 CET 2005 - postadal@suse.cz
+
+- update to version 0.9.10
+
+-------------------------------------------------------------------
+Thu Sep 30 16:45:59 CEST 2004 - postadal@suse.cz
+
+- restored autoconf-fix.diff patch removed by last update [#36193, #46036]
+  (fixed autoconf issue - quoted definition of AM_PATH_KSBA)
+
+-------------------------------------------------------------------
+Wed Jul 28 12:12:29 CEST 2004 - adrian@suse.de
+
+- update to version 0.9.8
+
+-------------------------------------------------------------------
+Wed Jul 14 11:52:34 CEST 2004 - adrian@suse.de
+
+- create -devel sub package
+- prepare for nld
+
+-------------------------------------------------------------------
+Mon Jul 12 16:30:05 CEST 2004 - adrian@suse.de
+
+- update to version 0.9.7
+
+-------------------------------------------------------------------
+Wed Mar 17 18:03:59 CET 2004 - postadal@suse.cz
+
+- fixed autoconf issue (quoted definition of AM_PATH_KSBA) [#36193]
+
+-------------------------------------------------------------------
+Tue Feb 10 11:53:19 CET 2004 - postadal@suse.cz
+
+- fixed code that broke strict aliasing
+- bziped tarball
+
+-------------------------------------------------------------------
+Sun Jan 11 11:25:05 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jun  2 16:38:16 CEST 2003 - mc@suse.de
+
+- switch to version 0.4.7
+  This fixes a problem mainly relevant to certificate request
+  creation (if you must use the ugly way of putting the email 
+  address into the subject DN) 
+
+-------------------------------------------------------------------
+Thu Feb 20 18:49:13 CET 2003 - mc@suse.de
+
+- initial version 
+

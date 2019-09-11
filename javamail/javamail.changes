@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:14:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on the jvnet-parent pom since we are not building
+  with maven
+
+-------------------------------------------------------------------
+Tue Jan 22 09:24:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of javamail 1.5.2
+- Install as maven artifacts

@@ -1,0 +1,15 @@
+Index: profiles/apparmor.d/usr.bin.lessopen.sh
+===================================================================
+--- profiles/apparmor.d/usr.bin.lessopen.sh.orig	2019-01-06 20:05:38.582356924 +0100
++++ profiles/apparmor.d/usr.bin.lessopen.sh	2019-01-06 20:08:26.885706133 +0100
+@@ -10,6 +10,10 @@
+   capability dac_override,
+   capability dac_read_search,
+ 
++  # workaround for https://bugzilla.opensuse.org/show_bug.cgi?id=1119937 / https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1784499
++  network inet stream,
++  network inet6 stream,
++
+   /** rk,
+   /{usr/,}bin/bash mrix,
+   /{usr/,}bin/rpm mrix,

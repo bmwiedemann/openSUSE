@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Wed Jul 24 09:37:26 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- ignore make check error for ppc64/ppc64le, bypass boo#1142614
+
+-------------------------------------------------------------------
+Sun Jun  2 13:10:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.4.1
+  * Fix a BPF generation bug where the optimizer mistakenly
+    identified duplicate BPF code blocks.
+
+-------------------------------------------------------------------
+Sun Mar 17 10:06:38 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.4.0 (bsc#1128828)
+  - Update the syscall table for Linux v5.0-rc5
+  - Added support for the SCMP_ACT_KILL_PROCESS action
+  - Added support for the SCMP_ACT_LOG action and SCMP_FLTATR_CTL_LOG attribute
+  - Added explicit 32-bit (SCMP_AX_32(...)) and 64-bit (SCMP_AX_64(...)) argument comparison macros to help protect against unexpected sign extension
+  - Added support for the parisc and parisc64 architectures
+  - Added the ability to query and set the libseccomp API level via seccomp_api_get(3) and seccomp_api_set(3)
+  - Return -EDOM on an endian mismatch when adding an architecture to a filter
+  - Renumber the pseudo syscall number for subpage_prot() so it no longer conflicts with spu_run()
+  - Fix PFC generation when a syscall is prioritized, but no rule exists
+  - Numerous fixes to the seccomp-bpf filter generation code
+  - Switch our internal hashing function to jhash/Lookup3 to MurmurHash3
+  - Numerous tests added to the included test suite, coverage now at ~92%
+  - Update our Travis CI configuration to use Ubuntu 16.04
+  - Numerous documentation fixes and updates
+- now gpg signed, added key of Paul Moore from keyserver.
+
+-------------------------------------------------------------------
+Mon Jan 14 14:16:45 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Sat Feb 24 02:53:57 UTC 2018 - asarai@suse.com
+
+- Update to release 2.3.3:
+  * Updated the syscall table for Linux v4.15-rc7
+
+-------------------------------------------------------------------
+Sun May 21 22:31:41 UTC 2017 - jengelh@inai.de
+
+- Unconditionally rerun autoreconf because of patches
+
+-------------------------------------------------------------------
+Sun May 21 18:07:04 UTC 2017 - tchvatal@suse.com
+
+- Update to release 2.3.2:
+  * Achieved full compliance with the CII Best Practices program
+  * Added Travis CI builds to the GitHub repository
+  * Added code coverage reporting with the "--enable-code-coverage" configure
+    flag and added Coveralls to the GitHub repository
+  * Updated the syscall tables to match Linux v4.10-rc6+
+  * Support for building with Python v3.x
+  * Allow rules with the -1 syscall if the SCMP\_FLTATR\_API\_TSKIP attribute is
+    set to true
+  * Several small documentation fixes
+- Remove service file as we are not based on git
+
+-------------------------------------------------------------------
+Sat May  7 23:11:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.3.1
+* arch: fix the multiplexed ipc() syscalls
+* s390: handle multiplexed syscalls correctly
+- Remove 0001-arch-fix-a-number-of-32-bit-x86-failures-related-to-.patch,
+  0001-tests-replace-socket-syscall-references-in-15-basic-.patch
+  (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Apr 19 16:00:29 UTC 2016 - jengelh@inai.de
+
+- Add 0001-tests-replace-socket-syscall-references-in-15-basic-.patch
+
+-------------------------------------------------------------------
+Sun Apr 10 22:31:15 UTC 2016 - jengelh@inai.de
+
+- Add 0001-arch-fix-a-number-of-32-bit-x86-failures-related-to-.patch
+
+-------------------------------------------------------------------
+Wed Mar 23 16:06:20 UTC 2016 - meissner@suse.com
+
+- updated to final 2.3.0 release
+- builderror-k316.diff: fixed upstream
+- i586 testsuite fails, disable for now
+
+-------------------------------------------------------------------
+Wed Feb 24 10:11:26 UTC 2016 - jengelh@inai.de
+
+- Update to git snapshot 2.3.0~g96
+* have libseccomp build with newer linux-glibc-devel;
+  "multiplexed and direct socket syscalls"
+- Drop libseccomp-s390x-support.patch, libseccomp-ppc64le.patch
+  (no longer apply - merged upstream)
+- Add builderror-k316.diff
+
+-------------------------------------------------------------------
+Fri Sep 25 12:14:37 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: systemd-32bit-224+ links against
+  libseccomp.so.2.
+
+-------------------------------------------------------------------
+Mon Aug 31 15:09:16 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.2.3
+* Fix a problem with the masked equality operator
+* Fix a problem on x86_64/x32 involving invalid architectures
+* Fix a problem with the ARM specific syscalls
+
+-------------------------------------------------------------------
+Sat May 30 10:20:06 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.2.1
+* Fix a problem with syscall argument filtering on 64-bit systems
+* Fix some problems with the 32-bit ARM syscall table
+- Drop 0001-tools-add-the-missing-elf.h-header-file.patch,
+  libseccomp-arm-syscall-fixes.patch
+  (applied upstream)
+
+-------------------------------------------------------------------
+Mon Apr 13 15:05:05 UTC 2015 - dvaleev@suse.com
+
+- Fix ppc64le build: libseccomp-ppc64le.patch
+
+-------------------------------------------------------------------
+Fri Apr 10 16:52:55 UTC 2015 - afaerber@suse.de
+
+- Fix some arm syscall constants
+  libseccomp-arm-syscall-fixes.patch
+
+-------------------------------------------------------------------
+Sun Mar 29 00:28:59 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.2.0
+* Added support for aarch64, mips, mips64, mips64n32 (BE/LE).
+* Added support for using the new seccomp() syscall and the thread
+  sync functionality.
+* Added Python bindings
+- Remove 0001-build-use-autotools-as-build-system.patch
+  (merged). Add no-static.diff.
+  Add 0001-tools-add-the-missing-elf.h-header-file.patch
+
+-------------------------------------------------------------------
+Sat Jul 12 11:26:10 UTC 2014 - meissner@suse.com
+
+- updated ppc64le patch
+
+-------------------------------------------------------------------
+Wed Mar  5 15:13:35 UTC 2014 - meissner@suse.com
+
+- libseccomp-s390x-support.patch:
+  support s390,s390x,ppc,ppc64 too. bnc#866526 (arm64 not yet done)
+
+- disabled testsuite on the new platforms, as there
+  are still some failures.
+
+  s390 32bit: passed: 3823 / failed: 91 / errored: 43
+
+  s390x:    passed: 2410 / failed: 879 / errored: 68
+  ppc64le:  passed: 3914 / failed:   0 / errored: 43
+
+-------------------------------------------------------------------
+Tue Jun 18 01:14:06 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.0
+* Add support for the x32 and ARM architectures
+* More verbose PFC output, including translation of syscall
+  numbers to names
+* Several assorted bugfixes affecting the seccomp BPF generation
+* The syscall number/name resolver tool is now installed
+* Fixes for the x86 multiplexed syscalls
+* Additions to the API to better support non-native architecures
+* Additions to the API to support multiple architecures in one filter
+* Additions to the API to resolve syscall name/number mappings
+- Remove 0001-build-use-ac-variables-in-pkgconfig-file.patch
+  (merged into 0001-build-use-autotools-as-build-system.patch)
+
+-------------------------------------------------------------------
+Fri Dec 21 05:47:29 UTC 2012 - jengelh@inai.de
+
+- Make 0001-build-use-autotools-as-build-system.patch apply again
+
+-------------------------------------------------------------------
+Fri Dec 14 17:13:12 UTC 2012 - dvaleev@suse.com
+
+- code is only x86 capable. Set ExclusiveArch: %{ix86} x86_64
+
+-------------------------------------------------------------------
+Thu Nov 15 00:49:40 UTC 2012 - jengelh@inai.de
+
+- Restore autotools patch (0001-build-use-autotools-as-build-system.patch)
+  that was previously embodied in the files in the tarball
+
+-------------------------------------------------------------------
+Tue Nov 13 15:40:20 UTC 2012 - meissner@suse.com
+
+- updated to 1.0.1 release
+  - The header file is now easier to use with C++ compilers
+  - Minor documentation fixes
+  - Minor memory leak fixes
+  - Corrected x86 filter generation on x86_64 systems
+  - Corrected problems with small filters and filters with arguments
+- use public downloadable tarball
+
+-------------------------------------------------------------------
+Sat Sep  8 03:50:02 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 1.0.0) for build.opensuse.org

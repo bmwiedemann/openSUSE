@@ -1,0 +1,20 @@
+--- Makefile
++++ Makefile	2011-11-14 13:39:35.711147708 +0000
+@@ -82,13 +82,12 @@ SEARCHLIBS = -lm
+ # Informal list of directories where we look for the libraries in SEARCHLIBS
+ LIBPATHS=/lib64 /usr/lib64 /lib /usr/lib
+ 
+-GCC_WARNINGS = -pedantic -Wreturn-type -Wunused -Wformat -Wtraditional \
+- -Wpointer-arith -Wconversion -Waggregate-return \
+- #-Wimplicit -Wshadow -Wid-clash-6 #-Wuninitialized
++GCC_WARNINGS = -pedantic -Wall -Wformat -Wpointer-arith
+ 
++XCFLAGS=
+ # The place to put your favourite extra cc flag
+-CFLAGS0 = $(RPM_OPT_FLAGS) -D_GNU_SOURCE -pipe #$(GCC_WARNINGS)
+-LDFLAGS0= -s
++CFLAGS0 = $(RPM_OPT_FLAGS) -D_GNU_SOURCE -pipe $(XCFLAGS) #$(GCC_WARNINGS)
++LDFLAGS0=
+ # Read my libs :-)
+ LIBS=
+ 

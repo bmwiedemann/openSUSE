@@ -1,0 +1,27 @@
+From 83532a417beb97db552cab2d04339fa53c693305 Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gustavo.scalet@eldorado.org.br>
+Date: Mon, 5 Sep 2016 10:30:08 -0300
+Subject: [PATCH 09/15] PPC64: Fix tab indentation from last commit
+
+---
+ src/lj_ccall.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lj_ccall.c b/src/lj_ccall.c
+index 1adc01173fd1..e369e2ab2867 100644
+--- a/src/lj_ccall.c
++++ b/src/lj_ccall.c
+@@ -402,8 +402,8 @@
+ 	  ngpr += 1;  /* align GPRs */ \
+ 	else if (nsp + 1 <= CCALL_MAXSTACK) \
+ 	  nsp += 1; /* align save area slots */ \
+-        else \
+-          goto err_nyi; /* Too many args */ \
++	else \
++	  goto err_nyi; /* Too many args */ \
+ 	goto done; \
+       } \
+     } else {  /* Try to pass argument in GPRs. */ \
+-- 
+2.20.1
+

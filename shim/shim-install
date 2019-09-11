@@ -1,0 +1,366 @@
+#! /bin/bash -e
+
+arch=`uname -m`
+rootdir=
+bootdir=
+efidir=
+install_device=
+efibootdir=
+ca_string=
+no_nvram=no
+removable=no
+clean=no
+sysconfdir="/etc"
+libdir="/usr/lib64"	# Beware, this is arch dependent!
+datadir="/usr/share"
+source_dir="${data_dir}/efi/${arch}"
+grub_probe="/usr/sbin/grub2-probe"
+grub_mkrelpath="/usr/bin/grub2-mkrelpath"
+grub_install="/usr/sbin/grub2-install"
+grub_install_target=
+self="`basename $0`"
+grub_cfg="/boot/grub2/grub.cfg"
+update_boot=no
+def_grub_efi="${source_dir}/grub.efi"
+def_boot_efi=
+
+if [ x${arch} = xx86_64 ] ; then
+	grub_install_target="x86_64-efi"
+	def_boot_efi="bootx64.efi"
+elif [ x${arch} = xaarch64 ] ; then
+	grub_install_target="arm64-efi"
+	def_boot_efi="bootaa64.efi"
+else
+	echo "Unsupported architecture: ${arch}"
+	exit 1
+fi
+
+if [ ! -d "${source_dir}" -o ! -e "${def_grub_efi}" ] ; then
+    # for outdated packages fall back to previous behavior
+    source_dir="$libdir/efi"
+    def_grub_efi="${source_dir}/grub.efi"
+fi
+ 
+# Get GRUB_DISTRIBUTOR.
+if test -f "${sysconfdir}/default/grub" ; then
+    . "${sysconfdir}/default/grub"
+fi
+
+if [ x"${GRUB_DISTRIBUTOR}" = x ] && [ -f "${sysconfdir}/os-release" ] ; then
+    . "${sysconfdir}/os-release"
+    GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
+fi
+
+bootloader_id="$(echo "$GRUB_DISTRIBUTOR" | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
+if test -z "$bootloader_id"; then
+    bootloader_id=grub
+fi
+
+efi_distributor="$bootloader_id"
+bootloader_id="${bootloader_id}-secureboot"
+
+case "$bootloader_id" in
+    "sle"*)
+        ca_string='SUSE Linux Enterprise Secure Boot CA1';;
+    "opensuse"*)
+        ca_string='openSUSE Secure Boot CA1';;
+    *) ca_string="";;
+esac
+
+usage () {
+    echo "Usage: $self [OPTION] [INSTALL_DEVICE]"
+    echo
+    echo "Install Secure Boot Loaders on your drive."
+    echo
+    echo "--directory=DIR use images from DIR."
+    echo "--grub-probe=FILE use FILE as grub-probe."
+    echo "--removable the installation device is removable."
+    echo "--no-nvram don't update the NVRAM variable."
+    echo "--bootloader-id=ID the ID of bootloader."
+    echo "--efi-directory=DIR use DIR as the EFI System Partition root."
+    echo "--config-file=FILE use FILE as config file, default is $grub_cfg."
+    echo "--clean remove all installed files and configs."
+    echo "--suse-enable-tpm install grub.efi with TPM support."
+    echo
+    echo "INSTALL_DEVICE must be system device filename."
+}
+
+argument () {
+  opt="$1"
+  shift
+
+  if test $# -eq 0; then
+      echo "$0: option requires an argument -- \`$opt'" 1>&2
+      exit 1
+  fi
+  echo "$1"
+}
+
+# Check the arguments.
+while test $# -gt 0
+do
+    option=$1
+    shift
+
+    case "$option" in
+    -h | --help)
+	usage
+	exit 0 ;;
+
+    --root-directory)
+	rootdir="`argument $option "$@"`"; shift;;
+    --root-directory=*)
+	rootdir="`echo "$option" | sed 's/--root-directory=//'`" ;;
+
+    --efi-directory)
+	efidir="`argument $option "$@"`"; shift;;
+    --efi-directory=*)
+	efidir="`echo "$option" | sed 's/--efi-directory=//'`" ;;
+
+    --directory | -d)
+	source_dir="`argument $option "$@"`"; shift;;
+    --directory=*)
+	source_dir="`echo "$option" | sed 's/--directory=//'`" ;;
+
+    --bootloader-id)
+	bootloader_id="`argument $option "$@"`"; shift;;
+    --bootloader-id=*)
+	bootloader_id="`echo "$option" | sed 's/--bootloader-id=//'`" ;;
+
+    --grub-probe)
+	grub_probe="`argument "$option" "$@"`"; shift;;
+    --grub-probe=*)
+	grub_probe="`echo "$option" | sed 's/--grub-probe=//'`" ;;
+
+    --config-file)
+	grub_cfg="`argument "$option" "$@"`"; shift;;
+    --config-file=*)
+	grub_cfg="`echo "$option" | sed 's/--config-file=//'`" ;;
+
+    --removable)
+	no_nvram=yes
+	removable=yes ;;
+
+    --no-nvram)
+	no_nvram=yes ;;
+
+    --suse-enable-tpm)
+        source_grub_efi="/usr/lib/grub2/${grub_install_target}/grub-tpm.efi" ;;
+
+    --clean)
+	clean=yes ;;
+
+    -*)
+	echo "Unrecognized option \`$option'"  1>&2
+	usage
+	exit 1
+	;;
+    *)
+	if test "x$install_device" != x; then
+	    echo "More than one install device?" 1>&2
+	    usage
+	    exit 1
+	fi
+	install_device="${option}" ;;
+    esac
+done
+
+if test -n "$efidir"; then
+    efi_fs=`"$grub_probe" --target=fs "${efidir}"`
+    if test "x$efi_fs" = xfat; then :; else
+	echo "$efidir doesn't look like an EFI partition." 1>&2
+	efidir=
+    fi
+fi
+
+
+if [ -z "$bootdir" ]; then
+    bootdir="/boot"
+    if [ -n "$rootdir" ] ; then
+        # Initialize bootdir if rootdir was initialized.
+        bootdir="${rootdir}/boot"
+    fi
+fi
+
+# Find the EFI System Partition.
+if test -n "$efidir"; then
+    install_device="`"$grub_probe" --target=device --device-map= "${efidir}"`"
+else
+    if test -d "${bootdir}/efi"; then
+        install_device="`"$grub_probe" --target=device --device-map= "${bootdir}/efi"`"
+        # Is it a mount point?
+        if test "x$install_device" != "x`"$grub_probe" --target=device --device-map= "${bootdir}"`"; then
+    	efidir="${bootdir}/efi"
+        fi
+    elif test -d "${bootdir}/EFI"; then
+        install_device="`"$grub_probe" --target=device --device-map= "${bootdir}/EFI"`"
+        # Is it a mount point?
+        if test "x$install_device" != "x`"$grub_probe" --target=device --device-map= "${bootdir}"`"; then
+    	efidir="${bootdir}/EFI"
+        fi
+    elif test -n "$rootdir" && test "x$rootdir" != "x/"; then
+    # The EFI System Partition may have been given directly using
+    # --root-directory.
+        install_device="`"$grub_probe" --target=device --device-map= "${rootdir}"`"
+    # Is it a mount point?
+        if test "x$install_device" != "x`"$grub_probe" --target=device --device-map= "${rootdir}/.."`"; then
+    	efidir="${rootdir}"
+        fi
+    fi
+
+    if test -n "$efidir"; then
+        efi_fs=`"$grub_probe" --target=fs "${efidir}"`
+        if test "x$efi_fs" = xfat; then :; else
+    	echo "$efidir doesn't look like an EFI partition." 1>&2
+    	efidir=
+        fi
+    fi
+fi
+
+if test -n "$efidir"; then
+    efi_file=shim.efi
+    efibootdir="$efidir/EFI/boot"
+    mkdir -p "$efibootdir" || exit 1
+    if test "$removable" = "yes" ; then
+      efidir="$efibootdir"
+    else
+      efidir="$efidir/EFI/$efi_distributor"
+      mkdir -p "$efidir" || exit 1
+    fi
+else
+    echo "No valid EFI partition" 1>&2
+    exit 1;
+fi
+
+if test "$removable" = "no" -a -f "$efibootdir/$def_boot_efi"; then
+    if test -n "$ca_string" && (grep -q "$ca_string" "$efibootdir/$def_boot_efi"); then
+        update_boot=yes
+    fi
+else
+    update_boot=yes
+fi
+
+if test "$clean" = "yes"; then
+    rm -f "${efidir}/shim.efi"
+    rm -f "${efidir}/MokManager.efi"
+    rm -f "${efidir}/grub.efi"
+    rm -f "${efidir}/grub.cfg"
+    rm -f "${efidir}/boot.csv"
+    if test "$update_boot" = "yes"; then
+        rm -f "${efibootdir}/${def_boot_efi}"
+        rm -f "${efibootdir}/fallback.efi"
+    fi
+    if test "$no_nvram" = no && test -n "$bootloader_id"; then
+        # Delete old entries from the same distributor.
+        for bootnum in `efibootmgr | grep '^Boot[0-9]' | \
+            fgrep -i " $bootloader_id" | cut -b5-8`; do
+            efibootmgr -b "$bootnum" -B
+        done
+	fi
+	exit 0
+fi
+
+cp "${source_dir}/MokManager.efi" "${efidir}"
+
+if test -n "$source_grub_efi" && ! test -f "$source_grub_efi"; then
+    echo "File $source_grub_efi doesn't exist, fallback to default one" 1>&2
+    source_grub_efi=""
+fi
+
+if test -z "$source_grub_efi"; then
+    source_grub_efi="$def_grub_efi"
+fi
+
+echo "copying $source_grub_efi to ${efidir}/grub.efi"
+cp "$source_grub_efi" "${efidir}/grub.efi"
+
+if test "$efidir" != "$efibootdir" ; then 
+    cp "${source_dir}/shim.efi" "${efidir}"
+    if test -n "$bootloader_id"; then
+        echo "shim.efi,${bootloader_id}" | iconv -f ascii -t ucs2 > "${efidir}/boot.csv"
+    fi
+fi
+
+if test "$update_boot" = "yes"; then
+    cp "${source_dir}/shim.efi" "${efibootdir}/${def_boot_efi}"
+    if test "$removable" = "no"; then
+        cp "${source_dir}/fallback.efi" "${efibootdir}"
+    fi
+fi
+
+
+make_grubcfg () {
+
+grub_cfg_dirname=`dirname $grub_cfg`
+grub_cfg_basename=`basename $grub_cfg`
+cfg_fs_uuid=`"$grub_probe" --target=fs_uuid "$grub_cfg_dirname"`
+
+if test "x$SUSE_BTRFS_SNAPSHOT_BOOTING" = "xtrue"; then
+cat <<EOF
+set btrfs_relative_path="yes"
+EOF
+if ${grub_mkrelpath} --usage | grep -q -e '--relative'; then
+  grub_mkrelpath="${grub_mkrelpath} -r"
+fi
+fi
+
+if [ x$GRUB_ENABLE_CRYPTODISK = xy ]; then
+  for uuid in `"${grub_probe}" --target=cryptodisk_uuid --device-map= "${grub_cfg_dirname}"`; do
+    echo "cryptomount -u $uuid"
+  done
+fi
+
+cat <<EOF
+search --fs-uuid --set=root ${cfg_fs_uuid}
+set prefix=(\${root})`${grub_mkrelpath} ${grub_cfg_dirname}`
+source "\${prefix}/${grub_cfg_basename}"
+EOF
+
+}
+
+make_grubcfg > "${efidir}/grub.cfg"
+# bnc#889765 GRUB shows broken letters at boot
+# invoke grub_install to initialize /boot/grub2 directory with files needed by grub.cfg
+# bsc#1118363 shim-install didn't specify the target for grub2-install
+# set the target explicitly for some special cases 
+${grub_install} --target=${grub_install_target} --no-nvram
+
+if test "$no_nvram" = no && test -n "$bootloader_id"; then
+
+    modprobe -q efivars 2>/dev/null || true
+
+    # Delete old entries from the same distributor.
+    for bootnum in `efibootmgr | grep '^Boot[0-9]' | \
+        fgrep -i " $bootloader_id" | cut -b5-8`; do
+        efibootmgr -b "$bootnum" -B
+    done
+
+    efidir_drive="$("$grub_probe" --target=drive --device-map= "$efidir")"
+    efidir_disk="$("$grub_probe" --target=disk --device-map= "$efidir")"
+    if test -z "$efidir_drive" || test -z "$efidir_disk"; then
+        echo "Can't find GRUB drive for $efidir; unable to create EFI Boot Manager entry." >&2
+    # bsc#1119762 If the MD device is partitioned, we just need to create one
+    # boot entry since the partitions are nested partitions and the mirrored
+    # partitions share the same UUID.
+    elif [[ "$efidir_drive" == \(mduuid/* && "$efidir_drive" != \(mduuid/*,* ]]; then
+        eval $(mdadm --detail --export "$efidir_disk" |
+          perl -ne 'print if m{^MD_LEVEL=}; push( @D, $1) if (m{^MD_DEVICE_\S+_DEV=(\S+)$});
+                    sub END() {print "MD_DEVS=\"", join( " ", @D), "\"\n";};')
+        if [ "$MD_LEVEL" != "raid1" ]; then
+            echo "GRUB drive for $efidir not on RAID1; unable to create EFI Boot Manager entry." >&2
+        fi
+        for mddev in $MD_DEVS; do
+            efidir_drive="$("$grub_probe" --target=drive --device-map= -d "$mddev")"
+            efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
+            efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
+            efidir_d=${mddev#/dev/}
+            efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+              -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
+        done
+    else
+        efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
+        efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+    	-L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
+    fi
+fi
+

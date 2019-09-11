@@ -1,0 +1,13 @@
+Index: pythia8240/configure
+===================================================================
+--- pythia8240.orig/configure
++++ pythia8240/configure
+@@ -297,7 +297,7 @@ if [ -z "$CXX" ]; then
+     CXX="g++";
+ fi
+ if [ -z "$CXX_COMMON" ]; then
+-    CXX_COMMON="${ENABLE_DEBUG}${ENABLE_64BIT}"
++    CXX_COMMON="${CXXFLAGS} ${ENABLE_DEBUG}${ENABLE_64BIT}"
+     CXX_COMMON="$CXX_COMMON -pedantic -W -Wall -Wshadow -fPIC"; fi
+ if [ -z "$CXX_SHARED" ]; then
+     if [ "$ARCH" = "LINUX" ];  then CXX_SHARED="-shared"; fi

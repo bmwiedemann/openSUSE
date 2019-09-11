@@ -1,0 +1,113 @@
+From c0c59219b3b5d817aabf1b8d9c280a97e3a0ab73 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:38 +0200
+Subject: [PATCH 12/43] tools/kvm_stat: add new interactive command 'h'
+
+Display interactive commands reference on 'h'.
+While at it, sort interactive commands alphabetically in various places.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 1fdea7b2893045e5258a13937c3d78c425fd7aa0)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat     | 37 ++++++++++++++++++++++++++++++++-----
+ tools/kvm/kvm_stat/kvm_stat.txt |  2 ++
+ 2 files changed, 34 insertions(+), 5 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 028db219b88e..ff86585b12d3 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1021,6 +1021,30 @@ class Tui(object):
+             self.screen.addstr(4, 1, 'No matching events reported yet')
+         self.screen.refresh()
+ 
++    def show_help_interactive(self):
++        """Display help with list of interactive commands"""
++        msg = ('   c     clear filter',
++               '   f     filter by regular expression',
++               '   g     filter by guest name',
++               '   h     display interactive commands reference',
++               '   p     filter by PID',
++               '   q     quit',
++               '   r     reset stats',
++               '   x     toggle reporting of stats for individual child trace'
++               ' events',
++               'Any other key refreshes statistics immediately')
++        curses.cbreak()
++        self.screen.erase()
++        self.screen.addstr(0, 0, "Interactive commands reference",
++                           curses.A_BOLD)
++        self.screen.addstr(2, 0, "Press any key to exit", curses.A_STANDOUT)
++        row = 4
++        for line in msg:
++            self.screen.addstr(row, 0, line)
++            row += 1
++        self.screen.getkey()
++        self.refresh_header()
++
+     def show_filter_selection(self):
+         """Draws filter selection mask.
+ 
+@@ -1145,10 +1169,6 @@ class Tui(object):
+             sleeptime = DELAY_REGULAR
+             try:
+                 char = self.screen.getkey()
+-                if char == 'x':
+-                    self.update_drilldown()
+-                if char == 'q':
+-                    break
+                 if char == 'c':
+                     self.stats.fields_filter = DEFAULT_REGEX
+                     self.refresh_header(0)
+@@ -1163,13 +1183,19 @@ class Tui(object):
+                     self.show_vm_selection_by_guest_name()
+                     curses.curs_set(0)
+                     sleeptime = DELAY_INITIAL
++                if char == 'h':
++                    self.show_help_interactive()
+                 if char == 'p':
+                     curses.curs_set(1)
+                     self.show_vm_selection_by_pid()
+                     curses.curs_set(0)
+                     sleeptime = DELAY_INITIAL
++                if char == 'q':
++                    break
+                 if char == 'r':
+                     self.stats.reset()
++                if char == 'x':
++                    self.update_drilldown()
+             except KeyboardInterrupt:
+                 break
+             except curses.error:
+@@ -1240,10 +1266,11 @@ Interactive Commands:
+    c     clear filter
+    f     filter by regular expression
+    g     filter by guest name
++   h     display interactive commands reference
+    p     filter by PID
+    q     quit
+-   x     toggle reporting of stats for individual child trace events
+    r     reset stats
++   x     toggle reporting of stats for individual child trace events
+ Press any other key to refresh statistics immediately.
+ """
+ 
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index 109431bdc63c..2bad6f22183b 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -35,6 +35,8 @@ INTERACTIVE COMMANDS
+ 
+ *g*::	filter by guest name
+ 
++*h*::	display interactive commands reference
++
+ *p*::	filter by PID
+ 
+ *q*::	quit
+-- 
+2.12.3
+

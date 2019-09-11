@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Nov 13 10:45:36 UTC 2017 - astieger@suse.com
+
+- opmsg 1.77s:
+  * opmsg: correct error msg handling for libcrypto error queue
+  * opmsg: speeding up keystore load by introducing load flags
+  * opmsg: dont generate Kex keys in null crypto/signing case 
+  * opmsg: allow to selfsign generated personas, so peer can also
+    --decrypt it and check sig
+
+-------------------------------------------------------------------
+Thu Mar  2 10:15:15 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Feb 23 14:21:03 UTC 2017 - meissner@suse.com
+
+- updated to 1.75s:
+- updated to 1.74s:
+  - opmsg: only one DH session key
+
+-------------------------------------------------------------------
+Tue May 24 11:48:44 UTC 2016 - astieger@suse.com
+
+- update to 1.70s:
+  * adding opmux wrapper
+  * KDF version 2 is default for peers with opmsg >= 1.60
+
+-------------------------------------------------------------------
+Wed Dec  9 14:38:09 UTC 2015 - astieger@suse.com
+
+- update to 1.65s:
+  * opmsg: implementing deniable personas
+  * opmsg: allow multiple recipients for encryption/decryption (Cc)
+  * opmsg: handle mutt calling with multiple recipients (Cc)
+  * opmsg: more verbose output for Cc messages
+
+-------------------------------------------------------------------
+Mon Nov  9 14:03:22 UTC 2015 - astieger@suse.com
+
+- update to 1.61s:
+  * opmsg: re-adding RAND_load_file() to gen_dh_key(). Only for
+    safety (already called inside main) but in case keystore is
+    used externally.
+
+-------------------------------------------------------------------
+Mon Sep 14 13:02:05 UTC 2015 - astieger@suse.com
+
+- update to 1.60s:
+  * added native encryption for EC personas, similar to --rsa
+    override
+  * dont need to construct EC_GROUP if using
+    EC_KEY_new_by_curve_name() which obtains all necessary parameters
+  * adjusting I/O handling for opmsg-stick/ropmsg
+  * oflush vs. eflush
+  * some code cleanup and additional error checks
+  * implementing deniable messages
+  * generalizing kex key generation (ECDH, DH), adding possibility
+    to track peer-key usage
+  * Adding version 2 KDF and making peer-isolation configurable
+
+-------------------------------------------------------------------
+Tue Sep  8 11:46:19 UTC 2015 - astieger@suse.com
+
+- initial package
+

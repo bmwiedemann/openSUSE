@@ -1,0 +1,46 @@
+From 6225854682a736e4312ce15b34c90fff03b002db Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 6 Jul 2012 15:55:18 +0800
+Subject: [PATCH] add GRUB_CMDLINE_LINUX_RECOVERY for recovery mode
+
+References: [openSUSE-factory] Has FailSafe or Safe Mode been removed
+            permanently from 12.2? 
+Patch-Mainline: no
+
+We adapt the script a bit in order to support openSUSE's failsafe
+booting mode. We don't use single user mode but with specific kernel
+command line options decided in YaST. These command line could be
+applied to grub2's recovery mode via the new setting
+GRUB_CMDLINE_LINUX_RECOVERY.
+---
+ util/grub-mkconfig.in   |    3 ++-
+ util/grub.d/10_linux.in |    2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: grub-2.02~beta2/util/grub-mkconfig.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub-mkconfig.in
++++ grub-2.02~beta2/util/grub-mkconfig.in
+@@ -227,7 +227,8 @@ export GRUB_DEFAULT \
+   GRUB_ENABLE_CRYPTODISK \
+   GRUB_BADRAM \
+   GRUB_OS_PROBER_SKIP_LIST \
+-  GRUB_DISABLE_SUBMENU
++  GRUB_DISABLE_SUBMENU \
++  GRUB_CMDLINE_LINUX_RECOVERY
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
+Index: grub-2.02~beta2/util/grub.d/10_linux.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/10_linux.in
++++ grub-2.02~beta2/util/grub.d/10_linux.in
+@@ -240,7 +240,7 @@ while [ "x$list" != "x" ] ; do
+               "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+   if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
+     linux_entry "${OS}" "${version}" recovery \
+-                "single ${GRUB_CMDLINE_LINUX}"
++                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_RECOVERY}"
+   fi
+ 
+   list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`

@@ -1,0 +1,13 @@
+--- src/nxml_error.c.orig	2010-02-17 20:15:49.000000000 +0100
++++ src/nxml_error.c	2010-02-17 20:21:39.000000000 +0100
+@@ -24,6 +24,10 @@
+ 
+ #include "nxml.h"
+ 
++#if LIBCURL_VERSION_MAJOR < 7 || (LIBCURL_VERSION_MAJOR == 7 && LIBCURL_VERSION_MINOR < 12)
++#define curl_easy_strerror(code) "Download error"
++#endif
++
+ char *
+ nxml_strerror (nxml_t * nxml, nxml_error_t err)
+ {

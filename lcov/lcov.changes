@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Mon Jun 03 11:13:16 UTC 2019 - mliska@suse.cz
+
+- Update to version 1.15+git.20190524.75fbae1 (boo#1138276):
+  * geninfo: Add intermediate JSON format support
+  * geninfo: Add intermediate text format support
+  * genhtml: Maintain order of branches in unnamed blocks
+  * man: Fix missing parameter in genhtml synopsis
+  * lcov: Finalize release 1.14
+  * geninfo: Fix missing FN: entries in result files
+  * Makefile: Make Perl path install-time configurable
+  * bin,test: Use /usr/bin/env to locate script interpreters
+  * bin/*: Remove '-w' from interpreter specifications
+  * geninfo: Fix errors while resolving /././ path components
+  * geninfo: preserve-paths makes gcov to fail for long pathnames
+  * geninfo: Fix "Can't use an undefined value" error
+  * geninfo: Ignore artificial functions during --initial
+  * geninfo: Fix data collection for files containing templates
+  * genhtml: Unconditionally include anchor for each named line
+  * genhtml: Use gmtime for SOURCE_DATE_EPOCH conversion
+  * genhtml: honor the SOURCE_DATE_EPOCH variable
+  * Tolerate CDPATH being set
+  * CONTRIBUTING: Clarify patch format requirements
+  * geninfo: Fix accounting of basic blocks in exceptional paths
+  * lcov: Fix branch coverage summary
+- Depend newly on perl-PerlIO-gzip
+
+-------------------------------------------------------------------
+Thu Mar  7 08:53:28 UTC 2019 - vmiklos@collabora.com
+
+- Update to version 1.14:
+  + GCC 8 support
+  + Options to filter out source files during data collection based
+    on regular expressions
+  + Option to show number of missed lines, functions and branches
+  + Configuration file option for --demangle-cpp
+  + Unconditional HTML anchors in source view
+  + SOURCE_DATA_EPOCH support for reproducible builds
+  + Multiple bug fixes and performance improvements
+
+-------------------------------------------------------------------
+Thu Mar 15 12:36:52 UTC 2018 - mliska@suse.cz
+
+- Port the package to git server and bump to current trunk in order
+  to add support for GCC 8.
+- Remove lcov-1.13-except-unreach.patch.
+
+-------------------------------------------------------------------
+Thu Dec 22 23:31:33 UTC 2016 - vmiklos@collabora.co.uk
+
+- Update to version 1.13:
+  + Contains bug fixes for a number of issues in various areas of LCOV.
+  + Detailed list of changes included in this release:
+    http://ltp.sourceforge.net/coverage/lcov/changes.php
+- Rename lcov-1.12-except-unreach.patch to lcov-1.13-except-unreach.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 07:38:58 UTC 2015 - vmiklos@collabora.co.uk
+
+- Update to version 1.12:
+  + Configurable coverage rate precision
+  + Configurable exclusion markers
+  + Improved --to-package and --from-package handling
+  + Improved --demangle-cpp handling
+  + Multiple prefix directories
+  + Multiple bug fixes and stability improvements
+- Adapt lcov-1.11-except-unreach.patch to upstream changes ->
+  lcov-1.12-except-unreach.patch
+
+-------------------------------------------------------------------
+Tue May  5 12:50:52 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jun  1 14:07:41 UTC 2014 - vmiklos@collabora.co.uk
+
+- Update to version 1.11:
+  + Improved support for GCC 4.7
+  + Improved performance for specific functions
+  + Compatibility support for LLVM's gcov
+  + Multiple bug fixes and documentation improvements
+- Adapt lcov-1.10-except-unreach.patch to upstream changes
+  >  lcov-1.11-except-unreach.patch 
+  
+-------------------------------------------------------------------
+Mon Jan 14 11:59:39 UTC 2013 - vmiklos@suse.cz
+
+- Update to version 1.10
+  + drop lcov-1.9-gcc-compat-4.7.patch, already in upstream 
+  + carry over lcov-1.9-except-unreach.patch, fixed in post-1.10 CVS
+
+-------------------------------------------------------------------
+Sun Jan 13 19:32:02 UTC 2013 - vmiklos@suse.cz
+
+- add lcov-1.9-except-unreach.patch and lcov-1.9-gcc-compat-4.7.patch to make
+  lcov work with gcc-4.7 
+
+-------------------------------------------------------------------
+Mon Jan 10 19:02:27 UTC 2011 - poletti.marco@gmail.com
+
+- Update to version 1.9 
+  + geninfo now prints debugging messages to stderr instead of
+    stdout.
+  + Some fixes.
+  + Added a --list-full-path option for lcov.
+  + Added lcov_list_width and lcov_list_truncate_max directives to
+    the lcov configuration file to allow for list output
+    customization.
+  + Improved lcov's list output.
+
+-------------------------------------------------------------------
+Sun Feb  7 19:49:15 UTC 2010 - poletti.marco@gmail.com
+
+- Update to version 1.8
+  + Added support for branch coverage measurements
+  + Bug fixes
+  + genhtml: Added --demangle-cpp option, improved color legend
+  + genhtml: Improved coverage rate limits
+  + geninfo: Added --derive-func-data and --debug options
+  + geninfo: Added support for exclusion markers to exclude source lines
+  + lcov: Added support for the linux-2.6.31 upstream gcov kernel support
+  + lcov: Added --from-package, --to-package and --derive-func-data options
+  + lcov: Added overall coverage result output for more operations
+
+-------------------------------------------------------------------
+Thu Sep 24 18:09:00 CEST 2009 - poletti.marco@gmail.com
+
+- initial package of lcov (version 1.7)
+

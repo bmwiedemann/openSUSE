@@ -1,0 +1,45 @@
+From 8d9665967e3ea039d720cbf80c26240f1ec1a795 Mon Sep 17 00:00:00 2001
+From: Phil Sutter <phil@nwl.cc>
+Date: Mon, 15 Jan 2018 16:27:31 +0100
+Subject: [PATCH 2/2] Fix locking if LOCKDIR does not exist
+
+The previous conversion to using flock() missed a crucial bit of code
+which tries to create LOCKDIR once in case opening the lock failed -
+This patch reestablishes the old behaviour.
+
+Reported-by: Tangchen (UVP) <tang.chen@huawei.com>
+Fixes: 6a826591878db ("Use flock() for --concurrent option")
+Signed-off-by: Phil Sutter <phil@nwl.cc>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ libebtc.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/libebtc.c b/libebtc.c
+index 76dd9d7..7349b27 100644
+--- a/libebtc.c
++++ b/libebtc.c
+@@ -143,10 +143,16 @@ int use_lockfd;
+  * or -2 on any other error. */
+ static int lock_file()
+ {
+-	int fd = open(LOCKFILE, O_CREAT, 00600);
+-
+-	if (fd < 0)
+-		return -2;
++	int fd, try = 0;
++
++retry:
++	fd = open(LOCKFILE, O_CREAT, 00600);
++	if (fd < 0) {
++		if (try == 1 || mkdir(LOCKDIR, 00700))
++			return -2;
++		try = 1;
++		goto retry;
++	}
+ 	return flock(fd, LOCK_EX);
+ }
+ 
+-- 
+2.20.1
+

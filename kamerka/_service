@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/dos1/kamerka.git</param>
+    <param name="filename">kamerka</param>
+    <param name="versionformat">0.12+git%cd</param>
+    <param name="revision">a201df47a0849a09a20617fedfee26a407dc847c</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

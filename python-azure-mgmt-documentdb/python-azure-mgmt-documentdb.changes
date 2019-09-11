@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Fri Apr 12 11:25:26 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Tue Sep  4 10:01:20 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Move LICENSE.txt from %doc to %license section
+
+-------------------------------------------------------------------
+Tue Jan 30 10:39:59 UTC 2018 - adrian.glaubitz@suse.com
+
+- Install HISTORY.rst into doc directory
+
+-------------------------------------------------------------------
+Wed Oct  4 14:47:22 UTC 2017 - adrian.glaubitz@suse.com
+
+- Remove versioning for namespace packages in Requires
+- Add namespace packages to BuildRequires
+- Remove namespace files in %install target
+- Explicitly specify Python files of the package in %files
+
+-------------------------------------------------------------------
+Thu Jul 13 13:35:34 UTC 2017 - adrian.glaubitz@suse.com
+
+- Add python-azure-nspkg to Requires
+- Add python-azure-mgmt-nspkg to Requires
+
+-------------------------------------------------------------------
+Mon Jul 10 09:05:31 UTC 2017 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 0.1.3
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amd_drop-compatible-releases-operator.patch

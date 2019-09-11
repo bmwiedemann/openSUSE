@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Mon Jul  3 18:18:54 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner:
+  * Use common packaging macros
+  * Enable parallel build
+- Update source url
+
+-------------------------------------------------------------------
+Mon Dec  9 14:37:30 UTC 2013 - seife+obs@b1-systems.com
+
+- add SUSE_ASNEEDED=0 to fix c-client linking failure in configure
+
+-------------------------------------------------------------------
+Mon Jul  3 17:14:23 CEST 2006 - seife@suse.de
+
+- fix wrong output format strings (bug #155807)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep  2 10:25:04 CEST 2004 - mmj@suse.de
+
+- Remove unneeded Requires: [#44207]
+
+-------------------------------------------------------------------
+Sat Aug  7 14:07:39 CEST 2004 - rommel@suse.de
+
+- update to version 5.2.1
+
+-------------------------------------------------------------------
+Wed Jun  2 11:19:11 CEST 2004 - rommel@suse.de
+
+- update to version 5.1.2 (bug fix version)
+- added patch for gcc problem with imap-devel
+
+-------------------------------------------------------------------
+Sun Jan 11 11:47:20 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Apr 30 10:13:51 CEST 2003 - rommel@suse.de
+
+- update to 5.1.1
+- fixed some code glitches (see mailsync-5.1.1-fixes.patch)
+- fix for lib64
+
+-------------------------------------------------------------------
+Mon Apr 14 14:07:09 CEST 2003 - rommel@suse.de
+
+- update to 5.1.0
+- mailsync has switched to autoconf/automake
+- linkage.c has been dropped from the patch (now part of imap-devel) 
+
+-------------------------------------------------------------------
+Tue Feb 25 09:15:04 CET 2003 - aj@suse.de
+
+- Include cassert for assert.
+
+-------------------------------------------------------------------
+Mon Nov 18 11:32:11 CET 2002 - rommel@suse.de
+
+- update to version 4.4.4
+- fixed ssl support by providing my own linkage.c
+- fixed linkage with c-client so this builds on 64bit platforms
+
+-------------------------------------------------------------------
+Thu Sep  5 17:30:43 CEST 2002 - rommel@suse.de
+
+- initial package creation of mailsync 4.3
+

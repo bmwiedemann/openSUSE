@@ -1,0 +1,13 @@
+Index: doc/socksify.1
+===================================================================
+--- doc/socksify.1.orig
++++ doc/socksify.1
+@@ -138,7 +138,7 @@ For inferno Nettverk A/S:
+    Karl-Andre' Skevik
+ .SH SEE ALSO
+ socks.conf(5), sockd(8), sockd.conf(5)
+-.Pp
++.PP
+ Information about new releases and other related issues can be found
+ on the
+ \fBDante\fP

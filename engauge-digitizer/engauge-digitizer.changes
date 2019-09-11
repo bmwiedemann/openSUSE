@@ -1,0 +1,436 @@
+-------------------------------------------------------------------
+Wed Jul 24 13:08:05 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.3:
+  * Snaps now have an application icon
+    (gh#markummitchell/engauge-digitizer#344)
+  * Handle editing of graph point coordinates before axes are
+    defined (gh#markummitchell/engauge-digitizer#342)
+  * New option to select which name to use after Image Replace
+    (gh#markummitchell/engauge-digitizer#332)
+  * Add drag-and-drop import of PNG files to all operating systems
+    (gh#markummitchell/engauge-digitizer#331) and all formats to
+    Windows (gh#markummitchell/engauge-digitizer#333)
+  * Save dialog geometries for all dialogs
+    (gh#markummitchell/engauge-digitizer#328)
+  * Python classes give access to DIG files for scripting and
+    processing (gh#markummitchell/engauge-digitizer#325,
+    gh#markummitchell/engauge-digitizer#327,
+    gh#markummitchell/engauge-digitizer#329,
+    gh#markummitchell/engauge-digitizer#330,
+    gh#markummitchell/engauge-digitizer#337,
+    gh#markummitchell/engauge-digitizer#338,
+    gh#markummitchell/engauge-digitizer#339)
+  * Fix Save As Default (gh#markummitchell/engauge-digitizer#324)
+    and add Load Defaults button in Export Format dialog
+    (gh#markummitchell/engauge-digitizer#326)
+  * Updated translations.
+
+-------------------------------------------------------------------
+Thu May 16 22:31:35 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.2:
+  * Fix export when some curves have no points
+    (gh#markummitchell/engauge-digitizer#323).
+
+-------------------------------------------------------------------
+Mon Apr 29 13:31:24 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.1:
+  * Fix point match issue
+    (gh#markummitchell/engauge-digitizer#317).
+  * Fix missing data in Geometry Window
+    (gh#markummitchell/engauge-digitizer#319).
+  * Fix jpeg import (gh#markummitchell/engauge-digitizer#320,
+    gh#markummitchell/engauge-digitizer#321).
+- Drop engauge-digitizer-qfloor-typo.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Tue Apr 23 07:11:25 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11:
+  * Export at grid lines (gh#markummitchell/engauge-digitizer#315)
+  * Extrapolation past endpoints during export is optional
+    (gh#markummitchell/engauge-digitizer#315)
+  * Workaround for automatic extensions to appear in flatpak
+    exports (gh#markummitchell/engauge-digitizer#311)
+- Add engauge-digitizer-qfloor-typo.patch to fix a typo: qFLoor
+  should be qFloor.
+
+-------------------------------------------------------------------
+Fri Mar 15 20:41:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundancies from description. Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Mar 15 14:20:02 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Update to version 10.12:
+  * Geometry Window warns when there are bad points.
+  * Automatically selected points no longer include out of range x
+    values.
+  * Fix for crash with logarithmic y coordinate.
+
+-------------------------------------------------------------------
+Tue Jan  1 12:35:16 UTC 2019 - badshah400@gmail.com
+
+- Use qhelpgenerator-qt5 instead of qcollectiongenerator-qt5 to
+  build help files as the latter has been superseded by the former
+  beginning with Qt 5.12.
+- Remove an unnecessary build file that was included in the help
+  directory.
+
+-------------------------------------------------------------------
+Thu Nov 15 16:46:12 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.11:
+  - Display warning if function points are not well defined
+    (gh#markummitchell/engauge-digitizer#288).
+  - Handle large dynamic range in documents with four axis points
+    (gh#markummitchell/engauge-digitizer#296).
+  - Ensure there is always at least one curve
+    (gh#markummitchell/engauge-digitizer#294).
+
+-------------------------------------------------------------------
+Mon Oct 22 12:35:13 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.10:
+  + Curve Fit window shows higher order polynomial fits
+    (gh#markummitchell/engauge-digitizer#287)
+  + Grid removal is faster and more accurate
+    (gh#markummitchell/engauge-digitizer#285,
+    gh#markummitchell/engauge-digitizer#284)
+  + New command line feature to extract original image
+    (gh#markummitchell/engauge-digitizer#277)
+
+-------------------------------------------------------------------
+Thu Aug 16 15:04:33 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.9:
+  - Linux installer ensures installation is into a new directory
+    (gh#markummitchell/engauge-digitizer#275)
+  - More protection against inconsistent inputs
+    (gh#markummitchell/engauge-digitizer#274)
+  - More protection against inconsistent data in input files
+    (gh#markummitchell/engauge-digitizer#273)
+  - Better grid line default initialization with extremely narrow
+    coordinate ranges (gh#markummitchell/engauge-digitizer#272)
+
+-------------------------------------------------------------------
+Sat Jul 14 14:49:32 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.8:
+  + Handle data entry errors when editing point coordinates
+    (gh#markummitchell/engauge-digitizer#270).
+  + Show warning if Windows has corrupted multi-language file name
+    (gh#markummitchell/engauge-digitizer#268).
+  + Handle file names with multiple periods
+    (gh#markummitchell/engauge-digitizer#267).
+  + Save error reports to local drive rather than try to upload
+    them (gh#markummitchell/engauge-digitizer#265).
+  + Show command line errors in Windows before shutdown
+    (gh#markummitchell/engauge-digitizer#263).
+  + Add export-only command line option for batch operation
+    (gh#markummitchell/engauge-digitizer#262).
+  + Support cygwin releases
+    (gh#markummitchell/engauge-digitizer#260).
+- Also filter out file-contains-date-and-time warnings for
+  -devel-doc package using rpmlintrc file.
+- Remove an unneeded windows build file from documentation.
+
+-------------------------------------------------------------------
+Sat Jun  9 13:28:32 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.7:
+  + Stay in same directory when importing/opening, or
+    exporting/saving, successive files for
+    gh#markummitchell/engauge-digitizer#259.
+- Only run post(un) scripts for openSUSE < 1500; file triggers in
+  rpm already do this for newer versions.
+
+-------------------------------------------------------------------
+Mon Apr 30 18:27:47 UTC 2018 - badshah400@gmail.com
+
+- Update to version 10.6:
+  + Flathub support.
+- Changes from version 10.5:
+  + Fix crash on export of interpolated/extrapolated log data
+    (gh#markummitchell/engauge-digitizer#254).
+  + Log files are disabled in releases
+    (gh#markummitchell/engauge-digitizer#246).
+  + Support FreeBSD and other builds
+    (gh#markummitchell/engauge-digitizer#245).
+
+-------------------------------------------------------------------
+Tue Mar 27 04:03:59 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix build on Leap 42.x, remove space in OPENJPEG_INCLUDE
+- Cleanup spec file/build
+  + Do not build source documentation in PDF format, drop TeXlive
+    BuildRequires
+  + Move source documentation to devel-doc subpackage
+  + Move standalone HTML user manual to doc subpackage
+  + Fix path to QCH help files
+  + Shrink documentation images using optipng
+  + trivial cleanups
+
+-------------------------------------------------------------------
+Fri Mar  2 18:21:57 UTC 2018 - crrodriguez@opensuse.org
+
+- Reenable jpeg2000 support.
+- Fix build requires, remove unused libjpeg-devel, libpng-devel
+
+-------------------------------------------------------------------
+Tue Oct 10 13:01:04 UTC 2017 - badshah400@gmail.com
+
+- Update to version 10.4:
+  + Show warning message when grid line maximum is exceed
+    (gh#markummitchell/engauge-digitizer#244).
+  + CSV export files have double quotes on fields with internal
+    commas (gh#markummitchell/engauge-digitizer#243).
+  + Status bar shows all of text for right-to-left languages
+    (gh#markummitchell/engauge-digitizer#240).
+
+-------------------------------------------------------------------
+Mon Aug 28 20:47:15 UTC 2017 - badshah400@gmail.com
+
+- Update to version 10.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 23 15:36:29 UTC 2017 - badshah400@gmail.com
+
+- Update to version 10.2:
+  + More zoom levels for increased flexibility in zooming
+    (gh#markummitchell/engauge-digitizer#237).
+
+-------------------------------------------------------------------
+Sat Jul 22 15:53:45 UTC 2017 - badshah400@gmail.com
+
+- Update to version 10.1:
+  + Export settings dialog usability improvements
+    (gh#markummitchell/engauge-digitizer#235).
+  + Export files have blank line between sections
+    (gh#markummitchell/engauge-digitizer#234).
+  + Export setting for raw relation points is saved
+    (gh#markummitchell/engauge-digitizer#229).
+  + Four-axes axis point coordinates are not confused
+    (gh#markummitchell/engauge-digitizer#228).
+  + Newly copied points can be pasted
+    (gh#markummitchell/engauge-digitizer#227).
+  + Prevent crash if grid is undefined
+    (gh#markummitchell/engauge-digitizer#226).
+- Drop engauge-digitizer-license-fix.patch: upstreamed.
+
+-------------------------------------------------------------------
+Fri Jun  2 12:24:11 UTC 2017 - badshah400@gmail.com
+
+- Add engauge-digitizer-license-fix.patch: Remove ancient unwanted
+  license info; patch taken from upstream git
+  (gh#markummitchell/engauge-digitizer#230).
+
+-------------------------------------------------------------------
+Mon Apr 17 10:14:18 UTC 2017 - badshah400@gmail.com
+
+- Add BuildRequires on tex(xtab.sty) to fix build failure on
+  openSUSE Leap 42.1 (this is automatically pulled in for Leap
+  42.2 and higher, so having the BuildRequires unconditionally
+  doesn't hurt).
+
+-------------------------------------------------------------------
+Thu Apr 13 02:13:47 UTC 2017 - badshah400@gmail.com
+
+- Update to version 10.0:
+  * Maps with a scale bar are supported
+    (gh#markummitchell/engauge-digitizer#208,
+    gh#markummitchell/engauge-digitizer#224).
+  * Include missing points during export of interpolated relation
+    curves (gh#markummitchell/engauge-digitizer#222).
+
+-------------------------------------------------------------------
+Sat Jan  7 18:16:19 UTC 2017 - badshah400@gmail.com
+
+- Update to version 9.8:
+  * Prevent false alarm from Windows antivirus software.
+- Changes from version 9.7:
+  * Installation help for users having problems installing in
+    Fedora (gh#markummitchell/engauge-digitizer#203).
+  * Functions with points sharing the same X coordinate no longer
+    crash (gh#markummitchell/engauge-digitizer#202).
+- Changes from version 9.6:
+  * Time coordinates have full precision after being saved and
+    loaded (gh#markummitchell/engauge-digitizer#201).
+  * Points are still associated with their curves after curve
+    names are reordered (gh#markummitchell/engauge-digitizer#200).
+  * Fix Save As Default button in Curve Add/Remove dialog
+    (gh#markummitchell/engauge-digitizer#199).
+  * Clean up text for translations
+    (gh#markummitchell/engauge-digitizer#198,
+    gh#markummitchell/engauge-digitizer#197,
+    gh#markummitchell/engauge-digitizer#188).
+  * Export of log coordinates no longer produces illegal values
+    (gh#markummitchell/engauge-digitizer#196).
+
+-------------------------------------------------------------------
+Sat Nov  5 22:43:14 UTC 2016 - badshah400@gmail.com
+
+- Update to version 9.5:
+  * Tested segment fill and point match
+    (gh#markummitchell/engauge-digitizer#189)
+  * Fix when changing to log coordinates
+    (gh#markummitchell/engauge-digitizer#182)
+
+-------------------------------------------------------------------
+Sun Oct  2 11:16:18 UTC 2016 - badshah400@gmail.com
+
+- Update to version 9.4:
+  + Language translations for Russian, Portuguese, Spanish,
+    French, German and Chinese.
+  + Fixes for coordinate checking
+    (gh#markummitchell/engauge-digitizer#182,
+    gh#markummitchell/engauge-digitizer#189).
+- Drop engauge-digitizer-desktop-file.patch: incorporated
+  upstream.
+- Drop README.md from the -doc subpkg, it is already packaged in
+  main package.
+
+-------------------------------------------------------------------
+Fri Sep  2 16:22:09 UTC 2016 - badshah400@gmail.com
+
+- Drop external .desktop file and use the upstream file.
+- Add engauge-digitizer-desktop-file.patch to:
+  + Fix Categories according to openSUSE guidelines
+  + Add a GenericName
+  + Replace absolute icon file name by base name (to make use of
+    hicolor icons)
+  + Add trailing colon to MimeType entry.
+
+-------------------------------------------------------------------
+Fri Sep  2 00:35:43 UTC 2016 - badshah400@gmail.com
+
+- Update to version 9.3:
+  + Fix crash in Settings / Main Window when pdf import support is
+    not available (gh#markummitchell/engauge-digitizer#177).
+  + Settings dialogs can be made very small to fit on small
+    screens (gh#markummitchell/engauge-digitizer#176).
+- Changes from version 9.2:
+  + Apply extra digits of precision setting to export file
+    (gh#markummitchell/engauge-digitizer#175).
+  + Release fixes: gh#markummitchell/engauge-digitizer#174,
+    gh#markummitchell/engauge-digitizer#173,
+    gh#markummitchell/engauge-digitizer#172.
+  + Zenodo citation (gh#markummitchell/engauge-digitizer#171).
+
+-------------------------------------------------------------------
+Sun Aug 21 01:28:45 UTC 2016 - badshah400@gmail.com
+
+- Update to version 9.1:
+  + Fix crash if graph points are generated before axis points
+    (gh#markummitchell/engauge-digitizer#167)
+  + Default for import cropping brings up cropping window for
+    multi-page pdfs (gh#markummitchell/engauge-digitizer#166)
+- Changes from version 9.0:
+  + Image cropping option on import extracts just the graphs from
+    files with other image data
+    (gh#markummitchell/engauge-digitizer#149)
+  + Geometry window gives point feedback, and is another method
+    for drag-and-drop export
+    (gh#markummitchell/engauge-digitizer#143)
+  + Image replace menu option for rapid transfer of settings to a
+    new image (gh#markummitchell/engauge-digitizer#154)
+  + Cursor restoration after editing of points
+    (gh#markummitchell/engauge-digitizer#155)
+  + Editing of graphics point coordinates for improved accuracy
+    (gh#markummitchell/engauge-digitizer#156)
+  + Prevent hang for certain combinations of grid settings
+    (gh#markummitchell/engauge-digitizer#159)
+  + Semicolon delimiter option added for export
+    (gh#markummitchell/engauge-digitizer#161)
+  + Settings reset option added to command line
+    (gh#markummitchell/engauge-digitizer#162)
+- Changes from version 8.3:
+  + Pdf file import (gh#markummitchell/engauge-digitizer#133,
+    gh#markummitchell/engauge-digitizer#143,
+    gh#markummitchell/engauge-digitizer#147)
+  + Extrapolation of points past the first and last points during
+    export (gh#markummitchell/engauge-digitizer#137)
+  + Fix crash on loading of new file after closing previous file
+    (gh#markummitchell/engauge-digitizer#139)
+  + Background image can be replaced for reusing axes and/or
+    settings when a new image is like a past image
+    (gh#markummitchell/engauge-digitizer#154)
+- Packaging changes:
+  + Add BuildRequires: pkgconfig(poppler-qt5) and enable building
+    with pdf support (set POPPLER_INCLUDE and POPPLER_LIB env
+    variables, CONFIG+=pdf to qmake).
+  + Replace BuildRequires: pkgconfig(libjpeg) by libjpeg-devel to
+    make package build for Leap.
+  + Manually install doxygen HTML doc files instead of using the
+    %doc macro; this allows to cleanup duplicates using fdupes
+    (add BuildRequires: fdupes).
+  + Remove unneeded .gitignore file from help.
+  + Correct EOF encodings using sed where appropriate.
+  + Move license to main package.
+
+-------------------------------------------------------------------
+Thu Jun 30 15:20:39 UTC 2016 - badshah400@gmail.com
+
+- Update to version 8.2:
+  + Sub-pixel point placement increases accuracy
+  + Undo/redo makes recovering from mistakes easy
+  + Easier and more powerful zooming
+  + Improved drag-and-drop
+  + Wizard provides an interactive tutorial to explain the basic
+    steps
+  + Wizard creates a checklist guide to interactively leads
+    user through steps from file import to file export
+  + See https://github.com/markummitchell/engauge-digitizer/releases
+    for a full list of chages since previously packaged version.
+- Packaging changes:
+  + Drop doc-path.patch: No longer needed.
+  + Build hires icons from bundled icns file and install them
+    to the hicolor icon directory; drop addtional png icon file.
+  + Build and install PDF and HTML documentation in-situ using
+    doxygen as part of doc subpackage.
+  + Building now depends on Qt5 libraries, update BuildRequires.
+  + Build and install help files in main pkg.
+  + Post and Postun scriptlets to update desktop database and
+    hicolor icon theme cache.
+  + Install bundled appdata file into appdata dir.
+  + Add rpmlintrc file to suppress false positive warnings for
+    file-contains-date-and-time in the doc package.
+
+-------------------------------------------------------------------
+Mon Mar 16 16:10:48 UTC 2015 - sfalken@opensuse.org
+
+- Changed desktop categories to Science;Math;DataVisualization; to
+  clear brp-check-suse error 
+
+-------------------------------------------------------------------
+Wed Jan  7 01:36:29 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 5.2
+  + No changelog available
+- Upstream has renamed tarball for engauge
+- Build with "%{optflags} -fno-strict-aliasing"
+
+-------------------------------------------------------------------
+Thu Dec 27 08:40:21 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 5.1
+  * no changelog available
+
+-------------------------------------------------------------------
+Sun Dec  9 19:27:05 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to git 2012.10.11
+
+-------------------------------------------------------------------
+Fri Aug 31 12:05:14 UTC 2012 - scorot@free.fr
+
+- fix debuginfo packaging failure on SLE 11 
+
+-------------------------------------------------------------------
+Fri Aug 24 22:21:18 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 5.0

@@ -1,0 +1,23 @@
+--- Makefile
++++ Makefile	2011/02/08 14:48:13
+@@ -38,9 +38,9 @@ RPMSPECDIR	= $(shell rpm --eval '%_specd
+ CC		= gcc
+ INCLUDE		=
+ SBIN		= $(BUILD_ROOT)/sbin
+-MANDIR		= usr/man
++MANDIR		= usr/share/man
+ MAN		= $(BUILD_ROOT)/$(MANDIR)/man8
+-INIT		= $(BUILD_ROOT)/etc/rc.d/init.d
++INIT		= $(BUILD_ROOT)/etc/init.d
+ MKDIR		= mkdir
+ INSTALL		= install
+ STATIC_LIBS	= libipvs/libipvs.a
+@@ -109,7 +109,7 @@ install:        all
+ 		$(INSTALL) -m 0644 ipvsadm-save.8 $(MAN)
+ 		$(INSTALL) -m 0644 ipvsadm-restore.8 $(MAN)
+ 		[ -d $(INIT) ] || $(MKDIR) -p $(INIT)
+-		$(INSTALL) -m 0755 ipvsadm.sh $(INIT)/ipvsadm
++		$(INSTALL) -m 0754 ipvsadm.sh $(INIT)/ipvsadm
+ 
+ clean:
+ 		rm -f ipvsadm $(NAME).spec $(NAME)-$(VERSION).tar.gz

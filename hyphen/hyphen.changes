@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Jan 28 13:56:36 UTC 2016 - zaitor@opensuse.org
+
+- Add baselibs.conf as source, in order to build libhyphen0 32-bit
+  compatability lib.
+
+-------------------------------------------------------------------
+Tue Dec 30 17:06:42 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2.8.8
+  + remove last coverity warning, 0 remaining
+- Changes from version 2.8.7
+  + various clang scan-build warning fixes
+
+-------------------------------------------------------------------
+Wed Apr 23 08:36:27 UTC 2014 - tchvatal@suse.com
+
+- Do not provide english hyphen. It is provided by myspell-docs
+  package.
+
+-------------------------------------------------------------------
+Sat Jan 25 21:31:45 UTC 2014 - tchvatal@suse.com
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 17 15:52:39 UTC 2012 - tchvatal@suse.com
+
+- Update wrt missing dir spec.
+
+-------------------------------------------------------------------
+Mon Dec 17 15:32:35 UTC 2012 - tchvatal@suse.com
+
+- Initial commit, version 2.8.6.
+

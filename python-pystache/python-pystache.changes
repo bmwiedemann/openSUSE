@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jul 16 12:31:15 UTC 2018 - tchvatal@suse.com
+
+- Drop the devel package from buildrequires
+
+-------------------------------------------------------------------
+Sun Jul  2 14:21:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Update for the multipython build.
+
+-------------------------------------------------------------------
+Sun May  8 07:05:17 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Fri Aug 29 12:41:09 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

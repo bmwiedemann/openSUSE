@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Aug 11 01:45:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Wed Jun 12 19:50:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.8.2
+  * Fix Delete Terminal Not Working with Tornado version 6.0.1 
+  * Set websocket.terminal to None when the child exits
+
+-------------------------------------------------------------------
+Tue Feb 13 22:05:59 UTC 2018 - toddrme2178@gmail.com
+
+- Disable tests until random testing race condition fixed
+  * see: https://github.com/jupyter/terminado/issues/21
+
+-------------------------------------------------------------------
+Tue Nov 28 18:56:09 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.1:
+  * no changelog available
+
+-------------------------------------------------------------------
+Mon Nov 27 19:32:25 UTC 2017 - arun@gmx.de
+
+- update to version 0.8:
+  * Add support for Windows on Python 3: #44
+
+-------------------------------------------------------------------
+Sun Nov 19 05:57:21 UTC 2017 - arun@gmx.de
+
+- update to version 0.7:
+  * :meth:`terminado.TermSocket.open` now calls the "open()" method on
+    the parent class using "super()". This allows a mixin class; for
+    instance, to periodically send ping messages to keep a connection
+    open.
+  * When a websocket client disconnects from a terminal managed by
+    :class:`~.UniqueTermManager`, the "SIGHUP" signal is sent to the
+    process group, not just the main process.
+  * Fixed :meth:`terminado.NamedTermManager.kill` to use the signal
+    number passed to it.
+  * Switched to Flit packaging.
+  * README and requirements for demos.
+
+-------------------------------------------------------------------
+Mon Apr 24 20:55:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix URL.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Sat Apr  8 19:21:31 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.6
+  (no upstream changelog)
+
+-------------------------------------------------------------------
+Fri Aug 14 09:39:09 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

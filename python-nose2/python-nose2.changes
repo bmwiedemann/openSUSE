@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue May 14 17:02:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new mock versions:
+  * fix-mock-dep.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 11:19:14 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.1
+- refresh remove_unittest2.patch
+ * the prof plugin now uses cProfile instead of hotshot for profiling
+ * skipped tests now include the user's reason in junit XML's message field
+ * the prettyassert plugin mishandled multi-line function definitions
+ * Using a plugin's CLI flag when the plugin is already enabled via config
+   no longer errors
+ * nose2.plugins.prettyassert, enabled with --pretty-assert
+ * Cleanup code for EOLed python versions
+ * Dropped support for distutils.
+ * Result reporter respects failure status set by other plugins
+ * JUnit XML plugin now includes the skip reason in its output
+
+-------------------------------------------------------------------
+Thu Aug 16 10:22:15 UTC 2018 - jengelh@inai.de
+
+- Avoid name repetition in summary (rpmlint).
+
+-------------------------------------------------------------------
+Mon Aug 13 12:13:57 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2
+  Add remove_unittest2.patch to faciliate that
+- Upgrade to 0.8.0:
+    List of changes is too long to show here, see
+    https://github.com/nose-devs/nose2/blob/master/docs/changelog.rst
+    changes between 0.6.5 and 0.8.0
+
+-------------------------------------------------------------------
+Wed Jun 28 06:07:30 UTC 2017 - jengelh@inai.de
+
+- Update package description
+
+-------------------------------------------------------------------
+Mon Apr 24 09:10:11 UTC 2017 - alarrosa@suse.com
+
+- Use singlespec macros
+
+-------------------------------------------------------------------
+Mon Feb  6 17:07:51 UTC 2017 - alarrosa@suse.com
+
+- Initial release

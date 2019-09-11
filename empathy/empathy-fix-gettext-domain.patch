@@ -1,0 +1,22 @@
+From 208cd9ef0d4410b9b59761c8faf76ceca8a708a0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Piotr=20Dr=C4=85g?= <piotrdrag@gmail.com>
+Date: Sat, 30 Sep 2017 16:00:40 +0200
+Subject: gschema: Fix gettext-domain
+
+---
+ data/org.gnome.Empathy.gschema.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.gnome.Empathy.gschema.xml b/data/org.gnome.Empathy.gschema.xml
+index 2d91c32..9002507 100644
+--- a/data/org.gnome.Empathy.gschema.xml
++++ b/data/org.gnome.Empathy.gschema.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<schemalist>
++<schemalist gettext-domain="empathy">
+ 
+   <enum id="position">
+     <value nick="top-left" value="1"/>
+-- 
+cgit v0.12

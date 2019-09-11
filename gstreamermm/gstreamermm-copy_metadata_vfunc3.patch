@@ -1,0 +1,25 @@
+From 20090e4db48fa30e193be2637e881add4cb6d3d4 Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Sat, 5 May 2018 13:01:44 +0100
+Subject: [PATCH] Gst::AudioBaseSink: increase refcount of returned buffer in
+ create_ring_buffer()
+
+---
+ gstreamer/src/audiobasesink.hg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gstreamer/src/audiobasesink.hg b/gstreamer/src/audiobasesink.hg
+index 7b6e57f..7809c40 100644
+--- a/gstreamer/src/audiobasesink.hg
++++ b/gstreamer/src/audiobasesink.hg
+@@ -109,7 +109,7 @@ public:
+ 
+   /** vfunc to create and return a Gst::AudioRingBuffer to write to.
+    */
+-  _WRAP_VFUNC(Glib::RefPtr<Gst::AudioRingBuffer> create_ring_buffer(), "create_ringbuffer")
++  _WRAP_VFUNC(Glib::RefPtr<Gst::AudioRingBuffer> create_ring_buffer(), "create_ringbuffer", refreturn_ctype)
+ 
+   /** vfunc to payload data in a format suitable to write to the sink. If no
+    * payloading is required, returns a reffed copy of the original
+-- 
+2.17.1

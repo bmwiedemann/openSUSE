@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Jun  3 08:18:07 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8
+  * Support ``ast.Constant`` nodes being emitted by Python 3.8 (and initially
+    created in Python 3.6).
+    (Reported and fixed by Chris Rink in `Issue 120`_ and `PR 121`_.)
+  * Support Python 3.8's assignment expressions.
+    (Reported and fixed by Kodi Arfer in `Issue 126`_ and `PR 134`_.)
+  * Support Python 3.8's f-string debugging syntax.
+    (Reported and fixed by Batuhan Taskaya in `Issue 138`_ and `PR 139`_.)
+  * :func:`astor.to_source` now has a *source_generator_class* parameter to
+    customize source code generation.
+    (Reported and fixed by matham in `Issue 113`_ and `PR 114`_.)
+  * The :class:`~SourceGenerator` class can now be imported from the
+    :mod:`astor` package directly. Previously, the ``astor.code_gen``
+    submodule was needed to be imported.
+  * Support Python 3.8's positional only arguments. See :pep:`570` for
+    more details.
+    (Reported and fixed by Batuhan Taskaya in `Issue 142`_ and `PR 143`_.)
+  * bug fixes, see changelog.rst
+- run the testsuite
+
+-------------------------------------------------------------------
+Fri Nov  9 12:03:52 UTC 2018 - Petr Cervinka <petr@cervinka.net>
+
+- Removed copied link reference from spec file  
+
+-------------------------------------------------------------------
+Fri Nov  9 10:27:55 UTC 2018 - cgoll@suse.com
+
+- fixed rpmlint warnings 
+
+-------------------------------------------------------------------
+Thu Nov  8 14:04:28 UTC 2018 - cgoll@suse.com
+
+- removed not needed module devel
+  * removed check section
+  * using license macro
+
+-------------------------------------------------------------------
+Wed Jul 25 08:13:46 UTC 2018 - cgoll@suse.com
+
+- initial commit of astor 0.7.1 for python2 and python3
+  * skipped check section, as this was faling

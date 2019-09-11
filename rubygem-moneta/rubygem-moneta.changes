@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Sun May  5 09:35:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.1.1
+ see installed CHANGES
+
+  1.1.1
+  
+  * Adapters::Sequel - use prepared statements
+  * Adapters::Sqlite - use upsert for increment where supported
+
+-------------------------------------------------------------------
+Fri Mar 29 06:06:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.1.0
+ see installed CHANGES
+
+  1.1.0
+  
+  * Adapters::ActiveRecord - rewrite to use Arel directly; support for Rails 5
+  * Moneta::Server - close all connections when stopping
+  * Moneta::Shared - recover from socket errors
+  * Transformer - add :urlsafe_base64; use this by default for keys with Couch
+    adapter
+  * Adapters::MongoMoped - recover from failed increment
+  * Moneta::Pool - fix race condition in #pop (#144)
+  * Moneta::Client - raise EOFError if a read fails
+  * Moneta::Expires - use Rational objects to get much more accurate time
+    resolution
+  * Moneta::Lock/Moneta::Pool - allow wrapped methods to call other wrapped
+    methods
+  * Adapters::Sequel - add optimisations for MySQL, PostgreSQL and SQLite
+  * Adapters::Sequel - add Postgres+HStore backend
+  * Add Adapters::ActiveSupportCache
+  * Adapters::Sqlite - add :journal_mode option
+  * Add table creation options to Sequel and ActiveRecord adapters
+  * Adapters::ActiveRecord - support for forking (#159)
+  * Adapters::Cassandra - rewrite to use cassandra-driver gem (#81)
+  * Adapters::Couch - add a LRUHash to cache document revs
+  * Adapters::KyotoCabinet - implement atomic increment
+  * Add :each_key feature and implemented on many adapters; add
+    Moneta::WeakEachKey (#143; see feature matrix)
+  * Add bulk read/write methods to the spec; added default implementation to
+    Defaults and fast versions in many adapters (#116; see feature matrix)
+  * First class support for latest JRuby (#160)
+  * Minimum required MRI version is now 2.2.2 (#135)
+
+-------------------------------------------------------------------
+Thu Mar  9 05:52:51 UTC 2017 - coolo@suse.com
+
+- updated to version 1.0.0
+ see installed CHANGES
+
+  1.0.0
+  
+  * Adapters::Sequel - allow usage of Sequel extensions and connection validation
+  * ActiveSupport::Cache::MonetaStore - dup options before mutating them
+  * ActiveSupport::Cache::MonetaStore - allow writing raw values
+
+-------------------------------------------------------------------
+Wed Dec 14 05:39:24 UTC 2016 - coolo@suse.com
+
+- updated to version 0.8.1
+ see installed CHANGES
+
+  0.8.1
+  
+  * Adapters::TokyoTyrant - more consistent error handling
+  * Adapters::MongoMoped - support for moped gem v2.0
+  * Adapters::MongoOfficial - support for mongo gem versions 2-4
+  * Adapters::File - fix a bug in #load (#74)
+  * Adapters::LRUHash - allow to disable the limits by passing nil for max_size, max_count
+  * Transformer - don't use OpenSSL::Digest::Digest namespace
+  * Adapters::Sequel - fix issue with unknown "blob" type
+  * Rack::Cache - fix deprecated require paths
+  * Adapters::MemcachedNative - properly close connections
+  * Transformer - support bson gem versions 2-4
+  * Transformer - switch to rbzip2 gem for bzip2 support
+  * Adapters::MemcachedDalli - #create returns a boolean
+
+-------------------------------------------------------------------
+Mon Oct 13 14:23:51 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Mon Jul 28 10:10:34 UTC 2014 - coolo@suse.com
+
+- updated to version 0.8.0
+ * Rename Moneta::Adapters::Mongo to Moneta::Adapters::MongoOfficial
+ * Add Moneta::Adapters::MongoMoped
+ * Drop Ruby 1.8 support
+
+-------------------------------------------------------------------
+Thu Oct 10 14:20:48 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.20
+ * Adapters::LRUHash: add option :max_value
+ * Moneta.new(:Couch, :Riak, :RestClient): use urlencode instead of base64 for key encoding)
+ * Transformer: Add :hex encoder
+ * Transformer: Don't wrap object in array for JSON serialization
+ * Transformer: Add :php serializer
+ * Moneta.new(:Sequel) - Don't encode blob data using base64
+ * Moneta::Adapters::LMDB added (Symas Lightning Memory-Mapped Database)
+ * Moneta::Adapters::Sequel - Fix for https://github.com/jeremyevans/sequel/issues/715
+
+-------------------------------------------------------------------
+Tue Jul 30 18:46:52 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.19
+ * ActionDispatch::Session::MonetaStore fixed for Rails 4
+ * Moneta::Server: Tries now to remove stale unix socket
+ * Moneta::Server: More robust and better performance
+ * Adapters::File#increment and #create fixed on JRuby
+ * Adapters::Couch and Adapters::Mongo can store hashes directly as documents.
+   It is not necessary to serialize values as strings anymore.
+ * Adapters::Couch#create added
+ * Pool thread safety improved
+ * Transformer: Add CityHash
+ * Transformer: LZ4 compression added
+
+-------------------------------------------------------------------
+Thu Jun 13 05:37:00 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.17
+ * Better builder validation
+ * Adapters::Sequel: check for correct exceptions
+
+-------------------------------------------------------------------
+Tue Jun  4 05:39:35 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.16
+ * CONTRIBUTORS file added
+ * Adapters::File#increment fixed
+ 
+ * Adapters::ActiveRecord, Adapters::Sequel: store values as blobs
+ * Adapters::ActiveRecord fixed and improved
+ 
+ * Adapters::ActiveRecord: Use connection_pool
+ * Adapters::File: Race condition in #increment fixed
+ 
+ * Concurrency tests added
+ * Bugfixes for File, Sqlite, Sequel and Datamapper, ActiveRecord
+ 
+ * Logger: Add option :file
+ * Adapters::TokyoTyrant supports both native (ruby-tokyotyrant) and pure-ruby tokyotyrant gems
+ * Adapters::Couch use Faraday directly instead of buggy CouchRest
+ * Adapters::RestClient use Faraday
+ * Transformer: add quoted printable encoding (:qp)
+ 
+ * Adapters::TokyoTyrant added
+ * Add attr_reader :backend and option :backend to some adapters
+ * Cache rename #backend to #adapter
+ 
+ * Adapters::KyotoCabinet added
+ * Feature detection methods #features and #supports? added
+ * Validity checks added which check features
+
+-------------------------------------------------------------------
+Thu Jan 24 06:47:20 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.8
+
+-------------------------------------------------------------------
+Wed Jan  2 08:15:10 UTC 2013 - coolo@suse.com
+
+- updated to version 0.7.3
+ * Added Adapters::RestClient
+ * Added Rack::MonetaRest
+ * Added Rack::MonetaStore
+
+-------------------------------------------------------------------
+Fri Dec 28 08:07:24 UTC 2012 - coolo@suse.com
+
+- updated to version 0.7.2
+ * Renamed WithOptions to OptionSupport
+ * Refactored Base in Defaults mixin
+ * Removed Transformer option :quiet
+ * Transformer might raise an exception if an invalid value is transformed
+ * Expires middleware only wraps Arrays and nils in an Array if
+   no expiration time is given (backward compatible change)
+ * Moneta middlewares are not allowed to modify option hash given to functions
+   like #load and #store
+
+-------------------------------------------------------------------
+Tue Dec 25 10:13:04 UTC 2012 - coolo@suse.com
+
+- updated to version 0.7.1
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 19 01:26:03 UTC 2009 - mrueckert@suse.de
+
+- initial package of version 0.6.0
+

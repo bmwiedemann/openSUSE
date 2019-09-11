@@ -1,0 +1,22 @@
+Index: mozldap-6.0.7/c-sdk/ldap/clients/tools/ldaptool.h
+===================================================================
+--- mozldap-6.0.7.orig/c-sdk/ldap/clients/tools/ldaptool.h
++++ mozldap-6.0.7/c-sdk/ldap/clients/tools/ldaptool.h
+@@ -68,14 +68,14 @@
+ #define WIN32_LEAN_AND_MEAN
+ #include <windows.h>
+ extern int getopt (int argc, char *const *argv, const char *optstring);
+-#include <io.h>	/* for _mktemp() */
+-#define LDAPTOOL_MKTEMP( p )	_mktemp( p )
++#include <io.h>	/* for _mkstemp() */
++#define LDAPTOOL_MKTEMP( p )	_mkstemp( p )
+ #else
+ #include <sys/file.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+-#define LDAPTOOL_MKTEMP( p )	mktemp( p )
++#define LDAPTOOL_MKTEMP( p )	mkstemp( p )
+ #endif
+ 
+ #ifdef LINUX

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:55:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:52:48 UTC 2018 - jengelh@inai.de
+
+- Reword description not to assume any particular use.
+  Drop fantasizing about possible use cases.
+
+-------------------------------------------------------------------
+Thu May 24 17:50:13 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.2.5
+  * make sure we include LICENSE files when packaging
+  * Adding optional named tempfiles
+- spec file cleanups
+
+-------------------------------------------------------------------
+Wed May  3 01:55:24 UTC 2017 - ralf.dannert@suse.com
+
+- initial package submission
+- new Version 1.2.4
+

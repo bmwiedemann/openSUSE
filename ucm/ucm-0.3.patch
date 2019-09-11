@@ -1,0 +1,24 @@
+diff -ru ucm-0.3/Ucm-color.ad ucm-0.3.new/Ucm-color.ad
+--- ucm-0.3/Ucm-color.ad	2001-04-21 03:18:11.000000000 +0200
++++ ucm-0.3.new/Ucm-color.ad	2002-08-18 13:24:31.000000000 +0200
+@@ -3,7 +3,7 @@
+ *showGrip: false
+ 
+ ! This really needs to be a Unicode font
+-*grid.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
++*grid.font: -gnu-unifont-medium-r-normal--16-*-*-*-p-*-iso10646-1
+ *grid.internalPad: 6
+ *grid.gridColor: red
+ *grid.cursorName: left_ptr
+diff -ru ucm-0.3/Ucm.ad ucm-0.3.new/Ucm.ad
+--- ucm-0.3/Ucm.ad	2001-04-21 03:13:04.000000000 +0200
++++ ucm-0.3.new/Ucm.ad	2002-08-18 13:24:09.000000000 +0200
+@@ -3,7 +3,7 @@
+ *showGrip: false
+ 
+ ! This really needs to be a Unicode font
+-*grid.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
++*grid.font: -gnu-unifont-medium-r-normal--16-*-*-*-p-*-iso10646-1
+ *grid.internalPad: 6
+ *grid.cursorName: left_ptr
+ 

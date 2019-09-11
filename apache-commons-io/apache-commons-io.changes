@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Wed Mar 27 10:17:25 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Tue Feb 26 17:34:25 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.6
+  * many bugfixes, features and enhancenments, like
+    Automatic-Module-Name entry in manifest
+  * requires jdk7 or later
+  * see RELEASE-NOTES.txt for details
+- Generated a build.xml to be able to build with ant
+- Build with tests is now optional
+- Removed patch:
+  * commons-io-version-property.patch
+    + not needed anymore in this version
+
+-------------------------------------------------------------------
+Tue May 15 10:41:03 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Thu Sep 14 11:39:40 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9 by specifying source and target level 1.6
+
+-------------------------------------------------------------------
+Sun May 21 07:52:44 UTC 2017 - tchvatal@suse.com
+
+- Remove unused depedencies
+
+-------------------------------------------------------------------
+Fri May 19 09:52:13 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local 
+
+-------------------------------------------------------------------
+Wed Mar 18 09:45:59 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Jul  7 14:53:05 UTC 2014 - tchvatal@suse.com
+
+- Use junit not junit4
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:28 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Mar 20 12:45:16 UTC 2013 - mmeister@suse.com
+
+- Added url as source. 
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Oct 25 08:21:33 UTC 2012 - mvyskocil@suse.com
+
+- update to the latest upstream version 2.4 (needed by fop 1.1)
+  * many bugfixes, features and enhancenments, like
+  * XmlStreamReader support for UTF-32
+  * requires jdk6 or later
+  * see RELEASE-NOTES.txt for details
+- rename to apache-commons-io to stay compatible with upstream and fedora
+- add commons-io-version-property.patch to fix the version in build.xml
+
+-------------------------------------------------------------------
+Mon Aug 25 10:26:55 CEST 2008 - mvyskocil@suse.cz
+
+- target=1.5
+- removed a build gcj support 
+- removed a javadoc %post/postun
+- fixed a wrong end of line encoding
+
+-------------------------------------------------------------------
+Thu Mar 13 11:37:36 CET 2008 - mvyskocil@suse.cz
+
+- Initial package created with version 1.3.2 (JPackage 1.7)
+

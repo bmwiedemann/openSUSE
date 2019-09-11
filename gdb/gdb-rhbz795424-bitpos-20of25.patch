@@ -1,0 +1,3435 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-rhbz795424-bitpos-20of25.patch
+
+;; Fix `GDB cannot access struct member whose offset is larger than 256MB'
+;; (RH BZ 795424).
+;;=push
+
+http://sourceware.org/ml/gdb-patches/2012-09/msg00631.html
+
+--MP_/yp5f+W_ED2JtUlSyBi8xujr
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi,
+
+This is patch 1/4, which implements the bulk of the changes in type
+length and bitpos/type offset. I have verified that there are no
+regressions resulting from this patch by running the testsuite on
+Fedora 16 x86_64.  Patch and changelog attached.
+
+Regards,
+Siddhesh
+
+--MP_/yp5f+W_ED2JtUlSyBi8xujr
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment; filename=ChangeLog-main
+
+gdb/ChangeLog
+
+2012-08-05  Siddhesh Poyarekar  <siddhesh@redhat.com>
+
+	* ada-lang.c (fat_pntr_bounds_bitpos): Return LONGEST.
+	(fat_pntr_data_bitpos): Likewise.
+	(desc_bound_bitpos): Likewise.
+	(constrained_packed_array_type): Expand ELT_BITS parameter to
+	LONGEST.
+	(move_bits): Expand parameters SRC_OFFSET and N to LONGEST.
+	(cond_offset_host): Expand parameter OFFSET to LONGEST.
+	(cond_offset_target): Likewise.
+	(ada_type_of_array): Expand ARRAY_BITSIZE to LONGEST.
+	(decode_constrained_packed_array_type): Expand BITS to LONGEST.
+	(decode_constrained_packed_array): Expand BIT_POS to LONGEST.
+	(ada_value_primitive_packed_val): Expand parameter OFFSET to
+	LONGEST.  Expand TARG, NTARG and NEW_OFFSET to LONGEST.
+	(ada_value_assign): Expand FROM_SIZE to LONGEST.
+	(value_assign_to_component): Expand BITS to LONGEST.
+	(ensure_lval): Expand LEN to LONGEST.
+	(value_pointer): Expand LEN to ULONGEST.
+	(value_tag_from_contents_and_address): Expand TAG_BYTE_OFFSET to
+	LONGEST.
+	(ada_value_primitive_field): Expand parameter OFFSET to LONGEST.
+	Expand bit_pos to LONGEST.
+	(find_struct_field): Expand parameters OFFSET and BYTE_OFFSET_P to
+	LONGEST.  Expand BIT_POS and FLD_OFFSET to LONGEST.
+	(ada_search_struct_field): Expand parameter OFFSET to LONGEST.
+	Expand VAR_OFFSET to LONGEST.
+	(ada_index_struct_field): Expand parameters INDEX and OFFSET to
+	LONGEST.
+	(ada_index_struct_field_1): Expand parameters INDEX_P and OFFSET
+	to LONGEST.
+	(ada_value_struct_elt): Expand BYTE_OFFSET to LONGEST.
+	(align_value): Return ULONGEST.  Expand parameter OFF and
+	ALIGNMENT to ULONGEST.
+	(ada_template_to_fixed_record_type_1): Expand OFF, BIT_LEN and
+	fld_bit_len to LONGEST.  Expand FIELD_OFFSET to LONGEST.  Use
+	pulongest function to print TYPE_LENGTH.
+	(to_fixed_array_type): Expand LEN to LONGEST.
+	* ada-lang.h (ada_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(ada_printstr): Expand parameter LENGTH to ULONGEST.
+	(ada_value_primitive_packed_val): Expand parameter OFFSET to
+	LONGEST.
+	* ada-typeprint.c (ada_print_type): Use pulongest to print
+	TYPE_LENGTH.
+	* ada-valprint.c (val_print_packed_array_elements): Expand ELTLEN
+	to ULONGEST.
+	(char_at): Expand parameter I to LONGEST.
+	(printstr): Expand parameter LENGTH, I, REP1, REPS to ULONGEST.
+	Use pulongest to format print REPS.
+	(ada_printstr): Expand parameter LENGTH to LONGEST.
+	(ada_val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	(ada_val_print_array): Expand ELTLEN, LEN to ULONGEST and TEMP_LEN
+	to LONGEST.
+	(ada_val_print_1): Expand parameter OFFSET to LONGEST.
+	(print_variant_part): Expand parameters OFFSET and OUTER_OFFSET to
+	LONGEST.
+	(print_field_values): Likewise.  Expand BIT_POS to LONGEST.
+	* annotate.c (annotate_array_section_begin): Expand parameter
+	IDX to LONGEST.  Use plongest to format-print IDX.
+	(annotate_elt_rep): Expand parameter REPCOUNT to ULONGEST.  Use
+	plongest to format-print REPCOUNT.
+	* annotate.h: Likewise.
+	* arm-linux-nat.c (arm_linux_region_ok_for_hw_watchpoint):
+	Expand parameter parameter LEN to LONGEST.
+	* ax-gdb.c (gen_left_shift): Expand parameter DISTANCE to LONGEST.
+	(gen_offset): Expand parameter OFFSET to LONGEST.
+	(gen_bitfield_ref): Expand parameters START, END to LONGEST.
+	Expand BOUND_START, BOUND_END, OFFSET to LONGEST.
+	(gen_primitive_field): Expand parameter OFFSET to LONGEST.
+	(gen_struct_ref_recursive): Likewise.
+	* ax-general.c (ax_trace_quick): Expand parameter N to LONGEST.
+	* ax.h (ax_trace_quick): Likewise.
+	* breakpoint.c (breakpoint_address_match_range): Expand parameter
+	LEN1 to LONGEST.
+	(can_use_hardware_watchpoint): Expand LEN to LONGEST.
+	* breakpoint.h (struct bp_target_info): Expand member LENGTH to
+	LONGEST.
+	(struct bp_location): Likewise.
+	* c-lang.c (c_printstr): Expand parameter LENGTH to ULONGEST.
+	(evaluate_subexp_c): Expand ELEMENT_SIZE, I to LONGEST.
+	* c-lang.h (c_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(c_printstr): Expand parameter LENGTH to ULONGEST.
+	(cp_print_value_fields): Expand parameter OFFSET to LONGEST.
+	(cp_print_value_fields_rtti): Likewise.
+	* c-typeprint.c (c_type_print_varspec_suffix): Remove cast down to
+	int and use plongest to print LONGEST.
+	* c-valprint.c (c_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.  Expand OFFSET to LONGEST, ELTLEN to ULONGEST.
+	(c_value_print): Expand TOP to LONGEST.
+	* cp-abi.c (baseclass_offset): Return LONGEST.  Expand parameter
+	EMBEDDED_OFFSET to LONGEST.  Expand RES to LONGEST.
+	(value_virtual_fn_field): Expand parameter OFFSET to LONGEST.
+	(value_rtti_type): Expand parameter TOP to point to LONGEST.
+	* cp-abi.h (value_virtual_fn_field): Expand OFFSET to LONGEST.
+	(value_rtti_type): Expand TOP to point to LONGEST.
+	(baseclass_offset): Return LONGEST.  Expand parameter
+	EMBEDDED_OFFSET to LONGEST.
+	(struct cp_abi_ops): Expand parameter OFFSET for VIRTUAL_FN_FIELD
+	to LONGEST.  Expand parameter TOP to point to LONGEST in
+	VALUE_RTTI_TYPE.  Return LONGEST from BASECLASS_OFFSET and expand
+	parameter EMBEDDED_OFFSET to LONGEST.
+	* cp-valprint.c (cp_print_value_fields): Expand parameter OFFSET
+	to LONGEST.  Expand I_OFFSET to LONGEST.
+	(cp_print_value_fields_rtti): Expand parameter OFFSET to
+	LONGEST.  Expand TOP to LONGEST.
+	(cp_print_value): Expand parameter OFFSET to LONGEST.  Expand
+	THISOFFSET, BOFFSET to LONGEST.
+	* d-lang.h (d_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	* d-valprint.c (dynamic_array_type): Likewise.
+	(d_val_print): Likewise.
+	* doublest.c (floatformat_from_length): Expand parameter LEN to
+	LONGEST.  Use plongest to format string for LONGEST.
+	* dwarf2loc.c (copy_bitwise): Expand parameters DEST_OFFSET_BITS,
+	BIT_COUNT to ULONGEST.  Rename parameter SOURCE_OFFSET_BITS to
+	SOURCE_OFFSET and expand to ULONGEST.  New variable
+	SOURCE_OFFSET_BITS.
+	(read_pieced_value): Expand OFFSET, DEST_OFFSET_BITS,
+	SOURCE_OFFSET_BITS, SOURCE_OFFSET to LONGEST.  Expand TYPE_LEN,
+	THIS_SIZE, THIS_SIZE_BITS to ULONGEST.
+	(write_pieced_value): Likewise.
+	(check_pieced_value_bits): Expand parameters BIT_OFFSET and
+	BIT_LENGTH to LONGEST.  Expand THIS_SIZE_BITS to ULONGEST.
+	(check_pieced_value_validity): Expand parameters BIT_OFFSET and
+	BIT_LENGTH to LONGEST.
+	(check_pieced_synthetic_pointer): Likewise.
+	(indirect_pieced_value): Expand BIT_LENGTH, BYTE_OFFSET and
+	BIT_OFFSET to LONGEST.
+	(dwarf2_evaluate_loc_desc_full): Expand N to ULONGEST.
+	* dwarf2read.c (dwarf2_const_value_length_mismatch_complaint):
+	Expand parameters ARG2 and ARG3 to LONGEST.  Use plongest to
+	print ARG2 and ARG3.
+	(dwarf2_add_field): Expand ANONYMOUS_SIZE, BIT_OFFSET to
+	LONGEST.
+	* eval.c (evaluate_struct_tuple): Expand BITPOS to LONGEST.
+	(init_array_element): Expand ELEMENT_SIZE to LONGEST.
+	(binop_promote): Expand PROMOTED_LEN1, PROMOTED_LEN2, RESULT_LEN
+	to ULONGEST.
+	(evaluate_subexp_standard): Expand MEM_OFFSET, TOP, ELEMENT_SIZE
+	to LONGEST.
+	* f-lang.c (f_printstr): Expand parameter LENGTH to ULONGEST.
+	* f-lang.h (f_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	* f-valprint.c (f77_array_offset_tbl): Make LONGEST.
+	(f77_create_arrayprint_offset_tbl): Expand ELTLEN to LONGEST.
+	(f77_print_array_1): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.  Expand I to LONGEST.
+	(f77_print_array): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	(f_val_print): Likewise.  Expand OFFSET to LONGEST.
+	* findvar.c (default_value_from_register): Expand LEN to LONGEST.
+	(read_frame_register_value): Expand OFFSET, REG_OFFSET, LEN,
+	REG_LEN to LONGEST.
+	* frame.c (get_frame_register_bytes): Expand parameter LEN to
+	LONGEST.
+	* frame.h (get_frame_register_bytes): Likewise.
+	* gdbtypes.c (init_type): Expand parameter LENGTH to LONGEST.
+	(is_unique_ancestor_worker): Expand parameters OFFSET,
+	EMBEDDED_OFFSET to LONGEST.  Expand THIS_OFFSET to LONGEST.
+	(is_unique_ancestor): Expand OFFSET to LONGEST.
+	(recursive_dump_type): Use pulongest to format print TYPE_LENGTH.
+	Use plongest to format print TYPE_FIELD_BITPOS.
+	(arch_type): Expand parameter LENGTH to LONGEST.
+	* gdbtypes.h (struct type.main_type.fld_bnds.fields): Expand
+	member BITPOS to LONGEST.
+	(struct type): Expand member LENGTH to ULONGEST.
+	(init_type): Expand parameter LENGTH to LONGEST.
+	(arch_type): Likewise.
+	* gnu-v2-abi.c (gnuv2_virtual_fn_field): Expand parameter OFFSET
+	to LONGEST.
+	(gnuv2_value_rtti_type): Expand parameter TOP to point to LONGEST.
+	(gnuv2_baseclass_offset): Return LONGEST.  Expand parameter
+	EMBEDDED_OFFSET to LONGEST.  Expand FIELD_OFFSET, BOFFSET,
+	FIELD_LENGTH to LONGEST.
+	* gnu-v3-abi.c (build_gdb_vtable_type): Expand OFFSET to LONGEST.
+	(vtable_address_point_offset): Return LONGEST.
+	(gnuv3_rtti_type): Expand parameter TOP_P to point to LONGEST.
+	(gnuv3_virtual_fn_field): Expand parameter OFFSET to LONGEST.
+	(gnuv3_baseclass_offset): Return LONGEST.  Expand parameter
+	EMBEDDED_OFSET to LONGEST.  Expand CUR_BASE_OFFSET, BASE_OFFSET to
+	LONGEST.
+	(gnuv3_find_method_in): Expand POS to LONGEST.
+	* go-lang.h (go_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	* go-valprint.c (print_go_string): Likewise.
+	(go_val_print): Likewise.
+	* i386-nat.c (i386_handle_nonaligned_watchpoint): Expand
+	parameter LEN to LONGEST.
+	(i386_region_ok_for_watchpoint): Likewise.
+	* inf-ttrace.c (inf_ttrace_region_ok_for_hw_watchpoint): Expand
+	parameter LEN to LONGEST.
+	* jv-lang.c (java_link_class_type): Expand BOFFSET to LONGEST.
+	(java_printstr): Expand parameter LENGTH to ULONGEST.
+	* jv-lang.h (java_val_print): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	* jv-valprint.c (java_print_value_fields): Expand parameter OFFSET
+	to LONGEST.
+	(java_val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	* language.c (unk_lang_printstr): Expand parameter LENGTH to
+	ULONGEST.
+	(unk_lang_val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	* language.h (language_defn): Expand parameter LENGTH of
+	LA_PRINTSTR to ULONGEST.  Expand parameter EMBEDDED_OFFSET of
+	LA_VAL_PRINT to LONGEST.
+	* m2-lang.c (m2_printstr): Expand parameter LENGTH to ULONGEST.
+	Expand I, REP1, REPS to ULONGEST.  Use pulongest to format print
+	REPS.
+	* m2-lang.h (m2_val_print): Expand parameter embedded_offset to
+	LONGEST.
+	* m2-typeprint.c (m2_array): New variable VAL.  Use pulongest to
+	* format print VAL.
+	(m2_enum): expand LASTVAL to LONGEST.
+	* m2-valprint.c (m2_print_long_set): Expand parameter
+	EMBEDDED_OFFSET to LONGEST.
+	(m2_print_unbounded_array): Likewise.
+	(m2_print_array_contents): Likewise.
+	(m2_val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	Expand I, LEN, TEMP_LEN to ULONGEST.
+	* memrange.c (mem_ranges_overlap): Expand parameters LEN1, LEN2 to
+	LONGEST.
+	* memrange.h (struct mem_range): Expand member LENGTH to LONGEST.
+	(mem_ranges_overlap): Expand parameters LEN1, LEN2 to LONGEST.
+	* mips-linux-nat.c (mips_linux_region_ok_for_hw_watchpoint):
+	Expand parameter LEN to LONGEST.
+	* objc-lang.c (objc_printstr): Expand parameter LENGTH to
+	ULONGEST.  Expand I, REP1, REPS to ULONGEST.  use pulongest to
+	format print REPS.
+	* opencl-lang.c (lookup_opencl_vector_type): Expand parameter
+	EL_LENGTH to ULONGEST.  Expand LENGTH to ULONGEST.
+	(lval_func_read): Expand OFFSET, N, I, J and ELSIZE to LONGEST.
+	(lval_func_write): Likewise.
+	(lval_func_check_validity): Expand parameter LENGTH to LONGEST.
+	Expand ELSIZE, START, END, I, STARTREST, ENDREST, COMP_OFFSET,
+	COMP_LENGTH to LONGEST.
+	(lval_func_check_any_valid): Expand ELSIZE to LONGEST.
+	(lval_func_check_synthetic_pointer): Expand parameters OFFSET and
+	LENGTH to LONGEST.  Expand ELSIZE, START, END, I, STARTREST,
+	ENDREST, COMP_LENGTH, COMP_OFFSET to LONGEST.
+	* p-lang.c (is_pascal_string_type): Expand parameters LENGTH_POS,
+	STRING_POS, LENGTH_SIZE to point to LONGEST.
+	(pascal_printstr): Expand parameter LENGTH to ULONGEST.  Expand
+	I, REP1, REPS to ULONGEST.  Use pulongest to format print REPS.
+	* p-lang.h (pascal_val_print): Expand parameter EMBEDDED_OFFSET
+	to LONGEST.
+	(is_pascal_string_type): Expand parameters LENGTH_POS, STRING_POS,
+	LENGTH_SIZE to point to LONGEST.
+	(pascal_printstr): Expand parameter LENGTH to ULONGEST.
+	(pascal_object_print_value_fields): Expand parameter OFFSET to
+	LONGEST.
+	* p-valprint.c (pascal_val_print): Expand parameter
+	EMBEDDED_OFFSET to LONGEST.  Expand ELTLEN to ULONGEST.  Expand
+	LENGTH_SIZE, LENGTH_POS, STRING_POS to LONGEST.
+	(pascal_object_print_value_fields): Expand parameter OFFSET to
+	LONGEST.
+	(pascal_object_print_value): Likewise.  Expand BOFFSET,
+	THISOFFSET to LONGEST.
+	* ppc-linux-nat.c (ppc_linux_region_ok_for_hw_watchpoint):
+	Expand parameter LEN to point to LONGEST.
+	* printcmd.c (print_formatted): Expand LEN to LONGEST.
+	(print_scalar_formatted): Likewise.
+	* procfs.c (procfs_region_ok_for_hw_watchpoint): Expand
+	parameter LEN to LONGEST.
+	* python/py-prettyprint.c (apply_val_pretty_printer): Expand
+	parameter EMBEDDED_OFFSET to LONGEST.
+	* python/python.h (apply_val_pretty_printer): Likewise.
+	* regcache.c (regcache_xfer_part): Expand parameter OFFSET to
+	LONGEST.
+	(regcache_raw_read_part): Likewise.
+	(regcache_raw_write_part): Likewise.
+	(regcache_cooked_read_part): Likewise.
+	(regcache_cooked_write_part): Likewise.
+	* regcache.h (regcache_raw_read_part): Likewise.
+	(regcache_raw_write_part): Likewise.
+	(regcache_cooked_read_part): Likewise.
+	(regcache_cooked_write_part): Likewise.
+	* remote.c (remote_region_ok_for_hw_watchpoint): Expand
+	parameter LEN to LONGEST.
+	* s390-nat.c (s390_region_ok_for_hw_watchpoint): Expand
+	parameter LEN to LONGEST.
+	* spu-multiarch.c (spu_region_ok_for_hw_watchpoint): Expand
+	parameter len to LONGEST.
+	* stack.c (print_frame_nameless_args): Expand parameter START to
+	LONGEST.
+	(print_frame_args): Expand HIGHEST_OFFSET, CURRENT_OFFSET,
+	ARG_SIZE, START to LONGEST.
+	* symmisc.c (print_symbol): Expand I to ULONGEST.  Use pulongest
+	to format print TYPE_LENGTH.
+	* target.c (default_region_ok_for_hw_watchpoint): Expand parameter
+	LEN to LONGEST.
+	(debug_to_region_ok_for_hw_watchpoint): Likewise.
+	* target.h (struct target_ops): Expand parameter LEN to LONGEST
+	for TO_REGION_OK_FOR_HW_WATCHPOINT.
+	* tracepoint.c (add_memrange): Expand parameter LEN to LONGEST.
+	Use plongest to format print LEN.
+	(collect_symbol): Expand LEN to ULONGEST.  Use pulongest to
+	format print LEN.
+	(scope_info): Expand J to LONGEST.  Use pulongest to format
+	print TYPE_LENGTH.
+	* typeprint.c (whatis_exp): Expand TOP to LONGEST.
+	* valarith.c (value_subscripted_rvalue): Expand parameters INDEX
+	and LOWERBOUND to LONGEST.  Expand ELT_SIZE, ELT_OFFS to ULONGEST.
+	(value_concat): expand INVAL1LEN and INVAL2LEN to ssize_t.
+	(value_logical_not): Expand LEN to LONGEST.
+	(value_strcmp): Expand LEN1, LEN2, I, LEN to LONGEST.
+	* valops.c (value_allocate_space_in_inferior): Expand parameter
+	LEN to LONGEST.
+	(value_cast_structs): Expand TOP to LONGEST.
+	(value_cast): Expand ELEMENT_LENGTH to ULONGEST.  Expand
+	VAL_LENGTH to LONGEST.
+	(dynamic_cast_check_1): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.  Expand OFFSET to LONGEST.
+	(dynamic_cast_check_2): Likewise.
+	(value_dynamic_cast): Expand TOP to LONGEST.
+	(read_value_memory): Expand EMBEDDED_OFFSET to LONGEST.
+	(value_assign): Expand CHANGED_LEN, OFFSET to LONGEST.
+	(value_array): Expand TYPELENGTH to ULONGEST.
+	(update_search_result): Expand parameters LAST_BOFFSET, BOFFSET
+	to LONGEST.
+	(do_search_struct_field): Expand parameter OFFSET, LAST_BOFFSET
+	to LONGEST.  Expand NEW_OFFSET, BOFFSET to LONGEST.
+	(search_struct_field): Expand parameter OFFSET to LONGEST.
+	Expand BOFFSET to LONGEST.
+	(search_struct_method): Expand parameter OFFSET to LONGEST.
+	Expand BASE_OFFSET, THIS_OFFSET to LONGEST.
+	(find_method_list): Expand parameters OFFSET, BOFFSET to
+	LONGEST.  Expand BASE_OFFSET to LONGEST.
+	(value_find_oload_method_list): Expand parameter BOFFSET to point
+	to LONGEST.
+	(find_overload_match): Expand BOFFSET to LONGEST.
+	(value_struct_elt_for_reference): Expand parameter OFFSET to
+	LONGEST.  Remove unneeded cast.  Expand BASE_OFFSET to LONGEST.
+	(value_rtti_indirect_type): Expand parameter TOP to point to
+	LONGEST.
+	(value_full_object): Expand parameter XTOP to LONGEST.  Expand
+	TOP to LONGEST.
+	* valprint.c (valprint_check_validity): Expand parameter
+	EMBEDDED_OFFSET to LONGEST.
+	(generic_val_print): Likewise.
+	(val_print): Likewise.
+	(val_print_scalar_formatted): Likewise.
+	(print_hex_chars): Expand parameter LEN to ULONGEST.
+	(val_print_array_elements): Expand parameter EMBEDDED_OFFSET to
+	LONGEST, I to ULONGEST.  Expand LEN, ELTLEN, REP1, REPS to
+	ULONGEST.  Use pulongest to format print REPS.
+	(generic_printstr): Expand parameter LENGTH to ULONGEST.
+	* valprint.h (val_print_array_elements): Expand parameter
+	EMBEDDED_OFFSET to LONGEST.
+	(val_print_scalar_formatted): Likewise.
+	(print_hex_chars): Expand parameter LEN to ULONGEST.
+	(generic_val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	(generic_printstr): Expand parameter LENGTH to ULONGEST.
+	* value.c (struct range): Expand members OFFSET, LENGTH to
+	LONGEST.
+	(ranges_overlap): Expand parameters OFFSET1, OFFSET2, LEN1 AND
+	LEN2 to LONGEST.
+	(range_contain): Expand parameter OFFSET, LENGTH to LONGEST.
+	(struct value): Expand members OFFSET, EMBEDDED_OFFSET,
+	POINTED_TO_OFFSET to LONGEST.
+	(value_bytes_available): Expand parameters OFFSET, LENGTH to
+	LONGEST.
+	(mark_value_bytes_unavailable): Likewise.
+	(find_first_range_overlap): Likewise.
+	(value_available_contents_eq): Expand parameters OFFSET1, OFFSET2
+	and LENGTH to LONGEST.
+	(value_offset): Return LONGEST.
+	(set_value_offset): Expand parameter OFFSET to LONGEST.
+	(value_contents_copy_raw): Expand parameters SRC_OFFSET,
+	DST_OFFSET, LENGTH to ssize_t.
+	(value_contents_copy): Likewise.
+	(value_bits_valid): Expand parameters OFFSET, LENGTH to LONGEST.
+	(value_bits_synthetic_pointer): Likewise.
+	(value_embedded_offset): Return LONGEST.
+	(set_value_embedded_offset): Expand parameter VAL to LONGEST.
+	(value_pointed_to_offset): Return LONGEST.
+	(set_value_pointed_to_offset): Expand parameter VAL to LONGEST.
+	(set_internalvar_component): Expand parameter OFFSET to LONGEST.
+	(value_primitive_field): Likewise.  Expand BITPOS, BOFFSET,
+	CONTAINER_BITSIZE to LONGEST.
+	(value_fn_field): Expand parameter OFFSET to LONGEST.
+	(unpack_value_bits_as_long_1): Expand parameters EMBEDDED_OFFSET,
+	BITPOS to LONGEST.  Expand READ_OFFSET to LONGEST.
+	(unpack_value_bits_as_long): Expand parameter EMBEDED_OFFSET to
+	LONGEST.
+	(unpack_value_field_as_long_1): Likewise.  Expand BITPOS to
+	LONGEST.
+	(unpack_value_field_as_long): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(value_field_bitfield): Likewise.
+	(modify_field): Expand parameter BITPOS to LONGEST.  Expand
+	BYTESIZE to LONGEST.
+	* value.h (value_offset): Return LONGEST.
+	(set_value_offset): Expand parameter OFFSET to LONGEST.
+	(value_pointed_to_offset): Return LONGEST.
+	(set_value_pointed_to_offset): Expand parameter VAL to LONGEST.
+	(value_embedded_offset): Return LONGEST.
+	(set_value_embedded_offset): Expand parameter VAL to LONGEST.
+	(struct lval_funcs): Expand parameters OFFSET and LENGTH to
+	LONGEST for CHECK_VALIDITY.  Likewise for CHECK_SYNTHETIC_POINTER.
+	(valprint_check_validity): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(value_bits_valid): Expand parameters OFFSET, LENGTH to LONGEST.
+	(value_bits_synthetic_pointer): Likewise.
+	(value_bytes_available): Likewise.
+	(mark_value_bytes_unavailable): Likewise.
+	(value_available_contents_eq): Fix comment.  Expand parameters
+	OFFSET1, OFFSET2, LENGTH to LONGEST.
+	(read_value_memory): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(unpack_value_bits_as_long): Expand parameter EMBEDDED_OFFSET to
+	LONGEST.
+	(unpack_value_field_as_long): Likewise.
+	(value_field_bitfield): Likewise.
+	(value_contents_copy_raw): Expand parameters SRC_OFFSET,
+	DST_OFFSET, LENGTH to LONGEST.
+	(value_contents_copy): Likewise.
+	(value_primitive_field): Expand parameter OFFSET to LONGEST.
+	(value_rtti_indirect_type): Expand parameter TOP to point to
+	LONGEST.
+	(value_full_object): Expand parameter XTOP to LONGEST.
+	(set_internalvar_component): Expand parameter OFFSET to LONGEST.
+	(value_fn_field): Expand parameter OFFSET to LONGEST.
+	(modify_field): Expand parameter BITPOS to LONGEST.
+	(val_print): Expand parameter EMBEDDED_OFFSET to LONGEST.
+	(value_allocate_space_in_inferior): Expand parameter LEN to
+	LONGEST.
+
+gdb/testsuite/ChangeLog:
+
+2012-08-05  Siddhesh Poyarekar  <siddhesh@redhat.com>
+
+	* gdb.base/longest-types.exp: Add test case to get offset of
+	BUF2.
+
+--MP_/yp5f+W_ED2JtUlSyBi8xujr
+Content-Type: text/x-patch
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename=bitpos-main.patch
+
+diff --git a/gdb/aarch64-linux-nat.c b/gdb/aarch64-linux-nat.c
+--- a/gdb/aarch64-linux-nat.c
++++ b/gdb/aarch64-linux-nat.c
+@@ -808,7 +808,7 @@ aarch64_linux_nat_target::remove_watchpoint (CORE_ADDR addr, int len,
+ /* Implement the "region_ok_for_hw_watchpoint" target_ops method.  */
+ 
+ int
+-aarch64_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++aarch64_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   return aarch64_linux_region_ok_for_watchpoint (addr, len);
+ }
+diff --git a/gdb/ada-lang.c b/gdb/ada-lang.c
+--- a/gdb/ada-lang.c
++++ b/gdb/ada-lang.c
+@@ -78,7 +78,7 @@ static struct type *desc_bounds_type (struct type *);
+ 
+ static struct value *desc_bounds (struct value *);
+ 
+-static int fat_pntr_bounds_bitpos (struct type *);
++static LONGEST fat_pntr_bounds_bitpos (struct type *);
+ 
+ static int fat_pntr_bounds_bitsize (struct type *);
+ 
+@@ -86,13 +86,13 @@ static struct type *desc_data_target_type (struct type *);
+ 
+ static struct value *desc_data (struct value *);
+ 
+-static int fat_pntr_data_bitpos (struct type *);
++static LONGEST fat_pntr_data_bitpos (struct type *);
+ 
+ static int fat_pntr_data_bitsize (struct type *);
+ 
+ static struct value *desc_one_bound (struct value *, int, int);
+ 
+-static int desc_bound_bitpos (struct type *, int, int);
++static LONGEST desc_bound_bitpos (struct type *, int, int);
+ 
+ static int desc_bound_bitsize (struct type *, int, int);
+ 
+@@ -175,7 +175,7 @@ static struct type *static_unwrap_type (struct type *type);
+ 
+ static struct value *unwrap_value (struct value *);
+ 
+-static struct type *constrained_packed_array_type (struct type *, long *);
++static struct type *constrained_packed_array_type (struct type *, LONGEST *);
+ 
+ static struct type *decode_constrained_packed_array_type (struct type *);
+ 
+@@ -214,14 +214,14 @@ static struct value *value_val_atr (struct type *, struct value *);
+ static struct symbol *standard_lookup (const char *, const struct block *,
+                                        domain_enum);
+ 
+-static struct value *ada_search_struct_field (const char *, struct value *, int,
++static struct value *ada_search_struct_field (const char *, struct value *, LONGEST,
+                                               struct type *);
+ 
+-static struct value *ada_value_primitive_field (struct value *, int, int,
++static struct value *ada_value_primitive_field (struct value *, LONGEST, int,
+                                                 struct type *);
+ 
+-static int find_struct_field (const char *, struct type *, int,
+-                              struct type **, int *, int *, int *, int *);
++static int find_struct_field (const char *, struct type *, LONGEST,
++                              struct type **, LONGEST *, int *, int *, int *);
+ 
+ static int ada_resolve_function (struct block_symbol *, int,
+                                  struct value **, int, const char *,
+@@ -232,7 +232,7 @@ static int ada_is_direct_array_type (struct type *);
+ static void ada_language_arch_info (struct gdbarch *,
+ 				    struct language_arch_info *);
+ 
+-static struct value *ada_index_struct_field (int, struct value *, int,
++static struct value *ada_index_struct_field (LONGEST, struct value *, LONGEST,
+ 					     struct type *);
+ 
+ static struct value *assign_aggregate (struct value *, struct value *, 
+@@ -701,7 +701,7 @@ coerce_unspec_val_to_type (struct value *val, struct type *type)
+ }
+ 
+ static const gdb_byte *
+-cond_offset_host (const gdb_byte *valaddr, long offset)
++cond_offset_host (const gdb_byte *valaddr, LONGEST offset)
+ {
+   if (valaddr == NULL)
+     return NULL;
+@@ -710,7 +710,7 @@ cond_offset_host (const gdb_byte *valaddr, long offset)
+ }
+ 
+ static CORE_ADDR
+-cond_offset_target (CORE_ADDR address, long offset)
++cond_offset_target (CORE_ADDR address, LONGEST offset)
+ {
+   if (address == 0)
+     return 0;
+@@ -1752,7 +1752,7 @@ desc_bounds (struct value *arr)
+ /* If TYPE is the type of an array-descriptor (fat pointer),  the bit
+    position of the field containing the address of the bounds data.  */
+ 
+-static int
++static LONGEST
+ fat_pntr_bounds_bitpos (struct type *type)
+ {
+   return TYPE_FIELD_BITPOS (desc_base_type (type), 1);
+@@ -1818,7 +1818,7 @@ desc_data (struct value *arr)
+ /* If TYPE is the type of an array-descriptor (fat pointer), the bit
+    position of the field containing the address of the data.  */
+ 
+-static int
++static LONGEST
+ fat_pntr_data_bitpos (struct type *type)
+ {
+   return TYPE_FIELD_BITPOS (desc_base_type (type), 0);
+@@ -1853,7 +1853,7 @@ desc_one_bound (struct value *bounds, int i, int which)
+    of the Ith lower bound stored in it, if WHICH is 0, and the Ith upper
+    bound, if WHICH is 1.  The first bound is I=1.  */
+ 
+-static int
++static LONGEST
+ desc_bound_bitpos (struct type *type, int i, int which)
+ {
+   return TYPE_FIELD_BITPOS (desc_base_type (type), 2 * i + which - 2);
+@@ -2043,7 +2043,7 @@ ada_type_of_array (struct value *arr, int bounds)
+ 	         zero, and does not need to be recomputed.  */
+ 	      if (lo < hi)
+ 		{
+-		  int array_bitsize =
++		  LONGEST array_bitsize =
+ 		        (hi - lo + 1) * TYPE_FIELD_BITSIZE (elt_type, 0);
+ 
+ 		  TYPE_LENGTH (array_type) = (array_bitsize + 7) / 8;
+@@ -2203,7 +2203,7 @@ decode_packed_array_bitsize (struct type *type)
+    the length is arbitrary.  */
+ 
+ static struct type *
+-constrained_packed_array_type (struct type *type, long *elt_bits)
++constrained_packed_array_type (struct type *type, LONGEST *elt_bits)
+ {
+   struct type *new_elt_type;
+   struct type *new_type;
+@@ -2257,7 +2257,7 @@ decode_constrained_packed_array_type (struct type *type)
+   char *name;
+   const char *tail;
+   struct type *shadow_type;
+-  long bits;
++  LONGEST bits;
+ 
+   if (!raw_name)
+     raw_name = ada_type_name (desc_base_type (type));
+@@ -2328,7 +2328,8 @@ decode_constrained_packed_array (struct value *arr)
+  	 array with no wrapper.  In order to interpret the value through
+  	 the (left-justified) packed array type we just built, we must
+  	 first left-justify it.  */
+-      int bit_size, bit_pos;
++      int bit_size;
++      LONGEST bit_pos;
+       ULONGEST mod;
+ 
+       mod = ada_modulus (value_type (arr)) - 1;
+@@ -2556,7 +2557,7 @@ ada_unpack_from_contents (const gdb_byte *src, int bit_offset, int bit_size,
+ 
+ struct value *
+ ada_value_primitive_packed_val (struct value *obj, const gdb_byte *valaddr,
+-				long offset, int bit_offset, int bit_size,
++				LONGEST offset, int bit_offset, int bit_size,
+                                 struct type *type)
+ {
+   struct value *v;
+@@ -2626,7 +2627,7 @@ ada_value_primitive_packed_val (struct value *obj, const gdb_byte *valaddr,
+ 
+   if (obj != NULL)
+     {
+-      long new_offset = offset;
++      LONGEST new_offset = offset;
+ 
+       set_value_component_location (v, obj);
+       set_value_bitpos (v, bit_offset + value_bitpos (obj));
+@@ -2696,7 +2697,7 @@ ada_value_assign (struct value *toval, struct value *fromval)
+     {
+       int len = (value_bitpos (toval)
+ 		 + bits + HOST_CHAR_BIT - 1) / HOST_CHAR_BIT;
+-      int from_size;
++      LONGEST from_size;
+       gdb_byte *buffer = (gdb_byte *) alloca (len);
+       struct value *val;
+       CORE_ADDR to_addr = value_address (toval);
+@@ -2747,7 +2748,7 @@ value_assign_to_component (struct value *container, struct value *component,
+     (LONGEST)  (value_address (component) - value_address (container));
+   int bit_offset_in_container =
+     value_bitpos (component) - value_bitpos (container);
+-  int bits;
++  LONGEST bits;
+ 
+   val = value_cast (value_type (component), val);
+ 
+@@ -4445,7 +4446,7 @@ ensure_lval (struct value *val)
+   if (VALUE_LVAL (val) == not_lval
+       || VALUE_LVAL (val) == lval_internalvar)
+     {
+-      int len = TYPE_LENGTH (ada_check_typedef (value_type (val)));
++      LONGEST len = TYPE_LENGTH (ada_check_typedef (value_type (val)));
+       const CORE_ADDR addr =
+         value_as_long (value_allocate_space_in_inferior (len));
+ 
+@@ -4529,7 +4530,7 @@ static CORE_ADDR
+ value_pointer (struct value *value, struct type *type)
+ {
+   struct gdbarch *gdbarch = get_type_arch (type);
+-  unsigned len = TYPE_LENGTH (type);
++  ULONGEST len = TYPE_LENGTH (type);
+   gdb_byte *buf = (gdb_byte *) alloca (len);
+   CORE_ADDR addr;
+ 
+@@ -6642,7 +6643,7 @@ value_tag_from_contents_and_address (struct type *type,
+ 				     const gdb_byte *valaddr,
+                                      CORE_ADDR address)
+ {
+-  int tag_byte_offset;
++  LONGEST tag_byte_offset;
+   struct type *tag_type;
+ 
+   if (find_struct_field ("_tag", type, 0, &tag_type, &tag_byte_offset,
+@@ -7135,7 +7136,7 @@ ada_in_variant (LONGEST val, struct type *type, int field_num)
+    only in that it can handle packed values of arbitrary type.  */
+ 
+ static struct value *
+-ada_value_primitive_field (struct value *arg1, int offset, int fieldno,
++ada_value_primitive_field (struct value *arg1, LONGEST offset, int fieldno,
+                            struct type *arg_type)
+ {
+   struct type *type;
+@@ -7147,7 +7148,7 @@ ada_value_primitive_field (struct value *arg1, int offset, int fieldno,
+ 
+   if (TYPE_FIELD_BITSIZE (arg_type, fieldno) != 0)
+     {
+-      int bit_pos = TYPE_FIELD_BITPOS (arg_type, fieldno);
++      LONGEST bit_pos = TYPE_FIELD_BITPOS (arg_type, fieldno);
+       int bit_size = TYPE_FIELD_BITSIZE (arg_type, fieldno);
+ 
+       return ada_value_primitive_packed_val (arg1, value_contents (arg1),
+@@ -7224,9 +7225,9 @@ ada_value_primitive_field (struct value *arg1, int offset, int fieldno,
+    Returns 1 if found, 0 otherwise.  */
+ 
+ static int
+-find_struct_field (const char *name, struct type *type, int offset,
++find_struct_field (const char *name, struct type *type, LONGEST offset,
+                    struct type **field_type_p,
+-                   int *byte_offset_p, int *bit_offset_p, int *bit_size_p,
++		   LONGEST *byte_offset_p, int *bit_offset_p, int *bit_size_p,
+ 		   int *index_p)
+ {
+   int i;
+@@ -7245,8 +7246,8 @@ find_struct_field (const char *name, struct type *type, int offset,
+ 
+   for (i = 0; i < TYPE_NFIELDS (type); i += 1)
+     {
+-      int bit_pos = TYPE_FIELD_BITPOS (type, i);
+-      int fld_offset = offset + bit_pos / 8;
++      LONGEST bit_pos = TYPE_FIELD_BITPOS (type, i);
++      LONGEST fld_offset = offset + bit_pos / 8;
+       const char *t_field_name = TYPE_FIELD_NAME (type, i);
+ 
+       if (t_field_name == NULL)
+@@ -7348,7 +7349,7 @@ num_visible_fields (struct type *type)
+    long explanation in find_struct_field's function documentation.  */
+ 
+ static struct value *
+-ada_search_struct_field (const char *name, struct value *arg, int offset,
++ada_search_struct_field (const char *name, struct value *arg, LONGEST offset,
+                          struct type *type)
+ {
+   int i;
+@@ -7396,7 +7397,7 @@ ada_search_struct_field (const char *name, struct value *arg, int offset,
+           int j;
+           struct type *field_type = ada_check_typedef (TYPE_FIELD_TYPE (type,
+ 									i));
+-          int var_offset = offset + TYPE_FIELD_BITPOS (type, i) / 8;
++	  LONGEST var_offset = offset + TYPE_FIELD_BITPOS (type, i) / 8;
+ 
+           for (j = 0; j < TYPE_NFIELDS (field_type); j += 1)
+             {
+@@ -7428,8 +7429,8 @@ ada_search_struct_field (const char *name, struct value *arg, int offset,
+   return NULL;
+ }
+ 
+-static struct value *ada_index_struct_field_1 (int *, struct value *,
+-					       int, struct type *);
++static struct value *ada_index_struct_field_1 (LONGEST *, struct value *,
++					       LONGEST, struct type *);
+ 
+ 
+ /* Return field #INDEX in ARG, where the index is that returned by
+@@ -7438,7 +7439,7 @@ static struct value *ada_index_struct_field_1 (int *, struct value *,
+  * If found, return value, else return NULL.  */
+ 
+ static struct value *
+-ada_index_struct_field (int index, struct value *arg, int offset,
++ada_index_struct_field (LONGEST index, struct value *arg, LONGEST offset,
+ 			struct type *type)
+ {
+   return ada_index_struct_field_1 (&index, arg, offset, type);
+@@ -7450,7 +7451,7 @@ ada_index_struct_field (int index, struct value *arg, int offset,
+  * *INDEX_P.  */
+ 
+ static struct value *
+-ada_index_struct_field_1 (int *index_p, struct value *arg, int offset,
++ada_index_struct_field_1 (LONGEST *index_p, struct value *arg, LONGEST offset,
+ 			  struct type *type)
+ {
+   int i;
+@@ -7541,7 +7542,8 @@ ada_value_struct_elt (struct value *arg, const char *name, int no_err)
+     v = ada_search_struct_field (name, arg, 0, t);
+   else
+     {
+-      int bit_offset, bit_size, byte_offset;
++      int bit_offset, bit_size;
++      LONGEST byte_offset;
+       struct type *field_type;
+       CORE_ADDR address;
+ 
+@@ -7890,8 +7892,8 @@ ada_coerce_ref (struct value *val0)
+ /* Return OFF rounded upward if necessary to a multiple of
+    ALIGNMENT (a power of 2).  */
+ 
+-static unsigned int
+-align_value (unsigned int off, unsigned int alignment)
++static ULONGEST
++align_value (ULONGEST off, ULONGEST alignment)
+ {
+   return (off + alignment - 1) & ~(alignment - 1);
+ }
+@@ -8281,10 +8283,9 @@ ada_template_to_fixed_record_type_1 (struct type *type,
+   struct value *mark = value_mark ();
+   struct value *dval;
+   struct type *rtype;
+-  int nfields, bit_len;
++  int nfields;
+   int variant_field;
+-  long off;
+-  int fld_bit_len;
++  LONGEST off, bit_len, fld_bit_len;
+   int f;
+ 
+   /* Compute the number of fields in this record type that are going
+@@ -8361,7 +8362,7 @@ ada_template_to_fixed_record_type_1 (struct type *type,
+ 	     that follow this one.  */
+ 	  if (ada_is_aligner_type (field_type))
+ 	    {
+-	      long field_offset = TYPE_FIELD_BITPOS (field_type, f);
++	      LONGEST field_offset = TYPE_FIELD_BITPOS (field_type, f);
+ 
+ 	      field_valaddr = cond_offset_host (field_valaddr, field_offset);
+ 	      field_address = cond_offset_target (field_address, field_offset);
+@@ -8497,11 +8498,11 @@ ada_template_to_fixed_record_type_1 (struct type *type,
+   if (TYPE_LENGTH (type) <= 0)
+     {
+       if (TYPE_NAME (rtype))
+-	warning (_("Invalid type size for `%s' detected: %d."),
+-		 TYPE_NAME (rtype), TYPE_LENGTH (type));
++	warning (_("Invalid type size for `%s' detected: %s."),
++		 TYPE_NAME (rtype), pulongest (TYPE_LENGTH (type)));
+       else
+-	warning (_("Invalid type size for <unnamed> detected: %d."),
+-		 TYPE_LENGTH (type));
++	warning (_("Invalid type size for <unnamed> detected: %s."),
++		 pulongest (TYPE_LENGTH (type)));
+     }
+   else
+     {
+@@ -8965,7 +8966,8 @@ to_fixed_array_type (struct type *type0, struct value *dval,
+ 	 type was a regular (non-packed) array type.  As a result, the
+ 	 bitsize of the array elements needs to be set again, and the array
+ 	 length needs to be recomputed based on that bitsize.  */
+-      int len = TYPE_LENGTH (result) / TYPE_LENGTH (TYPE_TARGET_TYPE (result));
++      LONGEST len = (TYPE_LENGTH (result)
++		     / TYPE_LENGTH (TYPE_TARGET_TYPE (result)));
+       int elt_bitsize = TYPE_FIELD_BITSIZE (type0, 0);
+ 
+       TYPE_FIELD_BITSIZE (result, 0) = TYPE_FIELD_BITSIZE (type0, 0);
+diff --git a/gdb/ada-lang.h b/gdb/ada-lang.h
+--- a/gdb/ada-lang.h
++++ b/gdb/ada-lang.h
+@@ -173,7 +173,7 @@ extern void ada_print_type (struct type *, const char *, struct ui_file *, int,
+ extern void ada_print_typedef (struct type *type, struct symbol *new_symbol,
+ 			       struct ui_file *stream);
+ 
+-extern void ada_val_print (struct type *, int, CORE_ADDR,
++extern void ada_val_print (struct type *, LONGEST, CORE_ADDR,
+ 			   struct ui_file *, int,
+ 			   struct value *,
+ 			   const struct value_print_options *);
+@@ -188,7 +188,7 @@ extern void ada_emit_char (int, struct type *, struct ui_file *, int, int);
+ extern void ada_printchar (int, struct type *, struct ui_file *);
+ 
+ extern void ada_printstr (struct ui_file *, struct type *, const gdb_byte *,
+-			  unsigned int, const char *, int,
++			  ULONGEST, const char *, int,
+ 			  const struct value_print_options *);
+ 
+ struct value *ada_convert_actual (struct value *actual,
+@@ -263,7 +263,7 @@ extern int ada_is_constrained_packed_array_type (struct type *);
+ 
+ extern struct value *ada_value_primitive_packed_val (struct value *,
+ 						     const gdb_byte *,
+-                                                     long, int, int,
++						     LONGEST, int, int,
+                                                      struct type *);
+ 
+ extern struct type *ada_coerce_to_simple_array_type (struct type *);
+diff --git a/gdb/ada-typeprint.c b/gdb/ada-typeprint.c
+--- a/gdb/ada-typeprint.c
++++ b/gdb/ada-typeprint.c
+@@ -895,8 +895,8 @@ ada_print_type (struct type *type0, const char *varstring,
+ 	    const char *name = ada_type_name (type);
+ 
+ 	    if (!ada_is_range_type_name (name))
+-	      fprintf_filtered (stream, _("<%d-byte integer>"),
+-				TYPE_LENGTH (type));
++	      fprintf_filtered (stream, _("<%s-byte integer>"),
++				pulongest (TYPE_LENGTH (type)));
+ 	    else
+ 	      {
+ 		fprintf_filtered (stream, "range ");
+@@ -917,7 +917,8 @@ ada_print_type (struct type *type0, const char *varstring,
+ 	  }
+ 	break;
+       case TYPE_CODE_FLT:
+-	fprintf_filtered (stream, _("<%d-byte float>"), TYPE_LENGTH (type));
++	fprintf_filtered (stream, _("<%s-byte float>"),
++			  pulongest (TYPE_LENGTH (type)));
+ 	break;
+       case TYPE_CODE_ENUM:
+ 	if (show < 0)
+diff --git a/gdb/ada-valprint.c b/gdb/ada-valprint.c
+--- a/gdb/ada-valprint.c
++++ b/gdb/ada-valprint.c
+@@ -34,11 +34,11 @@
+ #include "target-float.h"
+ 
+ static int print_field_values (struct type *, const gdb_byte *,
+-			       int,
++			       LONGEST,
+ 			       struct ui_file *, int,
+ 			       struct value *,
+ 			       const struct value_print_options *,
+-			       int, struct type *, int,
++			       int, struct type *, LONGEST,
+ 			       const struct language_defn *);
+ 
+ 
+@@ -316,7 +316,7 @@ ada_emit_char (int c, struct type *type, struct ui_file *stream,
+    of a character.  */
+ 
+ static int
+-char_at (const gdb_byte *string, int i, int type_len,
++char_at (const gdb_byte *string, LONGEST i, int type_len,
+ 	 enum bfd_endian byte_order)
+ {
+   if (type_len == 1)
+@@ -476,11 +476,11 @@ ada_print_scalar (struct type *type, LONGEST val, struct ui_file *stream)
+ 
+ static void
+ printstr (struct ui_file *stream, struct type *elttype, const gdb_byte *string,
+-	  unsigned int length, int force_ellipses, int type_len,
++	  ULONGEST length, int force_ellipses, int type_len,
+ 	  const struct value_print_options *options)
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (get_type_arch (elttype));
+-  unsigned int i;
++  ULONGEST i;
+   unsigned int things_printed = 0;
+   int in_quotes = 0;
+   int need_comma = 0;
+@@ -495,9 +495,9 @@ printstr (struct ui_file *stream, struct type *elttype, const gdb_byte *string,
+     {
+       /* Position of the character we are examining
+          to see whether it is repeated.  */
+-      unsigned int rep1;
++      ULONGEST rep1;
+       /* Number of repetitions we have detected so far.  */
+-      unsigned int reps;
++      ULONGEST reps;
+ 
+       QUIT;
+ 
+@@ -528,7 +528,8 @@ printstr (struct ui_file *stream, struct type *elttype, const gdb_byte *string,
+ 	  ada_emit_char (char_at (string, i, type_len, byte_order),
+ 			 elttype, stream, '\'', type_len);
+ 	  fputs_filtered ("'", stream);
+-	  fprintf_filtered (stream, _(" <repeats %u times>"), reps);
++	  fprintf_filtered (stream, _(" <repeats %s times>"),
++			    pulongest (reps));
+ 	  i = rep1 - 1;
+ 	  things_printed += options->repeat_count_threshold;
+ 	  need_comma = 1;
+@@ -556,7 +557,7 @@ printstr (struct ui_file *stream, struct type *elttype, const gdb_byte *string,
+ 
+ void
+ ada_printstr (struct ui_file *stream, struct type *type,
+-	      const gdb_byte *string, unsigned int length,
++	      const gdb_byte *string, ULONGEST length,
+ 	      const char *encoding, int force_ellipses,
+ 	      const struct value_print_options *options)
+ {
+@@ -566,12 +567,12 @@ ada_printstr (struct ui_file *stream, struct type *type,
+ 
+ static int
+ print_variant_part (struct type *type, int field_num,
+-		    const gdb_byte *valaddr, int offset,
++		    const gdb_byte *valaddr, LONGEST offset,
+ 		    struct ui_file *stream, int recurse,
+ 		    struct value *val,
+ 		    const struct value_print_options *options,
+ 		    int comma_needed,
+-		    struct type *outer_type, int outer_offset,
++		    struct type *outer_type, LONGEST outer_offset,
+ 		    const struct language_defn *language)
+ {
+   struct type *var_type = TYPE_FIELD_TYPE (type, field_num);
+@@ -607,11 +608,11 @@ print_variant_part (struct type *type, int field_num,
+ 
+ static int
+ print_field_values (struct type *type, const gdb_byte *valaddr,
+-		    int offset, struct ui_file *stream, int recurse,
++		    LONGEST offset, struct ui_file *stream, int recurse,
+ 		    struct value *val,
+ 		    const struct value_print_options *options,
+ 		    int comma_needed,
+-		    struct type *outer_type, int outer_offset,
++		    struct type *outer_type, LONGEST outer_offset,
+ 		    const struct language_defn *language)
+ {
+   int i, len;
+@@ -677,7 +678,7 @@ print_field_values (struct type *type, const gdb_byte *valaddr,
+ 	  else
+ 	    {
+ 	      struct value *v;
+-	      int bit_pos = TYPE_FIELD_BITPOS (type, i);
++	      LONGEST bit_pos = TYPE_FIELD_BITPOS (type, i);
+ 	      int bit_size = TYPE_FIELD_BITSIZE (type, i);
+ 	      struct value_print_options opts;
+ 
+@@ -722,8 +723,8 @@ ada_val_print_string (struct type *type, const gdb_byte *valaddr,
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (get_type_arch (type));
+   struct type *elttype = TYPE_TARGET_TYPE (type);
+-  unsigned int eltlen;
+-  unsigned int len;
++  ULONGEST eltlen;
++  ULONGEST len;
+ 
+   /* We know that ELTTYPE cannot possibly be null, because we assume
+      that we're called only when TYPE is a string-like type.
+@@ -742,7 +743,7 @@ ada_val_print_string (struct type *type, const gdb_byte *valaddr,
+      elements up to it.  */
+   if (options->stop_print_at_null)
+     {
+-      int temp_len;
++      LONGEST temp_len;
+ 
+       /* Look for a NULL char.  */
+       for (temp_len = 0;
+@@ -1115,7 +1116,7 @@ ada_val_print_ref (struct type *type, const gdb_byte *valaddr,
+ 
+ static void
+ ada_val_print_1 (struct type *type,
+-		 int offset, CORE_ADDR address,
++		 LONGEST offset, CORE_ADDR address,
+ 		 struct ui_file *stream, int recurse,
+ 		 struct value *original_value,
+ 		 const struct value_print_options *options,
+@@ -1199,7 +1200,7 @@ ada_val_print_1 (struct type *type,
+ 
+ void
+ ada_val_print (struct type *type,
+-	       int embedded_offset, CORE_ADDR address,
++	       LONGEST embedded_offset, CORE_ADDR address,
+ 	       struct ui_file *stream, int recurse,
+ 	       struct value *val,
+ 	       const struct value_print_options *options)
+diff --git a/gdb/amd64-tdep.c b/gdb/amd64-tdep.c
+--- a/gdb/amd64-tdep.c
++++ b/gdb/amd64-tdep.c
+@@ -732,7 +732,7 @@ amd64_return_value (struct gdbarch *gdbarch, struct value *function,
+ 		    gdb_byte *readbuf, const gdb_byte *writebuf)
+ {
+   enum amd64_reg_class theclass[2];
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+   static int integer_regnum[] = { AMD64_RAX_REGNUM, AMD64_RDX_REGNUM };
+   static int sse_regnum[] = { AMD64_XMM0_REGNUM, AMD64_XMM1_REGNUM };
+   int integer_reg = 0;
+@@ -849,10 +849,10 @@ amd64_return_value (struct gdbarch *gdbarch, struct value *function,
+       gdb_assert (regnum != -1);
+ 
+       if (readbuf)
+-	regcache->raw_read_part (regnum, offset, std::min (len, 8),
++	regcache->raw_read_part (regnum, offset, std::min (len, (LONGEST) 8),
+ 				 readbuf + i * 8);
+       if (writebuf)
+-	regcache->raw_write_part (regnum, offset, std::min (len, 8),
++	regcache->raw_write_part (regnum, offset, std::min (len, (LONGEST) 8),
+ 				  writebuf + i * 8);
+     }
+ 
+diff --git a/gdb/annotate.c b/gdb/annotate.c
+--- a/gdb/annotate.c
++++ b/gdb/annotate.c
+@@ -531,21 +531,21 @@ annotate_frame_end (void)
+ }
+ 
+ void
+-annotate_array_section_begin (int idx, struct type *elttype)
++annotate_array_section_begin (LONGEST idx, struct type *elttype)
+ {
+   if (annotation_level == 2)
+     {
+-      printf_filtered (("\n\032\032array-section-begin %d "), idx);
++      printf_filtered (("\n\032\032array-section-begin %s "), plongest (idx));
+       print_value_flags (elttype);
+       printf_filtered (("\n"));
+     }
+ }
+ 
+ void
+-annotate_elt_rep (unsigned int repcount)
++annotate_elt_rep (ULONGEST repcount)
+ {
+   if (annotation_level == 2)
+-    printf_filtered (("\n\032\032elt-rep %u\n"), repcount);
++    printf_filtered (("\n\032\032elt-rep %s\n"), pulongest (repcount));
+ }
+ 
+ void
+diff --git a/gdb/annotate.h b/gdb/annotate.h
+--- a/gdb/annotate.h
++++ b/gdb/annotate.h
+@@ -105,8 +105,8 @@ extern void annotate_frame_source_end (void);
+ extern void annotate_frame_where (void);
+ extern void annotate_frame_end (void);
+ 
+-extern void annotate_array_section_begin (int, struct type *);
+-extern void annotate_elt_rep (unsigned int);
++extern void annotate_array_section_begin (LONGEST, struct type *);
++extern void annotate_elt_rep (ULONGEST);
+ extern void annotate_elt_rep_end (void);
+ extern void annotate_elt (void);
+ extern void annotate_array_section_end (void);
+diff --git a/gdb/arch-utils.c b/gdb/arch-utils.c
+--- a/gdb/arch-utils.c
++++ b/gdb/arch-utils.c
+@@ -227,7 +227,7 @@ legacy_virtual_frame_pointer (struct gdbarch *gdbarch,
+ 
+ const struct floatformat **
+ default_floatformat_for_type (struct gdbarch *gdbarch,
+-			      const char *name, int len)
++			      const char *name, LONGEST len)
+ {
+   const struct floatformat **format = NULL;
+ 
+diff --git a/gdb/arch-utils.h b/gdb/arch-utils.h
+--- a/gdb/arch-utils.h
++++ b/gdb/arch-utils.h
+@@ -131,7 +131,7 @@ extern gdbarch_virtual_frame_pointer_ftype legacy_virtual_frame_pointer;
+ /* Default implementation of gdbarch_floatformat_for_type.  */
+ extern const struct floatformat **
+   default_floatformat_for_type (struct gdbarch *gdbarch,
+-				const char *name, int len);
++				const char *name, LONGEST len);
+ 
+ extern CORE_ADDR generic_skip_trampoline_code (struct frame_info *frame,
+ 					       CORE_ADDR pc);
+diff --git a/gdb/arm-linux-nat.c b/gdb/arm-linux-nat.c
+--- a/gdb/arm-linux-nat.c
++++ b/gdb/arm-linux-nat.c
+@@ -1096,7 +1096,7 @@ arm_linux_nat_target::remove_hw_breakpoint (struct gdbarch *gdbarch,
+ /* Are we able to use a hardware watchpoint for the LEN bytes starting at 
+    ADDR?  */
+ int
+-arm_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++arm_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   const struct arm_linux_hwbp_cap *cap = arm_linux_get_hwbp_cap ();
+   CORE_ADDR max_wp_length, aligned_addr;
+diff --git a/gdb/ax-gdb.c b/gdb/ax-gdb.c
+--- a/gdb/ax-gdb.c
++++ b/gdb/ax-gdb.c
+@@ -82,12 +82,12 @@ static void gen_traced_pop (struct agent_expr *, struct axs_value *);
+ static void gen_sign_extend (struct agent_expr *, struct type *);
+ static void gen_extend (struct agent_expr *, struct type *);
+ static void gen_fetch (struct agent_expr *, struct type *);
+-static void gen_left_shift (struct agent_expr *, int);
++static void gen_left_shift (struct agent_expr *, LONGEST);
+ 
+ 
+ static void gen_frame_args_address (struct agent_expr *);
+ static void gen_frame_locals_address (struct agent_expr *);
+-static void gen_offset (struct agent_expr *ax, int offset);
++static void gen_offset (struct agent_expr *ax, LONGEST offset);
+ static void gen_sym_offset (struct agent_expr *, struct symbol *);
+ static void gen_var_ref (struct agent_expr *ax, struct axs_value *value,
+ 			 struct symbol *var);
+@@ -132,13 +132,13 @@ static void gen_complement (struct agent_expr *ax, struct axs_value *value);
+ static void gen_deref (struct axs_value *);
+ static void gen_address_of (struct axs_value *);
+ static void gen_bitfield_ref (struct agent_expr *ax, struct axs_value *value,
+-			      struct type *type, int start, int end);
++			      struct type *type, LONGEST start, LONGEST end);
+ static void gen_primitive_field (struct agent_expr *ax,
+ 				 struct axs_value *value,
+-				 int offset, int fieldno, struct type *type);
++				 LONGEST offset, int fieldno, struct type *type);
+ static int gen_struct_ref_recursive (struct agent_expr *ax,
+ 				     struct axs_value *value,
+-				     const char *field, int offset,
++				     const char *field, LONGEST offset,
+ 				     struct type *type);
+ static void gen_struct_ref (struct agent_expr *ax,
+ 			    struct axs_value *value,
+@@ -529,7 +529,7 @@ gen_fetch (struct agent_expr *ax, struct type *type)
+    right shift it by -DISTANCE bits if DISTANCE < 0.  This generates
+    unsigned (logical) right shifts.  */
+ static void
+-gen_left_shift (struct agent_expr *ax, int distance)
++gen_left_shift (struct agent_expr *ax, LONGEST distance)
+ {
+   if (distance > 0)
+     {
+@@ -583,7 +583,7 @@ gen_frame_locals_address (struct agent_expr *ax)
+    programming in ML, it would be clearer why these are the same
+    thing.  */
+ static void
+-gen_offset (struct agent_expr *ax, int offset)
++gen_offset (struct agent_expr *ax, LONGEST offset)
+ {
+   /* It would suffice to simply push the offset and add it, but this
+      makes it easier to read positive and negative offsets in the
+@@ -1254,7 +1254,7 @@ gen_address_of (struct axs_value *value)
+    structure.  */
+ static void
+ gen_bitfield_ref (struct agent_expr *ax, struct axs_value *value,
+-		  struct type *type, int start, int end)
++		  struct type *type, LONGEST start, LONGEST  end)
+ {
+   /* Note that ops[i] fetches 8 << i bits.  */
+   static enum agent_op ops[]
+@@ -1289,13 +1289,13 @@ gen_bitfield_ref (struct agent_expr *ax, struct axs_value *value,
+ 
+   /* The first and one-after-last bits in the field, but rounded down
+      and up to byte boundaries.  */
+-  int bound_start = (start / TARGET_CHAR_BIT) * TARGET_CHAR_BIT;
+-  int bound_end = (((end + TARGET_CHAR_BIT - 1)
+-		    / TARGET_CHAR_BIT)
+-		   * TARGET_CHAR_BIT);
++  LONGEST bound_start = (start / TARGET_CHAR_BIT) * TARGET_CHAR_BIT;
++  LONGEST bound_end = (((end + TARGET_CHAR_BIT - 1)
++			/ TARGET_CHAR_BIT)
++		       * TARGET_CHAR_BIT);
+ 
+   /* current bit offset within the structure */
+-  int offset;
++  LONGEST offset;
+ 
+   /* The index in ops of the opcode we're considering.  */
+   int op;
+@@ -1413,7 +1413,7 @@ gen_bitfield_ref (struct agent_expr *ax, struct axs_value *value,
+ 
+ static void
+ gen_primitive_field (struct agent_expr *ax, struct axs_value *value,
+-		     int offset, int fieldno, struct type *type)
++		     LONGEST offset, int fieldno, struct type *type)
+ {
+   /* Is this a bitfield?  */
+   if (TYPE_FIELD_PACKED (type, fieldno))
+@@ -1437,7 +1437,7 @@ gen_primitive_field (struct agent_expr *ax, struct axs_value *value,
+ 
+ static int
+ gen_struct_ref_recursive (struct agent_expr *ax, struct axs_value *value,
+-			  const char *field, int offset, struct type *type)
++			  const char *field, LONGEST offset, struct type *type)
+ {
+   int i, rslt;
+   int nbases = TYPE_N_BASECLASSES (type);
+diff --git a/gdb/ax-general.c b/gdb/ax-general.c
+--- a/gdb/ax-general.c
++++ b/gdb/ax-general.c
+@@ -177,7 +177,7 @@ ax_zero_ext (struct agent_expr *x, int n)
+ 
+ /* Append a trace_quick instruction to EXPR, to record N bytes.  */
+ void
+-ax_trace_quick (struct agent_expr *x, int n)
++ax_trace_quick (struct agent_expr *x, LONGEST n)
+ {
+   /* N must fit in a byte.  */
+   if (n < 0 || n > 255)
+diff --git a/gdb/ax.h b/gdb/ax.h
+--- a/gdb/ax.h
++++ b/gdb/ax.h
+@@ -193,7 +193,7 @@ extern void ax_ext (struct agent_expr *EXPR, int N);
+ extern void ax_zero_ext (struct agent_expr *EXPR, int N);
+ 
+ /* Append a trace_quick instruction to EXPR, to record N bytes.  */
+-extern void ax_trace_quick (struct agent_expr *EXPR, int N);
++extern void ax_trace_quick (struct agent_expr *EXPR, LONGEST N);
+ 
+ /* Append a goto op to EXPR.  OP is the actual op (must be aop_goto or
+    aop_if_goto).  We assume we don't know the target offset yet,
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -2056,9 +2056,9 @@ should_be_inserted (struct bp_location *bl)
+ 	{
+ 	  fprintf_unfiltered (gdb_stdlog,
+ 			      "infrun: stepping past non-steppable watchpoint. "
+-			      "skipping watchpoint at %s:%d\n",
++			      "skipping watchpoint at %s:%s\n",
+ 			      paddress (bl->gdbarch, bl->address),
+-			      bl->length);
++			      plongest (bl->length));
+ 	}
+       return 0;
+     }
+@@ -6793,7 +6793,7 @@ breakpoint_address_match (const address_space *aspace1, CORE_ADDR addr1,
+ static int
+ breakpoint_address_match_range (const address_space *aspace1,
+ 				CORE_ADDR addr1,
+-				int len1, const address_space *aspace2,
++				LONGEST len1, const address_space *aspace2,
+ 				CORE_ADDR addr2)
+ {
+   return ((gdbarch_has_global_breakpoints (target_gdbarch ())
+@@ -10859,7 +10859,7 @@ can_use_hardware_watchpoint (const std::vector<value_ref_ptr> &vals)
+ 		      && TYPE_CODE (vtype) != TYPE_CODE_ARRAY))
+ 		{
+ 		  CORE_ADDR vaddr = value_address (v);
+-		  int len;
++		  LONGEST len;
+ 		  int num_regs;
+ 
+ 		  len = (target_exact_watchpoints
+diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
+--- a/gdb/breakpoint.h
++++ b/gdb/breakpoint.h
+@@ -252,7 +252,7 @@ struct bp_target_info
+ 
+   /* If this is a ranged breakpoint, then this field contains the
+      length of the range that will be watched for execution.  */
+-  int length;
++  LONGEST length;
+ 
+   /* If the breakpoint lives in memory and reading that memory would
+      give back the breakpoint, instead of the original contents, then
+@@ -417,7 +417,7 @@ public:
+   /* For hardware watchpoints, the size of the memory region being
+      watched.  For hardware ranged breakpoints, the size of the
+      breakpoint range.  */
+-  int length = 0;
++  LONGEST length = 0;
+ 
+   /* Type of hardware watchpoint.  */
+   target_hw_bp_type watchpoint_type {};
+diff --git a/gdb/c-lang.c b/gdb/c-lang.c
+--- a/gdb/c-lang.c
++++ b/gdb/c-lang.c
+@@ -185,7 +185,7 @@ c_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ void
+ c_printstr (struct ui_file *stream, struct type *type, 
+-	    const gdb_byte *string, unsigned int length, 
++	    const gdb_byte *string, ULONGEST length,
+ 	    const char *user_encoding, int force_ellipses,
+ 	    const struct value_print_options *options)
+ {
+@@ -664,7 +664,7 @@ evaluate_subexp_c (struct type *expect_type, struct expression *exp,
+ 	  }
+ 	else
+ 	  {
+-	    int i;
++	    LONGEST i;
+ 
+ 	    /* Write the terminating character.  */
+ 	    for (i = 0; i < TYPE_LENGTH (type); ++i)
+@@ -673,7 +673,7 @@ evaluate_subexp_c (struct type *expect_type, struct expression *exp,
+ 	    if (satisfy_expected)
+ 	      {
+ 		LONGEST low_bound, high_bound;
+-		int element_size = TYPE_LENGTH (type);
++		LONGEST element_size = TYPE_LENGTH (type);
+ 
+ 		if (get_discrete_bounds (TYPE_INDEX_TYPE (expect_type),
+ 					 &low_bound, &high_bound) < 0)
+diff --git a/gdb/c-lang.h b/gdb/c-lang.h
+--- a/gdb/c-lang.h
++++ b/gdb/c-lang.h
+@@ -82,7 +82,7 @@ extern void c_print_typedef (struct type *,
+ 			     struct ui_file *);
+ 
+ extern void c_val_print (struct type *,
+-			 int, CORE_ADDR,
++			 LONGEST, CORE_ADDR,
+ 			 struct ui_file *, int,
+ 			 struct value *,
+ 			 const struct value_print_options *);
+@@ -102,7 +102,7 @@ extern void c_printchar (int, struct type *, struct ui_file *);
+ extern void c_printstr (struct ui_file * stream,
+ 			struct type *elttype,
+ 			const gdb_byte *string,
+-			unsigned int length,
++			ULONGEST length,
+ 			const char *user_encoding,
+ 			int force_ellipses,
+ 			const struct value_print_options *options);
+diff --git a/gdb/c-valprint.c b/gdb/c-valprint.c
+--- a/gdb/c-valprint.c
++++ b/gdb/c-valprint.c
+@@ -247,7 +247,7 @@ c_val_print_array (struct type *type, const gdb_byte *valaddr,
+   if (TYPE_LENGTH (type) > 0 && TYPE_LENGTH (unresolved_elttype) > 0)
+     {
+       LONGEST low_bound, high_bound;
+-      int eltlen, len;
++      LONGEST eltlen, len;
+       struct gdbarch *gdbarch = get_type_arch (type);
+       enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+       unsigned int i = 0;	/* Number of characters printed.  */
+@@ -321,8 +321,8 @@ c_val_print_array (struct type *type, const gdb_byte *valaddr,
+ 	  if (cp_is_vtbl_ptr_type (elttype))
+ 	    {
+ 	      i = 1;
+-	      fprintf_filtered (stream, _("%d vtable entries"),
+-				len - 1);
++	      fprintf_filtered (stream, _("%s vtable entries"),
++				plongest (len - 1));
+ 	    }
+ 	  else
+ 	    {
+@@ -399,7 +399,7 @@ c_val_print_struct (struct type *type, const gdb_byte *valaddr,
+ 	 -fvtable_thunks.  (Otherwise, look under
+ 	 TYPE_CODE_PTR.)  */
+       struct gdbarch *gdbarch = get_type_arch (type);
+-      int offset = (embedded_offset
++      LONGEST offset = (embedded_offset
+ 		    + TYPE_FIELD_BITPOS (type,
+ 					 VTBL_FNADDR_OFFSET) / 8);
+       struct type *field_type = TYPE_FIELD_TYPE (type, VTBL_FNADDR_OFFSET);
+@@ -498,7 +498,7 @@ c_val_print_memberptr (struct type *type, const gdb_byte *valaddr,
+ 
+ void
+ c_val_print (struct type *type,
+-	     int embedded_offset, CORE_ADDR address,
++	     LONGEST embedded_offset, CORE_ADDR address,
+ 	     struct ui_file *stream, int recurse,
+ 	     struct value *original_value,
+ 	     const struct value_print_options *options)
+diff --git a/gdb/compile/compile-c-support.c b/gdb/compile/compile-c-support.c
+--- a/gdb/compile/compile-c-support.c
++++ b/gdb/compile/compile-c-support.c
+@@ -270,11 +270,11 @@ generate_register_struct (struct ui_file *stream, struct gdbarch *gdbarch,
+ 
+ 	      default:
+ 		fprintf_unfiltered (stream,
+-				    "  unsigned char %s[%d]"
++				    "  unsigned char %s[%s]"
+ 				    " __attribute__((__aligned__("
+ 				    "__BIGGEST_ALIGNMENT__)))",
+ 				    regname.c_str (),
+-				    TYPE_LENGTH (regtype));
++				    pulongest (TYPE_LENGTH (regtype)));
+ 	      }
+ 	    fputs_unfiltered (";\n", stream);
+ 	  }
+diff --git a/gdb/cp-abi.c b/gdb/cp-abi.c
+--- a/gdb/cp-abi.c
++++ b/gdb/cp-abi.c
+@@ -64,12 +64,12 @@ is_operator_name (const char *name)
+   return (*current_cp_abi.is_operator_name) (name);
+ }
+ 
+-int
++LONGEST
+ baseclass_offset (struct type *type, int index, const gdb_byte *valaddr,
+ 		  LONGEST embedded_offset, CORE_ADDR address,
+ 		  const struct value *val)
+ {
+-  int res = 0;
++  LONGEST res = 0;
+ 
+   gdb_assert (current_cp_abi.baseclass_offset != NULL);
+ 
+@@ -96,7 +96,7 @@ baseclass_offset (struct type *type, int index, const gdb_byte *valaddr,
+ struct value *
+ value_virtual_fn_field (struct value **arg1p,
+ 			struct fn_field *f, int j,
+-			struct type *type, int offset)
++			struct type *type, LONGEST offset)
+ {
+   if ((current_cp_abi.virtual_fn_field) == NULL)
+     return NULL;
+diff --git a/gdb/cp-abi.h b/gdb/cp-abi.h
+--- a/gdb/cp-abi.h
++++ b/gdb/cp-abi.h
+@@ -108,7 +108,7 @@ extern struct value *value_virtual_fn_field (struct value **valuep,
+ 					     struct fn_field *f,
+ 					     int j,
+ 					     struct type *type,
+-					     int offset);
++					     LONGEST offset);
+ 
+ 
+ /* Try to find the run-time type of VALUE, using C++ run-time type
+@@ -144,11 +144,11 @@ extern struct type *value_rtti_type (struct value *value,
+    contents of VAL.  The result is the offset of the baseclass value
+    relative to (the address of)(ARG) + OFFSET.  */
+ 
+-extern int baseclass_offset (struct type *type,
+-			     int index, const gdb_byte *valaddr,
+-			     LONGEST embedded_offset,
+-			     CORE_ADDR address,
+-			     const struct value *val);
++extern LONGEST baseclass_offset (struct type *type,
++				 int index, const gdb_byte *valaddr,
++				 LONGEST embedded_offset,
++				 CORE_ADDR address,
++				 const struct value *val);
+ 
+ /* Describe the target of a pointer to method.  CONTENTS is the byte
+    pattern representing the pointer to method.  TYPE is the pointer to
+@@ -226,12 +226,12 @@ struct cp_abi_ops
+   struct value *(*virtual_fn_field) (struct value **arg1p,
+ 				     struct fn_field * f,
+ 				     int j, struct type * type,
+-				     int offset);
++				     LONGEST offset);
+   struct type *(*rtti_type) (struct value *v, int *full,
+ 			     LONGEST *top, int *using_enc);
+-  int (*baseclass_offset) (struct type *type, int index,
+-			   const bfd_byte *valaddr, LONGEST embedded_offset,
+-			   CORE_ADDR address, const struct value *val);
++  LONGEST (*baseclass_offset) (struct type *type, int index,
++			       const bfd_byte *valaddr, LONGEST embedded_offset,
++			       CORE_ADDR address, const struct value *val);
+   void (*print_method_ptr) (const gdb_byte *contents,
+ 			    struct type *type,
+ 			    struct ui_file *stream);
+diff --git a/gdb/cp-valprint.c b/gdb/cp-valprint.c
+--- a/gdb/cp-valprint.c
++++ b/gdb/cp-valprint.c
+@@ -335,7 +335,7 @@ cp_print_value_fields (struct type *type, struct type *real_type,
+ 		}
+ 	      else if (i == vptr_fieldno && type == vptr_basetype)
+ 		{
+-		  int i_offset = offset + TYPE_FIELD_BITPOS (type, i) / 8;
++		  LONGEST i_offset = offset + TYPE_FIELD_BITPOS (type, i) / 8;
+ 		  struct type *i_type = TYPE_FIELD_TYPE (type, i);
+ 
+ 		  if (valprint_check_validity (stream, i_type, i_offset, val))
+diff --git a/gdb/d-lang.h b/gdb/d-lang.h
+--- a/gdb/d-lang.h
++++ b/gdb/d-lang.h
+@@ -79,7 +79,7 @@ extern struct block_symbol d_lookup_nested_symbol (struct type *, const char *,
+ /* Defined in d-valprint.c  */
+ 
+ extern void d_val_print (struct type *type,
+-			 int embedded_offset, CORE_ADDR address,
++			 LONGEST embedded_offset, CORE_ADDR address,
+ 			 struct ui_file *stream, int recurse,
+ 			 struct value *val,
+ 			 const struct value_print_options *options);
+diff --git a/gdb/d-valprint.c b/gdb/d-valprint.c
+--- a/gdb/d-valprint.c
++++ b/gdb/d-valprint.c
+@@ -73,7 +73,7 @@ dynamic_array_type (struct type *type,
+ 
+ /* Implements the la_val_print routine for language D.  */
+ void
+-d_val_print (struct type *type, int embedded_offset,
++d_val_print (struct type *type, LONGEST embedded_offset,
+              CORE_ADDR address, struct ui_file *stream, int recurse,
+ 	     struct value *val,
+              const struct value_print_options *options)
+diff --git a/gdb/dwarf2loc.c b/gdb/dwarf2loc.c
+--- a/gdb/dwarf2loc.c
++++ b/gdb/dwarf2loc.c
+@@ -1625,7 +1625,7 @@ rw_pieced_value (struct value *v, struct value *from)
+   for (; i < c->pieces.size () && offset < max_offset; i++)
+     {
+       struct dwarf_expr_piece *p = &c->pieces[i];
+-      size_t this_size_bits, this_size;
++      ULONGEST this_size_bits, this_size;
+ 
+       this_size_bits = p->size - bits_to_skip;
+       if (this_size_bits > max_offset - offset)
+@@ -1872,7 +1872,7 @@ write_pieced_value (struct value *to, struct value *from)
+ 
+ static int
+ check_pieced_synthetic_pointer (const struct value *value, LONGEST bit_offset,
+-				int bit_length)
++				LONGEST bit_length)
+ {
+   struct piece_closure *c
+     = (struct piece_closure *) value_computed_closure (value);
+@@ -1885,7 +1885,7 @@ check_pieced_synthetic_pointer (const struct value *value, LONGEST bit_offset,
+   for (i = 0; i < c->pieces.size () && bit_length > 0; i++)
+     {
+       struct dwarf_expr_piece *p = &c->pieces[i];
+-      size_t this_size_bits = p->size;
++      ULONGEST this_size_bits = p->size;
+ 
+       if (bit_offset > 0)
+ 	{
+@@ -1989,8 +1989,8 @@ indirect_pieced_value (struct value *value)
+     = (struct piece_closure *) value_computed_closure (value);
+   struct type *type;
+   struct frame_info *frame;
+-  int i, bit_length;
+-  LONGEST bit_offset;
++  int i;
++  LONGEST bit_length, bit_offset;
+   struct dwarf_expr_piece *piece = NULL;
+   LONGEST byte_offset;
+   enum bfd_endian byte_order;
+@@ -2007,7 +2007,7 @@ indirect_pieced_value (struct value *value)
+   for (i = 0; i < c->pieces.size () && bit_length > 0; i++)
+     {
+       struct dwarf_expr_piece *p = &c->pieces[i];
+-      size_t this_size_bits = p->size;
++      ULONGEST this_size_bits = p->size;
+ 
+       if (bit_offset > 0)
+ 	{
+@@ -2296,9 +2296,9 @@ if (frame != NULL) select_frame (frame);
+ 	case DWARF_VALUE_STACK:
+ 	  {
+ 	    struct value *value = ctx.fetch (0);
+-	    size_t n = TYPE_LENGTH (value_type (value));
+-	    size_t len = TYPE_LENGTH (subobj_type);
+-	    size_t max = TYPE_LENGTH (type);
++	    ULONGEST n = TYPE_LENGTH (value_type (value));
++	    ULONGEST len = TYPE_LENGTH (subobj_type);
++	    ULONGEST max = TYPE_LENGTH (type);
+ 	    struct gdbarch *objfile_gdbarch = get_objfile_arch (objfile);
+ 
+ 	    if (subobj_byte_offset + len > max)
+diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
+--- a/gdb/dwarf2read.c
++++ b/gdb/dwarf2read.c
+@@ -2065,11 +2065,11 @@ dwarf2_complex_location_expr_complaint (void)
+ }
+ 
+ static void
+-dwarf2_const_value_length_mismatch_complaint (const char *arg1, int arg2,
+-					      int arg3)
++dwarf2_const_value_length_mismatch_complaint (const char *arg1, LONGEST arg2,
++					      LONGEST arg3)
+ {
+-  complaint (_("const value length mismatch for '%s', got %d, expected %d"),
+-	     arg1, arg2, arg3);
++  complaint (_("const value length mismatch for '%s', got %s, expected %s"),
++	     arg1, plongest (arg2), plongest (arg3));
+ }
+ 
+ static void
+@@ -15104,8 +15104,8 @@ dwarf2_add_field (struct field_info *fip, struct die_info *die,
+ 	         object, and then subtract off the number of bits of
+ 	         the field itself.  The result is the bit offset of
+ 	         the LSB of the field.  */
+-	      int anonymous_size;
+-	      int bit_offset = DW_UNSND (attr);
++	      LONGEST anonymous_size;
++	      LONGEST bit_offset = DW_UNSND (attr);
+ 
+ 	      attr = dwarf2_attr (die, DW_AT_byte_size, cu);
+ 	      if (attr)
+diff --git a/gdb/eval.c b/gdb/eval.c
+--- a/gdb/eval.c
++++ b/gdb/eval.c
+@@ -295,7 +295,8 @@ evaluate_struct_tuple (struct value *struct_val,
+   while (--nargs >= 0)
+     {
+       struct value *val = NULL;
+-      int bitpos, bitsize;
++      LONGEST bitpos;
++      int bitsize;
+       bfd_byte *addr;
+ 
+       fieldno++;
+@@ -356,7 +357,7 @@ init_array_element (struct value *array, struct value *element,
+ 		    enum noside noside, LONGEST low_bound, LONGEST high_bound)
+ {
+   LONGEST index;
+-  int element_size = TYPE_LENGTH (value_type (element));
++  LONGEST element_size = TYPE_LENGTH (value_type (element));
+ 
+   if (exp->elts[*pos].opcode == BINOP_COMMA)
+     {
+@@ -799,11 +800,11 @@ binop_promote (const struct language_defn *language, struct gdbarch *gdbarch,
+     /* FIXME: Also mixed integral/booleans, with result an integer.  */
+     {
+       const struct builtin_type *builtin = builtin_type (gdbarch);
+-      unsigned int promoted_len1 = TYPE_LENGTH (type1);
+-      unsigned int promoted_len2 = TYPE_LENGTH (type2);
++      ULONGEST promoted_len1 = TYPE_LENGTH (type1);
++      ULONGEST promoted_len2 = TYPE_LENGTH (type2);
+       int is_unsigned1 = TYPE_UNSIGNED (type1);
+       int is_unsigned2 = TYPE_UNSIGNED (type2);
+-      unsigned int result_len;
++      ULONGEST result_len;
+       int unsigned_operation;
+ 
+       /* Determine type length and signedness after promotion for
+@@ -1553,7 +1554,7 @@ evaluate_subexp_standard (struct type *expect_type,
+   struct value **argvec;
+   int code;
+   int ix;
+-  long mem_offset;
++  LONGEST mem_offset;
+   struct type **arg_types;
+ 
+   pc = (*pos)++;
+@@ -1738,7 +1739,7 @@ evaluate_subexp_standard (struct type *expect_type,
+ 	  struct type *range_type = TYPE_INDEX_TYPE (type);
+ 	  struct type *element_type = TYPE_TARGET_TYPE (type);
+ 	  struct value *array = allocate_value (expect_type);
+-	  int element_size = TYPE_LENGTH (check_typedef (element_type));
++	  LONGEST element_size = TYPE_LENGTH (check_typedef (element_type));
+ 	  LONGEST low_bound, high_bound, index;
+ 
+ 	  if (get_discrete_bounds (range_type, &low_bound, &high_bound) < 0)
+diff --git a/gdb/f-lang.c b/gdb/f-lang.c
+--- a/gdb/f-lang.c
++++ b/gdb/f-lang.c
+@@ -101,7 +101,7 @@ f_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ static void
+ f_printstr (struct ui_file *stream, struct type *type, const gdb_byte *string,
+-	    unsigned int length, const char *encoding, int force_ellipses,
++	    ULONGEST length, const char *encoding, int force_ellipses,
+ 	    const struct value_print_options *options)
+ {
+   const char *type_encoding = f_get_encoding (type);
+diff --git a/gdb/f-lang.h b/gdb/f-lang.h
+--- a/gdb/f-lang.h
++++ b/gdb/f-lang.h
+@@ -31,7 +31,7 @@ extern int f_parse (struct parser_state *);
+ extern void f_print_type (struct type *, const char *, struct ui_file *, int,
+ 			  int, const struct type_print_options *);
+ 
+-extern void f_val_print (struct type *, int, CORE_ADDR,
++extern void f_val_print (struct type *, LONGEST, CORE_ADDR,
+ 			 struct ui_file *, int,
+ 			 struct value *,
+ 			 const struct value_print_options *);
+diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
+--- a/gdb/f-valprint.c
++++ b/gdb/f-valprint.c
+@@ -36,7 +36,7 @@
+ 
+ static void f77_get_dynamic_length_of_aggregate (struct type *);
+ 
+-int f77_array_offset_tbl[MAX_FORTRAN_DIMS + 1][2];
++LONGEST f77_array_offset_tbl[MAX_FORTRAN_DIMS + 1][2];
+ 
+ /* Array which holds offsets to be applied to get a row's elements
+    for a given array.  Array also holds the size of each subarray.  */
+@@ -71,8 +71,8 @@ f77_get_upperbound (struct type *type)
+ static void
+ f77_get_dynamic_length_of_aggregate (struct type *type)
+ {
+-  int upper_bound = -1;
+-  int lower_bound = 1;
++  LONGEST upper_bound = -1;
++  LONGEST lower_bound = 1;
+ 
+   /* Recursively go all the way down into a possibly multi-dimensional
+      F77 array and get the bounds.  For simple arrays, this is pretty
+@@ -104,7 +104,7 @@ f77_get_dynamic_length_of_aggregate (struct type *type)
+ static void
+ f77_print_array_1 (int nss, int ndimensions, struct type *type,
+ 		   const gdb_byte *valaddr,
+-		   int embedded_offset, CORE_ADDR address,
++		   LONGEST embedded_offset, CORE_ADDR address,
+ 		   struct ui_file *stream, int recurse,
+ 		   const struct value *val,
+ 		   const struct value_print_options *options,
+@@ -113,7 +113,7 @@ f77_print_array_1 (int nss, int ndimensions, struct type *type,
+   struct type *range_type = TYPE_INDEX_TYPE (check_typedef (type));
+   CORE_ADDR addr = address + embedded_offset;
+   LONGEST lowerbound, upperbound;
+-  int i;
++  LONGEST i;
+ 
+   get_discrete_bounds (range_type, &lowerbound, &upperbound);
+ 
+@@ -175,7 +175,7 @@ f77_print_array_1 (int nss, int ndimensions, struct type *type,
+ 
+ static void
+ f77_print_array (struct type *type, const gdb_byte *valaddr,
+-		 int embedded_offset,
++		 LONGEST embedded_offset,
+ 		 CORE_ADDR address, struct ui_file *stream,
+ 		 int recurse,
+ 		 const struct value *val,
+@@ -214,7 +214,7 @@ static const struct generic_val_print_decorations f_decorations =
+    function; they are identical.  */
+ 
+ void
+-f_val_print (struct type *type, int embedded_offset,
++f_val_print (struct type *type, LONGEST embedded_offset,
+ 	     CORE_ADDR address, struct ui_file *stream, int recurse,
+ 	     struct value *original_value,
+ 	     const struct value_print_options *options)
+diff --git a/gdb/findvar.c b/gdb/findvar.c
+--- a/gdb/findvar.c
++++ b/gdb/findvar.c
+@@ -821,7 +821,7 @@ struct value *
+ default_value_from_register (struct gdbarch *gdbarch, struct type *type,
+                              int regnum, struct frame_id frame_id)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+   struct value *value = allocate_value (type);
+   struct frame_info *frame;
+ 
+@@ -865,7 +865,7 @@ read_frame_register_value (struct value *value, struct frame_info *frame)
+   LONGEST offset = 0;
+   LONGEST reg_offset = value_offset (value);
+   int regnum = VALUE_REGNUM (value);
+-  int len = type_length_units (check_typedef (value_type (value)));
++  LONGEST len = type_length_units (check_typedef (value_type (value)));
+ 
+   gdb_assert (VALUE_LVAL (value) == lval_register);
+ 
+@@ -880,7 +880,7 @@ read_frame_register_value (struct value *value, struct frame_info *frame)
+   while (len > 0)
+     {
+       struct value *regval = get_frame_register_value (frame, regnum);
+-      int reg_len = type_length_units (value_type (regval)) - reg_offset;
++      LONGEST reg_len = type_length_units (value_type (regval)) - reg_offset;
+ 
+       /* If the register length is larger than the number of bytes
+          remaining to copy, then only copy the appropriate bytes.  */
+diff --git a/gdb/frame.c b/gdb/frame.c
+--- a/gdb/frame.c
++++ b/gdb/frame.c
+@@ -1393,7 +1393,7 @@ deprecated_frame_register_read (struct frame_info *frame, int regnum,
+ 
+ int
+ get_frame_register_bytes (struct frame_info *frame, int regnum,
+-			  CORE_ADDR offset, int len, gdb_byte *myaddr,
++			  CORE_ADDR offset, LONGEST len, gdb_byte *myaddr,
+ 			  int *optimizedp, int *unavailablep)
+ {
+   struct gdbarch *gdbarch = get_frame_arch (frame);
+@@ -1422,7 +1422,7 @@ get_frame_register_bytes (struct frame_info *frame, int regnum,
+     }
+   if (len > maxsize)
+     error (_("Bad debug information detected: "
+-	     "Attempt to read %d bytes from registers."), len);
++	     "Attempt to read %s bytes from registers."), plongest (len));
+ 
+   /* Copy the data.  */
+   while (len > 0)
+diff --git a/gdb/frame.h b/gdb/frame.h
+--- a/gdb/frame.h
++++ b/gdb/frame.h
+@@ -620,7 +620,7 @@ extern void put_frame_register (struct frame_info *frame, int regnum,
+    contents are optimized out or unavailable, set *OPTIMIZEDP,
+    *UNAVAILABLEP accordingly.  */
+ extern int get_frame_register_bytes (struct frame_info *frame, int regnum,
+-				     CORE_ADDR offset, int len,
++				     CORE_ADDR offset, LONGEST len,
+ 				     gdb_byte *myaddr,
+ 				     int *optimizedp, int *unavailablep);
+ 
+diff --git a/gdb/gdbarch.c b/gdb/gdbarch.c
+--- a/gdb/gdbarch.c
++++ b/gdb/gdbarch.c
+@@ -1795,7 +1795,7 @@ set_gdbarch_wchar_signed (struct gdbarch *gdbarch,
+ }
+ 
+ const struct floatformat **
+-gdbarch_floatformat_for_type (struct gdbarch *gdbarch, const char *name, int length)
++gdbarch_floatformat_for_type (struct gdbarch *gdbarch, const char *name, LONGEST length)
+ {
+   gdb_assert (gdbarch != NULL);
+   gdb_assert (gdbarch->floatformat_for_type != NULL);
+diff --git a/gdb/gdbarch.h b/gdb/gdbarch.h
+--- a/gdb/gdbarch.h
++++ b/gdb/gdbarch.h
+@@ -218,8 +218,8 @@ extern void set_gdbarch_wchar_signed (struct gdbarch *gdbarch, int wchar_signed)
+    NAME, if non-NULL, is the type name, which may be used to distinguish
+    different target formats of the same length. */
+ 
+-typedef const struct floatformat ** (gdbarch_floatformat_for_type_ftype) (struct gdbarch *gdbarch, const char *name, int length);
+-extern const struct floatformat ** gdbarch_floatformat_for_type (struct gdbarch *gdbarch, const char *name, int length);
++typedef const struct floatformat ** (gdbarch_floatformat_for_type_ftype) (struct gdbarch *gdbarch, const char *name, LONGEST length);
++extern const struct floatformat ** gdbarch_floatformat_for_type (struct gdbarch *gdbarch, const char *name, LONGEST length);
+ extern void set_gdbarch_floatformat_for_type (struct gdbarch *gdbarch, gdbarch_floatformat_for_type_ftype *floatformat_for_type);
+ 
+ /* For most targets, a pointer on the target and its representation as an
+diff --git a/gdb/gdbarch.sh b/gdb/gdbarch.sh
+--- a/gdb/gdbarch.sh
++++ b/gdb/gdbarch.sh
+@@ -385,7 +385,7 @@ v;int;wchar_signed;;;1;-1;1
+ # Returns the floating-point format to be used for values of length LENGTH.
+ # NAME, if non-NULL, is the type name, which may be used to distinguish
+ # different target formats of the same length.
+-m;const struct floatformat **;floatformat_for_type;const char *name, int length;name, length;0;default_floatformat_for_type;;0
++m;const struct floatformat **;floatformat_for_type;const char *name, LONGEST length;name, length;0;default_floatformat_for_type;;0
+ 
+ # For most targets, a pointer on the target and its representation as an
+ # address in GDB have the same size and "look the same".  For such a
+diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
+--- a/gdb/gdbtypes.c
++++ b/gdb/gdbtypes.c
+@@ -2889,7 +2889,7 @@ floatformat_from_type (const struct type *type)
+    least as long as OBJFILE.  */
+ 
+ struct type *
+-init_type (struct objfile *objfile, enum type_code code, int bit,
++init_type (struct objfile *objfile, enum type_code code, LONGEST bit,
+ 	   const char *name)
+ {
+   struct type *type;
+@@ -3340,8 +3340,8 @@ is_public_ancestor (struct type *base, struct type *dclass)
+ 
+ static int
+ is_unique_ancestor_worker (struct type *base, struct type *dclass,
+-			   int *offset,
+-			   const gdb_byte *valaddr, int embedded_offset,
++			   LONGEST *offset,
++			   const gdb_byte *valaddr, LONGEST embedded_offset,
+ 			   CORE_ADDR address, struct value *val)
+ {
+   int i, count = 0;
+@@ -3352,7 +3352,7 @@ is_unique_ancestor_worker (struct type *base, struct type *dclass,
+   for (i = 0; i < TYPE_N_BASECLASSES (dclass) && count < 2; ++i)
+     {
+       struct type *iter;
+-      int this_offset;
++      LONGEST this_offset;
+ 
+       iter = check_typedef (TYPE_BASECLASS (dclass, i));
+ 
+@@ -3393,7 +3393,7 @@ is_unique_ancestor_worker (struct type *base, struct type *dclass,
+ int
+ is_unique_ancestor (struct type *base, struct value *val)
+ {
+-  int offset = -1;
++  LONGEST offset = -1;
+ 
+   return is_unique_ancestor_worker (base, value_type (val), &offset,
+ 				    value_contents_for_printing (val),
+@@ -4620,7 +4620,7 @@ recursive_dump_type (struct type *type, int spaces)
+       break;
+     }
+   puts_filtered ("\n");
+-  printfi_filtered (spaces, "length %d\n", TYPE_LENGTH (type));
++  printfi_filtered (spaces, "length %s\n", pulongest (TYPE_LENGTH (type)));
+   if (TYPE_OBJFILE_OWNED (type))
+     {
+       printfi_filtered (spaces, "objfile ");
+@@ -5065,7 +5065,7 @@ copy_type (const struct type *type)
+ 
+ struct type *
+ arch_type (struct gdbarch *gdbarch,
+-	   enum type_code code, int bit, const char *name)
++	   enum type_code code, LONGEST bit, const char *name)
+ {
+   struct type *type;
+ 
+diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
+--- a/gdb/gdbtypes.h
++++ b/gdb/gdbtypes.h
+@@ -864,7 +864,7 @@ struct type
+      type_length_units function should be used in order to get the length
+      expressed in target addressable memory units.  */
+ 
+-  unsigned int length;
++  ULONGEST length;
+ 
+   /* * Core type, shared by a group of qualified types.  */
+ 
+@@ -1787,7 +1787,7 @@ extern unsigned int type_length_units (struct type *type);
+ 
+ /* * Helper function to construct objfile-owned types.  */
+ 
+-extern struct type *init_type (struct objfile *, enum type_code, int,
++extern struct type *init_type (struct objfile *, enum type_code, LONGEST,
+ 			       const char *);
+ extern struct type *init_integer_type (struct objfile *, int, int,
+ 				       const char *);
+@@ -1804,7 +1804,7 @@ extern struct type *init_pointer_type (struct objfile *, int, const char *,
+ 				       struct type *);
+ 
+ /* Helper functions to construct architecture-owned types.  */
+-extern struct type *arch_type (struct gdbarch *, enum type_code, int,
++extern struct type *arch_type (struct gdbarch *, enum type_code, LONGEST,
+ 			       const char *);
+ extern struct type *arch_integer_type (struct gdbarch *, int, int,
+ 				       const char *);
+diff --git a/gdb/gnu-v2-abi.c b/gdb/gnu-v2-abi.c
+--- a/gdb/gnu-v2-abi.c
++++ b/gdb/gnu-v2-abi.c
+@@ -82,7 +82,7 @@ gnuv2_is_operator_name (const char *name)
+    TYPE is the type in which F is located.  */
+ static struct value *
+ gnuv2_virtual_fn_field (struct value **arg1p, struct fn_field * f, int j,
+-			struct type * type, int offset)
++			struct type *type, LONGEST offset)
+ {
+   struct value *arg1 = *arg1p;
+   struct type *type1 = check_typedef (value_type (arg1));
+@@ -338,7 +338,7 @@ vb_match (struct type *type, int index, struct type *basetype)
+    target).  The result is the offset of the baseclass value relative
+    to (the address of)(ARG) + OFFSET.  */
+ 
+-static int
++static LONGEST
+ gnuv2_baseclass_offset (struct type *type, int index,
+ 			const bfd_byte *valaddr, LONGEST embedded_offset,
+ 			CORE_ADDR address, const struct value *val)
+@@ -358,8 +358,7 @@ gnuv2_baseclass_offset (struct type *type, int index,
+ 	  if (vb_match (type, i, basetype))
+ 	    {
+ 	      struct type *field_type;
+-	      LONGEST field_offset;
+-	      int field_length;
++	      LONGEST field_offset, field_length;
+ 	      CORE_ADDR addr;
+ 
+ 	      field_type = check_typedef (TYPE_FIELD_TYPE (type, i));
+@@ -383,7 +382,7 @@ gnuv2_baseclass_offset (struct type *type, int index,
+ 	  /* Don't go through baseclass_offset, as that wraps
+ 	     exceptions, thus, inner exceptions would be wrapped more
+ 	     than once.  */
+-	  int boffset =
++	  LONGEST boffset =
+ 	    gnuv2_baseclass_offset (type, i, valaddr,
+ 				    embedded_offset, address, val);
+ 
+diff --git a/gdb/gnu-v3-abi.c b/gdb/gnu-v3-abi.c
+--- a/gdb/gnu-v3-abi.c
++++ b/gdb/gnu-v3-abi.c
+@@ -109,7 +109,7 @@ build_gdb_vtable_type (struct gdbarch *arch)
+ {
+   struct type *t;
+   struct field *field_list, *field;
+-  int offset;
++  LONGEST offset;
+ 
+   struct type *void_ptr_type
+     = builtin_type (arch)->builtin_data_ptr;
+@@ -185,7 +185,7 @@ vtable_ptrdiff_type (struct gdbarch *gdbarch)
+ /* Return the offset from the start of the imaginary `struct
+    gdb_gnu_v3_abi_vtable' object to the vtable's "address point"
+    (i.e., where objects' virtual table pointers point).  */
+-static int
++static LONGEST
+ vtable_address_point_offset (struct gdbarch *gdbarch)
+ {
+   struct type *vtable_type
+@@ -409,7 +409,7 @@ gnuv3_get_virtual_fn (struct gdbarch *gdbarch, struct value *container,
+ static struct value *
+ gnuv3_virtual_fn_field (struct value **value_p,
+                         struct fn_field *f, int j,
+-			struct type *vfn_base, int offset)
++			struct type *vfn_base, LONGEST offset)
+ {
+   struct type *values_type = check_typedef (value_type (*value_p));
+   struct gdbarch *gdbarch;
+@@ -439,7 +439,7 @@ gnuv3_virtual_fn_field (struct value **value_p,
+ 
+    -1 is returned on error.  */
+ 
+-static int
++static LONGEST
+ gnuv3_baseclass_offset (struct type *type, int index,
+ 			const bfd_byte *valaddr, LONGEST embedded_offset,
+ 			CORE_ADDR address, const struct value *val)
+@@ -448,7 +448,7 @@ gnuv3_baseclass_offset (struct type *type, int index,
+   struct type *ptr_type;
+   struct value *vtable;
+   struct value *vbase_array;
+-  long int cur_base_offset, base_offset;
++  LONGEST cur_base_offset, base_offset;
+ 
+   /* Determine architecture.  */
+   gdbarch = get_type_arch (type);
+@@ -471,7 +471,7 @@ gnuv3_baseclass_offset (struct type *type, int index,
+   cur_base_offset = cur_base_offset + vtable_address_point_offset (gdbarch);
+   if ((- cur_base_offset) % TYPE_LENGTH (ptr_type) != 0)
+     error (_("Misaligned vbase offset."));
+-  cur_base_offset = cur_base_offset / ((int) TYPE_LENGTH (ptr_type));
++  cur_base_offset = cur_base_offset / ((LONGEST) TYPE_LENGTH (ptr_type));
+ 
+   vtable = gnuv3_get_vtable (gdbarch, type, address + embedded_offset);
+   gdb_assert (vtable != NULL);
+@@ -515,7 +515,7 @@ gnuv3_find_method_in (struct type *domain, CORE_ADDR voffset,
+      we're out of luck.  */
+   for (i = 0; i < TYPE_N_BASECLASSES (domain); i++)
+     {
+-      int pos;
++      LONGEST pos;
+       struct type *basetype;
+ 
+       if (BASETYPE_VIA_VIRTUAL (domain, i))
+diff --git a/gdb/go-lang.h b/gdb/go-lang.h
+--- a/gdb/go-lang.h
++++ b/gdb/go-lang.h
+@@ -83,7 +83,7 @@ extern void go_print_type (struct type *type, const char *varstring,
+ /* Defined in go-valprint.c.  */
+ 
+ extern void go_val_print (struct type *type,
+-			  int embedded_offset, CORE_ADDR address,
++			  LONGEST embedded_offset, CORE_ADDR address,
+ 			  struct ui_file *stream, int recurse,
+ 			  struct value *val,
+ 			  const struct value_print_options *options);
+diff --git a/gdb/go-valprint.c b/gdb/go-valprint.c
+--- a/gdb/go-valprint.c
++++ b/gdb/go-valprint.c
+@@ -86,7 +86,7 @@ print_go_string (struct type *type,
+ /* Implements the la_val_print routine for language Go.  */
+ 
+ void
+-go_val_print (struct type *type, int embedded_offset,
++go_val_print (struct type *type, LONGEST embedded_offset,
+ 	      CORE_ADDR address, struct ui_file *stream, int recurse,
+ 	      struct value *val,
+ 	      const struct value_print_options *options)
+diff --git a/gdb/i386-tdep.c b/gdb/i386-tdep.c
+--- a/gdb/i386-tdep.c
++++ b/gdb/i386-tdep.c
+@@ -8156,7 +8156,7 @@ i386_fast_tracepoint_valid_at (struct gdbarch *gdbarch, CORE_ADDR addr,
+ 
+ const struct floatformat **
+ i386_floatformat_for_type (struct gdbarch *gdbarch,
+-			   const char *name, int len)
++			   const char *name, LONGEST len)
+ {
+   if (len == 128 && name)
+     if (strcmp (name, "__float128") == 0
+diff --git a/gdb/language.c b/gdb/language.c
+--- a/gdb/language.c
++++ b/gdb/language.c
+@@ -765,7 +765,7 @@ unk_lang_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ static void
+ unk_lang_printstr (struct ui_file *stream, struct type *type,
+-		   const gdb_byte *string, unsigned int length,
++		   const gdb_byte *string, ULONGEST length,
+ 		   const char *encoding, int force_ellipses,
+ 		   const struct value_print_options *options)
+ {
+@@ -784,7 +784,7 @@ unk_lang_print_type (struct type *type, const char *varstring,
+ 
+ static void
+ unk_lang_val_print (struct type *type,
+-		    int embedded_offset, CORE_ADDR address,
++		    LONGEST embedded_offset, CORE_ADDR address,
+ 		    struct ui_file *stream, int recurse,
+ 		    struct value *val,
+ 		    const struct value_print_options *options)
+diff --git a/gdb/language.h b/gdb/language.h
+--- a/gdb/language.h
++++ b/gdb/language.h
+@@ -184,7 +184,7 @@ struct language_defn
+ 			  struct ui_file * stream);
+ 
+     void (*la_printstr) (struct ui_file * stream, struct type *elttype,
+-			 const gdb_byte *string, unsigned int length,
++			 const gdb_byte *string, ULONGEST length,
+ 			 const char *encoding, int force_ellipses,
+ 			 const struct value_print_options *);
+ 
+@@ -222,7 +222,7 @@ struct language_defn
+        printing.  */
+ 
+     void (*la_val_print) (struct type *type,
+-			  int embedded_offset, CORE_ADDR address,
++			  LONGEST embedded_offset, CORE_ADDR address,
+ 			  struct ui_file *stream, int recurse,
+ 			  struct value *val,
+ 			  const struct value_print_options *options);
+diff --git a/gdb/m2-lang.c b/gdb/m2-lang.c
+--- a/gdb/m2-lang.c
++++ b/gdb/m2-lang.c
+@@ -103,10 +103,10 @@ m2_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ static void
+ m2_printstr (struct ui_file *stream, struct type *type, const gdb_byte *string,
+-	     unsigned int length, const char *encoding, int force_ellipses,
++	     ULONGEST length, const char *encoding, int force_ellipses,
+ 	     const struct value_print_options *options)
+ {
+-  unsigned int i;
++  ULONGEST i;
+   unsigned int things_printed = 0;
+   int in_quotes = 0;
+   int need_comma = 0;
+@@ -121,9 +121,9 @@ m2_printstr (struct ui_file *stream, struct type *type, const gdb_byte *string,
+     {
+       /* Position of the character we are examining
+          to see whether it is repeated.  */
+-      unsigned int rep1;
++      ULONGEST rep1;
+       /* Number of repetitions we have detected so far.  */
+-      unsigned int reps;
++      ULONGEST reps;
+ 
+       QUIT;
+ 
+@@ -149,7 +149,7 @@ m2_printstr (struct ui_file *stream, struct type *type, const gdb_byte *string,
+ 	      in_quotes = 0;
+ 	    }
+ 	  m2_printchar (string[i], type, stream);
+-	  fprintf_filtered (stream, " <repeats %u times>", reps);
++	  fprintf_filtered (stream, " <repeats %s times>", pulongest (reps));
+ 	  i = rep1 - 1;
+ 	  things_printed += options->repeat_count_threshold;
+ 	  need_comma = 1;
+diff --git a/gdb/m2-lang.h b/gdb/m2-lang.h
+--- a/gdb/m2-lang.h
++++ b/gdb/m2-lang.h
+@@ -35,7 +35,7 @@ extern void m2_print_typedef (struct type *, struct symbol *,
+ extern int m2_is_long_set (struct type *type);
+ extern int m2_is_unbounded_array (struct type *type);
+ 
+-extern void m2_val_print (struct type *, int, CORE_ADDR,
++extern void m2_val_print (struct type *, LONGEST, CORE_ADDR,
+ 			  struct ui_file *, int,
+ 			  struct value *,
+ 			  const struct value_print_options *);
+diff --git a/gdb/m2-typeprint.c b/gdb/m2-typeprint.c
+--- a/gdb/m2-typeprint.c
++++ b/gdb/m2-typeprint.c
+@@ -234,9 +234,12 @@ static void m2_array (struct type *type, struct ui_file *stream,
+ 	  m2_print_bounds (TYPE_INDEX_TYPE (type), stream, show, -1, 1);
+ 	}
+       else
+-	fprintf_filtered (stream, "%d",
+-			  (TYPE_LENGTH (type)
+-			   / TYPE_LENGTH (TYPE_TARGET_TYPE (type))));
++        {
++	  ULONGEST val = (TYPE_LENGTH (type)
++			  / TYPE_LENGTH (TYPE_TARGET_TYPE (type)));
++
++	  fprintf_filtered (stream, "%s", pulongest (val));
++	}
+     }
+   fprintf_filtered (stream, "] OF ");
+   m2_print_type (TYPE_TARGET_TYPE (type), "", stream, show, level, flags);
+diff --git a/gdb/m2-valprint.c b/gdb/m2-valprint.c
+--- a/gdb/m2-valprint.c
++++ b/gdb/m2-valprint.c
+@@ -35,7 +35,7 @@ static int print_unpacked_pointer (struct type *type,
+ 				   struct ui_file *stream);
+ static void
+ m2_print_array_contents (struct type *type, const gdb_byte *valaddr,
+-			 int embedded_offset, CORE_ADDR address,
++			 LONGEST embedded_offset, CORE_ADDR address,
+ 			 struct ui_file *stream, int recurse,
+ 			 struct value *val,
+ 			 const struct value_print_options *options,
+@@ -67,7 +67,7 @@ get_long_set_bounds (struct type *type, LONGEST *low, LONGEST *high)
+ 
+ static void
+ m2_print_long_set (struct type *type, const gdb_byte *valaddr,
+-		   int embedded_offset, CORE_ADDR address,
++		   LONGEST embedded_offset, CORE_ADDR address,
+ 		   struct ui_file *stream)
+ {
+   int empty_set        = 1;
+@@ -158,7 +158,7 @@ m2_print_long_set (struct type *type, const gdb_byte *valaddr,
+ 
+ static void
+ m2_print_unbounded_array (struct type *type, const gdb_byte *valaddr,
+-			  int embedded_offset, CORE_ADDR address,
++			  LONGEST embedded_offset, CORE_ADDR address,
+ 			  struct ui_file *stream, int recurse,
+ 			  const struct value_print_options *options)
+ {
+@@ -260,7 +260,7 @@ print_variable_at_address (struct type *type,
+ 
+ static void
+ m2_print_array_contents (struct type *type, const gdb_byte *valaddr,
+-			 int embedded_offset, CORE_ADDR address,
++			 LONGEST embedded_offset, CORE_ADDR address,
+ 			 struct ui_file *stream, int recurse,
+ 			 struct value *val,
+ 			 const struct value_print_options *options,
+@@ -308,12 +308,12 @@ static const struct generic_val_print_decorations m2_decorations =
+    function; they are identical.  */
+ 
+ void
+-m2_val_print (struct type *type, int embedded_offset,
++m2_val_print (struct type *type, LONGEST embedded_offset,
+ 	      CORE_ADDR address, struct ui_file *stream, int recurse,
+ 	      struct value *original_value,
+ 	      const struct value_print_options *options)
+ {
+-  unsigned len;
++  ULONGEST len;
+   struct type *elttype;
+   CORE_ADDR addr;
+   const gdb_byte *valaddr = value_contents_for_printing (original_value);
+@@ -339,7 +339,7 @@ m2_val_print (struct type *type, int embedded_offset,
+ 	         elements up to it.  */
+ 	      if (options->stop_print_at_null)
+ 		{
+-		  unsigned int temp_len;
++		  ULONGEST temp_len;
+ 
+ 		  /* Look for a NULL char.  */
+ 		  for (temp_len = 0;
+@@ -415,7 +415,7 @@ m2_val_print (struct type *type, int embedded_offset,
+ 	{
+ 	  struct type *range = elttype;
+ 	  LONGEST low_bound, high_bound;
+-	  int i;
++	  LONGEST i;
+ 	  int need_comma = 0;
+ 
+ 	  fputs_filtered ("{", stream);
+diff --git a/gdb/memrange.c b/gdb/memrange.c
+--- a/gdb/memrange.c
++++ b/gdb/memrange.c
+@@ -22,8 +22,8 @@
+ #include <algorithm>
+ 
+ int
+-mem_ranges_overlap (CORE_ADDR start1, int len1,
+-		    CORE_ADDR start2, int len2)
++mem_ranges_overlap (CORE_ADDR start1, LONGEST len1,
++		    CORE_ADDR start2, LONGEST len2)
+ {
+   ULONGEST h, l;
+ 
+diff --git a/gdb/memrange.h b/gdb/memrange.h
+--- a/gdb/memrange.h
++++ b/gdb/memrange.h
+@@ -28,7 +28,7 @@ struct mem_range
+ {
+   mem_range () = default;
+ 
+-  mem_range (CORE_ADDR start_, int length_)
++  mem_range (CORE_ADDR start_, LONGEST length_)
+   : start (start_), length (length_)
+   {}
+ 
+@@ -47,14 +47,14 @@ struct mem_range
+   CORE_ADDR start;
+ 
+   /* Length of the range.  */
+-  int length;
++  LONGEST length;
+ };
+ 
+ /* Returns true if the ranges defined by [start1, start1+len1) and
+    [start2, start2+len2) overlap.  */
+ 
+-extern int mem_ranges_overlap (CORE_ADDR start1, int len1,
+-			       CORE_ADDR start2, int len2);
++extern int mem_ranges_overlap (CORE_ADDR start1, LONGEST len1,
++			       CORE_ADDR start2, LONGEST len2);
+ 
+ /* Returns true if ADDR is in RANGE.  */
+ 
+diff --git a/gdb/mips-linux-nat.c b/gdb/mips-linux-nat.c
+--- a/gdb/mips-linux-nat.c
++++ b/gdb/mips-linux-nat.c
+@@ -610,7 +610,7 @@ mips_linux_nat_target::stopped_data_address (CORE_ADDR *paddr)
+    the specified region can be covered by the watch registers.  */
+ 
+ int
+-mips_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++mips_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   struct pt_watch_regs dummy_regs;
+   int i;
+diff --git a/gdb/nat/x86-dregs.c b/gdb/nat/x86-dregs.c
+--- a/gdb/nat/x86-dregs.c
++++ b/gdb/nat/x86-dregs.c
+@@ -380,7 +380,7 @@ x86_remove_aligned_watchpoint (struct x86_debug_reg_state *state,
+ 
+ static int
+ x86_handle_nonaligned_watchpoint (struct x86_debug_reg_state *state,
+-				  x86_wp_op_t what, CORE_ADDR addr, int len,
++				  x86_wp_op_t what, CORE_ADDR addr, LONGEST len,
+ 				  enum target_hw_bp_type type)
+ {
+   int retval = 0;
+@@ -548,7 +548,7 @@ x86_dr_remove_watchpoint (struct x86_debug_reg_state *state,
+ 
+ int
+ x86_dr_region_ok_for_watchpoint (struct x86_debug_reg_state *state,
+-				 CORE_ADDR addr, int len)
++				 CORE_ADDR addr, LONGEST len)
+ {
+   int nregs;
+ 
+diff --git a/gdb/nat/x86-dregs.h b/gdb/nat/x86-dregs.h
+--- a/gdb/nat/x86-dregs.h
++++ b/gdb/nat/x86-dregs.h
+@@ -117,7 +117,7 @@ extern int x86_dr_remove_watchpoint (struct x86_debug_reg_state *state,
+ /* Return non-zero if we can watch a memory region that starts at
+    address ADDR and whose length is LEN bytes.  */
+ extern int x86_dr_region_ok_for_watchpoint (struct x86_debug_reg_state *state,
+-					    CORE_ADDR addr, int len);
++					    CORE_ADDR addr, LONGEST len);
+ 
+ /* If the inferior has some break/watchpoint that triggered, set the
+    address associated with that break/watchpoint and return true.
+diff --git a/gdb/opencl-lang.c b/gdb/opencl-lang.c
+--- a/gdb/opencl-lang.c
++++ b/gdb/opencl-lang.c
+@@ -76,11 +76,11 @@ builtin_opencl_type (struct gdbarch *gdbarch)
+ 
+ static struct type *
+ lookup_opencl_vector_type (struct gdbarch *gdbarch, enum type_code code,
+-			   unsigned int el_length, unsigned int flag_unsigned,
++			   ULONGEST el_length, unsigned int flag_unsigned,
+ 			   int n)
+ {
+   int i;
+-  unsigned int length;
++  ULONGEST length;
+   struct type *type = NULL;
+   struct type **types = builtin_opencl_type (gdbarch);
+ 
+@@ -172,7 +172,7 @@ lval_func_read (struct value *v)
+   struct type *eltype = TYPE_TARGET_TYPE (check_typedef (value_type (c->val)));
+   LONGEST offset = value_offset (v);
+   LONGEST elsize = TYPE_LENGTH (eltype);
+-  int n, i, j = 0;
++  LONGEST n, i, j = 0;
+   LONGEST lowb = 0;
+   LONGEST highb = 0;
+ 
+@@ -201,7 +201,7 @@ lval_func_write (struct value *v, struct value *fromval)
+   struct type *eltype = TYPE_TARGET_TYPE (check_typedef (value_type (c->val)));
+   LONGEST offset = value_offset (v);
+   LONGEST elsize = TYPE_LENGTH (eltype);
+-  int n, i, j = 0;
++  LONGEST n, i, j = 0;
+   LONGEST lowb = 0;
+   LONGEST highb = 0;
+ 
+@@ -241,17 +241,17 @@ lval_func_write (struct value *v, struct value *fromval)
+ 
+ static int
+ lval_func_check_synthetic_pointer (const struct value *v,
+-				   LONGEST offset, int length)
++				   LONGEST offset, LONGEST length)
+ {
+   struct lval_closure *c = (struct lval_closure *) value_computed_closure (v);
+   /* Size of the target type in bits.  */
+-  int elsize =
++  LONGEST elsize =
+       TYPE_LENGTH (TYPE_TARGET_TYPE (check_typedef (value_type (c->val)))) * 8;
+-  int startrest = offset % elsize;
+-  int start = offset / elsize;
+-  int endrest = (offset + length) % elsize;
+-  int end = (offset + length) / elsize;
+-  int i;
++  LONGEST startrest = offset % elsize;
++  LONGEST start = offset / elsize;
++  LONGEST endrest = (offset + length) % elsize;
++  LONGEST end = (offset + length) / elsize;
++  LONGEST i;
+ 
+   if (endrest)
+     end++;
+@@ -261,8 +261,8 @@ lval_func_check_synthetic_pointer (const struct value *v,
+ 
+   for (i = start; i < end; i++)
+     {
+-      int comp_offset = (i == start) ? startrest : 0;
+-      int comp_length = (i == end) ? endrest : elsize;
++      LONGEST comp_offset = (i == start) ? startrest : 0;
++      LONGEST comp_length = (i == end) ? endrest : elsize;
+ 
+       if (!value_bits_synthetic_pointer (c->val,
+ 					 c->indices[i] * elsize + comp_offset,
+diff --git a/gdb/p-lang.c b/gdb/p-lang.c
+--- a/gdb/p-lang.c
++++ b/gdb/p-lang.c
+@@ -93,8 +93,8 @@ pascal_main_name (void)
+    are not multiple of TARGET_CHAR_BIT then the results are wrong
+    but this does not happen for Free Pascal nor for GPC.  */
+ int
+-is_pascal_string_type (struct type *type,int *length_pos,
+-                       int *length_size, int *string_pos,
++is_pascal_string_type (struct type *type, LONGEST *length_pos,
++		       LONGEST *length_size, LONGEST *string_pos,
+ 		       struct type **char_type,
+ 		       const char **arrayname)
+ {
+@@ -214,12 +214,12 @@ pascal_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ void
+ pascal_printstr (struct ui_file *stream, struct type *type,
+-		 const gdb_byte *string, unsigned int length,
++		 const gdb_byte *string, ULONGEST length,
+ 		 const char *encoding, int force_ellipses,
+ 		 const struct value_print_options *options)
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (get_type_arch (type));
+-  unsigned int i;
++  ULONGEST i;
+   unsigned int things_printed = 0;
+   int in_quotes = 0;
+   int need_comma = 0;
+@@ -247,9 +247,9 @@ pascal_printstr (struct ui_file *stream, struct type *type,
+     {
+       /* Position of the character we are examining
+          to see whether it is repeated.  */
+-      unsigned int rep1;
++      ULONGEST rep1;
+       /* Number of repetitions we have detected so far.  */
+-      unsigned int reps;
++      ULONGEST reps;
+       unsigned long int current_char;
+ 
+       QUIT;
+@@ -281,7 +281,7 @@ pascal_printstr (struct ui_file *stream, struct type *type,
+ 	      in_quotes = 0;
+ 	    }
+ 	  pascal_printchar (current_char, type, stream);
+-	  fprintf_filtered (stream, " <repeats %u times>", reps);
++	  fprintf_filtered (stream, " <repeats %s times>", pulongest (reps));
+ 	  i = rep1 - 1;
+ 	  things_printed += options->repeat_count_threshold;
+ 	  need_comma = 1;
+diff --git a/gdb/p-lang.h b/gdb/p-lang.h
+--- a/gdb/p-lang.h
++++ b/gdb/p-lang.h
+@@ -37,7 +37,7 @@ extern void pascal_print_type (struct type *, const char *, struct ui_file *,
+ extern void pascal_print_typedef (struct type *, struct symbol *,
+ 				  struct ui_file *);
+ 
+-extern void pascal_val_print (struct type *, int,
++extern void pascal_val_print (struct type *, LONGEST,
+ 			      CORE_ADDR, struct ui_file *, int,
+ 			      struct value *,
+ 			      const struct value_print_options *);
+@@ -51,13 +51,13 @@ extern void pascal_type_print_method_args (const char *, const char *,
+ /* These are in p-lang.c: */
+ 
+ extern int
+-  is_pascal_string_type (struct type *, int *, int *, int *,
++  is_pascal_string_type (struct type *, LONGEST *, LONGEST *, LONGEST *,
+ 			 struct type **, const char **);
+ 
+ extern void pascal_printchar (int, struct type *, struct ui_file *);
+ 
+ extern void pascal_printstr (struct ui_file *, struct type *, const gdb_byte *,
+-			     unsigned int, const char *, int,
++			     ULONGEST, const char *, int,
+ 			     const struct value_print_options *);
+ 
+ extern struct type **const pascal_builtin_types[];
+diff --git a/gdb/p-valprint.c b/gdb/p-valprint.c
+--- a/gdb/p-valprint.c
++++ b/gdb/p-valprint.c
+@@ -60,7 +60,7 @@ static const struct generic_val_print_decorations p_decorations =
+ 
+ void
+ pascal_val_print (struct type *type,
+-		  int embedded_offset, CORE_ADDR address,
++		  LONGEST embedded_offset, CORE_ADDR address,
+ 		  struct ui_file *stream, int recurse,
+ 		  struct value *original_value,
+ 		  const struct value_print_options *options)
+@@ -70,8 +70,8 @@ pascal_val_print (struct type *type,
+   unsigned int i = 0;	/* Number of characters printed */
+   unsigned len;
+   struct type *elttype;
+-  unsigned eltlen;
+-  int length_pos, length_size, string_pos;
++  ULONGEST eltlen;
++  LONGEST length_pos, length_size, string_pos;
+   struct type *char_type;
+   CORE_ADDR addr;
+   int want_space = 0;
+diff --git a/gdb/ppc-linux-nat.c b/gdb/ppc-linux-nat.c
+--- a/gdb/ppc-linux-nat.c
++++ b/gdb/ppc-linux-nat.c
+@@ -1716,7 +1716,7 @@ ppc_linux_nat_target::can_use_hw_breakpoint (enum bptype type, int cnt, int ot)
+ }
+ 
+ int
+-ppc_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++ppc_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   /* Handle sub-8-byte quantities.  */
+   if (len <= 0)
+diff --git a/gdb/ppc-linux-tdep.c b/gdb/ppc-linux-tdep.c
+--- a/gdb/ppc-linux-tdep.c
++++ b/gdb/ppc-linux-tdep.c
+@@ -2263,7 +2263,7 @@ ppc_init_linux_record_tdep (struct linux_record_tdep *record_tdep,
+ 
+ const struct floatformat **
+ ppc_floatformat_for_type (struct gdbarch *gdbarch,
+-                          const char *name, int len)
++                          const char *name, LONGEST len)
+ {
+   if (len == 128 && name)
+     {
+diff --git a/gdb/printcmd.c b/gdb/printcmd.c
+--- a/gdb/printcmd.c
++++ b/gdb/printcmd.c
+@@ -276,7 +276,7 @@ print_formatted (struct value *val, int size,
+ 		 struct ui_file *stream)
+ {
+   struct type *type = check_typedef (value_type (val));
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   if (VALUE_LVAL (val) == lval_memory)
+     next_address = value_address (val) + len;
+@@ -352,7 +352,7 @@ print_scalar_formatted (const gdb_byte *valaddr, struct type *type,
+ 			int size, struct ui_file *stream)
+ {
+   struct gdbarch *gdbarch = get_type_arch (type);
+-  unsigned int len = TYPE_LENGTH (type);
++  ULONGEST len = TYPE_LENGTH (type);
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+ 
+   /* String printing should go through val_print_scalar_formatted.  */
+diff --git a/gdb/procfs.c b/gdb/procfs.c
+--- a/gdb/procfs.c
++++ b/gdb/procfs.c
+@@ -3374,7 +3374,7 @@ procfs_target::remove_watchpoint (CORE_ADDR addr, int len,
+ }
+ 
+ int
+-procfs_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++procfs_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   /* The man page for proc(4) on Solaris 2.6 and up says that the
+      system can support "thousands" of hardware watchpoints, but gives
+diff --git a/gdb/regcache.c b/gdb/regcache.c
+--- a/gdb/regcache.c
++++ b/gdb/regcache.c
+@@ -763,7 +763,7 @@ regcache::cooked_write (int regnum, const gdb_byte *buf)
+ /* See regcache.h.  */
+ 
+ enum register_status
+-readable_regcache::read_part (int regnum, int offset, int len,
++readable_regcache::read_part (int regnum, LONGEST offset, LONGEST len,
+ 			      gdb_byte *out, bool is_raw)
+ {
+   int reg_size = register_size (arch (), regnum);
+@@ -830,7 +830,7 @@ reg_buffer::raw_collect_part (int regnum, int offset, int len,
+ /* See regcache.h.  */
+ 
+ enum register_status
+-regcache::write_part (int regnum, int offset, int len,
++regcache::write_part (int regnum, LONGEST offset, LONGEST len,
+ 		      const gdb_byte *in, bool is_raw)
+ {
+   int reg_size = register_size (arch (), regnum);
+@@ -901,7 +901,7 @@ reg_buffer::raw_supply_part (int regnum, int offset, int len,
+ }
+ 
+ enum register_status
+-readable_regcache::raw_read_part (int regnum, int offset, int len,
++readable_regcache::raw_read_part (int regnum, int offset, LONGEST len,
+ 				  gdb_byte *buf)
+ {
+   assert_regnum (regnum);
+@@ -911,7 +911,7 @@ readable_regcache::raw_read_part (int regnum, int offset, int len,
+ /* See regcache.h.  */
+ 
+ void
+-regcache::raw_write_part (int regnum, int offset, int len,
++regcache::raw_write_part (int regnum, int offset, LONGEST len,
+ 			  const gdb_byte *buf)
+ {
+   assert_regnum (regnum);
+@@ -921,7 +921,7 @@ regcache::raw_write_part (int regnum, int offset, int len,
+ /* See regcache.h.  */
+ 
+ enum register_status
+-readable_regcache::cooked_read_part (int regnum, int offset, int len,
++readable_regcache::cooked_read_part (int regnum, LONGEST offset, LONGEST len,
+ 				     gdb_byte *buf)
+ {
+   gdb_assert (regnum >= 0 && regnum < m_descr->nr_cooked_registers);
+@@ -931,7 +931,7 @@ readable_regcache::cooked_read_part (int regnum, int offset, int len,
+ /* See regcache.h.  */
+ 
+ void
+-regcache::cooked_write_part (int regnum, int offset, int len,
++regcache::cooked_write_part (int regnum, LONGEST offset, LONGEST len,
+ 			     const gdb_byte *buf)
+ {
+   gdb_assert (regnum >= 0 && regnum < m_descr->nr_cooked_registers);
+diff --git a/gdb/regcache.h b/gdb/regcache.h
+--- a/gdb/regcache.h
++++ b/gdb/regcache.h
+@@ -273,8 +273,8 @@ public:
+   enum register_status raw_read (int regnum, T *val);
+ 
+   /* Partial transfer of raw registers.  Return the status of the register.  */
+-  enum register_status raw_read_part (int regnum, int offset, int len,
+-				      gdb_byte *buf);
++  enum register_status raw_read_part (int regnum, int offset,
++				      LONGEST len, gdb_byte *buf);
+ 
+   /* Make certain that the register REGNUM is up-to-date.  */
+   virtual void raw_update (int regnum) = 0;
+@@ -286,8 +286,8 @@ public:
+   enum register_status cooked_read (int regnum, T *val);
+ 
+   /* Partial transfer of a cooked register.  */
+-  enum register_status cooked_read_part (int regnum, int offset, int len,
+-					 gdb_byte *buf);
++  enum register_status cooked_read_part (int regnum, LONGEST offset,
++					 LONGEST len, gdb_byte *buf);
+ 
+   /* Read register REGNUM from the regcache and return a new value.  This
+      will call mark_value_bytes_unavailable as appropriate.  */
+@@ -297,7 +297,7 @@ protected:
+ 
+   /* Perform a partial register transfer using a read, modify, write
+      operation.  Will fail if register is currently invalid.  */
+-  enum register_status read_part (int regnum, int offset, int len,
++  enum register_status read_part (int regnum, LONGEST offset, LONGEST len,
+ 				  gdb_byte *out, bool is_raw);
+ };
+ 
+@@ -355,11 +355,12 @@ public:
+ 
+   /* Partial transfer of raw registers.  Perform read, modify, write style
+      operations.  */
+-  void raw_write_part (int regnum, int offset, int len, const gdb_byte *buf);
++  void raw_write_part (int regnum, int offset, LONGEST len,
++		       const gdb_byte *buf);
+ 
+   /* Partial transfer of a cooked register.  Perform read, modify, write style
+      operations.  */
+-  void cooked_write_part (int regnum, int offset, int len,
++  void cooked_write_part (int regnum, LONGEST offset, LONGEST len,
+ 			  const gdb_byte *buf);
+ 
+   void supply_regset (const struct regset *regset,
+@@ -410,7 +411,7 @@ private:
+ 
+   /* Perform a partial register transfer using a read, modify, write
+      operation.  */
+-  enum register_status write_part (int regnum, int offset, int len,
++  enum register_status write_part (int regnum, LONGEST offset, LONGEST len,
+ 				   const gdb_byte *in, bool is_raw);
+ 
+   /* The address space of this register cache (for registers where it
+diff --git a/gdb/remote.c b/gdb/remote.c
+--- a/gdb/remote.c
++++ b/gdb/remote.c
+@@ -458,7 +458,7 @@ public:
+ 
+   int remove_hw_breakpoint (struct gdbarch *, struct bp_target_info *) override;
+ 
+-  int region_ok_for_hw_watchpoint (CORE_ADDR, int) override;
++  int region_ok_for_hw_watchpoint (CORE_ADDR, LONGEST) override;
+ 
+   int insert_watchpoint (CORE_ADDR, int, enum target_hw_bp_type,
+ 			 struct expression *) override;
+@@ -10406,7 +10406,7 @@ int remote_hw_watchpoint_length_limit = -1;
+ int remote_hw_breakpoint_limit = -1;
+ 
+ int
+-remote_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++remote_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   if (remote_hw_watchpoint_length_limit == 0)
+     return 0;
+diff --git a/gdb/rust-lang.c b/gdb/rust-lang.c
+--- a/gdb/rust-lang.c
++++ b/gdb/rust-lang.c
+@@ -301,7 +301,7 @@ rust_printchar (int c, struct type *type, struct ui_file *stream)
+ 
+ static void
+ rust_printstr (struct ui_file *stream, struct type *type,
+-	       const gdb_byte *string, unsigned int length,
++	       const gdb_byte *string, ULONGEST length,
+ 	       const char *user_encoding, int force_ellipses,
+ 	       const struct value_print_options *options)
+ {
+@@ -517,7 +517,7 @@ static const struct generic_val_print_decorations rust_decorations =
+ /* la_val_print implementation for Rust.  */
+ 
+ static void
+-rust_val_print (struct type *type, int embedded_offset,
++rust_val_print (struct type *type, LONGEST embedded_offset,
+ 		CORE_ADDR address, struct ui_file *stream, int recurse,
+ 		struct value *val,
+ 		const struct value_print_options *options)
+diff --git a/gdb/s390-linux-nat.c b/gdb/s390-linux-nat.c
+--- a/gdb/s390-linux-nat.c
++++ b/gdb/s390-linux-nat.c
+@@ -951,7 +951,8 @@ s390_linux_nat_target::remove_hw_breakpoint (struct gdbarch *gdbarch,
+ }
+ 
+ int
+-s390_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int cnt)
++s390_linux_nat_target::region_ok_for_hw_watchpoint (CORE_ADDR addr,
++						    LONGEST cnt)
+ {
+   return 1;
+ }
+diff --git a/gdb/spu-multiarch.c b/gdb/spu-multiarch.c
+--- a/gdb/spu-multiarch.c
++++ b/gdb/spu-multiarch.c
+@@ -65,7 +65,7 @@ struct spu_multiarch_target final : public target_ops
+ 		     const gdb_byte *pattern, ULONGEST pattern_len,
+ 		     CORE_ADDR *found_addrp) override;
+ 
+-  int region_ok_for_hw_watchpoint (CORE_ADDR, int) override;
++  int region_ok_for_hw_watchpoint (CORE_ADDR, LONGEST) override;
+ 
+   struct gdbarch *thread_architecture (ptid_t) override;
+ };
+@@ -162,7 +162,7 @@ spu_multiarch_target::thread_architecture (ptid_t ptid)
+ /* Override the to_region_ok_for_hw_watchpoint routine.  */
+ 
+ int
+-spu_multiarch_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++spu_multiarch_target::region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   /* We cannot watch SPU local store.  */
+   if (SPUADDR_SPU (addr) != -1)
+diff --git a/gdb/stack.c b/gdb/stack.c
+--- a/gdb/stack.c
++++ b/gdb/stack.c
+@@ -194,7 +194,7 @@ print_stack_frame (struct frame_info *frame, int print_level,
+    argument (not just the first nameless argument).  */
+ 
+ static void
+-print_frame_nameless_args (struct frame_info *frame, long start, int num,
++print_frame_nameless_args (struct frame_info *frame, LONGEST start, int num,
+ 			   int first, struct ui_file *stream)
+ {
+   struct gdbarch *gdbarch = get_frame_arch (frame);
+@@ -544,7 +544,7 @@ print_frame_args (struct symbol *func, struct frame_info *frame,
+   /* Offset of next stack argument beyond the one we have seen that is
+      at the highest offset, or -1 if we haven't come to a stack
+      argument yet.  */
+-  long highest_offset = -1;
++  LONGEST highest_offset = -1;
+   /* Number of ints of arguments that we have printed so far.  */
+   int args_printed = 0;
+   /* True if we should print arguments, false otherwise.  */
+@@ -573,8 +573,8 @@ print_frame_args (struct symbol *func, struct frame_info *frame,
+ 	    case LOC_ARG:
+ 	    case LOC_REF_ARG:
+ 	      {
+-		long current_offset = SYMBOL_VALUE (sym);
+-		int arg_size = TYPE_LENGTH (SYMBOL_TYPE (sym));
++		LONGEST current_offset = SYMBOL_VALUE (sym);
++		LONGEST arg_size = TYPE_LENGTH (SYMBOL_TYPE (sym));
+ 
+ 		/* Compute address of next argument by adding the size of
+ 		   this argument and rounding to an int boundary.  */
+@@ -709,7 +709,7 @@ print_frame_args (struct symbol *func, struct frame_info *frame,
+      enough about the stack to find them.  */
+   if (num != -1)
+     {
+-      long start;
++      LONGEST start;
+ 
+       if (highest_offset == -1)
+ 	start = gdbarch_frame_args_skip (get_frame_arch (frame));
+diff --git a/gdb/symmisc.c b/gdb/symmisc.c
+--- a/gdb/symmisc.c
++++ b/gdb/symmisc.c
+@@ -587,11 +587,11 @@ print_symbol (struct gdbarch *gdbarch, struct symbol *symbol,
+ 
+ 	case LOC_CONST_BYTES:
+ 	  {
+-	    unsigned i;
++	    ULONGEST i;
+ 	    struct type *type = check_typedef (SYMBOL_TYPE (symbol));
+ 
+-	    fprintf_filtered (outfile, "const %u hex bytes:",
+-			      TYPE_LENGTH (type));
++	    fprintf_filtered (outfile, "const %s hex bytes:",
++			      pulongest (TYPE_LENGTH (type)));
+ 	    for (i = 0; i < TYPE_LENGTH (type); i++)
+ 	      fprintf_filtered (outfile, " %02x",
+ 				(unsigned) SYMBOL_VALUE_BYTES (symbol)[i]);
+diff --git a/gdb/target-delegates.c b/gdb/target-delegates.c
+--- a/gdb/target-delegates.c
++++ b/gdb/target-delegates.c
+@@ -38,7 +38,7 @@ struct dummy_target : public target_ops
+   bool have_steppable_watchpoint () override;
+   bool stopped_data_address (CORE_ADDR *arg0) override;
+   bool watchpoint_addr_within_range (CORE_ADDR arg0, CORE_ADDR arg1, int arg2) override;
+-  int region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1) override;
++  int region_ok_for_hw_watchpoint (CORE_ADDR arg0, LONGEST arg1) override;
+   bool can_accel_watchpoint_condition (CORE_ADDR arg0, int arg1, int arg2, struct expression *arg3) override;
+   int masked_watch_num_registers (CORE_ADDR arg0, CORE_ADDR arg1) override;
+   int can_do_single_step () override;
+@@ -205,7 +205,7 @@ struct debug_target : public target_ops
+   bool have_steppable_watchpoint () override;
+   bool stopped_data_address (CORE_ADDR *arg0) override;
+   bool watchpoint_addr_within_range (CORE_ADDR arg0, CORE_ADDR arg1, int arg2) override;
+-  int region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1) override;
++  int region_ok_for_hw_watchpoint (CORE_ADDR arg0, LONGEST arg1) override;
+   bool can_accel_watchpoint_condition (CORE_ADDR arg0, int arg1, int arg2, struct expression *arg3) override;
+   int masked_watch_num_registers (CORE_ADDR arg0, CORE_ADDR arg1) override;
+   int can_do_single_step () override;
+@@ -1071,19 +1071,19 @@ debug_target::watchpoint_addr_within_range (CORE_ADDR arg0, CORE_ADDR arg1, int
+ }
+ 
+ int
+-target_ops::region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1)
++target_ops::region_ok_for_hw_watchpoint (CORE_ADDR arg0, LONGEST arg1)
+ {
+   return this->beneath ()->region_ok_for_hw_watchpoint (arg0, arg1);
+ }
+ 
+ int
+-dummy_target::region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1)
++dummy_target::region_ok_for_hw_watchpoint (CORE_ADDR arg0, LONGEST arg1)
+ {
+   return default_region_ok_for_hw_watchpoint (this, arg0, arg1);
+ }
+ 
+ int
+-debug_target::region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1)
++debug_target::region_ok_for_hw_watchpoint (CORE_ADDR arg0, LONGEST arg1)
+ {
+   int result;
+   fprintf_unfiltered (gdb_stdlog, "-> %s->region_ok_for_hw_watchpoint (...)\n", this->beneath ()->shortname ());
+@@ -1091,7 +1091,7 @@ debug_target::region_ok_for_hw_watchpoint (CORE_ADDR arg0, int arg1)
+   fprintf_unfiltered (gdb_stdlog, "<- %s->region_ok_for_hw_watchpoint (", this->beneath ()->shortname ());
+   target_debug_print_CORE_ADDR (arg0);
+   fputs_unfiltered (", ", gdb_stdlog);
+-  target_debug_print_int (arg1);
++  target_debug_print_LONGEST (arg1);
+   fputs_unfiltered (") = ", gdb_stdlog);
+   target_debug_print_int (result);
+   fputs_unfiltered ("\n", gdb_stdlog);
+diff --git a/gdb/target.c b/gdb/target.c
+--- a/gdb/target.c
++++ b/gdb/target.c
+@@ -58,7 +58,7 @@ static int default_watchpoint_addr_within_range (struct target_ops *,
+ 						 CORE_ADDR, CORE_ADDR, int);
+ 
+ static int default_region_ok_for_hw_watchpoint (struct target_ops *,
+-						CORE_ADDR, int);
++						CORE_ADDR, LONGEST);
+ 
+ static void default_rcmd (struct target_ops *, const char *, struct ui_file *);
+ 
+@@ -3103,7 +3103,7 @@ target_fileio_read_stralloc (struct inferior *inf, const char *filename)
+ 
+ static int
+ default_region_ok_for_hw_watchpoint (struct target_ops *self,
+-				     CORE_ADDR addr, int len)
++				     CORE_ADDR addr, LONGEST len)
+ {
+   return (len <= gdbarch_ptr_bit (target_gdbarch ()) / TARGET_CHAR_BIT);
+ }
+diff --git a/gdb/target.h b/gdb/target.h
+--- a/gdb/target.h
++++ b/gdb/target.h
+@@ -566,7 +566,7 @@ struct target_ops
+ 
+     /* Documentation of this routine is provided with the corresponding
+        target_* macro.  */
+-    virtual int region_ok_for_hw_watchpoint (CORE_ADDR, int)
++    virtual int region_ok_for_hw_watchpoint (CORE_ADDR, LONGEST)
+       TARGET_DEFAULT_FUNC (default_region_ok_for_hw_watchpoint);
+ 
+     virtual bool can_accel_watchpoint_condition (CORE_ADDR, int, int,
+diff --git a/gdb/tracepoint.c b/gdb/tracepoint.c
+--- a/gdb/tracepoint.c
++++ b/gdb/tracepoint.c
+@@ -893,10 +893,10 @@ collection_list::add_local_register (struct gdbarch *gdbarch,
+ void
+ collection_list::add_memrange (struct gdbarch *gdbarch,
+ 			       int type, bfd_signed_vma base,
+-			       unsigned long len, CORE_ADDR scope)
++			       ULONGEST len, CORE_ADDR scope)
+ {
+   if (info_verbose)
+-    printf_filtered ("(%d,%s,%ld)\n", type, paddress (gdbarch, base), len);
++    printf_filtered ("(%d,%s,%s)\n", type, paddress (gdbarch, base), pulongest (len));
+ 
+   /* type: memrange_absolute == memory, other n == basereg */
+   /* base: addr if memory, offset if reg relative.  */
+@@ -916,7 +916,7 @@ collection_list::collect_symbol (struct symbol *sym,
+ 				 CORE_ADDR scope,
+ 				 int trace_string)
+ {
+-  unsigned long len;
++  ULONGEST len;
+   unsigned int reg;
+   bfd_signed_vma offset;
+   int treat_as_expr = 0;
+@@ -937,8 +937,8 @@ collection_list::collect_symbol (struct symbol *sym,
+       offset = SYMBOL_VALUE_ADDRESS (sym);
+       if (info_verbose)
+ 	{
+-	  printf_filtered ("LOC_STATIC %s: collect %ld bytes at %s.\n",
+-			   SYMBOL_PRINT_NAME (sym), len,
++	  printf_filtered ("LOC_STATIC %s: collect %s bytes at %s.\n",
++			   SYMBOL_PRINT_NAME (sym), pulongest (len),
+ 			   paddress (gdbarch, offset));
+ 	}
+       /* A struct may be a C++ class with static fields, go to general
+@@ -970,9 +970,9 @@ collection_list::collect_symbol (struct symbol *sym,
+       offset = frame_offset + SYMBOL_VALUE (sym);
+       if (info_verbose)
+ 	{
+-	  printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset %s"
++	  printf_filtered ("LOC_LOCAL %s: Collect %s bytes at offset %s"
+ 			   " from frame ptr reg %d\n",
+-			   SYMBOL_PRINT_NAME (sym), len,
++			   SYMBOL_PRINT_NAME (sym), pulongest (len),
+ 			   paddress (gdbarch, offset), reg);
+ 	}
+       add_memrange (gdbarch, reg, offset, len, scope);
+@@ -982,9 +982,9 @@ collection_list::collect_symbol (struct symbol *sym,
+       offset = 0;
+       if (info_verbose)
+ 	{
+-	  printf_filtered ("LOC_REGPARM_ADDR %s: Collect %ld bytes at offset %s"
++	  printf_filtered ("LOC_REGPARM_ADDR %s: Collect %s bytes at offset %s"
+ 			   " from reg %d\n",
+-			   SYMBOL_PRINT_NAME (sym), len,
++			   SYMBOL_PRINT_NAME (sym), pulongest (len),
+ 			   paddress (gdbarch, offset), reg);
+ 	}
+       add_memrange (gdbarch, reg, offset, len, scope);
+@@ -994,9 +994,9 @@ collection_list::collect_symbol (struct symbol *sym,
+       offset = frame_offset + SYMBOL_VALUE (sym);
+       if (info_verbose)
+ 	{
+-	  printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset %s"
++	  printf_filtered ("LOC_LOCAL %s: Collect %s bytes at offset %s"
+ 			   " from frame ptr reg %d\n",
+-			   SYMBOL_PRINT_NAME (sym), len,
++			   SYMBOL_PRINT_NAME (sym), pulongest (len),
+ 			   paddress (gdbarch, offset), reg);
+ 	}
+       add_memrange (gdbarch, reg, offset, len, scope);
+@@ -2492,7 +2492,8 @@ info_scope_command (const char *args_in, int from_tty)
+   const char *symname;
+   const char *save_args = args_in;
+   struct block_iterator iter;
+-  int j, count = 0;
++  int count = 0;
++  LONGEST j;
+   struct gdbarch *gdbarch;
+   int regno;
+   const char *args = args_in;
+@@ -2636,8 +2637,11 @@ info_scope_command (const char *args_in, int from_tty)
+ 		}
+ 	    }
+ 	  if (SYMBOL_TYPE (sym))
+-	    printf_filtered (", length %d.\n",
+-			     TYPE_LENGTH (check_typedef (SYMBOL_TYPE (sym))));
++	    {
++	      ULONGEST len = TYPE_LENGTH (check_typedef (SYMBOL_TYPE (sym)));
++
++	      printf_filtered (", length %s.\n", pulongest (len));
++	    }
+ 	}
+       if (BLOCK_FUNCTION (block))
+ 	break;
+diff --git a/gdb/tracepoint.h b/gdb/tracepoint.h
+--- a/gdb/tracepoint.h
++++ b/gdb/tracepoint.h
+@@ -269,7 +269,7 @@ public:
+ 			   CORE_ADDR scope);
+   void add_memrange (struct gdbarch *gdbarch,
+ 		     int type, bfd_signed_vma base,
+-		     unsigned long len, CORE_ADDR scope);
++		     ULONGEST len, CORE_ADDR scope);
+   void collect_symbol (struct symbol *sym,
+ 		       struct gdbarch *gdbarch,
+ 		       long frame_regno, long frame_offset,
+diff --git a/gdb/typeprint.c b/gdb/typeprint.c
+--- a/gdb/typeprint.c
++++ b/gdb/typeprint.c
+@@ -120,7 +120,8 @@ print_offset_data::update (struct type *type, unsigned int field_idx,
+     {
+       /* Since union fields don't have the concept of offsets, we just
+ 	 print their sizes.  */
+-      fprintf_filtered (stream, "/*              %4u */", TYPE_LENGTH (ftype));
++      fprintf_filtered (stream, "/*              %4s */",
++			pulongest (TYPE_LENGTH (ftype)));
+       return;
+     }
+ 
+@@ -183,8 +184,8 @@ print_offset_data::finish (struct type *type, int level,
+ 
+   fputs_filtered ("\n", stream);
+   print_spaces_filtered (level + 4 + print_offset_data::indentation, stream);
+-  fprintf_filtered (stream, "/* total size (bytes): %4u */\n",
+-		    TYPE_LENGTH (type));
++  fprintf_filtered (stream, "/* total size (bytes): %4s */\n",
++		    pulongest (TYPE_LENGTH (type)));
+ }
+ 
+ 
+diff --git a/gdb/valarith.c b/gdb/valarith.c
+--- a/gdb/valarith.c
++++ b/gdb/valarith.c
+@@ -182,7 +182,7 @@ value_subscript (struct value *array, LONGEST index)
+    to doubles, but no longer does.  */
+ 
+ struct value *
+-value_subscripted_rvalue (struct value *array, LONGEST index, int lowerbound)
++value_subscripted_rvalue (struct value *array, LONGEST index, LONGEST lowerbound)
+ {
+   struct type *array_type = check_typedef (value_type (array));
+   struct type *elt_type = check_typedef (TYPE_TARGET_TYPE (array_type));
+@@ -656,7 +656,7 @@ value_concat (struct value *arg1, struct value *arg2)
+   struct value *inval1;
+   struct value *inval2;
+   struct value *outval = NULL;
+-  int inval1len, inval2len;
++  ssize_t inval1len, inval2len;
+   int count, idx;
+   char inchar;
+   struct type *type1 = check_typedef (value_type (arg1));
+@@ -1416,7 +1416,7 @@ value_binop (struct value *arg1, struct value *arg2, enum exp_opcode op)
+ int
+ value_logical_not (struct value *arg1)
+ {
+-  int len;
++  LONGEST len;
+   const gdb_byte *p;
+   struct type *type1;
+ 
+@@ -1444,11 +1444,11 @@ value_logical_not (struct value *arg1)
+ static int
+ value_strcmp (struct value *arg1, struct value *arg2)
+ {
+-  int len1 = TYPE_LENGTH (value_type (arg1));
+-  int len2 = TYPE_LENGTH (value_type (arg2));
++  LONGEST len1 = TYPE_LENGTH (value_type (arg1));
++  LONGEST len2 = TYPE_LENGTH (value_type (arg2));
+   const gdb_byte *s1 = value_contents (arg1);
+   const gdb_byte *s2 = value_contents (arg2);
+-  int i, len = len1 < len2 ? len1 : len2;
++  LONGEST i, len = len1 < len2 ? len1 : len2;
+ 
+   for (i = 0; i < len; i++)
+     {
+diff --git a/gdb/valops.c b/gdb/valops.c
+--- a/gdb/valops.c
++++ b/gdb/valops.c
+@@ -81,7 +81,7 @@ static enum oload_classification classify_oload_match
+   (const badness_vector &, int, int);
+ 
+ static struct value *value_struct_elt_for_reference (struct type *,
+-						     int, struct type *,
++						     LONGEST, struct type *,
+ 						     const char *,
+ 						     struct type *,
+ 						     int, enum noside);
+@@ -171,7 +171,7 @@ find_function_in_inferior (const char *name, struct objfile **objf_p)
+    space.  */
+ 
+ struct value *
+-value_allocate_space_in_inferior (int len)
++value_allocate_space_in_inferior (LONGEST len)
+ {
+   struct objfile *objf;
+   struct value *val = find_function_in_inferior ("malloc", &objf);
+@@ -386,12 +386,12 @@ value_cast (struct type *type, struct value *arg2)
+   if (code1 == TYPE_CODE_ARRAY)
+     {
+       struct type *element_type = TYPE_TARGET_TYPE (type);
+-      unsigned element_length = TYPE_LENGTH (check_typedef (element_type));
++      ULONGEST element_length = TYPE_LENGTH (check_typedef (element_type));
+ 
+       if (element_length > 0 && TYPE_ARRAY_UPPER_BOUND_IS_UNDEFINED (type))
+ 	{
+ 	  struct type *range_type = TYPE_INDEX_TYPE (type);
+-	  int val_length = TYPE_LENGTH (type2);
++	  LONGEST val_length = TYPE_LENGTH (type2);
+ 	  LONGEST low_bound, high_bound, new_length;
+ 
+ 	  if (get_discrete_bounds (range_type, &low_bound, &high_bound) < 0)
+@@ -1043,7 +1043,7 @@ value_assign (struct value *toval, struct value *fromval)
+       {
+ 	const gdb_byte *dest_buffer;
+ 	CORE_ADDR changed_addr;
+-	int changed_len;
++	LONGEST changed_len;
+         gdb_byte buffer[sizeof (LONGEST)];
+ 
+ 	if (value_bitsize (toval))
+@@ -3335,7 +3335,7 @@ get_baseclass_offset (struct type *vt, struct type *cls,
+    the form "DOMAIN::NAME".  */
+ 
+ static struct value *
+-value_struct_elt_for_reference (struct type *domain, int offset,
++value_struct_elt_for_reference (struct type *domain, LONGEST offset,
+ 				struct type *curtype, const char *name,
+ 				struct type *intype, 
+ 				int want_address,
+@@ -3369,7 +3369,7 @@ value_struct_elt_for_reference (struct type *domain, int offset,
+ 	  if (want_address)
+ 	    return value_from_longest
+ 	      (lookup_memberptr_type (TYPE_FIELD_TYPE (t, i), domain),
+-	       offset + (LONGEST) (TYPE_FIELD_BITPOS (t, i) >> 3));
++	       offset + (TYPE_FIELD_BITPOS (t, i) >> 3));
+ 	  else if (noside != EVAL_NORMAL)
+ 	    return allocate_value (TYPE_FIELD_TYPE (t, i));
+ 	  else
+@@ -3548,7 +3548,7 @@ value_struct_elt_for_reference (struct type *domain, int offset,
+   for (i = TYPE_N_BASECLASSES (t) - 1; i >= 0; i--)
+     {
+       struct value *v;
+-      int base_offset;
++      LONGEST base_offset;
+ 
+       if (BASETYPE_VIA_VIRTUAL (t, i))
+ 	base_offset = 0;
+@@ -3697,7 +3697,7 @@ value_rtti_indirect_type (struct value *v, int *full,
+ struct value *
+ value_full_object (struct value *argp, 
+ 		   struct type *rtype, 
+-		   int xfull, int xtop,
++		   int xfull, LONGEST xtop,
+ 		   int xusing_enc)
+ {
+   struct type *real_type;
+diff --git a/gdb/valprint.c b/gdb/valprint.c
+--- a/gdb/valprint.c
++++ b/gdb/valprint.c
+@@ -879,7 +879,7 @@ generic_val_print_complex (struct type *type,
+ 
+ void
+ generic_val_print (struct type *type,
+-		   int embedded_offset, CORE_ADDR address,
++		   LONGEST embedded_offset, CORE_ADDR address,
+ 		   struct ui_file *stream, int recurse,
+ 		   struct value *original_value,
+ 		   const struct value_print_options *options,
+@@ -1774,7 +1774,7 @@ print_decimal_chars (struct ui_file *stream, const gdb_byte *valaddr,
+ 
+ void
+ print_hex_chars (struct ui_file *stream, const gdb_byte *valaddr,
+-		 unsigned len, enum bfd_endian byte_order,
++		 ULONGEST len, enum bfd_endian byte_order,
+ 		 bool zero_pad)
+ {
+   const gdb_byte *p;
+@@ -1927,17 +1927,17 @@ val_print_array_elements (struct type *type,
+ 			  int recurse,
+ 			  struct value *val,
+ 			  const struct value_print_options *options,
+-			  unsigned int i)
++			  ULONGEST i)
+ {
+   unsigned int things_printed = 0;
+-  unsigned len;
++  ULONGEST len;
+   struct type *elttype, *index_type, *base_index_type;
+-  unsigned eltlen;
++  ULONGEST eltlen;
+   /* Position of the array element we are examining to see
+      whether it is repeated.  */
+-  unsigned int rep1;
++  ULONGEST rep1;
+   /* Number of repetitions we have detected so far.  */
+-  unsigned int reps;
++  ULONGEST reps;
+   LONGEST low_bound, high_bound;
+   LONGEST low_pos, high_pos;
+ 
+@@ -2027,7 +2027,7 @@ val_print_array_elements (struct type *type,
+ 		     address, stream, recurse + 1, val, options,
+ 		     current_language);
+ 	  annotate_elt_rep (reps);
+-	  fprintf_filtered (stream, " <repeats %u times>", reps);
++	  fprintf_filtered (stream, " <repeats %s times>", pulongest (reps));
+ 	  annotate_elt_rep_end ();
+ 
+ 	  i = rep1 - 1;
+@@ -2669,7 +2669,7 @@ print_converted_chars_to_obstack (struct obstack *obstack,
+ 
+ void
+ generic_printstr (struct ui_file *stream, struct type *type, 
+-		  const gdb_byte *string, unsigned int length, 
++		  const gdb_byte *string, ULONGEST length,
+ 		  const char *encoding, int force_ellipses,
+ 		  int quote_char, int c_style_terminator,
+ 		  const struct value_print_options *options)
+diff --git a/gdb/valprint.h b/gdb/valprint.h
+--- a/gdb/valprint.h
++++ b/gdb/valprint.h
+@@ -119,7 +119,7 @@ extern void val_print_array_elements (struct type *, LONGEST,
+ 				      CORE_ADDR, struct ui_file *, int,
+ 				      struct value *,
+ 				      const struct value_print_options *,
+-				      unsigned int);
++				      ULONGEST);
+ 
+ extern void val_print_scalar_formatted (struct type *,
+ 					LONGEST,
+@@ -138,7 +138,7 @@ extern void print_decimal_chars (struct ui_file *, const gdb_byte *,
+ 				 unsigned int, bool, enum bfd_endian);
+ 
+ extern void print_hex_chars (struct ui_file *, const gdb_byte *,
+-			     unsigned int, enum bfd_endian, bool);
++			     ULONGEST, enum bfd_endian, bool);
+ 
+ extern void print_char_chars (struct ui_file *, struct type *,
+ 			      const gdb_byte *, unsigned int, enum bfd_endian);
+@@ -192,7 +192,7 @@ struct generic_val_print_decorations
+ 
+ 
+ extern void generic_val_print (struct type *type,
+-			       int embedded_offset, CORE_ADDR address,
++			       LONGEST embedded_offset, CORE_ADDR address,
+ 			       struct ui_file *stream, int recurse,
+ 			       struct value *original_value,
+ 			       const struct value_print_options *options,
+@@ -202,7 +202,7 @@ extern void generic_emit_char (int c, struct type *type, struct ui_file *stream,
+ 			       int quoter, const char *encoding);
+ 
+ extern void generic_printstr (struct ui_file *stream, struct type *type, 
+-			      const gdb_byte *string, unsigned int length, 
++			      const gdb_byte *string, ULONGEST length,
+ 			      const char *encoding, int force_ellipses,
+ 			      int quote_char, int c_style_terminator,
+ 			      const struct value_print_options *options);
+diff --git a/gdb/value.c b/gdb/value.c
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -383,7 +383,8 @@ value_bytes_available (const struct value *value,
+ }
+ 
+ int
+-value_bits_any_optimized_out (const struct value *value, int bit_offset, int bit_length)
++value_bits_any_optimized_out (const struct value *value, LONGEST bit_offset,
++			      LONGEST bit_length)
+ {
+   gdb_assert (!value->lazy);
+ 
+@@ -831,8 +832,8 @@ find_first_range_overlap_and_match (struct ranges_and_idx *rp1,
+    Return true if the available bits match.  */
+ 
+ static bool
+-value_contents_bits_eq (const struct value *val1, int offset1,
+-			const struct value *val2, int offset2,
++value_contents_bits_eq (const struct value *val1, LONGEST offset1,
++			const struct value *val2, LONGEST offset2,
+ 			int length)
+ {
+   /* Each array element corresponds to a ranges source (unavailable,
+@@ -1423,7 +1424,8 @@ value_optimized_out (struct value *value)
+    the following LENGTH bytes.  */
+ 
+ void
+-mark_value_bytes_optimized_out (struct value *value, int offset, int length)
++mark_value_bytes_optimized_out (struct value *value, LONGEST offset,
++				LONGEST length)
+ {
+   mark_value_bits_optimized_out (value,
+ 				 offset * TARGET_CHAR_BIT,
+diff --git a/gdb/value.h b/gdb/value.h
+--- a/gdb/value.h
++++ b/gdb/value.h
+@@ -274,7 +274,7 @@ struct lval_funcs
+   /* If non-NULL, this is used to determine whether the indicated bits
+      of VALUE are a synthetic pointer.  */
+   int (*check_synthetic_pointer) (const struct value *value,
+-				  LONGEST offset, int length);
++				  LONGEST offset, LONGEST length);
+ 
+   /* Return a duplicate of VALUE's closure, for use in a new value.
+      This may simply return the same closure, if VALUE's is
+@@ -405,7 +405,8 @@ extern int value_optimized_out (struct value *value);
+    otherwise.  */
+ 
+ extern int value_bits_any_optimized_out (const struct value *value,
+-					 int bit_offset, int bit_length);
++					 LONGEST bit_offset,
++					 LONGEST bit_length);
+ 
+ /* Like value_optimized_out, but return true iff the whole value is
+    optimized out.  */
+@@ -415,7 +416,7 @@ extern int value_entirely_optimized_out (struct value *value);
+    LENGTH bytes as optimized out.  */
+ 
+ extern void mark_value_bytes_optimized_out (struct value *value,
+-					    int offset, int length);
++					    LONGEST offset, LONGEST length);
+ 
+ /* Mark VALUE's content bits starting at OFFSET and extending for
+    LENGTH bits as optimized out.  */
+@@ -849,12 +850,11 @@ extern struct value *value_primitive_field (struct value *arg1, LONGEST offset,
+ 					    int fieldno,
+ 					    struct type *arg_type);
+ 
+-
+ extern struct type *value_rtti_indirect_type (struct value *, int *, LONGEST *,
+ 					      int *);
+ 
+ extern struct value *value_full_object (struct value *, struct type *, int,
+-					int, int);
++					LONGEST, int);
+ 
+ extern struct value *value_cast_pointers (struct type *, struct value *, int);
+ 
+@@ -1147,10 +1147,11 @@ extern struct value *value_literal_complex (struct value *, struct value *,
+ extern struct value *find_function_in_inferior (const char *,
+ 						struct objfile **);
+ 
+-extern struct value *value_allocate_space_in_inferior (int);
++extern struct value *value_allocate_space_in_inferior (LONGEST);
+ 
+ extern struct value *value_subscripted_rvalue (struct value *array,
+-					       LONGEST index, int lowerbound);
++					       LONGEST index,
++					       LONGEST lowerbound);
+ 
+ /* User function handler.  */
+ 
+diff --git a/gdb/x86-nat.c b/gdb/x86-nat.c
+--- a/gdb/x86-nat.c
++++ b/gdb/x86-nat.c
+@@ -173,7 +173,7 @@ x86_remove_watchpoint (CORE_ADDR addr, int len,
+    address ADDR and whose length is LEN bytes.  */
+ 
+ int
+-x86_region_ok_for_hw_watchpoint (CORE_ADDR addr, int len)
++x86_region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len)
+ {
+   struct x86_debug_reg_state *state
+     = x86_debug_reg_state (inferior_ptid.pid ());
+diff --git a/gdb/x86-nat.h b/gdb/x86-nat.h
+--- a/gdb/x86-nat.h
++++ b/gdb/x86-nat.h
+@@ -49,7 +49,7 @@ extern void x86_forget_process (pid_t pid);
+    definitions.  */
+ 
+ extern int x86_can_use_hw_breakpoint (enum bptype type, int cnt, int othertype);
+-extern int x86_region_ok_for_hw_watchpoint (CORE_ADDR addr, int len);
++extern int x86_region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len);
+ extern int x86_stopped_by_watchpoint ();
+ extern int x86_stopped_data_address (CORE_ADDR *addr_p);
+ extern int x86_insert_watchpoint (CORE_ADDR addr, int len,
+@@ -75,7 +75,7 @@ struct x86_nat_target : public BaseTarget
+   int can_use_hw_breakpoint (enum bptype type, int cnt, int othertype) override
+   { return x86_can_use_hw_breakpoint (type, cnt, othertype); }
+ 
+-  int region_ok_for_hw_watchpoint (CORE_ADDR addr, int len) override
++  int region_ok_for_hw_watchpoint (CORE_ADDR addr, LONGEST len) override
+   { return x86_region_ok_for_hw_watchpoint (addr, len); }
+ 
+   int insert_watchpoint (CORE_ADDR addr, int len,

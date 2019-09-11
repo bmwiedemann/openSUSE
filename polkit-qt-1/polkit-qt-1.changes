@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Fri Jun 19 11:30:33 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to version 0.112.0
+  * Qt5 support
+  * Update deprecated methods to latest Polkit API
+
+- Qt4 and Qt5 versions are now aligned.
+  
+- Drop patches merged upstream: 
+   * fixed-reference-counting-of-GObjects.patch,
+   * fixed-GCancellable-handling-in-PolkitQtListener.patch
+   
+- Added do-not-use-global-static-systembus-instance.patch from
+  upstream, fixes crash on DBus disconnect   
+
+-------------------------------------------------------------------
+Tue Jul 16 14:59:33 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 0.103.0
+  * Bugfix release, contains previously included patches
+- Droped ck-avoid-crash.diff and d3c337da.patch, included in this
+  release
+- Added fixed-GCancellable-handling-in-PolkitQtListener.patch and
+  fixed-reference-counting-of-GObjects.patch from upstream
+  (kde#257802, kde#286935, kde#291977, kde#307323, kde#270489)
+
+-------------------------------------------------------------------
+Mon Dec 12 08:37:06 UTC 2011 - idonmez@suse.com
+
+- Add git commit d3c337da to fix kde#258916 
+
+-------------------------------------------------------------------
+Thu Aug 11 09:30:19 UTC 2011 - toddrme2178@gmail.com
+ 
+- Removed self-obsoletes (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Tue Jun 28 13:33:33 UTC 2011 - lnussel@suse.de
+
+- devel package must depend on polkit-devel nowadays
+
+-------------------------------------------------------------------
+Fri Jun 10 10:27:08 CEST 2011 - dmueller@suse.de
+
+- fix crash when ConsoleKit is unavailable
+
+-------------------------------------------------------------------
+Tue Apr 19 00:01:34 CEST 2011 - ro@suse.de
+
+- fix baselibs.conf 
+
+-------------------------------------------------------------------
+Sat Dec 18 22:29:56 UTC 2010 - tittiatcoke@gmail.com
+
+- Change the specfile to build according openSUSE standards
+
+-------------------------------------------------------------------
+Fri Dec  17 09:12:00 UTC 2010 - tittiatcoke@gmail.com
+
+- Enable build for 11.2 and 11.3 in compatibility mode. 0.99.1 has 
+  became a requirement for KDE 4.6
+
+-------------------------------------------------------------------
+Thu Dec  9 09:18:00 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.99.1
+  - Introduction of a compatibility mode for older PolicyKit version
+
+-------------------------------------------------------------------
+Tue Oct 26 16:54:19 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.98.1
+
+-------------------------------------------------------------------
+Sat Jul 17 11:02:53 CEST 2010 - dmueller@suse.de
+
+- fix pedantic warnings
+
+-------------------------------------------------------------------
+Wed Jul 14 19:17:07 CEST 2010 - dmueller@suse.de
+
+- update to polkit-qt-1 0.96.1:
+  * various code cleaning changes (foreach->Q_FOREACH)
+  * merged upstreamed patch
+
+-------------------------------------------------------------------
+Thu Jul  8 09:51:50 CEST 2010 - dmueller@suse.de
+
+- update buildrequires
+
+-------------------------------------------------------------------
+Wed Feb 24 15:10:15 UTC 2010 - llunak@novell.com
+
+- fix build error due to missing return statement
+
+-------------------------------------------------------------------
+Sat Jan  9 10:24:57 CET 2010 - dmueller@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jan  2 14:18:57 CET 2010 - dmueller@suse.de
+
+- add missing provides/obsoletes due to the package rename
+
+-------------------------------------------------------------------
+Wed Dec 23 09:19:02 UTC 2009 - wstephenson@novell.com
+
+- package rename polkit-qt to polkit-qt-1
+- update to 0.95.1:
+  * Initial port to PolicyKit-1
+
+-------------------------------------------------------------------
+Mon Sep 21 13:43:23 CEST 2009 - ro@suse.de
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Tue May 19 21:22:27 CEST 2009 - dmueller@suse.de
+
+- fix debug package requires
+
+-------------------------------------------------------------------
+Sat May 16 19:13:18 CEST 2009 - coolo@suse.de
+
+- fix requires of devel package
+
+-------------------------------------------------------------------
+Thu May 14 19:15:36 CEST 2009 - dmueller@suse.de
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Apr 30 12:12:50 CEST 2009 - Matt Williams <matt@milliams.com>
+
+- Initial build of polkit-qt
+

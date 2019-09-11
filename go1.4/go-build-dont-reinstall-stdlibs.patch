@@ -1,0 +1,35 @@
+Index: go/src/cmd/go/build.go
+===================================================================
+--- go.orig/src/cmd/go/build.go
++++ go/src/cmd/go/build.go
+@@ -118,6 +118,7 @@ func init() {
+ }
+ 
+ // Flags set by multiple commands.
++var buildS bool               // OPENSUSE -s (for packaging only)
+ var buildA bool               // -a flag
+ var buildN bool               // -n flag
+ var buildP = runtime.NumCPU() // -p flag
+@@ -170,6 +171,10 @@ func init() {
+ // install, list, run, and test commands.
+ func addBuildFlags(cmd *Command) {
+ 	// NOTE: If you add flags here, also add them to testflag.go.
++
++	// OPENSUSE
++	cmd.Flag.BoolVar(&buildS, "s", false, "")
++
+ 	cmd.Flag.BoolVar(&buildA, "a", false, "")
+ 	cmd.Flag.BoolVar(&buildN, "n", false, "")
+ 	cmd.Flag.IntVar(&buildP, "p", buildP, "")
+@@ -1070,6 +1075,11 @@ func (b *builder) getPkgConfigFlags(p *P
+ 
+ // install is the action for installing a single package or executable.
+ func (b *builder) install(a *action) (err error) {
++	// OPENSUSE
++	if buildS && (a.p.Standard || a.p.ImportPath == "cmd/cgo") {
++		return nil
++	}
++
+ 	defer func() {
+ 		if err != nil && err != errPrintedOutput {
+ 			err = fmt.Errorf("go install %s: %v", a.p.ImportPath, err)

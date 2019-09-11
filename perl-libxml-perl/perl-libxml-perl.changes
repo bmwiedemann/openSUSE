@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Feb 27 06:34:12 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:22 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:45:34 CEST 2005 - mjancar@suse.cz
+
+- update to 0.08
+
+-------------------------------------------------------------------
+Sun Jan 11 09:26:43 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 16:10:01 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 14:03:44 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 16 20:16:15 CEST 2003 - mjancar@suse.cz
+
+- run make test
+- fix filelist
+
+-------------------------------------------------------------------
+Mon May 19 11:29:04 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Thu Aug 16 12:42:40 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 0.07)
+

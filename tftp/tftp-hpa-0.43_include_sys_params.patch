@@ -1,0 +1,12 @@
+Index: tftp/main.c
+===================================================================
+--- tftp/main.c.orig
++++ tftp/main.c
+@@ -39,6 +39,7 @@
+  * TFTP User Program -- Command Interface.
+  */
+ #include <sys/file.h>
++#include <sys/param.h>
+ #include <ctype.h>
+ #ifdef WITH_READLINE
+ #include <readline/readline.h>

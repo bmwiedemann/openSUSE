@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Wed Apr 11 05:06:08 UTC 2018 - coolo@suse.com
+
+- updated to 1.09
+   see /usr/share/doc/packages/perl-Class-Adapter/Changes
+
+-------------------------------------------------------------------
+Tue Oct  3 08:11:30 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Wed Oct 26 14:20:10 UTC 2011 - tabraham@novell.com
+
+- updated to 1.08
+  - Upgrading to Module::Install 1.00
+  - Fixed #56492: [PATCH] Fix spelling error
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:53 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 11:28:19 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- remove Provides: perl-Class-Adapter-Builder
+
+-------------------------------------------------------------------
+Tue Aug 31 21:48:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- spec rewrite
+- update to 1.07:
+  * upgrading to Module::Install 0.95
+  * accidentally deleted Class::Adapter from the CPAN. erk!
+
+-------------------------------------------------------------------
+Thu Jul  2 13:25:57 CEST 2009 - meissner@novell.com
+
+- provide perl-Class-Adapter-Builder without %name, just %version
+  (should fix bnc#512895)
+
+-------------------------------------------------------------------
+Wed Dec 24 09:46:31 CET 2008 - pascal.bleser@opensuse.org
+
+- proper use of macros
+- line-wrapping for %description
+- changed license to "Perl" instead of "Artistic"
+- removed Manifest file from %doc, added LICENSE
+- changed Source: to fully-qualified URL, using pristine upstream
+  .tar.gz instead of repackaged .tar.bz2
+
+-------------------------------------------------------------------
+Sun Nov 30 08:24:46 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.05
+

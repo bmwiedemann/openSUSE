@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jun  3 13:44:20 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.7:
+  * updated vectors for the cryptography 2.7 testing
+
+-------------------------------------------------------------------
+Wed May 29 13:40:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, split out of cryptography

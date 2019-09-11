@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Mar 25 23:43:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add %systemd_ordering for %service_*.
+
+-------------------------------------------------------------------
+Sat Mar  9 09:25:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3:
+  + Replace autotools with meson.
+  + spice-webdavd: switch to GTask.
+  + chezdav: add --local & --public to specify interfaces to listen
+    on.
+  + Updated translations.
+- Switch to meson BuildSystem, add meson BuildRequires and macros.
+- Drop intltool BuildRequires, no longer needed.
+- Add pkgconfig(systemd) and pkgconfig(udev) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
+Thu May 17 11:34:22 UTC 2018 - badshah400@gmail.com
+
+- Initial package.

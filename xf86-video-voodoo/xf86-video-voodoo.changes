@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Feb  6 15:03:35 UTC 2015 - sndirsch@suse.com
+
+- U_don-t-use-PCITAG-in-struct-anymore.patch
+  * fixes build against xorg-server 1.17 
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:57 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Wed Mar 20 14:42:42 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Sun Sep  2 19:26:08 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.2.5:
+  + Fix build against older X servers.
+  + Fix build against XAA-less server.
+  + Drop useless vgaHW include.
+  + Fall back to shadowfb if XAA is unavailable.
+
+-------------------------------------------------------------------
+Fri Apr 20 07:37:57 UTC 2012 - vuntz@opensuse.org
+
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-voodoo from xorg-x11-driver-video.
+  Initial version: 1.2.4.
+

@@ -1,0 +1,3 @@
+addFilter("no-soname")
+addFilter("files-duplicate")
+addFilter("package-with-huge-docs")

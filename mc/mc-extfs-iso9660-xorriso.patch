@@ -1,0 +1,14 @@
+--- src/vfs/extfs/helpers/iso9660.in.orig	2014-04-02 21:42:18.000000000 +0200
++++ src/vfs/extfs/helpers/iso9660.in	2014-04-02 21:43:40.000000000 +0200
+@@ -46,9 +46,9 @@
+     echo "$lsl" | @GREP@ "^[-d]" | \
+     while read attr ln usr gr sz dt1 dt2 dt3 nm ; do
+         len=$((${#nm} - 1))
+-        name=$(printf -- "$nm" | cut -c2-$len)  # remove quotes
++        name=$(printf -- '%s' "$nm" | cut -c2-$len)  # remove quotes
+ 
+-        if test $(printf -- "$attr" | cut -c1-1) != "d"; then
++        if test $(printf -- '%s' "$attr" | cut -c1-1) != "d"; then
+             printf -- "%s %s %s %s %s %s %s %s %s/%s\n" "$attr" "$ln" "$usr" "$gr" "$sz" "$dt1" "$dt2" "$dt3" "$dir" "$name"
+         else
+             xorriso_list "$1" "$dir/$name"

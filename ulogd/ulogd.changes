@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Thu Mar 21 11:32:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-adjust-configure-for-postgresql-10-11.patch
+
+-------------------------------------------------------------------
+Tue May  1 12:48:48 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.0.7
+  * ulogd: Use /dev/null as dummy logfile when logging to syslog
+  * json: output messages in JSONv1 format
+  * json: append timezone information to ISO-8601 date
+  * ulogd: fix crash when ipv4 packet is truncated
+  * ulogd: fix crash when plugin version are incorrect
+  * ulogd: use a RT scheduler by default
+  * ulogd: load all plugins by default
+
+-------------------------------------------------------------------
+Sat Mar 11 16:15:30 UTC 2017 - jengelh@inai.de
+
+- Drop init.d script and insserv use.
+- Propagate useradd failure and abort install if necessary.
+
+-------------------------------------------------------------------
+Sun May 10 21:19:03 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.0.5
+* JSON output on bigendian arches was fixed
+* Support absence of ipt_ULOG.h
+- Remove 0001-include-keep-a-copy-of-linux-netfilter_ipv4-ipt_ULOG.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 10:44:52 UTC 2014 - jengelh@inai.de
+
+- Add 0001-include-keep-a-copy-of-linux-netfilter_ipv4-ipt_ULOG.patch
+  to cope with new linux-glibc-devel which lacks ipt_ULOG.h needed
+  for compilation.
+
+-------------------------------------------------------------------
+Fri Apr 18 12:37:59 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.0.4
+* ulogd 2.0.4 features a new JSON output plugin allowing easy
+  integration with log management systems.
+
+-------------------------------------------------------------------
+Sat Nov 23 04:40:13 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.0.3
+* Optional backlog system to avoid event loss in case of database
+  downtime
+* Optional running mode where acquisition is made in one thread
+  and queries to databases are made in separate threads
+
+-------------------------------------------------------------------
+Mon Mar  4 14:51:49 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.0.2
+* Add GRAPHITE output module
+* Add src, dst and protocol filters to nfct plugin
+* Fix parsing of ipv6 flowlabel and tc fields
+* Add additional ip6 header fields to database scripts
+
+-------------------------------------------------------------------
+Mon Oct  8 12:37:12 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0.1
+* This releases includes support for the nfacct extended iptables
+  accounting infrastructure.
+- Snapshot 2.0.1+git11
+* Build fixes for 2.0.1
+
+-------------------------------------------------------------------
+Tue Jun 26 22:23:03 UTC 2012 - jengelh@inai.de
+
+- Update to 2.0.0 final release
+* add documentation about SIGUSR2 handling
+* (compile fail-fixing patches were merged, no functional changes)
+
+-------------------------------------------------------------------
+Wed Jan  4 22:15:59 UTC 2012 - jengelh@medozas.de
+
+- build description update
+- git snapshot 2.0.0~beta4+git51
+* pcap: add file option to configuration file
+* ulogd: fix segfault if syslog and SIGTERM is received
+* sqlite3 backend: remove automatic creation of table "daily"
+* add nfacct and GPRINT plugins
+- add systemd service file
+
+-------------------------------------------------------------------
+Thu Dec  1 16:49:39 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Feb  1 13:27:22 UTC 2011 - jengelh@medozas.de
+
+- Add init script
+- Install config file
+
+-------------------------------------------------------------------
+Wed Sep 15 09:17:44 UTC 2010 - jengelh@medozas.de
+
+- Added /var/log/ulogd, and gave it to the newly-created user
+  "ulogd". (http://bugzilla.netfilter.org/show_bug.cgi?id=665)
+
+-------------------------------------------------------------------
+Fri Jul 16 19:12:56 UTC 2010 - jengelh@medozas.de
+
+- New upstream release 2.0.0~beta4
+  * new XML output plugin for packet and log-based logging
+  * several fixes, improvements
+
+-------------------------------------------------------------------
+Tue Feb 23 22:32:41 UTC 2010 - jengelh@medozas.de
+
+- Initial upload, version 2.0.0~beta3
+

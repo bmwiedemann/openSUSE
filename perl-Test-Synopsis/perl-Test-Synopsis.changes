@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Sat May 25 05:31:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.16  2019-05-24
+          - Fix test failures when version 0.23 of
+              Test::Spelling is in use (by ppisar, #21)
+
+-------------------------------------------------------------------
+Tue Mar  8 11:08:41 UTC 2016 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.15  2016-03-02
+          - Specify Pod::Simple version to prereq, as needed
+            feature missing from older versions (by autarch)
+
+-------------------------------------------------------------------
+Fri Feb 19 11:04:33 UTC 2016 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.14  2016-02-16
+          - Complete rewrite by dolmen
+          [BREAKING CHANGES]
+          - The undocumented PRIVATE subroutine extract_synopsis
+            has been renamed. Any code using it will break
+
+-------------------------------------------------------------------
+Wed Jan  6 10:35:44 UTC 2016 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.13  2016-01-04
+          - Fix #12 conflict with multiple chunks (by turnstep)
+
+-------------------------------------------------------------------
+Sat Jan  2 10:17:58 UTC 2016 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.12  2015-12-27
+          - Add META.json (monsieurp)
+
+-------------------------------------------------------------------
+Mon Apr 13 19:30:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.11  2014-10-04
+          [Changes by ZOFFIX]
+          - Added #10 to CAVEATS (redefined warnings)
+          - Fixed #11 (failing tests on newer perls)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:31:00 UTC 2014 - coolo@suse.com
+
+- updated to 0.10
+         [Changes by ZOFFIX]
+         - Reverted the change of renaming extract_synopsis() to
+           _extract_synopsis(), as it appears some distros have used
+           undocumented extract_synopsis() in their user tests, and
+           the change is causing their distros to fail
+         - Added contributors into META file through dzil plugin
+ 
+         - Fixed prereqs to allow earlier versions of Test-Simple (Issue #9)
+         - Removed POD errors from test .pm's to increase Kwalitee
+ 
+         - Implemented proper handling of __DATA__ tokens
+         - Removed unwanted warnings issued during tests
+         - Upped required Test-Simple distro version (Fixes Issue #9)
+         - Minor pod fixes
+ 
+         - Converted to dzil for automation of everything and
+             auto-generation of all the author/release tests and extra files
+ 
+         - Fixed RT#84863 (should ignore descriptions, and
+             other text that is not code)
+             https://rt.cpan.org/Ticket/Display.html?id=84863
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:41 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Fri Jan 21 20:33:34 UTC 2011 - coolo@novell.com
+
+- initial package 0.06
+  * created by cpanspec 1.78.03
+

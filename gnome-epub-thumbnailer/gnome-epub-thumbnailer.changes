@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Mar  1 11:54:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Run spec-cleaner, modernize spec, use autosetup macro.
+- Update URL and Source to current home.
+
+-------------------------------------------------------------------
+Wed Jan 21 19:04:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.5:
+  + Fix MOBI crasher with malformed or missing EXTH header.
+  + Fix EPub thumbnailing with cover at the root of the archive.
+
+-------------------------------------------------------------------
+Sun Mar 23 17:47:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4:
+  + Create covers for encrypted MOBI files as well.
+  + Fix crash when there's no cover in MOBI files.
+  + Fix crash when the EPub cover cannot be found.
+  + Print warnings when we cannot find the metafile, or when
+    reading empty EPub files.
+  + Fix crash handling files in trash or recent locations.
+
+-------------------------------------------------------------------
+Fri Aug  9 07:48:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.3:
+  + Fix a number of possible crashers in the MOBI thumbnailer.
+- Changes from version 1.2:
+  + Added MOBI thumbnailer.
+
+-------------------------------------------------------------------
+Thu Jul 18 15:29:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.1:
+  + Fix possible crashes or excessive warnings on failure.
+
+-------------------------------------------------------------------
+Sat Jul 13 17:20:07 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 1.0.
+

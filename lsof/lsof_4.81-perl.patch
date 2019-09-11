@@ -1,0 +1,8 @@
+--- scripts/list_fields.perl.orig	2011-06-09 13:19:05.000000000 +0200
++++ scripts/list_fields.perl	2011-06-09 13:19:17.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl4
++#!/usr/bin/perl
+ #
+ # $Id: list_fields.perl,v 1.5 2000/07/14 17:03:37 abe Exp $
+ #

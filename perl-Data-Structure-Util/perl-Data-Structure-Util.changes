@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Apr 16 21:03:41 UTC 2015 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Data-Structure-Util/CHANGES
+
+  0.16 2015-03-08
+      - Removed assertion that signature(undef) ne signature(undef) - no
+        longer valid for Perl 5.20 (ANDYA)
+      - Fix GCC warnings (AMBS)
+      - Fix Clang warnings (ANDYA)
+
+-------------------------------------------------------------------
+Thu Apr 21 04:54:27 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.15
+    * created by cpanspec 1.78.04
+

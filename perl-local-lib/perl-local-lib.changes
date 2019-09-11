@@ -1,0 +1,278 @@
+-------------------------------------------------------------------
+Fri Jun  9 06:42:51 UTC 2017 - coolo@suse.com
+
+- updated to 2.000023
+   see /usr/share/doc/packages/perl-local-lib/Changes
+
+  2.000023 - 2017-06-07
+   - fix use of 'note' in test for compatibilty with old Test::More
+  
+  2.000022 - 2017-06-07
+   - releasing as stable
+  
+  2.000_021 - 2017-04-23
+   - account for an empty SHELL variable when detecting shell
+   - author test cleanups
+   - bootstrapping option --no-manpages now affects bootstrapping process, not
+     just later module installs
+   - cope with home directories with spaces when bootstrapping with old CPAN.pm
+  
+  2.000_020 - 2016-10-18
+   - fix handling of inc_version_list
+   - don't load strict or warnings outside author mode
+   - load and use Cwd when we're printing and exiting
+   - use loaded Cwd/Win32::Cwd if it's available
+   - handle relative paths in current executable
+   - don't try to run current executable in embedded perl
+   - handle relative directories better
+   - fix shell test for powershell 1 and group policy restricted environments
+   - avoid user init files in shell test
+   - use safer format to check environment in shell test
+   - many test cleanups
+
+-------------------------------------------------------------------
+Fri May 20 05:12:37 UTC 2016 - coolo@suse.com
+
+- update to 2.00019
+ - fix bootstrapping into directory with spaces (PR#4)
+ - fix variable interpolation to work when used with sh -u (RT#112711)
+ - author test enhancements
+
+-------------------------------------------------------------------
+Sun Nov 22 06:43:18 UTC 2015 - coolo@suse.com
+
+- update to 2.00018
+  2.000018 - 2015-10-29
+   - repair CPAN.pm bootstrapping broken by extraneous prerequisite.
+   - ensure directories are created in correct order to avoid errors
+  
+  2.000017 - 2015-10-06
+   - fix shell quoting for fish shell
+   - work around issue where some cpanm versions wouldn't upgrade
+     ExtUtils::MakeMaker in some cases it should have
+   - added --quiet option to surpress directory creation message
+   - build_environment_vars_for, build_activate_environment_vars_for, and
+     environment_vars_string_for options will always include directories being
+     added, even if they were already in current ENV vars
+   - fixes for author tests
+   - create directory structure under created local::libs, ensuring arch dirs
+     will always be added to @INC by perl
+   - only cause CPAN.pm to prefer ExtUtils::MakeMaker over Module::Build during
+     bootstrap process, not after
+   - bootstrap process refactored
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:45 UTC 2015 - coolo@suse.com
+
+- updated to 2.000015
+  - Avoid using += in Makefile when bootstrapping for portability (RT#100797)
+  - adjust quoting of paths with spaces to work with ExtUtils::MakeMaker 7.0,
+    and bump our EUMM prereq to 7.0.
+  - fix shell test for shells where we can't prevent some rc files from being
+    loaded, like zsh (RT#99819).
+
+-------------------------------------------------------------------
+Mon Sep 15 15:44:36 UTC 2014 - coolo@suse.com
+
+- updated to 2.000014
+  - fix taint-mode test in some cases on case insensitive filesystems
+ 
+ 2.000013 - 2014-08-16
+  - fix test failure in ActiveState perl
+  - better test diagnostics
+  - fix quoting of spaces for fish shell (rt#95268)
+  - improve quoting for use with cmd.exe
+  - fix quoting any arbitrary character when contructing strings for bash
+  - skip testing use with shells if the shell doesn't work at all
+ 
+ 2.000012 - 2014-05-12
+  - restore build_activate_environment_vars_for,
+    build_deactivate_environment_vars_for, build_deact_all_environment_vars_for
+    methods for perlbrew compatibility
+  - fix transforming relative paths to absolute paths in older perls
+  - fix quoting for fish shell
+ 
+ 2.000011 - 2014-04-02
+  - more fixes for issue where PERL5LIB Carp is not the same version as in the
+    local-lib
+ 
+ 2.000010 - 2014-03-28
+  - fix shell test on cygwin
+ 
+ 2.000_009 - 2014-03-15
+  - no longer loads File::Spec, so an upgraded version installed inside a local
+    lib dir can be used by scripts
+
+-------------------------------------------------------------------
+Sat Mar 15 12:58:03 UTC 2014 - coolo@suse.com
+
+- updated to 2.000008
+  - even more relaxed shell output testing
+  - only test shells in /etc/shells
+  - fix Makefile.PL on solaris
+ 
+ 2.000006 - 2014-03-07
+  - fix bootstrapping not auto-configuring in some cases
+  - more relaxed shell output testing
+  - use normal arguments to be used on the command line in addition to import
+    arguments
+  - support fish shell
+  - stop trying to test csh/sh on Win32
+  - work around CPAN.pm issues with checking prerequisites
+ 
+ 2.000004 - 2014-01-03
+  - fix errors in PowerShell output when clearing nonexistant variables
+  - fix shell test to avoid extremely long lines
+  - fix shell test to avoid testing standard Win32 shells on Cygwin
+  - improved diagnostics in shell test
+ 
+ 2.000003 - 2013-12-30
+  - releasing 2.000_002 as stable
+ 
+ 2.000_002 - 2013-12-25
+  - fix CPAN setup error check in Makefile.PL
+  - fix install test warnings
+  - fix shell test to skip cmd/powershell startup scripts
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:42 UTC 2013 - coolo@suse.com
+
+- updated to 1.008026
+      - drop perl prerequisite to 5.6, since everything works there.
+      - fix install test on cygwin
+      - fix stackable test on win32 and when external local::lib is set
+      - clarify errors in Makefile.PL about CPAN configuration
+      - adjust csh output to allow use directly by eval
+      - silence a possible warning in Makefile.PL
+      - add additional docs about combining local::lib with lib::core::only
+      - reverse order of PERL_LOCAL_LIB_ROOT.  new local::libs are now added
+        to the beginning instead of the end, to match the order of other
+        similar environment variables.
+      - fix installation into directories with spaces or backslashes, as
+        well as Win32 test failures when Capture::Tiny is installed
+      - fix test breaking in some cases when an external local::lib is set
+      - fix test compatibility with old versions of Exporter
+      - stable release of 1.008022 (no code changes since 1.008012)
+      - see 1.008019 through 1.008021
+      - yet another attempt to overcome win32 testing issues (paths with
+        spaces, backslashes)
+      - yet another attempt to overcome win32 testing issues (paths with
+        spaces, backslashes)
+      - another attempt to overcome win32 testing issues (paths with spaces,
+        backslashes)
+
+-------------------------------------------------------------------
+Fri Oct  4 19:48:30 UTC 2013 - coolo@suse.com
+
+- update to 1.008018
+       - print out actual paths in more test cases, for helping to diagnose
+         mysterious failures
+       - avoid "Unrecognized escape \s passed through" errors on win32
+         (again)
+       - avoid "Unrecognized escape \s passed through" errors on win32
+       - fix new test to use alternate path representations on windows, to
+         handle potential space issues (regression since 1.008012)
+       - fix undef value errors when not installing into a local::lib
+       - now handling using -Mlocal::lib in a taintperl environment, by
+         ensuring that all libs in PERL_LOCAL_LIB_ROOT are properly added to
+         @INC (RT#76661, Karen Etheridge)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.008011
+ - skip CPAN workaround if running via cpanminus  (miyagawa, RT#85731)
+
+-------------------------------------------------------------------
+Tue Jun 11 18:38:33 UTC 2013 - coolo@suse.com
+
+- updated to 1.008010
+       - Fix a split on undefined value warning (David Golden -- see
+         https://github.com/gugod/App-perlbrew/issues/305)
+       - Remove Carp::Always dep
+       - Fix putting arch path in PERL5LIB
+       - Refactor Win32 path handling out of ensure_dir_structure_for()
+       - Fix activate_paths when PERL_LOCAL_LIB_ROOT starts with :
+       - Fix ~/perl5/bin missing in $PATH
+       - Back to 1.008004 with Carp fix since subsequent releases were botched
+       - Avoid issue where PERL5LIB Carp is older than local::lib one
+
+-------------------------------------------------------------------
+Fri Feb 25 20:01:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.008004: no user-visible changes
+
+- changes from 1.008002:
+  * add local::lib stacking support
+  * add activation/deactivation support
+
+- changes from 1.008001:
+  * bootstrap Module::Build just like ExtUtils::MakeMaker
+
+- changes from 1.008000:
+  * print_environment_vars_for() refactored with separate function
+    environment_vars_string_for()
+  * PERL_LOCAL_LIB_ROOT environment is added to disambiguate when PERL_MM_OPT,
+    etc. was set by local::lib or other means
+
+- changes from 1.006009:
+  * split up method guess_shelltype from parts of print_environment_vars_for
+  * updated documentation about change of use with .modulebuildrc
+
+- changes from 1.006008:
+  * finally move to PERL_MB_OPT rather than using .modulebuildrc
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:24 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Aug 26 06:21:48 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.006007:
+  * fixing stuff so that search.cpan.org displays right
+  * documented one method in all languages
+
+- changes from 1.006006:
+  * added portuguese translation
+  * several minor fixes in the documentation
+  * changed methods look in documentation
+
+-------------------------------------------------------------------
+Thu Jul 15 17:10:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.006005:
+  * added support informations (also for german)
+  * fixed newline in german translation from DOS2UNIX
+
+-------------------------------------------------------------------
+Sat Jun 12 23:01:49 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.006004:
+  * added german translation
+  * enhanced some parts of english documentation
+  * reverse the perl/arch paths in PERL5LIB
+
+-------------------------------------------------------------------
+Thu Apr  1 05:49:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.006000:
+  * create lib::core::only that provides the "set @INC to core dirs only" functionality that was the only part of --self-contained that ever worked usefully
+  * delete broken --self-contained flag from core
+
+-------------------------------------------------------------------
+Sun Mar 14 02:15:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.005001
+
+- changes from 1.005000:
+  * more robust handling of running new toolchains on older perls
+  * warnings for missing PATH/PERL5LIB (as when not running interactively) silenced
+  * start of better docs for C<--self-contained>
+
+-------------------------------------------------------------------
+Wed Feb  3 19:43:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- new package, ported from Fedora 13
+

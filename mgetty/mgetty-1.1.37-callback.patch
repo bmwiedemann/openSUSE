@@ -1,0 +1,79 @@
+Index: mgetty-1.1.37/Makefile
+===================================================================
+--- mgetty-1.1.37.orig/Makefile
++++ mgetty-1.1.37/Makefile
+@@ -590,7 +590,7 @@ bindist: all doc-all sedscript
+ install: install.bin install.doc
+ 
+ install.bin: mgetty sendfax newslock \
+-		login.config mgetty.config sendfax.config 
++		login.config mgetty.config sendfax.config call-back callback
+ #
+ # binaries
+ #
+@@ -602,8 +602,15 @@ install.bin: mgetty sendfax newslock \
+ 		mv -f $(DESTDIR)$(SBINDIR)/mgetty $(DESTDIR)$(SBINDIR)/mgetty.old ; fi
+ 	if [ -f $(DESTDIR)$(SBINDIR)/sendfax ] ; then \
+ 		mv -f $(DESTDIR)$(SBINDIR)/sendfax $(DESTDIR)$(SBINDIR)/sendfax.old ; fi
++	if [ -f $(DESTDIR)$(SBINDIR)/callback ] ; then \
++		mv -f $(DESTDIR)$(SBINDIR)/callback $(DESTDIR)$(SBINDIR)/callback.old ; fi
++	if [ -f $(DESTDIR)$(CONFDIR)/callback.config ] ; then \
++		mv -f $(DESTDIR)$(CONFDIR)/callback.config $(DESTDIR)$(CONFDIR)/callback.config.old ; fi
+ 	$(INSTALL) -s -m 700 mgetty $(DESTDIR)$(SBINDIR)
+ 	$(INSTALL) -s -m 755 sendfax $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -s -m 755 callback/callback $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -d $(DESTDIR)$(CONFDIR)
++	$(INSTALL) -m 755 callback/callback.config $(DESTDIR)$(CONFDIR)
+ #
+ # data files + directories
+ #
+@@ -660,6 +667,15 @@ install.bin: mgetty sendfax newslock \
+ 				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
+ 				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+ #
++# callback tool
++#
++
++	cd callback ; $(MAKE) install INSTALL="$(INSTALL)" \
++				FAX_OUT_USER=$(FAX_OUT_USER) $(DESTDIR) \
++				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
++				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
++
++#
+ # compatibility
+ #
+ 	if [ ! -z "$(INSTALL_MECHO)" ] ; then \
+Index: mgetty-1.1.37/callback/Makefile
+===================================================================
+--- mgetty-1.1.37.orig/callback/Makefile
++++ mgetty-1.1.37/callback/Makefile
+@@ -37,7 +37,7 @@ clean:
+ # install programs
+ #
+ install: all
+-	$(INSTALL) -m 755 callback $(SBINDIR)
+-	$(INSTALL) -m 4755 ct $(BINDIR)
++	$(INSTALL) -m 755 callback $(DESTDIR)$(SBINDIR)
++	#$(INSTALL) -m 4755 ct $(DESTDIR)$(BINDIR)
+ 
+ # source modules
+Index: mgetty-1.1.37/callback/callback.config
+===================================================================
+--- mgetty-1.1.37.orig/callback/callback.config
++++ mgetty-1.1.37/callback/callback.config
+@@ -8,3 +8,15 @@ retry-time 30
+ max-time 90
+ debug 9
+ dial-prefix ATX3D
++
++# options taken from sources (with default values)
++# "dialout-devices"
++# "delay",		20
++# "delay-randomize",	10
++# "retry-time",		30
++# "max-time",		600
++# "modem-init",		0
++# "speed",		38400
++# "dial-prefix"
++# "autobauding",	false
++# "prompt-waittime",	300

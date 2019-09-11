@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Feb 23 13:33:06 UTC 2018 - lars@linux-schulserver.de
+
+- Version 0.1.5
+  + make sure that the state file get's written and is current when
+    invoking the script
+  + added SNMP functionality
+  + added URL
+- Recommend net-snmp
+
+-------------------------------------------------------------------
+Thu Jan 11 16:55:45 UTC 2018 - lars@linux-schulserver.de
+
+- Version 0.0.5
+- provide a templated keepalived_notify_monitoring.conf
+- added monitoring-plugins-keepalived-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Sep 17 18:21:31 UTC 2017 - lars@linux-schulserver.de
+
+- STATEFILE should be readable by everyone, so the nagios user is 
+  able to read the file
+
+-------------------------------------------------------------------
+Tue Jan 26 10:18:58 UTC 2016 - lars@linux-schulserver.de
+
+- add logging (and logrotate) for the notify script
+
+-------------------------------------------------------------------
+Wed Jan 13 22:45:46 UTC 2016 - lars@linux-schulserver.de
+
+- initial version
+

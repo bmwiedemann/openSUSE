@@ -1,0 +1,1592 @@
+-------------------------------------------------------------------
+Fri Jul 19 10:45:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on pytest-sugar, it is just pretty-formatter
+
+-------------------------------------------------------------------
+Wed Jun 19 10:57:10 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.6.3
+  * Revert FastUUID for kombu 4.6
+  * Fix sbugs and regressions
+  * other bu fixes
+
+-------------------------------------------------------------------
+Tue Apr 23 11:20:06 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add redis version for BuildRequires. The tests fail with a
+  lower version so detect that early
+
+-------------------------------------------------------------------
+Fri Apr  5 08:57:55 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.5.0
+  - The Redis transport now supports a custom separator for keys.
+  - When the SQS server returns a timeout we ignore it and keep trying
+    instead of raising an error.
+  - Properly declare async support for the Qpid transport.
+  - Revert `celery/kombu#906 <https://github.com/celery/kombu/pull/906>`_ and
+    introduce unique broadcast queue names as an optional keyword argument.
+  - Codebase improvements and fixes
+
+-------------------------------------------------------------------
+Thu Mar 28 11:30:54 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.4.0
+  * Restore bz2 import checks in compression module.
+  * Fix regression that occurred in 4.3.0
+    when parsing  Redis Sentinel master URI containing password.
+  * Handle the case when only one Redis Sentinel node is provided.
+  * Support SSL URL parameters correctly for `rediss://`` URIs.
+  * Revert `celery/kombu#954 <https://github.com/celery/kombu/pull/954>`_.
+    Instead bump the required redis-py dependency to 3.2.0
+    to include this fix `andymccurdy/redis-py@4e1e748
+  * Added support for broadcasting using a regular expression pattern
+    or a glob pattern to multiple Pidboxes.
+
+-------------------------------------------------------------------
+Wed Mar 13 10:00:40 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Build require a more current msgpack version
+
+-------------------------------------------------------------------
+Fri Feb 15 09:54:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Added minimum versions to dependencies where provided by upstream
+- Re-enable tests on Python 3
+- Update to 4.3.0
+  * Added Python 3.7 support.
+  * Avoid caching queues which are declared with a TTL.
+    Queues that are declared with a TTL are now also be excluded from the
+    in-memory cache in case they expire between publishes on the same channel.
+  * Added an index to the Message table for the SQLAlchemy transport.
+    The index allows to effectively sorting the table by the message's timestamp.
+  * Added a timeout that limits the amount of time we retry
+    to reconnect to a transport.
+  * Class celery.asynchronous.hub.Hub is now reentrant.
+    This allows calling celery.bin.celery.main to revive a worker in
+    the same process after rescuing from shutdown.
+  * Queues now accept string exchange names as arguments as documented.
+    Tests were added to avoid further regressions.
+  * Specifying names for broadcast queues now work as expected.
+    Previously, named broadcast queues did not create multiple queues per worker.
+    They incorrectly declared the named queue which resulted in one queue per
+    fanout exchange, thus missing the entire point of a fanout exchange.
+    The behavior is now matched to unnamed broadcast queues.
+  * When initializing the Redis transport in conjunction with gevent
+    restore all unacknowledged messages to queue.
+  * Allow kombu.simple.SimpleQueue to pass queue_arguments to Queue object,
+    which allows it to connect to RabbitMQ queues with custom arguments
+    like 'x-queue-mode'='lazy'.
+  * Add support for 'rediss' scheme for secure Redis connections.
+  * Added the Azure Storage Queues transport.
+  * Added the Azure Service Bus transport.
+  * Drop remaining mentions of Jython support completely.
+  * When publishing messages to the Pidbox, retry if an error occurs.
+  * Fix infinite loop in kombu.asynchronous.hub.Hub.create_loop.
+    Previous attempt to fix the problem (PR kombu/760) did not consider
+    an edge case. It is now fixed.
+  * Worker shutdown no longer duplicates messages when using the SQS broker.
+  * When using the SQS broker, prefer boto's default region before our hardcoded default.
+  * Fixed closing of shared redis sockets which previously caused Celery to hang.
+  * the Pyro transport now works with recent Pyro versions.
+    Also added a Pyro Kombu Broker that this transport needs for its queues.
+  * Handle non-base64-encoded SQS messages.
+  * Move the handling of Sentinel failures to the redis library itself.
+    Previously, Redis Sentinel worked only if the first node's sentinel
+    service in the URI was up. A server outage would have caused downtime.
+  * When using Celery and the pickle serializer with binary data as part of the
+    payload, `UnicodeDecodeError` would be raised as the content was not utf-8.
+    We now replace on errors.
+  * Allow setting boto3.sqs.create_queue Attributes via transport_options.
+  * Fixed infinite loop when entity.channel is replaced by revive() on connection
+    drop.
+  * Added optional support for Brotli compression.
+  * When using the SQS broker, FIFO queues with names that ended with the 'f' letter
+    were incorrectly parsed. This is now fixed.
+  * Added optional support for LZMA compression.
+  * Added optional support for ZStandard compression.
+  * Require py-amqp 2.4.0 as the minimum version.
+  * The value of DISABLE_TRACEBACKS environment variable is now respected on debug, info
+    and warning logger level.
+  * As documented in kombu/#741 and eventlet/eventlet#415 there is a mismatch
+    between the monkey-patched eventlet queue and the interface Kombu is
+    expecting. This causes Celery to crash when the broker_pool_limit
+    configuration option is set.  eventlet/eventlet#415 suggests that the
+    mutex can be a noop. This is now the case.
+  * Documentation improvements
+
+-------------------------------------------------------------------
+Thu Jan 31 16:19:15 CET 2019 - mcepl@suse.com
+
+- Updated to 4.2.2.post1:
+    - Support both Redis client version 2.x and version 3.x.
+
+-------------------------------------------------------------------
+Wed Aug 15 14:39:29 UTC 2018 - sjamgade@suse.com
+
+- Updated to 4.2.1
+    * The 4.2.0 release contained remains of the ``async`` module by accident.
+      This is now fixed.
+    * Handle librabbitmq fileno raising a ValueError when socket is not
+      connected.
+    *  Now passing ``max_retries``, ``interval_start``,
+       ``interval_step``, ``interval_max`` parameters from broker
+       ``transport_options`` to
+       :meth:`~kombu.Connection.ensure_connection` when returning
+       :meth:`~kombu.Connection.default_connection` (Issue #765).
+    * Qpid: messages are now durable by default
+    *  Kombu now requires version 2.10.4 or greater of the redis
+       library, in line with Celery
+    *  Fixed ImportError in some environments with outdated simplejson
+    *  MongoDB: fixed failure on MongoDB versions with an "-rc" tag
+    *  Ensure periodic polling frequency does not exceed timeout in
+       virtual transport
+    *  Fixed string handling when using python-future module
+    *  Replaced "async" with "asynchronous" in preparation for Python
+       3.7
+    *  Allow removing pool size limit when in use
+    *  Codebase improvements and fixes
+    *  Documentation improvements
+- added python as requirement for ssl module is needed by amqp
+
+-------------------------------------------------------------------
+Wed May 23 17:16:28 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC and obsolete python-carrot
+- Remove superfluous python-devel
+
+-------------------------------------------------------------------
+Tue Jan 30 13:33:59 UTC 2018 - dmueller@suse.com
+
+- update to 4.1.0:
+  -  RabbitMQ: Ensured safer encoding of queue arguments.
+  - Added fallback to :func:``uuid.uuid5`` in :func:``generate_oid`` if
+  - Added Python 3.6 to CI testing
+  - Fixed bug around modifying dictionary size while iterating over it
+
+-------------------------------------------------------------------
+Wed Jun 28 20:28:50 UTC 2017 - benoit.monin@gmx.fr
+
+- convert the package to singlespec
+- import changes from python3-kombu:
+  * add AUTHORS to the package documentation
+  * use a more precise file list
+- drop test BuildRequires mock, nose-cover3 and unittest2:
+  not needed anymore
+- add fdupes as BuildRequires and call it after install
+- skip the tests for python3 since they fail with python 3.6 (#675)
+
+-------------------------------------------------------------------
+Thu Mar 16 08:24:12 UTC 2017 - dmueller@suse.com
+
+- update to 4.0.2:
+  - Now depends on :mod:`amqp` 2.0.
+      The new py-amqp version have been refactored for better performance,
+      using modern Python socket conventions, and API consistency.
+  - No longer depends on :mod:`anyjson`.
+      Kombu will now only choose between :pypi:`simplejson` and the built-in
+      :mod:`json`.
+  - Removed transports that are no longer supported in this version:
+      - Django ORM transport
+      - SQLAlchemy ORM transport
+      - Beanstalk transport
+      - ZeroMQ transport
+      - amqplib transport (use pyamqp).
+
+-------------------------------------------------------------------
+Mon Nov 14 14:41:42 UTC 2016 - dmueller@suse.com
+
+- update to 3.0.35:
+  - msgpack: msgpack support now requires msgpack-python > 0.4.7.
+  - Redis: TimeoutError was no longer handled as a recoverable error.
+  - msgpack: Fixes support for binary/unicode data
+  - Qpid: Adds async error handling.
+  - msgpack: Use binary encoding instead of utf-8 (Issue #570).
+
+-------------------------------------------------------------------
+Wed Jan 13 17:34:21 UTC 2016 - antoine.belvire@laposte.net
+
+- Update to 3.0.33:
+  * Now depends on :mod:`amqp` 1.4.9
+  * Redis: Fixed problem with auxilliary connections causing the
+    main consumer connection to be closed (Issue #550)
+  * Qpid: No longer uses threads to operate, to ensure
+    compatibility with all environments (Issue #531)
+- See /usr/share/doc/packages/python-kombu/Changelog for changes
+  introduced between 3.0.27 and 3.0.32
+- Remove fix-tests.patch
+
+-------------------------------------------------------------------
+Mon Sep 14 08:58:49 UTC 2015 - tbechtold@suse.com
+
+- Add fix-tests.patch to fix testcases with newer python-mock.
+
+-------------------------------------------------------------------
+Fri Jul 24 20:07:39 UTC 2015 - seife+obs@b1-systems.com
+
+- fix non-SUSE build by conditionalizing Suggests: tag
+
+-------------------------------------------------------------------
+Thu May  7 09:39:00 UTC 2015 - benoit.monin@gmx.fr
+
+- update to 3.0.26:
+  * Fixed compatibility with py-redis versions before 2.10.3
+    (Issue #470)
+- update project URL
+- set a minimum version for python-anyjson in BuildRequires
+- add back python-msgpack-python as test requirement
+- pass -q to test to avoid spamming the build log
+
+-------------------------------------------------------------------
+Wed Apr 22 13:39:19 UTC 2015 - tbechtold@suse.com
+
+- update to 3.0.25:
+  - pyamqp/librabbitmq now uses 5671 as default port when SSL is enabled
+    (Issue #459).
+  - Redis: Now supports passwords in ``redis+socket://:pass@host:port`` URLs
+    (Issue #460).
+  - ``Producer.publish`` now defines the ``expiration`` property in support
+    of the `RabbitMQ per-message TTL extension`_.
+  - Connection transport attribute now set correctly for all transports.
+  - qpid: Fixed bug where the connectionw as not being closed properly.
+  - :class:`~kombu.entity.bindings` is now JSON serializable (Issue #453).
+  - Fixed typo in error when yaml is not installed (said ``msgpack``).
+  - Redis: Now properly handles ``TimeoutError raised by py-redis.
+  - qpid: Adds additional string to check for when connecting to qpid.
+    When we connect to qpid, we need to ensure that we skip to the next SASL
+    mechanism if the current mechanism fails. Otherwise, we will keep retrying
+    the connection with a non-working mech.
+  - qpid: Handle ``NotFound`` exceptions.
+  - :class:`Queue.__repr__` now makes sure return value is not unicode
+    (Issue #440).
+  - qpid: ``Queue.purge`` incorrectly raised :exc:`AttributeErrror` if the
+    does not exist (Issue #439).
+  - Linux: Now ignores permission errors on epoll unregister.
+
+-------------------------------------------------------------------
+Thu Nov 20 15:35:08 UTC 2014 - mcihar@suse.cz
+
+- update to version 3.0.24:
+    - The `Qpid <http://qpid.apache.org/>`_ broker is supported for Python 2.x
+      environments. The Qpid transport includes full SSL support within Kombu. See
+      the :mod:`kombu.transport.qpid` docs for more info.
+    - Dependencies: extra[librabbitmq] now requires librabbitmq 1.6.0
+    - Docstrings for :class:`~kombu.utils.limit.TokenBucket` did not match
+      implementation.
+    - :func:`~kombu.common.oid_from` accidentally called ``uuid.getnode()`` but
+      did not use the return value.
+    - Redis: Now ignores errors when cosing the underlying connection.
+    - Redis: Restoring messages will now use a single connection.
+    - ``kombu.five.monotonic``: Can now be imported even if ctypes is not
+      available for some reason (e.g. App Engine)
+    - Documentation: Improved example to use the ``declare`` argument to
+      ``Producer`` (Issue #423).
+    - Django: Fixed ``app_label`` for older Django versions (``< 1.7``).
+      (Issue #414).
+- fixed python-amqp BuildRequire
+
+-------------------------------------------------------------------
+Mon Sep 15 13:47:41 UTC 2014 - tbechtold@suse.com
+
+- update to version 3.0.23:
+  * Django: Fixed bug in the Django 1.7 compatibility improvements related
+    to autocommit handling.
+  * Django: The Django transport models would not be created on syncdb
+    after app label rename (Issue #406).
+  * kombu.async: Min. delay between waiting for timer was always increased to
+    one second.
+  * Fixed bug in itermessages where message is received after the with
+    statement exits the block.
+  * Connection.autoretry: Now works with functions missing wrapped attributes
+    (``__module__``, ``__name__``, ``__doc__``).  Fixes #392.
+  * Django: Now sets custom app label for ``kombu.transport.django`` to work
+    with recent changes in Django 1.7.
+  * SimpleQueue removed messages from the wrong end of buffer (Issue #380).
+  * Tests: Now using ``unittest.mock`` if available (Issue #381).
+- adjust python-amqp Require
+
+-------------------------------------------------------------------
+Fri Aug 15 11:42:32 UTC 2014 - mcihar@suse.cz
+
+- update to 3.0.21;
+   - see http://kombu.readthedocs.org/en/latest/changelog.html for full changelog
+
+-------------------------------------------------------------------
+Mon May 26 19:10:14 UTC 2014 - dmueller@suse.com
+
+- update to 3.0.16:
+  - ``kombu[librabbitmq]`` now depends on librabbitmq 1.5.1.
+  - Tests: Some unit tests accidentally required the `redis-py` library.
+  - librabbitmq: Would crash when using an older version of :mod:`librabbitmq`,
+    now emits warning instead.
+- remove kombu-fix-redis-tests.patch: Fixed differently upstream
+
+-------------------------------------------------------------------
+Mon May  5 14:01:57 UTC 2014 - mjura@suse.com
+
+- add kombu-fix-redis-tests.patch
+  * Add skip_if_no_module decorator
+
+-------------------------------------------------------------------
+Fri May  2 07:49:46 UTC 2014 - mjura@suse.com
+
+- update to 3.0.15:
+  * Now depends on :mod:`amqp` 1.4.5.
+  * RabbitMQ 3.3 changes QoS semantics (Issue #339).
+  * Users of :mod:`librabbitmq` is encouraged to upgrade to librabbitmq 1.5.0.
+  * Pools: Now takes transport options into account when comparing connections
+    (Issue #333).
+  * MongoDB: Fixes Python 3 compatibility.
+  * Async: select: Ignore socket errors when attempting to unregister handles
+    from the loop.
+  * Pidbox: Can now be configured to use a serializer other than json,
+    but specifying a serializer argument to :class:`~kombu.pidbox.Mailbox`.
+  * Message decompression now works with Python 3.
+- update to 3.0.14:
+  * **MongoDB**: Now endures a connection failover (Issue #123).
+  * **MongoDB**: Fixed ``KeyError`` when a replica set member is removed.
+  * **MongoDB**: Fixed MongoDB broadcast cursor re-initialization bug.
+  * **Async**: Fixed bug in lax semaphore implementation where in
+    some usage patterns the limit was not honored correctly.
+  * **Redis**: Fixed problem with fanout when using Python 3 (Issue #324).
+  * **Redis**: Fixed ``AttributeError`` from attempting to close a non-existing
+    connection (Issue #320).
+- update to 3.0.13:
+  * Redis: Fixed serious race condition that could lead to data loss.
+  * Now depends on :mod:`amqp` 1.4.4.
+  * Pidbox: Now makes sure message encoding errors are handled by default,
+    so that a custom error handler does not need to be specified.
+  * Redis: The fanout exchange can now use AMQP patterns to route and filter
+    messages.
+  * Redis: Fixed ``cycle`` no such attribute error.
+- update to 3.0.12:
+  * Now depends on :mod:`amqp` 1.4.3.
+  * Fixes Python 3.4 logging incompatibility (Issue #311).
+  * Redis: Now properly handles unknown pub/sub messages.
+  * amqplib: Fixed bug where more bytes were requested from the socket
+    than necessary.
+- update to 3.0.11:
+  * Now depends on :mod:`amqp` 1.4.2.
+  * Now always trusts messages of type `application/data` and `application/text`
+    or which have an unspecified content type (Issue #306).
+  * Compression errors are now handled as decode errors and will trigger
+    the ``Consumer.on_decode_error`` callback if specified.
+  * New ``kombu.Connection.get_heartbeat_interval()`` method that can be
+    used to access the negotiated heartbeat value.
+  * `kombu.common.oid_for` no longer uses the MAC address of the host, but
+     instead uses a process*wide UUID4 as a node id.
+  * Hub.add: Now normalizes registered fileno.
+  * SQS: Fixed bug where the prefetch count limit was not respected.
+
+-------------------------------------------------------------------
+Wed Feb 19 15:18:32 UTC 2014 - speilicke@suse.com
+
+- Demote recommends back to suggests, it is really sufficent to document
+  the possible backend options. But we want to avoid they're installed
+  accidentally.
+
+-------------------------------------------------------------------
+Tue Jan 21 13:48:22 UTC 2014 - dmueller@suse.com
+
+- update to 3.0.10:
+  * Now depends on amqp 1.4.1.
+  * maybe_declare now raises a “recoverable connection error” 
+  if the channel is disconnected
+  * Redis: Consumer.cancel() is now thread safe.
+  * Fixed “unhashable type” error on Python 3
+  * Do not attempt to unregister operations on an already closed
+  poller instance
+
+-------------------------------------------------------------------
+Tue Jan 14 10:52:55 UTC 2014 - dmueller@suse.com
+
+- update to 3.0.9:
+  - Now depends on :mod:`amqp` 1.4.0.
+  - Redis: Basic cancel for fanout based queues now sends a corresponding
+    ``UNSUBSCRIBE`` command to the server.
+  - MongoDB: Improved connection string and options handling
+    (Issue #266 + Issue #120).
+  - SQS: Limit the number of messages when receiving in batch to 10.
+  - ConsumerMixin: ``consume`` now checks heartbeat every time the
+    socket times out.
+  - Retry Policy: A max retries of 0 did not retry forever.
+  - Simple: If passing a Queue object the simple utils will now take
+    default routing key from that queue.
+  - Redis: The map of Redis error classes are now exposed at the module level
+    using the :func:`kombu.transport.redis.get_redis_error_classes` function.
+  - Async: ``Hub.close`` now sets ``.poller`` to None.
+
+-------------------------------------------------------------------
+Mon Jan 13 13:36:27 UTC 2014 - dmueller@suse.com
+
+- update to 3.0.8:
+  - Redis: Would attempt to read from the wrong connection if a select/epoll/kqueue
+  exception event happened.
+  - Redis: Disabling ack emulation now works properly.
+  - Redis: :exc:`IOError` and :exc:`OSError` are now treated as recoverable
+  connection errors.
+  - SQS: Improved performance by reading messages in bulk.
+  - Connection Pool: Attempting to acquire from a closed pool will now
+- Changes from 3.0.7:
+  - Fixes Python 2.6 compatibility.
+  - Redis: Fixes 'bad file descriptor' issue.
+
+-------------------------------------------------------------------
+Mon Dec  9 13:43:16 UTC 2013 - speilicke@suse.com
+
+- Fixup amqp dependency version check
+
+-------------------------------------------------------------------
+Sun Dec  1 15:55:53 UTC 2013 - oliver.bengs@opensuse.org
+
+- update to 3.0.6:
+  * Timer: No longer attempts to hash keyword arguments
+  * Async: Did not account for the long type for file descriptors
+  * Redis: Bad pub/sub payloads no longer crashes the consumer.
+  * Redis: Unix socket URLs can now specify a virtual host by including it as a query parameter.
+  * Now depends on amqp 3.0.3.
+  * Redis: Fixed Python 3 compatibility problem
+  * MongoDB: Fixed problem with URL parsing when authentication used
+  * pyamqp: Fixed small issue when publishing the message and the property dictionary was set to None.
+  * Fixed problem in repr(LaxBoundedSemaphore)
+  * Tests now passing on Python 3.3.
+
+-------------------------------------------------------------------
+Mon Sep 16 14:32:40 UTC 2013 - speilicke@suse.com
+
+- (Build)Require amqp >= 1.0.13
+
+-------------------------------------------------------------------
+Tue Sep  3 08:08:47 UTC 2013 - dmueller@suse.com
+
+- update to 2.5.14: 
+  * safe_str did not work properly resulting in UnicodeDecodeError
+  * Now depends on amqp 1.0.13
+  * Fixed typo in Django functional tests.
+  * Tests no longer depends on distribute, which was deprecated
+  and merged back into setuptools.
+
+-------------------------------------------------------------------
+Thu Aug  8 21:12:17 UTC 2013 - dmueller@suse.com
+
+- update to 2.5.12:
+  * Redis: Ignore errors about keys missing in the round-robin cycle.
+  * Fixed test suite errors on Python 3.
+  * Fixed msgpack test failures.
+  * librabbitmq: Fixed a cyclic reference at connection close.
+  * Now depends on amqp 1.0.12 (Py3 compatibility issues).
+
+-------------------------------------------------------------------
+Tue Apr 30 09:45:52 UTC 2013 - speilicke@suse.com
+
+- Expanded test coverage
+- Don't require python-msgpack-python for testing until issues are fixed.
+  It's an optional feature anyway
+
+-------------------------------------------------------------------
+Sat Apr 13 10:17:23 UTC 2013 - toddrme2178@gmail.com
+
+- Changes suggests to recommends since suggets are not well supported
+- Remove patch that is no longer needed
+
+-------------------------------------------------------------------
+Fri Apr 12 17:47:22 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.10:
+  Kombu 3 consumers will no longer accept pickle/yaml or msgpack
+  by default, and you will have to explicitly enable untrusted deserializers
+  either globally using kombu.enable_insecure_serializers, or
+  using the accept argument to kombu.Consumer.
+  - New utility function to disable/enable untrusted serializers.
+    - kombu.disable_insecure_serializers
+    - kombu.enable_insecure_serializers
+  - Consumer: `accept` can now be used to specify a whitelist
+    of content types to accept.
+    If the accept whitelist is set and a message is received
+    with a content type that is not in the whitelist then a
+    :exc:`~kombu.exceptions.ContentDisallowed` exception
+    is raised.  Note that this error can be handled by the already
+    existing `on_decode_error` callback
+    Examples:
+        Consumer(accept=['application/json'])
+        Consumer(accept=['pickle', 'json'])
+  - Now depends on amqp 1.0.11
+  - pidbox: Mailbox now supports the `accept` argument.
+  - Redis: More friendly error for when keys are missing.
+  - Connection URLs: The parser did not work well when there were
+    multiple '+' tokens.
+
+-------------------------------------------------------------------
+Thu Apr 11 16:51:37 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.9:
+  - Pidbox: Now warns if there are multiple nodes consuming from
+    the same pidbox.
+  - Adds Queue.on_declared <kombu.Queue.on_declared>
+    A callback to be called when the queue is declared,
+    with signature (name, messages, consumers).
+  - Now uses fuzzy matching to suggest alternatives to typos in transport
+    names.
+  - SQS: Adds new transport option queue_prefix.
+    Contributed by j0hnsmith.
+  - pyamqp: No longer overrides verify_connection.
+  - SQS: Now specifies the driver_type and driver_name
+    attributes.
+    Fix contributed by Mher Movsisyan.
+  - Fixed bug with kombu.utils.retry_over_time when no errback
+    specified.
+
+-------------------------------------------------------------------
+Thu Mar 21 19:57:35 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.8:
+  - Now depends on amqp 1.0.10 which fixes a Python 3 compatibility
+    error.
+  - Redis: Fixed a possible race condition (Issue #171).
+  - Redis: Ack emulation/visibility_timeout can now be disabled
+    using a transport option.
+    Ack emulation adds quite a lot of overhead to ensure data is safe
+    even in the event of an unclean shutdown.  If data loss do not worry
+    you there is now an `ack_emulation` transport option you can use
+    to disable it:
+    Connection('redis://', transport_options={'ack_emulation': False})
+  - SQS: Fixed boto v2.7 compatibility (Issue #207).
+  - Exchange: Should not try to re-declare default exchange ("")
+    (Issue #209).
+  - SQS: Long polling is now disabled by default as it was not
+    implemented correctly, resulting in long delays between receiving
+    messages (Issue #202).
+  - Fixed Python 2.6 incompatibility depending on exc.errno
+    being available.
+    Fix contributed by Ephemera.
+
+-------------------------------------------------------------------
+Fri Mar  8 13:10:29 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.7:
+  - Now depends on amqp 1.0.9
+  - Redis: A regression in 2.5.6 caused the redis transport to
+    ignore options set in transport_options.
+  - Redis: New socket_timeout transport option.
+  - Redis: InconsistencyError is now regarded as a recoverable error.
+  - Resource pools: Will no longer attempt to release resource
+    that was never acquired.
+  - MongoDB: Now supports the ssl option.
+    Contributed by Sebastian Pawlus.
+
+-------------------------------------------------------------------
+Tue Feb 12 13:27:34 UTC 2013 - dmueller@suse.com
+
+- Add accept-newer-amqp-versions.diff:
+  * Also accept amqp versions >= 1.1.0
+
+-------------------------------------------------------------------
+Fri Feb  8 20:12:27 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.6:
+  - Now depends on amqp 1.0.8 which works around a bug found on some
+    Python 2.5 installations where 2**32 overflows to 0.
+
+-------------------------------------------------------------------
+Thu Feb  7 19:34:15 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.5.5:
+  SQS: Now supports long polling (Issue #176).
+    The polling interval default has been changed to 0 and a new
+    transport option (wait_time_seconds) has been added.
+    This parameter specifies how long to wait for a message from
+    SQS, and defaults to 20 seconds, which is the maximum
+    value currently allowed by Amazon SQS.
+    Contributed by James Saryerwinnie.
+  - SQS: Now removes unpickleable fields before restoring messages.
+  - Consumer.__exit__ now ignores exceptions occurring while
+    cancelling the consumer.
+  - Virtual:  Routing keys can now consist of characters also used
+    in regular expressions (e.g. parens) (Issue #194).
+  - Virtual: Fixed compression header when restoring messages.
+    Fix contributed by Alex Koshelev.
+  - Virtual: ack/reject/requeue now works while using basic_get.
+  - Virtual: Message.reject is now supported by virtual transports
+    (requeue depends on individual transport support).
+  - Fixed typo in hack used for static analyzers.
+    Fix contributed by Basil Mironenko.
+
+-------------------------------------------------------------------
+Thu Jan 17 01:43:41 UTC 2013 - alexandre@exatati.com.br
+
+- Add LICENSE file to %doc.
+
+-------------------------------------------------------------------
+Wed Jan 16 09:12:13 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  See the LICENSE file in the package
+
+-------------------------------------------------------------------
+Tue Jan 15 16:17:09 UTC 2013 - dmueller@suse.com
+
+- fix python-amqp requirement so that openstack unit tests pass
+
+-------------------------------------------------------------------
+Tue Jan 15 13:08:55 UTC 2013 - saschpe@suse.de
+
+- Remove the upper bound on the python-amqp requirement. We have a
+  never one and this shouldn't be a real issue
+
+-------------------------------------------------------------------
+Fri Jan 11 16:05:28 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+- Fix rpmlint shebang warning for test_serialization.py
+
+-------------------------------------------------------------------
+Mon Dec 10 17:35:21 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.4:
+  - Fixed problem with connection clone and multiple URLs (Issue #182).
+    Fix contributed by Dane Guempel.
+- zeromq: Now compatible with libzmq 3.2.x.
+    Fix contributed by Andrey Antukh.
+- Fixed Python 3 installation problem (Issue #187).
+
+-------------------------------------------------------------------
+Thu Dec  6 12:50:10 UTC 2012 - saschpe@suse.de
+
+- Add requirements on Python-2.6 compat modules Python-2.6 for SLES:
+  + python-importlib and python-ordereddict
+
+-------------------------------------------------------------------
+Wed Dec  5 04:48:02 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.5.3:
+  - Pidbox: Fixed compatibility with Python 2.6
+- Aditional changes from 2.5.2:
+  - [Redis] Fixed connection leak and added a new 'max_connections'
+    transport option.
+- Aditional changes from 2.5.1
+  - Fixed bug where return value of Queue.as_dict could not be
+    serialized with JSON (Issue #177).
+- Aditional changes from 2.5.0
+  - py-amqp is now the new default transport, replacing amqplib.
+    The new py-amqp library is a fork of amqplib started with the
+    following goals:
+        - Uses AMQP 0.9.1 instead of 0.8
+        - Support for heartbeats (Issue #79 + Issue #131)
+        - Automatically revives channels on channel errors.
+        - Support for all RabbitMQ extensions
+            - Consumer Cancel Notifications (Issue #131)
+            - Publisher Confirms (Issue #131).
+            - Exchange-to-exchange bindings: exchange_bind /
+              exchange_unbind.
+        - API compatible with librabbitmq so that it can be used
+          as a pure-python replacement in environments where rabbitmq-c
+          cannot be compiled. librabbitmq will be updated to support
+          all the same features as py-amqp.
+  - Support for using multiple connection URL's for failover.
+    The first argument to kombu.Connection can now be a list of connection
+    URLs:
+
+        Connection(['amqp://foo', 'amqp://bar'])
+
+    or it can be a single string argument with several URLs separated by
+    semicolon:
+
+        Connection('amqp://foo;amqp://bar')
+
+    There is also a new keyword argument failover_strategy that defines
+    how kombu.Connection.ensure_connection, kombu.Connection.ensure,
+    kombu.Connection.autoretry will reconnect in the event of connection
+    failures.
+
+    The default reconnection strategy is round-robin, which will simply
+    cycle through the list forever, and there's also a shuffle strategy
+    that will select random hosts from the list.  Custom strategies can also
+    be used, in that case the argument must be a generator yielding the URL
+    to connect to.
+
+    Example:
+        Connection('amqp://foo;amqp://bar')
+  - Now supports PyDev, PyCharm, pylint and other static code analysis tools.
+  - kombu.Queue now supports multiple bindings.
+    You can now have multiple bindings in the same queue by having
+    the second argument be a list:
+
+        from kombu import binding, Queue
+
+        Queue('name', [
+            binding(Exchange('E1'), routing_key='foo'),
+            binding(Exchange('E1'), routing_key='bar'),
+            binding(Exchange('E2'), routing_key='baz'),
+        ])
+
+    To enable this, helper methods have been added:
+
+        - kombu.Queue.bind_to
+        - kombu.Queue.unbind_from
+
+    Contributed by Rumyana Neykova.
+  - Custom serializers can now be registered using Setuptools entry-points.
+    See serialization-entrypoints.
+  - New kombu.common.QoS class used as a thread-safe way to manage
+    changes to a consumer or channels prefetch_count.
+    This was previously an internal class used in Celery now moved to
+    the kombu.common module.
+  - Consumer now supports a on_message callback that can be used to process
+    raw messages (not decoded).
+    Other callbacks specified using the callbacks argument, and the
+    receive` method will be not be called when a on message callback is
+    present.
+  - New utility kombu.common.ignore_errors ignores connection and
+    channel errors.
+    Must only be used for cleanup actions at shutdown or on connection loss.
+  - Support for exchange-to-exchange bindings.
+    The kombu.Exchange entity gained bind_to
+    and unbind_from methods:
+
+        e1 = Exchange('A')(connection)
+        e2 = Exchange('B')(connection)
+
+        e2.bind_to(e1, routing_key='rkey', arguments=None)
+        e2.unbind_from(e1, routing_key='rkey', arguments=None)
+
+    This is currently only supported by the pyamqp transport.
+
+    Contributed by Rumyana Neykova.
+
+-------------------------------------------------------------------
+Sat Dec  1 21:56:00 UTC 2012 - toddrme2178@gmail.com
+
+- Only require python-importlib for SLE.  It is not needed for any
+  distro running python >= 2.7, and is not being built for those
+  distros.
+
+-------------------------------------------------------------------
+Thu Nov 29 10:07:56 UTC 2012 - iartarisi@suse.cz
+
+- Add python-importlib dependency
+
+-------------------------------------------------------------------
+Sun Nov 25 11:27:04 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.10:
+  - Redis: Fixed race condition that could occur while trying to
+    restore messages (Issue #171).
+    Fix contributed by Ollie Walsh.
+  - Redis: Each channel is now using a specific connection pool
+    instance, which is disconnected on connection failure.
+  - ProducerPool: Fixed possible dead-lock in the acquire method.
+  - ProducerPool: force_close_all no longer tries to call the
+    non-existent Producer._close.
+  - librabbitmq: Now implements transport.verify_connection so
+    that connection pools will not give back connections that are
+    no longer working.
+  - New and better repr() for Queue and Exchange objects.
+  - Python3: Fixed problem with running the unit test suite.
+  - Python3: Fixed problem with JSON codec.
+
+-------------------------------------------------------------------
+Sat Nov  3 02:58:14 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.8:
+  - Redis: Fair queue cyle implementation improved (Issue #166).
+    Contributed by Kevin McCarthy.
+  - Redis: Number of messages to restore in one iteration is now
+    unlimited, but can be configured using the unacked_restore_limit
+    transport option.
+  - Redis: A Redis based mutex is now used while restoring messages.
+  - LamportClock.adjust now returns the new clock value.
+  - Heartbeats can now be specified in URLs.
+    Fix contributed by Mher Movsisyan.
+  - Kombu can now be used with PyDev, PyCharm and other static
+    analysis tools.
+  - Fixes problem with msgpack on Python 3 (Issue #162).
+    Fix contributed by Jasper Bryant-Greene
+
+-------------------------------------------------------------------
+Wed Sep 19 01:53:45 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.7:
+  - Virtual: Unknown exchanges now default to 'direct' when sending
+    a message.
+  - MongoDB: Fixed memory leak when merging keys stored in the db
+    (Issue #159)
+    Fix contributed by Michael Korbakov.
+  - MongoDB: Better index for MongoDB transport (Issue #158).
+    This improvement will create a new compund index for queue and
+    _id in order to be able to use both indexed fields for getting
+    a new message (using queue field) and sorting by _id. It'll be
+    necessary to manually delete the old index from the collection.
+
+-------------------------------------------------------------------
+Wed Sep 12 17:10:37 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.6:
+  - Adds additional compatibility dependencies:
+    - Python <= 2.6:
+        - importlib
+        - ordereddict
+    - Python <= 2.5
+        - simplejson
+
+-------------------------------------------------------------------
+Thu Aug 30 17:02:05 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.5:
+  - Last version broke installtion on PyPy and Jython due to test
+    requirements clean-up.
+
+-------------------------------------------------------------------
+Wed Aug 29 18:05:01 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.4:
+  - amqplib: Fixed a bug with asynchronously reading large messages.
+  - pyamqp: Now requires amqp 0.9.3
+  - Cleaned up test requirements.
+
+-------------------------------------------------------------------
+Mon Aug 27 14:24:17 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.3:
+  - Fixed problem with amqp transport alias (Issue #154).
+
+-------------------------------------------------------------------
+Fri Aug 24 19:46:11 UTC 2012 - alexandre@exatati.com.br
+
+- Removed tests as qe do not have python-amqp (only python-amqplib).
+- Update to 2.4.2:
+  - Having an empty transport name broke in 2.4.1.
+- Aditional changes from 2.4.1:
+  - Redis: Fixed race condition that could cause the consumer to
+    crash (Issue #151)
+    Often leading to the error message "could not convert string to
+    float"
+  - Connection retry could cause an inifite loop (Issue #145).
+  - The amqp alias is now resolved at runtime, so that eventlet
+    detection works even if patching was done later.
+
+-------------------------------------------------------------------
+Fri Aug 17 20:24:04 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.4.0:
+  - New experimental ZeroMQ transport.
+    Contributed by John Watson.
+  - Redis: Ack timed-out messages were not restored when using the eventloop.
+  - Now uses pickle protocol 2 by default to be cross-compatible with Python 3.
+    The protocol can also now be changed using the PICKLE_PROTOCOL
+    environment variable.
+  - Adds Transport.supports_ev attribute.
+  - Pika: Queue purge was not working properly.
+    Fix contributed by Steeve Morin.
+  - Pika backend was no longer working since Kombu 2.3
+    Fix contributed by Steeve Morin.
+
+-------------------------------------------------------------------
+Wed Aug  1 18:57:38 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.3.2:
+  - Fixes problem with deserialization in Python 3.
+- Aditional changes from 2.3.1:
+  - librabbitmq: Can now handle messages that does not have a
+    content_encoding/content_type set (Issue #149).
+
+    Fix contributed by C Anthony Risinger.
+
+  - Beanstalk: Now uses localhost by default if the URL does not
+    contain a host.
+
+-------------------------------------------------------------------
+Thu Jul 26 00:01:34 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.3.0:
+  - New pyamqp:// transport!
+    The new py-amqp library is a fork of amqplib started with the
+    following goals:
+        - Uses AMQP 0.9.1 instead of 0.8
+        - Should support all RabbitMQ extensions
+        - API compatible with librabbitmq so that it can be used
+          as a pure-python replacement in environments where rabbitmq-c cannot
+          be compiled.
+
+    py-amqp: http://amqp.readthedocs.org/
+
+    If you start using use py-amqp instead of amqplib you can enjoy many
+    advantages including:
+
+        - Heartbeat support (Issue #79 + Issue #131)
+        - Consumer Cancel Notifications (Issue #131)
+        - Publisher Confirms
+
+    amqplib has not been updated in a long while, so maintaining our own fork
+    ensures that we can quickly roll out new features and fixes without
+    resorting to monkey patching.
+
+    To use the py-amqp transport you must install the amqp library:
+
+        $ pip install amqp
+
+    and change the connection URL to use the correct transport:
+
+        >>> conn = Connection('pyamqp://guest:guest@localhost//')
+
+
+    The pyamqp:// transport will be the default fallback transport
+    in Kombu version 3.0, when librabbitmq is not installed,
+    and librabbitmq will also be updated to support the same features.
+
+  - Connection now supports heartbeat argument.
+    If enabled you must make sure to manually maintain heartbeats
+    by calling the Connection.heartbeat_check at twice the rate
+    of the specified heartbeat interval.
+
+    E.g. if you have Connection(heartbeat=10),
+    then you must call Connection.heartbeat_check() every 5 seconds.
+
+    if the server has not sent heartbeats at a suitable rate then
+    the heartbeat check method must raise an error that is listed
+    in Connection.connection_errors.
+
+    The attribute Connection.supports_heartbeats has been added
+    for the ability to inspect if a transport supports heartbeats
+    or not.
+
+    Calling heartbeat_check on a transport that does
+    not support heartbeats results in a noop operation.
+
+  - SQS: Fixed bug with invalid characters in queue names.
+    Fix contributed by Zach Smith.
+  - utils.reprcall: Fixed typo where kwargs argument was an empty tuple by
+    default, and not an empty dict.
+
+-------------------------------------------------------------------
+Wed Jul 11 12:52:40 UTC 2012 - saschpe@suse.de
+
+- Re-enable testsuite and add it's build-time dependencies
+
+-------------------------------------------------------------------
+Tue Jul 10 22:40:59 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.6:
+  - Adds ``messaging.entry_to_queue`` for compat with previous versions.
+
+-------------------------------------------------------------------
+Tue Jul 10 16:34:37 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.5:
+  - Pidbox: Now sets queue expire at 10 seconds for reply queues.
+  - EventIO: Now ignores ``ValueError`` raised by epoll unregister.
+  - MongoDB: Fixes Issue #142
+    Fix by Flavio Percoco Premoli
+
+-------------------------------------------------------------------
+Thu Jul  5 16:30:11 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.4:
+  - Support for msgpack-python 0.2.0 (Issue #143)
+    The latest msgpack version no longer supports Python 2.5, so if you're
+    still using that you need to depend on an earlier msgpack-python version.
+
+    Fix contributed by Sebastian Insua
+  - kombu.common.maybe_declare no longer caches entities with the
+    auto_delete flag set.
+  - New experimental filesystem transport.
+    Contributed by Bobby Beever.
+  - Virtual Transports: Now support anonymous queues and exchanges.
+
+-------------------------------------------------------------------
+Mon Jun 25 02:37:27 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.3:
+  - BrokerConnection now renamed to Connection.
+    The name Connection has been an alias for a very long time,
+    but now the rename is official in the documentation as well.
+    The Connection alias has been available since version 1.1.3,
+    and BrokerConnection will still work and is not deprecated.
+  - Connection.clone() now works for the sqlalchemy transport.
+  - kombu.common.eventloop, kombu.utils.uuid,
+    and kombu.utils.url.parse_url can now be
+    imported from the kombu module directly.
+  - Pidbox transport callback after_reply_message_received now happens
+    in a finally block.
+  - Trying to use the librabbitmq:// transport will now show the right
+    name in the ImportError if librabbitmq is not installed.
+    The librabbitmq falls back to the older pylibrabbitmq name for
+    compatibility reasons and would therefore show No module named
+    pylibrabbitmq instead of librabbitmq.
+
+-------------------------------------------------------------------
+Fri Jun 22 17:03:30 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.2:
+  - Now depends on anyjson 0.3.3
+  - Json serializer: Now passes buffer objects directly,
+    since this is supported in the latest anyjson version.
+  - Fixes blocking epoll call if timeout was set to 0.
+    Fix contributed by John Watson.
+  - setup.py now takes requirements from the requirements/ directory.
+  - The distribution directory contrib/ is now renamed to extra/
+
+-------------------------------------------------------------------
+Thu Jun 21 14:40:14 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.1:
+
+  - SQS: Default visibility timeout is now 30 minutes.
+    Since we have ack emulation the visibility timeout is
+    only in effect if the consumer is abrubtly terminated.
+  - retry argument to Producer.publish now works properly,
+    when the declare argument is specified.
+  - Json serializer: didn't handle buffer objects (Issue #135).
+    Fix contributed by Jens Hoffrichter.
+  - Virtual: Now supports passive argument to exchange_declare.
+  - Exchange & Queue can now be bound to connections (which will use
+    the default channel):
+    >>> exchange = Exchange("name")
+    >>> bound_exchange = exchange(connection)
+    >>> bound_exchange.declare()
+  - SimpleQueue & SimpleBuffer can now be bound to connections (which
+    will use the default channel).
+  - Connection.manager.get_bindings now works for librabbitmq and pika.
+  - Adds new transport info attributes:
+    - Transport.driver_type
+        Type of underlying driver, e.g. "amqp", "redis", "sql".
+    - Transport.driver_name
+        Name of library used e.g. "amqplib", "redis", "pymongo".
+    - Transport.driver_version()
+        Version of underlying library.
+
+-------------------------------------------------------------------
+Fri Jun  8 12:58:07 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.2.0:
+  - Please read descriptive changelog here:
+    http://kombu.readthedocs.org/en/latest/changelog.html#version-2-2-0
+
+-------------------------------------------------------------------
+Mon May  7 20:49:30 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.8:
+  * Bound Exchange/Queue's are now pickleable.
+  * Consumer/Producer can now be instantiated without a channel,
+    and only later bound using .revive(channel).
+  * ProducerPool now takes Producer argument.
+  * kombu.utils.fxrange now counts forever if the
+    stop argument is set to None.
+    (fxrange is like xrange but for decimals).
+  * Auto delete support for virtual transports were incomplete
+    and could lead to problems so it was removed.
+  * Cached declarations (kombu.common.maybe_declare)
+    are now bound to the underlying connection, so that
+    entities are redeclared if the connection is lost.
+    This also means that previously uncacheable entities
+    (e.g. non-durable) can now be cached.
+  * compat ConsumerSet: can now specify channel.
+
+-------------------------------------------------------------------
+Fri Apr 27 18:59:01 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.7:
+  * compat consumerset now accepts optional channel argument.
+
+-------------------------------------------------------------------
+Mon Apr 23 14:41:50 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.6:
+  * SQLAlchemy transport was not working correctly after URL parser change.
+  * maybe_declare now stores cached declarations per underlying connection
+    instead of globally, in the rare case that data disappears from the
+    broker after connection loss.
+  * Django: Added South migrations.
+    Contributed by Joseph Crosland.
+
+-------------------------------------------------------------------
+Fri Apr 13 17:37:56 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.5:
+  * The url parser removed more than the first leading slash (Issue #121).
+  * SQLAlchemy: Can now specify url using + separator
+    Example::
+        BrokerConnection("sqla+mysql://localhost/db")
+  * Better support for anonymous queues (Issue #116).
+    Contributed by Michael Barrett.
+  * Connection.as_uri now quotes url parts (Issue #117).
+  * Beanstalk: Can now set message TTR as a message property.
+    Contributed by Andrii Kostenko
+
+-------------------------------------------------------------------
+Tue Apr  3 16:49:46 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.4:
+  * MongoDB:  URL parsing are now delegated to the pymongo library
+    (Fixes Issue #103 and Issue #87).
+    Fix contributed by Flavio Percoco Premoli and James Sullivan
+  * SQS:  A bug caused SimpleDB to be used even if sdb persistence
+    was not enabled (Issue #108).
+    Fix contributed by Anand Kumria.
+  * Django:  Transaction was committed in the wrong place, causing
+    data cleanup to fail (Issue #115).
+    Fix contributed by Daisuke Fujiwara.
+  * MongoDB: Now supports replica set URLs.
+    Contributed by Flavio Percoco Premoli.
+  * Redis: Now raises a channel error if a queue key that is currently
+    being consumed from disappears.
+    Fix contributed by Stephan Jaekel.
+  * All transport 'channel_errors' lists now includes
+    kombu.exception.StdChannelError.
+  * All kombu exceptions now inherit from a common
+    kombu.exceptions.KombuError.
+
+-------------------------------------------------------------------
+Tue Mar 27 08:35:53 UTC 2012 - saschpe@suse.de
+
+- Change rabbitmq-server recommends to suggests, OpenStack doesn't like that
+- Simplified macro usage
+- Use upstream tarball
+
+-------------------------------------------------------------------
+Tue Mar 20 17:42:53 UTC 2012 - alexandre@exatati.com.br
+
+-  Update to 2.1.3:
+  * Fixes Jython compatibility issues.
+  * Fixes Python 2.5 compatibility issues.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:45:07 UTC 2012 - alexandre@exatati.com.br
+
+- Add BuildRequires python-unittest2 to fix SLE builds.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:26:04 UTC 2012 - alexandre@exatati.com.br
+
+- Do not touch files without a submitrequest.
+
+-------------------------------------------------------------------
+Sat Mar 10 17:49:39 UTC 2012 - saschpe@gmx.de
+
+- Require rabbitmq-server, suggest mongodb or couchdb
+
+-------------------------------------------------------------------
+Sat Mar 10 17:00:40 UTC 2012 - saschpe@gmx.de
+
+- Update to version 2.1.1:
+  * Connection URLs now supports encoded characters.
+  * Fixed a case where connection pool could not recover from connection loss.
+  * We now patch amqplib's __del__ method to skip trying to close the socket
+    if it is not connected, as this resulted in an annoying warning.
+  * Compression can now be used with binary message payloads.
+- Don't install INSTALL
+- Run testsuite
+
+-------------------------------------------------------------------
+Sat Feb  4 18:00:49 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.0:
+  * MongoDB: Now supports fanout (broadcast) (Issue #98).
+    Contributed by Scott Lyons.
+  * pika transport: Now works with pika 0.9.5 and 0.9.6dev.
+    The old pika transport (supporting 0.5.x) is now available
+    as alias oldpika.
+    (Note terribly latency has been experienced with the new pika
+    versions, so this is still an experimental transport).
+
+-------------------------------------------------------------------
+Tue Jan 17 01:15:23 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.0.0:
+  Important Notes
+  - No longer supports Python 2.4.
+  New Transports
+  - django-kombu is now part of Kombu core.
+  - kombu-sqlalchemy is now part of Kombu core.
+  News
+  - kombu.mixins.ConsumerMixin is a mixin class that lets you
+    easily write consumer programs and threads.
+  - SQS Transport: Added support for SQS queue prefixes (Issue #84).
+  - Producer.publish now supports automatic retry.
+  - Producer.publish now supports a declare keyword argument.
+  Fixes
+  - Redis transport: Timeout was multiplied by 1000 seconds when 
+    using select for event I/O (Issue #86).
+
+-------------------------------------------------------------------
+Wed Nov 30 14:55:08 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.5.1:
+  * Fixes issue with kombu.compat introduced in 1.5.0 (Issue #83).
+  * Adds the ability to disable content_types in the serializer registry.
+
+-------------------------------------------------------------------
+Mon Nov 28 02:19:24 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.5.0:
+  * kombu.pools: Fixed a bug resulting in resources not being properly released.
+    This was caused by the use of __hash__ to distinguish them.
+  * Virtual transports: Dead-letter queue is now disabled by default.
+    The dead-letter queue was enabled by default to help application
+    authors, but now that Kombu is stable it should be removed.
+    There are after all many cases where messages should just be dropped
+    when there are no queues to buffer them, and keeping them without
+    supporting automatic cleanup is rather considered a resource leak
+    than a feature.
+
+    If wanted the dead-letter queue can still be enabled, by using
+    the deadletter_queue transport option:
+
+        >>> x = BrokerConnection("redis://",
+        ...       transport_options={"deadletter_queue": "ae.undeliver"})
+
+    In addition, an UndeliverableWarning is now emitted when
+    the dead-letter queue is enabled and a message ends up there.
+  * MongoDB transport now supports Replicasets (Issue #81).
+  * The Connection.ensure methods now accepts a max_retries value
+    of 0.
+    A value of 0 now means *do not retry*, which is distinct from :const:None
+    which means *retry indefinitely*.
+  * SQS Transport: Now has a lowercase sqs alias, so that it can be
+    used with broker URLs (Issue #82).
+  * SQS Transport: Fixes KeyError on message acknowledgements (Issue #73).
+    The SQS transport now uses UUID's for delivery tags, rather than
+    a counter.
+  * SQS Transport: Unicode related fixes (Issue #82).
+  * Redis version check could crash because of improper handling of types
+    (Issue #63).
+  * Fixed error with Resource.force_close_all, when resources
+    not yet properly initialized.  (Issue #78).
+
+-------------------------------------------------------------------
+Thu Oct 27 22:33:03 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.4.3:
+  -  Fixes bug in ProducerPool where too many resources would be acquired.
+
+-------------------------------------------------------------------
+Wed Oct 26 18:12:33 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.4.2:
+  - Eventio: Polling should ignore errno.EINTR
+  - SQS: str.encode did only start accepting kwargs after Py2.7.
+  - simple_task_queue example didn’t run correctly (Issue #72).
+  - Empty messages would not raise an exception not able to be
+    handled by on_decode_error (Issue #72)
+  - CouchDB: Properly authenticate if user/password set (Issue #70)
+  - BrokerConnection.Consumer had the wrong signature.
+
+-------------------------------------------------------------------
+Mon Sep 26 18:46:36 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.4.1:
+  - 1.4.0 broke the producer pool, resulting in new connections being
+    established for every acquire.
+
+
+-------------------------------------------------------------------
+Thu Sep 22 16:59:42 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.4.0:
+  - Adds module kombu.mixins.
+  - New example: Task Queue Example
+  - MongoDB transport did not work with MongoDB >= 2.0 (Issue #66)
+  - Redis-py version check did not account for beta identifiers in
+    version string.
+  - Producer and Consumer now accepts a connection instance as the
+    first argument.
+  - BrokerConnection has aquired a connected attribute that can be
+    used to check if the connection instance has established a
+    connection.
+  - ConnectionPool.acquire_channel now returns the connections
+    default channel rather than establising a new channel that must be manually handled.
+  - Added kombu.common.maybe_declare
+  - kombu.compat.entry_to_queue() has been moved to kombu.common
+  - New module kombu.clocks now contains an implementation of
+    Lamports logical clock.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:45:36 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.5:
+  * Python 3: AMQP_PROTOCOL_HEADER must be bytes, not str.
+- Changes from 1.3.4:
+  * Fixes syntax error in pools.reset
+
+-------------------------------------------------------------------
+Thu Sep 15 16:55:35 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.3:
+  * pools.reset did not support after forker arguments.
+
+-------------------------------------------------------------------
+Sun Sep 11 01:15:42 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.2:
+  * Broke Python 2.5 compatibility by importing parse_qsl from urlparse
+  * Connection.default_channel is now closed when connection is revived
+    after connection failures.
+  * Pika: Channel now supports the connection.client attribute
+    as required by the simple interface.
+  * pools.set_limit now raises an exception if the limit is lower
+    than the previous limit.
+  * pools.set_limit no longer resets the pools.
+
+-------------------------------------------------------------------
+Thu Sep  8 01:40:01 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.1:
+  * Last release broke after fork for pool reinitialization.
+  * Producer/Consumer now has a connection attribute,
+    giving access to the BrokerConnection of the
+    instance.
+  * Pika: Channels now have access to the underlying
+    BrokerConnection instance using channel.connection.client.
+    This was previously required by the Simple classes and is now
+    also required by Consumer and Producer.
+  * Connection.default_channel is now closed at object revival.
+  * Adds kombu.clocks.LamportClock.
+  * compat.entry_to_queue has been moved to new module kombu.common.
+
+-------------------------------------------------------------------
+Mon Sep  5 22:53:31 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.0:
+  * Broker connection info can be now be specified using URLs
+  * Now comes with default global connection and producer pools
+  * SQS Transport: Persistence using SimpleDB is now disabled by
+    default, after reports of unstable SimpleDB connections leading
+    to errors
+  * Producer can now be used as a context manager
+  * Producer.__exit__ now properly calls release instead of close
+  * Now silences all exceptions from import ctypes to match behaviour
+    of the standard Python uuid module, and avoid passing on
+    MemoryError exceptions on SELinux-enabled systems (Issue #52 +
+    Issue #53)
+  * amqp is now an alias to the amqplib transport
+  * kombu.syn.detect_environment now returns ‘default’, ‘eventlet’,
+    or ‘gevent’ depending on what monkey patches have been installed
+  * Serialization registry has new attribute type_to_name so it is
+    possible to lookup serializater name by content type
+  * Exchange argument to Producer.publish can now be an Exchange
+    instance
+  * compat.Publisher now supports the channel keyword argument
+  * Acking a message on some transports could lead to KeyError being
+    raised (Issue #57)
+  * Connection pool: Connections are no long instantiated when the
+    pool is created, but instantiated as needed instead
+  * Tests now pass on PyPy
+  * Connection.as_uri now includes the password if the keyword
+    argument include_password is set
+  * Virtual transports now comes with a default
+    default_connection_params attribute
+
+-------------------------------------------------------------------
+Fri Jul 29 12:44:33 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.2.1:
+  * Now depends on amqplib >= 1.0.0.
+  * Redis: Now automatically deletes auto_delete queues at basic_cancel.
+  * serialization.unregister added so it is possible to remove unwanted
+    seralizers.
+  * Fixes MemoryError while importing ctypes on SELinux (Issue #52).
+  * BrokerConnection.autoretry is a version of ensure that works
+    with arbitrary functions (i.e. it does not need an associated object
+    that implements the revive method.
+  * ConnectionPool.acquire no longer force establishes the connection.
+     The connection will be established as needed.
+  * BrokerConnection.ensure now supports an on_revive callback
+    that is applied whenever the connection is re-established.
+  * Consumer.consuming_from(queue) returns True if the Consumer is
+    consuming from queue.
+  * Consumer.cancel_by_queue did not remove the queue from queues.
+  * compat.ConsumerSet.add_queue_from_dict now automatically declared
+    the queue if auto_declare set.
+
+-------------------------------------------------------------------
+Fri Jul 15 12:52:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.2.0:
+  * Virtual: Fixes cyclic reference in Channel.close (Issue #49).
+  * Producer.publish: Can now set additional properties using keyword
+    arguments (Issue #48).
+  * Adds Queue.no_ack option to control the no_ack option for individual queues.
+  * Recent versions broke pylibrabbitmq support.
+  * SimpleQueue and SimpleBuffer can now be used as contexts.
+  * Test requirements specifies PyYAML==3.09 as 3.10 dropped Python 2.4 support
+  * Now properly reports default values in Connection.info/.as_uri
+
+-------------------------------------------------------------------
+Mon Jun 13 22:42:00 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.6:
+  * Redis: Fixes issue introduced in 1.1.4, where a redis connection
+    failure could leave consumer hanging forever.
+  * SQS: Now supports fanout messaging by using SimpleDB to store routing
+    tables.
+
+    This can be disabled by setting the supports_fanout transport option:
+
+        >>> BrokerConnection(transport="SQS",
+        ...                  transport_options={"supports_fanout": False})
+  * SQS: Now properly deletes a message when a message is acked.
+  * SQS: Can now set the Amazon AWS region, by using the region
+    transport option.
+  * amqplib: Now uses localhost as default hostname instead of raising an
+    error.
+
+-------------------------------------------------------------------
+Tue Jun  7 22:57:44 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.5:
+  * Fixes compatibility with redis-py 2.4.4.
+- Aditional changes from:
+  * Redis transport: Now requires redis-py version 2.4.4 or later.
+  * New Amazon SQS transport added.
+  * librabbitmq transport: Fixes default credentials support.
+  * amqplib transport: Now supports login_method for SSL auth.
+    Default login_method is AMQPLAIN.
+
+-------------------------------------------------------------------
+Thu Apr 21 18:07:47 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.3:
+  * Redis: Consuming from multiple connections now works with
+    Eventlet.
+  * Redis: Can now perform channel operations while the channel
+    is in BRPOP/LISTEN mode (Issue #35).
+      Also the async BRPOP now times out after 1 second, this
+      means that cancelling consuming from a queue/starting
+      consuming from additional queues has a latency of up to
+      one second (BRPOP does not support subsecond timeouts).
+  * Virtual: Allow channel objects to be closed multiple times
+    without error.
+  * amqplib: AttributeError has been added to the list of known
+    connection related errors (Connection.connection_errors).
+  * amqplib: Now converts SSLError timeout errors to
+    socket.timeout (http://bugs.python.org/issue10272)
+  * Ensures cyclic references are destroyed when the connection
+    is closed.
+
+-------------------------------------------------------------------
+Wed Apr  6 17:43:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.2:
+  * Redis: Fixes serious issue where messages could be lost.
+    The issue could happen if the message exceeded a certain number
+    of kilobytes in size.
+    It is recommended that all users of the Redis transport should
+    upgrade to this version, even if not currently experiencing any
+    issues.
+
+-------------------------------------------------------------------
+Wed Apr  6 00:59:48 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.1:
+  * Virtual transports: Message body is now base64 encoded by
+    default (Issue #27).
+    This should solve problems sending binary data with virtual
+    transports.
+    Message compatibility is handled by adding a body_encoding
+    property, so messages sent by older versions is compatible
+    with this release. However – If you are accessing the
+    messages directly not using Kombu, then you have to respect
+    the body_encoding property.
+    For transport authors:
+      You don’t have to change anything in your custom
+      transports, as this is handled automatically by the base
+      class.
+      If you want to use a different encoder you can do so by
+      adding a key to Channel.codecs. Default encoding is
+      specified by the Channel.body_encoding attribute.
+      A new codec must provide two methods: encode(data) and
+      decode(data).
+  * ConnectionPool/ChannelPool/Resource: Setting limit=None
+    (or 0) now disables pool semantics, and will establish and
+    close the resource whenever acquired or released.
+  * ConnectionPool/ChannelPool/Resource: Is now using a LIFO
+    queue instead of the previous FIFO behavior.
+  * BrokerConnection: Cloned connections did not inherit
+    transport_options (__copy__).
+  * contrib/requirements is now located in the top directory of
+    the distribution.
+  * MongoDB: Now supports authentication using the userid and
+    password arguments to BrokerConnection (Issue #30).
+  * BrokerConnection: Default autentication credentials are now
+    delegated to the individual transports.
+  * Consumer.__exit__() did not have the correct signature
+    (Issue #32).
+  * Channel objects now have a channel_id attribute.
+  * MongoDB: Version sniffing broke with development versions of
+    mongod (Issue #29).
+  * New environment variable KOMBU_LOG_CONNECTION will now emit
+    debug log messages for connection related actions.
+    KOMBU_LOG_DEBUG will also enable KOMBU_LOG_CONNECTION.
+
+-------------------------------------------------------------------
+Tue Mar 29 01:14:55 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.7:
+  * Now depends on anyjson 0.3.1
+    cjson is no longer a recommended json implementation, and anyjson
+    will now emit a deprecation warning if used.
+  * Please note that the Pika backend only works with version 0.5.2.
+    The latest version (0.9.x) drastically changed API, and it is not
+    compatible yet.
+  * on_decode_error is now called for exceptions in message_to_python
+    (Issue #24).
+  * Redis: did not respect QoS settings.
+  * Redis: Creating a connection now ensures the connection is established.
+    This means BrokerConnection.ensure_connection works properly with
+    Redis.
+  * consumer_tag argument to Queue.consume can't be None
+    (Issue #21).
+    A None value is now automatically converted to empty string.
+    An empty string will make the server generate a unique tag.
+  * BrokerConnection now supports a transport_options argument.
+    This can be used to pass additional arguments to transports.
+  * Pika: drain_events raised socket.timeout even if no timeout
+    set (Issue #8).
+
+-------------------------------------------------------------------
+Tue Mar 22 16:59:52 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.6:
+  - The delivery_mode aliases (persistent/transient) were not
+    automatically converted to integer, and would cause a crash if
+    using the amqplib transport.
+  - Redis: The redis-py InvalidData exception suddenly changed
+    name to DataError.
+  - The KOMBU_LOG_DEBUG environment variable can now be set to log
+    all channel method calls.
+  - Support for the following environment variables have been added:
+    - KOMBU_LOG_CHANNEL will wrap channels in an object that logs
+      every method call.
+    - KOMBU_LOG_DEBUG both enables channel logging and configures
+      the root logger to emit messages to standard error.
+- Aditional changes from 1.0.5:
+  - Fixed memory leak when creating virtual channels. All virtual
+    transports affected (redis, mongodb, memory, django, sqlalchemy,
+    couchdb, beanstalk).
+  - Virtual Transports: Fixed potential race condition when acking
+    messages.
+  - If you have been affected by this, the error would show itself
+    as an exception raised by the OrderedDict implementation.
+    (object no longer exists).
+  - MongoDB transport requires the findandmodify command only
+    available in MongoDB 1.3+, so now raises an exception if
+    connected to an incompatible server version.
+  - Virtual Transports: basic.cancel should not try to remove
+    unknown consumer tag.
+- Added AUTHORS Changelog FAQ INSTALL README THANKS TODO files
+  as documentation.
+
+-------------------------------------------------------------------
+Tue Mar  1 00:31:41 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.4:
+  * Added Transport.polling_interval
+    Used by django-kombu to increase the time to sleep between SELECTs when
+    there are no messages in the queue.
+
+    Users of django-kombu should upgrade to django-kombu v0.9.2.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:17:22 UTC 2011 - alexandre@exatati.com.br
+
+- Initial package (1.0.3) for openSUSE.

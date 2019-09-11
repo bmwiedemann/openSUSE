@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:55:29 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Feb 10 13:05:44 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Wed Feb  7 08:36:07 UTC 2018 - sebix+novell.com@sebix.at
+
+- fix filename of changes file
+
+-------------------------------------------------------------------
+Tue Oct  3 13:31:29 UTC 2017 - mardnh@gmx.de
+
+- Initial package

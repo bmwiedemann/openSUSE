@@ -1,0 +1,6 @@
+Since ifplugd is now integrated into the network configuration scripts,
+we removed the daemon startscript from the /etc/init.d directory.
+If you want to use ifplugd the "old" way and not via the sysconfig method, 
+just copy ifplugd.init to /etc/init.d/ifplugd.
+We recommend to use the sysconfig method (enter "STARTMODE=ifplugd" in the
+configuration for your network interface). 

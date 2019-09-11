@@ -1,0 +1,65 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 15 Feb 2019 15:12:04 -0700
+Subject: Revert "target/i386: kvm: add VMX migration blocker"
+
+This reverts commit d98f26073bebddcd3da0ba1b86c3a34e840c0fb8.
+Here is some text explaining the revert:
+I've thought about this some more, and with upstream
+discussions about it having stagnated, at this point I think
+the best solution is to revert the patch which considers it
+a migration blocker to have the vmx feature enabled. It's
+worth noting that not only are migrations blocked, but
+saving of the vm state via save/restore and snapshots.
+
+Given that it is still widely known that Nested Virtualization
+is not supported by SUSE and other vendors, but is still used
+by quite a few people who understand that there are caveats
+with it's usage, I believe this migration blocker is more
+hurtful than helpful.
+
+The fact that as of the v4.20 kernel, nested virtualization is
+enabled by default (for vmx), was partly why the patch was
+added in the first place. But my perspective is that perhaps
+enabling nested was still a bit premature.
+
+I will make sure our qemu changelog explains that despite
+removing that migration blocker, the user is warned that
+nested virtualization is still a "use at your own risk
+feature".
+
+[BR: BSC#1121604]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/i386/kvm.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 3b29ce5c0d..6ad450d9f1 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -906,7 +906,6 @@ static int hyperv_init_vcpu(X86CPU *cpu)
+ }
+ 
+ static Error *invtsc_mig_blocker;
+-static Error *vmx_mig_blocker;
+ 
+ #define KVM_MAX_CPUID_ENTRIES  100
+ 
+@@ -1270,17 +1269,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
+                                   !!(c->ecx & CPUID_EXT_SMX);
+     }
+ 
+-    if ((env->features[FEAT_1_ECX] & CPUID_EXT_VMX) && !vmx_mig_blocker) {
+-        error_setg(&vmx_mig_blocker,
+-                   "Nested VMX virtualization does not support live migration yet");
+-        r = migrate_add_blocker(vmx_mig_blocker, &local_err);
+-        if (local_err) {
+-            error_report_err(local_err);
+-            error_free(vmx_mig_blocker);
+-            return r;
+-        }
+-    }
+-
+     if (env->mcg_cap & MCG_LMCE_P) {
+         has_msr_mcg_ext_ctl = has_msr_feature_control = true;
+     }

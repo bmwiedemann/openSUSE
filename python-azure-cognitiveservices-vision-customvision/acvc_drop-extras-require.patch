@@ -1,0 +1,11 @@
+diff -Nru azure-cognitiveservices-vision-customvision-0.4.0.orig/setup.py azure-cognitiveservices-vision-customvision-0.4.0/setup.py
+--- azure-cognitiveservices-vision-customvision-0.4.0.orig/setup.py	2019-04-11 13:38:45.603506094 +0200
++++ azure-cognitiveservices-vision-customvision-0.4.0/setup.py	2019-04-11 13:43:12.465019826 +0200
+@@ -81,7 +81,4 @@
+         'msrest>=0.5.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-cognitiveservices-vision-nspkg'],
+-    }
+ )

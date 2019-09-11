@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Thu Jun 13 21:40:11 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.9.1:
+  * resize: fix incorrect spline36 coefficients (introduced in 2.9)
+
+-------------------------------------------------------------------
+Fri Jun  7 12:40:52 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.9:
+  * colorspace: improve accuracy of SSE2 LUT-based transfer
+    functions
+  * depth: AVX2 and AVX-512 code paths for limited range upsampling
+  * graph: optimize tile width calculation
+  * graph: reduce execution overhead
+  * graph: skip processing pixels outside of active window
+  * resize: change default bicubic from Mitchell-Netravali to
+    Catmull-Rom
+  * resize: make output bit-exact regardless of active window
+    dimensions
+  * x86: optimizations for AMD Piledriver and Zen1 processors
+
+-------------------------------------------------------------------
+Mon Oct 22 20:26:25 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.8:
+  * api: rename colorspace enum values
+  * colorspace: AVX-512 code paths for commonly used transfer
+    functions
+  * colorspace: optimize SSE2 LUT-based transfer functions
+  * common: reduce execution overhead
+  * depth: increase ordered dither pattern from 8x8 to 16x16
+  * depth: use blue noise instead of white for random dither
+  * depth: use different dither pattern on each color component
+  * resize: optimize x86 SIMD horizontal downsampling with >8 taps
+  * x86: cache detection on AMD processors
+  * x86: optimizations for AMD Excavator processors
+
+-------------------------------------------------------------------
+Fri Jul 13 20:36:32 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 2.7.5:
+  * depth: fix SSE2 byte->float when width+4 is mod16
+  * resize: allow downsampling to very low resolutions
+
+-------------------------------------------------------------------
+Mon Apr 23 11:40:40 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: create libzimg2-32bit as a dependency to
+  libavfilter6-32bit.
+
+-------------------------------------------------------------------
+Thu Feb  8 03:29:33 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 2.7.4
+  * x86: fix crash on Yorkfield (Core 2 Quad) processors
+    (introduced in 2.7)
+
+-------------------------------------------------------------------
+Wed Jan 31 18:45:42 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 2.7.3
+  * resize: fix performance drop in certain resampling ratios
+- Use %license macro
+- Include example code in -devel documentation
+
+-------------------------------------------------------------------
+Mon Jan 29 20:40:37 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 2.7.2
+  * graph: fix image corruption in certain conversions
+    (introduced in 2.7)
+  * resize: fix AVX-512 horizontal resize with certain widths
+    (introduced in 2.6)
+
+-------------------------------------------------------------------
+Sun Jan 14 19:07:35 UTC 2018 - 9@cirno.systems
+
+- Update to 2.7.1
+  * colorspace: fix incorrect ST.428 primaries (introduced in 2.7)
+  * colorspace: preserve BTB/WTW when approximate_gamma is set
+  * colorspace: optimize handling of IEC 61966-2-4 transfer
+    characteristics
+
+-------------------------------------------------------------------
+Sun Dec 31 19:17:05 UTC 2017 - 9@cirno.systems
+
+- Update to 2.7
+  * colorspace: add support for additional
+    matrix/transfer/primaries
+  * graph: reduce buffer copies when converting from grey to color
+  * graph: reduce buffer copies when performing colorspace
+    conversion
+  * graph: process input planes separately when possible
+  * graph: optimize calculation of tile width
+  * x86: automatic cache size detection for Intel processors
+
+-------------------------------------------------------------------
+Thu Nov 30 06:37:10 UTC 2017 - 9@cirno.systems
+
+- Entry to make factory-auto happy after devel project change
+  * Delete zimg-automake-1.13.patch
+  * Delete zimg-5.0.0.patch
+
+-------------------------------------------------------------------
+Wed Nov 22 14:05:51 UTC 2017 - 9@cirno.systems
+
+- Update to 2.6.3
+  * resize: fix crash in AVX-512 resizer with GCC
+  * resize: improve cache efficiency in AVX-512 horizontal resizers
+
+-------------------------------------------------------------------
+Mon Nov 20 08:45:15 UTC 2017 - mpluskal@suse.com
+
+- Clean up spec file a bit
+- Drop useless service
+
+-------------------------------------------------------------------
+Fri Nov 10 18:27:47 UTC 2017 - 9@cirno.systems
+
+- Update to 2.6.2
+  * depth: fix AVX-512 clamping of negative pixels
+  * graph: fix WORD greyscale to YUV conversion
+
+-------------------------------------------------------------------
+Tue Sep  5 18:21:39 UTC 2017 - 9@cirno.systems
+
+- Update to 2.6.1
+  * depth: fix SSE2 conversions with mod4 and mod8 widths
+    (introduced in 2.6)
+  * resize: fix heap corruption in AVX2 horizontal resizer
+    (introduced in 2.6)
+
+-------------------------------------------------------------------
+Fri Aug 18 12:03:13 UTC 2017 - 9@cirno.systems
+
+- Rename to zimg to match upstream name (see OBS request #516938)
+- Update to 2.6a
+  * api: add missing version requirements to comments
+  * example: add ZIMG_CPU_AUTO_64B to API example
+  * example: add more comments
+  * colorspace: fix unit tests on 32-bit x86
+
+-------------------------------------------------------------------
+Mon Aug 14 23:21:47 UTC 2017 - 9@cirno.systems
+
+- Update to version 2.6
+  * api: add ZIMG_CPU_AUTO_64B for AVX-512 compatibility
+  * colorspace: add support for ITU-R BT.2100 ICtCp
+  * colorspace: add support for constant luminance ITU-R BT.2100 HLG
+  * colorspace: add support for SMPTE ST.431-2 (traditional DCI-P3)
+  * colorspace: add support for chromaticity-derived NCL/CL matrices
+  * colorspace: assume 1000 cd/m^2 peak luminance for HLG
+  * colorspace: fix crash on bad colorspace definition
+  * depth: optimized SSE2/AVX2 conversions with 8/16-bit input
+  * resize: optimized AVX2 horizontal upsampler memory usage
+  * resize: optimized x86 SIMD function calling
+  * x86: AVX-512 code paths for key functions
+
+-------------------------------------------------------------------
+Sun Jul  9 00:08:55 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+- Edit description to avoid potential confusion with the
+  z/zip compression library (zlib).
+- Replace ancient -j%jobs by %_smp_mflags.
+
+-------------------------------------------------------------------
+Thu Jul  6 20:21:12 UTC 2017 - 9@cirno.systems
+
+- Copy to OBS, add (disabled) download _service
+
+-------------------------------------------------------------------
+Thu Jun 22 10:41:57 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.5.1
+  + depth: fix AVX2 conversion from half to byte/word
+    (introduced in 2.1).
+
+-------------------------------------------------------------------
+Thu Mar 30 11:42:13 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Initial package, version 2.5

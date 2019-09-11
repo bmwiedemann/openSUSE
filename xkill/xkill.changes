@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Wed Apr  4 16:09:04 UTC 2018 - sndirsch@suse.com
+
+- update to version 1.0.5
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Print which option was in error along with usage message
+  * Use strcasecmp instead of a tolower loop & strcmp
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Thu Feb  6 10:27:20 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile 
+
+-------------------------------------------------------------------
+Thu Sep 12 18:18:23 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Explicitly cast tolower() return value to char before
+    storing in a char.
+  + Mark arguments to catch_window_errors as unused.
+  + Use man page sections in See Also references to libX11 man
+    pages.
+  + Add -version option to print version.
+  + Mark static string in verify_okay_to_kill as const.
+  + Mark msg argument to get_window_id as const, since it's just
+    printed out.
+  + Use strtoul instead of open coding it with sscanf.
+  + Mark Exit() and usage() as _X_NORETURN.
+  + Get rid of dpy global so we don't get shadow warnings from
+    every function.
+  + Remove unused variable cpp.
+  + config: move man pages into their own directory.
+  + man:
+    - Replace hard coded man page section with substitution
+      strings.
+    - Remove trailing spaces and tabs.
+- Add pkgconfig(xproto) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Fri Apr 13 16:17:24 UTC 2012 - mgorse@suse.com
+
+- Split xkill from xorg-x11. Initial version: 1.0.3.
+

@@ -1,0 +1,11 @@
+--- tex.el
++++ tex.el	2015-11-14 12:10:30.386677534 +0200
+@@ -345,7 +345,7 @@
+ ;; TeX-print-command.
+ 
+ (defcustom TeX-print-command
+-  "{ test -e %s.dvi && %(o?)dvips -P%p %r %s; } || lpr -P%p %o"
++  "{ test -e %s.dvi && %(o?)dvips %r -f %s | lpr -P%p; } || lpr -P%p %o"
+   "Command used to print a file.
+ 
+ First `%p' is expanded to the printer name, then ordinary expansion is

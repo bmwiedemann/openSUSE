@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Apr 11 09:24:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 12.7
+  * Await `aiohttp.ClientSession.close()`
+  * Upgraded dependency `aiohttp>=3.0.0`
+  * Bot API 3.6
+  * Added `parse_mode` to all methods and namedtuples supporting `caption`
+  * Added `supports_streaming` and `connected_website` to relevant
+    methods and namedtuples
+  * Fixed downloading through proxy in `telepot.aio.api` module
+
+-------------------------------------------------------------------
+Mon Mar  5 15:37:31 UTC 2018 - badshah400@gmail.com
+
+- Use \%license instead of \%doc to package License.md.
+
+-------------------------------------------------------------------
+Mon Dec 18 11:29:26 UTC 2017 - badshah400@gmail.com
+
+- Update to version 12.5:
+  * Bot API 3.5
+    - Added method `sendMediaGroup` and namedtuple
+      `InputMediaPhoto` and `InputMediaVideo`
+    - Added parameter `provider_data` to method `sendInvoice`
+    - Better exception handling in `telepot.aio.api` module
+- Convert to python single-spec version.
+
+-------------------------------------------------------------------
+Sun Feb 19 23:30:17 UTC 2017 - badshah400@gmail.com
+
+- Initial package
+

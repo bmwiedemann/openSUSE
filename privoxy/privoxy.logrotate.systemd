@@ -1,0 +1,28 @@
+/var/lib/privoxy/log/logfile {
+	compress
+	dateext
+	notifempty
+	create 640 privoxy root
+	su privoxy privoxy
+	rotate 99
+	size 4M
+	#maxage 365
+	postrotate
+		/usr/bin/systemctl reload privoxy
+	endscript
+}
+
+/var/lib/privoxy/log/jarfile {
+	compress
+	dateext
+	notifempty
+	create 640 privoxy root
+	su privoxy privoxy
+	rotate 99
+	size 4M
+	#maxage 365
+	postrotate
+		/usr/bin/systemctl reload privoxy
+	endscript
+}
+

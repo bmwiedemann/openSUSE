@@ -1,0 +1,91 @@
+From 582c2e703b48f2c8aa6a7e574997a4650b8a67a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Fri, 12 Dec 2014 15:46:15 +0100
+Subject: [PATCH 3/6] Remove runlevel 4 from init scripts
+
+---
+ src/pmcd/rc_pcp          | 12 ++++++------
+ src/pmcd/rc_pmcd         |  2 +-
+ src/pmie/rc_pmie         |  2 +-
+ src/pmlogger/rc_pmlogger |  2 +-
+ src/pmproxy/rc_pmproxy   |  2 +-
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/pmcd/rc_pcp b/src/pmcd/rc_pcp
+index fc58627acc4b..9acf3c6f7cca 100644
+--- a/src/pmcd/rc_pcp
++++ b/src/pmcd/rc_pcp
+@@ -31,12 +31,12 @@
+ # e.g. SuSE, where chkconfig is a perl script.
+ ### BEGIN INIT INFO
+ # Provides:          pcp
+-# Required-Start:
+-# Should-Start:
+-# Required-Stop:
+-# Should-Stop:
+-# Default-Start:
+-# Default-Stop:
++# Required-Start:    $local_fs
++# Should-Start:      $network $remote_fs $syslog $time
++# Required-Stop:     $local_fs
++# Should-Stop:       $network $remote_fs $syslog
++# Default-Start:     2 3 5
++# Default-Stop:      0 1 6
+ # Short-Description: Legacy control for PCP daemons
+ # Description:       Legacy init script wrapper for the Performance Co-Pilot (PCP) daemons
+ ### END INIT INFO
+diff --git a/src/pmcd/rc_pmcd b/src/pmcd/rc_pmcd
+index f42e435bdf3f..164526fac01a 100644
+--- a/src/pmcd/rc_pmcd
++++ b/src/pmcd/rc_pmcd
+@@ -27,7 +27,7 @@
+ # Should-Start:      $network $remote_fs $syslog $time
+ # Required-Stop:     $local_fs
+ # Should-Stop:       $network $remote_fs $syslog
+-# Default-Start:     2 3 4 5
++# Default-Start:     2 3 5
+ # Default-Stop:      0 1 6
+ # Short-Description: Control pmcd (the collection daemon for PCP)
+ # Description:       Configure and control pmcd (the collection daemon for the Performance Co-Pilot)
+diff --git a/src/pmie/rc_pmie b/src/pmie/rc_pmie
+index 013f2aab3eed..48c07c61081d 100644
+--- a/src/pmie/rc_pmie
++++ b/src/pmie/rc_pmie
+@@ -25,7 +25,7 @@
+ # Should-Start: $local_fs $network $syslog $time $pmcd
+ # Required-Stop: $remote_fs
+ # Should-Stop:  $local_fs $network $syslog $pmcd
+-# Default-Start:  2 3 4 5
++# Default-Start:  2 3 5
+ # Default-Stop:   0 1 6
+ # Short-Description: Control pmie (performance inference engine for PCP)
+ # Description:       Configure and control pmie (the performance inference engine for the Performance Co-Pilot)
+diff --git a/src/pmlogger/rc_pmlogger b/src/pmlogger/rc_pmlogger
+index 390809a27255..b6038840f23e 100644
+--- a/src/pmlogger/rc_pmlogger
++++ b/src/pmlogger/rc_pmlogger
+@@ -27,7 +27,7 @@
+ # Should-Start:      $network $remote_fs $syslog $time $pmcd
+ # Required-Stop:     $local_fs
+ # Should-Stop:       $network $remote_fs $syslog $pmcd
+-# Default-Start:     2 3 4 5
++# Default-Start:     2 3 5
+ # Default-Stop:      0 1 6
+ # Short-Description: Control pmlogger (the performance metrics logger for PCP)
+ # Description:       Configure and control pmlogger (the performance metrics logger for the Performance Co-Pilot)
+diff --git a/src/pmproxy/rc_pmproxy b/src/pmproxy/rc_pmproxy
+index 0bb38c005a7b..45ca18b9a5c1 100644
+--- a/src/pmproxy/rc_pmproxy
++++ b/src/pmproxy/rc_pmproxy
+@@ -27,7 +27,7 @@
+ # Should-Start: $local_fs $network $syslog $time $pmcd
+ # Required-Stop: $remote_fs
+ # Should-Stop:  $local_fs $network $syslog $pmcd
+-# Default-Start:  2 3 4 5
++# Default-Start:  2 3 5
+ # Default-Stop:   0 1 6
+ # Short-Description: Control pmproxy (the pmcd proxy daemon for PCP)
+ # Description:       Configure and control pmproxy (the pmcd proxy daemon for the Performance Co-Pilot)
+-- 
+2.18.0
+

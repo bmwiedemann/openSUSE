@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Mar 13 12:24:33 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Use systemd unit file
+
+-------------------------------------------------------------------
+Wed Oct 15 10:20:31 UTC 2014 - jengelh@inai.de
+
+- Use source URLs, enable parallel build, and remove ancient
+  specfile tags and sections
+
+-------------------------------------------------------------------
+Fri Sep 30 15:31:20 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:23 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Jan 17 13:07:00 CET 2007 - anicka@suse.cz
+
+- update to 1.1
+  * killerd.c (init_HZ): Use sysconf(_SC_CLK_TCK) if available, 
+    this seems to be the most reliable method on recent glibc's.
+  * killerd.conf: Better comments for all settings.
+  * killerd.c: Clarified license message.
+  * killerd.c: Users can be excluded if their UID is less 
+    than a configured limit.
+  * killerd.c: Unified processing of wildcard entries. Entries with
+    no names always serve as defaults, special treatment of *'s 
+    is gone.
+  * killerd.c: (warn_user): Avoid unlimited retrying if the user's 
+    terminal is XOFF'ed. 
+
+-------------------------------------------------------------------
+Tue Jan  9 17:54:50 CET 2007 - anicka@suse.de
+
+- package created (initial version 1.0) 
+

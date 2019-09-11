@@ -1,0 +1,5 @@
+# This cron will start cf-agent if not yet running
+# and it would repair via failsafe a broken cfengine config
+#
+
+#15 */2 * * * root @workdir@/bin/cf-agent || @basedir@/failsafe/bin/cf-failsafe.sh

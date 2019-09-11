@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Jul 15 10:01:47 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Clear -Wsign-compare warning from gcc 7.3
+  * Consistently use X_GETTIMEOFDAY
+  * Fix logic sourrouning && and ||
+  * Use fabsf when dealing with floating point numbers
+
+-------------------------------------------------------------------
+Wed Feb 20 14:17:16 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.0.8
+  * bugfixes 
+
+-------------------------------------------------------------------
+Thu Feb  6 11:20:27 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile
+
+-------------------------------------------------------------------
+Thu Sep 12 20:04:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.7:
+  + Combine usage message strings & print them to stderr, not
+    stdout.
+  + Add noreturn attributes suggested by -Wmissing-noreturn.
+  + Store sine & cosine tables as doubles instead of floats.
+  + Don't rely on being able to set tab stops.
+- Add pkgconfig(xproto) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Sat Apr 14 22:00:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.6:
+  + Calculate text and window size from LC_CTYPE instead of LC_TIME
+  + Build system fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xclock from xorg-x11. Initial version: 1.0.5.
+

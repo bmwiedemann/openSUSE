@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Apr 25 19:53:17 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.6:
+  * Python 3.7 compatibility
+
+-------------------------------------------------------------------
+Tue Dec 18 23:37:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Fixup grammar issues.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Oct  8 16:02:56 UTC 2017 - arun@gmx.de
+
+- convert to singlespec
+- update copyright year
+
+-------------------------------------------------------------------
+Fri Jul 10 11:17:08 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

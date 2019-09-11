@@ -1,0 +1,36 @@
+From: Jörgen Maas <jorgen.maas@gmail.com>
+Subject: Python3: Fix to setup.py so that install defaults to /usr/local.
+References: 
+Patch-Mainline: 
+Git-commit: c1e83f208cc7c7e5943e004c640539fed1440d70
+Git-repo: https://github.com/cobbler/cobbler.git
+
+
+Signed-off-by: Thomas Renninger <trenn@suse.com>
+
+Index: cobbler-3.0.0+git20190510.d43461b3/setup.py
+===================================================================
+--- cobbler-3.0.0+git20190510.d43461b3.orig/setup.py	2019-05-10 16:41:32.000000000 +0200
++++ cobbler-3.0.0+git20190510.d43461b3/setup.py	2019-05-15 16:14:04.414735035 +0200
+@@ -364,10 +364,6 @@ class install(_install):
+         # Run the usual stuff.
+         _install.run(self)
+ 
+-        # If --root wasn't specified default to /usr/local
+-        if self.root is None:
+-            self.root = "/usr/local"
+-
+         # Hand over some directories to the webserver user
+         path = os.path.join(self.install_data, 'share/cobbler/web')
+         try:
+@@ -378,9 +374,7 @@ class install(_install):
+         if not os.path.abspath(libpath):
+             # The next line only works for absolute libpath
+             raise Exception("libpath is not absolute.")
+-        # libpath is hardcoded in the code everywhere
+-        # therefor cant relocate using self.root
+-        path = os.path.join(libpath, 'webui_sessions')
++        path = os.path.join(self.root + libpath, 'webui_sessions')
+         try:
+             self.change_owner(path, http_user)
+         except KeyError as e:

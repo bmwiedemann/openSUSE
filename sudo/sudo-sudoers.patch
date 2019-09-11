@@ -1,0 +1,115 @@
+Index: sudo-1.8.14p3/plugins/sudoers/sudoers.in
+===================================================================
+--- sudo-1.8.14p3.orig/plugins/sudoers/sudoers.in
++++ sudo-1.8.14p3/plugins/sudoers/sudoers.in
+@@ -32,30 +32,23 @@
+ ##
+ ## Defaults specification
+ ##
+-## You may wish to keep some of the following environment variables
+-## when running commands via sudo.
+-##
+-## Locale settings
+-# Defaults env_keep += "LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET"
+-##
+-## Run X applications through sudo; HOME is used to find the
+-## .Xauthority file.  Note that other programs use HOME to find   
+-## configuration files and this may lead to privilege escalation!
+-# Defaults env_keep += "HOME"
+-##
+-## X11 resource path settings
+-# Defaults env_keep += "XAPPLRESDIR XFILESEARCHPATH XUSERFILESEARCHPATH"
+-##
+-## Desktop path settings
+-# Defaults env_keep += "QTDIR KDEDIR"
+-##
+-## Allow sudo-run commands to inherit the callers' ConsoleKit session
+-# Defaults env_keep += "XDG_SESSION_COOKIE"
+-##
+-## Uncomment to enable special input methods.  Care should be taken as
+-## this may allow users to subvert the command being run via sudo.
+-# Defaults env_keep += "XMODIFIERS GTK_IM_MODULE QT_IM_MODULE QT_IM_SWITCHER"
+-##
++## Prevent environment variables from influencing programs in an
++## unexpected or harmful way (CVE-2005-2959, CVE-2005-4158, CVE-2006-0151)
++Defaults always_set_home
++## Path that will be used for every command run from sudo
++Defaults secure_path="/usr/sbin:/usr/bin:/sbin:/bin"
++Defaults env_reset
++## Change env_reset to !env_reset in previous line to keep all environment variables
++## Following list will no longer be nevessary after this change
++Defaults env_keep = "LANG LC_ADDRESS LC_CTYPE LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE LC_ATIME LC_ALL LANGUAGE LINGUAS XDG_SESSION_COOKIE"
++## Comment out the preceding line and uncomment the following one if you need
++## to use special input methods. This may allow users to compromise the root
++## account if they are allowed to run commands without authentication.
++#Defaults env_keep = "LANG LC_ADDRESS LC_CTYPE LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE LC_ATIME LC_ALL LANGUAGE LINGUAS XDG_SESSION_COOKIE"
++
++## Do not insult users when they enter an incorrect password.
++Defaults !insults
++
+ ## Uncomment to use a hard-coded PATH instead of the user's to find commands
+ # Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ ##
+@@ -66,9 +59,15 @@
+ ## sudoreplay and reboot.  Use sudoreplay to play back logged sessions.
+ # Defaults log_output
+ # Defaults!/usr/bin/sudoreplay !log_output
+-# Defaults!/usr/local/bin/sudoreplay !log_output
+ # Defaults!REBOOT !log_output
+ 
++## In the default (unconfigured) configuration, sudo asks for the root password.
++## This allows use of an ordinary user account for administration of a freshly
++## installed system. When configuring sudo, delete the two
++## following lines:
++Defaults targetpw   # ask for the password of the target user i.e. root
++ALL   ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
++
+ ##
+ ## Runas alias specification
+ ##
+@@ -84,14 +83,6 @@ root ALL=(ALL) ALL
+ ## Same thing without a password
+ # %wheel ALL=(ALL) NOPASSWD: ALL
+ 
+-## Uncomment to allow members of group sudo to execute any command
+-# %sudo	ALL=(ALL) ALL
+-
+-## Uncomment to allow any user to run sudo if they know the password
+-## of the user they are running the command as (root by default).
+-# Defaults targetpw  # Ask for the password of the target user
+-# ALL ALL=(ALL) ALL  # WARNING: only use this together with 'Defaults targetpw'
+-
+ ## Read drop-in files from @sysconfdir@/sudoers.d
+ ## (the '#' here does not indicate a comment)
+ #includedir @sysconfdir@/sudoers.d
+Index: sudo-1.8.14p3/doc/sudoers.mdoc.in
+===================================================================
+--- sudo-1.8.14p3.orig/doc/sudoers.mdoc.in
++++ sudo-1.8.14p3/doc/sudoers.mdoc.in
+@@ -1711,7 +1711,7 @@ is present in the
+ .Em env_keep
+ list.
+ This flag is
+-.Em off
++.Em on
+ by default.
+ .It authenticate
+ If set, users must authenticate themselves via a password (or other
+@@ -2027,7 +2027,7 @@ If set,
+ .Nm sudo
+ will insult users when they enter an incorrect password.
+ This flag is
+-.Em @insults@
++.Em off
+ by default.
+ .It log_host
+ If set, the host name will be logged in the (non-syslog)
+@@ -2508,7 +2508,7 @@ database as an argument to the
+ .Fl u
+ option.
+ This flag is
+-.Em off
++.Em on
+ by default.
+ .It tty_tickets
+ If set, users must authenticate on a per-tty basis.

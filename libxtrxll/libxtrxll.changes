@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sun Jan 13 10:28:09 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20190113:
+  * usb3380: do not reset USB device in USB3 mode
+  * fix xtrx fe initialization due to i2c errors
+  * fix initialization of USB3380 on USB2.0
+
+-------------------------------------------------------------------
+Mon Dec 31 08:07:27 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Add provides/obsoletes for renamed package with udev rules
+
+-------------------------------------------------------------------
+Thu Dec 27 09:43:16 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20181227:
+  * dynamic RX buffer, GPIO & sync
+  * pcie_linux: fix i2c operations
+  * pmic: fix initialization sequence
+  * test_xtrxflash: autodetect device
+  * rework logging system
+  * fix recv hang when RX stream was stopped
+  * linkin all lowlevel plugins by default
+  * use first device when *_open() is called with NULL
+  * properly identify PCIe and USB devices
+  * more fixes for Windows
+  * no ENOSTR on Windows
+  * update to xtrxr4
+  * build: Better udev handling
+  * rework of xtrxll
+  * new lml phy code adoption
+  * fix crashing in USB3 mode during data overrun
+  * proper way of handling overflow in USB
+- Add patch:
+  * libxtrxll-fix-udev-permissions.patch
+- Remove patch:
+  * libxtrxll-cmake-disable-test.patch
+
+-------------------------------------------------------------------
+Sun Dec 31 01:26:57 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Fri Dec 29 13:46:55 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Thu Dec 14 19:09:56 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 0.0.0+git.20171213

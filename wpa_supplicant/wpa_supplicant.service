@@ -1,0 +1,11 @@
+[Unit]
+Description=WPA Supplicant daemon
+After=dbus.service network.target
+
+[Service]
+Type=dbus
+BusName=fi.w1.wpa_supplicant1
+ExecStart=/usr/sbin/wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -u -t -f /var/log/wpa_supplicant.log
+
+[Install]
+WantedBy=multi-user.target

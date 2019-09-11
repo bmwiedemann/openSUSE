@@ -1,0 +1,1022 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:26:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 20 09:36:09 UTC 2017 - dimstar@opensuse.org
+
+- Use python3_version macro for the configure line, so we don't
+  have to update on every major python release.
+
+-------------------------------------------------------------------
+Wed Feb  1 10:51:43 UTC 2017 - adam.majer@suse.de
+
+- Use individual libboost-*-devel packages instead of boost-devel.
+  + Add conditional libboost_python3-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jun  8 14:14:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.31.6:
+  + Layout: Custom fonts: Fix regression in 1.31.5.
+
+-------------------------------------------------------------------
+Wed May 18 16:32:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.31.5:
+  + Avoid crash when trying to show GtkCssProvider errors.
+  + Don't use deprecated font: syntax with GtkCssProvider.
+  + Remove some unused code.
+  + Require libsigc++ 2.9.2, for the newer R(Args...) syntax.
+- Add explicit pkgconfig(sigc++-2.0) BuildRequires and version it,
+  following upstream changes.
+
+-------------------------------------------------------------------
+Thu Mar 31 19:59:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.31.4:
+  + Prevent a crash (in the menu code) when using a table name
+    containing a space, though there are still problems with that
+    (bgo#763534).
+  + Lots of code refactoring and correcting.
+
+-------------------------------------------------------------------
+Tue Mar 15 15:13:46 UTC 2016 - dimstar@opensuse.org
+
+- Fix build with python 3.5:
+  + Change PYTHON_VERSION to "3.5" and PYTHON to "python3.5" in
+    the configure call.
+  + Also drop with-boost-python=boost_python-mt-py34 call, no
+    longer needed.
+
+-------------------------------------------------------------------
+Fri Mar 11 09:13:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.31.3:
+  + Show the translated UI in non-English locales, even on newer
+    Linux distros (bgo#761372).
+  + Default Field Formatting: Let people actually change this
+    again, fixing a regression in (approx) Glom 1.25.4
+    (bgo#763348).
+  + Help menu item: Make this work again with recent GNOME systems
+    (bgo#763250).
+  + Export: Don't lose precision when exporting large numeric
+    values (bgo#763229).
+
+-------------------------------------------------------------------
+Fri Feb 26 13:14:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.31.2:
+  + Fix crash when loading images into an image field.
+  + Fix crash caused by assert in recent versions of
+    libevince-view (bgo#761396).
+  + Really forget a table when removing it (bgo#754645).
+  + Table deletion: Actually let the user cancel the dialog.
+  + Initialize PostgresSQL database with the C locale (bgo#761372).
+  + Try to catch filesystem errors sooner (bgo#761373).
+  + Details layout: Allow notebooks at top-level (bgo#759511).
+  + Connection to central server:
+    - Ask again if the connection fails.
+    - Specify a timeout.
+  + Build system:
+    - Check for, and require, C++14.
+    - Lots of modernization of the C++ source code.
+
+-------------------------------------------------------------------
+Sun Nov 29 19:30:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.31.1:
+  + Build:
+    - Convert the source code to C++11.
+    - Remove unused source code.
+    - Use libxml++-3.0 instead of libxml++-2.6.
+    - Improvements to how we find and use boost libraries.
+- Replace pkgconfig(libxml++-2.6) for pkgconfig(libxml++-3.0)
+  BuildRequires following upstream changes.
+- Bump api and apiRPM version to 1.32 following upstream.
+
+-------------------------------------------------------------------
+Thu Sep 24 13:15:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.30.0:
+  + Dialog_FieldDefinition: Show self-triggering lookups as
+    grayed-out (bgo#754641).
+  + Lookups: Prevent endless self lookups.
+  + Use std::endl instead of std::cerr where std::endl was meant.
+    (bgo#754294).
+  + Build: Disable use of yelp if --disable-documentation was used.
+  + More use of C++11.
+  + EggSpreadTableDnd: Replace use of deprecated
+    gtk_style_context_set_background.
+  + Use property_whatever() instead of set_property("whatever").
+  + ComboBox_Relationship: Fix a typo in a null check.
+
+-------------------------------------------------------------------
+Mon Jul 20 08:35:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.29.5:
+  + Fix the build with python 3 and require python 3.
+  + Build with (and require) C++11, using some simple C++11
+    features.
+- Replace python-devel for python3-devel BuildRequires, following
+  upstreams port. Also add python3 BuildRequires: as python3-devel
+  only brings in python3-base.
+- Pass PYTHON_VERSION="3.4", PYTHON=python3.4 and
+  --with-boost-python=boost_python-mt-py34 to configure as python3
+  is not default in openSUSE yet.
+- Rename sub-package python-glom to python3-glom.
+- Following above change, obsolete python-glom and change
+  packageand(glom:python) to packageand(glom:python3) Supplements.
+- Substitute python-glom Requires for the new python3-glom.
+
+-------------------------------------------------------------------
+Mon Jul 13 12:47:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.29.4:
+  + Use libgda-5 again instead of libgda-6.
+- Changes from version 1.29.3:
+  + Details:
+    - Let entry widgets expand to fill space, fixing a regression
+      from 1.27.2.
+    - Make text alignment work again, fixing a regression from
+      1.27.2.
+  + Use the LC_TIME to get translated date formats, even when
+    LANGUAGE is set (bgo#742968).
+- Changes from version 1.29.2:
+  + Use the LC_TIME environment variable to get translated date
+    formats (bgo#742968).
+  + Avoid a crash during shutdown (bgo#741851).
+  + Fix remaining warnings from the Coverity scan.
+- Changes from version 1.29.1:
+  + Use libgda-6.0 instead of libgda-5.0, though image fields are
+    currently not working.
+  + Fix the build with the latest gtkmm.
+  + Fix several warnings from the Coverity scan.
+  + Use the new Gio::Resource API from glibmm instead of the C API.
+
+-------------------------------------------------------------------
+Mon Jul 13 12:27:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.28.5:
+  + Build: Fix the configure for python 3 versions of boost-python.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:28:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.28.4:
+  + Details:
+    - Let entry widgets expand to fill space, fixing a regression
+      from 1.27.2.
+    - Make text alignment work again, fixing a regression from
+      1.27.2.
+
+-------------------------------------------------------------------
+Thu Feb 12 14:14:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.28.3:
+  + Reduce the gtkmm and giomm required versions again. These
+    should not have been raised during a stable branch.
+- Changes from version 1.28.2:
+  + Use the LC_TIME environment variable to get translated date
+    formats (bgo#742968).
+  + Avoid a crash during shutdown (bgo#741851).
+
+-------------------------------------------------------------------
+Tue Sep 30 15:34:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.28.0:
+  + Glade UI files:
+    - Remove deprecated GtkContainer:resize-mode property.
+    - FlowTableWithFields: Replace use of deprecated xalign and
+      valign.
+    - Replace stock properties with icon-name properties.
+
+-------------------------------------------------------------------
+Sat Aug  9 18:12:16 UTC 2014 - dimstar@opensuse.org
+
+- Add _constraints: we require at least 2800MB RAM.
+
+-------------------------------------------------------------------
+Fri Aug  1 14:36:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.27.1:
+  + Avoid use of deprecated gtkmm/GTK+ API in Glade files. For
+    instance, GtkAlignment, and stock items.
+  + Adapt to recent Gtk::Builder child-widget ref-counting fixes in
+    gtkmm.
+  + Avoid new GTK+ warnings about dialogs without transient parent
+    windows.
+  + Application: Use non-deprecated gtkmm/GTK+ accelerators API.
+
+-------------------------------------------------------------------
+Thu Mar  6 17:20:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.26.0:
+  + Reports: Fix a crash introduced in 1.25.4.
+
+-------------------------------------------------------------------
+Sun Feb  2 21:53:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.25.6:
+  + Backup/Restore: Use libarchive instead of calling the tar shell
+    command. This should be slightly more robust and safe, though
+    we were already correctly escaping and quoting the shell
+    commands.
+  + Avoid an infinite loop when document loading fails.
+- Add pkgconfig(libarchive) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Sat Dec 21 08:41:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.25.5:
+  + Check that we have the pg_config utility.
+  + Add some tests.
+  + Slight improvements to the libglom API.
+
+-------------------------------------------------------------------
+Tue Nov 26 10:49:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.25.4:
+  + Fix a crash when switching between Data and Find mode.
+  + Fix some widget expansion in the UI.
+  + Formatting: Do not allow a 0 line-height for multiline text.
+  + Added some more tests.
+  + Some code cleanup.
+- Changes from version 1.25.3:
+  + Make menu item accelerators work again.
+  + Field Definition: Move Default formatting into a separate
+    window.
+  + Find (broken after the port to GAction):
+    - Really stop when cancelling after none found.
+    - Show only the found records.
+    - Update the menu item state.
+  + Adjust dialog widget spacing to be more GNOME HIG-compliant.
+  + Rearrange some dialogs to make them less tall, to (almost) fit
+    in small screens.
+  + Replace (deprecated) GtkTable with GtkGrid.
+  + Replace our custom GtkNotebook with GtkStack.
+  + Bundle .glade files, (most) icons, and example files into the
+    Glom executable using GResource, instead of installing them.
+  + Bundle the XSLT file into the libglom library instead of
+    installing.
+  + Port from gnome-doc-utils to yelp-tool.
+  + Fixes for clang compiler and scan-build analyzer warnings.
+  + AppData file: Actually use translations.
+- Exchange gnome-doc-utils-devel BuildRequires for yelp-tools
+  BuildRequires following upstream port to yelp.
+- Add itstool BuildRequires, new dependency.
+- Stop passing --disable-scrollkeeper to configure, no longer
+  needed.
+
+-------------------------------------------------------------------
+Sat Sep 28 07:02:54 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.25.2:
+  + Fix the build with --enable-warnings=fatal, by replacing all
+    uses of GtkUIManager and GtkAction with GtkBuilder, GAction and
+    GMenu. (Accelerators, such as Ctrl-Q are currently not
+    working).
+  + Replace depreacted GtkHBox and GtkVBox with GtkBox in Glade
+    files.
+
+-------------------------------------------------------------------
+Mon Sep 23 17:37:06 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.25.1:
+  + Startup: Do not crash when reporting check problems
+    (bgo#680411).
+  + Initial dialog: Fix crash with latest libxml.
+  + Fix the notebook vertical expansion with latest GTK+.
+  + Avoid a crash at shutdown.
+  + Add an AppData file for "GNOME Software".
+  + Remove the recent files menu items in the File menu, because
+    GtkRecentAction has been deprecated without replacement.
+  + Avoid the glib warning about adding interfaces after class
+    initialization.
+  + Fix the build and tests with python 3.
+  + Avoid deprecated Gtk::Stock* API.
+- Add explicit pkgconfig(glibmm-2.4) BuildRequires and version it.
+  It was always pulled in automatically, but this way we make sure
+  we get the minimum required version of it.
+- Bump api and apiRPM version following upstream.
+
+-------------------------------------------------------------------
+Sun May  5 09:20:01 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.24.0:
+  + Document format: table node: Remove superfluous parent_table
+    attribute.
+  + libglom: Various minor code cleanups.
+
+-------------------------------------------------------------------
+Wed Mar 27 21:04:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.23.4:
+  + Fix the build with --enable-warnings=fatal.
+    Do not use ev_view_set_loading() because it is deprecated.
+  + Fix the build on Ubuntu Raring.
+  + Reduce the libgda dependency version again.
+- Changes from version 1.23.3:
+  + Added an --enable-mysql configure option.
+  + libglom: Added a dependency on libgda-mysql-5.0, because
+    libglom always supports all backends regardless of the build
+    option.
+  + Tests:
+    - Simplify the code a litte.
+    - Test the use of a relationship to get data.
+    - Add a test that uses an example with text primary keys.
+- Changes from version 1.23.2:
+  + Tests:
+    - Use the locally-built glom.
+    - Use the locally-built python module.
+  + Examples: Remove unused list_related_* layouts.
+- Changes from version 1.23.1:
+  + Document:
+    - Save static image data as a child text node, not an
+      attribute.
+    - Save image data (example data or static images) in base64
+      format, instead of the GDA format.
+  + Export to po files:
+    - Also export static text items, and print layouts.
+    - Avoid duplicates.
+  + Examples: Add a static image item to the Project Manager
+    example. This is just so that the feature gets some testing.
+  + Tests: Add new tests using GdkPixbufLoader to check that we can
+    interpret image data as an image.
+- Add pkgconfig(libgda-mysql-5.0) BuildRequires: new dependency.
+- Add pkgconfig(gdkmm-3.0) BuildRequires: new explicit dependency.
+- Introduce api and apiRPM set to 1.24, resp 1_24 and use it in 
+  the files section and to name the shared library packages.
+  This also bumps the shared library package names from
+  libglom-1_22-0 to libglom-1_24-0.
+
+-------------------------------------------------------------------
+Tue Dec 11 11:12:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.22.1:
+  + Self hosting:
+    - Do not allow ident authorization.
+    - Only allow attempts from localhost when not shared.
+  + Film Manager example: Correct the Contacts reports.
+  + Build:
+    - Add the --enable-ui-tests configure option. This lets package
+      builders run make check as a sanity check.
+    - Windows build: Fix some typos (bgo#674009).
+    - OpenBSD: std:cerr needs <iostream>. (bgo#673914).
+- Pass --enable-ui-tests to configure, and add a %check section
+  with "make check". It is disabled right now, due to bnc#793882.
+
+-------------------------------------------------------------------
+Thu Jul 26 21:58:07 UTC 2012 - dimstar@opensuse.org
+
+- Add libgda-5_0-postgres, typelib(Gda) and python-glom Requires:
+  All packages are hard dependencies. If not available, glom
+  *should* present a dialog, saying so, but currently segfaults
+  (bnc#772551).
+
+-------------------------------------------------------------------
+Sun Jul 22 18:16:24 UTC 2012 - dimstar@opensuse.org
+
+- Add glom:python supplements to python-glom, allowing the package
+  to be automatically installed (part of bnc#621448).
+
+-------------------------------------------------------------------
+Wed Apr 25 12:41:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.22.0:
+  + libglom:
+    - Field: Remove get_holder().
+    - ConnectionPool: create_database(): Take a progress slot.
+  + Build:
+    - Windows build fixes.
+    - Fix some warnings found by scan-build.
+
+-------------------------------------------------------------------
+Tue Apr 10 21:31:55 UTC 2012 - malcolmlewis@opensuse.org
+
+- Update to version 1.21.8:
+  + Fix the build with the latest gtkmm, with
+    --enable-warnings=fatal.
+  + Dialog_Import_CSV_Progress: Fix an important typo.
+  + Tests: Set LC_TIME too.
+  + Improve the command-line parse/print locale warnings.
+- Remove %clean section: not needed anymore.
+
+-------------------------------------------------------------------
+Wed Mar 14 12:42:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.21.7:
+  + Build: Fix some warnings from clang++.
+  + libglom:
+    - Remove some deprecated methods.
+    - LayoutItem_GroupBy: Add get and set methods for members.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:44:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.21.6:
+  + Make auto-increment fields work even if they are not primary
+    keys (bgo#661702)
+  + Do not hide the database structure if the user does not have
+    view rights, and prevent SQL errors in that case (bgo#669299)
+  + Allow printing of print layouts from the List view too, to
+    avoid confusion (bgo#670462)
+  + Print Layout: Avoid sometimes over-scaled images (bgo#668901)
+  + Users/Groups:
+    - Example files: Really load the table privileges.
+    - Really prevent changing to developer mode for non-developers.
+      (bgo#669043)
+    - Allow user and group names to have spaces and other special
+      characters (bgo#669012)
+    - Limit user and group name lengths because PostgreSQL seems to
+      have an (undocumented) limit.
+    - Warn if we cannot get the list of users (bgo#669178)
+    - Add tests.
+  + Button scripts: Check and warn about pygtk2 instead of crashing
+    (bgo#669196 and bgo#661766)
+  + ReportBuilder:
+    - Make summary fields work again.
+    - Add error checking (bgo#669281)
+  + Database Preferences: Really store the organization name in the
+    database (bgo#668836)
+  + Field Formatting: Related Choices: Default to showing the
+    primary key (bgo#668759)
+  + Choices: Allow the field to be be other than the primary key
+    and do not crash if it is not, or if it is hidden (bgo#668759)
+  + Document: Avoid accumulating old nodes in the XML.
+  + Examples: Remove empty group in the Lesson Planner example file
+    (bgo#671263)
+  + libglom: Glom::Utils::get_find_where_clause_quick(): Handle an
+    empty value properly.
+  + Use Gtk::Application and Gtk::ApplicationWindow instead of
+    Gtk::Main.
+  + Windows build fixes (not complete) (bgo#671120, bgo#670903)
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add pkgconfig(goocanvas-2.0) BuildRequires: there's a check for
+  it since glom wants a version that contains some specific fixes.
+
+-------------------------------------------------------------------
+Wed Jan 25 16:56:59 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.21.5:
+  + Depend on libgda 5.0.3 because we need the GdaNumeric
+    corrections (bgo#668346)
+
+-------------------------------------------------------------------
+Tue Jan 24 11:43:53 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.21.4:
+  + libglom: Use std::vector instead of std::list, for consistency.
+  + Translations:
+    - Allow the database title to be translated.
+    - Default to en rather than en_US for the original locale.
+- Fix license: glom is GPL-3.0+. Fix bnc#743110.
+
+-------------------------------------------------------------------
+Tue Jan 17 13:06:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.21.3:
+  + libglom: TranslatableItem: Require the caller to provide the
+    locale to get_title() instead of calling the static
+    set_current_locale() method (now removed).
+- Changes from version 1.21.2:
+  + Field choices:
+    - Allow custom (not related) choices to be translated, with
+      only the original text being stored in the database.
+    - Use the appropriate type of data for choices. rather than,
+      for instance, forcing German users to see (and store) 1.99
+      EUR instead of 1,99 EUR.
+  + Translations:
+    - Offer non-country locales, such as de, instead of only de_DE,
+      de_AT, etc.
+    - Default to the first locale in the list, instead of none.
+  + Added command-line utilities to help with translation via po
+    files: glom_export_po, glom_import_po, glom_export_po_all.
+  + Build: Added several more tests, including tests of the
+    translation system and of the iso-codes XML files parsing.
+- Changes from version 1.21.1:
+  + Details: Foreign key ID fields: Add a New button next to the
+    existing Find button.
+  + Related Choices: Allow the user to specify a sort order.
+  + libglom:
+    - Make libglom 1.22 parallel installable with glom 1.20.
+    - Document: Added get_translation_available_locales().
+    - Field: Remove unused get_gda_holder_string().
+    - Remove unused get_sql_format() methods.
+    - DbUtils:: Added get_fields_for_table(),
+      get_fields_for_table_one_field(), get_lookup_fields(), and
+      get_lookup_value()
+    - LayoutGroup:
+      . Add a remove_field(parent_table_name, table_name,
+        field_name) method overload, deprecating the existing
+        method overloads.
+      . Deprecate the old has_field() method and do not use it.
+    - Remove unused parameternamegenerator.[h|cc] source files.
+  + Build:
+    - Avoid deprecated glibmm API
+- Changes from version 1.20.4:
+  + Details: Really make non-editable multiline text fields
+    non-editable.
+  + Edit menu: Make the Cut/Copy/Paste menus actually work
+    (bgo#518315)
+  + Choices: Make sure related choices are sorted (by ID).
+  + libglom: Document_XML: Remove an unimplemented method
+    (bgo#666744).
+- Changes from version 1.20.3:
+  + Details: ID Find button: Really show the quick find feature.
+  + List: Really store data when the primary key is not
+    auto-incremented.
+  + Add the glom_test_connection command-line tool.
+  + Film Manager example: Use English for Day/Night choices.
+- Changes from version 1.20.2:
+  + Correct parsing of quotes in example data.
+  + ComboBoxes: Work around bgo#612396 to fix the Users/Groups
+    dialogs and the Script Library dialog.
+  + libglom: DbUtils::recreate_database_from_document(): Create
+    groups and set table privileges too.
+  + More tests.
+- Change libepc-devel and libxml++-devel BuildRequires to
+  pkgconfig(libepc-1.0) and pkgconfig(libxml++-2.6).
+- Add explicit pkgconfig(giomm-2.4) and pkgconfig(libxslt)
+  BuildRequires: they were implicit before.
+- Remove unneeded python-gtk-devel and python-gnome-extras-devel:
+  they come from the GTK+ 2 days. Instead, add a python-devel
+  BuildRequires that the previous one were bringing in.
+
+-------------------------------------------------------------------
+Tue Nov 29 21:02:55 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.20.1:
+  + Avoid some unnecessary stdout warnings
+  + New and improved tests
+  + libglom:
+    - LayoutGroup:
+      . Added a remove_field(parent_table_name, table_name,
+        field_name) method overload.
+      . Added a has_field(parent_table_name, table_name,
+        field_name) method overload.
+    - Added DbUtils::set_fake_connection().
+- Major changes from version 1.20.0 since 1.16.2:
+  + Simplified main window
+  + Glom can now store and display PDFs
+  + Print Layout: Major overhaul with improved UI and new
+    functionality.
+  + Relared records: Allow the developer to specify how many rows
+    to show.
+  + Choice drop-downs can show more than 2 fields
+  + Choice drop-down fields are aligned
+  + Choice drop-downs can show relared fields
+  + List columns have sensible widths.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Change BuildRequires from old-style, gtk2 based, to pkgconfig(),
+  gtk3 based ones:
+  + Old ones: gtkmm2-devel, libgdamm-devel, libgoocanvasmm-devel,
+    libgtksourceviewmm-2_0-devel.
+  + New ones: gtkmm-3.0, goocanvasmm-2.0, libgda-postgres-5.0,
+    libgdamm-5.0.
+- Add new pkgconfig() BuildRequires, following upstream changes:
+  evince-view-3.0, pygobject-3.0.
+
+-------------------------------------------------------------------
+Mon Feb 14 01:17:01 CET 2011 - vuntz@opensuse.org
+
+- Update to version 1.16.2:
+  + CSV Import: Actually preview and import the field values
+    (bgo#625693).
+  + List view: Make the retry option actually work afer entering
+    invalid data (bgo#167818).
+  + Build: Remove the gconfmm dependency, because we don't use it.
+- Changes from version 1.16.1:
+  + Build: Fix the python module's filename.
+- Changes from version 1.16.0:
+  + Build:
+    - Do not use deprecated gtkmm API (requires gtkmm 2.22).
+    - Various small improvements
+- Changes from version 1.15.2:
+  + Field Formatting: Related Choices: Add a Show All checkbox, so
+    that the list of choices can be restricted according to the
+    relationship, instead of just showing all values in the related
+    table. This allows the Choices to be used to narrow down a
+    choice based on a choice in another field. (bgo#625536).
+  + Allow unique fields with same name in multiple tables
+    (bgo#625192).
+  + Developer menu: Added Export Backup and Restore Backup menu
+    items. These use PostgreSQL's pg_dump and pg_restore utilities,
+    wrapping the dump and .glom file up in a .tar.gz.
+  + Build:
+    - Explicitly link with libdl for Python module loading test.
+    - Rename the library to libglom-1-16 to be parallel-installable
+      with libglom-1-14.
+    - Adapt to the latest libgdamm API.
+- Changes from version 1.15.1:
+  + Uses Gnome::Gda::SqlBuilder in most places to avoid manually
+    building SQL query strings. This should be more robust and
+    safer.
+  + Correct the position of "Records / Found" labels.
+  + Find:
+    - Make Find mode a toggle and move it to the Edit menu.
+    - Fix a crash when using find mode.
+  + List view:
+    - Don't add a new row when cancelling editing of a placeholder
+      row.
+    - Don't allow placeholder rows to be delteted.
+  + Build libglom and pyglom API documentation.
+- Changes from version 1.14.5:
+  + Allow unique fields with same name in multiple tables
+    (bgo#625192).
+- Changes from version 1.14.4:
+  + Developer menu: Added Export Backup and Restore Backup menu
+    items. These use PostgreSQL's pg_dump and pg_restore utilities,
+    wrapping the dump and .glom file up in a .tar.gz.
+  + Build: Explicitly link with libdl for Python module loading
+    test.
+- Changes from version 1.14.3:
+  + Fix position of "Records / Found" labels.
+  + List: Don't allow deleting placeholder rows.
+  + Build: Don't require avahi-ui.
+- Remove gconfmm-devel BuildRequires.
+- Add postgrsql Requires, for pg_dump and pg_restore.
+- Rename libglom-1_14_0 to libglom-1_16_0, following library name
+  change.
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Jun 15 13:07:58 CEST 2010 - vuntz@opensuse.org
+
+- Drop glom-asneeded.patch: it should have been removed with the
+  last change.
+
+-------------------------------------------------------------------
+Mon May 10 11:55:12 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 1.14.2:
+  + Fix document saving (horribly broken in 1.14.1).
+  + Python field calculations and button scripts:
+    - Test buttons now show python errors.
+    - Really convert the value to the field's type.
+  + Fix a crash when showing choices in some situations.
+  + Added several "make check" tests.
+- Changes from version 1.14.1:
+  + Python field calculation: Fix a crash when using some date
+    types.
+  + Documentation:
+    Build and install libglom (C++) API reference documentation
+    (for use by applications) and pyglom (Python) API reference
+    documentation (for use by Glom calculated fields and button
+    scripts).
+  + Added unit tests.
+- Changes from version 1.14.0:
+  + Details:
+    - Align widgets in neighbouring groups, making things look
+      generally neater (and fix a bug that made the widgets far too
+      wide.)
+  + Details and List:
+    Allow custom formatting of static text and buttons instead of
+    just fields.
+  + Field Formatting:
+    - Add the option to use a different text color for negative
+      values.
+    - bgo#591125: Add a horizontal alignment option, though we
+      still right-align numbers by default.
+    - Allow choices to be shown as radio buttons instead of a
+      drop-down combo box.
+  + Many small UI improvements.
+  + Field calculations and button scripts:
+    - Fields values may now be changed like so:
+      record["fieldname"] = 123
+    - Simple navigation is posible via, for instance:
+      ui.show_table_list("artists")
+      ui.show_table_details("artists", 10)
+      where 10 is the value of the primary key in the table.
+    - Added ui.print_layout(), ui.print_report(report_name),
+      and ui.start_new_record() methods.
+    - Added a startup script feature, in Database Preferences.
+  + Plus several important bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr  8 12:02:25 UTC 2010 - dimstar@opensuse.org
+
+- Add glom-asneeded.patch to fix detection of boost_python when
+  using -Wl,-as-needed (patch from upstream git). As a consequence
+  we need to launch autogen.sh, which triggers buildRequire
+  gnome-common.
+- BuildRequire postgresql-devel.
+- Library version changed to 1.14 (libglom-1_14-0).
+- No longer BuildRequire gnome-libs.
+
+-------------------------------------------------------------------
+Tue Mar 23 14:25:45 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.13.9:
+  + Field Formatting: Allow choices to be shown as radio buttons
+    instead of a drop-down combo box.
+  + Python scripts: Added a startup script feature, in Database
+    Preferences.
+  + Initial Dialog: Do not crash sometimes if cancelling the file
+    chooser. bgo#612303
+  + Build:
+    - Don't use deprecated gtkmm API. This requires the latest
+      gtkmm.
+    - Require the correct gtkmm and libsigc++ versions.
+  + Fix the Glade file so it can be opened with the latest glade-3
+    (when the gtksourceview glade catalog is installed).
+- Changes from version 1.13.8:
+  + Details:
+    - Align widgets in neighbouring groups, making things look
+      generally neater.
+    - Do not make field widgets too wide, so this fits on a laptop
+      screen.
+  + Python scripts: Added ui.print_layout(),
+    ui.print_report(report_name), and ui.start_new_record()
+    methods.
+  + Fix the build with exceptions disabled.
+- Changes from version 1.13.7:
+  + Avoid a crash when a script navigates from a list view to
+    another table. Maybe avoid similar warnings/crashes when doing
+    normal navigation.
+- Changes from version 1.13.6:
+  + Python scripts:
+    - Fields value may now be changed like so:
+      record["fieldname"] = 123
+    - Simple navigation is posible via, for instance:
+      ui.show_table_list("artists")
+      ui.show_table_details("artists", 10)
+      where 10 is the value of the primary key in the table.
+  + Avoid showing %20 in the window title.
+
+-------------------------------------------------------------------
+Tue Feb 23 00:32:01 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.13.5:
+  + Python functions: Fix some regressions since the switch to
+    boost::python.
+  + Disable broken unit tests to fix make distcheck.
+  + libglom: Fix build issue for Maemo.
+
+-------------------------------------------------------------------
+Thu Feb 18 01:34:31 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.13.4:
+  + Glom now depends on boost::python.
+  + Fix Maemo build errors
+- Update to version 1.13.3:
+  - Relationships Overview: Avoid a crash and a warning when
+    closing. bgo#607938
+  - Import: Avoid a hang, hopefully.
+  - Import: Fixed out-ouf-bounds crash. bgo#607938
+  - New file: Allow the title to contain quotes, avoiding weird
+    errors. bgo#607957
+  - libglom:
+    . Improved include paths used in headers.
+    . Avoid crashes with invalid parameter values.
+  - Use Gtk::ToolPalette, requiring gtkmm 2.19.4, instead of code
+    copied from libegg.
+  - Command-line arguments: Do some checks.
+- Add boost-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jan 29 19:15:22 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.13.2:
+  + Details layout: Really use the new formatting options
+    (horizontal alignment, foreground color and background color)
+    for static text items and buttons.
+- Changes from version 1.13.1:
+  + Details and List layouts:
+    - Allow custom formatting of static text and buttons instead of
+      just fields.
+  + Field Formatting:
+    - Add the option to use a different text color for negative
+      values.
+    - Add a horizontal alignment option, though we still
+      right-align numbers by default. bgo#591125
+
+-------------------------------------------------------------------
+Thu Jan 21 01:28:07 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.12.5:
+  + List View: Don't chop off the bottom of text when using large
+    fonts. bgo#607023
+  + Avoid problems when entering numbers with currency suffixes
+    when using the C locale.
+  + Windows: Install glom_1_12.pyd instead of glom.pyd. bgo#605593
+  + libglom: Added NumericFormat::get_default_precision().
+
+-------------------------------------------------------------------
+Sat Jan  2 16:03:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.12.4:
+  + Drag and drop layout:
+    - Fix some crashes. This feature still has some problems, so
+      the layout dialog is still available. bgo#599232
+  + Field Definitions:
+    - Show the default value entry even for date fields.
+  + Python calculations/scripts:
+    - Fix a crash when calling python functions that return dates.
+      bgo#603686
+  + Details layout:
+    - Related records layout definition: When defining drop-down
+      choices in the custom formatting, show the correct
+      relationships.
+    - Fix a crash when specifying a static image on the layout.
+      bgo#600954
+  + Saving: Always add the xmlns ID to the document, to make
+    MIME-type detection easier.
+  + Do not mark an empty string for translation. bgo#599868
+  + Avoid some runtime warnings.
+  + Examples: Film Manager: Add silly example data. bgo#600859
+  + Windows build: Add missing libpangoft2-1.0-0.dll to the
+    installer. bgo#599966
+  + Maemo build: Don't depend on libgettextpo.
+  + Developer documentation:
+    - Correct the DTD and add a unit test to make sure it and the
+      examples are correct.
+
+-------------------------------------------------------------------
+Fri Nov 13 13:09:36 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.12.3:
+  + List: Fix zero-width columns.
+  + Developer Mode: Tables, Relationships: Allow a singular title
+    to be specified, though it is currently only used on Maemo.
+  + Windows Build:
+    - Builds for Windows again.
+  + Build: Support Automake silent rules.
+  + Maemo Build:
+    - Adapted for latest hildonmm API.
+    - AppMenu: Add "Add" and "Add Related" buttons, instead of
+      having + buttons in the window. This does not work perfectly
+      and needs some work.
+    - Make TextViews small initially.
+    - Details:
+      . Show the table name in the window title.
+      . Use PickerButtons instead of ComboBoxes.
+    - Widget spacing improvements to match the Maemo UI spec.
+    - Create a libosso D-Bus service and register it, so Glom can
+      run in the background like a normal Maemo application.
+    - Show the application and its icon in the applications menu.
+
+-------------------------------------------------------------------
+Tue Oct  6 23:23:13 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.12.2:
+  + Details: Choices: Actually show choices drop-down lists again,
+    fixing a regression in Glom 1.12.
+  + Export, Import: Better handling of binary image data.
+- Changes from version 1.12.1:
+  + Related Records:
+    - Fix doubly-related records portals, such as a list of an
+      Artist's publishers (via their albums).
+    - Portals: Prevent use of inappropriate relationships.
+  + Maemo: More work on the port to the Maemo 5 UI, using simple
+    separate windows.
+  + Build: Fix the build with gtkmm < 2.18.
+  + Refactored CSV imorter and added unit tests.
+- Changes from version 1.12.0:
+  + Network sharing of self-hosted databases is now off by default,
+    and can be enabled by the new File/Share On Network menu item.
+    So you will not be asked for an initial password when creating
+    a new file.
+  + Allow field table and field anmes to use uppercase characters.
+  + Import and Export: Corrected the .csv file format.
+  + Related Records: Added a None navigation option.
+  + Opening: When the file format is too new, actually say so.
+  + libglom: Make this parallel-installable.
+  + Bug-fixes from Glom 1.10.
+  + Build: Removed the Bakery and libglade dependencies.
+- Changes from version 1.11.2:
+  + Fixed deprecated-disabled build with latest gtkmm.
+  + Client-only build fixes.
+  + Maemo build fixes.
+  + Refactoring of .csv importing code. bgo#588233.
+
+-------------------------------------------------------------------
+Wed Sep  9 23:41:19 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.11.1:
+  + Really save field definition changes again. lp#394507
+  + Allow table and field names to use uppercase characters.
+    bgo#587051
+  + Do not fail too soon when self-starting a PostgreSQL instance,
+    though the time to wait until PostgreSQL should be ready is
+    still a hard-coded number.
+  + Export:
+    - Correct the export to use the CSV specification. lp#394894
+    - Don't open the format dialog behind the FileChooser dialog.
+      lp#397409
+    - Offer File overwrite confirmation. lp#393229
+    - Allow many fields to be added to the format at once.
+      lp#393231
+  + Import:
+    - Handle commas inside quotes, and escaped quotes, as per the
+      CSV specification. lp#394894
+  + Complain about unknown command-line options instead of
+    crashing.
+  + Document's MIME-type registration: Us an xmlns ID.
+  + Related Records: Navigation option: Hide the navigation button
+    when the new "None" option is used. bgo#574360
+  + Various corrections to the automatic use of ports when
+    self-hosting.
+  + When the file format is too new, show an error message that
+    actually says so.
+  + Initial ldtp test scripts, to test the UI.
+  + libglom:
+    - Add an ABI version (1.2) to the shared library and the
+      headers location, so we may break ABI painlessly when we need
+      to.
+    - Remove any client-only or PostgreSQL/SQLite ifdefs, so that
+      libglom always offers all functionality, to avoid the need to
+      have multiple versions of libglom installed if you have
+      multiple Glom builds installed. Only the no-exceptions build
+      option remains, because they will never be on the same
+      system.
+    - Remove any Maemo-specific ifdefs because libglom is non-UI.
+    - Fix the pkg-config .pc file.
+    - Avoid calling g_thread_init() twice, fixing a crash.
+    - Correct the headers' installation location.
+  + Build:
+    - Use non-recursive build and run tests during make check.
+    - Fix crashes in the client-only build.
+    - Fix the build on Maemo 5 (Fremantle).
+
+-------------------------------------------------------------------
+Wed Jun 10 14:26:19 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.11.0:
+  + Network sharing of self-hosted databases is now off by default,
+    and can be enabled by the new File/Share On Network menu item.
+  + Performance improvement when first connecting to the database.
+  + Fix crash if the "Connect to Server" dialog is cancelled and
+    then a document is opened.
+  + Related Records:
+    - Allow navigation to be disabled.
+    - Navigation now works to alternate specified relationships.
+      bgo#579172
+  + Details:
+    - Image fields: Performance improvements and user feedback.
+    - Disable the Open button next to ID fields if the field is
+      empty. bgo#565023.
+  + Requires gtkmm 2.14 rather than gtkmm 2.10.
+  + Removed Bakery dependency (by including a fork of that code).
+  + Removed libglade dependency (using Gtk::Builder instead).
+  + Require a newer goocanvasmm.
+  + Add runtime checks for the Python module.
+  + libglom: Removed dependencies on UI libraries such as GTK+.
+- Changes from version 1.10.1:
+  + Fix crash in initial dialog, experienced on some systems.
+    bgo#584022
+  + Self-Hosting: Allow multiple glom instances to self-host on the
+    same PC, by correcting the discovery of available network ports.
+  + Allow Glom to use existing database tables again (though there
+    is still no UI for this).
+  + Restore the check for the necessary libgda provider plugin.
+- Remove libbakery-devel BuildRequires (and Requires for devel
+  package).
+- Add gconfmm-devel and libxml++-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon May 25 02:08:36 CEST 2009 - vuntz@novell.com
+
+- Change goocanvasmm-devel BuildRequires to libgoocanvasmm-devel.
+
+-------------------------------------------------------------------
+Fri May 22 12:37:33 CEST 2009 - prusnak@suse.cz
+
+- renamed glom-devel to libglom-devel
+- changed bakery-devel to libbakery-devel in BuildRequires
+
+-------------------------------------------------------------------
+Tue May 19 11:46:45 CEST 2009 - vuntz@novell.com
+
+- Do not use tabs, remove trailing white spaces.
+- Improve summaries and descriptions.
+- Add Requires to devel package: bakery-devel, glibmm2-devel,
+  libgdamm-devel
+- Add py_requires for python package.
+- Split lang package.
+- Do not add categories to desktop files that are already there.
+
+-------------------------------------------------------------------
+Thu May 14 10:07:09 CEST 2009 - dominique-obs@leuenberger.net
+
+- Requires: postgresql-server: glom won't start without it.
+
+-------------------------------------------------------------------
+Wed May 13 17:15:50 CEST 2009 - dominique-obs@leuenberger.net
+
+- Initial package, created on Community Week 1
+

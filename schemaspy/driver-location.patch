@@ -1,0 +1,36 @@
+Subject: Fix a few vendor driver locations to match JPackage
+Upstream: no
+
+diff -ur src1/net/sourceforge/schemaspy/dbTypes/hsqldb.properties src2/net/sourceforge/schemaspy/dbTypes/hsqldb.properties
+--- src1/net/sourceforge/schemaspy/dbTypes/hsqldb.properties	2008-10-20 09:46:10.000000000 -0500
++++ src2/net/sourceforge/schemaspy/dbTypes/hsqldb.properties	2013-01-08 16:49:40.000000000 -0600
+@@ -12,4 +12,4 @@
+ 
+ # Sample path to the HSQLDB drivers.
+ # Use -dp to override.
+-driverPath=/HSQLDB/1.8.0/hsqldb.jar
++driverPath=/usr/share/java/hsqldb.jar
+diff -ur src1/net/sourceforge/schemaspy/dbTypes/mysql.properties src2/net/sourceforge/schemaspy/dbTypes/mysql.properties
+--- src1/net/sourceforge/schemaspy/dbTypes/mysql.properties	2010-08-09 10:37:16.000000000 -0500
++++ src2/net/sourceforge/schemaspy/dbTypes/mysql.properties	2013-01-08 16:46:27.000000000 -0600
+@@ -16,7 +16,7 @@
+ # Sample path to the MySQL drivers.
+ # Use -dp to override.
+ # The driver should be available at www.mysql.com/products/connector/j/
+-driverPath=/mysql/mysql-connector-java-5.1.6-bin.jar
++driverPath=/usr/share/java/mysql-connector-java.jar
+ 
+ # return table_schema, table_name, table_comment, table_rows 
+ #   for a specific :schema (which MySQL doesn't have, so the db name will be used)
+diff -ur src1/net/sourceforge/schemaspy/dbTypes/ora.properties src2/net/sourceforge/schemaspy/dbTypes/ora.properties
+--- src1/net/sourceforge/schemaspy/dbTypes/ora.properties	2008-10-20 09:47:00.000000000 -0500
++++ src2/net/sourceforge/schemaspy/dbTypes/ora.properties	2013-01-08 16:48:33.000000000 -0600
+@@ -12,7 +12,7 @@
+ 
+ # Sample path to the oracle drivers.
+ # Use -dp to override.
+-driverPath=c:/Oracle8I/ora81/jdbc/lib/classes12.zip
++driverPath=/usr/lib/oracle/10.2.0.4/client/lib/ojdbc14.jar
+ 
+ # this Oracle driver's metadata services aren't thread safe so limit its access to one thread
+ dbThreads=1

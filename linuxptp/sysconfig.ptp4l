@@ -1,0 +1,9 @@
+## Path:           Network/LinuxPTP
+## Description:    Precision Time Protocol (PTP): ptp4l settings
+## Type:           string
+## Default:        "-i eth0 -f /etc/ptp4l.conf"
+## ServiceRestart: ptp4l
+#
+# Arguments when starting ptp4l(8).
+#
+OPTIONS="-i eth0 -f /etc/ptp4l.conf"

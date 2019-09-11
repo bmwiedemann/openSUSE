@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Thu Nov 29 15:33:42 UTC 2018 - lslezak@suse.cz
+
+- Explicitly depend on the new yast2-theme, the old yast2_theme
+  dependency is ambiguous and makes troubles
+  (related to boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri Sep 28 07:30:09 UTC 2018 - bwiedemann@suse.com
+
+- xkbctrl: sort hash keys (boo#1109534)
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Aug 20 16:17:25 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Mon Jan 15 08:16:28 UTC 2018 - jreidinger@suse.com
+
+- drop note about KEYTABLE (bsc#1075828, fate#319454)
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed Jun 15 15:10:47 CEST 2016 - snwint@suse.de
+
+- add set_videomode script to adjust video mode using xrandr (bsc#974821)
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Aug 18 14:00:28 UTC 2015 - sndirsch@suse.com
+
+- xkbctrl uses systemd mapping information now (fate#318426)
+- 3.1.4
+
+-------------------------------------------------------------------
+Thu Mar 13 09:29:50 UTC 2014 - jreidinger@suse.com
+
+- fix typo in requires 
+
+-------------------------------------------------------------------
+Tue Mar 11 14:33:37 UTC 2014 - jreidinger@suse.com
+
+- move icewm config to yast2-theme as it contain color schema
+  for installation
+- 3.1.3
+
+-------------------------------------------------------------------
+Thu Feb 13 19:55:49 UTC 2014 - lslezak@suse.cz
+
+- changed window title bar color in icewm config to match the new
+  color schema at installation
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 17:54:40 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Mon Sep  2 14:01:56 UTC 2013 - coolo@suse.com
+
+- trigger installation of the package not on xorg-x11, but on
+  xorg-x11-server (bnc#837450)
+
+-------------------------------------------------------------------
+Tue Aug 13 10:52:05 UTC 2013 - lslezak@suse.cz
+
+- fixed build with yast2-devtools >= 3.0.3
+- 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 30 08:29:55 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri Apr 19 12:39:20 CEST 2013 - aschnell@suse.de
+
+- added xkbctrl from sax2-tools
+- 2.24.0
+
+-------------------------------------------------------------------
+Wed Jun 06 14:33:31 CEST 2012 - aschnell@suse.de
+
+- added supplements (bnc#765242)
+- 2.22.1
+
+-------------------------------------------------------------------
+Mon Apr 02 12:33:52 CEST 2012 - aschnell@suse.de
+
+- added icewm config to keep Firefox window on top (bnc#749184)
+- created package with testX binary from sax2-tools and
+  window-manager config from yast2-installation
+- 2.22.0
+

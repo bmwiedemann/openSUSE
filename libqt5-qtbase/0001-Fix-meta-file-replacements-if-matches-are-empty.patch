@@ -1,0 +1,57 @@
+From 60136b1a846ca5aedeb588edaa178927abb002ec Mon Sep 17 00:00:00 2001
+From: Joerg Bornemann <joerg.bornemann@qt.io>
+Date: Mon, 3 Jun 2019 14:39:07 +0200
+Subject: Fix meta file replacements if matches are empty
+
+QMake code like
+    rplc.match =
+    QMAKE_PRL_INSTALL_REPLACE += rplc
+led to the generation of invalid sed calls in the Makefile.
+
+It is already actively checked for empty matches, but if *all* matches
+are empty, the sed call looks like
+    sed foo > bar
+which is invalid.
+
+Task-number: QTBUG-75901
+Change-Id: I173ed99826414dcf06253a15a247f7d067ee3977
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ qmake/generators/makefile.cpp | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
+index bfef31f17e..6edaf1f70e 100644
+--- a/qmake/generators/makefile.cpp
++++ b/qmake/generators/makefile.cpp
+@@ -3437,19 +3437,23 @@ QString MakefileGenerator::installMetaFile(const ProKey &replace_rule, const QSt
+         || project->isActiveConfig("no_sed_meta_install")) {
+         ret += "-$(INSTALL_FILE) " + escapeFilePath(src) + ' ' + escapeFilePath(dst);
+     } else {
+-        ret += "-$(SED)";
++        QString sedargs;
+         const ProStringList &replace_rules = project->values(replace_rule);
+         for (int r = 0; r < replace_rules.size(); ++r) {
+             const ProString match = project->first(ProKey(replace_rules.at(r) + ".match")),
+                         replace = project->first(ProKey(replace_rules.at(r) + ".replace"));
+             if (!match.isEmpty() /*&& match != replace*/) {
+-                ret += " -e " + shellQuote("s," + match + "," + replace + ",g");
++                sedargs += " -e " + shellQuote("s," + match + "," + replace + ",g");
+                 if (isWindowsShell() && project->first(ProKey(replace_rules.at(r) + ".CONFIG")).contains("path"))
+-                    ret += " -e " + shellQuote("s," + windowsifyPath(match.toQString())
++                    sedargs += " -e " + shellQuote("s," + windowsifyPath(match.toQString())
+                                                + "," + windowsifyPath(replace.toQString()) + ",gi");
+             }
+         }
+-        ret += ' ' + escapeFilePath(src) + " > " + escapeFilePath(dst);
++        if (sedargs.isEmpty()) {
++            ret += "-$(INSTALL_FILE) " + escapeFilePath(src) + ' ' + escapeFilePath(dst);
++        } else {
++            ret += "-$(SED) " + sedargs + ' ' + escapeFilePath(src) + " > " + escapeFilePath(dst);
++        }
+     }
+     return ret;
+ }
+-- 
+cgit v1.2.1
+

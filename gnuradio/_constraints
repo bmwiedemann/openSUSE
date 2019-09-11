@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">8</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

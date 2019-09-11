@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Tue May 31 10:19:17 UTC 2016 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Eval-Closure/Changes
+
+  0.14  2016-05-29
+        - a couple minor optimizations (dolmen, #8)
+
+-------------------------------------------------------------------
+Wed May 13 12:28:09 UTC 2015 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Eval-Closure/Changes
+
+  0.13  2015-05-12
+        - one more fix for blead (eserte, jplesnik, #6)
+
+-------------------------------------------------------------------
+Tue Apr 14 18:17:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Eval-Closure/Changes
+
+  0.12  2015-01-17
+        - fix tests under blead (sprout, #4)
+
+-------------------------------------------------------------------
+Wed Jul 31 14:12:15 UTC 2013 - coolo@suse.com
+
+- updated to 0.11
+     - add "alias => 1" option for making closure variables actually alias the
+       closed over variables (so the variable referenced in the environment
+       hashref will actually be updated by changes made in the closure). (Toby
+       Inkster, #3)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:36 UTC 2013 - coolo@suse.com
+
+- updated to 0.10
+      - fix pod links
+      - support lexical subs on 5.18+
+
+-------------------------------------------------------------------
+Thu Mar 21 14:12:01 UTC 2013 - lars@linux-schulserver.de
+
+- remove perl-Eval-Closure-old_Test-More.patch - handle the problem 
+  with old distributions in %%prep now
+
+-------------------------------------------------------------------
+Tue May 29 14:39:41 UTC 2012 - coolo@suse.com
+
+- updated to 0.08
+    - Remove a double layer of string eval that was introduced in 0.07 as an
+      intermediate step in figuring out the unique package thing - it's not
+      necessary with the final implementation, and just makes things slower
+      and hides errors.
+    - the given source is now evaled in a unique package for every
+      eval_closure call (it used to always be evaled in the Eval::Closure
+      package, which was especially buggy). this is to avoid issues where one
+      eval_closure modifies the global environment (by, say, importing a
+      function), which could mess up a later call. unfortunately, this means
+      that the memoization stuff no longer works, since it will result in
+      memoized results using the original package, which defeats the purpose.
+      i'm open to suggestions on how to safely reenable it though.
+    - clean up a few stray lexicals we were still closing over in the eval
+
+-------------------------------------------------------------------
+Fri Nov 18 14:54:38 UTC 2011 - coolo@suse.com
+
+- update to 0.06
+   - The dumped source from setting $ENV{EVAL_CLOSURE_PRINT_SOURCE} didn't
+     show the captured variable creation properly. (Dave Rolsky)
+
+-------------------------------------------------------------------
+Sat Jun  4 18:30:04 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on distributions with old Test::More module
+  ( perl-Eval-Closure-old_Test-More.patch )
+
+-------------------------------------------------------------------
+Wed May  4 10:55:03 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.05
+      - make sure Perl::Tidy doesn't look at @ARGV (rafl)
+      - stop using Memoize, it apparently doesn't work properly under mod_perl
+        in some situations (mateu)
+
+-------------------------------------------------------------------
+Sat Apr 16 00:41:51 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.03)
+

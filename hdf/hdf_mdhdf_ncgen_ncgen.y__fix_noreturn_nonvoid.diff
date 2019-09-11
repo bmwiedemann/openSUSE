@@ -1,0 +1,22 @@
+diff -Naur HDF4.2r3.orig//mfhdf/ncgen/ncgen.y HDF4.2r3/mfhdf/ncgen/ncgen.y
+--- HDF4.2r3.orig//mfhdf/ncgen/ncgen.y	2007-09-06 23:48:49.000000000 +0200
++++ HDF4.2r3/mfhdf/ncgen/ncgen.y	2008-10-05 23:20:10.695830477 +0200
+@@ -686,6 +686,7 @@
+      char *s;
+ {
+ 	derror(s);
++	return 0;
+ }
+ 
+ #ifndef yywrap
+diff -Naur hdf-4.2.10.orig/mfhdf/ncgen/ncgentab.c hdf-4.2.10/mfhdf/ncgen/ncgentab.c
+--- hdf-4.2.10.orig/mfhdf/ncgen/ncgentab.c	2007-09-06 23:48:49.000000000 +0200
++++ hdf-4.2.10.orig/mfhdf/ncgen/ncgentab.c	2008-10-05 23:20:10.695830477 +0200
+@@ -2354,6 +2354,7 @@
+      char *s;
+ {
+ 	derror(s);
++	return 0;
+ }
+ 
+ #ifndef yywrap

@@ -1,0 +1,274 @@
+-------------------------------------------------------------------
+Tue Oct  2 09:38:10 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove idempotent %if..%endif guards.
+- Fix incorrect trailing slash in make install line.
+- Update RPM group for bash-completion.
+
+-------------------------------------------------------------------
+Sun Sep 30 07:09:48 UTC 2018 - bkbin005@rinku.zaq.ne.jp
+
+- indicated that subpackages are noarch.
+- modified the description longer.
+
+-------------------------------------------------------------------
+Thu Sep 13 07:34:35 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- obsolete cron sub package on systemd machines
+
+-------------------------------------------------------------------
+Thu Sep 13 07:29:24 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- use %license
+
+-------------------------------------------------------------------
+Wed Sep 12 23:31:38 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- dropped non suse support
+  - added etckeeper-set-package-manager.patch: set the package
+    manager via a patch now that we only care about suse
+- bzr support:
+  - disable for now as it would force the whole package to be
+    python2 bound. you can reenable it when building with
+    --with=bzr or set the options in your prjconf:
+    %define _with_bzr 1
+    Macros:
+    %_with_bzr 1
+    :Macros
+  - change bzr support to be in a subpackage if enabled
+- build with python3 when not building with bzr support
+  - patch shebang line in the zypper plugin to match that
+- build the whole package as noarch if we don't build with python
+  as we are just packaging a bunch of shell scripts
+- move bash completion to a sub package, which is recommended to
+  keep the default working, BR and Require the bash-completion
+  package for path ownership
+- downgrade to git-core so we only have the minimal git for small
+  installs on servers
+- no longer build the cron support on systemd machines. the systemd
+  timer is more powerful and should be used instead.
+- when uninstalling we should also disable and stop the systemd
+  timer
+- only ship the documentation files that are also shipped in the
+  debian package
+
+-------------------------------------------------------------------
+Tue Sep 11 07:34:30 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.18.8:
+  * Work around git commit's lack of robustness, by providing
+    reasonable default values for GIT_COMMITTER_EMAIL etc.
+    This was already done as part of the su/sudo handling,
+    and is now always done.
+  * Don't hardcode the master branch when pushing to PUSH_REMOTE.
+    Instead, let git push whatever branches it is configured to
+    push to that remote.
+- Drop 0001-Remove-env-from-shebang-in-zypper-plugin.patch because
+  now in upstream.
+
+-------------------------------------------------------------------
+Wed Oct 18 07:35:13 UTC 2017 - aavindraa@gmail.com
+
+- update to 1.18.7:
+  * Will work on systems that don't have perl. (Perl is still used
+    when available).
+  * Prevent LC_ALL overriding the LC_COLLATE used to sort metadata.
+- includes changes from 1.18.6:
+  * Only show errors (no progress indicators) when pushing
+    Git/Mercurial repos to avoid unecessary cron mails.
+  * Fix regex in 20-warn-problem-files.
+  * Support added for apk (alpine linux)
+- Lint spec file
+- Point source URL to upstream tarball
+- Mark dependency on python-base per rpmlint
+- Patches / source modifications:
+  * Add 0001-Remove-env-from-shebang-in-zypper-plugin.patch
+    - fixes rpmlint warning about dependency detection
+  * Rebase etckeeeper-avoid-packagelist.patch
+  * Remove junk file caught by rpmlint (.mdwn)
+
+-------------------------------------------------------------------
+Sat Oct 22 17:39:27 UTC 2016 - jengelh@inai.de
+
+- Remove redundant sections
+
+-------------------------------------------------------------------
+Sat Oct 15 09:34:41 UTC 2016 - ecsos@opensuse.org
+
+- update Source to 1.18.5:
+  - Make etckeeper commit store metadata changes. The pre-commit 
+    hook has always (and continues) to do that, but pre-commit is 
+    only run when there are changes to tommit. This makes 
+    metadata-only changes get committed.
+  - Move systemd files to /lib/systemd; /usr/lib/systemd is not 
+    used on Debian.
+- fix wrong path for systemd in rpm based distros with sed in spec
+
+-------------------------------------------------------------------
+Sun Jul  3 10:09:23 UTC 2016 - ecsos@opensuse.org
+
+- update Source to 1.18.4:
+  - Optimised find for special and hard linked files.
+  - Adjust when Pacman 5 calls etckeeper hooks.
+  - Only run Pacman hooks when files in /etc have changed.
+  - Added systemd timer that can run etckeeper 10 minutes after boot, and also
+    daily. It's not enabled by default, partly because of overlap with the
+    cron job.
+- update Source to 1.18.3:
+  - Added support for pacmatic, contributed by nicolaichuk.
+  - bzr: make sure EMAIL is defined
+  - Fix Makefile version patterns to ignore non-native version number
+  - Support ~/.config/git/config when determining the author name and email.
+  - Added support for Arch's pacman package manager version 5.
+  - Set HOME if it's not set, as is the case when using ubuntu's
+    update-manager.
+  - Move bash completion out of etc and into usr.
+- update Source to 1.18.2:
+  - Use getent utility instead of perl. (Elan Ruusamäe)
+  - Initial FreeBSD support with pkgng plugin. (William Johansson)
+  - Fix README.md symlink in package (Sebastian Schmidt, Antoine Beaupré,
+    closes: #791566)
+  - Fix typo of GIT_COMMITTER_EMAIL.
+- update Source to 1.18.1
+  - Add myself as maintainer (Closes: #768516)
+  - Keeping the package native as I do not intend to diverge from
+    upstream.
+  - Update git URL in control file.
+- update to Sourcce to 1.18:
+  - Send yum pre-commit output to /dev/null
+  - Set LANG=C internally when doing some operations that have
+    been reported to fail in other locales.
+- update Source to 1.17:
+  - Fix name of DNF plugin.
+  - Add --version
+    Thanks Andreas Wansner.
+  - New website, http://etckeeper.branchable.com/
+  - Add build-depends on dh-python.
+- update Source to 1.16:
+  - Added support for Fedora's DNF highlevel package manager.
+  - Add architecture info to dpkg list-installed. Closes: #768145
+  - Orphaned the Debian package.
+- rebase patch etckeeper-avoid-packagelist.patch
+- change source url to github
+- remove unnecessary file etckeeper-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Jun  3 09:05:31 UTC 2016 - ecsos@opensuse.org
+
+- update Source to 1.15:
+  - Recommend cron-daemon, rather than cron, as etckeeper only needs
+    cron.daily functionality. Closes: #762721
+- update Source to 1.14:
+  - Handle failure to commit in post-install, pre-install by showing a
+    warning, rather than propigating the error to apt.
+    This avoids breaking the apt run when eg, git is misconfigured and
+    cannot commit.
+    pre-install already did this when it was able to use debconf to display a
+    message, but now debconf is not used, and it always behaves this way.
+    Closes: #760011
+- change to new url
+
+-------------------------------------------------------------------
+Mon Aug 18 11:55:42 UTC 2014 - bkbin005@rinku.zaq.ne.jp
+
+- renamed to etckeeper-rpmlintrc from etckeeper.rpmlintrc:
+  To follow the packaging guidelines.
+  Please see also:
+  https://build.opensuse.org/request/show/244964#request_history
+  http://lists.opensuse.org/opensuse-packaging/2007-07/msg00000.html
+
+-------------------------------------------------------------------
+Fri Aug 15 22:15:20 UTC 2014 - bkbin005@rinku.zaq.ne.jp
+
+- updated Source to 1.13:
+  + Ignore check-mk-agent-logwatch's FHS violating
+    /etc/check_mk/logwatch.state. Closes: deb#753903
+  + Only allow [-a-z_] in etckeeper commands to avoid any possible
+    directory traversal etc issues.
+  + update-ignore, uninit: Fix parsing of ignore files containing '\'
+- added etckeeper-avoid-packagelist.patch:
+  Because it is slow that some package manager make the packagelist
+  (eg, rpm -qa), high-level package manager might time out
+  (eg. zypper in/remove).
+  So I added this patch.
+  If you think that the packagelist is unnecessary,
+  set AVOID_PACKAGELIST=1 in etckeeper.conf.
+  Or if you want to avoid it temporarily,
+  you can use environment variable ETCKEEPER_AVOID_PACKAGELIST=1 .
+  (eg, ETCKEEPER_AVOID_PACKAGELIST=1 zypper update).
+  This patch was sent to upstream, but Joey does not accept it yet.
+  Please see also gh#joeyh/etckeeper#17 .
+- rename subpackage from pkgmanager-collabo
+  to zypp-plugin or yum-plugin.
+  please see also:
+  http://lists.opensuse.org/archive/opensuse-factory/2014-07/msg00060.html
+- added "Provides:" for renaming:
+  pkgmanager-collabo => (zypp|yum)-plugin.
+  Please see also:
+  https://en.opensuse.org/openSUSE:Package_dependencies#Renaming_a_packageage
+- added "Provides:" for split packages: etekeeper-cron and plugins.
+  Please see also:
+  https://en.opensuse.org/openSUSE:Package_dependencies#Splitting_off_a_sub-pack
+- added "Reccomends: git".
+  please see also:
+  http://lists.opensuse.org/archive/opensuse-factory/2014-07/msg00060.html
+- added bzr support files.
+  Their files need "Buildrequires: python-devel bzr",
+  but did not write them, so they were not installed untill now.
+- added Python Compatibility with older distributions codes.
+  Please see also:
+  https://en.opensuse.org/openSUSE:Packaging_Python#Compatibility_with_older_distributions
+- added version-release number to Recommendes and Requires.
+  It is desirable that etckeeper packages are same version.
+- removed lib/zypp directories:
+  They should belong libzypp.
+  + remove them.
+  + added "BuildRequire: zypp-plugin-python".
+
+-------------------------------------------------------------------
+Mon Jul  7 21:21:34 UTC 2014 - bkbin005@rinku.zaq.ne.jp
+
+- modified etckeeper.spec style
+  by "osc service run format_spec_file".
+- removed lint code 'rm -rf "%{buildroot}%{_prefix}/lib"/python*'.
+  This line does not work.
+- removed "Requires: git".
+  users can select VCS.
+- divide etckeeper package into 3.
+  + etckeeper:
+    main function.
+  + etckeeper-cron:
+    cron function.
+  + etckeeper-pkgmanager-collabo:
+    collaboration with package manager.
+- fix (bnc#884154): forgot to reqire zypp-plugin-python.
+
+-------------------------------------------------------------------
+Wed Jul  2 20:33:59 UTC 2014 - bkbin005@rinku.zaq.ne.jp
+
+- fix (bnc#884154).  change permission and locale.
+  + added etckeeper-zypp.patch
+    1) changed zypper-etckeeper.py 's permission from 644 to 755
+      (in Makefile).
+    2) in zypper-etckeeper.py set LANG to C.
+  please see also:
+  http://lists.opensuse.org/archive/opensuse-factory/2014-06/msg00090.html
+- version up to 1.12 from 1.7
+  + README's filename changed from README to README.md.
+  + fix some bugs.
+  + fix some typos.
+  for detail,
+  please do "git clone git://git.kitenet.net/etckeeper.git"
+  and "git log".
+
+-------------------------------------------------------------------
+Wed Aug 21 16:59:59 UTC 2013 - dvaleev@suse.com
+
+- don't require git to build
+- relax git version requirement 
+
+-------------------------------------------------------------------
+Sat Aug 10 10:33:54 CET 2013 - pascal.bleser@opensuse.org
+
+- initial version (1.7)
+

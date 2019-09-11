@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Fri Aug 18 16:00:59 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.3.1
+  * Add lacking information to the informational json file (this
+    file is written since version 0.3.0 of generate_html).
+- Changes from version 0.3.0:
+ * Nested namespaces and classes under namespaces are now handled
+   in generating the alphabetical function database.
+ * Toplevel functions are now in separate files of the alphabetic
+   function database, and in the same directory tree as classes
+   and namespaces.
+ * Function html helptexts are now in a directory tree
+   corresponding to that of the alphabetic function database.
+ * Add repository link to index page.
+ * In the individual options, as returned by `get_html_options'
+   and used in html generation, replacement strings ("%...") are
+   not considered anymore. Instead, options can be anonymous
+   functions which use their arguments to configure the output
+   string. So if users manually changed options with replacements,
+   they have to do it differently now; looking into the
+   `get_html_options.m' file will help to figure out the correct
+   way.
+ * Add Octave Forge stylesheet, icons, and javascript files.
+ * Page margins of Octave Forge additional package documentation
+   are now configurable with the Octave Forge stylesheet.
+
+-------------------------------------------------------------------
+Sat Sep 17 18:49:02 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.1.12
+  * New option 'older_versions_download'
+
+-------------------------------------------------------------------
+Tue Jun  7 20:01:54 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.1.11
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Aug 13 10:36:28 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.1.9
+  * Bugfix release
+
+-------------------------------------------------------------------
+Sat May  2 21:00:14 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.1.8
+  * Bug fixes
+    - html_help_text.m, texi2html.m: Fix a bug that was the cause of unmatched
+      </p> tags in the HTML output.
+    - get_html_options.m: Fix default header (add !DOCTYPE, charset, etc.)
+      and Octave Forge header (unordered <ul> </ul> lists are not allowed to be
+      nested in <p> </p> blocks).
+  * Other changes
+    - html_help_text.m: Now entirely based on texi2html.m
+    - texi2html.m: Use <dt class="deftypefn"> </dt> blocks both with TexInfo 4.x
+      and with TexInfo 5.x.
+
+-------------------------------------------------------------------
+Wed Apr  8 08:05:39 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.1.7
+  * Bug fixes
+    - Omit the "News" link if there is no NEWS file, instead of generating an
+      error (the NEWS file is optional, according to the manual)
+    - Fix broken links on the NEWS, COPYING and overview pages (the link that
+      was supposed to point to the index.html of the package)
+    - Protect symbols <, > and & by replacing them with the corresponding HTML
+      entity (&lt;, &gt; and &amp;) everywhere it makes sense
+    - get_txi_files.m: Update the list of ignored *.texi files
+    - generate_package_html.m: Let email addresses appear if they exist in
+      DESCRIPTION (they were previously hidden because of the < > delimiters)
+    - generate_package_html.m: Fix anchor names
+    - html_help_text.m: Hide figures only if gnuplot is in use (bug#33180)
+    - html_help_text.m: Prevent empty <pre> </pre> blocks (bug#44451)
+  * New features
+    - Introduce a new %charset variable for header template, which defaults to
+      utf-8 (instead of the hard-coded iso-8859-1 that was previously in use)
+  * Documentation
+    - Add generate_operators to the INDEX
+    - Provide minimal (one-line) help text for generate_html_manual
+  * Cleanup
+    - Remove obsolete function generate_alphabet
+    - Remove unused "docbrowser" style
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 0.1.6
+

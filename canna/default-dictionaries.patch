@@ -1,0 +1,36 @@
+--- Canna37p3/dic/ideo/words/dics.dir
++++ Canna37p3/dic/ideo/words/dics.dir
+@@ -39,3 +39,15 @@
+ kanasmpl.ctd(.mwd)		-kanasample---
+ necgaiji.ctd(.mwd)		-necgaiji---
+ software.ctd(.mwd)		-software---
++
++######################################################################
++# supplementary dictionaries from the cannadic package
++# (Entries added by Mike Fabian  <mfabian@suse.de>, Fri Sep  7 18:16:36 2001)
++#
++gcanna.cbd(gcanna.mwd)           -gcanna---
++gcanna.cld(gcanna.mwd)           -gcanna---
++#gcannaf.cbd(gcannaf.mwd)        -gcannaf---
++#gcannaf.cbd(gcannaf.mwd)        -gcannaf---
++gcannaf.ctd(.mwd)                -gcannaf--w-
++yubin7.cbd(yubin7.mwd)           -yubin7---
++yubin7.cld(yubin7.mwd)           -yubin7---
+--- Canna37p3/misc/default.ca
++++ Canna37p3/misc/default.ca
+@@ -29,6 +29,15 @@
+  "hojomwd"
+  "hojoswd"
+  "keishiki"
++ "chimei"
++ "kanasample"
++ "katakana"
++ "number"
++ "software"
++ "suffix"
++ "gcanna"
++ "gcannaf"
++ "yubin7"
+  :bushu "bushu"
+  :user "user"
+  )

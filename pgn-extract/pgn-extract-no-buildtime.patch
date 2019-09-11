@@ -1,0 +1,15 @@
+Index: pgn-extract/argsfile.c
+===================================================================
+--- pgn-extract.orig/argsfile.c
++++ pgn-extract/argsfile.c
+@@ -246,8 +246,8 @@ usage_and_exit(void)
+     const char **data = help_data;
+ 
+     fprintf(GlobalState.logfile,
+-            "pgn-extract %s (%s): a Portable Game Notation (PGN) manipulator.\n",
+-            CURRENT_VERSION, __DATE__);
++            "pgn-extract %s: a Portable Game Notation (PGN) manipulator.\n",
++            CURRENT_VERSION);
+     fprintf(GlobalState.logfile,
+             "Copyright (C) 1994-2018 David J. Barnes (d.j.barnes@kent.ac.uk)\n");
+     fprintf(GlobalState.logfile, "%s\n\n", URL);

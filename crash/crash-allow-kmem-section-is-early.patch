@@ -1,0 +1,70 @@
+Update for the "kmem -n" option on Linux 5.3-rc1 and later kernels that
+contain commit 326e1b8f83a4318b09033ef754f40c785aed5e68, titled
+"mm/sparsemem: introduce a SECTION_IS_EARLY flag". With this patch,
+the option displays a new state "E" for the flag, instead of printing
+incorrect mem_map addresses.
+
+Also update the confusing comment with the one from kernel commit
+def9b71ee651a6fee93a10734b94f93a69cdb2d4, titled "include/linux/mmzone.h:
+fix explanation of lower bits in the SPARSEMEM mem_map pointer".
+
+Signed-off-by: Kazuhito Hagio <k-hagio@ab.jp.nec.com>
+---
+ help.c   |  4 ++--
+ memory.c | 17 ++++++++++++++---
+ 2 files changed, 16 insertions(+), 5 deletions(-)
+
+Index: b/help.c
+===================================================================
+--- a/help.c
++++ b/help.c
+@@ -6633,8 +6633,8 @@ char *help_kmem[] = {
+ "            the cumulative, vm_event_states counter values if they exist.",
+ "        -n  display memory node, memory section, and memory block data",
+ "            and state; the state of each memory section state is encoded",
+-"            as \"P\", \"M\" and/or \"O\", meaning SECTION_MARKED_PRESENT,",
+-"            SECTION_HAS_MEM_MAP and SECTION_IS_ONLINE.",
++"            as \"P\", \"M\", \"O\" and/or \"E\", meaning SECTION_MARKED_PRESENT,",
++"            SECTION_HAS_MEM_MAP, SECTION_IS_ONLINE and SECTION_IS_EARLY.",
+ "        -z  displays per-zone memory statistics.",
+ "        -o  displays each cpu's offset value that is added to per-cpu symbol",
+ "            values to translate them into kernel virtual addresses.",
+Index: b/memory.c
+===================================================================
+--- a/memory.c
++++ b/memory.c
+@@ -17122,13 +17122,22 @@ nr_to_section(ulong nr)
+ 
+ /*
+  * We use the lower bits of the mem_map pointer to store
+- * a little bit of information.  There should be at least
+- * 3 bits here due to 32-bit alignment.
++ * a little bit of information.  The pointer is calculated
++ * as mem_map - section_nr_to_pfn(pnum).  The result is
++ * aligned to the minimum alignment of the two values:
++ *   1. All mem_map arrays are page-aligned.
++ *   2. section_nr_to_pfn() always clears PFN_SECTION_SHIFT
++ *      lowest bits.  PFN_SECTION_SHIFT is arch-specific
++ *      (equal SECTION_SIZE_BITS - PAGE_SHIFT), and the
++ *      worst combination is powerpc with 256k pages,
++ *      which results in PFN_SECTION_SHIFT equal 6.
++ * To sum it up, at least 6 bits are available.
+  */
+ #define SECTION_MARKED_PRESENT	(1UL<<0)
+ #define SECTION_HAS_MEM_MAP	(1UL<<1)
+ #define SECTION_IS_ONLINE	(1UL<<2)
+-#define SECTION_MAP_LAST_BIT	(1UL<<3)
++#define SECTION_IS_EARLY	(1UL<<3)
++#define SECTION_MAP_LAST_BIT	(1UL<<4)
+ #define SECTION_MAP_MASK	(~(SECTION_MAP_LAST_BIT-1))
+ 
+ 
+@@ -17225,6 +17234,8 @@ fill_mem_section_state(ulong state, char
+ 		bufidx += sprintf(buf + bufidx, "%s", "M");
+ 	if (state & SECTION_IS_ONLINE)
+ 		bufidx += sprintf(buf + bufidx, "%s", "O");
++	if (state & SECTION_IS_EARLY)
++		bufidx += sprintf(buf + bufidx, "%s", "E");
+ }
+ 
+ void 

@@ -1,0 +1,57 @@
+Index: source/nedit.c
+===================================================================
+RCS file: /cvsroot/nedit/nedit/source/nedit.c,v
+retrieving revision 1.101
+diff -u -r1.101 nedit.c
+--- source/nedit.c	25 Oct 2012 14:10:25 -0000	1.101
++++ source/nedit.c	10 Jan 2013 11:55:32 -0000
+@@ -96,6 +96,7 @@
+ static void maskArgvKeywords(int argc, char **argv, const char **maskArgs);
+ static void unmaskArgvKeywords(int argc, char **argv, const char **maskArgs);
+ static void fixupBrokenXKeysymDB(void);
++static void changeLocaleIfUTF8(void);
+ static void patchResourcesForVisual(void);
+ static void patchResourcesForKDEbug(void);
+ static void patchLocaleForMotif(void);
+@@ -425,6 +426,8 @@
+     /* Save the command which was used to invoke nedit for restart command */
+     ArgV0 = argv[0];
+ 
++    changeLocaleIfUTF8();
++
+     /* Set locale for C library, X, and Motif input functions. 
+        Reverts to "C" if requested locale not available. */
+     XtSetLanguageProc(NULL, neditLanguageProc, NULL);
+@@ -1133,6 +1136,32 @@
+     return setlocale(LC_ALL, NULL); /* re-query in case overwritten */
+ }
+ 
++static void changeLocaleIfUTF8(void)
++{
++    char *locale;
++
++    locale = getenv("LANG");
++    if (!locale) {
++        locale = setlocale(LC_ALL, NULL);
++    }
++
++    if (locale) {
++        char *ptr;
++
++        ptr = strstr(locale, ".UTF-8");
++        if (ptr) {
++            fprintf(stderr, "nedit: the current locale is utf8 (%s)\n", locale);
++
++            ptr[0] = '\0';
++
++            setenv("LC_ALL", locale, 1);
++            locale = setlocale(LC_ALL, locale);
++
++            fprintf(stderr, "nedit: changed locale to non-utf8 (%s)\n", locale);
++        }
++    }
++}
++
+ static int sortAlphabetical(const void* k1, const void* k2)
+ {
+     const char* key1 = *(const char**)k1;

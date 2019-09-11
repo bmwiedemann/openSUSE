@@ -1,0 +1,32 @@
+--- Makefile.orig	2015-04-04 12:38:03.000000000 +0200
++++ Makefile	2015-06-08 20:36:13.445880866 +0200
+@@ -27,12 +27,25 @@
+ SOURCES = README COPYING NEWS Makefile wumpus.c superhack.c wumpus.xml
+ 
+ install: wumpus.6
+-	cp wumpus superhack /usr/bin/
+-	cp wumpus.6 /usr/share/man/man6/
++	install -m 0755 -d $(DESTDIR)/usr/bin/
++	install -m 0755 -d $(DESTDIR)/usr/share/man/man6/
++	install -m 0755 -d $(DESTDIR)//usr/share/applications/
++	install -m 0755 -d $(DESTDIR)/usr/share/icons/hicolor/48x48/apps/
++	install -m 0755 -d $(DESTDIR)/usr/share/appdata/
++	install -m 0755 superhack wumpus $(DESTDIR)/usr/bin/
++	install -m 0644 wumpus.6 $(DESTDIR)/usr/share/man/man6/
++	install -m 0644 wumpus.desktop $(DESTDIR)/usr/share/applications/
++	install -m 0644 superhack.desktop $(DESTDIR)/usr/share/applications/
++	install -m 0644 wumpus.png $(DESTDIR)/usr/share/icons/hicolor/48x48/apps/
++	install -m 0644 wumpus.xml $(DESTDIR)/usr/share/appdata/
+ 
+ uninstall:
+-	rm /usr/bin/wumpus /usr/bin/superhack
+-	rm /usr/share/man/man6/wumpus.6
++	rm -f /usr/bin/superhack /usr/bin/wumpus
++	rm -f /usr/share/man/man6/wumpus.6
++	rm -f /usr/share/applications/wumpus.desktop
++	rm -f /usr/share/applications/superhack.desktop
++	rm -f /usr/share/icons/hicolor/48x48/apps/wumpus.png
++	rm -f /usr/share/appdata/wumpus.xml
+ 
+ CPPCHECKOPTS =
+ cppcheck:

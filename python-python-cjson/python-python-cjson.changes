@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Jun  3 17:56:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim encyclopedic JSON report from description.
+
+-------------------------------------------------------------------
+Sat May 11 02:13:29 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Rename package from python-cjson to python-python-cjson
+- Add Python 3 support using py3.patch
+- Update to v1.2.1
+  * Updated project homepage
+- from v1.2.0
+  * Implemented recursion limit check for encoding/decoding arrays and objects
+  * Updated copyright years and stripped licensing info from source code
+- from v1.1.0
+  * Use repr instead of str when encoding floats to preserve full preicision
+  * Fixed windows compilation problem introduced in 1.0.5
+  * Fixed float write test to work with latest high precision float encoding
+  * Fixed some list/dict decoding bugs. Use a state machine for decoding them.
+  * Improved decoding speed by using PyString_GET_SIZE instead of strlen
+  * Integrate modified 0001-fix-for-CVE-2010-1666 patch from Debian
+
+-------------------------------------------------------------------
+Sat Mar  7 22:30:23 CET 2009 - lars@linux-schulserver.de
+
+- build for openSUSE
+
+-------------------------------------------------------------------
+Tue Oct 30 00:00:00 CET 2007 - James Oakley <jfunk@funktronics.ca> - 1.0.5-1
+
+- Update to 1.0.5
+  - Check if module initialization failed.
+  - Removed useless checks on module initialization.
+  - Added __version__ attribute to the cjson module.
+  - Call Py_INCREF before calling PyModule_AddObject.
+- Changes in version 1.0.4
+  - Added licensing information.
+  - Fixed issue with decrementing a string reference too early
+    (Edouard Hinard <edouard.hinard@orange-ftgroup.com>).
+  - Fixed 64-bit portability problems (based on a modified version of a
+    patch by David Rushby <davidrushby@yahoo.com>).
+  - Fixed issue with not returning NULL after setting the OverflowError
+    when encoded strings would be too big.
+  - Fixed 2 potential buffer overflow errors when encoding string/unicode
+    (thanks to Ofer Faigon <ofer3@bitformation.com> for pointing them out).
+  - About 10% speed improvement when encoding/decoding string/unicode.
+
+-------------------------------------------------------------------
+Fri Jul 13 00:00:00 CET 2007 - James Oakley <jfunk@funktronics.ca> - 1.0.3x6-1
+
+- Update to 1.0.3x6
+  - Fixed segmentation fault
+
+    Fixed a rare, but reproducible segmentation fault when decoding specially
+    crafted unicode strings. Bug reported by: Liu Cougar - China
+
+-------------------------------------------------------------------
+Sun Mar 04 00:00:00 CET 2007 - James Oakley <jfunk@funktronics.ca> - 1.0.3-1
+
+- Initial release
+

@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Tue Jul 23 11:19:07 UTC 2019 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 1.4
+
+  * Add new D-Bus methods/properties for use by external tools 
+    such as the GameMode GNOME Shell extension.
+  * Fix I/O priority and niceness optimisations to apply to the 
+    whole process rather than just the thread that 
+    requests GameMode.
+  * gamemoded will now automatically reload the configuration 
+    file when it is changed and update optimisations on 
+    current clients.
+  * Add support for using the client library inside Flatpak by 
+    communicating with the daemon via a portal.
+  * Client library now uses libdbus rather than sd-bus.
+  * Fix gamemoderun to use the correct library path depending on 
+    whether the app is 32-bit or 64-bit.
+  * Support the GAMEMODERUNEXEC environment variable to specify 
+    an extra wrapper command for games launched with gamemoderun
+    (e.g. a hybrid GPU wrapper such as optirun).
+  * Various other fixes and improvements.
+
+- Removed gpuctl-fixes.patch already included in 1.4 
+- Added "BuildRequires:  pkgconfig(dbus-1)" to spec file which
+  is needed by version 1.4
+
+-------------------------------------------------------------------
+Wed May 22 13:58:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the gamemode build requirement.
+
+-------------------------------------------------------------------
+Tue Apr  9 19:39:24 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Update to version 1.3.1
+  * Disables screensaver when the game is running.
+  * New `gamemoderun` script to run games in GameMode which don't
+    support it themselves.
+  * Add GPU managment capabilities.
+- Removed hardening.patch already included in 1.3.
+- Add gpuctl-fixes.patch hardening the new GPU features.
+
+-------------------------------------------------------------------
+Sat Mar 16 19:34:04 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Include the baselibs.conf in the source RPM.
+
+-------------------------------------------------------------------
+Wed Mar 13 21:21:43 UTC 2019 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Add baselibs.conf to also build -32bit packages for the x86-64
+  arch as they are required by 32bit games in wine.
+  See https://github.com/FeralInteractive/gamemode/issues/25.
+
+-------------------------------------------------------------------
+Thu Aug 16 11:06:03 UTC 2018 - jengelh@inai.de
+
+- Wrap descriptions. Add missing Group: lines.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Aug 13 20:47:23 UTC 2018 - marix@marix.org
+
+- Add hardening.patch: This backports bugfixes and hardenings
+  resulting from the Factory-inclusion security review and already
+  accepted by upstream.
+- Stop suppressing linter warning for the PolicyKit priviledge
+  escalation. This has been properly handled via boo#1093979 now.
+- Suppress false positive lintian caused by a % symbol in the
+  description of the libgamemodeauto library.
+
+-------------------------------------------------------------------
+Tue Jul 24 21:11:08 UTC 2018 - marix@marix.org
+
+- Update to version 1.2:
+  + Store the initial governor state on mode enter
+  + Config now supports defaultgov and desiredgov
+  + Add support for renice-ing games to a higher priority (renice
+    config option)
+  + Make libraries properly versioned.
+- Gamemoded is now run as a Systemd service in the user session
+  but still activated via D-Bus.
+
+-------------------------------------------------------------------
+Sat May 19 11:25:26 UTC 2018 - marix@marix.org
+
+- Fix compilation on Leap 42.3.
+
+-------------------------------------------------------------------
+Tue May 15 19:38:57 UTC 2018 - marix@marix.org
+
+- Add Documentation files:
+  + License
+  + Sample configuration file
+  + README.openSUSE documenting how to apply configuration
+
+-------------------------------------------------------------------
+Tue May 15 17:37:33 UTC 2018 - marix@marix.org
+
+- Replace Systemd unit by a D-Bus service.
+  + The Systemd unit does not work on openSUSE as it lacks access
+    to D-Bus.
+  + The D-Bus service is zero configuration for the user.
+
+-------------------------------------------------------------------
+Sat May 12 19:47:14 UTC 2018 - marix@marix.org
+
+- Work around Leap 42.3's default compiler being to old.
+
+-------------------------------------------------------------------
+Sat May 12 19:41:07 UTC 2018 - marix@marix.org
+
+- Initial experimental package version.
+  + Provides the GameMode daemon
+  + Provides the auto-GameMode library
+  + Provides a devel package with the GameMode client header

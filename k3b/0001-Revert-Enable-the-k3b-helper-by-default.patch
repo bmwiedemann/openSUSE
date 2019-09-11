@@ -1,0 +1,258 @@
+From 8758abbdc54b674b4d005cfa296d96b8c92f8bec Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Mon, 3 Jun 2019 22:31:35 +0200
+Subject: [PATCH] Revert "Enable the k3b helper by default"
+
+This reverts commit cb4985b00dc2d1a1e27850dcd672093426aafd8b.
+---
+ CMakeLists.txt                               |  2 ++
+ INSTALL.txt                                  |  2 ++
+ config-k3b.h.cmake                           |  2 ++
+ src/CMakeLists.txt                           |  4 +++-
+ src/option/k3bdevicewidget.cpp               | 12 ++++++++++++
+ src/option/k3bexternalbinpermissionmodel.cpp |  2 ++
+ src/option/k3bexternalbinwidget.cpp          | 17 +++++++++++++++++
+ src/option/k3bexternalbinwidget.h            |  2 ++
+ 8 files changed, 42 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d3bd9827..fb8fe81e4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@ option(K3B_ENABLE_MUSICBRAINZ "Support for querying metadata about audio tracks
+ option(K3B_ENABLE_DVD_RIPPING "Support for ripping Video DVDs with optional decryption." ON)
+ option(K3B_ENABLE_TAGLIB "Support for reading audio file metadata using Taglib." ON)
+ option(K3B_BUILD_API_DOCS "Build the API documentation for the K3b libs." OFF)
++option(K3B_ENABLE_PERMISSION_HELPER "Build the permissions helper program" OFF)
+ 
+ # plugin options
+ option(K3B_BUILD_FFMPEG_DECODER_PLUGIN "Build FFmpeg decoder plugin" ON)
+@@ -270,6 +271,7 @@ set(BUILD_EXTERNAL_ENCODER_PLUGIN "${K3B_BUILD_EXTERNAL_ENCODER_PLUGIN}")
+ 
+ set(ENABLE_HAL_SUPPORT "${K3B_ENABLE_HAL_SUPPORT}")
+ set(ENABLE_AUDIO_PLAYER "${QT_QTMULTIMEDIA_FOUND}")
++set(ENABLE_PERMISSION_HELPER "${K3B_ENABLE_PERMISSION_HELPER}")
+ 
+ if(IS_ABSOLUTE ${DATA_INSTALL_DIR})
+   set(K3B_DATA_INSTALL_DIR ${DATA_INSTALL_DIR}/k3b)
+diff --git a/INSTALL.txt b/INSTALL.txt
+index 9cd107ddd..f1ae3228d 100644
+--- a/INSTALL.txt
++++ b/INSTALL.txt
+@@ -44,6 +44,7 @@ For debug:
+     -DKDE_INSTALL_LIBEXECDIR=lib    \
+     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON   \
+     -DK3B_BUILD_API_DOCS=ON \
++    -DK3B_ENABLE_PERMISSION_HELPER=ON   \
+     -DK3B_DEBUG=ON
+ 
+   dynamic analyzer and fuzzer:
+@@ -56,6 +57,7 @@ For debug:
+     -DKDE_INSTALL_LIBEXECDIR=lib    \
+     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON   \
+     -DK3B_BUILD_API_DOCS=ON \
++    -DK3B_ENABLE_PERMISSION_HELPER=ON   \
+     -DK3B_DEBUG=ON
+ 
+ If the cmake run was successful you are presented with a list of configure results that shows
+diff --git a/config-k3b.h.cmake b/config-k3b.h.cmake
+index f2a6fe20e..c9b41d0cf 100644
+--- a/config-k3b.h.cmake
++++ b/config-k3b.h.cmake
+@@ -20,6 +20,8 @@
+ 
+ #cmakedefine ENABLE_AUDIO_PLAYER
+ 
++#cmakedefine ENABLE_PERMISSION_HELPER
++
+ #cmakedefine HAVE_BYTESWAP_H
+ 
+ #cmakedefine WORDS_BIGENDIAN
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1a45e18d7..d9cd935b3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ 
+-add_subdirectory( helper )
++if(ENABLE_PERMISSION_HELPER)
++  add_subdirectory( helper )
++endif(ENABLE_PERMISSION_HELPER)
+ 
+ add_subdirectory( icons )
+ add_subdirectory( pics )
+diff --git a/src/option/k3bdevicewidget.cpp b/src/option/k3bdevicewidget.cpp
+index 6c2d6a0e8..42479bfbe 100644
+--- a/src/option/k3bdevicewidget.cpp
++++ b/src/option/k3bdevicewidget.cpp
+@@ -57,7 +57,9 @@ K3b::DeviceWidget::DeviceWidget( K3b::Device::DeviceManager* manager, QWidget *p
+     m_messageWidget = new KMessageWidget( this );
+     m_messageWidget->hide();
+     m_messageWidget->setWordWrap( true );
++#ifdef ENABLE_PERMISSION_HELPER
+     m_addToGroupAction = new QAction( QIcon::fromTheme("dialog-password"), QString(), this );
++#endif
+ 
+     // buttons
+     // ------------------------------------------------
+@@ -94,7 +96,9 @@ K3b::DeviceWidget::DeviceWidget( K3b::Device::DeviceManager* manager, QWidget *p
+     // ------------------------------------------------
+     connect( buttonRefreshDevices, SIGNAL(clicked()), SIGNAL(refreshButtonClicked()) );
+     connect( m_deviceManager, SIGNAL(changed()), SLOT(init()) );
++#ifdef ENABLE_PERMISSION_HELPER
+     connect( m_addToGroupAction, SIGNAL(triggered(bool)), SLOT(addUserToGroup()) );
++#endif
+     // ------------------------------------------------
+ }
+ 
+@@ -243,10 +247,16 @@ void K3b::DeviceWidget::updateDeviceListViews()
+ 
+             if (!groupNames.contains(m_deviceGroup)) {
+ 		QString messageText = i18n("In order to give K3b full access to the writer device the current user needs be added to a group <em>%1</em>.", m_deviceGroup);
++#ifndef ENABLE_PERMISSION_HELPER
++		messageText += i18n("<br/>The Permission helper that could do this for you was not enabled during build.<br/>"
++                                    "Please rebuild the package with the Permission helper enabled or contact your distribution.");
++#endif
+                 m_messageWidget->setMessageType(KMessageWidget::Warning);
+                 m_messageWidget->setText(messageText);
++#ifdef ENABLE_PERMISSION_HELPER
+                 m_messageWidget->addAction(m_addToGroupAction);
+                 m_addToGroupAction->setText(i18n("Add"));
++#endif
+                 m_messageWidget->animatedShow();
+             }
+         }
+@@ -255,6 +265,7 @@ void K3b::DeviceWidget::updateDeviceListViews()
+ 
+ void K3b::DeviceWidget::addUserToGroup()
+ {
++#ifdef ENABLE_PERMISSION_HELPER
+     QVariantMap args;
+     args["groupName"] = m_deviceGroup;
+     args["userName"] = QString::fromLocal8Bit(getpwuid(getuid())->pw_name);
+@@ -278,4 +289,5 @@ void K3b::DeviceWidget::addUserToGroup()
+         }
+     } );
+     job->start();
++#endif
+ }
+diff --git a/src/option/k3bexternalbinpermissionmodel.cpp b/src/option/k3bexternalbinpermissionmodel.cpp
+index 156c10d75..aed13e10c 100644
+--- a/src/option/k3bexternalbinpermissionmodel.cpp
++++ b/src/option/k3bexternalbinpermissionmodel.cpp
+@@ -348,6 +348,7 @@ QModelIndex ExternalBinPermissionModel::buddy( const QModelIndex& index ) const
+ 
+ void ExternalBinPermissionModel::setBurningGroup( const QString& burningGroup )
+ {
++#ifdef ENABLE_PERMISSION_HELPER
+     if( burningGroup != d->burningGroup ) {
+         beginResetModel();
+         d->burningGroup = burningGroup;
+@@ -364,6 +365,7 @@ void ExternalBinPermissionModel::setBurningGroup( const QString& burningGroup )
+         }
+         endResetModel();
+     }
++#endif
+ }
+ 
+ void ExternalBinPermissionModel::update()
+diff --git a/src/option/k3bexternalbinwidget.cpp b/src/option/k3bexternalbinwidget.cpp
+index 10846b282..e90894213 100644
+--- a/src/option/k3bexternalbinwidget.cpp
++++ b/src/option/k3bexternalbinwidget.cpp
+@@ -111,7 +111,12 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+     // setup permissions tab
+     // ------------------------------------------------------------
+     QWidget* permissionsTab = new QWidget( m_mainTabWidget );
++#ifdef ENABLE_PERMISSION_HELPER
+     QLabel* permissionsLabel = new QLabel( i18n("Check the programs whose permissions you want to be changed:"), permissionsTab );
++#else
++    QLabel* permissionsLabel = new QLabel( i18n("The Permissions helper was not enabled during build.\n"
++                                                "Check the programs whose permissions should be changed:"), permissionsTab );
++#endif
+     permissionsLabel->setWordWrap( true );
+     m_permissionModel = new ExternalBinPermissionModel( *manager, permissionsTab );
+     m_permissionView = new QTreeView( permissionsTab );
+@@ -119,11 +124,15 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+     m_permissionView->setAllColumnsShowFocus( true );
+     m_permissionView->setRootIsDecorated( false );
+     m_permissionView->header()->setSectionResizeMode( ExternalBinPermissionModel::ProgramColumn, QHeaderView::ResizeToContents );
++#ifdef ENABLE_PERMISSION_HELPER
+     m_changePermissionsButton = new QPushButton( QIcon::fromTheme("dialog-password"), i18n( "Change Permissions..." ), this );
++#endif
+     QVBoxLayout* permissionsTabLayout = new QVBoxLayout( permissionsTab );
+     permissionsTabLayout->addWidget( permissionsLabel );
+     permissionsTabLayout->addWidget( m_permissionView );
++#ifdef ENABLE_PERMISSION_HELPER
+     permissionsTabLayout->addWidget( m_changePermissionsButton );
++#endif
+     m_mainTabWidget->addTab( permissionsTab, i18n("Permissions") );
+ 
+ 
+@@ -142,14 +151,17 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+ 
+     m_mainTabWidget->addTab( searchPathTab, i18n("Search Path") );
+ 
++#ifdef ENABLE_PERMISSION_HELPER
+     connect( m_changePermissionsButton, SIGNAL(clicked()), SLOT(slotChangePermissions()) );
+     connect( m_permissionModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), SLOT(slotPermissionModelChanged()) );
+     connect( m_permissionModel, SIGNAL(modelReset()), SLOT(slotPermissionModelChanged()) );
++#endif
+     connect( m_rescanButton, SIGNAL(clicked(bool)), this, SLOT(rescan()) );
+ 
+     qRegisterMetaType<HelperProgramItem>();
+     qRegisterMetaTypeStreamOperators<HelperProgramItem>("K3b::HelperProgramItem");
+ 
++#ifdef ENABLE_PERMISSION_HELPER
+     while (::group *g = ::getgrent()) {
+         const QString groupName = QString::fromLocal8Bit(g->gr_name);
+         if (groupName == "cdrom" ||
+@@ -159,6 +171,7 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+         }
+     }
+     ::endgrent();
++#endif
+ }
+ 
+ 
+@@ -205,12 +218,15 @@ void K3b::ExternalBinWidget::saveSearchPath()
+ 
+ void K3b::ExternalBinWidget::slotPermissionModelChanged()
+ {
++#ifdef ENABLE_PERMISSION_HELPER
+     m_changePermissionsButton->setEnabled(m_permissionModel->changesNeeded());
++#endif
+ }
+ 
+ 
+ void K3b::ExternalBinWidget::slotChangePermissions()
+ {
++#ifdef ENABLE_PERMISSION_HELPER
+     KAuth::Action action("org.kde.k3b.updatepermissions");
+     action.setHelperId("org.kde.k3b");
+     action.setParentWidget(this);
+@@ -252,6 +268,7 @@ void K3b::ExternalBinWidget::slotChangePermissions()
+         }
+     } );
+     job->start();
++#endif
+ }
+ 
+ 
+diff --git a/src/option/k3bexternalbinwidget.h b/src/option/k3bexternalbinwidget.h
+index d1f1e74f9..ce4ec60ec 100644
+--- a/src/option/k3bexternalbinwidget.h
++++ b/src/option/k3bexternalbinwidget.h
+@@ -66,7 +66,9 @@ namespace K3b {
+         QTreeView* m_permissionView;
+         KEditListWidget* m_searchPathBox;
+ 
++#ifdef ENABLE_PERMISSION_HELPER
+         QPushButton* m_changePermissionsButton;
++#endif
+         QPushButton* m_rescanButton;
+     };
+ }
+-- 
+2.21.0
+

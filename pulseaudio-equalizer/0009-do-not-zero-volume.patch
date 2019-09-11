@@ -1,0 +1,19 @@
+--- a/usr/bin/pulseaudio-equalizer
++++ b/usr/bin/pulseaudio-equalizer
+@@ -115,8 +115,14 @@ fi
+ # Get sink names and volumes
+ PA_LADSPA_SINK="ladspa_output.$PA_LADSPA_PLUGIN.$PA_LADSPA_LABEL"
+ PA_CURRENT_SINK=$(pacmd stat | sed -e '/Default sink name/!d;s/Default sink name: //g')
+-PA_CURRENT_VOLUME=$(pacmd list | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'volume: 0:' | awk '{print $NF}' | sed 's/%//g')
+-PA_REAL_VOLUME=$((PA_CURRENT_VOLUME*65536/100))
++if [ "$( (echo '4.0'; pulseaudio --version | awk '{print $2}') | sort -V | sed -n '2p' )" != '4.0' ]; then
++    # The version of PulseAudio is higher than 4.0.
++    PA_CURRENT_VOLUME=$(pacmd list | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'volume: front-left:' | awk '{print $3}')
++    PA_REAL_VOLUME="$PA_CURRENT_VOLUME"
++else
++    PA_CURRENT_VOLUME=$(pacmd list | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'volume: 0:' | awk '{print $NF}' | sed 's/%//g')
++    PA_REAL_VOLUME=$((PA_CURRENT_VOLUME*65536/100))
++fi
+ PA_REAL_PREAMP_FLOAT=$(echo "$PA_PREAMP*65536" | bc)
+ PA_REAL_PREAMP=${PA_REAL_PREAMP_FLOAT/\.*}
+ PA_CURRENT_MUTE=$(pacmd list-sinks | iconv -c -t ascii | grep -A20 "<$PA_CURRENT_SINK>" | grep -m1 'muted: ' | sed -e 's/[\t]muted: no/0/g;s/[\t]muted: yes/1/g')

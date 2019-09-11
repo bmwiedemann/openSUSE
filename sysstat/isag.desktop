@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Isag System Activity Grapher
+GenericName=System Monitor
+Comment=Interactive System Activity Grapher for sysstat
+Exec=isag
+Icon=utilities-system-monitor
+Type=Application
+Categories=System;Monitor;

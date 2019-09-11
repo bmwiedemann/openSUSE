@@ -1,0 +1,115 @@
+--- mmv.c	Mon Oct 25 11:29:39 1993
++++ mmv.c	Tue Sep 24 17:26:45 2002
+@@ -390,7 +390,7 @@
+ static int snap(/* REP *first, REP *p */);
+ static void showdone(/* REP *fin */);
+ static void breakout(/*  */);
+-static int breakrep(/* */);
++static void breakrep(/* int */);
+ static void breakstat(/* */);
+ static void quit(/*  */);
+ static int copymove(/* REP *p */);
+@@ -436,7 +436,8 @@
+ static SLICER slicer[2] = {{NULL, NULL, 0}, {NULL, NULL, 0}};
+ 
+ static int badreps = 0, paterr = 0, direrr, failed = 0, gotsig = 0, repbad;
+-static FILE *outfile = stdout;
++/* static FILE *outfile = stdout; */
++static FILE *outfile;
+ 
+ static char IDF[] = "$$mmvdid.";
+ static char TEMP[] = "$$mmvtmp.";
+@@ -497,6 +498,8 @@
+ {
+ 	char *frompat, *topat;
+ 
++	outfile = stdout;
++
+ 	init();
+ 	procargs(argc, argv, &frompat, &topat);
+ 	domatch(frompat, topat);
+@@ -1258,12 +1261,15 @@
+ 	else if (repbad || checkto(hfrom, f, phto, pnto, pfdel) || badname(*pnto))
+ 		printf("%s -> %s : bad new name.\n", pathbuf, fullrep);
+ 	else if (*phto == NULL)
+-		printf("%s -> %s : %s.\n", pathbuf, fullrep,
+ #ifndef IS_MSDOS
+-			direrr == H_NOREADDIR ?
++		printf("%s -> %s : %s.\n", pathbuf, fullrep,direrr == H_NOREADDIR ?
+ 			"no read or search permission for target directory" :
+-#endif
+ 			"target directory does not exist");
++#else
++		printf("%s -> %s : %s.\n", pathbuf, fullrep,
++			"target directory does not exist");
++#endif
++
+ #ifndef IS_MSDOS
+ 	else if (!dwritable(*phto))
+ 		printf("%s -> %s : no write permission for target directory.\n",
+@@ -1352,6 +1358,9 @@
+ 			hlen += tlen;
+ 			*phto = checkdir(tpath, tpath + hlen, 1);
+ 		}
++		else {
++		  fdel = NULL;
++		}
+ 
+ 		if (*pathend == '\0') {
+ 			*pnto = f;
+@@ -2312,15 +2321,19 @@
+ 		!fwritable(hnt, fto)
+ #endif
+ 	) {
+-		printf("%s%s -> %s%s : %s%s %s.\n",
+-			hnf, f, hnt, t, hnt, t,
+ #ifndef IS_MSDOS
+ #ifdef S_IFLNK
+-			fto->fi_stflags & FI_LINKERR ?
+-			"is a badly aimed symbolic link" :
++                printf("%s%s -> %s%s : %s%s %s.\n",
++                        hnf, f, hnt, t, hnt, t,
++                        fto->fi_stflags & FI_LINKERR ?
++                        "is a badly aimed symbolic link" :
++                        "lacks write permission");
+ #endif
++#else
++                printf("%s%s -> %s%s : %s%s %s.\n",
++                        hnf, f, hnt, t, hnt, t,
++                        "lacks write permission");
+ #endif
+-			"lacks write permission");
+ 	}
+ 	else
+ 		return(0);
+@@ -2578,10 +2591,10 @@
+ }
+ 
+ 
+-static int breakrep()
++static void breakrep(sig)
++	int sig;
+ {
+ 	gotsig = 1;
+-	return(1);
+ }
+ 
+ 
+--- Makefile	Sat Nov  5 01:24:55 1994
++++ Makefile	Tue Sep 24 19:22:10 2002
+@@ -1,11 +1,11 @@
+ # Possible defines in CONF:
+ #	IS_MSDOS IS_SYSV IS_V7 IS_BSD HAS_DIRENT HAS_RENAME MV_DIR
+-
+-CC		=gcc -traditional
++ARCH		=$(shell uname -m)
++CC		=gcc
+ LD		=$(CC)
+ CONF		=-DIS_SYSV -DHAS_DIRENT -DHAS_RENAME
+-CFLAGS		=-O2 -m486 $(CONF)
+-LDFLAGS		=-s -N
++CFLAGS		= $(RPM_OPT_FLAGS) $(CONF)
++LDFLAGS		=
+ 
+ #IBIN		=$(LOCAL)$(ARCH)/bin
+ #IMAN		=$(LOCAL)$(ANY)/man

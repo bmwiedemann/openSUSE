@@ -1,0 +1,401 @@
+-------------------------------------------------------------------
+Wed Jul 24 14:22:50 UTC 2019 - mmeister@suse.com
+
+- Update to version 3.0.0alpha.2:
+  * Fix paths in the ingress template and values file written by helm create
+  * docs(CONTRIBUTING): one LGTM for maintainers, remove "always 2 LGTMs" policy
+  * chore(docs): move docs to helm-www
+  * chore(deps): bump kubernetes to v1.15
+  * Added HorizontalPodAutoscaler to sort order.
+  * feat(template): introduce --validate
+  * fix(kube): remove namespace enforcement
+  * ref(getter): change NewHTTPGetter and NewPluginGetter to return type Getter
+  * ref(downloader): pass in options to ChartDownloader
+  * support writing multiple resources to the same file
+  * chartutil.ReadValues is forced to unmarshal numbers into json.Number refs #1707 [dev-v3]
+  * fix(client): Fixes a timing issue with reading client flags
+  * Add sub-command support to plugin downloader
+  * Replaced ghodss/yaml with sigs.k8s.io/yaml
+  * feat(action): Refactors unit tests with better fakes
+  * feat(*): Adds back --atomic functionality to Helm 3
+  * chore: add ValueOptions constructor
+  * ref(*): Refactors the history action to return releases instead of formatted output
+  * feat(wait): Adds smarter waiting for DaemonSets and StatefulSets
+  * Fix linter issuers
+  * Helm 3:  set custom manifest config media type on chart push (#5719)
+  * fix(pkg/action): Adds back in missing wait functionality
+  * fix(pkg/kube): Fixes wait functionality
+  * ref(getter): introduce Options for passing in getter parameters
+  * Expose the resource types in addition to the api group/version in templates
+  * Redo the same fix with #3915 in dev-v3 branch
+  * Fix linter issues
+  * Updating to newer version of sprig
+  * Restoring the Release.Namespace docs
+  * Updating to the new Ingress group version
+  * Stop Lint from breaking when using required
+  * Remove mention of the execute flag
+  * Fix the build section in the developer doc
+  * fix(resolver): compare hash of lockfile against resolved dependencies
+  * ref(version): catch some edge cases
+  * Add documentation on registries (#5754)
+  * add go version to version cmd output of helm
+  * ref(urlutil): remove stripPort
+  * ref(downloader): remove ResolveChartVersionAndGetRepo
+  * chore(testdata): remove stale test output
+  * fix(circle): only upload packages and checksums, not cross-builds
+  * fix and add test cases
+  * Revert "do not write empty templates to disk"
+  * add test for output-dir
+  * Add dynamic completion for release names
+  * (helm): update Cobra to version 0.0.4
+  * fix issue 5792
+  * ref(*): expose klog flags
+  * do not write empty templates to disk
+  * use outputDir instead of hardcoded value
+  * docs(faq): add namespace changes for non existing namespaces
+  * ref(pkg/chartutil): break up chartutil into logical files
+  * support --output-dir option for helm3 template
+  * fix missing package name
+  * ref(pkg/chart): remove unused chart.RawValues
+  * docs(install): fix release links
+  * fix(docs): fix `helm install` usage
+  * fix ByDate sorter to use Time.Unix()
+  * update list tests expected output files
+  * fix test cases for list.AllNamespaces
+  * remove unnecessary setting of list.All flag
+  * add superseded to list filter mask
+  * add more releases to list tests
+  * fix docs for helm list
+  * Remove redundant ByNameAsc enum value. Handled by default sorting
+  * handle default list sort order through enum order
+  * fix test cases for sort list with options
+  * fix sort list with options bug
+
+-------------------------------------------------------------------
+Wed Jun 26 09:50:23 UTC 2019 - mmeister@suse.com
+
+- Update go to 1.12:
+  * strings.ReplaceAll requires 1.12
+
+- Update to version 3.0.0alpha.1:
+  * fix(pkg/action): add namespace to release options
+  * feat(pkg/chart): support deprecated requirements.yaml
+  * ref(pkg/kube): cleanup kube client interface
+  * Adding apiVersion guidance to the linting
+  * Updatin gthe apiVersion linting for Helm v3
+  * Adding lint check for apiVersion which is a required field
+  * fix(loader): assume apiVersion is v1 when loading charts
+  * update links to get.helm.sh
+  * docs(faq): more information on what changed in Helm 3
+  * pass debug option to registry client
+  * Print manifest output for dry-run option
+  * Updating OWERS to remove outdated reviewers and to reflect current case
+  * fix(circle): lsb_release does not exist in linuxkit images
+  * fix(cmd/helm): set 300s as default on timeout flags
+  * Fix scaffold chart label in helper template
+  * ref(circle): push assets to Azure
+  * ref(*): use time.Duration for timeouts
+  * ref(pkg/chartutil): remove k8s version object dependency
+  * ref(pkg/kube): extract wait logic from install/update
+  * fix(pkg/action): load clients after flags have been parsed (#5681)
+  * Updating the labels for consistency
+  * Reduce template code duplication. Fixes #5372
+  * Add app.kubernetes.io/version label
+  * Updating to the k8s label convention
+  * Helm 3: registry login/logout (#5597)
+  * Change the nginx app version to a set tag
+  * Validate library chart files after chart loaded
+  * Fix the image field for the scaffold chart application
+  * Fix test data
+  * Add capability for application charts to be used as library charts
+  * Update from source section in install doc
+  * docs: Replace reference to k8s.io to helm.sh
+  * Feat/schema validation (#5350)
+  * fix test command, move test to test run subcmd
+  * Change header "APP_VERSION" to "APP VERSION"
+  * Add app version to history table
+  * ref(create): app version should be 0.1.0
+  * fix multi uninstall bug
+  * fix(pkg/engine): Style changes on template errors
+  * fix(pkg/engine): Catch non-templating errors when rendering templates
+  * fix(pkg/engine): Clean up template error messages
+  * ref(pkg/chart): add validation method to chart
+  * Fix files copyright
+  * Fix docs targets
+  * Remove docs target and generated docs folder
+  * Fix make docs target
+  * docs: Update the "Developer Guide"
+  * fix(pkg/chartutil): marshal capabilities VersionSet into slice
+  * fix(pkg/chartutil): only include external objects in capabilities
+  * ref(pkg/action): refactoring dup code and linter fixes
+  * chore(dep): bump kubernetes to 1.14.0
+  * ref(uninstall): purge release history by default
+  * ref(list): move namespaces field closer to the name
+  * Remove a trivial TODO comment
+  * fix(cmd/template): allow setting release name for template
+  * chore(dep): update sprig to 2.19.0 (#5390)
+  * ref(circleci): refactor ci setup
+  * fix(*): resolve new govet issues
+  * fix(pkg/action): action log must be initialized
+  * fix(install): fix issue where chart metadata is not being saved on `helm install`
+  * docs(faq): list changes since Helm 2
+  * feat(*): use vanity import helm.sh/helm
+  * ref(action): remove ParseShowOutputFormat
+  * style(cmd): go fmt
+  * ref(cmd): remove mockTestSuccessTemplate
+  * fix(action): remove test.go
+  * test(cmd): refactor release_testing_test.go
+  * ref(action): move AddFlags functions back to cmd
+  * ref(action): remove io.Writers, return string instead
+  * fix(helm): fix `helm status` output formatting
+  * ref: remove pkg/helm, pkg/hapi, pkg/tiller
+  * chore(deps): upgrade dependencies
+  * feat(tests): replace gometalinter with golangci-lint
+  * Fix #5046 compatible with MacOS (#5406)
+  * Fixes #5046, zsh completion (#5072)
+  * Remove newline at the start of zsh completion file (#4851)
+  * chore(circle): bump go to 1.12 (#5382)
+  * remove appveyor (#5413)
+  * ref(pkg/engine): make template specific functions private
+  * fix(engine): make template rendering thread safe
+  * fix(deps): add github sources to gopkg.in dependencies
+  * docs: s,kubernetes/helm,helm/helm,g (#5404)
+  * docs: consolidate FAQs into one doc (#5402)
+  * docs: bring CONTRIBUTING doc up-to-date with current practices (#5401)
+  * ref(pkg/helm): refactor out `ReleaseStatus`
+  * Update after review
+  * Update the docs
+  * Add chart type
+  * Fix linter warnings
+  * feat(Makefile): add formatting target
+  * Helm 3: fix "latest" tag bug (#5279)
+  * feat(helm): add --plugins flag to 'helm init' (#5109)
+  * ref(ci): persist dep cache
+  * purge plugin directory on `helm plugin remove plug` (#4068)
+  * Helm 3: initial registry support (#5243)
+  * ref(*): remove references to chart 'engine'
+  * optimize vendor caching on appveyor (#5251)
+  * chore(ci): bump golang to 1.11.5
+  * fix appveyor builds (#4934)
+  * fix(deps): resolve dep warning messages
+  * Feature(Plugins): Enable platform specific commands (#5176)
+  * ref(*): remove helmVersion chart constraint
+  * fix: fix a number of style errors (#5136)
+  * feat: add 'pkg/action' for list operations (#5077)
+  * feat(Makefile): automate go vendoring and building
+  * Changed requirements.yaml references to dependencies section references
+  * Updated change from requirements.yaml to dependencies field in Chart.yaml
+  * feat(cmd/helm): re-add --history-max option to v3
+  * ref(*): kubernetes v1.13 support
+  * ref(*): replace byte array with map for Release config
+  * ref(pkg/chartutil): simplify chart dependency unit tests
+  * ref(pkg/chart): rename Requirements to Dependencies
+  * ref(url) update helm's github url (#4962)
+  * ref(pkg/repo): rename RepoFile to File
+  * ref: rename inspect to show (#4927)
+  * ref(pkg/chartutil): attempt to make requirements processing readable
+  * ref(pkg/chart): rename files to be consistent with types
+  * fix missing formatting character error in wrapf statement (#4881)
+  * ref: require name by default on 'helm install' (#4858)
+  * remove dirname constraint on `helm package` (#4141)
+  * ref(tests): remove broken symlinks in testdata
+  * doc(helm): remove Tiller reference from the docs (#4788)
+  * ref(*): kubernetes v1.12 support
+  * ref(helm): rename fetch to pull (#4714)
+  * fix(tests): set mock to generate UTC timestamps (#4716)
+  * ref(driver): refactor out function type errors
+  * ref(*): rename requirements.lock to Chart.lock
+  * ref(*): merge requirement.yaml into Chart.yaml
+  * ref(chart): use map for chart.Values
+  * change copyright to "Copyright The Helm Authors"
+  * ref(*): refactor chart/chartutil
+  * ref(*): kubernetes v1.11 support
+  * ref(cmd): rename `helm delete` to `helm uninstall`
+  * release canary v3 binaries as helm-dev-v3
+  * feat(*): remove Time, Namespace, and Revision from template functions
+  * ref(cmd): dry up values and chartpath flag options
+  * ref(cmd): test template cmd using golden files
+  * ref(cmd): refactor argument validation
+  * ref(tests): simplify cmd test setup/teardown
+  * ref(*): s/tiller/helm/
+  * feat(*): print stacktrace on error with debug enabled
+  * ref(cmd): consistent naming of cmd variables
+  * ref(cmd): remove Writer from Cmd options stucts
+  * ref(tests): use golden files for testing command output
+  * ref(*): rebuild build version object
+  * ref(pkg/tiller): add flag to enable tilling logging in tests
+  * ref(*): convert const types to strings
+  * ref(cmd): simplify cmd test setup
+  * ref(*): remove local repository (dead code)
+  * ref(cmd): remove serve command
+  * fix(kube): output internal object table
+  * feat(cmd): add --all-namespaces to list
+  * feat(dep): replace glide with dep
+  * ref(*): move kubeconfig flags to helm/environment
+  * ref(pkg/tiller): flatten package structure for storage
+  * fix(hapi): typo in struct json tags
+  * feat(*): store release History in same namespace as release
+  * feat(cmd): alias -n to --namespace
+  * fix(tests): fix race in releasetesting test
+  * chore(hapi): add missing license headers
+  * ref(*): replace TillerVersion with HelmVersion
+  * ref(*): replace chart.config with []byte
+  * ref(pkg/releasetesting): simplify test setup
+  * ref(*): cleanup timestamps in tests
+  * ref(*): use go conventions for naming types
+  * ref(*): remove protobuf any type
+  * ref(*): remove protobuf timestamps
+  * ref(hapi): convert protobuf to go types
+  * ref(pkg/kube): simplify creating versioned objects
+  * ref(*): improve initializing helm clients
+  * ref(proto): remove unused protobufs
+  * ref(pkg/tiller): simplify exported methods
+  * ref(*): remove grpc
+  * ref(*): refactor release testing
+  * docs(generated): remove generated docs
+  * ref(*): remove HELM_HOST
+  * ref(*): remove pkg/kubernetes from tiller and storage
+  * ref(*): bypass grpc for helm client
+  * fixup! ref(cmd,pkg/helm): remove server side version
+  * ref(pkg/tiller): remove ReleaseModules interface from tiller
+  * ref(*): bypass grpc when invoking helm list
+  * ref(pkg/tiller): refactor out imports of pkg/helm
+  * ref(cmd): remove deprecated command
+  * ref(Makefile): cleanup and consolidate
+  * ref(cmd/tiller): delete main tiller package
+  * ref(pkg/helm): cleanup unused code
+  * ref(cmd): remove reset and init tiller commands
+  * ref(pkg/helm): allow ReleaseContent to call storage directly
+  * ref(cmd,pkg/helm): remove tiller ping
+  * ref(cmd,pkg/helm): remove server side version
+  * remove proto make targets
+  * remove tiller build infra
+  * remove rudder build infra
+
+-------------------------------------------------------------------
+Fri May 17 09:47:48 CEST 2019 - jsuchome@suse.com
+
+- set correct git_commit value so that 'helm version' reports correctly
+- build with Go 1.11 to prevent https://github.com/helm/helm/issues/4987
+- added service file for helm-serve
+
+-------------------------------------------------------------------
+Thu May 16 04:26:51 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add README.packaging as Source
+- Update to version 2.13.1. See following changelogs for detailed
+  descriptions:
+  * https://github.com/helm/helm/releases/tag/v2.13.1
+  * https://github.com/helm/helm/releases/tag/v2.13.0
+  * https://github.com/helm/helm/releases/tag/v2.12.3
+  * https://github.com/helm/helm/releases/tag/v2.12.2
+  * https://github.com/helm/helm/releases/tag/v2.12.1
+  * https://github.com/helm/helm/releases/tag/v2.12.0
+  * https://github.com/helm/helm/releases/tag/v2.11.0
+  * https://github.com/helm/helm/releases/tag/v2.10.0
+  * https://github.com/helm/helm/releases/tag/v2.9.1
+  * https://github.com/helm/helm/releases/tag/v2.9.0
+
+-------------------------------------------------------------------
+Wed Dec 19 01:36:13 UTC 2018 - clee@suse.com
+
+- Require golang >= 1.10.6 
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+-------------------------------------------------------------------
+Thu Dec 13 04:47:38 UTC 2018 - dorf@suse.com
+
+- Require golang >= 1.10. 
+
+-------------------------------------------------------------------
+Tue Aug  7 09:58:51 UTC 2018 - mmeister@suse.com
+
+- run spec-cleaner over tthe specfile
+  there have been some deprecated macros used
+
+-------------------------------------------------------------------
+Tue Jun  5 09:50:49 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro 
+
+-------------------------------------------------------------------
+Tue Mar 13 16:31:32 UTC 2018 - kmacinnes@suse.com
+
+- Update to version 2.8.2:
+  * Tiller should only enforce what we expect from Helm
+  * Keepalive config should be independent of TLS
+  * Bump client side grpc max msg size
+  * Update deprecated grpc dial timeout
+  * fix(tiller): Supersede multiple deployments (#3539)
+  * replace FAILED deployments with `helm upgrade --install --force`
+  * fix(helm): Don't crash in search if upper case chars are encountered.
+  * fix helm init --wait
+  * fix protoc
+  * bump version to v2.8.2
+
+-------------------------------------------------------------------
+Thu Mar  1 19:30:48 UTC 2018 - kmacinnes@suse.com
+
+- Update to version 2.8.1
+  * Includes fixes which allow Helm to correctly recognize
+    resources created using the K8S 1.8/1.9 API namespaces
+
+-------------------------------------------------------------------
+Wed Dec 13 18:33:10 UTC 2017 - jbonham@suse.com
+
+- Update to version 2.7.2
+  * fix missing ssl params
+
+See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.7.2
+
+-------------------------------------------------------------------
+Thu Sep 28 00:32:26 UTC 2017 - nmanchanda@suse.com
+
+- Update to version 2.6.1
+  * Remove facebookgo code
+
+See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.6.1
+
+-------------------------------------------------------------------
+Mon Aug 28 19:11:23 UTC 2017 - sleavens@suse.com
+
+- Update to version 2.5.1
+  * Fix bsc#1055480 - `helm init` now works
+  * The deadlock problem with Tiller has been found and fixed
+  * The `helm get manifest` and `helm get value` commands are now
+    working properly
+  * Plugins will now receive the correct value for `$HELM_HOME`
+    regardless of how the home directory was set
+
+  See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.5.1
+
+-------------------------------------------------------------------
+Wed Apr  5 16:54:11 UTC 2017 - jmassaguerpla@suse.com
+
+- Fix GOPATH
+
+-------------------------------------------------------------------
+Tue Apr  4 09:14:09 UTC 2017 - jmassaguerpla@suse.com
+
+- Update to version 2.2.3
+  * Helm has been moved to github/kubernetes/helm
+  * Helm provides 2 binaries now: helm and tiller
+  * go 1.7 is available now and with that version we can build all archs
+    and we don't need to use gcc-go
+  * the "symlinking trick into gopath" does not work anymore but instead
+   we need to copy all files. Let's use the golang-packaging for this
+
+  See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.2.3
+
+-------------------------------------------------------------------
+Tue Apr 26 18:55:37 UTC 2016 - fcastelli@suse.com
+
+- Create initial package 0.6.0

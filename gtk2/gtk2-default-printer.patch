@@ -1,0 +1,24 @@
+From bd9ed0462cbfb84b7c273c50f7ccb916ef6ff108 Mon Sep 17 00:00:00 2001
+From: Chenthill Palanisamy <pchenthill@novell.com>
+Date: Tue, 5 Nov 2013 13:30:33 +0100
+Subject: [PATCH] Do not reset the waiting_for_printer on status change
+
+* gtk/gtkprintunixdialog.c (printer_status_cb): Do not reset the
+waiting_for_printer on status change as the default printer might
+get added later.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=577642
+
+diff -ur gtk+-2.24.22.orig/gtk/gtkprintunixdialog.c gtk+-2.24.22/gtk/gtkprintunixdialog.c
+--- gtk+-2.24.22.orig/gtk/gtkprintunixdialog.c	2014-02-07 14:05:41.432196666 -0600
++++ gtk+-2.24.22/gtk/gtkprintunixdialog.c	2014-02-07 14:06:08.037864049 -0600
+@@ -800,7 +800,9 @@
+   /* When the pause state change then we need to update sensitive property
+    * of GTK_RESPONSE_OK button inside of selected_printer_changed function. */
+   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
++  priv->internal_printer_change = TRUE;
+   selected_printer_changed (selection, dialog);
++  priv->internal_printer_change = FALSE;
+ 
+   if (gtk_print_backend_printer_list_is_done (backend) &&
+       gtk_printer_is_default (printer) &&

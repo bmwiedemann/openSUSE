@@ -1,0 +1,286 @@
+-------------------------------------------------------------------
+Thu Jul 18 12:05:16 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Translations update
+- remove patches:
+  * mate-sensors-applet-gtk-3.20.patch: we don't support gtk3.20
+    anymore
+- build require gtk >= 3.22, glib >= 2.50 and gio >= 2.50
+- use fdupes to reduce duplications in /usr/share/help
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * help: Update copyright.
+  * Help: Use XInclude instead of ENTITY for legal.xml.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Add dummy plugin.
+  * UDisks2 plugin clean-up.
+  * Add NetBSD support.
+  * Make translatable the copyright in the About dialogue.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3:
+  * Disable deprecation warnings for distcheck.
+  * Use make functions for HELP_LINGUAS.
+  * Add help to transifex config.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Jun 17 19:41:29 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1 (changes since 1.18.3):
+  * Require GTK+ 3.22 and GLib 2.50.
+  * sensor-applet.c: Replace deprecated GtkMisc.
+  * sensor-applet.c: Avoid deprecated GtkStock.
+  * sensor-config-dialog: Avoid deprecated GtkAlignment.
+  * sensor-config-dialog: Don't use deprecated GtkColorButton.
+  * prefs-dialog: Avoid deprecated GtkAlignment.
+  * prefs-dialog: Avoid deprecated GTK_VBUTTON_BOX,
+    GTK_TYPE_{H,V}BOX.
+  * Stop jumping applet as numbers change.
+  * Fix save order of sensors.
+  * Update hide temperature units.
+  * Remove code duplication.
+  * build: Enable udisks2 plugin again.
+  * Remove deprecated udisks plugin.
+  * udisks plugin: Fix memory management for GValue variables.
+  * Remove the deprecated eee plugin.
+  * Fix pop up shower on removed HDD.
+  * Fix build warnings.
+  * prefs-dialog: Drop unneeded space in the General tab.
+  * prefs-dialog: Set a min_width for enable_column.
+  * prefs-dialog: Use hscrollbar-policy GTK_POLICY_NEVER.
+  * Update translations.
+- Add mate-sensors-applet-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:20:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.3:
+  * Fix barely visible graphs.
+  * Update copyright in the about dialogue.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 14 16:04:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * prefs-dialogue: Add a style class frame to scrolledwindow.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr  5 18:48:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Use GTK_ALIGN_CENTER for the sensor_applet grid.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require mate-panel >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Fix some GTK+ deprecations.
+  * Some more fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:23:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Update a tooltip only when the cursor is over the applet (fixes
+    some OpenGL issues in fullscreen applications).
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Make distcheck use a currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Wed Jan 27 06:26:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Some fixes for translations.
+  * Some cleanups.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Fix wrong size of GPU icon.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+- Rename package to mate-applet-sensors.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:45:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Add support for nvidia thermal and cooler sensors (requires
+    libxnvctrl >= 256.25).
+  * Add mbmon plugin.
+  * Make udisks plugin poll for new value.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Some GTK+3 fixes.
+  * Some more fixes and cleanups.
+
+-------------------------------------------------------------------
+Tue Jul 21 09:41:22 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.4:
+  * Fix regression that caused a segfault.
+
+-------------------------------------------------------------------
+Sat Jul 11 16:38:00 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.10.3:
+  * Set icons for prefs and about dialogs.
+  * Several small cleanups and bugfixes.
+  * Several help fixes.
+
+-------------------------------------------------------------------
+Fri Jun 26 10:41:37 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Reintroduce missing help.
+
+-------------------------------------------------------------------
+Tue Jun  9 10:51:29 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Fix sensor config dialog (was non-responsive).
+  * Fix display of sensors in GTK+3 build.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 10 11:53:19 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.0):
+  * Add Gtk3 support.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Nov 23 16:26:27 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Fix build on Debian   
+    In clean Debian unstable build chroots, the udisks plugin
+    of mate-sensors-applets does not get built.  
+    Reason: The pkg-config tool returns an empty string for
+    "pkg-config --cflags libatasmart" in clean Debian unstable
+    build chroots. This probably is the case, because the result
+    "-I/usr/include" is in the include path anyway and would not
+    add include locations to the build process.
+    Checking the LIBATASMART_LIBS variable is more safe here
+    (as opposed to checking LIBATASMART_CFLAGS). It always contains
+    a value if the library is installed and has a proper version.
+    Closes https://github.com/mate-desktop/mate-sensors-applet/issues/17
+  + Add GTK3 support
+  + Update translations
+- Bump requirements to version 1.9.x
+- Remove dependency on mate-sensors-applet to devel subpackage; unneeded
+
+-------------------------------------------------------------------
+Wed Mar  5 12:55:25 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 22:02:09 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + use yelp-tools instead of mate-doc-utils
+- Remove useless xz and mate-doc-utils dependencies
+
+--------------------------------
+Wed Jan  1 19:23:10 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + Add dist-hook for ChangeLog and various fixes/cleanups
+  + Add gsettings_SCHEMAS_in_in variable
+  + Remove ltmain.sh, will be brought in automatically
+  + Silence autofoo warnings
+  + Update AC_INIT_AUTOMAKE for make dist
+  + Fix indentation
+
+-------------------------------------------------------------------
+Fri Sep 20 10:25:57 UTC 2013 - p.drouand@gmail.com
+
+- Fix shared librarie group System/Libraries
+
+-------------------------------------------------------------------
+Wed Apr  3 23:37:26 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + no changes since 1.5.2
+
+-------------------------------------------------------------------
+Sat Mar 23 14:40:57 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.2
+  + update make files for autoconf 1.13
+  + use libnotify instead of libmatenofity
+  + fix DSO linking error
+
+-------------------------------------------------------------------
+Thu Jan 24 21:33:30 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + fix load of saved enabled sensors in gsettings
+  + hddtemp-plugin, fix string compare
+  + remove g_free of var removed previously
+  + add missing includes
+- Remove all patches, upstreamed
+
+-------------------------------------------------------------------
+Tue Dec 18 00:07:33 UTC 2012 - stefano-k@mate-desktop.org
+
+- Cherry pick another patch to fix string compare in hddtemp plugin
+
+-------------------------------------------------------------------
+Mon Dec 17 23:47:09 UTC 2012 - stefano-k@mate-desktop.org
+
+- Cherry pick upstream patches to build in openSUSE 
+
+-------------------------------------------------------------------
+Mon Dec 17 18:36:03 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package
+

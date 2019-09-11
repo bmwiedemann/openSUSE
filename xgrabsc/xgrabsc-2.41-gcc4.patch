@@ -1,0 +1,120 @@
+Index: xgrabsc-2.41/convert.c
+===================================================================
+--- xgrabsc-2.41.orig/convert.c
++++ xgrabsc-2.41/convert.c
+@@ -22,8 +22,7 @@
+ /*
+  * convert a pixmap image into a bitmap image
+  */
+-pixmap2bitmap(image)
+-  imageInfo *image;
++void pixmap2bitmap(imageInfo * image)
+ {
+   XImage *ximage = image->ximage;
+   int x, y;
+@@ -140,9 +139,7 @@ static byte DitherBits[GRAYS][4] = {
+ /* halftone or dither a color image, changing it into a monochrome
+  * image
+  */
+-pixmap2halftone(image, dither)
+-  imageInfo *image;
+-  ditherType dither;    /* type of dithering to perform */
++void pixmap2halftone(imageInfo * image, ditherType dither)
+ {
+   XImage *ximage = image->ximage;
+   XImage *newImage;
+Index: xgrabsc-2.41/process.c
+===================================================================
+--- xgrabsc-2.41.orig/process.c
++++ xgrabsc-2.41/process.c
+@@ -230,8 +230,7 @@ reverseColors(image)
+  * Compress the colors used in an XImage so that all pixel values are
+  * adjacent.  Alters the rgb color tables and the XImage data values.
+  */
+-compressColormap(image)
+-  imageInfo *image;
++void compressColormap(imageInfo * image)
+ {
+   XImage *ximage = image->ximage;
+   long map[MAX_CELLS];
+Index: xgrabsc-2.41/write.c
+===================================================================
+--- xgrabsc-2.41.orig/write.c
++++ xgrabsc-2.41/write.c
+@@ -21,8 +21,7 @@
+ 
+ 
+ /* swap the bits in a byte */
+-swapbits(b)
+-  byte b;
++byte swapbits(byte b)
+ {
+   byte b2;
+ 
+@@ -128,9 +127,7 @@ writeint(intValue, outfile)
+ }
+ 
+ 
+-writeSimple(image, outfile)
+-  imageInfo *image;
+-  FILE *outfile;
++void writeSimple(imageInfo * image, FILE * outfile)
+ {
+   dw width, height, hasColormap, colormapSize;
+   int i, w, h;
+@@ -1210,9 +1207,7 @@ writeColorPS(image, outfile, encode, enc
+  * Write an image in 'puzzle' format, suitable for loading with
+  * "puzzle -picture".
+  */
+-writePuzzle(image, outfile)
+-  imageInfo *image;
+-  FILE *outfile;
++void writePuzzle(imageInfo *image, FILE *outfile)
+ {
+   XImage *ximage = image->ximage;
+   int nc, width, height, w, h, cidx;
+@@ -1253,10 +1248,7 @@ writePuzzle(image, outfile)
+ 
+ 
+ 
+-writeXWD(image, outfile, xyformat)
+-  imageInfo *image;
+-  FILE *outfile;
+-  int xyformat;
++void writeXWD(imageInfo *image, FILE *outfile, int xyformat)
+ {
+   XImage   *ximage = image->ximage;
+   XWDFileHeader header;
+@@ -1374,9 +1366,7 @@ writeXWD(image, outfile, xyformat)
+  * use it.
+  */
+ 
+-writeXYPixmap(image, outfile)
+-  imageInfo *image;
+-  FILE *outfile;
++void writeXYPixmap(imageInfo *image, FILE *outfile)
+ {
+   XImage *ximage = image->ximage;
+   int w, h;
+@@ -1432,9 +1422,7 @@ writeXYPixmap(image, outfile)
+  * Write a color image out in Pixmap format.
+  * Supported output formats are xpm1 (original xpm), xpm2  and xpm3
+  */
+-writeZPixmap(xpmFormat, image, outfile)
+-  imageInfo *image;
+-  FILE *outfile;
++void writeZPixmap(int xpmFormat, imageInfo *image, FILE *outfile)
+ {
+   XImage *ximage = image->ximage;
+   int nc, width, height, w, h, cidx, cpp;
+@@ -1597,9 +1585,7 @@ fprintf(outfile,  "/* pixels */\n");
+ /*
+  * Write a color image out in PPM, a portable bitmap format.
+  */
+-writePPM(image, outfile)
+-  imageInfo *image;
+-  FILE *outfile;
++void writePPM(imageInfo *image, FILE *outfile)
+ {
+   XImage *ximage = image->ximage;
+   int nc, width, height, w, h, cidx;

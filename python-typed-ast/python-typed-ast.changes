@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Mon Jun 17 09:35:51 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4.0
+  * Fix compilation on Python 3.8
+
+-------------------------------------------------------------------
+Fri May 10 12:16:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use the %pytest_arch call but expand it as the tests
+  seem to need more verbosity otherwise they fail sometimes
+  (fishy, but works)
+
+-------------------------------------------------------------------
+Tue May  7 10:38:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %pytest_arch
+- Add missing fdupes call
+
+-------------------------------------------------------------------
+Tue May  7 09:28:37 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.3.5
+  *  Counteract PyTuple_SetItem stealing reference in _PyObject_FastCall
+     fallback (#104)
+- run tests
+
+-------------------------------------------------------------------
+Fri May  3 18:13:27 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.3.4:
+ * Oops: add the pgenheaders files to the depends lists
+- update to version 1.3.3:
+ * Don't rely on Python's pgenheaders.h (#101)
+- update to version 1.3.2:
+ * Fix two out-of-bounds array reads (#99)
+
+-------------------------------------------------------------------
+Sun Feb 10 13:20:13 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.3.1:
+ * Disallow two type comments on one def
+ * Fix memory leaks caused by type comment parsing (#91)
+ * Fix some broken asserts relating to handling of async keyword (#92)
+ * Check NEW_TYPE_COMMENT calls for failure (#93)
+- Update to version 1.3.0:
+ * Fully incorporate the code from Python 3.7.2
+ * Fix some compiler warnings
+ * Add a kind field to Bytes as well (#83) 
+ * Fix await in functions with type comments (#86) 
+ * Put _ast3 and _ast27 in the typed_ast package (#85) 
+ * Fix f-string parsing to not think everything is a set (#87)
+
+-------------------------------------------------------------------
+Tue Jan 15 20:35:06 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.2.0:
+ * Fix conversions.py2to3 on unicode strings (#67)
+ * Fix remaining calls to Str without a kind (#68)
+ * Add "Python :: 3.7" to the classifiers list
+ * Some docs updates (#73)
+
+-------------------------------------------------------------------
+Wed Jan  2 09:48:30 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.1.1:
+ * Add __version__ string and tweak versioning scheme
+ * Point to the Python 3.6 commits as examples of how to update typed_ast (
+ * Add section on development philosophy
+ * Add information about the release process.
+ * Document Google Cloud Storage artifact deployment
+ * Preserve string kind modifiers
+ * Add docs for Str.kind
+
+-------------------------------------------------------------------
+Thu Sep 20 07:00:17 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use license macro for license install
+
+-------------------------------------------------------------------
+Thu Jul 20 09:59:09 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.1.0
+ * Vs2010 compilation support (Python 3.3/3.4 support) (#47)
+
+-------------------------------------------------------------------
+Tue Jun 27 20:22:15 UTC 2017 - sebix+novell.com@sebix.at
+
+- use new %skip_python2 instead of obsolete undefines
+
+-------------------------------------------------------------------
+Tue Jun 20 19:53:59 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.0.4
+  * Add checks for some 3.5+ only syntax (async/await and the @ operator) (#41)
+
+-------------------------------------------------------------------
+Wed May 31 12:37:09 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

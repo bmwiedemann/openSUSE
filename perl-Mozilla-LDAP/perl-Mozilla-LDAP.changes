@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Jul 11 15:08:25 UTC 2013 - aj@ajaissle.de
+
+- Fix Source2 path
+
+-------------------------------------------------------------------
+Sun Feb 24 01:14:41 UTC 2013 - aj@ajaissle.de
+
+- Use OpenLDAP instead of mozldap 
+
+-------------------------------------------------------------------
+Wed Jan 30 05:26:35 UTC 2013 - aj@ajaissle.de
+
+- Adjusted license to match new format (spdx.org)
+
+-------------------------------------------------------------------
+Mon Apr 11 09:58:13 UTC 2011 - wr@rosenauer.org
+
+- minor changes
+
+-------------------------------------------------------------------
+Sat Dec 18 16:02:03 UTC 2010 - nix@opensuse.org
+
+- Update to 1.5.3
+
+-------------------------------------------------------------------
+Wed Feb 17 09:50:52 UTC 2010 - nix@opensuse.org
+
+- quickly get RedHat package working on SUSE (Needs to be cleaned up further)

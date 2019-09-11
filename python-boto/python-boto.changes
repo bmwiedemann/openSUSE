@@ -1,0 +1,1151 @@
+-------------------------------------------------------------------
+Sat Feb 16 14:24:55 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix breakages caused by removing boto.cacerts module which is
+  imported elsewhere in the package.  The file boto/cacerts/cacerts.txt
+  is removed instead, and boto-no-builtin-certs.patch is trimmed.
+- Activate the test suite, adding many build dependencies with versions.
+  11 failing Cloudfront signings tests are skipped only on Python 3.
+- Add versions to runtime dependencies.
+- python-rsa is added as a Recommends as it is needed for Cloudfront.
+- python-requests is added as a Recommends as it is needed for Cloudsearch.
+- python-requests is added as a Suggests as it is used for contrib ymlmessage.
+
+-------------------------------------------------------------------
+Fri Feb  8 21:42:46 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Remove root certs (bsc#1116204)
+  + Add boto-no-builtin-certs.patch
+  + Remove the upstream builtin root certificate data for trusted CAs
+
+-------------------------------------------------------------------
+Wed Nov  7 13:39:15 UTC 2018 - Robert Schweikert <rjschwei@suse.com>
+
+- Undo previous change, name confusion between boto and boto3
+
+-------------------------------------------------------------------
+Wed Nov  7 13:33:51 UTC 2018 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix build for openSUSE Leap 42.3
+  + urllib3 needs the ssl module, which in Leap 42.3 is delivered by python
+    and not python-base. Set explicit build dependency on python
+
+-------------------------------------------------------------------
+Mon Nov  5 12:42:55 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- update to version 2.49.0
+  * Import the latest CA Bundle from certifi (:issue:`3818`, :sha:`e4699cba`)
+  * Fix to support uploads to KMS-encrypted buckets. (:issue:`3800`, :sha:`0a1d9040`)
+  * Support fetching GCS bucket encryption metadata. (:issue:`3799`, :sha:`132b64d2`)
+  * Update layer1.py (:issue:`3765`, :sha:`53340159`)
+  * Fix tests/unit/glacier/test_writer.py to make work with pypy. (:issue:`3762`, :sha:`8402c5d6`)
+
+-------------------------------------------------------------------
+Mon Apr 30 11:19:12 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  2 12:45:53 UTC 2018 - tchvatal@suse.com
+
+- Drop the doc subpkg, docu is on the web anyway and it fails to
+  build
+
+-------------------------------------------------------------------
+Mon Aug 21 14:26:38 UTC 2017 - tbechtold@suse.com
+
+- update to version 2.48.0
+  * Populate storage class from HEAD Object responses.
+  * Fix generate_url() AttributeError when using anonymous connections
+  * Add release notes for 2.47.0
+  * Allow specifying s3 host from boto config file.
+  * Use RegionInfo by default with heuristics
+  * Loosen requirements for ID field in PROJECT_PRIVATE_RE to enable new canonical id format for project groups.
+  * Added reelase notes for 2.48.0
+  * Bumped to 2.48.0
+  * Bumped to 2.47.0
+
+-------------------------------------------------------------------
+Thu May  4 21:52:04 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Split documentation into own subpackage.
+- Update to version 2.46.1
+  * Fixes a bug where a recently added module was not added to
+    setup.py
+- Update to version 2.46.0
+  * Endpoints v2 (:issue:`3675`, :sha:`d7253d8`)
+- Update to version 2.45.0
+  * Add support for eu-west-2 (:issue:`3654`, :sha:`40c68db`)
+- Update to version 2.44.0
+  * Update endpoints (:issue:`3649`, :sha:`a1eae11`)
+  * Add gs support for object-level storage class features.
+    (:issue:`3635`, :sha:`dc4bf34`)
+- Update to version 2.43.0
+  * Add support for ``us-east-2`` endpoint (:sha:`262ed00`)
+  * Account for metadata update propagation delay
+    (:issue:`3615`, :sha:`592dae3`)
+  * boto.dynamodb2.table.Table#batch_get() fails to paginate
+    results if provisioned throughput is exceeded
+    (:issue:`3574`, :sha:`abb3847`)
+
+-------------------------------------------------------------------
+Thu Feb  9 19:45:06 UTC 2017 - rjschwei@suse.com
+
+- Disable source service
+
+-------------------------------------------------------------------
+Thu Oct  6 13:00:44 UTC 2016 - dmueller@suse.com
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Oct  5 17:26:00 UTC 2016 - rjschwei@suse.com
+
+- Update to version 2.42.0 (bsc#1002895)
+  + Respect is_secure parameter in generate_url_sigv4 (commit 59ba28d)
+  + Update MTurk API (issue 3563, commit 250d891)
+- From 2.41.0
+  + Update endpoints.json (issue 3564, commit 5e786b4)
+  + Remove the broken link to PDF’s (issue 3562, commit 46ffb0c)
+- From 2.40.0
+  + ryansydnor-s3: Allow s3 bucket lifecycle policies with multiple
+    transitions (commit c6d5af3)
+  + Fixes upload parts for glacier (issue 3524, commit d1973a4)
+  + pslawski-unicode-parse-qs: Move utility functions over to compat
+    Add S3 integ test for non-ascii keys with sigv4 Fix quoting of tilde
+    in S3 canonical_uri for sigv4 Parse unicode query string properly
+    in Python 2 (issue 2844, commit 5092c6d)
+  + ninchat-config-fix: Add __setstate__ to fix pickling test fail Add
+    unit tests for config parsing Don’t access parser through
+    __dict__ Config: Catch specific exceptions when wrapping ConfigParser
+    methods Config: Don’t inherit from ConfigParser (issue 3474, commit c21aa54)
+
+-------------------------------------------------------------------
+Mon Feb  1 11:45:27 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 2.39.0:
+  * Autodetect sigv4 for ap-northeast-2 (:issue:`3461`,
+    :sha:`c2a17ce`)
+  * Added support for ap-northeast-2 (:issue:`3454`, :sha:`c3c1ddd`)
+  * Remove VeriSign Class 3 CA from trusted certs (:issue:`3450`,
+    :sha:`8a025df`)
+  * Add note about boto3 on all pages of boto docs (:sha:`9bd904c`)
+  * Fix for listing EMR steps based on cluster_states filter
+    (:issue:`3399`, :sha:`0f92f35`)
+  * Fixed param name in set_contents_from_string docstring
+    (:issue:`3420`, :sha:`e30297b`)
+  * Closes #3441 Remove py3 test whitelist Update rds to pass on py3
+    Update mturk to pass tests on py3 Update cloudsearchdomain tests
+    to work with py3 (:issue:`3441`, :sha:`5b2f552`)
+  * Run tests against py35 (:sha:`7d039d0`)
+  * Fix Glacier test failure in python 3.5 due to MagicMock
+    (:issue:`3412`, :sha:`d042f07`)
+  * Undo log message change BF(PY3): use except ... as syntax instead
+    of except ..., (:sha:`607cad7`)
+  * Fix travis CI builds for PY3 (:issue:`3439`, :sha:`22ab610`)
+  * Spelling fixes (:issue:`3425`, :sha:`f43bbbd`)
+  * Fixed docs (:issue:`3401`, :sha:`4f66311`)
+  * Add deprecation notice to emr methods (:issue:`3422`,
+    :sha:`cee6159`)
+  * Add some GovCloud endpoints (:issue:`3421`, :sha:`5afc068`)
+- Remove upstream-included region_support.patch
+
+-------------------------------------------------------------------
+Fri Jan 15 18:52:56 UTC 2016 - rjschwei@suse.com
+
+- Add region_support.patch (bsc#962138)
+  + Support new region ap-northeast-2
+  + Add features to other reagions that are now supported by AWS
+
+-------------------------------------------------------------------
+Thu Aug 13 11:08:04 UTC 2015 - toddrme2178@gmail.com
+
+- Fix update-alternatives usage.
+
+-------------------------------------------------------------------
+Wed Jul 29 09:08:15 UTC 2015 - toddrme2178@gmail.com
+
+- Implement update-alternatives to allow for python 3 version,
+  which is now supported upstream.
+- specfile cleanups
+
+-------------------------------------------------------------------
+Mon Apr 27 18:44:37 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.38.0:
+  * Add support for Amazon Machine Learning
+  * Fix issue with modify reserved instances for modifying instance
+    type
+- additional changes from version 2.37.0:
+  * Update AWS CloudTrail to the latest API.
+  * Add support for UsePreviousValue to CloudFormation UpdateStack.
+  * Fix BOTH_PATH to work with Windows drives
+  * Fix division calculation in S3 docs.
+  * Add Boto 3 link in README.
+  * Add more regions for configservice
+  * Add ``eu-central-1`` endpoints (Frankfurt region) for IAM and
+    Route53
+  * Fix unit tests from hanging
+  * Fixed wording in dynamodb tutorial
+  * Update SWF objects to keep a consistent region name.
+  * Print archive ID in glacier upload script.
+  * Add some minor documentation for Route53 tutorial.
+  * Add Amazon DynamoDB online indexing support on High level API
+  * Ensure Content-Length header is a string.
+  * Correct docs around overriding SGs on ELBs
+  * Fix DynamoDB tests.
+  * Fix region bug.
+  * Fix import for ``boto.cloudhsm.layer1.CloudHSMConnection``.
+- additional changes from version 2.36.0:
+  * Add Amazon DynamoDB online indexing support.
+  * Allow for binary to be passed to sqs message
+  * Kinesis update
+  * Fixed spelling of boto.awslambda package.
+  * Add support for Amazon EC2 Container Service
+  * Add support for CloudHSM
+  * Add support for AWS Config
+  * Add support for AWS CodeDeploy
+  * Add support for AWS Lambda
+  * Update both Cognito's to the latest APIs
+  * Add sts for eu-central-1.
+  * Update opsworks to latest API
+  * Add AWS Key Managment Support
+- additional changes from version 2.35.2:
+  * Add support for new data types in DynamoDB.
+  * Expose cloudformation `UsePreviousTemplate` parameter.
+  * Fix documentation around using custom connections for DynamoDB
+    tables.
+  * Fixed bug that unable call query_2 after call describe method
+    on dynamodb2 module.
+- additional changes from version 2.35.1:
+  * Check for results left after computing self._keys_left
+- additional changes from version 2.35.0:
+  * Add Amazon EC2 Classic Link support
+  * Add query string to body for anon STS POST
+  * Fix bug that prevented initializing a dynamo item from existing
+    item
+  * switchover-sigv4:   Add integ tests for sigv4 switchover
+    Switch elb/ec2 over to signature version 4
+  * Return SetStackPolicyResponse
+  * Added ELB Attributes to docs.
+  * Fix bug by using correct string joining syntax.
+  * Fix SES get_identity_dkim_attributes when input length > 1.
+  * DynamoDB table batch_get fails to process all remaining results
+    if single batch result is empty.
+  * Added suppport for additional fields in EMR objects.
+  * Pass version_id in copy if key is versioned.
+  * Add support for SQS PurgeQueue operation.
+  * Update documentation for launchconfig.
+  * Remove unimplemented config param.
+  * Add support for private hosted zones.
+  * Fix Key.change_storage_class so that it obeys dst_bucket.
+  * Fix for s3put host specification.
+  * Improve handling of Glacier HTTP 204 responses.
+  * Fix raising exception syntax in Python 3.
+  * Privatezone: Adding unit/integration test coverage
+  * Minor documentation/pep8 fixes.
+  * Correct argument type in doc string.
+  * Use exclusive start key to get all items from DynamoDB query.
+  * Updated link to current config documentation.
+  * Fix the SQS certificate error for region cn-north-1.
+  * Adds support for getting health checker IP ranges from Route53.
+  * fix: snap.create_volume documentation lists general purpose ssd
+    Fixes @2774.
+  * Fixed param type in get_contents_to_filename docstring.
+  * Update DynamoDB local example to include fake access key id.
+  * Added 'end' attribute to ReservedInstance.
+  * Parse ClusterStatus’s StateChangeReason.
+  * Adds SupportedProducts field to EMR JobFlow objects.
+  * Fix EMR endpoint.
+  * Detect old-style S3 URL for auto-sigv4.
+  * Throw host warning for cloudsearch domain
+  * Fix CloudSearch2 to work with IAM-based search and upload
+    requests
+  * iam: add support for Account Password Policy APIs
+  * Handle sigv4 non-string header values properly
+  * Url encode query string for pure query
+- update project URL
+- point source URL to pypi
+- build python-boto-doc as a subpackage:
+  * delete separate spec and changes file
+  * merge entries of python-boto-doc.changes in python-boto.changes
+  * add python-Sphinx as BuildRequires
+  * break the dependency between the doc generation and boto
+    by modifying Sphinx configuration file
+- delete shebang of python file instead of setting them executable
+
+-------------------------------------------------------------------
+Sun Oct 26 12:10:17 UTC 2014 - rschweikert@suse.com
+
+- updated to 2.34.0 (bnc#902648)
+  + Calculate sha_256 correctly for s3 (issue 2691, commit c0a001f)
+  + Fix MTurk typo. (issue 2429, issue 2428, commit 9bfff19)
+  + Add the ability to IAM to create a virtual mfa device.
+    (issue 2675, commit 075d402)
+  + PEP8 tidy up for several modules. (issue 2673, commit 38abbd9)
+  + Fix s3 create multipart upload for sigv4 (issue 2684, commit fc73641)
+  + Updated endpoints.json for cloudwatch logs to support more regions.
+    (issue 2685, commit 5db2ea8)
+  + Added TaggedEC2Object.remove_tags. (issue 2610, issue 2269, issue 2414,
+    commit bce8fcf)
+  + Fixed 403 error from url encoded User-Agent header (issue 2621,
+    commit 2043a89)
+  + Inserted break when iterating Route53 records. (issue 2631, commit 2de8716)
+  + Fix typo in ELB ConnectionSettings attribute (issue 2602, commit 63bd53b)
+  + PEP8 fixes to various common modules. (issue 2611, commit 44d873d)
+  + Route Tables: Update describe_route_tables to support additional route
+    types (VPC peering connection, NIC). (issue 2598, issue 2597,
+    commit bbe8ce7)
+  + Fix an error in Python 3 when creating launch configs. Enables
+    AutoScaling unit tests to run by default. (issue 2591, commit fb4aeec)
+  + Use svg instead of png to get better image quality. (issue 2588,
+    commit 1de6b41)
+  + STS now signs using sigv4. (issue 2627, commit 36b247f)
+  + Added support for Amazon Cognito. (issue 2608, commit fa3a39e)
+  + Fix bug where sigv4 custom metadata headers were presigned incorrectly.
+    (issue 2604, commit 8853e8e)
+  + Add some regions to cloudsearch (issue 2593, commit 8c6ea21)
+  + fix typo in s3 tutorial (issue 2612, commit 92dd581)
+  + Few typo in docstring (issue 2590, commit 0238747)
+  + Add support for Amazon Route 53 Domains. (issue 2601, commit d149a87)
+  + Support EBS encryption in BlockDeviceType. (issue 2587, issue 2480,
+    commit 7a39741)
+  + Fix a typo in auth.py: Bejing -> Beijing. (issue 2585, commit 8525616)
+  + Update boto/cacerts/cacerts.txt. (issue 2567, commit 02b836c)
+  + route53 module: tidy up to meet PEP8 better. (issue 2571, commit 3a3e960)
+  + iam module: tidy up to meet PEP8 better. (issue 2566, commit 3c83da9)
+  + Assigning ACL ID to network_acl_id instead of route_table_id.
+    (issue 2548, commit c017b02)
+  + Avoid infinite loop with bucket listing and encoding_type=’url’.
+    (issue 2562, issue 2561, commit 39cbcb5)
+  + Use urllib timeout param instead of hacking socket global timeout.
+    (issue 2560, issue 1935, commit c1dd1fb)
+  + Support non-ascii unicode strings in _get_all_query_args.
+    Fixes: #2558, #2559. (issue 2559, issue 2558, commit 069d04b)
+  + Truncated Response Handling in Route53 ListResourceRecordSets.
+    (issue 2542, commit 3ba380f)
+  + Update to latest OpsWorks API. (issue 2547, commit ac2b311)
+  + Better S3 key repr support for unicode. (issue 2525, issue 2516,
+    commit 8198884)
+  + Skip test when locale is missing. (issue 2554, issue 2540, commit 2b87583)
+  + Add profile_name support to SQS. (issue 2459, commit 3837951)
+  + Include test_endpoints.json in source distribution. (issue 2550,
+    commit 7f907b7)
+  + Pass along params in make_request for elastic transcoder api.
+    (issue 2537, commit 964999e)
+  + Support auth when headers contains bytes. (issue 2521, issue 2520,
+    commit 885348d)
+  + PEP8 style fixes for ElastiCache. (issue 2539, commit bd0d6db)
+  + PEP8 style fixes for SES. (issue 2538, commit c620c43)
+  + Update to latest Redshift API. (issue 2545, commit 9151092)
+  + Update to latest support API. (issue 2541, issue 2426, commit 8cf1b52)
+  + Uses file name as archive description when uploading to glacier.
+    (issue 2535, issue 2528, commit 38478c1)
+  + Fix the ec2.elb.listener.Listener class’s __getitem__ method.
+    (issue 2533, commit 7b67f98)
+  + Add recognized HTTP headers for S3 metadata. (issue 2477,
+    issue 2050, commit c8c625a)
+  + Fix class name for document. (issue 2530, commit 2f0e689)
+  + Copy CloudSearch proxy settings to endpoint services. (issue 2513,
+    commit 3cbbc21)
+  + Merge branch ‘develop’ into cloudsearch2-proxy (commit 5b424db)
+  + Add IAMer as an application built on boto. (issue 2515, commit 1f35224)
+  + Fix Amazon Cognito links in docs (issue 2674, commit 7c28577)
+  + fix ELB ConnectionSettings values in documentation (issue 2620,
+    commit d2231a2)
+  + Update count_slow documentation. (issue 2569, commit e926d2d)
+  + Documents not found behavior of get_item(). (issue 2544, commit 9b9c1c4)
+  + Doc updates for CloudSearch. (issue 2546, commit 9efebc2)
+
+-------------------------------------------------------------------
+Sat Sep 13 17:13:17 UTC 2014 - tbechtold@suse.com
+
+- update to 2.32.1:
+  + DynamoDB (issue 2441, commit 0ef0466, issue 2473, commit 102c3b6,
+    issue 2453)
+  + CloudWatch Logs (issue 2448, commit 23cbcd1)
+  + Support (issue 2406, commit 7b489a0)
+  + Elastic Beanstalk (issue 2372, commit d45d00e)
+  + CloudSearch (issue 2439, commit 25416f9, issue 2432, commit b17f2d9)
+  + STS (issue 2435, commit 1c1239b)
+  + SimpleDB (issue 2403, commit 604318d)
+  + EC2 (issue 2424, commit 5e5dc4c)
+  + VPC (issue 2399, commit 356da91)
+  + OpsWorks (issue 2402, commit 68d15a5)
+  + CloudWatch (issue 2400, commit a4d0a7a)
+  + SWF (issue 2397, commit 6db918e)
+  + MWS (issue 2385, commit 5347fbd)
+  + ELB (issue 2384, commit 4dcc9be)
+  + Elastic Transcoder (issue 2382, commit 40c5e35)
+  + EMR (issue 2381, commit edf4020)
+  + Route53 (issue 2359, commit 15514f7)
+  + Glacier (issue 2357, commit a41042e)
+  + RedShift (issue 2362, commit b8888cc)
+  + CloudFront (issue 2355, commit f2f54b1)
+  + ECS (issue 2364, commit ab84969)
+  + Fix pylintrc to run with pylint/python 3. (issue 2366, commit 6292ab2)
+  + SNS (issue 2365, commit 170f735)
+  + AutoScaling (issue 2393, commit 6a78057)
+  + Direct Connect (issue 2361, commit 8488d94)
+  + CloudFormation (issue 2373, commit 9872f27)
+  + IAM (issue 2358, commit 29ad3e3)
+  + ElastiCache (issue 2356, commit 2880f91)
+  + SES (issue 2354, commit 1db129e)
+  + Fix S3 integration test on Py3. (issue 2466, commit f3eb4cd)
+  + Use unittest.mock if exists. (issue 2451, commit cc58978)
+  + Add tests/compat.py for test-only imports. (issue 2442, commit 556f3cf)
+  + Add backward-compatible support for Python 3.3+ (S3, SQS, Kinesis, CloudTrail). (issue 2344, issue 677, commit b503f4b)
+  + Add marker param to describe all ELBs. (issue 2433, commit 49af8b6)
+  + Update .travis.yml to add pypy. (issue 2440, commit 4b8667c)
+  + Add ‘include_all_instances’ support to ‘get_all_instance_status’. (issue 2446, issue 2230, commit 5949012)
+  + Support security tokens in configuration file profiles. (issue 2445, commit a16bcfd)
+  + Singapore, Sydney and Tokyo are missing in Kinesis Region. (issue 2434, commit 723290d)
+  + Add support for VPC connection peering. (issue 2438, commit 63c78a8)
+  + Add seperate doc requirements. (issue 2412, commit 2922d89)
+  + Route53 support IP health checks (issue 2195, commit 319d44e)
+  + IPv6 support when making connections (issue 2380, commit 1e70179)
+  + Support SNS message attributes (issue 2360, commit ec106bd)
+  + Add “attributes” argument to boto.dynamodb2.table.Table.batch_get. (issue 2276, commit fe67f43)
+  + Add documentation for top-level S3 module. (issue 2379, commit db77546)
+  + Prevent an infinite loop. (issue 2465, commit 71b795a)
+  + Updated documentation for copy_image. (issue 2471, commit f9f683a)
+  + Fixed #2464 added keyword “detailed” to docs. (issue 2467, issue 2464, commit eb26fdc)
+  + Retry installation commands on Travis CI. (issue 2457, commit a9e8057)
+  + Fix for run_instances() network_interfaces argument documentation. (issue 2461, commit 798fd70)
+  + pyami module: tidy up to meet PEP8 better. (issue 2460, commit e5a23ed)
+  + Updating documentation on cloudsearch regions. (issue 2455, commit de284a4)
+  + Fixing lost errors bug in cloudsearch2 commit implementation. (issue 2408, commit fedb937)
+  + Import json from boto.compat for several modules. (issue 2450, commit 55e716b)
+  + Relocate MWS requirements checks; closes #2304, #2314. (issue 2314, issue 2304, commit 6a8f98b)
+  + Added support for creating EMR clusters with a ServiceRole. (issue 2389, commit 7693956)
+  + Doc fix: doc_service instead of service on Deleting. (issue 2419, commit f7b7980)
+  + Fix dummy value typo on aws_access_key_id. (issue 2418, commit fc2a212)
+  + Fix typo; add test. (issue 2447, commit effa8a8)
+  + Fix CloudWatch Logs docstring. (issue 2444, commit d4a2b02)
+  + Fix S3 mock encoding bug (issue 2443, commit 8dca89b)
+  + Skip the ETag header check in responce while using SSE-C encrpytion of S3. (issue 2368, commit 907fc6d)
+  + Fix Beanstalk exception handling. (issue 2431, commit 40f4b5d)
+  + EC2 UserData encoding fix (Full version of #1698). (issue 2396, issue 1698, commit 78300f1)
+  + Fetch S3 key storage class on-demand. (issue 2404, commit 8c4cc67)
+  + Added documentation for /manage/cmdshell.py. (issue 2395, commit 5a28d1c)
+  + Remove redundant lines in auth.py. (issue 2374, commit 317e322)
+  + Fix SWF continue_as_new_workflow_execution start_to_close_timeout. (issue 2378, commit 5101b06)
+  + Fix StringIO imports and invocations. (issue 2390, commit 03952c7)
+  + Fixed wrong call of urlparse. (issue 2387, commit 4935f67)
+  + Update documentation on Valid Values for ses:SetIdentityNotificationTopic. (issue 2367, commit 3f5de0d)
+  + Correct list_saml_providers to return all items. (issue 2338, commit 9e9427f)
+  + Fixing ELB unit tests. Also did some PEP8 cleanup on ELB code. (issue 2352, commit 5220621)
+  + Documentation updates. (issue 2353, commit c9233d4)
+  + Add support for Amazon CloudWatch Logs. (commit 125c94d)
+  + Add EC2 T2 instance types (commit 544f8925cb)
+  + Add new regions for CloudTrail and Kinesis (commit 4d67e19914)
+  + Fixed some code formatting and typo in SQS tutorial docs. (issue 2332, commit 08c8fed)
+  + Documentation update – Child workflows and poll API. (issue 2333, issue 2063, issue 2064, commit 4835676)
+  + DOC Tutorial update for metrics and use of dimensions property. (issue 2340, issue 2336, commit 45fda90)
+  + Let people know only EC2 supported for cloudwatch. (issue 2341, commit 98f03e2)
+  + Add namespace to AccessControlPolicy xml representation. (issue 2342, commit ce07446)
+  + Make ip_addr optional in Route53 HealthCheck. (issue 2345, commit 79c35ca)
+  + Add S3 SigV4 Presigning. (issue 2349, commit 125c4ce)
+  + Add missing route53 autodoc. (issue 2343, commit 6472811)
+  + Adds scan_index_forward and limit to DynamoDB table query count. (issue 2184, commit 4b6d222)
+  + Add method TaggedEC2Object.add_tags(). (issue 2259, commit eea5467)
+  + Add network interface lookup to EC2. Add update/attach/detach methods to NetworkInterface object. (issue 2311, commit 4d44530)
+  + Parse date/time in a locale independent manner. (issue 2317, issue 2271, commit 3b715e5)
+  + Add documentation for delete_hosted_zone. (issue 2316, commit a0fdd39)
+  + s/existance/existence/ (issue 2315, commit b8dfa1c)
+  + Add multipart upload section to the S3 tutorial. (issue 2308, commit 99953d4)
+  + Only attempt shared creds load if path is a file. (issue 2305, commit 0bffa3b)
+- Add BotoCheatSheet.pdf
+
+-------------------------------------------------------------------
+Mon Jun 16 13:49:56 UTC 2014 - dmueller@suse.com
+
+- update to 2.29.1:
+  + Fix crash when provider is google. (issue 2302, commit 33329d5888)
+  + Fix connection pooling issue with CloudSearch (commit 82e83be12a)
+  + Added support for shared credentials file.
+  + Added support for EBS encryption. (issue 2282, commit d85a449)
+  + Added GovCloud CloudFormation endpoint. (issue 2297, commit 0f75fb9)
+  + Added new CloudTrail endpoints to endpoints.json. (issue 2269, commit 1168580)
+  + Added ‘name’ param to documentation of ELB LoadBalancer. (issue 2291, commit 86e1174)
+  + Fix typo in ELB docs. (issue 2294, commit 37aaa0f)
+  + Fix typo in ELB tutorial. (issue 2290, commit 40a758a)
+  + Fix OpsWorks connect_to_region exception. (issue 2288, commit 26729c7)
+  + Fix timezones in CloudWatch date range example. (issue 2285, commit 138a6d0)
+  + Fix description of param tags into rds2.create_db_subnet_group. (issue 2279, commit dc1037f)
+  + Fix the incorrect name of a test case. (issue 2273, commit ee195a1)
+  + Fix “consistent” argument to boto.dynamodb2.table.Table.batch_get. (issue 2272, commit c432b09)
+  + Update the wheel to be python 2 compatible only. (issue 2286, commit 6ad0b75)
+  + Crate.io is no longer a package index. (issue 2289, commit 7f23de0)
+
+-------------------------------------------------------------------
+Thu May 15 16:14:39 UTC 2014 - rschweikert@suse.com
+
+- update to version 2.28.0
+  + Add support for SQS message attributes. (issue 2257, commit a04ca92)
+  + Update DynamoDB to support query filters. (issue 2242, commit 141eb71)
+  + Implement new Cloudsearch API 2013-01-01 as cloudsearch2 module
+    (commit b0ababa)
+  + Miscellaneous improvements to the MTurk CLI. (issue 2188, commit c213ff1)
+  + Update MWS to latest API version and adds missing API calls.
+    (issue 2203, issue 2201, commit 8adf720, commit 8d0a6a8)
+  + Update EC2 register_image to expose an option which sets whether an
+    instance store is deleted on termination. The default value is
+    left as-is. (commit d295ee9)
+  + Clarify that MTurkConnection.get_assignments attributes are actually
+    strings. (issue 2187, issue 2176, commit 075636b)
+  + Add support for ELB Connection Draining attribute.
+    (issue 2174, issue 2173, commit 78fa43c)
+  + Add support for setting failure threshold for Route53 health checks.
+    (issue 2171, issue 2170, commit 15b812f)
+  + Fix specification of Elastic Beanstalk tier parameter.
+    (issue 2168, commit 4492e86)
+  + Fixed part of roboto for euca2ools. (issue 2166, issue 1730,
+    commit 63b7a34)
+  + Fixed removing policies from listeners. (issue 2165, issue 1708,
+    commit e5a2d9b)
+  + Reintroduced the reverse fix for DDB. (issue 2163, commit 70ec722)
+  + Several fixes to DynamoDB describe calls. (issue 2161, issue 1649,
+    issue 1663, commit 84fb748)
+  + Fixed how reverse works in DynamoDBv2. (issue 2160, issue 2070,
+    issue 2115, commit afdd805)
+  + Update Kinesis exceptions (issue 2159, issue 2153, commit 22c6751)
+  + Fix ECS problem using new-style classes (issue 2103, commit dc466c7)
+  + Add support for passing region info from SWF layer2 to layer1
+    (issue 2137, commit 0dc8ce6)
+  + Handle plus signs in S3 metadata (issue 2145, commit c2a0f95)
+  + Fix Glacier vault date parsing (issue 2158, commit 9e7b132)
+  + Fix Route53 evaluate target health bug. (issue 2157, commit 398bb62)
+  + Removing obselete core directory. (issue 1987, commit 8e83292)
+  + Improve IAM behavior in the cn-north-1 region. (issue 2152, commit 4050e70)
+  + Add SetIdentityFeedbackForwardingEnabled and SetIdentityNotificationTopic
+    for SES. (issue 2130, issue 2128, commit 83002d5)
+  + Altered Route53 bin script to use UPSERT rather than CREATE.
+    (issue 2151, commit 2cd20e7)
+  + Documentation fix. (issue 2156, commit 7592a58)
+  + Fix EC2 documentation typo (issue 2178, commit 2627843)
+  + Update Boto configuration tutorial (issue 2191, commit f2a7a08)
+  + Correct typo “possile” –> “possible”. (issue 2196, commit d228352)
+
+-------------------------------------------------------------------
+Wed Apr 16 16:27:28 UTC 2014 - rschweikert@suse.com
+
+- add previously missing dependency for python-paramiko
+- update to version 2.27.0
+  + remove boto_useSystemCerts.patch, changes included in new version
+  + Added support for AccessLog in ELB (issue 2150, commit 7aa35ea)
+  + Added better BlockDeviceType deserialization in Autoscaling.
+    (issue 2149, commit 04d29a5)
+  + Updated CloudFormation documentation (issue 2147, commit 2535aca)
+  + Updated Kinesis documentation (issue 2146, commit 01425dc)
+  + Add optional bucket tags to lss3 output. (issue 2132, commit 0f35924)
+  + Fix getting instance types for Eucalyptus 4.0. (issue 2118, commit 18dc07d)
+  + Fixed how quoted strings are handled in SigV4 (issue 2142, commit 2467547)
+  + Use system supplied certs without a bundle file (issue 2139, commit 70d15b8)
+  + Fixed incorrect test failures in EC2 trim_snapshots (commit 1fa9df7)
+  + Raise any exceptions that are tagSet not found (commit 56d7d3e)
+  + Added request hook docs (issue 2129, commit 64eedce)
+  + Fixed Route53 alias-healthcheck (issue 2126, commit 141077f)
+  + Fixed Elastic IP association in EC2 (issue 2131, issue 1310, commit d75fdfa)
+  + Fixed builds on Travis for installing dependencies (commit 5e84e30)
+  + Support printing tags on buckets when listing buckets (commit c42a5dd)
+  + PEP8/pyflakes/(some)pylint (commit 149175e)
+  + updated doc explaining use of "system" keyword
+
+-------------------------------------------------------------------
+Tue Mar  4 13:08:30 UTC 2014 - rschweikert@suse.com
+
+- add patch boto_useSystemCerts.patch to support use of system suuplied
+  certificates, patch accepted upstream https://github.com/boto/boto/pull/2139
+- add a boto.cfg file to set boto to use the distro certs
+- updates the doc to explain new "system" keyword in boto.cfg
+
+-------------------------------------------------------------------
+Fri Feb 28 14:00:38 UTC 2014 - rschweikert@suse.com
+
+- update to version 2.26.0:
+  + Add support for Route53 API version 2013-04-01 (issue 2080,
+    commit 600dcd0)
+  + Add option to opt-in for EC2 SigV4 (issue 2074, commit 4d780bd)
+  + Add Autoscale feature to get all adjustment types (issue 2058,
+    issue 1538, commit b9c7e15)
+  + Add Route53 unit tests (issue 2066, commit e859576)
+  + Add a basic Route53 tutorial (issue 2060, commit f0ad46b)
+  + Add Autoscale associated public IP to launch configuration
+    (issue 2051, issue 2028, issue 2029, commit c58bda6)
+  + Add option to pass VPC zone identifiers as a Python list (issue 2047,
+    issue 1772, commit 07ef9e1)
+  + Add RDS call to get all log files (issue 2040, issue 1994, commit 925b8cb)
+  + Changed S3 get_bucket to use HEAD in place of GET. (issue 2078,
+    issue 2082, commit 016be83)
+  + Fix EMR’s describe_cluster_command. (issue 2034, commit 1c5621e)
+  + Tutorial small code fix (issue 2072, commit 38e7db1)
+  + Fix CloudFront string representation (issue 2069, commit 885c397)
+  + Route53 doc cleanup (issue 2059, commit d2fc38e)
+  + Fix MWS parsing of GetProductCategoriesForASIN response. (issue 2024,
+    commit 0af08ce)
+  + Fix SQS docs for get_queue_attributes (issue 2061, commit 1cdc326)
+  + Don’t insert a ‘?’ in URLs unless there is a query string (issue 2042,
+    issue 1943, commit c15ce60)
+  + Added support for MFA in STS AssumeRole. (commit 899810c)
+  + Fixed how DynamoDB v2 works with Global Secondary Indexes. (issue 2122,
+    commit f602c95)
+  + Add request hooks and request logger. (issue 2125, commit e8b20fe)
+  + Don’t pull the security token from the environment or config when a
+    caller supplies the access key and secret. (issue 2123, commit 4df1694)
+  + Read EvaluateTargetHealth from Route53 resource record set. (issue 2120,
+    commit 0a97158)
+  + Prevent implicit string decode in hmac-v4 handlers. (issue 2037,
+    issue 2033, commit 8e56a5f)
+  + Updated Datapipeline to include all current regions. (issue 2121,
+    commit dff5e3e)
+  + Bug fix for Google Storage generate_url authentication. (issue 2116,
+    issue 2108, commit 5a50932)
+  + Handle JSON error responses in BotoServerError. (issue 2113,
+    issue 2077, commit 221085e)
+  + Corrected a typo in SQS tutorial. (issue 2114, commit 7ed41f7)
+  + Add CloudFormation template capabilities support. (issue 2111,
+    issue 2075, commit 65a4323)
+  + Add SWF layer1_decisions to docs. (issue 2110, issue 2062, commit 6039cc9)
+  + Add support for request intervals in health checks. (issue 2109,
+    commit 660b01a)
+  + Added checks for invalid regions to the bin scripts (issue 2107,
+    commit bbb9f1e)
+  + Better error output for unknown region - (issue 2041, issue 1983,
+    commit cd63f92)
+  + Added certificate tests for CloudTrail. (issue 2106, commit a7e9b4c)
+  + Updated Kinesis endpoints. (commit 7bd4b6e)
+  + Finished implementation of RDS’s DescribeDBLogFiles. (issue 2084,
+    commit f3c706c)
+  + Added support for RDS log file downloading. (issue 2086, issue 1993,
+    commit 4c51841)
+  + Added some unit tests for CloudFront. (issue 2076, commit 6c46b1d)
+  + GS should ignore restore_headers as they are never set. (issue 2067,
+    commit f02aeb3)
+  + Update CloudFormation to support the latest API. (issue 2101,
+    commit ea1b1b6)
+  + Added Route53 health checks. (issue 2054, commit 9028f7d)
+  + Merge branch ‘rds2’ into develop Fixes #2097. (issue 2097, commit 6843c16)
+  + Fix Param class convert method (issue 2094, commit 5cd4598)
+  + Added support for Route53 aliasing. (issue 2096, commit df5fa40)
+  + Removed the dependence on example.com within the Route53 tests.
+    (issue 2098, commit 6ce9e0f)
+  + Fixed has_item support in DynamoDB v2. (issue 2090, commit aada5d3)
+  + Fix a little typo bug in the S3 tutorial. (issue 2088, commit c091d27)
+- remove patch fixGoogleStorageSupport.diff, fix included
+
+-------------------------------------------------------------------
+Thu Feb 27 17:13:46 UTC 2014 - rschweikert@suse.com
+
+- add python-xml dependency
+
+-------------------------------------------------------------------
+Thu Feb 20 22:13:44 UTC 2014 - rschweikert@suse.com
+
+- add patch fixGoogleStorageSupport.diff
+  + addresses upstream issue 2105 by applying pull request 2112
+  + this fixes the exception triggered by any gsutil command
+
+-------------------------------------------------------------------
+Fri Feb 14 10:50:07 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #316168)
+
+-------------------------------------------------------------------
+Wed Feb  5 02:39:01 UTC 2014 - rschweikert@suse.com
+
+- update to version 2.24.0:
+  + Load region and endpoint information from a JSON file (commit b9dbaad)
+  + Return the x-amz-restore header with GET KEY and fix provider prefix.
+    (issue 1990, commit 43e8e0a)
+  + Make S3 key validation optional with the validate parameter (issue
+    2013, issue 1996, commit fd6b632)
+  + Adding new eu-west-1 and eu-west-2 endpoints for SES. (issue 2015,
+    commit d5ef862, commit 56ba3e5)
+  + Google Storage now uses new-style Python classes (issue 1927,
+    commit 86c9f77)
+  + Add support for step summary list to Elastic MapReduce (issue 2011,
+    commit d3af158)
+  + Added the M3 instance types. (issue 2012, commit 7c82f57)
+  + Add credential profile configuration (issue 1979, commit e3ab708)
+  + Add support for dead letter queues to SQS (commit 93c7d05)
+    Make the Lifecycle Id optional and fix prefix=None in XML generation.
+    (issue 2021, commit 362a04a)
+  + Fix DynamoDB query limit bug (issue 2014, commit 7ecb3f7)
+  + Add documentation about the version_id behavior of Key objects.
+    (issue 2026, commit b6b242c)
+  + Fixed typo in Table.create example (issue 2023, commit d81a660)
+  + Adding a license/copyright header. (issue 2025, commit 26ded39)
+  + Update the docstring for the SNS subscribe method (issue 2017,
+    commit 4c806de)
+  + Renamed unit test with duplicate name (issue 2016, commit c7bd0bd)
+  + Use UTC instead of local time in test_refresh_credentials (issue 2020,
+    commit b5a2eaf)
+  + Fix missing security_token option in some connection classes (issue 1989,
+    issue 1942, commit 2b72f32)
+  + Fix listing S3 multipart uploads with some parameter combinations
+    (issue 2000, commit 49045bc)
+  + Fix elbadmin crash because of non-extant instances in load balancer
+    (issue 2001, commit d47cc14)
+  + Fix anonymous S3 fetch test case (issue 1988, issue 1992, commit 8fb1666)
+  + Fix elbadmin boto import (issue 2002, commit 674c3a6)
+  + Fixing SQS tutorial to correctly describe behavior of the write
+    operation (issue 1986, commit 6147d86)
+  + Fix various grammar mistakes (issue 1980, commit ada40b5)
+  + Added pagination & date range filtering to Glacier inventory options.
+    (issue 1977, commit 402a305)
+  + Added the ability to select the specific attributes to fetch in the
+    scan & get_item calls within DynamoDB v2. (issue 1945, issue 1972,
+    commit f6451fb & commit 96cd413)
+  + Allow getting a security token from either an environment or configuration
+    variable. (:issue:, :sha:)
+  + Ported the has_item call from the original DynamoDB (v1) module to
+    DynamoDB v2. (issue 1973, issue 1822, commit f96e9e3)
+  + Added an associate_address_object method to EC2. (issue 1967, issue 1874,
+    issue 1893, commit dd6180c)
+  + Added a download_to_fileobj method to Glacier,similar to the S3 call of
+    the same name. (issue 1960, issue 1941, commit 67266e5)
+  + Added support for arbitrary dict inputs to MWS. (issue 1966, commit
+    46f193f)
+  + Made the usage of is/is not more consistent. (issue 1930, commit 8597c54)
+  + Imported with_statement for old Python versions (issue 1975,
+    commit a53a574)
+  + Changed the Binary data object within DynamoDB to throw an error if
+    an invalid data type is used. (issue 1963, issue 1956, commit e5d30c8)
+  + Altered the integration tests to avoid connection errors to certain
+    regions. (commit 2555b8a)
+  + Changed the GCS resumable upload handler to save tracker files
+    with protection 0600. (commit 7cb344c)
+  + Clarified documentation around the list_metrics call in CloudFormation.
+    (issue 1962, commit c996a72)
+  + Added Tag to the Autoscale API docs. (issue 1964, commit 31118d9)
+  + Updated the AWS Support documentation to the latest. (commit 29f9264)
+
+
+-------------------------------------------------------------------
+Sun Jan  5 18:55:26 UTC 2014 - rschweikert@suse.com
+
+- update to version 2.22.0:
+  * Updated Auto Scaling to support the latest API. (commit 9984c4f)
+  * Added the ability to alter response sizes in DynamoDB queries/scans.
+      (issue 1949, commit 6761b01)
+  * Fix string instance tests. (issue 1959, commit ee203bf)
+  * Add missing parameters to get_spot_price_history method. (issue 1958,
+      commit f635474)
+  * Fix unicode string parameter handling in S3Connection. (issue 1954,
+      issue 1952, commit 12e6b0c)
+  * Fix typo in docstring for SSHClient.run. (issue 1953, commit 5263b20)
+  * Properly handle getopt long options in s3put. (issue 1950, issue 1946,
+      commit cf693ff)
+  * Fixed a missed inheritance bug in mturk. (issue 1936, commit 0137f29)
+  * Added cn-north-1 to regions. (commit 9c89de1)
+  * Fixed threading issues related to datetime.strptime. (issue 1898,
+      commit 2ef66c9)
+  * Updated all the old-style inheritance calls. (issue 1918, issue 1936,
+      issue 1937, commit 39a997f & commit 607624f)
+  * Add support for Elastic Transcoder pagination and new codecs (commit
+      dcb1c5a)
+  * Add support for new CloudTrail calling format (commit aeafe9b)
+  * Update to the latest Support API (commit 45e1884)
+  * Add support for arbitrarily large SQS messages stored in S3 via BigMessage.
+      (issue 1917, commit e6cd665)
+  * Add support for encoding_type to S3 (commit 6b2d967)
+  * Add support for Elastic MapReduce tags (issue 1928, issue 1920,
+      commit b9749c6, commit 8e4c595)
+  * Add high level support for global secondary indexes in DynamoDB (issue
+      1924, issue 1913, commit 32dac5b)
+  * Add support for Elastic Beanstalk worker environments. (issue 1911,
+      commit bbd4fbf)
+  * Add support for OpsWorks IAM user permissions per stack (commit ac6e4e7)
+  * Add support for SigV4 to S3 (commit deb9e18)
+  * Add support for SigV4 to EC2 (commit bdebfe0)
+  * Add support for SigV4 to ElastiCache (commit b892b45)
+  * Add documentation describing account usage for multipart uploads in S3
+      (commit af03d8d)
+  * Update DesiredCapacity if AutoScalingGroup.desired_capacity is not None.
+      (issue 1906, issue 1906, issue 1757, commit b6670ce)
+  * Documentation: add Kinesis API reference (issue 1921, commit c169836)
+  * Documentation: sriovNetSupport instance attribute (issue 1915, commit
+      e1bafcc)
+  * Update RDS documentation for API version: 2013-09-09 (issue 1914, commit
+      fcf702a)
+  * Switch all classes to new style classes which results in memory use
+      improvements (commit ca36fa2)
+  * Bug fix for IAM security credentials metadata URL. (issue 1912,
+      issue 1908, issue 1907, commit f82e7a5)
+  * Add support for Amazon Kinesis (commit d0b684e)
+  * Add support for i2 instance types to EC2. (commit 0f5371f)
+  * Add support for DynamoDB Global Secondary Indexes (commit 297cacb)
+  * Add support for AWS Direct Connect. (issue 1894, issue 1894, commit 3cbca26)
+  * Add option for sorting SDB dumps to sdbadmin. (issue 1888, issue 1888,
+      commit 070e4f6)
+  * Add a retry when EC2 metadata is returned as corrupt JSON. (issue 1883,
+      issue 1883, issue 1868, commit 41470a0)
+  * Added some missing attributes to DBInstance and DBSnapshot. (issue 1880,
+      issue 1880, commit 2751dff)
+  * Implement nonzero for DynamoDB Item to consider empty items falsey (issue
+      1899, commit 808e550)
+  * Remove dimensions from Metric.query() docstring. (issue 1901, issue 1901,
+      commit ba6b8c7)
+  * Make trailing slashes for EC2 metadata URLs explicit & remove them from
+      userdata requests. This fixes using boto for CloudStack (issue 1900,
+      issue 1900, issue 1897, issue 1856, commit 5f4506e)
+  * Fix the DynamoDB ‘scan in’ filter to compare the same attribute types in
+      a list rather than using an attribute set. (issue 1896, issue 1896,
+      commit 5fc59d6)
+  * Updating Amazon ElastiCache parameters to be optional when creating a
+      new cache cluster. (issue 1876, issue 1876, commit 342b8df)
+  * Fix honor cooldown AutoScaling parameter serialization to prevent an
+      exception and bad request. (issue 1895, issue 1895, issue 1892,
+      commit fc4674f)
+  * Fix ignored RDS backup_retention_period when value was 0. (issue 1887,
+      issue 1887, issue 1886, commit a19eb14)
+  * Use auth_handler to specify host header value including custom ports
+      if possible, which are used by Eucalyptus. (issue 1862, issue 1862,
+      commit ce6df03)
+  * Fix documentation of launch config in Autoscaling Group. (issue 1881,
+      issue 1881, commit 6f704d9)
+  * typo: AIM -> IAM (issue 1882, commit 7ea2d5c)
+  * Add max results parameters to EC2 describe instances and describe tags.
+        (issue 1873, issue 1873, commit ad8a64a)
+  * Add support for RDS CopyDBSnapshot. (issue 1872, issue 1872,
+        issue 1865, commit bffb758)
+  * Update README.rst to link to ReadTheDocs changelogs. (issue 1869,
+        commit 26f3dbe)
+  * Delete the old changelog in favor of the README link to ReadTheDocs
+        changelogs. (issue 1870, issue 1870, commit 32bc333)
+  * Added missed notes about the cn-north-1 region. (commit 738c8cb)
+  * Added the C3 family of EC2 instances. (issue 1938, commit 05b7482)
+  * Documentation: sriovNetSupport instance attribute (issue 1915,
+       commit e1bafcc)
+
+-------------------------------------------------------------------
+Thu Dec 19 19:38:01 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Nov 26 19:29:11 UTC 2013 - rschweikert@suse.com
+
+- update to version 2.18.0:
+  * Add support for new STS and IAM calls related to SAML. (issue 1867,
+    issue 1867, commit 1c51d17)
+  * Add SigV4 support to Cloudwatch (commit ef43035)
+  * Add support for ELB Attributes and Cross Zone Balancing. (issue 1852,
+    issue 1852, commit 76f8b7f)
+  * Add RDS promote and rename support. (issue 1857, issue 1857,
+    commit 0b62c70)
+  * Update EC2 get_all_snapshots and add support for registering an image
+    with a snapshot. (issue 1850, issue 1850, commit 3007956)
+  * Fix issues related to encoding of values in HTTP headers when using
+    unicode. (issue 1864, issue 1864, issue 1839, issue 1829, issue 1828,
+    issue 702, commit 5610dd7)
+  * Fix order of Beanstalk documetation to match param order. (issue 1863,
+    issue 1863, commit a3a29f8)
+  * Make sure file is closed before attempting to delete it when downloading
+    an S3 key. (issue 1791, commit 0e6dcbe)
+  * Fix minor CloudTrail documentation typos. (issue 1861, issue 1861,
+    commit 256a115)
+  * Fix DynamoDBv2 tutorial sentence with missing verb. (issue 1859,
+    issue 1825, issue 1859, commit 0fd5300)
+  * Fix parameter validation for gs (issue 1858, commit 6b9a869)
+  * Add support for AWS CloudTrail (commit 53ba0c9)
+  * Add support for new Amazon Redshift features (commit d94b48c)
+  * Add missing argument for Google Storage resumable uploads. (commit b777b62)
+  * Added recipe for parallel execution of activities to SWF tutorial.
+    (issue 1800, issue 1800, commit 52c5432)
+  * Added launch_config’s parameter associate_ip_address for VPC.
+    (issue 1799, issue 1799, commit 6685adb)
+  * Update elbadmin add/remove commands to support multiple instance arguments.
+    (issue 1806, issue 1806, commit 4aad26d)
+  * Added documentation for valid auto scaling event types and tags.
+    (issue 1807, issue 1807, commit 664f6e8)
+  * Support VPC tenancy restrictions and filters for DHCP options.
+    (issue 1801, issue 1801, commit 8c5d8de)
+  * Add VPC network ACL support. (issue 1809, issue 1098, issue 1809,
+    commit 9043d09)
+  * Add convenience functions to make DynamoDB2 behave more like DynamoDB
+    (issue 1780, commit 2cecaca)
+  * EC2 cancel_spot_instance_requests now returns a list of
+    SpotInstanceRequest objects. (issue 1811, issue 1811, issue 1754,
+    commit f3361b9)
+  * Fix VPC DescribeVpnConnections call argument; Add support for
+    static_routes_only when creating a new VPC. (issue 1816, issue 1816,
+    issue 1481, commit b408637)
+  * Add a section about DynamoDB Local to the DynamoDBv2 high level docs.
+    (issue 1821, issue 1821, issue 1818, commit 639505f)
+  * Add support for new Elastic MapReduce APIs (issue 1836, commit 5562264)
+  * Modify EMR add_jobflow_steps to return a JobFlowStepList. (issue 1838,
+    issue 1838, commit ef9564f)
+  * Generate docs for route53/zone, remove docs for route53/hostedzone.
+    (issue 1837, issue 1837, commit 99e2e67)
+  * Fix for MWS iterator handling (commit 7e6f98d)
+  * Clarify documentation for MetricAlarm dimensions. (issue 1808,
+    issue 1808, issue 1803, commit 4233fbf)
+  * Fixes for general connection behind proxy. (issue 1781, issue 1781,
+    commit dc8bbea)
+  * Validate S3 method kwarg names to prevent misspelling. (issue 1810,
+    issue 1810, issue 1782, commit 947a14a)
+  * Fix dependencies so they show up as optional in CheeseShop (issue 1617,
+    commit 54da8b6)
+  * Route53 retry HTTP error 400s (issue 1618, commit 6e355b3)
+  * Fix typo in IAMConnection documentation (issue 1820, commit 3fc335d)
+  * Fix MWS MemberLists parsing. (issue 1815, issue 1815, commit 0f6f089)
+  * Fix typo in SQS documentation (issue 1830, commit 20532a6)
+  * Update auto scaling documentation. (issue 1824, issue 1824,
+    issue 1823, commit 9a359ec)
+  * Fixing region endpoints for EMR (issue 1831, commit ed669f7)
+  * Raising an exception in SQS message decode() should not abort parsing.
+    (issue 1835, issue 1835, issue 1833, commit 2a00c92)
+  * Replace correct VPC ACL association instead of just the first one.
+    (issue 1844, issue 1844, issue 1843, commit c70b8d6)
+  * Prevent swallowing CloudSearch errors (issue 1846, issue 1842,
+    commit c2f955b)
+
+-------------------------------------------------------------------
+Mon Oct 21 13:25:31 UTC 2013 - dmueller@suse.com
+
+- update to 2.15.0:
+  * Add SWF tutorial and code sample
+  * Add ap-southeast-2 region to S3WebsiteEndpointTranslate
+  * Add support for ``owner_acct_id`` in SQS ``get_queue``
+  * Add ap-southeast-2 region to Glacier
+  * Add ap-southeast-1 and ap-southeast-2 to Redshift
+  * Add SSH timeout option
+  * Add support for markers in ``lss3``
+  * Add ``block_device_mapping`` to EC2 ``create_image``
+  * Updated SWF tutorial
+  * Support Elastic Transcoder audio transcoding
+
+-------------------------------------------------------------------
+Wed Sep 25 18:55:56 UTC 2013 - p.drouand@gmail.com
+
+- update to version 2.13.3
+  + Changelog not updated for this release
+
+-------------------------------------------------------------------
+Wed Sep 11 17:25:22 UTC 2013 - rschweikert@suse.com
+
+- update to 2.12.0:
+  * Added notes for the release.
+  * Added docs about the included CLI tools & recommended people
+    check out the AWS-CLI.
+  *Ssupport other ELB policies
+  * Fix glacier layer2.list_vaults and related tests.
+  * Fixed #1687 - Headers involved with signing sent with S3 keys should
+    be case-insensitive for the user.
+  * Updated the user-agent string Boto uses.
+  * Updated Elasticache to support Redis & replication.
+  * Added a in-development release notes doc for the next release.
+  * Added the v2.11.0 release notes to the index.
+  * Add unit test for getting the etag from the uploaded part.
+  * Return the part/key so that the user can manage multipart uploads
+
+-------------------------------------------------------------------
+Tue Sep  3 08:17:39 UTC 2013 - dmueller@suse.com
+
+- update to 2.11.0:
+  * Added Public IP address support within VPCs created by EC2. (:sha:`be132d1`)
+  * All services can now easily use GovCloud. (:issue:`1651`, :sha:`542a301`,
+   :sha:`3c56121`, :sha:`9167d89`)
+  * Added ``db_subnet_group`` to
+  ``RDSConnection.restore_dbinstance_from_point_in_time``. (:issue:`1640`,
+  :sha:`06592b9`)
+  * Added ``monthly_backups`` to EC2's ``trim_snapshots``. (:issue:`1688`,
+   :sha:`a2ad606`, :sha:`2998c11`, :sha:`e32d033`)
+  * Added ``get_all_reservations`` & ``get_only_instances`` methods to EC2.
+   (:issue:`1572`, :sha:`ffc6cc0`)
+
+-------------------------------------------------------------------
+Thu Aug  8 12:50:30 UTC 2013 - rschweikert@suse.com
+
+- update to 2.9.9
+  * Added AMI, configuration manager & Chef 11 support to Opsworks.
+    (commit 55725fc).
+  * Added in support for SQS messages. (issue 1593, commit e5fe1ed)
+  * Added support for the ap-southeast-2 region in Elasticache.
+    (issue 1607, commit 9986b61)
+  * Added support for block device mappings in ELB.
+    (issue 1343, issue 753, issue 1357, commit 974a23a)
+  * Added support for DBSubnetGroup in RDS.
+    (issue 1500, commit 01eef87, commit 45c60a0, commit c4c859e)
+  * Fixed the canonicalization of paths on Windows. (issue 1609, commit a1fa98c)
+  * Fixed how BotoServerException uses message. (issue 1353, commit b944f4b)
+  * Fixed DisableRollback always being True in a CloudFormation Stack.
+    (issue 1379, commit 32b3150)
+  * Changed EMR instance groups to no longer require a string price
+    (can now be a Decimal). (issue 1396, commit dfc39ff)
+  * Altered Distribution._sign_string to accept any file-like object as
+    well within CloudFront. (issue 1349, commit 8df6c14)
+  * Fixed the detach_lb_from_subnets call within ELB.
+    (issue 1417, issue 1418 commit 4a397bd, commit c11d72b,
+     commit 9e595b5, commit 634469d, commit 586dd54)
+  * Altered boto to obey no_proxy environment variables.
+    (issue 1600, issue 1603, commit aaef5a9)
+  * Fixed ELB connections to use HTTPS by default. (issue 1587, commit fe158c4)
+  * Updated S3 to be Python 2.5 compatible again. (issue 1598, commit 066009f)
+  * All calls within SES will now return all DKIMTokens, instead of just one.
+    (issue 1550, issue 1610, commit 1a079da, commit 1e82f85, commit 5c8b6b8)
+  * Fixed the logging parameter within DistributionConfig in CloudFront
+    to respect whatever is provided to the constructor.
+    (issue 1457, commit e76180d)
+  * Fixed CloudSearch to no longer raise an error if a non-JSON response
+    is received. (issue 1555, issue 1614, commit 5e2c292, commit 6510e1f)
+  * Added support for the DecodeAuthorizationMessage in STS (commit 1ada5ac).
+  * Added support for creating/deleting/describing ``OptionGroup``s in RDS.
+    (commit d629228 & commit d059a3b)
+  * Added CancelUpdateStack to CloudFormation. (issue 1476, commit 5bae130)
+  * Added support for getting/setting lifecycle configurations on GS buckets.
+    (issue 1604, commit 652fc81)
+  * Added region support to bin/elbadmin. (issue 1586, commit 2ffbc60)
+  * Changed the mock storage to use case-insensitive headers.
+    (issue 1594, commit 71849cb)
+  * Added complex_listeners to ELB. (issue 1048, commit b782ce2)
+  * Added tests for Route53’s ResourceRecordSets. (commit fad5bde)
+  * Added support for selecting specific attributes in DynamoDB v2.
+    (issue 1567, commit d9e5c2)
+  * Added support for variable bit rate, max frame rate & watermark
+    features in Elastic Transcoder. (commit 3791c9)
+  * Altered RDS to now use SigV4. (commit be1633)
+  * Removed parsing check in StorageUri. (commit 21bc8f)
+  * More information returned about GS key generation.
+    (issue 1571, commit 6d5e3a)
+  * Upload handling headers now case-insensitive. (issue 1575, commit 60383d)
+  * Several CloudFormation timestamp updates.
+    (issue 1582, issue 1583, issue 1588, commit 0a23d34, commit 6d4209)
+  * Corrected a bug in how limits are handled in DynamoDB v2
+  * Updated CloudFront docs. (issue 1546, commit a811197)
+  * Updated the URL explaining the use of base64 in SQS messages.
+  (issue 1596, commit 00de3a2)
+  * Typo in boto.connection fixed. (issue 1569, commit cf39fd)
+  * All previous release notes added to the docs. (commit 165596)
+  * Corrected error in get_all_tags docs. (commit 4bca5d)
+  * Corrected a typo in the S3 tutorial. (commit f0cef8)
+  * Corrected several import errors in the DDBv2 tutorial. (commit 5401a3)
+  * Fixed an error in the get_key_pair docstring. (issue 1590, commit a9cb8d)
+
+-------------------------------------------------------------------
+Fri Jun 21 16:48:24 UTC 2013 - dmueller@suse.com
+
+- update to 2.9.6:
+  * various bugfixes
+
+-------------------------------------------------------------------
+Mon May 27 13:55:30 UTC 2013 - dmueller@suse.com
+
+- update to 2.9.4:
+  * Updated Elastic Transcoder support - It now supports HLS, WebM, MPEG2-TS
+  * Fixed glacier part size bug
+  * Fixed a bug in the bucket regex for S3 involving capital letters
+  * Fixed a bug where timestamps from Cloudformation would fail to be parsed
+  * Several documentation improvements/fixes
+
+-------------------------------------------------------------------
+Tue May  7 07:13:52 UTC 2013 - dmueller@suse.com
+
+- update to 2.9.2:
+  * Fixes to Amazon Redshift
+  * Documentation updates
+
+-------------------------------------------------------------------
+Mon Apr 29 11:47:21 UTC 2013 - dmueller@suse.com
+
+- update to 2.9.0:
+  * Added support for Amazon Elasticache
+  * Added support for Amazon Elastic Transcoding Service
+  * Support for Amazon Redshift
+  * Support for Amazon DynamoDB's new API
+  * Support for AWS Opsworks
+  * Add copy_image to EC2 (AMI copy)
+  * Add describe_account_attributes and describe_vpc_attribute,
+   and modify_vpc_attribute operations to EC2.
+
+-------------------------------------------------------------------
+Mon Jan 21 16:07:31 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.7.0: 
+  * Added support for AWS Data Pipeline
+  * Integrated Slick53 into Route53 module
+  * Add ability to use Decimal for DynamoDB numeric types
+  * Query/Scan Count/ScannedCount support and TableGenerator improvements
+  * Added support for keyring in config files
+  * Add concurrent downloader to glacier
+  * Add support for tagged RDS DBInstances
+  * Updating RDS API Version to 2012-09-17
+  * Added support for provisioned IOPS for RDS
+  * Add ability to set SQS Notifications in Mechanical Turk
+
+-------------------------------------------------------------------
+Fri Jun 22 12:42:29 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.5.2:
+  + See https://github.com/boto/boto/wiki/2.5.2-Release-Notes
+
+-------------------------------------------------------------------
+Wed Apr  4 07:42:42 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.3.0:
+  * See https://github.com/boto/boto/wiki/2.3.0-Release-Notes
+- Add seperate doc package for HTML documentation
+
+-------------------------------------------------------------------
+Thu Nov 10 11:09:55 UTC 2011 - saschpe@suse.de
+
+- Update to version 2.1.1:
+  * No upstream-provided changes
+
+-------------------------------------------------------------------
+Tue Sep 20 13:14:24 UTC 2011 - saschpe@suse.de
+
+- The previous two updates where junk, fixing back old stuff
+
+-------------------------------------------------------------------
+Tue Sep  6 02:26:23 UTC 2011 - alexandre@exatati.com.br
+
+- Update description in spec file.
+
+-------------------------------------------------------------------
+Thu Jul 14 03:36:15 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.0;
+- Bzip2 source file;
+- Regenerate spec file with py2pack.
+
+-------------------------------------------------------------------
+Fri May 27 12:46:19 UTC 2011 - saschpe@suse.de
+
+- Update to 2.0.b4
+- Spec file cleanup:
+  * Cleanup duplicates with fdupes
+  * Fix executable flag for scripts with shebang line
+  * Removed authors from description
+
+-------------------------------------------------------------------
+Wed Nov  3 19:47:38 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 2.0b3;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Mon Jul  5 19:28:02 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.9b;
+- Spec file cleaned with spec-cleaner;
+- Building as noarch for openSUSE >= 11.2.
+
+-------------------------------------------------------------------
+Mon Apr 13 11:12:32 ADT 2009 - jfunk@funktronics.ca
+
+- Update to 1.7a
+
+-------------------------------------------------------------------
+Wed May  7 16:39:57 ADT 2008 - jfunk@opensuse.org
+
+- Update to 1.2a
+
+-------------------------------------------------------------------
+Sun Sep  2 11:05:37 CEST 2007 - crrodriguez@suse.de
+
+- first version 
+

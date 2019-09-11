@@ -1,0 +1,12 @@
+diff -Naur purple-plugin_pack-2.6.3.orig//napster/napster.c purple-plugin_pack-2.6.3//napster/napster.c
+--- purple-plugin_pack-2.6.3.orig//napster/napster.c	2009-04-19 06:30:03.000000000 +0200
++++ purple-plugin_pack-2.6.3//napster/napster.c	2011-09-01 21:49:30.575861780 +0200
+@@ -393,7 +393,7 @@
+ 		res = g_strsplit(buf, " ", 3);
+ 		c = nap_find_chat(gc, res[0]);
+ 		if (c)
+-			serv_got_chat_in(gc, purple_conv_chat_get_id(PURPLE_CONV_CHAT(c)), res[1], 0, res[2], time((time_t)NULL));
++			serv_got_chat_in(gc, purple_conv_chat_get_id(PURPLE_CONV_CHAT(c)), res[1], 0, res[2], time(NULL));
+ 		g_strfreev(res);
+ 		break;
+ 

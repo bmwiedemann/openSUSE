@@ -1,0 +1,1175 @@
+-------------------------------------------------------------------
+Tue Mar 12 06:27:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 14:58:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Stop using gnome-common.
+  + Add nm-connection-editor to the Utilities category.
+  + Restore minimal Sundry app folder for upgrades. Users can
+    remove it by running gsettings reset-recursively
+    org.gnome.desktop.app-folders and logging out and logging back
+    in.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 23:28:03 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Fix missing close tag that broke traditional menu users.
+  + Add CI to check the validity of our menu file so we don't make
+    that mistake as easily next time.
+  + Add gnome-abrt to the Utilities category.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 22 11:41:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Remove the Sundry category.
+  + Switch to modern realpath.
+  + Stop using intltool.
+  + Updated translations.
+- Drop python-devel and python-gtk BuildRequires: They are not
+  needed nor used.
+
+-------------------------------------------------------------------
+Thu Jan  3 14:09:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + desktop-entries: support multiple desktops in
+    XDG_CURRENT_DESKTOP.
+  + libmenu: Remove support for legacy-dirs.
+  + layout:
+    - Update .desktop filenames.
+    - Drop obsolete Fedora special case .desktop filenames.
+  + Miscellaneous fixes.
+- Drop intltool BuildRequires: No longer needed.
+- Drop upstream fixed patches:
+  + 0001-desktop-entries-support-multiple-desktops-in-XDG_CUR.patch
+  + 0001-desktop-entries-fix-trivial-bug-in-handling-of-multi.patch
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:38 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug 29 12:40:24 UTC 2016 - fezhang@suse.com
+
+- Add
+  0001-desktop-entries-support-multiple-desktops-in-XDG_CUR.patch,
+  0001-desktop-entries-fix-trivial-bug-in-handling-of-multi.patch:
+  Backport upstream commit b4546ab and 4befe76. Parse
+  XDG_CURRENT_DESKTOP correctly when it specifies multiple desktops
+  (bsc#988595, bgo#741505).
+
+-------------------------------------------------------------------
+Wed Aug  6 19:18:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Fix some crashes.
+  + Fix some refcounting bugs.
+  + Fix some leaks.
+  + Add some small effiencies to our notify handler.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 15 16:48:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Don't put gnome-control-center in Utilities (bgo#707037).
+  + Exclude gnome-terminal from System Tools (bgo#708467).
+
+-------------------------------------------------------------------
+Wed Oct  2 20:42:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Correct name of gnome-calculator.
+  + Fix issues with apps incorrectly showing up in Other.
+  + Updated translations.
+- Drop gnome-menus-gcalctool-desktop-file-rename.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Sep 21 14:48:50 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Thu Sep 19 17:14:54 UTC 2013 - malcolmlewis@opensuse.org
+
+- Add gnome-menus-gcalctool-desktop-file-rename.patch: Adapt
+  gnome-calculator.desktop back to gcalctool.desktop, changed at
+  the very last minute before the 3.8.0 release
+  (bgo#696816,bnc#841097).
+
+-------------------------------------------------------------------
+Tue Mar 26 09:38:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Add more java things to sundry.
+  + Add im-chooser, power statistics and personal file sharing to
+    sundry.
+  + Remove special-casing for Fedora vendor prefixdd.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 07:22:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Fix error reporting.
+  + Memory leak fixes.
+  + Remove the simple editor.
+  + New menu layout for gnome-shell tweaks.
+  + Remove old gnome-control-center files.
+  + Updated translations.
+- Drop -editor subpackage.
+- No longer rename applications.menu to gnome-applications.menu,
+  as this was corrected upstream.
+- Remove hacks for old openSUSE Versions removing unknown
+  translations: current versions of find_lang do that for us.
+- Drop glib2-devel Requires from the -devel package: it's added
+  automatically by rpm using pkgconfig.
+- Updated baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jan 15 16:19:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + bgo#688972: call menu_layout_load() with non_prefixed_name
+    parameter.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:46:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 14:50:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 11:48:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Add proper header reference to GMenu-3.0.gir
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  6 22:44:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 11:35:28 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:54:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + libmenu:
+    - Fix scanner warnings
+    - Add gmenu_tree_iter_get_separator
+    - Add a recursive NoDisplay getter
+    - Add a way to get a GMenuTree from a GMenuTreeItem
+    - Add a way to get the parent item for a GMenuTreeItem
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  8 13:07:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Layout: Add a separate category for Web Applications
+  + libmenu: Add a new GMENU_TREE_FLAGS_INCLUDE_UNALLOCATED flag
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 14 14:06:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 09:09:32 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 14:05:56 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec  8 22:18:22 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-GMenu-3_0 subpackage.
+- Add typelib-1_0-GMenu-3_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Nov  1 09:50:02 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.1:
+  + libmenu: Ignore desktop entries with no Name or Exec key.
+  + Layout: Put the Other menu at the end.
+- Drop gnome-menus-other-end.patch: fixed upstream.
+- Drop gnome-menus-ignore-invalid-files.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Oct 31 07:39:28 UTC 2011 - vuntz@opensuse.org
+
+- Add gnome-menus-ignore-invalid-files.patch: ignore invalid
+  .desktop files (with no Exec line, for instance). This is
+  especially important as those can make gnome-shell crash.
+  Fix bnc#727253.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:55:29 UTC 2011 - vuntz@opensuse.org
+
+- Drop gnome-menus-x-suse-unimportant.patch: we moved to not using
+  X-SuSE-Unimportant=true, but NoDisplay=true. So no need to rebase
+  this patch anymore.
+
+-------------------------------------------------------------------
+Fri Oct  7 08:44:35 UTC 2011 - vuntz@opensuse.org
+
+- Add gnome-menus-other-end.patch: put the Other menu at the end,
+  after other menus. Taken from git.
+
+-------------------------------------------------------------------
+Wed Sep 28 09:01:59 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0.1:
+  + Menu Editor
+    - Work with latest pygobject
+- Drop gnome-menus-fix-editor.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 27 10:11:02 UTC 2011 - vuntz@opensuse.org
+
+- Add gnome-menus-fix-editor.patch: fix the editor to work with
+  latest python-gobject.
+
+-------------------------------------------------------------------
+Mon Sep 26 10:37:44 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:12:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Fix build failure with --enable-debug
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 11:49:45 UTC 2011 - vuntz@opensuse.org
+
+- Remove wrong libgnome-menu2 Requires from gnome-menus-editor: it
+  really doesn't depend on the old library.
+- Remove unneeded glib2-devel BuildRequires: it is already covered
+  with the pkgconfig(gio-unix-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Aug 30 17:06:43 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + libmenu:
+    - Don't try to unref potentially NULL pointers
+
+-------------------------------------------------------------------
+Fri Aug 12 14:38:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + libmenu:
+    - Rebase internal representation of .desktop files on top of
+      GDesktopAppInfo
+    - Make GMenuTree a GObject
+    - Use GSlice for various data
+    - Use thread-default main context for callbacks for future
+      flexibility for thread support
+    - Many API changes, see new headers for changes. The most
+      visible one is that gmenu_tree_load_sync() should explicitly
+      be used to load the menu now.
+    - Drop support for "KDE Desktop Entry" group
+    - Return GIcon instead of char * for icon-related API
+    - Various fixes and cleanups to merge Colin's branch
+    - Add gmenu_tree_get_entry_by_id() API
+    - Support XDG_CURRENT_DESKTOP
+  + Menu Editor:
+    - Port to introspection-based bindings
+    - Stop editing settings.menu
+  + Python:
+    - Drop static python bindings; introspection-based ones should
+      be used now
+  + Misc:
+    - Replace example of python code with javascript code
+    - Change library name, header directory, pkg-config filename
+    - Require glib 2.29.15 for new API
+  + Updated translations.
+- Add pkgconfig(gio-unix-2.0) BuildRequires.
+- Disable gnome-menus-x-suse-unimportant.patch: Needs rebase.
+- Drop python-gnome-menus subpackage, which were the no longer
+  supported static python bindings.
+- Rename libgnome-menu2 subpackage to libgnome-menu-3-0,
+  following the upstream library rename.
+
+-------------------------------------------------------------------
+Fri Jul 22 13:15:27 CEST 2011 - vuntz@opensuse.org
+
+- Explicitly list the files in the branding-upstream subpackage, so
+  it's easier to know when to update other gnome-menus branding
+  packages.
+
+-------------------------------------------------------------------
+Thu Jul  7 10:11:40 CEST 2011 - vuntz@opensuse.org
+
+- Fix License tags: all the code is LGPLv2.1+, except the editor
+  which is GPLv2+.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:43:11 CEST 2011 - vuntz@opensuse.org
+
+- Change branding-upstream subpackage:
+  + Add Requires for gnome-menus since the branding package is
+    useless without it.
+  + Update summary and description.
+  + Make noarch.
+- Update descriptions in other subpackages.
+- Change branding Requires in main subpackage to be "= %{version}"
+  since it has to be versioned.
+
+-------------------------------------------------------------------
+Wed Apr 27 12:10:32 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 13:21:31 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Layout:
+    - Show administration tools and old capplets in Other
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  7 11:29:20 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.91:
+  + Menu Editor:
+    - Fix to work with latest pygi.
+  + Misc:
+    - Build fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 13:47:54 CET 2011 - vuntz@opensuse.org
+
+- Drop python-gtk Requires in python-gnome-menus: this is actually
+  not true since this is a pure python binding.
+- Change python-gnome-menus Requires in gnome-menus-editor to
+  libgnome-menu2 and python-gobject Requires, as the editor got
+  ported to pygobject-based introspection bindings.
+
+-------------------------------------------------------------------
+Mon Feb 14 14:10:24 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.6:
+  + libmenu:
+    - Do not send multiple notifications for one file change
+  + Menu Editor:
+    - Port to pygobject-based introspection bindings
+    - Make editor GTK+ 3 ready
+  + Improve introspection build
+  + Drop settings.menu
+  + Translations updates.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common BuildRequires.
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:45:39 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 19:04:56 CET 2010 - vuntz@opensuse.org
+
+- Stop removing kg locale on 11.4 and later: bnc#659001 has been
+  fixed.
+
+-------------------------------------------------------------------
+Sun Dec 12 13:49:26 CET 2010 - vuntz@opensuse.org
+
+- Remove some locales until bnc#659001 is fixed, to fix a build
+  failure.
+
+-------------------------------------------------------------------
+Wed Nov 17 16:53:11 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 11 18:05:05 CEST 2010 - vuntz@opensuse.org
+
+- Update baselibs.conf to ignore gnome-menus (there is no library
+  there) and instead put python-gnome-menus in there.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:51:29 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.4:
+  + libmenu
+    - Clear cache of desktop entries set when files are
+      added/removed
+  + Associate .gir with pkg-config file
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 24 12:00:54 CEST 2010 - vuntz@opensuse.org
+
+- Call %suse_update_desktop_file on .directory files too.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:50:41 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Sep 14 15:50:18 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.3:
+  + Menu Editor:
+    - Respect XDG_MENU_PREFIX when writing user menu file
+  + Misc
+    - Update information in README and other files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  8 10:54:26 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.2:
+  + Do not ship gir files in the tarball
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:03:23 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Tue Mar 30 03:04:00 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix layout processing for Menuname nodes
+  + Never ignore Menuname nodes from DefaultLayout
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 21 18:03:55 UTC 2010 - dimstar@opensuse.org
+
+- Add gobject-introspection-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Mar  8 15:52:06 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + Add gobject-introspection support
+  + build fixes
+  + updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 21:35:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + Make some non-visible strings non-translatable
+  + Add translator comment
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 17:16:12 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + libmenu
+    - Fix miscalculation for inlining when inline_header = true
+    - Add real support for inline aliases during layout processing
+    - Support inline alias of an inline alias
+    - Do not count non-inlining submenus as inlining with header
+  + Updated translations.
+- Remove en@shaw translation on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Tue Jan  5 16:59:39 CET 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec  2 11:49:02 CET 2009 - vuntz@opensuse.org
+
+- Update the way we remove the ha/ig locales for old versions of
+  openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct  1 13:27:13 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.0.1:
+  + libmenu
+    - Fix sorting of menu items during merge to actually work (and
+      not crash)
+  + Python
+    - Link the python module to libpython
+
+-------------------------------------------------------------------
+Tue Sep 22 17:21:48 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:46:30 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + libmenu
+    - Add gmenu_tree_entry_get_display_name() API
+    - Add gmenu_tree_get_sort_key()/gmenu_tree_set_sort_key()
+  + Python
+    - Bind new API
+    - Add missing bindings for gmenu_tree_entry_get_generic_name()
+  + Menu Editor
+    - Remove deprecated Encoding key from desktop file
+    - Use display name instead of name
+  + Updated translations.
+- Respin gnome-menus-x-suse-unimportant.patch.
+
+-------------------------------------------------------------------
+Wed Jul 29 04:33:22 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.5:
+  + Use silent-rules with automake 1.11
+  + Translation updates.
+
+-------------------------------------------------------------------
+Mon Jul 20 00:31:02 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + libmenu
+    - Improve performance by using a cache to not compute the same
+      thing again and again
+    - Add API to access GenericName
+    - Fix DefaultLayout attributes not being inherited
+    - Do not always inherit parent DefaultLayout attributes
+    - Sort inlined items unless inline_header is used
+  + Menu Editor
+    - Add --help and --version arguments
+    - Port to GtkBuilder
+  + Misc
+    - Use shave to improve build log readability
+  + Updated translations.
+- Fix packaging of /usr/share/gnome-menus files so that they don't
+  end up in two packages.
+
+-------------------------------------------------------------------
+Thu Apr 30 02:24:12 CEST 2009 - vuntz@novell.com
+
+- Make sure to package no .la file.
+
+-------------------------------------------------------------------
+Tue Apr 14 14:55:28 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 01:10:33 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Feb 17 07:27:04 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + Translation updates
+- Remove gnome-common and perl-XML-Parser from BuildRequires
+
+-------------------------------------------------------------------
+Sun Feb  1 17:37:22 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + Use gnome-common macro to define DEPRECATED build variables
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Jan 23 02:01:48 CET 2009 - vuntz@novell.com
+
+- Minor spec clean up.
+
+-------------------------------------------------------------------
+Sat Dec 20 10:20:15 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.2:
+  * Fix a critical warning in the python binding for monitoring a file
+  * Ship a gnome-menus-ls.py script that is an example of python bindings
+    and that can be used as a replacement for gnome-menu-spec-test
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Oct 24 16:01:46 CEST 2008 - vuntz@novell.com
+
+- Split the python bindings from gnome-menus-editor to
+  python-gnome-menus. We can have alacarte depending on
+  python-gnome-menus this way.
+
+-------------------------------------------------------------------
+Wed Oct 22 15:55:16 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  6 16:31:05 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Tue Sep 23 18:50:28 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Fri Sep 12 18:50:32 CEST 2008 - vuntz@novell.com
+
+- Update to version 2.23.92:
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep 02 15:51:18 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Aug 04 15:51:18 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.6
+  + Fix the icon for the accessibility menu (Matthias Clasen)
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Aug 04 15:51:18 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.5
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 31 15:51:18 CEST 2008 - sbrabec@suse.cz
+
+- Make package branding-able (fate#303889).
+- Split editor and menu editor python library to a separate
+  package gnome-menus-editor.
+
+-------------------------------------------------------------------
+Tue Jun 24 01:02:24 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 18 19:39:33 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.3:
+  + Features:
+    * Implement handling of $XDG_MENU_PREFIX from the xdg menu
+      specification
+    * Do not show separators at the beginning/end of a menu, or
+      after another separator, but add an option to show them
+  + Fixes:
+    * Fix the values of <DefaultLayout> (ie, show_empty, inline,
+      inline_limit, etc.) not being inherited by submenus when the
+      <DefaultLayout> node is after the <Menu> node in the .menu
+      file
+    * Fix a bug where the fallback on the filename in <MergeFile>
+      couldn't be used
+    * Call g_type_init() because GIO needs it and we use GIO for
+      file monitoring
+    * Fix a crash when a file notification is emitted with a
+      non-ascii filename
+    * Remove entries from the excluded set if they are included
+      after they were excluded (eg:
+      <Exclude>something</Exclude><Include>something</Include>)
+    * Implicitly add <Merge> nodes to <Layout> and <DefaultLayout>
+      that are missing some
+    * Correctly order the move operations to execute so that
+      moving something and moving it back again works as undo
+    * Simplify some code
+    * Plug leak
+  + Layout:
+    * Do not show accessibility items in the accessories submenu
+    * Merge menus and files at the end of the layout of
+      settings.menu
+    * Explicitly do not include gnomecc.menu in the preferences
+      menu instead of explicitly excluding it, so that alacarte
+      doesn't know it was excluded
+    * Rename many .directory files so they use fd.o Categories
+      as name
+    * Remove preferences.menu and directly include things in
+      settings.menu
+    * Update a few icons used in .directory files according to
+      the icon naming spec
+    * Remove the accessibility submenu from Preferences, since
+      it's empty now anyway
+  + Misc
+    * Remove shebangs from non-executable Python scripts
+  + Updated translations
+- Respin gnome-menus-x-suse-unimportant.patch
+- Drop obsolete patch: gnome-menus-xdg-menu-prefix.patch.
+
+-------------------------------------------------------------------
+Thu May 22 09:39:33 CEST 2008 - vuntz@suse.de
+
+- Add back Hidden.directory since the removal of this has a side
+  effect on the menu in KDE (GNOME Settings now appears there, not
+  quite sure why it doesn't do so in GNOME...). Bug reported on
+  IRC.
+
+-------------------------------------------------------------------
+Mon May 19 03:07:49 CEST 2008 - vuntz@suse.de
+
+- Tiny fix in gnome-menus-xdg-menu-prefix.patch (taken from svn).
+
+-------------------------------------------------------------------
+Mon May 19 02:38:39 CEST 2008 - vuntz@suse.de
+
+- Update gnome-menus-xdg-menu-prefix.patch to handle <MergeFile>
+  too (taken from upstream).
+- Remove a comment in the spec file that is now wrong.
+
+-------------------------------------------------------------------
+Sat May 17 14:58:28 CEST 2008 - vuntz@suse.de
+
+- Basically an update to fix the look of the panel menu, will
+  tremendously with bnc#329630.
+- Add gnome-menus-xdg-menu-prefix.patch from upstream to prepend
+  $XDG_MENU_PREFIX to applications.menu when the environment
+  variable is set.
+- Drop gnome-desktop-ximian-menus.patch: it's been unused for a
+  while since we were not using the upstream menu files. No need in
+  keeping it.
+- Stop shipping our own applications.menu. It's not even valid, it
+  seems (nothing displayed in GNOME...). Instead, keep the upstream
+  one as gnome-applications.menu
+- Drop gnome-menus-preferences-no-merge.patch: no need to patch
+  preferences.menu since we ship our own and overwrite the patched
+  one...
+- Drop the Hidden stuff (and file Hidden.directory): it's useless
+  since we don't ship preferences-gnome.menu since January 2007.
+- Change settings.menu to include preferences.menu instead of just
+  including the yast desktop file.
+- Change the icons in the .directory files we ship to the ones used
+  by upstream for better consistency. They were only visible in
+  alacarte before, which explains why we've kept the old ones so
+  long.
+
+-------------------------------------------------------------------
+Fri Apr 11 01:00:47 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Minor fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  2 14:35:42 CEST 2008 - vuntz@suse.de
+
+- Do not own uz@cyrillic locale directories. It's part of the
+  filesystem package now.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:28:58 CET 2008 - vuntz@suse.de
+
+- Update to version 2.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:50:44 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 15:31:17 CET 2008 - maw@suse.de
+
+- Fix lang subpackage.
+
+-------------------------------------------------------------------
+Wed Feb 20 20:30:15 CET 2008 - maw@suse.de
+
+- Fix silly build error.
+
+-------------------------------------------------------------------
+Mon Feb 18 20:50:19 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Remove the various monitor backends, and unconditionnaly use gio
+  + Don't install gnome-menu-spec-test
+  + Add a hard dep on gio
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 30 19:37:46 CET 2008 - sreeves@suse.de
+
+- split out shared library according to shared library package policy
+  split is needed for BNC#274974
+  add call to suse_update_desktop_files for existing .desktop file
+  remove our patch using gnomevfs and change to upstream default of gio
+
+-------------------------------------------------------------------
+Tue Jan 29 16:09:18 CET 2008 - rodrigo@suse.de
+
+- Updated to version 2.21.90:
+  * When using gio, require version 2.15.2
+  * Updated translations
+
+-------------------------------------------------------------------
+Tue Sep 18 18:12:54 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * translations update
+
+------------------------------------------------------------------
+Mon Sep 10 22:42:30 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.92:
+  + Fix potential crash
+  + Updated translations
+
+------------------------------------------------------------------
+Fri Aug 31 00:47:20 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 18 12:18:18 CEST 2007 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Wed Aug  8 01:07:07 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Aug  3 05:35:42 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.6
+- Bugfix for #448361.
+
+-------------------------------------------------------------------
+Wed Jul 11 17:00:17 CEST 2007 - maw@suse.de
+
+- Obsoletes: gnome-core is obsolete.
+
+-------------------------------------------------------------------
+Mon Jul  9 18:47:48 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4
+- Crashes in python bindings and inotify backend fixed
+- Updated translations
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Thu Mar 29 17:48:09 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Updated Ukranian translation
+- Reverts to the default use of the shell.
+
+-------------------------------------------------------------------
+Tue Feb 27 13:32:16 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91.
+  * Rework the layout so that it's easy to have the old layout. The
+    control center will ship its own menu file to have the layout for the
+    shell. (Denis Washington)
+  * New menu layout for the control center capplets (Denis Washington)
+  * Flesh out inotify support (use --enable-inotify) (Mark)
+  * Don't load incorrectly encoded .desktop files (Mark)
+  * Fix compile warning (Mark)
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Tue Jan  9 17:03:04 CET 2007 - sbrabec@suse.cz
+
+- More spec file cleanups.
+
+-------------------------------------------------------------------
+Wed Dec 13 16:30:08 CST 2006 - maw@suse.de
+
+- Move to /usr
+- Do some spec cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 21 16:20:50 CET 2006 - sbrabec@suse.cz
+
+- Do not explicitly require mDNSResponder-lib blocking avahi compat
+  package.
+
+-------------------------------------------------------------------
+Fri Oct 13 15:36:58 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Mon Oct  2 22:52:48 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- updated translations
+
+-------------------------------------------------------------------
+Tue Sep 26 00:13:55 CEST 2006 - jhargadon@suse.de
+
+- added %py_requires to the specfile for bug #207922
+
+-------------------------------------------------------------------
+Thu Sep 14 01:08:45 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- updated translations
+
+-------------------------------------------------------------------
+Mon Aug 21 23:18:40 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+- update translations
+
+-------------------------------------------------------------------
+Wed Aug  2 00:34:22 CEST 2006 - gekker@suse.de
+
+- Update to version 2.15.90
+  * Correctly update LT_VERSION (Vincent)
+  * Add new API to know if an application should be launched in a
+          terminal and to know the path to the desktop file (Travis Watkins)
+  * Complete python bindings for the "No Display" flag (Travis Watkins)
+  * Allow specifying alternate menu files as command line arguments
+  * Start inotify support
+  * Add "include NoDisplay" flag (Mark McLoughlin)
+  * Fix issue where menu wouldn't fully reload after lots of
+          file change events (Mark McLoughlin, Frederic Crozat)
+  * Remove some unused code (Kjartan Maraas)
+  * Fix incorrect escaping of C format string (The Written Word)
+  * Update translations
+
+-------------------------------------------------------------------
+Tue May  2 15:53:33 CEST 2006 - sbrabec@suse.cz
+
+- Moved system language settings from Personal to System (#171526).
+
+-------------------------------------------------------------------
+Wed Apr 19 19:13:54 CEST 2006 - sreeves@suse.de
+
+- Fix for 152999 - Add "yast2 lan" to CC
+  Fix for 152681 - Add "yast2 modem" and "yast2 dsl" to CC
+
+-------------------------------------------------------------------
+Wed Mar 29 01:56:37 CEST 2006 - sreeves@suse.de
+
+- Look for new X-SuSE-ControlCenter-* category in preferences.menu
+
+-------------------------------------------------------------------
+Tue Feb 21 18:00:41 CET 2006 - sbrabec@suse.cz
+
+- Added infrastructure to allow translation of control center
+  labels (144946#c12).
+
+-------------------------------------------------------------------
+Sun Feb  5 15:01:19 CET 2006 - aj@suse.de
+
+- Cleanup Requires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec 17 01:48:01 CET 2005 - sreeves@suse.de
+
+- Add additional yast items into control-center as per the spec
+
+-------------------------------------------------------------------
+Mon Sep 26 22:12:37 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Fri Sep  9 21:29:11 CEST 2005 - jpr@suse.de
+
+- Revert patch for #113531
+
+-------------------------------------------------------------------
+Tue Sep  6 12:10:37 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.12.0.
+
+-------------------------------------------------------------------
+Wed Aug 31 20:55:43 CEST 2005 - clahey@suse.de
+
+- Switch from fam to gnome-vfs.  Thanks cutch.  Fixes bug #112846.
+
+-------------------------------------------------------------------
+Wed Aug 31 18:15:46 CEST 2005 - clahey@suse.de
+
+- Patch from Meeks.  Fixes bug #113531
+
+-------------------------------------------------------------------
+Tue Aug 23 18:03:35 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Thu Aug 18 23:52:31 CEST 2005 - clahey@suse.de
+
+- Add patch to get rid of Applications->Applications.
+
+-------------------------------------------------------------------
+Tue Aug 16 15:55:49 CEST 2005 - sbrabec@suse.cz
+
+- Do not require kdebase3.
+
+-------------------------------------------------------------------
+Tue Aug  2 19:09:59 CEST 2005 - gekker@suse.de
+
+- Update to 2.11.90
+
+-------------------------------------------------------------------
+Fri Jun 17 18:12:03 CEST 2005 - gekker@suse.de
+
+- Update to 2.11.1.1
+
+-------------------------------------------------------------------
+Mon Mar 14 01:23:10 CET 2005 - clahey@suse.de
+
+- Add hack to hide menus items with X-SuSE-Unimportant.
+
+-------------------------------------------------------------------
+Sat Mar 12 21:16:39 CET 2005 - clahey@suse.de
+
+- Don't merge in default merge dirs in preferences.gnome.menu.
+  Fixes 72148.
+
+-------------------------------------------------------------------
+Wed Mar  9 23:40:48 CET 2005 - clahey@suse.de
+
+- Replace the first section of Desktop menu with gnomecc and YaST.
+
+-------------------------------------------------------------------
+Wed Mar  9 20:41:17 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10).
+
+-------------------------------------------------------------------
+Tue Mar  8 20:51:24 CET 2005 - clahey@suse.de
+
+- Replaced individual patches with a backport of the fixes in
+  gnome-menus 2.10.1.
+
+-------------------------------------------------------------------
+Fri Mar  4 20:07:23 CET 2005 - clahey@suse.de
+
+- Add patches from gnome cvs for gnome bugs 168444 and 168445.
+
+-------------------------------------------------------------------
+Thu Mar  3 19:12:50 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.92
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Thu Feb 24 23:51:17 CET 2005 - clahey@suse.de
+
+- Include the gnome preferences hidden in our preferences so that
+  they won't appear in OnlyUnallocated <All/>.
+
+-------------------------------------------------------------------
+Mon Feb 21 17:36:29 CET 2005 - gekker@suse.de
+
+- Add patch for menus showing up twice in some cases (167758 b.g.o)
+
+-------------------------------------------------------------------
+Wed Feb 16 22:31:09 CET 2005 - gekker@suse.de
+
+- Fix control-center2 to show it's capplets (50904).
+
+-------------------------------------------------------------------
+Sun Feb  6 01:01:18 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.90
+
+-------------------------------------------------------------------
+Fri Feb  4 00:21:00 CET 2005 - clahey@suse.de
+
+- Updated preferences.menu to be more correct.
+
+-------------------------------------------------------------------
+Mon Jan 24 10:00:48 CET 2005 - clahey@suse.de
+
+- Added applications.menu.
+
+-------------------------------------------------------------------
+Fri Jan 21 16:14:42 CET 2005 - gekker@suse.de
+
+- Adding package gnome-menus to distro
+- Initial version 2.9.4
+
+

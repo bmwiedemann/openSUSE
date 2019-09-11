@@ -1,0 +1,824 @@
+-------------------------------------------------------------------
+Thu Mar 14 07:15:15 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0:
+  - Fix warnings with latest GCC versions
+  - More strictly filter out non-ISO images in ovirt menu
+  - Require libgovirt >= 0.3.3
+  - Require librest >= 0.8
+  - Support UNIX and TLS URI schemes for spice
+  - Fix full screen monitor placement under wayland
+  - Fix command line encoding on Windows
+  - Ensure VM name is set in window title
+  - Support unix-path in .vv files
+  - Support text console windows via VTE
+  - Add machine power control menu options
+  - Record full build env in MSI installer 
+
+- update virtview-desktop.patch
+
+-------------------------------------------------------------------
+Fri Jul 27 14:54:11 MDT 2018 - carnold@suse.com
+
+- Update to virt-viewer version 7.0
+  virt-viewer-7.0.tar.gz
+  - Require spice-gtk >= 0.35
+  - Clarify error message when no running VM is found
+  - Improve check for libgovirt requirements
+  - Support "-" as a URI for input connection file
+  - Remove support for spice controller interface
+  - Misc man page fixes
+  - Lookup win32 translations relative to install dir
+  - Position connect window in center not top-left
+  - Misc fixes for ovirt foreign menu support
+- Drop
+  140cb84c-remote-viewer-remove--spice-controller.patch
+  bf39970a-virt-viewer.spec.in-fix-build-after-spice-xpi-client-removal.patch
+  virtview-fix-configure-after-spice-controller-removal.patch
+
+-------------------------------------------------------------------
+Thu Jul  5 13:05:52 MDT 2018 - carnold@suse.com
+
+- bsc#1100300 - virt-viewer: Build fails because spice-gtk no
+  longer has the spice-controller library
+  140cb84c-remote-viewer-remove--spice-controller.patch
+  bf39970a-virt-viewer.spec.in-fix-build-after-spice-xpi-client-removal.patch
+  virtview-fix-configure-after-spice-controller-removal.patch
+
+-------------------------------------------------------------------
+Tue Aug 15 09:14:21 MDT 2017 - carnold@suse.com
+
+- Update to virt-viewer version 6.0
+  virt-viewer-6.0.tar.bz2
+  - Mention use of ssh-agent in man page
+  - Display connection issue warnings in main window
+  - Switch to GTask API
+  - Add support changing CD ISO with oVirt foreign menu
+  - Update various outdated links in README
+  - Avoid printing password in debug logs
+  - Pass hostname to authentication dialog
+  - Fix example URLs in man page
+  - Add args to virt-viewer to specify whether to resolve VM based on ID, UUID or name
+  - Fix misc runtime warnings
+  - Improve support for extracting listening info from XML
+  - Enable connecting to SPICE over UNIX socket
+  - Fix warnings with newer GCCs
+  - Allow controlling zoom level with keypad
+  - Don’t close app during seemless migration
+  - Don’t show toolbar in kiosk mode
+  - Re-show auth dialog in kiosk mode
+  - Don’t show error when cancelling auth
+  - Change default screenshot name to ‘Screenshot.png’
+  - Report errors when saving screenshot
+  - Fix build with latest glib-mkenums
+- Dropped
+  reverse-3d5627d7-for-xen.patch
+
+-------------------------------------------------------------------
+Wed Jan 18 10:44:50 MST 2017 - carnold@suse.com
+
+- bsc#976796 - Drop duplicate icon entry in desktop file
+  virtview-desktop.patch
+
+-------------------------------------------------------------------
+Mon Nov 28 10:22:47 MST 2016 - carnold@suse.com
+
+- Update to virt-viewer version 5.0
+  virt-viewer-5.0.tar.bz2
+  - Don’t retry authentication when credentials are provided via vvfile
+  - Fix display of guest name in title for VNC
+  - Fix detection of domain stop when tunnelling over SSH
+  - Fix problem resizing with GTK client side decorations
+  - Fix leak on file transfer
+  - Only include native spec file in dist to fix rpmbuild -ta
+  - Check min required spice-glib version
+  - Display errors to user if failing to open UNIX socket
+  - Simplify file transfer UI to only display overall progress, rather than full list of files
+  - Show list of files which failed to transfer
+- Dropped
+  35e489d5-fix-display-of-guest-name-in-title-for-vnc.patch
+  813c775c-fix-filename-leak-on-transfer-dialog.patch
+  a62827d2-close-when-seeing-domain-stop-event.patch
+
+-------------------------------------------------------------------
+Fri Aug 19 12:48:53 MDT 2016 - carnold@suse.com
+
+- bsc#983689 - virt-viewer shows Domain-0 on list of virtual
+  machines
+  virtview-dont-show-Domain-0.patch
+- Upstream bug fix
+  813c775c-fix-filename-leak-on-transfer-dialog.patch
+
+-------------------------------------------------------------------
+Fri Jul 22 13:41:25 UTC 2016 - jengelh@inai.de
+
+- Use source URL
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Thu Jul 14 19:46:34 MDT 2016 - carnold@suse.com
+
+- bsc#988858 - SLES12-SP2-Beta4 - virt-viewer throws Gtk-WARNING
+  even with --quiet switch
+- Update to virt-viewer version 4.0
+  virt-viewer-4.0.tar.bz2
+  35e489d5-fix-display-of-guest-name-in-title-for-vnc.patch
+  a62827d2-close-when-seeing-domain-stop-event.patch
+  - Drop support for gtk2 builds
+  - Require spice-gtk >= 0.31
+  - Require glib2 >= 2.38
+  - Require gtk3 >= 3.10
+  - Require libvirt-glib >= 0.1.8
+  - Increase minimum window size fo 320×200 instead of 50×50
+  - Remove use of GSLice
+  - Don’t show usbredir button if not connected yet
+  - Only compute monitor mapping in full screen
+  - Don’t ignore usb-filter in spiec vv-file
+  - Port to use GtkApplication API
+  - Don’t leave window open after connection failure
+  - Validate symbols from max glib/gdk versions
+  - Don’t use GtkStock
+  - Don’t use gtk_widget-modify_{fg,bg} APIs
+  - Drop use of built-in eventloop in favour of libvirt-glib
+  - Don’t open X display while parsing command line
+  - Fix window title
+  - Use GResource for building ui files into binary
+  - Fix crash with invalid spice monitor mapping
+  - Add dialog to show file transfer progress and allow cancelling
+  - Remove unused nsis installer support
+  - Include adwaita icon theme in msi builds
+  - Add more menu mnemonics
+  - Fix support for windows consoles to allow I/O redirection
+  - Add support for ovirt sso-token in vv-file
+  - Fix crash with zooming window while not connected
+  - Remove custom auto drawer widget with GtkRevealer
+  - Add appdata file for gnome software
+  - Misc other bug fixes
+  - Refresh translations
+- Dropped
+  fix-crash-on-zoom-change.patch
+  windows-keycombo.patch
+  netware-keycombo.patch 
+
+-------------------------------------------------------------------
+Wed Jun  8 15:51:14 MDT 2016 - carnold@suse.com
+
+- bsc#982793 - virt-viewer installation create unusable launcher
+  virtview-desktop.patch
+
+-------------------------------------------------------------------
+Mon Jun  6 16:45:23 MDT 2016 - carnold@suse.com
+
+- bsc#979735 - Virt-viewer: Changing zoom on disconnected machine
+  crashes application
+  fix-crash-on-zoom-change.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 07:36:32 UTC 2016 - ohering@suse.de
+
+- Require at least glib2 >= 2.26 in pre-SLE12 builds
+
+-------------------------------------------------------------------
+Mon Jan 11 08:51:09 MST 2016 - carnold@suse.com
+
+- Update to virt-viewer version 3.1
+  virt-viewer-3.1.tar.bz2
+  - Last release to support GTK2 for Linux. The next 4.0 release
+    will be GTK3 only
+  - Don’t add URI scheme / path info to oVirt URIs
+  - Require spice-gtk >= 0.30
+  - Enable webdav folder sharing with spice
+  - Add preferences UI dialog
+  - Take –direct into account when checking if guest is reachable
+  - Take SPICE proxy into account when connecting to oVirt
+    instances
+  - Fail gracefully when hostname is not returned by oVirt
+  - Don’t show empty foreign menu on secondary displays
+  - Avoid accidentally trying to connect to port 0 when oVirt
+    doesn’t specify a port number
+  - Correctly update geometry when enabling/disabling display heads
+  - Avoid accidentally creating extra monitors when using
+    configuration file monitor mapping
+  - Exit normally when cancelling connect dialog
+  - Don’t wait for a guest that we know will never show up
+  - Fix crash when using –reconnect with SPICE
+  - Avoid zooming out if it would decrease window size below
+    minimum required for top menu display
+  - Fix crash when disabling last enabled display
+  - Honour changes in display position from guest
+  - Don’t show error dialog twice for unknown graphics type
+  - Allow to cancel oVirt auth without error
+  - Set sensitivity of display menu based on whether it is usable
+    or not
+  - Set sensitivity of tool bar buttons based on whether they are
+    usable or not
+  - Set guest name reported by VNC
+  - Fix crash when using gtk-vnc 0.3.8
+  - Fix alt-tab behaviour in choose VM dialog
+  - Don’t allow missing display in monitor mapping config
+  - Add –with-osid flag to configure to allow specifying the
+    operating system build target. The values should be based on
+    libosinfo OS short IDs.
+  - Ensure windows installer places menu icon for all users not
+    just admin. Requires manual uninstall of previous windows
+    version
+  - Require address in remote viewer connect dialog
+  - Automatically retry VNC connection after auth failure
+  - Drop GTK2 support for Windows builds
+  - Enable keepalives on libvirt conncetion
+  - Allow resize of window to arbitrary size
+  - Fix thread safety handling event callbacks
+  - Avoid deprecation warnings with newer glib
+  - Pulled in multiple fixes for event loop from libvirt-glib
+  - Fix misc bugs reported by coverity
+  - Fix binary ID in MSI installer
+  - Stop polling libvirt after reconnecting to libvirt
+- Drop old tarball
+  virt-viewer-3.0.tar.bz2
+
+-------------------------------------------------------------------
+Fri Dec 11 15:57:31 MST 2015 - carnold@suse.com
+
+- Update to virt-viewer version 3.0
+  virt-viewer-3.0.tar.bz2
+  - Last release to support GTK2 for Linux. The next 4.0 release
+    will be GTK3 only
+  - Don’t add URI scheme / path info to oVirt URIs
+  - Require spice-gtk >= 0.30
+  - Enable webdav folder sharing with spice
+  - Add preferences UI dialog
+  - Take –direct into account when checking if guest is reachable
+  - Take SPICE proxy into account when connecting to oVirt
+    instances
+  - Fail gracefully when hostname is not returned by oVirt
+  - Don’t show empty foreign menu on secondary displays
+  - Avoid accidentally trying to connect to port 0 when oVirt
+    doesn’t specify a port number
+  - Correctly update geometry when enabling/disabling display heads
+  - Avoid accidentally creating extra monitors when using
+    configuration file monitor mapping
+  - Exit normally when cancelling connect dialog
+  - Don’t wait for a guest that we know will never show up
+  - Fix crash when using –reconnect with SPICE
+  - Avoid zooming out if it would decrease window size below
+    minimum required for top menu display
+  - Fix crash when disabling last enabled display
+  - Honour changes in display position from guest
+  - Don’t show error dialog twice for unknown graphics type
+  - Allow to cancel oVirt auth without error
+  - Set sensitivity of display menu based on whether it is usable
+    or not
+  - Set sensitivity of tool bar buttons based on whether they are
+    usable or not
+  - Set guest name reported by VNC
+  - Fix crash when using gtk-vnc 0.3.8
+  - Fix alt-tab behaviour in choose VM dialog
+  - Don’t allow missing display in monitor mapping config
+  - Add –with-osid flag to configure to allow specifying the
+    operating system build target. The values should be based on
+    libosinfo OS short IDs.
+  - Ensure windows installer places menu icon for all users not
+    just admin. Requires manual uninstall of previous windows
+    version
+  - Require address in remote viewer connect dialog
+  - Automatically retry VNC connection after auth failure
+  - Drop GTK2 support for Windows builds
+  - Enable keepalives on libvirt conncetion
+  - Allow resize of window to arbitrary size
+  - Fix thread safety handling event callbacks
+  - Avoid deprecation warnings with newer glib
+  - Pulled in multiple fixes for event loop from libvirt-glib
+  - Fix misc bugs reported by coverity
+  - Fix binary ID in MSI installer
+  - Stop polling libvirt after reconnecting to libvirt
+
+-------------------------------------------------------------------
+Mon Sep 21 15:06:17 MDT 2015 - carnold@suse.com
+
+- bsc#946816 - virt-viewer: version 2.0 can't connect to Xen VMs
+  reverse-3d5627d7-for-xen.patch
+
+-------------------------------------------------------------------
+Mon Jan 12 11:40:08 MST 2015 - carnold@suse.com
+
+- Update to virt-viewer version 2.0
+  virt-viewer-2.0.tar.bz2
+  - Fix handling of zoom in/out accelerators
+  - Fix warning going in/out of fullscreen
+  - Add dialog showing info about the current guest
+  - Change format of fullscreen config setting to
+    allow for sparse guest displays
+  - Write VM name to config file as a comment
+  - Never use fallback CA certs when loading vv-file
+  - Remove extraneous '/' from oVirt URIs
+  - Support oVirt foreign menus
+  - Allow using numapad for zoom in/out accelerators
+  - Force geometry update when agent connects
+  - Fix misc crash bugs
+  - Fix misc memory leaks
+  - Allow viewing of password entry characters
+  - Don't fail when auth dialog is cancelled
+  - Only create extra windows on demand
+  - Use more sensible default window size
+  - Improve docs for URIs and config files
+  - Allow cancellation of SPICE auth dialog
+  - Use new libvirt API for --attach to avoid SELinux AVC
+  - Allow removable of CD images with oVirt connections
+  - Show VM choose dialog when oVirt VM name is missing
+  - Support usernames request with SASL auth
+  - Use socat instead of nc if available
+  - Use PNG instead of SVG for icons
+  - Support connection to UNIX sockets instead of TCP
+  - Honour zoom level from CLI args with VNC
+  - Switch to GTK3 instead of GKT2 for Windows builds
+  - Ensure dialogs have transient parent set
+  - Switch to gstreamer 1.0 instead of 0.10 for Windows builds
+  - Avoid accidentally connecting to localhost with VNC/SPICE
+  - Use a versioned install directory for Windows builds
+- Dropped sources
+  virt-viewer-1.0.tar.bz2
+  report-error.patch
+
+-------------------------------------------------------------------
+Tue Jul 22 14:55:52 MDT 2014 - carnold@suse.com
+
+- Update to virt-viewer version 1.0
+  virt-viewer-1.0.tar.bz2
+  - Switched to 2-digit version numbering.
+  - Improve error reporting when failing to find
+    the GtkBuilder UI files
+  - Honour title provided by SPICE server if available
+  - Don't hide main window when disconnecting in multi-monitor
+    configurations
+  - Don't show VNC widget until authentication has completed
+  - Fix session handling when re-authenticating
+  - Improve docs for --attach flag
+  - Ask for credentials for SPICE proxy
+  - Fix scaling of windows when resizing
+  - Remove 'Automatically resize' menu, leaving the behaviour
+    permanently enabled
+  - Improve USB icon in full screen toolbar
+  - Don't resize guest when changing zoom level
+  - Don't create windows at startup if kiosk mode isn't enabled
+  - Don't show quit confirmation dialog in kiosk mode
+  - Misc typos / fixes in man pages
+  - Fix race with metacity window manager in fullscreen mode
+  - Avoid accidentally connecting to localhost with --direct flag
+  - Use custom log handler to silence debug messages on old glib2
+  - Fix tiny windows for secondary displays with gtk2 build
+  - Take zoom into account when checkign display limits
+  - Fix unshrinkable displays with windows guests
+  - Allow  ctrl-[+-] to zoom in fullscreen mode 
+- Dropped upstream patches and old tarball
+  virt-viewer-0.6.0.tar.bz2
+  52fa6455-display-warning-if-UI-file-fails.patch
+  52fce019-dont-free-session-if-auth-retry.patch
+  52fce019-dont-hide-main-window-when-disconnecting.patch
+  530b1cfc-german-translation-send-key-fix.patch
+  530b66e9-spice-ask-credentials-for-proxy.patch
+  53209ab7-fix-scaling-of-window-upon-resize.patch
+  53219d1a-silence-message-about-missing-config-file.patch
+  5322b75b-dont-show-quit-dialog-in-kiosk-mode.patch
+  5322b929-fix-building-with-older-spice-gtk.patch
+  538df41a-set-freed-variables-to-null.patch
+  5396d3dd-dont-connect-to-localhost-when-using-direct.patch
+  53970bee-remove-warning-when-removing-display.patch
+  53975d94-fix-tiny-windows-for-secondary-displays-in-gtk2-build.patch
+  5398b944-take-zoom-level-into-account-for-display-limits.patch
+  5398b971-fix-tiny-window-when-resetting-zoom-factor-in-gtk2-build.patch
+  53a8716d-fix-un-shrinkable-displays-on-windows-guests.patch
+
+-------------------------------------------------------------------
+Mon Jul  7 09:44:35 MDT 2014 - carnold@suse.com
+
+- Drop spice-gtk.patch.  It was only needed for systems with
+  spice-gtk version < 0.22
+
+-------------------------------------------------------------------
+Fri Jul  4 14:54:32 CEST 2014 - aginies@suse.com
+
+- fix build: remove spice_uuid_to_string definition no more needed with
+  the new spice-gtk
+
+-------------------------------------------------------------------
+Tue Jul  1 13:12:17 MDT 2014 - carnold@suse.com
+
+- Upstream bug fixes
+  53970bee-remove-warning-when-removing-display.patch
+  53975d94-fix-tiny-windows-for-secondary-displays-in-gtk2-build.patch
+  5398b944-take-zoom-level-into-account-for-display-limits.patch
+  5398b971-fix-tiny-window-when-resetting-zoom-factor-in-gtk2-build.patch
+  53a8716d-fix-un-shrinkable-displays-on-windows-guests.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 16:19:17 UTC 2014 - fcrozat@suse.com
+
+- Switch build to gtk3 for SLE12 and openSUSE 13.2.
+- Update windows-keycombo.patch and netware-keycombo.patch to build
+  with GTK 3.
+
+-------------------------------------------------------------------
+Tue Jun 10 10:50:17 MDT 2014 - carnold@suse.com
+
+- Upstream bug fix
+  5396d3dd-dont-connect-to-localhost-when-using-direct.patch 
+
+-------------------------------------------------------------------
+Wed Jun  4 09:02:02 MDT 2014 - carnold@suse.com
+
+- Upstream bug fix
+  538df41a-set-freed-variables-to-null.patch 
+
+-------------------------------------------------------------------
+Tue Mar 25 15:21:59 MDT 2014 - carnold@suse.com
+
+- Drop patch as it causes initial viewer size problems
+  52fce019-set-VNC-display-ready-after-VNC-initialized.patch
+
+-------------------------------------------------------------------
+Fri Mar 14 12:52:40 MDT 2014 - carnold@suse.com
+
+- Upstream bug fixes
+  530b66e9-spice-ask-credentials-for-proxy.patch
+  53209ab7-fix-scaling-of-window-upon-resize.patch
+  53219d1a-silence-message-about-missing-config-file.patch
+  5322b75b-dont-show-quit-dialog-in-kiosk-mode.patch
+  5322b929-fix-building-with-older-spice-gtk.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 08:29:31 MST 2014 - carnold@suse.com
+
+- Upstream bug fixes
+  52fa6455-display-warning-if-UI-file-fails.patch
+  52fce019-dont-free-session-if-auth-retry.patch
+  52fce019-dont-hide-main-window-when-disconnecting.patch
+  52fce019-set-VNC-display-ready-after-VNC-initialized.patch
+  530b1cfc-german-translation-send-key-fix.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 11:24:06 MDT 2014 - carnold@suse.com
+
+- Update to virt-viewer version 0.6.0
+  * Require govirt 0.3.0
+  * Require spice-gtk 0.22
+  * Show error dialog if password is wrong
+  * Document application/x-virt-viewer file format
+  * Remove unused ‘-d’ option from remote-viewer
+  * Add a kiosk mode
+  * Add menu for sending Ctrl+Alt+Delete
+  * Add Ctrl+Alt+End as accelerator for Ctrl+Alt+Delete
+  * Send modifiers before the non-modifier key in send key menu
+  * Fix GTK warning when disconnecting from VNC due to auth error
+  * Make ‘Cancel’ default button in exit dialog
+  * Make send key menu accelerators work in fullscreen
+  * Remove insecure fetching of oVirt CA cert
+  * Build for GTK 3 by default
+  * Fix title bar after failed connection
+  * Reshow remote-viewer connection dialog upon error
+  * Hide all windows upon disconnect
+  * Add ability to define custom monitor mapping
+  * Ensure all windows obey command line zoom level
+  * Add an icon to the desktop file
+  * Fix event loop implementation on Win32 platforms
+  * Misc other bug fixes
+- Allow the use of spice-gtk version 0.21. Drop patch when 0.22
+  becomes available.
+  spice-gtk.patch
+- Renamed netcat.diff to netcat.patch
+
+-------------------------------------------------------------------
+Wed Aug 14 11:00:06 MDT 2013 - carnold@suse.com
+
+- Enable spice support 
+
+-------------------------------------------------------------------
+Wed Jul 31 15:27:53 MDT 2013 - carnold@suse.com
+
+- Update to virt-viewer version 0.5.7
+  * Many fixes to full screen / window positioning handling
+  * Reshow connect dialog if connection fails
+  * Misc man page fixes
+  * Mark RPM as obsoleting spice-client
+  * Set the host subject to fix SSL connections with ovirt
+  * Use -H as short variant of –hotkeys
+  * Add missing trailing ‘;’ in desktop file
+  * Allow TLS only SPICE connections
+  * Use dynamic key send menu
+  * Enable smartcard shortcuts only when smartcard reader is present
+  * Misc other bug fixes
+- Drop glade-keycombo.patch
+
+-------------------------------------------------------------------
+Mon Jun 10 12:41:41 MDT 2013 - carnold@suse.com
+
+- Update to virt-viewer version 0.5.6
+  * Add ovirt:// support to remote-viewer (needs libgovirt)
+  * Many fullscreen and multi-monitor fixes
+  * Add a minimum version check in connection file
+  * Fix sending key combinations from “Send Key” menu when the key
+    names are localized
+  * Fix build with older glib and gtk+
+  * Fix MSI x64 build
+  * Clean-ups (remove browser plugin entirely)
+
+-------------------------------------------------------------------
+Tue Mar  5 14:05:20 MST 2013 - carnold@suse.com
+
+- Update to virt-viewer version 0.5.5
+  * Improve screenshot saving dialog
+  * remote-viewer learned to connect with a file of mime type
+    application/x-virt-viewer, described in src/virt-viewer-file.c
+  * Add a "do not ask me again" dialog checkbox when leaving
+  * Add a MSI target, using https://live.gnome.org/msitools
+  * Add windows debug helper, useful in Spice controller running
+    context
+  * Add remote-viewer --title STRING
+  * Support for Spice proxy settings added
+  * Numerous Spice display and multi-monitor fixes
+  * win32, memory, build, and other misc fixes
+  * Requires spice-gtk >= 0.16.26
+
+-------------------------------------------------------------------
+Wed Jan  2 14:12:13 MST 2013 - carnold@novell.com
+
+- Enable virt-viewer to be built for s390x
+
+-------------------------------------------------------------------
+Thu Dec  6 13:41:22 MST 2012 - carnold@novell.com
+
+- Upstream bug fix
+  virtview-git-transport-segv.patch 
+
+-------------------------------------------------------------------
+Mon Nov 12 17:24:52 MST 2012 - carnold@novell.com
+
+- Upstream bug fixes
+  virtview-git-ipv6-check.patch
+  virtview-git-resize-window.patch
+  virtview-git-spice-rounding.patch
+  virtview-git-spice-resize-window.patch
+  virtview-git-ssh-localhost-connect.patch 
+
+-------------------------------------------------------------------
+Mon Sep 17 10:45:01 MDT 2012 - carnold@novell.com
+
+- Update to virt-viewer version 0.5.4
+  * Fix host migration with Spice
+  * Fix misc memory leaks
+  * Fix build with newer glibc and -O0
+  * Improve automatic fullscreen Spice configuration
+  * Avoid crash when quiting application
+  * Rebuild display menu whenever a window is added/removed
+  * Number displays starting from 1 instead of 0
+  * Add support for handling multiple monitors with Spice
+  * Menu display menu insensitive if no displays can be selected
+  * Use real binary name in remote-viewer help message
+  * Document -f=auto-conf in remote-viewer help
+
+-------------------------------------------------------------------
+Tue Aug 14 14:09:18 UTC 2012 - chris@computersalat.de
+
+- fix build for SLE_11
+  * rework virtview-desktop patch
+
+-------------------------------------------------------------------
+Thu May 17 15:10:50 MDT 2012 - carnold@novell.com
+
+- Update to virt-viewer version 0.5.3
+  * Add support for raw IPv6 addresses
+  * Add a remote-viewer.desktop file and register spice:// handling
+  * Add a simple connection dialog to remote-viewer
+  * Add remote-viewer --fullscreen=auto-conf option, to update guest monitors configuration to match client
+  * Spice controller support for disable-effects, color-depth and usbredir
+  * Spice controller interaction fixes
+  * Windows version and nsis installer improvements
+  * Import newer translations from transifex
+  * Misc reference leak / crash bugs fixed
+
+-------------------------------------------------------------------
+Tue Apr 24 10:54:33 MDT 2012 - carnold@novell.com
+
+- Fix failure of viewer to close when guest is terminated 
+  virtview-git-vnc-close.patch
+- Additional upstream fix
+  virtview-git-uri-crash.patch
+
+-------------------------------------------------------------------
+Wed Mar 21 13:10:29 MDT 2012 - carnold@novell.com
+
+- Update to virt-viewer version 0.5.2
+  * Require libvirt > 0.9.7, spice-gtk > 0.11, spice-protocol >= 0.10.1
+  * Import newer translations from transifex
+  * remote-viewer learned Spice controller customizable key bindings, smartcard property, and foreign menu
+  * Fix Spice crash on re-connection
+  * Fix connecting via ssh to a password-protected server
+  * Add a sendkey menu in fullscreen mode
+  * Add USB device selection in fullscreen mode
+  * Misc reference leak / crash bugs fixed
+
+-------------------------------------------------------------------
+Fri Feb  3 05:58:49 MST 2012 - carnold@novell.com
+
+- Update to virt-viewer version 0.4.2
+  * Fix exports of signal functions for GTK UI builder on Windows
+  * Avoid crash if xmlParseURI fails
+  * Fix inverted test for SSH port that broke tunnelling
+  * Don't hardcode port numbers for SSH if not requested by user
+  * Fix deadlock in event handling
+  * Fix initial zoom level for all windows
+  * Fix window title to include domain name
+  * Fix hostname used when XML gives a wildcard IP address
+  * Fix window title when waiting for domain to appear
+  * Fix key shortcust for F9-F12 menus
+  * Always ask libvirt for its canonical URI
+  * Allow build without GTK-VNC (ie spice only)
+  * Require GTK-VNC >= 0.4.3
+  * Require SPICE-GTK >= 0.6.0
+
+-------------------------------------------------------------------
+Fri Jan  6 16:26:14 MST 2012 - carnold@novell.com
+
+- Fix failure to resize viewer.  Noted usually when tunneling via ssh 
+  virtview-git-emit-resize.patch
+
+-------------------------------------------------------------------
+Fri Dec  2 15:59:11 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Nov 21 16:22:57 MST 2011 - carnold@novell.com
+
+- Always use canonical URI from libvirt connection 
+  virtview-git-canonical-uri.patch
+
+-------------------------------------------------------------------
+Tue Oct 18 08:36:43 MDT 2011 - carnold@novell.com
+
+- Upstream bug fixes
+  virtview-git-fn-key.patch
+  virtview-git-window-wait.patch 
+
+-------------------------------------------------------------------
+Mon Sep 26 11:50:07 MDT 2011 - carnold@novell.com
+
+- Update to virt-viewer version 0.4.1
+  + Remove bogus use of AM_GLIB_GNU_GETTEXT macro to try to facilitate BSD builds
+  + Support multiple monitors with SPICE and QXL drivers
+  + Don't hardcode SSH port to 22 when tunnelling
+  + Require SPICE-GTK >= 0.6
+  + Hide menu bar when going fullscreen
+  + Support building against GTK2 or GTK3
+  + Convert from Glade to GtkBuilder
+  + Honour 'listen' attribute from <graphics> XML when connecting
+  + Fix reconnection after authentication failure
+  + Make --verbose flag actually do something
+  + Enable scaling with SPICE to match VNC behaviour
+  + Rewrite widget resizing code to (try to) be more reliable
+  + Fill extra space outside guest display with black
+  + Fix (null) in title bar while not connected
+  + Fix multiple memory leaks
+  + Fix reconnecting to display with SPICE
+
+-------------------------------------------------------------------
+Thu Jul 28 12:42:52 MDT 2011 - carnold@novell.com
+
+- Fixed error "Using GTK+ 2.x and GTK+ 3 in the same process is 
+  not supported"
+
+-------------------------------------------------------------------
+Tue Jul 12 11:19:11 MDT 2011 - carnold@novell.com
+
+- Fixed spec file rpmlint warnings for language files.
+- Patch cleanup and re-enabled vnc-listen.patch 
+
+-------------------------------------------------------------------
+Mon Jul 11 10:04:06 MDT 2011 - carnold@novell.com
+
+- Fix re-connect after authentication failure 
+  virtview-reconnect-fix.patch
+
+-------------------------------------------------------------------
+Tue Jul  5 13:29:51 MDT 2011 - carnold@novell.com
+
+- Fix "directories not owned by a package:" warnings. 
+
+-------------------------------------------------------------------
+Thu May 12 10:10:07 MDT 2011 - carnold@novell.com
+
+- Fix spec file for building with gtk-vnc 2.0 
+
+-------------------------------------------------------------------
+Mon Apr  4 14:15:27 MDT 2011 - carnold@novell.com
+
+- Update to virt-viewer version 0.3.1 
+  + Add support for Spice
+  + Add support for spice resize-guest
+  + Add support for zoom levels
+  + Add a menu for zooming in/out of the virtual desktop.
+  + Add a --zoom command line to set the initial zoom level.
+  + Support connections over UNIX sockets
+
+-------------------------------------------------------------------
+Fri Aug 27 01:07:40 CEST 2010 - ro@suse.de
+
+- change buildreq to libpixman-1-0-devel 
+
+-------------------------------------------------------------------
+Thu Apr 29 15:20:54 MDT 2010 - carnold@novell.com
+
+- Update to virt-viewer 0.2.1 
+  + Bug fixes
+  + Translations
+
+-------------------------------------------------------------------
+Thu Feb 11 11:55:51 MST 2010 - carnold@novell.com
+
+- bnc#574591 - There is no prompt if I view a inexist guest OS 
+  using virt-viewer 
+  report-error.patch
+
+-------------------------------------------------------------------
+Fri Dec  4 06:53:43 MST 2009 - carnold@novell.com
+
+- Fixed the 'Send Key' menu with all the missing keys for netware and 
+  windows.
+  glade-keycombo.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 15:24:20 MST 2009 - carnold@novell.com
+
+- bnc#553633 - Update breaks menu access keys in virt-viewer and
+  still misses some key sequences.
+  This is a SLE10 bug fixed for SLE11.
+
+-------------------------------------------------------------------
+Thu Jul 30 20:12:15 MDT 2009 - carnold@novell.com
+
+- Update to virt-viewer version 0.2.0 
+  + Switch UI over to use Glade
+  + Support graphical dialog for VNC and libvirt authentication
+  + Resize window to match VNC desktop size where possible
+  + Scale down VNC desktop if it cannot fit in host desktop space
+  + Allow user to resize window to arbitrary size, scaling VNC
+  + Fix blocking of accelerators
+  + Allow automatic reconnect to a VM via --reconnect
+  + Use libvirt events to detect when VM changes state
+  + Wait for VM to appear if it does not exist
+  + Fix plugin build with newer xulrunner
+  + Port & build for Mingw32 target
+
+-------------------------------------------------------------------
+Tue Jul 28 09:35:16 MDT 2009 - carnold@novell.com
+
+- bnc#522740 - SLES10SP3 Xen - Unable to install Netware OES2
+  6.5SP8 VM
+
+-------------------------------------------------------------------
+Tue Jun 16 13:38:28 MDT 2009 - carnold@novell.com
+
+- bnc#448474 - Patch to enable keys that sends a NetWare server to
+  the debugger.
+  netware-keycombo.patch 
+
+-------------------------------------------------------------------
+Fri May  8 08:25:15 MDT 2009 - carnold@novell.com
+
+- bnc#499560 - Viirt-viewer needs ability to crash dump Windows VMs
+  with Ctrl+Scroll+Scroll 
+  windows-keycombo.patch
+
+-------------------------------------------------------------------
+Mon Mar  9 09:57:00 MDT 2009 - jfehlig@novell.com
+
+- Connect viewer to vnc-listen address specified in domain
+  configuration (bnc#436629)
+  vnc-listen.patch
+
+-------------------------------------------------------------------
+Fri Nov  7 10:46:46 MST 2008 - dpmerrill@novell.com
+
+- Changed lib from nc to netcat for ssh connections (bnc#397633)
+
+-------------------------------------------------------------------
+Sat Sep 13 20:10:16 CEST 2008 - carnold@suse.de
+
+- Update to version 0.0.3 
+- This release addresses a number of minor bugs. It will block 
+  accelerators when keyboard grab is active. Password characters 
+  are hidden in text entry field. The domain name is used in the 
+  title bar. The guest console can be resized using smooth 
+  hardware accelerated scaling. An experimental firefox plugin was 
+  added that can be used to access a console from a web browser. 
+
+-------------------------------------------------------------------
+Tue Aug 19 14:12:14 CEST 2008 - ro@suse.de
+
+- add exclusivearch for x86 and x86_64 (as buildrequired libvirt)
+
+-------------------------------------------------------------------
+Sat Jan 19 15:51:30 MST 2008 - dpmerrill@novell.com
+
+- Added new virt-viewer package to sle10-sp2-i386
+- (FATE Feature #302140)
+

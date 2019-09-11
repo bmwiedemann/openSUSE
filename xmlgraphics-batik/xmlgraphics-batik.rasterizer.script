@@ -1,0 +1,36 @@
+#!/bin/sh
+# 
+# Batik SVG Rasterizer script
+# JPackage Project <http://www.jpackage.org/>
+
+# Source functions library
+if [ -f /usr/share/java-utils/java-functions ] ; then 
+  . /usr/share/java-utils/java-functions
+else
+  echo "Can't find functions library, aborting"
+  exit 1
+fi
+
+# Source system prefs
+if [ -f /etc/xmlgraphics-batik-rasterizer.conf ] ; then 
+  . /etc/xmlgraphics-batik-rasterizer.conf
+fi
+
+# Source user prefs
+if [ -f $HOME/.xmlgraphics-batik-rasterizerrc ] ; then 
+  . $HOME/.xmlgraphics-batik-rasterizerrc
+fi
+
+# Configuration
+MAIN_CLASS=org.apache.batik.apps.rasterizer.Main
+BASE_JARS="xmlgraphics-batik/rasterizer xmlgraphics-batik/util xmlgraphics-batik/transcoder xmlgraphics-batik/parser"
+BASE_FLAGS="-Djava.security.policy=/etc/xmlgraphics-batik/rasterizer.policy"
+
+# Set parameters
+set_jvm
+set_classpath $BASE_JARS
+set_flags $BASE_FLAGS
+set_options $BASE_OPTIONS
+
+# Let's start
+run "$@"

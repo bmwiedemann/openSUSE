@@ -1,0 +1,728 @@
+-------------------------------------------------------------------
+Sun Apr  7 12:37:40 UTC 2019 - plater <davejplater@gmail.com>
+
+- Require specific version of wxsvg that DVDStyler was built
+  against as first stage for fixing boo#1131765
+
+-------------------------------------------------------------------
+Wed Feb 13 23:20:24 UTC 2019 - bjorn.lie@gmail.com
+
+- Add DVDStyler-fix-build-ffmpeg4.patch: Fix build with ffmpeg v4.
+  Following this, no longer enforce ffmpeg3 versions of
+  pkgconfig(libav*).
+
+-------------------------------------------------------------------
+Fri May 18 20:37:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(libgnomeui-2.0) BuildRequires, using libgnomeui is
+  not mandatory.
+- Drop conditional wxWidgets-3_0-devel BuildRequires, no current
+  openSUSE release provides it.
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Mon Mar 26 18:21:44 UTC 2018 - jengelh@inai.de
+
+- Replace require on cdrtools (virtual package) by mkisofs.
+- Trim filler wording from main description.
+  Update feature list for grammar.
+
+-------------------------------------------------------------------
+Wed Jan 31 13:03:45 UTC 2018 - davejplater@gmail.com
+
+- Update to 3.0.4
+- Add gpl-3.0.txt due to src/dvdvmy.h: GPL (v3 or later)
+- Upstream changes:
+  *fixed handling of files with multiple video streams (pictures,
+  video thumbnails or cover arts).
+  *added possibility to play video from internal file browser.
+
+-------------------------------------------------------------------
+Sat Nov 18 20:00:21 UTC 2017 - aloisio@gmx.com
+
+- Spec cleanup
+- Create separate -lang package
+
+-------------------------------------------------------------------
+Fri Jan  6 06:51:58 UTC 2017 - davejplater@gmail.com
+
+- Required dvdisaster again.
+
+-------------------------------------------------------------------
+Tue Jan  3 04:30:44 UTC 2017 - davejplater@gmail.com
+
+- Update to 3.0.3
+- Upstream changes:
+  * disabled copy option for non-MPEG2 video streams
+  * added parameter "-pix_fmt yuv420p" to transcoder
+  * fixed displaying first video frame in frame button
+  * changed transcoding caching to allow put multiple equal video
+    files on DVD (e.g. with different cut points)
+  * added support of EXIF metadata in slideshow
+  * added CBR option for menu and slideshow enoding settings
+    (disabled by default)
+  * added Bulgarian translation (thanks to Ivan Dobrev)
+  * win32/win64: updated Manolito's VBR plug-in
+
+-------------------------------------------------------------------
+Wed Sep  7 17:56:43 UTC 2016 - davejplater@gmail.com
+
+- Update to release 3.0.2
+- Fixes DVDStyler Bugs/#630 and #633
+- Removed string-conversion-fix-wxwidgets3.patch now incorporated
+  in the tarball.
+- Upstream changes:
+  Version 3.0.2 <2016-08-21>
+  * improved handling of process messages
+  * updated Manolito's VBR plug-in and enabled by default
+  * changed encoding of menu and slideshow to use constant bitrate
+  * fixed using of transcoding cache after restarting of DVDStyler
+  Version 3.0.1 <2016-07-27>
+  * fixed using of transcoding cache after restarting of DVDStyler
+  * included Manolito's VBR plug-in
+
+-------------------------------------------------------------------
+Fri Jul 22 06:58:55 UTC 2016 - davejplater@gmail.com
+
+- Update to release 3.0
+- Upstream changes:
+  * added support of animations
+  * added validation of menu cell actions
+  * added option "keep aspect ratio" for image in frame
+  * added option "add chapter at title end"
+  * added option to downmix audio to stereo
+  * fixed setting of chapters if video is cut
+  * fixed fade in/out if video is cut
+  * fixed applying of audio filters if mplex is used
+  * added support of MPC-HC
+  * audio normalization: added clipping protection
+  * interlaced encoding: added -alternate_scan parameter
+  * added clear cache button in settings dialog
+  * added Manolito's VBR plug-in
+  * added scrollbar to video object box in title properties
+  * added support of metadata (chapter and audio/subtitle language names)
+  * added possibility to force display subtitles (but it doesn't work in VLC)
+  * added menu templates "Heart" and "MothersDay" (thanks to Gerd Altmann for the images)
+  * fixed some bugs
+
+-------------------------------------------------------------------
+Sun Jun 26 16:24:19 UTC 2016 - davejplater@gmail.com
+
+- Update to 3.0.0.rc2, used version 2.9.9.pre3.
+- Now builds with ffmpeg 3x
+- Other upstream changes:
+  Version 3.0 rc 2 <2016-06-23>
+  * updated Manolito's VBR plug-in
+  * fixed some bugs
+  Version 3.0 rc 1 <2016-06-05>
+  * added possibility to animate numeric and color object
+    attributes
+  * audio normalization: added clipping protection
+  * interlaced encoding: added -alternate_scan parameter
+  * added menu templates "Heart" and "MothersDay" (thanks to Gerd
+    Altmann for the images)
+  Version 3.0 beta 3 <2016-05-12>
+  * added clear cache button in settings dialog
+  * added initial support of Manolito's VBR plug-in
+  * added scrollbar to video object box in title properties
+  * fixed some bugs
+  Version 3.0 beta 2 <2016-05-08>
+  * added support of metadata (chapter and audio/subtitle language
+    names)
+  * added possibility to specify multiply values for animation
+  * added possibility to force display subtitles (but it doesn't
+    work in VLC)
+  * fixed some bugs
+  * updated ffmpeg to version 3.0.1
+  Version 3.0 beta 1 <2016-04-14>
+  * added support of animations
+  * added validation of menu cell actions
+  * added option "keep aspect ratio" for image in frame
+  * added option "add chapter at title end"
+  * added option to downmix audio to stereo
+  * fixed setting of chapters if video is cut
+  * fixed fade in/out if video is cut
+  * fixed applying of audio filters if mplex is used
+  * added support of MPC-HC
+  * updated ffmpeg to version 3.0
+  Version 2.9.6 <2016-01-05>
+  * audio properties: allow negative dB values
+  * disabled "Frame data under-runs detected" error message (mplex)
+  * added menu template "Camera" (thanks to Republica for the image)
+  * added menu template "Fireworks" (thanks to Katyalazy0 for the
+    image)
+
+-------------------------------------------------------------------
+Sun Jun 26 13:59:34 UTC 2016 - davejplater@gmail.com
+
+- Added --enable-debug flag to build.
+
+-------------------------------------------------------------------
+Sat Apr  2 17:29:34 UTC 2016 - davejplater@gmail.com
+
+- Make DVDStyler build against ffmpeg-2.8 libraries.
+
+-------------------------------------------------------------------
+Sun Dec 20 11:56:58 UTC 2015 - davejplater@gmail.com
+
+- Update to version 2.9.5 and fixed Runtime requirements.
+- Build against mkisofs from cdrtools, the default for openSUSE
+- Upstream changes:
+  * button parameters: added possibility to specify multiple svg
+    elements
+  * disabled mplex for menus with still images without audio
+  * updated some translations
+
+- Version 2.9.4 <2015-10-03>
+  * added option to turn off computer when burning is finished.
+  * fixed option "remember last button"
+  * added support of SMPTE time codes in chapter dialog
+  * fixed audio time offset (enabled only for separate streams)
+  * fixed some slideshow transitions
+  * new default frame count for still NTSC menu to 15 (=GOP size)
+  * forcing key frames at chapter marks if video is reencoded
+  * fixed option "remember last button"
+  * fixed playing the NTSC video inside the frame 
+  * added displaying of the chapter end time if auto is selected
+
+- Version 2.9.3 <2015-08-02>
+  * added option to enable reencoding of ntsc film (24 fps)
+  * disabled reencoding of ntsc film (24 fps) by default
+  * fixed some bugs 
+  * updated ffmpeg to version 2.7.1
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for some BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar 10 17:41:42 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.9.2 <2015-02-17>
+  * fixed muxrate
+- version 2.9.1 <2015-02-15>
+  * added +genpts muxing flag to improved compatibility on some dvd players (thanks to Manolito)
+  * updated some translations
+- version 2.9 <2015-02-07>
+  * added selection of player for preview
+  * added possibility to normalize audio (replay gain)
+  * added ability to choose 5.1 audio and normalizing as default in the settings
+  * added possibility to select border or crop to keep aspect ratio
+  * added possibility to set default subtitle properties
+  * added possibility to keep and use cached files after restarting of DVDStyler
+  * redesigned the menu properties dialog
+  * joined chapter and cell properties dialogs
+  * enabled reencoding of ntsc film (24 fps) by default
+  * fixed displaying of video bitrate if video don't need be transcoded
+  * fixed memory leak (thanks to Sebastian Vater)
+  * win32: updated ffmpeg to version 2.5
+
+-------------------------------------------------------------------
+Sat Nov 15 16:58:19 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.8:
+  * added possibility to rotate objects and buttons
+  * added possibility to play all titlesets
+  * fixed call last menu command
+  * fixed multithreaded encoding
+  * fixed some other bugs
+- Add string-conversion-fix-wxwidgets3.patch: fix compilation with wxWidgets-3.0 
+  by using wxT_2 compatibility macro.
+
+-------------------------------------------------------------------
+Sat May 24 14:14:39 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.7.2:
+  * fixed some small bugs
+
+-------------------------------------------------------------------
+Sat May 24 14:14:10 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.7.1:
+  * fixed title selection menu
+  * fixed burning from command line
+
+-------------------------------------------------------------------
+Sat May 24 14:12:31 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.7:
+  * better support of multiple titlesets
+  * added a possibility to add a chapter selection menu
+  * added the rectangle selection tool
+  * added possibility to align multiple buttons to left/right/top/bottom
+  * added slide properties dialog
+  * added a possibility to select a titleset to import from DVD
+  * changed to use mplex tool for menu multiplexing
+
+-------------------------------------------------------------------
+Thu Nov 21 12:02:34 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.6:
+  * added slideshow transitions
+  * loop slideshow audio
+  * added support of ffmpeg audio filters (see https://ffmpeg.org/ffmpeg-filters.html)
+  * added possibility to specify output directory
+  * added command line options "temp", "iso" and "device"
+  * added displaying of progress by loading files
+  * added printing of the title size information in log
+  * fixed upmix to 5.1
+  * fixed calculation of borders for keeping aspect ratio
+
+-------------------------------------------------------------------
+Thu Sep  5 16:06:06 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.5.2:
+  * fixed loading of projects with video buttons
+  * added log file
+
+-------------------------------------------------------------------
+Fri Jul 26 17:09:35 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.5:
+  * redesigned chapters and cell properties dialogs
+  * added frame spin controls
+  * added disc capacity "CD 700MB"
+  * added possibility to justify text left/right
+  * added support of video files without audio streams
+  * added support of SMPTE time codes in chapter list
+  * added possibility to set "default chapter length" to 0 to disable
+    creation of chapters
+  * fixed rendering of video buttons
+  * fixed displaying of start and recording time
+  * updated ffmpeg to version 1.2
+  * added Spanish translation
+  * added Hungarian translation of DVDStyler Guide
+
+-------------------------------------------------------------------
+Tue Apr  9 18:39:04 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.4.3:
+  * fixed rendering of video buttons
+  * fixed initialization of auto-execute flag
+  * added Spanish translation
+
+-------------------------------------------------------------------
+Fri Mar 22 13:06:12 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.4.2:
+  * fixed transcoding of video files that contain first audio then
+    video stream
+  * added check if video fit on DVD without re-encoding
+
+-------------------------------------------------------------------
+Mon Feb 25 21:49:48 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.4.1 (changes since 2.3.5):
+  * added some new templates
+  * added frame 45° button and object
+  * added ellipse 45° button and object
+  * frame object: added possibility to display image
+  * fixed some of templates: pause of menu is set to -1
+  * fixed handling of subtitle streams
+  * added possibility to set subtitle opacity
+  * added support of auto execute buttons
+  * added 'none' naviagtion option for buttons
+  * added shortcut Ctrl-A to select all menu objects
+  * added audio bitrate to DVD properties
+  * added "keep aspect ratio" setting to default video format configuration
+  * changed type of image opacity values from decimal to percent
+  * fixed calculation of DVD size if start/end time is set
+- Drop DVDStyler-fix_rmdir_in_doc_building.patch and
+  DVDStyler-add_missing_shlibs_to_linker.patch: fixed upstream
+
+-------------------------------------------------------------------
+Fri Dec 28 16:33:05 UTC 2012 - fisiu@opensuse.org
+
+- Update to 2.3.5 (changes since 2.1):
+  * added new menu templates: Christmas, Winter and SnowField
+  * fixed calculation of DVD size if start/end time is set
+  * added Finnish translation (thanks to Matti Leppälä) 
+  * added Portuguese translation of DVDStyler Guide (thanks to João Frade)
+  * updated libav to snapshot 2012-12-25
+  * fixed generation of menu with video background
+  * fixed aspect ratio of slideshow images
+  * fixed generation of menu with audio
+  * updated some translations
+  * fixed transcoding of titles with multiple audio files
+  * fixed warning "button y coordinates are odd"
+  * added bell after finishing a burn
+  * added Romanian translation (thanks to Dan Ibanescu)
+  * updated libav to snapshot 2012-10-13
+  * added possibility to import titles from DVD (VIDEO_TS directory)
+  * added possibility to rearrange the order of VOBs in a title
+  * added possibility to upmix stereo to 5.1
+  * added support of PCM audio format
+  * added possibility to select default title post command
+  * changed behavior of "do not remultiplex"-check box and format choices
+  * fixed default menu navigation
+  * fixed setting of NTSC video format
+  * fixed selecting of video frame from title with multiple video files
+  * fixed setting of audio bitrate
+  * added support of libav 0.9 / ffmpeg 0.11 and changed to use avconv tool to transcode
+  * added Brazilian Portuguese translation of DVDStyler Guide (thanks to Paulo Henrique Araujo)
+  * added support of video buttons
+  * added video frame selection dialog
+  * added ellipse button with image/video frame
+  * added shadow to some of buttons
+  * added menu template "ocean"
+  * fixed action error validation if no menus exist
+  * fixed default menu navigation
+  * added check of overlapping buttons
+  * fixed generation of DVD without menus
+  * added possibility to set audio time offset
+  * added support of libav (thanks to Fabrice Coutadeur)
+  * added support of wxWidgets 2.9.3
+  * added Catalan translation (thanks to Rafael Ferran i Peralta)
+  * added Uzbek translation (thanks to Umidjon Almasov)
+  * added Turkish translation (thanks to Dursun Cemal)
+
+-------------------------------------------------------------------
+Sun Apr 22 09:53:50 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.1:
+  * added support of SVG images
+  * added support of SVG blur filter
+  * added new button: shadow frame
+  * added 5 new backgrounds
+  * fixed displaying of multiple spaces
+  * fixed multiplexing the subtitles
+  * fixed support of multi-core processors
+  * updated ffmpeg to version 0.8.7
+
+-------------------------------------------------------------------
+Fri Nov 27 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.0.1>
+
+  * updated some translations
+
+-------------------------------------------------------------------
+Tue Oct 25 05:41:43 UTC 2011 - pascal.bleser@opensuse.org
+
+- add fixes and workarounds:
+  * DVDStyler-add_missing_shlibs_to_linker.patch
+  * DVDStyler-fix_rmdir_in_doc_building.patch
+
+-------------------------------------------------------------------
+Mon Oct 24 23:47:16 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.0:
+  * added full support of video background
+  * added using of anti-aliasing for buttons
+  * added storing of custom colours in the colour selection dialog
+  * added support of multiline buttons
+  * added possibility to change order of titles and menus per drag and drop
+  * added possibility to select multiply menu objects
+  * added option to keep aspect ratio of background image/video
+  * added audio properties dialog
+  * added possibility to change audio volume
+  * added saving of ISO file name in the project file
+  * added new menu template
+  * added background "penguin"
+  * added support of Avisynth
+  * updated ffmpeg to version 0.8.3
+
+- dropped ffmpeg patch, 2.0 now builds fine against latest ffmpeg
+
+-------------------------------------------------------------------
+Tue Aug 30 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.8.4.3>
+
+-------------------------------------------------------------------
+Sun Jul 31 00:00:00 UTC 2011 - Manfred.Tremmel@iiv.de
+
+  * updated ffmpeg patch, used work of DVDStyler 1.9.0b1
+
+-------------------------------------------------------------------
+Sat Jun 13 00:00:00 UTC 2011 - Manfred.Tremmel@iiv.de
+
+  * included a patch to work with new ffmpeg abi
+
+-------------------------------------------------------------------
+Tue Mar 05 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <1.8.3>
+
+  * added option to keep aspect ratio of video
+  * added possibility to cut video
+  * added possibility to select fill, outline and shadow color of subtitles
+  * added possibility to add/remove single images in slideshow
+  * added support of NTSC film.
+  * updated dvdauthor to version 0.7.0..
+
+-------------------------------------------------------------------
+Sun Feb 20 00:00:00 UTC 2011 - detlef@links2linux.de
+
+  * updated some translations
+
+-------------------------------------------------------------------
+Sat Dec 25 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.2>
+  * fixed rendering of menu (considering aspect ratio)
+  * added generation of up to 3 subpicture streams for widescreen menus
+    (widescreen, letterbox, panscan)
+  * fixed rendering of video frame
+  * added auto duplication of title selection menu
+  * added menu option "remember last selected button"
+  * added detection of default video format at first start
+  * added setting for interlaced video
+  * added possibility to specify video border and cropping
+  * added support of stream- and cell-tag in dvdstyler project file
+  * changed to not use mplex by default.
+  * fixed command line bug
+  * fixed validation of disc label in welcome dialog
+  * fixed validation of custom actions
+  * added validation of chapters
+  * added setting "Accept invalid actions"
+  * fixed initialization of cache
+  * fixed bug 2919588 (displays error message if user try to create more than
+    12 buttons)
+  * fixed bug 2963754 (save play all)
+  * fixed bug 2995164 (Infernal loop)
+  * fixed bug 3062442 (frame button misbehavior)
+  * updated dvdauthor to version 0.6.18
+  * updated ffmpeg to version 0.6
+  * added support of Mac OS X
+
+-------------------------------------------------------------------
+Mon Jun 28 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.1>
+  * added possibility to change subtitle options
+  * added support of VCD and half D1 resolutions
+  * added validation of custom actions
+  * some other small changes
+
+-------------------------------------------------------------------
+Tue May 11 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0.3>
+  * updated some translations
+
+-------------------------------------------------------------------
+Wed Mar 17 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0.2>
+  * fixed some bugs
+  * updated some translations
+
+-------------------------------------------------------------------
+Thu Feb 18 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0.1>
+  * significantly enhanced performance of video encoding under Windows
+  * fixed crash when deleting all menus
+  * updated some translations
+
+-------------------------------------------------------------------
+Wed Feb 10 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- fix Makefile.am/in to install templates
+
+-------------------------------------------------------------------
+Wed Feb  3 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0>
+
+-------------------------------------------------------------------
+Sat Jan 30 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0rc3>
+  * fixed some bugs
+  * fixed multiplexing of multiple subtitles
+  * added check if button coordinates are valid
+  * added Norwegian translation (thanks to Olav Inge)
+  * added Japanese translation (thanks to OKANO Takayoshi)
+
+-------------------------------------------------------------------
+Sun Jan 17 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0rc1>
+  * added undo/redo
+  * added menu item "Add file as chapter"
+  * added possibility to drag-and-drop from TitlesetManager to MenuEditor
+  * thumbnails: fixed font size and size of images
+  * added support of ini-file under MS-Windows
+  * added creation of file associations in windows installer
+
+-------------------------------------------------------------------
+Sat Jan  2 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.8.0b3>
+
+-------------------------------------------------------------------
+Mon Nov 23 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.4_3>
+
+-------------------------------------------------------------------
+Tue Oct 20 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.4_1>
+  * added three new buttons: text with circle, text with square and underlined text
+  * button actions: added possibility to select audio and subtitle tracks
+  * added possibility to set languages for audio streams
+  * jumppad is disabled by default
+  * added some warning messages
+  * some other small changes
+  * Windows: updated dvd+rw-tools to version 7.1, ffmpeg to 19793-snapshot
+
+-------------------------------------------------------------------
+Tue Aug 18 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.3 final>
+  * added welcome dialog
+  * redesigned title properties dialog: added possibility to add/remove single audio and subtitle files
+  * added possibility to set default button
+  * added caching of transcoded files
+  * saves relative path in project file
+  * added check if there is enough space on temporary directory
+  * added setting of DVD reserved space
+  * added support of multi-core processors
+  * updated for new ffmpeg library (v0.5)
+  * update guide
+  * some other small changes
+  * added Vietnamese translation (thanks to Phan Anh)
+  * added Tradition Chinese translation (thanks to Chung-Yu Hsu)
+
+-------------------------------------------------------------------
+Wed Jul 22 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.3b4>
+
+-------------------------------------------------------------------
+Sat Mar  7 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.2>
+  * fixed multiplexing of NTSC subtitles (thanks to Jean-Luc Bedwani)
+  * added Macedonian translation (thanks to Damjan Dimitrioski)
+
+-------------------------------------------------------------------
+Sat Feb 21 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.1b5>
+  * added setting of aspect ratio
+  * added setting of disc capacity and bitrate
+  * added displaying of fill status
+  * added displaying of free space
+  * added support of multiplexing using mplex tool
+  * updated for new ffmpeg library
+  * added help
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.1b4_1>
+  * added support of multiplexing using mplex tool
+
+-------------------------------------------------------------------
+Sat Jan  3 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <1.7.1b3>
+  * fixed setting of bitrate
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.7.1b2>
+  * added setting of aspect ratio
+  * added setting of disc capacity
+  * updated for new ffmpeg library
+
+-------------------------------------------------------------------
+Fri Oct  3 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- use find_lang
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- new upstream version <1.7.0>
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.2>
+
+-------------------------------------------------------------------
+Sat Apr  5 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- rebuild with new wxsvg
+
+-------------------------------------------------------------------
+Wed Apr  2 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- change to wxWidgets
+
+-------------------------------------------------------------------
+Tue Apr  1 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.2b1>
+
+-------------------------------------------------------------------
+Mon Mar 17 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.1_2>
+
+-------------------------------------------------------------------
+Thu Mar  6 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.1_1>
+
+-------------------------------------------------------------------
+Tue Feb 26 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.1b2_2>
+
+-------------------------------------------------------------------
+Wed Jan 23 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.0_3>
+
+-------------------------------------------------------------------
+Tue Jan  8 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.0_2>
+
+-------------------------------------------------------------------
+Fri Jan  4 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.6.0>
+
+-------------------------------------------------------------------
+Tue Nov  6 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.5.1_2>
+
+-------------------------------------------------------------------
+Tue Jul 31 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.5.1>
+
+-------------------------------------------------------------------
+Fri May 18 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.5-final>
+
+-------------------------------------------------------------------
+Fri Jan  5 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Feb 15 00:00:00 UTC 2005 - rainer@links2linux.de
+
+- added unicode
+
+-------------------------------------------------------------------
+Sat Nov 13 00:00:00 UTC 2004 - rainer@links2linux.de
+
+- first packman release
+

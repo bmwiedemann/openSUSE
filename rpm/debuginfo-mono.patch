@@ -1,0 +1,19 @@
+--- ./scripts/find-debuginfo.sh.orig	2017-12-01 15:40:27.006764372 +0000
++++ ./scripts/find-debuginfo.sh	2017-12-01 15:41:17.270619182 +0000
+@@ -348,6 +348,16 @@ while read nlinks inum f; do
+       ;;
+     *) continue ;;
+   esac
++  # double check that we really have an ELF file,
++  # to handle monodevelop-debugger-gdb and monodevelop-debugger-mdb
++  ftype=`/usr/bin/file $f | cut -d: -f2-`
++  case $ftype in
++    *ELF*) ;;
++    *)
++       echo "$f is not an ELF file, skipping"
++       continue
++       ;;
++  esac
+   if [ $nlinks -gt 1 ]; then
+     var=seen_$inum
+     if test -n "${!var}"; then

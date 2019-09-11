@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Apr 18 12:56:32 UTC 2018 - jengelh@inai.de
+
+- Update summaries
+
+-------------------------------------------------------------------
+Wed Apr 18 01:55:57 UTC 2018 - andy@onthewings.net
+
+- Remove old code in the spec file.
+- Install LICENSE with %license.
+
+-------------------------------------------------------------------
+Fri Dec 22 20:08:39 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 1.8.8:
+  * Fix installation.
+  * Safe-string compatible.
+  * Fix method get_edge_layout of class abstract_model of
+    DGraphModel.Make. The bug could have occured when there are
+    several edges between two vertices.
+  * [Traverse/Pack] added Dfs.fold and Dfs.fold_component
+    (tail-recursive).
+  * Fix implementation of Golberg-Tarjan maximal flow algorithm:
+    + No more function min_capacity in the input interface.
+    + Renaming as follows: Flow.Goldberg -> Flow.Goldberg_Tarjan
+      and Pack.goldberg -> Pack.goldberg_tarjan.
+  * New functors [WeakTopological] and [ChaoticIteration] to
+    compute fixpoints with widening, following Bourdoncle's
+    algorithms.
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Thu Jul 20 15:59:19 UTC 2017 - olaf@aepfle.de
+
+- Upgrade to version 1.8.7
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Sun Dec 25 18:44:19 UTC 2016 - antoine.belvire@opensuse.org
+
+- Initial package: ocaml-ocamlgrah-1.8.6
+

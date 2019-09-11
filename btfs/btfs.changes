@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sun Apr 14 16:27:17 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Modernize spec file
+- 2.19
+  * Add option to set data directory
+
+-------------------------------------------------------------------
+Mon Nov 27 14:19:04 UTC 2017 - 9@cirno.systems
+
+- 2.18
+  * Force DHT announce when bootstrap completes
+  * Don't set file priority to 0 at start
+  * Fix delete-on-unmount
+  * Remove unneeded debug prints
+  * Fix a potential null pointer deref
+  * Silence warning on libtorrent 1.2
+
+-------------------------------------------------------------------
+Mon Sep 11 05:08:25 UTC 2017 - 9@cirno.systems
+
+- 2.17
+  * Adjust to libtorrent 1.2 API changes
+    + Session flags changed type.
+    + Remove flags changed type.
+  * Silence warning about deprecated flags in libtorrent 1.2
+  * Tweak configure.ac
+  * Handle read_piece_alert errors
+    + Fixes segfault, upstream bug #42
+  * Set request timeout
+
+-------------------------------------------------------------------
+Wed Aug 23 17:09:41 UTC 2017 - 9@cirno.systems
+
+- 2.16
+  * Implement listxattr and getxattr
+  * Return IS_BTFS xattr on all files and directories
+  * Add btfsstat program
+
+-------------------------------------------------------------------
+Fri Aug  4 07:42:49 UTC 2017 - 9@cirno.systems
+
+- 2.15
+  * Adjust to libtorrent 1.2 API changes
+    + Alert notification categories changed type
+    + torrent_handle::status() parameter changed type
+  * Set correct block usage
+    (so tools like "du" report correct disk usage)
+  * Implement statfs callback
+    (so tools like "df" report torrent size and download progress)
+
+-------------------------------------------------------------------
+Thu Jul 27 00:02:32 UTC 2017 - 9@cirno.systems
+
+- 2.14
+  * Adjust to libtorrent API changes (add_dht_router deprecated)
+  * Make it build with libtorrent 1.2 (drops support for 0.16) 
+
+-------------------------------------------------------------------
+Sun Jun 18 07:25:09 UTC 2017 - 9@cirno.systems
+
+- Initial commit, 2.13

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Mon Apr 20 18:15:03 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 15 22:57:38 UTC 2013 - crrodriguez@opensuse.org
+
+- Also, update modaliases. 
+
+-------------------------------------------------------------------
+Sun Apr 14 20:40:56 UTC 2013 - crrodriguez@opensuse.org
+
+- Fix udev rules location and update them to use builtin 
+  module loading features.
+
+-------------------------------------------------------------------
+Sat Feb  2 23:00:15 UTC 2013 - crrodriguez@opensuse.org
+
+- Require modutils and not module-init-tools otherwise I cannot
+  switch to kmod..
+
+-------------------------------------------------------------------
+Mon Jun 11 08:30:36 UTC 2012 - rmilasan@suse.com
+
+- Drop {ignore_error} from the udev rule, its not supported anymore.
+
+-------------------------------------------------------------------
+Thu Dec  4 07:11:36 CET 2008 - coolo@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Wed Dec  3 15:04:10 CET 2008 - hare@suse.de
+
+- Move to use udev rules to avoid mkinitrd breakage
+  (bnc#449123)
+
+-------------------------------------------------------------------
+Thu Nov 20 11:00:16 CET 2008 - hare@suse.de
+
+- Update to use modprobe files (bnc#444815)
+- Update modalias definitions.
+
+-------------------------------------------------------------------
+Mon Nov 13 15:24:57 CET 2006 - hare@suse.de
+
+- Create hwcfg files based on the modalias provided by the
+  respective modules.
+
+-------------------------------------------------------------------
+Tue Oct 17 11:17:35 CET 2006 - hare@suse.de
+
+- Create files dynamically
+
+-------------------------------------------------------------------
+Tue Sep 12 15:00:00 PDT 2006 - Eric.Moore@lsil.com
+
+- Initial creation of this rpm (FATE 300676).
+

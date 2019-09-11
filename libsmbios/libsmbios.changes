@@ -1,0 +1,357 @@
+-------------------------------------------------------------------
+Wed Nov 21 13:49:06 UTC 2018 - Enno Gotthold <egotthold@suse.com>
+
+- Fixed build through adding a recrompress at buildtime and changing the
+  Source in the specfile. 
+
+-------------------------------------------------------------------
+Fri Nov 09 10:37:47 UTC 2018 - egotthold@suse.de 
+
+- Updated _service file to the modern obs_scm, so that the maintenance
+  is less time cosuming and the obs needs less space to store the sources.
+- Update to version 2.4.2:
+  * Fix misspelling in doc/getopt/README
+  * Fix bus errors with small memory files (Closes: #58)
+  * trivial: fix line endings
+  * Correct the location some headers are installed to (Closes: #50)
+  * Conditionalize build of man pages properly (Closes: #49)
+  * install include headers with make install (Closes: #47)
+  * Revert "Allow python34 or python36 to resolve the python3 requirements"
+  * Allow python34 or python36 to resolve the python3 requirements
+
+-------------------------------------------------------------------
+Fri May 18 07:45:07 UTC 2018 - tchvatal@suse.com
+
+- Make the lang_package installable by providing the symbol
+  required on the libname subpackage
+
+-------------------------------------------------------------------
+Mon May 14 08:17:09 UTC 2018 - tchvatal@suse.com
+
+- Add obsoletes for libsmbios2 to ease upgrading
+
+-------------------------------------------------------------------
+Thu Apr  5 11:50:10 UTC 2018 - tchvatal@suse.com
+
+- Adhere to the packaging guidelines
+  * As we build only against tumbleweed do not fuzz around with
+    supporting Fedora and Centos
+  * Use explicit filelists as it is way more readable
+  * Do not play around with %release as it behaves differently
+    compared to RH
+- Use package names as mandated by python packaging guidelines
+- Use full url to fetch tarball from github...
+- Do not mess with permission in %prep phase, the perms on
+  directories and files look correct both in tarball and github
+- Make build run parallel make and just configure/make without any
+  hassle
+- Do not mess with locale generating, it is properly created by make
+  already
+- Do not install buildlog on user systems, we have OBS for that
+- Install manpage with each binary, do not just put all mans in
+  python3 subpackage
+- Actually run tests rather than playing around with valgrind
+- Make sure to do -fPIE build
+
+-------------------------------------------------------------------
+Mon Mar 26 11:18:52 UTC 2018 - jengelh@inai.de
+
+- Update shared library packaging to meet guideline.
+- Use find's -exec + strategy.
+- Escape all % signs to %% where needed.
+
+-------------------------------------------------------------------
+Thu Mar 22 19:45:36 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 2.4.1:
+  * Minor fixes submitted for help2man improvements and a signed
+    comparison.
+  * Fix a crash when used by fwupd [boo#1086732]
+- Changes in 2.4.0:
+  * Convert all python2 -> python3.
+  * Drop libsmbios C++ library.
+  * Introduce support for WMI SMM API provided by Linux kernel
+    4.15+.
+  * Add proper support for SMBIOS 3.0 tables.
+  * Fix many many crashers.
+  * Clean up long standing coverity errors.
+
+-------------------------------------------------------------------
+Fri Feb 23 15:36:12 UTC 2018 - josef.moellers@suse.com
+
+- Package was ported to python3 by upstream, no functional changes,
+  no api changes.
+  [bsc#1076409]
+
+-------------------------------------------------------------------
+Fri Nov  3 05:06:47 UTC 2017 - bwiedemann@suse.com
+
+- Do not store build logs in the package to make the
+  package build result reproducible
+
+-------------------------------------------------------------------
+Mon Oct 30 11:33:14 UTC 2017 - josef.moellers@suse.com
+
+- Deleted unnecessary sections from SPEC file.
+
+-------------------------------------------------------------------
+Fri Sep 22 13:09:57 UTC 2017 - josef.moellers@suse.com
+
+- Update to version 2.3.3
+  Shipping and new DellEMC systems may use dell_rbu driver to
+  perform BIOS updates on the system.
+  [fate#322804]
+
+-------------------------------------------------------------------
+Thu Mar  2 14:08:43 UTC 2017 - fschnizlein@suse.com
+
+- Update to 2.3.2
+  * Drop rbu support
+  * Add smbios-battery script
+- Fetch source from GitHub
+- Remove obsolete patches:
+D libsmbios-2.2.28-fix-bashisms.patch since pkgheader.sh was
+  removed
+
+-------------------------------------------------------------------
+Wed Jul  6 16:31:44 UTC 2016 - trenn@suse.de
+
+- Update to latest version 2.3.0 supporting smbios 3.0
+- Remove old compatibility binaries
+
+-------------------------------------------------------------------
+Sun Nov 30 04:12:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pkgheader.sh script
+- add patches:
+  * libsmbios-2.2.28-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Tue May  8 12:56:48 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ or OSL-2.1
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Sun Jul  3 12:46:46 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.28:
+  * Add a couple placeholder files.
+  * Don't bail out on exceptions.
+  * Don't print out oem strings anymore, print out reseller (oem) id if it is
+    different from dell system id.
+  * Add public header interface for new oem system id function
+    sysinfo_get_dell_oem_system_id().
+  * Rework the system id functions to always return Dell system ID for
+    sysinfo_get_dell_system_id(), and add a new api to get the OEM ID.
+  * Add compiler support up to gcc 4.8.
+- Spec file updates:
+  * Removed the fix for GCC 4.6 (fixed upstream).
+  * Move %doc files from the library to the other packages.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Fri May 13 20:23:47 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.27:
+  * print out all the OEM strings in smbios-sys-info-lite output.
+  * fixup logic error in bayonette id detection which could potentially cause
+    segfault.
+  * Adding support to compile on solaris.
+  * update string extracts for spanish.
+  * Fix output of translated unicode strings.
+  * By default, python was trying to output all translated strings as ascii,
+    which breaks for unicode. Wrap sys.stdout with a streamwriter that outputs
+    unicode.
+  * add spanish translations.
+  * localize messages from import/export token dumps.
+  * add another exception case for missing header line.
+- Spec file updates:
+  * Removed Provides/Obsoletes for libsmbios-libs-0.13.12 in libsmbios2
+    (0.13.12 was released at 2007-11-02).
+  * Removed smbios-utils meta-package (not needed). Provides/Obsoletes for
+    libsmbios-bin and libsmbios-unsupported-bin moved to smbios-utils-python
+    and smbios-utils-bin respectively.
+  * Fix locales removal if suse_version is not set.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Tue May 10 02:55:25 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with GCC 4.6 
+
+-------------------------------------------------------------------
+Fri Mar 18 20:55:11 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.26:
+  * Lots of changes (see ChangeLog).
+- Spec file updates:
+  * Major changes in subpackages (based on the package spec file and Fedora
+    package):
+    + Replaced libsmbios-bin and libsmbios-unsupported-bin with
+      smbios-utils-bin and smbios-utils-python (added smbios-utils meta-package
+      to Obsolete+Provide them).
+    + Added python-smbios and yum-dellsysid subpackages.
+    + Removed static subpackage.
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Changed License: to GPLv2+ or OSL 2.1.
+  * Updates in Summary:, Url:, Group: and %description sections.
+  * Updates in Buildrequires:, Requires:, Obsoletes: and Provides: sections.
+  * Updates in %prep, %build and %install sections.
+  * Removed %define entries, other conditions, etc.
+  * Removed support for suse_version < 1100.
+  * Various other changes based on the package spec file.
+- Fixed rpmlint warning about "files-duplicate".
+- Removed the two patches (fixed upstream).
+
+-------------------------------------------------------------------
+Wed Oct 28 17:28:59 UTC 2009 - crrodriguez@opensuse.org
+
+- libsmbios-devel Requires libstdc++-devel 
+
+-------------------------------------------------------------------
+Mon Mar  2 17:15:14 CET 2009 - crrodriguez@suse.de
+
+- fix build with GCC 4.4 
+
+-------------------------------------------------------------------
+Fri Nov  7 11:44:16 CET 2008 - dkukawka@suse.de
+
+- fixed spec: 
+  - added Supplements: modalias(dmi:*:[bs]vnD[Ee][Ll][Ll]*:*) for
+    libsmbios2 and libsmbios-bin to fix bnc#440814
+
+-------------------------------------------------------------------
+Wed Aug 13 18:16:16 CEST 2008 - ro@suse.de
+
+- change ExcludeArch to ExclusiveArch 
+
+-------------------------------------------------------------------
+Tue Jul 29 09:45:25 CEST 2008 - coolo@suse.de
+
+- obsolete old name
+
+-------------------------------------------------------------------
+Mon Jul  7 20:19:32 CEST 2008 - dkukawka@suse.de
+
+- change naming of the lib package because of 'Shared Library 
+  Packaging Policy' and rpmlint
+- updated to latest version v2.0.2
+
+-------------------------------------------------------------------
+Mon Jun  2 17:53:10 CEST 2008 - dkukawka@suse.de
+
+- added: 'Supplements: modalias(dmi:*:[bs]vnD[Ee][Ll][Ll]*:*)'
+  to specfile to get the package installed on Dell machines
+  (fix for bnc#326765)
+
+-------------------------------------------------------------------
+Mon Mar 10 01:53:00 CET 2008 - crrodriguez@suse.de
+
+- dont buildrequire libxml, only libxml2 is used 
+
+-------------------------------------------------------------------
+Fri Mar  7 14:53:54 CET 2008 - dmueller@suse.de
+
+- fix documentation permissions
+
+-------------------------------------------------------------------
+Tue Jan  8 19:00:09 CET 2008 - dkukawka@suse.de
+
+- added new patch:
+  - libsmbios-fix-compiler_warning_cgcc.diff
+
+-------------------------------------------------------------------
+Sat Dec 29 10:04:52 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postun errors 
+
+-------------------------------------------------------------------
+Wed Dec 19 18:47:41 CET 2007 - dkukawka@suse.de
+
+- updated to new version 0.13.13
+
+-------------------------------------------------------------------
+Sun Nov  4 15:34:03 CET 2007 - dkukawka@suse.de
+
+- updated to new version 0.13.12:
+- removed upstream gone patch:
+  - libsmbios-fix-includes.diff
+- fixed spec-file: 
+  - binaries moved from /usr/bin to /usr/sbin
+
+-------------------------------------------------------------------
+Tue Oct 16 14:08:56 CEST 2007 - dkukawka@suse.de
+
+- updated to new version 0.13.10:
+  - Fix a couple of failure-to-check-return on fopen. most were 
+    unit-test code only, but two or three were in regular code.
+  - Add hinting to the memory class, so that it can intelligently 
+    close /dev/mem file handle when it is not needed (which is 
+    most of the time). it only leaves it open when it is scanning, 
+    so speed is not impacted.
+  - new upstream
+- added patches:
+  - libsmbios-fix-includes.diff: fix missing includes (needed to 
+    build in beta tree)
+
+-------------------------------------------------------------------
+Wed May  2 13:55:51 CEST 2007 - dkukawka@suse.de
+
+- updated to new version 0.13.6:
+  - critical bugfix to dellBiosUpdate utility to fix packet mode
+  - autoconf/automake support for automatically building docs
+  - more readable 'make' lines by splitting out env vars
+  - remove run_cppunit option... always run unit tests.
+  - update autoconf/automake utilities to latest version
+  - fix LDFLAGS to not overwrite user entered LDFLAGS
+  - add automatic doxygen build of docs
+  - fix urls of public repos
+  - remove yum repo page in favor of official page from docs
+  - split dmi table entry point from smbios table entry point
+  - support legacy _DMI_ tables
+  - fix support for EFI-based imacs without proper _SM_ anchor
+
+-------------------------------------------------------------------
+Mon Mar 26 14:56:54 CEST 2007 - dkukawka@suse.de
+
+- updated to new version 0.13.4 as requested by DELL maintainer 
+  - autotools conversion
+  - new util dellWirelessCtl to control builtin wireless on Dell 
+    laptops 
+
+-------------------------------------------------------------------
+Sun Mar  4 00:37:22 CET 2007 - dkukawka@suse.de
+
+- fixed spec file: removed 'rm -rf ${RPM_BUILD_ROOT}' from install
+  section
+- added ExcludeArch for ppc/ppc64 and s390/s390x
+
+-------------------------------------------------------------------
+Wed Feb 28 20:58:32 CET 2007 - dkukawka@suse.de
+
+- updated to new version 0.12.4:
+  * the package no longer provide bios_update_tools subpackage, 
+    since they are no longer part of the source
+
+-------------------------------------------------------------------
+Fri Feb 10 23:38:25 CET 2006 - bwise@suse.de
+
+- put description ib bios_update_check
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 01:19:29 CET 2006 - ro@suse.de
+
+- provide main package name in one subpackage
+  (needed for debuginfo since we do not have a main package here)
+
+-------------------------------------------------------------------
+Wed Jan 11 19:27:17 CET 2006 - bwhiteley@suse.de
+
+- first build
+

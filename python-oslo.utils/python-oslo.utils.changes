@@ -1,0 +1,524 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:23:34 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.40.3
+  - Update mailinglist from dev to discuss
+  - Fix docstring formatting nit in uuidsentinel
+  - Fix race condition in eventletutils Event
+  - Use template for lower-constraints
+  - Remove extra copy.deepcopy
+  - Fix exception raise at rpdb session
+  - Expose eventlet Event wrapper class
+  - add lib-forward-testing-python3 test job
+  - add python 3.7 unit test job
+  - Remove moxstubout usage
+  - Avoid calling eventlet.event.Event.reset()
+  - Avoid double-setting event
+  - Update reno for stable/rocky
+  - Support non-dict mappings in mask_dict_password
+  - Clean up .gitignore references to personal tools
+  - Update hacking version
+  - UUID sentinel
+  - add python 3.6 unit test job
+  - Don't use monotonic on Python >=3.3
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Mon Sep  3 09:00:25 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.36.4
+  - Update reno for stable/queens
+  - Switch to stestr
+  - Imported Translations from Zanata
+  - Add release notes link to README
+  - Replace 'assertFalse(a in b)' with 'assertNotIn(a, b)'
+  - Fix breaking unit tests due to iso8601 changes
+  - Capitalize Oslo
+  - Add private_key to the list of sanitized keys
+  - Fix exception with secretutils
+  - Clean imports in code
+  - Remove stale pip-missing-reqs tox test
+  - Update links in README
+  - Add bindep.txt file to prevent fallback to generic list
+  - Trivial: Update pypi url to new url
+  - Add -W for document build
+  - Handle non-string keys appropriately
+  - eventletutils: Fix behavior discrepency when reusing Events
+  - Clean old output before new doc builds
+  - Document specs_matcher.py functions
+  - set default python to python3
+  - fix tox python3 overrides
+  - Fix project name in user docs
+  - Remove sphinx settings from setup.cfg
+  - Updated from global requirements
+  - add lower-constraints job
+- remove 0001-Fix-breaking-unit-tests-due-to-iso8601-changes.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Feb 23 13:29:28 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Feb 13 13:36:50 UTC 2018 - dmueller@suse.com
+
+- add 0001-Fix-breaking-unit-tests-due-to-iso8601-changes.patch
+
+-------------------------------------------------------------------
+Tue Jan 30 15:15:15 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.35.0
+  - Add a mixed mode parser to string_to_bytes
+
+-------------------------------------------------------------------
+Mon Jan 15 12:01:36 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.34.0
+  - Follow the new PTI for document build
+  - Add method validate_integer
+  - improve docstring for last_bytes()
+  - Add method to escape ipv6 ip addresses
+  - Add missing information in docstring of validate_integer
+  - Add method last_bytes in fileutils
+  - Cleanup test-requirements
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Dec 13 16:29:00 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.32.0
+  - Fix some reST field lists in docstrings
+  - Remove setting of version/release from releasenotes
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+
+-------------------------------------------------------------------
+Fri Nov 24 22:59:23 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.31.0
+  - Update reno for stable/pike
+  - Imported Translations from Zanata
+  - Prevent deprecation error messages from pkg_resources
+  - Add method to compute a file's checksum to fileutils
+  - Use six.binary_type to point to the right type
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Aug  7 11:48:03 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.28.0
+  - rearrange existing documentation to fit the new standard layout
+  - Remove log translations
+  - Allow scoped ipv6 addresses
+  - Add missing documentation for secretutils
+  - [Fix gate]Update test requirement
+  - switch from oslosphinx to openstackdocstheme
+  - Update reno for stable/ocata
+  - Remove split conversion to tuple
+  - Adding a check of string type for hmacs
+  - Update URLs in documents according to document migration
+  - Updated from global requirements
+  - Use Sphinx 1.5 warning-is-error
+
+-------------------------------------------------------------------
+Fri Feb 10 14:18:13 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.22.0:
+  - Make method import_versioned_module work
+  - Add option to not truncate built-ins
+  - Add method is_valid_ipv6_cidr
+  - Add method is_valid_mac
+  - Show team and repo badges on README
+  - Extend specs matcher to support ">" and "<"
+  - Added the token 'encrypted_key' to mask_password list
+  - doc: Fix docstring of method bool_from_string
+  - Remove discover from test-requirements
+  - Remove references to Python 3.4
+  - Change assertTrue(isinstance()) by optimal assert
+  - Add __ne__ built-in function
+  - Restore <all-in> operator
+  - [TrivialFix] Replace 'assertEqual(None, ...)' with 'assertIsNone(...)'
+  - Trivial fixes to the usage doc
+  - Update homepage with developer documentation page
+  - Add missing specs_matcher documentation
+  - Allow 'get_all_class_names' to pass kwargs
+  - Improve eventlet check when selecting Event backend
+  - Add reno for release notes management
+  - Add Constraints support
+  - Add method is_valid_boolstr
+  - Add threading<->eventlet compatible Event
+  - Add utils for validating and splitting quotes
+  - Create dictutils and add 'flatten_dict_to_keypairs'
+  - Add toggle 'dashed' to 'generate_uuid' function
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Oct  5 17:05:10 UTC 2016 - tbechtold@suse.com
+
+- Adjust Requires and BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 15:33:07 UTC 2016 - dmueller@suse.com
+
+- update to 3.16.0:
+  * Fix mask_dict_password for non string/dict type key in dict
+  * More unit tests for specs matcher
+  * Imported Translations from Zanata
+  * Add Python 3.5 classifier and venv
+  * Use an actual well defined parser for spec matching
+  * Remove unused LOG to keep code clean
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Jul 11 14:19:51 UTC 2016 - tbechtold@suse.com
+
+- update 3.15.0:
+  * Add basic docstrings to stopwatch has_started/stopped methods
+  * Make mask_dict_password consistent with mask_password
+  * Updated from global requirements
+  * improve tests for mask_password and mask_dict_password
+  * Simplify boolean expression in executils.py
+
+-------------------------------------------------------------------
+Mon Jul  4 14:22:17 UTC 2016 - tbechtold@suse.com
+
+- update to 3.14.0:
+  * Support json format output from qemu command
+  * Fix flake8 issues
+  * Use is_valid_ipv4 in get_ipv6_addr_by_EUI64
+  * Imported Translations from Zanata
+  * Allow assigning "0" to port
+  * Updated from global requirements
+  * Fix method split_path's docstring 'versionadded'
+  * Updated from global requirements
+  * Updated from global requirements
+  * Avoid catching generic exception
+  * Remove method total_seconds in timeuitls
+  * Fix is_valid_cidr raises TypeError
+
+-------------------------------------------------------------------
+Fri Jun  3 07:08:06 UTC 2016 - tbechtold@suse.com
+
+- update to 3.11.0:
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Move method split_path into oslo.utils
+  * Imported Translations from Zanata
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Provide single step check if eventlet is monkey_patched
+  * Add method is_valid_cidr to netutils
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add importutils.import_any method
+  * Add excutils.exception_filter
+  * Explicitly exclude tests from bandit scan
+  * Add CHAPPASSWORD to list of sanitize keys
+  * Enable bandit in gate
+  * Updated from global requirements
+  * Add method check_string_length
+  * Add missing versionchanged for configdrive
+- use renderspec source service
+- update spec from upstream
+
+-------------------------------------------------------------------
+Thu Mar  3 07:35:09 UTC 2016 - tbechtold@suse.com
+
+- Switch to .spec from rpm-packaging upstream project
+
+-------------------------------------------------------------------
+Wed Feb 17 11:55:37 UTC 2016 - dmueller@suse.com
+
+- update to 3.6.0:
+  * remove bandit.conf
+
+-------------------------------------------------------------------
+Thu Feb 11 07:29:12 UTC 2016 - dmueller@suse.com
+
+- update to 3.5.0:
+  * Updated from global requirements
+  * Narrow mock for getfilesystemencoding
+  * Update translation setup
+  * Add excutils.save_and_reraise_exception force_reraise + capture
+  * Add encodeutils.to_utf8() function
+  * Create secretutils and include 'constant_time_compare' function
+  * Fix coverage
+  * Add a mechanism to mask passwords in dictionaries
+  * Add "configdrive" to the list of keys used by mask_password()
+  * fix fnmatch.filter in non-posix system
+  * fix fileutils ut code random failure
+  * Add missing doc index for imageutils and fnmatch
+  * re-implement thread safe fnmatch
+  * Fix the bug of can't get the desired image info
+
+-------------------------------------------------------------------
+Wed Dec 16 07:00:11 UTC 2015 - bwiedemann@suse.com
+
+- Update to version 3.2.0
+  * Remove Babel from requirements
+  * Remove duplicated profiles section from bandit.yaml
+  * Allow get_class_name to accept bound method and class method
+  * deprecate timeutils.total_seconds()
+  * Move imageutils from oslo-incubator to oslo.utils
+  * networkutils: drop python 2.6 support
+  * Remove python 2.6 classifier
+  * Fix wrong bug tracking link
+  * Refactor Port number validation
+  * Add useful 'time_it' decorator
+
+2.8.0
+-------------------------------------------------------------------
+Fri Nov 20 06:54:15 UTC 2015 - bwiedemann@suse.com
+
+- update to 2.8.0:
+  * Fix get_class_name() on Python 3
+  * Added ICMP 'type' and 'code' checking capability to 'netutils' module
+  * Imported Translations from Zanata
+  * comment in write_to_tempfile
+  * Use versionadded and versionchanged in doc
+  * Write document for each unit of oslo_utils.utils
+  * Fix usage of "deprecated" markup in docstrings
+  * Just use 'exception_to_unicode' to handle exception to string
+  * Add 'secret' to sensitive keys
+  * Fix coverage configuration and execution
+  * Use a stopwatch in 'forever_retry_uncaught_exceptions'
+  * No need for Oslo Incubator Sync
+  * Make forever_retry_uncaught_exceptions handle its own failures
+  * Ensure stopwatch __enter__, __exit__ are in docs
+  * Add some timeutils stop watch examples
+  * Imported Translations from Zanata
+  * Move 'history' -> release notes section
+  * Fix bad acting classes and 'is_bound_method' check
+  * Change ignore-errors to ignore_errors
+  * If 'bool_from_string' provided a boolean just return it
+  * Imported Translations from Zanata
+  * only capture the ImportError when importing
+  * Add 'token' to list of fields to be santized by mask_password
+
+-------------------------------------------------------------------
+Tue Sep 15 10:27:07 UTC 2015 - tbechtold@suse.com
+
+- update to 2.5.0:
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Sep  3 19:29:38 UTC 2015 - tbechtold@suse.com
+
+- update to 2.4.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * flake8 - remove unused rules
+  * Bump monotonic to 0.3 to remove exception catching on import
+  * Provide a common exception caused by base class
+  * Imported Translations from Transifex
+  * Allow access to reflection 'get_members'
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Jul 31 06:47:05 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file #2
+- Remove test requirements
+- Add -doc package
+
+-------------------------------------------------------------------
+Wed Jul 29 10:44:23 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file. Use fedora compatible files macros
+
+-------------------------------------------------------------------
+Tue Jul 28 12:16:47 UTC 2015 - tbechtold@suse.com
+
+- update to 2.1.0:
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Adding checking around the monotonic import
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add oslo.config to test requirements
+  * Remove oslo namespace package
+  * Updated from global requirements
+- update Requires according to requirements.txt
+- remove 0001-Disable-deprecation-warning.patch
+
+-------------------------------------------------------------------
+Mon Jul 20 11:57:59 UTC 2015 - dmueller@suse.com
+
+- fix requires
+
+-------------------------------------------------------------------
+Fri Jul 17 07:31:44 UTC 2015 - dmueller@suse.com
+
+- update to 1.9.0:
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Add write_to_tempfile back to fileutils
+  * Use monotonic library to avoid finding monotonic time function
+  * Fix exception_to_unicode() for oslo_i18n Message
+  * Add fileutils to oslo_utils
+  * Updated from global requirements
+  * Add tox target to find missing requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Switch badges from 'pypip.in' to 'shields.io'
+  * timeutils: fix newer/older comparison with TZ aware datetime
+  * Replace parse_strtime with parse_isotime in older/newer
+
+-------------------------------------------------------------------
+Mon Jun  8 14:10:16 UTC 2015 - tbechtold@suse.com
+
+- update to 1.6.0:
+  * Add pytz to requirements
+  * Imported Translations from Transifex
+  * timeutils: utcnow() can return a value with a timezone
+  * Add 'raise_with_cause' chaining helper to excutils
+  * timeutils: deprecate isotime()
+  * timeutils: make marshall timezone aware
+  * Advertise support for Python3.4 / Remove support for Python 3.3
+  * Updated from global requirements
+  * Add exception_to_unicode() function
+  * Remove run_cross_tests.sh
+  * Imported Translations from Transifex
+  * Move versionutils into place and remove deprecation tools
+  * Denote monotonic import ordering + usage
+  * Add liberty release name to versionutils
+  * Expose opts entry point for version_utils
+  * Switch from oslo.config to oslo_config
+  * Remove oslo.log code and clean up versionutils API
+  * Remove code that moved to oslo.i18n
+  * Enhance versionutils.deprecated to work with classes
+  * Add Kilo release name to versionutils
+  * Allow deprecated decorator to specify no plan for removal
+  * Uncap library requirements for liberty
+  * Add JUNO as a target to versionutils module
+  * Add missing reflection + uuidutils docs
+  * timeutils: avoid passing leap second to datetime
+  * Add pypi download + version badges
+  * Cleanup README.rst and setup.cfg
+  * pep8: fixed multiple violations
+  * Use oslotest instead of common test module
+  * Use hacking import_exceptions for gettextutils._
+  * fixed typos
+  * Fix violations of H302:import only modules
+  * Adds decorator to deprecate functions and methods
+  * Remove vim header
+  * Add `versionutils` for version compatibility checks
+  * Update hacking setting
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Clean up TestIsIPv6Enabled
+  * Fix test_netutils: stop patches
+  * Add a new string to the list of masked patterns
+  * Provide common `fetch_current_thread_functor` function
+  * Imported Translations from Transifex
+- Adjust Requires according to requirements.txt
+- Add python_requires to _services
+
+-------------------------------------------------------------------
+Thu May  7 12:17:19 UTC 2015 - tbechtold@suse.com
+
+- Add 0001-Disable-deprecation-warning.patch
+
+-------------------------------------------------------------------
+Tue Mar 10 15:15:35 UTC 2015 - tbechtold@suse.com
+
+- update to 1.4.0:
+  * Add a stopwatch + split for duration(s)
+  * Allow providing a logger to save_and_reraise_exception
+  * Updated from global requirements
+  * Utility API to generate EUI-64 IPv6 address
+- update Requires
+
+-------------------------------------------------------------------
+Tue Feb 24 12:42:50 UTC 2015 - tbechtold@suse.com
+
+- update to version 1.3.0:
+  * Add a eventlet utils helper module
+  * Add microsecond support to iso8601_from_timestamp
+  * Updated from global requirements
+  * Update Oslo imports to remove namespace package
+  * Add TimeFixture
+  * Add microsecond support to timeutils.utcnow_ts()
+  * Make setup.cfg packages include oslo.utils
+- adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Jan 14 08:48:43 UTC 2015 - dmueller@suse.com
+
+- fix requires 
+
+-------------------------------------------------------------------
+Mon Jan 12 10:35:53 UTC 2015 - dmueller@suse.com
+
+- update to 1.2.1:
+  * Return LOCALHOST if no default interface
+  * Improve performance of strutils.mask_password
+  * Move files out of the namespace package
+  * Add method is_valid_port in netutils
+  * Support non-lowercase uuids in is_uuid_like
+  * Add 'secret_uuid' in _SANITIZE_KEYS for strutils
+  * Imported Translations from Transifex
+  * Workflow documentation is now in infra-manual
+
+-------------------------------------------------------------------
+Mon Dec 15 09:02:34 UTC 2014 - dmueller@suse.com
+
+- update to 1.1.0:
+  * Add get_my_ip()
+  * Updated from global requirements
+  * Add 'auth_password' in _SANITIZE_KEYS for strutils
+  * Updated from global requirements
+  * Activate pep8 check that _ is imported
+  * Add uuidutils to oslo.utils
+  * Add pbr to installation requirements
+  * Updated from global requirements
+  * Add is_int_like() function
+  * Hide auth_token and new_pass
+  * Imported Translations from Transifex
+  * Add history/changelog to docs
+  * Imported Translations from Transifex
+  * Support building wheels (PEP-427)
+  * Imported Translations from Transifex
+  * Improve docstrings for IP verification functions
+  * Imported Translations from Transifex
+  * Add ip address validation
+  * Fix how it appears we need to use mock_anything to avoid 'self' errors
+  * Updated from global requirements
+  * Move over a reflection module that taskflow uses
+  * Make safe_encode func case-insensitive
+  * Enable mask_password to handle byte code strings
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sun Sep 21 20:07:55 UTC 2014 - tbechtold@suse.com
+
+- Update to version 1.0.0:
+  * Version bump
+
+-------------------------------------------------------------------
+Thu Sep 11 13:02:55 UTC 2014 - dmueller@suse.com
+
+- update to 0.3.0:
+  * Imported Translations from Transifex
+  * Remove unused dependency on oslo.config
+  * Updated from global requirements
+  * Just use int(BOOL) to convert to 1 or 0
+  * Re-enable _import* hidden methods in import_utils
+
+-------------------------------------------------------------------
+Tue Aug 26 09:58:49 UTC 2014 - dmueller@suse.com
+
+- update to 0.2.0:
+  * Make strutils.mask_password more secure
+  * New public API for mask_password ported from incubator
+  * Imported Translations from Transifex
+
+-------------------------------------------------------------------
+Wed Aug 13 05:05:51 UTC 2014 - tbechtold@suse.com
+
+- Initial package for oslo.utils
+

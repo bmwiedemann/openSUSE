@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Feb 10 17:21:17 UTC 2015 - coolo@suse.com
+
+- updated to version 3.0.3
+
+-------------------------------------------------------------------
+Tue Jul 31 11:51:31 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide correct dependencies 
+
+-------------------------------------------------------------------
+Mon Apr  2 13:45:03 UTC 2012 - coolo@suse.com
+
+- update to 3.0.2 - smaller fixes
+
+-------------------------------------------------------------------
+Fri Mar 23 11:27:26 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Thu Jan 26 16:09:42 UTC 2012 - mrueckert@suse.de
+
+- initial package of the 3.0 branch
+

@@ -1,0 +1,608 @@
+--- packages/mule-packages/mule-ucs/doc/mule-ucs.texi	2012-08-06 13:40:22.685740880 +0200
++++ xemacs-pkgs/mule-ucs/etc/mule-ucs/mule-ucs.texi	2009-03-04 21:57:12.000000000 +0100
+@@ -10,7 +10,7 @@
+ @footnotestyle end
+ 
+ @c Version values, for easy modification
+-@set VERSION $Revision$
++@set VERSION $Revision: 1.6 $
+ @set UPDATED 25 January 2002
+ 
+ 
+--- packages/mule-packages/skk/skk.el	2012-08-06 13:40:30.219755867 +0200
++++ xemacs-pkgs/skk/lisp/skk/skk.el	2002-04-28 09:12:27.000000000 +0200
+@@ -60,7 +60,7 @@
+   (if (not (interactive-p))
+       skk-version
+     (save-match-data
+-      (let* ((raw-date "$Date$")
++      (let* ((raw-date "$Date: 2002/04/28 07:12:27 $")
+              (year (substring raw-date 7 11))
+              (month (substring raw-date 12 14))
+              (date (substring raw-date 15 17)))
+--- packages/mule-packages/skk/texi/skk.texi	2012-08-06 13:40:30.228755885 +0200
++++ xemacs-pkgs/skk/man/skk/skk.texi	2000-11-08 02:50:14.000000000 +0100
+@@ -13,7 +13,7 @@
+ @c
+ @set EDITION 1.5
+ @set SKK-VERSION 10.62
+-@set UPDATED $Date$
++@set UPDATED $Date: 2000/11/08 01:50:14 $
+ @c @set UPDATED-MONTH Oct 1998
+ 
+ @direntry
+--- packages/xemacs-packages/auctex/preview/latex/preview.dtx	2012-08-06 13:53:56.218937726 +0200
++++ xemacs-pkgs/auctex/etc/auctex/latex/preview.dtx	2012-08-06 14:57:06.956241403 +0200
+@@ -437,12 +437,12 @@
+ \NeedsTeXFormat{LaTeX2e} \def\reserved@a #1#2$#3:
+ #4${\xdef#1{\reserved@c #2#4 $}} \def\reserved@c #1 #2${#1}
+ \begingroup \catcode`\_=12
+-\reserved@a\pr@version $Name$ \ifx\pr@version\@empty
+-\reserved@a\pr@version CVS-$Revision$ \endgroup \else
++\reserved@a\pr@version $Name:  $ \ifx\pr@version\@empty
++\reserved@a\pr@version CVS-$Revision: 1.1.2.1 $ \endgroup \else
+   \def\next release_{} \lccode`\_=`.
+   \edef\next{\lowercase{\endgroup
+     \def\noexpand\pr@version{\expandafter\next\pr@version}}} \next \fi
+-\reserved@a\next $Date$
++\reserved@a\next $Date: 2008/09/09 21:55:14 $
+ \edef\next{\noexpand\ProvidesPackage{preview}%
+   [\next\space \pr@version\space (AUCTeX/preview-latex)]}
+ \next
+--- packages/xemacs-packages/auctex/preview/preview.el	2012-08-06 13:53:56.220937728 +0200
++++ xemacs-pkgs/auctex/lisp/auctex/preview.el	2008-09-09 23:45:58.000000000 +0200
+@@ -3511,8 +3511,8 @@ internal parameters, STR may be a log to
+ 	     (preview-reraise-error process)))))
+ 
+ (defconst preview-version (eval-when-compile
+-  (let ((name "$Name$")
+-	(rev "$Revision$"))
++  (let ((name "$Name:  $")
++	(rev "$Revision: 1.1.2.1 $"))
+     (or (when (string-match "\\`[$]Name: *release_\\([^ ]+\\) *[$]\\'" name)
+ 	  (setq name (match-string 1 name))
+ 	  (while (string-match "_" name)
+@@ -3526,7 +3526,7 @@ If not a regular release, CVS revision o
+ 
+ (defconst preview-release-date
+   (eval-when-compile
+-    (let ((date "$Date$"))
++    (let ((date "$Date: 2008/09/09 21:45:58 $"))
+       (string-match
+        "\\`[$]Date: *\\([0-9]+\\)/\\([0-9]+\\)/\\([0-9]+\\)"
+        date)
+--- packages/xemacs-packages/auctex/style/prosper.el	2012-08-06 13:53:56.244937755 +0200
++++ xemacs-pkgs/auctex/etc/auctex/style/prosper.el	2008-09-09 23:55:11.000000000 +0200
+@@ -62,7 +62,7 @@
+ 
+ 
+ (defconst LaTeX-prosper-version
+-  "$Id$"
++  "$Id: prosper.el,v 1.1.2.1 2008/09/09 21:55:11 matsl Exp $"
+   "prosper.el version.")
+ 
+ (defconst LaTeX-prosper-transition-styles '("Split"
+--- packages/xemacs-packages/bbdb/lisp/bbdb.el	2012-08-06 13:40:54.603804343 +0200
++++ xemacs-pkgs/bbdb/lisp/bbdb/bbdb.el	2007-02-25 22:12:46.000000000 +0100
+@@ -65,7 +65,7 @@
+  )
+ 
+ (defconst bbdb-version "2.35")
+-(defconst bbdb-version-date "$Date$")
++(defconst bbdb-version-date "$Date: 2007/02/23 20:24:09 $")
+ 
+ (defcustom bbdb-gui (if (fboundp 'display-color-p) ; Emacs 21
+                         (display-color-p)
+--- packages/xemacs-packages/bbdb/texinfo/bbdb.texinfo	2012-08-06 13:40:54.608804353 +0200
++++ xemacs-pkgs/bbdb/man/bbdb/bbdb.texinfo	2005-07-26 19:13:19.000000000 +0200
+@@ -16,7 +16,7 @@
+ 
+ This file documents the Insidious Big Brother Database
+ 
+-This is edition $Revision$ of the BBDB User Manual for BBDB
++This is edition $Revision: 1.9 $ of the BBDB User Manual for BBDB
+ version 2.34.
+ 
+ Copyright (c) 1991-1994 Jamie Zawinski <jwz@@netscape.com>
+@@ -29,7 +29,7 @@ Copyright (c) 2000-present The BBDB Deve
+ @titlepage
+ @title BBDB User Manual
+ @subtitle A phone number and address database program for Emacs
+-@subtitle Edition $Revision$, $Date$
++@subtitle Edition $Revision: 1.9 $, $Date: 2005/07/24 15:23:05 $
+ 
+ @author by Jamie Zawinski, Matt Simmons and the BBDB Development Team
+ @page
+@@ -40,8 +40,8 @@ Copyright @copyright{} 1997-1999 Matt Si
+ Copyright @copyright{} 2000-present The BBDB Development Team
+ 
+ @sp 2
+-This is edition $Revision$ of the @cite{BBDB User Manual} for BBDB
+-version 2.34, $Date$.@refill
++This is edition $Revision: 1.9 $ of the @cite{BBDB User Manual} for BBDB
++version 2.34, $Date: 2005/07/24 15:23:05 $.@refill
+ 
+ @sp 2
+ 
+--- packages/xemacs-packages/erc/erc-autoaway.el	2012-08-06 13:43:05.677064040 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-autoaway.el	2009-03-04 22:00:32.000000000 +0100
+@@ -31,7 +31,7 @@
+ 
+ (require 'erc)
+ 
+-(defconst erc-autoaway-version "$Revision$"
++(defconst erc-autoaway-version "$Revision: 1.25.2.1 $"
+   "ERC Autoaway revision.")
+ 
+ (defgroup erc-autoaway nil
+--- packages/xemacs-packages/erc/erc-autojoin.el	2012-08-06 13:43:05.678064042 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-autojoin.el	2009-03-04 22:00:34.000000000 +0100
+@@ -36,7 +36,7 @@
+ (require 'erc)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-autojoin-version "$Revision$"
++(defconst erc-autojoin-version "$Revision: 1.15.2.2 $"
+   "ERC autojoin revision.")
+ 
+ (defgroup erc-autojoin nil
+--- packages/xemacs-packages/erc/erc-backend.el	2012-08-06 13:43:05.679064044 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-backend.el	2009-09-15 09:53:37.000000000 +0200
+@@ -105,7 +105,7 @@
+ 
+ ;;;; Variables and options
+ 
+-(defconst erc-backend-version "$Revision$")
++(defconst erc-backend-version "$Revision: 1.44.2.2 $")
+ 
+ (defvar erc-server-responses (make-hash-table :test #'equal)
+   "Hashtable mapping server responses to their handler hooks.")
+--- packages/xemacs-packages/erc/erc-bbdb.el	2012-08-06 13:43:05.680064046 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-bbdb.el	2009-03-04 22:00:26.000000000 +0100
+@@ -50,7 +50,7 @@
+ (require 'bbdb-gui)
+ (require 'bbdb-hooks)
+ 
+-(defconst erc-bbdb-version "$Revision$"
++(defconst erc-bbdb-version "$Revision: 1.31.2.2 $"
+   "ERC BBDB revision.")
+ 
+ (defgroup erc-bbdb nil
+--- packages/xemacs-packages/erc/erc-button.el	2012-08-06 13:43:05.681064048 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-button.el	2009-03-04 22:00:33.000000000 +0100
+@@ -68,7 +68,7 @@
+ 
+ ;;; Variables
+ 
+-(defconst erc-button-version "$Revision$"
++(defconst erc-button-version "$Revision: 1.71.2.2 $"
+   "ERC button mode revision.")
+ 
+ (defface erc-button '((t (:bold t)))
+--- packages/xemacs-packages/erc/erc-chess.el	2012-08-06 13:43:05.681064048 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-chess.el	2009-03-04 22:00:29.000000000 +0100
+@@ -36,7 +36,7 @@
+ 
+ ;;;; Variables
+ 
+-(defconst erc-chess-version "$Revision$"
++(defconst erc-chess-version "$Revision: 1.26.2.1 $"
+   "ERC chess revision.")
+ 
+ (defgroup erc-chess nil
+--- packages/xemacs-packages/erc/erc-compat.el	2012-08-06 13:43:05.682064050 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-compat.el	2009-09-15 09:53:38.000000000 +0200
+@@ -28,7 +28,7 @@
+ 
+ ;;; Code:
+ 
+-(defconst erc-compat-version "$Revision$"
++(defconst erc-compat-version "$Revision: 1.30.2.1 $"
+   "ERC compat revision.")
+ 
+ ;; erc-define-minor-mode: the easy-mmode-define-minor-mode available
+--- packages/xemacs-packages/erc/erc-complete.el	2012-08-06 13:43:05.682064050 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-complete.el	2009-03-04 22:00:29.000000000 +0100
+@@ -37,7 +37,7 @@
+ (require 'erc-match); for erc-pals
+ (require 'hippie-exp); for the hippie expand stuff
+ 
+-(defconst erc-complete-version "$Revision$"
++(defconst erc-complete-version "$Revision: 1.18.2.1 $"
+   "ERC complete revision.")
+ 
+ ;;;###autoload
+--- packages/xemacs-packages/erc/erc-dcc.el	2012-08-06 13:43:05.684064054 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-dcc.el	2009-03-04 22:00:35.000000000 +0100
+@@ -58,7 +58,7 @@
+   (require 'cl)
+   (require 'pcomplete))
+ 
+-(defconst erc-dcc-version "$Revision$"
++(defconst erc-dcc-version "$Revision: 1.94.2.2 $"
+   "ERC DCC revision")
+ 
+ (defgroup erc-dcc nil
+--- packages/xemacs-packages/erc/erc-ezbounce.el	2012-08-06 13:43:05.684064054 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-ezbounce.el	2009-03-04 22:00:26.000000000 +0100
+@@ -29,7 +29,7 @@
+ (require 'erc)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-ezb-version "$Revision$"
++(defconst erc-ezb-version "$Revision: 1.12.2.2 $"
+   "ERC EZBouncer revision.")
+ 
+ (defgroup erc-ezbounce nil
+--- packages/xemacs-packages/erc/erc-fill.el	2012-08-06 13:43:05.685064056 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-fill.el	2009-03-04 22:00:36.000000000 +0100
+@@ -34,7 +34,7 @@
+ (require 'erc)
+ (require 'erc-stamp); for the timestamp stuff
+ 
+-(defconst erc-fill-version "$Revision$"
++(defconst erc-fill-version "$Revision: 1.32.2.1 $"
+   "ERC fill revision.")
+ 
+ (defgroup erc-fill nil
+--- packages/xemacs-packages/erc/erc-ibuffer.el	2012-08-06 13:43:05.686064058 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-ibuffer.el	2009-03-04 22:00:37.000000000 +0100
+@@ -35,7 +35,7 @@
+ (require 'ibuf-ext)
+ (require 'erc)
+ 
+-(defconst erc-ibuffer-version "$Revision$"
++(defconst erc-ibuffer-version "$Revision: 1.27.2.1 $"
+   "ERC ibuffer revision.")
+ 
+ (defgroup erc-ibuffer nil
+--- packages/xemacs-packages/erc/erc-imenu.el	2012-08-06 13:43:05.687064060 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-imenu.el	2009-03-04 22:00:34.000000000 +0100
+@@ -47,7 +47,7 @@
+ (require 'erc)
+ (require 'imenu)
+ 
+-(defconst erc-imenu-version "$Revision$"
++(defconst erc-imenu-version "$Revision: 1.10.2.1 $"
+   "ERC imenu revision.")
+ 
+ (defun erc-unfill-notice ()
+--- packages/xemacs-packages/erc/erc-list.el	2012-08-06 13:43:05.688064062 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-list.el	2009-09-15 09:53:38.000000000 +0200
+@@ -38,7 +38,7 @@
+   (require 'overlay))
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-list-version "$Revision$"
++(defconst erc-list-version "$Revision: 1.45.2.1 $"
+   "ERC channel list revision number")
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--- packages/xemacs-packages/erc/erc-log.el	2012-08-06 13:43:05.688064062 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-log.el	2009-09-15 09:53:38.000000000 +0200
+@@ -97,7 +97,7 @@
+ (require 'erc)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-log-version "$Revision$"
++(defconst erc-log-version "$Revision: 1.27.2.1 $"
+   "ERC log mode revision")
+ 
+ (defgroup erc-log nil
+--- packages/xemacs-packages/erc/erc-match.el	2012-08-06 13:43:05.690064066 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-match.el	2009-03-04 22:00:33.000000000 +0100
+@@ -40,7 +40,7 @@
+ 
+ ;; Customisation:
+ 
+-(defconst erc-match-version "$Revision$"
++(defconst erc-match-version "$Revision: 1.51.2.1 $"
+   "ERC match mode revision.")
+ 
+ (defgroup erc-match nil
+--- packages/xemacs-packages/erc/erc-menu.el	2012-08-06 13:43:05.691064068 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-menu.el	2009-03-04 22:00:36.000000000 +0100
+@@ -31,7 +31,7 @@
+ 
+ (require 'easymenu)
+ 
+-(defconst erc-menu-version "$Revision$"
++(defconst erc-menu-version "$Revision: 1.22.2.1 $"
+   "ERC menu revision")
+ 
+ (defvar erc-menu-definition
+--- packages/xemacs-packages/erc/erc-nets.el	2012-08-06 13:43:05.692064070 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-nets.el	2009-03-04 22:00:38.000000000 +0100
+@@ -45,7 +45,7 @@
+ (require 'erc)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-nets-version "$Revision$"
++(defconst erc-nets-version "$Revision: 1.22.2.1 $"
+   "ERC networks revision.")
+ 
+ ;; Variables
+--- packages/xemacs-packages/erc/erc-netsplit.el	2012-08-06 13:43:05.693064072 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-netsplit.el	2009-03-04 22:00:33.000000000 +0100
+@@ -34,7 +34,7 @@
+ (require 'erc)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-netsplit-version "$Revision$"
++(defconst erc-netsplit-version "$Revision: 1.15.2.2 $"
+   "ERC netsplit version.")
+ 
+ (defgroup erc-netsplit nil
+--- packages/xemacs-packages/erc/erc-nicklist.el	2012-08-06 13:43:05.693064072 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-nicklist.el	2009-03-04 22:00:27.000000000 +0100
+@@ -82,7 +82,7 @@
+   (error nil))
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-nicklist-version "$Revision$"
++(defconst erc-nicklist-version "$Revision: 1.14.2.1 $"
+   "ERC Nicklist version.")
+ 
+ (defgroup erc-nicklist nil
+--- packages/xemacs-packages/erc/erc-nickserv.el	2012-08-06 13:43:05.694064074 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-nickserv.el	2009-03-04 22:00:26.000000000 +0100
+@@ -63,7 +63,7 @@
+ (require 'erc-nets)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-nickserv-version "$Revision$"
++(defconst erc-nickserv-version "$Revision: 1.27.2.1 $"
+   "ERC NickServ revision.")
+ 
+ ;; Customization:
+--- packages/xemacs-packages/erc/erc-pcomplete.el	2012-08-06 13:43:05.695064076 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-pcomplete.el	2009-03-04 22:00:33.000000000 +0100
+@@ -46,7 +46,7 @@
+ (require 'time-date)
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-pcomplete-version "$Revision$"
++(defconst erc-pcomplete-version "$Revision: 1.32.2.1 $"
+   "ERC pcomplete mode revision")
+ 
+ (defgroup erc-pcomplete nil
+--- packages/xemacs-packages/erc/erc-replace.el	2012-08-06 13:43:05.696064078 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-replace.el	2009-03-04 22:00:35.000000000 +0100
+@@ -37,7 +37,7 @@
+ 
+ (require 'erc)
+ 
+-(defconst erc-replace-version "$Revision$"
++(defconst erc-replace-version "$Revision: 1.8.2.1 $"
+   "Revision of the ERC replace module.")
+ 
+ (defgroup erc-replace nil
+--- packages/xemacs-packages/erc/erc-ring.el	2012-08-06 13:43:05.696064078 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-ring.el	2009-03-04 22:00:34.000000000 +0100
+@@ -39,7 +39,7 @@
+ (require 'comint)
+ (require 'ring)
+ 
+-(defvar erc-ring-version "$Revision$"
++(defvar erc-ring-version "$Revision: 1.20.2.1 $"
+   "ERC ring revision")
+ 
+ ;;;###autoload (autoload 'erc-ring-mode "erc-ring" nil t)
+--- packages/xemacs-packages/erc/erc-speedbar.el	2012-08-06 13:43:05.698064082 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-speedbar.el	2009-03-04 22:00:38.000000000 +0100
+@@ -41,7 +41,7 @@
+ (condition-case nil (require 'dframe) (error nil))
+ (eval-when-compile (require 'cl))
+ 
+-(defconst erc-speedbar-version "$Revision$"
++(defconst erc-speedbar-version "$Revision: 1.20.2.1 $"
+   "ERC Speedbar version.")
+ 
+ ;;; Customization:
+--- packages/xemacs-packages/erc/erc-spelling.el	2012-08-06 13:43:05.698064082 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-spelling.el	2009-03-04 22:00:28.000000000 +0100
+@@ -34,7 +34,7 @@
+ (require 'erc)
+ (require 'flyspell)
+ 
+-(defconst erc-spelling-version "$Revision$"
++(defconst erc-spelling-version "$Revision: 1.6.2.2 $"
+   "ERC spelling revision.")
+ 
+ ;;;###autoload (autoload 'erc-spelling-mode "erc-spelling" nil t)
+--- packages/xemacs-packages/erc/erc-stamp.el	2012-08-06 13:43:05.699064084 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-stamp.el	2009-03-04 22:00:36.000000000 +0100
+@@ -38,7 +38,7 @@
+ (require 'erc)
+ (require 'erc-compat)
+ 
+-(defconst erc-stamp-version "$Revision$"
++(defconst erc-stamp-version "$Revision: 1.45.2.4 $"
+   "ERC stamp mode revision.")
+ 
+ (defgroup erc-stamp nil
+--- packages/xemacs-packages/erc/erc-track.el	2012-08-06 13:43:05.700064086 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc-track.el	2009-03-04 22:00:25.000000000 +0100
+@@ -42,7 +42,7 @@
+ 
+ ;;; Code:
+ 
+-(defconst erc-track-version "$Revision$"
++(defconst erc-track-version "$Revision: 1.86.2.1 $"
+   "ERC track mode revision")
+ 
+ (defgroup erc-track nil
+--- packages/xemacs-packages/erc/erc.el	2012-08-06 13:43:05.706064098 +0200
++++ xemacs-pkgs/erc/lisp/erc/erc.el	2009-09-15 09:53:38.000000000 +0200
+@@ -66,7 +66,7 @@
+ 
+ ;;; Code:
+ 
+-(defconst erc-version-string "Version 5.1.2 $Revision$"
++(defconst erc-version-string "Version 5.1.2 $Revision: 1.796.2.6 $"
+   "ERC version.  This is used by function `erc-version'.")
+ 
+ (eval-when-compile (require 'cl))
+--- packages/xemacs-packages/hm--html-menus/hm--html-mode.texi	2012-08-06 13:44:31.978234242 +0200
++++ xemacs-pkgs/hm--html-menus/man/hm--html-menus/hm--html-mode.texi	2003-06-27 20:50:36.000000000 +0200
+@@ -139,7 +139,7 @@ Foundation, Inc., 675 Mass Ave, Cambridg
+ This document describes the Elisp package @emph{hm---html-menus 5.9}.
+ 
+ The version of the document is:@*
+-$Id$
++$Id: hm--html-mode.texi,v 6.24 2003/06/27 18:50:36 adrian Exp $
+ 
+ The package provides commands and various popup and pulldown menus for
+ an HTML mode called @dfn{hm---html-mode}, a mode for writing HTML pages
+--- packages/xemacs-packages/psgml/iso-sgml.el	2012-08-06 13:47:17.406471020 +0200
++++ xemacs-pkgs/psgml/lisp/psgml/iso-sgml.el	1999-11-27 21:49:59.000000000 +0100
+@@ -56,7 +56,7 @@
+ 
+ ;; Code:
+ 
+-(defconst isosgml-version "$Id$"
++(defconst isosgml-version "$Id: iso-sgml.el,v 1.1.1.1 1998/01/14 06:37:10 steve Exp $"
+   "iso-sgml RCS version number")
+ 
+ (defvar isosgml-modes-list '(html-mode html-helper-mode sgml-mode)
+--- packages/xemacs-packages/sml-mode/sml-mode.spec	2012-08-06 13:48:22.247545614 +0200
++++ xemacs-pkgs/sml-mode/lisp/sml-mode/sml-mode.spec	2002-08-01 01:21:30.000000000 +0200
+@@ -3,7 +3,7 @@
+ 
+ Summary:	Emacs mode for editing Standard ML source code
+ Name:		sml-mode
+-Version:	$Name$
++Version:	$Name:  $
+ Release:	0.1
+ Group:		Applications/Editors
+ Copyright:	GPL
+--- packages/xemacs-packages/sml-mode/sml-mode.texi	2012-08-06 13:48:22.248545622 +0200
++++ xemacs-pkgs/sml-mode/man/sml-mode/sml-mode.texi	2005-07-26 19:14:06.000000000 +0200
+@@ -34,7 +34,7 @@
+ @center @titlefont{Editing and Running Standard ML}
+ @center @titlefont{under GNU Emacs}
+ @sp 5
+-@center {SML mode, Version $Name$}
++@center {SML mode, Version $Name:  $}
+ @center {August 1999}
+ @sp 2
+ @author Authors: Matthew J.@: Morley and Stefan Monnier
+@@ -77,7 +77,7 @@ Foundation, 675 Mass Ave, Cambridge, MA
+ 
+ @noindent
+ You are looking at the top node of the Info tree documenting
+-@sc{sml-mode} (Version $Name$). Not all functions are documented here, but
++@sc{sml-mode} (Version $Name:  $). Not all functions are documented here, but
+ those that aren't you probably won't miss. All commands and settable
+ variables have built-in documentation, as per usual Emacs conventions.
+ @end ifinfo
+--- packages/xemacs-packages/tm/gnus-mime.el	2012-08-06 13:49:06.632597019 +0200
++++ xemacs-pkgs/tm/lisp/tm/gnus-mime.el	1998-01-14 07:27:57.000000000 +0100
+@@ -33,7 +33,7 @@
+ ;;;
+ 
+ (defconst gnus-mime-RCS-ID
+-  "$Id$")
++  "$Id: gnus-mime.el,v 1.1.1.1 1998/01/14 06:27:57 steve Exp $")
+ 
+ (defconst gnus-mime-version
+   (get-version-string gnus-mime-RCS-ID))
+--- packages/xemacs-packages/tm/mu-cite.el	2012-08-06 13:49:06.639597029 +0200
++++ xemacs-pkgs/tm/lisp/tm/mu-cite.el	1998-01-14 07:27:58.000000000 +0100
+@@ -54,7 +54,7 @@
+ ;;;
+ 
+ (defconst mu-cite/RCS-ID
+-  "$Id$")
++  "$Id: mu-cite.el,v 1.1.1.1 1998/01/14 06:27:58 steve Exp $")
+ (defconst mu-cite/version (get-version-string mu-cite/RCS-ID))
+ 
+ 
+--- packages/xemacs-packages/tm/texi/tm-vm-en.texi	2012-08-06 13:49:06.654597047 +0200
++++ xemacs-pkgs/tm/man/tm/tm-vm-en.texi	1998-06-15 07:54:31.000000000 +0200
+@@ -29,7 +29,7 @@ Copyright 1996 Tomohiko Morioka, Oscar F
+ @titlepage
+ @title tm-vm Manual (English Version)
+ @author by Oscar Figueiredo
+-@code{$Id$}
++@code{$Id: tm-vm-en.texi,v 1.2 1998/06/15 05:54:31 steveb Exp $}
+ @page
+ 
+ tm-vm is part of the TM Package.
+--- packages/xemacs-packages/tm/tm-edit.el	2012-08-06 13:49:06.659597052 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-edit.el	2001-07-31 00:49:19.000000000 +0200
+@@ -120,7 +120,7 @@
+ ;;;
+ 
+ (defconst mime-editor/RCS-ID
+-  "$Id$")
++  "$Id: tm-edit.el,v 1.8 2001/07/30 22:49:19 youngs Exp $")
+ 
+ (defconst mime-editor/version (get-version-string mime-editor/RCS-ID))
+ 
+--- packages/xemacs-packages/tm/tm-ew-d.el	2012-08-06 13:49:06.659597052 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-ew-d.el	1998-01-14 07:27:57.000000000 +0100
+@@ -42,7 +42,7 @@
+ ;;;
+ 
+ (defconst tm-ew-d/RCS-ID
+-  "$Id$")
++  "$Id: tm-ew-d.el,v 1.1.1.1 1998/01/14 06:27:57 steve Exp $")
+ (defconst mime/eword-decoder-version (get-version-string tm-ew-d/RCS-ID))
+ 
+ 
+--- packages/xemacs-packages/tm/tm-ew-e.el	2012-08-06 13:49:06.660597053 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-ew-e.el	1998-01-14 07:27:57.000000000 +0100
+@@ -35,7 +35,7 @@
+ ;;;
+ 
+ (defconst tm-ew-e/RCS-ID
+-  "$Id$")
++  "$Id: tm-ew-e.el,v 1.1.1.1 1998/01/14 06:27:57 steve Exp $")
+ (defconst mime-eword/encoder-version (get-version-string tm-ew-e/RCS-ID))
+ 
+ 
+--- packages/xemacs-packages/tm/tm-mh-e.el	2012-08-06 13:49:06.662597055 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-mh-e.el	1998-09-08 16:13:03.000000000 +0200
+@@ -48,7 +48,7 @@
+ ;;;
+ 
+ (defconst tm-mh-e/RCS-ID
+-  "$Id$")
++  "$Id: tm-mh-e.el,v 1.2 1998/09/08 14:13:03 steveb Exp $")
+ 
+ (defconst tm-mh-e/version (get-version-string tm-mh-e/RCS-ID))
+ 
+--- packages/xemacs-packages/tm/tm-rmail.el	2012-08-06 13:49:06.664597057 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-rmail.el	1998-01-14 07:27:57.000000000 +0100
+@@ -40,7 +40,7 @@
+ ;;;
+ 
+ (defconst tm-rmail/RCS-ID
+-  "$Id$")
++  "$Id: tm-rmail.el,v 1.1.1.1 1998/01/14 06:27:57 steve Exp $")
+ (defconst tm-rmail/version (get-version-string tm-rmail/RCS-ID))
+ 
+ (defvar tm-rmail/decode-all nil)
+--- packages/xemacs-packages/tm/tm-view.el	2012-08-06 13:49:06.666597059 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-view.el	1998-05-16 13:29:42.000000000 +0200
+@@ -42,7 +42,7 @@
+ ;;;
+ 
+ (defconst mime-viewer/RCS-ID
+-  "$Id$")
++  "$Id: tm-view.el,v 1.2 1998/05/16 11:29:42 steveb Exp $")
+ 
+ (defconst mime-viewer/version (get-version-string mime-viewer/RCS-ID))
+ (defconst mime/viewer-version mime-viewer/version)
+--- packages/xemacs-packages/tm/tm-vm.el	2012-08-06 13:49:06.667597060 +0200
++++ xemacs-pkgs/tm/lisp/tm/tm-vm.el	2008-04-25 09:23:18.000000000 +0200
+@@ -104,7 +104,7 @@ These hooks are run in the MIME-Preview
+ ;;; @@ System/Information variables
+ 
+ (defconst tm-vm/RCS-ID
+-  "$Id$")
++  "$Id: tm-vm.el,v 1.3 2008/04/24 20:33:12 stephent Exp $")
+ (defconst tm-vm/version (get-version-string tm-vm/RCS-ID))
+ 
+ ; Ensure vm-menu-mail-menu gets properly defined *before* tm-vm/vm-emulation-map

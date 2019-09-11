@@ -1,0 +1,30 @@
+From: Egbert Eich <eich@suse.de>
+Date: Sat Oct 15 21:10:56 2016 +0200
+Subject: [PATCH]Make SUSE specific adjustments
+Git-commit: e82cc0c3a5a40ee9053adeb34410575533fd2530
+References: 
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+For sysvinit set runlvls where to start/stop munge.
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/etc/Makefile.am   | 2 +-
+ src/etc/munge.init.in | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/etc/munge.init.in b/src/etc/munge.init.in
+index 93d461b..3414ed5 100644
+--- a/src/etc/munge.init.in
++++ b/src/etc/munge.init.in
+@@ -14,8 +14,8 @@
+ # Required-Stop:      $local_fs $remote_fs
+ # Should-Start:       $named $syslog
+ # Should-Stop:        $named $syslog
+-# Default-Start:
+-# Default-Stop:
++# Default-Start:      3 5
++# Default-Stop:       0 1 2 6
+ # Short-Description:  MUNGE Uid 'N' Gid Emporium authentication service
+ # Description:        MUNGE (MUNGE Uid 'N' Gid Emporium) is a highly scalable
+ #                     authentication service for creating and validating

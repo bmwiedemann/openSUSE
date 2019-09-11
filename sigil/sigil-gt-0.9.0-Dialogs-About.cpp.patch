@@ -1,0 +1,20 @@
+diff -Pdpru Sigil-0.9.0.orig/src/Dialogs/About.cpp Sigil-0.9.0/src/Dialogs/About.cpp
+--- Sigil-0.9.0.orig/src/Dialogs/About.cpp	2015-11-04 14:52:16.000000000 +0100
++++ Sigil-0.9.0/src/Dialogs/About.cpp	2015-11-29 10:12:53.023905765 +0100
+@@ -75,6 +75,7 @@ About::About(QWidget *parent)
+ 
+ QDateTime About::GetUTCBuildTime()
+ {
++    /*
+     QString time_string = QString::fromLatin1(__TIME__);
+     QString date_string = QString::fromLatin1(__DATE__);
+     Q_ASSERT(!date_string.isEmpty());
+@@ -83,6 +84,8 @@ QDateTime About::GetUTCBuildTime()
+     QRegularExpressionMatch mo = date_match.match(date_string);
+     QDate date(mo.captured(3).toInt(), MonthIndexFromString(mo.captured(1)), mo.captured(2).toInt());
+     return QDateTime(date, QTime::fromString(time_string, "hh:mm:ss")).toUTC();
++    */
++    return QDateTime( QDate::fromString("@DATE@", "yyyyMMdd"), QTime::fromString( "@TIME@", "hh:mm:ss" ) ).toUTC();
+ }
+ 
+ 

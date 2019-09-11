@@ -1,0 +1,22 @@
+Index: mt.c
+===================================================================
+--- mt.c.orig
++++ mt.c
+@@ -62,6 +62,8 @@
+ #include "config.h"
+ #include "cmdline.h"
+ 
++extern void do_check_for_mail();
++
+ /* #define KEYB_DEBUG */
+ 
+ void LOG(char *s, ...)
+@@ -3506,7 +3508,7 @@ int wait_for_keypress(int what_help, dou
+ 		/* check for mail */
+ 		if (now - msf_last_check >= check_for_mail)
+ 		{
+-			do_check_for_mail(now);
++			do_check_for_mail();
+ 
+ 			msf_last_check = now;
+ 		}

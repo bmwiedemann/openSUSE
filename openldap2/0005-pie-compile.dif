@@ -1,0 +1,131 @@
+From 60edf86023da15db7be5935c85826e16d2b78648 Mon Sep 17 00:00:00 2001
+From: Ralf Haferkamp <rhafer@suse.de>
+Date: Fri, 12 Nov 2010 09:39:11 +0100
+Subject: pie compile
+
+
+diff --git a/build/top.mk b/build/top.mk
+index 633c9a4..c67289d 100644
+--- a/build/top.mk
++++ b/build/top.mk
+@@ -107,7 +107,7 @@ LINK_LIBS = $(MOD_LIBS) $(@PLAT@_LINK_LIBS)
+ LTSTATIC = @LTSTATIC@
+ 
+ LTLINK   = $(LIBTOOL) --mode=link \
+-	$(CC) $(LTSTATIC) $(LT_CFLAGS) $(LDFLAGS) $(LTFLAGS)
++	$(CC) -pie $(LTSTATIC) $(LT_CFLAGS) $(LDFLAGS) $(LTFLAGS)
+ 
+ LTCOMPILE_LIB = $(LIBTOOL) $(LTONLY_LIB) --mode=compile \
+ 	$(CC) $(LT_CFLAGS) $(LT_CPPFLAGS) $(LIB_DEFS) -c
+@@ -116,7 +116,7 @@ LTLINK_LIB = $(LIBTOOL) $(LTONLY_LIB) --mode=link \
+ 	$(CC) $(LT_CFLAGS) $(LDFLAGS) $(LTFLAGS_LIB)
+ 
+ LTCOMPILE_MOD = $(LIBTOOL) $(LTONLY_MOD) --mode=compile \
+-	$(CC) $(LT_CFLAGS) $(LT_CPPFLAGS) $(MOD_DEFS) -c
++	$(CC) $(LT_CFLAGS) $(PIE_CFLAGS) $(LT_CPPFLAGS) $(MOD_DEFS) -c
+ 
+ LTLINK_MOD = $(LIBTOOL) $(LTONLY_MOD) --mode=link \
+ 	$(CC) $(LT_CFLAGS) $(LDFLAGS) $(LTFLAGS_MOD)
+@@ -206,7 +206,7 @@ SLAPD_LIBS = @SLAPD_LIBS@ @SLAPD_PERL_LDFLAGS@ @SLAPD_SQL_LDFLAGS@ @SLAPD_SQL_LI
+ # Our Defaults
+ CC = $(AC_CC)
+ DEFS = $(LDAP_INCPATH) $(XINCPATH) $(XDEFS) $(AC_DEFS) $(DEFINES)
+-CFLAGS = $(AC_CFLAGS) $(DEFS)
++CFLAGS = -fPIE $(AC_CFLAGS) $(DEFS)
+ LDFLAGS = $(LDAP_LIBPATH) $(AC_LDFLAGS) $(XLDFLAGS)
+ LIBS = $(XLIBS) $(XXLIBS) $(AC_LIBS) $(XXXLIBS)
+ 
+diff --git a/servers/slapd/back-bdb/Makefile.in b/servers/slapd/back-bdb/Makefile.in
+index da7da0c..dcb6d92 100644
+--- a/servers/slapd/back-bdb/Makefile.in
++++ b/servers/slapd/back-bdb/Makefile.in
+@@ -33,6 +33,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-bdb"
+ BUILD_MOD = @BUILD_BDB@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_BDB@_DEFS)
+ MOD_LIBS = $(BDB_LIBS)
+diff --git a/servers/slapd/back-hdb/Makefile.in b/servers/slapd/back-hdb/Makefile.in
+index 5af828f..6f43f7b 100644
+--- a/servers/slapd/back-hdb/Makefile.in
++++ b/servers/slapd/back-hdb/Makefile.in
+@@ -37,6 +37,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-hdb"
+ BUILD_MOD = @BUILD_HDB@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_HDB@_DEFS)
+ MOD_LIBS = $(BDB_LIBS)
+diff --git a/servers/slapd/back-ldap/Makefile.in b/servers/slapd/back-ldap/Makefile.in
+index 392d92e..3a0663d 100644
+--- a/servers/slapd/back-ldap/Makefile.in
++++ b/servers/slapd/back-ldap/Makefile.in
+@@ -26,6 +26,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-ldap"
+ BUILD_MOD = @BUILD_LDAP@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_LDAP@_DEFS)
+ 
+diff --git a/servers/slapd/back-ldif/Makefile.in b/servers/slapd/back-ldif/Makefile.in
+index 5e4abc1..1e8c454 100644
+--- a/servers/slapd/back-ldif/Makefile.in
++++ b/servers/slapd/back-ldif/Makefile.in
+@@ -22,6 +22,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-ldif"
+ BUILD_MOD = yes
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(yes_DEFS)
+ 
+diff --git a/servers/slapd/back-mdb/Makefile.in b/servers/slapd/back-mdb/Makefile.in
+index 9b01d2a..e37520a 100644
+--- a/servers/slapd/back-mdb/Makefile.in
++++ b/servers/slapd/back-mdb/Makefile.in
+@@ -34,6 +34,8 @@ MDB_SUBDIR = $(srcdir)/$(LDAP_LIBDIR)/libmdb
+ BUILD_OPT = "--enable-mdb"
+ BUILD_MOD = @BUILD_MDB@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_MDB@_DEFS)
+ MOD_LIBS = $(MDB_LIBS)
+diff --git a/servers/slapd/back-monitor/Makefile.in b/servers/slapd/back-monitor/Makefile.in
+index 9aecdbc..11c962c 100644
+--- a/servers/slapd/back-monitor/Makefile.in
++++ b/servers/slapd/back-monitor/Makefile.in
+@@ -30,6 +30,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-monitor"
+ BUILD_MOD = @BUILD_MONITOR@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_MONITOR@_DEFS)
+ 
+diff --git a/servers/slapd/back-relay/Makefile.in b/servers/slapd/back-relay/Makefile.in
+index 90ea4b3..ff2f429 100644
+--- a/servers/slapd/back-relay/Makefile.in
++++ b/servers/slapd/back-relay/Makefile.in
+@@ -22,6 +22,8 @@ LDAP_LIBDIR= ../../../libraries
+ BUILD_OPT = "--enable-relay"
+ BUILD_MOD = @BUILD_RELAY@
+ 
++PIE_CFLAGS="-fPIE"
++
+ mod_DEFS = -DSLAPD_IMPORT
+ MOD_DEFS = $(@BUILD_RELAY@_DEFS)
+ 
+-- 
+1.7.10.4
+

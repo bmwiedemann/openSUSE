@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Tue Apr 23 15:28:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+- Fix removal of wrong shebang lines.
+
+-------------------------------------------------------------------
+Wed Jan  9 00:58:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless ldconfig calls. There are no ELF libraries in the
+  standard directories.
+- Trim bias and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Fri Jan  4 17:31:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to Mayavi 4.6.0
+
+ + Features
+   - Use new pyface toolkit
+   - Qt5 support. This is critical for Python 3.x as this is the only toolkit
+     that works with Python 3.x.
+ + Fixes
+   - Update installation documentation.
+   - Fix warning message when updating mlab_source data without scalars/vectors.
+   - Fix nbextension and missing bug with global.
+   - Improve tests so Python 2.7, 3.x are tested and the tests run using VTK 8.x and 7.x.
+   - Misc fixes for PyQt4 and Python 3.6.
+   - Fix bug with mlab.screenshot and VTK 8.1.0.
+   - Fix travis builds
+   - Fix `#605 <https://github.com/enthought/mayavi/issues/605>`_: Interactors now work correctly with Qt5.
+   - Fix some wxPython issues so mayavi works with recent wxPython releases.
+   - Fix 8.1 issues phase 2
+   - Fix 8.1 issues
+   - MRG: Avoid NumPy deprecation
+   - Fix bug with "p" keypress
+   - VTK 8.x compatibility fixes
+   - FIX: Remove debug print
+   - BUG: Undo a couple of accidental trait_set changes.
+   - DOC improve the mlab introduction
+   - Bug fix: solve the unicode encode error in windows
+   - Prevent get_tvtk_class_names from hijacking stderr
+   - Prevent get_tvtk_class_names from hijacking stdout
+   - FIX: Tiny spelling fix
+   - FIX: Fix deprecated .set / .get use
+   - Fix numpy issues in lut_manager
+   - Fix long standing test failure with ply reader.
+   - Fix numpy warnings.
+   - Try fix appveyor test failures.
+   - Add test for the fix provided in `#514 <https://github.com/enthought/mayavi/issues/514>`_.
+   - Fix bug with reset method of mlab sources.
+   - Fix tests
+   - Update readme and add link to mailing lists.
+   - Update installation instructions for conda/conda-forge/edm.
+   - doc: Typo fix
+   - Fix a bug with array source and vectors.
+   - FIX shared data in testing backend
+   - Update extract_grid.py
+   - Fix pick_world bug with VTK >= 6
+   - Fix bug in mouse_pick_dispatcher
+   - Remove focus-stealing code
+   - avoid loading nbextension via absolute URL
+   - Remove known bug about Python 3 support
+   - Adding information/tip about figure width
+   - Fix for setuptools 28.0
+   - [MRG] Added a volume_slice helper function in mlab.
+   - Update readme.
+   - Fix lurking old pipeline code
+- Add no_vtk_require.patch
+  VTK detection in setuptools fails due to a lack of .egg-info
+
+-------------------------------------------------------------------
+Thu May 24 17:26:17 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+- Fix building
+
+-------------------------------------------------------------------
+Wed May 23 19:07:39 UTC 2018 - toddrme2178@gmail.com
+
+- Run unit tests
+
+-------------------------------------------------------------------
+Fri Aug 25 20:41:07 UTC 2017 - toddrme2178@gmail.com
+
+- Switch to python3
+- Update to Mayavi 4.5.0
+  + Enhancements
+    * Jupyter notebook support!  Adds support for displaying Mayavi images or
+      x3d scenes on the notebook. The x3d scenes allow one to fully interact
+      with the scene in the notebook.  More documentation is available at
+      :ref:`jupyter_notebook`.
+    * Adds support for recording movies and animating timesteps.  See
+      :ref:`animating_a_timeseries` and :ref:`animating_a_visualization` for
+      more details.
+    * Updated LUTs to include new matplotlib colorschemes, this includes the
+      new viridis colormap.
+  + Fixes
+    * Fix several bugs, `#397 <https://github.com/enthought/mayavi/issues/397>`_
+      where PDF files were not saved properly. Fix issues with ``tvtk.visual``
+      and add many tests for it, this fixes `#387
+      <https://github.com/enthought/mayavi/issues/387>`_.  Refactor the save
+      screenshot dialog popups.  Fix problem with the picker point not showing
+      when "p" is pressed on the scene.
+    * Python 3 fixes for the jupyter notebook support.
+    * Fixes `#388 <https://github.com/enthought/mayavi/issues/388>`_ where
+      tubes were not showing on protein demo.
+    * Add additional save options.
+    * Fixes `#403 <https://github.com/enthought/mayavi/issues/403>`_ where the
+      image plane widget and volume modules were broken.
+    * Debug info on code gen for wrapper generation.
+    * BUG: Fix slice unstructured grid module.
+    * Fix typo in readme.
+    * update codecov configuration
+    * Documentation for QString API failure.
+    * Fixes incorrect signature of ``EnvisageEngine.new_scene``.
+    * Fix for unexpected test code.
+    * Fix "_p_void" values in TVTK with VTK 6.x
+    * Fix failing test for custom import in some circumstances
+    * Removes ``array_ext.so/pyd`` on clean
+    * Check if test successful with the appropriate filename.
+    * Unicode trait handling for those vtk methods returning unicode data
+    * ENH: Nice load pylab_luts.pkl
+    * Document object identity behavior matching VTK
+    * Revert "Fix savefig size and black image"
+    * Added setup.py documentation for Qt requirements
+    * Add VTK 6.3 and VTK 7 to travis ci
+    * Fix traitsdoc setup and compliance with py3
+    * Import and integer division in python3
+    * Fix texture on ``mlab.surf``, issue `#211 <https://github.com/enthought/mayavi/issues/211>`_.
+    * Fixes Quiver3d Failure with different argument types
+    * Fix Text3D in VTK 6.0+
+    * Fix savefig size and black image
+    * Fix for exception when modifying extents
+    * Suppresses test for VTK 6.2 (solves appVeyor random failure)
+    * Forces pipeline update when LUT changes
+    * Fix for test failure on mayavi -t
+    * Enforce ordering of attribute labels in VTKDataSource.
+    * Apply has_attribute to the output in VTKFileReader
+    * Replacing links to code. and svn.enthought.com
+    * Fix Camera off-centered when loading saved visualization
+    * Update to use new VTK pipeline where possible.  This fixes a number of
+      issues with the pipeline was not updating properly.
+    * Fix issue with ``mlab.move``
+    * Fix issue `#302 <https://github.com/enthought/mayavi/issues/302>`_,
+      segfault when savefig is called multiple times.
+    * Fix get_engine behavior when backend is changed again.
+   
+-------------------------------------------------------------------
+Mon Apr 25 14:33:03 UTC 2016 - badshah400@gmail.com
+
+- Rename python-mayavi to mayavi.
+- Avoid some rpmlint warnings by removing shebangs from
+  non-executable doc files.
+- Avoid rpmlint warnings by removing python byte-codes where they
+  are not accompanied by the source code.
+- Drop an unneeded hidden file to avoid rpmlint warning.
+
+-------------------------------------------------------------------
+Wed Mar 16 23:49:34 UTC 2016 - stecue@gmail.com
+
+- updated to 4.4.4
+  * fixed compilation problem with vtk 7.0.0
+  
+-------------------------------------------------------------------
+Mon Sep  7 11:37:05 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.4.3
+  * Enhancements
+    - Update the readme fixing dead links
+    - Use new Travis CI containers for faster builds
+    - Add CI tests on Windows using Appveyor
+  * Fixes
+    - Remove reference cycles from various objects to fix memory leaks. Add
+      unit test that provides an API to test garbage collection.
+    - Fix the LUT manager to select the correct lut mode for QT backend
+    - Use the python-wxtool package to speed up Travis CI build
+    - Fix TVTK wrapper to allow look up with long keys for Points
+    - Fix glyph to handle the masking of input points
+    - Update the docs with known bugs, issues list and describe the PR
+      workflow on github for development and documentation.
+    - Fix TVTK wrapper to update number of cells when a cell is inserted in a
+      VTK cell array
+    - Fix VKTFileReader to update output when using standalone
+    - Fix the sdist command
+- Update to 4.4.2
+  * Enhancements
+    - Upgrade the VTK parser to add support for VTK 6.2.
+- Update to 4.4.1
+  * Fixes
+    - Fix trackpad scrolling to zoom in/out smoothly on OS X.
+- Update to 4.4.0
+  * Enhancements
+    - Add function to set data at input port, add stanford (bunny,
+      dragon, lucy) examples, and use new volume mapper for new pipeline.
+    - Upgrade to VTK 6.0 with VTK's new pipeline.
+  * Fixes
+    - Support dynamic dimensions in array source.
+    - Fix MRI brain data URL.
+    - More fixes for connection topology, information request and tube filter
+      after upgrading to new pipeline.
+    - Handle the non-Latin-1 keypresses.
+    - Prevent ndarray comparisions with None.
+    - Fix the trait error raised when the threshold range is updated.
+    - Update installation documentation links.
+    - Fix integration tests after upgrade to VTK's new pipeline.
+
+-------------------------------------------------------------------
+Mon Oct 13 15:32:19 UTC 2014 - toddrme2178@gmail.com
+
+- Updated source to pypi url.
+
+-------------------------------------------------------------------
+Thu Feb  6 14:57:20 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.3.1
+    - Bugfixes
+
+-------------------------------------------------------------------
+Thu Oct 24 11:08:20 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+    - NEW: Adding a Qt version of the gradient editor. With this, all of
+      Mayavi's UI should be usable on Qt.
+    - Fixed bug with incorrectly tiled snapshots while using savefig.
+    - BUG: Qt: fix crashing full-screen-mode.  Fixed segfault when you click on
+      full-screen and press escape/q/e.
+- Update to 4.2.1
+    - ENH: Add null engine to mlab.pipeline.open.
+
+-------------------------------------------------------------------
+Sun Dec  9 16:33:09 UTC 2012 - jw@suse.com
+
+- Requires: python-distribute for pkg_resources.
+
+-------------------------------------------------------------------
+Mon Nov 19 15:43:26 UTC 2012 - jmatejek@suse.com
+
+- change Requires: python-traitsGUI to python-traitsui
+  (bnc#781367)
+
+-------------------------------------------------------------------
+Fri May 25 14:58:46 UTC 2012 - toddrme2178@gmail.com
+
+- Fix BuildRequires, Requires, and Recommends naming
+
+-------------------------------------------------------------------
+Tue May 22 20:50:49 UTC 2012 - badshah400@gmail.com
+
+- Update to version 4.2.0: No detailed changelog available.
+- The example and integrationtests files are not installed by the
+  build system any more. They are manually copied into the
+  directories %python_sitearch/mayavi/ and %python_sitearch/tvtk/
+  as applicable.
+
+-------------------------------------------------------------------
+Wed Jan 11 14:56:08 UTC 2012 - toddrme2178@gmail.com
+
+- Cleaned up spec file
+- Renamed package from python-Mayavi to python-mayavi to match module name
+- Split tvtk package
+
+-------------------------------------------------------------------
+Tue Nov  1 19:42:09 UTC 2011 - ocefpaf@gmail.com
+
+- Fixed build for vtk 5.8
+
+-------------------------------------------------------------------
+Sat Jun 25 22:41:26 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1562 ; version 4.0.0
+
+-------------------------------------------------------------------
+Wed Jun 15 21:37:48 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1552 ; version 3.5.0
+
+-------------------------------------------------------------------
+Sun May  1 15:09:23 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1521
+
+-------------------------------------------------------------------
+Sat Apr 23 23:05:50 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1519
+
+-------------------------------------------------------------------
+Sat Apr  9 14:16:43 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1514
+
+-------------------------------------------------------------------
+Sun Apr  3 00:21:52 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to release 1513
+
+-------------------------------------------------------------------
+Sat Mar 12 17:32:20 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated revision 1506
+
+-------------------------------------------------------------------
+Sat Feb 19 15:13:29 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated revision 1505
+
+-------------------------------------------------------------------
+Sat Feb  5 21:33:21 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated revision 1497
+
+-------------------------------------------------------------------
+Sun Jan 30 21:53:19 UTC 2011 - ocefpaf@yahoo.com.br
+
+- updated to svn revision 26451
+
+-------------------------------------------------------------------
+Wed Dec 29 19:49:26 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn revision 26178
+
+-------------------------------------------------------------------
+Sat Dec 18 18:16:15 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn release 26099
+
+-------------------------------------------------------------------
+Sat Nov 20 15:36:13 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn release 26037
+
+-------------------------------------------------------------------
+Sat Nov 13 01:05:55 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn 25993
+
+-------------------------------------------------------------------
+Sun Oct 31 15:25:43 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn 25932
+
+-------------------------------------------------------------------
+Sun Oct 24 14:05:13 UTC 2010 - ocefpaf@yahoo.com.br
+
+- updated to svn 25905
+
+-------------------------------------------------------------------
+Tue Oct 19 03:36:48 UTC 2010 - highwaystar.ru@gmail.com
+
+- updated to version 3.4.0 
+
+-------------------------------------------------------------------
+Wed Jun 30 00:59:19 UTC 2010 - highwaystar.ru@gmail.com
+
+- updated to version 3.3.2 
+
+-------------------------------------------------------------------
+Thu Apr 22 06:23:58 UTC 2010 - highwaystar.ru@gmail.com
+
+- initial release for openSUSE                                                                                                       
+- spec imported from Fedora 
+

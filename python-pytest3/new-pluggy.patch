@@ -1,0 +1,71 @@
+From a68f4fd2b9e99c82476d0e04ebcf561aeddbcb2e Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <nicoddemus@gmail.com>
+Date: Fri, 22 Feb 2019 18:49:56 -0300
+Subject: [PATCH] Fix test failures after pluggy 1.8 release
+
+pluggy now calls iter_entry_points with different arguments, and tests
+which mocked that call need to be updated accordingly.
+---
+ testing/test_assertion.py |  2 +-
+ testing/test_config.py    | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+Index: pytest-3.10.1/testing/test_assertion.py
+===================================================================
+--- pytest-3.10.1.orig/testing/test_assertion.py
++++ pytest-3.10.1/testing/test_assertion.py
+@@ -208,7 +208,7 @@ class TestImportHookInstallation(object)
+                     import spamplugin
+                     return spamplugin
+ 
+-            def iter_entry_points(name):
++            def iter_entry_points(group, name=None):
+                 yield DummyEntryPoint()
+ 
+             pkg_resources.iter_entry_points = iter_entry_points
+Index: pytest-3.10.1/testing/test_config.py
+===================================================================
+--- pytest-3.10.1.orig/testing/test_config.py
++++ pytest-3.10.1/testing/test_config.py
+@@ -511,8 +511,8 @@ def test_options_on_small_file_do_not_bl
+ def test_preparse_ordering_with_setuptools(testdir, monkeypatch):
+     pkg_resources = pytest.importorskip("pkg_resources")
+ 
+-    def my_iter(name):
+-        assert name == "pytest11"
++    def my_iter(group, name=None):
++        assert group == "pytest11"
+ 
+         class Dist(object):
+             project_name = "spam"
+@@ -548,8 +548,8 @@ def test_preparse_ordering_with_setuptoo
+ def test_setuptools_importerror_issue1479(testdir, monkeypatch):
+     pkg_resources = pytest.importorskip("pkg_resources")
+ 
+-    def my_iter(name):
+-        assert name == "pytest11"
++    def my_iter(group, name=None):
++        assert group == "pytest11"
+ 
+         class Dist(object):
+             project_name = "spam"
+@@ -578,8 +578,8 @@ def test_plugin_preparse_prevents_setupt
+ 
+     plugin_module_placeholder = object()
+ 
+-    def my_iter(name):
+-        assert name == "pytest11"
++    def my_iter(group, name=None):
++        assert group == "pytest11"
+ 
+         class Dist(object):
+             project_name = "spam"
+@@ -616,7 +616,7 @@ def test_plugin_preparse_prevents_setupt
+ def test_disable_plugin_autoload(testdir, monkeypatch, parse_args, should_load):
+     pkg_resources = pytest.importorskip("pkg_resources")
+ 
+-    def my_iter(name):
++    def my_iter(group, name=None):
+         raise AssertionError("Should not be called")
+ 
+     class PseudoPlugin(object):

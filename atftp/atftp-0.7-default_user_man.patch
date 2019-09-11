@@ -1,0 +1,37 @@
+Index: atftpd.8
+===================================================================
+--- atftpd.8.orig
++++ atftpd.8
+@@ -80,10 +80,10 @@ acknowledging the 'multicast' request by
+ 
+ .TP
+ .B \-\-logfile <logfile>
+-Log to a specific file instead of only syslog. 'nobody' (or any user
++Log to a specific file instead of only syslog. 'tftp' (or any user
+ used to run the server) must have permissions on the given
+ file. Assuming the file is /var/log/atftpd.log, simply run: "touch
+-/var/log/atftpd.log" and then "chown nobody.nogroup
++/var/log/atftpd.log" and then "chown tftp.tftp
+ /var/log/atftpd.log". When the server is run in daemon mode,
+ /dev/stdout or /dev/stderr can be used.  Specifying a single dash as
+ the filename will send logs to stdout (file descriptor 1).
+@@ -106,8 +106,8 @@ specialized usage.
+ 
+ .TP
+ .B \-\-user <user[.group]>
+-By default, the server change identity to the user nobody and group
+-nogroup. Specify an alternate user.group with this option.
++By default, the server change identity to the user tftp and group
++tftp. Specify an alternate user.group with this option.
+ 
+ .TP
+ .B \-\-group <group>
+@@ -212,7 +212,7 @@ Show summary of options.
+ This is the root directory used by the TFTP server. All requested
+ files from a TFTP client must reside in this directory. If not
+ specified, the directory defaults to /tftpboot. Since
+-atftpd run as the nobody user, the permission of the directory
++atftpd run as the tftp user, the permission of the directory
+ must be set properly to allow file reading and writing.
+ 
+ .SH STATS

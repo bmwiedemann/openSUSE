@@ -1,0 +1,42 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Nov 29 15:40:30 2018 +0100
+Subject: cluster: remove 'firstboot' stuff
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: cd0f09f51000c6e0d687175885c77a971c0fc2d4
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ cluster/etc/Makefile.am     | 6 ------
+ cluster/libexec/Makefile.am | 2 +-
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+diff --git a/cluster/etc/Makefile.am b/cluster/etc/Makefile.am
+index 4d782a1..b75eca8 100644
+--- a/cluster/etc/Makefile.am
++++ b/cluster/etc/Makefile.am
+@@ -1,13 +1,7 @@
+ SUBDIRS = 
+ 
+-confdir = $(sysconfdir)/warewulf/
+-initdir = $(sysconfdir)/warewulf/vnfs/include/etc/rc.d/init.d/
+-sconfdir = $(sysconfdir)/warewulf/vnfs/include/etc/sysconfig
+ profiledir = $(sysconfdir)/profile.d/
+ 
+-dist_conf_DATA = 
+-dist_init_SCRIPTS = wwfirstboot
+-dist_sconf_DATA = wwfirstboot.conf
+ dist_profile_DATA = cluster-env.sh cluster-env.csh
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+diff --git a/cluster/libexec/Makefile.am b/cluster/libexec/Makefile.am
+index d6464ed..5f35f3a 100644
+--- a/cluster/libexec/Makefile.am
++++ b/cluster/libexec/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = wwinit wwfirstboot
++SUBDIRS = wwinit
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+ 

@@ -1,0 +1,11 @@
+addFilter("explicit-lib-dependency libxml2")
+addFilter("explicit-lib-dependency libxslt")
+addFilter("explicit-lib-dependency liberation-fonts")
+#addFilter("non-executable-script .*/daps/lib/daps_functions")
+addFilter("non-executable-script .*/daps/lib/*")
+# false positive 
+addFilter("no-manual-page-for-binary daps-init")
+# internally used only, no man page needed
+addFilter("no-manual-page-for-binary daps-auto.pl")
+addFilter("no-manual-page-for-binary daps-xmlformat")
+addFilter("no-manual-page-for-binary daps-check-deps")

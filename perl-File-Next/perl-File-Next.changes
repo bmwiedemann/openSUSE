@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Sat Jul  9 05:17:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-File-Next/Changes
+
+  1.16 Thu Jul  7 22:41:30 CDT 2016
+      [FIXES]
+      File::Next::from_file() would ignore the C<warning_handler> argument
+      if it was passed in.
+
+-------------------------------------------------------------------
+Sun Jun 12 13:03:20 UTC 2016 - coolo@suse.com
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-File-Next/Changes
+
+  1.14 Thu Jun  9 22:33:24 CDT 2016
+      No changes since 1.13_02.
+  
+  
+  1.13_02 Sun Jun  5 23:18:10 CDT 2016
+  
+      [FIXES]
+      t/follow.t would cause failures in other tests when running in
+      parallel.  Now it correctly uses a temp directory.
+  
+  
+  1.13_01 Mon May 30 21:45:42 CDT 2016
+      [FIXES]
+      File::Next::from_file() was incorrectly using the error_handler parm
+      for both error and warning handler.
+  
+      [INTERNAL]
+      Optimized -f/-p calls in files() to not repeat the variable.
+  
+      Use File::Temp in tests, not POSIX::tmpnam, so that it works
+      on Android.  See https://github.com/petdance/file-next/issues/18
+      Thanks, Brian Fraser.
+
+-------------------------------------------------------------------
+Wed Jun  5 14:04:00 UTC 2013 - cfarrell@suse.com
+
+- license update: Artistic-2.0
+  See Readme.md
+
+-------------------------------------------------------------------
+Tue Jun  4 08:55:23 UTC 2013 - coolo@suse.com
+
+- updated to 1.12
+     [FIXES]
+     Fix detection of named pipes under various flavors of BSD.
+ 
+ 
+     [ENHANCEMENTS]
+     Added the warning_handler argument to File::Next::from_file().
+     This is so from_file() can throw a warning if a non-existent
+     file is in the file it came from.
+ 
+     [FIXES]
+     from_file() should return undef if the file can't be opened.
+ 
+     Fixed test failures and made tests more portable.
+ 
+ 
+     [ENHANCEMENTS]
+     Added File::Next::from_file() to get the list of files to iterate
+     over from a file, or from STDIN.
+ 
+     Named pipes are now supported.
+ 
+     [INTERNAL]
+     Add more tests, and clean up some Perl::Critic warnings.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:00 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:23 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:58 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Nov 11 22:43:50 UTC 2010 - chris@computersalat.de
+
+- removed perl-macros
+  o no perl_gen_filelist
+
+-------------------------------------------------------------------
+Thu Nov 11 10:38:42 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.02
+- move changelog to changes file
+
+-------------------------------------------------------------------
+Wed Nov 10 13:57:53 UTC 2010 - puzel@novell.com
+
+- update to perl-File-Next-1.06
+  * Fixed closing =cut in POD.
+- update to perl-File-Next-1.04
+  * It's never been correct to call File::Next::files() as a
+    method, as File::Next->files(). Now, if you do, files() will
+    die with an error. This is also the case with dirs() and
+    everything(). Thanks to Eric Lyons for reporting.
+  * Tiny directory reading speedups.
+  * Updated URLs for support sites.
+  * Added a little note about the follow_symlinks=>0 being a
+    speed hit.
+
+-------------------------------------------------------------------
+Tue Mar 25 05:48:24 UTC 2008 - guru@unixtech.be
+
+- new package 1.02
+

@@ -1,0 +1,1392 @@
+-------------------------------------------------------------------
+Sat Jun 29 18:08:26 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.9.2:
+  * General
+    + Fixed display of shortcuts in `Keyboard` preferences (QTCREATORBUG-22333)
+  * Editing
+    + Fixed disabled editor close button in Design mode (QTCREATORBUG-22553)
+  * Syntax Highlighting
+    + Fixed highlighting issue while editing (QTCREATORBUG-22290)
+  * All Projects
+    + Fixed saving state of `Hide Empty Directories`
+    + Fixed crash that could happen after project parsing failed
+  * C++ Support
+    + Fixed expansion of `%DATE%` in license templates (QTCREATORBUG-22440)
+  * Qt Quick Designer
+    + Fixed crash on malformed QML (QDS-778)
+
+-------------------------------------------------------------------
+Wed Jun  5 07:34:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the 'License:' tag.
+
+-------------------------------------------------------------------
+Fri May 31 09:29:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.9.1:
+  * Editing
+    + Fixed folding for generic highlighter (QTCREATORBUG-22346)
+  * QMake Projects
+    + Fixed unnecessary reparsing on file save (QTCREATORBUG-22361)
+    + Fixed code model for generated files when specified in `.pri` file
+      (QTCREATORBUG-22395)
+  * CMake Projects
+    + Fixed deployment with `QtCreatorDeployment.txt` (QTCREATORBUG-22184)
+    + Fixed that configuration UI was disabled after configuration error
+  * Qbs Projects
+    + Fixed crash when editing environment variables (QTCREATORBUG-22386)
+    + Fixed handling of `cpp.minimum*Version` (QTCREATORBUG-22355)
+  * Debugging
+    + Fixed ambiguity of `F10` shortcut (QTCREATORBUG-22330)
+    + CDB
+        - Fixed `Start and Break on Main` (QTCREATORBUG-22263)
+  * Test Integration
+    + Fixed `Uncheck All`
+  * Android
+    + Fixed AVD creation for Google Play images
+  * Remote Linux
+    + Fixed crash when running `Custom Executable` on remote Linux target
+      from Windows host (QTCREATORBUG-22414)
+    + Fixed SSH connection sharing on macOS (QTCREATORBUG-21748)
+    + Deployment via SFTP
+        - Fixed `Unexpected stat output for remote file` (QTCREATORBUG-22041)
+        - Fixed deployment of symbolic links (QTCREATORBUG-22307)
+    + Deployment via rsync
+        - Fixed compatibility issue with command line parameters
+          (QTCREATORBUG-22352)
+
+-------------------------------------------------------------------
+Mon Apr 15 15:42:15 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.9.0:
+  * New features for the language server protocol implementation
+  * Generic highlighter now based on KSyntaxHighlighting
+  * Improved UI for the Clang analyzer tools
+  * QML parser supports Qt 5.12 features now
+  * New perf plugin
+  * New plugin for generic deployment methods
+  * Many bug fixes, as usual
+  * Full changelog available at
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.9.0.md?h=4.9
+
+-------------------------------------------------------------------
+Sat Mar  2 10:10:55 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.8.2:
+  * General
+    + Fixed UI for choosing executable for external tools (QTCREATORBUG-21937)
+  * Editing
+    + Fixed highlighting of search results of regular expression search
+      (QTCREATORBUG-21887)
+  * Autotools Projects
+    + Fixed that includes, defines and flags of `SUBDIRS` were ignored
+      (QTCREATORBUG-21618)
+  * C++ Support
+    + Fixed crash when expanding macros (QTCREATORBUG-21642)
+    + Fixed crash in preprocessor (QTCREATORBUG-21981)
+    + Fixed infinite loop when resolving pointer types (QTCREATORBUG-22010)
+    + Fixed cursor position after completion of functions without arguments
+      (QTCREATORBUG-21841)
+  * QML Support
+    + Fixed auto-insertion of single quotes
+  * Debugging
+    + GDB
+      - Fixed detaching from process (QTCREATORBUG-21908)
+    + LLDB
+      - Fixed stopping at some breakpoints with newer LLDB (QTCREATORBUG-21615)
+      - Fixed `Attach to Process` and `Run in Terminal` with newer LLDB
+    + CDB
+      - Fixed display of `QDateTime` (QTCREATORBUG-21864)
+  * Qt Quick Designer
+    + Added support for more JavaScript functions in `.ui.qml` files
+    + Fixed crash with gradients and Qt Quick 5.12 (QDS-472)
+  * Test Integration
+    + Fixed handling of empty tests
+  * Android:
+    + Fixed upload of GDB server on some devices (QTCREATORBUG-21317)
+    + Fixed crash on exiting debugger (QTCREATORBUG-21684)
+
+-------------------------------------------------------------------
+Mon Feb 11 12:41:22 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable clangcodemodel for Leap 15.1+ as well
+
+-------------------------------------------------------------------
+Mon Feb 11 12:34:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Work around QTCREATORBUG-21972 by requiring a specific clang version
+
+-------------------------------------------------------------------
+Wed Feb  6 05:49:16 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Make use_system_botan conditional, and build without it on Leap
+  42.3 to fix build
+
+-------------------------------------------------------------------
+Thu Jan 17 13:17:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.8.1
+  * Fix wrong background color being used for some text highlighting items
+  * Fix a crash when renaming a file in the file system view
+  * Fix various errors occurring when parsing Boost headers
+  * Fix various issues arising with the debugger integration
+  * blog.qt.io/blog/2019/01/17/qt-creator-4-8-1-released/
+
+-------------------------------------------------------------------
+Wed Dec 19 14:26:56 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Set Version correctly
+
+-------------------------------------------------------------------
+Thu Dec  6 13:42:48 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.8.0 final:
+  * http://blog.qt.io/blog/2018/12/06/qt-creator-4-8-0-released/
+
+-------------------------------------------------------------------
+Tue Dec  4 18:57:28 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Also set QT_FORCE_STDERR_LOGGING in fix-application-output.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 10:16:13 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.8.0 RC 1:
+  * Even more bugfixes
+- Update to 4.8.0 Beta 2:
+  * More bugfixes
+- Refresh fix-application-output.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 08:24:51 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove dmgbuild script to avoid dep on python2
+- Set use_system_botan properly
+
+-------------------------------------------------------------------
+Wed Nov 14 11:51:27 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't try to use WebEngine on unsupported architectures
+
+-------------------------------------------------------------------
+Sat Oct 13 15:09:32 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 4.8.0 Beta 1:
+  * Added experimental plugin LanguageClient for supporting the
+    language server protocol (QTCREATORBUG-20284)
+  * Added experimental plugin CompilationDatabaseProjectManager
+    that opens a compilation database for code editing
+  * Added experimental plugin ClangFormat that bases
+    auto-indentation on Clang Format
+  * Added experimental plugin Cppcheck for integration of
+    cppcheck diagnostics
+  * Added support for multiple simultaneous debugger runs
+  * Fixed 'Open Terminal Here' for konsole (QTCREATORBUG-20900)
+  * Many other fixes and improvements. Full changelog:
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.8.0.md?h=4.8
+
+-------------------------------------------------------------------
+Tue Oct  2 22:23:06 UTC 2018 - Javier Llorente <javier@opensuse.org>
+
+- Update to 4.7.1
+  * Fixed that generic highlighting could use unreadable colors
+  (QTCREATORBUG-20919)
+  * Fixed jumping text cursor when editing custom executable path
+  * Fixed C++ version passed to code model (QTCREATORBUG-20909)
+  * Fixed include order for Clang headers
+  * Fixed that comments could break reformatting (QTCREATORBUG-21036)
+  * Fixed remote debugging command line argument (QTCREATORBUG-20928)
+  * Fixed environment for `Start and Debug External Application`
+  (QTCREATORBUG-20185)
+  * Fixed GDB built-in pretty printer handling (QTCREATORBUG-20770)
+  * Fixed pretty printing of enums
+  * Fixed re-enabling breakpoints (QTCREATORBUG-20795)
+  * Fixed `Attach to QML Port` (QTCREATORBUG-20168)
+  * Switched SSH support to use Botan 2 (QTCREATORBUG-18802)
+- Removed 0001-Build-with-Botan-2.patch (merged upstream) / updated spec
+
+-------------------------------------------------------------------
+Sat Sep  1 16:57:42 UTC 2018 - fabian@ritter-vogt.de
+
+- Use WebEngine instead of WebKit for rendering Help
+- Also enable the clang code model for aarch64
+- Adjust License tag
+- Don't install Adobe Source Code Pro fonts
+- Change fix-application-output.patch to only apply to Qt < 5.11
+
+-------------------------------------------------------------------
+Thu Jul 26 22:06:25 UTC 2018 - javier@opensuse.org
+
+- Update to 4.7.0
+  * Clang code model is now turned on by default
+  * Upgraded Clang code model to Clang 6.0
+  * New 'Run Test Under Cursor' action
+  * QML support: Updated parser to Qt 5.10, adding support for 
+  user-defined enums
+  * Various bugfixes
+  * https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.7.0.md?h=4.7
+- Update qt5_version to 5.9.0
+
+-------------------------------------------------------------------
+Fri May 25 19:32:06 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't try to build docs if qdoc not available
+
+-------------------------------------------------------------------
+Fri May  4 07:17:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 4.6.1:
+  * Fixes for various crashes and other bugs
+  * Introduce Qt 5.11 to wizards
+  * Fix 32-bit Android deploymend
+  * https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.6.1.md?h=4.6
+
+-------------------------------------------------------------------
+Thu Apr 26 20:59:08 UTC 2018 - herbert@graeber-clan.de
+
+- Fix plugin-devel subpackage
+  * Add *.hpp files
+  * Add 3rd party license files
+
+-------------------------------------------------------------------
+Mon Apr 16 07:43:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 4.6.0:
+  * Clang code model uses clang 5, supporting C++17
+  * Quick Designer: Added font and text properties from Qt 5.10
+  * Various other improvements
+  * Various bugfixes
+- Remove patches, now upstream:
+  * lldb.diff
+
+-------------------------------------------------------------------
+Thu Apr 12 11:12:24 UTC 2018 - javier@opensuse.org
+
+- Add fix-application-output.patch
+  Fixes no application output. Might be fixed on Qt 5.11 
+
+-------------------------------------------------------------------
+Thu Mar  1 10:18:43 UTC 2018 - christophe@krop.fr
+
+- Add 0001-Build-with-Botan-2.patch.
+  Fixes build with Botan 2 on openSUSE >= 15.0
+
+-------------------------------------------------------------------
+Sat Feb  3 01:48:05 UTC 2018 - wbauer@tmo.at
+
+- Build with gcc7 on Leap 42.3, gcc6 no longer works because of a
+  change to the default compiler flags in openSUSE:Leap:42.3:Update
+  (boo#1077345)
+
+-------------------------------------------------------------------
+Wed Dec 27 12:59:26 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 20 18:17:47 UTC 2017 - fabian@ritter-vogt.de
+
+- Recommend libqt5-qtdoc-qch instead of libqt5-qtdoc
+- Remove %defattr from %files
+- Remove BuildRoot
+
+-------------------------------------------------------------------
+Sat Dec  9 21:04:51 UTC 2017 - christophe@krop.fr
+
+- Update to 4.5.0
+  * Added `Edit` > `Advanced` > `Sort Selected Lines`
+  * Progress report while parsing projects
+  * CMake : new options to handle variables
+  * Full changelog available on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.5.0.md?h=4.5
+  * Require the exact QtDesignerComponents library.
+
+-------------------------------------------------------------------
+Sun Sep 24 16:49:48 UTC 2017 - jaime.marquinez.ferrandiz@fastmail.net
+
+- Fix building of the QmlDesigner plugin by adding libqt5-qtquickcontrols
+  BuildReq (and matching runtime Requires)
+
+-------------------------------------------------------------------
+Tue Sep  5 19:44:25 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.4.0
+  * Support for inline annotations
+  * Animated scrolling
+  * Improvements in the default color scheme
+  * Cleaned up CMake project tree
+  * Full changelog available on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.4.0.md?h=4.4
+- Remove patches, now upstream:
+  * disable_failing_cxxflags.diff
+- Add patch to fix build:
+  * fix-build-isystem.patch (QTCREATORBUG-18848)
+
+-------------------------------------------------------------------
+Sat Jul  1 16:18:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.3.1
+  * Fixes for crashes and other annoyances
+  * Changelog available on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.3.1.md?h=4.3
+
+-------------------------------------------------------------------
+Wed May 24 19:21:34 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.3.0
+  * For more details see:
+    https://blog.qt.io/blog/2017/05/24/qt-creator-4-3-0-released/
+
+-------------------------------------------------------------------
+Wed May 10 14:18:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.3.0 RC1
+  * For more details see:
+    http://blog.qt.io/blog/2017/05/09/qt-creator-4-3-rc1-released/
+- Remove qtcreator.desktop, file now upstream
+- Add patch to fix build failure:
+  * disable_failing_cxxflags.diff
+
+-------------------------------------------------------------------
+Mon May  1 18:56:13 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.2.2
+  * For more details see:
+    https://blog.qt.io/blog/2017/04/21/qt-creator-4-2-2-released/
+
+-------------------------------------------------------------------
+Thu Apr 20 12:03:28 UTC 2017 - fvogt@suse.com
+
+- Remove qbs-path.diff as it needs various other adjustments to
+  actually work (boo#962766)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:12:02 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 4.2.1
+  * For more details see:
+    https://blog.qt.io/blog/2017/01/23/qt-creator-4-2-1-released/
+- Use .desktop file provided by upstream instead of creating our own
+
+-------------------------------------------------------------------
+Thu Jan 19 10:16:56 UTC 2017 - mlin@suse.com
+
+- Increase disk constraints to 10G since sometimes it costs more than 8G. (bsc#1003887)
+
+-------------------------------------------------------------------
+Fri Jan 13 09:01:50 UTC 2017 - fabian@ritter-vogt.de
+
+- Use correct version for llvm-clang-devel dependency
+
+-------------------------------------------------------------------
+Wed Dec 28 21:59:13 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Tell qtcreator's buildsystem to try and build clang plugin only
+  with llvm >= 3.9.0
+
+-------------------------------------------------------------------
+Fri Dec 16 20:09:35 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 4.2.0
+  * For more details see:
+  https://blog.qt.io/blog/2016/12/14/qt-creator-4-2-released/
+
+-------------------------------------------------------------------
+Tue Nov 22 08:10:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Change license back temporarily. After this is in factory,
+  we can resume the wait to get it accepted.
+
+-------------------------------------------------------------------
+Thu Aug 25 22:33:21 UTC 2016 - cgiboudeaux@gmx.com
+
+- Update to 4.1.0
+  * For more details see:
+  http://blog.qt.io/blog/2016/08/25/qt-creator-4-1-0-released/
+- Change the license tag. Digia is no more.
+
+-------------------------------------------------------------------
+Sat Jun 11 18:17:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 4.0.1
+  * For more details see:
+    https://blog.qt.io/blog/2016/06/08/qt-creator-4-0-1-released/
+
+-------------------------------------------------------------------
+Mon May 30 07:50:04 UTC 2016 - alarrosa@suse.com
+
+- Enabled clangcodemodel plugin in SLE12 SP2 since it includes
+  a recent enough LLVM version.
+
+-------------------------------------------------------------------
+Sat May 28 19:12:46 UTC 2016 - fvogt@suse.com
+
+- Add Recommends: libqt5-qttranslations
+    Without them, bundled translations are ignored
+
+-------------------------------------------------------------------
+Wed May 25 20:50:51 UTC 2016 - herbert@graeber-clan.de
+
+- Add QtConcurrentTools to plugin-devel subpackage
+- Add files with QTC_SOURCE- and QTC_BUILD-Envrionment variables to
+  to /etc/profiles.d
+- Remove test directory form pugin-devel
+- Move docs to /usr/share/doc/packages/qt5 like alle other Qt5 docs,
+  so that qtcreator.qch will be auto-detected.
+- Create a new subpackage that contains the part of the source
+  tree, that is relevant for building Qt creator plugins.
+
+-------------------------------------------------------------------
+Tue May 17 16:13:02 UTC 2016 - alarrosa@suse.com
+
+- Added some recommended and suggested development packages so users
+  can start using Qt Creator to build new projects right after installing it.
+
+-------------------------------------------------------------------
+Tue May 17 08:45:11 UTC 2016 - alarrosa@suse.com
+
+- Update to 4.0.0 
+  * For more details see:
+    https://blog.qt.io/blog/2016/05/11/qt-creator-4-0-0-released/
+
+-------------------------------------------------------------------
+Wed Mar 23 22:01:22 UTC 2016 - os-dev@jacraig.com
+
+- Also disable the clangcodemodel plugin for 13.2 since, like SLE12, it does
+  not have llvm >= 3.6.
+
+-------------------------------------------------------------------
+Wed Jan 20 20:36:37 UTC 2016 - cgiboudeaux@gmx.com
+
+- Replace the 'Conflict: qt-creator' line with Provides/Obsoletes
+  entries before dropping qt-creator from openSUSE:Factory.
+
+-------------------------------------------------------------------
+Wed Jan 20 11:43:38 UTC 2016 - cgiboudeaux@gmx.com
+
+- Use the correct libexec path when loading plugins (boo#962650)
+
+-------------------------------------------------------------------
+Mon Jan 11 22:34:07 UTC 2016 - cgiboudeaux@gmx.com
+
+- Update to 3.6.0
+  * For more details see:
+    https://blog.qt.io/blog/2015/12/15/qt-creator-3-6-0-released
+
+-------------------------------------------------------------------
+Fri Dec  4 18:23:17 UTC 2015 - cgiboudeaux@gmx.com
+
+- Add lldb.diff.
+  lldb-* also matches lldb-mi which doesn't recognize the
+  -version switch. Fixes boo#957185.
+
+-------------------------------------------------------------------
+Thu Oct 29 11:42:27 UTC 2015 - dvaleev@suse.com
+
+- Add disk constraints.
+
+-------------------------------------------------------------------
+Tue Oct 27 10:57:51 UTC 2015 - rpm@fthiessen.de
+
+- Update to 3.5.1:
+  * Fixed that cancel button was ignored when wizards ask about
+    overwriting files
+  * Fixed crashes with code completion
+  * Meruical: Fixed crash when annotating
+  * And much more bugfixes, for all changes see:
+    http://blog.qt.io/blog/2015/10/15/qt-creator-3-5-1-released/
+- Fixed invalid .desktop file
+- Made package build on all repositories of the development project
+
+-------------------------------------------------------------------
+Wed Sep 30 15:11:45 UTC 2015 - alarrosa@suse.com
+
+- Disable the clangcodemodel plugin when in SLE12 and Leap, since neither
+  of them have llvm >= 3.6, thus removing the requirement.
+
+-------------------------------------------------------------------
+Fri Sep  4 09:24:04 UTC 2015 - alarrosa@suse.com
+
+- BuildRequire llvm-clang-devel minimum version 3.6 since the sources do
+
+-------------------------------------------------------------------
+Sat Aug 22 20:13:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Upate to  3.5.0:
+  * Increased minimum requirements for compilation of Qt Creator to
+    MSVC 2013 and GCC 4.7, and Qt 5.4.0
+  * Added variants with native separators to Qt Creator variables
+    that represent file paths
+  * Changed the way inconsistent enabled states were handled by the
+    plugin manager. Disabling plugins is now only a hint; if another
+    (enabled) plugin needs it, it is implicitly enabled. Before, the
+    other plugin was implicitly disabled.
+  * Improved keyboard shortcut settings. Made shortcut input field
+    freely editable and added separate `record` button.
+  * Added support for `~` as shortcut for user's home directory to
+    path input fields
+  * Added filtering to About Plugins
+  * Added `-load all` and `-noload all` command line options that
+    enable and disable all plugins respectively
+  * Made `-load` command line option implicitly enable all required
+    plugins, and `-noload` disable all plugins requiring the
+    disabled plugin. Multiple `-load` and `-noload` options are
+    interpreted in the order given on the command line.
+  * Fixed issues with raising the Qt Creator window on Gnome desktop
+    (QTCREATORBUG-13845)
+  * Fixed appearance on high DPI displays on Windows
+    (QTCREATORBUG-11179)
+  * Added locator filter for running external tools
+  * For more details see:
+    http://blog.qt.io/blog/2015/08/20/qt-creator-3-5-0-released/
+
+-------------------------------------------------------------------
+Wed Jun  3 22:55:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.4.1:
+  * For more details see:
+    http://blog.qt.io/blog/2015/06/02/qt-creator-3-4-1-released/
+
+-------------------------------------------------------------------
+Tue May 26 20:01:41 UTC 2015 - herbert@graeber-clan.de
+
+- BuildRequire libQt5WebKitWidgets-deve to make help pages show like Qt assistant
+
+-------------------------------------------------------------------
+Thu Apr 23 19:30:19 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.4 Final:
+  * For more details see:
+    https://blog.qt.io/blog/2015/04/23/qt-creator-3-4-0-released/
+    and http://code.qt.io/cgit/qt-creator/qt-creator.git/plain/dist/changes-3.4.0?h=3.4
+
+-------------------------------------------------------------------
+Wed Apr  1 19:40:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.4. rc1:
+  * For more details see:
+    http://blog.qt.io/blog/2015/04/01/qt-creator-3-4-rc1-released/
+
+-------------------------------------------------------------------
+Mon Mar  9 18:35:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.4 beta1:
+  * Added option to change environment for running external tools
+    (QTCREATORBUG-4995)
+  * Improved performance of output panes
+  * Fixed that wizard windows were missing in Window menu
+    (QTCREATORBUG-13766)
+  * Switched to a QMimeDatabase based MIME database implementation
+  * Added hint in empty editor area
+  * Added "Copy Path and Line Number" to context menu of
+    document selector
+  * Added parenthesis highlighting to generic highlighter
+  * Fixed that files with same file name but different path were
+    not distinguishable in document selector and open documents pane
+    (QTCREATORBUG-10185)
+  * Fixed that symlinks and their target could be opened at
+    the same time (QTCREATORBUG-5941)
+  * Fixed that wrong highlight definition was downloaded when
+    sorting the list in the settings
+  * Fixed clean up of automatically registered documentation
+  * Added handling of QMAKE_CXXFLAGS_(APP|SHLIB|PLUGIN) variables
+  * Added option to put debug information in separate file
+    (QTCREATORBUG-14009)
+  * Fixed ANSI color support for application output
+    (QTCREATORBUG-13764)
+  * Fixed handling of DEFINES with escaped characters
+  * Fixed that static libraries were deployed
+  * Fixed finding source directory for build directory
+  * Added option to show full command lines during build
+  * Added Valgrind Memory Analyzer with GDB
+  * Made it possible to search through event notes
+    (QTCREATORBUG-13417)
+  * Added support for binary literals (n3472)
+  * Added locator filter for all included files
+    (QTCREATORBUG-280)
+  * Added refactoring action that moves all function
+    definitions out of a class declaration
+  * Added support for signal and slot completion
+    in Qt 5 style connects
+  * Improved support for non-Qt projects that use Qt keywords
+  * Made auto-completion delay configurable
+    (QTCREATORBUG-13393)
+  * Fixed auto-indentation for break in switch statement
+    (QTCREATORBUG-13155)
+  * Fixed issues with case-insensitive file systems
+    (QTCREATORBUG-12390)
+  * Fixed completion for enums inside member functions
+    (QTCREATORBUG-13757)
+  * Fixed crash on closing one of multiple outline views
+    (QTCREATORBUG-13614)
+  * Fixed that Move Definition to Class refactoring action was
+    not available when using "override" (QTCREATORBUG-13564)
+  * Fixed that Assign to Local Variable refactoring action was
+    not working with chained function calls (QTCREATORBUG-10355)
+  * Fixed several issues with completion and iterators
+    (QTCREATORBUG-13799)
+  * Fixed crash on closing one of multiple outline views
+    (QTCREATORBUG-13614)
+  * Added support for "git stash --keep-index" (QTCREATORBUG-13587)
+  * Fixed that it was not possible to abort query and fetch
+    (QTCREATORBUG-9743)
+  * Fixed that not all remotes where shown in Push to Gerrit dialog
+    (QTCREATORBUG-13718)
+  * Added option to show verbose log
+  * Changed to use the new unified diff viewer
+  * Fixed that committing failed when using non-Latin1 characters in
+    commit message (QTCREATORBUG-13979)
+  * Improved repository log (QTCREATORBUG-13526)
+  * Fixed target column for various commands
+  * Fixed behavior of "D" in visual block mode
+  * Fixed cursor shape after failing search
+  * Fixed issues with pasting in presence of splits
+    (QTCREATORBUG-13481)
+  * Added support for 64bit tool chains
+  * Fixed that active run configuration setting was ignored
+    for deploying application
+     (QTCREATORBUG-13732)
+  * Added optional host key checking (QTCREATORBUG-13339)
+  * Added automatic closing of SSH connections after a
+    period of inactivity
+  * Added support for SHA-256 HMAC for SSH
+  * Fixed that it was not possible to quote run arguments
+    (QTCREATORBUG-14002)
+  * Added GDB server configuration management (QTCREATORBUG-13686)
+  * Added support for remote channel without port
+  * Added support for generic projects
+- Drop make-qt-creator-build-with-Werror=date-time.patch, merged
+  upstream
+
+-------------------------------------------------------------------
+Thu Feb 26 02:19:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 3.3.1:
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-creator-3-3-1-released/
+    and https://qt.gitorious.org/qt-creator/qt-creator/source/3.3:dist/changes-3.3.1
+
+-------------------------------------------------------------------
+Tue Feb  3 19:13:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add make-qt-creator-build-with-Werror=date-time.patch:
+  don't embedded date & time into qtcreator binary & plugins
+- Extend rpmlintrc file to avoid duplicates warnings, we don't wont
+  to use fdupes due to unpredictable symlinking
+
+-------------------------------------------------------------------
+Wed Dec 10 11:33:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.3 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-creator-3-3-0-released/
+    and https://qt.gitorious.org/qt-creator/qt-creator/source/3.3:dist/changes-3.3.0
+- Raise required Qt5 version to 5.4.0
+
+-------------------------------------------------------------------
+Thu Nov 27 15:46:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.3.0 RC1
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-creator-3-3-rc-released/
+    and https://qt.gitorious.org/qt-creator/qt-creator/source/3.3:dist/changes-3.3.0
+
+-------------------------------------------------------------------
+Tue Oct 21 05:49:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.2.2
+  * Bugfix release
+    * Editing
+      * Fixed crash with Toggle Comment Selection
+        (QTCREATORBUG-12987)
+      * Fixed that Select All set the cursor to top of document
+        (QTCREATORBUG-12860)
+    * Help
+      * Fixed crash with help index locator filter
+    * Managing and Building Projects
+      * Fixed that closing Qt Creator while Projects mode
+        is active lost all session data (QTCREATORBUG-13098)
+    * CMake Projects
+      * Fixed crash when selecting make target
+        (QTCREATORBUG-13129)
+    * Generic Projects
+      * Fixed that include paths were not updated when
+        files are added (QTCREATORBUG-12873)
+    * Version Control Systems
+      * ClearCase
+      * Fixed that reserved checkout was performed even when
+        unchecking the checkbox (QTCREATORBUG-12847)
+- Added explicit libQt5Sql5-sqlite BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 25 08:50:31 UTC 2014 - infroma@gmail.com
+
+- Explicitly require latest libQt5Script5 (needed by plugins). 
+  Qt Creator crashes with old versions.
+
+-------------------------------------------------------------------
+Tue Sep 16 12:13:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.2.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/09/16/qt-creator-3-2-1-released/
+
+-------------------------------------------------------------------
+Tue Aug 19 14:21:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.2.0
+  * Block selections in text editors now allow you to do “column
+    editing”, meaning that all selected lines are edited
+    simultaneously (Qt Creator Manual)
+  * Context help can now be configured to open in an external
+    window (without disabling Help mode)
+  * Support for C99 designated initializers and concatenated strings
+    was added to the C++ code model, as well as improvements to
+    encoding handling and lambda  support and many other things
+  * More panes are now searchable with Ctrl+F, for example the
+    project tree
+  * The QML profiler received many performance and stability
+    improvements again
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/08/19/qt-creator-3-2-0-released/
+
+-------------------------------------------------------------------
+Wed Jun 25 10:37:59 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+
+-------------------------------------------------------------------
+Tue May 20 07:05:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.1
+ - General
+  * Fixed editing of MIME types while filtering is applied
+    (QTCREATORBUG-12149)
+ - Managing and Building Projects
+  * Fixed performance regression in Issues pane (QTCREATORBUG-12109)
+ - Qbs Projects
+  * Fixed support for VS2013 compiler (QTCREATORBUG-11025)
+ - C++ Support
+  * Fixed issue with missing semantic highlighting (QTCREATORBUG-11367)
+ - Qt Quick Designer
+  * Fixed several UI issues (QTCREATORBUG-12040, QTCREATORBUG-12035,
+    QTCREATORBUG-11904, QTCREATORBUG-12018)
+   * Fixed anchor and alignment handling (QTCREATORBUG-12006)
+ - Diff Viewer
+  * Fixed crash when showing binary file containing carriage return
+    character (QTCREATORBUG-12056)
+ - Version Control Systems
+   * Git
+    * Fixed encoding issues on Window
+    * Fixed crash when closing Qt Creator after revert
+      (QTCREATORBUG-12099)
+
+-------------------------------------------------------------------
+Wed Apr 16 15:15:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0 final
+  * For full changelog see:
+    https://qt.gitorious.org/qt-creator/qt-creator/source/3.1:dist/changes-3.1.0
+
+-------------------------------------------------------------------
+Wed Apr  2 20:42:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0 rc1
+  * For more details see:
+    http://blog.qt.digia.com/blog/2014/04/03/qt-creator-3-1-rc1-released/
+- Only enable clang plugins on arches where clang is available
+- Move the creator back to standard location
+- Added conflict with Qt4 version
+- Drop plugin_path.diff
+- Build qbs plugin
+- Added qbs-path.diff (imported from Qt4 version), so qbs plugin gets
+  installed to correct location
+- Removed unused, and not needed sed workarounds from spec
+- Improve logic for required libQt5Designer package
+
+-------------------------------------------------------------------
+Mon Mar 24 03:09:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0 beta
+  * Experimental support for a Clang-based C++ model
+  * Droped support for GDBs that do not support scripting through Python
+  * For more details, please see:
+  https://blog.qt.digia.com/blog/2014/03/04/qt-creator-3-1-beta-released/
+  and https://qt.gitorious.org/qt-creator/qt-creator/source/3.1:dist/changes-3.1.0
+- Used sed in %prep step, to swap destination if buildoutputparser binary,
+  so it installs to correct location
+- Activate clangmodel plugin, by BuildRequiring llvm-clang-devel and
+  passing LLVM_INSTALL_DIR to qmake
+- Bump minimal Qt5 version to 5.3.0 beta
+
+-------------------------------------------------------------------
+Wed Feb  5 17:07:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.1:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/02/05/qt-creator-3-0-1-released/
+- Build with system Botan library, accomplished by passing
+  USE_SYSTEM_BOTAN=1 to qmake. Thus added libbotan-devel BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 16 23:19:32 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Move away from pkgconfig(...) BuildRequires and just use
+  libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+-------------------------------------------------------------------
+Fri Dec 13 20:39:25 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0 final
+- See http://blog.qt.digia.com/blog/2013/12/12/qt-creator-3-0-released/
+- For the complete changelog see:
+  http://qt.gitorious.org/qt-creator/qt-creator/blobs/3.0/dist/changes-3.0.0
+
+-------------------------------------------------------------------
+Fri Nov 29 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0 rc1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/11/29/qt-creator-3-0-rc1-released/
+  and https://qt.gitorious.org/qt-creator/qt-creator/source/3.0:dist/changes-3.0.0
+- Due to qtcreators buildsystem, and it's usage of private headers,
+  BuildRequire latest Qt5 version, so it always rebuilds against it
+- Require exact libQt5Designer5 version creator was built against, so
+  the above change makes more sense
+
+-------------------------------------------------------------------
+Thu Oct 24 01:30:29 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 3.0.0 beta
+  * New feature release, please see
+    http://blog.qt.digia.com/blog/2013/10/23/qt-creator-3-0-beta-released/
+- Package can now co-exist with qt-creator (based on Qt4) package
+- Added plugin_path.diff to enable co-existance of the two packages.
+  Patch removes hardcoded plugin path, and adjusts qtcreator recognizing
+  plugin path as per install prefix
+
+-------------------------------------------------------------------
+Wed Oct  9 21:04:37 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Manually install desktop file. Also added mimetypes, to emulate
+  Qt4 creator behaviour
+
+-------------------------------------------------------------------
+Sun Oct  6 23:13:27 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added pkgconfig(Qt5X11Extras) BuildRequires, it is needed for
+  raising the main window
+
+-------------------------------------------------------------------
+Fri Sep 13 09:17:46 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.1:
+  * Bugfix release, please see
+    http://qt.gitorious.org/qt-creator/qt-creator/blobs/2.8/dist/changes-2.8.1
+- Add Source URL
+
+-------------------------------------------------------------------
+Thu Sep  5 08:16:34 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-LGPL-2.1-with-digia-exception-1.1
+  See spreadsheet linked from license.opensuse.org
+
+-------------------------------------------------------------------
+Tue Jul 16 11:35:57 UTC 2013 - binner@kde.org
+
+- disable qbs plugin for now
+
+-------------------------------------------------------------------
+Thu Jul 11 20:41:16 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.8
+
+-------------------------------------------------------------------
+Sun Jul  7 07:48:29 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.8 RC
+
+-------------------------------------------------------------------
+Thu May 30 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.8 Beta
+
+-------------------------------------------------------------------
+Wed May 15 08:27:01 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.7.1
+
+-------------------------------------------------------------------
+Thu Mar 21 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.7 Final
+
+-------------------------------------------------------------------
+Thu Mar 07 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.7 RC
+
+-------------------------------------------------------------------
+Thu Jan 31 16:10:56 UTC 2013 - stephan.binner@basyskom.com
+
+- Update to 2.6.2 release
+
+-------------------------------------------------------------------
+Thu Dec 20 13:50:06 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.6.1 release
+
+-------------------------------------------------------------------
+Mon Nov 12 07:56:52 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.6 release
+
+-------------------------------------------------------------------
+Wed Oct 17 16:22:22 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.6 RC
+
+-------------------------------------------------------------------
+Mon Sep 24 12:14:35 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.6 Beta
+
+-------------------------------------------------------------------
+Sat May 12 07:59:29 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.5 Release
+
+-------------------------------------------------------------------
+Mon Apr 23 17:37:17 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.5 Release Candidate
+
+-------------------------------------------------------------------
+Fri Mar 16 14:48:00 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.5 beta release
+
+-------------------------------------------------------------------
+Wed Feb  1 14:02:00 UTC 2012 - stephan.binner@basyskom.com
+
+- Update to 2.4.1 release
+
+-------------------------------------------------------------------
+Tue Dec 13 13:04:31 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.4 release
+
+-------------------------------------------------------------------
+Wed Nov 16 16:02:00 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.4 RC
+
+-------------------------------------------------------------------
+Fri Sep 30 12:52:24 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.3.1 release
+
+-------------------------------------------------------------------
+Thu Sep  1 13:23:00 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.3 release
+
+-------------------------------------------------------------------
+Mon Aug 22 11:12:36 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.3 Release Candidate
+
+-------------------------------------------------------------------
+Tue Jun 21 05:25:21 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.2.1 release
+
+-------------------------------------------------------------------
+Fri May  6 10:12:26 UTC 2011 - stephan.binner@basyskom.com
+
+- Update to 2.2 release
+
+-------------------------------------------------------------------
+Wed Apr 20 10:01:51 UTC 2011 - wstephenson@novell.com
+
+- Enable QML Designer build.  Disable it in Help->Plugins... if it
+  causes problems.
+
+-------------------------------------------------------------------
+Tue Apr 19 12:45:27 UTC 2011 - wstephenson@novell.com
+
+- Update to 2.2.0rc1
+  * Fixes for ABI detection
+  * Fixes to QML debugging
+  * Fixes to syntax highlighting
+  * Fixes to Maemo development
+
+-------------------------------------------------------------------
+Mon Apr  4 00:13:53 UTC 2011 - javier@opensuse.org
+
+- Add Recommends: libqt4-devel-doc
+
+-------------------------------------------------------------------
+Thu Mar 24 15:27:10 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 2.2.0beta1
+General
+   * Added support for running user defined external tools (Tools->External)
+   * Moved toolchain definitions out of Qt versions.
+      * You can now define toolchains in Tools->Options->ToolChains
+      * Creator now supports more than one instance of each kind of toolchain
+   * Support for MIME type customization through editing of patterns and
+     magic matchers.
+Editing
+   * Add new Inkpot color scheme
+   * Moved 'Open in External Editor' to Tools->External->Text
+   * Add UTF-8 BOM support
+   * GLSL Support with:
+     - syntax checking
+     - highlighting
+     - code completion
+   * Add 'expand/collapse all' context menu entry to Outline pane
+   * Support for user defined macros was contributed by Nicolas Arnaud-Cormos
+   * Snippet editor with syntax highlighting, indentation, and basic auto
+     completion for C++ and QML.
+Project Support
+   * QMake project support should be more robust against syntax errors
+   * Treatment of command line arguments of processes started from build
+     and run configurations underwent heavy modifications:
+     - argument lists use native shell syntax; this affects quoting and
+       environment variable expansion most
+     - the SOURCEDIR and BUILDDIR environment variables were replaced
+       with %{sourceDir} and %{buildDir} macros
+     - this affects working directories and executable paths as well
+   * CMake: Add Ui completion, changes in .ui files are picked up without
+     a rebuild.
+   * Syntax highlighting and completion for QMake project files
+   * Text editor behavior settings now avaiable on a per-project basis.
+Debugging
+   * Rewrote debugging engine using the Microsoft Console Debugger (CDB)
+     for debugging executables built with Microsoft Visual Studio,
+     resulting in significant speed-up and better display of data
+     types, supporting both 32bit and 64bit versions of the
+     Debugging Tools for Windows
+   * Made it possible to pin debugger tooltips.
+   * Reworked global architecture to allow multiple debugging sessions (for
+     different projects, combined Qml/C++ debugging, project 'snapshots', ...)
+   * Reworked breakpoint handling: new special breakpoint types for "break
+     on throw", "break on main", data breakpoints
+   * Introduce combined c++/qml debugging (combined stack, cross-step) (gdb only)
+   * Rework per-type and per-item selection of display formats
+   * New dumpers for QTextCursor, QTextDocument, __m128, QScriptValue
+     QBasicAtomicPointer, bit fields, boost::shared_ptr (gdb only)
+   * Improve dumpers for QRegion, QVariant (custom types), QSharedPointer,
+     QMultiMap (QTCREATORBUG-3122), QObject, QWeakPointer
+   * Make alphabetic structure member sorting optional
+   * Make dumpers robust in case of missing debug information
+   * Improve python dumper profiling support
+   * Improve stepping performance
+   * Enable breakpoint setting from a disassembler view, QTCREATORBUG-3667
+   * Fix display of shadowed variables.
+   * Fix display of data containing quote characters, QTCREATORBUG-3084
+   * Fix display of C style 'typedef struct X { ... } X;
+   * Fix stack/break view updates after manual module loading, QTCREATORBUG-3427
+   * Fix 'Jump To/Run to' when in instruction-wise mode
+   * Several fixed to the "watcher" handling
+   * Allow re-running debugger engines, QTCREATORBUG-3073
+   * Robust process control after -exec-interrupt errors, QTCREATORBUG-2850
+   * Robust detection of Qt-in-namespace builds
+   * Handle "live updates" in the memory view
+   * Make memory view writable (gdb only)
+   * Improve starting debugger session directly from the command line
+   * Improve debugging helpers dialog
+BinEditor:
+   * Visualize data differences after updates
+   * Fix selection if cursor is left of anchor
+   * Allow copying also if selection is "backwards"
+   * Do not draw blinking cursor when there is a selection
+C++ Support
+   * Add QuickFix for implementing setters/getters for a Q_PROPERTY
+   * Add documentation about QuickFixes
+   * Fix switch statement indentation for GNU and Whitesmiths
+     style, QTCREATORBUG-2994
+   * Fix indentation of labels
+   * Highlighting for virtual functions
+   * Navigate to correct overloaded function/method
+QML/JS Support
+   * Add wizard for creating JavaScript files, QTCREATORBUG-3070
+   * Add local-file completion for url properties, QTCREATORBUG-2619
+   * Add warning about invalid files in url properties
+   * Add file name completion in imports, QTCREATORBUG-3067
+   * Add a locator filter for JS functions, QTCREATORBUG-2607
+   * Add JSlint-style warnings about common JS pitfalls, QTCREATORBUG-3071
+   * Add completion for attached properties like Component.onCompleted
+   * Allow QML modules to ship predumped type description files.
+   * Reenable instantiating component scope detection, QTCREATORBUG-2835
+   * Improve error reporting of failed plugin dumps
+   * Complete a trailing '{' for 'A on b' object bindings, QTCREATORBUG-2642
+   * Highlight capitalized types, QTCREATORBUG-2658
+   * Re-dump a plugin if the shared library/dll changes, QTCREATORBUG-3047
+   * Build qmldump in debug and release version on Windows, QTCREATORBUG-3549
+   * Change qmldump to output QML instead of XML
+   * Fix automatic '.' import to also pick up QML modules, QTCREATORBUG-3768
+   * Fix code model update when files are renamed, QTCREATORBUG-2986
+   * Fix incorrect completion when brace is on separate line, QTCREATORBUG-2658
+   * Fix quote autoinsertion in string literals, QTCREATORBUG-2155, QTCREATORBUG-3244
+   * Fix '{' not being an electric character, QTCREATORBUG-3405
+   * Fix indentation of 'foo: Namesp.Type {', QTCREATORBUG-3371
+   * .qmlproject format: Allow specifying the 'mainFile' qml file, bump version to 1.1
+   * Qt Quick UI project: allow user to change run environment
+QML/JS Debugging:
+   * Compile qmljsdebugger code as static library, and link it based on checkbox in qmake step
+      (replaces QMLJSDEBUGGER_PATH / QMLJSDEBUGGER define)
+   * Qt Quick Application: Allow debugging also in release builds, improve error diagnostics
+   * Gui cosmetics in JS debugger: Show stack frame level, only valid
+     line numbers in stack view, do not show function code, show dummy
+     child entry for empty arrays
+   * Added qml tooltips for property inspection at debug time
+   * Extended QML Observer for inspection and tweaking of item's properties
+   * Added navigation of the object tree in the QML Observer through a crumble path
+   * Add 'show app on top' option
+   * Move toolbar from Observer tab to the main toolbar space
+   * Support setting of breakpoints in .qml files embedded as qrc resources
+   * Improve 'linkification' of QML errors in Application Output pane
+FakeVim:
+   * Implement Ctrl-N/Ctrl-P
+   * Implement 's' in visual block mode
+   * Fix Alt-Gr handling on Windows
+   * Handle more Ctrl-W + <x> commands
+Symbian Target
+   * Added support for the new on-device debugging agent (CODA)
+Version control plugins
+   * Bazaar support was contributed by Hugues Delorme
+Wizards
+   * Support new keywords %MONTH% and %DAY% for C++ template file
+Misc
+   * MemCheck (from Valgrind) integration (Linux, Mac)
+   * Create infrastructure to setup "soft dependencies" between plugins
+   * Add a little tool 'qtpromaker' doing the job of 'qmake -project', but
+     much faster to make Qt Creator usable to quickly inspect and navigate
+     "alien" codebases a way to easily set up dummy .pro files is needed
+   * Start documenting Qt Creator's coding style guidelines
+   [etc]
+
+-------------------------------------------------------------------
+Tue Mar 01 15:22 CET 2011 - cgiboudeaux@gmx.com
+- Update to 2.1.0
+    * Semantic C++ highlighting: Highlighting of types, local variables vs members, virtual methods
+    * Generic highlighting adds highlighting for various file types based on the Kate highlight definition specification
+    * C++ class view and image viewer contributed by Denis Mingulov
+    * Outline views for C++ and QML
+    * Searching for C++ symbols matching a pattern (via advanced find dialog)
+    * Wizard for adding libraries to pro files, including all the necessary fancy magic for include paths and static libs
+    * Various debugging improvements on all platforms
+    * Improved QML code editing with a faster code model and a new indenter
+    * Find usages and improved follow symbols in QML code
+    * Graphical QML tool bar for setting e.g. fonts and colors in the QML code editor
+    * Project wizards for Qt Quick applications that also handle deployment to devices, and for custom QML extension plugins
+    * Mobile application project wizards that provide you with the needed setup for Symbian and Maemo, and packaging and deployment
+    * Various improvements to deployment to Maemo targets and Symbian support
+    * Click on QObject::connect warnings in application output to jump to the code
+
+-------------------------------------------------------------------
+Tue Dec 07 14:18 CET 2010 - cgiboudeaux@gmail.com
+
+- Update to 2.1rc1
+   * Many small bugfixes since beta2, see
+     http://chaos.troll.no/~dmolkent/qt-creator-changelog-rc1.txt
+     for details
+   * Updated Russian and Polish translations
+
+-------------------------------------------------------------------
+Sat Nov 20 11:14:38 CET 2010 - dmueller@suse.de
+
+- update to 2.1.0beta2:
+   * Made search result panel searchable
+   * Generic highlighter:
+     http://labs.qt.nokia.com/2010/09/16/generic-highlighter-in-qt-creator/
+   * Added semantic highlighting of types, virtual methods, locals, statics and
+     member variables (only enabled when running against Qt 4.7.1 and up, for
+     performance reasons)
+   * Add new indenter along with a new option to control alignment indents
+   * Add new %FILENAME%, %CLASS% placeholders to license template
+   * Added searching for symbols that match a pattern to advanced find
+   * Made 'Follow symbol' for classes skip forward declarations
+   * Added option for adding subprojects to projects in the New wizard
+   * Added context-menu command for removing subprojects in the Edit mode,
+     Projects view
+   * Added a wizard for adding other than Qt libraries to project files
+   * Fixed splitter inconsistency of debugger tool bar
+   * Fixed console debugging with MinGW/gdb
+   * Symbian: Added basic thread support, improve logging
+   * New dumpers for QDate, QTime, QHostAddress, QRegion, boost::optional,
+     QSharedData and QSharedDataPointer
+   * Improved/fixed dumpers for QObject (include user defined properties), QList,
+     C-style arrays, QSize, QSizeF, QImage/QPixmap, std::vector<bool>,
+     QVariant(QString), qulonglong, std::size_t, std::ptrdiff_t,
+     QScopedPointer, QStandardItem
+   * Performance improvements due to use of dwarf index data to reduce gdb
+     startup time, use of new gdb.read_memory for QByteArray and QString display
+   * Debugger framework handles multiple debugging sessions in parallel
+   * Allow per item and/or type selection of display method in Locals&Watchers
+   * Implement data watchpoints
+   * Implement a debugger engine to debug Python scripts
+   * Direct remote debugging using -debug binary@host:port[@arch] on the command line
+   * Make alphabetic sorting of struct members optional
+   * New Add/Edit breakpoint dialog
+   * Show QThread object names in threads view
+   * Support for per-thread breakpoints
+   * Show dynamic type of objects for gdb versions newer than Aug 31, 2010
+   * [etc]
+
+-------------------------------------------------------------------
+Thu Sep 02 09:19:05 UTC 2010 - dmueller@suse.de
+
+- only use system botan for new-enough systems
+
+-------------------------------------------------------------------
+Mon Aug 30 10:51:29 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 2.0.1
+  see http://qt.nokia.com/developer/changes/changes-qtcreator-2.0.1
+
+
+-------------------------------------------------------------------
+Mon Aug 30 09:09:30 CEST 2010 - dmueller@suse.de
+
+- remove botan copy, use system version instead
+- fix runpath (bnc#613978)
+
+-------------------------------------------------------------------
+Mon Jun 21 13:04:54 CEST 2010 - dmueller@suse.de
+
+- fix gdb version checks (bnc#615361)
+
+-------------------------------------------------------------------
+Tue Jan 26 09:44:56 UTC 2010 - wstephenson@novell.com
+
+- update to 1.3.1:
+  General:
+  * Updated translations
+  Editing:
+  * Fixed drawing issues when line wrap is enabled
+  * Fixed problem with indentation when auto-indent is turned off
+  C++ support:
+  * Don't show the refactoring warning message all the time
+  * Insert semicolon when matching enum declarations
+  * Fixed function argument widget text color in dark themes
+  * Fixed that inline implemented methods did not show up in the
+    methods filter
+  * Fixed in-place renaming when text is selected
+  * Fixed autoindent when using tabs instead of spaces
+  * Fixed completion when a typedef symbol is used as class name
+  * Fixed that template argument was marked as "not a type name" when
+    defined as primitive type
+  * Fixed some highlight errors in code using the win32 API
+  * Improved completion of function definition parameter lists to
+    append the const and volatile qualifiers if required
+  Project support:
+  * Fixed that run configurations were disabled if they had no
+    build step
+  Debugging:
+  * CDB: Fixed disassembler for 64 bit addresses
+  * Fixed finding the file for build issues when mingw32-make is used
+  * Ignore case of file name in breakpoint handling on Windows
+  * Fixed problems with gdb timing out and debugging sessions
+    unexpectedly finishing
+  * Improved startup time of gdb sessions by not asking for all
+    files known to gdb
+  Help:
+  * Don't switch to Help mode if help side bar is already visible
+  Symbian Target:
+  * Fixed the time stamp of deployed files
+
+-------------------------------------------------------------------
+Sat Jan  2 12:54:18 CET 2010 - dmueller@suse.de
+
+- update to 1.3.0 final:
+  * only bugfixes compared to previous version update
+
+-------------------------------------------------------------------
+Sat Nov 21 08:16:46 UTC 2009 - binner@kde.org
+
+- update to 1.3 release candidate:
+  * Preliminary support for Qt development targeting Symbian platform
+  * New support for source code refactoring
+
+-------------------------------------------------------------------
+Tue Sep 29 13:23:12 CEST 2009 - dmueller@suse.de
+
+- require the Qt version it was built against (bnc#542775)
+
+-------------------------------------------------------------------
+Wed Aug  5 19:03:37 CEST 2009 - beineri@opensuse.org
+
+- install bin/qt-creator wrapper (bnc#526768)
+
+-------------------------------------------------------------------
+Thu Jul 16 19:39:12 CEST 2009 - dmueller@novell.com
+
+- update to 1.2.1:
+  * http://www.qtsoftware.com/developer/changes/changes-qtcreator-1.2.1
+
+-------------------------------------------------------------------
+Sun Jun 28 16:23:57 CEST 2009 - binner@kde.org
+
+- update to 1.2 release:
+   * The Welcome Screen has been redesigned
+   * There has been some speed improvements: large amounts of
+     persistent data now stored in an SQLite database
+   * Added a block highlighting feature
+   * Improved the code folding markers
+   * FakeVim mode has received further improvements
+   * Added the option to auto-save before building
+   * Made auto-build before run optional
+   * Made it possible to disable breakpoints
+
+-------------------------------------------------------------------
+Thu Apr 23 19:10:40 CEST 2009 - beineri@opensuse.org
+
+- update to 1.1 release:
+   * Completely reworked editor split mechanism
+   * Improved function argument hint
+   * Improved open documents view (sorted, single-click, close buttons)
+   * Added experimental support for generic Makefile based projects
+   * Added signal/slot editor to the form editor
+
+-------------------------------------------------------------------
+Mon Mar 30 17:44:31 CEST 2009 - dmueller@suse.de
+
+- merge with Factory
+
+-------------------------------------------------------------------
+Fri Mar 20 12:33:44 CET 2009 - Nico Kruber <Nico.Laus.2001@gmx.de>
+
+ - fixed designer and resource editor plugin not being built
+ - added .desktop file
+
+-------------------------------------------------------------------
+Wed Mar  4 18:22:08 CET 2009 - dmueller@suse.de
+
+- merge with Factory
+
+-------------------------------------------------------------------
+Tue Mar  3 23:32:50 CET 2009 - beineri@opensuse.org
+
+- update to 1.0 release
+  * no changelog available
+
+-------------------------------------------------------------------
+Fri Feb 27 17:37:32 CET 2009 - dmueller@suse.de
+
+- remove doc stuff as it doesn't build currently
+
+-------------------------------------------------------------------
+Wed Feb 18 11:52:16 CET 2009 - stbinner@suse.de
+
+- update to 0.9.2rc1
+
+-------------------------------------------------------------------
+Tue Dec 30 17:40:59 CET 2008 - stbinner@suse.de
+
+- initial package of version 0.9.1-beta

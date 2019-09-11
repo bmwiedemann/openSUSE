@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Mar 27 09:15:57 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Provide and conflict kiwi_post_run (boo#1130510)
+- Clean spec file a bit
+
+-------------------------------------------------------------------
+Thu Mar 15 15:38:34 UTC 2018 - fvogt@suse.com
+
+- Don't do anything if there's no .iso image built
+
+-------------------------------------------------------------------
+Thu Jan 25 08:25:18 UTC 2018 - fvogt@suse.com
+
+- Adjust the regex to also work with "openSUSE-Leap-15.0"
+
+-------------------------------------------------------------------
+Wed Aug 16 14:39:14 UTC 2017 - fvogt@suse.com
+
+- Initial package, based on parts of kiwi-config-openSUSE

@@ -1,0 +1,78 @@
+diff -ur verilator-4.010-orig/bin/verilator verilator-4.010/bin/verilator
+--- verilator-4.010-orig/bin/verilator	2019-01-23 06:45:56.000000000 +0700
++++ verilator-4.010/bin/verilator	2019-02-23 23:44:37.847497656 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ ######################################################################
+ #
+ # Copyright 2003-2019 by Wilson Snyder. This program is free software; you
+diff -ur verilator-4.010-orig/bin/verilator_coverage verilator-4.010/bin/verilator_coverage
+--- verilator-4.010-orig/bin/verilator_coverage	2019-01-04 07:08:02.000000000 +0700
++++ verilator-4.010/bin/verilator_coverage	2019-02-23 23:44:37.855497719 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ ######################################################################
+ #
+ # Copyright 2003-2019 by Wilson Snyder. This program is free software; you
+diff -ur verilator-4.010-orig/bin/verilator_difftree verilator-4.010/bin/verilator_difftree
+--- verilator-4.010-orig/bin/verilator_difftree	2019-01-04 07:08:02.000000000 +0700
++++ verilator-4.010/bin/verilator_difftree	2019-02-23 23:44:37.859497751 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ # See copyright, etc in below POD section.
+ ######################################################################
+ 
+diff -ur verilator-4.010-orig/bin/verilator_gantt verilator-4.010/bin/verilator_gantt
+--- verilator-4.010-orig/bin/verilator_gantt	2019-01-04 07:08:03.000000000 +0700
++++ verilator-4.010/bin/verilator_gantt	2019-02-23 23:44:37.859497751 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ # See copyright, etc in below POD section.
+ ######################################################################
+ 
+diff -ur verilator-4.010-orig/bin/verilator_includer verilator-4.010/bin/verilator_includer
+--- verilator-4.010-orig/bin/verilator_includer	2019-01-04 07:08:03.000000000 +0700
++++ verilator-4.010/bin/verilator_includer	2019-02-23 23:44:37.867497815 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ # DESCRIPTION: Print include statements for each ARGV
+ #
+ # Copyright 2003-2019 by Wilson Snyder. This package is free software; you can
+diff -ur verilator-4.010-orig/bin/verilator_profcfunc verilator-4.010/bin/verilator_profcfunc
+--- verilator-4.010-orig/bin/verilator_profcfunc	2019-01-04 07:08:02.000000000 +0700
++++ verilator-4.010/bin/verilator_profcfunc	2019-02-23 23:44:37.867497815 +0700
+@@ -1,6 +1,6 @@
+-: # -*-Mode: perl;-*- use perl, wherever it is
+-eval 'exec perl -wS $0 ${1+"$@"}'
+-  if 0;
++#!%__perl
++# -*-Mode: perl;-*- use perl, wherever it is
++#
+ # See copyright, etc in below POD section.
+ ######################################################################
+ 

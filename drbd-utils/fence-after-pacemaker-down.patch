@@ -1,0 +1,29 @@
+diff -Naur drbd-utils-8.9.6.orig/scripts/crm-fence-peer.sh drbd-utils-8.9.6/scripts/crm-fence-peer.sh
+--- drbd-utils-8.9.6.orig/scripts/crm-fence-peer.sh	2016-03-14 15:54:38.701360775 +0800
++++ drbd-utils-8.9.6/scripts/crm-fence-peer.sh	2016-03-14 16:00:06.333338664 +0800
+@@ -531,6 +531,25 @@
+ 	[[ $crmd = "banned" ]] && will_fence=true
+ 	if [[ ${expected-down} = "down" && $in_ccm = "false"  && $crmd != "online" ]]; then
+ 		: "pacemaker considers this as clean down"
++	elif [[ $crmd/$join/$expected = "offline/down/down" ]] ; then
++		# Check if pacemaker is simply shutdown, but membership/quorum is
++		# possibly still established (corosync2/cman)
++		# 1.1.11 will set expected="down" on a clean shutdown too
++		# Look for "shutdown" transient node attribute
++		local node_attributes=$(set +x; echo "$cib_xml" |
++			awk "/<node_state [^\n]*uname=\"$DRBD_PEER\"/,/<\/instance_attributes>/"|
++			grep -F -e "<nvpair ")
++		if [ -n "${node_attributes}" ] ; then
++			local shut_down=$(set +x; echo "$node_attributes" |
++				awk '/ name="shutdown"/ {if (match($0, /value=\"([[:digit:]]+)\"/, values)) {print values[1]} }')
++			if [ -n "${shut_down}" ] ; then
++				: "pacemaker considers this as clean down"
++			else
++				will_fence=true
++			fi
++		else
++			will_fence=true
++		fi
+ 	elif [[ $in_ccm = false ]] || [[ $crmd != "online" ]]; then
+ 		will_fence=true
+ 	fi

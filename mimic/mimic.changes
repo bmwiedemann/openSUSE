@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Aug 13 11:25:11 UTC 2018 - alarrosa@suse.com
+
+- Correct license to use spdx identifiers
+
+-------------------------------------------------------------------
+Sun Aug 12 21:22:40 UTC 2018 - jengelh@inai.de
+
+- Use pkgconfig() for BuildRequires. Drop unused pcre2.
+- Remove unused .la files.
+- Add shared library package as per SLPP guideline.
+
+-------------------------------------------------------------------
+Sun Aug 12 09:48:56 UTC 2018 - alarrosa@suse.com
+
+- Use a filename and remove the source url from the Source0 definition
+  since it seems github is having problems serving a 450 MB file
+  and the factory-auto checks timeout.
+
+-------------------------------------------------------------------
+Thu Sep  7 17:05:30 UTC 2017 - alarrosa@suse.com
+
+- Initial release of MycroftAI's mimic 1.2.0.2

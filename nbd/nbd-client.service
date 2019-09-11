@@ -1,0 +1,12 @@
+[Unit]
+Description=NBD client connection for %i
+Documentation=man:nbd-client(8) man:nbdtab(5)
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/nbd-client %i
+ExecStop=/usr/sbin/nbd-client -d /dev/%i
+
+[Install]
+WantedBy=multi-user.target

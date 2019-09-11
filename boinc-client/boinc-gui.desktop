@@ -1,0 +1,17 @@
+[Desktop Entry]
+Exec=boinc-manager
+Icon=boinc-gui
+Terminal=false
+Type=Application
+Name=BOINC Manager
+GenericName=BOINC monitor and control utility
+GenericName[de]=BOINC Überwachungs- und Kontrollprogramm
+GenericName[pt]=Monitorização BOINC e utilitário de controlo
+GenericName[cs]=Monitorovací a ovládací nástroj pro BOINC
+Comment=Configure or monitor a BOINC core client
+Comment[de]=BOINC Basis Client konfigurieren oder überwachen
+Comment[pt]=Configurar ou monitorizar o cliente básico do BOINC
+Comment[cs]=Monitoruje a nastavuje klienta BOINC
+Categories=Utility;X-SuSE-WebUtility;GTK;
+X-KDE-StartupNotify=true
+

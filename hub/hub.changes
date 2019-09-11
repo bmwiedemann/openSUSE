@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Fri Jul 12 19:26:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.2
+  * Improve pull-request push target detection for git config
+    push.default is "upstream", but when the current branch does
+    not have upstream configuration
+- Update to version 2.12.1
+  Fixes:
+  * hub pull-request: Avoid crash when the current branch is pushed
+    to a non-GitHub remote BROWSER environment variable now supports
+    values with spaces in them (must be shell-quoted)
+  * hub help: support man appearing in a path that has spaces
+  * Docs: mention that comma-separated lists must not have spaces
+- Update to version 2.12.0
+  * Add hub api --paginate option to automatically fetch all pages
+    of results
+  * Add hub pr show [<number>] command to open a pull request in
+    the browser
+  * Add hub pull-request --no-maintainer-edits flag to disallow
+    project maintainers being able to push to your branch
+  * Abort hub pull-request with a helpful error message if the
+    current branch wasn't pushed to a git remote hub issue -M now
+    accepts milestone names instead of just numbers
+  * Drop support for legacy hub.http-clone git config value (this
+    was broken for a while and nobody complained, so I deemed it
+    safe to drop in a minor rather than a major release)
+  Fixes
+  * Fix querying git configuration when GIT_TRACE is used
+  * Support detached HEAD if hub pull-request --head was passed
+  * Fix newline in hub create error message
+  * Ensure HTTP connection reuse across API calls
+
+-------------------------------------------------------------------
+Sat Mar 30 10:10:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.1
+  * Fix non-draft pull requests for certain repositories
+- Update to version 2.11.0
+  * Create draft pull requests with hub pull-request --draft
+    Draft pull requests are considered work in progress: they don't
+    automatically request others for review and they are not
+    mergeable while in their draft state.
+
+-------------------------------------------------------------------
+Wed Mar 27 22:40:54 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.1
+  Bugfix release:
+  * Allow repository names that start with a dash character
+  * Fix writing over existing cache files
+
+-------------------------------------------------------------------
+Tue Mar  5 23:24:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Run spec-cleaner
+- Set proper GOPATH during the build
+- Drop not longer required 'rubygem(ronn)' from the BuildRequires
+- Package VIM-plugins
+- Update to version 2.10.0
+  Features
+  * New hub pr list --format fields %pS and %pC for PR state and color
+  * Have commands with rich output respect the --color flag
+  Fixes
+  * Make man pages parseable with whatis
+  * Make hub checkout work independently of remote refspec
+- Update to version 2.9.0
+  Features
+  * Add support for hub ci-status --format <FORMAT> string
+  * Add hub create --remote-name <REMOTE> flag
+  * Allow passing in a raw request body via hub api --input <FILE>
+  * Cache HTTP 4xx (except 403) server responses in hub api --cache
+  Fixes
+  * Ensure consistent ordering of hub ci-status -v results
+  * Avoid crashing on invalid GitHub hostname
+  * Fix parsing empty string within command-line arguments
+- Update to version 2.8.4
+  * Add hub api -H flag to set HTTP request headers
+  * Add hub api -i flag to output HTTP response headers
+  * Change how hub api deals with HTTP errors:
+    + HTTP response is now printed on stdout regardless of HTTP status
+    + No longer print an extra newline after HTTP response body
+    + No more Error: HTTP {STATUS} message on stderr
+    + hub exits with status 22 instead of 1
+  * Fix hub execution under WSL (Windows Subsystem for Linux)
+- Update to version 2.8.3
+  * New hub api command for scripting with GitHub API
+  * Re-implement CLI flag parsing so that --message <MSG> is
+    equivalent to --message=<MSG>
+  * Re-implement make man-pages in Go instead of Ruby
+  * issue create --label is now issue create --labels to align
+    with existing documentation
+  * Output crash debugging information on stderr instead of stdout
+  * Fix uploading assets with hub release
+- Update to version 2.7.1
+  * Respect chosen Enterprise host on hub init -g
+  * Ensure consistent order of options when prompted to choose
+    between multiple configured GitHub hosts
+  * Ensure alphabetical sort of hub issue labels output
+  * Improve contrast of label text vs. its background color
+  * Various documentation formatting tweaks
+- Update to version 2.7.0
+  Features
+  * Add support for hub pr list --state=merged
+  * Add base/head/merge commit SHA and merged date information to
+    hub pr list --format=FORMAT
+  * Un-deprecate converting issues to pull requests with hub
+    pull-request -i <issue>
+- Update to version 2.6.1
+  * Fix using git aliases for git 2.20
+  * Add support for passing multiple --message options for compatibility
+    with git
+  * Allow the %h token in HostName value read from ssh config
+- Update to version 2.6.0
+  Features
+  * Use "scissors" line to delineate comments in editable messages instead
+    of stripping away lines that start with #. This helps preserve Markdown
+    headings in hub pull-request, hub release create, and similar commands
+    that open a text editor interactively.
+  * New command hub issue show <NUMBER>
+  * Add hub release show --format=<FORMAT> functionality
+  * hub pr list --format=%rs lists requested reviewers
+  * Add support for communicating with GitHub Enterprise over Unix socket
+  Fixes
+  * Prevent hub create setting a public upstream when creating a
+    private repo
+  * Fix hub create in place of a renamed repo
+  * Fix hub release create/edit/delete when there are multiple git remotes
+  * Auto-detect private/pushable repos in hub remote add
+  * Fix hub ci-status exit code when there is only Checks
+  * Allow hub compare <RANGE> even if not on any branch
+  * Ensure consistent sort direction when listing issues, PRs
+  * Match requested team names by slug instead of name in
+    hub pull-request -r <TEAM>
+- Update to version 2.5.1
+  * hub issue create: ignore the .github/ISSUE_TEMPLATE directory
+    instead of crashing
+  * hub pull-request: avoid re-requesting reviewers in case of CODEOWNERS
+  * hub ci-status: handle cases when Checks API is unavailable, like
+    older GitHub Enterprise
+  * Handle HTTP 422 message format from server response
+  * Ignore crash for malformed ~/.config/hub file
+  * Clarify hub init -g documentation that it doesn't imply hub create
+  * hub clone: add more documentation about git protocol used
+- Update to version 2.5.0
+  Features
+  * Have ci-status also query Checks API
+  Fixes
+  * Do not pass `--cmd' to vi editor to ensure compatibility with
+    older vi
+  * Simplify cherry-picking commits from pull request URLs
+  * Allow single-character branches/tag names in hub compare
+  * Fix hub compare for Enterprise when <USER> is specified
+  * Support remote add -t BRANCH argument
+  * Bash shell completion fixes for git 2.18
+  * Documentation fixes
+- Update to version 2.4.0
+  Features
+  * hub delete [<OWNER>/]<REPO>
+  * Add hub compare --copy flag
+  * Add hub release --format=<FORMAT> option
+  * Add hub pull-request --no-edit flag
+  * When checking out a pull request, ensure that git pushwith no
+    arguments works
+  * Support XDG Base Directory Specification
+  Tweaks
+  * Enable hub pr list -h <BRANCH> when owner isn't specified
+  * Include docs/ in list of locations to look up pull request and issue 
+    templates in
+
+-------------------------------------------------------------------
+Thu Jun 21 06:58:13 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file a bit
+
+-------------------------------------------------------------------
+Thu Jun 21 03:05:01 UTC 2018 - bwiedemann@suse.com
+
+- Properly handle upgrade from old renamed hub gem
+
+-------------------------------------------------------------------
+Sat Jan 27 17:16:10 UTC 2018 - tampakrap@opensuse.org
+
+- Initial package

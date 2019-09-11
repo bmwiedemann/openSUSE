@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Tue Mar 26 12:40:13 UTC 2019 - Miquel Sabaté <msabate@suse.com>
+
+- Fix build error with PIE linker flags on ppc64le.
+
+See boo#1098017
+
+-------------------------------------------------------------------
+Wed Jun 13 13:29:25 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro 
+
+-------------------------------------------------------------------
+Wed Jun 13 09:00:24 UTC 2018 - parlt@suse.com
+
+- Release version 2.0.0 (bsc#1097442)
+  - Features:
+    * Allow inspection of stopped containers
+      Using zypper-docker luc,lpc or pchkc on a stopped container is now possible.
+    * Analyze container instead of base image by default
+      Note: This is a backwards incompatible change. If the base image of a container
+      needs to be analyzed, which was the former default a new --base flag can be used.
+      e.g. zypper-docker pchkc --base <Container-ID>
+ 
+  - Minor Improvements / Fixes:
+    * Add short forms of commands to help section
+      Fixes: bsc#1022052 
+    * Fix bug that caused images not to be removed properly in some cases
+    * Fix bug that caused lpc command to log to stdout
+    * Fix bug that caused force flag not to work with zypper-docker images
+    * Fix zypper-docker ps command
+    * Fix bug with zypper-docker up/patch --no-recommends
+    * Fix update behavior when getting a zypper update
+
+  - Other:
+    * Update and use zypper exit codes
+      Fixes: bsc#1018823
+    * Support recent version of the docker API
+
+-------------------------------------------------------------------
+Tue Apr 11 16:36:06 UTC 2017 - jmassaguerpla@suse.com
+
+- remove the go_arches macro because we are using go1.7 which
+  is available in all archs 
+
+-------------------------------------------------------------------
+Thu Aug 11 16:43:07 UTC 2016 - jmassaguerpla@suse.com
+
+- enable gc-go for ppc64le 
+
+-------------------------------------------------------------------
+Wed May  4 14:07:31 UTC 2016 - jmassaguerpla@suse.com
+
+- Release version 1.2.0 (bsc#978467).
+
+-------------------------------------------------------------------
+Wed Apr 27 14:12:16 UTC 2016 - jmassaguerpla@suse.com
+
+- add zypper-docker-rpmlintrc as source in spec file, otherwise
+  build service checks fail
+
+-------------------------------------------------------------------
+Tue Apr 26 15:06:36 UTC 2016 - jmassaguerpla@suse.com
+
+- Features:
+  * The list-patches command has gained the --severity flag.
+
+- Minor Improvements:
+  * The --help flag is now more specific on commands arguments.
+  * The cache file is now safe from concurrent accesses.
+  * Clean zypper's cache after patch or update.
+  * Display error message when image does not exist.
+  * Run all zypper commands as root.
+
+- Other:
+  * Migrated client from samalba/dockerclient to docker/engine-api.
+
+-------------------------------------------------------------------
+Fri Dec  4 12:49:29 UTC 2015 - msabate@suse.com
+
+- Release v1.1.2 (bsc#957967)
+  - The patch and the update commands no longer pollute the resulting image
+  - Parse the image name:tag with distribution's reference package
+
+-------------------------------------------------------------------
+Mon Nov 30 17:48:03 UTC 2015 - fcastelli@suse.com
+
+- Ensure libgo is statically linked when building on Power and Z (bnc#957175)
+
+-------------------------------------------------------------------
+Thu Nov 26 14:52:01 UTC 2015 - fcastelli@suse.com
+
+- Release v 1.1.1:
+  - Fix the prefix of the logger
+  - Increase timeout when spawning containers
+  - Ignore certain exit codes produces by zypper when doing patch and update
+
+-------------------------------------------------------------------
+Fri Nov 20 13:43:09 UTC 2015 - fcastelli@suse.com
+
+- Exclude building on x86
+
+-------------------------------------------------------------------
+Wed Nov 11 16:09:31 UTC 2015 - jmassaguerpla@suse.com
+
+- Release into the containers module
+  FATE#319426
+  bsc#954642 
+
+-------------------------------------------------------------------
+Fri Oct 30 16:22:30 UTC 2015 - fcastelli@suse.com
+
+- Update to release 1.1.0:
+  - make it possible to add extra hosts at runtime
+  - always run in non-interactive mode
+  - take global options into consideration when invoking zypper
+
+-------------------------------------------------------------------
+Wed Oct 14 16:14:15 UTC 2015 - fcastelli@suse.com
+
+- Release version 1.0.0

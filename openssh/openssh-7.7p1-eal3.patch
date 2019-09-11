@@ -1,0 +1,27 @@
+# HG changeset patch
+# Parent  8fd4e445c3a5c823568661a4f71b064cbcb217a9
+fix paths and references in sshd man pages
+
+diff --git a/openssh-7.7p1/Makefile.in b/openssh-7.7p1/Makefile.in
+--- openssh-7.7p1/Makefile.in
++++ openssh-7.7p1/Makefile.in
+@@ -127,17 +127,18 @@ MANTYPE		= @MANTYPE@
+ CONFIGFILES=sshd_config.out ssh_config.out moduli.out
+ CONFIGFILES_IN=sshd_config ssh_config moduli
+ 
+ PATHSUBS	= \
+ 	-e 's|/etc/ssh/ssh_config|$(sysconfdir)/ssh_config|g' \
+ 	-e 's|/etc/ssh/ssh_known_hosts|$(sysconfdir)/ssh_known_hosts|g' \
+ 	-e 's|/etc/ssh/sshd_config|$(sysconfdir)/sshd_config|g' \
+ 	-e 's|/usr/libexec|$(libexecdir)|g' \
+-	-e 's|/etc/shosts.equiv|$(sysconfdir)/shosts.equiv|g' \
++	-e 's|login\.conf|login.defs|g' \
++	-e 's|/etc/shosts.equiv|$(sysconfdir)/ssh/shosts.equiv|g' \
+ 	-e 's|/etc/ssh/ssh_host_key|$(sysconfdir)/ssh_host_key|g' \
+ 	-e 's|/etc/ssh/ssh_host_ecdsa_key|$(sysconfdir)/ssh_host_ecdsa_key|g' \
+ 	-e 's|/etc/ssh/ssh_host_dsa_key|$(sysconfdir)/ssh_host_dsa_key|g' \
+ 	-e 's|/etc/ssh/ssh_host_rsa_key|$(sysconfdir)/ssh_host_rsa_key|g' \
+ 	-e 's|/etc/ssh/ssh_host_ed25519_key|$(sysconfdir)/ssh_host_ed25519_key|g' \
+ 	-e 's|/var/run/sshd.pid|$(piddir)/sshd.pid|g' \
+ 	-e 's|/etc/moduli|$(sysconfdir)/moduli|g' \
+ 	-e 's|/etc/ssh/moduli|$(sysconfdir)/moduli|g' \

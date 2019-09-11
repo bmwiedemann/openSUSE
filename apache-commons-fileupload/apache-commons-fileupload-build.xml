@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-fileupload" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="build.finalName" value="commons-fileupload-1.4"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir.0" value="src/main/java"/>
+  <property name="build.resourceDir.0" value="src/main/resources"/>
+  <property name="build.resourceDir.1" value="."/>
+  <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
+  <property name="build.testDir.0" value="src/test/java"/>
+  <property name="build.testResourceDir.0" value="src/test/resources"/>
+  <property name="build.testResourceDir.1" value="."/>
+  <property name="test.reports" value="${build.dir}/test-reports"/>
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+  <path id="build.test.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="1.6" 
+           verbose="false" 
+           fork="false" 
+           source="1.6">
+      <src>
+        <pathelement location="${build.srcDir.0}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir.1}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Test-compilation target                                                -->
+  <!-- ====================================================================== -->
+
+  <target name="compile-tests" 
+          depends="compile" 
+          description="Compile the test code" 
+          unless="test.skip">
+    <mkdir dir="${build.testOutputDir}"/>
+    <javac destdir="${build.testOutputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="1.6" 
+           verbose="false" 
+           fork="false" 
+           source="1.6">
+      <src>
+        <pathelement location="${build.testDir.0}"/>
+      </src>
+      <classpath>
+        <path refid="build.test.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+    <mkdir dir="${build.testOutputDir}/META-INF"/>
+    <copy todir="${build.testOutputDir}/META-INF">
+      <fileset dir="${build.testResourceDir.1}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Run all tests                                                          -->
+  <!-- ====================================================================== -->
+
+  <target name="test" 
+          depends="compile-tests, junit-missing" 
+          unless="junit.skipped" 
+          description="Run the test cases">
+    <mkdir dir="${test.reports}"/>
+    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
+      <sysproperty key="basedir" value="."/>
+      <formatter type="xml"/>
+      <formatter type="plain" usefile="false"/>
+      <classpath>
+        <path refid="build.test.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+        <pathelement location="${build.testOutputDir}"/>
+      </classpath>
+      <batchtest todir="${test.reports}" unless="test">
+        <fileset dir="${build.testDir.0}">
+          <include name="**/Test*.java"/>
+          <include name="**/*Test.java"/>
+          <include name="**/*TestCase.java"/>
+          <exclude name="**/*Abstract*Test.java"/>
+        </fileset>
+      </batchtest>
+      <batchtest todir="${test.reports}" if="test">
+        <fileset dir="${build.testDir.0}">
+          <include name="**/${test}.java"/>
+          <exclude name="**/*Abstract*Test.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="test-junit-present">
+    <available classname="junit.framework.Test" property="junit.present" classpathref="build.test.classpath"/>
+  </target>
+
+  <target name="test-junit-status" 
+          depends="test-junit-present">
+    <condition property="junit.missing">
+      <and>
+        <isfalse value="${junit.present}"/>
+        <isfalse value="${test.skip}"/>
+      </and>
+    </condition>
+    <condition property="junit.skipped">
+      <or>
+        <isfalse value="${junit.present}"/>
+        <istrue value="${test.skip}"/>
+      </or>
+    </condition>
+  </target>
+
+  <target name="junit-missing" 
+          depends="test-junit-status" 
+          if="junit.missing">
+    <echo>=================================== WARNING ===================================</echo>
+    <echo> JUnit is not present in the test classpath or your $ANT_HOME/lib directory. Tests not executed.</echo>
+    <echo>===============================================================================</echo>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir.0}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             verbose="false" 
+             encoding="iso-8859-1" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             source="1.6" 
+             linksource="true" 
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile,test" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Bundle-Description" value="The Apache Commons FileUpload component provides a simple yet flexible means of adding support for multipart file upload functionality to servlets and web applications."/>
+		<attribute name="Bundle-DocURL" value="http://commons.apache.org/proper/commons-fileupload/"/>
+		<attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="Apache Commons FileUpload"/>
+		<attribute name="Bundle-SymbolicName" value="org.apache.commons.fileupload"/>
+		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Bundle-Version" value="1.4.0"/>
+		<attribute name="DynamicImport-Package" value="javax.portlet"/>
+		<attribute name="Export-Package" value="org.apache.commons.fileupload;version=&quot;1.4&quot;,org.apache.commons.fileupload.disk;version=&quot;1.4&quot;,org.apache.commons.fileupload.portlet;version=&quot;1.4&quot;,org.apache.commons.fileupload.servlet;version=&quot;1.4&quot;,org.apache.commons.fileupload.util;version=&quot;1.4&quot;"/>
+		<attribute name="Implementation-Title" value="Apache Commons FileUpload"/>
+		<attribute name="Implementation-URL" value="http://commons.apache.org/proper/commons-fileupload/"/>
+		<attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Implementation-Vendor-Id" value="org.apache"/>
+		<attribute name="Implementation-Version" value="1.4"/>
+		<attribute name="Import-Package" value="javax.servlet,javax.servlet.http,org.apache.commons.io,org.apache.commons.io.output"/>
+		<attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
+		<attribute name="Private-Package" value="org.apache.commons.fileupload.util.mime"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+		<attribute name="Specification-Title" value="Apache Commons FileUpload"/>
+		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Specification-Version" value="1.4"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

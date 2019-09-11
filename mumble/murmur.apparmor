@@ -1,0 +1,50 @@
+# Last Modified: Thu Mar 24 13:33:08 2011
+#include <tunables/global>
+
+/usr/sbin/murmurd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/user-tmp>
+
+  /etc/ssl/certs/** r,
+  deny /usr/share/ssl/ r,
+  deny /usr/share/ssl/** r,
+
+# FIXME: mumble has weird capability handling. None of the first four should be
+# needed if the code is adjusted
+  capability dac_override,
+  capability setgid,
+  capability setuid,
+  capability chown,
+
+# needed for real time scheduling of the mixer threads
+  capability sys_resource,
+# not needed anymore
+# capability net_admin,
+
+  network inet stream,
+
+  /etc/mumble-server.ini rk,
+  /usr/bin/lsb_release cx,
+  /var/lib/mumble-server/ rwk,
+  /var/lib/mumble-server/** rwk,
+  /var/log/mumble-server/murmur.log w,
+  /var/run/mumble-server/mumble-server.pid w,
+
+  profile /usr/bin/lsb_release {
+    #include <abstractions/base>
+    #include <abstractions/consoles>
+
+    /{usr/,}bin/bash r,
+    /proc/meminfo r,
+    /usr/bin/getopt rix,
+    /usr/bin/head rix,
+    /usr/bin/grep rix,
+    /usr/bin/sed rix,
+    /usr/bin/cut rix,
+    /usr/bin/lsb_release r,
+    /etc/SuSE-release r,
+  }
+}

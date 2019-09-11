@@ -1,0 +1,18 @@
+--- a/nemo-share/src/install-samba	2019-02-08 16:11:14.000000000 +0600
++++ b/nemo-share/src/install-samba	2019-04-29 09:16:24.571726203 +0600
+@@ -42,6 +42,15 @@
+         uid = int(uid)
+         passwd = pwd.getpwuid(uid)
+         user = passwd[0]
++    # prefer using the uid provided by pkexec to the command line argument. if
++    # a user authenticated via pkexec then he should only be able to add
++    # himself to the group.
++    uid = os.getenv("PKEXEC_UID", None)
++
++    if uid != None:
++        uid = int(uid)
++         passwd = pwd.getpwuid(uid)
++         user = passwd[0]
+     elif len(sys.argv) == 2:
+         user = sys.argv[1]
+     else:

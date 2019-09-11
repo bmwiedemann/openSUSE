@@ -1,0 +1,21 @@
+[Unit]
+Description=Bandwith Usage Monitor
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/sysconfig/bwbar
+ExecStart=/usr/bin/bwbar \
+	--${BWBAR_MEASURE} \
+	--text-file $BWBAR_TEXTFILE \
+	--png-file $BWBAR_PNGFILE \
+	--interval $BWBAR_INTERVAL \
+	--width $BWBAR_WIDTH \
+	--height $BWBAR_HEIGHT \
+	--border $BWBAR_BORDER \
+	--${BWBAR_UNIT} \
+	$BWBAR_DEVICE \
+	$BWBAR_MAXMBPS
+
+[Install]
+WantedBy=multi-user.target
+

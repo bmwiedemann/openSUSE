@@ -1,0 +1,336 @@
+-------------------------------------------------------------------
+Sat Jun 29 08:16:28 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.17.1
+  * New features:
+    - Added support for detached signatures
+  * Bugfixes and minor changes:
+    - Fixed crash if using the system trust store
+
+- Changes from 0.17.0
+  * New features:
+    - libfilezilla now requires C++17
+    - Changed a lot of functions to use std::string_view
+    - Added fz::socket_layer as base class for layers on top of 
+      sockets
+    - Added fz::tls_layer, a Transport Layer Security layer, 
+      requiring GnuTLS 3.5.7 or later
+    - Added fz::translate for gettext-style translatable strings. 
+      GNU Gettext is now a built-time (but not runtime) dependency
+    - Added fz::bitscan and fz::bitscan_reverse to get the index of
+      least and most significant bit set
+    - Added fz::logger_interface as a base for logging system
+  * Bugfixes and minor changes:
+    - *nix: Small speed-up of fz::local_filesys through the use of 
+      fstatat()
+
+-------------------------------------------------------------------
+Wed May 15 11:38:06 UTC 2019 - ecsos@opensuse.org
+
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Thu May  9 18:59:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.16.0
+  * New features:
+    - Add fz::socket
+    - Add operator*= to fz::duration
+    - fz::event_loop can now also be created using fz::thread_pool 
+      or threadless.
+  * Bugfixes and minor changes:
+    - fz::async_task now releases the thread back to the pool 
+      immediately when the task has completed without waiting for 
+      the join
+    - *nix: Fix file descriptor leaks on exec()
+
+-------------------------------------------------------------------
+Sat Dec  1 12:05:31 UTC 2018 - ecsos@opensuse.org
+
+- Update to 0.15.1
+  * New features:
+    - Add argument to fz::strtok to return empty tokens
+  * Bugfixes and minor changes:
+    - Fix compatibility issue with Nettle < 3.3
+    - Fix fz::random_bytes on MinGW
+    - Fix memory leak in fz::buffer
+
+-------------------------------------------------------------------
+Sat Oct 27 08:35:12 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.15.0
+  * New features:
+    - libfilezilla now depends on Nettle >= 3.1
+    - Added fz::sha512, fz::sha256, fz::sha1 and fz::md5 hash 
+      functions
+    - Added fz::hash_accumulator
+    - Added fz::hmac_sha256 HMAC function
+    - Added asymmetric encryption scheme using X25519
+    - Added signature scheme using Ed25519
+  * Bugfixes and minor changes:
+    - Changed and documented semantics of the return value of 
+      fz::remove_file, removing a non-existing file is not an error
+- Drop extra COPYING file and use it from upstream
+
+-------------------------------------------------------------------
+Sat Oct 13 21:52:55 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.14.0
+  * New features:
+    - Added fz::equal_insensitive_ascii
+    - Added insensitive_ascii parameter to fz::starts_with 
+      and fz::ends_with
+  * Bugfixes and minor changes:
+    - Fixed namespace of to_wstring in wx glue
+
+-------------------------------------------------------------------
+Mon Sep 24 14:48:37 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.13.2
+  * Bugfixes and minor changes:
+    - Fix regression in fz::shared_value::clear
+    - Fix parsing of URIs without path
+- changes from 0.13.1
+  * New features:
+    - Made fz::scoped_lock movable
+  * Bugfixes and minor changes:
+    - Fix a few compiler warnings
+
+-------------------------------------------------------------------
+Mon Aug  6 14:52:15 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.13.0
+  * New features:
+    - Add bool return value to replace_substrings to indicate 
+      whether something has been replaced.
+    - fz::sprintf: Added %c format specifier
+  * Bugfixes and minor changes:
+    - MSW: Work around problematic DLL export of templates, 
+      timers now work if libfilezilla has been built as DLL
+
+-------------------------------------------------------------------
+Tue Jun 19 21:59:57 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.12.3
+  * New features:
+    - Event handlers can now removed themselves while inside 
+      a callback
+    - Added fz::query_string::pairs()
+
+-------------------------------------------------------------------
+Tue May  8 10:52:07 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.12.2
+  * New features:
+    - Added parameters to base64_encode to control alphabet and 
+      padding
+    - Improved performance of less_insensitive_ascii
+    - *nix: Faster conversion between UTF-8 and wchar_t strings.
+
+
+-------------------------------------------------------------------
+Sat Feb 24 09:54:50 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.12.1
+  * New features:
+    - Added fz::buffer::operator== and operator!=
+  * Bugfixes and minor changes:
+    - Fixed bug in fz::buffer::get(size_t)
+- changes from 0.12.0
+  * New features:
+    - Added fz::datetime::operator bool
+    - Added fz::datetime::get_rfc822 and fz::datetime::set_rfc822
+
+-------------------------------------------------------------------
+Thu Jan 25 11:22:05 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.11.2
+  * New features:
+    - Added fz::starts_with and fz::ends_with
+
+-------------------------------------------------------------------
+Sun Nov 12 10:26:51 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.11.1
+  * New features:
+    - Added fz::file::fsync() to sync data to disk
+
+-------------------------------------------------------------------
+Mon Oct  2 11:08:20 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.11.0
+  * New features:
+    - Add fz::buffer class
+  * Bugfixes and minor changes:
+    - *nix: fz::process::spawn no longer calls async-signal-unsafe 
+      functions between forking and calling execv in the child.
+
+-------------------------------------------------------------------
+Fri Aug 25 22:33:09 UTC 2017 - jengelh@inai.de
+
+- RPM group fixes. Trim descriptions and make it more neutral.
+
+-------------------------------------------------------------------
+Sun Aug 20 11:16:51 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.10.1
+  * Bugfixes and minor changes:
+    - MSW: Improve handling of reparse points in fz::local_filesys
+
+-------------------------------------------------------------------
+Sat Aug  5 21:29:31 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.10.0
+  * New features:
+    - Added fz::percent_encode and fz::percent_encode
+    - Added fz::uri and fz::query_string
+    - Added fz::less_insensitive_ascii for case-insensitive strings
+      in maps
+  * Bugfixes and minor changes:
+    - Moved encoding functions from string.hpp to encode.hpp
+    - Use pkg-config instead of cppunit-config to look for cppunit.
+- remove patch libfilezilla-fix_undefined_reference.patch because 
+  now in upstream
+
+-------------------------------------------------------------------
+Sun Jun  4 08:04:34 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.9.2
+  * New features:
+    - Added fz::random_bytes to obtain a vector of the passed size 
+      of uniformly distributed random bytes
+    - Added fz::ltrim and fz::rtim
+    - Added parameter to trim functions which characters to trim
+    - It is now possible to detach threads from async_task
+- add patch libfilezilla-fix_undefined_reference.patch to prevent
+  build error in filezilla
+
+-------------------------------------------------------------------
+Thu Feb 23 07:35:49 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.9.1
+  * New features:
+    - Added a small helper function to fz::file to get the current 
+      position in the file
+    - Added another version of fz::to_wstring_from_utf8 that takes 
+      a char buffer + length
+  * Bugfixes and minor changes:
+    - Fixed extraction of single-character tokens in fz::strtok
+
+-------------------------------------------------------------------
+Tue Dec  6 23:29:50 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.9.0
+  * New features:
+    - Added parameter to fz::to_integral to specify which value is 
+      returned on error.
+    - Added fz::remove_file
+    - Added fz::hex_encode and fz::hex_decode
+
+-------------------------------------------------------------------
+Sun Nov 20 20:34:29 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.8.0
+  * New features:
+    - Added fz::str_toupper_ascii to complement 
+      fz::str_tolower_ascii
+    - Added fz::trim and fz::trimmed for removing leading and 
+      trailing whitespace from string
+    - Added fz::str_is_ascii
+  * Bugfixes and minor changes:
+    - Fixed zero-padding for x and X string format conversion 
+      specifiers
+
+- update to 0.7.1
+  * Bugfixes and minor changes:
+    - OS X: Work around a nasty bug in XCode where programs 
+      explicitly compiled for older versions of OS X were silently
+      pulling in features exclusive to the new version, resulting 
+      in crashes at runtime
+    - MSW: Fix detection of thread creation failures
+
+-------------------------------------------------------------------
+Sun Oct  2 12:08:54 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.7.0
+  * New features:
+    - Add fz::base64_decode and fz::base64_encode
+    - Add fz::strtok string tokenizer
+    - Added non-throwing fz::to_integral
+    - Implemented + (always sign) and - (left align) flags for 
+      fz::sprintf
+
+-------------------------------------------------------------------
+Fri Jul 29 15:45:32 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.6.1
+  * Bugfixes and minor changes:
+    - Fix UTF-8 conversion functions and added a testcase
+  
+- update to 0.6.0
+  * New features:
+    - Add fz::sprintf, a safe replacement for for the C sprintf 
+      function
+
+-------------------------------------------------------------------
+Tue Jun 28 20:27:51 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.5.3
+  * New features:
+    - Add fz::replace_substrincs to search and replace substrings 
+      in std::(w)string
+  * Bugfixes and minor changes:
+    - Explicitly request large file support on 32bit systems
+
+-------------------------------------------------------------------
+Sat May 28 09:12:49 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.5.2
+  * New features:
+    - Add fz::shared_optional::is_same that checks whether 
+      two instances share the same underlying pointer value, like 
+      a shallow equal.
+    - Add fz::int_to_hex_char as reverse to fz::hex_char_to_int
+
+-------------------------------------------------------------------
+Tue May 10 22:30:56 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.5.1
+  - Add constructore to sparse_optional taking pointers
+  - Fix compilation on systems where iconv's second argument is 
+    const
+
+-------------------------------------------------------------------
+Wed Apr 27 11:53:21 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.5.0
+  - Handle timestamps where midnight is represented as 24:00:00.000
+    of the previous day.
+  - Fix inverted return value of fz::datetime::empty().
+  - Increase performance of event loop if not using timers.
+  - Better compatibility with runtimes that change the src pointer
+    passed to mbsrtowcs or wcsrtombs.
+
+-------------------------------------------------------------------
+Fri Mar 11 10:33:40 UTC 2016 - davejplater@gmail.com
+
+- Added libfilezilla-date-time.patch.
+
+-------------------------------------------------------------------
+Sun Feb 28 10:21:47 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.4.0.1
+- Upstream changes:
+  0.4.0.1 (2016-02-22)
+  Fix compile error in testcase
+  0.4.0 (2016-02-21)
+  Added shared_optional and sparse_optional classes
+  For more details see svn log:
+  https://svn.filezilla-project.org/svn/libfilezilla
+
+-------------------------------------------------------------------
+Sun Feb 14 10:15:42 UTC 2016 - davejplater@gmail.com
+
+- Initial package created from PCLinuxOS src rpm
+- Needed for filezilla to build.
+

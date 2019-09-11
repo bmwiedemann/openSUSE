@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Thu Mar 21 14:02:58 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.3
+  * Fixed missing NULL check for socket_wrapper_dir()
+  * Fixes building in Samba source tree
+
+-------------------------------------------------------------------
+Thu Mar 21 09:00:55 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.2
+  * Added environment variable to disable deep binding
+  * Fixed installation of socket_wrapper
+  * Fixed several small bugs
+
+-------------------------------------------------------------------
+Wed Nov 14 08:43:12 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.1
+  * Removed error message to fix applications doing stupid things
+
+-------------------------------------------------------------------
+Tue Nov 13 13:10:34 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.0
+  * Added threading support
+  * Moved to modern cmake
+  * Several smaller bugfixes
+
+-------------------------------------------------------------------
+Mon Dec  4 11:22:22 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.1.9
+  * Fixed thread - signal deadlock issue
+
+-------------------------------------------------------------------
+Fri Oct 13 08:50:38 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.1.8
+  * Added support for openat()
+  * Added support for open64() and fopen64()
+  * Always enabled logging support
+  * Increased maximum for wrapped interfaces to 64
+  * Improved fd duplication code
+  * Fixed strict-aliasing issues
+  * Fixed some use after free issues
+  * Fixed issues on ppc64le
+
+-------------------------------------------------------------------
+Tue May 31 06:57:22 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.1.7
+  * Added support for accept4()
+  * Added support for OpenBSD
+  * Fixed sendto() with UDP and a connected socket
+  * Fixed AF_RAWLINK sockets
+
+-------------------------------------------------------------------
+Mon Mar 21 18:21:00 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.1.6
+  * Added a wrapper for write()
+  * Added support for automatic binding of ephemeral ports
+  * Fixed recvmsg() with UDP
+  * Fixed AF_NETLINK sockets
+
+-------------------------------------------------------------------
+Sun Feb 14 11:46:13 UTC 2016 - jengelh@inai.de
+
+- Editorial fixes to the description
+
+-------------------------------------------------------------------
+Thu Oct 15 09:15:14 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.1.5
+  * Added support for TCP_NODELAY in setsockopt/getsockopt
+  * Fixed cmsg space calculation
+
+-------------------------------------------------------------------
+Wed Sep  2 11:53:38 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.1.4
+  * Fixed handling of msg_name in recvmsg()
+  * Fixed sendmsg()/recvmsg() TCP support
+  * Fixed several compile warnings
+  * Added environment variable to change MTU
+
+-------------------------------------------------------------------
+Tue May 12 07:16:12 UTC 2015 - mpluskal@suse.com
+
+- Rename rpmlintrc so that it complies packaging conventions
+
+-------------------------------------------------------------------
+Mon May 11 07:52:41 UTC 2015 - mpluskal@suse.com
+
+- Mention rpmlintrc as source
+
+-------------------------------------------------------------------
+Mon May 11 06:22:55 UTC 2015 - asn@cryptomilk.org
+
+- Revert library package.
+
+-------------------------------------------------------------------
+Mon May 11 06:16:38 UTC 2015 - asn@cryptomilk.org
+
+- Revert package split
+- Require pkg-config and cmake
+
+-------------------------------------------------------------------
+Tue May  5 15:59:09 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file
+- Use %cmake install macro
+- Split package
+- Remove rpmlintrc
+
+-------------------------------------------------------------------
+Mon Feb 23 15:54:22 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.1.3
+  * Added support for address sanitizer.
+  * Fixed leaking of memory and fds of stale sockets.
+  * Fixed the library loading code.
+
+-------------------------------------------------------------------
+Thu Oct  2 09:42:58 UTC 2014 - asn@cryptomilk.org
+
+- Update to version 1.1.2
+  * Added support for fnctl(F_DUPFD).
+  * Added support for glibc 2.20.90.
+
+-------------------------------------------------------------------
+Thu Sep 11 14:57:22 UTC 2014 - asn@cryptomilk.org
+
+- Update to version 1.1.1
+  * Disable incomplete address in use check in bind().
+  * Added support for IP_PKTINFO in recvmsg().
+  * Added support for IPV6_PKTINFO in recvmsg().
+  * Added support for IP_RECVDSTADDR in recvmsg() on BSD.
+  * Added support for more socket options in getsockopt().
+  * Added support for bindresvport().
+  * Fixed rebinding on connect().
+  * Fixed sockaddr buffer truncation in getsockname() and getpeername().
+  * Fixed special cases in bind().
+  * Fixed loading libc on some platforms.
+  * Fixed memory leaks
+  * Fixed calling open from libc.
+  * Fixed loading libc functions on some platforms.
+
+-------------------------------------------------------------------
+Thu Feb 13 10:22:38 UTC 2014 - asn@cryptomilk.org
+
+- Initial package.
+

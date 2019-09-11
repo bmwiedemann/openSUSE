@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Feb 27 09:16:16 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Build the examples and docs as a separate HPC package.
+- Made example and doc packages 'noarch'.
+- Remove duplicates from examples.
+- Fix rpmlint warnings about macros in comments.
+- Fix library path to work both on 32 and 64 bit.
+
+-------------------------------------------------------------------
+Tue Feb 26 09:41:05 UTC 2019 - cgoll@suse.com
+
+- Switched to cmake build system to fix boo#1126367
+  * added hypre_CMakeLists.patch for proper version numbering
+  * added dependency for lapack and superlu devel for non hpc builds
+- Due to boo#1127070 does not compile for mvapich2/mpich
+
+-------------------------------------------------------------------
+Wed Feb 13 11:35:06 UTC 2019 - Antoine Ginies <aginies@suse.com>
+
+- Add a sub examples package to test in prod env
+  Add: hypre_Makefile_examples.patch
+
+-------------------------------------------------------------------
+Sun Feb 10 22:11:16 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Properly create and tear down default version links when the
+  HPC master packages are installed/uninstalled.
+- Fix dependencies for HPC.
+- Add dependency to HPC modulefile. 
+- Fix package groups.
+- Add pkgconfig file.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.
+
+-------------------------------------------------------------------
+Fri Jan 25 13:29:16 UTC 2019 - eich@suse.com
+
+- Disable openmpi1 builds on SLE.
+
+-------------------------------------------------------------------
+Mon Jan 14 14:28:41 UTC 2019 - eich@suse.com
+
+- Fix yet another library dependency.
+
+-------------------------------------------------------------------
+Mon Jan 14 08:32:00 UTC 2019 - eich@suse.com
+
+- Fix HPC libname for master package.
+
+-------------------------------------------------------------------
+Sun Jan 13 08:36:04 UTC 2019 - eich@suse.com
+
+- Disable openmpi3 builds on SLE.
+
+-------------------------------------------------------------------
+Sat Jan 12 13:59:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future goals, trim filler wording.
+
+-------------------------------------------------------------------
+Mon Jan 7  16:46:17 UTC 2019 - eich@suse.com
+
+- Add more MPI flavors.
+- Create baselib.conf on the fly.
+- Do not build non-HPC on SLE to save build cycles.
+- Remove babel_files: not used anywhere.
+- Remove unneeded BuildRequires:.
+
+-------------------------------------------------------------------
+Mon Jan  7 12:25:37 UTC 2019 - cgoll@suse.com
+
+- Added HPC support.
+
+-------------------------------------------------------------------
+Sun Jan  6 06:42:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2.15.1
+- Drop hypre-2.8.0b-no-date-and-time-fix.patch
+- Convert to multibuild for openmpi/openmpi2
+
+-------------------------------------------------------------------
+Thu Aug  2 21:07:12 UTC 2012 - scorot@free.fr
+
+- add baselibs.conf
+- build serial version
+- fix shared libs package name
+
+-------------------------------------------------------------------
+Thu Aug  2 17:02:05 UTC 2012 - scorot@free.fr
+
+- patch0
+- move %%doc files to devel package
+
+-------------------------------------------------------------------
+Mon Jul 30 22:01:19 UTC 2012 - scorot@free.fr
+
+- add mvapich2 build for SLE 11
+
+-------------------------------------------------------------------
+Sun Jul 29 21:03:23 UTC 2012 - scorot@free.fr
+
+- fist package based on alt linux spec file

@@ -1,0 +1,60 @@
+# Last Modified: Thu Oct 17 14:07:52 2013
+#include <tunables/global>
+
+/usr/lib/colord (attach_disconnected) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability dac_override,
+
+  deny /usr/share/gvfs/remote-volume-monitors/ r,
+  deny /usr/share/gvfs/remote-volume-monitors/afc.monitor r,
+  deny /usr/share/gvfs/remote-volume-monitors/udisks2.monitor r,
+
+  /dev/ r,
+  /dev/bus/usb/ r,
+  /dev/bus/usb/[0-9]*/[0-9]* rw,
+  /etc/colord.conf r,
+  /etc/fstab r,
+  /etc/udev/hwdb.bin r,
+  /etc/udev/udev.conf r,
+  /proc/*/fd/ r,
+  /proc/*/mountinfo r,
+  /proc/*/mounts r,
+  /proc/*/cgroup r,
+  /proc/*/cmdline r, # not only @{pid}, bnc#846301
+  /run/systemd/sessions/[0-9]* r,
+  /run/systemd/sessions/c[0-9]* r,
+  /run/udev/data/* r,
+  /run/udev/queue.bin r,
+  /sys/bus/ r,
+  /sys/bus/usb/devices/ r,
+  /sys/class/ r,
+  /sys/class/drm/ r,
+  /sys/class/video4linux/** r,
+  /sys/class/video4linux/ r,
+  /sys/devices/** r,
+  /usr/bin/spotread ix, # inherit colord profile, needed to support USB colorimeter not natively supported by colord
+  /usr/lib/colord mr,
+  /usr/local/share/mime/** r,
+  /usr/share/color/**/ r,
+  /usr/share/color/icc/** r,
+  /usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Device.xml r,
+  /usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Profile.xml r,
+  /usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Sensor.xml r,
+  /usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.xml r,
+  /usr/share/gvfs/remote-volume-monitors/gphoto2.monitor r,
+  /usr/share/locale-bundle/**.mo r,
+  /usr/share/mime/** r,
+  /var/lib/color/icc/ r,
+  /var/lib/colord/.cache/ rw,
+  /var/lib/colord/.cache/** rw,
+  /var/lib/colord/mapping.db rwk,
+  /var/lib/colord/mapping.db-journal rw,
+  /var/lib/colord/storage.db rwk,
+  /var/lib/colord/storage.db-journal rw,
+
+  @{HOME}/.local/share/icc/*.icc r,
+  @{HOME}/.local/share/color/icc/*.icc r,
+  /var/lib/gdm/.local/share/icc/*.icc r,
+}

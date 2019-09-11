@@ -1,0 +1,1447 @@
+-------------------------------------------------------------------
+Tue Aug  6 11:51:47 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.3.2
+- Upstream changes:
+  *Improvements:
+  *There is a new 'Select' button in the track panel to select the
+   whole track.
+  *Audacity mod-script-pipe for driving Audacity from Python now
+   comes with Audacity and can be enabled via preferences.
+  *Options and preferences:
+    Type to Create a Label is now off by default.
+  *A plug-in installer for Nyquist now provides a file browser for 
+   selecting '.NY' files to install.
+  *Bug Fixes:
+   Over 20 bugs in 2.3.1 fixed, including:
+  *Audacity 2.3.1 would crash if append-recording to a collapsed
+   track.
+
+-------------------------------------------------------------------
+Mon Mar 11 14:01:22 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to release 2.3.1 and remove incorporated patch:
+  0001-Fix-bug-1992.patch.
+- Upstream changes:
+  Over 20 bugs fixed since 2.3.0, including:
+   A crashing bug on Linux that made Audacity 2.3.0. unsuitable for
+   Linux.
+   Problems with Change Pitch, including not remembering parameter
+   values.
+  Options and preferences:
+   Microfades are now an opt-in feature. They were always on in
+   2.3.0.
+   The advanced vertical zooming option is now available in the
+   View->Zoom menu.
+  Regular interval labels now support range labels.
+
+-------------------------------------------------------------------
+Wed Oct  3 14:39:52 UTC 2018 - davejplater@gmail.com
+
+- Add 0001-Fix-bug-1992.patch from git to fix issue 1992
+
+-------------------------------------------------------------------
+Mon Oct  1 06:58:42 UTC 2018 - davejplater@gmail.com
+
+- Update to release 2.3.0
+- Rebased audacity-misc-errors.patch and
+  audacity-no_return_in_nonvoid.patch
+- Added --disable-dynamic-loading build flag for ffmpeg-4 use.
+- Upstream changes:
+  *New feature – “Punch and Roll Recording”
+  *Pinned-play-head can now be repositioned by dragging
+  *Play-at-speed now can be adjusted whilst playing.
+  *Toolbars controlling volume and speed can now be resized for
+   greater precision
+  *New commands: New ‘Tools’ menu & New ‘Scriptables’ commands
+  *Nyquist gains AUD-DO command
+  *Nyquist effects are now translatable and translated
+  *More dialogs have help buttons now
+  *Increased legibility of trackname display
+  *Half-wave option for collapsed tracks
+  *Sliding Stretch
+  *Dialog (option) for entering labels
+  *Inconsistent behavior when recording with a selection–bug #1839
+  *Ctrl + M does not open label for editing – bug #1852
+  *Vertical Zoom in by clicking in the vertical Scale, or context
+   menu, in waveform views is inconsistent – bug #1810
+  *Deletion of all tracks cannot be undone – bug #1845
+  *Timer Record with a selection present can get a truncated
+   recording with data loss – bug #1851
+  *Duplicate shortcuts can be created – bug #1786
+  *Labels longer than 260 characters are now supported – bug #1905
+  *Using Spectrogram Settings in TCP or using Preferences causes
+   Audacity to reset Project Rate to default rate in Quality
+   Preferences – bug #1977
+  *Cut Preview should play all selected/sync-locked tracks,
+   respecting Mute/Solo during preview – bug #231
+
+-------------------------------------------------------------------
+Sun Apr 29 08:41:27 UTC 2018 - davejplater@gmail.com
+
+- Ensure that Leap:42.3 gcc conditional doesn't interfere with
+  Tumbleweed gcc used for build.
+
+-------------------------------------------------------------------
+Thu Feb 22 09:54:45 UTC 2018 - davejplater@gmail.com
+
+- Update to release version 2.2.2.
+- Rebase audacity-no_buildstamp.patch.
+- Removed incorporated audacity-fix-nonsense.patch.
+- Added audacity-misc-errors.patch to fix various errors picked
+  up by rpmlint.
+- Added to audacity-no_return_in_nonvoid.patch.
+- Upstream changes:
+  *Easier zooming in and out with mousewheel, new Zoom Toggle
+   command, and context menu for vertical rulers.
+  *Easy access to change keyboard bindings of menu commands
+   by holding Shift key.
+  *Detection of dropout errors while recording with
+   overburdened CPU.
+  *Improved contrasts in Light and Dark themes
+  *Half-wave display option
+  *Several bugs/annoyances in 2.2.1 are now fixed
+
+-------------------------------------------------------------------
+Fri Jan 26 09:23:34 UTC 2018 - davejplater@gmail.com
+
+- Build with gcc7 for Leap:42.3 and -fstack-clash-protection
+
+-------------------------------------------------------------------
+Mon Jan 15 19:06:10 UTC 2018 - jengelh@inai.de
+
+- Trim redundant parts from summary.
+
+-------------------------------------------------------------------
+Mon Jan 15 08:11:19 UTC 2018 - davejplater@gmail.com
+
+- Update to maintenance release version 2.2.1
+- Upstream changes and fixes:
+  *Waveform colorways:
+   You can optionally change the colorway of the waveforms
+   displayed in your project. The setting is per track and not per
+   project so you can have multiple colorways in the same project. 
+  *"Save Other" reverts to "Export" in the File menu:
+   When we made the menu changes for 2.2.0 we introduced an entry
+   into the File menu called "Save Other" which led to a sub-menu
+   for exporting various audio formats.
+   Many users were confused by this change and found it hard to
+   find where they could export.
+  *Bug #1770 - Crash applying certain chain files
+  *Bug #1783 - Preview fails when selection extends before zero
+  *Bug #1787 - Auto-scroll stopped working in 2.2.0
+  *Bug #1765 - Using File > Open to import audio gives wrong zoom
+   level and no scroll bar slider.
+
+-------------------------------------------------------------------
+Sun Nov  5 12:21:03 UTC 2017 - davejplater@gmail.com
+
+- Enabled mad, twolame and lame for 42.3
+
+-------------------------------------------------------------------
+Sun Nov  5 07:10:09 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2.0
+  Improvements:
+  * Four Selectable themes provided, with new 'Light' theme as
+    default, plus option to customize
+  * Many menu changes:
+    + Menus Reorganized
+    + Extended menu bar provided
+    + New keyboard commands for working with clips
+  * Help buttons ? in Preferences, Effects, Generators and
+    Analyzers - and other places
+  * Non-Greying out of effects when no selection (and explanatory
+    dialog with help button)
+  * Playback of MIDI (and Allegro) files imported into Note Tracks
+    is now available.
+  * 'Center' option in Selection Toolbar
+  * Stem plots
+  * Major overhaul to documentation/manual including many new
+    images and streamlined text on landing pages for in-program
+    help.
+  Other Changes:
+  * Append-record is now the default (use Shift + Record for old
+    behavior, to record on a new track)
+  * The Esc key now cancels all click-and-drag actions. It also
+    chooses among overlapping mouse click targets, which is
+    especially useful in the Multi-Tool.
+  * Sync-Lock button removed (use menu item or keyboard shortcut
+    instead)
+  * New preferences and preference pages
+  * Overhaul of much code:
+    + Overhaul of envelope handling code to deal with some
+      anomalies
+    + Overhaul of exception handling for greater safety
+  * New Logo
+  Bug Fixes:
+  * Major work on bug fixing. 198 bugs that were in 2.1.3 fixed
+    for 2.2.0.
+    + The most serious bug fixed this time round was bug 437 which
+      was about what happens when Audacity is recording and runs
+      out of storage.
+    + The problems of incomplete support for macOs Sierra have
+      been resolved (including bug 290, bug 1567, bug 1702, and bug
+      1703).
+    + Most of the bugs fixed were more minor, such as bug 463
+      which was about a case in which the numbering on the timeline
+      could display incorrect times.
+
+- Added audacity-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Fri Aug 25 15:16:21 UTC 2017 - davejplater@gmail.com
+
+- Restore conditionals for lame, mad and twolame.
+
+-------------------------------------------------------------------
+Fri Aug 25 06:19:49 UTC 2017 - olaf@aepfle.de
+
+- Remove conditionals for ffmpeg, lame, mad, twolame.
+
+-------------------------------------------------------------------
+Tue Jun  6 17:34:10 UTC 2017 - olaf@aepfle.de
+
+- Adjust usage of gccN-c++ for Leap42 and SLE12
+
+-------------------------------------------------------------------
+Wed Mar 22 15:29:45 UTC 2017 - davejplater@gmail.com
+
+- Added requires for flac > 1.3.0.
+
+-------------------------------------------------------------------
+Sat Mar 18 13:53:54 UTC 2017 - davejplater@gmail.com
+
+- Update to release 2.1.3
+- Recreated audacity-no_buildstamp.patch with 2.1.3 release date
+  and time.
+- Added audacity-flacversion.patch to fix minimum version in m4
+  macro.
+- Rebased audacity-fix-nonsense.patch
+- Deleted audacity-ffmpeg.patch, audacity-flac_assert.h.patch and
+  audacity-gcc6.patch
+- Upstream changes:
+ * Interface:
+   * Pinned option on waveform so waveform moves and
+     recording/playing head stays still.
+   * Timer Record options to save/export/exit after recording.
+   * Scrub Ruler and optional Scrub Toolbar.
+   * New shortcuts ALT+RIGHT and ALT+LEFT (move to labels without
+     editing).
+ * Effects:
+   * Effects no longer grayed out when paused.
+   * New Distortion effect (replaces Leveller).
+   * SBSMS (higher quality but slower) option on Change
+     Tempo/Change Pitch effects.
+   * New Rhythm Track generator (replaces Click Track).
+   * New Generator for Sample Data Import.
+   * Nyquist effects now significantly faster.
+ * Other Changes:
+   * Upgraded the PortAudio library to v19 rev r1966.
+ * Bug fixes:
+   * Over 60 bugs fixed, including five longstanding bugs.
+
+-------------------------------------------------------------------
+Mon Jun 27 13:19:29 UTC 2016 - davejplater@gmail.com
+
+- Update to audacity-2.1.2 which builds with wxWidgets-3_0-nostl
+  and can use rpm's internal dependency generator. This enables it
+  to provide appdata.xml and desktop files and fixes boo#952324 and
+  duplicate boo#963592.
+- Refreshed patches.
+- Removed audacity-2.1.1-fix-tempdir.patch incorporated in this
+  version.
+- Upstream changes:
+  Changes and Improvements:
+  *Interface:
+   * Spectrogram settings are now available per track.
+   * Clearer (sharper) display of pitch (EAC).
+   * New 'Spectral Reassignment' option in spectrogram.
+  Bug fixes:
+  *Crashes
+   *Crash using 'space' in Selection toolbar context menu fixed.
+   *Crash setting equalization effect parameters in chains fixed.
+   *Crash pressing both mouse buttons over toolbar buttons fixed.
+   *(Rare) crash or freeze in sound activated recording fixed.
+   *(Rare) crash on using plot spectrum for first time fixed.
+  *Interface
+   * Equalization effect settings are now saved.
+   * Oversized Export Options window now OK on smaller screens.
+   * FLAC import/export fast again.
+   * Can now set undefined frequency in Spectral Selection bar.
+   * Imported presets on custom FFmpeg export fixed.
+   * Text input boxes working with VAMP
+   * Keyboard playback commands now work again.
+   * Import Raw Data now works when in Polish language.
+
+-------------------------------------------------------------------
+Fri Jun 17 09:37:05 UTC 2016 - martin.liska@suse.com
+
+- Add audacity-gcc6.patch: Fix GCC6 warnings.
+
+-------------------------------------------------------------------
+Sun Apr 24 21:35:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Add audacity-2.1.1-fix-tempdir.patch from upstream: fix usage of
+  custom temp directories (boo#976964).
+
+-------------------------------------------------------------------
+Sun Oct 25 11:08:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Fix audacity-flac_assert.h.patch up a little.
+- Build with ffmpeg support in openSUSE Leap 42.1 and newer.
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 20 14:06:38 CEST 2015 - tiwai@suse.de
+
+- Drop sf.net download URL as the download host was changed
+
+-------------------------------------------------------------------
+Sat Jul 18 23:43:10 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.1.1:
+  + Changes and Improvements:
+    * Built-in effects now support presets.
+    * New Limiter effect replaces Hard Limiter effect.
+    * New Crossfade Clips effect to apply a simple crossfade to a
+      selected pair of clips in a single audio track.
+    * Can now add/remove effects from Generate and Effects menus.
+    * New version of Vocal Removal Effect.
+    * Classic Filters now included as an opt-in effect.
+    * Much faster editing with larger projects, thanks to a faster
+      method for storing the autosave recovery file.
+    * Performance improvements for Draw Tool and zooming of
+      Spectrogram views.
+    * Zero-padding Spectrograms Preference smooths the image for
+      short window sizes.
+    * Scrubbing and Seeking, including backwards play.
+    * Quick-Play from Timeline enhancements, particularly for
+      looping.
+    * More VI usability enhancements for track focus & navigation.
+    * Upgraded to Nyquist 3.0.9 and libflac 1.3.1.
+    * Upgraded LV2 libs, LV2 GUIs on Linux, LV2 factory Presets.
+    * Crash report integration.
+    * Modules can be enabled in Preferences. Mod-nyq-bench
+      available as an experimental module (but not in the default
+      download).
+  + Bug fixes:
+    * Crash using Undo while dragging sample points
+    * Crash using File > Close on project window when
+      Screenshot Tools was open.
+    * FFmpeg Custom Export: Crashes importing presets.
+    * TAL VST (but not other VST's) crashed if previewing built-in
+      effect.
+    * SPACE could not be used/could crash in context menus that
+      have a checkbox.
+    * LV2 effects did not use parameters when using Chains.
+    * Built-in Generators were not usable in Chains.
+    * Plot Spectrum could not change values without losing focus.
+    * Track dropdown menu settings could affect other tracks.
+    * Slight mismatch of vertical scale with linear spectrogram
+      view.
+    * RTP effect Play/Stop button remained deactivated after
+      built-in preview ended.
+    * Contrast: "Move forward or backward through active windows"
+      did not refocus Contrast.
+    * LADSPA and LV2 generate plug-ins failed when white space
+      selected.
+- Rebase audacity-no_buildstamp.patch.
+- Add audacity-fix-nonsense.patch to fix build regressions
+  introduced in Audacity 2.1.1.
+- Audacity now requires libsoxr without an option.
+- Specify a version of wxWidgets Audacity requires.
+
+-------------------------------------------------------------------
+Wed Apr 29 07:27:39 UTC 2015 - sor.alexei@meowr.ru
+
+- Use libsoxr for resampling instead of libsamplerate.
+
+-------------------------------------------------------------------
+Mon Mar 30 23:21:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.1.0:
+  + Changes and Improvements:
+    * LADSPA and VST effects now support real-time preview,
+      save/load of user presets and saving effect settings across
+      sessions. Note: Real-time preview does not yet support
+      latency compensation.
+    * VST effects now support import/export of FXB preset banks.
+    * Shell VST effects that host multiple plugins are now supported.
+    * All Effect Menu items (built-in or plugin) can now be used in
+      a Chain. 
+    * Items in the Effect, Generate or Analyze Menus can be sorted
+      or grouped by name, publisher or class of effect.
+    * Noise Removal is improved and renamed to "Noise Reduction".
+    * Change Speed has new time controls for current and new length.
+      You can now enter the speed change as a multiplier e.g. "2" is
+      twice as fast. 
+    * New "Crossfade Tracks" effect can be used for crossfading two
+      tracks. This replaces Cross Fade In and Cross Fade Out.
+    * Nyquist Prompt and most shipped Nyquist effects now have
+      Preview button. 
+    * Redesigned Meter Toolbars: The default shows separate Record
+      and Playback Meters, half-height so they can be wider while
+      docked, in gradient style.
+    * A frequency selection can now be made (and spectral edit
+      effects applied to those frequencies) when in a spectrogram
+      view. You can also create or adjust frequency selections in a
+      new "Spectral Selection Toolbar" (available at View > Toolbars).
+    * Transcription Toolbar (Play-at-speed) can now loop play and
+      cut-preview. 
+    * Timer Record now saves recordings automatically into an
+      existing project.
+    * New Armenian translation.
+  + Bug fixes:
+   * Typing "j" or "k" in a label track activated the
+     "move cursor" shortcut.
+   * Spectrogram log (f) view displayed incorrectly until
+     vertically zoomed.
+   * Fixed crash after zooming out on vertical scale beyond +/-1.0.
+   * Selections made with Selection Toolbar were not restored after
+     Undo.
+   * Undo could fail silently if a selection included/touched a
+     clip boundary.
+   * If there were invalid FFmpeg libs in system PATH this
+     prevented Audacity recognising the installed FFmpeg or the
+     FFmpeg specified in audacity.cfg.
+   * Fix "Audacity already running" error when using the
+     command-line or context menu to open multiple or further files.
+   * Fix segfault exporting an FFmpeg format to an unwritable folder.
+   * Fix silent failure exporting FFmpeg, MP2 or OGG to an
+     unwritable directory.
+   * Fix ENTER activated an effect when OK button was greyed out.
+- Add audacity-lang package.
+- Extend audacity-flac_assert.h.patch to versions until 1.4.0.
+- Do not remove appdata.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Tue Mar 03 20:13:49 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Add patch audacity-ffmpeg.patch to build against current ffmpeg
+  on PMBS.
+
+-------------------------------------------------------------------
+Mon Oct 27 20:27:33 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Fix download url for source package
+
+-------------------------------------------------------------------
+Fri Oct 24 22:38:46 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Update to 2.0.6:
+  Bug fixes for:
+   * Interface:
+     * Region Restore did not restore the region after using Preferences. 
+     * Dragging selections with the keyboard or Selection Toolbar digits 
+       was very slow.  
+     * (Windows) Help > About Audacity crashed when run in Magyar language.  
+     * (OS X) Some full and reduced Menu Bar items were not translated.  
+     * (OS X and Linux) Fixed various interface crashes.
+   * Effects:
+     * Reverb and Paulstretch were missing from Chains.
+     * Analyze > Contrast could report very inaccurate rms levels.
+     * Noise Removal: Attack and decay times were half as long as set.  
+     * (OS X and Linux) Nyquist effects ran much more slowly than on Windows. 
+   * Click or drag on the Timeline after Loop Play continued to loop.
+   * Transcription Toolbar did not play slower than 0.1x speed.
+   * (Linux) Audacity did not build if python 2 was not available.  
+  Changes and Improvements:
+   * Interface:
+     * Redesigned, searchable Keyboard Preferences with Tree, Name and Key views.  
+     * Edit Menu: "Cut" and "Delete" are now in the top level of the menu.  
+     * Transport Menu now includes "Play/Stop" and "Play/Stop and Set Cursor" 
+       (use Keyboard Preferences to create shortcuts for "Play" and "Stop").
+     * Tracks Menu now includes "Mix and Render to New Track". 
+     * Track Drop-Down Menu now has Move Track To Top and Move Track To Bottom. 
+     * New right-click menu choice "Delete Label" to remove single labels.
+     * "Snap To" now offers choice of snap to the "closest" or "prior" position.
+       Note: the previous "Snap To On" keyboard shortcut will no longer work.   
+     * "Snap To" settings are now independent for each project.
+   * Effects:
+     * Truncate Silence: redesigned with simpler option "Truncate Detected 
+       Silence" to shorten to the specified length without compressing silence.
+     * VST effects: New "Settings" dialog lets you specify buffer size (for 
+       faster processing) and enable buffer delay compensation (to prevent
+       inserted silence). Compensation may cause a crash in a few plug-ins. 
+     * VST effects now support standard FXP presets.  
+     * LV2 effects are now supported on all platforms (textual interface only).    
+
+   * Import or export using FFmpeg now requires FFmpeg 1.2 or later (or libav
+     0.8 or later). For recommended downloads of recent FFmpeg please visit:
+     http://manual.audacityteam.org/o/man/faq_installation_and_plug_ins.html#ffdown .
+   * New Tamil translation (largely complete). 
+   * (Windows) FLAC exports can now exceed 2 GB in size. 
+   * (OS X) Easier Audacity installation using the DMG: drag the Audacity folder
+     to the /Applications shortcut, 
+   * (OS X) Audacity 2.0.6 will not officially support OS X 10.10 Yosemite when 
+     released (in particular, Apple Audio Units may not open in Audacity).
+   * (Linux) Self-compiled builds of Audacity now search for system LADSPA 
+     effects in /usr/lib/ladspa.
+ -  Added patch audacity-flac_assert.h.patch to build against flac 1.3.0.
+ 
+-------------------------------------------------------------------
+Sat Feb 22 10:58:59 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 2.0.5:
+  * Audacity 2.0.4 to hang or the computer to crash. WDM-KS has
+    been removed from Audacity 2.0.5 while we work on safely
+    enabling this host.
+  * You can now navigate through an effect or other dialog using
+    keyboard TAB.
+  * See more at
+    http://wiki.audacityteam.org/wiki/Release_Notes_2.0.5
+
+-------------------------------------------------------------------
+Tue Sep 10 15:15:25 UTC 2013 - fisiu@opensuse.org
+
+- Update to 2.0.4:
+  * New "Reverb" effect to replace GVerb, based on the original "Freeverb".
+  * New View > Go to Selection Start and Go to Selection End commands.
+  * New Tracks > Align End to End command to append existing tracks to each other.
+  * Change Tempo now supports fractional BPM.
+  * Plot Spectrum now supports FFT sizes up to 65536.
+  * WAV files now support "Album Title", "Track Number" and "Genre"
+    LIST INFO tags and also support ID3 tags.
+  * Handle a bug in older iPods or some OS X applications that cause them
+    to refuse AIFF files whose metadata contains an uneven number of characters,
+  * CTRL + ALT can now be used to smooth samples in Draw Tool.
+  * Modules Preferences replaced with a dialog on launch of Audacity enabling
+    you to choose which modules to load.
+  * Many bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 29 09:25:00 UTC 2013 - kkaempf@suse.com
+
+- Update to version 2.0.3
+  Bug fixes
+  * General
+    - Crash using Undo whilst time-shifting a track.
+    - Crash using Repair if the selection extended into an empty track.
+    - Export Multiple didn't prevent export if there was no audio or all
+      audio was muted. This allowed export of small invalid files.
+  * Time Track
+    - Loop Play of a speeded-up track inserted silence.
+    - Playback and rendering was significantly inaccurate, creating audible
+      and visual glitches.
+  * Accessibility
+    - The mnemonics character "&" was read out by screen readers in most of
+       the Preferences choices.
+    - NVDA did not read static text in most dialogs. Text can now be read by
+      using INSERT + B.
+    - JAWS and Window-eyes misread the "Duration" control in Silence
+      Generator.
+    - Toolbar buttons could not be pressed by ENTER
+    - Other interface bug fixes.
+  Changes and Improvements
+  * Resampling
+    - The SoX Resampler library (libsoxr) has replaced libresample in
+      Audacity releases, offering both higher quality and greater speed.
+  * Time Tracks new features
+    - "Set Range" now changes only the range of the Time Track, preserving
+      the pitch/speed set by any existing warp points.
+    - Vertical scale added with options for linear and logarithmic display
+      and interpolation.
+    - Upper and lower speed limits will now be remembered when saving and
+      reopening a project in 2.0.3. Warp points in projects saved by
+      previous Audacity versions will be correctly restored in 2.0.3.
+    - Warp points saved in a 2.0.3 project will be preserved if opened in
+      previous versions but playback and display will be incorrect.
+  * New effects
+    - Studio Fade Out (uses a filtered "S" curve).
+    - Adjustable Fade (accessible effect for creating partial fades and
+      adjustable fade shapes).
+    - Bass and Treble (replaces Bass Boost).
+  * General
+    - Real sample rates up to 384000 Hz are now supported for playback and
+      recording in high resolution devices (the maximum is up to 192000 Hz
+      for Windows DirectSound host).
+    - Labeled Regions in Edit Menu is renamed to "Labeled Audio" and now
+      allows splits to be placed at point labels. Labeled audio regions that
+      touch without overlapping are treated as separate regions. Overlapping
+      labeled audio regions are treated as a single region.
+    - New Croatian translation of Audacity.
+  * Compilation
+    - CMake is required in order to build libsoxr.
+
+- removed audacity-implicit.patch and audacity-2.0.2-docdir.patch
+  both included in 2.0.3
+
+-------------------------------------------------------------------
+Mon Oct 22 17:21:41 CEST 2012 - uli@suse.de
+
+- explicitly disable SSE on non-x86 architectures (fixes ARM,
+  probably others)
+
+-------------------------------------------------------------------
+Thu Aug 30 15:38:45 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 2.0.2
+  * A significant bug that caused clicks on split lines has been fixed
+  * There are improvements to several toolbars and to some Nyquist effects
+- Update to version 2.0.1
+  * Keyboard shortcuts can now be allocated to effects
+  * Nyquist plug-ins can be added to Chains
+- Run spec-cleaner
+- Use pkgconfig() style BuildRequires
+- Remove conditionals for unsupported openSUSE versions
+- Remove taglib build dependency. Not used any more
+- Remove libsamplerate dependency. Upstream prefers included libresample
+- Remove custom icon. Upstream already has a transparent version.
+- Add audacity-2.0.2-docdir.patch patch
+- Don't delete MIME type icon. Instead put it in %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
+- Add %icon_theme_cache_post, %mime_database_post and %desktop_database_post to %post
+- Recommend libmp3lame0, libavformat52, libavcodec52 and libavutil50
+
+-------------------------------------------------------------------
+Wed Mar 14 15:06:03 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 2.0.0
+
+  * Bug fixes for:
+
+   - Interface:
+     - Fixed playback speed and synchronization problems when dragging
+       clips or tracks between tracks having different sample rates.
+
+     - Imports and Exports:
+       - Fixed crashes when changing the sample format of read-directly WAV
+         or AIFF files using the Track Drop-Down Menu.
+       - Fixed a crash importing MP3 files that had duplicate metadata tags
+         (this is a bug in current libsndfile which has been patched in
+         Audacity; MP3 files mislabeled as WAV which have duplicate tags
+         will still crash Audacity on Linux if Audacity has been compiled
+         against an affected version of system libsndfile).
+     - Fixed an issue where excessively high or corrupted sample values in
+       the audio could corrupt exports from the start of the problem for
+       the rest of the file, and could corrupt the rest of the project.
+    - Fixed Audacity could not be compiled against FFmpeg
+      0.7.x and 0.8.x.
+
+   - Effects and Analysis:
+     - Fixed crash on launch when using "Ambisonic Decoders (PC)" VST
+       plug-ins and other plug-ins that enable additional floating point
+       exceptions.
+     - Fixed Plot Spectrum background could be transparent on some machines.
+     - Bug fixes for Click Track, High Pass, Low Pass and Vocal Remover.
+     - Chirp, Tone and Silence generators now remember their settings.
+
+   - Other miscellaneous bug fixes.
+
+  * Changes and Improvements:
+
+   - New Interface preference to show the track name in the display (this
+     is off by default).
+   - Longer default Playback preference for effects preview and preview
+     before cut.
+   - Restored use of Page Up and Page Down to scroll horizontally.
+
+-------------------------------------------------------------------
+Tue Dec 20 00:00:00 CET 2011 - detlef@links2linux.de
+
+- Update to version 1.3.14
+
+  * Bug fixes for:
+
+   - Interface:
+     - Excessive delay occurred when typing into labels in long projects. 
+     - Last digit of TimeText controls could not be manipulated in some formats.
+     - (Windows, OS X) Play and Record shortcuts did not work after clicking in
+       Device Toolbar. 
+     - (OS X, Linux) Crash occurred if Toolbars were reset during playback or
+       recording. 
+   - Imports and Exports:
+     - MP2 files were not importable without FFmpeg library or an import rule. 
+     - Files that could only be imported using FFmpeg imported as noise with
+       no error message if FFmpeg was not available. 
+     - Files containing PCM audio but an incorrect extension (such as MP3) 
+       caused a freeze. 
+   - Effects and Analysis:
+     - An empty command could be added to a Chain which then displayed a 
+       Nyquist error message when run.  
+     - Plot Spectrum didn't preserve signal level if multiple tracks were 
+       analyzed.  
+   - Other bug fixes:
+     - Audacity has been provisionally fixed so that it can no longer create 
+       block files longer than the sample format or project format allows, 
+       and can no longer delete these, which led to data loss. Any overlong 
+       blocks found are preserved but "orphaned", so will appear as silence.
+     - Orphan block files were wrongly reported if cutting or copying to 
+       the clipboard then reopening the project in the same session. 
+     - Fixed some crashes and incorrect movement of audio when dragging tracks.
+     - (Windows) Data loss is now prevented when encountering a corrupted
+       .aup file created in ANSI builds. 
+     - (Linux) Restore building if USE_PORTMIXER is not defined. 
+ 
+  * Changes and Improvements:
+
+   - Normalize: Faster processing and improved interface. Left-right balance 
+     in unsplit stereo tracks is now preserved by default, with a checkbox 
+     option provided to process stereo channels independently.   
+   - Spectrograms now allow window sizes up to 32768 and frequencies up to
+     half the sample rate (the maximum possible).
+   - Mix and Render now preserves clip length by not rendering white space 
+     between time zero and first audio, and preserves audio before time zero.
+     To retain silence before the audio starts, generate silence after render.     
+   - Grouped some Edit Menu items into "Remove Audio" and "Clip Boundaries".  
+   - CleanSpeech Mode removed from Interface Preferences (it still runs if it
+     was enabled in a previous Audacity but can only be turned off there). 
+   - (OS X) Added support for AudioUnit MusicEffects (but no MIDI support). 
+   - (Linux) Set the per-user files directory per the program name set in 
+     configure.
+   - (Linux) Changed the default location of the Audacity temporary directory
+     to be in /var/tmp not /tmp, so preserving the directory between reboots. 
+
+-------------------------------------------------------------------
+Sat Sep 17 13:34:29 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Sep  7 07:36:18 UTC 2011 - mseben@gmail.com
+
+- added audacity-1.3.13-div_by_zero_fix.patch to fix audacity crash
+  while opening invalid wav file (bnc#711737)
+
+-------------------------------------------------------------------
+Fri Aug 19 19:47:51 UTC 2011 - reddwarf@opensuse.org
+
+- Update Source tag for the new _service file-less Factory policy
+- Add audacity-1.3.13-ffmpeg.patch to compile with latest ffmpeg 
+
+-------------------------------------------------------------------
+Mon Apr 18 00:00:00 CET 2011 - detlef@links2linux.de
+
+- Update to version 1.3.13
+
+  * Numerous bug fixes
+    - Crashes on Windows when clicking in the track or in effects dialogs.
+    - Crashes on OS X when closing or quitting.
+    - Warning (on by default) now provided when importing uncompressed audio
+      files and when read-directly uncompressed files are missing.
+    - Full support added for later versions of the optional FFmpeg library up
+      to current FFmpeg HEAD. More compatible U-Law/A-Law exports.
+    - VST effects processing restored to full speed. Hang fixed when launching
+      on OS X 10.5 PPC with VST effects present.
+    - (OS X) Files imported from iTunes could create invalid characters in the
+      .aup project file. See here for help re-opening older projects that have
+      this error.
+    - (Linux) Crashes or stalled recordings using the pulse device. Crashes
+      using Play-at-Speed if Audacity was configured with libsamplerate.
+  * Changes and Improvements
+    - Control Toolbar renamed to Transport Toolbar. Input/output selection
+      moved from Mixer Toolbar to improved Device Toolbar (on by default).
+    - New "Sync-Lock Tracks" feature (turned on in the Tracks menu).
+    - Equalization now supports importing and exporting curves. Noise Removal
+      improvements including new option to isolate noise.
+    - Improved Automatic Crash Recovery with all project changes autosaved.
+    - New "Extended Import" Preferences for specifying audio file importers.
+    - (Windows and Linux) Close button now quits on closing the last window
+      while File > Close clears to a new, empty project.
+
+-------------------------------------------------------------------
+Tue Dec 28 16:29:51 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets-wxcontainer, it does not compile with STL
+  variant.
+
+-------------------------------------------------------------------
+Mon Oct  4 14:27:46 UTC 2010 - reddwarf@opensuse.org
+
+- Cleaned with spec-cleaner
+- Fix support for newer ffmpeg versions
+- Use download/verify services
+- Add -implicit patch as suggested by post-build scripts
+
+-------------------------------------------------------------------
+Fri Jun  4 13:46:28 UTC 2010 - mseben@novell.com
+
+- add LICENSE_NYQUIST.txt to clarify licensing of libnyquist source 
+  files
+
+-------------------------------------------------------------------
+Wed May 26 21:59:23 UTC 2010 - cmorve69@yahoo.es
+
+- Fix build-compare
+- Fix ffmpeg support
+
+-------------------------------------------------------------------
+Sat Apr 17 15:00:02 UTC 2010 - cmorve69@yahoo.es
+
+- Updated no_buildstamp patch.
+
+-------------------------------------------------------------------
+Tue Apr 13 08:43:47 UTC 2010 - davejplater@gmail.com
+
+- Update to version 1.3.12
+- Bug fixes for:
+  * Imports and Exports:
+  * AAC files could not be exported at 48000 Hz
+  * When importing multiple native file formats using FFmpeg, all
+      files after the first reverted to using the native importer
+  * FFmpeg custom export window too large on 800 x 600 resolution
+      monitors
+  * Projects froze if files imported via On-Demand were no longer
+      available
+  * (Linux) WAV/AIFF exports were corrupted if overwriting an aliased
+      file which had been imported using the command line
+  * Labels:
+  * Cutting or deleting a region in the waveform and label track did
+      not move the labels in advance of the cut
+  * Incorrect behavior snapping to labels and boundaries when Snep To
+      was enabled
+  * Labels can now be reversed if included with the audio selection
+  * Other bug fixes:
+  * When using non-English languages, Generate effects truncated the
+      selected region
+  * Mice with high-precision scroll-wheels could cause a crash
+  * Changing recording preferences using the Transport menu did
+      not update the menu in other open projects
+  * (Windows 7) Clicking in a file open or save dialog caused files or
+      folders to disappear from the list, and file filtering was broken
+- Changes and improvements:
+  * A hover tooltip is now provided if the Mixer Toolbar input selector
+    cannot control the system slider for the selected input.
+  * More intuitive behavior when moving and resizing labels by dragging
+  * Support added for importing lists of files (LOF) containing relative
+    paths
+  * Export Multiple: new option to use a numerical prefix before existing
+    label or track names; "Success" dialog now resizable
+  * New Equalization preset "Inverse RIAA", with new button to invert
+    other curves
+  * Timer Record now remembers last scheduled duration
+  * Meter Toolbar can now be made much narrower, and so more suitable for
+    vertical orientation
+  * New Preferences choice for "System" language which is used on first
+    run instead of asking user to choose language
+  * Warning now provided if WAV/AIFF exports are not successfully
+    completed
+  * (Linux) Improved icon set in compliance with freedesktop.org
+    Icon Theme Specification 0.6
+
+-------------------------------------------------------------------
+Mon Mar 15 16:31:02 UTC 2010 - coolo@novell.com
+
+- rework previous fix without autoreconf in patching configure
+  directly
+
+-------------------------------------------------------------------
+Mon Mar 15 11:43:14 UTC 2010 - dimstar@opensuse.org
+
+- Add audacity-nomac.patch: remove the mac checks from configure.
+  The check is actually build a test program which fails due to
+  missing headers. As consequence: start autoreconf in
+  lib-src/portmixer.
+
+-------------------------------------------------------------------
+Mon Jan 25 21:28:17 UTC 2010 - mseben@novell.com
+
+- updated to 1.3.11
+  - Bug fixes for:  
+    *Too much audio exported when exporting partial selections
+    * Exports via FFmpeg corrupted if included metadata; M4A now supports metadata export
+    * Nyquist plug-ins did not add labels to an existing label track
+    * Crash opening Preferences when no audio devices available
+    * Timer Record and Sound Activated Recording bugs
+    * (Windows) Installer now installs correctly over previous Audacity versions
+    * Miscellaneous crashes and interface issues
+  - Improvements: 
+    * (Windows) Higher resolution icon file
+    * New Sound Finder plug-in for labelling regions of audio
+
+-------------------------------------------------------------------
+Fri Jan  8 16:50:03 CET 2010 - vuntz@opensuse.org
+
+- Remove unneeded glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Dec 13 09:12:28 UTC 2009 - cmorve69@yahoo.es
+
+- Remove buildstamp to help build-compare
+
+-------------------------------------------------------------------
+Tue Dec  8 11:35:57 UTC 2009 - mseben@novell.com
+
+- Update to 1.3.10
+  - Bug fixes
+    * Freeze importing audio files when Default View Mode set to Pitch (EAC)
+    * Simultaneous On-Demand imports sorted incorrectly
+    * WAV or AIFF files imported as noise if Preferences set to copy in the data at 24-bit quality
+    * WMA exports corrupted if they contained metadata
+    * Metadata Editor appeared before the Export window when exporting to any format
+    * Crash or hang using Equalization on longer tracks
+    * Reverse did not reverse clip boundaries
+    * Nyquist - Excessive memory consumption led to slow processing or crashes
+    * Nyquist - Values appearing in text boxes not always the default or previously entered values
+    * Nyquist - Errors running in European locales where comma used as decimal separator
+    * VST effects remained in Effect menu even when re-scanned and no longer available
+    * Truncate Silence produced incorrect results if silences spanned a block boundary
+    * Spurious "not writable/disk full" errors when saving projects
+    * Playing, rendering or exporting multiple tracks led to desynchronized playback or loss of audio data
+    * Crash opening Preferences when no recording and/or playback devices enabled or connected
+    * Preferences window: OK button did not respond to ENTER when a tab selected in left-hand panel
+    * Mixer Board solo button handling
+    * (Windows) After a period launching correctly, Audacity sometimes did not come up on top at launch
+    * (Mac OS X) Correctly installed Help folder could not be found
+    * (Mac OS X and Linux) Output slider could affect VU playback meter which then did not reflect actual waveform volume level
+    * (Linux) Undoing or redoing a label edit could cause a crash
+  - Changes and improvements:
+    * Linked audio and label tracks disabled until a future Beta version so they can be bug fixed
+    * Input volume slider will be disabled if it doesn't have proper control of system slider; use the system slider instead
+    * Proper support for copying/pasting label-with-audio including label text; new Edit > Paste Text to New Label menu item to paste system clipboard
+    * Contrast Tool now modeless, more intuitive handling of multiple project windows, various other minor improvements
+- obsolete gsocket-conflict.patch
+
+-------------------------------------------------------------------
+Thu Nov  5 09:40:31 UTC 2009 - davejplater@gmail.com
+
+- Update to 1.3.9 adapted patches and remade audacity-1.3.9-audiodevdefaults.patch
+  * Crash, slow launch or excessive CPU/memory use arising from automatic VST support:
+    o VST instrument plug-ins should now be correctly ignored
+    o VST effects now scanned only at start of first session that detects them, then cached
+    o Effects are now not loaded or opened until needed
+    o New "Effects" tab in Preferences to enable/disable VST effects and enable VST rescan on next launch
+  * Default View Mode now works
+  * Chains now always apply their stored parameters rather than those last used in Effect menu
+  * Non-MP3 files imported via drag or Recent Files caused crash if filter in file open window set to MP3
+  * AAC exports (using the optional FFmpeg library) silenced
+  * Generating audio always fitted the project in the window; fit now done only if generating in new track
+  * View menu items/shortcuts incorrectly disabled when playing or recording
+  * DTMF generator defaulted to zero duration on open
+  * Unwanted interactions between linked audio and label tracks
+  * Various other interface bugs
+  * Compressor: new option to compress based on peaks, improved attack and decay time support
+  * Mixer Board: improved design, more responsive meters and now interacts fully with Track Panel in main window
+
+-------------------------------------------------------------------
+Fri Jul 31 15:21:50 CEST 2009 - mseben@suse.cz
+
+-  added vamp-plugin-sdk-devel to buildrequires (for 11.2 and higher)
+
+-------------------------------------------------------------------
+Thu Jul 23 11:02:54 CEST 2009 - mseben@suse.cz
+
+- update to 1.3.8 see full changelog : http://audacity.sourceforge.net/download/features-1.3-a
+ Effects and Analysis:
+ * VST Effects now display GUI by default
+ * Faster Equalization and Noise Removal;
+ * Chains applied to files now clear temporary data after processing each file
+ * Updated Nyquist implementation with support for SAL syntax and improved memory management
+ * Plot Spectrum now analyzes up to 237.8 seconds of audio, with separate windows 
+  for each project and improved display; new preferences for Spectrograms
+ * Contrast Analysis tool now modeless for easier use
+ Interface:
+ * Draft Manual/Quick Help included in Windows and Mac installers
+ * New "Mixer Board" view with per-track VU meters
+ * Mute, solo, gain, pan and track height saved in projects
+ * More compact Preferences window with easier-to-use Keyboard tab and new toolbars shortcuts
+ * New Screenshot Tools and improved screen reader support
+ Other:
+ * Record more than 16 channels (hardware/drivers permitting)
+ * Improved support for non-mmap ALSA devices such as PulseAudio
+ * 32-bit float data over 0 dB now handled without clipping
+ * "Stop" option when importing preserves already imported data
+ * AMR NB export now supported if the optional FFmpeg library is installed
+ * Faster waveform drawing and better response in multi-track projects
+- obsolete : return_non_void.patch,endian-fix.patch,font-fix.patch,
+    strict-aliasing.patch,wxGTK_with_stl.patch,modal-help-dialog.patch,
+    desktop_file.patch,portaudio-non-mmap-alsa.patch,startup_fix.patch
+- added gsocket-conflict.patch to fix GSocket conflict
+- added taglib-devel to BR
+
+-------------------------------------------------------------------
+Fri May 29 11:05:40 CEST 2009 - mseben@suse.cz
+
+- fix startup crash (startup_fix.patch)
+
+-------------------------------------------------------------------
+Thu May 21 23:00:52 CEST 2009 - cmorve69@yahoo.es
+
+- Got portaudio-non-mmap-alsa.patch and audiodevdefaults.patch from
+  Fedora to allow it to work with PulseAudio
+
+-------------------------------------------------------------------
+Tue May 19 16:18:43 CEST 2009 - cmorve69@yahoo.es
+
+- Add alsa-devel BR to allow ALSA output
+
+-------------------------------------------------------------------
+Mon May 11 23:08:12 CEST 2009 - cmorve69@yahoo.es
+
+- removed unneeded BuildRequires
+- make ffmpeg, mad and twolame support build options
+- use upstream .desktop file
+- do not force -fno-strict-aliasing since upstream already does
+
+-------------------------------------------------------------------
+Wed Apr  8 16:55:49 CEST 2009 - mseben@suse.cz
+
+- added wxGTK_with_stl.patch to fix build issues when linking wxGTK
+  configured with --enable-stl flag
+
+-------------------------------------------------------------------
+Mon Feb 23 13:22:10 CET 2009 - mseben@suse.cz
+
+- added return_non_void.patch to fix non-void return value (bnc#477654)
+
+-------------------------------------------------------------------
+Mon Feb  2 09:33:38 CET 2009 - mseben@suse.cz
+
+- updated to version 1.3.7
+ Bug Fixes:
+ * Muting/soloing caused incorrect channel results in exported 
+   stereo files
+ * Nyquist effects: pasted unmodified audio into the result, 
+   no progress bar, truncation of processed audio on cancel
+ * Noise Removal: pasted unmodified audio into the result, unwanted 
+   filtering tail
+ * Uncompressed exports: export as WAV could be corrupted if 
+   overwriting to same file, export multiple to uncompressed formats
+   only produced 16-bit WAV
+ * Compressed exports: MP3 exports now produce correct bit rate 
+   mode, quality and length, with improved metadata visibility 
+   in player applications, WMA exports containing metadata are now correct
+ * Restored support for multi-channel recording devices that can 
+   record more than two channels using Audacity
+ * fixes for spurious clipping, label typing, no shortcuts after 
+   running effects
+ * project rate now always changes to respect that of first imported file
+ New Features:
+ * F11 Full Screen mode, high-quality "Sliding Time Scale/Pitch Shift" 
+   effect, Audio Contrast Analyzer
+ Other changes:
+ * As a first step towards improving latency correction, a fixed
+  rather than variable correction is now applied
+ * Numerous minor interface fixes and improvements
+
+- obsolete *-compile.patch, *-locale.patch
+
+-------------------------------------------------------------------
+Mon Jan 12 13:19:49 CET 2009 - mseben@suse.cz
+
+- fixed Khmer translation file (*-locale.patch)
+- added array-delete.patch to fix array delete  (bnc#442936)
+- added transparent desktop icon (audacity.png)
+- obsolete *-portaudio-shlib.patch, *-nosse.patch
+-------------------------------------------------------------------
+Thu Dec 11 11:08:05 CET 2008 - mseben@suse.cz
+
+- updated to version 1.3.6
+  Interface:
+  * "Save Compressed Copy of Project" saves in much smaller .OGG
+    format to facilitate online transmission of projects
+  * Improved MIDI import and export routines, and clearer color
+    for selection region
+  * Default temporary directory on Mac now accessible in Finder
+  Import / Export:
+  * Stability improvements in on-demand loading
+  * FFmpeg: support for latest version of library, improved
+    version checks and error messages, stability improvements
+    in custom exporter
+  Bug Fixes:
+  * Crash in "Get Noise Profile" step of Noise Removal at project
+    rates below 20480 Hz.
+  * Underestimation of peak level in tracks with a small number
+    of different peaks
+  * Truncate Silence could result in repeated or lost audio if
+    applied to the whole of a track
+  * Other interface, generating, exporting and platform-specific
+    fixes
+  Compilation:
+  * Added autoconf macro archive to CVS, enabling *.nix users
+    without this archive to build --with -MIDI
+
+- renamed *-modal-help-dialog.diff to *-modal-help-dialog.patch,
+  also changed for 1.3.6 tarball
+- added libexpat-devel to BuildRequires (directory lib-src/expat
+  in tarball 1.3.6 no longer exists)
+
+-------------------------------------------------------------------
+Thu Nov 20 11:52:28 CET 2008 - tiwai@suse.de
+
+- fix modal dialog with the help browser (bnc#440032)
+
+-------------------------------------------------------------------
+Wed May 28 15:13:22 CEST 2008 - anosek@suse.cz
+
+- updated to version 1.3.5
+  Recording / Playback
+  * Several bugs fixed so that latency correction should be better, and more devices work correctly.
+  * Problems with invalid sample rates under Linux should be much rarer.
+  * Newer version of Portaudio library.
+  * New feature to record onto the end of an existing track (hold Shift while clicking Record).
+  Import / Export
+  * Updated versions of Libogg, Libvorbis, Libflac, Libsndfile and Twolame libraries.
+  * Handling of unsupported file formats more informative.
+  * Handling of file names with slashes on OS X improved.
+  * New dialog allows replacement of illegal file name characters on all platforms.
+  Interface
+  * Improved scaling and layout for rulers and VU meters.
+  * Envelope fixes/improvements including full control of undo/redo.
+  * New keyboard shortcuts and improved menu navigation.
+  * Preferences:
+    o More intuitive tab arrangement.
+    o New options for mute/solo and Metadata Editor behavior.
+    o Language can now be changed without restart.
+  * Expanded Build Information tab.
+  Effects
+  * New Vocal Remover plug-in, improvements for Generate effects.
+
+- dropped obsoleted patches (cflags.patch) (CVE-2007-6061.patch)
+
+-------------------------------------------------------------------
+Wed May 14 16:06:24 CEST 2008 - schwab@suse.de
+
+- Remove useless patch.
+
+-------------------------------------------------------------------
+Wed Apr  2 14:11:45 CEST 2008 - anosek@suse.cz
+
+- fixed Insecure symlink handling (bnc#344588) (CVE-2007-6061.patch)
+  - temp file is now created in users home directory
+
+-------------------------------------------------------------------
+Fri Jan 25 15:37:39 CET 2008 - adrian@suse.de
+
+- remove mad-devel in BuildRequires to keep the package as part
+  of Factory
+
+-------------------------------------------------------------------
+Fri Jan 18 09:41:44 CET 2008 - anosek@suse.cz
+
+- updated to version 1.3.4
+  New features
+    New Welcome Screen with introduction to Audacity.
+    New keyboard command: 'Mix and Render to New Track' (bound to Ctrl+Shift+M).
+    New keyboard shortcut: "Shift-A" starts playback when stopped, or performs "Stop and Select" when playing.
+    Added support for VAMP audio analysis plug-ins.
+    Solo button solos only one track at a time, and a track cannot be both mute and solo.
+  Interface
+    Keyboard shortcuts for making short/long jumps along the timeline.
+    Added 'Snap To' in the Selection Bar.
+    Made keyboard navigation easier when multiple menu items with the same first letter exist.
+    Enhanced interface for label editing.
+    Layout of OK/Cancel buttons consistency improved.
+    Preferences:
+        * "Select all audio in project, if none selected" (on by default).
+        * "Beep on completion of longer activities" (system bell, not main output).
+        * Other preferences cleaned up and explanations improved.
+    Envelopes: Many fixes when copying / pasting / repeating.
+    Many translation updates.
+    Track height fixed in several cases.
+    CleanSpeech mode switching without closing and re-opening fixed.
+  Opening/Saving Formats
+    Metadata editor added for OGG, FLAC and WAV/AIFF exports, and general improvements.
+    Metadata import improved.
+    Muted tracks are no longer audible in the exported mix.
+  Effects
+    Truncate Silence: support for multiple and stereo tracks.
+    Dtmf Generator:
+        * Added support for keypad letters.
+        * Added an amplitude control.
+    Compressor: variable decay time added.
+    Equalization:
+        * Clicks at start / end prevented.
+        * Improvements to saved curves being found.
+        * Preview works correctly.
+    'Merge' command appears in Undo history.
+    Clipping detected more reliably.
+    Nyquist plug-ins reviewed and enhanced.
+    Better (and more) progress bars.
+    Cancelling effect always restores previous audio.
+    Several improvement to effects in batch mode.
+  Recording/Playback
+    Improvements to latency correction.
+    Updated version of portaudio-v19 library.
+  Note that Help is no longer built in, but accessible on the Web via links in Audacity.
+
+- dropped obsoleted patches:
+  * flac.patch - already in upstream
+  * equalization.patch - already in upstream
+  * build.patch
+  * hu_update.patch.bz2
+- added patch to fix compilation errors (compile.patch)
+
+-------------------------------------------------------------------
+Wed Sep 19 13:04:11 CEST 2007 - prusnak@suse.cz
+
+- fix broken Equalization effect (equalization.patch) [#326217]
+
+-------------------------------------------------------------------
+Thu Aug  2 08:07:23 CEST 2007 - anosek@suse.cz
+
+- fixed Hungarian translation update [#295657] (hu_update.patch)
+
+-------------------------------------------------------------------
+Thu Jun 21 15:57:10 CEST 2007 - sbrabec@suse.cz
+
+- Build with system soundtouch.
+- Build with jack support.
+
+-------------------------------------------------------------------
+Wed Jun  6 14:09:40 CEST 2007 - sbrabec@suse.cz
+
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Tue May 29 19:30:09 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.3.3
+  * added collapse/expand tracks
+  * multiple clips per track
+  * added selection bar
+  * improved label tracks
+  * better performance with large projects
+  * added transcription toolbar
+  * improved accessibility for the visually impaired
+  * added auto-save and automatic crash recovery
+  * added batch processing
+  * metadata may be added to OGG files
+  * EQ effect responsiveness improved
+  * new Auto Duck effect
+  * DTMF tone generator
+- dropped obsoleted patches:
+  * ambigous.patch
+  * overflow-fix.patch (included in update)
+  * qualification.patch (included in update)
+  * wx-compat.patch
+- added patches:
+  * flac.patch - adjust for new FLAC 1.1.4 API
+  * nosse.patch - don't try to use SSE on non-x86 archs
+
+-------------------------------------------------------------------
+Fri Apr 20 11:51:15 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Thu Aug 10 16:28:26 CEST 2006 - anosek@suse.cz
+
+- fixed build with new version of autotools (audacity-build.patch) 
+
+-------------------------------------------------------------------
+Sun Feb 19 09:52:14 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Wed Feb 15 18:59:57 CET 2006 - sbrabec@suse.cz
+
+- Build with portaudio19 (#151210).
+
+-------------------------------------------------------------------
+Mon Jan 30 07:19:10 CET 2006 - aj@suse.de
+
+- Further fix to BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jan 29 16:54:58 CET 2006 - aj@suse.de
+
+- Fix buildrequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 16 14:50:46 CET 2005 - sbrabec@suse.cz
+
+- Returned back required wx-compat patch.
+
+-------------------------------------------------------------------
+Wed Dec  7 19:05:44 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.2.4b.
+
+-------------------------------------------------------------------
+Wed Nov  9 19:51:11 CET 2005 - sbrabec@suse.cz
+
+- Strict aliasing fix.
+
+-------------------------------------------------------------------
+Tue Oct 25 17:25:26 CEST 2005 - sbrabec@suse.cz
+
+- Fixed extra qualification.
+- Build with correct CFLAGS.
+- Fixed random return values.
+
+-------------------------------------------------------------------
+Fri Oct 14 15:07:20 CEST 2005 - sbrabec@suse.cz
+
+- Disabled mad support.
+
+-------------------------------------------------------------------
+Fri Apr 15 14:50:23 CEST 2005 - mcihar@suse.de
+
+- add SDL-devel-packages because of wxGTK
+
+-------------------------------------------------------------------
+Thu Feb 17 15:19:39 CET 2005 - hvogel@suse.de
+
+- mark as nosrc
+
+-------------------------------------------------------------------
+Tue Nov 23 02:15:35 CET 2004 - ro@suse.de
+
+- fix build with current wxGTK 
+
+-------------------------------------------------------------------
+Mon Nov 22 13:15:10 CET 2004 - mcihar@suse.cz
+
+- update to 1.2.3
+
+-------------------------------------------------------------------
+Mon Sep 06 17:48:06 CEST 2004 - mcihar@suse.cz
+
+-fix build on 64-bit arches
+
+-------------------------------------------------------------------
+Fri Sep 03 16:33:41 CEST 2004 - mcihar@suse.cz
+
+- update to 1.2.2
+
+-------------------------------------------------------------------
+Thu Aug  5 13:25:33 CEST 2004 - tiwai@suse.de
+
+- updated to version 1.2.1.
+- using wxGTK-compat library.
+
+-------------------------------------------------------------------
+Sun Mar 28 15:39:10 CEST 2004 - tiwai@suse.de
+
+- fixed the segfault at the start up (bug #34313)
+- fixed the size of fonts for wxGTK with GTK-2.
+- fixed possible buffer overflows.
+- build with portaudio-v18, v19 seems problematic.
+
+-------------------------------------------------------------------
+Fri Mar  5 16:36:57 CET 2004 - tiwai@suse.de
+
+- updated to version 1.2.0 final.
+
+-------------------------------------------------------------------
+Mon Feb 16 14:58:02 CET 2004 - tiwai@suse.de
+
+- updated to version 1.2.0-pre4.
+
+-------------------------------------------------------------------
+Thu Jan 22 11:59:40 CET 2004 - tiwai@suse.de
+
+- fixed the build with the latest autoconf.
+
+-------------------------------------------------------------------
+Wed Jan 14 14:45:46 CET 2004 - tiwai@suse.de
+
+- updated to version 1.2.0-pre3.
+- use portaudio v19 (shared lib).
+
+-------------------------------------------------------------------
+Tue Jan 13 18:16:45 CET 2004 - tiwai@suse.de
+
+- fixed the neededforbuild for the latest wxGTK with gtk2.
+
+-------------------------------------------------------------------
+Sat Jan 10 11:39:57 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Sep 15 15:56:07 CEST 2003 - tiwai@suse.de
+
+- added desktop icon.
+
+-------------------------------------------------------------------
+Sun Sep 14 22:26:12 CEST 2003 - adrian@suse.de
+
+- add AudioVideoEditing Category
+
+-------------------------------------------------------------------
+Fri Aug 29 12:59:19 CEST 2003 - tiwai@suse.de
+
+- fixed the bug of WAVE display.
+
+-------------------------------------------------------------------
+Thu Aug 14 17:05:23 CEST 2003 - tiwai@suse.de
+
+- added desktop file.
+
+-------------------------------------------------------------------
+Mon Aug 11 14:47:37 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.2.0-pre1.
+- help file is installed under /usr/share/audacity.
+
+-------------------------------------------------------------------
+Thu Jul  3 19:47:02 CEST 2003 - tiwai@suse.de
+
+- fixed neededforbuild for the recent update of mad.
+
+-------------------------------------------------------------------
+Tue May 27 00:30:03 CEST 2003 - ro@suse.de
+
+- removed unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Mar 27 16:08:54 CET 2003 - tiwai@suse.de
+
+- updated to version 1.1.3.
+  linked with libFLAC and libsamplerate.
+
+-------------------------------------------------------------------
+Tue Nov 26 11:52:46 CET 2002 - tiwai@suse.de
+
+- updated to version 1.1.1.
+- build with the system libsndfile since now audacity supports
+  libsndfile 1.0.
+- enabled nyquist support.
+
+-------------------------------------------------------------------
+Fri Aug 30 18:24:55 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.1.0 cvs 2002.08.30.
+  the 1.1.0 tarball version has a major bug regarding to project
+  file management (bug #18662).  this version fixes the problem.
+  also, this one includes a help text, which wasn't there.
+
+-------------------------------------------------------------------
+Wed Jul 24 13:24:00 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.1.0.
+
+-------------------------------------------------------------------
+Mon Jul  1 15:49:58 CEST 2002 - tiwai@suse.de
+
+- updated to the stable version 1.0.0-2.
+
+-------------------------------------------------------------------
+Wed Apr 17 13:15:10 CEST 2002 - tiwai@suse.de
+
+- fixed build with gcc-3.1.
+
+-------------------------------------------------------------------
+Wed Apr 10 01:26:13 CEST 2002 - ro@suse.de
+
+- work around autoconf problem: first AC_CHECK_HEADER
+  apparently has to be outside of an if ... fi block 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:14 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Fri Jan 25 14:51:04 CET 2002 - ro@suse.de
+
+- added libpng,libjpeg,libtiff to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jan 24 12:11:15 CET 2002 - tiwai@suse.de
+
+- initial package version: 0.98.
+- built with the shared id3lib.

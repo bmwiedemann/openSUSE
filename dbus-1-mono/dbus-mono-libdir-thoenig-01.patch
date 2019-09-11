@@ -1,0 +1,21 @@
+--- mono/Makefile.am
++++ mono/Makefile.am	2006/02/14 15:48:47
+@@ -59,14 +59,14 @@
+ 
+ install-data-local:
+ 	@if test -n '$(TARGET)'; then                       \
+-	  echo "$(GACUTIL) /i $(ASSEMBLY) /f /package dbus-sharp /gacdir $(DESTDIR)$(libdir)";    \
+-	  $(GACUTIL) /i $(ASSEMBLY) /f /package dbus-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir) || exit 1; \
++	  echo "$(GACUTIL) /i $(ASSEMBLY) /f /package dbus-sharp /gacdir $(DESTDIR)$(prefix)/lib";    \
++	  $(GACUTIL) /i $(ASSEMBLY) /f /package dbus-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib || exit 1; \
+ 	fi
+ 
+ uninstall-local:
+ 	@if test -n '$(TARGET)'; then                       \
+-	  echo "$(GACUTIL) /u $(ASSEMBLY_NAME) /package dbus-sharp /gacdir $(DESTDIR)$(libdir)";  \
+-	  $(GACUTIL) /u $(ASSEMBLY_NAME) /package dbus-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir) || exit 1;   \
++	  echo "$(GACUTIL) /u $(ASSEMBLY_NAME) /package dbus-sharp /gacdir $(DESTDIR)$(prefix)/lib";  \
++	  $(GACUTIL) /u $(ASSEMBLY_NAME) /package dbus-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib || exit 1;   \
+ 	fi
+ 
+ EXTRA_DIST=			\

@@ -1,0 +1,31 @@
+commit fb7b152478b28d998c781f1ad924675b85c314db
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sat Jul 8 15:32:36 2017 +0200
+
+    Allow to override build date
+    
+    in order to allow for reproducible builds.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+    
+    Also use gmtime instead of localtime to be independent of timezone.
+
+diff --git a/lib/doc/bin/kernel-doc b/lib/doc/bin/kernel-doc
+index 0c8bf6a..2851162 100755
+--- a/lib/doc/bin/kernel-doc
++++ b/lib/doc/bin/kernel-doc
+@@ -253,10 +253,11 @@ my %highlights = %highlights_man;
+ my $blankline = $blankline_man;
+ my $modulename = "Kernel API";
+ my $function_only = 0;
++my $build_date = $ENV{SOURCE_DATE_EPOCH} || time;
+ my $man_date = ('January', 'February', 'March', 'April', 'May', 'June',
+ 		'July', 'August', 'September', 'October',
+-		'November', 'December')[(localtime)[4]] .
+-  " " . ((localtime)[5]+1900);
++		'November', 'December')[(gmtime($build_date))[4]] .
++  " " . ((gmtime($build_date))[5]+1900);
+ my $show_not_found = 0;
+ 
+ # Essentially these are globals.

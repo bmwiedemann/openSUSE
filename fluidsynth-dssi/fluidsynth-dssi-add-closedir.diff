@@ -1,0 +1,16 @@
+---
+ src/locate_soundfont.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: fluidsynth-dssi-1.0.0/src/locate_soundfont.c
+===================================================================
+--- fluidsynth-dssi-1.0.0.orig/src/locate_soundfont.c	2009-01-05 01:38:10.000000000 +0200
++++ fluidsynth-dssi-1.0.0/src/locate_soundfont.c	2019-04-05 12:59:29.352779070 +0200
+@@ -161,6 +161,7 @@ fsd_get_known_soundfonts(const char *pro
+ 	    }
+ 	}
+     }
++    closedir(subdir);
+ 
+     *rn = n;
+     free(origPath);

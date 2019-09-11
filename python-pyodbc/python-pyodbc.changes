@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Mon Aug  5 18:35:48 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
+
+- Update to version 4.0.27: 
+  * Use int instead of bigint when possible (based on size of data) 
+    to work with drivers that don't support bigint at all.
+  * Support SQL Server datetime2 precision. Previously more data 
+    was passed than the column precision causing an error.
+  * Make Informix unit tests work again.
+  * Correct encoding error on big-endian machines for connection 
+    errors. Default to native UTF16 instead of UTF16-LE.
+  * Fix MySQL unit tests.
+
+-------------------------------------------------------------------
+Sun Mar 10 16:04:24 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
+
+- Update to version 4.0.26:
+  * Issue #506 uncovered a potentially serious error where 
+    Unicode strings may not get a NULL terminator when being converted.
+  * Issue #504 was a double decref in the error return path of executemany.
+  
+
+-------------------------------------------------------------------
+Wed Jan 30 19:32:36 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
+
+- Update to version 4.0.25:
+  * support for SQL Server Table-Valued Paramaters has arrived. See test_tvp in the SQL Server unit tests.
+  * Support for IBM DB/2 DECFLOAT type (#472) by @c-dy
+  * Better SQL Server and FreeTDS tests with known driver issues (#469) by @gordthompson.
+  * Fix "function sequence error" with fast executemany (#450) by @v-makouz.
+
+-------------------------------------------------------------------
+Sat Aug 25 15:19:36 UTC 2018 - jengelh@inai.de
+
+- Strip filler wording from description.
+
+-------------------------------------------------------------------
+Wed Aug 22 07:42:09 UTC 2018 - tchvatal@suse.com
+
+- Really use upstream tarball
+
+-------------------------------------------------------------------
+Wed Aug 22 07:31:31 UTC 2018 - tchvatal@suse.com
+
+- Do not copy around but use PYTHONPATH to find the module
+
+-------------------------------------------------------------------
+Sun Aug 19 09:54:09 UTC 2018 - monex@liquid-co.de
+
+- Update to 4.0.24
+
+-------------------------------------------------------------------
+Thu Aug  9 18:39:28 UTC 2018 - monex@liquid-co.de
+
+- Added test cases for sqlite to check section.
+  Unfortunaly the test cases are broken at the moment
+  a bug report was created at github.
+
+-------------------------------------------------------------------
+Sun Aug  5 17:44:33 UTC 2018 - monex@liquid-co.de
+
+- Added LICENSE.txt and README.md to files.
+- Use only one BuildRequires per line.
+- Corrected wrong Release version.
+
+-------------------------------------------------------------------
+Sat Aug  4 16:11:03 UTC 2018 - monex@liquid-co.de
+
+- Corrected source url.
+- Added sources again.
+- Fix Url to upstream project.
+
+-------------------------------------------------------------------
+Sat Aug  4 16:00:07 UTC 2018 - monex@liquid-co.de
+
+- Remove unneeded source because it is fetched automatically.
+
+-------------------------------------------------------------------
+Fri Aug  3 20:12:59 UTC 2018 - 2monex@gmx.net
+
+- Use URL as source according to python packaginf guidelines.
+
+-------------------------------------------------------------------
+Fri Aug  3 09:52:50 UTC 2018 - nrochard@gmail.com
+
+- Update to version 4.0.23
+
+-------------------------------------------------------------------
+Thu Jun 28 18:18:40 UTC 2018 - monex@liquid-co.de
+
+- Use python single spec. 
+
+-------------------------------------------------------------------
+Mon Feb 27 19:45:51 UTC 2017 - monex@liquid-co.de
+
+-Update to version 4.0.13 
+
+-------------------------------------------------------------------
+Sat May  2 18:50:07 UTC 2015 - monex@liquid-co.de
+
+- added missing source file
+
+-------------------------------------------------------------------
+Sat May  2 18:46:44 UTC 2015 - monex@liquid-co.de
+
+- updated to version 3.0.10 
+
+-------------------------------------------------------------------
+Sun Aug  4 19:28:00 UTC 2013 - monex@liquid-co.de
+
+- updated to version 3.0.7
+ * Added context manager support to Cursor
+ * Added padding for driver bugs writing an extra byte
+ * Cursor.executemany now accepts an iterator or generator.
+ * Compilation improvements for FreeBSD, Cygwin, and OS/X
+ * Use SQL_DATA_AT_EXEC instead of SQL_DATA_LEN_AT_EXEC when possible for driver compatibility.
+ * Row objects can now be pickled. 
+
+-------------------------------------------------------------------
+Fri Nov 16 21:07:43 UTC 2012 - 2monex@gmx.net
+
+- change source file compression
+
+-------------------------------------------------------------------
+Fri Nov 16 20:58:42 UTC 2012 - 2monex@gmx.net
+
+- updated to version 3.0.6
+ * Fixed building on Python 2.5. Other versions are not affected. 
+ * Fixed "function sequence" errors caused by prepared SQL not being cleared ("unprepared") 
+   when a catalog function is executed.
+ * Added Cursor.commit() and Cursor.rollback(). It is now possible to use only a cursor in 
+   your code instead of keeping track of a connection and a cursor.
+ * Added readonly keyword to connect. If set to True, SQLSetConnectAttr 
+   SQL_ATTR_ACCESS_MODE is set to SQL_MODE_READ_ONLY. 
+   This may provide better locking semantics or speed for some drivers.
+*  Fixed an error reading SQL Server XML data types longer than 4K. 
+
+-------------------------------------------------------------------
+Mon Jun  4 20:10:47 UTC 2012 - monex@liquid-co.de
+
+- removed unneded requires 
+
+-------------------------------------------------------------------
+Mon Jun  4 20:04:40 UTC 2012 - monex@liquid-co.de
+
+- initial version 
+

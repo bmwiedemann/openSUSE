@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Sun Jan  1 20:54:29 UTC 2017 - sndirsch@suse.com
+
+- Update to version 0.1.5:
+  * Bug fixes and performance improvements
+- supersedes the following patches:
+  * U_Check-for-either-xfont.pc-or-xfont2.pc.patch
+  * U_Fix-compilation-with-newer-Xorg-versions.patch
+  * U_qxl-use-pci-io.patch
+  * U_xf86-video-qxl-spiceccid-build.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 15:46:12 UTC 2016 - sndirsch@suse.com
+
+- U_Check-for-either-xfont.pc-or-xfont2.pc.patch
+  * Check for either xfont.pc or xfont2.pc
+- U_Fix-compilation-with-newer-Xorg-versions.patch
+  * Fix compilation with newer Xorg versions
+
+-------------------------------------------------------------------
+Fri Jun 10 12:59:57 UTC 2016 - sndirsch@suse.com
+
+- renamed u_xf86-video-qxl-spiceccid-build.patch to
+  U_xf86-video-qxl-spiceccid-build.patch, since the fix is already
+  upstream (git #ebd5ef7c18d7c361a31d530b307d36217cc68428)
+
+-------------------------------------------------------------------
+Mon Jun  6 07:43:45 UTC 2016 - dimstar@opensuse.org
+
+- Add u_xf86-video-qxl-spiceccid-build.patch: Fix building of
+  spiceccid: add the correct CFLAGS while building spiceccid. Issue
+  is exposed by libcacard 2.5.2.
+
+-------------------------------------------------------------------
+Wed Apr 20 09:36:05 UTC 2016 - sndirsch@suse.com
+
+- U_qxl-use-pci-io.patch
+  * Fix build on AArch64 by backporting upstream patch to use
+    pci_io_write8 instead of outb
+
+-------------------------------------------------------------------
+Wed Nov 11 15:48:10 UTC 2015 - sndirsch@suse.com
+
+- added BuildRequires: pkgconfig(xfont) in order to fix build
+  against xorg-server 1.18.0
+
+-------------------------------------------------------------------
+Tue Apr  7 21:29:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.4:
+  + Added smartcard support to XSpice.
+  + Memleak fix which could cause X to run out of memory.
+  + Expose randr properties for suggested display positions if
+    kernel supports it.
+- Add pkgconfig(libcacard) and pkgconfig(libpcsclite)
+  BuildRequires and pass --enable-ccid to configure in order to
+  build the new smartcard support.
+- Add pkgconfig(libudev) BuildRequires: Build with udev support.
+
+-------------------------------------------------------------------
+Wed Nov  5 08:59:36 UTC 2014 - sndirsch@suse.com
+
+- xf86-video-qxl 0.1.3
+  * bug fixes 
+
+-------------------------------------------------------------------
+Fri Aug 29 12:06:38 UTC 2014 - coolo@suse.com
+
+- fix the use of build conditionals
+
+-------------------------------------------------------------------
+Fri Aug 29 13:02:23 CEST 2014 - tiwai@suse.de
+
+- n_disable-surfaces-on-kms.patch
+  Disable the broken offscreen surfaces on KMS (bnc#894022)
+
+-------------------------------------------------------------------
+Mon Aug 25 11:37:22 UTC 2014 - fcrozat@suse.com
+
+- Build Xspice X server and driver (on openSUSE 12.3 and later),
+  ship them a separate subpackage.
+
+-------------------------------------------------------------------
+Thu Jul 24 13:20:37 UTC 2014 - sndirsch@suse.com
+
+- Update to version 0.1.2:
+  * Support for server managed fds
+  * Xspice: use playback rate interface if available
+  * Bugs fixed:
+    - 1030531 - drm: restore cursor after resolution change
+    - fix cursor2 support in older kernels
+    - FD 79317 - prevent crash on dual head systems
+
+-------------------------------------------------------------------
+Thu Apr 24 09:50:35 UTC 2014 - sndirsch@suse.com
+
+- n_hardcode_libdrm_cflags.patch:
+  * Hardcode libdrm cflags in order to enable KMS support 
+    (bnc#870501)
+
+-------------------------------------------------------------------
+Sun Oct 27 09:14:04 UTC 2013 - sndirsch@suse.com
+
+- Update to version 0.1.1:
+  * KMS support
+  * DFPS available to guest driver too
+  * Xspice audio & agent support
+  * GPL code removed (EDID)
+  * Warnings squash
+  * Bug fixes (numbers are Red Hat Bugzilla bug ids):
+    + 883578 - remote-viewer gets frozen after migration of guest
+      with video playback
+    + 968931 - Crash in Xspice after closing tab with spice-html5
+    + 894421 - Small change in guests resolution results in wrong
+      resolution
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:34 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 14:13:16 UTC 2013 - sndirsch@suse.com
+
+- Add mibstore.patch, fixes build with xorg-server 1.14 
+
+-------------------------------------------------------------------
+Wed Mar 20 14:58:34 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Sun Sep 23 11:15:48 UTC 2012 - sndirsch@suse.com
+
+- require pkgconfig(spice-protocol) >= 0.12.2 
+
+-------------------------------------------------------------------
+Sat Sep 22 18:44:05 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.1.0:
+  + Minimum required xserver version 1.12.99.901.
+  + RENDER support.
+  + 8-bit pixmaps.
+  + Improved support for memory debugging.
+  + Misc bugfixes.
+- Drop U_0.0.17-TO-fb038eb.patch, now included in tarball.
+
+-------------------------------------------------------------------
+Tue Sep 18 14:44:10 UTC 2012 - sndirsch@suse.com
+
+- U_0.0.17-TO-fb038eb.patch
+  * updated to latest git commit fb038eb in order to fix build on
+    xorg-server 1.13
+
+-------------------------------------------------------------------
+Thu Apr 19 12:36:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.0.17:
+  + options: Turn surfaces and caching on by default
+  + Code cleanups
+- Add pkgconfig(spice-protocol) BuildRequires: new dependency.
+- Use %x11_abi_videodrv_req instead of static ABI Requiers.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-qxl from xorg-x11-driver-video.
+  Initial version: 0.0.13.
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>yamagi-quake2.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Yamagi Quake 2</name>
+  <summary>Enhanced Quake 2 Source Port</summary>
+  <description>
+    <p>
+      Yamagi Quake II is an enhanced client for id Software's Quake II. The
+      main focus is an unchanged single player experience; the gameplay and
+      graphics are unaltered. It also features: anisotropic filtering and
+      multi-sample anti-aliasing, widescreen aspect ratio and unlimited
+      screen size, compatibility with most mods, optional support for
+      retexturing packs and HUD scaling.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Gameplay</caption>
+      <image>http://spawnhost.files.wordpress.com/2012/07/yamq2_linux_oss4.jpg</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://www.yamagi.org/quake2/</url>
+  <provides>
+  	<binary>yquake2</binary>
+  </provides>
+</component>

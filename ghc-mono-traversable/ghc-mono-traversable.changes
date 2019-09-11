@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Sun Feb  3 03:02:41 UTC 2019 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.11.0.
+  ## 1.0.11.0
+
+  * Adding monomorphic instances for GHC.Generics and Data.Proxy types
+    [#175](https://github.com/snoyberg/mono-traversable/issues/175)
+
+-------------------------------------------------------------------
+Fri Dec 21 03:02:43 UTC 2018 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.10.0.
+  ## 1.0.10.0
+
+  * Make index work on negative indices
+    [#172](https://github.com/snoyberg/mono-traversable/issues/172)
+    [#114](https://github.com/snoyberg/mono-traversable/issues/114)
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:45 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Thu Aug  2 16:29:53 UTC 2018 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.9.0.
+  ## 1.0.9.0
+
+  * Added `filterMap` to `Data.Containers`
+    [#167](https://github.com/snoyberg/mono-traversable/pull/167)
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:33 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.8.1.
+  * Compat with gauge 0.1 and 0.2
+  * Switch to gauge
+  * Relax constraint on `singleton` to `MonoPointed`
+    [#156](https://github.com/snoyberg/mono-traversable/issues/156)
+  * Add `dropPrefix` and `dropSuffix` to `Data.Sequences` [#139](https://github.com/snoyberg/mono-traversable/issues/139)
+  * Change `sort` implementation [#153](https://github.com/snoyberg/mono-traversable/issues/153)
+  * Add `mapNonNull` function to `Data.NonNull` [#150](https://github.com/snoyberg/mono-traversable/issues/150)
+  * Move `oelem` and `onotElem` into the `MonoFoldable` class [#133](https://github.com/snoyberg/mono-traversable/issues/133)
+  * Change `instance MonoFoldable (Set e)` to `instance Ord e => MonoFoldable (Set e)`
+  * Add `dropEnd` function to the `IsSequence` class, and a specialized implementation for `Text`
+  * Add `ensurePrefix` and `ensureSuffix` functions [#141](https://github.com/snoyberg/mono-traversable/pull/141)
+  * Fix test suite for foldl 1.3
+
+-------------------------------------------------------------------
+Tue Mar  7 11:19:16 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:12:21 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.1.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Feb 20 08:43:05 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.1.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Jan 26 16:20:10 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.1.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jan 16 09:44:00 UTC 2017 - psimons@suse.com
+
+- Update to version 1.0.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Sep 26 06:51:51 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:56:18 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.0.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:55:40 UTC 2016 - psimons@suse.com
+
+- Update to version 0.10.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Apr 13 10:06:06 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.10.2
+* Add delete and deleteBy methods to EqSequence
+
+-------------------------------------------------------------------
+Tue Feb 16 20:16:05 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.10.1.1
+* Remove unneeded INLINEs
+
+-------------------------------------------------------------------
+Tue Jan 26 09:50:06 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.10.1
+* Allow comonad-5
+
+-------------------------------------------------------------------
+Tue Dec 15 16:49:38 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.10.0.1
+* Remove Functor instance for MinLen
+* Instance for Data.Sequence.Seq is incorrect.
+
+-------------------------------------------------------------------
+Tue Nov 17 14:14:26 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

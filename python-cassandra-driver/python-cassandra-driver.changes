@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Sat Jun  8 23:08:18 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.18.0:
+  * Features
+    + Abstract Host Connection information (PYTHON-1079)
+    + Improve version parsing to support a non-integer 4th component
+      (PYTHON-1091)
+    + Expose on_request_error method in the RetryPolicy (PYTHON-1064)
+    + Add jitter to ExponentialReconnectionPolicy (PYTHON-1065)
+  * Bug Fixes
+    + Fix error when preparing queries with beta protocol v5
+      (PYTHON-1081)
+    + Accept legacy empty strings as column names (PYTHON-1082)
+    + Let util.SortedSet handle uncomparable elements (PYTHON-1087)
+
+-------------------------------------------------------------------
+Sat May  4 19:56:15 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.17.1:
+  * Bug Fixes
+    + Socket errors EAGAIN/EWOULDBLOCK are not handled properly and
+      cause timeouts (PYTHON-1089)
+
+-------------------------------------------------------------------
+Sat Mar  2 04:47:54 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+
+- update to version 3.17.0:
+  * Features
+    + Send driver name and version in startup message (PYTHON-1068)
+    + Add Cluster ssl_context option to enable SSL (PYTHON-995)
+    + Allow encrypted private keys for 2-way SSL cluster connections
+      (PYTHON-995)
+    + Introduce new method ConsistencyLevel.is_serial (PYTHON-1067)
+    + Add Session.get_execution_profile (PYTHON-932)
+    + Add host kwarg to Session.execute/execute_async APIs to send a
+      query to a specific node (PYTHON-993)
+  * Bug Fixes
+    + NoHostAvailable when all hosts are up and connectable
+      (PYTHON-891)
+    + Serial consistency level is not used (PYTHON-1007)
+  * Other
+    + Fail faster on incorrect lz4 import (PYTHON-1042)
+    + Bump Cython dependency version to 0.29 (PYTHON-1036)
+    + Expand Driver SSL Documentation (PYTHON-740)
+  * Deprecations
+    + Using Cluster.ssl_options to enable SSL is deprecated and will
+      be removed in the next major release, use ssl_context.
+    + DowngradingConsistencyRetryPolicy is deprecated and will be
+      removed in the next major release. (PYTHON-937)
+
+-------------------------------------------------------------------
+Sat Dec  1 18:26:17 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.16.0:
+  * Bug Fixes
+    + Improve and fix socket error-catching code in nonblocking-socket
+      reactors (PYTHON-1024)
+    + Non-ASCII characters in schema break CQL string generation
+      (PYTHON-1008)
+    + Fix OSS driver's virtual table support against DSE 6.0.X and
+      future server releases (PYTHON-1020)
+    + ResultSet.one() fails if the row_factory is using a generator
+      (PYTHON-1026)
+    + Log profile name on attempt to create existing profile
+      (PYTHON-944)
+    + Cluster instantiation fails if any contact points' hostname
+      resolution fails (PYTHON-895)
+  * Other
+    + Fix tests when RF is not maintained if we decomission a node
+      (PYTHON-1017)
+    + Fix wrong use of ResultSet indexing (PYTHON-1015)
+
+-------------------------------------------------------------------
+Thu Nov  1 09:24:07 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.15.1:
+  * No updatream changelog
+- Switch to github tarball as the pypi one lacks tests now
+
+-------------------------------------------------------------------
+Thu Sep 20 12:03:19 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add gevent to test dependencies
+- Add scales to dependencies
+- Add twisted to dependencies
+
+-------------------------------------------------------------------
+Mon Sep  3 12:05:19 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Sat Sep  1 18:29:47 UTC 2018 - arun@gmx.de
+
+- update to version 3.15.0:
+  * Features
+    + Parse Virtual Keyspace Metadata (PYTHON-992)
+  * Bug Fixes
+    + Tokenmap.get_replicas returns the wrong value if token coincides
+      with the end of the range (PYTHON-978)
+    + Python Driver fails with "more than 255 arguments" python
+      exception when > 255 columns specified in query response
+      (PYTHON-893)
+    + Hang in
+      integration.standard.test_cluster.ClusterTests.test_set_keyspace_twice
+      (PYTHON-998)
+    + Asyncore reactors should use a global variable instead of a
+      class variable for the event loop (PYTHON-697)
+  * Other
+    + Use global variable for libev loops so it can be subclassed
+      (PYTHON-973)
+    + Update SchemaParser for V4 (PYTHON-1006)
+    + Bump Cython dependency version to 0.28 (PYTHON-1012)
+
+-------------------------------------------------------------------
+Wed Jun 13 08:29:00 UTC 2018 - jengelh@inai.de
+
+- Trim marketing wording from description.
+
+-------------------------------------------------------------------
+Sun May  6 05:43:14 UTC 2018 - arun@gmx.de
+
+- update to version 3.14.0:
+  * Features
+    + Add one() function to the ResultSet API (PYTHON-947)
+    + Create an utility function to fetch concurrently many keys from
+      the same replica (PYTHON-647)
+    + Allow filter queries with fields that have an index managed
+      outside of cqlengine (PYTHON-966)
+    + Twisted SSL Support (PYTHON-343)
+    + Support IS NOT NULL operator in cqlengine (PYTHON-968)
+  * Other
+    + Fix Broken Links in Docs (PYTHON-916)
+    + Reevaluate MONKEY_PATCH_LOOP in test codebase (PYTHON-903)
+    + Remove CASS_SERVER_VERSION and replace it for CASSANDRA_VERSION
+      in tests (PYTHON-910)
+    + Refactor CASSANDRA_VERSION to a some kind of version object
+      (PYTHON-915)
+    + Log warning when driver configures an authenticator, but server
+      does not request authentication (PYTHON-940)
+    + Warn users when using the deprecated
+      Session.default_consistency_level (PYTHON-953)
+    + Add DSE smoke test to OSS driver tests (PYTHON-894)
+    + Document long compilation times and workarounds (PYTHON-868)
+    + Improve error for batch WriteTimeouts (PYTHON-941)
+    + Deprecate ResultSet indexing (PYTHON-945)
+
+-------------------------------------------------------------------
+Sun Feb  4 00:31:30 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 3.13.0:
+  * Features
+    + cqlengine: LIKE filter operator (PYTHON-512)
+    + Support cassandra.query.BatchType with cqlengine BatchQuery
+      (PYTHON-888)
+  * Bug Fixes
+    + AttributeError: 'NoneType' object has no attribute 'add_timer'
+      (PYTHON-862)
+    + Support retry_policy in PreparedStatement (PYTHON-861)
+    + __del__ method in Session is throwing an exception (PYTHON-813)
+    + LZ4 import issue with recent versions (PYTHON-897)
+    + ResponseFuture._connection can be None when returning request_id
+      (PYTHON-853)
+  * Other
+    + cqlengine: avoid warning when unregistering connection on
+      shutdown (PYTHON-865)
+    + Fix DeprecationWarning of log.warn (PYTHON-846)
+    + Fix example_mapper.py for python3 (PYTHON-860)
+    + Possible deadlock on cassandra.concurrent.execute_concurrent
+      (PYTHON-768)
+    + Add some known deprecated warnings for 4.x (PYTHON-877)
+    + Remove copyright dates from copyright notices (PYTHON-863)
+    + Remove "Experimental" tag from execution profiles documentation
+      (PYTHON-840)
+    + request_timer metrics descriptions are slightly incorrect
+      (PYTHON-885)
+    + Remove "Experimental" tag from cqlengine connections
+      documentation (PYTHON-892)
+    + Set in documentation default consistency for operations is
+      LOCAL_ONE (PYTHON-901)
+
+-------------------------------------------------------------------
+Tue Nov  7 23:21:21 UTC 2017 - arun@gmx.de
+
+- update to version 3.12.0:
+  * Features
+    + Send keyspace in QUERY, PREPARE, and BATCH messages (PYTHON-678)
+    + Add IPv4Address/IPv6Address support for inet types (PYTHON-751)
+    + WriteType.CDC and VIEW missing (PYTHON-794)
+    + Warn on Cluster init if contact points are specified but LBP
+      isn't (legacy mode) (PYTHON-812)
+    + Warn on Cluster init if contact points are specified but LBP
+      isn't (exection profile mode) (PYTHON-838)
+    + Include hash of result set metadata in prepared stmt id
+      (PYTHON-808)
+    + Add NO_COMPACT startup option (PYTHON-839)
+    + Add new exception type for CDC (PYTHON-837)
+  * Bug Fixes
+    + Both _set_final_exception/result called for the same
+      ResponseFuture (PYTHON-630)
+    + Use of DCAwareRoundRobinPolicy raises NoHostAvailable exception
+      (PYTHON-781)
+    + Not create two sessions by default in CQLEngine (PYTHON-814)
+    + Bug when subclassing AyncoreConnection (PYTHON-827)
+    + Error at cleanup when closing the asyncore connections
+      (PYTHON-829)
+    + Fix sites where sessions can change during iteration
+      (PYTHON-793)
+    + cqlengine: allow min_length=0 for Ascii and Text column types
+      (PYTHON-735)
+    + Rare exception when "sys.exit(0)" after query timeouts
+      (PYTHON-752)
+    + Dont set the session keyspace when preparing statements
+      (PYTHON-843)
+    + Use of DCAwareRoundRobinPolicy raises NoHostAvailable exception
+      (PYTHON-781)
+  * Other
+    + Remove DeprecationWarning when using WhiteListRoundRobinPolicy
+      (PYTHON-810)
+    + Bump Cython dependency version to 0.27 (PYTHON-833)
+
+-------------------------------------------------------------------
+Wed Oct  4 17:30:26 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * fixed source url
+  * updated description
+
+-------------------------------------------------------------------
+Tue Oct  3 15:46:20 UTC 2017 - arun@gmx.de
+
+- update to version 3.11.0:
+  * Features
+    + Add idle_heartbeat_timeout cluster option to tune how long to
+      wait for heartbeat responses. (PYTHON-762)
+    + Add HostFilterPolicy (PYTHON-761)
+  * Bug Fixes
+    + is_idempotent flag is not propagated from PreparedStatement to
+      BoundStatement (PYTHON-736)
+    + Fix asyncore hang on exit (PYTHON-767)
+    + Driver takes several minutes to remove a bad host from session
+      (PYTHON-762)
+    + Installation doesn't always fall back to no cython in Windows
+      (PYTHON-763)
+    + Avoid to replace a connection that is supposed to shutdown
+      (PYTHON-772)
+    + request_ids may not be returned to the pool (PYTHON-739)
+    + Fix murmur3 on big-endian systems (PYTHON-653)
+    + Ensure unused connections are closed if a Session is deleted by
+      the GC (PYTHON-774)
+    + Fix .values_list by using db names internally (cqlengine)
+      (PYTHON-785)
+  * Other
+    + Bump Cython dependency version to 0.25.2 (PYTHON-754)
+    + Fix DeprecationWarning when using lz4 (PYTHON-769)
+    + Deprecate WhiteListRoundRobinPolicy (PYTHON-759)
+    + Improve upgrade guide for materializing pages (PYTHON-464)
+    + Documentation for time/date specifies timestamp inupt as
+      microseconds (PYTHON-717)
+    + Point to DSA Slack, not IRC, in docs index
+
+- changes from version 3.10.0:
+  * Features
+    + Add Duration type to cqlengine (PYTHON-750)
+    + Community PR review: Raise error on primary key update only if
+      its value changed (PYTHON-705)
+    + get_query_trace() contract is ambiguous (PYTHON-196)
+  * Bug Fixes
+    + Queries using speculative execution policy timeout prematurely
+      (PYTHON-755)
+    + Fix map where results are not consumed (PYTHON-749)
+    + Driver fails to encode Duration's with large values (PYTHON-747)
+    + UDT values are not updated correctly in CQLEngine (PYTHON-743)
+    + UDT types are not validated in CQLEngine (PYTHON-742)
+    + to_python is not implemented for types columns.Type and
+      columns.Date in CQLEngine (PYTHON-741)
+    + Clients spin infinitely trying to connect to a host that is
+      drained (PYTHON-734)
+    + Resulset.get_query_trace returns empty trace sometimes
+      (PYTHON-730)
+    + Memory grows and doesn't get removed (PYTHON-720)
+    + Fix RuntimeError caused by change dict size during iteration
+      (PYTHON-708)
+    + fix ExponentialReconnectionPolicy may throw OverflowError
+      problem (PYTHON-707)
+    + Avoid using nonexistent prepared statement in ResponseFuture
+      (PYTHON-706)
+  * Other
+    + Update README (PYTHON-746)
+    + Test python versions 3.5 and 3.6 (PYTHON-737)
+    + Docs Warning About Prepare "select *" (PYTHON-626)
+    + Increase Coverage in CqlEngine Test Suite (PYTHON-505)
+    + Example SSL connection code does not verify server certificates
+      (PYTHON-469)
+
+- changes from version 3.9.0:
+  * Features
+    + cqlengine: remove elements by key from a map (PYTHON-688)
+  * Bug Fixes
+    + improve error handling when connecting to non-existent keyspace
+      (PYTHON-665)
+    + Sockets associated with sessions not getting cleaned up on
+      session.shutdown() (PYTHON-673)
+    + rare flake on
+      integration.standard.test_cluster.ClusterTests.test_clone_shared_lbp
+      (PYTHON-727)
+    + MontonicTimestampGenerator.__init__ ignores class defaults
+      (PYTHON-728)
+    + race where callback or errback for request may not be called
+      (PYTHON-733)
+    + cqlengine: model.update() should not update columns with a
+      default value that hasn't changed (PYTHON-657)
+    + cqlengine: field value manager's explicit flag is True when
+      queried back from cassandra (PYTHON-719)
+  * Other
+    + Connection not closed in example_mapper (PYTHON-723)
+    + Remove mention of pre-2.0 C* versions from OSS 3.0+ docs
+      (PYTHON-710)
+
+- changes from version 3.8.1:
+  * Bug Fixes
+    + implement __le__/__ge__/__ne__ on some custom types (PYTHON-714)
+    + Fix bug in eventlet and gevent reactors that could cause hangs
+      (PYTHON-721)
+    + Fix DecimalType regression (PYTHON-724)
+
+- changes from version 3.8.0:
+  * Features
+    + Quote index names in metadata CQL generation (PYTHON-616)
+    + On column deserialization failure, keep error message consistent
+      between python and cython (PYTHON-631)
+    + TokenAwarePolicy always sends requests to the same replica for a
+      given key (PYTHON-643)
+    + Added cql types to result set (PYTHON-648)
+    + Add __len__ to BatchStatement (PYTHON-650)
+    + Duration Type for Cassandra (PYTHON-655)
+    + Send flags with PREPARE message in v5 (PYTHON-684)
+  * Bug Fixes
+    + Potential Timing issue if application exits prior to session
+      pool initialization (PYTHON-636)
+    + "Host X.X.X.X has been marked down" without any exceptions
+      (PYTHON-640)
+    + NoHostAvailable or OperationTimedOut when using
+      execute_concurrent with a generator that inserts into more than
+      one table (PYTHON-642)
+    + ResponseFuture creates Timers and don't cancel them even when
+      result is received which leads to memory leaks (PYTHON-644)
+    + Driver cannot connect to Cassandra version > 3 (PYTHON-646)
+    + Unable to import model using UserType without setuping
+      connection since 3.7 (PYTHON-649)
+    + Don't prepare queries on ignored hosts on_up (PYTHON-669)
+    + Sockets associated with sessions not getting cleaned up on
+      session.shutdown() (PYTHON-673)
+    + Make client timestamps strictly monotonic (PYTHON-676)
+    + cassandra.cqlengine.connection.register_connection broken when
+      hosts=None (PYTHON-692)
+  * Other
+    + Create a cqlengine doc section explaining None semantics
+      (PYTHON-623)
+    + Resolve warnings in documentation generation (PYTHON-645)
+    + Cython dependency (PYTHON-686)
+    + Drop Support for Python 2.6 (PYTHON-690)
+
+-------------------------------------------------------------------
+Tue Oct  3 01:50:58 UTC 2017 - arun@gmx.de
+
+- update to single spec
+
+- commented out test-requirements, since tests are not run at the
+  moment
+
+-------------------------------------------------------------------
+Mon Jan 16 13:29:01 UTC 2017 - dmueller@suse.com
+
+- Initial package (3.7.1)
+

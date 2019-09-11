@@ -1,0 +1,84 @@
+From 7ec0b20a9c8c62f34203e1e93b64764f3fbd20d7 Mon Sep 17 00:00:00 2001
+From: Chingkai <chuchingkai@gmail.com>
+Date: Fri, 19 Oct 2018 13:25:35 +0800
+Subject: [PATCH] screenShield: Make login and lock screen background
+ configurable
+
+Add a background for lockDialogGroup to make login/lock background
+configurable. The default behavior will be retained to what it is
+currently, you can change the wallpaper via schema keys.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/issues/680
+---
+ js/ui/screenShield.js | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/js/ui/screenShield.js b/js/ui/screenShield.js
+index 3f45b8a..6c09a5d 100644
+--- a/js/ui/screenShield.js
++++ b/js/ui/screenShield.js
+@@ -27,6 +27,8 @@ const LOCK_DELAY_KEY = 'lock-delay';
+ const LOCKDOWN_SCHEMA = 'org.gnome.desktop.lockdown';
+ const DISABLE_LOCK_KEY = 'disable-lock-screen';
+ 
++const LOCKDIALOG_BACKGROUND_SCHEMA = 'org.gnome.desktop.background.lockdialog';
++
+ const LOCKED_STATE_STR = 'screenShield.locked';
+ // fraction of screen height the arrow must reach before completing
+ // the slide up automatically
+@@ -493,6 +495,16 @@ var ScreenShield = class {
+                                                 pivot_point: new Clutter.Point({ x: 0.5, y: 0.5 }),
+                                                 name: 'lockDialogGroup' });
+ 
++        // Add background for this._lockDialogGroup
++        this._bgLockDialogGroup = new Clutter.Actor();
++
++        this._lockDialogGroup.add_actor(this._bgLockDialogGroup);
++        this._bgLockDialogGroup.lower_bottom();
++        this._bgManagersLockDialogGroup = [];
++
++        this._updateBgLockDialogGroup();
++        Main.layoutManager.connect('monitors-changed', this._updateBgLockDialogGroup.bind(this));
++
+         this.actor.add_actor(this._lockDialogGroup);
+         this.actor.add_actor(this._lockScreenGroup);
+ 
+@@ -586,6 +598,35 @@ var ScreenShield = class {
+         this._syncInhibitor();
+     }
+ 
++    _createBgLockDialogGroup(monitorIndex) {
++        let monitor = Main.layoutManager.monitors[monitorIndex];
++        let widget = new St.Widget({ style_class: 'screen-shield-background',
++                                     x: monitor.x,
++                                     y: monitor.y,
++                                     width: monitor.width,
++                                     height: monitor.height });
++
++        let bgManager = new Background.BackgroundManager({ container: widget,
++                                                           monitorIndex: monitorIndex,
++                                                           controlPosition: false,
++                                                           settingsSchema: LOCKDIALOG_BACKGROUND_SCHEMA });
++
++        this._bgManagersLockDialogGroup.push(bgManager);
++
++        this._bgLockDialogGroup.add_child(widget);
++    }
++
++    _updateBgLockDialogGroup() {
++        for (let i = 0; i < this._bgManagersLockDialogGroup.length; i++)
++            this._bgManagersLockDialogGroup[i].destroy();
++
++        this._bgManagersLockDialogGroup = [];
++        this._bgLockDialogGroup.destroy_all_children();
++
++        for (let i = 0; i < Main.layoutManager.monitors.length; i++)
++            this._createBgLockDialogGroup(i);
++    }
++
+     _createBackground(monitorIndex) {
+         let monitor = Main.layoutManager.monitors[monitorIndex];
+         let widget = new St.Widget({ style_class: 'screen-shield-background',
+-- 
+2.16.4
+

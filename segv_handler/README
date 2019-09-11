@@ -1,0 +1,89 @@
+segv_handler
+============
+
+Andrew Tridgell
+junkcode@tridgell.net
+
+
+This tool allows you to catch segmemtation faults globally on your
+system, giving a full backtrace for any program that dies with a
+segmemtation fault. This is done with zero overhead in the running
+program, so you can install it on production systems without
+interference.
+
+
+Building
+--------
+
+Just type 'make'. If it fails to build then consult a systems
+programmer or local Linux oracle.
+
+
+Installing
+----------
+
+You need to install two files. The small shared library
+segv_handler.so can be put anywhere on the system, but somewhere like
+/usr/local/lib probably makes most sense.
+
+The shell script 'backtrace' needs to be installed somewhere in the
+main system PATH, where all programs can see it. This usually means
+/usr/bin. It must be made executable using 'chmod +x backtrace'.
+
+You may wish to edit the script to place the resulting backtraces in
+some other directory than /tmp, although you have to make sure the
+directory is writable by all programs that you wish to monitor.
+
+
+Testing
+-------
+
+After installing try 'make test'. You should see something like this
+at the end of the output:
+
+  -rw-rw-r--    1 tridge   tridge        479 Sep 16 20:38 /tmp/segv_testprog.11817.out
+
+look in that file. Notice that it contains a full backtrace of the
+program 'testprog' when it died.
+
+
+Usage Method 1 - per program
+----------------------------
+
+You can use segv_handler.so on a per program basis by setting the
+LD_PRELOAD environment variable before starting the program. For
+example you might start the 'winbindd' daemon from Samba in a script
+like this:
+
+   #!/bin/sh
+
+   export LD_PRELOAD=/usr/local/lib/segv_handler.so
+   /usr/local/samba/sbin/winbindd
+
+If you use the above script to start winbindd then if winbindd dies it
+will leave behind a file called /tmp/segv_winbindd.XXXX.out. That is
+the file that you would show to a programmer to find the bug.
+
+
+Usage Method 2 - entire system
+------------------------------
+
+Note! This method can be dangerous if you don't get it right. It is
+the way I usually use segv_handler as it provides a useful way to
+catch segmemtation faults across the entire system, but if you make a
+typo when installing then your system may become unbootable. Have a
+rescue disk handy.
+
+To install globally you need to edit or create a file called
+   /etc/ld.so.preload
+That file should contain the full path to where you installed 
+segv_handler.so. It must be exactly the full path and nothing
+more. You must also be careful to remove /etc/ld.so.preload before
+removing or renaming segv_handler.so. If you leave a file in
+/etc/ld.so.preload that does not exist or is not an appropriate
+shared library then all programs on your system will fail to start.
+
+That's it! After you create /etc/ld.so.preload any program that starts
+from then on will have the segmentation handler installed. If it dies
+with a segmentation fault then you will get a full backtrace in /tmp
+

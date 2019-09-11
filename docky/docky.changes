@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Tue Feb  9 08:25:15 UTC 2016 - dimstar@opensuse.org
+
+- Add libwnck-1-22 requires: docky installs an own wnck-sharp glue,
+  so we have to also require the corresponding library for it. The
+  same dependency also exists in the 'real' wnck-sharp package
+  (boo#965546).
+
+-------------------------------------------------------------------
+Wed Jan 13 19:20:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.2.1.1:
+  + Bug-fix and Maintenance Release.
+  + SessionManager docklet:
+    - Use logind for suspend and hibernate.
+    - Drop support for deprecated DeviceKit and PowerManager.
+  + Updated translations.
+- Update BuildRequires to match what configure needs:
+  + Remove pkgconfig(dbus-sharp-1.0), pkgconfig(rsvg2-sharp-2.0),
+    pkgconfig(gnome-desktop-sharp-2.0), pkgconfig(wnck-sharp-1.0)
+    and pkgconfig)dbus-sharp-glib-1.0).
+  + Add gtk-sharp2-gapi, pkgconfig(dbus-sharp-2.0),
+    pkgconfig(dbus-sharp-glib-2.0), pkgconfig(gdk-pixbuf-2.0),
+    pkgconfig(gkeyfile-sharp), pkgconfig(libwnck-1.0).
+
+-------------------------------------------------------------------
+Tue Dec 23 14:57:34 UTC 2014 - dimstar@opensuse.org
+
+- Add docky-mono-3.10.0.patch: Workaround build issues with Mono
+  3.10.0.
+
+-------------------------------------------------------------------
+Fri May  3 06:57:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.2.0:
+  + New docklets: NetworkMonitor
+  + Core:
+    - Accept dropping of every file when no MimeType specified (lp#986693)
+    - Docky click area larger than visible in panel mode (lp#730959)
+    - Gconf key to suppress compositing warning. (lp#754064)
+    - Error building with mono 3 (lp#1097805)
+  + Docklets:
+    - CPU Monitor Docklet doesn't launch System Monitor in KDE (lp#779181)
+    - Add systemd support for SessionManager
+  + Updated translations.
+- Drop docky-mono3.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan  9 15:18:32 UTC 2013 - dimstar@opensuse.org
+
+- Add docky-mono3.patch: Fix build with mono 3.0.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Wed Mar 28 12:02:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.1.4:
+  + Core:
+    - matcher: fix for libreoffice 3.4+ (lp#823834)
+    - add support building with dmcs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 23 08:28:22 UTC 2012 - vuntz@opensuse.org
+
+- Remove unneeded dbus-sharp, dbus-sharp-glib, mono(dbus-sharp) and
+  mono(dbus-sharp-glib) BuildRequires: they're already brought in
+  by dbus-sharp-devel and dbus-sharp-glib-devel.
+- Move to pkgconfig() BuildRequires:
+  + Old ones: dbus-sharp-devel, dbus-sharp-glib-devel,
+    gconf-sharp2, gconf2-devel, gio-sharp-devel,
+    gnome-desktop-sharp2, gnome-keyring-sharp-devel,
+    gtk-sharp2-gapi, gtk2-devel, mono-addins, notify-sharp,
+    rsvg2-sharp, wnck-sharp.
+  + New ones: dbus-sharp-1.0, dbus-sharp-glib-1.0, gconf-2.0,
+    gconf-sharp-2.0, glib-sharp-2.0, gio-sharp-2.0,
+    gnome-desktop-sharp-2.0, gnome-keyring-sharp-1.0, gtk+-2.0,
+    gtk-sharp-2.0, mono-addins, mono-addins-gui, mono-addins-setup,
+    mono-cairo, notify-sharp, rsvg2-sharp-2.0, wnck-sharp-1.0.
+
+-------------------------------------------------------------------
+Fri Jun 24 13:57:31 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.1.3:
+  + Bug-fix and Maintenance Release
+  + Core:
+    - lp#757140: prevent crash if a desktop-file contains invalid
+      values
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun  5 17:39:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.1.2:
+  + Bug-fix and Maintenance Release
+  + CORE:
+    - fix drawing with mono 2.10+
+    - fix problem with curtain when struts are set
+    - lp#574817: fix crash when drag/droping onto docky and
+      nautilus isnt drawing desktop
+    - lp#738955: fix nm docklet crashing docky on startup if nm
+      isn't running
+    - lp#708772: fix item-drop at the first place
+  + Updated translations.
+- Split out a -lang package and Recommend its installation.
+- Fix rpm group of the -devel package.
+- Set License to GPLv3+.
+
+-------------------------------------------------------------------
+Mon Mar 14 14:43:55 UTC 2011 - ajorgensen@novell.com
+
+- Update to 2.1.1
+
+2.1.1 "Just do your things" (2011-03-10)
+===============================================================================
+ * Bug-fix and Maintenance Release
+ * update translations
+
+ CORE:
+ * clamping values coming in from gconf
+ * drop global autostart default (LP: #670939)
+ * make sure our launcher shows up by default
+ * fix dock dim animation on external drags (LP: #727645)
+ * fix tooltips showing wrong on external drags
+ * fix crash if 'poof.png' is missing
+ * try to trap crashes coming from libnotify (LP: #678426)
+ * fix crash when emptying trash and cant access a file (LP: #717875)
+ * tweak the item message rendering a bit
+ * slightly zoom icons during drag (LP: #707658)
+
+-------------------------------------------------------------------
+Fri Mar  4 16:18:49 UTC 2011 - ajorgensen@novell.com
+
+- gconf schemas macros
+
+-------------------------------------------------------------------
+Thu Mar  3 23:59:22 UTC 2011 - ajorgensen@novell.com
+
+- Update to 2.1.0
+
+2.1.0 "This is it" (2011-02-10)
+===============================================================================
+ * New Feature Release
+   + new docklets:
+     - Clippy, Desktop, SessionManager, Timer, WorkspaceSwitcher
+   + many new hidden gconf-settings for power-users ;-)
+   + implement DockManager DBus API
+     - all helper scripts are moved to dockmanager project on launchpad.net
+   + a whole bunch of Wishlist bug-fixes!!!
+
+-------------------------------------------------------------------
+Tue Feb  8 16:31:57 UTC 2011 - ajorgensen@novell.com
+
+- Remove a directory that causes errors on SLE 11 SP1
+
+-------------------------------------------------------------------
+Tue Jan 18 12:20:11 UTC 2011 - rwobben@hotmail.com
+
+-updated to 2.0.11
+
+2.0.11 "Clean up your desktop" (2011-01-16)
+===============================================================================
+ * Bug-fix and Maintenance Release
+ * update translations
+
+ CORE:
+ * fix event-driven icon-update of MenuItemWidget
+ * fix Gdk.Pixbuf leak in MenuItem and MenuItemWidget
+ * add docky.desktop to translations
+ * fix startup-activation of plugins
+ * unregister of an event in DockWindow.Dispose was missing
+ * make sure to ignore launchers with Hidden set (LP: #700203)
+ * don't set geo on notifications (LP: #506084)
+ * don't have Log.Notify use string.Format, which causes random bugs such as 
+   gmail breaking when messages contain {} in the subject (LP: #697981)
+
+ DOCKLETS:
+ * NetworkMananger: fix typo and catch exception to prevent crash if dbus 
+   access isn't granted
+ 
+
+-------------------------------------------------------------------
+Wed Jan  5 10:40:17 UTC 2011 - rwobben@hotmail.com
+
+- Updated to 2.0.10
+
+2.0.10 "Nice and Easy" (2011-01-04)
+===============================================================================
+ * Bug-fix and Maintenance Release
+
+ CORE:
+ * fix unhiding when there are multiple, differently sized monitors
+   (LP: #625332)
+ * add manpage
+ * some optimizations
+
+ DOCKLETS:
+ * fix RecentDocuments (LP: #660179)
+ 
+
+-------------------------------------------------------------------
+Mon Jan  3 10:32:17 UTC 2011 - rwobben@hotmail.com
+
+- Updated to 2.0.9
+
+2.0.9 "You can count on us" (2011-01-01)
+===============================================================================
+ * Bug-fix and Maintenance Release
+ * update translations
+
+ CORE:
+ * fix compilation with mono 2.8+ (LP: #502650)
+   remove dependency on Mono.GetOptions, which is obsolete and use a bundled
+   Mono.Options source
+ * add better implementation of DockySurface.LoadToPixbuf
+ * fix potential X crash when hovertexts are reallllllllly long...
+ * fix the helper tile not properly toggling (caused by gconf buffering 
+   updates) (LP: #694117)
+ * fix ArgumentOutOfRangeException for pids.ElementAt(...)
+ * add missing disposals of fileenumerator
+ * let FileDockItems open on middle click
+
+ DOCKLETS:
+ * fix a problem with bookmarks crashing when reading bad bookmark files
+
+
+-------------------------------------------------------------------
+Wed Dec 29 16:19:57 UTC 2010 - rwobben@hotmail.com
+
+-Updated to 2.0.8
+ Patch against mono.getoptions because of mono.getoptions is obsolete.
+
+2.0.8 "Turn it on again" (2010-12-03)
+===============================================================================
+ * Bug-fix and Maintenance Release
+ * update translations
+
+ CORE:
+ * change location of autostart file to ~/.config/autostart/docky.desktop 
+   (LP: #653981)
+ * add window-matcher support for LibreOffice
+ * fix hovertext for RTL font locales (LP: #610145)
+ * some better pixbuf handling
+ * fix indicators not updating on state changes (LP: #656653)
+ * fix crash if a file delete fails (LP: #604234)
+ * make sure separators dont darken
+ * fix typo in log message
+ * fix a NRE in the debug messages
+ * make window manager checkbox grey out when checked, so its clear it 
+   can't be unchecked (LP: #657678)
+ * make sure everything uses the services RunOnMainThread instead of 
+   calling Gtk.App.Invoke directly
+ * protect the system service events from crashing docklets and make 
+   the events thread safe
+
+ DOCKLETS:
+ * Bookmarks: make sure to update hovers
+ * Battery: now uses UPower if its available, then checks /sys/ 
+   then defaults back to /proc/ (LP: #617293)
+ * Gmail: 
+   - fix race condition when manually reloading gmail 
+     (LP: #675001, LP: #675002)
+   - fix underscores in email topics making mnemonics in menus (LP: #673181)
+   - fix crash when adding/removing gmail labels (LP: #670666)
+ * fix gmail/weather not working on reboot (LP: #661923)
+
+
+2.0.7 "Your friendly docking station" (2010-10-02)
+===============================================================================
+ * Bug-fix and Maintenance Release
+ * update translations
+
+ CORE:
+ * modify and fix align of 3D separator
+ * a little nicer 128px icon
+ * fix crash with invalid SetAlpha call (LP: #647072)
+ * add some more exec matches for OpenOffice (LP: #504486)
+ * Properly respect the autostart choice in preferences (LP: #550491)
+
+ DOCKLETS:
+ * NPR: fix set of station icon (LP: #636027)
+ * Gmail: rename GMail to Gmail (LP: #634627)
+ * RecentDocuments: fix crash when opening (LP: #645864)
+
+ HELPER:
+ * rhythmbox: add AlbumArt.[jpg|png] to search list
+ * make banshee helper not query dbus if banshee is not currently playing 
+   (LP: #613197)
+ * open terminal here was preventing unmounting external devices (LP: #591918) 
+
+-------------------------------------------------------------------
+Wed Sep  1 15:30:05 UTC 2010 - ajorgensen@novell.com
+
+- Updated to 2.0.6
+- This release includes many bug fixes, as usual.
+
+-------------------------------------------------------------------
+Tue Jun  1 20:08:33 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.0.3.1
+  https://launchpad.net/docky/2.0/2.0.4
+- Obsoleted g_thread_init.patch
+
+-------------------------------------------------------------------
+Fri May 28 19:32:30 UTC 2010 - ajorgensen@novell.com
+
+- Add a GLib.Thread.Init because mono doesn't always do that
+
+-------------------------------------------------------------------
+Fri May 28 15:04:04 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.0.3.1
+  https://launchpad.net/docky/2.0/2.0.3
+

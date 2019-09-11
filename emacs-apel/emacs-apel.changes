@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Jul 23 18:12:13 CEST 2018 - tiwai@suse.de
+
+- Fix build with the latest emacs:
+  apel-emacs-escape-fix.patch
+
+-------------------------------------------------------------------
+Mon Oct 27 15:43:07 UTC 2014 - i@marguerite.su
+
+- fix for factory
+  * added apel-10.8-040_make-temp-file-for-Emacs-24.3.50.patch
+  * Fix wrong type argument on Emacs 24.3.50 to check make-temp-file
+
+-------------------------------------------------------------------
+Wed Jul  4 08:41:07 UTC 2012 - werner@suse.de
+
+- updated to version 10.8:
+  * EMU-ELS (emu-modules): Add setting for GNU Emacs 23 or later.
+  * invisible.el: In GNU Emacs 23, inv-19.el overrides builtin
+    function `invisible-p'.  To fix the bug, require `inv-23' when
+    running with GNU Emacs 23 or later.
+  * poe.el (format-time-string): Fix problem on GNU Emacs 22.2
+- Add patch from Debian:
+  * poem-e20.el (fontset-pixel-size): Don't cause an error. Workaround
+    for Emacs 23.
+
+-------------------------------------------------------------------
+Sat Sep 17 11:24:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Aug 19 16:58:28 CEST 2009 - tiwai@suse.de
+
+- updated to version 10.7:
+  Updated for newer FLIM and WL; See ChangeLog file for details
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Feb 14 01:30:16 CET 2004 - mfabian@suse.de
+
+- update to 10.6
+
+-------------------------------------------------------------------
+Mon Jun 23 15:50:39 CEST 2003 - schwab@suse.de
+
+- Package is noarch.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Mar 20 17:24:58 CET 2001 - kukuk@suse.de
+
+- Fix Requires (emacs-nox -> emacs_program)
+
+-------------------------------------------------------------------
+Mon Mar 19 10:23:54 CET 2001 - ke@suse.de
+
+- Add suse-start-apel.el.
+
+-------------------------------------------------------------------
+Mon Mar 19 09:33:55 CET 2001 - ke@suse.de
+
+- Update to version 10.3 [#6736].
+- Remove LC_CTYPE=ISO-8859-1 and EMACS_UNIBYTE=1.
+- Use RPM macros.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  9 12:15:28 CEST 1999 - bs@suse.de
+
+- fixed call of Check at the end of %install section
+
+-------------------------------------------------------------------
+Thu Apr 15 12:32:26 CEST 1999 - werner@suse.de
+
+- Add export LC_CTYPE=ISO-8859-1 and export EMACS_UNIBYTE=1
+  to build *and* install section
+
+-------------------------------------------------------------------
+Sun Sep  6 16:45:47 MEST 1998 - ke@suse.de
+
+- initial package: version 8.17.
+

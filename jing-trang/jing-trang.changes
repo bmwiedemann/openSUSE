@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Fri Dec  7 07:31:06 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against xml-commons-apis instead of xerces-j2-xml-apis
+
+-------------------------------------------------------------------
+Thu Nov  1 11:09:25 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Change to build against bsh2 instead of the old bsh
+
+-------------------------------------------------------------------
+Fri Dec  1 09:33:20 UTC 2017 - thomas.schraitle@suse.com
+
+- Fix bsc#1069796 to combine jing and trang into a single jing-trang
+  source package
+
+-------------------------------------------------------------------
+Wed Nov 15 13:50:44 UTC 2017 - thomas.schraitle@suse.com
+
+- First attempt to combine jing and trang packages into a
+  single package on OBS
+- Use patches and instructions from Fedora, but use %buildroot
+  instead of $RPM_BUILD_ROOT
+- Install manpages for dtdinst, jing, and trang
+- Use spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 14 14:50:00 UTC 2017 - toms@opensuse.org
+
+- Use saxon9 instead of saxon6 for jing script
+- Apply spec-cleaner for spec file
+
+-------------------------------------------------------------------
+Mon Jan 26 14:25:32 UTC 2015 - toms@opensuse.org
+
+- Fixed name of saxon jar [bsc#914681]
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:03 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Nov 29 15:02:09 UTC 2012 - mvyskocil@suse.com
+
+- used saxon9 for build and as a dependency (bnc#780666) 
+
+-------------------------------------------------------------------
+Sun Nov 13 19:36:49 UTC 2011 - toms@opensuse.org
+
+- Improved jing script: use now jpackage-utils, added
+  xml-commons-resolver to better support catalogs
+- Adapted requires and buildrequires in spec file
+- Updated documentation
+  * explained -C and -s options, removed obsolete -f
+  * updated version
+
+-------------------------------------------------------------------
+Mon Mar 15 16:46:41 CET 2010 - prusnak@suse.cz
+
+- updated to 20091111
+  * add -C option to specify the catalog
+  * fix schematron test suite schema
+  * provide a resolver that implements OASIS XML catalogs
+  * take advantage of Java 5 features
+
+-------------------------------------------------------------------
+Wed Mar 18 15:14:29 CET 2009 - prusnak@suse.cz
+
+- added documentation (manpage) by Thomas Schraitle
+
+-------------------------------------------------------------------
+Thu Nov 27 14:38:07 CET 2008 - prusnak@suse.cz
+
+- updated to 20081028
+
+-------------------------------------------------------------------
+Tue Feb 19 16:02:09 CET 2008 - prusnak@suse.cz
+
+- fixed build
+
+-------------------------------------------------------------------
+Thu Mar 29 17:46:49 CEST 2007 - rguenther@suse.de
+
+- add unzip BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun  6 14:18:13 CEST 2005 - ke@suse.de
+
+- Add wrapper script; proposed by Martin Vidner.
+
+-------------------------------------------------------------------
+Fri Jun  3 11:15:16 CEST 2005 - ke@suse.de
+
+- New package: jing version 20030619.
+
+

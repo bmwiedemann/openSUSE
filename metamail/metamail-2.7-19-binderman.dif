@@ -1,0 +1,13 @@
+--- a/metamail/metamail.c
++++ b/metamail/metamail.c
+@@ -1294,9 +1294,9 @@ struct MailcapEntry mc;
+     struct part *PartsWritten=NULL;
+     char *s, *cmd;
+ 
++    if (PrintingMode && !mc.printcommand) return(-1);
+     cmd = malloc(CMDSIZE);
+     if (!cmd) ExitWithError(nomem);
+-    if (PrintingMode && !mc.printcommand) return(-1);
+     BuildCommand(cmd, PrintingMode ? mc.printcommand : mc.command, TmpFileName, &UsedTmpFileName, &PartsWritten);
+     if (DoDebug) fprintf(stderr, "Match!  Built command %s.\n", cmd);
+     if (mc.copiousoutput && MaybePageOutput) {

@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Mon Jan 14 08:09:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add few more test dependencies
+
+-------------------------------------------------------------------
+Tue Aug 14 06:55:04 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.7.0:
+  * Support for Django 2.1, oldest supported is 1.11
+  * Support for python 3.7
+  * Many of bugfixes see CHANGES file
+
+-------------------------------------------------------------------
+Tue Jan 23 10:47:15 UTC 2018 - mimi.vx@gmail.com
+
+- convert to singlespec 
+
+-------------------------------------------------------------------
+Thu Apr 23 06:54:50 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.2.6:
+  - Performance improvements to group mirroring (from
+    `Denver Janke <https://bitbucket.org/denverjanke>`_).
+  - Add :data:`django_auth_ldap.backend.ldap_error` signal for custom handling of
+    :exc:`~ldap.LDAPError` exceptions.
+  - Add :data:`django_auth_ldap.backend.LDAPBackend.default_settings` for
+    per-subclass default settings.
+  - Fix interaction between :setting:`AUTH_LDAP_AUTHORIZE_ALL_USERS` and
+    :setting:`AUTH_LDAP_USER_SEARCH`.
+  - Add support for nisNetgroup groups (thanks to Christopher Bartz).
+  - Fix `#50`_: Improved escaping for filter strings.
+  - Accept (and ignore) arbitrary keyword arguments to
+    :meth:`~django_auth_ldap.backend.LDAPBackend.authenticate`.
+
+-------------------------------------------------------------------
+Wed Oct  8 12:47:59 UTC 2014 - mcihar@suse.cz
+
+- Update to 1.2.2:
+  - Include test harness in source distribution. Some package maintainers find
+    this helpful.
+  - More verbose log messages for authentication failures.
+
+-------------------------------------------------------------------
+Fri Apr 25 09:06:17 UTC 2014 - mcihar@suse.cz
+
+- Update to 1.2.0:
+   * django-auth-ldap now provides experimental Python 3 support. Python 2.5
+     was dropped.
+- Use pypi URL as source
+
+-------------------------------------------------------------------
+Fri Feb 14 07:43:34 UTC 2014 - mcihar@suse.cz
+
+- Update to 1.1.8:
+  * Fix #43: Update django_auth_ldap.config.LDAPSearchUnion to work for
+    group searches in addition to user searches.
+  * Tox no longer supports Python 2.5, so our tests now run on 2.6 and 2.7 only.
+  * Bug fix: AUTH_LDAP_GLOBAL_OPTIONS could be ignored in some cases
+    (such as django_auth_ldap.backend.LDAPBackend.populate_user.
+  * Fix #41: Support POSIX group permissions with no gidNumber attribute.
+  * Support multiple group DNs for *_FLAGS_BY_GROUP.
+
+-------------------------------------------------------------------
+Thu Nov 21 07:49:23 UTC 2013 - mcihar@suse.cz
+
+- add missing dependency on python-ldap
+
+-------------------------------------------------------------------
+Wed May 15 10:27:23 UTC 2013 - tchatzimichos@suse.com
+
+- Update to 1.1.4:
+  * Add support for Django 1.5's custom user models.
+  * Add %doc files
+
+-------------------------------------------------------------------
+Mon Jan  7 00:49:46 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 1.1.3:
+  * Fix #33: Reject empty passwords by default.
+    Unless AUTH_LDAP_PERMIT_EMPTY_PASSWORD is set to True,
+    LDAPBackend.authenticate() will immediately return None if the password is
+    empty. This is technically backwards-incompatible, but it's a more secure
+    default for those LDAP servers that are configured such that binds without
+    passwords always succeed.
+  * Fix #39: Add support for pickling LDAP-authenticated users.
+
+-------------------------------------------------------------------
+Thu Aug 30 22:18:25 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.1.2:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Jul  9 18:51:36 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon May  7 22:24:54 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:44:39 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.0.19:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Thu Mar 15 23:19:39 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.0.18:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Mar  9 15:11:44 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.0.17:
+   - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Sun Feb  5 01:53:32 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.0.15:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Thu Dec 29 23:36:12 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.14:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Thu Dec 15 11:33:49 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.13:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Fri Sep 30 11:29:17 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.12:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Aug 29 00:55:24 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.11:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Jun 24 11:16:20 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.10:
+  - Sorry, no changelog.
+- Regenerate spec file with py2pack.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:54:23 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.9.
+
+-------------------------------------------------------------------
+Sun Mar 13 01:55:40 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.8;
+- Regenerated spec file with py2pack.
+
+-------------------------------------------------------------------
+Sat Dec  4 09:25:11 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.7.
+
+-------------------------------------------------------------------
+Fri Jul 30 17:36:58 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.6.
+
+-------------------------------------------------------------------
+Tue Jun 22 02:20:46 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.5.
+
+-------------------------------------------------------------------
+Mon Jun  7 01:38:50 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.4.
+
+-------------------------------------------------------------------
+Sat Apr  3 02:45:07 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.3;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Mar 28 15:27:21 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.2.
+
+-------------------------------------------------------------------
+Sun Mar 14 17:54:04 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.1.
+
+-------------------------------------------------------------------
+Sat Jan  2 13:07:58 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.
+
+-------------------------------------------------------------------
+Mon Nov  2 11:15:53 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b7.
+
+-------------------------------------------------------------------
+Mon Oct 26 09:57:03 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b6.
+
+-------------------------------------------------------------------
+Mon Oct 26 09:56:02 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b5.
+
+-------------------------------------------------------------------
+Tue Oct 20 20:24:24 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b4.
+
+-------------------------------------------------------------------
+Thu Oct 15 01:49:37 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b3.
+
+-------------------------------------------------------------------
+Mon Sep 28 16:56:18 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.0b2.
+
+-------------------------------------------------------------------
+Fri Sep 25 20:10:04 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (1.0b1).

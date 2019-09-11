@@ -1,0 +1,4 @@
+addFilter (".* W: explicit-lib-dependency libcontainers-common")
+addFilter (".* W: explicit-lib-dependency libcontainers-image")
+addFilter (".* W: explicit-lib-dependency libcontainers-storage")
+addFilter (".* W: sourced-script-with-shebang /etc/bash_completion.d/buildah /bin/bash")

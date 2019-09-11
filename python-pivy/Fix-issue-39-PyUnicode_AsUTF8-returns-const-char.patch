@@ -1,0 +1,44 @@
+From d828a332d86a2af4ffbb6a52aaa80700ff48bb16 Mon Sep 17 00:00:00 2001
+From: Peter Lama <peterldev94@gmail.com>
+Date: Fri, 24 Aug 2018 17:25:47 -0700
+Subject: [PATCH] Fix issue #39: PyUnicode_AsUTF8 returns const char*
+
+Even with python 2, it doesn't seem like char* is needed
+---
+ Inventor/nodes/SoMarkerSet.i | 4 ++--
+ Inventor/sensors/SoSensor.i  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Inventor/nodes/SoMarkerSet.i b/Inventor/nodes/SoMarkerSet.i
+index fddbf98..d4187b0 100644
+--- a/Inventor/nodes/SoMarkerSet.i
++++ b/Inventor/nodes/SoMarkerSet.i
+@@ -5,7 +5,7 @@
+         short WIDTH, HEIGHT;
+         size.getValue(WIDTH, HEIGHT);
+         short BYTEWIDTH = (WIDTH + 7) / 2;
+-        char* coin_marker;
++        const char* coin_marker;
+ #ifdef PY_2
+         if (PyString_Check(string))
+         {
+@@ -49,4 +49,4 @@
+         delete[] bitmapbytes;
+         bitmapbytes = NULL;
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/Inventor/sensors/SoSensor.i b/Inventor/sensors/SoSensor.i
+index 72ac01e..ffae79b 100644
+--- a/Inventor/sensors/SoSensor.i
++++ b/Inventor/sensors/SoSensor.i
+@@ -4,7 +4,7 @@ SoSensorPythonCB(void * data, SoSensor * sensor)
+ {
+   PyGILState_STATE gil = PyGILState_Ensure();
+   swig_type_info * swig_type = 0;
+-  char * sensor_cast_name = NULL;
++  const char * sensor_cast_name = NULL;
+   PyObject * func, * arglist;
+   PyObject * result, * pysensor;
+ 

@@ -1,0 +1,11 @@
+--- hdf/src/tbbt.c.orig	2014-02-10 03:28:49.000000000 +0100
++++ hdf/src/tbbt.c	2014-04-01 16:13:50.616263370 +0200
+@@ -618,7 +618,7 @@
+             }
+           else
+             {   /* If no sub-tree heavier, pick at "random" for "better */
+-                side = (0x10 & *(short *) &node) ? LEFT : RIGHT;    /* balance" */
++                side = (0x10 & *(char *) &node) ? LEFT : RIGHT;    /* balance" */
+             }
+           leaf = tbbt_nbr(next = node, Other(side));
+           par = leaf->Parent;

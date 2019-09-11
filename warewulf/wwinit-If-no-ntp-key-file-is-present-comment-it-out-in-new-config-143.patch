@@ -1,0 +1,38 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Tue Sep 11 12:18:34 2018 -0600
+Subject: wwinit: If no ntp key file is present, comment it out in new config (#143)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: be6fdabde8e61759d02ca1b36c1e3d5da3f8155f
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>---
+ cluster/libexec/wwinit/50-ntpd.init | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+diff --git a/cluster/libexec/wwinit/50-ntpd.init b/cluster/libexec/wwinit/50-ntpd.init
+index 118a49e..e7721b3 100644
+--- a/cluster/libexec/wwinit/50-ntpd.init
++++ b/cluster/libexec/wwinit/50-ntpd.init
+@@ -35,9 +35,11 @@ if ! grep -q "^# This file was created by Warewulf" /etc/ntp.conf; then
+ fi
+ 
+ if [ -f "/etc/ntp.keys" ]; then
+-    KEY_FILE="/etc/ntp.keys"
++    KEY_FILE="keys /etc/ntp.keys"
+ elif [ -f "/etc/ntp/keys" ]; then
+-    KEY_FILE="/etc/ntp/keys"
++    KEY_FILE="keys /etc/ntp/keys"
++else
++    KEY_FILE="#keys /etc/ntp.keys"
+ fi
+ 
+ cat <<EOF > /etc/ntp.conf
+@@ -71,7 +73,7 @@ includefile /etc/ntp/crypto/pw
+ 
+ # Key file containing the keys and key identifiers used when operating
+ # with symmetric key cryptography.
+-keys $KEY_FILE
++$KEY_FILE
+ 
+ # Specify the key identifiers which are trusted.
+ #trustedkey 4 8 42

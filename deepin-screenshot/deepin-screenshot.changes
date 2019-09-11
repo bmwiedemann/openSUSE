@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue May 21 14:30:20 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.1.11
+  * Fix cannot select window on other screen
+  * Fix indicator pos error
+  * support HiDPI
+  * Fix check path existence
+
+-------------------------------------------------------------------
+Tue Mar  5 12:54:31 UTC 2019 - hillwood@opensuse.org
+
+- Update version to 4.1.8
+  * Fix Hold shift to avoid remember save state
+  * Fix missing CXXFLAGS and LDFLAGS
+  * Fix touch to resize selection not very handy
+  * Fix missing icon file
+  * Add genericName
+  * use deepin-turbo
+  * add manual id
+  * add dbus service
+  * hidpi: basic hidpi support
+  * Fix qm file install location is incorrect
+  * Fix not save img for cmdline
+  * Fix not save screenshot from cmdline path
+  * Fix magnifier update not timely (f0846718)
+  * Fix manual can't open on flatpak envs
+  * Fix restore blur and mosaic
+  * Fix save the correct pixmap
+  * Fix flatpak error readding config file
+  * Fix not draw faker background
+  * Fix draw background error
+  * Fix top level window shortcut misplaced
+  * Fix Adapt lintian
+  * Fix correct a typo in screenshot.cpp
+  * Fix check controlcenter and hotzone dbus is valid
+  * Fix flatpak: cannot open help manual in flatpak
+  * Fix hidpi: window background misplaced
+
+-------------------------------------------------------------------
+Fri Mar 23 00:49:23 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 4.0.11
+  * Fix top level window shortcut misplaced
+  * Adapt lintian
+  * correct a typo in screenshot.cpp
+  * Fix check controlcenter and hotzone dbus is valid
+  * Fix window background misplaced
+  * Add manual id
+  * Add dbus service
+  * Add basic hidpi support
+
+-------------------------------------------------------------------
+Fri Dec  1 13:45:05 UTC 2017 - hillwood@opensuse.org
+
+- Update to 4.0.10.4
+  * update some translations. 
+
+-------------------------------------------------------------------
+Thu Nov  8 14:53:21 UTC 2017 - steve.todorov@carlspring.com
+
+- Updating to 4.0.10.1
+- BuildRequires: dtkwm, deepin-gettext-tools
+- Split language package
+
+-------------------------------------------------------------------
+Fri Nov  3 08:41:55 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec.
+- Fix rpmlint errors and warning.
+- Update .desktop profile.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.

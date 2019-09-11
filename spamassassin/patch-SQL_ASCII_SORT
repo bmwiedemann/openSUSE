@@ -1,0 +1,20 @@
+--- lib/Mail/SpamAssassin/Conf/SQL.pm	2006-09-29 15:06:39.000000000 +0200
++++ lib/Mail/SpamAssassin/Conf/SQL.pm 	2007-02-09 16:48:42.000000000 +0100
+@@ -139,9 +139,14 @@
+        $sql =~ s/_DOMAIN_/$quoted_domain/g;
+      }
+      else {
+-       $sql = "select $f_preference, $f_value  from $f_table where ". 
+-        "$f_username = ".$dbh->quote($username).
+-        " or $f_username = '\@GLOBAL' order by $f_username asc";
++       $sql = "select $f_preference, $f_value, ascii(username) as user_asci from $f_table where ".
++       "$f_username = ".$dbh->quote($username).
++       " or $f_username = '\@GLOBAL' order by user_asci asc";
++       # changed by varkoly@novell.com on 09.02.2007 suggested by 
++       # Charles Camello <charles@integrasul.inf.br>
++       #$sql = "select $f_preference, $f_value  from $f_table where ". 
++       #"$f_username = ".$dbh->quote($username).
++       #" or $f_username = '\@GLOBAL' order by $f_username asc";
+      }
+      dbg("config: Conf::SQL: executing SQL: $sql");
+      my $sth = $dbh->prepare($sql);

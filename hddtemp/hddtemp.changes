@@ -1,0 +1,236 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:48:40 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Thu Nov 23 13:42:38 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Apr 27 11:08:55 UTC 2017 - dimstar@opensuse.org
+
+- Unconditionally call fillup_only also on systemd setups: the
+  sysconfig file is also valid for the systemd service
+  (boo#1034379).
+
+-------------------------------------------------------------------
+Wed Mar 15 13:17:47 UTC 2017 - dimstar@opensuse.org
+
+- Only install the init.d service when there is no systemd present:
+  the systemd service would mask it and only confuses users that
+  try to debug things.
+- Link rc%{name} to /usr/sbin/service when using systemd.
+- Move the insserv BuildRequires to be a PreReq (it's not used for
+  the build system, but actually for the installation on a machine)
+  and guard it to be validonly for non-systemd systems.
+
+-------------------------------------------------------------------
+Sun Mar 12 23:36:11 UTC 2017 - plinnell@opensuse.org
+
+- Add insserv as build requirement to fix Factory build
+
+-------------------------------------------------------------------
+Sun Feb  9 14:37:49 UTC 2014 - xrigou@otenet.gr
+
+- Apply spec-cleaner 0.5.4
+- Fix fillup bug
+- Fix some rpmlint warnings
+- Eliminate double configure
+
+-------------------------------------------------------------------
+Tue Nov 05 20:01:11 UTC 2013 - mopp@gmx.net
+
+- Latest version from GitHub e16aed6
+- systemd service support
+
+-------------------------------------------------------------------
+Thu May 24 22:30:24 UTC 2012 - pascal.bleser@opensuse.org
+
+- moved to build.opensuse.org upon request:
+  https://bugs.links2linux.org/browse/PM-25
+
+-------------------------------------------------------------------
+Mon Apr 23 07:06:05 UTC 2012 - pascal.bleser@opensuse.org
+
+- fixes to build on openSUSE >= 12.1 on 32bit, needs passing -D_GNU_SOURCE to
+  compiler
+- modernize spec file a little towards nowadays factory compliance
+
+-------------------------------------------------------------------
+Wed Sep 16 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- fixes in post/pre scripts
+
+
+-------------------------------------------------------------------
+Tue Sep  8 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- cleanups where rpmlint wasn't so happy
+
+
+-------------------------------------------------------------------
+Thu Mar 29 00:00:00 UTC 2007 - Manfred.Tremmel@iiv.de
+
+- added patches from devil_at_decagon.de and debian
+
+
+-------------------------------------------------------------------
+Wed May  3 00:00:00 UTC 2006 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta15
+
+
+-------------------------------------------------------------------
+Wed Sep 21 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta14
+
+
+-------------------------------------------------------------------
+Sat Apr  2 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- readded a script from Mr.Bool in post section
+
+
+-------------------------------------------------------------------
+Wed Mar 23 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta13
+
+
+-------------------------------------------------------------------
+Thu Mar 17 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- readded chmod +s, sorry was missing
+
+
+-------------------------------------------------------------------
+Wed Mar 16 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta12
+
+
+-------------------------------------------------------------------
+Sun Dec  7 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta9
+
+
+-------------------------------------------------------------------
+Sat Aug 16 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta8
+
+
+-------------------------------------------------------------------
+Sat Jun 21 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta7
+
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta6
+
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta5
+
+
+-------------------------------------------------------------------
+Thu Mar 13 00:00:00 UTC 2003 - Mr.Bool <mr.bool at rambler.ru>
+
+- Update to 0.3beta4
+
+
+-------------------------------------------------------------------
+Sat Jan 25 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta3
+
+
+-------------------------------------------------------------------
+Sat Jan  4 00:00:00 UTC 2003 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta2
+
+
+-------------------------------------------------------------------
+Wed Dec  4 00:00:00 UTC 2002 - Mr.Bool <mr.bool at rambler.ru>
+
+- some cleanups : hddtemp.sysconfig , hddtemp.spec
+
+
+-------------------------------------------------------------------
+Sun Dec  1 00:00:00 UTC 2002 - Manfred.Tremmel@iiv.de
+
+- Update to 0.3beta1
+
+
+-------------------------------------------------------------------
+Sat Oct 12 00:00:00 UTC 2002 - Mr.Bool <mr.bool at rambler.ru> 0.3-0.alpha.3cr_SuSE8.x
+
+- Rebuild for SuSE 8.0.
+- Added /etc/bash.bashrc.local creation
+- New init script (LSB compatible?)
+- Configuration has more parameters
+- Suid root again
+- Spec file changed
+- Default drive is /dev/hda
+
+
+-------------------------------------------------------------------
+Sun Oct  6 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.3-0.alpha.3cr
+
+- Rebuild for Red Hat 8.0.
+
+
+-------------------------------------------------------------------
+Tue Aug 13 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.3-0.alpha.2cr
+
+- Patched db.
+
+
+-------------------------------------------------------------------
+Sat Aug  3 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.3-0.alpha.1cr
+
+- Update to 0.3 alpha.
+- No more suid root.
+
+
+-------------------------------------------------------------------
+Tue Jul 30 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.2-4cr
+
+- hddtemp.db version 19.
+
+
+-------------------------------------------------------------------
+Tue Jul 23 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.2-3cr
+
+- hddtemp.db version 18.
+
+
+-------------------------------------------------------------------
+Wed Jul 10 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.2-2cr
+
+- hddtemp.db version 17.
+
+
+-------------------------------------------------------------------
+Tue Jul  2 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.2-1cr
+
+- Updated hddtemp.db.
+
+
+-------------------------------------------------------------------
+Thu Jun  6 00:00:00 UTC 2002 - Ville Skytt <ville.skytta at iki.fi> 0.2-0.1
+
+- Initial build.
+

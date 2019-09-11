@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Mar 21 11:20:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fetch stuff from pypi
+- Run tests
+- Fix packagename
+
+-------------------------------------------------------------------
+Tue Mar 12 09:44:17 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 1.1.6
+- fix versioning of python module
+
+-------------------------------------------------------------------
+Tue Feb 13 07:05:59 UTC 2018 - adrian@suse.de
+
+- initial package of version 1.0.0
+

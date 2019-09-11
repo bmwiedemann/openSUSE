@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Wed Jul 31 12:12:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.2
+    #123: Rely on a recent version of setuptools to handle VERSION
+    #120: Don't delete _generated modules on ffi_build import
+    Drop Python 2.6, 2.7 and 3.4 support
+    Test with Python 3.7
+    Clean code, tests and packaging
+- do not build for python2
+- run tests
+
+-------------------------------------------------------------------
+Fri Jan 25 10:10:32 UTC 2019 - mvetter@suse.com
+
+- Update to 0.9.0:
+  * Drop Python 3.2 and 3.3 support
+  * Test with PyPy and PyPy3
+  * Fix test compatibility with Cairo 1.15.12
+  * Add cairo library name from PyGObject for Windows
+  * Fix pango_example.py
+  * Fix crash with xbc tests
+  * Clean documentation
+  * Support Cairo features up to 1.15.12
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:25 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jul 13 15:54:02 UTC 2018 - arun@gmx.de
+
+- update to version 0.8.1:
+  * Add cairo library name provided by pygobjectwin32
+  * Update docstrings to list width and height params
+  * Add width and height options to decode_to_image_surface
+
+-------------------------------------------------------------------
+Fri Jan 26 21:07:25 UTC 2018 - petr@cervinka.net
+
+- Add xcffib support 
+- Spec file cleaned
+
+-------------------------------------------------------------------
+Wed Apr 12 19:01:15 UTC 2017 - toddrme2178@gmail.com
+
+- Fix download URL.
+
+-------------------------------------------------------------------
+Wed Apr 12 17:44:02 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 0.8.0
+  * Follow semver
+  * Avoid implicit relative import
+  * Use utf-8 instead of utf8 in headers
+  * Keep cairo library loaded until all relevant objects are freed
+  * Add cairo_quartz_* functions for MacOS
+  * Use the default ReadTheDocs theme
+  * Fix implicit casts
+
+-------------------------------------------------------------------
+Fri Oct 14 14:12:05 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+
+-------------------------------------------------------------------
+Mon Feb  1 11:08:43 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 0.7.2:
+  * Use ctypes.util.find_library with dlopen.
+  * Fix loading of gdk_pixbuf library on Ubuntu
+- update to version 0.7.1:
+  * Add a possible work-around for #64.
+
+-------------------------------------------------------------------
+Wed Jul  1 12:30:10 UTC 2015 - toddrme2178@gmail.com
+
+- Depend on cairo instead of cairo-tools
+
+-------------------------------------------------------------------
+Tue Apr 28 21:13:22 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.6:
+  * #39 Add :class:xcb.XCBSurface.
+  * #42 Add :class:Win32PrintingSurface.
+- add Group field to subpackage python-cairocffi-pixbuf
+
+-------------------------------------------------------------------
+Wed Sep 10 09:27:47 UTC 2014 - toddrme2178@gmail.com
+
+- Require gdk-pixbuf instead of typelib(GdkPixbuf)
+
+-------------------------------------------------------------------
+Wed Aug 27 10:06:19 UTC 2014 - toddrme2178@gmail.com
+
+- Split out optional gdk-pixbuf module.
+  This avoids a lot of gtk dependencies for the main package, and 
+  is the recommended approach by upstream.
+
+-------------------------------------------------------------------
+Tue Aug 26 12:32:22 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

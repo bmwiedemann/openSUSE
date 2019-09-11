@@ -1,0 +1,182 @@
+diff --git a/CONTRIBUTORS.txt b/CONTRIBUTORS.txt
+index b47a26b..fe247b0 100644
+--- a/CONTRIBUTORS.txt
++++ b/CONTRIBUTORS.txt
+@@ -104,3 +104,4 @@ Contributors
+ 
+ - Chris McDonough, 2011/02/16
+ - Wichert Akkerman, 2012/02/02
++- Steve Piercy, 2015/05/05
+diff --git a/docs/Makefile b/docs/Makefile
+index c0694bb..e11be66 100644
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -25,7 +25,7 @@ help:
+ clean:
+ 	-rm -rf _build/*
+ 
+-html: _themes
++html:
+ 	mkdir -p _build/html _build/doctrees
+ 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html
+ 	@echo
+@@ -47,7 +47,7 @@ pickle:
+ 
+ web: pickle
+ 
+-htmlhelp: _themes
++htmlhelp:
+ 	mkdir -p _build/htmlhelp _build/doctrees
+ 	$(SPHINXBUILD) -b htmlhelp $(ALLSPHINXOPTS) _build/htmlhelp
+ 	@echo
+@@ -83,6 +83,3 @@ epub:
+ 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) _build/epub
+ 	@echo
+ 	@echo "Build finished. The epub file is in _build/epub."
+-
+-_themes:
+-	cd ..; git submodule update --init; cd docs
+diff --git a/docs/conf.py b/docs/conf.py
+index 1598f3a..65546ff 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -13,23 +13,8 @@
+ # out serve to show the default value.
+ 
+ import sys, os
+-
+-# If your extensions are in another directory, add it here. If the
+-# directory is relative to the documentation root, use os.path.abspath to
+-# make it absolute, like shown here.
+-#sys.path.append(os.path.abspath('some/directory'))
+-
+-parent = os.path.dirname(os.path.dirname(__file__))
+-sys.path.append(os.path.abspath(parent))
+-wd = os.getcwd()
+-os.chdir(parent)
+-os.system('%s setup.py test -q' % sys.executable)
+-os.chdir(wd)
+-
+-for item in os.listdir(parent):
+-    if item.endswith('.egg'):
+-        sys.path.append(os.path.join(parent, item))
+-
++import pkg_resources
++import pylons_sphinx_themes
+ 
+ # General configuration
+ # ---------------------
+@@ -56,7 +41,7 @@
+ # other places throughout the built documents.
+ #
+ # The short X.Y version.
+-version = '0.4'
++version = pkg_resources.get_distribution('translationstring').version
+ # The full version, including alpha/beta/rc tags.
+ release = version
+ 
+@@ -82,7 +67,7 @@
+ 
+ # If true, the current module name will be prepended to all description
+ # unit titles (such as .. function::).
+-#add_module_names = True
++add_module_names = False
+ 
+ # If true, sectionauthor and moduleauthor directives will be shown in the
+ # output. They are ignored by default.
+@@ -94,11 +79,12 @@
+ 
+ # Options for HTML output
+ # -----------------------
+-
+-sys.path.append(os.path.abspath('_themes'))
+-html_theme_path = ['_themes']
++# sys.path.append(os.path.abspath('_themes'))
+ html_theme = 'pyramid'
+-html_theme_options = dict(github_url='https://github.com/Pylons/translationstring')
++html_theme_path = pylons_sphinx_themes.get_html_themes_path()
++html_theme_options = dict(
++    github_url='https://github.com/Pylons/translationstring',
++    )
+ 
+ 
+ # The style sheet to use for HTML and HTML Help pages. A file of that name
+@@ -116,7 +102,7 @@
+ 
+ # The name of an image file (within the static path) to place at the top of
+ # the sidebar.
+-html_logo = '.static/logo_hi.gif'
++#html_logo = '.static/logo_hi.gif'
+ 
+ # The name of an image file (within the static path) to use as favicon of
+ # the docs.  This file should be a Windows icon file (.ico) being 16x16 or
+@@ -135,7 +121,7 @@
+ 
+ # If true, SmartyPants will be used to convert quotes and dashes to
+ # typographically correct entities.
+-#html_use_smartypants = True
++html_use_smartypants = False
+ 
+ # Custom sidebar templates, maps document names to template names.
+ #html_sidebars = {}
+@@ -188,7 +174,7 @@
+ 
+ # The name of an image file (relative to this directory) to place at the
+ # top of the title page.
+-latex_logo = '.static/logo_hi.gif'
++#latex_logo = '.static/logo_hi.gif'
+ 
+ # For "manual" documents, if this is true, then toplevel headings are
+ # parts, not chapters.
+diff --git a/setup.py b/setup.py
+index e30228f..f14a3d4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -12,6 +12,12 @@
+     README = ''
+     CHANGES = ''
+ 
++docs_extras = [
++    'Sphinx',
++    'docutils',
++    'pylons-sphinx-themes >= 0.3',
++]
++
+ setup(name='translationstring',
+       version='1.3',
+       description=('Utility library for i18n relied on by various Repoze '
+@@ -42,5 +48,8 @@
+       include_package_data=True,
+       zip_safe=False,
+       test_suite="translationstring",
++      extras_require={
++            'docs': docs_extras,
++      },
+       )
+ 
+diff --git a/tox.ini b/tox.ini
+index 657c398..fe6badb 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,6 +1,6 @@
+ [tox]
+ envlist = 
+-    py26,py27,py32,jython,pypy,cover
++    py26,py27,py32,jython,pypy,cover,docs
+ 
+ [testenv]
+ commands = 
+@@ -19,6 +19,13 @@ deps =
+     coverage==3.4
+     nosexcover
+ 
++[testenv:docs]
++basepython =
++    python2.7
++commands =
++    pip install translationstring[docs]
++    sphinx-build -b html -d docs/_build/doctrees docs docs/_build/html
++
+ # we separate coverage into its own testenv because a) "last run wins" wrt
+ # cobertura jenkins reporting and b) pypy and jython can't handle any
+ # combination of versions of coverage and nosexcover that i can find.

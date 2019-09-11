@@ -1,0 +1,42 @@
+References: https://sources.debian.org/src/libid3tag/0.15.1b-13/debian/patches/11_unknown_encoding.dpatch/
+From: Karol Babioch <kbabioch@suse.com>
+Date: Wed Feb 21 13:23:47 CET 2018
+Upstream: dead
+Subject: Fix unknown encoding when parsing ID3 tags
+
+Fixes the handling of unknown encodings when parsing ID3 tags. (CVE-2017-11550 bsc#1081962 CVE-2008-2109 bsc#387731)
+
+---
+ compat.gperf |    3 +++
+ parse.c      |    4 ++++
+ 2 files changed, 7 insertions(+)
+
+Index: libid3tag-0.15.1b/compat.gperf
+===================================================================
+--- libid3tag-0.15.1b.orig/compat.gperf
++++ libid3tag-0.15.1b/compat.gperf
+@@ -241,6 +241,9 @@ int id3_compat_fixup(struct id3_tag *tag
+     encoding = id3_parse_uint(&data, 1);
+     string   = id3_parse_string(&data, end - data, encoding, 0);
+ 
++    if (!string)
++	continue;
++
+     if (id3_ucs4_length(string) < 4) {
+       free(string);
+       continue;
+Index: libid3tag-0.15.1b/parse.c
+===================================================================
+--- libid3tag-0.15.1b.orig/parse.c
++++ libid3tag-0.15.1b/parse.c
+@@ -165,6 +165,10 @@ id3_ucs4_t *id3_parse_string(id3_byte_t
+   case ID3_FIELD_TEXTENCODING_UTF_8:
+     ucs4 = id3_utf8_deserialize(ptr, length);
+     break;
++
++  default:
++    /* FIXME: Unknown encoding! Print warning? */
++    return NULL;
+   }
+ 
+   if (ucs4 && !full) {

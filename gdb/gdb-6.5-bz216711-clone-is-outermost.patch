@@ -1,0 +1,304 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Jan Kratochvil <jan.kratochvil@redhat.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.5-bz216711-clone-is-outermost.patch
+
+;; Fix bogus 0x0 unwind of the thread's topmost function clone(3) (BZ 216711).
+;;=fedora
+
+https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=216711
+
+FIXME: This workaround should be dropped and
+glibc/sysdeps/unix/sysv/linux/x86_64/clone.S should get CFI for the child
+instead.
+
+2006-12-17  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* gdb/amd64-linux-tdep.c (linux_clone_code): New variable.
+	(LINUX_CLONE_LEN): New definition.
+	(amd64_linux_clone_running, amd64_linux_outermost_frame): New function.
+	(amd64_linux_init_abi): Initialize `outermost_frame_p'.
+	* gdb/i386-tdep.c (i386_gdbarch_init): Likewise.
+	* gdb/i386-tdep.h (gdbarch_tdep): Add `outermost_frame_p' member.
+	* gdb/amd64-tdep.c (amd64_frame_this_id): Call `outermost_frame_p'.
+
+2006-12-17  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* gdb.threads/bt-clone-stop.exp, gdb.threads/bt-clone-stop.c:
+	New file.
+
+2007-10-16  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	Port to GDB-6.7.
+
+diff --git a/gdb/amd64-linux-tdep.c b/gdb/amd64-linux-tdep.c
+--- a/gdb/amd64-linux-tdep.c
++++ b/gdb/amd64-linux-tdep.c
+@@ -291,6 +291,80 @@ amd64_linux_register_reggroup_p (struct gdbarch *gdbarch, int regnum,
+ 
+ /* Set the program counter for process PTID to PC.  */
+ 
++/* Detect the outermost frame; during unwind of
++   	#5  0x000000305cec68c3 in clone () from /lib64/tls/libc.so.6
++   avoid the additional bogus frame
++   	#6  0x0000000000000000 in ??
++   We compare if the `linux_clone_code' block is _before_ unwound PC.  */
++
++static const unsigned char linux_clone_code[] =
++{
++/* libc/sysdeps/unix/sysv/linux/x86_64/clone.S */
++/* #ifdef RESET_PID */
++/* ... */
++/* 	mov	$SYS_ify(getpid), %eax */
++/* 0xb8, 0x27, 0x00, 0x00, 0x00 */
++/* OR */
++/* 	mov	$SYS_ify(getpid), %rax */
++/* 0x48, 0xc7, 0xc0, 0x27, 0x00, 0x00, 0x00 */
++/* so just: */
++  0x27, 0x00, 0x00, 0x00,
++/* 	syscall */
++  0x0f, 0x05,
++/* 	movl	%eax, %fs:PID */
++  0x64, 0x89, 0x04, 0x25, 0x94, 0x00, 0x00, 0x00,
++/* 	movl	%eax, %fs:TID */
++  0x64, 0x89, 0x04, 0x25, 0x90, 0x00, 0x00, 0x00,
++/* #endif */
++/* 	|* Set up arguments for the function call.  *| */
++/* 	popq	%rax		|* Function to call.  *| */
++  0x58,
++/* 	popq	%rdi		|* Argument.  *| */
++  0x5f,
++/* 	call	*%rax$   */
++  0xff, 0xd0
++};
++
++#define LINUX_CLONE_LEN (sizeof linux_clone_code)
++
++static int
++amd64_linux_clone_running (struct frame_info *this_frame)
++{
++  CORE_ADDR pc = get_frame_pc (this_frame);
++  unsigned char buf[LINUX_CLONE_LEN];
++
++  if (!safe_frame_unwind_memory (this_frame, pc - LINUX_CLONE_LEN, buf,
++				 LINUX_CLONE_LEN))
++    return 0;
++
++  if (memcmp (buf, linux_clone_code, LINUX_CLONE_LEN) != 0)
++    return 0;
++
++  return 1;
++}
++
++static int
++amd64_linux_outermost_frame (struct frame_info *this_frame)
++{
++  CORE_ADDR pc = get_frame_pc (this_frame);
++  const char *name;
++
++  find_pc_partial_function (pc, &name, NULL, NULL);
++
++  /* If we have NAME, we can optimize the search.
++     `clone' NAME still needs to have the code checked as its name may be
++     present in the user code.
++     `__clone' NAME should not be present in the user code but in the initial
++     parts of the `__clone' implementation the unwind still makes sense.
++     More detailed unwinding decision would be too much sensitive to possible
++     subtle changes in specific glibc revisions.  */
++  if (name == NULL || strcmp (name, "clone") == 0
++      || strcmp ("__clone", name) == 0)
++    return (amd64_linux_clone_running (this_frame) != 0);
++
++  return 0;
++}
++
+ static void
+ amd64_linux_write_pc (struct regcache *regcache, CORE_ADDR pc)
+ {
+@@ -1808,6 +1882,8 @@ amd64_linux_init_abi_common(struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   tdep->xsave_xcr0_offset = I386_LINUX_XSAVE_XCR0_OFFSET;
+ 
++  tdep->outermost_frame_p = amd64_linux_outermost_frame;
++
+   /* Add the %orig_rax register used for syscall restarting.  */
+   set_gdbarch_write_pc (gdbarch, amd64_linux_write_pc);
+ 
+diff --git a/gdb/amd64-tdep.c b/gdb/amd64-tdep.c
+--- a/gdb/amd64-tdep.c
++++ b/gdb/amd64-tdep.c
+@@ -2601,6 +2601,7 @@ amd64_frame_unwind_stop_reason (struct frame_info *this_frame,
+ {
+   struct amd64_frame_cache *cache =
+     amd64_frame_cache (this_frame, this_cache);
++  struct gdbarch_tdep *tdep = gdbarch_tdep (get_frame_arch (this_frame));
+ 
+   if (!cache->base_p)
+     return UNWIND_UNAVAILABLE;
+@@ -2609,6 +2610,10 @@ amd64_frame_unwind_stop_reason (struct frame_info *this_frame,
+   if (cache->base == 0)
+     return UNWIND_OUTERMOST;
+ 
++  /* Detect OS dependent outermost frames; such as `clone'.  */
++  if (tdep->outermost_frame_p && tdep->outermost_frame_p (this_frame))
++    return UNWIND_OUTERMOST;
++
+   return UNWIND_NO_REASON;
+ }
+ 
+@@ -2743,6 +2748,7 @@ amd64_sigtramp_frame_this_id (struct frame_info *this_frame,
+ {
+   struct amd64_frame_cache *cache =
+     amd64_sigtramp_frame_cache (this_frame, this_cache);
++  struct gdbarch_tdep *tdep = gdbarch_tdep (get_frame_arch (this_frame));
+ 
+   if (!cache->base_p)
+     (*this_id) = frame_id_build_unavailable_stack (get_frame_pc (this_frame));
+@@ -2751,6 +2757,11 @@ amd64_sigtramp_frame_this_id (struct frame_info *this_frame,
+       /* This marks the outermost frame.  */
+       return;
+     }
++  else if (tdep->outermost_frame_p && tdep->outermost_frame_p (this_frame))
++    {
++      /* Detect OS dependent outermost frames; such as `clone'.  */
++      return;
++    }
+   else
+     (*this_id) = frame_id_build (cache->base + 16, get_frame_pc (this_frame));
+ }
+diff --git a/gdb/i386-tdep.c b/gdb/i386-tdep.c
+--- a/gdb/i386-tdep.c
++++ b/gdb/i386-tdep.c
+@@ -8407,6 +8407,9 @@ i386_gdbarch_init (struct gdbarch_info info, struct gdbarch_list *arches)
+ 
+   tdep->xsave_xcr0_offset = -1;
+ 
++  /* Unwinding stops on i386 automatically.  */
++  tdep->outermost_frame_p = NULL;
++
+   tdep->record_regmap = i386_record_regmap;
+ 
+   set_gdbarch_type_align (gdbarch, i386_type_align);
+diff --git a/gdb/i386-tdep.h b/gdb/i386-tdep.h
+--- a/gdb/i386-tdep.h
++++ b/gdb/i386-tdep.h
+@@ -251,6 +251,9 @@ struct gdbarch_tdep
+ 
+   /* Regsets. */
+   const struct regset *fpregset;
++
++  /* Detect OS dependent outermost frames; such as `clone'.  */
++  int (*outermost_frame_p) (struct frame_info *this_frame);
+ };
+ 
+ /* Floating-point registers.  */
+diff --git a/gdb/testsuite/gdb.threads/bt-clone-stop.c b/gdb/testsuite/gdb.threads/bt-clone-stop.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.threads/bt-clone-stop.c
+@@ -0,0 +1,39 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2006 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++ 
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++   MA 02110-1301, USA.  */
++
++
++#include <pthread.h>
++#include <unistd.h>
++#include <assert.h>
++
++
++void *threader (void *arg)
++{
++	assert (0);
++	return NULL;
++}
++
++int main (void)
++{
++	pthread_t t1;
++
++	pthread_create (&t1, NULL, threader, (void *) NULL);
++	for (;;)
++		pause();
++}
+diff --git a/gdb/testsuite/gdb.threads/bt-clone-stop.exp b/gdb/testsuite/gdb.threads/bt-clone-stop.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.threads/bt-clone-stop.exp
+@@ -0,0 +1,61 @@
++# Copyright 2006 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++# 
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++# 
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++
++# Backtraced `clone' must not have `PC == 0' as its previous frame.
++
++if $tracelevel then {
++    strace $tracelevel
++}
++
++set testfile bt-clone-stop
++set srcfile ${testfile}.c
++set binfile [standard_output_file ${testfile}]
++if  { [gdb_compile_pthreads "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {debug}] != "" } {
++    untested "Couldn't compile test program"
++    return -1
++}
++
++# Get things started.
++
++gdb_exit
++gdb_start
++gdb_reinitialize_dir $srcdir/$subdir
++gdb_load ${binfile}
++
++# threader: threader.c:8: threader: Assertion `0' failed.
++# Program received signal SIGABRT, Aborted.
++
++gdb_test "run" \
++     {Thread 2 "bt-clone-stop" received signal SIGABRT.*} \
++     "run"
++
++# Former gdb unwind (the first function is `clone'):
++# #5  0x0000003421ecd62d in ?? () from /lib64/libc.so.6
++# #6  0x0000000000000000 in ?? ()
++# (gdb)
++# Tested `amd64_linux_outermost_frame' functionality should omit the line `#6'.
++# 
++# Two `-re' cases below must be in this order (1st is a subset of the 2nd one).
++# Unhandled case below should not happen and it is fortunately handled by
++# `amd64_linux_outermost_frame' as FAIL (and result `0x0 entry output invalid').
++gdb_test_multiple "bt" "0x0 entry output invalid" {
++    -re "in threader \\(.*\n#\[0-9\]* *0x0* in .*$gdb_prompt $" {
++    	fail "0x0 entry found"
++    }
++    -re "in threader \\(.*$gdb_prompt $" {
++    	pass "0x0 entry not found"
++    }
++}

@@ -1,0 +1,77 @@
+#
+# spec file for package yast2-add-on
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+Name:           yast2-add-on
+Version:        4.2.4
+Release:        0
+Summary:        YaST2 - Add-On media installation code
+License:        GPL-2.0-only
+Group:          System/YaST
+Url:            https://github.com/yast/yast-add-on
+
+Source0:        %{name}-%{version}.tar.bz2
+
+BuildRequires:  update-desktop-files
+BuildRequires:  yast2 >= 3.0.1
+BuildRequires:  yast2-devtools >= 3.1.10
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
+# Y2packager::Resolvables
+BuildRequires:  yast2-packager >= 4.2.11
+
+Requires:       autoyast2-installation
+# ProductProfile
+Requires:       yast2 >= 3.0.1
+Requires:       yast2-country
+Requires:       yast2-installation
+# Packager ProductLicense#HandleLicenseDialogRet allowing "refuse" action
+Requires:       yast2-packager >= 4.2.16
+Requires:       yast2-ruby-bindings >= 1.0.0
+
+Obsoletes:      yast2-add-on-devel-doc
+
+BuildArch:      noarch
+
+%description
+This package contains YaST Add-On media installation code.
+
+%prep
+%setup -q
+
+%check
+%yast_check
+
+%build
+
+%install
+%yast_install
+%yast_metainfo
+
+%files
+%{yast_yncludedir}
+%{yast_libdir}
+%{yast_clientdir}
+%{yast_moduledir}
+%{yast_desktopdir}
+%{yast_metainfodir}
+%{yast_schemadir}
+%{yast_icondir}
+%doc %{yast_docdir}
+%license COPYING
+
+%changelog

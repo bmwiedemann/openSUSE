@@ -1,0 +1,648 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:19:31 UTC 2018 - jengelh@inai.de
+
+- Remove ineffective --with-pic. Fix copy-pasted summaries.
+  Limit fdupes to not cross partition boundaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:57 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 12 20:08:54 UTC 2016 - zaitor@opensuse.org
+
+- Use standardized patch tags as documented at
+  https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines.
+
+-------------------------------------------------------------------
+Tue Jan  7 15:10:07 UTC 2014 - dimstar@opensuse.org
+
+- Disable parallel build: to many random fallouts occur.
+
+-------------------------------------------------------------------
+Thu Apr 11 14:09:00 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Mar  7 23:06:48 UTC 2013 - dimstar@opensuse.org
+
+- Add "#undef G_DISABLE_DEPRECATED" to the generated config.h, to
+  allow the usage of deprectaed glib symbols (e.g. g_thread_*). 
+
+-------------------------------------------------------------------
+Fri Feb  1 18:53:50 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Apr  4 13:38:17 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 19 22:39:59 CET 2010 - vuntz@opensuse.org
+
+- Update libbonobo-lib64.patch to make the patch actually work as
+  intended: when building the path list to know where .server files
+  should be looked for, we were forgetting to add a ':' between the
+  lib64 path and the lib one, which resulted in having none of
+  them.
+
+-------------------------------------------------------------------
+Wed Dec 15 11:23:41 CET 2010 - vuntz@opensuse.org
+
+- Rework the support for both libdir and libexecdir for .server
+  files on 64bit machines:
+  + Update bonobo-activation-config.patch to not add
+    /usr/local/lib64/bonobo/servers unconditionally.
+  + Add libbonobo-lib64.patch that we only apply if %_lib is lib64:
+    we change the configuration, the code, and the documentation to
+    support both libdir and libexecdir.
+  + Remove previous crude sed hacks that were trying to do this.
+  + Manually create %{_libexecdir}/bonobo/servers in %install for
+    64bit machines.
+- Do not pass --libexecdir=%{_prefix}/lib/bonobo to configure: we
+  don't need that.
+
+-------------------------------------------------------------------
+Wed Oct 13 10:29:54 CEST 2010 - vuntz@opensuse.org
+
+- Remove libidl BuildRequires: there was no need for such an
+  explicit BuildRequires.
+
+-------------------------------------------------------------------
+Mon Sep 27 07:54:56 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:49:22 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Sun Aug 29 17:03:44 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + Port to GDBus
+  + Translation updates.
+- Remove dbus-1-glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Mar 30 19:56:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.24.3:
+  + Set up dbus environment in test-activation/test.sh
+  + Fix memory corruption
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+
+-------------------------------------------------------------------
+Thu Dec 17 17:19:32 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Nov 26 16:42:43 GMT 2009 - michael.meeks@novell.com
+
+- drop libbonobo-2.20.0-quit-with-dbus.patch, a better
+  version has been up-stream for some time.
+
+-------------------------------------------------------------------
+Wed Nov 25 14:05:36 CET 2009 - dimstar@opensuse.org
+
+- Respin libbonobo-2.20.0-quit-with-dbus.patch to apply with fuzz=0 
+
+-------------------------------------------------------------------
+Mon Sep 28 18:05:18 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.24.2:
+  + Fix build with recent automake.
+  + Updated translations.
+- Drop libbonobo-automake1.11.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 16 15:58:09 CEST 2009 - vuntz@novell.com
+
+- Add libbonobo-automake1.11.patch to fix build with new automake.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Mon Mar  9 01:00:09 CET 2009 - vuntz@novell.com
+
+- Add popt-devel BuildRequires.
+- Remove unneeded BuildRequires: docbook_4, gnome-common, openssl,
+  perl-XML-Parser, xmlcharent.
+- Remove AutoReqProv: it's default now.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Fri Mar  6 18:23:43 CET 2009 - vuntz@novell.com
+
+- Update to version 2.24.1:
+	+ Win32 portability fixes
+	+ cleanups for newer glib releases
+	+ Other cleanups for single glib includes
+	+ Cross-compiling fixes
+- Remove -fno-strict-aliasing from CFLAGS.
+- Drop libbonobo-includes.patch: doesn't seem to be useful anymore.
+- Drop libbonobo-strict-aliasing.patch: doesn't seem to be useful
+  anymore.
+
+-------------------------------------------------------------------
+Mon Jan 26 23:07:05 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465] 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Sep 22 17:21:00 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.0:
+  + Add a threading fix
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 24 01:31:43 CEST 2008 - mboman@novell.com
+
+- Updated to version 2.23.1:
+  * Fix a race (Michael)
+  * Documentation improvement (Tobias Mueller)
+  * Check that we're initialized properly (Tobias Mueller)
+
+-------------------------------------------------------------------
+Tue Jul 29 01:31:43 CEST 2008 - vuntz@novell.com
+
+- Add libbonobo-fate300461-server-gettext.patch to support
+  translation of .server files via gettext. The domain can be
+  defined with the suse-gettext-domain key in the .server file.
+  Related to fate#300461.
+
+-------------------------------------------------------------------
+Wed Jun 18 22:38:56 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.0:
+  + Use D-BUS to start and exit when the session ends.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar 14 02:40:15 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Misc gcc 4.3 fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 30 23:45:25 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+  + Fix build against glib 2.15.4
+- Build with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Thu Jan 24 13:23:10 CST 2008 - jpr@suse.de
+
+- Update to version 2.20.3:
+        * Fix some gcc'isms causing problems with glib 2.15.0
+        * fix C99ism
+        * Fix regression introduced in 2.20.0
+        * Code cleanup
+
+-------------------------------------------------------------------
+Fri Nov 23 13:23:10 CST 2007 - maw@suse.de
+
+- Update to version 2.20.1:
+  + Memory leaks fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov  9 01:57:39 CET 2007 - hpj@suse.de
+
+- Add libbonobo-2.20.0-quit-with-dbus.patch, which makes
+  bonobo-activation-server quit when the session D-Bus does. This
+  prevents stale D-Bus addresses from being passed on to future
+  sessions. Fixes Novell bug #331577.
+
+-------------------------------------------------------------------
+Mon Sep 17 17:27:54 CEST 2007 - gekker@suse.de
+
+- Update to version 2.20.0
+        * Add unit test for bug 427992. (Gustavo Carneiro)
+        * Align configure switches (Gilles Dartiguelounge)
+        * Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 19:06:44 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- Use %fdupes
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+
+-------------------------------------------------------------------
+Tue Jul 31 21:31:25 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+	* Use gmodule-no-export-2.0 instead of gmodule-2.0 (#449841)
+	* Win32 fix for pipe macro (Tor Lillqvist)
+        * Fix b-a-s crash with legacy client (Gustavo Carneiro)
+        * Code cleanup (Kjartan Maraas)
+        * Use glib/gi18n[-lib].h instead of bonobo-i18n.h (Christian Persch)
+        * Fix memory leak reported by valgrind (Matthias Clasen, Gustavo)
+
+-------------------------------------------------------------------
+Thu Mar 29 14:30:48 CEST 2007 - rguenther@suse.de
+
+- Add bison and flex BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar 21 13:51:31 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Bug fixes, including b.g.o 409065, 363033, and 363033.
+
+-------------------------------------------------------------------
+Fri Feb 16 16:16:10 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Mon Jan 29 18:27:34 CET 2007 - sbrabec@suse.cz
+
+- Included /usr/local directories to bonobo activation
+  configuration.
+
+-------------------------------------------------------------------
+Wed Jan  3 16:43:25 CET 2007 - sbrabec@suse.cz
+
+- Worked around bonobo-slay bi-arch problems.
+
+-------------------------------------------------------------------
+Wed Jan  3 16:42:58 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Jan  3 16:42:31 CET 2007 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Thu Dec 28 19:45:25 CET 2006 - jhargadon@suse.de
+
+- removed unneeded libtool files (#223684) 
+
+-------------------------------------------------------------------
+Fri Oct 13 22:28:30 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Wed Sep 13 01:02:58 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- API DOC fixes
+- Don't check for xrdb or dladdr when we don't use them
+- Updated and new translations 
+
+-------------------------------------------------------------------
+Wed Aug 30 01:49:01 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.3
+- Fix ghtread configure test when building uninstalled
+- Various bonobo-activation login fixes
+- Various cleanups of exception handling
+- Fixes for panel sometimes hanging on login 
+
+-------------------------------------------------------------------
+Thu Aug 17 23:50:26 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.2
+- Warning and build fixes
+- New and updated translations
+- Fix Coverity reports for leaks, accessing uninitialized memory
+          and null pointer derefs 
+
+-------------------------------------------------------------------
+Fri Jul 21 22:51:16 CEST 2006 - gekker@suse.de
+
+- Update to version 2.15.0
+- Remove upstreamed patches
+  * Add new MIME api to make gnome-vfs not have a hard dependency on
+    libbonobo (Alex)
+  * Fix some leaks (Kjartan)
+  * Win32 portability fixes (Tor)
+  * po/LINGUAS porting (Przemysław Grzegorczyk)
+  * Port to GOption from popt (Michael Terry)
+  * Build fixes and cleanups (Michael Meeks, Kjartan)
+- Update to version 2.13.93
+  * Always pass program arguments to bonobo_activation_init (Michael)
+  * Fixed re-enterancy problems on slow machines (Michael)
+  * Translation updates
+- Update to version 2.13.1
+  * Fix corruption issue that was causing hangs on login (Michael)
+  * Fix GOption argument parsing typo (Christian Perch)
+  * Unregister run-time defined ServerInfos on program exit (Gustavo)
+- Update to version 2.13.0
+  * Rework the end-user installation location independence code for Win32 (Tor Lillqvist)
+  * Don't use deprecated functions (Kjartan)
+  * Fix build on solaris 10 with sun studio 10 compiler [#315145]
+  * Add support for GOption argument parsing in libgnome (Pawel Sliwowski, chpe) [#307312]
+  * Merge cleanups from stable (Kjartan)
+  * Translation updates
+
+
+-------------------------------------------------------------------
+Wed May 17 23:58:51 CEST 2006 - gekker@suse.de
+
+- Fix file descriptor leak (#176555)
+
+-------------------------------------------------------------------
+Tue Mar  7 14:25:49 CET 2006 - jpr@suse.de
+
+- Prevent re-entrancy crash (#149735)
+
+-------------------------------------------------------------------
+Sat Feb 18 11:31:30 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:43:32 CET 2006 - rodrigo@suse.de
+
+- Fixed problems with arguments parsing and GOptions (148666)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 17:09:04 CET 2006 - jpr@suse.de
+
+- Patch corrupted memory (#141322)
+
+-------------------------------------------------------------------
+Wed Nov  2 21:57:28 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Aug 22 22:14:52 CEST 2005 - gekker@suse.de
+
+- Update to version 2.10.1 
+
+-------------------------------------------------------------------
+Thu Jul 21 19:20:00 CEST 2005 - gekker@suse.de
+
+- Update to version 2.10.0 
+
+-------------------------------------------------------------------
+Fri Jun 17 00:10:10 CEST 2005 - gekker@suse.de
+
+- Fix sentinel patch to work with new glib2. 
+
+-------------------------------------------------------------------
+Wed Jun  1 16:26:55 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements (#72282).
+
+-------------------------------------------------------------------
+Mon Apr 11 16:52:58 CEST 2005 - sbrabec@suse.cz
+
+- Fixed Requires of doc subpackage.
+
+-------------------------------------------------------------------
+Wed Feb  9 23:23:55 CET 2005 - gekker@suse.de
+
+- Update to 2.8.1
+- Update neededforbuild, so that it will build docs 
+
+-------------------------------------------------------------------
+Mon Jan 31 13:13:24 CET 2005 - meissner@suse.de
+
+- added attribute sentinel/printf patch to spot 
+  bad use of va_list functions.
+
+-------------------------------------------------------------------
+Mon Nov 22 11:56:30 CET 2004 - ro@suse.de
+
+- make specfile rpm3 compliant ...
+  (non numeric if arguments need quoting)
+
+-------------------------------------------------------------------
+Fri Nov 19 14:41:37 CET 2004 - gekker@suse.de
+
+- Update version to 2.8.0 
+
+-------------------------------------------------------------------
+Fri Nov 19 14:16:15 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Mon Oct 25 12:17:57 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Oct 12 13:47:52 CEST 2004 - sbrabec@suse.cz
+
+- Fixed libexecdir for bi-arch (#47050).
+
+-------------------------------------------------------------------
+Mon Jul  5 17:57:50 CEST 2004 - jody@suse.de
+
+- Updated to version 2.6.2 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Wed Apr 21 18:33:23 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Mon Mar 15 14:40:09 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:46:46 CET 2004 - sbrabec@suse.cz
+
+- Fixed %doc attributes (#33163).
+
+-------------------------------------------------------------------
+Thu Feb  5 15:32:58 CET 2004 - hhetter@suse.de
+
+- updated to version 2.4.3 [GNOME 2.4.2] 
+
+-------------------------------------------------------------------
+Mon Oct 27 15:35:39 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.1.
+
+-------------------------------------------------------------------
+Mon Oct 06 18:05:03 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Sat Aug 16 12:26:26 CEST 2003 - adrian@suse.de
+
+- the devel package Requires: bonobo-activation-devel
+
+-------------------------------------------------------------------
+Fri Aug  8 22:53:35 CEST 2003 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Wed Jul 23 07:05:44 CEST 2003 - hhetter@suse.de
+
+- don't try to install broken index files 
+
+-------------------------------------------------------------------
+Mon Jul 14 16:19:33 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jun 17 15:19:09 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.3.
+- Prefix clash fixes.
+- Added packages for correct doc build.
+
+-------------------------------------------------------------------
+Wed Jan 29 11:39:33 CET 2003 - hhetter@suse.de
+
+- updated to 2.2.0 version
+
+-------------------------------------------------------------------
+Wed Jan 15 09:54:33 CET 2003 - hhetter@suse.de
+
+- updated to version 2.1.1 
+
+-------------------------------------------------------------------
+Fri Nov 01 14:57:29 CET 2002 - sbrabec@suse.cz
+
+- Do not own /opt/gnome2/lib/bonobo-2.0/samples, because this is also used
+  by libbonoboui.
+
+-------------------------------------------------------------------
+Thu Oct 31 15:53:30 CET 2002 - hhetter@suse.de
+
+- updated to 2.0.1
+- x86_64.diff is upstream, removed 
+
+-------------------------------------------------------------------
+Thu Oct 24 09:55:38 CEST 2002 - hhetter@suse.de
+
+- remove wrong docdir
+- run automake with -c to copy missing files, not link
+  (Bug Id #21066) 
+
+-------------------------------------------------------------------
+Mon Oct 21 19:06:44 CEST 2002 - sbrabec@suse.cz
+
+- Update %files.
+
+-------------------------------------------------------------------
+Tue Sep 10 10:11:33 CEST 2002 - sf@suse.de
+
+- added fix for va_args handling on hammer
+
+-------------------------------------------------------------------
+Thu Aug 15 14:07:10 CEST 2002 - hhetter@suse.de
+
+- branch doc package 
+
+-------------------------------------------------------------------
+Fri Aug  9 10:26:27 CEST 2002 - hhetter@suse.de
+
+- add openssl to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jul 26 22:43:51 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed Jun 19 14:11:54 CEST 2002 - ro@suse.de
+
+- use "-a -f" for automake 
+
+-------------------------------------------------------------------
+Tue Jun  4 13:42:30 CEST 2002 - hhetter@suse.de
+
+- updated to stable release 2.0.0 
+
+-------------------------------------------------------------------
+Tue May 14 12:21:49 CEST 2002 - ro@suse.de
+
+- added servers and monikers dirs to filelist (in $libdir/bonobo) 
+
+-------------------------------------------------------------------
+Tue May 14 11:56:41 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Tue Apr  9 15:05:41 CEST 2002 - hhetter@suse.de
+
+- update to version 1.113.0 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Fri Feb  1 11:31:46 CET 2002 - hhetter@suse.de
+
+- updated to version 1.110.0 [gnome desktop alpha2] 
+
+-------------------------------------------------------------------
+Thu Jan 17 09:33:51 CET 2002 - hhetter@suse.de
+
+- prefix to /opt/gnome2 
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jan 11 13:39:28 CET 2002 - hhetter@suse.de
+
+- updated to 1.109.0 
+
+-------------------------------------------------------------------
+Wed Jan  9 12:58:56 CET 2002 - hhetter@suse.de
+
+- fixed filelist  
+
+-------------------------------------------------------------------
+Tue Jan  8 12:36:32 CET 2002 - hhetter@suse.de
+
+- initial SuSE release for GNOME 2.0 platform
+- build with automake 1.5 
+

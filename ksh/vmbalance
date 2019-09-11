@@ -1,0 +1,47 @@
+#!/usr/bin/awk -f
+#
+# vmblance	Awk script to detect endless growing memory alloctions
+#		in endless shell loops using in daemonized shell scripts
+#
+# Usage:
+#
+#   strace -s 128 -e execve,mmap,mmap2,munmap -o '|./vmbalance' ksh leak1.sh
+#
+BEGIN {
+    FS="([[:blank:]]|[[:punct:]])"
+    ignore=""
+    script=""
+    sum=0
+    allocs=0
+    frees=0
+    left=0
+    peak=0
+}
+/^execve/ {
+    if (FNR == 1) {
+	script = gensub(/.*SOURCES\/([[:alnum:]_-]+\.sh).*/, "\\1", "g", $0)
+    }
+}
+/^mmap(2|64)?\(/ {
+    if ($0 !~ /.*MAP_PRIVATE\|MAP_ANONYMOUS.*/) {
+	if (ignore)
+ 	    ignore=ignore "|" $NF
+	else
+ 	    ignore=$NF
+    } else {
+	sum+=$4
+	allocs++
+	if (peak < sum)
+	    peak = sum
+    }
+}
+/^munmap(2|64)?\(/ {
+    if ($0 !~ ignore) {
+   	sum-=$4
+	frees++
+    }
+}
+END {
+    left=allocs-frees
+    print script ": " sum " bytes summed up, " peak " peak value, " left " chunks left over, " allocs " allocated, and " frees " freed" > "/dev/fd/3"
+}

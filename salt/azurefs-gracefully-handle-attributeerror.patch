@@ -1,0 +1,31 @@
+From d914a1e952e393f3e72aee2cb8d9056533f490cc Mon Sep 17 00:00:00 2001
+From: Robert Munteanu <rombert@apache.org>
+Date: Mon, 19 Nov 2018 17:52:34 +0100
+Subject: [PATCH] azurefs: gracefully handle AttributeError
+
+It is possible that the azure.storage object has no __version__ defined.
+In that case, prevent console spam with unhandled AttributeError
+messages and instead consider that Azure support is not present.
+
+Problem was encountered on openSUSE Tumbleweed.
+---
+ salt/fileserver/azurefs.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/fileserver/azurefs.py b/salt/fileserver/azurefs.py
+index 547a681016..032739d160 100644
+--- a/salt/fileserver/azurefs.py
++++ b/salt/fileserver/azurefs.py
+@@ -68,7 +68,7 @@ try:
+     if LooseVersion(azure.storage.__version__) < LooseVersion('0.20.0'):
+         raise ImportError('azure.storage.__version__ must be >= 0.20.0')
+     HAS_AZURE = True
+-except ImportError:
++except (ImportError, AttributeError):
+     HAS_AZURE = False
+ 
+ # Import third party libs
+-- 
+2.17.1
+
+

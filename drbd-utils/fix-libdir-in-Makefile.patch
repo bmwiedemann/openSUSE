@@ -1,0 +1,52 @@
+Index: drbd-utils-8.9.2rc2+git.faeb645/scripts/Makefile.in
+===================================================================
+--- drbd-utils-8.9.2rc2+git.faeb645.orig/scripts/Makefile.in
++++ drbd-utils-8.9.2rc2+git.faeb645/scripts/Makefile.in
+@@ -37,7 +37,7 @@ initscripttype = @initscripttype@
+ BASH_COMPLETION_SUFFIX = @BASH_COMPLETION_SUFFIX@
+ UDEV_RULE_SUFFIX = @UDEV_RULE_SUFFIX@
+ INITDIR = @INITDIR@
+-LIBDIR = @prefix@/lib/@PACKAGE_TARNAME@
++LIBDIR = @libdir@/@PACKAGE_TARNAME@
+ LN_S = @LN_S@
+ 
+ # features enabled or disabled by configure
+Index: drbd-utils-8.9.2rc2+git.faeb645/user/v9/Makefile.in
+===================================================================
+--- drbd-utils-8.9.2rc2+git.faeb645.orig/user/v9/Makefile.in
++++ drbd-utils-8.9.2rc2+git.faeb645/user/v9/Makefile.in
+@@ -31,7 +31,7 @@ sysconfdir = @sysconfdir@
+ BASH_COMPLETION_SUFFIX = @BASH_COMPLETION_SUFFIX@
+ UDEV_RULE_SUFFIX = @UDEV_RULE_SUFFIX@
+ INITDIR = @INITDIR@
+-LIBDIR = @prefix@/lib/@PACKAGE_TARNAME@
++LIBDIR = @libdir@/@PACKAGE_TARNAME@
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+ LDFLAGS = @LDFLAGS@
+Index: drbd-utils-8.9.2rc2+git.faeb645/user/v83/Makefile.in
+===================================================================
+--- drbd-utils-8.9.2rc2+git.faeb645.orig/user/v83/Makefile.in
++++ drbd-utils-8.9.2rc2+git.faeb645/user/v83/Makefile.in
+@@ -31,7 +31,7 @@ sysconfdir = @sysconfdir@
+ BASH_COMPLETION_SUFFIX = @BASH_COMPLETION_SUFFIX@
+ UDEV_RULE_SUFFIX = @UDEV_RULE_SUFFIX@
+ INITDIR = @INITDIR@
+-LIBDIR = @prefix@/lib/@PACKAGE_TARNAME@
++LIBDIR = @libdir@/@PACKAGE_TARNAME@
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+ LDFLAGS = @LDFLAGS@
+Index: drbd-utils-8.9.2rc2+git.faeb645/user/v84/Makefile.in
+===================================================================
+--- drbd-utils-8.9.2rc2+git.faeb645.orig/user/v84/Makefile.in
++++ drbd-utils-8.9.2rc2+git.faeb645/user/v84/Makefile.in
+@@ -31,7 +31,7 @@ sysconfdir = @sysconfdir@
+ BASH_COMPLETION_SUFFIX = @BASH_COMPLETION_SUFFIX@
+ UDEV_RULE_SUFFIX = @UDEV_RULE_SUFFIX@
+ INITDIR = @INITDIR@
+-LIBDIR = @prefix@/lib/@PACKAGE_TARNAME@
++LIBDIR = @libdir@/@PACKAGE_TARNAME@
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+ LDFLAGS = @LDFLAGS@

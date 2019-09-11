@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Mon Jan 14 15:23:53 UTC 2019 - astieger@suse.com
+
+- update to 2019.01.06:
+  * The macro AX_CODE_COVERAGE was modified to use
+    AX_ADD_AM_MACRO_STATIC
+  * various updates to multiple macros
+
+-------------------------------------------------------------------
+Sat Mar 17 13:47:31 UTC 2018 - astieger@suse.com
+
+- update to 2018.03.13:
+  * Add macros packages AX_R_PACKAGE and AX_PROG_DATE
+  * updates for other macros
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Thu Oct 12 18:38:35 UTC 2017 - astieger@suse.com
+
+- update to 2017.09.28:
+  * New macros AX_PROG_HELP2MAN, AX_RECURSIVE_EVAL,
+    AX_SUBDIRS_CONFIGURE, AX_ELISP, and AX_PROG_EMACS
+  * updates to various macros
+
+-------------------------------------------------------------------
+Thu Mar 23 14:27:26 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017.03.21:
+  * Removed macros:
+    + AX_CXX_COMPILER_VENDOR
+    + AX_GCC_LIBRARIES_DIR
+    + AX_GCC_VERSION,
+    + AX_HAVE_OPENGL
+  * Obsolete macros:
+    + AX_DEFINE_SUB_PATH
+
+-------------------------------------------------------------------
+Tue Sep 27 08:05:09 UTC 2016 - astieger@suse.com
+
+- update to 2016.09.16:
+  * Added macros:
+    + AX_BUILD_DATE_EPOCH
+    + AX_CHECK_X86_FEATURES,
+    + AX_GCC_X86_CPU_SUPPORTS
+    + AX_OPEN62541_CHECK_H
+    + AX_OPEN62541_CHECK_LIB
+    + AX_LUAROCKS_ROCK.
+  * While updating AX_CODE_COVERAGE, the variable
+    CODE_COVERAGE_LDFLAGS was renamed to CODE_COVERAGE_LIBS
+  * AX_VALGRIND_CHECK has been extended considerably
+  * The undocumented internal rule check-valgrind-tool was removed.
+  * AX_WITH_CURSES and AX_WITH_CURSES_* macros have been modernized
+
+-------------------------------------------------------------------
+Wed Mar 30 16:52:03 UTC 2016 - fcrozat@suse.com
+
+- Change license tag to "GPL-3.0+ WITH Autoconf-exception-3.0" and
+  ship COPYING.EXCEPTION as %doc.
+
+-------------------------------------------------------------------
+Tue Mar 22 22:20:06 UTC 2016 - mpluskal@suse.com
+
+- Update to 2016.03.20
+  * The following new macros have been added: AX_CHECK_GIRS_GJS,
+    AX_CHECK_GIR_SYMBOLS_GJS, AX_CXX_COMPILE_STDCXX,
+    AX_CXX_COMPILE_STDCXX_14,
+    AX_CZMQ, AX_FC_CHECK_DEFINE, AX_LIB_NETCDF4, AX_PROG_GJS,
+    AX_RESTORE_FLAGS_WITH_PREFIX, AX_SAVE_FLAGS_WITH_PREFIX,
+    AX_VAR_POP, AX_VAR_PUSH, and AX_ZMQ.
+  * Various improvements to the opengl macros. Main features added:
+    + Support action-if-found and not-found hook
+    + Export HAVE_GL, HAVE_GLU, and HAVE_GLUT preprocessor symbol
+    + Add necessary flags to CFLAGS/LIBS by default, but can be 
+      disabled by overwritting action-if-found hook.
+    + Fail the configure script if lib not found. This feature can 
+      be disabled by overwritting action-if-not-found hook
+    + Fix problems on Mac OSX. Been tested on Linux (Ubuntu) and 
+      OSX 6 Use --with-xquartz-gl instead of --with-gl=x for using 
+      X11 on OSX
+  * Many new features were added to AX_CODE_COVERAGE and 
+    AX_PROG_DOXYGEN.
+  * AX_CXX_COMPILE_STDCXX now modifies $(CXX) rather than 
+    $(CXXFLAGS).
+  * AX_PTHREAD has been updated significantly. See
+    https://savannah.gnu.org/patch/?8186 for further details.
+  * AX_PYTHON_DEVEL now provides PYTHON_LIBS instead of 
+    PYTHON_FLAGS.
+  * The macros related to C++11 and C++14 were extensively 
+    re-factored.
+
+-------------------------------------------------------------------
+Sun Sep 27 08:40:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 2015.09.25
+  * AX_CXX_COMPILE_STDCXX_11 now supports Cray's crayCC compiler 
+    (CCE 8.4).
+  * AX_PYTHON, AX_PYTHON_EMBED now support Python 3.4.
+  * AX_LIB_ORACLE_OCI now supports Oracle 12.
+  * AX_EXT now supports AVX2/AVX512 and other CPU extensions.
+  * The new macro AX_GNU_AUTOTEST was added. The macro supports 
+    multiple test-suites, Makefiles in different locations and 
+    many more features.
+  * AX_CXX_COMPILE_STDCXX_11 now checks for attribute support with 
+    C++11 macro.
+  * Some compilers pass the other tests while not implementing 
+    this part of the C++11 specification. The test used also does 
+    not cause warnings with GCC or Clang, and can be used with 
+    -Werror.
+  * The new macro AX_PROG_BISON_VERSION can be used to check for 
+    specific versions of bison.
+  * The new macro AX_PROG_FLEX_VERSION can be used to check for 
+    specific versions of flex.
+  * AX_APPEND_FLAG no longer fails if the given flag contains a 
+    ','.
+  * AX_LUA now supports Lua 5.3.
+  * AX_BERKELEY_DB_CXX now supports FreeBSD.
+  * AX_CXX_COMPILE_STDCXX_11 now support HP aCC.
+  * AX_PYTHON_MODULE and AX_PYTHON_MODULE_VERSION now support 
+    Python 3.
+  * The new macro AX_PYTHON_MODULE_VERSION has been added.
+  * AX_LIB_POSTGRESQL provides a new output variable 
+    POSTGRESQL_LIBS.
+  * AX_PATH_GENERIC now supports flags that contain spaces.
+  * AX_BOOST_BASE now supports native Windows header only 
+    libraries.
+- Cleanup spec file with spec-clener
+
+-------------------------------------------------------------------
+Sun May 17 12:47:41 UTC 2015 - meissner@suse.com
+
+- delete info files in the preun section
+
+-------------------------------------------------------------------
+Tue Mar  3 20:21:38 UTC 2015 - astieger@suse.com
+
+- Update to version 2015.02.24:
+  * AX_CHECK_ENABLE_DEBUG now uses $ax_is_release as default for
+    IS-RELEASE.
+  * AX_IS_RELEASE now supports micro-version policies.
+  * Portability of AX_CXX_COMPILE_STDCXX_0X has been improved.
+  * AX_PROG_HAXE_VERSION is a new macro to detect the presence of
+    Haxe
+  * AX_COMPILER_FLAGS has undergone extensive re-factoring.
+  * AX_COMPILER_FLAGS_CXXFLAGS is a new macro that tests available
+    C++ compiler warnings.
+  * AX_CXX_COMPILE_STDCXX_11 can now test for SFINAE with template
+    aliases.
+  * AX_APPEND_FLAG: Fix a regression introduced in the previous
+    release.
+- includes changes from 2015.02.04
+  * AX_OPENMP: Test that we can actually #include <omp.h>
+    successfully.
+  * AX_COMPILER_FLAGS was re-factored into
+    AX_COMPILER_FLAGS_CFLAGS and AX_COMPILER_FLAGS_LDFLAGS.
+  * AX_CODE_COVERAGE detects gcov program.
+  * AX_VALGRIND_CHECK now supports running without libtool.
+  * AX_GCC_VERSION was improved.
+  * Re-factored and modernized the macros AX_CXX_TEMPLATES,
+    AX_CXX_CONST_CAST, AX_CXX_COMPLEX_MATH_IN_NAMESPACE_STD,
+    AX_CXX_BOOL, AX_APPEND_FLAG, AX_CHECK_*_FLAG,
+    AX_CHECK_ENABLE_DEBUG, and AX_CXX_DEFAULT_TEMPLATE_PARAMETERS.
+  * AX_CXX_COMPILER_VENDOR was deprecated in favor of
+    AX_COMPILER_VENDOR.
+  * AX_HAVE_OPENGL was deprecated in favor of AX_CHECK_GL,
+    AX_CHECK_GLU, AX_CHECK_GLUT, and AX_CHECK_GLX.
+  * AX_CHECK_GL has a new parameter --with-mesa that allows
+    choosing the order of opengl lib detection.
+  * Portability of AX_LUA was improved. Support for LUA 5.0 was
+    added.
+  * New macros AX_IS_RELEASE, AX_COMPILER_FLAGS_GIR,
+    AX_CXX_ERASE_ITERATOR_TYPE, AX_COMPILER_VERSION, AX_CHECK_GLX,
+    AX_CHECK_VSCRIPT, AX_VALGRIND_CHECK, AX_PKG_CHECK_MODULES,
+    and AX_COMPILER_FLAGS were added.
+  * AX_PROG_FLEX: Also accept gflex.
+  * AX_LIB_HDF5: remove extra leading space from include path flag.
+  * AX_PERL_MODULE_VERSION: use more portable syntax for shell
+    arithmetic.
+  * AX_PROG_JAVAH_BIN_DIR: fix misspelled variable name and follow
+    javah symlinkto find jni.h.
+  * AX_BOOST_PYTHON: use unique names for local variables
+
+-------------------------------------------------------------------
+Wed Oct 15 22:36:15 UTC 2014 - andreas.stieger@gmx.de
+
+- Update to version 2014.10.15:
+  Many bug fixes and improvements to many macros as well as new
+  macros and features. See NEWS for details:
+  https://github.com/peti/autoconf-archive/blob/v2014.10.15/NEWS
+- includes changes from 2014.02.28, 2013.11.01
+- drop autoconf-archive-fix_AX_HAVE_QT.patch, obsolete
+- verify source tarball sigature
+
+-------------------------------------------------------------------
+Sun Jul 28 11:42:31 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2013.06.09
+  + AX_PROG_FLEX has been updated to be more liberal about the name of the flex
+    executable.
+  + AX_LIB_HDF5 has been updated to support the variables HDF5_CC, HDF5_FC, and
+    HDF5_LIBS. See <http://savannah.gnu.org/patch/?8026> for further details.
+  + AX_XSDCXX has been added; a macro to find the CodeSynthesis XSD executable
+    and the corresponding headers. See <http://savannah.gnu.org/patch/?8011>
+    for further details.
+  + AX_PYTHON_DEVEL no longer overrides LOCALMODLIBS. Further details are
+    available at <http://savannah.gnu.org/patch/index.php?8065>.
+  + The portability of AX_ZONEINFO has been improved. Further details can be
+   found at <http://savannah.gnu.org/patch/index.php?8029>.
+  + The configure flags generated by AX_ENABLE_DEFAULT_ACLOCALDIR have been
+   fixed.
+  + AX_CHECK_GLU and AX_CHECK_GLUT have been added again by a new maintainer.
+
+-------------------------------------------------------------------
+Fri Dec  7 23:58:17 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2012.11.14 version:
+  * The portability of AX_BOOST_SYSTEM and AX_BOOST_THREAD has been improved. See
+    <http://lists.gnu.org/archive/html/autoconf-archive-maintainers/
+    2012-09/msg00026.html> for further details.
+  * AX_COUNT_CPUS has been cleaned up. See <http://savannah.gnu.org/patch/?7860>
+    for further details.
+  * AX_BLAS has been extended to detect the Intel Math Kernel Library (MKL). See
+    <http://savannah.gnu.org/patch/?7807> for further details.
+  * Several bugs and inconsistencies in AX_TRY_RUN_JAVA, AX_PROG_JAVA_WORKS,
+    AX_CHECK_CLASS, and AX_PROG_JAVA have been fixed. See
+    <http://savannah.gnu.org/patch/?7835> for further details.
+  * AX_INCLUDE_STRCASECMP has been added. The macro detects which header file
+    defines the strcasecmp() function. See <http://savannah.gnu.org/patch/?7836>
+    for further details.
+  * AX_LIB_ORACLE_OCCI has been added. The macro detects the availability of the
+    Oracle OCCI API of particular version or newer. Further details can be found
+    at <http://savannah.gnu.org/patch/?7834>.
+  * AX_CHECK_POSTGRES_DB has been substantially re-written. The default behavior
+    is unchanged, but there are two new (optional) arguments ACTION-IF-FOUND and
+    ACTION-IF-NOT-FOUND. See <http://savannah.gnu.org/patch/?7832> for further
+    details.
+  * AX_CXX_RVALUE_REFERENCES has been added. See
+    <http://savannah.gnu.org/patch/?7833> for further details.
+  * AX_BLAS has been extended to support for the (free-software, BSD-licensed)
+    OpenBLAS library, a descendant of GotoBLAS. See
+    <http://savannah.gnu.org/patch/?7828> for further details.
+  * The reliability of AX_BOOST_SYSTEM and AX_BOOST_FILESYSTEM has been improved.
+    See <http://savannah.gnu.org/patch/?7816> for further details.
+  * The new entry AX_ZONEINFO has been added. Further details are available at
+    <http://savannah.gnu.org/patch/index.php?7814>.
+  * AX_CHECK_ZLIB has been updated significantly:
+   - The behavior was changed so that the macro proceeds to compile and link
+     tests even if zlib.h was not found in the "usual locations".
+   - The macro interface has been extend to the typical ([action-if-found],
+     [action-if-not-found])-style.
+   - Previous versions used to search zlib in "usual locations" only if
+     --with-zlib was provided [by user]. Now, the macro performs that search in
+     default mode, too.
+- Removed patches: bugs fixed on upstream release:
+   * autoconf-archive-ax_have_qt_fix_library_order.patch
+   * autoconf-archive-AX_HAVE_QT_use_AS_HELP_STRING.patch
+   * autoconf-archive-boost_lib64.patch
+   * autoconf-archive-no_semicolon.patch
+   
+-------------------------------------------------------------------
+Fri Jan 20 08:15:10 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-3.0+-with-autoconf-exception
+  Use SUSE- proprietary extension until license accepted upstream.
+  autoconf-archive is not pure GPL-3.0+ as exceptions are involved
+
+-------------------------------------------------------------------
+Tue Jan 17 10:37:30 UTC 2012 - aj@suse.de
+
+- Own /usr/share/aclocal
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:30 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sat Sep 17 13:41:04 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Mar 25 14:17:05 CET 2011 - pth@suse.de
+
+- Libraries come last, not first in call to linker. Otherwise
+  linking fails when as-needed is in effect.
+
+-------------------------------------------------------------------
+Wed Mar 23 14:56:40 CET 2011 - pth@suse.de
+
+- Newer autoconfs produce wrong code if code snippets consist
+  only of coments, so fix ax_have_qt.m4 accordingly.
+- Use AS_HELP_STRING in ax_have_qt.m4.
+- Remove spurious semicolon from AC_MSG_RESULT call.
+
+-------------------------------------------------------------------
+Thu Nov 25 11:57:57 CET 2010 - pth@suse.de
+
+- Move the lib64 patch from boost here. This sets lib64 also for
+  ppc64 and s390x.
+
+-------------------------------------------------------------------
+Wed Nov 24 14:58:12 CET 2010 - sbrabec@suse.cz
+
+- Updated to the latest release 2010.10.26.
+
+-------------------------------------------------------------------
+Tue Jun  8 15:04:56 CEST 2010 - pth@suse.de
+
+- Initial openSUSE package.
+
+

@@ -1,0 +1,92 @@
+
+# HG changeset patch
+# User Torsten Lilge <ttl-octave@mailbox.org>
+# Date 1561493414 -7200
+# Node ID dffdabfd02138fd21c0d1e56d639c56b6c9c3fba
+# Parent  b8c0d5ad024f993929bac9a1f212b47ba06d731f
+fix cursor position for editor smart indent after keyword (bug #56533)
+
+* file-editor-tab.cc (notice_settings): initialize new class variable
+  holding the width of the character used for indentation;
+  (handle_cursor_moved): pass new class variable to smart_indent
+
+* file-editor-tab.h: new class variable for indentation character width
+
+* octave-qscintilla.cc (smart_indent): length of indentation character is
+  a new parameter which is used for setting the cursor position at the
+  end of the indentation of a new line
+
+* octave-qscintilla.cc (smart_indent): new parameter
+
+diff --git a/libgui/src/m-editor/file-editor-tab.cc b/libgui/src/m-editor/file-editor-tab.cc
+--- a/libgui/src/m-editor/file-editor-tab.cc
++++ b/libgui/src/m-editor/file-editor-tab.cc
+@@ -2691,6 +2691,10 @@
+     _edit_area->setTabWidth
+       (settings->value ("editor/tab_width",2).toInt ());
+ 
++    m_ind_char_width = 1;
++    if (_edit_area->indentationsUseTabs ())
++      m_ind_char_width = _edit_area->tabWidth ();
++
+     _edit_area->SendScintilla (QsciScintillaBase::SCI_SETHSCROLLBAR,
+                                settings->value ("editor/show_hscroll_bar",true).toBool ());
+     _edit_area->SendScintilla (QsciScintillaBase::SCI_SETSCROLLWIDTH,-1);
+@@ -3040,7 +3044,8 @@
+           {
+             // Obviously, we have a newline here
+             if (_smart_indent || _auto_endif)
+-              _edit_area->smart_indent (_smart_indent, _auto_endif, _line);
++              _edit_area->smart_indent (_smart_indent, _auto_endif,
++                                        _line, m_ind_char_width);
+           }
+       }
+ 
+diff --git a/libgui/src/m-editor/file-editor-tab.h b/libgui/src/m-editor/file-editor-tab.h
+--- a/libgui/src/m-editor/file-editor-tab.h
++++ b/libgui/src/m-editor/file-editor-tab.h
+@@ -304,6 +304,7 @@
+     bool _always_reload_changed_files;
+     bool _smart_indent;
+     int _auto_endif;
++    int m_ind_char_width;
+ 
+     QFileSystemWatcher _file_system_watcher;
+ 
+diff --git a/libgui/src/m-editor/octave-qscintilla.cc b/libgui/src/m-editor/octave-qscintilla.cc
+--- a/libgui/src/m-editor/octave-qscintilla.cc
++++ b/libgui/src/m-editor/octave-qscintilla.cc
+@@ -499,8 +499,8 @@
+   }
+ 
+   // Do smart indendation after if, for, ...
+-  void octave_qscintilla::smart_indent (bool do_smart_indent,
+-                                        int do_auto_close, int line)
++  void octave_qscintilla::smart_indent (bool do_smart_indent, int do_auto_close,
++                                        int line, int ind_char_width)
+   {
+     QString prevline = text (line);
+ 
+@@ -534,7 +534,7 @@
+           {
+             // Do smart indent in the current line (line+1)
+             indent (line+1);
+-            setCursorPosition (line+1, indentation (line) + indentationWidth ());
++            setCursorPosition (line+1, indentation (line+1) / ind_char_width);
+           }
+ 
+         if (do_auto_close
+diff --git a/libgui/src/m-editor/octave-qscintilla.h b/libgui/src/m-editor/octave-qscintilla.h
+--- a/libgui/src/m-editor/octave-qscintilla.h
++++ b/libgui/src/m-editor/octave-qscintilla.h
+@@ -63,7 +63,8 @@
+     QStringList comment_string (bool comment = true);
+     int get_style (int pos = -1);
+     int is_style_comment (int pos = -1);
+-    void smart_indent (bool do_smart_indent, int do_auto_close, int line);
++    void smart_indent (bool do_smart_indent, int do_auto_close,
++                       int line, int ind_char_width);
+ 
+     void smart_indent_line_or_selected_text (int lineFrom, int lineTo);
+ 
+

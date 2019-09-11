@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:07:18 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:53 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 27 12:26:06 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sun Dec 13 18:51:29 UTC 2009 - chris@computersalat.de
+
+- update to 1.20
+     - reform.t ported to Test::More
+     - Better prereqs
+     - Buggy support of locale removed
+- 1.12.0  Sun Sep 30 04:51:21 2007
+  - Added &columns to export list (thanks Bob)
+  - Fixed doc buglets (thanks Mike)
+  - Removed use of 'our' to preserve 5.005 compatibility
+  - Fixed shebang lines in demos 
+  - Added WINDOWS_PATCH to patch around apparent bug in POSIX::strtod
+    under Windows (thanks Torsten)
+  - Added 'except' option to break_at() (thanks Bron)
+  - Changed to dual licensing for Fedora compatibility
+- cleanup spec
+  * added header
+  * sort tags
+  * added cpan_name
+  * updated Url
+  * bz2 source
+  * added provides
+  * moved changelog to .changes
+- removed obsolete patch Text-Reform-1.11-perl_path.diff
+- added perl-macros
+  * perl_gen_filelist
+- rpmlint
+  * added PreReq dos2unix
+    wrong-file-end-of-line-encoding
+
+-------------------------------------------------------------------
+Mon Aug 10 18:05:25 CEST 2009 - coolo@novell.com
+
+- initial package from devel:languages:perl
+
+-------------------------------------------------------------------
+Fri Oct 31 13:26:04 CET 2008 - rbos@opensuse.org
+
+- fixed rpmlint errors
+
+-------------------------------------------------------------------
+Fri Mar 16 14:13:36 UTC 2007 - suse-tux@gmx.de
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Sat Jun 10 15:17:24 UTC 2006 - suse-tux@gmx.de
+
+- initial build 1.11
+

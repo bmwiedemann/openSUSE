@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Wed Jul 24 10:05:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run fdupes
+- Add missing deps and recommends
+
+-------------------------------------------------------------------
+Sun Jul 21 17:08:23 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.34.1:
+  * Remove deprecation warnings (#379, pull request courtesy of
+    Le-Stagiaire)
+  * Drop py34 support
+
+-------------------------------------------------------------------
+Sat Jun 15 15:51:10 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.34.0:
+  * Removed array_agg compilation which was never a good idea and
+    collided with the latest version of SA. (#374)
+  * Removed deprecation warnings (#373, pull request courtesy of
+    pbasista)
+
+-------------------------------------------------------------------
+Sun Jan 20 04:34:11 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.33.11:
+  * Added support for creating and dropping a PostgreSQL database when
+    using pg8000 driver (#303, pull request courtesy of mohaseeb)
+
+-------------------------------------------------------------------
+Sun Jan  6 22:26:08 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.33.10:
+  * Removed optional dependency to Flask-Babel. Now using Babel
+    instead. (#333, pull request courtesy of aveuiller)
+
+-------------------------------------------------------------------
+Sat Dec  8 19:34:43 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.33.9:
+  * Fixed SQLite database_exists to check for correct file format
+    (#306, pull request courtesy of jomasti)
+
+-------------------------------------------------------------------
+Thu Nov 22 21:49:03 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.33.8:
+  * Added support of short-code in PhoneNumberType (#348, pull request
+    courtesy of anandtripathi5)
+
+- changes from version 0.33.7:
+  * Added MSSQL support for create_database and drop_database (#337,
+    pull request courtesy of jomasti)
+
+-------------------------------------------------------------------
+Sun Oct 14 15:24:01 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.33.6:
+  * Fixed passlib compatibility issue (again) (#342)
+  * Added support for SQL VIEWs
+
+-------------------------------------------------------------------
+Sat Sep 22 05:30:08 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.33.5:
+  * Added optional attr parameter for locale calleble in
+    TranslationHybrid
+  * Fixed an issue with PasswordType so that it is compatible with
+    older versions of passlib (#342)
+
+-------------------------------------------------------------------
+Sun Sep 16 15:28:26 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove devel from noarch
+  * be more specific in %files section
+
+- update to version 0.33.4:
+  * Made PasswordType use `hash` function instead of deprecated
+    `encrypt` function (#341, pull request courtesy of libre-man)
+
+-------------------------------------------------------------------
+Sun May  6 05:44:06 UTC 2018 - arun@gmx.de
+
+- update to version 0.33.3:
+  * Added new AesGcmEngine (#322, pull request courtesy of
+    manishahluwalia)
+
+- changes from version 0.33.2:
+  * Added support for universal wheels (#312, pull request courtesy of
+    nsoranzo)
+  * Fixed usage of template0 and template1 with postgres database
+    functions. (#286, pull request courtesy of funkybob)
+
+-------------------------------------------------------------------
+Sat Mar 24 00:02:42 UTC 2018 - arun@gmx.de
+
+- update to version 0.33.1:
+  * Fixed EncryptedType for Oracle padding attack (#316, pull request
+    courtesy of manishahluwalia)
+
+-------------------------------------------------------------------
+Mon Feb 19 17:16:09 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.33.0:
+  * Added support for materialized views in PostgreSQL
+  * Added Ltree.descendant_of and Ltree.ancestor_of (#311, pull
+    request courtesy of kageurufu)
+  * Dropped Python 3.3 support
+  * Fixed EncryptedType padding (#301, pull request courtesy of
+    konstantinoskostis)
+
+-------------------------------------------------------------------
+Mon Nov 13 04:55:56 UTC 2017 - arun@gmx.de
+
+- update to version 0.32.21:
+  * Close connections on exists, create and drop database functions
+    (#295, pull request courtesy of Terseus)
+
+- changes from version 0.32.20 :
+  * Added __hash__ method for choice objects (#294, pull request
+    courtesy of havelock)
+
+-------------------------------------------------------------------
+Tue Oct 17 16:05:33 UTC 2017 - arun@gmx.de
+
+- update to version 0.32.19:
+  * Fixed select_correlated_expression order by for intermediate table
+    aliases
+
+-------------------------------------------------------------------
+Sat Oct  7 14:41:15 UTC 2017 - arun@gmx.de
+
+- update to version 0.32.18:
+  * Made aggregated attributes to work with subclass objects (#287,
+    pull request courtesy of fayazkhan)
+
+-------------------------------------------------------------------
+Sat Sep 30 16:30:16 UTC 2017 - arun@gmx.de
+
+- update to version 0.32.17:
+  * Added support for MSSQL uniqueidentifier type (#283, pull request
+    courtesy of nHurD)
+
+-------------------------------------------------------------------
+Sun Sep 24 21:56:50 UTC 2017 - arun@gmx.de
+
+- update to version 0.32.16:
+  * Added more hints when decrypting AES with an invalid key (#275,
+    pull request courtesy of xrmx)
+
+- changes from version 0.32.15:
+  * Added better handling of date types for EncryptedType (#184, pull
+    request courtesy of konstantinoskostis)
+
+-------------------------------------------------------------------
+Wed Aug 23 05:02:53 UTC 2017 - tbechtold@suse.com
+
+- update to 0.32.14:
+  - Fixed drop_database version comparison
+  - Fixed a DeprecationWarning by using LargeBinary instead of Binary
+  - Added generic_repr decorator
+  - TimeZoneType support for static timezones
+  - Added SQLite support for PasswordType
+  - Added PhoneNumber as the python_type for PhoneNumberType
+  - Made auto_delete_orphans support backref tuples
+  - Added support for multi-column observers
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Nov 14 13:59:20 UTC 2016 - dmueller@suse.com
+
+- udpate to 0.32.9:
+  - Added support for multi-column observers (#231, pull request courtesy of quantus)
+  - Fixed EmailType to respect constructor args (#230, pull request courtesy of quantus)
+
+-------------------------------------------------------------------
+Fri Jun  3 16:18:25 UTC 2016 - tbechtold@suse.com
+
+- update to 0.32.7:
+  - Made PhoneNumber exceptions inherit SQLAlchemy's DontWrapMixin
+  - Added support for timezones with ArrowType
+  - Fixed import issue with latest version of SQLAlchemy
+  - Added LtreeType for PostgreSQL ltree extension
+  - Added Ltree primitive data type
+  - Added support for PhoneNumber objects as composites
+  - Fixed PasswordType to not access LazyCryptContext on type init
+  - Fixed database helpers for sqlite
+  - Fixed TranslationHybrid aliased entities handling
+  - Dropped py26 support
+  - Made PasswordType to use LazyCryptContext by default
+  - Added literal parameter processing for ArrowType
+  - Fixed scalar parsing of LocaleType
+  - Fixed column alias handling with assert_* functions
+  - Fixed non-ascii string handling in composite types
+  - Fixed observes crashing when observable root_obj is ``None``
+  - Column observers only notified when actual changes have been made
+    to underlying columns
+  - Made has_index allow fk constraint as parameter
+  - Made has_unique_index allow fk constraint as parameter
+  - Made the extra packages in setup.py to be returned in deterministic order
+  - Removed is_indexed_foreign_key (superceded by more versatile has_index)
+  - Fixed LocaleType territory parsing (courtesy of dahlia)
+  - Added correlate parameter to select_correlated_expression function
+  - Fixed sort_query handling of aliased classes with hybrid properties
+  - Added support for aliased classes in get_hybrid_properties utility function
+  - Added cast_if utility function
+  - Added support for InstrumentedAttributes, ColumnProperties and Columns in
+    get_columns function
+  - Added support for PhoneNumber extensions
+  - Fix None type handling of ChoiceType
+  - Make locale casting for translation hybrid expressions cast locales on
+    compilation phase. This extra lazy locale casting is needed in some
+    cases where translation hybrid expressions are used before get_locale
+  - Added better support for dynamic locales in translation_hybrid
+  - Make babel dependent primitive types to use Locale('en') for data validation
+    instead of current locale. Using current locale leads to infinite recursion
+    in cases where the loaded data has dependency to the loaded object's locale.
+  - Added get_type utility function
+  - Added default parameter for array_agg function
+  - Added Asterisk compiler
+  - Added row_to_json GenericFunction
+  - Added array_agg GenericFunction
+  - Made quote function accept dialect object as the first paremeter
+  - Made has_index work with tables without primary keys
+  - Fixed CompositeType null handling
+  - Made psycopg2 requirement optional
+  - Made CompositeArray work with tuples given as bind parameters
+  - Fixed CompositeType bind parameter processing when one of the fields is of
+    TypeDecorator type and
+  - Fixed CompositeType bind parameter processing when one of the fields is
+    of TypeDecorator type.
+  - Added length property to range types
+  - Added CompositeType for PostgreSQL
+  - Fixed ``assert_max_length``, ``assert_non_nullable``, ``assert_min_value``
+    and ``assert_max_value`` not properly raising an ``AssertionError`` when
+    the assertion failed.
+  - Drop undocumented batch fetch feature. Let's wait until the inner workings
+    of SQLAlchemy loading API is well-documented.
+  - Fixed GenericRelationshipProperty comparator to work with SA 1.0.x
+  - Make all foreign key helpers SA 1.0 compliant
+  - Make translation_hybrid expression work the same way as SQLAlchemy-i18n
+    translation expressions
+  - Update SQLAlchemy dependency to 1.0
+  - Added __hash__ method to Country class
+  - Made Country validate itself during object initialization
+  - Made Country string coercible
+  - Removed deprecated function generates
+  - Fixed observes function to work with simple column properties
+  - Added CurrencyType
+
+-------------------------------------------------------------------
+Wed Feb 10 13:50:49 UTC 2016 - tbechtold@suse.com
+
+- Install LICENSE and README.rst
+
+-------------------------------------------------------------------
+Fri Mar 27 15:28:20 UTC 2015 - prusnak@opensuse.org
+
+- created package (version 0.29.8)
+

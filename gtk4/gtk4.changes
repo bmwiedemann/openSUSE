@@ -1,0 +1,443 @@
+-------------------------------------------------------------------
+Fri Sep 28 14:17:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update options passed to meson, bring back lost support for
+  broadway and cloudprint following upstreams changes.
+
+-------------------------------------------------------------------
+Tue Sep 18 00:10:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Add gtk4-fix-dependency-error.patch upstream patch to fix build
+  error with few threads raised by missing dependency on
+  broadwayjs.h (glgo#GNOME/gtk#1218).
+- Update spec:
+  + Drop gtk4 subpackages and respective Recommends/Requires/\
+    Provides tags to follow upstream changes while placing
+    Obsolets tags for them: immodule-amharic, immodule-broadway,
+    immodule-inuktitut, immodule-multipress, immodule-thai,
+    immodule-tigrigna, immodule-vietnamese, immodule-xim and data.
+  + Drop gtk4-tools Requires(post): this no longer needed.
+  + Drop lang subpackage Recommends: the main package is already
+    being supplemented by the lang subpackage due to RPM automatic
+    setting.
+  + Drop gtk4-data Provides: there's no such subpackage anymore.
+  + Drop glib2_gsettings_schema_requires macro: this is no longer
+    needed since RPM file triggers (version > 4.13).
+
+-------------------------------------------------------------------
+Thu Aug  9 11:33:37 UTC 2018 - tchvatal@suse.com
+
+- Fix package name to be uniform immodules -> immodule
+  (bsc#1104264).
+
+-------------------------------------------------------------------
+Tue Jul 24 11:49:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.94.0:
+  + GdkPaintable is a new, powerful abstraction for drawable
+    content.
+  + gtk4-demo has a new "Paint" demo to show some of its
+    capabilities.
+  + There is support for displaying media, with GtkVideo,
+    GtkMediaFile, GtkMediaStream and GtkMediaControls.
+  + GtkFontChooser now supports OpenType font variations and
+    features.
+  + The Ctrl-Shift-E support in the simple IM context has been
+    replaced by an optional completion popup for Emoji alpha codes.
+    This can be enabled with the GtkEntry::enable-emoji-completion
+    property.
+  + Wayland has an input method based on the text protocol now.
+  + Input methods, print backends and media backends have been
+    converted to GIOModules and extension points, and support for
+    generic loadable modules has been dropped. Platform im modules
+    are always included.
+  + GdkWindow has been renamed to GdkSurface.
+  + Applications can now create their own GtkSnapshot objects for
+    intermediate rendering.
+  + Widget event signals have been replaced by event controllers,
+    and some new event controllers have been introduced for this:
+    GtkEventControllerMotion, GtkEventControllerKey and
+    GtkGestureStylus.
+  + Event controllers can now be created in .ui files.
+  + Invalidation tracking has been changed, only
+    gtk_widget_queue_draw is left.
+  + Observing widget contents and size is now done by using the
+    GtkWidgetPaintable object instead of connecting to widget
+    signals.
+  + The GtkWidget::draw signal has been removed, widgets need to
+    implement GtkWidget::snapshot.
+  + GdkTexture now has GdkMemoryTexture and GdkGLTexture
+    subclasses.
+  + The Vulkan support in GDK can now use a particular device that
+    is specified by the GDK_VULKAN_DEVICE environment variable. Use
+    GDK_VULKAN_DEVICE=list to see them all.
+  + GTK+ Inspector:
+    - has logging support, and the logging settings have been
+      cleaned up.
+    - has an fps overlay.
+  + Removed APIs and features: Individual event signals such as
+    ::proximity-in-event The ::draw signal threading support
+    non-platform IM modules papi and test print backends
+    GtkPlacesSidebar GtkRecentChooser GtkToolPalette
+    GdkStatus gtk_true, gtk_false gtk_widget_show_now
+    gtk_widget_draw gtk_render_icon_surface.
+  + Incomplete transitions:
+    - The ::event signal is not still there, but it will be
+      removed.
+    - The DND apis are not finalized yet.
+  + Updated translations.
+- Drop gtkmm.patch: Fixed upstream.
+- Add pkgconfig(gstreamer-player-1.0) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:10:11 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:28 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 28 10:18:07 UTC 2018 - dimstar@opensuse.org
+
+- Add gtkmm.patch: Allow binding GdkContentFormatsBuilder.
+
+-------------------------------------------------------------------
+Fri Dec 29 00:02:59 UTC 2017 - jengelh@inai.de
+
+- Sync summaries within package.
+
+-------------------------------------------------------------------
+Wed Dec 27 22:35:20 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.93.0:
+  + GdkScreen has been removed. All screen-related APIs have
+    equivalents in GdkDisplay.
+  + GdkVisual has been removed.
+  + GdkDeviceManager has been replaced by GdkSeat.
+  + Clipboard handling has been moved from GTK to GDK, and has been
+    modernized to provide an extensible, asynchronous, stream-based
+    API.
+  + The GdkCursor API has been modernized.
+  + Settings and window-state changes have been converted from
+    events to signals on GdkDisplay and GdkWindow, respectively.
+  + GdkEvent has been converted to an opaque GObject.
+  + The GL renderer in GSK has been substantially completed, and is
+    now on par with the Vulkan renderer.
+  + The use of GdkPixbuf in APIs has been reduced, and the
+    GskTexture object has been moved to GDK as GdkTexture, to take
+    its place.
+  + The handling of icon sizes has been changed.
+  + Bugs fixed: bgo#668590, bgo#773299, bgo#775279, bgo#777072,
+    bgo#779009, bgo#779862, bgo#783995, bgo#784314, bgo#785176,
+    bgo#785210, bgo#786123, bgo#787089, bgo#787128, bgo#787142,
+    bgo#787665, bgo#788841, bgo#788898, bgo#789054, bgo#789134,
+    bgo#789149, bgo#789160, bgo#789163, bgo#789198, bgo#789213,
+    bgo#789327, bgo#789357, bgo#789678, bgo#789733, bgo#789777,
+    bgo#789870, bgo#790029, bgo#790031, bgo#790171, bgo#790201,
+    bgo#790287, bgo#790489, bgo#790920, bgo#790963, bgo#791062,
+    bgo#791176, bgo#791281, bgo#791363, bgo#791549, bgo#791650,
+    bgo#791926, bgo#791927.
+  + Updated translations.
+- Drop gtk4-return-nonvoid.patch: fixed upstream.
+- Add cairo-gobject, gobject-2.0, pangocairo, xrender and
+  graphene-gobject-1.0 pkgconfig modules BuildRequires complying
+  with meson checks. Note that all of these modules were being
+  pulled and used already since the spec file had some depedencies
+  on other modules that come from the same devel package as these
+  ones.
+
+-------------------------------------------------------------------
+Thu Oct 19 10:10:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.92.1:
+  + Drop autotools support. Meson 0.42.1 is now required.
+  + Implement most of CSS3 font-variant.
+  + Add an Emoji chooser to GtkEntry.
+  + Add new input hints for Emoji input.
+  + Remaining widgets have been ported to GtkSnapshot.
+  + GtkLabel and GtkEntry have been ported to use GSK.
+  + Add a way for GtkOverlay to blur behind children. This has a
+    demo in gtk4-demo.
+  + Add support for libcloudproviders in GtkPlacesSidebar.
+  + Non-windowed widgets are now allowed to have a size of 0x0.
+  + Allow tiled windows to be resized. Under wayland, this uses
+    version 2 of the gtk-shell protocol. Under X, it uses the
+    _GTK_EDGE_CONSTRAINTS property.
+  + Input handling changes:
+    - GdkEvent has new accessors for fields;
+    - Traditional event signals (eg ::key-press-event) are now
+      emitted from an event controller;
+    - Most widgets inside gtk have stopped using traditional event
+      signals;
+    - GDK_SEAT_CAPABILITY_ALL_POINTING now includes touch events.
+  + Scrollbars allow middle-click to jump to a position again.
+  + Bugs fixed: bgo#639931, bgo#644248, bgo#701296, bgo#705640,
+    bgo#728452, bgo#763517, bgo#766909, bgo#773299, bgo#775074,
+    bgo#775126, bgo#778382, bgo#778811, bgo#780750, bgo#780758,
+    bgo#781757, bgo#782981, bgo#783649, bgo#783669, bgo#784016,
+    bgo#784421, bgo#785210, bgo#785306, bgo#785736, bgo#786144,
+    bgo#786209, bgo#786400, bgo#786469, bgo#786485, bgo#786492,
+    bgo#786553, bgo#786613, bgo#786673, bgo#786794, bgo#786885,
+    bgo#786931, bgo#786932, bgo#786938, bgo#786940, bgo#786956,
+    bgo#786960, bgo#786964, bgo#786966, bgo#787021, bgo#787103,
+    bgo#787172, bgo#787279, bgo#787302, bgo#787303, bgo#787410,
+    bgo#787416, bgo#787444, bgo#787531, bgo#787600, bgo#787669,
+    bgo#787757, bgo#787866, bgo#788230, bgo#788458, bgo#788534,
+    bgo#788573, bgo#788614, bgo#788787, bgo#788905.
+  + Updated translations.
+- Add meson BuildRequires and replace configure/make/make_install
+  calls with meson/meson_build and meson_install: follow upstreams
+  port to meson as build system.
+- Add gcc-c++ BuildRequires: small parts of GTK+ now are written in
+  C++.
+- Add gtk-doc BuildRequires: in order to build man-pages,
+  documentation needs to be enabled, which in turn requires
+  gtk-doc. In the past, we provided upstream shipped documentation.
+- Add gtk4-return-nonvoid.patch: Fix 'reaches end of non-void
+  function without return value', taken from git.
+- Add rpmlintrc: multiple GTK4 libraries are not goint to be
+  supported in parallel and the name will stabilize.
+
+-------------------------------------------------------------------
+Thu Sep 14 14:28:41 UTC 2017 - fezhang@suse.com
+
+- Drop the SLE12 / Leap42 build_wayland_backend conditional, build
+  with wayland unconditionally.
+
+-------------------------------------------------------------------
+Wed Aug  9 08:47:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.91.2:
+  + All widgets are drawing CSS backgrounds and borders.
+  + All gadgets have been replaced by widgets.
+  + GtkSpinButton no longer derives from GtkEntry.
+  + GtkScrollbar no longer derives from GtkRange.
+  + GtkAccelLabel no longer derives from GtkLabel.
+  + All remaining style properties have been removed.
+  + A new 'widget bowl' demo has been added in gtk4-demo.
+  + GtkEventBox has been removed. It is no longer needed.
+  + Add support for entering emoji by name using Ctrl-Shift-e.
+  + Wayland:
+    - Support Wacom tablet wheel scrolling.
+    - Support the shortcut inhibitor protocol.
+  + Bugs fixed: bgo#776903, bgo#776909, bgo#777333, bgo#777515,
+    bgo#778188, bgo#780938, bgo#781246, bgo#783343, bgo#783906,
+    bgo#784016, bgo#784624, bgo#785280, bgo#785318, bgo#785375,
+    bgo#785423, bgo#785672, bgo#785793.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 19 21:03:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.91.1:
+  + Redo event delivery and focus handling and grabs, and stop
+    using subwindows for widgets. API changes due to this include:
+    - A new GtkWidget::pick vfunc.
+    - Drop event mask apis.
+    - Drop windows from gestures.
+  + The prelight state is now automatically set on widgets.
+  + New widget: GtkCenterBox. This widget provides the center child
+    functionality that used to be part of GtkBox.
+  + Wayland:
+    - Improve the key repeat implementation.
+    - Set vid/pid on tablet devices.
+  + OS X: Add native file chooser support.
+  + Bugs fixed: bgo#745289, bgo#759308, bgo#766517, bgo#770513,
+    bgo#772281, bgo#773299, bgo#775636, bgo#781285, bgo#781583,
+    bgo#781935, bgo#781945, bgo#782040, bgo#782283, bgo#783047,
+    bgo#783347, bgo#783397, bgo#783445, bgo#783587, bgo#784323,
+    bgo#784723, bgo#784888.
+  + Updated translations.
+- Drop post(un) handling for gtk4-devel and gtk4-schema as we have
+  file-triggers to take care of this for us now.
+
+-------------------------------------------------------------------
+Tue May 23 08:07:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.91.0:
+  + Initial support for OS X has been merged.
+  + Initial support for building with meson has been added.
+  + New API: gtk_widget_insert_before/after.
+  + Removed API:
+    - GtkBox has lost its expand and fill child properties, use the
+      general align property for it.
+    - GtkLabel has lost its angle property, it will be replaced by
+      general widget transformation support in the future.
+    - GtkWindow has lost its hide-titlebar-when-maximized property.
+    - GtkBox has lost its center child support.
+    - The compat keysym definitions have been removed.
+  + Bugs fixed: bgo#769881, bgo#771269, bgo#778301, bgo#778853,
+    bgo#779078, bgo#779184, bgo#780041, bgo#780301, bgo#780734,
+    bgo#780878, bgo#780944, bgo#781162, bgo#781195, bgo#781214,
+    bgo#781422, bgo#781622, bgo#781737, bgo#781767, bgo#781992,
+    bgo#782109, bgo#782202.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  1 19:04:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.90.0:
+  + Allow a custom renderer for the inspector, by setting
+    GTK_INSPECTOR_RENDERER.
+  + Move more container functionality, such as focus handling, to
+    GtkWidget.
+  + Bugs fixed: bgo#686838, bgo#778853, bgo#779081, bgo#780019,
+    bgo#780234, bgo#734946, bgo#773228, bgo#774148, bgo#780735.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 08:36:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.5:
+  + Convert many more widgets to use gtk_widget_measure for size
+    allocation.
+  + gtk3-demo: Add an example for touchpad swipe handling.
+  + Theme: Improve styling for flow boxes.
+  + Quartz:
+    - Support fullscreen CSD windows.
+    - Implement backdrop.
+    - Implement gdk_window_set_functions.
+  + Bugs fixed: bgo#136059, bgo#734946, bgo#772505, bgo#776821,
+    bgo#778019, bgo#778203, bgo#778534, bgo#778678, bgo#778726,
+    bgo#778746, bgo#779073, bgo#779074, bgo#779147, bgo#779317,
+    bgo#779374, bgo#779383, bgo#779392.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:31 UTC 2017 - dimstar@opensuse.org
+
+- Fix baselibs.conf: do not build gtk4-tools-32bit.
+
+-------------------------------------------------------------------
+Mon Feb 13 22:42:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.4:
+  + API changes:
+    - gtk_init and other init functions no longer take commandline
+      arguments.
+    - Functions that are only useful with commandline arguments
+      have been dropped.
+    - Widgets, except for toplevels, are now visible by default.
+    - Style properties are no longer supported.
+  + Vulkan rendrerer: Implement more clipping.
+  + CSS: Specifying px for pixels is now required.
+  + Bugs fixed: bgo#358970, bgo#770112, bgo#773299, bgo#773686,
+    bgo#775864, bgo#776225, bgo#777363, bgo#777547, bgo#778009.
+  + Updated translations.
+- Changes from version 3.89.3:
+  + GtkWidget now has API to navigate child widgets:
+    - gtk_widget_get_{first,last}_child and
+      gtk_widget_get_{prev,next}_sibling.
+    - A number of non-container widgets have been converted to use
+      child widgets internally: GtkSwitch, GtkSpinButton,
+      GtkActionBar.
+  + GtkAboutDialog can show a 'System' tab.
+  + GTK+ CSS now supports the filter: property and a
+    -gtk-icon-filter function that replaces and generalizes
+    -gtk-icon-effect.
+  + GtkInspector can now save render nodes for testing and
+    debugging.
+  + More tests for render nodes have been added.
+  + GtkTreeView and cell renderers have been more completely
+    converted to the snapshot() api.
+  + More widgets have been converted to snapshot(): GtkCalendar,
+    GtkColorPlane.
+  + Vulkan renderer:
+    - Combine draw calls when possible.
+    - Handle (some) clipping on the GPU.
+    - Handle linear gradients.
+    - Handle opacity.
+    - Support color transformations.
+    - Handle borders.
+  + Wayland: Support the Vulkan renderer.
+  + X11: Call XInitThreads(), since this is needed with Mesa Vulkan
+    drivers.
+  + Mir:
+    - Implement window properties.
+    - Track the focus window.
+    - Connect to content-hub and use it for copy/paste.
+    - Support modal windows.
+  + Bugs fixed: bgo#775732, bgo#775846, bgo#776524, bgo#776560,
+    bgo#776604, bgo#776627, bgo#776807, bgo#776868, bgo#777176.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 11 00:36:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.2:
+  + gtk4-icon-browser works again.
+  + gtk-encode symbolic works for icons with names containing dots.
+  + GtkFlowBox and GtkListBox have been changed to no longer emit
+    the ::selected-children-changed signal during destruction.
+  + gtk-demo has gained an example for using PangoTabArray with
+    GtkTextView.
+  + We now support CSS border-spacing in GtkGrid, GtkBox and in
+    gadgets.
+  + The rendering in GDK and GSK has been further refactored. We
+    now only draw toplevel windows, and we always redraw the whole
+    window.
+  + A Vulkan implementation has been added in parallel to the GL
+    one.
+  + Dropped APIs:
+    - gdk_window_process_updates.
+    - gdk_window_process_all_updates.
+    - gdk_window_reparent.
+    - Support for native and foreign subwindows.
+    - gsk_render_node_{append/prepend/insert} variations.
+    - gsk_render_node_make_immutable.
+    - gtk_cairo_should_draw_window.
+    - gtk_snapshot_append.
+    - GtkJunctionSides.
+  + New APIs:
+    - gdk_rgba_is_clear.
+    - gdk_rgba_is_opaque.
+    - GdkDrawContext: A base class for vulkan and gl contexts.
+    - Render node subclasses.
+    - GskRoundedRect.
+    - gtk_container_snapshot_child.
+  + The GSK_USE_SOFTWARE environment variable has been generalized
+    as GSK_RENDERER. Use GSK_RENDERER=help to learn about possible
+    values. Other environment variables that have gained new
+    possible values in clude GSK_DEBUG=vulkan and
+    GTK_DEBUG=snapshot.
+  + Bugs fixed: bgo#749012, bgo#771242, bgo#772371, bgo#773299,
+    bgo#774265, bgo#774534, bgo#774686, bgo#774695, bgo#774743,
+    bgo#774760, bgo#774784, bgo#774790, bgo#774893, bgo#774915,
+    bgo#774917, bgo#774939, bgo#775038, bgo#775212, bgo#775316,
+    bgo#775319, bgo#775410, bgo#775525, bgo#775651, bgo#776132,
+    bgo#776187, bgo#776306.
+  + Updated translations.
+- Drop gtk4-find-wayland.patch: Fixed upstream. Following this,
+  drop gnome-common BuildRequires and autoreconf call as we no
+  longer carry any patches.
+- Add vulkan-devel BuildRequires and Requires, also pass
+  --enable-vulkan to configure to ensure we build the vulkan
+  support.
+
+-------------------------------------------------------------------
+Fri Dec  9 16:29:19 UTC 2016 - dimstar@opensuse.org
+
+- Split out glib schemas into gtk4-schema: gtk3 and gtk4 share the
+  same schema (in order to sync their config changes). With this
+  split we can have gtk4-schema provide/obsolete gtk3-schema and
+  get around the two conflicting on file level.
+- Move relevant %gsettings macros from -data to -schema package.
+- Require gtk4-schema by libgtk-4-0.
+- Provide/Obsolete gtk3-schema by gtk4-schema.
+- Split out gettext-its-gtk4.
+
+-------------------------------------------------------------------
+Fri Dec  9 12:38:11 UTC 2016 - jengelh@inai.de
+
+- Update summaries and groups
+
+-------------------------------------------------------------------
+Mon Dec  5 13:13:47 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, gtk4, version 3.89.1.

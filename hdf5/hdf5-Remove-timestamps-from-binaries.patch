@@ -1,0 +1,38 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Nov 17 18:15:13 2018 +0100
+Subject: hdf5: Remove timestamps from binaries
+Patch-mainline: never
+Git-commit: 3b88045491c0b43f385edce47e3aae07660cd9f3
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5detect.c | 15 ---------------
+ 1 file changed, 15 deletions(-)
+diff --git a/src/H5detect.c b/src/H5detect.c
+index 4424009..f49774c 100644
+--- a/src/H5detect.c
++++ b/src/H5detect.c
+@@ -1245,21 +1245,6 @@ bit.\n";
+     fprintf(rawoutstream, "/* Generated automatically by H5detect -- do not edit */\n\n\n");
+     HDfputs(FileHeader, rawoutstream);        /*the copyright notice--see top of this file */
+ 
+-    fprintf(rawoutstream, " *\n * Created:\t\t%s %2d, %4d\n",
+-    month_name[tm->tm_mon], tm->tm_mday, 1900 + tm->tm_year);
+-    if(pwd || real_name[0] || host_name[0]) {
+-        fprintf(rawoutstream, " *\t\t\t");
+-        if(real_name[0])
+-            fprintf(rawoutstream, "%s <", real_name);
+-#ifdef H5_HAVE_GETPWUID
+-        if(pwd) HDfputs(pwd->pw_name, rawoutstream);
+-#endif
+-        if(host_name[0])
+-            fprintf(rawoutstream, "@%s", host_name);
+-        if(real_name[0])
+-            fprintf(rawoutstream, ">");
+-        HDfputc('\n', rawoutstream);
+-    }
+     fprintf(rawoutstream, " *\n * Purpose:\t\t");
+     for(s = purpose; *s; s++) {
+         HDfputc(*s, rawoutstream);

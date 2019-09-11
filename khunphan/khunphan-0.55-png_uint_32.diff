@@ -1,0 +1,19 @@
+--- khunphan/btexture.cpp
++++ khunphan/btexture.cpp
+@@ -162,10 +162,15 @@
+   // read png file info
+   png_read_info(png_ptr, info_ptr);
+ 
+-  png_get_IHDR(png_ptr, info_ptr, (png_uint_32 *)&width, (png_uint_32 *)&height,
++  png_uint_32 png_width, png_height;
++
++  png_get_IHDR(png_ptr, info_ptr, &png_width, &png_height,
+        &bit_depth, &color_type, &interlace_type,
+        &compression_type, &filter_type);
+ 
++  width = png_width;
++  height = png_height;
++
+   channels = png_get_channels(png_ptr, info_ptr);
+   rowbytes = png_get_rowbytes(png_ptr, info_ptr);
+ 

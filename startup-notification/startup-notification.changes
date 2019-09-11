@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:39:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 29 13:09:57 UTC 2017 - dimstar@opensuse.org
+
+- Replace xorg-x11-devel BuildRequires with pkgconfig(xcb),
+  pkgconfig(xcb-aux), pkgconfig(xcb-event) and pkgconfig(x11-xcb).
+
+-------------------------------------------------------------------
+Fri Apr  5 11:14:02 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:35:31 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Wed May 18 03:17:24 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.12:
+  + Revert a change that break ABI.
+
+-------------------------------------------------------------------
+Fri May  6 10:30:24 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.11:
+  + Remove Xlib support, use only xcb and x11-xcb
+  + Support APPLICATION_ID key
+- Drop startup-notification-application-id.patch and
+  startup-notification-sn-launcher-screen.patch: fixed upstream.
+- Fix License tags: the librarys is LGPLv2+, not GPLv2+.
+- Change startup-notification Obsoletes from <= to < now that we
+  have a new upstream version.
+
+-------------------------------------------------------------------
+Mon Oct 11 18:16:25 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libstartup-notification-1-0 subpackages.
+  + Add Provides/Obsoletes for startup-notification to
+    libstartup-notification-1-0
+  + Update baselibs.conf accordingly.
+
+-------------------------------------------------------------------
+Thu Sep  9 23:56:27 CEST 2010 - vuntz@opensuse.org
+
+- Add startup-notification-application-id.patch from git: this adds
+  support for APPLICATION_ID, which can be used by gnome-shell.
+- Add startup-notification-sn-launcher-screen.patch from git: fix
+  sn-launcher to use screen number.
+
+-------------------------------------------------------------------
+Thu Dec 17 21:16:46 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Apr 14 15:16:13 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10:
+  + Remove useless functions
+  + Add XCB backend
+- Remove autoreconf call.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Pass --disable-static to configure and remove .la files.
+- Remove gnome-common BuildRequires.
+- Do not package empty README.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Oct 29 15:56:32 CET 2007 - sbrabec@suse.cz
+
+- Reordered spec file sections to make OBS rewriting of Requires
+  working properly.
+- Spec file cleanup.
+- Fixed devel Requires.
+
+-------------------------------------------------------------------
+Thu Aug  2 18:15:32 CEST 2007 - maw@suse.de
+
+- Update to version 0.9:
+  + plug some memory leaks
+  + fix compilation on sun boxen
+- Add some Requires to the -devel subpackage
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep 27 12:04:49 CEST 2005 - mls@suse.de
+
+- move so symlink to devel package
+- make devel package require base package
+
+-------------------------------------------------------------------
+Thu Jan 20 15:56:59 CET 2005 - gekker@suse.de
+
+- Update to version 0.8 
+
+-------------------------------------------------------------------
+Thu Dec 16 18:35:58 CET 2004 - gekker@suse.de
+
+- Update to version 0.7 
+
+-------------------------------------------------------------------
+Fri Nov 19 14:20:56 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Thu Apr 29 01:43:35 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sun Jan 11 10:34:09 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 14 15:42:20 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Wed Jan 29 10:19:22 CET 2003 - hhetter@suse.de
+
+- updated to version 0.5 
+
+-------------------------------------------------------------------
+Thu Jan 23 15:14:25 CET 2003 - meissner@suse.de
+
+- lib64 fix.
+
+-------------------------------------------------------------------
+Thu Jan 16 11:47:52 CET 2003 - hhetter@suse.de
+
+- initial SuSE package 
+

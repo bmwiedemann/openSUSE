@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Thu Aug  8 12:49:50 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.17.1
+ * Improved construction of file paths in SFTP to better handle native Windows
+     source paths containing backslashes or drive letters.
+ * Improved SFTP parallel I/O for large reads and file copies to better handle
+     the case where a read returns less data than what was requested when not
+     at the end of the file, allowing AsyncSSH to get back the right result even
+     if the requested block size is larger than the SFTP server can handle.
+ * Fixed an issue where the requested SFTP block_size wasn’t used in the get,
+     copy, mget, and mcopy functions if it was larger than the default size of 16 KB.
+ * Fixed a problem where the list of client keys provided in
+     an SSHClientConnectionOptions object wasn’t always preserved properly across
+     the opening of multiple SSH connections.
+ * Made AsyncSSH tolerant of unexpected authentication success/failure messages
+     sent after authentication completes. AsyncSSH previously treated this as
+     a protocol error and dropped the connection, while most other SSH implementations
+     ignored these messages and allowed the connection to continue.
+ * Made AsyncSSH tolerant of SFTP status responses which are missing error message
+     and language tag fields, improving interoperability with servers that omit
+     these fields. When missing, AsyncSSH treats these fields as if they were
+     set to empty strings.
+
+-------------------------------------------------------------------
+Tue Jun  4 13:07:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.17.0
+- drop old_openssl.patch
+ * Added support for “reverse direction” SSH connections, useful to support
+   applications like NETCONF Call Home, described in RFC 8071.
+ * Added support for the PyCA implementation of Chacha20-Poly1305, eliminating
+   the dependency on libnacl/libsodium to provide this functionality,
+   as long as OpenSSL 1.1.1b or later is installed.
+ * Restored libnacl support for Curve25519/Ed25519 on systems which have
+   an older version of OpenSSL that doesn’t have that support.
+   This fallback also applies to Chacha20-Poly1305.
+ * Disabled the use of RSA SHA-2 signatures when using the Pageant or Windows 10
+   OpenSSH agent on Windows, since neither of those support the signature
+   flags options to request them.
+ * Fixed a regression where a callable was no longer usable in the
+   sftp_factory argument of create_server.
+
+-------------------------------------------------------------------
+Tue Apr 23 08:29:31 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add old_openssl.patch - return support for ed25519/448 via libnacl
+  on systems with older openSSL
+
+-------------------------------------------------------------------
+Mon Apr  1 13:23:08 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.16.1
+- drop 194.patch
+* Added channel, connection, and env properties to SFTPServer instances,
+  so connection and channel information can be used to influence the
+  SFTP server's behavior. Previously, connection information was made
+  avaiable through the constructor, but channel and environment
+  information was not. Now, all of these are available as properties
+  on the SFTPServer instance without the need to explicitly store anything
+  in a custom constructor.
+* Optimized SFTP glob matching when the glob pattern contains directory
+  names without glob characters in them. Thanks go to Mikhail Terekhov
+  for contributing this improvement!
+* Added support for PurePath in a few places that were missed when this
+  support was originally added. Once again, thanks go to Mikhail Terehkov
+  for these fixes.
+* Fixed bug in SFTP parallel I/O file reader where it sometimes returned
+  EOF prematurely. Thanks go to David G for reporting this problem and
+  providing a reproducible test case.
+* Fixed test failures seen on Fedora Rawhide. Thanks go to Georg Sauthof
+  for reporting this issue and providing a test environment to help debug
+  it.
+* Updated Ed25519/448 and Curve25519/448 tests to only run when these
+  algorithms are available.
+
+-------------------------------------------------------------------
+Wed Mar  6 14:55:29 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- remove python-nacl from builddeps
+- add 194.patch to fix testsuite
+
+-------------------------------------------------------------------
+Wed Mar  6 12:36:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.16.0:
+  * Added support for Ed448 host/client keys and certificates and rewrote Ed25519 support to use the PyCA implementation, reducing the dependency on libnacl and libsodium to only be needed to support the chacha20-poly1305 cipher.
+  * Added support for PKCS#8 format Ed25519 and Ed448 private and public keys (in addition to the OpenSSH format previously supported).
+  * Added support for multiple delimiters in SSHReader’s readuntil() function, causing it to return data as soon as any of the specified delimiters are matched.
+  * Added the ability to register custom key handlers in the line editor which can modify the input line, extending the built-in editing functionality.
+  * Added SSHSubprocessProtocol and SSHSubprocessTransport classes to provide compatibility with asyncio.SubprocessProtocol and asyncio.SubprocessTransport. Code which is designed to call BaseEventLoop.subprocess_shell() or BaseEventLoop.subprocess_exec() can be easily adapted to work against a remote process by calling SSHClientConnection.create_subprocess().
+  * Added support for sending keepalive messages when the SSH connection is idle, with an option to automatically disconnect the connection if the remote system doesn’t respond to these keepalives.
+  * Changed AsyncSSH to ignore errors when loading unsupported key types from the default file locations.
+  * Changed the reuse_port option to only be available on Python releases which support it (3.4.4 and later).
+  * Fixed an issue where MSG_IGNORE packets could sometimes be sent between MSG_NEWKEYS and MSG_EXT_INFO, which caused some SSH implementations to fail to properly parse the MSG_EXT_INFO.
+  * Fixed a couple of errors in the handling of disconnects occurring prior to authentication completing.
+  * Renamed “session_encoding” and “session_errors” arguments in asyncssh.create_server() to “encoding” and “errors”, to match the names used for these arguments in other AsyncSSH APIs. The old names are still supported for now, but they are marked as deprecated and will be removed in a future release.
+
+-------------------------------------------------------------------
+Tue Feb  5 14:34:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary
+
+-------------------------------------------------------------------
+Thu Jan 31 13:08:53 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.15.1
+ * Added callback-based host validation in SSHClient, allowing callers to decide
+    programmatically whether to trust server host keys and certificates rather
+    than having to provide a list of trusted values in advance.
+ * Changed SSH client code to only load the default known hosts file if if exists.
+    Previously an error was returned if a known_hosts value wasn't specified
+    and the default known_hosts file didn't exist. For host validate to work in
+    this case, verification callbacks must be implemented or other forms
+    of validation such as X.509 trusted CAs or GSS-based key exchange must be used.
+ * Fixed known hosts validation to completely disable certificate checks when
+    known_hosts is set to None.
+ * Switched curve25519 key exchange to use the PyCA implementation
+ * Added get_fingerprint() method to return a fingerprint of an SSHKey.
+ * Added the ability to pass keyword arguments provided in the scp() command
+    through to asyncssh.connect() calls it makes, allowing things like custom
+    credentials to be specified.
+ * Added support for a reuse_port argument in create_server().
+ * Added support for "soft" EOF when line editing in enabled
+ * Added support for the Windows 10 OpenSSH ssh-agent.
+ * Reworked scoped link-local IPv6 address normalization to work better on Linux systems.
+ * Fixed a problem preserving directory structure in recursive scp().
+ * Fixed SFTP chmod tests to avoid attempting to set the sticky bit on a plain file
+ * Updated note in SSHClientChannel's send_signal() documentation to reflect
+    that OpenSSH 7.9 and later should now support processing of signal messages.
+
+-------------------------------------------------------------------
+Wed Oct 24 22:56:19 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit version 1.14.0

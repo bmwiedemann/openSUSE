@@ -1,0 +1,478 @@
+-------------------------------------------------------------------
+Sun Jul 28 04:42:55 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.2
+  * Fix Shutdown immediately not working
+
+-------------------------------------------------------------------
+Sun Jul 21 06:12:01 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 4.2.1
+  * csd-power-manager.c: Define UP_DEVICE_LEVEL_NONE for
+    ourselves if it's missing.
+  * csd-power-manager.c: Use gint instead of an enum type
+    for compatibility with < 0.99.0 upower.
+
+-------------------------------------------------------------------
+Mon Jul  1 03:39:57 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 4.2.0:
+  * Implement suspend/hibernate with ConsoleKit (#252)
+  * Power: Clean up unused code
+  * https://github.com/linuxmint/cinnamon-settings-daemon/issues/192 (#246)
+  * Disable natural-scroll by default for mice
+  * csd-mouse-manager.c: Fix issues from bfa99478e0d996fe (Natural mouse scrolling).
+  * misc: Use gdk_x11_display_error_trap_* instead of deprecated gdk_error_trap_*.
+  * configure.ac: disable deprecation warnings entirely.
+  * csd-power-manager.c: Check for a device battery-level property before attempting to access it.
+  * Prevent Segmentation Fault (#255)
+
+-------------------------------------------------------------------
+Fri Mar 15 01:30:09 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 4.0.3:
+  * Xrandr: Rotate touchscreens when applying a new configuration
+  * Wacom: Disable automatic rotation by default and make it configurable
+  * Wacom: Re-enable automatic rotation by default
+  * Set the GTK print preview to xreader
+  * Revert "Set the GTK print preview to xreader"
+  * Handle AC remove while LID is closed (#244)
+  * power/gpm-common.c:  Don't fake a UPower enum in lesser upower versions, instead make an "unknown" device ok to display without a warning. Provide more support for gaming controllers as well when providing device state strings.
+  * l10n: Update POT
+  * csd-power-helper: Implement optional hybrid-sleep for power and media-key plugins.
+  * csd-power-manager.c: Lock the screensaver if demanded by settings prior to turning off the monitor and initiating suspend.
+  * csd-power-manager.c: Fix conversion of absolute keyboard brightness back to percent, and fix signal handling of the keyboard backlight proxy.
+  * housekeeping: fix improper notify_notification_close() usage (#234)
+  * csd-power-manager.c: Provide the BatteryLevel property over our Power interface (for showing course level when a device doesn't support percentages.)
+  * power: Use generated interfaces for power, keyboard and screen services.  This simplifies the code a bit, and more importantly, allows the proxies used in cinnamon to work properly with g-signal, etc.. for updates.
+  * csd-power-manager.c: signal updates after each proxy initializes.
+  * csd-power-manager: Add a GetStep method for the keyboard interface. This will allow our setting module and applet to better represent valid increments for the backlight level.
+  * Prevent log flooding when game controllers are detected
+  * csd-power-manager.c: During lid action, only lock the screen if 'blank' is the selected action.  If 'do nothing' is selected, then actually do nothing.
+  * This will make NTP works on any Red Hat based system. (#238)
+  * csd-media-keys-manager.c: Execute default calculator application defined by schema (#240)
+  * CI: Remove Mint 18 
+
+-------------------------------------------------------------------
+Wed Oct 17 14:17:51 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.7:
+  * csd-power-manager.c: During lid action, only lock the screen if
+    "blank" is the selected action. If "do nothing" is selected,
+    then actually do nothing.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:27:32 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.6:
+  * housekeeping: Fix improper notify_notification_close() usage.
+
+-------------------------------------------------------------------
+Tue Sep 18 17:27:47 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.5:
+  * csd-power-helper: Implement optional hybrid-sleep for power and
+    media-key plugins.
+  * csd-power-manager.c: Lock the screensaver if demanded by
+    settings prior to turning off the monitor and initiating
+    suspend.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.4:
+  * Power: Reconfigure idle timers when upower state changes.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.3:
+  * csd-xsettings-manager.c: Handle any window button layout when
+    adding the "menu" item to CSD window controls, not just our
+    default layout.
+
+-------------------------------------------------------------------
+Fri May 17 12:31:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.2:
+  * CSD: Add menu to CSD windows when the layout is
+    :minimize,maximize,close.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.1:
+  * Remove vestigial manpage.
+  * Fix the inhibit_lid_switch_enabled option being uninitialised
+    whilst calling inhibit_lid_switch.
+
+-------------------------------------------------------------------
+Thu Apr 19 20:07:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.8.0:
+  * housekeeping: Replace gtk_stock items.
+  * housekeeping: Fix deprecated GUnixMountMonitor calls.
+  * housekeeping: Remove duplicated call.
+  * Add more info to README.
+  * sound: Remove empty constructor function.
+  * sound: Don't include unused GTK+.
+  * Clipboard: Various minor upstream fixes and cleanups.
+  * common: Add break and scroll lock to whitelist.
+  * Housekeeping: Various upstream fixes and cleanups.
+  * Fix button layout for CSD windows.
+  * Fix titlebar click actions for CSD windows.
+  * media-keys: Play volume_changed sound and display sound OSD
+    according to the max sound volume.
+  * Provide symlinks in /usr/bin to start the various CSD plugins.
+  * csd-background-manager.c: Remove build conditional for
+    AccountsService background support. GnomeBG will now determine
+    during runtime whether to handle it or not.
+  * csd-background-manager.c: Set the AccountsService user
+    background at startup.
+  * mouse: Re-enable touchpad when no other pointing devices is
+    present.
+  * mouse: Stop idle start when stop() is called.
+  * mouse: Simplify finalize and stop calls.
+  * mouse: Replace dialogue by warning.
+  * mouse: Remove empty contructor and dispose functions.
+  * mouse: Wrap device button mapping into gdk_error_trap_push/pop.
+  * mouse: Wrap pointer acceleration changes into a gdk_error_trap.
+  * locate-pointer: Remove support for multiple X screens.
+  * locate-pointer: Replace deprecated gdk_window_get_pointer.
+  * Remove .pc directory (quilt-related).
+  * csd-power: Lock the screensaver synchronously prior to
+    suspending.
+  * Update gnome-power-manager's stats desktop name.
+  * Add an option to prevent handle-lid-switch from being inhibited.
+  * Rename inhibit-lid-switch setting.
+  * Fix getting gsettings key from the wrong schema.
+
+-------------------------------------------------------------------
+Fri Dec  1 22:12:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.2:
+  * settings: Disable automatic screen orientation by default.
+
+-------------------------------------------------------------------
+Thu Nov  9 18:24:42 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.1:
+  * Power: Change default for sleep-display-ac/battery to
+    30 minutes.
+
+-------------------------------------------------------------------
+Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.6.0:
+  * Make touchpad settings compatible with libinput.
+  * Clean up the autorun dialogue a bit.
+  * Xrandr: Hold the session start whilst the plugin is loaded.
+  * csd-xsettings-gtk: Avoid a potential GFile leak.
+  * Move translations to cinnamon-translations.
+
+-------------------------------------------------------------------
+Sun Aug 20 16:09:40 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.4 (changes since 3.4.2):
+  * Add an issue template.
+  * Make xrandr plugin visible in "startup applications".
+  * power: Remove spam from the log.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.2:
+  * csd-color-manager.c: Make a device connect warning a debug
+    message instead to reduce .xsession-errors clutter.
+  * daemon-skeleton: Add a few upstream fixes for startup issues.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.1:
+  * Fix incorrect D-Bus names.
+  * media-keys: Don't show the level in the screen lock OSD.
+  * Wait for xsettings to be fully started before starting the
+    WindowManager phase.
+
+-------------------------------------------------------------------
+Sun May  7 11:23:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.0:
+  * mouse: Add missing device closing.
+  * Increase cinnamon-desktop required version.
+  * power: Fix typo in UPower keyboard GDBus proxy name.
+  * Remove redundant aclocal from autogen.sh as autoreconf calls it.
+  * Fix a -Wmissing-include-dirs warning.
+  * clipboard, color, dummy: Add a test application.
+  * common: Remove obsolete key parsing test application.
+  * color: Fix linkage of csd-test-color.
+  * main: Remove the ability to start/stop individual plugins.
+  * plugins: Remove "test" from the stand-alone application names.
+  * common: Add verbose a option to test-plugin.h.
+  * plugins: Rename sources of all test applications.
+  * mouse-plugin: Add new settings for mouse/touchpad.
+  * sound: Rename the sound plugin for PulseAudio.
+  * plugins: Add desktop files for all the plugins.
+  * plugins: Stop building helpers as plugins.
+  * Remove refs to obsolete schemas.
+  * common: Remove use of SCHEMA_NAME.
+  * common: Report errors on startup in the helper skeleton.
+  * Use unique dbus names.
+  * common: Register plugins with the session manager.
+  * main: Remove gnome-settings-daemon binary.
+  * data: Adapt pkg-config file for API removal.
+  * build: Remove separate check for cinnamon-desktop.
+  * main: Remove cinnamon-settings-plugin.h.
+  * Add CSD plugin icons.
+  * Remove calls to g_type_init(), bump GLib required version.
+  * Fix redundant redeclarations.
+  * Fix FSF address
+  * Fix backgrounds in HiDPI.
+  * Don't kill plugins during CSM stop PHASE.
+  * Drop deprecated g_thread_init.
+  * Add detection for accountsservice background as it's Ubuntu
+    only.
+  * cinnamon-settings-session, daemon-skeleton: Remove an ISO C
+    warning.
+  * csd-input-helper, csd-color-manager: Avoid compiler warnings.
+  * csd-clipboard-manager: Avoid compiler warnings.
+  * csd-locate-pointer: Change a shadowed variable causing compiler
+    warnings (gh#linuxmint#cinnamon-settings-daemon#173).
+  * Fix a typo in the Finnish translation.
+- Install libexec stuff into a cinnamon-settings-daemon/
+  subdirectory.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.1:
+  * media-keys: Add Rotation lock support.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.2.0:
+  * Remove the deprecated gdk_display_get_n_screens, this is now
+    hardcoded to return 1, so loops using this can be removed.
+  * Add a precautionary test on existence of a default display.
+  * orientation: Use g_clear_* helpers.
+  * orientation: Remove an empty constructor and dispose functions.
+  * orientation: Call stop from 'finalize'.
+  * orientation: Port to iio-sensor-proxy.
+  * orientation: Use a symbolic name for the GSettings key name.
+  * orientation: Fix screen lock not getting applied.
+  * Fix double free in is_wacom_tablet_device().
+  * xsettings: Fix cursor-size changes being ignored.
+  * Remove deprecated g_settings_list_schemas().
+  * Replace a deprecated gtk_icon_info_free() with g_object_unref().
+  * common: Don't create the Synaptics Off property if it doesn't
+    exist.
+  * common: Recognise libinput touchpads as touchpads.
+  * mouse: Fix indentation.
+  * mouse: Add a helper function for fetching a property.
+  * mouse: Rename helper to touchpad_set_bool().
+  * mouse: Split into separate bool helpers.
+  * mouse: libinput - hook up tapping configuration.
+  * mouse: libinput - hook up natural scroll configuration.
+  * mouse: libinput - hook up scrolling settings.
+  * mouse: libinput - hook up click methods.
+  * mouse: libinput - hook up left-handed setting.
+  * mouse: libinput - hook up accel speed.
+  * mouse: libinput - hook up middle button emulation.
+  * mouse: libinput - hook up disable while typing.
+  * Migrate away from gnome-common deprecated vars and macros.
+  * Xrandr plugin: Do not save configuration when RotateTo is called.
+
+-------------------------------------------------------------------
+Thu May 12 09:54:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.1:
+  * touchpad: By default, disable the touchpad while typing.
+
+-------------------------------------------------------------------
+Mon Apr 25 05:00:35 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.0.0:
+  * Add dbus method to play sound event on specified channel.
+  * Correct the icon shown in the OSD when the mic-mute button is
+    used.
+  * Power plugin: Fix CSD not notifying Cinnamon on device removal.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:09:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.8.4:
+  * power manager: Prevent sleep properly when the session has a
+    sleep (not idle) inhibitor active.
+
+-------------------------------------------------------------------
+Fri Nov 27 11:09:29 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.3:
+  * Re-add code removed by mistake.
+
+-------------------------------------------------------------------
+Fri Nov 20 19:24:16 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.2:
+  * Change the minimum height required to trigger HiDPI scaling.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:53:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.1:
+  * Clean up some unused functions and variables.
+  * csd-datetime forgets to authorise users.
+- Remove cinnamon-settings-daemon-check-settime.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Oct 28 19:40:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Add cinnamon-settings-daemon-check-settime.patch by
+  Sebastian Krahmer: fix forgetting to check caller authentication
+  in _set_date().
+
+-------------------------------------------------------------------
+Tue Oct 20 15:56:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.0:
+  * Change summary for motion-acceleration as it has nothing to do
+    with single click.
+  * Stop using deprecated GSettings: schema property.
+  * print-notifications: Don't show error for job in progress.
+  * print-notifications: Close HTTP connections.
+  * Pressing the mic-mute button now toggles the microphone's mute
+    status.
+  * Power plugin: Added vendor and model info to GetPrimaryDevice()
+    and GetDevices().
+  * [halfline] Xrandr plugin: don't ever show a dialog for xrandr
+    failures.
+  * XRandR: Catch-up with GSD 3.16 - set a title to the confirmation
+    dialog (bgo#706128).
+  * XRandR: Simplify layout of adjacent screens.
+  * XRandR: Add object path to the interface definition XML.
+  * XRandR: Avoid the GnomePnpIds object being created multiple times.
+  * XRandR: Add more debug to the rotate windows call.
+  * XRandR: Swap axes for tablets as well.
+  * XRandR: Use default-monitors-setup for autoconfigure.
+  * XRandR: Add reasoning for GnomePnpIds instantiation.
+  * Provide a helper function to close an XDevice safely
+  * HiDPI: Don't scale when the physical size isn't properly encoded.
+  * Fix crash when a plugin failed to start.
+  * Modernise code for handling SIGTERM.
+  * Unown our D-Bus name when cinnamon-session says "Stop".
+  * Remove unused code.
+  * po: Fixed some refs to GNOME.
+  * Remove unused maintscript.
+  * Update man.
+- Fix licence.
+- Remove baselibs.conf.
+- Require libcinnamon-desktop-data.
+
+-------------------------------------------------------------------
+Mon Aug 10 01:27:47 UTC 2015 - i@marguerite.su
+
+- update version 2.6.3
+  * revert "mouse: enable two-finger scrolling by default"
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jun  2 23:07:24 UTC 2015 - stefan@fam-elser.de
+
+- update to version 2.6.2
+
+-------------------------------------------------------------------
+Thu Apr 23 09:46:48 UTC 2015 - stefan@fam-elser.de
+
+- update version 2.4.3
+
+-------------------------------------------------------------------
+Mon Nov 10 06:39:27 UTC 2014 - i@marguerite.su
+
+- update version 2.4.2
+  * re-add media-keys keybindings schema to allow cinnamon-desktop
+    migrate script to work
+
+-------------------------------------------------------------------
+Wed Nov  5 07:46:56 UTC 2014 - i@marguerite.su
+
+- update version 2.4.1
+- drop 12.3 support, it's going to EOL
+
+-------------------------------------------------------------------
+Mon Jul 14 16:53:54 UTC 2014 - i@marguerite.su
+
+- update version 2.3.0
+  * Touchpad support: Added support for two and three finger clicks
+
+-------------------------------------------------------------------
+Mon May 19 10:22:18 UTC 2014 - stefan@fam-elser.de
+
+- update version 2.2.3
+
+-------------------------------------------------------------------
+Thu May  1 15:44:20 UTC 2014 - i@marguerite.su
+
+- update version 2.2.2
+
+-------------------------------------------------------------------
+Thu Apr 17 05:20:07 UTC 2014 - i@marguerite.su
+
+- update version 2.2.1
+- drop patch: keyboard.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 13:37:29 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.8
+  * Show default handler in autorun list for media insertion dialog
+
+-------------------------------------------------------------------
+Fri Nov  8 11:10:41 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.7
+  * Remove upstart files (was breaking unity)
+
+-------------------------------------------------------------------
+Mon Nov  4 11:11:50 UTC 2013 - johann.luce@wanadoo.fr
+
+- update version 2.0.6
+  * Remove background plugin
+  * Improve vbox background drawing
+
+-------------------------------------------------------------------
+Mon Oct 28 18:04:49 UTC 2013 - i@marguerite.su
+
+- update version 2.0.5
+  * Add vbox hack to redraw bg a few seconds after session loads
+  * Play login sound in c-s-d rather than cinnamon
+  * Remove background crossfade, causes issues with vbox, 
+    add delay to background on startup to give nemo time 
+    to load (needs improvement)
+
+-------------------------------------------------------------------
+Wed Oct 23 08:57:13 UTC 2013 - i@marguerite.su
+
+- copypac from home:cyberorg:cinnamon
+- cleanup
+- add %{name}-rpmlintrc to temporary disable some checks for polkit
+- enable polkit, gudev, systemd, mozilla-nss
+
+-------------------------------------------------------------------
+Mon Oct 21 14:14:48 UTC 2013 - stefan@fam-elser.de
+
+- Added policy workaround again
+
+-------------------------------------------------------------------
+Mon Oct 21 13:27:21 UTC 2013 - stefan@fam-elser.de
+
+- Updated to version 2.0.3
+- Deleted the workaround for the missing polkit policy file 
+
+-------------------------------------------------------------------
+Wed Oct  2 17:16:40 UTC 2013 - stefan@fam-elser.de
+
+- Initial Release with version 2.0.1
+

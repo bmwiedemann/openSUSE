@@ -1,0 +1,13 @@
+--- ./src/cmd/ksh93/sh/path.c.orig	2014-10-09 15:50:51.198269322 +0000
++++ ./src/cmd/ksh93/sh/path.c	2014-10-09 15:51:16.351159405 +0000
+@@ -517,8 +517,8 @@ static int	path_opentype(Shell_t *shp,co
+ 	do
+ 	{
+ 		pp = path_nextcomp(shp,oldpp=pp,name,0);
+-		while(oldpp && (oldpp->flags&PATH_SKIP))
+-			oldpp = oldpp->next;
++		if (oldpp && (oldpp->flags&PATH_SKIP))
++			continue;
+ 		if(fun && (!oldpp || !(oldpp->flags&PATH_FPATH)))
+ 			continue;
+ 		if((fd = sh_open(path_relative(shp,stakptr(PATH_OFFSET)),O_RDONLY,0)) >= 0)

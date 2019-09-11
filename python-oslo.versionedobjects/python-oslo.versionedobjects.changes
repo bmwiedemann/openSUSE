@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:34:36 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.35.1
+  - Update hacking version
+  - Update mailinglist from dev to discuss
+  - add python 3.7 unit test job
+  - add lib-forward-testing-python3 test job
+  - Lower ObjectVersionChecker logging to DEBUG level
+  - Allow lists to be generated from any non-string iterable
+  - import zuul job settings from project-config
+  - Imported Translations from Zanata
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Use template for lower-constraints
+  - add python 3.6 unit test job
+  - Add ListOfUUIDField
+  - Switch to stestr
+  - delete unused '='
+
+-------------------------------------------------------------------
+Sat Sep  1 08:31:45 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.33.3
+  - Fixing UUID coerce function for unicode non uuid form
+  - Remove stale pip-missing-reqs tox test
+  - set default python to python3
+  - fix tox python3 overrides
+  - Add support version in exception output
+  - Update reno for stable/queens
+  - Zuul: Remove project name
+  - pypy is not checked at gate
+  - Add bindep.txt file to prevent fallback to generic list
+  - Trivial: Update pypi url to new url
+  - Update links in README
+  - Allow escalation of UUID validation warning to error
+  - Imported Translations from Zanata
+  - Remove moxstubout usage
+  - Add release notes link to README
+  - Handle TZ change in iso8601 >=0.1.12
+  - Don't force unicode strings for UUID coercion
+  - Updated from global requirements
+  - add lower-constraints job
+  - Make the hash of a defaulted set field stable
+
+-------------------------------------------------------------------
+Fri Feb 23 13:29:57 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 10:05:52 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.31.2 (bsc#1078607)
+  - Treat doc warnings as errors
+  - Update .gitreview for stable/queens
+  - Update UPPER_CONSTRAINTS_FILE for stable/queens
+  - Remove log translations
+  - Handle TZ change in iso8601 >=0.1.12
+
+-------------------------------------------------------------------
+Mon Jan 15 12:02:02 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.31.0 (bsc#1078607)
+  - iso8601.is8601.Utc No Longer Exists
+  - Fix wrong indent of releasenotes
+  - Follow the new PTI for document build
+  - Update reno for stable/pike
+  - Updated from global requirements
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Migrate to zuulv3 - move legacy jobs to project
+  - Avoid tox_install.sh for constraints support
+  - Use newer location for iso8601 UTC
+  - Zuul: add file extension to playbook path
+  - Add a TimestampedObject mixin
+  - Add bandit to pep8 job
+
+-------------------------------------------------------------------
+Mon Aug  7 13:58:38 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.26.0
+  - rearrange existing documentation to fit the new standard layout
+  - Fix the object is unhashable when inheriting the class
+  - Add unit test for unicode in object __repr__
+  - Update URLs in documents according to document migration
+  - Fix string interpolation in ValueError
+  - Start adding some basic ovo examples (with an initial basic one)
+  - Change Object schema type to be array instead of string.
+  - [Fix gate]Update test requirement
+  - fields: fix stringifying of objects when subclasses=True
+  - Remove support for py34
+  - Update reno for stable/ocata
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Enable warning-is-error in doc build
+  - switch from oslosphinx to openstackdocstheme
+
+-------------------------------------------------------------------
+Mon Feb 13 09:51:44 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.21.0:
+  - Fix documentation typo
+  - Fix a typo
+  - Add Constraints support
+  - Fix incorrect timestamp comment
+  - Add reno for release notes management
+  - Show team and repo badges on README
+  - Changed the home-page link
+  - Fix recursive deepcopy
+  - Replace six.iteritems() with .items()
+  - Add ObjectListBase concat methods
+  - Fix get_schema() for Enum
+  - JSON Schema get_schema implementation for last few fields
+  - Refactor get_schema for patterned FieldTypes
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Oct 14 14:09:00 UTC 2016 - tbechtold@suse.com
+
+- Fix Url
+
+-------------------------------------------------------------------
+Tue Oct  4 11:06:44 UTC 2016 - dmueller@suse.com
+
+- * global-requirements.txt sync
+
+-------------------------------------------------------------------
+Tue Aug 30 15:35:19 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.17.0
+  * Add get_schema for IPV6Address FieldType class
+  * JSON schema get_schema implementation for more complex fields
+  * Adds new fields and field types
+  * Fix to_json_schema() call
+  * Fix remotable object change tracking
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 10 12:15:54 UTC 2016 - tbechtold@suse.com
+
+- update to 1.14.0:
+  * Updated from global requirements
+  * Add Python 3.5 classifier and venv
+
+-------------------------------------------------------------------
+Mon Aug  1 18:58:17 UTC 2016 - tbechtold@suse.com
+
+- update to 1.13.0:
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * JSON schema get_schema implementation for common fields
+  * JSON schema generation for versioned objects
+  * Extend test_hashes to allow extra info gathering
+  * Improved error message for Object.coerce
+  * Fix ComparableVersionedObject in python 3.4
+  * Add objectify decorator for readability
+  * Fix a typo in Enum error path
+  * Fix issue with coercing valid_values to a tuple
+  * Replace safe_utils.getcallargs with inspect.getcallargs
+  * Remove direct dependency on babel
+  * Introduce fixture to enforce sorted order for object changes
+  * Expose object context thru a public property
+  * Fix compare_obj() to obey missing/unset fields
+  * Add BaseEnumField valid_values introspection
+  * Use primitive type name in ValueError for Object field coerce failure
+  * Update formatting for example statemachine field
+  * Add a pci address  field
+  * Remove the executable bit from files
+- update _service and switch to upstream spec file
+
+-------------------------------------------------------------------
+Mon Apr  4 11:47:23 UTC 2016 - tbechtold@suse.com
+
+- update to 1.8.0:
+  * Updated from global requirements
+  * Update .gitreview for stable/mitaka
+# Adjust Requires
+
+-------------------------------------------------------------------
+Thu Mar  3 14:25:43 UTC 2016 - tbechtold@suse.com
+
+- update to 1.7.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Deprecate current UUIDField behaviour
+  * Make sure functions in child object registries work
+  * Fix messages in exceptions raised due to invalid state transitions
+  * Update translation setup
+  * Updated from global requirements
+  * Add ability to pass args/kwargs to obj_class init
+  * Updated from global requirements
+  * Added a state machine field
+  * Use oslo_utils for tupleizing versions
+  * Add temporary registry pattern to VersionedObjectRegistry
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Updated from global requirements
+  * Move compare_obj to the fixture module for external consumption
+  * Updated from global requirements
+  * Fix MACAddress coerce method to validate string first
+  * Updated from global requirements
+  * Remove meaningless default value in __get__()
+  * Added checking compat using manifest backports
+  * Fixed nondeterministicness of extra_data test
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Clean up directory openstack/common
+  * Use method is_compatible from olso_utils.versionutils
+  * Trival: Remove 'MANIFEST.in'
+  * Add a callable to gather extra data for fps
+  * Add testing for ObjectVersionChecker fixture
+  * Leverage dict comprehension in PEP-0274
+  * Use version convert methods from oslo_utils.versionutils
+  * Add netaddr-related field types
+  * Updated from global requirements
+  * Adds new MACAddressField
+  * Fix the wrong reference for DeprecationWarning
+  * cleanup tox.ini
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Fri Nov 20 13:51:57 UTC 2015 - bwiedemann@suse.com
+
+- update to 0.13.0:
+  * Ensure__repr__ return value is encoded
+  * Cleanup docstring for obj_tree_get_versions
+  * Add warnings for deprecated IndirectionAPI methods
+  * Make tests properly use object_class_action_versions()
+  * Make class action calls use version manifest
+  * Add SensitiveString field type
+  * Fix obj_to_primitive() when used with a manifest
+  * Move __contains__ from VersionedObjectDictCompat to VersionedObject
+  * Add shields.io version/downloads links/badges into README.rst
+  * Change ignore-errors to ignore_errors
+  * Added test for DateTimeField in obj_get_change
+  * Fix missing value types for log message
+
+-------------------------------------------------------------------
+Sat Sep 19 07:04:18 UTC 2015 - tbechtold@suse.com
+
+- update to 0.10.0:
+  * Imported Translations from Zanata
+
+-------------------------------------------------------------------
+Tue Sep  1 08:22:07 UTC 2015 - tbechtold@suse.com
+
+- update to 0.9.0:
+  * Updated from global requirements
+  * Allow calling obj_to_primitive() with version_manifest
+  * Switch back to iso format on the wire
+  * Save and re-raise exception
+  * Check for obj_relationships in List objects
+  * Updated from global requirements
+  * Make compat of object lists use manifest function
+  * Add tests for subobject backporting by manifest
+  * Make ObjectListBase a collections.Sequence
+  * Switch from deprecated timeutils.isotime
+  * Make direct call to object's obj_from_primitive
+  * Add usage information
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Add validation on target_version arg when calling obj_to_primitive
+
+-------------------------------------------------------------------
+Tue Aug 11 08:42:16 UTC 2015 - seife+obs@b1-systems.com
+
+- update to 0.7.0:
+  0.7.0
+  * Fix error handling in the exception module on py3
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Add a new DictOfListOfStrings type of field
+  0.6.0
+  * Fix serializer supported version reporting in object_backport
+  * Remove dict assumption from remotable decorator
+  * Remove ununsed class in test.py
+  * Replace 'hypervisor' with 'provided' version
+  * Compound fields now coerce their elements' values
+  * Move fixture dependencies to extras
+  0.5.2
+  * Sort child versions before generating fingerprint
+  * Manual update the requirements
+  * Remove classifiers not supported
+  0.5.0
+  * Add oslo.config to requirements
+  * Add tox target to find missing requirements
+  * fields: allow subclasses in ObjectField/ListOfObjectsField
+  * Fix "comparason" typo in doc for ComparableVersionedObject
+  * fields: report what the wrong type was when coerce fails
+  * Decouple ObjectVersionChecker and VersionedObjectRegistry
+  * Updated from global requirements
+- update spec file requires from requires.txt
+
+-------------------------------------------------------------------
+Fri Jun 12 08:32:00 UTC 2015 - tbechtold@suse.com
+
+- update to 0.4.0:
+  * Remove unnecessary openstack-common.conf
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Jun  8 14:29:28 UTC 2015 - tbechtold@suse.com
+
+- update to 0.3.0:
+  * Imported Translations from Transifex
+  * Imported Translations from Transifex
+  * Enhance documentation
+  * Add delattr support
+  * Imported Translations from Transifex
+  * Enhance dict compat of VersionedObjectDictCompat
+  * Drop outdated notes and docstrings
+  * Add field name to error messages in object type checking
+  * Adds missing WebOb in requirements.txt
+  * Add enum fieldtype field
+  * Get the indirection_api from the current VersionedObject class
+  * Updated from global requirements
+  * Imported Translations from Transifex
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Sat May 16 13:46:11 UTC 2015 - dmueller@suse.com
+
+- update to 0.2.0:
+  * Standardize setup.cfg summary for oslo libs
+  * Update to the latest version of hacking
+  * Copy the default value for field
+  * Updated from global requirements
+  * New config group for oslo_versionedobjects
+
+-------------------------------------------------------------------
+Wed Apr  8 13:26:36 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

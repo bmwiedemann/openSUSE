@@ -1,0 +1,814 @@
+-------------------------------------------------------------------
+Tue Aug  6 14:25:18 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update crio.conf to:
+  * use `127.0.0.1` as streaming address
+  * use any ephemeral port for streaming server
+
+-------------------------------------------------------------------
+Thu Jul 25 09:20:42 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update crio.conf to use correct pause_command
+
+-------------------------------------------------------------------
+Thu Jul 18 10:13:04 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update crio.conf to use better versioned pause container 
+
+-------------------------------------------------------------------
+Wed Jul 17 14:53:38 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update crio.conf to use official kubic pause container 
+
+-------------------------------------------------------------------
+Wed Jul  3 09:40:18 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update CRI-O to v1.15.0:
+  * update readme for currently supported branches
+  * Update deps for k8s 1.15.0
+  * Remove invalid unit test
+  * Remove unnecessary indirect dependency gopopulate
+  * go.mod: drop github.com/containerd/cgroups
+  * cgroups: use libpod/pkg/cgroups
+  * go.mod: update libpod and godbus/dbus
+  * Move the creation of sourceCtx in Server.PullImage out of the loop
+  * Remove the imageAuthFile parameter to RuntimeServer.CreateContainer
+  * Set SystemContext.AuthFilePath in global Server.systemContext
+  * Set SystemContext.DockerRegistryUserAgent in global Server.systemContext
+  * Base copy.Options.{Source,Destination}Ctx both on the input systemContext
+  * Expect a non-nil copy.Options in ImageServer.PullImage
+  * Use a types.SystemContext instead of copy.Options in PrepareImage
+  * Use an explicit DockerInsecureSkipTLSVerify = types.OptionalBoolTrue
+  * Split imageService.remoteImageReference from prepareReference
+  * Simplify the handling of PullImageRequest.auth
+  * Build copy.Options.SourceCtx from Server.systemContext
+  * Add a buildImageResult helper to avoid duplicating the code
+  * Call buildImageCacheItem in ImageStatus
+  * Don't redundantly look up an already available store.Image
+  * Don't use path.join for docker references
+  * Remove redundant manifest parsing to get config digest
+  * Remove redundant calls to types.ImageSource.Size
+  * When looking up a local image by transport:name reference, use the tag/digest as well
+  * Use reference.Named.String() instead of open-coding it
+  * Use reference.ParseNormalizedNamed for parsing storage.Image.Names
+  * Don't modify the caller-provided SystemContext in server.New
+  * Remove `seccomp.json` and fallback to internal defaults
+  * Fix mockGetRef, and deal with all of the fallout
+  * Return mockSequence from mockListImage and mockLoop, use global inOrder everywhere
+  * Remove ImageServer.RemoveImage
+  * Rename mockToCreate to mockCreateContainerOrPodSandboxImageExists
+  * Add mockStorageImageSourceGetSize and mockNewImage
+  * Don't split the first gomock expecation into a BeforeEach
+  * Add mockGetStoreImage and mockResolveImage
+  * Add a shared mockParseStoreReference
+  * Add mockStorageReferenceStringWithinTransport and use it instead of open-coded sequences
+  * Add an inOrder helper
+  * Create a separate MockController for every test
+  * Remove duplicate Dockerfile's
+  * Discover runtimePath from $PATH environment
+  * Use GlobalAuthFile, incl. for the pause image if PauseImageAuthFile is not set
+  * Don't discard copy.Options.SourceCtx when credentials are provided
+  * Don't set non-default copy.Options in imageService.PullImage if it is nil
+  * Remove the *copy.Options parameter to RuntimeService.Create{PodSandbox,Container}
+  * Add global_auth_file option to crio.image config
+  * Remove the types.SystemContext parameter where no longer necessary
+  * Don't read registries.conf for the defaults of --registry and --insecure-registry
+  * Add state of infracontainer to disk when stopped
+  * Use repository logo instead of rawgit
+  * Exclude 'vendor' for git-validation checks
+  * Bump up minMemoryLimit to 12Mb
+  * enable inline exec and attach test
+  * Mark file_locking deprecated
+  * Disable file locking by default
+  * Add release bundle target
+  * Update dependency containerd/cgroups
+  * crio-wipe: fix readme nits
+  * conmon: force unlink attach socket
+  * Add junit test files to .gitignore
+  * Use *config.Config within OCI runtime
+  * Move lib.Config to a dedicated package
+  * Refactor sandbox and container name reservation
+  * Update dependencies
+  * Remove travis in favor of CircleCI
+  * Vendor Kubernetes v1.15.0
+  * Fix e2e_features_* selinux denials
+  * add vrothberg to OWNERS file
+  * Add documentation about the HTTP API
+  * Default to runc is default_runtime is not set
+  * Set default run root if not specified
+  * Fix redundant if in lib/rename.go
+  * Add codecov upload step to CircleCI config
+  * Add flake attempts to critest integration testing
+  * Add CircleCI badge
+  * Add live reload feature to pause configuration
+  * Update dependencies
+  * Rebase containers/image to 2.0.0, buildah to 1.8.4, libpod to 1.4.1
+  * Fix Vagrantfile vendor inconsistency
+  * version: if git commit is empty, silently ignore
+  * Use the official nix package for building static binaries
+  * Add status related server unit tests
+  * Create network directory if it doesn't exist
+  * Small stderr fixes in crio-wipe
+  * Add crio-wipe
+  * Add version file functionality
+  * Enable ppc64le Travis CI
+  * Fix mentioned distributions in README.md
+  * crictl.md: Fix a typo
+  * Vendor Kubernetes 1.15.0-rc.1
+  * Update golangci-lint to v1.17.1
+  * README.md: Fix a typo
+  * Fix missing images names on list
+  * Update dependencies
+  * Update setup.md
+  * Refactor sandbox cgroup annotation
+  * Fix gomega matcher syntax
+  * Fix mentioned distributions within the setup tutorial
+  * Go mod tidy
+  * Add bandwidth limiting support
+  * Switch to 'stable status' badge
+  * Cleanup README.md
+  * Vendor Kubernetes v1.15.0-beta.1
+  * Close temporary image in PullImage
+  * Add live reload integration tests and /config endpoint
+  * Fix errcheck lint for network namespace creation
+  * remove PluginDir from config if it existed
+  * Change plugin_dir to plugin_dirs
+  * Update dependencies
+  * Bump github.com/containernetworking/plugins from 0.7.5 to 0.8.0
+  * Enable errcheck lint and fixup error paths
+  * Add critest to integration test suite
+  * Update Dockerfile CNI plugins to v0.8.0
+  * Update contrib systemd unit files to match project name
+  * Fix runtime panic when having concurrent writes to runtime impl map
+  * Fix build issues on 32-bit architectures
+  * tests: added log max test to ctr.bats and command.bats
+  * Update device cgroup permissions for configured devices.
+  * Revert old fix
+  * test: set container runtime to remote for e2e and fixup crio.conf
+  * server: do not add default /sys if bind mounted
+  * skip runtimes handler test until we can get a better solution
+  * Fix possible runtime panic on store shutdown
+  * Update Makefile to be usable without git
+  * Ensure the test suite configures config directories.
+  * Update depedencies
+  * Add predefined build tags to .golangci.yml
+  * Add container server unit tests
+  * README.md: fix a typo
+  * conmon: support OOM monitor under cgroup v2
+  * Fix logging to journal
+  * refresh apt before installation
+  * Bump github.com/containers/libpod from 1.2.0 to 1.3.1
+  * docs/crio.conf.5: Add "have" to "higher precedence" typo
+  * Update scripts to find correct bash path
+  * Fix links in tutorials/setup.md
+  * Improve CI speed
+  * Remove redundant source remove
+  * setup: fix broken link
+  * readme: Remove timeout from kube documentation
+  * Remove terminal watch after success
+  * Vendor Kubernetes v1.15.0-beta.0
+  * Cleanup SystemContext usage
+  * Bump github.com/golang/mock from 1.3.0 to 1.3.1
+  * Bump github.com/containers/storage from 1.12.6 to 1.12.7
+  * Bump github.com/docker/go-units from 0.3.3 to 0.4.0
+  * Remove debug output from integration tests
+  * sandbox_run: Log a warning if we can't find a slice
+  * test: Add test for conmon cgroups
+  * readme: Remove roadmap
+  * Add config validation for conmon cgroup
+  * Add CLI flag for --conmon-cgroup
+  * Add config to run conmon under a custom cgroup slice
+  * Add gocritic paramTypeCombine linter and fixes
+  * Add awesome CRI-O list
+  * Add config live reload feature
+  * Update unit test target to not run `mockgen`
+  * Add gocritic builtinShadow linter and fixes
+  * Fix sandbox tests
+  * conmon: detect cgroup2 and skip OOM handling
+  * conmon: properly set conmon logs
+  * Update test suites
+  * Add gocritic importShadow linter and fixes
+  * Add server sandbox unit tests
+  * Add gocritic wrapperFunc linter and fixes
+  * Add gocritic unnamedResult linter and fix issues
+  * Add gocritic sloppyReassign linter and fixes
+  * Add gocritic appendCombine linter and fixes
+  * Add gocritic appendAssign linter and fixes
+  * Add fossa badge
+  * Add nakedret linter and related fixes
+  * Bump github.com/go-zoo/bone from 0.0.0 to 1.3.0
+  * Improve error handling for crio main.go
+  * Bump github.com/containernetworking/cni from 0.7.0-rc2 to 0.7.0
+  * Bump github.com/kr/pty from 1.1.1 to 1.1.4
+  * Bump github.com/opencontainers/runc from 1.0.0-rc7 to 1.0.0-rc8
+  * Bump github.com/opencontainers/selinux from 1.2.1 to 1.2.2
+  * Bump google.golang.org/grpc from 1.20.0 to 1.20.1
+  * Bump github.com/Microsoft/go-winio from 0.4.11 to 0.4.12
+  * Bump golang.org/x/text from 0.3.1 to 0.3.2
+  * Bump github.com/golang/mock from 1.2.0 to 1.3.0
+  * Bump github.com/containers/storage from 1.12.4 to 1.12.6
+  * Bump github.com/opencontainers/runtime-spec from 1.0.0 to 1.0.1
+  * Add useragent unit tests
+  * Add username and homedir to generated password
+  * conmon: fix cross-compilation
+  * Fix kubernetes import paths for cri-api
+  * fixes make fmt/spacing issue
+  * fixes assumption that socklen_t is always an unsigned long
+  * Fix logic of server.restore()
+  * Update CNI plugin test dependency to v0.7.5
+  * Update runc test dependency to v1.0.0-rc8
+  * Add server image unit tests
+  * Vendor Kubernetes v1.15.0-alpha.2
+  * Remove references to kubernetes/pause image
+  * Migrate server config test to ginkgo
+  * Add CircleCI support
+  * Fix hack/openpgp_tag.sh on older distributions
+  * Add server test suite and initial cases
+  * Update `LogDir` to be configurable
+  * Add documentation about static builds
+  * Vendor containers/storage v1.12.4
+  * Add server config interface
+  * Add unit test inject files
+  * Add additional build tags to setup guide
+  * Remove ostree dependency from tutorial
+  * Update PluginDir to be created if not existing
+  * Add static crio binary build for x86_64 (glibc/musl)
+  * Add openpgp_tag.sh as fallback if no gpgme available
+  * Remove go build -i flag
+  * Update test to use empty CNI hooks dir per default
+  * Fix testunit-bin makefile target
+  * Remove gofmt Makefile target
+  * Remove ostree dependency
+  * Vendor updated opencontainers/runtime-tools & runtime-spec
+  * Fix coverity scan problem
+  * run make vendor
+  * Add min memory limit check to sandbox_run_linux.go
+  * Add nil check for image status size
+  * Add infra container check for pod sandbox
+  * Revert back some changes from master
+  * Use format strings instead of `Value` attribute
+  * Remove default str in `Usage` when `Value` is used
+  * Add default text to flags
+  * Remove unnecessary golints
+  * Update bats tests to run in parallel
+  * Began documentation update.
+  * conmon, exec: specify runtime root
+  * test: use crictl inspect instead of RUNTIME state
+  * Fix travis badge URL
+  * fix broken link to policy.json(5) in readme
+  * tests: added negative metrics testing to command.bats
+  * tests: added metrics test to ctr.bats
+  * Fix Makefile targets for sudo
+  * Fix travis build
+  * Switch to go modules
+  * conmon: use sd_journal_sendv
+  * Add stylecheck, unused and gosimple linters
+  * Add config interface nil check
+  * Update cri-tools versions
+  * Allow containers/storage to manage SELinux labels
+  * Move ContainerAttachSocketDir/containerExitsDir to lib
+  * Use libpod registrar instead of pkg/registrar
+  * travis: Switch to go 1.12.x
+  * test: Switch to go 1.12.2
+  * Add RuntimeHandler.RuntimeRoot
+  * utils: add license headers for pulled files
+  * userns: drop intermediate mount namespace
+  * Refactor: use idtools.ParseIDMap instead of bundling own version
+  * Fix parallel make build failure
+  * rootless: propagate XDG_RUNTIME_DIR
+  * oci: fix segfault when cgroup cannot be configured
+  * Update error handling paths for sandbox add and removal
+  * Add go-md2man to repo
+  * netns can be nil which can cause a segfault
+  * test: Fix oom test
+  * test: ami fixups
+  * conmon: do not leak fd when creating oom file
+  * Fixup for moving to github.com/cri-o/cri-o
+  * update github.com/containers/* dependencies
+  * Do not crash when netns is not set up
+  * readme: Update support matrix for 1.14
+  * test: Increase number of inotify user watches
+  * Remove timeout flag from kubernetes.yml
+  * Log oom_handling_score failure to debug
+  * tests: allow to switch manage_network_ns_lifecycle
+  * Update linter to use hugeParam
+  * config: export manage_network_ns_lifecycle
+  * Fix possible out of bounds access during log parsing
+- Update crio.conf to match the latest version
+- Remove registry-mirror.patch since it is now included in upstream
+- Remove unnecessary dependencies git-core and go-go-md2man
+- Remove custom build and use native build target `make`
+- Remove unit-test execution during package build since it
+  requires (local) networking
+- Remove seccomp.json since it is now included in the binary
+- Fix apparmor dependencies
+
+-------------------------------------------------------------------
+Fri May 24 06:51:47 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add apparmor-parser as dependency
+
+-------------------------------------------------------------------
+Thu May 16 07:28:09 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Thu May  9 14:24:05 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-o to v1.14.1
+  * Add min memory limit check to sandbox_run_linux.go
+  * Fix crash when network namespace is not setup
+  * Log oom_handling_score failure to debug
+  * Fix possible out of bounds access during log parsing
+  * Fix sandbox segfault with manage_network_ns_lifecycle
+- Add registry-mirror.patch
+- Update repository paths from `kubernetes-sigs` to `cri-o`
+- Remove unnecessary ostree dependency
+
+-------------------------------------------------------------------
+Thu Apr 18 16:45:33 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Use /opt/cni/bin as the additional directory where cri-o is going
+  to look up for CNI plugins installed by DaemonSets running on
+  Kubernetes (i.e. Cilium).
+
+-------------------------------------------------------------------
+Fri Apr 12 08:31:53 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update the configuration to fallback to the storage driver
+  specified in libcontainers-common (`/etc/containers/storage.conf`)
+- Update go version to >= 1.12 to be in sync with upstream
+
+-------------------------------------------------------------------
+Mon Apr  1 20:53:10 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Introduce new runtime dependency conntrack-tools: the conntrack
+  package is required to avoid failures in network connection cleanup.
+
+-------------------------------------------------------------------
+Fri Mar 29 18:27:18 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Update cri-o to v1.14.0
+  * Fix possible out of bounds access during log parsing
+- Update default configuration file: crio.network.plugin_dir is now
+  a list instead of being a string
+
+-------------------------------------------------------------------
+Mon Mar 18 08:25:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-o to v1.13.3
+  * Always set gid if returned from container user files
+  * server: delete the container if it cannot be restored
+  * Bump github.com/containers/storage to v1.11
+  * Add support for host ip configuration
+  * Pause credentials 1.13
+  * Allow device mounting to work in privileged mode
+  * Fix detach non tty
+
+-------------------------------------------------------------------
+Tue Feb 26 17:11:40 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update cri-o to v1.13.1
+  * container: fix potential segfault on setup failure
+  * container_create: fix race with sandbox being stopped
+  * oci: read conmon process status
+  * oci: Extend container stop timeout
+
+-------------------------------------------------------------------
+Fri Dec 14 10:00:17 UTC 2018 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-o deprecated configuration and documentation to match
+  upstream
+
+-------------------------------------------------------------------
+Fri Dec  7 10:55:38 UTC 2018 - Richard Brown <rbrown@suse.com>
+
+- Update cri-o to v1.13.0:
+  * Support kubernetes 1.13
+
+-------------------------------------------------------------------
+Mon Nov 19 08:07:35 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Update cri-o to v1.12.1:
+  * Remove nodev from mounts
+  * vendor: update storage for a panic fix
+  * container_create: fix dev mounts and remove nodev from /dev mounts
+  * Use CurrentContainerStatus in list CRI calls
+  * oci: Add CurrentContainerStatus API
+  * conmon: fsync the log file
+
+-------------------------------------------------------------------
+Wed Nov  7 13:33:14 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Set NOFILE and NPROC limit to 1048576 to align with Docker/containerd
+  and the upstream unit file.
+  Fix bsc#1112980
+
+-------------------------------------------------------------------
+Fri Oct 19 06:59:18 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Update cri-o to v1.12.0:
+  * docs: tweak crio and crio.conf man pages
+  * config: provide a default runtime and deprecate the runtime option
+  * cri: Implement runtime handler support
+  * *: implement default ulimits for containers
+  * Fix manpage to correctly state default storage driver
+  * crio.conf(5): update manpage to the latest state
+  * Remove sysctl parsing code from cri-o
+  * Add default_systcls option to crio.conf
+  * Image Volumes should be bind mounted as private
+  * Create LICENSE
+  * conmon: fix segfault when --log-level is not specified
+  * Add log-level option to conmon and crio.conf
+  * Remove "--log-level debug" from service file
+  * conmon: close extra files before exit
+  * Block use of /proc/acpi from inside containers
+  * conmon: do not use an empty env when running the exit command
+
+-------------------------------------------------------------------
+Mon Oct  8 15:06:24 UTC 2018 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add go-1.11-compat-backport.patch for go1.11 compatibility.
+  * Tested with golang(API) == 1.10 and golang(API) == 1.11, OK
+  * Upstream git master commit
+    https://github.com/kubernetes-sigs/cri-o/commit/0bd30872028b5ed2d0eb7febb39f034b5f2da72a
+    contains 1 hunk adding missing argument in format string of
+    calls to:
+
+    # github.com/kubernetes-incubator/cri-o/lib
+    lib/container_server.go:309: Debugf call needs 1 arg but has 2 args
+    lib/container_server.go:317: Debugf call needs 1 arg but has 2 args
+    ...
+    FAIL   github.com/kubernetes-incubator/cri-o/lib [build failed]
+
+    Calls in question:
+
+    logrus.Debugf("loaded new pod sandbox %s", sandboxID, err)
+    logrus.Debugf("loaded new pod container %s", containerID, err)
+
+    require another argument to the string format (": %v" per upstream):
+
+    logrus.Debugf("loaded new pod sandbox %s: %v", sandboxID, err)
+    logrus.Debugf("loaded new pod container %s: %v", containerID, err)
+
+    Patch contents not available in upstream cri-o released versions:
+    cri-o-1.11.3
+    cri-o-1.11.4
+    cri-o-1.11.5
+    cri-o-1.11.6
+
+    Filed upstream issue requesting patch contents in released version:
+    https://github.com/kubernetes-sigs/cri-o/issues/1827
+
+-------------------------------------------------------------------
+Tue Aug 21 10:15:15 UTC 2018 - rbrown@suse.com
+
+- cri-o-kubeadm-criconfig: correct conflicts with docker-kubic
+
+-------------------------------------------------------------------
+Tue Aug 21 09:34:24 UTC 2018 - rbrown@suse.com
+
+- cri-o-kubeadm-criconfig: Remove /etc/kubernetes/runtime.conf,
+  replace with /etc/sysconfig/kublet
+
+-------------------------------------------------------------------
+Mon Aug 20 08:19:09 UTC 2018 - vrothberg@suse.com
+
+- Update crio.conf to be as close to the default one as possible:
+  * Extend crio.conf with all previously missing options; crio.conf(5) isn't
+    mentioning all of them which soon will be fixed.
+  * Uncomment options to use /etc/containers/{registries,storage}.conf where
+    appropriate.
+
+- Remove Fix-AppArmor-build.patch as the build issue is fixed with v1.11.2.
+
+- Update cri-o to v1.11.2:
+  * Fix AppArmor build
+  * Image Volumes should be bind mounted as private
+  * container_create: Set a minimum memory limit
+  * Add log-level option to conmon and crio.conf
+  * server/container_create: error out if capability is unknown
+
+-------------------------------------------------------------------
+Fri Aug 17 12:25:48 UTC 2018 - vrothberg@suse.com
+
+- Add "docker.io" to the registries list in the crio.conf to enable
+  pulling of unqualified images by default.
+
+-------------------------------------------------------------------
+Thu Aug 16 11:52:43 UTC 2018 - rbrown@suse.com
+
+- ExcludeArch i586 (does not build, nor makes sense for that arch)
+
+-------------------------------------------------------------------
+Tue Aug 14 16:38:53 UTC 2018 - rbrown@suse.com
+
+- Make crio default, docker as alternative runtime (boo#1104821)
+- Configure kubernetes CRI runtime with $runtime-kubeadm-criconfig
+  packages
+
+-------------------------------------------------------------------
+Tue Aug 14 09:03:49 UTC 2018 - rbrown@suse.com
+
+- Use btrfs storage driver to be consistant with other supported
+  runtimes
+
+-------------------------------------------------------------------
+Thu Aug  2 08:52:41 UTC 2018 - vrothberg@suse.com
+
+- Do not provide `/etc/crictl.yaml` anymore.  Although being shipped by
+  upstream this package belongs into the `cri-tools` package.
+  bsc#1104598
+
+- add Fix-AppArmor-build.patch to temporarily fix apparmor builds
+
+- Update cri-o to v1.11.1:
+  * server: Don't make additional copy of config.json
+  * cri-tools: Use release-1.11 branch
+
+-------------------------------------------------------------------
+Tue Jul 10 05:52:56 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.10.6:
+  * mask /proc/{acpi,keys}
+
+-------------------------------------------------------------------
+Mon Jul  2 06:03:24 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.10.5:
+  * Reduce amount of logs being printed by default
+  * Update to latest ocicni
+
+-------------------------------------------------------------------
+Wed Jun 27 05:42:58 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.10.4:
+  * network: Fix manage NetworkNS lifecycle
+  * sandbox_run: fix selinux relabel sharing
+  * container_create: more selinux relabel fixes
+  * container_create: correctly relabel mounts when asked
+
+-------------------------------------------------------------------
+Mon Jun 18 05:53:32 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.10.3:
+  * container_portforward: add support for short pod IDs
+  * container_create: no privileged container if not privileged sandbox
+  * container_create: always mount sysfs as rw for privileged containers
+  * container_create: set rw for privileged containers
+  * conmon: on a flush error discard the iov buffer
+
+-------------------------------------------------------------------
+Fri Jun 15 08:35:42 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.10.2:
+  * various improvements to conmon
+  * oci: avoid race on container stop
+  * image: Let size be calculated dynamically
+  * Add support for short IDs for exec and attach
+  * Make network namespace lifecycle management optional
+  * container_exec: Fix terminal setting for exec
+  * oci: Force kill the container process only if nothing else worked
+  * Add extra info to verbose requests to PodSandboxStatus
+  * Make conmon and crio share the same constants
+  * conmon: catch SIGTERM, SIGINT and SIQUIT
+  * Invalidate cache by building fresh one and replacing previous all at once
+  * Enable per pod PID namespace setting
+  * Make the /opt/cni mount rw
+  * conmon: add new option --version
+  * oci: Copy-edits for waitContainerStop chControl comment
+  * system container: add /var/tmp as RW
+  * container_status: expose LogPath as requested by the CRI
+  * container_create: only bind mount /etc/hosts if not provided by k8s
+  * kubernetes: Simplify and freshen the required-files table
+  * Report an warning when no stages are defined for a hook
+
+-------------------------------------------------------------------
+Mon Jun 11 12:36:08 UTC 2018 - vrothberg@suse.com
+
+- Use actual tag for v1.9.13.  Upstream missed to set a tag and the
+  last revision mistakenly set it to v1.9.14-dev instead of v1.9.13.
+
+-------------------------------------------------------------------
+Thu Jun  7 06:22:41 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.13:
+  * runtime_status: report correct network status
+  * container_status: expose LogPath as requested by the CRI
+    bsc#1095154
+
+-------------------------------------------------------------------
+Tue Jun  5 08:26:28 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to a simpler form
+
+-------------------------------------------------------------------
+Mon Jun  4 14:33:03 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Fri May  4 14:17:57 CEST 2018 - ndas@suse.de
+
+- use correct path for runc
+
+-------------------------------------------------------------------
+Thu Apr 12 12:47:07 UTC 2018 - fcastelli@suse.com
+
+- Put cri-o deamon under the podruntime slice. This the recommended
+  deployment to allow fine resource control on Kubernetes.
+  bsc#1086185
+
+-------------------------------------------------------------------
+Wed Apr 11 06:44:34 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.11:
+  * oci: avoid race on container stop
+  * server/sandbox_stop: Pass context through StopAllPodSandboxes
+  * conmon: Add container ID to syslog
+  * Add logging support for base condition in debug
+  * Simplify filter block
+  * Specifying a filter with no filtering expressions is now idempotent
+  * Add methods for listing and fetching container stats
+  * Implement the stats for the image_fs_info command
+  * Return error for container exec
+
+-------------------------------------------------------------------
+Thu Mar 15 15:21:50 UTC 2018 - vrothberg@suse.com
+
+- Require cni and cni-plugins to enable container networking.
+  feature#crio
+
+-------------------------------------------------------------------
+Thu Mar 15 06:43:33 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.10:
+  * conmon: Avoid strlen in logging path
+  * conmon: Remove info logs
+  * container_exec: Fix terminal setting for exec
+
+-------------------------------------------------------------------
+Mon Mar 12 07:07:39 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.9:
+  * sandbox_stop: Call CNI stop before stopping pod infra container
+
+-------------------------------------------------------------------
+Thu Mar  8 09:25:41 UTC 2018 - vrothberg@suse.com
+
+- Remove the crio-shutdown.service.  It does not have any effect when
+  shutting down crio and also isn't shipped on Fedora.
+  - crio-shutdown.service
+
+-------------------------------------------------------------------
+Mon Mar  5 12:50:03 UTC 2018 - vrothberg@suse.com
+
+- crio.conf: update default socket to /var/run/crio/crio.sock as suggested
+  by upstream.
+
+-------------------------------------------------------------------
+Mon Mar  5 10:10:16 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.8:
+  * system_containers: Update mounts
+  * execsync: Set terminal to true when we pass -t to conmon
+  * Make network namespace pinning optional
+  * Add context to net ns symlink removal errors
+  * Make the /opt/cni mount rw
+  * sandbox_stop: close/remove the netns _after_ stopping the containers
+  * sandbox net: set netns closed after actaully closing it
+
+-------------------------------------------------------------------
+Mon Mar  5 10:07:54 UTC 2018 - vrothberg@suse.com
+
+- Configuration files should generally be tagged as %config(noreplace) in order
+  to keep the modified config files and to avoid losing data when the package
+  is being updated.
+
+-------------------------------------------------------------------
+Sat Mar  3 13:38:57 UTC 2018 - vrothberg@suse.com
+
+- Remove empty filter rule from cri-o-rpmlintrc, which was mistakenly
+  masking a few warnings, some of which have been fixed, others need
+  to be filtered.  conmon and pause are not compiled with -fpie anymore
+  to align with what upstream does; linking fails when done properly.
+
+-------------------------------------------------------------------
+Fri Mar  2 18:12:59 UTC 2018 - fcastelli@suse.com
+
+- Update minimum version of the Go compiler required
+
+-------------------------------------------------------------------
+Fri Mar  2 18:07:54 UTC 2018 - fcastelli@suse.com
+
+- Add missing runtime dependencies: socat, iptables, iproute
+
+-------------------------------------------------------------------
+Wed Feb 28 11:35:27 UTC 2018 - vrothberg@suse.com
+
+- Change the installation path of conmon and pause from
+  /usr/lib/crio to /usr/lib/crio/bin in order to align with upstream
+  requirements.
+
+- Update crio.conf to the reflect the new path of conmon and set the correct
+  path of CNI plugins (i.e., /usr/lib/cni).
+
+-------------------------------------------------------------------
+Tue Feb 20 15:27:01 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.6:
+  * vendor: update c/image to handle text/plain from registries
+    Fixes cases where text/plain s1 schemes are mistakenly converted
+    to MIME.
+
+-------------------------------------------------------------------
+Sun Feb 18 12:42:18 UTC 2018 - jengelh@inai.de
+
+- Let description say what the package really does.
+
+-------------------------------------------------------------------
+Fri Feb 16 11:52:12 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.5:
+  * system container: add /var/tmp as RW
+  * container_create: correctly set user
+  * imageService: cache information about images
+  * image: Add lock around image cache access
+
+-------------------------------------------------------------------
+Fri Feb 16 11:34:34 UTC 2018 - vrothberg@suse.com
+
+- Cleanup version-update related changelogs to only keep log entries of
+  changes that are visible and important to the user, and the project.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:59:53 UTC 2018 - vrothberg@suse.com
+
+- Add requirements to libcontainers-{common,image,storage}.
+- Run spec-cleaner on cri-o.spec.
+
+-------------------------------------------------------------------
+Mon Feb 12 06:43:30 UTC 2018 - vrothberg@suse.com
+
+- Update cri-o to v1.9.3:
+  * Be more diligent about cleaning up failed-to-create containers
+  * Use crictl instead of crioctl in image integration tests
+  * Handle truncated IDs in imageService.ResolveNames()
+  * Switch to ImageServer.UntagImage in RemoveImage handler
+  * Return image references from the storage package
+  * storage: API fixups
+
+-------------------------------------------------------------------
+Fri Feb  9 14:30:49 UTC 2018 - vrothberg@suse.com
+
+- Use golang-packaging macro for binary stripping.
+
+- Use -buildmode=pie for compilation.
+
+- The update to 1.9.0+ removes the crioctl binary.  The crictl binary from
+  cri-tools should be used instead.
+
+- Update cri-o to v1.9.2:
+  * sandbox: fix sandbox logPath when crio restarts
+  * Adapt to recent containers/image API updates
+  * container_create: only bind mount /etc/hosts if not provided by k8s
+  * container_attach: Ensure ctl file is closed
+  * lib,oci: drop stateLock when possible
+  * container_exec: fix terminal true process json
+  * container_create: fix apparmor from container config
+  * container_create: correctly set image and kube envs
+  * oci: do not append conmon env to container process
+  * container_exec: use process file with runc exec
+  * drop crioctl source code
+  * conmon: Add support for partial/newline log tags
+  * image_pull: fix image resolver
+  * Add /proc/scsi to masked paths
+  * replace crioctl with crictl
+  * replace crioctl in e2e with crictl
+  * Move crio default sock to /var/run/crio/crio.sock
+  * container_create: set the seccomp profile in the container object
+
+-------------------------------------------------------------------
+Mon Feb  5 06:36:55 UTC 2018 - vrothberg@suse.com
+
+- Fix libostree-devel %if condition for TW, Leap 15+ and SLES 15+.
+
+-------------------------------------------------------------------
+Thu Feb  1 09:16:23 UTC 2018 - vrothberg@suse.com
+
+- Use `%fdupes %buildroot/%_prefix` since `fdupes %buildroot` is not allowedv
+  because you cannot make hardlinks between certain partitions.
+
+-------------------------------------------------------------------
+Wed Jan 31 11:40:32 UTC 2018 - vrothberg@suse.com
+
+- Source the cri-o-rpmlintrc the spec file.
+
+-------------------------------------------------------------------
+Tue Jan 30 15:32:32 UTC 2018 - vrothberg@suse.com
+
+- Add cri-o package: CRI-O is meant to provide an integration path between OCI
+  conformant runtimes and the kubelet. Specifically, it implements the Kubelet
+  Container Runtime Interface (CRI) using OCI conformant runtimes. The scope of
+  CRI-O is tied to the scope of the CRI.

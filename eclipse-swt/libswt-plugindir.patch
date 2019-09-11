@@ -1,0 +1,10 @@
+--- org.eclipse.swt/buildFragment.xml.orig	2011-09-24 23:24:09.004000036 +0200
++++ org.eclipse.swt/buildFragment.xml	2011-09-24 23:24:09.038000036 +0200
+@@ -23,6 +23,7 @@
+ 		<property name="plugin.destination" value="${fragmentdir}" />
+ 		<property name="build.result.folder" value="${fragmentdir}" />
+ 		<property name="destination" value="${fragmentdir}" />
++		<property name="plugindir" value="../org.eclipse.swt" />
+ 		<property name="javacVerbose" value="false" />
+ 		<property name="logExtension" value=".xml" />
+ 		<property name="javacSource" value="1.3" />

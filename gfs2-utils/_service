@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://git.fedorahosted.org/gfs2-utils.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">3.1.9+git.%ct.%h</param>
+    <param name="revision">master</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">gfs2*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">gfs2</param>
+  </service>
+</services>

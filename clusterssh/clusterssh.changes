@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Sat Mar 16 23:15:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Own entire bash-completion subtree
+
+-------------------------------------------------------------------
+Sat Mar 16 20:05:28 UTC 2019 - Petr Vorel <petr.vorel@gmail.com>
+
+- Update to new upstream release v4.13.2_02
+  https://github.com/duncs/clusterssh/blob/v4.13.2_02/Changes
+- Drop clusterssh-fix-docgen.patch as it has been fixed upstream
+  (https://github.com/duncs/clusterssh/pull/106)
+- Add new dependency X11::Protocol::WM (build and runtime)
+- Drop clusterssh-fix-docgen.patch (not relevant any more)
+- Add patch fixing shebang (perl_shebang.patch)
+- Disable Test::PerlTidy as it's not available
+- Add new build and runtime dependency X11::Protocol::WM
+- Add new build dependency Test::Trap (for testing)
+
+-------------------------------------------------------------------
+Sat Mar  3 13:36:02 UTC 2018 - bwiedemann@suse.com
+
+- Add clusterssh-fix-docgen.patch to fix doc generation race
+  (boo#1083835)
+
+-------------------------------------------------------------------
+Fri Jan 20 13:30:43 UTC 2017 - rmaliska@suse.com
+
+- Update to new upstream release 4.07
+* Fixed tests on systems where bash is not installed in /bin/bash 
+  (Github issue #60)
+* Include link to travis-ci site in release emails for automated 
+  build and test reports
+* Rework hostname expansion to be pure-perl rather than relying on 
+  the bash shell (Github issue #53)
+
+For further changes of previous updates see: 
+https://github.com/duncs/clusterssh/blob/master/Changes
+
+-------------------------------------------------------------------
+Wed Jan 27 13:33:48 UTC 2016 - darin@darins.net
+
+- Added patch remove-time-key.patch, which resolves the issue where
+  windows become unmoveable after executing cssh in KDE5.
+  See for bnc#956316 and https://github.com/duncs/clusterssh/issues/46
+
+-------------------------------------------------------------------
+Fri Jun 28 22:47:29 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.02.01
+* New option (-m, --unique-servers) to remove repeated servers when
+  opening terminals
+
+-------------------------------------------------------------------
+Sun Mar  3 19:06:23 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.01.03
+* Allow the path to rsh/ssh/telnet to be defined in the
+  configuration file
+* Move .csshrc to .csshrc.DISABLED since it should no longer be used
+* Resolve error emitted when adding a host via the "Hosts" drop-down
+* Resolve paste using a strange keyboard layout
+* Cope with being invoked by "clusterssh"
+* Remove doc references to "always_tile" (is known as "window_tiling")
+* Updated manpage whatis entries
+* Fix cssh starting if xterm is not installed
+* Set WM_CLASS on windows to "cssh"
+
+-------------------------------------------------------------------
+Tue Nov 27 14:35:38 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-1.0+ or Artistic-1.0
+  See README
+
+-------------------------------------------------------------------
+Thu Oct 25 20:22:04 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (4.01.01)
+
+

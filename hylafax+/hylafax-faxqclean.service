@@ -1,0 +1,12 @@
+#
+# Hylafax usage timers for systemd-timers - service 
+# Copyright (c) 2019 Dr. Axel Braun <axel.braun@gmx.de>
+#
+
+[Unit]
+Description=Faxqueue cleaner process
+Documentation=man:faxqclean(8) 
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/faxqclean

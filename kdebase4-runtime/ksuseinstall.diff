@@ -1,0 +1,171 @@
+diff --git a/drkonqi/CMakeLists.txt b/drkonqi/CMakeLists.txt
+index 39833d7..e7c4a6c 100644
+--- a/drkonqi/CMakeLists.txt
++++ b/drkonqi/CMakeLists.txt
+@@ -39,6 +39,7 @@ set(drkonqi_SRCS
+     reportassistantpages_bugzilla.cpp
+     reportassistantpages_bugzilla_duplicates.cpp
+     reportinterface.cpp
++    susedebugpackageinstaller.cpp
+     backtraceratingwidget.cpp
+     backtracewidget.cpp
+     backtracegenerator.cpp
+@@ -86,6 +87,7 @@ target_link_libraries(drkonqi
+     ${QT_QTWEBKIT_LIBRARY}
+     ${KDE4_KDEWEBKIT_LIBRARY}
+     ${KDEPIMLIBS_KXMLRPCCLIENT_LIBRARY}
++    ksuseinstall
+     drkonqi_backtrace_parser
+ )
+
+diff --git a/drkonqi/backtracewidget.cpp b/drkonqi/backtracewidget.cpp
+index c0a307f..45d8859 100644
+--- a/drkonqi/backtracewidget.cpp
++++ b/drkonqi/backtracewidget.cpp
+@@ -38,6 +38,7 @@
+ #include "drkonqi_globals.h"
+ #include "debuggermanager.h"
+ #include "gdbhighlighter.h"
++#include "susedebugpackageinstaller.h"
+
+ static const char extraDetailsLabelMargin[] = " margin: 5px; ";
+
+@@ -50,7 +51,7 @@ BacktraceWidget::BacktraceWidget(BacktraceGenerator *generator, QWidget *parent,
+     ui.setupUi(this);
+
+     //Debug package installer
+-    m_debugPackageInstaller = new DebugPackageInstaller(this);
++    m_debugPackageInstaller = new SUSEDebugPackageInstaller(this);
+     connect(m_debugPackageInstaller, SIGNAL(error(QString)), this, SLOT(debugPackageError(QString)));
+     connect(m_debugPackageInstaller, SIGNAL(packagesInstalled()), this, SLOT(regenerateBacktrace()));
+     connect(m_debugPackageInstaller, SIGNAL(canceled()), this, SLOT(debugPackageCanceled()));
+diff --git a/drkonqi/backtracewidget.h b/drkonqi/backtracewidget.h
+index 3cfcadc..9160b41 100644
+--- a/drkonqi/backtracewidget.h
++++ b/drkonqi/backtracewidget.h
+@@ -28,6 +28,7 @@
+ class QSyntaxHighlighter;
+ class BacktraceRatingWidget;
+ class BacktraceGenerator;
++class SUSEDebugPackageInstaller;
+
+ class BacktraceWidget: public QWidget
+ {
+@@ -55,7 +56,7 @@ private:
+     Ui::Form    ui;
+     BacktraceRatingWidget *   m_backtraceRatingWidget;
+     QSyntaxHighlighter *m_highlighter;
+-    DebugPackageInstaller * m_debugPackageInstaller;
++    SUSEDebugPackageInstaller * m_debugPackageInstaller;
+
+     void setAsLoading();
+
+diff --git a/drkonqi/susedebugpackageinstaller.cpp b/drkonqi/susedebugpackageinstaller.cpp
+new file mode 100644
+index 0000000..58544f8
+--- /dev/null
++++ b/drkonqi/susedebugpackageinstaller.cpp
+@@ -0,0 +1,51 @@
++/*******************************************************************
++* debugpackageinstaller.cpp
++* Copyright  2009    Dario Andres Rodriguez <andresbajotierra@gmail.com>
++*
++* This program is free software; you can redistribute it and/or
++* modify it under the terms of the GNU General Public License as
++* published by the Free Software Foundation; either version 2 of
++* the License, or (at your option) any later version.
++*
++* This program is distributed in the hope that it will be useful,
++* but WITHOUT ANY WARRANTY; without even the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++* GNU General Public License for more details.
++*
++* You should have received a copy of the GNU General Public License
++* along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*
++******************************************************************/
++
++#include "susedebugpackageinstaller.h"
++
++#include <klocale.h>
++#include <qdebug.h>
++#include <qwidget.h>
++
++#include "ksuseinstall.h"
++
++SUSEDebugPackageInstaller::SUSEDebugPackageInstaller(QWidget *parent)
++    : QObject(parent)
++{
++}
++
++bool SUSEDebugPackageInstaller::canInstallDebugPackages() const
++{
++    return KSUSEInstall::canInstallDebuginfo();
++}
++
++void SUSEDebugPackageInstaller::setMissingLibraries(const QStringList & libraries)
++{
++    m_missingLibraries = libraries;
++}
++
++void SUSEDebugPackageInstaller::installDebugPackages()
++{
++    Q_ASSERT(canInstallDebugPackages());
++    qDebug() << "MISSING:" << m_missingLibraries;
++    if( KSUSEInstall::installDebuginfo( m_missingLibraries, static_cast< QWidget* >( parent())))
++        emit packagesInstalled();
++    else
++        emit error(i18nc("@info", "Could not find debug symbol packages for this application."));
++}
+diff --git a/drkonqi/susedebugpackageinstaller.h b/drkonqi/susedebugpackageinstaller.h
+new file mode 100644
+index 0000000..3694d8a
+--- /dev/null
++++ b/drkonqi/susedebugpackageinstaller.h
+@@ -0,0 +1,46 @@
++/*******************************************************************
++* debugpackageinstaller.h
++* Copyright  2009    Dario Andres Rodriguez <andresbajotierra@gmail.com>
++*
++* This program is free software; you can redistribute it and/or
++* modify it under the terms of the GNU General Public License as
++* published by the Free Software Foundation; either version 2 of
++* the License, or (at your option) any later version.
++*
++* This program is distributed in the hope that it will be useful,
++* but WITHOUT ANY WARRANTY; without even the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++* GNU General Public License for more details.
++*
++* You should have received a copy of the GNU General Public License
++* along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*
++******************************************************************/
++#ifndef SUSEDEBUGPACKAGEINSTALLER__H
++#define SUSEDEBUGPACKAGEINSTALLER__H
++
++#include "debugpackageinstaller.h"
++
++class SUSEDebugPackageInstaller: public QObject
++{
++    Q_OBJECT
++
++    enum Results { ResultInstalled = 0, ResultError = 1,
++                   ResultSymbolsNotFound = 2, ResultCanceled = 3 };
++
++    public:
++        explicit SUSEDebugPackageInstaller(QWidget *parent = 0);
++        bool canInstallDebugPackages() const;
++        void setMissingLibraries(const QStringList &);
++        void installDebugPackages();
++
++    Q_SIGNALS:
++        void packagesInstalled();
++        void error(const QString &);
++        void canceled();
++
++    private:
++        QStringList             m_missingLibraries;
++};
++
++#endif

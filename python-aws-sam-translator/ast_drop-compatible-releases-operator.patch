@@ -1,0 +1,13 @@
+diff -Nru serverless-application-model-1.11.0.orig/requirements/base.txt serverless-application-model-1.11.0/requirements/base.txt
+--- serverless-application-model-1.11.0.orig/requirements/base.txt	2019-04-26 00:03:58.000000000 +0200
++++ serverless-application-model-1.11.0/requirements/base.txt	2019-07-10 14:43:48.484197605 +0200
+@@ -1,5 +1,5 @@
+-boto3~=1.5
+-enum34~=1.1; python_version<"3.4"
+-jsonschema~=2.6
+-six~=1.11
++boto3>=1.5
++enum34>=1.1; python_version<"3.4"
++jsonschema>=2.6
++six>=1.11
+ 

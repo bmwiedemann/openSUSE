@@ -1,0 +1,13 @@
+Index: PackageKit-1.1.12/policy/Makefile.am
+===================================================================
+--- PackageKit-1.1.12.orig/policy/Makefile.am
++++ PackageKit-1.1.12/policy/Makefile.am
+@@ -1,8 +1,4 @@
+ 
+-polkit_rulesdir = $(datadir)/polkit-1/rules.d
+-dist_polkit_rules_DATA =					\
+-	org.freedesktop.packagekit.rules
+-
+ polkit_policydir = $(datadir)/polkit-1/actions
+ dist_polkit_policy_DATA =					\
+ 	org.freedesktop.packagekit.policy

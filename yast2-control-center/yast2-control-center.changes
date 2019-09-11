@@ -1,0 +1,1201 @@
+-------------------------------------------------------------------
+Fri May 31 13:34:19 UTC 2019 - Noah Davis <noahadvs@gmail.com>
+
+- Display GenericName and Comment, not Name (boo#1084864)
+- 4.2.1
+
+-------------------------------------------------------------------
+Mon May 20 18:52:00 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change location of appdataa and fix it up (fate#319035)
+- 4.2.0
+
+-------------------------------------------------------------------
+Mon Apr  8 15:05:04 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require libQt5Svg5 to support SVG icons (bsc#1127245)
+- 4.1.8
+
+-------------------------------------------------------------------
+Thu Feb 28 16:04:39 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Introduce very effective fallback for icons (boo#1127245)
+- 4.1.7
+
+-------------------------------------------------------------------
+Thu Feb 14 10:42:58 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Fix icon display to new libyui-qt function (boo#1125424)
+- 4.1.6
+
+-------------------------------------------------------------------
+Mon Jan 28 12:47:56 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Enable HiDPI pixmaps (bsc#1109602)
+- 4.1.5
+
+-------------------------------------------------------------------
+Wed Nov 28 12:56:19 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Use yast-control-center icon for desktop files (boo#1109310)
+
+-------------------------------------------------------------------
+Sun Nov 25 01:53:03 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.3
+
+-------------------------------------------------------------------
+Wed Sep 19 10:18:32 UTC 2018 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Enable HiDPI (bsc#1089886)
+- 4.1.2 
+
+-------------------------------------------------------------------
+Mon Aug 20 13:51:27 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Tue Jun 26 10:21:29 CEST 2018 - schubi@suse.de
+
+- Searching for translated keywords (fate#321043).
+- 4.1.1
+
+-------------------------------------------------------------------
+Mon May 14 13:36:00 UTC 2018 - lslezak@suse.cz
+
+- Fixed crash when reading an invalid or incomplete .desktop file
+  (bsc#1090843)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri May 11 00:03:28 UTC 2018 - hellcp@opensuse.org
+
+- Fix Gnome's display of titles/icons (boo#1092845)
+- 4.0.3
+
+-------------------------------------------------------------------
+Fri Mar  2 08:04:29 UTC 2018 - jreidinger@suse.com
+
+- Use yast2-control-center as replacement for dropped
+  yast2-control-center-gnome (bsc#1081788)
+- 4.0.2
+
+-------------------------------------------------------------------
+Wed Feb 21 16:30:37 UTC 2018 - letcp@protonmail.com
+
+- Fixes to way icons are displayed (boo#1081517)
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Nov 13 12:44:08 UTC 2017 - kukuk@suse.com
+
+- Do not included unused RPC headers (boo#1081118).
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed Aug  9 12:01:20 UTC 2017 - mvidner@suse.com
+
+- Adjusted to increased so version of the libyui library;
+  an unversioned dependency is OK (bsc#1052217)
+- 3.3.0
+
+-------------------------------------------------------------------
+Tue May  2 13:20:35 UTC 2017 - i@xuzhao.net
+
+- Added support for 128x128 sized X11 window icon
+- 3.2.0
+
+-------------------------------------------------------------------
+Thu Dec 10 16:43:44 UTC 2015 - lslezak@suse.cz
+
+- Change the yast2-control-center-qt dependency on libyui-qt7
+  from Recommensd to Requires (bnc#958650)
+- Added support for KDE5 (added Supplements plasma5-session dependency)
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed Nov  4 17:27:44 CET 2015 - shundhammer@suse.de
+
+- Recommend latest libyui-qt7, not obsolete libyui-qt5 in .spec
+  file (bsc#952249)
+
+-------------------------------------------------------------------
+Wed Apr  8 10:26:53 UTC 2015 - dimstar@opensuse.org
+
+- Install appdata.xml file in order to show up in AppStream based
+  software centers (currently only GNOME Software).
+
+-------------------------------------------------------------------
+Thu Oct 30 21:22:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Install YaST-systemsettings.desktop also to KF5 services directory,
+  so it is also shown in Plasma5 session
+- 3.1.5
+
+-------------------------------------------------------------------
+Thu Oct 30 16:15:42 UTC 2014 - antoine.belvire@laposte.net
+
+- ignore desktop files whose Hidden attribute is set to "true"
+- 3.1.4
+
+-------------------------------------------------------------------
+Fri Apr  4 14:44:54 UTC 2014 - mvidner@suse.com
+
+- CMakeFile: QT5_USE_MODULES is deprecated in Qt5.3 (H Senjan)
+- Use pkgconfig BuildRequires to reduce build deps.
+- 3.1.3
+
+-------------------------------------------------------------------
+Thu Feb 27 14:50:21 UTC 2014 - mvidner@suse.com
+
+- Fixed save_y2logs invocation (bnc#866056).
+- 3.1.2
+
+-------------------------------------------------------------------
+Thu Nov 14 13:11:28 UTC 2013 - mvidner@suse.com
+
+- ported to Qt5
+- 3.1.1
+
+-------------------------------------------------------------------
+Mon Oct 14 16:10:40 UTC 2013 - jreidinger@suse.com
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Jul 30 08:02:01 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri Jul  5 15:39:03 CEST 2013 - tgoettlicher@suse.de
+
+- fixed inconsistency, double vs single click (bnc#780349)
+- Version: 2.22.6
+
+-------------------------------------------------------------------
+Wed May 22 15:10:27 CEST 2013 - tgoettlicher@suse.de
+
+- Adapted requirement for libyui-qt5
+- Version: 2.22.5
+
+-------------------------------------------------------------------
+Sat Mar 30 14:54:01 UTC 2013 - dimstar@opensuse.org
+
+- Add X-GNOME-SystemSettings as category to YaST.desktop: allows
+  YaST to be seen by gnome-control-center and to be added
+  transparently.
+
+-------------------------------------------------------------------
+Tue Feb 26 15:20:07 CET 2013 - tgoettlicher@suse.de
+
+- Adapted requirement for libyui-qt4
+- Version: 2.22.4
+
+-------------------------------------------------------------------
+Tue Feb 26 15:09:31 CET 2013 - tgoettlicher@suse.de
+
+- Added requirement for yast2-theme
+- Version: 2.22.3
+
+-------------------------------------------------------------------
+Fri Apr 27 15:25:14 CEST 2012 - tgoettlicher@suse.de
+
+- workaround for gcc 4.7
+- Version: 2.22.2
+
+-------------------------------------------------------------------
+Thu Mar 15 18:29:56 CET 2012 - aschnell@suse.de
+
+- added missing include for gcc 4.7
+
+-------------------------------------------------------------------
+Mon Jan 30 16:46:38 CET 2012 - tgoettlicher@suse.de
+
+- Fixed bnc#742748: selected groups with keyboard 
+- Version: 2.22.1
+
+-------------------------------------------------------------------
+Wed Dec 21 17:52:53 CET 2011 - tgoettlicher@suse.de
+
+- Confirmed license
+- Version: 2.22.0
+
+-------------------------------------------------------------------
+Thu Oct 13 13:47:26 CEST 2011 - tgoettlicher@suse.de
+
+- Fixed bnc#723396: added comment desktop file
+- Version: 2.21.7
+
+-------------------------------------------------------------------
+Fri Aug 19 14:49:03 CEST 2011 - tgoettlicher@suse.de
+
+- Fixed bnc#553189: yast2 control center (qt) does not print commands anymore
+- Version: 2.21.6
+
+-------------------------------------------------------------------
+Fri Aug 19 12:01:25 CEST 2011 - tgoettlicher@suse.de
+
+- Fixed bnc#549863: useless context menu in category-dock-widget
+- Version: 2.21.5
+
+-------------------------------------------------------------------
+Fri Aug  5 14:48:57 CEST 2011 - tgoettlicher@suse.de
+
+- Added application icon (bnc #621010)
+- 2.21.4
+
+-------------------------------------------------------------------
+Fri Aug  5 12:31:14 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+- 2.21.3
+
+-------------------------------------------------------------------
+Thu May  5 15:57:43 CEST 2011 - tgoettlicher@suse.de
+
+- Fixed module highlighting when window is scrolled (bnc #685446)
+- 2.21.2
+
+-------------------------------------------------------------------
+Wed Apr 27 17:22:24 CEST 2011 - tgoettlicher@suse.de
+
+- Removed useless warning message (bnc #620617) 
+- 2.21.1
+
+-------------------------------------------------------------------
+Wed Feb 23 13:06:01 CET 2011 - tgoettlicher@suse.de
+
+- remember panel width (bnc #613352) 
+- 2.20.2
+
+-------------------------------------------------------------------
+Tue Feb 22 17:36:58 CET 2011 - tgoettlicher@suse.de
+
+- fixed bnc #650907: yast2 shrinks module selector item on search
+- 2.20.1
+
+-------------------------------------------------------------------
+Tue Feb 22 14:20:36 CET 2011 - tgoettlicher@suse.de
+
+- bnc #661109: Layout of icons gets mixed after using search
+- 2.20.0 
+
+-------------------------------------------------------------------
+Mon Oct 11 11:17:55 CEST 2010 - tgoettlicher@suse.de
+
+- Adapted license format
+- 2.19.3 
+
+-------------------------------------------------------------------
+Fri Oct  8 12:32:21 CEST 2010 - tgoettlicher@suse.de
+
+- fixed: bnc #644856: wrong systemsetting category
+- 2.19.2 
+
+-------------------------------------------------------------------
+Thu Mar 11 13:51:41 CET 2010 - kmachalkova@suse.cz
+
+- Integrate YaST with new KControl - it is ExternaApp, not KCModule
+  (bnc#574864)
+- 2.19.1 
+
+-------------------------------------------------------------------
+Thu Jan  7 14:24:15 CET 2010 - jsrain@suse.cz
+
+- added yast2-control-center-qt Recommends yast2-qt (bnc#545331)
+
+-------------------------------------------------------------------
+Thu Dec 10 13:03:24 CET 2009 - kmachalkova@suse.cz
+
+- Correctly show GenericNames containing comma (convert QStringList
+  to QString) (bnc#550085)
+- Show Name from .desktop (instead of client name) in status line
+  (bnc#544167)
+- Enable closing the main window with Ctrl+Q (bnc#551737)
+- Re-activated y2log saving (port of original Qt3 code - bnc#548520)
+- 2.19.0
+
+-------------------------------------------------------------------
+Mon Nov 23 16:30:53 CET 2009 - kmachalkova@suse.cz
+
+- Use 'YaST' instead of 'YaST2' in messages and window titlebars 
+  (bnc#532518) 
+
+-------------------------------------------------------------------
+Tue Oct 20 11:59:43 CEST 2009 - kmachalkova@suse.cz
+
+- The same module order for every language (to prevent broken sync
+  between left and right pane for non-English locale - bnc#525288)
+- .desktop file split into system-wide and KDE-specific one for
+   kcontrol (do not use xdg-su from within kcontrol - bnc#544313)
+- 2.18.12
+
+-------------------------------------------------------------------
+Tue Sep  1 17:56:45 CEST 2009 - kmachalkova@suse.cz
+
+- Use more contrast colours for highlighted items in icon view 
+  (bnc#531528)
+- Pre-select 1st module category (partly bnc#531529) 
+- 2.18.11
+
+-------------------------------------------------------------------
+Mon Aug 24 15:51:45 CEST 2009 - kmachalkova@suse.cz
+
+- Scroll icon view so that category header is in the topmost 
+  position (if possible) - bnc#525288 
+- 2.18.10
+
+-------------------------------------------------------------------
+Wed Aug 19 16:21:09 UTC 2009 - wstephenson@novell.com
+
+- Don't allow the group dock widget to be closed
+
+-------------------------------------------------------------------
+Tue Aug 18 17:57:48 CEST 2009 - kmachalkova@suse.cz
+
+- Use left mouse single click (bnc#525287) and/or 'Enter' key 
+  (bnc#528631) to launch the modules 
+- 2.18.9
+
+-------------------------------------------------------------------
+Tue Aug 11 15:47:04 CEST 2009 - kmachalkova@suse.cz
+
+- Two X-KDE-* keys added to .desktop to enable launching of YaST 
+  from within KDE System Settings (bnc#526911)
+- Removed X-KDE-SubstituteUID from .desktop, using Exec=xdg-su ..
+  instead. Thus, OnlyShowIn key is not needed anymore (bnc#525876)
+- 2.18.8
+
+-------------------------------------------------------------------
+Thu Jul 30 15:02:04 CEST 2009 - kmachalkova@suse.cz
+
+- Support search in module keywords (X-SuSE-YaST-Keywords) 
+  (FaTE#305845)
+- 2.18.7
+
+-------------------------------------------------------------------
+Fri Jul 17 13:38:07 CEST 2009 - kmachalkova@suse.cz
+
+- Show warning (user is not root) at startup
+- Process CLI options 
+- Put $YAST_DESKTOP_DIR support back again
+- Enable translating strings in 'control-center' textdomain + 
+  generating pot files by y2tools
+- 2.18.6
+
+-------------------------------------------------------------------
+Tue Jul  7 12:43:23 CEST 2009 - kmachalkova@suse.cz
+
+- Replaced not expanding @ybindir@ in spec.in by something sensible
+- Few minor fixes
+  * Show no groups if no module matches the query
+  * Remember window position
+  * Use some system of fallback icons for groups and modules
+- 2.18.5
+
+-------------------------------------------------------------------
+Fri Jun 26 18:05:48 CEST 2009 - kmachalkova@suse.cz
+
+- Initial version of Qt4 port (FaTE #305550)
+- 2.18.4 
+
+-------------------------------------------------------------------
+Thu Jun  4 17:16:19 CEST 2009 - tgoettlicher@suse.de
+
+- Changed $XDG_CONFIG_HOME to $YAST2_DESKTOP_DIR (bnc #509891)
+- V 2.18.3
+
+-------------------------------------------------------------------
+Thu Jun  4 16:55:49 CEST 2009 - tgoettlicher@suse.de
+
+- Added support for $XDG_CONFIG_HOME (bnc #509891)
+- V 2.18.2
+
+-------------------------------------------------------------------
+Wed Nov 19 13:05:31 CET 2008 - sh@suse.de
+
+- Fixed bnc #445781: Module groups not translated
+- V 2.17.3 
+
+-------------------------------------------------------------------
+Tue Nov 11 17:13:33 CET 2008 - ro@suse.de
+
+- drop bogus prereq (there is no pre or postinstall script here)
+
+-------------------------------------------------------------------
+Wed Oct 29 15:20:18 CET 2008 - sh@suse.de
+
+- Fixed bnc #438197: Need to scroll categories
+- V 2.17.2 
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Wed Apr 30 13:57:34 CEST 2008 - sh@suse.de
+
+- Added "supplements: kdebase4-session" to .spec (bnc #385110) 
+
+-------------------------------------------------------------------
+Tue Apr 29 16:44:03 CEST 2008 - sh@suse.de
+
+- Fixed bnc #144694: Too low resolution for control center app icon
+- V 2.16.1
+
+-------------------------------------------------------------------
+Tue Nov 27 13:40:59 CET 2007 - mvidner@suse.cz
+
+- Make it build in a prefix different from /usr.
+
+-------------------------------------------------------------------
+Tue Nov 27 13:39:45 CET 2007 - tgoettlicher@suse.de
+
+- V 2.16.0
+
+-------------------------------------------------------------------
+Fri Oct 26 15:48:39 CEST 2007 - tgoettlicher@suse.de
+
+- launch yast modules only when LMB is clicked (#332476)
+- V 2.15.7
+
+-------------------------------------------------------------------
+Wed Oct 24 14:16:28 CEST 2007 - tgoettlicher@suse.de
+
+- fixed YaST control center shows empty section (#309452)
+- V 2.15.6
+
+-------------------------------------------------------------------
+Wed Oct 24 11:48:20 CEST 2007 - tgoettlicher@suse.de
+
+- fixed pixelated icons in YaST navigation (left pane) (#308641) 
+- V 2.15.5
+
+-------------------------------------------------------------------
+Wed Aug 29 14:41:07 CEST 2007 - tgoettlicher@suse.de
+
+- controlcenter shows titlebar depending on existence of title-bar-gradient.png
+- r40572
+- V 2.15.4
+
+-------------------------------------------------------------------
+Fri Aug 24 16:41:49 CEST 2007 - sh@suse.de
+
+- Added borders around group icons (bug #295712)
+- V 2.15.3
+
+-------------------------------------------------------------------
+Fri Aug 24 14:10:08 CEST 2007 - sh@suse.de
+
+- Don't show menu entry in desktops other than KDE or GNOME
+  (won't run properly anyway without root permission which is a
+   non-standard extension of the desktop file format)
+- V 2.15.2 
+
+-------------------------------------------------------------------
+Fri Aug  3 13:03:31 CEST 2007 - sh@suse.de
+
+- V 2.15.1
+- Fixed bug #274326: yast2-control-center-* needs PreReq: yast2-control-center
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Wed Apr 25 14:21:39 CEST 2007 - sh@suse.de
+
+- Fixed desktop-file-validate complaints in YaST.desktop:
+  - Added 'Encoding=UTF-8'
+  - Removed duplicate X-KDE-SustituteUID 
+
+-------------------------------------------------------------------
+Thu Mar 29 14:26:47 CEST 2007 - sh@suse.de
+
+- Use correct textdomain for warning popup if started as non-root 
+
+-------------------------------------------------------------------
+Mon Mar 19 14:26:28 CET 2007 - sh@suse.de
+
+- Added split-provides (bug #255368)
+- V 2.15.5 
+
+-------------------------------------------------------------------
+Mon Mar 19 14:00:00 CET 2007 - tgoettlicher@suse.de
+
+- Added support for saving log files via Shift-F8 (#225707)
+
+-------------------------------------------------------------------
+Mon Mar  5 17:22:37 CET 2007 - sh@suse.de
+
+- Package split (fix for bug #240240):
+  - yast2-control-center    with .desktop file and icon
+  - yast2-control-center-qt with binary
+
+- V 2.14.4 
+
+-------------------------------------------------------------------
+Tue Feb 27 12:30:29 CET 2007 - sh@suse.de
+
+- No longer using "NotShowIn=GNOME"
+  See also bug #247812: No YaST2 control center in GNOME
+- V 2.14.3
+
+-------------------------------------------------------------------
+Fri Feb 16 14:07:58 CET 2007 - sh@suse.de
+
+- Fixed bug #246018: Typo in msg 
+
+-------------------------------------------------------------------
+Tue Feb 13 15:03:06 CET 2007 - sh@suse.de
+
+- Fixed bug #240240: Added "NotShowIn=GNOME" to .desktop file 
+- V 2.14.2
+
+-------------------------------------------------------------------
+Fri Nov 10 13:46:41 CET 2006 - sh@suse.de
+
+- Merged SLE-10-SP1-Branch to trunk (-r31627:34246)
+- V 2.14.1
+
+-------------------------------------------------------------------
+Mon Nov  6 16:06:55 CET 2006 - sh@suse.de
+
+- Fixed bug #217247: No contrast in categories list box
+- V 2.13.5 
+
+-------------------------------------------------------------------
+Thu Oct 26 17:33:08 CEST 2006 - sh@suse.de
+
+- Fixed bug #213869: Missing ellipsis on "Search" button
+- V 2.13.4 
+
+-------------------------------------------------------------------
+Wed Oct 18 18:31:41 CEST 2006 - sh@suse.de
+
+- Implemented feature #300460: Use gettext for module names 
+- V 2.13.3
+
+-------------------------------------------------------------------
+Wed Oct 18 16:50:04 CEST 2006 - sh@suse.de
+
+- Implemented feature #300915: Increase Visibility of Search Function 
+
+-------------------------------------------------------------------
+Tue May  2 17:54:19 CEST 2006 - sreeves@suse.de
+
+- Fix for #170702 - add to Control Center.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 21 16:37:45 CET 2005 - sh@suse.de
+
+- V 2.13.2
+- Reduced initial window size (less empty space)
+
+-------------------------------------------------------------------
+Mon Nov 14 17:40:04 CET 2005 - sh@suse.de
+
+- V 2.13.1
+- Fixed bug #105481: Missing ellipsis in "Search..." menu entry
+
+-------------------------------------------------------------------
+Thu Sep  1 16:20:04 CEST 2005 - sh@suse.de
+
+- V 2.12.4
+- Fixed bug #114707: Added missing translation markers 
+
+-------------------------------------------------------------------
+Fri Jun 10 16:50:58 CEST 2005 - sh@suse.de
+
+- Fixed icon name in .desktop file
+- V 2.12.3 
+
+-------------------------------------------------------------------
+Thu May 19 17:22:43 CEST 2005 - sh@suse.de
+
+- Made y2cc look more like a normal Qt application
+  (upon eanderson's request):
+  - Removed graphical title bar
+  - Removed all buttons
+  - Added menus
+- V 2.12.2 
+
+-------------------------------------------------------------------
+Tue Apr  5 14:43:26 CEST 2005 - sh@suse.de
+
+- Merged 9.3-branch 21937:22910 to trunk
+- V 2.12.1
+
+-------------------------------------------------------------------
+Wed Mar 16 18:13:37 CET 2005 - sh@suse.de
+
+- Fixed bug #71816: date-time module doesn't start after setting localtime 
+- V 2.11.4
+
+-------------------------------------------------------------------
+Fri Feb 18 13:21:43 CET 2005 - visnov@suse.cz
+
+- Follow "Hidden" attribute in the desktop files
+- V 2.11.3
+
+-------------------------------------------------------------------
+Mon Nov 29 12:23:54 CET 2004 - sh@suse.de
+
+- Fixed autobuild error: No icon installed
+- V 2.11.2 
+
+-------------------------------------------------------------------
+Tue Nov  2 15:14:27 CET 2004 - mvidner@suse.cz
+
+- Added pkgconfig to neededforbuild.
+- 2.11.1
+
+-------------------------------------------------------------------
+Wed Oct 27 13:59:31 CEST 2004 - sh@suse.de
+
+- Added support for LANG with country code (de_DE, zh_CN, ...),
+  fall back to LANG without country (de, zh), then defaults 
+  (bug #47668)
+
+-------------------------------------------------------------------
+Thu Aug 26 16:08:58 CEST 2004 - sh@suse.de
+
+- Bumped version to 2.10.1 
+
+-------------------------------------------------------------------
+Tue May  4 16:21:55 CEST 2004 - gs@suse.de
+
+- messages from proof reading merged back 
+
+-------------------------------------------------------------------
+Fri Apr  2 16:22:52 CEST 2004 - sh@suse.de
+
+- License change to GPL
+
+-------------------------------------------------------------------
+Thu Apr  1 18:36:57 CEST 2004 - sh@suse.de
+
+- V 2.9.10
+- Added black horizontal line below title bar 
+
+-------------------------------------------------------------------
+Thu Mar 25 17:13:50 CET 2004 - sh@suse.de
+
+- V 2.9.9
+- Stole title bar layout from YQWizard (3 pics, not only 1) 
+
+-------------------------------------------------------------------
+Tue Mar 23 18:39:53 CET 2004 - sh@suse.de
+
+- V 2.9.8
+- Moved icons to yast2-theme
+- Changed icon paths to new yast2-theme paths 
+
+-------------------------------------------------------------------
+Sat Mar 06 12:41:27 CET 2004 - arvin@suse.de
+
+- added icon for uml installation
+
+-------------------------------------------------------------------
+Fri Mar 05 17:42:10 CET 2004 - arvin@suse.de
+
+- added icon for installation into directory
+
+-------------------------------------------------------------------
+Mon Mar  1 11:18:09 CET 2004 - sh@suse.de
+
+- (adrian) added symlink for icons
+
+-------------------------------------------------------------------
+Thu Feb 26 17:23:32 CET 2004 - msvec@suse.cz
+
+- added power management icon (#35067)
+- 2.9.4
+
+-------------------------------------------------------------------
+Thu Feb  5 19:02:53 CET 2004 - sh@suse.de
+
+- V 2.9.3
+- Migration to multiple .desktop files for module groups, too
+  (reading /usr/share/applications/YaST2/groups/*.desktop)
+
+-------------------------------------------------------------------
+Wed Jan 14 18:32:04 CET 2004 - sh@suse.de
+
+- V 2.9.2
+- Migrated to .desktop files
+  .y2cc files are now obsolete for YaST2 modules,
+  the y2cc only needs y2cc.groups and the .desktop files
+
+-------------------------------------------------------------------
+Thu Jan 08 16:56:08 CET 2004 - arvin@suse.de
+
+- dropped broken pre-start feature (bug #33860)
+
+-------------------------------------------------------------------
+Fri Sep 19 14:24:36 CEST 2003 - adrian@suse.de
+
+- V 2.8.10
+- update babelfish icon and ldap_client icon
+
+-------------------------------------------------------------------
+Wed Sep 17 15:29:50 CEST 2003 - sh@suse.de
+
+- V 2.8.9
+- Fixed bug #30236: Bad fullscreen geometry for some window
+  managers
+
+-------------------------------------------------------------------
+Thu Sep 11 21:18:33 CEST 2003 - adrian@suse.de
+
+- V 2.8.8
+- update icons
+- call YaST with root password in menu
+
+-------------------------------------------------------------------
+Mon Sep 08 16:50:37 CEST 2003 - arvin@suse.de
+
+- updated icons
+
+-------------------------------------------------------------------
+Mon Sep 08 15:02:40 CEST 2003 - arvin@suse.de
+
+- updated icons
+
+-------------------------------------------------------------------
+Wed Sep  3 13:52:14 CEST 2003 - sh@suse.de
+
+- V 2.8.5
+- Added .desktop file
+
+-------------------------------------------------------------------
+Tue Aug 19 16:31:26 CEST 2003 - msvec@suse.cz
+
+- added yast2-phone-services icons
+- 2.8.4
+
+-------------------------------------------------------------------
+Tue Jun 17 12:15:54 CEST 2003 - arvin@suse.de
+
+- added directories to file list
+
+-------------------------------------------------------------------
+Thu Jun 12 11:45:06 CEST 2003 - sh@suse.de
+
+- V 2.8.2
+- Removed obsolete logcontrol (unpackaged anyway)
+
+-------------------------------------------------------------------
+Fri Mar 14 17:14:00 CET 2003 - sh@suse.de
+
+- New kerberos icon by Ken
+
+-------------------------------------------------------------------
+Wed Feb 19 15:35:39 CET 2003 - sh@suse.de
+
+- Fixed bug #23654: Window partially invisible
+
+-------------------------------------------------------------------
+Thu Feb  6 16:42:45 CET 2003 - sh@suse.de
+
+- V 2.7.1
+- Added new command line options --fullscreen --noborder
+- Propagate those options to child processes
+
+-------------------------------------------------------------------
+Mon Jan 13 14:48:49 CET 2003 - arvin@suse.de
+
+- remotechooser.ycp and remoteinstall.ycp move to yast2 package
+- use icon dsl.png for adsl and dsl
+
+-------------------------------------------------------------------
+Wed Sep  4 16:55:56 CEST 2002 - lslezak@suse.cz
+
+- added new backup.png and restore.png icon
+- version 2.6.14
+
+-------------------------------------------------------------------
+Tue Sep  3 09:21:16 CEST 2002 - lnussel@suse.de
+
+- new headline icon again
+- version 2.6.13
+
+-------------------------------------------------------------------
+Mon Sep  2 17:17:16 CEST 2002 - lslezak@suse.cz
+
+- added new powertweak.png icon
+- version 2.6.12
+
+-------------------------------------------------------------------
+Thu Aug 29 18:51:00 CEST 2002 - lnussel@suse.de
+
+- new headline icon
+
+-------------------------------------------------------------------
+Tue Aug 27 16:15:30 CEST 2002 - msvec@suse.cz
+
+- proxy icon
+- 2.6.9
+
+-------------------------------------------------------------------
+Mon Aug 26 11:56:45 CEST 2002 - lslezak@suse.cz
+
+- new icon joystick.png for yast2-sound (joystick configuration)
+- version 2.6.8
+
+-------------------------------------------------------------------
+Fri Aug 23 08:25:07 CEST 2002 - jsuchome@suse.cz
+
+- new icon for yast2-profile-manager
+
+-------------------------------------------------------------------
+Fri Aug 16 17:24:43 CEST 2002 - arvin@suse.de
+
+- bind to correct textdomain
+
+-------------------------------------------------------------------
+Thu Aug 15 11:37:27 CEST 2002 - jsuchome@suse.cz
+
+- Merged proofread texts for the second translation round.
+
+-------------------------------------------------------------------
+Thu Jul 25 17:34:23 CEST 2002 - arvin@suse.de
+
+- also extract texts from C++ source files (bug #17216)
+
+-------------------------------------------------------------------
+Fri Jul 12 16:11:01 CEST 2002 - arvin@suse.de
+
+- use proper namespace for Args and CallFunction (#16776)
+
+-------------------------------------------------------------------
+Thu Jul 04 13:24:57 CEST 2002 - arvin@suse.de
+
+- move non binary file from /usr/lib/YaST2 to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Mon Jun 24 15:54:55 CEST 2002 - arvin@suse.de
+
+- renamed to yast2-control-center from yast2-menu
+
+-------------------------------------------------------------------
+Wed Jun 12 11:34:37 CEST 2002 - arvin@suse.de
+
+- adapted to new command line of yast2
+
+-------------------------------------------------------------------
+Fri Apr 26 16:40:36 CEST 2002 - arvin@suse.de
+
+- fixed linking with qt for x86-64
+
+-------------------------------------------------------------------
+Sun Apr 14 00:21:48 CEST 2002 - arvin@suse.de
+
+- fixes for gcc 3.1
+
+-------------------------------------------------------------------
+Thu Mar 21 15:09:49 CET 2002 - lnussel@suse.de
+
+- remove quickstart popup (#15231,#14382)
+
+-------------------------------------------------------------------
+Thu Mar 14 09:16:18 CET 2002 - lnussel@suse.de
+
+- added the lost new title graphics again, this time with a
+  different name (#14920)
+
+-------------------------------------------------------------------
+Fri Mar  8 18:05:07 CET 2002 - mike@suse.de
+
+- new icons made by tackat
+
+-------------------------------------------------------------------
+Mon Mar  4 17:32:13 CET 2002 - lnussel@suse.de
+
+- added simplifyWhiteSpace to remove LF from helptexts (#14337)
+- removed some debug output (#14318)
+
+-------------------------------------------------------------------
+Wed Feb 27 15:28:23 CET 2002 - sh@suse.de
+
+- V 2.5.11
+- Exchanged title graphics to match new YaST2 design
+
+-------------------------------------------------------------------
+Mon Feb 25 16:39:42 CET 2002 - sh@suse.de
+
+- Fixed wish #13876: Host name in window title bar
+
+-------------------------------------------------------------------
+Fri Feb 22 17:24:49 CET 2002 - lnussel@suse.de
+
+- removed MountAllAgents from pre-start.ycp
+- added -Q commandline switch to disable quickstart
+
+-------------------------------------------------------------------
+Mon Feb 18 10:02:43 CET 2002 - lnussel@suse.de
+
+- filter out empty strings as arguments, fixes bug #13360
+
+-------------------------------------------------------------------
+Fri Feb  8 17:45:41 CET 2002 - lnussel@suse.de
+
+- module arguments possible with quick start
+- only strings are allowed as arguments
+
+-------------------------------------------------------------------
+Tue Feb  5 20:42:49 CET 2002 - mike@suse.de
+
+- fast YaST2 start
+
+-------------------------------------------------------------------
+Fri Jan 25 14:21:55 CET 2002 - arvin@suse.de
+
+- use buildroot
+
+-------------------------------------------------------------------
+Tue Jan 15 18:21:07 CET 2002 - lnussel@suse.de
+
+- use multi threaded qt library if detected by configure
+
+-------------------------------------------------------------------
+Thu Jan 10 11:41:41 CET 2002 - lnussel@suse.de
+
+- use qt3 if available
+- auto arrange icons on window resize
+
+-------------------------------------------------------------------
+Wed Oct 10 14:31:02 CEST 2001 - lnussel@suse.de
+
+- added an icon to be displayed by windowmanagers (#8308)
+
+-------------------------------------------------------------------
+Fri Sep 21 17:32:35 CEST 2001 - gs@suse.de
+
+- new icon for Routing, icons for NFS server/client changed
+
+-------------------------------------------------------------------
+Thu Sep 20 14:14:37 CEST 2001 - gs@suse.de
+
+- new icons for tv card configuration, system- and startprotocol,
+  keyboard, runlevel editor
+
+-------------------------------------------------------------------
+Wed Sep 19 17:25:56 CEST 2001 - mike@suse.de
+
+- new firewall icon
+
+-------------------------------------------------------------------
+Fri Sep 14 16:17:07 CEST 2001 - mike@suse.de
+
+- new icons for scanner and firewall
+
+-------------------------------------------------------------------
+Mon Sep 10 14:56:49 CEST 2001 - lnussel@suse.de
+
+- make get_modulesdata switch textdomain to have group names
+  translated
+
+-------------------------------------------------------------------
+Wed Sep  5 15:10:50 CEST 2001 - lnussel@suse.de
+
+- typo .targe.size -> .target.size
+
+-------------------------------------------------------------------
+Mon Aug 27 14:12:07 CEST 2001 - lnussel@suse.de
+
+- fix for bug #5728: use of ngettext for plural form
+
+-------------------------------------------------------------------
+Tue Aug 21 13:51:42 CEST 2001 - kkaempf@suse.de
+
+- replace fileexist with SCR::Read(.targe.size, ...)
+
+-------------------------------------------------------------------
+Wed Aug  8 14:01:02 CEST 2001 - lnussel@suse.de
+
+- New feature sortkey for groups and modules
+- Major code cleanup
+
+-------------------------------------------------------------------
+Mon Jun 18 15:03:03 CEST 2001 - lnussel@suse.de
+
+- Added drag and drop support
+
+-------------------------------------------------------------------
+Mon May 14 18:17:36 CEST 2001 - lnussel@suse.de
+
+- removed fixlocale call
+- moved bindtextdomain and textdomain calls right after main
+- added bind_textdomain_codeset("menu","UTF-8") to fix captions
+  in windowmanagers
+
+-------------------------------------------------------------------
+Fri May 11 17:30:38 MEST 2001 - gs@suse.de
+
+- new icons for Update and Online-Update ( bug # 7518 )
+- icons Create user and Create groups added
+
+-------------------------------------------------------------------
+Fri May 11 14:14:44 CEST 2001 - kkaempf@suse.de
+
+- added "babelfish.png" icon
+
+-------------------------------------------------------------------
+Tue May  8 16:03:32 CEST 2001 - mike@suse.de
+
+- new icons, configurable startup size for modules
+
+-------------------------------------------------------------------
+Mon Apr 30 17:08:13 CEST 2001 - sh@suse.de
+
+- Fix for bug #7358: No Umlauts in Y2CC
+  always use UTF-8 locale
+  V 2.3.9
+
+-------------------------------------------------------------------
+Mon Apr 30 10:37:23 CEST 2001 - kkaempf@suse.de
+
+- new icon for timezone
+
+-------------------------------------------------------------------
+Thu Apr 26 17:21:31 MEST 2001 - gs@suse.de
+
+- new icon for network and Patch CD Update
+
+-------------------------------------------------------------------
+Thu Apr 26 13:36:47 CEST 2001 - lnussel@suse.de
+
+- `geometry from menuentry now passed as env. Variable
+  Y2_GEOMETRY to /sbin/yast2
+
+-------------------------------------------------------------------
+Wed Apr 25 09:33:00 CEST 2001 - kkaempf@suse.de
+
+- move menu.ycp to package yast2 (#7168)
+
+-------------------------------------------------------------------
+Thu Apr 19 14:57:30 MEST 2001 - gs@suse.de
+
+- new icons for group misc and network advanced
+
+-------------------------------------------------------------------
+Tue Apr 17 11:26:46 MEST 2001 - gs@suse.de
+
+- group System added and group Network splitted
+
+-------------------------------------------------------------------
+Thu Apr 12 15:51:29 CEST 2001 - kkaempf@suse.de
+
+- rename y2m_menu -> yast2-menu
+
+-------------------------------------------------------------------
+Thu Jan 25 11:19:25 CET 2001 - mike@suse.de
+
+- menulogo.png deleted, not needed anymore
+
+-------------------------------------------------------------------
+Mon Jan 22 12:43:41 CET 2001 - kkaempf@suse.de
+
+- compile with -O0 on AXP, gcc bug workaround
+
+-------------------------------------------------------------------
+Fri Jan 19 09:47:15 CET 2001 - mike@suse.de
+
+- new icons
+
+-------------------------------------------------------------------
+Mon Jan 15 19:41:14 CET 2001 - mike@suse.de
+
+- bug 5490 Multiple clicks onto help causes problems
+
+-------------------------------------------------------------------
+Fri Jan 12 23:42:37 CET 2001 - mike@suse.de
+
+- new icons
+
+-------------------------------------------------------------------
+Wed Jan  3 22:31:40 CET 2001 - mike@suse.de
+
+- new icons, little fixes
+  The modules REMOTE-INSTALL and REMOTE-ADMIN are not available any more
+
+-------------------------------------------------------------------
+Thu Dec 14 14:05:34 CET 2000 - kkaempf@suse.de
+
+- fix specfile
+
+-------------------------------------------------------------------
+Thu Dec 14 12:24:33 CET 2000 - kkaempf@suse.de
+
+- fix EXTRA_DIST in src/Makefile.am
+
+-------------------------------------------------------------------
+Thu Dec 14 12:14:54 CET 2000 - kkaempf@suse.de
+
+- put gpp and qt into neededforbuild
+
+-------------------------------------------------------------------
+Wed Dec 13 18:33:32 CET 2000 - mike@suse.de
+
+- NEW NICE YaST2 Module Starter: "Yast2 Control Center"
+
+-------------------------------------------------------------------
+Mon Dec  4 19:43:36 CET 2000 - kkaempf@suse.de
+
+- switch to bz2 packaging
+
+-------------------------------------------------------------------
+Tue Nov 21 17:10:58 CET 2000 - kkaempf@suse.de
+
+- use target agent
+
+-------------------------------------------------------------------
+Fri Jul 14 10:25:56 CEST 2000 - kkaempf@suse.de
+
+- removed non-working logcontrol
+  version 2.0.4
+
+-------------------------------------------------------------------
+Thu Jul 13 16:51:31 CEST 2000 - kkaempf@suse.de
+
+- Requires: y2t_menu
+  version 2.0.3
+
+-------------------------------------------------------------------
+Thu Jul  6 15:38:37 CEST 2000 - sh@suse.de
+
+- Removed option `immediate from SelectionBox (unnecessary and
+  nonexistent)
+- version 2.0.2
+
+-------------------------------------------------------------------
+Thu Jun 29 15:28:48 CEST 2000 - kkaempf@suse.de
+
+- make module list wider, select "Welcome" as default
+  version 2.0.1
+
+-------------------------------------------------------------------
+Mon May 22 11:44:35 CEST 2000 - kkaempf@suse.de
+
+- fix filelist in .spec file
+
+-------------------------------------------------------------------
+Thu May 18 16:54:24 CEST 2000 - kkaempf@suse.de
+
+- initial version based on YaST2 (6.4 - i386)
+

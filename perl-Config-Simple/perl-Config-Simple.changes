@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Nov 29 15:06:10 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:11 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:33 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:44 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Sat Jul 31 08:02:21 UTC 2010 - lars@linux-schulserver.de
+
+- add required AutoLoader
+- revert most of the last changes - package must be arch dependend
+
+-------------------------------------------------------------------
+Tue Jun 22 14:56:47 UTC 2010 - chris@computersalat.de
+
+- fix build for <= 1120
+  o no auto dir include
+- rework spec with cpanspec
+
+-------------------------------------------------------------------
+Mon May  3 12:26:22 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 4.59
+

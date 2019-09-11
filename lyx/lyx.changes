@@ -1,0 +1,1065 @@
+-------------------------------------------------------------------
+Thu Jul  4 15:12:50 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add README.SUSE and refer to that in %description to explain
+  limited functionality of ImageMagick in openSUSE
+
+-------------------------------------------------------------------
+Wed Jul  3 19:43:35 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update the description in the spec file with information on
+  security setting for ImageMagick in openSUSE. See boo#1139928
+  It seems the only thing we can do about it.
+
+-------------------------------------------------------------------
+Tue Jun 25 18:39:19 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.3:
+  This is a bugfix release with only minor improvements that are
+  not really bugfixes. The many details can be found here:
+  https://www.lyx.org/announce/2_3_3.txt
+- Removed upstream patch: fix_boost_169.patch
+- Improved spec file a bit
+
+-------------------------------------------------------------------
+Fri Mar 15 13:49:18 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix_boost_169.patch to fix build with boost 1.69.
+
+-------------------------------------------------------------------
+Mon Dec 10 13:15:31 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.2: this is a maintenance update.
+  * Too many changes to list here, but they are all minor updates
+    bugfixes. The most notable are:
+  * DOCUMENT INPUT/OUTPUT:
+    + Add support for non-ASCII characters in hyperlinks (bug 11165)
+    + Support rotated table cells with linebreaks (bug 8085)
+  * TEX2LYX IMPROVEMENTS:
+    + Add support for multirow (bug 11164)
+    + Improve import of titling commands other than \maketitle (bug 6461)
+  * For more details see included ANNOUNCE file
+- Added texlive-menukeys to Recommends: key symbols are supported
+  now via menukeys packages (part of LyX bug #10641)
+
+-------------------------------------------------------------------
+Tue Nov 20 16:38:22 UTC 2018 - adam.majer@suse.de
+
+- Drop BR: dependency on libboost_signals-devel. Lyx has been updated
+  to use Boost.Signals2 instead.
+
+-------------------------------------------------------------------
+Sat Sep  8 19:34:26 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Again updated release tarballs (hopefully these are the final ones)
+
+-------------------------------------------------------------------
+Wed Aug 29 22:05:25 UTC 2018 - cornelis@solcon.nl
+
+- Add correct-shebang.patch to satisfy rpmlint
+- Switch to python3
+
+-------------------------------------------------------------------
+Tue Aug 28 20:20:14 UTC 2018 - cornelis@solcon.nl
+
+- Updated tarballs
+
+-------------------------------------------------------------------
+Tue Aug 28 19:37:33 UTC 2018 - cornelis@solcon.nl
+
+- Install bash-completion in the right directory (as indicated by
+  rpmlint.
+
+-------------------------------------------------------------------
+Mon Aug 27 20:33:13 UTC 2018 - cornelis@solcon.nl
+
+- Update to 2.3.1:
+  Most important changes:
+  * Overhaul the document painting mechanism. Now the screen is updated
+    asyncronously (as all normal applications do), which makes LyX
+    snappier, especially on repeated events. As an added bonus, subpixel
+    aliasing is honored in the work area.
+  * All python scripts distributed with LyX should now be compatible with both
+    python 2.x and python 3.x.
+  * Native filedialogs
+  * TEX2LYX IMPROVEMENTS: support for biblatex, chapterbib, \includeonly,
+    and better quotationmark detection.
+  * For other improvements and bugfixes, see the included ANNOUNCE file.
+- Dropped fix-build-with-Qt5.11.patch, is part of this release
+
+-------------------------------------------------------------------
+Tue Jun  5 12:58:58 UTC 2018 - wbauer@tmo.at
+
+- Added fix-build-with-Qt5.11.patch to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Tue Feb 27 09:40:37 UTC 2018 - cornelis@solcon.nl
+
+- Update to 2.3.0 release
+
+-------------------------------------------------------------------
+Mon Jan 29 20:56:16 UTC 2018 - cornelis@solcon.nl
+
+- Update to 2.3..0rc2:
+  This is a major feature release, with as major features:
+  * biblatex support
+  * improved quotation marks handling
+  * for more see: https://wiki.lyx.org/LyX/NewInLyX23
+- Make texlive-biber and texlive-bibtex8 recommends (because of
+  added biblatex support)
+- Clean up spec file: remove all references to older versions.
+  Because of the required automake version only Tumbleweed and 15
+  are supported.
+
+-------------------------------------------------------------------
+Sun May  7 19:54:11 UTC 2017 - cornelis@solcon.nl
+
+- Update to 2.2.3:
+  * Bugfix release
+  * For details see http://www.lyx.org/announce/2_2_3.txt (also
+    included as ANNOUNCE file) 
+- Dropped Qt58.patch 
+
+-------------------------------------------------------------------
+Wed Mar  1 22:22:17 UTC 2017 - cornelis@solcon.nl
+
+- Added Qt58.patch to fix build with Qt 5.8
+
+-------------------------------------------------------------------
+Sun Feb 19 15:06:07 UTC 2017 - mailaender@opensuse.org
+
+- install appdata.xml for https://en.opensuse.org/openSUSE:AppStore
+- install bash completion
+- add missing desktop/icon update macros
+
+-------------------------------------------------------------------
+Wed Feb  1 14:23:38 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Oct 10 18:15:45 UTC 2016 - cornelis@solcon.nl
+
+- Now really add Recommends: texlive-forest, as stated earlier.
+
+-------------------------------------------------------------------
+Mon Oct 10 17:56:11 UTC 2016 - cornelis@solcon.nl
+
+- Update to 2.2.2:
+  * Bugfix release
+  * For details see http://www.lyx.org/announce/2_2_2.txt
+- Dropped covington-fix.diff (now part of release)
+
+-------------------------------------------------------------------
+Fri Aug 26 21:50:40 UTC 2016 - cornelis@solcon.nl
+
+- Added covington-fix.diff to fix regression in linguistics
+  module (http://www.lyx.org/trac/ticket/10340)
+- Added Recommends: texlive-forest, required by the linguistics
+  manual 
+- Added Recommends: texlive-tcolorbox, required by colored boxes
+  manual
+
+-------------------------------------------------------------------
+Mon Jul 25 20:13:57 UTC 2016 - cornelis@solcon.nl
+
+- Update to 2.2.1:
+  * For details see http://www.lyx.org/announce/2_2_1.txt
+
+-------------------------------------------------------------------
+Tue May 24 08:08:54 UTC 2016 - cornelis@solcon.nl
+
+- Update to 2.2.0:
+  * For details see http://wiki.lyx.org/LyX/NewInLyX22
+- For Leap and Tumbleweed switch to Qt5
+- Removed work-around-gcc5-bug.patch, which is included in this
+  release
+- Remove lyx-2.1.4-xdg_open.patch, let's use what lyx itself
+  provides instead of endlessly meintaining this patch
+- Remove lyx-2.1.2.2-remove-date-time.patch, not necessary anymore
+
+-------------------------------------------------------------------
+Sat Dec 19 14:52:07 UTC 2015 - cornelis@solcon.nl
+
+- Added work-around-gcc5-bug.patch to fix boo#943840
+-------------------------------------------------------------------
+Mon Oct 12 08:24:33 UTC 2015 - cornelis@solcon.nl
+
+- Added Recommends: texlive-shapepar, which is needed by the
+  Additional Lyx Features manual.
+
+-------------------------------------------------------------------
+Sun Jul 26 22:28:55 UTC 2015 - cornelis@solcon.nl
+
+- Update to 2.1.4:
+  * New support for PDF forms.
+  * Add low-resolution PDF export format (needs an installed
+    ghostscript).
+  * Add possibility via the layout file to prevent LyX from loading
+    inputenc.
+  * support for the math commands  \lvert, \rvert, \lVert, and \rVert
+    (bug 3538).
+  * Fix some missing symbols in math completer.
+  * Split different indices in the outliner (bug 7012).
+  * Clarify the function of Tools > Preferences > Look & Feel >
+    Save Documents Compressed by Default (bug 7822).
+  * Update instant previews when modifying the screen zoom factor
+    (bug 8258).
+  * Documentation and localization updates.
+  * Bugfixes.
+  * For details see for details see
+    http://www.lyx.org/announce/2_1_4.txt or included ANNOUNCE file
+- Removed Automake-15.patch and Fix-build-with-GNU-libstdc++-C++11
+  -ABI.patch, which are now included in this release.
+- Updated lyx-2.1.4-xdg_open.patch (from lyx-2.1.2-xdg_open.patch)
+- Added ghostscript to Requires to support new low-res export.
+
+-------------------------------------------------------------------
+Mon Jun 22 13:08:54 UTC 2015 - cornelis@solcon.nl
+
+- Added Fix-build-with-GNU-libstdc++-C++11-ABI.patch and
+  Automake-15.patch to fix build with Factory (gcc5).
+
+-------------------------------------------------------------------
+Fri Feb  6 09:50:49 UTC 2015 - cornelis@solcon.nl
+
+- Update to version 2.1.3:
+  * Add support for some conference poster classes (a0poster,
+    beamerposter, sciposter)
+  * Add support for the sectionbox and tcolorbox packages
+  * Add support for PDF annotations (via pdfcomment package)
+  * TEX2LYX improvements:
+    - Support for bibliographies using the package bibtopic.
+    - Support for textual references (LaTeX-command \namref from
+      the package nameref).
+    - Support for items in itemize environments that have an
+      optional argument.
+    - Support for the math font of the Iwona and Kurier font
+      families.
+    - Support for the Libertine fonts.
+    - Support for a relative length as paragraph separation.
+    - Support for relative lengths in horizontal and vertical
+      spaces.
+    - Support for glue lengths in horizontal and vertical spaces.
+  * USER INTERFACE
+    - References no longer truncated in outliner (bug 9312).
+    - Allow computing selected subformulas with computer algebra
+      systems.
+    - Number correctly footnotes in title layouts.
+    - Ctrl+A is now bound to inset-select-all, which does a local
+      selection (current inset) and grows at each new invokation.
+    - Debug options in message pane are now sorted alphabetically.
+  * Documentation and localisation updates.
+  * Bugfixes.
+  * For details see for details see
+    http://www.lyx.org/announce/2_1_3.txt or included ANNOUNCE file
+- Added texlive-pdfcomments to Recommends to support new function
+  in 2.1.3.
+
+-------------------------------------------------------------------
+Wed Jan 21 15:21:50 UTC 2015 - andreas.stieger@gmx.de
+
+- LyX 2.1.2.2 (and 2.1.2.1):
+  * fixes for platforms other than GNU/Linux
+- add upstream signing key and verify source signature
+- Remove  __DATE__ and __TIME__ from info dialogs to prevent
+  rebuilds, add lyx-2.1.2.2-remove-date-time.patch
+
+-------------------------------------------------------------------
+Wed Jan  7 20:19:02 UTC 2015 - cornelis@solcon.nl
+
+- Added texlive-esint-type1 to recommends: needed to compile the user guide.
+
+-------------------------------------------------------------------
+Thu Sep 25 13:06:42 UTC 2014 - cornelis@solcon.nl
+
+- Remove the minimal hard texlive requirement.
+
+-------------------------------------------------------------------
+Tue Sep 23 17:01:46 UTC 2014 - cornelis@solcon.nl
+
+- Updated tarball (a couple of new French beamer examples were not included)
+
+-------------------------------------------------------------------
+Wed Sep 17 11:19:25 UTC 2014 - cornelis@solcon.nl
+
+- Update to version 2.1.2:
+  * Bugfix release (for details see http://www.lyx.org/announce/2_1_2.txt or included ANNOUNCE file))
+- Added file-devel to BuildRequires to provide magic.h
+- Changed most Requires to Recommends to give expert users more control, but still have them installed when default settings are used.
+- Updated xdg-open patch (lyx-2.1.0-xdg_open.patch --> lyx-2.1.2-xdg_open.patch)
+- Removed deprecated --with-frontend=qt4 configure option.
+
+-------------------------------------------------------------------
+Tue Jul 15 19:46:42 UTC 2014 - cornelis@solcon.nl
+
+- Update to version 2.1.1:
+  * Bugfix release (for details see http://www.lyx.org/announce/2_1_1.txt)
+
+-------------------------------------------------------------------
+Mon Apr 21 23:21:55 UTC 2014 - cornelis@solcon.nl
+
+- Correct source url
+
+-------------------------------------------------------------------
+Mon Apr 14 22:03:59 UTC 2014 - cornelis@solcon.nl
+
+- Update to version 2.1.0. New features:
+  * Native IPA inset and IPA toolbar
+  * More supported languages with XeTeX
+  * New interface for LaTeX-fonts
+  * Basic support for Math OpenType fonts
+  * Document classes organized in categories
+  * Enhanced support for LaTeX options
+  * More supported LaTeX commands
+  * Table enhancements
+  * Layout enhancements
+  * New modules
+  * Support to output cropped PDF or EPS
+  * New command-line option
+  * New preferences settings
+  * For details see: http://wiki.lyx.org/LyX/NewInLyX21
+- Added bc to BuildRequires
+- Removed desktop file and app icon: now part of lyx itself
+- Updated xdg-open patch
+
+-------------------------------------------------------------------
+Thu Jan 23 00:13:24 UTC 2014 - cornelis@solcon.nl
+
+- Moved ImageMagick Require: it is required by all suse versions
+
+-------------------------------------------------------------------
+Thu Jan 23 00:09:40 UTC 2014 - cornelis@solcon.nl
+
+- Update to new release tarball:
+  * MacOs fixes
+  * Updated translations: French and Arabic
+
+-------------------------------------------------------------------
+Thu Dec 19 17:32:20 UTC 2013 - cornelis@solcon.nl
+
+- Update to version 2.0.7:
+  * Bugfix release (for details see included ANNOUNCE file)
+
+-------------------------------------------------------------------
+Thu Sep 12 11:35:53 UTC 2013 - cornelis@solcon.nl
+
+- Finalized the list of Requires.
+- Added a line to the description about where to find information about the Latex configuration as it is found by LyX (also useful for maintainers of this package).
+
+-------------------------------------------------------------------
+Wed Aug 21 22:02:23 UTC 2013 - cornelis@solcon.nl
+
+- Add texlive-esint, texlive-initials, texlive-mathdots, texlive-mhchem, texlive-prettyref to Requires. Also supported by LyX.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:26:48 UTC 2013 - cornelis@solcon.nl
+
+- Fix typo: texlibe-bibtex8 should be texlive-bibtex8
+
+-------------------------------------------------------------------
+Thu Aug  1 21:22:25 UTC 2013 - cornelis@solcon.nl
+
+- Added lyx-2.0.6-fix_zombies.patch to fix http://www.lyx.org/trac/ticket/8774.
+- Updated name for xdg-open patch (was updated for 2.0.6).
+- Added texlive-nomencl to Requires as it is also supported by LyX.
+
+-------------------------------------------------------------------
+Mon May  6 09:14:37 UTC 2013 - cornelis@solcon.nl
+
+- Also added texlive-endnotes to Requries, as LyX offers two layouts for the endnotes package.
+
+-------------------------------------------------------------------
+Sat May  4 16:28:32 UTC 2013 - cornelis@solcon.nl
+
+- update to version 2.0.6:
+  * DOCUMENT INPUT/OUTPUT
+    - New layout file for the document class APA6 (bug 8391).
+    - Output BibTeX metadata in LyXHTML output (bug 8451).
+    - Added CSS styling for Memoir's epigraphs (bug 8611).
+    - Use master document's setting for all HTML math output (bug 8607).
+  * TEX2LYX IMPROVEMENTS
+    - support for listings with options (bug 8066).
+    - add new option -m to select needed modules (bug 8393).
+  * USER INTERFACE
+    - Categorize paragraph styles of the linguistics module.
+    - Show a symbol on collapsed branches indicating whether they are  active.
+  * DOCUMENTATION AND LOCALIZATION
+    - Updated German, French, Interlingua, Italian, Japanese, Spanish, Slovak,  Swedish and Ukrainian user interface localizations.
+    - Updated the lilypond example file.
+  * Bugfixes (for details see included ANNOUNCE file)
+- Added to Requires: texlive-collection-htmlxml, texlive-pdfsync, texlive-splitindex.
+- Added a comment to explain the rationale behind the Requires.
+
+-------------------------------------------------------------------
+Sun Mar 10 21:12:15 UTC 2013 - cornelis@solcon.nl
+
+- Added new Requires for 12.3 and later that are better suited for the new way texlive is packaged and that give a decent texlive base for using LyX. The old Requires did not give a good latex environment on 12.3 and later. 
+
+-------------------------------------------------------------------
+Wed Jan  2 17:18:17 UTC 2013 - cornelis@solcon.nl
+
+- Update to version 2.0.5.1:
+  * Fix for http://www.lyx.org/trac/ticket/8423 by returning to previous behavior by loading the babel package even with English-only documents
+
+-------------------------------------------------------------------
+Sun Nov  4 18:12:57 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 2.0.5:
+  * Show backends, not formats, in menu View->Source
+  * Imporovements in handling of languages
+  * Add explicit dvilualatex output format
+  * Add support for some IPA diacritics
+  * Enclose underlined \ref{} commands in \mbox{} to protect them when
+  using the package soul in place of (or together with) ulem
+  * The polyglossia/XeTeX language commands are now supported by by tex2lyx
+  * It is now recognized if syncTeX is used
+  * Reset only the top-level counter when starting the appendix
+  * Allow native LyX format to be shown in menu View->Source
+  * Implementation of spell check of current selection
+  * Updated translations and documentation
+  * Bugfixes
+  * More details in the included ANNOUNCE file
+
+-------------------------------------------------------------------
+Fri Sep 21 11:18:20 UTC 2012 - cornelis@solcon.nl
+
+- Also fake builddate for tex2lyx to satisfy rpmlint
+
+-------------------------------------------------------------------
+Mon Jun 25 14:27:12 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 2.0.4:
+  * Bugfix release, for details see included ANNOUNCE file
+- Swtiched to xz sources
+
+-------------------------------------------------------------------
+Mon Mar 12 14:50:22 UTC 2012 - cornelis@solcon.nl
+
+- Correct the license: lyx is GPL-2.0 and later, not LGPL-2.1 and later
+- Fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Tue Feb 28 12:44:16 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 2.0.3:
+  * Improvements in tex2lyx
+  * New Dutch translation
+  * More details in the included ANNOUNCE file
+
+-------------------------------------------------------------------
+Thu Feb 23 12:55:00 UTC 2012 - cornelis@solcon.nl
+
+- Updated icon and desktop file to conform to upstream (part of trunk, will be in 2.1)
+- Cleaned up lyxrc.dist
+
+-------------------------------------------------------------------
+Tue Nov 29 15:58:32 UTC 2011 - cornelis@solcon.nl
+
+- Update to 2.0.2:
+  * Improvements in export filters
+  * Updates to the tex2lyx conversion script
+  * Support for the ctex documents classes, used for Chinese documents
+  * Support for the Springer documents classes has been updated for compatibility with the latest version. This, however, breaks compatibillity for documents with the Springer classes in LyX itself: documents made in 2.0.2 or later will not be compilable in older versions of LyX.
+
+-------------------------------------------------------------------
+Mon Oct 17 10:33:29 UTC 2011 - cornelis@solcon.nl
+
+- Changed summary and description to make them more accurate and up-to-date (bnc#721665)
+
+-------------------------------------------------------------------
+Thu Oct  6 09:18:47 UTC 2011 - cornelis@solcon.nl
+
+- Make hunspell default spellchecker and remove aspell (seems reasonable to have the same spellchecker as libreoffice, thunderbird, firefox, and hunspell seems future for system default, as fedora already has, see also FATE #305688)
+- Add enchant support (usefull for a few languages)
+
+-------------------------------------------------------------------
+Mon Sep 19 11:02:08 UTC 2011 - cornelis@solcon.nl
+
+- Cleaned up spec (removed some old stuff)
+- Removed texlive-devel and texlive-latex from BuildRequires (not used at build time: LyX checks the LaTeX installation at first start up, or can be manually called by reconfigure in the menu)
+
+-------------------------------------------------------------------
+Thu Sep  8 10:00:37 UTC 2011 - cornelis@solcon.nl
+
+- Cleaned up BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep  5 18:04:22 UTC 2011 - cornelis@solcon.nl
+
+- Update to 2.0.1:
+  * Improved support for external files in ERT
+  * Improved XHTML output of various fractions
+  * A prefix for the TEXINPUTS environment variable can be specified in the
+  preferences
+  * Updated templates to current LyX format
+  * Allow LaTeX import of \uline (bug 7640)
+  * Fix compilation error occurring when a LyX document resides in a directory
+  whose name contains characters that are special to LaTeX (bug 6170)
+  * Updated translations
+  * Menu View->Source for documents with XHTML default output format now displays
+  only the current paragraph, except when complete source is requested
+  (bug 7463)
+  * Enable "Accept compound" preference setting for Aspell backend only
+  * Updated documentation
+  * Bugfixes
+  * For more details see http://www.lyx.org/announce/2_0_1.txt or included ANNOUNCE file
+- removed lyx-2.0.0-hunspell_pkgconfig.patch (part of 2.0.1)
+
+-------------------------------------------------------------------
+Thu Aug 25 19:13:47 UTC 2011 - cornelis@solcon.nl
+
+- fixed "file-contains-date-and-time /usr/bin/lyx" rpmlint warning
+- new icon
+
+-------------------------------------------------------------------
+Tue Jun 28 19:56:30 UTC 2011 - cornelis@solcon.nl
+
+- Removed --with-texmf configure option (is not supported by the configure script)
+- Added xdg-open patch from fedora
+
+-------------------------------------------------------------------
+Tue May 31 12:13:08 UTC 2011 - cornelis@solcon.nl
+
+- Added patch from fedora to fix build with hunspell 1.3
+
+-------------------------------------------------------------------
+Thu May  5 19:12:11 UTC 2011 - cornelis@solcon.nl
+
+- Name URL as source and do not recompress to bz2
+
+-------------------------------------------------------------------
+Tue May  3 11:07:08 UTC 2011 - cornelis@solcon.nl
+
+- Update to 2.0.0:
+  * Advanced Search Facility
+  * Spell-checking on the Fly
+  * Compare Documents Feature
+  * XHTML Output
+  * Multilingual Thesaurus
+  * XeTeX Backend
+  * Multiple Indices Support
+  * Progress View and Debugging Pane
+  * Enhanced Instant Preview
+  * Forward Search for DVI/PDF Files
+  * Enhanced Version Control Features
+  * for detauls see http://wiki.lyx.org/LyX/NewInLyX20
+- Removed ispell-devel from BuildRequires: no longer supported
+- Added hunspell-devel
+- Added texlive-xetex als Recommends since it is now supported by LyX
+- Added lyx.dist with distro defaults to get hunspell, thesaurus and lyxpipe working out of the box
+
+-------------------------------------------------------------------
+Fri Apr 22 08:25:39 UTC 2011 - coolo@opensuse.org
+
+- more gcc 4.6 issues
+
+-------------------------------------------------------------------
+Thu Mar 17 08:29:29 UTC 2011 - ismail@namtrac.org
+
+- Add missing include to fix compilation with gcc 4.6 
+
+-------------------------------------------------------------------
+Sun Feb  6 23:18:15 UTC 2011 - cornelis@solcon.nl
+
+- Update to 1.6.9:
+   * eLyXer is now always run as a script, not as a python module.
+   * Updates to CVS support.
+   * Documentation and localization updates.
+   * Allow using autoconf 2.66 and 2.68.
+   * Many Bugfixes.
+
+-------------------------------------------------------------------
+Thu Jan 27 15:59:08 UTC 2011 - jengelh@medozas.de
+
+- Add Xindy (a better index generator that does actually support
+  formatting like bold/italic/monospace of index entries) as a
+  Recommends. LyX will automatically use xindy when located.
+
+-------------------------------------------------------------------
+Fri Dec  3 13:57:19 UTC 2010 - cornelis@solcon.nl
+
+- Update to 1.6.8 (see ANNOUNCE for a detailed list of the changes)
+- Removed free-ttf-fonts from Requires
+
+-------------------------------------------------------------------
+Sat Jul 17 12:17:19 UTC 2010 - beineri@opensuse.org
+
+- update to 1.6.7:
+   * fix all known stability problems with Qt 4.6
+
+-------------------------------------------------------------------
+Wed Apr 14 19:00:43 UTC 2010 - beineri@opensuse.org
+
+- update to 1.6.5: The release comes with many fixes and improvements.
+  A number of newly reported crashes were fixed, new layouts and modu-
+  les were included and some long-standing requests were implemented.
+
+-------------------------------------------------------------------
+Sat Aug 29 05:47:39 UTC 2009 - beineri@opensuse.org
+
+- update to 1.6.4:
+   * Workaround to a nasty problem in recent Qt versions (Qt 4.5.0
+     up to 4.5.2) that made LyX crash if the document included
+     images that were scaled to certain sizes in the work area.
+   * Fixes to problems that might result in the loss of data.
+   * Many other stability improvements, thanks to a new debugging
+     script that helped to reveal uncovered critical bugs.
+   * Further fixes to the LaTeX importer (tex2lyx) and the
+     conversion of older LyX documents (lyx2lyx).
+
+-------------------------------------------------------------------
+Tue Jun  9 09:51:38 CEST 2009 - coolo@novell.com
+
+- update to 1.6.3: Qt 4.5 support
+- fix build in not including boost
+
+-------------------------------------------------------------------
+Mon Feb 16 01:12:54 CET 2009 - ro@suse.de
+
+- drop buildreq for lprng 
+
+-------------------------------------------------------------------
+Mon Nov 10 22:34:57 CET 2008 - stbinner@suse.de
+
+- updato to final 1.6 release: translation updates
+
+-------------------------------------------------------------------
+Thu Oct 30 13:25:33 CET 2008 - stbinner@suse.de
+
+- update to 1.6 release candidate 5: bugfixes
+
+-------------------------------------------------------------------
+Sat Oct 25 10:09:23 CEST 2008 - stbinner@suse.de
+
+- update to 1.6 release candidate 4: bugfixes
+
+-------------------------------------------------------------------
+Thu Oct  9 19:16:54 CEST 2008 - werner@suse.de
+
+- Correct path for texmf
+
+-------------------------------------------------------------------
+Thu Oct  2 11:17:48 CEST 2008 - stbinner@suse.de
+
+- update to 1.6 release candidate 3: bugfixes
+
+-------------------------------------------------------------------
+Fri Sep 19 10:22:48 CEST 2008 - stbinner@suse.de
+
+- update to 1.6 release candidate 2 (bnc#427534)
+   * multiple work areas as tab items
+   * split views
+   * user-formattable collapsable insets
+   * layout modules
+   * citation dialog
+   * support for the LaTeX package hyperref
+   * dialog for insertion of hyperlinks and URLs
+   * revised support for wrapped floats
+   * new implementation of math macros
+   * TAB completion in the math editor and in text mode
+   * framework for tooltip showing in the document work area
+   * new symbols dialog
+   * and much more: http://wiki.lyx.org/LyX/NewInLyX16
+
+-------------------------------------------------------------------
+Tue Jul 22 17:15:46 CEST 2008 - coolo@suse.de
+
+- update to 1.5.5:
+  * for changelog, see http://www.lyx.org/announce/1_5_5.txt
+- take out autogen.sh call
+
+-------------------------------------------------------------------
+Tue Apr 29 15:30:26 CEST 2008 - dmueller@suse.de
+
+- add upstream fix for qt 4.4 crash on startup
+
+-------------------------------------------------------------------
+Fri Mar  7 14:01:54 CET 2008 - dmueller@suse.de
+
+- update to 1.5.4:
+  * for a changelog, see http://www.lyx.org/announce/1_5_4.txt
+
+-------------------------------------------------------------------
+Sat Jan 12 18:39:52 CET 2008 - coolo@suse.de
+
+- update to 1.5.3 release: various UI improvements
+  * see http://www.lyx.org/announce/1_5_3.txt
+
+-------------------------------------------------------------------
+Sun Aug  5 05:31:37 CEST 2007 - stbinner@suse.de
+
+- update to 1.5.1 release: several bugs and crashes fixed
+
+-------------------------------------------------------------------
+Sat Aug  4 08:27:14 CEST 2007 - stbinner@suse.de
+
+- update to 1.5 release:
+   * Unicode support, Integrated CJK support
+   * Full interface support for Armenian and Farsi
+   * Multiple views of the same buffer
+   * Outliner and embedded Table of Contents
+   * Session management, Source code Viewer
+   * New Font Selection Interface, Tabular extensions
+   * Native support for Nomenclatures
+   * Tabbed Widgets, Qt 4 Fronend
+   * Change tracking enhancements
+   * Enhanced clipboard/selection handling
+   * Limited support for local class and layout files
+ 
+-------------------------------------------------------------------
+Thu Jul  5 16:35:26 CEST 2007 - coolo@suse.de
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Thu Jul  5 16:11:09 CEST 2007 - coolo@suse.de
+
+- put desktop file and icon into package
+
+-------------------------------------------------------------------
+Sun Apr 29 14:29:51 CEST 2007 - stbinner@suse.de
+
+- fix build for < 10.3
+
+-------------------------------------------------------------------
+Fri Apr 27 15:31:11 CEST 2007 - bg@suse.de
+
+- update to version 1.5.0beta2, notably:
+  o merge with CJK version
+  o initial unicode support
+  o qt4 frontend
+  o http://www.lyx.org/announce/1_5_0_beta2.txt
+- use included boost (which is newer than our system boost, and
+  unfortunately not compatible)
+- use TeXLive
+
+-------------------------------------------------------------------
+Sat Oct 21 14:38:18 CEST 2006 - schwab@suse.de
+
+- Fix bogus version check.
+
+-------------------------------------------------------------------
+Mon Jul 17 10:22:11 CEST 2006 - bg@suse.de
+
+- specfile cleanups and fixes for 1.4.2
+- moved lyx binaries to /usr/bin to be in the same prefix as the 
+  shared files.
+
+-------------------------------------------------------------------
+Thu Jul 13 14:20:45 CEST 2006 - bg@suse.de
+
+- update to version 1.4.2
+  o many bugfixes
+  o improved import filter for TeX files
+  o several new features like wordcount, branches and changetracking
+    for documents 
+  o the configuration now searches for many more helper utilities
+- use system boost libraries instead of included boost
+
+-------------------------------------------------------------------
+Tue Jul 11 09:32:26 CEST 2006 - bg@suse.de
+
+- make autogen.sh work with newer versions of autoconf
+
+-------------------------------------------------------------------
+Fri Jan 27 02:12:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 00:24:36 CET 2006 - dmueller@suse.de
+
+- package lyx.png icon as well 
+
+-------------------------------------------------------------------
+Tue Nov 29 18:27:41 CET 2005 - pth@suse.de
+
+- Fix compiler version check.
+- Fix type-punning.
+
+-------------------------------------------------------------------
+Thu Nov 17 11:22:48 CET 2005 - dmueller@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Tue Aug 30 09:57:55 CEST 2005 - bg@suse.de
+
+- adding kpdf to checklist in configure (Bug #113507)
+
+-------------------------------------------------------------------
+Mon Jul 18 10:47:59 CEST 2005 - bg@suse.de
+
+- update to version 1.3.6
+
+-------------------------------------------------------------------
+Tue Jun  7 16:33:42 CEST 2005 - bg@suse.de
+
+- update to CVS version 20050606
+
+-------------------------------------------------------------------
+Tue Oct 19 11:39:34 CEST 2004 - bg@suse.de
+
+- update to version 1.3.5
+- fix for locale no (Bug #27748) 
+
+-------------------------------------------------------------------
+Thu Feb 19 15:21:35 CET 2004 - bg@suse.de
+
+- update to version 1.3.4
+
+-------------------------------------------------------------------
+Tue Feb  3 16:32:16 CET 2004 - bg@suse.de
+
+- update to version 1.3.3
+
+-------------------------------------------------------------------
+Sat Jan 10 10:15:11 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 16 12:57:36 CEST 2003 - adrian@suse.de
+
+- add desktop file from kappfinder
+
+-------------------------------------------------------------------
+Mon Jul 28 12:11:05 CEST 2003 - bg@suse.de
+
+- add free-ttf-fonts to dependency list (Bug #28103)
+
+-------------------------------------------------------------------
+Mon Jul 28 10:57:31 CEST 2003 - bg@suse.de
+
+- update to version 1.3.2
+- add ImageMagick to dependency list (Bug #27110)
+- fix Bug #26642 (too many arguments in lyx configure)
+
+-------------------------------------------------------------------
+Mon Jun 16 14:54:11 CEST 2003 - kukuk@suse.de
+
+- Remove gsview from neededforbuild
+
+-------------------------------------------------------------------
+Thu Jun 12 07:53:31 CEST 2003 - kukuk@suse.de
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Thu Apr 24 23:21:12 CEST 2003 - mfabian@suse.de
+
+- update to version 1.3.1
+
+-------------------------------------------------------------------
+Tue Mar  4 16:22:53 CET 2003 - mfabian@suse.de
+
+- fix build for x86_64 (--with-qt-libraries=$QTDIR/%{_lib})
+
+-------------------------------------------------------------------
+Mon Mar  3 16:48:35 CET 2003 - bg@suse.de
+
+- update to version 1.3.0
+- apply workaround for ICE
+- change frontend to qt 
+
+-------------------------------------------------------------------
+Thu Feb  6 14:03:01 CET 2003 - bg@suse.de
+
+-  removed -mminimal-toc for ppc64 (bug #23266).
+
+-------------------------------------------------------------------
+Thu Jan 30 14:10:33 CET 2003 - ro@suse.de
+
+- update to 1.2.3 (builds with xforms-1.0)
+- updated neededforbuild 
+
+-------------------------------------------------------------------
+Mon Aug 12 08:56:54 CEST 2002 - meissner@suse.de
+
+- removed hylafax from neededforbuild
+
+-------------------------------------------------------------------
+Tue Jun 25 10:15:19 CEST 2002 - olh@suse.de
+
+- build with -mminimal-toc on ppc64
+
+-------------------------------------------------------------------
+Thu Jun 20 09:05:42 CEST 2002 - mfabian@suse.de
+
+- use special ASCII version of tolower instead of the locale
+  dependent tolower for case insensitive comparison of keywords
+  because otherwise the comparison fails in Turkish locale
+  (lower case of 'I' is 'i' without the dot in Turkish locale)
+- fix kb_keymap::getiso for latin 5 locale (Turkish) to
+  make Turkish input work correctly.
+
+-------------------------------------------------------------------
+Wed Jun 12 15:22:54 CEST 2002 - mfabian@suse.de
+
+- update to 1.2.0
+- remove lyx-1.1.6fix4-buildroot.patch, not needed anymore
+- add /usr/X11R6/bin/noweb2lyx to file list
+
+-------------------------------------------------------------------
+Mon Apr 15 13:12:48 CEST 2002 - bg@suse.de
+
+- fix building with g++ 3.1
+
+-------------------------------------------------------------------
+Sat Mar  9 14:19:35 CET 2002 - ro@suse.de
+
+- replaced lprold by lprng in neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jan 31 13:01:13 CET 2002 - mfabian@suse.de
+
+- use BuildRoot
+- fix SuSEconfig.lyx script for SuSE Linux 8.0
+
+-------------------------------------------------------------------
+Tue Jan 15 17:06:16 CET 2002 - bg@suse.de
+
+- update to version 1.1.6fix4
+
+-------------------------------------------------------------------
+Fri Jul 20 12:06:43 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild <gs_serv> to <ghostscript-serv>
+
+-------------------------------------------------------------------
+Fri Jul  6 11:22:29 CEST 2001 - bg@suse.de
+
+- fix severe performance problems when displaying previews
+  (workaround for Bug #9191)
+- resolve compile problem on ia64
+- make sure, SuSEconfig.lyx is installed executable
+
+-------------------------------------------------------------------
+Thu Jun 28 07:54:06 CEST 2001 - bg@suse.de
+
+- update to version 1.6fix2
+- resolves compile problems on several architectures
+
+-------------------------------------------------------------------
+Tue May 15 13:31:32 CEST 2001 - froh@suse.de
+
+- fixed suse_update_config
+
+-------------------------------------------------------------------
+Wed May  9 11:45:50 CEST 2001 - uli@suse.de
+
+- bzipped tarball
+
+-------------------------------------------------------------------
+Mon Apr  2 13:34:27 CEST 2001 - bg@suse.de
+
+- update to version 1.6fix1
+- did not integrate Czech locales, this is subject of a bugzilla 
+  entry. 
+- resolve Bug 5185 (SuSEconfig.lyx being too verbose)
+- fix for gcc 2.95 is not necessary anymore.
+
+-------------------------------------------------------------------
+Mon Sep 25 18:19:01 CEST 2000 - uli@suse.de
+
+- added libjpeg to neededforbuild
+
+-------------------------------------------------------------------
+Tue Aug 29 13:36:36 CEST 2000 - bg@suse.de
+
+- added fix from uli for gcc 2.95.3 
+
+-------------------------------------------------------------------
+Fri Aug 25 11:53:35 CEST 2000 - bg@suse.de
+
+- new version 1.1.5fix1
+
+-------------------------------------------------------------------
+Tue May 30 21:06:47 CEST 2000 - kasal@suse.de
+
+- patched to work with Czech locales
+
+-------------------------------------------------------------------
+Tue May 30 15:16:11 CEST 2000 - bg@suse.de
+
+- added two bugfix patches
+- moved /usr/doc/packages
+- removed Makefile.Linux
+
+-------------------------------------------------------------------
+Wed Feb 23 10:45:03 CET 2000 - bg@suse.de
+
+- add Bugfix Patch
+
+-------------------------------------------------------------------
+Fri Feb  4 12:06:00 CET 2000 - bg@suse.de
+
+- changed to new version 1.1.4 
+
+-------------------------------------------------------------------
+Sun Jan 16 19:07:22 CET 2000 - bg@suse.de
+
+- moved /usr/man to /usr/share/man
+- added symlink to enable some styles in TeX
+- applied a patch to fix some smaller bugs
+
+-------------------------------------------------------------------
+Thu Dec 30 11:27:46 CET 1999 - bg@suse.de
+
+- changed to new version 1.1.3
+
+-------------------------------------------------------------------
+Mon Sep 20 18:16:12 CEST 1999 - ro@suse.de
+
+- added Requires TeX
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Mar 17 10:30:05 MET 1999 - fehr@suse.de
+
+- changed to new version 1.0.1
+
+-------------------------------------------------------------------
+Wed Feb 24 18:16:07 MET 1999 - ro@suse.de
+
+- added xformsd to neededforbuild
+
+----------------------------------------------------------------------
+Wed Feb 11 08:13:53 MET 1998      - fehr@suse.de
+
+- Changed to new Version 0.12.0pre8
+
+----------------------------------------------------------------------
+Tue Oct  7 21:46:33 MEST 1997     - fehr@suse.de
+
+- Prepared package for automatic build
+
+----------------------------------------------------------------------
+Mon May 12 08:47:40 MEST 1997     - fehr@suse.de
+
+- New version 0.10.7
+
+----------------------------------------------------------------------
+
+Sun Nov  3 18:06:26 CET 1996      - fehr@suse.de
+
+- Added lpr as spool command to system.lyxrc
+
+
+----------------------------------------------------------------------
+Fri Sep  6 17:04:01 MET DST 1996  - fehr@suse.de
+
+
+- New Version 0.10.3
+
+
+----------------------------------------------------------------------
+Sun Sep  1 08:02:18 MET DST 1996  - fehr@suse.de
+
+
+- New Version 0.10.1

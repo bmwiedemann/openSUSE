@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Fri Feb  5 10:44:28 UTC 2016 - zaitor@opensuse.org
+
+- Replace libxml++-devel for pkgconfig(libxml++-2.6) BuildRequires:
+  This is what configure really looks for.
+
+-------------------------------------------------------------------
+Tue Feb 21 17:16:38 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.4.8:
+  + Fix a build failure when compiled using glibmm 2.31 or greater.
+- Dropped sobby-new-glibmm.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:37:01 UTC 2012 - vuntz@opensuse.org
+
+- Add sobby-new-glibmm.patch: fix build with glibmm 2.31.
+- Stop changing LDFLAGS and calling autoreconf: there's no need for
+  that.
+- Remove automake BuildRequires: we don't call autoreconf anymore.
+
+-------------------------------------------------------------------
+Fri Dec  2 06:34:10 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Dec 27 01:20:02 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.4.7:
+  + Depend on net6 >= 1.3.12 to handle non-blocking sockets
+    correctly.
+  + Fail on startup when the configuration file cannot be read.
+
+-------------------------------------------------------------------
+Mon Nov 30 17:55:44 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.4.6:
+  + Allow to configure both autosaving facilities (file and
+    directory)
+  + Initial files are added without directory names in their
+    document title
+  + Create sockets non-blocking on *nix systems.
+
+-------------------------------------------------------------------
+Fri Sep 12 09:13:09 CDT 2008 - maw@suse.de
+
+- Update to version 0.4.5:
+  + Run autosave on SIGUSR1 and SIGTERM if an autosave file is
+    specified, even if autosave interval is 0
+  + Only autosave if the session changed
+  + Added a post-save-hook which could be used to tie the autosave
+    to a VCS commit.
+
+-------------------------------------------------------------------
+Fri May 16 05:51:24 CEST 2008 - crrodriguez@suse.de
+
+- cleanup build requires 
+
+-------------------------------------------------------------------
+Thu Apr  3 08:21:16 CEST 2008 - hpj@suse.de
+
+- Upgrade to version 0.4.4:
+
+  * Allow initial session file to be specified in the configuration file.
+  * Support for command directories from which executables could be called
+    via Sobby commands.
+  * Avahi support.
+  * Autosave of all invididual files of a session into a specified directory.
+  * Enabled keepalive to detect stale connections.
+
+-------------------------------------------------------------------
+Tue Jan 30 16:37:55 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sun Jan 28 23:06:00 CET 2007 - ro@suse.de
+
+- move to /usr 
+
+-------------------------------------------------------------------
+Tue Dec  5 13:58:23 GMT 2006 - james@usr-local-bin.org
+
+- change glibmm24-devel to glibmm2-devel in BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 29 01:48:03 CEST 2006 - ro@suse.de
+
+- added libxml++-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Tue Sep 26 17:53:36 CEST 2006 - wstephenson@suse.de
+
+- Update to version 0.4.1
+  * Support XML configuration files
+  * Supports Gobby's command subsystem
+
+-------------------------------------------------------------------
+Fri Sep 15 22:49:07 CEST 2006 - jhargadon@suse.de
+
+- applied another compiler warning patch to address bug #202248 
+
+-------------------------------------------------------------------
+Fri Sep  1 22:53:17 CEST 2006 - jhargadon@suse.de
+
+- patch to eliminate compiler warning #187244 
+
+-------------------------------------------------------------------
+Sat Feb 25 13:32:41 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:39:45 CET 2006 - lmichnovic@suse.cz
+
+- Update to version 0.3.0 [#144674]
+
+-------------------------------------------------------------------
+Sat Jan 14 19:04:15 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Sat Nov  5 00:11:26 CET 2005 - gekker@suse.de
+
+- Initial import into autobuild, version 0.2.0
+

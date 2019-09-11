@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Jun  3 19:04:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix dependency name
+
+-------------------------------------------------------------------
+Mon Apr 29 14:55:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.0.8
+  * Allow to delete default template #20
+  * Docs update/formatting/bugfixes/better linting/move to pytest
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Thu Sep 20 18:51:43 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 build since jupyterlab no longer supports python2
+
+-------------------------------------------------------------------
+Fri Sep  7 15:56:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.0.7
+  * fixing icon
+  * remove ujson
+  * badges
+
+-------------------------------------------------------------------
+Thu Aug  2 18:17:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.0.5
+  * fixing #10 svg parsing error for icon
+  * fixed missing template names in firefox
+
+-------------------------------------------------------------------
+Sun Jun 10 23:46:20 UTC 2018 - jengelh@inai.de
+
+- Avoid bashism in scriptlet.
+
+-------------------------------------------------------------------
+Tue May 29 14:59:34 UTC 2018 - toddrme2178@gmail.com
+
+- Use || true syntax instead of exit 0
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Fri Apr 20 20:18:49 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

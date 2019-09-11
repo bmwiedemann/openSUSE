@@ -1,0 +1,755 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Simplify previous-/nextActivity code in kactivities-cli
+
+-------------------------------------------------------------------
+Fri Jul 19 11:38:09 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+- Drop conditionals for no longer supported distribution versions
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * kactivities: remove unused variable
+  * [kactivities] compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Use natural sorting in ActivityModel
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * fix for macOS
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix the version in the pkgconfig file.
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Add missing override
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Autogenerate debug categories + add categories file
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:46 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * USe directly KDEFrameworkCompilerSettings
+  * Fix dangling reference with "auto" becoming "QStringBuilder"
+  * Make compile with strict compile flags
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:44 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:35:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Revert "Warning--"
+  * Warning--
+
+-------------------------------------------------------------------
+Sun May 13 21:03:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * Warning--
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Removed extraneous return
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * avoid crash in kactivities if no dbus connection is available
+  * Remove obsolete reviewboardrc file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Qt5Core is required.
+  * Fix race that starts kactivitymanagerd multiple times
+  * Remove code duplication
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:15 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * emit runningActivityListChanged on activity creation
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Use Q_DECL_OVERRIDE
+  * Add the Boost include directories to where the compiler is. Necessary to fix Windows where Boost is not installed in standard lookup paths.
+
+-------------------------------------------------------------------
+Mon May 15 18:52:18 UTC 2017 - wbauer@tmo.at
+
+- Drop unnecessary cmake(KF5KIO) build requirement
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * We are using only Tier 1 frameworks, so move us to Tier 2
+  * Removed KIO from the deps
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:23:20 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Wed Feb  1 11:31:35 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Jan  8 23:37:46 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:55:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:09:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:49:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Sorting activities in the cache alphabetically by name (kde#362774)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:46:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:50:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * [KActivities-CLI] commands for starting and stopping an activity
+  * [KActivities-CLI] setting and getting activity name,
+    icon and description
+  * Added a CLI application for controlling activities
+  * Adding scripts to switch to previous and next activities
+  * Method for inserting into QFlatSet now returns index along
+    with the iterator (kde#365610)
+  * Adding ZSH functions for stopping and deleting
+    non-current activities
+  * Added isCurrent property to KActivities::Info
+  * Using constant iterators when searching for activity
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:23:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Adding runningActivities property to the Consumer
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Removed compiler checks now that all frameworks require c++11
+  * Removed QML ResourceModel as it is superseeded
+    by KAStats::ResultModel
+  * Inserting into empty QFlatSet returned an invalid iterator
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:54:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Remove dependency on Qt5::Widgets
+  * Remove dependency on KDBusAddons
+  * Remove dependency on KI18n
+  * Remove unused includes
+  * Shell scripts output improved
+  * Added the data model (ActivitiesModel) showing the activities
+    to the library
+  * Build only the library by default
+  * Remove the service and workspace components from the build
+  * Move the library into src/lib from src/lib/core
+  * Fix CMake warning
+  * Fix crash in activities context menu (boo#952139, kde#351485)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+- Drop upstreamed fix-crash-in-activities-context-menu.patch
+
+-------------------------------------------------------------------
+Sun Feb  7 05:32:00 UTC 2016 - wbauer@tmo.at
+
+- Add fix-crash-in-activities-context-menu.patch: fixes a dolphin
+  and desktop crash when right-clicking on a file and opening the
+  "Activities" submenu (boo#952139, kde#351485)
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Don't call exec() from QML (kde#357435)
+  * KActivitiesStats library is now in a separate repository
+  * Fix crash on exit/logout (boo#965653, kde#348194)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Streamlined the QML loading for KCM (kde#356832)
+  * Work-around for the Qt SQL bug that does not clean up
+    connections properly (kde#348194)
+  * Merged a plugin that executes applications on
+    activity state change
+  * Port from KService to KPluginLoader
+  * Port plugins to use kcoreaddons_desktop_to_json()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:02:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Fixed a lock on the first start of the daemon
+  * Moving QAction creation to the main thread. (kde#351485)
+  * Sometimes clang-format makes a bad decision (kde#355495)
+  * Killing potential synchronization issues
+  * Use org.qtproject instead of com.trolltech
+  * Removing the usage of libkactivities from the plugins
+  * KAStats config removed from the API
+  * Added linking and unlinking to ResultModel
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:57:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Fixing the build against Qt 5.3
+  * Moved the boost.optional include to the place that uses it
+  * Replacing the boost.optional usage in continuations with a
+    slimmer optional_view structure
+  * Added support for a custom ordering of linked results
+  * Allow QML to invoke activities KCM
+  * Adding the support for activity deletion to activities KCM
+  * New activity configuration UI
+  * New configuration UI that supports adding
+    description and wallpaper
+  * Settings UI is now properly modularized
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Using a custom matching function instead of sqlite's glob.
+    (kde#352574)
+  * Fixed problem with adding a new resource to the model
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Only spawn one action loader (thread) when the actions of the
+    FileItemLinkingPlugin are not initialized (kde#351585)
+  * Fixing the build problems introduced by renaming the
+    Private classes
+  * Add missing boost include path to build on OS X
+  * Setting the shortcuts moved to activity settings
+  * Setting the private activity mode works
+  * Refactor of the settings UI
+  * Basic activity methods are functional
+  * UI for the activity configuration and deletion pop-ups
+  * Basic UI for the activities creation/deletion/configuration
+    section in KCM
+  * Increased the chunk size for loading the results
+  * Added missing include for std::set
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Adding the option not to track the user when in specific activities
+    (similar to the 'private browsing' mode in a web browser)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Tue May 26 18:10:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Unconditionally obsolete kactivities4
+- Drop kamd-rename.patch (kde#348212, kde#347817)
+
+-------------------------------------------------------------------
+Sun May  3 19:46:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+- Added pkgconfig(Qt5Quick) >= 5.2.0 BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr 26 00:04:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Obsolete kactivities4 for openSUSE > 13.2
+- Apply kamd-rename.patch for <= 13.2
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Implemented forgetting a resource
+  * Build fixes
+  * Added a plugin to register events for KRecentDocument notifications
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Resources scoring service is now finalized
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fixed starting and stopping activities
+  * Fixed activity preview showing wrong wallpaper occasionally
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Introducing the ActivityInfo QML object
+  *  Linking now supports special values alongside activity ids.
+     Supported values:
+     :global  - links to all activities
+     :current - links to the current activity
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Fix plugin loading with KDE_INSTALL_USE_QT_SYS_PATHS ON
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Added DBus interface to load plugins at runtime
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KActivities: reimplementation of the file item plugin for
+    linking files to activities
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added kcmutils-devel, kdeclarative-devel, kglobalaccel-devel and
+  kxmlgui-devel BuildRequires
+- Rebase kamd-rename.patch
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Mon Jul 28 17:27:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Split out imports to separate package
+- Improve devel subpackage summary and description
+- Recommends libQt5Sql5-sqlite for sqlite plugin
+
+-------------------------------------------------------------------
+Fri Jul 11 09:29:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Tue May 13 18:49:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Mark licence as GPL-2.0+, until the relicensing is done upstream
+
+-------------------------------------------------------------------
+Sun May  4 01:20:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+- Update devel package requires to current reality
+- Added kamd-rename.patch: rename kactivitymanagerd binary so it can
+  co-exist with kactivities4
+
+-------------------------------------------------------------------
+Wed Apr  2 06:52:26 UTC 2014 - cfarrell@suse.com
+
+- license update: LGPL-2.0+ and GPL-2.0+
+  numerous files under plugins subdirectory are GPL-2.0+ (activityranking,
+  sqlite etc). Also, please include all COPYING* files in %doc
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Mon Feb 10 21:56:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kactivities5 package
+

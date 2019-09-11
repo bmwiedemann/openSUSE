@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Feb  1 10:02:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Apply patch to fix build on python3.7:
+  * python37.patch
+
+-------------------------------------------------------------------
+Thu Oct 18 09:36:51 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Upstream moved to gitlab
+
+-------------------------------------------------------------------
+Wed Aug 29 10:33:58 UTC 2018 - tchvatal@suse.com
+
+- Add license
+- Run the tests in a way to work on 42.3
+
+-------------------------------------------------------------------
+Mon Apr 10 08:30:24 UTC 2017 - alarrosa@suse.com
+
+- Update for singlespec 
+- Add do-not-install-test_cookies.diff so test_cookies.py is not
+  installed in the system.
+
+-------------------------------------------------------------------
+Tue Feb 21 13:22:24 UTC 2017 - jengelh@inai.de
+
+- Trim long description
+
+-------------------------------------------------------------------
+Mon Feb 20 10:13:44 UTC 2017 - alarrosa@suse.com
+
+- Use py.test in %check to fix "setup.py test" not working
+  with python 3.6
+
+-------------------------------------------------------------------
+Thu Jan 19 14:35:13 UTC 2017 - alarrosa@suse.com
+
+- Initial release
+

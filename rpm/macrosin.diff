@@ -1,0 +1,134 @@
+--- ./macros.in.orig	2018-07-02 14:46:14.912900534 +0000
++++ ./macros.in	2018-07-02 14:50:35.356223235 +0000
+@@ -184,7 +184,7 @@
+     %{?_unique_build_ids:--build-id-seed "%{VERSION}-%{RELEASE}"} \\\
+     %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
+     %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
+-    %{?_find_debuginfo_dwz_opts} \\\
++    %{lua:if not posix.access(rpm.expand("%_sourcedir/baselibs.conf"), "r") then print(rpm.expand("%{?_find_debuginfo_dwz_opts}")) end} \\\
+     %{?_find_debuginfo_opts} \\\
+     %{?_debugsource_packages:-S debugsourcefiles.list} \\\
+     "%{_builddir}/%{?buildsubdir}"\
+@@ -224,7 +224,8 @@ package or when debugging this package.\
+ %endif\
+ %{nil}
+ 
+-%_defaultdocdir		%{_datadir}/doc
++%_defaultdocdir		%{_datadir}/doc/packages
++%_docdir_fmt		%%{NAME}
+ %_defaultlicensedir	%{_datadir}/licenses
+ 
+ # Following macros for filtering auto deps must not be used in spec files.
+@@ -278,7 +279,8 @@ package or when debugging this package.\
+ %_tmppath		%{_var}/tmp
+ 
+ #	Path to top of build area.
+-%_topdir		%{getenv:HOME}/rpmbuild
++%_topdir		%{expand:%%global _topdir %{lua:if posix.access(rpm.expand("%{_usrsrc}/packages"), "w") then print "%{_usrsrc}/packages" else print "%{getenv:HOME}/rpmbuild" end} \
++}%_topdir
+ 
+ #	The path to the unzip executable (legacy, use %{__unzip} instead).
+ %_unzipbin		%{__unzip}
+@@ -382,7 +384,7 @@ package or when debugging this package.\
+ #		"w6.lzdio"	lzma-alone level 6, lzma's default
+ #
+ #%_source_payload	w9.gzdio
+-#%_binary_payload	w9.gzdio
++%_binary_payload	w5.xzdio
+ 
+ #	Algorithm to use for generating file checksum digests on build.
+ #	If not specified or 0, MD5 is used.
+@@ -489,6 +491,19 @@ package or when debugging this package.\
+ #
+ #%_include_minidebuginfo	1
+ 
++# Number of debugging information entries (DIEs) above which
++# dwz will stop considering file for multifile optimizations
++# and enter a low memory mode, in which it will optimize
++# in about half the memory needed otherwise.
++%_dwz_low_mem_die_limit          10000000
++# Number of DIEs above which dwz will stop processing
++# a file altogether.
++%_dwz_max_die_limit              50000000
++
++%_find_debuginfo_dwz_opts --run-dwz\\\
++   --dwz-low-mem-die-limit %{_dwz_low_mem_die_limit}\\\
++   --dwz-max-die-limit %{_dwz_max_die_limit}
++
+ #
+ # Include a .gdb_index section in the .debug files.
+ # Requires _enable_debug_packages and gdb-add-index installed.
+@@ -521,7 +536,7 @@ package or when debugging this package.\
+ #   Same as for "separate" but if the __debug_package global is set then
+ #   the -debuginfo package will have a compatibility link for the main
+ #   ELF /usr/lib/debug/.build-id/xx/yyy -> /usr/lib/.build-id/xx/yyy
+-%_build_id_links compat
++%_build_id_links alldebug
+ 
+ # Whether build-ids should be made unique between package version/releases
+ # when generating debuginfo packages. If set to 1 this will pass
+@@ -550,10 +565,10 @@ package or when debugging this package.\
+ %_unique_debug_srcs	1
+ 
+ # Whether rpm should put debug source files into its own subpackage
+-#%_debugsource_packages	1
++%_debugsource_packages	1
+ 
+ # Whether rpm should create extra debuginfo packages for each subpackage
+-#%_debuginfo_subpackages 1
++%_debuginfo_subpackages 1
+ 
+ #
+ # Use internal dependency generator rather than external helpers?
+@@ -566,6 +581,10 @@ package or when debugging this package.\
+ # Directories whose contents should be considered as documentation.
+ %__docdir_path %{_datadir}/doc:%{_datadir}/man:%{_datadir}/info:%{_datadir}/gtk-doc/html:%{?_docdir}:%{?_mandir}:%{?_infodir}:%{?_javadocdir}:/usr/doc:/usr/man:/usr/info:/usr/X11R6/man
+ 
++# maxnum,cuttime,minnum
++# 2014/10/13 (SLES12 GA)
++%_binarychangelogtrim 0,1413151200,10
++
+ #
+ # Path to scripts to autogenerate package dependencies,
+ #
+@@ -576,6 +595,7 @@ package or when debugging this package.\
+ %__find_requires	%{_rpmconfigdir}/find-requires
+ #%__find_conflicts	???
+ #%__find_obsoletes	???
++%__find_supplements	%{_rpmconfigdir}/find-supplements
+ 
+ # 
+ # Path to file attribute classifications for automatic dependency 
+@@ -654,10 +674,10 @@ package or when debugging this package.\
+ # Misc BDB tuning options
+ %__dbi_other			mp_mmapsize=128Mb mp_size=1Mb
+ 
+-%_dbi_config			%{?__dbi_other}
++%_dbi_config			%{?__dbi_other} nofsync
+ 
+ # "Packages" should have shared/exclusive fcntl(2) lock using "lockdbfd".
+-%_dbi_config_Packages		%{?_dbi_config} lockdbfd
++%_dbi_config_Packages		%{?__dbi_other} lockdbfd
+ 
+ #==============================================================================
+ # ---- GPG/PGP/PGP5 signature macros.
+@@ -969,7 +989,7 @@ package or when debugging this package.\
+ %_build_vendor		%{_host_vendor}
+ %_build_os		%{_host_os}
+ %_host			@host@
+-%_host_alias		@host_alias@%{nil}
++%_host_alias		@host@%{nil}
+ %_host_cpu		@host_cpu@
+ %_host_vendor		@host_vendor@
+ %_host_os		@host_os@
+@@ -1095,7 +1115,9 @@ package or when debugging this package.\
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported ARM processors
+-%arm	armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl
++%arm    armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl
++%arml   armv3l armv4l armv5l armv5tel armv6l armv6hl armv7l armv7hl armv7hnl
++%armb   armv4b armv5b armv5teb
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for 32-bit MIPS processors

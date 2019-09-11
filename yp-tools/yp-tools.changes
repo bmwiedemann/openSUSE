@@ -1,0 +1,308 @@
+-------------------------------------------------------------------
+Tue Mar 27 15:43:48 CEST 2018 - kukuk@suse.de
+
+- Update to version 4.2.3
+  - Re-add yptest [issues/#4]
+  - Lower compiler warnings [bsc#1084633]
+
+-------------------------------------------------------------------
+Fri Feb 23 11:45:10 UTC 2018 - kukuk@suse.com
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Nov  8 13:09:31 CET 2017 - kukuk@suse.de
+
+- Cleanup dangling symlinks after de-installation
+
+-------------------------------------------------------------------
+Tue Nov  7 17:07:15 CET 2017 - kukuk@suse.de
+
+- Prepare for transactional update and read-only root filesystem
+  - create /var/yp with tmpfiles.d
+
+-------------------------------------------------------------------
+Fri Aug 19 12:01:11 CEST 2016 - kukuk@suse.de
+
+- Re-add ypdomainname and nisdomainname for SLE12 and Leap 42.x
+  [bsc#994532]
+
+-------------------------------------------------------------------
+Wed Mar 30 13:56:06 CEST 2016 - kukuk@suse.de
+
+- Disable ypdomainname and nisdomainname
+
+-------------------------------------------------------------------
+Mon Mar 14 16:18:46 CET 2016 - kukuk@suse.de
+
+- Update to version 4.2.2
+  - revert netdb.h changes
+
+-------------------------------------------------------------------
+Mon Mar 14 15:25:18 CET 2016 - kukuk@suse.de
+
+- Update to version 4.2.1
+  - fix order of configure checks
+
+-------------------------------------------------------------------
+Tue Mar  8 18:14:24 CET 2016 - kukuk@suse.de
+
+- Update to version 4.2
+  - fix compiling with old glibc
+  - fix bug in fallback code, if ypbind does not speak v3 protocol
+
+-------------------------------------------------------------------
+Wed Mar  2 15:01:41 CET 2016 - kukuk@suse.de
+
+- Update to version 4.1
+  - allow building only with glibc
+  - fix seg.fault in yppoll
+  - fix yppasswd to work with IPv6
+
+-------------------------------------------------------------------
+Tue Feb  2 16:01:59 CET 2016 - kukuk@suse.de
+
+- Update to version 4.0
+  - build against external libnsl2
+- Drop libnis* and libnss_nis6* sub-packages
+
+-------------------------------------------------------------------
+Wed Jan 20 14:04:50 CET 2016 - kukuk@suse.de
+
+- Update to version 3.5
+  - modify internal interface to avoid cast errors
+
+-------------------------------------------------------------------
+Fri May  8 13:19:56 CEST 2015 - kukuk@suse.de
+
+- Update to version 3.4
+  - remove some glibc special macros not working on SLES11
+- Require libtirpc >= 0.3.0 
+
+-------------------------------------------------------------------
+Thu Mar 26 15:48:11 CET 2015 - kukuk@suse.de
+
+- Revert changes from Dec 4th and 6th, most of them were wrong.
+
+- Update to version 3.3:
+  - fix some linking issues
+  - add yp_dump_binding
+  - Fix file descriptor leak in libnis
+  - Fix wrong fallback for binding files in libnis
+  - Fix link order
+  - Implement locking for multithreaded applications
+
+-------------------------------------------------------------------
+Wed Dec 17 13:11:56 UTC 2014 - schwab@suse.de
+
+- Avoid error from bad cast
+
+-------------------------------------------------------------------
+Sat Dec  6 20:44:10 UTC 2014 - jengelh@inai.de
+
+- Corrections to the description
+
+-------------------------------------------------------------------
+Thu Dec  4 11:18:35 UTC 2014 - jengelh@inai.de
+
+- Reduce filelists by using wildcards. Remove %doc (it is implicit
+  for documentation paths).
+- Run build in parallel, and run fdupes to reduce same files.
+
+-------------------------------------------------------------------
+Thu Nov 27 08:28:26 UTC 2014 - dimstar@opensuse.org
+
+- Filter libc.so.6(GLIBC_PRIVATE) from the requires of libnss_nis6:
+  we consciously use glibc internas.
+- Do not install libtool archives.
+
+-------------------------------------------------------------------
+Mon Nov 17 01:44:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in match_printcap script
+
+-------------------------------------------------------------------
+Mon Nov  3 16:32:42 CET 2014 - kukuk@suse.de
+
+- Update to version 3.0.1
+  - Use very short timeout for clnt_create()
+
+-------------------------------------------------------------------
+Mon Nov  3 10:46:34 CET 2014 - kukuk@suse.de
+
+- Update to version 3.0
+  - fix xdrfile-test.c on 32bit
+
+-------------------------------------------------------------------
+Fri Oct 31 16:33:29 CET 2014 - kukuk@suse.de
+
+- Update to version 2.99.8
+  - Enhance libnis for ypserv
+
+-------------------------------------------------------------------
+Thu Oct 30 10:32:45 CET 2014 - kukuk@suse.de
+
+- Update to version 2.99.7
+  - Rework nss_nis6 dependencys 
+    (RPM handles glibc provides very special)
+  - Some fixes to yp_prot.h for ypserv
+
+-------------------------------------------------------------------
+Wed Oct 29 15:51:02 CET 2014 - kukuk@suse.de
+
+- Update to version 2.99.6
+  - Finish libnis library
+  - Add nss_nis6 plugin for glibc
+
+-------------------------------------------------------------------
+Tue Oct 28 11:52:13 CET 2014 - kukuk@suse.de
+
+- Update to version 2.99.5
+  - Implement v3 protocol for ypset
+  - Enhance libnis library
+
+-------------------------------------------------------------------
+Sat Oct 25 01:01:46 CEST 2014 - kukuk@suse.de
+
+- Update to version 2.99.4
+  - fixes last IPv4 only code (except ypset) 
+
+-------------------------------------------------------------------
+Fri Oct 24 19:01:45 CEST 2014 - kukuk@suse.de
+
+- Update to version 2.99.3
+  - fixes some bugs to build ypbind
+
+-------------------------------------------------------------------
+Fri Oct 24 15:09:10 CEST 2014 - kukuk@suse.de
+
+- Update to version 2.99.2
+  - ypwhich speaks now ypbind v3 protocol
+  - Add seperate libnis library
+
+-------------------------------------------------------------------
+Tue Oct 21 14:41:16 CEST 2014 - kukuk@suse.de
+
+- Update to version 2.99.1 
+  - port to TI-RPC
+  - ypwhich and ypset can now use IPv6 to speak with ypbind
+
+-------------------------------------------------------------------
+Tue Apr  9 16:29:58 CEST 2013 - kukuk@suse.de
+
+- Update to version 2.14 (minor bugfix release)
+
+-------------------------------------------------------------------
+Mon Apr  8 17:00:45 CEST 2013 - kukuk@suse.de
+
+- Update to version 2.13 (autoconf meta data update)
+
+-------------------------------------------------------------------
+Fri Apr  5 08:50:08 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sat Feb  4 13:24:10 UTC 2012 - rschweikert@suse.com
+
+- keep all binaries in /usr (UsrMerge project)
+
+-------------------------------------------------------------------
+Wed May 11 16:15:06 CEST 2011 - kukuk@suse.de
+
+- Don't build against libxcrypt (not necessary).
+
+-------------------------------------------------------------------
+Wed Apr 21 11:55:01 CEST 2010 - kukuk@suse.de
+
+- Update to 2.12: Documentation fixes, fix detection of passwd, chsh
+  and chfn.
+
+-------------------------------------------------------------------
+Tue Apr 20 16:01:59 CEST 2010 - kukuk@suse.de
+
+- Update to latest upstream version
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 18:49:29 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:52:56 CEST 2004 - kukuk@suse.de
+
+- Update to 2.9 (minor documentation and bug fixes)
+
+-------------------------------------------------------------------
+Sun Jan 11 12:12:07 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Jun 11 05:48:47 CEST 2003 - kukuk@suse.de
+
+- Use %find_lang
+
+-------------------------------------------------------------------
+Thu May 15 14:56:09 CEST 2003 - kukuk@suse.de
+
+- Add hint about programs, which cache the domainname, to the
+  manual page of domainname. [Bug #18975]
+
+-------------------------------------------------------------------
+Fri Jan 17 14:49:31 CET 2003 - kukuk@suse.de
+
+- Update to version 2.8 (includes all extra patches)
+
+-------------------------------------------------------------------
+Thu Aug 29 14:40:13 CEST 2002 - kukuk@suse.de
+
+- Make sure strings are NUL terminated after strncpy
+
+-------------------------------------------------------------------
+Mon May 27 08:52:39 CEST 2002 - kukuk@suse.de
+
+- Apply fixes for typos
+
+-------------------------------------------------------------------
+Mon May 13 16:34:34 CEST 2002 - kukuk@suse.de
+
+- Update to yp-tools 2.7 (Add yptest, improve options of ypcat)
+- Use libxcrypt
+
+-------------------------------------------------------------------
+Wed Oct 31 21:08:11 CET 2001 - kukuk@suse.de
+
+- Update to yp-tools 2.6 (fixed setlocale calls)
+
+-------------------------------------------------------------------
+Sun Apr 15 21:31:46 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Thu Apr 12 09:19:51 CEST 2001 - kukuk@suse.de
+
+- Change patch and configure call for new gettext version
+
+-------------------------------------------------------------------
+Thu Mar 22 18:51:02 CET 2001 - ro@suse.de
+
+- added split-aliases as provides
+
+-------------------------------------------------------------------
+Wed Mar 21 15:17:26 CET 2001 - kukuk@suse.de
+
+- Update to 2.5
+
+-------------------------------------------------------------------
+Thu Nov  2 15:00:42 CET 2000 - kukuk@suse.de
+
+- New, split from old ypclients package
+

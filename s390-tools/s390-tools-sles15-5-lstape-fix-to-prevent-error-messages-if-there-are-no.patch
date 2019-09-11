@@ -1,0 +1,136 @@
+Subject: lstape, lsluns: handle non-zfcp; lin_tape multiple paths
+From: Steffen Maier <maier@linux.ibm.com>
+
+Description:  lstape, lsluns: handle non-zfcp; lin_tape multiple paths
+
+Symptom:      lstape shows unexpected additional Device suffix numbers in
+              excess output columns for each additional path of the same
+              tape/changer driven by the IBM lin_tape device driver
+              (independent of actual path failover enablement in lin_tape).
+              It also shows a wrong number of found devices in the header
+              (without --scsi-only).
+
+              lstape prints error about "Unexpected extra argument:" and the
+              usage for "sg_inq" along with wrong tabular output.
+
+              lsluns prints ENOENT error text for "cat" on SCSI device sysfs
+              attributes hba_id, wwpn, and fcp_lun.
+
+              lstape with --verbose option prints ENOENT error text for
+              "cat" on SCSI device sysfs attributes hba_id and wwpn.
+
+              lstape man page: Description of --type and <devbusid> filter
+              for channel tapes is incomplete. SCSI output description is
+              incomplete.
+
+              lstape shows "N/A" instead of the HBA device bus-ID with
+              virtio-scsi-ccw.
+
+Problem:      s390-tools-1.8.0 before the first upstream commit b627b8d8e1ab
+              ("Initial s390-tools-2.0.0 import") introduced SCSI
+              tape/changer output for lstape. It used the SCSI device serial
+              number as lookup key to find a match in IBM lin_tape device
+              driver proc-fs output for a given SCSI device name. Multiple
+              paths to the same tape/changer have the same serial number.
+              Multiple matches cause excess arguments to printf. Explaining
+              the resulting output, the bash man page says: "The format is
+              reused as necessary to consume all of the arguments." This
+              also causes a wrong number of found devices.
+
+              The default bash settings have nullglob disabled so if
+              $SCSI_DEV/scsi_generic* aka
+              /sys/bus/scsi/devices/*:*:*:*/scsi_generic* does not match
+              anything, it leaves the glob pattern unmodified and
+              SG_DEV=$(basename $SG_DEV/*) results in the literal "*". If
+              $SG_INQ exists, it invoked sg_inq with more than the one
+              allowed positional argument for a SCSI generic device node
+              "sg_inq /dev/*". Causing error messages and the usage of
+              sg_inq to land in $TAPE_SERIAL.
+
+              lsluns iterates SCSI generic devices and unconditionally
+              reads zfcp-specific SCSI device sysfs attributes hba_id, wwpn,
+              and fcp_lun.
+
+              lstape --verbose unconditionally reads zfcp-specific SCSI
+              device sysfs attributes hba_id and wwpn.
+
+              <devbusid> filter missing from synopsis. <device-type> example
+              at wrong place with <devbusid> filter. <devbusid> filter
+              option description is a duplicate of <device-type> filter
+              option description. SCSI output description misses fields.
+
+              Lstape only used the zfcp-specific sysfs attribute hba_id.
+
+Solution:     Prefer sysfs to find lin_tape device name for SCSI device.
+              Fallback: The lin_tape proc-fs output format has changed over
+              the years. The HBA device driver string can contain whitespace
+              (e.g. "Virtio SCSI HBA") and breaks the field numbers with
+              tokenized parsing. Grep for the SCSI device name as word (to
+              skip names with same substring, such as 0:0:1:1 also matching
+              0:0:1:10) and cut the first field 'Number' (lin_tape device
+              name suffix). If there is no SCSI column at all [lin_tape
+              before v2.2.0] (and no SCSI LLDD or other column with a name
+              accidentally matching an existing SCSI device name), we get no
+              match and better bail out with the initialized "N/A" for the
+              lstape column "Device".
+
+              To not have to rely on the nullglob setting, explicitly check
+              for the existence of $SCSI_DEV/scsi_generic before evaluating
+              SG_DEV=$(basename $SG_DEV/*). Also handle availability of
+              sg_inq but absence of scsi_generic individually to provide the
+              user with a hint if only sg is missing.
+
+              Simply skip non-zfcp SCSI devices, such as iSCSI or
+              virtio-scsi-ccw, to not erroneously access absent attributes.
+
+              Assume "N/A" for HBA and WWPN of non-zfcp SCSI devices, such
+              as iSCSI or virtio-scsi-ccw, to not erroneously access absent
+              zfcp-specific sysfs attributes.
+
+              Add <devbusid> filter to synopsis. Move <device-type> example
+              to <device-type> option. Replace <devbusid> filter option
+              description. Move existing SCSI output description to a new
+              subsection and add description of missing fields.
+
+              Also search sysfs for an ancestor with subsystem ccw.
+
+Reproduction: Attach more than one path to the same SCSI tape or changer and
+              load the IBM lin_tape device driver.
+
+              Unload sg kernel module.
+
+              Attach non-zfcp SCSI devices such as iSCSI or virtio-scsi-ccw.
+
+              Attach non-zfcp SCSI devices such as iSCSI or virtio-scsi-ccw.
+
+              man lstape
+
+              Attach SCSI tape or changer with virtio-scsi-ccw to a KVM
+              guest and run "lstape --verbose".
+
+Upstream-ID:  -
+Problem-ID:   170633
+
+Signed-off-by: Steffen Maier <maier@linux.ibm.com>
+---
+ zconf/lstape |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+--- a/zconf/lstape
++++ b/zconf/lstape
+@@ -335,9 +335,13 @@ function SysfsCreateListSCSI()
+ 			$STATE
+ 
+ 		if $VERBOSE; then
++			HBA_ID="N/A"
++			[ -r $SCSI_DEV/hba_id ] && HBA_ID=$(cat $SCSI_DEV/hba_id)
++			WWPN="N/A"
++			[ -r $SCSI_DEV/wwpn ] && WWPN=$(cat $SCSI_DEV/wwpn)
+ 			printf "$SCSIVFORMAT" \
+-				$(cat $SCSI_DEV/hba_id) \
+-				$(cat $SCSI_DEV/wwpn) \
++				"$HBA_ID" \
++				"$WWPN" \
+ 				$TAPE_SERIAL
+ 		fi
+ 	done

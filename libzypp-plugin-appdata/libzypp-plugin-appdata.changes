@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Thu Mar 28 12:54:44 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only Recommend instead of require AppStream: Allow distros like
+  SLE not to ship AppStream as part of the main channel, but only
+  in PK for example. SLE only ships GNOME Software, which does not
+  rely on the xapian database, so we don't need this cache being
+  refreshed. On SLE+PH or openSUSE, we also have KDE Discover,
+  where xapian becomes a topic (boo#1125898).
+
+-------------------------------------------------------------------
+Mon Apr 30 15:16:07 UTC 2018 - jengelh@inai.de
+
+- Switch summary to a noun phrase.
+
+-------------------------------------------------------------------
+Thu Apr 26 08:01:48 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20180426:
+  * systemd-service: we only need local filesystem, no network.
+
+-------------------------------------------------------------------
+Wed Apr 25 16:03:37 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20180425:
+  * Rewrite InstallAppdata in python, having slightly better
+    control over the execution
+  * Add systemd service to resync the repodata cache (boo#1009745).
+
+-------------------------------------------------------------------
+Fri Apr 20 13:45:17 UTC 2018 - dimstar@opensuse.org
+
+- Drop the post scriptlet attempting to fix boo#1009745: at the
+  time this script is executed on a fresh install, the repos are
+  not yet setup in the chroot, resulting in the zypper lr call to
+  fail and the AS data still not being initialzied.
+
+-------------------------------------------------------------------
+Tue Mar 27 11:26:55 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20180327:
+  * AsHelper: normalize the repo alias names
+
+-------------------------------------------------------------------
+Tue Mar 27 08:27:00 UTC 2018 - dimstar@opensuse.org
+
+- Start zypper lr with ZYPP_PLUGIN_APPDATA_FORCE_COLLECT=1 post
+  installation (boo#1009745).
+- Add relevant Requires(post) to ensure packages are installed in
+  the right order:
+  + appstream-glib >= 0.3.6
+  + python3-cmdln
+  + python3-createrepo_c
+  + libzypp >= 16.13.1
+  + zypper
+
+-------------------------------------------------------------------
+Wed Mar 21 19:15:14 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20180321:
+  * ZYpp AsHelper: install AS data into system cache: new python
+    helper to be a bit smarter (part of boo#996896).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:57 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  4 09:39:20 UTC 2017 - dleuenberger@suse.com
+
+- Do not consider appdata-ignore.xml.gz as appdata to be installed.
+
+-------------------------------------------------------------------
+Fri Jul 14 08:49:26 UTC 2017 - dimstar@opensuse.org
+
+- Bump version to 1.0.1+git.20170629: We were originally at 1.0.1
+  before switching to a git based source service, then 'downgraded'
+  to 1.0+git, which was a mistake.
+
+-------------------------------------------------------------------
+Wed Jun 28 11:55:21 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.0+git.20150408:
+  + Drop the irrelevant LICENSE file from git.
+- Update License tag to be MIT (InstallAppdata.sh) AND CC0-1.0 (the
+  appdata metafiles).
+
+-------------------------------------------------------------------
+Mon Jun 26 15:02:47 UTC 2017 - dimstar@opensuse.org
+
+- Provide 'appstream-provider': we might want to implement
+  different methods of providing AppStream metadata to
+  applications, and the frontends should not have to care about the
+  technical details in the background. Software Centers like GNOME
+  Software and Discover are supposed to use the new symbol.
+
+-------------------------------------------------------------------
+Fri Jun 23 12:21:44 UTC 2017 - dimstar@opensuse.org
+
+- Update InstallAppdata.sh: use appstreamcli refresh-cache instead
+  of refresh-index (boo#1044114).
+- Drop GNOME software mention from the description. There are other
+  frontends out there by now.
+
+-------------------------------------------------------------------
+Fri Jul 15 07:25:08 UTC 2016 - dimstar@opensuse.org
+
+- InstallAppdata.sh: do not stumble over the presence of the
+  appdata-failed.xml.gz file: this is for debug purpose and does
+  not contain valid applications (boo#989031).
+- Add awk Requires, as the latest modification relies on awk to
+  find the right filenames.
+
+-------------------------------------------------------------------
+Tue May  3 14:13:12 UTC 2016 - dimstar@opensuse.org
+
+- InstallAppdata.sh: prepare for YaST type repositories to receive
+  appdata.xml.gz and appdata-icons.tar.gz with a hashed filename in
+  order to allow mirrorbrain to distribute it.
+
+-------------------------------------------------------------------
+Fri Feb  5 13:36:42 UTC 2016 - tittiatcoke@gmail.com
+
+- Expand the InstallAppdata.sh so that it (re)builds the Xapian
+  database for the available appdata. This Xapian database is
+  required by the KDE tools (Muon/Discover) to show the
+  installed software
+  * Add Requires on AppStream package as that this provides the
+    appstreamcli binary
+
+-------------------------------------------------------------------
+Fri May  8 20:08:01 UTC 2015 - dimstar@opensuse.org
+
+- Fix installation of rpm-md provided metadata (expanding globs
+  inside quotes does not work).
+
+-------------------------------------------------------------------
+Thu Apr 23 07:23:16 UTC 2015 - dimstar@opensuse.org
+
+- No need to validate appdata.xml.gz in a yast2 repo: those are
+  created by kiwi, which in turn spanws appstream-builder: we can
+  trust that it creates valid enough metadata.
+
+-------------------------------------------------------------------
+Tue Apr  7 11:42:52 UTC 2015 - dimstar@opensuse.org
+
+- Move openSUSE-appstream-process to appstream-glib package, as
+  updating one often means a change in the other anyway.
+- Rename openSUSE-appstream-extra to openSUSE-appdata-extra, to
+  better reflect what content to expect in this package (after the
+  github reorganisation).
+
+-------------------------------------------------------------------
+Thu Apr  2 13:38:08 UTC 2015 - dimstar@opensuse.org
+
+- InstallAppdata.sh: pass --nonet to appstream-util when
+  validating appstream.xml.gz.
+
+-------------------------------------------------------------------
+Tue Mar 31 13:41:00 UTC 2015 - dimstar@opensuse.org
+
+- InstallAppdata.sh: only install AppStream metadata, that
+  validates.
+
+-------------------------------------------------------------------
+Fri Mar 20 12:55:38 UTC 2015 - dimstar@opensuse.org
+
+- Re-enable the actual libzypp plugin in place of shipping a static
+  version of appstream metadata (last updated for 13.2). We can do
+  this, as Tumbleweed now produces valid metadata. 3rd party repos
+  are not yet able to produce valid metadata it seems.
+
+-------------------------------------------------------------------
+Tue Mar 17 13:14:07 UTC 2015 - dimstar@opensuse.org
+
+- Pass --include-failed to appstream-builder (requires apb 0.3.5).
+
+-------------------------------------------------------------------
+Fri Mar 13 13:19:07 UTC 2015 - dimstar@opensuse.org
+
+- Require openSUSE-appstream-extra by openSUSE-appstream-process:
+  Having the extra appstream metadata available will allow the
+  builder to get better results.
+
+-------------------------------------------------------------------
+Fri Jan 23 12:50:11 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Preparations on the way to get AppStream metadata produced in a
+  more conform way.
+- Add new subpackages:
+  + openSUSE-appstream-extras:
+    - Contains additional appstream metadata to assist upstreams
+      not yet shipping their own .appdata.xml file.
+  + openSUSE-appstream-process:
+    - The processor is an attempt to be used by kiwi to produce
+      valid appstream metadata.
+
+-------------------------------------------------------------------
+Wed Jan 21 17:53:41 UTC 2015 - dimstar@opensuse.org
+
+- Update InstallAppdata.sh: the yast2 metadata structure got a
+  slight change with the switch to appstream-builder.
+
+-------------------------------------------------------------------
+Wed Nov  5 15:49:01 UTC 2014 - dimstar@opensuse.org
+
+- Update License to MIT, which matches the header in
+  InstallAppdata.sh.
+
+-------------------------------------------------------------------
+Wed Oct 29 16:48:05 UTC 2014 - dimstar@opensuse.org
+
+- Bump version of libzypp-plugin-appdata to 1.0.1:
+  + Disable the automatic metadata update mechanism, openSUSE 13.2
+    metadata quality is not ready for this.
+  + Inject offline generated metadata into the system, so that
+    gnome-software has usable metadata.
+
+-------------------------------------------------------------------
+Wed Oct 29 16:05:15 UTC 2014 - dimstar@opensuse.org
+
+- Split out of gnome-software, to be able to easier maintain
+  updates.
+
+

@@ -1,0 +1,11 @@
+--- findbugs-3.0.1/src/gui/edu/umd/cs/findbugs/gui2/NewProjectWizard.java	2018-12-19 13:35:39.922423293 +0100
++++ findbugs-3.0.1/src/gui/edu/umd/cs/findbugs/gui2/NewProjectWizard.java	2018-12-19 13:36:41.506770502 +0100
+@@ -201,7 +201,7 @@
+ 
+         wizardComponents[3] = cloudPanel;
+         @SuppressWarnings("unchecked")
+-        ListCellRenderer<CloudPlugin>  aRenderer = new CloudComboBoxRenderer();
++        ListCellRenderer<Object>  aRenderer = new CloudComboBoxRenderer();
+         cloudSelector.setRenderer(aRenderer);
+         cloudSelector.addItem(null);
+         String cloudId = project.getCloudId();

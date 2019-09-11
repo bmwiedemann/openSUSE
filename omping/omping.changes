@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Thu Apr 27 07:03:14 UTC 2017 - bliu@suse.com
+
+Initial package for SUSE
+- add imping support for HA(fate#323350)
+  added: omping.spec
+         omping-0.0.5.tar.gz
+

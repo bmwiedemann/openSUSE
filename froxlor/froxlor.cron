@@ -1,0 +1,5 @@
+# automatically generated cron-configuration by froxlor
+# do not manually edit this file as it will be re-generated periodically.
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+#
+*/1 * * * *     root    /usr/bin/nice -n 5 /usr/bin/php -q /srv/www/froxlor/scripts/froxlor_master_cronjob.php

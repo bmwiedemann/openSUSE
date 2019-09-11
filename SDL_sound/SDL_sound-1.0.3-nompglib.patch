@@ -1,0 +1,41 @@
+--- configure
++++ configure
+@@ -22990,7 +22990,7 @@
+ fi
+ 
+ 
+-ac_config_files="$ac_config_files Makefile decoders/Makefile decoders/timidity/Makefile decoders/mpglib/Makefile playsound/Makefile"
++ac_config_files="$ac_config_files Makefile decoders/Makefile decoders/timidity/Makefile playsound/Makefile"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+--- configure.in
++++ configure.in
+@@ -342,6 +342,5 @@
+ Makefile
+ decoders/Makefile
+ decoders/timidity/Makefile
+-decoders/mpglib/Makefile
+ playsound/Makefile
+ ])
+--- decoders/Makefile.am
++++ decoders/Makefile.am
+@@ -1,6 +1,6 @@
+ noinst_LTLIBRARIES = libdecoders.la
+ 
+-SUBDIRS = timidity mpglib
++SUBDIRS = timidity
+ 
+ INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/decoders/timidity
+ 
+--- decoders/Makefile.in
++++ decoders/Makefile.in
+@@ -201,7 +201,7 @@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+ noinst_LTLIBRARIES = libdecoders.la
+-SUBDIRS = timidity mpglib
++SUBDIRS = timidity
+ INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/decoders/timidity
+ libdecoders_la_SOURCES = \
+ 	aiff.c		\

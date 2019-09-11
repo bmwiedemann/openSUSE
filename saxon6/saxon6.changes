@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Mon Sep 18 17:51:41 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target 1.6 to fix build with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 17:10:09 UTC 2017 - tchvatal@suse.com
+
+- Do not require javapackage-tools
+
+-------------------------------------------------------------------
+Fri Jul 11 14:47:21 UTC 2014 - tchvatal@suse.com
+
+- Fix update-alternatives code.
+
+-------------------------------------------------------------------
+Fri Jun 27 11:51:43 UTC 2014 - tchvatal@suse.com
+
+- Fix build on SLE11
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:19 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Aug 12 08:55:15 UTC 2013 - mvyskocil@suse.com
+
+- implement batch support for saxon: saxon-batch
+  * requested by docu team
+  * adds saxon6-batch script with new -batch/-style arguments, which
+    allows to proceed more XML files per one JVM launch removing the
+    bootleneck in docu build
+
+-------------------------------------------------------------------
+Thu Jul 11 13:48:28 UTC 2013 - toms@opensuse.org
+
+- Added Recommends for saxon6-scripts and xml-commons-resolver
+  Usually Saxon6 is used by invocation from a Shell, thus it
+  is more convenient to have the corresponding script installed
+  already.
+  Additionally, XML tools like Saxon needs also XML catalog support
+  for mapping URIs to local paths (especially useful for DocBook users)
+
+-------------------------------------------------------------------
+Tue Dec  4 14:31:30 UTC 2012 - mvyskocil@suse.com
+
+- fix bnc#739498 - remove GPL covered com/icl/saxon/aelfred/XmlParser
+  used the original permissive version from xml.com and backport few fixes
+  of later version
+  * saxon-add-fixes-from-com-isl-saxon-aelfred.patch
+
+-------------------------------------------------------------------
+Thu Nov 29 15:16:28 UTC 2012 - mvyskocil@suse.com
+
+- add saxon provides to make bnc#780666 really fixed
+  * add saxon-$subpackage to some important subpackages too
+
+-------------------------------------------------------------------
+Thu Nov  8 14:29:47 UTC 2012 - toms@opensuse.org
+
+- Fixed saxon6 script (needs saxon6.jar)
+
+-------------------------------------------------------------------
+Wed Oct 31 08:31:43 UTC 2012 - mvyskocil@suse.com
+
+- reintroduce it as saxon6 again (bnc#780666)
+  * requested and needed by documentation team
+- add saxon-javac-encoding.patch fixes build under jdk7
+
+-------------------------------------------------------------------
+Wed Dec  2 18:50:44 UTC 2009 - coolo@novell.com
+
+- update patches, fix build
+
+-------------------------------------------------------------------
+Mon Mar 10 12:46:08 CET 2008 - anosek@suse.cz
+
+- downgrade to version 6.5.5, moved Saxon 8.x to separate saxon8
+  package
+- based on the JPackage project, dropped two patches
+  (tinytree.patch) (fragmentval.patch) 
+- Saxon 6 is needed because, for example, the DocBook stylesheets
+  have some JAR files which contain extension functions written
+  only for Saxon 6. These functions provide useful methods for
+  DocBook processing. However, these are not compatible
+  with the latest Saxon package.
+
+-------------------------------------------------------------------
+Wed Feb  6 14:14:44 CET 2008 - anosek@suse.cz
+
+- BuildRequires: java-1.6.0-devel
+
+-------------------------------------------------------------------
+Wed May 23 12:07:12 CEST 2007 - dbornkessel@suse.de
+
+- make rpmllint happy: 
+  - delete windows '\r' from doc files 
+  - index jars
+  - faster compiling
+
+-------------------------------------------------------------------
+Thu Mar 29 12:15:40 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to build reqs 
+
+-------------------------------------------------------------------
+Wed Oct  4 20:09:54 CEST 2006 - dbornkessel@suse.de
+
+- update to saxon 8.8
+- build from source (no binary package) 
+
+-------------------------------------------------------------------
+Tue Mar 21 14:21:41 CET 2006 - dbornkessel@suse.de
+
+- removed setJava call in wrapper script (Bug #158699) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb 27 20:02:57 CET 2004 - pmladek@suse.cz
+
+- updated to the version 6.5.3 [#35119]
+    * fixes 28 bugs found in Saxon 6.5.2
+- added a missing prebuilt optional saxon-fop.jar
+- fixed path to saxon jars in README.SuSE
+
+-------------------------------------------------------------------
+Tue Feb 24 13:27:03 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Mon Nov 25 15:39:19 CET 2002 - pmladek@suse.cz
+
+- added the script saxon to use StyleSheets [#21801]
+- improved README.SuSE
+- classes moved from /usr/lib to /usr/share
+
+-------------------------------------------------------------------
+Mon Aug 05 17:33:49 CEST 2002 - pmladek@suse.cz
+
+- updated to bugfix version 6.5.2
+- small improvent in README.SuSE (run setJava with new better option)
+
+-------------------------------------------------------------------
+Wed Feb  6 18:21:32 CET 2002 - pmladek@suse.cz
+
+- updated to version 6.5:
+	* fixed number of bugs
+	* important incompatible change for XSLT conformance reasons
+	* you can find details on the page:
+	    file:/usr/share/doc/packages/saxon/doc/changes.html
+- moved to noarch
+
+-------------------------------------------------------------------
+Wed Nov 28 15:39:07 CET 2001 - ke@suse.de
+
+- Update to version 6.4.4:
+  - 20% performance boost.
+  - Support JDOM.
+- Provide convenience link (/usr/lib/saxon ->
+  /usr/lib/saxon-%{version}).
+
+-------------------------------------------------------------------
+Wed Nov 21 14:08:06 CET 2001 - pmladek@suse.cz
+
+- requires changed from java2 to more universal jre1.3.x
+- added README.SuSE
+
+-------------------------------------------------------------------
+Wed May 23 15:24:05 CEST 2001 - ke@suse.de
+
+- Initial SuSE package: Version 6.3; long pending bug partly resolved
+  [#291].
+
+

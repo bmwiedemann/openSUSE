@@ -1,0 +1,12 @@
+Index: gettext-tools/misc/po-mode.el
+===================================================================
+--- gettext-tools/misc/po-mode.el.orig	2010-06-06 14:49:57.000000000 +0200
++++ gettext-tools/misc/po-mode.el	2010-12-20 18:47:11.963132483 +0100
+@@ -1242,6 +1242,7 @@ all reachable through 'M-x customize', i
+     ;; mode-line-format usually contains global-mode-string, but some
+     ;; people customize this variable. As a last resort, append at the end.
+     (let ((prev-entry (or (member 'global-mode-string mode-line-format)
++                          (member 'mode-line-position mode-line-format)
+                           (member "   " mode-line-format)
+                           (last mode-line-format))))
+       (setcdr prev-entry (cons po-mode-line-entry (cdr prev-entry)))))

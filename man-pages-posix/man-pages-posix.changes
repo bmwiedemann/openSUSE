@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sun Jan 13 10:17:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Supplement man-pages, not man.
+
+-------------------------------------------------------------------
+Fri Jan  4 13:08:59 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- supplements man [bsc#1116987]
+
+-------------------------------------------------------------------
+Sat Jan 25 15:22:29 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2013a
+* Update to the latest revision of the POSIX standard
+- Feed specfile through formatter; kill redundant %clean section;
+  %fdupes ought not to be called across directories that potentially
+  live across standard partitions
+
+-------------------------------------------------------------------
+Tue Apr 16 12:39:33 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Mar 26 14:23:54 UTC 2013 - pgajdos@suse.com
+
+- adjust url
+
+-------------------------------------------------------------------
+Thu Aug 23 11:31:16 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-IEEE
+  A new license string was added to the spreadsheet linked from
+  license.opensuse.org. It corresponds to the Fedora entry. The proprietary
+  SUSE- prefix is included until the license is accepted upstream at
+  spdx.org/licenses
+
+-------------------------------------------------------------------
+Wed Sep 21 07:28:52 UTC 2011 - andrea.turrini@gmail.com
+
+- removed repeated sentence from man-pages-posix.spec description
+
+-------------------------------------------------------------------
+Wed Aug 20 11:46:22 CEST 2008 - pgajdos@suse.cz
+
+- splitted from man-pages
+

@@ -1,0 +1,69 @@
+From 9380778b8c89a9280d541730eb3bced827605bba Mon Sep 17 00:00:00 2001
+Message-Id: <9380778b8c89a9280d541730eb3bced827605bba.1487494889.git.matthias@mailaender.name>
+In-Reply-To: <a870232c936c5a813ebef44758127b20ee07933e.1487494889.git.matthias@mailaender.name>
+References: <a870232c936c5a813ebef44758127b20ee07933e.1487494889.git.matthias@mailaender.name>
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?= <matthias@mailaender.name>
+Date: Sat, 18 Feb 2017 13:09:07 +0100
+Subject: [PATCH 3/3] Add an appdata.xml file for Linux software galleries
+
+---
+ crawl-ref/source/Makefile                |  4 ++++
+ crawl-ref/source/linux/crawl.appdata.xml | 32 ++++++++++++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/crawl-ref/source/Makefile b/crawl-ref/source/Makefile
+index d325e67b8d..e5345eb3f2 100644
+--- a/crawl-ref/source/Makefile
++++ b/crawl-ref/source/Makefile
+@@ -1445,6 +1445,10 @@ install-linux-desktop:
+ 	[ -d $(prefix_fp)/share/icons/hicolor/scalable/apps ] || mkdir -p $(prefix_fp)/share/icons/hicolor/scalable/apps
+ 	$(COPY) linux/crawl.svg $(prefix_fp)/share/icons/hicolor/scalable/apps
+ 
++install-linux-appdata:
++	[ -d $(prefix_fp)/share/appdata ] || mkdir -p $(prefix_fp)/share/appdata
++	$(COPY) linux/crawl.appdata.xml $(prefix_fp)/share/appdata
++
+ clean: clean-rltiles clean-webserver clean-android clean-monster
+ 	+$(MAKE) -C $(UTIL) clean
+ 	$(RM) $(GAME) $(GAME).exe $(GENERATED_FILES) $(EXTRA_OBJECTS) libw32c.o\
+diff --git a/crawl-ref/source/linux/crawl.appdata.xml b/crawl-ref/source/linux/crawl.appdata.xml
+new file mode 100644
+index 0000000000..d19914f3f6
+--- /dev/null
++++ b/crawl-ref/source/linux/crawl.appdata.xml
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<component type="desktop">
++  <id>crawl.desktop</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>GPL-2.0</project_license>
++  <name>Dungeon Crawl Stone Soup </name>
++  <summary>Roguelike dungeon exploration game</summary>
++  <description>
++    <p>
++      Dungeon Crawl Stone Soup is a free roguelike game of exploration and treasure-hunting in dungeons filled with dangerous and unfriendly monsters in a quest for the mystifyingly fabulous Orb of Zot.
++    </p>
++    <p>
++      Dungeon Crawl Stone Soup has diverse species and many different character backgrounds to choose from, deep tactical game-play, sophisticated magic, religion and skill systems, and a grand variety of monsters to fight and run from, making each game unique and challenging.
++    </p>
++    <p>
++      Dungeon Crawl Stone Soup can be played offline, or online on a public telnet/ssh server. These public servers allow you to meet other players’ ghosts, watch other people playing, and, in general, have a blast!
++    </p>
++  </description>
++  <screenshots>
++    <screenshot type="default">
++      <image>http://crawl.develz.org/wordpress/wp-content/uploads/2014/05/sonja.png</image>
++    </screenshot>
++    <screenshot>
++      <image>http://crawl.develz.org/wordpress/wp-content/uploads/2014/05/roxanne.png</image>
++    </screenshot>
++    <screenshot>
++      <image>http://crawl.develz.org/wordpress/wp-content/uploads/2014/05/ashenzari.png</image>
++    </screenshot>
++  </screenshots>
++  <url type="homepage">http://crawl.develz.org/</url>
++  <update_contact>crawl-ref-discuss@lists.sourceforge.net</update_contact>
++</component>
+-- 
+2.11.0
+

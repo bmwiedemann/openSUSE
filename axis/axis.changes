@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Thu May  9 13:45:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix [bsc#1134598, CVE-2012-5784, CVE-2014-3596]
+  Missing connection hostname check against X.509 certificate name
+  * Added axis-CVE-2014-3596.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 08:23:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace find -exec rm by just -delete
+
+-------------------------------------------------------------------
+Tue Jan 22 10:54:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Require for build the generic javamail instead of classpathx-mail
+
+-------------------------------------------------------------------
+Fri Sep  7 12:34:28 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Security fix: [bsc#1103658, CVE-2018-8032]
+  * Apache Axis 1.x up to and including 1.4 is vulnerable to a
+    cross-site scripting (XSS) attack in the default
+    servlet/services.
+  * Added axis-CVE-2018-8032.patch
+
+-------------------------------------------------------------------
+Tue Jul 10 16:47:47 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * axis-jdk11.patch
+    + Fix build with jdk11
+    + Don't build providers that are using APIs and classes removed
+      in jdk11
+
+-------------------------------------------------------------------
+Tue May 15 14:01:35 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Thu Oct  5 05:54:20 UTC 2017 - fstrba@suse.com
+
+- Remove the 3 deprecated classes from package org.apache.axis.enum
+  * allows building with java source and target >= 1.5
+- Added patches:
+  * axis-encoding.patch
+    + Specify file encoding ISO-8859-1 in order to avoid compiler
+      errors with characters unmappable in ASCII
+  * axis-enum.patch
+    + Rename variable enum to emun to avoid clash with reserved
+      word in java5+
+  * axis-compareto.patch
+    + Rewrite the UnsignedInt::compareTo and
+      UnsignedLong::compareTo to check first that the Object we
+      compare with is instance of the respective class
+
+-------------------------------------------------------------------
+Thu Sep 14 14:22:43 UTC 2017 - fstrba@suse.com
+
+- BuildRequires: java-devel >= 1.6 
+- BuildConflicts: java-devel >= 1.9
+  * Allow building with wider range of java compilers
+- Clean spec file
+
+-------------------------------------------------------------------
+Sun Sep 10 06:41:34 UTC 2017 - fstrba@suse.com
+
+- Requires for build java-devel = 1.8.0 since it is the last
+  version able to build with source and target levels 1.3
+
+-------------------------------------------------------------------
+Fri May 19 08:54:25 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed May 17 10:38:22 UTC 2017 - tchvatal@suse.com
+
+- Disable javadoc
+- Fix build with new ant 1.9.8+
+  * axis-ant-build.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:02 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Fri Jun 27 13:44:24 UTC 2014 - tchvatal@suse.com
+
+- Fix back javadoc
+
+-------------------------------------------------------------------
+Fri Jun 27 13:37:59 UTC 2014 - tchvatal@suse.com
+
+- Depend on proper apache pkgs
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:31 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Tue Feb 28 09:12:20 UTC 2012 - mvyskocil@suse.cz
+
+- strip the jakarta- from classpath to be ready for jakarta->apache-commons
+  renaming
+- added some pms and manifest files
+
+-------------------------------------------------------------------
+Sat Sep 17 13:55:50 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Mar 11 09:01:44 UTC 2011 - mvyskocil@suse.cz
+
+- build using openjdk, use ant.build.javac.target and source 1.4
+  to prevent javadoc fail, clean up BuildRequires
+
+-------------------------------------------------------------------
+Thu May 21 15:01:43 CEST 2009 - mvyskocil@suse.cz
+
+- fixed build with new gcj44 
+
+-------------------------------------------------------------------
+Thu Jul 31 13:22:10 CEST 2008 - mvyskocil@suse.cz
+
+- replace gnu-javamail dependency to classpathx-mail [bnc#411839]
+  - the classpathx-foo is consistent with jpackage.org project
+
+-------------------------------------------------------------------
+Wed Jul 16 14:08:34 CEST 2008 - coolo@suse.de
+
+- avoid another build cycle
+
+-------------------------------------------------------------------
+Tue Apr 22 11:37:24 CEST 2008 - mvyskocil@suse.cz
+
+- fixed build with new gcj (memory consupmtion limit)
+
+-------------------------------------------------------------------
+Thu Jan 17 15:20:47 CET 2008 - skh@suse.de
+
+- remove glibj from build-classpath call as we don't have classpath
+  packages
+
+-------------------------------------------------------------------
+Wed May  2 11:52:58 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan  5 18:37:47 CET 2006 - dbornkessel@suse.de
+
+- Current version 1.2.3 from JPackage.org
+

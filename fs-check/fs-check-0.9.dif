@@ -1,0 +1,72 @@
+--- configure
++++ configure
+@@ -2461,13 +2461,8 @@
+ { echo "$as_me:$LINENO: checking whether $DF accepts --local" >&5
+ echo $ECHO_N "checking whether $DF accepts --local... $ECHO_C" >&6; }
+ 
+-HAVE_DF_LOCAL=''
+-if $DF --local > /dev/null 2>&1 ; then
+-   echo "yes"
+-   HAVE_DF_LOCAL=' --local'
+-else
+-   echo "no"
+-fi
++echo "yes"
++HAVE_DF_LOCAL=' --local'
+ 
+ # Extract the first word of "find", so it can be a program name with args.
+ set dummy find; ac_word=$2
+@@ -2574,7 +2569,7 @@
+        CORE_PAT='core'  # don't know wait for someone to complain.
+         ;;
+      linux*)
+-       DF_OPTS="-t jfs -t ext2 -t ext3 -t ntfs -t reiserfs -t vfat$HAVE_DF_LOCAL"
++       DF_OPTS="-t xfs -t jfs -t ext2 -t ext3 -t ntfs -t reiserfs -t vfat$HAVE_DF_LOCAL"
+        CORE_PAT='core.[0-9]*'
+         ;;
+      netbsd*)
+@@ -2596,13 +2591,8 @@
+ { echo "$as_me:$LINENO: checking whether $DF accepts --inodes" >&5
+ echo $ECHO_N "checking whether $DF accepts --inodes... $ECHO_C" >&6; }
+ 
+-HAVE_DF_INODES=0
+-if $DF --inodes > /dev/null 2>&1 ; then
+-   echo "yes"
+-   HAVE_DF_INODES=1
+-else
+-   echo "no"
+-fi
++echo "yes"
++HAVE_DF_INODES=1
+ 
+ 
+ 
+--- fs-check.in.in
++++ fs-check.in.in
+@@ -626,7 +626,7 @@
+   $program = basename($0); # Who am I today, anyway?
+ 
+   $mail_program        = '@MAILER@';
+-  $config_file         = "/var/adm/fs-check.cf";
++  $config_file         = "/etc/fs-check.cf";
+   $default_script_file = "@prefix@/bin/fs-report";
+   $sleep_interval      = 60*60;
+   $pid_file            = "@PIDDIR@$program.pid";
+--- fs-report.in
++++ fs-report.in
+@@ -247,6 +247,7 @@
+      'find:s'         => \$find_program,
+      'help'           => \$help,
+      'lines=n'        => \$lines,
++     'fast!'          => \$fast,
+      'ls!'            => \$do_ls,
+      'ls-lines=n'     => \$ls_lines,
+      'newest!'        => \$do_newest,
+--- sample/crontab.add
++++ sample/crontab.add
+@@ -2,4 +2,4 @@
+ # Change locations of files and frequencies as appropriate.
+ # File system checker....
+ #
+-5 * * * * /usr/local/bin/fs-check -1 --config /var/adm/fs_check.cnf
++5 * * * * /usr/bin/fs-check -1 --config /etc/fs_check.cnf

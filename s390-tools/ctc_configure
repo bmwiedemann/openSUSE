@@ -1,0 +1,128 @@
+#! /bin/sh
+#
+# ctc_configure
+#
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# Configures a CTC device by calling the IBM-provided chzdev command.
+# Whereas this script used to validate the parameters provided to it,
+# we now rely on chzdev to do that instead. The script is intended only
+# as a "translation layer" to provide backward compatability for older
+# scripts and tools that invoke it.
+#
+# Usage:
+#   ctc_configure <read channel> <write channel> <online> [<protocol>]
+#
+#	read/write channel = x.y.ssss where
+#			     x is always 0 until IBM creates something that
+#                              uses that number
+#			     y is the logical channel subsystem (lcss) number.
+#                              Most often this is 0, but it could be non-zero
+#			     ssss is the four digit subchannel address of the
+#                                 device, in hexidecimal, with leading zeros.
+#	online = 0 to take the device offline
+#		 1 to bring the device online
+#	protocol = 0 Compatibility with peers other than OS/390®, or z/OS, for
+#                    example, a z/VM TCP service machine. This is the default.
+#		   1 Enhanced package checking for Linux peers.
+#		   3 For compatibility with OS/390 or z/OS peers.
+#		   4 For MPC connections to VTAM on traditional mainframe
+#                    operating systems.
+#
+# Return values:
+#   Return codes are determined by the chzdev command.
+#
+
+mesg () {
+    echo "$@"
+}
+
+debug_mesg () {
+    case "${DEBUG}" in
+	yes) mesg "$@" ;;
+	*) ;;
+    esac
+}
+
+add_cio_channel() {
+	echo "$* # ${DATE}" >> /boot/zipl/active_devices.txt
+}
+
+remove_cio_channel() {
+	[ -w /boot/zipl/active_devices.txt ] && sed -i -e "/^${1}/d" /boot/zipl/active_devices.txt
+}
+
+usage(){
+  echo "Usage: ${0} <read channel> <write channel> <online> [<protocol>]"
+  echo "	read/write channel = x.y.ssss where"
+  echo "			     x is always 0 until IBM creates something that"
+  echo "                               uses that number"
+  echo "			     y is the logical channel subsystem (lcss) number."
+  echo "                               Most often this is 0, but it could be non-zero"
+  echo "			     ssss is the four digit subchannel address of the"
+  echo "                                  device, in hexidecimal, with leading zeros."
+  echo "	online = 0 to take the device offline"
+  echo "		 1 to bring the device online"
+  echo "	protocol = 0 Compatibility with peers other than OS/390®, or z/OS, for"
+  echo "                     example, a z/VM TCP service machine. This is the default."
+  echo "		   1 Enhanced package checking for Linux peers."
+  echo "		   3 For compatibility with OS/390 or z/OS peers."
+  echo "		   4 For MPC connections to VTAM on traditional mainframe"
+  echo "                     operating systems."
+}
+
+if [ "${DEBUG}" != "yes" ]; then
+  DEBUG="no"
+fi
+
+DATE=$(date)
+
+CTC_READ_CHAN=${1}
+CTC_WRITE_CHAN=${2}
+ON_OFF=${3}
+CTC_MODE=${4}
+
+if [ -z "${CTC_READ_CHAN}" ] || [ -z "${CTC_WRITE_CHAN}" ] || [ -z "${ON_OFF}" ]; then
+  mesg "You didn't specify all the needed parameters."
+  usage
+  exit 1
+fi
+
+if [ -f /sys/bus/ccw/devices/${CTC_READ_CHAN}/cutype ]; then
+  read CU_TYPE < /sys/bus/ccw/devices/${CTC_READ_CHAN}/cutype
+else mesg "Psuedo file/sys/bus/ccw/devices/${CTC_READ_CHAN}/cutype doesn't exist."
+     mesg "Check to see if sysfs is mounted."
+     exit 1
+fi
+
+PARM_LIST=""
+if [ "${CU_TYPE}" == "3088/01" ] || [ "${CU_TYPE}" == "3088/60" ]; then
+  DEV_TYPE="lcs"
+else DEV_TYPE="ctc"
+     if [ -z "${CTC_MODE}" ]; then
+       PARM_LIST="${PARM_LIST} protocol=0"
+     else PARM_LIST="${PARM_LIST} protocol=${CTC_MODE}"
+     fi
+fi
+
+if [ "${ON_OFF}" == 0 ]; then
+  debug_mesg "chzdev -d ${DEV_TYPE} --no-root-update ${CTC_READ_CHAN}"
+  chzdev -d ${DEV_TYPE} --no-root-update ${CTC_READ_CHAN}
+elif [ "${ON_OFF}" == 1 ]; then
+  debug_mesg "chzdev -e ${DEV_TYPE} --no-root-update ${CTC_READ_CHAN} ${PARM_LIST}"
+  chzdev -e ${DEV_TYPE} --no-root-update ${CTC_READ_CHAN} ${PARM_LIST}
+else mesg "You must specify a 0 or a 1 for the online/offline attribute."
+     usage
+     exit 1
+fi
+
+RC=${?}
+if [ ${RC} -ne 0 ]; then
+  exit ${RC}
+fi
+
+if [ ${ON_OFF} == 1 ]; then
+  add_cio_channel "${CTC_READ_CHAN},${CTC_WRITE_CHAN}"
+else remove_cio_channel "${CTC_READ_CHAN}"
+     remove_cio_channel "${CTC_WRITE_CHAN}"
+fi

@@ -1,0 +1,10 @@
+Index: mpi-selector.in
+===================================================================
+--- mpi-selector.in.orig	2008-10-19 14:15:53.000000000 +0200
++++ mpi-selector.in	2010-06-02 15:33:58.043227260 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # Copyright (c) 2007 Cisco Systems, Inc.  All rights reserved.
+ #

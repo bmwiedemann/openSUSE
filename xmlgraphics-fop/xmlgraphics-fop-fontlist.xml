@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+                         "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY product "xmlgraphics-fop-fontlist">
+]>
+<refentry id="fop-fontmetrics">
+  <refentryinfo>
+    <productname>&product;</productname>
+    <authorgroup>
+      <corpcredit>Apache Foundation</corpcredit>
+      <author>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+        <contrib>Manpage</contrib>
+      </author>
+    </authorgroup>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&product;</refentrytitle>
+    <manvolnum>1</manvolnum>
+    <refmiscinfo class="version">1.1</refmiscinfo>
+    <!--<refmiscinfo class="source"></refmiscinfo>-->
+    <refmiscinfo class="manual"
+      >http://xmlgraphics.apache.org/fop/1.0/fonts.html#advanced</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>&product;</refname>
+    <refpurpose></refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id="fontmetrics.synopsis">
+    <title>Synopsis</title>
+    <para>Classname: <classname>org.apache.fop.tools.fontlist.FontListMain</classname></para>
+    <cmdsynopsis><command>&product;</command>
+      <arg choice="opt">-c <replaceable>CONFIG_FILE</replaceable></arg>
+      <arg choice="opt">-f <replaceable>MIME</replaceable></arg>
+      <arg choice="opt">
+        <group choice="opt">
+          <arg choice="plain">output-dir</arg>
+          <arg choice="plain">output-file</arg>
+        </group>
+        <arg choice="opt">font-family</arg>
+      </arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsection id="fontmetrics.options">
+    <title>Options</title>
+    <para>The following options in alphabetical order are
+      available:</para>
+    <variablelist>
+      <varlistentry>
+        <term><option>-c <replaceable>CONFIG_FILE</replaceable></option></term>
+        <listitem>
+          <para>an optional FOP configuration file</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-f <replaceable>MIME</replaceable></option></term>
+        <listitem>
+          <para>MIME type of the output format for which to create the
+            font list (defaults to application/pdf) </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>output-dir</option></term>
+        <listitem>
+          <para>creates one sample PDF per font-family</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>output-file</option></term>
+        <listitem>
+          <para>writes the list as file (valid file extensions:
+            <filename class="extension">xml</filename>, 
+            <filename class="extension">fo</filename>, and
+            <filename class="extension">pdf</filename>)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>font-family</option></term>
+        <listitem>
+          <para>filters to a single font family</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsection>
+  
+  <refsection id="">
+    <title>Examples</title>
+    <itemizedlist>
+      <listitem>
+        <para>prints all detected fonts to the console:</para>
+        <screen>&product;</screen>
+      </listitem>
+      <listitem>
+        <para>same as before, but outputs it into a PDF file:</para>
+        <screen>&product; system-fonts.pdf</screen>
+      </listitem>
+      <listitem>
+        <para>Generates a single PDF containing a sample of all
+        configured fonts:</para>
+        <screen>&product; -c userconfig.xml all-fonts.pdf</screen>
+      </listitem>
+    </itemizedlist>
+    
+  </refsection>
+  
+</refentry>

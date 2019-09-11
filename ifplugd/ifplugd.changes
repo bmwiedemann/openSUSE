@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Mon Nov 13 14:58:14 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+
+-------------------------------------------------------------------
+Fri Nov 10 21:19:39 UTC 2017 - seife+obs@b1-systems.com
+
+- add ifplugd-nlapi-increase-packetsize.diff [bsc#1030382]
+- small spec-file cleanups to reduce rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Aug 11 12:10:41 UTC 2017 - pgajdos@suse.com
+
+- do not generate documentation, use generated one [bsc#1052975]
+
+-------------------------------------------------------------------
+Thu Mar 28 09:16:03 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Feb 17 16:04:05 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Feb  4 03:19:33 CET 2009 - crrodriguez@suse.de
+
+- use shared libdaemon which has been moved to /%{_lib} 
+
+-------------------------------------------------------------------
+Thu Mar  9 11:09:27 CET 2006 - zoz@suse.de
+
+- ifplugd.action now calls ifup/down with '-o ifplugd' (Bug 155358)
+  (Neccessary since sysconfig-0.50.5)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 23:55:23 CET 2006 - kukuk@suse.de
+
+- Link static against libdaemon.
+
+-------------------------------------------------------------------
+Sun Jan  8 09:55:52 CET 2006 - kukuk@suse.de
+
+- Define __KERNEL_STRICT_NAMES for linux/types.h inclusion
+
+-------------------------------------------------------------------
+Thu Sep 22 14:53:01 CEST 2005 - seife@suse.de
+
+- gag the compiler to fix the build
+
+-------------------------------------------------------------------
+Wed Sep 21 22:22:31 CEST 2005 - seife@suse.de
+
+- update to version 0.28 which incorporates our old patches
+
+-------------------------------------------------------------------
+Tue May 31 10:09:07 CEST 2005 - kukuk@suse.de
+
+- Remove wrong compiler options and fix compiler warnings
+
+-------------------------------------------------------------------
+Fri Apr  8 12:13:00 CEST 2005 - seife@suse.de
+
+- update to version 0.27, changes include: new option --no-startup
+
+-------------------------------------------------------------------
+Wed Jan 19 19:59:15 CET 2005 - seife@suse.de
+
+- fix for new gcc4 warning (incorrect terminated va_list)
+
+-------------------------------------------------------------------
+Wed Jan 19 18:03:03 CET 2005 - seife@suse.de
+
+- bump version to 0.26, no longer package libdaemon (is a separate
+  package now).
+
+-------------------------------------------------------------------
+Thu Sep  9 01:31:23 CEST 2004 - ro@suse.de
+
+- fixed handling of README.initscript in specfile
+
+-------------------------------------------------------------------
+Thu Sep  9 00:05:08 CEST 2004 - seife@suse.de
+
+- moved initscript to the documentation directory.
+
+-------------------------------------------------------------------
+Mon Aug 30 17:02:51 CEST 2004 - hare@suse.de
+
+- Removed udev agent again; ifplugd has been integrated in ifup.
+
+-------------------------------------------------------------------
+Fri Aug 13 13:15:30 CEST 2004 - hare@suse.de
+
+- Add udev agent; enables ifplugd only after
+  a device has been detected.
+
+-------------------------------------------------------------------
+Fri Aug  6 12:30:09 CEST 2004 - seife@suse.de
+
+- allow hardware descriptions for interface names 
+
+-------------------------------------------------------------------
+Thu Aug  5 11:50:52 CEST 2004 - seife@suse.de
+
+- bump to version 0.25/libdaemon 0.6
+
+-------------------------------------------------------------------
+Thu Mar 18 20:13:38 CET 2004 - seife@suse.de
+
+- fix initscript (return codes, status), removed "-w" from default
+  configuration.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:21:28 CET 2004 - seife@suse.de
+
+- tuned init-script, corrected README.SuSE
+
+-------------------------------------------------------------------
+Tue Feb 10 17:18:33 CET 2004 - seife@suse.de
+
+- bump to version 0.22/libdaemon 0.5
+
+-------------------------------------------------------------------
+Tue Feb 10 12:24:53 CET 2004 - seife@suse.de
+
+- initial check-in
+

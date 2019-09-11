@@ -1,0 +1,147 @@
+From c28456522b71dfb207bfe47f91d6b0eeaec109bf Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 7 Jun 2019 13:31:40 +0200
+Subject: [PATCH] Revert "qmake: link qt libraries by full path"
+
+This reverts commit 5b3dfa470ed7ea40103daa785286ab71fb7aa230.
+---
+ mkspecs/features/qt.prf            | 31 +++++++++++++++++-------------
+ mkspecs/features/win32/opengl.prf  | 16 ++++-----------
+ mkspecs/features/win32/windows.prf |  7 ++++---
+ mkspecs/linux-lsb-g++/qmake.conf   |  1 +
+ 4 files changed, 27 insertions(+), 28 deletions(-)
+
+diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
+index 3a71376029..5ac640190a 100644
+--- a/mkspecs/features/qt.prf
++++ b/mkspecs/features/qt.prf
+@@ -145,14 +145,12 @@ import_plugins:qtConfig(static) {
+         # the plugin path. Unknown plugins must rely on the default link path.
+         plug_type = $$eval(QT_PLUGIN.$${plug}.TYPE)
+         !isEmpty(plug_type) {
+-            plug_name = $$QMAKE_PREFIX_STATICLIB$${plug}$$qtPlatformTargetSuffix().$$QMAKE_EXTENSION_STATICLIB
+             plug_path = $$eval(QT_PLUGIN.$${plug}.PATH)
+             isEmpty(plug_path): \
+                 plug_path = $$[QT_INSTALL_PLUGINS/get]
+-            LIBS += $$plug_path/$$plug_type/$$plug_name
+-        } else {
+-            LIBS += -l$${plug}$$qtPlatformTargetSuffix()
++            LIBS += -L$$plug_path/$$plug_type
+         }
++        LIBS += -l$${plug}$$qtPlatformTargetSuffix()
+     }
+ }
+ 
+@@ -197,6 +195,8 @@ for(ever) {
+         qtProcessModuleFlags(DEFINES, QT.$${QTLIB}.DEFINES)
+ 
+         MODULE_INCLUDES -= $$QMAKE_DEFAULT_INCDIRS
++        MODULE_LIBS_ADD = $$MODULE_LIBS
++        MODULE_LIBS_ADD -= $$QMAKE_DEFAULT_LIBDIRS
+ 
+         # Frameworks shouldn't need include paths, but much code does not use
+         # module-qualified #includes, so by default we add paths which point
+@@ -209,17 +209,23 @@ for(ever) {
+         !isEmpty(MODULE_MODULE) {
+             contains(MODULE_CONFIG, lib_bundle) {
+                 framework = $$MODULE_MODULE
+-                # Linking frameworks by absolute path does not work.
+                 LIBS$$var_sfx += -framework $$framework
+             } else {
++                !isEmpty(MODULE_LIBS_ADD): \
++                    LIBS$$var_sfx += -L$$MODULE_LIBS_ADD
++
+                 lib = $$MODULE_MODULE$$qtPlatformTargetSuffix()
+-                win32|contains(MODULE_CONFIG, staticlib) {
+-                    lib = $$MODULE_LIBS/$$QMAKE_PREFIX_STATICLIB$${lib}.$$QMAKE_EXTENSION_STATICLIB
+-                    PRE_TARGETDEPS += $$lib
+-                } else {
+-                    lib = $$MODULE_LIBS/$$QMAKE_PREFIX_SHLIB$${lib}.$$QMAKE_EXTENSION_SHLIB
++                LIBS$$var_sfx += -l$$lib
++
++                contains(MODULE_CONFIG, staticlib): \
++                    PRE_TARGETDEPS *= $$MODULE_LIBS/$${QMAKE_PREFIX_STATICLIB}$${lib}.$${QMAKE_EXTENSION_STATICLIB}
++
++                !isEmpty(QMAKE_LSB) {
++                    !isEmpty(MODULE_LIBS_ADD): \
++                        QMAKE_LFLAGS *= --lsb-libpath=$$MODULE_LIBS_ADD
++                    QMAKE_LFLAGS *= --lsb-shared-libs=$$lib
++                    QMAKE_LIBDIR *= /opt/lsb/lib
+                 }
+-                LIBS$$var_sfx += $$lib
+             }
+         }
+         QMAKE_USE$$var_sfx += $$MODULE_USES
+@@ -289,8 +295,7 @@ contains(all_qt_module_deps, qml): \
+         for (key, IMPORTS._KEYS_) {
+             PATH = $$eval(IMPORTS.$${key}.path)
+             PLUGIN = $$eval(IMPORTS.$${key}.plugin)
+-            !isEmpty(PATH):!isEmpty(PLUGIN): \
+-                LIBS += $$PATH/$$QMAKE_PREFIX_STATICLIB$${PLUGIN}$$qtPlatformTargetSuffix().$$QMAKE_EXTENSION_STATICLIB
++            !isEmpty(PATH):!isEmpty(PLUGIN): LIBS *= -L$$PATH -l$${PLUGIN}$$qtPlatformTargetSuffix()
+         }
+ 
+         # create qml_plugin_import.cpp
+diff --git a/mkspecs/features/win32/opengl.prf b/mkspecs/features/win32/opengl.prf
+index f21848f941..c6fba7770f 100644
+--- a/mkspecs/features/win32/opengl.prf
++++ b/mkspecs/features/win32/opengl.prf
+@@ -1,21 +1,13 @@
+ QT_FOR_CONFIG += gui
+ 
+-defineTest(prependOpenGlLib) {
+-    path = $$QT.core.libs/$$QMAKE_PREFIX_STATICLIB$$1
+-    ext = .$$QMAKE_EXTENSION_STATICLIB
+-    QMAKE_LIBS_OPENGL_ES2 = $${path}$${ext} $$QMAKE_LIBS_OPENGL_ES2
+-    QMAKE_LIBS_OPENGL_ES2_DEBUG = $${path}d$${ext} $$QMAKE_LIBS_OPENGL_ES2_DEBUG
+-    export(QMAKE_LIBS_OPENGL_ES2)
+-    export(QMAKE_LIBS_OPENGL_ES2_DEBUG)
+-}
+-
+ qtConfig(opengles2) {
+     # Depending on the configuration we use libQtANGLE or libEGL and libGLESv2
+     qtConfig(combined-angle-lib) {
+-        prependOpenGlLib($$LIBQTANGLE_NAME)
++        QMAKE_LIBS_OPENGL_ES2 = -l$${LIBQTANGLE_NAME} $$QMAKE_LIBS_OPENGL_ES2
++        QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBQTANGLE_NAME}d $$QMAKE_LIBS_OPENGL_ES2_DEBUG
+     } else {
+-        prependOpenGlLib($$LIBGLESV2_NAME)
+-        prependOpenGlLib($$LIBEGL_NAME)
++        QMAKE_LIBS_OPENGL_ES2 = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} $$QMAKE_LIBS_OPENGL_ES2
++        QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME}d -l$${LIBGLESV2_NAME}d $$QMAKE_LIBS_OPENGL_ES2_DEBUG
+     }
+ #   For Desktop, use the ANGLE library location passed on from configure.
+     INCLUDEPATH += $$QMAKE_INCDIR_OPENGL_ES2
+diff --git a/mkspecs/features/win32/windows.prf b/mkspecs/features/win32/windows.prf
+index 272170d428..ecb167bf18 100644
+--- a/mkspecs/features/win32/windows.prf
++++ b/mkspecs/features/win32/windows.prf
+@@ -6,9 +6,10 @@ contains(TEMPLATE, ".*app") {
+ 
+     qt:for(entryLib, $$list($$unique(QMAKE_LIBS_QT_ENTRY))) {
+         isEqual(entryLib, -lqtmain) {
+-            lib = $$QT.core.libs/$${QMAKE_PREFIX_STATICLIB}qtmain$$QT_LIBINFIX$$qtPlatformTargetSuffix().$$QMAKE_EXTENSION_STATICLIB
+-            PRE_TARGETDEPS += $$lib
+-            QMAKE_LIBS += $$lib
++            !contains(QMAKE_DEFAULT_LIBDIRS, $$QT.core.libs): \
++                QMAKE_LIBS += -L$$QT.core.libs
++            CONFIG(debug, debug|release): QMAKE_LIBS += $${entryLib}$${QT_LIBINFIX}d
++            else: QMAKE_LIBS += $${entryLib}$${QT_LIBINFIX}
+         } else {
+             QMAKE_LIBS += $${entryLib}
+         }
+diff --git a/mkspecs/linux-lsb-g++/qmake.conf b/mkspecs/linux-lsb-g++/qmake.conf
+index eb7b87b57b..80353cd5f6 100644
+--- a/mkspecs/linux-lsb-g++/qmake.conf
++++ b/mkspecs/linux-lsb-g++/qmake.conf
+@@ -13,6 +13,7 @@ load(qt_config)
+ 
+ QMAKE_LIBS_THREAD      += -lrt
+ 
++QMAKE_LSB               = 1
+ QMAKE_CC                = lsbcc
+ QMAKE_CXX               = lsbc++
+ 
+-- 
+2.21.0
+

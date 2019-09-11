@@ -1,0 +1,9 @@
+Index: prefork-1.04/Makefile.PL
+===================================================================
+--- prefork-1.04.orig/Makefile.PL
++++ prefork-1.04/Makefile.PL
+@@ -1,3 +1,4 @@
++BEGIN { push @INC, '.'; }
+ use inc::Module::Install::DSL 0.91;
+ 
+ all_from      lib/prefork.pm

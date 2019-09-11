@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Jun  5 05:44:50 UTC 2013 - coolo@suse.com
+
+- update to 0.11
+       - fixed error in Everest Pakistan ellipsoid axis
+       - Added Arc 1950 ellipsoid
+       - patched MGRS calculations for S. Hemisphere
+       - Added MGRS tests
+       - Added NAD27 and NAD83 ellipsoids
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:02 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 12:38:58 CET 2010 - kukuk@suse.de
+
+- Add BuildRequires for perl(Test::More)
+- Add BuildRequires for perl(ExtUtils::MakeMaker)
+
+-------------------------------------------------------------------
+Thu Nov  4 14:53:35 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.02
+
+-------------------------------------------------------------------
+Thu Nov  4 10:56:43 CET 2010 - kukuk@suse.de
+
+- Initial package
+

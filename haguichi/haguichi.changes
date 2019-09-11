@@ -1,0 +1,520 @@
+-------------------------------------------------------------------
+Wed Nov  7 20:47:36 UTC 2018 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.1
+  * Initialization is now completely multi-threaded.
+  * Now using a thread pool for determining network ownership and retreiving long nicks.
+  * Made improvements to configuring and restarting the Hamachi service (fixes issue #16).
+  * Made network properties extraction more robust.
+  * Added wingpanel integration as build option.
+  * Added support for io.elementary.files and io.elementary.terminal.
+  * Added support for using the Delete key to trigger delete, leave and evict actions.
+  * Custom command buttons and menu items that don't use the %A address variable are not shown greyed out anymore for members that are offline.
+  * Client side decorations are now used on LXQt desktops.
+  * Updated elementary stylesheets for Juno release.
+  * Added specific application icons for elementary OS.
+  * Node icons are now included as resources instead of installed into hicolor icon theme.
+  * Suru icons for Ubuntu are now installed in /usr/share/icons/Yaru.
+  * AppData XML and .desktop files are now completely translatable (fixes bug #1753846).
+  * Updated Asturian, Brazilian Portuguese, Bulgarian, Dutch, French, Indonesian, Italian, Japanese, Lithuanian, Polish, Spanish, Swedish and Ukrainian translations.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon Sep 10 10:32:20 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Make description neutral.
+
+-------------------------------------------------------------------
+Sat Sep  8 23:55:10 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Adapt to Factory:
+  * Add a new package with translations
+  * Fix W: name-repeated-in-summary C Haguichi
+  * Find duplicate files and replace with hardlinks
+  * Drop no longer needed post(un) handling on openSUSE >= 15
+  * Spec file cleanup
+
+-------------------------------------------------------------------
+Thu May 10 13:18:39 UTC 2018 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.0
+  * Implemented shortcuts window for GTK+ version 3.20 and later.
+  * Revamped preferences dialog using stack, list box and switch widgets.
+  * Integrated appindicator as build option and added accompanying switch to preferences dialog.
+  * Added dark theme switch to preferences dialog (only available when client side decorations are used).
+  * Added Suru application icons for Ubuntu (big thanks to Sam Hewitt).
+  * Tweaked sidebar content alignment and margins.
+  * Improved window position and size handling.
+  * Improved modal dialog management.
+  * Improved compatibility with GTK+ 3.20 and 3.22.
+  * Fixed crash that could occur when adding a network while the network list was being filtered.
+  * Now using stylesheets to implement theme specific tweaks and fixes.
+  * Now using the RDNN com.github.ztefn.haguichi for .desktop files, GSettings schema and D-Bus name.
+  * Updated Brazilian Portuguese, Bulgarian, Czech, Dutch, French, Italian, Polish, Slovak, Spanish, Swedish, Turkish and Ukrainian translations.
+  * Bumped minimum required versions of Vala (0.30), GLib (2.48) and GTK+ (3.18).
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Sep 23 10:42:00 UTC 2017 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.8
+  * Sidebar contents are now vertically scrollable and the action buttons have been moved to a bottom fixed action bar.
+  * Pending attach requests are displayed more clearly and can now be canceled.
+  * Added support for pcmanfm-qt and qterminal.
+  * Added right click menu to empty network list with options "Join Network..." and "Create Network...".
+  * Optimized network list parsing regular expressions for increased performance and speed.
+  * Improved init system detection for systemctl by checking if the logmein-hamachi service unit is found or not.
+  * Fixed crash that could occur when attaching the client to an account.
+  * Ported the build system from CMake to Meson.
+  * Updated Asturian, Brazilian Portuguese, Bulgarian, Czech, Dutch, French, German, Indonesian, Kazakh, Lithuanian, Polish, Russian, Slovak, Spanish, Turkish and Ukrainian translations.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:59:06 UTC 2017 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.7
+  * Implemented inhibitor to properly disconnect Hamachi when the computer goes to sleep and to reconnect on wake-up.
+  * Client side decorations are now used on Cinnamon desktops.
+  * Added support for dde-file-manager, deepin-terminal and uxterm.
+  * Added reconnect action to connection lost notifications.
+  * Added approve and reject actions to member joined notifications when manual approval is required.
+  * Reject actions are now reflected immediately in the network list.
+  * Now showing the client ID in the network list and notifications when nickname is unknown.
+  * Tweaked the sidebar layout.
+  * Updated Bulgarian, Czech, Dutch, French, German, Indonesian, Italian, Kazakh, Lithuanian, Polish, Brazilian Portuguese, Russian, Slovak, Spanish, Turkish and Ukrainian translations.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon Dec  5 20:36:19 UTC 2016 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.6
+  * Client side decorations are now used on Deepin and KDE desktops.
+  * Added support for gvncviewer, vncviewer, xtightvncviewer, xvnc4viewer and rdesktop.
+  * Added SSH to the default command set (as inactive).
+  * Added keyboard shortcuts (Ctrl+1 to Ctrl+9) to execute available commands by corresponding order.
+  * Added %TUN variable for use in GSettings member templates to display the tunnel in the network list.
+  * Made the init system to control the hamachi daemon configurable in GSettings.
+  * Network list updates are now skipped when "hamachi list" output is unchanged.
+  * Retreived long nicknames are now cached and saved using GSettings to improve performance.
+  * Network ID's are now properly escaped in tooltips and treeview.
+  * Improved handling for invalid encoded nicknames.
+  * Now falling back to xdg-open when Gtk.show_uri fails.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Aug  7 20:27:41 UTC 2016 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.5
+  * Added line "OnlyShowIn=GNOME;MATE;Unity;X-Cinnamon;" to autostart .desktop file in order to prevent implicit automatic startup in other desktop environments.
+  * Added line "X-GNOME-UsesNotifications=true" to application .desktop file in order to inform some desktop environments in advance that Haguichi may use notifications.
+  * Made sure AppMenu will only ever be used on GNOME desktops (fixes bug #1531275). https://bugs.launchpad.net/haguichi/+bug/1531275
+  * Updated Russian translation.
+  * Improved package dependency declarations for Debian based distro's.
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon May 16 10:39:36 UTC 2016 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.4
+  * Updated node icons to use less glossy and more elementary style.
+  * Updated default window size, position and layout thresholds.
+  * Improved compatibility with GTK+ 3.20.
+  * Delete, leave and evict actions are now reflected immediately in the network list.
+  * Added release metadata to the AppData XML file.
+  * Updated Russian translation.
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:11:33 UTC 2016 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.3
+  * Added D-Bus session methods GetMode, GetModality and GetVisibility.
+  * Added translation metadata to the AppData XML file.
+  * Updated Dutch translation.
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Jan 30 16:33:40 UTC 2016 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.2
+  * Client side decorations are now used on latest Budgie desktop (fixes bug #1531266).
+  * Fixed high CPU usage when using GTK+ 3.18 (bug #1531587).
+  * Fixed high CPU usage when dragging the window around.
+  * Added 50 pixels to minimum window width when using GTK+ 3.18 to compensate for the headerbar title not requesting any width by itself.
+  * Added complete Lithuanian translation (thanks to Moo).
+  * Updated Indonesian translation.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Dec 19 12:57:52 UTC 2015 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.1
+  * Added AppData XML file for GNOME Software Center.
+  * Added keywords to .desktop file to improve findability in application launchers.
+  * Improved compatibility with GTK+ 3.16 and 3.18.
+  * Improved Hamachi configure check and execution.
+  * Auto reconnect is now stopped when Hamachi fails to start.
+  * Added SocketClient method as fallback to check the internet connection if ping fails.
+  * Added support for lxterminal and pcmanfm.
+  * Added 512x512 application icon to hicolor.
+  * Moved symbolic icons from Adwaita to hicolor.
+  * Added 24x24 symbolic icons to fix appearance in Wingpanel.
+  * Updated French and Polish translation.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon Aug 10 20:22:26 UTC 2015 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.3.0
+  * Complete port from Mono/GTK+2/GConf to Vala/GTK+3/GSettings.
+  * Implemented headerbar to replace the classic menubar.
+  * Implemented dynamically adaptive layout based on available width.
+  * Implemented application menu for GNOME.
+  * Added full support for HiDPI displays.
+  * Added sidebar that shows information and actions for the selected network or member.
+  * Added short text to empty network list on how to add a network.
+  * Added symbolic application and panel icons for adwaita-icon-theme.
+  * Updated any existing application and panel icons to use the new logo.
+  * Commands that don't actually exist are not shown as member action anymore.
+  * Unicode characters are now used for ellipsis and quotation marks.
+  * Changed autostart .desktop file installation path back to /etc/xdg/autostart.
+  * Dropped support for Hamachi version 2.1.0.81 and older.
+  * Removed deprecated status icon.
+  * Updated Brazilian Portuguese, Czech, Dutch, German, Italian, Kazakh, Polish, Russian, Slovak, Spanish and Ukrainian translations.
+  * Updated license from GPLv2+ to GPLv3+.
+
+-------------------------------------------------------------------
+Sat Jan 17 10:47:56 UTC 2015 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.26
+  * Added a searchbar to filter networks and clients in the treeview.
+  * Added accelerators for the actions Join Network (Ctrl+J), Create Network (Ctrl+N) and Show Offline Members (Ctrl+M).
+  * Activating the treeview row will not trigger the default command anymore if the selected member is not online.
+  * Swapped out dependency on ndesk-dbus(-glib) for dbus-sharp(-glib).
+  * Humanity panel icons are not included anymore because that theme has become outdated.
+  * Added complete Slovak translation (thanks to Zdeněk Kopš).
+  * Updated Czech, Kazakh and Turkish translations.
+
+-------------------------------------------------------------------
+Sat Aug 23 20:47:51 UTC 2014 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.25
+  * Improved shading of the hi-res application icon so that it looks better on dark backgrounds.
+  * All automatically detectable terminal applications are now called using the -e option with (except for konsole) the argument enclosed in quotes.
+  * Fixed crash that happened when disconnecting on quit.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon Apr  7 21:37:07 UTC 2014 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.24
+  * Added support for systemd and upstart to control the Hamachi service.
+  * The network list is now immediately updated after going online or offline in a network.
+  * The update interval count is now reset after each manual update.
+  * Restored panel icon animation when connecting.
+  * Improved Hamachi version number retrieval.
+  * Dropped support for beesu to gain super user privileges.
+  * Updated Swedish translation.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Jan 11 12:17:36 UTC 2014 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.23
+  * Improved internet connection check by using netcat and web request as fallback if ping fails (fixes bug #1258361).
+  * Wait for internet connection cycle is now using a separate thread.
+  * Configuration folder is now always opened in the default file manager.
+  * Added stock icons to open and save configuration menu items.
+  * Added scrollbar policy to the commands editor in the preferences dialog.
+  * Added complete Asturian translations (thanks to Tornes Llume).
+  * Updated Bulgarian translation.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Fri Aug 23 17:13:27 UTC 2013 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.22
+  * Increased command throughput rate (fixes bug #1205527).
+  * Refactored command execution code so that it can handle large output (fixes bug #1204250).
+  * Now using ping to check the internet connection, which is more reliable and also faster in most cases.
+  * Threads that could potentially be spawned many times are now added to the thread pool to enable queuing.
+  * Added keyboard shortcuts to expand (Ctrl+[) and collapse (Ctrl+]) all networks.
+  * Fixed crash that was triggered by changing the update interval.
+  * Fixed regression that sometimes lead to wrong positioning of the main window.
+  * Updated Italian, Kazakh and Russian translations.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Jun  8 17:08:35 UTC 2013 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.21
+  * Added functionality to open, backup and restore the Hamachi configuration folder.
+  * Added support for pkexec to gain super user privileges (fixes bug #1179071).
+  * Refactored network list extraction code to improve performance when parsing very large lists.
+  * Optimized settings handling by eliminating unnecessary reads and writes to the backend.
+  * Added command line option to use a text file as network list when running in demo mode.
+  * Added complete Ukrainian translations (thanks to Fedir Zinchuk).
+  * Brazilian Portuguese, Dutch, French, German, Indonesian, Japanese, Polish and Spanish translation updated.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Mar  2 18:07:31 UTC 2013 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.20
+  * Added 48x48 hicolor panel icons to accommodate Gnome Shell 3.6.
+  * Swapped some icons in the icon chooser popup menu to improve cross icon theme compatibility.
+  * Made some changes to basically support gateway networks (fixes bug #1098755).
+  * When (re)starting Hamachi, output from the init script is not being relied on anymore.
+  * When Hamachi is busy, commands will now be run again a short moment later.
+  * Join requests for networks that requires manual approval are now sent immediately without confirmation.
+  * Improved many error and confirmation dialogs.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Feb  3 18:18:24 UTC 2013 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.0.19
+  * Applications to use as terminal, file manager and remote desktop can now be automatically detected. Make sure your commands are respectively using the variables %TERMINAL, %FILEMANAGER or %REMOTEDESKTOP.
+    - Supported terminal emulators are (in order of priority) gnome-terminal, mate-terminal, pantheon-terminal, xfce4-terminal, konsole, and xterm.
+    - Supported file managers are (in order of priority) nautilus, caja, nemo, pantheon-files, thunar and dolphin.
+    - Supported remote desktop viewers are (in order of priority) vinagre and krdc.
+  * Changed autostart .desktop file installation path from /usr/etc/xdg/autostart to /usr/share/gnome/autostart so that Haguichi will show up again in "Startup Applications".
+  * The workaround to retrieve complete addresses is not needed anymore for Hamachi 2.1.0.84 and newer, because the issue has been fixed by LogMeIn.
+  * When you run Haguichi for the very first time, from now on your username will be set as nickname.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Fri Nov 30 11:10:32 UTC 2012 - adam@mizerski.pl
+
+- update to 1.0.18
+  * Implemented a workaround for addresses being cut off in "hamachi list" command since LogMeIn started using the 25/8 address space. This workaround only works for online members.
+  * The IPv6 address of a member is now ignored when an alias is set, because in that case the IPv6 address doesn't work.
+  * The network list now immediately reflects network ownership once determined.
+  * Improved retrieval of long nicknames.
+  * Now using a slightly faster method to check the internet connection.
+  * French, Indonesian and Russian translations updated.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Sep  2 21:25:04 UTC 2012 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.17
+  * Removed all support for Hamachi 0.9.9.9-20, because with that version it's not possible to login anymore.
+  * Added support for member error statuses introduced in Hamachi version 2.1.0.68.
+  * Improved sorting by status.
+  * Commands in the right click menu are now shown greyed out for members that are not online.
+  * Now using alias as IPv4 address if set.
+  * When using gksu or gksudo now showing the standard message again (but with descriptive name) to avoid confusion about what password to enter.
+  * Network list updates can now be turned on or off separately from the update interval settings.
+  * Added Ctrl+P accelerator for showing the preferences dialog.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Fri Jul 20 10:59:33 UTC 2012 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.16
+  * Added capacity to network tooltip (available when using Hamachi version 2.1.0.68).
+  * Added connection type (direct or relayed) to member tooltip.
+  * Added cyan colored icon for online members whose connections are relayed.
+  * Changed the icon color for members that are awaiting approval from blue to pink.
+  * Added complete Indonesian translations (thanks to Fattah Rizki).
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Wed Jul 11 19:44:18 UTC 2012 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.15
+  * Added support for the list format changes introduced in Hamachi version 2.1.0.68.
+  * Czech and French translations updated.
+
+-------------------------------------------------------------------
+Wed Feb 29 11:04:34 UTC 2012 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.14
+  * Improved ownership detection for lists with multiple networks when using Hamachi 0.9.9.9-20.
+  * Removed the checkbox "Go directly online in the network" which was shown in the "Join Network" and "Create Network" dialogs when using Hamachi 0.9.9.9-20.
+  * From now on Haguichi will always trigger the Hamachi 0.9.9.9-20 client to go online in newly added networks to match the behavior of later clients.
+  * Dutch and Polish translations updated.
+- updated license information
+
+-------------------------------------------------------------------
+Mon Dec 12 22:11:29 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.13
+  * Transformed icon chooser dialog into a popup menu.
+  * Added --skip-redirect flag to logmein-hamachi script calls in order to receive the original response on distro's using systemd.
+  * French, Italian and Turkish translations updated.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Tue Oct 25 21:48:40 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.12
+  * Added full support for the IPv6 functionality available in Hamachi version 2.1.0.17.
+  * Configuring Hamachi² now also works with beesu.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Tue Sep 13 22:45:11 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- added 'Required: beesu' to Fedora
+
+-------------------------------------------------------------------
+Tue Sep 13 21:40:28 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.11
+  * Added support for the address format changes introduced in Hamachi version 2.1.0.17 (Fixes bug #831922).
+  * Information dialog labels are now shown dimmed, colonless and right aligned.
+  * Added messagebar to attach dialog to replace error dialogs.
+  * Attaching to account process is now threaded.
+  * Made sudo command detection cleaner and faster (Fixes bug #802191).
+  * Added gksu and beesu as detectable sudo command.
+  * Added user friendly message for gksu and gksudo password dialogs.
+  * Removed confirmation dialog before running tuncfg.
+  * Updated ubuntu-mono-dark and ubuntu-mono-light panel icons to match the new style.
+  * Added complete Bulgarian translations (thanks to Dimitar Dimitrov).
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Tue Jul 19 17:49:00 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.10
+  * Added complete Brazilian Portuguese translations (thanks to Rodrigo de Avila).
+  * Polish and Turkish translations updated.
+
+-------------------------------------------------------------------
+Fri Jun 17 18:47:20 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.9
+  * Fixed crash on right click in the network list (Bug #755656).
+  * Kazakh and Russian translations updated.
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Mon May 23 21:12:50 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.8
+  * Replaced the following dialogs with messages in a message bar:
+    - Hamachi is not installed
+    - Hamachi is not configured
+    - Hamachi login failed
+    - No internet connection
+    - Connection refused
+    - Send join request?
+  * Added refresh button to "Hamachi is not installed" and "Hamachi is not configured" status messages.
+  * Fixed status stuck at "Hamachi is not configured" after clicking "Configure" (Bug #751627).
+  * Removed "Configure" option from menubar and status icon menu.
+  * Added right click menu to unused treeview space with options "Join Network..." and "Create Network...".
+  * Empty client nickname is now shown as "Anonymous" instead of "Unavailable".
+  * Status icon menu can now be triggered in modal state (with only the "Quit" option available).
+  * Tweaked the connection restore handling.
+  * Layout improvements for all dialogs.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Apr  3 14:19:48 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.7
+  * Added support for communicating with Haguichi AppIndicator over D-Bus.
+  * Now showing the active session when a new session is started.
+  * Added dependency on ndesk-dbus-glib.
+  * Some layout changes to main menu and status icon menu.
+  * Elementary and Elementary Dark panel icons are not included anymore because they are shipped upstream now.
+  * Added complete Polish translations (thanks to Antoni Sperka).
+
+-------------------------------------------------------------------
+Sat Feb 26 21:45:44 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.6
+  * Fixed mismatch between model and view when not showing offline members in the network list, which could result in crashes (Bug #723506).
+  * Now also collapsing or expanding networks after list updates.
+  * Added support for using the variable %ID in commands, which prints the client's ID.
+
+-------------------------------------------------------------------
+Sun Feb 20 21:46:56 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.5
+  * Nickname is now being remembered by Haguichi itself and is always set after each login, because Hamachi² seems to suffer from amnesia.
+  * Now using regular expressions instead of splitting strings when parsing the network list (Fixes bug #706567).
+  * Now using separate threads for the following actions:
+    - Change nickname
+    - Join network
+    - Create network
+    - Change network password
+    - Approve join request
+    - Reject join request
+    - Evict member
+    - Leave network
+    - Delete network
+  * Added notification for when Hamachi loses connection.
+  * Added option to manually update the network list.
+  * Added check to prevent multiple parallel update cycles.
+  * Added one seconds pause after login to receive a more updated network list from Hamachi.
+  * Added function to determine the distro specific script directory to use (Fixes bug #721314).
+  * Dialogs to change nick, join network and create network are now only created when called upon.
+  * Attached all dialogs to the opening parent and made most of them modal.
+  * Changed status icon behavior to take account for modal dialogs.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Fri Jan 21 20:44:00 UTC 2011 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.4
+  * Implemented persistent reconnect cycle (Fixes bug #685216).
+  * Added optional larger network list layout.
+  * Added option to show alternating row colors.
+  * Added expander with Hamachi output to error dialogs.
+  * Event notifications for the same member are now merged.
+  * Command timeout is now 60 seconds default and has a minimum of 30 seconds.
+  * Network list update timer is now being set after finishing the previous cycle.
+  * Network list update interval may be set to 0 now to turn it off completely.
+  * Network id's, nicks and passwords are now properly escaped when parsed to the command line.
+  * Implemented a more safe icon lookup in the commands editor (Fixes bug #689644).
+  * Version info is now correctly updated again after login when using Hamachi 0.9.9.9-20.
+  * Tweaked main window layout in disconnected state.
+  * Tweaked preferences window layout.
+  * Tweaked layout of menubar and status icon menu.
+  * Tweaked the size of the monochrome panel icons.
+  * Added complete Czech translations (thanks to Jan Bažant).
+  * Added complete Turkish translations (thanks to Aytunç Yeni).
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Dec 12 17:54:27 UTC 2010 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.3
+  * All pixmaps are now themable icons
+  * Removed gnome-sharp as dependency because the functionality used is also present in gtk-sharp
+  * Updated ownership detection for Hamachi 0.9.9.9-20 because the server response seems to have changed
+  * Removed maximum length from password entry in join network, create network and change password dialogs
+  * Spanish translation update
+
+-------------------------------------------------------------------
+Sun Nov  7 17:15:40 UTC 2010 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.2
+  * Connecting process is now threaded so that the GUI stays responsive during login.
+  * Added complete Kazakh translations (thanks to jmb_kz).
+  * Added generic name and P2P as additional category to the desktop files.
+  * Changed some icon names to cover the latest icon theme releases.
+  * Fixed insensitive "Attach to Account" menu entry in some cases where it should be sensitive instead.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Sat Oct  2 12:55:22 UTC 2010 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.0.1
+  * Added support for attaching the Hamachi² client to a LogMeIn account.
+  * Improved out of the box support for different environments:
+    - The default commands are now using KDE applications when a KDE session is detected.
+    - Automatic detection of the available graphical sudo command (currently checks for gksudo, gnomesu, kdesudo and kdesu).
+    - Prevents GConf libraries from segfaulting when the configuration server isn’t running.
+  * Added complete Japanese translations (thanks to Satoru Matsumoto).
+  * Added command line options --help, --version and --license.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
+Tue Sep 14 19:07:15 UTC 2010 - Adam Mizerski <adam@mizerski.pl>
+
+- new package
+

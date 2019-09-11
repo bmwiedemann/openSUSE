@@ -1,0 +1,10 @@
+/var/log/wpa_supplicant.log {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    missingok
+    notifempty
+    size +4096k
+    copytruncate
+}

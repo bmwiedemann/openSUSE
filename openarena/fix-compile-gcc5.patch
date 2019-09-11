@@ -1,0 +1,12 @@
+diff -Nur openarena-engine-source-0.8.8/code/qcommon/vm_x86.c new/code/qcommon/vm_x86.c
+--- openarena-engine-source-0.8.8/code/qcommon/vm_x86.c	2011-12-24 13:29:32.000000000 +0100
++++ new/code/qcommon/vm_x86.c	2016-05-24 10:41:54.251807858 +0200
+@@ -91,7 +91,7 @@
+ static void (*const asmCallPtr)(void) = AsmCall;
+ 
+ 
+-static	int		callMask = 0;
++static	int	__attribute__((used)) callMask = 0;
+ 
+ static	int	instruction, pass;
+ static	int	lastConst = 0;

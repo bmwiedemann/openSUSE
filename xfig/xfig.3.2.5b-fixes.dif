@@ -1,0 +1,59 @@
+---
+ src/w_layers.c |   37 +++++++++++++++++++++++++++++++------
+ 1 file changed, 31 insertions(+), 6 deletions(-)
+
+--- src/w_layers.c
++++ src/w_layers.c	2016-09-22 08:45:38.381908911 +0000
+@@ -118,9 +118,27 @@ init_depth_panel(Widget parent)
+ {
+     Widget	 label, below;
+     Widget	 layer_viewform;
++    Dimension	 ind_ht = 0, snap_ht = 0, mouse_ht;
+ 
+-    /* MOUSEFUN_HT and ind_panel height aren't known yet */
+-    LAYER_HT = TOPRULER_HT + CANVAS_HT;
++    if (XtIsManaged(ind_panel)) {
++       /* get height of indicator panel */
++       FirstArg(XtNheight, &ind_ht);
++       GetValues(ind_panel);
++       ind_ht += INTERNAL_BW*2;
++    }
++
++    if (XtIsManaged(snap_indicator_panel)) {
++       /* get height of snap panel */
++       FirstArg(XtNheight, &snap_ht);
++       GetValues(snap_indicator_panel);
++       snap_ht += INTERNAL_BW*4;
++    }
++
++    /* MOUSEFUN_HT height aren't known yet */
++    mouse_ht = MSGPANEL_HT + CMDFORM_HT + INTERNAL_BW;
++
++    /* now that the bitmaps have been created, put the checkmark in the proper toggle */
++    LAYER_HT = mouse_ht + TOPRULER_HT + CANVAS_HT + ind_ht + INTERNAL_BW*2 - snap_ht;  
+ 
+     /* main form to hold all the layer stuff */
+ 
+@@ -366,11 +384,18 @@ void
+ setup_depth_panel(void)
+ {
+     Dimension	 ind_ht, snap_ht=0;
++
+     /* get height of indicator and snap panels */
+-    FirstArg(XtNheight, &ind_ht);
+-    GetValues(ind_panel);
+-    FirstArg(XtNheight, &snap_ht);
+-    GetValues(snap_indicator_panel);
++    if (XtIsManaged(ind_panel)) {
++	FirstArg(XtNheight, &ind_ht);
++	GetValues(ind_panel);
++	ind_ht += INTERNAL_BW*2;
++    }
++    if (XtIsManaged(snap_indicator_panel)) {
++	FirstArg(XtNheight, &snap_ht);
++	GetValues(snap_indicator_panel);
++	snap_ht += INTERNAL_BW*4;
++    }
+     LAYER_HT = MOUSEFUN_HT + TOPRULER_HT + CANVAS_HT + ind_ht - snap_ht + INTERNAL_BW*4;
+ 
+     /* now that the bitmaps have been created, put the checkmark in the proper toggle */

@@ -1,0 +1,24 @@
+https://github.com/carlos-jenkins/nested/pull/2
+
+commit 2990f8a6fbb3b72a9cfa45235d1fed091965ebf9
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sun Oct 22 09:36:19 2017 +0200
+
+    Do not claim copyright for future years
+    
+    e.g. when building this in 2018, it would claim copyright for 2018
+    without any author having done anything
+    
+    This also helps to make this package build reproducibly.
+
+diff --git a/nested/examples/Manpage/Manpage.t2t b/nested/examples/Manpage/Manpage.t2t
+index 2082a68..a32628a 100644
+--- a/nested/examples/Manpage/Manpage.t2t
++++ b/nested/examples/Manpage/Manpage.t2t
+@@ -246,5 +246,5 @@ http://sourceforge.net/p/nestededitor/tickets/
+ 
+ = COPYRIGHT =[copyright]
+ 
+-Copyright (C) %%date(%Y) Carlos Jenkins, GNU GPL v2
++Copyright (C) 2013 Carlos Jenkins, GNU GPL v2
+ 

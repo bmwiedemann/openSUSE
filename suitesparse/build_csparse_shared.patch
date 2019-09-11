@@ -1,0 +1,193 @@
+From: toddrme2178@gmail.com
+Date: 2018-03-07
+Subject: Build shared CSparse
+
+Upstream does not support installing CSparse as a shared library.
+We need it is a shared library.  This patch modifies the
+makefil to make sure it is installed correctly.
+
+
+--- a/CSparse/Demo/Makefile
++++ b/CSparse/Demo/Makefile
+@@ -1,36 +1,48 @@
+-CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -O
+-I = -I../Include
++# CC = cc
++# CF = -O
++
++default: all
++
++include ../../SuiteSparse_config/SuiteSparse_config.mk
+ 
+ LDLIBS += -lm
+-CS = $(LDFLAGS) ../Lib/libcsparse.a $(LDLIBS)
+ 
+-all: lib cs_demo1 cs_demo2 cs_demo3
++I = -I../../include
++
++CS = $(LDFLAGS) -L../../lib -lcsparse $(LDLIBS)
++
++all: library cs_demo1 cs_demo2 cs_demo3 \
++	tests
++
++library:
++	( cd ../Lib ; $(MAKE) )
++
++tests: library test
++
++test: cs_demo1 cs_demo2 cs_demo3
+ 	- ./cs_demo1 < ../Matrix/t1
+ 	- ./cs_demo2 < ../Matrix/t1
+-	- ./cs_demo2 < ../Matrix/ash219
+-	- ./cs_demo2 < ../Matrix/bcsstk01
+ 	- ./cs_demo2 < ../Matrix/fs_183_1
+-	- ./cs_demo2 < ../Matrix/mbeacxc
+ 	- ./cs_demo2 < ../Matrix/west0067
+ 	- ./cs_demo2 < ../Matrix/lp_afiro
+-	- ./cs_demo2 < ../Matrix/bcsstk16
++	- ./cs_demo2 < ../Matrix/ash219
++	- ./cs_demo2 < ../Matrix/mbeacxc
++	- ./cs_demo2 < ../Matrix/bcsstk01
+ 	- ./cs_demo3 < ../Matrix/bcsstk01
++	- ./cs_demo2 < ../Matrix/bcsstk16
+ 	- ./cs_demo3 < ../Matrix/bcsstk16
+ 
+-lib:
+-	( cd ../Lib ; $(MAKE) )
+-
+-cs_demo1: lib cs_demo1.c Makefile
++cs_demo1: cs_demo1.c Makefile
+ 	$(CC) $(CF) $(I) -o cs_demo1 cs_demo1.c $(CS)
+ 
+-cs_demo2: lib cs_demo2.c cs_demo.c cs_demo.h Makefile
++cs_demo2: cs_demo2.c cs_demo.c cs_demo.h Makefile
+ 	$(CC) $(CF) $(I) -o cs_demo2 cs_demo2.c cs_demo.c $(CS)
+ 
+-cs_demo3: lib cs_demo3.c cs_demo.c cs_demo.h Makefile
++cs_demo3: cs_demo3.c cs_demo.c cs_demo.h Makefile
+ 	$(CC) $(CF) $(I) -o cs_demo3 cs_demo3.c cs_demo.c $(CS)
+ 
+ clean:
+-	- $(RM) *.o
++	- $(RM) -r $(CLEAN)
+ 
+ purge: distclean
+ 
+
+--- a/CSparse/Lib/Makefile
++++ b/CSparse/Lib/Makefile
+@@ -15,16 +15,22 @@
+ # CSparse/Lib.  It does not install it for system-wide usage.
+ 
+ LIBRARY = libcsparse
+-CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -O
++VERSION = _
++SO_VERSION = _
+ 
+-I = -I../Include
+-RANLIB = ranlib
+-ARCHIVE = $(AR) $(ARFLAGS)
+-CP = cp -f
++default: library
+ 
+-AR_TARGET = $(LIBRARY).a
++include ../../SuiteSparse_config/SuiteSparse_config.mk
+ 
+-all: install
++LDLIBS += -lm
++
++# compile and install in SuiteSparse/lib
++library:
++	$(MAKE) install INSTALL=$(SUITESPARSE)
++
++I = -I../../SuiteSparse_config -I../Include
++
++all: library
+ 
+ CS = cs_add.o cs_amd.o cs_chol.o cs_cholsol.o cs_counts.o cs_cumsum.o \
+ 	cs_droptol.o cs_dropzeros.o cs_dupl.o cs_entry.o \
+@@ -39,25 +45,43 @@
+ $(CS): ../Include/cs.h Makefile
+ 
+ %.o: ../Source/%.c ../Include/cs.h
+-	$(CC) $(CF) $(I) -c $<
++	$(CC) $(CF) $(I) -c $< -o $@
+ 
+ static: $(AR_TARGET)
+ 
+ $(AR_TARGET): $(CS)
+-	$(ARCHIVE)  $@ $^
++	$(ARCHIVE) $@ $^
+ 	- $(RANLIB) $@
+ 
+-# install CSparse in this directory
+-install: $(AR_TARGET)
+-
+-# uninstall CSparse
+-uninstall: purge
+-
+ clean:
+-	- $(RM) *.o
++	- $(RM) -r $(CLEAN)
+ 
+ purge: distclean
+ 
+ distclean: clean
+-	- $(RM) *.a *.obj *.dll *.dylib *.so *.so.*
++	- $(RM) -r $(PURGE)
++
++# install CSparse
++install: $(AR_TARGET) $(INSTALL_LIB)/$(SO_TARGET)
++
++$(INSTALL_LIB)/$(SO_TARGET): $(CS)
++	@mkdir -p $(INSTALL_LIB)
++	@mkdir -p $(INSTALL_INCLUDE)
++	@mkdir -p $(INSTALL_DOC)
++	$(CC) $(SO_OPTS) $^ -o $@ $(LDLIBS)
++	( cd $(INSTALL_LIB) ; ln -sf $(SO_TARGET) $(SO_PLAIN) )
++	( cd $(INSTALL_LIB) ; ln -sf $(SO_TARGET) $(SO_MAIN) )
++	$(CP) ../Include/cs.h $(INSTALL_INCLUDE)
++	$(CP) ../README.txt $(INSTALL_DOC)/CSPARSE_README.txt
++	chmod 755 $(INSTALL_LIB)/$(SO_TARGET)
++	chmod 644 $(INSTALL_INCLUDE)/cs.h
++	chmod 644 $(INSTALL_DOC)/CSPARSE_README.txt
++
++# uninstall CSparse
++uninstall:
++	$(RM) $(INSTALL_LIB)/$(SO_TARGET)
++	$(RM) $(INSTALL_LIB)/$(SO_PLAIN)
++	$(RM) $(INSTALL_LIB)/$(SO_MAIN)
++	$(RM) $(INSTALL_INCLUDE)/cs.h
++	$(RM) $(INSTALL_DOC)/CSPARSE_README.txt
+ 
+
+--- a/CSparse/Makefile
++++ b/CSparse/Makefile
+@@ -2,6 +2,13 @@
+ # CSparse Makefile
+ #------------------------------------------------------------------------------
+ 
++SUITESPARSE ?= $(realpath $(CURDIR)/..)
++export SUITESPARSE
++
++default: C
++
++include ../SuiteSparse_config/SuiteSparse_config.mk
++
+ C:
+ 	( cd Lib ; $(MAKE) )
+ 	( cd Demo ; $(MAKE) )
+@@ -34,9 +41,11 @@
+ 
+ distclean: purge
+ 
+-install: library
++# install CSparse
++install:
+ 	( cd Lib ; $(MAKE) install )
+ 
++# uninstall CSparse
+ uninstall:
+ 	( cd Lib ; $(MAKE) uninstall )
+ 
+

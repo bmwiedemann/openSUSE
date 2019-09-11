@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Mon Jan  7 20:23:47 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 3.8.5
+  * Set correct version during build
+- Remove patch fix-correct-soname-version.patch, fixed upstream
+
+-------------------------------------------------------------------
+Sat Jan  5 18:09:19 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 3.8.4
+  * Fix a memory leak when signals are used on a widget in a container. (gh#gtkd-developers/GtkD#254)
+  * Update the GdkPixbuf Lookup file for the canges in 2.38. (gh#gtkd-developers/GtkD#250)
+  * Add a get template for gobject.Value.
+  * Don't hardcode pkg-config (gh#gtkd-developers/GtkD#249)
+  * All function names and parameters that are D keywords are now post fixed with an underscore. 
+  * This is instead of the more random substitutes used previously.
+  * Fix an out-of-bounds write in toStringzArray (gh#gtkd-developers/GtkD#248)
+- Add patch fix-correct-soname-version.patch
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 30 13:21:14 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use LDC compiler when DMD is not available on architecture
+
+-------------------------------------------------------------------
+Sun Aug 19 21:45:31 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 3.8.3
+  * Make sure we only use one toggle reference per GObject.
+  * Allow empty arrays in the Dialog constructor.
+  * Fix Windows build script. #242
+
+-------------------------------------------------------------------
+Tue May 22 09:46:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.8.2:
+  * Check for null in the ObjectG opCast, so we can cast objects
+    that are null.
+  * Add len and index methods to PtrArray.
+- Changes from version 3.8.1:
+  * Fix the gobject.Value constructor for Objects.
+  * Also use toggle references for getInterfaceInstance.
+- Changes from version 3.8.0:
+  * Update the libraries to the latest versions.
+  * Implement a DClosure.
+  * Add a Signals.connect overload for D functions and delegates.
+  * Bring back the OpCast changes for ObjectG.
+  * Add ldc support to the Build.d script.
+  * Clean up Idles and Timeouts when they are destroyed on the C
+    side.
+  * Add missing properties for gtk.TreeIter.
+
+-------------------------------------------------------------------
+Wed Mar 14 21:19:07 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 3.7.5
+  * Check for null when returning an object in gtkd.Implement.
+  * Handle out parameters correctly in gtkd.Implement.
+  * Fix building with dmd 2.079.
+- Change license to correct one and switch to SPDX-3.0 format.
+
+-------------------------------------------------------------------
+Wed Jan 24 19:44:51 UTC 2018 - matthias.eliasson@gmail.com
+
+- Added improved package descriptions. 
+
+-------------------------------------------------------------------
+Tue Jan 23 23:01:56 UTC 2018 - jengelh@inai.de
+
+- Repair grammar in descriptions.
+
+-------------------------------------------------------------------
+Sun Jan 21 22:38:55 UTC 2018 - matthias.eliasson@gmail.com
+
+- Remove a faulty Requires for gtkd package in gtk-devel that does not exists.
+
+-------------------------------------------------------------------
+Mon Jan 15 21:25:21 UTC 2018 - matthias.eliasson@gmail.com
+
+- Remove unneccsery BuildRequires
+- Add missing Requires
+- Make sure this build on Leap
+
+-------------------------------------------------------------------
+Tue Jan  2 22:15:39 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 3.7.3
+- Change from ldc to dmd as d compiler
+- run spec-cleaner to clean up the spec
+- add gstreamer, vte and peas bindings
+- Add and rename shared-library sub-packages according to policy
+  (https://en.opensuse.org/openSUSE:Shared_library_packaging_policy)
+
+-------------------------------------------------------------------
+Wed Dec 28 13:48:04 UTC 2016 - jengelh@inai.de
+
+- Rectify groups.
+
+-------------------------------------------------------------------
+Fri May  6 09:06:36 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 3.3.1
+
+-------------------------------------------------------------------
+Fri Apr  1 12:04:33 UTC 2016 - t.gruner@katodev.de
+
+- Initial Version 3.3.0 
+

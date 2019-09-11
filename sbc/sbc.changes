@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Nov 15 07:45:56 UTC 2018 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 1.4:
+  * Fix issue with stack overflow within sbc_crc8 function.
+
+-------------------------------------------------------------------
+Fri Nov  7 16:13:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Provide baselibs.conf
+- Update to version 1.3:
+  * Fix issue with frame length calculation for dual-channel mode.
+- Changes since 1.2:
+  * Add support for setup from A2DP configuration data.
+  * Add support for enabling high precision build.
+- Changes since 1.1:
+  * Add support for mSBC encoding and decoding functionality.
+
+-------------------------------------------------------------------
+Fri Aug 24 11:04:37 UTC 2012 - seife+obs@b1-systems.com
+
+- initial package, version 1.0
+

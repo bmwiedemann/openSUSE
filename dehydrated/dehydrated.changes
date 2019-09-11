@@ -1,0 +1,396 @@
+-------------------------------------------------------------------
+Sat Aug 10 17:18:25 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Behavioral change: Use cron only for older RHEL/CentOS versions
+  (along with SLE < 12.0). Everything else now uses systemd.
+  Please adopt accordingly! Refer to README.md for
+
+-------------------------------------------------------------------
+Wed Jun 26 11:03:27 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to dehydrated 0.6.5
+  * Fixed broken APIv1 compatibility from last update
+
+-------------------------------------------------------------------
+Tue Jun 25 17:29:10 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to dehydrated 0.6.4
+  * Fetch account ID from Location header instead of account json (bsc#1139408)
+
+- Update to dehydrated 0.6.3
+
+  * OCSP refresh interval is now configurable
+  * Implemented POST-as-GET
+  * Call exit_hook on errors (with error-message as first parameter)
+  * Initial support for tls-alpn-01 validation
+  * New hook: sync_cert (for syncing certificate files to disk, see example
+    hook description)
+  * Fetch account information after registration to avoid missing account id
+
+-------------------------------------------------------------------
+Tue Jan 22 11:52:00 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Remove RandomizedDelaySec attribute for distros with older systemd
+  (boo#1110697)
+
+-------------------------------------------------------------------
+Fri Apr 27 11:14:45 UTC 2018 - daniel.molkentin@suse.com
+
+- Update to dehydrated 0.6.2
+  * removes 0001-fixed-CA-url-in-example-config.patch
+  * removes 0002-don-t-walk-certificate-chain-for-ACMEv2-certificate-.patch
+
+  Added
+
+  * New deploy_ocsp hook
+  * Allow account registration with custom key
+
+  Changed
+
+  * Don't walk certificate chain for ACMEv2 (certificate contains chain by default)
+  * Improved documentation on wildcards
+
+  Fixes
+
+  * Added workaround for compatibility with filesystem ACLs
+  * Close unwanted external file-descriptors
+  * Fixed JSON parsing on force-renewal (bsc#1091216)
+  * Fixed cleanup of challenge files/dns-entries on validation errors
+  * A few more minor fixes
+
+-------------------------------------------------------------------
+Thu Mar 15 10:52:56 UTC 2018 - daniel.molkentin@suse.com
+
+- Don't add intermediate certificates twice when using ACMEv2 (bsc#1085305) 
+  * Adds 0002-don-t-walk-certificate-chain-for-ACMEv2-certificate-.patch
+
+-------------------------------------------------------------------
+Wed Mar 14 16:51:29 UTC 2018 - daniel.molkentin@suse.com
+
+- Fix issues introduced by 0.6.1 (bsc#1085305)
+
+  * bring back man page
+  * reflect new endpoint in (commented out) config file section
+    (adds 0001-fixed-CA-url-in-example-config.patch, backported
+    from upstream's master branch)
+
+-------------------------------------------------------------------
+Tue Mar 13 20:21:49 UTC 2018 - daniel.molkentin@suse.com
+
+- Updated dehydrated to 0.6.1 (bsc#1084854)
+
+  * Use new ACME v2 endpoint by default
+
+-------------------------------------------------------------------
+Mon Mar 12 08:16:13 UTC 2018 - daniel.molkentin@suse.com
+
+- Updated dehydrated to 0.6.0 (bsc#1084854)
+
+  Changed
+
+  * Challenge validation loop has been modified to loop over authorization identifiers instead of altnames (ACMEv2 + wildcard support)
+  * Removed LICENSE parameter from config (terms of service is now acquired directly from the CA directory)
+
+  Added
+
+  * Support for ACME v02 (including wildcard certificates!)
+  * New hook: generate_csr (see example hook script for more information)
+  * Calling random hook on startup to make it clear to hook script authors that unknown hooks should just be ignored...
+
+-------------------------------------------------------------------
+Mon Jan 15 12:15:07 UTC 2018 - daniel.molkentin@suse.com
+
+- Remove redundant noarch entries. They cause an error in RPM 4.14.
+
+-------------------------------------------------------------------
+Mon Jan 15 11:29:11 UTC 2018 - daniel.molkentin@suse.com
+
+- Updated dehydrated to 0.5.0
+
+  This removes the following patches and files, which are now part of the
+  upstream package:
+  * 0001-Add-optional-user-and-group-configuration.patch
+  * 0002-use-nullglob-disable-warning-on-empty-CONFIG_D-direc.patch
+  * dehydrated.1: the man page has been adopted by upstream
+
+  Starting with this version, upstream introduced signed releases, which
+  is now being used for source validation.
+
+  Upstream changes:
+
+  Changed
+
+  * Certificate chain is now cached (CHAINCACHE)
+  * OpenSSL binary path is now configurable (OPENSSL)
+  * Cleanup now also moves revoked certificates
+
+  Added
+
+  * New feature for updating contact information (--account)
+  * Allow automatic cleanup on exit (AUTO_CLEANUP)
+  * Initial support for fetching OCSP status to be used for OCSP stapling
+    (OCSP_FETCH)
+  * Certificates can now have aliases to create multiple certificates with
+    identical set of domains (see --alias and domains.txt documentation)
+  * Allow dehydrated to run as specified user (/group). This was already
+    available previously as a patch to this package.
+
+-------------------------------------------------------------------
+Fri Oct 20 11:02:24 UTC 2017 - mrueckert@suse.de
+
+- revert accidental change to the service file
+
+-------------------------------------------------------------------
+Fri Oct 20 10:55:26 UTC 2017 - mrueckert@suse.de
+
+- actually try to find the real path to bash and don't hardcode
+  /usr/bin/bash
+
+-------------------------------------------------------------------
+Thu Oct 19 08:11:20 UTC 2017 - daniel.molkentin@suse.com
+
+- Use /usr/bin/bash directly, rather than via env 
+
+-------------------------------------------------------------------
+Wed Oct 18 16:42:31 UTC 2017 - daniel.molkentin@suse.com
+
+- Use sudo instead of su to allow for argument handling, also
+  works in all cases when no login shell is assigned to the
+  dehydrated user
+  * updates 0001-Add-optional-user-and-group-configuration.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 14:46:16 UTC 2017 - daniel.molkentin@suse.com
+
+- Commands in service files need some escaping after all. Fix ExecStartPost.
+
+-------------------------------------------------------------------
+Mon Oct 16 09:27:28 UTC 2017 - daniel.molkentin@suse.com
+
+- In the timer service, execute root post run hooks in ExecStartPost
+
+-------------------------------------------------------------------
+Mon Oct 16 04:43:22 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix run of root hooks 
+
+- Simplify root hook execution, this is also more robust
+
+-------------------------------------------------------------------
+Thu Oct  5 13:36:39 UTC 2017 - daniel.molkentin@suse.com
+
+- Remove unused hooks directory
+
+- Introduced a directory for custom post-run hooks executed as root,
+  see README.SUSE for details. (not to be confused with the native hooks
+  run as dehyrated user)
+
+-------------------------------------------------------------------
+Fri Sep 29 15:14:29 UTC 2017 - daniel.molkentin@suse.com
+
+- Clarify necessity of enabling dehydrated.timer in README.SUSE
+
+- Submit to SLE15 as per fate#323377
+
+- Add optional post run hook directory, executed by cron/systemd
+  after dehydrated --cron has run
+
+- Remove hook directory intended for packaging other native hooks.
+  Will be approach differently
+
+-------------------------------------------------------------------
+Wed Sep 27 10:09:16 UTC 2017 - daniel.molkentin@suse.com
+
+- No longer require nginx or lighttpd for SLE
+
+- Never go as far as to require acmeresponder, it might not be available
+
+- Drop -update from dehydrated-update.{timer,socket} for consistency
+
+- Add distro specific README.SUSE / README.Fedora
+
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 22 11:18:55 UTC 2017 - daniel.molkentin@suse.com
+
+- Add man page
+
+- Ensure dehydrated is always run as designated user
+  * adds 0001-Add-optional-user-and-group-configuration.patch
+
+- Introduce config.d directory for user configuration
+
+- Avoid warning about empty config.d directory
+  * adds 0002-use-nullglob-disable-warning-on-empty-CONFIG_D-direc.patch
+
+- Fix sed warning about unescaped curly braces in regex
+
+-------------------------------------------------------------------
+Tue Sep 19 15:40:46 UTC 2017 - daniel.molkentin@suse.com
+
+- Swap statements in post: installing services requires tmp.d 
+
+-------------------------------------------------------------------
+Tue Sep 19 14:52:25 UTC 2017 - daniel.molkentin@suse.com
+
+- (Weak) dependency on dehydrated-acmeresponder.
+
+-------------------------------------------------------------------
+Thu Sep 14 13:47:06 UTC 2017 - daniel.molkentin@suse.com
+
+- systemd update service: ConditionPathExists goes into [Unit] section 
+
+-------------------------------------------------------------------
+Wed Sep 13 15:27:08 UTC 2017 - daniel.molkentin@suse.com
+
+- Use timer instead of cron for systemd-enabled distros
+
+  Note: Timer must be explicitly enabled!
+
+-------------------------------------------------------------------
+Tue Feb 21 13:12:19 UTC 2017 - daniel.molkentin@suse.com
+
+- Drop the (undocumented) dependeny for mod_headers 
+
+-------------------------------------------------------------------
+Sat Feb 18 16:51:10 UTC 2017 - daniel@molkentin.de
+
+- Unify configuration file source names 
+
+-------------------------------------------------------------------
+Sat Feb 18 14:08:02 UTC 2017 - daniel@molkentin.de
+
+- Bump to 0.4.0 
+
+-------------------------------------------------------------------
+Thu Feb  2 15:04:16 UTC 2017 - daniel.molkentin@suse.com
+
+- More dependency fixes 
+
+-------------------------------------------------------------------
+Thu Feb  2 13:59:16 UTC 2017 - daniel.molkentin@suse.com
+
+- Make nginx and lighttpd packages into features
+  Default-disable them on distros where we cannot provide a dependency.
+
+-------------------------------------------------------------------
+Thu Feb  2 12:32:20 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix build on Fedora
+
+-------------------------------------------------------------------
+Thu Feb  2 11:03:43 UTC 2017 - mrueckert@suse.de
+
+- make permissions of the lighty and nginx config files tighter
+
+-------------------------------------------------------------------
+Thu Feb  2 10:56:58 UTC 2017 - mrueckert@suse.de
+
+- only own the configuration files and not the whole directory tree
+  - add BR for nginx, lighttpd, apache2 to handle directory
+    ownership
+
+-------------------------------------------------------------------
+Thu Jan 12 10:24:20 UTC 2017 - mrueckert@suse.de
+
+- with making the permissions more tight ... dehydrated can not
+  write its lock file anymore to /etc/dehydrated. To fix this we
+  now create /var/run/dehydrated (sysvinit) or /run/dehydrated
+  (systemd) and point the lock file in the default config to that
+  directory.
+
+  Please adapt your local config files accordingly.
+
+-------------------------------------------------------------------
+Thu Jan 12 09:53:06 UTC 2017 - mrueckert@suse.de
+
+- change permissions of /etc/dehydrated to:
+  root:dehydrated u=rwx,g=rx,o=
+- create the subdirs that dehydrated would create later anyway:
+  /etc/dehydrated/accounts
+  /etc/dehydrated/certs
+  dehydrated::dehydrated u=rwx,go=
+- tighten up permissions on
+  /etc/dehydrated/config
+  /etc/dehydrated/domain.txt
+
+  root:root u=rw,go=r -> root:dehydrated u=rw,g=r,o=
+
+  /etc/dehydrated/hook.sh
+
+  root:root u=rw,go=r -> root:dehydrated u=rwx,g=rx,o=
+
+-------------------------------------------------------------------
+Wed Nov 23 02:20:53 UTC 2016 - daniel@molkentin.de
+
+- Add lighttpd configuration via dehydrated-lighttpd 
+
+-------------------------------------------------------------------
+Mon Nov 14 09:26:41 UTC 2016 - jengelh@inai.de
+
+- Test for user/group before adding them and don't suppress errors
+
+-------------------------------------------------------------------
+Thu Nov 10 10:41:09 UTC 2016 - daniel@molkentin.de
+
+- Fix MIN HOUR order in crontab (boo#1009452)
+
+-------------------------------------------------------------------
+Tue Sep 13 18:57:09 UTC 2016 - danimo@owncloud.com
+
+- Bump to v0.3.1
+- Rename to dehydrated 
+
+-------------------------------------------------------------------
+Sun May 22 20:23:58 UTC 2016 - danimo@owncloud.com
+
+- Bump to v0.2.0
+- This version fixes a json-parsing bug which made letsencrypt.sh
+  incompatible with up-to-date ACME servers.
+- PRIVATE_KEY config parameter has been renamed to ACCOUNT_KEY to avoid
+  confusion with certificate keys
+- deploy_cert hook now also has the certificates timestamp as standalone
+  parameter
+- Temporary files are now identifiable (template: letsencrypt.sh-XXXXXX)
+- Private keys are now regenerated by default
+- Added documentation to repository
+- Fixed bug with uppercase names in domains.txt (script now converts everything
+  to lowercase)
+- mktemp no longer uses the deprecated -t parameter.
+- Compatibility with "pretty" json
+
+-------------------------------------------------------------------
+Wed Apr 20 01:03:52 UTC 2016 - danimo@owncloud.com
+
+- Explicitly add group and license, required for SLES 11
+
+-------------------------------------------------------------------
+Wed Apr 20 00:57:18 UTC 2016 - danimo@owncloud.com
+
+- Add nginx integration package
+- Proper dir permissions for apache package (755, not 644) 
+
+-------------------------------------------------------------------
+Mon Apr 18 18:25:44 UTC 2016 - draht@schaltsekun.de
+
+- fix build requirement for shadow (>=openSUSE-12.3) and pwdutils
+  (before 12.3).
+- missing changelog for last change by danimo: do not require mod_ssl for
+  suse distrbutions.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:05:02 UTC 2016 - danimo@owncloud.com
+
+- Add alias to /.well-known/acme-challenge by default
+
+-------------------------------------------------------------------
+Sat Mar 26 09:33:25 UTC 2016 - danimo@owncloud.com
+
+- Add cron, do not remove letsencrypt user, adjust permissions 
+
+-------------------------------------------------------------------
+Fri Mar 25 18:42:00 UTC 2016 - danimo@owncloud.com
+
+- Initial commit 
+

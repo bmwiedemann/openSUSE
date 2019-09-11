@@ -1,0 +1,2741 @@
+-------------------------------------------------------------------
+Wed Jul 10 13:16:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix meson script using sed: since we rename gst-plugin-helper for
+  multi arch purpose, we also need to fix meson.build to make the
+  code look for the correct name (boo#1140998).
+
+-------------------------------------------------------------------
+Mon Jul  1 09:45:51 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Use libunwind only if available
+
+-------------------------------------------------------------------
+Wed Jun 12 20:08:46 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0:
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support,
+      as well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+   -  Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin
+      (msdk): dmabuf import/export for zero-copy integration with
+      other components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element
+      that allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Switch to meson on Tumbleweed.
+- Rebase gstreamer-rpm-prov.patch.
+- Require libdw. Helps with generating backtraces.
+- Place gdb autoload files in -devel package.
+- Add gstreamer-pie.patch to generate position-independent
+  executables. Previously done through CFLAGS/LDFLAGS, but this
+  makes ninja pass -pie when linking libraries as well, causing
+  the link to fail.
+- Now requires glib2 >= 2.40.0.
+
+-------------------------------------------------------------------
+Fri May 31 21:23:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + aggregator:
+    - Take the pad lock around queue gap event removal.
+    - Don’t leak gap buffer when out of segment.
+  + buffer: fix possible memory corruption in
+    gst_buffer_foreach_meta() when removing metas.
+  + bus:
+    - Make removing of signal/bus watches thread-safe.
+    - Don’t allow removing signal watches with
+      gst_bus_remove_watch().
+  + controlbinding: Check if the weak pointer was cleared before
+    explicitly removing it.
+  + ptp clock: Wait for ANNOUNCE before selecting a master;
+    increase tolerance for late follow-up and delay-resp.
+  + segment: Allow stop == -1 in gst_segment_to_running_time() and
+    negative rate.
+  + g-i: annotations fixes.
+
+-------------------------------------------------------------------
+Wed Oct 03 00:54:38 UTC 2018 - sean@suspend.net
+
+- Update to version 1.14.4:
+  + glviewconvert: wait and set the gl sync meta on buffers.
+  + glviewconvert: copy composition meta from the primary buffer to
+    both outputs.
+  + glcolorconvert: don't copy overlay composition meta over to
+    NULL outbufs.
+  + matroskademux: add functionality needed for MSE use case fixing
+    youtube playback in epiphany/webkit-gtk.
+  + tagdemux: Use upstream GST_EVENT_STREAM_START (and stream-id)
+    if present.
+  + vorbisdec: fix header handling regression: init decoder
+    immediately once we have headers.
+  + wasapisink: recover from low buffer levels in shared mode.
+  + fix GstSegment unit test which would fail on some 32-bit x86
+    CPUs.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:18:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + opusenc: fix crash on 32-bit platforms.
+  + compositor: fix major buffer leak when doing crossfading on
+    some but not all pads.
+  + wasapi: various fixes for wasapisrc and wasapisink regressions.
+  + x264enc: Set bit depth to fix "This build of x264 requires
+    8-bit depth. Rebuild to..." runtime errors with x264 version
+    ≥ 153.
+  + audioaggregator, audiomixer: caps negotiation fixes.
+  + input-selector: latency handling fixes.
+  + playbin, playsink: audio visualization support fixes.
+  + dashdemux: fix possible crash if stream is neither isobmff nor
+    isoff_ondemand profile.
+  + opencv: Fix build for opencv >= 3.4.2.
+  + h265parse: miscellaneous fixes backported from h264parse.
+  + pads: fix changing of pad offsets from inside pad probes.
+  + pads: ensure that pads are blocked for IDLE probes if they are
+    called from the streaming thread too.
+
+-------------------------------------------------------------------
+Fri Jul 20 16:41:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + Update docs.
+  + basetransform: Do not check if NULL is an emtpy caps.
+  + concat: Properly forward the SEGMENT seqnum.
+  + gst: add some GIR array annotations.
+  + meson: Fix detection of glib-mkenums under MSYS2.
+
+-------------------------------------------------------------------
+Thu Jul 12 07:50:21 UTC 2018 - dimstar@opensuse.org
+
+- Update gstreamer.macros and gstreamer.prov to be compatible with
+  file 5.33, which differently idenfies executables from libraries.
+
+-------------------------------------------------------------------
+Sun May 20 08:35:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Mon Apr 23 12:42:34 UTC 2018 - dimstar@opensuse.org
+
+- Rename gst-plugin-scanner to gst-plugin-scanner-%{arch}, allowing
+  multiple variants to co-exist (boo#1049452).
+
+-------------------------------------------------------------------
+Fri Mar 30 00:23:27 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec;
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+- Add:
+  + gio-2.0, gio-unix-2.0, gmodule-2.0 and gobject-2.0 pkgconfig
+    modules BuildRequires to avoid implicit dependencies.
+  + libcap-progs BuildRequires: new dependency.
+- Drop libxml2-devel BuildRequires: it has been dropped upstream,
+  and now so do we.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Rebase gstreamer-rpm-prov.patch.
+
+-------------------------------------------------------------------
+Thu Mar 29 11:58:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + pad: fix some stream deactivation deadlocks/races.
+  + registrychunks: don't read from unaligned memory when loading
+    registry.
+  + ptp: fix build failure with #undef USE_MEASUREMENT_FILTERING.
+  + downloadbuffer: Don't hold the mutex while posting the
+    download-complete message.
+  + playbin3: Fix accessing invalid index in GstStream when
+    received select-stream event.
+  + id3v2: re-fix handling of ID3 v2.4 tags with extended headers.
+  + audio: fix handling of U32BE format.
+  + videodecoder: Reset QoS time after pushing segment. This fixes
+    playbin gapless playback with videos.
+  + subparse: push out of last chunk of text if last line has no
+    newline.
+  + aacparse: When parsing raw input, accept frames of any size.
+    This fixes handling of encoded silence.
+  + splitmuxsrc: Improve not-linked handling.
+  + rtspsrc: also proxy multicast-iface property to RTCP udpsrc.
+  + flacdec: flush flac decoder on lost sync, so that it can
+    re-sync.
+  + matroskamux: Only mark new clusters as keyframe if they start
+    on a keyframe or we're muxing only audio.
+  + matroskamux: Clip maximum cluster duration to the maximum
+    possible value.
+  + h264parse: reset internal 'state' variable properly.
+  + x264enc: fix build with newer x264 with support for multiple
+    bit depths.
+  + x265enc: Fix tagging of keyframes on output buffers.
+  + glimagesink: Correct PAR in output caps when transforming.
+  + vtdec: destroy and create the GL context on start()/stop(),
+    fixing a refcount loop.
+  + player: fix criticals when reading info/track properties that
+    are NULL.
+  + lv2: fix inverted boolean properties.
+  + rtponviftimestamp: fix state change function init/reset, fixing
+    memory corruption or leaks on shutdown.
+  + libav: some build issues fixes.
+  + rtsp-server: Place netaddress meta on packets received via TCP.
+    Fixes keep-alive via RTCP in TCP interleaved mode.
+  + rtsp-server: gi annotation fixes.
+  + gst-libav: internal ffmpeg copy was updated to ffmpeg 3.3.6.
+  + Various fixes for memory leaks, deadlocks and crashes in all
+    modules.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:15:41 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:33 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 11 12:30:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Dozens of fixes for various issues detected with the help of
+    Google's OSS-Fuzz project.
+  + Performance regressions with registering debug categories after
+    gst_init() were fixed.
+  + Regression with seeking back to 0 in souphttpsrc was fixed.
+  + Regression with header rewriting in flacparse was fixed.
+  + Regression with playbin/playsink leaking sinks was fixed.
+  + Inconsistencies with DROPPED/HANDLED handling in pad probe
+    handlers are fixed.
+  + gst_bin_iterate_sorted() always returns sources last now, as
+    documented.
+  + gst_query_writable_structure() will never return NULL, for
+    consistency with events.
+  + Removal of metas from gst_buffer_meta_foreach() works correctly
+    now.
+  + OpenJPEG plugin builds with OpenJPEG >= 2.3.
+  + CDIO plugin builds with CDIO >= 1.0.
+  + gstreamer-vaapi works correctly with libva 1.0.
+  + gst-libav was updated to ffmpeg 3.3.5.
+  + Various fixes for memory leaks, deadlocks and crashes in all
+    modules and many, many more!
+  + Bugs fixed: bgo#788520, bgo#788617.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec  1 08:50:56 UTC 2017 - zaitor@opensuse.org
+
+- Add explicit python3-xml BuildRequires: fix build on older
+  versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Nov 29 12:32:33 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3:
+  + Replace python BuildRequires with python3-base.
+  + Export PYTHON=/usr/bin/python3 before calling configure.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:07:49 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Fix for infinite recursion on buffer free in v4l2.
+  + Fix for glimagesink crash on macOS when used via autovideosink.
+  + Fix for huge overhead in matroskamux caused by writing one
+    Cluster per audio-frame in audio-only streams. Also use
+    SimpleBlocks for Opus and other audio codecs, which works
+    around a bug in VLC that prevented Opus streams to be played
+    and decreases overhead even more.
+  + Fix for flushing seeks in rtpmsrc always causing an error.
+  + Fix for timestamp overflows in calculations in audio encoder
+    base class.
+  + Fix for RTP h265 depayloader marking P-frames as I-frames.
+  + Fix for long connection delays of clients in RTSP server.
+  + Fixes for event handling in queue and queue2 elements, and
+    updates to buffering levels on NOT_LINKED streams.
+  + Various fixes to event and buffering handling in
+    decodebin3/playbin3.
+  + Various fixes for memory leaks, deadlocks and crashes in all
+    modules.
+  + Bugs fixed: bgo#778193, bgo#786034, bgo#786056, bgo#786561.
+
+-------------------------------------------------------------------
+Fri Aug 25 20:21:00 UTC 2017 - zaitor@opensuse.org
+
+- Drop conditional valgrind-devel BuildRequires, this type of
+  debugging is probably not done by users of binary packages.
+
+-------------------------------------------------------------------
+Fri Jul 14 11:40:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Various fixes for crashes, assertions, deadlocks and memory
+    leaks.
+  + Regression fix for playback of live HLS streams.
+  + Regression fix for crash when playing back a tunneled RTSP
+    stream.
+  + Regression fix for playback of RLE animations in MOV
+    containers.
+  + Regression fix for RTP GSM payloading producing corrupted
+    output.
+  + Major bugfixes to the MXF demuxer, mostly related to seeking
+    and fixes to the frame reordering handling in the MXF muxer and
+    demuxer.
+  + Fix for playback of mono streams on MacOS.
+  + More fixes for index handling of ASF containers.
+  + Various fixes to adaptivedemux, DASH and HLS demuxers.
+  + Fix deadlock in gstreamer-editing-services during class
+    initialization.
+  + Bugs fixed: bgo#784041, bgo#784932.
+
+-------------------------------------------------------------------
+Tue Jun 20 12:29:30 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.12.1:
+  + Various fixes for crashes, assertions, deadlocks and memory
+    leaks.
+  + Fix for regression when seeking to the end of ASF files.
+  + Fix for regression in (raw)videoparse that caused it to omit
+    video metadata.
+  + Fix for regression in discoverer that made it show more streams
+    than actually available.
+  + Numerous bugfixes to the adaptive demuxer base class and the
+    DASH demuxer.
+  + Various playbin3/urisourcebin related bugfixes.
+  + Vivante DirectVIV (imx6) texture uploader works with
+    single-plane (e.g. RGB) video formats now.
+  + Intel Media SDK encoder now outputs valid PTS and keyframe
+    flags.
+  + OpenJPEG2000 plugin can be loaded again on MacOS and correctly
+    displays 8 bit RGB images now.
+  + Fixes to DirectSound source/sink for high CPU usage and wrong
+    latency/buffer size calculations.
+  + gst-libav was updated to ffmpeg n3.3.2.
+
+-------------------------------------------------------------------
+Fri May  5 15:28:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + Bugs fixed: bgo#782050.
+
+-------------------------------------------------------------------
+Wed May  3 15:36:55 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.11.91:
+  + Bugs fixed: bgo#781585, bgo#781585, bgo#780757, bgo#781484,
+    bgo#781155, bgo#781155, bgo#780903.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#753754, bgo#775445, bgo#776140, bgo#776293,
+    bgo#776999, bgo#778193, bgo#778830, bgo#779175, bgo#779459,
+    bgo#779755, bgo#779831, bgo#780111, bgo#780751, bgo#780923.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 23:26:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Bugs fixed: bgo#764707, bgo#773091, bgo#777375, bgo#777449,
+    bgo#777780, bgo#777810, bgo#778866.
+
+-------------------------------------------------------------------
+Thu Feb 23 18:39:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + padtemplate: Fix null pointer dereference on invalid static
+    caps.
+  + queue: Don't generate GST_FLOW_ERROR without logging.
+  + pad: clarify docs for GST_PAD_PROBE_DROP.
+  + meson:
+    - Generate pkg-config -uninstalled pc files.
+    - Do not generate .pc files for libgstcheck on windows.
+  + tools: update gst-inspect man page.
+  + Updated translations.
+- Stop packaging .la/.a files.
+- Rebase gstreamer-rpm-prov.patch.
+- Replace glib2-devel for pkgconfig(glib-2.0) BuildRequires.
+- Pass --with-package-name='openSUSE GStreamer package' and
+  --with-package-origin='http://download.opensuse.org' to configure
+  we want to show where the gstreamer package is from.
+- Pass  --disable-benchmarks, --disable-examples and
+  --disable-tests to configure, we do not need those.
+- Move AUTHORS ChangeLog NEWS README RELEASE to doc subpackage.
+
+-------------------------------------------------------------------
+Thu Feb 23 18:39:15 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + Various fixes for crashes, assertions, deadlocks and memory
+    leaks on fuzzed input files and in other situations
+    (CVE-2017-5847, CVE-2017-5848).
+  + More regression fixes for souphttpsrc redirection tracking.
+  + Various bugfixes for regressions and other problems in the V4L2
+    plugin.
+  + Fix for 5.1, 6.1 and 7.1 channel layouts for Vorbis.
+  + Bugs fixed: bgo#777998, bgo#778365.
+- Drop gstreamer-parse-dont-translate-bin-name.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Feb  4 23:03:41 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-parse-dont-translate-bin-name.patch: parse: Don't
+  translate the "bin" element name. Otherwise we won't be able to
+  create bins (bgo#777998).
+
+-------------------------------------------------------------------
+Mon Jan 30 15:03:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + CVE's fixed: CVE-2016-10198, CVE-2016-10199, CVE-2017-5837,
+    CVE-2017-5838, CVE-2017-5839, CVE-2017-5840, CVE-2017-5841,
+    CVE-2017-5842, CVE-2017-5843, CVE-2017-5844, CVE-2017-5845,
+    CVE-2017-5846.
+  + Bugs fixed: bgo#776125, bgo#775538, bgo#775661, bgo#775714,
+    bgo#775728, bgo#775921, bgo#776039, bgo#776401, bgo#777263.
+
+-------------------------------------------------------------------
+Sat Dec  3 18:41:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Minor bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 27 10:16:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Security-relevant bugfix in the vmnc decoder (no CVE).
+  + Various bugfixes to playbin3/decodebin3.
+  + Fix error at the end of playing any WAV file.
+  + Fix usability of androidmedia plugin if the camera or sensor
+    API is not available, but codecs are.
+  + Handle redirections on PLAY, and missing control attribute in
+    the RTSP source.
+  + Various OpenGL related bugfixes and many, many more.
+  + Bugs fixed: bgo#765662, bgo#773813, bgo#774044, bgo#774108.
+
+-------------------------------------------------------------------
+Wed Nov  2 09:20:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.0:
+  + Several convenience APIs have been added to make developers'
+    lives easier.
+  + A new GstStream API provides applications a more meaningful
+    view of the structure of streams, simplifying the process of
+    dealing with media in complex container formats.
+  + Experimental decodebin3 and playbin3 elements which bring a
+    number of improvements which were hard to implement within
+    decodebin and playbin.
+  + A new parsebin element to automatically unpack and parse a
+    stream, stopping just short of decoding.
+  + Experimental new meson-based build system, bringing faster
+    build and much better Windows support (including for building
+    with Visual Studio).
+  + A new gst-docs module has been created, and we are in the
+    process of moving our documentation to a markdown-based format
+    for easier maintenance and updates.
+  + A new gst-examples module has been create, which contains
+    example GStreamer applications and is expected to grow with
+    many more examples in the future.
+  + Various OpenGL and OpenGL|ES-related fixes and improvements for
+    greater efficiency on desktop and mobile platforms, and Vulkan
+    support on Wayland was also added.
+  + Extensive improvements to the VAAPI plugins for improved
+    robustness and efficiency.
+  + Lots of fixes and improvements across the board, spanning
+    RTP/RTSP, V4L2, Bluetooth, audio conversion, echo cancellation,
+    and more!
+  + Bugs fixed: bgo#770627, bgo#772431, bgo#772571, bgo#772741,
+    bgo#772851, bgo#773114, bgo#773319.
+  + Updated translations.
+- Add pkgconfig(libunwind) BuildRequires: New dependency.
+- Add explicit pkgconfig BuildRequires for completeness.
+
+-------------------------------------------------------------------
+Mon Aug 22 18:28:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + Fix stepping in PAUSED state in certain circumstances.
+  + Fix jackaudiosink hang when exiting.
+  + Fix udpsrc receiving multicast packets not only from the
+    selected multicast group.
+  + Fix unnecessary decoding of unselected streams in GES.
+  + Fix (multi)udpsink randomly not sending to clients.
+  + Fix ALL\_BOTH probes not considering EVENT\_FLUSH.
+  + Fix average input rate calculations in queue2.
+  + Fix various locking issues causing deadlock in adaptivedemux.
+  + Fix gst-libav encoders to correctly produce codec\_data in
+    caps.
+  + Add Wayland, Windows and Rasberry Pi support to the QML GL
+    video sink.
+  + Add support for building with OpenH264 1.6.
+  + Add support for controlling deinterlacing in GES video sources.
+  + Bugs fixed: bgo#769802, bgo#768649, bgo#766970, bgo#768141,
+    bgo#767688, bgo#763770, bgo#767413, bgo#739289, bgo#762330.
+  + Updated translations.
+- Drop separate spec file for gstreamer-doc. Due to this drop all
+  conditionals for splitting out doc build. Also drop docbook-toys,
+  docbook-utils, texlive-latex, texlive-latex-doc and transfig
+  BuildRequires. Add doc subpackage to gstreamer spec and pass
+  enable gtk-doc to configure. Note that we are building a much
+  leaner doc package now.
+- Following the above, drop pre_checkin script,
+  gstreamer-no-gtk-doc-for-reals.patch and
+  gstreamer-revert-bogus-automake-version.patch and stop passing
+  NOCONFIGURE, no longer needed.
+- Conditionally apply translations-update-upstream and
+  gnome-patch-translation BuildRequires and macro for non-openSUSE
+  only.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:17:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo#727105: doc: Drop reference to osssink / esdsink / etc,
+    from gst-launch-1.0 man page.
+  + bgo#741001: GST_DEBUG categories are missing when using
+    --gst-debug-help.
+  + bgo#763496: queue: Can release serialized (ALLOCATION) query
+    before downstream returned it.
+  + bgo#765906: typefind: Regression due to fix for bgo#763491.
+  + bgo#765961: Fix element leak in gstutils.c:find_common_root().
+  + bgo#766002: pad: IDLE probes don't block when returning
+    GST_PAD_PROBE_OK.
+
+-------------------------------------------------------------------
+Thu May 19 10:36:47 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.2 (Fate#318572)
+
+-------------------------------------------------------------------
+Wed Apr 20 17:23:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + Fix app compilation with Android NDK r11 and newer.
+  + Fix compilation of nvenc plugin against latest NVIDIA SDK 6.0.
+  + Fix regression in avdeinterlace.
+  + Fix memory corruption in scaletempo element with S16 input.
+  + Fix regression in qtdemux with MSE streams.
+  + Fix glitches at the start with all audio sinks except for
+    pulsesink.
+  + Fix regression with encrypted HLS streams.
+  + Fix automatic multithreaded decoding of VP8/9 video.
+  + Fix deadlock in HTTP adaptive streams when scrub-seeking.
+  + Fix regression in RTSP source with SRTP.
+  + Add support for SRTP rollover counters in the RTSP source.
+  + Add support for HiDPI ("Retina") screens in caopengllayersink.
+  + bgo#727105: doc: Drop reference to osssink / esdsink / etc,
+    from gst-launch-1.0 man page.
+  + bgo#741001: GST_DEBUG categories are missing when using
+    --gst-debug-help
+  + bgo#761912: gstpad: Fix race between gst_element_remove_pad and
+    state change.
+  + bgo#762995: queue: Use full running time for level calculation.
+  + bgo#763753: valve: don't send sticky events as a direct
+    response to upstream events.
+  + bgo#763757: multiqueue: Make sure mq- > percent remains valid
+    after modifying high-percent value.
+  + bgo#765096: baseparse: When initializing DTS from PTS, remember
+    that we did so.
+  + bgo#765260: baseparse: regression with aac streams.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 13 09:50:02 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Mar 26 16:29:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+  + Bugs fixed: bgo#763491, bgo#763895, bgo#764034, bgo#763770.
+- Rebase gstreamer-rpm-prov.patch, base on fedora patch.
+
+-------------------------------------------------------------------
+Thu Jan 21 18:42:09 UTC 2016 - badshah400@gmail.com
+
+- Update to version 1.6.3:
+  + Fix regression in GL library that made glimagesink unsable
+    on Android.
+  + Integer arithmetic overflow in queue2 element that could
+    break buffering or cause crashes due to NULL pointer
+    dereference.
+  + Fix crash in AAC/ADTS typefinder caused by reading more
+    memory than is available.
+  + Stop ignoring encoder errors in the VP8/VP9 encoders.
+  + Deprecate GstVideoEncoder GST_VIDEO_ENCODER_FLOW_DROPPED.
+    It's redudant and was never actually implemented.
+  + Ensure to store the correct video info in
+    GstVideoBufferPool.
+  + Fix caps in rtspsrc when doing SRTP over interleaved TCP.
+  + Fix crash in pcap parser on 0-sized packets.
+  + Clear EOS flag in appsrc to allow reuse after EOS and
+    flushing.
+  + Ignore flushing streams in streamsynchronizer during stream
+    switches to fix problems caused by this in
+    gst-editing-services.
+  + Ignore tags and other metadata in WAV files after the "data"
+    chunk in PUSH mode to prevent them from being interpreted as
+    audio.
+  + Correctly use colorimetry in v4l2 only for YUV color
+    formats.
+  + Set reserved bits in MPEG TS muxer to 1s.
+  + Fix calculation of SBC frame lengths.
+  + Fix output of the RTP JPEG2000 depayloader to have one frame
+    per buffer and crash in the OpenJPEG decoder on incomplete
+    frames.
+  + Update ffmpeg snapshot in gst-libav to 2.8.5.
+  + Memory leak fixes in scaletempo, the raw video RTP
+    depayloader, and in playsink related to audio/video filters.
+  + Fixes for error handling in the OSX audio plugin.
+  + Various gobject-introspection annotation fixes and
+    additions.
+  + Compiler warning fixes for latest clang compiler.
+- Change source URL to http://gstreamer.freedesktop.org/ instead
+  of http://download.gnome.org/; the former seems to be more
+  frequently updated.
+
+-------------------------------------------------------------------
+Tue Jan 19 16:56:23 UTC 2016 - meissner@suse.com
+
+- Hook gst-ptp-helper helper into SUSE permissions framework
+  (boo#960173):
+  + Add permissions to requires(pre).
+  + Add set_permissions to post and verify_permissions to
+    verifyscript.
+
+-------------------------------------------------------------------
+Mon Jan 18 11:19:51 UTC 2016 - dimstar@opensuse.org
+
+- Adjustments post security review (boo#960173):
+  + Add libcap-devel BuildRequires: rely on capabilities instead of
+    flagging the binary suid.
+  + Pass --with-ptp-helper-permissions=capabilities to configure:
+    ensure there is no auto-fallback to attempting to install the
+    binary suid in case capabilities would not work.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:19:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.6.2:
+  + Crashes in gst-libav with sinks that did not provide a buffer
+    pool but supported video metadata were fixed. This affected
+    d3dvideosink and some 3rd party sinks. Also related fixes for
+    crashes when a downstream buffer pool failed allocation.
+  + Big GL performance improvement on iOS by a factor of 2 by using
+    Apple's sync extension.
+  + Deadlocks in the DirectSound elements on Windows, and the
+    behaviour of its mute property were fixed.
+  + The Direct3D video sink does not crash anymore when minimizing
+    the window.
+  + The library soname generation on Android >= 6.0 was fixed,
+    which previously caused GStreamer to fail to load there.
+  + File related elements have large-file (>2GB) support on Android
+    now.
+  + gst-libav was updated to ffmpeg 2.8.3.
+  + Deserialization of custom events in the GDP depayloader was
+    fixed.
+  + Missing OpenGL context initialization in the Qt/QML video sink
+    was fixed in certain situations.
+  + Interoperability with some broken RTSP servers using HTTP
+    tunnel was improved.
+  + Various compilation fixes for Windows.
+  + Various smaller memory leak and other fixes in different
+    places.
+  + Bugs fixed: bgo#734098, bgo#738292, bgo#741608, bgo#753823,
+    bgo#755106, bgo#755222, bgo#755614, bgo#756028, bgo#756951,
+    bgo#757155, bgo#757264, bgo#757453, bgo#757454, bgo#757732,
+    bgo#757854, bgo#757873, bgo#757895, bgo#757924, bgo#757929,
+    bgo#757935, bgo#758029, bgo#758151, bgo#758204, bgo#758205,
+    bgo#758276, bgo#758285, bgo#758286, bgo#758337, bgo#758344,
+    bgo#758512, bgo#758620, bgo#758861, bgo#758912, bgo#758913,
+    bgo#758921, bgo#759019, bgo#759380.
+- Add -fPIE to CFLAGS and -pie to LDFLAGS in order to ensure our
+  executables are built position independent.
+
+-------------------------------------------------------------------
+Sat Oct 31 02:16:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + Valgrind 3.7.0 chokes on match-leak-kinds in gst.supp.
+  + Gstreamer: Fix sample memory leaks.
+  + gstreamer-1.6.0 doesn't compile on OS X 10.6: header file issue
+    in gst-ptp-helper.c.
+  + multiqueue: Improve incoming SEGMENT handling.
+  + segment_to_stream_time and position_from_stream_time
+    miscalculate when applied_rate < 0.
+  + pad: gst_pad_probe_info_get_buffer_list() has wrong ownership
+    transfer.
+  + uri: incorrect behavior when merging uris ending in ..
+  + pad: Unblock blocking pad probes when receiving FLUSH_START in
+    send_event() too.
+- Add gstreamer-revert-bogus-automake-version.patch: Upstream
+  needed feature in automake 1.12, so for good measure they bumped
+  to 1.14, this patch reverts this.
+
+-------------------------------------------------------------------
+Sat Sep 26 22:07:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + Stereoscopic 3D and multiview video support.
+  + Trick mode API for key-frame only fast-forward/fast-reverse
+    playback etc.
+  + Improved DTS (decoding timestamp) vs. PTS (presentation
+    timestamp) handling to account for negative DTS.
+  + New GstVideoConverter API for more optimised and more correct
+    conversion of raw video frames between all supported formats,
+    with rescaling.
+  + v4l2src now supports renegotiation.
+  + v4l2transform can now do scaling.
+  + V4L2 Element now report Colorimetry properly.
+  + Easier chunked recording of MP4, Matroska, Ogg, MPEG-TS: new
+    splitmuxsink and multifilesink improvements.
+  + Content Protection signalling API and Common Encryption (CENC)
+    support for DASH/MP4.
+  + Many adaptive streaming (DASH, HLS and MSS) improvements.
+  + New PTP and NTP network client clocks and better remote clock
+    tracking stability.
+  + High-quality text subtitle overlay at display resolutions with
+    glimagesink or gtkglsink.
+  + RECORD support for the GStreamer RTSP Server.
+  + Retransmissions (RTX) support in RTSP server and client.
+  + RTSP seeking support in client and server has been fixed.
+  + RTCP scheduling improvements and reduced size RTCP support.
+  + MP4/MOV muxer acquired a new "robust" mode of operation which
+    attempts to keep the output file in a valid state at all times.
+  + Live mixing support in aggregator, audiomixer and compositor
+    was improved a lot.
+  + Compositor now supports rescaling and converting inputs streams
+    on the fly.
+  + New audiointerleave element with proper input synchronisation
+    and live input support.
+  + Blackmagic Design DeckLink capture and playback card support
+    was rewritten from scratch; 2k/4k support; mode sensing.
+  + KLV metadata support in RTP and MPEG-TS.
+  + H.265 video encoder (x265), decoders (libav, libde265) and RTP
+    payloader and depayloaders.
+  + New DTLS plugin and SRTP/DTLS support.
+  + OpenGL3 support, multiple contexts and context propagation, 3D
+    video, transfer/conversion separation, subtitle blending.
+  + New OpenGL-based QML video sink, Gtk GL video sink,
+    CoreAnimation CAOpenGLLayerSink video sink.
+  + gst-libav switched to ffmpeg as libav-provider, gains support
+    for 3D/multiview video, trick modes, and the CAVS codec.
+  + GstHarness API for unit tests.
+  + gst-editing-services got a completely new ges-launch-1.0.
+    interface, improved mixing support and integration into
+    gst-validate.
+  + gnonlin has been deprecated in favor of nle (Non Linear Engine)
+    in gst-editing-services.
+  + gst-validate has a new plugin system, an extensive default
+    testsuite, support for concurrent test runs and valgrind
+    support.
+  + cerbero build tool for SDK binary packages gains new
+    'bundle-source' command.
+  + Various improvements to the Android, iOS, OS X and Windows
+    platform support.
+- Drop gstreamer-message-delivery.patch: Fixed upstream.
+- Add pkgconfig(bash-completion) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sun Mar  1 14:56:54 UTC 2015 - dap.darkness@gmail.com
+
+- Added gstreamer-message-delivery.patch
+  to fix async message delivery, see more at
+  http://cgit.freedesktop.org/gstreamer/gstreamer/commit/?id=da7847
+
+-------------------------------------------------------------------
+Fri Dec 26 10:17:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + Bugs fixed: bgo#736969, bgo#738092, bgo#740001.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 17 14:17:45 UTC 2014 - zaitor@opensuse.org
+
+- Revert previous bashish "ﬁxes", but specify in pre_checkin.sh
+  and gstreamer.prov scripts that interpeter is #!/bin/bash.
+
+-------------------------------------------------------------------
+Mon Nov 17 02:36:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre_checkin.sh script
+
+-------------------------------------------------------------------
+Mon Nov 17 02:31:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in gstreamer.prov script
+
+-------------------------------------------------------------------
+Fri Nov 14 11:07:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Bugs fixed: bgo#737498, bgo#737794, bgo#737999, bgo#738198.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 24 10:32:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.3:
+  + Bugs fixed: bgo#709868, bgo#736969, bgo#737102, bgo#737133.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 21 12:16:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  + Bugs fixed: bgo#735574, bgo#734412, bgo#735975, bgo#729811,
+    bgo#736455, bgo#736424, bgo#736680, bgo#736295, bgo#736736,
+    bgo#736739, bgo#736813, bgo#736762.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 28 19:47:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Bugs fixed: bgo#732851, bgo#733805, bgo#733974, bgo#734688,
+    bgo#734773.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 11:12:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Bugs fixed: bgo#733131, bgo#733121, bgo#733320.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 17 22:36:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.3.91:
+  + Various API additions.
+  + New plugins and elements:
+    - v4l2videodec element for accessing hardware codecs on
+      platforms that make them accessible via V4L2.
+    - New downloadbuffer element that replaces the download
+      buffering feature of queue2.
+    - rtpstreampay and rtpstreamdepay elements for transmitting RTP
+      packets over a stream API (e.g. TCP) according to RFC 4571.
+    - rtprtx elements for standard compliant implementation of
+      retransmissions, integrated into the rtpmanager plugin.
+    - audiomixer element that mixes multiple audio streams together
+      into a single one while keeping synchronization.
+    - OpenNI2 plugin for 3D cameras like the Kinect camera.
+    - OpenEXR plugin for decoding high-dynamic-range EXR images.
+    - curlsshsink and curlsftpsink to write files via SSH/SFTP.
+    - videosignal, ivfparse and sndfile plugins ported from 0.10.
+    - avfvideosrc, vtdec and other elements were ported from 0.10
+      and are available on OS X and iOS now.
+  + Other changes:
+    - gst-libav now uses libav 10.1, and gained support for
+      H265/HEVC.
+    - Support for hardware codecs and special memory types has been
+      improved with bugfixes and feature additions in various
+      plugins and base classes.
+    - Various bugfixes and improvements to buffering in queue2 and
+      multiqueue elements.
+    - dvbsrc supports more delivery mechanisms and other features
+      now, including DVB S2 and T2 support.
+    - The MPEGTS library has support for many more descriptors.
+    - Major improvements to tsdemux and tsparse, especially time
+      and seeking related.
+    - souphttpsrc now has support for keep-alive connections,
+      compression, configurable number of retries and configuration
+      for SSL certificate validation.
+    - hlsdemux has undergone major refactoring and works more
+      reliable now and supports more HLS features like trick modes.
+    - dashdemux and mssdemux are now also pushing fragments
+      downstream while they're downloaded instead of waiting for
+      each fragment to finish.
+    - videoflip can automatically flip based on the orientation
+      tag.
+    - openjpeg supports the OpenJPEG2 API.
+    - waylandsink was refactored and should be more useful now.
+    - gst-rtsp-server supports SRTP and MIKEY now.
+    - gst-libav encoders are now negotiating any profile/level
+      settings with downstream via caps.
+    - Lots of fixes for coverity warnings all over the place.
+    - Negotiation related performance improvements.
+    - 800+ fixed bug reports.
+  + Things to look out for:
+    - The eglglessink element was removed and replaced by the
+      glimagesink element.
+    - The mfcdec element was removed and replaced by v4l2videodec.
+    - osxvideosink is only available in OS X 10.6 or newer.
+    - On Android the namespace of the automatically generated Java
+      class for initialization of GStreamer has changed from
+      com.gstreamer to org.freedesktop.gstreamer to prevent
+      namespace pollution.
+    - On iOS you have to update your gst_ios_init.h and
+      gst_ios_init.m in your projects from the one included in the
+      binaries if you used the GnuTLS GIO module before.
+
+-------------------------------------------------------------------
+Fri Apr 25 11:24:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + bgo#724373: Queue2 truncates its temp file when pipeline is
+    paused.
+  + bgo#725517: docs: Fix typos and remove unknown annotations.
+  + bgo#725809: ghostpad: rare crash because of missing reference
+    count on its target pad.
+  + bgo#727253: parse: Bison generated file included in the release
+    tarballs causes compile errors.
+  + bgo#727883: baseparse: Memory leak of queue frames.
+
+-------------------------------------------------------------------
+Sun Feb  9 20:58:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Bugs fixed: bgo#712597, bgo#719814, bgo#721253, bgo#721289,
+    bgo#721300, bgo#721350, bgo#721422, bgo#721941, bgo#722467.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 31 06:49:43 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Bugs fixed: bgo#712597, bgo#719437, bgo#707230, bgo#712300,
+    bgo#714989, bgo#719575.
+
+-------------------------------------------------------------------
+Mon Nov 11 14:12:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.1:
+  + core: Fix max DEBUG_LEVEL incongruence on 5 vs 9.
+  + Bugs fixed: bgo#709804, bgo#709637.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 22 20:42:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + A bunch of API changes (new stable branch 1.2).
+  + New tool: gst-play-1.0 in gst-plugins-base for basic playback
+    testing on the command line.
+  + New plugins:
+    - mssdemux for Microsoft Smooth Streaming.
+    - dashdemux for DASH adaptive streaming protocol.
+    - bluez for interaction with Bluetooth devices.
+    - openjpeg for JPEG2000 decoding and encoding.
+    - daala for experimental Daala decoding and encoding.
+    - vpx plugin has experimental VP9 decoding and encoding
+      support.
+    - webp plugin for WebP decoding (encoding to be added later).
+    - Various others: yadif, srtp, sbc, fluidsynth, midiparse,
+      mfc, ivtv, accuraterip and audiofxbad.
+  + Moved plugins: dtmf, vp8rtp, scaletempo and rtpmux plugins are
+    now in gstreamer-plugins-good.
+  + Audio and Video related fixes.
+  + Other changes:
+    - gst-libav now uses libav 9.
+    - Static linking of plugins is supported now.
+    - rtspsrc: add support for NetClientClock.
+    - RTP retransmission / NACK support and big RTP jitterbuffer
+      improvements.
+    - SRTP and DTLS support.
+    - Changes to many elements and core to use the correct sticky
+      event order and also not lose any important sticky events
+      during flushing.
+    - >1000 fixed bug reports, and many other bug fixes and other
+      improvements everywhere that had no bug report.
+  + Notes:
+    - Single header includes for all libraries,
+      e.g. #include <gst/video/video.h>
+    - Stricter (correct) caps subset checking in some cases.
+    - x264enc now outputs data in byte-stream by default if
+      downstream has ANY caps.
+    - The MPEG TS demuxer posts messages contain the PMT, PAT,
+      etc, in a different format now.
+    - The GstContext API has changed between 1.1.4 and 1.1.90.
+
+-------------------------------------------------------------------
+Sat Aug 31 10:15:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.10: 
+  + parse: make gst-launch syntax parser work with Bison 3.
+  + memory: only copy the requested part instead of the complete
+    source memory for default system memory.
+  + queue2: update buffering when changing capacity.
+  + g-i:
+    - Add bindings-friendly buffer.extract() function.
+    - Miscellaneous gobject-introspection annotation fixes
+      (queries, pipeline).
+  + Bugs fixed: bgo#705630, bgo#705678, bgo#705751, bgo#706462.
+
+-------------------------------------------------------------------
+Thu Aug 15 08:58:23 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.9:
+  + basesink: when we asynchronously go from READY to PLAYING, also
+    call the state change function so that subclasses can update
+    their state for PLAYING, esp. audio sinks added to the pipeline
+    dynamically.
+  + bindings: gobject-introspection annotation fixes.
+  + Bugs fixed: bgo#702282.
+
+-------------------------------------------------------------------
+Sat Jul 13 16:27:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.8:
+  + basesink: improve position reporting without clock.
+  + Fix caps leak in typefind/decodebin/playbin.
+  + Gobject-introspection fixes for bindings.
+  + Bugs fixed: bgo#693365, bgo#702617, bgo#702778, bgo#703562.
+
+-------------------------------------------------------------------
+Sat Apr 27 09:34:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.7:
+  + Add better support for static plugins.
+  + Bugs fixed: bgo#667305, bgo#696357, bgo#696435, bgo#697791.
+
+-------------------------------------------------------------------
+Sat Mar 23 11:42:44 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + bin: reset GValue from iterator after usage, fixing leak.
+  + pipeline: fix seeking on pipeline with NULL clock.
+  + message: accept NULL error argument in
+    gst_message_parse_{error,warning,info}.
+  + basesrc: handle renegotiation correctly.
+  + basesink: handle sync of EOS after item without duration.
+  + basetransform: avoid warnings from NULL outcaps passed to
+    transform_size in shutdown race.
+  + adapter, basesrc, typefind: handle gst_buffer_map failure.
+  + queuearray: 
+    - fix gst_queue_array_drop_element().
+    - fix gst_queue_array_find().
+  + queue: remove query from queue if queue is flushing.
+  + g-i:
+    - make sure enumeration types and flags are introspected and
+      available to bindings.
+    - add allow-none annotation for gst_pipeline_new()'s name
+      property.
+  + Bugs fixed: bgo#684804, bgo#691185, bgo#691985, bgo#691986,
+    bgo#692691, bgo#692868, bgo#693065, bgo#693587, bgo#693704,
+    bgo#693996.
+
+-------------------------------------------------------------------
+Mon Feb 25 21:21:10 CET 2013 - sbrabec@suse.cz
+
+- Added support for gnome-patch-traslation.
+
+-------------------------------------------------------------------
+Sat Jan 19 10:05:35 UTC 2013 - dimstar@opensuse.org
+
+- Update gstreamer-rpm-prov.patch: PackageKit is looking for
+  packages with gstreamer(*) provides.. so we should provide the
+  same.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:51:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.5:
+  + Add GST_BIN_FLAG_NO_RESYNC flag that disables a resync when an
+    element is added, removed or linked in the bin.
+  + Add OTHER clock type
+  + Bugs fixed: bgo#690915.
+
+-------------------------------------------------------------------
+Wed Dec 19 09:00:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + basesrc: fix potential leaks when re-activating in a different
+    mode
+  + bindings:
+    - make all pad probe types work with bindings
+    - fix gst_event_parse_stream_start() annotation, fixing crash
+  + Documentation improvements.
+  + Bugs fixed: bgo#687845, bgo#688804, bgo#688934.
+
+-------------------------------------------------------------------
+Thu Nov 22 07:56:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.3:
+  + bufferpool: fix deadlock.
+  + baseparse: forward stream-start event in push mode, fixing
+    issues with streamsynchronizer
+  + basesink: reset START_TIME when needed, fixing position
+    reporting after seeking beyond end
+  + Bugs fixed: bgo#666053, bgo#687896, bgo#688477, bgo#688511,
+    bgo#688655, bgo#685870.
+
+-------------------------------------------------------------------
+Thu Oct 25 12:22:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + Parallel installability with 0.10.x series
+  + collectpads: ensure all timestamps are in same time domain
+  + gobject-introspection: fix GstSample annotations
+  + add GstElement::post_message() vfunc
+  + info: allow gst_debug_add_log_function() to be called before
+    gst_init()
+  + event: allow GST_CLOCK_TIME_NONE as duration for GAP events
+  + documentation: new chapters and updates for the application
+    development manual and the plugin writer's guide
+  + Bugs fixed: bgo#686456, bgo#686658, bgo#686659, bgo#686723,
+    bgo#686787.
+
+-------------------------------------------------------------------
+Tue Oct  9 19:32:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.1:
+  + Capsfilter prefers filter caps over passthrough now
+  + Application Development Manual, Plugin Writer's Guide and other
+    documentation updated and extended for 1.0
+  + Bugs fixed: bgo#680862, bgo#684538, bgo#684755, bgo#684765,
+    bgo#684809, bgo#684970, bgo#684981, bgo#685072.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:39:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + Minor bugfixes
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Tue Sep 18 07:49:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.99:
+  + Minor fixes
+  + Remove GST_USE_UNSTABLE_API guard and defines.
+
+-------------------------------------------------------------------
+Fri Sep 14 12:49:16 UTC 2012 - vuntz@opensuse.org
+
+- Revert change from Sept 2nd: we'll actually rename things in
+  gstreamer-0_10 instead, since that's the package which is
+  versioned.
+- Update gstreamer-rpm-prov.patch: we need to output gstreamer1.0()
+  instead of gstreamer0.10() for the Provides.
+- Version the gstreamer-utils Requires in devel subpackage, to
+  avoid having a choice between the 0.10 package and this one.
+
+-------------------------------------------------------------------
+Fri Sep 14 07:25:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.94:
+  + gstcompat: fix backwards compat macro for
+    gst_message_new_duration
+  + baseparse:
+    - Add a mode/flag for disabling PTS interpolation
+    - Handle GAP and still-frame events
+    - Restructure event handling
+    - Store incoming cached events in reverse order
+    - First attempt at handling both DTS and PTS
+  + taglist:
+    - add warning when we get something else than a sample for a
+      sample tag
+  + elementfactory:
+    - don't crash if no element klass has been set(bgo#683865)
+  + Updated documentations
+  + Bugs fixed: bgo#581525, bgo#599546, bgo#608841, bgo#634927, 
+    bgo#645467, bgo#647759, bgo#657202, bgo#657640, bgo#657725,
+    bgo#667293, bgo#672637, bgo#673319, bgo#673641, bgo#676935,
+    bgo#677620, bgo#677621, bgo#677757, bgo#677818, bgo#677819,
+    bgo#677898, bgo#677925, bgo#678017, bgo#678031, bgo#678181,
+    bgo#678301, bgo#678742, bgo#678928, bgo#679080, bgo#679112,
+    bgo#679145, bgo#679286, bgo#679378, bgo#679407, bgo#679506,
+    bgo#679534, bgo#679535, bgo#680181, bgo#680306, bgo#680479,
+    bgo#680495, bgo#680755, bgo#680796, bgo#680804, bgo#680805,
+    bgo#681139, bgo#681153, bgo#681198, bgo#681322, bgo#681450,
+    bgo#681575, bgo#681681, bgo#682958, bgo#682968, bgo#682997,
+    bgo#683470, bgo#683865.
+- Rebase gstreamer-rpm-prov.patch.
+
+-------------------------------------------------------------------
+Sun Sep  2 14:57:05 UTC 2012 - dimstar@opensuse.org
+
+- Make gstreamer 1.0 and 0.10 -devel parallel installable:
+  + Rename gstreamer.attr to gstreamer1.attr
+  + Rename gstreamer-provides to gstreamer-provides1
+
+-------------------------------------------------------------------
+Wed Aug  8 18:32:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.93:
+  + added scope to taglists and TOCs (stream or global)
+  + countless gobject-introspection annotation fixes
+  + GstMiniObject: add qdata() (for object-private data)
+  + basesink now prerolls on GAP event
+  + versioned variants of environment variables
+  + major low-level GstMemory reworking
+  + allow mini objects to be LOCKABLE for
+    read/write/exclusive access, use this
+    in GstMemory
+  + add segment-done event in addition to segment-done message
+  + make allocation query more extendable
+  + send STREAM_START events and STREAM_START message
+  + remove gst_tag_list_get_buffer(), add gst_tag_list_get_sample()
+    and move tags of GST_TYPE_BUFFER to GST_TYPE_SAMPLE, esp.
+    GST_TAG_IMAGE and GST_TAG_PREVIEW_IMAGE, also
+    GST_TAG_ATTACHMENT and GST_TAG_APPLICATION_DATA
+  + GstDateTime: add support for partial date times where not
+    all fields are set
+  + move DATE tag from GDate to GstDateTime (for partial dates)
+  + major TOC API reworking, make TOC events sticky
+  + audio/video base class fixes and some minor API changes
+    (e.g. frame refcounting; negotiation; propose_allocation)
+  + port GstVideoOverlayComposition to 0.11, add GstMeta for it
+  + fixes everywhere, esp. playback-related (demuxers, decoders,
+    parsers)
+
+-------------------------------------------------------------------
+Tue Jul 17 19:15:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.92:
+  + Parallel installability with 0.10.x series.
+  + API cleanup and minor API improvements.
+  + GstTagList is a refcounted type now.
+  + Lots of bugfixes, cleanup and other improvements.
+- Rebase gstreamer-rpm-prov.patch.
+- Update gstreamer.prov to actually call gst-inspect-1.0.
+
+-------------------------------------------------------------------
+Mon May 14 07:30:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.91:
+  + API cleanup and minor improvements
+  + More hiding of structs that don't need to be public
+  + Addition of SNAP flag for seek events
+
+-------------------------------------------------------------------
+Fri Apr 20 12:34:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.90:
+  + Lots of bugfixes, cleanup and other improvements
+  + Improvements to the buffer and memory managment API
+  + A new GstTOC interface, e.g. for handling chapters
+  + The GstChildProxy interface works with any GObject now
+- Rebase gstreamer-no-gtk-doc-for-reals.patch.
+- Rename libgstreamer-0_11-0 to libgstreamer-1_0-0 following
+  upstream soname change.
+- Rename typelib-1_0-Gst-0_11 to typelib-1_0-Gst-1_0 following
+  upstream typelib name change.
+
+-------------------------------------------------------------------
+Fri Mar 23 07:45:38 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.3:
+  + Various bug fixes and improvements
+  + Input-selector defaults to sync-streams=true
+  + Queue don't just start the thread on linking
+  + Add user_data and notify to gst_memory_new_wrapped()
+  + Rework caps function for performance
+  + Improve basetransform allocator handling
+  + Implement metadata transforms
+  + Metadata registration improvements
+  + Use generic marshallers everywhere
+  + Push Sticky events in more cases
+  + Register queries like events
+  + Add DRAIN serialized query
+  + Add 0-padding and prefix to GstMemory
+  + Rework the ALLOCATION query
+  + Allow setting the allocator in a bufferpool
+  + Improve pull/get_range
+
+-------------------------------------------------------------------
+Fri Feb 17 18:02:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.2:
+  + Added pts/dts to buffers
+  + Moved controller into core
+  + Pad probe rewrite
+  + AcceptCaps and GetCaps made as queries
+  + Added parent to pad functions
+  + Sticky events rewrite
+  + New GstSample object
+  + Asynchronous state change support for basesrc
+  + Added new bitmask type
+  + GstMemory updates
+  + Port to gio
+  + Port to newest glib
+  + Add stepped ranges
+  + Do typefind in separate thread
+  + Rework alloc tracing
+  + Added STREAM_CONFIG, GAP and STREAM_START events
+  + Various cleanups and leak fixes
+- Rebase gstreamer-rpm-prov.patch.
+
+-------------------------------------------------------------------
+Tue Jan 24 08:22:16 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.1:
+  + Remove negotiation from state change in GstBaseSrc
+  + Removed our custom FOURCC type
+  + Updates to the base classes
+
+-------------------------------------------------------------------
+Sat Jan 21 19:35:08 UTC 2012 - zaitor@opensuse.org
+
+- Add libtool as explicit buildrequire to avoid implicit dependency
+  from prjconf.
+- Split typelib files into typelib-1_0-Gst-0_11 subpackage.
+- Add typelib-1_0-Gst-0_11 Requires to devel subpackage.
+- Add explicit libgstreamer-0_11-0 Requires to devel subpackage: it
+  was there implicitly before, through the gstreamer
+  Requires, but it's better to have it explicit.
+- Add gstreamer-utils Requires to devel subpackage: it is needed
+  for automatic provides rpm magic.
+- Remove explicit check-devel, glib2-devel, libxml2-devel and
+  popt-devel Requires from devel subpackage: the ones that are
+  needed will be added the pkgconfig() way, and the others are
+  actually wrong.
+
+-------------------------------------------------------------------
+Wed Aug  3 16:43:08 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.0:
+  + Reworked buffer memory management
+  + Arbitrary buffer metadata
+  + Integrated bufferpool management
+  + Improved dynamic pipeline changes
+  + Reworked video caps system
+  + Reworked pad probes
+- Clean spec-file using spec-cleaner.
+- Rename package to gstramer-0_11:
+  + Remove the old gstreamer010 provides and obsoletes. They are
+    no longer true.
+  + Rename all subpackage accordingly
+  + Adjust baselibs.conf
+
+-------------------------------------------------------------------
+Fri Jun 17 10:49:10 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.35:
+  + Work around GLib atomic ops API change
+  + Some minor win32/mingw fixes
+  + Don't use G_CONST_RETURN in public headers (bgo#652211)
+
+-------------------------------------------------------------------
+Thu May 19 14:12:11 CEST 2011 - mls@suse.de
+
+- move gstreamer deps generator definition from rpm into
+  the gstreamer-0.10-devel package
+
+-------------------------------------------------------------------
+Wed May 18 19:20:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.34:
+  + Fix multiqueue thread-safety regression
+  + Don't set artificial 0-timestamp on first packet for TIME-based
+    live sources
+  + Bugs fixed: bgo#649369, bgo#649878.
+
+-------------------------------------------------------------------
+Wed May 11 14:23:40 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.33:
+  + atomicqueue: add an atomic/lock-free queue structure based
+  + bufferlist: improve _add*() performance
+  + bus: in _add_watch() honour any per-thread default main context
+    set via g_main_thread_push_thread_default()
+  + caps: new gst_caps_intersect_full() to intersect in different
+    modes
+  + clock: add functions to re-init existing periodic GstClockIDs
+  + event: add QoS type (overflow, underflow, throttle) for QoS
+    events
+  + ghostpad: The internally linked pad of the proxypad is the
+    ghostpad
+  + gstpoll: retry reading the control socket to release properly
+    all wakeups
+  + message: new progress message API for asynchronous operations
+  + pad:
+    - unlock before freeing the pad cache to avoid deadlock
+    - better handling for when parent goes away during
+      data/query/event flow
+  + parse-launch: allow element names to begin with digits
+  + pluginloader: call gst-plugin-scanner with the right arch on
+    OSX, fixing hangs with firefox
+  + registry: fixes elements (features) disappearing if a plugin or
+    plugin file is renamed
+  + structure:
+    - Add "(date)" as a type abbreviation of GDate
+    - Don't allow invalid GDates in all structures and don't allow
+      NULL GDates in taglists
+  + taglist: add a new "encoded-by" tag
+  + uri: add gst_filename_to_uri() that takes relative filenames
+  + utils: add gst_element_factory_can_{src|sink}_{any|all}_caps()
+    to replace can_{sink,src}_caps()
+  + baseparse: new GstBaseParse class for parsers
+  + basesink:
+    - improve rate, duration, and average duration calculation
+    - use new QoS types and add add "throttle-time" property
+  + basesrc:
+    - Handle tag and custom downstream events the same
+    - keep downstream caps order when fixating, to honour
+      downstream preferences when negotiating
+    - Return FALSE if we don't handle an event
+    - Send synchronized custom downstream/both events downstream
+      from the streaming thread
+  + basetransform:
+    - Be smarter with pad allocs
+    - Check for pad alloc caps when suggestion is not fixed
+    - Retain caps order when getting caps, to honour downstream
+      preferences when negotiating
+  + funnel: new N-to-1 pipe fitting element imported from farsight
+  + fakesink:
+    - print buffer flags
+    - Fix escaping of URIs
+  + file{sink,src}:
+    - Check if non-URI characters are escaped, but only for the URI
+      not the location property
+    - fix URI creation regression for non-absolute locations
+  + filesrc: Fix escaping of file uris
+  + inputselector:
+    - Hold the selector lock while reading properties of the active
+      pad
+    - Make sure that EOS is always sent downstream for the active
+      pad
+    - Return GST_FLOW_OK until the selected pad pushed something
+      downstream
+    - Stop waiting for a pad switch when the pad is flushing
+  + multiqueue:
+    - fix some potential corner-case deadlocks and some leaks
+    - handle arbitrary sink + source pad naming
+  + queue2: don't read beyond the end of file upstream in pull
+    mode; leak fixes
+  + plugins: make query and event functions more thread-safe,
+    protect against parent-pad disappearing
+  + gst-launch: add GstIndex support
+  + Bugs fixed: bgo#642356, bgo#402141, bgo#518857, bgo#604094,
+    bgo#615357, bgo#617045, bgo#639674, bgo#639962, bgo#640071,
+    bgo#640437, bgo#640502, bgo#640622, bgo#640675, bgo#640850,
+    bgo#641212, bgo#641928, bgo#642071, bgo#642130, bgo#642271,
+    bgo#642373, bgo#642393, bgo#642504, bgo#642522, bgo#642869,
+    bgo#643301, bgo#643455, bgo#644935, bgo#645022, bgo#645267,
+    bgo#645595, bgo#645746, bgo#645877, bgo#645931, bgo#646118,
+    bgo#646341, bgo#646531, bgo#646566, bgo#646569, bgo#646624,
+    bgo#646811, bgo#646971, bgo#647005, bgo#647131, bgo#647293,
+    bgo#647763, bgo#647844, bgo#647922, bgo#648199, bgo#648215,
+    bgo#648220, bgo#648297, bgo#649195, bgo#635718, bgo#625396,
+    bgo#640771, bgo#646972, bgo#640665.
+- Rebase gstreamer-0_10-rpm-prov.patch.
+
+-------------------------------------------------------------------
+Tue May  3 13:53:23 UTC 2011 - dimstar@opensuse.org
+
+- Extend gstreamer-0_10-rpm-prov.patch: Also provide elements.
+
+-------------------------------------------------------------------
+Tue Jan 25 17:01:00 UTC 2011 - wstephenson@novell.com
+
+- Update to version 0.10.32
+  + GLib requirement is now >= 2.22
+  + New core elements:
+    - valve (moved from -bad)
+    - input-selector (N.B. without "select-all" property, use fsfunnel
+      instead) (moved from -bad)
+    - output-selector (with different negotiation behaviour by
+      default, set pad-negotiation-mode=active for previous behaviour)
+      (moved from -bad)
+  + Performance improvements for many heavily-used code paths:
+    GstPad, GstPoll, GstClock, GstTask, basesink, basesrc, queue2,
+    multiqueue
+  + gobject-introspection: add annotations for most core API
+  + clock: make sync clock wait lockfree
+  + fdsrc/fdsink: reenable on MSVC
+  + registry: fix GStatBuf definition for win32 when building against
+    older glib (fixes unnecessary rescanning of plugins at start-up)
+  + element: add a more flexible way to get request pads from elements
+  + multiqueue: return upon input when already eos
+  + object: fix creation of default name
+    (when creating more than 100000 elements)
+  + pluginloader: fix hangs on OSX
+  + poll:
+    - fixes for (p)select backend (used e.g. on OSX)
+    - refactor and make more lockfree; fixes for win32 and OSX
+      (pselect backend)
+  + registry: don't replace valid existing plugins by blacklisted ones
+  + tags: don't produce duplicated entries when merging same value twice
+  + basesink:
+    - preroll fixes for async=false case
+    -rework position reporting code
+  + basetransform: handle downstream giving a buffer with new caps
+    but invalid size
+
+-------------------------------------------------------------------
+Sun Jan 16 14:21:19 UTC 2011 - aj@suse.de
+
+- Remove buildrequire on pyxml and add python instead for doc 
+  package only, changelog of package with date 2008-03-21 contains:
+  "Don't depend on PyXML and use only XML modules that are shipped
+   with python."
+
+-------------------------------------------------------------------
+Tue Dec  7 11:43:06 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.10.31:
+  + bin:
+    - add "message-forward" property to force forwarding of
+      messages that would usually be filtered such as ASYNC_DONE or
+      EOS
+    - improve tracking of source elements for more efficient event
+      dispatch
+  + bufferlist: add function to add a list of buffers
+  + clock: fix racy shutdown clock id leak
+  + element:
+    - add support for arbitrary element class / factory details
+    - link_many should activate pads if needed
+  + gst: add math-compat.h header
+  + datetime: add GstDateTime API
+  + elementfactory: add utility functions to filter features by
+    type
+  + plugin: load the gst-python plugin loader with
+    G_MODULE_BIND_LAZY
+  + query: add buffering ranges API to retrieve informations about
+    the areas of the stream currently buffered
+  + value: add int64 range type
+  + info: write debugging output to file if GST_DEBUG_FILE
+    environment variable is set
+  + pad: use more efficient g_object_notify_by_pspec() for caps
+    notifies if compiling against new-enough GLib
+  + pipeline: If the currently used clock gets lost update it the
+    next time when going from PAUSED to playing
+  + plugin: add release datetime field to GstPluginDesc and set it
+    if GST_PACKAGE_RELEASE_DATETIME is defined
+  + utils: speed up pad linking utility functions by not trying
+    pads that will never work
+  + adapter:
+    - add function to get a list of buffers; support 0-sized
+      buffers
+    - optimize gst_adapter_take() and gst_adapter_peek() a little
+  + basesink: only answer the SEGMENT query in pull mode
+  + basesrc: return values in stream time for the POSITION query
+  + basetransform:
+    - allow the subclass to add new fields to caps when getting new
+      caps from downstream
+    - avoid useless memcpy
+    - upstream caps-renegotiation fixes
+  + bitreader: add inlined and unchecked versions of the most
+    important functions
+  + bytewriter:
+    - add inline and unchecked variants of all important functions
+    - fix possible infinite loop caused by an overflow
+  + queue:
+    - add "silent" property to suppress signal emission (for better
+      performance)
+    - avoid unnecessary g_cond_signal() (for better performance)
+    - push newsegment event when linking in PLAYING
+  + queue2:
+    - extend ring buffer to support RAM mode
+    - in download mode, prevent range corruption due to race
+    - don't send seeks beyond the end of the file upstream in pull
+      mode (fixes apple trailers and youtube/html5 playback in
+      webkit)
+  + multiqueue: flush the data queue if downstream return
+    WRONG_STATE too
+  + gst-inspect: print GST_PARAM_MUTABLE_* property flags
+  + See NEWS for API additions and deprecations.
+  + Bugs fixed: bgo#396774, bgo#482147, bgo#579127, bgo#594504,
+    bgo#600004, bgo#610366, bgo#611918, bgo#618919, bgo#619522,
+    bgo#621299, bgo#621332, bgo#622740, bgo#623040, bgo#623121,
+    bgo#623491, bgo#623541, bgo#623622, bgo#623806, bgo#623875,
+    bgo#624203, bgo#625239, bgo#625295, bgo#625368, bgo#625862,
+    bgo#626027, bgo#626181, bgo#626651, bgo#626784, bgo#627438,
+    bgo#627826, bgo#627910, bgo#627959, bgo#628014, bgo#628174,
+    bgo#628176, bgo#628408, bgo#629241, bgo#629410, bgo#629494,
+    bgo#629553, bgo#629831, bgo#629946, bgo#630257, bgo#630436,
+    bgo#630437, bgo#630439, bgo#631755, bgo#631853, bgo#632236,
+    bgo#632433, bgo#632977, bgo#633147, bgo#633886, bgo#635031,
+    bgo#635389, bgo#635869, bgo#633176.
+- Drop gstreamer-0_10-make382.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 19 01:02:07 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Sep 15 20:27:19 UTC 2010 - dimstar@opensuse.org
+
+- Extend gstreamer-0_10.prov: we need a possibility to simply skip
+  the automatic provides function. In this case, defining
+  SKIP_GSTPROVIDES to non-zero will be recognized as an ignore flag
+  for the package. All other requires/provides will not be
+  affected.
+
+-------------------------------------------------------------------
+Sat Sep 11 18:18:02 UTC 2010 - dimstar@opensuse.org
+
+- Add gstreamer-0_10-make382.patch: Fix build with make 3.82.
+  Generally, the -doc package is affected.
+
+-------------------------------------------------------------------
+Thu Sep  2 12:07:07 UTC 2010 - dimstar@opensuse.org
+
+- Add gstreamer-0_10-rpm-prov.patch: adds --rpm to gst-inspect,
+  allowing rpm to create a list of provides, thanks to the
+  gstreamer-0_10.prov script we install. Those provides can then be
+  picked up by PackageKit. Patch taken from Fedora's gstreamer
+  package.
+- Add gstreamer-0_10.macros that contains a rpm macro, in case
+  external provides scripts are used.
+- Add gstreamer-utils Requires to the -devel package: this is used
+  in gstreamer-0_10.prov for the rpm magic to work.
+
+-------------------------------------------------------------------
+Tue Aug 31 12:57:07 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:42:17 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Thu Jul 29 12:21:35 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.30:
+  + bgo#623586: gst/tagsetter check fails
+  + bgo#463435: Skip #include < libxml/parser.h > in gstconfig.h.in
+                when not needed
+  + bgo#505770: gst_element_get_state() should unblock if element
+                posts an error
+  + bgo#615820: implement percentage position and duration queries
+  + bgo#615941: [tags] Add GST_TAG_DEVICE_MANUFACTURER and
+                GST_TAG_DEVICE_MODEL
+  + bgo#616586: Use GObject's boxed type for GError
+  + bgo#617223: [tags] Add tags for direction of capture and
+                movement
+  + bgo#617625: Commandline utility wrappers (gst-run) don't work
+                on Windows
+  + bgo#618644: gst_pad_get_caps() Return pad template if parent
+                element is in GST_STATE_NULL
+  + bgo#619508: [tag] Add image orientation tag
+  + bgo#619815: GST_PLUGIN_LOADING_WHITELIST env var for unit tests
+  + bgo#619828: [API] adapter: add masked_scan_uint32_peek
+  + bgo#620460: info: add new TRACE log level and move refcounting
+                there from LOG level
+  + bgo#620490: [basesink] segment query unconditionally returns
+                FALSE
+  + bgo#621006: Deprecate unused gst_object_{get|set}_name_prefix()
+  + bgo#621282: Display of short fourccs is in hex instead of text
+  + bgo#621332: BaseTransform should disable proxy alloc if
+                downstream changes caps
+  + bgo#621334: GstBaseTransform should not require a
+                transform_size function
+  + bgo#621505: Disable memory poisoning by default for releases
+  + bgo#621527: gstcaps: New gst_caps_steal_structure() method
+  + bgo#621530: filesink ignores sync=true
+  + bgo#621595: --quiet doesnt make gst-launch be completely quiet,
+                also messages should not go to stdout
+  + bgo#621773: Add introspection annotations
+  + bgo#621867: gst-launch: rename new --no-play command line
+                option
+  + bgo#621896: [API][taglist] Add gst_tag_list_peek_string_index
+  + bgo#622504: [GstPad] Provide more fine-grained linking methods
+  + bgo#622546: distcheck fails in docs/plugins/
+  + bgo#622685: [GstXml] Deprecate GstXml
+  + bgo#622967: [queue2] Problems with progressive downloading
+  + bgo#623301: gst_caps_normalize: doesn't normalize completely
+  + bgo#623589: Fix races/refcounting bugs with slave clocks
+  + bgo#624113: [tags] wrong behaviour in merge function for
+                strings
+  + bgo#622025: Can't build gstreamer due to Gst-0.10.gir: error:
+                Can't resolve type 'PadIntLinkFunction' for field
+                Gst.Pad.intlinkfunc
+
+-------------------------------------------------------------------
+Tue May  4 09:52:13 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.29:
+  + improve plugin loading robustness: do not ever unload a plugin
+    after calling into it: should fix mystery crashers during
+    registry loading when a plugin init function returns FALSE
+    (e.g. when some supporting library fails to initialise or a
+    wrapper plugin found no features to wrap and wrongly returned
+    FALSE)
+  + configurable memory alignment for GstBuffers
+  + add QoS message to inform apps of lost data, dropped frames etc
+  + basesink, basetransform: add support for new QoS message
+  + basetransform: accept non-fixed caps suggestions
+  + basesrc: fix gst_base_src_new_seamless_segment()
+  + GstController fixes and optimisations
+  + set thread name for pad tasks on Linux
+  + pipeline, bin: fix refcount issue when removing elements during
+    a state change
+  + queue2: implement seeking in download mode
+  + queue2: implement flushing in download buffering
+  + queue2: improve buffer level measurement in download mode
+  + fdsrc: allow specifying the size in bytes on the uri
+  + build fixes: better checks for uint128_t, inline assembly on
+    OSX, compilation if HAVE_REGISTER_PRINTF_SPECIFIER is
+    undefined, gobject-introspection
+  + two symbols were removed that had been exported but never been
+    used or been declared in any header file:
+    gst_element_default_error & gst_element_request_compatible_pad.
+- Drop gstreamer-0_10-fix-introspection-build.patch: upstreamed.
+- Rebase gstreamer-0_10-no-gtk-doc-for-reals.patch.
+
+-------------------------------------------------------------------
+Sat Mar 13 15:57:30 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.28:
+  + No material changes compared to 0.10.27, this release is mostly
+    to keep the version in sync with gst-plugins-base
+  + Parse "1/MAX" fraction strings .
+
+-------------------------------------------------------------------
+Mon Mar  8 15:17:09 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.27:
+  + bgo#610366: [gstcollectpads][doc] Add a reminder for 'data' doc
+  + bgo#605189: gst_element_get_state has wrong introspection
+  + bgo#607771: [API] Add gst_byte_writer_fill
+  + bgo#608036: [typefind] deadlock when upstream puts caps on
+    buffers on pull mode
+  + bgo#608877: [typefind] Access to internal fields not threadsafe
+  + bgo#609941: GStreamer-WARNING **: External plugin loader failed
+  + bgo#610210: [PATCH] Fix compilation of fdsink and fdsrc with
+    MSVC
+  + bgo#610246: [optimization] Speed up _get_range()
+  + bgo#610367: [memindex] might busy loop upon EXACT lookup
+  + bgo#610444: [controller] Interpolation control source passes
+    NULL pointers to GSequence API
+  + bgo#611087: [basesink] emergency rendering of late buffers
+    fails after resuming from PAUSE
+  + bgo#611719: GST_DEBUG_OBJECT macros not fed with GObject* in
+    gstpoll.c
+  + API additions:
+    - gst_byte_writer_fill()
+
+-------------------------------------------------------------------
+Fri Feb 12 14:44:00 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.26:
+  + Changes:
+    - registry: do plugin scanning (on *nix) using an external
+      helper binary
+    - lots of performance improvements all over the place
+    - add GstByteWriter, a simple generic byte writer
+    - filesink: Use _wfopen on win32 to open files with non-ascii
+      filenames correctly.
+    - queue2: add option to remove the temp-file (enabled by
+      default)
+    - it is now allowed to use gst_caps_set_simple() on non-simple
+      caps
+    - queue2: move from gst-plugins-base into the coreelements
+      plugin in core
+    - multiqueue: add support for buffering mode where we post
+      BUFFERING messages based on the level of the queues
+    - typefind: speed up typefinding a lot by first trying the
+      typefinder for the file's extension
+    - buffer: remove private/internal subbuffer subclass and keep
+      track of the parent buffer directly in the GstBuffer
+      structure
+    - collectpads: add ability to install clipping functions
+    - new tags for TV/Radio shows/episodes, lyrics, composer
+      sortname and grouping
+    - miniobject: avoid race when recycling buffers
+    - basesrc: fix race in PLAYING->PAUSED->PLAYING
+  + Bugs fixed: bgo#476514, bgo#590941, bgo#595602, bgo#535069,
+    bgo#560442, bgo#595511, bgo#595886, bgo#595964, bgo#596366,
+    bgo#597407, bgo#597550, bgo#597690, bgo#598297, bgo#598526,
+    bgo#598700, bgo#598895, bgo#598896, bgo#599147, bgo#599759,
+    bgo#600313, bgo#600922, bgo#601587, bgo#601668, bgo#601669,
+    bgo#602093, bgo#602275, bgo#602419, bgo#603059, bgo#603787,
+    bgo#604091, bgo#604093, bgo#605251, bgo#605930, bgo#606435,
+    bgo#607283, bgo#607317, bgo#607431, bgo#607481, bgo#607739,
+    bgo#607842, bgo#608136, bgo#608398, bgo#608442, bgo#608726,
+    bgo#609166, bgo#590669, bgo#601698, bgo#604565, bgo#596877
+  + API additions, see NEWS.
+
+-------------------------------------------------------------------
+Wed Jan  6 04:43:53 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Dec  3 17:49:20 CET 2009 - vuntz@opensuse.org
+
+- Compile introspection support:
+  + Add gobject-introspection-devel BuildRequires.
+  + Pass --enable-introspection to configure.
+  + Add gstreamer-0_10-fix-introspection-build.patch to fix the
+    build.
+- Small cleanups.
+
+-------------------------------------------------------------------
+Mon Nov 16 22:37:58 CET 2009 - lmedinas@opensuse.org
+
+- Update to version 0.10.25:
+  + Changes:
+    - Improve the byte-reader API
+    - GObject introspection support
+    - Improve clock accuracy on win32
+    - Optimisations in capabilities checking
+    - Optimisations and fixes in the basetransform base class
+    - New 64-bit scaling utility function variants
+    - Various bug-fixes and improvements
+  + Bugs fixed: bgo#583999, bgo#566881, bgo#588472, bgo#589173,
+    bgo#589314, bgo#589524, bgo#589849, bgo#589991, bgo#590045,
+    bgo#590430, bgo#590841, bgo#590919, bgo#591045, bgo#591318,
+    bgo#591441, bgo#592209, bgo#592314, bgo#593460, bgo#593719,
+    bgo#594107, bgo#594225, bgo#594990, bgo#595130, bgo#595133,
+    bgo#595209, bgo#368536
+
+-------------------------------------------------------------------
+Mon Oct 26 16:59:30 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Aug 12 12:02:48 CEST 2009 - sbrabec@suse.cz
+
+- Create empty /usr/share/gstreamer-0.10/presets for presets.
+
+-------------------------------------------------------------------
+Wed Aug  5 13:22:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10.24:
+  + Changes:
+    - Fully support nested structures in caps
+    - Support frame-by-frame stepping in sinks
+    - Add support for buffer-lists to pass around groups of buffers
+    - Use TaskPools for managing worker threads
+    - New stream-status API for finer thread control
+    - Code optimisations
+    - Many other bug-fixes and enhancements
+  + Bugs fixed: bgo#580579, bgo#527488, bgo#570233, bgo#584389,
+    bgo#534208, bgo#545787, bgo#554460, bgo#559643, bgo#560345,
+    bgo#560442, bgo#572285, bgo#577926, bgo#578908, bgo#580177,
+    bgo#580716, bgo#581198, bgo#581281, bgo#582010, bgo#582564,
+    bgo#582588, bgo#582878, bgo#583187, bgo#583419, bgo#583456,
+    bgo#583554, bgo#584835, bgo#584838, bgo#585039, bgo#585075,
+    bgo#585137, bgo#585592, bgo#585733, bgo#585748, bgo#586566,
+    bgo#586568, bgo#587973, bgo#587976, bgo#588744, bgo#588745,
+    bgo#589127, bgo#590056, bgo#590622, bgo#579177, bgo#581321,
+    bgo#584118, bgo#585433, bgo#585569, bgo#585834, bgo#585960,
+    bgo#587052
+  + API additions.
+
+-------------------------------------------------------------------
+Mon May 18 00:54:01 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10.23:
+  + Support files > 4GB on Windows
+  + Controller interpolation fixes
+  + Add timer support to GstPoll and use it for clocking
+  + Attempt to typefind contents from the file extension if all
+    else fails
+  + GStreamer revision control switched to Git
+  + Many other bug fixes and improvements
+  + Bugs fixed: bgo#579177, bgo#163577, bgo#574160, bgo#575598,
+    bgo#575922, bgo#576842, bgo#555978, bgo#565607, bgo#566936,
+    bgo#567692, bgo#567725, bgo#568289, bgo#568438, bgo#568481,
+    bgo#568632, bgo#568678, bgo#570910, bgo#571227, bgo#571559,
+    bgo#572480, bgo#573623, bgo#574024, bgo#574211, bgo#574213,
+    bgo#574241, bgo#574484, bgo#574623, bgo#574805, bgo#575695,
+    bgo#575814, bgo#576381, bgo#576563, bgo#576582, bgo#577887,
+    bgo#577891, bgo#578114, bgo#578201, bgo#579127, bgo#580121,
+    bgo#361155, bgo#517231, bgo#572591, bgo#573823, bgo#574163,
+    bgo#575682, bgo#575988
+  + API additions:
+    - New FIXME and MEMDUMP debug levels
+    - gst_tag_list_get_buffer() and gst_tag_list_get_buffer_index()
+    - New tags: GST_TAG_SUBTITLE_CODEC, GST_TAG_HOMEPAGE
+    - gst_util_array_binary_search()
+    - gst_message_new_request_state(),
+      gst_message_parse_request_state(), GST_MESSAGE_REQUEST_STATE
+    - GstPoll::gst_poll_new_timer()
+    - GstPoll::gst_poll_write_control()
+    - GstPoll::gst_poll_read_control()
+
+-------------------------------------------------------------------
+Thu Apr 23 17:18:34 CEST 2009 - sbrabec@suse.cz
+
+- Don't call autogen in older products.
+
+-------------------------------------------------------------------
+Thu Feb  5 12:50:16 CET 2009 - vuntz@novell.com
+
+- Update to version 0.10.22:
+  + GstController improvements
+  + Extensions to the latency setting behaviours
+  + Ability for plugins to register dependencies to trigger
+    re-scanning
+  + Optimisations in some common operations on caps and values and
+    elsewhere
+  + Add sequence numbers to events so dependent events can be
+    associated with
+  + the event that caused them
+  + New macros for reading and writing float values
+  + Many improvements in the basesink base class
+  + Support non-default main contexts for GstBus watches
+  + Improvements in pull-mode scheduling of sinks
+  + Fixes for alignment issues on sparc
+  + Ghost pad fixes
+  + New bit-reader assistance API
+  + Many other bug fixes and improvements
+  + Bugs fixed: bgo#567002, bgo#350477, bgo#510354, bgo#526044,
+    bgo#539108, bgo#544003, bgo#544293, bgo#545714, bgo#548786,
+    bgo#551676, bgo#552778, bgo#553554, bgo#553874, bgo#555196,
+    bgo#555307, bgo#555631, bgo#556091, bgo#556900, bgo#557154,
+    bgo#557300, bgo#557438, bgo#557649, bgo#559250, bgo#560301,
+    bgo#560360, bgo#560399, bgo#560442, bgo#561501, bgo#562170,
+    bgo#562949, bgo#564863, bgo#567225, bgo#566393
+  + API added:
+    - Add bit reader and byte reader classes.
+    - gst_message_new_structure_change()
+    - gst_message_parse_structure_change()
+    - GST_BUFFER_FREE_FUNC()
+    - Add GST_READ_UINT24_(LE|BE) and GST_WRITE_UINT24_(LE|BE).
+    - GstBaseSrc::gst_base_src_set_blocksize()
+    - GstBaseSrc::gst_base_src_get_blocksize()
+    - GstBaseSink::gst_base_sink_set_blocksize()
+    - GstBaseSink::gst_base_sink_get_blocksize()
+    - GstBaseSink::blocksize
+    - GstBaseSink::gst_base_sink_do_preroll()
+    - Add gst_byte_reader_get_data and gst_byte_reader_peek_data 
+    - Move float endianness conversion macros from libgstfloatcast to core
+    - gst_util_seqnum_next, gst_util_seqnum_compare
+    - gst_event_get_seqnum, gst_event_set_seqnum
+    - gst_message_get_seqnum, gst_message_set_seqnum
+    - GstSeekFlags::GST_SEEK_FLAG_SKIP 
+    - gst_bin_recalculate_latency()
+    - GstBin::do-latency
+    - gst_tag_setter_reset_tags()
+    - gst_query_new_uri, gst_query_set_uri, gst_query_parse_uri
+    - add gst_plugin_add_dependency()
+    - add gst_plugin_add_dependency_simple()
+- Drop gstreamer-0_10-protect-caps-bnc439323.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov  6 15:54:20 CET 2008 - sbrabec@suse.cz
+
+- Fixed valgrid BuildRequires.
+
+-------------------------------------------------------------------
+Fri Oct 31 15:27:21 CDT 2008 - gburt@suse.de
+
+- Add patch from upstream to fix bad GST_CAPS bug in 0.10.21
+    + Fixes bnc#439323 and bgo#555631
+
+-------------------------------------------------------------------
+Tue Oct 21 17:42:51 CDT 2008 - maw@suse.de
+
+- Update to version 0.10.21:
+  +  Basetransform rework
+  + Basesink synchronisation extensions
+  + New documentation
+  + Bugs fixed: bgo#481169, bgo#520694, bgo#538201, bgo#544855,
+    bgo#339795, bgo#348114, bgo#361718, bgo#533856, bgo#536978,
+    bgo#537804, bgo#537812, bgo#538568, bgo#539772, bgo#542175,
+    bgo#543444, bgo#543853, bgo#544174, bgo#544776, bgo#545352,
+    bgo#545603, bgo#545605, bgo#545607, bgo#545853, bgo#546328,
+    bgo#546822, bgo#547277, bgo#547728, bgo#548394, bgo#548652,
+    bgo#549504, bgo#551952, bgo#551978, bgo#547835, bgo#538628,
+    bgo#546883, and bgo#551509
+  + API added:
+    * Add GST_TAG_ATTACHMENT for generic file attachments to streams.
+    * Add gst_base_sink_set_render_delay()
+    * Add gst_base_sink_get_render_delay()
+    * Add gst_check_setup_src_pad_by_name
+    * Add gst_check_setup_sink_pad_by_name
+    * Add gst_check_teardown_pad_by_name
+    * Add GstBaseTransform::gst_base_transform_suggest()
+    * GstBaseTransform::gst_base_transform_reconfigure()
+    * GstPad::gst_pad_set_iterate_internal_links_function()
+    * GstPad::GstPadIterIntLinkFunction
+    * GstPad::gst_pad_iterate_internal_links()
+    * GstPad::gst_pad_iterate_internal_links_default()
+  + API deprecated:
+    * gst_pad_get_internal_links()
+    * gst_pad_set_internal_link_function()
+    * gst_pad_get_internal_links_default()
+- Add gstreamer-0_10-no-gtk-doc-for-reals.patch.
+
+-------------------------------------------------------------------
+Thu Sep 04 15:49:43 CEST 2008 - mboman@novell.com
+
+- Update to version 0.10.20:
+  + Add the Presets interface
+  + Use the binary registry by default
+  + Deprecate gst_element_get_pad and don't use it anywhere any more.
+  + Reverse playback fixes
+  + API to get missing element messages from parse_launch parsing.
+  + Fixes in latency calculations
+  + BaseTransform negotiation fixes
+  + New Buffering query and messages
+  + Fix multiqueue deadlocks when changing limits
+  + Remove pre-generated parser hacks and require newer flex/bison
+  + Use GSlice in more places
+  + Use static strings in property declarations everywhere to save memory
+    allocations
+  + Fix unaligned memory accesses with the binary registry and add CRC
+    checks
+  + Lots of other bug fixes
+
+-------------------------------------------------------------------
+Wed May 14 15:49:43 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Apr 29 17:44:58 CEST 2008 - cthiel@suse.de
+
+- obsolete gstreamer010-<arch> via baselibs.conf  
+
+-------------------------------------------------------------------
+Tue Apr 15 15:22:07 CEST 2008 - sbrabec@suse.cz
+
+- fix build 
+
+-------------------------------------------------------------------
+Mon Apr 14 14:14:41 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 0.10.19:
+  * Fix a regression in raw fd handling
+  * Fixed: bgo#524041
+- Fixed Obsoletes (bnc#357153).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  2 17:17:19 CEST 2008 - maw@suse.de
+
+- Update to version 0.10.18:
+  + New GstPoll abstraction simplifies operations on multiple
+    file descriptors
+  + Bugs fixed: bgo#516187, bgo#516395, bgo#520756, bgo#498222,
+    bgo#499127, bgo#505417, bgo#509559, bgo#510194, bgo#511783,
+    bgo#513964, bgo#515469, bgo#519584, bgo#519698, bgo#520152,
+    bgo#520671, bgo#520808, bgo#520877, bgo#521740, and bgo#522741.
+
+-------------------------------------------------------------------
+Wed Mar 19 20:52:40 CET 2008 - maw@suse.de
+
+- Require texlive-latex and texlive-latex-doc to build.
+
+-------------------------------------------------------------------
+Tue Feb  5 23:20:21 CET 2008 - maw@suse.de
+
+- Update to version 0.10.17:
+  + Fix compilation problems
+  + Bugs fixed: bgo#512715.
+
+-------------------------------------------------------------------
+Tue Feb  5 20:44:30 CET 2008 - maw@suse.de
+
+- Update to version 0.10.16:
+  + Monotonic/Posix clock support
+  + Dumping of dot-file graph descriptions for debugging
+  + Cleanup of exported symbols
+  + Many bug fixes and enhancements
+- Build with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Tue Jan 22 15:20:12 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 0.10.15:
+  * Changes for asynchronous sink management
+  * New ts-offset property on basesink for adjusting clock synchronisation
+  * New GstController LFO feature
+  * Fixes and improvements in latency measurement for live pipelines
+  * Additional documentation and docs fixes
+  * Faster typefinding
+  * More tag types added
+  * Improvements in various core elements and parent classes
+  * New unit tests
+  * Allow dumping pipelines as dot graphs
+  * GstStructures now support nesting
+  * URIHandler interface can now be implemented in bindings
+  * Many other bug-fixes and improvements
+  * API additions
+- Split package according to shared library packaging policy
+  (#223286).
+
+-------------------------------------------------------------------
+Mon Sep 17 15:04:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.14:
+  * State change handling improvements
+  * New improved GstController API
+  * Multi-queue fixes and enhancements
+  * Fewer dynamic library relocations
+  * Various other fixes and improvements
+  * Parallel installability with 0.8.x series
+  * Threadsafe design and API
+  * Add GstParamSpecFraction, so elements can have fraction
+    properties without lots of painful string parsing.
+  * Add fail_unless_equals_float() and assert_equals_float()
+  * Add gst_type_register_static_full
+  * Add gst_element_class_set_details_simple
+  * Refactor GstController into the core controller which can take
+    a GstControlSource for providing actual values for timestamps.
+  * add GST_TAG_LICENSE_URI and GST_TAG_COPYRIGHT_URI
+  * gst_element_factory_has_interface()
+  * Many bugs fixed.
+
+-------------------------------------------------------------------
+Wed Aug 15 09:18:37 CEST 2007 - coolo@suse.de
+
+- do not require lang package in doc
+
+-------------------------------------------------------------------
+Tue Aug  7 23:03:51 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Jul 20 21:55:21 CEST 2007 - aj@suse.de
+
+- Create separate spec file for doc package.
+
+-------------------------------------------------------------------
+Thu Jul 12 13:27:58 CEST 2007 - dmueller@suse.de
+
+- fix installed headers to be compileable with -pedantic
+
+-------------------------------------------------------------------
+Wed Jun 20 16:32:52 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.13:
+  * Latency handling infrastructure for live playback scenarios
+  * State change handling changes
+  * GstController property handling improved
+  * Various bug fixes and improvements
+  * Parallel installability with 0.8.x series
+  * Threadsafe design and API
+  * Many bugs fixed
+  * Many API additions
+
+-------------------------------------------------------------------
+Wed May 16 18:04:40 CEST 2007 - sbrabec@suse.cz
+
+- Build correctly in older products.
+
+-------------------------------------------------------------------
+Sun Apr 22 17:02:45 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Apr 19 11:42:25 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Fri Mar 30 10:15:17 CEST 2007 - aj@suse.de
+
+- Add bison to build requires.
+
+-------------------------------------------------------------------
+Tue Mar 27 16:39:42 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.12:
+  * API additions
+  * Add a warning for improper GLib threading
+  * Add support for binary registry serialisation
+  * Preliminary support for pull-mode scheduling of entire chains
+  * Add support for HPPA
+  * Collectpads fixes
+  * Lots of bug fixes
+- Require check-devel.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Mon Dec 18 14:48:00 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 28 18:30:01 CET 2006 - sbrabec@suse.cz
+
+- Build correctly in older products.
+
+-------------------------------------------------------------------
+Tue Nov  7 21:45:20 CET 2006 - abockover@suse.de
+
+- Updated to version 0.10.10:
+  * Scores of bug fixes
+  * Better non-linear editing
+  * Removed GLib 2.6 compatibility
+  * Performance improvements on CPUs that support branch hints
+  * __gst_debug_min symbol is properly externed
+  * Can compile against GStreamer headers in pedantic mode
+
+-------------------------------------------------------------------
+Mon Jul 17 21:12:41 CEST 2006 - danw@suse.de
+
+- Rewrite XXXes to tmp file name before calling mkstemp a second
+  time. Fixes the "gst-inspect doesn't work the first time" build bug.
+
+-------------------------------------------------------------------
+Fri Jun 16 12:36:54 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.8:
+  * Many bug fixes
+  * More API additions
+  * Fixes for the collectpads helper
+  * Support for proper time recording on server-trickmode streams
+    via the applied_rate parameter of the NewSegment event
+  * QoS in BaseTransform
+  * BaseTransform reworked
+  * Bus reworked; signal API added
+  * Registry cache updating is now done in a fork, so no plugins
+    are left opened
+  * New version of data protocol now serializes events
+
+-------------------------------------------------------------------
+Thu May 25 18:17:46 CEST 2006 - sbrabec@suse.cz
+
+- Fixed uninitialized variable (#176290).
+
+-------------------------------------------------------------------
+Fri Mar 10 21:35:15 CET 2006 - jpr@suse.de
+
+-update to version 0.10.4
+-Changes since 0.10.3:
+
+      * Parallel installability with 0.8.x series
+      * Threadsafe design and API
+      * 33% of library size removed by parse change
+      * (Experimental) QoS features (use max-lateness on BaseSink subclasses to enable)
+
+Bugs fixed since 0.10.3:
+
+      * 323542 : GStreamer 0.10 hangs at EOS for all songs
+      * 320340 : triggering a gst_task_join from the streaming task can de...
+      * 322628 : document thread-unsafety of gst_value_foo() + gst_value_r...
+      * 324186 : Smarter (deterministic!) typefind decisions
+      * 324398 : varargs/valist functions aren't bindable
+      * 328873 : only one gst_bin_recalc_state allowed at a time
+      * 330899 : CVS directory in make dist tarball
+      * 330906 : API: add GST_QUERY_TYPE_NAME and GST_MESSAGE_TYPE_NAME
+      * 330996 : basesrc emits EOS unconditionally when going to READY
+      * 331255 : Shrinking gst_parse_launch bloat
+      * 331898 : Basetranform is not reusable
+      * 332045 : API: GstPipeline needs API to disable  flushing of its bu...
+      * 332277 : [filesrc] seek does not correct read position in non-mmap...
+      * 332611 : [basesrc] needs way to prevent expensive start/stop in ch...
+      * 332723 : New API: gst_type_find_helper_for_buffer
+      * 333042 : New API: gst_type_find_helper_get_range
+      * 333266 : Registry file writing rewrite
+      * 333272 : tests should set G_SLICE=always-malloc now
+      * 333417 : GST_BOILERPLATE_WITH_INTERFACE can't be used in C++ code
+      * 333669 : Add pad accessor defines for GstBaseTransform
+      * 333779 : New API: add gst_uri_has_protocol
+      * 324818 : gst_registry_get_default doesn't sink newly created registry
+      * 330125 : _pad_send_event does not check flushing correctly
+      * 330684 : Add ability to emit sync-message without messing with the...
+
+-------------------------------------------------------------------
+Thu Feb 23 22:54:01 CET 2006 - jpr@suse.de
+
+- update version to 0.10.3
+- Changes since 0.10.2:
+      * Documentation updates
+      * Bug fixes
+      * Base class improvements
+      * Extra utility API
+      * More elements ported from 0.8
+      * Fixes for win32 build.
+
+-------------------------------------------------------------------
+Tue Feb 14 17:21:17 CET 2006 - sbrabec@suse.cz
+
+- Do not package never generated registry.xml in /var (#149984).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 14:35:21 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.2.
+
+-------------------------------------------------------------------
+Tue Jan  3 18:14:17 CET 2006 - sbrabec@suse.cz
+
+- Removed unneeded build requirements.
+
+-------------------------------------------------------------------
+Tue Jan  3 16:41:51 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.1.
+
+-------------------------------------------------------------------
+Tue Dec 13 16:06:36 CET 2005 - sbrabec@suse.cz
+
+- Branched gstreamer010 and updated to version 0.10.0.
+
+-------------------------------------------------------------------
+Mon Nov 14 17:50:51 CET 2005 - sbrabec@suse.cz
+
+- Fixed %postun error on uninstallation.
+
+-------------------------------------------------------------------
+Fri Nov  4 12:39:12 CET 2005 - sbrabec@suse.cz
+
+- Call branch-dependent gst-register (#132197).
+
+-------------------------------------------------------------------
+Mon Sep  5 17:16:28 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.8.11.
+
+-------------------------------------------------------------------
+Wed Jun  1 16:35:38 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements (#72282).
+
+-------------------------------------------------------------------
+Thu May 26 15:51:51 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.8.10.
+- Build all documentation.
+- Split doc subpackage.
+
+-------------------------------------------------------------------
+Wed Mar 16 12:44:01 CET 2005 - sbrabec@suse.cz
+
+- Build as user, copying xml.dcl is no more needed.
+
+-------------------------------------------------------------------
+Fri Feb 11 05:14:10 CET 2005 - gekker@suse.de
+
+- Update to version 0.8.9 
+
+-------------------------------------------------------------------
+Sat Jan 22 17:57:18 CET 2005 - ro@suse.de
+
+- make docu build 
+
+-------------------------------------------------------------------
+Mon Jan  3 21:41:12 CET 2005 - gekker@suse.de
+
+- Update to version 0.8.8 
+
+-------------------------------------------------------------------
+Tue Dec 21 18:52:07 CET 2004 - gekker@suse.de
+
+- Update to version 0.8.7 
+
+-------------------------------------------------------------------
+Mon Oct 11 17:02:03 CEST 2004 - sbrabec@suse.cz
+
+- Call gst-register properly (#46870).
+
+-------------------------------------------------------------------
+Tue Jun 22 18:15:43 CEST 2004 - clahey@suse.de
+
+- Fixed gst-register call to be in the right prefix.
+
+-------------------------------------------------------------------
+Fri Jun 11 23:14:19 CEST 2004 - clahey@suse.de
+
+- Don't use --gst-mask argument to gst-register.
+
+-------------------------------------------------------------------
+Wed Apr 28 14:42:56 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 0.8.1 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Sun Mar 28 01:58:45 CET 2004 - ro@suse.de
+
+- remove ghostscript-fonts-std from neededforbuild
+  use plain ghostscript-mini to build
+
+-------------------------------------------------------------------
+Mon Mar 15 14:38:25 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Fri Feb 13 16:43:32 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.6.5.
+- Build and install docs.
+
+-------------------------------------------------------------------
+Sat Jan 10 10:23:54 CET 2004 - adrian@suse.de
+
+- use %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Nov  5 00:01:07 CET 2003 - ro@suse.de
+
+- build with "-D_GNU_SOURCE" (for posix_memalign) 
+
+-------------------------------------------------------------------
+Wed Oct 22 16:41:11 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.6.4.
+
+-------------------------------------------------------------------
+Thu Oct 16 18:09:02 CEST 2003 - schwab@suse.de
+
+- Add atomic ops for ia64.
+- Fix warning.
+
+-------------------------------------------------------------------
+Wed Oct 08 10:45:48 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.6.3.
+
+-------------------------------------------------------------------
+Thu Sep 18 15:04:17 CEST 2003 - sbrabec@suse.cz
+
+- Call ldconfig before gst-register in %post (bug #30675).
+
+-------------------------------------------------------------------
+Tue Sep 16 16:34:00 CEST 2003 - sbrabec@suse.cz
+
+- Call gst-register after installation.
+- Added /var items to filelist.
+
+-------------------------------------------------------------------
+Mon Jul 14 14:35:02 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jun 27 15:41:45 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.6.2.
+- Fixed %files.
+- Fixed directory packaging.
+
+-------------------------------------------------------------------
+Wed May 28 01:42:10 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Wed Feb  5 15:36:34 CET 2003 - meissner@suse.de
+
+- ppc64 is basically ppc, the assembler stub needed is the same.
+
+-------------------------------------------------------------------
+Tue Feb 04 17:09:37 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.6.0.
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:02 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.5.2.
+- FHS fix (localstatedir).
+
+-------------------------------------------------------------------
+Fri Jan 17 16:43:27 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.5.1 (Gnome2).
+
+-------------------------------------------------------------------
+Thu Nov 21 00:39:30 CET 2002 - ro@suse.de
+
+- fix duplicates in configure.in 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+
+-------------------------------------------------------------------
+Sat Sep  7 00:33:32 CEST 2002 - olh@suse.de
+
+- fix build without atomic.h
+
+-------------------------------------------------------------------
+Thu Aug 22 15:10:41 CEST 2002 - hhetter@suse.de
+
+- added a README file and removed the SuSEconfig-script 
+  ( Bug Id#17620)
+
+-------------------------------------------------------------------
+Tue Aug 20 11:08:37 CEST 2002 - hhetter@suse.de
+
+- use Requires: %{name} = %{version} in devel package
+- added PreReq: filesystem 
+
+-------------------------------------------------------------------
+Thu Aug 15 12:02:41 CEST 2002 - ro@suse.de
+
+- removed gnome-utils from neededforbuild 
+
+-------------------------------------------------------------------
+Sat Jul 27 16:58:23 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jul 26 23:12:48 CEST 2002 - adrian@suse.de
+
+- fix neededforbuld
+
+-------------------------------------------------------------------
+Thu Jul  4 12:26:18 CEST 2002 - ro@suse.de
+
+- neededforbuild quicktime4linux -> libquicktime 
+
+-------------------------------------------------------------------
+Tue May 21 16:40:37 CEST 2002 - meissner@suse.de
+
+- %_lib fixes, various libtool/autoconf/etc. patches.
+- started port to x86_64
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:10 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Fri Nov 30 15:08:32 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbktls> to <docbook-toys>
+
+-------------------------------------------------------------------
+Wed Nov 28 11:50:47 CET 2001 - ro@suse.de
+
+- removed libmpeg2 from neededforbuild 
+
+-------------------------------------------------------------------
+Tue Nov 20 00:24:27 CET 2001 - ro@suse.de
+
+- added new gnome-vfs include path to CFLAGS
+- added popt, gconf and oaf to neededforbuild 
+
+-------------------------------------------------------------------
+Sat Sep  8 21:16:49 MEST 2001 - egger@suse.de
+
+- Removed LAME due to legal reasons. 
+
+-------------------------------------------------------------------
+Mon Aug 20 13:00:58 CEST 2001 - ro@suse.de
+
+- added diffs from cvs to build with current lame and current alsa 
+
+-------------------------------------------------------------------
+Mon Aug 20 12:18:01 CEST 2001 - ro@suse.de
+
+- up to 0.2.1 to try to fix compilation
+- added kdelibs-artsd to neededforbuild 
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Fri Jul 20 12:06:42 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild <gs_lib> to <ghostscript-library>
+
+-------------------------------------------------------------------
+Wed Jun 27 11:18:33 CEST 2001 - hhetter@suse.de
+
+- improved documentation support, enabled gtkdoc & docbkutils 
+
+-------------------------------------------------------------------
+Tue Jun 26 12:50:33 CEST 2001 - hhetter@suse.de
+
+- added SuSEconfig.gstreamer script 
+- enabled sdl, libvorbis, ogg, gnome, alsa, 
+  cdparanoia, aalib and mpeg2 modules
+- functionality test in chrooted environment
+
+-------------------------------------------------------------------
+Mon Jun 18 08:51:03 CEST 2001 - hhetter@suse.de
+
+- fixed typo in specfile
+
+-------------------------------------------------------------------
+Fri Jun 15 12:39:00 CEST 2001 - hhetter@suse.de
+
+- update to 0.2.0 
+- specfile & filelist rework
+
+-------------------------------------------------------------------
+Thu Mar 15 13:18:44 CET 2001 - hhetter@suse.de
+
+- initial SuSE Package
+

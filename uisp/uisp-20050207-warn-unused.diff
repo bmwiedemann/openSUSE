@@ -1,0 +1,83 @@
+--- uisp-20050207/src/MotIntl.C.orig	2005-05-11 14:49:32.000000000 +0200
++++ uisp-20050207/src/MotIntl.C	2005-05-11 15:08:27.000000000 +0200
+@@ -371,7 +371,8 @@
+   if (val!=NULL){hash_marker = atoi(val);}  
+   
+   /* auto-detect Motorola or Intel file format */
+-  fgets(line_buf, MI_LINEBUF_SIZE, fd);
++  if (fgets(line_buf, MI_LINEBUF_SIZE, fd)==NULL)
++    throw Error_Device("Empty file?");
+   if (strncasecmp(line_buf, "S0", 2)==0){UploadMotorola();}
+   else if (line_buf[0]==':'){UploadIntel();}
+   else {throw Error_Device("Unknown file format.");}  
+--- uisp-20050207/src/Terminal.C.orig	2003-02-17 18:29:45.000000000 +0100
++++ uisp-20050207/src/Terminal.C	2005-05-11 15:33:14.000000000 +0200
+@@ -61,7 +61,7 @@
+   do {
+     try {
+       printf("avr> "); 
+-      scanf("%s",cmd);
++      if (!scanf("%s",cmd)) return;
+       if (!strcmp(cmd,"?")){
+ 	printf ("AVR Terminal supports the following commands:\n"
+ 	  "ul fileName        - uploads data from Motorola/Intel format.\n"
+@@ -80,7 +80,7 @@
+ 	  "Written by Uros Platise (c) 1997-1999, uros.platise@ijs.si\n");
+       }
+       else if (!strcmp(cmd,"ul")) {
+-	char inputFileName [64]; scanf ("%s", inputFileName);
++	char inputFileName [64]; if (!scanf ("%s", inputFileName)) return;
+ 	try{
+ 	  motintl.Read(inputFileName, true, false);
+ 	}
+@@ -88,7 +88,7 @@
+ 	catch (Error_C) { perror ("Error"); }
+       }
+       else if (!strcmp(cmd,"vf")) {
+-	char inputFileName [64]; scanf ("%s", inputFileName);
++	char inputFileName [64]; if (!scanf ("%s", inputFileName)) return;
+ 	try{
+ 	  motintl.Read(inputFileName, false, true);
+ 	}
+@@ -97,7 +97,7 @@
+       }      
+ /*      
+       else if (cmd=="dl") {
+-	char outputFileName [64]; scanf ("%s", outputFileName);
++	char outputFileName [64]; if (!scanf ("%s", outputFileName)) return;
+ 	try { 
+ 	  TAout outAout (outputFileName, "wt");
+ 	  download (&outAout); 
+@@ -117,7 +117,7 @@
+       } 
+       else if (!strcmp(cmd,"ss")){
+         char seg_name [32];
+-	scanf("%s", seg_name);
++	if (!scanf("%s", seg_name)) return;
+ 	if (!device->SetSegment(seg_name)){
+ 	  printf("Invalid segment: `%s'\n", seg_name);
+ 	} else {addr=0;}
+@@ -138,17 +138,17 @@
+       }
+ */      
+       else if (!strcmp(cmd,"rd")){
+-	scanf ("%x", &addr);
+-	printf("%s: $%.2x\n", 
+-	  device->TellActiveSegment(), device->ReadByte(addr));
++	if (scanf ("%x", &addr))
++	  printf("%s: $%.2x\n", 
++	    device->TellActiveSegment(), device->ReadByte(addr));
+       }
+       else if (!strcmp(cmd,"wr")){
+         unsigned x;
+-	scanf("%x%x", &addr, &x);
+-	device->WriteByte(addr, TByte(x));
++	if (scanf("%x%x", &addr, &x))
++	  device->WriteByte(addr, TByte(x));
+       }
+       else if (!strcmp(cmd,"du")){
+-	scanf ("%x", &addr);
++	if (!scanf ("%x", &addr)) return;
+ 	goto list_contents;
+       }
+       else if (!strcmp(cmd,",")){

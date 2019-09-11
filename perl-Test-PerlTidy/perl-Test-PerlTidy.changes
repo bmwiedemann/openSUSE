@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Wed Apr  3 07:37:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 20190402
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20190402        2019-04-02
+  
+              * Fix https://github.com/shlomif/Test-PerlTidy/issues/2
+                  $VERSION overrided the one set by dzil
+              * Made the "use" imports explicit.
+
+-------------------------------------------------------------------
+Wed Mar 13 16:44:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 20190309.001
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+-------------------------------------------------------------------
+Sat Oct  7 19:26:59 UTC 2017 - mimi.vx@gmail.com
+
+- spec-cleaned 
+
+-------------------------------------------------------------------
+Wed Mar 15 13:40:29 UTC 2017 - coolo@suse.com
+
+- update with cpanspec
+
+-------------------------------------------------------------------
+Wed Mar 15 11:17:19 UTC 2017 - jengelh@inai.de
+
+- Replace storytelling by an actual %description.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:43:50 UTC 2017 - mimi.vx@gmail.com
+
+- initial package 

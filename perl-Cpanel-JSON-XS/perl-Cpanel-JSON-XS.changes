@@ -1,0 +1,447 @@
+-------------------------------------------------------------------
+Wed Jun 12 05:04:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.12
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.12 2019-06-11 (rurban)
+          - Make encoder independent on Math::BigInt version (#140 by Pali)
+          - Rethrow error from eval_sv and eval_pv() (#138, #139 by Pali),
+            e.g. when Math::BigInt/BigFloat fails.
+          - Fix encoding Inf and NaN from PV and NV slots to JSON_TYPE_INT
+            (#137 by Pali)
+          - Fix memory corruption in sv_to_ivuv() function (#136 by Pali)
+          - Add new method ->require_types (#135 by Pali)
+          - Fix typed json encoder conversion from scalar's PV and NV slot to
+            JSON_TYPE_INT (#133, #134 by Pali)
+          - Fix inconsistency with warnings in typed json encoder (#131 by Pali)
+          - Fix Perl 5.8.0 support (#130 by Pali)
+          - Fixed minor pod typo (#129 by sheeit)
+          - Document invalid recursive callbacks or overloads (#128)
+
+-------------------------------------------------------------------
+Wed Mar 27 06:07:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.11
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.11 2019-03-26 (rurban)
+          - Fix unicode strings with BOM corrupt ->utf8 state (#125)
+            The BOM encoding effects only its very own decode call,
+            not its object.
+
+-------------------------------------------------------------------
+Tue Mar 19 06:07:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.10
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.10 2019-03-18 (rurban)
+          - Fix incr_text refcounts (#123)
+          - Add incr_rest testcase (#123)
+          - Fix encode_stringify string-overload refcnt problem (#124)
+            "Attempt to free unreferenced scalar" with convert_blessed and overload.
+
+-------------------------------------------------------------------
+Sat Feb 16 06:07:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.09
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.09 2019-02-15 (rurban)
+          - Add seperate allow_dupkeys property, in relaxed (#122)
+          - Fixed allow_dupkeys for the XS slow path
+          - Silence 2 -Wunused-value warnings
+          - Fix ->unblessed_bool to produce modifiable perl structures (PR #121 by Pali)
+
+-------------------------------------------------------------------
+Thu Dec  6 15:28:47 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.08
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.08 2018-11-28 (rurban)
+          - Add unblessed_bool property (PR #118 by Pali)
+
+-------------------------------------------------------------------
+Thu Nov  8 06:09:17 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.07
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.07 2018-11-02 (rurban)
+          - Silence Gconvert -Wunused-result.
+            gcvt returns a string, sprintf int, so suppress the retval
+
+-------------------------------------------------------------------
+Sat Aug 25 05:11:03 UTC 2018 - coolo@suse.com
+
+- updated to 4.06
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.06 2018-08-22 (rurban)
+          - Fix overloaded eq/ne comparisons (GH #116 by demerphq, GH #117 by Graham Knopp):
+            detect strings, protect from endless recursion. false is now ne "True".
+            clarify eq/ne rules in the docs.
+
+-------------------------------------------------------------------
+Mon Aug 20 05:13:07 UTC 2018 - coolo@suse.com
+
+- updated to 4.05
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.05 2018-08-19 (rurban)
+          - Set decoded type (PR #115 by Pali)
+          - Add json_type_weaken (PR #114 by Pali)
+          - Fix tests for 5.6 (rurban, pali)
+
+-------------------------------------------------------------------
+Sat Jun 23 05:10:32 UTC 2018 - coolo@suse.com
+
+- updated to 4.04
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.04 2018-06-22 (rurban)
+          - Fix bignum NaN/inf handling (#78 reported by Slaven Rezic)
+          - Move author tests to xt/ as suggested in #106, added a make xtest target.
+            Fixes a test fail with ASAN.
+
+-------------------------------------------------------------------
+Fri Jun 22 05:10:41 UTC 2018 - coolo@suse.com
+
+- updated to 4.03
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.03 2018-06-21 (rurban)
+          - Add sereal cpanel_json_xs type (#110 James Rouzier)
+          - Fix bencode/bdecode methods in cpanel_json_xs (#111 Fulvio Scapin)
+          - Overload ne operator for JSON::PP::Boolean (#107 tevfik1903)
+          - Add a missing semicolon to a documentation example (#104 E. Choroba)
+
+-------------------------------------------------------------------
+Wed Feb 28 06:08:46 UTC 2018 - coolo@suse.com
+
+- updated to 4.02
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.02 2018-02-27 (rurban)
+          - Add encoder indent_length method (#103 rouzier), previously
+            hard-coded to 3.
+
+-------------------------------------------------------------------
+Wed Feb  7 15:15:51 UTC 2018 - coolo@suse.com
+
+- updated to 4.01
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.01 2018-02-03 (rurban)
+          - Fix centos7 locale crash (#101 McA), fix required for all
+            threaded perl's < 5.22 with glibc.
+  
+  4.00 2018-02-02 (rurban,pali)
+          - No changes
+  
+  3.99_03 2018-01-30 (rurban,pali)
+          - Fix uselocale() code.
+          - Probe for uselocale and xlocale.h with <5.22 threaded.
+  
+  3.99_02 2018-01-30 (rurban,pali)
+          - Avoid setlocale race in threads with non-C locales, where the threads differ
+            in the LC_NUMERIC locale. (#99 pali)
+  
+  3.99_01 2018-01-30 (rurban,pali)
+          - Added Cpanel::JSON::XS::Type as 2nd optional encode argument. (#94 pali)
+          - Removed calling get magic hooks twice in encode.
+  
+  3.0240 2017-12-17 (rurban)
+          - Simplify >allow_singlequote check, coverity cid #165321
+          - Deprecate UTF-16 or UTF-32 BOM's: RFC 8259.
+
+-------------------------------------------------------------------
+Mon Sep  4 05:15:47 UTC 2017 - coolo@suse.com
+
+- updated to 3.0239
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0239 2017-08-28 (rurban)
+          - Fix compilation under windows. (#98 mauke)
+
+-------------------------------------------------------------------
+Sat Aug 26 05:16:44 UTC 2017 - coolo@suse.com
+
+- updated to 3.0238
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0238 2017-08-25 (rurban)
+          - Make printing of numbers on perl's earlier than 5.22 locale
+          insensitive, to produce a dot as decimal sep. (#96)
+
+-------------------------------------------------------------------
+Thu Aug  3 05:16:12 UTC 2017 - coolo@suse.com
+
+- updated to 3.0237
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0237 2017-07-28 (rurban)
+          - relax inf/nan tests as in t/op/infnan.t for windows.
+            we cannot know if msvcrt.dll or the new ucrt.dll is used.
+            try a list of valid values.
+
+-------------------------------------------------------------------
+Fri Jul 28 05:15:31 UTC 2017 - coolo@suse.com
+
+- updated to 3.0236
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0236 2017-07-27 (rurban)
+          - Stringify true again as "1", not as "true" due to popular demand.
+            (haarg #87)
+  
+  3.0235 2017-07-27 (rurban)
+          - Disallow duplicate keys by default, only allow them in relaxed
+            mode. (#75)
+            Analog to invalid unicode, which does error by default.
+            RFC 7159 section 4 says that "The names within an object should be unique."
+            So it's either i_ (undefined) or n_ (errors).
+            See http://seriot.ch/parsing_json.php#24
+            This is different to the other JSON modules, which do have a different
+            interpretation of the spec. Use relaxed for backcompat if you want to
+            allow duplicate keys.
+          - De-fragilize t/96_mojo.t false test to "". It mostly is.
+  
+  3.0234 2017-07-27 (rurban)
+          - Fix and unify utf8 handling with 5.6.2
+            and improve many utf8 tests. (pali #88)
+          - Add tests for boolean sv_yes and sv_no (pali #88)
+          - Check for correct module in %INC (Patrick Cronin #89)
+          - Fix appveyor smoke with latest strawberry, use $Config{make} (pali #91)
+          - Fix inf/nan for strawberry 5.26
+
+-------------------------------------------------------------------
+Tue May  2 05:21:47 UTC 2017 - coolo@suse.com
+
+- updated to 3.0233
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0233 2017-05-01 (rurban)
+          - 5.6 test fixes, silence some cc warnings,
+            add coverage and release targets, fix appveyor
+  
+  3.0232 2017-04-30 (rurban)
+          - Fix for MSVC 2015/14.0 and newer with changed nan/inf. #85
+          - Added appveyor CI
+          - Silence 32bit debugging format warning
+          - stabilize decode_hv hook (Coverity)
+          - ignore sv_utf8_downgrade errors (Coverity)
+
+-------------------------------------------------------------------
+Thu Mar 30 05:19:31 UTC 2017 - coolo@suse.com
+
+- updated to 3.0231
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0231 2017-03-29 (rurban)
+          - Fix need() overallocation (#84 Matthew Horsfall) and missing
+          need() calls.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:18:37 UTC 2017 - coolo@suse.com
+
+- updated to 3.0230
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0230 2017-03-12 (rurban)
+          - Relax -Werror=declaration-after-statement for older gcc < 4.2
+  
+  3.0229 2017-03-10 (rurban)
+          - fix minor gcc compilation warnings.
+          - Add some core compat. warnings for gcc/clang compat. compilers.
+
+-------------------------------------------------------------------
+Thu Mar  9 06:18:00 UTC 2017 - coolo@suse.com
+
+- updated to 3.0228
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0228 2017-03-08 (rurban)
+          - fix decode_prefix offset when the string was re-allocated.
+          rather return the offset not the pointer to the old start. (#82 PaulGWebster)
+
+-------------------------------------------------------------------
+Tue Feb 21 06:14:40 UTC 2017 - coolo@suse.com
+
+- updated to 3.0227
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0227 2017-02-13 (rurban)
+          - fix CLONE and END, broken with 3.0226 (#80 y).
+            These methods are usually called with arguments, which we ignore.
+
+-------------------------------------------------------------------
+Mon Feb 13 11:29:41 UTC 2017 - coolo@suse.com
+
+- updated to 3.0226
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0226 2017-02-11 (rurban)
+          - relax longdouble Gconvert test on ppc64le and aarch64-linux-ld,
+          with apparent HW quadmath without USE_QUADMATH (older perls).
+          (detected by dgolden)
+
+-------------------------------------------------------------------
+Thu Nov 24 06:14:29 UTC 2016 - coolo@suse.com
+
+- updated to 3.0225
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0225 2016-11-23 (rurban)
+          - decode utf8 security fixes for perl 5.6.
+            added extra detection code for overflows and non-continuations.
+            This broke one 5.6 test with an overlong multi-byte character,
+            which previously worked accidently.
+            i.e. decode "í í°‚\x{10204}"
+          - Added tests for ill-formed utf8 sequences from Encode.
+
+-------------------------------------------------------------------
+Mon Nov 21 06:14:17 UTC 2016 - coolo@suse.com
+
+- updated to 3.0224
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0224 2016-11-20 (rurban)
+          - fixes for g++-6, stricter -fpermissive and -Wc++11-compat
+
+-------------------------------------------------------------------
+Thu Nov 17 06:12:51 UTC 2016 - coolo@suse.com
+
+- updated to 3.0223
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0223 2016-11-16 (rurban)
+          - fixed decode bignum with a string prefix. #76, patch by GilmarSantosJr.
+
+-------------------------------------------------------------------
+Fri Nov 11 06:13:46 UTC 2016 - coolo@suse.com
+
+- updated to 3.0222
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0222 2016-10-30 (rurban)
+          - enable decode_bom for multibyte encodings UTF16 and UTF32.
+            encode internally to UTF-8.
+  
+  3.0221 2016-10-30 (rurban)
+          - fixed documentation of decode for unicode noncharacters.
+            added correct code to warn as in core.
+            no replacement, ignore warnings when in relaxed mode.
+            We used a wrong range also, but the wrong code from 3.02220
+            was never executed because of an coding error. #73, #74
+          - Fixed a perl 5.6 compilation regression from 3.0220.
+          - Improve decode_bom for multibyte encoding, but not yet enabled.
+            refcount error.
+          - Add 5.24 to travis tests
+  
+  3.0220 2016-10-28 (rurban)
+  	- add comprehensive JSON decode spectests from
+            http://seriot.ch/parsing_json.html. #72
+          - decode with BOM (UTF-8, UTF-16, or UTF-32). For now only UTF-8,
+            the others error.
+          - fixed detection of final   as illegal non-whitespace garbage. Fixes
+            spectest 'n_number_then_00'. #72
+          - changed decode of unicode noncharacters between U+FFFD and U+10FFFF
+            to the recommended U+FFFD REPLACEMENT CHARACTER, when not in the binary
+            or relaxed mode.
+          - fail decode of non-unicode raw characters above U+10FFFF
+            when not in relaxed mode.
+
+-------------------------------------------------------------------
+Thu Oct 27 05:12:58 UTC 2016 - coolo@suse.com
+
+- updated to 3.0219
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0219 2016-10-26 (rurban)
+  	- workaround mingw 4.0 modfl() bug [perl #125924]
+
+-------------------------------------------------------------------
+Fri Oct 14 05:16:03 UTC 2016 - coolo@suse.com
+
+- updated to 3.0218
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0218 2016-10-13 (rurban)
+  	- no changes
+  
+  3.0217_06 2016-10-08 (rurban)
+  	- fix DPPP_dummy_PL_parser warnings
+  
+  3.0217_05 2016-10-07 (rurban)
+  	- fix t/gh70-asan.t for older perls < 5.14
+  
+  3.0217_04 2016-10-07 (rurban)
+  	- fix and document wrong strEQc usage in new(). #70 (ilmari)
+  
+  3.0217_03 2016-10-06 (rurban)
+  	- expect_false() macro fix for MSVC
+          - fix av and hv length types: protect from security sensitive overflows,
+            add HVMAX_T and RITER_T
+          - add new "Hash key too large" error. perl5 silently truncates it, we
+            prefer errors, cperl 5.25.1 does error also.
+          - fix broken 5.8.1 SvPOK_only, i.e. assert_not_ROK
+  
+  3.0217_02 2016-10-04 (rurban)
+  	- Use faster strEQc macros from cperl with constant strings.
+          - prefer memEQ for systems without memcmp, to use bcmp there.
+          - add more expect_false() to inf/nan branches.
+  
+  3.0217_01 2016-10-04 (rurban)
+  	- Detect INF/NAN: ?/++/-?/--- on HP-UX (#56)
+          - New stringify_infnan(3) infnan_mode. Easy to detect platform
+            independent "inf", "-inf" or "nan" strings with double quotes,
+            with qnan, snan or negative nan unified to "nan".
+
+-------------------------------------------------------------------
+Fri Jun 24 05:37:12 UTC 2016 - coolo@suse.com
+
+- updated to 3.0217
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0217 2016-06-18 (rurban)
+  	- Improve test t/20_unknown.t for older JSON::PP (Christopher J. Madsen)
+
+-------------------------------------------------------------------
+Mon Jun 13 06:51:23 UTC 2016 - coolo@suse.com
+
+- updated to 3.0216
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  3.0216 2016-06-12 (rurban)
+  	- Fix wrong test 117 for 5.10.0 (pghmcfc)
+  
+  3.0215 2016-06-03 (rurban)
+  	- Fix wrong test 117 (pghmcfc)
+          - TODO the fragile mojo boolean interop test.
+  	- Improve error message with class based method calls,
+            when forgetting ->new. #66
+  
+  3.0214 2016-06-02 (rurban)
+  	- Fix a off-by-one IV_MIN -> NV overflow in decode_json. #67 (xdg)
+          - Avoid encode_sv SEGV with -Dusequadmath #62
+            Fix quadmath NV stringification.
+  
+  3.0213_02 2016-04-13 (rurban)
+  	- Remove author-only Pod::Usage dependency (karenetheridge).
+  
+  3.0213_01 2016-04-11 (rurban)
+  	- Preserve numbers as numbers, enforce an added .0 (dagolden).
+            Also note that 42+"bar" will result >=5.10 in numbers not integers,
+            => 42.0
+          - 5.6 compilation fixes
+          - add yaml-tiny formats to cpanel_json_xs
+
+-------------------------------------------------------------------
+Thu Jun  2 04:55:17 UTC 2016 - coolo@suse.com
+
+- initial package 3.0213
+ * created by cpanspec 1.78.08
+

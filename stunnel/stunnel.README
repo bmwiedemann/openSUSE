@@ -1,0 +1,10 @@
+ 
+To create a new certificate, execute the following OpenSSL command:
+  (umask 077; \
+  /usr/bin/openssl req -new -x509 -days 365 -nodes \
+    -config /usr/share/doc/packages/stunnel/stunnel.cnf \
+    -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem)
+ 
+Starting with v4, stunnel uses a configuration file. 
+Via the stunnel3 wrapper you can run stunnel with v3-style cmdline arguments. 
+

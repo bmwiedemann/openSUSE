@@ -1,0 +1,37 @@
+diff --git a/grub/02_ignition_firstboot b/grub/02_ignition_firstboot
+index cb54e79..ae34b38 100755
+--- a/grub/02_ignition_firstboot
++++ b/grub/02_ignition_firstboot
+@@ -1,14 +1,19 @@
+ #!/bin/sh
+ exec tail -n +3 $0
+-# We store the file on the /boot/ partition so find the
+-# boot partition. On UEFI this may different than the grub
++# We store the file on the /boot/ partition by default, so find the
++# boot partition. On UEFI this may be different than the grub
+ # $root so we search for it here.
+ # https://github.com/coreos/ignition-dracut/issues/51
+-search --set=bootpart --label boot
++# To set a different path the flagpath variable can be set by a
++# previous script.
++if [ -z "${flagpath}" ]; then
++    search --set=flagpath --label boot
++    set flagpath="(${flagpath})"
++fi
+ # Determine if this is a first boot and set the variable
+ # to be used later on the kernel command line.
+ set ignition_firstboot=""
+-if [ -f "(${bootpart})/ignition.firstboot" ]; then
++if [ -f "${flagpath}/ignition.firstboot" ]; then
+     # default to dhcp networking parameters to be used with ignition 
+     set ignition_network_kcmdline='rd.neednet=1 ip=dhcp'
+ 
+@@ -17,7 +22,7 @@ if [ -f "(${bootpart})/ignition.firstboot" ]; then
+     # This override feature is primarily used by coreos-installer to
+     # persist static networking config provided during install to the    
+     # first boot of the machine.
+-    source "(${bootpart})/ignition.firstboot"
++    source "${flagpath}/ignition.firstboot"
+     
+     # we support setting variables in the 
+     set ignition_firstboot="ignition.firstboot $ignition_network_kcmdline"

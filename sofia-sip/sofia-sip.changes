@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Mar  1 12:46:50 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Thu Jul  7 22:48:47 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 22:40:31 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.12.11:
+  + Application can feed hashed passwords (HA1) instead of plain
+    text password to the iptsec authentication library.
+  + Using NTATAG_EXTRA_100() with server transactions. Applications
+    can now control whether stack sends extra 100 Trying responses
+    after N1 timer or retransmissions.
+  + nta_leg_tag(leg, NULL) now always returns the tag (old or new).
+  + SOA uses addresses present in SDP if they are local.
+  + Deferrable timers were added.
+  + Timing out forked INVITE client transactions is now done by
+    stack.
+  + An INVITE transaction that has been timed out with stack timer
+    C is now CANCELed automatically. Previously, such INVITE client
+    transactions were restarted instead of timing out under certain
+    circumstances.
+  + Added s2check library for writing check-based module tests for
+    network protocols.
+  + User Via header with NULL host and port gets filled
+    automatically.
+- Use source services: download_url, recompress, set_version.
+
+-------------------------------------------------------------------
+Sat Jan 17 04:05:18 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files
+
+-------------------------------------------------------------------
+Wed Dec 24 07:05:22 EST 2008 - mboman@suse.de
+
+- Update to version 1.12.10:
+  + Numerous bugs has been fixed.
+  + Some API additions/changes (API/ABI compatible)
+
+-------------------------------------------------------------------
+Thu Jul 31 15:38:32 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 1.12.9
+  * Better NAT traversal
+  * Lot of bug fixes
+  * Lot of small API additions (API/ABI compatible)
+
+-------------------------------------------------------------------
+Mon Jun  4 16:00:11 CEST 2007 - mrueckert@suse.de
+
+- added ldconfig call for the glib package and postun
+- removed ldconfig call for devel package
+- disable static libs
+- move to the new library packaging policy
+- *-utils package is now sofia-sip (provides for the old name is set)
+
+-------------------------------------------------------------------
+Sat May 12 22:08:19 CEST 2007 - mrueckert@suse.de
+
+- update to version 1.12.6
+
+-------------------------------------------------------------------
+Mon Apr  2 04:56:33 CEST 2007 - mrueckert@suse.de
+
+- update to version 1.12.5
+
+-------------------------------------------------------------------
+Sat Dec  2 12:26:54 CET 2006 - mrueckert@suse.de
+
+- update to version 1.12.4
+- build with -fno-strict-aliasing
+- properly put the conditionals for glib2 on sles9
+
+-------------------------------------------------------------------
+Tue Oct  3 22:06:54 CEST 2006 - mrueckert@suse.de
+
+- update to version 1.12.3
+
+-------------------------------------------------------------------
+Sat Sep 30 02:16:19 CEST 2006 - mrueckert@suse.de
+
+- Initial package of version 1.12.2
+

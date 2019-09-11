@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Tue Nov  6 09:34:42 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- asan_build: build ASAN included
+- debug_build: build more suitable for debugging
+
+-------------------------------------------------------------------
+Mon Nov  5 10:29:34 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- updated to 2.3.0
+  * ThreadPool overhead improvements, enable custom thread pool 
+    to be registered via ThreadPoolProvider class
+  * Fixes to enable custom namespaces for Iex, Imf
+  * Improve read performance for deep/zipped data, and
+    SIMD-accelerated uncompress support
+  * Added rawPixelDataToBuffer() function for access to
+    compressed scanlines
+  * Iex::BaseExc no longer derived from std::string.
+  * Imath throw() specifiers removed
+  * Initial Support for Python 3
+  * removed patch
+    - ilmbase-halfExport.h-license.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Feb 12 09:55:33 UTC 2018 - pgajdos@suse.com
+
+- fix license of halfExport.h [bsc#774408]
+  + ilmbase-halfExport.h-license.patch
+
+-------------------------------------------------------------------
+Wed Jan 17 15:53:15 UTC 2018 - adam.majer@suse.de
+
+- Update keyring and set keyring URL
+
+-------------------------------------------------------------------
+Mon Jan 15 05:25:01 UTC 2018 - avindra@opensuse.org
+
+- Update to version 2.2.1
+  * Bumped version to track OpenEXR
+- bump sonum and macroify it
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Aug 12 21:52:23 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Diversify summaries.
+- Drop useless --with-pic, this is only for static libs.
+
+-------------------------------------------------------------------
+Wed Aug  9 01:26:21 CEST 2017 - ro@suse.de
+
+- simplify check section in specfile and remove hack for gcc45
+- add patches from debian to allow testsuite to pass
+  - testBox.patch allow fuzzy comparison of floats, doubles
+  - testBoxAlgo.patch allow fuzzy match of b12 == b2 
+
+-------------------------------------------------------------------
+Fri Jan 23 18:18:29 UTC 2015 - meissner@suse.com
+
+- updated openexr.keyring from the savannah project page.
+
+-------------------------------------------------------------------
+Wed Jan 21 14:53:49 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.2.0
+   * Bumped version to track OpenEXR
+- Bump so_suffix to 2_2-12 and libHalf11 to libHalf12 according to
+  upstream changes
+- removed arm-build.diff: upstream?
+- removed fix-i586.patch: upstream?
+- Bump so version in baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 21 15:59:57 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes to baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Nov 27 08:40:48 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.1.0 
+    * Bumped version to track OpenEXR
+      (Piotr Stanczyk)
+- small cleanup of spec file
+
+-------------------------------------------------------------------
+Mon Jul 15 11:07:49 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.0.1 
+    * Bumped version to track OpenEXR
+      (Piotr Stanczyk)
+- add gpg-offline based verification
+- use downloads from nongnu.org, instead of github
+
+-------------------------------------------------------------------
+Fri Apr 12 13:06:11 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.0.0
+  * Bumped version to track OpenEXR
+    (Piotr Stanczyk)
+  * Numerous minor fixes, missing includes etc
+  * Minor fixes for newer gcc versions and OS X.
+    (misc)
+  * Preparation for OpenEXR v2 release { remove message for final release }
+    (Piotr Stanczyk)
+  * Updated the so verison to 10
+    (Piotr Stanczyk)
+- obsoletes
+  * 0001-Correcting-for-incorrect-license-section.patch
+  * ilmbase-1.0.3-ucontext-i386.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 09:37:37 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Sep 27 09:30:30 UTC 2012 - idonmez@suse.com
+
+- Correct baselibs.conf 
+
+-------------------------------------------------------------------
+Fri Aug 24 12:27:41 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- fix build on i586 platforms, by fixing error in declaration of the
+  restorControlRegs function 
+
+-------------------------------------------------------------------
+Wed Aug  8 09:19:07 UTC 2012 - dmueller@suse.com
+
+- fix build on non-x86 platforms with ucontext
+
+-------------------------------------------------------------------
+Tue Aug  7 07:45:30 UTC 2012 - mvyskocil@suse.cz
+
+- fix bnc#774408 - Proprietary licenses in ilmbase 1.0.3
+  * 0001-Correcting-for-incorrect-license-section.patch
+
+-------------------------------------------------------------------
+Thu Aug  2 08:13:41 UTC 2012 - mvyskocil@suse.cz
+
+- update to 1.0.3
+  * Updated the so version to 7.
+  * Added support for enabling/disabling large stack optimisations, used in
+    halfFunction.h.
+  * Added ImathNoise.(h/cpp) files. Initializes Perlin noise to match the
+    Renderman implmenetation.
+  * Added SVD, eigenvalue solver, and procrustes fit calculations
+    to ImathMatrixAlgo.
+  * Added Imath::FrustumTest for frustum visibility testing.
+  * Fixed a stack corruption in the matrix minorOf functions.
+- provide a sane packaging conforming to shared library policy
+  * source package is ilmbase, ilmbase-devel is the devel package
+  * then libFoo$VERSION packages provides so files
+
+-------------------------------------------------------------------
+Tue Feb 28 16:45:02 UTC 2012 - reddwarf@opensuse.org
+
+- Link libIlmThread against lpthread, it was removed in SR#100972
+
+-------------------------------------------------------------------
+Sat Feb 18 23:24:34 UTC 2012 - crrodriguez@opensuse.org
+
+- revert visibility patch, it was not supposed 
+  to sneak-in yet.. [bnc#747565]
+
+-------------------------------------------------------------------
+Sat Jan 21 08:43:00 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant sections (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Jan 20 21:33:27 UTC 2012 - crrodriguez@opensuse.org
+
+- Reuse windows code to provide symbol visibility support.
+  test suite passes, so unless it is incomplete or buggy
+  this should be just fine, if something breaks, open a bug report.
+
+-------------------------------------------------------------------
+Mon Jul 26 11:42:13 UTC 2010 - mvyskocil@suse.cz
+
+- update to 1.0.2 (bug fix release)
+- rename to libilmbase6 according Shared Library Policy
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:18 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Fri Dec 18 17:32:14 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Jun 13 22:56:31 CEST 2008 - crrodriguez@suse.de
+
+- remove unusable static libraries 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Oct 31 18:06:03 CET 2007 - mvyskocil@suse.cz
+
+- inital release (version 1.0.1)
+  * need for the update of OpenEXR to 1.6.1
+

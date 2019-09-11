@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# print product name
+
+if [ -f /usr/lib/os-release ] ; then
+  . /usr/lib/os-release
+else
+  . /etc/os-release
+fi
+
+prod="$NAME"
+[ -n "$VERSION" ] && prod="$prod-$VERSION"
+
+# kill parentheses...
+prod=${prod//[()]/}
+
+# ... and spaces
+prod=${prod// /-}
+
+echo $prod

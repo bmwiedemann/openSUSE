@@ -1,0 +1,791 @@
+-------------------------------------------------------------------
+Sun Aug  4 06:33:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Bug fixes and server compatibility improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr 28 10:51:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Bug fixes and server compatibility improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 17 13:47:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Application menu moved to the main window.
+  + Desktop contacts are used for sender images.
+  + Unknown contacts are given personalised initials and colour.
+  + Updated application icons.
+  + Improved server compatibility.
+  + Custom email CSS now applied to Composer view.
+  + Updated translations.
+- Add pkgconfig(folks) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Mar  7 09:03:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.13.2:
+  + Bug fixes and minor user interface improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  3 18:26:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(enchant) with pkgconfig(enchant-2)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb 21 09:24:51 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.13.1:
+  + Numerous bug fixes and minor user interface improvements.
+  + Numerous user interface translation updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 14:01:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.13.0:
+  + Unread email count is now updated correctly.
+  + Conversations load faster, smoother with better feedback.
+  + Support for email accounts added via GNOME Online Accounts.
+  + Improved account creation and management user interface.
+  + Email flagged as deleted but not removed by other apps now
+    hidden.
+  + Individual messages in a conversation can be deleted.
+  + Internal links in HTML email now work.
+  + Supported ordered and unordered lists in the composer.
+  + Rich text pasting improvements in the composer.
+  + Plain text versions of rich text mail includes formatting.
+  + Detached composers now remember their last used size.
+  + Better reporting when a login, security or other problem
+    occurs.
+  + Reduced background synchronisation CPU use.
+  + Improved handling when going online and offline.
+  + Show an in-application notification when email has been sent.
+  + Flag possibly spoofed email addresses.
+  + Improve privacy when sending email using an alias.
+  + Subject, sender and date are being shown when printed again.
+  + Server compatibility improvements.
+  + Build, testing and other infrastructure improvements.
+  + Numerous bug fixes and minor user interface improvements.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + geary-javascript-fixes.patch.
+  + geary-Fix-variable-check-for-IOError.CANCELLED.patch.
+  + geary-hide-gmail-main.patch.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+  Drop cmake and intltool BuildRequires, no longer needed.
+- Add itstool, pkgconfig(goa-1.0), pkgconfig(json-glib-1.0) and
+  pkgconfig(libunwind) BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Fri Jan 11 23:54:15 UTC 2019 - bjorn.lie@gmail.com
+
+- Add geary-hide-gmail-main.patch: Hide [gmail] folder from tags
+  view (bgo#712902).
+
+-------------------------------------------------------------------
+Fri Dec 21 08:39:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Add geary-Fix-variable-check-for-IOError.CANCELLED.patch:
+  Actually use error variable to check for IOError.CANCELLED. Fix
+  build with new vala.
+
+-------------------------------------------------------------------
+Wed Aug 29 14:44:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.12.4:
+  + Fix handling folder names with IMAP reserved characters, such
+    as backslashes.
+  + Fix dialog windows not focused after being first shown.
+  + Actually include the fix for "Move to folder" selection bug.
+  + Fix build under vala >= 0.41.
+  + Fixes for miscellaneous crashers.
+- Drop geary-unselect-folder-popover-rows.patch: Fixed upstream.
+- Add geary-javascript-fixes.patch: Fix fails to build with
+  WebkitGTK >= 2.21
+
+-------------------------------------------------------------------
+Mon Aug 13 21:52:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Add geary-unselect-folder-popover-rows.patch: Unselect folder
+  popover rows on text entered to avoid phantom selection
+  (glgo#GNOME/geary#24).
+- Use autosetup and make_jobs macros.
+
+-------------------------------------------------------------------
+Sun Jul 15 17:52:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.12.3:
+  + Not syncing mail using Turkish locale (bgo#795906).
+  + Fix crash saving an attachment with unknown content type.
+  + Fix crash in secret_collection_get_locked (bgo#795328).
+  + "Move to folder" selection bug glgo#GNOME/geary#24.
+  + Subfolders with special folders not displayed in list
+    glgo#GNOME/geary#11.
+  + Add OARS metadata for Flathub.
+
+-------------------------------------------------------------------
+Mon Apr 30 15:18:26 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording of description.
+
+-------------------------------------------------------------------
+Tue Apr 24 23:23:31 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.12.2:
+  + Bug fixed:
+    - bgo#792555, bgo#778976, bgo#790435, bgo#778027, bgo#795216,
+      bgo#793710, bgo#788637, bgo#790103, bgo#776881, bgo#783025.
+    - Ensure gnome-control-centre knows in advance Geary uses
+      notifications.
+    - Fix message body quote button styling under WebKitGTK 2.20.
+    - Don't show unused header widgets when showing a message via
+      notifications.
+    - Fix some serious run-time memory leaks.
+- Update License tag from LGPL-2.0-or-later to LGPL-2.1-or-later
+  and add CC-BY-3.0 and BSD-2-Clause to comply with due copyrights.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:12 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 13 16:27:00 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.12.1:
+  + Bugs fixed: bgo#713607, bgo#754802, bgo#770618, bgo#771504,
+    bgo#778720, bgo#779369, bgo#781178, bgo#781488, bgo#784300,
+    bgo#788494, bgo#788637, bgo#788797.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  4 15:16:50 UTC 2017 - dimstar@opensuse.org
+
+- Drop _service: no longer needed, since upstream is back in
+  releasing tarballs mode.
+
+-------------------------------------------------------------------
+Tue Oct  3 22:14:09 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.12.0:
+  + Enhancements included:
+    - Improvements in:
+      . Inserting links in rich text messages (interface).
+      . Displaying conversations (interface).
+      . Moving and labelling conversations (interface).
+      . Support for right-to-left languages.
+      . Keyboard navigation for conversations.
+      . Security when displaying messages.
+    - Insert images inline when composing rich text messages.
+    - Added in-application keyboard shortcut help (Ctrl + ?).
+    - Choose multiple spell-checker languages when composing
+      messages.
+    - Support message archiving for Yahoo! Mail and Outlook.com.
+    - Automatically unfold starred messages in a conversation.
+    - Support saving remote inline images.
+    - Support for distribution via Flatpak.
+    - Numerous bug fixes and minor user interface improvements.
+  + Updated manual translations.
+  + Updated translations.
+- Drop %desktop_database_*, %icon_theme_cache_* and
+  %glib2_gsettings_schema_* post/postun/requires: functionality now
+  covered by file triggers.
+
+-------------------------------------------------------------------
+Wed Jul 12 10:08:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.3+20170626:
+  + Fix vala binding generation with webkit2gtk 2.17.4.
+- Drop pkgconfig(unique-3.0) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Thu Jun 22 21:59:57 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.3+20170621:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 07 15:57:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.3+20170306:
+  + Migrate to custom libsecret schema & use host, login & proto as
+    key.
+  + Show main window on startup (bgo#779549).
+  + Make MainWindow and ComposerWindow uniquely targetable via CSS.
+  + Set the WK data dir so we don't pick up WK default local
+    storage.
+  + Don't (explicitly) use deprecated Gee methods.
+  + Fix composer UI brokenness when compiled under vala 0.36.
+  + Fix messages not being auto-marked read on scroll.
+  + Fix crash when conversation scrolled window child changes.
+  + Don't use deprecated Gdk.Pixbuf.new_from_stream_async function.
+- Add pkgconfig(webkit2gtk-web-extension-4.0) and
+  pkgconfig(javascriptcoregtk-4.0) BuildRequires: Align with what
+  configure looks for.
+
+-------------------------------------------------------------------
+Tue Feb 28 07:06:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.3+20170228:
+  + Fix error validing account details on second try (bgo#775511).
+  + Make both Engine and AccountInfo a bit more unit testable.
+  + Fix error when adding third account (bgo779048).
+  + Add unit tests for adding accounts.
+  + Allow using foreach loops over ConversationEmail's messages.
+  + Fix messages with search hits in bodies not being expanded
+    (bgo#778033).
+  + Fix matching message subject not being highlighted in
+    find/search.
+  + Rename archive/trash/delete actions to clearly be for
+    conversations.
+  + Add a keyboard nav section to the user manual.
+  + Validate entered email address before allowing add a new
+    account.
+  + Fix print to file not working. Bug 778874.
+  + Remember print dir and reuse when printing again (bgo#713573).
+  + Remember attachments dir and reuse adding/saving attachments
+    and images.
+  + Close folders in reverse order (bgo#778968).
+  + Fix build with new vala.
+  + Fix a shell warning running configure under flatpak-builder.
+  + Use Gtk.show_uri_on_window when available (bgo#770884).
+  + Fix attachments not being opened when using flatpak
+    (bgo#770886).
+
+-------------------------------------------------------------------
+Wed Feb 22 19:48:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.11.3+20170222:
+  + Add tooltips to composer spellcheck popover.
+  + Fix compilation for clang (bgo#778046).
+  + Don't merge emails if they do not share the same Message-ID
+    (bgo#713530).
+  + Update symbolic icon for 0.12.
+  + Don't insert multiple blank lines in the composer (bgo#778125).
+  + Don't abort the application if password could not be saved in
+    the secrets manager (bgo#776139).
+  + Report the branch & state rather than last tag in dev version
+    string.
+  + Prevent messages from setting a broken body height
+    (bgo#750075).
+  + Tidy up ConversationWebView's CSS a bit.
+  + Add IdleManager class for sane main loop idle scheduling.
+  + Fix segfault closing client after starting it without network
+    access.
+  + Fix editing additional email addresses from account prefs
+    (bgo#778364).
+  + Add ContentType methods for determining file name extenions and
+    type sniffing.
+  + Add ContentType.is_default and unit test.
+  + Tidy up Geary.Attachment API a bit.
+  + Clean up DB handling of attachments without specified file
+    names.
+  + Clean up default filename when saving attachments.
+  + Ensure mixed landscape/portrait attachment previews are centred
+    vertically.
+  + Re-implement alt text filename fallback when saving inline
+    images.
+  + Fix a crash replying to a message.
+  + Workaround libsoup cache crashing when cancellable is actually
+    cancelled.
+  + Don't breifly show the message body progress bar when loading
+    cached.
+  + Make ConversationListBox::check_mark_read private.
+  + Re-enable standard keyboard scrolling for conversations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 01 03:19:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.11.3~20170201:
+  + Fix some more issues on earlier GTK versions.
+  + Really fix JS error calling ComposerWebView::save_selection.
+  + Don't build and run tests by default.
+  + Update some test code attributions.
+  + Make ClientWebView-based tests execute a bit faster.
+  + Fix brown-paper-bag bug in Geary.JS::escape_string.
+  + Fix more issues hiding/showing collapsed quotes.
+  + Split composer web view up into multiple parts.
+  + Query Webview for supported image types instead of hardcoding
+    them.
+  + Explicitly allow loading only geary:body in ClientWebView.
+  + Port to WebKit2 (bgo#728002).
+- Drop geary-master.patch, switched to source service.
+- Replace pkgconfig(webkitgtk-3.0) for pkgconfig(webkit2gtk-4.0)
+  BuildRequires following upstreams port.
+- Add pkgconfig(iso-codes) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon Jan 16 16:09:02 UTC 2017 - dimstar@opensuse.org
+
+- Add geary-master.patch: fast forward to 6abd78 in order to fix
+  build against GNOME 3.23.x.
+- Pass -DGSETTINGS_COMPILE_IN_PLACE=ON (instead of =OFF) to cmake:
+  recent git tree does not build otherwise.
+- Add pkgconfig(enchant), pkgconfig(libsoup-2.4) and
+  pkgconfig(libxml-2.0) BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Sun Dec 25 11:48:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.11.3:
+  + Fix drafts not being saved when closing composer (bgo#747627).
+  + Fix breaking due to full-text-search table corruption
+    (bgo#772522).
+  + Fix Inboxes never being prefetched or sync'ed (bgo#776029).
+  + Fix composers not being closed when started hidden
+    (bgo#770037).
+  + Fix password being lost when server rejects connections
+    (bgo#772808).
+  + Minor other bug fixes.
+  + Updated translations.
+- Drop geary-vala-0.34.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 19 21:37:26 UTC 2016 - dimstar@opensuse.org
+
+- Add geary-vala-0.34.patch: Fix build with vala 0.34. Patch taken
+  from git master.
+
+-------------------------------------------------------------------
+Sun Aug 28 10:18:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.11.2:
+  + Improve showing RTL email with no direction set as RTL
+    (bgo#713062).
+  + Improve composer not showing RTL messages as RTL (bgo#713607).
+  + Fix crash when archiving, deleting, etc. specific messages
+    (bgo#769010).
+  + Fix crash from invalid window sizes in settings (bgo#730356).
+  + Fix crash connecting to tiscali.it/poste.it & other Dovecot
+    (bgo#66509).
+  + Fix maximised state not being saved (bgo#755359).
+  + Fix unresponsive after sending long line starting with '>'
+    (bgo#768642).
+  + Fix warning/crash when unable to contact notification server
+    (bgo#768911).
+  + Fix using incorrect From address restoring from a draft
+    (bgo#768419).
+  + Fix format=flowed when sending non-Latin text (bgo#753528).
+  + Fix encoding problems with non ASCII/Latin-1/UTF-8 headers
+    (bgo#753870).
+  + Don't double spaces after address autocomplete in composer
+    (bgo#755589).
+  + Add Language headers to po files.
+  + Don't rely on a the GEdit app icon for the draft folder
+    (bgo#753672).
+  + Fix a number of edge-case critical warnings/errors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 27 13:16:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.11.1 (boo#991116):
+  + Fix frequent crashes on 32-bit/i686 OS installations
+    (bgo#758621).
+  + Fix error connecting to certain Outlook.com accounts
+    (bgo#766552).
+  + Find special folders with lower case names (bgo#748183).
+  + Find Exchange Sent and Deleted special folders (bgo#748183).
+  + Don't create Archive folders for GMail accounts (bgo#767259).
+  + Use HTTPS for accessing Gravatar.com (bgo#766595).
+  + Fix text not show when only plain text and image parts
+    (bgo#767438).
+  + Fix crash when is:foo is not translated (bgo#766837).
+  + Make English versions of search ops always work (bgo#766837).
+  + Allow to:me and from:me to be translated separately
+    (bgo#767291).
+  + Fix date typo in NEWS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May 15 17:53:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.11.0:
+  + Add archive special folder support (bgo#713986).
+  + Add is:read, is:unread: is:starred search operators
+    (bgo#726661).
+  + Fix using more than search operator - to:, from:, etc
+    (bgo#749938).
+  + Work around crashes caused by WebKitGTK+ 2.4.10 (bgo#764152,
+    bgo#763933).
+  + Fix a crash when searching (bgo#765515).
+  + Fix images not being displayed in some HTML messages
+    (bgo#764919).
+  + Fix empty main window when opened from notification
+    (bgo#763961).
+  + Fix UI freezing when network connections are lost (bgo#757088).
+  + Work better with Cyrus & other servers when network unreliable
+    (bgo#757166).
+  + Enable use of custom FTS3 tokeniser in SQLite 3.12 and later
+    (bgo#763203).
+  + Fix inconsistent Composer 'Detach' button placement
+    (bgo#757110).
+  + Documentation improvements (bgo#764848, bgo#749925).
+  + Update deb module dependencies (bgo#749931, bgo#748464).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 31 15:02:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.10.0:
+  + Undo Archive/Trash/Move of email (bgo#721828).
+  + New split headerbar layout with UI, composer improvements
+    (bgo#743960).
+  + Preference to switch between 2-column and 3-column layout
+  + (bgo#714793).
+  + Support multiple ("alternate") email addresses per account
+    (bgo#714922).
+  + New shortcut keys to navigate next/previous conversation
+    (bgo#714434).
+  + Fix displaying inline images referenced by Content-ID
+    (bgo#743676).
+  + Numerous bug fixes, optimizations, improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  3 13:03:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.9.1:
+  + Support HTML signatures (bgo#738895).
+  + Quote from multiple selections in reply (bgo#738188).
+  + Restore reply/reply all/forward state of edited drafts
+    (bgo#743067).
+  + Quoted message portion may be easily removed in composer
+    (bgo#741609).
+  + True delete now supported in Gmail (bgo#721790).
+  + Improved searching for terms w/ punctuation (bgo#714863).
+  + Better management of draft messages to avoid orphans.
+  + Empty Trash, Empty Spam (bgo#714809, bgo#725260).
+  + Better conversation construction (bgo#714563).
+  + Improved IMAP connection reestablishment and retrying of remote
+    operations.
+  + Various bug fixes, optimizations, improvements.
+  + Updated translations.
+- Drop geary-Off-by-one-heap-buffer-overflow.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 28 16:43:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.9.0:
+  + Improved full-text search experience (bgo#720361).
+  + Periodic database & attachments garbage collection
+    (bgo#714134).
+  + Remove minimum width for sidebar/folder list (bgo#713882).
+  + Use GtkHeaderBar for dialogs (bog#741240).
+  + Can now specify Reply-To when composing (bgo#714588).
+  + Fix signed int32 UID/UIDVALIDITY bug (bgo#737642).
+  + Composer shortcuts now listed in online help (bgo#741573).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  2 14:50:56 UTC 2015 - zaitor@opensuse.org
+
+- Add geary-Off-by-one-heap-buffer-overflow.patch: Heap access
+  violation in random_string(). Needed to allocate space for
+  terminating NUL (bgo#741842).
+
+-------------------------------------------------------------------
+Sat Dec 20 10:26:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.8.3:
+  + Prevent race condition causing Geary window not to open
+    (bgo#737811).
+  + Compile with Vala 0.28 (bgo#741077).
+  + Updated SSLv3 POODLE fallback (bgo#741132).
+  + Fixed connection state handler to return to IDLE.
+  + Removed unnecessary assertion causing crashes for intl users
+    (bgo#739316).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 14 13:12:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.8.2:
+  + "View Source" creates temp files only readable by user
+    (bgo#724436).
+  + elementary Contractor support (bgo#734717).
+  + Prevent displaying blank window when Geary first starts
+    (bgo#720360, bgo#737811).
+  + Disable SSLv3 (POODLE attack) (bgo#739019).
+  + Fix IMAP problems when running under Turkish locale
+    (bgo#714892).
+  + Don't crash when closing composer (bgo#739141).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  7 23:00:43 UTC 2014 - badshah400@gmail.com
+
+- Update to version 0.8.1:
+  + Display properly-scaled icons under GTK+ 3.14.
+  + Don't show composer close/detach buttons twice with GTK+ 3.14.
+  + Fix code analysis errors reported by newest Vala.
+  + gcr-3 minimum version requirement not specified.
+  + Properly install French online help.
+  + Czech online help added.
+  + Updated translations.
+- Drop patch geary-fix-toolbar-icons.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 27 15:04:49 UTC 2014 - zaitor@opensuse.org
+
+- Add geary-fix-toolbar-icons.patch: Fix oversized icons in toolbar
+  (bgo#732065).
+
+-------------------------------------------------------------------
+Fri Sep 19 20:27:54 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.8.0:
+  + Enforce CSS scope style rules when viewing emails.
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  9 19:32:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.7.2:
+  + Warn user of TLS certificate issues when connecting
+    (bgo#713247).
+  + Better scrolling system for inline composer.
+  + Improved database performance and reduced lags.
+  + IMAP stack fix (old IDLEs causing command completion).
+  + Compile with Vala 0.25 and better.
+  + Updated translations.
+- Add pkgconfig(gcr-3) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Sep  9 19:32:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.7.1:
+  + Show attachments lacking a Content-Disposition.
+  + Prevent Inbox from being cleared at startup (Dovecot, Zimbra,
+    more).
+  + Major memory leak (due to GMime bindings) fixes.
+  + Improved IMAP disconnect/reconnect logic.
+  + Autocomplete properly quotes RFC822 strings.
+  + Stabilize search results to prevent lost or dropped results.
+  + Inline composer polish.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  9 19:32:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.7.0:
+  + Major overhaul of email composer, now inline in main window and
+    redesigned.
+  + Composer will automatically add signature to emails.
+  + Saving drafts to server can be disabled.
+  + Improved main window interface, now using GtkHeaderBar.
+  + Database speed optimizations to reduce lags and improve read
+    times.
+  + Improved connection retry.
+  + Various bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 09:52:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.6.3:
+  + Warn user of TLS certificate issues when connecting
+    (bgo#713247).
+  + Fix wrong timestamp in composed email Date: header
+    (bgo#714376).
+  + Compile with Vala 0.25 and better.
+- Add pkgconfig(gcr-3) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Aug 20 19:48:44 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.6.2:
+  + Patch major memory leak due to GMime bindings.
+  + Prevent Vala 0.26 compiler error.
+  + Stabilize search sorting to prevent dropped search results.
+  + Prevent Inbox from being cleared on startup w/ Dovecot, Zimbra,
+    and more.
+- Stop exporting CFLAGS="%{optflags} -w" to configure.
+- Switch to cmake and cmake_install macro, as this builds cleanly
+  without any needs for workarounds.
+
+-------------------------------------------------------------------
+Sat Jul 12 19:49:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.6.1:
+  + Copy and move message bug fixes (esp. to prevent lost emails).
+  + Prevent STARTTLS BAD_IDENTITY when connecting to server.
+  + Prevent failure when deleting Outbox message.
+  + Don't save draft messages on server when UIDPLUS not available.
+  + Correct severe database command error (statement too long).
+  + Fix bug when launching Geary with file URIs for attachments.
+  + Prevent the IMAP account synchronizer from deadlocking.
+  + Fix server compatibility issues (mail.ru, netcourrier.com).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:53:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.6.0:
+  + Cleaned up star/unstar and mark as read/unread functionality.
+  + Added localized help docs to installed files.
+  + Many bugfixes.
+- Add xml2po BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Mar  4 15:43:22 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.5.3:
+  + Better styling of collapsed quotes.
+  + "Use IMAP credentials" option in account creation dialog.
+  + Fixed support for GMail drafts.
+  + Fixed background synchronizer.
+  + Fixed some unread count issues.
+  + Fixed some IMAP issues.
+  + Fixed theming issues.
+  + Other miscellaneous bugfixes.
+
+-------------------------------------------------------------------
+Sat Feb 15 08:47:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.5.2:
+  + Improved recognition of special folders for "Other" accounts.
+  + Prompt before permanently deleting messages.
+  + Allow searching for "from:me" and the like.
+  + Conversation viewer quoted text improvements.
+  + UI and icon improvements.
+  + Miscellaneous bugfixes.
+
+-------------------------------------------------------------------
+Fri Jan 31 08:52:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + Ability to save sent mail.
+  + Basic search operators.
+  + Separate trash, archive, and delete operations.
+  + Improved special folder handling for "Other" accounts.
+  + Fixed some IMAP issues.
+  + Speed improvements & miscellaneous bugfixes.
+- Drop geary-compile-with-WebKitGTK-2.3.x.patch and
+  geary-vala-workaround.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Dec 22 11:39:09 UTC 2013 - zaitor@opensuse.org
+
+- Add geary-compile-with-WebKitGTK-2.3.x.patch, compile with
+  WebKitGTK 2.3.x. This also introduces compiling WebKit-3.0.gir to
+  a VAPI and using that during compilation (bgo#720315). 
+
+-------------------------------------------------------------------
+Sun Dec 15 12:01:28 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.5.0:
+  + Port to GtkApplication.
+  + Use app menu instead of gear button menu, where available.
+  + Miscellaneous bugfixes.
+
+-------------------------------------------------------------------
+Fri Dec 13 20:25:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.4.3:
+  + Fix "squished" conversation list when used with certain themes.
+  + Compile-time support for WebKitGTK 2.0.
+- Add geary-vala-workaround.patch: Work around vala issues which
+  causes invalid int to pointer and pointer to int conversions.
+- Export CFLAGS="%{optflags} -w" in order to work around
+  bgo#682526.
+
+-------------------------------------------------------------------
+Sat Nov 30 19:46:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.4.2:
+  + Compile with Vala 0.22.1.
+- Changes from version 0.4.1:
+  + Compile-time support for WebKitGTK 2.2.
+  + Fixes IMAP STARTTLS failure to connect bug.
+  + Works around LIST bug in IceWarp IMAP servers (crasher).
+  + Solves crash when IMAP connect fails due to timeout.
+  + CamelCased MIME types now handled properly (prevents blank
+    emails).
+  + Adds missing RTL icons.
+  + Updated translations.
+- Changes from version 0.4.0:
+  + Per-account full text search.
+  + Automatic save to draft.
+  + Refreshed user interface.
+  + Per-folder unread email count.
+  + Experimental support for Outlook.com.
+  + Enhanced "show external images" preference.
+  + Find bar for locating text within a conversation (Ctrl+F).
+  + Improved handling of attachments.
+  + Malicious link checker.
+  + Passwords stored with libsecret instead of GNOME Keyring.
+  + Hundreds of bugs fixed and small improvements.
+- Drop geary-webkitgtk-2.1.patch: fixed upstream.
+- Remove sed hack that removed fatal-warnings from CMakeLists.txt:
+  fixed upstream.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1): ported to libsecret.
+- Replace pkgconfig(gee-1.0) BuildRequires to pkgconfig(gee-0.8):
+  ported to libgee 0.8 (which is newer than libgee-1.0).
+
+-------------------------------------------------------------------
+Sun Aug 25 17:07:48 UTC 2013 - zaitor@opensuse.org
+
+- Add a recommends on the lang package.
+
+-------------------------------------------------------------------
+Sun Aug 25 15:46:02 UTC 2013 - dimstar@opensuse.org
+
+- Add geary-webkitgtk-2.1.patch: Fix build with webkitgtk 2.1.
+  Patch inspired / based on Fedora's one.
+- Use sed to remove fatal-warnings from CMakeLists.txt: due to
+  GtkStock being deprecated, we currenly accept the warnings.
+
+-------------------------------------------------------------------
+Wed Jun 26 16:00:45 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.1:
+  + Reduced CPU and memory footprint.
+  + Account dialog bugs fixed.
+  + Stability improvements.
+- Drop geary-0.3-desktop.patch; fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar 21 18:33:58 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.0:
+  + Support for multiple accounts.
+  + Account editor.
+  + Basic full conversations.
+  + Some light background downloading of messages.
+  + Mark as spam/not spam.
+  + "Important" folder support.
+  + Multiple compressed messages are collapsed in conversation
+    viewer.
+  + Mark as read as you scroll in conversation viewer.
+  + Highlight unread messages in conversation viewer.
+  + New keyboard shortcuts.
+  + Allow auth-less SMTP.
+  + Conversation viewer WebKit inspector.
+  + Many bugfixes.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires following
+  upstream changes.
+- Add geary-0.3-desktop.patch, fixes a broken .desktop file. Patch
+  taken from upstream bug where its pending review.
+
+-------------------------------------------------------------------
+Sat Feb 16 18:28:26 UTC 2013 - zaitor@opensuse.org
+
+- Exchange vala BuildRequires for pkgconfig(vapigen) BuildRequires,
+  and version it.
+
+-------------------------------------------------------------------
+Sat Oct 20 14:05:28 UTC 2012 - douglarek@outlook.com
+
+- Initial package, version 0.2.2.
+

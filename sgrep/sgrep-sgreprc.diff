@@ -1,0 +1,13 @@
+--- sgrep-1.92a/sample.sgreprc.~1~	1998-12-12 04:59:59.000000000 +0100
++++ sgrep-1.92a/sample.sgreprc	2003-10-24 11:50:48.000000000 +0200
+@@ -33,7 +33,7 @@
+ # Lines
+ define(LEND,( "\n" or end ))
+ define(LSTART,( "\n" or start))
+-define(LINES,( (start .. LEND) or (("\n") _. (LEND)) ))
++define(LINE,( (start .. LEND) or (("\n") _. (LEND)) ))
+ # Empty lines
+ define(ELINE,( LINE in concat(BLANK)))
+ 
+
+Diff finished at Fri Oct 24 11:50:54

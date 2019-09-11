@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Thu Jan 10 09:07:10 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.8.2
+  Changes since 0.7:
+  * Add option -M/--meta to add or update document metadata during
+    conversion.
+  * Add option -I/--input-filter-name to specify input format
+  * Dropped support for OpenOffice 3.3 and 3.4
+  * Fix for Python 3 to read binary data from stdin
+  * Fix for password protected files
+  * Make -F switch working for user-defined fields
+- Drop patches (not longer needed)
+  * 0001-libreoffice-or-OO.o-has-never-had-wps-export.patch
+  * 0001-make-LaTeX-export-usable-with-writer2latex-ext.patch
+  * 0001-python3-added-compatibility.patch
+  * 0001-Updated-ChangeLog.patch
+  * 0001-update-FSF-address.patch
+  * 0002-remove-export-formats-dropped-by-LibreOffice.patch
+- Use tarball from github
+
+-------------------------------------------------------------------
+Tue Dec 29 21:11:36 UTC 2015 - adam@mizerski.pl
+
+- Always include all patches. Just apply them conditionally.
+
+-------------------------------------------------------------------
+Mon Dec 28 11:09:46 UTC 2015 - adam@mizerski.pl
+
+- update to 0.7
+  - Changes are in CHANGELOG.md and ChangeLog files.
+- pulled patches from Fedora:
+  - 0001-libreoffice-or-OO.o-has-never-had-wps-export.patch
+  - 0001-make-LaTeX-export-usable-with-writer2latex-ext.patch
+  - 0001-python3-added-compatibility.patch
+    - this is an update/replacement for unoconv-python3.patch
+  - 0001-Updated-ChangeLog.patch
+  - 0001-update-FSF-address.patch
+    - tweaked last line to make it appliable on unoconv
+  - 0002-remove-export-formats-dropped-by-LibreOffice.patch
+- made python3 patch be applied also for openSUSE Leap (boo#954814)
+
+-------------------------------------------------------------------
+Thu Oct 23 08:49:05 UTC 2014 - adam@mizerski.pl
+
+- made python3 patch be applied for openSUSE >= 13.2
+- removed odt2txt symlink to resolve conflict with odt2txt package
+
+-------------------------------------------------------------------
+Sat Oct  4 19:35:11 UTC 2014 - dimstar@opensuse.org
+
+- Add unoconv-python3.patch: port to python 3. The main integration
+  is with libreoffice, which also used python3 by now (boo#899736).
+  Patch copied from Fedora.
+
+-------------------------------------------------------------------
+Mon Oct 29 10:07:11 UTC 2012 - adam@mizerski.pl
+
+- update to 0.6
+  - Changes are in ChangeLog file
+- removed pathes (merged upstream):
+  - unoconv-0.4-LD_LIBRARY_PATH.patch
+  - unoconv-libreoffice-support.patch
+  - unoconv-output-argument.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 08:44:05 UTC 2011 - coolo@suse.com
+
+- COPYING is GPL-2.0+
+
+-------------------------------------------------------------------
+Thu Oct 20 20:46:12 UTC 2011 - adam@mizerski.pl
+
+- fixed bnc#718115
+
+-------------------------------------------------------------------
+Thu Oct 20 18:07:55 UTC 2011 - badshah400@gmail.com
+
+- Added licence header in spec file
+- Removed old changelogs from %changelog section in spec file
+
+-------------------------------------------------------------------
+Wed Oct 19 13:42:43 UTC 2011 - vuntz@opensuse.org
+
+- Add unoconv-libreoffice-support.patch: add support for
+  LibreOffice.
+- Add unoconv-output-argument.patch: deprecate --outputpath in
+  favor of --output, that works in a more reasonable way. Taken
+  from git.
+
+-------------------------------------------------------------------
+Sat Apr 16 23:27:12 UTC 2011 - adam@mizerski.pl
+
+- added install-links
+
+-------------------------------------------------------------------
+Thu Dec  2 22:00:00 UTC 2010 - adam@mizerski.pl
+
+- fixed LD_LIBRARY_PATH handling
+
+-------------------------------------------------------------------
+Fri Oct 22 20:02:25 UTC 2010 - adam@mizerski.pl
+
+- update to 0.4
+
+-------------------------------------------------------------------
+Tue Apr 27 22:54:45 UTC 2010 - adam@mizerski.pl
+
+- added unoconv-0.3-ooo_path.patch
+- some housekeeping in spec file
+

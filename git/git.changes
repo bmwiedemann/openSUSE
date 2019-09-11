@@ -1,0 +1,4000 @@
+-------------------------------------------------------------------
+Wed Aug 14 11:21:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.22.1
+  * A relative pathname given to "git init --template=<path> <repo>"
+  ought to be relative to the directory "git init" gets invoked in,
+  but it instead was made relative to the repository, which has been
+  corrected.
+  * "git worktree add" used to fail when another worktree connected to
+  the same repository was corrupt, which has been corrected.
+  * "git am -i --resolved" segfaulted after trying to see a commit as
+  if it were a tree, which has been corrected.
+  * "git merge --squash" is designed to update the working tree and the
+  index without creating the commit, and this cannot be countermanded
+  by adding the "--commit" option; the command now refuses to work
+  when both options are given.
+  * Update to Unicode 12.1 width table.
+  * "git request-pull" learned to warn when the ref we ask them to pull
+  from in the local repository and in the published repository are
+  different.
+  * "git fetch" into a lazy clone forgot to fetch base objects that are
+  necessary to complete delta in a thin packfile, which has been
+  corrected.
+  * The URL decoding code has been updated to avoid going past the end
+  of the string while parsing %-<hex>-<hex> sequence.
+  * "git clean" silently skipped a path when it cannot lstat() it; now
+  it gives a warning.
+  * "git rm" to resolve a conflicted path leaked an internal message
+  "needs merge" before actually removing the path, which was
+  confusing. This has been corrected.
+  * Many more bugfixes and code cleanups.
+
+-------------------------------------------------------------------
+Wed Jul 24 09:17:31 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Jul 15 12:02:09 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- partial fix for bsc#1112230 (git instaweb gives 500 error)
+
+-------------------------------------------------------------------
+Mon Jun 10 14:04:52 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.22.0 
+  * The filter specification "--filter=sparse:path=<path>" used to
+  create a lazy/partial clone has been removed. Using a blob that is
+  part of the project as sparse specification is still supported with
+  the "--filter=sparse:oid=<blob>" option
+  * "git checkout --no-overlay" can be used to trigger a new mode of
+  checking out paths out of the tree-ish, that allows paths that
+  match the pathspec that are in the current index and working tree
+  and are not in the tree-ish.
+  * Four new configuration variables {author,committer}.{name,email}
+  have been introduced to override user.{name,email} in more specific
+  cases.
+  * "git branch" learned a new subcommand "--show-current".
+  * The command line completion (in contrib/) has been taught to
+  complete more subcommand parameters.
+  * The completion helper code now pays attention to repository-local
+  configuration (when available), which allows --list-cmds to honour
+  a repository specific setting of completion.commands, for example.
+  * The list of conflicted paths shown in the editor while concluding a
+  conflicted merge was shown above the scissors line when the
+  clean-up mode is set to "scissors", even though it was commented
+  out just like the list of updated paths and other information to
+  help the user explain the merge better.
+  * "git rebase" that was reimplemented in C did not set ORIG_HEAD
+  correctly, which has been corrected.
+  * "git worktree add" used to do a "find an available name with stat
+  and then mkdir", which is race-prone. This has been fixed by using
+  mkdir and reacting to EEXIST in a loop. 
+- Removed upstreamed patch worktree-fix-worktree-add-race.patch
+  * previous item
+
+-------------------------------------------------------------------
+Wed May  8 17:02:10 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch: Move
+  to DocBook 5.x. Asciidoctor 2.x no longer supports the legacy
+  DocBook 4.5 format.
+
+-------------------------------------------------------------------
+Sun Apr 14 14:09:52 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- update git-web AppArmor profile for bash and tar usrMerge (boo#1132350)
+
+-------------------------------------------------------------------
+Mon Feb 25 09:56:24 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.21.0
+  * Historically, the "-m" (mainline) option can only be used for "git
+    cherry-pick" and "git revert" when working with a merge commit.
+    This version of Git no longer warns or errors out when working with
+    a single-parent commit, as long as the argument to the "-m" option
+    is 1 (i.e. it has only one parent, and the request is to pick or
+    revert relative to that first parent). Scripts that relied on the
+    behaviour may get broken with this change.
+  * Small fixes and features for fast-export and fast-import.
+  * The "http.version" configuration variable can be used with recent
+    enough versions of cURL library to force the version of HTTP used
+    to talk when fetching and pushing.
+  * "git push $there $src:$dst" rejects when $dst is not a fully
+    qualified refname and it is not clear what the end user meant.
+  * Update "git multimail" from the upstream.
+  * A new date format "--date=human" that morphs its output depending
+    on how far the time is from the current time has been introduced.
+    "--date=auto:human" can be used to use this new format (or any
+    existing format) when the output is going to the pager or to the
+    terminal, and otherwise the default format.
+
+-------------------------------------------------------------------
+Wed Feb 13 09:45:58 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix worktree creation race (bsc#1114225).
+  worktree-fix-worktree-add-race.patch
+  setup-don-t-fail-if-commondir-reference-is-deleted.patch
+
+-------------------------------------------------------------------
+Tue Jan 22 09:29:14 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- the proper way how to add shadow dependency, only the -daemon
+  subpackage uses the shadow package
+
+-------------------------------------------------------------------
+Sun Jan 20 19:33:07 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add shadow build dependency: pre/postinstall script checks fail
+  for 42.3 otherwise
+
+-------------------------------------------------------------------
+Fri Jan 11 13:32:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire apache2:
+  + it is only in the build chain for the directory ownership.
+    Let's just own the directories ourselves.
+  + This actually also fixes the issue that installing, then
+    uninstalling git-web, without apache2 being present on the
+    machine, leaves those directories stale on the disk.
+
+-------------------------------------------------------------------
+Sun Dec 16 11:06:03 UTC 2018 - astieger@suse.com
+
+- git 2.20.1:
+  * portability fixes
+  * "git help -a" did not work well when an overly long alias was
+    defined
+  * no longer squelched an error message when the run_command API
+    failed to run a missing command
+
+-------------------------------------------------------------------
+Mon Dec 10 11:31:04 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.20.0
+ * "git help -a" now gives verbose output (same as "git help -av").
+   Those who want the old output may say "git help --no-verbose -a"..
+ * "git send-email" learned to grab address-looking string on any
+   trailer whose name ends with "-by".
+ * "git format-patch" learned new "--interdiff" and "--range-diff"
+   options to explain the difference between this version and the
+   previous attempt in the cover letter (or after the three-dashes as
+   a comment).
+ * Developer builds now use -Wunused-function compilation option.
+ * Fix a bug in which the same path could be registered under multiple
+   worktree entries if the path was missing (for instance, was removed
+   manually).  Also, as a convenience, expand the number of cases in
+   which --force is applicable.
+ * The overly large Documentation/config.txt file have been split into
+   million little pieces.  This potentially allows each individual piece
+   to be included into the manual page of the command it affects more easily.
+ * Malformed or crafted data in packstream can make our code attempt
+   to read or write past the allocated buffer and abort, instead of
+   reporting an error, which has been fixed.
+ * Fix for a long-standing bug that leaves the index file corrupt when
+   it shrinks during a partial commit.
+ * "git merge" and "git pull" that merges into an unborn branch used
+   to completely ignore "--verify-signatures", which has been
+   corrected.
+ * ...and much more features and fixes
+
+-------------------------------------------------------------------
+Wed Dec  5 15:19:35 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- group(nogroup) is provided with Leap 15 onwards only
+
+-------------------------------------------------------------------
+Tue Dec  4 08:40:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use Requires(pre).
+- Do not ignore error returns from useradd.
+- Package descriptions need not be wrapped in %if..%endif.
+
+-------------------------------------------------------------------
+Fri Nov 30 11:42:53 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Avoid boo#1082023 - git send-email fails to authenticate with  
+  SMTP server
+
+-------------------------------------------------------------------
+Wed Nov 21 19:59:33 UTC 2018 - astieger@suse.com
+
+- git 2.19.2:
+  * various bug fixes for multiple subcommands and operations
+
+-------------------------------------------------------------------
+Fri Oct  5 17:31:07 UTC 2018 - astieger@suse.com
+
+- git 2.19.1:
+  * CVE-2018-17456: Specially crafted .gitmodules files may have
+    allowed arbitrary code execution when the repository is cloned
+    with --recurse-submodules (bsc#1110949)
+
+-------------------------------------------------------------------
+Tue Sep 11 14:40:01 UTC 2018 - Petr Vorel <pvorel@suse.cz>
+
+- git 2.19.0:
+ * "git diff" compares the index and the working tree.  For paths
+   added with intent-to-add bit, the command shows the full contents
+   of them as added, but the paths themselves were not marked as new
+   files.  They are now shown as new by default.
+ * "git apply" learned the "--intent-to-add" option so that an
+   otherwise working-tree-only application of a patch will add new
+   paths to the index marked with the "intent-to-add" bit.
+ * "git grep" learned the "--column" option that gives not just the
+   line number but the column number of the hit.
+ * The "-l" option in "git branch -l" is an unfortunate short-hand for
+   "--create-reflog", but many users, both old and new, somehow expect
+   it to be something else, perhaps "--list".  This step warns when "-l"
+   is used as a short-hand for "--create-reflog" and warns about the
+   future repurposing of the it when it is used.
+ * The userdiff pattern for .php has been updated.
+ * The content-transfer-encoding of the message "git send-email" sends
+   out by default was 8bit, which can cause trouble when there is an
+   overlong line to bust RFC 5322/2822 limit.  A new option 'auto' to
+   automatically switch to quoted-printable when there is such a line
+   in the payload has been introduced and is made the default.
+ * "git checkout" and "git worktree add" learned to honor
+   checkout.defaultRemote when auto-vivifying a local branch out of a
+   remote tracking branch in a repository with multiple remotes that
+   have tracking branches that share the same names.
+   (merge 8d7b558bae ab/checkout-default-remote later to maint).
+ * "git grep" learned the "--only-matching" option.
+ * "git rebase --rebase-merges" mode now handles octopus merges as
+   well.
+ * Add a server-side knob to skip commits in exponential/fibbonacci
+   stride in an attempt to cover wider swath of history with a smaller
+   number of iterations, potentially accepting a larger packfile
+   transfer, instead of going back one commit a time during common
+   ancestor discovery during the "git fetch" transaction.
+   (merge 42cc7485a2 jt/fetch-negotiator-skipping later to maint).
+ * A new configuration variable core.usereplacerefs has been added,
+   primarily to help server installations that want to ignore the
+   replace mechanism altogether.
+ * Teach "git tag -s" etc. a few configuration variables (gpg.format
+   that can be set to "openpgp" or "x509", and gpg.<format>.program
+   that is used to specify what program to use to deal with the format)
+   to allow x.509 certs with CMS via "gpgsm" to be used instead of
+   openpgp via "gnupg".
+ * Many more strings are prepared for l10n.
+ * "git p4 submit" learns to ask its own pre-submit hook if it should
+   continue with submitting.
+ * The test performed at the receiving end of "git push" to prevent
+   bad objects from entering repository can be customized via
+   receive.fsck.* configuration variables; we now have gained a
+   counterpart to do the same on the "git fetch" side, with
+   fetch.fsck.* configuration variables.
+ * "git pull --rebase=interactive" learned "i" as a short-hand for
+   "interactive".
+ * "git instaweb" has been adjusted to run better with newer Apache on
+   RedHat based distros.
+ * "git range-diff" is a reimplementation of "git tbdiff" that lets us
+   compare individual patches in two iterations of a topic.
+ * The sideband code learned to optionally paint selected keywords at
+   the beginning of incoming lines on the receiving end.
+ * "git branch --list" learned to take the default sort order from the
+   'branch.sort' configuration variable, just like "git tag --list"
+   pays attention to 'tag.sort'.
+ * "git worktree" command learned "--quiet" option to make it less
+   verbose.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:21:46 UTC 2018 - tchvatal@suse.com
+
+- State zlib-devel in deps, previously magically pulled in by
+  openssl
+
+-------------------------------------------------------------------
+Mon Jun 25 07:40:25 UTC 2018 - astieger@suse.com
+
+- git 2.18.0:
+  * improvements to rename detection logic
+  * When built with more recent cURL, GIT_SSL_VERSION can now
+    specify "tlsv1.3" as its value.
+  * "git mergetools" learned talking to guiffy.
+  * various other workflow improvements and fixes
+  * performance improvements and other developer visible fixes
+- drop git-bash-completion-egrep-color-fix.diff no longer required
+
+-------------------------------------------------------------------
+Tue May 29 23:11:45 UTC 2018 - avindra@opensuse.org
+
+- git 2.17.1
+ * Submodule "names" come from the untrusted .gitmodules file, but
+   we blindly append them to $GIT_DIR/modules to create our on-disk
+   repo paths. This means you can do bad things by putting "../"
+   into the name. We now enforce some rules for submodule names
+   which will cause Git to ignore these malicious names
+   (CVE-2018-11235, bsc#1095219)
+ * It was possible to trick the code that sanity-checks paths on
+   NTFS into reading random piece of memory
+   (CVE-2018-11233, bsc#1095218)
+ * Support on the server side to reject pushes to repositories
+   that attempt to create such problematic .gitmodules file etc.
+   as tracked contents, to help hosting sites protect their
+   customers by preventing malicious contents from spreading.
+
+-------------------------------------------------------------------
+Thu May 24 12:05:33 UTC 2018 - tchvatal@suse.com
+
+- Fix docless build to not fail on find/chmod not having any files
+- Require just python3-base not full python for build
+
+-------------------------------------------------------------------
+Sat May 19 20:37:48 UTC 2018 - schwab@linux-m68k.org
+
+- git 2.17.0:
+  * "diff" family of commands learned "--find-object=<object-id>" option
+    to limit the findings to changes that involve the named object.
+  * "git format-patch" learned to give 72-cols to diffstat, which is
+    consistent with other line length limits the subcommand uses for
+    its output meant for e-mails.
+  * The log from "git daemon" can be redirected with a new option; one
+    relevant use case is to send the log to standard error (instead of
+    syslog) when running it from inetd.
+  * "git rebase" learned to take "--allow-empty-message" option.
+  * "git am" has learned the "--quit" option, in addition to the
+    existing "--abort" option; having the pair mirrors a few other
+    commands like "rebase" and "cherry-pick".
+  * "git worktree add" learned to run the post-checkout hook, just like
+    "git clone" runs it upon the initial checkout.
+  * "git tag" learned an explicit "--edit" option that allows the
+    message given via "-m" and "-F" to be further edited.
+  * "git fetch --prune-tags" may be used as a handy short-hand for
+    getting rid of stale tags that are locally held.
+  * The new "--show-current-patch" option gives an end-user facing way
+    to get the diff being applied when "git rebase" (and "git am")
+    stops with a conflict.
+  * "git add -p" used to offer "/" (look for a matching hunk) as a
+    choice, even there was only one hunk, which has been corrected.
+    Also the single-key help is now given only for keys that are
+    enabled (e.g. help for '/' won't be shown when there is only one
+    hunk).
+  * Since Git 1.7.9, "git merge" defaulted to --no-ff (i.e. even when
+    the side branch being merged is a descendant of the current commit,
+    create a merge commit instead of fast-forwarding) when merging a
+    tag object.  This was appropriate default for integrators who pull
+    signed tags from their downstream contributors, but caused an
+    unnecessary merges when used by downstream contributors who
+    habitually "catch up" their topic branches with tagged releases
+    from the upstream.  Update "git merge" to default to --no-ff only
+    when merging a tag object that does *not* sit at its usual place in
+    refs/tags/ hierarchy, and allow fast-forwarding otherwise, to
+    mitigate the problem.
+  * "git status" can spend a lot of cycles to compute the relation
+    between the current branch and its upstream, which can now be
+    disabled with "--no-ahead-behind" option.
+  * "git diff" and friends learned funcname patterns for Go language
+    source files.
+  * "git send-email" learned "--reply-to=<address>" option.
+   * Funcname pattern used for C# now recognizes "async" keyword.
+   * In a way similar to how "git tag" learned to honor the pager
+    setting only in the list mode, "git config" learned to ignore the
+    pager setting when it is used for setting values (i.e. when the
+    purpose of the operation is not to "show").
+
+-------------------------------------------------------------------
+Tue Mar 27 11:55:21 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Mar 23 03:12:14 UTC 2018 - avindra@opensuse.org
+
+- git 2.16.3:
+  * "git status" after moving a path in the working tree (hence
+    making it appear "removed") and then adding with the -N option
+    (hence making that appear "added") detected it as a rename, but
+    did not report the  old and new pathnames correctly.
+  * "git commit --fixup" did not allow "-m<message>" option to be
+    used at the same time; allow it to annotate resulting commit
+    with more text.
+  * When resetting the working tree files recursively, the working
+    tree of submodules are now also reset to match.
+  * Fix for a commented-out code to adjust it to a rather old API
+    change around object ID.
+  * When there are too many changed paths, "git diff" showed a
+    warning message but in the middle of a line.
+  * The http tracing code, often used to debug connection issues,
+    learned to redact potentially sensitive information from its
+    output so that it can be more safely sharable.
+  * Crash fix for a corner case where an error codepath tried to
+    unlock what it did not acquire lock on.
+  * The split-index mode had a few corner case bugs fixed.
+  * Assorted fixes to "git daemon".
+  * Completion of "git merge -s<strategy>" (in contrib/) did not
+    work well in non-C locale.
+  * Workaround for segfault with more recent versions of SVN.
+  * Recently introduced leaks in fsck have been plugged.
+  * Travis CI integration now builds the executable in 'script'
+    phase to follow the established practice, rather than during
+    'before_script' phase.  This allows the CI categorize the
+    failures better ('failed' is project's fault, 'errored' is
+    build environment's).
+
+-------------------------------------------------------------------
+Thu Mar  8 12:58:20 CET 2018 - tiwai@suse.de
+
+- Drop superfluous xinetd snippet, no longer used (bsc#1084460)
+
+-------------------------------------------------------------------
+Tue Mar  6 08:50:12 CET 2018 - tiwai@suse.de
+
+- Build with asciidoctor for the recent distros (bsc#1075764)
+
+-------------------------------------------------------------------
+Mon Feb 26 23:38:08 UTC 2018 - schwab@linux-m68k.org
+
+- Move %{?systemd_requires} to daemon subpackage
+
+-------------------------------------------------------------------
+Wed Feb 21 12:19:29 UTC 2018 - fcrozat@suse.com
+
+- Create subpackage for libsecret credential helper.
+
+-------------------------------------------------------------------
+Sun Feb 18 02:45:50 UTC 2018 - avindra@opensuse.org
+
+- git 2.16.2:
+ * An old regression in "git describe --all $annotated_tag^0" has
+   been fixed.
+ * "git svn dcommit" did not take into account the fact that a
+   svn+ssh:// URL with a username@ (typically used for pushing)
+   refers to the same SVN repository without the username@ and
+   failed when svn.pushmergeinfo option is set.
+ * "git merge -Xours/-Xtheirs" learned to use our/their version
+   when resolving a conflicting updates to a symbolic link.
+ * "git clone $there $here" is allowed even when here directory
+   exists as long as it is an empty directory, but the command
+   incorrectly removed it upon a failure of the operation.
+ * "git stash -- <pathspec>" incorrectly blew away untracked files
+   in the directory that matched the pathspec, which has been
+   corrected.
+ * "git add -p" was taught to ignore local changes to submodules
+   as they do not interfere with the partial addition of regular
+   changes anyway.
+
+-------------------------------------------------------------------
+Tue Jan 23 14:23:47 UTC 2018 - astieger@suse.com
+
+- git 2.16.1:
+  * "git clone" segfaulted when cloning a project that happens to
+    track two paths that differ only in case on a case insensitive
+    filesystem
+
+-------------------------------------------------------------------
+Fri Jan 19 02:00:31 UTC 2018 - avindra@opensuse.org
+
+- git 2.16.0:
+  * See https://raw.github.com/git/git/master/Documentation/RelNotes/2.16.0.txt
+- partial cleanup with spec-cleaner
+- drop git-gui-tclIndex.patch
+  * merged upstream in da10ea373b80cc8bf8efca5acb1d11ecf410fb0c
+
+-------------------------------------------------------------------
+Fri Dec  1 01:48:24 UTC 2017 - aavindraa@gmail.com
+
+- git 2.15.1:
+  * fix "auto" column output 
+  * fixes to moved lines diffing
+  * documentation updates
+  * fix use of repositories immediately under the root directory
+  * improve usage of libsecret
+  * fixes to various error conditions in git commands
+
+-------------------------------------------------------------------
+Tue Nov 28 15:14:59 CET 2017 - tiwai@suse.de
+
+- Rewrite from sysv init to systemd unit file for git-daemon
+  (bsc#1069803)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:50:00 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Nov  9 18:46:12 UTC 2017 - jmatejek@suse.com
+
+- split off p4 to a subpackage (bsc#1067502)
+- do not buildrequire asciidoc (dependent on Python 2) when
+  not building docs
+- switch to Python 3 for tests
+
+-------------------------------------------------------------------
+Mon Nov  6 15:47:22 CET 2017 - tiwai@suse.de
+
+- Build with the external libsha1detectcoll (bsc#1042644)
+
+-------------------------------------------------------------------
+Wed Nov  1 13:10:43 UTC 2017 - astieger@suse.com
+
+- git 2.15.0:
+  * Use of an empty string as a pathspec element that is used for
+   'everything matches' is still warned and Git asks users to use a
+    more explicit '.' for that instead. Removal scheduled for 2.16
+  * Git now avoids blindly falling back to ".git" when the setup
+    sequence said we are _not_ in Git repository (another corner
+    case removed)
+  * "branch --set-upstream" was retired, deprecated since 1.8
+  * many other improvements and updates
+
+-------------------------------------------------------------------
+Mon Oct 23 08:59:09 UTC 2017 - astieger@suse.com
+
+- git 2.14.3:
+  * git send-email understands more cc: formats
+  * fixes so gitk --bisect
+  * git commit-tree fixed to handle -F file alike
+  * Prevent segfault in "git cat-file --textconv"
+  * Fix function header parsing for HTML
+  * Various small fixes to user commands and and internal functions
+
+-------------------------------------------------------------------
+Tue Sep 26 07:56:20 UTC 2017 - astieger@suse.com
+
+- git 2.14.2:
+  * fixes to color output
+  * http.{sslkey,sslCert} now interpret "~[username]/" prefix
+  * fixes to walking of reflogs via "log -g" and friends
+  * various fixes to output correctness
+  * "git push --recurse-submodules $there HEAD:$target" is now
+    propagated down to the submodules
+  * "git clone --recurse-submodules --quiet" c$how propagates quiet
+    option down to submodules.
+  * "git svn --localtime" correctness fixes
+  * "git grep -L" and "git grep --quiet -L" now report same exit code
+  * fixes to "git apply" when converting line endings
+  * Various Perl scripts did not use safe_pipe_capture() instead 
+    of backticks, leaving them susceptible to end-user input.
+    CVE-2017-14867 bsc#1061041
+  * "git cvsserver" no longer is invoked by "git daemon" by
+    default 
+
+-------------------------------------------------------------------
+Thu Aug 10 19:19:07 UTC 2017 - astieger@suse.com
+
+- git 2.14.1 (bsc#1052481):
+  * Security fix for CVE-2017-1000117: A malicious third-party can
+    give a crafted "ssh://..." URL to an unsuspecting victim, and
+    an attempt to visit the URL can result in any program that
+    exists on the victim's machine being executed. Such a URL could
+    be placed in the .gitmodules file of a malicious project, and
+    an unsuspecting victim could be tricked into running
+    "git clone --recurse-submodules" to trigger the vulnerability.
+  * A "ssh://..." URL can result in a "ssh" command line with a
+    hostname that begins with a dash "-", which would cause the
+    "ssh" command to instead (mis)treat it as an option. This is
+    now prevented by forbidding such a hostname (which should not
+    impact any real-world usage).
+  * Similarly, when GIT_PROXY_COMMAND is configured, the command
+    is run with host and port that are parsed out from "ssh://..."
+    URL; a poorly written GIT_PROXY_COMMAND could be tricked into
+    treating a string that begins with a dash "-" as an option.
+    This is now prevented by forbidding such a hostname and port
+    number (again, which should not impact any real-world usage).
+  * In the same spirit, a repository name that begins with a dash
+    "-" is also forbidden now.
+
+-------------------------------------------------------------------
+Sat Aug  5 14:23:43 UTC 2017 - astieger@suse.com
+
+- git 2.14.0:
+  * Use of an empty string as a pathspec element that is used for
+    'everything matches' is deprecated, use '.'
+  * Avoid blindly falling back to ".git" when the setup sequence
+    indicates operation not on a Git repository
+  * "indent heuristics" are now the default.
+  * Builds with pcre2
+  * Many bug fixes, improvements and updates
+
+-------------------------------------------------------------------
+Wed Aug  2 00:34:01 UTC 2017 - astieger@suse.com
+
+- git 2.13.4:
+  * Update the character width tables.
+  * Fix an alias that contained an uppercase letter
+  * Progress meter fixes
+  * git gc concurrency fixes
+
+-------------------------------------------------------------------
+Thu Jul 13 09:08:26 UTC 2017 - astieger@suse.com
+
+- git 2.13.3:
+  * various internal bug fixes
+  * Fix a  regression to "git rebase -i"
+  * Correct unaligned 32-bit access in pack-bitmap code
+  * Tighten error checks for invalid "git apply" input
+  * The split index code did not honor core.sharedrepository setting
+    correctly
+  * Fix "git branch --list" handling of color.branch.local
+
+-------------------------------------------------------------------
+Sun Jun 25 19:46:12 UTC 2017 - astieger@suse.com
+
+- git 2.13.2:
+  * "collision detecting" SHA-1 update for platform fixes
+  * "git checkout --recurse-submodules" did not quite work with a
+    submodule that itself has submodules.
+  * The "run-command" API implementation has been made more robust
+    against dead-locking in a threaded environment.
+  * "git clean -d" now only cleans ignored files with "-x"
+  * "git status --ignored"  did not list ignored and untracked files
+    without "-uall"
+  * "git pull --rebase --autostash" didn't auto-stash when the local
+    history fast-forwards to the upstream.
+  * "git describe --contains" gives as much weight to lightweight
+    tags as annotated tags
+  * Fix "git stash push <pathspec>" from a subdirectory
+
+-------------------------------------------------------------------
+Mon Jun  5 08:43:05 UTC 2017 - astieger@suse.com
+
+- git 2.13.1:
+  * Setting "log.decorate=false" in the configuration file did not
+    take effect in v2.13, which has been corrected.
+  * corrections to documentation and command help output
+  * garbage collection fixes
+  * memory leaks fixed
+  * receive-pack now makes sure that the push certificate records
+    the same set of push options used for pushing
+  * shell completion corrections for git stash
+  * fix "git clone --config var=val" with empty strings
+  * internal efficiency improvements
+  * Update sha1 collision detection code for big-endian platforms
+    and platforms not supporting unaligned fetches
+
+-------------------------------------------------------------------
+Sat May 27 12:49:47 UTC 2017 - schwab@linux-m68k.org
+
+- Fix packaging of documentation
+
+-------------------------------------------------------------------
+Wed May 10 21:09:53 UTC 2017 - astieger@suse.com
+
+- git 2.13.0:
+  * empty string as a pathspec element for 'everything matches'
+    is still warned, for future removal.
+  * deprecated argument order "git merge <msg> HEAD <commit>..."
+    was removed
+  * default location "~/.git-credential-cache/socket" for the
+    socket used to communicate with the credential-cache daemon 
+    moved to "~/.cache/git/credential/socket".
+  * now avoid blindly falling back to ".git" when the setup
+    sequence indicated otherwise
+  * many workflow features, improvements and bug fixes
+  * add a hardened implementation of SHA1 in response to practical
+    collision attacks (CVE-2005-4900, bsc#1042640)
+
+-------------------------------------------------------------------
+Wed May 10 07:54:52 UTC 2017 - astieger@suse.com
+
+- git 2.12.3:
+  * CVE-2017-8386: On a server running git-shell as login shell to
+    restrict user to git commands, remote users may have been able
+    to have git service programs spawn an interactive pager
+    and thus escape the shell restrictions. (bsc#1038395)
+
+-------------------------------------------------------------------
+Sat Mar 25 13:43:23 UTC 2017 - astieger@suse.com
+
+- git 2.12.2:
+  * CLI output fixes
+  * "Dump http" transport fixes
+  * various fixes for internal code paths   
+  * Trailer "Cc:" RFC fix
+
+-------------------------------------------------------------------
+Tue Mar 21 13:40:28 UTC 2017 - astieger@suse.com
+
+- git 2.12.1:
+  * Reduce authentication round-trip over HTTP when the server
+    supports just a single authentication method.
+  * "git add -i" patch subcommand fixed to have a path selection
+  * various path verification fixes
+  * fix "git log -L..." buffer overrun
+
+-------------------------------------------------------------------
+Tue Mar  7 16:42:18 UTC 2017 - lchiquitto@suse.de
+
+- Submit version 2.12.0 to SLE-12 (fate#322294, bsc#977477)
+
+-------------------------------------------------------------------
+Fri Feb 24 22:07:09 UTC 2017 - astieger@suse.com
+
+- git 2.12.0:
+  * Use of an empty string that is used for 'everything matches' is
+    still warned and Git asks users to use a more explicit '.' for that
+    instead.  The hope is that existing users will not mind this
+    change, and eventually the warning can be turned into a hard error,
+    upgrading the deprecation into removal of this (mis)feature.  That
+    is not scheduled to happen in the upcoming release (yet).
+  * The historical argument order "git merge <msg> HEAD <commit>..."
+    has been deprecated for quite some time, and will be removed in a
+    future release.
+  * An ancient script "git relink" has been removed.
+
+-------------------------------------------------------------------
+Thu Feb  9 19:12:11 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package %{_docdir}/%{name} to fix build with RPM 4.13.
+
+-------------------------------------------------------------------
+Fri Feb  3 09:05:22 UTC 2017 - astieger@suse.com
+
+- git 2.11.1:
+  * The default Travis-CI configuration specifies newer P4 and GitLFS.
+  * The character width table has been updated to match Unicode 9.0
+  * various fixes affecting multiple subcommands for correctness,
+    bugs, and unexpected behavior.
+  * documentation updates
+  * git-svn updates
+
+-------------------------------------------------------------------
+Wed Feb  1 13:35:04 CET 2017 - lchiquitto@suse.de
+
+- Refresh all patches to update line numbers
+- Add old bug reference to allow submission to SLE-12
+
+-------------------------------------------------------------------
+Fri Dec  9 17:00:58 UTC 2016 - olaf@aepfle.de
+
+- git-gui: Sort entries in optimized tclIndex
+  git-gui-tclIndex.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 11:54:01 UTC 2016 - astieger@suse.com
+
+- git 2.11.0:
+  * backward compatibility:
+    + empty string (matching everything) used as pathspec now
+      triggers a warning
+    + historical argument order "git merge <msg> HEAD <commit>..."
+      is deprecated
+    +  default abbreviation length of 7 now scales by repo size
+  * updates
+    + new version of git-gui
+    + many new command line and configuration options
+    + many workflow and output improvements
+  * dropped upstreamed patches:
+    + git-setup-i18n-fix.patch
+    + git-tclIndex.patch
+
+-------------------------------------------------------------------
+Sat Oct 29 09:00:48 UTC 2016 - astieger@suse.com
+
+- git 2.10.2:
+  * minor bug fixes
+  * internal code improvements
+  * documentation updates
+
+-------------------------------------------------------------------
+Tue Oct  4 11:21:51 UTC 2016 - astieger@suse.com
+
+- git 2.10.1:
+  * documentation and command output updates
+  * Prevents loops on submodules with broken metadata
+  * Forbid removal of the symbolic reference HEAD
+  * Update Japanese translation for "git-gui".
+  * Fix "git commit-tree" reading commit.gpgsign configuration
+  * Ignore merges when matching with "git log --cherry-pick"
+  * Fix "git format-patch --base=..." usage of signature separator
+ * "git add --chmod=+x <pathspec>" added recently only toggled the
+   executable bit for paths that are either new or modified. This has
+   been corrected to flip the executable bit for all paths that match
+   the given pathspec.
+
+-------------------------------------------------------------------
+Wed Sep  7 15:26:55 UTC 2016 - astieger@suse.com
+
+- fix shell lib include path in git-sh-setup (boo#1011169)
+  adding git-setup-i18n-fix.patch
+
+-------------------------------------------------------------------
+Sat Sep  3 19:25:08 UTC 2016 - astieger@suse.com
+
+- git 2.10.0, feature and bugfix update:
+  * various workflow output improvements
+  * various improvements and extensions of command line options
+  * A handful of "git svn" updates.
+  * internal performance improvements
+
+-------------------------------------------------------------------
+Wed Aug 31 15:55:05 UTC 2016 - olaf@aepfle.de
+
+- Reduce build-compare noise 
+  git-asciidoc.patch
+  git-tclIndex.patch
+
+-------------------------------------------------------------------
+Sat Aug 13 08:22:30 UTC 2016 - astieger@suse.com
+
+- git 2.9.3:
+  * many compatible fixes and improvements to various git commands
+    and functions
+
+-------------------------------------------------------------------
+Sat Jul 16 10:33:58 UTC 2016 - astieger@suse.com
+
+- git 2.9.2:
+  * fix test suite failues with 64 bit timestamps
+
+-------------------------------------------------------------------
+Tue Jul 12 18:58:46 UTC 2016 - astieger@suse.com
+
+- git 2.9.1:
+  * socket-level KEEPALIVE for git daemon
+  * Various compatible workflow and UI fixes
+  * Various optimisations and documentation updates
+  * Fix regression in v2.9 affecting "clone --depth"
+
+-------------------------------------------------------------------
+Mon Jun 13 21:49:43 UTC 2016 - astieger@suse.com
+
+- git 2.9.0:
+  * commands in the "git diff" and "git log" family by default
+    enable the rename detection; use "diff.renames" configuration
+    variable to disable this.
+  * merging two branches that have no common ancestor with "git
+    merge" is by default forbidden now to prevent creating such an
+    unusual merge by mistake.
+  * output formats of "git log" that indents the commit log message
+    by 4 spaces now expands HT in the log message by default. 
+    The "--no-expand-tabs" option disables this.
+  * "git commit-tree" plumbing command required the user to always
+    sign its result when the user sets the commit.gpgsign
+    configuration variable, this is no longer the case. Scrips
+    using commit-tree which may rely on this mistake no needs to
+    read commit.gpgsign and pass the -S option as necessary.
+  * Many more bug fixes and minor updates.
+
+-------------------------------------------------------------------
+Tue Jun  7 07:21:35 UTC 2016 - astieger@suse.com
+
+- git 2.8.4:
+  * Documentation updates
+  * "git fsck" learned to catch NUL byte in a commit object as
+     potential error and warn.
+  * "git describe --contains" improvements
+  * Treat "http.cookieFile" config as a path
+  * Suggest "submodule deinit --all" for deinitializing all submodules
+  * A couple of bugs around core.autocrlf have been fixed.
+  * "git difftool" learned to handle unmerged paths correctly in
+    dir-diff mode.
+
+-------------------------------------------------------------------
+Thu May 19 19:40:48 UTC 2016 - astieger@suse.com
+
+- git 2.8.3:
+ * "git send-email" now uses a more readable timestamps when
+   formulating a message ID.
+ * When "git worktree" feature is in use, "git branch -d" allowed
+   deletion of a branch that is checked out in another worktree
+ * When "git worktree" feature is in use, "git branch -m" renamed a
+   branch that is checked out in another worktree without adjusting
+   the HEAD symbolic ref for the worktree.
+ * "git format-patch --help" showed `-s` and `--no-patch` as if these
+   are valid options to the command.  We already hide `--patch` option
+   from the documentation, because format-patch is about showing the
+   diff, and the documentation now hides these options as well.
+ * A change back in version 2.7 to "git branch" broke display of a
+   symbolic ref in a non-standard place in the refs/ hierarchy (we
+   expect symbolic refs to appear in refs/remotes/*/HEAD to point at
+   the primary branch the remote has, and as .git/HEAD to point at the
+   branch we locally checked out).
+ * A partial rewrite of "git submodule" in the 2.7 timeframe changed
+   the way the gitdir: pointer in the submodules point at the real
+   repository location to use absolute paths by accident.  This has
+   been corrected.
+ * "git commit" misbehaved in a few minor ways when an empty message
+   is given via -m '', all of which has been corrected.
+ * Support for CRAM-MD5 authentication method in "git imap-send" did
+   not work well.
+ * The socks5:// proxy support added back in 2.6.4 days was not aware
+   that socks5h:// proxies behave differently.
+ * "git config" had a codepath that tried to pass a NULL to
+   printf("%s"), which nobody seems to have noticed.
+ * "git replace -e" did not honour "core.editor" configuration.
+ * "git submodule" reports the paths of submodules the command
+   recurses into, but this was incorrect when the command was not run
+   from the root level of the superproject.
+ * The "user.useConfigOnly" configuration variable makes it an error
+   if users do not explicitly set user.name and user.email.  However,
+   its check was not done early enough and allowed another error to
+   trigger, reporting that the default value we guessed from the
+   system setting was unusable.  This was a suboptimal end-user
+   experience as we want the users to set user.name/user.email without
+   relying on the auto-detection at all.
+ * "git mv old new" did not adjust the path for a submodule that lives
+   as a subdirectory inside old/ directory correctly.
+ * "git push" from a corrupt repository that attempts to push a large
+   number of refs deadlocked; the thread to relay rejection notices
+   for these ref updates blocked on writing them to the main thread,
+   after the main thread at the receiving end notices that the push
+   failed and decides not to read these notices and return a failure.
+ * A question by "git send-email" to ask the identity of the sender
+   has been updated.
+ * Recent update to Git LFS broke "git p4" by changing the output from
+   its "lfs pointer" subcommand.
+ * Some multi-byte encoding can have a backslash byte as a later part
+   of one letter, which would confuse "highlight" filter used in
+   gitweb.
+
+-------------------------------------------------------------------
+Sat Apr 30 12:15:11 UTC 2016 - astieger@suse.com
+
+- git 2.8.2:
+ * "index-pack --keep=<msg>" was broken since v2.1.0 timeframe.
+ * "git config --get-urlmatch", unlike other variants of the "git
+   config --get" family, did not signal error with its exit status
+   when there was no matching configuration.
+ * The "--local-env-vars" and "--resolve-git-dir" options of "git
+   rev-parse" failed to work outside a repository when the command's
+   option parsing was rewritten in 1.8.5 era.
+ * Fetching of history by naming a commit object name directly didn't
+   work across remote-curl transport.
+ * A small memory leak in an error codepath has been plugged in xdiff
+   code.
+ * "git mergetool" did not work well with conflicts that both sides
+   deleted.
+ * "git send-email" had trouble parsing alias file in mailrc format
+   when lines in it had trailing whitespaces on them.
+ * When "git merge --squash" stopped due to conflict, the concluding
+   "git commit" failed to read in the SQUASH_MSG that shows the log
+   messages from all the squashed commits.
+ * "git merge FETCH_HEAD" dereferenced NULL pointer when merging
+   nothing into an unborn history (which is arguably unusual usage,
+   which perhaps was the reason why nobody noticed it).
+ * "git diff -M" used to work better when two originally identical
+   files A and B got renamed to X/A and X/B by pairing A to X/A and B
+   to X/B, but this was broken in the 2.0 timeframe.
+ * "git send-pack --all <there>" was broken when its command line
+   option parsing was written in the 2.6 timeframe.
+ * When running "git blame $path" with unnormalized data in the index
+   for the path, the data in the working tree was blamed, even though
+   "git add" would not have changed what is already in the index, due
+   to "safe crlf" that disables the line-end conversion.  It has been
+   corrected.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:58:06 UTC 2016 - termim@gmail.com
+
+- add desktop entry for the git gui
+
+-------------------------------------------------------------------
+Sun Apr  3 19:51:56 UTC 2016 - astieger@suse.com
+
+- git 2.8.1:
+  * make rpmbuild target was broken, unused in openSUSE package
+
+-------------------------------------------------------------------
+Fri Apr  1 09:20:24 UTC 2016 - astieger@suse.com
+
+- git 2.8.0
+  * Backward compatibility:
+    + The rsync:// transport has been removed.
+  * various subcommands improvements
+  * various output improvements
+  * improved handling of notes
+  * improved handling of end of line styles
+  * http.proxyAuthMethod configures proxy authentication method
+  * new "<branch>^{/!-<pattern>}" notation
+  * "user.useConfigOnly" configuration variable forces individual
+    project configuration
+  * "git fetch" and friends that make network connections can now be
+    told to only use ipv4 (or ipv6).
+  * http.[<url>.]pinnedpubkey to specify the pinned public key
+  * bug fixes and performance improvements
+   
+-------------------------------------------------------------------
+Thu Mar 17 21:22:02 UTC 2016 - astieger@suse.com
+
+- git 2.7.4:
+  Fix remote code execution via buffer overflow (CVE-2016-2315,
+  CVE-2016-2324, bsc#971328)
+  * plug heap corruption holes
+  * catch integer overflow in the computation of pathname lengths
+  * get rid of the name_path API. Both of
+  These would have resulted in writing over an under-allocated
+  buffer when formulating pathnames while tree traversal.
+
+-------------------------------------------------------------------
+Fri Mar 11 08:38:09 UTC 2016 - astieger@suse.com
+
+- git 2.7.3:
+ * "git show 'HEAD:Foo[BAR]Baz'" did not interpret the argument as a
+   rev, i.e. the object named by the the pathname with wildcard
+   characters in a tree object.
+ * "git rev-parse --git-common-dir" used in the worktree feature
+   misbehaved when run from a subdirectory.
+ * The "v(iew)" subcommand of the interactive "git am -i" command was
+   broken in 2.6.0 timeframe when the command was rewritten in C.
+ * "git merge-tree" used to mishandle "both sides added" conflict with
+   its own "create a fake ancestor file that has the common parts of
+   what both sides have added and do a 3-way merge" logic; this has
+   been updated to use the usual "3-way merge with an empty blob as
+   the fake common ancestor file" approach used in the rest of the
+   system.
+ * The documentation did not clearly state that the 'simple' mode is
+   now the default for "git push" when push.default configuration is
+   not set.
+ * Test adjustments for GNU grep, obsoleting
+   git-2.7.1-fix-tests-grep-2.23.patch
+ * "git config section.var value" to set a value in per-repository
+   configuration file failed when it was run outside any repository,
+   but didn't say the reason correctly.
+
+-------------------------------------------------------------------
+Tue Feb 23 10:14:22 UTC 2016 - astieger@suse.com
+
+- git 2.7.2:
+  * improvements placing conflict markers with different line
+    terminators
+  * "git worktree" fixes for manually moved paths
+  * "git push --force-with-lease" has been taught to report if the
+    push needed to force (or fast-forwarded).
+  * vimdiff backend improvements for "git mergetool": buffer order
+  * improvements for handling paths added to index with "add -N"
+    which are not in the index yet
+
+-------------------------------------------------------------------
+Mon Feb 15 15:02:44 UTC 2016 - astieger@suse.com
+
+- fix test failures with grep 2.23
+  add git-2.7.1-fix-tests-grep-2.23.patch
+
+-------------------------------------------------------------------
+Sat Feb  6 08:30:57 UTC 2016 - astieger@suse.com
+
+- git 2.7.1:
+  * fix hooks and aliases fixes with GIT_WORK_TREE 
+  * fix "git send-email" reading escaped quotes in mutt alias files
+  * fix some crashes and regressions
+
+-------------------------------------------------------------------
+Tue Jan 26 07:20:19 UTC 2016 - bwiedemann@suse.com
+
+- use %perl_requires to allow for easier git+perl updates (boo#961112)
+
+-------------------------------------------------------------------
+Mon Jan 11 18:40:33 UTC 2016 - astieger@suse.com
+
+- package git-new-workdir [boo#961292]
+
+-------------------------------------------------------------------
+Tue Jan  5 13:24:54 UTC 2016 - astieger@suse.com
+
+- git 2.7.0:
+  * UI, Workflows & Features updates
+  * new subcommands, parameters and configuration options
+  * performance improvements and code clean-ups
+  * remove upstreamed patches:
+    0001-gitk-Fix-crash-with-all-in-non-English-locales.patch
+    0002-gitk-Update-msgid-s-for-menu-items-with-accelerator.patch
+    0003-gitk-Add-accelerators-to-Japanese-locale.patch
+    0004-gitk-Add-accelerator-to-German-locale.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 06:58:11 UTC 2016 - astieger@suse.com
+
+- git 2.6.5:
+  * Update "git subtree" (in contrib/) so that it can take 
+    whitespaces in the pathnames, not only in the in-tree pathname
+    but the name of the directory that the repository is in.
+  * "git p4" used to import Perforce CLs that touch only paths
+    outside the client spec as empty commits. It has been
+    corrected to ignorethem instead, with a new configuration
+    git-p4.keepEmptyCommits as a backward compatibility knob.
+  * Improve error reporting when SMTP TLS fails.
+  * "git symbolic-ref" forgot to report a failure with its exit
+    status.
+  * History traversal with "git log --source" that starts with an
+    annotated tag failed to report the tag as "source", due to an
+    old regression in the command line parser back in v2.2 days.
+
+-------------------------------------------------------------------
+Wed Dec  9 07:21:40 UTC 2015 - astieger@suse.com
+
+- git 2.6.4:
+  * Add support for talking http/https over socks proxy.
+  * Allow all hooks to ignore their standard input,
+    rather than having git complain of SIGPIPE.
+  * Allow tilde-expansion in some http config variables.
+  * Make git-p4 work on a detached head.
+  * Add "git rebase --no-autostash"
+  * Allow "git interpret-trailers" to run outside of a Git
+    repository.
+
+-------------------------------------------------------------------
+Sat Nov  7 14:12:41 UTC 2015 - astieger@suse.com
+
+- git 2.6.3:
+  * UI output fixes
+  * Bug fixes on case insensitive filesystems
+  * git p4 fixes
+  * Prepare for Git on-disk repository representation to undergo
+    backward incompatible changes by introducing a new repository
+    format version "1", with an extension mechanism.
+- include gpg2 for tests
+
+-------------------------------------------------------------------
+Thu Oct 22 20:27:11 CEST 2015 - tiwai@suse.de
+
+- Fix crash of gitk with --all option in non-English locales
+  (bsc#951153):
+  0001-gitk-Fix-crash-with-all-in-non-English-locales.patch
+  0002-gitk-Update-msgid-s-for-menu-items-with-accelerator.patch
+  0003-gitk-Add-accelerators-to-Japanese-locale.patch
+  0004-gitk-Add-accelerator-to-German-locale.patch
+
+-------------------------------------------------------------------
+Mon Oct 19 08:16:32 UTC 2015 - astieger@suse.com
+
+- git 2.6.2:
+  * git fsck return status fixes 
+  * Fix for case insensitive filesystems
+  * Fix "git am" ignoring user.signingkey
+  * For ssh transport, explicitly clear GIT_* environment variables
+  * Other compatible minor bug fixes and improvements
+- drop pager-don-t-use-unsafe-functions-in-signal-handle.patch
+
+-------------------------------------------------------------------
+Tue Oct  6 08:53:30 UTC 2015 - astieger@suse.com
+
+- git 2.6.1, with a security fix:
+ * Make xdiff code handle extremely large files, cap around 1GB.
+ * Some protocols (like git-remote-ext) can execute arbitrary code
+   found in the URL.  The URLs that submodules use may come from
+   arbitrary sources (e.g., .gitmodules files in a remote
+   repository), and can hurt those who blindly enable recursive
+   fetch.  Restrict the allowed protocols to well known and safe
+   ones. [boo#948969]
+
+-------------------------------------------------------------------
+Tue Sep 29 18:57:13 UTC 2015 - astieger@suse.com
+
+- git 2.6.0:
+  * many UI and workflow updates, added parameters and options
+  * some performance optimisations and resource use reduction
+- refresh pager-don-t-use-unsafe-functions-in-signal-handle.patch
+
+-------------------------------------------------------------------
+Fri Sep 25 15:11:29 CEST 2015 - tiwai@suse.de
+
+- Fix deadlock in signal handler in pager (boo#942297):
+  pager-don-t-use-unsafe-functions-in-signal-handle.patch
+
+-------------------------------------------------------------------
+Sun Sep 20 16:34:29 UTC 2015 - astieger@suse.com
+
+- git 2.5.3:
+ * The experimental untracked-cache feature were buggy when paths
+   with a few levels of subdirectories are involved.
+ * Fix performance regression in "git am --skip"
+   
+-------------------------------------------------------------------
+Sat Sep 19 10:13:32 UTC 2015 - dimstar@opensuse.org
+
+- Suggest instead of recommend git-web: git-web is the web-server
+  browsing part. Users that install git-core and appache will still
+  get it auto-recommended based on the supplements.
+
+-------------------------------------------------------------------
+Fri Sep 11 18:29:52 UTC 2015 - astieger@suse.com
+
+- git 2.5.2:
+  * usability bug fixes
+  * performance bug fixes
+  * fix "git archive" usage of zip64 for >64k entries
+
+-------------------------------------------------------------------
+Sun Aug 30 12:16:49 UTC 2015 - astieger@suse.com
+
+- git 2.5.1:
+  * Performance optimisation for some casee
+  * Minor bug fixes
+  * Fix a regression for clone repository name guessing
+  * Fix a regressoin in "git pull" related to --upload-pack
+
+-------------------------------------------------------------------
+Tue Aug 25 08:19:20 UTC 2015 - schwab@suse.de
+
+- In SLE 11 perl-Term-ReadKey is called perl-TermReadKey
+
+-------------------------------------------------------------------
+Tue Jul 28 13:56:51 UTC 2015 - astieger@suse.com
+
+- git 2.5.0:
+  * Improvements working with perforce (git p4)
+  * A new short-hand <branch>@{push}
+  * Introduce http.<url>.SSLCipherList configuration variable to
+    tweak the list of cipher suite to be used with libcURL when
+    talking with https:// sites.
+  * "git cat-file --batch(-check)" new option "--follow-symlinks"
+  * "git send-email" learned the alias file format used by the
+    sendmail program
+  * For 3-way merge drivers, add %P (final path)
+  * "git blame" learned blame.showEmail configuration variable.
+  * Add the "--allow-unknown-type" option to "cat-file" 
+  * Many long-running operations now show progress eye-candy
+
+-------------------------------------------------------------------
+Tue Jul 28 13:05:08 UTC 2015 - astieger@suse.com
+
+- git 2.4.7:
+ * Fix "git fsck" regression related to body-less tag object
+ * Ask libCURL to use the most secure proxy authentication method
+ * Fix shell handling issues in git log
+ * Fix git config on read-only fs
+ * Make "git rebase" exit with failure when format-patch fails
+
+-------------------------------------------------------------------
+Wed Jul 22 09:39:51 UTC 2015 - jslaby@suse.com
+
+- put git-credential-cache--daemon into git-core -- it is needed
+  for git-credential-cache (bnc#939065)
+
+-------------------------------------------------------------------
+Fri Jul 17 10:41:11 UTC 2015 - astieger@suse.com
+
+- git 2.4.6:
+ * "git fetch --depth=<depth>" and "git clone --depth=<depth>"
+   issued a shallow transfer request even to an upload-pack that
+   does not support the capability.
+ * "git fsck" used to ignore missing or invalid objects recorded in
+    reflog.
+ * The tcsh completion writes a bash scriptlet but that would have
+   failed for users with noclobber set.
+ * "git format-patch --ignore-if-upstream A..B" did not like to be
+   fed tags as boundary commits.
+- git-tcsh-completion-fixes.diff adjusted for context changes
+
+-------------------------------------------------------------------
+Fri Jun 26 12:13:19 UTC 2015 - astieger@suse.com
+
+- git 2.4.5:
+  * internal code and stability improvements
+  * ""git rebase -i" fired post-rewrite hook when it shouldn't
+    (namely, when it was told to stop sequencing with 'exec' insn).
+
+-------------------------------------------------------------------
+Wed Jun 17 19:16:05 UTC 2015 - astieger@suse.com
+
+- git 2.4.4:
+ * l10n updates for German.
+ * An earlier leakfix to bitmap testing code was incomplete.
+ * "git clean pathspec..." tried to lstat(2) and complain even for
+   paths outside the given pathspec.
+ * Communication between the HTTP server and http_backend process can
+   lead to a dead-lock when relaying a large ref negotiation request.
+   Diagnose the situation better, and mitigate it by reading such a
+   request first into core (to a reasonable limit).
+ * The clean/smudge interface did not work well when filtering an
+   empty contents (failed and then passed the empty input through).
+   It can be argued that a filter that produces anything but empty for
+   an empty input is nonsense, but if the user wants to do strange
+   things, then why not?
+ * Make "git stash something --help" error out, so that users can
+   safely say "git stash drop --help".
+ * Clarify that "log --raw" and "log --format=raw" are unrelated
+   concepts.
+ * Catch a programmer mistake to feed a pointer not an array to
+   ARRAY_SIZE() macro, by using a couple of GCC extensions.
+
+-------------------------------------------------------------------
+Sun Jun  7 12:34:01 UTC 2015 - astieger@suse.com
+
+- git 2.4.3:
+  * Ui message corrections and improvements
+  * "git pull --log" and "git pull --no-log" worked as expected,
+    but "git pull --log=20" did not.
+  * Fix pull.ff configuration overriding merge.ff
+  * fix memory leaks and resource exhaustion errors
+  * documentation fixes
+  * Fix core.excludesfile priorities
+
+-------------------------------------------------------------------
+Wed May 27 18:21:16 UTC 2015 - astieger@suse.com
+
+- git 2.4.2:
+ * "git rev-list --objects $old --not --all" to see if everything that
+   is reachable from $old is already connected to the existing refs
+   was very inefficient.
+ * "hash-object --literally" introduced in v2.2 was not prepared to
+   take a really long object type name.
+ * "git rebase --quiet" was not quite quiet when there is nothing to
+   do.
+ * The completion for "log --decorate=" parameter value was incorrect.
+ * "filter-branch" corrupted commit log message that ends with an
+   incomplete line on platforms with some "sed" implementations that
+   munge such a line.  Work it around by avoiding to use "sed".
+ * "git daemon" fails to build from the source under NO_IPV6
+   configuration (regression in 2.4).
+ * "git stash pop/apply" forgot to make sure that not just the working
+   tree is clean but also the index is clean. The latter is important
+   as a stash application can conflict and the index will be used for
+   conflict resolution.
+ * No longer prepend $GIT_EXEC_PATH and install path to path of
+   executed subprograms and hooks.
+
+-------------------------------------------------------------------
+Thu May 14 21:02:35 UTC 2015 - astieger@suse.com
+
+- git 2.4.1:
+ * git diff bugfixes and improvements
+ * Fix spelling in .gitconfig created upon "git config --global"
+ * "git commit --date=now" or anything that relies on approxidate
+   lost the daylight-saving-time offset.
+ * "git cat-file bl $blob" failed to barf even though there is no
+   object type that is "bl".
+ * Improvements for repositories on NFS
+
+-------------------------------------------------------------------
+Mon May  4 10:24:41 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.4.0
+* "git push" has been taught an "--atomic" option that makes a push
+  that updates more than one ref an "all-or-none" affair.
+* Output from "git log --decorate" now distinguishes between a
+  detached HEAD vs. a HEAD that points at a branch.
+* The phrasing `git branch` uses to describe a detached HEAD has
+  been updated to agree with the phrasing used by `git status`.
+* A new "push.followTags" configuration turns the "--follow-tags"
+  option on by default for the `git push` command.
+- Retrieve tarball signature
+
+-------------------------------------------------------------------
+Tue Apr 28 15:56:38 UTC 2015 - astieger@suse.com
+
+- git 2.3.7:
+ * An earlier update to the parser that disects a URL broke an
+   address, followed by a colon, followed by an empty string (instead
+   of the port number), e.g. ssh://example.com:/path/to/repo.
+ * The completion script (in contrib/) contaminated global namespace
+   and clobbered on a shell variable $x.
+ * The "git push --signed" protocol extension did not limit what the
+   "nonce" that is a server-chosen string can contain or how long it
+   can be, which was unnecessarily lax.  Limit both the length and the
+   alphabet to a reasonably small space that can still have enough
+   entropy.
+
+-------------------------------------------------------------------
+Sun Apr 26 18:09:29 UTC 2015 - astieger@suse.com
+
+- git 2.3.6:
+ * "diff-highlight" (in contrib/) multibyte character support
+
+-------------------------------------------------------------------
+Thu Apr  2 22:12:30 UTC 2015 - astieger@suse.com
+
+- git 2.3.5:
+ * The prompt script (in contrib/) did not show the untracked sign
+   when working in a subdirectory without any untracked files.
+ * Even though "git grep --quiet" is run merely to ask for the exit
+   status, we spawned the pager regardless.  Stop doing that.
+ * Recommend format-patch and send-email for those who want to
+   submit patches to this project.
+ * An failure early in the "git clone" that started creating the
+   working tree and repository could have resulted in some
+   directories and files left without getting cleaned up.
+ * "git fetch" that fetches a commit using the allow-tip-sha1-in-want
+   extension could have failed to fetch all the requested refs.
+ * The split-index mode introduced at v2.3.0-rc0~41 was broken in
+   the codepath to protect us against a broken reimplementation of
+   Git  that writes an invalid index with duplicated index entries,
+   etc.
+ * "git prune" used to largely ignore broken refs when deciding
+   which objects are still being used, which could spread an
+   existing small damage and make it a larger one.
+ * "git tag -h" used to show the "--column" and "--sort" options
+   that are about listing in a wrong section.
+ * The transfer.hiderefs support did not quite work for smart-http
+   transport.
+ * The code that reads from the ctags file in the completion script
+   (in contrib/) did not spell ${param/pattern/string} substitution
+   correctly, which happened to work with bash but not with zsh.
+ * The explanation on "rebase --preserve-merges", "pull
+   --rebase=preserve", and "push --force-with-lease" in the
+   documentation was unclear.
+
+-------------------------------------------------------------------
+Tue Mar 24 06:52:33 UTC 2015 - astieger@suse.com
+
+- git 2.3.4:
+ * The 'color.status.unmerged' configuration was not described.
+ * "git log --decorate" did not reset colors correctly around the
+   branch names.
+ * "git -C '' subcmd" refused to work in the current directory, unlike
+   "cd ''" which silently behaves as a no-op.
+ * "git imap-send" learned to optionally talk with an IMAP server via
+   libcURL; because there is no other option when Git is built with
+   NO_OPENSSL option, use that codepath by default under such
+   configuration.
+ * A workaround for certain build of GPG that triggered false breakage
+   in a test has been added.
+ * "git rebase -i" recently started to include the number of
+   commits in the insn sheet to be processed, but on a platform
+   that prepends leading whitespaces to "wc -l" output, the numbers
+   are shown with extra whitespaces that aren't necessary.
+ * We did not parse username followed by literal IPv6 address in SSH
+   transport URLs, e.g. ssh://user@[2001:db8::1]:22/repo.git
+   correctly.
+
+-------------------------------------------------------------------
+Sat Mar 14 19:05:25 UTC 2015 - astieger@suse.com
+
+- git 2.3.3:
+ * A corrupt input to "git diff -M" used cause us to segfault.
+ * The borrowed code in kwset API did not follow our usual convention
+   to use "unsigned char" to store values that range from 0-255.
+ * Description given by "grep -h" for its --exclude-standard option
+   was phrased poorly.
+ * Documentaton for "git remote add" mentioned "--tags" and
+   "--no-tags" and it was not clear that fetch from the remote in
+   the future will use the default behaviour when neither is given
+   to override it.
+ * "git diff --shortstat --dirstat=changes" showed a dirstat based on
+   lines that was never asked by the end user in addition to the
+   dirstat that the user asked for.
+ * The interaction between "git submodule update" and the
+   submodule.*.update configuration was not clearly documented.
+ * "git apply" was not very careful about reading from, removing,
+   updating and creating paths outside the working tree (under
+   --index/--cached) or the current directory (when used as a
+   replacement for GNU patch).
+ * "git daemon" looked up the hostname even when "%CH" and "%IP"
+   interpolations are not requested, which was unnecessary.
+ * The "interpolated-path" option of "git daemon" inserted any string
+   client declared on the "host=" capability request without checking.
+   Sanitize and limit %H and %CH to a saner and a valid DNS name.
+
+-------------------------------------------------------------------
+Thu Mar 12 16:19:14 CET 2015 - tiwai@suse.de
+
+- Fix missing /usr/share/tcsh/git.complete (bnc#919105):
+  git-tcsh-completion-fixes.diff was refreshed for generating the
+  script correctly
+
+-------------------------------------------------------------------
+Sat Mar  7 06:20:42 UTC 2015 - astieger@suse.com
+
+- git 2.3.2:
+ * "update-index --refresh" used to leak when an entry cannot be
+   refreshed for whatever reason.
+ * "git fast-import" used to crash when it could not close and
+   conclude the resulting packfile cleanly.
+ * "git blame" died, trying to free an uninitialized piece of memory.
+ * "git merge-file" did not work correctly in a subdirectory.
+ * "git submodule add" failed to squash "path/to/././submodule" to
+   "path/to/submodule".
+ * In v2.2.0, we broke "git prune" that runs in a repository that
+   borrows from an alternate object store.
+ * Certain older vintages of cURL give irregular output from
+   "curl-config --vernum", which confused our build system.
+ * Longstanding configuration variable naming rules has been added to
+   the documentation.
+ * Older GnuPG implementations may not correctly import the keyring
+   material we prepare for the tests to use.
+ * Clarify in the documentation that "remote.<nick>.pushURL" and
+   "remote.<nick>.URL" are there to name the same repository accessed
+   via different transports, not two separate repositories.
+ * The pack bitmap support did not build with older versions of GCC.
+ * Reading configuration from a blob object, when it ends with a lone
+   CR, use to confuse the configuration parser.
+ * We didn't format an integer that wouldn't fit in "int" but in
+   "uintmax_t" correctly.
+ * "git push --signed" gave an incorrectly worded error message when
+   the other side did not support the capability.
+ * "git fetch" over a remote-helper that cannot respond to "list"
+   command could not fetch from a symbolic reference e.g. HEAD.
+ * The insn sheet "git rebase -i" creates did not fully honor
+   core.abbrev settings.
+ * The tests that wanted to see that file becomes unreadable after
+   running "chmod a-r file", and the tests that wanted to make sure it
+   is not run as root, we used "can we write into the / directory?" as
+   a cheap substitute, but on some platforms that is not a good
+   heuristics.  The tests and their prerequisites have been updated to
+   check what they really require.
+ * The configuration variable 'mailinfo.scissors' was hard to
+   discover in the documentation.
+ * Correct a breakage to git-svn around v2.2 era that triggers
+   premature closing of FileHandle.
+ * Even though we officially haven't dropped Perl 5.8 support, the
+   Getopt::Long package that came with it does not support "--no-"
+   prefix to negate a boolean option; manually add support to help
+   people with older Getopt::Long package.
+
+-------------------------------------------------------------------
+Wed Mar  4 17:11:05 UTC 2015 - schwab@linux-m68k.org
+
+- Don't install dummy hg and bzr remote helpers
+
+-------------------------------------------------------------------
+Thu Feb 26 17:14:53 UTC 2015 - astieger@suse.com
+
+- git 2.3.1:
+ * The interactive "show a list and let the user choose from it"
+   interface "add -i" used showed and prompted to the user even when
+   the candidate list was empty, against which the only "choice" the
+   user could have made was to choose nothing.
+ * "git apply --whitespace=fix" used to under-allocate the memory
+   when the fix resulted in a longer text than the original patch.
+ * "git log --help" used to show rev-list options that are irrelevant
+   to the "log" command.
+ * The error message from "git commit", when a non-existing author
+   name was given as value to the "--author=" parameter, has been
+   reworded to avoid misunderstanding.
+ * A broken pack .idx file in the receiving repository prevented the
+   dumb http transport from fetching a good copy of it from the other
+   side.
+ * The documentation incorrectly said that C(opy) and R(ename) are the
+   only ones that can be followed by the score number in the output in
+   the --raw format.
+ * Fix a misspelled conditional that is always true.
+ * Code to read branch name from various files in .git/ directory
+   would have misbehaved if the code to write them left an empty file.
+ * The "git push" documentation made the "--repo=<there>" option
+   easily misunderstood.
+ * After attempting and failing a password-less authentication
+   (e.g. kerberos), libcURL refuses to fall back to password based
+   Basic authentication without a bit of help/encouragement.
+ * Setting diff.submodule to 'log' made "git format-patch" produce
+   broken patches.
+ * "git rerere" (invoked internally from many mergy operations) did
+   not correctly signal errors when told to update the working tree
+   files and failed to do so for whatever reason.
+ * "git blame HEAD -- missing" failed to correctly say "HEAD" when it
+   tried to say "No such path 'missing' in HEAD".
+
+-------------------------------------------------------------------
+Fri Feb  6 15:59:55 UTC 2015 - astieger@suse.com
+
+- git 2.3.0:
+  Many small corrections and improvements.
+- UI, Workflows and Features:
+  * New GIT_SSH_COMMAND environment variable
+  * Can now store empty notes
+  * "git interpret-trailers" learned to properly handle the
+    "Conflicts:" block at the end.
+  * "git am" learned "--message-id" option
+  * "git clone --reference=<over there>" learned the "--dissociate"
+    option 
+  * "git send-email" learned the "--transfer-encoding" option
+  * "git send-email" learned the "--no-xmailer" option
+  * "git branch -d" (delete) and "git branch -m" (move) learned to
+    honor "-f" (force) flag
+  * "git imap-send" learned to take "-v" (verbose) and "-q" (quiet)
+    command line options.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:16:19 UTC 2015 - andreas.stieger@gmx.de
+
+- git 2.2.2:
+  + "git checkout $treeish $path", when $path in the index and the
+    working tree already matched what is in $treeish at the $path,
+    still overwrote the $path unnecessarily.
+  + "git config --get-color" did not parse its command line arguments
+    carefully.
+  + A few code paths used abs() when they should have used labs() on
+    long integers.
+  + "gitweb" used to depend on a behaviour recent CGI.pm deprecated.
+  + "git init" (hence "git clone") initialized the per-repository
+    configuration file .git/config with x-bit by mistake.
+  + Git 2.0 was supposed to make the "simple" mode for the default of
+    "git push", but it didn't.
+  + "Everyday" document had a broken link.
+  + The build procedure did not bother fixing perl and python scripts
+    when NO_PERL and NO_PYTHON build-time configuration changed.
+  + The code that reads the reflog from the newer to the older entries
+    did not handle an entry that crosses a boundary of block it uses to
+    read them correctly.
+  + "git apply" was described in the documentation to take --ignore-date
+    option, which it does not.
+  + Traditionally we tried to avoid interpreting date strings given by
+    the user as future dates, e.g. GIT_COMMITTER_DATE=2014-12-10 when
+    used early November 2014 was taken as "October 12, 2014" because it
+    is likely that a date in the future, December 10, is a mistake.
+    This heuristics has been loosened to allow people to express future
+    dates (most notably, --until=<date> may want to be far in the
+    future) and we no longer tiebreak by future-ness of the date when
+    (1) ISO-like format is used, and
+    (2) the string can make sense interpreted as both y-m-d and y-d-m.
+    Git may still have to use the heuristics to tiebreak between dd/mm/yy
+    and mm/dd/yy, though.
+  + The code to abbreviate an object name to its short unique prefix
+    has been optimized when no abbreviation was requested.
+  + "git add --ignore-errors ..." did not ignore an error to
+    give a file that did not exist.
+  + Git did not correctly read an overlong refname from a packed refs
+    file.
+
+-------------------------------------------------------------------
+Fri Dec 19 14:01:18 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.2.1
+  Fixes arbitrary command execution vulnerability on case-
+  insensitive file systems. [boo#910756] [CVE-2014-9390]
+  This is not a usual case on GNU/Linux, but this update prevents
+  such commits to propagate to third parties (Windows, OS X) that
+  may be vulnerable.
+
+-------------------------------------------------------------------
+Thu Nov 27 08:49:01 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.2.0:
+  + improvements and updates to UI, Workflows, Features and options
+  + better temporary file handling
+  + API updates
+  + bug fixes
+- package new git-subtree.html
+
+-------------------------------------------------------------------
+Tue Nov 18 12:08:41 UTC 2014 - novell@mirell.de
+
+- Add git-credential-gnome-keyring subpackage for GNOME keyring
+  credential storage support
+
+-------------------------------------------------------------------
+Mon Nov 17 11:12:39 UTC 2014 - bwiedemann@suse.com
+
+- Allow snapshot generation in apparmor profile (bnc#905707)
+
+-------------------------------------------------------------------
+Wed Oct 29 20:28:18 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.1.3:
+  * Some MUAs mangled a line in a message that begins with "From "
+    to ">From " when writing to a mailbox file and feeding such an
+    input to "git am" used to lose such a line.
+  * "git daemon" (with NO_IPV6 build configuration) used to
+     incorrectly use the hostname even when gethostbyname()
+     reported that the given hostname is not found.
+  * Newer versions of 'meld' breaks the auto-detection we use to
+    see if they are new enough to support the `--output` option.
+  * "git pack-objects" forgot to disable the codepath to generate
+    object recheability bitmap when it needs to split the resulting
+    pack.
+  * "gitweb" used deprecated CGI::startfrom, which was removed from
+    CGI.pm as of 4.04; use CGI::start_from instead.
+  * "git log" documentation had an example section marked up not
+    quite correctly, which passed AsciiDoc but failed with
+    AsciiDoctor.
+  * Also contains some documentation updates.
+
+-------------------------------------------------------------------
+Wed Oct  1 06:49:03 UTC 2014 - bwiedemann@suse.com
+
+- Adapt git-web to newer apache2 (bnc#898318, bnc#897005)
+
+-------------------------------------------------------------------
+Tue Sep 30 20:32:08 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.1.2:
+  * "git push" over HTTP transport had an artificial limit on
+    number of refs that can be pushed imposed by the command line
+    length.
+  * When receiving an invalid pack stream that records the same
+    object twice, multiple threads got confused due to a race.
+  * An attempt to remove the entire tree in the "git fast-import"
+    input stream caused it to misbehave.
+  * Reachability check (used in "git prune" and friends) did not
+    add a detached HEAD as a starting point to traverse
+    objects still in use.
+  * "git config --add section.var val" used to lose existing
+    section.var whose value was an empty string.
+  * "git fsck" failed to report that it found corrupt objects via
+    its exit status in some cases.
+
+-------------------------------------------------------------------
+Sat Sep 20 07:45:00 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.1.1:
+ * Git 2.0 had a regression where "git fetch" into a shallowly
+   cloned repository from a repository with bitmap object index
+   enabled did not work correctly.  This has been corrected.
+ * Git 2.0 had a regression which broke (rarely used) "git diff-tree
+   -t".  This has been corrected.
+ * "git log --pretty/format=" with an empty format string did not
+   mean the more obvious "No output whatsoever" but "Use default
+   format", which was counterintuitive.  Now it means "nothing shown
+   for the log message part".
+ * "git -c section.var command" and "git -c section.var= command"
+   should pass the configuration differently (the former should be a
+   boolean true, the latter should be an empty string), but they
+   didn't work that way.  Now it does.
+ * Applying a patch not generated by Git in a subdirectory used to
+   check the whitespace breakage using the attributes for incorrect
+   paths. Also whitespace checks were performed even for paths
+   excluded via "git apply --exclude=<path>" mechanism.
+ * "git bundle create" with date-range specification were meant to
+   exclude tags outside the range, but it did not work correctly.
+ * "git add x" where x that used to be a directory has become a
+   symbolic link to a directory misbehaved.
+ * The prompt script checked $GIT_DIR/ref/stash file to see if there
+   is a stash, which was a no-no.
+ * "git checkout -m" did not switch to another branch while carrying
+   the local changes forward when a path was deleted from the index.
+ * With sufficiently long refnames, fast-import could have overflown
+   an on-stack buffer.
+ * After "pack-refs --prune" packed refs at the top-level, it failed
+   to prune them.
+ * "git gc --auto" triggered from "git fetch --quiet" was not quiet.
+
+-------------------------------------------------------------------
+Sun Aug 17 20:51:52 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.1.0
+- incompatible changes:
+  * default pager configuration no longer wraps long lines. To
+    restore:
+    $ git config core.pager "less -S"
+    $ git config pager.blame "less -S"
+- Changes to specific UI, configuration, workflow and features
+- Bug fixes and internal improvements
+- Full list:
+  https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.1.0.txt
+- remove pathc, upstream:
+  0001-git-subtree-Use-gitexecdir-instead-of-libexecdir.patch
+
+-------------------------------------------------------------------
+Thu Jul 31 16:01:38 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.0.4:
+  * fix output of "git diff-tree" broken since 2.0.2
+
+-------------------------------------------------------------------
+Sat Jul 26 21:24:51 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.0.3:
+ * An ancient rewrite passed a wrong pointer to a curl library
+   function in a rarely used code path.
+ * "filter-branch" left an empty single-parent commit that results
+   when all parents of a merge commit gets mapped to the same
+   commit, even under "--prune-empty".
+ * "log --show-signature" incorrectly decided the color to paint a
+   mergetag that was and was not correctly validated.
+ * "log --show-signature" did not pay attention to "--graph" option.
+
+-------------------------------------------------------------------
+Thu Jul 24 05:05:47 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.0.2:
+ * Documentation for "git submodule sync" forgot to say that the subcommand
+   can take the "--recursive" option.
+ * Mishandling of patterns in .gitignore that has trailing SPs quoted
+   with backslashes (e.g. ones that end with "\ ") have been
+   corrected.
+ * Recent updates to "git repack" started to duplicate objects that
+   are in packfiles marked with .keep flag into the new packfile by
+   mistake.
+ * "git clone -b brefs/tags/bar" would have mistakenly thought we were
+   following a single tag, even though it was a name of the branch,
+   because it incorrectly used strstr().
+ * "%G" (nothing after G) is an invalid pretty format specifier, but
+   the parser did not notice it as garbage.
+ * Code to avoid adding the same alternate object store twice was
+   subtly broken for a long time, but nobody seems to have noticed.
+ * A handful of code paths had to read the commit object more than
+   once when showing header fields that are usually not parsed.  The
+   internal data structure to keep track of the contents of the commit
+   object has been updated to reduce the need for this double-reading,
+   and to allow the caller find the length of the object.
+ * During "git rebase --merge", a conflicted patch could not be
+   skipped with "--skip" if the next one also conflicted.
+
+-------------------------------------------------------------------
+Mon Jun 30 20:26:47 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.0.1:
+  Maintenance release addressing interaction with tools, usability,
+  performance and misleading behaviour. Full list:
+  https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.0.1.txt
+
+-------------------------------------------------------------------
+Mon Jun 16 23:18:17 UTC 2014 - andreas.stieger@gmx.de
+
+- git 2.0.0
+- Backward compatibility notes:
+  * git push now uses "simple" semantics by default instead of
+    old "matching", use variable "push.default" to revert
+  * "git add -u" and "git add -A" operate on entire tree, use 
+    "git add -u ." or "git add -A ." for current directory only.
+  * "git add <path>" is the same as "git add -A <path>" now, use
+    "git add --ignore-removal <path>" for previous behaviour
+  * "-q" option of "git diff-files" has been removed. To ignore
+     deletion, use "git diff-files --diff-filter=d"
+  * "git request-pull" lost a few "heuristics"
+  * default prefix for "git svn" remote-tracking branches changed
+    from refs/remotes to refs/remotes/origin/ unless with "--prefix"
+- Updates, fixes and features as listed in:
+  https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.0.0.txt
+
+-------------------------------------------------------------------
+Wed Jun 11 20:36:00 UTC 2014 - andreas.stieger@gmx.de
+
+- git 1.9.4:
+   * Commands that take pathspecs on the command line misbehaved
+     when the pathspec is given as an absolute pathname (which is a
+     practice not particularly encouraged) that points at a
+     symbolic link in the working tree.
+   * An earlier fix to the shell prompt script (in contrib/) for
+     using the PROMPT_COMMAND interface did not correctly check if
+     the extra code path needs to trigger, causing the branch name
+     not to appear when 'promptvars' option is disabled in bash or
+     PROMPT_SUBST is unset in zsh.
+- switch to xz tarball form kernel.org
+
+-------------------------------------------------------------------
+Sun May 11 15:51:39 UTC 2014 - andreas.stieger@gmx.de
+
+- git 1.9.3:
+ * "git p4" dealing with changes in binary files were broken by a
+   change in 1.9 release.
+ * The shell prompt script (in contrib/), when using the
+   PROMPT_COMMAND interface, used an unsafe construct when showing
+   the branch name in $PS1.
+ * Some more Unicode codepoints defined in Unicode 6.3 as having
+   zero width have been taught to our display column counting
+   logic.
+
+-------------------------------------------------------------------
+Sun Apr 13 20:19:26 UTC 2014 - andreas.stieger@gmx.de
+
+- git 1.9.2:
+  * Fix an issue with "git fetch --prune" removing paths on
+    multiple fetch
+  * "git update-ref --stdin" did not fail a request to create a
+    ref when the ref already existed.
+  * "git diff --no-index -Mq a b" fell into an infinite loop.
+  * Do not override GIT_EDITOR when no commit message is required
+    to not affect other uses
+  * "git status --porcelain --branch" showed its output with labels
+    "ahead/behind/gone" translated to the user's locale.
+  * "git mv" that moves a submodule forgot to adjust the array that
+     uses to keep track of which submodules were to be moved to
+     update its configuration
+  * Length limit for the pathname used when removing a path in a
+    deep subdirectory has been removed to avoid buffer overflows.
+  * "git index-pack" used a wrong variable to name the keep-file in
+    an error message when the file cannot be written or closed.
+  * "rebase -i" produced a broken insn sheet when the title of a
+    commit happened to contain '\n' (or ended with '\c') due to a
+    careless use of 'echo'.
+  * Serving objects from a shallow repository needs to write a
+    new file to hold the temporary shallow boundaries but it was not
+    cleaned when we exit due to die() or a signal.
+  * When "git stash pop" stops after failing to apply the stash
+    (e.g. due to conflicting changes), the stash is not dropped.
+    State that explicitly in the output to let the users know.
+  * The labels in "git status" output that describe the nature of
+    conflicts (e.g. "both deleted") were limited to 20 bytes, which
+    was too short for some l10n (e.g. fr).
+  * minor documentation updates
+
+-------------------------------------------------------------------
+Fri Mar 21 07:24:45 UTC 2014 - burnus@net-b.de
+
+- update to 1.9.1
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.9.1.txt
+-------------------------------------------------------------------
+Sat Feb 22 20:01:02 UTC 2014 - burnus@net-b.de
+
+- update to version 1.9.0
+- Rediffed git-zsh-completion-fixes.diff
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.9.0.txt
+-------------------------------------------------------------------
+Wed Feb  5 14:08:04 CET 2014 - tiwai@suse.de
+
+- Fix a typo in git csh completion (non-existing label);
+  use the normal if/then/endif now instead
+
+-------------------------------------------------------------------
+Thu Jan 30 15:03:34 UTC 2014 - jengelh@inai.de
+
+- Put additional documentation formats (~8 MB) into a separate
+  subpackage
+
+-------------------------------------------------------------------
+Tue Jan 14 15:19:17 UTC 2014 - iartarisi@suse.com
+
+- Package the git subtree command
+- Add 0001-git-subtree-Use-gitexecdir-instead-of-libexecdir.patch - to
+  fix install paths for git-subtree
+
+
+-------------------------------------------------------------------
+Thu Dec 19 02:40:10 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.5.2
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.5.2.txt
+
+-------------------------------------------------------------------
+Tue Dec  3 16:21:45 CET 2013 - ohering@suse.de
+
+- Package also git-remote-hg and git-remote-bzr, so that 
+  git clone hg::$URL actually works
+
+-------------------------------------------------------------------
+Tue Dec  3 11:26:19 CET 2013 - tiwai@suse.de
+
+- Add missing obsoletes for git-remote-helpers subpackage, which
+  was dropped in git 1.8.5
+
+-------------------------------------------------------------------
+Mon Dec  2 17:38:45 CET 2013 - tiwai@suse.de
+
+- git-tcsh-completion-fixes.diff:
+  git-zsh-completion-fixes.diff:
+  install tcsh and zsh completion files (bnc#853183)
+
+-------------------------------------------------------------------
+Mon Dec  2 01:56:36 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.5
+
+  * remove git-python-install-fix.diff, no longer to use it.
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.5.txt
+
+-------------------------------------------------------------------
+Wed Nov 27 02:07:30 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.4.4
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.4.txt
+
+-------------------------------------------------------------------
+Wed Nov 13 07:51:29 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.4.3
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.3.txt
+
+-------------------------------------------------------------------
+Wed Oct 30 02:07:09 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.4.2
+
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.2.txt
+  
+-------------------------------------------------------------------
+Mon Oct 21 06:45:43 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.4.1
+
+  Bug fixes and a handful of trivial code clean-ups, documentation
+  updates, updates to the test suite, etc.
+  
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.1.txt
+
+-------------------------------------------------------------------
+Wed Sep  4 11:17:17 CEST 2013 - tiwai@suse.de
+
+- Add dependency on perl-Term-Readkey package to git-svn
+  (bnc#838027)
+
+-------------------------------------------------------------------
+Mon Aug 26 01:36:57 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.4:
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.txt
+
+-------------------------------------------------------------------
+Fri Aug  9 08:09:04 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.3.4:
+
+  * The bisect log listed incorrect commits when bisection ends with
+    only skipped ones.
+
+  * The test coverage framework was left broken for some time.
+
+  * The test suite for HTTP transport did not run with Apache 2.4.
+
+  * "git diff" used to fail when core.safecrlf is set and the working
+    tree contents had mixed CRLF/LF line endings. Committing such a
+    content must be prohibited, but "git diff" should help the user to
+    locate and fix such problems without failing.
+
+-------------------------------------------------------------------
+Wed Jul  3 06:42:03 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.3.2:
+  * bug fixes and documentation updates
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.3.2.txt
+
+-------------------------------------------------------------------
+Mon Jun 17 02:06:21 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.3.1:
+  *　bug fixes and documentation updates
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.3.1.txt
+
+-------------------------------------------------------------------
+Mon May 27 02:06:56 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.3:
+  * bug fixes and documentation updates
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.3.txt
+
+-------------------------------------------------------------------
+Wed May 15 05:45:30 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.2.3:
+  * bug fixes and documentation updates
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.2.3.txt
+
+-------------------------------------------------------------------
+Tue May  7 08:24:30 UTC 2013 - pgajdos@suse.com
+
+- revert change from Apr 26 07:22:29 UTC 2013; we will downgrade
+  cvsps package instead of having additional cvsps2, so git-cvs 
+  requires cvsps again
+
+-------------------------------------------------------------------
+Mon May  6 14:37:58 UTC 2013 - schwab@linux-m68k.org
+
+- Create links from %{gitexecdir}/git instead of %{gitexecdir}/git-add
+
+-------------------------------------------------------------------
+Sun May  5 05:17:32 UTC 2013 - douglarek@outlook.com
+
+- Updated to version 1.8.2.2:
+  * bug fixes and documentation updates
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.2.2.txt
+
+-------------------------------------------------------------------
+Fri May  3 10:16:28 UTC 2013 - speilicke@suse.com
+
+- Don't own /etc/apache2, buildrequire apache2 instead.
+
+-------------------------------------------------------------------
+Fri Apr 26 07:22:29 UTC 2013 - pgajdos@suse.com
+
+- require cvsps2 instead of cvsps [bnc#809800]
+
+-------------------------------------------------------------------
+Mon Apr  8 03:01:25 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.2.1:
+  * bug fixes and documentation updates
+  
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.2.1.txt
+
+-------------------------------------------------------------------
+Wed Apr  3 12:58:06 CEST 2013 - tiwai@suse.de
+
+- Add missing $HOME for git-daemon script that may result in a
+  fatal error at start (bnc#812893)
+
+-------------------------------------------------------------------
+Thu Mar 28 13:10:15 UTC 2013 - jengelh@inai.de
+
+- Enable PCRE and make it possible to use the
+  "grep.patternType=perl" config option
+
+-------------------------------------------------------------------
+Wed Mar 27 22:42:15 UTC 2013 - lchiquitto@suse.com
+
+- fix git-daemon's pre-uninstall script to correctly stop the
+  daemon after removal (bnc#812123)
+- fix git-daemon's post-uninstall script to restart the daemon
+  after update (bnc#812123)
+
+-------------------------------------------------------------------
+Thu Mar 14 03:29:56 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.2:
+
+  * a new release of 1.8.x, lots of bug fixes and documentation updates
+  * git-python-install-fix.diff changed
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.2.txt
+
+-------------------------------------------------------------------
+Tue Mar 12 04:24:24 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.1.5:
+
+  * minor fixes and documentation updates.
+
+  more details, please see here:
+  https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.1.5.txt
+
+-------------------------------------------------------------------
+Wed Feb 20 17:26:15 CET 2013 - tiwai@suse.de
+
+- updated to version 1.8.1.4:
+ * "git imap-send" talking over imaps:// did make sure it received a
+   valid certificate from the other end, but did not check if the
+   certificate matched the host it thought it was talking to.
+
+-------------------------------------------------------------------
+Sat Feb 16 02:19:25 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.1.3:
+
+    * minor fixes and documentation updates.
+
+    more details, please see here:
+    https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.1.3.txt
+
+-------------------------------------------------------------------
+Wed Jan 30 01:57:15 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.1.2:
+
+     * An element on GIT_CEILING_DIRECTORIES list that does not name the
+       real path to a directory (i.e. a symbolic link) could have caused
+       the GIT_DIR discovery logic to escape the ceiling.
+
+     * Command line completion for "tcsh" emitted an unwanted space
+       after completing a single directory name.
+
+     * Command line completion leaked an unnecessary error message while
+       looking for possible matches with paths in <tree-ish>.
+
+     * "git archive" did not record uncompressed size in the header when
+       streaming a zip archive, which confused some implementations of unzip.
+
+     * When users spelled "cc:" in lowercase in the fake "header" in the
+       trailer part, "git send-email" failed to pick up the addresses from
+       there. As e-mail headers field names are case insensitive, this
+       script should follow suit and treat "cc:" and "Cc:" the same way.
+
+    Also contains various documentation fixes.
+
+-------------------------------------------------------------------
+Thu Jan 17 02:08:43 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.1.1:
+
+    * minor fixes and documentation updates.
+
+    more details, please see here:
+    https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.1.1.txt
+
+-------------------------------------------------------------------
+Tue Jan  1 15:18:58 UTC 2013 - douglarek@outlook.com
+
+- updated to version 1.8.1:
+
+    * a bit of features.
+    * other minor fixes and documentation updates since v1.8.0.
+    
+    more details, please see here:
+    https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.1.txt.
+
+-------------------------------------------------------------------
+Fri Dec 14 00:46:08 UTC 2012 - douglarek@outlook.com
+
+- updated to version 1.8.0.2:
+
+     * Various codepaths have workaround for a common misconfiguration to
+       spell "UTF-8" as "utf8", but it was not used uniformly.  Most
+       notably, mailinfo (which is used by "git am") lacked this support.
+
+     * We failed to mention a file without any content change but whose
+       permission bit was modified, or (worse yet) a new file without any
+       content in the "git diff --stat" output.
+
+     * When "--stat-count" hides a diffstat for binary contents, the total
+       number of added and removed lines at the bottom was computed
+       incorrectly.
+
+     * When "--stat-count" hides a diffstat for unmerged paths, the total
+       number of affected files at the bottom of the "diff --stat" output
+       was computed incorrectly.
+
+     * "diff --shortstat" miscounted the total number of affected files
+       when there were unmerged paths.
+
+     * "git p4" used to try expanding malformed "$keyword$" that spans
+       across multiple lines.
+
+     * "git update-ref -d --deref SYM" to delete a ref through a symbolic
+       ref that points to it did not remove it correctly.
+
+     * Syntax highlighting in "gitweb" was not quite working.
+
+    Also contains other minor fixes and documentation updates.
+
+-------------------------------------------------------------------
+Tue Nov 27 02:54:50 UTC 2012 - douglarek@outlook.com
+
+- updated to version 1.8.0.1:
+
+    * a bit of features.
+
+    * other minor fixes and documentation updates since v1.8.0.
+
+    more details, please see here:
+    https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.0.1.txt.
+
+-------------------------------------------------------------------
+Mon Oct 22 12:21:08 UTC 2012 - douglarek@outlook.com
+
+- updated to version 1.8.0:
+
+     * a lot of features.
+
+     * minor documentation updates and code clean-ups.
+
+     * all the fixes since v1.7.12.
+
+     more details, please see here: 
+     https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.0.txt.
+
+-------------------------------------------------------------------
+Thu Oct 18 14:50:30 UTC 2012 - douglarek@outlook.com
+
+- updated to version 1.7.12.4:
+
+     * "git fetch" over the dumb-http revision walker could segfault when
+       curl's multi interface was used.
+
+     * It was possible to give specific paths for "asciidoc" and other
+       tools in the documentation toolchain, but not for "xmlto".
+
+     * "gitweb" did not give the correct committer timezone in its feed
+       output due to a typo.
+
+     * The "-Xours" (and similarly -Xtheirs) backend option to "git
+       merge -s recursive" was ignored for binary files.  Now it is
+       honored.
+
+     * The "binary" synthetic attribute made "diff" to treat the path as
+       binary, but not "merge".
+
+    Also contains many documentation updates.
+
+-------------------------------------------------------------------
+Thu Oct 11 00:19:07 CST 2012 - douglarek@outlook.com
+
+- updated to version 1.7.12.3:
+
+     * "git am" mishandled a patch attached as application/octet-stream
+       (e.g. not text/*); Content-Transfer-Encoding (e.g. base64) was not
+       honored correctly.
+
+     * It was unclear in the documentation for "git blame" that it is
+       unnecessary for users to use the "--follow" option.
+
+     * A repository created with "git clone --single" had its fetch
+       refspecs set up just like a clone without "--single", leading the
+       subsequent "git fetch" to slurp all the other branches, defeating
+       the whole point of specifying "only this branch".
+
+     * "git fetch" over http had an old workaround for an unlikely server
+       misconfiguration; it turns out that this hurts debuggability of the
+       configuration in general, and has been reverted.
+
+     * "git fetch" over http advertised that it supports "deflate", which
+       is much less common, and did not advertise the more common "gzip" on
+       its Accept-Encoding header.
+
+     * "git receive-pack" (the counterpart to "git push") did not give
+       progress output while processing objects it received to the puser
+       when run over the smart-http protocol.
+
+     * "git status" honored the ignore=dirty settings in .gitmodules but
+       "git commit" didn't.
+
+    Also contains a handful of documentation updates.
+
+-------------------------------------------------------------------
+Mon Oct  8 20:50:47 UTC 2012 - schwab@linux-m68k.org
+
+- Use ./.make also in %check to test exactly what was built
+- Avoid duplicate file warnings
+
+-------------------------------------------------------------------
+Thu Oct  4 22:29:10 CST 2012 - douglarek@outlook.com
+
+- updated to version 1.7.12.2:
+
+     * When "git am" is fed an input that has multiple "Content-type: ..."
+       header, it did not grok charset= attribute correctly.
+
+     * Even during a conflicted merge, "git blame $path" always meant to
+       blame uncommitted changes to the "working tree" version; make it
+       more useful by showing cleanly merged parts as coming from the other
+       branch that is being merged.
+
+     * "git blame MAKEFILE" run in a history that has "Makefile" but not
+       "MAKEFILE" should say "No such file MAKEFILE in HEAD", but got
+       confused on a case insensitive filesystem and failed to do so.
+
+     * "git fetch --all", when passed "--no-tags", did not honor the
+       "--no-tags" option while fetching from individual remotes (the same
+       issue existed with "--tags", but combination "--all --tags" makes
+       much less sense than "--all --no-tags").
+
+     * "git log/diff/format-patch --stat" showed the "N line(s) added"
+       comment in user's locale and caused careless submitters to send
+       patches with such a line in them to projects whose project language
+       is not their language, mildly irritating others. Localization to
+       the line has been disabled for now.
+
+     * "git log --all-match --grep=A --grep=B" ought to show commits that
+       mention both A and B, but when these three options are used with
+       --author or --committer, it showed commits that mention either A or
+       B (or both) instead.
+
+     * The subcommand to remove the definition of a remote in "git remote"
+       was named "rm" even though all other subcommands were spelled out.
+       Introduce "git remote remove" to remove confusion, and keep "rm" as
+       a backward compatible synonym.
+
+    Also contains a handful of documentation updates.
+
+-------------------------------------------------------------------
+Tue Sep 25 00:01:38 CST 2012 - douglarek@outlook.com
+
+- updated to version 1.7.12.1:
+
+    * "git apply -p0" did not parse pathnames on "diff --git" line
+       correctly.  This caused patches that had pathnames in no other
+       places to be mistakenly rejected (most notably, binary patch that
+       does not rename nor change mode).  Textual patches, renames or mode
+       changes have preimage and postimage pathnames in different places
+       in a form that can be parsed unambiguously and did not suffer from
+       this problem.
+
+     * "git cherry-pick A C B" used to replay changes in A and then B and
+       then C if these three commits had committer timestamps in that
+       order, which is not what the user who said "A C B" naturally
+       expects.
+
+     * "git commit --amend" let the user edit the log message and then
+       died when the human-readable committer name was given
+       insufficiently by getpwent(3).
+
+     * Some capabilities were asked by fetch-pack even when upload-pack
+       did not advertise that they are available.  fetch-pack has been
+       fixed not to do so.
+
+     * "git diff" had a confusion between taking data from a path in the
+       working tree and taking data from an object that happens to have
+       name 0{40} recorded in a tree.
+
+     * "git for-each-ref" did not correctly support more than one --sort
+       option.
+
+     * "git log .." errored out saying it is both rev range and a path
+       when there is no disambiguating "--" is on the command line.
+       Update the command line parser to interpret ".." as a path in such
+       a case.
+
+     * The "--topo-order", "--date-order" (and the lack of either means
+       the default order) options to "rev-list" and "log" family of
+       commands were poorly described in the documentation.
+
+     * "git prune" without "-v" used to warn about leftover temporary
+       files (which is an indication of an earlier aborted operation).
+
+     * Pushing to smart HTTP server with recent Git fails without having
+       the username in the URL to force authentication, if the server is
+       configured to allow GET anonymously, while requiring authentication
+       for POST.
+
+     * The reflog entries left by "git rebase" and "git rebase -i" were
+       inconsistent (the interactive one gave an abbreviated object name).
+
+     * When "git push" triggered the automatic gc on the receiving end, a
+       message from "git prune" that said it was removing cruft leaked to
+       the standard output, breaking the communication protocol.
+
+     * "git show --quiet" ought to be a synonym for "git show -s", but
+       wasn't.
+
+     * "git show --format='%ci'" did not give timestamp correctly for
+       commits created without human readable name on "committer" line.
+
+     * "git send-email" did not unquote encoded words that appear on the
+       header correctly, and lost "_" from strings.
+
+     * The interactive prompt "git send-email" gives was error prone. It
+       asked "What e-mail address do you want to use?" with the address it
+       guessed (correctly) the user would want to use in its prompt,
+       tempting the user to say "y". But the response was taken as "No,
+       please use 'y' as the e-mail address instead", which is most
+       certainly not what the user meant.
+
+     * "gitweb" when used with PATH_INFO failed to notice directories with
+       SP (and other characters that need URL-style quoting) in them.
+
+     * When the user gives an argument that can be taken as both a
+       revision name and a pathname without disambiguating with "--", we
+       used to give a help message "Use '--' to separate".  The message
+       has been clarified to show where that '--' goes on the command
+       line.
+
+     * When the user exports a non-default IFS without HT, scripts that
+       rely on being able to parse "ls-files -s | while read a b c..."
+       started to fail.  Protect them from such a misconfiguration.
+
+     * The attribute system may be asked for a path that itself or its
+       leading directories no longer exists in the working tree, and it is
+       fine if we cannot open .gitattribute file in such a case.  Failure
+       to open per-directory .gitattributes with error status other than
+       ENOENT and ENOTDIR should be diagnosed, but it wasn't.
+
+     * After "gitk" showed the contents of a tag, neither "Reread
+       references" nor "Reload" did not update what is shown as the
+       contents of it, when the user overwrote the tag with "git tag -f".
+
+     * "ciabot" script (in contrib/) has been updated with extensive
+       documentation.
+
+     * "git-jump" script (in contrib/) did not work well when
+       diff.noprefix or diff.mnemonicprefix is in effect.
+
+     * Older parts of the documentation described as if having a regular
+       file in .git/refs/ hierarchy were the only way to have branches and
+       tags, which is not true for quite some time.
+
+     * A utility shell function test_seq has been added as a replacement
+       for the 'seq' utility found on some platforms.
+
+     * Compatibility wrapper to learn the maximum number of file
+       descriptors we can open around sysconf(_SC_OPEN_MAX) and
+       getrlimit(RLIMIT_NO_FILE) has been introduced for portability.
+
+     * We used curl_easy_strerror() without checking version of cURL,
+       breaking the build for versions before curl 7.12.0.
+
+     * Code to work around MacOS X UTF-8 gotcha has been cleaned up.
+
+     * Fallback 'getpass' implementation made unportable use of stdio API.
+
+     * The "--rebase" option to "git pull" can be abbreviated to "-r",
+       but we didn't document it.
+
+     * It was generally understood that "--long-option"s to many of our
+       subcommands can be abbreviated to the unique prefix, but it was not
+       easy to find it described for new readers of the documentation set.
+
+     * The synopsis said "checkout [-B branch]" to make it clear the
+       branch name is a parameter to the option, but the heading for the
+       option description was "-B::", not "-B branch::", making the
+       documentation misleading.
+
+    Also contains numerous documentation updates.
+
+-------------------------------------------------------------------
+Wed Sep 12 14:43:30 UTC 2012 - frank.lichtenheld@sophos.com
+
+- git-prompt.sh (for __git_ps1) was broken out of
+  git-completion.bash. Install it too.
+
+-------------------------------------------------------------------
+Tue Sep 11 14:53:25 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.7.12:
+  Major version update; new XDG-compliant config file place, 
+  new options, new commands:
+  See Documentation/RelNotes/1.7.12.txt for details.
+  
+- fix broken bash completion when egrep is aliased with --color
+  option (bnc#779536)
+
+-------------------------------------------------------------------
+Thu Aug 16 11:57:53 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.7.11.5:
+  * The Makefile rule to create assembly output (primarily for
+   debugging purposes) did not create it next to the source.
+ * The code to avoid mistaken attempt to add the object directory
+   itself as its own alternate could read beyond end of a string while
+   comparison.
+ * On some architectures, "block-sha1" did not compile correctly
+   when compilers inferred alignment guarantees from our source we
+   did not intend to make.
+ * When talking to a remote running ssh on IPv6 enabled host, whose
+   address is spelled as "[HOST]:PORT", we did not parse the address
+   correctly and failed to connect.
+ * git-blame.el (in compat/) have been updated to use Elisp more
+   correctly.
+ * "git checkout <branchname>" to come back from a detached HEAD state
+   incorrectly computed reachability of the detached HEAD, resulting
+   in unnecessary warnings.
+ * "git mergetool" did not support --tool-help option to give the list
+   of supported backends, like "git difftool" does.
+ * "git grep" stopped spawning an external "grep" long time ago, but a
+   duplicated test to check internal and external "grep" was left
+   behind.
+
+-------------------------------------------------------------------
+Tue Aug  7 14:48:24 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.7.11:
+  Major version update; added new options in many commands and
+  new push mode like "simple"
+  See Documentation/RelNotes/1.7.11.txt for details.
+
+- updated to version 1.7.11.1, 1.7.11.2, 1.7.11.3, 1.7.11.4:
+  Contains many minor fixes, see below for details
+  Documentation/RelNotes/1.7.11.1.txt
+  Documentation/RelNotes/1.7.11.2.txt
+  Documentation/RelNotes/1.7.11.3.txt
+  Documentation/RelNotes/1.7.11.4.txt
+
+-------------------------------------------------------------------
+Tue Jun  5 11:43:40 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.7.10.4: just minor fixes in git-checkout,
+  git-grep, git-rebase, updated translations and documents.
+  See Documentation/RelNotes/1.7.10.4.txt for details.
+
+-------------------------------------------------------------------
+Tue May 29 11:13:32 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.7.10.3:
+ * From this release on, the "git merge" command in an interactive
+   session will start an editor when it automatically resolves the
+   merge for the user to explain the resulting commit, just like the
+   "git commit" command does when it wasn't given a commit message.
+
+ * The "--binary/-b" options to "git am" have been a no-op for quite a
+   while and were deprecated in mid 2008 (v1.6.0).  When you give these
+   options to "git am", it will now warn and ask you not to use them.
+
+ * When you do not tell which branches and tags to push to the "git
+   push" command in any way, the command used "matching refs" rule to
+   update remote branches and tags with branches and tags with the
+   same name you locally have.
+
+  See details and more changes in Documentation/RelNotes/1.7.10.txt,
+  1.7.10.1.txt, 1.7.10.2.txt and 1.7.10.3.txt.
+
+-------------------------------------------------------------------
+Tue May  1 16:40:22 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Fix build on SLE_11, seems %files there doesn't support more
+  than one -f option
+
+-------------------------------------------------------------------
+Mon Feb 27 11:43:15 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.7.9.2:
+  * Bash completion script (in contrib/) did not like a pattern that
+    begins with a dash to be passed to __git_ps1 helper function.
+  * Adaptation of the bash completion script (in contrib/) for zsh
+    incorrectly listed all subcommands when "git <TAB><TAB>" was given
+    to ask for list of porcelain subcommands.
+  * The build procedure for profile-directed optimized binary was not
+    working very well.
+  * Some systems need to explicitly link -lcharset to get locale_charset().
+  * t5541 ignored user-supplied port number used for HTTP server testing.
+  * The error message emitted when we see an empty loose object was
+    not phrased correctly.
+  * The code to ask for password did not fall back to the terminal
+    input when GIT_ASKPASS is set but does not work (e.g. lack of X
+    with GUI askpass helper).
+  * We failed to give the true terminal width to any subcommand when
+    they are invoked with the pager, i.e. "git -p cmd".
+  * map_user() was not rewriting its output correctly, which resulted
+    in the user visible symptom that "git blame -e" sometimes showed
+    excess '>' at the end of email addresses.
+  * "git checkout -b" did not allow switching out of an unborn branch.
+  * When you have both .../foo and .../foo.git, "git clone .../foo" did not
+    favor the former but the latter.
+  * "git commit" refused to create a commit when entries added with
+    "add -N" remained in the index, without telling Git what their content
+    in the next commit should be. We should have created the commit without
+    these paths.
+  * "git diff --stat" said "files", "insertions", and "deletions" even
+    when it is showing one "file", one "insertion" or one "deletion".
+  * The output from "git diff --stat" for two paths that have the same
+    amount of changes showed graph bars of different length due to the
+    way we handled rounding errors.
+  * "git grep" did not pay attention to -diff (hence -binary) attribute.
+  * The transport programs (fetch, push, clone)ignored --no-progress
+    and showed progress when sending their output to a terminal.
+  * Sometimes error status detected by a check in an earlier phase of
+    "git receive-pack" (the other end of "git push") was lost by later
+    checks, resulting in false indication of success.
+  * "git rev-list --verify" sometimes skipped verification depending on
+    the phase of the moon, which dates back to 1.7.8.x series.
+  * Search box in "gitweb" did not accept non-ASCII characters correctly.
+  * Search interface of "gitweb" did not show multiple matches in the same file
+    correctly.
+
+-------------------------------------------------------------------
+Thu Feb  9 10:04:38 CET 2012 - tiwai@suse.de
+
+- updated to v1.7.9:
+ * gitk updates accumulated since early 2011.
+
+ * git-gui updated to 0.16.0.
+
+ * git-p4 (in contrib/) updates.
+
+ * Git uses gettext to translate its most common interface messages
+   into the user's language if translations are available and the
+   locale is appropriately set. Distributors can drop new PO files
+   in po/ to add new translations.
+
+ * The code to handle username/password for HTTP transactions used in
+   "git push" & "git fetch" learned to talk "credential API" to
+   external programs to cache or store them, to allow integration with
+   platform native keychain mechanisms.
+
+ * The input prompts in the terminal use our own getpass() replacement
+   when possible. HTTP transactions used to ask for the username without
+   echoing back what was typed, but with this change you will see it as
+   you type.
+
+ * The internals of "revert/cherry-pick" have been tweaked to prepare
+   building more generic "sequencer" on top of the implementation that
+   drives them.
+
+ * "git rev-parse FETCH_HEAD" after "git fetch" without specifying
+   what to fetch from the command line will now show the commit that
+   would be merged if the command were "git pull".
+
+ * "git add" learned to stream large files directly into a packfile
+   instead of writing them into individual loose object files.
+
+ * "git checkout -B <current branch> <elsewhere>" is a more intuitive
+   way to spell "git reset --keep <elsewhere>".
+
+ * "git checkout" and "git merge" learned "--no-overwrite-ignore" option
+   to tell Git that untracked and ignored files are not expendable.
+
+ * "git commit --amend" learned "--no-edit" option to say that the
+   user is amending the tree being recorded, without updating the
+   commit log message.
+
+ * "git commit" and "git reset" re-learned the optimization to prime
+   the cache-tree information in the index, which makes it faster to
+   write a tree object out after the index entries are updated.
+
+ * "git commit" detects and rejects an attempt to stuff NUL byte in
+   the commit log message.
+
+ * "git commit" learned "-S" to GPG-sign the commit; this can be shown
+   with the "--show-signature" option to "git log".
+
+ * fsck and prune are relatively lengthy operations that still go
+   silent while making the end-user wait. They learned to give progress
+   output like other slow operations.
+
+ * The set of built-in function-header patterns for various languages
+   knows MATLAB.
+
+ * "git log --format='<format>'" learned new %g[nNeE] specifiers to
+   show information from the reflog entries when walking the reflog
+   (i.e. with "-g").
+
+ * "git pull" can be used to fetch and merge an annotated/signed tag,
+   instead of the tip of a topic branch. The GPG signature from the
+   signed tag is recorded in the resulting merge commit for later
+   auditing.
+
+ * "git log" learned "--show-signature" option to show the signed tag
+   that was merged that is embedded in the merge commit. It also can
+   show the signature made on the commit with "git commit -S".
+
+ * "git branch --edit-description" can be used to add descriptive text
+   to explain what a topic branch is about.
+
+ * "git fmt-merge-msg" learned to take the branch description into
+   account when preparing a merge summary that "git merge" records
+   when merging a local branch.
+
+ * "git request-pull" has been updated to convey more information
+   useful for integrators to decide if a topic is worth merging and
+   what is pulled is indeed what the requestor asked to pull,
+   including:
+
+   - the tip of the branch being requested to be merged;
+   - the branch description describing what the topic is about;
+   - the contents of the annotated tag, when requesting to pull a tag.
+
+ * "git pull" learned to notice 'pull.rebase' configuration variable,
+   which serves as a global fallback for setting 'branch.<name>.rebase'
+   configuration variable per branch.
+
+ * "git tag" learned "--cleanup" option to control how the whitespaces
+   and empty lines in tag message are cleaned up.
+
+ * "gitweb" learned to show side-by-side diff.
+
+-------------------------------------------------------------------
+Fri Jan 27 15:58:06 UTC 2012 - jpschewe@mtu.net
+
+- Added the ability to specify the user and group that git-daemon run
+  as (bnc#742661).
+
+-------------------------------------------------------------------
+Wed Jan 11 12:41:46 UTC 2012 - idonmez@suse.com
+
+- Update to v1.7.8.3
+
+  * Attempt to fetch from an empty file pretending it to be a bundle did
+   not error out correctly.
+
+  * gitweb did not correctly fall back to configured $fallback_encoding
+   that is not 'latin1'.
+
+  * "git clone --depth $n" did not catch a non-number given as $n as an
+   error.
+
+  * Porcelain commands like "git reset" did not distinguish deletions
+    and type-changes from ordinary modification, and reported them with
+    the same 'M' moniker. They now use 'D' (for deletion) and 'T' (for
+    type-change) to match "git status -s" and "git diff --name-status".
+  
+  * You could make "git commit" segfault by giving the "--no-message"
+   option.
+
+  * "git checkout -m" did not recreate the conflicted state in a "both
+   sides added, without any common ancestor version" conflict
+   situation.
+
+  * git native connection going over TCP (not over SSH) did not set
+   SO_KEEPALIVE option which failed to receive link layer errors.
+
+  * "fast-import" did not correctly update an existing notes tree,
+   possibly corrupting the fan-out.
+
+  * "git log --follow" did not honor the rename threshold score given
+   with the -M option (e.g. "-M50%").
+
+  * Authenticated "git push" over dumb HTTP were broken with a recent
+   change and failed without asking for password when username is
+   given.
+
+  * "git push" to an empty repository over HTTP were broken with a
+   recent change to the ref handling.
+
+  * "git push -v" forgot how to be verbose by mistake. It now properly
+   becomes verbose when asked to.
+
+  * When a "reword" action in "git rebase -i" failed to run "commit --amend",
+   we did not give the control back to the user to resolve the situation, and
+   instead kept the original commit log message.
+
+  * "git apply --check" did not error out when given an empty input
+   without any patch.
+
+  * "git archive" mistakenly allowed remote clients to ask for commits
+   that are not at the tip of any ref.
+
+  * "git checkout" and "git merge" treated in-tree .gitignore and exclude
+   file in $GIT_DIR/info/ directory inconsistently when deciding which
+   untracked files are ignored and expendable.
+
+  * The function header pattern for files with "diff=cpp" attribute did
+   not consider "type *funcname(type param1,..." as the beginning of a
+   function.
+
+  * The error message from "git diff" and "git status" when they fail
+   to inspect changes in submodules did not report which submodule they
+   had trouble with.
+
+  * "git pack-objects" avoids creating cyclic dependencies among deltas
+   when seeing a broken packfile that records the same object in both
+   the deflated form and as a delta.
+
+-------------------------------------------------------------------
+Tue Dec 13 18:11:00 UTC 2011 - idonmez@suse.com
+
+- Implement %check via make test
+
+- Update to v1.7.8
+
+ New features:
+
+ * The date parser now accepts timezone designators that lack minutes
+   part and also has a colon between "hh:mm".
+ 
+ * The contents of the /etc/mailname file, if exists, is used as the
+   default value of the hostname part of the committer/author e-mail.
+
+ * "git am" learned how to read from patches generated by Hg.
+
+ * "git archive" talking with a remote repository can report errors
+   from the remote side in a more informative way.
+
+ * "git branch" learned an explicit --list option to ask for branches
+   listed, optionally with a glob matching pattern to limit its output.
+
+ * "git check-attr" learned "--cached" option to look at .gitattributes
+   files from the index, not from the working tree.
+
+ * Variants of "git cherry-pick" and "git revert" that take multiple
+   commits learned to "--continue" and "--abort".
+
+ * "git daemon" gives more human readble error messages to clients
+   using ERR packets when appropriate.
+
+ * Errors at the network layer is logged by "git daemon".
+
+ * "git diff" learned "--minimal" option to spend extra cycles to come
+   up with a minimal patch output.
+
+ * "git diff" learned "--function-context" option to show the whole
+   function as context that was affected by a change.
+
+ * "git difftool" can be told to skip launching the tool for a path by
+   answering 'n' to its prompt.
+
+ * "git fetch" learned to honor transfer.fsckobjects configuration to
+   validate the objects that were received from the other end, just like
+   "git receive-pack" (the receiving end of "git push") does.
+
+ * "git fetch" makes sure that the set of objects it received from the
+   other end actually completes the history before updating the refs.
+   "git receive-pack" (the receiving end of "git push") learned to do the
+   same.
+
+ * "git fetch" learned that fetching/cloning from a regular file on the
+   filesystem is not necessarily a request to unpack a bundle file; the
+   file could be ".git" with "gitdir: <path>" in it.
+
+ * "git for-each-ref" learned "%(contents:subject)", "%(contents:body)"
+   and "%(contents:signature)". The last one is useful for signed tags.
+
+ * "git grep" used to incorrectly pay attention to .gitignore files
+   scattered in the directory it was working in even when "--no-index"
+   option was used. It no longer does this. The "--exclude-standard"
+   option needs to be given to explicitly activate the ignore
+   mechanism.
+
+ * "git grep" learned "--untracked" option, where given patterns are
+    searched in untracked (but not ignored) files as well as tracked
+    files in the working tree, so that matches in new but not yet
+    added files do not get missed.
+
+ * The recursive merge backend no longer looks for meaningless
+   existing merges in submodules unless in the outermost merge.
+
+ * "git log" and friends learned "--children" option.
+
+ * "git ls-remote" learned to respond to "-h"(elp) requests.
+
+ * "mediawiki" remote helper can interact with (surprise!) MediaWiki
+   with "git fetch" & "git push".
+
+ * "git merge" learned the "--edit" option to allow users to edit the
+   merge commit log message.
+
+ * "git rebase -i" can be told to use special purpose editor suitable
+   only for its insn sheet via sequence.editor configuration variable.
+
+ * "git send-email" learned to respond to "-h"(elp) requests.
+
+ * "git send-email" allows the value given to sendemail.aliasfile to begin
+   with "~/" to refer to the $HOME directory.
+
+ * "git send-email" forces use of Authen::SASL::Perl to work around
+   issues between Authen::SASL::Cyrus and AUTH PLAIN/LOGIN.
+
+ * "git stash" learned "--include-untracked" option to stash away
+   untracked/ignored cruft from the working tree.
+
+ * "git submodule clone" does not leak an error message to the UI
+   level unnecessarily anymore.
+
+ * "git submodule update" learned to honor "none" as the value for
+   submodule.<name>.update to specify that the named submodule should
+   not be checked out by default.
+
+ * When populating a new submodule directory with "git submodule init",
+   the $GIT_DIR metainformation directory for submodules is created inside
+   $GIT_DIR/modules/<name>/ directory of the superproject and referenced
+   via the gitfile mechanism. This is to make it possible to switch
+   between commits in the superproject that has and does not have the
+   submodule in the tree without re-cloning.
+
+ * "gitweb" leaked unescaped control characters from syntax hiliter
+   outputs.
+
+ * "gitweb" can be told to give custom string at the end of the HTML
+   HEAD element.
+
+ * "gitweb" now has its own manual pages.
+
+ Bugfixes since v1.7.7 
+
+ * HTTP transport did not use pushurl correctly, and also did not tell
+   what host it is trying to authenticate with when asking for
+   credentials.
+   (merge deba493 jk/http-auth later to maint).
+
+ * "git blame" was aborted if started from an uncommitted content and
+   the path had the textconv filter in effect.
+   (merge 8518088 ss/blame-textconv-fake-working-tree later to maint).
+
+ * Adding many refs to the local repository in one go (e.g. "git fetch"
+   that fetches many tags) and looking up a ref by name in a repository
+   with too many refs were unnecessarily slow.
+   (merge 17d68a54d jp/get-ref-dir-unsorted later to maint).
+
+ * Report from "git commit" on untracked files was confused under
+   core.ignorecase option.
+   (merge 395c7356 jk/name-hash-dirent later to maint).
+
+ * "git merge" did not understand ":/<pattern>" as a way to name a commit.
+
+ " "git push" on the receiving end used to call post-receive and post-update
+   hooks for attempted removal of non-existing refs.
+   (merge 160b81ed ph/push-to-delete-nothing later to maint).
+
+ * Help text for "git remote set-url" and "git remote set-branches"
+   were misspelled.
+   (merge c49904e fc/remote-seturl-usage-fix later to maint).
+   (merge 656cdf0 jc/remote-setbranches-usage-fix later to maint). 
+
+-------------------------------------------------------------------
+Thu Nov 10 15:29:38 CET 2011 - tiwai@suse.de
+
+- update to git 1.7.7.3: minor bug-fix release;
+  See Documentation/RelNotes/1.7.7.3.txt for details.
+
+-------------------------------------------------------------------
+Thu Nov  3 10:49:09 CET 2011 - tiwai@suse.de
+
+- update to git 1.7.7.1:
+- update to git 1.7.7.2: bug-fix releases; 
+  See Documentation/RelNotes/1.7.7.1.txt and
+      Documentation/RelNotes/1.7.7.2.txt for details.
+
+-------------------------------------------------------------------
+Mon Oct 17 11:44:29 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  SPDX format (See http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Mon Oct 17 11:47:26 CEST 2011 - tiwai@suse.de
+
+- correct license tag to "GPL v2 only" (bnc#724499)
+
+-------------------------------------------------------------------
+Fri Oct 14 10:16:24 CEST 2011 - tiwai@suse.de
+
+- split cgit builds to an individual repo
+
+-------------------------------------------------------------------
+Tue Oct  4 20:20:00 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.7: major update from 1.7.6.x, including i18n/l10n
+  prepartion, updates of git-p4, gitweb, improved coloring,
+  various updates of git-am, git-bisect, git-cherck-attr, etc.
+  See Documentation/RelNotes/1.7.7.txt for details.
+
+-------------------------------------------------------------------
+Mon Sep 26 12:55:36 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.6.4: minor bug fixes for git-am, git-branch,
+  git-clone, etc
+  See Documentation/RelNotes/1.7.6.4.txt for details.
+
+-------------------------------------------------------------------
+Wed Sep 21 08:43:35 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.6.2, 1.7.6.3: minor bug fix releases
+  git-fetch performance fix, other fixes in git-reflog, reset,
+  status, tag
+  See Documentation/RelNotes/1.7.6.[23].txt for details.
+
+-------------------------------------------------------------------
+Thu Aug 25 12:15:47 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.6.1: bug fix release; many fixes for e.g. git
+  checkout, git diff, git fetch, etc.
+  See Documentation/RelNotes/1.7.6.1.txt for details.
+
+-------------------------------------------------------------------
+Wed Jun 29 17:38:24 CEST 2011 - tiwai@suse.de
+
+- Add SuSEfirewall profile for git-daemon (bnc#628048)
+
+-------------------------------------------------------------------
+Mon Jun 27 18:15:30 CEST 2011 - tiwai@suse.de
+
+- update to 1.7.6: major update from 1.7.5.x
+ * Similar to branch names, tagnames that begin with "-" are now
+   disallowed.
+ * Simpler handling of a large file depending on core.bigfilethreshold
+   value
+ * A magic pathspec ":/" handling
+ * Some new options and improvements in git-blame, git-commit, git-diff
+   git-grep, git-format-patch, git-merge, git-svn, etc
+ * More prepartaion for i18n/l10n.
+ See Documentation/RelNotes/1.7.6.txt for details.
+
+-------------------------------------------------------------------
+Fri Jun 24 11:36:31 CEST 2011 - tiwai@suse.de
+
+- fix html path (bnc#675392)
+
+-------------------------------------------------------------------
+Fri Jun 17 11:53:21 CEST 2011 - tiwai@suse.de
+
+- Fix VUL-1: git-web xss (CVE-2011-2186, bnc#698456)
+
+-------------------------------------------------------------------
+Mon Jun  6 16:02:12 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.5.4: maintainance update, fixing in git-add -p
+  option, git diff -C option, and git-rerere merge error fix, etc
+
+-------------------------------------------------------------------
+Fri May 27 11:43:23 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.5.x: maintenance update release, see
+  Documentation/RelNotes/1.7.5.3.txt
+  Documentation/RelNotes/1.7.5.2.txt
+  Documentation/RelNotes/1.7.5.1.txt
+- updated to 1.7.5: major version update
+ * Various vcs-svn, git-svn and gitk enhancements and fixes.
+ * Various git-gui updates (0.14.0).
+ * Improved bash completion script
+ * "git repo-config" is officially deprecated
+ * "git checkout" performed on detached HEAD gives a warning
+ * "git cherry-pick" and "git revert" can have a custom merge strategy
+ * "git cherry-pick" remembers which commit failed to apply when it is
+   stopped by conflicts
+ * "git cvsimport" bails out immediately when cvs server is unreachable
+ * "git fetch" vs "git upload-pack" transfer learned 'no-done' protocol
+   extension
+ * "git fetch" can be told to recursively fetch submodules on-demand
+ * "git grep -f <filename>" learned to treat "-"
+ * "git init" learned the --separate-git-dir option
+ * "git log" type commands now understand globbing pathspecs
+ * "git log" family of commands learned --cherry and --cherry-mark options
+ * "git mergetool" learned how to drive "beyond compare 3" as well
+ * "git rerere forget" semantic changes
+ * "git push" with no parameters gives better advice messages
+ * a new "git rerere" subcommand "remaining"
+ See more details in Documentation/RelNotes/1.7.5.txt
+
+-------------------------------------------------------------------
+Mon Mar 28 18:18:54 CEST 2011 - tiwai@suse.de
+
+- updated to 1.7.4.2:
+ * documentation updates, small bug fixes;
+   see included Documentation/RelNotes/1.7.4.2.txt
+
+-------------------------------------------------------------------
+Thu Feb 24 17:42:33 CET 2011 - dmueller@suse.de
+
+- update to 1.7.4.1:
+  * major version update, see included Documentation/RelNotes/1.7.4.txt
+
+-------------------------------------------------------------------
+Tue Feb 15 17:28:12 UTC 2011 - chris@computersalat.de
+
+- mod apache config
+  o remove ending "/" from alias (Alias /git "/usr/share/gitweb/")
+
+-------------------------------------------------------------------
+Fri Dec 17 17:51:32 CET 2010 - tiwai@suse.de
+
+- updated to git 1.7.3.3:
+  In addition to the usual fixes, this release also includes
+  support for the new "add.ignoreErrors" name given to the
+  existing "add.ignore-errors" configuration variable.
+- updated to git 1.7.3.4:
+  Among many fixes since v1.7.3.3, it contains a fix to a recently
+  discovered XSS vulnerability in Gitweb (CVE 2010-3906)
+
+-------------------------------------------------------------------
+Mon Dec 13 09:01:59 UTC 2010 - coolo@novell.com
+
+- fix file list for perl module on factory
+
+-------------------------------------------------------------------
+Wed Dec  1 23:45:44 CET 2010 - dmueller@suse.de
+
+- update to git 1.7.3.2:
+  This is primarily to push out many documentation fixes
+  accumulated since the 1.7.3.1 release.
+
+-------------------------------------------------------------------
+Thu Sep 30 08:21:27 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.3:
+  major version update; new options and behavior for git-rebase,
+  git-clean, git-checkout, git-gui.
+  See release note:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.3.txt
+- updated to git 1.7.3.1:
+  fix git-stash breakages
+- Set NO_CROSS_DIRECTORY_HARDLINKS=1 to satisfy BS
+
+-------------------------------------------------------------------
+Fri Aug 20 09:54:04 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.2.2:
+  This is primarily for fixing a hanging bug in the smart http
+  transport, but also comes with a lot of documentation udpates.
+  See release note:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.2.2.txt
+
+-------------------------------------------------------------------
+Thu Jul 29 13:43:28 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.2.1: minor fixes for git-instaweb, git-web,
+  git-config.  See release note:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.2.1.txt
+
+-------------------------------------------------------------------
+Thu Jul 22 12:19:02 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.2: mostly bug fixes and small enhancements;
+  see the release note:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.2.txt
+- gitweb stuff is moved to /usr/share/gitweb
+
+-------------------------------------------------------------------
+Tue Jun  1 02:56:35 CEST 2010 - pbaudis@suse.cz
+
+- Fix the git.xinetd to be disabled by default and the --base-path setting
+  [bnc#495060, bnc#461726]
+- Fix missing dependencies of git send-email [bnc#561690]
+- Fix spurious perl-Error provides [bnc#578273]
+- Drop global $COMP_WORDBREAKS change from bash-completion [bnc#446506]
+
+-------------------------------------------------------------------
+Tue May 18 20:14:19 UTC 2010 - chris@computersalat.de
+
+- install missing gitweb.js
+
+-------------------------------------------------------------------
+Mon Apr 26 08:26:42 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.1:
+  including fixes in previous 1.7.0.x releases, a few new behavior
+  changes; see the release note:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.1.txt
+
+-------------------------------------------------------------------
+Thu Apr  8 23:21:51 CEST 2010 - dmueller@suse.de
+
+- require the correct perl-base version
+
+-------------------------------------------------------------------
+Thu Apr  1 13:35:17 CEST 2010 - tiwai@suse.de
+
+- updated to git 1.7.0.4: minor fixes
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.0.4.txt
+
+-------------------------------------------------------------------
+Mon Mar 22 17:30:46 CET 2010 - tiwai@suse.de
+
+- updated to git 1.7.0.3: just minor fixes
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.0.3.txt
+
+-------------------------------------------------------------------
+Mon Mar  8 08:40:02 CET 2010 - tiwai@suse.de
+
+- updated to git 1.7.0.2:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.0.2.txt
+
+-------------------------------------------------------------------
+Mon Mar  1 12:47:24 CET 2010 - tiwai@suse.de
+
+- updated to git 1.7.0.1; just a minor update
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.0.1.txt
+
+-------------------------------------------------------------------
+Thu Feb 25 17:42:15 CET 2010 - tiwai@suse.de
+
+- don't use %py_requires macro, otherwise it add an implicit
+  dependency to git.rpm
+
+-------------------------------------------------------------------
+Sat Feb 20 19:16:04 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags, use %_libexecdir for gitexecdir
+
+-------------------------------------------------------------------
+Wed Feb 17 10:00:42 CET 2010 - tiwai@suse.de
+
+- fix installation of python stuff
+
+-------------------------------------------------------------------
+Mon Feb 15 09:31:29 CET 2010 - tiwai@suse.de
+
+- updated to version 1.7.0: Major update
+  See details in
+      http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.7.0.txt
+
+  Notes on behaviour change:
+  * "git push" into a branch that is currently checked out (i.e. pointed at by
+   HEAD in a repository that is not bare) is refused by default.
+ * "git send-email" does not make deep threads by default when sending a
+   patch series with more than two messages.  All messages will be sent
+   as a reply to the first message, i.e. cover letter.
+ * "git status" is not "git commit --dry-run" anymore.  This change does
+   not affect you if you run the command without argument.
+ * "git diff" traditionally treated various "ignore whitespace" options
+   only as a way to filter the patch output.  "git diff --exit-code -b"
+   exited with non-zero status even if all changes were about changing the
+   amount of whitespace and nothing else;  and "git diff -b" showed the
+   "diff --git" header line for such a change without patch text.
+ * External diff and textconv helpers are now executed using the shell.
+   This makes them consistent with other programs executed by git, and
+   allows you to pass command-line parameters to the helpers. Any helper
+   paths containing spaces or other metacharacters now need to be
+   shell-quoted.  The affected helpers are GIT_EXTERNAL_DIFF in the
+   environment, and diff.*.command and diff.*.textconv in the config
+   file.
+ * The --max-pack-size argument to 'git repack', 'git pack-objects', and
+   'git fast-import' was assuming the provided size to be expressed in MiB,
+   unlike the corresponding config variable and other similar options accepting
+   a size value.  It is now expecting a size expressed in bytes, with a possible
+   unit suffix of 'k', 'm', or 'g'.
+
+- added git-remote-helpers sub-package for python helpers
+
+-------------------------------------------------------------------
+Thu Jan 21 08:24:01 CET 2010 - tiwai@suse.de
+
+- updated to version 1.6.6:
+  * "git fsck" defaults to "git fsck --full" and will take longer
+  * check "Preparing yourselves for compatibility issues in 1.7.0"
+    section below for the future update
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.6.txt
+- updated to version 1.6.6.1; minor bug fixes
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.6.1.txt
+
+-------------------------------------------------------------------
+Fri Dec 18 17:30:02 CET 2009 - tiwai@suse.de
+
+- updated to version 1.6.5.7; minor bug fixes
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.6.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.7.txt
+
+-------------------------------------------------------------------
+Tue Dec  8 15:08:16 CET 2009 - tiwai@suse.de
+
+- updated to version 1.6.5.5; only bug fixes; see release notes
+  below;
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.4.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.5.txt
+
+-------------------------------------------------------------------
+Tue Nov 17 12:24:57 CET 2009 - tiwai@suse.de
+
+- updated to version 1.6.5.3; see release notes:
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.1.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.2.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.5.3.txt
+
+-------------------------------------------------------------------
+Fri Oct 23 10:40:40 UTC 2009 - opensuse@sukimashita.com
+
+- fix build of git-http-push enabling webdav push (bnc#504569)
+
+-------------------------------------------------------------------
+Fri Oct  2 13:02:40 UTC 2009 - lnussel@suse.de
+
+- fix apparmor profile for gitweb
+
+-------------------------------------------------------------------
+Tue Sep 29 16:38:39 CEST 2009 - tiwai@suse.de
+
+- remove git-arch from Recommends of git package; it's totally
+  optional now
+- remove tla from Requires of git-arch to avoid dependency errors
+
+-------------------------------------------------------------------
+Mon Aug 31 14:32:04 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.6.4.2:
+ * rounding fix for --date=relative output between 1 and 5 years
+ * regression fix of "git add -p" to handleexec bits  changes
+ * fix "git apply" to honor GNU diff's convention to mark the
+   creation/deletion event with UNIX epoch timestamp
+ * fix "git checkout" to removed files correctly with symlinks
+ * make "git clean -d -f" safer for separate git repos
+ * fix bugs in "git fetch/push" over http transports
+ * fix "git format-patch --cover-letter" with non-ASCII strings
+ * See details in
+   http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.4.2.txt
+
+-------------------------------------------------------------------
+Mon Aug 24 14:34:08 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.6.4:
+  git push into the currently checked-out branch will be refused
+  by default.
+  See details in 
+    http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.4.txt
+- updated to version 1.6.4.1:
+  Bug fix release.  See details in 
+    http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.4.1.txt
+  
+-------------------------------------------------------------------
+Mon Jun 22 13:08:41 CEST 2009 - tiwai@suse.de
+
+- updated to 1.6.3.3:
+ * fix "git daemon" to correctly parse the initial line
+ * fix "git diff --textconv" memory leak
+ * improved the built-in regular expressions
+ * fix import-tars script (in contrib) to import symbolic links
+ * fix http.c to use correct CURLOPT_SSLKEY
+ * fix low-level filelevel merge driver 
+ * fix "git rebase -i" left stray closing parenthesis in reflog
+ * fix "git remote show" to show all the URLs associated with named
+   remotes
+ * fix "whitespace" attribute handling
+
+-------------------------------------------------------------------
+Fri Jun  5 10:10:25 CEST 2009 - tiwai@suse.de
+
+- updated to 1.6.3.1:
+ * fix regression of "git checkout -b new-branch"
+- updated to 1.6.3.2:
+ * fixes for gcc4.4 builds and others.  See below for details
+   http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.3.2.txt
+
+-------------------------------------------------------------------
+Fri May  8 11:37:26 CEST 2009 - tiwai@suse.de
+
+- updated to 1.6.3:
+  * major version update: git push behavior change, 
+    With the next major release, "git push" into a branch that is
+    currently checked out will be refused by default.  You can
+    choose what should happen upon such a push by setting the
+    configuration
+  * Detailed changelog found at
+    http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.3.txt
+
+-------------------------------------------------------------------
+Mon Apr 20 12:44:42 CEST 2009 - tiwai@suse.de
+
+- updated to 1.6.2.4:
+  * The configuration parser had a buffer overflow while parsing
+    an overlong value.
+  * pruning reflog entries that are unreachable from the tip of
+    the ref during "git reflog prune" (hence "git gc") was very
+    inefficient.
+  * "git-add -p" lacked a way to say "q"uit to refuse staging any
+    hunks for the remaining paths.  You had to say "d" and then ^C.
+  * "git-checkout <tree-ish> <submodule>" did not update the index
+    entry at the named path; it now does.
+  * "git-fast-export" choked when seeing a tag that does not point
+    at commit.  
+  * "git init" segfaulted when given an overlong template location
+    via the --template= option.
+  * "git-ls-tree" and "git-diff-tree" used a pathspec correctly
+    when deciding to descend into a subdirectory but they did not
+    match the individual paths correctly.  This caused pathspecs
+    "abc/d ab" to match "abc/0" ("abc/d" made them decide to
+    descend into the directory "abc/", and then "ab" incorrectly
+    matched "abc/0" when it shouldn't).
+  * "git-merge-recursive" was broken when a submodule entry was
+    involved in a criss-cross merge situation.
+
+-------------------------------------------------------------------
+Thu Apr 16 11:02:04 CEST 2009 - tiwai@suse.de
+
+- updated to 1.6.2.2:
+  * A longstanding confusing description of what --pickaxe option
+    of git-diff does has been clarified in the documentation.
+  * "git-blame -S" did not quite work near the commits that were
+    given on the command line correctly.
+  * "git diff --pickaxe-regexp" did not count overlapping matches
+    correctly.
+  * "git diff" did not feed files in work-tree representation to
+    external diff and textconv.
+  * "git-fetch" in a repository that was not cloned from anywhere
+    said it cannot find 'origin', which was hard to understand for
+    new people.
+  * "git-format-patch --numbered-files --stdout" did not have to
+    die of incompatible options; it now simply ignores
+    --numbered-files as no files are produced anyway.
+  * "git-ls-files --deleted" did not work well with GIT_DIR&GIT_WORK_TREE.
+  * "git-read-tree A B C..." without -m option has been broken for
+    a long time.
+  * git-send-email ignored --in-reply-to when --no-thread was given.
+  * 'git-submodule add' did not tolerate extra slashes and ./ in
+    the path it accepted from the command line; it now is more lenient.
+  * git-svn misbehaved when the project contained a path that began
+    with two dashes.
+  * import-zips script (in contrib) did not compute the common
+    directory prefix correctly.
+  * miscompilation of negated enum constants by old gcc (2.9)
+    affected the codepaths to spawn subprocesses.
+- updated to 1.6.2.3:
+  * Setting an octal mode value to core.sharedrepository
+    configuration to restrict access to the repository to group
+    members did not work as advertised.
+  * A fairly large and trivial memory leak while rev-list shows
+    list of reachable objects has been identified and plugged.
+  * "git-commit --interactive" did not abort when underlying
+    "git-add -i" signaled a failure.
+  * git-repack (invoked from git-gc) did not work as nicely as it
+    should in a repository that borrows objects from neighbours
+    via alternates mechanism especially when some packs are marked
+    with the ".keep" flag to prevent them from being repacked.
+- fix the start-check in git-daemon script (bnc#494824)
+
+-------------------------------------------------------------------
+Mon Mar 16 09:50:24 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.2.1:
+  * .gitignore learned to handle backslash as a quoting mechanism
+    for comment introduction character "#".
+  * timestamp output in --date=relative mode used to display
+    timestamps that are long time ago in the default mode
+  * git-add -i/-p now works with non-ASCII pathnames.
+  * "git hash-object -w" did not read from the configuration file
+    from the correct .git directory.
+  * git-send-email learned to correctly handle multiple Cc:
+    addresses.
+
+-------------------------------------------------------------------
+Thu Mar  5 12:24:45 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.2:
+  * @{-1} is a way to refer to the last branch you were on.
+  * The location of .mailmap file can be configured
+  * Improvements on "git add -p"
+  * Improvements on "git am" behavior and options
+  * "git blame" aligns author names better
+  * "git clone" now makes its best effort when cloning from an
+    empty repository
+  * "git checkout -" is a shorthand for "git checkout @{-1}".
+  * "git cherry" defaults to whatever the current branch is
+    tracking (if exists) when the <upstream> argument is not given.
+  * "git cvsserver" fixes / improvements
+  * New options for "git diff"
+  * New options for "git filter-branch"
+  * "git fsck" now checks loose objects in alternate object
+    stores
+  * "git gc --prune" was resurrected to allow "git gc --no-prune"
+  * New option for "git mergetool"
+  * "git rebase -i" can transplant a history down to root
+  * "git reset --merge" option
+  * "git submodule update" learned --no-fetch option.
+  * "git tag" learned --contains
+ For more details, see
+    http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.2.txt
+
+-------------------------------------------------------------------
+Mon Feb  9 08:27:53 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.1.3:
+  * "git diff --binary | git apply" pipeline did not work well
+   when a binary blob is changed to a symbolic link.
+  * some combinations of -b/-w/--ignore-space-at-eol to "git diff"
+   did not work as expected.
+  * "git grep" did not pass the -I (ignore binary) option when
+   calling out an external grep program.
+  * "git log" and friends include HEAD to the set of starting
+   points when --all is given.  This makes a difference when you
+   are not on any branch.
+  * "git mv" to move an untracked file to overwrite a tracked
+   contents misbehaved.
+  * "git merge -s octopus" with many potential merge bases did not
+   work correctly.
+  * RPM binary package installed the html manpages in a wrong
+   place.
+  Also includes minor documentation fixes and updates.
+
+-------------------------------------------------------------------
+Thu Jan 29 13:24:33 CET 2009 - schwab@suse.de
+
+- Formatting fix for manual pages.
+
+-------------------------------------------------------------------
+Thu Jan 29 11:53:19 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.1.2:
+  * The logic for rename detectin in internal diff used by commands
+    like "git diff" and "git blame" have been optimized to avoid
+    loading the same blob repeatedly.
+  * We did not allow writing out a blob that is larger than 2GB
+    for no good reason.
+  * "git format-patch -o $dir", when $dir is a relative directory,
+    used it as relative to the root of the work tree, not relative
+    to the current directory.
+  * v1.6.1 introduced an optimization for "git push" into a
+    repository (A) that borrows its objects from another
+    repository (B) to avoid sending objects that are available in
+    repository B, when they are not yet used by repository A.
+    However the code on the "git push" sender side was buggy and
+    did not work when repository B had new objects that are not
+    known by the sender.  This caused pushing into a "forked"
+    repository served by v1.6.1 software using "git push" from
+    v1.6.1 sometimes did not work.  The bug was purely on the
+    "git push" sender side, and has been corrected.
+  * "git status -v" did not paint its diff output in colour even
+    when color.ui configuration was set.
+  * "git ls-tree" learned --full-tree option to help Porcelain
+    scripts that want to always see the full path regardless of the
+    current working directory.
+  * "git grep" incorrectly searched in work tree paths even when
+    they are marked as assume-unchanged.  It now searches in the
+    index entries.
+  * "git gc" with no grace period needlessly ejected packed but
+    unreachable objects in their loose form, only to delete them
+    right away.
+
+-------------------------------------------------------------------
+Mon Jan 26 12:21:15 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.1.1:
+  * "git add frotz/nitfol" when "frotz" is a submodule should have
+    errored out, but it didn't.
+  * "git apply" took file modes from the patch text and updated
+    the mode bits of the target tree even when the patch was not
+    about mode changes.
+  * "git bisect view" on Cygwin did not launch gitk
+  * "git checkout $tree" did not trigger an error.
+  * "git commit" tried to remove COMMIT_EDITMSG from the work tree
+    by mistake.
+  * "git describe --all" complained when a commit is described
+    with a tag, which was nonsense.
+  * "git diff --no-index --" did not trigger no-index (aka "use
+    git-diff as a replacement of diff on untracked files") behaviour.
+  * "git format-patch -1 HEAD" on a root commit failed to produce
+    patch text.
+  * "git fsck branch" did not work as advertised; instead it
+    behaved the same way as "git fsck".
+  * "git log --pretty=format:%s" did not handle a multi-line
+    subject the same way as built-in log listers (i.e. shortlog,
+    --pretty=oneline, etc.)
+  * "git daemon", and "git merge-file" are more careful when freopen
+    fails and barf, instead of going on and writing to unopened
+    filehandle.
+  * "git http-push" did not like some RFC 4918 compliant DAV server
+    responses.
+  * "git merge -s recursive" mistakenly overwritten an untracked
+    file in the work tree upon delete/modify conflict.
+  * "git merge -s recursive" didn't leave the index unmerged for
+    entries with rename/delete conflictd.
+  * "git merge -s recursive" clobbered untracked files in the work
+    tree.
+  * "git mv -k" with more than one errorneous paths misbehaved.
+  * "git read-tree -m -u" hence branch switching incorrectly lost
+    a subdirectory in rare cases.
+  * "git rebase -i" issued an unnecessary error message upon a user
+    error of marking the first commit to be "squash"ed.
+  * "git shortlog" did not format a commit message with multi-line
+    subject correctly.
+
+-------------------------------------------------------------------
+Thu Jan  8 15:55:42 CET 2009 - tiwai@suse.de
+
+- updated to 1.6.1:
+  * handle properly the exit code when pager is used
+  * various git-gui updates including translations
+  * gitweb updates
+  * many other improvements / fixes.  See release notes
+    http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.1.txt
+
+-------------------------------------------------------------------
+Fri Dec 19 14:04:40 CET 2008 - lnussel@suse.de
+
+- add apparmor profile for git-web
+- don't use %jobs for generating docu
+- change gitexecdir to /usr/lib instead of %_libdir
+
+-------------------------------------------------------------------
+Wed Dec 17 09:35:17 CET 2008 - tiwai@suse.de
+
+- Fix VUL-0 Possible gitweb vulnerability: calling "git diff"
+  [bnc#459664]
+
+-------------------------------------------------------------------
+Thu Dec 11 01:57:33 CET 2008 - pbaudis@suse.cz
+
+- Fix the git.xinetd daemon call [bnc#450508]
+
+-------------------------------------------------------------------
+Wed Nov 19 08:54:41 CET 2008 - tiwai@suse.de
+
+- install git-shell and git-cvsserver as in the upstream
+  (bnc#446049)
+
+-------------------------------------------------------------------
+Tue Nov  4 08:45:59 CET 2008 - olh@suse.de
+
+- use fdupes only if the distribution provides it
+- use libopenssl-devel only if the distribution provides it
+
+-------------------------------------------------------------------
+Fri Oct 24 15:03:52 CEST 2008 - tiwai@suse.de
+
+- fix git.xinetd not to run the old git-daemon (bnc#438715)
+
+-------------------------------------------------------------------
+Mon Oct  6 15:53:47 CEST 2008 - tiwai@suse.de
+
+- fix git-daemon init script to start (bnc#432610)
+
+-------------------------------------------------------------------
+Fri Sep 26 17:17:12 CEST 2008 - schwab@suse.de
+
+- Fix manual pages.
+
+-------------------------------------------------------------------
+Thu Sep 25 16:08:40 CEST 2008 - tiwai@suse.de
+
+- updated to 1.6.0.2:
+  Mostly small bug fixes, see details in
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.2.txt
+
+-------------------------------------------------------------------
+Thu Sep 25 16:04:22 CEST 2008 - tiwai@suse.de
+
+- fix file selections of git-core package
+- use symlinks for git sub-commands instead of hardlinks to make
+  build system happy
+
+-------------------------------------------------------------------
+Tue Sep  9 12:18:09 CEST 2008 - tiwai@suse.de
+
+- updated to 1.6.0:
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.txt 
+- updated to 1.6.0.1:
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.1.txt 
+- install git subcommands now to libdir/git
+  users have to set up properly if they want to keep the old style
+  (refer git --execpath)
+
+-------------------------------------------------------------------
+Tue Sep  9 11:38:39 CEST 2008 - lnussel@suse.de
+
+- split off gui and web subpackages
+
+-------------------------------------------------------------------
+Mon Aug 18 11:42:39 CEST 2008 - schwab@suse.de
+
+- Fix name of completions file.
+
+-------------------------------------------------------------------
+Tue Aug 12 13:59:54 CEST 2008 - tiwai@suse.de
+
+- updated to 1.5.6.5:
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.5.txt
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.4.txt
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.3.txt
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.2.txt
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.1.txt
+
+-------------------------------------------------------------------
+Wed Aug  6 11:50:51 CEST 2008 - anosek@suse.cz
+
+- fixed Add git xinetd.d file for ability to use yast2 (bnc#398361)
+  - created file git.xinetd to run git under xinetd daemon
+
+-------------------------------------------------------------------
+Wed Jun 25 00:03:23 CEST 2008 - dmueller@suse.de
+
+- update to 1.5.6:
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.6.txt
+
+-------------------------------------------------------------------
+Mon Jun 16 16:43:50 CEST 2008 - lnussel@suse.de
+
+- use separate package for git-daemon (bnc#382710)
+- add user and install init script for git-daemon
+
+-------------------------------------------------------------------
+Tue May 20 15:18:40 CEST 2008 - lnussel@suse.de
+
+- install gitweb icons, style sheet and README (bnc#359882)
+- build using V=1 so use of cflags can be verified by brp scripts
+- fix build using --without docs
+
+-------------------------------------------------------------------
+Mon Apr  7 16:40:38 CEST 2008 - dmueller@suse.de
+
+- update to 1.5.4.5:
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.5.txt 
+
+-------------------------------------------------------------------
+Tue Mar 18 14:42:06 CET 2008 - dmueller@suse.de
+
+- update to 1.5.4.4:
+  * git svnimport was removed in favor of git svn
+  * git runstatus has been removed
+  * changes are available under
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.1.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.2.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.3.txt
+  http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.4.txt
+
+-------------------------------------------------------------------
+Mon Jan 28 14:21:27 CET 2008 - mmarek@suse.de
+
+- added libopenssl-devel to BuildRequires to fix build
+
+-------------------------------------------------------------------
+Wed Jan  9 00:42:47 CET 2008 - schwab@suse.de
+
+- Update to version 1.5.3.8.
+  * Some documentation used "email.com" as an example domain.
+  * git-svn fix to handle funky branch and project names going over
+    http/https correctly.
+  * git-svn fix to tone down a needlessly alarming warning message.
+  * git-clone did not correctly report errors while fetching over http.
+  * git-send-email added redundant Message-Id: header to the outgoing
+    e-mail when the patch text already had one.
+  * a read-beyond-end-of-buffer bug in configuration file updater was fixed.
+  * git-grep used to show the same hit repeatedly for unmerged paths.
+  * After amending the patch title in "git-am -i", the command did not
+    report the patch it applied with the updated title.
+
+-------------------------------------------------------------------
+Tue Jan  8 10:12:16 CET 2008 - crrodriguez@suse.de
+
+- git-cvsserver was unusable, it produced a perl failed-compilation error
+   due to missing dependency on perl-DBD-Sqlite.
+- update to version 1.5.3.7
+ * git-send-email added 8-bit contents to the payload without
+   marking it as 8-bit in a CTE header.
+ * "git-bundle create a.bndl HEAD" dereferenced the symref and
+   did not record the ref as 'HEAD'; this prevented a bundle
+   from being used as a normal source of git-clone.
+ * The code to reject nonsense command line of the form
+   "git-commit -a paths..." and "git-commit --interactive
+   paths..." were broken.
+ * Adding a signature that is not ASCII-only to an original
+   commit that is ASCII-only would make the result non-ASCII.
+   "git-format-patch -s" did not mark such a message correctly
+   with MIME encoding header.
+ * git-add sometimes did not mark the resulting index entry
+   stat-clean.  This affected only cases when adding the
+   contents with the same length as the previously staged
+   contents, and the previous staging made the index entry
+   "racily clean".
+ * git-commit did not honor GIT_INDEX_FILE the user had in the
+   environment.
+ * When checking out a revision, git-checkout did not report where the
+   updated HEAD is if you happened to have a file called HEAD in the
+   work tree.
+ * "git-rev-list --objects" mishandled a tree that points at a
+   submodule.
+ * "git cvsimport" was not ready for packed refs that "git gc" can
+   produce and gave incorrect results.
+ * Many scripted Porcelains were confused when you happened to have a
+   file called "HEAD" in your work tree.
+ 
+
+-------------------------------------------------------------------
+Wed Nov 28 09:12:23 CET 2007 - dmueller@suse.de
+
+- update to 1.5.3.6:
+   * various smaller bugfixes 
+- remove requires on release (#305826)
+- install bash completion (#336848)
+
+-------------------------------------------------------------------
+Tue Oct  9 18:50:30 CEST 2007 - dmueller@suse.de
+
+- update to 1.5.3.4:
+   * submodule support
+   * many new features and bugfixes 
+
+-------------------------------------------------------------------
+Mon Aug  6 23:00:14 CEST 2007 - dmueller@suse.de
+
+- update to 1.5.2.4:
+   * "git checkout" failed to switch back and forth between
+     branches, one of which has "frotz -> xyzzy" symlink and
+     file "xyzzy/filfre", while the other one has a file
+     "frotz/filfre".
+   * "git prune" used to segfault upon seeing a commit that is
+     referred to by a tree object (aka "subproject").
+   * "git diff --name-status --no-index" mishandled an added file.
+   * "git apply --reverse --whitespace=warn" still complained
+     about whitespaces that a forward application would have
+     introduced.
+
+-------------------------------------------------------------------
+Thu Jul  5 02:35:22 CEST 2007 - dmueller@suse.de
+
+- Update to 1.5.2.3:
+  * fix many segfaults with the SVN gateway
+  * various bugfixes
+
+-------------------------------------------------------------------
+Fri May 18 00:34:20 CEST 2007 - dmueller@suse.de
+
+- Update to 1.5.1.4:
+  * GIT <-> SVN gateway
+  * New porcelain, much improved index handling
+  * git-config
+  * Bare repositories refuse commands that need a working tree
+  * packed ref support
+  * 3-way merges can be done without rcs
+  * python dependency dropped
+
+-------------------------------------------------------------------
+Sat Nov 18 04:46:49 CET 2006 - pbaudis@suse.cz
+
+- Fix build failure from previous change (trivial omission)
+
+-------------------------------------------------------------------
+Fri Nov 17 20:56:22 CET 2006 - pbaudis@suse.cz
+
+- Fix git-arch package containing git-archive and git-upload-archive
+  [#222074]
+
+-------------------------------------------------------------------
+Fri Nov 17 05:24:23 CET 2006 - pbaudis@suse.cz
+
+- Upgrade to git-1.4.3.4 - only few bugfixes, most importantly
+  git-apply wouldn't apply creation/deletion patches
+
+-------------------------------------------------------------------
+Tue Nov  7 01:04:24 CET 2006 - ro@suse.de
+
+- fix permissions for manpages 
+
+-------------------------------------------------------------------
+Sat Oct 28 22:15:26 CEST 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS also in %install make
+
+-------------------------------------------------------------------
+Thu Oct 26 14:56:47 CEST 2006 - pbaudis@suse.cz
+
+- Upgrade to git-1.4.3.3 - bugfixes release
+
+-------------------------------------------------------------------
+Thu Oct 19 02:14:05 CEST 2006 - pbaudis@suse.cz
+
+- Update to git-1.4.3 - UI improvements, speedups, random new
+  features (e.g. git-daemon name-based virtual hosting support),
+  basic Git.pm
+- Fixes build failures due to asciidoc incompatibilities
+
+-------------------------------------------------------------------
+Tue Jul 25 08:43:27 CEST 2006 - pbaudis@suse.cz
+
+- Update to git-1.4.1.1 - includes gitweb, many bugfixes, some
+  commands are converted from shell to C, aliasing support,
+  documentation improvements and so on.
+- Junio's patch got applied upstream.
+- Pre-create /srv/git for bare Git repositories hosting.
+- Install gitweb to /srv/www/cgi-bin pre-configured to look
+  for packages at /srv/git.
+
+-------------------------------------------------------------------
+Mon May 15 01:04:34 CEST 2006 - pbaudis@suse.cz
+
+- Update to git-core-1.3.1 - git-cvsserver pserver interface,
+  .git/refs/remotes branches support, blame/annotate tools,
+  builtin diff, faster and better rename detection and number
+  of other stuff.
+- Add Junio's patch for saner handling of symlink refs. This is
+  an important bugfix since without this, it is impossible to
+  bisect behind kernel linux-v2.6.15-g117a93d.
+- Olaf Hering's cutnpaste patch got applied upstream.
+
+-------------------------------------------------------------------
+Mon Mar 13 02:28:07 CET 2006 - ro@suse.de
+
+- change requires from "openssh-clients" to "openssh"
+  (former does not exist) 
+
+-------------------------------------------------------------------
+Fri Mar 10 01:54:28 CET 2006 - pbaudis@suse.cz
+
+- Add Olaf Hering's patch for easier cut'n'pasting.
+
+-------------------------------------------------------------------
+Tue Mar  7 23:08:46 CET 2006 - pbaudis@suse.cz
+
+- Update to git-core 1.2.4.
+- This is a security fix: there was a buffer overflow when checking
+  out a tree with an insanely long symlink. (No Bugzilla id.)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 21:50:49 CET 2006 - pbaudis@suse.cz
+
+- Fix the specfile build (no expat and asciidoc, xmlto problems)
+
+-------------------------------------------------------------------
+Mon Jan 16 23:14:38 CET 2006 - pbaudis@suse.cz
+
+- Update to git-core 1.1.3.
+- Modify the specfile so that it looks more like the stock one.
+- Split bits to subpackages
+
+-------------------------------------------------------------------
+Sun Dec  4 14:28:09 CET 2005 - schwab@suse.de
+
+- Fix embedded paths.
+
+-------------------------------------------------------------------
+Wed Oct  5 23:35:21 CEST 2005 - schwab@suse.de
+
+- Don't build documentation in parallel.
+
+-------------------------------------------------------------------
+Mon Sep 19 11:11:41 CEST 2005 - schwab@suse.de
+
+- Update to git-core 0.99.7.
+- Install manpages.
+
+-------------------------------------------------------------------
+Fri Aug  5 11:24:34 CEST 2005 - kasievers@suse.de
+
+- New version 0.99.3git20050905 
+  rename git to git-core, to match the upstream package name
+
+-------------------------------------------------------------------
+Sun Jul  3 03:21:00 CEST 2005 - kasievers@suse.de
+
+- New version 0.7git20050703
+
+-------------------------------------------------------------------
+Thu Jun 30 22:16:53 CEST 2005 - kasievers@suse.de
+
+- New version 20050630 
+
+-------------------------------------------------------------------
+Fri Jun 24 13:54:01 CEST 2005 - kasievers@suse.de
+
+- New version 20050624 
+
+-------------------------------------------------------------------
+Sun Jun 12 03:50:05 CEST 2005 - kay.sievers@suse.de
+
+- New version 20050612 
+
+-------------------------------------------------------------------
+Thu Jun  2 11:31:29 CEST 2005 - kay.sievers@suse.de
+
+- Split git/Cogito into separate packages
+- Update git to version 20050602
+
+-------------------------------------------------------------------
+Fri May 20 14:27:50 CEST 2005 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Specfile cleanup.
+
+-------------------------------------------------------------------
+Fri May 20 14:15:46 CEST 2005 - mmj@suse.de
+
+- %_libdir -> FHS libexec
+
+-------------------------------------------------------------------
+Fri May 20 13:02:10 CEST 2005 - skh@suse.de
+
+- initial package
+

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon Jul 22 13:31:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.7:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue May 14 21:19:51 UTC 2019 - John Jolly <jjolly@suse.com>
+
+- Update to 0.2.6
+  + No upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:56 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:17:05 UTC 2018 - jengelh@inai.de
+
+- Fix some grammar issues and replace future plans by current state.
+
+-------------------------------------------------------------------
+Thu May 24 17:39:43 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.2.0
+  * Convert image to RGB mode in order to save as PNG
+- Update to 0.1.9
+  * Preserve source image extension and metadata info
+  * Don't delete every file in current directory if the temp_name is not populated
+  * Remove enum dependency, fix bug with missing text in last line
+  * Support for different output types
+  * Added verbose option that returns detailed output from tesseract run
+- Update to 0.1.8
+  * Add initial support for numpy arrays/opencv images
+  * Improved method to discard alpha channel
+  * Add optional nice agrument for runing tesseract with different priority
+  * fix python 3 byte string bug
+- spec file cleanups
+
+-------------------------------------------------------------------
+Wed Oct 18 16:46:49 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.1.7
+  * No changelog
+
+-------------------------------------------------------------------
+Tue Jun 10 21:31:13 UTC 2014 - jnweiger@gmail.com
+
+- pull from pypi. needed by testipy
+

@@ -1,0 +1,42 @@
+Hallo,
+
+hier eine Schnellübersicht, wie Sie das OTRS auf Ihrem SUSE Linux zum Laufen
+bringen.
+
+Prüfen Sie bitte den "max_allowed_packet" Wert in Ihrer MySQL config (my.cnf).
+Dieser sollte auf jeden Fall > 1MB sein.
+Ich empfehle einen Wert von 20MB.
+
+1) Starten Sie Apache und MySQL mittels
+
+    shell> rcapache2 restart && rcmysql restart
+
+
+2) Rufen Sie http://localhost/otrs/installer.pl in einem web browser auf und
+folgen Sie den Anweisungen.
+
+
+3) Wenn Sie Ihr System neu starten müssen, stellen Sie sicher, dass alle für
+OTRS erforderlichen Dienste gestartet werden. Sie gewährleisten dies durch
+Aktivieren der Dienste apache2, mysql, otrs-scheduler und otrs mit dem
+YaST Runlevel-Editor (SLE11) oder dem YaST Dienste-Manager (SLE12 und openSUSE
+ab Version 13.1) oder auf der Kommandozeile mittels
+
+SLE11:
+    shell> insserv apache2
+    shell> insserv mysql
+    shell> insserv otrs
+
+SLE12 und openSUSE:
+    shell> systemctl enable apache2
+    shell> systemctl enable mysql
+    shell> systemctl enable otrs
+
+
+4)  Remember to have fun!
+
+
+Für weitergehende Fragen besuchen Sie doch unter http://www.otrs.org die OTRS
+web-Seiten.  Insoweit Sie professionelle Unterstützung oder Beratung
+benötigen, wird ein solcher Dienst durch ((otrs)) unter http://www.otrs.com
+seitens des OTRS-Kernteams angeboten.

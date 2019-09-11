@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Aug  1 08:10:40 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4.1
+  * Fix Github issue #141; NOTE - This will break parsing helper-addresses under factory=True.  If you use this feature, please migrate your scripts to the new format
+  * Implement re_search_children() directly on the CiscoConfParse() object
+  *  Fix Github issue #158, *KEYWORD CHANGE WARNING:* some methods formrely used a keyword called 'all_children'.  The new syntax is 'recurse' (ref: Github issue #159)
+
+-------------------------------------------------------------------
+Tue Mar 26 13:28:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3.32:
+  * No good changelog
+- Remove unused patch ciscoconfparse-1.2.40-fix-tests.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 19:57:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3.30:
+  * Fix bugs related to Python3 (Github issue #117)
+  * Add IP helper-address parsing in models_cisco.py
+  * Revert universal wheel packages (universal=0)
+  * Build universal wheel packages
+  * Build improvements - ref Github issue #127, #128
+  * Another swing at Github issue #127
+  * Rollback fix for Github issue #127
+  * Attempt to fix Github issue #127
+  * Fix Github issue #124-126 and Github issue #110
+  * Fix Github issue #121 and Github issue #123
+  * Fix Github issue #114 (Py3.5 requires different open() syntax)
+  * Fix Github issue #111 (banner parsing broken in some cases)
+  * Add * to MANIFEST.in
+  * Attempt to resolve Github issue #106
+  * Add dns_query() zone transfer as text
+
+-------------------------------------------------------------------
+Wed Aug  8 17:01:34 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue May 22 08:49:54 UTC 2018 - mcepl@suse.com
+
+- Uprgade to version 1.3.15
+    * Many trivial bug fixes, see CHANGES
+- Renamed skip-setuptools-hg-require.patch to
+  ciscoconfparse-1.2.40-fix-tests.patch
+
+-------------------------------------------------------------------
+Thu Aug 24 13:34:03 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Sun Oct  9 17:25:20 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.2.40
+  * Fix Github issue #44 (Could not parse 'ipv6 router ospf 6').
+  * Modify default value for access_vlan.
+  * Add new is_portchannel property.
+  * Update copyright dates.
+  * Remove OSX from test matrix
+- Fix source url
+
+-------------------------------------------------------------------
+Sun Mar 13 21:24:28 UTC 2016 - dmueller@suse.com
+
+- fix license
+
+-------------------------------------------------------------------
+Fri Feb  5 06:59:25 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.2.39)
+
+

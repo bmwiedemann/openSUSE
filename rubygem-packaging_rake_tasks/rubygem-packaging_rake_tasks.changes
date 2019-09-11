@@ -1,0 +1,325 @@
+-------------------------------------------------------------------
+Fri May 10 10:49:59 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Add support for SUSE's Jira tags (bsc#1134704)
+- 1.4.7
+
+-------------------------------------------------------------------
+Thu Aug 16 10:04:54 UTC 2018 - lslezak@suse.cz
+
+- Do not set the "--root" osc option in the "osc:build" task,
+  it is not needed anymore and the default works even better
+  (bsc#1105050)
+- 1.4.6
+
+-------------------------------------------------------------------
+Thu Mar  1 12:06:29 UTC 2018 - lslezak@suse.cz
+
+- Support the new .oscrc config file location (~/.config/osc/oscrc),
+  the old path (~/.oscrc) is still supported as a fallback
+  (bsc#1083491)
+- 1.4.5
+
+-------------------------------------------------------------------
+Mon Feb  5 13:44:37 UTC 2018 - ancor@suse.com
+
+- Do not skip symlinks when creating the tarball, which was an
+  unintented consequence of the previous change (bsc#1078900).
+- 1.4.4
+
+-------------------------------------------------------------------
+Wed Nov 29 12:06:34 UTC 2017 - lslezak@suse.cz
+
+- Fixed "rake tarball" task to work also with tar < 1.28.
+  (Do not use the "--sort=name" tar option, use a "find | sort"
+  workaround instead. The "--sort" option is not supported in
+  the latest Leap 42.3 or SLE12-SP3.) (bsc#1070168)
+- 1.4.3
+
+-------------------------------------------------------------------
+Tue Nov 28 15:50:22 UTC 2017 - lslezak@suse.cz
+
+- Fixed the "rake tarball" task to create reproducible tarballs,
+  avoid different source checksums for the same content in OBS
+  and in IBS (bsc#1070168)
+- 1.4.2
+
+-------------------------------------------------------------------
+Fri Oct 13 12:24:47 UTC 2017 - lslezak@suse.cz
+
+- Avoid "service in progress" error when creating a SR for
+  a freshly commited package (bsc#1063248)
+- 1.4.1
+
+-------------------------------------------------------------------
+Thu Sep 21 10:52:56 UTC 2017 - lslezak@suse.cz
+
+- Added "build_dependencies" tasks to easily install the build
+  dependencies required for development (bsc#1020033)
+- 1.4.0
+
+-------------------------------------------------------------------
+Thu Jul 13 09:25:16 UTC 2017 - mvidner@suse.com
+
+- check:syntax: Do not print "Syntax OK" for every file.
+- 1.3.4
+
+-------------------------------------------------------------------
+Thu Jul 13 07:30:27 UTC 2017 - jreidinger@suse.com
+
+- If package is missing in target sr repository consider it like
+  different version and do not crash ( needed for SLE15 submission
+  so part of bsc#1044312)
+- 1.3.3
+
+-------------------------------------------------------------------
+Mon May 29 11:17:34 UTC 2017 - mvidner@suse.com
+
+- If parallel.gem is available, use it to speed up check:syntax
+- 1.3.2
+
+-------------------------------------------------------------------
+Mon May 22 09:39:11 UTC 2017 - lslezak@suse.cz
+
+- sync the gem2rpm.yml changes from IBS
+
+-------------------------------------------------------------------
+Mon Apr 10 07:30:44 UTC 2017 - jreidinger@suse.com
+
+- sync IDs in check:changelog with build service
+- 1.3.1
+
+-------------------------------------------------------------------
+Thu Apr  6 10:05:22 UTC 2017 - jreidinger@suse.com
+
+- Add new task for check documentation (check:doc)
+- 1.3.0
+
+-------------------------------------------------------------------
+Fri Apr  1 12:16:56 UTC 2016 - mvidner@suse.com
+
+- Fixed snapper submission (bsc#973607)
+  - check:changelog only before osc:sr
+  - check:changelog depends on package, not the reverse
+- 1.2.1
+
+-------------------------------------------------------------------
+Thu Mar 17 16:16:30 UTC 2016 - igonzalezsosa@suse.com
+
+- Avoid checking for bug IDs when obs_sr_project is not defined
+  (bnc#0)
+- 1.2.0
+
+-------------------------------------------------------------------
+Thu Mar 17 12:33:14 UTC 2016 - igonzalezsosa@suse.com
+
+- When checking for bug IDs in *.changes, diff against
+  obs_sr_project, not obs_project, to be consistent with the
+  version checker (bnc#0)
+- 1.1.5
+
+-------------------------------------------------------------------
+Wed Mar  9 10:43:06 CET 2016 - schubi@suse.de
+
+- Checking *.changes file for new bugzilla, fate,... IDs before
+  packaging.
+  (bnc#0)
+- 1.1.4
+
+-------------------------------------------------------------------
+Thu May 14 14:28:25 UTC 2015 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu May 14 12:06:01 UTC 2015 - jreidinger@suse.com
+
+- Do not crash if tarball have different name in devel project
+- 1.1.3
+
+-------------------------------------------------------------------
+Tue Apr 28 15:51:40 UTC 2015 - jreidinger@suse.com
+
+- stop osc commit if there is no change
+- 1.1.2
+
+-------------------------------------------------------------------
+Thu Nov 13 16:22:40 UTC 2014 - lslezak@suse.cz
+
+- additionally report warnings in the "check:syntax" task
+- 1.1.1
+
+-------------------------------------------------------------------
+Mon Oct  6 09:26:08 UTC 2014 - jreidinger@suse.com
+
+- Add configuration option for maintenance mode, which allows to
+  create maintenance requests instead of pull requests
+- use new ruby packaging schema for rpm spec
+- 1.1.0
+
+-------------------------------------------------------------------
+Wed Apr 23 11:52:39 UTC 2014 - mvidner@suse.com
+
+- Always pass the conf.obs_api parameter so that osc does not
+  ask about a login to api.opensuse.org.
+- 1.0.16
+
+-------------------------------------------------------------------
+Fri Feb 21 15:35:25 UTC 2014 - mvidner@suse.com
+
+- Fix submit request version message if there is more than one
+  spec file
+- 1.0.15
+
+-------------------------------------------------------------------
+Wed Feb  5 11:53:59 UTC 2014 - jreidinger@suse.com
+
+- pipe `yes` to osc build to automatic rebuild broken build root
+- reduce long changelog to prevent too long URI error with osc
+  commit
+- 1.0.14
+
+-------------------------------------------------------------------
+Fri Jan 17 14:53:46 UTC 2014 - jreidinger@suse.com
+
+- Fix reading file on target BS if server is not OBS
+- 1.0.13
+
+-------------------------------------------------------------------
+Wed Jan  8 12:36:30 UTC 2014 - jreidinger@suse.com
+
+- Fix submit request version comparison if there is more then one
+  spec file
+- 1.0.12
+
+-------------------------------------------------------------------
+Fri Nov 15 09:56:01 UTC 2013 - jreidinger@suse.com
+
+- workaround osc interactive superseed (gh#opensuse/osc#58)
+- 1.0.11
+
+-------------------------------------------------------------------
+Fri Nov 15 07:59:13 UTC 2013 - jreidinger@suse.com
+
+- fix typo
+- 1.0.10
+
+-------------------------------------------------------------------
+Fri Nov 15 07:26:13 UTC 2013 - jreidinger@suse.com
+
+- specify to have osc sr always non-interactive
+- 1.0.9
+
+-------------------------------------------------------------------
+Wed Nov 13 16:48:31 UTC 2013 - jreidinger@suse.com
+
+- Fix osc sr to use proper version change detection
+- 1.0.8
+
+-------------------------------------------------------------------
+Wed Nov 13 16:09:42 UTC 2013 - jreidinger@suse.com
+
+- Always pass message to osc sr otherwise it stuck in editor
+- 1.0.7
+
+-------------------------------------------------------------------
+Fri Nov  8 10:34:37 UTC 2013 - jreidinger@suse.com
+
+- Do not check documentation files for license
+- 1.0.6
+
+-------------------------------------------------------------------
+Tue Oct 15 09:26:33 UTC 2013 - mvidner@suse.com
+
+- Optional argument osc_options for `rake osc:build`
+- 1.0.5
+
+-------------------------------------------------------------------
+Wed Oct  9 07:26:41 UTC 2013 - jreidinger@suse.com
+
+- Read all ruby files in UTF-8
+- Improve reporting of different enconding
+- 1.0.4
+
+-------------------------------------------------------------------
+Tue Oct  8 07:47:02 UTC 2013 - jreidinger@suse.com
+
+- Do not use locally build rpms to get persistent results
+- 1.0.3
+
+-------------------------------------------------------------------
+Wed Oct  2 07:13:33 UTC 2013 - jreidinger@suse.com
+
+- Skip rspec files (detected by /#!.*rspec/ regexp) for ruby syntax
+  check
+- 1.0.2
+
+-------------------------------------------------------------------
+Mon Sep 30 13:31:53 UTC 2013 - jreidinger@suse.com
+
+- fix reading version file if it contain more empty lines
+- 1.0.1
+
+-------------------------------------------------------------------
+Tue Sep 24 13:20:51 UTC 2013 - jreidinger@suse.com
+
+- Big cleaning of tasks, backward incompatible
+- improve documentation
+- 1.0.0
+
+-------------------------------------------------------------------
+Mon Jan 23 17:46:09 UTC 2012 - jreidinger@suse.com
+
+- skip in license check all non-regular files 
+- 0.1.8
+
+-------------------------------------------------------------------
+Wed Dec 21 14:26:11 UTC 2011 - jreidinger@suse.com
+
+- add correct provisions/obsoletes for old name, fix license string
+- add ability to pack generated file 
+- 0.1.7
+
+-------------------------------------------------------------------
+Wed Dec 14 16:54:01 UTC 2011 - jreidinger@suse.com
+
+- fix excluding packages for user defined one
+- 0.1.6 
+
+-------------------------------------------------------------------
+Mon Dec 12 12:12:29 UTC 2011 - jreidinger@suse.com
+
+- add configuration to additional files to skip license check
+- 0.1.5 
+
+-------------------------------------------------------------------
+Mon Dec 12 11:44:27 UTC 2011 - jreidinger@suse.com
+
+- fix osc_build 
+- 0.1.4
+
+-------------------------------------------------------------------
+Thu Dec  8 14:30:58 UTC 2011 - jreidinger@suse.com
+
+- fix removing old package tarballs when version increase
+- 0.1.3 
+
+-------------------------------------------------------------------
+Mon Dec  5 14:05:23 UTC 2011 - jreidinger@suse.com
+
+- rename to rubygem-packaging_rake_tasks
+- fixes for different obs_api
+- 0.1.2 
+
+-------------------------------------------------------------------
+Tue Aug 30 07:40:09 UTC 2011 - jreidinger@suse.com
+
+- various fixes, mainly showstoppers
+- 0.1.1
+
+-------------------------------------------------------------------
+Tue Aug 16 11:22:03 UTC 2011 - jreidinger@novell.com
+
+- initial version based on webyast rake tasks 
+- 0.1.0
+

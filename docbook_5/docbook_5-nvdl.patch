@@ -1,0 +1,35 @@
+From: Thomas Schraitle <toms@opensuse.org>
+Date: 2017-11-10 20:33:44 +0100
+Subject: change path to DocBook RNG/SCH schema files
+References: n/a
+Upstream: no
+
+openSUSE installs links in the nvdl/ folder so the path to the
+DocBook schema files were necessary.
+
+--- docbook-5.0/docbook.nvdl.bak	2017-11-10 20:33:44.294076884 +0100
++++ docbook-5.0/docbook.nvdl	2017-11-10 20:34:26.114496772 +0100
+@@ -4,8 +4,8 @@
+ 
+ <mode name="docbook">
+   <namespace ns="http://docbook.org/ns/docbook">
+-    <validate schema="rng/docbook.rng" useMode="attach"/>
+-    <validate schema="sch/docbook.sch" useMode="attach"/>
++    <validate schema="docbook.rng" useMode="attach"/>
++    <validate schema="docbook.sch" useMode="attach"/>
+   </namespace>
+ </mode>
+
+--- docbook-5.1/docbook.nvdl.bak	2017-11-10 20:38:32.596975700 +0100
++++ docbook-5.1/docbook.nvdl	2017-11-10 20:38:47.445124748 +0100
+@@ -4,8 +4,8 @@
+ 
+ <mode name="docbook">
+   <namespace ns="http://docbook.org/ns/docbook">
+-    <validate schema="rng/docbook.rng" useMode="attach"/>
+-    <validate schema="sch/docbook.sch" useMode="attach"/>
++    <validate schema="docbook.rng" useMode="attach"/>
++    <validate schema="docbook.sch" useMode="attach"/>
+   </namespace>
+ </mode>
+

@@ -1,0 +1,62 @@
+commit fb27151be814b0bfbe05f81754f754c7ff8b14d7
+Author: Kurt Garloff <kurt@garloff.de>
+Date:   Sat May 12 09:57:23 2018 +0000
+
+    Avoid compiler warnings.
+
+diff --git a/aes_ossl11.c b/aes_ossl11.c
+index b10f157..66cfbd4 100644
+--- a/aes_ossl11.c
++++ b/aes_ossl11.c
+@@ -101,8 +101,8 @@ int AES_OSSL_##BITCHAIN##_Encrypt(const unsigned char* ctx, unsigned int rounds,
+ 	EVP_CIPHER_CTX **evpctx = (EVP_CIPHER_CTX**)ctx;	\
+ 	EVP_CIPHER_CTX_set_padding(evpctx[0], DOPAD? pad: 0);	\
+ 	if (IV) {						\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
+ 	}							\
+        	if (DOPAD && !pad && (len&15)) {			\
+ 		ores = EVP_EncryptUpdate(evpctx[0], out, &olen, in, len-(len&15));	\
+@@ -143,8 +143,8 @@ int AES_OSSL_##BITCHAIN##_Decrypt(const unsigned char* ctx, unsigned int rounds,
+ 	EVP_CIPHER_CTX **evpctx = (EVP_CIPHER_CTX**)ctx;	\
+ 	EVP_CIPHER_CTX_set_padding(evpctx[0], DOPAD && pad != PAD_ASNEEDED?pad:0);	\
+ 	if (IV) {						\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
+ 	}							\
+ 	if (DOPAD && pad == PAD_ASNEEDED) {			\
+ 		int olen1;					\
+@@ -310,10 +310,10 @@ int  AES_OSSL_##BITCHAIN##_EncryptX2(const unsigned char* ctx, unsigned int roun
+ 	EVP_CIPHER_CTX_set_padding(evpctx[0], pad);		\
+ 	EVP_CIPHER_CTX_set_padding(evpctx[1], 0);		\
+ 	if (IV) {						\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[1]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[1]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[1]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[1]), iv, 16);	\
+ 	}							\
+        	if (!pad && (len&15)) {					\
+ 		ores = EVP_EncryptUpdate(evpctx[0], out, &olen, in, len-(len&15));	\
+@@ -353,10 +353,10 @@ int  AES_OSSL_##BITCHAIN##_DecryptX2(const unsigned char* ctx, unsigned int roun
+ 	EVP_CIPHER_CTX_set_padding(evpctx[1], 0);		\
+ 	EVP_CIPHER_CTX_set_padding(evpctx[0], pad==PAD_ASNEEDED? 0: pad);	\
+ 	if (IV) {						\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[1]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[1]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
+-		memcpy(EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[1]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[1]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_original_iv(evpctx[0]), iv, 16);	\
++		memcpy((void*)EVP_CIPHER_CTX_iv_noconst(evpctx[0]), iv, 16);	\
+ 	}							\
+ 	ores = EVP_DecryptUpdate(evpctx[1], out, &olen, in, rlen);	\
+ 	assert(ores);						\

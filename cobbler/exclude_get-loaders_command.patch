@@ -1,0 +1,24 @@
+Index: cobbler-3.0.0+git20190529.1ba49e14/cobbler/cli.py
+===================================================================
+--- cobbler-3.0.0+git20190529.1ba49e14.orig/cobbler/cli.py	2019-05-29 17:37:14.000000000 +0200
++++ cobbler-3.0.0+git20190529.1ba49e14/cobbler/cli.py	2019-06-03 15:38:27.347073554 +0200
+@@ -63,7 +63,7 @@ OBJECT_TYPES = list(OBJECT_ACTIONS_MAP.k
+ OBJECT_ACTIONS = []
+ for actions in list(OBJECT_ACTIONS_MAP.values()):
+     OBJECT_ACTIONS += actions
+-DIRECT_ACTIONS = "aclsetup buildiso import list replicate report reposync sync validate-autoinstalls version signature get-loaders hardlink".split()
++DIRECT_ACTIONS = "aclsetup buildiso import list replicate report reposync sync validate-autoinstalls version signature hardlink".split()
+ 
+ ####################################################
+ 
+@@ -587,9 +587,7 @@ class CobblerCLI(object):
+             (options, args) = self.parser.parse_args()
+             task_id = self.start_task("validate_autoinstall_files", options)
+         elif action_name == "get-loaders":
+-            self.parser.add_option("--force", dest="force", action="store_true", help="overwrite any existing content in /var/lib/cobbler/loaders")
+-            (options, args) = self.parser.parse_args()
+-            task_id = self.start_task("dlcontent", options)
++            print ("Command 'get-loaders' is not supported in this version of cobbler")
+         elif action_name == "import":
+             self.parser.add_option("--arch", dest="arch", help="OS architecture being imported")
+             self.parser.add_option("--breed", dest="breed", help="the breed being imported")

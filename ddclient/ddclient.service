@@ -1,0 +1,15 @@
+[Unit]
+Description=A Perl Client Used To Update Dynamic DNS
+After=network.target nss-lookup.target
+
+[Service]
+User=ddclient
+Group=ddclient
+Type=forking
+PIDFile=/run/ddclient/ddclient.pid
+EnvironmentFile=-/etc/sysconfig/ddclient
+ExecStartPre=/bin/touch /var/cache/ddclient/ddclient.cache
+ExecStart=/usr/sbin/ddclient $DDCLIENT_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

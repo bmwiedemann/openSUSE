@@ -1,0 +1,41 @@
+From: =?utf8?q?Petr=20P=C3=ADsa=C5=99?= <petr.pisar@atlas.cz>
+Date: Wed, 24 Apr 2019 04:32:09 +0200
+Subject: [PATCH] Test: Accept IE_NETWORK error when client does not provide a
+ correct certificate
+Git-commit: 5cc5b83788e229582bd048a630b3151a140f9437
+Patch-mainline: yes
+
+After upgrading GnuTLS to 3.6.4,
+test/simline/certificate_user_password_authentication tests that exhibit
+a missing client's certificate and a bad client's certificate started to
+fail. That's because cURL returns a network error instead of a TLS error in
+that case when TLSv1.3 is used.
+
+This patch work arounds this cURL deficiency.
+
+See a similar GnuTLS bug report
+<https://gitlab.com/gnutls/gnutls/issues/615>.
+---
+ test/simline/certificate_user_password_authentication.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/test/simline/certificate_user_password_authentication.c b/test/simline/certificate_user_password_authentication.c
+index c0192ab..7789d7c 100644
+--- a/test/simline/certificate_user_password_authentication.c
++++ b/test/simline/certificate_user_password_authentication.c
+@@ -35,7 +35,11 @@ static int test_login(const isds_error error, struct isds_ctx *context,
+     isds_error err;
+ 
+     err = isds_login(context, url, username, password, pki_credentials, otp);
+-    if (error != err)
++    /* If TLSv1.3 is used, cURL reports a network error instead of a security
++     * error if server refuses client's certificate (since GnuTLS 3.6.4).
++     * Maybe a <https://gitlab.com/gnutls/gnutls/issues/615>. As a workaround,
++     * accept IE_NETWORK if IE_SECURITY was expected. */
++    if (error != err && (IE_SECURITY != error || IE_NETWORK != err))
+         FAIL_TEST("Wrong return code: expected=%s, returned=%s (%s)",
+                 isds_strerror(error), isds_strerror(err),
+                 isds_long_message(context));
+-- 
+2.10.5.GIT
+

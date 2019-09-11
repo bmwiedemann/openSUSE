@@ -1,0 +1,11 @@
+--- a/Makefile	2019-02-22 09:46:54.768180093 +0100
++++ b/Makefile	2019-02-22 09:47:05.544250815 +0100
+@@ -55,7 +55,7 @@ sgabios.elf: .depend $(OBJS) $(LDSCRIPT)
+ 	$(LD) $(LDFLAGS) $(OBJS) -o $@
+ 
+ csum8: csum8.c
+-	$(CC) -Wall -O2 -o $@ $<
++	$(HOSTCC) -Wall -O2 -o $@ $<
+ 
+ sgabios.o: buildinfo
+ 

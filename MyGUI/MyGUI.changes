@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Fri Jan 25 09:40:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Jan 25 09:17:46 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle properly libCommon.so*
+- Add patch to get a versionned libCommon.so file:
+  * MyGUI-libCommon-fixup.patch
+
+-------------------------------------------------------------------
+Fri Jul 20 14:27:43 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Use %cmake macro. This fixes build for aarch64.
+- Make use of %license
+
+-------------------------------------------------------------------
+Wed Jan 24 11:34:18 UTC 2018 - kasimir_@outlook.de
+
+- Fix spec for aarch64 / ppc64 / ppc64le / s390x build
+
+-------------------------------------------------------------------
+Sun Sep 25 07:57:54 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Thu Sep 15 15:03:55 UTC 2016 - mimi.vx@gmail.com
+
+- remove unneeded Cg requires
+
+-------------------------------------------------------------------
+Tue Feb 17 11:47:58 UTC 2015 - devel.suse@gmail.com
+
+- Update to upstream MyGUI 3.2.2:
+ -- Core --
+ * Fixed eventChangeMouseFocus and eventChangeKeyFocus not being triggered in certain cases.
+
+ -- Widgets --
+ * ComboBox: Fixed mouse events incorrectly going to the widget below the ComboBox when clicking on an item.
+ * ScrollBar: Added button repeat support, ScrollBar buttons will trigger repeatedly so long as the mouse is held down.
+
+ -- Platforms --
+ * OpenGLPlatform: Added option to use system GLEW library.
+ * OgrePlatform: Improved performance of OgreDataManager::isDataExist.
+ * OgrePlatform: Fixed build failure regarding boost libraries used by Ogre not being found.
+
+ -- Resources --
+ * ResourceManualFont: Added API to create a ResourceManualFont in code rather than from XML.
+
+ -- Tools --
+ * Fixed broken file dialog directory listing on Linux and make sure files are sorted.
+
+- Updated MyGUI-gcc47-visibility.patch
+- Updated MyGUI-lib_suffix.patch 
+
+-------------------------------------------------------------------
+Wed Jan 21 03:46:02 UTC 2015 - devel.suse@gmail.com
+
+- Build MyGUI 3.2.1 
+
+-------------------------------------------------------------------
+Sun Mar 23 17:09:00 UTC 2014 - seife+obs@b1-systems.com
+
+- fix build on 13.1+:
+  * freetype includes are now in include/freetype2
+  * OGRE needs libboost_system on linker commandline
+
+-------------------------------------------------------------------
+Mon May  7 11:28:09 UTC 2012 - joop.boonen@opensuse.org
+
+- Created a gcc 4.7 patch, visibility is much more strict in gcc 4.7 
+
+-------------------------------------------------------------------
+Sun Feb 26 14:48:40 UTC 2012 - joop.boonen@opensuse.org
+
+- Build MyGUI 3.20 
+
+-------------------------------------------------------------------
+Mon Dec  5 13:31:39 UTC 2011 - anixx@opensuse.org
+
+- remove runtime dependency on dejavu
+
+-------------------------------------------------------------------
+Mon Nov 21 17:32:13 UTC 2011 - jengelh@medozas.de
+
+- shlib policy: must not obsolete a package providing a
+  different basename
+
+-------------------------------------------------------------------
+Sun Nov 20 14:05:20 UTC 2011 - seife+obs@b1-systems.com
+
+- fix build on 12.1+ by ignoring error removing non-existant file
+
+-------------------------------------------------------------------
+Sat Jul  2 11:53:37 UTC 2011 - jengelh@medozas.de
+
+- Remove conflicting %debug_package: OBS deals with that already
+- Remove unnecessary %clean section
+
+-------------------------------------------------------------------
+Wed Apr 20 13:35:58 UTC 2011 - prusnak@opensuse.org
+
+- based on a package by Toni Graffy
+
+-------------------------------------------------------------------

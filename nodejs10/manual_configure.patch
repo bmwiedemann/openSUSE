@@ -1,0 +1,41 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Wed May 23 14:13:33 CEST 2018
+Summary: This config.h is defined by hand
+
+Gyp doesn't run autotools, so this config is not quite correct.
+Update to prevent implicit defines to be used.
+
+Index: node-v10.1.0/deps/nghttp2/lib/includes/config.h
+===================================================================
+--- node-v10.1.0.orig/deps/nghttp2/lib/includes/config.h
++++ node-v10.1.0/deps/nghttp2/lib/includes/config.h
+@@ -54,7 +54,7 @@ typedef intptr_t ssize_t;
+ /* #undef NOTHREADS */
+ 
+ /* Define to 1 if you have the <arpa/inet.h> header file. */
+-/* #undef HAVE_ARPA_INET_H */
++#define HAVE_ARPA_INET_H 1
+ 
+ /* Define to 1 if you have the <fcntl.h> header file. */
+ #define HAVE_FCNTL_H 1
+@@ -69,7 +69,7 @@ typedef intptr_t ssize_t;
+ /* #undef HAVE_NETDB_H */
+ 
+ /* Define to 1 if you have the <netinet/in.h> header file. */
+-/* #undef HAVE_NETINET_IN_H */
++#define HAVE_NETINET_IN_H 1
+ 
+ /* Define to 1 if you have the <pwd.h> header file. */
+ /* #undef HAVE_PWD_H */
+Index: node-v10.1.0/deps/nghttp2/nghttp2.gyp
+===================================================================
+--- node-v10.1.0.orig/deps/nghttp2/nghttp2.gyp
++++ node-v10.1.0/deps/nghttp2/nghttp2.gyp
+@@ -12,6 +12,7 @@
+       'defines': [
+         'BUILDING_NGHTTP2',
+         'NGHTTP2_STATICLIB',
++        'HAVE_CONFIG_H',
+       ],
+       'conditions': [
+         ['OS=="win"', {

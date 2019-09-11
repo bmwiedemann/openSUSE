@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Aug 13 14:41:23 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.0:
+  * Include tests in source distributions
+
+-------------------------------------------------------------------
+Thu Jan 10 13:48:13 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.0:
+  * more strict error handling (InvalidTypeIncluded is added)
+- Changes for version 0.5.1:
+  * bug fix
+- Changes for version 0.5.0:
+  * include_prerelease option is added
+
+-------------------------------------------------------------------
+Thu Oct 11 13:33:36 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.2:
+  * fix bug for support 4-digit (handling prelease and build)
+  * suport 4-digit version (e.g. x.y.z.a)
+
+-------------------------------------------------------------------
+Fri Feb  9 08:22:03 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.3.0:
+  * drop python2.x support
+  * bug fix, Add sort key function #14
+
+-------------------------------------------------------------------
+Mon Dec 25 21:53:07 UTC 2017 - mpluskal@suse.com
+
+- Use github source
+- Run tests
+
+-------------------------------------------------------------------
+Mon Dec 25 19:24:25 UTC 2017 - mpluskal@suse.com
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Wed Oct 25 21:23:15 UTC 2017 - dan.weatherill@cantab.net
+
+- generate package from pyPI using py2pack

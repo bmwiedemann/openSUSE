@@ -1,0 +1,38 @@
+From 3b256e0e683a0a41dff71f0e00b4458ae40ef7e5 Mon Sep 17 00:00:00 2001
+From: Ansgar Burchardt <ansgar-guest@alioth.debian.org>
+Date: Sat, 13 Dec 2008 14:33:50 +0100
+Subject: [PATCH 6/8] exit fullscreen mode early to avoid crash
+
+Jump'n'bump would crash when leaving the game from fullscreen mode and
+sound was available.  This patch makes Jump'n'bump exit fullscreen
+mode early.
+
+see http://bugs.debian.org/432361
+---
+ main.c |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/main.c b/main.c
+index 76c9463..2db1f18 100644
+--- a/main.c
++++ b/main.c
+@@ -3324,6 +3324,8 @@ void deinit_program(void)
+ 	__dpmi_regs regs;
+ #endif
+ 
++	exit_fullscreen();
++
+ 	dj_stop();
+ 	dj_free_mod(MOD_MENU);
+ 	dj_free_mod(MOD_GAME);
+@@ -3338,7 +3340,6 @@ void deinit_program(void)
+ 		free(mask_pic);
+ 
+ 	remove_keyb_handler();
+-	exit_fullscreen();
+ 
+ #ifdef DOS
+ 	regs.x.ax = 0x3;
+-- 
+1.6.2.1
+
